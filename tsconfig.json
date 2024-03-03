@@ -1,0 +1,20 @@
+{
+	"compilerOptions": {
+		"sourceMap": false,
+		"newLine": "lf",
+		"esModuleInterop": true,
+		"strict": true,
+		"target": "esnext",
+		"module": "esnext",
+		"moduleResolution": "Node",
+		"resolveJsonModule": true,
+		"allowSyntheticDefaultImports": true
+	},
+	"ts-node": {
+		"esm": true,
+		"experimentalSpecifierResolution": "node"
+	},
+	"lib": [
+		"esnext"
+	]
+}
