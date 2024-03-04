@@ -14,6 +14,7 @@ export const target_files:{[key: string]: string} = {
 	'xyz--integer': 'common/vectors.ts',
 	'quaternion': 'common/vectors.ts',
 	'quaternion--semi-native': 'common/vectors.ts',
+	'pitch-yaw-roll': 'common/vectors.ts',
 };
 
 ImportTracker.set_imports('common/vectors.ts', [
