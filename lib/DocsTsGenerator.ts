@@ -24,6 +24,10 @@ import {
 	generators as vector_generators,
 } from './TypesGeneration/vectors';
 import {
+	target_files as constants_target_files,
+	generators as constants_generators,
+} from './TypesGeneration/constants';
+import {
 	TypesGeneration,
 	TypesGenerationFromSchema,
 	TypesGenerationMatchesReferenceName,
@@ -170,6 +174,7 @@ export class DocsTsGenerator
 			color_target_files,
 			validator_target_files,
 			vector_target_files,
+			constants_target_files,
 		);
 
 		const generators:TypesGeneration<any, any>[] = [
@@ -177,6 +182,7 @@ export class DocsTsGenerator
 			...enum_generators,
 			...validator_generators,
 			...vector_generators,
+			...constants_generators,
 		];
 
 		const supported_conversions:GenerationMatch<object>[] = Object.entries(update8_schema.definitions).filter(
