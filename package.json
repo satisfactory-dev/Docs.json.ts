@@ -1,7 +1,7 @@
 {
   "type": "module",
-  "name": "@satisfactory-clips-archive/satisfactory-docs.ts",
-  "description": "TypeScript mappings for Satisfactory's docs.json file",
+  "name": "@satisfactory-clips-archive/satisfactory-docs.json.ts",
+  "description": "TypeScript mappings for the Docs.json file that ships with Satisfactory",
   "scripts": {
     "utf8ify": "ts-node ./utf8ify.ts",
     "generate": "ts-node ./generate-typescript-types.ts",
