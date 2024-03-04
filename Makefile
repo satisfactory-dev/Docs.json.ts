@@ -17,3 +17,6 @@ validate:
 
 utf8ify:
 	${DOCKER_PREFIX} ${DOCKER_IMAGE} npm run utf8ify
+
+generate:
+	${DOCKER_PREFIX} ${DOCKER_IMAGE} npm run generate
