@@ -3,7 +3,7 @@ import {basename, dirname} from 'node:path';
 import {existsSync} from 'node:fs';
 
 import * as prettier from 'prettier';
-import Ajv, {ErrorObject, JSONSchemaType} from 'ajv/dist/2020';
+import Ajv, {ErrorObject} from 'ajv/dist/2020';
 
 import update8_schema from '../schema/update8.schema.json' assert {type: 'json'};
 
@@ -39,9 +39,15 @@ import {
 	GenerationMatch,
 	ImportTracker,
 } from './TypesGeneration';
-import {default_config} from './DocsValidation';
+import {configure_ajv, default_config} from './DocsValidation';
 import ts from "typescript";
 import {glob} from "glob";
+import {BuiltInParserName} from "prettier";
+import {createHash} from "crypto";
+import {default as standalone} from "ajv/dist/standalone";
+import {fileURLToPath} from "node:url";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 class ValidationError extends Error
 {
@@ -77,19 +83,19 @@ declare type generation_result = {
 
 export class DocsTsGenerator
 {
-	private readonly utf8_cache_path:string|undefined;
+	private readonly cache_path:string|undefined;
 	private readonly docs_path:string|object[];
 	private docs:object[]|undefined;
 
 	constructor({
-		docs_path,
-		utf8_cache_path = undefined
+		docs_path, // raw JSON or path to UTF-16LE encoded Docs.json
+		cache_path = undefined, // optional cache folder path for cacheable resources
 	}:{
 		docs_path: string|object[],
-		utf8_cache_path?: string
+		cache_path?: string,
 	}) {
-		this.utf8_cache_path = utf8_cache_path;
 		this.docs_path = docs_path;
+		this.cache_path = cache_path;
 	}
 
 	private async load_from_file(filepath:string): Promise<any>
@@ -111,12 +117,12 @@ export class DocsTsGenerator
 			} else if (!this.docs_path.endsWith('.json')) {
 				throw new Error('Probably not a JSON file');
 			} else {
-				if (this.utf8_cache_path) {
+				if (this.cache_path) {
 					const utf8_filename = basename(this.docs_path).replace(
 						/\.json$/,
 						'.utf8.json'
 					);
-					const utf8_filepath = `${this.utf8_cache_path}/${utf8_filename}`;
+					const utf8_filepath = `${this.cache_path}/${utf8_filename}`;
 
 					if (existsSync(utf8_filepath)) {
 						this.docs = JSON.parse((await readFile(utf8_filepath)).toString());
@@ -136,13 +142,68 @@ export class DocsTsGenerator
 		return this.docs;
 	}
 
-	private async validate<T>(json:any, schema:JSONSchemaType<T>): Promise<T>
-	{
+	private async validate<T extends [
+		{
+			NativeClass: string,
+			Classes: {ClassName: string}[]
+		},
+		...{
+			NativeClass: string,
+			Classes: {ClassName: string}[]
+		}[]
+	]>(json:any, schema:{'$id': 'update8.schema.json'}): Promise<T> {
+		/* unfortunately this code doesn't work because it generates the wrong type of js :(
+		if (this.cache_path) {
+			const file_sha512 = createHash('sha512');
+
+			file_sha512.update(await readFile(`${__dirname}/../schema/${schema['$id']}`));
+
+			const filename = `${schema['$id']}.${file_sha512.digest('hex')}.mjs`;
+			const filepath = `${this.cache_path}/${filename}`;
+
+			if (!existsSync(filepath)) {
+				console.log('precompiled validator not generated');
+				default_config.ajv = new Ajv({
+					verbose: true,
+					code: {
+						source: true,
+						es5: false,
+						esm: true,
+						optimize: true,
+					},
+				});
+				configure_ajv(default_config.ajv);
+
+				await writeFile(
+					filepath,
+					await format_code(
+						standalone(
+							default_config.ajv,
+							default_config.ajv.compile(schema)
+						)
+					)
+				);
+			}
+
+			const validateDocs = await import(filepath);
+
+			if (!validateDocs(json)) {
+				throw new ValidationError(
+					'Argument 1 failed to validate against the Update 8 JSON Schema',
+					validateDocs.errors,
+					json
+				);
+			}
+
+			return json as T;
+		}
+		 */
+
 		default_config.ajv = new Ajv({
 			verbose: true,
 		});
 
-		const validateDocs = default_config.ajv.compile(schema);
+		const validateDocs = default_config.ajv.compile<T>(schema);
 
 		if (!validateDocs(json)) {
 			throw new ValidationError(
@@ -155,17 +216,12 @@ export class DocsTsGenerator
 		return json;
 	}
 
-	async get<T extends [
-		{
-			NativeClass: string,
-			Classes: {ClassName: string}[]
-		},
-		...{
-			NativeClass: string,
-			Classes: {ClassName: string}[]
-		}[]
-	]>(): Promise<T> {
-		return this.validate<T>(await this.load(), (update8_schema as unknown) as JSONSchemaType<T>);
+	async get()
+	{
+		return this.validate(
+			await this.load(),
+			update8_schema as (typeof update8_schema & {'$id': 'update8.schema.json'})
+		);
 	}
 
 	/**
@@ -289,19 +345,9 @@ export class DocsTsGenerator
 
 				await writeFile(
 					file_name,
-					await prettier.format(
-						nodes.map((node) => {
-							return printer.printNode(ts.EmitHint.Unspecified, node, result_file)
-						}).join('\n\n'),
-						{
-							parser: 'typescript',
-							singleQuote: true,
-							trailingComma: 'es5',
-							arrowParens: 'always',
-							endOfLine: 'lf',
-							useTabs: true,
-						}
-					)
+					await format_code(nodes.map((node) => {
+						return printer.printNode(ts.EmitHint.Unspecified, node, result_file)
+					}).join('\n\n'))
 				);
 			}
 		} catch (err) {
@@ -310,4 +356,15 @@ export class DocsTsGenerator
 
 		return progress;
 	}
+}
+
+export function format_code(code:string, parser:BuiltInParserName = 'typescript'): Promise<string> {
+	return prettier.format(code, {
+		parser,
+		singleQuote: true,
+		trailingComma: 'es5',
+		arrowParens: 'always',
+		endOfLine: 'lf',
+		useTabs: true,
+	});
 }

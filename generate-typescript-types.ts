@@ -7,7 +7,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const generator = new DocsTsGenerator({
 	docs_path: `${__dirname}/data/Docs.json`,
-	utf8_cache_path: `${__dirname}/data/`,
+	cache_path: `${__dirname}/data/`,
 });
 
 try {

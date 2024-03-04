@@ -776,7 +776,7 @@
 							"minLength": 1,
 							"UnrealEngineString": {
 								"type": "string",
-								"UnrealEngineStringPrefix": "/Script/Engine.BlueprintGeneratedClass",
+								"UnrealEngineString_prefix": "/Script/Engine.BlueprintGeneratedClass",
 								"pattern": "^/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_[A-Z][A-z]+/SC_[A-Z][A-z]+\\.SC_[A-Z][A-z]+_C"
 							}
 						}

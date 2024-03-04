@@ -1,3 +1,4 @@
 /node_modules/
 /data/
 /generated-types/
+/lib/**/*.mjs

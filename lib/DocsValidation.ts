@@ -1,4 +1,8 @@
-import Ajv from 'ajv/dist/2020';
+import Ajv, {_, KeywordCxt} from 'ajv/dist/2020';
+import {default as standalone} from 'ajv/dist/standalone';
+
+import {format_code} from './DocsTsGenerator';
+
 import schema from "../schema/update8.schema.json" assert {type: 'json'};
 
 const {definitions} = schema;
@@ -195,6 +199,11 @@ export function object_string(
 		type: 'object',
 		required: string[],
 		properties: {[key: string]: object}
+	}|{
+		type: 'object',
+		'$ref': string,
+		unevaluatedProperties: false,
+		properties: {[key: string]: object},
 	},
 	data: string
 ) {
@@ -271,7 +280,7 @@ export function array_string(
 		type: 'array',
 		minItems?: number,
 		maxItems?: number,
-		prefixItems?: object[],
+		prefixItems?: [object, ...object[]],
 	}&({items: object}|{items: false}),
 	data: string
 ) {
@@ -289,43 +298,207 @@ export function array_string(
 	return inner_validate(array_of_things);
 }
 
-export function quick_string(_schema:string, _data:string) {
-	return true;
-}
+const already_configred = new WeakSet();
 
 export function configure_ajv(ajv:Ajv): void {
+	if (already_configred.has(ajv)) {
+		return;
+	}
+
+	already_configred.add(ajv);
+
 	ajv.addKeyword({
 		keyword: 'array_string',
-		validate: array_string,
+		type: 'string',
+		metaSchema: {
+			type: 'object',
+			required: [
+				'type',
+			],
+			additionalProperties: false,
+			properties: {
+				type: {type: 'string', const: 'array'},
+				minItems: {type: 'number', minimum: 0},
+				maxItems: {type: 'number', minimum: 1},
+				items: {
+					oneOf: [
+						{type: 'boolean', const: false},
+						{type: 'object'},
+					],
+				},
+				prefixItems: {
+					type: 'array',
+					minItems: 1,
+					items: {type: 'object'},
+				},
+			},
+		},
+		compile: (schema:{
+			type: 'array',
+			minItems?: number,
+			maxItems?: number,
+			prefixItems?: [object, ...object[]],
+		}&({items: object}|{items: false})) => {
+			return (data) => array_string(schema, data);
+		},
+		/*
+		code: (ctx:KeywordCxt) => {
+			const {data, schema} = ctx;
+
+			ctx.fail(_`array_string(${schema}, ${data})`);
+		},
+		 */
 	});
 
 	ajv.addKeyword({
 		keyword: 'object_string',
-		validate: object_string,
+		type: 'string',
+		metaSchema: {
+			definitions: {
+				base: {
+					type: 'object',
+					required: [
+						'type',
+						'required',
+						'properties',
+					],
+					additionalProperties: false,
+					properties: {
+						type: {type: 'string', const: 'object'},
+						required: {
+							type: 'array',
+							minItems: 1,
+							items: {type: 'string', minLength: 1},
+						},
+						additionalProperties: {type: 'boolean', const: false},
+						properties: {type: 'object'},
+					},
+				},
+			},
+			oneOf: [
+				{'$ref': '#/definitions/base'},
+				{
+					type: 'object',
+					required: [
+						'type',
+						'$ref',
+						'unevaluatedProperties',
+						'properties',
+					],
+					additionalProperties: false,
+					properties: {
+						type: {type: 'string', const: 'object'},
+						'$ref': {type: 'string', minLength: 1},
+						unevaluatedProperties: {type: 'boolean', const: false},
+						properties: {type: 'object'},
+					}
+				}
+			],
+		},
+		compile: (
+			schema:{
+				type: 'object',
+				required: [string, ...string[]],
+				properties: {[key: string]: object}
+			}|{
+				type: 'object',
+				'$ref': string,
+				unevaluatedProperties: false,
+				properties: {[key: string]: object},
+			}
+		) => {
+			return (data:string) => {
+				return object_string(schema, data);
+			};
+		},
+		/*
+		code: (ctx:KeywordCxt) => {
+			const {data, schema} = ctx;
+
+			ctx.fail(_`object_string(${schema}, ${data})`);
+		},
+		 */
 	});
 
 	ajv.addKeyword({
 		keyword: 'UnrealEngineString',
-		validate: UnrealEngineString,
+		type: 'string',
+		metaSchema: {
+			definitions: {
+				base: {
+					type: 'object',
+					required: [
+						'type',
+						'pattern',
+					],
+					properties: {
+						type: {type: 'string', const: 'string'},
+						pattern: {type: 'string', minLength: 2},
+					},
+				}
+			},
+			oneOf: [
+				{
+					type: 'object',
+					'$ref': '#/definitions/base',
+					required: [
+						'UnrealEngineString_prefix',
+					],
+					unevaluatedProperties: false,
+					properties: {
+						UnrealEngineString_prefix: {type: 'string', minLength: 1},
+					},
+				},
+				{
+					type: 'object',
+					'$ref': '#/definitions/base',
+					required: [
+						'UnrealEngineString_prefix_pattern',
+					],
+					unevaluatedProperties: false,
+					properties: {
+						UnrealEngineString_prefix_pattern: {type: 'string', minLength: 2},
+					},
+				},
+			],
+		},
+		compile: (
+			schema:{
+				type: 'string',
+				pattern: string,
+			}&({
+				UnrealEngineString_prefix: string,
+			}|{
+				UnrealEngineString_prefix_pattern: string,
+			})
+		) => {
+			return (data:string) => {
+				return UnrealEngineString(schema, data);
+			};
+		},
+		/*
+		code: (ctx:KeywordCxt) => {
+			const {data, schema} = ctx;
+
+			ctx.fail(_`UnrealEngineString(${schema}, ${data})`);
+		},
+		 */
 	});
 
 	ajv.addKeyword({
-		keyword: 'UnrealEngineString_prefix',
-		validate: quick_string,
-	});
-	ajv.addKeyword({
-		keyword: 'UnrealEngineString_prefix_pattern',
-		validate: quick_string,
-	});
-	ajv.addKeyword({
 		keyword: 'string_starts_with',
 		type: 'string',
-		compile: (value:string) => {
-			return (data:string) => data.startsWith(value);
-		},
 		metaSchema: {
 			type: 'string',
 			minLength: 1,
+		},
+		compile: (value:string) => {
+			return (data:string) => data.startsWith(value);
+		},
+		code: (ctx:KeywordCxt) => {
+			const {schema, data} = ctx;
+
+			ctx.fail(_`!${data}.startsWith(${schema})`);
 		},
 	});
 }
