@@ -227,6 +227,26 @@ export function object_string(
 	return inner_validate(faux);
 }
 
+const UnrealEngineString_regex = /^([^']+)'(?:"([^"]+)"|([^"]+))'$/;
+
+class NotAnUnrealEngineString extends Error {}
+
+export function extract_UnrealEngineString(from:string) : {
+	prefix: string,
+	value: string
+} {
+	const match = UnrealEngineString_regex.exec(from);
+
+	if (!match) {
+		throw new NotAnUnrealEngineString(`"${from}" is not an UnrealEngineString`);
+	}
+
+	return {
+		prefix: match[1],
+		value: match[2] || match[3],
+	};
+}
+
 export function UnrealEngineString(
 	schema: {
 		type: string,
@@ -238,26 +258,32 @@ export function UnrealEngineString(
 	}),
 	data:string
 ) {
-	const inner_match = /^([^']+)'(?:"([^"]+)"|([^"]+))'$/.exec(data);
+	let match:{prefix:string, value: string};
 
-	if (!inner_match) {
-		return false;
+	try {
+		match = extract_UnrealEngineString(data);
+	} catch (err) {
+		if (err instanceof NotAnUnrealEngineString) {
+			return false;
+		}
+
+		throw err;
 	}
 
 	if ('UnrealEngineString_prefix' in schema) {
-		if (inner_match[1] !== schema.UnrealEngineString_prefix) {
+		if (match.prefix !== schema.UnrealEngineString_prefix) {
 			throw new Error(
 				`string was ${
-					inner_match[1]
+					match.prefix
 				}, expected ${
 					schema.UnrealEngineString_prefix
 				}`
 			);
 		}
-	} else if (!(new RegExp(schema.UnrealEngineString_prefix_pattern)).test(inner_match[1])) {
+	} else if (!(new RegExp(schema.UnrealEngineString_prefix_pattern)).test(match.prefix)) {
 		throw new Error(
 			`string was ${
-				inner_match[1]
+				match.prefix
 			}, expected to match ${
 				schema.UnrealEngineString_prefix_pattern
 			}`
@@ -272,7 +298,7 @@ export function UnrealEngineString(
 		pattern
 	});
 
-	return inner_validate(inner_match[2] || inner_match[3]);
+	return inner_validate(match.value);
 }
 
 export function array_string(

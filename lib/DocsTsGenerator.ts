@@ -39,15 +39,15 @@ import {
 	GenerationMatch,
 	ImportTracker,
 } from './TypesGeneration';
-import {configure_ajv, default_config} from './DocsValidation';
+import {default_config} from './DocsValidation';
 import ts from "typescript";
 import {glob} from "glob";
 import {BuiltInParserName} from "prettier";
-import {createHash} from "crypto";
-import {default as standalone} from "ajv/dist/standalone";
-import {fileURLToPath} from "node:url";
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
+import {
+	target_files as classes_target_files,
+	generators as classes_generators,
+	custom_generators as Classes_custom_generators,
+} from './TypesGeneration/Classes';
 
 class ValidationError extends Error
 {
@@ -237,6 +237,7 @@ export class DocsTsGenerator
 			vector_target_files,
 			constants_target_files,
 			prefixes_target_files,
+			classes_target_files,
 		);
 
 		const generators:TypesGeneration<any, any>[] = [
@@ -246,6 +247,7 @@ export class DocsTsGenerator
 			...vector_generators,
 			...constants_generators,
 			...prefixes_generators,
+			...classes_generators,
 		];
 
 		const supported_conversions:GenerationMatch<object>[] = Object.entries(update8_schema.definitions).filter(
@@ -270,11 +272,11 @@ export class DocsTsGenerator
 			(maybe) => !supported_conversion_names.includes(maybe)
 		);
 
-		const missing_target_files = supported_conversions.map((match) => {
+		let missing_target_files = supported_conversions.map((match) => {
 			return match.definition;
 		}).filter((maybe) => !(maybe in target_files));
 
-		const progress = {
+		let progress = {
 			definitions: {
 				keys: Object.keys(update8_schema),
 				supported: supported_conversion_names,
@@ -292,15 +294,41 @@ export class DocsTsGenerator
 
 			for (const generator of [
 				...validator_custom_generators,
+				...Classes_custom_generators,
 			]) {
-				const {file, node} = generator();
+				const Classes_results:(
+					| {file: string, node: ts.Node}
+					| {file: string, node: ts.Node, ref: string}
+				)[] = generator(update8_schema);
 
-				if (!(file in files)) {
-					files[file] = [];
+				for (const result of Classes_results) {
+
+					const {file, node} = result;
+
+					if ('ref' in result) {
+						target_files[result.ref] = file;
+					}
+
+					if (!(file in files)) {
+						files[file] = [];
+					}
+
+					files[file].push(node);
 				}
-
-				files[file].push(node);
 			}
+
+			missing_target_files = supported_conversions.map((match) => {
+				return match.definition;
+			}).filter((maybe) => !(maybe in target_files));
+
+			progress = {
+				definitions: {
+					keys: Object.keys(update8_schema),
+					supported: supported_conversion_names,
+					unsupported: unsupported_conversions,
+					missing_target_files: missing_target_files,
+				},
+			};
 
 			for (const match of supported_conversions) {
 				if (!(match.definition in target_files)) {

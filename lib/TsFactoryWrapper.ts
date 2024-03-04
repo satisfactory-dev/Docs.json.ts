@@ -14,7 +14,23 @@ declare type supported_method_modifiers = ('abstract'|'protected'|'public')[];
 
 export function adjust_class_name(class_name:string): string
 {
+	if ('class' === class_name) {
+		return 'Docs_class';
+	}
+
 	return class_name.replace(/[^A-Za-z_]/g, '_');
+}
+
+export function adjust_unrealengine_prefix(prefix:string): string
+{
+	return adjust_class_name(
+		prefix.replace(/^(?:\/Script\/)/, '').replace(/\.Class$/, '')
+	);
+}
+
+export function adjust_unrealengine_value(value:string): string
+{
+	return adjust_class_name(value.replace(/^(?:\/Script\/FactoryGame\.)/, ''));
 }
 
 export function adjust_enum_name(enum_name:string): string
@@ -26,7 +42,7 @@ export function adjust_enum_name(enum_name:string): string
 	return adjust_class_name(enum_name);
 }
 
-const modifier_map:{[key: string]: () => ts.ModifierToken<ts.ModifierSyntaxKind>} = {
+export const modifier_map:{[key: string]: () => ts.ModifierToken<ts.ModifierSyntaxKind>} = {
 	'abstract': () => {
 		return ts.factory.createModifier(ts.SyntaxKind.AbstractKeyword);
 	},
@@ -40,6 +56,8 @@ const modifier_map:{[key: string]: () => ts.ModifierToken<ts.ModifierSyntaxKind>
 		return ts.factory.createModifier(ts.SyntaxKind.ProtectedKeyword);
 	},
 };
+
+export type supported_modifiers = keyof typeof modifier_map;
 
 export function create_modifier(modifier:keyof typeof modifier_map): ts.ModifierToken<ts.ModifierSyntaxKind> {
 	return modifier_map[modifier]();
@@ -73,13 +91,15 @@ export function createProperty(
 	);
 }
 
+export type create_class_options = {
+	modifiers?:supported_class_modifiers,
+	extends?:string,
+};
+
 export function createClass(
 	name:string,
 	members:(PropertyDeclaration|MethodDeclaration)[],
-	options: {
-		modifiers?:supported_class_modifiers,
-		extends?:string,
-	} = {}
+	options: create_class_options = {}
 ) : ClassDeclaration {
 	let resolved_modifiers:undefined|(Modifier[]) = undefined;
 	let resolved_heritage:HeritageClause[] = [];
@@ -127,6 +147,29 @@ export const auto_constructor_property_types:{[key: string]: KeywordTypeSyntaxKi
 	'#/definitions/integer-string': ts.SyntaxKind.NumberKeyword,
 };
 
+export function create_callExpression__for_validation_function(
+	call_function: string,
+	argument_index: number,
+	identifier: [ts.Expression, ...ts.Expression[]],
+): ts.CallExpression {
+	return ts.factory.createCallExpression(
+		ts.factory.createIdentifier(adjust_class_name(call_function)),
+		undefined,
+		[
+			...identifier,
+			ts.factory.createTemplateExpression(
+				ts.factory.createTemplateHead('Argument '),
+				[
+					ts.factory.createTemplateSpan(
+						ts.factory.createNumericLiteral(argument_index),
+						ts.factory.createTemplateTail('')
+					),
+				]
+			),
+		]
+	);
+}
+
 export function createClass__members__with_auto_constructor<T extends [string, ...string[]]>(
 	data: {
 		type: 'object',
@@ -167,27 +210,14 @@ export function createClass__members__with_auto_constructor<T extends [string, .
 
 			const is_signed = data.properties[property]['$ref'].endsWith('--signed');
 
-			const validate = ts.factory.createCallExpression(
-				ts.factory.createIdentifier(
-					adjust_class_name(`${
-						is_int ? 'integer-string' : 'decimal-string'
-					}${
-						is_signed ? '--signed' : ''
-					}`)
-				),
-				undefined,
-				[
-					identifier,
-					ts.factory.createTemplateExpression(
-						ts.factory.createTemplateHead('Argument '),
-						[
-							ts.factory.createTemplateSpan(
-								ts.factory.createNumericLiteral(index),
-								ts.factory.createTemplateTail('')
-							),
-						]
-					),
-				]
+			const validate = create_callExpression__for_validation_function(
+				`${
+					is_int ? 'integer-string' : 'decimal-string'
+				}${
+					is_signed ? '--signed' : ''
+				}`,
+				index,
+				[identifier]
 			);
 
 			return ts.factory.createExpressionStatement(ts.factory.createAssignment(
@@ -259,4 +289,104 @@ export function create_string_starts_with(string_starts_with:string): ts.TypeRef
 	return ts.factory.createTypeReferenceNode('string_starts_with', [
 		ts.factory.createLiteralTypeNode(ts.factory.createStringLiteral(string_starts_with)),
 	]);
+}
+
+function must_be_a_decimal_like_string() {
+	return ts.factory.createTemplateExpression(
+		ts.factory.createTemplateHead(''),
+		[
+			ts.factory.createTemplateSpan(
+				ts.factory.createIdentifier('reference_argument'),
+				ts.factory.createTemplateTail(' must be a decimal-like string!')
+			)
+		]
+	);
+}
+
+function must_be_an_integer_like_string() {
+	return ts.factory.createTemplateExpression(
+		ts.factory.createTemplateHead(''),
+		[
+			ts.factory.createTemplateSpan(
+				ts.factory.createIdentifier('reference_argument'),
+				ts.factory.createTemplateTail(' must be an integer-like string!')
+			)
+		]
+	);
+}
+
+const custom_pattern_errors:{[key: string]: () => ts.TemplateExpression} = {
+	'decimal-string': must_be_a_decimal_like_string,
+	'decimal-string--signed': must_be_a_decimal_like_string,
+	'integer-string': must_be_an_integer_like_string,
+	'integer-string--signed': must_be_an_integer_like_string,
+}
+
+export function flexibly_create_regex_validation_function(
+	reference_name: string,
+	regexp_argument: ts.Expression,
+	parameters: ts.ParameterDeclaration[],
+	error_template_spans: ts.TemplateSpan[]
+) : ts.FunctionDeclaration {
+	return ts.factory.createFunctionDeclaration(
+		[create_modifier('export')],
+		undefined,
+		adjust_class_name(reference_name),
+		undefined,
+		parameters,
+		ts.factory.createKeywordTypeNode(ts.SyntaxKind.StringKeyword),
+		ts.factory.createBlock([
+			ts.factory.createIfStatement(
+				ts.factory.createLogicalNot(ts.factory.createCallExpression(
+					ts.factory.createPropertyAccessExpression(
+						ts.factory.createParenthesizedExpression(
+							ts.factory.createNewExpression(
+								ts.factory.createIdentifier('RegExp'),
+								undefined,
+								[
+									regexp_argument,
+								]
+							)
+						),
+						'test'
+					),
+					undefined,
+					[ts.factory.createIdentifier('value')]
+				)),
+				ts.factory.createThrowStatement(ts.factory.createNewExpression(
+					ts.factory.createIdentifier('Error'),
+					undefined,
+					[
+						(reference_name in custom_pattern_errors)
+							? custom_pattern_errors[reference_name]()
+							: ts.factory.createTemplateExpression(
+								ts.factory.createTemplateHead(''),
+								error_template_spans
+							)
+					]
+				))
+			),
+			ts.factory.createReturnStatement(ts.factory.createIdentifier('value')),
+		])
+	);
+}
+
+export function create_regex_validation_function(
+	data:{type: string, pattern: string},
+	reference_name: string
+) : ts.FunctionDeclaration {
+	return flexibly_create_regex_validation_function(
+		reference_name,
+		ts.factory.createStringLiteral(data.pattern),
+		[
+			createParameter('value', ts.SyntaxKind.StringKeyword),
+			createParameter('reference_argument', ts.SyntaxKind.StringKeyword),
+		],
+		[
+			ts.factory.createTemplateSpan(
+				ts.factory.createIdentifier('reference_argument'),
+				ts.factory.createTemplateTail(` must pass the regex ${data.pattern}`)
+			)
+		]
+	);
 }

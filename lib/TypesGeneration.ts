@@ -93,7 +93,7 @@ export class GenerationMatch<T extends object>
 	}
 }
 
-declare type imports_shorthand = {
+export declare type imports_shorthand = {
 	import_these: [string, ...string[]],
 	from:string,
 }[];

@@ -1,6 +1,12 @@
 import {RGBA} from "./json_schema_types";
 import ts, {ClassDeclaration} from "typescript";
-import {adjust_class_name, createClass, createMethod, createProperty} from "../TsFactoryWrapper";
+import {
+	adjust_class_name,
+	create_callExpression__for_validation_function,
+	createClass,
+	createMethod,
+	createProperty
+} from "../TsFactoryWrapper";
 import {
 	ImportTracker,
 	TypesGeneration,
@@ -37,23 +43,10 @@ function rgba_super_caller(data:RGBA): ts.MethodDeclaration
 
 			const is_int = (data.properties[property]['$ref'] === '#/definitions/integer-string');
 
-			const validate = ts.factory.createCallExpression(
-				ts.factory.createIdentifier(
-					adjust_class_name(is_int ? 'integer-string' : 'decimal-string')
-				),
-				undefined,
-				[
-					identifier,
-					ts.factory.createTemplateExpression(
-						ts.factory.createTemplateHead('Argument '),
-						[
-							ts.factory.createTemplateSpan(
-								ts.factory.createNumericLiteral(index),
-								ts.factory.createTemplateTail('')
-							),
-						]
-					),
-				]
+			const validate = create_callExpression__for_validation_function(
+				is_int ? 'integer-string' : 'decimal-string',
+				index,
+				[identifier]
 			);
 
 			return ts.factory.createCallExpression(
