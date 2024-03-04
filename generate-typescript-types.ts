@@ -14,6 +14,10 @@ try {
 	const progress = await generator.generate_types(`${__dirname}/generated-types/`);
 
 	console.log(progress);
+	console.table({
+		Supported: progress.definitions.supported.length,
+		Unsupported: progress.definitions.unsupported.length,
+	});
 } catch (err) {
 	if (err instanceof GenerationException) {
 		console.error(err.progress);
