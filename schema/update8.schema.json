@@ -385,12 +385,13 @@
 				""
 			]
 		},
+		"Texture2D--basic": {
+			"type": "string",
+			"string_starts_with": "Texture2D /Game/FactoryGame/"
+		},
 		"Texture2D": {
 			"oneOf": [
-				{
-					"type": "string",
-					"pattern": "^Texture2D /Game/FactoryGame/"
-				},
+				{"$ref": "#/definitions/Texture2D--basic"},
 				{
 					"type": "string",
 					"const": "None"
@@ -461,7 +462,7 @@
 				},
 				{
 					"type": "string",
-					"pattern": "^/Game/FactoryGame/Interface/UI/Material/Crosshairs/"
+					"string_starts_with": "/Game/FactoryGame/Interface/UI/Material/Crosshairs/"
 				}
 			]
 		},
@@ -500,7 +501,11 @@
 				},
 				{
 					"type": "string",
-					"pattern": "^/Game/FactoryGame/(Resource/Environment|World/Benefit)/"
+					"string_starts_with": "/Game/FactoryGame/Resource/Environment/"
+				},
+				{
+					"type": "string",
+					"string_starts_with": "/Game/FactoryGame/World/Benefit/"
 				}
 			]
 		},
@@ -834,7 +839,7 @@
 									"properties": {
 										"mMaterial": {
 											"type": "string",
-											"pattern": "^/Game/FactoryGame/Buildable/-Shared/Customization/Materials/"
+											"string_starts_with": "/Game/FactoryGame/Buildable/-Shared/Customization/Materials/"
 										},
 										"mRecipe": {
 											"type": "string",
@@ -1446,7 +1451,7 @@
 					"oneOf": [
 						{
 							"type": "string",
-							"pattern": "^BlueprintGeneratedClass /Game/FactoryGame/Recipes/Constructor/"
+							"string_starts_with": "BlueprintGeneratedClass /Game/FactoryGame/Recipes/Constructor/"
 						},
 						{
 							"type": "string",
@@ -1454,7 +1459,7 @@
 						},
 						{
 							"type": "string",
-							"pattern": "^BlueprintGeneratedClass /Game/FactoryGame/Recipes/AlternateRecipes/New_Update3/"
+							"string_starts_with": "BlueprintGeneratedClass /Game/FactoryGame/Recipes/AlternateRecipes/New_Update3/"
 						}
 					]
 				},
@@ -1540,7 +1545,7 @@
 					"oneOf": [
 						{
 							"type": "string",
-							"pattern": "^BlueprintGeneratedClass /Game/FactoryGame/Recipes/Smelter/"
+							"string_starts_with": "BlueprintGeneratedClass /Game/FactoryGame/Recipes/Smelter/"
 						},
 						{
 							"type": "string",
@@ -1578,7 +1583,7 @@
 					"oneOf": [
 						{
 							"type": "string",
-							"pattern": "^BlueprintGeneratedClass /Game/FactoryGame/Recipes/AlternateRecipes/"
+							"string_starts_with": "BlueprintGeneratedClass /Game/FactoryGame/Recipes/AlternateRecipes/"
 						}
 					]
 				},
@@ -1627,11 +1632,11 @@
 					"oneOf": [
 						{
 							"type": "string",
-							"pattern": "^BlueprintGeneratedClass /Game/FactoryGame/Recipes/OilRefinery/"
+							"string_starts_with": "BlueprintGeneratedClass /Game/FactoryGame/Recipes/OilRefinery/"
 						},
 						{
 							"type": "string",
-							"pattern": "^BlueprintGeneratedClass /Game/FactoryGame/Recipes/AlternateRecipes/"
+							"string_starts_with": "BlueprintGeneratedClass /Game/FactoryGame/Recipes/AlternateRecipes/"
 						}
 					]
 				},
@@ -1693,7 +1698,7 @@
 					"oneOf": [
 						{
 							"type": "string",
-							"pattern": "^BlueprintGeneratedClass /Game/FactoryGame/Recipes/Assembler/"
+							"string_starts_with": "BlueprintGeneratedClass /Game/FactoryGame/Recipes/Assembler/"
 						},
 						{
 							"type": "string",
@@ -1730,7 +1735,7 @@
 			"properties": {
 				"FullName": {
 					"type": "string",
-					"pattern": "^BlueprintGeneratedClass /Game/FactoryGame/Recipes/SpaceElevatorParts/"
+					"string_starts_with": "BlueprintGeneratedClass /Game/FactoryGame/Recipes/SpaceElevatorParts/"
 				},
 				"mProducedIn": {
 					"type": "string",
@@ -1756,11 +1761,11 @@
 					"oneOf": [
 						{
 							"type": "string",
-							"pattern": "^BlueprintGeneratedClass /Game/FactoryGame/Recipes/Blender/"
+							"string_starts_with": "BlueprintGeneratedClass /Game/FactoryGame/Recipes/Blender/"
 						},
 						{
 							"type": "string",
-							"pattern": "^BlueprintGeneratedClass /Game/FactoryGame/Recipes/AlternateRecipes/New_Update4/"
+							"string_starts_with": "BlueprintGeneratedClass /Game/FactoryGame/Recipes/AlternateRecipes/New_Update4/"
 						},
 						{
 							"type": "string",
@@ -1795,11 +1800,11 @@
 					"oneOf": [
 						{
 							"type": "string",
-							"pattern": "^BlueprintGeneratedClass /Game/FactoryGame/Recipes/Manufacturer/"
+							"string_starts_with": "BlueprintGeneratedClass /Game/FactoryGame/Recipes/Manufacturer/"
 						},
 						{
 							"type": "string",
-							"pattern": "^BlueprintGeneratedClass /Game/FactoryGame/Recipes/AlternateRecipes/"
+							"string_starts_with": "BlueprintGeneratedClass /Game/FactoryGame/Recipes/AlternateRecipes/"
 						},
 						{
 							"type": "string",
@@ -1841,11 +1846,11 @@
 					"oneOf": [
 						{
 							"type": "string",
-							"pattern": "^BlueprintGeneratedClass /Game/FactoryGame/Recipes/HadronCollider/"
+							"string_starts_with": "BlueprintGeneratedClass /Game/FactoryGame/Recipes/HadronCollider/"
 						},
 						{
 							"type": "string",
-							"pattern": "^BlueprintGeneratedClass /Game/FactoryGame/Recipes/AlternateRecipes/New_Update4/"
+							"string_starts_with": "BlueprintGeneratedClass /Game/FactoryGame/Recipes/AlternateRecipes/New_Update4/"
 						},
 						{
 							"type": "string",
@@ -3258,7 +3263,7 @@
 						"minItems": 6,
 						"items": {
 							"type": "string",
-							"pattern": "^/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/"
+							"string_starts_with": "/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/"
 						}
 					}
 				},
@@ -5107,7 +5112,7 @@
 							"properties": {
 								"ResourceNode_16_2100B5C34EE8DF7958D78A974512F3C3": {
 									"type": "string",
-									"pattern": "^/Game/FactoryGame/Resource/RawResources/"
+									"string_starts_with": "/Game/FactoryGame/Resource/RawResources/"
 								},
 								"ParticleSystem1_9_F0CF81514E1E1C5007AC99B0C59C63CD": {
 									"type": "string",
@@ -5301,7 +5306,7 @@
 						"minItems": 2,
 						"items": {
 							"type": "string",
-							"pattern": "^Arm_"
+							"string_starts_with": "Arm_"
 						}
 					}
 				},

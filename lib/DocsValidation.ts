@@ -317,4 +317,15 @@ export function configure_ajv(ajv:Ajv): void {
 		keyword: 'UnrealEngineString_prefix_pattern',
 		validate: quick_string,
 	});
+	ajv.addKeyword({
+		keyword: 'string_starts_with',
+		type: 'string',
+		compile: (value:string) => {
+			return (data:string) => data.startsWith(value);
+		},
+		metaSchema: {
+			type: 'string',
+			minLength: 1,
+		},
+	});
 }

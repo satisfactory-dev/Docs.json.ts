@@ -253,3 +253,10 @@ export function createMethod(
 		ts.factory.createBlock(body)
 	);
 }
+
+export function create_string_starts_with(string_starts_with:string): ts.TypeReferenceNode
+{
+	return ts.factory.createTypeReferenceNode('string_starts_with', [
+		ts.factory.createLiteralTypeNode(ts.factory.createStringLiteral(string_starts_with)),
+	]);
+}

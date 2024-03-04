@@ -18,6 +18,7 @@ import {
 import {
 	target_files as validator_target_files,
 	generators as validator_generators,
+	custom_generators as validator_custom_generators,
 } from './TypesGeneration/validators';
 import {
 	target_files as vector_target_files,
@@ -27,6 +28,10 @@ import {
 	target_files as constants_target_files,
 	generators as constants_generators,
 } from './TypesGeneration/constants';
+import {
+	target_files as prefixes_target_files,
+	generators as prefixes_generators,
+} from './TypesGeneration/prefixes';
 import {
 	TypesGeneration,
 	TypesGenerationFromSchema,
@@ -175,6 +180,7 @@ export class DocsTsGenerator
 			validator_target_files,
 			vector_target_files,
 			constants_target_files,
+			prefixes_target_files,
 		);
 
 		const generators:TypesGeneration<any, any>[] = [
@@ -183,6 +189,7 @@ export class DocsTsGenerator
 			...validator_generators,
 			...vector_generators,
 			...constants_generators,
+			...prefixes_generators,
 		];
 
 		const supported_conversions:GenerationMatch<object>[] = Object.entries(update8_schema.definitions).filter(
@@ -226,6 +233,18 @@ export class DocsTsGenerator
 			});
 
 			const files:{[key: string]: ts.Node[]} = {};
+
+			for (const generator of [
+				...validator_custom_generators,
+			]) {
+				const {file, node} = generator();
+
+				if (!(file in files)) {
+					files[file] = [];
+				}
+
+				files[file].push(node);
+			}
 
 			for (const match of supported_conversions) {
 				if (!(match.definition in target_files)) {
