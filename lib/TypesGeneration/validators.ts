@@ -185,7 +185,9 @@ export const custom_generators = [
 
 		nodes.push({
 			file: 'utils/validators.ts',
-			node: createClass('UnrealEngineString', [
+			node: createClass(
+				'UnrealEngineString',
+				[
 				ts.factory.createPropertyDeclaration(
 					[create_modifier('readonly')],
 					'prefix',
@@ -279,7 +281,8 @@ export const custom_generators = [
 						)),
 					]
 				)
-			])
+				]
+			)
 		});
 
 		nodes.push({
