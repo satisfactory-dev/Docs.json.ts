@@ -188,99 +188,99 @@ export const custom_generators = [
 			node: createClass(
 				'UnrealEngineString',
 				[
-				ts.factory.createPropertyDeclaration(
-					[create_modifier('readonly')],
-					'prefix',
-					undefined,
-					create_type('string'),
-					undefined
-				),
-				ts.factory.createPropertyDeclaration(
-					[create_modifier('readonly')],
-					'value',
-					undefined,
-					create_type('string'),
-					undefined
-				),
-				createMethod(
-					'constructor',
-					[
-						createParameter('prefix', create_type('string')),
-						createParameter('value', create_type('string')),
-					],
-					[
-						create_this_assignment('prefix', 'prefix'),
-						create_this_assignment('value', 'value'),
-					],
-					['protected']
-				),
-				createMethod(
-					'fromString',
-					[
-						createParameter('value', create_type('string')),
-					],
-					[
-						ts.factory.createVariableStatement(
-							undefined,
-							ts.factory.createVariableDeclarationList(
-								[
-									ts.factory.createVariableDeclaration(
-										'result',
-										undefined,
-										undefined,
-										ts.factory.createCallExpression(
-											ts.factory.createPropertyAccessExpression(
-												ts.factory.createParenthesizedExpression(
-													ts.factory.createNewExpression(
-														ts.factory.createIdentifier('RegExp'),
-														undefined,
-														[
-															ts.factory.createRegularExpressionLiteral(
-																UnrealEngineString_regex.toString()
-															),
-														]
-													)
-												),
-												'exec'
-											),
-											undefined,
-											[ts.factory.createIdentifier('value')]
-										)
-									),
-								],
-								ts.NodeFlags.Const
-							),
-						),
-						ts.factory.createIfStatement(
-							ts.factory.createLogicalNot(ts.factory.createIdentifier('result')),
-							create_throw('Error', [
-								ts.factory.createTemplateExpression(
-									ts.factory.createTemplateHead('UnrealEngineString value expected, '),
+					ts.factory.createPropertyDeclaration(
+						[create_modifier('readonly')],
+						'prefix',
+						undefined,
+						create_type('string'),
+						undefined
+					),
+					ts.factory.createPropertyDeclaration(
+						[create_modifier('readonly')],
+						'value',
+						undefined,
+						create_type('string'),
+						undefined
+					),
+					createMethod(
+						'constructor',
+						[
+							createParameter('prefix', create_type('string')),
+							createParameter('value', create_type('string')),
+						],
+						[
+							create_this_assignment('prefix', 'prefix'),
+							create_this_assignment('value', 'value'),
+						],
+						['protected']
+					),
+					createMethod(
+						'fromString',
+						[
+							createParameter('value', create_type('string')),
+						],
+						[
+							ts.factory.createVariableStatement(
+								undefined,
+								ts.factory.createVariableDeclarationList(
 									[
-										ts.factory.createTemplateSpan(
-											ts.factory.createIdentifier('value'),
-											ts.factory.createTemplateTail(' found')
-										)
-									]
-								)
-							])
-						),
-						ts.factory.createReturnStatement(ts.factory.createNewExpression(
-							ts.factory.createIdentifier('UnrealEngineString'),
-							undefined,
-							[
-								ts.factory.createElementAccessExpression(
-									ts.factory.createIdentifier('result'),
-									1,
+										ts.factory.createVariableDeclaration(
+											'result',
+											undefined,
+											undefined,
+											ts.factory.createCallExpression(
+												ts.factory.createPropertyAccessExpression(
+													ts.factory.createParenthesizedExpression(
+														ts.factory.createNewExpression(
+															ts.factory.createIdentifier('RegExp'),
+															undefined,
+															[
+																ts.factory.createRegularExpressionLiteral(
+																	UnrealEngineString_regex.toString()
+																),
+															]
+														)
+													),
+													'exec'
+												),
+												undefined,
+												[ts.factory.createIdentifier('value')]
+											)
+										),
+									],
+									ts.NodeFlags.Const
 								),
-								ts.factory.createElementAccessExpression(
-									ts.factory.createIdentifier('result'),
-									2,
-								),
-							]
-						)),
-					]
-				)
+							),
+							ts.factory.createIfStatement(
+								ts.factory.createLogicalNot(ts.factory.createIdentifier('result')),
+								create_throw('Error', [
+									ts.factory.createTemplateExpression(
+										ts.factory.createTemplateHead('UnrealEngineString value expected, '),
+										[
+											ts.factory.createTemplateSpan(
+												ts.factory.createIdentifier('value'),
+												ts.factory.createTemplateTail(' found')
+											)
+										]
+									)
+								])
+							),
+							ts.factory.createReturnStatement(ts.factory.createNewExpression(
+								ts.factory.createIdentifier('UnrealEngineString'),
+								undefined,
+								[
+									ts.factory.createElementAccessExpression(
+										ts.factory.createIdentifier('result'),
+										1,
+									),
+									ts.factory.createElementAccessExpression(
+										ts.factory.createIdentifier('result'),
+										2,
+									),
+								]
+							)),
+						]
+					)
 				]
 			)
 		});
