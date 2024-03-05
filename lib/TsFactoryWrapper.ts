@@ -249,9 +249,11 @@ export function createParameter(
 	);
 }
 
+declare type createMethod_parameters_entry = [string, KeywordTypeSyntaxKind]|ts.ParameterDeclaration;
+
 export function createMethod(
 	name: string,
-	parameters: [string, KeywordTypeSyntaxKind][],
+	parameters: createMethod_parameters_entry[],
 	body: ts.Statement[],
 	modifiers: supported_method_modifiers = []
 ) {
@@ -275,6 +277,10 @@ export function createMethod(
 		undefined,
 		undefined,
 		parameters.map(entry => {
+			if (!(entry instanceof Array)) {
+				return entry;
+			}
+
 			const [name, type] = entry;
 
 			return createParameter(name, type);

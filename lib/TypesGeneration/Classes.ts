@@ -1,18 +1,18 @@
 import update8_schema from '../../schema/update8.schema.json';
-import {extract_UnrealEngineString, UnrealEngineString} from "../DocsValidation";
+import {
+	extract_UnrealEngineString,
+} from '../DocsValidation';
 import {
 	adjust_class_name,
 	adjust_unrealengine_prefix,
 	adjust_unrealengine_value, create_callExpression__for_validation_function, create_class_options,
 	create_modifier, createClass, createMethod, createProperty,
-	modifier_map, supported_modifiers,
+	supported_modifiers,
 } from "../TsFactoryWrapper";
-import ts, {ClassDeclaration} from 'typescript';
+import ts from 'typescript';
 import {
 	imports_shorthand,
 	ImportTracker,
-	TypesGeneration,
-	TypesGenerationMatchesReferenceName
 } from "../TypesGeneration";
 
 function get_dependency_tree(ref:string, schema:{
@@ -73,21 +73,12 @@ declare type NativeClass = {
 	},
 };
 
-const supported_base_classes = [
+declare type supported_base_classes_union = 'class--no-description-or-display-name'|'class--no-description'|'class';
+const supported_base_classes:[supported_base_classes_union, ...supported_base_classes_union[]] = [
 	'class--no-description-or-display-name',
 	'class--no-description',
 	'class',
 ];
-
-export const target_files = Object.entries({
-	'classes/base.ts': supported_base_classes,
-}).reduce((was, is) => {
-	for (const reference of is[1]) {
-		was[reference] = is[0];
-	}
-
-	return was;
-}, {} as {[key: string]: string});
 
 ImportTracker.set_imports('classes/base.ts', [{
 	import_these: [
@@ -96,56 +87,121 @@ ImportTracker.set_imports('classes/base.ts', [{
 	from: '../utils/validators',
 }]);
 
-export const generators:TypesGeneration<any, any>[] = [
-	new TypesGenerationMatchesReferenceName<
-		{
-			type: 'object',
-			'$ref'?: string,
-			required: [string, ...string[]],
-			properties: {[key: string]: {
-				type: string,
-				pattern: string,
-			}| {type: string}},
-		},
-		'class--no-description-or-display-name'|'class--no-description'|'class'
-	>(
-		supported_base_classes,
-		(data, reference_name) : ClassDeclaration => {
+export const custom_generators = [
+	(schema:typeof update8_schema) : {file: string, node:ts.Node, ref?:string}[] => {
+		const output:{file: string, node:ts.Node, ref?:string}[] = [];
+
+		output.push(...supported_base_classes.map((reference_name) => {
+			const data = schema.definitions[reference_name];
+
+			let type:ts.TypeNode = ts.factory.createTypeLiteralNode(data.required.map((property) => {
+				return ts.factory.createPropertySignature(
+					undefined,
+					property,
+					undefined,
+					ts.factory.createKeywordTypeNode(ts.SyntaxKind.StringKeyword)
+				);
+			}));
+
+			if ('$ref' in data && data['$ref']?.startsWith('#/definitions/')) {
+				type = ts.factory.createIntersectionTypeNode([
+					ts.factory.createTypeReferenceNode(adjust_class_name(`${
+						data['$ref'].substring(14)
+					}__constructor_args`)),
+					type,
+				]);
+			}
+
+			return {
+				file: 'classes/base.ts',
+				node: ts.factory.createTypeAliasDeclaration(
+					[
+						create_modifier('export'),
+					],
+					ts.factory.createIdentifier(adjust_class_name(`${reference_name}__constructor_args`)),
+					undefined,
+					type
+				)
+			};
+		}));
+
+		output.push(...supported_base_classes.map((reference_name) => {
+			const data = schema.definitions[reference_name];
+
 			const members:(ts.PropertyDeclaration|ts.MethodDeclaration)[] = data.required.map((property) => {
 				return createProperty(property, ts.SyntaxKind.StringKeyword, [
 					'public',
 				]);
 			});
 
+			const constructor_arg = data.required.map((property) => {
+				return ts.factory.createBindingElement(
+					undefined,
+					undefined,
+					property,
+				);
+			});
+
+			let constructor_body = data.required.map((property, index) => {
+				const property_object = data.properties[
+					property as keyof typeof data.properties
+					] as {
+					[key: string]: {
+						type: string,
+						pattern?: string,
+					}
+				};
+
+				let assigned_value:ts.Expression = ts.factory.createIdentifier(property);
+
+				if ('pattern' in property_object && 'string' === typeof property_object.pattern) {
+					assigned_value = create_callExpression__for_validation_function(
+						'regexp_argument',
+						index,
+						[
+							assigned_value,
+							ts.factory.createStringLiteral(property_object.pattern),
+						]
+					);
+				}
+
+				return ts.factory.createExpressionStatement(ts.factory.createAssignment(
+					ts.factory.createPropertyAccessExpression(
+						ts.factory.createThis(),
+						property
+					),
+					assigned_value
+				));
+			});
+
+			if ('$ref' in data && data['$ref']?.startsWith('#/definitions/')) {
+				constructor_body = [
+					ts.factory.createExpressionStatement(ts.factory.createCallExpression(
+						ts.factory.createSuper(),
+						undefined,
+						[ts.factory.createIdentifier('rest')]
+					)),
+					...constructor_body,
+				];
+				constructor_arg.push(ts.factory.createBindingElement(
+					ts.factory.createToken(ts.SyntaxKind.DotDotDotToken),
+					undefined,
+					'rest'
+				));
+			}
+
 			members.push(createMethod(
 				'constructor',
-				data.required.map((property) => {
-					return [property, ts.SyntaxKind.StringKeyword];
-				}),
-				data.required.map((property, index) => {
-					const property_object = data.properties[property];
-
-					let assigned_value:ts.Expression = ts.factory.createIdentifier(property);
-
-					if ('pattern' in property_object) {
-						assigned_value = create_callExpression__for_validation_function(
-							'regexp_argument',
-							index,
-							[
-								assigned_value,
-								ts.factory.createStringLiteral(property_object.pattern),
-							]
-						);
-					}
-
-					return ts.factory.createExpressionStatement(ts.factory.createAssignment(
-						ts.factory.createPropertyAccessExpression(
-							ts.factory.createThis(),
-							property
-						),
-						assigned_value
-					));
-				}),
+				[
+					ts.factory.createParameterDeclaration(
+						undefined,
+						undefined,
+						ts.factory.createObjectBindingPattern(constructor_arg),
+						undefined,
+						ts.factory.createTypeReferenceNode(adjust_class_name(`${reference_name}__constructor_args`))
+					),
+				],
+				constructor_body,
 				['protected']
 			));
 
@@ -157,12 +213,15 @@ export const generators:TypesGeneration<any, any>[] = [
 				class_options.extends = data['$ref'].substring(14);
 			}
 
-			return createClass(reference_name, members, class_options);
-		}
-	)
-];
+			return {
+				file: 'classes/base.ts',
+				refs: reference_name,
+				node: createClass(reference_name, members, class_options),
+			};
+		}));
 
-export const custom_generators = [
+		return output;
+	},
 	(schema:typeof update8_schema) : {file: string, node:ts.Node, ref:string}[] => {
 		const checked:string[] = [];
 

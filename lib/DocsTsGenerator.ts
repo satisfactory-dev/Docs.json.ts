@@ -44,8 +44,6 @@ import ts from "typescript";
 import {glob} from "glob";
 import {BuiltInParserName} from "prettier";
 import {
-	target_files as classes_target_files,
-	generators as classes_generators,
 	custom_generators as Classes_custom_generators,
 } from './TypesGeneration/Classes';
 
@@ -237,7 +235,6 @@ export class DocsTsGenerator
 			vector_target_files,
 			constants_target_files,
 			prefixes_target_files,
-			classes_target_files,
 		);
 
 		const generators:TypesGeneration<any, any>[] = [
@@ -247,7 +244,6 @@ export class DocsTsGenerator
 			...vector_generators,
 			...constants_generators,
 			...prefixes_generators,
-			...classes_generators,
 		];
 
 		const supported_conversions:GenerationMatch<object>[] = Object.entries(update8_schema.definitions).filter(
