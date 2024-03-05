@@ -74,7 +74,7 @@ export const generators = [
 		schema_type
 	>(
 		schema,
-		(data, reference_name) : ts.FunctionDeclaration => {
+		(data, reference_name): ts.FunctionDeclaration => {
 			return create_regex_validation_function(data, reference_name);
 		}
 	),
@@ -92,8 +92,8 @@ export const custom_generators = [
 	 *
 	 * const foo:string_starts_with<'foo'> = 'bar'; // invalid
 	 */
-	() : {file: string, node: ts.Node}[] => {
-		const nodes:{file: string, node:ts.Node}[] = [];
+	(): { file: string, node: ts.Node }[] => {
+		const nodes: { file: string, node: ts.Node }[] = [];
 
 		nodes.push({
 			file: 'utils/validators.ts',
