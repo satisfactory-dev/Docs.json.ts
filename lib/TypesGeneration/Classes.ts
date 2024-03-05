@@ -1,19 +1,34 @@
 import update8_schema from '../../schema/update8.schema.json';
 import {
+	default_config,
 	extract_UnrealEngineString,
 } from '../DocsValidation';
 import {
 	adjust_class_name,
 	adjust_unrealengine_prefix,
 	adjust_unrealengine_value, create_callExpression__for_validation_function, create_class_options,
-	create_modifier, createClass, createMethod, createProperty,
+	create_modifier, createClass, createMethod, createProperty, createProperty_with_specific_type,
 	supported_modifiers,
 } from "../TsFactoryWrapper";
 import ts from 'typescript';
 import {
+	import_these_later,
 	imports_shorthand,
 	ImportTracker,
 } from "../TypesGeneration";
+import {TypeNodeGenerationMatcher} from "../TypeNodeGeneration";
+import {
+	type_node_generators as enum_type_node_generators,
+} from './enum';
+import {
+	type_node_generators as const_type_node_generators,
+} from './constants';
+import {
+	type_node_generators as validators_type_node_generators,
+} from './validators';
+import {
+	type_node_generators as vectors_type_node_generators,
+} from './vectors';
 
 function get_dependency_tree(ref:string, schema:{
 	definitions: {[key: string]: {
@@ -226,11 +241,18 @@ export const custom_generators = [
 		const checked:string[] = [];
 
 		const filenames:{[key: string]: string} = {};
-		const imports:{[key: string]: {[key: string]: string[] }} = {};
+		const imports:import_these_later = {};
 
 		const classes:{file: string, node:ts.Node, ref:string}[] = [];
 
 		const abstracts:string[] = [];
+
+		const type_node_generator = new TypeNodeGenerationMatcher([
+			...enum_type_node_generators,
+			...const_type_node_generators,
+			...validators_type_node_generators,
+			...vectors_type_node_generators,
+		]);
 
 		function populate_checked_and_filenames(ref:string, NativeClass:NativeClass) {
 			if (checked.includes(ref)) {
@@ -299,24 +321,6 @@ export const custom_generators = [
 			}
 		}
 
-		for (const entry of Object.entries(imports)) {
-			const [filename, file_imports] = entry;
-
-			const imports_shorthand:imports_shorthand = [];
-
-			for (const inner_entry of Object.entries(file_imports)) {
-				const [from, import_these] = inner_entry;
-
-				if (import_these.length) {
-					imports_shorthand.push({from, import_these: import_these as [string, ...string[]]});
-				}
-			}
-
-			if (imports_shorthand.length) {
-				ImportTracker.set_imports(filename, imports_shorthand);
-			}
-		}
-
 		for (const entry of Object.entries(filenames)) {
 			const [ref, filename] = entry;
 
@@ -335,6 +339,62 @@ export const custom_generators = [
 				modifiers.push('abstract');
 			}
 
+			const members:ts.ClassElement[] = [];
+
+
+			const data = schema.definitions[
+				ref as keyof typeof update8_schema.definitions
+			];
+
+			if ('properties' in data) {
+				const types = Object.fromEntries(Object.entries(data.properties).map((entry) => {
+					const [property, property_data] = entry;
+
+					return [
+						property,
+						type_node_generator.find(default_config.ajv, property_data),
+					];
+				}));
+
+				for (const result of Object.values(types)) {
+					for (const import_these_entry of  Object.entries(result.import_these_somewhere_later)) {
+						const [import_destination, import_entries] = import_these_entry;
+
+						if ( ! (import_destination in imports)) {
+							imports[import_destination] = {};
+						}
+
+						for (const import_entry of Object.entries(import_entries)) {
+							const [import_from, import_these] = import_entry;
+
+							if ( ! (import_from in imports[import_destination])) {
+								imports[import_destination][import_from] = [];
+							}
+
+							for (const import_this of import_these) {
+								if (!imports[import_destination][import_from].includes(import_this)) {
+									imports[import_destination][import_from].push(import_this);
+								}
+							}
+						}
+					}
+				}
+
+				const required_properties = 'required' in data ? data.required : [];
+
+				members.push(...Object.entries(types).map((entry) => {
+					const [property, generator] = entry;
+					return createProperty_with_specific_type(
+						property,
+						required_properties.includes(property) ? ts.factory.createUnionTypeNode([
+							generator.type(),
+							ts.factory.createKeywordTypeNode(ts.SyntaxKind.UndefinedKeyword),
+						]) : generator.type(),
+						['public']
+					);
+				}));
+			}
+
 			classes.push({
 				ref,
 				file: filename,
@@ -350,9 +410,27 @@ export const custom_generators = [
 							),
 						])
 					],
-					[]
+					members,
 				),
 			});
+		}
+
+		for (const entry of Object.entries(imports)) {
+			const imports_shorthand:imports_shorthand = [];
+
+			const [filename, file_imports] = entry;
+
+			for (const inner_entry of Object.entries(file_imports)) {
+				const [from, import_these] = inner_entry;
+
+				if (import_these.length) {
+					imports_shorthand.push({from, import_these: import_these as [string, ...string[]]});
+				}
+			}
+
+			if (imports_shorthand.length) {
+				ImportTracker.set_imports(filename, imports_shorthand);
+			}
 		}
 
 		return classes;

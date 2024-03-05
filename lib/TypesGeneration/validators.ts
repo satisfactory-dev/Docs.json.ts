@@ -6,6 +6,7 @@ import {
 	create_regex_validation_function,
 	createParameter, flexibly_create_regex_validation_function
 } from "../TsFactoryWrapper";
+import {TypeNodeGeneration, TypeNodeGenerationResult} from "../TypeNodeGeneration";
 
 export const target_files = {
 	'decimal-string': 'utils/validators.ts',
@@ -14,25 +15,50 @@ export const target_files = {
 	'integer-string--signed': 'utils/validators.ts',
 };
 
+declare type schema_type = {
+	type: 'string',
+	pattern: 'string',
+};
+
+const schema = {
+	type: 'object',
+	required: [
+		'type',
+		'pattern',
+	],
+	additionalProperties: false,
+	properties: {
+		type: {type: 'string', const: 'string'},
+		pattern: {type: 'string', minLength: 1},
+	},
+};
+
+declare type ref_type = {
+	'$ref':
+		| '#/definitions/decimal-string'
+		| '#/definitions/decimal-string--signed'
+		| '#/definitions/integer-string'
+		| '#/definitions/integer-string--signed'
+};
+
+const ref_schema = {
+	type: 'object',
+	required: ['$ref'],
+	additionalProperties: false,
+	properties: {
+		'$ref': {
+			oneOf: Object.keys(target_files).map((ref) => {
+				return {type: 'string', const: `#/definitions/${ref}`};
+			}),
+		},
+	},
+};
+
 export const generators = [
 	new TypesGenerationFromSchema<
-		{
-			type: 'string',
-			pattern: 'string',
-		}
+		schema_type
 	>(
-		{
-			type: 'object',
-			required: [
-				'type',
-				'pattern',
-			],
-			additionalProperties: false,
-			properties: {
-				type: {type: 'string', const: 'string'},
-				pattern: {type: 'string', minLength: 1},
-			},
-		},
+		schema,
 		(data, reference_name) : ts.FunctionDeclaration => {
 			return create_regex_validation_function(data, reference_name);
 		}
@@ -144,4 +170,36 @@ export const custom_generators = [
 
 		return nodes;
 	},
+];
+
+export const type_node_generators = [
+	new TypeNodeGeneration<ref_type>(ref_schema, (property) => {
+		const ref_key = property['$ref'].substring(14) as keyof typeof target_files;
+
+		return new TypeNodeGenerationResult(
+			() => ts.factory.createKeywordTypeNode(ts.SyntaxKind.NumberKeyword),
+			{
+				[target_files[ref_key]]: [adjust_class_name(ref_key)],
+			}
+		);
+	}),
+	new TypeNodeGeneration<{
+		type: string,
+		pattern: string,
+	}>(
+		{
+			type: 'object',
+			required: ['type', 'pattern'],
+			additionalProperties: false,
+			properties: {
+				type: {type: 'string', const: 'string'},
+				pattern: {type: 'string', minLength: 2},
+			},
+		},
+		() => {
+			return new TypeNodeGenerationResult(
+				() => ts.factory.createKeywordTypeNode(ts.SyntaxKind.StringKeyword),
+			);
+		},
+	),
 ];

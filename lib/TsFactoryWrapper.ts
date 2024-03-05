@@ -63,11 +63,12 @@ export function create_modifier(modifier:keyof typeof modifier_map): ts.Modifier
 	return modifier_map[modifier]();
 }
 
-export function createProperty(
+export function createProperty_with_specific_type(
 	name:string,
-	type:KeywordTypeSyntaxKind,
+	type:ts.TypeNode,
 	modifiers:supported_property_modifiers = [],
 ): PropertyDeclaration {
+
 	let resolved_modifiers:undefined|(Modifier[]) = undefined;
 
 	if (modifiers.length) {
@@ -86,9 +87,17 @@ export function createProperty(
 		resolved_modifiers,
 		ts.factory.createIdentifier(name),
 		undefined,
-		ts.factory.createKeywordTypeNode(type),
+		type,
 		undefined
 	);
+}
+
+export function createProperty(
+	name:string,
+	type:KeywordTypeSyntaxKind,
+	modifiers:supported_property_modifiers = [],
+): PropertyDeclaration {
+	return createProperty_with_specific_type(name, ts.factory.createKeywordTypeNode(type), modifiers);
 }
 
 export type create_class_options = {

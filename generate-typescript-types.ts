@@ -20,7 +20,7 @@ try {
 	});
 } catch (err) {
 	if (err instanceof GenerationException) {
-		console.error(err.progress);
+//		console.error(err.progress);
 		console.error(err.exception);
 	} else {
 		console.error(err);

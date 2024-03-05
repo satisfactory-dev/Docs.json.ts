@@ -1,11 +1,14 @@
 import {ImportTracker, TypesGenerationMatchesReferenceName} from "../TypesGeneration";
 import {
+	adjust_class_name,
 	auto_constructor_property_types,
 	createClass,
 	createClass__members__with_auto_constructor,
 } from "../TsFactoryWrapper";
+import {TypeNodeGeneration, TypeNodeGenerationResult} from "../TypeNodeGeneration";
+import ts from "typescript";
 
-export const target_files:{[key: string]: string} = {
+export const target_files = {
 	'xy': 'common/vectors.ts',
 	'xyz': 'common/vectors.ts',
 	'xy--semi-native': 'common/vectors.ts',
@@ -57,4 +60,45 @@ export const generators = [
 			});
 		}
 	)
+];
+
+export const type_node_generators = [
+	new TypeNodeGeneration<{
+		type: 'object',
+		'$ref':
+			| '#/definitions/xy'
+			| '#/definitions/xyz'
+			| '#/definitions/xy--semi-native'
+			| '#/definitions/xyz--semi-native'
+			| '#/definitions/xy--integer'
+			| '#/definitions/xyz--integer'
+			| '#/definitions/quaternion'
+			| '#/definitions/quaternion--semi-native'
+			| '#/definitions/pitch-yaw-roll'
+	}>(
+		{
+			type: 'object',
+			required: ['$ref'],
+			additionalProperties: false,
+			properties: {
+				'$ref': {
+					oneOf: Object.keys(target_files).map((ref) => {
+						return {type: 'string', const: `#/definitions/${ref}`};
+					}),
+				},
+			},
+		},
+		(property) => {
+			const ref_key = property['$ref'].substring(14) as keyof typeof target_files;
+
+			const reference_name = adjust_class_name(ref_key);
+
+			return new TypeNodeGenerationResult(
+				() => ts.factory.createTypeReferenceNode(reference_name),
+				{
+					[target_files[ref_key]]: [reference_name],
+				}
+			);
+		}
+	),
 ];

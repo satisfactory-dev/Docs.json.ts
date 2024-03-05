@@ -93,6 +93,10 @@ export class GenerationMatch<T extends object>
 	}
 }
 
+export declare type import_these_somewhere_later = {[key: string]: string[] };
+
+export declare type import_these_later = {[key: string]: import_these_somewhere_later};
+
 export declare type imports_shorthand = {
 	import_these: [string, ...string[]],
 	from:string,
