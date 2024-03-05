@@ -6,8 +6,15 @@ import {
 import {
 	adjust_class_name,
 	adjust_unrealengine_prefix,
-	adjust_unrealengine_value, create_callExpression__for_validation_function, create_class_options,
-	create_modifier, createClass, createMethod, createProperty, createProperty_with_specific_type,
+	adjust_unrealengine_value,
+	create_callExpression__for_validation_function,
+	create_class_options,
+	create_modifier,
+	create_this_assignment,
+	createClass,
+	createMethod,
+	createProperty,
+	createProperty_with_specific_type,
 	supported_modifiers,
 } from "../TsFactoryWrapper";
 import ts from 'typescript';
@@ -29,6 +36,9 @@ import {
 import {
 	type_node_generators as vectors_type_node_generators,
 } from './vectors';
+import {
+	type_node_generators as color_type_node_generators,
+} from './color';
 
 function get_dependency_tree(ref:string, schema:{
 	definitions: {[key: string]: {
@@ -180,13 +190,7 @@ export const custom_generators = [
 					);
 				}
 
-				return ts.factory.createExpressionStatement(ts.factory.createAssignment(
-					ts.factory.createPropertyAccessExpression(
-						ts.factory.createThis(),
-						property
-					),
-					assigned_value
-				));
+				return create_this_assignment(property, assigned_value);
 			});
 
 			if ('$ref' in data && data['$ref']?.startsWith('#/definitions/')) {
@@ -252,6 +256,7 @@ export const custom_generators = [
 			...const_type_node_generators,
 			...validators_type_node_generators,
 			...vectors_type_node_generators,
+			...color_type_node_generators,
 		]);
 
 		function populate_checked_and_filenames(ref:string, NativeClass:NativeClass) {

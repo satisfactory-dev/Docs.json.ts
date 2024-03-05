@@ -520,9 +520,6 @@
 		"mScannerDisplayText": {
 			"type": "string"
 		},
-		"mHeight": {
-			"$ref": "#/definitions/decimal-string"
-		},
 		"ItemClass--prop": {
 			"type": "string",
 			"minLength": 1,
@@ -2658,7 +2655,7 @@
 			],
 			"properties": {
 				"mHeight": {
-					"$ref": "#/definitions/mHeight"
+					"$ref": "#/definitions/decimal-string"
 				}
 			}
 		},
@@ -3009,7 +3006,7 @@
 			],
 			"properties": {
 				"mHeight": {
-					"$ref": "#/definitions/mHeight"
+					"$ref": "#/definitions/decimal-string"
 				},
 				"mSelectedPoleVersion": {
 					"$ref": "#/definitions/integer-string--signed"

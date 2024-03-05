@@ -3,7 +3,7 @@ import ts, {
 	HeritageClause,
 	KeywordTypeSyntaxKind, MethodDeclaration,
 	Modifier,
-	PropertyDeclaration, TypeNode,
+	PropertyDeclaration, SyntaxKind, TypeNode,
 } from 'typescript';
 
 declare type supported_property_modifiers = ('public'|'abstract')[];
@@ -54,6 +54,12 @@ export const modifier_map:{[key: string]: () => ts.ModifierToken<ts.ModifierSynt
 	},
 	'protected': () => {
 		return ts.factory.createModifier(ts.SyntaxKind.ProtectedKeyword);
+	},
+	'const': () => {
+		return ts.factory.createModifier(ts.SyntaxKind.ConstKeyword);
+	},
+	'readonly': () => {
+		return ts.factory.createModifier(ts.SyntaxKind.ReadonlyKeyword);
 	},
 };
 
@@ -229,14 +235,11 @@ export function createClass__members__with_auto_constructor<T extends [string, .
 				[identifier]
 			);
 
-			return ts.factory.createExpressionStatement(ts.factory.createAssignment(
-				ts.factory.createPropertyAccessExpression(ts.factory.createThis(), property),
-				(!is_int && !is_float) ? validate : ts.factory.createCallExpression(
+			return create_this_assignment(property, (!is_int && !is_float) ? validate : ts.factory.createCallExpression(
 					ts.factory.createIdentifier(is_int ? 'parseInt' : 'parseFloat'),
 					undefined,
 
 					is_int ? [validate, ts.factory.createNumericLiteral(10)] : [validate]
-				)
 			));
 		}),
 		['public']
@@ -330,11 +333,72 @@ function must_be_an_integer_like_string() {
 	);
 }
 
+export function create_function(
+	reference_name: string,
+	parameters: ts.ParameterDeclaration[],
+	return_type: ts.TypeNode,
+	body: [ts.Statement, ...ts.Statement[]],
+	type_parameters: [ts.TypeParameterDeclaration, ...ts.TypeParameterDeclaration[]]|undefined = undefined
+) : ts.FunctionDeclaration {
+	return ts.factory.createFunctionDeclaration(
+		[create_modifier('export')],
+		undefined,
+		adjust_class_name(reference_name),
+		type_parameters,
+		parameters,
+		return_type,
+		ts.factory.createBlock(body)
+	)
+}
+
 const custom_pattern_errors:{[key: string]: () => ts.TemplateExpression} = {
 	'decimal-string': must_be_a_decimal_like_string,
 	'decimal-string--signed': must_be_a_decimal_like_string,
 	'integer-string': must_be_an_integer_like_string,
 	'integer-string--signed': must_be_an_integer_like_string,
+}
+
+export function create_throw(
+	throw_this:string,
+	throw_arguments:[ts.Expression, ...ts.Expression[]],
+	type_parameters: [ts.TypeNode, ...ts.TypeNode[]]|undefined = undefined
+) {
+	return ts.factory.createThrowStatement(ts.factory.createNewExpression(
+		ts.factory.createIdentifier(throw_this),
+		type_parameters,
+		throw_arguments
+	));
+}
+
+export function create_throw_if(
+	throw_this:string,
+	throw_if:ts.Expression,
+	throw_arguments:[ts.Expression, ...ts.Expression[]],
+	type_parameters: [ts.TypeNode, ...ts.TypeNode[]]|undefined = undefined
+) {
+	return ts.factory.createIfStatement(throw_if, create_throw(throw_this, throw_arguments, type_parameters));
+}
+
+export function create_basic_reference_argument_template_span(
+	head:string,
+	identifer:string,
+	tail:string|undefined = undefined
+) {
+	if (undefined === tail) {
+		tail = identifer;
+		identifer = head;
+		head = '';
+	}
+
+	return ts.factory.createTemplateExpression(
+		ts.factory.createTemplateHead(head),
+		[
+			ts.factory.createTemplateSpan(
+				ts.factory.createIdentifier(identifer),
+				ts.factory.createTemplateTail(tail)
+			),
+		]
+	);
 }
 
 export function flexibly_create_regex_validation_function(
@@ -343,14 +407,11 @@ export function flexibly_create_regex_validation_function(
 	parameters: ts.ParameterDeclaration[],
 	error_template_spans: ts.TemplateSpan[]
 ) : ts.FunctionDeclaration {
-	return ts.factory.createFunctionDeclaration(
-		[create_modifier('export')],
-		undefined,
-		adjust_class_name(reference_name),
-		undefined,
+	return create_function(
+		reference_name,
 		parameters,
 		ts.factory.createKeywordTypeNode(ts.SyntaxKind.StringKeyword),
-		ts.factory.createBlock([
+		[
 			ts.factory.createIfStatement(
 				ts.factory.createLogicalNot(ts.factory.createCallExpression(
 					ts.factory.createPropertyAccessExpression(
@@ -368,22 +429,18 @@ export function flexibly_create_regex_validation_function(
 					undefined,
 					[ts.factory.createIdentifier('value')]
 				)),
-				ts.factory.createThrowStatement(ts.factory.createNewExpression(
-					ts.factory.createIdentifier('Error'),
-					undefined,
-					[
+				create_throw('Error', [
 						(reference_name in custom_pattern_errors)
 							? custom_pattern_errors[reference_name]()
 							: ts.factory.createTemplateExpression(
 								ts.factory.createTemplateHead(''),
 								error_template_spans
 							)
-					]
-				))
+				])
 			),
 			ts.factory.createReturnStatement(ts.factory.createIdentifier('value')),
-		])
-	);
+		]
+	)
 }
 
 export function create_regex_validation_function(
@@ -404,4 +461,25 @@ export function create_regex_validation_function(
 			)
 		]
 	);
+}
+
+const type_map = {
+	any: ts.SyntaxKind.AnyKeyword,
+	boolean: ts.SyntaxKind.BooleanKeyword,
+	number: ts.SyntaxKind.NumberKeyword,
+	object: ts.SyntaxKind.ObjectKeyword,
+	string: ts.SyntaxKind.StringKeyword,
+	undefined: ts.SyntaxKind.UndefinedKeyword,
+	never: ts.SyntaxKind.NeverKeyword,
+};
+
+export function create_type(type:keyof typeof type_map): ts.KeywordTypeNode {
+	return ts.factory.createKeywordTypeNode(type_map[type] as ts.KeywordTypeSyntaxKind);
+}
+
+export function create_this_assignment(property:string, identifier:string|ts.Expression): ts.ExpressionStatement {
+	return ts.factory.createExpressionStatement(ts.factory.createAssignment(
+		ts.factory.createPropertyAccessExpression(ts.factory.createThis(), property),
+		('string' === typeof(identifier)) ? ts.factory.createIdentifier(identifier) : identifier
+	));
 }

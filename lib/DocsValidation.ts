@@ -62,7 +62,7 @@ export function string_to_native_type(data:string): object|any[]|string|false {
 	return data;
 }
 
-export function string_to_object(data:string): object|false {
+export function string_to_object<T extends object>(data:string): T|false {
 	if ('' === data) {
 		return false;
 	}
@@ -139,10 +139,10 @@ export function string_to_object(data:string): object|false {
 		current_key_buffer: '',
 		current_value_buffer: '',
 		current_value_nesting: 0,
-	}).properties);
+	}).properties) as T;
 }
 
-export function string_to_array(data:string): (any[]|false) {
+export function string_to_array<T extends any[]>(data:string): (T|false) {
 	if (!/^\(.+\)$/.test(data)) {
 		return false;
 	}
@@ -191,7 +191,7 @@ export function string_to_array(data:string): (any[]|false) {
 			current_item_buffer: '',
 			current_value_nesting: 0,
 		}
-	).values;
+	).values as T;
 }
 
 export function object_string(
@@ -227,7 +227,7 @@ export function object_string(
 	return inner_validate(faux);
 }
 
-const UnrealEngineString_regex = /^([^']+)'(?:"([^"]+)"|([^"]+))'$/;
+export const UnrealEngineString_regex = /^([^']+)'(?:"([^"]+)"|([^"]+))'$/;
 
 class NotAnUnrealEngineString extends Error {}
 
@@ -301,13 +301,15 @@ export function UnrealEngineString(
 	return inner_validate(match.value);
 }
 
+export type array_string_schema_type = {
+	type: 'array',
+	minItems?: number,
+	maxItems?: number,
+	prefixItems?: [object, ...object[]],
+}&({items: object}|{items: false});
+
 export function array_string(
-	schema: {
-		type: 'array',
-		minItems?: number,
-		maxItems?: number,
-		prefixItems?: [object, ...object[]],
-	}&({items: object}|{items: false}),
+	schema: array_string_schema_type,
 	data: string
 ) {
 	const array_of_things = string_to_array(data);

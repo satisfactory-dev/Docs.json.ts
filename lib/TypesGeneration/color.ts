@@ -2,7 +2,7 @@ import {RGBA} from "./json_schema_types";
 import ts, {ClassDeclaration} from "typescript";
 import {
 	adjust_class_name,
-	create_callExpression__for_validation_function,
+	create_callExpression__for_validation_function, create_this_assignment,
 	createClass,
 	createMethod,
 	createProperty
@@ -12,6 +12,7 @@ import {
 	TypesGeneration,
 	TypesGenerationMatchesReferenceName
 } from "../TypesGeneration";
+import {TypeNodeGeneration, TypeNodeGenerationResult} from "../TypeNodeGeneration";
 
 export const target_files:{[key: string]: string} = {
 	'color--base': 'common/color.ts',
@@ -92,13 +93,7 @@ export const generators:TypesGeneration<any, any>[] = [
 					return [property, ts.SyntaxKind.NumberKeyword];
 				}),
 				data.required.map((property) => {
-					return ts.factory.createExpressionStatement(ts.factory.createAssignment(
-						ts.factory.createPropertyAccessExpression(
-							ts.factory.createThis(),
-							property
-						),
-						ts.factory.createIdentifier(property)
-					));
+					return create_this_assignment(property, property);
 				}),
 				['protected']
 			));
@@ -146,4 +141,36 @@ export const generators:TypesGeneration<any, any>[] = [
 			});
 		}
 	),
+];
+
+export const type_node_generators = [
+	new TypeNodeGeneration<{
+		'$ref': '#/definitions/color-decimal'
+	}>(
+		{
+			type: 'object',
+			required: ['$ref'],
+			additionalProperties: false,
+			properties: {
+				'$ref': {
+					type: 'string',
+					pattern: '^#/definitions/(color-decimal)$',
+				}
+			}
+		},
+		(property) => {
+			const reference_name = adjust_class_name(property['$ref'].substring(14));
+
+			return new TypeNodeGenerationResult(
+				() => {
+					return ts.factory.createTypeReferenceNode(reference_name);
+				},
+				{
+					'common/color': [
+						reference_name,
+					],
+				}
+			);
+		}
+	)
 ];
