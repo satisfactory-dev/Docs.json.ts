@@ -47,6 +47,7 @@ import {
 	target_files as classes_target_files,
 	generators as classes_generators,
 	custom_generators as Classes_custom_generators,
+	supported_base_classes as Classes_supported_base_classes,
 } from './TypesGeneration/Classes';
 import {
 	target_files as arrays_target_files,
@@ -277,6 +278,14 @@ export class DocsTsGenerator
 		});
 
 		const supported_conversion_names = supported_conversions.map(e => e.definition);
+
+		for (const supported_elsewhere of [
+			...Classes_supported_base_classes,
+		]) {
+			if (!supported_conversion_names.includes(supported_elsewhere)) {
+				supported_conversion_names.push(supported_elsewhere);
+			}
+		}
 
 		const unsupported_conversions = Object.keys(update8_schema.definitions).filter(
 			(maybe) => !supported_conversion_names.includes(maybe)

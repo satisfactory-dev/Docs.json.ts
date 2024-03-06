@@ -102,7 +102,7 @@ declare type NativeClass = {
 };
 
 declare type supported_base_classes_union = 'class--no-description-or-display-name'|'class--no-description'|'class';
-const supported_base_classes:[supported_base_classes_union, ...supported_base_classes_union[]] = [
+export const supported_base_classes:[supported_base_classes_union, ...supported_base_classes_union[]] = [
 	'class--no-description-or-display-name',
 	'class--no-description',
 	'class',
