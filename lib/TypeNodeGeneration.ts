@@ -66,6 +66,14 @@ declare type object_validator = ValidateFunction<{
 	properties: object,
 }>;
 
+declare type tuple_array_validator = ValidateFunction<{
+	type: 'array',
+	minItems: 2,
+	maxItems: 2,
+	items: false,
+	prefixItems: [any, any],
+}>;
+
 export class TypeNodeGenerationMatcher
 {
 	private matchers:TypeNodeGeneration<any>[];
@@ -73,6 +81,7 @@ export class TypeNodeGenerationMatcher
 	private array_string_matcher:WeakMap<Ajv, array_string_validator> = new WeakMap<Ajv, array_string_validator>();
 	private object_string_matcher:WeakMap<Ajv, object_string_validator> = new WeakMap<Ajv, object_string_validator>();
 	private object_matcher:WeakMap<Ajv, object_validator> = new WeakMap<Ajv, object_validator>();
+	private tuple_array_matcher:WeakMap<Ajv, tuple_array_validator> = new WeakMap<Ajv, tuple_array_validator>();
 
 	constructor(matchers:TypeNodeGeneration<any>[]) {
 		this.matchers = matchers;
@@ -87,7 +96,11 @@ export class TypeNodeGenerationMatcher
 			}
 		}
 
-		return this.oneOf_matcher(ajv, property) || this.object_search(ajv, property);
+		return (
+			this.oneOf_matcher(ajv, property)
+			|| this.object_search(ajv, property)
+			|| this.tuple_array_search(ajv, property)
+		);
 	}
 
 	private oneOf_matcher(ajv:Ajv, property:object): TypeNodeGenerationResult|null
@@ -154,6 +167,82 @@ export class TypeNodeGenerationMatcher
 
 				throw new Error('lolwhut');
 			}
+		}
+
+		return null;
+	}
+
+	private tuple_array_search(ajv:Ajv, property:object): TypeNodeGenerationResult|null
+	{
+		if (!this.tuple_array_matcher.has(ajv)) {
+			this.tuple_array_matcher.set(ajv, ajv.compile({
+				type: 'object',
+				required: ['type', 'minItems', 'maxItems', 'items', 'prefixItems'],
+				additionalProperties: false,
+				properties: {
+					type: {type: 'string', const: 'array'},
+					minItems: {type: 'number', const: 2},
+					maxItems: {type: 'number', const: 2},
+					items: {type: 'boolean', const: false},
+					prefixItems: {
+						type: 'array',
+						minItems: 2,
+						maxItems: 2,
+						items: {
+							type: 'object',
+						},
+					},
+				}
+			}));
+		}
+
+		const tuple_array_matcher = this.tuple_array_matcher.get(ajv) as tuple_array_validator;
+
+		if (tuple_array_matcher(property)) {
+			const first = this.search(ajv, property.prefixItems[0]);
+
+			if (!first) {
+				console.error(property.prefixItems[0]);
+
+				throw new Error('Failed to match first member of tuple');
+			}
+
+			const second = this.search(ajv, property.prefixItems[1]);
+
+			if (!second) {
+				console.error(property.prefixItems[1]);
+
+				throw new Error('Failed to match second member of tuple');
+			}
+
+			return new TypeNodeGenerationResult(
+				() => {
+					return ts.factory.createTupleTypeNode([
+						first.type(),
+						second.type(),
+					]);
+				},
+				[first.import_these_somewhere_later, second.import_these_somewhere_later].reduce(
+					(was, is) => {
+						for (const entry of Object.entries(is)) {
+							const [import_from, import_these] = entry;
+
+							if (!(import_from in was)) {
+								was[import_from] = [];
+							}
+
+							for (const import_this of import_these) {
+								if (!was[import_from].includes(import_this)) {
+									was[import_from].push(import_this);
+								}
+							}
+						}
+
+						return was;
+					},
+					{}
+				)
+			);
 		}
 
 		return null;

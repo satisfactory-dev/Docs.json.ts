@@ -226,8 +226,8 @@ export const type_node_generators = [
 				}
 			);
 		}
-	)
-]
+	),
+];
 
 export const custom_generators = [
 	(schema:typeof update8_schema) : {file: string, node:ts.Node, ref?:string}[] => {

@@ -1,31 +1,33 @@
 import {ImportTracker, TypesGenerationFromSchema} from "../TypesGeneration";
 import ts from "typescript";
-import {adjust_enum_name, create_modifier, create_string_starts_with, createParameter} from "../TsFactoryWrapper";
+import {
+	adjust_enum_name,
+	create_modifier,
+	create_string_starts_with,
+	create_type,
+	createParameter
+} from "../TsFactoryWrapper";
 import {schema as const_schema} from './constants';
 import {TypeNodeGeneration, TypeNodeGenerationResult} from "../TypeNodeGeneration";
 import update8_schema from '../../schema/update8.schema.json' assert {type: 'json'};
 
-export const target_files = Object.entries({
-	'common/enum.ts': [
-		'boolean',
-		'boolean-extended',
-		'mStackSize',
-		'mForm',
-		'mScannableType',
-		'mEventType',
-		'mFreightCargoType',
-		'MaterialSlotName',
-		'weaponState',
-		'mCrosshairMaterial',
-		'mClassToScanFor',
-	],
-}).reduce((was, is) => {
-	for (const reference of is[1]) {
-		was[reference] = is[0];
-	}
+export const target_files = {
+	'boolean': 'common/enum.ts',
+	'boolean-extended': 'common/enum.ts',
+	'mStackSize': 'common/enum.ts',
+	'mForm': 'common/enum.ts',
+	'mScannableType': 'common/enum.ts',
+	'mEventType': 'common/enum.ts',
+	'mFreightCargoType': 'common/enum.ts',
+	'MaterialSlotName': 'common/enum.ts',
+	'weaponState': 'common/enum.ts',
+	'mCrosshairMaterial': 'common/enum.ts',
+	'mClassToScanFor': 'common/enum.ts',
+};
 
-	return was;
-}, {} as {[key: string]: string});
+declare type supported_definitions = keyof {
+	[pseudo_key in keyof typeof target_files as pseudo_key extends string ? `#/definitions/${pseudo_key}` : never]: string;
+};
 
 ImportTracker.set_imports('common/enum.ts', [
 	{
@@ -191,5 +193,46 @@ export const type_node_generators = [
 				}
 			);
 		},
-	)
+	),
+	new TypeNodeGeneration<{
+		'$ref': supported_definitions,
+	}>(
+		{
+			type: 'object',
+			required: ['$ref'],
+			additionalProperties: false,
+			properties: {
+				'$ref': {
+					oneOf: Object.keys(target_files).map((enum_name) => {
+						return {type: 'string', const: `#/definitions/${adjust_enum_name(enum_name)}`};
+					}),
+				}
+			}
+		},
+		(property) => {
+			const reference_name = property['$ref'].substring(14);
+
+			if ('#/definitions/boolean' === property['$ref']) {
+				return new TypeNodeGenerationResult(() => {
+					return create_type('boolean');
+				});
+			} else if ('#/definitions/boolean-extended' === property['$ref']) {
+				return new TypeNodeGenerationResult(() => {
+					return ts.factory.createUnionTypeNode([
+						create_type('boolean'),
+						ts.factory.createLiteralTypeNode(ts.factory.createNull()),
+					]);
+				});
+			}
+
+			return new TypeNodeGenerationResult(
+				() => {
+					return ts.factory.createTypeReferenceNode(reference_name);
+				},
+				{
+					'common/enum': [reference_name],
+				}
+			);
+		}
+	),
 ];

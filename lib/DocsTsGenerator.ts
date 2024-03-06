@@ -21,8 +21,9 @@ import {
 	custom_generators as validator_custom_generators,
 } from './TypesGeneration/validators';
 import {
-	target_files as vector_target_files,
-	generators as vector_generators,
+	target_files as vectors_target_files,
+	generators as vectors_generators,
+	custom_generators as vectors_custom_generators,
 } from './TypesGeneration/vectors';
 import {
 	target_files as constants_target_files,
@@ -237,7 +238,7 @@ export class DocsTsGenerator
 			enum_target_files,
 			color_target_files,
 			validator_target_files,
-			vector_target_files,
+			vectors_target_files,
 			constants_target_files,
 			prefixes_target_files,
 			arrays_target_files,
@@ -248,7 +249,7 @@ export class DocsTsGenerator
 			...color_generators,
 			...enum_generators,
 			...validator_generators,
-			...vector_generators,
+			...vectors_generators,
 			...constants_generators,
 			...prefixes_generators,
 			...arrays_generators,
@@ -304,6 +305,7 @@ export class DocsTsGenerator
 			for (const generator of [
 				...validator_custom_generators,
 				...Classes_custom_generators,
+				...vectors_custom_generators,
 			]) {
 				const Classes_results:(
 					| {file: string, node: ts.Node}

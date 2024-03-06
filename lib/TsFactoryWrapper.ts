@@ -6,7 +6,7 @@ import ts, {
 	PropertyDeclaration, SyntaxKind, TypeNode, TypeParameterDeclaration,
 } from 'typescript';
 
-declare type supported_property_modifiers = ('public'|'abstract')[];
+declare type supported_property_modifiers = ('public'|'abstract'|'readonly')[];
 
 declare type supported_class_modifiers = ('export'|'abstract')[];
 
@@ -253,7 +253,7 @@ export function createClass__members__with_auto_constructor<T extends [string, .
 }
 
 export function createParameter(
-	name: string,
+	name: string|ts.ObjectBindingPattern,
 	type:KeywordTypeSyntaxKind|TypeNode,
 	initializer:ts.Expression|undefined = undefined
 ) {
@@ -587,4 +587,8 @@ export function create_minimum_size_typed_array_of_type_references(
 	types.push(ts.factory.createRestTypeNode(ts.factory.createArrayTypeNode(generate())));
 
 	return ts.factory.createTupleTypeNode(types);
+}
+
+export function create_index_access(identifier:string, index:number) {
+	return ts.factory.createElementAccessExpression(ts.factory.createIdentifier(identifier),index);
 }

@@ -8,6 +8,7 @@ import {
 import {TypeNodeGeneration, TypeNodeGenerationResult} from "../TypeNodeGeneration";
 export const target_files = {
 	'mDamageTypes': 'common/arrays.ts',
+	'xyz-array': 'common/arrays.ts',
 };
 
 ImportTracker.set_imports('common/arrays.ts', [
@@ -16,6 +17,12 @@ ImportTracker.set_imports('common/arrays.ts', [
 		import_these: [
 			'UnrealEngineString',
 			'string_starts_with',
+		],
+	},
+	{
+		from: './vectors',
+		import_these: [
+			adjust_class_name('xyz--unsigned-x'),
 		],
 	},
 ]);
@@ -35,7 +42,7 @@ export const generators = [
 		array_string_schema_type,
 		keyof typeof target_files
 	>(
-		Object.keys(target_files) as (keyof typeof target_files)[],
+		['mDamageTypes'],
 		(data, reference_name) => {
 			return ts.factory.createTypeAliasDeclaration(
 				[create_modifier('export')],
@@ -58,12 +65,49 @@ export const generators = [
 				)
 			);
 		}
-	)
+	),
+	new TypesGenerationMatchesReferenceName<
+		{
+			type: 'string',
+			minLength: 1,
+			array_string: {
+				type: 'array',
+				minItems: 1,
+				items: {
+					type: 'object',
+					required: ['X', 'Y', 'Z'],
+					properties: {
+						X: {'$ref': '#/definitions/decimal-string'},
+						Y: {'$ref': '#/definitions/decimal-string--signed'},
+						Z: {'$ref': '#/definitions/decimal-string--signed'},
+					},
+				},
+			},
+		},
+		'xyz-array'
+	>(
+		['xyz-array'],
+		(data, reference_name) => {
+			return ts.factory.createTypeAliasDeclaration(
+				[create_modifier('export')],
+				ts.factory.createIdentifier(adjust_class_name(reference_name)),
+				undefined,
+				ts.factory.createTupleTypeNode([
+					ts.factory.createTypeReferenceNode(adjust_class_name('xyz--unsigned-x')),
+					ts.factory.createRestTypeNode(ts.factory.createArrayTypeNode(
+						ts.factory.createTypeReferenceNode(adjust_class_name('xyz--unsigned-x'))
+					))
+				])
+			);
+		}
+	),
 ];
 
 export const type_node_generators = [
 	new TypeNodeGeneration<{
-		'$ref': '#/definitions/mDamageTypes'
+		'$ref':
+			| '#/definitions/mDamageTypes'
+			| '#/definitions/xyz-array'
 	}>(
 		{
 			type: 'object',
@@ -72,7 +116,7 @@ export const type_node_generators = [
 			properties: {
 				'$ref': {
 					oneOf: [
-						{type: 'string', const: '#/definitions/mDamageTypes'},
+						{type: 'string', pattern: '^#/definitions/(mDamageTypes|xyz-array)$'},
 					],
 				},
 			},

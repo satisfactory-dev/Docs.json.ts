@@ -52,7 +52,7 @@ export const generators = [
 		(data, reference_name) => {
 			const members = createClass__members__with_auto_constructor(
 				'object_string' in data ? data.object_string : data,
-				['public'],
+				['public', 'readonly'],
 			);
 
 			return createClass(reference_name, members, {
@@ -101,4 +101,28 @@ export const type_node_generators = [
 			);
 		}
 	),
+];
+
+export const custom_generators = [
+	(): {file: string, node: ts.Node}[] => [{
+		file: 'common/vectors.ts',
+		node: createClass(
+			adjust_class_name('xyz--unsigned-x'),
+			createClass__members__with_auto_constructor(
+				{
+					type: 'object',
+					required: ['X', 'Y', 'Z'],
+					properties: {
+						X: {'$ref': '#/definitions/decimal-string'},
+						Y: {'$ref': '#/definitions/decimal-string--signed'},
+						Z: {'$ref': '#/definitions/decimal-string--signed'},
+					},
+				},
+				['public', 'readonly']
+			),
+			{
+				modifiers: ['export'],
+			}
+		),
+	}],
 ];

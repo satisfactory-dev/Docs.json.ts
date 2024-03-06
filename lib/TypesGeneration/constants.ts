@@ -94,4 +94,33 @@ export const type_node_generators = [
 			}
 		);
 	}),
+	new TypeNodeGeneration<{
+		'$ref':
+			| '#/definitions/mOutputInventoryHandlerData'
+	}>(
+		{
+			type: 'object',
+			required: ['$ref'],
+			additionalProperties: false,
+			properties: {
+				'$ref': {
+					oneOf: [
+						{type: 'string', pattern: '^#/definitions/(mOutputInventoryHandlerData)$'},
+					],
+				},
+			},
+		},
+		(data) => {
+			const reference_name = adjust_class_name('empty-object');
+
+			return new TypeNodeGenerationResult(
+				() => {
+					return ts.factory.createTypeReferenceNode(reference_name);
+				},
+				{
+					'common/constants' : [reference_name],
+				}
+			);
+		}
+	),
 ];
