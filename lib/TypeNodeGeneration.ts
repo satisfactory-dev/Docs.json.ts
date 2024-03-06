@@ -1,6 +1,8 @@
 import Ajv, {Schema, ValidateFunction} from 'ajv/dist/2020';
 import ts, {preProcessFile} from "typescript";
 import {import_these_somewhere_later} from "./TypesGeneration";
+import {array_string_schema_type} from "./TypesGeneration/arrays";
+import {array_string_schema} from "./TypesGeneration/json_schema_types";
 
 export class TypeNodeGenerationResult
 {
@@ -45,15 +47,7 @@ export class TypeNodeGeneration<T extends { [key: string]: any }>
 
 declare type oneOf_validator = ValidateFunction<{oneOf: object[]}>;
 
-declare type array_string_validator = ValidateFunction<{
-	type: 'string',
-	minLength: 1,
-	array_string: {
-		type: 'array',
-		minItems: number,
-		items: object,
-	},
-}>;
+declare type array_string_validator = ValidateFunction<array_string_schema_type>;
 
 declare type object_string_validator = ValidateFunction<{
 	type: 'string',
@@ -75,7 +69,7 @@ declare type object_validator = ValidateFunction<{
 export class TypeNodeGenerationMatcher
 {
 	private matchers:TypeNodeGeneration<any>[];
-	private oneOf_matcher:WeakMap<Ajv, oneOf_validator> = new WeakMap<Ajv, oneOf_validator>();
+	private oneOf_schema_matcher:WeakMap<Ajv, oneOf_validator> = new WeakMap<Ajv, oneOf_validator>();
 	private array_string_matcher:WeakMap<Ajv, array_string_validator> = new WeakMap<Ajv, array_string_validator>();
 	private object_string_matcher:WeakMap<Ajv, object_string_validator> = new WeakMap<Ajv, object_string_validator>();
 	private object_matcher:WeakMap<Ajv, object_validator> = new WeakMap<Ajv, object_validator>();
@@ -93,8 +87,13 @@ export class TypeNodeGenerationMatcher
 			}
 		}
 
-		if (!this.oneOf_matcher.has(ajv)) {
-			this.oneOf_matcher.set(ajv, ajv.compile({
+		return this.oneOf_matcher(ajv, property) || this.object_search(ajv, property);
+	}
+
+	private oneOf_matcher(ajv:Ajv, property:object): TypeNodeGenerationResult|null
+	{
+		if (!this.oneOf_schema_matcher.has(ajv)) {
+			this.oneOf_schema_matcher.set(ajv, ajv.compile({
 				type: 'object',
 				required: ['oneOf'],
 				additionalProperties: false,
@@ -108,7 +107,7 @@ export class TypeNodeGenerationMatcher
 			}));
 		}
 
-		const oneOf_matcher = this.oneOf_matcher.get(ajv) as oneOf_validator;
+		const oneOf_matcher = this.oneOf_schema_matcher.get(ajv) as oneOf_validator;
 
 		if (oneOf_matcher(property)) {
 			const matches:TypeNodeGenerationResult[] = [];
@@ -150,43 +149,20 @@ export class TypeNodeGenerationMatcher
 						}));
 					},
 				);
+			} else {
+				console.error(property);
+
+				throw new Error('lolwhut');
 			}
 		}
 
-		return this.object_search(ajv, property);
+		return null;
 	}
 
 	private array_string_search(ajv:Ajv, property:object): TypeNodeGenerationResult|null
 	{
 		if (!this.array_string_matcher.has(ajv)) {
-			this.array_string_matcher.set(ajv, ajv.compile({
-				type: 'object',
-				required: [
-					'type',
-					'minLength',
-					'array_string',
-				],
-				additionalProperties: false,
-				properties: {
-					type: {type: 'string', const: 'string'},
-					minLength: {type: 'number', const: 1},
-					array_string: {
-						type: 'object',
-						required: [
-							'type',
-							'minItems',
-							'items',
-						],
-						additionalProperties: false,
-						properties: {
-							type: {type: 'string', const: 'array'},
-							minItems: {type: 'number', minimum: 1},
-							maxItems: {type: 'number', minimum: 1},
-							items: {type: 'object'},
-						},
-					},
-				},
-			}));
+			this.array_string_matcher.set(ajv, ajv.compile(array_string_schema));
 		}
 
 		const array_string_matcher = this.array_string_matcher.get(ajv) as array_string_validator;

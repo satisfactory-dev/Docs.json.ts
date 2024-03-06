@@ -6,13 +6,13 @@ import {
 } from 'ajv/dist/2020';
 import ts from 'typescript';
 
-declare type code_generator<T extends object> = (data:T, reference_name:string) => ts.Node;
+declare type code_generator<T extends object, T2 extends string = string> = (data:T, reference_name:T2) => ts.Node;
 
-export abstract class TypesGeneration<T1 extends object, T2 extends T1|string>
+export abstract class TypesGeneration<T1 extends object, T2 extends T1|string, T3 extends string = string>
 {
-	protected code_generator:code_generator<T1>;
+	protected code_generator:code_generator<T1, T3>;
 
-	constructor(generation:code_generator<T1>) {
+	constructor(generation:code_generator<T1, T3>) {
 		this.code_generator = generation;
 	}
 
@@ -55,17 +55,19 @@ export class TypesGenerationFromSchema<T extends object> extends TypesGeneration
 	}
 }
 
-export class TypesGenerationMatchesReferenceName<T1 extends object, T2 extends string> extends TypesGeneration<T1, T2>
-{
-	private supported_reference_names:string[];
+export class TypesGenerationMatchesReferenceName<
+	T1 extends object,
+	T2 extends string
+> extends TypesGeneration<T1, T2, T2> {
+	private supported_reference_names:T2[];
 
-	constructor(supported_reference_names: string[], generation:code_generator<T1>) {
+	constructor(supported_reference_names: T2[], generation:code_generator<T1, T2>) {
 		super(generation);
 
 		this.supported_reference_names = supported_reference_names;
 	}
 
-	test(data:string): boolean
+	test(data:T2): boolean
 	{
 		return this.supported_reference_names.includes(data);
 	}

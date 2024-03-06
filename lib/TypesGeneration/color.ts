@@ -4,17 +4,16 @@ import {
 	adjust_class_name,
 	create_callExpression__for_validation_function, create_this_assignment,
 	createClass,
-	createMethod,
+	create_method_without_type_parameters,
 	createProperty
 } from "../TsFactoryWrapper";
 import {
 	ImportTracker,
-	TypesGeneration,
 	TypesGenerationMatchesReferenceName
 } from "../TypesGeneration";
 import {TypeNodeGeneration, TypeNodeGenerationResult} from "../TypeNodeGeneration";
 
-export const target_files:{[key: string]: string} = {
+export const target_files = {
 	'color--base': 'common/color.ts',
 	'color--semi-native': 'common/color.ts',
 	'color-decimal--semi-native': 'common/color.ts',
@@ -59,7 +58,7 @@ function rgba_super_caller(data:RGBA): ts.MethodDeclaration
 		})
 	)));
 
-	return createMethod(
+	return create_method_without_type_parameters(
 		'constructor',
 		Object.keys(data.properties).map((property) => {
 			return [property, ts.SyntaxKind.StringKeyword];
@@ -69,7 +68,7 @@ function rgba_super_caller(data:RGBA): ts.MethodDeclaration
 	);
 }
 
-export const generators:TypesGeneration<any, any>[] = [
+export const generators = [
 	new TypesGenerationMatchesReferenceName<
 		{
 			type: 'object',
@@ -87,7 +86,7 @@ export const generators:TypesGeneration<any, any>[] = [
 				]);
 			});
 
-			members.push(createMethod(
+			members.push(create_method_without_type_parameters(
 				'constructor',
 				data.required.map((property) => {
 					return [property, ts.SyntaxKind.NumberKeyword];

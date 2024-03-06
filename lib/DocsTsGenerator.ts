@@ -33,7 +33,6 @@ import {
 	generators as prefixes_generators,
 } from './TypesGeneration/prefixes';
 import {
-	TypesGeneration,
 	TypesGenerationFromSchema,
 	TypesGenerationMatchesReferenceName,
 	GenerationMatch,
@@ -44,8 +43,14 @@ import ts from "typescript";
 import {glob} from "glob";
 import {BuiltInParserName} from "prettier";
 import {
+	target_files as classes_target_files,
+	generators as classes_generators,
 	custom_generators as Classes_custom_generators,
 } from './TypesGeneration/Classes';
+import {
+	target_files as arrays_target_files,
+	generators as arrays_generators,
+} from './TypesGeneration/arrays';
 
 class ValidationError extends Error
 {
@@ -235,15 +240,19 @@ export class DocsTsGenerator
 			vector_target_files,
 			constants_target_files,
 			prefixes_target_files,
+			arrays_target_files,
+			classes_target_files,
 		);
 
-		const generators:TypesGeneration<any, any>[] = [
+		const generators:(TypesGenerationFromSchema<any>|TypesGenerationMatchesReferenceName<any, any>)[] = [
 			...color_generators,
 			...enum_generators,
 			...validator_generators,
 			...vector_generators,
 			...constants_generators,
 			...prefixes_generators,
+			...arrays_generators,
+			...classes_generators,
 		];
 
 		const supported_conversions:GenerationMatch<object>[] = Object.entries(update8_schema.definitions).filter(
@@ -258,7 +267,11 @@ export class DocsTsGenerator
 			}
 		).map((e: [string, object]) => {
 			return new GenerationMatch<object>(e[0], e[1], generators.find((maybe) => {
-				return maybe.test(maybe instanceof TypesGenerationFromSchema ? e[1] : e[0]);
+				if (maybe instanceof TypesGenerationFromSchema) {
+					return maybe.test(e[1]);
+				}
+
+				return maybe.test(e[0]);
 			}) as TypesGenerationFromSchema<object>|TypesGenerationMatchesReferenceName<object, any>);
 		});
 

@@ -14,3 +14,33 @@ export type RGBA = {
 		A: decimal__string
 	}
 };
+
+
+export const array_string_schema = {
+	type: 'object',
+	required: [
+		'type',
+		'minLength',
+		'array_string',
+	],
+	additionalProperties: false,
+	properties: {
+		type: {type: 'string', const: 'string'},
+		minLength: {type: 'number', const: 1},
+		array_string: {
+			type: 'object',
+			required: [
+				'type',
+				'minItems',
+				'items',
+			],
+			additionalProperties: false,
+			properties: {
+				type: {type: 'string', const: 'array'},
+				minItems: {type: 'number', minimum: 1},
+				maxItems: {type: 'number', minimum: 1},
+				items: {type: 'object'},
+			},
+		},
+	},
+};

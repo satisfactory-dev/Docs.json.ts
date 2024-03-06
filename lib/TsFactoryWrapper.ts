@@ -1,16 +1,16 @@
 import ts, {
-	ClassDeclaration,
+	ClassDeclaration, Expression,
 	HeritageClause,
 	KeywordTypeSyntaxKind, MethodDeclaration,
 	Modifier,
-	PropertyDeclaration, SyntaxKind, TypeNode,
+	PropertyDeclaration, SyntaxKind, TypeNode, TypeParameterDeclaration,
 } from 'typescript';
 
 declare type supported_property_modifiers = ('public'|'abstract')[];
 
 declare type supported_class_modifiers = ('export'|'abstract')[];
 
-declare type supported_method_modifiers = ('abstract'|'protected'|'public')[];
+declare type supported_method_modifiers = ('abstract'|'protected'|'public'|'static')[];
 
 export function adjust_class_name(class_name:string): string
 {
@@ -60,6 +60,9 @@ export const modifier_map:{[key: string]: () => ts.ModifierToken<ts.ModifierSynt
 	},
 	'readonly': () => {
 		return ts.factory.createModifier(ts.SyntaxKind.ReadonlyKeyword);
+	},
+	'static': () => {
+		return ts.factory.createModifier(ts.SyntaxKind.StaticKeyword);
 	},
 };
 
@@ -114,7 +117,8 @@ export type create_class_options = {
 export function createClass(
 	name:string,
 	members:(PropertyDeclaration|MethodDeclaration)[],
-	options: create_class_options = {}
+	options: create_class_options = {},
+	type_parameters: [TypeParameterDeclaration, ...TypeParameterDeclaration[]]|undefined = undefined
 ) : ClassDeclaration {
 	let resolved_modifiers:undefined|(Modifier[]) = undefined;
 	let resolved_heritage:HeritageClause[] = [];
@@ -149,7 +153,7 @@ export function createClass(
 	return ts.factory.createClassDeclaration(
 		resolved_modifiers,
 		ts.factory.createIdentifier(adjust_class_name(name)),
-		undefined,
+		type_parameters,
 		resolved_heritage,
 		members
 	);
@@ -203,7 +207,7 @@ export function createClass__members__with_auto_constructor<T extends [string, .
 		);
 	});
 
-	members.push(createMethod(
+	members.push(create_method_without_type_parameters(
 		'constructor',
 		Object.keys(data.properties).map((property) => {
 			return [property, ts.SyntaxKind.StringKeyword];
@@ -251,24 +255,28 @@ export function createClass__members__with_auto_constructor<T extends [string, .
 export function createParameter(
 	name: string,
 	type:KeywordTypeSyntaxKind|TypeNode,
+	initializer:ts.Expression|undefined = undefined
 ) {
 	return ts.factory.createParameterDeclaration(
 		undefined,
 		undefined,
 		name,
 		undefined,
-		('object' === typeof(type)) ? type : ts.factory.createKeywordTypeNode(type)
+		('object' === typeof(type)) ? type : ts.factory.createKeywordTypeNode(type),
+		initializer
 	);
 }
 
 declare type createMethod_parameters_entry = [string, KeywordTypeSyntaxKind]|ts.ParameterDeclaration;
 
-export function createMethod(
+function create_method(
 	name: string,
+	type_parameters: ts.TypeParameterDeclaration[],
 	parameters: createMethod_parameters_entry[],
 	body: ts.Statement[],
-	modifiers: supported_method_modifiers = []
-) {
+	modifiers: supported_method_modifiers = [],
+	return_type:ts.TypeNode|undefined = undefined,
+)  {
 	const resolved_modifiers = modifiers.reduce(
 		(was, is) => {
 			if (!was.includes(is)) {
@@ -287,7 +295,7 @@ export function createMethod(
 		undefined,
 		name,
 		undefined,
-		undefined,
+		type_parameters.length ? type_parameters : undefined,
 		parameters.map(entry => {
 			if (!(entry instanceof Array)) {
 				return entry;
@@ -297,8 +305,43 @@ export function createMethod(
 
 			return createParameter(name, type);
 		}),
-		undefined,
+		return_type,
 		ts.factory.createBlock(body)
+	);
+}
+
+export function create_method_with_type_parameters(
+	name: string,
+	type_parameters: [ts.TypeParameterDeclaration, ...ts.TypeParameterDeclaration[]],
+	parameters: createMethod_parameters_entry[],
+	body: ts.Statement[],
+	modifiers: supported_method_modifiers = [],
+	return_type:ts.TypeNode|undefined = undefined,
+) {
+	return create_method(
+		name,
+		type_parameters,
+		parameters,
+		body,
+		modifiers,
+		return_type
+	);
+}
+
+export function create_method_without_type_parameters(
+	name: string,
+	parameters: createMethod_parameters_entry[],
+	body: ts.Statement[],
+	modifiers: supported_method_modifiers = [],
+	return_type:ts.TypeNode|undefined = undefined,
+) {
+	return create_method(
+		name,
+		[],
+		parameters,
+		body,
+		modifiers,
+		return_type
 	);
 }
 
@@ -377,6 +420,42 @@ export function create_throw_if(
 	type_parameters: [ts.TypeNode, ...ts.TypeNode[]]|undefined = undefined
 ) {
 	return ts.factory.createIfStatement(throw_if, create_throw(throw_this, throw_arguments, type_parameters));
+}
+
+export function create_template_span(span_arguments:[(string|Expression), ...(string|Expression)[]]) : ts.TemplateExpression | ts.StringLiteral {
+	const stack = span_arguments.reduce(
+		(was, is, index, array) => {
+			if ('string' === typeof is) {
+				if (1 === was.length) {
+					was[0] += is;
+				} else {
+					(was[was.length - 1] as [Expression, string])[1] += is;
+				}
+			} else {
+				was.push([is, '']);
+			}
+
+			return was;
+		},
+		[''] as [string, ...[Expression, string][]]
+	);
+
+	if (1 === stack.length) {
+		return ts.factory.createStringLiteral(stack[0]);
+	}
+
+	const head = ts.factory.createTemplateHead(stack.shift() as string);
+
+	return ts.factory.createTemplateExpression(head, (stack as [Expression, string][]).map((entry, index) => {
+		const [expression, chunk] = entry;
+
+		return ts.factory.createTemplateSpan(
+			expression,
+			index === stack.length - 1
+				? ts.factory.createTemplateTail(chunk)
+				: ts.factory.createTemplateMiddle(chunk)
+		);
+	}));
 }
 
 export function create_basic_reference_argument_template_span(
@@ -482,4 +561,30 @@ export function create_this_assignment(property:string, identifier:string|ts.Exp
 		ts.factory.createPropertyAccessExpression(ts.factory.createThis(), property),
 		('string' === typeof(identifier)) ? ts.factory.createIdentifier(identifier) : identifier
 	));
+}
+
+export function create_minimum_size_typed_array_of_type_references(
+	reference_name: string,
+	type_parameters_generator: () => [ts.TypeNode, ...ts.TypeNode[]],
+	repeat: number = 1
+) {
+	if (repeat < 1) {
+		throw new Error(`repeat must be greater than or equal to 1, ${repeat} given.`);
+	} else if (repeat !== (repeat|0)) {
+		throw new Error(`repeat must be an integer, ${repeat} given.`);
+	}
+
+	function generate() : ts.TypeReferenceNode {
+		return ts.factory.createTypeReferenceNode(reference_name, type_parameters_generator());
+	}
+
+	const types:(ts.TypeReferenceNode|ts.RestTypeNode)[] = [generate()];
+
+	for (let iteration = 1; iteration < repeat; ++iteration) {
+		types.push(generate());
+	}
+
+	types.push(ts.factory.createRestTypeNode(ts.factory.createArrayTypeNode(generate())));
+
+	return ts.factory.createTupleTypeNode(types);
 }

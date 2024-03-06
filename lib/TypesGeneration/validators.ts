@@ -7,13 +7,13 @@ import {
 	create_regex_validation_function, create_this_assignment,
 	create_throw, create_throw_if, create_type,
 	createClass,
-	createClass__members__with_auto_constructor,
-	createMethod,
+	create_method_without_type_parameters,
 	createParameter,
-	flexibly_create_regex_validation_function
+	flexibly_create_regex_validation_function, create_method_with_type_parameters, create_template_span
 } from "../TsFactoryWrapper";
 import {TypeNodeGeneration, TypeNodeGenerationResult} from "../TypeNodeGeneration";
 import {UnrealEngineString_regex} from "../DocsValidation";
+import {create} from "node:domain";
 
 export const target_files = {
 	'decimal-string': 'utils/validators.ts',
@@ -192,7 +192,7 @@ export const custom_generators = [
 						[create_modifier('readonly')],
 						'prefix',
 						undefined,
-						create_type('string'),
+						ts.factory.createTypeReferenceNode('prefix'),
 						undefined
 					),
 					ts.factory.createPropertyDeclaration(
@@ -202,10 +202,10 @@ export const custom_generators = [
 						create_type('string'),
 						undefined
 					),
-					createMethod(
+					create_method_without_type_parameters(
 						'constructor',
 						[
-							createParameter('prefix', create_type('string')),
+							createParameter('prefix', ts.factory.createTypeReferenceNode('prefix')),
 							createParameter('value', create_type('string')),
 						],
 						[
@@ -214,10 +214,26 @@ export const custom_generators = [
 						],
 						['protected']
 					),
-					createMethod(
+					create_method_with_type_parameters(
 						'fromString',
 						[
+							ts.factory.createTypeParameterDeclaration(
+								undefined,
+								'static_prefix',
+								create_type('string'),
+								create_type('string')
+							),
+						],
+						[
 							createParameter('value', create_type('string')),
+							createParameter(
+								'prefix_check',
+								ts.factory.createUnionTypeNode([
+									ts.factory.createTypeReferenceNode('static_prefix'),
+									create_type('undefined')
+								]),
+								ts.factory.createIdentifier('undefined')
+							),
 						],
 						[
 							ts.factory.createVariableStatement(
@@ -265,9 +281,81 @@ export const custom_generators = [
 									)
 								])
 							),
+							create_throw_if(
+								'Error',
+								ts.factory.createLogicalAnd(
+									ts.factory.createStrictInequality(
+										ts.factory.createIdentifier('undefined'),
+										ts.factory.createIdentifier('prefix_check')
+									),
+									ts.factory.createLogicalNot(ts.factory.createCallExpression(
+										ts.factory.createPropertyAccessExpression(
+											ts.factory.createElementAccessExpression(
+												ts.factory.createIdentifier('result'),
+												1,
+											),
+											'startsWith'
+										),
+										undefined,
+										[
+											ts.factory.createIdentifier('prefix_check'),
+										]
+									))
+								),
+								[
+									create_template_span([
+										'UnrealEngineString prefix expected to start with ',
+										ts.factory.createIdentifier('prefix_check'),
+										', ',
+										ts.factory.createElementAccessExpression(
+											ts.factory.createIdentifier('result'),
+											1,
+										),
+										' given.',
+									]),
+								]
+							),
+							ts.factory.createIfStatement(
+								ts.factory.createBinaryExpression(
+									ts.factory.createStringLiteral('string'),
+									ts.factory.createToken(ts.SyntaxKind.EqualsEqualsEqualsToken),
+									ts.factory.createTypeOfExpression(ts.factory.createIdentifier('prefix_check'))
+								),
+								ts.factory.createReturnStatement(
+									ts.factory.createNewExpression(
+										ts.factory.createIdentifier('UnrealEngineString'),
+										[
+											ts.factory.createTypeReferenceNode(
+												'string_starts_with',
+												[
+													ts.factory.createTypeReferenceNode('static_prefix'),
+												]
+											)
+										],
+										[
+											ts.factory.createAsExpression(
+												ts.factory.createElementAccessExpression(
+													ts.factory.createIdentifier('result'),
+													1,
+												),
+												ts.factory.createTypeReferenceNode(
+													'string_starts_with',
+													[
+														ts.factory.createTypeReferenceNode('static_prefix'),
+													]
+												)
+											),
+											ts.factory.createElementAccessExpression(
+												ts.factory.createIdentifier('result'),
+												2,
+											),
+										]
+									)
+								)
+							),
 							ts.factory.createReturnStatement(ts.factory.createNewExpression(
 								ts.factory.createIdentifier('UnrealEngineString'),
-								undefined,
+								[create_type('any')],
 								[
 									ts.factory.createElementAccessExpression(
 										ts.factory.createIdentifier('result'),
@@ -279,8 +367,39 @@ export const custom_generators = [
 									),
 								]
 							)),
-						]
-					)
+						],
+						['static'],
+						ts.factory.createConditionalTypeNode(
+							ts.factory.createTypeQueryNode(ts.factory.createIdentifier('prefix_check')),
+							create_type('undefined'),
+							ts.factory.createTypeReferenceNode(
+								'UnrealEngineString',
+								[create_type('string')]
+							),
+							ts.factory.createTypeReferenceNode(
+								'UnrealEngineString',
+								[
+									ts.factory.createTypeReferenceNode(
+										'string_starts_with',
+										[
+											ts.factory.createTypeReferenceNode('static_prefix')
+										]
+									)
+								]
+							)
+						)
+					),
+				],
+				{
+					modifiers: ['export'],
+				},
+				[
+					ts.factory.createTypeParameterDeclaration(
+						undefined,
+						'prefix',
+						create_type('string'),
+						undefined
+					),
 				]
 			)
 		});
@@ -551,7 +670,7 @@ export const type_node_generators = [
 				minLength: {type: 'number', minimum: 1},
 			}
 		},
-		(property) => {
+		() => {
 			return new TypeNodeGenerationResult(
 				() => {
 					return create_type('string');
@@ -576,7 +695,7 @@ export const type_node_generators = [
 				type: {type: 'string', const: 'string'},
 			}
 		},
-		(property) => {
+		() => {
 			return new TypeNodeGenerationResult(() => {
 				return create_type('string');
 			});
