@@ -47,13 +47,15 @@ import {BuiltInParserName} from "prettier";
 import {
 	target_files as classes_target_files,
 	generators as classes_generators,
-	custom_generators as Classes_custom_generators,
 	supported_base_classes as Classes_supported_base_classes,
 } from './TypesGeneration/Classes';
 import {
 	target_files as arrays_target_files,
 	generators as arrays_generators,
 } from './TypesGeneration/arrays';
+import {
+	custom_generators as Update8_custom_generators,
+} from './Schemas/Update8';
 
 class ValidationError extends Error
 {
@@ -315,13 +317,13 @@ export class DocsTsGenerator
 
 			for (const generator of [
 				...validator_custom_generators,
-				...Classes_custom_generators,
+				...Update8_custom_generators,
 				...vectors_custom_generators,
 			]) {
 				const Classes_results:(
 					| {file: string, node: ts.Node}
 					| {file: string, node: ts.Node, ref: string}
-				)[] = generator(update8_schema);
+				)[] = generator();
 
 				for (const result of Classes_results) {
 

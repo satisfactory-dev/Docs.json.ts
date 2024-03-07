@@ -1,8 +1,25 @@
 import Ajv, {Schema, ValidateFunction} from 'ajv/dist/2020';
-import ts, {preProcessFile} from "typescript";
-import {import_these_somewhere_later} from "./TypesGeneration";
-import {array_string_schema_type} from "./TypesGeneration/arrays";
-import {array_string_schema} from "./TypesGeneration/json_schema_types";
+import ts from 'typescript';
+import {
+	import_these_later,
+	import_these_somewhere_later,
+} from './TypesGeneration';
+import {
+	array_string_schema_type,
+} from './TypesGeneration/arrays';
+import {
+	array_string_schema,
+} from './TypesGeneration/json_schema_types';
+import {
+	adjust_class_name,
+	computed_property_name_or_undefined,
+	create_callExpression__for_validation_function,
+	create_method_without_type_parameters,
+	create_modifier,
+	create_this_assignment,
+	needs_element_access,
+	property_name_or_computed,
+} from "./TsFactoryWrapper";
 
 export class TypeNodeGenerationResult
 {
@@ -23,7 +40,7 @@ export class TypeNodeGeneration<T extends { [key: string]: any }>
 {
 	readonly schema:Schema;
 	private validate:WeakMap<Ajv, ValidateFunction<T>> = new WeakMap<Ajv, ValidateFunction<T>>();
-	private generator:TypeNodeGeneration_generator<T>;
+	private readonly generator:TypeNodeGeneration_generator<T>;
 	constructor(schema:Schema, generator:TypeNodeGeneration_generator<T>) {
 		this.schema = schema;
 		this.generator = generator;
@@ -76,7 +93,7 @@ declare type tuple_array_validator = ValidateFunction<{
 
 export class TypeNodeGenerationMatcher
 {
-	private matchers:TypeNodeGeneration<any>[];
+	private readonly matchers:TypeNodeGeneration<any>[];
 	private oneOf_schema_matcher:WeakMap<Ajv, oneOf_validator> = new WeakMap<Ajv, oneOf_validator>();
 	private array_string_matcher:WeakMap<Ajv, array_string_validator> = new WeakMap<Ajv, array_string_validator>();
 	private object_string_matcher:WeakMap<Ajv, object_string_validator> = new WeakMap<Ajv, object_string_validator>();
@@ -423,4 +440,201 @@ export class TypeNodeGenerationMatcher
 
 		throw new Error('Could not match property to type generation!');
 	}
+
+	find_from_properties(ajv:Ajv, properties:{[key: string]: object}) : {[K in keyof typeof properties]: TypeNodeGenerationResult}
+	{
+		return Object.fromEntries(Object.entries(properties).map((entry) => {
+			const [property, property_data] = entry;
+
+			return [
+				property,
+				this.find(ajv, property_data),
+			];
+		}));
+	}
+
+	static merge_imports(
+		filename:string,
+		path_relative:string,
+		results:TypeNodeGenerationResult[],
+		onto:import_these_later
+	) {
+		for (const result of results) {
+			this.merge_import_singular(filename, path_relative, result, onto);
+		}
+	}
+
+	static merge_import_singular(
+		filename:string,
+		path_relative:string,
+		result:TypeNodeGenerationResult,
+		onto:import_these_later
+	) {
+		for (const import_these_entry of  Object.entries(result.import_these_somewhere_later)) {
+			const [import_from_absolute, import_these] = import_these_entry;
+			const import_from = `${path_relative}${import_from_absolute}`;
+
+			if ( ! (filename in onto)) {
+				onto[filename] = {};
+			}
+
+			if (!(import_from in onto[filename])) {
+				onto[filename][import_from] = [];
+			}
+
+			for (const import_this of import_these) {
+				if (!onto[filename][import_from].includes(import_this)) {
+					onto[filename][import_from].push(import_this);
+				}
+			}
+		}
+	}
+}
+
+export function create_constructor_args<T1 = string>(
+	file:T1,
+	reference_name:string,
+	data: {
+		required: string[],
+		'$ref': string,
+	}|{
+		required: string[],
+	}|{
+		'$ref': string,
+	}
+) : {file: T1, node: ts.TypeAliasDeclaration} {
+	let type:ts.TypeNode|undefined;
+
+	if ('required' in data && data.required.length) {
+		type = ts.factory.createTypeLiteralNode(data.required.map((property) => {
+			return ts.factory.createPropertySignature(
+				undefined,
+				property_name_or_computed(property),
+				undefined,
+				ts.factory.createKeywordTypeNode(ts.SyntaxKind.StringKeyword)
+			);
+		}));
+	}
+
+	if ('$ref' in data && data['$ref']?.startsWith('#/definitions/')) {
+		const reference = ts.factory.createTypeReferenceNode(adjust_class_name(`${
+			data['$ref'].substring(14)
+		}__constructor_args`));
+
+		type = type ? ts.factory.createIntersectionTypeNode([
+			reference,
+			type,
+		]) : reference;
+	}
+
+	if (!type) {
+		console.error(data);
+
+		throw new Error('unsupported type found!');
+	}
+
+	return {
+		file,
+		node: ts.factory.createTypeAliasDeclaration(
+			[
+				create_modifier('export'),
+			],
+			ts.factory.createIdentifier(adjust_class_name(`${reference_name}__constructor_args`)),
+			undefined,
+			type
+		)
+	};
+}
+
+export function create_binding_constructor(
+	reference_name:string,
+	data: ({
+		required: string[],
+		'$ref': string,
+	}|{
+		required: string[],
+	}|{
+		'$ref': string,
+	})&({
+		properties:{[key: string]: object}
+	}|{})
+) : ts.MethodDeclaration {
+	let constructor_body:ts.ExpressionStatement[] = [];
+	let remapped_count = 0;
+	const remapped_properties:{[key: string]: string} = {};
+	const constructor_arg = ('required' in data ? data.required : []).map((property) => {
+		const property_name = computed_property_name_or_undefined(property);
+		const name = needs_element_access(property) ? `remapped_${++remapped_count}` : property;
+
+		if (property_name) {
+			remapped_properties[property] = name;
+		}
+
+		return ts.factory.createBindingElement(
+			undefined,
+			property_name,
+			name
+		);
+	});
+
+	if ('required' in data && 'properties' in data) {
+		constructor_body.push(...data.required.map((property, index) => {
+			const property_object = data.properties[
+				property as keyof typeof data.properties
+				] as {
+				[key: string]: {
+					type: string,
+					pattern?: string,
+				}
+			};
+
+			let assigned_value:ts.Expression = ts.factory.createIdentifier(
+				property in remapped_properties ? remapped_properties[property] : property
+			);
+
+			if (property_object && 'pattern' in property_object && 'string' === typeof property_object.pattern) {
+				assigned_value = create_callExpression__for_validation_function(
+					'regexp_argument',
+					index,
+					[
+						assigned_value,
+						ts.factory.createStringLiteral(property_object.pattern),
+					]
+				);
+			}
+
+			return create_this_assignment(property, assigned_value);
+		}));
+	}
+
+	if ('$ref' in data && data['$ref']?.startsWith('#/definitions/')) {
+		constructor_body = [
+			ts.factory.createExpressionStatement(ts.factory.createCallExpression(
+				ts.factory.createSuper(),
+				undefined,
+				[ts.factory.createIdentifier('rest')]
+			)),
+			...constructor_body,
+		];
+		constructor_arg.push(ts.factory.createBindingElement(
+			ts.factory.createToken(ts.SyntaxKind.DotDotDotToken),
+			undefined,
+			'rest'
+		));
+	}
+
+	return create_method_without_type_parameters(
+		'constructor',
+		[
+			ts.factory.createParameterDeclaration(
+				undefined,
+				undefined,
+				ts.factory.createObjectBindingPattern(constructor_arg),
+				undefined,
+				ts.factory.createTypeReferenceNode(adjust_class_name(`${reference_name}__constructor_args`))
+			),
+		],
+		constructor_body,
+		['protected']
+	);
 }

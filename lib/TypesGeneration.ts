@@ -12,7 +12,7 @@ export abstract class TypesGeneration<T1 extends object, T2 extends T1|string, T
 {
 	protected code_generator:code_generator<T1, T3>;
 
-	constructor(generation:code_generator<T1, T3>) {
+	protected constructor(generation:code_generator<T1, T3>) {
 		this.code_generator = generation;
 	}
 
@@ -111,6 +111,27 @@ export class ImportTracker
 	static set_imports(file:string, imports:imports_shorthand)
 	{
 		this.imports[file] = imports;
+	}
+
+	static merge_and_set_imports(imports:import_these_later)
+	{
+		for (const entry of Object.entries(imports)) {
+			const imports_shorthand:imports_shorthand = [];
+
+			const [filename, file_imports] = entry;
+
+			for (const inner_entry of Object.entries(file_imports)) {
+				const [from, import_these] = inner_entry;
+
+				if (import_these.length) {
+					imports_shorthand.push({from, import_these: import_these as [string, ...string[]]});
+				}
+			}
+
+			if (imports_shorthand.length) {
+				ImportTracker.set_imports(filename, imports_shorthand);
+			}
+		}
 	}
 
 	static generate_imports(file:string) : ts.ImportDeclaration[] {

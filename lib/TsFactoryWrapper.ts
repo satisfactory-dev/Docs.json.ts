@@ -3,7 +3,9 @@ import ts, {
 	HeritageClause,
 	KeywordTypeSyntaxKind, MethodDeclaration,
 	Modifier,
-	PropertyDeclaration, SyntaxKind, TypeNode, TypeParameterDeclaration, TypeReferenceNode,
+	PropertyDeclaration,
+	TypeNode,
+	TypeParameterDeclaration,
 } from 'typescript';
 
 declare type supported_property_modifiers = ('public'|'abstract'|'readonly')[];
@@ -174,10 +176,6 @@ const auto_constructor_property_types_from_vectors = {
 	'#/definitions/quaternion--semi-native' : adjust_class_name('quaternion--semi-native'),
 	'#/definitions/xyz--semi-native': adjust_class_name('xyz--semi-native'),
 };
-
-export const auto_constructor_property_types_from_refs = [
-	Object.keys(auto_constructor_property_types_from_vectors),
-];
 
 export function create_callExpression__for_validation_function(
 	call_function: string,
@@ -491,7 +489,7 @@ export function create_throw_if(
 
 export function create_template_span(span_arguments:[(string|Expression), ...(string|Expression)[]]) : ts.TemplateExpression | ts.StringLiteral {
 	const stack = span_arguments.reduce(
-		(was, is, index, array) => {
+		(was, is) => {
 			if ('string' === typeof is) {
 				if (1 === was.length) {
 					was[0] += is;

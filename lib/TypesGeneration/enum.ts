@@ -5,11 +5,9 @@ import {
 	create_modifier,
 	create_string_starts_with,
 	create_type,
-	createParameter
 } from "../TsFactoryWrapper";
 import {schema as const_schema} from './constants';
 import {TypeNodeGeneration, TypeNodeGenerationResult} from "../TypeNodeGeneration";
-import update8_schema from '../../schema/update8.schema.json' assert {type: 'json'};
 
 export const target_files = {
 	'boolean': 'common/enum.ts',

@@ -111,7 +111,7 @@ export const type_node_generators = [
 				},
 			},
 		},
-		(data) => {
+		() => {
 			const reference_name = adjust_class_name('empty-object');
 
 			return new TypeNodeGenerationResult(

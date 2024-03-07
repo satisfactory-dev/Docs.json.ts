@@ -1,7 +1,4 @@
 import Ajv, {_, KeywordCxt} from 'ajv/dist/2020';
-import {default as standalone} from 'ajv/dist/standalone';
-
-import {format_code} from './DocsTsGenerator';
 
 import schema from "../schema/update8.schema.json" assert {type: 'json'};
 
