@@ -339,7 +339,7 @@ export class DocsTsGenerator
 
 			for (const generator of [
 				...validator_custom_generators,
-				...Update8.generate_generators(),
+				...Update8.generate_generators(default_config.ajv),
 				...vectors_custom_generators,
 			]) {
 				const Classes_results:(

@@ -1,5 +1,6 @@
 import {dirname} from 'node:path';
 import ts from 'typescript';
+import Ajv from 'ajv/dist/2020';
 
 import {
 	TypeNodeGenerationMatcher,
@@ -20,7 +21,7 @@ import {
 	createProperty_with_specific_type,
 	supported_modifiers
 } from '../TsFactoryWrapper';
-import {default_config, extract_UnrealEngineString} from '../DocsValidation';
+import {extract_UnrealEngineString} from '../DocsValidation';
 import {import_these_later} from '../TypesGeneration';
 
 import schema from '../../schema/update8.schema.json' assert {type: 'json'};
@@ -129,7 +130,11 @@ export class Update8TypeNodeGeneration {
 		}
 	}
 
-	private generate_class(ref: keyof typeof schema.definitions, filename: string) {
+	private generate_class(
+		ajv:Ajv,
+		ref: keyof typeof schema.definitions,
+		filename: string
+	) {
 		const path_relative = '../'.repeat(dirname(filename).split('/').length);
 
 		const class_name = adjust_class_name(ref);
@@ -157,7 +162,7 @@ export class Update8TypeNodeGeneration {
 
 		if ('properties' in data) {
 			const types = this.type_node_generator.find_from_properties(
-				default_config.ajv,
+				ajv,
 				data.properties
 			);
 
@@ -214,7 +219,7 @@ export class Update8TypeNodeGeneration {
 		});
 	}
 
-	generate_generators() {
+	generate_generators(ajv:Ajv) {
 		return [
 			(): { file: string, node: ts.Node, ref?: string }[] => {
 				this.classes.push(...supported_base_classes.map((reference_name) => {
@@ -322,6 +327,7 @@ export class Update8TypeNodeGeneration {
 					const [ref, filename] = entry;
 
 					this.generate_class(
+						ajv,
 						check_ref(ref),
 						filename,
 					);
