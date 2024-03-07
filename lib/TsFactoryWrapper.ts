@@ -66,6 +66,9 @@ export const modifier_map:{[key: string]: () => ts.ModifierToken<ts.ModifierSynt
 	'static': () => {
 		return ts.factory.createModifier(ts.SyntaxKind.StaticKeyword);
 	},
+	'declare': () => {
+		return ts.factory.createModifier(ts.SyntaxKind.DeclareKeyword);
+	},
 };
 
 export type supported_modifiers = keyof typeof modifier_map;
@@ -165,16 +168,17 @@ export function createClass(
 	);
 }
 
-export const auto_constructor_property_types_from_keywords:{[key: string]: KeywordTypeSyntaxKind} = {
-	'#/definitions/decimal-string--signed': ts.SyntaxKind.NumberKeyword,
-	'#/definitions/decimal-string': ts.SyntaxKind.NumberKeyword,
-	'#/definitions/integer-string--signed': ts.SyntaxKind.NumberKeyword,
-	'#/definitions/integer-string': ts.SyntaxKind.NumberKeyword,
-};
-
-const auto_constructor_property_types_from_vectors = {
+export const auto_constructor_property_types_from_generated_types = {
 	'#/definitions/quaternion--semi-native' : adjust_class_name('quaternion--semi-native'),
 	'#/definitions/xyz--semi-native': adjust_class_name('xyz--semi-native'),
+	'#/definitions/decimal-string--signed': adjust_class_name('decimal-string--signed__type'),
+	'#/definitions/decimal-string': adjust_class_name('decimal-string__type'),
+	'#/definitions/integer-string--signed': adjust_class_name('integer-string--signed__type'),
+	'#/definitions/integer-string': adjust_class_name('integer-string__type'),
+	'#/definitions/mDisableSnapOn': adjust_class_name('mDisableSnapOn'),
+	'#/definitions/mDockingRuleSet': adjust_class_name('mDockingRuleSet'),
+	'#/definitions/EditorCurveData': adjust_class_name('EditorCurveData'),
+	'#/definitions/mLightControlData': adjust_class_name('mLightControlData'),
 };
 
 export function create_callExpression__for_validation_function(
@@ -205,7 +209,7 @@ export function createClass__members__with_auto_constructor<T extends [string, .
 		type: 'object',
 		required: T,
 		properties: {[key: string]: {
-			'$ref': Exclude<keyof typeof auto_constructor_property_types_from_keywords, number>,
+			'$ref': keyof typeof auto_constructor_property_types_from_generated_types,
 		}},
 	},
 	properties_modifiers:supported_property_modifiers,
@@ -226,14 +230,13 @@ export function createClass__members__with_auto_constructor<T extends [string, .
 					() => {
 						const [property_name, property_data] = entry;
 
-						let type:ts.KeywordTypeSyntaxKind|ts.TypeNode = (
-							property_data['$ref'] in auto_constructor_property_types_from_vectors)
-							? ts.factory.createTypeReferenceNode(adjust_class_name(property_data['$ref'].substring(14)))
-							: auto_constructor_property_types_from_keywords[property_data['$ref']];
+						let type:ts.TypeNode = ts.factory.createTypeReferenceNode(
+							adjust_class_name(auto_constructor_property_types_from_generated_types[property_data['$ref']])
+						);
 
 						if (!data.required.includes(property_name)) {
 							type = ts.factory.createUnionTypeNode([
-								'number' === typeof type ? ts.factory.createKeywordTypeNode(type) : type,
+								type,
 								create_type('undefined'),
 							]);
 						}
@@ -243,14 +246,13 @@ export function createClass__members__with_auto_constructor<T extends [string, .
 					() => {
 						const [property_name, property_data] = entry;
 
-						let type:ts.KeywordTypeSyntaxKind|ts.TypeNode = (
-							property_data['$ref'] in auto_constructor_property_types_from_vectors)
-							? ts.factory.createTypeReferenceNode(adjust_class_name(property_data['$ref'].substring(14)))
-							: ts.SyntaxKind.StringKeyword;
+						let type:ts.TypeNode = ts.factory.createTypeReferenceNode(
+							adjust_class_name(auto_constructor_property_types_from_generated_types[property_data['$ref']])
+						);
 
 						if (!data.required.includes(property_name)) {
 							type = ts.factory.createUnionTypeNode([
-								'number' === typeof type ? ts.factory.createKeywordTypeNode(type) : type,
+								type,
 								create_type('undefined'),
 							]);
 						}
@@ -278,18 +280,13 @@ export function createClass__members__with_auto_constructor<T extends [string, .
 		Object.entries(data.properties).map((entry, index) => {
 			const [property_name, property] = entry;
 
-			if (property['$ref'] in auto_constructor_property_types_from_vectors) {
+			if (property['$ref'] in auto_constructor_property_types_from_generated_types) {
 				return create_this_assignment(property_name, property_name);
 			}
 
 			const is_int = (
 				property['$ref'] === '#/definitions/integer-string'
 				|| property['$ref'] === '#/definitions/integer-string--signed'
-			);
-
-			const is_float = (
-				property['$ref'] === '#/definitions/decimal-string'
-				|| property['$ref'] === '#/definitions/decimal-string--signed'
 			);
 
 			const is_signed = property['$ref'].endsWith('--signed');
@@ -304,12 +301,10 @@ export function createClass__members__with_auto_constructor<T extends [string, .
 				[ts.factory.createIdentifier(property_name)]
 			);
 
-			return create_this_assignment(property_name, (!is_int && !is_float) ? validate : ts.factory.createCallExpression(
-					ts.factory.createIdentifier(is_int ? 'parseInt' : 'parseFloat'),
-					undefined,
-
-					is_int ? [validate, ts.factory.createNumericLiteral(10)] : [validate]
-			));
+			return create_this_assignment(
+				property_name,
+				validate
+			);
 		}),
 		['public']
 	));
@@ -545,18 +540,21 @@ export function create_basic_reference_argument_template_span(
 	);
 }
 
-export function flexibly_create_regex_validation_function(
+export function very_flexibly_create_regex_validation_function(
 	reference_name: string,
 	regexp_argument: ts.Expression,
 	parameters: ts.ParameterDeclaration[],
-	error_template_spans: ts.TemplateSpan[]
+	return_type: () => ts.TypeNode,
+	error_template_spans: ts.TemplateSpan[],
+	return_statement:ts.ReturnStatement|undefined = undefined
 ) : ts.FunctionDeclaration {
 	return create_function(
 		reference_name,
 		parameters,
-		ts.factory.createKeywordTypeNode(ts.SyntaxKind.StringKeyword),
+		return_type(),
 		[
-			ts.factory.createIfStatement(
+			create_throw_if(
+				'Error',
 				ts.factory.createLogicalNot(ts.factory.createCallExpression(
 					ts.factory.createPropertyAccessExpression(
 						ts.factory.createParenthesizedExpression(
@@ -573,18 +571,42 @@ export function flexibly_create_regex_validation_function(
 					undefined,
 					[ts.factory.createIdentifier('value')]
 				)),
-				create_throw('Error', [
-						(reference_name in custom_pattern_errors)
-							? custom_pattern_errors[reference_name]()
-							: ts.factory.createTemplateExpression(
-								ts.factory.createTemplateHead(''),
-								error_template_spans
-							)
-				])
+				[
+					(reference_name in custom_pattern_errors)
+						? custom_pattern_errors[reference_name]()
+						: ts.factory.createTemplateExpression(
+							ts.factory.createTemplateHead(''),
+							error_template_spans
+						)
+				]
 			),
-			ts.factory.createReturnStatement(ts.factory.createIdentifier('value')),
+			return_statement ? return_statement : ts.factory.createReturnStatement(
+				ts.factory.createAsExpression(
+					ts.factory.createIdentifier('value'),
+					return_type()
+				)
+			),
 		]
 	)
+}
+
+export function flexibly_create_regex_validation_function(
+	reference_name: string,
+	regexp_argument: ts.Expression,
+	parameters: ts.ParameterDeclaration[],
+	error_template_spans: ts.TemplateSpan[],
+	pattern_argument:(() => ts.TypeNode)|undefined = undefined
+) : ts.FunctionDeclaration {
+	return very_flexibly_create_regex_validation_function(
+		reference_name,
+		regexp_argument,
+		parameters,
+		() => ts.factory.createTypeReferenceNode(
+			'StringPassedRegExp',
+			pattern_argument ? [pattern_argument()] : [create_type('string')]
+		),
+		error_template_spans
+	);
 }
 
 export function create_regex_validation_function(
@@ -603,7 +625,8 @@ export function create_regex_validation_function(
 				ts.factory.createIdentifier('reference_argument'),
 				ts.factory.createTemplateTail(` must pass the regex ${data.pattern}`)
 			)
-		]
+		],
+		() => ts.factory.createLiteralTypeNode(ts.factory.createStringLiteral(data.pattern))
 	);
 }
 
@@ -619,6 +642,21 @@ const type_map = {
 
 export function create_type(type:keyof typeof type_map): ts.KeywordTypeNode {
 	return ts.factory.createKeywordTypeNode(type_map[type] as ts.KeywordTypeSyntaxKind);
+}
+
+export function create_object_type<
+	T extends {[key: string]: ts.TypeNode} = {[key: string]: ts.TypeNode}
+>(properties:T, required:(keyof T)[]) : ts.TypeLiteralNode {
+	return ts.factory.createTypeLiteralNode(Object.entries(properties).map((entry) => {
+		const [property, type] = entry;
+
+		return ts.factory.createPropertySignature(
+			undefined,
+			property_name_or_computed(property),
+			required.includes(property) ? undefined : ts.factory.createToken(ts.SyntaxKind.QuestionToken),
+			type
+		);
+	}));
 }
 
 export function needs_element_access(property:string) : boolean

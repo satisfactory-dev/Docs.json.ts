@@ -15,7 +15,8 @@ import {
 	flexibly_create_regex_validation_function,
 	create_method_with_type_parameters,
 	create_template_span,
-	create_index_access
+	create_index_access,
+	create_object_type, very_flexibly_create_regex_validation_function
 } from "../TsFactoryWrapper";
 import {TypeNodeGeneration, TypeNodeGenerationResult} from "../TypeNodeGeneration";
 import {UnrealEngineString_regex} from "../DocsValidation";
@@ -80,7 +81,33 @@ export const generators = [
 	>(
 		schema,
 		(data, reference_name): ts.FunctionDeclaration => {
-			return create_regex_validation_function(data, reference_name);
+			const value = ts.factory.createIdentifier('value');
+			const is_int = reference_name.startsWith('integer-');
+
+			return very_flexibly_create_regex_validation_function(
+				reference_name,
+				ts.factory.createStringLiteral(data.pattern),
+				[
+					createParameter('value', ts.SyntaxKind.StringKeyword),
+					createParameter('reference_argument', ts.SyntaxKind.StringKeyword),
+				],
+				() => ts.factory.createTypeReferenceNode(adjust_class_name(`${reference_name}__type`)),
+				[
+					ts.factory.createTemplateSpan(
+						ts.factory.createIdentifier('reference_argument'),
+						ts.factory.createTemplateTail(` must pass the regex ${data.pattern}`)
+					)
+				],
+				ts.factory.createReturnStatement(ts.factory.createAsExpression(
+					ts.factory.createCallExpression(
+						ts.factory.createIdentifier(is_int ? 'parseInt' : 'parseFloat'),
+						undefined,
+
+						is_int ? [value, ts.factory.createNumericLiteral(10)] : [value]
+					),
+					ts.factory.createTypeReferenceNode(adjust_class_name(`${reference_name}__type`))
+				)),
+			);
 		}
 	),
 	new TypesGenerationMatchesReferenceName<
@@ -99,6 +126,35 @@ export const generators = [
 						ts.factory.createLiteralTypeNode(ts.factory.createStringLiteral(data.string_starts_with)),
 					]
 				)
+			);
+		}
+	),
+	new TypesGenerationMatchesReferenceName<
+		{
+			type: 'string',
+			pattern: string,
+		},
+		keyof typeof target_files
+	>(
+		Object.keys(target_files) as (keyof typeof target_files)[],
+		(data, reference_name) => {
+			return ts.factory.createTypeAliasDeclaration(
+				[create_modifier('export')],
+				adjust_class_name(reference_name),
+				[
+					ts.factory.createTypeParameterDeclaration(
+						undefined,
+						'T',
+						create_type('number'),
+						create_type('number'),
+					),
+				],
+				ts.factory.createTypeReferenceNode(
+					'StrictlyTypedNumberFromRegExp',
+					[ts.factory.createLiteralTypeNode(ts.factory.createStringLiteral(
+						data.pattern
+					))]
+				),
 			);
 		}
 	),
@@ -631,6 +687,60 @@ export const custom_generators = [
 
 		return nodes;
 	},
+	(): {file: string, node:ts.Node}[] => {
+		return [
+			{file: 'utils/validators.ts', node: ts.factory.createTypeAliasDeclaration(
+				[create_modifier('declare')],
+				'StrictlyTypedNumberFromRegExp',
+				[
+					ts.factory.createTypeParameterDeclaration(
+						undefined,
+						'pattern',
+						create_type('string')
+					),
+					ts.factory.createTypeParameterDeclaration(
+						undefined,
+						'T',
+						create_type('number'),
+						create_type('number')
+					),
+				],
+				ts.factory.createIntersectionTypeNode([
+					create_type('never'),
+					ts.factory.createTypeReferenceNode('T'),
+					create_object_type(
+						{_DocsJsonPattern: ts.factory.createTypeReferenceNode('pattern')},
+						['_DocsJsonPattern']
+					)
+				])
+			)},
+			{file: 'utils/validators.ts', node: ts.factory.createTypeAliasDeclaration(
+				[create_modifier('declare')],
+				'StringPassedRegExp',
+				[
+					ts.factory.createTypeParameterDeclaration(
+						undefined,
+						'pattern',
+						create_type('string')
+					),
+					ts.factory.createTypeParameterDeclaration(
+						undefined,
+						'T',
+						create_type('string'),
+						create_type('string')
+					),
+				],
+				ts.factory.createIntersectionTypeNode([
+					create_type('never'),
+					ts.factory.createTypeReferenceNode('T'),
+					create_object_type(
+						{_DocsJsonPattern: ts.factory.createTypeReferenceNode('pattern')},
+						['_DocsJsonPattern']
+					)
+				])
+			)},
+		];
+	}
 ];
 
 export const UnrealEngineString_schema = {
@@ -658,7 +768,10 @@ export const type_node_generators = [
 		const ref_key = property['$ref'].substring(14) as keyof typeof target_files;
 
 		return new TypeNodeGenerationResult(
-			() => create_type('number'),
+			() => ts.factory.createTypeReferenceNode(
+				'StrictlyTypedNumberFromRegExp',
+				[create_type('string')]
+			),
 			{
 				[target_files[ref_key].replace(/\.ts$/, '')]: [adjust_class_name(ref_key)],
 			}

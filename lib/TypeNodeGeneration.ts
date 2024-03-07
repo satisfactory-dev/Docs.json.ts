@@ -15,8 +15,8 @@ import {
 	computed_property_name_or_undefined,
 	create_callExpression__for_validation_function,
 	create_method_without_type_parameters,
-	create_modifier,
-	create_this_assignment,
+	create_modifier, create_object_type,
+	create_this_assignment, create_type,
 	needs_element_access,
 	property_name_or_computed,
 } from "./TsFactoryWrapper";
@@ -494,26 +494,30 @@ export class TypeNodeGenerationMatcher
 export function create_constructor_args<T1 = string>(
 	file:T1,
 	reference_name:string,
-	data: {
+	data: ({
 		required: string[],
 		'$ref': string,
 	}|{
 		required: string[],
 	}|{
 		'$ref': string,
-	}
+	})&({properties: {[key: string]: object}}|{})
 ) : {file: T1, node: ts.TypeAliasDeclaration} {
 	let type:ts.TypeNode|undefined;
 
-	if ('required' in data && data.required.length) {
-		type = ts.factory.createTypeLiteralNode(data.required.map((property) => {
-			return ts.factory.createPropertySignature(
-				undefined,
-				property_name_or_computed(property),
-				undefined,
-				ts.factory.createKeywordTypeNode(ts.SyntaxKind.StringKeyword)
-			);
-		}));
+	const required = ('required' in data ? data.required : []);
+
+	const properties = required.concat('properties' in data ? Object.keys(data.properties) : []).reduce(
+		(was, is) => {
+			was[is] = ts.factory.createKeywordTypeNode(ts.SyntaxKind.StringKeyword);
+
+			return was;
+		},
+		{} as {[key: string]: ts.KeywordTypeNode}
+	);
+
+	if ('required' in data && data.required.length || 'properties' in data) {
+		type = create_object_type<typeof properties>(properties, required);
 	}
 
 	if ('$ref' in data && data['$ref']?.startsWith('#/definitions/')) {

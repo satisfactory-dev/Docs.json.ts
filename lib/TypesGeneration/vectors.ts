@@ -1,7 +1,7 @@
 import {ImportTracker, TypesGenerationMatchesReferenceName} from "../TypesGeneration";
 import {
 	adjust_class_name,
-	auto_constructor_property_types_from_keywords,
+	auto_constructor_property_types_from_generated_types,
 	createClass,
 	createClass__members__with_auto_constructor,
 } from "../TsFactoryWrapper";
@@ -27,9 +27,9 @@ export const supported_meta_types = [
 ImportTracker.set_imports('common/vectors.ts', [
 	{
 		import_these: [
-			'decimal_string',
-			'decimal_string__signed',
-			'integer_string',
+			'decimal_string__type',
+			'decimal_string__signed__type',
+			'integer_string__type',
 		],
 		from: '../utils/validators',
 	},
@@ -39,7 +39,7 @@ declare type vector_object_type = {
 	type: 'object',
 	required: [string, ...string[]],
 	properties: {[key: string]: {
-		'$ref': Exclude<keyof typeof auto_constructor_property_types_from_keywords, number>,
+		'$ref': keyof typeof auto_constructor_property_types_from_generated_types,
 	}},
 };
 
@@ -50,12 +50,14 @@ export const generators = [
 			minLength: 1,
 			object_string: vector_object_type
 		},
-		Exclude<keyof typeof auto_constructor_property_types_from_keywords, number>
+		keyof typeof auto_constructor_property_types_from_generated_types
 	>(
-		Object.keys(target_files),
+		Object.keys(target_files) as (keyof typeof auto_constructor_property_types_from_generated_types)[],
 		(data, reference_name) => {
+			data = ('object_string' in data ? data.object_string : data) as vector_object_type;
+
 			const members = createClass__members__with_auto_constructor(
-				'object_string' in data ? data.object_string : data,
+				data,
 				['public', 'readonly'],
 			);
 

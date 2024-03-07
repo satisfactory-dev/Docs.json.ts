@@ -3,7 +3,7 @@ import ts from "typescript";
 import {
 	adjust_class_name,
 	create_minimum_size_typed_array_of_type_references,
-	create_modifier
+	create_modifier, create_object_type
 } from "../TsFactoryWrapper";
 import {TypeNodeGeneration, TypeNodeGenerationResult} from "../TypeNodeGeneration";
 export const target_files = {

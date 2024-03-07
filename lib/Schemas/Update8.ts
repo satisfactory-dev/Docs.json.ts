@@ -15,7 +15,7 @@ import {
 	adjust_unrealengine_prefix,
 	adjust_unrealengine_value,
 	create_class_options,
-	create_modifier,
+	create_modifier, create_type,
 	createClass,
 	createProperty,
 	createProperty_with_specific_type,
@@ -56,7 +56,7 @@ declare type NativeClass = {
 	},
 };
 
-declare type definition_key = keyof typeof schema.definitions;
+declare type definition_key<T extends string = keyof typeof schema.definitions> = keyof typeof schema.definitions;
 
 export function get_dependency_tree(ref: definition_key): (definition_key)[] {
 	const ancestry: definition_key[] = [ref];
@@ -76,12 +76,17 @@ export function get_dependency_tree(ref: definition_key): (definition_key)[] {
 	return ancestry;
 }
 
-export function check_ref(ref: string): definition_key {
-	if (!(ref in schema.definitions)) {
+export function is_ref(ref:string) : ref is definition_key&(typeof ref)
+{
+	return ref in schema.definitions;
+}
+
+export function check_ref(ref: string): (definition_key&(typeof ref)) {
+	if (!is_ref(ref)) {
 		throw new Error(`${ref} not in the update 8 schema!`);
 	}
 
-	return ref as definition_key;
+	return ref as (definition_key&(typeof ref));
 }
 
 export class Update8TypeNodeGeneration {
@@ -219,6 +224,40 @@ export class Update8TypeNodeGeneration {
 				members,
 			),
 		});
+	}
+
+	private generate_types() {
+		const StrictlyTypedNumberFromRegExp_reference_names: (
+			| 'decimal-string'
+			| 'decimal-string--signed'
+			| 'integer-string'
+			| 'integer-string--signed'
+		)[] = [
+			'decimal-string',
+			'decimal-string--signed',
+			'integer-string',
+			'integer-string--signed',
+		];
+
+		for (const reference_name of StrictlyTypedNumberFromRegExp_reference_names.filter(is_ref)) {
+			this.classes.push({file: 'utils/validators.ts', node: ts.factory.createTypeAliasDeclaration(
+					[create_modifier('export')],
+					adjust_class_name(`${reference_name}__type`),
+					[ts.factory.createTypeParameterDeclaration(
+						undefined,
+						'T',
+						create_type('number'),
+						create_type('number'),
+					)],
+					ts.factory.createTypeReferenceNode(
+						'StrictlyTypedNumberFromRegExp',
+						[
+							ts.factory.createLiteralTypeNode(ts.factory.createStringLiteral(schema.definitions[reference_name].pattern)),
+							ts.factory.createTypeReferenceNode('T'),
+						]
+					)
+				)});
+		}
 	}
 
 	private generate_base_classes() {
@@ -391,6 +430,7 @@ export class Update8TypeNodeGeneration {
 	) {
 		return [
 			() => {
+				this.generate_types();
 				this.generate_base_classes();
 				this.generate_concrete_classes(ajv);
 				// this.generate_types_for_abstracts(ajv, already_supported);
