@@ -4,13 +4,6 @@ import {
 	create_constructor_args,
 	create_binding_constructor,
 } from '../TypeNodeGeneration';
-import {type_node_generators as enum_type_node_generators} from '../TypesGeneration/enum';
-import {type_node_generators as const_type_node_generators} from '../TypesGeneration/constants';
-import {type_node_generators as validators_type_node_generators} from '../TypesGeneration/validators';
-import {type_node_generators as vectors_type_node_generators} from '../TypesGeneration/vectors';
-import {type_node_generators as color_type_node_generators} from '../TypesGeneration/color';
-import {type_node_generators as arrays_type_node_generators} from '../TypesGeneration/arrays';
-import {type_node_generators as prefixes_type_node_generators} from '../TypesGeneration/prefixes';
 import {supported_base_classes, type_node_generators} from '../TypesGeneration/Classes';
 import {dirname} from 'node:path';
 import {
@@ -53,20 +46,6 @@ declare type NativeClass = {
 	},
 };
 
-export function type_node_generation_matcher() : TypeNodeGenerationMatcher
-{
-	return new TypeNodeGenerationMatcher([
-		...enum_type_node_generators,
-		...const_type_node_generators,
-		...validators_type_node_generators,
-		...vectors_type_node_generators,
-		...color_type_node_generators,
-		...arrays_type_node_generators,
-		...type_node_generators,
-		...prefixes_type_node_generators,
-	]);
-}
-
 export function get_dependency_tree(ref:keyof typeof schema.definitions) : string[] {
 	const ancestry:string[] = [ref];
 
@@ -94,57 +73,57 @@ export function check_ref(ref:string) : keyof typeof schema.definitions
 	return ref as keyof typeof schema.definitions;
 }
 
-export function build_abstracts(
-	ref:keyof typeof schema.definitions,
-	filename:string,
-	imports:import_these_later,
-	abstracts:string[],
-	other_filenames:{[key: string]: string}
-) : string[] {
+export class Update8TypeNodeGeneration
+{
+	private readonly type_node_generator:TypeNodeGenerationMatcher;
+	public classes:{file: string, node:ts.Node, ref?:string}[] = [];
+	public abstracts:string[] = [];
+	public imports:import_these_later = {};
+
+	constructor(type_node_generator:TypeNodeGenerationMatcher) {
+		this.type_node_generator = type_node_generator;
+	}
+
+	private build_abstracts(
+		ref:keyof typeof schema.definitions,
+		filename:string,
+		other_filenames:{[key: string]: string}
+	) {
 	const tree = get_dependency_tree(ref);
 	const parent_ref = tree[1];
 
 	if (!parent_ref) {
-		throw new Error('foo');
+		throw new Error(`No parent ref for ${ref}`);
 	}
 
 	if (parent_ref in other_filenames && filename !== other_filenames[parent_ref]) {
 		const other_filename = other_filenames[parent_ref];
 		const other_class = adjust_class_name(parent_ref);
 
-		if ( ! (filename in imports)) {
-			imports[filename] = {};
+		if ( ! (filename in this.imports)) {
+			this.imports[filename] = {};
 		}
 
-		if ( ! (other_filename in imports[filename])) {
-			imports[filename][other_filename] = [];
+		if ( ! (other_filename in this.imports[filename])) {
+			this.imports[filename][other_filename] = [];
 		}
 
-		if ( ! imports[filename][other_filename].includes(other_class)) {
-			imports[filename][other_filename].push(other_class);
+		if ( ! this.imports[filename][other_filename].includes(other_class)) {
+			this.imports[filename][other_filename].push(other_class);
 		}
 	}
 
 	const [, ...ancestors] = tree;
 
 	for (const probably_abstract of ancestors) {
-		if (!abstracts.includes(probably_abstract)) {
-			abstracts.push(probably_abstract);
+		if (!this.abstracts.includes(probably_abstract)) {
+			this.abstracts.push(probably_abstract);
 		}
 	}
+	}
 
-	return abstracts;
-}
-
-export function generate_class(
-	ref:keyof typeof schema.definitions,
-	filename:string,
-	type_node_generator:TypeNodeGenerationMatcher,
-	imports:import_these_later,
-	classes:{file: string, node:ts.Node, ref:string}[],
-	abstracts:string[]
-) : [{ref: string, file: string, node:ts.Node}[], string[]] {
-
+	private generate_class(ref:keyof typeof schema.definitions, filename:string)
+	{
 	const path_relative = '../'.repeat(dirname(filename).split('/').length);
 
 	const class_name = adjust_class_name(ref);
@@ -158,7 +137,7 @@ export function generate_class(
 
 	const modifiers:supported_modifiers[] = ['export'];
 
-	if (abstracts.includes(ref)) {
+	if (this.abstracts.includes(ref)) {
 		modifiers.push('abstract');
 	}
 
@@ -167,11 +146,11 @@ export function generate_class(
 	const data = schema.definitions[ref];
 
 	if ('$ref' in data || 'required' in data) {
-		classes.push({...create_constructor_args(filename, class_name, data), ref});
+		this.classes.push({...create_constructor_args(filename, class_name, data), ref});
 	}
 
 	if ('properties' in data) {
-		const types = type_node_generator.find_from_properties(
+		const types = this.type_node_generator.find_from_properties(
 			default_config.ajv,
 			data.properties
 		);
@@ -180,7 +159,7 @@ export function generate_class(
 			filename,
 			path_relative,
 			Object.values(types),
-			imports
+			this.imports
 		);
 
 		const required_properties = 'required' in data ? data.required : [];
@@ -191,7 +170,7 @@ export function generate_class(
 				filename,
 				path_relative,
 				generator,
-				imports
+				this.imports
 			);
 
 			return createProperty_with_specific_type(
@@ -209,7 +188,7 @@ export function generate_class(
 		members.push(create_binding_constructor(ref, data));
 	}
 
-	classes.push({
+	this.classes.push({
 		ref,
 		file: filename,
 		node: ts.factory.createClassDeclaration(
@@ -227,20 +206,17 @@ export function generate_class(
 			members,
 		),
 	});
+	}
 
-	return [classes, abstracts];
-}
-
-
-export const custom_generators = [
+	generate_generators()
+	{
+		return [
 	() : {file: string, node:ts.Node, ref?:string}[] => {
-		const output:{file: string, node:ts.Node, ref?:string}[] = [];
-
-		output.push(...supported_base_classes.map((reference_name) => {
+		this.classes.push(...supported_base_classes.map((reference_name) => {
 			return create_constructor_args('classes/base.ts', reference_name, schema.definitions[reference_name]);
 		}));
 
-		output.push(...supported_base_classes.map((reference_name) => {
+		this.classes.push(...supported_base_classes.map((reference_name) => {
 			const data = schema.definitions[reference_name];
 
 			const members:(ts.PropertyDeclaration|ts.MethodDeclaration)[] = data.required.map((property) => {
@@ -269,7 +245,7 @@ export const custom_generators = [
 			};
 		}));
 
-		return output;
+		return [];
 	},
 	() : {file: string, node:ts.Node, ref:string}[] => {
 		const checked:string[] = [];
@@ -277,11 +253,7 @@ export const custom_generators = [
 		const filenames:{[key: string]: string} = {};
 		const imports:import_these_later = {};
 
-		let classes:{file: string, node:ts.Node, ref:string}[] = [];
-
-		let abstracts:string[] = [];
-
-		const type_node_generator = type_node_generation_matcher();
+		const classes:{file: string, node:ts.Node, ref:string}[] = [];
 
 		function populate_checked_and_filenames(ref:string, NativeClass:NativeClass) {
 			if (checked.includes(ref)) {
@@ -338,24 +310,23 @@ export const custom_generators = [
 		for (const entry of Object.entries(filenames)) {
 			const [ref, filename] = entry;
 
-			abstracts = build_abstracts(check_ref(ref), filename, imports, abstracts, filenames);
+			this.build_abstracts(check_ref(ref), filename, filenames);
 		}
 
 		for (const entry of Object.entries(filenames)) {
 			const [ref, filename] = entry;
 
-			[classes, abstracts] = generate_class(
+			this.generate_class(
 				check_ref(ref),
 				filename,
-				type_node_generator,
-				imports,
-				classes,
-				abstracts,
 			);
 		}
 
-		ImportTracker.merge_and_set_imports(imports);
-
-		return classes;
+		return [];
 	},
-];
+			() => { // smoosh 'em all back together
+				return this.classes;
+			},
+		];
+	}
+}

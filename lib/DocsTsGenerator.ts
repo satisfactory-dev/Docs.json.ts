@@ -10,29 +10,35 @@ import update8_schema from '../schema/update8.schema.json' assert {type: 'json'}
 import {
 	target_files as color_target_files,
 	generators as color_generators,
+	type_node_generators as color_type_node_generators,
 } from './TypesGeneration/color';
 import {
 	target_files as enum_target_files,
 	generators as enum_generators,
+	type_node_generators as enum_type_node_generators,
 } from './TypesGeneration/enum';
 import {
 	target_files as validator_target_files,
 	generators as validator_generators,
 	custom_generators as validator_custom_generators,
+	type_node_generators as validators_type_node_generators,
 } from './TypesGeneration/validators';
 import {
 	target_files as vectors_target_files,
 	generators as vectors_generators,
 	custom_generators as vectors_custom_generators,
 	supported_meta_types as vectors_supported_meta_types,
+	type_node_generators as vectors_type_node_generators,
 } from './TypesGeneration/vectors';
 import {
 	target_files as constants_target_files,
 	generators as constants_generators,
+	type_node_generators as const_type_node_generators,
 } from './TypesGeneration/constants';
 import {
 	target_files as prefixes_target_files,
 	generators as prefixes_generators,
+	type_node_generators as prefixes_type_node_generators,
 } from './TypesGeneration/prefixes';
 import {
 	TypesGenerationFromSchema,
@@ -48,14 +54,17 @@ import {
 	target_files as classes_target_files,
 	generators as classes_generators,
 	supported_base_classes as Classes_supported_base_classes,
+	type_node_generators,
 } from './TypesGeneration/Classes';
 import {
 	target_files as arrays_target_files,
 	generators as arrays_generators,
+	type_node_generators as arrays_type_node_generators,
 } from './TypesGeneration/arrays';
 import {
-	custom_generators as Update8_custom_generators,
+	Update8TypeNodeGeneration,
 } from './Schemas/Update8';
+import {TypeNodeGenerationMatcher} from "./TypeNodeGeneration";
 
 class ValidationError extends Error
 {
@@ -260,6 +269,17 @@ export class DocsTsGenerator
 			...classes_generators,
 		];
 
+		const type_node_generation = new TypeNodeGenerationMatcher([
+			...enum_type_node_generators,
+			...const_type_node_generators,
+			...validators_type_node_generators,
+			...vectors_type_node_generators,
+			...color_type_node_generators,
+			...arrays_type_node_generators,
+			...type_node_generators,
+			...prefixes_type_node_generators,
+		]);;
+
 		const supported_conversions:GenerationMatch<object>[] = Object.entries(update8_schema.definitions).filter(
 			(e:[string, object]) => {
 				for (const generator of generators) {
@@ -315,9 +335,11 @@ export class DocsTsGenerator
 
 			const files:{[key: string]: ts.Node[]} = {};
 
+			const Update8 = new Update8TypeNodeGeneration(type_node_generation);
+
 			for (const generator of [
 				...validator_custom_generators,
-				...Update8_custom_generators,
+				...Update8.generate_generators(),
 				...vectors_custom_generators,
 			]) {
 				const Classes_results:(
@@ -340,6 +362,8 @@ export class DocsTsGenerator
 					files[file].push(node);
 				}
 			}
+
+			ImportTracker.merge_and_set_imports(Update8.imports);
 
 			missing_target_files = supported_conversions.map((match) => {
 				return match.definition;
