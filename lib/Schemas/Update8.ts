@@ -221,113 +221,113 @@ export class Update8TypeNodeGeneration {
 
 	private generate_base_classes()
 	{
-				this.classes.push(...supported_base_classes.map((reference_name) => {
-					return create_constructor_args('classes/base.ts', reference_name, schema.definitions[reference_name]);
-				}));
+		this.classes.push(...supported_base_classes.map((reference_name) => {
+			return create_constructor_args('classes/base.ts', reference_name, schema.definitions[reference_name]);
+		}));
 
-				this.classes.push(...supported_base_classes.map((reference_name) => {
-					const data = schema.definitions[reference_name];
+		this.classes.push(...supported_base_classes.map((reference_name) => {
+			const data = schema.definitions[reference_name];
 
-					const members: (ts.PropertyDeclaration | ts.MethodDeclaration)[] = data.required.map((property) => {
-						return createProperty(property, ts.SyntaxKind.StringKeyword, [
-							'public',
-						]);
-					});
+			const members: (ts.PropertyDeclaration | ts.MethodDeclaration)[] = data.required.map((property) => {
+				return createProperty(property, ts.SyntaxKind.StringKeyword, [
+					'public',
+				]);
+			});
 
-					members.push(create_binding_constructor(
-						reference_name,
-						data
-					));
+			members.push(create_binding_constructor(
+				reference_name,
+				data
+			));
 
-					const class_options: create_class_options = {
-						modifiers: ['abstract'],
-					};
+			const class_options: create_class_options = {
+				modifiers: ['abstract'],
+			};
 
-					if ('$ref' in data && data['$ref']?.startsWith('#/definitions/')) {
-						class_options.extends = data['$ref'].substring(14);
-					}
+			if ('$ref' in data && data['$ref']?.startsWith('#/definitions/')) {
+				class_options.extends = data['$ref'].substring(14);
+			}
 
-					return {
-						file: 'classes/base.ts',
-						refs: reference_name,
-						node: createClass(reference_name, members, class_options),
-					};
-				}));
+			return {
+				file: 'classes/base.ts',
+				refs: reference_name,
+				node: createClass(reference_name, members, class_options),
+			};
+		}));
 	}
 
 	private generate_concrete_classes(ajv:Ajv)
 	{
-				const checked: string[] = [];
+		const checked: string[] = [];
 
-				const filenames: { [key: string]: string } = {};
+		const filenames: { [key: string]: string } = {};
 
-				function populate_checked_and_filenames(ref: string, NativeClass: NativeClass) {
-					if (checked.includes(ref)) {
-						return;
+		function populate_checked_and_filenames(ref: string, NativeClass: NativeClass) {
+			if (checked.includes(ref)) {
+				return;
+			}
+
+			checked.push(ref);
+
+			const {prefix, value} = extract_UnrealEngineString(NativeClass.properties.NativeClass.const);
+
+			const definition_name = ref.substring(14);
+
+			filenames[definition_name] = `classes/${adjust_unrealengine_prefix(prefix)}/${adjust_unrealengine_value(value)}.ts`;
+		}
+
+		for (const NativeClass of (schema.prefixItems as [NativeClass, ...NativeClass[]])) {
+			let found_some = false;
+			if (
+				'items' in NativeClass.properties.Classes
+				&& false !== NativeClass.properties.Classes.items
+			) {
+				if ('$ref' in NativeClass.properties.Classes.items) {
+					found_some = true;
+					populate_checked_and_filenames(NativeClass.properties.Classes.items['$ref'], NativeClass);
+				} else if ('oneOf' in NativeClass.properties.Classes.items) {
+					for (const entry of NativeClass.properties.Classes.items.oneOf) {
+						found_some = true;
+						populate_checked_and_filenames(entry['$ref'], NativeClass);
 					}
-
-					checked.push(ref);
-
-					const {prefix, value} = extract_UnrealEngineString(NativeClass.properties.NativeClass.const);
-
-					const definition_name = ref.substring(14);
-
-					filenames[definition_name] = `classes/${adjust_unrealengine_prefix(prefix)}/${adjust_unrealengine_value(value)}.ts`;
-				}
-
-				for (const NativeClass of (schema.prefixItems as [NativeClass, ...NativeClass[]])) {
-					let found_some = false;
-					if (
-						'items' in NativeClass.properties.Classes
-						&& false !== NativeClass.properties.Classes.items
-					) {
-						if ('$ref' in NativeClass.properties.Classes.items) {
-							found_some = true;
-							populate_checked_and_filenames(NativeClass.properties.Classes.items['$ref'], NativeClass);
-						} else if ('oneOf' in NativeClass.properties.Classes.items) {
-							for (const entry of NativeClass.properties.Classes.items.oneOf) {
-								found_some = true;
-								populate_checked_and_filenames(entry['$ref'], NativeClass);
-							}
-						} else if ('anyOf' in NativeClass.properties.Classes.items) {
-							for (const entry of NativeClass.properties.Classes.items.anyOf) {
-								found_some = true;
-								populate_checked_and_filenames(entry['$ref'], NativeClass);
-							}
-						}
-					}
-
-					if (
-						'prefixItems' in NativeClass.properties.Classes
-					) {
-						for (const entry of NativeClass.properties.Classes.prefixItems) {
-							found_some = true;
-							populate_checked_and_filenames(entry['$ref'], NativeClass);
-						}
-					}
-
-					if (!found_some) {
-						console.error(NativeClass);
-
-						throw new Error('whut');
+				} else if ('anyOf' in NativeClass.properties.Classes.items) {
+					for (const entry of NativeClass.properties.Classes.items.anyOf) {
+						found_some = true;
+						populate_checked_and_filenames(entry['$ref'], NativeClass);
 					}
 				}
+			}
 
-				for (const entry of Object.entries(filenames)) {
-					const [ref, filename] = entry;
-
-					this.build_abstracts(check_ref(ref), filename, filenames);
+			if (
+				'prefixItems' in NativeClass.properties.Classes
+			) {
+				for (const entry of NativeClass.properties.Classes.prefixItems) {
+					found_some = true;
+					populate_checked_and_filenames(entry['$ref'], NativeClass);
 				}
+			}
 
-				for (const entry of Object.entries(filenames)) {
-					const [ref, filename] = entry;
+			if (!found_some) {
+				console.error(NativeClass);
 
-					this.generate_class(
-						ajv,
-						check_ref(ref),
-						filename,
-					);
-				}
+				throw new Error('whut');
+			}
+		}
+
+		for (const entry of Object.entries(filenames)) {
+			const [ref, filename] = entry;
+
+			this.build_abstracts(check_ref(ref), filename, filenames);
+		}
+
+		for (const entry of Object.entries(filenames)) {
+			const [ref, filename] = entry;
+
+			this.generate_class(
+				ajv,
+				check_ref(ref),
+				filename,
+			);
+		}
 	}
 
 	generate_generators(ajv:Ajv) {
