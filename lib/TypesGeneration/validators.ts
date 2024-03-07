@@ -623,7 +623,7 @@ export const type_node_generators = [
 		return new TypeNodeGenerationResult(
 			() => create_type('number'),
 			{
-				[target_files[ref_key]]: [adjust_class_name(ref_key)],
+				[target_files[ref_key].replace(/\.ts$/, '')]: [adjust_class_name(ref_key)],
 			}
 		);
 	}),

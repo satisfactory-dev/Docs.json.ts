@@ -42,6 +42,7 @@ import {
 import {
 	type_node_generators as arrays_type_node_generators,
 } from './arrays';
+import {dirname} from "node:path";
 
 function get_dependency_tree(ref:string, schema:{
 	definitions: {[key: string]: {
@@ -512,6 +513,8 @@ export const custom_generators = [
 		for (const entry of Object.entries(filenames)) {
 			const [ref, filename] = entry;
 
+			const path_relative = '../'.repeat(dirname(filename).split('/').length);
+
 			const class_name = adjust_class_name(ref);
 
 			const tree = get_dependency_tree(ref, schema);
@@ -546,23 +549,20 @@ export const custom_generators = [
 
 				for (const result of Object.values(types)) {
 					for (const import_these_entry of  Object.entries(result.import_these_somewhere_later)) {
-						const [import_destination, import_entries] = import_these_entry;
+						const [import_from_absolute, import_these] = import_these_entry;
+						const import_from = `${path_relative}${import_from_absolute}`;
 
-						if ( ! (import_destination in imports)) {
-							imports[import_destination] = {};
+						if ( ! (filename in imports)) {
+							imports[filename] = {};
 						}
 
-						for (const import_entry of Object.entries(import_entries)) {
-							const [import_from, import_these] = import_entry;
+						if (!(import_from in imports[filename])) {
+							imports[filename][import_from] = [];
+						}
 
-							if ( ! (import_from in imports[import_destination])) {
-								imports[import_destination][import_from] = [];
-							}
-
-							for (const import_this of import_these) {
-								if (!imports[import_destination][import_from].includes(import_this)) {
-									imports[import_destination][import_from].push(import_this);
-								}
+						for (const import_this of import_these) {
+							if (!imports[filename][import_from].includes(import_this)) {
+								imports[filename][import_from].push(import_this);
 							}
 						}
 					}
@@ -572,6 +572,26 @@ export const custom_generators = [
 
 				members.push(...Object.entries(types).map((entry) => {
 					const [property, generator] = entry;
+					for (const import_these_entry of Object.entries(generator.import_these_somewhere_later)) {
+						const [import_from_absolute, import_these] = import_these_entry;
+						const import_from = `${path_relative}${import_from_absolute}`;
+
+						const modifying:import_these_later = {};
+
+						if (! (filename in imports)) {
+							imports[filename] = {};
+						}
+
+						if ( ! (import_from in imports[filename])) {
+							imports[filename][import_from] = [];
+						}
+
+						for (const import_this of import_these) {
+							if (!imports[filename][import_from].includes(import_this)) {
+								imports[filename][import_from].push(import_this);
+							}
+						}
+					}
 					return createProperty_with_specific_type(
 						property,
 						required_properties.includes(property) ? ts.factory.createUnionTypeNode([
@@ -582,6 +602,7 @@ export const custom_generators = [
 					);
 				}));
 			}
+
 
 			classes.push({
 				ref,
