@@ -18,7 +18,7 @@ export function adjust_class_name(class_name:string): string
 		return 'Docs_class';
 	}
 
-	return class_name.replace(/[^A-Za-z_]/g, '_');
+	return class_name.replace(/[^A-Za-z_\d]/g, '_');
 }
 
 export function adjust_unrealengine_prefix(prefix:string): string
@@ -94,7 +94,7 @@ export function createProperty_with_specific_type(
 
 	return ts.factory.createPropertyDeclaration(
 		resolved_modifiers,
-		ts.factory.createIdentifier(name),
+		property_name_or_computed(name),
 		undefined,
 		type,
 		undefined
@@ -623,9 +623,32 @@ export function create_type(type:keyof typeof type_map): ts.KeywordTypeNode {
 	return ts.factory.createKeywordTypeNode(type_map[type] as ts.KeywordTypeSyntaxKind);
 }
 
+export function needs_element_access(property:string) : boolean
+{
+	return /[?]/.test(property);
+}
+
+export function computed_property_name_or_undefined(property:string) : ts.ComputedPropertyName|undefined
+{
+	return needs_element_access(property)
+		? ts.factory.createComputedPropertyName(ts.factory.createStringLiteral(property))
+		: undefined;
+}
+
+export function property_name_or_computed<T extends string = string>(property:T) : T|ts.ComputedPropertyName {
+	return computed_property_name_or_undefined(property) || property;
+}
+
 export function create_this_assignment(property:string, identifier:string|ts.Expression): ts.ExpressionStatement {
 	return ts.factory.createExpressionStatement(ts.factory.createAssignment(
-		ts.factory.createPropertyAccessExpression(ts.factory.createThis(), property),
+		needs_element_access(property) ? ts.factory.createElementAccessExpression(
+				ts.factory.createThis(),
+			ts.factory.createStringLiteral(property)
+		) :
+		ts.factory.createPropertyAccessExpression(
+			ts.factory.createThis(),
+			property
+		),
 		('string' === typeof(identifier)) ? ts.factory.createIdentifier(identifier) : identifier
 	));
 }

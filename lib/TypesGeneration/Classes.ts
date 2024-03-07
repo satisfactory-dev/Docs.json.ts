@@ -15,7 +15,11 @@ import {
 	create_method_without_type_parameters,
 	createProperty,
 	createProperty_with_specific_type,
-	supported_modifiers, create_type, createClass__members__with_auto_constructor,
+	supported_modifiers,
+	create_type,
+	createClass__members__with_auto_constructor,
+	computed_property_name_or_undefined,
+	needs_element_access, property_name_or_computed,
 } from "../TsFactoryWrapper";
 import ts from 'typescript';
 import {
@@ -42,6 +46,9 @@ import {
 import {
 	type_node_generators as arrays_type_node_generators,
 } from './arrays';
+import {
+	type_node_generators as prefixes_type_node_generators,
+} from './prefixes';
 import {dirname} from "node:path";
 
 function get_dependency_tree(ref:string, schema:{
@@ -312,7 +319,7 @@ function create_constructor_args<T1 = string>(
 		type = ts.factory.createTypeLiteralNode(data.required.map((property) => {
 			return ts.factory.createPropertySignature(
 				undefined,
-				property,
+				property_name_or_computed(property),
 				undefined,
 				ts.factory.createKeywordTypeNode(ts.SyntaxKind.StringKeyword)
 			);
@@ -349,6 +356,99 @@ function create_constructor_args<T1 = string>(
 	};
 }
 
+function create_binding_constructor(
+	reference_name:string,
+	data: ({
+		required: string[],
+		'$ref': string,
+	}|{
+		required: string[],
+	}|{
+		'$ref': string,
+	})&({
+		properties:{[key: string]: object}
+	}|{})
+) : ts.MethodDeclaration {
+	let constructor_body:ts.ExpressionStatement[] = [];
+	let remapped_count = 0;
+	const remapped_properties:{[key: string]: string} = {};
+	const constructor_arg = ('required' in data ? data.required : []).map((property) => {
+		const property_name = computed_property_name_or_undefined(property);
+		const name = needs_element_access(property) ? `remapped_${++remapped_count}` : property;
+
+		if (property_name) {
+			remapped_properties[property] = name;
+		}
+
+		return ts.factory.createBindingElement(
+			undefined,
+			property_name,
+			name
+		);
+	});
+
+	if ('required' in data && 'properties' in data) {
+		constructor_body.push(...data.required.map((property, index) => {
+			const property_object = data.properties[
+				property as keyof typeof data.properties
+				] as {
+				[key: string]: {
+					type: string,
+					pattern?: string,
+				}
+			};
+
+			let assigned_value:ts.Expression = ts.factory.createIdentifier(
+				property in remapped_properties ? remapped_properties[property] : property
+			);
+
+			if (property_object && 'pattern' in property_object && 'string' === typeof property_object.pattern) {
+				assigned_value = create_callExpression__for_validation_function(
+					'regexp_argument',
+					index,
+					[
+						assigned_value,
+						ts.factory.createStringLiteral(property_object.pattern),
+					]
+				);
+			}
+
+			return create_this_assignment(property, assigned_value);
+		}));
+	}
+
+	if ('$ref' in data && data['$ref']?.startsWith('#/definitions/')) {
+		constructor_body = [
+			ts.factory.createExpressionStatement(ts.factory.createCallExpression(
+				ts.factory.createSuper(),
+				undefined,
+				[ts.factory.createIdentifier('rest')]
+			)),
+			...constructor_body,
+		];
+		constructor_arg.push(ts.factory.createBindingElement(
+			ts.factory.createToken(ts.SyntaxKind.DotDotDotToken),
+			undefined,
+			'rest'
+		));
+	}
+
+	return create_method_without_type_parameters(
+		'constructor',
+		[
+			ts.factory.createParameterDeclaration(
+				undefined,
+				undefined,
+				ts.factory.createObjectBindingPattern(constructor_arg),
+				undefined,
+				ts.factory.createTypeReferenceNode(adjust_class_name(`${reference_name}__constructor_args`))
+			),
+		],
+		constructor_body,
+		['protected']
+	);
+}
+
 export const custom_generators = [
 	(schema:typeof update8_schema) : {file: string, node:ts.Node, ref?:string}[] => {
 		const output:{file: string, node:ts.Node, ref?:string}[] = [];
@@ -366,69 +466,9 @@ export const custom_generators = [
 				]);
 			});
 
-			const constructor_arg = data.required.map((property) => {
-				return ts.factory.createBindingElement(
-					undefined,
-					undefined,
-					property,
-				);
-			});
-
-			let constructor_body = data.required.map((property, index) => {
-				const property_object = data.properties[
-					property as keyof typeof data.properties
-					] as {
-					[key: string]: {
-						type: string,
-						pattern?: string,
-					}
-				};
-
-				let assigned_value:ts.Expression = ts.factory.createIdentifier(property);
-
-				if ('pattern' in property_object && 'string' === typeof property_object.pattern) {
-					assigned_value = create_callExpression__for_validation_function(
-						'regexp_argument',
-						index,
-						[
-							assigned_value,
-							ts.factory.createStringLiteral(property_object.pattern),
-						]
-					);
-				}
-
-				return create_this_assignment(property, assigned_value);
-			});
-
-			if ('$ref' in data && data['$ref']?.startsWith('#/definitions/')) {
-				constructor_body = [
-					ts.factory.createExpressionStatement(ts.factory.createCallExpression(
-						ts.factory.createSuper(),
-						undefined,
-						[ts.factory.createIdentifier('rest')]
-					)),
-					...constructor_body,
-				];
-				constructor_arg.push(ts.factory.createBindingElement(
-					ts.factory.createToken(ts.SyntaxKind.DotDotDotToken),
-					undefined,
-					'rest'
-				));
-			}
-
-			members.push(create_method_without_type_parameters(
-				'constructor',
-				[
-					ts.factory.createParameterDeclaration(
-						undefined,
-						undefined,
-						ts.factory.createObjectBindingPattern(constructor_arg),
-						undefined,
-						ts.factory.createTypeReferenceNode(adjust_class_name(`${reference_name}__constructor_args`))
-					),
-				],
-				constructor_body,
-				['protected']
+			members.push(create_binding_constructor(
+				reference_name,
+				data
 			));
 
 			const class_options:create_class_options = {
@@ -466,6 +506,7 @@ export const custom_generators = [
 			...color_type_node_generators,
 			...arrays_type_node_generators,
 			...type_node_generators,
+			...prefixes_type_node_generators,
 		]);
 
 		function populate_checked_and_filenames(ref:string, NativeClass:NativeClass) {
@@ -650,6 +691,10 @@ export const custom_generators = [
 						['public']
 					);
 				}));
+			}
+
+			if ('$ref' in data || 'required' in data) {
+				members.push(create_binding_constructor(ref, data));
 			}
 
 			classes.push({

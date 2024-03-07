@@ -1,5 +1,5 @@
 import ts from "typescript";
-import {ImportTracker, TypesGenerationFromSchema} from "../TypesGeneration";
+import {ImportTracker, TypesGenerationFromSchema, TypesGenerationMatchesReferenceName} from "../TypesGeneration";
 import {
 	adjust_class_name,
 	create_basic_reference_argument_template_span,
@@ -7,7 +7,6 @@ import {
 	create_modifier,
 	create_regex_validation_function,
 	create_this_assignment,
-	create_throw,
 	create_throw_if,
 	create_type,
 	createClass,
@@ -20,7 +19,6 @@ import {
 } from "../TsFactoryWrapper";
 import {TypeNodeGeneration, TypeNodeGenerationResult} from "../TypeNodeGeneration";
 import {UnrealEngineString_regex} from "../DocsValidation";
-import {create} from "node:domain";
 
 export const target_files = {
 	'decimal-string': 'utils/validators.ts',
@@ -83,6 +81,25 @@ export const generators = [
 		schema,
 		(data, reference_name): ts.FunctionDeclaration => {
 			return create_regex_validation_function(data, reference_name);
+		}
+	),
+	new TypesGenerationMatchesReferenceName<
+		{type: 'string', string_starts_with: 'Texture2D /Game/FactoryGame/'},
+		'Texture2D--basic'
+	>(
+		['Texture2D--basic'],
+		(data, reference_name) => {
+			return ts.factory.createTypeAliasDeclaration(
+				[create_modifier('export')],
+				adjust_class_name(reference_name),
+				undefined,
+				ts.factory.createTypeReferenceNode(
+					'string_starts_with',
+					[
+						ts.factory.createLiteralTypeNode(ts.factory.createStringLiteral(data.string_starts_with)),
+					]
+				)
+			);
 		}
 	),
 ];

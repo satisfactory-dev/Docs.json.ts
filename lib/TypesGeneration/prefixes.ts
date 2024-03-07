@@ -1,6 +1,7 @@
 import {ImportTracker, TypesGenerationFromSchema} from "../TypesGeneration";
 import ts from "typescript";
 import {adjust_enum_name, create_modifier, create_string_starts_with} from "../TsFactoryWrapper";
+import {TypeNodeGeneration, TypeNodeGenerationResult} from "../TypeNodeGeneration";
 
 export const target_files = Object.entries({
 	'common/prefixes.ts': [
@@ -51,5 +52,26 @@ export const generators = [
 				create_string_starts_with(data.string_starts_with)
 			);
 		}
+	),
+];
+
+export const type_node_generators = [
+	new TypeNodeGeneration<{'$ref': '#/definitions/Texture2D--basic'}>(
+		{
+			type: 'object',
+			required: ['$ref'],
+			additionalProperties: false,
+			properties: {'$ref': {type: 'string', const: '#/definitions/Texture2D--basic'}}
+		},
+		(data) => {
+			const reference_name = data['$ref'].substring(14);
+
+			return new TypeNodeGenerationResult(
+				() => ts.factory.createTypeReferenceNode(reference_name),
+				{
+					'common/prefixes': [reference_name],
+				},
+			);
+		},
 	),
 ];

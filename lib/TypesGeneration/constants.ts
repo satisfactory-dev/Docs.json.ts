@@ -6,6 +6,7 @@ import {TypeNodeGeneration, TypeNodeGenerationResult} from "../TypeNodeGeneratio
 
 export const target_files = {
 	'empty-object': 'common/constants.ts',
+	'None': 'common/constants.ts',
 	'mChainsawState': 'common/constants.ts',
 	'mSnappedPassthroughs': 'common/constants.ts',
 	'mAspect': 'common/constants.ts',
@@ -90,7 +91,7 @@ export const type_node_generators = [
 		return new TypeNodeGenerationResult(
 			() => ts.factory.createTypeReferenceNode(reference_name),
 			{
-				[target_files[ref_key]]: [reference_name],
+				[target_files[ref_key].replace(/\.ts$/, '')]: [reference_name],
 			}
 		);
 	}),
