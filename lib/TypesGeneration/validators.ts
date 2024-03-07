@@ -279,7 +279,7 @@ export const custom_generators = [
 						[create_modifier('readonly')],
 						'value',
 						undefined,
-						create_type('string'),
+						ts.factory.createTypeReferenceNode('value'),
 						undefined
 					),
 					create_method_without_type_parameters(
@@ -471,13 +471,25 @@ export const custom_generators = [
 											),
 											create_type('string')
 										),
-										ts.factory.createTypeReferenceNode('value'),
+										ts.factory.createTypeReferenceNode(
+											'StringPassedRegExp',
+											[
+												ts.factory.createTypeReferenceNode('pattern'),
+												ts.factory.createTypeReferenceNode('value'),
+											]
+										),
 									],
 									[
 										create_index_access('result', 1),
 										ts.factory.createAsExpression(
 											create_index_access('result', 2),
-											ts.factory.createTypeReferenceNode('value')
+											ts.factory.createTypeReferenceNode(
+												'StringPassedRegExp',
+												[
+													ts.factory.createTypeReferenceNode('pattern'),
+													ts.factory.createTypeReferenceNode('value'),
+												]
+											)
 										),
 									]
 								)
@@ -502,7 +514,13 @@ export const custom_generators = [
 									),
 									create_type('string')
 								),
-								ts.factory.createTypeReferenceNode('value'),
+								ts.factory.createTypeReferenceNode(
+									'StringPassedRegExp',
+									[
+										ts.factory.createTypeReferenceNode('pattern'),
+										ts.factory.createTypeReferenceNode('value'),
+									]
+								),
 							]
 						)
 					),
@@ -526,8 +544,14 @@ export const custom_generators = [
 					ts.factory.createTypeParameterDeclaration(
 						undefined,
 						'value',
-						create_type('string'),
-						create_type('string')
+						ts.factory.createTypeReferenceNode(
+							'StringPassedRegExp',
+							[create_type('string')]
+						),
+						ts.factory.createTypeReferenceNode(
+							'StringPassedRegExp',
+							[create_type('string')]
+						)
 					),
 				]
 			)
@@ -715,7 +739,7 @@ export const custom_generators = [
 				])
 			)},
 			{file: 'utils/validators.ts', node: ts.factory.createTypeAliasDeclaration(
-				[create_modifier('declare')],
+				[create_modifier('export')],
 				'StringPassedRegExp',
 				[
 					ts.factory.createTypeParameterDeclaration(
@@ -762,6 +786,15 @@ export const UnrealEngineString_schema = {
 		},
 	}
 };
+
+export type UnrealEngineString_type = {
+	type: 'string',
+	UnrealEngineString: {
+		type: 'string',
+		UnrealEngineString_prefix: string,
+		pattern: string,
+	},
+}&({minLength:1}|{})
 
 export const type_node_generators = [
 	new TypeNodeGeneration<ref_type>(ref_schema, (property) => {

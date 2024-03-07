@@ -9,6 +9,7 @@ import {TypeNodeGeneration, TypeNodeGenerationResult} from "../TypeNodeGeneratio
 export const target_files = {
 	'mDamageTypes': 'common/arrays.ts',
 	'xyz-array': 'common/arrays.ts',
+	'ItemClass-and-amount': 'common/arrays.ts',
 };
 
 ImportTracker.set_imports('common/arrays.ts', [
@@ -17,6 +18,7 @@ ImportTracker.set_imports('common/arrays.ts', [
 		import_these: [
 			'UnrealEngineString',
 			'string_starts_with',
+			'integer_string__type',
 		],
 	},
 	{
@@ -96,6 +98,55 @@ export const generators = [
 					ts.factory.createTypeReferenceNode(adjust_class_name('xyz--unsigned-x')),
 					ts.factory.createRestTypeNode(ts.factory.createArrayTypeNode(
 						ts.factory.createTypeReferenceNode(adjust_class_name('xyz--unsigned-x'))
+					))
+				])
+			);
+		}
+	),
+	new TypesGenerationMatchesReferenceName<
+		{
+			type: 'string',
+			minLength: 1,
+			array_string: {
+				type: 'array',
+				minItems: 1,
+				items: {
+					type: 'object',
+					required: ['ItemClass', 'Amount'],
+					properties: {
+						ItemClass: {'$ref': '#/definitions/ItemClass'},
+						Amount: {'$ref': '#/definitions/integer-string'},
+					},
+				},
+			},
+		},
+		'ItemClass-and-amount'
+	>(
+		['ItemClass-and-amount'],
+		(data, reference_name) => {
+			function generate() : ts.TypeNode
+			{
+				return create_object_type(
+					{
+						ItemClass: ts.factory.createTypeReferenceNode(adjust_class_name(
+							data.array_string.items.properties.ItemClass['$ref'].substring(14)
+						)),
+						Amount: ts.factory.createTypeReferenceNode(adjust_class_name(
+							`${data.array_string.items.properties.Amount['$ref'].substring(14)}__type`
+						)),
+					},
+					data.array_string.items.required
+				);
+			}
+
+			return ts.factory.createTypeAliasDeclaration(
+				[create_modifier('export')],
+				ts.factory.createIdentifier(adjust_class_name(reference_name)),
+				undefined,
+				ts.factory.createTupleTypeNode([
+					generate(),
+					ts.factory.createRestTypeNode(ts.factory.createArrayTypeNode(
+						generate()
 					))
 				])
 			);
