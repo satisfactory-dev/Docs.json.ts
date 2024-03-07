@@ -38,7 +38,11 @@ export const generators = [
 	new TypesGenerationFromSchema<UnrealEngineString_type>(
 		UnrealEngineString_schema,
 		(data, reference_name) => {
-			return ts.factory.createTypeReferenceNode(
+			return ts.factory.createTypeAliasDeclaration(
+				[create_modifier('export')],
+				adjust_class_name(reference_name),
+				undefined,
+				ts.factory.createTypeReferenceNode(
 				'UnrealEngineString',
 				[
 					ts.factory.createTypeReferenceNode(
@@ -54,6 +58,7 @@ export const generators = [
 						))]
 					)
 				]
+				)
 			);
 		}
 	),

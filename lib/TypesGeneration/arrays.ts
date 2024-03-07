@@ -27,6 +27,12 @@ ImportTracker.set_imports('common/arrays.ts', [
 			adjust_class_name('xyz--unsigned-x'),
 		],
 	},
+	{
+		from: './aliases',
+		import_these: [
+			adjust_class_name('ItemClass__prop'),
+		],
+	},
 ]);
 
 export type array_string_schema_type = {
