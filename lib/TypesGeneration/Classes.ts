@@ -294,42 +294,67 @@ export const type_node_generators = [
 	),
 ];
 
+function create_constructor_args<T1 = string>(
+	file:T1,
+	reference_name:string,
+	data: {
+		required: string[],
+		'$ref': string,
+	}|{
+		required: string[],
+	}|{
+		'$ref': string,
+	}
+) : {file: T1, node: ts.TypeAliasDeclaration} {
+	let type:ts.TypeNode|undefined;
+
+	if ('required' in data && data.required.length) {
+		type = ts.factory.createTypeLiteralNode(data.required.map((property) => {
+			return ts.factory.createPropertySignature(
+				undefined,
+				property,
+				undefined,
+				ts.factory.createKeywordTypeNode(ts.SyntaxKind.StringKeyword)
+			);
+		}));
+	}
+
+	if ('$ref' in data && data['$ref']?.startsWith('#/definitions/')) {
+		const reference = ts.factory.createTypeReferenceNode(adjust_class_name(`${
+			data['$ref'].substring(14)
+		}__constructor_args`));
+
+		type = type ? ts.factory.createIntersectionTypeNode([
+			reference,
+			type,
+		]) : reference;
+	}
+
+	if (!type) {
+		console.error(data);
+
+		throw new Error('unsupported type found!');
+	}
+
+	return {
+		file,
+		node: ts.factory.createTypeAliasDeclaration(
+			[
+				create_modifier('export'),
+			],
+			ts.factory.createIdentifier(adjust_class_name(`${reference_name}__constructor_args`)),
+			undefined,
+			type
+		)
+	};
+}
+
 export const custom_generators = [
 	(schema:typeof update8_schema) : {file: string, node:ts.Node, ref?:string}[] => {
 		const output:{file: string, node:ts.Node, ref?:string}[] = [];
 
 		output.push(...supported_base_classes.map((reference_name) => {
-			const data = schema.definitions[reference_name];
-
-			let type:ts.TypeNode = ts.factory.createTypeLiteralNode(data.required.map((property) => {
-				return ts.factory.createPropertySignature(
-					undefined,
-					property,
-					undefined,
-					ts.factory.createKeywordTypeNode(ts.SyntaxKind.StringKeyword)
-				);
-			}));
-
-			if ('$ref' in data && data['$ref']?.startsWith('#/definitions/')) {
-				type = ts.factory.createIntersectionTypeNode([
-					ts.factory.createTypeReferenceNode(adjust_class_name(`${
-						data['$ref'].substring(14)
-					}__constructor_args`)),
-					type,
-				]);
-			}
-
-			return {
-				file: 'classes/base.ts',
-				node: ts.factory.createTypeAliasDeclaration(
-					[
-						create_modifier('export'),
-					],
-					ts.factory.createIdentifier(adjust_class_name(`${reference_name}__constructor_args`)),
-					undefined,
-					type
-				)
-			};
+			return create_constructor_args('classes/base.ts', reference_name, schema.definitions[reference_name]);
 		}));
 
 		output.push(...supported_base_classes.map((reference_name) => {
@@ -452,25 +477,46 @@ export const custom_generators = [
 
 			const {prefix, value} = extract_UnrealEngineString(NativeClass.properties.NativeClass.const);
 
-			filenames[ref.substring(14)] = `classes/${adjust_unrealengine_prefix(prefix)}/${adjust_unrealengine_value(value)}.ts`
+			const definition_name = ref.substring(14);
+
+			filenames[definition_name] = `classes/${adjust_unrealengine_prefix(prefix)}/${adjust_unrealengine_value(value)}.ts`;
 		}
 
 		for (const NativeClass of (schema.prefixItems as [NativeClass, ...NativeClass[]])) {
+			let found_some = false;
 			if (
 				'items' in NativeClass.properties.Classes
 				&& false !== NativeClass.properties.Classes.items
 			) {
 				if ('$ref' in NativeClass.properties.Classes.items) {
+					found_some = true;
 					populate_checked_and_filenames(NativeClass.properties.Classes.items['$ref'], NativeClass);
 				} else if ('oneOf' in NativeClass.properties.Classes.items) {
 					for (const entry of NativeClass.properties.Classes.items.oneOf) {
+						found_some = true;
 						populate_checked_and_filenames(entry['$ref'], NativeClass);
 					}
 				} else if ('anyOf' in NativeClass.properties.Classes.items) {
 					for (const entry of NativeClass.properties.Classes.items.anyOf) {
+						found_some = true;
 						populate_checked_and_filenames(entry['$ref'], NativeClass);
 					}
 				}
+			}
+
+			if (
+				'prefixItems' in NativeClass.properties.Classes
+			) {
+				for (const entry of NativeClass.properties.Classes.prefixItems) {
+					found_some = true;
+					populate_checked_and_filenames(entry['$ref'], NativeClass);
+				}
+			}
+
+			if (!found_some) {
+				console.error(NativeClass);
+
+				throw new Error('whut');
 			}
 		}
 
@@ -532,10 +578,13 @@ export const custom_generators = [
 
 			const members:ts.ClassElement[] = [];
 
-
 			const data = schema.definitions[
 				ref as keyof typeof update8_schema.definitions
 			];
+
+			if ('$ref' in data || 'required' in data) {
+				classes.push({...create_constructor_args(filename, class_name, data), ref});
+			}
 
 			if ('properties' in data) {
 				const types = Object.fromEntries(Object.entries(data.properties).map((entry) => {
@@ -602,7 +651,6 @@ export const custom_generators = [
 					);
 				}));
 			}
-
 
 			classes.push({
 				ref,
