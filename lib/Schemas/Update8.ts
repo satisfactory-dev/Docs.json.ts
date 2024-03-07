@@ -219,9 +219,8 @@ export class Update8TypeNodeGeneration {
 		});
 	}
 
-	generate_generators(ajv:Ajv) {
-		return [
-			(): { file: string, node: ts.Node, ref?: string }[] => {
+	private generate_base_classes()
+	{
 				this.classes.push(...supported_base_classes.map((reference_name) => {
 					return create_constructor_args('classes/base.ts', reference_name, schema.definitions[reference_name]);
 				}));
@@ -254,16 +253,13 @@ export class Update8TypeNodeGeneration {
 						node: createClass(reference_name, members, class_options),
 					};
 				}));
+	}
 
-				return [];
-			},
-			(): { file: string, node: ts.Node, ref: string }[] => {
+	private generate_concrete_classes(ajv:Ajv)
+	{
 				const checked: string[] = [];
 
 				const filenames: { [key: string]: string } = {};
-				const imports: import_these_later = {};
-
-				const classes: { file: string, node: ts.Node, ref: string }[] = [];
 
 				function populate_checked_and_filenames(ref: string, NativeClass: NativeClass) {
 					if (checked.includes(ref)) {
@@ -332,10 +328,14 @@ export class Update8TypeNodeGeneration {
 						filename,
 					);
 				}
+	}
 
-				return [];
-			},
-			() => { // smoosh 'em all back together
+	generate_generators(ajv:Ajv) {
+		return [
+			() => {
+				this.generate_base_classes();
+				this.generate_concrete_classes(ajv);
+
 				return this.classes;
 			},
 		];
