@@ -43,21 +43,21 @@ export const generators = [
 				adjust_class_name(reference_name),
 				undefined,
 				ts.factory.createTypeReferenceNode(
-				'UnrealEngineString',
-				[
-					ts.factory.createTypeReferenceNode(
-						'string_starts_with',
-						[ts.factory.createLiteralTypeNode(ts.factory.createStringLiteral(
-							data.UnrealEngineString.UnrealEngineString_prefix
-						))]
-					),
-					ts.factory.createTypeReferenceNode(
-						'StringPassedRegExp',
-						[ts.factory.createLiteralTypeNode(ts.factory.createStringLiteral(
-							data.UnrealEngineString.pattern
-						))]
-					)
-				]
+					'UnrealEngineString',
+					[
+						ts.factory.createTypeReferenceNode(
+							'string_starts_with',
+							[ts.factory.createLiteralTypeNode(ts.factory.createStringLiteral(
+								data.UnrealEngineString.UnrealEngineString_prefix
+							))]
+						),
+						ts.factory.createTypeReferenceNode(
+							'StringPassedRegExp',
+							[ts.factory.createLiteralTypeNode(ts.factory.createStringLiteral(
+								data.UnrealEngineString.pattern
+							))]
+						)
+					]
 				)
 			);
 		}
