@@ -24,6 +24,7 @@ import {
 	target_files as vectors_target_files,
 	generators as vectors_generators,
 	custom_generators as vectors_custom_generators,
+	supported_meta_types as vectors_supported_meta_types,
 } from './TypesGeneration/vectors';
 import {
 	target_files as constants_target_files,
@@ -281,6 +282,7 @@ export class DocsTsGenerator
 
 		for (const supported_elsewhere of [
 			...Classes_supported_base_classes,
+			...vectors_supported_meta_types,
 		]) {
 			if (!supported_conversion_names.includes(supported_elsewhere)) {
 				supported_conversion_names.push(supported_elsewhere);

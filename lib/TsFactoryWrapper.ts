@@ -3,7 +3,7 @@ import ts, {
 	HeritageClause,
 	KeywordTypeSyntaxKind, MethodDeclaration,
 	Modifier,
-	PropertyDeclaration, SyntaxKind, TypeNode, TypeParameterDeclaration,
+	PropertyDeclaration, SyntaxKind, TypeNode, TypeParameterDeclaration, TypeReferenceNode,
 } from 'typescript';
 
 declare type supported_property_modifiers = ('public'|'abstract'|'readonly')[];
@@ -103,10 +103,14 @@ export function createProperty_with_specific_type(
 
 export function createProperty(
 	name:string,
-	type:KeywordTypeSyntaxKind,
+	type:KeywordTypeSyntaxKind|TypeNode,
 	modifiers:supported_property_modifiers = [],
 ): PropertyDeclaration {
-	return createProperty_with_specific_type(name, ts.factory.createKeywordTypeNode(type), modifiers);
+	return createProperty_with_specific_type(
+		name,
+		'number' === typeof(type) ? ts.factory.createKeywordTypeNode(type) : type,
+		modifiers
+	);
 }
 
 export type create_class_options = {
@@ -159,12 +163,21 @@ export function createClass(
 	);
 }
 
-export const auto_constructor_property_types:{[key: string]: KeywordTypeSyntaxKind} = {
+export const auto_constructor_property_types_from_keywords:{[key: string]: KeywordTypeSyntaxKind} = {
 	'#/definitions/decimal-string--signed': ts.SyntaxKind.NumberKeyword,
 	'#/definitions/decimal-string': ts.SyntaxKind.NumberKeyword,
 	'#/definitions/integer-string--signed': ts.SyntaxKind.NumberKeyword,
 	'#/definitions/integer-string': ts.SyntaxKind.NumberKeyword,
 };
+
+const auto_constructor_property_types_from_vectors = {
+	'#/definitions/quaternion--semi-native' : adjust_class_name('quaternion--semi-native'),
+	'#/definitions/xyz--semi-native': adjust_class_name('xyz--semi-native'),
+};
+
+export const auto_constructor_property_types_from_refs = [
+	Object.keys(auto_constructor_property_types_from_vectors),
+];
 
 export function create_callExpression__for_validation_function(
 	call_function: string,
@@ -194,40 +207,94 @@ export function createClass__members__with_auto_constructor<T extends [string, .
 		type: 'object',
 		required: T,
 		properties: {[key: string]: {
-			'$ref': Exclude<keyof typeof auto_constructor_property_types, number>,
+			'$ref': Exclude<keyof typeof auto_constructor_property_types_from_keywords, number>,
 		}},
 	},
 	properties_modifiers:supported_property_modifiers,
 ) : (ts.PropertyDeclaration|ts.MethodDeclaration)[] {
-	const members:(ts.PropertyDeclaration|ts.MethodDeclaration)[] = data.required.map((property) => {
-		return createProperty(
-			property,
-			auto_constructor_property_types[data.properties[property]['$ref']],
-			properties_modifiers
-		);
-	});
+	const members:(ts.PropertyDeclaration|ts.MethodDeclaration)[] = [];
+
+	const property_types = Object.fromEntries(Object.entries(data.properties).map(
+		(entry) : [
+			string, // property name
+			[
+				() => ts.KeywordTypeSyntaxKind|ts.TypeNode, // property type
+				() => ts.KeywordTypeSyntaxKind|ts.TypeNode, // constructor arg type
+			],
+		] => {
+			return [
+				entry[0],
+				[
+					() => {
+						const [property_name, property_data] = entry;
+
+						let type:ts.KeywordTypeSyntaxKind|ts.TypeNode = (
+							property_data['$ref'] in auto_constructor_property_types_from_vectors)
+							? ts.factory.createTypeReferenceNode(adjust_class_name(property_data['$ref'].substring(14)))
+							: auto_constructor_property_types_from_keywords[property_data['$ref']];
+
+						if (!data.required.includes(property_name)) {
+							type = ts.factory.createUnionTypeNode([
+								'number' === typeof type ? ts.factory.createKeywordTypeNode(type) : type,
+								create_type('undefined'),
+							]);
+						}
+
+						return type;
+					},
+					() => {
+						const [property_name, property_data] = entry;
+
+						let type:ts.KeywordTypeSyntaxKind|ts.TypeNode = (
+							property_data['$ref'] in auto_constructor_property_types_from_vectors)
+							? ts.factory.createTypeReferenceNode(adjust_class_name(property_data['$ref'].substring(14)))
+							: ts.SyntaxKind.StringKeyword;
+
+						if (!data.required.includes(property_name)) {
+							type = ts.factory.createUnionTypeNode([
+								'number' === typeof type ? ts.factory.createKeywordTypeNode(type) : type,
+								create_type('undefined'),
+							]);
+						}
+
+						return type;
+					},
+				],
+			];
+		}
+	));
+
+	members.push(...Object.entries(property_types).map((entry) => {
+		const [property_name, [generator]] = entry;
+
+		return createProperty(property_name, generator(), properties_modifiers);
+	}));
 
 	members.push(create_method_without_type_parameters(
 		'constructor',
-		Object.keys(data.properties).map((property) => {
-			return [property, ts.SyntaxKind.StringKeyword];
+		Object.entries(property_types).map((entry) => {
+			const [property_name, [, generator]] = entry;
+
+			return [property_name, generator()];
 		}),
-		data.required.map((property): [string, ts.Identifier] => {
-			return [property, ts.factory.createIdentifier(property)];
-		}).map((entry:[string, ts.Identifier], index) => {
-			const [property, identifier] = entry;
+		Object.entries(data.properties).map((entry, index) => {
+			const [property_name, property] = entry;
+
+			if (property['$ref'] in auto_constructor_property_types_from_vectors) {
+				return create_this_assignment(property_name, property_name);
+			}
 
 			const is_int = (
-				data.properties[property]['$ref'] === '#/definitions/integer-string'
-				|| data.properties[property]['$ref'] === '#/definitions/integer-string--signed'
+				property['$ref'] === '#/definitions/integer-string'
+				|| property['$ref'] === '#/definitions/integer-string--signed'
 			);
 
 			const is_float = (
-				data.properties[property]['$ref'] === '#/definitions/decimal-string'
-				|| data.properties[property]['$ref'] === '#/definitions/decimal-string--signed'
+				property['$ref'] === '#/definitions/decimal-string'
+				|| property['$ref'] === '#/definitions/decimal-string--signed'
 			);
 
-			const is_signed = data.properties[property]['$ref'].endsWith('--signed');
+			const is_signed = property['$ref'].endsWith('--signed');
 
 			const validate = create_callExpression__for_validation_function(
 				`${
@@ -236,10 +303,10 @@ export function createClass__members__with_auto_constructor<T extends [string, .
 					is_signed ? '--signed' : ''
 				}`,
 				index,
-				[identifier]
+				[ts.factory.createIdentifier(property_name)]
 			);
 
-			return create_this_assignment(property, (!is_int && !is_float) ? validate : ts.factory.createCallExpression(
+			return create_this_assignment(property_name, (!is_int && !is_float) ? validate : ts.factory.createCallExpression(
 					ts.factory.createIdentifier(is_int ? 'parseInt' : 'parseFloat'),
 					undefined,
 
@@ -267,7 +334,7 @@ export function createParameter(
 	);
 }
 
-declare type createMethod_parameters_entry = [string, KeywordTypeSyntaxKind]|ts.ParameterDeclaration;
+declare type createMethod_parameters_entry = [string, KeywordTypeSyntaxKind|ts.TypeNode]|ts.ParameterDeclaration;
 
 function create_method(
 	name: string,

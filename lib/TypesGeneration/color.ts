@@ -144,7 +144,7 @@ export const generators = [
 
 export const type_node_generators = [
 	new TypeNodeGeneration<{
-		'$ref': '#/definitions/color-decimal'
+		'$ref': '#/definitions/color-decimal'|'#/definitions/color-decimal--semi-native'
 	}>(
 		{
 			type: 'object',
@@ -153,7 +153,7 @@ export const type_node_generators = [
 			properties: {
 				'$ref': {
 					type: 'string',
-					pattern: '^#/definitions/(color-decimal)$',
+					pattern: '^#/definitions/(color-decimal(--semi-native)?)$',
 				}
 			}
 		},
