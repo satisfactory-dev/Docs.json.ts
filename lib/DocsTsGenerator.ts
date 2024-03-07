@@ -41,6 +41,10 @@ import {
 	type_node_generators as prefixes_type_node_generators,
 } from './TypesGeneration/prefixes';
 import {
+	target_files as unions_target_files,
+	generators as unions_generators,
+} from './TypesGeneration/unions';
+import {
 	TypesGenerationFromSchema,
 	TypesGenerationMatchesReferenceName,
 	GenerationMatch,
@@ -62,6 +66,11 @@ import {
 	type_node_generators as arrays_type_node_generators,
 } from './TypesGeneration/arrays';
 import {
+	target_files as aliases_target_files,
+	generators as aliases_generators,
+} from './TypesGeneration/aliases';
+import {
+	check_ref,
 	Update8TypeNodeGeneration,
 } from './Schemas/Update8';
 import {TypeNodeGenerationMatcher} from "./TypeNodeGeneration";
@@ -256,6 +265,8 @@ export class DocsTsGenerator
 			prefixes_target_files,
 			arrays_target_files,
 			classes_target_files,
+			unions_target_files,
+			aliases_target_files,
 		);
 
 		const generators:(TypesGenerationFromSchema<any>|TypesGenerationMatchesReferenceName<any, any>)[] = [
@@ -267,6 +278,8 @@ export class DocsTsGenerator
 			...prefixes_generators,
 			...arrays_generators,
 			...classes_generators,
+			...unions_generators,
+			...aliases_generators,
 		];
 
 		const type_node_generation = new TypeNodeGenerationMatcher([
@@ -339,7 +352,10 @@ export class DocsTsGenerator
 
 			for (const generator of [
 				...validator_custom_generators,
-				...Update8.generate_generators(default_config.ajv),
+				...Update8.generate_generators(
+					default_config.ajv,
+					progress.definitions.supported.map(check_ref)
+				),
 				...vectors_custom_generators,
 			]) {
 				const Classes_results:(

@@ -633,6 +633,26 @@ export const custom_generators = [
 	},
 ];
 
+export const UnrealEngineString_schema = {
+	type: 'object',
+	required: ['type', 'UnrealEngineString'],
+	additionalProperties: false,
+	properties: {
+		type: {type: 'string', const: 'string'},
+		minLength: {type: 'number', const: 1},
+		UnrealEngineString: {
+			type: 'object',
+			required: ['type', 'UnrealEngineString_prefix', 'pattern'],
+			additionalProperties: false,
+			properties: {
+				type: {type: 'string', const: 'string'},
+				UnrealEngineString_prefix: {type: 'string', minLength: 1},
+				pattern: {type: 'string', minLength: 2},
+			}
+		},
+	}
+};
+
 export const type_node_generators = [
 	new TypeNodeGeneration<ref_type>(ref_schema, (property) => {
 		const ref_key = property['$ref'].substring(14) as keyof typeof target_files;
@@ -672,25 +692,7 @@ export const type_node_generators = [
 			pattern: string,
 		}
 	}>(
-		{
-			type: 'object',
-			required: ['type', 'UnrealEngineString'],
-			additionalProperties: false,
-			properties: {
-				type: {type: 'string', const: 'string'},
-				minLength: {type: 'number', const: 1},
-				UnrealEngineString: {
-					type: 'object',
-					required: ['type', 'UnrealEngineString_prefix', 'pattern'],
-					additionalProperties: false,
-					properties: {
-						type: {type: 'string', const: 'string'},
-						UnrealEngineString_prefix: {type: 'string', minLength: 1},
-						pattern: {type: 'string', minLength: 2},
-					}
-				},
-			}
-		},
+		UnrealEngineString_schema,
 		() => {
 			return new TypeNodeGenerationResult(
 				() => ts.factory.createTypeReferenceNode('UnrealEngineString'),

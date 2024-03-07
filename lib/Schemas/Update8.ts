@@ -56,13 +56,15 @@ declare type NativeClass = {
 	},
 };
 
-export function get_dependency_tree(ref: keyof typeof schema.definitions): string[] {
-	const ancestry: string[] = [ref];
+declare type definition_key = keyof typeof schema.definitions;
+
+export function get_dependency_tree(ref: definition_key): (definition_key)[] {
+	const ancestry: definition_key[] = [ref];
 
 	let checking = schema.definitions[ref];
 
 	while ('$ref' in checking && checking['$ref'].startsWith('#/definitions/')) {
-		ancestry.push(checking['$ref'].substring(14));
+		ancestry.push(check_ref(checking['$ref'].substring(14)));
 
 		const next_reference_name: string = checking['$ref'].substring(14);
 
@@ -74,18 +76,18 @@ export function get_dependency_tree(ref: keyof typeof schema.definitions): strin
 	return ancestry;
 }
 
-export function check_ref(ref: string): keyof typeof schema.definitions {
+export function check_ref(ref: string): definition_key {
 	if (!(ref in schema.definitions)) {
 		throw new Error(`${ref} not in the update 8 schema!`);
 	}
 
-	return ref as keyof typeof schema.definitions;
+	return ref as definition_key;
 }
 
 export class Update8TypeNodeGeneration {
 	private readonly type_node_generator: TypeNodeGenerationMatcher;
-	public classes: { file: string, node: ts.Node, ref?: string }[] = [];
-	public abstracts: string[] = [];
+	public classes: ({ file: string, node: ts.Node}|{ file: string, node: ts.Node, ref: string})[] = [];
+	private abstracts: (definition_key)[] = [];
 	public imports: import_these_later = {};
 
 	constructor(type_node_generator: TypeNodeGenerationMatcher) {
@@ -93,7 +95,7 @@ export class Update8TypeNodeGeneration {
 	}
 
 	private build_abstracts(
-		ref: keyof typeof schema.definitions,
+		ref: definition_key,
 		filename: string,
 		other_filenames: { [key: string]: string }
 	) {
@@ -132,7 +134,7 @@ export class Update8TypeNodeGeneration {
 
 	private generate_class(
 		ajv: Ajv,
-		ref: keyof typeof schema.definitions,
+		ref: definition_key,
 		filename: string
 	) {
 		const path_relative = '../'.repeat(dirname(filename).split('/').length);
@@ -328,11 +330,71 @@ export class Update8TypeNodeGeneration {
 		}
 	}
 
-	generate_generators(ajv: Ajv) {
+	private remove_generated_abstracts() : definition_key[]
+	{
+		const generated_refs = (this.classes.filter(
+			(entry) => 'ref' in entry
+		) as {ref: string}[]).map((entry) => {
+			return entry.ref;
+		});
+
+		generated_refs.push('class', 'class--no-description', 'class--no-description-or-display-name');
+
+		return this.abstracts = this.abstracts.filter(maybe => !generated_refs.includes(maybe));
+	}
+
+	private generate_types_for_abstracts(ajv:Ajv, already_supproted:definition_key[])
+	{
+		const destination_map = {
+			'Texture2D': 'common/unions.ts',
+		};
+
+		for (const ref of this.remove_generated_abstracts()) {
+			if ('properties' in schema.definitions[ref])
+			{
+				const properties = (schema.definitions[ref] as {
+					properties: {[key: string]: { '$ref': string }|{}}
+				}).properties;
+
+				for (const property of Object.values(properties)) {
+					if (
+						'$ref' in property
+						&& property['$ref'].startsWith('#/definitions/')
+						&& !already_supproted.includes(check_ref(property['$ref'].substring(14)))
+					) {
+						throw new Error(property['$ref'])
+
+						// const filename = 'foo.ts';
+						//
+						// this.generate_class(
+						// 	ajv,
+						// 	check_ref(property['$ref'].substring(14)),
+						// 	filename
+						// );
+					}
+				}
+			}
+		}
+	}
+
+	private generate_abstract_classes(ajv:Ajv)
+	{
+		for (const ref of this.remove_generated_abstracts()) {
+			const filename = `${ref.split('--')[0]}.ts`;
+			this.generate_class(ajv, check_ref(ref), filename);
+		}
+	}
+
+	generate_generators(
+		ajv: Ajv,
+		already_supported:definition_key[]
+	) {
 		return [
 			() => {
 				this.generate_base_classes();
 				this.generate_concrete_classes(ajv);
+				// this.generate_types_for_abstracts(ajv, already_supported);
+				// this.generate_abstract_classes(ajv);
 
 				return this.classes;
 			},

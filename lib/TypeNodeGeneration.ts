@@ -546,18 +546,20 @@ export function create_constructor_args<T1 = string>(
 	};
 }
 
+declare type object_shorthand = ({
+	required: string[],
+	'$ref': string,
+}|{
+	required: string[],
+}|{
+	'$ref': string,
+})&({
+	properties:{[key: string]: object}
+}|{});
+
 export function create_binding_constructor(
 	reference_name:string,
-	data: ({
-		required: string[],
-		'$ref': string,
-	}|{
-		required: string[],
-	}|{
-		'$ref': string,
-	})&({
-		properties:{[key: string]: object}
-	}|{})
+	data: object_shorthand
 ) : ts.MethodDeclaration {
 	let constructor_body:ts.ExpressionStatement[] = [];
 	let remapped_count = 0;
