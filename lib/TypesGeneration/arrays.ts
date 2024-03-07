@@ -1,15 +1,16 @@
 import {ImportTracker, TypesGenerationMatchesReferenceName} from "../TypesGeneration";
 import ts from "typescript";
 import {
-	adjust_class_name,
+	adjust_class_name, create_minimum_size_typed_array_of_single_type,
 	create_minimum_size_typed_array_of_type_references,
-	create_modifier, create_object_type
+	create_modifier, create_object_type, create_union
 } from "../TsFactoryWrapper";
 import {TypeNodeGeneration, TypeNodeGenerationResult} from "../TypeNodeGeneration";
 export const target_files = {
 	'mDamageTypes': 'common/arrays.ts',
 	'xyz-array': 'common/arrays.ts',
 	'ItemClass-and-amount': 'common/arrays.ts',
+	'mFuel': 'common/arrays.ts',
 };
 
 ImportTracker.set_imports('common/arrays.ts', [
@@ -51,7 +52,7 @@ export const generators = [
 		keyof typeof target_files
 	>(
 		['mDamageTypes'],
-		(data, reference_name) => {
+		(_, reference_name) => {
 			return ts.factory.createTypeAliasDeclaration(
 				[create_modifier('export')],
 				ts.factory.createIdentifier(adjust_class_name(reference_name)),
@@ -95,7 +96,7 @@ export const generators = [
 		'xyz-array'
 	>(
 		['xyz-array'],
-		(data, reference_name) => {
+		(_, reference_name) => {
 			return ts.factory.createTypeAliasDeclaration(
 				[create_modifier('export')],
 				ts.factory.createIdentifier(adjust_class_name(reference_name)),
@@ -155,6 +156,19 @@ export const generators = [
 						generate()
 					))
 				])
+			);
+		}
+	),
+	new TypesGenerationMatchesReferenceName<{minItems: number}, 'mFuel'>(
+		['mFuel'],
+		(data, reference_name) => {
+			return ts.factory.createTypeAliasDeclaration(
+				[create_modifier('export')],
+				adjust_class_name(reference_name),
+				undefined,
+				create_minimum_size_typed_array_of_single_type(data.minItems, () => {
+					return ts.factory.createTypeReferenceNode(adjust_class_name(`${reference_name}_item`));
+				})
 			);
 		}
 	),

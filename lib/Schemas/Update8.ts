@@ -14,11 +14,11 @@ import {
 	adjust_class_name,
 	adjust_unrealengine_prefix,
 	adjust_unrealengine_value,
-	create_class_options,
-	create_modifier, create_type,
+	create_class_options, create_lazy_union, create_literal_node_from_value,
+	create_modifier, create_object_type, create_type, create_union,
 	createClass,
 	createProperty,
-	createProperty_with_specific_type,
+	createProperty_with_specific_type, possibly_create_lazy_union,
 	supported_modifiers
 } from '../TsFactoryWrapper';
 import {extract_UnrealEngineString} from '../DocsValidation';
@@ -99,6 +99,23 @@ export class Update8TypeNodeGeneration {
 		this.type_node_generator = type_node_generator;
 	}
 
+	private merge_imports(filename:string, import_from:string, import_these:string[])
+	{
+		if (!(filename in this.imports)) {
+			this.imports[filename] = {};
+		}
+
+		if (!(import_from in this.imports[filename])) {
+			this.imports[filename][import_from] = [];
+		}
+
+		for (const import_this of import_these) {
+			if (!this.imports[filename][import_from].includes(import_this)) {
+				this.imports[filename][import_from].push(import_this);
+			}
+		}
+	}
+
 	private build_abstracts(
 		ref: definition_key,
 		filename: string,
@@ -115,17 +132,7 @@ export class Update8TypeNodeGeneration {
 			const other_filename = other_filenames[parent_ref];
 			const other_class = adjust_class_name(parent_ref);
 
-			if (!(filename in this.imports)) {
-				this.imports[filename] = {};
-			}
-
-			if (!(other_filename in this.imports[filename])) {
-				this.imports[filename][other_filename] = [];
-			}
-
-			if (!this.imports[filename][other_filename].includes(other_class)) {
-				this.imports[filename][other_filename].push(other_class);
-			}
+			this.merge_imports(filename, other_filename, [other_class]);
 		}
 
 		const [, ...ancestors] = tree;
@@ -258,6 +265,47 @@ export class Update8TypeNodeGeneration {
 					)
 				)});
 		}
+
+		const mByProductAmount_reference_name = adjust_class_name(
+			`${
+				schema.definitions.mFuel.items.properties.mByproductAmount.oneOf[1]['$ref']?.substring(14)
+			}__type`
+		);
+
+		const mFuel_item = {
+			mFuelClass: ts.factory.createTypeReferenceNode(
+				'StringPassedRegExp',
+				[create_literal_node_from_value(
+					schema.definitions.mFuel.items.properties.mFuelClass.pattern
+				)]
+			),
+			mSupplementalResourceClass: create_lazy_union(
+				'',
+				schema.definitions.mFuel.items.properties.mSupplementalResourceClass.oneOf[1]
+			),
+			mByproduct: possibly_create_lazy_union(
+				schema.definitions.mFuel.items.properties.mByproduct.enum
+			),
+			mByproductAmount: create_union(
+				create_literal_node_from_value(''),
+				ts.factory.createTypeReferenceNode(mByProductAmount_reference_name)
+			),
+		};
+
+		this.merge_imports('common/arrays.ts', '../utils/validators', [
+			'StringPassedRegExp',
+			mByProductAmount_reference_name,
+		]);
+
+		this.classes.push({
+			file: 'common/arrays.ts',
+			node: ts.factory.createTypeAliasDeclaration(
+				[create_modifier('declare')],
+				'mFuel_item',
+				undefined,
+				create_object_type(mFuel_item, Object.keys(mFuel_item) as (keyof typeof mFuel_item)[])
+			),
+		});
 	}
 
 	private generate_base_classes() {
@@ -433,8 +481,10 @@ export class Update8TypeNodeGeneration {
 				this.generate_types();
 				this.generate_base_classes();
 				this.generate_concrete_classes(ajv);
-				// this.generate_types_for_abstracts(ajv, already_supported);
-				// this.generate_abstract_classes(ajv);
+				/*
+				this.generate_types_for_abstracts(ajv, already_supported);
+				this.generate_abstract_classes(ajv);
+				 */
 
 				return this.classes;
 			},

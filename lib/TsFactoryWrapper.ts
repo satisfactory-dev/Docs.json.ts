@@ -675,6 +675,28 @@ export function property_name_or_computed<T extends string = string>(property:T)
 	return computed_property_name_or_undefined(property) || property;
 }
 
+export function create_minimum_size_typed_array_of_single_type(
+	repeat: number,
+	generate: () => ts.TypeNode
+) : ts.TupleTypeNode {
+	if (repeat < 1) {
+		throw new Error(`repeat must be greater than or equal to 1, ${repeat} given.`);
+	} else if (repeat !== (repeat|0)) {
+		throw new Error(`repeat must be an integer, ${repeat} given.`);
+	}
+
+	const types = [generate()];
+
+	for (let iteration = 1; iteration < repeat; ++iteration) {
+		types.push(generate());
+	}
+
+	return ts.factory.createTupleTypeNode([
+		...types,
+		ts.factory.createRestTypeNode(ts.factory.createArrayTypeNode(generate())),
+	]);
+}
+
 export function create_this_assignment(property:string, identifier:string|ts.Expression): ts.ExpressionStatement {
 	return ts.factory.createExpressionStatement(ts.factory.createAssignment(
 		needs_element_access(property) ? ts.factory.createElementAccessExpression(
@@ -717,4 +739,49 @@ export function create_minimum_size_typed_array_of_type_references(
 
 export function create_index_access(identifier:string, index:number) {
 	return ts.factory.createElementAccessExpression(ts.factory.createIdentifier(identifier),index);
+}
+
+export function create_literal_node_from_value(value:string) : ts.LiteralTypeNode
+{
+	return ts.factory.createLiteralTypeNode(ts.factory.createStringLiteral(value));
+}
+
+export function create_union(a:ts.TypeNode, b:ts.TypeNode, ...rest:ts.TypeNode[]) : ts.UnionTypeNode
+{
+	return ts.factory.createUnionTypeNode([a, b, ...rest]);
+}
+
+declare type lazy_union_item = string|({type: string}&({pattern: string}|{const: string}));
+
+function map_lazy_union_item_to_type(item:lazy_union_item) : ts.TypeNode
+{
+	if ('object' === typeof item) {
+		if ('const' in item) {
+			return create_literal_node_from_value(item.const);
+		}
+
+		return ts.factory.createTypeReferenceNode('StringPassedRegExp', [
+			create_literal_node_from_value(item.pattern),
+		]);
+	}
+
+	return create_literal_node_from_value(item);
+}
+export function create_lazy_union(a:lazy_union_item, b:lazy_union_item, ...rest:lazy_union_item[]) : ts.UnionTypeNode
+{
+
+	return create_union(map_lazy_union_item_to_type(a), map_lazy_union_item_to_type(b), ...rest.map(map_lazy_union_item_to_type));
+}
+
+export function possibly_create_lazy_union(items:lazy_union_item[]) : ts.TypeNode
+{
+	if (items.length < 1) {
+		throw new Error('Cannot create lazy unions from empty arrays!');
+	} else if (1 === items.length) {
+		return map_lazy_union_item_to_type(items[0]);
+	}
+
+	const [a, b, ...rest] = items;
+
+	return create_lazy_union(a, b, ...rest);
 }

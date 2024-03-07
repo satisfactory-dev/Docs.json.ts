@@ -116,20 +116,35 @@ export class ImportTracker
 	static merge_and_set_imports(imports:import_these_later)
 	{
 		for (const entry of Object.entries(imports)) {
-			const imports_shorthand:imports_shorthand = [];
 
 			const [filename, file_imports] = entry;
+
+			const merge_here = Object.fromEntries((this.imports[filename] || []).map(
+				(shorthand_entry) => {
+					return [shorthand_entry.from, shorthand_entry.import_these];
+				}
+			));
 
 			for (const inner_entry of Object.entries(file_imports)) {
 				const [from, import_these] = inner_entry;
 
 				if (import_these.length) {
-					imports_shorthand.push({from, import_these: import_these as [string, ...string[]]});
+					if (!(from in merge_here)) {
+						merge_here[from] = import_these as [string, ...string[]];
+					} else {
+						for (const import_this of import_these) {
+							if (!merge_here[from].includes(import_this)) {
+								merge_here[from].push(import_this);
+							}
+						}
+					}
 				}
 			}
 
-			if (imports_shorthand.length) {
-				ImportTracker.set_imports(filename, imports_shorthand);
+			if (merge_here.length) {
+				ImportTracker.set_imports(filename, Object.entries(merge_here).map((unpack) => {
+					return {from: unpack[0], import_these: unpack[1]};
+				}));
 			}
 		}
 	}

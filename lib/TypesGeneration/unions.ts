@@ -108,6 +108,14 @@ export const generators = [
 									},
 								},
 							}),
+							generate_array_string_schema({
+								type: 'object',
+								required: ['$ref'],
+								additionalProperties: false,
+								properties: {
+									'$ref': {type: 'string', minLength: 15},
+								},
+							}),
 							*/
 							{
 								type: 'object',
