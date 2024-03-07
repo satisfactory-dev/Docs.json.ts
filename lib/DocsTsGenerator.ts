@@ -43,6 +43,7 @@ import {
 import {
 	target_files as unions_target_files,
 	generators as unions_generators,
+	type_node_generators as unions_type_node_generators,
 } from './TypesGeneration/unions';
 import {
 	TypesGenerationFromSchema,
@@ -291,6 +292,7 @@ export class DocsTsGenerator
 			...arrays_type_node_generators,
 			...type_node_generators,
 			...prefixes_type_node_generators,
+			...unions_type_node_generators,
 		]);;
 
 		const supported_conversions:GenerationMatch<object>[] = Object.entries(update8_schema.definitions).filter(

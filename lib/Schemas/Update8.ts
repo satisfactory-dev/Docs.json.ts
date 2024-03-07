@@ -14,11 +14,20 @@ import {
 	adjust_class_name,
 	adjust_unrealengine_prefix,
 	adjust_unrealengine_value,
-	create_class_options, create_lazy_union, create_literal_node_from_value,
-	create_modifier, create_object_type, create_type, create_union,
+	auto_constructor_property_types_from_generated_types_object,
+	auto_constructor_property_types_from_generated_types_properties,
+	create_class_options,
+	create_lazy_union,
+	create_literal_node_from_value,
+	create_modifier,
+	create_object_type,
+	create_type,
+	create_union,
 	createClass,
+	createClass__members__with_auto_constructor,
 	createProperty,
-	createProperty_with_specific_type, possibly_create_lazy_union,
+	createProperty_with_specific_type, is_supported_properties_object,
+	possibly_create_lazy_union,
 	supported_modifiers
 } from '../TsFactoryWrapper';
 import {extract_UnrealEngineString} from '../DocsValidation';
@@ -306,6 +315,59 @@ export class Update8TypeNodeGeneration {
 				create_object_type(mFuel_item, Object.keys(mFuel_item) as (keyof typeof mFuel_item)[])
 			),
 		});
+
+		type EditorCurveData_required_expected =
+			| 'DefaultValue'
+			| 'PreInfinityExtrap'
+			| 'PostInfinityExtrap'
+		;
+
+		const EditorCurveData_required_expected: [
+			EditorCurveData_required_expected,
+			...EditorCurveData_required_expected[],
+		] = ['DefaultValue', 'PreInfinityExtrap', 'PostInfinityExtrap'];
+
+		function check_required<T extends string = string>(
+			array:string[],
+			required:[T, ...T[]]
+		) : array is [T, ...T[]] {
+			return array.length > 0 && array.length === array.map(
+				item => (required as string[]).includes(item)
+			).reduce((was, is) => was + (is ? 1 : 0), 0) && array.length === required.length;
+		}
+
+		if (!check_required<EditorCurveData_required_expected>(
+			schema.definitions.EditorCurveData.object_string.properties.EditorCurveData.required,
+			EditorCurveData_required_expected
+		)) {
+			throw new Error('Inconsistent required properties found for EditorCurveData');
+		}
+		if (!is_supported_properties_object(
+			schema.definitions.EditorCurveData.object_string.properties.EditorCurveData.properties
+		)) {
+			throw new Error('Unsupported refs found for EditorCurveData');
+		}
+
+		this.classes.push({
+			file: 'common/classes.ts',
+			node: createClass(
+				'EditorCurveData',
+				createClass__members__with_auto_constructor<
+					[EditorCurveData_required_expected, ...EditorCurveData_required_expected[]],
+					'DefaultValue'|'PreInfinityExtrap'|'PostInfinityExtrap'
+				>(
+					{
+						type: 'object',
+						required: schema.definitions.EditorCurveData.object_string.properties.EditorCurveData.required,
+						properties: schema.definitions.EditorCurveData.object_string.properties.EditorCurveData.properties,
+					},
+					['public', 'readonly']
+				),
+				{
+					modifiers: ['export'],
+				}
+			),
+		});
 	}
 
 	private generate_base_classes() {
@@ -449,7 +511,8 @@ export class Update8TypeNodeGeneration {
 						&& property['$ref'].startsWith('#/definitions/')
 						&& !already_supproted.includes(check_ref(property['$ref'].substring(14)))
 					) {
-						throw new Error(property['$ref'])
+						break;
+						// throw new Error(property['$ref'])
 
 						// const filename = 'foo.ts';
 						//
@@ -481,10 +544,8 @@ export class Update8TypeNodeGeneration {
 				this.generate_types();
 				this.generate_base_classes();
 				this.generate_concrete_classes(ajv);
-				/*
 				this.generate_types_for_abstracts(ajv, already_supported);
 				this.generate_abstract_classes(ajv);
-				 */
 
 				return this.classes;
 			},

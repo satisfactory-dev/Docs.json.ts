@@ -7,7 +7,7 @@ import {
 } from "../TsFactoryWrapper";
 import ts from 'typescript';
 import {
-	ImportTracker, TypesGenerationFromSchema,
+	ImportTracker, TypesGenerationFromSchema, TypesGenerationMatchesReferenceName,
 } from "../TypesGeneration";
 import {
 	TypeNodeGeneration,

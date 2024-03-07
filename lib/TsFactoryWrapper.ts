@@ -179,6 +179,25 @@ export const auto_constructor_property_types_from_generated_types = {
 	'#/definitions/mDockingRuleSet': adjust_class_name('mDockingRuleSet'),
 	'#/definitions/EditorCurveData': adjust_class_name('EditorCurveData'),
 	'#/definitions/mLightControlData': adjust_class_name('mLightControlData'),
+	'#/definitions/InfinityExtrap': adjust_class_name('InfinityExtrap'),
+};
+
+export type auto_constructor_property_types_from_generated_types_properties<
+	Properties extends string = string
+> = {
+	[key in Properties]: {
+		'$ref': keyof typeof auto_constructor_property_types_from_generated_types;
+	};
+};
+
+export type auto_constructor_property_types_from_generated_types_object<
+	Required extends [string, ...string[]],
+	Properties extends string = string,
+	Type extends string = 'object',
+> = {
+	type: Type,
+	required: Required,
+	properties: auto_constructor_property_types_from_generated_types_properties<Properties>,
 };
 
 export function create_callExpression__for_validation_function(
@@ -204,19 +223,34 @@ export function create_callExpression__for_validation_function(
 	);
 }
 
-export function createClass__members__with_auto_constructor<T extends [string, ...string[]]>(
-	data: {
-		type: 'object',
-		required: T,
-		properties: {[key: string]: {
-			'$ref': keyof typeof auto_constructor_property_types_from_generated_types,
-		}},
-	},
+function is_supported_auto_constructor_property_type(
+	prop:string
+) : prop is Exclude<keyof typeof auto_constructor_property_types_from_generated_types, number> {
+	return prop in auto_constructor_property_types_from_generated_types;
+}
+
+export function is_supported_properties_object(
+	object: { [key: string]: { '$ref': string } }
+) : object is auto_constructor_property_types_from_generated_types_properties<Exclude<keyof typeof object, number>> {
+	for (const properties of Object.values(object)) {
+		if (!is_supported_auto_constructor_property_type(properties['$ref'])) {
+			return false;
+		}
+	}
+
+	return true;
+}
+
+export function createClass__members__with_auto_constructor<
+	T extends [string, ...string[]],
+	Properties extends string = string
+>(
+	data: auto_constructor_property_types_from_generated_types_object<T, Properties>,
 	properties_modifiers:supported_property_modifiers,
 ) : (ts.PropertyDeclaration|ts.MethodDeclaration)[] {
 	const members:(ts.PropertyDeclaration|ts.MethodDeclaration)[] = [];
 
-	const property_types = Object.fromEntries(Object.entries(data.properties).map(
+	const property_types = Object.fromEntries((Object.entries(data.properties) as [string, {'$ref': string}][]).map(
 		(entry) : [
 			string, // property name
 			[
@@ -228,10 +262,18 @@ export function createClass__members__with_auto_constructor<T extends [string, .
 				entry[0],
 				[
 					() => {
-						const [property_name, property_data] = entry;
+						const [property_name, {'$ref': property_data_ref}] = entry;
+
+						if ( !is_supported_auto_constructor_property_type(property_data_ref)) {
+							console.error(property_data_ref);
+
+							throw new Error('Unsupported property type!');
+						}
 
 						let type:ts.TypeNode = ts.factory.createTypeReferenceNode(
-							adjust_class_name(auto_constructor_property_types_from_generated_types[property_data['$ref']])
+							adjust_class_name(auto_constructor_property_types_from_generated_types[
+								property_data_ref
+							])
 						);
 
 						if (!data.required.includes(property_name)) {
@@ -244,10 +286,16 @@ export function createClass__members__with_auto_constructor<T extends [string, .
 						return type;
 					},
 					() => {
-						const [property_name, property_data] = entry;
+						const [property_name, {'$ref': property_data_ref}] = entry;
+
+						if ( !is_supported_auto_constructor_property_type(property_data_ref)) {
+							console.error(property_data_ref);
+
+							throw new Error('Unsupported property type!');
+						}
 
 						let type:ts.TypeNode = ts.factory.createTypeReferenceNode(
-							adjust_class_name(auto_constructor_property_types_from_generated_types[property_data['$ref']])
+							adjust_class_name(auto_constructor_property_types_from_generated_types[property_data_ref])
 						);
 
 						if (!data.required.includes(property_name)) {
@@ -277,7 +325,7 @@ export function createClass__members__with_auto_constructor<T extends [string, .
 
 			return [property_name, generator()];
 		}),
-		Object.entries(data.properties).map((entry, index) => {
+		(Object.entries(data.properties) as [string, {'$ref': string}][]).map((entry, index) => {
 			const [property_name, property] = entry;
 
 			if (property['$ref'] in auto_constructor_property_types_from_generated_types) {

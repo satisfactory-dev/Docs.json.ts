@@ -48,7 +48,13 @@ export class TypeNodeGeneration<T extends { [key: string]: any }>
 
 	match(ajv: Ajv, property: object): TypeNodeGenerationResult | null {
 		if (!this.validate.has(ajv)) {
-			this.validate.set(ajv, ajv.compile<T>(this.schema));
+			try {
+				this.validate.set(ajv, ajv.compile<T>(this.schema));
+			} catch (err) {
+				console.error(((this.schema as unknown) as any).properties);
+
+				throw err;
+			}
 		}
 		const validate = this.validate.get(ajv) as ValidateFunction<T>;
 

@@ -2,10 +2,12 @@ import {ImportTracker, TypesGenerationFromSchema, TypesGenerationMatchesReferenc
 import {adjust_class_name, create_modifier, create_type} from "../TsFactoryWrapper";
 import ts from "typescript";
 import {UnrealEngineString_schema, UnrealEngineString_type} from "./validators";
+import {TypeNodeGeneration} from "../TypeNodeGeneration";
 
 export const target_files = {
 	'mScannerDisplayText': 'common/aliases.ts',
 	'ItemClass--prop': 'common/aliases.ts',
+	'mOutputInventoryHandlerData': 'common/aliases.ts',
 };
 
 ImportTracker.set_imports('common/aliases.ts', [
@@ -16,6 +18,12 @@ ImportTracker.set_imports('common/aliases.ts', [
 			'string_starts_with',
 			'StringPassedRegExp',
 		]
+	},
+	{
+		from: './constants',
+		import_these: [
+			'empty_object'
+		],
 	},
 ]);
 
@@ -32,6 +40,17 @@ export const generators = [
 				adjust_class_name(reference_name),
 				undefined,
 				create_type('string')
+			);
+		}
+	),
+	new TypesGenerationMatchesReferenceName<{'$ref': string}, 'mOutputInventoryHandlerData'>(
+		['mOutputInventoryHandlerData'],
+		(data, reference_name) => {
+			return ts.factory.createTypeAliasDeclaration(
+				[create_modifier('export')],
+				adjust_class_name(reference_name),
+				undefined,
+				ts.factory.createTypeReferenceNode(adjust_class_name(data['$ref'].substring(14)))
 			);
 		}
 	),
@@ -63,3 +82,4 @@ export const generators = [
 		}
 	),
 ];
+

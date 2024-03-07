@@ -3,10 +3,13 @@ import ts from "typescript";
 import {adjust_class_name, create_modifier} from "../TsFactoryWrapper";
 import {UnrealEngineString_schema} from "./validators";
 import {array_string_schema, array_string_type, generate_array_string_schema} from "./json_schema_types";
+import {TypeNodeGeneration, TypeNodeGenerationResult} from "../TypeNodeGeneration";
 
 export const target_files = {
 	'Texture2D': 'common/unions.ts',
+	/*
 	'mDescriptorStatBars': 'common/unions.ts',
+	 */
 };
 
 ImportTracker.set_imports('common/unions.ts', [
@@ -95,7 +98,6 @@ export const generators = [
 									const: {type: 'string'},
 								},
 							},
-							/*
 							generate_array_string_schema({
 								type: 'object',
 								required: ['type', 'required', 'properties'],
@@ -116,7 +118,6 @@ export const generators = [
 									'$ref': {type: 'string', minLength: 15},
 								},
 							}),
-							*/
 							{
 								type: 'object',
 								required: ['type', 'string_starts_with'],
@@ -132,6 +133,7 @@ export const generators = [
 			},
 		},
 		(data, reference_name) => {
+			console.log(reference_name);
 
 			return ts.factory.createTypeAliasDeclaration(
 				[create_modifier('export')],
@@ -172,6 +174,38 @@ export const generators = [
 						);
 					})
 				)
+			);
+		}
+	),
+];
+
+export const type_node_generators = [
+	new TypeNodeGeneration<{
+		'$ref': `#/definitions/${keyof typeof target_files}`
+	}>(
+		{
+			type: 'object',
+			required: ['$ref'],
+			properties: {
+				'$ref': {
+					oneOf: Object.keys(target_files).map(e => {
+						return {type: 'string', 'const': `#/definitions/${e}`};
+					})
+				}
+			}
+		},
+		(data) => {
+			const reference_name = adjust_class_name(data['$ref'].substring(14));
+
+			return new TypeNodeGenerationResult(
+				() => {
+					return ts.factory.createTypeReferenceNode(reference_name);
+				},
+				{
+					'common/unions': [
+						reference_name,
+					],
+				}
 			);
 		}
 	),
