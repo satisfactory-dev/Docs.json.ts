@@ -131,7 +131,7 @@ export class Update8TypeNodeGeneration {
 	}
 
 	private generate_class(
-		ajv:Ajv,
+		ajv: Ajv,
 		ref: keyof typeof schema.definitions,
 		filename: string
 	) {
@@ -219,8 +219,7 @@ export class Update8TypeNodeGeneration {
 		});
 	}
 
-	private generate_base_classes()
-	{
+	private generate_base_classes() {
 		this.classes.push(...supported_base_classes.map((reference_name) => {
 			return create_constructor_args('classes/base.ts', reference_name, schema.definitions[reference_name]);
 		}));
@@ -255,8 +254,7 @@ export class Update8TypeNodeGeneration {
 		}));
 	}
 
-	private generate_concrete_classes(ajv:Ajv)
-	{
+	private generate_concrete_classes(ajv: Ajv) {
 		const checked: string[] = [];
 
 		const filenames: { [key: string]: string } = {};
@@ -330,7 +328,7 @@ export class Update8TypeNodeGeneration {
 		}
 	}
 
-	generate_generators(ajv:Ajv) {
+	generate_generators(ajv: Ajv) {
 		return [
 			() => {
 				this.generate_base_classes();
