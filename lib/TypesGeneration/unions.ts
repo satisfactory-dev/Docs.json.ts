@@ -1,15 +1,18 @@
 import {ImportTracker, TypesGenerationFromSchema, TypesGenerationMatchesReferenceName} from "../TypesGeneration";
 import ts from "typescript";
-import {adjust_class_name, create_modifier} from "../TsFactoryWrapper";
+import {
+	adjust_class_name,
+	create_minimum_size_typed_array_of_single_type,
+	create_modifier,
+	create_object_type
+} from "../TsFactoryWrapper";
 import {UnrealEngineString_schema} from "./validators";
 import {array_string_schema, array_string_type, generate_array_string_schema} from "./json_schema_types";
 import {TypeNodeGeneration, TypeNodeGenerationResult} from "../TypeNodeGeneration";
 
 export const target_files = {
 	'Texture2D': 'common/unions.ts',
-	/*
 	'mDescriptorStatBars': 'common/unions.ts',
-	 */
 };
 
 ImportTracker.set_imports('common/unions.ts', [
@@ -61,6 +64,9 @@ declare type supported_oneOf_items =
 		}
 	}}})
 	| {type: 'string', string_starts_with: string}
+	| (array_string_type & {array_string: {items: {
+		'$ref': '#/definitions/mEventType'
+	}}})
 ;
 export const generators = [
 	new TypesGenerationFromSchema<{
@@ -147,8 +153,40 @@ export const generators = [
 							return ts.factory.createLiteralTypeNode(ts.factory.createStringLiteral(
 								entry.const
 							));
+						} else if (
+							'array_string' in entry
+							&& 'type' in entry.array_string.items
+							&& 'properties' in entry.array_string.items
+							&& 'object' === entry.array_string.items.type
+							&& 1 === entry.array_string.items.required.length
+							&& 'Value' === entry.array_string.items.required[0]
+							&& 'Value' in entry.array_string.items.properties
+						) {
+							return create_minimum_size_typed_array_of_single_type(
+								entry.array_string.minItems,
+								() => ts.factory.createTypeReferenceNode(
+									adjust_class_name(
+										(
+											entry.array_string.items as {properties: {Value: {'$ref': string}}}
+										).properties.Value['$ref'].substring(14)
+									)
+								)
+							);
+						} else if (
+							'array_string' in entry
+							&& '$ref' in entry.array_string.items
+							&& '#/definitions/mEventType' === entry.array_string.items['$ref']
+						) {
+							return create_minimum_size_typed_array_of_single_type(
+								entry.array_string.minItems,
+								() => ts.factory.createTypeReferenceNode(
+									adjust_class_name(
+										(entry.array_string.items as {'$ref': string})['$ref'].substring(14)
+									)
+								)
+							);
 						} else if ('array_string' in entry) {
-							console.error(entry);
+							console.error(entry.array_string);
 
 							throw new Error('Unsupported array_string found');
 						} else if ('string_starts_with' in entry) {

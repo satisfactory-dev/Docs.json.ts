@@ -1,5 +1,5 @@
 # Types Progress
-22.08% Complete 
+23.81% Complete 
 
 * [x] boolean
 * [x] boolean-extended
@@ -192,7 +192,7 @@
 * [x] ItemClass--prop
 * [x] ItemClass-and-amount
 * [ ] ItemClass-only
-* [ ] ItemClass-only--array
+* [x] ItemClass-only--array
 * [x] mAspect
 * [x] MaterialSlotName
 * [x] mBatteryStatus
@@ -200,16 +200,16 @@
 * [x] mClassToScanFor
 * [x] mCrosshairMaterial
 * [x] mDamageTypes
-* [ ] mDescriptorStatBars
+* [x] mDescriptorStatBars
 * [x] mDisableSnapOn
 * [x] mDockingRuleSet
 * [x] mEventType
-* [ ] mEventType--optional-csv
+* [x] mEventType--optional-csv
 * [x] mForm
 * [x] mFreightCargoType
 * [x] mFuel
 * [x] mLightControlData
-* [ ] mOutputInventoryHandlerData
+* [x] mOutputInventoryHandlerData
 * [x] mPlatformDockingStatus
 * [x] mScannableType
 * [x] mScannerDisplayText

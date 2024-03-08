@@ -153,7 +153,7 @@ export const type_node_generators = [
 			properties: {
 				'$ref': {
 					type: 'string',
-					pattern: '^#/definitions/(color-decimal(--semi-native)?)$',
+					pattern: '^#/definitions/(color(-decimal)?(--semi-native)?)$',
 				}
 			}
 		},

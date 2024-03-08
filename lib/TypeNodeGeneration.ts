@@ -148,6 +148,7 @@ export class TypeNodeGenerationMatcher
 		if (oneOf_matcher(property)) {
 			const matches:TypeNodeGenerationResult[] = [];
 			let has_all_matches = true;
+			const missing_matches = [];
 
 			for (const sub_property of property.oneOf) {
 				let found_match = false;
@@ -173,6 +174,7 @@ export class TypeNodeGenerationMatcher
 
 				if (!found_match) {
 					has_all_matches = false;
+					missing_matches.push(sub_property);
 					break;
 				}
 			}
@@ -186,7 +188,7 @@ export class TypeNodeGenerationMatcher
 					},
 				);
 			} else {
-				console.error(property);
+				console.error(property, missing_matches);
 
 				throw new Error('lolwhut');
 			}

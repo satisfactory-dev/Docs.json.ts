@@ -10,6 +10,7 @@ export const target_files = {
 	'mDamageTypes': 'common/arrays.ts',
 	'xyz-array': 'common/arrays.ts',
 	'ItemClass-and-amount': 'common/arrays.ts',
+	'ItemClass-only--array': 'common/arrays.ts',
 	'mFuel': 'common/arrays.ts',
 };
 
@@ -43,6 +44,39 @@ export type array_string_schema_type = {
 		type: 'array',
 		minItems: number,
 		items: object,
+	},
+};
+
+declare type ItemClass_only = {
+	type: 'string',
+	minLength: 1,
+	array_string: {
+		type: 'array',
+		minItems: 1,
+		items: {
+			type: 'object',
+			required: ['ItemClass'],
+			properties: {
+				ItemClass: {'$ref': '#/definitions/ItemClass'},
+			},
+		},
+	},
+};
+
+declare type ItemClass_and_Amount = {
+	type: 'string',
+	minLength: 1,
+	array_string: {
+		type: 'array',
+		minItems: 1,
+		items: {
+			type: 'object',
+			required: ['ItemClass', 'Amount'],
+			properties: {
+				ItemClass: {'$ref': '#/definitions/ItemClass'},
+				Amount: {'$ref': '#/definitions/integer-string'},
+			},
+		},
 	},
 };
 
@@ -111,27 +145,16 @@ export const generators = [
 		}
 	),
 	new TypesGenerationMatchesReferenceName<
-		{
-			type: 'string',
-			minLength: 1,
-			array_string: {
-				type: 'array',
-				minItems: 1,
-				items: {
-					type: 'object',
-					required: ['ItemClass', 'Amount'],
-					properties: {
-						ItemClass: {'$ref': '#/definitions/ItemClass'},
-						Amount: {'$ref': '#/definitions/integer-string'},
-					},
-				},
-			},
-		},
-		'ItemClass-and-amount'
+		ItemClass_and_Amount|ItemClass_only,
+		'ItemClass-and-amount'|'ItemClass-only--array'
 	>(
-		['ItemClass-and-amount'],
+		['ItemClass-and-amount', 'ItemClass-only--array'],
 		(data, reference_name) => {
-			function generate() : ts.TypeNode
+			function check(_:any) : _ is ItemClass_and_Amount {
+				return 'ItemClass-and-amount' === reference_name;
+			}
+
+			const generate = check(data) ? () : ts.TypeNode =>
 			{
 				return create_object_type(
 					{
@@ -140,6 +163,15 @@ export const generators = [
 						)),
 						Amount: ts.factory.createTypeReferenceNode(adjust_class_name(
 							`${data.array_string.items.properties.Amount['$ref'].substring(14)}__type`
+						)),
+					},
+					data.array_string.items.required
+				);
+			} : () : ts.TypeNode => {
+				return create_object_type(
+					{
+						ItemClass: ts.factory.createTypeReferenceNode(adjust_class_name(
+							data.array_string.items.properties.ItemClass['$ref'].substring(14)
 						)),
 					},
 					data.array_string.items.required
@@ -179,6 +211,8 @@ export const type_node_generators = [
 		'$ref':
 			| '#/definitions/mDamageTypes'
 			| '#/definitions/xyz-array'
+			| '#/definitions/ItemClass-and-amount'
+			| '#/definitions/ItemClass-only--array'
 	}>(
 		{
 			type: 'object',
@@ -187,7 +221,10 @@ export const type_node_generators = [
 			properties: {
 				'$ref': {
 					oneOf: [
-						{type: 'string', pattern: '^#/definitions/(mDamageTypes|xyz-array)$'},
+						{
+							type: 'string',
+							pattern: '^#/definitions/(mDamageTypes|xyz-array|ItemClass-(and-amount|only--array))$'
+						},
 					],
 				},
 			},

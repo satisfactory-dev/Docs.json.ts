@@ -16,7 +16,7 @@ import {
 	create_method_with_type_parameters,
 	create_template_span,
 	create_index_access,
-	create_object_type, very_flexibly_create_regex_validation_function
+	create_object_type, very_flexibly_create_regex_validation_function, create_literal_node_from_value
 } from "../TsFactoryWrapper";
 import {TypeNodeGeneration, TypeNodeGenerationResult} from "../TypeNodeGeneration";
 import {UnrealEngineString_regex} from "../DocsValidation";
@@ -787,11 +787,40 @@ export const UnrealEngineString_schema = {
 	}
 };
 
+export const UnrealEngineString_prefix_pattern_schema = {
+	type: 'object',
+	required: ['type', 'UnrealEngineString'],
+	additionalProperties: false,
+	properties: {
+		type: {type: 'string', const: 'string'},
+		minLength: {type: 'number', const: 1},
+		UnrealEngineString: {
+			type: 'object',
+			required: ['type', 'UnrealEngineString_prefix_pattern', 'pattern'],
+			additionalProperties: false,
+			properties: {
+				type: {type: 'string', const: 'string'},
+				UnrealEngineString_prefix_pattern: {type: 'string', minLength: 1},
+				pattern: {type: 'string', minLength: 2},
+			}
+		},
+	}
+};
+
 export type UnrealEngineString_type = {
 	type: 'string',
 	UnrealEngineString: {
 		type: 'string',
 		UnrealEngineString_prefix: string,
+		pattern: string,
+	},
+}&({minLength:1}|{})
+
+export type UnrealEngineString_pattern_type = {
+	type: 'string',
+	UnrealEngineString: {
+		type: 'string',
+		UnrealEngineString_prefix_pattern: string,
 		pattern: string,
 	},
 }&({minLength:1}|{})
@@ -829,19 +858,38 @@ export const type_node_generators = [
 			);
 		},
 	),
-	new TypeNodeGeneration<{
-		type: 'string',
-		minLength: 1,
-		UnrealEngineString: {
-			type: 'string',
-			UnrealEngineString_prefix: string,
-			pattern: string,
-		}
-	}>(
+	new TypeNodeGeneration<UnrealEngineString_type>(
 		UnrealEngineString_schema,
-		() => {
+		(data) => {
 			return new TypeNodeGenerationResult(
-				() => ts.factory.createTypeReferenceNode('UnrealEngineString'),
+				() => ts.factory.createTypeReferenceNode('UnrealEngineString', [
+					ts.factory.createTypeReferenceNode('string_starts_with', [
+						create_literal_node_from_value(data.UnrealEngineString.UnrealEngineString_prefix),
+					]),
+					ts.factory.createTypeReferenceNode('StringPassedRegExp', [
+						create_literal_node_from_value(data.UnrealEngineString.pattern),
+					])
+				]),
+				{
+					'utils/validators': [
+						'UnrealEngineString',
+					],
+				},
+			);
+		}
+	),
+	new TypeNodeGeneration<UnrealEngineString_pattern_type>(
+		UnrealEngineString_prefix_pattern_schema,
+		(data) => {
+			return new TypeNodeGenerationResult(
+				() => ts.factory.createTypeReferenceNode('UnrealEngineString', [
+					ts.factory.createTypeReferenceNode('StringPassedRegExp', [
+						create_literal_node_from_value(data.UnrealEngineString.UnrealEngineString_prefix_pattern),
+					]),
+					ts.factory.createTypeReferenceNode('StringPassedRegExp', [
+						create_literal_node_from_value(data.UnrealEngineString.pattern),
+					])
+				]),
 				{
 					'utils/validators': [
 						'UnrealEngineString',
