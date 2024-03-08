@@ -21,16 +21,14 @@ const generator = new DocsTsGenerator({
 async function update_progress(progress:generation_result, log_progress = true)
 {
 	if (log_progress) {
-		console.log(progress);
 		console.table({
 			Supported: progress.definitions.supported.length,
-			Unsupported: progress.definitions.unsupported.length,
+			Unsupported: progress.definitions.keys.length - progress.definitions.supported.length,
 		});
 	}
 
 	const all_progress_items = [
-		...progress.definitions.supported,
-		...progress.definitions.unsupported,
+		...progress.definitions.keys,
 	].sort((a, b) => a.localeCompare(b));
 
 	type progress_group = {

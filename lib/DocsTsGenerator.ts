@@ -102,7 +102,6 @@ export type generation_result = {
 	definitions: {
 		keys: string[],
 		supported: string[],
-		unsupported: string[],
 		missing_target_files: string[],
 	},
 	files: {[key: string]: ts.Node[]}
@@ -349,19 +348,16 @@ export class DocsTsGenerator {
 			}
 		}
 
-		const unsupported_conversions = Object.keys(update8_schema.definitions).filter(
-			(maybe) => !supported_conversion_names.includes(maybe)
-		);
-
 		let missing_target_files = supported_conversions.map((match) => {
 			return match.definition;
 		}).filter((maybe) => !(maybe in target_files));
 
+		const definitions_keys = Object.keys(update8_schema.definitions);
+
 		let progress:generation_result = {
 			definitions: {
-				keys: Object.keys(update8_schema),
+				keys: definitions_keys,
 				supported: supported_conversion_names,
-				unsupported: unsupported_conversions,
 				missing_target_files: missing_target_files,
 			},
 			files: {},
@@ -374,9 +370,8 @@ export class DocsTsGenerator {
 
 			progress = {
 				definitions: {
-					keys: Object.keys(update8_schema),
+					keys: definitions_keys,
 					supported: supported_conversion_names,
-					unsupported: unsupported_conversions,
 					missing_target_files: missing_target_files,
 				},
 				files: progress.files,

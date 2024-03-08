@@ -1,5 +1,5 @@
 # Types Progress
-54.96% Complete (227 of 413)
+93.80% Complete (227 of 242)
 
 ## Basic Types
 * [x] boolean
