@@ -1310,33 +1310,7 @@
 							"const": ""
 						},
 						{
-							"type": "string",
-							"minLength": 1,
-							"array_string": {
-								"type": "array",
-								"minItems": 1,
-								"items": {
-									"type": "object",
-									"required": [
-										"ItemClass",
-										"Amount"
-									],
-									"properties": {
-										"ItemClass": {
-											"type": "string",
-											"minLength": 1,
-											"UnrealEngineString": {
-												"type": "string",
-												"UnrealEngineString_prefix": "/Script/Engine.BlueprintGeneratedClass",
-												"pattern": "^/Game/FactoryGame/(Resource/Parts/[A-z]+|Events/(Christmas)/Parts)/Desc_[A-z]+\\.Desc_[A-Za-z_]+$"
-											}
-										},
-										"Amount": {
-											"$ref": "#/definitions/integer-string"
-										}
-									}
-								}
-							}
+							"$ref": "#/definitions/ItemClass-and-amount"
 						}
 					]
 				},
@@ -2177,6 +2151,23 @@
 				}
 			}
 		},
+		"mSchematics": {
+			"type": "string",
+			"minLength": 1,
+			"array_string": {
+				"type": "array",
+				"minItems": 1,
+				"items": {
+					"type": "string",
+					"minLength": 1,
+					"UnrealEngineString": {
+						"UnrealEngineString_prefix": "/Script/Engine.BlueprintGeneratedClass",
+						"type": "string",
+						"pattern": "^/Game/FactoryGame/(Schematics|Events/Christmas)/"
+					}
+				}
+			}
+		},
 		"FGSchematic--mUnlocks_mSchematics": {
 			"type": "object",
 			"required": [
@@ -2189,23 +2180,7 @@
 					"type": "string",
 					"const": "BP_UnlockSchematic_C"
 				},
-				"mSchematics": {
-					"type": "string",
-					"minLength": 1,
-					"array_string": {
-						"type": "array",
-						"minItems": 1,
-						"items": {
-							"type": "string",
-							"minLength": 1,
-							"UnrealEngineString": {
-								"UnrealEngineString_prefix": "/Script/Engine.BlueprintGeneratedClass",
-								"type": "string",
-								"pattern": "^/Game/FactoryGame/(?:Schematics/(?:Progression|Alternate/Parts|Research/Sulfur_RS|ResourceSink)|Events/Christmas)/"
-							}
-						}
-					}
-				}
+				"mSchematics": {"$ref": "#/definitions/mSchematics"}
 			}
 		},
 		"FGSchematic--mUnlocks_inventory_slots": {
@@ -2545,23 +2520,7 @@
 										"type": "string",
 										"pattern": "BP_[A-Z][A-z]+_C$"
 									},
-									"mSchematics": {
-										"type": "string",
-										"minLength": 1,
-										"array_string": {
-											"type": "array",
-											"minItems": 1,
-											"items": {
-												"type": "string",
-												"minLength": 1,
-												"UnrealEngineString": {
-													"type": "string",
-													"UnrealEngineString_prefix": "/Script/Engine.BlueprintGeneratedClass",
-													"pattern": "^/Game/FactoryGame/Schematics/"
-												}
-											}
-										}
-									},
+									"mSchematics": {"$ref": "#/definitions/mSchematics"},
 									"mRequireAllSchematicsToBePurchased": {
 										"$ref": "#/definitions/boolean"
 									}

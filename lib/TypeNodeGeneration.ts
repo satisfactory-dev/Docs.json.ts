@@ -20,6 +20,7 @@ import {
 	needs_element_access,
 	property_name_or_computed,
 } from "./TsFactoryWrapper";
+import {match} from "node:assert";
 
 export class TypeNodeGenerationResult
 {
@@ -104,9 +105,18 @@ declare type array_validator = ValidateFunction<{
 	},
 }>;
 
-export class PartialMatchError extends Error
+abstract class UnsuccessfulMatchException<T extends object|unknown> extends Error
 {
-	readonly property:{[key: string]: object};
+	readonly property:T;
+
+	constructor(property:T, message = 'Could not match property to type generation!') {
+		super(message);
+		this.property = property;
+	}
+}
+
+export class PartialMatchError extends UnsuccessfulMatchException<{[key: string]: object}>
+{
 	readonly missing: [object, ...object[]];
 
 	constructor(
@@ -114,9 +124,32 @@ export class PartialMatchError extends Error
 		missing:[object, ...object[]],
 		message = 'partial match found'
 	) {
-		super(message);
-		this.property = property;
+		super(property, message);
 		this.missing = missing;
+	}
+}
+
+export class NoMatchError<T extends object|unknown = object> extends UnsuccessfulMatchException<T>
+{
+}
+
+export class UnexpectedlyUnknownNoMatchError<T extends unknown = unknown> extends NoMatchError<T>
+{
+}
+
+export class OneOfOrAnyOfNoMatchError extends NoMatchError<object[]>
+{
+}
+
+export class PropertyMatchFailure extends NoMatchError
+{
+	readonly property_name:string;
+	readonly original:NoMatchError|PartialMatchError;
+
+	constructor(property_name:string, original:NoMatchError|PartialMatchError) {
+		super(original.property, original.message);
+		this.property_name = property_name;
+		this.original = original;
 	}
 }
 
@@ -191,28 +224,12 @@ export class TypeNodeGenerationMatcher
 			let missing_matches:[object, ...object[]]|undefined;
 
 			for (const sub_property of 'oneOf' in property ? property.oneOf : property.anyOf) {
-				let found_match = false;
-				for (const matcher of this.matchers) {
-					const match = matcher.match(ajv, sub_property);
+				const match =
+					this.search(ajv, sub_property)
+					|| this.array_string_search(ajv, sub_property)
+					|| this.object_string_search(ajv, sub_property);
 
-					if (match) {
-						found_match = true;
-						matches.push(match);
-						break;
-					}
-				}
-
-				if (!found_match) {
-					const match = this.array_string_search(ajv, sub_property);
-
-					if (match) {
-						found_match = true;
-						matches.push(match);
-						break;
-					}
-				}
-
-				if (!found_match) {
+				if (!match) {
 					has_all_matches = false;
 					if (!missing_matches) {
 						missing_matches = [sub_property];
@@ -220,6 +237,8 @@ export class TypeNodeGenerationMatcher
 						missing_matches.push(sub_property);
 					}
 					break;
+				} else {
+					matches.push(match);
 				}
 			}
 
@@ -233,6 +252,8 @@ export class TypeNodeGenerationMatcher
 				);
 			} else if (this.throw_on_failure_to_find && matches.length > 0 && missing_matches) {
 				throw new PartialMatchError(property, missing_matches);
+			} else if (this.throw_on_failure_to_find) {
+				throw new OneOfOrAnyOfNoMatchError('anyOf' in property ? property.anyOf : property.oneOf);
 			}
 		}
 
@@ -376,12 +397,14 @@ export class TypeNodeGenerationMatcher
 					},
 					result.import_these_somewhere_later
 				);
-			} else if ('array_string' in property) {
-				console.log('need to check shit', JSON.stringify(property.array_string.items));
+			} else if (this.throw_on_failure_to_find) {
+				throw new NoMatchError(property.array_string, 'need to check shit');
 			}
 		} else if ('array_string' in property) {
-			console.error(property.array_string, array_string_matcher.errors);
-			throw new Error(`Unsupported array_string usage found!`);
+			throw new UnexpectedlyUnknownNoMatchError(
+				property.array_string,
+				`Unsupported array_string usage found!`
+			);
 		}
 
 		return null;
@@ -484,7 +507,7 @@ export class TypeNodeGenerationMatcher
 
 						return ts.factory.createPropertySignature(
 							undefined,
-							sub_property_name,
+							property_name_or_computed(sub_property_name),
 							undefined,
 							sub_property_match.type()
 						);
@@ -530,9 +553,7 @@ export class TypeNodeGenerationMatcher
 		}
 
 		if (this.throw_on_failure_to_find) {
-			console.error(property);
-
-			throw new Error('Could not match property to type generation!');
+			throw new NoMatchError(property);
 		}
 
 		return new TypeNodeGenerationResult(() => ts.factory.createKeywordTypeNode(ts.SyntaxKind.UnknownKeyword));
@@ -543,10 +564,18 @@ export class TypeNodeGenerationMatcher
 		return Object.fromEntries(Object.entries(properties).map((entry) => {
 			const [property, property_data] = entry;
 
-			return [
-				property,
-				this.find(ajv, property_data),
-			];
+			try {
+				return [
+					property,
+					this.find(ajv, property_data),
+				];
+			} catch (err) {
+				if (err instanceof NoMatchError || err instanceof PartialMatchError) {
+					throw new PropertyMatchFailure(property, err);
+				}
+
+				throw err;
+			}
 		}));
 	}
 

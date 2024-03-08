@@ -3,7 +3,13 @@ import {fileURLToPath} from "url";
 
 import {DocsTsGenerator, generation_result, GenerationException} from "./lib/DocsTsGenerator";
 import {readFile, writeFile} from "node:fs/promises";
-import {PartialMatchError} from "./lib/TypeNodeGeneration";
+import {
+	NoMatchError,
+	OneOfOrAnyOfNoMatchError,
+	PartialMatchError,
+	PropertyMatchFailure
+} from "./lib/TypeNodeGeneration";
+import {not} from "ajv/dist/compile/codegen";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -194,13 +200,30 @@ try {
 	if (err instanceof GenerationException) {
 		await update_progress(err.progress, false);
 
-		if (err.exception instanceof PartialMatchError) {
+		let {exception} = err;
+
+		if (exception instanceof PropertyMatchFailure) {
+			console.log(`issue with ${exception.property_name}`);
+			exception = exception.original;
+		}
+
+		if (exception instanceof PartialMatchError) {
 			console.error(
-				err.exception.property,
-				err.exception.missing
+				exception.property,
+				...exception.missing
 			);
+		} else if (exception instanceof OneOfOrAnyOfNoMatchError) {
+			for (const not_matched of exception.property) {
+				console.error(not_matched);
+			}
+
+			console.error(exception.message);
 		} else {
-			console.error(err.exception);
+			console.error(exception);
+		}
+
+		if (exception instanceof PartialMatchError || exception instanceof NoMatchError) {
+			console.error(exception.stack);
 		}
 	} else {
 		console.error('error not generation exception!');

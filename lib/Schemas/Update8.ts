@@ -18,11 +18,11 @@ import {
 	auto_constructor_property_types_from_generated_types_properties,
 	create_class_options,
 	create_lazy_union,
-	create_literal_node_from_value,
+	create_literal_node_from_value, create_minimum_size_typed_array_of_single_type,
 	create_modifier,
 	create_object_type,
 	create_type,
-	create_union,
+	create_union, create_UnrealEngineString_reference_type,
 	createClass,
 	createClass__members__with_auto_constructor,
 	createProperty,
@@ -180,7 +180,7 @@ export class Update8TypeNodeGeneration {
 		const data = schema.definitions[ref];
 
 		if ('$ref' in data || 'required' in data) {
-			this.classes.push({...create_constructor_args(filename, class_name, data), ref});
+			this.classes.push({...create_constructor_args(`classes/${filename}.ts`, class_name, data), ref});
 		}
 
 		if ('properties' in data) {
@@ -368,6 +368,16 @@ export class Update8TypeNodeGeneration {
 				}
 			),
 		});
+
+		this.classes.push({
+			file: 'classes/CoreUObject/FGSchematic.ts',
+			node: create_minimum_size_typed_array_of_single_type(
+				schema.definitions.mSchematics.array_string.minItems,
+				() => create_UnrealEngineString_reference_type(
+					schema.definitions.mSchematics.array_string.items.UnrealEngineString
+				)
+			),
+		});
 	}
 
 	private generate_base_classes() {
@@ -530,7 +540,7 @@ export class Update8TypeNodeGeneration {
 	private generate_abstract_classes(ajv:Ajv)
 	{
 		for (const ref of this.remove_generated_abstracts()) {
-			const filename = `${ref.split('--')[0]}.ts`;
+			const filename = `classes/${ref.split('--')[0]}.ts`;
 			this.generate_class(ajv, check_ref(ref), filename);
 		}
 	}

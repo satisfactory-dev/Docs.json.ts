@@ -407,8 +407,7 @@ export class DocsTsGenerator {
 						target_files[result.ref] = file;
 
 						if (!supported_conversion_names.includes(result.ref)) {
-							throw new Error('foo');
-							// supported_conversion_names.push(result.ref);
+							supported_conversion_names.push(result.ref);
 						}
 					}
 

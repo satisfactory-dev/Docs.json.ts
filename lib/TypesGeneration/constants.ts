@@ -1,7 +1,7 @@
 import ts from 'typescript';
 
 import {TypesGenerationFromSchema} from '../TypesGeneration';
-import {adjust_class_name, create_modifier} from '../TsFactoryWrapper';
+import {adjust_class_name, create_literal_node_from_value, create_modifier} from '../TsFactoryWrapper';
 import {TypeNodeGeneration, TypeNodeGenerationResult} from "../TypeNodeGeneration";
 
 export const target_files = {
@@ -121,6 +121,22 @@ export const type_node_generators = [
 				{
 					'common/constants' : [reference_name],
 				}
+			);
+		}
+	),
+	new TypeNodeGeneration<{type: 'string', const: string}>(
+		{
+			type: 'object',
+			required: ['type', 'const'],
+			additionalProperties: false,
+			properties: {
+				type: {type: 'string', const: 'string'},
+				const: {type: 'string'},
+			},
+		},
+		(data) => {
+			return new TypeNodeGenerationResult(
+				() => create_literal_node_from_value(data.const),
 			);
 		}
 	),

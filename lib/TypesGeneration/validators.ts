@@ -31,6 +31,10 @@ export const target_files = {
 	'integer-string--signed': 'utils/validators.ts',
 };
 
+const supported_meta_types = [
+	'mSchematics',
+];
+
 ImportTracker.set_imports('utils/validators.ts', [{
 	from: '../../../lib/schema-exports',
 	import_these: [
@@ -71,7 +75,7 @@ const ref_schema = {
 	additionalProperties: false,
 	properties: {
 		'$ref': {
-			oneOf: Object.keys(target_files).map((ref) => {
+			oneOf: [...Object.keys(target_files), ...supported_meta_types].map((ref) => {
 				return {type: 'string', const: `#/definitions/${ref}`};
 			}),
 		},
@@ -837,7 +841,7 @@ export const type_node_generators = [
 				'StrictlyTypedNumberFromRegExp',
 				[create_type('string')]
 			),
-			{
+			(!(ref_key in target_files)) ? undefined : {
 				[target_files[ref_key].replace(/\.ts$/, '')]: [adjust_class_name(ref_key)],
 			}
 		);

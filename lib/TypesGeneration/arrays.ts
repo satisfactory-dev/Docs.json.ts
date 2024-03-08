@@ -213,6 +213,7 @@ export const type_node_generators = [
 			| '#/definitions/xyz-array'
 			| '#/definitions/ItemClass-and-amount'
 			| '#/definitions/ItemClass-only--array'
+			| '#/definitions/mFuel'
 	}>(
 		{
 			type: 'object',
@@ -220,12 +221,9 @@ export const type_node_generators = [
 			additionalProperties: false,
 			properties: {
 				'$ref': {
-					oneOf: [
-						{
-							type: 'string',
-							pattern: '^#/definitions/(mDamageTypes|xyz-array|ItemClass-(and-amount|only--array))$'
-						},
-					],
+					oneOf: Object.keys(target_files).map((ref) => {
+						return {type: 'string', const: `#/definitions/${ref}`};
+					}),
 				},
 			},
 		},

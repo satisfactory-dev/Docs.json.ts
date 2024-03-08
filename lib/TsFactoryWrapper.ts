@@ -725,7 +725,7 @@ export function create_object_type_alias<
 
 export function needs_element_access(property:string) : boolean
 {
-	return /[?]/.test(property);
+	return /[?\[\]]/.test(property);
 }
 
 export function computed_property_name_or_undefined(property:string) : ts.ComputedPropertyName|undefined

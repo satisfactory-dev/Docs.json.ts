@@ -4,7 +4,7 @@ import {
 	adjust_class_name,
 	create_minimum_size_typed_array_of_single_type,
 	create_modifier,
-	create_object_type
+	create_object_type, possibly_create_lazy_union
 } from "../TsFactoryWrapper";
 import {UnrealEngineString_schema} from "./validators";
 import {array_string_schema, array_string_type, generate_array_string_schema} from "./json_schema_types";
@@ -14,6 +14,16 @@ export const target_files = {
 	'Texture2D': 'common/unions.ts',
 	'mDescriptorStatBars': 'common/unions.ts',
 	'mEventType--optional-csv': 'common/enum.ts',
+	'FGSchematic--mUnlocks_Class': 'classes/CoreUObject/FGSchematic.ts',
+	'FGSchematic--mUnlocks_mTapeUnlocks': 'classes/CoreUObject/FGSchematic.ts',
+	'FGSchematic--mUnlocks_mRecipes': 'classes/CoreUObject/FGSchematic.ts',
+	'FGSchematic--mUnlocks_resources_to_scan': 'classes/CoreUObject/FGSchematic.ts',
+	'FGSchematic--mUnlocks_mEmotes': 'classes/CoreUObject/FGSchematic.ts',
+	'FGSchematic--mUnlocks_mSchematics': 'classes/CoreUObject/FGSchematic.ts',
+	'FGSchematic--mUnlocks_inventory_slots': 'classes/CoreUObject/FGSchematic.ts',
+	'FGSchematic--mUnlocks_equipment_slots': 'classes/CoreUObject/FGSchematic.ts',
+	'FGSchematic--mUnlocks_mScannableObjects': 'classes/CoreUObject/FGSchematic.ts',
+	'FGSchematic--mUnlocks_mItemsToGive': 'classes/CoreUObject/FGSchematic.ts',
 };
 
 ImportTracker.set_imports('common/unions.ts', [
@@ -245,6 +255,26 @@ export const type_node_generators = [
 						reference_name,
 					],
 				}
+			);
+		}
+	),
+	new TypeNodeGeneration<{type: 'string', enum: [string, ...string[]]}>(
+		{
+			type: 'object',
+			required: ['type', 'enum'],
+			additionalProperties: false,
+			properties: {
+				type: {type: 'string', const: 'string'},
+				enum: {
+					type: 'array',
+					minItems: 1,
+					items: {type: 'string'},
+				},
+			}
+		},
+		(data) => {
+			return new TypeNodeGenerationResult(
+				() => possibly_create_lazy_union(data.enum)
 			);
 		}
 	),
