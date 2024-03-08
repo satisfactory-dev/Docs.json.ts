@@ -1,27 +1,138 @@
 # Types Progress
-23.65% Complete (57 of 241)
+22.82% Complete (55 of 241)
 
+## Basic Types
 * [x] boolean
 * [x] boolean-extended
 * [x] class
 * [x] class--no-description
 * [x] class--no-description-or-display-name
-* [x] color
-* [x] color--base
-* [x] color--semi-native
-* [x] color-decimal
-* [x] color-decimal--semi-native
 * [x] decimal-string
 * [x] decimal-string--signed
 * [ ] EditorCurveData
 * [x] empty-object
+* [ ] FGBuildingDescriptor
+* [ ] FGChainsaw
+* [ ] FGChargedWeapon
+* [ ] FGConsumableEquipment
+* [ ] FGConveyorPoleStackable
+* [ ] FGGasMask
+* [ ] FGGolfCartDispenser
+* [ ] FGHoverPack
+* [ ] FGJetPack
+* [ ] FGJumpingStilts
+* [ ] FGObjectScanner
+* [ ] FGParachute
+* [ ] FGPipeHyperStart
+* [ ] FGPortableMinerDispenser
+* [ ] FGResourceDescriptor
+* [ ] FGSuitBase
+* [ ] FGVehicleDescriptor
+* [x] InfinityExtrap
+* [x] integer-string
+* [x] integer-string--signed
+* [x] mAspect
+* [x] MaterialSlotName
+* [x] mBatteryStatus
+* [ ] mChainsawState
+* [x] mClassToScanFor
+* [x] mCrosshairMaterial
+* [x] mDamageTypes
+* [x] mDescriptorStatBars
+* [x] mDisableSnapOn
+* [x] mDockingRuleSet
+* [x] mForm
+* [x] mFreightCargoType
+* [x] mFuel
+* [x] mLightControlData
+* [x] mOutputInventoryHandlerData
+* [x] mPlatformDockingStatus
+* [x] mScannableType
+* [x] mScannerDisplayText
+* [x] mSnappedPassthroughs
+* [x] mStackSize
+* [x] None
+* [x] transformation
+* [x] weaponState
+
+## color
+* [x] color
+* [x] color-decimal
+* [x] color--base
+* [x] color--semi-native
+* [x] color-decimal--semi-native
+
+## FGAmmoType
+* [ ] FGAmmoTypeSpreadshot
 * [ ] FGAmmoTypeInstantHit--base
 * [ ] FGAmmoTypeInstantHit--chaos
 * [ ] FGAmmoTypeInstantHit--standard
 * [ ] FGAmmoTypeProjectile
 * [ ] FGAmmoTypeProjectile--base
-* [ ] FGAmmoTypeSpreadshot
+
+## FGBuildable
 * [ ] FGBuildable
+* [ ] FGBuildableAttachmentMerger
+* [ ] FGBuildableAttachmentSplitter
+* [ ] FGBuildableBeamLightweight
+* [ ] FGBuildableBlueprintDesigner
+* [ ] FGBuildableCircuitSwitch
+* [ ] FGBuildableConveyorBelt
+* [ ] FGBuildableConveyorLift
+* [ ] FGBuildableCornerWall
+* [ ] FGBuildableDockingStation
+* [ ] FGBuildableDoor
+* [ ] FGBuildableDroneStation
+* [ ] FGBuildableFactoryBuilding
+* [ ] FGBuildableFactorySimpleProducer
+* [ ] FGBuildableFloodlight
+* [ ] FGBuildableFoundation
+* [ ] FGBuildableFoundationLightweight
+* [ ] FGBuildableFrackingActivator
+* [ ] FGBuildableFrackingExtractor
+* [ ] FGBuildableGeneratorFuel
+* [ ] FGBuildableGeneratorGeoThermal
+* [ ] FGBuildableGeneratorNuclear
+* [ ] FGBuildableJumppad
+* [ ] FGBuildableLadder
+* [ ] FGBuildableLightsControlPanel
+* [ ] FGBuildableLightSource
+* [ ] FGBuildableMAM
+* [ ] FGBuildableManufacturer
+* [ ] FGBuildableManufacturerVariablePower
+* [ ] FGBuildablePassthrough
+* [ ] FGBuildablePillarLightweight
+* [ ] FGBuildablePipeHyper
+* [ ] FGBuildablePipeline
+* [ ] FGBuildablePipelineJunction
+* [ ] FGBuildablePipelinePump
+* [ ] FGBuildablePipelineSupport
+* [ ] FGBuildablePipeReservoir
+* [ ] FGBuildablePoleLightweight
+* [ ] FGBuildablePowerPole
+* [ ] FGBuildablePowerStorage
+* [ ] FGBuildablePriorityPowerSwitch
+* [ ] FGBuildableRadarTower
+* [ ] FGBuildableRailroadSignal
+* [ ] FGBuildableRailroadStation
+* [ ] FGBuildableRailroadTrack
+* [ ] FGBuildableRamp
+* [ ] FGBuildableResourceSink
+* [ ] FGBuildableResourceSinkShop
+* [ ] FGBuildableSnowDispenser
+* [ ] FGBuildableSpaceElevator
+* [ ] FGBuildableSplitterSmart
+* [ ] FGBuildableStair
+* [ ] FGBuildableStorage
+* [ ] FGBuildableTradingPost
+* [ ] FGBuildableTrainPlatformCargo
+* [ ] FGBuildableTrainPlatformEmpty
+* [ ] FGBuildableWalkway
+* [ ] FGBuildableWalkwayLightweight
+* [ ] FGBuildableWallLightweight
+* [ ] FGBuildableWaterPump
+* [ ] FGBuildableWidgetSign
+* [ ] FGBuildableWire
 * [ ] FGBuildable--base
 * [ ] FGBuildable--circuits-base
 * [ ] FGBuildable--consumes-power-base
@@ -38,129 +149,96 @@
 * [ ] FGBuildable--spline-base--has-spline-data
 * [ ] FGBuildable--splitter--base
 * [ ] FGBuildable--tiered
-* [ ] FGBuildableAttachmentMerger
-* [ ] FGBuildableAttachmentSplitter
-* [ ] FGBuildableBeamLightweight
-* [ ] FGBuildableBlueprintDesigner
-* [ ] FGBuildableCircuitSwitch
-* [ ] FGBuildableConveyorBelt
+
+## FGBuildableConveyorBelt
 * [ ] FGBuildableConveyorBelt--base
-* [ ] FGBuildableConveyorLift
-* [ ] FGBuildableCornerWall
-* [ ] FGBuildableDockingStation
-* [ ] FGBuildableDoor
+
+## FGBuildableDoor
 * [ ] FGBuildableDoor--automated
 * [ ] FGBuildableDoor--base
-* [ ] FGBuildableDroneStation
+
+## FGBuildableFactory
 * [ ] FGBuildableFactory--generic
 * [ ] FGBuildableFactory--jump-pad
 * [ ] FGBuildableFactory--landing-pad
-* [ ] FGBuildableFactoryBuilding
-* [ ] FGBuildableFactorySimpleProducer
-* [ ] FGBuildableFloodlight
-* [ ] FGBuildableFoundation
+
+## FGBuildableFoundation
 * [ ] FGBuildableFoundation--base
-* [ ] FGBuildableFoundationLightweight
-* [ ] FGBuildableFrackingActivator
-* [ ] FGBuildableFrackingExtractor
+
+## FGBuildableGenerator
 * [ ] FGBuildableGenerator--base
-* [ ] FGBuildableGeneratorFuel
+
+## FGBuildableGeneratorFuel
 * [ ] FGBuildableGeneratorFuel--base
 * [ ] FGBuildableGeneratorFuel--biogen
-* [ ] FGBuildableGeneratorGeoThermal
-* [ ] FGBuildableGeneratorNuclear
-* [ ] FGBuildableJumppad
-* [ ] FGBuildableLadder
-* [ ] FGBuildableLightsControlPanel
-* [ ] FGBuildableLightSource
+
+## FGBuildableLightSource
 * [ ] FGBuildableLightSource--base
-* [ ] FGBuildableMAM
-* [ ] FGBuildableManufacturer
+
+## FGBuildableManufacturer
 * [ ] FGBuildableManufacturer--base
 * [ ] FGBuildableManufacturer--blender
 * [ ] FGBuildableManufacturer--constructor
 * [ ] FGBuildableManufacturer--packager
 * [ ] FGBuildableManufacturer--smelter
-* [ ] FGBuildableManufacturerVariablePower
-* [ ] FGBuildablePassthrough
-* [ ] FGBuildablePillarLightweight
-* [ ] FGBuildablePipeHyper
-* [ ] FGBuildablePipeline
-* [ ] FGBuildablePipelineJunction
-* [ ] FGBuildablePipelinePump
+
+## FGBuildablePipelinePump
 * [ ] FGBuildablePipelinePump--valve
-* [ ] FGBuildablePipelineSupport
-* [ ] FGBuildablePipeReservoir
-* [ ] FGBuildablePoleLightweight
-* [ ] FGBuildablePowerPole
-* [ ] FGBuildablePowerStorage
-* [ ] FGBuildablePriorityPowerSwitch
-* [ ] FGBuildableRadarTower
-* [ ] FGBuildableRailroadSignal
-* [ ] FGBuildableRailroadStation
-* [ ] FGBuildableRailroadTrack
-* [ ] FGBuildableRamp
+
+## FGBuildableResourceExtractor
 * [ ] FGBuildableResourceExtractor--miner
 * [ ] FGBuildableResourceExtractor--miner--base
 * [ ] FGBuildableResourceExtractor--miner-mk3
 * [ ] FGBuildableResourceExtractor--oil-extractor
-* [ ] FGBuildableResourceSink
-* [ ] FGBuildableResourceSinkShop
-* [ ] FGBuildableSnowDispenser
-* [ ] FGBuildableSpaceElevator
-* [ ] FGBuildableSplitterSmart
-* [ ] FGBuildableStair
-* [ ] FGBuildableStorage
-* [ ] FGBuildableTradingPost
+
+## FGBuildableTrainPlatform
 * [ ] FGBuildableTrainPlatform--base
-* [ ] FGBuildableTrainPlatformCargo
+
+## FGBuildableTrainPlatformCargo
 * [ ] FGBuildableTrainPlatformCargo--FGBuildableRailroadStation
-* [ ] FGBuildableTrainPlatformEmpty
-* [ ] FGBuildableWalkway
+
+## FGBuildableWalkway
 * [ ] FGBuildableWalkway--base
-* [ ] FGBuildableWalkwayLightweight
+
+## FGBuildableWall
 * [ ] FGBuildableWall--base
 * [ ] FGBuildableWall--base--rectangle
-* [ ] FGBuildableWallLightweight
-* [ ] FGBuildableWaterPump
-* [ ] FGBuildableWidgetSign
-* [ ] FGBuildableWire
-* [ ] FGBuildingDescriptor
-* [ ] FGChainsaw
-* [ ] FGChargedWeapon
+
+## FGConsumableDescriptor
 * [ ] FGConsumableDescriptor
 * [ ] FGConsumableDescriptor--base
 * [ ] FGConsumableDescriptor--healing
-* [ ] FGConsumableEquipment
-* [ ] FGConveyorPoleStackable
+
+## FGCustomizationRecipe
 * [ ] FGCustomizationRecipe
 * [ ] FGCustomizationRecipe--FGRecipe
+
+## FGEquipment
+* [ ] FGEquipmentDescriptor
+* [ ] FGEquipmentStunSpear
+* [ ] FGEquipmentZipline
 * [ ] FGEquipment--base
 * [ ] FGEquipment--placeable
-* [ ] FGEquipmentDescriptor
 * [ ] FGEquipmentDescriptor--base
-* [ ] FGEquipmentStunSpear
+
+## FGEquipmentStunSpear
 * [ ] FGEquipmentStunSpear--base
 * [ ] FGEquipmentStunSpear--xeno-zapper
-* [ ] FGEquipmentZipline
-* [ ] FGGasMask
-* [ ] FGGolfCartDispenser
-* [ ] FGHoverPack
+
+## FGItemDescriptor
 * [ ] FGItemDescriptor
+* [ ] FGItemDescriptorBiomass
+* [ ] FGItemDescriptorNuclearFuel
 * [ ] FGItemDescriptor--FGBuildingDescriptor
 * [ ] FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor
 * [ ] FGItemDescriptor--FGResourceDescriptor
 * [ ] FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor
-* [ ] FGItemDescriptorBiomass
-* [ ] FGItemDescriptorNuclearFuel
-* [ ] FGJetPack
-* [ ] FGJumpingStilts
-* [ ] FGObjectScanner
-* [ ] FGParachute
-* [ ] FGPipeHyperStart
+
+## FGPoleDescriptor
 * [ ] FGPoleDescriptor
 * [ ] FGPoleDescriptor--FGEquipmentDescriptor
-* [ ] FGPortableMinerDispenser
+
+## FGRecipe
 * [ ] FGRecipe--Assembler
 * [ ] FGRecipe--base
 * [ ] FGRecipe--Blender
@@ -177,64 +255,51 @@
 * [ ] FGRecipe--SeasonalEvents
 * [ ] FGRecipe--Smelter
 * [ ] FGRecipe--SpaceElevator
-* [ ] FGResourceDescriptor
+
+## FGSchematic
 * [ ] FGSchematic
 * [ ] FGSchematic--base
+* [ ] FGSchematic--mUnlocks_Class
+* [ ] FGSchematic--mUnlocks_equipment_slots
+* [ ] FGSchematic--mUnlocks_inventory_slots
+* [ ] FGSchematic--mUnlocks_mEmotes
+* [ ] FGSchematic--mUnlocks_mItemsToGive
+* [ ] FGSchematic--mUnlocks_mRecipes
+* [ ] FGSchematic--mUnlocks_mScannableObjects
+* [ ] FGSchematic--mUnlocks_mSchematics
+* [ ] FGSchematic--mUnlocks_mTapeUnlocks
+* [ ] FGSchematic--mUnlocks_resources_to_scan
 * [ ] FGSchematic--with-unlocks
-* [ ] FGSuitBase
-* [ ] FGVehicleDescriptor
+
+## FGWeapon
 * [ ] FGWeapon--base
 * [ ] FGWeapon--rebar-gun
 * [ ] FGWeapon--rifle
-* [x] InfinityExtrap
-* [x] integer-string
-* [x] integer-string--signed
-* [x] ItemClass--prop
+
+## ItemClass
 * [x] ItemClass-and-amount
 * [ ] ItemClass-only
+* [x] ItemClass--prop
+
+## ItemClass-only
 * [x] ItemClass-only--array
-* [x] mAspect
-* [x] MaterialSlotName
-* [x] mBatteryStatus
-* [ ] mChainsawState
-* [x] mClassToScanFor
-* [x] mCrosshairMaterial
-* [x] mDamageTypes
-* [x] mDescriptorStatBars
-* [x] mDisableSnapOn
-* [x] mDockingRuleSet
+
+## mEventType
 * [x] mEventType
 * [x] mEventType--optional-csv
-* [x] mForm
-* [x] mFreightCargoType
-* [x] mFuel
-* [x] mLightControlData
-* [x] mOutputInventoryHandlerData
-* [x] mPlatformDockingStatus
-* [x] mScannableType
-* [x] mScannerDisplayText
-* [x] mSnappedPassthroughs
-* [x] mStackSize
-* [x] mUnlocks_Class
-* [ ] mUnlocks_equipment_slots
-* [ ] mUnlocks_inventory_slots
-* [ ] mUnlocks_mEmotes
-* [ ] mUnlocks_mItemsToGive
-* [ ] mUnlocks_mRecipes
-* [ ] mUnlocks_mScannableObjects
-* [ ] mUnlocks_mSchematics
-* [x] mUnlocks_mTapeUnlocks
-* [ ] mUnlocks_resources_to_scan
-* [x] None
+
+## SpecifiedColor
+* [ ] SpecifiedColor
+* [ ] SpecifiedColor--semi-native
+
+## Texture2D
+* [x] Texture2D
+* [x] Texture2D--basic
+
+## vectors
 * [x] pitch-yaw-roll
 * [x] quaternion
 * [x] quaternion--semi-native
-* [ ] SpecifiedColor
-* [ ] SpecifiedColor--semi-native
-* [x] Texture2D
-* [x] Texture2D--basic
-* [x] transformation
-* [x] weaponState
 * [x] xy
 * [x] xy--integer
 * [x] xy--semi-native

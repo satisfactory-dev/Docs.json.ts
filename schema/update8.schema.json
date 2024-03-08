@@ -1988,7 +1988,7 @@
 				}
 			}
 		},
-		"mUnlocks_Class": {
+		"FGSchematic--mUnlocks_Class": {
 			"type": "object",
 			"required": [
 				"Class"
@@ -2008,7 +2008,7 @@
 				}
 			}
 		},
-		"mUnlocks_mTapeUnlocks": {
+		"FGSchematic--mUnlocks_mTapeUnlocks": {
 			"type": "object",
 			"required": [
 				"Class",
@@ -2039,7 +2039,7 @@
 				}
 			}
 		},
-		"mUnlocks_mRecipes": {
+		"FGSchematic--mUnlocks_mRecipes": {
 			"type": "object",
 			"required": [
 				"Class",
@@ -2073,7 +2073,7 @@
 				}
 			}
 		},
-		"mUnlocks_resources_to_scan": {
+		"FGSchematic--mUnlocks_resources_to_scan": {
 			"type": "object",
 			"required": [
 				"Class",
@@ -2146,7 +2146,7 @@
 				}
 			}
 		},
-		"mUnlocks_mEmotes": {
+		"FGSchematic--mUnlocks_mEmotes": {
 			"type": "object",
 			"required": [
 				"Class",
@@ -2177,7 +2177,7 @@
 				}
 			}
 		},
-		"mUnlocks_mSchematics": {
+		"FGSchematic--mUnlocks_mSchematics": {
 			"type": "object",
 			"required": [
 				"Class",
@@ -2208,7 +2208,7 @@
 				}
 			}
 		},
-		"mUnlocks_inventory_slots": {
+		"FGSchematic--mUnlocks_inventory_slots": {
 			"type": "object",
 			"required": [
 				"Class",
@@ -2225,7 +2225,7 @@
 				}
 			}
 		},
-		"mUnlocks_equipment_slots": {
+		"FGSchematic--mUnlocks_equipment_slots": {
 			"type": "object",
 			"required": [
 				"Class",
@@ -2242,7 +2242,7 @@
 				}
 			}
 		},
-		"mUnlocks_mScannableObjects": {
+		"FGSchematic--mUnlocks_mScannableObjects": {
 			"type": "object",
 			"required": [
 				"Class",
@@ -2295,7 +2295,7 @@
 				}
 			}
 		},
-		"mUnlocks_mItemsToGive": {
+		"FGSchematic--mUnlocks_mItemsToGive": {
 			"type": "object",
 			"required": [
 				"Class",
@@ -2441,16 +2441,16 @@
 					"type": "array",
 					"items": {
 						"anyOf": [
-							{"$ref": "#/definitions/mUnlocks_Class"},
-							{"$ref": "#/definitions/mUnlocks_mTapeUnlocks"},
-							{"$ref": "#/definitions/mUnlocks_mRecipes"},
-							{"$ref": "#/definitions/mUnlocks_resources_to_scan"},
-							{"$ref": "#/definitions/mUnlocks_mEmotes"},
-							{"$ref": "#/definitions/mUnlocks_mSchematics"},
-							{"$ref": "#/definitions/mUnlocks_inventory_slots"},
-							{"$ref": "#/definitions/mUnlocks_equipment_slots"},
-							{"$ref": "#/definitions/mUnlocks_mScannableObjects"},
-							{"$ref": "#/definitions/mUnlocks_mItemsToGive"}
+							{"$ref": "#/definitions/FGSchematic--mUnlocks_Class"},
+							{"$ref": "#/definitions/FGSchematic--mUnlocks_mTapeUnlocks"},
+							{"$ref": "#/definitions/FGSchematic--mUnlocks_mRecipes"},
+							{"$ref": "#/definitions/FGSchematic--mUnlocks_resources_to_scan"},
+							{"$ref": "#/definitions/FGSchematic--mUnlocks_mEmotes"},
+							{"$ref": "#/definitions/FGSchematic--mUnlocks_mSchematics"},
+							{"$ref": "#/definitions/FGSchematic--mUnlocks_inventory_slots"},
+							{"$ref": "#/definitions/FGSchematic--mUnlocks_equipment_slots"},
+							{"$ref": "#/definitions/FGSchematic--mUnlocks_mScannableObjects"},
+							{"$ref": "#/definitions/FGSchematic--mUnlocks_mItemsToGive"}
 						]
 					}
 				},
