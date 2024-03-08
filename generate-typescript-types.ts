@@ -197,22 +197,48 @@ async function update_progress(
 
 	remap(grouped_progress);
 
-	const progress_markdown = `# Types Progress\n\n${(
-		(progress.definitions.supported.length / all_progress_items.length) *
-		100
-	).toFixed(
-		2
-	)}% Complete (${progress.definitions.supported.length} of ${all_progress_items.length})\n\n${reduce(
-		grouped_progress
-	)
-		.map((group) => {
-			return `${'#'.repeat(group.depth)} ${group.title}\n\n${group.members
-				.map((key) => {
-					return `-   [${progress.definitions.supported.includes(key) ? 'x' : ' '}] ${key}`;
-				})
-				.join('\n')}`;
+
+	function unindent(input:string) : string
+	{
+		const str = input.replace(/^\n+/, '').replace(/\n+\t*$/, '\n');
+
+		console.log(str);
+
+		const matches = /^(\t+)/gm.exec(str);
+
+		if (matches) {
+			const min = matches.reduce((was, is) => Math.min(was, is.length), Infinity);
+
+			if (min > 0 && min !== Infinity) {
+				return str.replace((new RegExp(`^\t{${min}}`, 'gm')), '');
+			}
+		}
+
+		return str;
+	}
+
+	const progress_markdown = unindent(`
+		# Types Progress
+
+		${
+			(
+				(progress.definitions.supported.length / all_progress_items.length) *100
+			).toFixed(2)
+		}% Complete (${
+			progress.definitions.supported.length} of ${all_progress_items.length
 		})
-		.join('\n\n')}\n`;
+
+		${
+			reduce(grouped_progress).map((group) => {
+				return unindent(`
+					${'#'.repeat(group.depth)} ${group.title}
+
+					${group.members.map((key) => {
+						return `-   [${progress.definitions.supported.includes(key) ? 'x' : ' '}] ${key}`;
+					}).join('\n')}`);
+			}).join('\n\n')
+		}
+	`);
 
 	await writeFile(`${__dirname}/types-progress.md`, progress_markdown);
 }
