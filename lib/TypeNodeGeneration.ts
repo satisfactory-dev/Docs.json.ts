@@ -477,40 +477,40 @@ export class TypeNodeGenerationMatcher
 				object_types[sub_property_name] = sub_property_match;
 			}
 
-				return new TypeNodeGenerationResult(
-					() => {
-						return ts.factory.createTypeLiteralNode(Object.entries(object_types).map((entry) => {
-							const [sub_property_name, sub_property_match] = entry;
+			return new TypeNodeGenerationResult(
+				() => {
+					return ts.factory.createTypeLiteralNode(Object.entries(object_types).map((entry) => {
+						const [sub_property_name, sub_property_match] = entry;
 
-							return ts.factory.createPropertySignature(
-								undefined,
-								sub_property_name,
-								undefined,
-								sub_property_match.type()
-							);
-						}));
-					},
-					Object.entries(object_types).map(entry => entry[1].import_these_somewhere_later).reduce(
-						(was, is) => {
-							for (const entry of Object.entries(is)) {
-								const [import_from, import_these] = entry;
+						return ts.factory.createPropertySignature(
+							undefined,
+							sub_property_name,
+							undefined,
+							sub_property_match.type()
+						);
+					}));
+				},
+				Object.entries(object_types).map(entry => entry[1].import_these_somewhere_later).reduce(
+					(was, is) => {
+						for (const entry of Object.entries(is)) {
+							const [import_from, import_these] = entry;
 
-								if (!(import_from in was)) {
-									was[import_from] = [];
-								}
-
-								for (const import_this of import_these) {
-									if (!was[import_from].includes(import_this)) {
-										was[import_from].push(import_this);
-									}
-								}
+							if (!(import_from in was)) {
+								was[import_from] = [];
 							}
 
-							return was;
-						},
-						{}
-					)
-				);
+							for (const import_this of import_these) {
+								if (!was[import_from].includes(import_this)) {
+									was[import_from].push(import_this);
+								}
+							}
+						}
+
+						return was;
+					},
+					{}
+				)
+			);
 		}
 
 		return null;
