@@ -1,5 +1,9 @@
-import ts from "typescript";
-import {ImportTracker, TypesGenerationFromSchema, TypesGenerationMatchesReferenceName} from "../TypesGeneration";
+import ts from 'typescript';
+import {
+	ImportTracker,
+	TypesGenerationFromSchema,
+	TypesGenerationMatchesReferenceName,
+} from '../TypesGeneration';
 import {
 	adjust_class_name,
 	create_basic_reference_argument_template_span,
@@ -19,10 +23,13 @@ import {
 	very_flexibly_create_regex_validation_function,
 	create_UnrealEngineString_reference_type,
 	create_conditional_UnrealEngineString_type_reference,
-	conditional_UnrealEngineString_type_arguments
-} from "../TsFactoryWrapper";
-import {TypeNodeGeneration, TypeNodeGenerationResult} from "../TypeNodeGeneration";
-import {UnrealEngineString_regex} from "../DocsValidation";
+	conditional_UnrealEngineString_type_arguments,
+} from '../TsFactoryWrapper';
+import {
+	TypeNodeGeneration,
+	TypeNodeGenerationResult,
+} from '../TypeNodeGeneration';
+import {UnrealEngineString_regex} from '../DocsValidation';
 
 export const target_files = {
 	'decimal-string': 'utils/validators.ts',
@@ -31,29 +38,23 @@ export const target_files = {
 	'integer-string--signed': 'utils/validators.ts',
 };
 
-const supported_meta_types = [
-	'mSchematics',
-];
+const supported_meta_types = ['mSchematics'];
 
-ImportTracker.set_imports('utils/validators.ts', [{
-	from: '../../../lib/schema-exports',
-	import_these: [
-		'string_to_array',
-		'string_to_object',
-	],
-}]);
+ImportTracker.set_imports('utils/validators.ts', [
+	{
+		from: '../../../lib/schema-exports',
+		import_these: ['string_to_array', 'string_to_object'],
+	},
+]);
 
 declare type schema_type = {
-	type: 'string',
-	pattern: 'string',
+	type: 'string';
+	pattern: 'string';
 };
 
 const schema = {
 	type: 'object',
-	required: [
-		'type',
-		'pattern',
-	],
+	required: ['type', 'pattern'],
 	additionalProperties: false,
 	properties: {
 		type: {type: 'string', const: 'string'},
@@ -62,11 +63,11 @@ const schema = {
 };
 
 declare type ref_type = {
-	'$ref':
+	$ref:
 		| '#/definitions/decimal-string'
 		| '#/definitions/decimal-string--signed'
 		| '#/definitions/integer-string'
-		| '#/definitions/integer-string--signed'
+		| '#/definitions/integer-string--signed';
 };
 
 const ref_schema = {
@@ -74,18 +75,18 @@ const ref_schema = {
 	required: ['$ref'],
 	additionalProperties: false,
 	properties: {
-		'$ref': {
-			oneOf: [...Object.keys(target_files), ...supported_meta_types].map((ref) => {
-				return {type: 'string', const: `#/definitions/${ref}`};
-			}),
+		$ref: {
+			oneOf: [...Object.keys(target_files), ...supported_meta_types].map(
+				(ref) => {
+					return {type: 'string', const: `#/definitions/${ref}`};
+				}
+			),
 		},
 	},
 };
 
 export const generators = [
-	new TypesGenerationFromSchema<
-		schema_type
-	>(
+	new TypesGenerationFromSchema<schema_type>(
 		schema,
 		(data, reference_name): ts.FunctionDeclaration => {
 			const value = ts.factory.createIdentifier('value');
@@ -96,50 +97,62 @@ export const generators = [
 				ts.factory.createStringLiteral(data.pattern),
 				[
 					createParameter('value', ts.SyntaxKind.StringKeyword),
-					createParameter('reference_argument', ts.SyntaxKind.StringKeyword),
+					createParameter(
+						'reference_argument',
+						ts.SyntaxKind.StringKeyword
+					),
 				],
-				() => ts.factory.createTypeReferenceNode(adjust_class_name(`${reference_name}__type`)),
+				() =>
+					ts.factory.createTypeReferenceNode(
+						adjust_class_name(`${reference_name}__type`)
+					),
 				[
 					ts.factory.createTemplateSpan(
 						ts.factory.createIdentifier('reference_argument'),
-						ts.factory.createTemplateTail(` must pass the regex ${data.pattern}`)
-					)
-				],
-				ts.factory.createReturnStatement(ts.factory.createAsExpression(
-					ts.factory.createCallExpression(
-						ts.factory.createIdentifier(is_int ? 'parseInt' : 'parseFloat'),
-						undefined,
-
-						is_int ? [value, ts.factory.createNumericLiteral(10)] : [value]
+						ts.factory.createTemplateTail(
+							` must pass the regex ${data.pattern}`
+						)
 					),
-					ts.factory.createTypeReferenceNode(adjust_class_name(`${reference_name}__type`))
-				)),
-			);
-		}
-	),
-	new TypesGenerationMatchesReferenceName<
-		{type: 'string', string_starts_with: 'Texture2D /Game/FactoryGame/'},
-		'Texture2D--basic'
-	>(
-		['Texture2D--basic'],
-		(data, reference_name) => {
-			return ts.factory.createTypeAliasDeclaration(
-				[create_modifier('export')],
-				adjust_class_name(reference_name),
-				undefined,
-				ts.factory.createTypeReferenceNode(
-					'string_starts_with',
-					[
-						ts.factory.createLiteralTypeNode(ts.factory.createStringLiteral(data.string_starts_with)),
-					]
+				],
+				ts.factory.createReturnStatement(
+					ts.factory.createAsExpression(
+						ts.factory.createCallExpression(
+							ts.factory.createIdentifier(
+								is_int ? 'parseInt' : 'parseFloat'
+							),
+							undefined,
+
+							is_int
+								? [value, ts.factory.createNumericLiteral(10)]
+								: [value]
+						),
+						ts.factory.createTypeReferenceNode(
+							adjust_class_name(`${reference_name}__type`)
+						)
+					)
 				)
 			);
 		}
 	),
 	new TypesGenerationMatchesReferenceName<
+		{type: 'string'; string_starts_with: 'Texture2D /Game/FactoryGame/'},
+		'Texture2D--basic'
+	>(['Texture2D--basic'], (data, reference_name) => {
+		return ts.factory.createTypeAliasDeclaration(
+			[create_modifier('export')],
+			adjust_class_name(reference_name),
+			undefined,
+			ts.factory.createTypeReferenceNode('string_starts_with', [
+				ts.factory.createLiteralTypeNode(
+					ts.factory.createStringLiteral(data.string_starts_with)
+				),
+			])
+		);
+	}),
+	new TypesGenerationMatchesReferenceName<
 		{
-			type: 'string',
-			pattern: string,
+			type: 'string';
+			pattern: string;
 		},
 		keyof typeof target_files
 	>(
@@ -153,15 +166,17 @@ export const generators = [
 						undefined,
 						'T',
 						create_type('number'),
-						create_type('number'),
+						create_type('number')
 					),
 				],
 				ts.factory.createTypeReferenceNode(
 					'StrictlyTypedNumberFromRegExp',
-					[ts.factory.createLiteralTypeNode(ts.factory.createStringLiteral(
-						data.pattern
-					))]
-				),
+					[
+						ts.factory.createLiteralTypeNode(
+							ts.factory.createStringLiteral(data.pattern)
+						),
+					]
+				)
 			);
 		}
 	),
@@ -179,22 +194,20 @@ export const custom_generators = [
 	 *
 	 * const foo:string_starts_with<'foo'> = 'bar'; // invalid
 	 */
-	(): { file: string, node: ts.Node }[] => {
-		const nodes: { file: string, node: ts.Node }[] = [];
+	(): {file: string; node: ts.Node}[] => {
+		const nodes: {file: string; node: ts.Node}[] = [];
 
 		nodes.push({
 			file: 'utils/validators.ts',
 			node: ts.factory.createTypeAliasDeclaration(
-				[
-					create_modifier('export'),
-				],
+				[create_modifier('export')],
 				ts.factory.createIdentifier('string_starts_with'),
 				[
 					ts.factory.createTypeParameterDeclaration(
 						undefined,
 						'prefix',
 						create_type('string')
-					)
+					),
 				],
 				ts.factory.createTypeOperatorNode(
 					ts.SyntaxKind.KeyOfKeyword,
@@ -208,13 +221,15 @@ export const custom_generators = [
 								ts.factory.createTypeLiteralNode([
 									ts.factory.createIndexSignature(
 										undefined,
-										[ts.factory.createParameterDeclaration(
-											undefined,
-											undefined,
-											'key',
-											undefined,
-											create_type('string')
-										)],
+										[
+											ts.factory.createParameterDeclaration(
+												undefined,
+												undefined,
+												'key',
+												undefined,
+												create_type('string')
+											),
+										],
 										create_type('any')
 									),
 								])
@@ -227,11 +242,15 @@ export const custom_generators = [
 								ts.factory.createTemplateHead(''),
 								[
 									ts.factory.createTemplateLiteralTypeSpan(
-										ts.factory.createTypeReferenceNode('prefix'),
+										ts.factory.createTypeReferenceNode(
+											'prefix'
+										),
 										ts.factory.createTemplateMiddle('')
 									),
 									ts.factory.createTemplateLiteralTypeSpan(
-										ts.factory.createTypeReferenceNode('pseudo_key'),
+										ts.factory.createTypeReferenceNode(
+											'pseudo_key'
+										),
 										ts.factory.createTemplateTail('')
 									),
 								]
@@ -243,7 +262,7 @@ export const custom_generators = [
 						undefined
 					)
 				)
-			)
+			),
 		});
 
 		nodes.push({
@@ -255,12 +274,17 @@ export const custom_generators = [
 				[
 					createParameter('value', ts.SyntaxKind.StringKeyword),
 					createParameter('pattern', ts.SyntaxKind.StringKeyword),
-					createParameter('reference_argument', ts.SyntaxKind.StringKeyword),
+					createParameter(
+						'reference_argument',
+						ts.SyntaxKind.StringKeyword
+					),
 				],
 				[
 					ts.factory.createTemplateSpan(
 						ts.factory.createIdentifier('reference_argument'),
-						ts.factory.createTemplateMiddle(' must pass the regex ')
+						ts.factory.createTemplateMiddle(
+							' must pass the regex '
+						)
 					),
 					ts.factory.createTemplateSpan(
 						ts.factory.createIdentifier('pattern'),
@@ -292,8 +316,14 @@ export const custom_generators = [
 					create_method_without_type_parameters(
 						'constructor',
 						[
-							createParameter('prefix', ts.factory.createTypeReferenceNode('prefix')),
-							createParameter('value', ts.factory.createTypeReferenceNode('value')),
+							createParameter(
+								'prefix',
+								ts.factory.createTypeReferenceNode('prefix')
+							),
+							createParameter(
+								'value',
+								ts.factory.createTypeReferenceNode('value')
+							),
 						],
 						[
 							create_this_assignment('prefix', 'prefix'),
@@ -318,12 +348,15 @@ export const custom_generators = [
 							),
 						],
 						[
-							createParameter('unchecked_string', create_type('string')),
+							createParameter(
+								'unchecked_string',
+								create_type('string')
+							),
 							createParameter(
 								'prefix_check',
 								ts.factory.createUnionTypeNode([
 									create_type('string'),
-									create_type('undefined')
+									create_type('undefined'),
 								]),
 								ts.factory.createIdentifier('undefined')
 							),
@@ -339,9 +372,11 @@ export const custom_generators = [
 										'not_an_UnrealEngineString_string',
 										create_template_span([
 											'UnrealEngineString value expected, "',
-											ts.factory.createIdentifier('unchecked_string'),
+											ts.factory.createIdentifier(
+												'unchecked_string'
+											),
 											'" found',
-										]),
+										])
 									),
 									ts.factory.createBindingElement(
 										undefined,
@@ -349,11 +384,15 @@ export const custom_generators = [
 										'prefix_check_failed',
 										create_template_span([
 											'UnrealEngineString prefix expected to start with ',
-											ts.factory.createIdentifier('prefix_check'),
+											ts.factory.createIdentifier(
+												'prefix_check'
+											),
 											', not found on "',
-											ts.factory.createIdentifier('unchecked_string'),
+											ts.factory.createIdentifier(
+												'unchecked_string'
+											),
 											'"',
-										]),
+										])
 									),
 									ts.factory.createBindingElement(
 										undefined,
@@ -361,25 +400,31 @@ export const custom_generators = [
 										'value_check_failed',
 										create_template_span([
 											'UnrealEngineString suffix expected to match ',
-											ts.factory.createIdentifier('pattern'),
+											ts.factory.createIdentifier(
+												'pattern'
+											),
 											', not found on "',
-											ts.factory.createIdentifier('unchecked_string'),
+											ts.factory.createIdentifier(
+												'unchecked_string'
+											),
 											'"',
-										]),
+										])
 									),
 								]),
-								ts.factory.createTypeLiteralNode([
-									'not_an_UnrealEngineString_string',
-									'prefix_check_failed',
-									'value_check_failed',
-								].map((object_key) => {
-									return ts.factory.createPropertySignature(
-										undefined,
-										object_key,
-										undefined,
-										create_type('string')
-									);
-								})),
+								ts.factory.createTypeLiteralNode(
+									[
+										'not_an_UnrealEngineString_string',
+										'prefix_check_failed',
+										'value_check_failed',
+									].map((object_key) => {
+										return ts.factory.createPropertySignature(
+											undefined,
+											object_key,
+											undefined,
+											create_type('string')
+										);
+									})
+								)
 							),
 						],
 						[
@@ -395,7 +440,9 @@ export const custom_generators = [
 												ts.factory.createPropertyAccessExpression(
 													ts.factory.createParenthesizedExpression(
 														ts.factory.createNewExpression(
-															ts.factory.createIdentifier('RegExp'),
+															ts.factory.createIdentifier(
+																'RegExp'
+															),
 															undefined,
 															[
 																ts.factory.createRegularExpressionLiteral(
@@ -407,61 +454,98 @@ export const custom_generators = [
 													'exec'
 												),
 												undefined,
-												[ts.factory.createIdentifier('unchecked_string')]
+												[
+													ts.factory.createIdentifier(
+														'unchecked_string'
+													),
+												]
 											)
 										),
 									],
 									ts.NodeFlags.Const
-								),
+								)
 							),
 							create_throw_if(
 								'Error',
-								ts.factory.createLogicalNot(ts.factory.createIdentifier('result')),
-								[ts.factory.createIdentifier('not_an_UnrealEngineString_string')]
+								ts.factory.createLogicalNot(
+									ts.factory.createIdentifier('result')
+								),
+								[
+									ts.factory.createIdentifier(
+										'not_an_UnrealEngineString_string'
+									),
+								]
 							),
 							create_throw_if(
 								'Error',
 								ts.factory.createLogicalAnd(
 									ts.factory.createStrictInequality(
-										ts.factory.createIdentifier('undefined'),
-										ts.factory.createIdentifier('prefix_check')
-									),
-									ts.factory.createLogicalNot(ts.factory.createCallExpression(
-										ts.factory.createPropertyAccessExpression(
-											create_index_access('result', 1),
-											'startsWith'
+										ts.factory.createIdentifier(
+											'undefined'
 										),
-										undefined,
-										[
-											ts.factory.createIdentifier('prefix_check'),
-										]
-									))
+										ts.factory.createIdentifier(
+											'prefix_check'
+										)
+									),
+									ts.factory.createLogicalNot(
+										ts.factory.createCallExpression(
+											ts.factory.createPropertyAccessExpression(
+												create_index_access(
+													'result',
+													1
+												),
+												'startsWith'
+											),
+											undefined,
+											[
+												ts.factory.createIdentifier(
+													'prefix_check'
+												),
+											]
+										)
+									)
 								),
-								[ts.factory.createIdentifier('prefix_check_failed')]
+								[
+									ts.factory.createIdentifier(
+										'prefix_check_failed'
+									),
+								]
 							),
 							create_throw_if(
 								'Error',
-								ts.factory.createLogicalNot(ts.factory.createCallExpression(
-									ts.factory.createPropertyAccessExpression(
-										ts.factory.createParenthesizedExpression(
-											ts.factory.createNewExpression(
-												ts.factory.createIdentifier('RegExp'),
-												undefined,
-												[ts.factory.createIdentifier('pattern')]
-											)
+								ts.factory.createLogicalNot(
+									ts.factory.createCallExpression(
+										ts.factory.createPropertyAccessExpression(
+											ts.factory.createParenthesizedExpression(
+												ts.factory.createNewExpression(
+													ts.factory.createIdentifier(
+														'RegExp'
+													),
+													undefined,
+													[
+														ts.factory.createIdentifier(
+															'pattern'
+														),
+													]
+												)
+											),
+											'test'
 										),
-										'test'
+										undefined,
+										[create_index_access('result', 2)]
+									)
+								),
+								[
+									ts.factory.createIdentifier(
+										'value_check_failed'
 									),
-									undefined,
-									[
-										create_index_access('result', 2),
-									]
-								)),
-								[ts.factory.createIdentifier('value_check_failed')]
+								]
 							),
 							ts.factory.createReturnStatement(
 								ts.factory.createNewExpression(
-									ts.factory.createIdentifier('UnrealEngineString'),
+									ts.factory.createIdentifier(
+										'UnrealEngineString'
+									),
 									conditional_UnrealEngineString_type_arguments(),
 									[
 										create_index_access('result', 1),
@@ -470,14 +554,18 @@ export const custom_generators = [
 											ts.factory.createTypeReferenceNode(
 												'StringPassedRegExp',
 												[
-													ts.factory.createTypeReferenceNode('pattern'),
-													ts.factory.createTypeReferenceNode('value'),
+													ts.factory.createTypeReferenceNode(
+														'pattern'
+													),
+													ts.factory.createTypeReferenceNode(
+														'value'
+													),
 												]
 											)
 										),
 									]
 								)
-							)
+							),
 						],
 						['static'],
 						create_conditional_UnrealEngineString_type_reference()
@@ -495,7 +583,7 @@ export const custom_generators = [
 							ts.factory.createTypeReferenceNode(
 								'string_starts_with',
 								[create_type('string')]
-							)
+							),
 						]),
 						undefined
 					),
@@ -512,7 +600,7 @@ export const custom_generators = [
 						)
 					),
 				]
-			)
+			),
 		});
 
 		nodes.push({
@@ -521,7 +609,10 @@ export const custom_generators = [
 				'array_string',
 				[
 					createParameter('value', ts.SyntaxKind.StringKeyword),
-					createParameter('reference_argument', ts.SyntaxKind.StringKeyword),
+					createParameter(
+						'reference_argument',
+						ts.SyntaxKind.StringKeyword
+					),
 				],
 				ts.factory.createTypeReferenceNode('T'),
 				[
@@ -534,20 +625,26 @@ export const custom_generators = [
 									undefined,
 									undefined,
 									ts.factory.createCallExpression(
-										ts.factory.createIdentifier('string_to_array'),
+										ts.factory.createIdentifier(
+											'string_to_array'
+										),
 										[
-											ts.factory.createTypeReferenceNode('T'),
+											ts.factory.createTypeReferenceNode(
+												'T'
+											),
 										],
 										[ts.factory.createIdentifier('value')]
 									)
 								),
 							],
 							ts.NodeFlags.Const
-						),
+						)
 					),
 					create_throw_if(
 						'Error',
-						ts.factory.createLogicalNot(ts.factory.createIdentifier('result')),
+						ts.factory.createLogicalNot(
+							ts.factory.createIdentifier('result')
+						),
 						[
 							create_basic_reference_argument_template_span(
 								'reference_argument',
@@ -555,16 +652,18 @@ export const custom_generators = [
 							),
 						]
 					),
-					ts.factory.createReturnStatement(ts.factory.createIdentifier('result')),
+					ts.factory.createReturnStatement(
+						ts.factory.createIdentifier('result')
+					),
 				],
 				[
 					ts.factory.createTypeParameterDeclaration(
 						undefined,
 						'T',
 						ts.factory.createArrayTypeNode(create_type('any'))
-					)
+					),
 				]
-			)
+			),
 		});
 
 		nodes.push({
@@ -573,7 +672,10 @@ export const custom_generators = [
 				'object_string',
 				[
 					createParameter('value', ts.SyntaxKind.StringKeyword),
-					createParameter('reference_argument', ts.SyntaxKind.StringKeyword),
+					createParameter(
+						'reference_argument',
+						ts.SyntaxKind.StringKeyword
+					),
 				],
 				ts.factory.createTypeReferenceNode('T'),
 				[
@@ -586,20 +688,26 @@ export const custom_generators = [
 									undefined,
 									undefined,
 									ts.factory.createCallExpression(
-										ts.factory.createIdentifier('string_to_object'),
+										ts.factory.createIdentifier(
+											'string_to_object'
+										),
 										[
-											ts.factory.createTypeReferenceNode('T'),
+											ts.factory.createTypeReferenceNode(
+												'T'
+											),
 										],
 										[ts.factory.createIdentifier('value')]
 									)
 								),
 							],
 							ts.NodeFlags.Const
-						),
+						)
 					),
 					create_throw_if(
 						'Error',
-						ts.factory.createLogicalNot(ts.factory.createIdentifier('result')),
+						ts.factory.createLogicalNot(
+							ts.factory.createIdentifier('result')
+						),
 						[
 							create_basic_reference_argument_template_span(
 								'reference_argument',
@@ -607,16 +715,18 @@ export const custom_generators = [
 							),
 						]
 					),
-					ts.factory.createReturnStatement(ts.factory.createIdentifier('result')),
+					ts.factory.createReturnStatement(
+						ts.factory.createIdentifier('result')
+					),
 				],
 				[
 					ts.factory.createTypeParameterDeclaration(
 						undefined,
 						'T',
 						create_type('object')
-					)
+					),
 				]
-			)
+			),
 		});
 
 		nodes.push({
@@ -626,7 +736,10 @@ export const custom_generators = [
 				[
 					createParameter('value', ts.SyntaxKind.StringKeyword),
 					createParameter('min_length', ts.SyntaxKind.NumberKeyword),
-					createParameter('reference_argument', ts.SyntaxKind.StringKeyword),
+					createParameter(
+						'reference_argument',
+						ts.SyntaxKind.StringKeyword
+					),
 				],
 				create_type('string'),
 				[
@@ -644,85 +757,111 @@ export const custom_generators = [
 								ts.factory.createTemplateHead(''),
 								[
 									ts.factory.createTemplateSpan(
-										ts.factory.createIdentifier('reference_argument'),
-										ts.factory.createTemplateMiddle(' expected to be of length ')
+										ts.factory.createIdentifier(
+											'reference_argument'
+										),
+										ts.factory.createTemplateMiddle(
+											' expected to be of length '
+										)
 									),
 									ts.factory.createTemplateSpan(
-										ts.factory.createIdentifier('min_length'),
-										ts.factory.createTemplateMiddle(', '),
+										ts.factory.createIdentifier(
+											'min_length'
+										),
+										ts.factory.createTemplateMiddle(', ')
 									),
 									ts.factory.createTemplateSpan(
 										ts.factory.createPropertyAccessExpression(
-											ts.factory.createIdentifier('value'),
+											ts.factory.createIdentifier(
+												'value'
+											),
 											'length'
 										),
-										ts.factory.createTemplateTail(' found'),
+										ts.factory.createTemplateTail(' found')
 									),
 								]
-							)
+							),
 						]
 					),
-					ts.factory.createReturnStatement(ts.factory.createIdentifier('value'))
+					ts.factory.createReturnStatement(
+						ts.factory.createIdentifier('value')
+					),
 				]
 			),
-		})
+		});
 
 		return nodes;
 	},
-	(): {file: string, node:ts.Node}[] => {
+	(): {file: string; node: ts.Node}[] => {
 		return [
-			{file: 'utils/validators.ts', node: ts.factory.createTypeAliasDeclaration(
-				[create_modifier('declare')],
-				'StrictlyTypedNumberFromRegExp',
-				[
-					ts.factory.createTypeParameterDeclaration(
-						undefined,
-						'pattern',
-						create_type('string')
-					),
-					ts.factory.createTypeParameterDeclaration(
-						undefined,
-						'T',
-						create_type('number'),
-						create_type('number')
-					),
-				],
-				ts.factory.createIntersectionTypeNode([
-					create_type('never'),
-					ts.factory.createTypeReferenceNode('T'),
-					create_object_type(
-						{_DocsJsonPattern: ts.factory.createTypeReferenceNode('pattern')},
-						['_DocsJsonPattern']
-					)
-				])
-			)},
-			{file: 'utils/validators.ts', node: ts.factory.createTypeAliasDeclaration(
-				[create_modifier('export')],
-				'StringPassedRegExp',
-				[
-					ts.factory.createTypeParameterDeclaration(
-						undefined,
-						'pattern',
-						create_type('string')
-					),
-					ts.factory.createTypeParameterDeclaration(
-						undefined,
-						'T',
-						create_type('string'),
-						create_type('string')
-					),
-				],
-				ts.factory.createIntersectionTypeNode([
-					create_type('never'),
-					ts.factory.createTypeReferenceNode('T'),
-					create_object_type(
-						{_DocsJsonPattern: ts.factory.createTypeReferenceNode('pattern')},
-						['_DocsJsonPattern']
-					)
-				])
-			)},
+			{
+				file: 'utils/validators.ts',
+				node: ts.factory.createTypeAliasDeclaration(
+					[create_modifier('declare')],
+					'StrictlyTypedNumberFromRegExp',
+					[
+						ts.factory.createTypeParameterDeclaration(
+							undefined,
+							'pattern',
+							create_type('string')
+						),
+						ts.factory.createTypeParameterDeclaration(
+							undefined,
+							'T',
+							create_type('number'),
+							create_type('number')
+						),
+					],
+					ts.factory.createIntersectionTypeNode([
+						create_type('never'),
+						ts.factory.createTypeReferenceNode('T'),
+						create_object_type(
+							{
+								_DocsJsonPattern:
+									ts.factory.createTypeReferenceNode(
+										'pattern'
+									),
+							},
+							['_DocsJsonPattern']
+						),
+					])
+				),
+			},
+			{
+				file: 'utils/validators.ts',
+				node: ts.factory.createTypeAliasDeclaration(
+					[create_modifier('export')],
+					'StringPassedRegExp',
+					[
+						ts.factory.createTypeParameterDeclaration(
+							undefined,
+							'pattern',
+							create_type('string')
+						),
+						ts.factory.createTypeParameterDeclaration(
+							undefined,
+							'T',
+							create_type('string'),
+							create_type('string')
+						),
+					],
+					ts.factory.createIntersectionTypeNode([
+						create_type('never'),
+						ts.factory.createTypeReferenceNode('T'),
+						create_object_type(
+							{
+								_DocsJsonPattern:
+									ts.factory.createTypeReferenceNode(
+										'pattern'
+									),
+							},
+							['_DocsJsonPattern']
+						),
+					])
+				),
+			},
 		];
-	}
+	},
 ];
 
 export const UnrealEngineString_schema = {
@@ -740,9 +879,9 @@ export const UnrealEngineString_schema = {
 				type: {type: 'string', const: 'string'},
 				UnrealEngineString_prefix: {type: 'string', minLength: 1},
 				pattern: {type: 'string', minLength: 2},
-			}
+			},
 		},
-	}
+	},
 };
 
 export const UnrealEngineString_prefix_pattern_schema = {
@@ -758,48 +897,58 @@ export const UnrealEngineString_prefix_pattern_schema = {
 			additionalProperties: false,
 			properties: {
 				type: {type: 'string', const: 'string'},
-				UnrealEngineString_prefix_pattern: {type: 'string', minLength: 1},
+				UnrealEngineString_prefix_pattern: {
+					type: 'string',
+					minLength: 1,
+				},
 				pattern: {type: 'string', minLength: 2},
-			}
+			},
 		},
-	}
+	},
 };
 
 export type UnrealEngineString_type = {
-	type: 'string',
+	type: 'string';
 	UnrealEngineString: {
-		type: 'string',
-		UnrealEngineString_prefix: string,
-		pattern: string,
-	},
-}&({minLength:1}|{})
+		type: 'string';
+		UnrealEngineString_prefix: string;
+		pattern: string;
+	};
+} & ({minLength: 1} | {});
 
 export type UnrealEngineString_pattern_type = {
-	type: 'string',
+	type: 'string';
 	UnrealEngineString: {
-		type: 'string',
-		UnrealEngineString_prefix_pattern: string,
-		pattern: string,
-	},
-}&({minLength:1}|{})
+		type: 'string';
+		UnrealEngineString_prefix_pattern: string;
+		pattern: string;
+	};
+} & ({minLength: 1} | {});
 
 export const type_node_generators = [
 	new TypeNodeGeneration<ref_type>(ref_schema, (property) => {
-		const ref_key = property['$ref'].substring(14) as keyof typeof target_files;
+		const ref_key = property['$ref'].substring(
+			14
+		) as keyof typeof target_files;
 
 		return new TypeNodeGenerationResult(
-			() => ts.factory.createTypeReferenceNode(
-				'StrictlyTypedNumberFromRegExp',
-				[create_type('string')]
-			),
-			(!(ref_key in target_files)) ? undefined : {
-				[target_files[ref_key].replace(/\.ts$/, '')]: [adjust_class_name(ref_key)],
-			}
+			() =>
+				ts.factory.createTypeReferenceNode(
+					'StrictlyTypedNumberFromRegExp',
+					[create_type('string')]
+				),
+			!(ref_key in target_files)
+				? undefined
+				: {
+						[target_files[ref_key].replace(/\.ts$/, '')]: [
+							adjust_class_name(ref_key),
+						],
+					}
 		);
 	}),
 	new TypeNodeGeneration<{
-		type: string,
-		pattern: string,
+		type: string;
+		pattern: string;
 	}>(
 		{
 			type: 'object',
@@ -811,21 +960,20 @@ export const type_node_generators = [
 			},
 		},
 		() => {
-			return new TypeNodeGenerationResult(
-				() => create_type('string'),
-			);
-		},
+			return new TypeNodeGenerationResult(() => create_type('string'));
+		}
 	),
 	new TypeNodeGeneration<UnrealEngineString_type>(
 		UnrealEngineString_schema,
 		(data) => {
 			return new TypeNodeGenerationResult(
-				() => create_UnrealEngineString_reference_type(data.UnrealEngineString),
+				() =>
+					create_UnrealEngineString_reference_type(
+						data.UnrealEngineString
+					),
 				{
-					'utils/validators': [
-						'UnrealEngineString',
-					],
-				},
+					'utils/validators': ['UnrealEngineString'],
+				}
 			);
 		}
 	),
@@ -833,18 +981,19 @@ export const type_node_generators = [
 		UnrealEngineString_prefix_pattern_schema,
 		(data) => {
 			return new TypeNodeGenerationResult(
-				() => create_UnrealEngineString_reference_type(data.UnrealEngineString),
+				() =>
+					create_UnrealEngineString_reference_type(
+						data.UnrealEngineString
+					),
 				{
-					'utils/validators': [
-						'UnrealEngineString',
-					],
-				},
+					'utils/validators': ['UnrealEngineString'],
+				}
 			);
 		}
 	),
 	new TypeNodeGeneration<{
-		type: 'string',
-		string_starts_with: string,
+		type: 'string';
+		string_starts_with: string;
 	}>(
 		{
 			type: 'object',
@@ -853,26 +1002,31 @@ export const type_node_generators = [
 			properties: {
 				type: {type: 'string', const: 'string'},
 				string_starts_with: {type: 'string', minLength: 1},
-			}
+			},
 		},
 		(property) => {
 			return new TypeNodeGenerationResult(
 				() => {
-					return ts.factory.createTypeReferenceNode('string_starts_with', [
-						ts.factory.createLiteralTypeNode(ts.factory.createStringLiteral(property.string_starts_with)),
-					]);
+					return ts.factory.createTypeReferenceNode(
+						'string_starts_with',
+						[
+							ts.factory.createLiteralTypeNode(
+								ts.factory.createStringLiteral(
+									property.string_starts_with
+								)
+							),
+						]
+					);
 				},
 				{
-					'utils/validators': [
-						'string_starts_with',
-					],
+					'utils/validators': ['string_starts_with'],
 				}
 			);
 		}
 	),
 	new TypeNodeGeneration<{
-		type: 'string',
-		minLength: number,
+		type: 'string';
+		minLength: number;
 	}>(
 		{
 			type: 'object',
@@ -881,7 +1035,7 @@ export const type_node_generators = [
 			properties: {
 				type: {type: 'string', const: 'string'},
 				minLength: {type: 'number', minimum: 1},
-			}
+			},
 		},
 		() => {
 			return new TypeNodeGenerationResult(
@@ -889,16 +1043,14 @@ export const type_node_generators = [
 					return create_type('string');
 				},
 				{
-					'utils/validators': [
-						'string_has_minLength',
-					],
+					'utils/validators': ['string_has_minLength'],
 				}
 			);
 		}
 	),
 	new TypeNodeGeneration<{
-		type: 'string',
-		minLength: number,
+		type: 'string';
+		minLength: number;
 	}>(
 		{
 			type: 'object',
@@ -906,7 +1058,7 @@ export const type_node_generators = [
 			additionalProperties: false,
 			properties: {
 				type: {type: 'string', const: 'string'},
-			}
+			},
 		},
 		() => {
 			return new TypeNodeGenerationResult(() => {

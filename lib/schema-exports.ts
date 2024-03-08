@@ -4,7 +4,7 @@ import {
 	UnrealEngineString,
 	string_to_array,
 	string_to_object,
-} from "./DocsValidation";
+} from './DocsValidation';
 
 export {
 	array_string,

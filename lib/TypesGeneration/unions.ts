@@ -1,34 +1,38 @@
-import {
-	ImportTracker,
-	TypesGenerationFromSchema,
-} from '../TypesGeneration';
-import ts from "typescript";
+import {ImportTracker, TypesGenerationFromSchema} from '../TypesGeneration';
+import ts from 'typescript';
 import {
 	adjust_class_name,
 	create_minimum_size_typed_array_of_single_type,
 	create_modifier,
 	possibly_create_lazy_union,
-} from "../TsFactoryWrapper";
-import {UnrealEngineString_schema} from "./validators";
+} from '../TsFactoryWrapper';
+import {UnrealEngineString_schema} from './validators';
 import {
 	array_string_type,
-	generate_array_string_schema
+	generate_array_string_schema,
 } from './json_schema_types';
-import {TypeNodeGeneration, TypeNodeGenerationResult} from "../TypeNodeGeneration";
+import {
+	TypeNodeGeneration,
+	TypeNodeGenerationResult,
+} from '../TypeNodeGeneration';
 
 export const target_files = {
-	'Texture2D': 'common/unions.ts',
-	'mDescriptorStatBars': 'common/unions.ts',
+	Texture2D: 'common/unions.ts',
+	mDescriptorStatBars: 'common/unions.ts',
 	'mEventType--optional-csv': 'common/enum.ts',
 	'FGSchematic--mUnlocks_Class': 'classes/CoreUObject/FGSchematic.ts',
 	'FGSchematic--mUnlocks_mTapeUnlocks': 'classes/CoreUObject/FGSchematic.ts',
 	'FGSchematic--mUnlocks_mRecipes': 'classes/CoreUObject/FGSchematic.ts',
-	'FGSchematic--mUnlocks_resources_to_scan': 'classes/CoreUObject/FGSchematic.ts',
+	'FGSchematic--mUnlocks_resources_to_scan':
+		'classes/CoreUObject/FGSchematic.ts',
 	'FGSchematic--mUnlocks_mEmotes': 'classes/CoreUObject/FGSchematic.ts',
 	'FGSchematic--mUnlocks_mSchematics': 'classes/CoreUObject/FGSchematic.ts',
-	'FGSchematic--mUnlocks_inventory_slots': 'classes/CoreUObject/FGSchematic.ts',
-	'FGSchematic--mUnlocks_equipment_slots': 'classes/CoreUObject/FGSchematic.ts',
-	'FGSchematic--mUnlocks_mScannableObjects': 'classes/CoreUObject/FGSchematic.ts',
+	'FGSchematic--mUnlocks_inventory_slots':
+		'classes/CoreUObject/FGSchematic.ts',
+	'FGSchematic--mUnlocks_equipment_slots':
+		'classes/CoreUObject/FGSchematic.ts',
+	'FGSchematic--mUnlocks_mScannableObjects':
+		'classes/CoreUObject/FGSchematic.ts',
 	'FGSchematic--mUnlocks_mItemsToGive': 'classes/CoreUObject/FGSchematic.ts',
 };
 
@@ -43,45 +47,47 @@ ImportTracker.set_imports('common/unions.ts', [
 	},
 	{
 		from: '../utils/validators',
-		import_these: [
-			'string_starts_with',
-			'UnrealEngineString',
-		],
+		import_these: ['string_starts_with', 'UnrealEngineString'],
 	},
 ]);
 
 declare type supported_oneOf_items =
-	| {'$ref': '#/definitions/Texture2D--basic'}
-	| {'$ref': '#/definitions/None'}
+	| {$ref: '#/definitions/Texture2D--basic'}
+	| {$ref: '#/definitions/None'}
 	| {
-		type: 'string',
-		minLength: 1,
-		UnrealEngineString: {
-			type: 'string',
-			UnrealEngineString_prefix: string,
-			pattern: string,
-		},
-	}
-	| {type: 'string', const: string}
-	| (array_string_type & {array_string: {items: {
-		type: 'object',
-		required: [
-			'Value'
-		],
-		properties: {
-			Value: {
-				'$ref': '#/definitions/integer-string'
-			}
-		}
-	}}})
-	| {type: 'string', string_starts_with: string}
-	| (array_string_type & {array_string: {items: {
-		'$ref': '#/definitions/mEventType'
-	}}})
-;
+			type: 'string';
+			minLength: 1;
+			UnrealEngineString: {
+				type: 'string';
+				UnrealEngineString_prefix: string;
+				pattern: string;
+			};
+	  }
+	| {type: 'string'; const: string}
+	| (array_string_type & {
+			array_string: {
+				items: {
+					type: 'object';
+					required: ['Value'];
+					properties: {
+						Value: {
+							$ref: '#/definitions/integer-string';
+						};
+					};
+				};
+			};
+	  })
+	| {type: 'string'; string_starts_with: string}
+	| (array_string_type & {
+			array_string: {
+				items: {
+					$ref: '#/definitions/mEventType';
+				};
+			};
+	  });
 export const generators = [
 	new TypesGenerationFromSchema<{
-		oneOf: [supported_oneOf_items, ...supported_oneOf_items[]]
+		oneOf: [supported_oneOf_items, ...supported_oneOf_items[]];
 	}>(
 		{
 			type: 'object',
@@ -99,9 +105,10 @@ export const generators = [
 								required: ['$ref'],
 								additionalProperties: false,
 								properties: {
-									'$ref': {
+									$ref: {
 										type: 'string',
-										pattern: '^#/definitions/(Texture2D--basic|None)$',
+										pattern:
+											'^#/definitions/(Texture2D--basic|None)$',
 									},
 								},
 							},
@@ -121,9 +128,17 @@ export const generators = [
 								additionalProperties: false,
 								properties: {
 									type: {type: 'string', const: 'object'},
-									required: {type: 'array', const: ['Value']},
+									required: {
+										type: 'array',
+										const: ['Value'],
+									},
 									properties: {
-										type: 'object', const: {Value: {'$ref': '#/definitions/integer-string'}}
+										type: 'object',
+										const: {
+											Value: {
+												$ref: '#/definitions/integer-string',
+											},
+										},
 									},
 								},
 							}),
@@ -132,7 +147,7 @@ export const generators = [
 								required: ['$ref'],
 								additionalProperties: false,
 								properties: {
-									'$ref': {type: 'string', minLength: 15},
+									$ref: {type: 'string', minLength: 15},
 								},
 							}),
 							{
@@ -141,7 +156,10 @@ export const generators = [
 								additionalProperties: false,
 								properties: {
 									type: {type: 'string', const: 'string'},
-									string_starts_with: {type: 'string', minLength: 1},
+									string_starts_with: {
+										type: 'string',
+										minLength: 1,
+									},
 								},
 							},
 						],
@@ -157,42 +175,57 @@ export const generators = [
 				ts.factory.createUnionTypeNode(
 					data.oneOf.map((entry) => {
 						if ('$ref' in entry) {
-							return ts.factory.createTypeReferenceNode(adjust_class_name(entry['$ref'].substring(14)));
+							return ts.factory.createTypeReferenceNode(
+								adjust_class_name(entry['$ref'].substring(14))
+							);
 						} else if ('const' in entry) {
-							return ts.factory.createLiteralTypeNode(ts.factory.createStringLiteral(
-								entry.const
-							));
-						} else if (
-							'array_string' in entry
-							&& 'type' in entry.array_string.items
-							&& 'properties' in entry.array_string.items
-							&& 'object' === entry.array_string.items.type
-							&& 1 === entry.array_string.items.required.length
-							&& 'Value' === entry.array_string.items.required[0]
-							&& 'Value' in entry.array_string.items.properties
-						) {
-							return create_minimum_size_typed_array_of_single_type(
-								entry.array_string.minItems,
-								() => ts.factory.createTypeReferenceNode(
-									adjust_class_name(
-										(
-											entry.array_string.items as {properties: {Value: {'$ref': string}}}
-										).properties.Value['$ref'].substring(14)
-									)
-								)
+							return ts.factory.createLiteralTypeNode(
+								ts.factory.createStringLiteral(entry.const)
 							);
 						} else if (
-							'array_string' in entry
-							&& '$ref' in entry.array_string.items
-							&& '#/definitions/mEventType' === entry.array_string.items['$ref']
+							'array_string' in entry &&
+							'type' in entry.array_string.items &&
+							'properties' in entry.array_string.items &&
+							'object' === entry.array_string.items.type &&
+							1 === entry.array_string.items.required.length &&
+							'Value' === entry.array_string.items.required[0] &&
+							'Value' in entry.array_string.items.properties
 						) {
 							return create_minimum_size_typed_array_of_single_type(
 								entry.array_string.minItems,
-								() => ts.factory.createTypeReferenceNode(
-									adjust_class_name(
-										(entry.array_string.items as {'$ref': string})['$ref'].substring(14)
+								() =>
+									ts.factory.createTypeReferenceNode(
+										adjust_class_name(
+											(
+												entry.array_string.items as {
+													properties: {
+														Value: {$ref: string};
+													};
+												}
+											).properties.Value[
+												'$ref'
+											].substring(14)
+										)
 									)
-								)
+							);
+						} else if (
+							'array_string' in entry &&
+							'$ref' in entry.array_string.items &&
+							'#/definitions/mEventType' ===
+								entry.array_string.items['$ref']
+						) {
+							return create_minimum_size_typed_array_of_single_type(
+								entry.array_string.minItems,
+								() =>
+									ts.factory.createTypeReferenceNode(
+										adjust_class_name(
+											(
+												entry.array_string.items as {
+													$ref: string;
+												}
+											)['$ref'].substring(14)
+										)
+									)
 							);
 						} else if ('array_string' in entry) {
 							console.error(entry.array_string);
@@ -202,9 +235,11 @@ export const generators = [
 							return ts.factory.createTypeReferenceNode(
 								'string_starts_with',
 								[
-									ts.factory.createLiteralTypeNode(ts.factory.createStringLiteral(
-										entry.string_starts_with
-									)),
+									ts.factory.createLiteralTypeNode(
+										ts.factory.createStringLiteral(
+											entry.string_starts_with
+										)
+									),
 								]
 							);
 						}
@@ -212,11 +247,17 @@ export const generators = [
 						return ts.factory.createTypeReferenceNode(
 							adjust_class_name('UnrealEngineString'),
 							[
-								ts.factory.createTypeReferenceNode('string_starts_with', [
-									ts.factory.createLiteralTypeNode(ts.factory.createStringLiteral(
-										entry.UnrealEngineString.UnrealEngineString_prefix
-									))
-								])
+								ts.factory.createTypeReferenceNode(
+									'string_starts_with',
+									[
+										ts.factory.createLiteralTypeNode(
+											ts.factory.createStringLiteral(
+												entry.UnrealEngineString
+													.UnrealEngineString_prefix
+											)
+										),
+									]
+								),
 							]
 						);
 					})
@@ -228,35 +269,35 @@ export const generators = [
 
 export const type_node_generators = [
 	new TypeNodeGeneration<{
-		'$ref': `#/definitions/${keyof typeof target_files}`
+		$ref: `#/definitions/${keyof typeof target_files}`;
 	}>(
 		{
 			type: 'object',
 			required: ['$ref'],
 			properties: {
-				'$ref': {
-					oneOf: Object.keys(target_files).map(e => {
-						return {type: 'string', 'const': `#/definitions/${e}`};
-					})
-				}
-			}
+				$ref: {
+					oneOf: Object.keys(target_files).map((e) => {
+						return {type: 'string', const: `#/definitions/${e}`};
+					}),
+				},
+			},
 		},
 		(data) => {
-			const reference_name = adjust_class_name(data['$ref'].substring(14));
+			const reference_name = adjust_class_name(
+				data['$ref'].substring(14)
+			);
 
 			return new TypeNodeGenerationResult(
 				() => {
 					return ts.factory.createTypeReferenceNode(reference_name);
 				},
 				{
-					'common/unions': [
-						reference_name,
-					],
+					'common/unions': [reference_name],
 				}
 			);
 		}
 	),
-	new TypeNodeGeneration<{type: 'string', enum: [string, ...string[]]}>(
+	new TypeNodeGeneration<{type: 'string'; enum: [string, ...string[]]}>(
 		{
 			type: 'object',
 			required: ['type', 'enum'],
@@ -268,11 +309,11 @@ export const type_node_generators = [
 					minItems: 1,
 					items: {type: 'string'},
 				},
-			}
+			},
 		},
 		(data) => {
-			return new TypeNodeGenerationResult(
-				() => possibly_create_lazy_union(data.enum)
+			return new TypeNodeGenerationResult(() =>
+				possibly_create_lazy_union(data.enum)
 			);
 		}
 	),

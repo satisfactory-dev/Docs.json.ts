@@ -5,9 +5,7 @@
 	"definitions": {
 		"class--no-description-or-display-name": {
 			"type": "object",
-			"required": [
-				"ClassName"
-			],
+			"required": ["ClassName"],
 			"properties": {
 				"ClassName": {
 					"type": "string",
@@ -18,9 +16,7 @@
 		"class--no-description": {
 			"type": "object",
 			"$ref": "#/definitions/class--no-description-or-display-name",
-			"required": [
-				"mDisplayName"
-			],
+			"required": ["mDisplayName"],
 			"properties": {
 				"mDisplayName": {
 					"type": "string"
@@ -30,9 +26,7 @@
 		"class": {
 			"type": "object",
 			"$ref": "#/definitions/class--no-description",
-			"required": [
-				"mDescription"
-			],
+			"required": ["mDescription"],
 			"properties": {
 				"mDescription": {
 					"type": "string"
@@ -57,12 +51,7 @@
 		},
 		"color--base": {
 			"type": "object",
-			"required": [
-				"R",
-				"G",
-				"B",
-				"A"
-			]
+			"required": ["R", "G", "B", "A"]
 		},
 		"color": {
 			"type": "string",
@@ -152,17 +141,16 @@
 			"type": "string",
 			"const": "()"
 		},
-		"None": {"type": "string", "const": "None"},
+		"None": {
+			"type": "string",
+			"const": "None"
+		},
 		"xyz": {
 			"type": "string",
 			"minLength": 1,
 			"object_string": {
 				"type": "object",
-				"required": [
-					"X",
-					"Y",
-					"Z"
-				],
+				"required": ["X", "Y", "Z"],
 				"properties": {
 					"X": {
 						"$ref": "#/definitions/decimal-string--signed"
@@ -178,11 +166,7 @@
 		},
 		"xyz--semi-native": {
 			"type": "object",
-			"required": [
-				"X",
-				"Y",
-				"Z"
-			],
+			"required": ["X", "Y", "Z"],
 			"properties": {
 				"X": {
 					"$ref": "#/definitions/decimal-string--signed"
@@ -200,10 +184,7 @@
 			"minLength": 1,
 			"object_string": {
 				"type": "object",
-				"required": [
-					"X",
-					"Y"
-				],
+				"required": ["X", "Y"],
 				"properties": {
 					"X": {
 						"$ref": "#/definitions/decimal-string--signed"
@@ -219,10 +200,7 @@
 			"minLength": 1,
 			"object_string": {
 				"type": "object",
-				"required": [
-					"X",
-					"Y"
-				],
+				"required": ["X", "Y"],
 				"properties": {
 					"X": {
 						"$ref": "#/definitions/integer-string"
@@ -235,10 +213,7 @@
 		},
 		"xy--semi-native": {
 			"type": "object",
-			"required": [
-				"X",
-				"Y"
-			],
+			"required": ["X", "Y"],
 			"properties": {
 				"X": {
 					"$ref": "#/definitions/decimal-string--signed"
@@ -253,12 +228,7 @@
 			"minLength": 1,
 			"object_string": {
 				"type": "object",
-				"required": [
-					"X",
-					"Y",
-					"Z",
-					"W"
-				],
+				"required": ["X", "Y", "Z", "W"],
 				"properties": {
 					"X": {
 						"$ref": "#/definitions/decimal-string--signed"
@@ -277,12 +247,7 @@
 		},
 		"quaternion--semi-native": {
 			"type": "object",
-			"required": [
-				"X",
-				"Y",
-				"Z",
-				"W"
-			],
+			"required": ["X", "Y", "Z", "W"],
 			"properties": {
 				"X": {
 					"$ref": "#/definitions/decimal-string--signed"
@@ -303,11 +268,7 @@
 			"minLength": 1,
 			"object_string": {
 				"type": "object",
-				"required": [
-					"Pitch",
-					"Yaw",
-					"Roll"
-				],
+				"required": ["Pitch", "Yaw", "Roll"],
 				"properties": {
 					"Pitch": {
 						"$ref": "#/definitions/decimal-string--signed"
@@ -326,11 +287,7 @@
 			"minLength": 1,
 			"object_string": {
 				"type": "object",
-				"required": [
-					"X",
-					"Y",
-					"Z"
-				],
+				"required": ["X", "Y", "Z"],
 				"properties": {
 					"X": {
 						"$ref": "#/definitions/integer-string"
@@ -352,11 +309,7 @@
 				"minItems": 1,
 				"items": {
 					"type": "object",
-					"required": [
-						"X",
-						"Y",
-						"Z"
-					],
+					"required": ["X", "Y", "Z"],
 					"properties": {
 						"X": {
 							"$ref": "#/definitions/decimal-string"
@@ -373,18 +326,11 @@
 		},
 		"boolean": {
 			"type": "string",
-			"enum": [
-				"True",
-				"False"
-			]
+			"enum": ["True", "False"]
 		},
 		"boolean-extended": {
 			"type": "string",
-			"enum": [
-				"True",
-				"False",
-				""
-			]
+			"enum": ["True", "False", ""]
 		},
 		"Texture2D--basic": {
 			"type": "string",
@@ -392,8 +338,12 @@
 		},
 		"Texture2D": {
 			"oneOf": [
-				{"$ref": "#/definitions/Texture2D--basic"},
-				{"$ref": "#/definitions/None"},
+				{
+					"$ref": "#/definitions/Texture2D--basic"
+				},
+				{
+					"$ref": "#/definitions/None"
+				},
 				{
 					"type": "string",
 					"minLength": 1,
@@ -410,11 +360,7 @@
 			"minLength": 1,
 			"object_string": {
 				"type": "object",
-				"required": [
-					"Rotation",
-					"Translation",
-					"Scale3D"
-				],
+				"required": ["Rotation", "Translation", "Scale3D"],
 				"additionalProperties": false,
 				"properties": {
 					"Rotation": {
@@ -442,21 +388,13 @@
 		},
 		"mForm": {
 			"type": "string",
-			"enum": [
-				"RF_SOLID",
-				"RF_LIQUID",
-				"RF_GAS",
-				"RF_INVALID"
-			]
+			"enum": ["RF_SOLID", "RF_LIQUID", "RF_GAS", "RF_INVALID"]
 		},
 		"mCrosshairMaterial": {
 			"oneOf": [
 				{
 					"type": "string",
-					"enum": [
-						"",
-						"None"
-					]
+					"enum": ["", "None"]
 				},
 				{
 					"type": "string",
@@ -477,9 +415,7 @@
 						"minItems": 1,
 						"items": {
 							"type": "object",
-							"required": [
-								"Value"
-							],
+							"required": ["Value"],
 							"properties": {
 								"Value": {
 									"$ref": "#/definitions/integer-string"
@@ -493,7 +429,9 @@
 		"mClassToScanFor": {
 			"type": "string",
 			"oneOf": [
-				{"$ref": "#/definitions/None"},
+				{
+					"$ref": "#/definitions/None"
+				},
 				{
 					"type": "string",
 					"string_starts_with": "/Game/FactoryGame/Resource/Environment/"
@@ -506,11 +444,7 @@
 		},
 		"mScannableType": {
 			"type": "string",
-			"enum": [
-				"RTWOT_Default",
-				"RTWOT_WeakSignal",
-				"RTWOT_Flora"
-			]
+			"enum": ["RTWOT_Default", "RTWOT_WeakSignal", "RTWOT_Flora"]
 		},
 		"mScannerDisplayText": {
 			"type": "string"
@@ -528,9 +462,7 @@
 			"type": "string",
 			"object_string": {
 				"type": "object",
-				"required": [
-					"ItemClass"
-				],
+				"required": ["ItemClass"],
 				"additionalProperties": false,
 				"properties": {
 					"ItemClass": {
@@ -547,10 +479,7 @@
 				"minItems": 1,
 				"items": {
 					"type": "object",
-					"required": [
-						"ItemClass",
-						"Amount"
-					],
+					"required": ["ItemClass", "Amount"],
 					"properties": {
 						"ItemClass": {
 							"$ref": "#/definitions/ItemClass--prop"
@@ -570,9 +499,7 @@
 				"minItems": 1,
 				"items": {
 					"type": "object",
-					"required": [
-						"ItemClass"
-					],
+					"required": ["ItemClass"],
 					"additionalProperties": false,
 					"properties": {
 						"ItemClass": {
@@ -662,9 +589,7 @@
 								"minItems": 1,
 								"items": {
 									"type": "object",
-									"required": [
-										"CompatibleItemType"
-									],
+									"required": ["CompatibleItemType"],
 									"properties": {
 										"CompatibleItemType": {
 											"type": "string",
@@ -734,9 +659,7 @@
 		"FGItemDescriptor--FGResourceDescriptor": {
 			"type": "object",
 			"$ref": "#/definitions/FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor",
-			"required": [
-				"mResourceSinkPoints"
-			],
+			"required": ["mResourceSinkPoints"],
 			"properties": {
 				"mResourceSinkPoints": {
 					"$ref": "#/definitions/integer-string"
@@ -824,10 +747,7 @@
 								"minItems": 1,
 								"items": {
 									"type": "object",
-									"required": [
-										"mMaterial",
-										"mRecipe"
-									],
+									"required": ["mMaterial", "mRecipe"],
 									"properties": {
 										"mMaterial": {
 											"type": "string",
@@ -896,11 +816,7 @@
 				},
 				"mCustomScaleType": {
 					"type": "string",
-					"enum": [
-						"ROCSS_Center",
-						"ROCSS_Top",
-						"ROCSS_Bot"
-					]
+					"enum": ["ROCSS_Center", "ROCSS_Top", "ROCSS_Bot"]
 				},
 				"mOcclusionBoxInfo": {
 					"oneOf": [
@@ -916,11 +832,7 @@
 								"minItems": 1,
 								"items": {
 									"type": "object",
-									"required": [
-										"Min",
-										"Max",
-										"IsValid"
-									],
+									"required": ["Min", "Max", "IsValid"],
 									"properties": {
 										"Min": {
 											"$ref": "#/definitions/xyz--semi-native"
@@ -1288,10 +1200,7 @@
 					"oneOf": [
 						{
 							"type": "string",
-							"enum": [
-								"N/A",
-								"Custom Slot"
-							]
+							"enum": ["N/A", "Custom Slot"]
 						},
 						{
 							"type": "string",
@@ -1334,9 +1243,7 @@
 		},
 		"mEventType": {
 			"type": "string",
-			"enum": [
-				"EV_Christmas"
-			]
+			"enum": ["EV_Christmas"]
 		},
 		"mEventType--optional-csv": {
 			"oneOf": [
@@ -1941,9 +1848,7 @@
 			"minLength": 1,
 			"object_string": {
 				"type": "object",
-				"required": [
-					"SpecifiedColor"
-				],
+				"required": ["SpecifiedColor"],
 				"properties": {
 					"SpecifiedColor": {
 						"$ref": "#/definitions/color-decimal"
@@ -1953,9 +1858,7 @@
 		},
 		"SpecifiedColor--semi-native": {
 			"type": "object",
-			"required": [
-				"SpecifiedColor"
-			],
+			"required": ["SpecifiedColor"],
 			"properties": {
 				"SpecifiedColor": {
 					"$ref": "#/definitions/color-decimal--semi-native"
@@ -1964,9 +1867,7 @@
 		},
 		"FGSchematic--mUnlocks_Class": {
 			"type": "object",
-			"required": [
-				"Class"
-			],
+			"required": ["Class"],
 			"additionalProperties": false,
 			"properties": {
 				"Class": {
@@ -1984,10 +1885,7 @@
 		},
 		"FGSchematic--mUnlocks_mTapeUnlocks": {
 			"type": "object",
-			"required": [
-				"Class",
-				"mTapeUnlocks"
-			],
+			"required": ["Class", "mTapeUnlocks"],
 			"additionalProperties": false,
 			"properties": {
 				"Class": {
@@ -2015,18 +1913,12 @@
 		},
 		"FGSchematic--mUnlocks_mRecipes": {
 			"type": "object",
-			"required": [
-				"Class",
-				"mRecipes"
-			],
+			"required": ["Class", "mRecipes"],
 			"additionalProperties": false,
 			"properties": {
 				"Class": {
 					"type": "string",
-					"enum": [
-						"BP_UnlockRecipe_C",
-						"BP_UnlockBlueprints_C"
-					]
+					"enum": ["BP_UnlockRecipe_C", "BP_UnlockBlueprints_C"]
 				},
 				"mRecipes": {
 					"type": "string",
@@ -2093,9 +1985,7 @@
 						"minItems": 1,
 						"items": {
 							"type": "object",
-							"required": [
-								"ResourceDescriptor"
-							],
+							"required": ["ResourceDescriptor"],
 							"additionalProperties": false,
 							"properties": {
 								"ResourceDescriptor": {
@@ -2109,10 +1999,7 @@
 								},
 								"ResourceNodeType": {
 									"type": "string",
-									"enum": [
-										"FrackingCore",
-										"Geyser"
-									]
+									"enum": ["FrackingCore", "Geyser"]
 								}
 							}
 						}
@@ -2122,10 +2009,7 @@
 		},
 		"FGSchematic--mUnlocks_mEmotes": {
 			"type": "object",
-			"required": [
-				"Class",
-				"mEmotes"
-			],
+			"required": ["Class", "mEmotes"],
 			"additionalProperties": false,
 			"properties": {
 				"Class": {
@@ -2170,25 +2054,21 @@
 		},
 		"FGSchematic--mUnlocks_mSchematics": {
 			"type": "object",
-			"required": [
-				"Class",
-				"mSchematics"
-			],
+			"required": ["Class", "mSchematics"],
 			"additionalProperties": false,
 			"properties": {
 				"Class": {
 					"type": "string",
 					"const": "BP_UnlockSchematic_C"
 				},
-				"mSchematics": {"$ref": "#/definitions/mSchematics"}
+				"mSchematics": {
+					"$ref": "#/definitions/mSchematics"
+				}
 			}
 		},
 		"FGSchematic--mUnlocks_inventory_slots": {
 			"type": "object",
-			"required": [
-				"Class",
-				"mNumInventorySlotsToUnlock"
-			],
+			"required": ["Class", "mNumInventorySlotsToUnlock"],
 			"additionalProperties": false,
 			"properties": {
 				"Class": {
@@ -2202,10 +2082,7 @@
 		},
 		"FGSchematic--mUnlocks_equipment_slots": {
 			"type": "object",
-			"required": [
-				"Class",
-				"mNumArmEquipmentSlotsToUnlock"
-			],
+			"required": ["Class", "mNumArmEquipmentSlotsToUnlock"],
 			"additionalProperties": false,
 			"properties": {
 				"Class": {
@@ -2219,10 +2096,7 @@
 		},
 		"FGSchematic--mUnlocks_mScannableObjects": {
 			"type": "object",
-			"required": [
-				"Class",
-				"mScannableObjects"
-			],
+			"required": ["Class", "mScannableObjects"],
 			"additionalProperties": false,
 			"properties": {
 				"Class": {
@@ -2272,10 +2146,7 @@
 		},
 		"FGSchematic--mUnlocks_mItemsToGive": {
 			"type": "object",
-			"required": [
-				"Class",
-				"mItemsToGive"
-			],
+			"required": ["Class", "mItemsToGive"],
 			"additionalProperties": false,
 			"properties": {
 				"Class": {
@@ -2340,7 +2211,9 @@
 								"minItems": 1,
 								"items": {
 									"oneOf": [
-										{"$ref": "#/definitions/None"},
+										{
+											"$ref": "#/definitions/None"
+										},
 										{
 											"type": "string",
 											"minLength": 1,
@@ -2402,7 +2275,9 @@
 												"pattern": "^/Game/FactoryGame/Schematics/ResourceSink/"
 											}
 										},
-										{"$ref": "#/definitions/None"}
+										{
+											"$ref": "#/definitions/None"
+										}
 									]
 								}
 							}
@@ -2416,16 +2291,36 @@
 					"type": "array",
 					"items": {
 						"anyOf": [
-							{"$ref": "#/definitions/FGSchematic--mUnlocks_Class"},
-							{"$ref": "#/definitions/FGSchematic--mUnlocks_mTapeUnlocks"},
-							{"$ref": "#/definitions/FGSchematic--mUnlocks_mRecipes"},
-							{"$ref": "#/definitions/FGSchematic--mUnlocks_resources_to_scan"},
-							{"$ref": "#/definitions/FGSchematic--mUnlocks_mEmotes"},
-							{"$ref": "#/definitions/FGSchematic--mUnlocks_mSchematics"},
-							{"$ref": "#/definitions/FGSchematic--mUnlocks_inventory_slots"},
-							{"$ref": "#/definitions/FGSchematic--mUnlocks_equipment_slots"},
-							{"$ref": "#/definitions/FGSchematic--mUnlocks_mScannableObjects"},
-							{"$ref": "#/definitions/FGSchematic--mUnlocks_mItemsToGive"}
+							{
+								"$ref": "#/definitions/FGSchematic--mUnlocks_Class"
+							},
+							{
+								"$ref": "#/definitions/FGSchematic--mUnlocks_mTapeUnlocks"
+							},
+							{
+								"$ref": "#/definitions/FGSchematic--mUnlocks_mRecipes"
+							},
+							{
+								"$ref": "#/definitions/FGSchematic--mUnlocks_resources_to_scan"
+							},
+							{
+								"$ref": "#/definitions/FGSchematic--mUnlocks_mEmotes"
+							},
+							{
+								"$ref": "#/definitions/FGSchematic--mUnlocks_mSchematics"
+							},
+							{
+								"$ref": "#/definitions/FGSchematic--mUnlocks_inventory_slots"
+							},
+							{
+								"$ref": "#/definitions/FGSchematic--mUnlocks_equipment_slots"
+							},
+							{
+								"$ref": "#/definitions/FGSchematic--mUnlocks_mScannableObjects"
+							},
+							{
+								"$ref": "#/definitions/FGSchematic--mUnlocks_mItemsToGive"
+							}
 						]
 					}
 				},
@@ -2481,11 +2376,7 @@
 							},
 							"UVRegion": {
 								"type": "object",
-								"required": [
-									"Min",
-									"Max",
-									"bIsValid"
-								],
+								"required": ["Min", "Max", "bIsValid"],
 								"properties": {
 									"Min": {
 										"$ref": "#/definitions/xy--semi-native"
@@ -2520,7 +2411,9 @@
 										"type": "string",
 										"pattern": "BP_[A-Z][A-z]+_C$"
 									},
-									"mSchematics": {"$ref": "#/definitions/mSchematics"},
+									"mSchematics": {
+										"$ref": "#/definitions/mSchematics"
+									},
 									"mRequireAllSchematicsToBePurchased": {
 										"$ref": "#/definitions/boolean"
 									}
@@ -2528,10 +2421,7 @@
 							},
 							{
 								"type": "object",
-								"required": [
-									"Class",
-									"mGamePhase"
-								],
+								"required": ["Class", "mGamePhase"],
 								"properties": {
 									"Class": {
 										"type": "string",
@@ -2539,9 +2429,7 @@
 									},
 									"mGamePhase": {
 										"type": "string",
-										"enum": [
-											"EGP_FoodCourt"
-										]
+										"enum": ["EGP_FoodCourt"]
 									}
 								}
 							}
@@ -2559,9 +2447,7 @@
 				},
 				"mIncludeInBuilds": {
 					"type": "string",
-					"enum": [
-						"IIB_PublicBuilds"
-					]
+					"enum": ["IIB_PublicBuilds"]
 				}
 			}
 		},
@@ -2606,11 +2492,7 @@
 		"FGBuildableWall--base": {
 			"type": "object",
 			"$ref": "#/definitions/FGBuildable--base",
-			"required": [
-				"mHeight",
-				"mDisplayName",
-				"mDescription"
-			],
+			"required": ["mHeight", "mDisplayName", "mDescription"],
 			"properties": {
 				"mHeight": {
 					"$ref": "#/definitions/decimal-string"
@@ -2683,10 +2565,7 @@
 			"type": "object",
 			"$ref": "#/definitions/FGBuildableWall--base",
 			"unevaluatedProperties": false,
-			"required": [
-				"mSize",
-				"mIsInverted"
-			],
+			"required": ["mSize", "mIsInverted"],
 			"properties": {
 				"mSize": {
 					"$ref": "#/definitions/decimal-string"
@@ -2719,10 +2598,7 @@
 				},
 				"EasingFunction": {
 					"type": "string",
-					"enum": [
-						"ExpoInOut",
-						"Linear"
-					]
+					"enum": ["ExpoInOut", "Linear"]
 				},
 				"BlendExp": {
 					"$ref": "#/definitions/decimal-string"
@@ -2736,9 +2612,7 @@
 			"type": "object",
 			"$ref": "#/definitions/FGBuildableDoor--base",
 			"unevaluatedProperties": false,
-			"required": [
-				"IsDoorOpen"
-			],
+			"required": ["IsDoorOpen"],
 			"properties": {
 				"IsDoorOpen": {
 					"$ref": "#/definitions/boolean"
@@ -2749,9 +2623,7 @@
 			"type": "object",
 			"$ref": "#/definitions/FGBuildableDoor--base",
 			"unevaluatedProperties": false,
-			"required": [
-				"bigOverlapList"
-			],
+			"required": ["bigOverlapList"],
 			"properties": {
 				"bigOverlapList": {
 					"type": "string",
@@ -2781,9 +2653,7 @@
 				},
 				"mManualMiningAudioName": {
 					"type": "string",
-					"enum": [
-						"Metal"
-					]
+					"enum": ["Metal"]
 				}
 			}
 		},
@@ -2911,9 +2781,7 @@
 			"type": "object",
 			"$ref": "#/definitions/FGBuildable--base",
 			"unevaluatedProperties": false,
-			"required": [
-				"mOccupiedText"
-			],
+			"required": ["mOccupiedText"],
 			"properties": {
 				"mOccupiedText": {
 					"type": "string",
@@ -2925,9 +2793,7 @@
 			"type": "object",
 			"$ref": "#/definitions/FGBuildable--base",
 			"unevaluatedProperties": false,
-			"required": [
-				"Tier"
-			],
+			"required": ["Tier"],
 			"properties": {
 				"Tier": {
 					"$ref": "#/definitions/integer-string"
@@ -2937,11 +2803,7 @@
 		"FGBuildable--pole--base": {
 			"type": "object",
 			"$ref": "#/definitions/FGBuildable--base",
-			"required": [
-				"mUseStaticHeight",
-				"mCanStack",
-				"mStackHeight"
-			],
+			"required": ["mUseStaticHeight", "mCanStack", "mStackHeight"],
 			"properties": {
 				"mUseStaticHeight": {
 					"$ref": "#/definitions/boolean"
@@ -2958,10 +2820,7 @@
 			"type": "object",
 			"$ref": "#/definitions/FGBuildable--pole--base",
 			"unevaluatedProperties": false,
-			"required": [
-				"mHeight",
-				"mSelectedPoleVersion"
-			],
+			"required": ["mHeight", "mSelectedPoleVersion"],
 			"properties": {
 				"mHeight": {
 					"$ref": "#/definitions/decimal-string"
@@ -2978,19 +2837,13 @@
 		"FGPoleDescriptor--FGEquipmentDescriptor": {
 			"type": "object",
 			"$ref": "#/definitions/FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor",
-			"required": [
-				"mSubCategories",
-				"mForm"
-			]
+			"required": ["mSubCategories", "mForm"]
 		},
 		"FGPoleDescriptor": {
 			"type": "object",
 			"$ref": "#/definitions/FGPoleDescriptor--FGEquipmentDescriptor",
 			"unevaluatedProperties": false,
-			"required": [
-				"mSubCategories",
-				"mForm"
-			]
+			"required": ["mSubCategories", "mForm"]
 		},
 		"FGBuildable--spline-base--has-spline-data": {
 			"type": "object",
@@ -3030,11 +2883,7 @@
 			"type": "object",
 			"$ref": "#/definitions/FGBuildableConveyorBelt--base",
 			"unevaluatedProperties": false,
-			"required": [
-				"mMeshLength",
-				"mSplineData",
-				"mCustomSkins"
-			],
+			"required": ["mMeshLength", "mSplineData", "mCustomSkins"],
 			"properties": {
 				"mCustomSkins": {
 					"type": "string",
@@ -3098,7 +2947,9 @@
 				"mLengthPerCost": {
 					"$ref": "#/definitions/decimal-string"
 				},
-				"mConnections": {"$ref": "#/definitions/None"},
+				"mConnections": {
+					"$ref": "#/definitions/None"
+				},
 				"mConnectionLocations": {
 					"$ref": "#/definitions/xyz"
 				},
@@ -3319,10 +3170,7 @@
 				},
 				"mBackAnimation": {
 					"type": "string",
-					"enum": [
-						"BE_None",
-						"BE_Jetpack"
-					]
+					"enum": ["BE_None", "BE_Jetpack"]
 				},
 				"mHasPersistentOwner": {
 					"$ref": "#/definitions/boolean"
@@ -3374,10 +3222,7 @@
 			"type": "object",
 			"$ref": "#/definitions/FGEquipmentStunSpear--base",
 			"unevaluatedProperties": false,
-			"required": [
-				"mRandomAttackAnim",
-				"mRandomEquipAnim"
-			],
+			"required": ["mRandomAttackAnim", "mRandomEquipAnim"],
 			"properties": {
 				"mDamageTypes": {
 					"$ref": "#/definitions/mDamageTypes"
@@ -3405,9 +3250,7 @@
 			"type": "object",
 			"$ref": "#/definitions/FGEquipmentStunSpear--base",
 			"unevaluatedProperties": false,
-			"required": [
-				"mPunchAnimationWeight"
-			],
+			"required": ["mPunchAnimationWeight"],
 			"properties": {
 				"mDamageTypes": {
 					"$ref": "#/definitions/mDamageTypes"
@@ -3680,10 +3523,7 @@
 						"minItems": 1,
 						"items": {
 							"type": "object",
-							"required": [
-								"SlotName",
-								"Material"
-							],
+							"required": ["SlotName", "Material"],
 							"properties": {
 								"Material": {
 									"type": "string",
@@ -3729,7 +3569,9 @@
 				}
 			}
 		},
-		"mChainsawState": {"$ref": "#/definitions/None"},
+		"mChainsawState": {
+			"$ref": "#/definitions/None"
+		},
 		"FGChainsaw": {
 			"type": "object",
 			"$ref": "#/definitions/FGEquipment--base",
@@ -3860,10 +3702,7 @@
 			"type": "object",
 			"$ref": "#/definitions/FGEquipment--base",
 			"unevaluatedProperties": false,
-			"required": [
-				"mSprintSpeedFactor",
-				"mJumpSpeedFactor"
-			],
+			"required": ["mSprintSpeedFactor", "mJumpSpeedFactor"],
 			"properties": {
 				"mSprintSpeedFactor": {
 					"$ref": "#/definitions/decimal-string"
@@ -3956,9 +3795,7 @@
 		"FGEquipmentDescriptor--base": {
 			"type": "object",
 			"$ref": "#/definitions/FGPoleDescriptor--FGEquipmentDescriptor",
-			"required": [
-				"mResourceSinkPoints"
-			],
+			"required": ["mResourceSinkPoints"],
 			"properties": {
 				"mResourceSinkPoints": {
 					"$ref": "#/definitions/integer-string"
@@ -4006,9 +3843,7 @@
 			"type": "object",
 			"$ref": "#/definitions/FGConsumableDescriptor--base",
 			"unevaluatedProperties": false,
-			"required": [
-				"mHealthGain"
-			],
+			"required": ["mHealthGain"],
 			"properties": {
 				"mHealthGain": {
 					"$ref": "#/definitions/decimal-string"
@@ -4024,10 +3859,7 @@
 			"type": "object",
 			"$ref": "#/definitions/FGBuildable--base",
 			"unevaluatedProperties": false,
-			"required": [
-				"mSize",
-				"mIsSupport"
-			],
+			"required": ["mSize", "mIsSupport"],
 			"properties": {
 				"mSize": {
 					"$ref": "#/definitions/xyz"
@@ -4041,10 +3873,7 @@
 			"type": "object",
 			"$ref": "#/definitions/FGBuildable--consumes-power-base",
 			"unevaluatedProperties": false,
-			"required": [
-				"JumpForceCharacter",
-				"JumpForcePhysics"
-			],
+			"required": ["JumpForceCharacter", "JumpForcePhysics"],
 			"properties": {
 				"JumpForceCharacter": {
 					"$ref": "#/definitions/decimal-string"
@@ -4058,10 +3887,7 @@
 			"type": "object",
 			"$ref": "#/definitions/FGBuildable--consumes-power-base",
 			"unevaluatedProperties": false,
-			"required": [
-				"mDampeningFactor",
-				"mPlayerList"
-			],
+			"required": ["mDampeningFactor", "mPlayerList"],
 			"properties": {
 				"mDampeningFactor": {
 					"$ref": "#/definitions/decimal-string"
@@ -4080,11 +3906,7 @@
 		"FGBuildableWalkway--base": {
 			"type": "object",
 			"$ref": "#/definitions/FGBuildable--base",
-			"required": [
-				"mSize",
-				"mElevation",
-				"mDisableSnapOn"
-			],
+			"required": ["mSize", "mElevation", "mDisableSnapOn"],
 			"properties": {
 				"mSize": {
 					"$ref": "#/definitions/decimal-string"
@@ -4101,10 +3923,7 @@
 					"minLength": 1,
 					"object_string": {
 						"type": "object",
-						"required": [
-							"Top",
-							"Bottom"
-						],
+						"required": ["Top", "Bottom"],
 						"additionalProperties": false,
 						"properties": {
 							"Top": {
@@ -4121,10 +3940,7 @@
 					"minLength": 1,
 					"object_string": {
 						"type": "object",
-						"required": [
-							"Front",
-							"Bottom"
-						],
+						"required": ["Front", "Bottom"],
 						"additionalProperties": false,
 						"properties": {
 							"Front": {
@@ -4141,10 +3957,7 @@
 					"minLength": 1,
 					"object_string": {
 						"type": "object",
-						"required": [
-							"Front",
-							"Right"
-						],
+						"required": ["Front", "Right"],
 						"additionalProperties": false,
 						"properties": {
 							"Front": {
@@ -4161,11 +3974,7 @@
 					"minLength": 1,
 					"object_string": {
 						"type": "object",
-						"required": [
-							"Front",
-							"Top",
-							"Bottom"
-						],
+						"required": ["Front", "Top", "Bottom"],
 						"additionalProperties": false,
 						"properties": {
 							"Front": {
@@ -4185,12 +3994,7 @@
 					"minLength": 1,
 					"object_string": {
 						"type": "object",
-						"required": [
-							"Right",
-							"Left",
-							"Top",
-							"Bottom"
-						],
+						"required": ["Right", "Left", "Top", "Bottom"],
 						"additionalProperties": false,
 						"properties": {
 							"Right": {
@@ -4213,12 +4017,7 @@
 					"minLength": 1,
 					"object_string": {
 						"type": "object",
-						"required": [
-							"Front",
-							"Left",
-							"Top",
-							"Bottom"
-						],
+						"required": ["Front", "Left", "Top", "Bottom"],
 						"additionalProperties": false,
 						"properties": {
 							"Front": {
@@ -4241,9 +4040,7 @@
 					"minLength": 1,
 					"object_string": {
 						"type": "object",
-						"required": [
-							"Top"
-						],
+						"required": ["Top"],
 						"additionalProperties": false,
 						"properties": {
 							"Top": {
@@ -4257,9 +4054,7 @@
 					"minLength": 1,
 					"object_string": {
 						"type": "object",
-						"required": [
-							"Bottom"
-						],
+						"required": ["Bottom"],
 						"additionalProperties": false,
 						"properties": {
 							"Bottom": {
@@ -4290,12 +4085,7 @@
 					"minLength": 1,
 					"object_string": {
 						"type": "object",
-						"required": [
-							"Top",
-							"Bottom",
-							"Left",
-							"Right"
-						],
+						"required": ["Top", "Bottom", "Left", "Right"],
 						"properties": {
 							"Top": {
 								"$ref": "#/definitions/boolean"
@@ -4317,10 +4107,7 @@
 		"FGBuildableGenerator--base": {
 			"type": "object",
 			"$ref": "#/definitions/FGBuildable--consumes-power-base",
-			"required": [
-				"mPowerProduction",
-				"mLoadPercentage"
-			],
+			"required": ["mPowerProduction", "mLoadPercentage"],
 			"properties": {
 				"mPowerProduction": {
 					"$ref": "#/definitions/decimal-string"
@@ -4376,10 +4163,7 @@
 				},
 				"mFuelResourceForm": {
 					"type": "string",
-					"enum": [
-						"RF_SOLID",
-						"RF_LIQUID"
-					]
+					"enum": ["RF_SOLID", "RF_LIQUID"]
 				},
 				"mFuelLoadAmount": {
 					"$ref": "#/definitions/integer-string"
@@ -4413,10 +4197,7 @@
 			"type": "object",
 			"$ref": "#/definitions/FGBuildableGeneratorFuel--base",
 			"unevaluatedProperties": false,
-			"required": [
-				"m_SFXSockets",
-				"m_CurrentPotential"
-			],
+			"required": ["m_SFXSockets", "m_CurrentPotential"],
 			"properties": {
 				"m_SFXSockets": {
 					"type": "string",
@@ -4442,9 +4223,7 @@
 			"type": "object",
 			"$ref": "#/definitions/FGBuildableGeneratorFuel--base",
 			"unevaluatedProperties": false,
-			"required": [
-				"mCachedLoadPercentage"
-			]
+			"required": ["mCachedLoadPercentage"]
 		},
 		"FGBuildableGeneratorGeoThermal": {
 			"type": "object",
@@ -4562,10 +4341,7 @@
 			"type": "object",
 			"$ref": "#/definitions/FGBuildable--pole--base",
 			"unevaluatedProperties": false,
-			"required": [
-				"mLength",
-				"mVerticalAngle"
-			],
+			"required": ["mLength", "mVerticalAngle"],
 			"properties": {
 				"mLength": {
 					"$ref": "#/definitions/decimal-string"
@@ -4637,9 +4413,7 @@
 						"minItems": 1,
 						"items": {
 							"type": "object",
-							"required": [
-								"WwiseSafeName"
-							],
+							"required": ["WwiseSafeName"],
 							"properties": {
 								"WwiseSafeName": {
 									"type": "string",
@@ -4680,10 +4454,7 @@
 		"FGBuildable--pipeline-accessory--base": {
 			"type": "object",
 			"$ref": "#/definitions/FGBuildable--consumes-power-base",
-			"required": [
-				"mFluidBox",
-				"mPipeConnections"
-			],
+			"required": ["mFluidBox", "mPipeConnections"],
 			"properties": {
 				"mFluidBox": {
 					"$ref": "#/definitions/empty-object"
@@ -4942,7 +4713,9 @@
 						}
 					}
 				},
-				"mExtractorTypeName": {"$ref": "#/definitions/None"}
+				"mExtractorTypeName": {
+					"$ref": "#/definitions/None"
+				}
 			}
 		},
 		"FGBuildableResourceSink": {
@@ -4990,9 +4763,7 @@
 			"type": "object",
 			"$ref": "#/definitions/FGBuildable--consumes-power-base",
 			"unevaluatedProperties": false,
-			"required": [
-				"mShopInventoryDefaultSize"
-			],
+			"required": ["mShopInventoryDefaultSize"],
 			"properties": {
 				"mShopInventoryDefaultSize": {
 					"$ref": "#/definitions/integer-string"
@@ -5030,15 +4801,15 @@
 						}
 					}
 				},
-				"mExtractorTypeName": {"$ref": "#/definitions/None"}
+				"mExtractorTypeName": {
+					"$ref": "#/definitions/None"
+				}
 			}
 		},
 		"FGBuildableResourceExtractor--miner--base": {
 			"type": "object",
 			"$ref": "#/definitions/FGBuildable--extractor-base",
-			"required": [
-				"mParticleMap"
-			],
+			"required": ["mParticleMap"],
 			"properties": {
 				"mParticleMap": {
 					"type": "string",
@@ -5205,10 +4976,7 @@
 			"type": "object",
 			"$ref": "#/definitions/FGBuildableManufacturer--base",
 			"unevaluatedProperties": false,
-			"required": [
-				"mCurrentColor_VFX",
-				"CurrentPackagingMode"
-			],
+			"required": ["mCurrentColor_VFX", "CurrentPackagingMode"],
 			"properties": {
 				"ClassName": {
 					"type": "string",
@@ -5266,10 +5034,7 @@
 			"type": "object",
 			"$ref": "#/definitions/FGBuildableManufacturer--base",
 			"unevaluatedProperties": false,
-			"required": [
-				"mIsPendingToKillVFX",
-				"mCachedCurrentPotential"
-			],
+			"required": ["mIsPendingToKillVFX", "mCachedCurrentPotential"],
 			"properties": {
 				"ClassName": {
 					"type": "string",
@@ -5389,10 +5154,7 @@
 		"FGEquipment--placeable": {
 			"type": "object",
 			"$ref": "#/definitions/FGEquipment--base",
-			"required": [
-				"mAllowedResourceForms",
-				"mPlaceDistanceMax"
-			],
+			"required": ["mAllowedResourceForms", "mPlaceDistanceMax"],
 			"properties": {
 				"mAllowedResourceForms": {
 					"type": "string",
@@ -5412,10 +5174,7 @@
 			"type": "object",
 			"$ref": "#/definitions/FGItemDescriptor--FGResourceDescriptor",
 			"unevaluatedProperties": false,
-			"required": [
-				"mSpentFuelClass",
-				"mAmountOfWaste"
-			],
+			"required": ["mSpentFuelClass", "mAmountOfWaste"],
 			"properties": {
 				"mSpentFuelClass": {
 					"type": "string",
@@ -5435,9 +5194,7 @@
 			"type": "object",
 			"$ref": "#/definitions/FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor",
 			"unevaluatedProperties": false,
-			"required": [
-				"mForm"
-			],
+			"required": ["mForm"],
 			"properties": {
 				"mFuelConsumption": {
 					"$ref": "#/definitions/decimal-string"
@@ -5453,10 +5210,7 @@
 					"minLength": 1,
 					"object_string": {
 						"type": "object",
-						"required": [
-							"Min",
-							"Max"
-						],
+						"required": ["Min", "Max"],
 						"properties": {
 							"Min": {
 								"$ref": "#/definitions/decimal-string"
@@ -5474,7 +5228,9 @@
 			"$ref": "#/definitions/FGBuildable--extractor-base",
 			"unevaluatedProperties": false,
 			"properties": {
-				"mExtractorTypeName": {"$ref": "#/definitions/None"}
+				"mExtractorTypeName": {
+					"$ref": "#/definitions/None"
+				}
 			}
 		},
 		"FGBuildableFrackingActivator": {
@@ -5492,7 +5248,9 @@
 				"mDefaultPotentialExtractionPerMinute"
 			],
 			"properties": {
-				"mExtractorTypeName": {"$ref": "#/definitions/None"},
+				"mExtractorTypeName": {
+					"$ref": "#/definitions/None"
+				},
 				"CurrentPotentialChangedDelegate": {
 					"$ref": "#/definitions/empty-object"
 				},
@@ -5584,10 +5342,7 @@
 		},
 		"mFreightCargoType": {
 			"type": "string",
-			"enum": [
-				"FCT_Standard",
-				"FCT_Liquid"
-			]
+			"enum": ["FCT_Standard", "FCT_Liquid"]
 		},
 		"mPlatformDockingStatus": {
 			"type": "string",
@@ -5648,9 +5403,7 @@
 			"minLength": 1,
 			"object_string": {
 				"type": "object",
-				"required": [
-					"DockForDuration"
-				],
+				"required": ["DockForDuration"],
 				"properties": {
 					"DockForDuration": {
 						"$ref": "#/definitions/decimal-string"
@@ -5661,9 +5414,7 @@
 		"FGBuildableTrainPlatformCargo--FGBuildableRailroadStation": {
 			"type": "object",
 			"$ref": "#/definitions/FGBuildableTrainPlatform--base",
-			"required": [
-				"mCurrentDockForDuration"
-			],
+			"required": ["mCurrentDockForDuration"],
 			"properties": {
 				"mCurrentDockForDuration": {
 					"$ref": "#/definitions/decimal-string"
@@ -5926,9 +5677,7 @@
 			"type": "object",
 			"$ref": "#/definitions/FGBuildable--spline-base--has-spline-data",
 			"unevaluatedProperties": false,
-			"required": [
-				"mSnappedPassthroughs"
-			],
+			"required": ["mSnappedPassthroughs"],
 			"properties": {
 				"mSnappedPassthroughs": {
 					"type": "string",
@@ -6202,9 +5951,7 @@
 			"type": "object",
 			"$ref": "#/definitions/FGBuildable--base",
 			"unevaluatedProperties": false,
-			"required": [
-				"mCurrentInputIndex"
-			],
+			"required": ["mCurrentInputIndex"],
 			"properties": {
 				"mCurrentInputIndex": {
 					"$ref": "#/definitions/integer-string--signed"
@@ -6214,9 +5961,7 @@
 		"FGBuildable--splitter--base": {
 			"type": "object",
 			"$ref": "#/definitions/FGBuildable--base",
-			"required": [
-				"mCurrentOutputIndex"
-			],
+			"required": ["mCurrentOutputIndex"],
 			"properties": {
 				"mCurrentOutputIndex": {
 					"$ref": "#/definitions/integer-string--signed"
@@ -6253,9 +5998,7 @@
 					"minLength": 1,
 					"object_string": {
 						"type": "object",
-						"required": [
-							"ItemState"
-						],
+						"required": ["ItemState"],
 						"properties": {
 							"ItemState": {
 								"$ref": "#/definitions/empty-object"
@@ -6342,10 +6085,7 @@
 			"type": "object",
 			"$ref": "#/definitions/FGBuildableFoundation--base",
 			"unevaluatedProperties": false,
-			"required": [
-				"mIsDoubleRamp",
-				"mIsRoof"
-			],
+			"required": ["mIsDoubleRamp", "mIsRoof"],
 			"properties": {
 				"mIsDoubleRamp": {
 					"$ref": "#/definitions/boolean"
@@ -6379,9 +6119,7 @@
 			"minLength": 1,
 			"object_string": {
 				"type": "object",
-				"required": [
-					"EditorCurveData"
-				],
+				"required": ["EditorCurveData"],
 				"properties": {
 					"EditorCurveData": {
 						"type": "object",
@@ -6621,9 +6359,7 @@
 					"minLength": 1,
 					"object_string": {
 						"type": "object",
-						"required": [
-							"bAllowTickOnDedicatedServer"
-						],
+						"required": ["bAllowTickOnDedicatedServer"],
 						"properties": {
 							"bAllowTickOnDedicatedServer": {
 								"$ref": "#/definitions/boolean"
@@ -6723,9 +6459,7 @@
 								"minItems": 1,
 								"items": {
 									"type": "object",
-									"required": [
-										"ActorClass"
-									],
+									"required": ["ActorClass"],
 									"properties": {
 										"ActorClass": {
 											"type": "string",
@@ -6762,10 +6496,7 @@
 					"minLength": 1,
 					"object_string": {
 						"type": "object",
-						"required": [
-							"Min",
-							"Max"
-						],
+						"required": ["Min", "Max"],
 						"properties": {
 							"Min": {
 								"$ref": "#/definitions/integer-string"
@@ -6784,9 +6515,7 @@
 		"FGAmmoTypeInstantHit--base": {
 			"type": "object",
 			"$ref": "#/definitions/FGAmmoTypeProjectile--base",
-			"required": [
-				"mPlayFireEffects"
-			],
+			"required": ["mPlayFireEffects"],
 			"properties": {
 				"mPlayFireEffects": {
 					"$ref": "#/definitions/boolean"
@@ -6797,10 +6526,7 @@
 			"type": "object",
 			"$ref": "#/definitions/FGAmmoTypeInstantHit--base",
 			"unevaluatedProperties": false,
-			"required": [
-				"Location",
-				"Trail_Velocity"
-			],
+			"required": ["Location", "Trail_Velocity"],
 			"properties": {
 				"ClassName": {
 					"type": "string",
@@ -6827,9 +6553,7 @@
 		},
 		"weaponState": {
 			"type": "string",
-			"enum": [
-				"EWS_Unequipped"
-			]
+			"enum": ["EWS_Unequipped"]
 		},
 		"FGWeapon--base": {
 			"type": "object",
@@ -6901,25 +6625,15 @@
 				},
 				"mMuzzleSocketName": {
 					"type": "string",
-					"enum": [
-						"muzzleSocket",
-						"MuzzleSocket",
-						"None"
-					]
+					"enum": ["muzzleSocket", "MuzzleSocket", "None"]
 				},
 				"mCurrentMagazineBoneName": {
 					"type": "string",
-					"enum": [
-						"CurrentMagazine",
-						"hand_rSocket"
-					]
+					"enum": ["CurrentMagazine", "hand_rSocket"]
 				},
 				"mEjectMagazineBoneName": {
 					"type": "string",
-					"enum": [
-						"EjectMagazine",
-						"hand_rSocket"
-					]
+					"enum": ["EjectMagazine", "hand_rSocket"]
 				},
 				"mDispersionOnNoMagazine": {
 					"$ref": "#/definitions/decimal-string"
@@ -6987,10 +6701,7 @@
 			"type": "object",
 			"$ref": "#/definitions/FGWeapon--base",
 			"unevaluatedProperties": false,
-			"required": [
-				"Fire",
-				"mHasReloadedOnce"
-			],
+			"required": ["Fire", "mHasReloadedOnce"],
 			"properties": {
 				"ClassName": {
 					"type": "string",
@@ -7150,11 +6861,7 @@
 			"type": "object",
 			"$ref": "#/definitions/FGBuildable--consumes-power-base",
 			"unevaluatedProperties": false,
-			"required": [
-				"mMapText",
-				"mRevealRadius",
-				"mScannableDescriptors"
-			],
+			"required": ["mMapText", "mRevealRadius", "mScannableDescriptors"],
 			"properties": {
 				"mMapText": {
 					"type": "string",
@@ -7191,10 +6898,7 @@
 			"type": "object",
 			"$ref": "#/definitions/FGBuildable--consumes-power-base",
 			"unevaluatedProperties": false,
-			"required": [
-				"mTimeToProduceItem",
-				"mEventType"
-			],
+			"required": ["mTimeToProduceItem", "mEventType"],
 			"properties": {
 				"mTimeToProduceItem": {
 					"$ref": "#/definitions/decimal-string"
@@ -7238,18 +6942,11 @@
 			"type": "object",
 			"$ref": "#/definitions/FGBuildable--base",
 			"unevaluatedProperties": false,
-			"required": [
-				"mStairDirection",
-				"mHeight",
-				"mSize"
-			],
+			"required": ["mStairDirection", "mHeight", "mSize"],
 			"properties": {
 				"mStairDirection": {
 					"type": "string",
-					"enum": [
-						"EBSD_Left",
-						"EBSD_Right"
-					]
+					"enum": ["EBSD_Left", "EBSD_Right"]
 				},
 				"mHeight": {
 					"$ref": "#/definitions/decimal-string"
@@ -7344,9 +7041,7 @@
 			"minLength": 1,
 			"object_string": {
 				"type": "object",
-				"required": [
-					"Intensity"
-				],
+				"required": ["Intensity"],
 				"properties": {
 					"Intensity": {
 						"$ref": "#/definitions/decimal-string"
@@ -7426,16 +7121,11 @@
 					"minLength": 1,
 					"object_string": {
 						"type": "object",
-						"required": [
-							"OverrideColorData"
-						],
+						"required": ["OverrideColorData"],
 						"properties": {
 							"OverrideColorData": {
 								"type": "object",
-								"required": [
-									"PrimaryColor",
-									"SecondaryColor"
-								],
+								"required": ["PrimaryColor", "SecondaryColor"],
 								"properties": {
 									"PrimaryColor": {
 										"$ref": "#/definitions/color-decimal--semi-native"
@@ -7454,9 +7144,7 @@
 			"type": "object",
 			"$ref": "#/definitions/FGBuildableLightSource--base",
 			"unevaluatedProperties": false,
-			"required": [
-				"mFixtureAngle"
-			],
+			"required": ["mFixtureAngle"],
 			"properties": {
 				"mFixtureAngle": {
 					"$ref": "#/definitions/integer-string"
@@ -7547,12 +7235,7 @@
 			"type": "object",
 			"$ref": "#/definitions/FGBuildable--base",
 			"unevaluatedProperties": false,
-			"required": [
-				"mSize",
-				"mDefaultLength",
-				"mMaxLength",
-				"mLength"
-			],
+			"required": ["mSize", "mDefaultLength", "mMaxLength", "mLength"],
 			"properties": {
 				"mSize": {
 					"$ref": "#/definitions/decimal-string"
@@ -7583,10 +7266,7 @@
 	"prefixItems": [
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -7603,10 +7283,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -7623,10 +7300,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -7643,10 +7317,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -7663,10 +7334,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -7683,10 +7351,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -7749,10 +7414,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -7776,10 +7438,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -7796,10 +7455,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -7816,10 +7472,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -7843,10 +7496,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -7863,10 +7513,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -7883,10 +7530,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -7905,10 +7549,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -7935,10 +7576,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -7955,10 +7593,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -7975,10 +7610,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -7995,10 +7627,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8015,10 +7644,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8035,10 +7661,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8057,10 +7680,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8086,10 +7706,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8106,10 +7723,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8126,10 +7740,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8159,10 +7770,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8179,10 +7787,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8199,10 +7804,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8230,10 +7832,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8250,10 +7849,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8270,10 +7866,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8290,10 +7883,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8321,10 +7911,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8341,10 +7928,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8361,10 +7945,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8381,10 +7962,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8401,10 +7979,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8421,10 +7996,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8452,10 +8024,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8488,10 +8057,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8508,10 +8074,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8528,10 +8091,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8548,10 +8108,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8568,10 +8125,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8588,10 +8142,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8608,10 +8159,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8628,10 +8176,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8648,10 +8193,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8668,10 +8210,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8695,10 +8234,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8715,10 +8251,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8735,10 +8268,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8755,10 +8285,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8775,10 +8302,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8795,10 +8319,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8815,10 +8336,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8835,10 +8353,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8855,10 +8370,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8875,10 +8387,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8895,10 +8404,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8915,10 +8421,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8935,10 +8438,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8955,10 +8455,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8975,10 +8472,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -8995,10 +8489,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -9015,10 +8506,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -9035,10 +8523,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -9055,10 +8540,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -9075,10 +8557,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -9095,10 +8574,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -9115,10 +8591,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -9135,10 +8608,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -9155,10 +8625,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -9175,10 +8642,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -9195,10 +8659,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -9222,10 +8683,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -9242,10 +8700,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -9262,10 +8717,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -9289,10 +8741,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -9309,10 +8758,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -9329,10 +8775,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -9349,10 +8792,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -9369,10 +8809,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -9389,10 +8826,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -9409,10 +8843,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -9429,10 +8860,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -9449,10 +8877,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -9469,10 +8894,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -9489,10 +8911,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -9509,10 +8928,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -9529,10 +8945,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -9549,10 +8962,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -9569,10 +8979,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -9589,10 +8996,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -9609,10 +9013,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -9629,10 +9030,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -9649,10 +9047,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -9669,10 +9064,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
@@ -9689,10 +9081,7 @@
 		},
 		{
 			"type": "object",
-			"required": [
-				"NativeClass",
-				"Classes"
-			],
+			"required": ["NativeClass", "Classes"],
 			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {

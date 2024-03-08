@@ -1,47 +1,51 @@
 import ts from 'typescript';
 
 import {TypesGenerationFromSchema} from '../TypesGeneration';
-import {adjust_class_name, create_literal_node_from_value, create_modifier} from '../TsFactoryWrapper';
-import {TypeNodeGeneration, TypeNodeGenerationResult} from "../TypeNodeGeneration";
+import {
+	adjust_class_name,
+	create_literal_node_from_value,
+	create_modifier,
+} from '../TsFactoryWrapper';
+import {
+	TypeNodeGeneration,
+	TypeNodeGenerationResult,
+} from '../TypeNodeGeneration';
 
 export const target_files = {
 	'empty-object': 'common/constants.ts',
-	'None': 'common/constants.ts',
-	'mChainsawState': 'common/constants.ts',
-	'mSnappedPassthroughs': 'common/constants.ts',
-	'mAspect': 'common/constants.ts',
-	'mPlatformDockingStatus': 'common/constants.ts',
-	'mBatteryStatus': 'common/constants.ts',
-	'InfinityExtrap': 'common/constants.ts',
-}
+	None: 'common/constants.ts',
+	mChainsawState: 'common/constants.ts',
+	mSnappedPassthroughs: 'common/constants.ts',
+	mAspect: 'common/constants.ts',
+	mPlatformDockingStatus: 'common/constants.ts',
+	mBatteryStatus: 'common/constants.ts',
+	InfinityExtrap: 'common/constants.ts',
+};
 
 export const schema = {
 	type: 'object',
-	required: [
-		'type',
-		'const',
-	],
+	required: ['type', 'const'],
 	additionalProperties: false,
 	properties: {
-		type: {type: 'string', 'const': 'string'},
+		type: {type: 'string', const: 'string'},
 		const: {type: 'string'},
 	},
 };
 
 export declare type schema_type = {
-	type: 'string',
-	const: string
+	type: 'string';
+	const: string;
 };
 
 declare type ref_type = {
-	'$ref':
+	$ref:
 		| '#/definitions/empty-object'
 		| '#/definitions/mChainsawState'
 		| '#/definitions/mSnappedPassthroughs'
 		| '#/definitions/mAspect'
 		| '#/definitions/mPlatformDockingStatus'
 		| '#/definitions/mBatteryStatus'
-		| '#/definitions/InfinityExtrap'
+		| '#/definitions/InfinityExtrap';
 };
 
 const ref_schema = {
@@ -49,7 +53,7 @@ const ref_schema = {
 	required: ['$ref'],
 	additionalProperties: false,
 	properties: {
-		'$ref': {
+		$ref: {
 			oneOf: Object.keys(target_files).map((ref) => {
 				return {type: 'string', const: `#/definitions/${ref}`};
 			}),
@@ -57,34 +61,34 @@ const ref_schema = {
 	},
 };
 
-
 export const generators = [
 	new TypesGenerationFromSchema<schema_type>(
 		schema,
 		(data, reference_name) => {
 			return ts.factory.createTypeAliasDeclaration(
-				[
-					create_modifier('export'),
-				],
+				[create_modifier('export')],
 				ts.factory.createIdentifier(adjust_class_name(reference_name)),
 				undefined,
-				ts.factory.createLiteralTypeNode(ts.factory.createStringLiteral(data.const))
+				ts.factory.createLiteralTypeNode(
+					ts.factory.createStringLiteral(data.const)
+				)
 			);
 		}
 	),
 ];
 
 export const type_node_generators = [
-	new TypeNodeGeneration<schema_type>(
-		schema,
-		(property) => {
-			return new TypeNodeGenerationResult(
-				() => ts.factory.createLiteralTypeNode(ts.factory.createStringLiteral(property.const))
-			);
-		}
-	),
+	new TypeNodeGeneration<schema_type>(schema, (property) => {
+		return new TypeNodeGenerationResult(() =>
+			ts.factory.createLiteralTypeNode(
+				ts.factory.createStringLiteral(property.const)
+			)
+		);
+	}),
 	new TypeNodeGeneration<ref_type>(ref_schema, (property) => {
-		const ref_key = property['$ref'].substring(14) as keyof typeof target_files;
+		const ref_key = property['$ref'].substring(
+			14
+		) as keyof typeof target_files;
 
 		const reference_name = adjust_class_name(ref_key);
 
@@ -96,17 +100,20 @@ export const type_node_generators = [
 		);
 	}),
 	new TypeNodeGeneration<{
-		'$ref':
-			| '#/definitions/mOutputInventoryHandlerData'
+		$ref: '#/definitions/mOutputInventoryHandlerData';
 	}>(
 		{
 			type: 'object',
 			required: ['$ref'],
 			additionalProperties: false,
 			properties: {
-				'$ref': {
+				$ref: {
 					oneOf: [
-						{type: 'string', pattern: '^#/definitions/(mOutputInventoryHandlerData)$'},
+						{
+							type: 'string',
+							pattern:
+								'^#/definitions/(mOutputInventoryHandlerData)$',
+						},
 					],
 				},
 			},
@@ -119,12 +126,12 @@ export const type_node_generators = [
 					return ts.factory.createTypeReferenceNode(reference_name);
 				},
 				{
-					'common/constants' : [reference_name],
+					'common/constants': [reference_name],
 				}
 			);
 		}
 	),
-	new TypeNodeGeneration<{type: 'string', const: string}>(
+	new TypeNodeGeneration<{type: 'string'; const: string}>(
 		{
 			type: 'object',
 			required: ['type', 'const'],
@@ -135,8 +142,8 @@ export const type_node_generators = [
 			},
 		},
 		(data) => {
-			return new TypeNodeGenerationResult(
-				() => create_literal_node_from_value(data.const),
+			return new TypeNodeGenerationResult(() =>
+				create_literal_node_from_value(data.const)
 			);
 		}
 	),

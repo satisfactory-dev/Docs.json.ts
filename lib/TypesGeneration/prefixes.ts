@@ -1,34 +1,38 @@
-import {ImportTracker, TypesGenerationFromSchema} from "../TypesGeneration";
-import ts from "typescript";
-import {adjust_enum_name, create_modifier, create_string_starts_with} from "../TsFactoryWrapper";
-import {TypeNodeGeneration, TypeNodeGenerationResult} from "../TypeNodeGeneration";
+import {ImportTracker, TypesGenerationFromSchema} from '../TypesGeneration';
+import ts from 'typescript';
+import {
+	adjust_enum_name,
+	create_modifier,
+	create_string_starts_with,
+} from '../TsFactoryWrapper';
+import {
+	TypeNodeGeneration,
+	TypeNodeGenerationResult,
+} from '../TypeNodeGeneration';
 
 export const target_files = Object.entries({
-	'common/prefixes.ts': [
-		'Texture2D--basic',
-	],
-}).reduce((was, is) => {
-	for (const reference of is[1]) {
-		was[reference] = is[0];
-	}
+	'common/prefixes.ts': ['Texture2D--basic'],
+}).reduce(
+	(was, is) => {
+		for (const reference of is[1]) {
+			was[reference] = is[0];
+		}
 
-	return was;
-}, {} as {[key: string]: string});
+		return was;
+	},
+	{} as {[key: string]: string}
+);
 
-
-ImportTracker.set_imports('common/prefixes.ts', [{
-	import_these: [
-		'string_starts_with',
-	],
-	from: '../utils/validators',
-}]);
+ImportTracker.set_imports('common/prefixes.ts', [
+	{
+		import_these: ['string_starts_with'],
+		from: '../utils/validators',
+	},
+]);
 
 export const schema = {
 	type: 'object',
-	required: [
-		'type',
-		'string_starts_with',
-	],
+	required: ['type', 'string_starts_with'],
 	additionalProperties: false,
 	properties: {
 		type: {type: 'string', const: 'string'},
@@ -38,30 +42,30 @@ export const schema = {
 
 export const generators = [
 	new TypesGenerationFromSchema<{
-		type: string,
-		string_starts_with: string,
-	}>(
-		schema,
-		(data, reference_name) => {
-			return ts.factory.createTypeAliasDeclaration(
-				[
-					create_modifier('export'),
-				],
-				ts.factory.createIdentifier(adjust_enum_name(reference_name)),
-				undefined,
-				create_string_starts_with(data.string_starts_with)
-			);
-		}
-	),
+		type: string;
+		string_starts_with: string;
+	}>(schema, (data, reference_name) => {
+		return ts.factory.createTypeAliasDeclaration(
+			[create_modifier('export')],
+			ts.factory.createIdentifier(adjust_enum_name(reference_name)),
+			undefined,
+			create_string_starts_with(data.string_starts_with)
+		);
+	}),
 ];
 
 export const type_node_generators = [
-	new TypeNodeGeneration<{'$ref': '#/definitions/Texture2D--basic'}>(
+	new TypeNodeGeneration<{$ref: '#/definitions/Texture2D--basic'}>(
 		{
 			type: 'object',
 			required: ['$ref'],
 			additionalProperties: false,
-			properties: {'$ref': {type: 'string', const: '#/definitions/Texture2D--basic'}}
+			properties: {
+				$ref: {
+					type: 'string',
+					const: '#/definitions/Texture2D--basic',
+				},
+			},
 		},
 		(data) => {
 			const reference_name = data['$ref'].substring(14);
@@ -70,8 +74,8 @@ export const type_node_generators = [
 				() => ts.factory.createTypeReferenceNode(reference_name),
 				{
 					'common/prefixes': [reference_name],
-				},
+				}
 			);
-		},
+		}
 	),
 ];

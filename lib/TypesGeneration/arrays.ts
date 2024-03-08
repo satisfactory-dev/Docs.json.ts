@@ -1,17 +1,26 @@
-import {ImportTracker, TypesGenerationMatchesReferenceName} from "../TypesGeneration";
-import ts from "typescript";
 import {
-	adjust_class_name, create_minimum_size_typed_array_of_single_type,
+	ImportTracker,
+	TypesGenerationMatchesReferenceName,
+} from '../TypesGeneration';
+import ts from 'typescript';
+import {
+	adjust_class_name,
+	create_minimum_size_typed_array_of_single_type,
 	create_minimum_size_typed_array_of_type_references,
-	create_modifier, create_object_type,
-} from "../TsFactoryWrapper";
-import {TypeNodeGeneration, TypeNodeGenerationResult} from "../TypeNodeGeneration";
+	create_modifier,
+	create_object_type,
+} from '../TsFactoryWrapper';
+import {
+	TypeNodeGeneration,
+	TypeNodeGenerationResult,
+} from '../TypeNodeGeneration';
+
 export const target_files = {
-	'mDamageTypes': 'common/arrays.ts',
+	mDamageTypes: 'common/arrays.ts',
 	'xyz-array': 'common/arrays.ts',
 	'ItemClass-and-amount': 'common/arrays.ts',
 	'ItemClass-only--array': 'common/arrays.ts',
-	'mFuel': 'common/arrays.ts',
+	mFuel: 'common/arrays.ts',
 };
 
 ImportTracker.set_imports('common/arrays.ts', [
@@ -25,158 +34,167 @@ ImportTracker.set_imports('common/arrays.ts', [
 	},
 	{
 		from: './vectors',
-		import_these: [
-			adjust_class_name('xyz--unsigned-x'),
-		],
+		import_these: [adjust_class_name('xyz--unsigned-x')],
 	},
 	{
 		from: './aliases',
-		import_these: [
-			adjust_class_name('ItemClass__prop'),
-		],
+		import_these: [adjust_class_name('ItemClass__prop')],
 	},
 ]);
 
 export type array_string_schema_type = {
-	type: 'string',
-	minLength: 1,
+	type: 'string';
+	minLength: 1;
 	array_string: {
-		type: 'array',
-		minItems: number,
-		items: object,
-	},
+		type: 'array';
+		minItems: number;
+		items: object;
+	};
 };
 
 declare type ItemClass_only = {
-	type: 'string',
-	minLength: 1,
+	type: 'string';
+	minLength: 1;
 	array_string: {
-		type: 'array',
-		minItems: 1,
+		type: 'array';
+		minItems: 1;
 		items: {
-			type: 'object',
-			required: ['ItemClass'],
+			type: 'object';
+			required: ['ItemClass'];
 			properties: {
-				ItemClass: {'$ref': '#/definitions/ItemClass'},
-			},
-		},
-	},
+				ItemClass: {$ref: '#/definitions/ItemClass'};
+			};
+		};
+	};
 };
 
 declare type ItemClass_and_Amount = {
-	type: 'string',
-	minLength: 1,
+	type: 'string';
+	minLength: 1;
 	array_string: {
-		type: 'array',
-		minItems: 1,
+		type: 'array';
+		minItems: 1;
 		items: {
-			type: 'object',
-			required: ['ItemClass', 'Amount'],
+			type: 'object';
+			required: ['ItemClass', 'Amount'];
 			properties: {
-				ItemClass: {'$ref': '#/definitions/ItemClass'},
-				Amount: {'$ref': '#/definitions/integer-string'},
-			},
-		},
-	},
+				ItemClass: {$ref: '#/definitions/ItemClass'};
+				Amount: {$ref: '#/definitions/integer-string'};
+			};
+		};
+	};
 };
 
 export const generators = [
 	new TypesGenerationMatchesReferenceName<
 		array_string_schema_type,
 		keyof typeof target_files
-	>(
-		['mDamageTypes'],
-		(_, reference_name) => {
-			return ts.factory.createTypeAliasDeclaration(
-				[create_modifier('export')],
-				ts.factory.createIdentifier(adjust_class_name(reference_name)),
-				undefined,
-				create_minimum_size_typed_array_of_type_references(
-					'UnrealEngineString',
-					() => {
-						return [
-							ts.factory.createTypeReferenceNode(
-								'string_starts_with',
-								[
-									ts.factory.createLiteralTypeNode(ts.factory.createStringLiteral(
+	>(['mDamageTypes'], (_, reference_name) => {
+		return ts.factory.createTypeAliasDeclaration(
+			[create_modifier('export')],
+			ts.factory.createIdentifier(adjust_class_name(reference_name)),
+			undefined,
+			create_minimum_size_typed_array_of_type_references(
+				'UnrealEngineString',
+				() => {
+					return [
+						ts.factory.createTypeReferenceNode(
+							'string_starts_with',
+							[
+								ts.factory.createLiteralTypeNode(
+									ts.factory.createStringLiteral(
 										'/Game/FactoryGame/-Shared/Blueprint/DamageTypes/'
-									)),
-								]
-							)
-						];
-					}
-				)
-			);
-		}
-	),
+									)
+								),
+							]
+						),
+					];
+				}
+			)
+		);
+	}),
 	new TypesGenerationMatchesReferenceName<
 		{
-			type: 'string',
-			minLength: 1,
+			type: 'string';
+			minLength: 1;
 			array_string: {
-				type: 'array',
-				minItems: 1,
+				type: 'array';
+				minItems: 1;
 				items: {
-					type: 'object',
-					required: ['X', 'Y', 'Z'],
+					type: 'object';
+					required: ['X', 'Y', 'Z'];
 					properties: {
-						X: {'$ref': '#/definitions/decimal-string'},
-						Y: {'$ref': '#/definitions/decimal-string--signed'},
-						Z: {'$ref': '#/definitions/decimal-string--signed'},
-					},
-				},
-			},
+						X: {$ref: '#/definitions/decimal-string'};
+						Y: {$ref: '#/definitions/decimal-string--signed'};
+						Z: {$ref: '#/definitions/decimal-string--signed'};
+					};
+				};
+			};
 		},
 		'xyz-array'
-	>(
-		['xyz-array'],
-		(_, reference_name) => {
-			return ts.factory.createTypeAliasDeclaration(
-				[create_modifier('export')],
-				ts.factory.createIdentifier(adjust_class_name(reference_name)),
-				undefined,
-				ts.factory.createTupleTypeNode([
-					ts.factory.createTypeReferenceNode(adjust_class_name('xyz--unsigned-x')),
-					ts.factory.createRestTypeNode(ts.factory.createArrayTypeNode(
-						ts.factory.createTypeReferenceNode(adjust_class_name('xyz--unsigned-x'))
-					))
-				])
-			);
-		}
-	),
+	>(['xyz-array'], (_, reference_name) => {
+		return ts.factory.createTypeAliasDeclaration(
+			[create_modifier('export')],
+			ts.factory.createIdentifier(adjust_class_name(reference_name)),
+			undefined,
+			ts.factory.createTupleTypeNode([
+				ts.factory.createTypeReferenceNode(
+					adjust_class_name('xyz--unsigned-x')
+				),
+				ts.factory.createRestTypeNode(
+					ts.factory.createArrayTypeNode(
+						ts.factory.createTypeReferenceNode(
+							adjust_class_name('xyz--unsigned-x')
+						)
+					)
+				),
+			])
+		);
+	}),
 	new TypesGenerationMatchesReferenceName<
-		ItemClass_and_Amount|ItemClass_only,
-		'ItemClass-and-amount'|'ItemClass-only--array'
+		ItemClass_and_Amount | ItemClass_only,
+		'ItemClass-and-amount' | 'ItemClass-only--array'
 	>(
 		['ItemClass-and-amount', 'ItemClass-only--array'],
 		(data, reference_name) => {
-			function check(_:any) : _ is ItemClass_and_Amount {
+			function check(_: any): _ is ItemClass_and_Amount {
 				return 'ItemClass-and-amount' === reference_name;
 			}
 
-			const generate = check(data) ? () : ts.TypeNode =>
-			{
-				return create_object_type(
-					{
-						ItemClass: ts.factory.createTypeReferenceNode(adjust_class_name(
-							data.array_string.items.properties.ItemClass['$ref'].substring(14)
-						)),
-						Amount: ts.factory.createTypeReferenceNode(adjust_class_name(
-							`${data.array_string.items.properties.Amount['$ref'].substring(14)}__type`
-						)),
-					},
-					data.array_string.items.required
-				);
-			} : () : ts.TypeNode => {
-				return create_object_type(
-					{
-						ItemClass: ts.factory.createTypeReferenceNode(adjust_class_name(
-							data.array_string.items.properties.ItemClass['$ref'].substring(14)
-						)),
-					},
-					data.array_string.items.required
-				);
-			}
+			const generate = check(data)
+				? (): ts.TypeNode => {
+						return create_object_type(
+							{
+								ItemClass: ts.factory.createTypeReferenceNode(
+									adjust_class_name(
+										data.array_string.items.properties.ItemClass[
+											'$ref'
+										].substring(14)
+									)
+								),
+								Amount: ts.factory.createTypeReferenceNode(
+									adjust_class_name(
+										`${data.array_string.items.properties.Amount['$ref'].substring(14)}__type`
+									)
+								),
+							},
+							data.array_string.items.required
+						);
+					}
+				: (): ts.TypeNode => {
+						return create_object_type(
+							{
+								ItemClass: ts.factory.createTypeReferenceNode(
+									adjust_class_name(
+										data.array_string.items.properties.ItemClass[
+											'$ref'
+										].substring(14)
+									)
+								),
+							},
+							data.array_string.items.required
+						);
+					};
 
 			return ts.factory.createTypeAliasDeclaration(
 				[create_modifier('export')],
@@ -184,9 +202,9 @@ export const generators = [
 				undefined,
 				ts.factory.createTupleTypeNode([
 					generate(),
-					ts.factory.createRestTypeNode(ts.factory.createArrayTypeNode(
-						generate()
-					))
+					ts.factory.createRestTypeNode(
+						ts.factory.createArrayTypeNode(generate())
+					),
 				])
 			);
 		}
@@ -198,9 +216,14 @@ export const generators = [
 				[create_modifier('export')],
 				adjust_class_name(reference_name),
 				undefined,
-				create_minimum_size_typed_array_of_single_type(data.minItems, () => {
-					return ts.factory.createTypeReferenceNode(adjust_class_name(`${reference_name}_item`));
-				})
+				create_minimum_size_typed_array_of_single_type(
+					data.minItems,
+					() => {
+						return ts.factory.createTypeReferenceNode(
+							adjust_class_name(`${reference_name}_item`)
+						);
+					}
+				)
 			);
 		}
 	),
@@ -208,19 +231,19 @@ export const generators = [
 
 export const type_node_generators = [
 	new TypeNodeGeneration<{
-		'$ref':
+		$ref:
 			| '#/definitions/mDamageTypes'
 			| '#/definitions/xyz-array'
 			| '#/definitions/ItemClass-and-amount'
 			| '#/definitions/ItemClass-only--array'
-			| '#/definitions/mFuel'
+			| '#/definitions/mFuel';
 	}>(
 		{
 			type: 'object',
 			required: ['$ref'],
 			additionalProperties: false,
 			properties: {
-				'$ref': {
+				$ref: {
 					oneOf: Object.keys(target_files).map((ref) => {
 						return {type: 'string', const: `#/definitions/${ref}`};
 					}),
@@ -228,16 +251,18 @@ export const type_node_generators = [
 			},
 		},
 		(data) => {
-			const reference_name = adjust_class_name(data['$ref'].substring(14));
+			const reference_name = adjust_class_name(
+				data['$ref'].substring(14)
+			);
 
 			return new TypeNodeGenerationResult(
 				() => {
 					return ts.factory.createTypeReferenceNode(reference_name);
 				},
 				{
-					'common/arrays' : [reference_name],
+					'common/arrays': [reference_name],
 				}
 			);
 		}
 	),
-]
+];

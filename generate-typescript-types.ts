@@ -1,14 +1,18 @@
-import {dirname} from "path";
-import {fileURLToPath} from "url";
+import {dirname} from 'path';
+import {fileURLToPath} from 'url';
 
-import {DocsTsGenerator, generation_result, GenerationException} from "./lib/DocsTsGenerator";
-import {writeFile} from "node:fs/promises";
+import {
+	DocsTsGenerator,
+	generation_result,
+	GenerationException,
+} from './lib/DocsTsGenerator';
+import {writeFile} from 'node:fs/promises';
 import {
 	NoMatchError,
 	OneOfOrAnyOfNoMatchError,
 	PartialMatchError,
-	PropertyMatchFailure
-} from "./lib/TypeNodeGeneration";
+	PropertyMatchFailure,
+} from './lib/TypeNodeGeneration';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -17,31 +21,35 @@ const generator = new DocsTsGenerator({
 	cache_path: `${__dirname}/data/`,
 });
 
-async function update_progress(progress:generation_result, log_progress = true)
-{
+async function update_progress(
+	progress: generation_result,
+	log_progress = true
+) {
 	if (log_progress) {
 		console.table({
 			Supported: progress.definitions.supported.length,
-			Unsupported: progress.definitions.keys.length - progress.definitions.supported.length,
+			Unsupported:
+				progress.definitions.keys.length -
+				progress.definitions.supported.length,
 		});
 	}
 
-	const all_progress_items = [
-		...progress.definitions.keys,
-	].sort((a, b) => a.localeCompare(b));
+	const all_progress_items = [...progress.definitions.keys].sort((a, b) =>
+		a.localeCompare(b)
+	);
 
 	type progress_group = {
-		members: string[],
-		subgroups: {[key: string]: progress_group},
+		members: string[];
+		subgroups: {[key: string]: progress_group};
 	};
 
-	const grouped_progress:progress_group = {
+	const grouped_progress: progress_group = {
 		members: [],
 		subgroups: {},
 	};
 
 	const manual_groups = {
-		'class': '',
+		class: '',
 		'class--no-description': '',
 		'class--no-description-or-display-name': '',
 		'color-decimal--semi-native': 'color',
@@ -52,16 +60,16 @@ async function update_progress(progress:generation_result, log_progress = true)
 		'FGAmmoTypeInstantHit--base': 'FGAmmoType',
 		'FGAmmoTypeInstantHit--chaos': 'FGAmmoType',
 		'FGAmmoTypeInstantHit--standard': 'FGAmmoType',
-		'FGAmmoTypeProjectile': 'FGAmmoType',
+		FGAmmoTypeProjectile: 'FGAmmoType',
 		'FGAmmoTypeProjectile--base': 'FGAmmoType',
-		'xyz': 'vectors',
+		xyz: 'vectors',
 		'xyz--semi-native': 'vectors',
-		'xy': 'vectors',
+		xy: 'vectors',
 		'xy--integer': 'vectors',
 		'xy--semi-native': 'vectors',
 		'xyz--integer': 'vectors',
 		'xyz-array': 'vectors',
-		'quaternion': 'vectors',
+		quaternion: 'vectors',
 		'quaternion--semi-native': 'vectors',
 		'pitch-yaw-roll': 'vectors',
 		'FGEquipmentDescriptor--base': 'FGEquipment',
@@ -74,19 +82,36 @@ async function update_progress(progress:generation_result, log_progress = true)
 
 		if (item in manual_groups) {
 			if ('' !== manual_groups[item as keyof typeof manual_groups]) {
-				if (!(manual_groups[item as keyof typeof manual_groups] in checking.subgroups)) {
-					checking.subgroups[manual_groups[item as keyof typeof manual_groups]] = {
+				if (
+					!(
+						manual_groups[item as keyof typeof manual_groups] in
+						checking.subgroups
+					)
+				) {
+					checking.subgroups[
+						manual_groups[item as keyof typeof manual_groups]
+					] = {
 						members: [],
-						subgroups: {}
+						subgroups: {},
 					};
 				}
 
-				checking = checking.subgroups[manual_groups[item as keyof typeof manual_groups]];
+				checking =
+					checking.subgroups[
+						manual_groups[item as keyof typeof manual_groups]
+					];
 			}
 		} else if (parts.length > 1) {
-			for (let iteration = 1; iteration < Math.min(2, parts.length); ++iteration) {
+			for (
+				let iteration = 1;
+				iteration < Math.min(2, parts.length);
+				++iteration
+			) {
 				if (!(parts[iteration - 1] in checking.subgroups)) {
-					checking.subgroups[parts[iteration - 1]] = {members: [], subgroups: {}};
+					checking.subgroups[parts[iteration - 1]] = {
+						members: [],
+						subgroups: {},
+					};
 				}
 
 				checking = checking.subgroups[parts[iteration - 1]];
@@ -98,13 +123,12 @@ async function update_progress(progress:generation_result, log_progress = true)
 		}
 	}
 
-	function remap(group:progress_group)
-	{
+	function remap(group: progress_group) {
 		const subgroups = Object.keys(group.subgroups);
 
-		const retain:string[] = [];
+		const retain: string[] = [];
 
-		const remap_items:{[key: string]: string[]} = {};
+		const remap_items: {[key: string]: string[]} = {};
 
 		for (const item of group.members) {
 			let retain_item = true;
@@ -142,13 +166,13 @@ async function update_progress(progress:generation_result, log_progress = true)
 	}
 
 	function reduce(
-		group:progress_group,
-		title:string = 'Basic Types',
-		current_depth:number = 1
-	) : {
-		title: string,
-		members: string[],
-		depth: number
+		group: progress_group,
+		title: string = 'Basic Types',
+		current_depth: number = 1
+	): {
+		title: string;
+		members: string[];
+		depth: number;
 	}[] {
 		return [
 			{
@@ -156,31 +180,39 @@ async function update_progress(progress:generation_result, log_progress = true)
 				depth: 1 === current_depth ? 2 : current_depth,
 				members: group.members,
 			},
-			...Object.entries(group.subgroups).map((subgroup) => {
-				return reduce(subgroup[1], subgroup[0], current_depth + 1)
-			}).reduce((was, is) => {
-				was.push(...is);
+			...Object.entries(group.subgroups)
+				.map((subgroup) => {
+					return reduce(subgroup[1], subgroup[0], current_depth + 1);
+				})
+				.reduce((was, is) => {
+					was.push(...is);
 
-				return was;
-			}, []).sort((a, b) => {
-				return a.title.localeCompare(b.title);
-			})
+					return was;
+				}, [])
+				.sort((a, b) => {
+					return a.title.localeCompare(b.title);
+				}),
 		];
 	}
 
 	remap(grouped_progress);
 
-	const progress_markdown = `# Types Progress\n${
-		((progress.definitions.supported.length / all_progress_items.length) * 100).toFixed(2)
-	}% Complete (${progress.definitions.supported.length} of ${all_progress_items.length})\n\n${
-		reduce(grouped_progress).map((group) => {
-			return `${'#'.repeat(group.depth)} ${group.title}\n${
-				group.members.map((key) => {
-					return `* [${progress.definitions.supported.includes(key) ? 'x' : ' '}] ${key}`;
-				}).join('\n')
-			}`
-		}).join('\n\n')
-	}\n`
+	const progress_markdown = `# Types Progress\n\n${(
+		(progress.definitions.supported.length / all_progress_items.length) *
+		100
+	).toFixed(
+		2
+	)}% Complete (${progress.definitions.supported.length} of ${all_progress_items.length})\n\n${reduce(
+		grouped_progress
+	)
+		.map((group) => {
+			return `${'#'.repeat(group.depth)} ${group.title}\n\n${group.members
+				.map((key) => {
+					return `-   [${progress.definitions.supported.includes(key) ? 'x' : ' '}] ${key}`;
+				})
+				.join('\n')}`;
+		})
+		.join('\n\n')}\n`;
 
 	await writeFile(`${__dirname}/types-progress.md`, progress_markdown);
 }
@@ -205,10 +237,7 @@ try {
 		}
 
 		if (exception instanceof PartialMatchError) {
-			console.error(
-				exception.property,
-				...exception.missing
-			);
+			console.error(exception.property, ...exception.missing);
 		} else if (exception instanceof OneOfOrAnyOfNoMatchError) {
 			for (const not_matched of exception.property) {
 				console.error(not_matched);
@@ -219,7 +248,10 @@ try {
 			console.error(exception);
 		}
 
-		if (exception instanceof PartialMatchError || exception instanceof NoMatchError) {
+		if (
+			exception instanceof PartialMatchError ||
+			exception instanceof NoMatchError
+		) {
 			console.error(exception.stack);
 		}
 	} else {

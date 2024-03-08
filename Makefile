@@ -17,3 +17,6 @@ validate:
 
 generate:
 	${DOCKER_PREFIX} ${DOCKER_IMAGE} npm run generate
+
+lint:
+	${DOCKER_PREFIX} ${DOCKER_IMAGE} ./node_modules/.bin/prettier . --check
