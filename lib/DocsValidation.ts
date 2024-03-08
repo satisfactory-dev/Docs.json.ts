@@ -323,14 +323,14 @@ export function array_string(
 	return inner_validate(array_of_things);
 }
 
-const already_configred = new WeakSet();
+const already_configured = new WeakSet();
 
 export function configure_ajv(ajv:Ajv): void {
-	if (already_configred.has(ajv)) {
+	if (already_configured.has(ajv)) {
 		return;
 	}
 
-	already_configred.add(ajv);
+	already_configured.add(ajv);
 
 	ajv.addKeyword({
 		keyword: 'array_string',

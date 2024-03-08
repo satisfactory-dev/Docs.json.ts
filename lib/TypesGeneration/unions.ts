@@ -1,13 +1,19 @@
-import {ImportTracker, TypesGenerationFromSchema, TypesGenerationMatchesReferenceName} from "../TypesGeneration";
+import {
+	ImportTracker,
+	TypesGenerationFromSchema,
+} from '../TypesGeneration';
 import ts from "typescript";
 import {
 	adjust_class_name,
 	create_minimum_size_typed_array_of_single_type,
 	create_modifier,
-	create_object_type, possibly_create_lazy_union
+	possibly_create_lazy_union,
 } from "../TsFactoryWrapper";
 import {UnrealEngineString_schema} from "./validators";
-import {array_string_schema, array_string_type, generate_array_string_schema} from "./json_schema_types";
+import {
+	array_string_type,
+	generate_array_string_schema
+} from './json_schema_types';
 import {TypeNodeGeneration, TypeNodeGenerationResult} from "../TypeNodeGeneration";
 
 export const target_files = {
@@ -43,12 +49,6 @@ ImportTracker.set_imports('common/unions.ts', [
 		],
 	},
 ]);
-
-declare type array_of_objects_item = {
-	type: 'object',
-	required: string[],
-	properties: {[key: string]: object},
-};
 
 declare type supported_oneOf_items =
 	| {'$ref': '#/definitions/Texture2D--basic'}
@@ -150,8 +150,6 @@ export const generators = [
 			},
 		},
 		(data, reference_name) => {
-			console.log(reference_name);
-
 			return ts.factory.createTypeAliasDeclaration(
 				[create_modifier('export')],
 				adjust_class_name(reference_name),

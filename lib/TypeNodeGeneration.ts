@@ -16,11 +16,10 @@ import {
 	create_callExpression__for_validation_function,
 	create_method_without_type_parameters,
 	create_modifier, create_object_type,
-	create_this_assignment, create_type,
+	create_this_assignment,
 	needs_element_access,
 	property_name_or_computed,
 } from "./TsFactoryWrapper";
-import {match} from "node:assert";
 
 export class TypeNodeGenerationResult
 {
@@ -311,29 +310,34 @@ export class TypeNodeGenerationMatcher
 					]);
 				},
 				[first.import_these_somewhere_later, second.import_these_somewhere_later].reduce(
-					(was, is) => {
-						for (const entry of Object.entries(is)) {
-							const [import_from, import_these] = entry;
-
-							if (!(import_from in was)) {
-								was[import_from] = [];
-							}
-
-							for (const import_this of import_these) {
-								if (!was[import_from].includes(import_this)) {
-									was[import_from].push(import_this);
-								}
-							}
-						}
-
-						return was;
-					},
+					this.reduce_import_these_somewhere_later,
 					{}
 				)
 			);
 		}
 
 		return null;
+	}
+
+	private reduce_import_these_somewhere_later(
+		was:import_these_somewhere_later,
+		is:import_these_somewhere_later
+	): import_these_somewhere_later {
+		for (const entry of Object.entries(is)) {
+			const [import_from, import_these] = entry;
+
+			if (!(import_from in was)) {
+				was[import_from] = [];
+			}
+
+			for (const import_this of import_these) {
+				if (!was[import_from].includes(import_this)) {
+					was[import_from].push(import_this);
+				}
+			}
+		}
+
+		return was;
 	}
 
 	private array_search(ajv:Ajv, property:object): TypeNodeGenerationResult|null
@@ -514,23 +518,7 @@ export class TypeNodeGenerationMatcher
 					}));
 				},
 				Object.entries(object_types).map(entry => entry[1].import_these_somewhere_later).reduce(
-					(was, is) => {
-						for (const entry of Object.entries(is)) {
-							const [import_from, import_these] = entry;
-
-							if (!(import_from in was)) {
-								was[import_from] = [];
-							}
-
-							for (const import_this of import_these) {
-								if (!was[import_from].includes(import_this)) {
-									was[import_from].push(import_this);
-								}
-							}
-						}
-
-						return was;
-					},
+					this.reduce_import_these_somewhere_later,
 					{}
 				)
 			);

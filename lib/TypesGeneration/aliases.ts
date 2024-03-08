@@ -3,7 +3,7 @@ import {
 	adjust_class_name, create_literal_node_from_value,
 	create_modifier, create_object_type_alias,
 	create_type, create_union,
-	create_UnrealEngineString_reference_type, possibly_create_lazy_union
+	create_UnrealEngineString_reference_type,
 } from "../TsFactoryWrapper";
 import ts from "typescript";
 import {UnrealEngineString_schema, UnrealEngineString_type} from "./validators";

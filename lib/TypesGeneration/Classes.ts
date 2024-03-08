@@ -4,7 +4,6 @@ import {
 	createClass,
 	create_type,
 	createClass__members__with_auto_constructor,
-	create_object_type,
 	possibly_create_lazy_union,
 	create_literal_node_from_value,
 	create_minimum_size_typed_array_of_single_type,

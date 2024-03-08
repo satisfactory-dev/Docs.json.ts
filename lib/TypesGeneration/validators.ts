@@ -5,7 +5,6 @@ import {
 	create_basic_reference_argument_template_span,
 	create_function,
 	create_modifier,
-	create_regex_validation_function,
 	create_this_assignment,
 	create_throw_if,
 	create_type,
@@ -18,8 +17,9 @@ import {
 	create_index_access,
 	create_object_type,
 	very_flexibly_create_regex_validation_function,
-	create_literal_node_from_value,
-	create_UnrealEngineString_reference_type
+	create_UnrealEngineString_reference_type,
+	create_conditional_UnrealEngineString_type_reference,
+	conditional_UnrealEngineString_type_arguments
 } from "../TsFactoryWrapper";
 import {TypeNodeGeneration, TypeNodeGenerationResult} from "../TypeNodeGeneration";
 import {UnrealEngineString_regex} from "../DocsValidation";
@@ -462,30 +462,7 @@ export const custom_generators = [
 							ts.factory.createReturnStatement(
 								ts.factory.createNewExpression(
 									ts.factory.createIdentifier('UnrealEngineString'),
-									[
-										ts.factory.createConditionalTypeNode(
-											ts.factory.createTypeQueryNode(ts.factory.createIdentifier(
-												'prefix_check'
-											)),
-											create_type('string'),
-											ts.factory.createTypeReferenceNode(
-												'string_starts_with',
-												[
-													ts.factory.createTypeQueryNode(ts.factory.createIdentifier(
-														'prefix_check'
-													)),
-												]
-											),
-											create_type('string')
-										),
-										ts.factory.createTypeReferenceNode(
-											'StringPassedRegExp',
-											[
-												ts.factory.createTypeReferenceNode('pattern'),
-												ts.factory.createTypeReferenceNode('value'),
-											]
-										),
-									],
+									conditional_UnrealEngineString_type_arguments(),
 									[
 										create_index_access('result', 1),
 										ts.factory.createAsExpression(
@@ -503,33 +480,7 @@ export const custom_generators = [
 							)
 						],
 						['static'],
-						ts.factory.createTypeReferenceNode(
-							'UnrealEngineString',
-							[
-								ts.factory.createConditionalTypeNode(
-									ts.factory.createTypeQueryNode(ts.factory.createIdentifier(
-										'prefix_check'
-									)),
-									create_type('string'),
-									ts.factory.createTypeReferenceNode(
-										'string_starts_with',
-										[
-											ts.factory.createTypeQueryNode(ts.factory.createIdentifier(
-												'prefix_check'
-											)),
-										]
-									),
-									create_type('string')
-								),
-								ts.factory.createTypeReferenceNode(
-									'StringPassedRegExp',
-									[
-										ts.factory.createTypeReferenceNode('pattern'),
-										ts.factory.createTypeReferenceNode('value'),
-									]
-								),
-							]
-						)
+						create_conditional_UnrealEngineString_type_reference()
 					),
 				],
 				{

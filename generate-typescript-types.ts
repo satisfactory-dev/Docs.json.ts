@@ -2,14 +2,13 @@ import {dirname} from "path";
 import {fileURLToPath} from "url";
 
 import {DocsTsGenerator, generation_result, GenerationException} from "./lib/DocsTsGenerator";
-import {readFile, writeFile} from "node:fs/promises";
+import {writeFile} from "node:fs/promises";
 import {
 	NoMatchError,
 	OneOfOrAnyOfNoMatchError,
 	PartialMatchError,
 	PropertyMatchFailure
 } from "./lib/TypeNodeGeneration";
-import {not} from "ajv/dist/compile/codegen";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -171,17 +170,17 @@ async function update_progress(progress:generation_result, log_progress = true)
 
 	remap(grouped_progress);
 
-	const progress_markdown = `# Types Progress${'\n'}${
+	const progress_markdown = `# Types Progress\n${
 		((progress.definitions.supported.length / all_progress_items.length) * 100).toFixed(2)
-	}% Complete (${progress.definitions.supported.length} of ${all_progress_items.length})${'\n\n'}${
+	}% Complete (${progress.definitions.supported.length} of ${all_progress_items.length})\n\n${
 		reduce(grouped_progress).map((group) => {
-			return `${'#'.repeat(group.depth)} ${group.title}${'\n'}${
+			return `${'#'.repeat(group.depth)} ${group.title}\n${
 				group.members.map((key) => {
-			return `* [${progress.definitions.supported.includes(key) ? 'x' : ' '}] ${key}`;
+					return `* [${progress.definitions.supported.includes(key) ? 'x' : ' '}] ${key}`;
 				}).join('\n')
 			}`
 		}).join('\n\n')
-	}${'\n'}`
+	}\n`
 
 	await writeFile(`${__dirname}/types-progress.md`, progress_markdown);
 }
@@ -201,7 +200,7 @@ try {
 		let {exception} = err;
 
 		if (exception instanceof PropertyMatchFailure) {
-			console.log(`issue with ${exception.property_name}`);
+			console.error(`issue with ${exception.property_name}`);
 			exception = exception.original;
 		}
 

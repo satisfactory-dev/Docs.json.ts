@@ -72,7 +72,6 @@ import {
 	type_node_generators as aliases_type_node_generators,
 } from './TypesGeneration/aliases';
 import {
-	check_ref,
 	Update8TypeNodeGeneration,
 } from './Schemas/Update8';
 import {TypeNodeGenerationMatcher} from "./TypeNodeGeneration";
@@ -255,14 +254,14 @@ export class DocsTsGenerator {
 		write_on_failure = false
 	): Promise<generation_result> {
 		try {
-			const progress = await this.actually_generate_types(parent_folder, throw_on_failure_to_find);
+			const progress = await this.actually_generate_types(throw_on_failure_to_find);
 
-			this.write_files(parent_folder, progress.files);
+			await this.write_files(parent_folder, progress.files);
 
 			return progress;
 		} catch (err) {
 			if (write_on_failure && err instanceof GenerationException) {
-				this.write_files(parent_folder, err.progress.files);
+				await this.write_files(parent_folder, err.progress.files);
 			}
 
 			throw err;
@@ -273,7 +272,6 @@ export class DocsTsGenerator {
 	 * @throws {GenerationException}
 	 */
 	private async actually_generate_types(
-		parent_folder: string,
 		throw_on_failure_to_find = true,
 	): Promise<generation_result> {
 		const target_files: { [key: string]: string } = Object.assign(
@@ -382,10 +380,7 @@ export class DocsTsGenerator {
 
 		for (const generator of [
 			...validator_custom_generators,
-			...Update8.generate_generators(
-				default_config.ajv,
-				progress.definitions.supported.map(check_ref)
-			),
+			...Update8.generate_generators(default_config.ajv),
 			...vectors_custom_generators,
 		]) {
 			try {

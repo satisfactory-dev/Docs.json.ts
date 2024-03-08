@@ -14,8 +14,6 @@ import {
 	adjust_class_name,
 	adjust_unrealengine_prefix,
 	adjust_unrealengine_value,
-	auto_constructor_property_types_from_generated_types_object,
-	auto_constructor_property_types_from_generated_types_properties,
 	create_class_options,
 	create_lazy_union,
 	create_literal_node_from_value, create_minimum_size_typed_array_of_single_type,
@@ -502,41 +500,6 @@ export class Update8TypeNodeGeneration {
 		return this.abstracts = this.abstracts.filter(maybe => !generated_refs.includes(maybe));
 	}
 
-	private generate_types_for_abstracts(ajv:Ajv, already_supproted:definition_key[])
-	{
-		const destination_map = {
-			'Texture2D': 'common/unions.ts',
-		};
-
-		for (const ref of this.remove_generated_abstracts()) {
-			if ('properties' in schema.definitions[ref])
-			{
-				const properties = (schema.definitions[ref] as {
-					properties: {[key: string]: { '$ref': string }|{}}
-				}).properties;
-
-				for (const property of Object.values(properties)) {
-					if (
-						'$ref' in property
-						&& property['$ref'].startsWith('#/definitions/')
-						&& !already_supproted.includes(check_ref(property['$ref'].substring(14)))
-					) {
-						break;
-						// throw new Error(property['$ref'])
-
-						// const filename = 'foo.ts';
-						//
-						// this.generate_class(
-						// 	ajv,
-						// 	check_ref(property['$ref'].substring(14)),
-						// 	filename
-						// );
-					}
-				}
-			}
-		}
-	}
-
 	private generate_abstract_classes(ajv:Ajv)
 	{
 		for (const ref of this.remove_generated_abstracts()) {
@@ -546,15 +509,13 @@ export class Update8TypeNodeGeneration {
 	}
 
 	generate_generators(
-		ajv: Ajv,
-		already_supported:definition_key[]
+		ajv: Ajv
 	) {
 		return [
 			() => {
 				this.generate_types();
 				this.generate_base_classes();
 				this.generate_concrete_classes(ajv);
-				this.generate_types_for_abstracts(ajv, already_supported);
 				this.generate_abstract_classes(ajv);
 
 				return this.classes;

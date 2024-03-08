@@ -5,7 +5,7 @@
 # Using
 ## Requirements
 * Docker
-  * only tested with Docker for windows & gitbash terminals
+  * only tested with Docker for windows & git bash terminals
 * A copy of Update 8's `Docs.json` file
 
 ## Instructions

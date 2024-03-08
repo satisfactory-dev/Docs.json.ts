@@ -258,55 +258,36 @@ export function createClass__members__with_auto_constructor<
 				() => ts.KeywordTypeSyntaxKind|ts.TypeNode, // constructor arg type
 			],
 		] => {
+			const generator = () => {
+				const [property_name, {'$ref': property_data_ref}] = entry;
+
+				if ( !is_supported_auto_constructor_property_type(property_data_ref)) {
+					console.error(property_data_ref);
+
+					throw new Error('Unsupported property type!');
+				}
+
+				let type:ts.TypeNode = ts.factory.createTypeReferenceNode(
+					adjust_class_name(auto_constructor_property_types_from_generated_types[
+						property_data_ref
+						])
+				);
+
+				if (!data.required.includes(property_name)) {
+					type = ts.factory.createUnionTypeNode([
+						type,
+						create_type('undefined'),
+					]);
+				}
+
+				return type;
+			}
+
 			return [
 				entry[0],
 				[
-					() => {
-						const [property_name, {'$ref': property_data_ref}] = entry;
-
-						if ( !is_supported_auto_constructor_property_type(property_data_ref)) {
-							console.error(property_data_ref);
-
-							throw new Error('Unsupported property type!');
-						}
-
-						let type:ts.TypeNode = ts.factory.createTypeReferenceNode(
-							adjust_class_name(auto_constructor_property_types_from_generated_types[
-								property_data_ref
-							])
-						);
-
-						if (!data.required.includes(property_name)) {
-							type = ts.factory.createUnionTypeNode([
-								type,
-								create_type('undefined'),
-							]);
-						}
-
-						return type;
-					},
-					() => {
-						const [property_name, {'$ref': property_data_ref}] = entry;
-
-						if ( !is_supported_auto_constructor_property_type(property_data_ref)) {
-							console.error(property_data_ref);
-
-							throw new Error('Unsupported property type!');
-						}
-
-						let type:ts.TypeNode = ts.factory.createTypeReferenceNode(
-							adjust_class_name(auto_constructor_property_types_from_generated_types[property_data_ref])
-						);
-
-						if (!data.required.includes(property_name)) {
-							type = ts.factory.createUnionTypeNode([
-								type,
-								create_type('undefined'),
-							]);
-						}
-
-						return type;
-					},
+					generator,
+					generator,
 				],
 			];
 		}
@@ -568,12 +549,12 @@ export function create_template_span(span_arguments:[(string|Expression), ...(st
 
 export function create_basic_reference_argument_template_span(
 	head:string,
-	identifer:string,
+	identifier:string,
 	tail:string|undefined = undefined
 ) {
 	if (undefined === tail) {
-		tail = identifer;
-		identifer = head;
+		tail = identifier;
+		identifier = head;
 		head = '';
 	}
 
@@ -581,7 +562,7 @@ export function create_basic_reference_argument_template_span(
 		ts.factory.createTemplateHead(head),
 		[
 			ts.factory.createTemplateSpan(
-				ts.factory.createIdentifier(identifer),
+				ts.factory.createIdentifier(identifier),
 				ts.factory.createTemplateTail(tail)
 			),
 		]
@@ -654,27 +635,6 @@ export function flexibly_create_regex_validation_function(
 			pattern_argument ? [pattern_argument()] : [create_type('string')]
 		),
 		error_template_spans
-	);
-}
-
-export function create_regex_validation_function(
-	data:{type: string, pattern: string},
-	reference_name: string
-) : ts.FunctionDeclaration {
-	return flexibly_create_regex_validation_function(
-		reference_name,
-		ts.factory.createStringLiteral(data.pattern),
-		[
-			createParameter('value', ts.SyntaxKind.StringKeyword),
-			createParameter('reference_argument', ts.SyntaxKind.StringKeyword),
-		],
-		[
-			ts.factory.createTemplateSpan(
-				ts.factory.createIdentifier('reference_argument'),
-				ts.factory.createTemplateTail(` must pass the regex ${data.pattern}`)
-			)
-		],
-		() => ts.factory.createLiteralTypeNode(ts.factory.createStringLiteral(data.pattern))
 	);
 }
 
@@ -850,6 +810,12 @@ export function possibly_create_lazy_union(items:lazy_union_item[]) : ts.TypeNod
 	return create_lazy_union(a, b, ...rest);
 }
 
+function flexibly_create_UnrealEngineString_reference_type(
+	type_arguments:ts.TypeNode[]|undefined
+) : ts.TypeReferenceNode {
+	return ts.factory.createTypeReferenceNode('UnrealEngineString', type_arguments);
+}
+
 export function create_UnrealEngineString_reference_type(
 	type_arguments:
 		| {UnrealEngineString_prefix: string, pattern:string}
@@ -857,8 +823,7 @@ export function create_UnrealEngineString_reference_type(
 		| undefined
 	= undefined
 ) : ts.TypeReferenceNode {
-	return ts.factory.createTypeReferenceNode(
-		'UnrealEngineString',
+	return flexibly_create_UnrealEngineString_reference_type(
 		!type_arguments ? undefined : [
 			(
 				'UnrealEngineString_prefix' in type_arguments
@@ -874,4 +839,37 @@ export function create_UnrealEngineString_reference_type(
 			])
 		]
 	);
+}
+
+export function conditional_UnrealEngineString_type_arguments(): [ts.ConditionalTypeNode, ts.TypeReferenceNode]
+{
+	return [
+		ts.factory.createConditionalTypeNode(
+			ts.factory.createTypeQueryNode(ts.factory.createIdentifier(
+				'prefix_check'
+			)),
+			create_type('string'),
+			ts.factory.createTypeReferenceNode(
+				'string_starts_with',
+				[
+					ts.factory.createTypeQueryNode(ts.factory.createIdentifier(
+						'prefix_check'
+					)),
+				]
+			),
+			create_type('string')
+		),
+		ts.factory.createTypeReferenceNode(
+			'StringPassedRegExp',
+			[
+				ts.factory.createTypeReferenceNode('pattern'),
+				ts.factory.createTypeReferenceNode('value'),
+			]
+		),
+	];
+}
+
+export function create_conditional_UnrealEngineString_type_reference() : ts.TypeReferenceNode
+{
+	return flexibly_create_UnrealEngineString_reference_type(conditional_UnrealEngineString_type_arguments());
 }
