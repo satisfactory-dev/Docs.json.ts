@@ -475,6 +475,7 @@ export class TypeNodeGenerationMatcher
 				}
 
 				object_types[sub_property_name] = sub_property_match;
+			}
 
 				return new TypeNodeGenerationResult(
 					() => {
@@ -510,7 +511,6 @@ export class TypeNodeGenerationMatcher
 						{}
 					)
 				);
-			}
 		}
 
 		return null;
