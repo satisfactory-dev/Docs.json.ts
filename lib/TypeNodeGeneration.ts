@@ -104,6 +104,22 @@ declare type array_validator = ValidateFunction<{
 	},
 }>;
 
+export class PartialMatchError extends Error
+{
+	readonly property:{[key: string]: object};
+	readonly missing: [object, ...object[]];
+
+	constructor(
+		property:{[key: string]: object},
+		missing:[object, ...object[]],
+		message = 'partial match found'
+	) {
+		super(message);
+		this.property = property;
+		this.missing = missing;
+	}
+}
+
 export class TypeNodeGenerationMatcher
 {
 	private readonly matchers:TypeNodeGeneration<any>[];
@@ -172,7 +188,7 @@ export class TypeNodeGenerationMatcher
 		if (oneOf_matcher(property)) {
 			const matches:TypeNodeGenerationResult[] = [];
 			let has_all_matches = true;
-			const missing_matches = [];
+			let missing_matches:[object, ...object[]]|undefined;
 
 			for (const sub_property of 'oneOf' in property ? property.oneOf : property.anyOf) {
 				let found_match = false;
@@ -198,7 +214,11 @@ export class TypeNodeGenerationMatcher
 
 				if (!found_match) {
 					has_all_matches = false;
-					missing_matches.push(sub_property);
+					if (!missing_matches) {
+						missing_matches = [sub_property];
+					} else {
+						missing_matches.push(sub_property);
+					}
 					break;
 				}
 			}
@@ -211,12 +231,8 @@ export class TypeNodeGenerationMatcher
 						}));
 					},
 				);
-			} else {
-				/*
-				console.error(property, missing_matches);
-
-				throw new Error('lolwhut');
-				*/
+			} else if (this.throw_on_failure_to_find && matches.length > 0 && missing_matches) {
+				throw new PartialMatchError(property, missing_matches);
 			}
 		}
 
@@ -336,11 +352,6 @@ export class TypeNodeGenerationMatcher
 					},
 					result.import_these_somewhere_later
 				);
-			} else {
-				/*
-				throw new Error('whut');
-
-				 */
 			}
 		}
 

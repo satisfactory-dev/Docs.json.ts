@@ -2039,6 +2039,279 @@
 				}
 			}
 		},
+		"mUnlocks_mRecipes": {
+			"type": "object",
+			"required": [
+				"Class",
+				"mRecipes"
+			],
+			"additionalProperties": false,
+			"properties": {
+				"Class": {
+					"type": "string",
+					"enum": [
+						"BP_UnlockRecipe_C",
+						"BP_UnlockBlueprints_C"
+					]
+				},
+				"mRecipes": {
+					"type": "string",
+					"minLength": 1,
+					"array_string": {
+						"type": "array",
+						"minItems": 1,
+						"items": {
+							"type": "string",
+							"minLength": 1,
+							"UnrealEngineString": {
+								"UnrealEngineString_prefix": "/Script/Engine.BlueprintGeneratedClass",
+								"type": "string",
+								"pattern": "^/Game/FactoryGame/(?:(?:Events/Christmas|Recipes|Equipment|((Prototype/)?Buildable)/(?:-Shared/Customization/(?:Swatches|Materials|Patterns|Skins)|Factory|Building|Beams))/|Recipe_PipeHyperStart.Recipe_PipeHyperStart_C)"
+							}
+						}
+					}
+				}
+			}
+		},
+		"mUnlocks_resources_to_scan": {
+			"type": "object",
+			"required": [
+				"Class",
+				"mResourcesToAddToScanner",
+				"mResourcePairsToAddToScanner"
+			],
+			"additionalProperties": false,
+			"properties": {
+				"Class": {
+					"type": "string",
+					"const": "BP_UnlockScannableResource_C"
+				},
+				"mResourcesToAddToScanner": {
+					"oneOf": [
+						{
+							"type": "string",
+							"const": ""
+						},
+						{
+							"type": "string",
+							"minLength": 1,
+							"array_string": {
+								"type": "array",
+								"minItems": 1,
+								"items": {
+									"type": "string",
+									"minLength": 1,
+									"UnrealEngineString": {
+										"UnrealEngineString_prefix": "/Script/Engine.BlueprintGeneratedClass",
+										"type": "string",
+										"pattern": "^/Game/FactoryGame/Resource/"
+									}
+								}
+							}
+						}
+					]
+				},
+				"mResourcePairsToAddToScanner": {
+					"type": "string",
+					"minLength": 1,
+					"array_string": {
+						"type": "array",
+						"minItems": 1,
+						"items": {
+							"type": "object",
+							"required": [
+								"ResourceDescriptor"
+							],
+							"additionalProperties": false,
+							"properties": {
+								"ResourceDescriptor": {
+									"type": "string",
+									"minLength": 1,
+									"UnrealEngineString": {
+										"UnrealEngineString_prefix": "/Script/Engine.BlueprintGeneratedClass",
+										"type": "string",
+										"pattern": "^/Game/FactoryGame/(?:[^/]+/)+([^.]+).\\1_C$"
+									}
+								},
+								"ResourceNodeType": {
+									"type": "string",
+									"enum": [
+										"FrackingCore",
+										"Geyser"
+									]
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"mUnlocks_mEmotes": {
+			"type": "object",
+			"required": [
+				"Class",
+				"mEmotes"
+			],
+			"additionalProperties": false,
+			"properties": {
+				"Class": {
+					"type": "string",
+					"const": "BP_UnlockEmote_C"
+				},
+				"mEmotes": {
+					"type": "string",
+					"minLength": 1,
+					"array_string": {
+						"type": "array",
+						"minItems": 1,
+						"items": {
+							"type": "string",
+							"minLength": 1,
+							"UnrealEngineString": {
+								"UnrealEngineString_prefix": "/Script/Engine.BlueprintGeneratedClass",
+								"type": "string",
+								"pattern": "^/Game/FactoryGame/Emotes/"
+							}
+						}
+					}
+				}
+			}
+		},
+		"mUnlocks_mSchematics": {
+			"type": "object",
+			"required": [
+				"Class",
+				"mSchematics"
+			],
+			"additionalProperties": false,
+			"properties": {
+				"Class": {
+					"type": "string",
+					"const": "BP_UnlockSchematic_C"
+				},
+				"mSchematics": {
+					"type": "string",
+					"minLength": 1,
+					"array_string": {
+						"type": "array",
+						"minItems": 1,
+						"items": {
+							"type": "string",
+							"minLength": 1,
+							"UnrealEngineString": {
+								"UnrealEngineString_prefix": "/Script/Engine.BlueprintGeneratedClass",
+								"type": "string",
+								"pattern": "^/Game/FactoryGame/(?:Schematics/(?:Progression|Alternate/Parts|Research/Sulfur_RS|ResourceSink)|Events/Christmas)/"
+							}
+						}
+					}
+				}
+			}
+		},
+		"mUnlocks_inventory_slots": {
+			"type": "object",
+			"required": [
+				"Class",
+				"mNumInventorySlotsToUnlock"
+			],
+			"additionalProperties": false,
+			"properties": {
+				"Class": {
+					"type": "string",
+					"const": "BP_UnlockInventorySlot_C"
+				},
+				"mNumInventorySlotsToUnlock": {
+					"$ref": "#/definitions/integer-string"
+				}
+			}
+		},
+		"mUnlocks_equipment_slots": {
+			"type": "object",
+			"required": [
+				"Class",
+				"mNumArmEquipmentSlotsToUnlock"
+			],
+			"additionalProperties": false,
+			"properties": {
+				"Class": {
+					"type": "string",
+					"const": "BP_UnlockArmEquipmentSlot_C"
+				},
+				"mNumArmEquipmentSlotsToUnlock": {
+					"$ref": "#/definitions/integer-string"
+				}
+			}
+		},
+		"mUnlocks_mScannableObjects": {
+			"type": "object",
+			"required": [
+				"Class",
+				"mScannableObjects"
+			],
+			"additionalProperties": false,
+			"properties": {
+				"Class": {
+					"type": "string",
+					"const": "BP_UnlockScannableObject_C"
+				},
+				"mScannableObjects": {
+					"type": "string",
+					"minLength": 1,
+					"array_string": {
+						"type": "array",
+						"minItems": 1,
+						"items": {
+							"type": "object",
+							"required": [
+								"ItemDescriptor",
+								"ActorsAllowedToScan"
+							],
+							"properties": {
+								"ItemDescriptor": {
+									"type": "string",
+									"minLength": 1,
+									"UnrealEngineString": {
+										"UnrealEngineString_prefix": "/Script/Engine.BlueprintGeneratedClass",
+										"type": "string",
+										"pattern": "^/Game/FactoryGame/"
+									}
+								},
+								"ActorsAllowedToScan": {
+									"type": "array",
+									"minItems": 1,
+									"items": {
+										"type": "string",
+										"minLength": 1,
+										"UnrealEngineString": {
+											"UnrealEngineString_prefix": "/Script/CoreUObject.Class",
+											"type": "string",
+											"pattern": "^/Script/FactoryGame\\."
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"mUnlocks_mItemsToGive": {
+			"type": "object",
+			"required": [
+				"Class",
+				"mItemsToGive"
+			],
+			"additionalProperties": false,
+			"properties": {
+				"Class": {
+					"type": "string",
+					"const": "BP_UnlockGiveItem_C"
+				},
+				"mItemsToGive": {
+					"$ref": "#/definitions/ItemClass-and-amount"
+				}
+			}
+		},
 		"FGSchematic--base": {
 			"type": "object",
 			"$ref": "#/definitions/class",
@@ -2170,279 +2443,14 @@
 						"anyOf": [
 							{"$ref": "#/definitions/mUnlocks_Class"},
 							{"$ref": "#/definitions/mUnlocks_mTapeUnlocks"},
-							{
-								"type": "object",
-								"required": [
-									"Class",
-									"mRecipes"
-								],
-								"additionalProperties": false,
-								"properties": {
-									"Class": {
-										"type": "string",
-										"enum": [
-											"BP_UnlockRecipe_C",
-											"BP_UnlockBlueprints_C"
-										]
-									},
-									"mRecipes": {
-										"type": "string",
-										"minLength": 1,
-										"array_string": {
-											"type": "array",
-											"minItems": 1,
-											"items": {
-												"type": "string",
-												"minLength": 1,
-												"UnrealEngineString": {
-													"UnrealEngineString_prefix": "/Script/Engine.BlueprintGeneratedClass",
-													"type": "string",
-													"pattern": "^/Game/FactoryGame/(?:(?:Events/Christmas|Recipes|Equipment|((Prototype/)?Buildable)/(?:-Shared/Customization/(?:Swatches|Materials|Patterns|Skins)|Factory|Building|Beams))/|Recipe_PipeHyperStart.Recipe_PipeHyperStart_C)"
-												}
-											}
-										}
-									}
-								}
-							},
-							{
-								"type": "object",
-								"required": [
-									"Class",
-									"mResourcesToAddToScanner",
-									"mResourcePairsToAddToScanner"
-								],
-								"additionalProperties": false,
-								"properties": {
-									"Class": {
-										"type": "string",
-										"const": "BP_UnlockScannableResource_C"
-									},
-									"mResourcesToAddToScanner": {
-										"oneOf": [
-											{
-												"type": "string",
-												"const": ""
-											},
-											{
-												"type": "string",
-												"minLength": 1,
-												"array_string": {
-													"type": "array",
-													"minItems": 1,
-													"items": {
-														"type": "string",
-														"minLength": 1,
-														"UnrealEngineString": {
-															"UnrealEngineString_prefix": "/Script/Engine.BlueprintGeneratedClass",
-															"type": "string",
-															"pattern": "^/Game/FactoryGame/Resource/"
-														}
-													}
-												}
-											}
-										]
-									},
-									"mResourcePairsToAddToScanner": {
-										"type": "string",
-										"minLength": 1,
-										"array_string": {
-											"type": "array",
-											"minItems": 1,
-											"items": {
-												"type": "object",
-												"required": [
-													"ResourceDescriptor"
-												],
-												"additionalProperties": false,
-												"properties": {
-													"ResourceDescriptor": {
-														"type": "string",
-														"minLength": 1,
-														"UnrealEngineString": {
-															"UnrealEngineString_prefix": "/Script/Engine.BlueprintGeneratedClass",
-															"type": "string",
-															"pattern": "^/Game/FactoryGame/(?:[^/]+/)+([^.]+).\\1_C$"
-														}
-													},
-													"ResourceNodeType": {
-														"type": "string",
-														"enum": [
-															"FrackingCore",
-															"Geyser"
-														]
-													}
-												}
-											}
-										}
-									}
-								}
-							},
-							{
-								"type": "object",
-								"required": [
-									"Class",
-									"mEmotes"
-								],
-								"additionalProperties": false,
-								"properties": {
-									"Class": {
-										"type": "string",
-										"const": "BP_UnlockEmote_C"
-									},
-									"mEmotes": {
-										"type": "string",
-										"minLength": 1,
-										"array_string": {
-											"type": "array",
-											"minItems": 1,
-											"items": {
-												"type": "string",
-												"minLength": 1,
-												"UnrealEngineString": {
-													"UnrealEngineString_prefix": "/Script/Engine.BlueprintGeneratedClass",
-													"type": "string",
-													"pattern": "^/Game/FactoryGame/Emotes/"
-												}
-											}
-										}
-									}
-								}
-							},
-							{
-								"type": "object",
-								"required": [
-									"Class",
-									"mSchematics"
-								],
-								"additionalProperties": false,
-								"properties": {
-									"Class": {
-										"type": "string",
-										"const": "BP_UnlockSchematic_C"
-									},
-									"mSchematics": {
-										"type": "string",
-										"minLength": 1,
-										"array_string": {
-											"type": "array",
-											"minItems": 1,
-											"items": {
-												"type": "string",
-												"minLength": 1,
-												"UnrealEngineString": {
-													"UnrealEngineString_prefix": "/Script/Engine.BlueprintGeneratedClass",
-													"type": "string",
-													"pattern": "^/Game/FactoryGame/(?:Schematics/(?:Progression|Alternate/Parts|Research/Sulfur_RS|ResourceSink)|Events/Christmas)/"
-												}
-											}
-										}
-									}
-								}
-							},
-							{
-								"type": "object",
-								"required": [
-									"Class",
-									"mNumInventorySlotsToUnlock"
-								],
-								"additionalProperties": false,
-								"properties": {
-									"Class": {
-										"type": "string",
-										"const": "BP_UnlockInventorySlot_C"
-									},
-									"mNumInventorySlotsToUnlock": {
-										"$ref": "#/definitions/integer-string"
-									}
-								}
-							},
-							{
-								"type": "object",
-								"required": [
-									"Class",
-									"mNumArmEquipmentSlotsToUnlock"
-								],
-								"additionalProperties": false,
-								"properties": {
-									"Class": {
-										"type": "string",
-										"const": "BP_UnlockArmEquipmentSlot_C"
-									},
-									"mNumArmEquipmentSlotsToUnlock": {
-										"$ref": "#/definitions/integer-string"
-									}
-								}
-							},
-							{
-								"type": "object",
-								"required": [
-									"Class",
-									"mScannableObjects"
-								],
-								"additionalProperties": false,
-								"properties": {
-									"Class": {
-										"type": "string",
-										"const": "BP_UnlockScannableObject_C"
-									},
-									"mScannableObjects": {
-										"type": "string",
-										"minLength": 1,
-										"array_string": {
-											"type": "array",
-											"minItems": 1,
-											"items": {
-												"type": "object",
-												"required": [
-													"ItemDescriptor",
-													"ActorsAllowedToScan"
-												],
-												"properties": {
-													"ItemDescriptor": {
-														"type": "string",
-														"minLength": 1,
-														"UnrealEngineString": {
-															"UnrealEngineString_prefix": "/Script/Engine.BlueprintGeneratedClass",
-															"type": "string",
-															"pattern": "^/Game/FactoryGame/"
-														}
-													},
-													"ActorsAllowedToScan": {
-														"type": "array",
-														"minItems": 1,
-														"items": {
-															"type": "string",
-															"minLength": 1,
-															"UnrealEngineString": {
-																"UnrealEngineString_prefix": "/Script/CoreUObject.Class",
-																"type": "string",
-																"pattern": "^/Script/FactoryGame\\."
-															}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							},
-							{
-								"type": "object",
-								"required": [
-									"Class",
-									"mItemsToGive"
-								],
-								"additionalProperties": false,
-								"properties": {
-									"Class": {
-										"type": "string",
-										"const": "BP_UnlockGiveItem_C"
-									},
-									"mItemsToGive": {
-										"$ref": "#/definitions/ItemClass-and-amount"
-									}
-								}
-							}
+							{"$ref": "#/definitions/mUnlocks_mRecipes"},
+							{"$ref": "#/definitions/mUnlocks_resources_to_scan"},
+							{"$ref": "#/definitions/mUnlocks_mEmotes"},
+							{"$ref": "#/definitions/mUnlocks_mSchematics"},
+							{"$ref": "#/definitions/mUnlocks_inventory_slots"},
+							{"$ref": "#/definitions/mUnlocks_equipment_slots"},
+							{"$ref": "#/definitions/mUnlocks_mScannableObjects"},
+							{"$ref": "#/definitions/mUnlocks_mItemsToGive"}
 						]
 					}
 				},

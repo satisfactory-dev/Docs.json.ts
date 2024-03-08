@@ -1,5 +1,5 @@
 # Types Progress
-24.46% Complete (57 of 233)
+23.65% Complete (57 of 241)
 
 * [x] boolean
 * [x] boolean-extended
@@ -216,7 +216,15 @@
 * [x] mSnappedPassthroughs
 * [x] mStackSize
 * [x] mUnlocks_Class
+* [ ] mUnlocks_equipment_slots
+* [ ] mUnlocks_inventory_slots
+* [ ] mUnlocks_mEmotes
+* [ ] mUnlocks_mItemsToGive
+* [ ] mUnlocks_mRecipes
+* [ ] mUnlocks_mScannableObjects
+* [ ] mUnlocks_mSchematics
 * [x] mUnlocks_mTapeUnlocks
+* [ ] mUnlocks_resources_to_scan
 * [x] None
 * [x] pitch-yaw-roll
 * [x] quaternion

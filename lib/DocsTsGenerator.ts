@@ -105,6 +105,7 @@ export type generation_result = {
 		unsupported: string[],
 		missing_target_files: string[],
 	},
+	files: {[key: string]: ts.Node[]}
 };
 
 export class DocsTsGenerator {
@@ -249,7 +250,33 @@ export class DocsTsGenerator {
 	/**
 	 * @throws {GenerationException}
 	 */
-	async generate_types(parent_folder: string, throw_on_failure_to_find = true): Promise<generation_result> {
+	async generate_types(
+		parent_folder: string,
+		throw_on_failure_to_find = true,
+		write_on_failure = false
+	): Promise<generation_result> {
+		try {
+			const progress = await this.actually_generate_types(parent_folder, throw_on_failure_to_find);
+
+			this.write_files(parent_folder, progress.files);
+
+			return progress;
+		} catch (err) {
+			if (write_on_failure && err instanceof GenerationException) {
+				this.write_files(parent_folder, err.progress.files);
+			}
+
+			throw err;
+		}
+	}
+
+	/**
+	 * @throws {GenerationException}
+	 */
+	private async actually_generate_types(
+		parent_folder: string,
+		throw_on_failure_to_find = true,
+	): Promise<generation_result> {
 		const target_files: { [key: string]: string } = Object.assign(
 			{},
 			enum_target_files,
@@ -330,13 +357,14 @@ export class DocsTsGenerator {
 			return match.definition;
 		}).filter((maybe) => !(maybe in target_files));
 
-		let progress = {
+		let progress:generation_result = {
 			definitions: {
 				keys: Object.keys(update8_schema),
 				supported: supported_conversion_names,
 				unsupported: unsupported_conversions,
 				missing_target_files: missing_target_files,
 			},
+			files: {},
 		};
 
 		function update_progress() {
@@ -351,14 +379,9 @@ export class DocsTsGenerator {
 					unsupported: unsupported_conversions,
 					missing_target_files: missing_target_files,
 				},
+				files: progress.files,
 			};
 		}
-
-		const printer = ts.createPrinter({
-			newLine: ts.NewLineKind.LineFeed,
-		});
-
-		const files: { [key: string]: ts.Node[] } = {};
 
 		const Update8 = new Update8TypeNodeGeneration(type_node_generation);
 
@@ -382,13 +405,18 @@ export class DocsTsGenerator {
 
 					if ('ref' in result) {
 						target_files[result.ref] = file;
+
+						if (!supported_conversion_names.includes(result.ref)) {
+							throw new Error('foo');
+							// supported_conversion_names.push(result.ref);
+						}
 					}
 
-					if (!(file in files)) {
-						files[file] = [];
+					if (!(file in progress.files)) {
+						progress.files[file] = [];
 					}
 
-					files[file].push(node);
+					progress.files[file].push(node);
 				}
 			} catch (err) {
 				update_progress();
@@ -411,14 +439,26 @@ export class DocsTsGenerator {
 
 			const target_file = target_files[match.definition];
 
-			if (!(target_file in files)) {
-				files[target_file] = [];
+			if (!(target_file in progress.files)) {
+				progress.files[target_file] = [];
 			}
 
-			files[target_file].push(match.generation.generate(match.data, match.definition));
+			progress.files[target_file].push(match.generation.generate(match.data, match.definition));
 		}
 
 		update_progress();
+
+		return progress;
+	}
+
+
+	private async write_files(
+		parent_folder:string,
+		files:{[key: string]: ts.Node[]}
+	) {
+		const printer = ts.createPrinter({
+			newLine: ts.NewLineKind.LineFeed,
+		});
 
 		const cleanup = await glob(`${parent_folder}/update8/**/*.ts`);
 
@@ -454,8 +494,6 @@ export class DocsTsGenerator {
 				}).join('\n\n'))
 			);
 		}
-
-		return progress;
 	}
 }
 

@@ -3,6 +3,7 @@ import {fileURLToPath} from "url";
 
 import {DocsTsGenerator, generation_result, GenerationException} from "./lib/DocsTsGenerator";
 import {readFile, writeFile} from "node:fs/promises";
+import {PartialMatchError} from "./lib/TypeNodeGeneration";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -40,14 +41,23 @@ async function update_progress(progress:generation_result, log_progress = true)
 try {
 	const progress = await generator.generate_types(
 		`${__dirname}/generated-types/`,
-		false
+		true,
+		true
 	);
 
 	await update_progress(progress);
 } catch (err) {
 	if (err instanceof GenerationException) {
 		await update_progress(err.progress, false);
-		console.error(err.exception);
+
+		if (err.exception instanceof PartialMatchError) {
+			console.error(
+				err.exception.property,
+				err.exception.missing
+			);
+		} else {
+			console.error(err.exception);
+		}
 	} else {
 		console.error('error not generation exception!');
 		console.error(err);
