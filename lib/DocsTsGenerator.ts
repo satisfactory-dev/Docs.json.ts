@@ -77,24 +77,22 @@ import {
 } from './Schemas/Update8';
 import {TypeNodeGenerationMatcher} from "./TypeNodeGeneration";
 
-class ValidationError extends Error
-{
-	readonly errors:ErrorObject[];
-	readonly json:any;
+class ValidationError extends Error {
+	readonly errors: ErrorObject[];
+	readonly json: any;
 
-	constructor(message:string, errors:ErrorObject[]|undefined|null, json:any) {
+	constructor(message: string, errors: ErrorObject[] | undefined | null, json: any) {
 		super(message);
 		this.errors = errors || [];
 		this.json = json;
 	}
 }
 
-export class GenerationException
-{
-	readonly progress:generation_result;
-	readonly exception:unknown;
+export class GenerationException {
+	readonly progress: generation_result;
+	readonly exception: unknown;
 
-	constructor(progress:generation_result, exception:unknown) {
+	constructor(progress: generation_result, exception: unknown) {
 		this.progress = progress;
 		this.exception = exception;
 	}
@@ -109,25 +107,23 @@ export type generation_result = {
 	},
 };
 
-export class DocsTsGenerator
-{
-	private readonly cache_path:string|undefined;
-	private readonly docs_path:string|object[];
-	private docs:object[]|undefined;
+export class DocsTsGenerator {
+	private readonly cache_path: string | undefined;
+	private readonly docs_path: string | object[];
+	private docs: object[] | undefined;
 
 	constructor({
-		docs_path, // raw JSON or path to UTF-16LE encoded Docs.json
-		cache_path = undefined, // optional cache folder path for cacheable resources
-	}:{
-		docs_path: string|object[],
+					docs_path, // raw JSON or path to UTF-16LE encoded Docs.json
+					cache_path = undefined, // optional cache folder path for cacheable resources
+				}: {
+		docs_path: string | object[],
 		cache_path?: string,
 	}) {
 		this.docs_path = docs_path;
 		this.cache_path = cache_path;
 	}
 
-	private async load_from_file(filepath:string): Promise<any>
-	{
+	private async load_from_file(filepath: string): Promise<any> {
 		const file = await readFile(filepath, {
 			encoding: 'utf-16le',
 		});
@@ -137,10 +133,9 @@ export class DocsTsGenerator
 		return JSON.parse(utf8.trim());
 	}
 
-	private async load(): Promise<any>
-	{
+	private async load(): Promise<any> {
 		if (undefined === this.docs) {
-			if ('string' !== typeof(this.docs_path)) {
+			if ('string' !== typeof (this.docs_path)) {
 				return this.docs_path;
 			} else if (!this.docs_path.endsWith('.json')) {
 				throw new Error('Probably not a JSON file');
@@ -173,13 +168,13 @@ export class DocsTsGenerator
 	private async validate<T extends [
 		{
 			NativeClass: string,
-			Classes: {ClassName: string}[]
+			Classes: { ClassName: string }[]
 		},
 		...{
 			NativeClass: string,
-			Classes: {ClassName: string}[]
+			Classes: { ClassName: string }[]
 		}[]
-	]>(json:any, schema:{'$id': 'update8.schema.json'}): Promise<T> {
+	]>(json: any, schema: { '$id': 'update8.schema.json' }): Promise<T> {
 		/* unfortunately this code doesn't work because it generates the wrong type of js :(
 		if (this.cache_path) {
 			const file_sha512 = createHash('sha512');
@@ -244,20 +239,18 @@ export class DocsTsGenerator
 		return json;
 	}
 
-	async get()
-	{
+	async get() {
 		return this.validate(
 			await this.load(),
-			update8_schema as (typeof update8_schema & {'$id': 'update8.schema.json'})
+			update8_schema as (typeof update8_schema & { '$id': 'update8.schema.json' })
 		);
 	}
 
 	/**
 	 * @throws {GenerationException}
 	 */
-	async generate_types(parent_folder:string, throw_on_failure_to_find = true) : Promise<generation_result>
-	{
-		const target_files:{[key: string]: string} = Object.assign(
+	async generate_types(parent_folder: string, throw_on_failure_to_find = true): Promise<generation_result> {
+		const target_files: { [key: string]: string } = Object.assign(
 			{},
 			enum_target_files,
 			color_target_files,
@@ -271,7 +264,7 @@ export class DocsTsGenerator
 			aliases_target_files,
 		);
 
-		const generators:(TypesGenerationFromSchema<any>|TypesGenerationMatchesReferenceName<any, any>)[] = [
+		const generators: (TypesGenerationFromSchema<any> | TypesGenerationMatchesReferenceName<any, any>)[] = [
 			...color_generators,
 			...enum_generators,
 			...validator_generators,
@@ -298,8 +291,8 @@ export class DocsTsGenerator
 		]);
 		type_node_generation.throw_on_failure_to_find = throw_on_failure_to_find;
 
-		const supported_conversions:GenerationMatch<object>[] = Object.entries(update8_schema.definitions).filter(
-			(e:[string, object]) => {
+		const supported_conversions: GenerationMatch<object>[] = Object.entries(update8_schema.definitions).filter(
+			(e: [string, object]) => {
 				for (const generator of generators) {
 					if (generator.test(generator instanceof TypesGenerationFromSchema ? e[1] : e[0])) {
 						return true;
@@ -315,7 +308,7 @@ export class DocsTsGenerator
 				}
 
 				return maybe.test(e[0]);
-			}) as TypesGenerationFromSchema<object>|TypesGenerationMatchesReferenceName<object, any>);
+			}) as TypesGenerationFromSchema<object> | TypesGenerationMatchesReferenceName<object, any>);
 		});
 
 		const supported_conversion_names = supported_conversions.map(e => e.definition);
@@ -361,27 +354,27 @@ export class DocsTsGenerator
 			};
 		}
 
-			const printer = ts.createPrinter({
-				newLine: ts.NewLineKind.LineFeed,
-			});
+		const printer = ts.createPrinter({
+			newLine: ts.NewLineKind.LineFeed,
+		});
 
-			const files:{[key: string]: ts.Node[]} = {};
+		const files: { [key: string]: ts.Node[] } = {};
 
-			const Update8 = new Update8TypeNodeGeneration(type_node_generation);
+		const Update8 = new Update8TypeNodeGeneration(type_node_generation);
 
-			for (const generator of [
-				...validator_custom_generators,
-				...Update8.generate_generators(
-					default_config.ajv,
-					progress.definitions.supported.map(check_ref)
-				),
-				...vectors_custom_generators,
-			]) {
-				try {
+		for (const generator of [
+			...validator_custom_generators,
+			...Update8.generate_generators(
+				default_config.ajv,
+				progress.definitions.supported.map(check_ref)
+			),
+			...vectors_custom_generators,
+		]) {
+			try {
 				const Classes_results: (
 					| { file: string, node: ts.Node }
 					| { file: string, node: ts.Node, ref: string }
-				)[] = generator();
+					)[] = generator();
 
 				for (const result of Classes_results) {
 
@@ -396,77 +389,77 @@ export class DocsTsGenerator
 					}
 
 					files[file].push(node);
-					}
-				} catch (err) {
-					update_progress();
-					throw new GenerationException(progress, err);
 				}
+			} catch (err) {
+				update_progress();
+				throw new GenerationException(progress, err);
 			}
+		}
 
-			ImportTracker.merge_and_set_imports(Update8.imports);
+		ImportTracker.merge_and_set_imports(Update8.imports);
 
-			update_progress();
+		update_progress();
 
-			for (const match of supported_conversions) {
-				if (!(match.definition in target_files)) {
-					update_progress();
-					throw new GenerationException(
-						progress,
-						new Error(`no target file found for ${match.definition}`
+		for (const match of supported_conversions) {
+			if (!(match.definition in target_files)) {
+				update_progress();
+				throw new GenerationException(
+					progress,
+					new Error(`no target file found for ${match.definition}`
 					));
-				}
-
-				const target_file = target_files[match.definition];
-
-				if (!(target_file in files)) {
-					files[target_file] = [];
-				}
-
-				files[target_file].push(match.generation.generate(match.data, match.definition));
 			}
 
-			update_progress();
+			const target_file = target_files[match.definition];
 
-			const cleanup = await glob(`${parent_folder}/update8/**/*.ts`);
-
-			for (const remove of cleanup) {
-				await unlink(remove);
+			if (!(target_file in files)) {
+				files[target_file] = [];
 			}
 
-			for (const entry of Object.entries(files)) {
-				const result_file = ts.createSourceFile(
-					entry[0],
-					'',
-					ts.ScriptTarget.Latest,
-					false,
-					ts.ScriptKind.TS
-				);
+			files[target_file].push(match.generation.generate(match.data, match.definition));
+		}
 
-				const nodes = [
-					...ImportTracker.generate_imports(entry[0]),
-					...entry[1]
-				];
+		update_progress();
 
-				const file_name = `${parent_folder}/update8/${entry[0]}`;
-				const dir = dirname(file_name);
+		const cleanup = await glob(`${parent_folder}/update8/**/*.ts`);
 
-				await mkdir(dir, {
-					recursive: true,
-				});
+		for (const remove of cleanup) {
+			await unlink(remove);
+		}
 
-				await writeFile(
-					file_name,
-					await format_code(nodes.map((node) => {
-						return printer.printNode(ts.EmitHint.Unspecified, node, result_file)
-					}).join('\n\n'))
-				);
-			}
+		for (const entry of Object.entries(files)) {
+			const result_file = ts.createSourceFile(
+				entry[0],
+				'',
+				ts.ScriptTarget.Latest,
+				false,
+				ts.ScriptKind.TS
+			);
+
+			const nodes = [
+				...ImportTracker.generate_imports(entry[0]),
+				...entry[1]
+			];
+
+			const file_name = `${parent_folder}/update8/${entry[0]}`;
+			const dir = dirname(file_name);
+
+			await mkdir(dir, {
+				recursive: true,
+			});
+
+			await writeFile(
+				file_name,
+				await format_code(nodes.map((node) => {
+					return printer.printNode(ts.EmitHint.Unspecified, node, result_file)
+				}).join('\n\n'))
+			);
+		}
 
 		return progress;
 	}
 }
 
-export function format_code(code:string, parser:BuiltInParserName = 'typescript'): Promise<string> {
+export function format_code(code: string, parser: BuiltInParserName = 'typescript'): Promise<string> {
 	return prettier.format(code, {
 		parser,
 		singleQuote: true,
