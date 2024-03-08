@@ -16,7 +16,10 @@ import {
 	create_method_with_type_parameters,
 	create_template_span,
 	create_index_access,
-	create_object_type, very_flexibly_create_regex_validation_function, create_literal_node_from_value
+	create_object_type,
+	very_flexibly_create_regex_validation_function,
+	create_literal_node_from_value,
+	create_UnrealEngineString_reference_type
 } from "../TsFactoryWrapper";
 import {TypeNodeGeneration, TypeNodeGenerationResult} from "../TypeNodeGeneration";
 import {UnrealEngineString_regex} from "../DocsValidation";
@@ -862,14 +865,7 @@ export const type_node_generators = [
 		UnrealEngineString_schema,
 		(data) => {
 			return new TypeNodeGenerationResult(
-				() => ts.factory.createTypeReferenceNode('UnrealEngineString', [
-					ts.factory.createTypeReferenceNode('string_starts_with', [
-						create_literal_node_from_value(data.UnrealEngineString.UnrealEngineString_prefix),
-					]),
-					ts.factory.createTypeReferenceNode('StringPassedRegExp', [
-						create_literal_node_from_value(data.UnrealEngineString.pattern),
-					])
-				]),
+				() => create_UnrealEngineString_reference_type(data.UnrealEngineString),
 				{
 					'utils/validators': [
 						'UnrealEngineString',
@@ -882,14 +878,7 @@ export const type_node_generators = [
 		UnrealEngineString_prefix_pattern_schema,
 		(data) => {
 			return new TypeNodeGenerationResult(
-				() => ts.factory.createTypeReferenceNode('UnrealEngineString', [
-					ts.factory.createTypeReferenceNode('StringPassedRegExp', [
-						create_literal_node_from_value(data.UnrealEngineString.UnrealEngineString_prefix_pattern),
-					]),
-					ts.factory.createTypeReferenceNode('StringPassedRegExp', [
-						create_literal_node_from_value(data.UnrealEngineString.pattern),
-					])
-				]),
+				() => create_UnrealEngineString_reference_type(data.UnrealEngineString),
 				{
 					'utils/validators': [
 						'UnrealEngineString',

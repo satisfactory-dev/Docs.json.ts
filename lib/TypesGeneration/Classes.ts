@@ -4,6 +4,11 @@ import {
 	createClass,
 	create_type,
 	createClass__members__with_auto_constructor,
+	create_object_type,
+	possibly_create_lazy_union,
+	create_literal_node_from_value,
+	create_minimum_size_typed_array_of_single_type,
+	create_UnrealEngineString_reference_type, create_object_type_alias,
 } from "../TsFactoryWrapper";
 import ts from 'typescript';
 import {
@@ -13,6 +18,7 @@ import {
 	TypeNodeGeneration,
 	TypeNodeGenerationResult,
 } from '../TypeNodeGeneration';
+import {UnrealEngineString_type} from "./validators";
 
 declare type supported_base_classes_union = 'class--no-description-or-display-name'|'class--no-description'|'class';
 export const supported_base_classes:[supported_base_classes_union, ...supported_base_classes_union[]] = [
@@ -26,6 +32,8 @@ export const target_files = {
 	'mDockingRuleSet': 'classes/base.ts',
 	'EditorCurveData': 'classes/base.ts',
 	'mLightControlData': 'classes/base.ts',
+	'mUnlocks_Class': 'classes/CoreUObject/FGSchematic.ts',
+	'mUnlocks_mTapeUnlocks': 'classes/CoreUObject/FGSchematic.ts',
 };
 
 ImportTracker.set_imports('classes/base.ts', [{
@@ -34,6 +42,14 @@ ImportTracker.set_imports('classes/base.ts', [{
 		'decimal_string',
 	],
 	from: '../utils/validators',
+}]);
+ImportTracker.set_imports('classes/CoreUObject/FGSchematic.ts', [{
+	import_these: [
+		'UnrealEngineString',
+		'string_starts_with',
+		'StringPassedRegExp',
+	],
+	from: '../../utils/validators',
 }]);
 
 declare type mDisableSnapOn_member = {
@@ -170,6 +186,73 @@ export const generators = [
 			);
 		},
 	),
+	new TypesGenerationMatchesReferenceName<
+		{
+			type: 'object',
+			required: ['Class'],
+			additionalProperties: false,
+			properties: {
+				Class: {
+					type: 'string',
+					enum: [string, ...string[]],
+				},
+			},
+		},
+		'mUnlocks_Class'
+	>(
+		['mUnlocks_Class'],
+		(data, reference_name) => {
+			return create_object_type_alias(
+				adjust_class_name(reference_name),
+				['declare'],
+				{
+					Class: possibly_create_lazy_union(data.properties.Class.enum),
+				},
+				['Class']
+			)
+		}
+	),
+	new TypesGenerationMatchesReferenceName<
+		{
+			type: 'object',
+			required: ['Class', 'mTapeUnlocks'],
+			additionalProperties: false,
+			properties: {
+				Class: {
+					type: 'string',
+					const: string,
+				},
+				mTapeUnlocks: {
+					type: string,
+					minLength: 1,
+					array_string: {
+						type: 'array',
+						minItems: 1,
+						items: UnrealEngineString_type,
+					}
+				}
+			},
+		},
+		'mUnlocks_mTapeUnlocks'
+	>(
+		['mUnlocks_mTapeUnlocks'],
+		(data, reference_name) => {
+			return create_object_type_alias(
+				adjust_class_name(reference_name),
+				['declare'],
+				{
+					Class: create_literal_node_from_value(data.properties.Class.const),
+					mTapeUnlocks: create_minimum_size_typed_array_of_single_type(
+						data.properties.mTapeUnlocks.array_string.minItems,
+						() => create_UnrealEngineString_reference_type(
+							data.properties.mTapeUnlocks.array_string.items.UnrealEngineString
+						),
+					),
+				},
+				['Class']
+			)
+		}
+	),
 ];
 
 export const type_node_generators = [
@@ -178,7 +261,9 @@ export const type_node_generators = [
 			| '#/definitions/mDisableSnapOn'
 			| '#/definitions/mDockingRuleSet'
 			| '#/definitions/EditorCurveData'
-			| '#/definitions/mLightControlData',
+			| '#/definitions/mLightControlData'
+			| '#/definitions/mUnlocks_Class'
+			| '#/definitions/mUnlocks_mTapeUnlocks'
 	}>(
 		{
 			type: 'object',
@@ -186,20 +271,31 @@ export const type_node_generators = [
 			additionalProperties: false,
 			properties: {
 				'$ref': {
-					type: 'string',
-					pattern: '^#/definitions/(mDisableSnapOn|mDockingRuleSet|EditorCurveData|mLightControlData)$',
-				}
-			}
+					oneOf: Object.keys(target_files).map(reference_name => {
+						return {
+							type: 'string',
+							const : `#/definitions/${reference_name}`
+						};
+					}),
+				},
+			},
 		},
 		(property) => {
 			const reference_name = adjust_class_name(property['$ref'].substring(14));
+			if (!(reference_name in target_files)) {
+				throw new Error(`target file for ${reference_name} not configured!`);
+			}
+
+			const target_file = target_files[
+				reference_name as keyof typeof target_files
+			].replace(/\.ts$/, '');
 
 			return new TypeNodeGenerationResult(
 				() => {
 					return ts.factory.createTypeReferenceNode(reference_name);
 				},
 				{
-					'classes/base': [reference_name],
+					[target_file]: [reference_name],
 				}
 			);
 		}

@@ -21,7 +21,6 @@ export const target_files = {
 	'weaponState': 'common/enum.ts',
 	'mCrosshairMaterial': 'common/enum.ts',
 	'mClassToScanFor': 'common/enum.ts',
-	'mEventType--optional-csv': 'common/enum.ts',
 };
 
 declare type supported_definitions = keyof {

@@ -1,8 +1,13 @@
 import {ImportTracker, TypesGenerationFromSchema, TypesGenerationMatchesReferenceName} from "../TypesGeneration";
-import {adjust_class_name, create_modifier, create_type} from "../TsFactoryWrapper";
+import {
+	adjust_class_name,
+	create_modifier,
+	create_type,
+	create_UnrealEngineString_reference_type
+} from "../TsFactoryWrapper";
 import ts from "typescript";
 import {UnrealEngineString_schema, UnrealEngineString_type} from "./validators";
-import {TypeNodeGeneration} from "../TypeNodeGeneration";
+import {TypeNodeGeneration, TypeNodeGenerationResult} from "../TypeNodeGeneration";
 
 export const target_files = {
 	'mScannerDisplayText': 'common/aliases.ts',
@@ -61,25 +66,34 @@ export const generators = [
 				[create_modifier('export')],
 				adjust_class_name(reference_name),
 				undefined,
-				ts.factory.createTypeReferenceNode(
-					'UnrealEngineString',
-					[
-						ts.factory.createTypeReferenceNode(
-							'string_starts_with',
-							[ts.factory.createLiteralTypeNode(ts.factory.createStringLiteral(
-								data.UnrealEngineString.UnrealEngineString_prefix
-							))]
-						),
-						ts.factory.createTypeReferenceNode(
-							'StringPassedRegExp',
-							[ts.factory.createLiteralTypeNode(ts.factory.createStringLiteral(
-								data.UnrealEngineString.pattern
-							))]
-						)
-					]
-				)
+				create_UnrealEngineString_reference_type(data.UnrealEngineString)
 			);
 		}
 	),
 ];
 
+export const type_node_generators = [
+	new TypeNodeGeneration<{'$ref': '#/definitions/mScannerDisplayText'}>(
+		{
+			type: 'object',
+			required: ['$ref'],
+			additionalProperties: false,
+			properties: {
+				'$ref': {
+					type: 'string',
+					pattern: '^#/definitions/(mScannerDisplayText)$'
+				}
+			}
+		},
+		(data) => {
+			const reference_name = adjust_class_name(data['$ref'].substring(14));
+
+			return new TypeNodeGenerationResult(
+				() => ts.factory.createTypeReferenceNode(reference_name),
+				{
+					'common/aliases': [reference_name]
+				}
+			);
+		}
+	),
+]

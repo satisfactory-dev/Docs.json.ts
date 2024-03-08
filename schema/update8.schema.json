@@ -1988,6 +1988,57 @@
 				}
 			}
 		},
+		"mUnlocks_Class": {
+			"type": "object",
+			"required": [
+				"Class"
+			],
+			"additionalProperties": false,
+			"properties": {
+				"Class": {
+					"type": "string",
+					"enum": [
+						"BP_UnlockInfoOnly_C",
+						"BP_UnlockCheckmark_C",
+						"BP_UnlockCustomizer_C",
+						"BP_UnlockMap_C",
+						"BP_UnlockBuildEfficiency_C",
+						"BP_UnlockBuildOverclock_C"
+					]
+				}
+			}
+		},
+		"mUnlocks_mTapeUnlocks": {
+			"type": "object",
+			"required": [
+				"Class",
+				"mTapeUnlocks"
+			],
+			"additionalProperties": false,
+			"properties": {
+				"Class": {
+					"type": "string",
+					"const": "FGUnlockTape"
+				},
+				"mTapeUnlocks": {
+					"type": "string",
+					"minLength": 1,
+					"array_string": {
+						"type": "array",
+						"minItems": 1,
+						"items": {
+							"type": "string",
+							"minLength": 1,
+							"UnrealEngineString": {
+								"UnrealEngineString_prefix": "/Script/Engine.BlueprintGeneratedClass",
+								"type": "string",
+								"pattern": "^/Game/FactoryGame/Resource/Tape/"
+							}
+						}
+					}
+				}
+			}
+		},
 		"FGSchematic--base": {
 			"type": "object",
 			"$ref": "#/definitions/class",
@@ -2117,57 +2168,8 @@
 					"type": "array",
 					"items": {
 						"anyOf": [
-							{
-								"type": "object",
-								"required": [
-									"Class"
-								],
-								"additionalProperties": false,
-								"properties": {
-									"Class": {
-										"type": "string",
-										"enum": [
-											"BP_UnlockInfoOnly_C",
-											"BP_UnlockCheckmark_C",
-											"BP_UnlockCustomizer_C",
-											"BP_UnlockMap_C",
-											"BP_UnlockBuildEfficiency_C",
-											"BP_UnlockBuildOverclock_C"
-										]
-									}
-								}
-							},
-							{
-								"type": "object",
-								"required": [
-									"Class",
-									"mTapeUnlocks"
-								],
-								"additionalProperties": false,
-								"properties": {
-									"Class": {
-										"type": "string",
-										"const": "FGUnlockTape"
-									},
-									"mTapeUnlocks": {
-										"type": "string",
-										"minLength": 1,
-										"array_string": {
-											"type": "array",
-											"minItems": 1,
-											"items": {
-												"type": "string",
-												"minLength": 1,
-												"UnrealEngineString": {
-													"UnrealEngineString_prefix": "/Script/Engine.BlueprintGeneratedClass",
-													"type": "string",
-													"pattern": "^/Game/FactoryGame/Resource/Tape/"
-												}
-											}
-										}
-									}
-								}
-							},
+							{"$ref": "#/definitions/mUnlocks_Class"},
+							{"$ref": "#/definitions/mUnlocks_mTapeUnlocks"},
 							{
 								"type": "object",
 								"required": [

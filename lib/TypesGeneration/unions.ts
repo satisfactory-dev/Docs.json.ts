@@ -13,6 +13,7 @@ import {TypeNodeGeneration, TypeNodeGenerationResult} from "../TypeNodeGeneratio
 export const target_files = {
 	'Texture2D': 'common/unions.ts',
 	'mDescriptorStatBars': 'common/unions.ts',
+	'mEventType--optional-csv': 'common/enum.ts',
 };
 
 ImportTracker.set_imports('common/unions.ts', [

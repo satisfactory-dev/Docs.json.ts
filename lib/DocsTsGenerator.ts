@@ -69,6 +69,7 @@ import {
 import {
 	target_files as aliases_target_files,
 	generators as aliases_generators,
+	type_node_generators as aliases_type_node_generators,
 } from './TypesGeneration/aliases';
 import {
 	check_ref,
@@ -99,7 +100,7 @@ export class GenerationException
 	}
 }
 
-declare type generation_result = {
+export type generation_result = {
 	definitions: {
 		keys: string[],
 		supported: string[],
@@ -254,7 +255,7 @@ export class DocsTsGenerator
 	/**
 	 * @throws {GenerationException}
 	 */
-	async generate_types(parent_folder:string) : Promise<generation_result>
+	async generate_types(parent_folder:string, throw_on_failure_to_find = true) : Promise<generation_result>
 	{
 		const target_files:{[key: string]: string} = Object.assign(
 			{},
@@ -293,7 +294,9 @@ export class DocsTsGenerator
 			...type_node_generators,
 			...prefixes_type_node_generators,
 			...unions_type_node_generators,
-		]);;
+			...aliases_type_node_generators,
+		]);
+		type_node_generation.throw_on_failure_to_find = throw_on_failure_to_find;
 
 		const supported_conversions:GenerationMatch<object>[] = Object.entries(update8_schema.definitions).filter(
 			(e:[string, object]) => {
@@ -343,7 +346,21 @@ export class DocsTsGenerator
 			},
 		};
 
-		try {
+		function update_progress() {
+			missing_target_files = supported_conversions.map((match) => {
+				return match.definition;
+			}).filter((maybe) => !(maybe in target_files));
+
+			progress = {
+				definitions: {
+					keys: Object.keys(update8_schema),
+					supported: supported_conversion_names,
+					unsupported: unsupported_conversions,
+					missing_target_files: missing_target_files,
+				},
+			};
+		}
+
 			const printer = ts.createPrinter({
 				newLine: ts.NewLineKind.LineFeed,
 			});
@@ -360,9 +377,10 @@ export class DocsTsGenerator
 				),
 				...vectors_custom_generators,
 			]) {
-				const Classes_results:(
-					| {file: string, node: ts.Node}
-					| {file: string, node: ts.Node, ref: string}
+				try {
+				const Classes_results: (
+					| { file: string, node: ts.Node }
+					| { file: string, node: ts.Node, ref: string }
 				)[] = generator();
 
 				for (const result of Classes_results) {
@@ -378,27 +396,24 @@ export class DocsTsGenerator
 					}
 
 					files[file].push(node);
+					}
+				} catch (err) {
+					update_progress();
+					throw new GenerationException(progress, err);
 				}
 			}
 
 			ImportTracker.merge_and_set_imports(Update8.imports);
 
-			missing_target_files = supported_conversions.map((match) => {
-				return match.definition;
-			}).filter((maybe) => !(maybe in target_files));
-
-			progress = {
-				definitions: {
-					keys: Object.keys(update8_schema),
-					supported: supported_conversion_names,
-					unsupported: unsupported_conversions,
-					missing_target_files: missing_target_files,
-				},
-			};
+			update_progress();
 
 			for (const match of supported_conversions) {
 				if (!(match.definition in target_files)) {
-					throw new Error(`no target file found for ${match.definition}`);
+					update_progress();
+					throw new GenerationException(
+						progress,
+						new Error(`no target file found for ${match.definition}`
+					));
 				}
 
 				const target_file = target_files[match.definition];
@@ -409,6 +424,8 @@ export class DocsTsGenerator
 
 				files[target_file].push(match.generation.generate(match.data, match.definition));
 			}
+
+			update_progress();
 
 			const cleanup = await glob(`${parent_folder}/update8/**/*.ts`);
 
@@ -444,9 +461,6 @@ export class DocsTsGenerator
 					}).join('\n\n'))
 				);
 			}
-		} catch (err) {
-			throw new GenerationException(progress, err);
-		}
 
 		return progress;
 	}

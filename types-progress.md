@@ -1,5 +1,5 @@
 # Types Progress
-23.81% Complete 
+24.46% Complete (57 of 233)
 
 * [x] boolean
 * [x] boolean-extended
@@ -215,6 +215,8 @@
 * [x] mScannerDisplayText
 * [x] mSnappedPassthroughs
 * [x] mStackSize
+* [x] mUnlocks_Class
+* [x] mUnlocks_mTapeUnlocks
 * [x] None
 * [x] pitch-yaw-roll
 * [x] quaternion

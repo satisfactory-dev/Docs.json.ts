@@ -68,7 +68,7 @@ export class TypeNodeGeneration<T extends { [key: string]: any }>
 	static matchers:TypeNodeGeneration<any>[] = [];
 }
 
-declare type oneOf_validator = ValidateFunction<{oneOf: object[]}>;
+declare type oneOf_or_anyOf_validator = ValidateFunction<{oneOf: object[]}|{anyOf: object[]}>;
 
 declare type array_string_validator = ValidateFunction<array_string_schema_type>;
 
@@ -97,14 +97,23 @@ declare type tuple_array_validator = ValidateFunction<{
 	prefixItems: [any, any],
 }>;
 
+declare type array_validator = ValidateFunction<{
+	type: 'array',
+	items: {
+		anyOf: [object, ...object[]],
+	},
+}>;
+
 export class TypeNodeGenerationMatcher
 {
 	private readonly matchers:TypeNodeGeneration<any>[];
-	private oneOf_schema_matcher:WeakMap<Ajv, oneOf_validator> = new WeakMap<Ajv, oneOf_validator>();
+	private oneOf_or_anyOf_schema_matcher:WeakMap<Ajv, oneOf_or_anyOf_validator> = new WeakMap<Ajv, oneOf_or_anyOf_validator>();
 	private array_string_matcher:WeakMap<Ajv, array_string_validator> = new WeakMap<Ajv, array_string_validator>();
 	private object_string_matcher:WeakMap<Ajv, object_string_validator> = new WeakMap<Ajv, object_string_validator>();
 	private object_matcher:WeakMap<Ajv, object_validator> = new WeakMap<Ajv, object_validator>();
 	private tuple_array_matcher:WeakMap<Ajv, tuple_array_validator> = new WeakMap<Ajv, tuple_array_validator>();
+	private array_matcher:WeakMap<Ajv, array_validator> = new WeakMap<Ajv, array_validator>();
+	public throw_on_failure_to_find = true;
 
 	constructor(matchers:TypeNodeGeneration<any>[]) {
 		this.matchers = matchers;
@@ -120,16 +129,18 @@ export class TypeNodeGenerationMatcher
 		}
 
 		return (
-			this.oneOf_matcher(ajv, property)
+			this.oneOf_or_anyOf_matcher(ajv, property)
 			|| this.object_search(ajv, property)
 			|| this.tuple_array_search(ajv, property)
+			|| this.array_search(ajv, property)
 		);
 	}
 
-	private oneOf_matcher(ajv:Ajv, property:object): TypeNodeGenerationResult|null
+	private oneOf_or_anyOf_matcher(ajv:Ajv, property:object): TypeNodeGenerationResult|null
 	{
-		if (!this.oneOf_schema_matcher.has(ajv)) {
-			this.oneOf_schema_matcher.set(ajv, ajv.compile({
+		if (!this.oneOf_or_anyOf_schema_matcher.has(ajv)) {
+			this.oneOf_or_anyOf_schema_matcher.set(ajv, ajv.compile({oneOf: [
+				{
 				type: 'object',
 				required: ['oneOf'],
 				additionalProperties: false,
@@ -140,17 +151,30 @@ export class TypeNodeGenerationMatcher
 						items: {type: 'object'},
 					},
 				},
-			}));
+				},
+				{
+					type: 'object',
+					required: ['anyOf'],
+					additionalProperties: false,
+					properties: {
+						anyOf: {
+							type: 'array',
+							minItems: 1,
+							items: {type: 'object'},
+						},
+					},
+				}
+			]}));
 		}
 
-		const oneOf_matcher = this.oneOf_schema_matcher.get(ajv) as oneOf_validator;
+		const oneOf_matcher = this.oneOf_or_anyOf_schema_matcher.get(ajv) as oneOf_or_anyOf_validator;
 
 		if (oneOf_matcher(property)) {
 			const matches:TypeNodeGenerationResult[] = [];
 			let has_all_matches = true;
 			const missing_matches = [];
 
-			for (const sub_property of property.oneOf) {
+			for (const sub_property of 'oneOf' in property ? property.oneOf : property.anyOf) {
 				let found_match = false;
 				for (const matcher of this.matchers) {
 					const match = matcher.match(ajv, sub_property);
@@ -188,9 +212,11 @@ export class TypeNodeGenerationMatcher
 					},
 				);
 			} else {
+				/*
 				console.error(property, missing_matches);
 
 				throw new Error('lolwhut');
+				*/
 			}
 		}
 
@@ -268,6 +294,54 @@ export class TypeNodeGenerationMatcher
 					{}
 				)
 			);
+		}
+
+		return null;
+	}
+
+	private array_search(ajv:Ajv, property:object): TypeNodeGenerationResult|null
+	{
+		if (!this.array_matcher.has(ajv)) {
+			this.array_matcher.set(ajv, ajv.compile({
+				type: 'object',
+				required: ['type', 'items'],
+				additionalProperties: false,
+				properties: {
+					type: {type: 'string', const: 'array'},
+					items: {
+						type: 'object',
+						required: ['anyOf'],
+						additionalProperties: false,
+						properties: {
+							anyOf: {
+								type: 'array',
+								minItems: 1,
+								items: {type: 'object'},
+							},
+						},
+					},
+				}
+			}));
+		}
+
+		const array_matcher = this.array_matcher.get(ajv) as array_validator;
+
+		if (array_matcher(property)) {
+			const result = this.search(ajv, property.items);
+
+			if (result) {
+				return new TypeNodeGenerationResult(
+					() => {
+						return ts.factory.createArrayTypeNode(result.type());
+					},
+					result.import_these_somewhere_later
+				);
+			} else {
+				/*
+				throw new Error('whut');
+
+				 */
+			}
 		}
 
 		return null;
@@ -444,9 +518,13 @@ export class TypeNodeGenerationMatcher
 			return match;
 		}
 
-		console.error(property);
+		if (this.throw_on_failure_to_find) {
+			console.error(property);
 
-		throw new Error('Could not match property to type generation!');
+			throw new Error('Could not match property to type generation!');
+		}
+
+		return new TypeNodeGenerationResult(() => ts.factory.createKeywordTypeNode(ts.SyntaxKind.UnknownKeyword));
 	}
 
 	find_from_properties(ajv:Ajv, properties:{[key: string]: object}) : {[K in keyof typeof properties]: TypeNodeGenerationResult}

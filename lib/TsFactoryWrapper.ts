@@ -707,6 +707,22 @@ export function create_object_type<
 	}));
 }
 
+export function create_object_type_alias<
+	T extends {[key: string]: ts.TypeNode} = {[key: string]: ts.TypeNode}
+>(
+	reference_name:string,
+	modifiers: [keyof typeof modifier_map, ...(keyof typeof modifier_map)[]],
+	properties:T,
+	required:(keyof T)[]
+) : ts.TypeAliasDeclaration {
+	return ts.factory.createTypeAliasDeclaration(
+		modifiers.map(create_modifier),
+		reference_name,
+		undefined,
+		create_object_type<T>(properties, required)
+	);
+}
+
 export function needs_element_access(property:string) : boolean
 {
 	return /[?]/.test(property);
@@ -832,4 +848,30 @@ export function possibly_create_lazy_union(items:lazy_union_item[]) : ts.TypeNod
 	const [a, b, ...rest] = items;
 
 	return create_lazy_union(a, b, ...rest);
+}
+
+export function create_UnrealEngineString_reference_type(
+	type_arguments:
+		| {UnrealEngineString_prefix: string, pattern:string}
+		| {UnrealEngineString_prefix_pattern: string, pattern:string}
+		| undefined
+	= undefined
+) : ts.TypeReferenceNode {
+	return ts.factory.createTypeReferenceNode(
+		'UnrealEngineString',
+		!type_arguments ? undefined : [
+			(
+				'UnrealEngineString_prefix' in type_arguments
+					? ts.factory.createTypeReferenceNode('string_starts_with', [
+						create_literal_node_from_value(type_arguments.UnrealEngineString_prefix),
+					])
+					: ts.factory.createTypeReferenceNode('StringPassedRegExp', [
+						create_literal_node_from_value(type_arguments.UnrealEngineString_prefix_pattern),
+					])
+			),
+			ts.factory.createTypeReferenceNode('StringPassedRegExp', [
+				create_literal_node_from_value(type_arguments.pattern),
+			])
+		]
+	);
 }
