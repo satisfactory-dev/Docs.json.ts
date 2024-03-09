@@ -12,31 +12,31 @@ export class DocsTsAutoImports
 
 	private filter_node(maybe:ts.Node): maybe is ts.Node & {name: {escapedText: string}}
 	{
-					return (
-						((ts.SyntaxKind.ClassDeclaration === maybe.kind &&
-								'name' in maybe) ||
-							(ts.SyntaxKind.FunctionDeclaration ===
-								maybe.kind &&
-								'name' in maybe) ||
-							ts.SyntaxKind.TypeAliasDeclaration ===
-							maybe.kind) &&
-						'object' ===
-						typeof (maybe as unknown as {name: any}).name &&
-						'escapedText' in
-						(maybe as unknown as {name: any}).name &&
-						'string' ===
-						typeof (
-							maybe as unknown as {name: {escapedText: any}}
-						).name.escapedText &&
-						'modifiers' in maybe &&
-						maybe.modifiers instanceof Array &&
-						maybe.modifiers
-							.filter((inner_maybe) => {
-								return 'kind' in inner_maybe;
-							})
-							.map((inner_maybe) => inner_maybe.kind)
-							.includes(ts.SyntaxKind.ExportKeyword)
-					);
+		return (
+			(
+				(
+					ts.SyntaxKind.ClassDeclaration === maybe.kind
+					&& 'name' in maybe
+				)
+				|| (
+					ts.SyntaxKind.FunctionDeclaration === maybe.kind
+					&& 'name' in maybe
+				)
+				|| ts.SyntaxKind.TypeAliasDeclaration === maybe.kind
+			)
+			&& 'object' === typeof (maybe as unknown as {name: any}).name
+			&& 'escapedText' in (maybe as unknown as {name: any}).name
+			&& 'string' === typeof (
+				maybe as unknown as {name: {escapedText: any}}
+			).name.escapedText
+			&& 'modifiers' in maybe
+			&& maybe.modifiers instanceof Array
+			&& maybe.modifiers.filter((inner_maybe) => {
+				return 'kind' in inner_maybe;
+			})
+			.map((inner_maybe) => inner_maybe.kind)
+			.includes(ts.SyntaxKind.ExportKeyword)
+		);
 	}
 
 	private file_exports(): {[key: string]: [string, ...string[]]}
