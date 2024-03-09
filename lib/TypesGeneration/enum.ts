@@ -1,10 +1,10 @@
 import {ImportTracker, TypesGenerationFromSchema} from '../TypesGeneration';
 import ts from 'typescript';
 import {
-	adjust_enum_name,
+	adjust_enum_name, create_literal_node_from_value,
 	create_modifier,
 	create_string_starts_with,
-	create_type,
+	create_type, create_union,
 	possibly_create_lazy_union,
 } from '../TsFactoryWrapper';
 import {schema as const_schema} from './constants';
@@ -37,6 +37,10 @@ ImportTracker.set_imports('common/enum.ts', [
 	{
 		import_these: ['string_starts_with'],
 		from: '../utils/validators',
+	},
+	{
+		import_these: ['None'],
+		from: './constants',
 	},
 ]);
 
@@ -229,12 +233,7 @@ export const type_node_generators = [
 				});
 			} else if ('#/definitions/boolean-extended' === property['$ref']) {
 				return new TypeNodeGenerationResult(() => {
-					return ts.factory.createUnionTypeNode([
-						create_type('boolean'),
-						ts.factory.createLiteralTypeNode(
-							ts.factory.createNull()
-						),
-					]);
+					return create_union(create_type('boolean'), create_literal_node_from_value(null));
 				});
 			}
 

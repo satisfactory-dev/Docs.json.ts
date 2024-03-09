@@ -30,6 +30,7 @@ ImportTracker.set_imports('common/arrays.ts', [
 			'UnrealEngineString',
 			'string_starts_with',
 			'integer_string__type',
+			'StringPassedRegExp',
 		],
 	},
 	{

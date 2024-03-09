@@ -1,4 +1,4 @@
-import {dirname} from 'node:path';
+import {basename, dirname} from 'node:path';
 import ts from 'typescript';
 import Ajv from 'ajv/dist/2020';
 
@@ -118,6 +118,21 @@ export class Update8TypeNodeGeneration {
 		this.type_node_generator = type_node_generator;
 	}
 
+	private merge_imports_relatively(
+		path_relative: string,
+		filename:string,
+		import_from:string,
+		import_these: string[]
+	) {
+		if (dirname(filename) === dirname(import_from)) {
+			import_from = `./${basename(import_from)}`;
+		} else {
+			import_from = `${path_relative}${import_from}`;
+		}
+
+		this.merge_imports(filename, import_from, import_these);
+	}
+
 	private merge_imports(
 		filename: string,
 		import_from: string,
@@ -143,6 +158,9 @@ export class Update8TypeNodeGeneration {
 		filename: string,
 		other_filenames: {[key: string]: string}
 	) {
+		const path_relative = '../'.repeat(
+			dirname(filename).split('/').length
+		);
 		const tree = get_dependency_tree(ref);
 		const parent_ref = tree[1];
 
@@ -157,7 +175,12 @@ export class Update8TypeNodeGeneration {
 			const other_filename = other_filenames[parent_ref];
 			const other_class = adjust_class_name(parent_ref);
 
-			this.merge_imports(filename, other_filename, [other_class]);
+			this.merge_imports_relatively(
+				path_relative,
+				filename,
+				other_filename.replace(/\.ts$/, ''),
+				[other_class]
+			);
 		}
 
 		const [, ...ancestors] = tree;
@@ -447,15 +470,28 @@ export class Update8TypeNodeGeneration {
 		this.classes.push({
 			file: 'classes/CoreUObject/FGSchematic.ts',
 			ref: 'mSchematics',
-			node: create_minimum_size_typed_array_of_single_type(
-				schema.definitions.mSchematics.array_string.minItems,
-				() =>
-					create_UnrealEngineString_reference_type(
-						schema.definitions.mSchematics.array_string.items
-							.UnrealEngineString
-					)
+			node: ts.factory.createTypeAliasDeclaration(
+				[create_modifier('declare')],
+				'mSchematics',
+				undefined,
+				create_minimum_size_typed_array_of_single_type(
+					schema.definitions.mSchematics.array_string.minItems,
+					() =>
+						create_UnrealEngineString_reference_type(
+							schema.definitions.mSchematics.array_string.items
+								.UnrealEngineString
+						)
+				)
 			),
 		});
+
+		/*
+		this.merge_imports('classes/CoreUObject/FGSchematic.ts', '../../utils/validators', [
+			'UnrealEngineString',
+			'string_starts_with',
+			'StringPassedRegExp',
+		]);
+		*/
 
 		for (const mUnlocks_type of schema.definitions['FGSchematic--base']
 			.properties.mUnlocks.items.anyOf) {

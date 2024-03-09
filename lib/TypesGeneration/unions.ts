@@ -3,10 +3,13 @@ import ts from 'typescript';
 import {
 	adjust_class_name,
 	create_minimum_size_typed_array_of_single_type,
-	create_modifier,
+	create_modifier, create_object_type,
 	possibly_create_lazy_union,
 } from '../TsFactoryWrapper';
-import {UnrealEngineString_schema} from './validators';
+import {
+	UnrealEngineString_schema,
+	target_files as validators_target_files,
+} from './validators';
 import {
 	array_string_type,
 	generate_array_string_schema,
@@ -191,23 +194,28 @@ export const generators = [
 							'Value' === entry.array_string.items.required[0] &&
 							'Value' in entry.array_string.items.properties
 						) {
-							return create_minimum_size_typed_array_of_single_type(
-								entry.array_string.minItems,
-								() =>
-									ts.factory.createTypeReferenceNode(
-										adjust_class_name(
-											(
-												entry.array_string.items as {
-													properties: {
-														Value: {$ref: string};
-													};
-												}
-											).properties.Value[
-												'$ref'
-											].substring(14)
-										)
+							let value_reference_name = (
+								entry.array_string.items as {
+									properties: {
+										Value: {$ref: string};
+									};
+								}
+							).properties.Value[
+								'$ref'
+								].substring(14);
+
+							if (value_reference_name in validators_target_files) {
+								value_reference_name = `${value_reference_name}__type`;
+							}
+
+							return create_object_type({
+								'Value': create_minimum_size_typed_array_of_single_type(
+									entry.array_string.minItems,
+									() => ts.factory.createTypeReferenceNode(
+										adjust_class_name(value_reference_name)
 									)
-							);
+								)
+							}, entry.array_string.items.required);
 						} else if (
 							'array_string' in entry &&
 							'$ref' in entry.array_string.items &&
@@ -283,9 +291,13 @@ export const type_node_generators = [
 			},
 		},
 		(data) => {
-			const reference_name = adjust_class_name(
+			let reference_name = adjust_class_name(
 				data['$ref'].substring(14)
 			);
+
+			if (reference_name in validators_target_files) {
+				reference_name = `${reference_name}__type`;
+			}
 
 			return new TypeNodeGenerationResult(
 				() => {

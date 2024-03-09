@@ -876,9 +876,12 @@ export function create_index_access(identifier: string, index: number) {
 }
 
 export function create_literal_node_from_value(
-	value: string
+	value: string|null
 ): ts.LiteralTypeNode {
 	return ts.factory.createLiteralTypeNode(
+		null === value
+			? ts.factory.createNull()
+			:
 		ts.factory.createStringLiteral(value)
 	);
 }

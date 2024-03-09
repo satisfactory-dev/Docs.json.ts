@@ -145,6 +145,10 @@ export class ImportTracker {
 			for (const inner_entry of Object.entries(file_imports)) {
 				const [from, import_these] = inner_entry;
 
+				if (from.endsWith('.ts')) {
+					throw new Error('nope');
+				}
+
 				if (import_these.length) {
 					if (!(from in merge_here)) {
 						merge_here[from] = import_these as [
@@ -161,13 +165,19 @@ export class ImportTracker {
 				}
 			}
 
-			if (merge_here.length) {
+			if (Object.keys(merge_here).length) {
+				if (filename.endsWith('FGSchematic.ts')) {
+					console.log('was', ImportTracker.imports[filename]);
+				}
 				ImportTracker.set_imports(
 					filename,
 					Object.entries(merge_here).map((unpack) => {
 						return {from: unpack[0], import_these: unpack[1]};
 					})
 				);
+				if (filename.endsWith('FGSchematic.ts')) {
+					console.log('is', ImportTracker.imports[filename]);
+				}
 			}
 		}
 	}
