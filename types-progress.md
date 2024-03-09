@@ -1,6 +1,6 @@
 # Types Progress
 
-95.90% Complete (234 of 244)
+100.00% Complete (244 of 244)
 
 ## Basic Types
 
@@ -290,16 +290,16 @@
 
 -   [x] FGSchematic
 -   [x] FGSchematic--base
--   [ ] FGSchematic--mUnlocks_Class
--   [ ] FGSchematic--mUnlocks_equipment_slots
--   [ ] FGSchematic--mUnlocks_inventory_slots
--   [ ] FGSchematic--mUnlocks_mEmotes
--   [ ] FGSchematic--mUnlocks_mItemsToGive
--   [ ] FGSchematic--mUnlocks_mRecipes
--   [ ] FGSchematic--mUnlocks_mScannableObjects
--   [ ] FGSchematic--mUnlocks_mSchematics
--   [ ] FGSchematic--mUnlocks_mTapeUnlocks
--   [ ] FGSchematic--mUnlocks_resources_to_scan
+-   [x] FGSchematic--mUnlocks_Class
+-   [x] FGSchematic--mUnlocks_equipment_slots
+-   [x] FGSchematic--mUnlocks_inventory_slots
+-   [x] FGSchematic--mUnlocks_mEmotes
+-   [x] FGSchematic--mUnlocks_mItemsToGive
+-   [x] FGSchematic--mUnlocks_mRecipes
+-   [x] FGSchematic--mUnlocks_mScannableObjects
+-   [x] FGSchematic--mUnlocks_mSchematics
+-   [x] FGSchematic--mUnlocks_mTapeUnlocks
+-   [x] FGSchematic--mUnlocks_resources_to_scan
 -   [x] FGSchematic--with-unlocks
 
 ## FGWeapon

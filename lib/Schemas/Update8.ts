@@ -5,7 +5,7 @@ import Ajv from 'ajv/dist/2020';
 import {
 	TypeNodeGenerationMatcher,
 	create_constructor_args,
-	create_binding_constructor,
+	create_binding_constructor, NoMatchError, PropertyMatchFailure, PartialMatchError,
 } from '../TypeNodeGeneration';
 import {supported_base_classes} from '../TypesGeneration/Classes';
 import {
@@ -33,6 +33,7 @@ import {extract_UnrealEngineString} from '../DocsValidation';
 import {import_these_later} from '../TypesGeneration';
 
 import schema from '../../schema/update8.schema.json' assert {type: 'json'};
+import {GenerationException} from "../DocsTsGenerator";
 
 declare type object_with_ref = {$ref: string};
 
@@ -191,9 +192,13 @@ export class Update8TypeNodeGeneration {
 		const data = schema.definitions[ref];
 
 		if ('$ref' in data || 'required' in data) {
+			if (!filename.endsWith('.ts')) {
+				throw new Error(`non-typescript filename specified: ${filename}`);
+			}
+
 			this.classes.push(
 				create_constructor_args(
-					`classes/${filename}.ts`,
+					filename,
 					class_name,
 					data
 				)
@@ -271,7 +276,7 @@ export class Update8TypeNodeGeneration {
 		});
 	}
 
-	private generate_types() {
+	private generate_types(ajv:Ajv) {
 		const StrictlyTypedNumberFromRegExp_reference_names: (
 			| 'decimal-string'
 			| 'decimal-string--signed'
@@ -451,6 +456,48 @@ export class Update8TypeNodeGeneration {
 					)
 			),
 		});
+
+		for (const mUnlocks_type of schema.definitions['FGSchematic--base'].properties.mUnlocks.items.anyOf) {
+			const {$ref} = mUnlocks_type;
+
+			const reference_name = $ref.substring(14);
+			const type_name = adjust_class_name(reference_name);
+
+			if (!is_ref(reference_name)) {
+				throw new NoMatchError(
+					mUnlocks_type,
+					`${reference_name} not in schema.definitions!`
+				);
+			}
+
+			try {
+				const result = this.type_node_generator.find(
+					ajv,
+					schema.definitions[reference_name]
+				);
+
+				this.classes.push({
+					file: 'classes/CoreUObject/FGSchematic.ts',
+					ref: reference_name,
+					node: ts.factory.createTypeAliasDeclaration(
+						[create_modifier('declare')],
+						type_name,
+						undefined,
+						result.type()
+					),
+				});
+
+				for (const entry of Object.entries(result.import_these_somewhere_later)) {
+					this.merge_imports('classes/CoreUObject/FGSchematic.ts', entry[0], entry[1]);
+				}
+			} catch (err) {
+				if (err instanceof NoMatchError || err instanceof PartialMatchError) {
+					throw new PropertyMatchFailure(reference_name, err);
+				}
+
+				throw err;
+			}
+		}
 	}
 
 	private generate_base_classes() {
@@ -620,7 +667,7 @@ export class Update8TypeNodeGeneration {
 
 	private generate_abstract_classes(ajv: Ajv) {
 		for (const ref of this.remove_generated_abstracts()) {
-			const filename = `classes/${ref.split('--')[0]}.ts`;
+			const filename = `classes/CoreUObject/${ref.split('--')[0]}.ts`;
 			this.generate_class(ajv, check_ref(ref), filename);
 		}
 	}
@@ -628,7 +675,7 @@ export class Update8TypeNodeGeneration {
 	generate_generators(ajv: Ajv) {
 		return [
 			() => {
-				this.generate_types();
+				this.generate_types(ajv);
 				this.generate_base_classes();
 				this.generate_concrete_classes(ajv);
 				this.generate_abstract_classes(ajv);

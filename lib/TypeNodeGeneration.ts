@@ -204,7 +204,8 @@ export class TypeNodeGenerationMatcher {
 			this.oneOf_or_anyOf_matcher(ajv, property) ||
 			this.object_search(ajv, property) ||
 			this.tuple_array_search(ajv, property) ||
-			this.array_search(ajv, property)
+			this.array_search(ajv, property) ||
+			this.array_string_search(ajv, property)
 		);
 	}
 
@@ -407,7 +408,10 @@ export class TypeNodeGenerationMatcher {
 					additionalProperties: false,
 					properties: {
 						type: {type: 'string', const: 'array'},
+						minItems: {type: 'number', minimum: 1},
 						items: {
+							oneOf: [
+								{
 							type: 'object',
 							required: ['anyOf'],
 							additionalProperties: false,
@@ -418,6 +422,15 @@ export class TypeNodeGenerationMatcher {
 									items: {type: 'object'},
 								},
 							},
+								},
+								{
+									type: 'object',
+									required: ['type'],
+									properties: {
+										type: {type: 'string', const: 'string'}
+									}
+								}
+							],
 						},
 					},
 				})
@@ -544,6 +557,7 @@ export class TypeNodeGenerationMatcher {
 							minItems: 1,
 							items: {type: 'string', minLength: 1},
 						},
+						additionalProperties: {type: 'boolean'},
 						properties: {type: 'object'},
 					},
 				})
@@ -682,7 +696,7 @@ export class TypeNodeGenerationMatcher {
 	}
 }
 
-export function create_constructor_args<T1 = string>(
+export function create_constructor_args<T1 extends string = string>(
 	file: T1,
 	reference_name: string,
 	data: (
