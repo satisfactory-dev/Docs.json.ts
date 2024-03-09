@@ -1,6 +1,16 @@
-import ts from "typescript";
+import ts, {Identifier} from "typescript";
 import {import_these_later, ImportTracker} from "./TypesGeneration";
 import {basename, dirname, relative} from "node:path";
+
+declare type initial_check_nodes =
+	| ts.ClassDeclaration
+	| ts.FunctionDeclaration
+	| ts.TypeAliasDeclaration;
+
+declare type initial_check_node_has_Identifier = (
+	initial_check_nodes
+	& {name: Identifier}
+);
 
 export class DocsTsAutoImports
 {
@@ -10,32 +20,44 @@ export class DocsTsAutoImports
 		this.files_entries = Object.entries(files);
 	}
 
-	private filter_node(maybe:ts.Node): maybe is ts.Node & {name: {escapedText: string}}
+	private is_named_ClassDeclaration(node:ts.Node) : node is ts.ClassDeclaration & {name:Identifier} {
+		return ts.isClassDeclaration(node) && !!node.name;
+	}
+
+	private is_named_FunctionDeclaration(node:ts.Node) : node is ts.FunctionDeclaration & {name:Identifier}
+	{
+		return ts.isFunctionDeclaration(node) && !!node.name;
+	}
+
+	private has_export(
+		node:initial_check_nodes
+	) : node is (typeof node) & {modifiers: [ts.SyntaxKind.ExportKeyword]} {
+		return (
+			!!node.modifiers
+			&& node.modifiers.map(
+				(inner_maybe) => inner_maybe.kind
+			).includes(ts.SyntaxKind.ExportKeyword)
+		);
+	}
+
+	private filter_node(maybe:ts.Node): maybe is initial_check_node_has_Identifier
 	{
 		return (
 			(
-				(
-					ts.SyntaxKind.ClassDeclaration === maybe.kind
-					&& 'name' in maybe
-				)
-				|| (
-					ts.SyntaxKind.FunctionDeclaration === maybe.kind
-					&& 'name' in maybe
-				)
-				|| ts.SyntaxKind.TypeAliasDeclaration === maybe.kind
+				this.is_named_ClassDeclaration(maybe)
+				|| this.is_named_FunctionDeclaration(maybe)
+				|| ts.isTypeAliasDeclaration(maybe)
 			)
-			&& 'object' === typeof (maybe as unknown as {name: any}).name
-			&& 'escapedText' in (maybe as unknown as {name: any}).name
-			&& 'string' === typeof (
-				maybe as unknown as {name: {escapedText: any}}
-			).name.escapedText
-			&& 'modifiers' in maybe
-			&& maybe.modifiers instanceof Array
-			&& maybe.modifiers.filter((inner_maybe) => {
-				return 'kind' in inner_maybe;
-			})
-			.map((inner_maybe) => inner_maybe.kind)
-			.includes(ts.SyntaxKind.ExportKeyword)
+			&& this.has_export(maybe)
+		);
+	}
+
+	private filter_nodes(nodes:ts.Node[]) : initial_check_node_has_Identifier[]
+	{
+		return nodes.filter(
+			(maybe) : maybe is initial_check_node_has_Identifier => {
+				return this.filter_node(maybe)
+			}
 		);
 	}
 
@@ -46,15 +68,13 @@ export class DocsTsAutoImports
 		for (const entry of this.files_entries) {
 			const [filename, nodes] = entry;
 
-			const check_these = nodes.filter(
-				this.filter_node
-			);
+			const check_these = this.filter_nodes(nodes);
 
 			for (const checking of check_these) {
 				if (!(filename in file_exports)) {
-					file_exports[filename] = [checking.name.escapedText];
+					file_exports[filename] = [checking.name.escapedText.toString()];
 				} else {
-					file_exports[filename].push(checking.name.escapedText);
+					file_exports[filename].push(checking.name.escapedText.toString());
 				}
 			}
 		}
