@@ -28,15 +28,15 @@ async function update_progress(
 	const all_progress_items = [
 		...progress.definitions.keys,
 		...progress.definitions.supported,
-	].reduce((was, is) => {
-		if (!was.includes(is)) {
-			was.push(is);
-		}
+	]
+		.reduce((was, is) => {
+			if (!was.includes(is)) {
+				was.push(is);
+			}
 
-		return was;
-	}, [] as string[]).sort((a, b) =>
-		a.localeCompare(b)
-	);
+			return was;
+		}, [] as string[])
+		.sort((a, b) => a.localeCompare(b));
 
 	if (log_progress) {
 		console.table({
@@ -243,9 +243,10 @@ async function update_progress(
 
 					${group.members
 						.map((key) => {
-							return `-   [${progress.definitions.supported.includes(key) ? 'x' : ' '}] ${
-								key.replace(/__/g, '\\_\\_')
-							}`;
+							return `-   [${progress.definitions.supported.includes(key) ? 'x' : ' '}] ${key.replace(
+								/__/g,
+								'\\_\\_'
+							)}`;
 						})
 						.join('\n')}`);
 			})

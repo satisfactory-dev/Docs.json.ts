@@ -193,11 +193,13 @@ export class Update8TypeNodeGeneration {
 		const data = schema.definitions[ref];
 
 		if ('$ref' in data || 'required' in data) {
-			this.classes.push(create_constructor_args(
-				`classes/${filename}.ts`,
-				class_name,
-				data
-			));
+			this.classes.push(
+				create_constructor_args(
+					`classes/${filename}.ts`,
+					class_name,
+					data
+				)
+			);
 		}
 
 		if ('properties' in data) {
