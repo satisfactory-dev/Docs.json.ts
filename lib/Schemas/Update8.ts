@@ -523,15 +523,12 @@ export class Update8TypeNodeGeneration {
 			`classes/${adjust_unrealengine_prefix(prefix)}/${adjust_unrealengine_value(value)}.ts`;
 	}
 
-	private generate_concrete_classes(ajv: Ajv) {
-		const checked: string[] = [];
-
-		const filenames: {[key: string]: string} = {};
-
-		for (const NativeClass of schema.prefixItems as [
-			NativeClass,
-			...NativeClass[],
-		]) {
+	private generate_concrete_class(
+		ajv: Ajv,
+		checked:string[],
+		filenames:{[key: string]: string},
+		NativeClass:NativeClass
+	) {
 			if (
 				'items' in NativeClass.properties.Classes &&
 				false !== NativeClass.properties.Classes.items
@@ -572,6 +569,18 @@ export class Update8TypeNodeGeneration {
 					this.populate_checked_and_filenames(filenames, checked, entry['$ref'], NativeClass);
 				}
 			}
+	}
+
+	private generate_concrete_classes(ajv: Ajv) {
+		const checked: string[] = [];
+
+		const filenames: {[key: string]: string} = {};
+
+		for (const NativeClass of schema.prefixItems as [
+			NativeClass,
+			...NativeClass[],
+		]) {
+			this.generate_concrete_class(ajv, checked, filenames, NativeClass);
 		}
 
 		for (const entry of Object.entries(filenames)) {
