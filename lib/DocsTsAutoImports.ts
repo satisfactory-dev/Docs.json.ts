@@ -1,4 +1,4 @@
-import ts, {EntityName, Identifier} from "typescript";
+import ts, {EntityName, Identifier, TypeReferenceNode} from "typescript";
 import {import_these_later, ImportTracker} from "./TypesGeneration";
 import {basename, dirname, relative} from "node:path";
 
@@ -69,6 +69,14 @@ export class DocsTsAutoImports
 		);
 	}
 
+	private static node_IdentifierName(
+		node:initial_check_node_has_Identifier|TypeReferenceNode & {typeName: Identifier}
+	) {
+		const from = ts.isTypeReferenceNode(node) ? node.typeName : node.name;
+
+		return from.escapedText.toString();
+	}
+
 	private file_exports(): {[key: string]: [string, ...string[]]}
 	{
 		const file_exports: {[key: string]: [string, ...string[]]} = {};
@@ -80,9 +88,9 @@ export class DocsTsAutoImports
 
 			for (const checking of check_these) {
 				if (!(filename in file_exports)) {
-					file_exports[filename] = [checking.name.escapedText.toString()];
+					file_exports[filename] = [DocsTsAutoImports.node_IdentifierName(checking)];
 				} else {
-					file_exports[filename].push(checking.name.escapedText.toString());
+					file_exports[filename].push(DocsTsAutoImports.node_IdentifierName(checking));
 				}
 			}
 		}
@@ -115,9 +123,7 @@ export class DocsTsAutoImports
 		return DocsTsAutoImports.are_TypeReferences_with_Identifier(
 			nodes
 		)
-			.map((property_type) => {
-				return property_type.typeName.escapedText.toString();
-			})
+			.map(DocsTsAutoImports.node_IdentifierName)
 			.reduce((was, is) => {
 				if (!was.includes(is)) {
 					was.push(is);
