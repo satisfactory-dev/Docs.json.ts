@@ -243,7 +243,9 @@ async function update_progress(
 
 					${group.members
 						.map((key) => {
-							return `-   [${progress.definitions.supported.includes(key) ? 'x' : ' '}] ${key}`;
+							return `-   [${progress.definitions.supported.includes(key) ? 'x' : ' '}] ${
+								key.replace(/__/g, '\\_\\_')
+							}`;
 						})
 						.join('\n')}`);
 			})

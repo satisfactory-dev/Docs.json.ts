@@ -65,9 +65,9 @@
 ## decimal-string
 
 -   [x] decimal-string
--   [x] decimal-string__type
+-   [x] decimal-string\_\_type
 -   [x] decimal-string--signed
--   [x] decimal-string--signed__type
+-   [x] decimal-string--signed\_\_type
 
 ## FGAmmoType
 
@@ -311,9 +311,9 @@
 ## integer-string
 
 -   [x] integer-string
--   [x] integer-string__type
+-   [x] integer-string\_\_type
 -   [x] integer-string--signed
--   [x] integer-string--signed__type
+-   [x] integer-string--signed\_\_type
 
 ## ItemClass
 
