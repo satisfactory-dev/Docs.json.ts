@@ -517,12 +517,10 @@ export class TypeNodeGenerationMatcher {
 		if (object_string_matcher(property)) {
 			return this.object_search(ajv, property.object_string);
 		} else if ('object_string' in property) {
-			console.error(
+			throw new UnexpectedlyUnknownNoMatchError(
 				property.object_string,
-				object_string_matcher.errors
+				`Unsupported object_string usage found!`
 			);
-
-			throw new Error('whut');
 		}
 
 		return null;

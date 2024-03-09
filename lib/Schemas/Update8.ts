@@ -501,12 +501,9 @@ export class Update8TypeNodeGeneration {
 		);
 	}
 
-	private generate_concrete_classes(ajv: Ajv) {
-		const checked: string[] = [];
-
-		const filenames: {[key: string]: string} = {};
-
-		function populate_checked_and_filenames(
+	private populate_checked_and_filenames(
+		filenames: {[key: string]: string},
+		checked: string[],
 			ref: string,
 			NativeClass: NativeClass
 		) {
@@ -526,26 +523,32 @@ export class Update8TypeNodeGeneration {
 				`classes/${adjust_unrealengine_prefix(prefix)}/${adjust_unrealengine_value(value)}.ts`;
 		}
 
+	private generate_concrete_classes(ajv: Ajv) {
+		const checked: string[] = [];
+
+		const filenames: {[key: string]: string} = {};
+
 		for (const NativeClass of schema.prefixItems as [
 			NativeClass,
 			...NativeClass[],
 		]) {
-			let found_some = false;
 			if (
 				'items' in NativeClass.properties.Classes &&
 				false !== NativeClass.properties.Classes.items
 			) {
 				if ('$ref' in NativeClass.properties.Classes.items) {
-					found_some = true;
-					populate_checked_and_filenames(
+					this.populate_checked_and_filenames(
+						filenames,
+						checked,
 						NativeClass.properties.Classes.items['$ref'],
 						NativeClass
 					);
 				} else if ('oneOf' in NativeClass.properties.Classes.items) {
 					for (const entry of NativeClass.properties.Classes.items
 						.oneOf) {
-						found_some = true;
-						populate_checked_and_filenames(
+						this.populate_checked_and_filenames(
+							filenames,
+							checked,
 							entry['$ref'],
 							NativeClass
 						);
@@ -553,8 +556,9 @@ export class Update8TypeNodeGeneration {
 				} else if ('anyOf' in NativeClass.properties.Classes.items) {
 					for (const entry of NativeClass.properties.Classes.items
 						.anyOf) {
-						found_some = true;
-						populate_checked_and_filenames(
+						this.populate_checked_and_filenames(
+							filenames,
+							checked,
 							entry['$ref'],
 							NativeClass
 						);
@@ -565,15 +569,8 @@ export class Update8TypeNodeGeneration {
 			if ('prefixItems' in NativeClass.properties.Classes) {
 				for (const entry of NativeClass.properties.Classes
 					.prefixItems) {
-					found_some = true;
-					populate_checked_and_filenames(entry['$ref'], NativeClass);
+					this.populate_checked_and_filenames(filenames, checked, entry['$ref'], NativeClass);
 				}
-			}
-
-			if (!found_some) {
-				console.error(NativeClass);
-
-				throw new Error('whut');
 			}
 		}
 
