@@ -458,19 +458,6 @@
 				"pattern": "^/Game/FactoryGame/(?:[^/]+/)+([^.]+).\\1_C$"
 			}
 		},
-		"ItemClass-only": {
-			"type": "string",
-			"object_string": {
-				"type": "object",
-				"required": ["ItemClass"],
-				"additionalProperties": false,
-				"properties": {
-					"ItemClass": {
-						"$ref": "#/definitions/ItemClass--prop"
-					}
-				}
-			}
-		},
 		"ItemClass-and-amount": {
 			"type": "string",
 			"minLength": 1,
@@ -1840,19 +1827,6 @@
 				},
 				"mIsDismantlingAll": {
 					"$ref": "#/definitions/boolean"
-				}
-			}
-		},
-		"SpecifiedColor": {
-			"type": "string",
-			"minLength": 1,
-			"object_string": {
-				"type": "object",
-				"required": ["SpecifiedColor"],
-				"properties": {
-					"SpecifiedColor": {
-						"$ref": "#/definitions/color-decimal"
-					}
 				}
 			}
 		},
