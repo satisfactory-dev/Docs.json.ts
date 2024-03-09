@@ -33,7 +33,6 @@ import {extract_UnrealEngineString} from '../DocsValidation';
 import {import_these_later} from '../TypesGeneration';
 
 import schema from '../../schema/update8.schema.json' assert {type: 'json'};
-import {GenerationException} from "../DocsTsGenerator";
 
 declare type object_with_ref = {$ref: string};
 
