@@ -50,7 +50,8 @@ import {
 	TypesGenerationFromSchema,
 	TypesGenerationMatchesReferenceName,
 	GenerationMatch,
-	ImportTracker, import_these_later,
+	ImportTracker,
+	import_these_later,
 } from './TypesGeneration';
 import {default_config} from './DocsValidation';
 import ts from 'typescript';
@@ -477,34 +478,42 @@ export class DocsTsGenerator {
 
 		update_progress();
 
-		const file_exports:{[key: string]: [string, ...string[]]} = {};
+		const file_exports: {[key: string]: [string, ...string[]]} = {};
 
 		const files_entries = Object.entries(progress.files);
 
 		for (const entry of files_entries) {
 			const [filename, nodes] = entry;
 
-			const check_these = nodes.filter((maybe) : maybe is ts.Node & {name: {escapedText: string}} => {
-				return (
-					(
-						(ts.SyntaxKind.ClassDeclaration === maybe.kind && 'name' in maybe)
-						|| (ts.SyntaxKind.FunctionDeclaration === maybe.kind && 'name' in maybe)
-						|| (ts.SyntaxKind.TypeAliasDeclaration === maybe.kind)
-					)
-					&& (
-						'object' === typeof ((maybe as unknown) as {name: any}).name
-						&& 'escapedText' in ((maybe as unknown) as {name: any}).name
-						&& 'string' === typeof ((maybe as unknown) as {name: {escapedText: any}}).name.escapedText
-					)
-					&& (
-						'modifiers' in maybe
-						&& maybe.modifiers instanceof Array
-						&& maybe.modifiers.filter((inner_maybe) => {
-							return 'kind' in inner_maybe;
-						}).map(inner_maybe => inner_maybe.kind).includes(ts.SyntaxKind.ExportKeyword)
-					)
-				);
-			});
+			const check_these = nodes.filter(
+				(maybe): maybe is ts.Node & {name: {escapedText: string}} => {
+					return (
+						((ts.SyntaxKind.ClassDeclaration === maybe.kind &&
+							'name' in maybe) ||
+							(ts.SyntaxKind.FunctionDeclaration ===
+								maybe.kind &&
+								'name' in maybe) ||
+							ts.SyntaxKind.TypeAliasDeclaration ===
+								maybe.kind) &&
+						'object' ===
+							typeof (maybe as unknown as {name: any}).name &&
+						'escapedText' in
+							(maybe as unknown as {name: any}).name &&
+						'string' ===
+							typeof (
+								maybe as unknown as {name: {escapedText: any}}
+							).name.escapedText &&
+						'modifiers' in maybe &&
+						maybe.modifiers instanceof Array &&
+						maybe.modifiers
+							.filter((inner_maybe) => {
+								return 'kind' in inner_maybe;
+							})
+							.map((inner_maybe) => inner_maybe.kind)
+							.includes(ts.SyntaxKind.ExportKeyword)
+					);
+				}
+			);
 
 			for (const checking of check_these) {
 				if (!(filename in file_exports)) {
@@ -515,7 +524,7 @@ export class DocsTsGenerator {
 			}
 		}
 
-		const comes_from:{[key: string]: string} = {};
+		const comes_from: {[key: string]: string} = {};
 
 		for (const entry of Object.entries(file_exports)) {
 			const [filename, exports_these] = entry;
@@ -529,52 +538,88 @@ export class DocsTsGenerator {
 			}
 		}
 
-		const auto_imports:import_these_later = {};
+		const auto_imports: import_these_later = {};
 
 		for (const entry of files_entries) {
 			const [filename, nodes] = entry;
 
-			const class_declarations = nodes.filter((maybe) : maybe is ts.ClassDeclaration => {
-				return (
-					(ts.SyntaxKind.ClassDeclaration === maybe.kind)
-				);
-			});
-
-			const property_declarations = class_declarations.map(
-				declaration => declaration.members.filter(
-					(maybe) : maybe is ts.PropertyDeclaration => {
-						return ts.SyntaxKind.PropertyDeclaration === maybe.kind;
-					}
-				)
-			).reduce((was, is) => {was.push(...is); return was}, []);
-
-			const property_declarations_use_type_reference = property_declarations.filter(
-				(maybe) : maybe is ts.PropertyDeclaration & {type: ts.TypeReferenceNode} => {
-					return ts.SyntaxKind.TypeReference === maybe.type?.kind;
-				}
-			).map((property_declaration) => {
-				return property_declaration.type;
-			});
-
-			const property_types_reference_names = property_declarations_use_type_reference.filter(
-				(maybe) : maybe is ts.TypeReferenceNode & {typeName: ts.Identifier} => {
-					return ts.SyntaxKind.Identifier === maybe.typeName.kind;
-				}
-			).map(
-				(property_type) => {
-					return property_type.typeName.escapedText.toString();
-				}
-			).reduce((was, is) => {
-				if (!was.includes(is)) {
-					was.push(is);
-				}
-
-				return was;
-			}, [] as string[]).filter(
-				(maybe) : maybe is Exclude<(keyof typeof comes_from), number> => {
-					return maybe in comes_from && filename !== `${comes_from[maybe]}.ts`;
+			const class_declarations = nodes.filter(
+				(maybe): maybe is ts.ClassDeclaration => {
+					return ts.SyntaxKind.ClassDeclaration === maybe.kind;
 				}
 			);
+
+			const property_declarations = class_declarations
+				.map((declaration) =>
+					declaration.members.filter(
+						(maybe): maybe is ts.PropertyDeclaration => {
+							return (
+								ts.SyntaxKind.PropertyDeclaration ===
+								maybe.kind
+							);
+						}
+					)
+				)
+				.reduce((was, is) => {
+					was.push(...is);
+					return was;
+				}, []);
+
+			const property_declarations_use_type_reference =
+				property_declarations
+					.filter(
+						(
+							maybe
+						): maybe is ts.PropertyDeclaration & {
+							type: ts.TypeReferenceNode;
+						} => {
+							return (
+								ts.SyntaxKind.TypeReference ===
+								maybe.type?.kind
+							);
+						}
+					)
+					.map((property_declaration) => {
+						return property_declaration.type;
+					});
+
+			const property_types_reference_names =
+				property_declarations_use_type_reference
+					.filter(
+						(
+							maybe
+						): maybe is ts.TypeReferenceNode & {
+							typeName: ts.Identifier;
+						} => {
+							return (
+								ts.SyntaxKind.Identifier ===
+								maybe.typeName.kind
+							);
+						}
+					)
+					.map((property_type) => {
+						return property_type.typeName.escapedText.toString();
+					})
+					.reduce((was, is) => {
+						if (!was.includes(is)) {
+							was.push(is);
+						}
+
+						return was;
+					}, [] as string[])
+					.filter(
+						(
+							maybe
+						): maybe is Exclude<
+							keyof typeof comes_from,
+							number
+						> => {
+							return (
+								maybe in comes_from &&
+								filename !== `${comes_from[maybe]}.ts`
+							);
+						}
+					);
 
 			if (property_types_reference_names.length) {
 				if (!(filename in auto_imports)) {
@@ -588,7 +633,11 @@ export class DocsTsGenerator {
 						auto_imports[filename][import_from] = [];
 					}
 
-					if (!auto_imports[filename][import_from].includes(import_this)) {
+					if (
+						!auto_imports[filename][import_from].includes(
+							import_this
+						)
+					) {
 						auto_imports[filename][import_from].push(import_this);
 					}
 				}
