@@ -194,9 +194,9 @@ export class Update8TypeNodeGeneration {
 
 		if ('$ref' in data || 'required' in data) {
 			this.classes.push(create_constructor_args(
-					`classes/${filename}.ts`,
-					class_name,
-					data
+				`classes/${filename}.ts`,
+				class_name,
+				data
 			));
 		}
 
