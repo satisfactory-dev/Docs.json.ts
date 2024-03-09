@@ -529,20 +529,23 @@ export class Update8TypeNodeGeneration {
 		filenames:{[key: string]: string},
 		NativeClass:NativeClass
 	) {
+		const {Classes} = NativeClass.properties;
 		if (
-			'items' in NativeClass.properties.Classes &&
-			false !== NativeClass.properties.Classes.items
+			'items' in Classes &&
+			false !== Classes.items
 		) {
-			if ('$ref' in NativeClass.properties.Classes.items) {
+			const {items} = Classes;
+
+			if ('$ref' in items) {
 				this.populate_checked_and_filenames(
 					filenames,
 					checked,
-					NativeClass.properties.Classes.items['$ref'],
+					items['$ref'],
 					NativeClass
 				);
-			} else if ('oneOf' in NativeClass.properties.Classes.items) {
-				for (const entry of NativeClass.properties.Classes.items
-					.oneOf) {
+			} else if ('oneOf' in items) {
+				const {oneOf} = items;
+				for (const entry of oneOf) {
 					this.populate_checked_and_filenames(
 						filenames,
 						checked,
@@ -550,9 +553,9 @@ export class Update8TypeNodeGeneration {
 						NativeClass
 					);
 				}
-			} else if ('anyOf' in NativeClass.properties.Classes.items) {
-				for (const entry of NativeClass.properties.Classes.items
-					.anyOf) {
+			} else if ('anyOf' in items) {
+				const {anyOf} = items;
+				for (const entry of anyOf) {
 					this.populate_checked_and_filenames(
 						filenames,
 						checked,
@@ -563,9 +566,9 @@ export class Update8TypeNodeGeneration {
 			}
 		}
 
-		if ('prefixItems' in NativeClass.properties.Classes) {
-			for (const entry of NativeClass.properties.Classes
-				.prefixItems) {
+		if ('prefixItems' in Classes) {
+			const {prefixItems} = Classes;
+			for (const entry of prefixItems) {
 				this.populate_checked_and_filenames(filenames, checked, entry['$ref'], NativeClass);
 			}
 		}
