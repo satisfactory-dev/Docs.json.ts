@@ -198,11 +198,9 @@ async function update_progress(
 	remap(grouped_progress);
 
 
-	function unindent(input:string) : string
+	function remove_indentation(input:string) : string
 	{
 		const str = input.replace(/^\n+/, '').replace(/\n+\t*$/, '\n');
-
-		console.log(str);
 
 		const matches = /^(\t+)/gm.exec(str);
 
@@ -217,7 +215,7 @@ async function update_progress(
 		return str;
 	}
 
-	const progress_markdown = unindent(`
+	const progress_markdown = remove_indentation(`
 		# Types Progress
 
 		${
@@ -230,7 +228,7 @@ async function update_progress(
 
 		${
 			reduce(grouped_progress).map((group) => {
-				return unindent(`
+				return remove_indentation(`
 					${'#'.repeat(group.depth)} ${group.title}
 
 					${group.members.map((key) => {
