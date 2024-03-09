@@ -1,6 +1,6 @@
 # Types Progress
 
-96.28% Complete (233 of 242)
+95.90% Complete (234 of 244)
 
 ## Basic Types
 
@@ -9,8 +9,6 @@
 -   [x] class
 -   [x] class--no-description
 -   [x] class--no-description-or-display-name
--   [x] decimal-string
--   [x] decimal-string--signed
 -   [x] EditorCurveData
 -   [x] empty-object
 -   [x] FGBuildingDescriptor
@@ -31,12 +29,10 @@
 -   [x] FGSuitBase
 -   [x] FGVehicleDescriptor
 -   [x] InfinityExtrap
--   [x] integer-string
--   [x] integer-string--signed
 -   [x] mAspect
 -   [x] MaterialSlotName
 -   [x] mBatteryStatus
--   [ ] mChainsawState
+-   [x] mChainsawState
 -   [x] mClassToScanFor
 -   [x] mCrosshairMaterial
 -   [x] mDamageTypes
@@ -65,6 +61,13 @@
 -   [x] color--base
 -   [x] color--semi-native
 -   [x] color-decimal--semi-native
+
+## decimal-string
+
+-   [x] decimal-string
+-   [x] decimal-string__type
+-   [x] decimal-string--signed
+-   [x] decimal-string--signed__type
 
 ## FGAmmoType
 
@@ -305,10 +308,16 @@
 -   [x] FGWeapon--rebar-gun
 -   [x] FGWeapon--rifle
 
+## integer-string
+
+-   [x] integer-string
+-   [x] integer-string__type
+-   [x] integer-string--signed
+-   [x] integer-string--signed__type
+
 ## ItemClass
 
 -   [x] ItemClass-and-amount
--   [ ] ItemClass-only
 -   [x] ItemClass--prop
 
 ## ItemClass-only
@@ -322,7 +331,6 @@
 
 ## SpecifiedColor
 
--   [ ] SpecifiedColor
 -   [x] SpecifiedColor--semi-native
 
 ## Texture2D

@@ -25,18 +25,27 @@ async function update_progress(
 	progress: generation_result,
 	log_progress = true
 ) {
+	const all_progress_items = [
+		...progress.definitions.keys,
+		...progress.definitions.supported,
+	].reduce((was, is) => {
+		if (!was.includes(is)) {
+			was.push(is);
+		}
+
+		return was;
+	}, [] as string[]).sort((a, b) =>
+		a.localeCompare(b)
+	);
+
 	if (log_progress) {
 		console.table({
 			Supported: progress.definitions.supported.length,
 			Unsupported:
-				progress.definitions.keys.length -
+				all_progress_items.length -
 				progress.definitions.supported.length,
 		});
 	}
-
-	const all_progress_items = [...progress.definitions.keys].sort((a, b) =>
-		a.localeCompare(b)
-	);
 
 	type progress_group = {
 		members: string[];
@@ -254,6 +263,7 @@ try {
 	await update_progress(progress);
 } catch (err) {
 	if (err instanceof GenerationException) {
+		console.error('A generation exception occurred');
 		await update_progress(err.progress, false);
 
 		let {exception} = err;
