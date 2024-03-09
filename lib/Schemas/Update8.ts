@@ -529,46 +529,46 @@ export class Update8TypeNodeGeneration {
 		filenames:{[key: string]: string},
 		NativeClass:NativeClass
 	) {
-			if (
-				'items' in NativeClass.properties.Classes &&
-				false !== NativeClass.properties.Classes.items
-			) {
-				if ('$ref' in NativeClass.properties.Classes.items) {
+		if (
+			'items' in NativeClass.properties.Classes &&
+			false !== NativeClass.properties.Classes.items
+		) {
+			if ('$ref' in NativeClass.properties.Classes.items) {
+				this.populate_checked_and_filenames(
+					filenames,
+					checked,
+					NativeClass.properties.Classes.items['$ref'],
+					NativeClass
+				);
+			} else if ('oneOf' in NativeClass.properties.Classes.items) {
+				for (const entry of NativeClass.properties.Classes.items
+					.oneOf) {
 					this.populate_checked_and_filenames(
 						filenames,
 						checked,
-						NativeClass.properties.Classes.items['$ref'],
+						entry['$ref'],
 						NativeClass
 					);
-				} else if ('oneOf' in NativeClass.properties.Classes.items) {
-					for (const entry of NativeClass.properties.Classes.items
-						.oneOf) {
-						this.populate_checked_and_filenames(
-							filenames,
-							checked,
-							entry['$ref'],
-							NativeClass
-						);
-					}
-				} else if ('anyOf' in NativeClass.properties.Classes.items) {
-					for (const entry of NativeClass.properties.Classes.items
-						.anyOf) {
-						this.populate_checked_and_filenames(
-							filenames,
-							checked,
-							entry['$ref'],
-							NativeClass
-						);
-					}
+				}
+			} else if ('anyOf' in NativeClass.properties.Classes.items) {
+				for (const entry of NativeClass.properties.Classes.items
+					.anyOf) {
+					this.populate_checked_and_filenames(
+						filenames,
+						checked,
+						entry['$ref'],
+						NativeClass
+					);
 				}
 			}
+		}
 
-			if ('prefixItems' in NativeClass.properties.Classes) {
-				for (const entry of NativeClass.properties.Classes
-					.prefixItems) {
-					this.populate_checked_and_filenames(filenames, checked, entry['$ref'], NativeClass);
-				}
+		if ('prefixItems' in NativeClass.properties.Classes) {
+			for (const entry of NativeClass.properties.Classes
+				.prefixItems) {
+				this.populate_checked_and_filenames(filenames, checked, entry['$ref'], NativeClass);
 			}
+		}
 	}
 
 	private generate_concrete_classes(ajv: Ajv) {
