@@ -525,15 +525,12 @@ export class Update8TypeNodeGeneration {
 
 	private generate_concrete_class(
 		ajv: Ajv,
-		checked:string[],
-		filenames:{[key: string]: string},
-		NativeClass:NativeClass
+		checked: string[],
+		filenames: {[key: string]: string},
+		NativeClass: NativeClass
 	) {
 		const {Classes} = NativeClass.properties;
-		if (
-			'items' in Classes &&
-			false !== Classes.items
-		) {
+		if ('items' in Classes && false !== Classes.items) {
 			const {items} = Classes;
 
 			if ('$ref' in items) {
@@ -569,7 +566,12 @@ export class Update8TypeNodeGeneration {
 		if ('prefixItems' in Classes) {
 			const {prefixItems} = Classes;
 			for (const entry of prefixItems) {
-				this.populate_checked_and_filenames(filenames, checked, entry['$ref'], NativeClass);
+				this.populate_checked_and_filenames(
+					filenames,
+					checked,
+					entry['$ref'],
+					NativeClass
+				);
 			}
 		}
 	}

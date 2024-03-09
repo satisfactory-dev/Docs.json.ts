@@ -197,18 +197,19 @@ async function update_progress(
 
 	remap(grouped_progress);
 
-
-	function remove_indentation(input:string) : string
-	{
+	function remove_indentation(input: string): string {
 		const str = input.replace(/^\n+/, '').replace(/\n+\t*$/, '\n');
 
 		const matches = /^(\t+)/gm.exec(str);
 
 		if (matches) {
-			const min = matches.reduce((was, is) => Math.min(was, is.length), Infinity);
+			const min = matches.reduce(
+				(was, is) => Math.min(was, is.length),
+				Infinity
+			);
 
 			if (min > 0 && min !== Infinity) {
-				return str.replace((new RegExp(`^\t{${min}}`, 'gm')), '');
+				return str.replace(new RegExp(`^\t{${min}}`, 'gm'), '');
 			}
 		}
 
@@ -218,24 +219,26 @@ async function update_progress(
 	const progress_markdown = remove_indentation(`
 		# Types Progress
 
-		${
-			(
-				(progress.definitions.supported.length / all_progress_items.length) *100
-			).toFixed(2)
-		}% Complete (${
-			progress.definitions.supported.length} of ${all_progress_items.length
+		${(
+			(progress.definitions.supported.length /
+				all_progress_items.length) *
+			100
+		).toFixed(2)}% Complete (${progress.definitions.supported.length} of ${
+			all_progress_items.length
 		})
 
-		${
-			reduce(grouped_progress).map((group) => {
+		${reduce(grouped_progress)
+			.map((group) => {
 				return remove_indentation(`
 					${'#'.repeat(group.depth)} ${group.title}
 
-					${group.members.map((key) => {
-						return `-   [${progress.definitions.supported.includes(key) ? 'x' : ' '}] ${key}`;
-					}).join('\n')}`);
-			}).join('\n\n')
-		}
+					${group.members
+						.map((key) => {
+							return `-   [${progress.definitions.supported.includes(key) ? 'x' : ' '}] ${key}`;
+						})
+						.join('\n')}`);
+			})
+			.join('\n\n')}
 	`);
 
 	await writeFile(`${__dirname}/types-progress.md`, progress_markdown);
