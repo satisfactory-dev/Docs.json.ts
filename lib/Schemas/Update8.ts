@@ -504,24 +504,24 @@ export class Update8TypeNodeGeneration {
 	private populate_checked_and_filenames(
 		filenames: {[key: string]: string},
 		checked: string[],
-			ref: string,
-			NativeClass: NativeClass
-		) {
-			if (checked.includes(ref)) {
-				return;
-			}
-
-			checked.push(ref);
-
-			const {prefix, value} = extract_UnrealEngineString(
-				NativeClass.properties.NativeClass.const
-			);
-
-			const definition_name = ref.substring(14);
-
-			filenames[definition_name] =
-				`classes/${adjust_unrealengine_prefix(prefix)}/${adjust_unrealengine_value(value)}.ts`;
+		ref: string,
+		NativeClass: NativeClass
+	) {
+		if (checked.includes(ref)) {
+			return;
 		}
+
+		checked.push(ref);
+
+		const {prefix, value} = extract_UnrealEngineString(
+			NativeClass.properties.NativeClass.const
+		);
+
+		const definition_name = ref.substring(14);
+
+		filenames[definition_name] =
+			`classes/${adjust_unrealengine_prefix(prefix)}/${adjust_unrealengine_value(value)}.ts`;
+	}
 
 	private generate_concrete_classes(ajv: Ajv) {
 		const checked: string[] = [];
