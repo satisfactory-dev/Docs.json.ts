@@ -193,14 +193,11 @@ export class Update8TypeNodeGeneration {
 		const data = schema.definitions[ref];
 
 		if ('$ref' in data || 'required' in data) {
-			this.classes.push({
-				...create_constructor_args(
+			this.classes.push(create_constructor_args(
 					`classes/${filename}.ts`,
 					class_name,
 					data
-				),
-				ref,
-			});
+			));
 		}
 
 		if ('properties' in data) {
@@ -292,6 +289,7 @@ export class Update8TypeNodeGeneration {
 		)) {
 			this.classes.push({
 				file: 'utils/validators.ts',
+				ref: `${reference_name}__type`,
 				node: ts.factory.createTypeAliasDeclaration(
 					[create_modifier('export')],
 					adjust_class_name(`${reference_name}__type`),
@@ -414,6 +412,7 @@ export class Update8TypeNodeGeneration {
 
 		this.classes.push({
 			file: 'common/classes.ts',
+			ref: 'EditorCurveData',
 			node: createClass(
 				'EditorCurveData',
 				createClass__members__with_auto_constructor<
@@ -442,6 +441,7 @@ export class Update8TypeNodeGeneration {
 
 		this.classes.push({
 			file: 'classes/CoreUObject/FGSchematic.ts',
+			ref: 'mSchematics',
 			node: create_minimum_size_typed_array_of_single_type(
 				schema.definitions.mSchematics.array_string.minItems,
 				() =>

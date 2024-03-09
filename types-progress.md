@@ -1,6 +1,6 @@
 # Types Progress
 
-93.80% Complete (227 of 242)
+96.28% Complete (233 of 242)
 
 ## Basic Types
 
@@ -11,7 +11,7 @@
 -   [x] class--no-description-or-display-name
 -   [x] decimal-string
 -   [x] decimal-string--signed
--   [ ] EditorCurveData
+-   [x] EditorCurveData
 -   [x] empty-object
 -   [x] FGBuildingDescriptor
 -   [x] FGChainsaw
@@ -51,7 +51,7 @@
 -   [x] mPlatformDockingStatus
 -   [x] mScannableType
 -   [x] mScannerDisplayText
--   [ ] mSchematics
+-   [x] mSchematics
 -   [x] mSnappedPassthroughs
 -   [x] mStackSize
 -   [x] None
