@@ -5,7 +5,10 @@ import Ajv from 'ajv/dist/2020';
 import {
 	TypeNodeGenerationMatcher,
 	create_constructor_args,
-	create_binding_constructor, NoMatchError, PropertyMatchFailure, PartialMatchError,
+	create_binding_constructor,
+	NoMatchError,
+	PropertyMatchFailure,
+	PartialMatchError,
 } from '../TypeNodeGeneration';
 import {supported_base_classes} from '../TypesGeneration/Classes';
 import {
@@ -192,15 +195,13 @@ export class Update8TypeNodeGeneration {
 
 		if ('$ref' in data || 'required' in data) {
 			if (!filename.endsWith('.ts')) {
-				throw new Error(`non-typescript filename specified: ${filename}`);
+				throw new Error(
+					`non-typescript filename specified: ${filename}`
+				);
 			}
 
 			this.classes.push(
-				create_constructor_args(
-					filename,
-					class_name,
-					data
-				)
+				create_constructor_args(filename, class_name, data)
 			);
 		}
 
@@ -275,7 +276,7 @@ export class Update8TypeNodeGeneration {
 		});
 	}
 
-	private generate_types(ajv:Ajv) {
+	private generate_types(ajv: Ajv) {
 		const StrictlyTypedNumberFromRegExp_reference_names: (
 			| 'decimal-string'
 			| 'decimal-string--signed'
@@ -456,7 +457,8 @@ export class Update8TypeNodeGeneration {
 			),
 		});
 
-		for (const mUnlocks_type of schema.definitions['FGSchematic--base'].properties.mUnlocks.items.anyOf) {
+		for (const mUnlocks_type of schema.definitions['FGSchematic--base']
+			.properties.mUnlocks.items.anyOf) {
 			const {$ref} = mUnlocks_type;
 
 			const reference_name = $ref.substring(14);
@@ -486,11 +488,20 @@ export class Update8TypeNodeGeneration {
 					),
 				});
 
-				for (const entry of Object.entries(result.import_these_somewhere_later)) {
-					this.merge_imports('classes/CoreUObject/FGSchematic.ts', entry[0], entry[1]);
+				for (const entry of Object.entries(
+					result.import_these_somewhere_later
+				)) {
+					this.merge_imports(
+						'classes/CoreUObject/FGSchematic.ts',
+						entry[0],
+						entry[1]
+					);
 				}
 			} catch (err) {
-				if (err instanceof NoMatchError || err instanceof PartialMatchError) {
+				if (
+					err instanceof NoMatchError ||
+					err instanceof PartialMatchError
+				) {
 					throw new PropertyMatchFailure(reference_name, err);
 				}
 

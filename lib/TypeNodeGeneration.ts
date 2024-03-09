@@ -412,24 +412,27 @@ export class TypeNodeGenerationMatcher {
 						items: {
 							oneOf: [
 								{
-							type: 'object',
-							required: ['anyOf'],
-							additionalProperties: false,
-							properties: {
-								anyOf: {
-									type: 'array',
-									minItems: 1,
-									items: {type: 'object'},
-								},
-							},
+									type: 'object',
+									required: ['anyOf'],
+									additionalProperties: false,
+									properties: {
+										anyOf: {
+											type: 'array',
+											minItems: 1,
+											items: {type: 'object'},
+										},
+									},
 								},
 								{
 									type: 'object',
 									required: ['type'],
 									properties: {
-										type: {type: 'string', const: 'string'}
-									}
-								}
+										type: {
+											type: 'string',
+											const: 'string',
+										},
+									},
+								},
 							],
 						},
 					},

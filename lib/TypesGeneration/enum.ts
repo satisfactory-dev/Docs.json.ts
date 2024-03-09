@@ -4,7 +4,8 @@ import {
 	adjust_enum_name,
 	create_modifier,
 	create_string_starts_with,
-	create_type, possibly_create_lazy_union,
+	create_type,
+	possibly_create_lazy_union,
 } from '../TsFactoryWrapper';
 import {schema as const_schema} from './constants';
 import {
@@ -151,7 +152,7 @@ export const type_node_generators = [
 			create_union_types([property])
 		);
 	}),
-	new TypeNodeGeneration<{type: 'string', enum: [string, ...string[]]}>(
+	new TypeNodeGeneration<{type: 'string'; enum: [string, ...string[]]}>(
 		{
 			type: 'object',
 			required: ['type', 'enum'],
@@ -166,7 +167,9 @@ export const type_node_generators = [
 			},
 		},
 		(data) => {
-			return new TypeNodeGenerationResult(() => possibly_create_lazy_union(data.enum));
+			return new TypeNodeGenerationResult(() =>
+				possibly_create_lazy_union(data.enum)
+			);
 		}
 	),
 	new TypeNodeGeneration<{
