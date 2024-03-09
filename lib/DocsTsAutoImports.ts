@@ -10,15 +10,8 @@ export class DocsTsAutoImports
 		this.files_entries = Object.entries(files);
 	}
 
-	private file_exports(): {[key: string]: [string, ...string[]]}
+	private filter_node(maybe:ts.Node): maybe is ts.Node & {name: {escapedText: string}}
 	{
-		const file_exports: {[key: string]: [string, ...string[]]} = {};
-
-		for (const entry of this.files_entries) {
-			const [filename, nodes] = entry;
-
-			const check_these = nodes.filter(
-				(maybe): maybe is ts.Node & {name: {escapedText: string}} => {
 					return (
 						((ts.SyntaxKind.ClassDeclaration === maybe.kind &&
 								'name' in maybe) ||
@@ -44,7 +37,17 @@ export class DocsTsAutoImports
 							.map((inner_maybe) => inner_maybe.kind)
 							.includes(ts.SyntaxKind.ExportKeyword)
 					);
-				}
+	}
+
+	private file_exports(): {[key: string]: [string, ...string[]]}
+	{
+		const file_exports: {[key: string]: [string, ...string[]]} = {};
+
+		for (const entry of this.files_entries) {
+			const [filename, nodes] = entry;
+
+			const check_these = nodes.filter(
+				this.filter_node
 			);
 
 			for (const checking of check_these) {
