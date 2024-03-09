@@ -123,7 +123,7 @@ export declare type imports_shorthand = {
 }[];
 
 export class ImportTracker {
-	private static imports: {[key: string]: imports_shorthand} = {};
+	public static imports: {[key: string]: imports_shorthand} = {};
 
 	static set_imports(file: string, imports: imports_shorthand) {
 		this.imports[file] = imports;

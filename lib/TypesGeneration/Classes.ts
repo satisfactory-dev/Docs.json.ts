@@ -46,10 +46,11 @@ export const target_files = {
 
 ImportTracker.set_imports('classes/base.ts', [
 	{
-		import_these: ['regexp_argument', 'decimal_string'],
+		import_these: ['regexp_argument'],
 		from: '../utils/validators',
 	},
 ]);
+/*
 ImportTracker.set_imports('classes/CoreUObject/FGSchematic.ts', [
 	{
 		import_these: [
@@ -60,6 +61,7 @@ ImportTracker.set_imports('classes/CoreUObject/FGSchematic.ts', [
 		from: '../../utils/validators',
 	},
 ]);
+*/
 
 declare type mDisableSnapOn_member = {
 	type: 'string';

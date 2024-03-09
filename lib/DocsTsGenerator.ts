@@ -1,5 +1,5 @@
 import {mkdir, readFile, unlink, writeFile} from 'node:fs/promises';
-import {basename, dirname} from 'node:path';
+import {basename, dirname, relative} from 'node:path';
 import {existsSync} from 'node:fs';
 import {fileURLToPath} from 'node:url';
 
@@ -50,7 +50,7 @@ import {
 	TypesGenerationFromSchema,
 	TypesGenerationMatchesReferenceName,
 	GenerationMatch,
-	ImportTracker,
+	ImportTracker, import_these_later,
 } from './TypesGeneration';
 import {default_config} from './DocsValidation';
 import ts from 'typescript';
@@ -476,6 +476,126 @@ export class DocsTsGenerator {
 		}
 
 		update_progress();
+
+		const file_exports:{[key: string]: [string, ...string[]]} = {};
+
+		const files_entries = Object.entries(progress.files);
+
+		for (const entry of files_entries) {
+			const [filename, nodes] = entry;
+
+			const check_these = nodes.filter((maybe) : maybe is ts.Node & {name: {escapedText: string}} => {
+				return (
+					(
+						(ts.SyntaxKind.ClassDeclaration === maybe.kind && 'name' in maybe)
+						|| (ts.SyntaxKind.FunctionDeclaration === maybe.kind && 'name' in maybe)
+						|| (ts.SyntaxKind.TypeAliasDeclaration === maybe.kind)
+					)
+					&& (
+						'object' === typeof ((maybe as unknown) as {name: any}).name
+						&& 'escapedText' in ((maybe as unknown) as {name: any}).name
+						&& 'string' === typeof ((maybe as unknown) as {name: {escapedText: any}}).name.escapedText
+					)
+					&& (
+						'modifiers' in maybe
+						&& maybe.modifiers instanceof Array
+						&& maybe.modifiers.filter((inner_maybe) => {
+							return 'kind' in inner_maybe;
+						}).map(inner_maybe => inner_maybe.kind).includes(ts.SyntaxKind.ExportKeyword)
+					)
+				);
+			});
+
+			for (const checking of check_these) {
+				if (!(filename in file_exports)) {
+					file_exports[filename] = [checking.name.escapedText];
+				} else {
+					file_exports[filename].push(checking.name.escapedText);
+				}
+			}
+		}
+
+		const comes_from:{[key: string]: string} = {};
+
+		for (const entry of Object.entries(file_exports)) {
+			const [filename, exports_these] = entry;
+
+			for (const export_name of exports_these) {
+				if (export_name in comes_from) {
+					throw new Error(`${export_name} conflict!`);
+				}
+
+				comes_from[export_name] = filename.replace(/\.ts$/, '');
+			}
+		}
+
+		const auto_imports:import_these_later = {};
+
+		for (const entry of files_entries) {
+			const [filename, nodes] = entry;
+
+			const class_declarations = nodes.filter((maybe) : maybe is ts.ClassDeclaration => {
+				return (
+					(ts.SyntaxKind.ClassDeclaration === maybe.kind)
+				);
+			});
+
+			const property_declarations = class_declarations.map(
+				declaration => declaration.members.filter(
+					(maybe) : maybe is ts.PropertyDeclaration => {
+						return ts.SyntaxKind.PropertyDeclaration === maybe.kind;
+					}
+				)
+			).reduce((was, is) => {was.push(...is); return was}, []);
+
+			const property_declarations_use_type_reference = property_declarations.filter(
+				(maybe) : maybe is ts.PropertyDeclaration & {type: ts.TypeReferenceNode} => {
+					return ts.SyntaxKind.TypeReference === maybe.type?.kind;
+				}
+			).map((property_declaration) => {
+				return property_declaration.type;
+			});
+
+			const property_types_reference_names = property_declarations_use_type_reference.filter(
+				(maybe) : maybe is ts.TypeReferenceNode & {typeName: ts.Identifier} => {
+					return ts.SyntaxKind.Identifier === maybe.typeName.kind;
+				}
+			).map(
+				(property_type) => {
+					return property_type.typeName.escapedText.toString();
+				}
+			).reduce((was, is) => {
+				if (!was.includes(is)) {
+					was.push(is);
+				}
+
+				return was;
+			}, [] as string[]).filter(
+				(maybe) : maybe is Exclude<(keyof typeof comes_from), number> => {
+					return maybe in comes_from && filename !== `${comes_from[maybe]}.ts`;
+				}
+			);
+
+			if (property_types_reference_names.length) {
+				if (!(filename in auto_imports)) {
+					auto_imports[filename] = {};
+				}
+
+				for (const import_this of property_types_reference_names) {
+					const import_from = `${relative(dirname(filename), dirname(comes_from[import_this]))}/${basename(comes_from[import_this])}`;
+
+					if (!(import_from in auto_imports[filename])) {
+						auto_imports[filename][import_from] = [];
+					}
+
+					if (!auto_imports[filename][import_from].includes(import_this)) {
+						auto_imports[filename][import_from].push(import_this);
+					}
+				}
+			}
+		}
+
+		ImportTracker.merge_and_set_imports(auto_imports);
 
 		return progress;
 	}
