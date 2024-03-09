@@ -3,7 +3,6 @@ import ts from 'typescript';
 import {TypesGenerationFromSchema} from '../TypesGeneration';
 import {
 	adjust_class_name,
-	computed_property_name_or_undefined,
 	create_literal_node_from_value,
 	create_modifier,
 } from '../TsFactoryWrapper';

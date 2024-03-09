@@ -67,9 +67,7 @@ declare type NativeClass = {
 	};
 };
 
-declare type definition_key<
-	T extends string = keyof typeof schema.definitions,
-> = keyof typeof schema.definitions;
+declare type definition_key = keyof typeof schema.definitions;
 
 export function get_dependency_tree(ref: definition_key): definition_key[] {
 	const ancestry: definition_key[] = [ref];
@@ -526,9 +524,8 @@ export class Update8TypeNodeGeneration {
 	}
 
 	private generate_concrete_class(
-		ajv: Ajv,
 		checked: string[],
-		filenames: {[key: string]: string},
+		filenames: {[p: string]: string},
 		NativeClass: NativeClass
 	) {
 		const {Classes} = NativeClass.properties;
@@ -587,7 +584,7 @@ export class Update8TypeNodeGeneration {
 			NativeClass,
 			...NativeClass[],
 		]) {
-			this.generate_concrete_class(ajv, checked, filenames, NativeClass);
+			this.generate_concrete_class(checked, filenames, NativeClass);
 		}
 
 		for (const entry of Object.entries(filenames)) {
