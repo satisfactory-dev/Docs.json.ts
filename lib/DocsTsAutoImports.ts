@@ -60,90 +60,101 @@ export class DocsTsAutoImports
 	}
 
 	private references_to_names(
-			filename:string,
-			nodes:ts.TypeReferenceNode[]
-		) : string[] {
-			return nodes.filter(
+		filename:string,
+		nodes:ts.TypeReferenceNode[]
+	) : string[] {
+		return nodes.filter(
+			(
+				maybe
+			): maybe is ts.TypeReferenceNode & {
+				typeName: ts.Identifier;
+			} => {
+				return (
+					ts.SyntaxKind.Identifier ===
+					maybe.typeName.kind
+				);
+			}
+		)
+			.map((property_type) => {
+				return property_type.typeName.escapedText.toString();
+			})
+			.reduce((was, is) => {
+				if (!was.includes(is)) {
+					was.push(is);
+				}
+
+				return was;
+			}, [] as string[])
+			.filter(
 				(
 					maybe
-				): maybe is ts.TypeReferenceNode & {
-					typeName: ts.Identifier;
-				} => {
+				): maybe is Exclude<
+					keyof typeof this.comes_from,
+					number
+				> => {
 					return (
-						ts.SyntaxKind.Identifier ===
-						maybe.typeName.kind
+						maybe in this.comes_from &&
+						filename !== `${this.comes_from[maybe]}.ts`
 					);
 				}
-			)
-				.map((property_type) => {
-					return property_type.typeName.escapedText.toString();
-				})
-				.reduce((was, is) => {
-					if (!was.includes(is)) {
-						was.push(is);
-					}
-
-					return was;
-				}, [] as string[])
-				.filter(
-					(
-						maybe
-					): maybe is Exclude<
-						keyof typeof this.comes_from,
-						number
-					> => {
-						return (
-							maybe in this.comes_from &&
-							filename !== `${this.comes_from[maybe]}.ts`
-						);
-					}
-				);
-		}
-
-	private filter_types_to_reference_nodes(nodes:ts.TypeNode[]) : ts.TypeReferenceNode[]
-		{
-			return nodes.filter(
-				(maybe) : maybe is ts.TypeReferenceNode => {
-					return ts.SyntaxKind.TypeReference === maybe.kind;
-				}
 			);
-		}
+	}
+
+	private filter_types_to_reference_nodes(
+		nodes:ts.TypeNode[]
+	) : ts.TypeReferenceNode[] {
+		return nodes.filter(
+			(maybe) : maybe is ts.TypeReferenceNode => {
+				return ts.SyntaxKind.TypeReference === maybe.kind;
+			}
+		);
+	}
 
 	private filter_is_tuple_type(maybe:ts.TypeNode) : maybe is ts.TupleTypeNode {
 			return ts.SyntaxKind.TupleType === maybe.kind;
 		}
 
-	private extract_type_references_from_tuple_type_node(node:ts.TupleTypeNode) : ts.TypeReferenceNode[] {
-		return this.filter_types_to_reference_nodes(
-			node.elements.filter(
-				(maybe) => {
-				return ts.SyntaxKind.NamedTupleMember !== maybe.kind;
-			}));
-		}
+	private extract_type_references_from_tuple_type_node(
+		node:ts.TupleTypeNode
+	) : ts.TypeReferenceNode[] {
+	return this.filter_types_to_reference_nodes(
+		node.elements.filter(
+			(maybe) => {
+			return ts.SyntaxKind.NamedTupleMember !== maybe.kind;
+		}));
+	}
 
 	private reduce_type_references_arrays_to_type_reference_array(
 		arrays:ts.TypeReferenceNode[][]
 	) : ts.TypeReferenceNode[] {
-			return arrays.reduce((was, is) => {
-				was.push(...is);
+		return arrays.reduce((was, is) => {
+			was.push(...is);
 
-				return was;
-			}, [] as ts.TypeReferenceNode[]);
-		}
+			return was;
+		}, [] as ts.TypeReferenceNode[]);
+	}
 
 	private extract_type_references_from_type_literal_node(
 		node:ts.TypeLiteralNode
 	) : ts.TypeReferenceNode[] {
-		return this.reduce_type_references_arrays_to_type_reference_array(node.members.filter(
+		return this.reduce_type_references_arrays_to_type_reference_array(
+			node.members.filter(
 				(maybe) : maybe is ts.PropertySignature => {
 					return ts.SyntaxKind.PropertySignature === maybe.kind;
 				}
-			).filter((maybe) : maybe is ts.PropertySignature & {type:ts.TupleTypeNode} => {
-			return undefined !== maybe.type && this.filter_is_tuple_type(maybe.type);
-			}).map((property_signature) => {
-			return this.extract_type_references_from_tuple_type_node(property_signature.type);
-			}));
-		}
+			).filter(
+				(maybe) : maybe is ts.PropertySignature & {type:ts.TupleTypeNode} => {
+					return undefined !== maybe.type && this.filter_is_tuple_type(maybe.type);
+				}
+			).map(
+				(property_signature) => {
+					return this.extract_type_references_from_tuple_type_node(
+						property_signature.type
+					);
+				}
+			)
+		);
+	}
 
 	async generate()
 	{
