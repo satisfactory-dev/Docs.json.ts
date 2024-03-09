@@ -1,4 +1,4 @@
-import ts, {Identifier} from "typescript";
+import ts, {EntityName, Identifier} from "typescript";
 import {import_these_later, ImportTracker} from "./TypesGeneration";
 import {basename, dirname, relative} from "node:path";
 
@@ -20,13 +20,18 @@ export class DocsTsAutoImports
 		this.files_entries = Object.entries(files);
 	}
 
+	private static is_Identifier(maybe:Identifier|undefined|EntityName) : maybe is Identifier
+	{
+		return !!maybe && ts.SyntaxKind.Identifier === maybe.kind;
+	}
+
 	private is_named_ClassDeclaration(node:ts.Node) : node is ts.ClassDeclaration & {name:Identifier} {
-		return ts.isClassDeclaration(node) && !!node.name;
+		return ts.isClassDeclaration(node) && DocsTsAutoImports.is_Identifier(node.name);
 	}
 
 	private is_named_FunctionDeclaration(node:ts.Node) : node is ts.FunctionDeclaration & {name:Identifier}
 	{
-		return ts.isFunctionDeclaration(node) && !!node.name;
+		return ts.isFunctionDeclaration(node) && DocsTsAutoImports.is_Identifier(node.name);
 	}
 
 	private has_export(
@@ -82,21 +87,20 @@ export class DocsTsAutoImports
 		return file_exports;
 	}
 
+	private is_TypeReference_with_Identifier(
+		node:ts.Node
+	) : node is ts.TypeReferenceNode & {
+		typeName: ts.Identifier;
+	} {
+		return ts.isTypeReferenceNode(node) && DocsTsAutoImports.is_Identifier(node.typeName);
+	}
+
 	private references_to_names(
 		filename:string,
 		nodes:ts.TypeReferenceNode[]
 	) : string[] {
 		return nodes.filter(
-			(
-				maybe
-			): maybe is ts.TypeReferenceNode & {
-				typeName: ts.Identifier;
-			} => {
-				return (
-					ts.SyntaxKind.Identifier ===
-					maybe.typeName.kind
-				);
-			}
+			this.is_TypeReference_with_Identifier
 		)
 			.map((property_type) => {
 				return property_type.typeName.escapedText.toString();
