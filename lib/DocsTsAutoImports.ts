@@ -138,8 +138,8 @@ export class DocsTsAutoImports
 	}
 
 	private filter_is_tuple_type(maybe:ts.TypeNode) : maybe is ts.TupleTypeNode {
-			return ts.SyntaxKind.TupleType === maybe.kind;
-		}
+		return ts.SyntaxKind.TupleType === maybe.kind;
+	}
 
 	private extract_type_references_from_tuple_type_node(
 		node:ts.TupleTypeNode
