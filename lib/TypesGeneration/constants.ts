@@ -2,7 +2,7 @@ import ts from 'typescript';
 
 import {TypesGenerationFromSchema} from '../TypesGeneration';
 import {
-	adjust_class_name,
+	adjust_class_name, computed_property_name_or_undefined,
 	create_literal_node_from_value,
 	create_modifier,
 } from '../TsFactoryWrapper';
@@ -72,6 +72,24 @@ export const generators = [
 				ts.factory.createLiteralTypeNode(
 					ts.factory.createStringLiteral(data.const)
 				)
+			);
+		}
+	),
+	new TypesGenerationFromSchema<{'$ref': '#/definitions/None'}>(
+		{
+			type: 'object',
+			required: ['$ref'],
+			additionalProperties: false,
+			properties: {
+				'$ref': {type: 'string', const: '#/definitions/None'},
+			},
+		},
+		(data, reference_name) => {
+			return ts.factory.createTypeAliasDeclaration(
+				[create_modifier('export')],
+				adjust_class_name(reference_name),
+				undefined,
+				ts.factory.createTypeReferenceNode('None')
 			);
 		}
 	),
