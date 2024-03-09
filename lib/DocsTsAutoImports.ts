@@ -25,16 +25,19 @@ export class DocsTsAutoImports
 		return !!maybe && ts.SyntaxKind.Identifier === maybe.kind;
 	}
 
-	private is_named_ClassDeclaration(node:ts.Node) : node is ts.ClassDeclaration & {name:Identifier} {
+	private static is_named_ClassDeclaration(
+		node:ts.Node
+	) : node is ts.ClassDeclaration & {name:Identifier} {
 		return ts.isClassDeclaration(node) && DocsTsAutoImports.is_Identifier(node.name);
 	}
 
-	private is_named_FunctionDeclaration(node:ts.Node) : node is ts.FunctionDeclaration & {name:Identifier}
-	{
+	private static is_named_FunctionDeclaration(
+		node:ts.Node
+	) : node is ts.FunctionDeclaration & {name:Identifier} {
 		return ts.isFunctionDeclaration(node) && DocsTsAutoImports.is_Identifier(node.name);
 	}
 
-	private has_export(
+	private static has_export(
 		node:initial_check_nodes
 	) : node is (typeof node) & {modifiers: [ts.SyntaxKind.ExportKeyword]} {
 		return (
@@ -45,7 +48,7 @@ export class DocsTsAutoImports
 		);
 	}
 
-	private filter_node(maybe:ts.Node): maybe is initial_check_node_has_Identifier
+	private static filter_node(maybe:ts.Node): maybe is initial_check_node_has_Identifier
 	{
 		return (
 			(
@@ -57,7 +60,7 @@ export class DocsTsAutoImports
 		);
 	}
 
-	private filter_nodes(nodes:ts.Node[]) : initial_check_node_has_Identifier[]
+	private static filter_nodes(nodes:ts.Node[]) : initial_check_node_has_Identifier[]
 	{
 		return nodes.filter(
 			(maybe) : maybe is initial_check_node_has_Identifier => {
@@ -73,7 +76,7 @@ export class DocsTsAutoImports
 		for (const entry of this.files_entries) {
 			const [filename, nodes] = entry;
 
-			const check_these = this.filter_nodes(nodes);
+			const check_these = DocsTsAutoImports.filter_nodes(nodes);
 
 			for (const checking of check_these) {
 				if (!(filename in file_exports)) {
@@ -87,7 +90,7 @@ export class DocsTsAutoImports
 		return file_exports;
 	}
 
-	private is_TypeReference_with_Identifier(
+	private static is_TypeReference_with_Identifier(
 		node:ts.Node
 	) : node is ts.TypeReferenceNode & {
 		typeName: ts.Identifier;
@@ -95,12 +98,22 @@ export class DocsTsAutoImports
 		return ts.isTypeReferenceNode(node) && DocsTsAutoImports.is_Identifier(node.typeName);
 	}
 
+	private static are_TypeReferences_with_Identifier(
+		nodes:ts.Node[]
+	) : (ts.TypeReferenceNode & {
+		typeName: ts.Identifier;
+	})[] {
+		return nodes.filter(
+			DocsTsAutoImports.is_TypeReference_with_Identifier
+		);
+	}
+
 	private references_to_names(
 		filename:string,
 		nodes:ts.TypeReferenceNode[]
 	) : string[] {
-		return nodes.filter(
-			this.is_TypeReference_with_Identifier
+		return DocsTsAutoImports.are_TypeReferences_with_Identifier(
+			nodes
 		)
 			.map((property_type) => {
 				return property_type.typeName.escapedText.toString();
@@ -127,7 +140,7 @@ export class DocsTsAutoImports
 			);
 	}
 
-	private filter_types_to_reference_nodes(
+	private static filter_types_to_reference_nodes(
 		nodes:ts.TypeNode[]
 	) : ts.TypeReferenceNode[] {
 		return nodes.filter(
@@ -137,21 +150,21 @@ export class DocsTsAutoImports
 		);
 	}
 
-	private filter_is_tuple_type(maybe:ts.TypeNode) : maybe is ts.TupleTypeNode {
+	private static filter_is_tuple_type(maybe:ts.TypeNode) : maybe is ts.TupleTypeNode {
 		return ts.SyntaxKind.TupleType === maybe.kind;
 	}
 
-	private extract_type_references_from_tuple_type_node(
+	private static extract_type_references_from_tuple_type_node(
 		node:ts.TupleTypeNode
 	) : ts.TypeReferenceNode[] {
-	return this.filter_types_to_reference_nodes(
+		return DocsTsAutoImports.filter_types_to_reference_nodes(
 		node.elements.filter(
 			(maybe) => {
 			return ts.SyntaxKind.NamedTupleMember !== maybe.kind;
 		}));
 	}
 
-	private reduce_type_references_arrays_to_type_reference_array(
+	private static reduce_type_references_arrays_to_type_reference_array(
 		arrays:ts.TypeReferenceNode[][]
 	) : ts.TypeReferenceNode[] {
 		return arrays.reduce((was, is) => {
@@ -161,7 +174,7 @@ export class DocsTsAutoImports
 		}, [] as ts.TypeReferenceNode[]);
 	}
 
-	private extract_type_references_from_type_literal_node(
+	private static extract_type_references_from_type_literal_node(
 		node:ts.TypeLiteralNode
 	) : ts.TypeReferenceNode[] {
 		return this.reduce_type_references_arrays_to_type_reference_array(
@@ -222,19 +235,19 @@ export class DocsTsAutoImports
 				[] as ts.TypeNode[]
 			);
 
-			const union_type_references = this.filter_types_to_reference_nodes(union_types);
+			const union_type_references = DocsTsAutoImports.filter_types_to_reference_nodes(union_types);
 
-			const union_type_tuple_references = this.reduce_type_references_arrays_to_type_reference_array
+			const union_type_tuple_references = DocsTsAutoImports.reduce_type_references_arrays_to_type_reference_array
 			(union_types.filter(
-				this.filter_is_tuple_type
-			).map((e) => this.extract_type_references_from_tuple_type_node(e)));
+				DocsTsAutoImports.filter_is_tuple_type
+			).map((e) => DocsTsAutoImports.extract_type_references_from_tuple_type_node(e)));
 
-			const union_type_literal_sub_references = this.reduce_type_references_arrays_to_type_reference_array(
+			const union_type_literal_sub_references = DocsTsAutoImports.reduce_type_references_arrays_to_type_reference_array(
 				union_types.filter(
 				(maybe) : maybe is ts.TypeLiteralNode => {
 					return ts.SyntaxKind.TypeLiteral === maybe.kind;
 				}
-			).map((e) => this.extract_type_references_from_type_literal_node(e)));
+			).map((e) => DocsTsAutoImports.extract_type_references_from_type_literal_node(e)));
 
 			const class_declarations = nodes.filter(
 				(maybe): maybe is ts.ClassDeclaration => {
