@@ -203,7 +203,7 @@ export class Update8TypeNodeGeneration {
 		const parent_ref = tree[1];
 
 		if (!parent_ref) {
-			throw new Error('foo');
+			throw new Error(`No parent class found for ${ref}`);
 		}
 
 		const modifiers: supported_modifiers[] = ['export'];
