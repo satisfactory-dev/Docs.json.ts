@@ -22,7 +22,7 @@ export class DocsTsAutoImports
 
 	private static is_Identifier(maybe:Identifier|undefined|EntityName) : maybe is Identifier
 	{
-		return !!maybe && ts.SyntaxKind.Identifier === maybe.kind;
+		return !!maybe && ts.isIdentifier(maybe);
 	}
 
 	private static is_named_ClassDeclaration(
@@ -150,14 +150,8 @@ export class DocsTsAutoImports
 		nodes:ts.TypeNode[]
 	) : ts.TypeReferenceNode[] {
 		return nodes.filter(
-			(maybe) : maybe is ts.TypeReferenceNode => {
-				return ts.SyntaxKind.TypeReference === maybe.kind;
-			}
+			ts.isTypeReferenceNode
 		);
-	}
-
-	private static filter_is_tuple_type(maybe:ts.TypeNode) : maybe is ts.TupleTypeNode {
-		return ts.SyntaxKind.TupleType === maybe.kind;
 	}
 
 	private static extract_type_references_from_tuple_type_node(
@@ -166,8 +160,9 @@ export class DocsTsAutoImports
 		return DocsTsAutoImports.filter_types_to_reference_nodes(
 		node.elements.filter(
 			(maybe) => {
-			return ts.SyntaxKind.NamedTupleMember !== maybe.kind;
-		}));
+				return !ts.isNamedTupleMember(maybe);
+			}
+		));
 	}
 
 	private static reduce_type_references_arrays_to_type_reference_array(
@@ -185,12 +180,10 @@ export class DocsTsAutoImports
 	) : ts.TypeReferenceNode[] {
 		return this.reduce_type_references_arrays_to_type_reference_array(
 			node.members.filter(
-				(maybe) : maybe is ts.PropertySignature => {
-					return ts.SyntaxKind.PropertySignature === maybe.kind;
-				}
+				ts.isPropertySignature
 			).filter(
 				(maybe) : maybe is ts.PropertySignature & {type:ts.TupleTypeNode} => {
-					return undefined !== maybe.type && this.filter_is_tuple_type(maybe.type);
+					return undefined !== maybe.type && ts.isTupleTypeNode(maybe.type);
 				}
 			).map(
 				(property_signature) => {
@@ -224,14 +217,12 @@ export class DocsTsAutoImports
 			const [filename, nodes] = entry;
 
 			const type_aliases = nodes.filter(
-				(maybe) : maybe is ts.TypeAliasDeclaration => {
-					return ts.SyntaxKind.TypeAliasDeclaration === maybe.kind;
-				}
+				ts.isTypeAliasDeclaration
 			);
 
 			const union_types = type_aliases.filter(
 				(maybe) : maybe is ts.TypeAliasDeclaration & {type: ts.UnionTypeNode}  => {
-					return ts.SyntaxKind.UnionType === maybe.type.kind;
+					return ts.isUnionTypeNode(maybe.type);
 				}
 			).map(e => e.type.types).reduce(
 				(was, is) => {
@@ -245,31 +236,22 @@ export class DocsTsAutoImports
 
 			const union_type_tuple_references = DocsTsAutoImports.reduce_type_references_arrays_to_type_reference_array
 			(union_types.filter(
-				DocsTsAutoImports.filter_is_tuple_type
+				ts.isTupleTypeNode
 			).map((e) => DocsTsAutoImports.extract_type_references_from_tuple_type_node(e)));
 
 			const union_type_literal_sub_references = DocsTsAutoImports.reduce_type_references_arrays_to_type_reference_array(
 				union_types.filter(
-				(maybe) : maybe is ts.TypeLiteralNode => {
-					return ts.SyntaxKind.TypeLiteral === maybe.kind;
-				}
+				ts.isTypeLiteralNode
 			).map((e) => DocsTsAutoImports.extract_type_references_from_type_literal_node(e)));
 
 			const class_declarations = nodes.filter(
-				(maybe): maybe is ts.ClassDeclaration => {
-					return ts.SyntaxKind.ClassDeclaration === maybe.kind;
-				}
+				ts.isClassDeclaration
 			);
 
 			const property_declarations = class_declarations
 				.map((declaration) =>
 					declaration.members.filter(
-						(maybe): maybe is ts.PropertyDeclaration => {
-							return (
-								ts.SyntaxKind.PropertyDeclaration ===
-								maybe.kind
-							);
-						}
+						ts.isPropertyDeclaration
 					)
 				)
 				.reduce((was, is) => {
@@ -285,10 +267,7 @@ export class DocsTsAutoImports
 						): maybe is ts.PropertyDeclaration & {
 							type: ts.TypeReferenceNode;
 						} => {
-							return (
-								ts.SyntaxKind.TypeReference ===
-								maybe.type?.kind
-							);
+							return !!maybe.type && ts.isTypeReferenceNode(maybe.type);
 						}
 					)
 					.map((property_declaration) => {
