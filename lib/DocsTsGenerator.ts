@@ -1,5 +1,5 @@
 import {mkdir, readFile, unlink, writeFile} from 'node:fs/promises';
-import {basename, dirname, relative} from 'node:path';
+import {basename, dirname} from 'node:path';
 import {existsSync} from 'node:fs';
 import {fileURLToPath} from 'node:url';
 
@@ -51,7 +51,6 @@ import {
 	TypesGenerationMatchesReferenceName,
 	GenerationMatch,
 	ImportTracker,
-	import_these_later,
 } from './TypesGeneration';
 import {default_config} from './DocsValidation';
 import ts from 'typescript';
@@ -516,8 +515,6 @@ export class DocsTsGenerator {
 			);
 
 			const classes = entry[1].filter(ts.isClassDeclaration);
-
-			const abstract_classes = classes.filter(DocsTsGenerator.ClassDeclaration_is_abstract);
 
 			const classes_mapped = Object.fromEntries(
 				classes.map(e => [e.name?.escapedText + '', e])
