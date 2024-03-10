@@ -1,7 +1,7 @@
 import ts, {EntityName, Identifier, TypeReferenceNode} from 'typescript';
 import {import_these_later, ImportTracker} from './TypesGeneration';
 import {basename, dirname, relative} from 'node:path';
-import {writeFile} from "node:fs/promises";
+import {writeFile} from 'node:fs/promises';
 
 declare type initial_check_nodes =
 	| ts.ClassDeclaration
@@ -222,7 +222,10 @@ export class DocsTsAutoImports {
 			}
 		}
 
-		await writeFile(`/app/imports-come-from.json`, JSON.stringify(this.comes_from, null, '\t') + '\n');
+		await writeFile(
+			`/app/imports-come-from.json`,
+			JSON.stringify(this.comes_from, null, '\t') + '\n'
+		);
 
 		const auto_imports: import_these_later = {};
 
@@ -301,13 +304,25 @@ export class DocsTsAutoImports {
 						return property_declaration.type;
 					});
 
-			const property_declarations_use_union_type_references = property_declarations.filter(
-				(maybe) : maybe is ts.PropertyDeclaration & {type: ts.UnionTypeNode} => {
-					return !!maybe.type && ts.isUnionTypeNode(maybe.type);
-				}
-			).map((node) => {
-				return DocsTsAutoImports.filter_types_to_reference_nodes([...node.type.types])
-			}).flat();
+			const property_declarations_use_union_type_references =
+				property_declarations
+					.filter(
+						(
+							maybe
+						): maybe is ts.PropertyDeclaration & {
+							type: ts.UnionTypeNode;
+						} => {
+							return (
+								!!maybe.type && ts.isUnionTypeNode(maybe.type)
+							);
+						}
+					)
+					.map((node) => {
+						return DocsTsAutoImports.filter_types_to_reference_nodes(
+							[...node.type.types]
+						);
+					})
+					.flat();
 
 			const reference_names = [
 				...this.references_to_names(
