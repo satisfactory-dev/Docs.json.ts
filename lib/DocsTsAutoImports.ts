@@ -298,6 +298,14 @@ export class DocsTsAutoImports {
 						return property_declaration.type;
 					});
 
+			const property_declarations_use_union_type_references = property_declarations.filter(
+				(maybe) : maybe is ts.PropertyDeclaration & {type: ts.UnionTypeNode} => {
+					return !!maybe.type && ts.isUnionTypeNode(maybe.type);
+				}
+			).map((node) => {
+				return DocsTsAutoImports.filter_types_to_reference_nodes([...node.type.types])
+			}).flat();
+
 			const reference_names = [
 				...this.references_to_names(
 					filename,
@@ -312,13 +320,11 @@ export class DocsTsAutoImports {
 					filename,
 					union_type_literal_sub_references
 				),
+				...this.references_to_names(
+					filename,
+					property_declarations_use_union_type_references
+				),
 			];
-
-			if (filename === 'classes/FGBuildable.ts') {
-				console.log(reference_names);
-
-				throw new Error('foo');
-			}
 
 			if (reference_names.length) {
 				if (!(filename in auto_imports)) {

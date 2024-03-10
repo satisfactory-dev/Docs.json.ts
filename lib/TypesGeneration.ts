@@ -166,18 +166,12 @@ export class ImportTracker {
 			}
 
 			if (Object.keys(merge_here).length) {
-				if (filename.endsWith('FGSchematic.ts')) {
-					console.log('was', ImportTracker.imports[filename]);
-				}
 				ImportTracker.set_imports(
 					filename,
 					Object.entries(merge_here).map((unpack) => {
 						return {from: unpack[0], import_these: unpack[1]};
 					})
 				);
-				if (filename.endsWith('FGSchematic.ts')) {
-					console.log('is', ImportTracker.imports[filename]);
-				}
 			}
 		}
 	}

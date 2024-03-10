@@ -798,7 +798,7 @@ export const custom_generators = [
 			{
 				file: 'utils/validators.ts',
 				node: ts.factory.createTypeAliasDeclaration(
-					[create_modifier('declare')],
+					[create_modifier('export')],
 					'StrictlyTypedNumberFromRegExp',
 					[
 						ts.factory.createTypeParameterDeclaration(
