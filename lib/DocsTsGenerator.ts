@@ -479,11 +479,10 @@ export class DocsTsGenerator {
 		return progress;
 	}
 
-	private static ClassDeclaration_is_abstract(class_node:ts.ClassDeclaration)
-	{
-		const modifiers = [...(class_node.modifiers || [])].map(
-			e => e.kind
-		);
+	private static ClassDeclaration_is_abstract(
+		class_node: ts.ClassDeclaration
+	) {
+		const modifiers = [...(class_node.modifiers || [])].map((e) => e.kind);
 
 		return modifiers.includes(ts.SyntaxKind.AbstractKeyword);
 	}
@@ -517,95 +516,122 @@ export class DocsTsGenerator {
 			const classes = entry[1].filter(ts.isClassDeclaration);
 
 			const classes_mapped = Object.fromEntries(
-				classes.map(e => [e.name?.escapedText + '', e])
+				classes.map((e) => [e.name?.escapedText + '', e])
 			);
 
-			type class_can_have_tree = (
-				ts.ClassDeclaration
-				& {
-					heritageClauses: [{types: [{expression: ts.Identifier}]}]
-				}
-			);
+			type class_can_have_tree = ts.ClassDeclaration & {
+				heritageClauses: [{types: [{expression: ts.Identifier}]}];
+			};
 
-			function can_class_have_tree(class_node:ts.ClassDeclaration) : class_node is class_can_have_tree {
+			function can_class_have_tree(
+				class_node: ts.ClassDeclaration
+			): class_node is class_can_have_tree {
 				const heritage = [...(class_node.heritageClauses || [])].map(
-					e => e.types
+					(e) => e.types
 				);
 
 				return (
-					1 === heritage.length
-					&& 1 === heritage[0].length
-					&& ts.isExpressionWithTypeArguments(heritage[0][0])
-					&& ts.isIdentifier(heritage[0][0].expression)
+					1 === heritage.length &&
+					1 === heritage[0].length &&
+					ts.isExpressionWithTypeArguments(heritage[0][0]) &&
+					ts.isIdentifier(heritage[0][0].expression)
 				);
 			}
 
-			const class_can_have_trees = Object.fromEntries(classes.filter(
-				can_class_have_tree
-			).map(e => [e.name?.escapedText + '', e]));
+			const class_can_have_trees = Object.fromEntries(
+				classes
+					.filter(can_class_have_tree)
+					.map((e) => [e.name?.escapedText + '', e])
+			);
 
-			const class_parents = Object.values(class_can_have_trees).map((class_node) => {
-				let checking:undefined|ts.ClassDeclaration = class_node;
+			const class_parents = Object.values(class_can_have_trees).map(
+				(class_node) => {
+					let checking: undefined | ts.ClassDeclaration = class_node;
 
-				const tree:string[] = [class_node.name?.escapedText + ''];
+					const tree: string[] = [class_node.name?.escapedText + ''];
 
-				while (
-					checking
-					&& can_class_have_tree(checking)
-					&& checking.heritageClauses[0].types[0]
-					&& checking.heritageClauses[0].types[0].expression.escapedText.toString() in class_can_have_trees
-				) {
-					const parent_class_name:string = checking.heritageClauses[0].types[0].expression.escapedText.toString();
-					if (parent_class_name in classes_mapped) {
-						tree.push(parent_class_name);
+					while (
+						checking &&
+						can_class_have_tree(checking) &&
+						checking.heritageClauses[0].types[0] &&
+						checking.heritageClauses[0].types[0].expression.escapedText.toString() in
+							class_can_have_trees
+					) {
+						const parent_class_name: string =
+							checking.heritageClauses[0].types[0].expression.escapedText.toString();
+						if (parent_class_name in classes_mapped) {
+							tree.push(parent_class_name);
 
-						checking = classes_mapped[parent_class_name];
-					} else {
-						checking = undefined;
+							checking = classes_mapped[parent_class_name];
+						} else {
+							checking = undefined;
+						}
 					}
+
+					return tree;
 				}
+			);
 
-				return tree;
-			});
-
-			const class_parent_classes = class_parents.flat().reduce(
-				(was, is) => {
+			const class_parent_classes = class_parents
+				.flat()
+				.reduce((was, is) => {
 					if (!was.includes(is)) {
 						was.push(is);
 					}
 
 					return was;
-				},
-				[] as string[]
-			);
-			const class_parent_class_max_depth = Object.fromEntries(class_parent_classes.map(
-				(thing) : [string, string[][]] => {
-					const includes = class_parents.filter(e => e.includes(thing));
+				}, [] as string[]);
+			const class_parent_class_max_depth = Object.fromEntries(
+				class_parent_classes
+					.map((thing): [string, string[][]] => {
+						const includes = class_parents.filter((e) =>
+							e.includes(thing)
+						);
 
-					return [thing, includes];
-				}
-			).filter((entry) : entry is [string, [string[], ...(string[])[]]] => {
-				return entry[1].length > 0;
-			}).map((entry) => {
-				return [entry[0], Math.max(0, ...entry[1].map(e => e.indexOf(entry[0])))];
-			}));
+						return [thing, includes];
+					})
+					.filter(
+						(
+							entry
+						): entry is [string, [string[], ...string[][]]] => {
+							return entry[1].length > 0;
+						}
+					)
+					.map((entry) => {
+						return [
+							entry[0],
+							Math.max(
+								0,
+								...entry[1].map((e) => e.indexOf(entry[0]))
+							),
+						];
+					})
+			);
 
 			const classes_in_order = class_parent_classes.sort((a, b) => {
-				return class_parent_class_max_depth[b] - class_parent_class_max_depth[a];
+				return (
+					class_parent_class_max_depth[b] -
+					class_parent_class_max_depth[a]
+				);
 			});
 
 			const nodes = [
 				...ImportTracker.generate_imports(entry[0]),
 				...entry[1].sort((a, b) => {
 					if (
-						(ts.isTypeAliasDeclaration(a) && !ts.isTypeAliasDeclaration(b))
+						ts.isTypeAliasDeclaration(a) &&
+						!ts.isTypeAliasDeclaration(b)
 					) {
 						return -1;
 					}
 
-					if (ts.isClassDeclaration(a) && ts.isClassDeclaration(b))
-					{
-						return classes_in_order.indexOf(a.name?.escapedText + '') - classes_in_order.indexOf(b.name?.escapedText + '');
+					if (ts.isClassDeclaration(a) && ts.isClassDeclaration(b)) {
+						return (
+							classes_in_order.indexOf(
+								a.name?.escapedText + ''
+							) -
+							classes_in_order.indexOf(b.name?.escapedText + '')
+						);
 					}
 
 					return 0;
