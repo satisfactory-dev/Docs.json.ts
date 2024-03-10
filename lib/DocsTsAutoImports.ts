@@ -228,32 +228,28 @@ export class DocsTsAutoImports {
 
 	private static union_type_tuple_references(union_types:ts.TypeNode[]) : ts.TypeReferenceNode[]
 	{
-		return (
-				DocsTsAutoImports.reduce_type_references_arrays_to_type_reference_array(
-					union_types
-						.filter(ts.isTupleTypeNode)
-						.map((e) =>
-							DocsTsAutoImports.extract_type_references_from_tuple_type_node(
-								e
-							)
-						)
+		return DocsTsAutoImports.reduce_type_references_arrays_to_type_reference_array(
+			union_types
+				.filter(ts.isTupleTypeNode)
+				.map((e) =>
+					DocsTsAutoImports.extract_type_references_from_tuple_type_node(
+						e
+					)
 				)
-				);
+		);
 	}
 
 	private static union_type_literal_sub_references(union_types:ts.TypeNode[]) : ts.TypeReferenceNode[]
 	{
-		return (
-				DocsTsAutoImports.reduce_type_references_arrays_to_type_reference_array(
-						union_types
-						.filter(ts.isTypeLiteralNode)
-						.map((e) =>
-							DocsTsAutoImports.extract_type_references_from_type_literal_node(
-								e
-							)
-						)
+		return DocsTsAutoImports.reduce_type_references_arrays_to_type_reference_array(
+				union_types
+				.filter(ts.isTypeLiteralNode)
+				.map((e) =>
+					DocsTsAutoImports.extract_type_references_from_type_literal_node(
+						e
+					)
 				)
-				);
+		);
 	}
 
 	async generate() {
