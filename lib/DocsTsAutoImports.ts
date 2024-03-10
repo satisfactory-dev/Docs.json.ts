@@ -1,6 +1,7 @@
 import ts, {EntityName, Identifier, TypeReferenceNode} from 'typescript';
 import {import_these_later, ImportTracker} from './TypesGeneration';
 import {basename, dirname, relative} from 'node:path';
+import {writeFile} from "node:fs/promises";
 
 declare type initial_check_nodes =
 	| ts.ClassDeclaration
@@ -220,6 +221,8 @@ export class DocsTsAutoImports {
 				this.comes_from[export_name] = filename.replace(/\.ts$/, '');
 			}
 		}
+
+		await writeFile(`/app/imports-come-from.json`, JSON.stringify(this.comes_from, null, '\t') + '\n');
 
 		const auto_imports: import_these_later = {};
 
