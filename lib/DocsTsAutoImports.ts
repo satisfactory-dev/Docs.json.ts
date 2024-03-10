@@ -158,7 +158,11 @@ export class DocsTsAutoImports {
 	private static filter_types_to_reference_nodes(
 		nodes: ts.TypeNode[]
 	): ts.TypeReferenceNode[] {
-		return nodes.filter(ts.isTypeReferenceNode);
+		return [
+			...nodes.filter(ts.isTypeReferenceNode),
+			...DocsTsAutoImports.union_type_tuple_references(nodes),
+			...DocsTsAutoImports.union_type_literal_sub_references(nodes),
+		];
 	}
 
 	private static extract_type_references_from_tuple_type_node(
@@ -336,14 +340,6 @@ export class DocsTsAutoImports {
 					property_declarations_use_type_reference
 				),
 				...this.references_to_names(filename, DocsTsAutoImports.filter_types_to_reference_nodes(union_types)),
-				...this.references_to_names(
-					filename,
-					DocsTsAutoImports.union_type_tuple_references(union_types)
-				),
-				...this.references_to_names(
-					filename,
-					DocsTsAutoImports.union_type_literal_sub_references(union_types)
-				),
 				...this.references_to_names(
 					filename,
 					property_declarations_use_union_type_references
