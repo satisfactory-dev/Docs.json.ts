@@ -575,7 +575,7 @@ export class Update8TypeNodeGeneration {
 				members.push(create_binding_constructor(reference_name, data));
 
 				const class_options: create_class_options = {
-					modifiers: ['abstract'],
+					modifiers: ['export', 'abstract'],
 				};
 
 				if (
