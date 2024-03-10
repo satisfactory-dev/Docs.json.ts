@@ -23,7 +23,8 @@ import {
 	very_flexibly_create_regex_validation_function,
 	create_UnrealEngineString_reference_type,
 	create_conditional_UnrealEngineString_type_reference,
-	conditional_UnrealEngineString_type_arguments, create_union,
+	conditional_UnrealEngineString_type_arguments,
+	create_union,
 } from '../TsFactoryWrapper';
 import {
 	TypeNodeGeneration,
@@ -356,7 +357,7 @@ export const custom_generators = [
 								'prefix_check',
 								create_union(
 									create_type('string'),
-									create_type('undefined'),
+									create_type('undefined')
 								),
 								ts.factory.createIdentifier('undefined')
 							),
@@ -583,7 +584,7 @@ export const custom_generators = [
 							ts.factory.createTypeReferenceNode(
 								'string_starts_with',
 								[create_type('string')]
-							),
+							)
 						),
 						undefined
 					),

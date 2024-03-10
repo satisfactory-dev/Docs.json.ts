@@ -120,8 +120,8 @@ export class Update8TypeNodeGeneration {
 
 	private merge_imports_relatively(
 		path_relative: string,
-		filename:string,
-		import_from:string,
+		filename: string,
+		import_from: string,
 		import_these: string[]
 	) {
 		if (dirname(filename) === dirname(import_from)) {

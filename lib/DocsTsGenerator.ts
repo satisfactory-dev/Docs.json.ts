@@ -75,7 +75,7 @@ import {
 } from './TypesGeneration/aliases';
 import {Update8TypeNodeGeneration} from './Schemas/Update8';
 import {TypeNodeGenerationMatcher} from './TypeNodeGeneration';
-import {DocsTsAutoImports} from "./DocsTsAutoImports";
+import {DocsTsAutoImports} from './DocsTsAutoImports';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 

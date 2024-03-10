@@ -3,7 +3,8 @@ import ts from 'typescript';
 import {
 	adjust_class_name,
 	create_minimum_size_typed_array_of_single_type,
-	create_modifier, create_object_type,
+	create_modifier,
+	create_object_type,
 	possibly_create_lazy_union,
 } from '../TsFactoryWrapper';
 import {
@@ -200,22 +201,28 @@ export const generators = [
 										Value: {$ref: string};
 									};
 								}
-							).properties.Value[
-								'$ref'
-								].substring(14);
+							).properties.Value['$ref'].substring(14);
 
-							if (value_reference_name in validators_target_files) {
+							if (
+								value_reference_name in validators_target_files
+							) {
 								value_reference_name = `${value_reference_name}__type`;
 							}
 
-							return create_object_type({
-								'Value': create_minimum_size_typed_array_of_single_type(
-									entry.array_string.minItems,
-									() => ts.factory.createTypeReferenceNode(
-										adjust_class_name(value_reference_name)
-									)
-								)
-							}, entry.array_string.items.required);
+							return create_object_type(
+								{
+									Value: create_minimum_size_typed_array_of_single_type(
+										entry.array_string.minItems,
+										() =>
+											ts.factory.createTypeReferenceNode(
+												adjust_class_name(
+													value_reference_name
+												)
+											)
+									),
+								},
+								entry.array_string.items.required
+							);
 						} else if (
 							'array_string' in entry &&
 							'$ref' in entry.array_string.items &&
@@ -291,9 +298,7 @@ export const type_node_generators = [
 			},
 		},
 		(data) => {
-			let reference_name = adjust_class_name(
-				data['$ref'].substring(14)
-			);
+			let reference_name = adjust_class_name(data['$ref'].substring(14));
 
 			if (reference_name in validators_target_files) {
 				reference_name = `${reference_name}__type`;
