@@ -207,6 +207,55 @@ export class DocsTsAutoImports {
 		);
 	}
 
+	private static union_types(nodes:ts.TypeAliasDeclaration[]) : ts.TypeNode[]
+	{
+		return nodes
+				.filter(
+					(
+						maybe
+					): maybe is ts.TypeAliasDeclaration & {
+						type: ts.UnionTypeNode;
+					} => {
+						return ts.isUnionTypeNode(maybe.type);
+					}
+				)
+				.map((e) => e.type.types)
+				.reduce((was, is) => {
+					was.push(...is);
+					return was;
+		}, [] as ts.TypeNode[]);
+	}
+
+	private static union_type_tuple_references(union_types:ts.TypeNode[]) : ts.TypeReferenceNode[]
+	{
+		return (
+				DocsTsAutoImports.reduce_type_references_arrays_to_type_reference_array(
+					union_types
+						.filter(ts.isTupleTypeNode)
+						.map((e) =>
+							DocsTsAutoImports.extract_type_references_from_tuple_type_node(
+								e
+							)
+						)
+				)
+				);
+	}
+
+	private static union_type_literal_sub_references(union_types:ts.TypeNode[]) : ts.TypeReferenceNode[]
+	{
+		return (
+				DocsTsAutoImports.reduce_type_references_arrays_to_type_reference_array(
+						union_types
+						.filter(ts.isTypeLiteralNode)
+						.map((e) =>
+							DocsTsAutoImports.extract_type_references_from_type_literal_node(
+								e
+							)
+						)
+				)
+				);
+	}
+
 	async generate() {
 		const file_exports = this.file_exports();
 
@@ -234,46 +283,7 @@ export class DocsTsAutoImports {
 
 			const type_aliases = nodes.filter(ts.isTypeAliasDeclaration);
 
-			const union_types = type_aliases
-				.filter(
-					(
-						maybe
-					): maybe is ts.TypeAliasDeclaration & {
-						type: ts.UnionTypeNode;
-					} => {
-						return ts.isUnionTypeNode(maybe.type);
-					}
-				)
-				.map((e) => e.type.types)
-				.reduce((was, is) => {
-					was.push(...is);
-					return was;
-				}, [] as ts.TypeNode[]);
-
-			const union_type_references =
-				DocsTsAutoImports.filter_types_to_reference_nodes(union_types);
-
-			const union_type_tuple_references =
-				DocsTsAutoImports.reduce_type_references_arrays_to_type_reference_array(
-					union_types
-						.filter(ts.isTupleTypeNode)
-						.map((e) =>
-							DocsTsAutoImports.extract_type_references_from_tuple_type_node(
-								e
-							)
-						)
-				);
-
-			const union_type_literal_sub_references =
-				DocsTsAutoImports.reduce_type_references_arrays_to_type_reference_array(
-					union_types
-						.filter(ts.isTypeLiteralNode)
-						.map((e) =>
-							DocsTsAutoImports.extract_type_references_from_type_literal_node(
-								e
-							)
-						)
-				);
+			const union_types = DocsTsAutoImports.union_types(type_aliases);
 
 			const class_declarations = nodes.filter(ts.isClassDeclaration);
 
@@ -329,14 +339,14 @@ export class DocsTsAutoImports {
 					filename,
 					property_declarations_use_type_reference
 				),
-				...this.references_to_names(filename, union_type_references),
+				...this.references_to_names(filename, DocsTsAutoImports.filter_types_to_reference_nodes(union_types)),
 				...this.references_to_names(
 					filename,
-					union_type_tuple_references
+					DocsTsAutoImports.union_type_tuple_references(union_types)
 				),
 				...this.references_to_names(
 					filename,
-					union_type_literal_sub_references
+					DocsTsAutoImports.union_type_literal_sub_references(union_types)
 				),
 				...this.references_to_names(
 					filename,
