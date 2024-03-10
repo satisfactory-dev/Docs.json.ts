@@ -2,6 +2,10 @@ import ts, {EntityName, Identifier, TypeReferenceNode} from 'typescript';
 import {import_these_later, ImportTracker} from './TypesGeneration';
 import {basename, dirname, relative} from 'node:path';
 import {writeFile} from 'node:fs/promises';
+import {
+	UnionTypes,
+} from './DocsTsAutoImports/UnionTypes';
+import {PropertyDeclarations} from "./DocsTsAutoImports/PropertyDeclarations";
 
 declare type initial_check_nodes =
 	| ts.ClassDeclaration
@@ -160,100 +164,7 @@ export class DocsTsAutoImports {
 	): ts.TypeReferenceNode[] {
 		return [
 			...nodes.filter(ts.isTypeReferenceNode),
-			...DocsTsAutoImports.union_type_tuple_references(nodes),
-			...DocsTsAutoImports.union_type_literal_sub_references(nodes),
 		];
-	}
-
-	private static extract_type_references_from_tuple_type_node(
-		node: ts.TupleTypeNode
-	): ts.TypeReferenceNode[] {
-		return DocsTsAutoImports.filter_types_to_reference_nodes(
-			node.elements.filter((maybe) => {
-				return !ts.isNamedTupleMember(maybe);
-			})
-		);
-	}
-
-	private static reduce_type_references_arrays_to_type_reference_array(
-		arrays: ts.TypeReferenceNode[][]
-	): ts.TypeReferenceNode[] {
-		return arrays.reduce((was, is) => {
-			was.push(...is);
-
-			return was;
-		}, [] as ts.TypeReferenceNode[]);
-	}
-
-	private static extract_type_references_from_type_literal_node(
-		node: ts.TypeLiteralNode
-	): ts.TypeReferenceNode[] {
-		return this.reduce_type_references_arrays_to_type_reference_array(
-			node.members
-				.filter(ts.isPropertySignature)
-				.filter(
-					(
-						maybe
-					): maybe is ts.PropertySignature & {
-						type: ts.TupleTypeNode;
-					} => {
-						return (
-							undefined !== maybe.type &&
-							ts.isTupleTypeNode(maybe.type)
-						);
-					}
-				)
-				.map((property_signature) => {
-					return this.extract_type_references_from_tuple_type_node(
-						property_signature.type
-					);
-				})
-		);
-	}
-
-	private static union_types(nodes:ts.TypeAliasDeclaration[]) : ts.TypeNode[]
-	{
-		return nodes
-				.filter(
-					(
-						maybe
-					): maybe is ts.TypeAliasDeclaration & {
-						type: ts.UnionTypeNode;
-					} => {
-						return ts.isUnionTypeNode(maybe.type);
-					}
-				)
-				.map((e) => e.type.types)
-				.reduce((was, is) => {
-					was.push(...is);
-					return was;
-		}, [] as ts.TypeNode[]);
-	}
-
-	private static union_type_tuple_references(union_types:ts.TypeNode[]) : ts.TypeReferenceNode[]
-	{
-		return DocsTsAutoImports.reduce_type_references_arrays_to_type_reference_array(
-			union_types
-				.filter(ts.isTupleTypeNode)
-				.map((e) =>
-					DocsTsAutoImports.extract_type_references_from_tuple_type_node(
-						e
-					)
-				)
-		);
-	}
-
-	private static union_type_literal_sub_references(union_types:ts.TypeNode[]) : ts.TypeReferenceNode[]
-	{
-		return DocsTsAutoImports.reduce_type_references_arrays_to_type_reference_array(
-				union_types
-				.filter(ts.isTypeLiteralNode)
-				.map((e) =>
-					DocsTsAutoImports.extract_type_references_from_type_literal_node(
-						e
-					)
-				)
-		);
 	}
 
 	async generate() {
@@ -283,66 +194,25 @@ export class DocsTsAutoImports {
 
 			const type_aliases = nodes.filter(ts.isTypeAliasDeclaration);
 
-			const union_types = DocsTsAutoImports.union_types(type_aliases);
-
 			const class_declarations = nodes.filter(ts.isClassDeclaration);
-
-			const property_declarations = class_declarations
-				.map((declaration) =>
-					declaration.members.filter(ts.isPropertyDeclaration)
-				)
-				.reduce((was, is) => {
-					was.push(...is);
-					return was;
-				}, []);
-
-			const property_declarations_use_type_reference =
-				property_declarations
-					.filter(
-						(
-							maybe
-						): maybe is ts.PropertyDeclaration & {
-							type: ts.TypeReferenceNode;
-						} => {
-							return (
-								!!maybe.type &&
-								ts.isTypeReferenceNode(maybe.type)
-							);
-						}
-					)
-					.map((property_declaration) => {
-						return property_declaration.type;
-					});
-
-			const property_declarations_use_union_type_references =
-				property_declarations
-					.filter(
-						(
-							maybe
-						): maybe is ts.PropertyDeclaration & {
-							type: ts.UnionTypeNode;
-						} => {
-							return (
-								!!maybe.type && ts.isUnionTypeNode(maybe.type)
-							);
-						}
-					)
-					.map((node) => {
-						return DocsTsAutoImports.filter_types_to_reference_nodes(
-							[...node.type.types]
-						);
-					})
-					.flat();
 
 			const reference_names = [
 				...this.references_to_names(
 					filename,
-					property_declarations_use_type_reference
-				),
-				...this.references_to_names(filename, DocsTsAutoImports.filter_types_to_reference_nodes(union_types)),
-				...this.references_to_names(
-					filename,
-					property_declarations_use_union_type_references
+					[
+						...(
+							new PropertyDeclarations(
+								PropertyDeclarations.class_declarations_to_property_declarations(
+									class_declarations
+								)
+							)
+						).extracted,
+						...(
+							new UnionTypes(
+								UnionTypes.declarations_to_types(type_aliases)
+							)
+						).extracted
+					]
 				),
 			];
 
