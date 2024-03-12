@@ -1,6 +1,4 @@
-import {
-	TypesGenerationMatchesReferenceName,
-} from '../TypesGeneration';
+import {TypesGenerationMatchesReferenceName} from '../TypesGeneration';
 import {
 	adjust_class_name,
 	auto_constructor_property_types_from_generated_types,

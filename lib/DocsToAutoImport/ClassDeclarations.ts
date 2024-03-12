@@ -8,8 +8,8 @@ export class ClassDeclarations extends NodeExtraction<ClassDeclaration> {
 				e.members,
 				e.heritageClauses || [],
 				e.typeParameters || [],
-				(e.name ? [e.name] : []),
+				e.name ? [e.name] : [],
 			])
-			.flat(2)
+			.flat(2);
 	}
 }

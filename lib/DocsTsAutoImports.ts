@@ -140,9 +140,7 @@ export class DocsTsAutoImports {
 			const reference_names: Exclude<
 				keyof typeof this.comes_from,
 				number
-			>[] = [
-				...node_names,
-			]
+			>[] = [...node_names]
 				.filter((maybe) => maybe in this.comes_from)
 				.filter(
 					(maybe) =>
