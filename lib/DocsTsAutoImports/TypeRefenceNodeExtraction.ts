@@ -12,10 +12,21 @@ export abstract class TypeReferenceNodeExtraction<T extends Node> {
 	readonly extracted: TypeReferenceNode[];
 
 	constructor(nodes: T[]) {
-		this.extracted = this.extract(nodes);
+		const extracted = this.extract(nodes);
+		this.extracted = [
+			...extracted,
+			...extracted.map(TypeNodeReferenceExtraction.extract_type_references_from_type_arguments).flat(),
+		];
 	}
 
 	protected abstract extract(nodes: T[]): TypeReferenceNode[];
+
+	private static extract_type_references_from_type_arguments(node:TypeReferenceNode) : TypeReferenceNode[]
+	{
+		const types = [...node.typeArguments || ([] as TypeReferenceNode[])];
+
+		return types.filter(ts.isTypeReferenceNode);
+	}
 
 	protected static extract_type_references_from_tuple_type_node(
 		node: ts.TupleTypeNode
@@ -32,44 +43,52 @@ export abstract class TypeReferenceNodeExtraction<T extends Node> {
 	): ts.TypeReferenceNode[] {
 		const property_signatures = node.members.filter(
 			ts.isPropertySignature
+		).filter((maybe) : maybe is ts.PropertySignature & {type: TypeNode} => {
+			return !!maybe.type;
+		});
+		const property_signature_types = property_signatures.map(e => e.type);
+
+		const array_types = property_signature_types.filter(ts.isArrayTypeNode).map(
+			e => (ts.isParenthesizedTypeNode(e.elementType) ? e.elementType.type : e.elementType)
 		);
+
+		const array_union_types = array_types.filter(ts.isUnionTypeNode);
+		const array_literal_types_found = array_types.filter(ts.isLiteralTypeNode).length;
+		const array_token_types_found = array_types.filter(ts.isToken).length;
+		const array_reference_types = array_types.filter(ts.isTypeReferenceNode);
+		const array_type_literals = array_types.filter(ts.isTypeLiteralNode);
+		const array_tuple_types = array_types.filter(ts.isTupleTypeNode);
+
+		const array_matches_types_length = array_union_types.length + array_literal_types_found + array_reference_types.length + array_token_types_found + array_type_literals.length + array_tuple_types.length;
+
+		if (array_types.length !== array_matches_types_length) {
+			console.error(array_types.filter(maybe => !ts.isUnionTypeNode(maybe)));
+			throw new Error('Some types not accounted for!');
+		}
+
 		return [
-			...property_signatures
+			...property_signature_types
 				.filter(
-					(
-						maybe
-					): maybe is ts.PropertySignature & {
-						type: ts.TupleTypeNode;
-					} => {
-						return (
-							undefined !== maybe.type &&
-							ts.isTupleTypeNode(maybe.type)
-						);
-					}
+					ts.isTupleTypeNode
 				)
-				.map((property_signature) => {
+				.map((type) => {
 					return this.extract_type_references_from_tuple_type_node(
-						property_signature.type
+						type
 					);
 				})
 				.flat(),
-			...new UnionTypes(
-				property_signatures
+			...new UnionTypes([
+				...property_signature_types
 					.filter(
-						(
-							maybe
-						): maybe is ts.PropertySignature & {
-							type: ts.UnionTypeNode;
-						} => {
-							return (
-								undefined !== maybe.type &&
-								ts.isUnionTypeNode(maybe.type)
-							);
-						}
+							ts.isUnionTypeNode
 					)
-					.map((e) => e.type.types)
-					.flat()
-			).extracted,
+					.map((e) => e.types)
+				.flat(),
+				...array_union_types
+			]).extracted,
+			...array_reference_types,
+			...array_type_literals.map(TypeNodeReferenceExtraction.extract_type_references_from_type_literal_node).flat(),
+			...array_tuple_types.map(TypeNodeReferenceExtraction.extract_type_references_from_tuple_type_node).flat(),
 		];
 	}
 }
