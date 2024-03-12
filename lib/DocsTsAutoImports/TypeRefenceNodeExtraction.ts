@@ -1,18 +1,19 @@
 import ts, {
 	DeclarationStatement,
-	Node, TypeAliasDeclaration, TypeNode,
-	TypeReferenceNode
+	Node,
+	TypeAliasDeclaration,
+	TypeNode,
+	TypeReferenceNode,
 } from 'typescript';
 
-export abstract class TypeReferenceNodeExtraction<T extends Node>
-{
-	readonly extracted:TypeReferenceNode[];
+export abstract class TypeReferenceNodeExtraction<T extends Node> {
+	readonly extracted: TypeReferenceNode[];
 
-	constructor(nodes:T[]) {
+	constructor(nodes: T[]) {
 		this.extracted = this.extract(nodes);
 	}
 
-	protected abstract extract(nodes:T[]) : TypeReferenceNode[];
+	protected abstract extract(nodes: T[]): TypeReferenceNode[];
 
 	protected static reduce_type_references_arrays_to_type_reference_array(
 		arrays: ts.TypeReferenceNode[][]
@@ -27,9 +28,11 @@ export abstract class TypeReferenceNodeExtraction<T extends Node>
 	protected static extract_type_references_from_tuple_type_node(
 		node: ts.TupleTypeNode
 	): ts.TypeReferenceNode[] {
-		return node.elements.filter((maybe) => {
-			return !ts.isNamedTupleMember(maybe);
-		}).filter(ts.isTypeReferenceNode);
+		return node.elements
+			.filter((maybe) => {
+				return !ts.isNamedTupleMember(maybe);
+			})
+			.filter(ts.isTypeReferenceNode);
 	}
 
 	protected static extract_type_references_from_type_literal_node(
@@ -59,7 +62,6 @@ export abstract class TypeReferenceNodeExtraction<T extends Node>
 	}
 }
 
-export abstract class TypeNodeReferenceExtraction<T extends TypeNode = TypeNode> extends TypeReferenceNodeExtraction<T>
-{
-}
-
+export abstract class TypeNodeReferenceExtraction<
+	T extends TypeNode = TypeNode,
+> extends TypeReferenceNodeExtraction<T> {}

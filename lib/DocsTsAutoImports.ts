@@ -2,10 +2,8 @@ import ts, {EntityName, Identifier, TypeReferenceNode} from 'typescript';
 import {import_these_later, ImportTracker} from './TypesGeneration';
 import {basename, dirname, relative} from 'node:path';
 import {writeFile} from 'node:fs/promises';
-import {
-	UnionTypes,
-} from './DocsTsAutoImports/UnionTypes';
-import {PropertyDeclarations} from "./DocsTsAutoImports/PropertyDeclarations";
+import {UnionTypes} from './DocsTsAutoImports/UnionTypes';
+import {PropertyDeclarations} from './DocsTsAutoImports/PropertyDeclarations';
 
 declare type initial_check_nodes =
 	| ts.ClassDeclaration
@@ -162,9 +160,7 @@ export class DocsTsAutoImports {
 	private static filter_types_to_reference_nodes(
 		nodes: ts.TypeNode[]
 	): ts.TypeReferenceNode[] {
-		return [
-			...nodes.filter(ts.isTypeReferenceNode),
-		];
+		return [...nodes.filter(ts.isTypeReferenceNode)];
 	}
 
 	async generate() {
@@ -197,23 +193,16 @@ export class DocsTsAutoImports {
 			const class_declarations = nodes.filter(ts.isClassDeclaration);
 
 			const reference_names = [
-				...this.references_to_names(
-					filename,
-					[
-						...(
-							new PropertyDeclarations(
-								PropertyDeclarations.class_declarations_to_property_declarations(
-									class_declarations
-								)
-							)
-						).extracted,
-						...(
-							new UnionTypes(
-								UnionTypes.declarations_to_types(type_aliases)
-							)
-						).extracted
-					]
-				),
+				...this.references_to_names(filename, [
+					...new PropertyDeclarations(
+						PropertyDeclarations.class_declarations_to_property_declarations(
+							class_declarations
+						)
+					).extracted,
+					...new UnionTypes(
+						UnionTypes.declarations_to_types(type_aliases)
+					).extracted,
+				]),
 			];
 
 			if (reference_names.length) {
