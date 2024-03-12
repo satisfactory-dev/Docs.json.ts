@@ -6,12 +6,9 @@ import ts, {
 } from 'typescript';
 import {TypeNodeReferenceExtraction} from './TypeRefenceNodeExtraction';
 
-export class IntersectionTypes extends TypeNodeReferenceExtraction
-{
-	extract(nodes: TypeNode[]) : TypeReferenceNode[] {
-		return [
-			...nodes.filter(ts.isTypeReferenceNode),
-		];
+export class IntersectionTypes extends TypeNodeReferenceExtraction {
+	extract(nodes: TypeNode[]): TypeReferenceNode[] {
+		return [...nodes.filter(ts.isTypeReferenceNode)];
 	}
 
 	static declarations_to_types(nodes: TypeAliasDeclaration[]): TypeNode[] {
