@@ -1,5 +1,5 @@
 import ts, {
-	DeclarationStatement,
+	DeclarationStatement, Identifier,
 	Node,
 	TypeAliasDeclaration,
 	TypeNode,
@@ -64,4 +64,8 @@ export abstract class TypeReferenceNodeExtraction<T extends Node> {
 
 export abstract class TypeNodeReferenceExtraction<
 	T extends TypeNode = TypeNode,
+> extends TypeReferenceNodeExtraction<T> {}
+
+export abstract class IdentifierExtraction<
+	T extends Identifier = Identifier
 > extends TypeReferenceNodeExtraction<T> {}

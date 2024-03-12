@@ -4,6 +4,8 @@ import {basename, dirname, relative} from 'node:path';
 import {writeFile} from 'node:fs/promises';
 import {UnionTypes} from './DocsTsAutoImports/UnionTypes';
 import {PropertyDeclarations} from './DocsTsAutoImports/PropertyDeclarations';
+import {IntersectionTypes} from "./DocsTsAutoImports/IntersectionTypes";
+import {ClassParent} from "./DocsTsAutoImports/ClassParent";
 
 declare type initial_check_nodes =
 	| ts.ClassDeclaration
@@ -192,7 +194,7 @@ export class DocsTsAutoImports {
 
 			const class_declarations = nodes.filter(ts.isClassDeclaration);
 
-			const reference_names = [
+			const reference_names:(Exclude<keyof typeof this.comes_from, number>)[] = [
 				...this.references_to_names(filename, [
 					...new PropertyDeclarations(
 						PropertyDeclarations.class_declarations_to_property_declarations(
@@ -202,8 +204,14 @@ export class DocsTsAutoImports {
 					...new UnionTypes(
 						UnionTypes.declarations_to_types(type_aliases)
 					).extracted,
+					...new IntersectionTypes(
+						IntersectionTypes.declarations_to_types(type_aliases)
+					).extracted,
 				]),
-			];
+				...(ClassParent.extract_parent_classes(class_declarations).map(e => e.escapedText.toString())),
+			]
+				.filter(maybe => maybe in this.comes_from)
+				.filter(maybe => filename.replace(/\.ts$/, '') !== this.comes_from[maybe]);
 
 			if (reference_names.length) {
 				if (!(filename in auto_imports)) {
