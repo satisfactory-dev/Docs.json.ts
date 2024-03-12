@@ -6,6 +6,7 @@ import ts, {
 	TypeNode,
 	TypeReferenceNode,
 } from 'typescript';
+import {UnionTypes} from './UnionTypes';
 
 export abstract class TypeReferenceNodeExtraction<T extends Node> {
 	readonly extracted: TypeReferenceNode[];
@@ -15,16 +16,6 @@ export abstract class TypeReferenceNodeExtraction<T extends Node> {
 	}
 
 	protected abstract extract(nodes: T[]): TypeReferenceNode[];
-
-	protected static reduce_type_references_arrays_to_type_reference_array(
-		arrays: ts.TypeReferenceNode[][]
-	): ts.TypeReferenceNode[] {
-		return arrays.reduce((was, is) => {
-			was.push(...is);
-
-			return was;
-		}, [] as ts.TypeReferenceNode[]);
-	}
 
 	protected static extract_type_references_from_tuple_type_node(
 		node: ts.TupleTypeNode
@@ -39,9 +30,13 @@ export abstract class TypeReferenceNodeExtraction<T extends Node> {
 	protected static extract_type_references_from_type_literal_node(
 		node: ts.TypeLiteralNode
 	): ts.TypeReferenceNode[] {
-		return this.reduce_type_references_arrays_to_type_reference_array(
+		const property_signatures =
 			node.members
 				.filter(ts.isPropertySignature)
+		;
+
+		return [
+			...property_signatures
 				.filter(
 					(
 						maybe
@@ -59,7 +54,21 @@ export abstract class TypeReferenceNodeExtraction<T extends Node> {
 						property_signature.type
 					);
 				})
-		);
+				.flat(),
+			...(new UnionTypes(property_signatures
+				.filter(
+					(
+						maybe
+					): maybe is ts.PropertySignature & {
+						type: ts.UnionTypeNode;
+					} => {
+						return (
+							undefined !== maybe.type &&
+							ts.isUnionTypeNode(maybe.type)
+						);
+					}
+				).map(e => e.type.types).flat())).extracted
+		];
 	}
 }
 

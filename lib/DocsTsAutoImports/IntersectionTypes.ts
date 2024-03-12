@@ -8,7 +8,13 @@ import {TypeNodeReferenceExtraction} from './TypeRefenceNodeExtraction';
 
 export class IntersectionTypes extends TypeNodeReferenceExtraction {
 	extract(nodes: TypeNode[]): TypeReferenceNode[] {
-		return [...nodes.filter(ts.isTypeReferenceNode)];
+		return [
+			...nodes.filter(ts.isTypeReferenceNode),
+			...nodes
+				.filter(ts.isTypeLiteralNode)
+				.map(e => IntersectionTypes.extract_type_references_from_type_literal_node(e))
+				.flat(),
+		];
 	}
 
 	static declarations_to_types(nodes: TypeAliasDeclaration[]): TypeNode[] {

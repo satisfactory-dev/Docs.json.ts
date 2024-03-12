@@ -18,19 +18,20 @@ export class UnionTypes extends TypeNodeReferenceExtraction {
 	private static union_type_tuple_references(
 		union_types: TypeNode[]
 	): TypeReferenceNode[] {
-		return UnionTypes.reduce_type_references_arrays_to_type_reference_array(
+		return (
 			union_types
 				.filter(ts.isTupleTypeNode)
 				.map((e) =>
 					UnionTypes.extract_type_references_from_tuple_type_node(e)
 				)
+				.flat()
 		);
 	}
 
 	private static union_type_literal_sub_references(
 		union_types: TypeNode[]
 	): TypeReferenceNode[] {
-		return UnionTypes.reduce_type_references_arrays_to_type_reference_array(
+		return (
 			union_types
 				.filter(ts.isTypeLiteralNode)
 				.map((e) =>
@@ -38,6 +39,7 @@ export class UnionTypes extends TypeNodeReferenceExtraction {
 						e
 					)
 				)
+				.flat()
 		);
 	}
 
