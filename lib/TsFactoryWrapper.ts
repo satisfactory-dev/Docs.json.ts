@@ -2,10 +2,10 @@ import ts, {
 	ClassDeclaration,
 	Expression,
 	HeritageClause,
-	KeywordTypeSyntaxKind,
+	KeywordTypeSyntaxKind, LiteralTypeNode,
 	MethodDeclaration,
 	Modifier,
-	PropertyDeclaration,
+	PropertyDeclaration, TypeLiteralNode,
 	TypeNode,
 	TypeParameterDeclaration,
 } from 'typescript';
@@ -90,6 +90,20 @@ export function create_modifier(
 	return modifier_map[modifier]();
 }
 
+function maybe_expression_node_from_literal(node:TypeNode|LiteralTypeNode) : Expression|undefined
+{
+	if (ts.isLiteralTypeNode(node)) {
+		if (node.literal.kind !== ts.SyntaxKind.StringLiteral) {
+			console.error(node.literal);
+			throw new Error('Unsupported literal type found!');
+		}
+
+		return create_literal_node_from_value(node.literal.text).literal;
+	}
+
+	return undefined;
+}
+
 export function createProperty_with_specific_type(
 	name: string,
 	type: ts.TypeNode,
@@ -116,7 +130,7 @@ export function createProperty_with_specific_type(
 		property_name_or_computed(name),
 		undefined,
 		type,
-		undefined
+		maybe_expression_node_from_literal(type)
 	);
 }
 

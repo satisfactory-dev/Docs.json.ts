@@ -714,7 +714,8 @@ export function create_constructor_args<T1 extends string = string>(
 				$ref: string;
 		  }
 	) &
-		({properties: {[key: string]: object}} | {})
+		({properties: {[key: string]: object}} | {}),
+	property_types: {[key: string]: TypeNodeGenerationResult},
 ): {file: T1; node: ts.TypeAliasDeclaration} {
 	let type: ts.TypeNode | undefined;
 
@@ -724,13 +725,13 @@ export function create_constructor_args<T1 extends string = string>(
 		.concat('properties' in data ? Object.keys(data.properties) : [])
 		.reduce(
 			(was, is) => {
-				was[is] = ts.factory.createKeywordTypeNode(
+				was[is] = (is in property_types) ? property_types[is].type() : ts.factory.createKeywordTypeNode(
 					ts.SyntaxKind.StringKeyword
 				);
 
 				return was;
 			},
-			{} as {[key: string]: ts.KeywordTypeNode}
+			{} as {[key: string]: ts.TypeNode}
 		);
 
 	if (('required' in data && data.required.length) || 'properties' in data) {

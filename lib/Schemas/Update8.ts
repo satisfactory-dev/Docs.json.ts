@@ -216,6 +216,11 @@ export class Update8TypeNodeGeneration {
 
 		const data = schema.definitions[ref];
 
+		const types = 'properties' in data ? this.type_node_generator.find_from_properties(
+			ajv,
+			data.properties
+		) : {};
+
 		if ('$ref' in data || 'required' in data) {
 			if (!filename.endsWith('.ts')) {
 				throw new Error(
@@ -224,16 +229,11 @@ export class Update8TypeNodeGeneration {
 			}
 
 			this.classes.push(
-				create_constructor_args(filename, class_name, data)
+				create_constructor_args(filename, class_name, data, types)
 			);
 		}
 
 		if ('properties' in data) {
-			const types = this.type_node_generator.find_from_properties(
-				ajv,
-				data.properties
-			);
-
 			TypeNodeGenerationMatcher.merge_imports(
 				filename,
 				path_relative,
@@ -247,6 +247,7 @@ export class Update8TypeNodeGeneration {
 			members.push(
 				...Object.entries(types).map((entry) => {
 					const [property, generator] = entry;
+					const type = generator.type();
 					TypeNodeGenerationMatcher.merge_import_singular(
 						filename,
 						path_relative,
@@ -258,12 +259,12 @@ export class Update8TypeNodeGeneration {
 						property,
 						required_properties.includes(property)
 							? ts.factory.createUnionTypeNode([
-									generator.type(),
+									type,
 									ts.factory.createKeywordTypeNode(
 										ts.SyntaxKind.UndefinedKeyword
 									),
 								])
-							: generator.type(),
+							: type,
 						['public']
 					);
 				})
@@ -546,13 +547,19 @@ export class Update8TypeNodeGeneration {
 		}
 	}
 
-	private generate_base_classes() {
+	private generate_base_classes(ajv:Ajv) {
 		this.classes.push(
 			...supported_base_classes.map((reference_name) => {
+				const types = 'properties' in schema.definitions[reference_name] ? this.type_node_generator.find_from_properties(
+					ajv,
+					schema.definitions[reference_name].properties
+				) : {};
+
 				return create_constructor_args(
 					'classes/base.ts',
 					reference_name,
-					schema.definitions[reference_name]
+					schema.definitions[reference_name],
+					types
 				);
 			})
 		);
@@ -722,7 +729,7 @@ export class Update8TypeNodeGeneration {
 		return [
 			() => {
 				this.generate_types(ajv);
-				this.generate_base_classes();
+				this.generate_base_classes(ajv);
 				this.generate_concrete_classes(ajv);
 				this.generate_abstract_classes(ajv);
 
