@@ -24,7 +24,7 @@ import {
 	create_UnrealEngineString_reference_type,
 	create_conditional_UnrealEngineString_type_reference,
 	conditional_UnrealEngineString_type_arguments,
-	create_union,
+	create_union, create_literal_node_from_value,
 } from '../TsFactoryWrapper';
 import {
 	TypeNodeGeneration,
@@ -960,9 +960,14 @@ export const type_node_generators = [
 				pattern: {type: 'string', minLength: 2},
 			},
 		},
-		() => {
-			return new TypeNodeGenerationResult(() => create_type('string'));
-		}
+		(data) => {
+			return new TypeNodeGenerationResult(() => {
+				return ts.factory.createTypeReferenceNode(
+					'StringPassedRegExp',
+					[create_literal_node_from_value(data.pattern)]
+				);
+			});
+		},
 	),
 	new TypeNodeGeneration<UnrealEngineString_type>(
 		UnrealEngineString_schema,
