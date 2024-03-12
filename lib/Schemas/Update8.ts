@@ -216,10 +216,13 @@ export class Update8TypeNodeGeneration {
 
 		const data = schema.definitions[ref];
 
-		const types = 'properties' in data ? this.type_node_generator.find_from_properties(
-			ajv,
-			data.properties
-		) : {};
+		const types =
+			'properties' in data
+				? this.type_node_generator.find_from_properties(
+						ajv,
+						data.properties
+					)
+				: {};
 
 		if ('$ref' in data || 'required' in data) {
 			if (!filename.endsWith('.ts')) {
@@ -547,13 +550,16 @@ export class Update8TypeNodeGeneration {
 		}
 	}
 
-	private generate_base_classes(ajv:Ajv) {
+	private generate_base_classes(ajv: Ajv) {
 		this.classes.push(
 			...supported_base_classes.map((reference_name) => {
-				const types = 'properties' in schema.definitions[reference_name] ? this.type_node_generator.find_from_properties(
-					ajv,
-					schema.definitions[reference_name].properties
-				) : {};
+				const types =
+					'properties' in schema.definitions[reference_name]
+						? this.type_node_generator.find_from_properties(
+								ajv,
+								schema.definitions[reference_name].properties
+							)
+						: {};
 
 				return create_constructor_args(
 					'classes/base.ts',

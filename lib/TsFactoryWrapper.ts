@@ -2,10 +2,12 @@ import ts, {
 	ClassDeclaration,
 	Expression,
 	HeritageClause,
-	KeywordTypeSyntaxKind, LiteralTypeNode,
+	KeywordTypeSyntaxKind,
+	LiteralTypeNode,
 	MethodDeclaration,
 	Modifier,
-	PropertyDeclaration, TypeLiteralNode,
+	PropertyDeclaration,
+	TypeLiteralNode,
 	TypeNode,
 	TypeParameterDeclaration,
 } from 'typescript';
@@ -90,8 +92,9 @@ export function create_modifier(
 	return modifier_map[modifier]();
 }
 
-function maybe_expression_node_from_literal(node:TypeNode|LiteralTypeNode) : Expression|undefined
-{
+function maybe_expression_node_from_literal(
+	node: TypeNode | LiteralTypeNode
+): Expression | undefined {
 	if (ts.isLiteralTypeNode(node)) {
 		if (node.literal.kind !== ts.SyntaxKind.StringLiteral) {
 			console.error(node.literal);
