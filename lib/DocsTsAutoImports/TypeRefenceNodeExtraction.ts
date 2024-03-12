@@ -30,11 +30,9 @@ export abstract class TypeReferenceNodeExtraction<T extends Node> {
 	protected static extract_type_references_from_type_literal_node(
 		node: ts.TypeLiteralNode
 	): ts.TypeReferenceNode[] {
-		const property_signatures =
-			node.members
-				.filter(ts.isPropertySignature)
-		;
-
+		const property_signatures = node.members.filter(
+			ts.isPropertySignature
+		);
 		return [
 			...property_signatures
 				.filter(
@@ -55,19 +53,23 @@ export abstract class TypeReferenceNodeExtraction<T extends Node> {
 					);
 				})
 				.flat(),
-			...(new UnionTypes(property_signatures
-				.filter(
-					(
-						maybe
-					): maybe is ts.PropertySignature & {
-						type: ts.UnionTypeNode;
-					} => {
-						return (
-							undefined !== maybe.type &&
-							ts.isUnionTypeNode(maybe.type)
-						);
-					}
-				).map(e => e.type.types).flat())).extracted
+			...new UnionTypes(
+				property_signatures
+					.filter(
+						(
+							maybe
+						): maybe is ts.PropertySignature & {
+							type: ts.UnionTypeNode;
+						} => {
+							return (
+								undefined !== maybe.type &&
+								ts.isUnionTypeNode(maybe.type)
+							);
+						}
+					)
+					.map((e) => e.type.types)
+					.flat()
+			).extracted,
 		];
 	}
 }

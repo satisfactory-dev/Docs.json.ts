@@ -12,7 +12,11 @@ export class IntersectionTypes extends TypeNodeReferenceExtraction {
 			...nodes.filter(ts.isTypeReferenceNode),
 			...nodes
 				.filter(ts.isTypeLiteralNode)
-				.map(e => IntersectionTypes.extract_type_references_from_type_literal_node(e))
+				.map((e) =>
+					IntersectionTypes.extract_type_references_from_type_literal_node(
+						e
+					)
+				)
 				.flat(),
 		];
 	}
