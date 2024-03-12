@@ -1,4 +1,4 @@
-import {ImportTracker, TypesGenerationFromSchema} from '../TypesGeneration';
+import {TypesGenerationFromSchema} from '../TypesGeneration';
 import ts from 'typescript';
 import {
 	adjust_enum_name,
@@ -22,13 +22,6 @@ export const target_files = Object.entries({
 	},
 	{} as {[key: string]: string}
 );
-
-ImportTracker.set_imports('common/prefixes.ts', [
-	{
-		import_these: ['string_starts_with'],
-		from: '../utils/validators',
-	},
-]);
 
 export const schema = {
 	type: 'object',

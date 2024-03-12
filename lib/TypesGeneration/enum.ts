@@ -1,4 +1,4 @@
-import {ImportTracker, TypesGenerationFromSchema} from '../TypesGeneration';
+import {TypesGenerationFromSchema} from '../TypesGeneration';
 import ts from 'typescript';
 import {
 	adjust_enum_name,
@@ -34,17 +34,6 @@ declare type supported_definitions = keyof {
 		? `#/definitions/${pseudo_key}`
 		: never]: string;
 };
-
-ImportTracker.set_imports('common/enum.ts', [
-	{
-		import_these: ['string_starts_with'],
-		from: '../utils/validators',
-	},
-	{
-		import_these: ['None'],
-		from: './constants',
-	},
-]);
 
 const schema = {
 	type: 'object',

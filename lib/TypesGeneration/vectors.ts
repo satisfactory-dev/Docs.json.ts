@@ -1,5 +1,4 @@
 import {
-	ImportTracker,
 	TypesGenerationMatchesReferenceName,
 } from '../TypesGeneration';
 import {
@@ -27,17 +26,6 @@ export const target_files = {
 };
 
 export const supported_meta_types = ['transformation'];
-
-ImportTracker.set_imports('common/vectors.ts', [
-	{
-		import_these: [
-			'decimal_string__type',
-			'decimal_string__signed__type',
-			'integer_string__type',
-		],
-		from: '../utils/validators',
-	},
-]);
 
 declare type vector_object_type = {
 	type: 'object';

@@ -1,5 +1,4 @@
 import {
-	ImportTracker,
 	TypesGenerationMatchesReferenceName,
 } from '../TypesGeneration';
 import ts from 'typescript';
@@ -22,26 +21,6 @@ export const target_files = {
 	'ItemClass-only--array': 'common/arrays.ts',
 	mFuel: 'common/arrays.ts',
 };
-
-ImportTracker.set_imports('common/arrays.ts', [
-	{
-		from: '../utils/validators',
-		import_these: [
-			'UnrealEngineString',
-			'string_starts_with',
-			'integer_string__type',
-			'StringPassedRegExp',
-		],
-	},
-	{
-		from: './vectors',
-		import_these: [adjust_class_name('xyz--unsigned-x')],
-	},
-	{
-		from: './aliases',
-		import_these: [adjust_class_name('ItemClass__prop')],
-	},
-]);
 
 export type array_string_schema_type = {
 	type: 'string';

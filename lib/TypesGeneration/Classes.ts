@@ -12,7 +12,6 @@ import {
 } from '../TsFactoryWrapper';
 import ts from 'typescript';
 import {
-	ImportTracker,
 	TypesGenerationFromSchema,
 	TypesGenerationMatchesReferenceName,
 } from '../TypesGeneration';
@@ -43,25 +42,6 @@ export const target_files = {
 	mUnlocks_Class: 'classes/CoreUObject/FGSchematic.ts',
 	mUnlocks_mTapeUnlocks: 'classes/CoreUObject/FGSchematic.ts',
 };
-
-ImportTracker.set_imports('classes/base.ts', [
-	{
-		import_these: ['regexp_argument'],
-		from: '../utils/validators',
-	},
-]);
-/*
-ImportTracker.set_imports('classes/CoreUObject/FGSchematic.ts', [
-	{
-		import_these: [
-			'UnrealEngineString',
-			'string_starts_with',
-			'StringPassedRegExp',
-		],
-		from: '../../utils/validators',
-	},
-]);
-*/
 
 declare type mDisableSnapOn_member = {
 	type: 'string';

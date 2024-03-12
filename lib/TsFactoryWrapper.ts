@@ -7,7 +7,6 @@ import ts, {
 	MethodDeclaration,
 	Modifier,
 	PropertyDeclaration,
-	TypeLiteralNode,
 	TypeNode,
 	TypeParameterDeclaration,
 } from 'typescript';

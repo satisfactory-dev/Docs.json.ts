@@ -2,10 +2,7 @@ import ts, {EntityName, Identifier, TypeReferenceNode} from 'typescript';
 import {import_these_later, ImportTracker} from './TypesGeneration';
 import {basename, dirname, relative} from 'node:path';
 import {writeFile} from 'node:fs/promises';
-import {UnionTypes} from './DocsTsAutoImports/UnionTypes';
-import {PropertyDeclarations} from './DocsTsAutoImports/PropertyDeclarations';
-import {IntersectionTypes} from './DocsTsAutoImports/IntersectionTypes';
-import {ClassParent} from './DocsTsAutoImports/ClassParent';
+import {from_Node_array} from './DocsToAutoImport/from_Node_array';
 
 declare type initial_check_nodes =
 	| ts.ClassDeclaration
@@ -113,58 +110,6 @@ export class DocsTsAutoImports {
 		return file_exports;
 	}
 
-	private static is_TypeReference_with_Identifier(
-		node: ts.Node
-	): node is ts.TypeReferenceNode & {
-		typeName: ts.Identifier;
-	} {
-		return (
-			ts.isTypeReferenceNode(node) &&
-			DocsTsAutoImports.is_Identifier(node.typeName)
-		);
-	}
-
-	private static are_TypeReferences_with_Identifier(
-		nodes: ts.Node[]
-	): (ts.TypeReferenceNode & {
-		typeName: ts.Identifier;
-	})[] {
-		return nodes.filter(
-			DocsTsAutoImports.is_TypeReference_with_Identifier
-		);
-	}
-
-	private references_to_names(
-		filename: string,
-		nodes: ts.TypeReferenceNode[]
-	): string[] {
-		return DocsTsAutoImports.are_TypeReferences_with_Identifier(nodes)
-			.map(DocsTsAutoImports.node_IdentifierName)
-			.reduce((was, is) => {
-				if (!was.includes(is)) {
-					was.push(is);
-				}
-
-				return was;
-			}, [] as string[])
-			.filter(
-				(
-					maybe
-				): maybe is Exclude<keyof typeof this.comes_from, number> => {
-					return (
-						maybe in this.comes_from &&
-						filename !== `${this.comes_from[maybe]}.ts`
-					);
-				}
-			);
-	}
-
-	private static filter_types_to_reference_nodes(
-		nodes: ts.TypeNode[]
-	): ts.TypeReferenceNode[] {
-		return [...nodes.filter(ts.isTypeReferenceNode)];
-	}
-
 	async generate() {
 		const file_exports = this.file_exports();
 
@@ -190,30 +135,13 @@ export class DocsTsAutoImports {
 		for (const entry of this.files_entries) {
 			const [filename, nodes] = entry;
 
-			const type_aliases = nodes.filter(ts.isTypeAliasDeclaration);
-
-			const class_declarations = nodes.filter(ts.isClassDeclaration);
+			const node_names = from_Node_array(nodes);
 
 			const reference_names: Exclude<
 				keyof typeof this.comes_from,
 				number
 			>[] = [
-				...this.references_to_names(filename, [
-					...new PropertyDeclarations(
-						PropertyDeclarations.class_declarations_to_property_declarations(
-							class_declarations
-						)
-					).extracted,
-					...new UnionTypes(
-						UnionTypes.declarations_to_types(type_aliases)
-					).extracted,
-					...new IntersectionTypes(
-						IntersectionTypes.declarations_to_types(type_aliases)
-					).extracted,
-				]),
-				...ClassParent.extract_parent_classes(class_declarations).map(
-					(e) => e.escapedText.toString()
-				),
+				...node_names,
 			]
 				.filter((maybe) => maybe in this.comes_from)
 				.filter(

@@ -1,4 +1,4 @@
-import {ImportTracker, TypesGenerationFromSchema} from '../TypesGeneration';
+import {TypesGenerationFromSchema} from '../TypesGeneration';
 import ts from 'typescript';
 import {
 	adjust_class_name,
@@ -39,21 +39,6 @@ export const target_files = {
 		'classes/CoreUObject/FGSchematic.ts',
 	'FGSchematic--mUnlocks_mItemsToGive': 'classes/CoreUObject/FGSchematic.ts',
 };
-
-ImportTracker.set_imports('common/unions.ts', [
-	{
-		from: './constants',
-		import_these: ['None'],
-	},
-	{
-		from: './prefixes',
-		import_these: ['Texture2D__basic'],
-	},
-	{
-		from: '../utils/validators',
-		import_these: ['string_starts_with', 'UnrealEngineString'],
-	},
-]);
 
 declare type supported_oneOf_items =
 	| {$ref: '#/definitions/Texture2D--basic'}

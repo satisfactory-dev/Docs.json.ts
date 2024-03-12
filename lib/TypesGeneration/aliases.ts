@@ -1,5 +1,4 @@
 import {
-	ImportTracker,
 	TypesGenerationFromSchema,
 	TypesGenerationMatchesReferenceName,
 } from '../TypesGeneration';
@@ -28,21 +27,6 @@ export const target_files = {
 	mOutputInventoryHandlerData: 'common/aliases.ts',
 	'SpecifiedColor--semi-native': 'classes/CoreUObject/FGSchematic.ts',
 };
-
-ImportTracker.set_imports('common/aliases.ts', [
-	{
-		from: '../utils/validators',
-		import_these: [
-			'UnrealEngineString',
-			'string_starts_with',
-			'StringPassedRegExp',
-		],
-	},
-	{
-		from: './constants',
-		import_these: ['empty_object'],
-	},
-]);
 
 const string_aliases: (keyof typeof target_files)[] = ['mScannerDisplayText'];
 

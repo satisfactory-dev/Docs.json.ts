@@ -479,14 +479,6 @@ export class DocsTsGenerator {
 		return progress;
 	}
 
-	private static ClassDeclaration_is_abstract(
-		class_node: ts.ClassDeclaration
-	) {
-		const modifiers = [...(class_node.modifiers || [])].map((e) => e.kind);
-
-		return modifiers.includes(ts.SyntaxKind.AbstractKeyword);
-	}
-
 	private async write_files(
 		parent_folder: string,
 		files: {[key: string]: ts.Node[]}

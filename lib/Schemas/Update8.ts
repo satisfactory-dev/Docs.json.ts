@@ -489,14 +489,6 @@ export class Update8TypeNodeGeneration {
 			),
 		});
 
-		/*
-		this.merge_imports('classes/CoreUObject/FGSchematic.ts', '../../utils/validators', [
-			'UnrealEngineString',
-			'string_starts_with',
-			'StringPassedRegExp',
-		]);
-		*/
-
 		for (const mUnlocks_type of schema.definitions['FGSchematic--base']
 			.properties.mUnlocks.items.anyOf) {
 			const {$ref} = mUnlocks_type;
