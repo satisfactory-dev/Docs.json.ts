@@ -5,6 +5,7 @@ import ts, {
 	UnionTypeNode,
 } from 'typescript';
 import {TypeNodeReferenceExtraction} from './TypeRefenceNodeExtraction';
+import {ArrayTypes} from './ArrayTypes';
 
 export class UnionTypes extends TypeNodeReferenceExtraction {
 	extract(nodes: TypeNode[]): TypeReferenceNode[] {
@@ -42,27 +43,9 @@ export class UnionTypes extends TypeNodeReferenceExtraction {
 		union_types: TypeNode[]
 	): TypeReferenceNode[] {
 		const element_types = union_types
-			.filter(ts.isArrayTypeNode)
-			.map((e) => e.elementType);
+			.filter(ts.isArrayTypeNode);
 
-		const parenthesized = element_types
-			.filter(ts.isParenthesizedTypeNode)
-			.map((e) => e.type);
-
-		const parenthesized_unions = parenthesized
-			.filter(ts.isUnionTypeNode)
-			.map((e) => e.types)
-			.flat();
-
-		return [
-			...(parenthesized_unions.length > 0
-				? new UnionTypes(parenthesized_unions).extracted
-				: []),
-			...element_types
-				.filter(ts.isTypeLiteralNode)
-				.map(UnionTypes.extract_type_references_from_type_literal_node)
-				.flat(),
-		];
+		return (new ArrayTypes(element_types)).extracted;
 	}
 
 	static declarations_to_types(nodes: TypeAliasDeclaration[]): TypeNode[] {
