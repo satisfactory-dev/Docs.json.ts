@@ -110,7 +110,7 @@ export function EntityName_array_from_Node_array(nodes: Node[]): EntityName[] {
 			}
 		} else if (ts.isParameter(node)) {
 			sub_nodes.push(
-				...[node.initializer, node.name, node.type].filter(
+				...[node.initializer, node.type].filter(
 					(maybe): maybe is Exclude<typeof maybe, undefined> =>
 						!!maybe
 				)
@@ -129,7 +129,10 @@ export function EntityName_array_from_Node_array(nodes: Node[]): EntityName[] {
 		} else if (ts.isPrefixUnaryExpression(node)) {
 			sub_nodes.push(node.operand);
 		} else if (ts.isBinaryExpression(node)) {
-			sub_nodes.push(node.left, node.right);
+			sub_nodes.push(...[
+				node.left,
+				node.right,
+			].filter(maybe => !ts.isIdentifier(maybe)));
 		} else if (ts.isVariableDeclarationList(node)) {
 			sub_nodes.push(...node.declarations);
 		} else if (ts.isConditionalTypeNode(node)) {
@@ -178,7 +181,7 @@ export function EntityName_array_from_Node_array(nodes: Node[]): EntityName[] {
 				)
 			);
 		} else if (ts.isPropertyAccessExpression(node)) {
-			sub_nodes.push(node.expression, node.name);
+			sub_nodes.push(node.expression);
 		} else if (
 			ts.isTemplateExpression(node) ||
 			ts.isTemplateLiteralTypeNode(node)
