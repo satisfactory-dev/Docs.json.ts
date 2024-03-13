@@ -798,25 +798,20 @@ export function create_binding_constructor(
 	let constructor_body: ts.ExpressionStatement[] = [];
 	let remapped_count = 0;
 	const remapped_properties: {[key: string]: string} = {};
-	const constructor_arg = ('properties' in data ? Object.keys(data.properties) : []).map(
-		(property) => {
-			const property_name =
-				computed_property_name_or_undefined(property);
-			const name = needs_element_access(property)
-				? `remapped_${++remapped_count}`
-				: property;
+	const constructor_arg = (
+		'properties' in data ? Object.keys(data.properties) : []
+	).map((property) => {
+		const property_name = computed_property_name_or_undefined(property);
+		const name = needs_element_access(property)
+			? `remapped_${++remapped_count}`
+			: property;
 
-			if (property_name) {
-				remapped_properties[property] = name;
-			}
-
-			return ts.factory.createBindingElement(
-				undefined,
-				property_name,
-				name
-			);
+		if (property_name) {
+			remapped_properties[property] = name;
 		}
-	);
+
+		return ts.factory.createBindingElement(undefined, property_name, name);
+	});
 
 	if ('properties' in data) {
 		constructor_body.push(
