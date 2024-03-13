@@ -8,7 +8,8 @@ import {
 	create_binding_constructor,
 	NoMatchError,
 	PropertyMatchFailure,
-	PartialMatchError, TypeNodeGenerationResult,
+	PartialMatchError,
+	TypeNodeGenerationResult,
 } from '../TypeNodeGeneration';
 import {supported_base_classes} from '../TypesGeneration/Classes';
 import {
@@ -192,36 +193,39 @@ export class Update8TypeNodeGeneration {
 		}
 	}
 
-	private determine_parent_info(ajv:Ajv, ref:definition_key) : {
-		pass_to_super: string[],
-		types: {[key: string]: TypeNodeGenerationResult},
-		required_but_not_defined: string[],
+	private determine_parent_info(
+		ajv: Ajv,
+		ref: definition_key
+	): {
+		pass_to_super: string[];
+		types: {[key: string]: TypeNodeGenerationResult};
+		required_but_not_defined: string[];
 	} {
 		let checking = schema.definitions[ref];
 		const property_index: {[key: string]: string[]} = {};
 		const original_ref = ref;
 
-		const types = (
+		const types =
 			'properties' in checking
 				? this.type_node_generator.find_from_properties(
-					ajv,
-					checking.properties
-				)
-				: {}
-		);
+						ajv,
+						checking.properties
+					)
+				: {};
 		const properties = Object.keys(types);
-		const result:{
-			pass_to_super: string[],
-			types: {[key: string]: TypeNodeGenerationResult},
-			required_but_not_defined: string[],
+		const result: {
+			pass_to_super: string[];
+			types: {[key: string]: TypeNodeGenerationResult};
+			required_but_not_defined: string[];
 		} = {
 			pass_to_super: [],
 			types,
-			required_but_not_defined: (
-				'required' in checking ? checking.required.filter(
-					maybe => !properties.includes(maybe)
-				) : []
-			)
+			required_but_not_defined:
+				'required' in checking
+					? checking.required.filter(
+							(maybe) => !properties.includes(maybe)
+						)
+					: [],
 		};
 
 		while ('$ref' in checking || 'properties' in checking) {
@@ -231,15 +235,18 @@ export class Update8TypeNodeGeneration {
 			const types =
 				'properties' in checking
 					? this.type_node_generator.find_from_properties(
-						ajv,
-						checking.properties
-					)
+							ajv,
+							checking.properties
+						)
 					: {};
 
 			for (const entry of Object.entries(types)) {
 				const [property, type_result] = entry;
 
-				if (!(property in result) && result.required_but_not_defined.includes(property)) {
+				if (
+					!(property in result) &&
+					result.required_but_not_defined.includes(property)
+				) {
 					result.types[property] = type_result;
 				}
 			}
@@ -269,7 +276,9 @@ export class Update8TypeNodeGeneration {
 			original_ref in properties ? property_index[original_ref] : [];
 
 		delete property_index[original_ref];
-		const parent_properties = new Set(Object.values(property_index).flat());
+		const parent_properties = new Set(
+			Object.values(property_index).flat()
+		);
 
 		result.pass_to_super = current_properties.filter((maybe) =>
 			parent_properties.has(maybe)

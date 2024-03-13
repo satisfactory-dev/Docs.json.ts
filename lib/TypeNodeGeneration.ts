@@ -822,9 +822,7 @@ export function create_binding_constructor(
 		return was;
 	}, [] as string[]);
 
-	const constructor_arg = (
-		constructor_properties
-	).map((property) => {
+	const constructor_arg = constructor_properties.map((property) => {
 		const property_name = computed_property_name_or_undefined(property);
 		const name = needs_element_access(property)
 			? `remapped_${++remapped_count}`
@@ -878,7 +876,7 @@ export function create_binding_constructor(
 			}),
 			...required_but_not_defined.map((property) => {
 				return create_this_assignment(property, property);
-			}),
+			})
 		);
 	}
 
