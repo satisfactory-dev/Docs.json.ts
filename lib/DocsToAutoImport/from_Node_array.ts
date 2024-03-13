@@ -129,10 +129,11 @@ export function EntityName_array_from_Node_array(nodes: Node[]): EntityName[] {
 		} else if (ts.isPrefixUnaryExpression(node)) {
 			sub_nodes.push(node.operand);
 		} else if (ts.isBinaryExpression(node)) {
-			sub_nodes.push(...[
-				node.left,
-				node.right,
-			].filter(maybe => !ts.isIdentifier(maybe)));
+			sub_nodes.push(
+				...[node.left, node.right].filter(
+					(maybe) => !ts.isIdentifier(maybe)
+				)
+			);
 		} else if (ts.isVariableDeclarationList(node)) {
 			sub_nodes.push(...node.declarations);
 		} else if (ts.isConditionalTypeNode(node)) {
