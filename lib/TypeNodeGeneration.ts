@@ -804,13 +804,26 @@ declare type object_shorthand = (
 export function create_binding_constructor(
 	reference_name: string,
 	data: object_shorthand,
-	pass_to_super: string[]
+	pass_to_super: string[],
+	required_but_not_defined: string[] = []
 ): ts.MethodDeclaration {
 	let constructor_body: ts.ExpressionStatement[] = [];
 	let remapped_count = 0;
 	const remapped_properties: {[key: string]: string} = {};
+
+	const constructor_properties = [
+		...('properties' in data ? Object.keys(data.properties) : []),
+		...required_but_not_defined,
+	].reduce((was, is) => {
+		if (!was.includes(is)) {
+			was.push(is);
+		}
+
+		return was;
+	}, [] as string[]);
+
 	const constructor_arg = (
-		'properties' in data ? Object.keys(data.properties) : []
+		constructor_properties
 	).map((property) => {
 		const property_name = computed_property_name_or_undefined(property);
 		const name = needs_element_access(property)
@@ -862,7 +875,10 @@ export function create_binding_constructor(
 				}
 
 				return create_this_assignment(property, assigned_value);
-			})
+			}),
+			...required_but_not_defined.map((property) => {
+				return create_this_assignment(property, property);
+			}),
 		);
 	}
 

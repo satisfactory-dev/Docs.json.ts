@@ -17,6 +17,7 @@ validate:
 
 generate:
 	${DOCKER_PREFIX} ${DOCKER_IMAGE} npm run generate
+	${DOCKER_PREFIX} --entrypoint sh ${DOCKER_IMAGE} -c './node_modules/.bin/tsc --project ./tsconfig.generated-types-check.json | tee tsconfig.generated-types-check.txt'
 
 lint:
 	${DOCKER_PREFIX} ${DOCKER_IMAGE} ./node_modules/.bin/prettier . --check

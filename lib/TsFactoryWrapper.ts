@@ -109,7 +109,8 @@ function maybe_expression_node_from_literal(
 export function createProperty_with_specific_type(
 	name: string,
 	type: ts.TypeNode,
-	modifiers: supported_property_modifiers = []
+	modifiers: supported_property_modifiers = [],
+	required = true
 ): PropertyDeclaration {
 	let resolved_modifiers: undefined | Modifier[] = undefined;
 
@@ -130,7 +131,7 @@ export function createProperty_with_specific_type(
 	return ts.factory.createPropertyDeclaration(
 		resolved_modifiers,
 		property_name_or_computed(name),
-		undefined,
+		required ? undefined : ts.factory.createToken(ts.SyntaxKind.QuestionToken),
 		type,
 		maybe_expression_node_from_literal(type)
 	);

@@ -8,7 +8,7 @@ import {
 	create_binding_constructor,
 	NoMatchError,
 	PropertyMatchFailure,
-	PartialMatchError,
+	PartialMatchError, TypeNodeGenerationResult,
 } from '../TypeNodeGeneration';
 import {supported_base_classes} from '../TypesGeneration/Classes';
 import {
@@ -192,14 +192,56 @@ export class Update8TypeNodeGeneration {
 		}
 	}
 
-	private determine_pass_to_super(ref: definition_key): string[] {
+	private determine_parent_info(ajv:Ajv, ref:definition_key) : {
+		pass_to_super: string[],
+		types: {[key: string]: TypeNodeGenerationResult},
+		required_but_not_defined: string[],
+	} {
 		let checking = schema.definitions[ref];
-		const properties: {[key: string]: string[]} = {};
+		const property_index: {[key: string]: string[]} = {};
 		const original_ref = ref;
+
+		const types = (
+			'properties' in checking
+				? this.type_node_generator.find_from_properties(
+					ajv,
+					checking.properties
+				)
+				: {}
+		);
+		const properties = Object.keys(types);
+		const result:{
+			pass_to_super: string[],
+			types: {[key: string]: TypeNodeGenerationResult},
+			required_but_not_defined: string[],
+		} = {
+			pass_to_super: [],
+			types,
+			required_but_not_defined: (
+				'required' in checking ? checking.required.filter(
+					maybe => !properties.includes(maybe)
+				) : []
+			)
+		};
 
 		while ('$ref' in checking || 'properties' in checking) {
 			if ('properties' in checking) {
-				properties[ref] = Object.keys(checking.properties);
+				property_index[ref] = Object.keys(checking.properties);
+			}
+			const types =
+				'properties' in checking
+					? this.type_node_generator.find_from_properties(
+						ajv,
+						checking.properties
+					)
+					: {};
+
+			for (const entry of Object.entries(types)) {
+				const [property, type_result] = entry;
+
+				if (!(property in result) && result.required_but_not_defined.includes(property)) {
+					result.types[property] = type_result;
+				}
 			}
 
 			if ('$ref' in checking) {
@@ -224,14 +266,16 @@ export class Update8TypeNodeGeneration {
 		}
 
 		const current_properties =
-			original_ref in properties ? properties[original_ref] : [];
+			original_ref in properties ? property_index[original_ref] : [];
 
-		delete properties[original_ref];
-		const parent_properties = new Set(Object.values(properties).flat());
+		delete property_index[original_ref];
+		const parent_properties = new Set(Object.values(property_index).flat());
 
-		return current_properties.filter((maybe) =>
+		result.pass_to_super = current_properties.filter((maybe) =>
 			parent_properties.has(maybe)
 		);
+
+		return result;
 	}
 
 	private generate_class(ajv: Ajv, ref: definition_key, filename: string) {
@@ -258,13 +302,8 @@ export class Update8TypeNodeGeneration {
 
 		const data = schema.definitions[ref];
 
-		const types =
-			'properties' in data
-				? this.type_node_generator.find_from_properties(
-						ajv,
-						data.properties
-					)
-				: {};
+		const parent_info = this.determine_parent_info(ajv, ref);
+		const {types, pass_to_super, required_but_not_defined} = parent_info;
 
 		if ('$ref' in data || 'required' in data) {
 			if (!filename.endsWith('.ts')) {
@@ -272,7 +311,6 @@ export class Update8TypeNodeGeneration {
 					`non-typescript filename specified: ${filename}`
 				);
 			}
-			const pass_to_super = this.determine_pass_to_super(ref);
 
 			this.classes.push(
 				create_constructor_args(
@@ -309,7 +347,7 @@ export class Update8TypeNodeGeneration {
 
 					return createProperty_with_specific_type(
 						property,
-						required_properties.includes(property)
+						!required_properties.includes(property)
 							? ts.factory.createUnionTypeNode([
 									type,
 									ts.factory.createKeywordTypeNode(
@@ -317,7 +355,8 @@ export class Update8TypeNodeGeneration {
 									),
 								])
 							: type,
-						['public']
+						['public'],
+						required_properties.includes(property)
 					);
 				})
 			);
@@ -328,7 +367,8 @@ export class Update8TypeNodeGeneration {
 				create_binding_constructor(
 					ref,
 					data,
-					this.determine_pass_to_super(ref)
+					pass_to_super,
+					required_but_not_defined
 				)
 			);
 		}
@@ -600,8 +640,10 @@ export class Update8TypeNodeGeneration {
 	private generate_base_classes(ajv: Ajv) {
 		this.classes.push(
 			...supported_base_classes.map((reference_name) => {
-				const pass_to_super =
-					this.determine_pass_to_super(reference_name);
+				const {pass_to_super} = this.determine_parent_info(
+					ajv,
+					reference_name
+				);
 				const types =
 					'properties' in schema.definitions[reference_name]
 						? this.type_node_generator.find_from_properties(
@@ -635,8 +677,10 @@ export class Update8TypeNodeGeneration {
 					);
 				});
 
-				const pass_to_super =
-					this.determine_pass_to_super(reference_name);
+				const {pass_to_super} = this.determine_parent_info(
+					ajv,
+					reference_name
+				);
 
 				members.push(
 					create_binding_constructor(
