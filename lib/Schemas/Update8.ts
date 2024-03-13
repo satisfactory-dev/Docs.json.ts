@@ -273,7 +273,7 @@ export class Update8TypeNodeGeneration {
 		}
 
 		const current_properties =
-			original_ref in properties ? property_index[original_ref] : [];
+			original_ref in property_index ? property_index[original_ref] : [];
 
 		delete property_index[original_ref];
 		const parent_properties = new Set(
