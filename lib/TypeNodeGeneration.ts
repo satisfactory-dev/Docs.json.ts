@@ -874,9 +874,6 @@ export function create_binding_constructor(
 
 				return create_this_assignment(property, assigned_value);
 			}),
-			...required_but_not_defined.map((property) => {
-				return create_this_assignment(property, property);
-			})
 		);
 	}
 
