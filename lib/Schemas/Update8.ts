@@ -311,8 +311,11 @@ export class Update8TypeNodeGeneration {
 
 		const data = schema.definitions[ref];
 
-		const parent_info = this.determine_parent_info(ajv, ref);
-		const {types, pass_to_super, required_but_not_defined} = parent_info;
+		const {
+			types,
+			pass_to_super,
+			required_but_not_defined,
+		} = this.determine_parent_info(ajv, ref);
 
 		if ('$ref' in data || 'required' in data) {
 			if (!filename.endsWith('.ts')) {
