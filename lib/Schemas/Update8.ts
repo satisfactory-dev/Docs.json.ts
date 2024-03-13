@@ -356,14 +356,7 @@ export class Update8TypeNodeGeneration {
 
 					return createProperty_with_specific_type(
 						property,
-						!required_properties.includes(property)
-							? ts.factory.createUnionTypeNode([
-									type,
-									ts.factory.createKeywordTypeNode(
-										ts.SyntaxKind.UndefinedKeyword
-									),
-								])
-							: type,
+						type,
 						['public'],
 						required_properties.includes(property)
 					);

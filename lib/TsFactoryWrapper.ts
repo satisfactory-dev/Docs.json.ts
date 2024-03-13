@@ -131,9 +131,7 @@ export function createProperty_with_specific_type(
 	return ts.factory.createPropertyDeclaration(
 		resolved_modifiers,
 		property_name_or_computed(name),
-		required
-			? undefined
-			: ts.factory.createToken(ts.SyntaxKind.QuestionToken),
+		undefined,
 		type,
 		maybe_expression_node_from_literal(type)
 	);
@@ -763,9 +761,7 @@ export function create_object_type<
 			return ts.factory.createPropertySignature(
 				undefined,
 				property_name_or_computed(property),
-				required.includes(property) || pass_to_super.includes(property)
-					? undefined
-					: ts.factory.createToken(ts.SyntaxKind.QuestionToken),
+				undefined,
 				type
 			);
 		})
