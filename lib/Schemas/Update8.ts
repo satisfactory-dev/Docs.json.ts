@@ -192,8 +192,7 @@ export class Update8TypeNodeGeneration {
 		}
 	}
 
-	private determine_pass_to_super(ref:definition_key) : string[]
-	{
+	private determine_pass_to_super(ref: definition_key): string[] {
 		let checking = schema.definitions[ref];
 		const properties: {[key: string]: string[]} = {};
 		const original_ref = ref;
@@ -224,12 +223,15 @@ export class Update8TypeNodeGeneration {
 			}
 		}
 
-		const current_properties = original_ref in properties ? properties[original_ref] : [];
+		const current_properties =
+			original_ref in properties ? properties[original_ref] : [];
 
 		delete properties[original_ref];
 		const parent_properties = new Set(Object.values(properties).flat());
 
-		return current_properties.filter(maybe => parent_properties.has(maybe));
+		return current_properties.filter((maybe) =>
+			parent_properties.has(maybe)
+		);
 	}
 
 	private generate_class(ajv: Ajv, ref: definition_key, filename: string) {
@@ -273,7 +275,13 @@ export class Update8TypeNodeGeneration {
 			const pass_to_super = this.determine_pass_to_super(ref);
 
 			this.classes.push(
-				create_constructor_args(filename, class_name, data, types, pass_to_super)
+				create_constructor_args(
+					filename,
+					class_name,
+					data,
+					types,
+					pass_to_super
+				)
 			);
 		}
 
@@ -316,13 +324,13 @@ export class Update8TypeNodeGeneration {
 		}
 
 		if ('$ref' in data || 'required' in data) {
-			;
-
-			members.push(create_binding_constructor(
-				ref,
-				data,
-				this.determine_pass_to_super(ref),
-			));
+			members.push(
+				create_binding_constructor(
+					ref,
+					data,
+					this.determine_pass_to_super(ref)
+				)
+			);
 		}
 
 		this.classes.push({
@@ -592,8 +600,8 @@ export class Update8TypeNodeGeneration {
 	private generate_base_classes(ajv: Ajv) {
 		this.classes.push(
 			...supported_base_classes.map((reference_name) => {
-
-				const pass_to_super = this.determine_pass_to_super(reference_name);
+				const pass_to_super =
+					this.determine_pass_to_super(reference_name);
 				const types =
 					'properties' in schema.definitions[reference_name]
 						? this.type_node_generator.find_from_properties(
@@ -627,9 +635,16 @@ export class Update8TypeNodeGeneration {
 					);
 				});
 
-				const pass_to_super = this.determine_pass_to_super(reference_name);
+				const pass_to_super =
+					this.determine_pass_to_super(reference_name);
 
-				members.push(create_binding_constructor(reference_name, data, pass_to_super));
+				members.push(
+					create_binding_constructor(
+						reference_name,
+						data,
+						pass_to_super
+					)
+				);
 
 				const class_options: create_class_options = {
 					modifiers: ['export', 'abstract'],

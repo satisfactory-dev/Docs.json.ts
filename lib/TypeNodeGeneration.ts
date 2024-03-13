@@ -1,6 +1,7 @@
 import Ajv, {Schema, ValidateFunction} from 'ajv/dist/2020';
 import ts, {
-	Identifier, ObjectLiteralExpression,
+	Identifier,
+	ObjectLiteralExpression,
 	ShorthandPropertyAssignment,
 	SpreadAssignment,
 } from 'typescript';
@@ -743,7 +744,11 @@ export function create_constructor_args<T1 extends string = string>(
 		);
 
 	if (('required' in data && data.required.length) || 'properties' in data) {
-		type = create_object_type<typeof properties>(properties, required, pass_to_super);
+		type = create_object_type<typeof properties>(
+			properties,
+			required,
+			pass_to_super
+		);
 	}
 
 	if ('$ref' in data && data['$ref']?.startsWith('#/definitions/')) {
@@ -796,10 +801,10 @@ declare type object_shorthand = (
 		| {}
 	);
 
-export function  create_binding_constructor(
+export function create_binding_constructor(
 	reference_name: string,
 	data: object_shorthand,
-	pass_to_super: string[],
+	pass_to_super: string[]
 ): ts.MethodDeclaration {
 	let constructor_body: ts.ExpressionStatement[] = [];
 	let remapped_count = 0;
@@ -862,26 +867,32 @@ export function  create_binding_constructor(
 	}
 
 	if ('$ref' in data && data['$ref']?.startsWith('#/definitions/')) {
-		let rest_arg:Identifier|ObjectLiteralExpression = ts.factory.createIdentifier('rest');
+		let rest_arg: Identifier | ObjectLiteralExpression =
+			ts.factory.createIdentifier('rest');
 
-		if (pass_to_super.length > 0){
-			let pass_to_super_object:(
-				[
-					ShorthandPropertyAssignment,
-					...ShorthandPropertyAssignment[],
-				]
+		if (pass_to_super.length > 0) {
+			let pass_to_super_object:
 				| [
-					ShorthandPropertyAssignment,
-					...ShorthandPropertyAssignment[],
-					SpreadAssignment,
-				]
-			) = (pass_to_super).map(
-				(prop) => {
-					return ts.factory.createShorthandPropertyAssignment(prop);
-				}
-			) as [ShorthandPropertyAssignment, ...ShorthandPropertyAssignment[]];
-			pass_to_super_object = [...pass_to_super_object, ts.factory.createSpreadAssignment(rest_arg)];
-			rest_arg = ts.factory.createObjectLiteralExpression(pass_to_super_object);
+						ShorthandPropertyAssignment,
+						...ShorthandPropertyAssignment[],
+				  ]
+				| [
+						ShorthandPropertyAssignment,
+						...ShorthandPropertyAssignment[],
+						SpreadAssignment,
+				  ] = pass_to_super.map((prop) => {
+				return ts.factory.createShorthandPropertyAssignment(prop);
+			}) as [
+				ShorthandPropertyAssignment,
+				...ShorthandPropertyAssignment[],
+			];
+			pass_to_super_object = [
+				...pass_to_super_object,
+				ts.factory.createSpreadAssignment(rest_arg),
+			];
+			rest_arg = ts.factory.createObjectLiteralExpression(
+				pass_to_super_object
+			);
 		}
 
 		constructor_body = [

@@ -748,7 +748,11 @@ export function create_type(type: keyof typeof type_map): ts.KeywordTypeNode {
 
 export function create_object_type<
 	T extends {[key: string]: ts.TypeNode} = {[key: string]: ts.TypeNode},
->(properties: T, required: (keyof T)[], pass_to_super: string[] = []): ts.TypeLiteralNode {
+>(
+	properties: T,
+	required: (keyof T)[],
+	pass_to_super: string[] = []
+): ts.TypeLiteralNode {
 	return ts.factory.createTypeLiteralNode(
 		Object.entries(properties).map((entry) => {
 			const [property, type] = entry;
