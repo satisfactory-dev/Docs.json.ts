@@ -203,19 +203,19 @@ export class Update8TypeNodeGeneration {
 			}
 
 			if ('$ref' in checking) {
-				let subref = checking['$ref'];
+				let sub_reference = checking['$ref'];
 
-				if (!subref.startsWith('#/definitions/')) {
+				if (!sub_reference.startsWith('#/definitions/')) {
 					break;
 				}
 
-				subref = subref.substring(14);
+				sub_reference = sub_reference.substring(14);
 
-				if (!is_ref(subref)) {
+				if (!is_ref(sub_reference)) {
 					break;
 				}
 
-				ref = subref;
+				ref = sub_reference;
 
 				checking = schema.definitions[ref];
 			} else {
