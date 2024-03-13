@@ -208,7 +208,7 @@ export function EntityName_array_from_Node_array(nodes: Node[]): EntityName[] {
 			sub_nodes.push(...node.types);
 		} else if (ts.isExpressionWithTypeArguments(node)) {
 			sub_nodes.push(node.expression, ...(node.typeArguments || []));
-		} else if (!ts.isToken(node)) {
+		} else if (!ts.isToken(node) && !ts.isObjectLiteralExpression(node)) {
 			others.push(node);
 		}
 	}

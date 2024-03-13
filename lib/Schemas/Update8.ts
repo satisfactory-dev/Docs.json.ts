@@ -192,6 +192,46 @@ export class Update8TypeNodeGeneration {
 		}
 	}
 
+	private determine_pass_to_super(ref:definition_key) : string[]
+	{
+		let checking = schema.definitions[ref];
+		const properties: {[key: string]: string[]} = {};
+		const original_ref = ref;
+
+		while ('$ref' in checking || 'properties' in checking) {
+			if ('properties' in checking) {
+				properties[ref] = Object.keys(checking.properties);
+			}
+
+			if ('$ref' in checking) {
+				let subref = checking['$ref'];
+
+				if (!subref.startsWith('#/definitions/')) {
+					break;
+				}
+
+				subref = subref.substring(14);
+
+				if (!is_ref(subref)) {
+					break;
+				}
+
+				ref = subref;
+
+				checking = schema.definitions[ref];
+			} else {
+				break;
+			}
+		}
+
+		const current_properties = original_ref in properties ? properties[original_ref] : [];
+
+		delete properties[original_ref];
+		const parent_properties = new Set(Object.values(properties).flat());
+
+		return current_properties.filter(maybe => parent_properties.has(maybe));
+	}
+
 	private generate_class(ajv: Ajv, ref: definition_key, filename: string) {
 		const path_relative = '../'.repeat(
 			dirname(filename).split('/').length
@@ -230,9 +270,10 @@ export class Update8TypeNodeGeneration {
 					`non-typescript filename specified: ${filename}`
 				);
 			}
+			const pass_to_super = this.determine_pass_to_super(ref);
 
 			this.classes.push(
-				create_constructor_args(filename, class_name, data, types)
+				create_constructor_args(filename, class_name, data, types, pass_to_super)
 			);
 		}
 
@@ -275,7 +316,13 @@ export class Update8TypeNodeGeneration {
 		}
 
 		if ('$ref' in data || 'required' in data) {
-			members.push(create_binding_constructor(ref, data));
+			;
+
+			members.push(create_binding_constructor(
+				ref,
+				data,
+				this.determine_pass_to_super(ref),
+			));
 		}
 
 		this.classes.push({
@@ -545,6 +592,8 @@ export class Update8TypeNodeGeneration {
 	private generate_base_classes(ajv: Ajv) {
 		this.classes.push(
 			...supported_base_classes.map((reference_name) => {
+
+				const pass_to_super = this.determine_pass_to_super(reference_name);
 				const types =
 					'properties' in schema.definitions[reference_name]
 						? this.type_node_generator.find_from_properties(
@@ -557,7 +606,8 @@ export class Update8TypeNodeGeneration {
 					'classes/base.ts',
 					reference_name,
 					schema.definitions[reference_name],
-					types
+					types,
+					pass_to_super
 				);
 			})
 		);
@@ -577,7 +627,9 @@ export class Update8TypeNodeGeneration {
 					);
 				});
 
-				members.push(create_binding_constructor(reference_name, data));
+				const pass_to_super = this.determine_pass_to_super(reference_name);
+
+				members.push(create_binding_constructor(reference_name, data, pass_to_super));
 
 				const class_options: create_class_options = {
 					modifiers: ['export', 'abstract'],
