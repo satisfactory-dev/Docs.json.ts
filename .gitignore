@@ -2,3 +2,6 @@
 /data/
 /generated-types/
 /lib/**/*.mjs
+/tsconfig.generated-types-check.txt
+/imports-come-from.json
+/auto-imports.json
