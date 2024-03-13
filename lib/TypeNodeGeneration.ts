@@ -798,7 +798,7 @@ export function create_binding_constructor(
 	let constructor_body: ts.ExpressionStatement[] = [];
 	let remapped_count = 0;
 	const remapped_properties: {[key: string]: string} = {};
-	const constructor_arg = ('required' in data ? data.required : []).map(
+	const constructor_arg = ('properties' in data ? Object.keys(data.properties) : []).map(
 		(property) => {
 			const property_name =
 				computed_property_name_or_undefined(property);
@@ -818,9 +818,9 @@ export function create_binding_constructor(
 		}
 	);
 
-	if ('required' in data && 'properties' in data) {
+	if ('properties' in data) {
 		constructor_body.push(
-			...data.required.map((property, index) => {
+			...Object.keys(data.properties).map((property, index) => {
 				const property_object = data.properties[
 					property as keyof typeof data.properties
 				] as {
