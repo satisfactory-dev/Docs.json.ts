@@ -913,10 +913,17 @@ export function create_union(
 
 declare type lazy_union_item =
 	| string
+	| {$ref: string}
 	| ({type: string} & ({pattern: string} | {const: string}));
 
 function map_lazy_union_item_to_type(item: lazy_union_item): ts.TypeNode {
 	if ('object' === typeof item) {
+		if ('$ref' in item) {
+			return ts.factory.createTypeReferenceNode(
+				adjust_class_name(item.$ref.substring(14))
+			);
+		}
+
 		if ('const' in item) {
 			return create_literal_node_from_value(item.const);
 		}

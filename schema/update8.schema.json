@@ -3,6 +3,31 @@
 	"$id": "update8.schema.json",
 	"type": "array",
 	"definitions": {
+		"NativeClass--NativeClass": {
+			"type": "string",
+			"minLength": 1,
+			"UnrealEngineString": {
+				"UnrealEngineString_prefix": "/Script/CoreUObject.Class",
+				"type": "string",
+				"pattern": "^/Script/FactoryGame\\.FG"
+			}
+		},
+		"NativeClass--Classes": {
+			"type": "array",
+			"minItems": 1,
+			"items": {"$ref": "#/definitions/class--no-description-or-display-name"}
+		},
+		"NativeClass": {
+			"type": "object",
+			"required": ["NativeClass", "Classes"],
+			"additionalProperties": true,
+			"properties": {
+				"NativeClass": {"$ref": "#/definitions/NativeClass--NativeClass"},
+				"Classes": {"$ref": "#/definitions/NativeClass--Classes"},
+				"type": {"type": "string", "const": "object"},
+				"$ref": {"type": "string", "const": "#/definitions/NativeClass"}
+			}
+		},
 		"class--no-description-or-display-name": {
 			"type": "object",
 			"required": ["ClassName"],
@@ -7304,13 +7329,8 @@
 	"prefixItems": [
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGItemDescriptor'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
@@ -7322,13 +7342,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableDroneStation'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -7344,13 +7359,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGCustomizationRecipe'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
@@ -7362,13 +7372,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableBlueprintDesigner'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -7384,13 +7389,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildingDescriptor'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
@@ -7466,13 +7466,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGSchematic'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
@@ -7491,13 +7486,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableWallLightweight'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
@@ -7509,13 +7499,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableWall'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
@@ -7527,13 +7512,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableDoor'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
@@ -7552,13 +7532,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableCornerWall'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
@@ -7570,13 +7545,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGResourceDescriptor'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
@@ -7588,13 +7558,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableRailroadTrack'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -7610,13 +7575,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildable'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
@@ -7638,13 +7598,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePoleLightweight'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -7660,13 +7615,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGPoleDescriptor'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
@@ -7678,13 +7628,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableConveyorBelt'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
@@ -7696,13 +7641,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableWire'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 2,
@@ -7721,13 +7661,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePowerPole'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
@@ -7739,13 +7674,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableTradingPost'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -7761,13 +7691,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGEquipmentStunSpear'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 3,
@@ -7789,13 +7714,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGEquipmentDescriptor'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
@@ -7807,13 +7727,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePillarLightweight'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
@@ -7825,13 +7740,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableFactory'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 6,
@@ -7862,13 +7772,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableWalkwayLightweight'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
@@ -7880,13 +7785,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableWalkway'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -7902,13 +7802,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableGeneratorFuel'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 3,
@@ -7930,13 +7825,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePipelineSupport'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
@@ -7948,13 +7838,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePipeline'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
@@ -7966,13 +7851,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePipelineJunction'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -7988,13 +7868,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePipelinePump'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 3,
@@ -8016,13 +7891,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePipeReservoir'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 2,
@@ -8041,13 +7911,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableWaterPump'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -8063,13 +7928,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableResourceSink'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -8085,13 +7945,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableResourceSinkShop'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -8107,13 +7962,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGItemDescriptorBiomass'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
@@ -8125,13 +7975,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableResourceExtractor'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -8156,13 +8001,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableManufacturer'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
@@ -8190,13 +8030,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGPortableMinerDispenser'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -8212,13 +8047,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGItemDescriptorNuclearFuel'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 2,
@@ -8237,13 +8067,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGVehicleDescriptor'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
@@ -8255,13 +8080,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableManufacturerVariablePower'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -8277,13 +8097,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableGeneratorNuclear'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -8299,13 +8114,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableFrackingExtractor'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -8321,13 +8131,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableFrackingActivator'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -8343,13 +8148,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableConveyorLift'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
@@ -8361,13 +8161,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGConsumableEquipment'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
@@ -8379,13 +8174,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGConsumableDescriptor'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
@@ -8404,13 +8194,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGHoverPack'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -8426,13 +8211,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGSuitBase'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -8448,13 +8228,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGGasMask'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -8470,13 +8245,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableRailroadSignal'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
@@ -8488,13 +8258,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableTrainPlatformCargo'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
@@ -8506,13 +8271,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableTrainPlatformEmpty'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
@@ -8524,13 +8284,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableRailroadStation'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -8546,13 +8301,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGJetPack'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -8568,13 +8318,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableStorage'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
@@ -8586,13 +8331,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGPipeHyperStart'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -8608,13 +8348,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePipeHyper'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -8630,13 +8365,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePowerStorage'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -8652,13 +8382,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableDockingStation'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -8674,13 +8399,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGConveyorPoleStackable'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -8696,13 +8416,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableJumppad'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -8718,13 +8433,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGChainsaw'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -8740,13 +8450,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGObjectScanner'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -8762,13 +8467,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableMAM'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -8784,13 +8484,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableAttachmentMerger'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -8806,13 +8501,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableAttachmentSplitter'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -8828,13 +8518,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableFoundation'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
@@ -8846,13 +8531,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableFoundationLightweight'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
@@ -8864,13 +8544,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableRamp'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
@@ -8882,13 +8557,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGAmmoTypeProjectile'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
@@ -8900,13 +8570,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGAmmoTypeSpreadshot'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -8922,13 +8587,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGWeapon'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
@@ -8947,13 +8607,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableGeneratorGeoThermal'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -8969,13 +8624,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableSplitterSmart'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
@@ -8987,13 +8637,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGAmmoTypeInstantHit'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -9012,13 +8657,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePriorityPowerSwitch'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -9034,13 +8674,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGJumpingStilts'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -9056,13 +8691,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableCircuitSwitch'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -9078,13 +8708,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGEquipmentZipline'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -9100,13 +8725,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGChargedWeapon'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -9122,13 +8742,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGParachute'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -9144,13 +8759,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableRadarTower'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -9166,13 +8776,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableSnowDispenser'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -9188,13 +8793,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableFactorySimpleProducer'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -9210,13 +8810,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableLadder'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -9232,13 +8827,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableStair'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
@@ -9250,13 +8840,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGGolfCartDispenser'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
@@ -9268,13 +8853,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePassthrough'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
@@ -9286,13 +8866,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableLightsControlPanel'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -9308,13 +8883,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableLightSource'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
@@ -9326,13 +8896,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableFloodlight'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
@@ -9344,13 +8909,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableWidgetSign'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
@@ -9362,13 +8922,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePassthroughPipeHyper'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,
@@ -9384,13 +8939,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableBeamLightweight'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
@@ -9402,13 +8952,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableFactoryBuilding'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
@@ -9420,13 +8965,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableSpaceElevator'"
-				},
 				"Classes": {
 					"type": "array",
 					"items": false,

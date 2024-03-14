@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (243 of 243)
+100.00% Complete (246 of 246)
 
 ## Basic Types
 
@@ -328,6 +328,12 @@
 
 -   [x] mEventType
 -   [x] mEventType--optional-csv
+
+## NativeClass
+
+-   [x] NativeClass
+-   [x] NativeClass--Classes
+-   [x] NativeClass--NativeClass
 
 ## SpecifiedColor
 

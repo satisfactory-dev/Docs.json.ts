@@ -4,7 +4,7 @@ import {
 	adjust_class_name,
 	create_minimum_size_typed_array_of_single_type,
 	create_modifier,
-	create_object_type,
+	create_object_type, create_union,
 	possibly_create_lazy_union,
 } from '../TsFactoryWrapper';
 import {
@@ -262,6 +262,45 @@ export const generators = [
 			);
 		}
 	),
+	new TypesGenerationFromSchema<{
+		anyOf: [{$ref: string}, ...{$ref: string}[]]
+	}>(
+		{
+			type: 'object',
+			required: ['anyOf'],
+			additionalProperties: false,
+			properties: {
+				anyOf: {
+					type: 'array',
+					minItems: 1,
+					items: {
+						type: 'object',
+						required: ['$ref'],
+						additionalProperties: false,
+						properties: {
+							$ref: {type: 'string', pattern: '^#\\/definitions\\/'}
+						}
+					}
+				}
+			}
+		},
+		(data, reference_name) => {
+			const [a, b, ...rest] = data.anyOf;
+
+			return ts.factory.createTypeAliasDeclaration(
+				[create_modifier('export')],
+				adjust_class_name(reference_name),
+				undefined,
+				create_union(
+					ts.factory.createTypeReferenceNode(adjust_class_name(a.$ref.substring(14))),
+					ts.factory.createTypeReferenceNode(adjust_class_name(b.$ref.substring(14))),
+					...rest.map((e => e.$ref.substring(14))).map((sub_reference) => {
+						return ts.factory.createTypeReferenceNode(adjust_class_name(sub_reference));
+					})
+				)
+			);
+		}
+	)
 ];
 
 export const type_node_generators = [
