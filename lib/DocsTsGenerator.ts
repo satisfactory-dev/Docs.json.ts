@@ -488,7 +488,9 @@ export class DocsTsGenerator {
 		update_progress();
 
 		try {
-			progress.files['Docs.json.ts'] = [Update8.generate_DocsJsonTs(default_config.ajv)];
+			progress.files['Docs.json.ts'] = [
+				Update8.generate_DocsJsonTs(default_config.ajv),
+			];
 		} catch (err) {
 			update_progress();
 			throw new GenerationException(progress, err);
