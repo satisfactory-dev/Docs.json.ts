@@ -230,8 +230,7 @@ export const generators = [
 			['declare'],
 			{
 				Class: possibly_create_lazy_union(data.properties.Class.enum),
-			},
-			['Class']
+			}
 		);
 	}),
 	new TypesGenerationMatchesReferenceName<
@@ -272,8 +271,7 @@ export const generators = [
 								.UnrealEngineString
 						)
 				),
-			},
-			['Class']
+			}
 		);
 	}),
 ];

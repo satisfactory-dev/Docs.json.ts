@@ -109,9 +109,8 @@ function maybe_expression_node_from_literal(
 export function createProperty_with_specific_type(
 	name: string,
 	type: ts.TypeNode,
-	modifiers: supported_property_modifiers = [],
-	required = true
-): PropertyDeclaration {
+	modifiers: supported_property_modifiers = []
+): ts.PropertyDeclaration {
 	let resolved_modifiers: undefined | Modifier[] = undefined;
 
 	if (modifiers.length) {
@@ -749,11 +748,7 @@ export function create_type(type: keyof typeof type_map): ts.KeywordTypeNode {
 
 export function create_object_type<
 	T extends {[key: string]: ts.TypeNode} = {[key: string]: ts.TypeNode},
->(
-	properties: T,
-	required: (keyof T)[],
-	pass_to_super: string[] = []
-): ts.TypeLiteralNode {
+>(properties: T): ts.TypeLiteralNode {
 	return ts.factory.createTypeLiteralNode(
 		Object.entries(properties).map((entry) => {
 			const [property, type] = entry;
@@ -773,14 +768,13 @@ export function create_object_type_alias<
 >(
 	reference_name: string,
 	modifiers: [keyof typeof modifier_map, ...(keyof typeof modifier_map)[]],
-	properties: T,
-	required: (keyof T)[]
+	properties: T
 ): ts.TypeAliasDeclaration {
 	return ts.factory.createTypeAliasDeclaration(
 		modifiers.map(create_modifier),
 		reference_name,
 		undefined,
-		create_object_type<T>(properties, required)
+		create_object_type<T>(properties)
 	);
 }
 

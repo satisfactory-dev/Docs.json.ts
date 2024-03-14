@@ -817,15 +817,10 @@ export const custom_generators = [
 					ts.factory.createIntersectionTypeNode([
 						create_type('never'),
 						ts.factory.createTypeReferenceNode('T'),
-						create_object_type(
-							{
-								_DocsJsonPattern:
-									ts.factory.createTypeReferenceNode(
-										'pattern'
-									),
-							},
-							['_DocsJsonPattern']
-						),
+						create_object_type({
+							_DocsJsonPattern:
+								ts.factory.createTypeReferenceNode('pattern'),
+						}),
 					])
 				),
 			},
@@ -850,15 +845,10 @@ export const custom_generators = [
 					ts.factory.createIntersectionTypeNode([
 						create_type('never'),
 						ts.factory.createTypeReferenceNode('T'),
-						create_object_type(
-							{
-								_DocsJsonPattern:
-									ts.factory.createTypeReferenceNode(
-										'pattern'
-									),
-							},
-							['_DocsJsonPattern']
-						),
+						create_object_type({
+							_DocsJsonPattern:
+								ts.factory.createTypeReferenceNode('pattern'),
+						}),
 					])
 				),
 			},

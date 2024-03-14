@@ -332,13 +332,7 @@ export class Update8TypeNodeGeneration {
 			}
 
 			this.classes.push(
-				create_constructor_args(
-					filename,
-					class_name,
-					data,
-					types,
-					pass_to_super
-				)
+				create_constructor_args(filename, class_name, data, types)
 			);
 		}
 
@@ -349,9 +343,6 @@ export class Update8TypeNodeGeneration {
 				Object.values(types),
 				this.imports
 			);
-
-			const required_properties =
-				'required' in data ? data.required : [];
 
 			members.push(
 				...Object.entries(types)
@@ -371,8 +362,7 @@ export class Update8TypeNodeGeneration {
 						return createProperty_with_specific_type(
 							property,
 							type,
-							['public'],
-							required_properties.includes(property)
+							['public']
 						);
 					})
 			);
@@ -502,10 +492,7 @@ export class Update8TypeNodeGeneration {
 				[create_modifier('declare')],
 				'mFuel_item',
 				undefined,
-				create_object_type(
-					mFuel_item,
-					Object.keys(mFuel_item) as (keyof typeof mFuel_item)[]
-				)
+				create_object_type(mFuel_item)
 			),
 		});
 
@@ -681,10 +668,6 @@ export class Update8TypeNodeGeneration {
 	private generate_base_classes(ajv: Ajv) {
 		this.classes.push(
 			...supported_base_classes.map((reference_name) => {
-				const {pass_to_super} = this.determine_parent_info(
-					ajv,
-					reference_name
-				);
 				const types =
 					'properties' in schema.definitions[reference_name]
 						? this.type_node_generator.find_from_properties(
@@ -697,8 +680,7 @@ export class Update8TypeNodeGeneration {
 					'classes/base.ts',
 					reference_name,
 					schema.definitions[reference_name],
-					types,
-					pass_to_super
+					types
 				);
 			})
 		);

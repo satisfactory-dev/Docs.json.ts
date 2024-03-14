@@ -717,21 +717,21 @@ export class TypeNodeGenerationMatcher {
 export function create_constructor_args<T1 extends string = string>(
 	file: T1,
 	reference_name: string,
-	data: (
+	data:
+		| ({required: string[]; $ref: string} & {
+				properties: {[p: string]: object};
+		  })
 		| {
 				required: string[];
 				$ref: string;
 		  }
-		| {
-				required: string[];
-		  }
-		| {
+		| ({required: string[]} & {properties: {[p: string]: object}})
+		| {required: string[]}
+		| ({
 				$ref: string;
-		  }
-	) &
-		({properties: {[key: string]: object}} | {}),
-	property_types: {[key: string]: TypeNodeGenerationResult},
-	pass_to_super: string[]
+		  } & {properties: {[p: string]: object}})
+		| {$ref: string},
+	property_types: {[p: string]: TypeNodeGenerationResult}
 ): {file: T1; node: ts.TypeAliasDeclaration} {
 	let type: ts.TypeNode | undefined;
 
@@ -754,11 +754,7 @@ export function create_constructor_args<T1 extends string = string>(
 		);
 
 	if (('required' in data && data.required.length) || 'properties' in data) {
-		type = create_object_type<typeof properties>(
-			properties,
-			required,
-			pass_to_super
-		);
+		type = create_object_type<typeof properties>(properties);
 	}
 
 	if ('$ref' in data && data['$ref']?.startsWith('#/definitions/')) {

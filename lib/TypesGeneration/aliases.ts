@@ -85,10 +85,11 @@ export const generators = [
 			['declare'],
 			{
 				SpecifiedColor: ts.factory.createTypeReferenceNode(
-					adjust_class_name(data.properties.SpecifiedColor['$ref'].substring(14))
+					adjust_class_name(
+						data.properties.SpecifiedColor['$ref'].substring(14)
+					)
 				),
-			},
-			data.required
+			}
 		);
 	}),
 ];

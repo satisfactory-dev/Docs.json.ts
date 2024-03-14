@@ -141,37 +141,31 @@ export const generators = [
 
 			const generate = check(data)
 				? (): ts.TypeNode => {
-						return create_object_type(
-							{
-								ItemClass: ts.factory.createTypeReferenceNode(
-									adjust_class_name(
-										data.array_string.items.properties.ItemClass[
-											'$ref'
-										].substring(14)
-									)
-								),
-								Amount: ts.factory.createTypeReferenceNode(
-									adjust_class_name(
-										`${data.array_string.items.properties.Amount['$ref'].substring(14)}__type`
-									)
-								),
-							},
-							data.array_string.items.required
-						);
+						return create_object_type({
+							ItemClass: ts.factory.createTypeReferenceNode(
+								adjust_class_name(
+									data.array_string.items.properties.ItemClass[
+										'$ref'
+									].substring(14)
+								)
+							),
+							Amount: ts.factory.createTypeReferenceNode(
+								adjust_class_name(
+									`${data.array_string.items.properties.Amount['$ref'].substring(14)}__type`
+								)
+							),
+						});
 					}
 				: (): ts.TypeNode => {
-						return create_object_type(
-							{
-								ItemClass: ts.factory.createTypeReferenceNode(
-									adjust_class_name(
-										data.array_string.items.properties.ItemClass[
-											'$ref'
-										].substring(14)
-									)
-								),
-							},
-							data.array_string.items.required
-						);
+						return create_object_type({
+							ItemClass: ts.factory.createTypeReferenceNode(
+								adjust_class_name(
+									data.array_string.items.properties.ItemClass[
+										'$ref'
+									].substring(14)
+								)
+							),
+						});
 					};
 
 			return ts.factory.createTypeAliasDeclaration(

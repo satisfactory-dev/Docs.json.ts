@@ -194,20 +194,17 @@ export const generators = [
 								value_reference_name = `${value_reference_name}__type`;
 							}
 
-							return create_object_type(
-								{
-									Value: create_minimum_size_typed_array_of_single_type(
-										entry.array_string.minItems,
-										() =>
-											ts.factory.createTypeReferenceNode(
-												adjust_class_name(
-													value_reference_name
-												)
+							return create_object_type({
+								Value: create_minimum_size_typed_array_of_single_type(
+									entry.array_string.minItems,
+									() =>
+										ts.factory.createTypeReferenceNode(
+											adjust_class_name(
+												value_reference_name
 											)
-									),
-								},
-								entry.array_string.items.required
-							);
+										)
+								),
+							});
 						} else if (
 							'array_string' in entry &&
 							'$ref' in entry.array_string.items &&
