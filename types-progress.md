@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (245 of 245)
+100.00% Complete (243 of 243)
 
 ## Basic Types
 
@@ -58,7 +58,6 @@
 -   [x] color
 -   [x] color-decimal
 -   [x] color--base
--   [x] color--semi-native
 -   [x] color-decimal--semi-native
 
 ## decimal-string
@@ -342,7 +341,6 @@
 ## vectors
 
 -   [x] pitch-yaw-roll
--   [x] quaternion
 -   [x] quaternion--semi-native
 -   [x] xy
 -   [x] xy--integer
