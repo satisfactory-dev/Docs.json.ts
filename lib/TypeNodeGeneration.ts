@@ -113,7 +113,7 @@ declare type array_validator = ValidateFunction<{
 	items: {
 		anyOf: [object, ...object[]];
 	};
-}>;
+} & ({minItems: number}|{}) & ({maxItems: number}|{})>;
 
 abstract class UnsuccessfulMatchException<
 	T extends object | unknown,
@@ -415,6 +415,7 @@ export class TypeNodeGenerationMatcher {
 					properties: {
 						type: {type: 'string', const: 'array'},
 						minItems: {type: 'number', minimum: 1},
+						maxItems: {type: 'number'},
 						items: {
 							oneOf: [
 								{
@@ -453,6 +454,14 @@ export class TypeNodeGenerationMatcher {
 
 			if (result) {
 				return new TypeNodeGenerationResult(() => {
+					if ('minItems' in property) {
+						return create_minimum_size_typed_array_of_single_type(
+							property.minItems,
+							result.type,
+							'maxItems' in property ? property.maxItems : undefined
+						);
+					}
+
 					return ts.factory.createArrayTypeNode(result.type());
 				}, result.import_these_somewhere_later);
 			}

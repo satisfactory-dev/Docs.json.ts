@@ -7409,13 +7409,8 @@
 		},
 		{
 			"type": "object",
-			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
+			"$ref": "#/definitions/NativeClass",
 			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"const": "/Script/CoreUObject.Class'/Script/FactoryGame.FGRecipe'"
-				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
