@@ -1,5 +1,5 @@
 import {basename, dirname} from 'node:path';
-import ts from 'typescript';
+import ts, {TypeLiteralNode} from 'typescript';
 import Ajv from 'ajv/dist/2020';
 
 import {
@@ -40,7 +40,7 @@ import schema from '../../schema/update8.schema.json' assert {type: 'json'};
 
 declare type object_with_ref = {$ref: string};
 
-declare type NativeClass = {
+export type NativeClass = {
 	type: 'object';
 	required: ['NativeClasses', 'Classes'];
 	additionalProperties: false;
@@ -834,7 +834,7 @@ export class Update8TypeNodeGeneration {
 									);
 								} else if (
 									'anyOf' in items &&
-									items.anyOf &&
+									items.anyOf instanceof Array &&
 									items.anyOf.length >= 1
 								) {
 									output.push(
@@ -943,6 +943,17 @@ export class Update8TypeNodeGeneration {
 										)
 									),
 								]);
+							} else if (minItems) {
+								return create_minimum_size_typed_array_of_single_type(
+									minItems,
+									() =>
+										ts.factory.createTypeReferenceNode(
+											adjust_class_name(
+												items.$ref.substring(14)
+											)
+										),
+									maxItems
+								);
 							}
 
 							return ts.factory.createArrayTypeNode(
