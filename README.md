@@ -16,9 +16,9 @@
 1. Checkout locally
 2. Run `make install`
 3. Copy `Docs.json` to `./data/`
-5. Run `make validate`
-   - if this fails, either the `Docs.json` is wrong or the schema is out-of-date
-   - if this succeeds, run `make generate`
+4. Run `make validate`
+    - if this fails, either the `Docs.json` is wrong or the schema is out-of-date
+    - if this succeeds, run `make generate`
 
 # License
 
