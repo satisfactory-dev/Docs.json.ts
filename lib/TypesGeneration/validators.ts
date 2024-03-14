@@ -40,7 +40,7 @@ export const target_files = {
 	'integer-string--signed': 'utils/validators.ts',
 };
 
-const supported_meta_types:string[] = [];
+const supported_meta_types: string[] = [];
 
 ImportTracker.set_imports('utils/validators.ts', [
 	{

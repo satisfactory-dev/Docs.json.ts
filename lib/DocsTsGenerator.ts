@@ -456,8 +456,13 @@ export class DocsTsGenerator {
 
 		for (const match of supported_conversions) {
 			if (!(match.definition in target_files)) {
-				if (is_ref(match.definition) && Update8.can_guess_filename(match.definition)) {
-					target_files[match.definition] = Update8.guess_filename(match.definition);
+				if (
+					is_ref(match.definition) &&
+					Update8.can_guess_filename(match.definition)
+				) {
+					target_files[match.definition] = Update8.guess_filename(
+						match.definition
+					);
 				} else {
 					update_progress();
 					throw new GenerationException(

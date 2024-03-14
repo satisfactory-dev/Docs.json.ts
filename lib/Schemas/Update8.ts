@@ -583,10 +583,9 @@ export class Update8TypeNodeGeneration {
 
 			this.type_node_generator.matchers.push(
 				new TypeNodeGeneration<{
-					$ref: (
+					$ref:
 						| '#/definitions/FGBuildable--mAllowedResources--default-UnrealEngineString'
-						| '#/definitions/FGSchematic--mUnlocks_mSchematics--mSchematics'
-						);
+						| '#/definitions/FGSchematic--mUnlocks_mSchematics--mSchematics';
 				}>(
 					{
 						type: 'object',
@@ -856,13 +855,11 @@ export class Update8TypeNodeGeneration {
 		];
 	}
 
-	can_guess_filename(ref:definition_key)
-	{
+	can_guess_filename(ref: definition_key) {
 		return /^FG[A-Za-z]+--[A-Za-z-_]+$/.test(ref);
 	}
 
-	guess_filename(ref:definition_key): string
-	{
+	guess_filename(ref: definition_key): string {
 		if (!this.can_guess_filename(ref)) {
 			throw new Error(`${ref} not a supported filename`);
 		}
