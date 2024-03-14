@@ -13,6 +13,7 @@ install:
 	${DOCKER_PREFIX} ${DOCKER_IMAGE} npm install
 
 validate:
+#	${DOCKER_PREFIX} ${DOCKER_IMAGE} ./node_modules/.bin/tsc --project ./tsconfig.schema-exports.json
 	${DOCKER_PREFIX} ${DOCKER_IMAGE} npm run validate
 
 generate:

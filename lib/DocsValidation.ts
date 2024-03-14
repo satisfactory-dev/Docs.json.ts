@@ -420,9 +420,9 @@ export function configure_ajv(ajv: Ajv): void {
 		code: (ctx:KeywordCxt) => {
 			const {data, schema} = ctx;
 
-			ctx.fail(_`array_string(${schema}, ${data})`);
+			ctx.pass(_`array_string(${schema}, ${data})`);
 		},
-		 */
+		*/
 	});
 
 	ajv.addKeyword({
@@ -488,9 +488,9 @@ export function configure_ajv(ajv: Ajv): void {
 		code: (ctx:KeywordCxt) => {
 			const {data, schema} = ctx;
 
-			ctx.fail(_`object_string(${schema}, ${data})`);
+			ctx.pass(_`object_string(${schema}, ${data})`);
 		},
-		 */
+		*/
 	});
 
 	ajv.addKeyword({
@@ -553,9 +553,32 @@ export function configure_ajv(ajv: Ajv): void {
 		},
 		/*
 		code: (ctx:KeywordCxt) => {
-			const {data, schema} = ctx;
+			const {data, schema, params} = ctx;
+			ctx.pass(_`
+				(() => {
+					const match = UnrealEngineString_regex.exec(${data});
 
-			ctx.fail(_`UnrealEngineString(${schema}, ${data})`);
+					if (!match) {
+						return false;
+					}
+
+					const prefix = match[1];
+					const value = match[2] || match[3];
+
+					${
+						'UnrealEngineString_prefix' in schema
+						? _`if (prefix !== ${schema.UnrealEngineString_prefix}) { return false }`
+						: _`if (!(new RegExp('${schema.UnrealEngineString_prefix_pattern}')).test(prefix) { return false; }`
+					}
+
+					if (!(new RegExp(${schema.pattern})).test(value)) {
+						return false;
+					}
+
+					return true;
+				})()
+			`);
+			ctx.pass(_`UnrealEngineString(${schema}, ${data})`);
 		},
 		 */
 	});
@@ -573,7 +596,7 @@ export function configure_ajv(ajv: Ajv): void {
 		code: (ctx: KeywordCxt) => {
 			const {schema, data} = ctx;
 
-			ctx.fail(_`!${data}.startsWith(${schema})`);
+			ctx.pass(_`${data}.startsWith(${schema})`);
 		},
 	});
 }

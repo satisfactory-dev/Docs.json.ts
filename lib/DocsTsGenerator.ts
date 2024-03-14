@@ -5,6 +5,7 @@ import {fileURLToPath} from 'node:url';
 
 import * as prettier from 'prettier';
 import Ajv, {ErrorObject} from 'ajv/dist/2020';
+import standalone from 'ajv/dist/standalone';
 
 import update8_schema from '../schema/update8.schema.json' assert {type: 'json'};
 
@@ -52,7 +53,7 @@ import {
 	GenerationMatch,
 	ImportTracker,
 } from './TypesGeneration';
-import {default_config} from './DocsValidation';
+import {configure_ajv, default_config} from './DocsValidation';
 import ts from 'typescript';
 import {glob} from 'glob';
 import {BuiltInParserName} from 'prettier';
@@ -75,6 +76,7 @@ import {
 import {is_ref, Update8TypeNodeGeneration} from './Schemas/Update8';
 import {TypeNodeGenerationMatcher} from './TypeNodeGeneration';
 import {DocsTsAutoImports} from './DocsTsAutoImports';
+import {createHash} from 'node:crypto';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -187,7 +189,7 @@ export class DocsTsGenerator {
 			}[],
 		],
 	>(json: any, schema: {$id: 'update8.schema.json'}): Promise<T> {
-		/* unfortunately this code doesn't work because it generates the wrong type of js :(
+		/* unfortunately this code doesn't work because of nested ajv usage :(
 		if (this.cache_path) {
 			const file_sha512 = createHash('sha512');
 
@@ -215,12 +217,26 @@ export class DocsTsGenerator {
 						standalone(
 							default_config.ajv,
 							default_config.ajv.compile(schema)
+						).replace(
+							/^"use strict";/,
+							[
+								`import {${
+									[
+										'array_string',
+										'object_string',
+										'UnrealEngineString',
+									].join(',')
+								}} from '../lib/schema-exports';`,
+								// adapted from https://stackoverflow.com/a/77047149/23528553
+								'import { createRequire } from "module";',
+								'const require = createRequire(import.meta.url);',
+							].join('')
 						)
 					)
 				);
 			}
 
-			const validateDocs = await import(filepath);
+			const {default: validateDocs} = await import(filepath);
 
 			if (!validateDocs(json)) {
 				throw new ValidationError(
