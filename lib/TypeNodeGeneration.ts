@@ -108,12 +108,15 @@ declare type tuple_array_validator = ValidateFunction<{
 	prefixItems: [any, any];
 }>;
 
-declare type array_validator = ValidateFunction<{
-	type: 'array';
-	items: {
-		anyOf: [object, ...object[]];
-	};
-} & ({minItems: number}|{}) & ({maxItems: number}|{})>;
+declare type array_validator = ValidateFunction<
+	{
+		type: 'array';
+		items: {
+			anyOf: [object, ...object[]];
+		};
+	} & ({minItems: number} | {}) &
+		({maxItems: number} | {})
+>;
 
 abstract class UnsuccessfulMatchException<
 	T extends object | unknown,
@@ -458,7 +461,9 @@ export class TypeNodeGenerationMatcher {
 						return create_minimum_size_typed_array_of_single_type(
 							property.minItems,
 							result.type,
-							'maxItems' in property ? property.maxItems : undefined
+							'maxItems' in property
+								? property.maxItems
+								: undefined
 						);
 					}
 
