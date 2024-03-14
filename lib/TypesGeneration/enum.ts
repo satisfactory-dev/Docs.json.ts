@@ -115,6 +115,20 @@ export const generators = [
 	new TypesGenerationFromSchema<schema_type>(
 		schema,
 		(data, reference_name) => {
+			if (reference_name.startsWith('boolean')) {
+				return ts.factory.createTypeAliasDeclaration(
+					[create_modifier('export')],
+					adjust_enum_name(reference_name),
+					undefined,
+					!reference_name.endsWith('-extended')
+						? create_type('boolean')
+						: create_union(
+								create_type('boolean'),
+								create_type('undefined')
+							)
+				);
+			}
+
 			return ts.factory.createTypeAliasDeclaration(
 				[create_modifier('export')],
 				ts.factory.createIdentifier(adjust_enum_name(reference_name)),
