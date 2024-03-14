@@ -7722,18 +7722,18 @@
 				},
 				"Classes": {
 					"type": "array",
-					"items": {
-						"oneOf": [
-							{
-								"$ref": "#/definitions/FGEquipmentStunSpear"
-							},
-							{
-								"$ref": "#/definitions/FGEquipmentStunSpear--xeno-zapper"
-							}
-						]
-					},
-					"minItems": 3,
-					"maxItems": 3
+					"items": false,
+					"prefixItems": [
+						{
+							"$ref": "#/definitions/FGEquipmentStunSpear--xeno-zapper"
+						},
+						{
+							"$ref": "#/definitions/FGEquipmentStunSpear"
+						},
+						{
+							"$ref": "#/definitions/FGEquipmentStunSpear"
+						}
+					]
 				}
 			}
 		},

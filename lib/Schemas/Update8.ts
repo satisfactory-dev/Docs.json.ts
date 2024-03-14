@@ -19,7 +19,7 @@ import {
 	adjust_unrealengine_value,
 	create_class_options,
 	create_lazy_union,
-	create_literal_node_from_value,
+	create_literal_node_from_value, create_minimum_size_typed_array_of_single_type,
 	create_modifier,
 	create_object_type,
 	create_type,
@@ -804,6 +804,147 @@ export class Update8TypeNodeGeneration {
 			this.generate_concrete_class(checked, filenames, NativeClass);
 		}
 
+		const NativeClass_ref_schema = {
+			type: 'object',
+			required: ['$ref'],
+			additionalProperties: false,
+			properties: {
+				$ref: {
+					type: 'string',
+					enum: schema.prefixItems.map((native_class) : [string, ...string[]] => {
+						const {items, prefixItems} = native_class.properties.Classes;
+
+						const output:string[] = [];
+
+						if (items && true !== items) {
+							if ('$ref' in items && items.$ref) {
+								output.push(items.$ref);
+							} else if ('oneOf' in items && items.oneOf && items.oneOf.length >= 1) {
+								output.push(...items.oneOf.map((item) => {
+									return item['$ref'];
+								}));
+							} else if ('anyOf' in items && items.anyOf && items.anyOf.length >= 1) {
+								output.push(...items.anyOf.map((item) => {
+									return item.$ref;
+								}));
+							}
+						}
+
+						if (prefixItems) {
+							output.push(...prefixItems.map((item) => {
+								return item.$ref;
+							}));
+						}
+
+						if (output.length < 1) {
+							throw new NoMatchError(native_class, 'Could not extract all refs');
+						}
+
+						return output as [string, ...string[]];
+					}).flat().filter(maybe => undefined !== maybe),
+				}
+			}
+		};
+
+		this.type_node_generator.matchers.push(
+			new TypeNodeGeneration(
+				NativeClass_ref_schema,
+				(data) => {
+					return new TypeNodeGenerationResult(
+						() => ts.factory.createTypeReferenceNode(adjust_class_name(data.$ref.substring(14)))
+					);
+				}
+			),
+			new TypeNodeGeneration<{
+				type: 'array',
+				minItems?: number,
+				maxItems?: number,
+				prefixItems?: [{$ref: string}, ...{$ref: string}[]],
+				items:
+					| false
+					| {$ref: string}
+					| {oneOf: [{$ref: string}, ...{$ref: string}[]]}
+			}>(
+				{
+					type: 'object',
+					required: ['type'],
+					additionalProperties: false,
+					properties: {
+						type: {type: 'string', const: 'array'},
+						minItems: {type: 'number'},
+						maxItems: {type: 'number'},
+						prefixItems: {
+							type: 'array',
+							minItems: 1,
+							items: NativeClass_ref_schema,
+						},
+						items: {
+							oneOf: [
+								{type: 'boolean', const: false},
+								NativeClass_ref_schema,
+								{
+									type: 'object',
+									required: ['oneOf'],
+									additionalProperties: false,
+									properties: {
+										oneOf: {
+											type: 'array',
+											minItems: 1,
+											items: NativeClass_ref_schema,
+										},
+									},
+								},
+							],
+						},
+					},
+				},
+				(data) => {
+					return new TypeNodeGenerationResult(
+						() => {
+							const {items, maxItems, minItems, prefixItems} = data;
+
+							if (items && '$ref' in items) {
+								if (prefixItems) {
+									return ts.factory.createTupleTypeNode([
+										...prefixItems.map((item) => {
+											return ts.factory.createTypeReferenceNode(adjust_class_name(item.$ref.substring(14)));
+										}),
+										ts.factory.createRestTypeNode(
+											ts.factory.createArrayTypeNode(
+												ts.factory.createTypeReferenceNode(adjust_class_name(items.$ref.substring(14)))
+											)
+										),
+									]);
+								}
+
+								return ts.factory.createArrayTypeNode(
+									ts.factory.createTypeReferenceNode(adjust_class_name(items.$ref.substring(14)))
+								);
+							} else if (prefixItems) {
+								return ts.factory.createTupleTypeNode(prefixItems.map((item) => {
+									return ts.factory.createTypeReferenceNode(adjust_class_name(item.$ref.substring(14)));
+								}));
+							} else if (items && 'oneOf' in items) {
+								return create_minimum_size_typed_array_of_single_type(
+									minItems ? minItems : 1,
+									() => {
+										return ts.factory.createUnionTypeNode(
+											items.oneOf.map((item) => {
+												return ts.factory.createTypeReferenceNode(adjust_class_name(item.$ref.substring(14)))
+											}),
+										);
+									},
+									maxItems ? maxItems : undefined
+								);
+							}
+
+							throw new NoMatchError(data, 'Could not figure out a type');
+						}
+					);
+				}
+			),
+		);
+
 		for (const entry of Object.entries(filenames)) {
 			const [ref, filename] = entry;
 
@@ -840,6 +981,24 @@ export class Update8TypeNodeGeneration {
 			const filename = this.guess_filename(ref);
 			this.generate_class(ajv, check_ref(ref), filename);
 		}
+	}
+
+	public generate_DocsJsonTs(ajv: Ajv) {
+		return ts.factory.createTypeAliasDeclaration(
+			[create_modifier('export')],
+			'Docs',
+			undefined,
+			ts.factory.createTupleTypeNode(schema.prefixItems.map((native_class) => {
+				if (!native_class.properties.NativeClass.const.startsWith('/Script/CoreUObject.Class\'/Script/FactoryGame.')) {
+					throw new NoMatchError(
+						native_class.properties.NativeClass.const,
+						'Unsupported const!'
+					);
+				}
+
+				return this.type_node_generator.find(ajv, native_class).type();
+			}))
+		);
 	}
 
 	generate_generators(ajv: Ajv) {

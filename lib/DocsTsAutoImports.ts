@@ -160,6 +160,10 @@ export class DocsTsAutoImports {
 						import_from = `.${import_from}`;
 					}
 
+					if (!import_from.startsWith('.')) {
+						import_from = `./${import_from}`;
+					}
+
 					if (!(import_from in auto_imports[filename])) {
 						auto_imports[filename][import_from] = [];
 					}

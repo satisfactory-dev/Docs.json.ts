@@ -208,7 +208,11 @@ export function EntityName_array_from_Node_array(nodes: Node[]): EntityName[] {
 			sub_nodes.push(...node.types);
 		} else if (ts.isExpressionWithTypeArguments(node)) {
 			sub_nodes.push(node.expression, ...(node.typeArguments || []));
-		} else if (!ts.isToken(node) && !ts.isObjectLiteralExpression(node)) {
+		} else if (ts.isExportDeclaration(node) && node.exportClause && ts.isNamedExports(node.exportClause)) {
+			sub_nodes.push(...node.exportClause.elements.map((sub_node) => {
+				return sub_node.name;
+			}));
+		} else if (!ts.isToken(node) && !ts.isObjectLiteralExpression(node) && !ts.isNamedExports(node)) {
 			others.push(node);
 		}
 	}
