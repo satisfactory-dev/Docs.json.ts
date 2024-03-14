@@ -27,7 +27,7 @@ export type array_string_schema_type = {
 		type: 'array';
 		minItems: number;
 		items: object;
-	};
+	} & ({maxItems: number}|{});
 };
 
 declare type ItemClass_only = {

@@ -1147,7 +1147,15 @@
 					"type": "string"
 				},
 				"mIngredients": {
-					"type": "string"
+					"oneOf": [
+						{
+							"type": "string",
+							"const": ""
+						},
+						{
+							"$ref": "#/definitions/ItemClass-and-amount"
+						}
+					]
 				},
 				"mProduct": {
 					"type": "string"
@@ -1162,10 +1170,27 @@
 					"$ref": "#/definitions/decimal-string"
 				},
 				"mProducedIn": {
-					"type": "string"
+					"oneOf": [
+						{
+							"type": "string",
+							"const": ""
+						},
+						{
+
+							"type": "string",
+							"minLength": 1,
+							"array_string": {
+								"type": "array",
+								"minItems": 1,
+								"items": {
+									"type": "string"
+								}
+							}
+						}
+					]
 				},
 				"mRelevantEvents": {
-					"type": "string"
+					"$ref": "#/definitions/mEventType--optional-csv"
 				},
 				"mVariablePowerConsumptionConstant": {
 					"$ref": "#/definitions/decimal-string"
@@ -1199,23 +1224,13 @@
 					"type": "string",
 					"const": ""
 				},
-				"mIngredients": {
-					"oneOf": [
-						{
-							"type": "string",
-							"const": ""
-						},
-						{
-							"$ref": "#/definitions/ItemClass-and-amount"
-						}
-					]
-				},
 				"mProducedIn": {
 					"type": "string",
 					"minLength": 1,
 					"array_string": {
 						"type": "array",
 						"minItems": 1,
+						"maxItems": 1,
 						"items": {
 							"type": "string",
 							"const": "/Game/FactoryGame/Equipment/BuildGun/BP_BuildGun.BP_BuildGun_C"
@@ -1269,9 +1284,6 @@
 				"mProduct": {
 					"type": "string",
 					"minLength": 1
-				},
-				"mRelevantEvents": {
-					"$ref": "#/definitions/mEventType--optional-csv"
 				}
 			}
 		},
@@ -3140,7 +3152,17 @@
 				},
 				"mArmAnimation": {
 					"type": "string",
-					"pattern": "^AE_[A-Za-z12]+$"
+					"enum": [
+						"AE_ShockShank",
+						"AE_StunSpear",
+						"AE_Generic2Hand",
+						"AE_Generic1Hand",
+						"AE_None",
+						"AE_ChainSaw",
+						"AE_RebarGun",
+						"AE_Rifle",
+						"AE_Nobelisk"
+					]
 				},
 				"mBackAnimation": {
 					"type": "string",
@@ -4572,6 +4594,15 @@
 				}
 			}
 		},
+		"FGBuildable--mAllowedResources--default-UnrealEngineString": {
+			"type": "string",
+			"minLength": 1,
+			"UnrealEngineString": {
+				"UnrealEngineString_prefix": "/Script/Engine.BlueprintGeneratedClass",
+				"type": "string",
+				"pattern": "^/Game/FactoryGame/"
+			}
+		},
 		"FGBuildable--extractor-base--shared": {
 			"type": "object",
 			"$ref": "#/definitions/FGBuildable--consumes-power-base",
@@ -4591,7 +4622,12 @@
 						"minItems": 1,
 						"items": {
 							"type": "string",
-							"pattern": "^RF_[A-Z]+$"
+							"enum": [
+								"RF_LIQUID",
+								"RF_SOLID",
+								"RF_GAS",
+								"RF_HEAT"
+							]
 						}
 					}
 				},
@@ -4599,7 +4635,18 @@
 					"$ref": "#/definitions/boolean"
 				},
 				"mAllowedResources": {
-					"type": "string"
+					"oneOf": [
+						{"type": "string", "const": ""},
+						{
+							"type": "string",
+							"minLength": 1,
+							"array_string": {
+								"type": "array",
+								"minItems": 1,
+								"items": {"$ref": "#/definitions/FGBuildable--mAllowedResources--default-UnrealEngineString"}
+							}
+						}
+					]
 				},
 				"mTryFindMissingResource": {
 					"$ref": "#/definitions/boolean"
@@ -4669,7 +4716,15 @@
 				},
 				"mAllowedResourceForms": {
 					"type": "string",
-					"const": "(RF_LIQUID)"
+					"minLength": 1,
+					"array_string": {
+						"type": "array",
+						"minItems": 1,
+						"items": {
+							"type": "string",
+							"const": "RF_LIQUID"
+						}
+					}
 				},
 				"mAllowedResources": {
 					"type": "string",
@@ -4757,7 +4812,15 @@
 			"properties": {
 				"mAllowedResourceForms": {
 					"type": "string",
-					"const": "(RF_LIQUID)"
+					"minLength": 1,
+					"array_string": {
+						"type": "array",
+						"minItems": 1,
+						"items": {
+							"type": "string",
+							"const": "RF_LIQUID"
+						}
+					}
 				},
 				"mAllowedResources": {
 					"type": "string",
@@ -4824,7 +4887,15 @@
 				},
 				"mAllowedResourceForms": {
 					"type": "string",
-					"const": "(RF_SOLID)"
+					"minLength": 1,
+					"array_string": {
+						"type": "array",
+						"minItems": 1,
+						"items": {
+							"type": "string",
+							"const": "RF_SOLID"
+						}
+					}
 				},
 				"mExtractorTypeName": {
 					"type": "string",
@@ -5133,7 +5204,14 @@
 			"properties": {
 				"mAllowedResourceForms": {
 					"type": "string",
-					"const": "(RF_SOLID)"
+					"array_string": {
+						"type": "array",
+						"minItems": 1,
+						"items": {
+							"type": "string",
+							"const": "RF_SOLID"
+						}
+					}
 				},
 				"mPlaceDistanceMax": {
 					"$ref": "#/definitions/decimal-string"
@@ -5203,6 +5281,18 @@
 			"$ref": "#/definitions/FGBuildable--extractor-base",
 			"unevaluatedProperties": false,
 			"properties": {
+				"mAllowedResourceForms": {
+					"type": "string",
+					"minLength": 1,
+					"array_string": {
+						"type": "array",
+						"minItems": 1,
+						"items": {
+							"type": "string",
+							"enum": ["RF_LIQUID", "RF_GAS"]
+						}
+					}
+				},
 				"mExtractorTypeName": {
 					"$ref": "#/definitions/None"
 				}

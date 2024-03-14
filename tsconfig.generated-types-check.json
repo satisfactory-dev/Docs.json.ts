@@ -1,5 +1,7 @@
 {
 	"extends": "./tsconfig",
-	"dry": true,
-	"include": ["./generated-types/**/*.ts"]
+	"include": ["./generated-types/**/*.ts"],
+	"compilerOptions": {
+		"noEmit": true
+	}
 }

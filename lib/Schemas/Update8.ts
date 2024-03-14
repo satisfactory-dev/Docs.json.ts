@@ -9,7 +9,7 @@ import {
 	NoMatchError,
 	PropertyMatchFailure,
 	PartialMatchError,
-	TypeNodeGenerationResult,
+	TypeNodeGenerationResult, TypeNodeGeneration,
 } from '../TypeNodeGeneration';
 import {supported_base_classes} from '../TypesGeneration/Classes';
 import {
@@ -229,9 +229,10 @@ export class Update8TypeNodeGeneration {
 		};
 
 		while ('$ref' in checking || 'properties' in checking) {
-			if ('properties' in checking) {
-				property_index[ref] = Object.keys(checking.properties);
-			}
+			property_index[ref] = [...(new Set([
+				...('properties' in checking ? Object.keys(checking.properties) : []),
+				...('required' in checking ? checking.required : []),
+			])).values()];
 			const types =
 				'properties' in checking
 					? this.type_node_generator.find_from_properties(
@@ -280,9 +281,13 @@ export class Update8TypeNodeGeneration {
 			Object.values(property_index).flat()
 		);
 
-		result.pass_to_super = current_properties.filter((maybe) =>
-			parent_properties.has(maybe)
-		);
+		result.pass_to_super = [...(new Set([
+			...[
+				...parent_properties.values()
+			].filter((maybe) =>
+				current_properties.includes(maybe)
+			),
+		]).values())];
 
 		return result;
 	}
@@ -344,7 +349,9 @@ export class Update8TypeNodeGeneration {
 				'required' in data ? data.required : [];
 
 			members.push(
-				...Object.entries(types).map((entry) => {
+				...Object.entries(types).filter((maybe) => {
+					return !required_but_not_defined.includes(maybe[0]);
+				}).map((entry) => {
 					const [property, generator] = entry;
 					const type = generator.type();
 					TypeNodeGenerationMatcher.merge_import_singular(
@@ -637,6 +644,29 @@ export class Update8TypeNodeGeneration {
 				throw err;
 			}
 		}
+
+		this.type_node_generator.matchers.push(
+			new TypeNodeGeneration<{
+				$ref: '#/definitions/FGBuildable--mAllowedResources--default-UnrealEngineString'
+			}>(
+				{
+					type: 'object',
+					required: ['$ref'],
+					additionalProperties: false,
+					properties: {
+						$ref: {
+							type: 'string',
+							const: '#/definitions/FGBuildable--mAllowedResources--default-UnrealEngineString'
+						}
+					}
+				},
+				(data) => {
+					return new TypeNodeGenerationResult(() => {
+						return ts.factory.createTypeReferenceNode(adjust_class_name(data.$ref.substring(14)));
+					});
+				}
+			),
+		);
 	}
 
 	private generate_base_classes(ajv: Ajv) {

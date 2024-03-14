@@ -15,7 +15,7 @@ import {
 	adjust_class_name,
 	computed_property_name_or_undefined,
 	create_callExpression__for_validation_function,
-	create_method_without_type_parameters,
+	create_method_without_type_parameters, create_minimum_size_typed_array_of_single_type,
 	create_modifier,
 	create_object_type,
 	create_this_assignment,
@@ -168,7 +168,7 @@ export class PropertyMatchFailure extends NoMatchError {
 }
 
 export class TypeNodeGenerationMatcher {
-	private readonly matchers: TypeNodeGeneration<any>[];
+	public readonly matchers: TypeNodeGeneration<any>[];
 	private oneOf_or_anyOf_schema_matcher: WeakMap<
 		Ajv,
 		oneOf_or_anyOf_validator
@@ -480,6 +480,13 @@ export class TypeNodeGenerationMatcher {
 
 			if (result) {
 				return new TypeNodeGenerationResult(() => {
+					if ('minItems' in property.array_string) {
+						return create_minimum_size_typed_array_of_single_type(
+							property.array_string.minItems,
+							result.type,
+							'maxItems' in property.array_string ? property.array_string.maxItems : undefined
+						);
+					}
 					return ts.factory.createArrayTypeNode(result.type());
 				}, result.import_these_somewhere_later);
 			} else if (this.throw_on_failure_to_find) {
