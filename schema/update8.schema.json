@@ -76,25 +76,6 @@
 				}
 			}
 		},
-		"color--semi-native": {
-			"type": "object",
-			"$ref": "#/definitions/color--base",
-			"unevaluatedProperties": false,
-			"properties": {
-				"R": {
-					"$ref": "#/definitions/integer-string"
-				},
-				"G": {
-					"$ref": "#/definitions/integer-string"
-				},
-				"B": {
-					"$ref": "#/definitions/integer-string"
-				},
-				"A": {
-					"$ref": "#/definitions/integer-string"
-				}
-			}
-		},
 		"color-decimal": {
 			"type": "string",
 			"minLength": 1,
@@ -220,28 +201,6 @@
 				},
 				"Y": {
 					"$ref": "#/definitions/decimal-string--signed"
-				}
-			}
-		},
-		"quaternion": {
-			"type": "string",
-			"minLength": 1,
-			"object_string": {
-				"type": "object",
-				"required": ["X", "Y", "Z", "W"],
-				"properties": {
-					"X": {
-						"$ref": "#/definitions/decimal-string--signed"
-					},
-					"Y": {
-						"$ref": "#/definitions/decimal-string--signed"
-					},
-					"Z": {
-						"$ref": "#/definitions/decimal-string--signed"
-					},
-					"W": {
-						"$ref": "#/definitions/decimal-string"
-					}
 				}
 			}
 		},
@@ -2020,21 +1979,13 @@
 				}
 			}
 		},
-		"mSchematics": {
+		"FGSchematic--mUnlocks_mSchematics--mSchematics": {
 			"type": "string",
 			"minLength": 1,
-			"array_string": {
-				"type": "array",
-				"minItems": 1,
-				"items": {
-					"type": "string",
-					"minLength": 1,
-					"UnrealEngineString": {
-						"UnrealEngineString_prefix": "/Script/Engine.BlueprintGeneratedClass",
-						"type": "string",
-						"pattern": "^/Game/FactoryGame/(Schematics|Events/Christmas)/"
-					}
-				}
+			"UnrealEngineString": {
+				"UnrealEngineString_prefix": "/Script/Engine.BlueprintGeneratedClass",
+				"type": "string",
+				"pattern": "^/Game/FactoryGame/(Schematics|Events/Christmas)/"
 			}
 		},
 		"FGSchematic--mUnlocks_mSchematics": {
@@ -2047,7 +1998,15 @@
 					"const": "BP_UnlockSchematic_C"
 				},
 				"mSchematics": {
-					"$ref": "#/definitions/mSchematics"
+					"type": "string",
+					"minLength": 1,
+					"array_string": {
+						"type": "array",
+						"minItems": 1,
+						"items": {
+							"$ref": "#/definitions/FGSchematic--mUnlocks_mSchematics--mSchematics"
+						}
+					}
 				}
 			}
 		},
@@ -2397,7 +2356,15 @@
 										"pattern": "BP_[A-Z][A-z]+_C$"
 									},
 									"mSchematics": {
-										"$ref": "#/definitions/mSchematics"
+										"type": "string",
+										"minLength": 1,
+										"array_string": {
+											"type": "array",
+											"minItems": 1,
+											"items": {
+												"$ref": "#/definitions/FGSchematic--mUnlocks_mSchematics--mSchematics"
+											}
+										}
 									},
 									"mRequireAllSchematicsToBePurchased": {
 										"$ref": "#/definitions/boolean"

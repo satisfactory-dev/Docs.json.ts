@@ -47,7 +47,6 @@
 -   [x] mPlatformDockingStatus
 -   [x] mScannableType
 -   [x] mScannerDisplayText
--   [x] mSchematics
 -   [x] mSnappedPassthroughs
 -   [x] mStackSize
 -   [x] None
@@ -299,6 +298,7 @@
 -   [x] FGSchematic--mUnlocks_mRecipes
 -   [x] FGSchematic--mUnlocks_mScannableObjects
 -   [x] FGSchematic--mUnlocks_mSchematics
+-   [x] FGSchematic--mUnlocks_mSchematics--mSchematics
 -   [x] FGSchematic--mUnlocks_mTapeUnlocks
 -   [x] FGSchematic--mUnlocks_resources_to_scan
 -   [x] FGSchematic--with-unlocks

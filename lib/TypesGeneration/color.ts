@@ -19,7 +19,6 @@ import {
 
 export const target_files = {
 	'color--base': 'common/color.ts',
-	'color--semi-native': 'common/color.ts',
 	'color-decimal--semi-native': 'common/color.ts',
 	color: 'common/color.ts',
 	'color-decimal': 'common/color.ts',
@@ -125,9 +124,9 @@ export const generators = [
 	}),
 	new TypesGenerationMatchesReferenceName<
 		RGBA,
-		'color-decimal--semi-native' | 'color--semi-native'
+		'color-decimal--semi-native'
 	>(
-		['color-decimal--semi-native', 'color--semi-native'],
+		['color-decimal--semi-native'],
 		(data, reference_name): ClassDeclaration => {
 			const members = [rgba_super_caller(data)];
 

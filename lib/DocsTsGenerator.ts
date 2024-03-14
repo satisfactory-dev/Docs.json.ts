@@ -72,7 +72,7 @@ import {
 	generators as aliases_generators,
 	type_node_generators as aliases_type_node_generators,
 } from './TypesGeneration/aliases';
-import {Update8TypeNodeGeneration} from './Schemas/Update8';
+import {is_ref, Update8TypeNodeGeneration} from './Schemas/Update8';
 import {TypeNodeGenerationMatcher} from './TypeNodeGeneration';
 import {DocsTsAutoImports} from './DocsTsAutoImports';
 
@@ -456,9 +456,8 @@ export class DocsTsGenerator {
 
 		for (const match of supported_conversions) {
 			if (!(match.definition in target_files)) {
-				if (match.definition.startsWith('FGBuildable--')) {
-					target_files[match.definition] =
-						'classes/CoreUObject/FGBuildable.ts';
+				if (is_ref(match.definition) && Update8.can_guess_filename(match.definition)) {
+					target_files[match.definition] = Update8.guess_filename(match.definition);
 				} else {
 					update_progress();
 					throw new GenerationException(

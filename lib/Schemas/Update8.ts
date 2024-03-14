@@ -20,12 +20,10 @@ import {
 	create_class_options,
 	create_lazy_union,
 	create_literal_node_from_value,
-	create_minimum_size_typed_array_of_single_type,
 	create_modifier,
 	create_object_type,
 	create_type,
 	create_union,
-	create_UnrealEngineString_reference_type,
 	createClass,
 	createClass__members__with_auto_constructor,
 	createProperty,
@@ -569,24 +567,6 @@ export class Update8TypeNodeGeneration {
 			),
 		});
 
-		this.classes.push({
-			file: 'classes/CoreUObject/FGSchematic.ts',
-			ref: 'mSchematics',
-			node: ts.factory.createTypeAliasDeclaration(
-				[create_modifier('declare')],
-				'mSchematics',
-				undefined,
-				create_minimum_size_typed_array_of_single_type(
-					schema.definitions.mSchematics.array_string.minItems,
-					() =>
-						create_UnrealEngineString_reference_type(
-							schema.definitions.mSchematics.array_string.items
-								.UnrealEngineString
-						)
-				)
-			),
-		});
-
 		for (const mUnlocks_type of schema.definitions['FGSchematic--base']
 			.properties.mUnlocks.items.anyOf) {
 			const {$ref} = mUnlocks_type;
@@ -600,6 +580,37 @@ export class Update8TypeNodeGeneration {
 					`${reference_name} not in schema.definitions!`
 				);
 			}
+
+			this.type_node_generator.matchers.push(
+				new TypeNodeGeneration<{
+					$ref: (
+						| '#/definitions/FGBuildable--mAllowedResources--default-UnrealEngineString'
+						| '#/definitions/FGSchematic--mUnlocks_mSchematics--mSchematics'
+						);
+				}>(
+					{
+						type: 'object',
+						required: ['$ref'],
+						additionalProperties: false,
+						properties: {
+							$ref: {
+								type: 'string',
+								enum: [
+									'#/definitions/FGBuildable--mAllowedResources--default-UnrealEngineString',
+									'#/definitions/FGSchematic--mUnlocks_mSchematics--mSchematics',
+								],
+							},
+						},
+					},
+					(data) => {
+						return new TypeNodeGenerationResult(() => {
+							return ts.factory.createTypeReferenceNode(
+								adjust_class_name(data.$ref.substring(14))
+							);
+						});
+					}
+				)
+			);
 
 			try {
 				const result = this.type_node_generator.find(
@@ -638,31 +649,6 @@ export class Update8TypeNodeGeneration {
 				throw err;
 			}
 		}
-
-		this.type_node_generator.matchers.push(
-			new TypeNodeGeneration<{
-				$ref: '#/definitions/FGBuildable--mAllowedResources--default-UnrealEngineString';
-			}>(
-				{
-					type: 'object',
-					required: ['$ref'],
-					additionalProperties: false,
-					properties: {
-						$ref: {
-							type: 'string',
-							const: '#/definitions/FGBuildable--mAllowedResources--default-UnrealEngineString',
-						},
-					},
-				},
-				(data) => {
-					return new TypeNodeGenerationResult(() => {
-						return ts.factory.createTypeReferenceNode(
-							adjust_class_name(data.$ref.substring(14))
-						);
-					});
-				}
-			)
-		);
 	}
 
 	private generate_base_classes(ajv: Ajv) {
@@ -852,7 +838,7 @@ export class Update8TypeNodeGeneration {
 
 	private generate_abstract_classes(ajv: Ajv) {
 		for (const ref of this.remove_generated_abstracts()) {
-			const filename = `classes/CoreUObject/${ref.split('--')[0]}.ts`;
+			const filename = this.guess_filename(ref);
 			this.generate_class(ajv, check_ref(ref), filename);
 		}
 	}
@@ -868,5 +854,19 @@ export class Update8TypeNodeGeneration {
 				return this.classes;
 			},
 		];
+	}
+
+	can_guess_filename(ref:definition_key)
+	{
+		return /^FG[A-Za-z]+--[A-Za-z-_]+$/.test(ref);
+	}
+
+	guess_filename(ref:definition_key): string
+	{
+		if (!this.can_guess_filename(ref)) {
+			throw new Error(`${ref} not a supported filename`);
+		}
+
+		return `classes/CoreUObject/${ref.split('--')[0]}.ts`;
 	}
 }

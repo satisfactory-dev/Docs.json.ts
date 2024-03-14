@@ -75,7 +75,6 @@ export const type_node_generators = [
 			| '#/definitions/xyz--semi-native'
 			| '#/definitions/xy--integer'
 			| '#/definitions/xyz--integer'
-			| '#/definitions/quaternion'
 			| '#/definitions/quaternion--semi-native'
 			| '#/definitions/pitch-yaw-roll'
 			| '#/definitions/transformation';
