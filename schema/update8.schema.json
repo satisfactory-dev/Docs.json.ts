@@ -4602,7 +4602,10 @@
 				},
 				"mAllowedResources": {
 					"oneOf": [
-						{"type": "string", "const": ""},
+						{
+							"type": "string",
+							"const": ""
+						},
 						{
 							"type": "string",
 							"minLength": 1,
