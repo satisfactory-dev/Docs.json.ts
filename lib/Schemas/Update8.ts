@@ -9,7 +9,8 @@ import {
 	NoMatchError,
 	PropertyMatchFailure,
 	PartialMatchError,
-	TypeNodeGenerationResult, TypeNodeGeneration,
+	TypeNodeGenerationResult,
+	TypeNodeGeneration,
 } from '../TypeNodeGeneration';
 import {supported_base_classes} from '../TypesGeneration/Classes';
 import {
@@ -229,10 +230,14 @@ export class Update8TypeNodeGeneration {
 		};
 
 		while ('$ref' in checking || 'properties' in checking) {
-			property_index[ref] = [...(new Set([
-				...('properties' in checking ? Object.keys(checking.properties) : []),
-				...('required' in checking ? checking.required : []),
-			])).values()];
+			property_index[ref] = [
+				...new Set([
+					...('properties' in checking
+						? Object.keys(checking.properties)
+						: []),
+					...('required' in checking ? checking.required : []),
+				]).values(),
+			];
 			const types =
 				'properties' in checking
 					? this.type_node_generator.find_from_properties(
@@ -281,13 +286,13 @@ export class Update8TypeNodeGeneration {
 			Object.values(property_index).flat()
 		);
 
-		result.pass_to_super = [...(new Set([
-			...[
-				...parent_properties.values()
-			].filter((maybe) =>
-				current_properties.includes(maybe)
-			),
-		]).values())];
+		result.pass_to_super = [
+			...new Set([
+				...[...parent_properties.values()].filter((maybe) =>
+					current_properties.includes(maybe)
+				),
+			]).values(),
+		];
 
 		return result;
 	}
@@ -349,25 +354,27 @@ export class Update8TypeNodeGeneration {
 				'required' in data ? data.required : [];
 
 			members.push(
-				...Object.entries(types).filter((maybe) => {
-					return !required_but_not_defined.includes(maybe[0]);
-				}).map((entry) => {
-					const [property, generator] = entry;
-					const type = generator.type();
-					TypeNodeGenerationMatcher.merge_import_singular(
-						filename,
-						path_relative,
-						generator,
-						this.imports
-					);
+				...Object.entries(types)
+					.filter((maybe) => {
+						return !required_but_not_defined.includes(maybe[0]);
+					})
+					.map((entry) => {
+						const [property, generator] = entry;
+						const type = generator.type();
+						TypeNodeGenerationMatcher.merge_import_singular(
+							filename,
+							path_relative,
+							generator,
+							this.imports
+						);
 
-					return createProperty_with_specific_type(
-						property,
-						type,
-						['public'],
-						required_properties.includes(property)
-					);
-				})
+						return createProperty_with_specific_type(
+							property,
+							type,
+							['public'],
+							required_properties.includes(property)
+						);
+					})
 			);
 		}
 
@@ -647,7 +654,7 @@ export class Update8TypeNodeGeneration {
 
 		this.type_node_generator.matchers.push(
 			new TypeNodeGeneration<{
-				$ref: '#/definitions/FGBuildable--mAllowedResources--default-UnrealEngineString'
+				$ref: '#/definitions/FGBuildable--mAllowedResources--default-UnrealEngineString';
 			}>(
 				{
 					type: 'object',
@@ -656,16 +663,18 @@ export class Update8TypeNodeGeneration {
 					properties: {
 						$ref: {
 							type: 'string',
-							const: '#/definitions/FGBuildable--mAllowedResources--default-UnrealEngineString'
-						}
-					}
+							const: '#/definitions/FGBuildable--mAllowedResources--default-UnrealEngineString',
+						},
+					},
 				},
 				(data) => {
 					return new TypeNodeGenerationResult(() => {
-						return ts.factory.createTypeReferenceNode(adjust_class_name(data.$ref.substring(14)));
+						return ts.factory.createTypeReferenceNode(
+							adjust_class_name(data.$ref.substring(14))
+						);
 					});
 				}
-			),
+			)
 		);
 	}
 

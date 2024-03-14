@@ -457,12 +457,15 @@ export class DocsTsGenerator {
 		for (const match of supported_conversions) {
 			if (!(match.definition in target_files)) {
 				if (match.definition.startsWith('FGBuildable--')) {
-					target_files[match.definition] = 'classes/CoreUObject/FGBuildable.ts';
+					target_files[match.definition] =
+						'classes/CoreUObject/FGBuildable.ts';
 				} else {
 					update_progress();
 					throw new GenerationException(
 						progress,
-						new Error(`no target file found for ${match.definition}`)
+						new Error(
+							`no target file found for ${match.definition}`
+						)
 					);
 				}
 			}

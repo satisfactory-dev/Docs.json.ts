@@ -15,7 +15,8 @@ import {
 	adjust_class_name,
 	computed_property_name_or_undefined,
 	create_callExpression__for_validation_function,
-	create_method_without_type_parameters, create_minimum_size_typed_array_of_single_type,
+	create_method_without_type_parameters,
+	create_minimum_size_typed_array_of_single_type,
 	create_modifier,
 	create_object_type,
 	create_this_assignment,
@@ -484,7 +485,9 @@ export class TypeNodeGenerationMatcher {
 						return create_minimum_size_typed_array_of_single_type(
 							property.array_string.minItems,
 							result.type,
-							'maxItems' in property.array_string ? property.array_string.maxItems : undefined
+							'maxItems' in property.array_string
+								? property.array_string.maxItems
+								: undefined
 						);
 					}
 					return ts.factory.createArrayTypeNode(result.type());
@@ -880,7 +883,7 @@ export function create_binding_constructor(
 				}
 
 				return create_this_assignment(property, assigned_value);
-			}),
+			})
 		);
 	}
 

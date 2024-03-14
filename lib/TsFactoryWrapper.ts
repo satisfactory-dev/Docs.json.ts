@@ -807,7 +807,7 @@ export function property_name_or_computed<T extends string = string>(
 export function create_minimum_size_typed_array_of_single_type(
 	repeat: number,
 	generate: () => ts.TypeNode,
-	max: number|undefined = undefined
+	max: number | undefined = undefined
 ): ts.TupleTypeNode {
 	if (repeat < 1) {
 		throw new Error(
