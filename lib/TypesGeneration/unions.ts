@@ -4,7 +4,8 @@ import {
 	adjust_class_name,
 	create_minimum_size_typed_array_of_single_type,
 	create_modifier,
-	create_object_type, create_union,
+	create_object_type,
+	create_union,
 	possibly_create_lazy_union,
 } from '../TsFactoryWrapper';
 import {
@@ -263,7 +264,7 @@ export const generators = [
 		}
 	),
 	new TypesGenerationFromSchema<{
-		anyOf: [{$ref: string}, ...{$ref: string}[]]
+		anyOf: [{$ref: string}, ...{$ref: string}[]];
 	}>(
 		{
 			type: 'object',
@@ -278,11 +279,14 @@ export const generators = [
 						required: ['$ref'],
 						additionalProperties: false,
 						properties: {
-							$ref: {type: 'string', pattern: '^#\\/definitions\\/'}
-						}
-					}
-				}
-			}
+							$ref: {
+								type: 'string',
+								pattern: '^#\\/definitions\\/',
+							},
+						},
+					},
+				},
+			},
 		},
 		(data, reference_name) => {
 			const [a, b, ...rest] = data.anyOf;
@@ -292,15 +296,23 @@ export const generators = [
 				adjust_class_name(reference_name),
 				undefined,
 				create_union(
-					ts.factory.createTypeReferenceNode(adjust_class_name(a.$ref.substring(14))),
-					ts.factory.createTypeReferenceNode(adjust_class_name(b.$ref.substring(14))),
-					...rest.map((e => e.$ref.substring(14))).map((sub_reference) => {
-						return ts.factory.createTypeReferenceNode(adjust_class_name(sub_reference));
-					})
+					ts.factory.createTypeReferenceNode(
+						adjust_class_name(a.$ref.substring(14))
+					),
+					ts.factory.createTypeReferenceNode(
+						adjust_class_name(b.$ref.substring(14))
+					),
+					...rest
+						.map((e) => e.$ref.substring(14))
+						.map((sub_reference) => {
+							return ts.factory.createTypeReferenceNode(
+								adjust_class_name(sub_reference)
+							);
+						})
 				)
 			);
 		}
-	)
+	),
 ];
 
 export const type_node_generators = [

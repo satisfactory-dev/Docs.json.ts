@@ -19,12 +19,15 @@ import {
 	adjust_unrealengine_value,
 	create_class_options,
 	create_lazy_union,
-	create_literal_node_from_value, create_method_without_type_parameters,
+	create_literal_node_from_value,
+	create_method_without_type_parameters,
 	create_minimum_size_typed_array_of_single_type,
 	create_modifier,
-	create_object_type, create_this_assignment,
+	create_object_type,
+	create_this_assignment,
 	create_type,
-	create_union, create_UnrealEngineString_reference_type,
+	create_union,
+	create_UnrealEngineString_reference_type,
 	createClass,
 	createClass__members__with_auto_constructor,
 	createProperty,
@@ -40,26 +43,30 @@ import schema from '../../schema/update8.schema.json' assert {type: 'json'};
 
 declare type object_with_ref = {$ref: string};
 
-declare type NativeClass__Classses__items = boolean | object_with_ref | {anyOf: [object_with_ref, ...object_with_ref[]]} | {oneOf: [object_with_ref, ...object_with_ref[]]};
+declare type NativeClass__Classses__items =
+	| boolean
+	| object_with_ref
+	| {anyOf: [object_with_ref, ...object_with_ref[]]}
+	| {oneOf: [object_with_ref, ...object_with_ref[]]};
 
 export type NativeClass = {
 	type: string;
 	additionalProperties: boolean;
 	properties: {
-		$ref: '#/definitions/NativeClass',
+		$ref: '#/definitions/NativeClass';
 		Classes:
-			({
-				type: string,
-				minItems: number,
-				items: NativeClass__Classses__items,
-			} & ({maxItems: number} | {}))
+			| ({
+					type: string;
+					minItems: number;
+					items: NativeClass__Classses__items;
+			  } & ({maxItems: number} | {}))
 			| {
-				type: string,
-				minItems: number,
-				maxItems: number,
-				prefixItems: [object_with_ref, ...object_with_ref[]],
-				items: NativeClass__Classses__items,
-			}
+					type: string;
+					minItems: number;
+					maxItems: number;
+					prefixItems: [object_with_ref, ...object_with_ref[]];
+					items: NativeClass__Classses__items;
+			  };
 	};
 };
 
@@ -672,9 +679,14 @@ export class Update8TypeNodeGeneration {
 				undefined,
 				create_minimum_size_typed_array_of_single_type(
 					schema.definitions['NativeClass--Classes'].minItems,
-					() => ts.factory.createTypeReferenceNode(adjust_class_name(
-						schema.definitions['NativeClass--Classes'].items.$ref.substring(14)
-					))
+					() =>
+						ts.factory.createTypeReferenceNode(
+							adjust_class_name(
+								schema.definitions[
+									'NativeClass--Classes'
+								].items.$ref.substring(14)
+							)
+						)
 				)
 			),
 		});
@@ -685,8 +697,14 @@ export class Update8TypeNodeGeneration {
 			node: createClass(
 				'NativeClass',
 				[
-					createProperty('NativeClass', ts.factory.createTypeReferenceNode('NativeClass')),
-					createProperty('Classes', ts.factory.createTypeReferenceNode('Classes')),
+					createProperty(
+						'NativeClass',
+						ts.factory.createTypeReferenceNode('NativeClass')
+					),
+					createProperty(
+						'Classes',
+						ts.factory.createTypeReferenceNode('Classes')
+					),
 					create_method_without_type_parameters(
 						'constructor',
 						[
@@ -695,7 +713,9 @@ export class Update8TypeNodeGeneration {
 								undefined,
 								'NativeClass',
 								undefined,
-								ts.factory.createTypeReferenceNode('NativeClass'),
+								ts.factory.createTypeReferenceNode(
+									'NativeClass'
+								),
 								undefined
 							),
 							ts.factory.createParameterDeclaration(
@@ -708,12 +728,15 @@ export class Update8TypeNodeGeneration {
 							),
 						],
 						[
-							create_this_assignment('NativeClass', 'NativeClass'),
+							create_this_assignment(
+								'NativeClass',
+								'NativeClass'
+							),
 							create_this_assignment('Classes', 'Classes'),
 						],
 						undefined,
 						undefined
-					)
+					),
 				],
 				{
 					modifiers: ['export'],
@@ -722,64 +745,79 @@ export class Update8TypeNodeGeneration {
 					ts.factory.createTypeParameterDeclaration(
 						undefined,
 						'Classes',
-						ts.factory.createTypeReferenceNode('NativeClass__Classes'),
-						ts.factory.createTypeReferenceNode('NativeClass__Classes')
+						ts.factory.createTypeReferenceNode(
+							'NativeClass__Classes'
+						),
+						ts.factory.createTypeReferenceNode(
+							'NativeClass__Classes'
+						)
 					),
 					ts.factory.createTypeParameterDeclaration(
 						undefined,
 						'NativeClass',
-						ts.factory.createTypeReferenceNode('NativeClass__NativeClass'),
-						ts.factory.createTypeReferenceNode('NativeClass__NativeClass')
+						ts.factory.createTypeReferenceNode(
+							'NativeClass__NativeClass'
+						),
+						ts.factory.createTypeReferenceNode(
+							'NativeClass__NativeClass'
+						)
 					),
 				]
 			),
 		});
 
-		this.type_node_generator.matchers.push(new TypeNodeGeneration<{
-			type: 'object',
-			$ref: '#/definitions/NativeClass',
-			properties: {
-				Classes: {[key: string]: string|number|object} & {
-					type: 'array',
-				}
-			}
-		}>(
-			{
-				type: 'object',
-				required: ['type', '$ref', 'properties'],
-				additionalProperties: false,
+		this.type_node_generator.matchers.push(
+			new TypeNodeGeneration<{
+				type: 'object';
+				$ref: '#/definitions/NativeClass';
 				properties: {
-					type: {type: 'string', const: 'object'},
-					$ref: {type: 'string', const: '#/definitions/NativeClass'},
-					additionalProperties: {type: 'boolean', const: false},
+					Classes: {[key: string]: string | number | object} & {
+						type: 'array';
+					};
+				};
+			}>(
+				{
+					type: 'object',
+					required: ['type', '$ref', 'properties'],
+					additionalProperties: false,
 					properties: {
-						type: 'object',
-						required: ['Classes'],
-						additionalProperties: false,
+						type: {type: 'string', const: 'object'},
+						$ref: {
+							type: 'string',
+							const: '#/definitions/NativeClass',
+						},
+						additionalProperties: {type: 'boolean', const: false},
 						properties: {
-							Classes: {
-								type: 'object',
-								required: ['type', 'minItems'],
-								properties: {
-									type: {type: 'string', const: 'array'},
-									minItems: {type: 'number', minimum: 1},
+							type: 'object',
+							required: ['Classes'],
+							additionalProperties: false,
+							properties: {
+								Classes: {
+									type: 'object',
+									required: ['type', 'minItems'],
+									properties: {
+										type: {type: 'string', const: 'array'},
+										minItems: {type: 'number', minimum: 1},
+									},
 								},
 							},
 						},
 					},
 				},
-			},
-			(data) => {
-				return new TypeNodeGenerationResult(() => {
-					return ts.factory.createTypeReferenceNode(
-						'NativeClass',
-						[
-							this.type_node_generator.find(ajv, data.properties.Classes).type()
-						]
-					);
-				});
-			}
-		));
+				(data) => {
+					return new TypeNodeGenerationResult(() => {
+						return ts.factory.createTypeReferenceNode(
+							'NativeClass',
+							[
+								this.type_node_generator
+									.find(ajv, data.properties.Classes)
+									.type(),
+							]
+						);
+					});
+				}
+			)
+		);
 
 		this.classes.push(
 			...supported_base_classes.map((reference_name) => {
@@ -842,8 +880,10 @@ export class Update8TypeNodeGeneration {
 		checked.push(ref);
 
 		const {prefix, value} = {
-			prefix: schema.definitions['NativeClass--NativeClass'].UnrealEngineString.UnrealEngineString_prefix,
-			value: schema.definitions['NativeClass--NativeClass'].UnrealEngineString.pattern
+			prefix: schema.definitions['NativeClass--NativeClass']
+				.UnrealEngineString.UnrealEngineString_prefix,
+			value: schema.definitions['NativeClass--NativeClass']
+				.UnrealEngineString.pattern,
 		};
 
 		const definition_name = ref.substring(14);
@@ -852,8 +892,8 @@ export class Update8TypeNodeGeneration {
 			filenames[definition_name] =
 				`classes/${adjust_unrealengine_prefix(prefix)}/${adjust_unrealengine_value(definition_name)}.ts`;
 		} else {
-		filenames[definition_name] =
-			`classes/${adjust_unrealengine_prefix(prefix)}/${adjust_unrealengine_value(value)}.ts`;
+			filenames[definition_name] =
+				`classes/${adjust_unrealengine_prefix(prefix)}/${adjust_unrealengine_value(value)}.ts`;
 		}
 	}
 
@@ -914,7 +954,11 @@ export class Update8TypeNodeGeneration {
 		const filenames: {[key: string]: string} = {};
 
 		for (const NativeClass of schema.prefixItems) {
-			this.generate_concrete_class(checked, filenames, (NativeClass as unknown) as NativeClass);
+			this.generate_concrete_class(
+				checked,
+				filenames,
+				NativeClass as unknown as NativeClass
+			);
 		}
 
 		const NativeClass_ref_schema = {
@@ -1189,7 +1233,10 @@ export class Update8TypeNodeGeneration {
 	}
 
 	can_guess_filename(ref: definition_key) {
-		return /^FG[A-Za-z]+--[A-Za-z-_]+$/.test(ref) || ref.startsWith('NativeClass--');
+		return (
+			/^FG[A-Za-z]+--[A-Za-z-_]+$/.test(ref) ||
+			ref.startsWith('NativeClass--')
+		);
 	}
 
 	guess_filename(ref: definition_key): string {
