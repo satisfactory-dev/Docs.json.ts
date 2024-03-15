@@ -868,7 +868,7 @@ export class Update8TypeNodeGeneration {
 	private populate_checked_and_filenames(
 		filenames: {[p: string]: string},
 		checked: string[],
-		ref: string,
+		ref: string
 	) {
 		if (checked.includes(ref)) {
 			return;
@@ -903,16 +903,28 @@ export class Update8TypeNodeGeneration {
 		const {items} = Classes;
 		if ('object' === typeof items) {
 			if ('$ref' in items) {
-				this.populate_checked_and_filenames(filenames, checked, items['$ref']);
+				this.populate_checked_and_filenames(
+					filenames,
+					checked,
+					items['$ref']
+				);
 			} else if ('oneOf' in items) {
 				const {oneOf} = items;
 				for (const entry of oneOf) {
-					this.populate_checked_and_filenames(filenames, checked, entry['$ref']);
+					this.populate_checked_and_filenames(
+						filenames,
+						checked,
+						entry['$ref']
+					);
 				}
 			} else if ('anyOf' in items) {
 				const {anyOf} = items;
 				for (const entry of anyOf) {
-					this.populate_checked_and_filenames(filenames, checked, entry['$ref']);
+					this.populate_checked_and_filenames(
+						filenames,
+						checked,
+						entry['$ref']
+					);
 				}
 			}
 		}
@@ -920,7 +932,11 @@ export class Update8TypeNodeGeneration {
 		if ('prefixItems' in Classes) {
 			const {prefixItems} = Classes;
 			for (const entry of prefixItems) {
-				this.populate_checked_and_filenames(filenames, checked, entry['$ref']);
+				this.populate_checked_and_filenames(
+					filenames,
+					checked,
+					entry['$ref']
+				);
 			}
 		}
 	}

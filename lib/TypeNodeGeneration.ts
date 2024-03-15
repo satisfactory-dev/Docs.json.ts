@@ -2,7 +2,8 @@ import ts, {
 	Identifier,
 	ObjectLiteralExpression,
 	ShorthandPropertyAssignment,
-	SpreadAssignment, TypeNode,
+	SpreadAssignment,
+	TypeNode,
 } from 'typescript';
 import {
 	import_these_later,
@@ -25,7 +26,8 @@ import {
 	array_match_type,
 	DataType,
 	GenerationResult,
-	ResultGeneration, ResultGenerationMatcher,
+	ResultGeneration,
+	ResultGenerationMatcher,
 	ResultGenerationMatchers,
 } from './SchemaBasedResultsMatching';
 
@@ -40,8 +42,7 @@ export class TypeNodeGenerationResult extends GenerationResult<ts.TypeNode> {
 		this.import_these_somewhere_later = import_these_somewhere_later;
 	}
 
-	get type() : () => ts.TypeNode
-	{
+	get type(): () => ts.TypeNode {
 		return this.generate;
 	}
 }
@@ -112,10 +113,10 @@ export class TypeNodeGenerationMatcher extends ResultGenerationMatcher<
 	DataType,
 	TypeNodeGenerationResult,
 	TypeNodeGeneration<any>
->{
+> {
 	protected create_union_result(
 		matches: [TypeNodeGenerationResult, ...TypeNodeGenerationResult[]]
-	) : TypeNodeGenerationResult {
+	): TypeNodeGenerationResult {
 		return new TypeNodeGenerationResult(() => {
 			return ts.factory.createUnionTypeNode(
 				matches.map((result) => {
@@ -128,7 +129,7 @@ export class TypeNodeGenerationMatcher extends ResultGenerationMatcher<
 	protected create_tuple_result(
 		first: TypeNodeGenerationResult,
 		second: TypeNodeGenerationResult
-	) : TypeNodeGenerationResult {
+	): TypeNodeGenerationResult {
 		return new TypeNodeGenerationResult(
 			() => {
 				return ts.factory.createTupleTypeNode([
@@ -167,15 +168,13 @@ export class TypeNodeGenerationMatcher extends ResultGenerationMatcher<
 	protected create_array_result(
 		property: array_match_type,
 		result: TypeNodeGenerationResult
-	) : TypeNodeGenerationResult {
+	): TypeNodeGenerationResult {
 		return new TypeNodeGenerationResult(() => {
 			if ('minItems' in property) {
 				return create_minimum_size_typed_array_of_single_type(
 					property.minItems,
 					result.type,
-					'maxItems' in property
-						? property.maxItems
-						: undefined
+					'maxItems' in property ? property.maxItems : undefined
 				);
 			}
 
@@ -186,7 +185,7 @@ export class TypeNodeGenerationMatcher extends ResultGenerationMatcher<
 	protected create_array_string_result(
 		property: array_string_schema_type,
 		result: TypeNodeGenerationResult
-	) : TypeNodeGenerationResult {
+	): TypeNodeGenerationResult {
 		return new TypeNodeGenerationResult(() => {
 			if ('minItems' in property.array_string) {
 				return create_minimum_size_typed_array_of_single_type(
@@ -201,14 +200,14 @@ export class TypeNodeGenerationMatcher extends ResultGenerationMatcher<
 		}, result.import_these_somewhere_later);
 	}
 
-	protected create_object_result(object_types: {[key: string]: TypeNodeGenerationResult}) : TypeNodeGenerationResult
-	{
+	protected create_object_result(object_types: {
+		[key: string]: TypeNodeGenerationResult;
+	}): TypeNodeGenerationResult {
 		return new TypeNodeGenerationResult(
 			() => {
 				return ts.factory.createTypeLiteralNode(
 					Object.entries(object_types).map((entry) => {
-						const [sub_property_name, sub_property_match] =
-							entry;
+						const [sub_property_name, sub_property_match] = entry;
 
 						return ts.factory.createPropertySignature(
 							undefined,
@@ -225,8 +224,7 @@ export class TypeNodeGenerationMatcher extends ResultGenerationMatcher<
 		);
 	}
 
-	protected create_unknown_result() : TypeNodeGenerationResult
-	{
+	protected create_unknown_result(): TypeNodeGenerationResult {
 		return new TypeNodeGenerationResult(() =>
 			ts.factory.createKeywordTypeNode(ts.SyntaxKind.UnknownKeyword)
 		);

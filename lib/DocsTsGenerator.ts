@@ -116,7 +116,7 @@ export type generation_result = {
 
 type DocsDataItem = {
 	NativeClass: string;
-	Classes: ({[key: string]: any[]|string} & {ClassName: string})[];
+	Classes: ({[key: string]: any[] | string} & {ClassName: string})[];
 };
 
 export type DocsData = [DocsDataItem, ...DocsDataItem[]];
@@ -184,9 +184,10 @@ export class DocsTsGenerator {
 		return this.docs;
 	}
 
-	private async validate<
-		T extends DocsData,
-	>(json: any, schema: {$id: 'update8.schema.json'}): Promise<T> {
+	private async validate<T extends DocsData>(
+		json: any,
+		schema: {$id: 'update8.schema.json'}
+	): Promise<T> {
 		/* unfortunately this code doesn't work because of nested ajv usage :(
 		if (this.cache_path) {
 			const file_sha512 = createHash('sha512');
@@ -277,7 +278,7 @@ export class DocsTsGenerator {
 	/**
 	 * @deprecated Provided only as a temporary measure due to the current poor performance of validation
 	 */
-	async unsafe_get<T extends DocsData = DocsData>() : Promise<T> {
+	async unsafe_get<T extends DocsData = DocsData>(): Promise<T> {
 		return this.load();
 	}
 

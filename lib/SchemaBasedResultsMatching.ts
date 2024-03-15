@@ -12,7 +12,7 @@ import {array_string_schema} from './TypesGeneration/json_schema_types';
 export class GenerationResult<T> {
 	readonly generate: () => T;
 
-	constructor(generate:() => T) {
+	constructor(generate: () => T) {
 		this.generate = generate;
 	}
 }
@@ -22,14 +22,18 @@ export type DataType = {[key: string]: any};
 export type ResultGenerator<
 	T1,
 	T2 extends DataType,
-	T3 extends GenerationResult<T1> = GenerationResult<T1>
-> = (data:T2) => T3;
+	T3 extends GenerationResult<T1> = GenerationResult<T1>,
+> = (data: T2) => T3;
 
 export type ResultGenerationMatchers<
 	Result,
 	Data extends DataType = DataType,
 	Generation extends GenerationResult<Result> = GenerationResult<Result>,
-	ItemType extends ResultGeneration<Result, Data, Generation> = ResultGeneration<Result, Data, Generation>
+	ItemType extends ResultGeneration<
+		Result,
+		Data,
+		Generation
+	> = ResultGeneration<Result, Data, Generation>,
 > = Array<ItemType>;
 
 declare type oneOf_or_anyOf_validator = ValidateFunction<
@@ -64,26 +68,24 @@ declare type tuple_array_validator = ValidateFunction<{
 	prefixItems: [any, any];
 }>;
 
-export type array_match_type =
-	{
-		type: 'array';
-		items: {
-			anyOf: [object, ...object[]];
-		};
-	} & ({minItems: number} | {}) &
+export type array_match_type = {
+	type: 'array';
+	items: {
+		anyOf: [object, ...object[]];
+	};
+} & ({minItems: number} | {}) &
 	({maxItems: number} | {});
 
-declare type array_validator = ValidateFunction<
-	array_match_type
->;
+declare type array_validator = ValidateFunction<array_match_type>;
 
 export class ResultGeneration<
 	ResultType,
 	Data extends DataType = DataType,
-	MatchResult extends GenerationResult<ResultType> = GenerationResult<ResultType>
+	MatchResult extends
+		GenerationResult<ResultType> = GenerationResult<ResultType>,
 > {
 	readonly schema: Schema;
-	private validate:WeakMap<Ajv, ValidateFunction<Data>> = new WeakMap<
+	private validate: WeakMap<Ajv, ValidateFunction<Data>> = new WeakMap<
 		Ajv,
 		ValidateFunction<Data>
 	>();
@@ -91,12 +93,15 @@ export class ResultGeneration<
 
 	static matchers: ResultGenerationMatchers<any, any>[] = [];
 
-	constructor(schema: Schema, generator: ResultGenerator<ResultType, Data, MatchResult>) {
+	constructor(
+		schema: Schema,
+		generator: ResultGenerator<ResultType, Data, MatchResult>
+	) {
 		this.schema = schema;
 		this.generator = generator;
 	}
 
-	match(ajv: Ajv, data: object) : MatchResult | null {
+	match(ajv: Ajv, data: object): MatchResult | null {
 		if (!this.validate.has(ajv)) {
 			try {
 				this.validate.set(ajv, ajv.compile<Data>(this.schema));
@@ -120,7 +125,7 @@ export abstract class ResultGenerationMatcher<
 	ResultType,
 	Data extends DataType,
 	MatchResult extends GenerationResult<ResultType>,
-	Matchers extends ResultGeneration<ResultType, Data, MatchResult>
+	Matchers extends ResultGeneration<ResultType, Data, MatchResult>,
 > {
 	public readonly matchers: Array<Matchers>;
 	private oneOf_or_anyOf_schema_matcher: WeakMap<
@@ -147,35 +152,32 @@ export abstract class ResultGenerationMatcher<
 		this.matchers = matchers;
 	}
 
-	protected abstract create_unknown_result() : MatchResult;
+	protected abstract create_unknown_result(): MatchResult;
 
 	protected abstract create_union_result(
-		matches:[MatchResult, ...MatchResult[]]
+		matches: [MatchResult, ...MatchResult[]]
 	): MatchResult;
 
 	protected abstract create_tuple_result(
 		first: MatchResult,
 		second: MatchResult
-	) : MatchResult;
+	): MatchResult;
 
 	protected abstract create_array_result(
 		property: array_match_type,
 		result: MatchResult
-	) : MatchResult;
+	): MatchResult;
 
 	protected abstract create_array_string_result(
 		property: array_string_schema_type,
 		result: MatchResult
-	) : MatchResult;
+	): MatchResult;
 
-	protected abstract create_object_result(
-		object_types: {[key: string]: MatchResult}
-	) : MatchResult;
+	protected abstract create_object_result(object_types: {
+		[key: string]: MatchResult;
+	}): MatchResult;
 
-	private search(
-		ajv: Ajv,
-		property: object
-	): MatchResult | null {
+	private search(ajv: Ajv, property: object): MatchResult | null {
 		for (const matcher of this.matchers) {
 			const match = matcher.match(ajv, property);
 
@@ -262,7 +264,9 @@ export abstract class ResultGenerationMatcher<
 			}
 
 			if (has_all_matches && matches.length) {
-				return this.create_union_result(matches as [MatchResult, ...MatchResult[]]);
+				return this.create_union_result(
+					matches as [MatchResult, ...MatchResult[]]
+				);
 			} else if (
 				this.throw_on_failure_to_find &&
 				matches.length > 0 &&
@@ -341,10 +345,7 @@ export abstract class ResultGenerationMatcher<
 		return null;
 	}
 
-	private array_search(
-		ajv: Ajv,
-		property: object
-	): MatchResult | null {
+	private array_search(ajv: Ajv, property: object): MatchResult | null {
 		if (!this.array_matcher.has(ajv)) {
 			this.array_matcher.set(
 				ajv,
@@ -485,10 +486,7 @@ export abstract class ResultGenerationMatcher<
 		return null;
 	}
 
-	private object_search(
-		ajv: Ajv,
-		property: object
-	): MatchResult | null {
+	private object_search(ajv: Ajv, property: object): MatchResult | null {
 		if (!this.object_matcher.has(ajv)) {
 			this.object_matcher.set(
 				ajv,
