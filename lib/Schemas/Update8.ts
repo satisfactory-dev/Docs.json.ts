@@ -41,7 +41,7 @@ import schema from '../../schema/update8.schema.json' assert {type: 'json'};
 
 declare type object_with_ref = {$ref: string};
 
-declare type NativeClass__Classses__items =
+declare type NativeClass__Classes__items =
 	| boolean
 	| object_with_ref
 	| {anyOf: [object_with_ref, ...object_with_ref[]]}
@@ -56,14 +56,14 @@ export type NativeClass = {
 			| ({
 					type: string;
 					minItems: number;
-					items: NativeClass__Classses__items;
+					items: NativeClass__Classes__items;
 			  } & ({maxItems: number} | {}))
 			| {
 					type: string;
 					minItems: number;
 					maxItems: number;
 					prefixItems: [object_with_ref, ...object_with_ref[]];
-					items: NativeClass__Classses__items;
+					items: NativeClass__Classes__items;
 			  };
 	};
 };
