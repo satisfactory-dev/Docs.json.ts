@@ -25,7 +25,8 @@ import {
 	create_conditional_UnrealEngineString_type_reference,
 	conditional_UnrealEngineString_type_arguments,
 	create_union,
-	create_literal_node_from_value, createClass__members__with_auto_constructor,
+	create_literal_node_from_value,
+	createClass__members__with_auto_constructor,
 } from '../TsFactoryWrapper';
 import {
 	TypeNodeGeneration,
@@ -40,8 +41,8 @@ const validator_target_files = {
 	'integer-string--signed': 'utils/validators.ts',
 };
 const vector_string_target_files = {
-	'mDockingRuleSet': 'classes/base.ts',
-	'mLightControlData': 'classes/base.ts',
+	mDockingRuleSet: 'classes/base.ts',
+	mLightControlData: 'classes/base.ts',
 };
 
 export const target_files = {
@@ -87,11 +88,12 @@ const ref_schema = {
 	additionalProperties: false,
 	properties: {
 		$ref: {
-			oneOf: [...Object.keys(validator_target_files), ...supported_meta_types].map(
-				(ref) => {
-					return {type: 'string', const: `#/definitions/${ref}`};
-				}
-			),
+			oneOf: [
+				...Object.keys(validator_target_files),
+				...supported_meta_types,
+			].map((ref) => {
+				return {type: 'string', const: `#/definitions/${ref}`};
+			}),
 		},
 	},
 };
@@ -167,7 +169,9 @@ export const generators = [
 		},
 		keyof typeof validator_target_files
 	>(
-		Object.keys(validator_target_files) as (keyof typeof validator_target_files)[],
+		Object.keys(
+			validator_target_files
+		) as (keyof typeof validator_target_files)[],
 		(data, reference_name) => {
 			return ts.factory.createTypeAliasDeclaration(
 				[create_modifier('export')],
@@ -193,29 +197,27 @@ export const generators = [
 	),
 	new TypesGenerationMatchesReferenceName<
 		{
-			type: 'string',
-			minLength: 1,
-			vector_object_string: vector_object_string_type,
+			type: 'string';
+			minLength: 1;
+			vector_object_string: vector_object_string_type;
 		},
-		'mDockingRuleSet'|'mLightControlData'
-	>(
-		['mDockingRuleSet', 'mLightControlData'],
-		(data, reference_name) => {
-			return createClass(
-				adjust_class_name(reference_name),
-				createClass__members__with_auto_constructor(
-					Object.assign({}, data.vector_object_string, {
-						required: Object.keys(data.vector_object_string.properties) as [string, ...string[]],
-					}),
-					['public', 'readonly']
-				),
-				{
-					modifiers: ['export'],
-				}
-			);
-
-		}
-	)
+		'mDockingRuleSet' | 'mLightControlData'
+	>(['mDockingRuleSet', 'mLightControlData'], (data, reference_name) => {
+		return createClass(
+			adjust_class_name(reference_name),
+			createClass__members__with_auto_constructor(
+				Object.assign({}, data.vector_object_string, {
+					required: Object.keys(
+						data.vector_object_string.properties
+					) as [string, ...string[]],
+				}),
+				['public', 'readonly']
+			),
+			{
+				modifiers: ['export'],
+			}
+		);
+	}),
 ];
 
 export const custom_generators = [
@@ -1007,36 +1009,41 @@ export const type_node_generators = [
 			!(ref_key in validator_target_files)
 				? undefined
 				: {
-						[validator_target_files[ref_key].replace(/\.ts$/, '')]: [
-							adjust_class_name(ref_key),
-						],
+						[validator_target_files[ref_key].replace(/\.ts$/, '')]:
+							[adjust_class_name(ref_key)],
 					}
 		);
 	}),
 	new TypeNodeGeneration<{
 		$ref:
 			| '#/definitions/mDockingRuleSet'
-			| '#/definitions/mLightControlData'
+			| '#/definitions/mLightControlData';
 	}>(
 		{
 			type: 'object',
 			required: ['$ref'],
 			additionalProperties: false,
 			properties: {
-				$ref: {type: 'string', enum: [
-					'#/definitions/mDockingRuleSet',
-					'#/definitions/mLightControlData',
-				]},
+				$ref: {
+					type: 'string',
+					enum: [
+						'#/definitions/mDockingRuleSet',
+						'#/definitions/mLightControlData',
+					],
+				},
 			},
 		},
-		(data) => new TypeNodeGenerationResult(() => {
-			return ts.factory.createTypeReferenceNode(adjust_class_name(data.$ref.substring(14)));
-		})
+		(data) =>
+			new TypeNodeGenerationResult(() => {
+				return ts.factory.createTypeReferenceNode(
+					adjust_class_name(data.$ref.substring(14))
+				);
+			})
 	),
 	new TypeNodeGeneration<{
-		type: 'string',
-		minLength: 1,
-		vector_object_string: vector_object_string_type,
+		type: 'string';
+		minLength: 1;
+		vector_object_string: vector_object_string_type;
 	}>(
 		{
 			type: 'object',
@@ -1054,16 +1061,18 @@ export const type_node_generators = [
 						properties: {
 							type: 'object',
 							additionalProperties: vector_object_string_schema,
-						}
-					}
-				}
-			}
+						},
+					},
+				},
+			},
 		},
 		(data) => {
 			const pattern_prop: {[key: string]: string} = {};
-			const type_gen:{[key: string]: TypeReferenceNode} = {};
+			const type_gen: {[key: string]: TypeReferenceNode} = {};
 
-			for (const entry of Object.entries(data.vector_object_string.properties)) {
+			for (const entry of Object.entries(
+				data.vector_object_string.properties
+			)) {
 				const [property, {$ref}] = entry;
 
 				if ($ref.startsWith('#/definitions/decimal-string')) {
@@ -1084,11 +1093,15 @@ export const type_node_generators = [
 			}
 
 			return new TypeNodeGenerationResult(() => {
-				return create_object_type(Object.fromEntries(Object.keys(data.vector_object_string.properties).map(
-					(property) => {
-						return [property, type_gen[property]];
-					}
-				)));
+				return create_object_type(
+					Object.fromEntries(
+						Object.keys(data.vector_object_string.properties).map(
+							(property) => {
+								return [property, type_gen[property]];
+							}
+						)
+					)
+				);
 			});
 		}
 	),

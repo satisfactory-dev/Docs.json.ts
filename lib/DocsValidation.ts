@@ -1,7 +1,10 @@
 import Ajv, {_, KeywordCxt} from 'ajv/dist/2020';
 
 import schema from '../schema/update8.schema.json' assert {type: 'json'};
-import {vector_object_string_schema, vector_object_string_type} from './TypesGeneration/validators';
+import {
+	vector_object_string_schema,
+	vector_object_string_type,
+} from './TypesGeneration/validators';
 
 const {definitions} = schema;
 

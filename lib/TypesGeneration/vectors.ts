@@ -51,7 +51,9 @@ export const generators = [
 		(data, reference_name) => {
 			const was_data = data;
 			data = (
-				'vector_object_string' in data ? data.vector_object_string : data
+				'vector_object_string' in data
+					? data.vector_object_string
+					: data
 			) as vector_object_type;
 
 			const members = createClass__members__with_auto_constructor(data, [

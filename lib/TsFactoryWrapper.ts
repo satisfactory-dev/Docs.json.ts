@@ -340,7 +340,10 @@ export function createClass__members__with_auto_constructor<
 						)
 					);
 
-					if ('required' in data && !data.required.includes(property_name)) {
+					if (
+						'required' in data &&
+						!data.required.includes(property_name)
+					) {
 						type = ts.factory.createUnionTypeNode([
 							type,
 							create_type('undefined'),

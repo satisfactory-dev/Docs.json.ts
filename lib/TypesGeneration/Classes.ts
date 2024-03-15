@@ -272,9 +272,7 @@ export const generators = [
 
 export const type_node_generators = [
 	new TypeNodeGeneration<{
-		$ref:
-			| '#/definitions/mDisableSnapOn'
-			| '#/definitions/EditorCurveData';
+		$ref: '#/definitions/mDisableSnapOn' | '#/definitions/EditorCurveData';
 	}>(
 		{
 			type: 'object',
