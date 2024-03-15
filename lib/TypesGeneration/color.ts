@@ -20,8 +20,6 @@ import {
 export const target_files = {
 	'color--base': 'common/color.ts',
 	'color-decimal--semi-native': 'common/color.ts',
-	color: 'common/color.ts',
-	'color-decimal': 'common/color.ts',
 };
 
 ImportTracker.set_imports('common/color.ts', [
@@ -136,23 +134,11 @@ export const generators = [
 			});
 		}
 	),
-	new TypesGenerationMatchesReferenceName<
-		{vector_object_string: RGBA},
-		'color-decimal' | 'color'
-	>(['color-decimal', 'color'], (data, reference_name): ClassDeclaration => {
-		const members = [rgba_super_caller(data.vector_object_string)];
-
-		return createClass(reference_name, members, {
-			modifiers: ['export'],
-			extends: 'color--base',
-		});
-	}),
 ];
 
 export const type_node_generators = [
 	new TypeNodeGeneration<{
 		$ref:
-			| '#/definitions/color-decimal'
 			| '#/definitions/color-decimal--semi-native';
 	}>(
 		{
@@ -163,7 +149,7 @@ export const type_node_generators = [
 				$ref: {
 					type: 'string',
 					pattern:
-						'^#/definitions/(color(-decimal)?(--semi-native)?)$',
+						'^#/definitions/color-decimal--semi-native$',
 				},
 			},
 		},

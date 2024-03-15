@@ -43,6 +43,8 @@ const validator_target_files = {
 const vector_string_target_files = {
 	mDockingRuleSet: 'classes/base.ts',
 	mLightControlData: 'classes/base.ts',
+	'color-decimal': 'common/color.ts',
+	'color': 'common/color.ts',
 };
 
 export const target_files = {
@@ -201,8 +203,8 @@ export const generators = [
 			minLength: 1;
 			vector_object_string: vector_object_string_type;
 		},
-		'mDockingRuleSet' | 'mLightControlData'
-	>(['mDockingRuleSet', 'mLightControlData'], (data, reference_name) => {
+		'mDockingRuleSet' | 'mLightControlData' | 'color-decimal' | 'color'
+	>(['mDockingRuleSet', 'mLightControlData', 'color-decimal', 'color'], (data, reference_name) => {
 		return createClass(
 			adjust_class_name(reference_name),
 			createClass__members__with_auto_constructor(
@@ -1016,6 +1018,8 @@ export const type_node_generators = [
 	}),
 	new TypeNodeGeneration<{
 		$ref:
+			| '#/definitions/color'
+			| '#/definitions/color-decimal'
 			| '#/definitions/mDockingRuleSet'
 			| '#/definitions/mLightControlData';
 	}>(
@@ -1027,6 +1031,8 @@ export const type_node_generators = [
 				$ref: {
 					type: 'string',
 					enum: [
+						'#/definitions/color',
+						'#/definitions/color-decimal',
 						'#/definitions/mDockingRuleSet',
 						'#/definitions/mLightControlData',
 					],
