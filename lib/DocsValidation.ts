@@ -430,10 +430,7 @@ export function configure_ajv(ajv: Ajv): void {
 		type: 'string',
 		metaSchema: {
 			type: 'object',
-			required: [
-				'type',
-				'properties',
-			],
+			required: ['type', 'properties'],
 			additionalProperties: false,
 			properties: {
 				type: {type: 'string', const: 'object'},
@@ -446,10 +443,22 @@ export function configure_ajv(ajv: Ajv): void {
 						properties: {
 							$ref: {
 								oneOf: [
-									{type: 'string', const: '#/definitions/decimal-string'},
-									{type: 'string', const: '#/definitions/decimal-string--signed'},
-									{type: 'string', const: '#/definitions/integer-string'},
-									{type: 'string', const: '#/definitions/integer-string--signed'},
+									{
+										type: 'string',
+										const: '#/definitions/decimal-string',
+									},
+									{
+										type: 'string',
+										const: '#/definitions/decimal-string--signed',
+									},
+									{
+										type: 'string',
+										const: '#/definitions/integer-string',
+									},
+									{
+										type: 'string',
+										const: '#/definitions/integer-string--signed',
+									},
 								],
 							},
 						},
@@ -457,17 +466,19 @@ export function configure_ajv(ajv: Ajv): void {
 				},
 			},
 		},
-		macro: (schema:{
-			type: 'object',
-			properties: {[key: string]: {
-				$ref:
-					| '#/definitions/decimal-string'
-					| '#/definitions/decimal-string--signed'
-					| '#/definitions/integer-string'
-					| '#/definitions/integer-string--signed'
-			}}
+		macro: (schema: {
+			type: 'object';
+			properties: {
+				[key: string]: {
+					$ref:
+						| '#/definitions/decimal-string'
+						| '#/definitions/decimal-string--signed'
+						| '#/definitions/integer-string'
+						| '#/definitions/integer-string--signed';
+				};
+			};
 		}) => {
-			const pattern_prop:{[key: string]: string} = {};
+			const pattern_prop: {[key: string]: string} = {};
 
 			for (const entry of Object.entries(schema.properties)) {
 				const [property, {$ref}] = entry;
@@ -479,11 +490,14 @@ export function configure_ajv(ajv: Ajv): void {
 				}
 
 				if ($ref.endsWith('--signed')) {
-					pattern_prop[property] = `-?${pattern_prop[property as keyof typeof pattern_prop]}`;
+					pattern_prop[property] =
+						`-?${pattern_prop[property as keyof typeof pattern_prop]}`;
 				}
 			}
 
-			const pattern = `^\\(${Object.entries(pattern_prop).map(e => `${e[0]}=${e[1]}`).join(',')}\\)$`;
+			const pattern = `^\\(${Object.entries(pattern_prop)
+				.map((e) => `${e[0]}=${e[1]}`)
+				.join(',')}\\)$`;
 
 			return {pattern};
 		},
