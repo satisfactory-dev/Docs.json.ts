@@ -44,7 +44,7 @@ const vector_string_target_files = {
 	mDockingRuleSet: 'classes/base.ts',
 	mLightControlData: 'classes/base.ts',
 	'color-decimal': 'common/color.ts',
-	'color': 'common/color.ts',
+	color: 'common/color.ts',
 };
 
 export const target_files = {
@@ -204,22 +204,25 @@ export const generators = [
 			vector_object_string: vector_object_string_type;
 		},
 		'mDockingRuleSet' | 'mLightControlData' | 'color-decimal' | 'color'
-	>(['mDockingRuleSet', 'mLightControlData', 'color-decimal', 'color'], (data, reference_name) => {
-		return createClass(
-			adjust_class_name(reference_name),
-			createClass__members__with_auto_constructor(
-				Object.assign({}, data.vector_object_string, {
-					required: Object.keys(
-						data.vector_object_string.properties
-					) as [string, ...string[]],
-				}),
-				['public', 'readonly']
-			),
-			{
-				modifiers: ['export'],
-			}
-		);
-	}),
+	>(
+		['mDockingRuleSet', 'mLightControlData', 'color-decimal', 'color'],
+		(data, reference_name) => {
+			return createClass(
+				adjust_class_name(reference_name),
+				createClass__members__with_auto_constructor(
+					Object.assign({}, data.vector_object_string, {
+						required: Object.keys(
+							data.vector_object_string.properties
+						) as [string, ...string[]],
+					}),
+					['public', 'readonly']
+				),
+				{
+					modifiers: ['export'],
+				}
+			);
+		}
+	),
 ];
 
 export const custom_generators = [
