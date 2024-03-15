@@ -88,18 +88,16 @@
 		"color": {
 			"type": "string",
 			"minLength": 1,
-			"object_string": {
+			"vector_object_string": {
 				"type": "object",
-				"$ref": "#/definitions/color--base",
-				"unevaluatedProperties": false,
 				"properties": {
-					"R": {
+					"B": {
 						"$ref": "#/definitions/integer-string"
 					},
 					"G": {
 						"$ref": "#/definitions/integer-string"
 					},
-					"B": {
+					"R": {
 						"$ref": "#/definitions/integer-string"
 					},
 					"A": {
@@ -111,10 +109,8 @@
 		"color-decimal": {
 			"type": "string",
 			"minLength": 1,
-			"object_string": {
+			"vector_object_string": {
 				"type": "object",
-				"$ref": "#/definitions/color--base",
-				"unevaluatedProperties": false,
 				"properties": {
 					"R": {
 						"$ref": "#/definitions/decimal-string"
@@ -161,9 +157,8 @@
 		"xyz": {
 			"type": "string",
 			"minLength": 1,
-			"object_string": {
+			"vector_object_string": {
 				"type": "object",
-				"required": ["X", "Y", "Z"],
 				"properties": {
 					"X": {
 						"$ref": "#/definitions/decimal-string--signed"
@@ -195,9 +190,8 @@
 		"xy": {
 			"type": "string",
 			"minLength": 1,
-			"object_string": {
+			"vector_object_string": {
 				"type": "object",
-				"required": ["X", "Y"],
 				"properties": {
 					"X": {
 						"$ref": "#/definitions/decimal-string--signed"
@@ -211,9 +205,8 @@
 		"xy--integer": {
 			"type": "string",
 			"minLength": 1,
-			"object_string": {
+			"vector_object_string": {
 				"type": "object",
-				"required": ["X", "Y"],
 				"properties": {
 					"X": {
 						"$ref": "#/definitions/integer-string"
@@ -257,9 +250,8 @@
 		"pitch-yaw-roll": {
 			"type": "string",
 			"minLength": 1,
-			"object_string": {
+			"vector_object_string": {
 				"type": "object",
-				"required": ["Pitch", "Yaw", "Roll"],
 				"properties": {
 					"Pitch": {
 						"$ref": "#/definitions/decimal-string--signed"
@@ -276,9 +268,8 @@
 		"xyz--integer": {
 			"type": "string",
 			"minLength": 1,
-			"object_string": {
+			"vector_object_string": {
 				"type": "object",
-				"required": ["X", "Y", "Z"],
 				"properties": {
 					"X": {
 						"$ref": "#/definitions/integer-string"
@@ -5264,9 +5255,8 @@
 				"mPowerConsumption": {
 					"type": "string",
 					"minLength": 1,
-					"object_string": {
+					"vector_object_string": {
 						"type": "object",
-						"required": ["Min", "Max"],
 						"properties": {
 							"Min": {
 								"$ref": "#/definitions/decimal-string"
@@ -5469,9 +5459,8 @@
 		"mDockingRuleSet": {
 			"type": "string",
 			"minLength": 1,
-			"object_string": {
+			"vector_object_string": {
 				"type": "object",
-				"required": ["DockForDuration"],
 				"properties": {
 					"DockForDuration": {
 						"$ref": "#/definitions/decimal-string"
@@ -5954,14 +5943,8 @@
 				"mTrajectorySplineMeshSplineDataSettings": {
 					"type": "string",
 					"minLength": 1,
-					"object_string": {
+					"vector_object_string": {
 						"type": "object",
-						"required": [
-							"StartTangentPrimitiveDataStartIndex",
-							"EndPositionPrimitiveDataStartIndex",
-							"EndTangentPrimitiveDataStartIndex",
-							"InstanceScaleIndex"
-						],
 						"properties": {
 							"StartTangentPrimitiveDataStartIndex": {
 								"$ref": "#/definitions/integer-string"
@@ -6562,9 +6545,8 @@
 				"mNumShots": {
 					"type": "string",
 					"minLength": 1,
-					"object_string": {
+					"vector_object_string": {
 						"type": "object",
-						"required": ["Min", "Max"],
 						"properties": {
 							"Min": {
 								"$ref": "#/definitions/integer-string"
@@ -7107,9 +7089,8 @@
 		"mLightControlData": {
 			"type": "string",
 			"minLength": 1,
-			"object_string": {
+			"vector_object_string": {
 				"type": "object",
-				"required": ["Intensity"],
 				"properties": {
 					"Intensity": {
 						"$ref": "#/definitions/decimal-string"

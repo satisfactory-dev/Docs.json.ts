@@ -426,6 +426,70 @@ export function configure_ajv(ajv: Ajv): void {
 	});
 
 	ajv.addKeyword({
+		keyword: 'vector_object_string',
+		type: 'string',
+		metaSchema: {
+			type: 'object',
+			required: [
+				'type',
+				'properties',
+			],
+			additionalProperties: false,
+			properties: {
+				type: {type: 'string', const: 'object'},
+				properties: {
+					type: 'object',
+					additionalProperties: {
+						type: 'object',
+						required: ['$ref'],
+						additionalProperties: false,
+						properties: {
+							$ref: {
+								oneOf: [
+									{type: 'string', const: '#/definitions/decimal-string'},
+									{type: 'string', const: '#/definitions/decimal-string--signed'},
+									{type: 'string', const: '#/definitions/integer-string'},
+									{type: 'string', const: '#/definitions/integer-string--signed'},
+								],
+							},
+						},
+					},
+				},
+			},
+		},
+		macro: (schema:{
+			type: 'object',
+			properties: {[key: string]: {
+				$ref:
+					| '#/definitions/decimal-string'
+					| '#/definitions/decimal-string--signed'
+					| '#/definitions/integer-string'
+					| '#/definitions/integer-string--signed'
+			}}
+		}) => {
+			const pattern_prop:{[key: string]: string} = {};
+
+			for (const entry of Object.entries(schema.properties)) {
+				const [property, {$ref}] = entry;
+
+				if ($ref.startsWith('#/definitions/decimal-string')) {
+					pattern_prop[property] = '\\d+\\.\\d+';
+				} else {
+					pattern_prop[property] = '\\d+';
+				}
+
+				if ($ref.endsWith('--signed')) {
+					pattern_prop[property] = `-?${pattern_prop[property as keyof typeof pattern_prop]}`;
+				}
+			}
+
+			const pattern = `^\\(${Object.entries(pattern_prop).map(e => `${e[0]}=${e[1]}`).join(',')}\\)$`;
+
+			return {pattern};
+		},
+	});
+
+	ajv.addKeyword({
 		keyword: 'object_string',
 		type: 'string',
 		metaSchema: {
