@@ -41,7 +41,7 @@ export const generators = [
 		| {
 				type: 'string';
 				minLength: 1;
-				object_string: vector_object_type;
+				vector_object_string: vector_object_type;
 		  },
 		keyof typeof auto_constructor_property_types_from_generated_types
 	>(
@@ -49,8 +49,9 @@ export const generators = [
 			target_files
 		) as (keyof typeof auto_constructor_property_types_from_generated_types)[],
 		(data, reference_name) => {
+			const was_data = data;
 			data = (
-				'object_string' in data ? data.object_string : data
+				'vector_object_string' in data ? data.vector_object_string : data
 			) as vector_object_type;
 
 			const members = createClass__members__with_auto_constructor(data, [

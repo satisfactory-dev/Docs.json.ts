@@ -1,4 +1,4 @@
-import ts from 'typescript';
+import ts, {TypeReferenceNode} from 'typescript';
 import {
 	ImportTracker,
 	TypesGenerationFromSchema,
@@ -25,7 +25,7 @@ import {
 	create_conditional_UnrealEngineString_type_reference,
 	conditional_UnrealEngineString_type_arguments,
 	create_union,
-	create_literal_node_from_value,
+	create_literal_node_from_value, createClass__members__with_auto_constructor,
 } from '../TsFactoryWrapper';
 import {
 	TypeNodeGeneration,
@@ -33,11 +33,20 @@ import {
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 import {UnrealEngineString_regex} from '../DocsValidation';
 
-export const target_files = {
+const validator_target_files = {
 	'decimal-string': 'utils/validators.ts',
 	'decimal-string--signed': 'utils/validators.ts',
 	'integer-string': 'utils/validators.ts',
 	'integer-string--signed': 'utils/validators.ts',
+};
+const vector_string_target_files = {
+	'mDockingRuleSet': 'classes/base.ts',
+	'mLightControlData': 'classes/base.ts',
+};
+
+export const target_files = {
+	...validator_target_files,
+	...vector_string_target_files,
 };
 
 const supported_meta_types: string[] = [];
@@ -78,7 +87,7 @@ const ref_schema = {
 	additionalProperties: false,
 	properties: {
 		$ref: {
-			oneOf: [...Object.keys(target_files), ...supported_meta_types].map(
+			oneOf: [...Object.keys(validator_target_files), ...supported_meta_types].map(
 				(ref) => {
 					return {type: 'string', const: `#/definitions/${ref}`};
 				}
@@ -156,9 +165,9 @@ export const generators = [
 			type: 'string';
 			pattern: string;
 		},
-		keyof typeof target_files
+		keyof typeof validator_target_files
 	>(
-		Object.keys(target_files) as (keyof typeof target_files)[],
+		Object.keys(validator_target_files) as (keyof typeof validator_target_files)[],
 		(data, reference_name) => {
 			return ts.factory.createTypeAliasDeclaration(
 				[create_modifier('export')],
@@ -182,6 +191,31 @@ export const generators = [
 			);
 		}
 	),
+	new TypesGenerationMatchesReferenceName<
+		{
+			type: 'string',
+			minLength: 1,
+			vector_object_string: vector_object_string_type,
+		},
+		'mDockingRuleSet'|'mLightControlData'
+	>(
+		['mDockingRuleSet', 'mLightControlData'],
+		(data, reference_name) => {
+			return createClass(
+				adjust_class_name(reference_name),
+				createClass__members__with_auto_constructor(
+					Object.assign({}, data.vector_object_string, {
+						required: Object.keys(data.vector_object_string.properties) as [string, ...string[]],
+					}),
+					['public', 'readonly']
+				),
+				{
+					modifiers: ['export'],
+				}
+			);
+
+		}
+	)
 ];
 
 export const custom_generators = [
@@ -917,11 +951,52 @@ export type UnrealEngineString_pattern_type = {
 	};
 } & ({minLength: 1} | {});
 
+export const vector_object_string_schema = {
+	type: 'object',
+	required: ['$ref'],
+	additionalProperties: false,
+	properties: {
+		$ref: {
+			oneOf: [
+				{
+					type: 'string',
+					const: '#/definitions/decimal-string',
+				},
+				{
+					type: 'string',
+					const: '#/definitions/decimal-string--signed',
+				},
+				{
+					type: 'string',
+					const: '#/definitions/integer-string',
+				},
+				{
+					type: 'string',
+					const: '#/definitions/integer-string--signed',
+				},
+			],
+		},
+	},
+};
+
+export type vector_object_string_type = {
+	type: 'object';
+	properties: {
+		[key: string]: {
+			$ref:
+				| '#/definitions/decimal-string'
+				| '#/definitions/decimal-string--signed'
+				| '#/definitions/integer-string'
+				| '#/definitions/integer-string--signed';
+		};
+	};
+};
+
 export const type_node_generators = [
 	new TypeNodeGeneration<ref_type>(ref_schema, (property) => {
 		const ref_key = property['$ref'].substring(
 			14
-		) as keyof typeof target_files;
+		) as keyof typeof validator_target_files;
 
 		return new TypeNodeGenerationResult(
 			() =>
@@ -929,15 +1004,94 @@ export const type_node_generators = [
 					'StrictlyTypedNumberFromRegExp',
 					[create_type('string')]
 				),
-			!(ref_key in target_files)
+			!(ref_key in validator_target_files)
 				? undefined
 				: {
-						[target_files[ref_key].replace(/\.ts$/, '')]: [
+						[validator_target_files[ref_key].replace(/\.ts$/, '')]: [
 							adjust_class_name(ref_key),
 						],
 					}
 		);
 	}),
+	new TypeNodeGeneration<{
+		$ref:
+			| '#/definitions/mDockingRuleSet'
+			| '#/definitions/mLightControlData'
+	}>(
+		{
+			type: 'object',
+			required: ['$ref'],
+			additionalProperties: false,
+			properties: {
+				$ref: {type: 'string', enum: [
+					'#/definitions/mDockingRuleSet',
+					'#/definitions/mLightControlData',
+				]},
+			},
+		},
+		(data) => new TypeNodeGenerationResult(() => {
+			return ts.factory.createTypeReferenceNode(adjust_class_name(data.$ref.substring(14)));
+		})
+	),
+	new TypeNodeGeneration<{
+		type: 'string',
+		minLength: 1,
+		vector_object_string: vector_object_string_type,
+	}>(
+		{
+			type: 'object',
+			required: ['type', 'minLength', 'vector_object_string'],
+			additionalProperties: false,
+			properties: {
+				type: {type: 'string', const: 'string'},
+				minLength: {type: 'number', const: 1},
+				vector_object_string: {
+					type: 'object',
+					required: ['type', 'properties'],
+					additionalProperties: false,
+					properties: {
+						type: {type: 'string', const: 'object'},
+						properties: {
+							type: 'object',
+							additionalProperties: vector_object_string_schema,
+						}
+					}
+				}
+			}
+		},
+		(data) => {
+			const pattern_prop: {[key: string]: string} = {};
+			const type_gen:{[key: string]: TypeReferenceNode} = {};
+
+			for (const entry of Object.entries(data.vector_object_string.properties)) {
+				const [property, {$ref}] = entry;
+
+				if ($ref.startsWith('#/definitions/decimal-string')) {
+					pattern_prop[property] = '\\d+\\.\\d+';
+				} else {
+					pattern_prop[property] = '\\d+';
+				}
+
+				if ($ref.endsWith('--signed')) {
+					pattern_prop[property] =
+						`-?${pattern_prop[property as keyof typeof pattern_prop]}`;
+				}
+
+				type_gen[property] = ts.factory.createTypeReferenceNode(
+					'StrictlyTypedNumberFromRegExp',
+					[create_literal_node_from_value(pattern_prop[property])]
+				);
+			}
+
+			return new TypeNodeGenerationResult(() => {
+				return create_object_type(Object.fromEntries(Object.keys(data.vector_object_string.properties).map(
+					(property) => {
+						return [property, type_gen[property]];
+					}
+				)));
+			});
+		}
+	),
 	new TypeNodeGeneration<{
 		type: string;
 		pattern: string;

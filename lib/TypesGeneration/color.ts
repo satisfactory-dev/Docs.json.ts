@@ -137,10 +137,10 @@ export const generators = [
 		}
 	),
 	new TypesGenerationMatchesReferenceName<
-		{object_string: RGBA},
+		{vector_object_string: RGBA},
 		'color-decimal' | 'color'
 	>(['color-decimal', 'color'], (data, reference_name): ClassDeclaration => {
-		const members = [rgba_super_caller(data.object_string)];
+		const members = [rgba_super_caller(data.vector_object_string)];
 
 		return createClass(reference_name, members, {
 			modifiers: ['export'],

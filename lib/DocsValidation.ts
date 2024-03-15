@@ -1,6 +1,7 @@
 import Ajv, {_, KeywordCxt} from 'ajv/dist/2020';
 
 import schema from '../schema/update8.schema.json' assert {type: 'json'};
+import {vector_object_string_schema, vector_object_string_type} from './TypesGeneration/validators';
 
 const {definitions} = schema;
 
@@ -436,48 +437,11 @@ export function configure_ajv(ajv: Ajv): void {
 				type: {type: 'string', const: 'object'},
 				properties: {
 					type: 'object',
-					additionalProperties: {
-						type: 'object',
-						required: ['$ref'],
-						additionalProperties: false,
-						properties: {
-							$ref: {
-								oneOf: [
-									{
-										type: 'string',
-										const: '#/definitions/decimal-string',
-									},
-									{
-										type: 'string',
-										const: '#/definitions/decimal-string--signed',
-									},
-									{
-										type: 'string',
-										const: '#/definitions/integer-string',
-									},
-									{
-										type: 'string',
-										const: '#/definitions/integer-string--signed',
-									},
-								],
-							},
-						},
-					},
+					additionalProperties: vector_object_string_schema,
 				},
 			},
 		},
-		macro: (schema: {
-			type: 'object';
-			properties: {
-				[key: string]: {
-					$ref:
-						| '#/definitions/decimal-string'
-						| '#/definitions/decimal-string--signed'
-						| '#/definitions/integer-string'
-						| '#/definitions/integer-string--signed';
-				};
-			};
-		}) => {
+		macro: (schema: vector_object_string_type) => {
 			const pattern_prop: {[key: string]: string} = {};
 
 			for (const entry of Object.entries(schema.properties)) {

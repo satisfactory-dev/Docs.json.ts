@@ -36,11 +36,7 @@ export const supported_base_classes: [
 
 export const target_files = {
 	mDisableSnapOn: 'classes/base.ts',
-	mDockingRuleSet: 'classes/base.ts',
 	EditorCurveData: 'classes/base.ts',
-	mLightControlData: 'classes/base.ts',
-	mUnlocks_Class: 'classes/CoreUObject/FGSchematic.ts',
-	mUnlocks_mTapeUnlocks: 'classes/CoreUObject/FGSchematic.ts',
 };
 
 declare type mDisableSnapOn_member = {
@@ -154,9 +150,7 @@ export const generators = [
 				[key: string]: {
 					$ref:
 						| '#/definitions/mDisableSnapOn'
-						| '#/definitions/mDockingRuleSet'
-						| '#/definitions/EditorCurveData'
-						| '#/definitions/mLightControlData';
+						| '#/definitions/EditorCurveData';
 				};
 			};
 		};
@@ -189,7 +183,7 @@ export const generators = [
 									$ref: {
 										type: 'string',
 										pattern:
-											'^#/definitions/(decimal-string|InfinityExtrap|mLightControlData)',
+											'^#/definitions/(mDisableSnapOn|EditorCurveData)$',
 									},
 								},
 							},
@@ -280,11 +274,7 @@ export const type_node_generators = [
 	new TypeNodeGeneration<{
 		$ref:
 			| '#/definitions/mDisableSnapOn'
-			| '#/definitions/mDockingRuleSet'
-			| '#/definitions/EditorCurveData'
-			| '#/definitions/mLightControlData'
-			| '#/definitions/mUnlocks_Class'
-			| '#/definitions/mUnlocks_mTapeUnlocks';
+			| '#/definitions/EditorCurveData';
 	}>(
 		{
 			type: 'object',
