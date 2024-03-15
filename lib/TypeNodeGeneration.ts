@@ -116,31 +116,31 @@ export class TypeNodeGenerationMatcher extends ResultGenerationMatcher<
 	protected create_union_result(
 		matches: [TypeNodeGenerationResult, ...TypeNodeGenerationResult[]]
 	) : TypeNodeGenerationResult {
-				return new TypeNodeGenerationResult(() => {
-					return ts.factory.createUnionTypeNode(
-						matches.map((result) => {
-							return result.type();
-						})
-					);
-				});
+		return new TypeNodeGenerationResult(() => {
+			return ts.factory.createUnionTypeNode(
+				matches.map((result) => {
+					return result.type();
+				})
+			);
+		});
 	}
 
 	protected create_tuple_result(
 		first: TypeNodeGenerationResult,
 		second: TypeNodeGenerationResult
 	) : TypeNodeGenerationResult {
-			return new TypeNodeGenerationResult(
-				() => {
-					return ts.factory.createTupleTypeNode([
-						first.type(),
-						second.type(),
-					]);
-				},
-				[
-					first.import_these_somewhere_later,
-					second.import_these_somewhere_later,
-				].reduce(this.reduce_import_these_somewhere_later, {})
-			);
+		return new TypeNodeGenerationResult(
+			() => {
+				return ts.factory.createTupleTypeNode([
+					first.type(),
+					second.type(),
+				]);
+			},
+			[
+				first.import_these_somewhere_later,
+				second.import_these_somewhere_later,
+			].reduce(this.reduce_import_these_somewhere_later, {})
+		);
 	}
 
 	private reduce_import_these_somewhere_later(
@@ -168,62 +168,61 @@ export class TypeNodeGenerationMatcher extends ResultGenerationMatcher<
 		property: array_match_type,
 		result: TypeNodeGenerationResult
 	) : TypeNodeGenerationResult {
-				return new TypeNodeGenerationResult(() => {
-					if ('minItems' in property) {
-						return create_minimum_size_typed_array_of_single_type(
-							property.minItems,
-							result.type,
-							'maxItems' in property
-								? property.maxItems
-								: undefined
-						);
-					}
+		return new TypeNodeGenerationResult(() => {
+			if ('minItems' in property) {
+				return create_minimum_size_typed_array_of_single_type(
+					property.minItems,
+					result.type,
+					'maxItems' in property
+						? property.maxItems
+						: undefined
+				);
+			}
 
-					return ts.factory.createArrayTypeNode(result.type());
-				}, result.import_these_somewhere_later);
+			return ts.factory.createArrayTypeNode(result.type());
+		}, result.import_these_somewhere_later);
 	}
 
 	protected create_array_string_result(
 		property: array_string_schema_type,
 		result: TypeNodeGenerationResult
 	) : TypeNodeGenerationResult {
-				return new TypeNodeGenerationResult(() => {
-					if ('minItems' in property.array_string) {
-						return create_minimum_size_typed_array_of_single_type(
-							property.array_string.minItems,
-							result.type,
-							'maxItems' in property.array_string
-								? property.array_string.maxItems
-								: undefined
-						);
-					}
-					return ts.factory.createArrayTypeNode(result.type());
-				}, result.import_these_somewhere_later);
-
+		return new TypeNodeGenerationResult(() => {
+			if ('minItems' in property.array_string) {
+				return create_minimum_size_typed_array_of_single_type(
+					property.array_string.minItems,
+					result.type,
+					'maxItems' in property.array_string
+						? property.array_string.maxItems
+						: undefined
+				);
+			}
+			return ts.factory.createArrayTypeNode(result.type());
+		}, result.import_these_somewhere_later);
 	}
 
 	protected create_object_result(object_types: {[key: string]: TypeNodeGenerationResult}) : TypeNodeGenerationResult
 	{
-			return new TypeNodeGenerationResult(
-				() => {
-					return ts.factory.createTypeLiteralNode(
-						Object.entries(object_types).map((entry) => {
-							const [sub_property_name, sub_property_match] =
-								entry;
+		return new TypeNodeGenerationResult(
+			() => {
+				return ts.factory.createTypeLiteralNode(
+					Object.entries(object_types).map((entry) => {
+						const [sub_property_name, sub_property_match] =
+							entry;
 
-							return ts.factory.createPropertySignature(
-								undefined,
-								property_name_or_computed(sub_property_name),
-								undefined,
-								sub_property_match.type()
-							);
-						})
-					);
-				},
-				Object.entries(object_types)
-					.map((entry) => entry[1].import_these_somewhere_later)
-					.reduce(this.reduce_import_these_somewhere_later, {})
-			);
+						return ts.factory.createPropertySignature(
+							undefined,
+							property_name_or_computed(sub_property_name),
+							undefined,
+							sub_property_match.type()
+						);
+					})
+				);
+			},
+			Object.entries(object_types)
+				.map((entry) => entry[1].import_these_somewhere_later)
+				.reduce(this.reduce_import_these_somewhere_later, {})
+		);
 	}
 
 	protected create_unknown_result() : TypeNodeGenerationResult
