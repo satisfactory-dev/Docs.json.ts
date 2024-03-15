@@ -74,7 +74,7 @@ import {
 	type_node_generators as aliases_type_node_generators,
 } from './TypesGeneration/aliases';
 import {is_ref, Update8TypeNodeGeneration} from './Schemas/Update8';
-import {TypeNodeGenerationMatcher} from './TypeNodeGeneration';
+import {TypeNodeGenerationMatcher} from './SchemaBasedResultsMatching/TypeNodeGeneration';
 import {DocsTsAutoImports} from './DocsTsAutoImports';
 import {createHash} from 'node:crypto';
 

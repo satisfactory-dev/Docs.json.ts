@@ -19,7 +19,7 @@ import {
 import {
 	TypeNodeGeneration,
 	TypeNodeGenerationResult,
-} from '../TypeNodeGeneration';
+} from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 
 export const target_files = {
 	Texture2D: 'common/unions.ts',

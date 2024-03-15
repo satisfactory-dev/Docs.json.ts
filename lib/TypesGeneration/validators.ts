@@ -30,7 +30,7 @@ import {
 import {
 	TypeNodeGeneration,
 	TypeNodeGenerationResult,
-} from '../TypeNodeGeneration';
+} from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 import {UnrealEngineString_regex} from '../DocsValidation';
 
 export const target_files = {

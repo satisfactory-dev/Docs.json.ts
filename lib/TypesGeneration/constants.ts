@@ -9,7 +9,7 @@ import {
 import {
 	TypeNodeGeneration,
 	TypeNodeGenerationResult,
-} from '../TypeNodeGeneration';
+} from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 
 export const target_files = {
 	'empty-object': 'common/constants.ts',

@@ -6,7 +6,7 @@ import {
 	PartialMatchError,
 	PropertyMatchFailure,
 	UnexpectedlyUnknownNoMatchError,
-} from './TypeNodeGeneration';
+} from './SchemaBasedResultsMatching/TypeNodeGeneration';
 import {array_string_schema} from './TypesGeneration/json_schema_types';
 
 export class GenerationResult<T> {

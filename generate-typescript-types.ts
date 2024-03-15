@@ -12,7 +12,7 @@ import {
 	OneOfOrAnyOfNoMatchError,
 	PartialMatchError,
 	PropertyMatchFailure,
-} from './lib/TypeNodeGeneration';
+} from './lib/SchemaBasedResultsMatching/TypeNodeGeneration';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 

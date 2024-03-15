@@ -7,7 +7,7 @@ import {
 	TypeNodeGeneration,
 	TypeNodeGenerationMatcher,
 	TypeNodeGenerationResult,
-} from '../../TypeNodeGeneration';
+} from '../../SchemaBasedResultsMatching/TypeNodeGeneration';
 import ts from 'typescript';
 import {import_these_later} from '../../TypesGeneration';
 import {basename, dirname} from 'node:path';

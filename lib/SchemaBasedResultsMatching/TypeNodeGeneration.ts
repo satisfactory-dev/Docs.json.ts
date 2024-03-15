@@ -8,8 +8,8 @@ import ts, {
 import {
 	import_these_later,
 	import_these_somewhere_later,
-} from './TypesGeneration';
-import {array_string_schema_type} from './TypesGeneration/arrays';
+} from '../TypesGeneration';
+import {array_string_schema_type} from '../TypesGeneration/arrays';
 import {
 	adjust_class_name,
 	computed_property_name_or_undefined,
@@ -21,7 +21,7 @@ import {
 	create_this_assignment,
 	needs_element_access,
 	property_name_or_computed,
-} from './TsFactoryWrapper';
+} from '../TsFactoryWrapper';
 import {
 	array_match_type,
 	DataType,
@@ -29,7 +29,7 @@ import {
 	ResultGeneration,
 	ResultGenerationMatcher,
 	ResultGenerationMatchers,
-} from './SchemaBasedResultsMatching';
+} from '../SchemaBasedResultsMatching';
 
 export class TypeNodeGenerationResult extends GenerationResult<ts.TypeNode> {
 	readonly import_these_somewhere_later: import_these_somewhere_later;
