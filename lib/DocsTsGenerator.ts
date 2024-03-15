@@ -114,6 +114,13 @@ export type generation_result = {
 	files: {[key: string]: ts.Node[]};
 };
 
+type DocsDataItem = {
+	NativeClass: string;
+	Classes: ({[key: string]: any[]|string} & {ClassName: string})[];
+};
+
+export type DocsData = [DocsDataItem, ...DocsDataItem[]];
+
 export class DocsTsGenerator {
 	private readonly cache_path: string | undefined;
 	private readonly docs_path: string | object[];
@@ -178,16 +185,7 @@ export class DocsTsGenerator {
 	}
 
 	private async validate<
-		T extends [
-			{
-				NativeClass: string;
-				Classes: {ClassName: string}[];
-			},
-			...{
-				NativeClass: string;
-				Classes: {ClassName: string}[];
-			}[],
-		],
+		T extends DocsData,
 	>(json: any, schema: {$id: 'update8.schema.json'}): Promise<T> {
 		/* unfortunately this code doesn't work because of nested ajv usage :(
 		if (this.cache_path) {
@@ -274,6 +272,13 @@ export class DocsTsGenerator {
 				$id: 'update8.schema.json';
 			}
 		);
+	}
+
+	/**
+	 * @deprecated Provided only as a temporary measure due to the current poor performance of validation
+	 */
+	async unsafe_get<T extends DocsData = DocsData>() : Promise<T> {
+		return this.load();
 	}
 
 	/**

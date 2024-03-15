@@ -1,5 +1,5 @@
 import {basename, dirname} from 'node:path';
-import ts, {TypeLiteralNode} from 'typescript';
+import ts from 'typescript';
 import Ajv from 'ajv/dist/2020';
 
 import {
@@ -27,7 +27,6 @@ import {
 	create_this_assignment,
 	create_type,
 	create_union,
-	create_UnrealEngineString_reference_type,
 	createClass,
 	createClass__members__with_auto_constructor,
 	createProperty,
@@ -36,7 +35,6 @@ import {
 	possibly_create_lazy_union,
 	supported_modifiers,
 } from '../TsFactoryWrapper';
-import {extract_UnrealEngineString} from '../DocsValidation';
 import {import_these_later} from '../TypesGeneration';
 
 import schema from '../../schema/update8.schema.json' assert {type: 'json'};
@@ -868,10 +866,9 @@ export class Update8TypeNodeGeneration {
 	}
 
 	private populate_checked_and_filenames(
-		filenames: {[key: string]: string},
+		filenames: {[p: string]: string},
 		checked: string[],
 		ref: string,
-		NativeClass: NativeClass
 	) {
 		if (checked.includes(ref)) {
 			return;
@@ -906,31 +903,16 @@ export class Update8TypeNodeGeneration {
 		const {items} = Classes;
 		if ('object' === typeof items) {
 			if ('$ref' in items) {
-				this.populate_checked_and_filenames(
-					filenames,
-					checked,
-					items['$ref'],
-					NativeClass
-				);
+				this.populate_checked_and_filenames(filenames, checked, items['$ref']);
 			} else if ('oneOf' in items) {
 				const {oneOf} = items;
 				for (const entry of oneOf) {
-					this.populate_checked_and_filenames(
-						filenames,
-						checked,
-						entry['$ref'],
-						NativeClass
-					);
+					this.populate_checked_and_filenames(filenames, checked, entry['$ref']);
 				}
 			} else if ('anyOf' in items) {
 				const {anyOf} = items;
 				for (const entry of anyOf) {
-					this.populate_checked_and_filenames(
-						filenames,
-						checked,
-						entry['$ref'],
-						NativeClass
-					);
+					this.populate_checked_and_filenames(filenames, checked, entry['$ref']);
 				}
 			}
 		}
@@ -938,12 +920,7 @@ export class Update8TypeNodeGeneration {
 		if ('prefixItems' in Classes) {
 			const {prefixItems} = Classes;
 			for (const entry of prefixItems) {
-				this.populate_checked_and_filenames(
-					filenames,
-					checked,
-					entry['$ref'],
-					NativeClass
-				);
+				this.populate_checked_and_filenames(filenames, checked, entry['$ref']);
 			}
 		}
 	}
