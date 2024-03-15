@@ -8,7 +8,7 @@ import {
 import {
 	TypeNodeGeneration,
 	TypeNodeGenerationResult,
-} from '../TypeNodeGeneration';
+} from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 
 export const target_files = Object.entries({
 	'common/prefixes.ts': ['Texture2D--basic'],

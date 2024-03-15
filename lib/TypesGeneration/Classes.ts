@@ -18,7 +18,7 @@ import {
 import {
 	TypeNodeGeneration,
 	TypeNodeGenerationResult,
-} from '../TypeNodeGeneration';
+} from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 import {UnrealEngineString_type} from './validators';
 
 declare type supported_base_classes_union =

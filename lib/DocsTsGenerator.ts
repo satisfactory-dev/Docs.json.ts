@@ -74,7 +74,7 @@ import {
 	type_node_generators as aliases_type_node_generators,
 } from './TypesGeneration/aliases';
 import {is_ref, Update8TypeNodeGeneration} from './Schemas/Update8';
-import {TypeNodeGenerationMatcher} from './TypeNodeGeneration';
+import {TypeNodeGenerationMatcher} from './SchemaBasedResultsMatching/TypeNodeGeneration';
 import {DocsTsAutoImports} from './DocsTsAutoImports';
 import {createHash} from 'node:crypto';
 
@@ -113,6 +113,13 @@ export type generation_result = {
 	};
 	files: {[key: string]: ts.Node[]};
 };
+
+type DocsDataItem = {
+	NativeClass: string;
+	Classes: ({[key: string]: any[] | string} & {ClassName: string})[];
+};
+
+export type DocsData = [DocsDataItem, ...DocsDataItem[]];
 
 export class DocsTsGenerator {
 	private readonly cache_path: string | undefined;
@@ -177,18 +184,10 @@ export class DocsTsGenerator {
 		return this.docs;
 	}
 
-	private async validate<
-		T extends [
-			{
-				NativeClass: string;
-				Classes: {ClassName: string}[];
-			},
-			...{
-				NativeClass: string;
-				Classes: {ClassName: string}[];
-			}[],
-		],
-	>(json: any, schema: {$id: 'update8.schema.json'}): Promise<T> {
+	private async validate<T extends DocsData>(
+		json: any,
+		schema: {$id: 'update8.schema.json'}
+	): Promise<T> {
 		/* unfortunately this code doesn't work because of nested ajv usage :(
 		if (this.cache_path) {
 			const file_sha512 = createHash('sha512');
@@ -274,6 +273,13 @@ export class DocsTsGenerator {
 				$id: 'update8.schema.json';
 			}
 		);
+	}
+
+	/**
+	 * @deprecated Provided only as a temporary measure due to the current poor performance of validation
+	 */
+	async unsafe_get<T extends DocsData = DocsData>(): Promise<T> {
+		return this.load();
 	}
 
 	/**

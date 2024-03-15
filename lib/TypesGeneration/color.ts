@@ -15,7 +15,7 @@ import {
 import {
 	TypeNodeGeneration,
 	TypeNodeGenerationResult,
-} from '../TypeNodeGeneration';
+} from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 
 export const target_files = {
 	'color--base': 'common/color.ts',

@@ -8,7 +8,7 @@ import {
 import {
 	TypeNodeGeneration,
 	TypeNodeGenerationResult,
-} from '../TypeNodeGeneration';
+} from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 import ts from 'typescript';
 
 export const target_files = {

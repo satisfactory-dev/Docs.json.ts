@@ -13,7 +13,7 @@ import {schema as const_schema} from './constants';
 import {
 	TypeNodeGeneration,
 	TypeNodeGenerationResult,
-} from '../TypeNodeGeneration';
+} from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 
 export const target_files = {
 	boolean: 'common/enum.ts',
