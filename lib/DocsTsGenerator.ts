@@ -126,6 +126,15 @@ export class DocsTsGenerator {
 	private readonly docs_path: string | object[];
 	private docs: object[] | undefined;
 
+	static readonly PERF_START_LOADING_JSON = 'Start Loading Docs.json';
+	static readonly PERF_EARLY_RETURN = 'Early Return of Docs.json';
+	static readonly PERF_FAILURE = 'Failure to load Docs.json';
+	static readonly PERF_FILE_READ = 'Docs.json contents read';
+	static readonly PERF_FILE_PARSED = 'Docs.json contents parsed';
+	static readonly PERF_VALIDATION_STARTED = 'Docs.json validation started';
+	static readonly PERF_VALIDATION_COMPILED = 'Docs.json validation compiled';
+	static readonly PERF_VALIDATION_FINISHED = 'Docs.json validation finished';
+
 	constructor({
 		docs_path, // raw JSON or path to UTF-16LE encoded Docs.json
 		cache_path = undefined, // optional cache folder path for cacheable resources
@@ -141,6 +150,10 @@ export class DocsTsGenerator {
 		const file = await readFile(filepath, {
 			encoding: 'utf-16le',
 		});
+		performance.measure(
+			DocsTsGenerator.PERF_FILE_READ,
+			DocsTsGenerator.PERF_START_LOADING_JSON
+		);
 
 		const utf8 = Buffer.from(file).toString('utf-8');
 
@@ -149,34 +162,70 @@ export class DocsTsGenerator {
 
 	private async load(): Promise<any> {
 		if (undefined === this.docs) {
+			performance.mark(DocsTsGenerator.PERF_START_LOADING_JSON);
 			if ('string' !== typeof this.docs_path) {
+				performance.measure(
+					DocsTsGenerator.PERF_EARLY_RETURN,
+					DocsTsGenerator.PERF_START_LOADING_JSON
+				);
 				return this.docs_path;
 			} else if (!this.docs_path.endsWith('.json')) {
+				performance.measure(
+					DocsTsGenerator.PERF_FAILURE,
+					DocsTsGenerator.PERF_START_LOADING_JSON
+				);
 				throw new Error('Probably not a JSON file');
 			} else {
-				if (this.cache_path) {
-					const utf8_filename = basename(this.docs_path).replace(
-						/\.json$/,
-						'.utf8.json'
-					);
-					const utf8_filepath = `${this.cache_path}/${utf8_filename}`;
+				try {
+					if (this.cache_path) {
+						const utf8_filename = basename(this.docs_path).replace(
+							/\.json$/,
+							'.utf8.json'
+						);
+						const utf8_filepath = `${this.cache_path}/${utf8_filename}`;
 
-					if (existsSync(utf8_filepath)) {
-						this.docs = JSON.parse(
-							(await readFile(utf8_filepath)).toString()
+						if (existsSync(utf8_filepath)) {
+							const file_contents =
+								await readFile(utf8_filepath);
+							performance.measure(
+								DocsTsGenerator.PERF_FILE_READ,
+								DocsTsGenerator.PERF_START_LOADING_JSON
+							);
+							this.docs = JSON.parse(file_contents.toString());
+							performance.measure(
+								DocsTsGenerator.PERF_FILE_PARSED,
+								DocsTsGenerator.PERF_START_LOADING_JSON
+							);
+						} else {
+							const json = await this.load_from_file(
+								this.docs_path
+							);
+							performance.measure(
+								DocsTsGenerator.PERF_FILE_PARSED,
+								DocsTsGenerator.PERF_START_LOADING_JSON
+							);
+
+							await writeFile(
+								utf8_filepath,
+								JSON.stringify(json, null, '\t') + '\n'
+							);
+
+							this.docs = json;
+						}
+					} else {
+						this.docs = await this.load_from_file(this.docs_path);
+						performance.measure(
+							DocsTsGenerator.PERF_FILE_PARSED,
+							DocsTsGenerator.PERF_START_LOADING_JSON
 						);
 					}
-
-					const json = await this.load_from_file(this.docs_path);
-
-					await writeFile(
-						utf8_filepath,
-						JSON.stringify(json, null, '\t') + '\n'
+				} catch (err) {
+					performance.measure(
+						DocsTsGenerator.PERF_FAILURE,
+						DocsTsGenerator.PERF_START_LOADING_JSON
 					);
 
-					return json;
-				} else {
-					return await this.load_from_file(this.docs_path);
+					throw err;
 				}
 			}
 		}
@@ -188,6 +237,7 @@ export class DocsTsGenerator {
 		json: any,
 		schema: {$id: 'update8.schema.json'}
 	): Promise<T> {
+		performance.mark(DocsTsGenerator.PERF_VALIDATION_STARTED);
 		/* unfortunately this code doesn't work because of nested ajv usage :(
 		if (this.cache_path) {
 			const file_sha512 = createHash('sha512');
@@ -254,8 +304,18 @@ export class DocsTsGenerator {
 		});
 
 		const validateDocs = default_config.ajv.compile<T>(schema);
+		performance.measure(
+			DocsTsGenerator.PERF_VALIDATION_COMPILED,
+			DocsTsGenerator.PERF_VALIDATION_STARTED
+		);
 
-		if (!validateDocs(json)) {
+		const result = validateDocs(json);
+		performance.measure(
+			DocsTsGenerator.PERF_VALIDATION_FINISHED,
+			DocsTsGenerator.PERF_VALIDATION_STARTED
+		);
+
+		if (!result) {
 			throw new ValidationError(
 				'Argument 1 failed to validate against the Update 8 JSON Schema',
 				validateDocs.errors,

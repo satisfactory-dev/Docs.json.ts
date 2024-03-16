@@ -273,7 +273,9 @@ export function object_string(
 		return false;
 	}
 
+	performance.mark('object_string validation');
 	const faux = string_to_object(data);
+	performance.measure('object_string parsing', 'object_string validation');
 
 	const inner_validate = default_config.ajv.compile(
 		Object.assign({}, schema, {
@@ -282,7 +284,14 @@ export function object_string(
 		})
 	);
 
-	return inner_validate(faux);
+	performance.mark('object_string ajv validation');
+	const result = inner_validate(faux);
+	performance.measure(
+		'object_string ajv validation',
+		'object_string validation'
+	);
+
+	return result;
 }
 
 export const UnrealEngineString_regex = /^([^']+)'(?:"([^"]+)"|([^"]+))'$/;
@@ -321,12 +330,17 @@ export function UnrealEngineString(
 	),
 	data: string
 ) {
+	performance.mark('UnrealEngineString validation');
 	let match: {prefix: string; value: string};
 
 	try {
 		match = extract_UnrealEngineString(data);
 	} catch (err) {
 		if (err instanceof NotAnUnrealEngineString) {
+			performance.measure(
+				'UnrealEngineString early exit',
+				'UnrealEngineString validation'
+			);
 			return false;
 		}
 
@@ -357,7 +371,14 @@ export function UnrealEngineString(
 		pattern,
 	});
 
-	return inner_validate(match.value);
+	performance.mark('UnrealEngineString ajv validation');
+	const result = inner_validate(match.value);
+	performance.measure(
+		'UnrealEngineString ajv validation',
+		'UnrealEngineString validation'
+	);
+
+	return result;
 }
 
 export type array_string_schema_type = {
@@ -368,7 +389,9 @@ export type array_string_schema_type = {
 } & ({items: object} | {items: false});
 
 export function array_string(schema: array_string_schema_type, data: string) {
+	performance.mark('array_string validation');
 	const array_of_things = string_to_array(data);
+	performance.measure('array_string parsing', 'array_string validation');
 
 	if (false === array_of_things) {
 		return false;
@@ -381,7 +404,14 @@ export function array_string(schema: array_string_schema_type, data: string) {
 		})
 	);
 
-	return inner_validate(array_of_things);
+	performance.mark('array_string ajv validation');
+	const result = inner_validate(array_of_things);
+	performance.measure(
+		'array_string ajv validation',
+		'array_string validation'
+	);
+
+	return result;
 }
 
 const already_configured = new WeakSet();
