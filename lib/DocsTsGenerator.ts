@@ -80,7 +80,7 @@ import {createHash} from 'node:crypto';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-class ValidationError extends Error {
+export class ValidationError extends Error {
 	readonly errors: ErrorObject[];
 	readonly json: any;
 

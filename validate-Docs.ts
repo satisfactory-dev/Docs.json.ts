@@ -1,6 +1,6 @@
 import {dirname} from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {DocsTsGenerator} from './lib/DocsTsGenerator';
+import {DocsTsGenerator, ValidationError} from './lib/DocsTsGenerator';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const generator = new DocsTsGenerator({
@@ -30,4 +30,16 @@ const obs = new PerformanceObserver((list, observer) => {
 });
 obs.observe({entryTypes: ['measure'], buffered: true});
 
-await generator.get();
+try {
+	await generator.get();
+} catch (err) {
+	if (err instanceof ValidationError) {
+		console.error(err.stack);
+
+		for (const error of err.errors) {
+			process.stdout.write(JSON.stringify(error, null, '\t') + '\n');
+		}
+	} else {
+		throw err;
+	}
+}
