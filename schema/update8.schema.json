@@ -6075,15 +6075,15 @@
 			}
 		},
 		"EditorCurveData--item": {
-							"DefaultValue": {
-								"$ref": "#/definitions/decimal-string"
-							},
-							"PreInfinityExtrap": {
-								"$ref": "#/definitions/InfinityExtrap"
-							},
-							"PostInfinityExtrap": {
-								"$ref": "#/definitions/InfinityExtrap"
-							}
+			"DefaultValue": {
+				"$ref": "#/definitions/decimal-string"
+			},
+			"PreInfinityExtrap": {
+				"$ref": "#/definitions/InfinityExtrap"
+			},
+			"PostInfinityExtrap": {
+				"$ref": "#/definitions/InfinityExtrap"
+			}
 		},
 		"EditorCurveData": {
 			"oneOf": [

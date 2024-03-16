@@ -497,42 +497,42 @@ export function configure_ajv(ajv: Ajv): void {
 		required: ['$ref'],
 		additionalProperties: false,
 		properties: {
-						$ref: {
-							oneOf: [
-								{
-									type: 'string',
-									const: '#/definitions/EditorCurveData--item'
-								},
-								{
-									type: 'string',
-									const: '#/definitions/InfinityExtrap',
-								},
-								{
-									type: 'string',
-									const: '#/definitions/empty-object',
-								},
-								{
-									type: 'string',
-									const: '#/definitions/decimal-string',
-								},
-								{
-									type: 'string',
-									const: '#/definitions/decimal-string--signed',
-								},
-								{
-									type: 'string',
-									const: '#/definitions/integer-string',
-								},
-								{
-									type: 'string',
-									const: '#/definitions/integer-string--signed',
-								},
-								{
-									type: 'string',
-									const: '#/definitions/boolean',
-								},
-							],
-						},
+			$ref: {
+				oneOf: [
+					{
+						type: 'string',
+						const: '#/definitions/EditorCurveData--item'
+					},
+					{
+						type: 'string',
+						const: '#/definitions/InfinityExtrap',
+					},
+					{
+						type: 'string',
+						const: '#/definitions/empty-object',
+					},
+					{
+						type: 'string',
+						const: '#/definitions/decimal-string',
+					},
+					{
+						type: 'string',
+						const: '#/definitions/decimal-string--signed',
+					},
+					{
+						type: 'string',
+						const: '#/definitions/integer-string',
+					},
+					{
+						type: 'string',
+						const: '#/definitions/integer-string--signed',
+					},
+					{
+						type: 'string',
+						const: '#/definitions/boolean',
+					},
+				],
+			},
 		},
 	};
 
@@ -605,7 +605,6 @@ export function configure_ajv(ajv: Ajv): void {
 	) : string {
 		return `\\(${Object.entries(data).map(
 			(entry) => {
-
 				if (is_$ref_object(entry[1])) {
 					return typed_object_string_$ref_to_regex(
 						entry[0],
