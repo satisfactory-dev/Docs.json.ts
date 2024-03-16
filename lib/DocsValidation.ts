@@ -2,12 +2,11 @@ import Ajv, {_, KeywordCxt} from 'ajv/dist/2020';
 
 import schema from '../schema/update8.schema.json' assert {type: 'json'};
 import {
-	UnrealEngineStringReference_general_regex,
+	is_UnrealEngineStringReference_value,
+	UnrealEngineStringReference_general_regex, UnrealEngineStringReference_inner_schema,
 	UnrealEngineStringReference_left_default,
 	UnrealEngineStringReference_schema,
 	UnrealEngineStringReference_type,
-	vector_object_string_schema,
-	vector_object_string_type,
 } from './TypesGeneration/validators';
 
 const {definitions} = schema;
@@ -465,46 +464,45 @@ export function configure_ajv(ajv: Ajv): void {
 
 	const typed_object_string_property_regex = '^[A-Za-z][A-Za-z]*$';
 
-	type typed_object_string_type<
-		Properties extends {
-			[key: string]:
-				| '#/definitions/InfinityExtrap'
-				| '#/definitions/empty-object'
-				| '#/definitions/decimal-string'
-				| '#/definitions/decimal-string--signed'
-				| '#/definitions/integer-string'
-				| '#/definitions/integer-string--signed'
-				| '#/definitions/boolean';
-		} = {
-			[key: string]:
-				| '#/definitions/InfinityExtrap'
-				| '#/definitions/empty-object'
-				| '#/definitions/decimal-string'
-				| '#/definitions/decimal-string--signed'
-				| '#/definitions/integer-string'
-				| '#/definitions/integer-string--signed'
-				| '#/definitions/boolean';
-		},
-	> = {
-		[key in keyof Properties]: {
-			$ref: Properties[key];
-		};
+	const type_object_string_$ref_supported = {
+		'#/definitions/EditorCurveData--item': true,
+		'#/definitions/InfinityExtrap': true,
+		'#/definitions/empty-object': true,
+		'#/definitions/decimal-string': true,
+		'#/definitions/decimal-string--signed': true,
+		'#/definitions/integer-string': true,
+		'#/definitions/integer-string--signed': true,
+		'#/definitions/boolean': true,
+	};
+	const type_object_string_$ref_supported_array = Object.keys(
+		type_object_string_$ref_supported
+	) as (keyof typeof type_object_string_$ref_supported)[];
+
+	type type_object_string_$ref_choices = {
+		$ref: keyof typeof type_object_string_$ref_supported
 	};
 
-	ajv.addKeyword({
-		keyword: 'typed_object_string',
-		type: 'string',
-		metaSchema: {
-			type: 'object',
-			additionalProperties: false,
-			patternProperties: {
-				[typed_object_string_property_regex]: {
-					type: 'object',
-					required: ['$ref'],
-					additionalProperties: false,
-					properties: {
+	type typed_object_string_$ref_only = {
+		[key: string]: type_object_string_$ref_choices
+	};
+
+	type typed_object_string_type = {
+		[key: string]:
+			| type_object_string_$ref_choices
+			| typed_object_string_$ref_only
+	};
+
+	const typed_object_string_$ref_schema = {
+		type: 'object',
+		required: ['$ref'],
+		additionalProperties: false,
+		properties: {
 						$ref: {
 							oneOf: [
+								{
+									type: 'string',
+									const: '#/definitions/EditorCurveData--item'
+								},
 								{
 									type: 'string',
 									const: '#/definitions/InfinityExtrap',
@@ -535,39 +533,145 @@ export function configure_ajv(ajv: Ajv): void {
 								},
 							],
 						},
-					},
-				},
-			},
+		},
+	};
+
+	function typed_object_string_$ref_to_regex(
+		property:string,
+		value:type_object_string_$ref_choices
+	) : string {
+		const {$ref} = value;
+
+		let value_regex = '(?:True|False)';
+
+		if ('#/definitions/InfinityExtrap' === $ref) {
+			value_regex = 'RCCE_Constant';
+		} else if ('#/definitions/empty-object' === $ref) {
+			value_regex = '\\(\\)';
+		} else if ('#/definitions/EditorCurveData--item' === $ref) {
+			if (!is_$ref_object_dictionary(schema.definitions['EditorCurveData--item'])) {
+				throw new Error(`${$ref} not supported!`);
+			}
+
+			value_regex = typed_object_string_property_to_regex(
+				schema.definitions['EditorCurveData--item']
+			);
+		} else if ('#/definitions/boolean' !== $ref) {
+			if ($ref === undefined) {
+				console.log(property, value);
+
+				throw new Error('foo');
+			}
+			if ($ref.startsWith('#/definitions/decimal-string')) {
+				value_regex = '\\d+\\.\\d+';
+			} else {
+				value_regex = '\\d+';
+			}
+
+			if ($ref.endsWith('--signed')) {
+				value_regex = `-?${value_regex}`;
+			}
+		}
+
+		return `${property}=${value_regex}`;
+	}
+
+	function keys_are_$ref_only(keys:string[]) : keys is ['$ref']
+	{
+		return 1 === keys.length && keys.includes('$ref');
+	}
+
+	function is_$ref_object(maybe: {[key: string]: any}) : maybe is type_object_string_$ref_choices
+	{
+		return (
+			keys_are_$ref_only(Object.keys(maybe))
+			&& type_object_string_$ref_supported_array.includes(maybe.$ref)
+		);
+	}
+
+	function is_$ref_object_dictionary(maybe: {[key: string]: {[key: string]: string}}) : maybe is {[key: string]: type_object_string_$ref_choices}
+	{
+		for (const sub_object of Object.values(maybe)) {
+			if (!is_$ref_object(sub_object)) {
+				return false;
+			}
+		}
+
+		return 0 !== Object.keys(maybe).length;
+	}
+
+	function typed_object_string_property_to_regex(
+		data:typed_object_string_type
+	) : string {
+		return `\\(${Object.entries(data).map(
+			(entry) => {
+
+				if (is_$ref_object(entry[1])) {
+					return typed_object_string_$ref_to_regex(
+						entry[0],
+						entry[1]
+					);
+				}
+
+				if (
+					'UnrealEngineStringReference--inner' in entry[1]
+					&& is_UnrealEngineStringReference_value(
+						entry[1]['UnrealEngineStringReference--inner']
+					)
+				) {
+					return `${entry[0]}=${
+						UnrealEngineStringReference_macro_generator(true)(
+							entry[1]['UnrealEngineStringReference--inner']
+						).pattern
+					}`;
+				} else if ('UnrealEngineStringReference--inner' in entry[1]) {
+					console.error(entry[0], entry[1]);
+					throw new Error(
+						'Not a UnrealEngineStringReference--inner'
+					);
+				}
+
+				return `${entry[0]}=\\(${Object.entries(entry[1]).map(
+					(sub_entry) => {
+						const [sub_property, sub_value] = sub_entry;
+
+						return typed_object_string_$ref_to_regex(
+							sub_property,
+							sub_value
+						);
+					}
+				).join(',')}\\)`;
+			}
+		).join(',')}\\)`;
+	}
+
+	ajv.addKeyword({
+		keyword: 'typed_object_string',
+		type: 'string',
+		metaSchema: {
+			type: 'object',
+			additionalProperties: false,
+			definitions: UnrealEngineStringReference_schema.definitions,
+			patternProperties: {
+				[typed_object_string_property_regex]: {
+					oneOf: [
+						typed_object_string_$ref_schema,
+						{
+							type: 'object',
+							additionalProperties: false,
+							patternProperties: {
+								[typed_object_string_property_regex]: typed_object_string_$ref_schema
+							}
+						},
+						UnrealEngineStringReference_inner_schema,
+					]
+				}
+			}
 		},
 		macro: (schema: typed_object_string_type) => {
-			const keys = Object.keys(schema) as [string, ...string[]];
-
-			const regex = `\\(${keys
-				.map((property) => {
-					let value_regex = '(?:True|False)';
-					const {$ref} = schema[property];
-
-					if ('#/definitions/InfinityExtrap' === $ref) {
-						value_regex = 'RCCE_Constant';
-					} else if ('#/definitions/empty-object' === $ref) {
-						value_regex = '\\(\\)';
-					} else if ('#/definitions/boolean' !== $ref) {
-						if ($ref.startsWith('#/definitions/decimal-string')) {
-							value_regex = '\\d+\\.\\d+';
-						} else {
-							value_regex = '\\d+';
-						}
-
-						if ($ref.endsWith('--signed')) {
-							value_regex = `-?${value_regex}`;
-						}
-					}
-
-					return `${property}=${value_regex}`;
-				})
-				.join(',')}\\)`;
-
-			const pattern = `^${regex}$`;
+			const pattern = `^${
+				typed_object_string_property_to_regex(schema)
+			}$`;
 
 			return {pattern};
 		},
@@ -641,11 +745,9 @@ export function configure_ajv(ajv: Ajv): void {
 		*/
 	});
 
-	ajv.addKeyword({
-		keyword: 'UnrealEngineStringReference',
-		type: 'string',
-		metaSchema: UnrealEngineStringReference_schema,
-		macro: (data_from_schema: UnrealEngineStringReference_type) => {
+	function UnrealEngineStringReference_macro_generator(inner:boolean)
+	{
+		return (data_from_schema: UnrealEngineStringReference_type) => {
 			const data: Exclude<typeof data_from_schema, true> | {} =
 				true === data_from_schema ? {} : data_from_schema;
 			const left_value = (
@@ -657,31 +759,39 @@ export function configure_ajv(ajv: Ajv): void {
 			).join('|');
 			const right_value =
 				'right' in data
-					? (data.right instanceof Array
+					? `(?:${(data.right instanceof Array
 							? data.right
 							: [
-									'string' === typeof data.right
-										? data.right
-										: `(?:${(data.right
-												.starts_with instanceof Array
-												? data.right.starts_with
-												: [data.right.starts_with]
-											)
-												.map(
-													(starts_with) =>
-														starts_with +
-														'(?:[A-Z][A-Za-z0-9_.]+/)*[A-Z][A-Za-z_.0-9-]+(?::[A-Z][A-Za-z0-9]+)?'
-												)
-												.join('|')})`,
-								]
-						).join('|')
+								'string' === typeof data.right
+									? data.right
+									: `(?:${(data.right
+											.starts_with instanceof Array
+											? data.right.starts_with
+											: [data.right.starts_with]
+									)
+										.map(
+											(starts_with) =>
+												starts_with +
+												'(?:[A-Z][A-Za-z0-9_.]+/)*[A-Z][A-Za-z_.0-9-]+(?::[A-Z][A-Za-z0-9]+)?'
+										)
+										.join('|')})`,
+							]
+					).join('|')})`
 					: UnrealEngineStringReference_general_regex;
 
+			const regex = `(?:(?:${left_value})'(?:${right_value}|"${right_value}")')`;
+
 			return {
-				type: 'string',
-				pattern: `^(?:${left_value})'(?:${right_value}|"${right_value}")'$`,
+				pattern: inner ? regex : `^${regex}$`,
 			};
-		},
+		};
+	}
+
+	ajv.addKeyword({
+		keyword: 'UnrealEngineStringReference',
+		type: 'string',
+		metaSchema: UnrealEngineStringReference_schema,
+		macro: UnrealEngineStringReference_macro_generator(false),
 	});
 
 	ajv.addKeyword({

@@ -6067,21 +6067,14 @@
 				"01 - Default"
 			]
 		},
-		"EditorCurveData": {
+		"EditorCurveData--only": {
 			"type": "string",
 			"minLength": 1,
-			"object_string": {
-				"type": "object",
-				"required": ["EditorCurveData"],
-				"properties": {
-					"EditorCurveData": {
-						"type": "object",
-						"required": [
-							"DefaultValue",
-							"PreInfinityExtrap",
-							"PostInfinityExtrap"
-						],
-						"properties": {
+			"typed_object_string": {
+				"EditorCurveData": {"$ref": "#/definitions/EditorCurveData--item"}
+			}
+		},
+		"EditorCurveData--item": {
 							"DefaultValue": {
 								"$ref": "#/definitions/decimal-string"
 							},
@@ -6091,10 +6084,29 @@
 							"PostInfinityExtrap": {
 								"$ref": "#/definitions/InfinityExtrap"
 							}
+		},
+		"EditorCurveData": {
+			"oneOf": [
+				{"$ref": "#/definitions/EditorCurveData--only"},
+				{
+					"type": "string",
+					"minLength": 1,
+					"typed_object_string": {
+						"EditorCurveData": {"$ref": "#/definitions/EditorCurveData--item"},
+						"ExternalCurve": {
+							"type": "string",
+							"minLength": 1,
+							"UnrealEngineStringReference--inner": {
+								"left": "/Script/Engine.CurveFloat",
+								"right": [
+									"/Game/FactoryGame/Resource/Parts/SpikedRebar/SpikedRebar_Falloff.SpikedRebar_Falloff",
+									"/Game/FactoryGame/Resource/Parts/CartridgeStandard/LinearDamageFalloff.LinearDamageFalloff"
+								]
+							}
 						}
 					}
 				}
-			}
+			]
 		},
 		"mDamageTypes": {
 			"type": "string",

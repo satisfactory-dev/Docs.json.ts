@@ -14,7 +14,7 @@ import {basename, dirname} from 'node:path';
 import {
 	adjust_class_name,
 	adjust_unrealengine_prefix,
-	adjust_unrealengine_value,
+	adjust_unrealengine_value, auto_constructor_property_types_from_generated_types_properties,
 	create_class_options,
 	create_lazy_union,
 	create_literal_node_from_value,
@@ -459,8 +459,7 @@ export class Update8TypeNodeGeneration {
 
 		if (
 			!check_required<EditorCurveData_required_expected>(
-				schema.definitions.EditorCurveData.object_string.properties
-					.EditorCurveData.required,
+				Object.keys(schema.definitions['EditorCurveData--item']),
 				EditorCurveData_required_expected
 			)
 		) {
@@ -470,8 +469,7 @@ export class Update8TypeNodeGeneration {
 		}
 		if (
 			!is_supported_properties_object(
-				schema.definitions.EditorCurveData.object_string.properties
-					.EditorCurveData.properties
+				schema.definitions['EditorCurveData--item']
 			)
 		) {
 			throw new Error('Unsupported refs found for EditorCurveData');
@@ -491,12 +489,12 @@ export class Update8TypeNodeGeneration {
 				>(
 					{
 						type: 'object',
-						required:
-							schema.definitions.EditorCurveData.object_string
-								.properties.EditorCurveData.required,
-						properties:
-							schema.definitions.EditorCurveData.object_string
-								.properties.EditorCurveData.properties,
+						required: [
+							'DefaultValue',
+							'PreInfinityExtrap',
+							'PostInfinityExtrap',
+						],
+						properties: schema.definitions['EditorCurveData--item'],
 					},
 					['public', 'readonly']
 				),
