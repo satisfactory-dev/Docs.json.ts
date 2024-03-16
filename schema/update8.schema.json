@@ -90,36 +90,36 @@
 			"type": "string",
 			"minLength": 1,
 			"typed_object_string": {
-					"B": {
-						"$ref": "#/definitions/integer-string"
-					},
-					"G": {
-						"$ref": "#/definitions/integer-string"
-					},
-					"R": {
-						"$ref": "#/definitions/integer-string"
-					},
-					"A": {
-						"$ref": "#/definitions/integer-string"
-					}
+				"B": {
+					"$ref": "#/definitions/integer-string"
+				},
+				"G": {
+					"$ref": "#/definitions/integer-string"
+				},
+				"R": {
+					"$ref": "#/definitions/integer-string"
+				},
+				"A": {
+					"$ref": "#/definitions/integer-string"
+				}
 			}
 		},
 		"color-decimal": {
 			"type": "string",
 			"minLength": 1,
 			"typed_object_string": {
-					"R": {
-						"$ref": "#/definitions/decimal-string"
-					},
-					"G": {
-						"$ref": "#/definitions/decimal-string"
-					},
-					"B": {
-						"$ref": "#/definitions/decimal-string"
-					},
-					"A": {
-						"$ref": "#/definitions/decimal-string"
-					}
+				"R": {
+					"$ref": "#/definitions/decimal-string"
+				},
+				"G": {
+					"$ref": "#/definitions/decimal-string"
+				},
+				"B": {
+					"$ref": "#/definitions/decimal-string"
+				},
+				"A": {
+					"$ref": "#/definitions/decimal-string"
+				}
 			}
 		},
 		"color-decimal--semi-native": {
@@ -153,15 +153,15 @@
 			"type": "string",
 			"minLength": 1,
 			"typed_object_string": {
-					"X": {
-						"$ref": "#/definitions/decimal-string--signed"
-					},
-					"Y": {
-						"$ref": "#/definitions/decimal-string--signed"
-					},
-					"Z": {
-						"$ref": "#/definitions/decimal-string--signed"
-					}
+				"X": {
+					"$ref": "#/definitions/decimal-string--signed"
+				},
+				"Y": {
+					"$ref": "#/definitions/decimal-string--signed"
+				},
+				"Z": {
+					"$ref": "#/definitions/decimal-string--signed"
+				}
 			}
 		},
 		"xyz--semi-native": {
@@ -183,24 +183,24 @@
 			"type": "string",
 			"minLength": 1,
 			"typed_object_string": {
-					"X": {
-						"$ref": "#/definitions/decimal-string--signed"
-					},
-					"Y": {
-						"$ref": "#/definitions/decimal-string--signed"
-					}
+				"X": {
+					"$ref": "#/definitions/decimal-string--signed"
+				},
+				"Y": {
+					"$ref": "#/definitions/decimal-string--signed"
+				}
 			}
 		},
 		"xy--integer": {
 			"type": "string",
 			"minLength": 1,
 			"typed_object_string": {
-					"X": {
-						"$ref": "#/definitions/integer-string"
-					},
-					"Y": {
-						"$ref": "#/definitions/integer-string"
-					}
+				"X": {
+					"$ref": "#/definitions/integer-string"
+				},
+				"Y": {
+					"$ref": "#/definitions/integer-string"
+				}
 			}
 		},
 		"xy--semi-native": {
@@ -237,30 +237,30 @@
 			"type": "string",
 			"minLength": 1,
 			"typed_object_string": {
-					"Pitch": {
-						"$ref": "#/definitions/decimal-string--signed"
-					},
-					"Yaw": {
-						"$ref": "#/definitions/decimal-string--signed"
-					},
-					"Roll": {
-						"$ref": "#/definitions/decimal-string--signed"
-					}
+				"Pitch": {
+					"$ref": "#/definitions/decimal-string--signed"
+				},
+				"Yaw": {
+					"$ref": "#/definitions/decimal-string--signed"
+				},
+				"Roll": {
+					"$ref": "#/definitions/decimal-string--signed"
+				}
 			}
 		},
 		"xyz--integer": {
 			"type": "string",
 			"minLength": 1,
 			"typed_object_string": {
-					"X": {
-						"$ref": "#/definitions/integer-string"
-					},
-					"Y": {
-						"$ref": "#/definitions/integer-string"
-					},
-					"Z": {
-						"$ref": "#/definitions/integer-string"
-					}
+				"X": {
+					"$ref": "#/definitions/integer-string"
+				},
+				"Y": {
+					"$ref": "#/definitions/integer-string"
+				},
+				"Z": {
+					"$ref": "#/definitions/integer-string"
+				}
 			}
 		},
 		"xyz-array": {
@@ -2677,18 +2677,18 @@
 				"mBlockVisualizationSplineDataSettings": {
 					"type": "string",
 					"typed_object_string": {
-							"StartTangentPrimitiveDataStartIndex": {
-								"$ref": "#/definitions/integer-string"
-							},
-							"EndPositionPrimitiveDataStartIndex": {
-								"$ref": "#/definitions/integer-string"
-							},
-							"EndTangentPrimitiveDataStartIndex": {
-								"$ref": "#/definitions/integer-string"
-							},
-							"InstanceScaleIndex": {
-								"$ref": "#/definitions/integer-string--signed"
-							}
+						"StartTangentPrimitiveDataStartIndex": {
+							"$ref": "#/definitions/integer-string"
+						},
+						"EndPositionPrimitiveDataStartIndex": {
+							"$ref": "#/definitions/integer-string"
+						},
+						"EndTangentPrimitiveDataStartIndex": {
+							"$ref": "#/definitions/integer-string"
+						},
+						"InstanceScaleIndex": {
+							"$ref": "#/definitions/integer-string--signed"
+						}
 					}
 				},
 				"mBlockVisualizationColorDataStartIndex": {
@@ -3869,105 +3869,105 @@
 					"type": "string",
 					"minLength": 1,
 					"typed_object_string": {
-							"Top": {
-								"$ref": "#/definitions/boolean"
-							},
-							"Bottom": {
-								"$ref": "#/definitions/boolean"
-							}
+						"Top": {
+							"$ref": "#/definitions/boolean"
+						},
+						"Bottom": {
+							"$ref": "#/definitions/boolean"
+						}
 					}
 				},
 				{
 					"type": "string",
 					"minLength": 1,
 					"typed_object_string": {
-							"Front": {
-								"$ref": "#/definitions/boolean"
-							},
-							"Bottom": {
-								"$ref": "#/definitions/boolean"
-							}
+						"Front": {
+							"$ref": "#/definitions/boolean"
+						},
+						"Bottom": {
+							"$ref": "#/definitions/boolean"
+						}
 					}
 				},
 				{
 					"type": "string",
 					"minLength": 1,
 					"typed_object_string": {
-							"Front": {
-								"$ref": "#/definitions/boolean"
-							},
-							"Right": {
-								"$ref": "#/definitions/boolean"
-							}
+						"Front": {
+							"$ref": "#/definitions/boolean"
+						},
+						"Right": {
+							"$ref": "#/definitions/boolean"
+						}
 					}
 				},
 				{
 					"type": "string",
 					"minLength": 1,
 					"typed_object_string": {
-							"Front": {
-								"$ref": "#/definitions/boolean"
-							},
-							"Top": {
-								"$ref": "#/definitions/boolean"
-							},
-							"Bottom": {
-								"$ref": "#/definitions/boolean"
-							}
+						"Front": {
+							"$ref": "#/definitions/boolean"
+						},
+						"Top": {
+							"$ref": "#/definitions/boolean"
+						},
+						"Bottom": {
+							"$ref": "#/definitions/boolean"
+						}
 					}
 				},
 				{
 					"type": "string",
 					"minLength": 1,
 					"typed_object_string": {
-							"Right": {
-								"$ref": "#/definitions/boolean"
-							},
-							"Left": {
-								"$ref": "#/definitions/boolean"
-							},
-							"Top": {
-								"$ref": "#/definitions/boolean"
-							},
-							"Bottom": {
-								"$ref": "#/definitions/boolean"
-							}
+						"Right": {
+							"$ref": "#/definitions/boolean"
+						},
+						"Left": {
+							"$ref": "#/definitions/boolean"
+						},
+						"Top": {
+							"$ref": "#/definitions/boolean"
+						},
+						"Bottom": {
+							"$ref": "#/definitions/boolean"
+						}
 					}
 				},
 				{
 					"type": "string",
 					"minLength": 1,
 					"typed_object_string": {
-							"Front": {
-								"$ref": "#/definitions/boolean"
-							},
-							"Left": {
-								"$ref": "#/definitions/boolean"
-							},
-							"Top": {
-								"$ref": "#/definitions/boolean"
-							},
-							"Bottom": {
-								"$ref": "#/definitions/boolean"
-							}
+						"Front": {
+							"$ref": "#/definitions/boolean"
+						},
+						"Left": {
+							"$ref": "#/definitions/boolean"
+						},
+						"Top": {
+							"$ref": "#/definitions/boolean"
+						},
+						"Bottom": {
+							"$ref": "#/definitions/boolean"
+						}
 					}
 				},
 				{
 					"type": "string",
 					"minLength": 1,
 					"typed_object_string": {
-							"Top": {
-								"$ref": "#/definitions/boolean"
-							}
+						"Top": {
+							"$ref": "#/definitions/boolean"
+						}
 					}
 				},
 				{
 					"type": "string",
 					"minLength": 1,
 					"typed_object_string": {
-							"Bottom": {
-								"$ref": "#/definitions/boolean"
-							}
+						"Bottom": {
+							"$ref": "#/definitions/boolean"
+						}
 					}
 				}
 			]
@@ -3991,18 +3991,18 @@
 					"type": "string",
 					"minLength": 1,
 					"typed_object_string": {
-							"Right": {
-								"$ref": "#/definitions/boolean"
-							},
-							"Left": {
-								"$ref": "#/definitions/boolean"
-							},
-							"Top": {
-								"$ref": "#/definitions/boolean"
-							},
-							"Bottom": {
-								"$ref": "#/definitions/boolean"
-							}
+						"Right": {
+							"$ref": "#/definitions/boolean"
+						},
+						"Left": {
+							"$ref": "#/definitions/boolean"
+						},
+						"Top": {
+							"$ref": "#/definitions/boolean"
+						},
+						"Bottom": {
+							"$ref": "#/definitions/boolean"
+						}
 					}
 				}
 			}
@@ -5170,12 +5170,12 @@
 					"type": "string",
 					"minLength": 1,
 					"typed_object_string": {
-							"Min": {
-								"$ref": "#/definitions/decimal-string"
-							},
-							"Max": {
-								"$ref": "#/definitions/decimal-string"
-							}
+						"Min": {
+							"$ref": "#/definitions/decimal-string"
+						},
+						"Max": {
+							"$ref": "#/definitions/decimal-string"
+						}
 					}
 				}
 			}
@@ -5372,9 +5372,9 @@
 			"type": "string",
 			"minLength": 1,
 			"typed_object_string": {
-					"DockForDuration": {
-						"$ref": "#/definitions/decimal-string"
-					}
+				"DockForDuration": {
+					"$ref": "#/definitions/decimal-string"
+				}
 			}
 		},
 		"FGBuildableTrainPlatformCargo--FGBuildableRailroadStation": {
@@ -5853,18 +5853,18 @@
 					"type": "string",
 					"minLength": 1,
 					"typed_object_string": {
-							"StartTangentPrimitiveDataStartIndex": {
-								"$ref": "#/definitions/integer-string"
-							},
-							"EndPositionPrimitiveDataStartIndex": {
-								"$ref": "#/definitions/integer-string"
-							},
-							"EndTangentPrimitiveDataStartIndex": {
-								"$ref": "#/definitions/integer-string"
-							},
-							"InstanceScaleIndex": {
-								"$ref": "#/definitions/integer-string--signed"
-							}
+						"StartTangentPrimitiveDataStartIndex": {
+							"$ref": "#/definitions/integer-string"
+						},
+						"EndPositionPrimitiveDataStartIndex": {
+							"$ref": "#/definitions/integer-string"
+						},
+						"EndTangentPrimitiveDataStartIndex": {
+							"$ref": "#/definitions/integer-string"
+						},
+						"InstanceScaleIndex": {
+							"$ref": "#/definitions/integer-string--signed"
+						}
 					}
 				},
 				"mNumArrows": {
@@ -5954,9 +5954,9 @@
 					"type": "string",
 					"minLength": 1,
 					"typed_object_string": {
-							"ItemState": {
-								"$ref": "#/definitions/empty-object"
-							}
+						"ItemState": {
+							"$ref": "#/definitions/empty-object"
+						}
 					}
 				},
 				"mItemToLastOutputMap": {
@@ -6315,9 +6315,9 @@
 					"type": "string",
 					"minLength": 1,
 					"typed_object_string": {
-							"bAllowTickOnDedicatedServer": {
-								"$ref": "#/definitions/boolean"
-							}
+						"bAllowTickOnDedicatedServer": {
+							"$ref": "#/definitions/boolean"
+						}
 					}
 				}
 			}
@@ -6448,12 +6448,12 @@
 					"type": "string",
 					"minLength": 1,
 					"typed_object_string": {
-							"Min": {
-								"$ref": "#/definitions/integer-string"
-							},
-							"Max": {
-								"$ref": "#/definitions/integer-string"
-							}
+						"Min": {
+							"$ref": "#/definitions/integer-string"
+						},
+						"Max": {
+							"$ref": "#/definitions/integer-string"
+						}
 					}
 				},
 				"mSpreadAngleDegrees": {
@@ -6981,9 +6981,9 @@
 			"type": "string",
 			"minLength": 1,
 			"typed_object_string": {
-					"Intensity": {
-						"$ref": "#/definitions/decimal-string"
-					}
+				"Intensity": {
+					"$ref": "#/definitions/decimal-string"
+				}
 			}
 		},
 		"FGBuildableLightsControlPanel": {

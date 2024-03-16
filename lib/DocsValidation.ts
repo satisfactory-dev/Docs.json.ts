@@ -474,7 +474,7 @@ export function configure_ajv(ajv: Ajv): void {
 				| '#/definitions/decimal-string--signed'
 				| '#/definitions/integer-string'
 				| '#/definitions/integer-string--signed'
-				| '#/definitions/boolean'
+				| '#/definitions/boolean';
 		} = {
 			[key: string]:
 				| '#/definitions/InfinityExtrap'
@@ -483,11 +483,11 @@ export function configure_ajv(ajv: Ajv): void {
 				| '#/definitions/decimal-string--signed'
 				| '#/definitions/integer-string'
 				| '#/definitions/integer-string--signed'
-				| '#/definitions/boolean'
+				| '#/definitions/boolean';
 		},
 	> = {
 		[key in keyof Properties]: {
-			$ref: Properties[key]
+			$ref: Properties[key];
 		};
 	};
 
@@ -533,40 +533,39 @@ export function configure_ajv(ajv: Ajv): void {
 									type: 'string',
 									const: '#/definitions/boolean',
 								},
-							]
-						}
+							],
+						},
 					},
 				},
 			},
 		},
-		macro: (schema:typed_object_string_type) => {
-			const keys = Object.keys(schema) as [
-				string,
-				...string[],
-			];
+		macro: (schema: typed_object_string_type) => {
+			const keys = Object.keys(schema) as [string, ...string[]];
 
-			const regex = `\\(${keys.map((property) => {
-				let value_regex = '(?:True|False)';
-				const {$ref} = schema[property];
+			const regex = `\\(${keys
+				.map((property) => {
+					let value_regex = '(?:True|False)';
+					const {$ref} = schema[property];
 
-				if ('#/definitions/InfinityExtrap' === $ref) {
-					value_regex = 'RCCE_Constant';
-				} else if ('#/definitions/empty-object' === $ref) {
-					value_regex = '\\(\\)';
-				} else if ('#/definitions/boolean' !== $ref) {
-					if ($ref.startsWith('#/definitions/decimal-string')) {
-						value_regex = '\\d+\\.\\d+';
-					} else {
-						value_regex = '\\d+';
+					if ('#/definitions/InfinityExtrap' === $ref) {
+						value_regex = 'RCCE_Constant';
+					} else if ('#/definitions/empty-object' === $ref) {
+						value_regex = '\\(\\)';
+					} else if ('#/definitions/boolean' !== $ref) {
+						if ($ref.startsWith('#/definitions/decimal-string')) {
+							value_regex = '\\d+\\.\\d+';
+						} else {
+							value_regex = '\\d+';
+						}
+
+						if ($ref.endsWith('--signed')) {
+							value_regex = `-?${value_regex}`;
+						}
 					}
 
-					if ($ref.endsWith('--signed')) {
-						value_regex = `-?${value_regex}`;
-					}
-				}
-
-				return `${property}=${value_regex}`;
-			}).join(',')}\\)`;
+					return `${property}=${value_regex}`;
+				})
+				.join(',')}\\)`;
 
 			const pattern = `^${regex}$`;
 
