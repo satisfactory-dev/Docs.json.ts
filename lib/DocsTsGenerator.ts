@@ -168,36 +168,35 @@ export class DocsTsGenerator {
 				throw new Error('Probably not a JSON file');
 			} else {
 				try {
-				if (this.cache_path) {
-					const utf8_filename = basename(this.docs_path).replace(
-						/\.json$/,
-						'.utf8.json'
-					);
-					const utf8_filepath = `${this.cache_path}/${utf8_filename}`;
+					if (this.cache_path) {
+						const utf8_filename = basename(this.docs_path).replace(
+							/\.json$/,
+							'.utf8.json'
+						);
+						const utf8_filepath = `${this.cache_path}/${utf8_filename}`;
 
-					if (existsSync(utf8_filepath)) {
+						if (existsSync(utf8_filepath)) {
 							const file_contents = await readFile(utf8_filepath);
 							performance.measure(DocsTsGenerator.PERF_FILE_READ, DocsTsGenerator.PERF_START_LOADING_JSON);
-						this.docs = JSON.parse(
+							this.docs = JSON.parse(
 								file_contents.toString()
-						);
+							);
 							performance.measure(DocsTsGenerator.PERF_FILE_PARSED, DocsTsGenerator.PERF_START_LOADING_JSON);
+						} else {
+							const json = await this.load_from_file(this.docs_path);
+							performance.measure(DocsTsGenerator.PERF_FILE_PARSED, DocsTsGenerator.PERF_START_LOADING_JSON);
+
+							await writeFile(
+								utf8_filepath,
+								JSON.stringify(json, null, '\t') + '\n'
+							);
+
+							this.docs = json;
+						}
 					} else {
-
-					const json = await this.load_from_file(this.docs_path);
-						performance.measure(DocsTsGenerator.PERF_FILE_PARSED, DocsTsGenerator.PERF_START_LOADING_JSON);
-
-					await writeFile(
-						utf8_filepath,
-						JSON.stringify(json, null, '\t') + '\n'
-					);
-
-						this.docs = json;
-					}
-				} else {
 						this.docs = await this.load_from_file(this.docs_path);
 						performance.measure(DocsTsGenerator.PERF_FILE_PARSED, DocsTsGenerator.PERF_START_LOADING_JSON);
-				}
+					}
 				} catch (err) {
 					performance.measure(DocsTsGenerator.PERF_FAILURE, DocsTsGenerator.PERF_START_LOADING_JSON);
 
