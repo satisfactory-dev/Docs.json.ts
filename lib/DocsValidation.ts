@@ -3,7 +3,8 @@ import Ajv, {_, KeywordCxt} from 'ajv/dist/2020';
 import schema from '../schema/update8.schema.json' assert {type: 'json'};
 import {
 	is_UnrealEngineStringReference_value,
-	UnrealEngineStringReference_general_regex, UnrealEngineStringReference_inner_schema,
+	UnrealEngineStringReference_general_regex,
+	UnrealEngineStringReference_inner_schema,
 	UnrealEngineStringReference_left_default,
 	UnrealEngineStringReference_schema,
 	UnrealEngineStringReference_type,
@@ -479,17 +480,17 @@ export function configure_ajv(ajv: Ajv): void {
 	) as (keyof typeof type_object_string_$ref_supported)[];
 
 	type type_object_string_$ref_choices = {
-		$ref: keyof typeof type_object_string_$ref_supported
+		$ref: keyof typeof type_object_string_$ref_supported;
 	};
 
 	type typed_object_string_$ref_only = {
-		[key: string]: type_object_string_$ref_choices
+		[key: string]: type_object_string_$ref_choices;
 	};
 
 	type typed_object_string_type = {
 		[key: string]:
 			| type_object_string_$ref_choices
-			| typed_object_string_$ref_only
+			| typed_object_string_$ref_only;
 	};
 
 	const typed_object_string_$ref_schema = {
@@ -501,7 +502,7 @@ export function configure_ajv(ajv: Ajv): void {
 				oneOf: [
 					{
 						type: 'string',
-						const: '#/definitions/EditorCurveData--item'
+						const: '#/definitions/EditorCurveData--item',
 					},
 					{
 						type: 'string',
@@ -537,9 +538,9 @@ export function configure_ajv(ajv: Ajv): void {
 	};
 
 	function typed_object_string_$ref_to_regex(
-		property:string,
-		value:type_object_string_$ref_choices
-	) : string {
+		property: string,
+		value: type_object_string_$ref_choices
+	): string {
 		const {$ref} = value;
 
 		let value_regex = '(?:True|False)';
@@ -549,7 +550,11 @@ export function configure_ajv(ajv: Ajv): void {
 		} else if ('#/definitions/empty-object' === $ref) {
 			value_regex = '\\(\\)';
 		} else if ('#/definitions/EditorCurveData--item' === $ref) {
-			if (!is_$ref_object_dictionary(schema.definitions['EditorCurveData--item'])) {
+			if (
+				!is_$ref_object_dictionary(
+					schema.definitions['EditorCurveData--item']
+				)
+			) {
 				throw new Error(`${$ref} not supported!`);
 			}
 
@@ -576,21 +581,22 @@ export function configure_ajv(ajv: Ajv): void {
 		return `${property}=${value_regex}`;
 	}
 
-	function keys_are_$ref_only(keys:string[]) : keys is ['$ref']
-	{
+	function keys_are_$ref_only(keys: string[]): keys is ['$ref'] {
 		return 1 === keys.length && keys.includes('$ref');
 	}
 
-	function is_$ref_object(maybe: {[key: string]: any}) : maybe is type_object_string_$ref_choices
-	{
+	function is_$ref_object(maybe: {
+		[key: string]: any;
+	}): maybe is type_object_string_$ref_choices {
 		return (
-			keys_are_$ref_only(Object.keys(maybe))
-			&& type_object_string_$ref_supported_array.includes(maybe.$ref)
+			keys_are_$ref_only(Object.keys(maybe)) &&
+			type_object_string_$ref_supported_array.includes(maybe.$ref)
 		);
 	}
 
-	function is_$ref_object_dictionary(maybe: {[key: string]: {[key: string]: string}}) : maybe is {[key: string]: type_object_string_$ref_choices}
-	{
+	function is_$ref_object_dictionary(maybe: {
+		[key: string]: {[key: string]: string};
+	}): maybe is {[key: string]: type_object_string_$ref_choices} {
 		for (const sub_object of Object.values(maybe)) {
 			if (!is_$ref_object(sub_object)) {
 				return false;
@@ -601,10 +607,10 @@ export function configure_ajv(ajv: Ajv): void {
 	}
 
 	function typed_object_string_property_to_regex(
-		data:typed_object_string_type
-	) : string {
-		return `\\(${Object.entries(data).map(
-			(entry) => {
+		data: typed_object_string_type
+	): string {
+		return `\\(${Object.entries(data)
+			.map((entry) => {
 				if (is_$ref_object(entry[1])) {
 					return typed_object_string_$ref_to_regex(
 						entry[0],
@@ -613,8 +619,8 @@ export function configure_ajv(ajv: Ajv): void {
 				}
 
 				if (
-					'UnrealEngineStringReference--inner' in entry[1]
-					&& is_UnrealEngineStringReference_value(
+					'UnrealEngineStringReference--inner' in entry[1] &&
+					is_UnrealEngineStringReference_value(
 						entry[1]['UnrealEngineStringReference--inner']
 					)
 				) {
@@ -630,18 +636,18 @@ export function configure_ajv(ajv: Ajv): void {
 					);
 				}
 
-				return `${entry[0]}=\\(${Object.entries(entry[1]).map(
-					(sub_entry) => {
+				return `${entry[0]}=\\(${Object.entries(entry[1])
+					.map((sub_entry) => {
 						const [sub_property, sub_value] = sub_entry;
 
 						return typed_object_string_$ref_to_regex(
 							sub_property,
 							sub_value
 						);
-					}
-				).join(',')}\\)`;
-			}
-		).join(',')}\\)`;
+					})
+					.join(',')}\\)`;
+			})
+			.join(',')}\\)`;
 	}
 
 	ajv.addKeyword({
@@ -659,18 +665,19 @@ export function configure_ajv(ajv: Ajv): void {
 							type: 'object',
 							additionalProperties: false,
 							patternProperties: {
-								[typed_object_string_property_regex]: typed_object_string_$ref_schema
-							}
+								[typed_object_string_property_regex]:
+									typed_object_string_$ref_schema,
+							},
 						},
 						UnrealEngineStringReference_inner_schema,
-					]
-				}
-			}
+					],
+				},
+			},
 		},
 		macro: (schema: typed_object_string_type) => {
-			const pattern = `^${
-				typed_object_string_property_to_regex(schema)
-			}$`;
+			const pattern = `^${typed_object_string_property_to_regex(
+				schema
+			)}$`;
 
 			return {pattern};
 		},
@@ -744,8 +751,7 @@ export function configure_ajv(ajv: Ajv): void {
 		*/
 	});
 
-	function UnrealEngineStringReference_macro_generator(inner:boolean)
-	{
+	function UnrealEngineStringReference_macro_generator(inner: boolean) {
 		return (data_from_schema: UnrealEngineStringReference_type) => {
 			const data: Exclude<typeof data_from_schema, true> | {} =
 				true === data_from_schema ? {} : data_from_schema;
@@ -761,21 +767,21 @@ export function configure_ajv(ajv: Ajv): void {
 					? `(?:${(data.right instanceof Array
 							? data.right
 							: [
-								'string' === typeof data.right
-									? data.right
-									: `(?:${(data.right
-											.starts_with instanceof Array
-											? data.right.starts_with
-											: [data.right.starts_with]
-									)
-										.map(
-											(starts_with) =>
-												starts_with +
-												'(?:[A-Z][A-Za-z0-9_.]+/)*[A-Z][A-Za-z_.0-9-]+(?::[A-Z][A-Za-z0-9]+)?'
-										)
-										.join('|')})`,
-							]
-					).join('|')})`
+									'string' === typeof data.right
+										? data.right
+										: `(?:${(data.right
+												.starts_with instanceof Array
+												? data.right.starts_with
+												: [data.right.starts_with]
+											)
+												.map(
+													(starts_with) =>
+														starts_with +
+														'(?:[A-Z][A-Za-z0-9_.]+/)*[A-Z][A-Za-z_.0-9-]+(?::[A-Z][A-Za-z0-9]+)?'
+												)
+												.join('|')})`,
+								]
+						).join('|')})`
 					: UnrealEngineStringReference_general_regex;
 
 			const regex = `(?:(?:${left_value})'(?:${right_value}|"${right_value}")')`;

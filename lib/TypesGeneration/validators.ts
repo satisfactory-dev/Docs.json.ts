@@ -1059,80 +1059,72 @@ export const UnrealEngineStringReference_inner_schema = {
 	properties: {
 		type: {type: 'string', const: 'string'},
 		minLength: {type: 'number', const: 1},
-		['UnrealEngineStringReference--inner']: UnrealEngineStringReference_schema,
+		['UnrealEngineStringReference--inner']:
+			UnrealEngineStringReference_schema,
 	},
 };
 
 function is_string_or_string_array(
-	maybe:any
-) : maybe is string|[string, ...string[]] {
-
+	maybe: any
+): maybe is string | [string, ...string[]] {
 	return (
-		'string' === typeof maybe
-		|| (
-			maybe instanceof Array
-			&& maybe.length >= 1
-			&& maybe.every(e => 'string' === typeof e)
-		)
+		'string' === typeof maybe ||
+		(maybe instanceof Array &&
+			maybe.length >= 1 &&
+			maybe.every((e) => 'string' === typeof e))
 	);
 }
 
-function object_has_property(maybe:object, property:string) : maybe is {[key: typeof property]: any}
-{
+function object_has_property(
+	maybe: object,
+	property: string
+): maybe is {[key: typeof property]: any} {
 	return property in maybe;
 }
 
 function is_UnrealEngineStringReference_value_object(
-	maybe:object
-) : maybe is Exclude<UnrealEngineStringReference_type, true> {
+	maybe: object
+): maybe is Exclude<UnrealEngineStringReference_type, true> {
 	const keys = Object.keys(maybe);
 
 	const has_left = 'left' in maybe && is_string_or_string_array(maybe.left);
-	const has_right = object_has_property(maybe, 'right') && (
-		'object' === typeof maybe.right && !(maybe.right instanceof Array)
-			? (
-				'starts_with' in maybe.right
-				&& 1 === Object.keys(maybe.right).length
-				&& is_string_or_string_array(maybe.right.starts_with)
-			)
-			: is_string_or_string_array(maybe.right)
-	);
+	const has_right =
+		object_has_property(maybe, 'right') &&
+		('object' === typeof maybe.right && !(maybe.right instanceof Array)
+			? 'starts_with' in maybe.right &&
+				1 === Object.keys(maybe.right).length &&
+				is_string_or_string_array(maybe.right.starts_with)
+			: is_string_or_string_array(maybe.right));
 
 	return (
-		(
-			2 === keys.length && has_left && has_right
-		)
-		|| (
-			1 === keys.length && (has_left || has_right)
-		)
+		(2 === keys.length && has_left && has_right) ||
+		(1 === keys.length && (has_left || has_right))
 	);
 }
 
 export function is_UnrealEngineStringReference_value(
-	maybe:any
-) : maybe is UnrealEngineStringReference_type {
+	maybe: any
+): maybe is UnrealEngineStringReference_type {
 	return (
-		true === maybe
-		|| (
-			'object' === typeof maybe
-			&& is_UnrealEngineStringReference_value_object(maybe)
-		)
+		true === maybe ||
+		('object' === typeof maybe &&
+			is_UnrealEngineStringReference_value_object(maybe))
 	);
 }
 
-export function is_UnrealEngineStringReference_inner_object(
-	maybe:{[key: string]: any}
-) : maybe is UnrealEngineStringReference_inner_type {
+export function is_UnrealEngineStringReference_inner_object(maybe: {
+	[key: string]: any;
+}): maybe is UnrealEngineStringReference_inner_type {
 	const keys = Object.keys(maybe);
 
 	return (
-		3 === keys.length
-		&& keys.includes('type')
-		&& keys.includes('minLength')
-		&& keys.includes('UnrealEngineStringReference--inner')
-		&& 'string' === maybe.type
-		&& 1 === maybe.minLength
-		&& is_UnrealEngineStringReference_value(
+		3 === keys.length &&
+		keys.includes('type') &&
+		keys.includes('minLength') &&
+		keys.includes('UnrealEngineStringReference--inner') &&
+		'string' === maybe.type &&
+		1 === maybe.minLength &&
+		is_UnrealEngineStringReference_value(
 			maybe['UnrealEngineStringReference--inner']
 		)
 	);

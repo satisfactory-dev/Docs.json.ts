@@ -14,7 +14,8 @@ import {basename, dirname} from 'node:path';
 import {
 	adjust_class_name,
 	adjust_unrealengine_prefix,
-	adjust_unrealengine_value, auto_constructor_property_types_from_generated_types_properties,
+	adjust_unrealengine_value,
+	auto_constructor_property_types_from_generated_types_properties,
 	create_class_options,
 	create_lazy_union,
 	create_literal_node_from_value,
@@ -494,7 +495,8 @@ export class Update8TypeNodeGeneration {
 							'PreInfinityExtrap',
 							'PostInfinityExtrap',
 						],
-						properties: schema.definitions['EditorCurveData--item'],
+						properties:
+							schema.definitions['EditorCurveData--item'],
 					},
 					['public', 'readonly']
 				),

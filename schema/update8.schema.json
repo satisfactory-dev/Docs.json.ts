@@ -6071,7 +6071,9 @@
 			"type": "string",
 			"minLength": 1,
 			"typed_object_string": {
-				"EditorCurveData": {"$ref": "#/definitions/EditorCurveData--item"}
+				"EditorCurveData": {
+					"$ref": "#/definitions/EditorCurveData--item"
+				}
 			}
 		},
 		"EditorCurveData--item": {
@@ -6092,7 +6094,9 @@
 					"type": "string",
 					"minLength": 1,
 					"typed_object_string": {
-						"EditorCurveData": {"$ref": "#/definitions/EditorCurveData--item"},
+						"EditorCurveData": {
+							"$ref": "#/definitions/EditorCurveData--item"
+						},
 						"ExternalCurve": {
 							"type": "string",
 							"minLength": 1,
