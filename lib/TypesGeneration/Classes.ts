@@ -4,22 +4,13 @@ import {
 	createClass,
 	create_type,
 	createClass__members__with_auto_constructor,
-	possibly_create_lazy_union,
-	create_literal_node_from_value,
-	create_minimum_size_typed_array_of_single_type,
-	create_object_type_alias,
-	create_UnrealEngineStringReference_reference_type,
 } from '../TsFactoryWrapper';
 import ts from 'typescript';
-import {
-	TypesGenerationFromSchema,
-	TypesGenerationMatchesReferenceName,
-} from '../TypesGeneration';
+import {TypesGenerationFromSchema} from '../TypesGeneration';
 import {
 	TypeNodeGeneration,
 	TypeNodeGenerationResult,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
-import {UnrealEngineStringReference_type} from './validators';
 
 declare type supported_base_classes_union =
 	| 'class--no-description-or-display-name'

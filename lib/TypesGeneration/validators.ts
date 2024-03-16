@@ -1,4 +1,4 @@
-import ts, {TypeNode, TypeReferenceNode} from 'typescript';
+import ts, {TypeReferenceNode} from 'typescript';
 import {
 	ImportTracker,
 	TypesGenerationFromSchema,
@@ -26,8 +26,6 @@ import {
 	create_union,
 	create_literal_node_from_value,
 	createClass__members__with_auto_constructor,
-	flexibly_create_UnrealEngineString_reference_type,
-	possibly_create_lazy_union,
 	create_UnrealEngineStringReference_reference_type,
 } from '../TsFactoryWrapper';
 import {

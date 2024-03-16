@@ -973,7 +973,7 @@ export function possibly_create_lazy_union(
 }
 
 export function flexibly_create_UnrealEngineString_reference_type(
-	type_arguments: [TypeNode, TypeNode] | undefined
+	type_arguments: [TypeNode, TypeNode] | [TypeNode] | undefined
 ): ts.TypeReferenceNode {
 	return ts.factory.createTypeReferenceNode(
 		'UnrealEngineString',
@@ -990,10 +990,11 @@ export function create_UnrealEngineStringReference_reference_type(
 	let left_value: TypeNode = create_literal_node_from_value(
 		UnrealEngineStringReference_left_default[0]
 	);
+	let left_changed = false;
 	let right_value: TypeNode = create_type('string');
-	let defaults_changed = false;
+	let right_changed = false;
 
-	if ('left' in data) {
+	if ('object' === typeof data && 'left' in data) {
 		const {left} = data as {
 			left: UnrealEngineStringReference_string_or_string_array;
 		};
@@ -1008,10 +1009,10 @@ export function create_UnrealEngineStringReference_reference_type(
 			left_value = possibly_create_lazy_union(left_options);
 		}
 
-		defaults_changed = true;
+		left_changed = true;
 	}
 
-	if ('right' in data) {
+	if ('object' === typeof data && 'right' in data) {
 		const {right} = data as {right: UnrealEngineStringReference_right};
 
 		if ('object' === typeof right && 'starts_with' in right) {
@@ -1046,11 +1047,15 @@ export function create_UnrealEngineStringReference_reference_type(
 			}
 		}
 
-		defaults_changed = true;
+		right_changed = true;
 	}
 
 	return flexibly_create_UnrealEngineString_reference_type(
-		defaults_changed ? [left_value, right_value] : undefined
+		left_changed || right_changed
+			? right_changed
+				? [left_value, right_value]
+				: [left_value]
+			: undefined
 	);
 }
 
