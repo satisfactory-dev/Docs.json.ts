@@ -463,111 +463,110 @@ export function configure_ajv(ajv: Ajv): void {
 		*/
 	});
 
-	ajv.addKeyword({
-		keyword: 'vector_object_string',
-		type: 'string',
-		metaSchema: {
-			type: 'object',
-			required: ['type', 'properties'],
-			additionalProperties: false,
-			properties: {
-				type: {type: 'string', const: 'object'},
-				properties: {
-					type: 'object',
-					additionalProperties: vector_object_string_schema,
-				},
-			},
+	const typed_object_string_property_regex = '^[A-Za-z][A-Za-z]*$';
+
+	type typed_object_string_type<
+		Properties extends {
+			[key: string]:
+				| '#/definitions/InfinityExtrap'
+				| '#/definitions/empty-object'
+				| '#/definitions/decimal-string'
+				| '#/definitions/decimal-string--signed'
+				| '#/definitions/integer-string'
+				| '#/definitions/integer-string--signed'
+				| '#/definitions/boolean'
+		} = {
+			[key: string]:
+				| '#/definitions/InfinityExtrap'
+				| '#/definitions/empty-object'
+				| '#/definitions/decimal-string'
+				| '#/definitions/decimal-string--signed'
+				| '#/definitions/integer-string'
+				| '#/definitions/integer-string--signed'
+				| '#/definitions/boolean'
 		},
-		macro: (schema: vector_object_string_type) => {
-			const pattern_prop: {[key: string]: string} = {};
-
-			for (const entry of Object.entries(schema.properties)) {
-				const [property, {$ref}] = entry;
-
-				if ($ref.startsWith('#/definitions/decimal-string')) {
-					pattern_prop[property] = '\\d+\\.\\d+';
-				} else {
-					pattern_prop[property] = '\\d+';
-				}
-
-				if ($ref.endsWith('--signed')) {
-					pattern_prop[property] =
-						`-?${pattern_prop[property as keyof typeof pattern_prop]}`;
-				}
-			}
-
-			const pattern = `^\\(${Object.entries(pattern_prop)
-				.map((e) => `${e[0]}=${e[1]}`)
-				.join(',')}\\)$`;
-
-			return {pattern};
-		},
-	});
-
-	const boolean_object_string_property_regex = '^[A-Za-z][A-Za-z]+$';
-	type boolean_object_string_type<
-		T extends {[key: string]: null} = {[key: string]: null},
 	> = {
-		type: 'object';
-		required: keyof T;
-		additionalProperties: false;
-		properties: {
-			[key in keyof T]: {
-				$ref: '#/definitions/boolean';
-			};
+		[key in keyof Properties]: {
+			$ref: Properties[key]
 		};
 	};
 
 	ajv.addKeyword({
-		keyword: 'boolean_object_string',
+		keyword: 'typed_object_string',
 		type: 'string',
 		metaSchema: {
 			type: 'object',
-			required: [
-				'type',
-				'required',
-				'additionalProperties',
-				'properties',
-			],
 			additionalProperties: false,
-			properties: {
-				type: {type: 'string', const: 'object'},
-				required: {
-					type: 'array',
-					minItems: 1,
-					items: {
-						type: 'string',
-						pattern: boolean_object_string_property_regex,
-					},
-				},
-				additionalProperties: {type: 'boolean', const: false},
-				properties: {
+			patternProperties: {
+				[typed_object_string_property_regex]: {
 					type: 'object',
+					required: ['$ref'],
 					additionalProperties: false,
-					minProperties: 1,
-					patternProperties: {
-						[boolean_object_string_property_regex]: {
-							type: 'object',
-							required: ['$ref'],
-							additionalProperties: false,
-							properties: {
-								$ref: {
+					properties: {
+						$ref: {
+							oneOf: [
+								{
+									type: 'string',
+									const: '#/definitions/InfinityExtrap',
+								},
+								{
+									type: 'string',
+									const: '#/definitions/empty-object',
+								},
+								{
+									type: 'string',
+									const: '#/definitions/decimal-string',
+								},
+								{
+									type: 'string',
+									const: '#/definitions/decimal-string--signed',
+								},
+								{
+									type: 'string',
+									const: '#/definitions/integer-string',
+								},
+								{
+									type: 'string',
+									const: '#/definitions/integer-string--signed',
+								},
+								{
 									type: 'string',
 									const: '#/definitions/boolean',
 								},
-							},
-						},
+							]
+						}
 					},
 				},
 			},
 		},
-		macro: (schema: boolean_object_string_type) => {
-			const keys = Object.keys(schema.properties) as [
+		macro: (schema:typed_object_string_type) => {
+			const keys = Object.keys(schema) as [
 				string,
 				...string[],
 			];
 
-			const regex = `\\(${keys.map((property) => `${property}=(?:True|False)`).join(',')}\\)`;
+			const regex = `\\(${keys.map((property) => {
+				let value_regex = '(?:True|False)';
+				const {$ref} = schema[property];
+
+				if ('#/definitions/InfinityExtrap' === $ref) {
+					value_regex = 'RCCE_Constant';
+				} else if ('#/definitions/empty-object' === $ref) {
+					value_regex = '\\(\\)';
+				} else if ('#/definitions/boolean' !== $ref) {
+					if ($ref.startsWith('#/definitions/decimal-string')) {
+						value_regex = '\\d+\\.\\d+';
+					} else {
+						value_regex = '\\d+';
+					}
+
+					if ($ref.endsWith('--signed')) {
+						value_regex = `-?${value_regex}`;
+					}
+				}
+
+				return `${property}=${value_regex}`;
+			}).join(',')}\\)`;
 
 			const pattern = `^${regex}$`;
 

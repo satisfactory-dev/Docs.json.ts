@@ -89,9 +89,7 @@
 		"color": {
 			"type": "string",
 			"minLength": 1,
-			"vector_object_string": {
-				"type": "object",
-				"properties": {
+			"typed_object_string": {
 					"B": {
 						"$ref": "#/definitions/integer-string"
 					},
@@ -104,15 +102,12 @@
 					"A": {
 						"$ref": "#/definitions/integer-string"
 					}
-				}
 			}
 		},
 		"color-decimal": {
 			"type": "string",
 			"minLength": 1,
-			"vector_object_string": {
-				"type": "object",
-				"properties": {
+			"typed_object_string": {
 					"R": {
 						"$ref": "#/definitions/decimal-string"
 					},
@@ -125,7 +120,6 @@
 					"A": {
 						"$ref": "#/definitions/decimal-string"
 					}
-				}
 			}
 		},
 		"color-decimal--semi-native": {
@@ -158,9 +152,7 @@
 		"xyz": {
 			"type": "string",
 			"minLength": 1,
-			"vector_object_string": {
-				"type": "object",
-				"properties": {
+			"typed_object_string": {
 					"X": {
 						"$ref": "#/definitions/decimal-string--signed"
 					},
@@ -170,7 +162,6 @@
 					"Z": {
 						"$ref": "#/definitions/decimal-string--signed"
 					}
-				}
 			}
 		},
 		"xyz--semi-native": {
@@ -191,31 +182,25 @@
 		"xy": {
 			"type": "string",
 			"minLength": 1,
-			"vector_object_string": {
-				"type": "object",
-				"properties": {
+			"typed_object_string": {
 					"X": {
 						"$ref": "#/definitions/decimal-string--signed"
 					},
 					"Y": {
 						"$ref": "#/definitions/decimal-string--signed"
 					}
-				}
 			}
 		},
 		"xy--integer": {
 			"type": "string",
 			"minLength": 1,
-			"vector_object_string": {
-				"type": "object",
-				"properties": {
+			"typed_object_string": {
 					"X": {
 						"$ref": "#/definitions/integer-string"
 					},
 					"Y": {
 						"$ref": "#/definitions/integer-string"
 					}
-				}
 			}
 		},
 		"xy--semi-native": {
@@ -251,9 +236,7 @@
 		"pitch-yaw-roll": {
 			"type": "string",
 			"minLength": 1,
-			"vector_object_string": {
-				"type": "object",
-				"properties": {
+			"typed_object_string": {
 					"Pitch": {
 						"$ref": "#/definitions/decimal-string--signed"
 					},
@@ -263,15 +246,12 @@
 					"Roll": {
 						"$ref": "#/definitions/decimal-string--signed"
 					}
-				}
 			}
 		},
 		"xyz--integer": {
 			"type": "string",
 			"minLength": 1,
-			"vector_object_string": {
-				"type": "object",
-				"properties": {
+			"typed_object_string": {
 					"X": {
 						"$ref": "#/definitions/integer-string"
 					},
@@ -281,7 +261,6 @@
 					"Z": {
 						"$ref": "#/definitions/integer-string"
 					}
-				}
 			}
 		},
 		"xyz-array": {
@@ -2697,15 +2676,7 @@
 				},
 				"mBlockVisualizationSplineDataSettings": {
 					"type": "string",
-					"object_string": {
-						"type": "object",
-						"required": [
-							"StartTangentPrimitiveDataStartIndex",
-							"EndPositionPrimitiveDataStartIndex",
-							"EndTangentPrimitiveDataStartIndex",
-							"InstanceScaleIndex"
-						],
-						"properties": {
+					"typed_object_string": {
 							"StartTangentPrimitiveDataStartIndex": {
 								"$ref": "#/definitions/integer-string"
 							},
@@ -2718,7 +2689,6 @@
 							"InstanceScaleIndex": {
 								"$ref": "#/definitions/integer-string--signed"
 							}
-						}
 					}
 				},
 				"mBlockVisualizationColorDataStartIndex": {
@@ -3898,62 +3868,43 @@
 				{
 					"type": "string",
 					"minLength": 1,
-					"boolean_object_string": {
-						"type": "object",
-						"required": ["Top", "Bottom"],
-						"additionalProperties": false,
-						"properties": {
+					"typed_object_string": {
 							"Top": {
 								"$ref": "#/definitions/boolean"
 							},
 							"Bottom": {
 								"$ref": "#/definitions/boolean"
 							}
-						}
 					}
 				},
 				{
 					"type": "string",
 					"minLength": 1,
-					"boolean_object_string": {
-						"type": "object",
-						"required": ["Front", "Bottom"],
-						"additionalProperties": false,
-						"properties": {
+					"typed_object_string": {
 							"Front": {
 								"$ref": "#/definitions/boolean"
 							},
 							"Bottom": {
 								"$ref": "#/definitions/boolean"
 							}
-						}
 					}
 				},
 				{
 					"type": "string",
 					"minLength": 1,
-					"boolean_object_string": {
-						"type": "object",
-						"required": ["Front", "Right"],
-						"additionalProperties": false,
-						"properties": {
+					"typed_object_string": {
 							"Front": {
 								"$ref": "#/definitions/boolean"
 							},
 							"Right": {
 								"$ref": "#/definitions/boolean"
 							}
-						}
 					}
 				},
 				{
 					"type": "string",
 					"minLength": 1,
-					"boolean_object_string": {
-						"type": "object",
-						"required": ["Front", "Top", "Bottom"],
-						"additionalProperties": false,
-						"properties": {
+					"typed_object_string": {
 							"Front": {
 								"$ref": "#/definitions/boolean"
 							},
@@ -3963,17 +3914,12 @@
 							"Bottom": {
 								"$ref": "#/definitions/boolean"
 							}
-						}
 					}
 				},
 				{
 					"type": "string",
 					"minLength": 1,
-					"boolean_object_string": {
-						"type": "object",
-						"required": ["Right", "Left", "Top", "Bottom"],
-						"additionalProperties": false,
-						"properties": {
+					"typed_object_string": {
 							"Right": {
 								"$ref": "#/definitions/boolean"
 							},
@@ -3986,17 +3932,12 @@
 							"Bottom": {
 								"$ref": "#/definitions/boolean"
 							}
-						}
 					}
 				},
 				{
 					"type": "string",
 					"minLength": 1,
-					"boolean_object_string": {
-						"type": "object",
-						"required": ["Front", "Left", "Top", "Bottom"],
-						"additionalProperties": false,
-						"properties": {
+					"typed_object_string": {
 							"Front": {
 								"$ref": "#/definitions/boolean"
 							},
@@ -4009,35 +3950,24 @@
 							"Bottom": {
 								"$ref": "#/definitions/boolean"
 							}
-						}
 					}
 				},
 				{
 					"type": "string",
 					"minLength": 1,
-					"boolean_object_string": {
-						"type": "object",
-						"required": ["Top"],
-						"additionalProperties": false,
-						"properties": {
+					"typed_object_string": {
 							"Top": {
 								"$ref": "#/definitions/boolean"
 							}
-						}
 					}
 				},
 				{
 					"type": "string",
 					"minLength": 1,
-					"boolean_object_string": {
-						"type": "object",
-						"required": ["Bottom"],
-						"additionalProperties": false,
-						"properties": {
+					"typed_object_string": {
 							"Bottom": {
 								"$ref": "#/definitions/boolean"
 							}
-						}
 					}
 				}
 			]
@@ -4060,11 +3990,7 @@
 				"mDisableSnapOn": {
 					"type": "string",
 					"minLength": 1,
-					"boolean_object_string": {
-						"type": "object",
-						"required": ["Right", "Left", "Top", "Bottom"],
-						"additionalProperties": false,
-						"properties": {
+					"typed_object_string": {
 							"Right": {
 								"$ref": "#/definitions/boolean"
 							},
@@ -4077,7 +4003,6 @@
 							"Bottom": {
 								"$ref": "#/definitions/boolean"
 							}
-						}
 					}
 				}
 			}
@@ -5244,16 +5169,13 @@
 				"mPowerConsumption": {
 					"type": "string",
 					"minLength": 1,
-					"vector_object_string": {
-						"type": "object",
-						"properties": {
+					"typed_object_string": {
 							"Min": {
 								"$ref": "#/definitions/decimal-string"
 							},
 							"Max": {
 								"$ref": "#/definitions/decimal-string"
 							}
-						}
 					}
 				}
 			}
@@ -5449,13 +5371,10 @@
 		"mDockingRuleSet": {
 			"type": "string",
 			"minLength": 1,
-			"vector_object_string": {
-				"type": "object",
-				"properties": {
+			"typed_object_string": {
 					"DockForDuration": {
 						"$ref": "#/definitions/decimal-string"
 					}
-				}
 			}
 		},
 		"FGBuildableTrainPlatformCargo--FGBuildableRailroadStation": {
@@ -5933,9 +5852,7 @@
 				"mTrajectorySplineMeshSplineDataSettings": {
 					"type": "string",
 					"minLength": 1,
-					"vector_object_string": {
-						"type": "object",
-						"properties": {
+					"typed_object_string": {
 							"StartTangentPrimitiveDataStartIndex": {
 								"$ref": "#/definitions/integer-string"
 							},
@@ -5948,7 +5865,6 @@
 							"InstanceScaleIndex": {
 								"$ref": "#/definitions/integer-string--signed"
 							}
-						}
 					}
 				},
 				"mNumArrows": {
@@ -6037,14 +5953,10 @@
 				"mLastItem": {
 					"type": "string",
 					"minLength": 1,
-					"object_string": {
-						"type": "object",
-						"required": ["ItemState"],
-						"properties": {
+					"typed_object_string": {
 							"ItemState": {
 								"$ref": "#/definitions/empty-object"
 							}
-						}
 					}
 				},
 				"mItemToLastOutputMap": {
@@ -6402,15 +6314,10 @@
 				"mAmmoTickFunction": {
 					"type": "string",
 					"minLength": 1,
-					"boolean_object_string": {
-						"type": "object",
-						"required": ["bAllowTickOnDedicatedServer"],
-						"additionalProperties": false,
-						"properties": {
+					"typed_object_string": {
 							"bAllowTickOnDedicatedServer": {
 								"$ref": "#/definitions/boolean"
 							}
-						}
 					}
 				}
 			}
@@ -6540,16 +6447,13 @@
 				"mNumShots": {
 					"type": "string",
 					"minLength": 1,
-					"vector_object_string": {
-						"type": "object",
-						"properties": {
+					"typed_object_string": {
 							"Min": {
 								"$ref": "#/definitions/integer-string"
 							},
 							"Max": {
 								"$ref": "#/definitions/integer-string"
 							}
-						}
 					}
 				},
 				"mSpreadAngleDegrees": {
@@ -7076,13 +6980,10 @@
 		"mLightControlData": {
 			"type": "string",
 			"minLength": 1,
-			"vector_object_string": {
-				"type": "object",
-				"properties": {
+			"typed_object_string": {
 					"Intensity": {
 						"$ref": "#/definitions/decimal-string"
 					}
-				}
 			}
 		},
 		"FGBuildableLightsControlPanel": {
