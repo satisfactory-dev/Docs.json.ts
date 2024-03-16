@@ -504,6 +504,59 @@ export function configure_ajv(ajv: Ajv): void {
 		},
 	});
 
+	const boolean_object_string_property_regex = '^[A-Za-z][A-Za-z]+$';
+	type boolean_object_string_type<T extends {[key: string]: null} = {[key: string]: null}> = {
+		type: 'object',
+		required: keyof T,
+		additionalProperties: false,
+		properties: {[key in keyof T]: {
+			$ref: '#/definitions/boolean'
+		}},
+	}
+
+	ajv.addKeyword({
+		keyword: 'boolean_object_string',
+		type: 'string',
+		metaSchema: {
+			type: 'object',
+			required: ['type', 'required', 'additionalProperties', 'properties'],
+			additionalProperties: false,
+			properties: {
+				type: {type: 'string', const: 'object'},
+				required: {
+					type: 'array',
+					minItems: 1,
+					items: {type: 'string', pattern: boolean_object_string_property_regex}
+				},
+				additionalProperties: {type: 'boolean', const: false},
+				properties: {
+					type: 'object',
+					additionalProperties: false,
+					minProperties: 1,
+					patternProperties: {
+						[boolean_object_string_property_regex]: {
+							type: 'object',
+							required: ['$ref'],
+							additionalProperties: false,
+							properties: {
+								$ref: {type: 'string', const: '#/definitions/boolean'}
+							}
+						}
+					}
+				}
+			}
+		},
+		macro: (schema: boolean_object_string_type) => {
+			const keys = Object.keys(schema.properties) as [string, ...string[]];
+
+			const regex = `\\(${keys.map(property => `${property}=(?:True|False)`).join(',')}\\)`;
+
+			const pattern = `^${regex}$`;
+
+			return {pattern};
+		},
+	});
+
 	ajv.addKeyword({
 		keyword: 'object_string',
 		type: 'string',

@@ -3898,7 +3898,7 @@
 				{
 					"type": "string",
 					"minLength": 1,
-					"object_string": {
+					"boolean_object_string": {
 						"type": "object",
 						"required": ["Top", "Bottom"],
 						"additionalProperties": false,
@@ -3915,7 +3915,7 @@
 				{
 					"type": "string",
 					"minLength": 1,
-					"object_string": {
+					"boolean_object_string": {
 						"type": "object",
 						"required": ["Front", "Bottom"],
 						"additionalProperties": false,
@@ -3932,7 +3932,7 @@
 				{
 					"type": "string",
 					"minLength": 1,
-					"object_string": {
+					"boolean_object_string": {
 						"type": "object",
 						"required": ["Front", "Right"],
 						"additionalProperties": false,
@@ -3949,7 +3949,7 @@
 				{
 					"type": "string",
 					"minLength": 1,
-					"object_string": {
+					"boolean_object_string": {
 						"type": "object",
 						"required": ["Front", "Top", "Bottom"],
 						"additionalProperties": false,
@@ -3969,7 +3969,7 @@
 				{
 					"type": "string",
 					"minLength": 1,
-					"object_string": {
+					"boolean_object_string": {
 						"type": "object",
 						"required": ["Right", "Left", "Top", "Bottom"],
 						"additionalProperties": false,
@@ -3992,7 +3992,7 @@
 				{
 					"type": "string",
 					"minLength": 1,
-					"object_string": {
+					"boolean_object_string": {
 						"type": "object",
 						"required": ["Front", "Left", "Top", "Bottom"],
 						"additionalProperties": false,
@@ -4015,7 +4015,7 @@
 				{
 					"type": "string",
 					"minLength": 1,
-					"object_string": {
+					"boolean_object_string": {
 						"type": "object",
 						"required": ["Top"],
 						"additionalProperties": false,
@@ -4029,7 +4029,7 @@
 				{
 					"type": "string",
 					"minLength": 1,
-					"object_string": {
+					"boolean_object_string": {
 						"type": "object",
 						"required": ["Bottom"],
 						"additionalProperties": false,
@@ -4060,20 +4060,21 @@
 				"mDisableSnapOn": {
 					"type": "string",
 					"minLength": 1,
-					"object_string": {
+					"boolean_object_string": {
 						"type": "object",
-						"required": ["Top", "Bottom", "Left", "Right"],
+						"required": ["Right", "Left", "Top", "Bottom"],
+						"additionalProperties": false,
 						"properties": {
-							"Top": {
-								"$ref": "#/definitions/boolean"
-							},
-							"Bottom": {
+							"Right": {
 								"$ref": "#/definitions/boolean"
 							},
 							"Left": {
 								"$ref": "#/definitions/boolean"
 							},
-							"Right": {
+							"Top": {
+								"$ref": "#/definitions/boolean"
+							},
+							"Bottom": {
 								"$ref": "#/definitions/boolean"
 							}
 						}
@@ -6401,9 +6402,10 @@
 				"mAmmoTickFunction": {
 					"type": "string",
 					"minLength": 1,
-					"object_string": {
+					"boolean_object_string": {
 						"type": "object",
 						"required": ["bAllowTickOnDedicatedServer"],
+						"additionalProperties": false,
 						"properties": {
 							"bAllowTickOnDedicatedServer": {
 								"$ref": "#/definitions/boolean"
