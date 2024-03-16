@@ -278,7 +278,10 @@ export function object_string(
 
 	performance.mark('object_string ajv validation');
 	const result = inner_validate(faux);
-	performance.measure('object_string ajv validation', 'object_string validation');
+	performance.measure(
+		'object_string ajv validation',
+		'object_string validation'
+	);
 
 	return result;
 }
@@ -326,7 +329,10 @@ export function UnrealEngineString(
 		match = extract_UnrealEngineString(data);
 	} catch (err) {
 		if (err instanceof NotAnUnrealEngineString) {
-			performance.measure('UnrealEngineString early exit', 'UnrealEngineString validation');
+			performance.measure(
+				'UnrealEngineString early exit',
+				'UnrealEngineString validation'
+			);
 			return false;
 		}
 
@@ -359,7 +365,10 @@ export function UnrealEngineString(
 
 	performance.mark('UnrealEngineString ajv validation');
 	const result = inner_validate(match.value);
-	performance.measure('UnrealEngineString ajv validation', 'UnrealEngineString validation');
+	performance.measure(
+		'UnrealEngineString ajv validation',
+		'UnrealEngineString validation'
+	);
 
 	return result;
 }
@@ -389,7 +398,10 @@ export function array_string(schema: array_string_schema_type, data: string) {
 
 	performance.mark('array_string ajv validation');
 	const result = inner_validate(array_of_things);
-	performance.measure('array_string ajv validation', 'array_string validation');
+	performance.measure(
+		'array_string ajv validation',
+		'array_string validation'
+	);
 
 	return result;
 }

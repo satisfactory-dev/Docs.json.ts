@@ -150,7 +150,10 @@ export class DocsTsGenerator {
 		const file = await readFile(filepath, {
 			encoding: 'utf-16le',
 		});
-		performance.measure(DocsTsGenerator.PERF_FILE_READ, DocsTsGenerator.PERF_START_LOADING_JSON);
+		performance.measure(
+			DocsTsGenerator.PERF_FILE_READ,
+			DocsTsGenerator.PERF_START_LOADING_JSON
+		);
 
 		const utf8 = Buffer.from(file).toString('utf-8');
 
@@ -161,10 +164,16 @@ export class DocsTsGenerator {
 		if (undefined === this.docs) {
 			performance.mark(DocsTsGenerator.PERF_START_LOADING_JSON);
 			if ('string' !== typeof this.docs_path) {
-				performance.measure(DocsTsGenerator.PERF_EARLY_RETURN, DocsTsGenerator.PERF_START_LOADING_JSON);
+				performance.measure(
+					DocsTsGenerator.PERF_EARLY_RETURN,
+					DocsTsGenerator.PERF_START_LOADING_JSON
+				);
 				return this.docs_path;
 			} else if (!this.docs_path.endsWith('.json')) {
-				performance.measure(DocsTsGenerator.PERF_FAILURE, DocsTsGenerator.PERF_START_LOADING_JSON);
+				performance.measure(
+					DocsTsGenerator.PERF_FAILURE,
+					DocsTsGenerator.PERF_START_LOADING_JSON
+				);
 				throw new Error('Probably not a JSON file');
 			} else {
 				try {
@@ -176,15 +185,25 @@ export class DocsTsGenerator {
 						const utf8_filepath = `${this.cache_path}/${utf8_filename}`;
 
 						if (existsSync(utf8_filepath)) {
-							const file_contents = await readFile(utf8_filepath);
-							performance.measure(DocsTsGenerator.PERF_FILE_READ, DocsTsGenerator.PERF_START_LOADING_JSON);
-							this.docs = JSON.parse(
-								file_contents.toString()
+							const file_contents =
+								await readFile(utf8_filepath);
+							performance.measure(
+								DocsTsGenerator.PERF_FILE_READ,
+								DocsTsGenerator.PERF_START_LOADING_JSON
 							);
-							performance.measure(DocsTsGenerator.PERF_FILE_PARSED, DocsTsGenerator.PERF_START_LOADING_JSON);
+							this.docs = JSON.parse(file_contents.toString());
+							performance.measure(
+								DocsTsGenerator.PERF_FILE_PARSED,
+								DocsTsGenerator.PERF_START_LOADING_JSON
+							);
 						} else {
-							const json = await this.load_from_file(this.docs_path);
-							performance.measure(DocsTsGenerator.PERF_FILE_PARSED, DocsTsGenerator.PERF_START_LOADING_JSON);
+							const json = await this.load_from_file(
+								this.docs_path
+							);
+							performance.measure(
+								DocsTsGenerator.PERF_FILE_PARSED,
+								DocsTsGenerator.PERF_START_LOADING_JSON
+							);
 
 							await writeFile(
 								utf8_filepath,
@@ -195,10 +214,16 @@ export class DocsTsGenerator {
 						}
 					} else {
 						this.docs = await this.load_from_file(this.docs_path);
-						performance.measure(DocsTsGenerator.PERF_FILE_PARSED, DocsTsGenerator.PERF_START_LOADING_JSON);
+						performance.measure(
+							DocsTsGenerator.PERF_FILE_PARSED,
+							DocsTsGenerator.PERF_START_LOADING_JSON
+						);
 					}
 				} catch (err) {
-					performance.measure(DocsTsGenerator.PERF_FAILURE, DocsTsGenerator.PERF_START_LOADING_JSON);
+					performance.measure(
+						DocsTsGenerator.PERF_FAILURE,
+						DocsTsGenerator.PERF_START_LOADING_JSON
+					);
 
 					throw err;
 				}
@@ -279,10 +304,16 @@ export class DocsTsGenerator {
 		});
 
 		const validateDocs = default_config.ajv.compile<T>(schema);
-		performance.measure(DocsTsGenerator.PERF_VALIDATION_COMPILED, DocsTsGenerator.PERF_VALIDATION_STARTED);
+		performance.measure(
+			DocsTsGenerator.PERF_VALIDATION_COMPILED,
+			DocsTsGenerator.PERF_VALIDATION_STARTED
+		);
 
 		const result = validateDocs(json);
-		performance.measure(DocsTsGenerator.PERF_VALIDATION_FINISHED, DocsTsGenerator.PERF_VALIDATION_STARTED);
+		performance.measure(
+			DocsTsGenerator.PERF_VALIDATION_FINISHED,
+			DocsTsGenerator.PERF_VALIDATION_STARTED
+		);
 
 		if (!result) {
 			throw new ValidationError(

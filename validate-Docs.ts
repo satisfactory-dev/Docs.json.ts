@@ -8,7 +8,7 @@ const generator = new DocsTsGenerator({
 	cache_path: `${__dirname}/data/`,
 });
 
-const measure_totals:{[key: string]: number} = {};
+const measure_totals: {[key: string]: number} = {};
 
 const obs = new PerformanceObserver((list, observer) => {
 	for (const entry of list.getEntries()) {
@@ -18,12 +18,16 @@ const obs = new PerformanceObserver((list, observer) => {
 		measure_totals[entry.name] += entry.duration;
 	}
 
-	console.table(Object.fromEntries(Object.entries(measure_totals).map((e) => {
-		return [e[0], `${(e[1] / 1000).toFixed(4)}s`];
-	})));
+	console.table(
+		Object.fromEntries(
+			Object.entries(measure_totals).map((e) => {
+				return [e[0], `${(e[1] / 1000).toFixed(4)}s`];
+			})
+		)
+	);
 
 	performance.clearMeasures();
 });
-obs.observe({ entryTypes: ['measure'], buffered: true });
+obs.observe({entryTypes: ['measure'], buffered: true});
 
 await generator.get();
