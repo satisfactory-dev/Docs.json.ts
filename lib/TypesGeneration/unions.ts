@@ -6,10 +6,13 @@ import {
 	create_modifier,
 	create_object_type,
 	create_union,
+	create_UnrealEngineStringReference_reference_type,
 	possibly_create_lazy_union,
 } from '../TsFactoryWrapper';
 import {
-	UnrealEngineString_schema,
+	UnrealEngineStringReference_schema,
+	UnrealEngineStringReference_general_type,
+	UnrealEngineStringReference_general_schema,
 	target_files as validators_target_files,
 } from './validators';
 import {
@@ -44,15 +47,7 @@ export const target_files = {
 declare type supported_oneOf_items =
 	| {$ref: '#/definitions/Texture2D--basic'}
 	| {$ref: '#/definitions/None'}
-	| {
-			type: 'string';
-			minLength: 1;
-			UnrealEngineString: {
-				type: 'string';
-				UnrealEngineString_prefix: string;
-				pattern: string;
-			};
-	  }
+	| UnrealEngineStringReference_general_type
 	| {type: 'string'; const: string}
 	| (array_string_type & {
 			array_string: {
@@ -75,6 +70,10 @@ declare type supported_oneOf_items =
 				};
 			};
 	  });
+
+const definitions = {
+	...UnrealEngineStringReference_schema.definitions,
+};
 export const generators = [
 	new TypesGenerationFromSchema<{
 		oneOf: [supported_oneOf_items, ...supported_oneOf_items[]];
@@ -83,6 +82,7 @@ export const generators = [
 			type: 'object',
 			required: ['oneOf'],
 			additionalProperties: false,
+			definitions,
 			properties: {
 				type: {type: 'string'},
 				oneOf: {
@@ -102,7 +102,7 @@ export const generators = [
 									},
 								},
 							},
-							UnrealEngineString_schema,
+							UnrealEngineStringReference_general_schema,
 							{
 								type: 'object',
 								required: ['type', 'const'],
@@ -242,21 +242,8 @@ export const generators = [
 							);
 						}
 
-						return ts.factory.createTypeReferenceNode(
-							adjust_class_name('UnrealEngineString'),
-							[
-								ts.factory.createTypeReferenceNode(
-									'string_starts_with',
-									[
-										ts.factory.createLiteralTypeNode(
-											ts.factory.createStringLiteral(
-												entry.UnrealEngineString
-													.UnrealEngineString_prefix
-											)
-										),
-									]
-								),
-							]
+						return create_UnrealEngineStringReference_reference_type(
+							entry.UnrealEngineStringReference
 						);
 					})
 				)

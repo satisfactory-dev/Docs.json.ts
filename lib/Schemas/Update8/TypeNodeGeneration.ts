@@ -817,22 +817,14 @@ export class Update8TypeNodeGeneration {
 
 		checked.push(ref);
 
-		const {prefix, value} = {
-			prefix: schema.definitions['NativeClass--NativeClass']
-				.UnrealEngineString.UnrealEngineString_prefix,
-			value: schema.definitions['NativeClass--NativeClass']
-				.UnrealEngineString.pattern,
-		};
+		const prefix =
+			schema.definitions['NativeClass--NativeClass']
+				.UnrealEngineStringReference.left;
 
 		const definition_name = ref.substring(14);
 
-		if (value.startsWith('^')) {
-			filenames[definition_name] =
-				`classes/${adjust_unrealengine_prefix(prefix)}/${adjust_unrealengine_value(definition_name)}.ts`;
-		} else {
-			filenames[definition_name] =
-				`classes/${adjust_unrealengine_prefix(prefix)}/${adjust_unrealengine_value(value)}.ts`;
-		}
+		filenames[definition_name] =
+			`classes/${adjust_unrealengine_prefix(prefix)}/${adjust_unrealengine_value(definition_name)}.ts`;
 	}
 
 	private generate_concrete_class(

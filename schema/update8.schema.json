@@ -6,10 +6,11 @@
 		"NativeClass--NativeClass": {
 			"type": "string",
 			"minLength": 1,
-			"UnrealEngineString": {
-				"UnrealEngineString_prefix": "/Script/CoreUObject.Class",
-				"type": "string",
-				"pattern": "^/Script/FactoryGame\\.FG"
+			"UnrealEngineStringReference": {
+				"left": "/Script/CoreUObject.Class",
+				"right": {
+					"starts_with": "/Script/FactoryGame.FG"
+				}
 			}
 		},
 		"NativeClass--Classes": {
@@ -329,10 +330,8 @@
 				{
 					"type": "string",
 					"minLength": 1,
-					"UnrealEngineString": {
-						"UnrealEngineString_prefix": "/Script/Engine.Texture2D",
-						"type": "string",
-						"pattern": "^/Game/FactoryGame/"
+					"UnrealEngineStringReference": {
+						"left": "/Script/Engine.Texture2D"
 					}
 				}
 			]
@@ -434,11 +433,7 @@
 		"ItemClass--prop": {
 			"type": "string",
 			"minLength": 1,
-			"UnrealEngineString": {
-				"UnrealEngineString_prefix": "/Script/Engine.BlueprintGeneratedClass",
-				"type": "string",
-				"pattern": "^/Game/FactoryGame/(?:[^/]+/)+([^.]+).\\1_C$"
-			}
+			"UnrealEngineStringReference": true
 		},
 		"ItemClass-and-amount": {
 			"type": "string",
@@ -610,10 +605,10 @@
 								"items": {
 									"type": "string",
 									"minLength": 1,
-									"UnrealEngineString": {
-										"type": "string",
-										"UnrealEngineString_prefix": "/Script/Engine.BlueprintGeneratedClass",
-										"pattern": "^(/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Transport/.+)$"
+									"UnrealEngineStringReference": {
+										"right": {
+											"starts_with": "/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Transport/"
+										}
 									}
 								}
 							}
@@ -658,10 +653,17 @@
 						"items": {
 							"type": "string",
 							"minLength": 1,
-							"UnrealEngineString": {
-								"type": "string",
-								"UnrealEngineString_prefix": "/Script/Engine.BlueprintGeneratedClass",
-								"pattern": "^/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_[A-Z][A-z]+/SC_[A-Z][A-z]+\\.SC_[A-Z][A-z]+_C"
+							"UnrealEngineStringReference": {
+								"right": {
+									"starts_with": [
+										"/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Special/",
+										"/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Walls/",
+										"/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Transport/",
+										"/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Power/",
+										"/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Production/",
+										"/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Organisation/"
+									]
+								}
 							}
 						}
 					}
@@ -1868,10 +1870,10 @@
 						"items": {
 							"type": "string",
 							"minLength": 1,
-							"UnrealEngineString": {
-								"UnrealEngineString_prefix": "/Script/Engine.BlueprintGeneratedClass",
-								"type": "string",
-								"pattern": "^/Game/FactoryGame/Resource/Tape/"
+							"UnrealEngineStringReference": {
+								"right": {
+									"starts_with": "/Game/FactoryGame/Resource/Tape/"
+								}
 							}
 						}
 					}
@@ -1896,11 +1898,7 @@
 						"items": {
 							"type": "string",
 							"minLength": 1,
-							"UnrealEngineString": {
-								"UnrealEngineString_prefix": "/Script/Engine.BlueprintGeneratedClass",
-								"type": "string",
-								"pattern": "^/Game/FactoryGame/(?:(?:Events/Christmas|Recipes|Equipment|((Prototype/)?Buildable)/(?:-Shared/Customization/(?:Swatches|Materials|Patterns|Skins)|Factory|Building|Beams))/|Recipe_PipeHyperStart.Recipe_PipeHyperStart_C)"
-							}
+							"UnrealEngineStringReference": true
 						}
 					}
 				}
@@ -1934,10 +1932,10 @@
 								"items": {
 									"type": "string",
 									"minLength": 1,
-									"UnrealEngineString": {
-										"UnrealEngineString_prefix": "/Script/Engine.BlueprintGeneratedClass",
-										"type": "string",
-										"pattern": "^/Game/FactoryGame/Resource/"
+									"UnrealEngineStringReference": {
+										"right": {
+											"starts_with": "/Game/FactoryGame/Resource/"
+										}
 									}
 								}
 							}
@@ -1958,11 +1956,7 @@
 								"ResourceDescriptor": {
 									"type": "string",
 									"minLength": 1,
-									"UnrealEngineString": {
-										"UnrealEngineString_prefix": "/Script/Engine.BlueprintGeneratedClass",
-										"type": "string",
-										"pattern": "^/Game/FactoryGame/(?:[^/]+/)+([^.]+).\\1_C$"
-									}
+									"UnrealEngineStringReference": true
 								},
 								"ResourceNodeType": {
 									"type": "string",
@@ -1992,11 +1986,7 @@
 						"items": {
 							"type": "string",
 							"minLength": 1,
-							"UnrealEngineString": {
-								"UnrealEngineString_prefix": "/Script/Engine.BlueprintGeneratedClass",
-								"type": "string",
-								"pattern": "^/Game/FactoryGame/Emotes/"
-							}
+							"UnrealEngineStringReference": true
 						}
 					}
 				}
@@ -2005,10 +1995,14 @@
 		"FGSchematic--mUnlocks_mSchematics--mSchematics": {
 			"type": "string",
 			"minLength": 1,
-			"UnrealEngineString": {
-				"UnrealEngineString_prefix": "/Script/Engine.BlueprintGeneratedClass",
-				"type": "string",
-				"pattern": "^/Game/FactoryGame/(Schematics|Events/Christmas)/"
+			"UnrealEngineStringReference": {
+				"left": "/Script/Engine.BlueprintGeneratedClass",
+				"right": {
+					"starts_with": [
+						"/Game/FactoryGame/Schematics/",
+						"/Game/FactoryGame/Events/Christmas/"
+					]
+				}
 			}
 		},
 		"FGSchematic--mUnlocks_mSchematics": {
@@ -2086,11 +2080,7 @@
 								"ItemDescriptor": {
 									"type": "string",
 									"minLength": 1,
-									"UnrealEngineString": {
-										"UnrealEngineString_prefix": "/Script/Engine.BlueprintGeneratedClass",
-										"type": "string",
-										"pattern": "^/Game/FactoryGame/"
-									}
+									"UnrealEngineStringReference": true
 								},
 								"ActorsAllowedToScan": {
 									"type": "array",
@@ -2098,10 +2088,8 @@
 									"items": {
 										"type": "string",
 										"minLength": 1,
-										"UnrealEngineString": {
-											"UnrealEngineString_prefix": "/Script/CoreUObject.Class",
-											"type": "string",
-											"pattern": "^/Script/FactoryGame\\."
+										"UnrealEngineStringReference": {
+											"left": "/Script/CoreUObject.Class"
 										}
 									}
 								}
@@ -2184,10 +2172,10 @@
 										{
 											"type": "string",
 											"minLength": 1,
-											"UnrealEngineString": {
-												"type": "string",
-												"UnrealEngineString_prefix": "/Script/Engine.BlueprintGeneratedClass",
-												"pattern": "^/Game/FactoryGame/Schematics/(?:ResourceSinkShop|Schematic)Categories/([^.]+).\\1_C$"
+											"UnrealEngineStringReference": {
+												"right": {
+													"starts_with": "/Game/FactoryGame/Schematics/"
+												}
 											}
 										}
 									]
@@ -2236,10 +2224,10 @@
 										{
 											"type": "string",
 											"minLength": 1,
-											"UnrealEngineString": {
-												"UnrealEngineString_prefix": "/Script/Engine.BlueprintGeneratedClass",
-												"type": "string",
-												"pattern": "^/Game/FactoryGame/Schematics/ResourceSink/"
+											"UnrealEngineStringReference": {
+												"right": {
+													"starts_with": "/Game/FactoryGame/Schematics/ResourceSink/"
+												}
 											}
 										},
 										{
@@ -2519,10 +2507,10 @@
 								"items": {
 									"type": "string",
 									"minLength": 1,
-									"UnrealEngineString": {
-										"UnrealEngineString_prefix": "/Script/Engine.BlueprintGeneratedClass",
-										"type": "string",
-										"pattern": "^/Game/FactoryGame/Buildable/Building/Fence/"
+									"UnrealEngineStringReference": {
+										"right": {
+											"starts_with": "/Game/FactoryGame/Buildable/Building/Fence/"
+										}
 									}
 								}
 							}
@@ -2673,10 +2661,11 @@
 						"items": {
 							"type": "string",
 							"minLength": 1,
-							"UnrealEngineString": {
-								"UnrealEngineString_prefix": "/Script/FactoryGame.FGRailroadTrackConnectionComponent",
-								"type": "string",
-								"pattern": "^/Game/FactoryGame/Buildable/Factory/Train/Track/"
+							"UnrealEngineStringReference": {
+								"left": "/Script/FactoryGame.FGRailroadTrackConnectionComponent",
+								"right": {
+									"starts_with": "/Game/FactoryGame/Buildable/Factory/Train/Track/"
+								}
 							}
 						}
 					}
@@ -3010,10 +2999,12 @@
 						"minItems": 1,
 						"items": {
 							"type": "string",
-							"UnrealEngineString": {
-								"UnrealEngineString_prefix": "/Script/Engine.StaticMesh",
-								"type": "string",
-								"pattern": "^/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/"
+							"minLength": 1,
+							"UnrealEngineStringReference": {
+								"left": "/Script/Engine.StaticMesh",
+								"right": {
+									"starts_with": "/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/"
+								}
 							}
 						}
 					}
@@ -3441,10 +3432,10 @@
 						"items": {
 							"type": "string",
 							"minLength": 1,
-							"UnrealEngineString": {
-								"type": "string",
-								"UnrealEngineString_prefix": "/Script/Engine.BlueprintGeneratedClass",
-								"pattern": "^/Game/FactoryGame/Testing/JetPack/"
+							"UnrealEngineStringReference": {
+								"right": {
+									"starts_with": "/Game/FactoryGame/Testing/JetPack/"
+								}
 							}
 						}
 					}
@@ -3513,10 +3504,11 @@
 								"Material": {
 									"type": "string",
 									"minLength": 1,
-									"UnrealEngineString": {
-										"UnrealEngineString_prefix": "/Script/Engine.MaterialInstanceConstant",
-										"type": "string",
-										"pattern": "^/Game/FactoryGame/Character/Player/Material/"
+									"UnrealEngineStringReference": {
+										"left": "/Script/Engine.MaterialInstanceConstant",
+										"right": {
+											"starts_with": "/Game/FactoryGame/Character/Player/Material/"
+										}
 									}
 								}
 							}
@@ -4586,11 +4578,7 @@
 		"FGBuildable--mAllowedResources--default-UnrealEngineString": {
 			"type": "string",
 			"minLength": 1,
-			"UnrealEngineString": {
-				"UnrealEngineString_prefix": "/Script/Engine.BlueprintGeneratedClass",
-				"type": "string",
-				"pattern": "^/Game/FactoryGame/"
-			}
+			"UnrealEngineStringReference": true
 		},
 		"FGBuildable--extractor-base--shared": {
 			"type": "object",
@@ -4729,10 +4717,8 @@
 						"items": {
 							"type": "string",
 							"minLength": 1,
-							"UnrealEngineString": {
-								"UnrealEngineString_prefix": "/Script/Engine.BlueprintGeneratedClass",
-								"type": "string",
-								"pattern": "^/Game/FactoryGame/Resource/RawResources/Water/Desc_Water.Desc_Water_C$"
+							"UnrealEngineStringReference": {
+								"right": "/Game/FactoryGame/Resource/RawResources/Water/Desc_Water.Desc_Water_C"
 							}
 						}
 					}
@@ -4825,10 +4811,8 @@
 						"items": {
 							"type": "string",
 							"minLength": 1,
-							"UnrealEngineString": {
-								"UnrealEngineString_prefix": "/Script/Engine.BlueprintGeneratedClass",
-								"type": "string",
-								"pattern": "^/Game/FactoryGame/Resource/RawResources/CrudeOil/Desc_LiquidOil.Desc_LiquidOil_C$"
+							"UnrealEngineStringReference": {
+								"right": "/Game/FactoryGame/Resource/RawResources/CrudeOil/Desc_LiquidOil.Desc_LiquidOil_C"
 							}
 						}
 					}
@@ -4863,10 +4847,14 @@
 								"ParticleSystem1_9_F0CF81514E1E1C5007AC99B0C59C63CD": {
 									"type": "string",
 									"minLength": 1,
-									"UnrealEngineString": {
-										"type": "string",
-										"UnrealEngineString_prefix": "/Script/Engine.ParticleSystem",
-										"pattern": "^/Game/FactoryGame/(?:VFX|Buildable)/Factory/"
+									"UnrealEngineStringReference": {
+										"left": "/Script/Engine.ParticleSystem",
+										"right": {
+											"starts_with": [
+												"/Game/FactoryGame/VFX/Factory/",
+												"/Game/FactoryGame/Buildable/Factory/"
+											]
+										}
 									}
 								}
 							}
@@ -5226,10 +5214,10 @@
 				"mSpentFuelClass": {
 					"type": "string",
 					"minLength": 1,
-					"UnrealEngineString": {
-						"UnrealEngineString_prefix": "/Script/Engine.BlueprintGeneratedClass",
-						"type": "string",
-						"pattern": "^/Game/FactoryGame/Resource/Parts/NuclearWaste/"
+					"UnrealEngineStringReference": {
+						"right": {
+							"starts_with": "/Game/FactoryGame/Resource/Parts/NuclearWaste/"
+						}
 					}
 				},
 				"mAmountOfWaste": {
@@ -5428,10 +5416,11 @@
 						"items": {
 							"type": "string",
 							"minLength": 1,
-							"UnrealEngineString": {
-								"UnrealEngineString_prefix": "/Script/FactoryGame.FGTrainPlatformConnection",
-								"type": "string",
-								"pattern": "^/Game/FactoryGame/Buildable/Factory/Train/Station/"
+							"UnrealEngineStringReference": {
+								"left": "/Script/FactoryGame.FGTrainPlatformConnection",
+								"right": {
+									"starts_with": "/Game/FactoryGame/Buildable/Factory/Train/Station/"
+								}
 							}
 						}
 					}
@@ -6203,10 +6192,14 @@
 				"items": {
 					"type": "string",
 					"minLength": 1,
-					"UnrealEngineString": {
-						"UnrealEngineString_prefix_pattern": "^/Game/FactoryGame/-Shared/Blueprint/DamageTypes/",
-						"type": "string",
-						"pattern": "^/Game/FactoryGame/"
+					"UnrealEngineStringReference": {
+						"left": [
+							"/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_PointDamageType_Energy.BP_PointDamageType_Energy_C",
+							"/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_PointDamageType_Gas.BP_PointDamageType_Gas_C",
+							"/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_RadialDamageType_Gas.BP_RadialDamageType_Gas_C",
+							"/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_PointDamageType_Physical.BP_PointDamageType_Physical_C",
+							"/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_RadialDamageType_Explosive.BP_RadialDamageType_Explosive_C"
+						]
 					}
 				}
 			}
@@ -6305,10 +6298,11 @@
 								"MaterialInterface": {
 									"type": "string",
 									"minLength": 1,
-									"UnrealEngineString": {
-										"UnrealEngineString_prefix_pattern": "^/Script/Engine\\.(MaterialInstanceConstant|Material)",
-										"type": "string",
-										"pattern": "^/Game/FactoryGame/"
+									"UnrealEngineStringReference": {
+										"left": [
+											"/Script/Engine.MaterialInstanceConstant",
+											"/Script/Engine.Material"
+										]
 									}
 								},
 								"MaterialSlotName": {
@@ -6345,10 +6339,8 @@
 						"items": {
 							"type": "string",
 							"minLength": 1,
-							"UnrealEngineString": {
-								"UnrealEngineString_prefix": "/Script/Engine.MaterialInstanceConstant",
-								"type": "string",
-								"pattern": "^/Game/FactoryGame/"
+							"UnrealEngineStringReference": {
+								"left": "/Script/Engine.MaterialInstanceConstant"
 							}
 						}
 					}
@@ -6385,10 +6377,11 @@
 								"items": {
 									"type": "string",
 									"minLength": 1,
-									"UnrealEngineString": {
-										"UnrealEngineString_prefix": "/Script/AkAudio.AkAudioEvent",
-										"type": "string",
-										"pattern": "^/Game/WwiseAudio/Events/"
+									"UnrealEngineStringReference": {
+										"left": "/Script/AkAudio.AkAudioEvent",
+										"right": {
+											"starts_with": "/Game/WwiseAudio/Events/"
+										}
 									}
 								}
 							}
@@ -6515,10 +6508,10 @@
 										"ActorClass": {
 											"type": "string",
 											"minLength": 1,
-											"UnrealEngineString": {
-												"UnrealEngineString_prefix": "/Script/Engine.BlueprintGeneratedClass",
-												"type": "string",
-												"pattern": "^/Game/FactoryGame/Character/Creature/Enemy/"
+											"UnrealEngineStringReference": {
+												"right": {
+													"starts_with": "/Game/FactoryGame/Character/Creature/Enemy/"
+												}
 											}
 										}
 									}
@@ -6662,11 +6655,7 @@
 						"items": {
 							"type": "string",
 							"minLength": 1,
-							"UnrealEngineString": {
-								"UnrealEngineString_prefix": "/Script/Engine.BlueprintGeneratedClass",
-								"type": "string",
-								"pattern": "^/Game/FactoryGame/(Resource/Parts|Equipment/[^/]+/Ammo|Events/Christmas/Fireworks)/"
-							}
+							"UnrealEngineStringReference": true
 						}
 					}
 				},
@@ -6929,11 +6918,7 @@
 						"items": {
 							"type": "string",
 							"minLength": 1,
-							"UnrealEngineString": {
-								"UnrealEngineString_prefix": "/Script/Engine.BlueprintGeneratedClass",
-								"type": "string",
-								"pattern": "^/Game/FactoryGame/"
-							}
+							"UnrealEngineStringReference": true
 						}
 					}
 				}

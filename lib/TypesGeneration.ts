@@ -6,13 +6,13 @@ import {
 } from 'ajv/dist/2020';
 import ts from 'typescript';
 
-declare type code_generator<T extends object, T2 extends string = string> = (
-	data: T,
-	reference_name: T2
-) => ts.Node;
+declare type code_generator<
+	T extends object | true,
+	T2 extends string = string,
+> = (data: T, reference_name: T2) => ts.Node;
 
 export abstract class TypesGeneration<
-	T1 extends object,
+	T1 extends object | true,
 	T2 extends T1 | string,
 	T3 extends string = string,
 > {
@@ -26,7 +26,7 @@ export abstract class TypesGeneration<
 }
 
 export class TypesGenerationFromSchema<
-	T extends object,
+	T extends object | true,
 > extends TypesGeneration<T, T> {
 	public schema: Schema;
 	private validation: ValidateFunction | undefined;

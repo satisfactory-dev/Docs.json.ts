@@ -17,7 +17,7 @@ export class GenerationResult<T> {
 	}
 }
 
-export type DataType = {[key: string]: any};
+export type DataType = {[key: string]: any} | true;
 
 export type ResultGenerator<
 	T1,

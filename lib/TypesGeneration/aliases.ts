@@ -9,12 +9,12 @@ import {
 	create_object_type_alias,
 	create_type,
 	create_union,
-	create_UnrealEngineString_reference_type,
+	create_UnrealEngineStringReference_reference_type,
 } from '../TsFactoryWrapper';
 import ts from 'typescript';
 import {
-	UnrealEngineString_schema,
-	UnrealEngineString_type,
+	UnrealEngineStringReference_general_schema,
+	UnrealEngineStringReference_general_type,
 } from './validators';
 import {
 	TypeNodeGeneration,
@@ -55,15 +55,15 @@ export const generators = [
 			)
 		);
 	}),
-	new TypesGenerationFromSchema<UnrealEngineString_type>(
-		UnrealEngineString_schema,
+	new TypesGenerationFromSchema<UnrealEngineStringReference_general_type>(
+		UnrealEngineStringReference_general_schema,
 		(data, reference_name) => {
 			return ts.factory.createTypeAliasDeclaration(
 				[create_modifier('export')],
 				adjust_class_name(reference_name),
 				undefined,
-				create_UnrealEngineString_reference_type(
-					data.UnrealEngineString
+				create_UnrealEngineStringReference_reference_type(
+					data.UnrealEngineStringReference
 				)
 			);
 		}

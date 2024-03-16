@@ -1,4 +1,4 @@
-import ts, {TypeReferenceNode} from 'typescript';
+import ts, {TypeNode, TypeReferenceNode} from 'typescript';
 import {
 	ImportTracker,
 	TypesGenerationFromSchema,
@@ -21,12 +21,14 @@ import {
 	create_index_access,
 	create_object_type,
 	very_flexibly_create_regex_validation_function,
-	create_UnrealEngineString_reference_type,
 	create_conditional_UnrealEngineString_type_reference,
 	conditional_UnrealEngineString_type_arguments,
 	create_union,
 	create_literal_node_from_value,
 	createClass__members__with_auto_constructor,
+	flexibly_create_UnrealEngineString_reference_type,
+	possibly_create_lazy_union,
+	create_UnrealEngineStringReference_reference_type,
 } from '../TsFactoryWrapper';
 import {
 	TypeNodeGeneration,
@@ -628,19 +630,21 @@ export const custom_generators = [
 								[create_type('string')]
 							)
 						),
-						undefined
+						create_literal_node_from_value(
+							UnrealEngineStringReference_left_default[0]
+						)
 					),
 					ts.factory.createTypeParameterDeclaration(
 						undefined,
 						'value',
-						ts.factory.createTypeReferenceNode(
-							'StringPassedRegExp',
-							[create_type('string')]
+						create_union(
+							create_type('string'),
+							ts.factory.createTypeReferenceNode(
+								'string_starts_with',
+								[create_type('string')]
+							)
 						),
-						ts.factory.createTypeReferenceNode(
-							'StringPassedRegExp',
-							[create_type('string')]
-						)
+						create_type('string')
 					),
 				]
 			),
@@ -897,66 +901,157 @@ export const custom_generators = [
 	},
 ];
 
-export const UnrealEngineString_schema = {
-	type: 'object',
-	required: ['type', 'UnrealEngineString'],
-	additionalProperties: false,
-	properties: {
-		type: {type: 'string', const: 'string'},
-		minLength: {type: 'number', const: 1},
-		UnrealEngineString: {
-			type: 'object',
-			required: ['type', 'UnrealEngineString_prefix', 'pattern'],
-			additionalProperties: false,
-			properties: {
-				type: {type: 'string', const: 'string'},
-				UnrealEngineString_prefix: {type: 'string', minLength: 1},
-				pattern: {type: 'string', minLength: 2},
-			},
-		},
-	},
+export const UnrealEngineStringReference_general_regex =
+	'/(?:[A-Z-][A-Za-z0-9_-]+/)+(?:[A-Z][A-Za-z_0-9-]+\\.[A-Z][A-Za-z_0-9-]+(?:_C)?(?::[A-Z][A-Za-z0-9_]+)?|[A-Z][A-Za-z_]+\\.[A-Z][A-Za-z_]+)';
+
+export type UnrealEngineStringReference_string_or_string_array =
+	| string
+	| [string, ...string[]];
+
+export type UnrealEngineStringReference_right =
+	| UnrealEngineStringReference_string_or_string_array
+	| {starts_with: UnrealEngineStringReference_string_or_string_array};
+
+export type UnrealEngineStringReference_type =
+	| {
+			left: UnrealEngineStringReference_string_or_string_array;
+			right: UnrealEngineStringReference_right;
+	  }
+	| {
+			left: UnrealEngineStringReference_string_or_string_array;
+	  }
+	| {
+			right: UnrealEngineStringReference_right;
+	  }
+	| true;
+
+export type UnrealEngineStringReference_general_type = {
+	type: 'string';
+	minLength: 1;
+	UnrealEngineStringReference: UnrealEngineStringReference_type;
 };
 
-export const UnrealEngineString_prefix_pattern_schema = {
-	type: 'object',
-	required: ['type', 'UnrealEngineString'],
-	additionalProperties: false,
-	properties: {
-		type: {type: 'string', const: 'string'},
-		minLength: {type: 'number', const: 1},
-		UnrealEngineString: {
-			type: 'object',
-			required: ['type', 'UnrealEngineString_prefix_pattern', 'pattern'],
-			additionalProperties: false,
-			properties: {
-				type: {type: 'string', const: 'string'},
-				UnrealEngineString_prefix_pattern: {
-					type: 'string',
-					minLength: 1,
+export const UnrealEngineStringReference_schema = {
+	definitions: {
+		UnrealEngineStringReference_schema_left_string: {
+			type: 'string',
+			pattern: `^(/Script/[A-Z][A-Za-z]+.[A-Z][A-Za-z]+(?:2D)?|${UnrealEngineStringReference_general_regex})$`,
+		},
+		UnrealEngineStringReference_schema_right_string: {
+			type: 'string',
+			pattern: `^${UnrealEngineStringReference_general_regex}$`,
+		},
+		UnrealEngineStringReference_schema_left_property: {
+			oneOf: [
+				{
+					$ref: '#/definitions/UnrealEngineStringReference_schema_left_string',
 				},
-				pattern: {type: 'string', minLength: 2},
+				{
+					type: 'array',
+					minItems: 1,
+					items: {
+						$ref: '#/definitions/UnrealEngineStringReference_schema_left_string',
+					},
+				},
+			],
+		},
+		UnrealEngineStringReference_schema_right_starts_with: {
+			type: 'string',
+			pattern:
+				'^/(?:[A-Z][A-Za-z_\\-.]+/)+(?:[A-Z][A-Za-z_\\-.]+/|[A-Z][A-Za-z_\\-.]+\\.[A-Z][A-Za-z_\\-]+)$',
+		},
+		UnrealEngineStringReference_schema_right_property: {
+			oneOf: [
+				{
+					$ref: '#/definitions/UnrealEngineStringReference_schema_right_string',
+				},
+				{
+					type: 'array',
+					minItems: 1,
+					items: {
+						$ref: '#/definitions/UnrealEngineStringReference_schema_right_string',
+					},
+				},
+				{
+					type: 'object',
+					required: ['starts_with'],
+					additionalProperties: false,
+					properties: {
+						starts_with: {
+							oneOf: [
+								{
+									$ref: '#/definitions/UnrealEngineStringReference_schema_right_starts_with',
+								},
+								{
+									type: 'array',
+									minItems: 1,
+									items: {
+										$ref: '#/definitions/UnrealEngineStringReference_schema_right_starts_with',
+									},
+								},
+							],
+						},
+					},
+				},
+			],
+		},
+	},
+	oneOf: [
+		{
+			type: 'object',
+			required: ['left', 'right'],
+			additionalProperties: false,
+			properties: {
+				left: {
+					$ref: '#/definitions/UnrealEngineStringReference_schema_left_property',
+				},
+				right: {
+					$ref: '#/definitions/UnrealEngineStringReference_schema_right_property',
+				},
 			},
 		},
+		{
+			type: 'object',
+			required: ['left'],
+			additionalProperties: false,
+			properties: {
+				left: {
+					$ref: '#/definitions/UnrealEngineStringReference_schema_left_property',
+				},
+			},
+		},
+		{
+			type: 'object',
+			required: ['right'],
+			additionalProperties: false,
+			properties: {
+				right: {
+					$ref: '#/definitions/UnrealEngineStringReference_schema_right_property',
+				},
+			},
+		},
+		{
+			type: 'boolean',
+			const: true,
+		},
+	],
+};
+
+export const UnrealEngineStringReference_general_schema = {
+	type: 'object',
+	required: ['type', 'minLength', 'UnrealEngineStringReference'],
+	additionalProperties: false,
+	definitions: UnrealEngineStringReference_schema.definitions,
+	properties: {
+		type: {type: 'string', const: 'string'},
+		minLength: {type: 'number', const: 1},
+		UnrealEngineStringReference: UnrealEngineStringReference_schema,
 	},
 };
 
-export type UnrealEngineString_type = {
-	type: 'string';
-	UnrealEngineString: {
-		type: 'string';
-		UnrealEngineString_prefix: string;
-		pattern: string;
-	};
-} & ({minLength: 1} | {});
-
-export type UnrealEngineString_pattern_type = {
-	type: 'string';
-	UnrealEngineString: {
-		type: 'string';
-		UnrealEngineString_prefix_pattern: string;
-		pattern: string;
-	};
-} & ({minLength: 1} | {});
+export const UnrealEngineStringReference_left_default = [
+	'/Script/Engine.BlueprintGeneratedClass',
+];
 
 export const vector_object_string_schema = {
 	type: 'object',
@@ -997,6 +1092,10 @@ export type vector_object_string_type = {
 				| '#/definitions/integer-string--signed';
 		};
 	};
+};
+
+const definitions = {
+	...UnrealEngineStringReference_schema.definitions,
 };
 
 export const type_node_generators = [
@@ -1136,32 +1235,14 @@ export const type_node_generators = [
 			});
 		}
 	),
-	new TypeNodeGeneration<UnrealEngineString_type>(
-		UnrealEngineString_schema,
-		(data) => {
-			return new TypeNodeGenerationResult(
-				() =>
-					create_UnrealEngineString_reference_type(
-						data.UnrealEngineString
-					),
-				{
-					'utils/validators': ['UnrealEngineString'],
-				}
-			);
-		}
-	),
-	new TypeNodeGeneration<UnrealEngineString_pattern_type>(
-		UnrealEngineString_prefix_pattern_schema,
-		(data) => {
-			return new TypeNodeGenerationResult(
-				() =>
-					create_UnrealEngineString_reference_type(
-						data.UnrealEngineString
-					),
-				{
-					'utils/validators': ['UnrealEngineString'],
-				}
-			);
+	new TypeNodeGeneration<UnrealEngineStringReference_general_type>(
+		UnrealEngineStringReference_general_schema,
+		(data_from_schema) => {
+			return new TypeNodeGenerationResult(() => {
+				return create_UnrealEngineStringReference_reference_type(
+					data_from_schema.UnrealEngineStringReference
+				);
+			});
 		}
 	),
 	new TypeNodeGeneration<{
