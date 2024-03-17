@@ -93,11 +93,12 @@ export class ValidationError extends Error {
 	}
 }
 
-export class GenerationException {
+export class GenerationException extends Error {
 	readonly progress: generation_result;
 	readonly exception: unknown;
 
 	constructor(progress: generation_result, exception: unknown) {
+		super('a generation exception occurred');
 		this.progress = progress;
 		this.exception = exception;
 	}

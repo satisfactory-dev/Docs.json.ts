@@ -25,7 +25,7 @@ import {
 	TypeNodeGenerationResult,
 	UnexpectedlyUnknownNoMatchError,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
-import ts, {Node} from 'typescript';
+import ts, {Node, TypeLiteralNode} from 'typescript';
 import {
 	array_is_non_empty,
 	object_has_property,
@@ -75,6 +75,11 @@ type typed_object_string_type = {
 type typed_object_string_general_type = {
 	type: 'string';
 	typed_object_string: typed_object_string_type;
+} & ({minLength: 1} | {});
+
+type typed_object_string_nested_type = {
+	type: 'string';
+	typed_object_string: {[key: string]: typed_object_string_general_type};
 } & ({minLength: 1} | {});
 
 type typed_object_string_array_type = [
@@ -184,6 +189,29 @@ export const typed_object_string_general_schema = {
 		type: {type: 'string', const: 'string'},
 		minLength: {type: 'number', const: 1},
 		typed_object_string: typed_object_string_schema,
+	},
+};
+export const typed_object_string_nested_schema = {
+	type: 'object',
+	required: ['type', 'typed_object_string'],
+	definitions: UnrealEngineStringReference_schema.definitions,
+	additionalProperties: false,
+	properties: {
+		type: {type: 'string', const: 'string'},
+		minLength: {type: 'number', const: 1},
+		typed_object_string: {
+			type: 'object',
+			patternProperties: {
+				[typed_object_string_property_regex]: {
+					type: 'object',
+					additionalProperties: false,
+					patternProperties: {
+						[typed_object_string_property_regex]:
+						typed_object_string_$ref_schema,
+					},
+				}
+			}
+		},
 	},
 };
 
@@ -590,6 +618,44 @@ export class TypedObjectString {
 					)
 				);
 			}),
+			new TypesGenerationFromSchema<typed_object_string_nested_type>(
+				typed_object_string_nested_schema,
+				(data, reference_name) => {
+					return createClass(
+						adjust_class_name(reference_name),
+						createClass__members__with_auto_constructor(
+							{
+								type: 'object',
+								required: Object.keys(
+									data.typed_object_string
+								) as [string, ...string[]],
+								properties: Object.fromEntries(Object.entries(data.typed_object_string).map((e) => {
+									const [property, value] = e;
+
+									if (
+										!this.is_$ref_object_dictionary(value) ||
+										!this.$ref_object_dictionary_is_auto_constructor_properties(value)
+									) {
+										throw new UnexpectedlyUnknownNoMatchError(
+											value,
+											`${reference_name}[${property}] not supported!`
+										);
+									}
+
+									return [
+										property,
+										value,
+									];
+								})) as any,
+							},
+							['public', 'readonly']
+						),
+						{
+							modifiers: ['export'],
+						}
+					);
+				}
+			),
 		];
 	}
 
@@ -610,27 +676,9 @@ export class TypedObjectString {
 		];
 	}
 
-	static TypeNodeGeneration(): [
-		TypeNodeGeneration<any>,
-		...TypeNodeGeneration<any>[],
-	] {
-		return [
-			new TypeNodeGeneration<typed_object_string_general_type>(
-				typed_object_string_general_schema,
-				(data) => {
-					if (
-						!this.is_$ref_object_dictionary(
-							data.typed_object_string
-						)
-					) {
-						console.log(data.typed_object_string);
-						throw new UnexpectedlyUnknownNoMatchError(
-							data.typed_object_string,
-							'not yet supported'
-						);
-					}
-
-					return new TypeNodeGenerationResult(() => {
+	private static general_type_to_object_type(
+		data:typed_object_string_general_type
+	) : TypeLiteralNode {
 						return create_object_type(
 							Object.fromEntries(
 								Object.entries(data.typed_object_string).map(
@@ -656,7 +704,45 @@ export class TypedObjectString {
 								)
 							)
 						);
+	}
+
+	static TypeNodeGeneration(): [
+		TypeNodeGeneration<any>,
+		...TypeNodeGeneration<any>[],
+	] {
+		return [
+			new TypeNodeGeneration<typed_object_string_nested_type>(
+				typed_object_string_nested_schema,
+				(data) => {
+					return new TypeNodeGenerationResult(() => {
+						return create_object_type(Object.fromEntries(
+							Object.entries(data.typed_object_string).map((e) => {
+								if (!this.is_$ref_object_dictionary(e[1])) {
+									throw new UnexpectedlyUnknownNoMatchError(e[1], `${e[0]} not a supported type!`);
+								}
+
+								return [e[0], this.general_type_to_object_type({type: 'string', typed_object_string: e[1]})];
+							})
+						));
 					});
+				}
+			),
+			new TypeNodeGeneration<typed_object_string_general_type>(
+				typed_object_string_general_schema,
+				(data) => {
+					if (
+						!this.is_$ref_object_dictionary(
+							data.typed_object_string
+						)
+					) {
+						console.log(data.typed_object_string);
+						throw new UnexpectedlyUnknownNoMatchError(
+							data.typed_object_string,
+							'not yet supported'
+						);
+					}
+
+					return new TypeNodeGenerationResult(() => this.general_type_to_object_type(data));
 				}
 			),
 			new TypeNodeGeneration<supported_type_node_generations>(

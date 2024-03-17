@@ -285,14 +285,14 @@ try {
 
 			console.error(exception.message);
 		} else {
-			console.error(exception);
+			process.stderr.write(JSON.stringify(exception, null, '\t') + '\n');
 		}
 
+		console.error('outer stack', err.stack);
 		if (
-			exception instanceof PartialMatchError ||
-			exception instanceof NoMatchError
+			exception instanceof Error
 		) {
-			console.error(exception.stack);
+			console.error('inner stack', exception.stack);
 		}
 	} else {
 		console.error('error not generation exception!');

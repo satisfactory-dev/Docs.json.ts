@@ -7100,23 +7100,15 @@
 				"newCustomizationData": {
 					"type": "string",
 					"minLength": 1,
-					"object_string": {
-						"type": "object",
-						"required": ["OverrideColorData"],
-						"properties": {
+					"typed_object_string": {
 							"OverrideColorData": {
-								"type": "object",
-								"required": ["PrimaryColor", "SecondaryColor"],
-								"properties": {
 									"PrimaryColor": {
-										"$ref": "#/definitions/color-decimal--semi-native"
+										"$ref": "#/definitions/color-decimal"
 									},
 									"SecondaryColor": {
-										"$ref": "#/definitions/color-decimal--semi-native"
+										"$ref": "#/definitions/color-decimal"
 									}
-								}
 							}
-						}
 					}
 				}
 			}
