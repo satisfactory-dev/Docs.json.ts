@@ -82,10 +82,6 @@
 			"type": "string",
 			"pattern": "^-?\\d+$"
 		},
-		"color--base": {
-			"type": "object",
-			"required": ["R", "G", "B", "A"]
-		},
 		"color": {
 			"type": "string",
 			"minLength": 1,
@@ -108,25 +104,6 @@
 			"type": "string",
 			"minLength": 1,
 			"typed_object_string": {
-				"R": {
-					"$ref": "#/definitions/decimal-string"
-				},
-				"G": {
-					"$ref": "#/definitions/decimal-string"
-				},
-				"B": {
-					"$ref": "#/definitions/decimal-string"
-				},
-				"A": {
-					"$ref": "#/definitions/decimal-string"
-				}
-			}
-		},
-		"color-decimal--semi-native": {
-			"type": "object",
-			"$ref": "#/definitions/color--base",
-			"unevaluatedProperties": false,
-			"properties": {
 				"R": {
 					"$ref": "#/definitions/decimal-string"
 				},
@@ -215,36 +192,6 @@
 				},
 				"Y": {
 					"$ref": "#/definitions/integer-string"
-				}
-			}
-		},
-		"xy--semi-native": {
-			"type": "object",
-			"required": ["X", "Y"],
-			"properties": {
-				"X": {
-					"$ref": "#/definitions/decimal-string--signed"
-				},
-				"Y": {
-					"$ref": "#/definitions/decimal-string--signed"
-				}
-			}
-		},
-		"quaternion--semi-native": {
-			"type": "object",
-			"required": ["X", "Y", "Z", "W"],
-			"properties": {
-				"X": {
-					"$ref": "#/definitions/decimal-string--signed"
-				},
-				"Y": {
-					"$ref": "#/definitions/decimal-string--signed"
-				},
-				"Z": {
-					"$ref": "#/definitions/decimal-string--signed"
-				},
-				"W": {
-					"$ref": "#/definitions/decimal-string"
 				}
 			}
 		},
@@ -1832,21 +1779,12 @@
 				}
 			}
 		},
-		"SpecifiedColor--semi-native": {
-			"type": "object",
-			"required": ["SpecifiedColor"],
-			"properties": {
-				"SpecifiedColor": {
-					"$ref": "#/definitions/color-decimal--semi-native"
-				}
-			}
-		},
 		"SpecifiedColor--inner": {
 			"type": "string",
 			"minLength": 1,
 			"typed_object_string": {
 				"SpecifiedColor": {
-					"$ref": "#/definitions/color-decimal--semi-native"
+					"$ref": "#/definitions/color-decimal"
 				}
 			}
 		},

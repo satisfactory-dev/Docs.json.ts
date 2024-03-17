@@ -1,6 +1,6 @@
 # Types Progress
 
-98.01% Complete (246 of 251)
+99.19% Complete (244 of 246)
 
 ## Basic Types
 
@@ -9,6 +9,8 @@
 -   [x] class
 -   [x] class--no-description
 -   [x] class--no-description-or-display-name
+-   [x] color
+-   [x] color-decimal
 -   [x] empty-object
 -   [x] FGBuildingDescriptor
 -   [x] FGChainsaw
@@ -51,13 +53,6 @@
 -   [x] None
 -   [x] transformation
 -   [x] weaponState
-
-## color
-
--   [x] color
--   [x] color-decimal
--   [x] color--base
--   [x] color-decimal--semi-native
 
 ## decimal-string
 
@@ -346,8 +341,7 @@
 
 ## SpecifiedColor
 
--   [ ] SpecifiedColor--inner
--   [x] SpecifiedColor--semi-native
+-   [x] SpecifiedColor--inner
 
 ## Texture2D
 
@@ -357,10 +351,8 @@
 ## vectors
 
 -   [x] pitch-yaw-roll
--   [ ] quaternion--semi-native
 -   [x] xy
 -   [x] xy--integer
--   [ ] xy--semi-native
 -   [x] xyz
 -   [x] xyz--integer
 -   [ ] xyz--semi-native

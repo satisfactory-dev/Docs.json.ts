@@ -12,12 +12,10 @@ import ts from 'typescript';
 export const target_files = {
 	xy: 'common/vectors.ts',
 	xyz: 'common/vectors.ts',
-	'xy--semi-native': 'common/vectors.ts',
 	'xyz--semi-native': 'common/vectors.ts',
 	'xy--integer': 'common/vectors.ts',
 	'xyz--integer': 'common/vectors.ts',
 	quaternion: 'common/vectors.ts',
-	'quaternion--semi-native': 'common/vectors.ts',
 	'pitch-yaw-roll': 'common/vectors.ts',
 };
 
@@ -27,11 +25,9 @@ export const type_node_generators = [
 		$ref:
 			| '#/definitions/xy'
 			| '#/definitions/xyz'
-			| '#/definitions/xy--semi-native'
 			| '#/definitions/xyz--semi-native'
 			| '#/definitions/xy--integer'
 			| '#/definitions/xyz--integer'
-			| '#/definitions/quaternion--semi-native'
 			| '#/definitions/pitch-yaw-roll';
 	}>(
 		{

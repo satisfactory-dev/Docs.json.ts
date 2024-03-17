@@ -201,9 +201,6 @@ export function createClass(
 }
 
 export const auto_constructor_property_types_from_generated_types = {
-	'#/definitions/quaternion--semi-native': adjust_class_name(
-		'quaternion--semi-native'
-	),
 	'#/definitions/xyz--semi-native': adjust_class_name('xyz--semi-native'),
 	'#/definitions/decimal-string--signed': adjust_class_name(
 		'decimal-string--signed__type'

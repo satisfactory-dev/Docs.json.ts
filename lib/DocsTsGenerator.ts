@@ -10,11 +10,6 @@ import standalone from 'ajv/dist/standalone';
 import update8_schema from '../schema/update8.schema.json' assert {type: 'json'};
 
 import {
-	target_files as color_target_files,
-	generators as color_generators,
-	type_node_generators as color_type_node_generators,
-} from './TypesGeneration/color';
-import {
 	target_files as enum_target_files,
 	generators as enum_generators,
 	type_node_generators as enum_type_node_generators,
@@ -375,7 +370,6 @@ export class DocsTsGenerator {
 		const target_files: {[key: string]: string} = Object.assign(
 			{},
 			enum_target_files,
-			color_target_files,
 			validator_target_files,
 			vectors_target_files,
 			constants_target_files,
@@ -390,7 +384,6 @@ export class DocsTsGenerator {
 			| TypesGenerationFromSchema<any>
 			| TypesGenerationMatchesReferenceName<any, any>
 		)[] = [
-			...color_generators,
 			...enum_generators,
 			...validator_generators,
 			...constants_generators,
@@ -406,7 +399,6 @@ export class DocsTsGenerator {
 			...const_type_node_generators,
 			...validators_type_node_generators,
 			...vectors_type_node_generators,
-			...color_type_node_generators,
 			...arrays_type_node_generators,
 			...type_node_generators,
 			...prefixes_type_node_generators,

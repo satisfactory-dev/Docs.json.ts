@@ -18,7 +18,6 @@ export const target_files = {
 	mScannerDisplayText: 'common/aliases.ts',
 	'ItemClass--prop': 'common/aliases.ts',
 	mOutputInventoryHandlerData: 'common/aliases.ts',
-	'SpecifiedColor--semi-native': 'classes/CoreUObject/FGSchematic.ts',
 };
 
 const string_aliases: (keyof typeof target_files)[] = ['mScannerDisplayText'];
@@ -49,30 +48,6 @@ export const generators = [
 		);
 	}),
 	...UnrealEngineStringReference.TypesGenerators(),
-	new TypesGenerationMatchesReferenceName<
-		{
-			type: 'object';
-			required: ['SpecifiedColor'];
-			properties: {
-				SpecifiedColor: {
-					$ref: '#/definitions/color-decimal--semi-native';
-				};
-			};
-		},
-		'SpecifiedColor--semi-native'
-	>(['SpecifiedColor--semi-native'], (data, reference_name) => {
-		return create_object_type_alias(
-			adjust_class_name(reference_name),
-			['declare'],
-			{
-				SpecifiedColor: ts.factory.createTypeReferenceNode(
-					adjust_class_name(
-						data.properties.SpecifiedColor['$ref'].substring(14)
-					)
-				),
-			}
-		);
-	}),
 ];
 
 export const type_node_generators = [
