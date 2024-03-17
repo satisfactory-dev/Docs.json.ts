@@ -8,7 +8,6 @@ import {
 } from './lib/DocsTsGenerator';
 import {writeFile} from 'node:fs/promises';
 import {
-	NoMatchError,
 	OneOfOrAnyOfNoMatchError,
 	PartialMatchError,
 	PropertyMatchFailure,

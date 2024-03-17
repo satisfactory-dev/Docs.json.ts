@@ -3,7 +3,6 @@ import {
 	adjust_class_name,
 	create_literal_node_from_value,
 	create_modifier,
-	create_object_type_alias,
 	create_type,
 	create_union,
 } from '../TsFactoryWrapper';

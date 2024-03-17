@@ -100,12 +100,12 @@ type typed_object_string_array_type = [
 	...typed_object_string_general_type[],
 ];
 
-type typed_object_string_combi_dictionary = {
+type typed_object_string_combination_dictionary = {
 	[key: string]:
 		| type_object_string_$ref_choices
 		| {type: 'string'; const: string}
 		| typed_object_string_$ref_only
-		| typed_object_string_combi_dictionary;
+		| typed_object_string_combination_dictionary;
 };
 
 const typed_object_string_$ref_schema = {
@@ -424,10 +424,10 @@ export class TypedObjectString {
 		return 0 !== Object.keys(maybe).length;
 	}
 
-	private static is_combi_dictionary(
+	private static is_combination_dictionary(
 		maybe: any,
 		current_depth = 0
-	): maybe is typed_object_string_combi_dictionary {
+	): maybe is typed_object_string_combination_dictionary {
 		if (!value_is_non_array_object(maybe)) {
 			return false;
 		}
@@ -444,7 +444,7 @@ export class TypedObjectString {
 				!this.is_$ref_object(e) &&
 				!this.is_supported_const_string_object(e) &&
 				!this.is_$ref_object_dictionary(e) &&
-				!this.is_combi_dictionary(e, current_depth + 1)
+				!this.is_combination_dictionary(e, current_depth + 1)
 		);
 
 		return Object.keys(maybe).length >= 1 && failed.length === 0;
@@ -632,12 +632,10 @@ export class TypedObjectString {
 							return create_object_type(
 								Object.fromEntries(
 									Object.entries(e.typed_object_string).map(
-										(entry, index) => {
+										(entry) => {
 											if (
 												!this.is_$ref_object(entry[1])
 											) {
-												const foo = entry[1];
-
 												throw new UnexpectedlyUnknownNoMatchError(
 													entry,
 													`${reference_name}.oneOf[${index}][${entry[0]}] not supported!`
@@ -725,8 +723,8 @@ export class TypedObjectString {
 		];
 	}
 
-	private static combi_dictionary_type_to_object_type(
-		data: typed_object_string_combi_dictionary
+	private static combination_dictionary_type_to_object_type(
+		data: typed_object_string_combination_dictionary
 	): TypeLiteralNode {
 		return create_object_type(
 			Object.fromEntries(
@@ -747,7 +745,7 @@ export class TypedObjectString {
 					}
 					throw new UnexpectedlyUnknownNoMatchError(
 						value,
-						`${property} not yet supported in combi_dictionary_type_to_object_type`
+						`${property} not yet supported in combination_dictionary_type_to_object_type`
 					);
 				})
 			)
@@ -783,10 +781,10 @@ export class TypedObjectString {
 								)
 							),
 						];
-					} else if (this.is_combi_dictionary(value)) {
+					} else if (this.is_combination_dictionary(value)) {
 						return [
 							property,
-							this.combi_dictionary_type_to_object_type(value),
+							this.combination_dictionary_type_to_object_type(value),
 						];
 					} else if (!this.is_$ref_object(value)) {
 						throw new UnexpectedlyUnknownNoMatchError(
@@ -861,11 +859,11 @@ export class TypedObjectString {
 						this.is_$ref_object_dictionary(
 							data.typed_object_string
 						);
-					const is_combi_dictionary = this.is_combi_dictionary(
+					const is_combination_dictionary = this.is_combination_dictionary(
 						data.typed_object_string
 					);
 
-					if (!is_$ref_object_dictionary && !is_combi_dictionary) {
+					if (!is_$ref_object_dictionary && !is_combination_dictionary) {
 						throw new UnexpectedlyUnknownNoMatchError(
 							data.typed_object_string,
 							'not yet supported in type node generation'
