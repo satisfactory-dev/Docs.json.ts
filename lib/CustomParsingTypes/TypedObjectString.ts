@@ -19,7 +19,6 @@ import {
 	createClass__members__with_auto_constructor,
 } from '../TsFactoryWrapper';
 import {
-	NoMatchError,
 	TypeNodeGeneration,
 	TypeNodeGenerationResult,
 	UnexpectedlyUnknownNoMatchError,

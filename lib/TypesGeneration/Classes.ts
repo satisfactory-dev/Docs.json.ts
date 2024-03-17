@@ -1,9 +1,7 @@
 import {
 	adjust_class_name,
 	create_modifier,
-	createClass,
 	create_type,
-	createClass__members__with_auto_constructor,
 	create_object_type_alias,
 	possibly_create_lazy_union,
 } from '../TsFactoryWrapper';

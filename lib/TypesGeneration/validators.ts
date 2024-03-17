@@ -1,4 +1,4 @@
-import ts, {TypeReferenceNode} from 'typescript';
+import ts from 'typescript';
 import {
 	ImportTracker,
 	TypesGenerationFromSchema,
@@ -16,8 +16,6 @@ import {
 	create_object_type,
 	very_flexibly_create_regex_validation_function,
 	create_literal_node_from_value,
-	createClass__members__with_auto_constructor,
-	createClass,
 } from '../TsFactoryWrapper';
 import {
 	TypeNodeGeneration,

@@ -1,7 +1,5 @@
-import {TypesGenerationMatchesReferenceName} from '../TypesGeneration';
 import {
 	adjust_class_name,
-	auto_constructor_property_types_from_generated_types,
 	createClass,
 	createClass__members__with_auto_constructor,
 } from '../TsFactoryWrapper';
@@ -24,16 +22,6 @@ export const target_files = {
 };
 
 export const supported_meta_types = ['transformation'];
-
-declare type vector_object_type = {
-	type: 'object';
-	required: [string, ...string[]];
-	properties: {
-		[key: string]: {
-			$ref: keyof typeof auto_constructor_property_types_from_generated_types;
-		};
-	};
-};
 
 export const type_node_generators = [
 	new TypeNodeGeneration<{
