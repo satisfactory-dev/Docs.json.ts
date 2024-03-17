@@ -114,6 +114,10 @@ export class TypeNodeGenerationMatcher extends ResultGenerationMatcher<
 	TypeNodeGenerationResult,
 	TypeNodeGeneration<any>
 > {
+    protected create_type_reference_result(reference: any): TypeNodeGenerationResult {
+        return new TypeNodeGenerationResult(() => ts.factory.createTypeReferenceNode(adjust_class_name(reference)));
+    }
+
 	protected create_union_result(
 		matches: [TypeNodeGenerationResult, ...TypeNodeGenerationResult[]]
 	): TypeNodeGenerationResult {

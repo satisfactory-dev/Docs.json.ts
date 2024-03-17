@@ -11,8 +11,9 @@ import {
 	UnexpectedlyUnknownNoMatchError,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 import {writeFile} from 'node:fs/promises';
-import {create_minimum_size_typed_array_of_single_type} from '../TsFactoryWrapper';
-
+import {adjust_class_name, create_minimum_size_typed_array_of_single_type, create_modifier} from '../TsFactoryWrapper';
+import {TypesGeneration_concrete, TypesGenerationFromSchema} from '../TypesGeneration';
+import ts from 'typescript';
 
 const already_configured = new WeakSet<Ajv>();
 
@@ -103,6 +104,38 @@ export class TypedArrayString
 		}
 
 		return TypedObjectString.ajv_macro_generator(true)(item.typed_object_string).pattern;
+	}
+
+	static TypesGenerators(): [
+		TypesGeneration_concrete,
+		...TypesGeneration_concrete[],
+	] {
+		return [
+			new TypesGenerationFromSchema<typed_array_string_parent>(
+				{
+					definitions: UnrealEngineStringReference_schema.definitions,
+					...typed_array_string_parent_schema
+				},
+				(data, reference_name) => {
+					if (!TypedObjectString.value_is_typed_object_string_general_type(data.typed_array_string.items)) {
+						throw new UnexpectedlyUnknownNoMatchError(
+							data.typed_array_string.items,
+							'Currently unsupported in TypedArrayString.item_to_regex'
+						);
+					}
+
+					return ts.factory.createTypeAliasDeclaration(
+						[create_modifier('export')],
+						adjust_class_name(reference_name),
+						undefined,
+						create_minimum_size_typed_array_of_single_type(
+							data.typed_array_string.minItems,
+							() => TypedObjectString.general_type_to_object_type(data.typed_array_string.items)
+						)
+					);
+				}
+			)
+		]
 	}
 
 	static TypeNodeGeneration(): [

@@ -10,6 +10,7 @@ import {
 	TypeNodeGenerationResult,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 import {TypedObjectString} from '../CustomParsingTypes/TypedObjectString';
+import {TypedArrayString} from '../CustomParsingTypes/TypedArrayString';
 
 declare type supported_base_classes_union =
 	| 'class--no-description-or-display-name'
@@ -31,6 +32,7 @@ export const target_files = {
 
 export const generators = [
 	...TypedObjectString.TypesGenerators(),
+	...TypedArrayString.TypesGenerators(),
 	new TypesGenerationMatchesReferenceName<
 		{
 			type: 'object';

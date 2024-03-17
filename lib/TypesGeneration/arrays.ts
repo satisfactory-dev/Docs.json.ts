@@ -13,7 +13,6 @@ import {
 
 export const target_files = {
 	mDamageTypes: 'common/arrays.ts',
-	'xyz-array': 'common/arrays.ts',
 	'ItemClass-and-amount': 'common/arrays.ts',
 	'ItemClass-only--array': 'common/arrays.ts',
 	mFuel: 'common/arrays.ts',
@@ -63,44 +62,6 @@ declare type ItemClass_and_Amount = {
 };
 
 export const generators = [
-	new TypesGenerationMatchesReferenceName<
-		{
-			type: 'string';
-			minLength: 1;
-			array_string: {
-				type: 'array';
-				minItems: 1;
-				items: {
-					type: 'object';
-					required: ['X', 'Y', 'Z'];
-					properties: {
-						X: {$ref: '#/definitions/decimal-string'};
-						Y: {$ref: '#/definitions/decimal-string--signed'};
-						Z: {$ref: '#/definitions/decimal-string--signed'};
-					};
-				};
-			};
-		},
-		'xyz-array'
-	>(['xyz-array'], (_, reference_name) => {
-		return ts.factory.createTypeAliasDeclaration(
-			[create_modifier('export')],
-			ts.factory.createIdentifier(adjust_class_name(reference_name)),
-			undefined,
-			ts.factory.createTupleTypeNode([
-				ts.factory.createTypeReferenceNode(
-					adjust_class_name('xyz--unsigned-x')
-				),
-				ts.factory.createRestTypeNode(
-					ts.factory.createArrayTypeNode(
-						ts.factory.createTypeReferenceNode(
-							adjust_class_name('xyz--unsigned-x')
-						)
-					)
-				),
-			])
-		);
-	}),
 	new TypesGenerationMatchesReferenceName<
 		ItemClass_and_Amount | ItemClass_only,
 		'ItemClass-and-amount' | 'ItemClass-only--array'
@@ -177,7 +138,6 @@ export const type_node_generators = [
 	new TypeNodeGeneration<{
 		$ref:
 			| '#/definitions/mDamageTypes'
-			| '#/definitions/xyz-array'
 			| '#/definitions/ItemClass-and-amount'
 			| '#/definitions/ItemClass-only--array'
 			| '#/definitions/mFuel';

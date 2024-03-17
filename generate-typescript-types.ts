@@ -76,7 +76,6 @@ async function update_progress(
 		'xy--integer': 'vectors',
 		'xy--semi-native': 'vectors',
 		'xyz--integer': 'vectors',
-		'xyz-array': 'vectors',
 		quaternion: 'vectors',
 		'quaternion--semi-native': 'vectors',
 		'pitch-yaw-roll': 'vectors',

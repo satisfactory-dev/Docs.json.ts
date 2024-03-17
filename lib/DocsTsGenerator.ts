@@ -405,6 +405,7 @@ export class DocsTsGenerator {
 		]);
 		type_node_generation.throw_on_failure_to_find =
 			throw_on_failure_to_find;
+		type_node_generation.definitions_to_check = update8_schema.definitions;
 
 		const supported_conversions: GenerationMatch<object>[] =
 			Object.entries(update8_schema.definitions)
@@ -533,13 +534,7 @@ export class DocsTsGenerator {
 						match.definition
 					);
 				} else {
-					update_progress();
-					throw new GenerationException(
-						progress,
-						new Error(
-							`no target file found for ${match.definition}`
-						)
-					);
+					target_files[match.definition] = 'common/unassigned.ts';
 				}
 			}
 

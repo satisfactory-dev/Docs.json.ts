@@ -231,13 +231,13 @@
 		"xyz-array": {
 			"type": "string",
 			"minLength": 1,
-			"array_string": {
+			"typed_array_string": {
 				"type": "array",
 				"minItems": 1,
 				"items": {
-					"type": "object",
-					"required": ["X", "Y", "Z"],
-					"properties": {
+					"type": "string",
+					"minLength": 1,
+					"typed_object_string": {
 						"X": {
 							"$ref": "#/definitions/decimal-string"
 						},

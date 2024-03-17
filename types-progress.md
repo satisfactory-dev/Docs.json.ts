@@ -354,8 +354,8 @@
 -   [x] xy--integer
 -   [x] xyz
 -   [x] xyz--integer
--   [x] xyz-array
 
 ## xyz
 
+-   [x] xyz-array
 -   [x] xyz--inner
