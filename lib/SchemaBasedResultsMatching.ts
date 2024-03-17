@@ -174,7 +174,11 @@ export abstract class ResultGenerationMatcher<
 		reference: string
 	): MatchResult;
 
-	private search(ajv: Ajv, property: object, already_checked:(keyof typeof this.definitions_to_check)[]): MatchResult | null {
+	private search(
+		ajv: Ajv,
+		property: object,
+		already_checked: (keyof typeof this.definitions_to_check)[]
+	): MatchResult | null {
 		for (const matcher of this.matchers) {
 			const match = matcher.match(ajv, property);
 
@@ -244,8 +248,7 @@ export abstract class ResultGenerationMatcher<
 			for (const sub_property of 'oneOf' in property
 				? property.oneOf
 				: property.anyOf) {
-				const match =
-					this.search(ajv, sub_property, already_checked);
+				const match = this.search(ajv, sub_property, already_checked);
 
 				if (!match) {
 					has_all_matches = false;
@@ -321,7 +324,11 @@ export abstract class ResultGenerationMatcher<
 		) as tuple_array_validator;
 
 		if (tuple_array_matcher(property)) {
-			const first = this.search(ajv, property.prefixItems[0], already_checked);
+			const first = this.search(
+				ajv,
+				property.prefixItems[0],
+				already_checked
+			);
 
 			if (!first) {
 				console.error(property.prefixItems[0]);
@@ -329,7 +336,11 @@ export abstract class ResultGenerationMatcher<
 				throw new Error('Failed to match first member of tuple');
 			}
 
-			const second = this.search(ajv, property.prefixItems[1], already_checked);
+			const second = this.search(
+				ajv,
+				property.prefixItems[1],
+				already_checked
+			);
 
 			if (!second) {
 				console.error(property.prefixItems[1]);
@@ -420,7 +431,11 @@ export abstract class ResultGenerationMatcher<
 		) as array_string_validator;
 
 		if (array_string_matcher(property)) {
-			const result = this.search(ajv, property.array_string.items, already_checked);
+			const result = this.search(
+				ajv,
+				property.array_string.items,
+				already_checked
+			);
 
 			if (result) {
 				return this.create_array_string_result(property, result);
@@ -485,7 +500,7 @@ export abstract class ResultGenerationMatcher<
 		ajv: Ajv,
 		property: object,
 		already_checked: (keyof typeof this.definitions_to_check)[] = []
-	): MatchResult|null {
+	): MatchResult | null {
 		if (
 			object_only_has_that_property(property, '$ref') &&
 			'string' === typeof property.$ref &&

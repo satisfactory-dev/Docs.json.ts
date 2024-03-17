@@ -139,30 +139,26 @@ export class TypedArrayString {
 	private static typed_array_string_type_alias_generator(
 		data: typed_array_string,
 		reference_name: string
-	) : TypeAliasDeclaration {
-					if (
-						!TypedObjectString.value_is_typed_object_string_general_type(
-					data.items
-						)
-					) {
-						throw new UnexpectedlyUnknownNoMatchError(
-					data.items,
-							'Currently unsupported in TypedArrayString.item_to_regex'
-						);
-					}
+	): TypeAliasDeclaration {
+		if (
+			!TypedObjectString.value_is_typed_object_string_general_type(
+				data.items
+			)
+		) {
+			throw new UnexpectedlyUnknownNoMatchError(
+				data.items,
+				'Currently unsupported in TypedArrayString.item_to_regex'
+			);
+		}
 
-					return ts.factory.createTypeAliasDeclaration(
-						[create_modifier('export')],
-						adjust_class_name(reference_name),
-						undefined,
-						create_minimum_size_typed_array_of_single_type(
-					data.minItems,
-							() =>
-								TypedObjectString.general_type_to_object_type(
-							data.items
-								)
-						)
-					);
+		return ts.factory.createTypeAliasDeclaration(
+			[create_modifier('export')],
+			adjust_class_name(reference_name),
+			undefined,
+			create_minimum_size_typed_array_of_single_type(data.minItems, () =>
+				TypedObjectString.general_type_to_object_type(data.items)
+			)
+		);
 	}
 
 	static TypesGenerators(): [
@@ -173,7 +169,7 @@ export class TypedArrayString {
 			new TypesGenerationFromSchema<typed_array_string_parent>(
 				{
 					definitions:
-					UnrealEngineStringReference_schema.definitions,
+						UnrealEngineStringReference_schema.definitions,
 					...typed_array_string_parent_schema,
 				},
 				(data, reference_name) => {
@@ -186,7 +182,7 @@ export class TypedArrayString {
 			new TypesGenerationFromSchema<typed_array_string>(
 				{
 					definitions:
-					UnrealEngineStringReference_schema.definitions,
+						UnrealEngineStringReference_schema.definitions,
 					...typed_array_string_schema,
 				},
 				this.typed_array_string_type_alias_generator
@@ -195,28 +191,24 @@ export class TypedArrayString {
 	}
 
 	private static typed_array_string_node_generation_result(
-		data:typed_array_string
-	) : TypeNodeGenerationResult {
-				if (
-					!TypedObjectString.value_is_typed_object_string_general_type(
+		data: typed_array_string
+	): TypeNodeGenerationResult {
+		if (
+			!TypedObjectString.value_is_typed_object_string_general_type(
 				data.items
-					)
-				) {
-					throw new UnexpectedlyUnknownNoMatchError(
+			)
+		) {
+			throw new UnexpectedlyUnknownNoMatchError(
 				data.items,
-						'Currently unsupported in TypedArrayString.item_to_regex'
-					);
-				}
+				'Currently unsupported in TypedArrayString.item_to_regex'
+			);
+		}
 
-				return new TypeNodeGenerationResult(() =>
-					create_minimum_size_typed_array_of_single_type(
-				data.minItems,
-						() =>
-							TypedObjectString.general_type_to_object_type(
-						data.items
-							)
-					)
-				);
+		return new TypeNodeGenerationResult(() =>
+			create_minimum_size_typed_array_of_single_type(data.minItems, () =>
+				TypedObjectString.general_type_to_object_type(data.items)
+			)
+		);
 	}
 
 	static TypeNodeGeneration(): [
@@ -227,21 +219,25 @@ export class TypedArrayString {
 			new TypeNodeGeneration<typed_array_string_parent>(
 				{
 					definitions:
-					UnrealEngineStringReference_schema.definitions,
+						UnrealEngineStringReference_schema.definitions,
 					...typed_array_string_parent_schema,
 				},
 				(data) => {
-					return this.typed_array_string_node_generation_result(data.typed_array_string);
+					return this.typed_array_string_node_generation_result(
+						data.typed_array_string
+					);
 				}
 			),
 			new TypeNodeGeneration<typed_array_string>(
 				{
 					definitions:
-					UnrealEngineStringReference_schema.definitions,
+						UnrealEngineStringReference_schema.definitions,
 					...typed_array_string_schema,
 				},
 				(data) => {
-					return this.typed_array_string_node_generation_result(data);
+					return this.typed_array_string_node_generation_result(
+						data
+					);
 				}
 			),
 		];

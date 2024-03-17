@@ -82,9 +82,7 @@ export const generators = [
 
 export const type_node_generators = [
 	new TypeNodeGeneration<{
-		$ref:
-			| '#/definitions/mDamageTypes'
-			| '#/definitions/mFuel';
+		$ref: '#/definitions/mDamageTypes' | '#/definitions/mFuel';
 	}>(
 		{
 			type: 'object',
