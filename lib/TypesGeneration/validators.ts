@@ -16,15 +16,14 @@ import {
 	create_object_type,
 	very_flexibly_create_regex_validation_function,
 	create_literal_node_from_value,
-	createClass__members__with_auto_constructor, createClass,
+	createClass__members__with_auto_constructor,
+	createClass,
 } from '../TsFactoryWrapper';
 import {
 	TypeNodeGeneration,
 	TypeNodeGenerationResult,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
-import {
-	UnrealEngineStringReference,
-} from '../CustomParsingTypes/UnrealEngineStringReference';
+import {UnrealEngineStringReference} from '../CustomParsingTypes/UnrealEngineStringReference';
 
 const validator_target_files = {
 	'decimal-string': 'utils/validators.ts',

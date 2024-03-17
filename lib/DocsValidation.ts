@@ -1,9 +1,7 @@
 import Ajv, {_, KeywordCxt} from 'ajv/dist/2020';
 
 import schema from '../schema/update8.schema.json' assert {type: 'json'};
-import {
-	UnrealEngineStringReference,
-} from './CustomParsingTypes/UnrealEngineStringReference';
+import {UnrealEngineStringReference} from './CustomParsingTypes/UnrealEngineStringReference';
 import {TypedObjectString} from './CustomParsingTypes/TypedObjectString';
 
 const {definitions} = schema;

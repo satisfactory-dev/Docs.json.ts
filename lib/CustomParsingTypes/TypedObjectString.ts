@@ -1,6 +1,7 @@
 import Ajv from 'ajv/dist/2020';
 import {
-	is_UnrealEngineStringReference_value, UnrealEngineStringReference,
+	is_UnrealEngineStringReference_value,
+	UnrealEngineStringReference,
 	UnrealEngineStringReference_inner_schema,
 	UnrealEngineStringReference_schema,
 } from './UnrealEngineStringReference';
@@ -82,8 +83,7 @@ const typed_object_string_$ref_schema = {
 	},
 };
 
-export class TypedObjectString
-{
+export class TypedObjectString {
 	static configure_ajv(ajv: Ajv) {
 		if (already_configured.has(ajv)) {
 			return;
@@ -107,7 +107,7 @@ export class TypedObjectString
 								additionalProperties: false,
 								patternProperties: {
 									[typed_object_string_property_regex]:
-									typed_object_string_$ref_schema,
+										typed_object_string_$ref_schema,
 								},
 							},
 							UnrealEngineStringReference_inner_schema,
@@ -188,9 +188,7 @@ export class TypedObjectString
 		return 0 !== Object.keys(maybe).length;
 	}
 
-	private static property_to_regex(
-		data: typed_object_string_type
-	): string {
+	private static property_to_regex(data: typed_object_string_type): string {
 		return `\\(${Object.entries(data)
 			.map((entry) => {
 				if (this.is_$ref_object(entry[1])) {
@@ -234,9 +232,7 @@ export class TypedObjectString
 
 	static ajv_macro_generator(inner: boolean) {
 		return (schema: typed_object_string_type) => {
-			const regex = `^${this.property_to_regex(
-				schema
-			)}`;
+			const regex = `^${this.property_to_regex(schema)}`;
 
 			return {
 				pattern: inner ? regex : `^${regex}$`,

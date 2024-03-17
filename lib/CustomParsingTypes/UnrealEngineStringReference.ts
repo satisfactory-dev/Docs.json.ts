@@ -16,7 +16,8 @@ import {
 	create_type,
 	create_union,
 	createClass,
-	createParameter, possibly_create_lazy_union,
+	createParameter,
+	possibly_create_lazy_union,
 } from '../TsFactoryWrapper';
 import {
 	TypeNodeGeneration,
@@ -58,15 +59,15 @@ export type UnrealEngineStringReference_right =
 
 export type UnrealEngineStringReference_type =
 	| {
-	left: UnrealEngineStringReference_string_or_string_array;
-	right: UnrealEngineStringReference_right;
-}
+			left: UnrealEngineStringReference_string_or_string_array;
+			right: UnrealEngineStringReference_right;
+	  }
 	| {
-	left: UnrealEngineStringReference_string_or_string_array;
-}
+			left: UnrealEngineStringReference_string_or_string_array;
+	  }
 	| {
-	right: UnrealEngineStringReference_right;
-}
+			right: UnrealEngineStringReference_right;
+	  }
 	| true;
 
 export type UnrealEngineStringReference_general_type = {
@@ -206,7 +207,7 @@ export const UnrealEngineStringReference_inner_schema = {
 		type: {type: 'string', const: 'string'},
 		minLength: {type: 'number', const: 1},
 		['UnrealEngineStringReference--inner']:
-		UnrealEngineStringReference_schema,
+			UnrealEngineStringReference_schema,
 	},
 };
 
@@ -246,21 +247,21 @@ export class UnrealEngineStringReference {
 					? `(?:${(data.right instanceof Array
 							? data.right
 							: [
-								'string' === typeof data.right
-									? data.right
-									: `(?:${(data.right
-											.starts_with instanceof Array
-											? data.right.starts_with
-											: [data.right.starts_with]
-									)
-										.map(
-											(starts_with) =>
-												starts_with +
-												'(?:[A-Z][A-Za-z0-9_.]+/)*[A-Z][A-Za-z_.0-9-]+(?::[A-Z][A-Za-z0-9]+)?'
-										)
-										.join('|')})`,
-							]
-					).join('|')})`
+									'string' === typeof data.right
+										? data.right
+										: `(?:${(data.right
+												.starts_with instanceof Array
+												? data.right.starts_with
+												: [data.right.starts_with]
+											)
+												.map(
+													(starts_with) =>
+														starts_with +
+														'(?:[A-Z][A-Za-z0-9_.]+/)*[A-Z][A-Za-z_.0-9-]+(?::[A-Z][A-Za-z0-9]+)?'
+												)
+												.join('|')})`,
+								]
+						).join('|')})`
 					: UnrealEngineStringReference_general_regex;
 
 			const regex = `(?:(?:${left_value})'(?:${right_value}|"${right_value}")')`;
@@ -394,7 +395,9 @@ export class UnrealEngineStringReference {
 							[
 								createParameter(
 									'prefix',
-									ts.factory.createTypeReferenceNode('prefix')
+									ts.factory.createTypeReferenceNode(
+										'prefix'
+									)
 								),
 								createParameter(
 									'value',
@@ -438,7 +441,9 @@ export class UnrealEngineStringReference {
 								),
 								createParameter(
 									'pattern',
-									ts.factory.createTypeReferenceNode('pattern')
+									ts.factory.createTypeReferenceNode(
+										'pattern'
+									)
 								),
 								createParameter(
 									ts.factory.createObjectBindingPattern([
@@ -626,7 +631,10 @@ export class UnrealEngineStringReference {
 										[
 											create_index_access('result', 1),
 											ts.factory.createAsExpression(
-												create_index_access('result', 2),
+												create_index_access(
+													'result',
+													2
+												),
 												ts.factory.createTypeReferenceNode(
 													'StringPassedRegExp',
 													[
@@ -893,8 +901,8 @@ function is_UnrealEngineStringReference_value_object(
 		object_has_property(maybe, 'right') &&
 		('object' === typeof maybe.right && !(maybe.right instanceof Array)
 			? 'starts_with' in maybe.right &&
-			1 === Object.keys(maybe.right).length &&
-			is_string_or_string_array(maybe.right.starts_with)
+				1 === Object.keys(maybe.right).length &&
+				is_string_or_string_array(maybe.right.starts_with)
 			: is_string_or_string_array(maybe.right));
 
 	return (
