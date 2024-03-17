@@ -40,9 +40,7 @@ export const type_node_generators = [
 			additionalProperties: false,
 			properties: {
 				$ref: {
-					oneOf: [
-						...Object.keys(target_files),
-					].map((ref) => {
+					oneOf: [...Object.keys(target_files)].map((ref) => {
 						return {type: 'string', const: `#/definitions/${ref}`};
 					}),
 				},

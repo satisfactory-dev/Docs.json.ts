@@ -49,7 +49,7 @@ import {
 const known_ref_file_targets = {
 	'quaternion--inner': 'common/vectors.ts',
 	'xyz--inner': 'common/vectors.ts',
-	'transformation': 'common/vectors.ts',
+	transformation: 'common/vectors.ts',
 };
 
 export class Update8TypeNodeGeneration {
@@ -1174,7 +1174,9 @@ export class Update8TypeNodeGeneration {
 		);
 	}
 
-	private is_known_key_file_target(ref: definition_key) : ref is definition_key & keyof typeof known_ref_file_targets {
+	private is_known_key_file_target(
+		ref: definition_key
+	): ref is definition_key & keyof typeof known_ref_file_targets {
 		return ref in known_ref_file_targets;
 	}
 

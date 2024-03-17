@@ -155,15 +155,12 @@ const supported_type_node_generations = {
 	required: ['$ref'],
 	additionalProperties: false,
 	properties: {
-		$ref: {type: 'string', enum: [
-			'#/definitions/transformation',
-		]},
+		$ref: {type: 'string', enum: ['#/definitions/transformation']},
 	},
 };
 
 type supported_type_node_generations = {
-	$ref:
-		'#/definitions/transformation'
+	$ref: '#/definitions/transformation';
 };
 
 export class TypedObjectString {
@@ -216,15 +213,19 @@ export class TypedObjectString {
 			'#/definitions/quaternion--inner' === $ref ||
 			'#/definitions/xyz--inner' === $ref
 		) {
-			const definition = schema.definitions[$ref.substring(14) as (
-					keyof typeof schema.definitions & (
-					| 'quaternion--inner'
-					| 'xyz--inner'
-				)
-			)];
+			const definition =
+				schema.definitions[
+					$ref.substring(14) as keyof typeof schema.definitions &
+						('quaternion--inner' | 'xyz--inner')
+				];
 
-			if (!this.is_$ref_object_dictionary(definition.typed_object_string)) {
-				throw new UnexpectedlyUnknownNoMatchError({definition}, 'typed_object_string property not usable!');
+			if (
+				!this.is_$ref_object_dictionary(definition.typed_object_string)
+			) {
+				throw new UnexpectedlyUnknownNoMatchError(
+					{definition},
+					'typed_object_string property not usable!'
+				);
 			}
 
 			value_regex = this.property_to_regex(
@@ -464,7 +465,11 @@ export class TypedObjectString {
 			new TypeNodeGeneration<supported_type_node_generations>(
 				supported_type_node_generations,
 				(data) => {
-					return new TypeNodeGenerationResult(() => ts.factory.createTypeReferenceNode(adjust_class_name(data.$ref.substring(14))));
+					return new TypeNodeGenerationResult(() =>
+						ts.factory.createTypeReferenceNode(
+							adjust_class_name(data.$ref.substring(14))
+						)
+					);
 				}
 			),
 		];

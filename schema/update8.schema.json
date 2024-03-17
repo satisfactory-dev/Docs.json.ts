@@ -352,15 +352,15 @@
 			"type": "string",
 			"minLength": 1,
 			"typed_object_string": {
-					"Rotation": {
-						"$ref": "#/definitions/quaternion--inner"
-					},
-					"Translation": {
-						"$ref": "#/definitions/xyz--inner"
-					},
-					"Scale3D": {
-						"$ref": "#/definitions/xyz--inner"
-					}
+				"Rotation": {
+					"$ref": "#/definitions/quaternion--inner"
+				},
+				"Translation": {
+					"$ref": "#/definitions/xyz--inner"
+				},
+				"Scale3D": {
+					"$ref": "#/definitions/xyz--inner"
+				}
 			}
 		},
 		"mStackSize": {
