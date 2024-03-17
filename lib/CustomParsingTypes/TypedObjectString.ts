@@ -437,7 +437,7 @@ export class TypedObjectString {
 			}
 
 			if ($ref.endsWith('--signed')) {
-				value_regex = `-?${value_regex}`;
+				value_regex = `(?:-${value_regex}|${value_regex})`;
 			}
 		} else if ('#/definitions/boolean' !== $ref) {
 			console.log(property, value);
