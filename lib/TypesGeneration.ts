@@ -25,6 +25,10 @@ export abstract class TypesGeneration<
 	abstract test(data: T2): boolean;
 }
 
+export type TypesGeneration_concrete =
+	| TypesGenerationFromSchema<any>
+	| TypesGenerationMatchesReferenceName<any, any>;
+
 export class TypesGenerationFromSchema<
 	T extends object | true,
 > extends TypesGeneration<T, T> {

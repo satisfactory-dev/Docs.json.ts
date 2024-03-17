@@ -13,9 +13,6 @@ import {import_these_later} from '../../TypesGeneration';
 import {basename, dirname} from 'node:path';
 import {
 	adjust_class_name,
-	adjust_unrealengine_prefix,
-	adjust_unrealengine_value,
-	auto_constructor_property_types_from_generated_types_properties,
 	create_class_options,
 	create_lazy_union,
 	create_literal_node_from_value,
@@ -44,6 +41,10 @@ import {
 	definition_key,
 	NativeClass,
 } from '../Update8';
+import {
+	adjust_unrealengine_prefix,
+	adjust_unrealengine_value,
+} from '../../CustomParsingTypes/UnrealEngineStringReference';
 
 export class Update8TypeNodeGeneration {
 	private readonly type_node_generator: TypeNodeGenerationMatcher;

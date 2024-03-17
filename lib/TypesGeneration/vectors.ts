@@ -49,7 +49,6 @@ export const generators = [
 			target_files
 		) as (keyof typeof auto_constructor_property_types_from_generated_types)[],
 		(data, reference_name) => {
-			const was_data = data;
 			data = (
 				'vector_object_string' in data
 					? data.vector_object_string

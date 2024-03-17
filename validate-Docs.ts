@@ -10,7 +10,7 @@ const generator = new DocsTsGenerator({
 
 const measure_totals: {[key: string]: number} = {};
 
-const obs = new PerformanceObserver((list, observer) => {
+const obs = new PerformanceObserver((list) => {
 	for (const entry of list.getEntries()) {
 		if (!(entry.name in measure_totals)) {
 			measure_totals[entry.name] = 0;

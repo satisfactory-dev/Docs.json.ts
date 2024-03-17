@@ -1,7 +1,4 @@
-import {
-	TypesGenerationFromSchema,
-	TypesGenerationMatchesReferenceName,
-} from '../TypesGeneration';
+import {TypesGenerationMatchesReferenceName} from '../TypesGeneration';
 import {
 	adjust_class_name,
 	create_literal_node_from_value,
@@ -9,17 +6,15 @@ import {
 	create_object_type_alias,
 	create_type,
 	create_union,
-	create_UnrealEngineStringReference_reference_type,
 } from '../TsFactoryWrapper';
 import ts from 'typescript';
-import {
-	UnrealEngineStringReference_general_schema,
-	UnrealEngineStringReference_general_type,
-} from './validators';
 import {
 	TypeNodeGeneration,
 	TypeNodeGenerationResult,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
+import {
+	UnrealEngineStringReference,
+} from '../CustomParsingTypes/UnrealEngineStringReference';
 
 export const target_files = {
 	mScannerDisplayText: 'common/aliases.ts',
@@ -55,19 +50,7 @@ export const generators = [
 			)
 		);
 	}),
-	new TypesGenerationFromSchema<UnrealEngineStringReference_general_type>(
-		UnrealEngineStringReference_general_schema,
-		(data, reference_name) => {
-			return ts.factory.createTypeAliasDeclaration(
-				[create_modifier('export')],
-				adjust_class_name(reference_name),
-				undefined,
-				create_UnrealEngineStringReference_reference_type(
-					data.UnrealEngineStringReference
-				)
-			);
-		}
-	),
+	...UnrealEngineStringReference.TypesGenerators(),
 	new TypesGenerationMatchesReferenceName<
 		{
 			type: 'object';

@@ -2,13 +2,11 @@ import Ajv, {_, KeywordCxt} from 'ajv/dist/2020';
 
 import schema from '../schema/update8.schema.json' assert {type: 'json'};
 import {
+	UnrealEngineStringReference,
 	is_UnrealEngineStringReference_value,
-	UnrealEngineStringReference_general_regex,
 	UnrealEngineStringReference_inner_schema,
-	UnrealEngineStringReference_left_default,
 	UnrealEngineStringReference_schema,
-	UnrealEngineStringReference_type,
-} from './TypesGeneration/validators';
+} from './CustomParsingTypes/UnrealEngineStringReference';
 
 const {definitions} = schema;
 
@@ -294,93 +292,6 @@ export function object_string(
 	return result;
 }
 
-export const UnrealEngineString_regex = /^([^']+)'(?:"([^"]+)"|([^"]+))'$/;
-
-class NotAnUnrealEngineString extends Error {}
-
-export function extract_UnrealEngineString(from: string): {
-	prefix: string;
-	value: string;
-} {
-	const match = UnrealEngineString_regex.exec(from);
-
-	if (!match) {
-		throw new NotAnUnrealEngineString(
-			`"${from}" is not an UnrealEngineString`
-		);
-	}
-
-	return {
-		prefix: match[1],
-		value: match[2] || match[3],
-	};
-}
-
-export function UnrealEngineString(
-	schema: {
-		type: string;
-		pattern: string;
-	} & (
-		| {
-				UnrealEngineString_prefix: string;
-		  }
-		| {
-				UnrealEngineString_prefix_pattern: string;
-		  }
-	),
-	data: string
-) {
-	performance.mark('UnrealEngineString validation');
-	let match: {prefix: string; value: string};
-
-	try {
-		match = extract_UnrealEngineString(data);
-	} catch (err) {
-		if (err instanceof NotAnUnrealEngineString) {
-			performance.measure(
-				'UnrealEngineString early exit',
-				'UnrealEngineString validation'
-			);
-			return false;
-		}
-
-		throw err;
-	}
-
-	if ('UnrealEngineString_prefix' in schema) {
-		if (match.prefix !== schema.UnrealEngineString_prefix) {
-			throw new Error(
-				`string was ${match.prefix}, expected ${schema.UnrealEngineString_prefix}`
-			);
-		}
-	} else if (
-		!new RegExp(schema.UnrealEngineString_prefix_pattern).test(
-			match.prefix
-		)
-	) {
-		throw new Error(
-			`string was ${match.prefix}, expected to match ${schema.UnrealEngineString_prefix_pattern}`
-		);
-	}
-
-	const {type, pattern} = schema;
-
-	const inner_validate = default_config.ajv.compile({
-		$schema: 'https://json-schema.org/draft/2020-12/schema',
-		type,
-		pattern,
-	});
-
-	performance.mark('UnrealEngineString ajv validation');
-	const result = inner_validate(match.value);
-	performance.measure(
-		'UnrealEngineString ajv validation',
-		'UnrealEngineString validation'
-	);
-
-	return result;
-}
-
 export type array_string_schema_type = {
 	type: 'array';
 	minItems?: number;
@@ -625,7 +536,7 @@ export function configure_ajv(ajv: Ajv): void {
 					)
 				) {
 					return `${entry[0]}=${
-						UnrealEngineStringReference_macro_generator(true)(
+						UnrealEngineStringReference.ajv_macro_generator(true)(
 							entry[1]['UnrealEngineStringReference--inner']
 						).pattern
 					}`;
@@ -751,53 +662,7 @@ export function configure_ajv(ajv: Ajv): void {
 		*/
 	});
 
-	function UnrealEngineStringReference_macro_generator(inner: boolean) {
-		return (data_from_schema: UnrealEngineStringReference_type) => {
-			const data: Exclude<typeof data_from_schema, true> | {} =
-				true === data_from_schema ? {} : data_from_schema;
-			const left_value = (
-				'left' in data
-					? data.left instanceof Array
-						? data.left
-						: [data.left]
-					: UnrealEngineStringReference_left_default
-			).join('|');
-			const right_value =
-				'right' in data
-					? `(?:${(data.right instanceof Array
-							? data.right
-							: [
-									'string' === typeof data.right
-										? data.right
-										: `(?:${(data.right
-												.starts_with instanceof Array
-												? data.right.starts_with
-												: [data.right.starts_with]
-											)
-												.map(
-													(starts_with) =>
-														starts_with +
-														'(?:[A-Z][A-Za-z0-9_.]+/)*[A-Z][A-Za-z_.0-9-]+(?::[A-Z][A-Za-z0-9]+)?'
-												)
-												.join('|')})`,
-								]
-						).join('|')})`
-					: UnrealEngineStringReference_general_regex;
-
-			const regex = `(?:(?:${left_value})'(?:${right_value}|"${right_value}")')`;
-
-			return {
-				pattern: inner ? regex : `^${regex}$`,
-			};
-		};
-	}
-
-	ajv.addKeyword({
-		keyword: 'UnrealEngineStringReference',
-		type: 'string',
-		metaSchema: UnrealEngineStringReference_schema,
-		macro: UnrealEngineStringReference_macro_generator(false),
-	});
+	UnrealEngineStringReference.configure_ajv(ajv);
 
 	ajv.addKeyword({
 		keyword: 'string_starts_with',

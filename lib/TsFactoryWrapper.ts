@@ -9,14 +9,7 @@ import ts, {
 	PropertyDeclaration,
 	TypeNode,
 	TypeParameterDeclaration,
-	TypeReferenceNode,
 } from 'typescript';
-import {
-	UnrealEngineStringReference_left_default,
-	UnrealEngineStringReference_right,
-	UnrealEngineStringReference_string_or_string_array,
-	UnrealEngineStringReference_type,
-} from './TypesGeneration/validators';
 
 declare type supported_property_modifiers = (
 	| 'public'
@@ -39,18 +32,6 @@ export function adjust_class_name(class_name: string): string {
 	}
 
 	return class_name.replace(/[^A-Za-z_\d]/g, '_');
-}
-
-export function adjust_unrealengine_prefix(prefix: string): string {
-	return adjust_class_name(
-		prefix.replace(/^(?:\/Script\/)/, '').replace(/\.Class$/, '')
-	);
-}
-
-export function adjust_unrealengine_value(value: string): string {
-	return adjust_class_name(
-		value.replace(/^(?:\/Script\/FactoryGame\.)/, '')
-	);
 }
 
 export function adjust_enum_name(enum_name: string): string {
@@ -970,121 +951,4 @@ export function possibly_create_lazy_union(
 	const [a, b, ...rest] = items;
 
 	return create_lazy_union(a, b, ...rest);
-}
-
-export function flexibly_create_UnrealEngineString_reference_type(
-	type_arguments: [TypeNode, TypeNode] | [TypeNode] | undefined
-): ts.TypeReferenceNode {
-	return ts.factory.createTypeReferenceNode(
-		'UnrealEngineString',
-		type_arguments
-	);
-}
-
-export function create_UnrealEngineStringReference_reference_type(
-	data_from_schema: UnrealEngineStringReference_type
-): TypeReferenceNode {
-	const data: Exclude<typeof data_from_schema, true> | {} =
-		true === data_from_schema ? {} : data_from_schema;
-
-	let left_value: TypeNode = create_literal_node_from_value(
-		UnrealEngineStringReference_left_default[0]
-	);
-	let left_changed = false;
-	let right_value: TypeNode = create_type('string');
-	let right_changed = false;
-
-	if ('object' === typeof data && 'left' in data) {
-		const {left} = data as {
-			left: UnrealEngineStringReference_string_or_string_array;
-		};
-
-		const left_options = [
-			...new Set(left instanceof Array ? left : [left]).values(),
-		];
-
-		if (1 === left_options.length) {
-			left_value = create_literal_node_from_value(left_options[0]);
-		} else if (left_options.length > 1) {
-			left_value = possibly_create_lazy_union(left_options);
-		}
-
-		left_changed = true;
-	}
-
-	if ('object' === typeof data && 'right' in data) {
-		const {right} = data as {right: UnrealEngineStringReference_right};
-
-		if ('object' === typeof right && 'starts_with' in right) {
-			const {starts_with} = right;
-
-			const right_options = [
-				...new Set(
-					starts_with instanceof Array ? starts_with : [starts_with]
-				).values(),
-			];
-
-			if (right_options.length >= 1) {
-				right_value = ts.factory.createTypeReferenceNode(
-					'string_starts_with',
-					[
-						1 === right_options.length
-							? create_literal_node_from_value(right_options[0])
-							: possibly_create_lazy_union(right_options),
-					]
-				);
-			}
-		} else {
-			const right_options = [
-				...new Set(right instanceof Array ? right : [right]).values(),
-			];
-
-			if (right_options.length >= 1) {
-				right_value =
-					1 === right_options.length
-						? create_literal_node_from_value(right_options[0])
-						: possibly_create_lazy_union(right_options);
-			}
-		}
-
-		right_changed = true;
-	}
-
-	return flexibly_create_UnrealEngineString_reference_type(
-		left_changed || right_changed
-			? right_changed
-				? [left_value, right_value]
-				: [left_value]
-			: undefined
-	);
-}
-
-export function conditional_UnrealEngineString_type_arguments(): [
-	ts.ConditionalTypeNode,
-	ts.TypeReferenceNode,
-] {
-	return [
-		ts.factory.createConditionalTypeNode(
-			ts.factory.createTypeQueryNode(
-				ts.factory.createIdentifier('prefix_check')
-			),
-			create_type('string'),
-			ts.factory.createTypeReferenceNode('string_starts_with', [
-				ts.factory.createTypeQueryNode(
-					ts.factory.createIdentifier('prefix_check')
-				),
-			]),
-			create_type('string')
-		),
-		ts.factory.createTypeReferenceNode('StringPassedRegExp', [
-			ts.factory.createTypeReferenceNode('pattern'),
-			ts.factory.createTypeReferenceNode('value'),
-		]),
-	];
-}
-
-export function create_conditional_UnrealEngineString_type_reference(): ts.TypeReferenceNode {
-	return flexibly_create_UnrealEngineString_reference_type(
-		conditional_UnrealEngineString_type_arguments()
-	);
 }

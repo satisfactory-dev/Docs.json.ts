@@ -3,10 +3,10 @@ import {
 	create_modifier,
 	createClass,
 	create_type,
-	createClass__members__with_auto_constructor,
+	createClass__members__with_auto_constructor, create_object_type_alias, possibly_create_lazy_union,
 } from '../TsFactoryWrapper';
 import ts from 'typescript';
-import {TypesGenerationFromSchema} from '../TypesGeneration';
+import {TypesGenerationFromSchema, TypesGenerationMatchesReferenceName} from '../TypesGeneration';
 import {
 	TypeNodeGeneration,
 	TypeNodeGenerationResult,
@@ -196,6 +196,28 @@ export const generators = [
 			);
 		}
 	),
+	new TypesGenerationMatchesReferenceName<
+		{
+			type: 'object';
+			required: ['Class'];
+			additionalProperties: false;
+			properties: {
+				Class: {
+					type: 'string';
+					enum: [string, ...string[]];
+				};
+			};
+		},
+		'mUnlocks_Class'
+	>(['mUnlocks_Class'], (data, reference_name) => {
+		return create_object_type_alias(
+			adjust_class_name(reference_name),
+			['declare'],
+			{
+				Class: possibly_create_lazy_union(data.properties.Class.enum),
+			}
+		);
+	}),
 ];
 
 export const type_node_generators = [

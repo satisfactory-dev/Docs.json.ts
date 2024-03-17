@@ -6,13 +6,9 @@ import {
 	create_modifier,
 	create_object_type,
 	create_union,
-	create_UnrealEngineStringReference_reference_type,
 	possibly_create_lazy_union,
 } from '../TsFactoryWrapper';
 import {
-	UnrealEngineStringReference_schema,
-	UnrealEngineStringReference_general_type,
-	UnrealEngineStringReference_general_schema,
 	target_files as validators_target_files,
 } from './validators';
 import {
@@ -23,6 +19,12 @@ import {
 	TypeNodeGeneration,
 	TypeNodeGenerationResult,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
+import {
+	create_UnrealEngineStringReference_reference_type,
+	UnrealEngineStringReference_schema,
+	UnrealEngineStringReference_general_type,
+	UnrealEngineStringReference_general_schema,
+} from '../CustomParsingTypes/UnrealEngineStringReference';
 
 export const target_files = {
 	Texture2D: 'common/unions.ts',
