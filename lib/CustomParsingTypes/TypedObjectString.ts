@@ -1,7 +1,8 @@
 import Ajv from 'ajv/dist/2020';
 import {
+	is_UnrealEngineStringReference_general_object,
 	is_UnrealEngineStringReference_value,
-	UnrealEngineStringReference,
+	UnrealEngineStringReference, UnrealEngineStringReference_general_type,
 	UnrealEngineStringReference_inner_schema,
 	UnrealEngineStringReference_schema,
 } from './UnrealEngineStringReference';
@@ -27,7 +28,7 @@ import {
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 import ts, {Node, TypeLiteralNode, TypeReferenceNode} from 'typescript';
 import {
-	array_is_non_empty,
+	array_is_non_empty, object_has_array_property,
 	object_has_property,
 	object_only_has_that_property,
 	value_is_array,
@@ -62,6 +63,8 @@ const type_object_string_$ref_supported = {
 	'#/definitions/mDisableSnapOn': true,
 	'#/definitions/SpecifiedColor--inner': true,
 	'#/definitions/Texture2D': true,
+	'#/definitions/Texture2D--basic': true,
+	'#/definitions/None': true,
 };
 const type_object_string_$ref_supported_array = Object.keys(
 	type_object_string_$ref_supported
@@ -134,6 +137,8 @@ const typed_object_string_$ref_schema = {
 				'#/definitions/mDisableSnapOn',
 				'#/definitions/SpecifiedColor--inner',
 				'#/definitions/Texture2D',
+				'#/definitions/Texture2D--basic',
+				'#/definitions/None',
 			],
 		},
 	},
@@ -243,6 +248,8 @@ const supported_type_node_generations = {
 				'#/definitions/mDisableSnapOn',
 				'#/definitions/SpecifiedColor--inner',
 				'#/definitions/Texture2D',
+				'#/definitions/Texture2D--basic',
+				'#/definitions/None',
 			],
 		},
 	},
@@ -252,6 +259,8 @@ type supported_type_node_generations = {
 	$ref:
 		| '#/definitions/SpecifiedColor--inner'
 		| '#/definitions/Texture2D'
+		| '#/definitions/Texture2D--basic'
+		| '#/definitions/None'
 		| '#/definitions/transformation'
 		| '#/definitions/color'
 		| '#/definitions/color-decimal'
@@ -323,16 +332,25 @@ export class TypedObjectString {
 							| 'mDisableSnapOn'
 							| 'SpecifiedColor--inner'
 							| 'Texture2D'
+							| 'Texture2D--basic'
+							| 'None'
 						)
 				];
 
 			const is_typed_object_array =
 				this.object_is_typed_object_string_oneOf(definition);
+			const is_generally_supported_oneOf_array = this.object_is_generally_supported_oneOf_array(
+				definition
+			);
 			const object_has_typed_object_string =
 				object_has_property(definition, 'typed_object_string') &&
 				this.is_$ref_object_dictionary(definition.typed_object_string);
 
-			if (!is_typed_object_array && !object_has_typed_object_string) {
+			if (
+				!is_typed_object_array &&
+				!is_generally_supported_oneOf_array &&
+				!object_has_typed_object_string
+			) {
 				throw new UnexpectedlyUnknownNoMatchError(
 					{definition},
 					'typed_object_string property not usable!'
@@ -353,6 +371,26 @@ export class TypedObjectString {
 						return this.property_to_regex(e);
 					})
 					.join('|')})`;
+			} else if(is_generally_supported_oneOf_array) {
+				value_regex = `(?:${definition.oneOf
+					.map((e) => {
+						if (is_UnrealEngineStringReference_general_object(e)) {
+							return UnrealEngineStringReference.ajv_macro_generator(true)(
+								e.UnrealEngineStringReference
+							).pattern;
+						} else if (e.$ref === '#/definitions/Texture2D--basic') {
+							return `(?:${
+								schema.definitions['Texture2D--basic'].string_starts_with
+							}(?:[A-Z][A-Za-z0-9_.]+/)*[A-Z][A-Za-z_.0-9-]+(?::[A-Z][A-Za-z0-9]+)?)`;
+						} else if (e.$ref === '#/definitions/None') {
+							return schema.definitions.None.const;
+						}
+
+						console.log(e);
+
+						throw new Error('foo');
+					})
+				})`;
 			} else if (
 				!this.is_$ref_object_dictionary(definition.typed_object_string)
 			) {
@@ -365,11 +403,13 @@ export class TypedObjectString {
 					definition.typed_object_string
 				);
 			}
+		} else if (this.is_supported_const_string_object(value)) {
+			value_regex = value.const;
 		} else if ('#/definitions/boolean' !== $ref) {
 			if ($ref === undefined) {
 				console.log(property, value);
 
-				throw new Error('foo');
+				throw new UnexpectedlyUnknownNoMatchError({property, value}, 'Unsupported $ref_to_regex call');
 			}
 			if ($ref.startsWith('#/definitions/decimal-string')) {
 				value_regex = '\\d+\\.\\d+';
@@ -382,7 +422,7 @@ export class TypedObjectString {
 			}
 		}
 
-		return `${property}=${value_regex}`;
+		return `(?:${property}=${value_regex})`;
 	}
 
 	private static keys_are_$ref_only(keys: string[]): keys is ['$ref'] {
@@ -495,12 +535,42 @@ export class TypedObjectString {
 		oneOf: typed_object_string_array_type;
 	} {
 		return (
-			!object_only_has_that_property(maybe, 'oneOf') ||
-			!value_is_array(maybe.oneOf) ||
-			!this.array_is_typed_object_string_general_type_array(
+			object_only_has_that_property(maybe, 'oneOf') &&
+			value_is_array(maybe.oneOf) &&
+			this.array_is_typed_object_string_general_type_array(
 				maybe.oneOf
-			) ||
-			!array_is_non_empty(maybe.oneOf)
+			) &&
+			array_is_non_empty(maybe.oneOf)
+		);
+	}
+
+	private static object_is_generally_supported_oneOf_array(
+		maybe: object
+	) : maybe is {
+		oneOf: [
+			(
+				| type_object_string_$ref_choices
+				| UnrealEngineStringReference_general_type
+			),
+			...(
+				| type_object_string_$ref_choices
+				| UnrealEngineStringReference_general_type
+			)[]
+		]
+	} {
+		return (
+			object_only_has_that_property(maybe, 'oneOf') &&
+			value_is_array(maybe.oneOf) &&
+			array_is_non_empty(maybe.oneOf) &&
+			maybe.oneOf.every((entry) => {
+				const supported = this.is_$ref_object(entry) || is_UnrealEngineStringReference_general_object(entry);
+
+				if (!supported) {
+					console.log(entry);
+				}
+
+				return supported;
+			})
 		);
 	}
 
@@ -512,6 +582,8 @@ export class TypedObjectString {
 						entry[0],
 						entry[1]
 					);
+				} else if (this.is_supported_const_string_object(entry[1])) {
+					return `(?:${entry[0]}=${entry[1].const})`;
 				}
 
 				if (

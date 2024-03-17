@@ -30,7 +30,7 @@ import {
 	array_string_schema_type,
 	target_files,
 } from '../TypesGeneration/arrays';
-import {object_has_property} from './CustomPairingTypes';
+import {object_has_property, value_is_non_array_object} from './CustomPairingTypes';
 
 const already_configured = new WeakSet<Ajv>();
 
@@ -70,6 +70,21 @@ export type UnrealEngineStringReference_inner_type = {
 	minLength: 1;
 	['UnrealEngineStringReference--inner']: UnrealEngineStringReference_type;
 };
+
+export function is_UnrealEngineStringReference_general_object(
+	maybe:any
+) : maybe is UnrealEngineStringReference_general_type {
+	return (
+		value_is_non_array_object(maybe) &&
+		3 === Object.keys(maybe).length &&
+		object_has_property(maybe, 'type') &&
+		'string' === maybe.type &&
+		object_has_property(maybe, 'minLength') &&
+		1 === maybe.minLength &&
+		object_has_property(maybe, 'UnrealEngineStringReference') &&
+		is_UnrealEngineStringReference_value_object(maybe.UnrealEngineStringReference)
+	);
+}
 
 export const UnrealEngineStringReference_schema = {
 	definitions: {
