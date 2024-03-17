@@ -1841,6 +1841,15 @@
 				}
 			}
 		},
+		"SpecifiedColor--inner": {
+			"type": "string",
+			"minLength": 1,
+			"typed_object_string": {
+				"SpecifiedColor": {
+					"$ref": "#/definitions/color-decimal--semi-native"
+				}
+			}
+		},
 		"FGSchematic--mUnlocks_Class": {
 			"type": "object",
 			"required": ["Class"],
@@ -2287,72 +2296,95 @@
 					}
 				},
 				"mSchematicIcon": {
-					"type": "string",
-					"minLength": 1,
-					"object_string": {
-						"type": "object",
-						"required": [
-							"DrawAs",
-							"ImageSize",
-							"Margin",
-							"TintColor",
-							"OutlineSettings",
-							"UVRegion"
-						],
-						"properties": {
+					"oneOf": [
+						{
+							"type": "string",
+							"minLength": 1,
+							"typed_object_string": {
 							"DrawAs": {
 								"type": "string",
 								"const": "Image"
 							},
 							"ImageSize": {
-								"$ref": "#/definitions/xy--semi-native"
+									"$ref": "#/definitions/xy"
 							},
 							"Margin": {
 								"$ref": "#/definitions/empty-object"
 							},
 							"TintColor": {
-								"$ref": "#/definitions/SpecifiedColor--semi-native"
+									"$ref": "#/definitions/SpecifiedColor--inner"
 							},
 							"OutlineSettings": {
-								"type": "object",
-								"required": [
-									"CornerRadii",
-									"Color",
-									"RoundingType"
-								],
-								"properties": {
 									"CornerRadii": {
-										"$ref": "#/definitions/quaternion--semi-native"
+											"$ref": "#/definitions/quaternion--inner"
 									},
 									"Color": {
-										"$ref": "#/definitions/SpecifiedColor--semi-native"
+											"$ref": "#/definitions/SpecifiedColor--inner"
 									},
 									"RoundingType": {
 										"type": "string",
 										"const": "HalfHeightRadius"
 									}
-								}
 							},
 							"ResourceObject": {
 								"$ref": "#/definitions/Texture2D"
 							},
 							"UVRegion": {
-								"type": "object",
-								"required": ["Min", "Max", "bIsValid"],
-								"properties": {
 									"Min": {
-										"$ref": "#/definitions/xy--semi-native"
+										"$ref": "#/definitions/xy"
 									},
 									"Max": {
-										"$ref": "#/definitions/xy--semi-native"
+										"$ref": "#/definitions/xy"
 									},
 									"bIsValid": {
 										"$ref": "#/definitions/boolean"
 									}
+							}
+							}
+						},
+						{
+							"type": "string",
+							"minLength": 1,
+							"typed_object_string": {
+								"DrawAs": {
+									"type": "string",
+									"const": "Image"
+								},
+								"ImageSize": {
+									"$ref": "#/definitions/xy"
+								},
+								"Margin": {
+									"$ref": "#/definitions/empty-object"
+								},
+								"TintColor": {
+									"$ref": "#/definitions/SpecifiedColor--inner"
+								},
+								"OutlineSettings": {
+										"CornerRadii": {
+											"$ref": "#/definitions/quaternion--inner"
+										},
+										"Color": {
+											"$ref": "#/definitions/SpecifiedColor--inner"
+										},
+										"RoundingType": {
+											"type": "string",
+											"const": "HalfHeightRadius"
+										}
+								},
+								"UVRegion": {
+										"Min": {
+											"$ref": "#/definitions/xy"
+										},
+										"Max": {
+											"$ref": "#/definitions/xy"
+										},
+										"bIsValid": {
+											"$ref": "#/definitions/boolean"
+										}
 								}
 							}
 						}
-					}
+					]
 				},
 				"mSmallSchematicIcon": {
 					"$ref": "#/definitions/Texture2D"

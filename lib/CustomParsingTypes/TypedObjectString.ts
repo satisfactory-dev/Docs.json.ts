@@ -13,29 +13,31 @@ import {
 import {
 	adjust_class_name,
 	auto_constructor_property_types_from_generated_types,
-	auto_constructor_property_types_from_generated_types_properties,
+	auto_constructor_property_types_from_generated_types_properties, create_literal_node_from_value,
 	create_modifier,
 	create_object_type,
 	createClass,
 	createClass__members__with_auto_constructor,
-	possibly_create_lazy_union,
 } from '../TsFactoryWrapper';
 import {
 	TypeNodeGeneration,
 	TypeNodeGenerationResult,
 	UnexpectedlyUnknownNoMatchError,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
-import ts, {Node, TypeLiteralNode} from 'typescript';
+import ts, {Node, TypeLiteralNode, TypeReferenceNode} from 'typescript';
 import {
 	array_is_non_empty,
 	object_has_property,
 	object_only_has_that_property,
-	value_is_array,
+	value_is_array, value_is_non_array_object,
 } from './CustomPairingTypes';
+import {writeFile} from 'node:fs/promises';
 
 const already_configured = new WeakSet<Ajv>();
 
 const typed_object_string_property_regex = '^[A-Za-z][A-Za-z3]*$';
+const typed_object_string_const_value_regex = '^[A-Za-z][A-Za-z]*$';
+const typed_object_string_const_value_regex__native = new RegExp(typed_object_string_const_value_regex);
 
 const type_object_string_$ref_supported = {
 	'#/definitions/EditorCurveData--item': true,
@@ -48,11 +50,14 @@ const type_object_string_$ref_supported = {
 	'#/definitions/boolean': true,
 	'#/definitions/quaternion--inner': true,
 	'#/definitions/xyz--inner': true,
+	'#/definitions/xy': true,
 	'#/definitions/color': true,
 	'#/definitions/color-decimal': true,
 	'#/definitions/mDockingRuleSet': true,
 	'#/definitions/mLightControlData': true,
 	'#/definitions/mDisableSnapOn': true,
+	'#/definitions/SpecifiedColor--inner': true,
+	'#/definitions/Texture2D': true,
 };
 const type_object_string_$ref_supported_array = Object.keys(
 	type_object_string_$ref_supported
@@ -68,6 +73,10 @@ type typed_object_string_$ref_only = {
 
 type typed_object_string_type = {
 	[key: string]:
+		| {
+			type: 'string',
+			const: string,
+		}
 		| type_object_string_$ref_choices
 		| typed_object_string_$ref_only;
 };
@@ -87,75 +96,52 @@ type typed_object_string_array_type = [
 	...typed_object_string_general_type[],
 ];
 
+type typed_object_string_combi_dictionary = {
+	[key: string]:
+		| type_object_string_$ref_choices
+		| {type: 'string', const: string}
+		| typed_object_string_$ref_only
+		| typed_object_string_combi_dictionary
+};
+
 const typed_object_string_$ref_schema = {
 	type: 'object',
 	required: ['$ref'],
 	additionalProperties: false,
 	properties: {
 		$ref: {
-			oneOf: [
-				{
-					type: 'string',
-					const: '#/definitions/EditorCurveData--item',
-				},
-				{
-					type: 'string',
-					const: '#/definitions/InfinityExtrap',
-				},
-				{
-					type: 'string',
-					const: '#/definitions/empty-object',
-				},
-				{
-					type: 'string',
-					const: '#/definitions/decimal-string',
-				},
-				{
-					type: 'string',
-					const: '#/definitions/decimal-string--signed',
-				},
-				{
-					type: 'string',
-					const: '#/definitions/integer-string',
-				},
-				{
-					type: 'string',
-					const: '#/definitions/integer-string--signed',
-				},
-				{
-					type: 'string',
-					const: '#/definitions/boolean',
-				},
-				{
-					type: 'string',
-					const: '#/definitions/quaternion--inner',
-				},
-				{
-					type: 'string',
-					const: '#/definitions/xyz--inner',
-				},
-				{
-					type: 'string',
-					const: '#/definitions/color',
-				},
-				{
-					type: 'string',
-					const: '#/definitions/color-decimal',
-				},
-				{
-					type: 'string',
-					const: '#/definitions/mDockingRuleSet',
-				},
-				{
-					type: 'string',
-					const: '#/definitions/mLightControlData',
-				},
-				{
-					type: 'string',
-					const: '#/definitions/mDisableSnapOn',
-				},
+			type: 'string',
+			enum: [
+				'#/definitions/EditorCurveData--item',
+				'#/definitions/InfinityExtrap',
+				'#/definitions/empty-object',
+				'#/definitions/decimal-string',
+				'#/definitions/decimal-string--signed',
+				'#/definitions/integer-string',
+				'#/definitions/integer-string--signed',
+				'#/definitions/boolean',
+				'#/definitions/quaternion--inner',
+				'#/definitions/xyz--inner',
+				'#/definitions/xy',
+				'#/definitions/color',
+				'#/definitions/color-decimal',
+				'#/definitions/mDockingRuleSet',
+				'#/definitions/mLightControlData',
+				'#/definitions/mDisableSnapOn',
+				'#/definitions/SpecifiedColor--inner',
+				'#/definitions/Texture2D',
 			],
 		},
+	},
+};
+
+export const typed_object_supported_const_string_schema = {
+	type: 'object',
+	required: ['type', 'const'],
+	additionalProperties: false,
+	properties: {
+		type: {type: 'string', const: 'string'},
+		const: {type: 'string', pattern: typed_object_string_const_value_regex},
 	},
 };
 
@@ -170,11 +156,16 @@ export const typed_object_string_schema = {
 					type: 'object',
 					additionalProperties: false,
 					patternProperties: {
-						[typed_object_string_property_regex]:
-							typed_object_string_$ref_schema,
+						[typed_object_string_property_regex]: {
+							oneOf: [
+								typed_object_string_$ref_schema,
+								typed_object_supported_const_string_schema,
+							]
+						},
 					},
 				},
 				UnrealEngineStringReference_inner_schema,
+				typed_object_supported_const_string_schema
 			],
 		},
 	},
@@ -228,6 +219,7 @@ export const typed_object_oneOf_schema = {
 		},
 	},
 };
+await writeFile('./typed-object-string.nested.schema.json', JSON.stringify(typed_object_oneOf_schema, null, '\t') + '\n');
 
 const supported_type_node_generations = {
 	type: 'object',
@@ -243,6 +235,8 @@ const supported_type_node_generations = {
 				'#/definitions/mDockingRuleSet',
 				'#/definitions/mLightControlData',
 				'#/definitions/mDisableSnapOn',
+				'#/definitions/SpecifiedColor--inner',
+				'#/definitions/Texture2D',
 			],
 		},
 	},
@@ -250,6 +244,8 @@ const supported_type_node_generations = {
 
 type supported_type_node_generations = {
 	$ref:
+		| '#/definitions/SpecifiedColor--inner'
+		| '#/definitions/Texture2D'
 		| '#/definitions/transformation'
 		| '#/definitions/color'
 		| '#/definitions/color-decimal'
@@ -313,11 +309,14 @@ export class TypedObjectString {
 						(
 							| 'quaternion--inner'
 							| 'xyz--inner'
+							| 'xy'
 							| 'color'
 							| 'color-decimal'
 							| 'mDockingRuleSet'
 							| 'mLightControlData'
 							| 'mDisableSnapOn'
+							| 'SpecifiedColor--inner'
+							| 'Texture2D'
 						)
 				];
 
@@ -394,6 +393,19 @@ export class TypedObjectString {
 		);
 	}
 
+	private static is_supported_const_string_object(
+		maybe: any
+	): maybe is {type: 'string', const: string} {
+		return (
+			'object' === typeof maybe
+			&& 2 === Object.keys(maybe).length
+			&& object_has_property(maybe, 'type')
+			&& 'string' === maybe.type
+			&& object_has_property(maybe, 'const')
+			&& typed_object_string_const_value_regex__native.test(maybe.const)
+		);
+	}
+
 	private static is_$ref_object_dictionary(maybe: {
 		[key: string]: any;
 	}): maybe is typed_object_string_$ref_only {
@@ -404,6 +416,22 @@ export class TypedObjectString {
 		}
 
 		return 0 !== Object.keys(maybe).length;
+	}
+
+	private static is_combi_dictionary(maybe:any, current_depth = 0) : maybe is typed_object_string_combi_dictionary {
+		if (!value_is_non_array_object(maybe)) {
+			return false;
+		}
+
+		if (current_depth > 10) {
+			throw new UnexpectedlyUnknownNoMatchError(maybe, 'Cannot exceed 10 levels of recursion!');
+		}
+
+		const failed = Object.values(maybe).filter((
+			(e) => !this.is_$ref_object(e) && !this.is_supported_const_string_object(e) && !this.is_$ref_object_dictionary(e) && !this.is_combi_dictionary(e, current_depth + 1)
+		));
+
+		return Object.keys(maybe).length >= 1 && failed.length === 0;
 	}
 
 	private static $ref_object_dictionary_is_auto_constructor_properties(maybe: {
@@ -528,7 +556,7 @@ export class TypedObjectString {
 						console.log(data.typed_object_string);
 						throw new UnexpectedlyUnknownNoMatchError(
 							data.typed_object_string,
-							'not yet supported'
+							'not yet supported in type generation for general schema'
 						);
 					} else if (
 						!this.$ref_object_dictionary_is_auto_constructor_properties(
@@ -681,6 +709,26 @@ export class TypedObjectString {
 		];
 	}
 
+	private static combi_dictionary_type_to_object_type(
+		data: typed_object_string_combi_dictionary
+	) : TypeLiteralNode {
+		return create_object_type(
+			Object.fromEntries(
+				Object.entries(data).map((entry) => {
+					const [property, value] = entry;
+
+					if (this.is_$ref_object(value)) {
+						return this.$ref_choice_to_object_type_entry(property, value);
+					} else if (this.is_supported_const_string_object(value)) {
+						return [property, create_literal_node_from_value(value.const)];
+					} else {
+					}
+					throw new UnexpectedlyUnknownNoMatchError(value, `${property} not yet supported in combi_dictionary_type_to_object_type`);
+				})
+			)
+		);
+	}
+
 	private static general_type_to_object_type(
 		data: typed_object_string_general_type
 	): TypeLiteralNode {
@@ -689,22 +737,45 @@ export class TypedObjectString {
 				Object.entries(data.typed_object_string).map((entry) => {
 					const [property, value] = entry;
 
-					if (!this.is_$ref_object(value)) {
+					if (this.is_supported_const_string_object(value)) {
+						return [
+							property,
+							create_literal_node_from_value(value.const),
+						];
+					} else if (this.is_$ref_object_dictionary(value)) {
+						return [
+							property,
+							create_object_type(Object.fromEntries(Object.entries(value).map(
+								(inner_entry) => {
+									return this.$ref_choice_to_object_type_entry(inner_entry[0], inner_entry[1]);
+								}
+							))),
+						];
+					} else if (this.is_combi_dictionary(value)) {
+						return [
+							property,
+							this.combi_dictionary_type_to_object_type(value),
+						];
+					} else if (!this.is_$ref_object(value)) {
 						throw new UnexpectedlyUnknownNoMatchError(
 							{[property]: value},
-							'not yet supported'
+							'not yet supported in general type to object type'
 						);
 					}
 
+					return this.$ref_choice_to_object_type_entry(property, value);
+				})
+			)
+		);
+	}
+
+	private static $ref_choice_to_object_type_entry<T extends string = string>(property:T, value:type_object_string_$ref_choices) : [T, TypeReferenceNode] {
 					return [
 						property,
 						ts.factory.createTypeReferenceNode(
 							adjust_class_name(value.$ref.substring(14))
 						),
 					];
-				})
-			)
-		);
 	}
 
 	static TypeNodeGeneration(): [
@@ -748,15 +819,16 @@ export class TypedObjectString {
 			new TypeNodeGeneration<typed_object_string_general_type>(
 				typed_object_string_general_schema,
 				(data) => {
+					const is_$ref_object_dictionary = this.is_$ref_object_dictionary(data.typed_object_string);
+					const is_combi_dictionary = this.is_combi_dictionary(data.typed_object_string);
+
 					if (
-						!this.is_$ref_object_dictionary(
-							data.typed_object_string
-						)
+						!is_$ref_object_dictionary &&
+						!is_combi_dictionary
 					) {
-						console.log(data.typed_object_string);
 						throw new UnexpectedlyUnknownNoMatchError(
 							data.typed_object_string,
-							'not yet supported'
+							'not yet supported in type node generation'
 						);
 					}
 

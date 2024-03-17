@@ -1,6 +1,6 @@
 # Types Progress
 
-98.40% Complete (246 of 250)
+98.01% Complete (246 of 251)
 
 ## Basic Types
 
@@ -346,6 +346,7 @@
 
 ## SpecifiedColor
 
+-   [ ] SpecifiedColor--inner
 -   [x] SpecifiedColor--semi-native
 
 ## Texture2D
