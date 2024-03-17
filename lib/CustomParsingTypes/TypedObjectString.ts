@@ -2,7 +2,8 @@ import Ajv from 'ajv/dist/2020';
 import {
 	is_UnrealEngineStringReference_general_object,
 	is_UnrealEngineStringReference_value,
-	UnrealEngineStringReference, UnrealEngineStringReference_general_type,
+	UnrealEngineStringReference,
+	UnrealEngineStringReference_general_type,
 	UnrealEngineStringReference_inner_schema,
 	UnrealEngineStringReference_schema,
 } from './UnrealEngineStringReference';
@@ -28,7 +29,8 @@ import {
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 import ts, {Node, TypeLiteralNode, TypeReferenceNode} from 'typescript';
 import {
-	array_is_non_empty, object_has_array_property,
+	array_is_non_empty,
+	object_has_array_property,
 	object_has_property,
 	object_only_has_that_property,
 	value_is_array,
@@ -339,9 +341,8 @@ export class TypedObjectString {
 
 			const is_typed_object_array =
 				this.object_is_typed_object_string_oneOf(definition);
-			const is_generally_supported_oneOf_array = this.object_is_generally_supported_oneOf_array(
-				definition
-			);
+			const is_generally_supported_oneOf_array =
+				this.object_is_generally_supported_oneOf_array(definition);
 			const object_has_typed_object_string =
 				object_has_property(definition, 'typed_object_string') &&
 				this.is_$ref_object_dictionary(definition.typed_object_string);
@@ -371,26 +372,22 @@ export class TypedObjectString {
 						return this.property_to_regex(e);
 					})
 					.join('|')})`;
-			} else if(is_generally_supported_oneOf_array) {
-				value_regex = `(?:${definition.oneOf
-					.map((e) => {
-						if (is_UnrealEngineStringReference_general_object(e)) {
-							return UnrealEngineStringReference.ajv_macro_generator(true)(
-								e.UnrealEngineStringReference
-							).pattern;
-						} else if (e.$ref === '#/definitions/Texture2D--basic') {
-							return `(?:${
-								schema.definitions['Texture2D--basic'].string_starts_with
-							}(?:[A-Z][A-Za-z0-9_.]+/)*[A-Z][A-Za-z_.0-9-]+(?::[A-Z][A-Za-z0-9]+)?)`;
-						} else if (e.$ref === '#/definitions/None') {
-							return schema.definitions.None.const;
-						}
+			} else if (is_generally_supported_oneOf_array) {
+				value_regex = `(?:${definition.oneOf.map((e) => {
+					if (is_UnrealEngineStringReference_general_object(e)) {
+						return UnrealEngineStringReference.ajv_macro_generator(
+							true
+						)(e.UnrealEngineStringReference).pattern;
+					} else if (e.$ref === '#/definitions/Texture2D--basic') {
+						return `(?:${schema.definitions['Texture2D--basic'].string_starts_with}(?:[A-Z][A-Za-z0-9_.]+/)*[A-Z][A-Za-z_.0-9-]+(?::[A-Z][A-Za-z0-9]+)?)`;
+					} else if (e.$ref === '#/definitions/None') {
+						return schema.definitions.None.const;
+					}
 
-						console.log(e);
+					console.log(e);
 
-						throw new Error('foo');
-					})
-				})`;
+					throw new Error('foo');
+				})})`;
 			} else if (
 				!this.is_$ref_object_dictionary(definition.typed_object_string)
 			) {
@@ -409,7 +406,10 @@ export class TypedObjectString {
 			if ($ref === undefined) {
 				console.log(property, value);
 
-				throw new UnexpectedlyUnknownNoMatchError({property, value}, 'Unsupported $ref_to_regex call');
+				throw new UnexpectedlyUnknownNoMatchError(
+					{property, value},
+					'Unsupported $ref_to_regex call'
+				);
 			}
 			if ($ref.startsWith('#/definitions/decimal-string')) {
 				value_regex = '\\d+\\.\\d+';
@@ -546,7 +546,7 @@ export class TypedObjectString {
 
 	private static object_is_generally_supported_oneOf_array(
 		maybe: object
-	) : maybe is {
+	): maybe is {
 		oneOf: [
 			(
 				| type_object_string_$ref_choices
@@ -555,15 +555,17 @@ export class TypedObjectString {
 			...(
 				| type_object_string_$ref_choices
 				| UnrealEngineStringReference_general_type
-			)[]
-		]
+			)[],
+		];
 	} {
 		return (
 			object_only_has_that_property(maybe, 'oneOf') &&
 			value_is_array(maybe.oneOf) &&
 			array_is_non_empty(maybe.oneOf) &&
 			maybe.oneOf.every((entry) => {
-				const supported = this.is_$ref_object(entry) || is_UnrealEngineStringReference_general_object(entry);
+				const supported =
+					this.is_$ref_object(entry) ||
+					is_UnrealEngineStringReference_general_object(entry);
 
 				if (!supported) {
 					console.log(entry);
