@@ -240,54 +240,6 @@ export function string_to_array<T extends any[]>(data: string): T | false {
 		).values as T;
 }
 
-export function object_string(
-	schema:
-		| {
-				type: 'object';
-				required: string[];
-				properties: {[key: string]: object};
-		  }
-		| {
-				type: 'object';
-				$ref: string;
-				unevaluatedProperties: false;
-				properties: {[key: string]: object};
-		  },
-	data: string
-) {
-	if ('' === data) {
-		return false;
-	}
-
-	const match = /^\([^=]+=(?:(\([^)]+\))|[^,=]+)(?:,[^=,]+=[^,]+)*\)$/.test(
-		data
-	);
-
-	if (!match) {
-		return false;
-	}
-
-	performance.mark('object_string validation');
-	const faux = string_to_object(data);
-	performance.measure('object_string parsing', 'object_string validation');
-
-	const inner_validate = default_config.ajv.compile(
-		Object.assign({}, schema, {
-			$schema: 'https://json-schema.org/draft/2020-12/schema',
-			definitions,
-		})
-	);
-
-	performance.mark('object_string ajv validation');
-	const result = inner_validate(faux);
-	performance.measure(
-		'object_string ajv validation',
-		'object_string validation'
-	);
-
-	return result;
-}
-
 export type array_string_schema_type = {
 	type: 'array';
 	minItems?: number;
@@ -371,75 +323,6 @@ export function configure_ajv(ajv: Ajv): void {
 	});
 
 	TypedObjectString.configure_ajv(ajv);
-
-	ajv.addKeyword({
-		keyword: 'object_string',
-		type: 'string',
-		metaSchema: {
-			definitions: {
-				base: {
-					type: 'object',
-					required: ['type', 'required', 'properties'],
-					additionalProperties: false,
-					properties: {
-						type: {type: 'string', const: 'object'},
-						required: {
-							type: 'array',
-							minItems: 1,
-							items: {type: 'string', minLength: 1},
-						},
-						additionalProperties: {type: 'boolean', const: false},
-						properties: {type: 'object'},
-					},
-				},
-			},
-			oneOf: [
-				{$ref: '#/definitions/base'},
-				{
-					type: 'object',
-					required: [
-						'type',
-						'$ref',
-						'unevaluatedProperties',
-						'properties',
-					],
-					additionalProperties: false,
-					properties: {
-						type: {type: 'string', const: 'object'},
-						$ref: {type: 'string', minLength: 1},
-						unevaluatedProperties: {type: 'boolean', const: false},
-						properties: {type: 'object'},
-					},
-				},
-			],
-		},
-		compile: (
-			schema:
-				| {
-						type: 'object';
-						required: [string, ...string[]];
-						properties: {[key: string]: object};
-				  }
-				| {
-						type: 'object';
-						$ref: string;
-						unevaluatedProperties: false;
-						properties: {[key: string]: object};
-				  }
-		) => {
-			return (data: string) => {
-				return object_string(schema, data);
-			};
-		},
-		/*
-		code: (ctx:KeywordCxt) => {
-			const {data, schema} = ctx;
-
-			ctx.pass(_`object_string(${schema}, ${data})`);
-		},
-		*/
-	});
-
 	UnrealEngineStringReference.configure_ajv(ajv);
 
 	ajv.addKeyword({

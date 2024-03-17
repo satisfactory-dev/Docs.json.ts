@@ -266,8 +266,6 @@ export class DocsTsGenerator {
 								`import {${
 									[
 										'array_string',
-										'object_string',
-										'UnrealEngineString',
 									].join(',')
 								}} from '../lib/schema-exports';`,
 								// adapted from https://stackoverflow.com/a/77047149/23528553

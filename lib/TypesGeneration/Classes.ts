@@ -1,13 +1,10 @@
 import {
 	adjust_class_name,
-	create_modifier,
-	create_type,
 	create_object_type_alias,
 	possibly_create_lazy_union,
 } from '../TsFactoryWrapper';
 import ts from 'typescript';
 import {
-	TypesGenerationFromSchema,
 	TypesGenerationMatchesReferenceName,
 } from '../TypesGeneration';
 import {
@@ -34,107 +31,7 @@ export const target_files = {
 	EditorCurveData: 'classes/base.ts',
 };
 
-declare type mDisableSnapOn_member = {
-	type: 'string';
-	minLength: 1;
-	object_string: {
-		type: 'object';
-		required: [string, ...string[]];
-		additionalProperties: false;
-		properties: {
-			[key: string]: {
-				$ref: '#/definitions/boolean';
-			};
-		};
-	};
-};
-
 export const generators = [
-	new TypesGenerationFromSchema<{
-		oneOf: [
-			mDisableSnapOn_member,
-			mDisableSnapOn_member,
-			...mDisableSnapOn_member[],
-		];
-	}>(
-		{
-			type: 'object',
-			required: ['oneOf'],
-			additionalProperties: false,
-			properties: {
-				oneOf: {
-					type: 'array',
-					minItems: 2,
-					items: {
-						type: 'object',
-						required: ['type', 'minLength', 'object_string'],
-						additionalProperties: false,
-						properties: {
-							type: {type: 'string', const: 'string'},
-							minLength: {type: 'number', const: 1},
-							object_string: {
-								type: 'object',
-								required: [
-									'type',
-									'required',
-									'additionalProperties',
-									'properties',
-								],
-								additionalProperties: false,
-								properties: {
-									type: {type: 'string', const: 'object'},
-									required: {
-										type: 'array',
-										minItems: 1,
-										items: {type: 'string', minLength: 1},
-									},
-									additionalProperties: {
-										type: 'boolean',
-										const: false,
-									},
-									properties: {
-										type: 'object',
-										additionalProperties: {
-											type: 'object',
-											required: ['$ref'],
-											additionalProperties: false,
-											properties: {
-												$ref: {
-													type: 'string',
-													const: '#/definitions/boolean',
-												},
-											},
-										},
-									},
-								},
-							},
-						},
-					},
-				},
-			},
-		},
-		(data, reference_name) => {
-			return ts.factory.createTypeAliasDeclaration(
-				[create_modifier('export')],
-				adjust_class_name(reference_name),
-				undefined,
-				ts.factory.createUnionTypeNode(
-					data.oneOf.map((entry) => {
-						return ts.factory.createTypeLiteralNode(
-							entry.object_string.required.map((property) => {
-								return ts.factory.createPropertySignature(
-									undefined,
-									property,
-									undefined,
-									create_type('boolean')
-								);
-							})
-						);
-					})
-				)
-			);
-		}
-	),
 	...TypedObjectString.TypesGenerators(),
 	new TypesGenerationMatchesReferenceName<
 		{

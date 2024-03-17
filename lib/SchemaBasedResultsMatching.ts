@@ -43,17 +43,6 @@ declare type oneOf_or_anyOf_validator = ValidateFunction<
 declare type array_string_validator =
 	ValidateFunction<array_string_schema_type>;
 
-declare type object_string_validator = ValidateFunction<{
-	type: 'string';
-	minLength: 1;
-	object_string: {
-		type: 'object';
-		required: [string, ...string[]];
-		additionalProperties?: boolean;
-		properties: object;
-	};
-}>;
-
 declare type object_validator = ValidateFunction<{
 	type: 'object';
 	required: [string, ...string[]];
@@ -134,8 +123,6 @@ export abstract class ResultGenerationMatcher<
 	> = new WeakMap<Ajv, oneOf_or_anyOf_validator>();
 	private array_string_matcher: WeakMap<Ajv, array_string_validator> =
 		new WeakMap<Ajv, array_string_validator>();
-	private object_string_matcher: WeakMap<Ajv, object_string_validator> =
-		new WeakMap<Ajv, object_string_validator>();
 	private object_matcher: WeakMap<Ajv, object_validator> = new WeakMap<
 		Ajv,
 		object_validator
@@ -247,8 +234,7 @@ export abstract class ResultGenerationMatcher<
 				: property.anyOf) {
 				const match =
 					this.search(ajv, sub_property) ||
-					this.array_string_search(ajv, sub_property) ||
-					this.object_string_search(ajv, sub_property);
+					this.array_string_search(ajv, sub_property);
 
 				if (!match) {
 					has_all_matches = false;
@@ -437,55 +423,6 @@ export abstract class ResultGenerationMatcher<
 		return null;
 	}
 
-	private object_string_search(
-		ajv: Ajv,
-		property: object
-	): MatchResult | null {
-		if (!this.object_string_matcher.has(ajv)) {
-			this.object_string_matcher.set(
-				ajv,
-				ajv.compile({
-					type: 'object',
-					required: ['type', 'object_string'],
-					additionalProperties: false,
-					properties: {
-						type: {type: 'string', const: 'string'},
-						minLength: {type: 'number', const: 1},
-						object_string: {
-							type: 'object',
-							required: ['type', 'required', 'properties'],
-							additionalProperties: false,
-							properties: {
-								type: {type: 'string', const: 'object'},
-								required: {
-									type: 'array',
-									minItems: 1,
-									items: {type: 'string', minLength: 1},
-								},
-								properties: {type: 'object'},
-							},
-						},
-					},
-				})
-			);
-		}
-
-		const object_string_matcher = this.object_string_matcher.get(
-			ajv
-		) as object_string_validator;
-
-		if (object_string_matcher(property)) {
-			return this.object_search(ajv, property.object_string);
-		} else if ('object_string' in property) {
-			throw new UnexpectedlyUnknownNoMatchError(
-				property.object_string,
-				`Unsupported object_string usage found!`
-			);
-		}
-
-		return null;
-	}
-
 	private object_search(ajv: Ajv, property: object): MatchResult | null {
 		if (!this.object_matcher.has(ajv)) {
 			this.object_matcher.set(
@@ -539,8 +476,7 @@ export abstract class ResultGenerationMatcher<
 	find(ajv: Ajv, property: object): MatchResult {
 		let match =
 			this.search(ajv, property) ||
-			this.array_string_search(ajv, property) ||
-			this.object_string_search(ajv, property);
+			this.array_string_search(ajv, property);
 
 		if (match) {
 			return match;
