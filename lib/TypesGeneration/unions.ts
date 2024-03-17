@@ -9,7 +9,6 @@ import {
 	possibly_create_lazy_union,
 } from '../TsFactoryWrapper';
 import {
-	UnrealEngineString_schema,
 	target_files as validators_target_files,
 } from './validators';
 import {
@@ -20,6 +19,11 @@ import {
 	TypeNodeGeneration,
 	TypeNodeGenerationResult,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
+import {
+	create_UnrealEngineString_reference_type,
+	supported_oneOf_items as UnrealEngineStringReference_supported_oneOf_items,
+	UnrealEngineString_schema,
+} from '../CustomParsingTypes/UnrealEngineStringReference';
 
 export const target_files = {
 	Texture2D: 'common/unions.ts',
@@ -44,15 +48,7 @@ export const target_files = {
 declare type supported_oneOf_items =
 	| {$ref: '#/definitions/Texture2D--basic'}
 	| {$ref: '#/definitions/None'}
-	| {
-			type: 'string';
-			minLength: 1;
-			UnrealEngineString: {
-				type: 'string';
-				UnrealEngineString_prefix: string;
-				pattern: string;
-			};
-	  }
+	| UnrealEngineStringReference_supported_oneOf_items
 	| {type: 'string'; const: string}
 	| (array_string_type & {
 			array_string: {
@@ -242,21 +238,8 @@ export const generators = [
 							);
 						}
 
-						return ts.factory.createTypeReferenceNode(
-							adjust_class_name('UnrealEngineString'),
-							[
-								ts.factory.createTypeReferenceNode(
-									'string_starts_with',
-									[
-										ts.factory.createLiteralTypeNode(
-											ts.factory.createStringLiteral(
-												entry.UnrealEngineString
-													.UnrealEngineString_prefix
-											)
-										),
-									]
-								),
-							]
+						return create_UnrealEngineString_reference_type(
+							entry.UnrealEngineString
 						);
 					})
 				)

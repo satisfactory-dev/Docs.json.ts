@@ -5,9 +5,6 @@ import {
 	create_type,
 	createClass__members__with_auto_constructor,
 	possibly_create_lazy_union,
-	create_literal_node_from_value,
-	create_minimum_size_typed_array_of_single_type,
-	create_UnrealEngineString_reference_type,
 	create_object_type_alias,
 } from '../TsFactoryWrapper';
 import ts from 'typescript';
@@ -19,7 +16,6 @@ import {
 	TypeNodeGeneration,
 	TypeNodeGenerationResult,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
-import {UnrealEngineString_type} from './validators';
 
 declare type supported_base_classes_union =
 	| 'class--no-description-or-display-name'
@@ -230,47 +226,6 @@ export const generators = [
 			['declare'],
 			{
 				Class: possibly_create_lazy_union(data.properties.Class.enum),
-			}
-		);
-	}),
-	new TypesGenerationMatchesReferenceName<
-		{
-			type: 'object';
-			required: ['Class', 'mTapeUnlocks'];
-			additionalProperties: false;
-			properties: {
-				Class: {
-					type: 'string';
-					const: string;
-				};
-				mTapeUnlocks: {
-					type: string;
-					minLength: 1;
-					array_string: {
-						type: 'array';
-						minItems: 1;
-						items: UnrealEngineString_type;
-					};
-				};
-			};
-		},
-		'mUnlocks_mTapeUnlocks'
-	>(['mUnlocks_mTapeUnlocks'], (data, reference_name) => {
-		return create_object_type_alias(
-			adjust_class_name(reference_name),
-			['declare'],
-			{
-				Class: create_literal_node_from_value(
-					data.properties.Class.const
-				),
-				mTapeUnlocks: create_minimum_size_typed_array_of_single_type(
-					data.properties.mTapeUnlocks.array_string.minItems,
-					() =>
-						create_UnrealEngineString_reference_type(
-							data.properties.mTapeUnlocks.array_string.items
-								.UnrealEngineString
-						)
-				),
 			}
 		);
 	}),

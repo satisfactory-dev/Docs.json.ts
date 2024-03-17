@@ -34,18 +34,6 @@ export function adjust_class_name(class_name: string): string {
 	return class_name.replace(/[^A-Za-z_\d]/g, '_');
 }
 
-export function adjust_unrealengine_prefix(prefix: string): string {
-	return adjust_class_name(
-		prefix.replace(/^(?:\/Script\/)/, '').replace(/\.Class$/, '')
-	);
-}
-
-export function adjust_unrealengine_value(value: string): string {
-	return adjust_class_name(
-		value.replace(/^(?:\/Script\/FactoryGame\.)/, '')
-	);
-}
-
 export function adjust_enum_name(enum_name: string): string {
 	if ('boolean' === enum_name) {
 		return 'Docs_boolean';
@@ -960,77 +948,4 @@ export function possibly_create_lazy_union(
 	const [a, b, ...rest] = items;
 
 	return create_lazy_union(a, b, ...rest);
-}
-
-function flexibly_create_UnrealEngineString_reference_type(
-	type_arguments: ts.TypeNode[] | undefined
-): ts.TypeReferenceNode {
-	return ts.factory.createTypeReferenceNode(
-		'UnrealEngineString',
-		type_arguments
-	);
-}
-
-export function create_UnrealEngineString_reference_type(
-	type_arguments:
-		| {UnrealEngineString_prefix: string; pattern: string}
-		| {UnrealEngineString_prefix_pattern: string; pattern: string}
-		| undefined = undefined
-): ts.TypeReferenceNode {
-	return flexibly_create_UnrealEngineString_reference_type(
-		!type_arguments
-			? undefined
-			: [
-					'UnrealEngineString_prefix' in type_arguments
-						? ts.factory.createTypeReferenceNode(
-								'string_starts_with',
-								[
-									create_literal_node_from_value(
-										type_arguments.UnrealEngineString_prefix
-									),
-								]
-							)
-						: ts.factory.createTypeReferenceNode(
-								'StringPassedRegExp',
-								[
-									create_literal_node_from_value(
-										type_arguments.UnrealEngineString_prefix_pattern
-									),
-								]
-							),
-					ts.factory.createTypeReferenceNode('StringPassedRegExp', [
-						create_literal_node_from_value(type_arguments.pattern),
-					]),
-				]
-	);
-}
-
-export function conditional_UnrealEngineString_type_arguments(): [
-	ts.ConditionalTypeNode,
-	ts.TypeReferenceNode,
-] {
-	return [
-		ts.factory.createConditionalTypeNode(
-			ts.factory.createTypeQueryNode(
-				ts.factory.createIdentifier('prefix_check')
-			),
-			create_type('string'),
-			ts.factory.createTypeReferenceNode('string_starts_with', [
-				ts.factory.createTypeQueryNode(
-					ts.factory.createIdentifier('prefix_check')
-				),
-			]),
-			create_type('string')
-		),
-		ts.factory.createTypeReferenceNode('StringPassedRegExp', [
-			ts.factory.createTypeReferenceNode('pattern'),
-			ts.factory.createTypeReferenceNode('value'),
-		]),
-	];
-}
-
-export function create_conditional_UnrealEngineString_type_reference(): ts.TypeReferenceNode {
-	return flexibly_create_UnrealEngineString_reference_type(
-		conditional_UnrealEngineString_type_arguments()
-	);
 }

@@ -1,6 +1,7 @@
 import Ajv, {_, KeywordCxt} from 'ajv/dist/2020';
 
 import schema from '../schema/update8.schema.json' assert {type: 'json'};
+import {UnrealEngineString_regex, UnrealEngineStringReference} from './CustomParsingTypes/UnrealEngineStringReference';
 
 const {definitions} = schema;
 
@@ -286,8 +287,6 @@ export function object_string(
 	return result;
 }
 
-export const UnrealEngineString_regex = /^([^']+)'(?:"([^"]+)"|([^"]+))'$/;
-
 class NotAnUnrealEngineString extends Error {}
 
 export function extract_UnrealEngineString(from: string): {
@@ -523,95 +522,7 @@ export function configure_ajv(ajv: Ajv): void {
 		*/
 	});
 
-	ajv.addKeyword({
-		keyword: 'UnrealEngineString',
-		type: 'string',
-		metaSchema: {
-			definitions: {
-				base: {
-					type: 'object',
-					required: ['type', 'pattern'],
-					properties: {
-						type: {type: 'string', const: 'string'},
-						pattern: {type: 'string', minLength: 2},
-					},
-				},
-			},
-			oneOf: [
-				{
-					type: 'object',
-					$ref: '#/definitions/base',
-					required: ['UnrealEngineString_prefix'],
-					unevaluatedProperties: false,
-					properties: {
-						UnrealEngineString_prefix: {
-							type: 'string',
-							minLength: 1,
-						},
-					},
-				},
-				{
-					type: 'object',
-					$ref: '#/definitions/base',
-					required: ['UnrealEngineString_prefix_pattern'],
-					unevaluatedProperties: false,
-					properties: {
-						UnrealEngineString_prefix_pattern: {
-							type: 'string',
-							minLength: 2,
-						},
-					},
-				},
-			],
-		},
-		compile: (
-			schema: {
-				type: 'string';
-				pattern: string;
-			} & (
-				| {
-						UnrealEngineString_prefix: string;
-				  }
-				| {
-						UnrealEngineString_prefix_pattern: string;
-				  }
-			)
-		) => {
-			return (data: string) => {
-				return UnrealEngineString(schema, data);
-			};
-		},
-		/*
-		code: (ctx:KeywordCxt) => {
-			const {data, schema, params} = ctx;
-			ctx.pass(_`
-				(() => {
-					const match = UnrealEngineString_regex.exec(${data});
-
-					if (!match) {
-						return false;
-					}
-
-					const prefix = match[1];
-					const value = match[2] || match[3];
-
-					${
-						'UnrealEngineString_prefix' in schema
-						? _`if (prefix !== ${schema.UnrealEngineString_prefix}) { return false }`
-						: _`if (!(new RegExp('${schema.UnrealEngineString_prefix_pattern}')).test(prefix) { return false; }`
-					}
-
-					if (!(new RegExp(${schema.pattern})).test(value)) {
-						return false;
-					}
-
-					return true;
-				})()
-			`);
-			ctx.pass(_`UnrealEngineString(${schema}, ${data})`);
-		},
-		 */
-	});
+	UnrealEngineStringReference.configure_ajv(ajv);
 
 	ajv.addKeyword({
 		keyword: 'string_starts_with',

@@ -3,7 +3,6 @@ import ts from 'typescript';
 import {
 	adjust_class_name,
 	create_minimum_size_typed_array_of_single_type,
-	create_minimum_size_typed_array_of_type_references,
 	create_modifier,
 	create_object_type,
 } from '../TsFactoryWrapper';
@@ -64,33 +63,6 @@ declare type ItemClass_and_Amount = {
 };
 
 export const generators = [
-	new TypesGenerationMatchesReferenceName<
-		array_string_schema_type,
-		keyof typeof target_files
-	>(['mDamageTypes'], (_, reference_name) => {
-		return ts.factory.createTypeAliasDeclaration(
-			[create_modifier('export')],
-			ts.factory.createIdentifier(adjust_class_name(reference_name)),
-			undefined,
-			create_minimum_size_typed_array_of_type_references(
-				'UnrealEngineString',
-				() => {
-					return [
-						ts.factory.createTypeReferenceNode(
-							'string_starts_with',
-							[
-								ts.factory.createLiteralTypeNode(
-									ts.factory.createStringLiteral(
-										'/Game/FactoryGame/-Shared/Blueprint/DamageTypes/'
-									)
-								),
-							]
-						),
-					];
-				}
-			)
-		);
-	}),
 	new TypesGenerationMatchesReferenceName<
 		{
 			type: 'string';
