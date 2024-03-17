@@ -24,7 +24,6 @@ import {
 	TypeNodeGenerationResult,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 import {
-	TypesGeneration,
 	TypesGeneration_concrete,
 	TypesGenerationFromSchema,
 	TypesGenerationMatchesReferenceName,
