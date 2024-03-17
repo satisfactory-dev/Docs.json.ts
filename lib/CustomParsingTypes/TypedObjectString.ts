@@ -17,7 +17,8 @@ import {
 	create_modifier,
 	create_object_type,
 	createClass,
-	createClass__members__with_auto_constructor, possibly_create_lazy_union,
+	createClass__members__with_auto_constructor,
+	possibly_create_lazy_union,
 } from '../TsFactoryWrapper';
 import {
 	TypeNodeGeneration,
@@ -76,7 +77,10 @@ type typed_object_string_general_type = {
 	typed_object_string: typed_object_string_type;
 } & ({minLength: 1} | {});
 
-type typed_object_string_array_type = [typed_object_string_general_type, ...typed_object_string_general_type[]];
+type typed_object_string_array_type = [
+	typed_object_string_general_type,
+	...typed_object_string_general_type[],
+];
 
 const typed_object_string_$ref_schema = {
 	type: 'object',
@@ -202,14 +206,17 @@ const supported_type_node_generations = {
 	required: ['$ref'],
 	additionalProperties: false,
 	properties: {
-		$ref: {type: 'string', enum: [
-			'#/definitions/transformation',
-			'#/definitions/color',
-			'#/definitions/color-decimal',
-			'#/definitions/mDockingRuleSet',
-			'#/definitions/mLightControlData',
-			'#/definitions/mDisableSnapOn',
-		]},
+		$ref: {
+			type: 'string',
+			enum: [
+				'#/definitions/transformation',
+				'#/definitions/color',
+				'#/definitions/color-decimal',
+				'#/definitions/mDockingRuleSet',
+				'#/definitions/mLightControlData',
+				'#/definitions/mDisableSnapOn',
+			],
+		},
 	},
 };
 
@@ -275,16 +282,24 @@ export class TypedObjectString {
 			const definition =
 				schema.definitions[
 					$ref.substring(14) as keyof typeof schema.definitions &
-						('quaternion--inner' | 'xyz--inner' | 'color' | 'color-decimal' | 'mDockingRuleSet' | 'mLightControlData' | 'mDisableSnapOn')
+						(
+							| 'quaternion--inner'
+							| 'xyz--inner'
+							| 'color'
+							| 'color-decimal'
+							| 'mDockingRuleSet'
+							| 'mLightControlData'
+							| 'mDisableSnapOn'
+						)
 				];
 
-			const is_typed_object_array = this.object_is_typed_object_string_oneOf(definition);
-			const object_has_typed_object_string = object_has_property(definition, 'typed_object_string') && this.is_$ref_object_dictionary(definition.typed_object_string);
+			const is_typed_object_array =
+				this.object_is_typed_object_string_oneOf(definition);
+			const object_has_typed_object_string =
+				object_has_property(definition, 'typed_object_string') &&
+				this.is_$ref_object_dictionary(definition.typed_object_string);
 
-			if (
-				!is_typed_object_array &&
-				!object_has_typed_object_string
-			) {
+			if (!is_typed_object_array && !object_has_typed_object_string) {
 				throw new UnexpectedlyUnknownNoMatchError(
 					{definition},
 					'typed_object_string property not usable!'
@@ -292,22 +307,30 @@ export class TypedObjectString {
 			}
 
 			if (is_typed_object_array) {
-				value_regex = `(?:${definition.oneOf.map(e => e.typed_object_string).map((e, index) => {
-					if (!this.is_$ref_object_dictionary(e)) {
-						throw new UnexpectedlyUnknownNoMatchError(e, `${property}.oneOf[${index}] not an object dictionary!`);
-					}
+				value_regex = `(?:${definition.oneOf
+					.map((e) => e.typed_object_string)
+					.map((e, index) => {
+						if (!this.is_$ref_object_dictionary(e)) {
+							throw new UnexpectedlyUnknownNoMatchError(
+								e,
+								`${property}.oneOf[${index}] not an object dictionary!`
+							);
+						}
 
-					return this.property_to_regex(e);
-				}).join('|')})`;
-			} else if (!this.is_$ref_object_dictionary(definition.typed_object_string)) {
+						return this.property_to_regex(e);
+					})
+					.join('|')})`;
+			} else if (
+				!this.is_$ref_object_dictionary(definition.typed_object_string)
+			) {
 				throw new UnexpectedlyUnknownNoMatchError(
 					{definition},
 					'typed_object_string property not usable!'
 				);
 			} else {
-			value_regex = this.property_to_regex(
-				definition.typed_object_string
-			);
+				value_regex = this.property_to_regex(
+					definition.typed_object_string
+				);
 			}
 		} else if ('#/definitions/boolean' !== $ref) {
 			if ($ref === undefined) {
@@ -373,38 +396,38 @@ export class TypedObjectString {
 	}
 
 	private static value_is_typed_object_string_general_type(
-		maybe:any
-	) : maybe is typed_object_string_general_type {
+		maybe: any
+	): maybe is typed_object_string_general_type {
 		return (
 			'object' === typeof maybe &&
 			object_has_property(maybe, 'type') &&
 			'string' === maybe.type &&
 			object_has_property(maybe, 'typed_object_string') &&
 			this.is_$ref_object_dictionary(maybe.typed_object_string) &&
-			(
-				2 === Object.keys(maybe).length ||
-				(
-					3 === Object.keys(maybe).length &&
+			(2 === Object.keys(maybe).length ||
+				(3 === Object.keys(maybe).length &&
 					object_has_property(maybe, 'minLength') &&
-					1 === maybe.minLength
-				)
-			)
+					1 === maybe.minLength))
 		);
 	}
 
 	private static array_is_typed_object_string_general_type_array(
 		maybe: any[]
-	) : maybe is typed_object_string_general_type[] {
+	): maybe is typed_object_string_general_type[] {
 		return maybe.every(this.value_is_typed_object_string_general_type);
 	}
 
-	private static object_is_typed_object_string_oneOf(maybe:object) : maybe is {
-		oneOf: typed_object_string_array_type,
+	private static object_is_typed_object_string_oneOf(
+		maybe: object
+	): maybe is {
+		oneOf: typed_object_string_array_type;
 	} {
 		return (
 			!object_only_has_that_property(maybe, 'oneOf') ||
 			!value_is_array(maybe.oneOf) ||
-			!this.array_is_typed_object_string_general_type_array(maybe.oneOf) ||
+			!this.array_is_typed_object_string_general_type_array(
+				maybe.oneOf
+			) ||
 			!array_is_non_empty(maybe.oneOf)
 		);
 	}
@@ -526,44 +549,47 @@ export class TypedObjectString {
 				}
 			),
 			new TypesGenerationFromSchema<{
-				oneOf: typed_object_string_array_type
-			}>(
-				typed_object_oneOf_schema,
-				(data, reference_name) => {
-					return ts.factory.createTypeAliasDeclaration(
-						[create_modifier('export')],
-						adjust_class_name(reference_name),
-						undefined,
-						ts.factory.createUnionTypeNode((data.oneOf.map((e, index) => {
+				oneOf: typed_object_string_array_type;
+			}>(typed_object_oneOf_schema, (data, reference_name) => {
+				return ts.factory.createTypeAliasDeclaration(
+					[create_modifier('export')],
+					adjust_class_name(reference_name),
+					undefined,
+					ts.factory.createUnionTypeNode(
+						data.oneOf.map((e, index) => {
 							return create_object_type(
 								Object.fromEntries(
-									Object.entries(
-										e.typed_object_string
-									).map((entry, index) => {
-										if (!this.is_$ref_object(entry[1])) {
-											const foo = entry[1];
+									Object.entries(e.typed_object_string).map(
+										(entry, index) => {
+											if (
+												!this.is_$ref_object(entry[1])
+											) {
+												const foo = entry[1];
 
-											throw new UnexpectedlyUnknownNoMatchError(
-												entry,
-												`${reference_name}.oneOf[${index}][${entry[0]}] not supported!`
-											);
+												throw new UnexpectedlyUnknownNoMatchError(
+													entry,
+													`${reference_name}.oneOf[${index}][${entry[0]}] not supported!`
+												);
+											}
+
+											return [
+												entry[0],
+												ts.factory.createTypeReferenceNode(
+													adjust_class_name(
+														entry[1].$ref.substring(
+															14
+														)
+													)
+												),
+											];
 										}
-
-										return [
-											entry[0],
-											ts.factory.createTypeReferenceNode(
-												adjust_class_name(
-													entry[1].$ref.substring(14)
-												)
-											),
-										];
-									})
+									)
 								)
 							);
-						}))),
-					);
-				}
-			),
+						})
+					)
+				);
+			}),
 		];
 	}
 

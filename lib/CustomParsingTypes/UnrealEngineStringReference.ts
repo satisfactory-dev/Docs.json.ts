@@ -839,7 +839,6 @@ function is_string_or_string_array(
 	);
 }
 
-
 function is_UnrealEngineStringReference_value_object(
 	maybe: object
 ): maybe is Exclude<UnrealEngineStringReference_type, true> {
