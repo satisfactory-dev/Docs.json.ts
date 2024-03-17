@@ -20,7 +20,9 @@ import {
 } from '../TsFactoryWrapper';
 import {
 	NoMatchError,
-	TypeNodeGeneration, TypeNodeGenerationResult, UnexpectedlyUnknownNoMatchError,
+	TypeNodeGeneration,
+	TypeNodeGenerationResult,
+	UnexpectedlyUnknownNoMatchError,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 import ts from 'typescript';
 
@@ -57,8 +59,8 @@ type typed_object_string_type = {
 };
 
 type typed_object_string_general_type = {
-	type: 'string',
-	typed_object_string: typed_object_string_type
+	type: 'string';
+	typed_object_string: typed_object_string_type;
 } & ({minLength: 1} | {});
 
 const typed_object_string_$ref_schema = {
@@ -117,13 +119,13 @@ export const typed_object_string_schema = {
 					additionalProperties: false,
 					patternProperties: {
 						[typed_object_string_property_regex]:
-						typed_object_string_$ref_schema,
+							typed_object_string_$ref_schema,
 					},
 				},
 				UnrealEngineStringReference_inner_schema,
 			],
-		}
-	}
+		},
+	},
 };
 
 export const typed_object_string_general_schema = {
@@ -152,8 +154,9 @@ export class TypedObjectString {
 			metaSchema: {
 				...typed_object_string_schema,
 				...{
-					definitions: UnrealEngineStringReference_schema.definitions
-				}
+					definitions:
+						UnrealEngineStringReference_schema.definitions,
+				},
 			},
 			macro: this.ajv_macro_generator(false),
 		});
@@ -229,12 +232,21 @@ export class TypedObjectString {
 		return 0 !== Object.keys(maybe).length;
 	}
 
-	private static $ref_object_dictionary_is_auto_constructor_properties(
-		maybe:{[key: string]: type_object_string_$ref_choices}
-	): maybe is typeof maybe & auto_constructor_property_types_from_generated_types_properties<Exclude<keyof typeof maybe, number>> {
-		return Object.keys(maybe).length >= 1 && Object.values(maybe).every((value) => {
-			return value.$ref in auto_constructor_property_types_from_generated_types;
-		});
+	private static $ref_object_dictionary_is_auto_constructor_properties(maybe: {
+		[key: string]: type_object_string_$ref_choices;
+	}): maybe is typeof maybe &
+		auto_constructor_property_types_from_generated_types_properties<
+			Exclude<keyof typeof maybe, number>
+		> {
+		return (
+			Object.keys(maybe).length >= 1 &&
+			Object.values(maybe).every((value) => {
+				return (
+					value.$ref in
+					auto_constructor_property_types_from_generated_types
+				);
+			})
+		);
 	}
 
 	private static property_to_regex(data: typed_object_string_type): string {
@@ -294,29 +306,40 @@ export class TypedObjectString {
 		...TypesGeneration_concrete[],
 	] {
 		return [
-			new TypesGenerationFromSchema<
-				typed_object_string_general_type
-			>(
+			new TypesGenerationFromSchema<typed_object_string_general_type>(
 				typed_object_string_general_schema,
 				(data, reference_name) => {
-					if (!this.is_$ref_object_dictionary(data.typed_object_string)) {
+					if (
+						!this.is_$ref_object_dictionary(
+							data.typed_object_string
+						)
+					) {
 						console.log(data.typed_object_string);
-						throw new UnexpectedlyUnknownNoMatchError(data.typed_object_string, 'not yet supported');
-					} else if (!this.$ref_object_dictionary_is_auto_constructor_properties(data.typed_object_string)) {
-						return create_object_type(Object.fromEntries(
-							Object.entries(data.typed_object_string).map(
-								(entry) => {
-									return [
-										entry[0],
-										ts.factory.createTypeReferenceNode(
-											adjust_class_name(
-												entry[1].$ref.substring(14)
-											)
-										),
-									];
-								}
+						throw new UnexpectedlyUnknownNoMatchError(
+							data.typed_object_string,
+							'not yet supported'
+						);
+					} else if (
+						!this.$ref_object_dictionary_is_auto_constructor_properties(
+							data.typed_object_string
+						)
+					) {
+						return create_object_type(
+							Object.fromEntries(
+								Object.entries(data.typed_object_string).map(
+									(entry) => {
+										return [
+											entry[0],
+											ts.factory.createTypeReferenceNode(
+												adjust_class_name(
+													entry[1].$ref.substring(14)
+												)
+											),
+										];
+									}
+								)
 							)
-						));
+						);
 					}
 
 					return createClass(
@@ -327,7 +350,7 @@ export class TypedObjectString {
 								required: Object.keys(
 									data.typed_object_string
 								) as [string, ...string[]],
-								properties: data.typed_object_string
+								properties: data.typed_object_string,
 							},
 							['public', 'readonly']
 						),
@@ -348,33 +371,44 @@ export class TypedObjectString {
 			new TypeNodeGeneration<typed_object_string_general_type>(
 				typed_object_string_general_schema,
 				(data) => {
-					if (!this.is_$ref_object_dictionary(data.typed_object_string)) {
+					if (
+						!this.is_$ref_object_dictionary(
+							data.typed_object_string
+						)
+					) {
 						console.log(data.typed_object_string);
-						throw new UnexpectedlyUnknownNoMatchError(data.typed_object_string, 'not yet supported');
+						throw new UnexpectedlyUnknownNoMatchError(
+							data.typed_object_string,
+							'not yet supported'
+						);
 					}
 
 					return new TypeNodeGenerationResult(() => {
-						return create_object_type(Object.fromEntries(
-							Object.entries(data.typed_object_string).map(
-								(entry) => {
-									const [property, value] = entry;
+						return create_object_type(
+							Object.fromEntries(
+								Object.entries(data.typed_object_string).map(
+									(entry) => {
+										const [property, value] = entry;
 
-									if (!this.is_$ref_object(value)) {
-										throw new UnexpectedlyUnknownNoMatchError(
-											{[property]:value},
-											'not yet supported'
-										);
+										if (!this.is_$ref_object(value)) {
+											throw new UnexpectedlyUnknownNoMatchError(
+												{[property]: value},
+												'not yet supported'
+											);
+										}
+
+										return [
+											property,
+											ts.factory.createTypeReferenceNode(
+												adjust_class_name(
+													value.$ref.substring(14)
+												)
+											),
+										];
 									}
-
-									return [
-										property,
-										ts.factory.createTypeReferenceNode(
-											adjust_class_name(value.$ref.substring(14))
-										),
-									];
-								}
+								)
 							)
-						));
+						);
 					});
 				}
 			),
