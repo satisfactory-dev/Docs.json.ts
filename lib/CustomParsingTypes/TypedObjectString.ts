@@ -14,6 +14,7 @@ import {
 	adjust_class_name,
 	auto_constructor_property_types_from_generated_types,
 	auto_constructor_property_types_from_generated_types_properties,
+	create_modifier,
 	create_object_type,
 	createClass,
 	createClass__members__with_auto_constructor,
@@ -323,10 +324,15 @@ export class TypedObjectString {
 							data.typed_object_string
 						)
 					) {
-						return create_object_type(
-							Object.fromEntries(
-								Object.entries(data.typed_object_string).map(
-									(entry) => {
+						return ts.factory.createTypeAliasDeclaration(
+							[create_modifier('export')],
+							adjust_class_name(reference_name),
+							undefined,
+							create_object_type(
+								Object.fromEntries(
+									Object.entries(
+										data.typed_object_string
+									).map((entry) => {
 										return [
 											entry[0],
 											ts.factory.createTypeReferenceNode(
@@ -335,7 +341,7 @@ export class TypedObjectString {
 												)
 											),
 										];
-									}
+									})
 								)
 							)
 						);

@@ -479,12 +479,6 @@ export class Update8TypeNodeGeneration {
 
 		this.classes.push({
 			file: 'common/classes.ts',
-			ref: 'EditorCurveData--only',
-			node: ts.factory.createTypeReferenceNode('EditorCurveData'),
-		});
-
-		this.classes.push({
-			file: 'common/classes.ts',
 			ref: 'EditorCurveData',
 			node: createClass(
 				'EditorCurveData',
@@ -1168,6 +1162,7 @@ export class Update8TypeNodeGeneration {
 	can_guess_filename(ref: definition_key) {
 		return (
 			/^FG[A-Za-z]+--[A-Za-z-_]+$/.test(ref) ||
+			ref.startsWith('EditorCurveData--') ||
 			ref.startsWith('NativeClass--')
 		);
 	}
@@ -1175,7 +1170,10 @@ export class Update8TypeNodeGeneration {
 	guess_filename(ref: definition_key): string {
 		if (!this.can_guess_filename(ref)) {
 			throw new Error(`${ref} not a supported filename`);
-		} else if (ref.startsWith('NativeClass--')) {
+		} else if (
+			ref.startsWith('NativeClass--') ||
+			ref.startsWith('EditorCurveData--')
+		) {
 			return 'classes/base.ts';
 		}
 
