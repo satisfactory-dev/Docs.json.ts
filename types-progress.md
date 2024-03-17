@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (244 of 244)
+100.00% Complete (243 of 243)
 
 ## Basic Types
 
@@ -37,7 +37,6 @@
 -   [x] mClassToScanFor
 -   [x] mCrosshairMaterial
 -   [x] mDamageTypes
--   [x] mDescriptorStatBars
 -   [x] mDisableSnapOn
 -   [x] mDockingRuleSet
 -   [x] mForm

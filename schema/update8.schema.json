@@ -322,30 +322,6 @@
 				}
 			]
 		},
-		"mDescriptorStatBars": {
-			"oneOf": [
-				{
-					"type": "string",
-					"const": ""
-				},
-				{
-					"type": "string",
-					"array_string": {
-						"type": "array",
-						"minItems": 1,
-						"items": {
-							"type": "object",
-							"required": ["Value"],
-							"properties": {
-								"Value": {
-									"$ref": "#/definitions/integer-string"
-								}
-							}
-						}
-					}
-				}
-			]
-		},
 		"mClassToScanFor": {
 			"type": "string",
 			"oneOf": [
@@ -467,7 +443,29 @@
 					"$ref": "#/definitions/mCrosshairMaterial"
 				},
 				"mDescriptorStatBars": {
-					"$ref": "#/definitions/mDescriptorStatBars"
+					"oneOf": [
+						{
+							"type": "string",
+							"const": ""
+						},
+						{
+							"type": "string",
+							"minLength": 1,
+							"typed_array_string": {
+								"type": "array",
+								"minItems": 1,
+								"items": {
+									"type": "string",
+									"minLength": 1,
+									"typed_object_string": {
+										"Value": {
+											"$ref": "#/definitions/integer-string"
+										}
+									}
+								}
+							}
+						}
+					]
 				},
 				"mMenuPriority": {
 					"$ref": "#/definitions/decimal-string"
