@@ -289,9 +289,7 @@ try {
 		}
 
 		console.error('outer stack', err.stack);
-		if (
-			exception instanceof Error
-		) {
+		if (exception instanceof Error) {
 			console.error('inner stack', exception.stack);
 		}
 	} else {

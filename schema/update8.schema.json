@@ -7101,14 +7101,14 @@
 					"type": "string",
 					"minLength": 1,
 					"typed_object_string": {
-							"OverrideColorData": {
-									"PrimaryColor": {
-										"$ref": "#/definitions/color-decimal"
-									},
-									"SecondaryColor": {
-										"$ref": "#/definitions/color-decimal"
-									}
+						"OverrideColorData": {
+							"PrimaryColor": {
+								"$ref": "#/definitions/color-decimal"
+							},
+							"SecondaryColor": {
+								"$ref": "#/definitions/color-decimal"
 							}
+						}
 					}
 				}
 			}

@@ -207,10 +207,10 @@ export const typed_object_string_nested_schema = {
 					additionalProperties: false,
 					patternProperties: {
 						[typed_object_string_property_regex]:
-						typed_object_string_$ref_schema,
+							typed_object_string_$ref_schema,
 					},
-				}
-			}
+				},
+			},
 		},
 	},
 };
@@ -629,24 +629,29 @@ export class TypedObjectString {
 								required: Object.keys(
 									data.typed_object_string
 								) as [string, ...string[]],
-								properties: Object.fromEntries(Object.entries(data.typed_object_string).map((e) => {
-									const [property, value] = e;
+								properties: Object.fromEntries(
+									Object.entries(
+										data.typed_object_string
+									).map((e) => {
+										const [property, value] = e;
 
-									if (
-										!this.is_$ref_object_dictionary(value) ||
-										!this.$ref_object_dictionary_is_auto_constructor_properties(value)
-									) {
-										throw new UnexpectedlyUnknownNoMatchError(
-											value,
-											`${reference_name}[${property}] not supported!`
-										);
-									}
+										if (
+											!this.is_$ref_object_dictionary(
+												value
+											) ||
+											!this.$ref_object_dictionary_is_auto_constructor_properties(
+												value
+											)
+										) {
+											throw new UnexpectedlyUnknownNoMatchError(
+												value,
+												`${reference_name}[${property}] not supported!`
+											);
+										}
 
-									return [
-										property,
-										value,
-									];
-								})) as any,
+										return [property, value];
+									})
+								) as any,
 							},
 							['public', 'readonly']
 						),
@@ -677,33 +682,29 @@ export class TypedObjectString {
 	}
 
 	private static general_type_to_object_type(
-		data:typed_object_string_general_type
-	) : TypeLiteralNode {
-						return create_object_type(
-							Object.fromEntries(
-								Object.entries(data.typed_object_string).map(
-									(entry) => {
-										const [property, value] = entry;
+		data: typed_object_string_general_type
+	): TypeLiteralNode {
+		return create_object_type(
+			Object.fromEntries(
+				Object.entries(data.typed_object_string).map((entry) => {
+					const [property, value] = entry;
 
-										if (!this.is_$ref_object(value)) {
-											throw new UnexpectedlyUnknownNoMatchError(
-												{[property]: value},
-												'not yet supported'
-											);
-										}
-
-										return [
-											property,
-											ts.factory.createTypeReferenceNode(
-												adjust_class_name(
-													value.$ref.substring(14)
-												)
-											),
-										];
-									}
-								)
-							)
+					if (!this.is_$ref_object(value)) {
+						throw new UnexpectedlyUnknownNoMatchError(
+							{[property]: value},
+							'not yet supported'
 						);
+					}
+
+					return [
+						property,
+						ts.factory.createTypeReferenceNode(
+							adjust_class_name(value.$ref.substring(14))
+						),
+					];
+				})
+			)
+		);
 	}
 
 	static TypeNodeGeneration(): [
@@ -715,15 +716,32 @@ export class TypedObjectString {
 				typed_object_string_nested_schema,
 				(data) => {
 					return new TypeNodeGenerationResult(() => {
-						return create_object_type(Object.fromEntries(
-							Object.entries(data.typed_object_string).map((e) => {
-								if (!this.is_$ref_object_dictionary(e[1])) {
-									throw new UnexpectedlyUnknownNoMatchError(e[1], `${e[0]} not a supported type!`);
-								}
+						return create_object_type(
+							Object.fromEntries(
+								Object.entries(data.typed_object_string).map(
+									(e) => {
+										if (
+											!this.is_$ref_object_dictionary(
+												e[1]
+											)
+										) {
+											throw new UnexpectedlyUnknownNoMatchError(
+												e[1],
+												`${e[0]} not a supported type!`
+											);
+										}
 
-								return [e[0], this.general_type_to_object_type({type: 'string', typed_object_string: e[1]})];
-							})
-						));
+										return [
+											e[0],
+											this.general_type_to_object_type({
+												type: 'string',
+												typed_object_string: e[1],
+											}),
+										];
+									}
+								)
+							)
+						);
 					});
 				}
 			),
@@ -742,7 +760,9 @@ export class TypedObjectString {
 						);
 					}
 
-					return new TypeNodeGenerationResult(() => this.general_type_to_object_type(data));
+					return new TypeNodeGenerationResult(() =>
+						this.general_type_to_object_type(data)
+					);
 				}
 			),
 			new TypeNodeGeneration<supported_type_node_generations>(
