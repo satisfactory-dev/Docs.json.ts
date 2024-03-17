@@ -36,15 +36,6 @@ const already_configured = new WeakSet<Ajv>();
 
 export const UnrealEngineString_regex = /^([^']+)'(?:"([^"]+)"|([^"]+))'$/;
 
-export type UnrealEngineString_type = {
-	type: 'string';
-	UnrealEngineString: {
-		type: 'string';
-		UnrealEngineString_prefix: string;
-		pattern: string;
-	};
-} & ({minLength: 1} | {});
-
 export const UnrealEngineStringReference_general_regex =
 	'/(?:[A-Z-][A-Za-z0-9_-]+/)+(?:[A-Z][A-Za-z_0-9-]+\\.[A-Z][A-Za-z_0-9-]+(?:_C)?(?::[A-Z][A-Za-z0-9_]+)?|[A-Z][A-Za-z_]+\\.[A-Z][A-Za-z_]+)';
 
