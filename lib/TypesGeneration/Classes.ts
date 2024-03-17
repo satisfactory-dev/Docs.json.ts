@@ -16,6 +16,7 @@ import {
 	TypeNodeGeneration,
 	TypeNodeGenerationResult,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
+import {TypedObjectString} from '../CustomParsingTypes/TypedObjectString';
 
 declare type supported_base_classes_union =
 	| 'class--no-description-or-display-name'
@@ -136,71 +137,7 @@ export const generators = [
 			);
 		}
 	),
-	new TypesGenerationFromSchema<{
-		type: 'string';
-		minLength: 1;
-		object_string: {
-			type: 'object';
-			required: [string, ...string[]];
-			properties: {
-				[key: string]: {
-					$ref:
-						| '#/definitions/mDisableSnapOn'
-						| '#/definitions/EditorCurveData';
-				};
-			};
-		};
-	}>(
-		{
-			type: 'object',
-			required: ['type', 'minLength', 'object_string'],
-			additionalProperties: false,
-			properties: {
-				type: {type: 'string', const: 'string'},
-				minLength: {type: 'number', const: 1},
-				object_string: {
-					type: 'object',
-					required: ['type', 'required', 'properties'],
-					additionalProperties: false,
-					properties: {
-						type: {type: 'string', const: 'object'},
-						required: {
-							type: 'array',
-							minItems: 1,
-							items: {type: 'string'},
-						},
-						properties: {
-							type: 'object',
-							additionalProperties: {
-								type: 'object',
-								required: ['$ref'],
-								additionalProperties: false,
-								properties: {
-									$ref: {
-										type: 'string',
-										pattern:
-											'^#/definitions/(mDisableSnapOn|EditorCurveData)$',
-									},
-								},
-							},
-						},
-					},
-				},
-			},
-		},
-		(data, reference_name) => {
-			return createClass(
-				adjust_class_name(reference_name),
-				createClass__members__with_auto_constructor(
-					data.object_string,
-					['public', 'readonly']
-				),
-				{
-					modifiers: ['export'],
-				}
-			);
-		}
-	),
+	...TypedObjectString.TypesGenerators(),
 	new TypesGenerationMatchesReferenceName<
 		{
 			type: 'object';

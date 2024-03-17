@@ -24,6 +24,7 @@ import {
 	TypeNodeGenerationResult,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 import {UnrealEngineStringReference} from '../CustomParsingTypes/UnrealEngineStringReference';
+import {TypedObjectString} from '../CustomParsingTypes/TypedObjectString';
 
 const validator_target_files = {
 	'decimal-string': 'utils/validators.ts',
@@ -185,32 +186,6 @@ export const generators = [
 						),
 					]
 				)
-			);
-		}
-	),
-	new TypesGenerationMatchesReferenceName<
-		{
-			type: 'string';
-			minLength: 1;
-			vector_object_string: vector_object_string_type;
-		},
-		'mDockingRuleSet' | 'mLightControlData' | 'color-decimal' | 'color'
-	>(
-		['mDockingRuleSet', 'mLightControlData', 'color-decimal', 'color'],
-		(data, reference_name) => {
-			return createClass(
-				adjust_class_name(reference_name),
-				createClass__members__with_auto_constructor(
-					Object.assign({}, data.vector_object_string, {
-						required: Object.keys(
-							data.vector_object_string.properties
-						) as [string, ...string[]],
-					}),
-					['public', 'readonly']
-				),
-				{
-					modifiers: ['export'],
-				}
 			);
 		}
 	),
@@ -581,47 +556,6 @@ export const custom_generators = [
 	},
 ];
 
-export const vector_object_string_schema = {
-	type: 'object',
-	required: ['$ref'],
-	additionalProperties: false,
-	properties: {
-		$ref: {
-			oneOf: [
-				{
-					type: 'string',
-					const: '#/definitions/decimal-string',
-				},
-				{
-					type: 'string',
-					const: '#/definitions/decimal-string--signed',
-				},
-				{
-					type: 'string',
-					const: '#/definitions/integer-string',
-				},
-				{
-					type: 'string',
-					const: '#/definitions/integer-string--signed',
-				},
-			],
-		},
-	},
-};
-
-export type vector_object_string_type = {
-	type: 'object';
-	properties: {
-		[key: string]: {
-			$ref:
-				| '#/definitions/decimal-string'
-				| '#/definitions/decimal-string--signed'
-				| '#/definitions/integer-string'
-				| '#/definitions/integer-string--signed';
-		};
-	};
-};
-
 export const type_node_generators = [
 	new TypeNodeGeneration<ref_type>(ref_schema, (property) => {
 		const ref_key = property['$ref'].substring(
@@ -673,71 +607,6 @@ export const type_node_generators = [
 			})
 	),
 	new TypeNodeGeneration<{
-		type: 'string';
-		minLength: 1;
-		vector_object_string: vector_object_string_type;
-	}>(
-		{
-			type: 'object',
-			required: ['type', 'minLength', 'vector_object_string'],
-			additionalProperties: false,
-			properties: {
-				type: {type: 'string', const: 'string'},
-				minLength: {type: 'number', const: 1},
-				vector_object_string: {
-					type: 'object',
-					required: ['type', 'properties'],
-					additionalProperties: false,
-					properties: {
-						type: {type: 'string', const: 'object'},
-						properties: {
-							type: 'object',
-							additionalProperties: vector_object_string_schema,
-						},
-					},
-				},
-			},
-		},
-		(data) => {
-			const pattern_prop: {[key: string]: string} = {};
-			const type_gen: {[key: string]: TypeReferenceNode} = {};
-
-			for (const entry of Object.entries(
-				data.vector_object_string.properties
-			)) {
-				const [property, {$ref}] = entry;
-
-				if ($ref.startsWith('#/definitions/decimal-string')) {
-					pattern_prop[property] = '\\d+\\.\\d+';
-				} else {
-					pattern_prop[property] = '\\d+';
-				}
-
-				if ($ref.endsWith('--signed')) {
-					pattern_prop[property] =
-						`-?${pattern_prop[property as keyof typeof pattern_prop]}`;
-				}
-
-				type_gen[property] = ts.factory.createTypeReferenceNode(
-					'StrictlyTypedNumberFromRegExp',
-					[create_literal_node_from_value(pattern_prop[property])]
-				);
-			}
-
-			return new TypeNodeGenerationResult(() => {
-				return create_object_type(
-					Object.fromEntries(
-						Object.keys(data.vector_object_string.properties).map(
-							(property) => {
-								return [property, type_gen[property]];
-							}
-						)
-					)
-				);
-			});
-		}
-	),
-	new TypeNodeGeneration<{
 		type: string;
 		pattern: string;
 	}>(
@@ -760,6 +629,7 @@ export const type_node_generators = [
 		}
 	),
 	...UnrealEngineStringReference.TypeNodeGeneration(),
+	...TypedObjectString.TypeNodeGeneration(),
 	new TypeNodeGeneration<{
 		type: 'string';
 		string_starts_with: string;

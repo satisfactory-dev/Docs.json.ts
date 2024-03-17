@@ -27,7 +27,6 @@ import {
 } from './TypesGeneration/validators';
 import {
 	target_files as vectors_target_files,
-	generators as vectors_generators,
 	custom_generators as vectors_custom_generators,
 	supported_meta_types as vectors_supported_meta_types,
 	type_node_generators as vectors_type_node_generators,
@@ -394,7 +393,6 @@ export class DocsTsGenerator {
 			...color_generators,
 			...enum_generators,
 			...validator_generators,
-			...vectors_generators,
 			...constants_generators,
 			...prefixes_generators,
 			...arrays_generators,

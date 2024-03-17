@@ -479,6 +479,12 @@ export class Update8TypeNodeGeneration {
 
 		this.classes.push({
 			file: 'common/classes.ts',
+			ref: 'EditorCurveData--only',
+			node: ts.factory.createTypeReferenceNode('EditorCurveData'),
+		});
+
+		this.classes.push({
+			file: 'common/classes.ts',
 			ref: 'EditorCurveData',
 			node: createClass(
 				'EditorCurveData',

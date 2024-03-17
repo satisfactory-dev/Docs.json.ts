@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (246 of 246)
+97.98% Complete (243 of 248)
 
 ## Basic Types
 
@@ -9,7 +9,6 @@
 -   [x] class
 -   [x] class--no-description
 -   [x] class--no-description-or-display-name
--   [x] EditorCurveData
 -   [x] empty-object
 -   [x] FGBuildingDescriptor
 -   [x] FGChainsaw
@@ -37,7 +36,7 @@
 -   [x] mCrosshairMaterial
 -   [x] mDamageTypes
 -   [x] mDescriptorStatBars
--   [x] mDisableSnapOn
+-   [ ] mDisableSnapOn
 -   [x] mDockingRuleSet
 -   [x] mForm
 -   [x] mFreightCargoType
@@ -66,6 +65,12 @@
 -   [x] decimal-string\_\_type
 -   [x] decimal-string--signed
 -   [x] decimal-string--signed\_\_type
+
+## EditorCurveData
+
+-   [x] EditorCurveData
+-   [ ] EditorCurveData--item
+-   [x] EditorCurveData--only
 
 ## FGAmmoType
 
@@ -347,11 +352,11 @@
 ## vectors
 
 -   [x] pitch-yaw-roll
--   [x] quaternion--semi-native
+-   [ ] quaternion--semi-native
 -   [x] xy
 -   [x] xy--integer
--   [x] xy--semi-native
+-   [ ] xy--semi-native
 -   [x] xyz
 -   [x] xyz--integer
--   [x] xyz--semi-native
+-   [ ] xyz--semi-native
 -   [x] xyz-array

@@ -35,38 +35,6 @@ declare type vector_object_type = {
 	};
 };
 
-export const generators = [
-	new TypesGenerationMatchesReferenceName<
-		| vector_object_type
-		| {
-				type: 'string';
-				minLength: 1;
-				vector_object_string: vector_object_type;
-		  },
-		keyof typeof auto_constructor_property_types_from_generated_types
-	>(
-		Object.keys(
-			target_files
-		) as (keyof typeof auto_constructor_property_types_from_generated_types)[],
-		(data, reference_name) => {
-			data = (
-				'vector_object_string' in data
-					? data.vector_object_string
-					: data
-			) as vector_object_type;
-
-			const members = createClass__members__with_auto_constructor(data, [
-				'public',
-				'readonly',
-			]);
-
-			return createClass(reference_name, members, {
-				modifiers: ['export'],
-			});
-		}
-	),
-];
-
 export const type_node_generators = [
 	new TypeNodeGeneration<{
 		type: 'object';

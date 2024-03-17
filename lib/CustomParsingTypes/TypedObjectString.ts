@@ -6,6 +6,23 @@ import {
 	UnrealEngineStringReference_schema,
 } from './UnrealEngineStringReference';
 import schema from '../../schema/update8.schema.json' assert {type: 'json'};
+import {
+	TypesGeneration_concrete,
+	TypesGenerationFromSchema,
+} from '../TypesGeneration';
+import {
+	adjust_class_name,
+	auto_constructor_property_types_from_generated_types,
+	auto_constructor_property_types_from_generated_types_properties,
+	create_object_type,
+	createClass,
+	createClass__members__with_auto_constructor,
+} from '../TsFactoryWrapper';
+import {
+	NoMatchError,
+	TypeNodeGeneration, TypeNodeGenerationResult, UnexpectedlyUnknownNoMatchError,
+} from '../SchemaBasedResultsMatching/TypeNodeGeneration';
+import ts from 'typescript';
 
 const already_configured = new WeakSet<Ajv>();
 
@@ -38,6 +55,11 @@ type typed_object_string_type = {
 		| type_object_string_$ref_choices
 		| typed_object_string_$ref_only;
 };
+
+type typed_object_string_general_type = {
+	type: 'string',
+	typed_object_string: typed_object_string_type
+} & ({minLength: 1} | {});
 
 const typed_object_string_$ref_schema = {
 	type: 'object',
@@ -83,6 +105,39 @@ const typed_object_string_$ref_schema = {
 	},
 };
 
+export const typed_object_string_schema = {
+	type: 'object',
+	additionalProperties: false,
+	patternProperties: {
+		[typed_object_string_property_regex]: {
+			oneOf: [
+				typed_object_string_$ref_schema,
+				{
+					type: 'object',
+					additionalProperties: false,
+					patternProperties: {
+						[typed_object_string_property_regex]:
+						typed_object_string_$ref_schema,
+					},
+				},
+				UnrealEngineStringReference_inner_schema,
+			],
+		}
+	}
+};
+
+export const typed_object_string_general_schema = {
+	type: 'object',
+	required: ['type', 'typed_object_string'],
+	definitions: UnrealEngineStringReference_schema.definitions,
+	additionalProperties: false,
+	properties: {
+		type: {type: 'string', const: 'string'},
+		minLength: {type: 'number', const: 1},
+		typed_object_string: typed_object_string_schema,
+	},
+};
+
 export class TypedObjectString {
 	static configure_ajv(ajv: Ajv) {
 		if (already_configured.has(ajv)) {
@@ -95,25 +150,10 @@ export class TypedObjectString {
 			keyword: 'typed_object_string',
 			type: 'string',
 			metaSchema: {
-				type: 'object',
-				additionalProperties: false,
-				definitions: UnrealEngineStringReference_schema.definitions,
-				patternProperties: {
-					[typed_object_string_property_regex]: {
-						oneOf: [
-							typed_object_string_$ref_schema,
-							{
-								type: 'object',
-								additionalProperties: false,
-								patternProperties: {
-									[typed_object_string_property_regex]:
-										typed_object_string_$ref_schema,
-								},
-							},
-							UnrealEngineStringReference_inner_schema,
-						],
-					},
-				},
+				...typed_object_string_schema,
+				...{
+					definitions: UnrealEngineStringReference_schema.definitions
+				}
 			},
 			macro: this.ajv_macro_generator(false),
 		});
@@ -167,17 +207,18 @@ export class TypedObjectString {
 		return 1 === keys.length && keys.includes('$ref');
 	}
 
-	private static is_$ref_object(maybe: {
-		[key: string]: any;
-	}): maybe is type_object_string_$ref_choices {
+	private static is_$ref_object(
+		maybe: any
+	): maybe is type_object_string_$ref_choices {
 		return (
+			'object' === typeof maybe &&
 			this.keys_are_$ref_only(Object.keys(maybe)) &&
 			type_object_string_$ref_supported_array.includes(maybe.$ref)
 		);
 	}
 
 	private static is_$ref_object_dictionary(maybe: {
-		[key: string]: {[key: string]: string};
+		[key: string]: any;
 	}): maybe is {[key: string]: type_object_string_$ref_choices} {
 		for (const sub_object of Object.values(maybe)) {
 			if (!this.is_$ref_object(sub_object)) {
@@ -186,6 +227,14 @@ export class TypedObjectString {
 		}
 
 		return 0 !== Object.keys(maybe).length;
+	}
+
+	private static $ref_object_dictionary_is_auto_constructor_properties(
+		maybe:{[key: string]: type_object_string_$ref_choices}
+	): maybe is typeof maybe & auto_constructor_property_types_from_generated_types_properties<Exclude<keyof typeof maybe, number>> {
+		return Object.keys(maybe).length >= 1 && Object.values(maybe).every((value) => {
+			return value.$ref in auto_constructor_property_types_from_generated_types;
+		});
 	}
 
 	private static property_to_regex(data: typed_object_string_type): string {
@@ -238,5 +287,97 @@ export class TypedObjectString {
 				pattern: inner ? regex : `^${regex}$`,
 			};
 		};
+	}
+
+	static TypesGenerators(): [
+		TypesGeneration_concrete,
+		...TypesGeneration_concrete[],
+	] {
+		return [
+			new TypesGenerationFromSchema<
+				typed_object_string_general_type
+			>(
+				typed_object_string_general_schema,
+				(data, reference_name) => {
+					if (!this.is_$ref_object_dictionary(data.typed_object_string)) {
+						console.log(data.typed_object_string);
+						throw new UnexpectedlyUnknownNoMatchError(data.typed_object_string, 'not yet supported');
+					} else if (!this.$ref_object_dictionary_is_auto_constructor_properties(data.typed_object_string)) {
+						return create_object_type(Object.fromEntries(
+							Object.entries(data.typed_object_string).map(
+								(entry) => {
+									return [
+										entry[0],
+										ts.factory.createTypeReferenceNode(
+											adjust_class_name(
+												entry[1].$ref.substring(14)
+											)
+										),
+									];
+								}
+							)
+						));
+					}
+
+					return createClass(
+						adjust_class_name(reference_name),
+						createClass__members__with_auto_constructor(
+							{
+								type: 'object',
+								required: Object.keys(
+									data.typed_object_string
+								) as [string, ...string[]],
+								properties: data.typed_object_string
+							},
+							['public', 'readonly']
+						),
+						{
+							modifiers: ['export'],
+						}
+					);
+				}
+			),
+		];
+	}
+
+	static TypeNodeGeneration(): [
+		TypeNodeGeneration<any>,
+		...TypeNodeGeneration<any>[],
+	] {
+		return [
+			new TypeNodeGeneration<typed_object_string_general_type>(
+				typed_object_string_general_schema,
+				(data) => {
+					if (!this.is_$ref_object_dictionary(data.typed_object_string)) {
+						console.log(data.typed_object_string);
+						throw new UnexpectedlyUnknownNoMatchError(data.typed_object_string, 'not yet supported');
+					}
+
+					return new TypeNodeGenerationResult(() => {
+						return create_object_type(Object.fromEntries(
+							Object.entries(data.typed_object_string).map(
+								(entry) => {
+									const [property, value] = entry;
+
+									if (!this.is_$ref_object(value)) {
+										throw new UnexpectedlyUnknownNoMatchError(
+											{[property]:value},
+											'not yet supported'
+										);
+									}
+
+									return [
+										property,
+										ts.factory.createTypeReferenceNode(
+											adjust_class_name(value.$ref.substring(14))
+										),
+									];
+								}
+							)
+						));
+					});
+				}
+			),
+		];
 	}
 }
