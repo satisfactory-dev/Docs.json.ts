@@ -68,11 +68,6 @@ export type UnrealEngineStringReference_general_type = {
 	minLength: 1;
 	UnrealEngineStringReference: UnrealEngineStringReference_type;
 };
-export type UnrealEngineStringReference_inner_type = {
-	type: 'string';
-	minLength: 1;
-	['UnrealEngineStringReference--inner']: UnrealEngineStringReference_type;
-};
 
 export function is_UnrealEngineStringReference_general_object(
 	maybe: any
@@ -775,40 +770,6 @@ export function create_UnrealEngineStringReference_reference_type(
 	);
 }
 
-export function create_UnrealEngineString_reference_type(
-	type_arguments:
-		| {UnrealEngineString_prefix: string; pattern: string}
-		| {UnrealEngineString_prefix_pattern: string; pattern: string}
-		| undefined = undefined
-): ts.TypeReferenceNode {
-	return flexibly_create_UnrealEngineString_reference_type(
-		!type_arguments
-			? undefined
-			: [
-					'UnrealEngineString_prefix' in type_arguments
-						? ts.factory.createTypeReferenceNode(
-								'string_starts_with',
-								[
-									create_literal_node_from_value(
-										type_arguments.UnrealEngineString_prefix
-									),
-								]
-							)
-						: ts.factory.createTypeReferenceNode(
-								'StringPassedRegExp',
-								[
-									create_literal_node_from_value(
-										type_arguments.UnrealEngineString_prefix_pattern
-									),
-								]
-							),
-					ts.factory.createTypeReferenceNode('StringPassedRegExp', [
-						create_literal_node_from_value(type_arguments.pattern),
-					]),
-				]
-	);
-}
-
 export function conditional_UnrealEngineString_type_arguments(): [
 	ts.ConditionalTypeNode,
 	ts.TypeReferenceNode,
@@ -877,23 +838,5 @@ export function is_UnrealEngineStringReference_value(
 		true === maybe ||
 		('object' === typeof maybe &&
 			is_UnrealEngineStringReference_value_object(maybe))
-	);
-}
-
-export function is_UnrealEngineStringReference_inner_object(maybe: {
-	[key: string]: any;
-}): maybe is UnrealEngineStringReference_inner_type {
-	const keys = Object.keys(maybe);
-
-	return (
-		3 === keys.length &&
-		keys.includes('type') &&
-		keys.includes('minLength') &&
-		keys.includes('UnrealEngineStringReference--inner') &&
-		'string' === maybe.type &&
-		1 === maybe.minLength &&
-		is_UnrealEngineStringReference_value(
-			maybe['UnrealEngineStringReference--inner']
-		)
 	);
 }

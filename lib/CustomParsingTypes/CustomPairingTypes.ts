@@ -21,15 +21,6 @@ export function array_is_non_empty<T extends any = any>(
 	return maybe.length >= 1;
 }
 
-export function object_has_array_property<T extends string = string>(
-	maybe: object,
-	property: T
-): maybe is {[key: string]: any} & {[key in T]: any[]} {
-	return (
-		object_has_property(maybe, property) && value_is_array(maybe[property])
-	);
-}
-
 export function object_only_has_that_property<T extends string = string>(
 	maybe: object,
 	property: T

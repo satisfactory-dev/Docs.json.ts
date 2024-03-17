@@ -30,14 +30,11 @@ import {
 import ts, {Node, TypeLiteralNode, TypeReferenceNode} from 'typescript';
 import {
 	array_is_non_empty,
-	object_has_array_property,
 	object_has_property,
 	object_only_has_that_property,
 	value_is_array,
 	value_is_non_array_object,
 } from './CustomPairingTypes';
-import {writeFile} from 'node:fs/promises';
-import {check_ref} from '../Schemas/Update8';
 
 const already_configured = new WeakSet<Ajv>();
 
