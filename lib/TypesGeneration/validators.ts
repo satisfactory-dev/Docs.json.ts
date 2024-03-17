@@ -23,6 +23,7 @@ import {
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 import {UnrealEngineStringReference} from '../CustomParsingTypes/UnrealEngineStringReference';
 import {TypedObjectString} from '../CustomParsingTypes/TypedObjectString';
+import {TypedArrayString} from '../CustomParsingTypes/TypedArrayString';
 
 const validator_target_files = {
 	'decimal-string': 'utils/validators.ts',
@@ -561,6 +562,7 @@ export const type_node_generators = [
 	),
 	...UnrealEngineStringReference.TypeNodeGeneration(),
 	...TypedObjectString.TypeNodeGeneration(),
+	...TypedArrayString.TypeNodeGeneration(),
 	new TypeNodeGeneration<{
 		type: 'string';
 		string_starts_with: string;

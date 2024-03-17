@@ -1,6 +1,6 @@
 # Types Progress
 
-99.19% Complete (244 of 246)
+100.00% Complete (244 of 244)
 
 ## Basic Types
 
@@ -64,7 +64,6 @@
 ## EditorCurveData
 
 -   [x] EditorCurveData
--   [ ] EditorCurveData--item
 -   [x] EditorCurveData--only
 
 ## FGAmmoType
@@ -355,7 +354,6 @@
 -   [x] xy--integer
 -   [x] xyz
 -   [x] xyz--integer
--   [ ] xyz--semi-native
 -   [x] xyz-array
 
 ## xyz

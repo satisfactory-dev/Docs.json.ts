@@ -141,21 +141,6 @@
 				}
 			}
 		},
-		"xyz--semi-native": {
-			"type": "object",
-			"required": ["X", "Y", "Z"],
-			"properties": {
-				"X": {
-					"$ref": "#/definitions/decimal-string--signed"
-				},
-				"Y": {
-					"$ref": "#/definitions/decimal-string--signed"
-				},
-				"Z": {
-					"$ref": "#/definitions/decimal-string--signed"
-				}
-			}
-		},
 		"xyz--inner": {
 			"type": "string",
 			"minLength": 1,
@@ -752,18 +737,18 @@
 						{
 							"type": "string",
 							"minLength": 1,
-							"array_string": {
+							"typed_array_string": {
 								"type": "array",
 								"minItems": 1,
 								"items": {
-									"type": "object",
-									"required": ["Min", "Max", "IsValid"],
-									"properties": {
+									"type": "string",
+									"minLength": 1,
+									"typed_object_string": {
 										"Min": {
-											"$ref": "#/definitions/xyz--semi-native"
+											"$ref": "#/definitions/xyz--inner"
 										},
 										"Max": {
-											"$ref": "#/definitions/xyz--semi-native"
+											"$ref": "#/definitions/xyz--inner"
 										},
 										"IsValid": {
 											"$ref": "#/definitions/boolean"
@@ -6070,11 +6055,6 @@
 			"minLength": 1,
 			"typed_object_string": {
 				"EditorCurveData": {
-					"$ref": "#/definitions/EditorCurveData--item"
-				}
-			}
-		},
-		"EditorCurveData--item": {
 			"DefaultValue": {
 				"$ref": "#/definitions/decimal-string"
 			},
@@ -6083,6 +6063,8 @@
 			},
 			"PostInfinityExtrap": {
 				"$ref": "#/definitions/InfinityExtrap"
+			}
+				}
 			}
 		},
 		"EditorCurveData": {
@@ -6093,7 +6075,15 @@
 					"minLength": 1,
 					"typed_object_string": {
 						"EditorCurveData": {
-							"$ref": "#/definitions/EditorCurveData--item"
+							"DefaultValue": {
+								"$ref": "#/definitions/decimal-string"
+							},
+							"PreInfinityExtrap": {
+								"$ref": "#/definitions/InfinityExtrap"
+							},
+							"PostInfinityExtrap": {
+								"$ref": "#/definitions/InfinityExtrap"
+							}
 						},
 						"ExternalCurve": {
 							"type": "string",

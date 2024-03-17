@@ -88,7 +88,7 @@ type typed_object_string_type = {
 		| typed_object_string_$ref_only;
 };
 
-type typed_object_string_general_type = {
+export type typed_object_string_general_type = {
 	type: 'string';
 	typed_object_string: typed_object_string_type;
 } & ({minLength: 1} | {});
@@ -534,7 +534,7 @@ export class TypedObjectString {
 		);
 	}
 
-	private static value_is_typed_object_string_general_type(
+	public static value_is_typed_object_string_general_type(
 		maybe: any
 	): maybe is typed_object_string_general_type {
 		return (
@@ -665,19 +665,24 @@ export class TypedObjectString {
 			new TypesGenerationFromSchema<typed_object_string_general_type>(
 				typed_object_string_general_schema,
 				(data, reference_name) => {
-					if (
-						!this.is_$ref_object_dictionary(
-							data.typed_object_string
-						)
-					) {
-						console.log(data.typed_object_string);
-						throw new UnexpectedlyUnknownNoMatchError(
-							data.typed_object_string,
-							'not yet supported in type generation for general schema'
+					const {typed_object_string} = data;
+
+					const is_$ref_object_dictionary = this.is_$ref_object_dictionary(
+							typed_object_string
+					);
+					const is_combination_dictionary = this.is_combination_dictionary(
+						typed_object_string
+					);
+					if (is_combination_dictionary && !is_$ref_object_dictionary) {
+						return ts.factory.createTypeAliasDeclaration(
+							[create_modifier('export')],
+							adjust_class_name(reference_name),
+							undefined,
+							this.combination_dictionary_type_to_object_type(typed_object_string)
 						);
 					} else if (
 						!this.$ref_object_dictionary_is_auto_constructor_properties(
-							data.typed_object_string
+							typed_object_string
 						)
 					) {
 						return ts.factory.createTypeAliasDeclaration(
@@ -687,7 +692,7 @@ export class TypedObjectString {
 							create_object_type(
 								Object.fromEntries(
 									Object.entries(
-										data.typed_object_string
+										typed_object_string
 									).map((entry) => {
 										return [
 											entry[0],
@@ -709,9 +714,9 @@ export class TypedObjectString {
 							{
 								type: 'object',
 								required: Object.keys(
-									data.typed_object_string
+									typed_object_string
 								) as [string, ...string[]],
-								properties: data.typed_object_string,
+								properties: typed_object_string,
 							},
 							['public', 'readonly']
 						),
@@ -825,7 +830,8 @@ export class TypedObjectString {
 	}
 
 	private static combination_dictionary_type_to_object_type(
-		data: typed_object_string_combination_dictionary
+		data: typed_object_string_combination_dictionary,
+		depth = 0
 	): TypeLiteralNode {
 		return create_object_type(
 			Object.fromEntries(
@@ -842,18 +848,21 @@ export class TypedObjectString {
 							property,
 							create_literal_node_from_value(value.const),
 						];
-					} else {
 					}
-					throw new UnexpectedlyUnknownNoMatchError(
-						value,
-						`${property} not yet supported in combination_dictionary_type_to_object_type`
-					);
+
+					return [
+						property,
+						this.combination_dictionary_type_to_object_type(
+							value,
+							depth + 1
+						),
+					];
 				})
 			)
 		);
 	}
 
-	private static general_type_to_object_type(
+	public static general_type_to_object_type(
 		data: typed_object_string_general_type
 	): TypeLiteralNode {
 		return create_object_type(
