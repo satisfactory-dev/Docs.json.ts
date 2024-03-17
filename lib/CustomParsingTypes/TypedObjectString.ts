@@ -321,15 +321,16 @@ export class TypedObjectString {
 				);
 			}
 
-			let definition:{
+			let definition: {
 				[key: string]: any;
-			} = schema.definitions[maybe_definition_key as keyof typeof schema.definitions];
+			} =
+				schema.definitions[
+					maybe_definition_key as keyof typeof schema.definitions
+				];
 
 			if (
-				!this.is_$ref_object_dictionary(
-					definition
-				)
-				&& 'typed_object_string' in definition
+				!this.is_$ref_object_dictionary(definition) &&
+				'typed_object_string' in definition
 			) {
 				definition = definition.typed_object_string;
 			}
@@ -339,9 +340,7 @@ export class TypedObjectString {
 				throw new Error(`${$ref} not supported!`);
 			}
 
-			value_regex = this.property_to_regex(
-				definition
-			);
+			value_regex = this.property_to_regex(definition);
 		} else if (
 			supported_type_node_generations.properties.$ref.enum.includes($ref)
 		) {
@@ -427,7 +426,10 @@ export class TypedObjectString {
 			}
 		} else if (this.is_supported_const_string_object(value)) {
 			value_regex = value.const;
-		} else if ($ref.startsWith('#/definitions/integer-string') || $ref.startsWith('#/definitions/decimal-string')) {
+		} else if (
+			$ref.startsWith('#/definitions/integer-string') ||
+			$ref.startsWith('#/definitions/decimal-string')
+		) {
 			if ($ref.startsWith('#/definitions/decimal-string')) {
 				value_regex = '\\d+\\.\\d+';
 			} else {
