@@ -28,7 +28,7 @@ import ts from 'typescript';
 
 const already_configured = new WeakSet<Ajv>();
 
-const typed_object_string_property_regex = '^[A-Za-z][A-Za-z]*$';
+const typed_object_string_property_regex = '^[A-Za-z][A-Za-z3]*$';
 
 const type_object_string_$ref_supported = {
 	'#/definitions/EditorCurveData--item': true,
@@ -39,6 +39,8 @@ const type_object_string_$ref_supported = {
 	'#/definitions/integer-string': true,
 	'#/definitions/integer-string--signed': true,
 	'#/definitions/boolean': true,
+	'#/definitions/quaternion--inner': true,
+	'#/definitions/xyz--inner': true,
 };
 const type_object_string_$ref_supported_array = Object.keys(
 	type_object_string_$ref_supported
@@ -102,6 +104,14 @@ const typed_object_string_$ref_schema = {
 					type: 'string',
 					const: '#/definitions/boolean',
 				},
+				{
+					type: 'string',
+					const: '#/definitions/quaternion--inner',
+				},
+				{
+					type: 'string',
+					const: '#/definitions/xyz--inner',
+				},
 			],
 		},
 	},
@@ -138,6 +148,22 @@ export const typed_object_string_general_schema = {
 		minLength: {type: 'number', const: 1},
 		typed_object_string: typed_object_string_schema,
 	},
+};
+
+const supported_type_node_generations = {
+	type: 'object',
+	required: ['$ref'],
+	additionalProperties: false,
+	properties: {
+		$ref: {type: 'string', enum: [
+			'#/definitions/transformation',
+		]},
+	},
+};
+
+type supported_type_node_generations = {
+	$ref:
+		'#/definitions/transformation'
 };
 
 export class TypedObjectString {
@@ -185,6 +211,24 @@ export class TypedObjectString {
 
 			value_regex = this.property_to_regex(
 				schema.definitions['EditorCurveData--item']
+			);
+		} else if (
+			'#/definitions/quaternion--inner' === $ref ||
+			'#/definitions/xyz--inner' === $ref
+		) {
+			const definition = schema.definitions[$ref.substring(14) as (
+					keyof typeof schema.definitions & (
+					| 'quaternion--inner'
+					| 'xyz--inner'
+				)
+			)];
+
+			if (!this.is_$ref_object_dictionary(definition.typed_object_string)) {
+				throw new UnexpectedlyUnknownNoMatchError({definition}, 'typed_object_string property not usable!');
+			}
+
+			value_regex = this.property_to_regex(
+				definition.typed_object_string
 			);
 		} else if ('#/definitions/boolean' !== $ref) {
 			if ($ref === undefined) {
@@ -415,6 +459,12 @@ export class TypedObjectString {
 							)
 						);
 					});
+				}
+			),
+			new TypeNodeGeneration<supported_type_node_generations>(
+				supported_type_node_generations,
+				(data) => {
+					return new TypeNodeGenerationResult(() => ts.factory.createTypeReferenceNode(adjust_class_name(data.$ref.substring(14))));
 				}
 			),
 		];

@@ -46,6 +46,12 @@ import {
 	adjust_unrealengine_value,
 } from '../../CustomParsingTypes/UnrealEngineStringReference';
 
+const known_ref_file_targets = {
+	'quaternion--inner': 'common/vectors.ts',
+	'xyz--inner': 'common/vectors.ts',
+	'transformation': 'common/vectors.ts',
+};
+
 export class Update8TypeNodeGeneration {
 	private readonly type_node_generator: TypeNodeGenerationMatcher;
 	public classes: (
@@ -1161,10 +1167,15 @@ export class Update8TypeNodeGeneration {
 
 	can_guess_filename(ref: definition_key) {
 		return (
+			ref in known_ref_file_targets ||
 			/^FG[A-Za-z]+--[A-Za-z-_]+$/.test(ref) ||
 			ref.startsWith('EditorCurveData--') ||
 			ref.startsWith('NativeClass--')
 		);
+	}
+
+	private is_known_key_file_target(ref: definition_key) : ref is definition_key & keyof typeof known_ref_file_targets {
+		return ref in known_ref_file_targets;
 	}
 
 	guess_filename(ref: definition_key): string {
@@ -1175,6 +1186,8 @@ export class Update8TypeNodeGeneration {
 			ref.startsWith('EditorCurveData--')
 		) {
 			return 'classes/base.ts';
+		} else if (this.is_known_key_file_target(ref)) {
+			return known_ref_file_targets[ref];
 		}
 
 		return `classes/CoreUObject/${ref.split('--')[0]}.ts`;

@@ -179,6 +179,21 @@
 				}
 			}
 		},
+		"xyz--inner": {
+			"type": "string",
+			"minLength": 1,
+			"typed_object_string": {
+				"X": {
+					"$ref": "#/definitions/decimal-string--signed"
+				},
+				"Y": {
+					"$ref": "#/definitions/decimal-string--signed"
+				},
+				"Z": {
+					"$ref": "#/definitions/decimal-string--signed"
+				}
+			}
+		},
 		"xy": {
 			"type": "string",
 			"minLength": 1,
@@ -219,6 +234,24 @@
 			"type": "object",
 			"required": ["X", "Y", "Z", "W"],
 			"properties": {
+				"X": {
+					"$ref": "#/definitions/decimal-string--signed"
+				},
+				"Y": {
+					"$ref": "#/definitions/decimal-string--signed"
+				},
+				"Z": {
+					"$ref": "#/definitions/decimal-string--signed"
+				},
+				"W": {
+					"$ref": "#/definitions/decimal-string"
+				}
+			}
+		},
+		"quaternion--inner": {
+			"type": "string",
+			"minLength": 1,
+			"typed_object_string": {
 				"X": {
 					"$ref": "#/definitions/decimal-string--signed"
 				},
@@ -318,21 +351,16 @@
 		"transformation": {
 			"type": "string",
 			"minLength": 1,
-			"object_string": {
-				"type": "object",
-				"required": ["Rotation", "Translation", "Scale3D"],
-				"additionalProperties": false,
-				"properties": {
+			"typed_object_string": {
 					"Rotation": {
-						"$ref": "#/definitions/quaternion--semi-native"
+						"$ref": "#/definitions/quaternion--inner"
 					},
 					"Translation": {
-						"$ref": "#/definitions/xyz--semi-native"
+						"$ref": "#/definitions/xyz--inner"
 					},
 					"Scale3D": {
-						"$ref": "#/definitions/xyz--semi-native"
+						"$ref": "#/definitions/xyz--inner"
 					}
-				}
 			}
 		},
 		"mStackSize": {

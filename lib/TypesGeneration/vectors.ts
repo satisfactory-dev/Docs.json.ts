@@ -21,8 +21,6 @@ export const target_files = {
 	'pitch-yaw-roll': 'common/vectors.ts',
 };
 
-export const supported_meta_types = ['transformation'];
-
 export const type_node_generators = [
 	new TypeNodeGeneration<{
 		type: 'object';
@@ -34,8 +32,7 @@ export const type_node_generators = [
 			| '#/definitions/xy--integer'
 			| '#/definitions/xyz--integer'
 			| '#/definitions/quaternion--semi-native'
-			| '#/definitions/pitch-yaw-roll'
-			| '#/definitions/transformation';
+			| '#/definitions/pitch-yaw-roll';
 	}>(
 		{
 			type: 'object',
@@ -45,7 +42,6 @@ export const type_node_generators = [
 				$ref: {
 					oneOf: [
 						...Object.keys(target_files),
-						...supported_meta_types,
 					].map((ref) => {
 						return {type: 'string', const: `#/definitions/${ref}`};
 					}),
@@ -83,33 +79,6 @@ export const custom_generators = [
 							X: {$ref: '#/definitions/decimal-string'},
 							Y: {$ref: '#/definitions/decimal-string--signed'},
 							Z: {$ref: '#/definitions/decimal-string--signed'},
-						},
-					},
-					['public', 'readonly']
-				),
-				{
-					modifiers: ['export'],
-				}
-			),
-		},
-	],
-	(): {file: string; node: ts.Node}[] => [
-		{
-			file: 'common/vectors.ts',
-			node: createClass(
-				adjust_class_name('transformation'),
-				createClass__members__with_auto_constructor(
-					{
-						type: 'object',
-						required: ['Rotation', 'Translation', 'Scale3D'],
-						properties: {
-							Rotation: {
-								$ref: '#/definitions/quaternion--semi-native',
-							},
-							Translation: {
-								$ref: '#/definitions/xyz--semi-native',
-							},
-							Scale3D: {$ref: '#/definitions/xyz--semi-native'},
 						},
 					},
 					['public', 'readonly']

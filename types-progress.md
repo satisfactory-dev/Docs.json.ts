@@ -1,6 +1,6 @@
 # Types Progress
 
-97.98% Complete (243 of 248)
+98.00% Complete (245 of 250)
 
 ## Basic Types
 
@@ -340,6 +340,10 @@
 -   [x] NativeClass--Classes
 -   [x] NativeClass--NativeClass
 
+## quaternion
+
+-   [x] quaternion--inner
+
 ## SpecifiedColor
 
 -   [x] SpecifiedColor--semi-native
@@ -360,3 +364,7 @@
 -   [x] xyz--integer
 -   [ ] xyz--semi-native
 -   [x] xyz-array
+
+## xyz
+
+-   [x] xyz--inner
