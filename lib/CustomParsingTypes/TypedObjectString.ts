@@ -908,10 +908,19 @@ export class TypedObjectString {
 		property: T,
 		value: type_object_string_$ref_choices
 	): [T, TypeReferenceNode] {
+		const reference_name = value.$ref.substring(14);
+
 		return [
 			property,
 			ts.factory.createTypeReferenceNode(
-				adjust_class_name(value.$ref.substring(14))
+				adjust_class_name(`${reference_name}${
+					(
+						reference_name.startsWith('integer-string') ||
+						reference_name.startsWith('decimal-string')
+					)
+						? '__type'
+						: ''
+				}`)
 			),
 		];
 	}
