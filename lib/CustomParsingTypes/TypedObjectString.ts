@@ -784,7 +784,9 @@ export class TypedObjectString {
 					} else if (this.is_combination_dictionary(value)) {
 						return [
 							property,
-							this.combination_dictionary_type_to_object_type(value),
+							this.combination_dictionary_type_to_object_type(
+								value
+							),
 						];
 					} else if (!this.is_$ref_object(value)) {
 						throw new UnexpectedlyUnknownNoMatchError(
@@ -859,11 +861,15 @@ export class TypedObjectString {
 						this.is_$ref_object_dictionary(
 							data.typed_object_string
 						);
-					const is_combination_dictionary = this.is_combination_dictionary(
-						data.typed_object_string
-					);
+					const is_combination_dictionary =
+						this.is_combination_dictionary(
+							data.typed_object_string
+						);
 
-					if (!is_$ref_object_dictionary && !is_combination_dictionary) {
+					if (
+						!is_$ref_object_dictionary &&
+						!is_combination_dictionary
+					) {
 						throw new UnexpectedlyUnknownNoMatchError(
 							data.typed_object_string,
 							'not yet supported in type node generation'
