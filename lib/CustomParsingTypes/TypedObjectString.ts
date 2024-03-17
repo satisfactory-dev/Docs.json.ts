@@ -226,10 +226,6 @@ export const typed_object_oneOf_schema = {
 		},
 	},
 };
-await writeFile(
-	'./typed-object-string.nested.schema.json',
-	JSON.stringify(typed_object_oneOf_schema, null, '\t') + '\n'
-);
 
 const supported_type_node_generations = {
 	type: 'object',
