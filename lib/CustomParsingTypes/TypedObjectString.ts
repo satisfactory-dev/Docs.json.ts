@@ -397,21 +397,25 @@ export class TypedObjectString {
 					})
 					.join('|')})`;
 			} else if (is_generally_supported_oneOf_array) {
-				value_regex = `(?:${definition.oneOf.map((e) => {
-					if (is_UnrealEngineStringReference_general_object(e)) {
-						return UnrealEngineStringReference.ajv_macro_generator(
-							true
-						)(e.UnrealEngineStringReference).pattern;
-					} else if (e.$ref === '#/definitions/Texture2D--basic') {
-						return `(?:${schema.definitions['Texture2D--basic'].string_starts_with}(?:[A-Z][A-Za-z0-9_.]+/)*[A-Z][A-Za-z_.0-9-]+(?::[A-Z][A-Za-z0-9]+)?)`;
-					} else if (e.$ref === '#/definitions/None') {
-						return schema.definitions.None.const;
-					}
+				value_regex = `(?:${definition.oneOf
+					.map((e) => {
+						if (is_UnrealEngineStringReference_general_object(e)) {
+							return UnrealEngineStringReference.ajv_macro_generator(
+								true
+							)(e.UnrealEngineStringReference).pattern;
+						} else if (
+							e.$ref === '#/definitions/Texture2D--basic'
+						) {
+							return `(?:${schema.definitions['Texture2D--basic'].string_starts_with}(?:[A-Z][A-Za-z0-9_.]+/)*[A-Z][A-Za-z_.0-9-]+(?::[A-Z][A-Za-z0-9]+)?)`;
+						} else if (e.$ref === '#/definitions/None') {
+							return schema.definitions.None.const;
+						}
 
-					console.log(e);
+						console.log(e);
 
-					throw new Error('foo');
-				}).join('|')})`;
+						throw new Error('foo');
+					})
+					.join('|')})`;
 			} else if (
 				!this.is_$ref_object_dictionary(definition.typed_object_string)
 			) {
@@ -913,14 +917,14 @@ export class TypedObjectString {
 		return [
 			property,
 			ts.factory.createTypeReferenceNode(
-				adjust_class_name(`${reference_name}${
-					(
+				adjust_class_name(
+					`${reference_name}${
 						reference_name.startsWith('integer-string') ||
 						reference_name.startsWith('decimal-string')
-					)
-						? '__type'
-						: ''
-				}`)
+							? '__type'
+							: ''
+					}`
+				)
 			),
 		];
 	}
