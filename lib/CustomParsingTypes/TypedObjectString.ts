@@ -648,7 +648,7 @@ export class TypedObjectString {
 
 	static ajv_macro_generator(inner: boolean) {
 		return (schema: typed_object_string_type) => {
-			const regex = `^${this.property_to_regex(schema)}`;
+			const regex = `${this.property_to_regex(schema)}`;
 
 			return {
 				pattern: inner ? regex : `^${regex}$`,
