@@ -21,9 +21,7 @@ import {
 	TypeNodeGeneration,
 	TypeNodeGenerationResult,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
-import {
-	UnrealEngineStringReference,
-} from '../CustomParsingTypes/UnrealEngineStringReference';
+import {UnrealEngineStringReference} from '../CustomParsingTypes/UnrealEngineStringReference';
 
 export const target_files = {
 	'decimal-string': 'utils/validators.ts',

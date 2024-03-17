@@ -1,6 +1,4 @@
-import {
-	TypesGenerationMatchesReferenceName,
-} from '../TypesGeneration';
+import {TypesGenerationMatchesReferenceName} from '../TypesGeneration';
 import {
 	adjust_class_name,
 	create_literal_node_from_value,
@@ -14,9 +12,7 @@ import {
 	TypeNodeGeneration,
 	TypeNodeGenerationResult,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
-import {
-	UnrealEngineStringReference,
-} from '../CustomParsingTypes/UnrealEngineStringReference';
+import {UnrealEngineStringReference} from '../CustomParsingTypes/UnrealEngineStringReference';
 
 export const target_files = {
 	mScannerDisplayText: 'common/aliases.ts',

@@ -21,7 +21,7 @@ import {
 } from '../TsFactoryWrapper';
 import {
 	TypeNodeGeneration,
-	TypeNodeGenerationResult
+	TypeNodeGenerationResult,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 import {
 	TypesGeneration,
@@ -29,7 +29,10 @@ import {
 	TypesGenerationFromSchema,
 	TypesGenerationMatchesReferenceName,
 } from '../TypesGeneration';
-import {array_string_schema_type, target_files} from '../TypesGeneration/arrays';
+import {
+	array_string_schema_type,
+	target_files,
+} from '../TypesGeneration/arrays';
 
 const already_configured = new WeakSet<Ajv>();
 
@@ -96,16 +99,15 @@ export type UnrealEngineString_pattern_type = {
 	};
 } & ({minLength: 1} | {});
 
-export type supported_oneOf_items =
-	| {
+export type supported_oneOf_items = {
+	type: 'string';
+	minLength: 1;
+	UnrealEngineString: {
 		type: 'string';
-		minLength: 1;
-		UnrealEngineString: {
-			type: 'string';
-			UnrealEngineString_prefix: string;
-			pattern: string;
-		};
+		UnrealEngineString_prefix: string;
+		pattern: string;
 	};
+};
 
 export class UnrealEngineStringReference {
 	static configure_ajv(ajv: Ajv) {
@@ -206,7 +208,10 @@ export class UnrealEngineStringReference {
 		});
 	}
 
-	static TypesGenerators(): [TypesGeneration_concrete, ...TypesGeneration_concrete[]] {
+	static TypesGenerators(): [
+		TypesGeneration_concrete,
+		...TypesGeneration_concrete[],
+	] {
 		return [
 			new TypesGenerationFromSchema<UnrealEngineString_type>(
 				UnrealEngineString_schema,
@@ -227,7 +232,9 @@ export class UnrealEngineStringReference {
 			>(['mDamageTypes'], (_, reference_name) => {
 				return ts.factory.createTypeAliasDeclaration(
 					[create_modifier('export')],
-					ts.factory.createIdentifier(adjust_class_name(reference_name)),
+					ts.factory.createIdentifier(
+						adjust_class_name(reference_name)
+					),
 					undefined,
 					create_minimum_size_typed_array_of_type_references(
 						'UnrealEngineString',
@@ -278,21 +285,27 @@ export class UnrealEngineStringReference {
 						Class: create_literal_node_from_value(
 							data.properties.Class.const
 						),
-						mTapeUnlocks: create_minimum_size_typed_array_of_single_type(
-							data.properties.mTapeUnlocks.array_string.minItems,
-							() =>
-								create_UnrealEngineString_reference_type(
-									data.properties.mTapeUnlocks.array_string.items
-										.UnrealEngineString
-								)
-						),
+						mTapeUnlocks:
+							create_minimum_size_typed_array_of_single_type(
+								data.properties.mTapeUnlocks.array_string
+									.minItems,
+								() =>
+									create_UnrealEngineString_reference_type(
+										data.properties.mTapeUnlocks
+											.array_string.items
+											.UnrealEngineString
+									)
+							),
 					}
 				);
 			}),
 		];
 	}
 
-	static CustomGenerators(): [{file: string, node: Node}, ...{file: string, node: Node}[]] {
+	static CustomGenerators(): [
+		{file: string; node: Node},
+		...{file: string; node: Node}[],
+	] {
 		return [
 			{
 				file: 'utils/validators.ts',
@@ -318,7 +331,9 @@ export class UnrealEngineStringReference {
 							[
 								createParameter(
 									'prefix',
-									ts.factory.createTypeReferenceNode('prefix')
+									ts.factory.createTypeReferenceNode(
+										'prefix'
+									)
 								),
 								createParameter(
 									'value',
@@ -362,7 +377,9 @@ export class UnrealEngineStringReference {
 								),
 								createParameter(
 									'pattern',
-									ts.factory.createTypeReferenceNode('pattern')
+									ts.factory.createTypeReferenceNode(
+										'pattern'
+									)
 								),
 								createParameter(
 									ts.factory.createObjectBindingPattern([
@@ -550,7 +567,10 @@ export class UnrealEngineStringReference {
 										[
 											create_index_access('result', 1),
 											ts.factory.createAsExpression(
-												create_index_access('result', 2),
+												create_index_access(
+													'result',
+													2
+												),
 												ts.factory.createTypeReferenceNode(
 													'StringPassedRegExp',
 													[
@@ -602,13 +622,12 @@ export class UnrealEngineStringReference {
 					]
 				),
 			},
-
 		];
 	}
 
-	static TypeNodeGeneration() : [
+	static TypeNodeGeneration(): [
 		TypeNodeGeneration<any>,
-		...TypeNodeGeneration<any>[]
+		...TypeNodeGeneration<any>[],
 	] {
 		return [
 			new TypeNodeGeneration<UnrealEngineString_type>(
@@ -655,7 +674,6 @@ export function adjust_unrealengine_value(value: string): string {
 	);
 }
 
-
 function flexibly_create_UnrealEngineString_reference_type(
 	type_arguments: ts.TypeNode[] | undefined
 ): ts.TypeReferenceNode {
@@ -675,27 +693,27 @@ export function create_UnrealEngineString_reference_type(
 		!type_arguments
 			? undefined
 			: [
-				'UnrealEngineString_prefix' in type_arguments
-					? ts.factory.createTypeReferenceNode(
-						'string_starts_with',
-						[
-							create_literal_node_from_value(
-								type_arguments.UnrealEngineString_prefix
+					'UnrealEngineString_prefix' in type_arguments
+						? ts.factory.createTypeReferenceNode(
+								'string_starts_with',
+								[
+									create_literal_node_from_value(
+										type_arguments.UnrealEngineString_prefix
+									),
+								]
+							)
+						: ts.factory.createTypeReferenceNode(
+								'StringPassedRegExp',
+								[
+									create_literal_node_from_value(
+										type_arguments.UnrealEngineString_prefix_pattern
+									),
+								]
 							),
-						]
-					)
-					: ts.factory.createTypeReferenceNode(
-						'StringPassedRegExp',
-						[
-							create_literal_node_from_value(
-								type_arguments.UnrealEngineString_prefix_pattern
-							),
-						]
-					),
-				ts.factory.createTypeReferenceNode('StringPassedRegExp', [
-					create_literal_node_from_value(type_arguments.pattern),
-				]),
-			]
+					ts.factory.createTypeReferenceNode('StringPassedRegExp', [
+						create_literal_node_from_value(type_arguments.pattern),
+					]),
+				]
 	);
 }
 

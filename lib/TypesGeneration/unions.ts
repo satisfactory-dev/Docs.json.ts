@@ -8,9 +8,7 @@ import {
 	create_union,
 	possibly_create_lazy_union,
 } from '../TsFactoryWrapper';
-import {
-	target_files as validators_target_files,
-} from './validators';
+import {target_files as validators_target_files} from './validators';
 import {
 	array_string_type,
 	generate_array_string_schema,

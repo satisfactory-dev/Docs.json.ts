@@ -5,9 +5,7 @@ import {
 	string_to_array,
 	string_to_object,
 } from './DocsValidation';
-import {
-	UnrealEngineString_regex,
-} from './CustomParsingTypes/UnrealEngineStringReference';
+import {UnrealEngineString_regex} from './CustomParsingTypes/UnrealEngineStringReference';
 
 export {
 	array_string,
