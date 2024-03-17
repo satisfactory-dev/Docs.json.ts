@@ -24,7 +24,7 @@ import {
 	TypeNodeGenerationResult,
 	UnexpectedlyUnknownNoMatchError,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
-import ts from 'typescript';
+import ts, {Node} from 'typescript';
 
 const already_configured = new WeakSet<Ajv>();
 
@@ -410,6 +410,23 @@ export class TypedObjectString {
 					);
 				}
 			),
+		];
+	}
+
+	static CustomGenerators(): [
+		{file: string; node: Node},
+		...{file: string; node: Node}[],
+	] {
+		return [
+			{
+				file: 'classes/base.ts',
+				node: ts.factory.createTypeAliasDeclaration(
+					[create_modifier('declare')],
+					'EditorCurveData__item',
+					undefined,
+					ts.factory.createTypeReferenceNode('EditorCurveData')
+				),
+			},
 		];
 	}
 

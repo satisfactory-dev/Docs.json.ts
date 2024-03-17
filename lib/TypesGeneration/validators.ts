@@ -301,7 +301,10 @@ export const custom_generators = [
 			),
 		});
 
-		nodes.push(...UnrealEngineStringReference.CustomGenerators());
+		nodes.push(
+			...UnrealEngineStringReference.CustomGenerators(),
+			...TypedObjectString.CustomGenerators()
+		);
 
 		nodes.push({
 			file: 'utils/validators.ts',
