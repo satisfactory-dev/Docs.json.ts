@@ -411,7 +411,7 @@ export class TypedObjectString {
 					console.log(e);
 
 					throw new Error('foo');
-				})})`;
+				}).join('|')})`;
 			} else if (
 				!this.is_$ref_object_dictionary(definition.typed_object_string)
 			) {
