@@ -65,6 +65,7 @@ const type_object_string_$ref_supported = {
 	'#/definitions/Texture2D': true,
 	'#/definitions/Texture2D--basic': true,
 	'#/definitions/None': true,
+	'#/definitions/ItemClass--prop': true,
 };
 const type_object_string_$ref_supported_array = Object.keys(
 	type_object_string_$ref_supported
@@ -139,6 +140,7 @@ const typed_object_string_$ref_schema = {
 				'#/definitions/Texture2D',
 				'#/definitions/Texture2D--basic',
 				'#/definitions/None',
+				'#/definitions/ItemClass--prop',
 			],
 		},
 	},
@@ -250,6 +252,7 @@ const supported_type_node_generations = {
 				'#/definitions/Texture2D',
 				'#/definitions/Texture2D--basic',
 				'#/definitions/None',
+				'#/definitions/ItemClass--prop',
 			],
 		},
 	},
@@ -260,6 +263,7 @@ type supported_type_node_generations = {
 		| '#/definitions/SpecifiedColor--inner'
 		| '#/definitions/Texture2D'
 		| '#/definitions/Texture2D--basic'
+		| '#/definitions/ItemClass--prop'
 		| '#/definitions/None'
 		| '#/definitions/transformation'
 		| '#/definitions/color'
@@ -357,6 +361,7 @@ export class TypedObjectString {
 							| 'Texture2D'
 							| 'Texture2D--basic'
 							| 'None'
+							| 'ItemClass--prop'
 						)
 				];
 

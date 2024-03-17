@@ -174,7 +174,7 @@ export abstract class ResultGenerationMatcher<
 		reference: string
 	): MatchResult;
 
-	private search(ajv: Ajv, property: object): MatchResult | null {
+	private search(ajv: Ajv, property: object, already_checked:(keyof typeof this.definitions_to_check)[]): MatchResult | null {
 		for (const matcher of this.matchers) {
 			const match = matcher.match(ajv, property);
 
@@ -188,13 +188,15 @@ export abstract class ResultGenerationMatcher<
 			this.object_search(ajv, property) ||
 			this.tuple_array_search(ajv, property) ||
 			this.array_search(ajv, property) ||
-			this.array_string_search(ajv, property)
+			this.array_string_search(ajv, property) ||
+			this.find_by_maybe_ref(ajv, property, already_checked)
 		);
 	}
 
 	private oneOf_or_anyOf_matcher(
 		ajv: Ajv,
-		property: object
+		property: object,
+		already_checked: (keyof typeof this.definitions_to_check)[] = []
 	): MatchResult | null {
 		if (!this.oneOf_or_anyOf_schema_matcher.has(ajv)) {
 			this.oneOf_or_anyOf_schema_matcher.set(
@@ -243,8 +245,7 @@ export abstract class ResultGenerationMatcher<
 				? property.oneOf
 				: property.anyOf) {
 				const match =
-					this.search(ajv, sub_property) ||
-					this.array_string_search(ajv, sub_property);
+					this.search(ajv, sub_property, already_checked);
 
 				if (!match) {
 					has_all_matches = false;
@@ -281,7 +282,8 @@ export abstract class ResultGenerationMatcher<
 
 	private tuple_array_search(
 		ajv: Ajv,
-		property: object
+		property: object,
+		already_checked: (keyof typeof this.definitions_to_check)[] = []
 	): MatchResult | null {
 		if (!this.tuple_array_matcher.has(ajv)) {
 			this.tuple_array_matcher.set(
@@ -319,7 +321,7 @@ export abstract class ResultGenerationMatcher<
 		) as tuple_array_validator;
 
 		if (tuple_array_matcher(property)) {
-			const first = this.search(ajv, property.prefixItems[0]);
+			const first = this.search(ajv, property.prefixItems[0], already_checked);
 
 			if (!first) {
 				console.error(property.prefixItems[0]);
@@ -327,7 +329,7 @@ export abstract class ResultGenerationMatcher<
 				throw new Error('Failed to match first member of tuple');
 			}
 
-			const second = this.search(ajv, property.prefixItems[1]);
+			const second = this.search(ajv, property.prefixItems[1], already_checked);
 
 			if (!second) {
 				console.error(property.prefixItems[1]);
@@ -341,7 +343,11 @@ export abstract class ResultGenerationMatcher<
 		return null;
 	}
 
-	private array_search(ajv: Ajv, property: object): MatchResult | null {
+	private array_search(
+		ajv: Ajv,
+		property: object,
+		already_checked: (keyof typeof this.definitions_to_check)[] = []
+	): MatchResult | null {
 		if (!this.array_matcher.has(ajv)) {
 			this.array_matcher.set(
 				ajv,
@@ -387,7 +393,7 @@ export abstract class ResultGenerationMatcher<
 		const array_matcher = this.array_matcher.get(ajv) as array_validator;
 
 		if (array_matcher(property)) {
-			const result = this.search(ajv, property.items);
+			const result = this.search(ajv, property.items, already_checked);
 
 			if (result) {
 				return this.create_array_result(property, result);
@@ -399,7 +405,8 @@ export abstract class ResultGenerationMatcher<
 
 	private array_string_search(
 		ajv: Ajv,
-		property: object
+		property: object,
+		already_checked: (keyof typeof this.definitions_to_check)[] = []
 	): MatchResult | null {
 		if (!this.array_string_matcher.has(ajv)) {
 			this.array_string_matcher.set(
@@ -413,7 +420,7 @@ export abstract class ResultGenerationMatcher<
 		) as array_string_validator;
 
 		if (array_string_matcher(property)) {
-			const result = this.search(ajv, property.array_string.items);
+			const result = this.search(ajv, property.array_string.items, already_checked);
 
 			if (result) {
 				return this.create_array_string_result(property, result);
@@ -465,16 +472,7 @@ export abstract class ResultGenerationMatcher<
 			for (const entry of Object.entries(property.properties)) {
 				const [sub_property_name, sub_property] = entry;
 
-				const sub_property_match = this.search(ajv, sub_property);
-
-				if (!sub_property_match) {
-					console.error(sub_property);
-					throw new Error(
-						`Could not find match for ${sub_property_name}`
-					);
-				}
-
-				object_types[sub_property_name] = sub_property_match;
+				object_types[sub_property_name] = this.find(ajv, sub_property);
 			}
 
 			return this.create_object_result(object_types);
@@ -483,19 +481,11 @@ export abstract class ResultGenerationMatcher<
 		return null;
 	}
 
-	find(
+	private find_by_maybe_ref(
 		ajv: Ajv,
 		property: object,
 		already_checked: (keyof typeof this.definitions_to_check)[] = []
-	): MatchResult {
-		let match =
-			this.search(ajv, property) ||
-			this.array_string_search(ajv, property);
-
-		if (match) {
-			return match;
-		}
-
+	): MatchResult|null {
 		if (
 			object_only_has_that_property(property, '$ref') &&
 			'string' === typeof property.$ref &&
@@ -513,6 +503,20 @@ export abstract class ResultGenerationMatcher<
 			) {
 				return this.create_type_reference_result(definition);
 			}
+		}
+
+		return null;
+	}
+
+	find(
+		ajv: Ajv,
+		property: object,
+		already_checked: (keyof typeof this.definitions_to_check)[] = []
+	): MatchResult {
+		let match = this.search(ajv, property, already_checked);
+
+		if (match) {
+			return match;
 		}
 
 		if (this.throw_on_failure_to_find) {

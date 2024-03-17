@@ -20,7 +20,7 @@ import {
 	TypesGeneration_concrete,
 	TypesGenerationFromSchema,
 } from '../TypesGeneration';
-import ts from 'typescript';
+import ts, {TypeAliasDeclaration} from 'typescript';
 
 const already_configured = new WeakSet<Ajv>();
 
@@ -67,6 +67,18 @@ await writeFile(
 		{
 			definitions: UnrealEngineStringReference_schema.definitions,
 			...typed_array_string_schema,
+		},
+		null,
+		'\t'
+	) + '\n'
+);
+
+await writeFile(
+	`typed-array-string--parent.schema.json`,
+	JSON.stringify(
+		{
+			definitions: UnrealEngineStringReference_schema.definitions,
+			...typed_array_string_parent_schema,
 		},
 		null,
 		'\t'
@@ -124,25 +136,17 @@ export class TypedArrayString {
 		).pattern;
 	}
 
-	static TypesGenerators(): [
-		TypesGeneration_concrete,
-		...TypesGeneration_concrete[],
-	] {
-		return [
-			new TypesGenerationFromSchema<typed_array_string_parent>(
-				{
-					definitions:
-						UnrealEngineStringReference_schema.definitions,
-					...typed_array_string_parent_schema,
-				},
-				(data, reference_name) => {
+	private static typed_array_string_type_alias_generator(
+		data: typed_array_string,
+		reference_name: string
+	) : TypeAliasDeclaration {
 					if (
 						!TypedObjectString.value_is_typed_object_string_general_type(
-							data.typed_array_string.items
+					data.items
 						)
 					) {
 						throw new UnexpectedlyUnknownNoMatchError(
-							data.typed_array_string.items,
+					data.items,
 							'Currently unsupported in TypedArrayString.item_to_regex'
 						);
 					}
@@ -152,16 +156,67 @@ export class TypedArrayString {
 						adjust_class_name(reference_name),
 						undefined,
 						create_minimum_size_typed_array_of_single_type(
-							data.typed_array_string.minItems,
+					data.minItems,
 							() =>
 								TypedObjectString.general_type_to_object_type(
-									data.typed_array_string.items
+							data.items
 								)
 						)
 					);
+	}
+
+	static TypesGenerators(): [
+		TypesGeneration_concrete,
+		...TypesGeneration_concrete[],
+	] {
+		return [
+			new TypesGenerationFromSchema<typed_array_string_parent>(
+				{
+					definitions:
+					UnrealEngineStringReference_schema.definitions,
+					...typed_array_string_parent_schema,
+				},
+				(data, reference_name) => {
+					return this.typed_array_string_type_alias_generator(
+						data.typed_array_string,
+						reference_name
+					);
 				}
 			),
+			new TypesGenerationFromSchema<typed_array_string>(
+				{
+					definitions:
+					UnrealEngineStringReference_schema.definitions,
+					...typed_array_string_schema,
+				},
+				this.typed_array_string_type_alias_generator
+			),
 		];
+	}
+
+	private static typed_array_string_node_generation_result(
+		data:typed_array_string
+	) : TypeNodeGenerationResult {
+				if (
+					!TypedObjectString.value_is_typed_object_string_general_type(
+				data.items
+					)
+				) {
+					throw new UnexpectedlyUnknownNoMatchError(
+				data.items,
+						'Currently unsupported in TypedArrayString.item_to_regex'
+					);
+				}
+
+				return new TypeNodeGenerationResult(() =>
+					create_minimum_size_typed_array_of_single_type(
+				data.minItems,
+						() =>
+							TypedObjectString.general_type_to_object_type(
+						data.items
+							)
+					)
+				);
 	}
 
 	static TypeNodeGeneration(): [
@@ -172,30 +227,21 @@ export class TypedArrayString {
 			new TypeNodeGeneration<typed_array_string_parent>(
 				{
 					definitions:
-						UnrealEngineStringReference_schema.definitions,
+					UnrealEngineStringReference_schema.definitions,
 					...typed_array_string_parent_schema,
 				},
 				(data) => {
-					if (
-						!TypedObjectString.value_is_typed_object_string_general_type(
-							data.typed_array_string.items
-						)
-					) {
-						throw new UnexpectedlyUnknownNoMatchError(
-							data.typed_array_string.items,
-							'Currently unsupported in TypedArrayString.item_to_regex'
-						);
-					}
-
-					return new TypeNodeGenerationResult(() =>
-						create_minimum_size_typed_array_of_single_type(
-							data.typed_array_string.minItems,
-							() =>
-								TypedObjectString.general_type_to_object_type(
-									data.typed_array_string.items
-								)
-						)
-					);
+					return this.typed_array_string_node_generation_result(data.typed_array_string);
+				}
+			),
+			new TypeNodeGeneration<typed_array_string>(
+				{
+					definitions:
+					UnrealEngineStringReference_schema.definitions,
+					...typed_array_string_schema,
+				},
+				(data) => {
+					return this.typed_array_string_node_generation_result(data);
 				}
 			),
 		];
