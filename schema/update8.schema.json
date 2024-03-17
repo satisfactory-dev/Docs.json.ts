@@ -6055,15 +6055,15 @@
 			"minLength": 1,
 			"typed_object_string": {
 				"EditorCurveData": {
-			"DefaultValue": {
-				"$ref": "#/definitions/decimal-string"
-			},
-			"PreInfinityExtrap": {
-				"$ref": "#/definitions/InfinityExtrap"
-			},
-			"PostInfinityExtrap": {
-				"$ref": "#/definitions/InfinityExtrap"
-			}
+					"DefaultValue": {
+						"$ref": "#/definitions/decimal-string"
+					},
+					"PreInfinityExtrap": {
+						"$ref": "#/definitions/InfinityExtrap"
+					},
+					"PostInfinityExtrap": {
+						"$ref": "#/definitions/InfinityExtrap"
+					}
 				}
 			}
 		},

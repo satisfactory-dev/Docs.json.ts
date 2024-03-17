@@ -8,7 +8,10 @@ import {
 	UnexpectedlyUnknownNoMatchError,
 } from './SchemaBasedResultsMatching/TypeNodeGeneration';
 import {array_string_schema} from './TypesGeneration/json_schema_types';
-import {object_has_property, object_only_has_that_property} from './CustomParsingTypes/CustomPairingTypes';
+import {
+	object_has_property,
+	object_only_has_that_property,
+} from './CustomParsingTypes/CustomPairingTypes';
 
 export class GenerationResult<T> {
 	readonly generate: () => T;
@@ -135,7 +138,8 @@ export abstract class ResultGenerationMatcher<
 		array_validator
 	>();
 	public throw_on_failure_to_find = true;
-	public definitions_to_check:{[key: string]: Exclude<Schema, boolean>} = {};
+	public definitions_to_check: {[key: string]: Exclude<Schema, boolean>} =
+		{};
 
 	constructor(matchers: Array<Matchers> = []) {
 		this.matchers = matchers;
@@ -166,7 +170,9 @@ export abstract class ResultGenerationMatcher<
 		[key: string]: MatchResult;
 	}): MatchResult;
 
-	protected abstract create_type_reference_result(reference:string): MatchResult;
+	protected abstract create_type_reference_result(
+		reference: string
+	): MatchResult;
 
 	private search(ajv: Ajv, property: object): MatchResult | null {
 		for (const matcher of this.matchers) {
@@ -477,7 +483,11 @@ export abstract class ResultGenerationMatcher<
 		return null;
 	}
 
-	find(ajv: Ajv, property: object, already_checked:(keyof typeof this.definitions_to_check)[] = []): MatchResult {
+	find(
+		ajv: Ajv,
+		property: object,
+		already_checked: (keyof typeof this.definitions_to_check)[] = []
+	): MatchResult {
 		let match =
 			this.search(ajv, property) ||
 			this.array_string_search(ajv, property);
@@ -496,7 +506,10 @@ export abstract class ResultGenerationMatcher<
 			if (
 				definition in this.definitions_to_check &&
 				!already_checked.includes(definition) &&
-				this.find(ajv, this.definitions_to_check[definition], [definition, ...already_checked])
+				this.find(ajv, this.definitions_to_check[definition], [
+					definition,
+					...already_checked,
+				])
 			) {
 				return this.create_type_reference_result(definition);
 			}

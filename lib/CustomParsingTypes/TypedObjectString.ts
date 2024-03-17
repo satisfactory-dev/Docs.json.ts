@@ -667,18 +667,21 @@ export class TypedObjectString {
 				(data, reference_name) => {
 					const {typed_object_string} = data;
 
-					const is_$ref_object_dictionary = this.is_$ref_object_dictionary(
-							typed_object_string
-					);
-					const is_combination_dictionary = this.is_combination_dictionary(
-						typed_object_string
-					);
-					if (is_combination_dictionary && !is_$ref_object_dictionary) {
+					const is_$ref_object_dictionary =
+						this.is_$ref_object_dictionary(typed_object_string);
+					const is_combination_dictionary =
+						this.is_combination_dictionary(typed_object_string);
+					if (
+						is_combination_dictionary &&
+						!is_$ref_object_dictionary
+					) {
 						return ts.factory.createTypeAliasDeclaration(
 							[create_modifier('export')],
 							adjust_class_name(reference_name),
 							undefined,
-							this.combination_dictionary_type_to_object_type(typed_object_string)
+							this.combination_dictionary_type_to_object_type(
+								typed_object_string
+							)
 						);
 					} else if (
 						!this.$ref_object_dictionary_is_auto_constructor_properties(
@@ -691,18 +694,20 @@ export class TypedObjectString {
 							undefined,
 							create_object_type(
 								Object.fromEntries(
-									Object.entries(
-										typed_object_string
-									).map((entry) => {
-										return [
-											entry[0],
-											ts.factory.createTypeReferenceNode(
-												adjust_class_name(
-													entry[1].$ref.substring(14)
-												)
-											),
-										];
-									})
+									Object.entries(typed_object_string).map(
+										(entry) => {
+											return [
+												entry[0],
+												ts.factory.createTypeReferenceNode(
+													adjust_class_name(
+														entry[1].$ref.substring(
+															14
+														)
+													)
+												),
+											];
+										}
+									)
 								)
 							)
 						);
@@ -713,9 +718,10 @@ export class TypedObjectString {
 						createClass__members__with_auto_constructor(
 							{
 								type: 'object',
-								required: Object.keys(
-									typed_object_string
-								) as [string, ...string[]],
+								required: Object.keys(typed_object_string) as [
+									string,
+									...string[],
+								],
 								properties: typed_object_string,
 							},
 							['public', 'readonly']

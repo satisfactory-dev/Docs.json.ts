@@ -473,7 +473,10 @@ export class Update8TypeNodeGeneration {
 
 		if (
 			!check_required<EditorCurveData_required_expected>(
-				Object.keys(schema.definitions['EditorCurveData--only'].typed_object_string.EditorCurveData),
+				Object.keys(
+					schema.definitions['EditorCurveData--only']
+						.typed_object_string.EditorCurveData
+				),
 				EditorCurveData_required_expected
 			)
 		) {
@@ -483,7 +486,8 @@ export class Update8TypeNodeGeneration {
 		}
 		if (
 			!is_supported_properties_object(
-				schema.definitions['EditorCurveData--only'].typed_object_string.EditorCurveData
+				schema.definitions['EditorCurveData--only'].typed_object_string
+					.EditorCurveData
 			)
 		) {
 			throw new Error('Unsupported refs found for EditorCurveData');
@@ -509,7 +513,8 @@ export class Update8TypeNodeGeneration {
 							'PostInfinityExtrap',
 						],
 						properties:
-							schema.definitions['EditorCurveData--only'].typed_object_string.EditorCurveData,
+							schema.definitions['EditorCurveData--only']
+								.typed_object_string.EditorCurveData,
 					},
 					['public', 'readonly']
 				),
