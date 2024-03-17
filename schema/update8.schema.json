@@ -2301,35 +2301,35 @@
 							"type": "string",
 							"minLength": 1,
 							"typed_object_string": {
-							"DrawAs": {
-								"type": "string",
-								"const": "Image"
-							},
-							"ImageSize": {
+								"DrawAs": {
+									"type": "string",
+									"const": "Image"
+								},
+								"ImageSize": {
 									"$ref": "#/definitions/xy"
-							},
-							"Margin": {
-								"$ref": "#/definitions/empty-object"
-							},
-							"TintColor": {
+								},
+								"Margin": {
+									"$ref": "#/definitions/empty-object"
+								},
+								"TintColor": {
 									"$ref": "#/definitions/SpecifiedColor--inner"
-							},
-							"OutlineSettings": {
+								},
+								"OutlineSettings": {
 									"CornerRadii": {
-											"$ref": "#/definitions/quaternion--inner"
+										"$ref": "#/definitions/quaternion--inner"
 									},
 									"Color": {
-											"$ref": "#/definitions/SpecifiedColor--inner"
+										"$ref": "#/definitions/SpecifiedColor--inner"
 									},
 									"RoundingType": {
 										"type": "string",
 										"const": "HalfHeightRadius"
 									}
-							},
-							"ResourceObject": {
-								"$ref": "#/definitions/Texture2D"
-							},
-							"UVRegion": {
+								},
+								"ResourceObject": {
+									"$ref": "#/definitions/Texture2D"
+								},
+								"UVRegion": {
 									"Min": {
 										"$ref": "#/definitions/xy"
 									},
@@ -2339,7 +2339,7 @@
 									"bIsValid": {
 										"$ref": "#/definitions/boolean"
 									}
-							}
+								}
 							}
 						},
 						{
@@ -2360,27 +2360,27 @@
 									"$ref": "#/definitions/SpecifiedColor--inner"
 								},
 								"OutlineSettings": {
-										"CornerRadii": {
-											"$ref": "#/definitions/quaternion--inner"
-										},
-										"Color": {
-											"$ref": "#/definitions/SpecifiedColor--inner"
-										},
-										"RoundingType": {
-											"type": "string",
-											"const": "HalfHeightRadius"
-										}
+									"CornerRadii": {
+										"$ref": "#/definitions/quaternion--inner"
+									},
+									"Color": {
+										"$ref": "#/definitions/SpecifiedColor--inner"
+									},
+									"RoundingType": {
+										"type": "string",
+										"const": "HalfHeightRadius"
+									}
 								},
 								"UVRegion": {
-										"Min": {
-											"$ref": "#/definitions/xy"
-										},
-										"Max": {
-											"$ref": "#/definitions/xy"
-										},
-										"bIsValid": {
-											"$ref": "#/definitions/boolean"
-										}
+									"Min": {
+										"$ref": "#/definitions/xy"
+									},
+									"Max": {
+										"$ref": "#/definitions/xy"
+									},
+									"bIsValid": {
+										"$ref": "#/definitions/boolean"
+									}
 								}
 							}
 						}

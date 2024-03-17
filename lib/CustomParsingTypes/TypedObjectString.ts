@@ -13,7 +13,8 @@ import {
 import {
 	adjust_class_name,
 	auto_constructor_property_types_from_generated_types,
-	auto_constructor_property_types_from_generated_types_properties, create_literal_node_from_value,
+	auto_constructor_property_types_from_generated_types_properties,
+	create_literal_node_from_value,
 	create_modifier,
 	create_object_type,
 	createClass,
@@ -29,7 +30,8 @@ import {
 	array_is_non_empty,
 	object_has_property,
 	object_only_has_that_property,
-	value_is_array, value_is_non_array_object,
+	value_is_array,
+	value_is_non_array_object,
 } from './CustomPairingTypes';
 import {writeFile} from 'node:fs/promises';
 
@@ -37,7 +39,9 @@ const already_configured = new WeakSet<Ajv>();
 
 const typed_object_string_property_regex = '^[A-Za-z][A-Za-z3]*$';
 const typed_object_string_const_value_regex = '^[A-Za-z][A-Za-z]*$';
-const typed_object_string_const_value_regex__native = new RegExp(typed_object_string_const_value_regex);
+const typed_object_string_const_value_regex__native = new RegExp(
+	typed_object_string_const_value_regex
+);
 
 const type_object_string_$ref_supported = {
 	'#/definitions/EditorCurveData--item': true,
@@ -74,9 +78,9 @@ type typed_object_string_$ref_only = {
 type typed_object_string_type = {
 	[key: string]:
 		| {
-			type: 'string',
-			const: string,
-		}
+				type: 'string';
+				const: string;
+		  }
 		| type_object_string_$ref_choices
 		| typed_object_string_$ref_only;
 };
@@ -99,9 +103,9 @@ type typed_object_string_array_type = [
 type typed_object_string_combi_dictionary = {
 	[key: string]:
 		| type_object_string_$ref_choices
-		| {type: 'string', const: string}
+		| {type: 'string'; const: string}
 		| typed_object_string_$ref_only
-		| typed_object_string_combi_dictionary
+		| typed_object_string_combi_dictionary;
 };
 
 const typed_object_string_$ref_schema = {
@@ -141,7 +145,10 @@ export const typed_object_supported_const_string_schema = {
 	additionalProperties: false,
 	properties: {
 		type: {type: 'string', const: 'string'},
-		const: {type: 'string', pattern: typed_object_string_const_value_regex},
+		const: {
+			type: 'string',
+			pattern: typed_object_string_const_value_regex,
+		},
 	},
 };
 
@@ -160,12 +167,12 @@ export const typed_object_string_schema = {
 							oneOf: [
 								typed_object_string_$ref_schema,
 								typed_object_supported_const_string_schema,
-							]
+							],
 						},
 					},
 				},
 				UnrealEngineStringReference_inner_schema,
-				typed_object_supported_const_string_schema
+				typed_object_supported_const_string_schema,
 			],
 		},
 	},
@@ -219,7 +226,10 @@ export const typed_object_oneOf_schema = {
 		},
 	},
 };
-await writeFile('./typed-object-string.nested.schema.json', JSON.stringify(typed_object_oneOf_schema, null, '\t') + '\n');
+await writeFile(
+	'./typed-object-string.nested.schema.json',
+	JSON.stringify(typed_object_oneOf_schema, null, '\t') + '\n'
+);
 
 const supported_type_node_generations = {
 	type: 'object',
@@ -395,14 +405,14 @@ export class TypedObjectString {
 
 	private static is_supported_const_string_object(
 		maybe: any
-	): maybe is {type: 'string', const: string} {
+	): maybe is {type: 'string'; const: string} {
 		return (
-			'object' === typeof maybe
-			&& 2 === Object.keys(maybe).length
-			&& object_has_property(maybe, 'type')
-			&& 'string' === maybe.type
-			&& object_has_property(maybe, 'const')
-			&& typed_object_string_const_value_regex__native.test(maybe.const)
+			'object' === typeof maybe &&
+			2 === Object.keys(maybe).length &&
+			object_has_property(maybe, 'type') &&
+			'string' === maybe.type &&
+			object_has_property(maybe, 'const') &&
+			typed_object_string_const_value_regex__native.test(maybe.const)
 		);
 	}
 
@@ -418,18 +428,28 @@ export class TypedObjectString {
 		return 0 !== Object.keys(maybe).length;
 	}
 
-	private static is_combi_dictionary(maybe:any, current_depth = 0) : maybe is typed_object_string_combi_dictionary {
+	private static is_combi_dictionary(
+		maybe: any,
+		current_depth = 0
+	): maybe is typed_object_string_combi_dictionary {
 		if (!value_is_non_array_object(maybe)) {
 			return false;
 		}
 
 		if (current_depth > 10) {
-			throw new UnexpectedlyUnknownNoMatchError(maybe, 'Cannot exceed 10 levels of recursion!');
+			throw new UnexpectedlyUnknownNoMatchError(
+				maybe,
+				'Cannot exceed 10 levels of recursion!'
+			);
 		}
 
-		const failed = Object.values(maybe).filter((
-			(e) => !this.is_$ref_object(e) && !this.is_supported_const_string_object(e) && !this.is_$ref_object_dictionary(e) && !this.is_combi_dictionary(e, current_depth + 1)
-		));
+		const failed = Object.values(maybe).filter(
+			(e) =>
+				!this.is_$ref_object(e) &&
+				!this.is_supported_const_string_object(e) &&
+				!this.is_$ref_object_dictionary(e) &&
+				!this.is_combi_dictionary(e, current_depth + 1)
+		);
 
 		return Object.keys(maybe).length >= 1 && failed.length === 0;
 	}
@@ -711,19 +731,28 @@ export class TypedObjectString {
 
 	private static combi_dictionary_type_to_object_type(
 		data: typed_object_string_combi_dictionary
-	) : TypeLiteralNode {
+	): TypeLiteralNode {
 		return create_object_type(
 			Object.fromEntries(
 				Object.entries(data).map((entry) => {
 					const [property, value] = entry;
 
 					if (this.is_$ref_object(value)) {
-						return this.$ref_choice_to_object_type_entry(property, value);
+						return this.$ref_choice_to_object_type_entry(
+							property,
+							value
+						);
 					} else if (this.is_supported_const_string_object(value)) {
-						return [property, create_literal_node_from_value(value.const)];
+						return [
+							property,
+							create_literal_node_from_value(value.const),
+						];
 					} else {
 					}
-					throw new UnexpectedlyUnknownNoMatchError(value, `${property} not yet supported in combi_dictionary_type_to_object_type`);
+					throw new UnexpectedlyUnknownNoMatchError(
+						value,
+						`${property} not yet supported in combi_dictionary_type_to_object_type`
+					);
 				})
 			)
 		);
@@ -745,11 +774,18 @@ export class TypedObjectString {
 					} else if (this.is_$ref_object_dictionary(value)) {
 						return [
 							property,
-							create_object_type(Object.fromEntries(Object.entries(value).map(
-								(inner_entry) => {
-									return this.$ref_choice_to_object_type_entry(inner_entry[0], inner_entry[1]);
-								}
-							))),
+							create_object_type(
+								Object.fromEntries(
+									Object.entries(value).map(
+										(inner_entry) => {
+											return this.$ref_choice_to_object_type_entry(
+												inner_entry[0],
+												inner_entry[1]
+											);
+										}
+									)
+								)
+							),
 						];
 					} else if (this.is_combi_dictionary(value)) {
 						return [
@@ -763,19 +799,25 @@ export class TypedObjectString {
 						);
 					}
 
-					return this.$ref_choice_to_object_type_entry(property, value);
+					return this.$ref_choice_to_object_type_entry(
+						property,
+						value
+					);
 				})
 			)
 		);
 	}
 
-	private static $ref_choice_to_object_type_entry<T extends string = string>(property:T, value:type_object_string_$ref_choices) : [T, TypeReferenceNode] {
-					return [
-						property,
-						ts.factory.createTypeReferenceNode(
-							adjust_class_name(value.$ref.substring(14))
-						),
-					];
+	private static $ref_choice_to_object_type_entry<T extends string = string>(
+		property: T,
+		value: type_object_string_$ref_choices
+	): [T, TypeReferenceNode] {
+		return [
+			property,
+			ts.factory.createTypeReferenceNode(
+				adjust_class_name(value.$ref.substring(14))
+			),
+		];
 	}
 
 	static TypeNodeGeneration(): [
@@ -819,13 +861,15 @@ export class TypedObjectString {
 			new TypeNodeGeneration<typed_object_string_general_type>(
 				typed_object_string_general_schema,
 				(data) => {
-					const is_$ref_object_dictionary = this.is_$ref_object_dictionary(data.typed_object_string);
-					const is_combi_dictionary = this.is_combi_dictionary(data.typed_object_string);
+					const is_$ref_object_dictionary =
+						this.is_$ref_object_dictionary(
+							data.typed_object_string
+						);
+					const is_combi_dictionary = this.is_combi_dictionary(
+						data.typed_object_string
+					);
 
-					if (
-						!is_$ref_object_dictionary &&
-						!is_combi_dictionary
-					) {
+					if (!is_$ref_object_dictionary && !is_combi_dictionary) {
 						throw new UnexpectedlyUnknownNoMatchError(
 							data.typed_object_string,
 							'not yet supported in type node generation'
