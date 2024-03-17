@@ -16,11 +16,14 @@ validate:
 #	${DOCKER_PREFIX} ${DOCKER_IMAGE} ./node_modules/.bin/tsc --project ./tsconfig.schema-exports.json
 	${DOCKER_PREFIX} ${DOCKER_IMAGE} npm run validate
 
-generate:
+generate: lint-lib
 	${DOCKER_PREFIX} ${DOCKER_IMAGE} npm run generate
 	${DOCKER_PREFIX} ${DOCKER_IMAGE} ./node_modules/.bin/tsc --project ./tsconfig.generated-types-check.json
 
-lint:
+lint-lib:
+	${DOCKER_PREFIX} ${DOCKER_IMAGE} ./node_modules/.bin/tsc --project ./tsconfig.lib-check.json
+
+lint: lint-lib
 	${DOCKER_PREFIX} ${DOCKER_IMAGE} ./node_modules/.bin/prettier . --check
 
 lint-fix:
