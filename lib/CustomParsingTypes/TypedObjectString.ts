@@ -37,6 +37,7 @@ import {
 	value_is_non_array_object,
 } from './CustomPairingTypes';
 import {writeFile} from 'node:fs/promises';
+import {check_ref} from '../Schemas/Update8';
 
 const already_configured = new WeakSet<Ajv>();
 
@@ -305,17 +306,41 @@ export class TypedObjectString {
 			value_regex = 'RCCE_Constant';
 		} else if ('#/definitions/empty-object' === $ref) {
 			value_regex = '\\(\\)';
-		} else if ('#/definitions/EditorCurveData--item' === $ref) {
+		} else if (
+			'#/definitions/EditorCurveData--item' === $ref ||
+			'#/definitions/quaternion--inner' === $ref ||
+			'#/definitions/xyz--inner' === $ref ||
+			'#/definitions/xy' === $ref
+		) {
+			const maybe_definition_key = $ref.substring(14);
+
+			if (!(maybe_definition_key in schema.definitions)) {
+				throw new UnexpectedlyUnknownNoMatchError(
+					{[property]: value},
+					'$ref not found in schema!'
+				);
+			}
+
+			let definition:{
+				[key: string]: any;
+			} = schema.definitions[maybe_definition_key as keyof typeof schema.definitions];
+
 			if (
 				!this.is_$ref_object_dictionary(
-					schema.definitions['EditorCurveData--item']
+					definition
 				)
+				&& 'typed_object_string' in definition
 			) {
+				definition = definition.typed_object_string;
+			}
+
+			if (!this.is_$ref_object_dictionary(definition)) {
+				console.log(definition);
 				throw new Error(`${$ref} not supported!`);
 			}
 
 			value_regex = this.property_to_regex(
-				schema.definitions['EditorCurveData--item']
+				definition
 			);
 		} else if (
 			supported_type_node_generations.properties.$ref.enum.includes($ref)
@@ -402,15 +427,7 @@ export class TypedObjectString {
 			}
 		} else if (this.is_supported_const_string_object(value)) {
 			value_regex = value.const;
-		} else if ('#/definitions/boolean' !== $ref) {
-			if ($ref === undefined) {
-				console.log(property, value);
-
-				throw new UnexpectedlyUnknownNoMatchError(
-					{property, value},
-					'Unsupported $ref_to_regex call'
-				);
-			}
+		} else if ($ref.startsWith('#/definitions/integer-string') || $ref.startsWith('#/definitions/decimal-string')) {
 			if ($ref.startsWith('#/definitions/decimal-string')) {
 				value_regex = '\\d+\\.\\d+';
 			} else {
@@ -420,6 +437,13 @@ export class TypedObjectString {
 			if ($ref.endsWith('--signed')) {
 				value_regex = `-?${value_regex}`;
 			}
+		} else if ('#/definitions/boolean' !== $ref) {
+			console.log(property, value);
+
+			throw new UnexpectedlyUnknownNoMatchError(
+				{property, value},
+				'Unsupported $ref_to_regex call'
+			);
 		}
 
 		return `(?:${property}=${value_regex})`;
