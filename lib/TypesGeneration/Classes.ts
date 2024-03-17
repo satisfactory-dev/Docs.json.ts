@@ -4,9 +4,7 @@ import {
 	possibly_create_lazy_union,
 } from '../TsFactoryWrapper';
 import ts from 'typescript';
-import {
-	TypesGenerationMatchesReferenceName,
-} from '../TypesGeneration';
+import {TypesGenerationMatchesReferenceName} from '../TypesGeneration';
 import {
 	TypeNodeGeneration,
 	TypeNodeGenerationResult,
