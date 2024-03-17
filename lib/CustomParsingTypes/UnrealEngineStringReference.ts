@@ -30,6 +30,7 @@ import {
 	array_string_schema_type,
 	target_files,
 } from '../TypesGeneration/arrays';
+import {object_has_property} from './CustomPairingTypes';
 
 const already_configured = new WeakSet<Ajv>();
 
@@ -838,12 +839,6 @@ function is_string_or_string_array(
 	);
 }
 
-function object_has_property(
-	maybe: object,
-	property: string
-): maybe is {[key: typeof property]: any} {
-	return property in maybe;
-}
 
 function is_UnrealEngineStringReference_value_object(
 	maybe: object

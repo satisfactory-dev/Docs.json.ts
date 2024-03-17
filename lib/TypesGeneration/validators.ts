@@ -30,16 +30,9 @@ const validator_target_files = {
 	'integer-string': 'utils/validators.ts',
 	'integer-string--signed': 'utils/validators.ts',
 };
-const vector_string_target_files = {
-	mDockingRuleSet: 'classes/base.ts',
-	mLightControlData: 'classes/base.ts',
-	'color-decimal': 'common/color.ts',
-	color: 'common/color.ts',
-};
 
 export const target_files = {
 	...validator_target_files,
-	...vector_string_target_files,
 };
 
 const supported_meta_types: string[] = [];

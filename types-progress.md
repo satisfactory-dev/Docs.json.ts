@@ -1,6 +1,6 @@
 # Types Progress
 
-98.00% Complete (245 of 250)
+98.40% Complete (246 of 250)
 
 ## Basic Types
 
@@ -36,7 +36,7 @@
 -   [x] mCrosshairMaterial
 -   [x] mDamageTypes
 -   [x] mDescriptorStatBars
--   [ ] mDisableSnapOn
+-   [x] mDisableSnapOn
 -   [x] mDockingRuleSet
 -   [x] mForm
 -   [x] mFreightCargoType

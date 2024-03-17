@@ -50,6 +50,11 @@ const known_ref_file_targets = {
 	'quaternion--inner': 'common/vectors.ts',
 	'xyz--inner': 'common/vectors.ts',
 	transformation: 'common/vectors.ts',
+	color: 'common/color.ts',
+	'color-decimal': 'common/color.ts',
+	mDockingRuleSet: 'common/vectors.ts',
+	mLightControlData: 'classes/CoreUObject/FGBuildableLightSource.ts',
+	mDisableSnapOn: 'classes/CoreUObject/FGBuildable.ts',
 };
 
 export class Update8TypeNodeGeneration {
