@@ -51,8 +51,7 @@ export function object_only_has_that_property<T extends string = string>(
 	);
 }
 
-export function annoyingly_have_to_escape_property(property:string): string
-{
+export function annoyingly_have_to_escape_property(property: string): string {
 	return property.replace(/([\[\]])/g, '\\$1');
 }
 
