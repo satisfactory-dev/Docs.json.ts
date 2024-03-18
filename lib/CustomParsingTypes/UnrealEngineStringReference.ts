@@ -80,8 +80,11 @@ export function is_UnrealEngineStringReference_general_object(
 		object_has_property(maybe, 'minLength') &&
 		1 === maybe.minLength &&
 		object_has_property(maybe, 'UnrealEngineStringReference') &&
+		(
+			true === maybe.UnrealEngineStringReference ||
 		is_UnrealEngineStringReference_value_object(
 			maybe.UnrealEngineStringReference
+			)
 		)
 	);
 }

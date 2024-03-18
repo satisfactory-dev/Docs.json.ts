@@ -372,8 +372,12 @@ export class TypedObjectString {
 			const object_has_typed_object_string =
 				object_has_property(definition, 'typed_object_string') &&
 				this.is_$ref_object_dictionary(definition.typed_object_string);
+			const object_is_UnrealEngineStringReference = is_UnrealEngineStringReference_general_object(
+				definition
+			);
 
 			if (
+				!object_is_UnrealEngineStringReference &&
 				!is_typed_object_array &&
 				!is_generally_supported_oneOf_array &&
 				!object_has_typed_object_string
@@ -384,7 +388,11 @@ export class TypedObjectString {
 				);
 			}
 
-			if (is_typed_object_array) {
+			if (object_is_UnrealEngineStringReference) {
+				value_regex = `(?:${
+					UnrealEngineStringReference.ajv_macro_generator(true)(definition.UnrealEngineStringReference).pattern
+				})`;
+			} else if (is_typed_object_array) {
 				value_regex = `(?:${definition.oneOf
 					.map((e) => e.typed_object_string)
 					.map((e, index) => {
