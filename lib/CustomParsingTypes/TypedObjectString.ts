@@ -50,6 +50,8 @@ import {
 	typed_string_enum_schema,
 } from './TypedStringEnum';
 import {writeFile} from 'node:fs/promises';
+import {supported_meta} from './SupportedMeta';
+import {supported_$ref} from './SupportedRefObject';
 
 const already_configured = new WeakSet<Ajv>();
 
@@ -685,9 +687,8 @@ export class TypedObjectString {
 		const failed = Object.values(maybe).filter(
 			(e) =>
 				!this.is_$ref_object(e) &&
-				!typed_string_const.is_supported_schema(e) &&
+				!supported_meta.is_supported_schema(e) &&
 				!this.is_supported_enum_string_object(e) &&
-				!typed_string_enum.is_supported_schema(e) &&
 				!this.is_supported_typed_array_string(e) &&
 				!this.is_$ref_object_dictionary(e) &&
 				!is_UnrealEngineStringReference_general_object(e) &&
@@ -732,7 +733,7 @@ export class TypedObjectString {
 				TypedObjectString.is_combination_dictionary(
 					maybe.typed_object_string
 				) ||
-				typed_string_enum.is_supported_schema(
+				supported_meta.is_supported_schema(
 					maybe.typed_object_string
 				) ||
 				TypedObjectString.is_supported_enum_string_object(
@@ -831,29 +832,15 @@ export class TypedObjectString {
 						entry[0],
 						entry[1]
 					);
-				} else if (this.is_supported_typed_array_string(entry[1])) {
-					if (
-						typed_string_enum.is_supported_schema(
-							entry[1].typed_array_string.items
-						)
-					) {
-						const value_regex = typed_string_enum.value_regex(
-							entry[1].typed_array_string.items
-						);
-
-						return `(?:${annoyingly_have_to_escape_property(entry[0])}=\\(${value_regex}(?:,${value_regex})*\\))`;
-					} else if (
-						typed_string_const.is_supported_schema(
-							entry[1].typed_array_string.items
-						)
-					) {
-						const value_regex = typed_string_const.value_regex(
-							entry[1].typed_array_string.items
-						);
-
-						return `(?:${annoyingly_have_to_escape_property(entry[0])}=\\(${value_regex}(?:,${value_regex})*\\))`;
-					}
-
+				} else if (supported_$ref.is_supported_schema(entry[1])) {
+					return supported_$ref.key_value_pair_regex(
+						entry[0],
+						entry[1]
+					);
+				} else if (
+					this.is_supported_typed_array_string(entry[1]) &&
+					is_UnrealEngineStringReference_general_object(entry[1].typed_array_string.items)
+				) {
 					const unreal_engine_regex =
 						UnrealEngineStringReference.ajv_macro_generator(true)(
 							entry[1].typed_array_string.items
@@ -861,6 +848,19 @@ export class TypedObjectString {
 						).pattern;
 
 					return `(?:${annoyingly_have_to_escape_property(entry[0])}=\\(${unreal_engine_regex}(?:,${unreal_engine_regex})*\\))`;
+				} else if (this.is_supported_typed_array_string(entry[1])) {
+					const items = entry[1].typed_array_string.items;
+
+					if (supported_meta.is_supported_schema(items)) {
+						const value_regex = supported_meta.value_regex(items);
+
+						return `(?:${annoyingly_have_to_escape_property(entry[0])}=\\(${value_regex}(?:,${value_regex})*\\))`;
+					}
+
+					throw new UnexpectedlyUnknownNoMatchError(
+						items,
+						'Unsupported!'
+					);
 				} else if (
 					is_UnrealEngineStringReference_general_object(entry[1])
 				) {
@@ -1159,12 +1159,7 @@ export class TypedObjectString {
 							property,
 							value
 						);
-					} else if (typed_string_const.is_supported_schema(value)) {
-						return typed_string_const.key_value_pair_literal_type_entry(
-							property,
-							value
-						);
-					} else if (this.is_supported_enum_string_object(value)) {
+					}else if (this.is_supported_enum_string_object(value)) {
 						return [
 							property,
 							create_object_type_from_entries(
@@ -1178,8 +1173,8 @@ export class TypedObjectString {
 								})
 							),
 						];
-					} else if (typed_string_enum.is_supported_schema(value)) {
-						return typed_string_enum.key_value_pair_literal_type_entry(
+					} else if (supported_meta.is_supported_schema(value)) {
+						return supported_meta.key_value_pair_literal_type_entry(
 							property,
 							value
 						);
@@ -1277,19 +1272,11 @@ export class TypedObjectString {
 												.UnrealEngineStringReference
 										);
 									} else if (
-										typed_string_enum.is_supported_schema(
+										supported_meta.is_supported_schema(
 											value.typed_array_string.items
 										)
 									) {
-										return typed_string_enum.value_type(
-											value.typed_array_string.items
-										);
-									} else if (
-										typed_string_const.is_supported_schema(
-											value.typed_array_string.items
-										)
-									) {
-										return typed_string_const.value_type(
+										return supported_meta.value_type(
 											value.typed_array_string.items
 										);
 									}

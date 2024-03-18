@@ -43,10 +43,6 @@ class TypedStringConst extends SupportedSubSchemaType<
 		return `(?:(${value.const}|"${value.const}"))`;
 	}
 
-	key_value_pair_regex(key: string, value: const_schema_type): string {
-		return `(?:${key}=${value.const})`;
-	}
-
 	value_type(
 		value: const_schema_type
 	): LiteralTypeNode & {literal: StringLiteral} {

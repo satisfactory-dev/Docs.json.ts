@@ -53,10 +53,6 @@ class TypedStringEnum extends SupportedSubSchemaType<
 		return `(?:${enums}|"${enums}")`;
 	}
 
-	key_value_pair_regex(key: string, value: enum_schema_type): string {
-		return `(?:${key}=(?:${this.value_regex(value)}))`;
-	}
-
 	value_type(value: enum_schema_type): non_empty_string_literal_union {
 		return create_typed_union(value.enum);
 	}

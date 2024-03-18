@@ -1,4 +1,4 @@
-import {LiteralExpression, LiteralTypeNode, UnionTypeNode} from 'typescript';
+import {LiteralExpression, LiteralTypeNode, TypeReferenceNode, UnionTypeNode} from 'typescript';
 
 export function object_has_property<T extends string = string>(
 	maybe: object,
@@ -57,13 +57,16 @@ export function annoyingly_have_to_escape_property(property: string): string {
 
 export abstract class SupportedSubSchemaType<
 	ObjectType extends {[key: string]: any},
-	LiteralType extends LiteralExpression | UnionTypeNode,
+	LiteralType extends LiteralExpression | UnionTypeNode | TypeReferenceNode,
 > {
 	abstract is_supported_schema(maybe: any): maybe is ObjectType;
 
 	abstract value_regex(value: ObjectType): string;
 
-	abstract key_value_pair_regex(key: string, value: ObjectType): string;
+	key_value_pair_regex(key: string, value: ObjectType): string
+	{
+		return `(?:${annoyingly_have_to_escape_property(key)}=(?:${this.value_regex(value)}))`;
+	}
 
 	abstract value_type(
 		value: ObjectType

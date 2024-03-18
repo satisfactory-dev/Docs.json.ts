@@ -19,9 +19,9 @@ import {
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 import {writeFile} from 'node:fs/promises';
 import {
-	adjust_class_name,
+	adjust_class_name, create_literal_node_from_value,
 	create_minimum_size_typed_array_of_single_type,
-	create_modifier,
+	create_modifier, create_union, possibly_create_lazy_union,
 } from '../TsFactoryWrapper';
 import {
 	TypesGeneration_concrete,
@@ -38,6 +38,8 @@ import {
 	typed_string_enum,
 	typed_string_enum_schema,
 } from './TypedStringEnum';
+import {object_only_has_that_property} from './CustomPairingTypes';
+import {$ref_choices, $ref_schema, supported_$ref} from './SupportedRefObject';
 
 const already_configured = new WeakSet<Ajv>();
 
@@ -55,6 +57,7 @@ const typed_array_string_schema = {
 				UnrealEngineStringReference_general_schema,
 				typed_string_enum_schema,
 				typed_string_const_schema,
+				$ref_schema,
 			],
 		},
 	},
@@ -98,6 +101,7 @@ export const typed_array_string_parent_schema_without_recursive_reference = {
 };
 
 declare type typed_array_string_supported_items =
+	| $ref_choices
 	| enum_schema_type
 	| const_schema_type
 	| UnrealEngineStringReference_general_type
@@ -130,6 +134,35 @@ export type typed_array_string_parent_without_recursive_reference = {
 	typed_array_string: typed_array_string_without_recursive_reference;
 };
 
+const empty_string_or_const_or_array_string_schema = {
+	type: 'object',
+	required: ['oneOf'],
+	additionalProperties: false,
+	definitions:
+		UnrealEngineStringReference_schema_definitions,
+	properties: {
+		oneOf: {
+			type: 'array',
+			minItems: 2,
+			items: {
+				oneOf: [
+					{
+						type: 'object',
+						required: ['type', 'const'],
+						additionalProperties: false,
+						properties: {
+							type: {type: 'string', const: 'string'},
+							const: {type: 'string', const: ''},
+						},
+					},
+					typed_string_const_schema,
+					typed_array_string_parent_schema,
+				],
+			},
+		},
+	},
+};
+
 await writeFile(
 	`typed-array-string.schema.json`,
 	JSON.stringify(
@@ -149,6 +182,15 @@ await writeFile(
 			definitions: UnrealEngineStringReference_schema_definitions,
 			...typed_array_string_parent_schema,
 		},
+		null,
+		'\t'
+	) + '\n'
+);
+
+await writeFile(
+	`foo.json`,
+	JSON.stringify(
+		empty_string_or_const_or_array_string_schema,
 		null,
 		'\t'
 	) + '\n'
@@ -206,6 +248,8 @@ export class TypedArrayString {
 			return typed_string_const.value_regex(item);
 		} else if (typed_string_enum.is_supported_schema(item)) {
 			return typed_string_enum.value_regex(item);
+		} else if (supported_$ref.is_supported_schema(item)) {
+			return supported_$ref.value_regex(item);
 		} else if (
 			TypedObjectString.value_is_typed_object_string_general_type(
 				item.typed_object_string
@@ -289,6 +333,8 @@ export class TypedArrayString {
 					typed_string_const.is_supported_schema(data.items)
 				) {
 					return typed_string_const.value_type(data.items);
+				} else if (supported_$ref.is_supported_schema(data.items)) {
+					return supported_$ref.value_type(data.items);
 				}
 
 				return TypedObjectString.general_type_to_object_type(
@@ -324,6 +370,33 @@ export class TypedArrayString {
 					...typed_array_string_schema,
 				},
 				this.typed_array_string_type_alias_generator
+			),
+			new TypesGenerationFromSchema<{
+				oneOf: [
+					(const_schema_type|typed_array_string_parent),
+					(const_schema_type|typed_array_string_parent),
+					...(const_schema_type|typed_array_string_parent)[]
+				],
+			}>(
+				empty_string_or_const_or_array_string_schema,
+				(data, reference_name) => {
+					const [a, b, ...rest] = data.oneOf.map((e) => {
+						if (typed_string_const.is_supported_schema(e)) {
+							return typed_string_const.value_type(e);
+						} else if ('const' in e && '' === e.const) {
+							return create_literal_node_from_value('');
+						}
+
+						return this.typed_array(e.typed_array_string);
+					});
+
+					return ts.factory.createTypeAliasDeclaration(
+						[create_modifier('export')],
+						adjust_class_name(reference_name),
+						undefined,
+						create_union(a, b, ...rest)
+					);
+				}
 			),
 		];
 	}
