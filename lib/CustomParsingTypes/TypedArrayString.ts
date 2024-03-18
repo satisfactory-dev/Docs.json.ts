@@ -10,7 +10,8 @@ import {
 } from './UnrealEngineStringReference';
 import {
 	typed_object_string_general_schema,
-	typed_object_string_general_type, typed_object_supported_const_string_schema,
+	typed_object_string_general_type,
+	typed_object_supported_const_string_schema,
 	TypedObjectString,
 } from './TypedObjectString';
 import {
@@ -167,9 +168,13 @@ export class TypedArrayString {
 	static ajv_macro_generator(inner: boolean) {
 		return (schema: typed_array_string) => {
 			const item_regex = `(?:${this.item_to_regex(schema.items)})`;
-			const max_items = 'maxItems' in schema ? schema.maxItems : undefined;
+			const max_items =
+				'maxItems' in schema ? schema.maxItems : undefined;
 
-			const additional_items = schema.minItems === max_items && 1 === schema.minItems ? '' : `(?:,${item_regex})${max_items && max_items > 1 ? `{${max_items - 1},}` : ((schema.minItems === max_items && max_items > 1) ? `{${max_items - 1}` : '*')}`;
+			const additional_items =
+				schema.minItems === max_items && 1 === schema.minItems
+					? ''
+					: `(?:,${item_regex})${max_items && max_items > 1 ? `{${max_items - 1},}` : schema.minItems === max_items && max_items > 1 ? `{${max_items - 1}` : '*'}`;
 
 			const regex = `(?:\\(${item_regex}${additional_items}\\))`;
 
