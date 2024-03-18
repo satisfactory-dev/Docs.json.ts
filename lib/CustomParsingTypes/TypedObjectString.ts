@@ -548,9 +548,7 @@ export class TypedObjectString {
 		);
 	}
 
-	public static is_supported_enum_string_object(
-		maybe: any
-	): maybe is {
+	public static is_supported_enum_string_object(maybe: any): maybe is {
 		[key: string]: {type: 'string'; enum: [string, ...string[]]};
 	} {
 		return (
