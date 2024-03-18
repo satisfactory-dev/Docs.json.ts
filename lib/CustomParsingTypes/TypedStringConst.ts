@@ -47,7 +47,9 @@ class TypedStringConst extends SupportedSubSchemaType<
 		return `(?:${key}=${value.const})`;
 	}
 
-	value_type(value: const_schema_type): LiteralTypeNode & { literal: StringLiteral; } {
+	value_type(
+		value: const_schema_type
+	): LiteralTypeNode & {literal: StringLiteral} {
 		return create_literal_node_from_value(value.const);
 	}
 }

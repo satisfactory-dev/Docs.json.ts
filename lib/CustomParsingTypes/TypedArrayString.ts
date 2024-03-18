@@ -28,8 +28,16 @@ import {
 	TypesGenerationFromSchema,
 } from '../TypesGeneration';
 import ts, {TupleTypeNode, TypeAliasDeclaration} from 'typescript';
-import {const_schema_type, typed_string_const, typed_string_const_schema} from './TypedStringConst';
-import {enum_schema_type, typed_string_enum, typed_string_enum_schema} from './TypedStringEnum';
+import {
+	const_schema_type,
+	typed_string_const,
+	typed_string_const_schema,
+} from './TypedStringConst';
+import {
+	enum_schema_type,
+	typed_string_enum,
+	typed_string_enum_schema,
+} from './TypedStringEnum';
 
 const already_configured = new WeakSet<Ajv>();
 
@@ -106,7 +114,7 @@ declare type typed_array_string_without_recursive_reference = {
 	minItems: number;
 	items: Exclude<
 		typed_array_string_supported_items,
-		typed_object_string_general_type|enum_schema_type
+		typed_object_string_general_type | enum_schema_type
 	>;
 } & ({maxItems: number} | {});
 
@@ -253,7 +261,9 @@ export class TypedArrayString {
 					);
 				} else if (typed_string_enum.is_supported_schema(data.items)) {
 					return typed_string_enum.value_type(data.items);
-				} else if (typed_string_const.is_supported_schema(data.items)) {
+				} else if (
+					typed_string_const.is_supported_schema(data.items)
+				) {
 					return typed_string_const.value_type(data.items);
 				}
 

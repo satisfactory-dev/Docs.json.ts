@@ -53,7 +53,7 @@ export function object_only_has_that_property<T extends string = string>(
 
 export abstract class SupportedSubSchemaType<
 	ObjectType extends {[key: string]: any},
-	LiteralType extends LiteralExpression|UnionTypeNode,
+	LiteralType extends LiteralExpression | UnionTypeNode,
 > {
 	abstract is_supported_schema(maybe: any): maybe is ObjectType;
 
@@ -61,12 +61,21 @@ export abstract class SupportedSubSchemaType<
 
 	abstract key_value_pair_regex(key: string, value: ObjectType): string;
 
-	abstract value_type(value: ObjectType) : LiteralType extends LiteralExpression ? LiteralTypeNode & {literal: LiteralType} : LiteralType;
+	abstract value_type(
+		value: ObjectType
+	): LiteralType extends LiteralExpression
+		? LiteralTypeNode & {literal: LiteralType}
+		: LiteralType;
 
 	key_value_pair_literal_type_entry(
 		key: string,
 		value: ObjectType
-	): [typeof key, LiteralType extends LiteralExpression ? LiteralTypeNode & {literal: LiteralType} : LiteralType] {
+	): [
+		typeof key,
+		LiteralType extends LiteralExpression
+			? LiteralTypeNode & {literal: LiteralType}
+			: LiteralType,
+	] {
 		return [key, this.value_type(value)];
 	}
 }

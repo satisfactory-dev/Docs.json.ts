@@ -88,68 +88,68 @@ export function is_UnrealEngineStringReference_general_object(
 }
 
 export const UnrealEngineStringReference_schema_definitions = {
-		UnrealEngineStringReference_schema_left_string: {
-			type: 'string',
-			pattern: `^(/Script/[A-Z][A-Za-z]+.[A-Z][A-Za-z]+(?:2D)?|${UnrealEngineStringReference_general_regex})$`,
-		},
-		UnrealEngineStringReference_schema_right_string: {
-			type: 'string',
-			pattern: `^${UnrealEngineStringReference_general_regex}$`,
-		},
-		UnrealEngineStringReference_schema_left_property: {
-			oneOf: [
-				{
+	UnrealEngineStringReference_schema_left_string: {
+		type: 'string',
+		pattern: `^(/Script/[A-Z][A-Za-z]+.[A-Z][A-Za-z]+(?:2D)?|${UnrealEngineStringReference_general_regex})$`,
+	},
+	UnrealEngineStringReference_schema_right_string: {
+		type: 'string',
+		pattern: `^${UnrealEngineStringReference_general_regex}$`,
+	},
+	UnrealEngineStringReference_schema_left_property: {
+		oneOf: [
+			{
+				$ref: '#/definitions/UnrealEngineStringReference_schema_left_string',
+			},
+			{
+				type: 'array',
+				minItems: 1,
+				items: {
 					$ref: '#/definitions/UnrealEngineStringReference_schema_left_string',
 				},
-				{
-					type: 'array',
-					minItems: 1,
-					items: {
-						$ref: '#/definitions/UnrealEngineStringReference_schema_left_string',
-					},
-				},
-			],
-		},
-		UnrealEngineStringReference_schema_right_starts_with: {
-			type: 'string',
-			pattern:
-				'^/(?:[A-Z][A-Za-z_\\-.]+/)+(?:[A-Z][A-Za-z_\\-.]+/|[A-Z][A-Za-z_\\-.]+\\.[A-Z][A-Za-z_\\-]+)$',
-		},
-		UnrealEngineStringReference_schema_right_property: {
-			oneOf: [
-				{
+			},
+		],
+	},
+	UnrealEngineStringReference_schema_right_starts_with: {
+		type: 'string',
+		pattern:
+			'^/(?:[A-Z][A-Za-z_\\-.]+/)+(?:[A-Z][A-Za-z_\\-.]+/|[A-Z][A-Za-z_\\-.]+\\.[A-Z][A-Za-z_\\-]+)$',
+	},
+	UnrealEngineStringReference_schema_right_property: {
+		oneOf: [
+			{
+				$ref: '#/definitions/UnrealEngineStringReference_schema_right_string',
+			},
+			{
+				type: 'array',
+				minItems: 1,
+				items: {
 					$ref: '#/definitions/UnrealEngineStringReference_schema_right_string',
 				},
-				{
-					type: 'array',
-					minItems: 1,
-					items: {
-						$ref: '#/definitions/UnrealEngineStringReference_schema_right_string',
-					},
-				},
-				{
-					type: 'object',
-					required: ['starts_with'],
-					additionalProperties: false,
-					properties: {
-						starts_with: {
-							oneOf: [
-								{
+			},
+			{
+				type: 'object',
+				required: ['starts_with'],
+				additionalProperties: false,
+				properties: {
+					starts_with: {
+						oneOf: [
+							{
+								$ref: '#/definitions/UnrealEngineStringReference_schema_right_starts_with',
+							},
+							{
+								type: 'array',
+								minItems: 1,
+								items: {
 									$ref: '#/definitions/UnrealEngineStringReference_schema_right_starts_with',
 								},
-								{
-									type: 'array',
-									minItems: 1,
-									items: {
-										$ref: '#/definitions/UnrealEngineStringReference_schema_right_starts_with',
-									},
-								},
-							],
-						},
+							},
+						],
 					},
 				},
-			],
-		},
+			},
+		],
+	},
 };
 
 export const UnrealEngineStringReference_schema = {
@@ -233,7 +233,7 @@ export class UnrealEngineStringReference {
 			type: 'string',
 			metaSchema: {
 				definitions: UnrealEngineStringReference_schema_definitions,
-				...UnrealEngineStringReference_schema
+				...UnrealEngineStringReference_schema,
 			},
 			macro: this.ajv_macro_generator(false),
 		});
@@ -287,7 +287,8 @@ export class UnrealEngineStringReference {
 		return [
 			new TypesGenerationFromSchema<UnrealEngineStringReference_general_type>(
 				{
-					definitions: UnrealEngineStringReference_schema_definitions,
+					definitions:
+						UnrealEngineStringReference_schema_definitions,
 					...UnrealEngineStringReference_general_schema,
 				},
 				(data, reference_name) => {
@@ -665,7 +666,8 @@ export class UnrealEngineStringReference {
 		return [
 			new TypeNodeGeneration<UnrealEngineStringReference_general_type>(
 				{
-					definitions: UnrealEngineStringReference_schema_definitions,
+					definitions:
+						UnrealEngineStringReference_schema_definitions,
 					...UnrealEngineStringReference_general_schema,
 				},
 				(data_from_schema) => {

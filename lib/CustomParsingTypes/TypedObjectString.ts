@@ -326,13 +326,19 @@ type supported_type_node_generations = {
 		| '#/definitions/mDisableSnapOn';
 };
 
-await writeFile('typed-object.schema.json', JSON.stringify({
-	...typed_object_string_schema,
-	...{
-		definitions:
-		UnrealEngineStringReference_schema_definitions,
-	},
-}, null, '\t') + '\n');
+await writeFile(
+	'typed-object.schema.json',
+	JSON.stringify(
+		{
+			...typed_object_string_schema,
+			...{
+				definitions: UnrealEngineStringReference_schema_definitions,
+			},
+		},
+		null,
+		'\t'
+	) + '\n'
+);
 
 export class TypedObjectString {
 	static configure_ajv(ajv: Ajv) {
@@ -550,9 +556,7 @@ export class TypedObjectString {
 			Object.keys(maybe).every((e) =>
 				typed_object_string_const_value_regex__native.test(e)
 			) &&
-			Object.values(maybe).every(
-				typed_string_enum.is_supported_schema
-			)
+			Object.values(maybe).every(typed_string_enum.is_supported_schema)
 		);
 	}
 
@@ -733,17 +737,30 @@ export class TypedObjectString {
 							return `(?:${property}=(?:${value.enum.join('|')}))`;
 						}
 					)}))`;
-				} else if (
-					typed_string_enum.is_supported_schema(entry[1])
-				) {
-					return typed_string_enum.key_value_pair_regex(entry[0], entry[1]);
+				} else if (typed_string_enum.is_supported_schema(entry[1])) {
+					return typed_string_enum.key_value_pair_regex(
+						entry[0],
+						entry[1]
+					);
 				} else if (this.is_supported_typed_array_string(entry[1])) {
-					if (typed_string_enum.is_supported_schema(entry[1].typed_array_string.items)) {
-						const value_regex = typed_string_enum.value_regex(entry[1].typed_array_string.items);
+					if (
+						typed_string_enum.is_supported_schema(
+							entry[1].typed_array_string.items
+						)
+					) {
+						const value_regex = typed_string_enum.value_regex(
+							entry[1].typed_array_string.items
+						);
 
 						return `(?:${entry[0]}=\\(${value_regex}(?:,${value_regex})*\\))`;
-					} else if(typed_string_const.is_supported_schema(entry[1].typed_array_string.items)) {
-						const value_regex = typed_string_const.value_regex(entry[1].typed_array_string.items);
+					} else if (
+						typed_string_const.is_supported_schema(
+							entry[1].typed_array_string.items
+						)
+					) {
+						const value_regex = typed_string_const.value_regex(
+							entry[1].typed_array_string.items
+						);
 
 						return `(?:${entry[0]}=\\(${value_regex}(?:,${value_regex})*\\))`;
 					}
@@ -806,8 +823,9 @@ export class TypedObjectString {
 		return [
 			new TypesGenerationFromSchema<typed_object_string_general_type>(
 				{
-					definitions: UnrealEngineStringReference_schema_definitions,
-					...typed_object_string_general_schema
+					definitions:
+						UnrealEngineStringReference_schema_definitions,
+					...typed_object_string_general_schema,
 				},
 				(data, reference_name) => {
 					const {typed_object_string} = data;
@@ -882,20 +900,24 @@ export class TypedObjectString {
 			),
 			new TypesGenerationFromSchema<{
 				oneOf: typed_object_string_array_type;
-			}>({
-				definitions: UnrealEngineStringReference_schema_definitions,
-				...typed_object_oneOf_schema,
-			}, (data, reference_name) => {
-				return ts.factory.createTypeAliasDeclaration(
-					[create_modifier('export')],
-					adjust_class_name(reference_name),
-					undefined,
-					ts.factory.createUnionTypeNode(
-						data.oneOf.map((e, index) => {
-							return create_object_type(
-								Object.fromEntries(
-									Object.entries(e.typed_object_string).map(
-										(entry) => {
+			}>(
+				{
+					definitions:
+						UnrealEngineStringReference_schema_definitions,
+					...typed_object_oneOf_schema,
+				},
+				(data, reference_name) => {
+					return ts.factory.createTypeAliasDeclaration(
+						[create_modifier('export')],
+						adjust_class_name(reference_name),
+						undefined,
+						ts.factory.createUnionTypeNode(
+							data.oneOf.map((e, index) => {
+								return create_object_type(
+									Object.fromEntries(
+										Object.entries(
+											e.typed_object_string
+										).map((entry) => {
 											if (
 												!this.is_$ref_object(entry[1])
 											) {
@@ -915,17 +937,18 @@ export class TypedObjectString {
 													)
 												),
 											];
-										}
+										})
 									)
-								)
-							);
-						})
-					)
-				);
-			}),
+								);
+							})
+						)
+					);
+				}
+			),
 			new TypesGenerationFromSchema<typed_object_string_nested_type>(
 				{
-					definitions: UnrealEngineStringReference_schema_definitions,
+					definitions:
+						UnrealEngineStringReference_schema_definitions,
 					...typed_object_string_nested_schema,
 				},
 				(data, reference_name) => {
@@ -1022,9 +1045,7 @@ export class TypedObjectString {
 								})
 							),
 						];
-					} else if (
-						typed_string_enum.is_supported_schema(value)
-					) {
+					} else if (typed_string_enum.is_supported_schema(value)) {
 						return typed_string_enum.key_value_pair_literal_type_entry(
 							property,
 							value
@@ -1070,9 +1091,7 @@ export class TypedObjectString {
 								})
 							),
 						];
-					} else if (
-						typed_string_enum.is_supported_schema(value)
-					) {
+					} else if (typed_string_enum.is_supported_schema(value)) {
 						return typed_string_enum.key_value_pair_literal_type_entry(
 							property,
 							value
@@ -1107,22 +1126,39 @@ export class TypedObjectString {
 								value.typed_array_string.minItems,
 								() => {
 									if (
-										is_UnrealEngineStringReference_general_object(value.typed_array_string.items)
+										is_UnrealEngineStringReference_general_object(
+											value.typed_array_string.items
+										)
 									) {
 										return create_UnrealEngineStringReference_reference_type(
-											value.typed_array_string.items.UnrealEngineStringReference
+											value.typed_array_string.items
+												.UnrealEngineStringReference
 										);
-									} else if (typed_string_enum.is_supported_schema(value.typed_array_string.items)) {
-										return typed_string_enum.value_type(value.typed_array_string.items);
-									} else if (typed_string_const.is_supported_schema(value.typed_array_string.items)) {
-										return typed_string_const.value_type(value.typed_array_string.items);
+									} else if (
+										typed_string_enum.is_supported_schema(
+											value.typed_array_string.items
+										)
+									) {
+										return typed_string_enum.value_type(
+											value.typed_array_string.items
+										);
+									} else if (
+										typed_string_const.is_supported_schema(
+											value.typed_array_string.items
+										)
+									) {
+										return typed_string_const.value_type(
+											value.typed_array_string.items
+										);
 									}
 
 									return TypedObjectString.general_type_to_object_type(
 										value.typed_array_string.items
 									);
 								},
-								'maxItems' in value.typed_array_string ? value.typed_array_string.maxItems : undefined
+								'maxItems' in value.typed_array_string
+									? value.typed_array_string.maxItems
+									: undefined
 							),
 						];
 					} else if (!this.is_$ref_object(value)) {
@@ -1169,8 +1205,9 @@ export class TypedObjectString {
 		return [
 			new TypeNodeGeneration<typed_object_string_nested_type>(
 				{
-					definitions: UnrealEngineStringReference_schema_definitions,
-					...typed_object_string_nested_schema
+					definitions:
+						UnrealEngineStringReference_schema_definitions,
+					...typed_object_string_nested_schema,
 				},
 				(data) => {
 					return new TypeNodeGenerationResult(() => {
@@ -1205,8 +1242,9 @@ export class TypedObjectString {
 			),
 			new TypeNodeGeneration<typed_object_string_general_type>(
 				{
-					definitions: UnrealEngineStringReference_schema_definitions,
-					...typed_object_string_general_schema
+					definitions:
+						UnrealEngineStringReference_schema_definitions,
+					...typed_object_string_general_schema,
 				},
 				(data) => {
 					const is_$ref_object_dictionary =
