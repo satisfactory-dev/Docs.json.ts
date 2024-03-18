@@ -87,8 +87,7 @@ export function is_UnrealEngineStringReference_general_object(
 	);
 }
 
-export const UnrealEngineStringReference_schema = {
-	definitions: {
+export const UnrealEngineStringReference_schema_definitions = {
 		UnrealEngineStringReference_schema_left_string: {
 			type: 'string',
 			pattern: `^(/Script/[A-Z][A-Za-z]+.[A-Z][A-Za-z]+(?:2D)?|${UnrealEngineStringReference_general_regex})$`,
@@ -151,7 +150,9 @@ export const UnrealEngineStringReference_schema = {
 				},
 			],
 		},
-	},
+};
+
+export const UnrealEngineStringReference_schema = {
 	oneOf: [
 		{
 			type: 'object',
@@ -197,7 +198,6 @@ export const UnrealEngineStringReference_general_schema = {
 	type: 'object',
 	required: ['type', 'minLength', 'UnrealEngineStringReference'],
 	additionalProperties: false,
-	definitions: UnrealEngineStringReference_schema.definitions,
 	properties: {
 		type: {type: 'string', const: 'string'},
 		minLength: {type: 'number', const: 1},
@@ -208,7 +208,6 @@ export const UnrealEngineStringReference_inner_schema = {
 	type: 'object',
 	required: ['type', 'minLength', 'UnrealEngineStringReference--inner'],
 	additionalProperties: false,
-	definitions: UnrealEngineStringReference_schema.definitions,
 	properties: {
 		type: {type: 'string', const: 'string'},
 		minLength: {type: 'number', const: 1},
@@ -232,7 +231,10 @@ export class UnrealEngineStringReference {
 		ajv.addKeyword({
 			keyword: 'UnrealEngineStringReference',
 			type: 'string',
-			metaSchema: UnrealEngineStringReference_schema,
+			metaSchema: {
+				definitions: UnrealEngineStringReference_schema_definitions,
+				...UnrealEngineStringReference_schema
+			},
 			macro: this.ajv_macro_generator(false),
 		});
 	}
@@ -284,7 +286,10 @@ export class UnrealEngineStringReference {
 	] {
 		return [
 			new TypesGenerationFromSchema<UnrealEngineStringReference_general_type>(
-				UnrealEngineStringReference_general_schema,
+				{
+					definitions: UnrealEngineStringReference_schema_definitions,
+					...UnrealEngineStringReference_general_schema,
+				},
 				(data, reference_name) => {
 					return ts.factory.createTypeAliasDeclaration(
 						[create_modifier('export')],
@@ -659,7 +664,10 @@ export class UnrealEngineStringReference {
 	] {
 		return [
 			new TypeNodeGeneration<UnrealEngineStringReference_general_type>(
-				UnrealEngineStringReference_general_schema,
+				{
+					definitions: UnrealEngineStringReference_schema_definitions,
+					...UnrealEngineStringReference_general_schema,
+				},
 				(data_from_schema) => {
 					return new TypeNodeGenerationResult(() => {
 						return create_UnrealEngineStringReference_reference_type(

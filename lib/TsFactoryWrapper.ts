@@ -7,14 +7,14 @@ import ts, {
 	LiteralExpression,
 	LiteralTypeNode,
 	MethodDeclaration,
-	Modifier,
+	Modifier, NodeArray,
 	NullLiteral,
 	PrefixUnaryExpression,
 	PropertyDeclaration,
 	StringLiteral,
 	TypeLiteralNode,
 	TypeNode,
-	TypeParameterDeclaration,
+	TypeParameterDeclaration, UnionTypeNode,
 } from 'typescript';
 import {UnexpectedlyUnknownNoMatchError} from './SchemaBasedResultsMatching/TypeNodeGeneration';
 
@@ -967,4 +967,13 @@ export function possibly_create_lazy_union(
 	const [a, b, ...rest] = items;
 
 	return create_lazy_union(a, b, ...rest);
+}
+
+type string_literal = LiteralTypeNode & {literal: StringLiteral};
+export type non_empty_string_literal_union = UnionTypeNode & {types: NodeArray<string_literal> & [string_literal, ...string_literal[]]};
+
+export function create_typed_union(
+	items: [string, ...string[]]
+) : non_empty_string_literal_union {
+	return ts.factory.createUnionTypeNode(items.map(create_literal_node_from_value)) as non_empty_string_literal_union;
 }

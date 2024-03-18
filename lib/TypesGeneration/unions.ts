@@ -20,9 +20,9 @@ import {
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 import {
 	create_UnrealEngineStringReference_reference_type,
-	UnrealEngineStringReference_schema,
 	UnrealEngineStringReference_general_type,
 	UnrealEngineStringReference_general_schema,
+	UnrealEngineStringReference_schema_definitions,
 } from '../CustomParsingTypes/UnrealEngineStringReference';
 
 export const target_files = {
@@ -73,7 +73,7 @@ declare type supported_oneOf_items =
 	  });
 
 const definitions = {
-	...UnrealEngineStringReference_schema.definitions,
+	...UnrealEngineStringReference_schema_definitions,
 };
 export const generators = [
 	new TypesGenerationFromSchema<{

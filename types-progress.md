@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (243 of 243)
+100.00% Complete (242 of 242)
 
 ## Basic Types
 
@@ -144,7 +144,6 @@
 -   [x] FGBuildable--docking-station-base
 -   [x] FGBuildable--extractor-base
 -   [x] FGBuildable--extractor-base--shared
--   [x] FGBuildable--mAllowedResources--default-UnrealEngineString
 -   [x] FGBuildable--occupied
 -   [x] FGBuildable--pipeline-accessory
 -   [x] FGBuildable--pipeline-accessory--base

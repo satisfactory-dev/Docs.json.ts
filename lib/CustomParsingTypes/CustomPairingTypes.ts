@@ -1,4 +1,4 @@
-import {LiteralExpression, LiteralTypeNode} from 'typescript';
+import {LiteralExpression, LiteralTypeNode, UnionTypeNode} from 'typescript';
 
 export function object_has_property<T extends string = string>(
 	maybe: object,
@@ -53,7 +53,7 @@ export function object_only_has_that_property<T extends string = string>(
 
 export abstract class SupportedSubSchemaType<
 	ObjectType extends {[key: string]: any},
-	LiteralType extends LiteralExpression,
+	LiteralType extends LiteralExpression|UnionTypeNode,
 > {
 	abstract is_supported_schema(maybe: any): maybe is ObjectType;
 
@@ -61,8 +61,12 @@ export abstract class SupportedSubSchemaType<
 
 	abstract key_value_pair_regex(key: string, value: ObjectType): string;
 
-	abstract key_value_pair_literal_type_entry(
+	abstract value_type(value: ObjectType) : LiteralType extends LiteralExpression ? LiteralTypeNode & {literal: LiteralType} : LiteralType;
+
+	key_value_pair_literal_type_entry(
 		key: string,
 		value: ObjectType
-	): [typeof key, LiteralTypeNode & {literal: LiteralType}];
+	): [typeof key, LiteralType extends LiteralExpression ? LiteralTypeNode & {literal: LiteralType} : LiteralType] {
+		return [key, this.value_type(value)];
+	}
 }

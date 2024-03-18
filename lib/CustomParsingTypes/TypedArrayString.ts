@@ -2,16 +2,14 @@ import Ajv from 'ajv/dist/2020';
 import {
 	create_UnrealEngineStringReference_reference_type,
 	is_UnrealEngineStringReference_general_object,
-	is_UnrealEngineStringReference_value,
 	UnrealEngineStringReference,
 	UnrealEngineStringReference_general_schema,
 	UnrealEngineStringReference_general_type,
-	UnrealEngineStringReference_schema,
+	UnrealEngineStringReference_schema_definitions,
 } from './UnrealEngineStringReference';
 import {
 	typed_object_string_general_schema,
 	typed_object_string_general_type,
-	typed_object_supported_const_string_schema,
 	TypedObjectString,
 } from './TypedObjectString';
 import {
@@ -30,7 +28,8 @@ import {
 	TypesGenerationFromSchema,
 } from '../TypesGeneration';
 import ts, {TupleTypeNode, TypeAliasDeclaration} from 'typescript';
-import {typed_string_const} from './TypedStringConst';
+import {const_schema_type, typed_string_const, typed_string_const_schema} from './TypedStringConst';
+import {enum_schema_type, typed_string_enum, typed_string_enum_schema} from './TypedStringEnum';
 
 const already_configured = new WeakSet<Ajv>();
 
@@ -46,7 +45,8 @@ const typed_array_string_schema = {
 			oneOf: [
 				typed_object_string_general_schema,
 				UnrealEngineStringReference_general_schema,
-				typed_object_supported_const_string_schema,
+				typed_string_enum_schema,
+				typed_string_const_schema,
 			],
 		},
 	},
@@ -90,6 +90,8 @@ export const typed_array_string_parent_schema_without_recursive_reference = {
 };
 
 declare type typed_array_string_supported_items =
+	| enum_schema_type
+	| const_schema_type
 	| UnrealEngineStringReference_general_type
 	| typed_object_string_general_type;
 
@@ -104,7 +106,7 @@ declare type typed_array_string_without_recursive_reference = {
 	minItems: number;
 	items: Exclude<
 		typed_array_string_supported_items,
-		typed_object_string_general_type
+		typed_object_string_general_type|enum_schema_type
 	>;
 } & ({maxItems: number} | {});
 
@@ -124,7 +126,7 @@ await writeFile(
 	`typed-array-string.schema.json`,
 	JSON.stringify(
 		{
-			definitions: UnrealEngineStringReference_schema.definitions,
+			definitions: UnrealEngineStringReference_schema_definitions,
 			...typed_array_string_schema,
 		},
 		null,
@@ -136,7 +138,7 @@ await writeFile(
 	`typed-array-string--parent.schema.json`,
 	JSON.stringify(
 		{
-			definitions: UnrealEngineStringReference_schema.definitions,
+			definitions: UnrealEngineStringReference_schema_definitions,
 			...typed_array_string_parent_schema,
 		},
 		null,
@@ -158,7 +160,7 @@ export class TypedArrayString {
 			metaSchema: {
 				...{
 					definitions:
-						UnrealEngineStringReference_schema.definitions,
+						UnrealEngineStringReference_schema_definitions,
 				},
 				...typed_array_string_schema,
 			},
@@ -185,7 +187,7 @@ export class TypedArrayString {
 		};
 	}
 
-	private static item_to_regex(
+	public static item_to_regex(
 		item: typed_array_string_supported_items
 	): string {
 		if (is_UnrealEngineStringReference_general_object(item)) {
@@ -193,7 +195,9 @@ export class TypedArrayString {
 				item.UnrealEngineStringReference
 			).pattern;
 		} else if (typed_string_const.is_supported_schema(item)) {
-			return `(?:(${item.const}|"${item.const}"))`;
+			return typed_string_const.value_regex(item);
+		} else if (typed_string_enum.is_supported_schema(item)) {
+			return typed_string_enum.value_regex(item);
 		}
 		if (
 			!TypedObjectString.value_is_typed_object_string_general_type(item)
@@ -247,6 +251,10 @@ export class TypedArrayString {
 					return create_UnrealEngineStringReference_reference_type(
 						data.items.UnrealEngineStringReference
 					);
+				} else if (typed_string_enum.is_supported_schema(data.items)) {
+					return typed_string_enum.value_type(data.items);
+				} else if (typed_string_const.is_supported_schema(data.items)) {
+					return typed_string_const.value_type(data.items);
 				}
 
 				return TypedObjectString.general_type_to_object_type(
@@ -265,7 +273,7 @@ export class TypedArrayString {
 			new TypesGenerationFromSchema<typed_array_string_parent>(
 				{
 					definitions:
-						UnrealEngineStringReference_schema.definitions,
+						UnrealEngineStringReference_schema_definitions,
 					...typed_array_string_parent_schema,
 				},
 				(data, reference_name) => {
@@ -278,7 +286,7 @@ export class TypedArrayString {
 			new TypesGenerationFromSchema<typed_array_string>(
 				{
 					definitions:
-						UnrealEngineStringReference_schema.definitions,
+						UnrealEngineStringReference_schema_definitions,
 					...typed_array_string_schema,
 				},
 				this.typed_array_string_type_alias_generator
@@ -293,6 +301,8 @@ export class TypedArrayString {
 
 		if (
 			!is_UnrealEngineStringReference_general_object(data.items) &&
+			!typed_string_const.is_supported_schema(data.items) &&
+			!typed_string_enum.is_supported_schema(data.items) &&
 			!TypedObjectString.value_is_typed_object_string_general_type(
 				data.items
 			)
@@ -314,7 +324,7 @@ export class TypedArrayString {
 			new TypeNodeGeneration<typed_array_string_parent>(
 				{
 					definitions:
-						UnrealEngineStringReference_schema.definitions,
+						UnrealEngineStringReference_schema_definitions,
 					...typed_array_string_parent_schema,
 				},
 				(data) => {
@@ -326,7 +336,7 @@ export class TypedArrayString {
 			new TypeNodeGeneration<typed_array_string>(
 				{
 					definitions:
-						UnrealEngineStringReference_schema.definitions,
+						UnrealEngineStringReference_schema_definitions,
 					...typed_array_string_schema,
 				},
 				(data) => {
