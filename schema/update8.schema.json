@@ -484,16 +484,32 @@
 						{
 							"type": "string",
 							"minLength": 1,
-							"array_string": {
+							"typed_array_string": {
 								"type": "array",
 								"minItems": 1,
 								"items": {
-									"type": "object",
-									"required": ["CompatibleItemType"],
-									"properties": {
+									"type": "string",
+									"minLength": 1,
+									"typed_object_string": {
 										"CompatibleItemType": {
 											"type": "string",
-											"minLength": 1
+											"enum": [
+												"CIT_AMMO",
+												"CIT_WEAPON"
+											]
+										},
+										"CompatibleItemDescriptors": {
+											"type": "string",
+											"minLength": 1,
+											"typed_array_string": {
+												"type": "array",
+												"minItems": 1,
+												"items": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineStringReference": true
+												}
+											}
 										}
 									}
 								}
@@ -535,7 +551,7 @@
 						{
 							"type": "string",
 							"minLength": 1,
-							"array_string": {
+							"typed_array_string": {
 								"type": "array",
 								"minItems": 1,
 								"items": {

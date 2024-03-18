@@ -1,5 +1,6 @@
 import {NodeExtraction} from './NodeExtraction';
 import ts, {Node, TypeElement, TypeLiteralNode} from 'typescript';
+import {UnexpectedlyUnknownNoMatchError} from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 
 export class TypeLiteralNodes extends NodeExtraction<TypeLiteralNode> {
 	protected extract(nodes: TypeLiteralNode[]): Node[] {
@@ -31,8 +32,7 @@ export class TypeLiteralNodes extends NodeExtraction<TypeLiteralNode> {
 		}
 
 		if (other_elements.length) {
-			console.error(other_elements);
-			throw new Error('Unsupported elements found!');
+			throw new UnexpectedlyUnknownNoMatchError(other_elements, 'Unsupported elements found!');
 		}
 
 		return types;

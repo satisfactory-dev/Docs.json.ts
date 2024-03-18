@@ -331,9 +331,7 @@ export abstract class ResultGenerationMatcher<
 			);
 
 			if (!first) {
-				console.error(property.prefixItems[0]);
-
-				throw new Error('Failed to match first member of tuple');
+				throw new UnexpectedlyUnknownNoMatchError(property.prefixItems[0], 'Failed to match first member of tuple');
 			}
 
 			const second = this.search(
@@ -343,9 +341,7 @@ export abstract class ResultGenerationMatcher<
 			);
 
 			if (!second) {
-				console.error(property.prefixItems[1]);
-
-				throw new Error('Failed to match second member of tuple');
+				throw new UnexpectedlyUnknownNoMatchError(property.prefixItems[1], 'Failed to match second member of tuple');
 			}
 
 			return this.create_tuple_result(first, second);

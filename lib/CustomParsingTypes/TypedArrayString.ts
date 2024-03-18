@@ -1,5 +1,10 @@
 import Ajv from 'ajv/dist/2020';
-import {UnrealEngineStringReference_schema} from './UnrealEngineStringReference';
+import {
+	create_UnrealEngineStringReference_reference_type,
+	is_UnrealEngineStringReference_general_object, is_UnrealEngineStringReference_value, UnrealEngineStringReference,
+	UnrealEngineStringReference_general_schema, UnrealEngineStringReference_general_type,
+	UnrealEngineStringReference_schema,
+} from './UnrealEngineStringReference';
 import {
 	typed_object_string_general_schema,
 	typed_object_string_general_type,
@@ -20,7 +25,8 @@ import {
 	TypesGeneration_concrete,
 	TypesGenerationFromSchema,
 } from '../TypesGeneration';
-import ts, {TypeAliasDeclaration} from 'typescript';
+import ts, {TupleTypeNode, TypeAliasDeclaration} from 'typescript';
+import {object_has_property} from './CustomPairingTypes';
 
 const already_configured = new WeakSet<Ajv>();
 
@@ -31,7 +37,27 @@ const typed_array_string_schema = {
 	properties: {
 		type: {type: 'string', const: 'array'},
 		minItems: {type: 'number', minimum: 1},
-		items: typed_object_string_general_schema,
+		items: {
+			oneOf: [
+				typed_object_string_general_schema,
+				UnrealEngineStringReference_general_schema,
+			],
+		},
+	},
+};
+
+const typed_array_string_schema_without_recursive_reference = {
+	type: 'object',
+	required: ['type', 'minItems', 'items'],
+	additionalProperties: false,
+	properties: {
+		type: {type: 'string', const: 'array'},
+		minItems: {type: 'number', minimum: 1},
+		items: {
+			oneOf: [
+				UnrealEngineStringReference_general_schema,
+			],
+		},
 	},
 };
 
@@ -46,8 +72,20 @@ const typed_array_string_parent_schema = {
 	},
 };
 
+export const typed_array_string_parent_schema_without_recursive_reference = {
+	type: 'object',
+	required: ['type', 'minLength', 'typed_array_string'],
+	additionalProperties: false,
+	properties: {
+		type: {type: 'string', const: 'string'},
+		minLength: {type: 'number', const: 1},
+		typed_array_string: typed_array_string_schema_without_recursive_reference,
+	},
+};
+
 declare type typed_array_string_supported_items =
-	typed_object_string_general_type;
+	| UnrealEngineStringReference_general_type
+	| typed_object_string_general_type;
 
 declare type typed_array_string = {
 	type: 'array';
@@ -55,10 +93,22 @@ declare type typed_array_string = {
 	items: typed_array_string_supported_items;
 };
 
+declare type typed_array_string_without_recursive_reference = {
+	type: 'array';
+	minItems: number;
+	items: Exclude<typed_array_string_supported_items, typed_object_string_general_type>;
+};
+
 declare type typed_array_string_parent = {
 	type: 'string';
 	minLength: 1;
 	typed_array_string: typed_array_string;
+};
+
+export type typed_array_string_parent_without_recursive_reference = {
+	type: 'string';
+	minLength: 1;
+	typed_array_string: typed_array_string_without_recursive_reference;
 };
 
 await writeFile(
@@ -97,11 +147,11 @@ export class TypedArrayString {
 			keyword: 'typed_array_string',
 			type: 'string',
 			metaSchema: {
-				...typed_array_string_schema,
 				...{
 					definitions:
 						UnrealEngineStringReference_schema.definitions,
 				},
+				...typed_array_string_schema,
 			},
 			macro: this.ajv_macro_generator(false),
 		});
@@ -122,6 +172,11 @@ export class TypedArrayString {
 	private static item_to_regex(
 		item: typed_array_string_supported_items
 	): string {
+		if (is_UnrealEngineStringReference_general_object(item)) {
+			return UnrealEngineStringReference.ajv_macro_generator(true)(
+				item.UnrealEngineStringReference
+			).pattern;
+		}
 		if (
 			!TypedObjectString.value_is_typed_object_string_general_type(item)
 		) {
@@ -155,10 +210,22 @@ export class TypedArrayString {
 			[create_modifier('export')],
 			adjust_class_name(reference_name),
 			undefined,
-			create_minimum_size_typed_array_of_single_type(data.minItems, () =>
-				TypedObjectString.general_type_to_object_type(data.items)
-			)
+			this.typed_array(data)
 		);
+	}
+
+	public static typed_array(data: typed_array_string|typed_array_string_without_recursive_reference) : TupleTypeNode {
+		return (
+			create_minimum_size_typed_array_of_single_type(data.minItems, () => {
+				if (is_UnrealEngineStringReference_general_object(data.items)) {
+					return create_UnrealEngineStringReference_reference_type(
+						data.items.UnrealEngineStringReference
+					);
+				}
+
+				return TypedObjectString.general_type_to_object_type(data.items);
+			})
+		)
 	}
 
 	static TypesGenerators(): [
@@ -193,6 +260,11 @@ export class TypedArrayString {
 	private static typed_array_string_node_generation_result(
 		data: typed_array_string
 	): TypeNodeGenerationResult {
+		const {items} = data;
+
+		if (is_UnrealEngineStringReference_general_object(items)) {
+			return new TypeNodeGenerationResult(() => create_UnrealEngineStringReference_reference_type(items.UnrealEngineStringReference));
+		}
 		if (
 			!TypedObjectString.value_is_typed_object_string_general_type(
 				data.items
@@ -200,14 +272,12 @@ export class TypedArrayString {
 		) {
 			throw new UnexpectedlyUnknownNoMatchError(
 				data.items,
-				'Currently unsupported in TypedArrayString.item_to_regex'
+				'Currently unsupported in TypedArrayString.typed_array_string_node_generation_result'
 			);
 		}
 
 		return new TypeNodeGenerationResult(() =>
-			create_minimum_size_typed_array_of_single_type(data.minItems, () =>
-				TypedObjectString.general_type_to_object_type(data.items)
-			)
+			this.typed_array(data)
 		);
 	}
 

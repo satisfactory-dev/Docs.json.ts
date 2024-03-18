@@ -1,8 +1,9 @@
 import Ajv from 'ajv/dist/2020';
 import {
+	create_UnrealEngineStringReference_reference_type,
 	is_UnrealEngineStringReference_general_object,
 	is_UnrealEngineStringReference_value,
-	UnrealEngineStringReference,
+	UnrealEngineStringReference, UnrealEngineStringReference_general_schema,
 	UnrealEngineStringReference_general_type,
 	UnrealEngineStringReference_inner_schema,
 	UnrealEngineStringReference_schema,
@@ -18,9 +19,9 @@ import {
 	auto_constructor_property_types_from_generated_types_properties,
 	create_literal_node_from_value,
 	create_modifier,
-	create_object_type,
+	create_object_type, create_object_type_from_entries,
 	createClass,
-	createClass__members__with_auto_constructor,
+	createClass__members__with_auto_constructor, possibly_create_lazy_union,
 } from '../TsFactoryWrapper';
 import {
 	TypeNodeGeneration,
@@ -29,17 +30,20 @@ import {
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 import ts, {Node, TypeLiteralNode, TypeReferenceNode} from 'typescript';
 import {
-	array_is_non_empty,
-	object_has_property,
+	array_is_non_empty, object_has_non_empty_array_property,
+	object_has_property, object_has_property_that_equals,
 	object_only_has_that_property,
 	value_is_array,
 	value_is_non_array_object,
 } from './CustomPairingTypes';
+import {
+	typed_array_string_parent_without_recursive_reference,
+} from './TypedArrayString';
 
 const already_configured = new WeakSet<Ajv>();
 
 const typed_object_string_property_regex = '^[A-Za-z][A-Za-z3]*$';
-const typed_object_string_const_value_regex = '^[A-Za-z][A-Za-z]*$';
+const typed_object_string_const_value_regex = '^[A-Za-z][A-Za-z_]*$';
 const typed_object_string_const_value_regex__native = new RegExp(
 	typed_object_string_const_value_regex
 );
@@ -85,6 +89,10 @@ type typed_object_string_type = {
 				type: 'string';
 				const: string;
 		  }
+	    | {
+			[key: string]: {type: 'string', enum: [string, ...string[]]}
+		}
+		| typed_array_string_parent_without_recursive_reference
 		| type_object_string_$ref_choices
 		| typed_object_string_$ref_only;
 };
@@ -108,6 +116,7 @@ type typed_object_string_combination_dictionary = {
 	[key: string]:
 		| type_object_string_$ref_choices
 		| {type: 'string'; const: string}
+		| {type: 'string', enum: [string, ...string[]]}
 		| typed_object_string_$ref_only
 		| typed_object_string_combination_dictionary;
 };
@@ -146,7 +155,7 @@ const typed_object_string_$ref_schema = {
 	},
 };
 
-export const typed_object_supported_const_string_schema = {
+const typed_object_supported_const_string_schema = {
 	type: 'object',
 	required: ['type', 'const'],
 	additionalProperties: false,
@@ -157,6 +166,23 @@ export const typed_object_supported_const_string_schema = {
 			pattern: typed_object_string_const_value_regex,
 		},
 	},
+};
+
+const typed_object_supported_enum_string_schema = {
+	type: 'object',
+	required: ['type', 'enum'],
+	additionalProperties: false,
+	patternProperties: {
+		type: {type: 'string', const: 'string'},
+		enum: {
+			type: 'array',
+			minItems: 1,
+			items: {
+				type: 'string',
+				pattern: typed_object_string_const_value_regex,
+			}
+		}
+	}
 };
 
 export const typed_object_string_schema = {
@@ -174,12 +200,37 @@ export const typed_object_string_schema = {
 							oneOf: [
 								typed_object_string_$ref_schema,
 								typed_object_supported_const_string_schema,
+								typed_object_supported_enum_string_schema,
 							],
 						},
 					},
 				},
 				UnrealEngineStringReference_inner_schema,
 				typed_object_supported_const_string_schema,
+				typed_object_supported_enum_string_schema,
+				{
+					type: 'object',
+					required: ['type', 'minLength', 'typed_array_string'],
+					additionalProperties: false,
+					properties: {
+						type: {type: 'string', const: 'string'},
+						minLength: {type: 'number', const: 1},
+						typed_array_string: {
+							type: 'object',
+							required: ['type', 'minItems', 'items'],
+							additionalProperties: false,
+							properties: {
+								type: {type: 'string', const: 'array'},
+								minItems: {type: 'number', minimum: 1},
+								items: {
+									oneOf: [
+										UnrealEngineStringReference_general_schema,
+									],
+								},
+							},
+						},
+					},
+				}
 			],
 		},
 	},
@@ -387,6 +438,11 @@ export class TypedObjectString {
 				);
 			}
 
+			if (this.is_supported_typed_array_string(value)) {
+				console.log(value);
+				throw new Error('foo');
+			}
+
 			if (object_is_UnrealEngineStringReference) {
 				value_regex = `(?:${
 					UnrealEngineStringReference.ajv_macro_generator(true)(
@@ -422,9 +478,7 @@ export class TypedObjectString {
 							return schema.definitions.None.const;
 						}
 
-						console.log(e);
-
-						throw new Error('foo');
+						throw new UnexpectedlyUnknownNoMatchError(e);
 					})
 					.join('|')})`;
 			} else if (
@@ -455,8 +509,6 @@ export class TypedObjectString {
 				value_regex = `(?:-${value_regex}|${value_regex})`;
 			}
 		} else if ('#/definitions/boolean' !== $ref) {
-			console.log(property, value);
-
 			throw new UnexpectedlyUnknownNoMatchError(
 				{property, value},
 				'Unsupported $ref_to_regex call'
@@ -493,19 +545,56 @@ export class TypedObjectString {
 		);
 	}
 
-	private static is_$ref_object_dictionary(maybe: {
-		[key: string]: any;
-	}): maybe is typed_object_string_$ref_only {
-		for (const sub_object of Object.values(maybe)) {
-			if (!this.is_$ref_object(sub_object)) {
-				return false;
-			}
-		}
-
-		return 0 !== Object.keys(maybe).length;
+	public static is_supported_enum_string_object(
+		maybe: any
+	): maybe is {[key: string]: {type: 'string', enum: [string, ...string[]]}} {
+		return (
+			'object' === typeof maybe &&
+			Object.keys(maybe).every(e => typed_object_string_const_value_regex__native.test(e)) &&
+			Object.values(maybe).every(this.is_supported_enum_string_sub_object)
+		);
 	}
 
-	private static is_combination_dictionary(
+	public static is_supported_enum_string_sub_object(
+		maybe: any
+	): maybe is {type: 'string', enum: [string, ...string[]]} {
+		return (
+			'object' === typeof maybe &&
+			2 === Object.keys(maybe).length &&
+			object_has_property(maybe, 'type') &&
+			'string' === maybe.type &&
+			object_has_non_empty_array_property(maybe, 'enum') &&
+			maybe.enum.every(e => typed_object_string_const_value_regex__native.test(e))
+		);
+	}
+
+	private static is_supported_typed_array_string(
+		maybe: any
+	): maybe is typed_array_string_parent_without_recursive_reference {
+		return (
+			'object' === typeof maybe &&
+			3 === Object.keys(maybe).length &&
+			object_has_property_that_equals(maybe, 'type', 'string') &&
+			object_has_property_that_equals(maybe, 'minLength', 1) &&
+			object_has_property(maybe, 'typed_array_string') &&
+			'object' === typeof maybe.typed_array_string &&
+			object_has_property_that_equals(maybe.typed_array_string, 'type', 'array') &&
+			'number' === typeof maybe.typed_array_string?.minItems &&
+			'object' === typeof maybe.typed_array_string?.items &&
+			object_has_property_that_equals(maybe.typed_array_string.items, 'type', 'string') &&
+			object_has_property_that_equals(maybe.typed_array_string.items, 'minLength', 1) &&
+			is_UnrealEngineStringReference_value(maybe.typed_array_string.items?.UnrealEngineStringReference)
+		);
+	}
+
+	public static is_$ref_object_dictionary(maybe: {
+		[key: string]: any;
+	}): maybe is typed_object_string_$ref_only {
+
+		return Object.values(maybe).every(e => this.is_$ref_object(e)) && 0 !== Object.keys(maybe).length;
+	}
+
+	public static is_combination_dictionary(
 		maybe: any,
 		current_depth = 0
 	): maybe is typed_object_string_combination_dictionary {
@@ -524,6 +613,9 @@ export class TypedObjectString {
 			(e) =>
 				!this.is_$ref_object(e) &&
 				!this.is_supported_const_string_object(e) &&
+				!this.is_supported_enum_string_object(e) &&
+				!this.is_supported_enum_string_sub_object(e) &&
+				!this.is_supported_typed_array_string(e) &&
 				!this.is_$ref_object_dictionary(e) &&
 				!this.is_combination_dictionary(e, current_depth + 1)
 		);
@@ -556,7 +648,11 @@ export class TypedObjectString {
 			object_has_property(maybe, 'type') &&
 			'string' === maybe.type &&
 			object_has_property(maybe, 'typed_object_string') &&
-			this.is_$ref_object_dictionary(maybe.typed_object_string) &&
+			(
+				this.is_$ref_object_dictionary(maybe.typed_object_string) ||
+				this.is_combination_dictionary(maybe.typed_object_string) ||
+				this.is_supported_enum_string_object(maybe.typed_object_string)
+			) &&
 			(2 === Object.keys(maybe).length ||
 				(3 === Object.keys(maybe).length &&
 					object_has_property(maybe, 'minLength') &&
@@ -604,15 +700,10 @@ export class TypedObjectString {
 			value_is_array(maybe.oneOf) &&
 			array_is_non_empty(maybe.oneOf) &&
 			maybe.oneOf.every((entry) => {
-				const supported =
+				return (
 					this.is_$ref_object(entry) ||
-					is_UnrealEngineStringReference_general_object(entry);
-
-				if (!supported) {
-					console.log(entry);
-				}
-
-				return supported;
+					is_UnrealEngineStringReference_general_object(entry)
+				);
 			})
 		);
 	}
@@ -627,6 +718,22 @@ export class TypedObjectString {
 					);
 				} else if (this.is_supported_const_string_object(entry[1])) {
 					return `(?:${entry[0]}=${entry[1].const})`;
+				} else if (this.is_supported_enum_string_object(entry[1])) {
+					return `(?:${entry[0]}=(?:${Object.entries(entry[1]).map(
+						(sub_entry) => {
+							const [property, value] = sub_entry;
+
+							return `(?:${property}=(?:${value.enum.join('|')}))`;
+						}
+					)}))`;
+				} else if (this.is_supported_enum_string_sub_object(entry[1])) {
+					return `(?:${entry[0]}=(?:${entry[1].enum.join('|')}))`;
+				} else if (this.is_supported_typed_array_string(entry[1])) {
+					const unreal_engine_regex = UnrealEngineStringReference.ajv_macro_generator(true)(
+						entry[1].typed_array_string.items.UnrealEngineStringReference
+					).pattern;
+
+					return `(?:${entry[0]}=\\(${unreal_engine_regex}(?:,${unreal_engine_regex})*\\))`;
 				}
 
 				if (
@@ -641,8 +748,8 @@ export class TypedObjectString {
 						).pattern
 					}`;
 				} else if ('UnrealEngineStringReference--inner' in entry[1]) {
-					console.error(entry[0], entry[1]);
-					throw new Error(
+					throw new UnexpectedlyUnknownNoMatchError(
+						entry,
 						'Not a UnrealEngineStringReference--inner'
 					);
 				}
@@ -697,6 +804,9 @@ export class TypedObjectString {
 								typed_object_string
 							)
 						);
+					} else if (!is_$ref_object_dictionary) {
+						console.error(data);
+						throw new Error('foo');
 					} else if (
 						!this.$ref_object_dictionary_is_auto_constructor_properties(
 							typed_object_string
@@ -868,6 +978,17 @@ export class TypedObjectString {
 							property,
 							create_literal_node_from_value(value.const),
 						];
+					} else if (this.is_supported_enum_string_object(value)) {
+						return [
+							property,
+							create_object_type_from_entries(Object.entries(value).map((entry) => {
+								const [property, value] = entry;
+
+								return [property, possibly_create_lazy_union(value.enum)];
+							})),
+						];
+					} else if (this.is_supported_enum_string_sub_object(value)) {
+						return [property, possibly_create_lazy_union(value.enum)];
 					}
 
 					return [
@@ -895,6 +1016,17 @@ export class TypedObjectString {
 							property,
 							create_literal_node_from_value(value.const),
 						];
+					} else if (this.is_supported_enum_string_object(value)) {
+						return [
+							property,
+							create_object_type_from_entries(Object.entries(value).map((entry) => {
+								const [property, value] = entry;
+
+								return [property, possibly_create_lazy_union(value.enum)];
+							})),
+						];
+					} else if (this.is_supported_enum_string_sub_object(value)) {
+						return [property, possibly_create_lazy_union(value.enum)];
 					} else if (this.is_$ref_object_dictionary(value)) {
 						return [
 							property,
@@ -918,6 +1050,8 @@ export class TypedObjectString {
 								value
 							),
 						];
+					} else if (this.is_supported_typed_array_string(value)) {
+						return [property, create_UnrealEngineStringReference_reference_type(value.typed_array_string.items.UnrealEngineStringReference)];
 					} else if (!this.is_$ref_object(value)) {
 						throw new UnexpectedlyUnknownNoMatchError(
 							{[property]: value},

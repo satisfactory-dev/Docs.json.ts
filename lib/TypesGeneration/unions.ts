@@ -15,7 +15,7 @@ import {
 } from './json_schema_types';
 import {
 	TypeNodeGeneration,
-	TypeNodeGenerationResult,
+	TypeNodeGenerationResult, UnexpectedlyUnknownNoMatchError,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 import {
 	create_UnrealEngineStringReference_reference_type,
@@ -226,9 +226,7 @@ export const generators = [
 									)
 							);
 						} else if ('array_string' in entry) {
-							console.error(entry.array_string);
-
-							throw new Error('Unsupported array_string found');
+							throw new UnexpectedlyUnknownNoMatchError(entry.array_string, 'Unsupported array_string found');
 						} else if ('string_starts_with' in entry) {
 							return ts.factory.createTypeReferenceNode(
 								'string_starts_with',

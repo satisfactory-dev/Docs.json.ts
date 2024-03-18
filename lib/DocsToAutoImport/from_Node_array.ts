@@ -19,6 +19,7 @@ import {ArrayTypeNodes} from './ArrayTypeNodes';
 import {MethodDeclarations} from './MethodDeclarations';
 import {PropertyDeclarations} from './PropertyDeclarations';
 import {FunctionDeclarations} from './FunctionDeclaration';
+import {UnexpectedlyUnknownNoMatchError} from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 
 const recursion_limit = 10;
 
@@ -228,9 +229,7 @@ export function EntityName_array_from_Node_array(nodes: Node[]): EntityName[] {
 	}
 
 	if (others.length) {
-		console.error(others);
-
-		throw new Error('Unsupported types found!');
+		throw new UnexpectedlyUnknownNoMatchError(others, 'Unsupported types found!');
 	}
 
 	return [
