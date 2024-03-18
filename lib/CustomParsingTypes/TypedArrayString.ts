@@ -10,7 +10,7 @@ import {
 } from './UnrealEngineStringReference';
 import {
 	typed_object_string_general_schema,
-	typed_object_string_general_type,
+	typed_object_string_general_type, typed_object_supported_const_string_schema,
 	TypedObjectString,
 } from './TypedObjectString';
 import {
@@ -29,7 +29,6 @@ import {
 	TypesGenerationFromSchema,
 } from '../TypesGeneration';
 import ts, {TupleTypeNode, TypeAliasDeclaration} from 'typescript';
-import {object_has_property} from './CustomPairingTypes';
 
 const already_configured = new WeakSet<Ajv>();
 
@@ -40,10 +39,12 @@ const typed_array_string_schema = {
 	properties: {
 		type: {type: 'string', const: 'array'},
 		minItems: {type: 'number', minimum: 1},
+		maxItems: {type: 'number', minimum: 1},
 		items: {
 			oneOf: [
 				typed_object_string_general_schema,
 				UnrealEngineStringReference_general_schema,
+				typed_object_supported_const_string_schema,
 			],
 		},
 	},
@@ -56,6 +57,7 @@ const typed_array_string_schema_without_recursive_reference = {
 	properties: {
 		type: {type: 'string', const: 'array'},
 		minItems: {type: 'number', minimum: 1},
+		maxItems: {type: 'number', minimum: 1},
 		items: {
 			oneOf: [UnrealEngineStringReference_general_schema],
 		},
@@ -93,7 +95,7 @@ declare type typed_array_string = {
 	type: 'array';
 	minItems: number;
 	items: typed_array_string_supported_items;
-};
+} & ({maxItems: number} | {});
 
 declare type typed_array_string_without_recursive_reference = {
 	type: 'array';
@@ -102,7 +104,7 @@ declare type typed_array_string_without_recursive_reference = {
 		typed_array_string_supported_items,
 		typed_object_string_general_type
 	>;
-};
+} & ({maxItems: number} | {});
 
 declare type typed_array_string_parent = {
 	type: 'string';
@@ -165,8 +167,11 @@ export class TypedArrayString {
 	static ajv_macro_generator(inner: boolean) {
 		return (schema: typed_array_string) => {
 			const item_regex = `(?:${this.item_to_regex(schema.items)})`;
+			const max_items = 'maxItems' in schema ? schema.maxItems : undefined;
 
-			const regex = `(?:\\(${item_regex}(?:,${item_regex})*\\))`;
+			const additional_items = schema.minItems === max_items && 1 === schema.minItems ? '' : `(?:,${item_regex})${max_items && max_items > 1 ? `{${max_items - 1},}` : ((schema.minItems === max_items && max_items > 1) ? `{${max_items - 1}` : '*')}`;
+
+			const regex = `(?:\\(${item_regex}${additional_items}\\))`;
 
 			return {
 				pattern: inner ? regex : `^${regex}$`,
@@ -181,6 +186,8 @@ export class TypedArrayString {
 			return UnrealEngineStringReference.ajv_macro_generator(true)(
 				item.UnrealEngineStringReference
 			).pattern;
+		} else if (TypedObjectString.is_supported_const_string_object(item)) {
+			return `(?:(${item.const}|"${item.const}"))`;
 		}
 		if (
 			!TypedObjectString.value_is_typed_object_string_general_type(item)
@@ -239,7 +246,8 @@ export class TypedArrayString {
 				return TypedObjectString.general_type_to_object_type(
 					data.items
 				);
-			}
+			},
+			'maxItems' in data ? data.maxItems : undefined
 		);
 	}
 

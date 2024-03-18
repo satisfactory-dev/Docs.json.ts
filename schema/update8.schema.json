@@ -1159,7 +1159,7 @@
 				"mProducedIn": {
 					"type": "string",
 					"minLength": 1,
-					"array_string": {
+					"typed_array_string": {
 						"type": "array",
 						"minItems": 1,
 						"maxItems": 1,
@@ -1298,7 +1298,7 @@
 				"mProducedIn": {
 					"type": "string",
 					"minLength": 1,
-					"array_string": {
+					"typed_array_string": {
 						"type": "array",
 						"minItems": 1,
 						"items": {
@@ -1394,7 +1394,7 @@
 				"mProducedIn": {
 					"type": "string",
 					"minLength": 1,
-					"array_string": {
+					"typed_array_string": {
 						"type": "array",
 						"minItems": 1,
 						"maxItems": 1,
@@ -1447,7 +1447,7 @@
 				"mProducedIn": {
 					"type": "string",
 					"minLength": 1,
-					"array_string": {
+					"typed_array_string": {
 						"type": "array",
 						"minItems": 1,
 						"maxItems": 1,
@@ -1481,7 +1481,7 @@
 				"mProducedIn": {
 					"type": "string",
 					"minLength": 1,
-					"array_string": {
+					"typed_array_string": {
 						"type": "array",
 						"minItems": 1,
 						"maxItems": 1,
@@ -1544,7 +1544,7 @@
 				"mProducedIn": {
 					"type": "string",
 					"minLength": 1,
-					"array_string": {
+					"typed_array_string": {
 						"type": "array",
 						"minItems": 1,
 						"maxItems": 1,
@@ -1583,7 +1583,7 @@
 				"mProducedIn": {
 					"type": "string",
 					"minLength": 1,
-					"array_string": {
+					"typed_array_string": {
 						"type": "array",
 						"minItems": 1,
 						"maxItems": 1,
@@ -1667,7 +1667,7 @@
 				"mProducedIn": {
 					"type": "string",
 					"minLength": 1,
-					"array_string": {
+					"typed_array_string": {
 						"type": "array",
 						"minItems": 1,
 						"maxItems": 1,
@@ -4494,11 +4494,6 @@
 				}
 			}
 		},
-		"FGBuildable--mAllowedResources--default-UnrealEngineString": {
-			"type": "string",
-			"minLength": 1,
-			"UnrealEngineStringReference": true
-		},
 		"FGBuildable--extractor-base--shared": {
 			"type": "object",
 			"$ref": "#/definitions/FGBuildable--consumes-power-base",
@@ -4539,11 +4534,13 @@
 						{
 							"type": "string",
 							"minLength": 1,
-							"array_string": {
+							"typed_array_string": {
 								"type": "array",
 								"minItems": 1,
 								"items": {
-									"$ref": "#/definitions/FGBuildable--mAllowedResources--default-UnrealEngineString"
+									"type": "string",
+									"minLength": 1,
+									"UnrealEngineStringReference": true
 								}
 							}
 						}
@@ -4618,7 +4615,7 @@
 				"mAllowedResourceForms": {
 					"type": "string",
 					"minLength": 1,
-					"array_string": {
+					"typed_array_string": {
 						"type": "array",
 						"minItems": 1,
 						"items": {
@@ -4712,7 +4709,7 @@
 				"mAllowedResourceForms": {
 					"type": "string",
 					"minLength": 1,
-					"array_string": {
+					"typed_array_string": {
 						"type": "array",
 						"minItems": 1,
 						"items": {
@@ -4789,7 +4786,7 @@
 				"mAllowedResourceForms": {
 					"type": "string",
 					"minLength": 1,
-					"array_string": {
+					"typed_array_string": {
 						"type": "array",
 						"minItems": 1,
 						"items": {
@@ -5105,7 +5102,7 @@
 			"properties": {
 				"mAllowedResourceForms": {
 					"type": "string",
-					"array_string": {
+					"typed_array_string": {
 						"type": "array",
 						"minItems": 1,
 						"items": {

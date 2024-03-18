@@ -3,7 +3,7 @@ import {
 	create_UnrealEngineStringReference_reference_type,
 	is_UnrealEngineStringReference_general_object,
 	is_UnrealEngineStringReference_value,
-	UnrealEngineStringReference,
+	UnrealEngineStringReference, UnrealEngineStringReference_general_regex,
 	UnrealEngineStringReference_general_schema,
 	UnrealEngineStringReference_general_type,
 	UnrealEngineStringReference_inner_schema,
@@ -46,7 +46,7 @@ import {typed_array_string_parent_without_recursive_reference} from './TypedArra
 const already_configured = new WeakSet<Ajv>();
 
 const typed_object_string_property_regex = '^[A-Za-z][A-Za-z3]*$';
-const typed_object_string_const_value_regex = '^[A-Za-z][A-Za-z_]*$';
+const typed_object_string_const_value_regex = `^([A-Za-z][A-Za-z_]*|${UnrealEngineStringReference_general_regex})$`;
 const typed_object_string_const_value_regex__native = new RegExp(
 	typed_object_string_const_value_regex
 );
@@ -158,7 +158,7 @@ const typed_object_string_$ref_schema = {
 	},
 };
 
-const typed_object_supported_const_string_schema = {
+export const typed_object_supported_const_string_schema = {
 	type: 'object',
 	required: ['type', 'const'],
 	additionalProperties: false,
@@ -535,7 +535,7 @@ export class TypedObjectString {
 		);
 	}
 
-	private static is_supported_const_string_object(
+	public static is_supported_const_string_object(
 		maybe: any
 	): maybe is {type: 'string'; const: string} {
 		return (
