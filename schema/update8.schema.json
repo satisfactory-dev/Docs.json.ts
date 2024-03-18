@@ -2832,12 +2832,14 @@
 				"mCustomSkins": {
 					"type": "string",
 					"minLength": 1,
-					"array_string": {
+					"typed_array_string": {
 						"type": "array",
 						"minItems": 1,
 						"items": {
 							"type": "string",
-							"pattern": "^/Game/FactoryGame/Buildable/-Shared/Customization/Skins/(.+).\\1_C$"
+							"enum": [
+								"/Game/FactoryGame/Buildable/-Shared/Customization/Skins/SkinDesc_Test1.SkinDesc_Test1_C"
+							]
 						}
 					}
 				}
@@ -3007,12 +3009,19 @@
 				"mMeshes": {
 					"type": "string",
 					"minLength": 1,
-					"array_string": {
+					"typed_array_string": {
 						"type": "array",
 						"minItems": 6,
 						"items": {
 							"type": "string",
-							"string_starts_with": "/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/"
+							"enum": [
+								"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1",
+								"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2",
+								"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3",
+								"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4",
+								"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5",
+								"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6"
+							]
 						}
 					}
 				},
@@ -3728,12 +3737,18 @@
 				"ArmEquipmentsToSkipAnim": {
 					"type": "string",
 					"minLength": 1,
-					"array_string": {
+					"typed_array_string": {
 						"type": "array",
 						"minItems": 1,
 						"items": {
 							"type": "string",
-							"pattern": "^AE_[A-Z][A-Za-z2]+$"
+							"enum": [
+								"AE_ChainSaw",
+								"AE_PortableMiner",
+								"AE_Generic2Hand",
+								"AE_Nobelisk",
+								"AE_Rifle"
+							]
 						}
 					}
 				},
@@ -4058,12 +4073,22 @@
 				"mDefaultFuelClasses": {
 					"type": "string",
 					"minLength": 1,
-					"array_string": {
+					"typed_array_string": {
 						"type": "array",
 						"minItems": 1,
 						"items": {
 							"type": "string",
-							"pattern": "^(/Game/FactoryGame/Resource/(RawResources|Parts)/.+|/Script/FactoryGame.FGItemDescriptor[A-Z][A-Za-z]+)$"
+							"enum": [
+								"/Game/FactoryGame/Resource/RawResources/Coal/Desc_Coal.Desc_Coal_C",
+								"/Game/FactoryGame/Resource/Parts/CompactedCoal/Desc_CompactedCoal.Desc_CompactedCoal_C",
+								"/Game/FactoryGame/Resource/Parts/PetroleumCoke/Desc_PetroleumCoke.Desc_PetroleumCoke_C",
+								"/Game/FactoryGame/Resource/Parts/Fuel/Desc_LiquidFuel.Desc_LiquidFuel_C",
+								"/Game/FactoryGame/Resource/Parts/Turbofuel/Desc_LiquidTurboFuel.Desc_LiquidTurboFuel_C",
+								"/Game/FactoryGame/Resource/Parts/BioFuel/Desc_LiquidBiofuel.Desc_LiquidBiofuel_C",
+								"/Script/FactoryGame.FGItemDescriptorBiomass",
+								"/Game/FactoryGame/Resource/Parts/NuclearFuelRod/Desc_NuclearFuelRod.Desc_NuclearFuelRod_C",
+								"/Game/FactoryGame/Resource/Parts/PlutoniumFuelRods/Desc_PlutoniumFuelRod.Desc_PlutoniumFuelRod_C"
+							]
 						}
 					}
 				},
@@ -4115,12 +4140,17 @@
 				"m_SFXSockets": {
 					"type": "string",
 					"minLength": 1,
-					"array_string": {
+					"typed_array_string": {
 						"type": "array",
 						"minItems": 1,
 						"items": {
 							"type": "string",
-							"pattern": "^(AudioSocket_)?[A-Z][A-Za-z]+$"
+							"enum": [
+								"AudioSocketTurbine",
+								"CoalGeneratorPotential",
+								"AudioSocket_Exhaust",
+								"AudioSocket_Root"
+							]
 						}
 					}
 				},
@@ -4973,12 +5003,15 @@
 				"m_NotifyNameREferences": {
 					"type": "string",
 					"minLength": 1,
-					"array_string": {
+					"typed_array_string": {
 						"type": "array",
 						"minItems": 2,
 						"items": {
 							"type": "string",
-							"string_starts_with": "Arm_"
+							"enum": [
+								"Arm_04_ClawBase",
+								"Arm_02_SFXSocket"
+							]
 						}
 					}
 				},
