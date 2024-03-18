@@ -596,7 +596,7 @@
 				"mSubCategories": {
 					"type": "string",
 					"minLength": 1,
-					"array_string": {
+					"typed_array_string": {
 						"type": "array",
 						"minItems": 1,
 						"items": {
@@ -1813,7 +1813,7 @@
 				"mTapeUnlocks": {
 					"type": "string",
 					"minLength": 1,
-					"array_string": {
+					"typed_array_string": {
 						"type": "array",
 						"minItems": 1,
 						"items": {
@@ -1841,7 +1841,7 @@
 				"mRecipes": {
 					"type": "string",
 					"minLength": 1,
-					"array_string": {
+					"typed_array_string": {
 						"type": "array",
 						"minItems": 1,
 						"items": {
@@ -1875,7 +1875,7 @@
 						{
 							"type": "string",
 							"minLength": 1,
-							"array_string": {
+							"typed_array_string": {
 								"type": "array",
 								"minItems": 1,
 								"items": {
@@ -1929,7 +1929,7 @@
 				"mEmotes": {
 					"type": "string",
 					"minLength": 1,
-					"array_string": {
+					"typed_array_string": {
 						"type": "array",
 						"minItems": 1,
 						"items": {
@@ -2473,7 +2473,7 @@
 						{
 							"type": "string",
 							"minLength": 1,
-							"array_string": {
+							"typed_array_string": {
 								"type": "array",
 								"minItems": 1,
 								"items": {
@@ -2627,7 +2627,7 @@
 				"mConnections": {
 					"type": "string",
 					"minLength": 1,
-					"array_string": {
+					"typed_array_string": {
 						"type": "array",
 						"minItems": 1,
 						"items": {
@@ -2957,7 +2957,7 @@
 				"Meshes": {
 					"type": "string",
 					"minLength": 1,
-					"array_string": {
+					"typed_array_string": {
 						"type": "array",
 						"minItems": 1,
 						"items": {
@@ -3389,7 +3389,7 @@
 				"mFuelTypes": {
 					"type": "string",
 					"minLength": 1,
-					"array_string": {
+					"typed_array_string": {
 						"type": "array",
 						"minItems": 1,
 						"items": {
@@ -4630,7 +4630,7 @@
 				"mAllowedResources": {
 					"type": "string",
 					"minLength": 1,
-					"array_string": {
+					"typed_array_string": {
 						"type": "array",
 						"minItems": 1,
 						"items": {
@@ -4724,7 +4724,7 @@
 				"mAllowedResources": {
 					"type": "string",
 					"minLength": 1,
-					"array_string": {
+					"typed_array_string": {
 						"type": "array",
 						"minItems": 1,
 						"items": {
@@ -5326,7 +5326,7 @@
 				"mPlatformConnections": {
 					"type": "string",
 					"minLength": 1,
-					"array_string": {
+					"typed_array_string": {
 						"type": "array",
 						"minItems": 1,
 						"items": {
@@ -6113,7 +6113,7 @@
 		"mDamageTypes": {
 			"type": "string",
 			"minLength": 1,
-			"array_string": {
+			"typed_array_string": {
 				"type": "array",
 				"minItems": 1,
 				"items": {
@@ -6260,7 +6260,7 @@
 				"mMagazineMeshMaterials1p": {
 					"type": "string",
 					"minLength": 1,
-					"array_string": {
+					"typed_array_string": {
 						"type": "array",
 						"minItems": 1,
 						"items": {
@@ -6298,7 +6298,7 @@
 						{
 							"type": "string",
 							"minLength": 1,
-							"array_string": {
+							"typed_array_string": {
 								"type": "array",
 								"minItems": 1,
 								"items": {
@@ -6569,7 +6569,7 @@
 				"mAllowedAmmoClasses": {
 					"type": "string",
 					"minLength": 1,
-					"array_string": {
+					"typed_array_string": {
 						"type": "array",
 						"minItems": 1,
 						"items": {
@@ -6832,7 +6832,7 @@
 				"mScannableDescriptors": {
 					"type": "string",
 					"minLength": 1,
-					"array_string": {
+					"typed_array_string": {
 						"type": "array",
 						"minItems": 1,
 						"items": {

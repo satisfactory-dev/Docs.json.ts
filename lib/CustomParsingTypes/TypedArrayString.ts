@@ -201,13 +201,14 @@ export class TypedArrayString {
 		reference_name: string
 	): TypeAliasDeclaration {
 		if (
+			!is_UnrealEngineStringReference_general_object(data.items) &&
 			!TypedObjectString.value_is_typed_object_string_general_type(
 				data.items
 			)
 		) {
 			throw new UnexpectedlyUnknownNoMatchError(
 				data.items,
-				'Currently unsupported in TypedArrayString.item_to_regex'
+				'Currently unsupported in TypedArrayString.typed_array_string_type_alias_generator'
 			);
 		}
 
@@ -276,14 +277,8 @@ export class TypedArrayString {
 	): TypeNodeGenerationResult {
 		const {items} = data;
 
-		if (is_UnrealEngineStringReference_general_object(items)) {
-			return new TypeNodeGenerationResult(() =>
-				create_UnrealEngineStringReference_reference_type(
-					items.UnrealEngineStringReference
-				)
-			);
-		}
 		if (
+			!is_UnrealEngineStringReference_general_object(data.items) &&
 			!TypedObjectString.value_is_typed_object_string_general_type(
 				data.items
 			)
