@@ -2094,22 +2094,22 @@
 				"mScannableObjects": {
 					"type": "string",
 					"minLength": 1,
-					"array_string": {
+					"typed_array_string": {
 						"type": "array",
 						"minItems": 1,
 						"items": {
-							"type": "object",
-							"required": [
-								"ItemDescriptor",
-								"ActorsAllowedToScan"
-							],
-							"properties": {
+							"type": "string",
+							"minLength": 1,
+							"typed_object_string": {
 								"ItemDescriptor": {
 									"type": "string",
 									"minLength": 1,
 									"UnrealEngineStringReference": true
 								},
 								"ActorsAllowedToScan": {
+									"type": "string",
+									"minLength": 1,
+									"typed_array_string": {
 									"type": "array",
 									"minItems": 1,
 									"items": {
@@ -2118,6 +2118,7 @@
 										"UnrealEngineStringReference": {
 											"left": "/Script/CoreUObject.Class"
 										}
+									}
 									}
 								}
 							}
@@ -3544,13 +3545,13 @@
 				"mSuit1PMeshMaterials": {
 					"type": "string",
 					"minLength": 1,
-					"array_string": {
+					"typed_array_string": {
 						"type": "array",
 						"minItems": 1,
 						"items": {
-							"type": "object",
-							"required": ["SlotName", "Material"],
-							"properties": {
+							"type": "string",
+							"minLength": 1,
+							"typed_object_string": {
 								"SlotName": {
 									"type": "string",
 									"enum": [
@@ -6425,18 +6426,13 @@
 				"mMagazineMeshMaterials": {
 					"type": "string",
 					"minLength": 1,
-					"array_string": {
+					"typed_array_string": {
 						"type": "array",
 						"minItems": 1,
 						"items": {
-							"type": "object",
-							"required": [
-								"MaterialInterface",
-								"MaterialSlotName",
-								"ImportedMaterialSlotName",
-								"UVChannelData"
-							],
-							"properties": {
+							"type": "string",
+							"minLength": 1,
+							"typed_object_string": {
 								"MaterialInterface": {
 									"type": "string",
 									"minLength": 1,
@@ -6454,19 +6450,35 @@
 									"$ref": "#/definitions/MaterialSlotName"
 								},
 								"UVChannelData": {
-									"type": "object",
-									"required": [
-										"bInitialized",
-										"LocalUVDensities[0]"
-									],
-									"properties": {
-										"bInitialized": {
-											"$ref": "#/definitions/boolean"
+									"oneOf": [
+										{
+											"type": "string",
+											"minLength": 1,
+											"typed_object_string": {
+												"bInitialized": {
+													"$ref": "#/definitions/boolean"
+												},
+												"LocalUVDensities[0]": {
+													"$ref": "#/definitions/decimal-string"
+												}
+											}
 										},
-										"LocalUVDensities[0]": {
-											"$ref": "#/definitions/decimal-string"
+										{
+											"type": "string",
+											"minLength": 1,
+											"typed_object_string": {
+												"bInitialized": {
+													"$ref": "#/definitions/boolean"
+												},
+												"LocalUVDensities[0]": {
+													"$ref": "#/definitions/decimal-string"
+												},
+												"LocalUVDensities[1]": {
+													"$ref": "#/definitions/decimal-string"
+												}
+											}
 										}
-									}
+									]
 								}
 							}
 						}
@@ -6636,13 +6648,13 @@
 						{
 							"type": "string",
 							"minLength": 1,
-							"array_string": {
+							"typed_array_string": {
 								"type": "array",
 								"minItems": 1,
 								"items": {
-									"type": "object",
-									"required": ["ActorClass"],
-									"properties": {
+									"type": "string",
+									"minLength": 1,
+									"typed_object_string": {
 										"ActorClass": {
 											"type": "string",
 											"minLength": 1,

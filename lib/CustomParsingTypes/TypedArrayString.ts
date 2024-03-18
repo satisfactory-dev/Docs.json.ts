@@ -206,19 +206,31 @@ export class TypedArrayString {
 			return typed_string_const.value_regex(item);
 		} else if (typed_string_enum.is_supported_schema(item)) {
 			return typed_string_enum.value_regex(item);
-		}
-		if (
-			!TypedObjectString.value_is_typed_object_string_general_type(item)
+		} else if (TypedObjectString.value_is_typed_object_string_general_type(item.typed_object_string)) {
+			return TypedObjectString.ajv_macro_generator(true)(
+				item.typed_object_string
+			).pattern;
+		} else if (
+			TypedObjectString.value_is_typed_object_string_general_type(item) &&
+			TypedObjectString.is_$ref_object_dictionary(item.typed_object_string)
 		) {
+			return TypedObjectString.ajv_macro_generator(true)(
+				item.typed_object_string
+			).pattern;
+		} else if (
+			TypedObjectString.value_is_typed_object_string_general_type(item)
+		) {
+			return TypedObjectString.ajv_macro_generator(true)(
+				item.typed_object_string
+			).pattern;
+		}
+
+		console.log(TypedObjectString.object_is_typed_object_string_oneOf((item as any).typed_object_string));
+
 			throw new UnexpectedlyUnknownNoMatchError(
 				item,
 				'Currently unsupported in TypedArrayString.item_to_regex'
 			);
-		}
-
-		return TypedObjectString.ajv_macro_generator(true)(
-			item.typed_object_string
-		).pattern;
 	}
 
 	private static typed_array_string_type_alias_generator(

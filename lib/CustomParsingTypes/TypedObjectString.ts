@@ -34,6 +34,7 @@ import {
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 import ts, {Node, TypeLiteralNode, TypeReferenceNode} from 'typescript';
 import {
+	annoyingly_have_to_escape_property,
 	array_is_non_empty,
 	object_has_property,
 	object_has_property_that_equals,
@@ -52,7 +53,7 @@ import {writeFile} from 'node:fs/promises';
 
 const already_configured = new WeakSet<Ajv>();
 
-const typed_object_string_property_regex = '^[A-Za-z][A-Za-z0-9_]*$';
+const typed_object_string_property_regex = '^[A-Za-z][A-Za-z0-9_\\[\\]]*$';
 const typed_object_string_const_value_regex = `^([A-Za-z][A-Za-z0-9_]*|${UnrealEngineStringReference_general_regex})$`;
 const typed_object_string_const_value_regex__native = new RegExp(
 	typed_object_string_const_value_regex
@@ -80,6 +81,7 @@ const type_object_string_$ref_supported = {
 	'#/definitions/Texture2D--basic': true,
 	'#/definitions/None': true,
 	'#/definitions/ItemClass--prop': true,
+	'#/definitions/MaterialSlotName': true,
 };
 const type_object_string_$ref_supported_array = Object.keys(
 	type_object_string_$ref_supported
@@ -161,6 +163,7 @@ const typed_object_string_$ref_schema = {
 				'#/definitions/Texture2D--basic',
 				'#/definitions/None',
 				'#/definitions/ItemClass--prop',
+				'#/definitions/MaterialSlotName',
 			],
 		},
 	},
@@ -226,6 +229,57 @@ export const typed_object_string_schema = {
 						},
 					},
 				},
+				{
+					type: 'object',
+					required: ['type', 'minLength', 'typed_object_string'],
+					additionalProperties: false,
+					properties: {
+						type: {type: 'string', const: 'string'},
+						minLength: {type: 'number', const: 1},
+						typed_object_string: {
+							type: 'object',
+							additionalProperties: false,
+							patternProperties: {
+								[typed_object_string_property_regex]: {
+									oneOf: [
+										typed_object_string_$ref_schema,
+									]
+								}
+							}
+						}
+					}
+				},
+				{
+					type: 'object',
+					required: ['oneOf'],
+					additionalProperties: false,
+					properties: {
+						oneOf: {
+							type: 'array',
+							minItems: 1,
+							items: {
+								type: 'object',
+								required: ['type', 'minLength', 'typed_object_string'],
+								additionalProperties: false,
+								properties: {
+									type: {type: 'string', const: 'string'},
+									minLength: {type: 'number', const: 1},
+									typed_object_string: {
+										type: 'object',
+										additionalProperties: false,
+										patternProperties: {
+											[typed_object_string_property_regex]: {
+												oneOf: [
+													typed_object_string_$ref_schema,
+												],
+											},
+										},
+									},
+								},
+							},
+						},
+					},
+				},
 			],
 		},
 	},
@@ -241,6 +295,7 @@ export const typed_object_string_general_schema = {
 		typed_object_string: typed_object_string_schema,
 	},
 };
+
 export const typed_object_string_nested_schema = {
 	type: 'object',
 	required: ['type', 'typed_object_string'],
@@ -296,6 +351,7 @@ const supported_type_node_generations = {
 				'#/definitions/Texture2D--basic',
 				'#/definitions/None',
 				'#/definitions/ItemClass--prop',
+				'#/definitions/MaterialSlotName',
 			],
 		},
 	},
@@ -307,6 +363,7 @@ type supported_type_node_generations = {
 		| '#/definitions/Texture2D'
 		| '#/definitions/Texture2D--basic'
 		| '#/definitions/ItemClass--prop'
+		| '#/definitions/MaterialSlotName'
 		| '#/definitions/None'
 		| '#/definitions/transformation'
 		| '#/definitions/color'
@@ -320,7 +377,7 @@ await writeFile(
 	'typed-object.schema.json',
 	JSON.stringify(
 		{
-			...typed_object_string_schema,
+			...typed_object_string_general_schema,
 			...{
 				definitions: UnrealEngineStringReference_schema_definitions,
 			},
@@ -419,20 +476,26 @@ export class TypedObjectString {
 							| 'Texture2D--basic'
 							| 'None'
 							| 'ItemClass--prop'
+							| 'MaterialSlotName'
 						)
 				];
 
 			const is_typed_object_array =
 				this.object_is_typed_object_string_oneOf(definition);
 			const is_generally_supported_oneOf_array =
-				this.object_is_generally_supported_oneOf_array(definition);
+				this.object_is_generally_supported_oneOf_array(
+					definition,
+					this.entry_is_supported_oneOf_item
+				);
 			const object_has_typed_object_string =
 				object_has_property(definition, 'typed_object_string') &&
 				this.is_$ref_object_dictionary(definition.typed_object_string);
 			const object_is_UnrealEngineStringReference =
 				is_UnrealEngineStringReference_general_object(definition);
+			const is_enum = typed_string_enum.is_supported_schema(definition);
 
 			if (
+				!is_enum &&
 				!object_is_UnrealEngineStringReference &&
 				!is_typed_object_array &&
 				!is_generally_supported_oneOf_array &&
@@ -444,17 +507,14 @@ export class TypedObjectString {
 				);
 			}
 
-			if (this.is_supported_typed_array_string(value)) {
-				console.log(value);
-				throw new Error('foo');
-			}
-
 			if (object_is_UnrealEngineStringReference) {
 				value_regex = `(?:${
 					UnrealEngineStringReference.ajv_macro_generator(true)(
 						definition.UnrealEngineStringReference
 					).pattern
 				})`;
+			} else if (is_enum) {
+				value_regex = `(?:${typed_string_enum.value_regex(definition)})`;
 			} else if (is_typed_object_array) {
 				value_regex = `(?:${definition.oneOf
 					.map((e) => e.typed_object_string)
@@ -476,6 +536,8 @@ export class TypedObjectString {
 							return UnrealEngineStringReference.ajv_macro_generator(
 								true
 							)(e.UnrealEngineStringReference).pattern;
+						} else if (!('$ref' in e)) {
+							throw new UnexpectedlyUnknownNoMatchError(e, 'missing $ref!');
 						} else if (
 							e.$ref === '#/definitions/Texture2D--basic'
 						) {
@@ -526,7 +588,7 @@ export class TypedObjectString {
 			);
 		}
 
-		return `(?:${property}=${value_regex})`;
+		return `(?:${annoyingly_have_to_escape_property(property)}=${value_regex})`;
 	}
 
 	private static keys_are_$ref_only(keys: string[]): keys is ['$ref'] {
@@ -551,7 +613,7 @@ export class TypedObjectString {
 			Object.keys(maybe).every((e) =>
 				typed_object_string_const_value_regex__native.test(e)
 			) &&
-			Object.values(maybe).every(typed_string_enum.is_supported_schema)
+			Object.values(maybe).every(e => typed_string_enum.is_supported_schema(e))
 		);
 	}
 
@@ -621,6 +683,8 @@ export class TypedObjectString {
 				!this.is_supported_typed_array_string(e) &&
 				!this.is_$ref_object_dictionary(e) &&
 				!is_UnrealEngineStringReference_general_object(e) &&
+				!this.value_is_typed_object_string_general_type(e) &&
+				!TypedObjectString.object_is_typed_object_string_oneOf(maybe) &&
 				!this.is_combination_dictionary(e, current_depth + 1)
 		);
 
@@ -652,12 +716,12 @@ export class TypedObjectString {
 			object_has_property(maybe, 'type') &&
 			'string' === maybe.type &&
 			object_has_property(maybe, 'typed_object_string') &&
-			(this.is_$ref_object_dictionary(maybe.typed_object_string) ||
-				this.is_combination_dictionary(maybe.typed_object_string) ||
+			(TypedObjectString.is_$ref_object_dictionary(maybe.typed_object_string) ||
+				TypedObjectString.is_combination_dictionary(maybe.typed_object_string) ||
 				typed_string_enum.is_supported_schema(
 					maybe.typed_object_string
 				) ||
-				this.is_supported_enum_string_object(
+				TypedObjectString.is_supported_enum_string_object(
 					maybe.typed_object_string
 				)) &&
 			(2 === Object.keys(maybe).length ||
@@ -670,10 +734,10 @@ export class TypedObjectString {
 	private static array_is_typed_object_string_general_type_array(
 		maybe: any[]
 	): maybe is typed_object_string_general_type[] {
-		return maybe.every(this.value_is_typed_object_string_general_type);
+		return maybe.every(e => this.value_is_typed_object_string_general_type(e));
 	}
 
-	private static object_is_typed_object_string_oneOf(
+	public static object_is_typed_object_string_oneOf(
 		maybe: object
 	): maybe is {
 		oneOf: typed_object_string_array_type;
@@ -688,31 +752,42 @@ export class TypedObjectString {
 		);
 	}
 
-	private static object_is_generally_supported_oneOf_array(
-		maybe: object
+	private static object_is_generally_supported_oneOf_array<T extends (
+		| typed_object_string_general_type
+		| type_object_string_$ref_choices
+		| UnrealEngineStringReference_general_type
+	) = (
+		| typed_object_string_general_type
+		| type_object_string_$ref_choices
+		| UnrealEngineStringReference_general_type
+		)
+	>(
+		maybe: object,
+		predicate: (inner_maybe:any) => inner_maybe is T
 	): maybe is {
 		oneOf: [
-			(
-				| type_object_string_$ref_choices
-				| UnrealEngineStringReference_general_type
-			),
-			...(
-				| type_object_string_$ref_choices
-				| UnrealEngineStringReference_general_type
-			)[],
+			T,
+			...T[],
 		];
 	} {
 		return (
 			object_only_has_that_property(maybe, 'oneOf') &&
 			value_is_array(maybe.oneOf) &&
 			array_is_non_empty(maybe.oneOf) &&
-			maybe.oneOf.every((entry) => {
+			maybe.oneOf.every(e => predicate(e))
+		);
+	}
+
+	private static entry_is_supported_oneOf_item(entry:any) : entry is (
+		| typed_object_string_general_type
+		| type_object_string_$ref_choices
+		| UnrealEngineStringReference_general_type
+	) {
 				return (
-					this.is_$ref_object(entry) ||
+					TypedObjectString.value_is_typed_object_string_general_type(entry) ||
+					TypedObjectString.is_$ref_object(entry) ||
 					is_UnrealEngineStringReference_general_object(entry)
 				);
-			})
-		);
 	}
 
 	private static property_to_regex(data: typed_object_string_type): string {
@@ -729,11 +804,11 @@ export class TypedObjectString {
 						entry[1]
 					);
 				} else if (this.is_supported_enum_string_object(entry[1])) {
-					return `(?:${entry[0]}=(?:${Object.entries(entry[1]).map(
+					return `(?:${annoyingly_have_to_escape_property(entry[0])}=(?:${Object.entries(entry[1]).map(
 						(sub_entry) => {
 							const [property, value] = sub_entry;
 
-							return `(?:${property}=(?:${value.enum.join('|')}))`;
+							return `(?:${annoyingly_have_to_escape_property(property)}=(?:${value.enum.join('|')}))`;
 						}
 					)}))`;
 				} else if (typed_string_enum.is_supported_schema(entry[1])) {
@@ -751,7 +826,7 @@ export class TypedObjectString {
 							entry[1].typed_array_string.items
 						);
 
-						return `(?:${entry[0]}=\\(${value_regex}(?:,${value_regex})*\\))`;
+						return `(?:${annoyingly_have_to_escape_property(entry[0])}=\\(${value_regex}(?:,${value_regex})*\\))`;
 					} else if (
 						typed_string_const.is_supported_schema(
 							entry[1].typed_array_string.items
@@ -761,7 +836,7 @@ export class TypedObjectString {
 							entry[1].typed_array_string.items
 						);
 
-						return `(?:${entry[0]}=\\(${value_regex}(?:,${value_regex})*\\))`;
+						return `(?:${annoyingly_have_to_escape_property(entry[0])}=\\(${value_regex}(?:,${value_regex})*\\))`;
 					}
 
 					const unreal_engine_regex =
@@ -770,11 +845,23 @@ export class TypedObjectString {
 								.UnrealEngineStringReference
 						).pattern;
 
-					return `(?:${entry[0]}=\\(${unreal_engine_regex}(?:,${unreal_engine_regex})*\\))`;
+					return `(?:${annoyingly_have_to_escape_property(entry[0])}=\\(${unreal_engine_regex}(?:,${unreal_engine_regex})*\\))`;
 				} else if (
 					is_UnrealEngineStringReference_general_object(entry[1])
 				) {
-					return `(?:${entry[0]}=${UnrealEngineStringReference.ajv_macro_generator(true)(entry[1].UnrealEngineStringReference).pattern})`;
+					return `(?:${annoyingly_have_to_escape_property(entry[0])}=${UnrealEngineStringReference.ajv_macro_generator(true)(entry[1].UnrealEngineStringReference).pattern})`;
+				} else if (this.value_is_typed_object_string_general_type(entry[1])) {
+					return `(?:${annoyingly_have_to_escape_property(entry[0])}=(?:${this.property_to_regex(entry[1].typed_object_string)}))`;
+				} else if (this.object_is_generally_supported_oneOf_array<typed_object_string_general_type>(entry[1], this.value_is_typed_object_string_general_type)) {
+					const items = entry[1].oneOf;
+
+					if (!this.object_is_generally_supported_oneOf_array<typed_object_string_general_type>(entry[1], this.value_is_typed_object_string_general_type)) {
+						throw new UnexpectedlyUnknownNoMatchError(entry[1], 'Not quite supported here yet');
+					}
+
+					const foo = items;
+
+					return `(?:${annoyingly_have_to_escape_property(entry[0])}=(?:${items.map(e => this.property_to_regex(e.typed_object_string)).join('|')}))`;
 				}
 
 				if (
@@ -783,7 +870,7 @@ export class TypedObjectString {
 						entry[1]['UnrealEngineStringReference--inner']
 					)
 				) {
-					return `${entry[0]}=${
+					return `${annoyingly_have_to_escape_property(entry[0])}=${
 						UnrealEngineStringReference.ajv_macro_generator(true)(
 							entry[1]['UnrealEngineStringReference--inner']
 						).pattern
@@ -795,9 +882,17 @@ export class TypedObjectString {
 					);
 				}
 
-				return `${entry[0]}=\\(${Object.entries(entry[1])
+				return `${annoyingly_have_to_escape_property(entry[0])}=\\(${Object.entries(entry[1])
 					.map((sub_entry) => {
 						const [sub_property, sub_value] = sub_entry;
+
+						if (sub_value instanceof Array) {
+							console.log(entry[1], this.object_is_generally_supported_oneOf_array(
+								entry[1],
+								this.entry_is_supported_oneOf_item
+							));
+							throw new Error('foo');
+						}
 
 						return this.typed_object_string_$ref_to_regex(
 							sub_property,
@@ -1053,6 +1148,11 @@ export class TypedObjectString {
 							property,
 							value
 						);
+					} else if (TypedObjectString.value_is_typed_object_string_general_type(value)) {
+						return [
+							property,
+							this.general_type_to_object_type(value),
+						];
 					}
 
 					return [

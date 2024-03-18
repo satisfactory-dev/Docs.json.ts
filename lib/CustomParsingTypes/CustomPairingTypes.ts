@@ -51,6 +51,11 @@ export function object_only_has_that_property<T extends string = string>(
 	);
 }
 
+export function annoyingly_have_to_escape_property(property:string): string
+{
+	return property.replace(/([\[\]])/g, '\\$1');
+}
+
 export abstract class SupportedSubSchemaType<
 	ObjectType extends {[key: string]: any},
 	LiteralType extends LiteralExpression | UnionTypeNode,
