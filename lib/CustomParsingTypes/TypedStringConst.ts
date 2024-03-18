@@ -1,5 +1,8 @@
 import {UnrealEngineStringReference_general_regex} from './UnrealEngineStringReference';
-import {object_has_property, SupportedSubSchemaType} from './CustomPairingTypes';
+import {
+	object_has_property,
+	SupportedSubSchemaType,
+} from './CustomPairingTypes';
 import {LiteralTypeNode, StringLiteral} from 'typescript';
 import {create_literal_node_from_value} from '../TsFactoryWrapper';
 
@@ -20,10 +23,12 @@ export const typed_object_supported_const_string_schema = {
 	},
 };
 
-type const_schema_type = {type: 'string', const: string};
+type const_schema_type = {type: 'string'; const: string};
 
-class TypedStringConst extends SupportedSubSchemaType<const_schema_type, StringLiteral>
-{
+class TypedStringConst extends SupportedSubSchemaType<
+	const_schema_type,
+	StringLiteral
+> {
 	is_supported_schema(maybe: any): maybe is const_schema_type {
 		return (
 			'object' === typeof maybe &&
@@ -41,7 +46,10 @@ class TypedStringConst extends SupportedSubSchemaType<const_schema_type, StringL
 	key_value_pair_regex(key: string, value: const_schema_type): string {
 		return `(?:${key}=${value.const})`;
 	}
-	key_value_pair_literal_type_entry(key: string, value: const_schema_type): [string, LiteralTypeNode & { literal: StringLiteral; }] {
+	key_value_pair_literal_type_entry(
+		key: string,
+		value: const_schema_type
+	): [string, LiteralTypeNode & {literal: StringLiteral}] {
 		return ['foo', create_literal_node_from_value(value.const)];
 	}
 }

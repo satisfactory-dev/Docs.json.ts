@@ -3,11 +3,15 @@ import ts, {
 	ClassDeclaration,
 	Expression,
 	HeritageClause,
-	KeywordTypeSyntaxKind, LiteralExpression,
+	KeywordTypeSyntaxKind,
+	LiteralExpression,
 	LiteralTypeNode,
 	MethodDeclaration,
-	Modifier, NullLiteral, PrefixUnaryExpression,
-	PropertyDeclaration, StringLiteral,
+	Modifier,
+	NullLiteral,
+	PrefixUnaryExpression,
+	PropertyDeclaration,
+	StringLiteral,
 	TypeLiteralNode,
 	TypeNode,
 	TypeParameterDeclaration,
@@ -893,9 +897,12 @@ export function create_index_access(identifier: string, index: number) {
 	);
 }
 
-export function create_literal_node_from_value<T1 extends string|null = string|null, T2 = T1 extends null ? (ts.LiteralTypeNode & {literal: NullLiteral}) : (ts.LiteralTypeNode & {literal: StringLiteral})>(
-	value: T1
-): T2 {
+export function create_literal_node_from_value<
+	T1 extends string | null = string | null,
+	T2 = T1 extends null
+		? ts.LiteralTypeNode & {literal: NullLiteral}
+		: ts.LiteralTypeNode & {literal: StringLiteral},
+>(value: T1): T2 {
 	return ts.factory.createLiteralTypeNode(
 		null === value
 			? ts.factory.createNull()

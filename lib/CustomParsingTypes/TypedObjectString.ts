@@ -730,7 +730,10 @@ export class TypedObjectString {
 						entry[1]
 					);
 				} else if (typed_string_const.is_supported_schema(entry[1])) {
-					return typed_string_const.key_value_pair_regex(entry[0], entry[1]);
+					return typed_string_const.key_value_pair_regex(
+						entry[0],
+						entry[1]
+					);
 				} else if (this.is_supported_enum_string_object(entry[1])) {
 					return `(?:${entry[0]}=(?:${Object.entries(entry[1]).map(
 						(sub_entry) => {
