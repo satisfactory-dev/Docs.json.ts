@@ -43,7 +43,11 @@ import {
 } from './CustomPairingTypes';
 import {typed_array_string_parent_without_recursive_reference} from './TypedArrayString';
 import {typed_string_const} from './TypedStringConst';
-import {enum_schema_type, typed_string_enum, typed_string_enum_schema} from './TypedStringEnum';
+import {
+	enum_schema_type,
+	typed_string_enum,
+	typed_string_enum_schema,
+} from './TypedStringEnum';
 import {writeFile} from 'node:fs/promises';
 
 const already_configured = new WeakSet<Ajv>();
@@ -498,7 +502,10 @@ export class TypedObjectString {
 		} else if (typed_string_const.is_supported_schema(value)) {
 			value_regex = typed_string_const.value_regex(value);
 		} else if (undefined === $ref) {
-			throw new UnexpectedlyUnknownNoMatchError(value,'something probably snuck through from elsewhere');
+			throw new UnexpectedlyUnknownNoMatchError(
+				value,
+				'something probably snuck through from elsewhere'
+			);
 		} else if (
 			$ref.startsWith('#/definitions/integer-string') ||
 			$ref.startsWith('#/definitions/decimal-string')
@@ -647,7 +654,9 @@ export class TypedObjectString {
 			object_has_property(maybe, 'typed_object_string') &&
 			(this.is_$ref_object_dictionary(maybe.typed_object_string) ||
 				this.is_combination_dictionary(maybe.typed_object_string) ||
-				typed_string_enum.is_supported_schema(maybe.typed_object_string) ||
+				typed_string_enum.is_supported_schema(
+					maybe.typed_object_string
+				) ||
 				this.is_supported_enum_string_object(
 					maybe.typed_object_string
 				)) &&
@@ -762,7 +771,9 @@ export class TypedObjectString {
 						).pattern;
 
 					return `(?:${entry[0]}=\\(${unreal_engine_regex}(?:,${unreal_engine_regex})*\\))`;
-				} else if (is_UnrealEngineStringReference_general_object(entry[1])) {
+				} else if (
+					is_UnrealEngineStringReference_general_object(entry[1])
+				) {
 					return `(?:${entry[0]}=${UnrealEngineStringReference.ajv_macro_generator(true)(entry[1].UnrealEngineStringReference).pattern})`;
 				}
 
@@ -1150,13 +1161,17 @@ export class TypedObjectString {
 								},
 								'maxItems' in value.typed_array_string
 									? value.typed_array_string.maxItems
-									:undefined
+									: undefined
 							),
 						];
-					} else if (is_UnrealEngineStringReference_general_object(value)) {
+					} else if (
+						is_UnrealEngineStringReference_general_object(value)
+					) {
 						return [
 							property,
-							create_UnrealEngineStringReference_reference_type(value.UnrealEngineStringReference),
+							create_UnrealEngineStringReference_reference_type(
+								value.UnrealEngineStringReference
+							),
 						];
 					} else if (!this.is_$ref_object(value)) {
 						throw new UnexpectedlyUnknownNoMatchError(
