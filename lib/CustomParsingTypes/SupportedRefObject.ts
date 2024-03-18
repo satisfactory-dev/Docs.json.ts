@@ -4,9 +4,7 @@ import {
 } from './CustomPairingTypes';
 import ts, {TypeReferenceNode} from 'typescript';
 import {adjust_class_name} from '../TsFactoryWrapper';
-import {
-	UnrealEngineStringReference,
-} from './UnrealEngineStringReference';
+import {UnrealEngineStringReference} from './UnrealEngineStringReference';
 import update8_schema from '../../schema/update8.schema.json' assert {type: 'json'};
 
 const $ref_supported = {
@@ -30,13 +28,17 @@ export const $ref_schema = {
 	},
 };
 
-const UnrealEngineStringReference_inner = UnrealEngineStringReference.ajv_macro_generator(true);
+const UnrealEngineStringReference_inner =
+	UnrealEngineStringReference.ajv_macro_generator(true);
 
 const $ref_regex: {[key in keyof typeof $ref_supported]: string} = {
 	'#/definitions/mEventType': 'EV_Christmas',
-	'#/definitions/FGSchematic--mUnlocks_mSchematics--mSchematics': UnrealEngineStringReference_inner(
-		update8_schema.definitions['FGSchematic--mUnlocks_mSchematics--mSchematics'].UnrealEngineStringReference
-	).pattern,
+	'#/definitions/FGSchematic--mUnlocks_mSchematics--mSchematics':
+		UnrealEngineStringReference_inner(
+			update8_schema.definitions[
+				'FGSchematic--mUnlocks_mSchematics--mSchematics'
+			].UnrealEngineStringReference
+		).pattern,
 	'#/definitions/None': 'None',
 };
 

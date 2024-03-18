@@ -2192,9 +2192,8 @@
 							"typed_array_string": {
 								"type": "array",
 								"minItems": 1,
-								"items":
-								{
-											"$ref": "#/definitions/None"
+								"items": {
+									"$ref": "#/definitions/None"
 								}
 							}
 						},
@@ -2205,13 +2204,13 @@
 								"type": "array",
 								"minItems": 1,
 								"items": {
-											"type": "string",
-											"minLength": 1,
-											"UnrealEngineStringReference": {
-												"right": {
-													"starts_with": "/Game/FactoryGame/Schematics/"
-												}
-											}
+									"type": "string",
+									"minLength": 1,
+									"UnrealEngineStringReference": {
+										"right": {
+											"starts_with": "/Game/FactoryGame/Schematics/"
+										}
+									}
 								}
 							}
 						}
