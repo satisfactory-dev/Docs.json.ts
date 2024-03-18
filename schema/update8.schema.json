@@ -1111,11 +1111,28 @@
 						{
 							"type": "string",
 							"minLength": 1,
-							"array_string": {
+							"typed_array_string": {
 								"type": "array",
 								"minItems": 1,
 								"items": {
-									"type": "string"
+									"type": "string",
+									"enum": [
+										"/Script/FactoryGame.FGBuildGun",
+										"/Game/FactoryGame/Equipment/BuildGun/BP_BuildGun.BP_BuildGun_C",
+										"/Script/FactoryGame.FGBuildableAutomatedWorkBench",
+										"/Game/FactoryGame/Buildable/Factory/AutomatedWorkBench/Build_AutomatedWorkBench.Build_AutomatedWorkBench_C",
+										"/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkBenchComponent.BP_WorkBenchComponent_C",
+										"/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkshopComponent.BP_WorkshopComponent_C",
+										"/Game/FactoryGame/Buildable/Factory/ConstructorMk1/Build_ConstructorMk1.Build_ConstructorMk1_C",
+										"/Game/FactoryGame/Buildable/Factory/AssemblerMk1/Build_AssemblerMk1.Build_AssemblerMk1_C",
+										"/Game/FactoryGame/Buildable/Factory/ManufacturerMk1/Build_ManufacturerMk1.Build_ManufacturerMk1_C",
+										"/Game/FactoryGame/Buildable/Factory/HadronCollider/Build_HadronCollider.Build_HadronCollider_C",
+										"/Game/FactoryGame/Buildable/Factory/SmelterMk1/Build_SmelterMk1.Build_SmelterMk1_C",
+										"/Game/FactoryGame/Buildable/Factory/FoundryMk1/Build_FoundryMk1.Build_FoundryMk1_C",
+										"/Game/FactoryGame/Buildable/Factory/OilRefinery/Build_OilRefinery.Build_OilRefinery_C",
+										"/Game/FactoryGame/Buildable/Factory/Packager/Build_Packager.Build_Packager_C",
+										"/Game/FactoryGame/Buildable/Factory/Blender/Build_Blender.Build_Blender_C"
+									]
 								}
 							}
 						}
