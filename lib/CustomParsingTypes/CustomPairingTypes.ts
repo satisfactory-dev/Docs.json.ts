@@ -1,4 +1,9 @@
-import {LiteralExpression, LiteralTypeNode, TypeReferenceNode, UnionTypeNode} from 'typescript';
+import {
+	LiteralExpression,
+	LiteralTypeNode,
+	TypeReferenceNode,
+	UnionTypeNode,
+} from 'typescript';
 
 export function object_has_property<T extends string = string>(
 	maybe: object,
@@ -63,8 +68,7 @@ export abstract class SupportedSubSchemaType<
 
 	abstract value_regex(value: ObjectType): string;
 
-	key_value_pair_regex(key: string, value: ObjectType): string
-	{
+	key_value_pair_regex(key: string, value: ObjectType): string {
 		return `(?:${annoyingly_have_to_escape_property(key)}=(?:${this.value_regex(value)}))`;
 	}
 

@@ -839,7 +839,9 @@ export class TypedObjectString {
 					);
 				} else if (
 					this.is_supported_typed_array_string(entry[1]) &&
-					is_UnrealEngineStringReference_general_object(entry[1].typed_array_string.items)
+					is_UnrealEngineStringReference_general_object(
+						entry[1].typed_array_string.items
+					)
 				) {
 					const unreal_engine_regex =
 						UnrealEngineStringReference.ajv_macro_generator(true)(
@@ -1159,7 +1161,7 @@ export class TypedObjectString {
 							property,
 							value
 						);
-					}else if (this.is_supported_enum_string_object(value)) {
+					} else if (this.is_supported_enum_string_object(value)) {
 						return [
 							property,
 							create_object_type_from_entries(

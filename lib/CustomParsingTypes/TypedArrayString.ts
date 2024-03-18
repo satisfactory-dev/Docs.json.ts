@@ -19,9 +19,12 @@ import {
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 import {writeFile} from 'node:fs/promises';
 import {
-	adjust_class_name, create_literal_node_from_value,
+	adjust_class_name,
+	create_literal_node_from_value,
 	create_minimum_size_typed_array_of_single_type,
-	create_modifier, create_union, possibly_create_lazy_union,
+	create_modifier,
+	create_union,
+	possibly_create_lazy_union,
 } from '../TsFactoryWrapper';
 import {
 	TypesGeneration_concrete,
@@ -138,8 +141,7 @@ const empty_string_or_const_or_array_string_schema = {
 	type: 'object',
 	required: ['oneOf'],
 	additionalProperties: false,
-	definitions:
-		UnrealEngineStringReference_schema_definitions,
+	definitions: UnrealEngineStringReference_schema_definitions,
 	properties: {
 		oneOf: {
 			type: 'array',
@@ -189,11 +191,8 @@ await writeFile(
 
 await writeFile(
 	`foo.json`,
-	JSON.stringify(
-		empty_string_or_const_or_array_string_schema,
-		null,
-		'\t'
-	) + '\n'
+	JSON.stringify(empty_string_or_const_or_array_string_schema, null, '\t') +
+		'\n'
 );
 
 export class TypedArrayString {
@@ -373,10 +372,10 @@ export class TypedArrayString {
 			),
 			new TypesGenerationFromSchema<{
 				oneOf: [
-					(const_schema_type|typed_array_string_parent),
-					(const_schema_type|typed_array_string_parent),
-					...(const_schema_type|typed_array_string_parent)[]
-				],
+					const_schema_type | typed_array_string_parent,
+					const_schema_type | typed_array_string_parent,
+					...(const_schema_type | typed_array_string_parent)[],
+				];
 			}>(
 				empty_string_or_const_or_array_string_schema,
 				(data, reference_name) => {
