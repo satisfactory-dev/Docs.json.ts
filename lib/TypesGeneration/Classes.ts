@@ -11,6 +11,7 @@ import {
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 import {TypedObjectString} from '../CustomParsingTypes/TypedObjectString';
 import {TypedArrayString} from '../CustomParsingTypes/TypedArrayString';
+import {enum_schema_type} from '../CustomParsingTypes/TypedStringEnum';
 
 declare type supported_base_classes_union =
 	| 'class--no-description-or-display-name'
@@ -39,10 +40,7 @@ export const generators = [
 			required: ['Class'];
 			additionalProperties: false;
 			properties: {
-				Class: {
-					type: 'string';
-					enum: [string, ...string[]];
-				};
+				Class: enum_schema_type;
 			};
 		},
 		'mUnlocks_Class'

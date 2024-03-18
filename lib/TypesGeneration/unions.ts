@@ -24,6 +24,7 @@ import {
 	UnrealEngineStringReference_general_schema,
 	UnrealEngineStringReference_schema_definitions,
 } from '../CustomParsingTypes/UnrealEngineStringReference';
+import {enum_schema_type} from '../CustomParsingTypes/TypedStringEnum';
 
 export const target_files = {
 	Texture2D: 'common/unions.ts',
@@ -336,7 +337,7 @@ export const type_node_generators = [
 			);
 		}
 	),
-	new TypeNodeGeneration<{type: 'string'; enum: [string, ...string[]]}>(
+	new TypeNodeGeneration<enum_schema_type>(
 		{
 			type: 'object',
 			required: ['type', 'enum'],

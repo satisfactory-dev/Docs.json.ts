@@ -14,6 +14,7 @@ import {
 	TypeNodeGeneration,
 	TypeNodeGenerationResult,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
+import {enum_schema_type} from '../CustomParsingTypes/TypedStringEnum';
 
 export const target_files = {
 	boolean: 'common/enum.ts',
@@ -45,10 +46,7 @@ const schema = {
 	},
 };
 
-declare type schema_type = {
-	type: string;
-	enum: [string, ...string[]];
-};
+declare type schema_type = enum_schema_type;
 
 const multi_enum_schema = {
 	type: 'object',
@@ -161,7 +159,7 @@ export const type_node_generators = [
 			create_union_types([property])
 		);
 	}),
-	new TypeNodeGeneration<{type: 'string'; enum: [string, ...string[]]}>(
+	new TypeNodeGeneration<enum_schema_type>(
 		{
 			type: 'object',
 			required: ['type', 'enum'],

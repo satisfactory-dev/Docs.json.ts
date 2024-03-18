@@ -662,20 +662,81 @@
 						{
 							"type": "string",
 							"minLength": 1,
-							"array_string": {
+							"typed_array_string": {
 								"type": "array",
 								"minItems": 1,
 								"items": {
-									"type": "object",
-									"required": ["mMaterial", "mRecipe"],
-									"properties": {
+									"type": "string",
+									"minLength": 1,
+									"typed_object_string": {
 										"mMaterial": {
 											"type": "string",
-											"string_starts_with": "/Game/FactoryGame/Buildable/-Shared/Customization/Materials/"
+											"enum": [
+												"/Game/FactoryGame/Buildable/-Shared/Customization/Materials/MaterialDesc_Foundation_Asphalt.MaterialDesc_Foundation_Asphalt_C",
+												"/Game/FactoryGame/Buildable/-Shared/Customization/Materials/MaterialDesc_Foundation_Concrete.MaterialDesc_Foundation_Concrete_C",
+												"/Game/FactoryGame/Buildable/-Shared/Customization/Materials/MaterialDesc_Foundation_Default.MaterialDesc_Foundation_Default_C",
+												"/Game/FactoryGame/Buildable/-Shared/Customization/Materials/MaterialDesc_Foundation_GripMetal.MaterialDesc_Foundation_GripMetal_C",
+												"/Game/FactoryGame/Buildable/-Shared/Customization/Materials/MaterialDesc_Foundation_PolishedConcrete.MaterialDesc_Foundation_PolishedConcrete_C"
+											]
 										},
 										"mRecipe": {
 											"type": "string",
-											"pattern": "^/Game/FactoryGame/(Buildable|Recipes)/(Building/Foundation|Buildings/Foundations)/"
+											"enum": [
+												"/Game/FactoryGame/Recipes/Buildings/Foundations/Recipe_QuarterPipeCorner_01.Recipe_QuarterPipeCorner_01_C",
+
+												"/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_QuarterPipeMiddle_Asphalt_8x1.Recipe_QuarterPipeMiddle_Asphalt_8x1_C",
+												"/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_QuarterPipeMiddle_Asphalt_8x2.Recipe_QuarterPipeMiddle_Asphalt_8x2_C",
+												"/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_QuarterPipeMiddle_Asphalt_8x4.Recipe_QuarterPipeMiddle_Asphalt_8x4_C",
+												"/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_QuarterPipeMiddleInCorner_Asphalt_8x1.Recipe_QuarterPipeMiddleInCorner_Asphalt_8x1_C",
+												"/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_QuarterPipeMiddleInCorner_Asphalt_8x2.Recipe_QuarterPipeMiddleInCorner_Asphalt_8x2_C",
+												"/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_QuarterPipeMiddleInCorner_Asphalt_8x4.Recipe_QuarterPipeMiddleInCorner_Asphalt_8x4_C",
+												"/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_QuarterPipeMiddleOutCorner_Asphalt_4x1.Recipe_QuarterPipeMiddleOutCorner_Asphalt_4x1_C",
+												"/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_QuarterPipeMiddleOutCorner_Asphalt_4x2.Recipe_QuarterPipeMiddleOutCorner_Asphalt_4x2_C",
+												"/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_QuarterPipeMiddleOutCorner_Asphalt_4x4.Recipe_QuarterPipeMiddleOutCorner_Asphalt_4x4_C",
+												"/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_QuarterPipeInCorner_Asphalt_8x4.Recipe_QuarterPipeInCorner_Asphalt_8x4_C",
+
+												"/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_QuarterPipeMiddle_Concrete_8x1.Recipe_QuarterPipeMiddle_Concrete_8x1_C",
+												"/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_QuarterPipeMiddle_Concrete_8x2.Recipe_QuarterPipeMiddle_Concrete_8x2_C",
+												"/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_QuarterPipeMiddle_Concrete_8x4.Recipe_QuarterPipeMiddle_Concrete_8x4_C",
+												"/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_QuarterPipeMiddleInCorner_Concrete_8x1.Recipe_QuarterPipeMiddleInCorner_Concrete_8x1_C",
+												"/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_QuarterPipeMiddleInCorner_Concrete_8x2.Recipe_QuarterPipeMiddleInCorner_Concrete_8x2_C",
+												"/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_QuarterPipeMiddleInCorner_Concrete_8x4.Recipe_QuarterPipeMiddleInCorner_Concrete_8x4_C",
+												"/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_QuarterPipeMiddleOutCorner_Concrete_4x1.Recipe_QuarterPipeMiddleOutCorner_Concrete_4x1_C",
+												"/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_QuarterPipeMiddleOutCorner_Concrete_4x2.Recipe_QuarterPipeMiddleOutCorner_Concrete_4x2_C",
+												"/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_QuarterPipeMiddleOutCorner_Concrete_4x4.Recipe_QuarterPipeMiddleOutCorner_Concrete_4x4_C",
+
+												"/Game/FactoryGame/Buildable/Building/Foundation/FicsitSet/Recipe_QuarterPipeMiddle_Ficsit_4x1.Recipe_QuarterPipeMiddle_Ficsit_4x1_C",
+												"/Game/FactoryGame/Buildable/Building/Foundation/FicsitSet/Recipe_QuarterPipeMiddle_Ficsit_4x2.Recipe_QuarterPipeMiddle_Ficsit_4x2_C",
+												"/Game/FactoryGame/Buildable/Building/Foundation/FicsitSet/Recipe_QuarterPipeMiddle_Ficsit_4x4.Recipe_QuarterPipeMiddle_Ficsit_4x4_C",
+												"/Game/FactoryGame/Buildable/Building/Foundation/FicsitSet/Recipe_QuarterPipeMiddleInCorner_Ficsit_8x1.Recipe_QuarterPipeMiddleInCorner_Ficsit_8x1_C",
+												"/Game/FactoryGame/Buildable/Building/Foundation/FicsitSet/Recipe_QuarterPipeMiddleInCorner_Ficsit_8x2.Recipe_QuarterPipeMiddleInCorner_Ficsit_8x2_C",
+												"/Game/FactoryGame/Buildable/Building/Foundation/FicsitSet/Recipe_QuarterPipeMiddleInCorner_Ficsit_8x4.Recipe_QuarterPipeMiddleInCorner_Ficsit_8x4_C",
+												"/Game/FactoryGame/Buildable/Building/Foundation/FicsitSet/Recipe_QuarterPipeMiddleOutCorner_Ficsit_4x1.Recipe_QuarterPipeMiddleOutCorner_Ficsit_4x1_C",
+												"/Game/FactoryGame/Buildable/Building/Foundation/FicsitSet/Recipe_QuarterPipeMiddleOutCorner_Ficsit_4x2.Recipe_QuarterPipeMiddleOutCorner_Ficsit_4x2_C",
+												"/Game/FactoryGame/Buildable/Building/Foundation/FicsitSet/Recipe_QuarterPipeMiddleOutCorner_Ficsit_4x4.Recipe_QuarterPipeMiddleOutCorner_Ficsit_4x4_C",
+
+												"/Game/FactoryGame/Buildable/Building/Foundation/GripMetal/Recipe_QuarterPipeMiddle_Grip_8x1.Recipe_QuarterPipeMiddle_Grip_8x1_C",
+												"/Game/FactoryGame/Buildable/Building/Foundation/GripMetal/Recipe_QuarterPipeMiddle_Grip_8x2.Recipe_QuarterPipeMiddle_Grip_8x2_C",
+												"/Game/FactoryGame/Buildable/Building/Foundation/GripMetal/Recipe_QuarterPipeMiddle_Grip_8x4.Recipe_QuarterPipeMiddle_Grip_8x4_C",
+												"/Game/FactoryGame/Buildable/Building/Foundation/GripMetal/Recipe_QuarterPipeMiddleInCorner_Grip_8x1.Recipe_QuarterPipeMiddleInCorner_Grip_8x1_C",
+												"/Game/FactoryGame/Buildable/Building/Foundation/GripMetal/Recipe_QuarterPipeMiddleInCorner_Grip_8x2.Recipe_QuarterPipeMiddleInCorner_Grip_8x2_C",
+												"/Game/FactoryGame/Buildable/Building/Foundation/GripMetal/Recipe_QuarterPipeMiddleInCorner_Grip_8x4.Recipe_QuarterPipeMiddleInCorner_Grip_8x4_C",
+												"/Game/FactoryGame/Buildable/Building/Foundation/GripMetal/Recipe_QuarterPipeMiddleOutCorner_Grip_4x1.Recipe_QuarterPipeMiddleOutCorner_Grip_4x1_C",
+												"/Game/FactoryGame/Buildable/Building/Foundation/GripMetal/Recipe_QuarterPipeMiddleOutCorner_Grip_4x2.Recipe_QuarterPipeMiddleOutCorner_Grip_4x2_C",
+												"/Game/FactoryGame/Buildable/Building/Foundation/GripMetal/Recipe_QuarterPipeMiddleOutCorner_Grip_4x4.Recipe_QuarterPipeMiddleOutCorner_Grip_4x4_C",
+												"/Game/FactoryGame/Buildable/Building/Foundation/GripMetal/Recipe_QuarterPipeInCorner_Grip_8x4.Recipe_QuarterPipeInCorner_Grip_8x4_C",
+
+												"/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_QuarterPipeMiddle_PolishedConcrete_8x1.Recipe_QuarterPipeMiddle_PolishedConcrete_8x1_C",
+												"/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_QuarterPipeMiddle_PolishedConcrete_8x2.Recipe_QuarterPipeMiddle_PolishedConcrete_8x2_C",
+												"/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_QuarterPipeMiddle_PolishedConcrete_8x4.Recipe_QuarterPipeMiddle_PolishedConcrete_8x4_C",
+												"/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_QuarterPipeMiddleInCorner_PolishedConcrete_8x1.Recipe_QuarterPipeMiddleInCorner_PolishedConcrete_8x1_C",
+												"/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_QuarterPipeMiddleInCorner_PolishedConcrete_8x2.Recipe_QuarterPipeMiddleInCorner_PolishedConcrete_8x2_C",
+												"/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_QuarterPipeMiddleInCorner_PolishedConcrete_8x4.Recipe_QuarterPipeMiddleInCorner_PolishedConcrete_8x4_C",
+												"/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_QuarterPipeMiddleOutCorner_PolishedConcrete_4x1.Recipe_QuarterPipeMiddleOutCorner_PolishedConcrete_4x1_C",
+												"/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_QuarterPipeMiddleOutCorner_PolishedConcrete_4x2.Recipe_QuarterPipeMiddleOutCorner_PolishedConcrete_4x2_C",
+												"/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_QuarterPipeMiddleOutCorner_PolishedConcrete_4x4.Recipe_QuarterPipeMiddleOutCorner_PolishedConcrete_4x4_C",
+												"/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_QuarterPipeInCorner_ConcretePolished_8x4.Recipe_QuarterPipeInCorner_ConcretePolished_8x4_C"
+											]
 										}
 									}
 								}
@@ -3490,6 +3551,16 @@
 							"type": "object",
 							"required": ["SlotName", "Material"],
 							"properties": {
+								"SlotName": {
+									"type": "string",
+									"enum": [
+										"Body_Details",
+										"Body_01",
+										"Body_02",
+										"Body_Hands",
+										"Body_Backpack"
+									]
+								},
 								"Material": {
 									"type": "string",
 									"minLength": 1,
@@ -4356,18 +4427,94 @@
 						"type": "array",
 						"minItems": 1,
 						"items": {
-							"type": "object",
-							"required": ["WwiseSafeName"],
-							"properties": {
-								"WwiseSafeName": {
-									"type": "string",
-									"minLength": 1
+							"oneOf": [
+								{
+									"type": "object",
+									"required": ["WwiseSafeName", "ActualName"],
+									"additionalProperties": false,
+									"properties": {
+										"WwiseSafeName": {
+											"type": "string",
+											"const": "Crude_Oil"
+										},
+										"ActualName": {
+											"type": "string",
+											"const": "Crude Oil"
+										}
+									}
 								},
-								"ActualName": {
-									"type": "string",
-									"minLength": 1
+								{
+									"type": "object",
+									"required": ["WwiseSafeName", "ActualName"],
+									"additionalProperties": false,
+									"properties": {
+										"WwiseSafeName": {
+											"type": "string",
+											"const": "Fuel"
+										},
+										"ActualName": {
+											"type": "string",
+											"const": "Fuel"
+										}
+									}
+								},
+								{
+									"type": "object",
+									"required": ["WwiseSafeName", "ActualName"],
+									"additionalProperties": false,
+									"properties": {
+										"WwiseSafeName": {
+											"type": "string",
+											"const": "Heavy_Oil_Residue"
+										},
+										"ActualName": {
+											"type": "string",
+											"const": "Heavy Oil Residue"
+										}
+									}
+								},
+								{
+									"type": "object",
+									"required": ["WwiseSafeName", "ActualName"],
+									"additionalProperties": false,
+									"properties": {
+										"WwiseSafeName": {
+											"type": "string",
+											"const": "Water"
+										},
+										"ActualName": {
+											"type": "string",
+											"const": "Water"
+										}
+									}
+								},
+								{
+									"type": "object",
+									"required": ["WwiseSafeName"],
+									"additionalProperties": false,
+									"properties": {
+										"WwiseSafeName": {
+											"type": "string",
+											"const": "No_Fluid"
+										}
+									}
+								},
+								{
+									"type": "object",
+									"required": ["WwiseSafeName", "ActualName"],
+									"additionalProperties": false,
+									"properties": {
+										"WwiseSafeName": {
+											"type": "string",
+											"const": "Gas"
+										},
+										"ActualName": {
+											"type": "string",
+											"const": "Nitrogen Gas"
+										}
+									}
 								}
-							}
+							]
 						}
 					}
 				},
@@ -4793,19 +4940,27 @@
 				"mParticleMap": {
 					"type": "string",
 					"minLength": 1,
-					"array_string": {
+					"typed_array_string": {
 						"type": "array",
 						"minItems": 1,
 						"items": {
-							"type": "object",
-							"required": [
-								"ResourceNode_16_2100B5C34EE8DF7958D78A974512F3C3",
-								"ParticleSystem1_9_F0CF81514E1E1C5007AC99B0C59C63CD"
-							],
-							"properties": {
+							"type": "string",
+							"minLength": 1,
+							"typed_object_string": {
 								"ResourceNode_16_2100B5C34EE8DF7958D78A974512F3C3": {
 									"type": "string",
-									"string_starts_with": "/Game/FactoryGame/Resource/RawResources/"
+									"enum": [
+										"/Game/FactoryGame/Resource/RawResources/Coal/Desc_Coal.Desc_Coal_C",
+										"/Game/FactoryGame/Resource/RawResources/Stone/Desc_Stone.Desc_Stone_C",
+										"/Game/FactoryGame/Resource/RawResources/OreIron/Desc_OreIron.Desc_OreIron_C",
+										"/Game/FactoryGame/Resource/RawResources/OreBauxite/Desc_OreBauxite.Desc_OreBauxite_C",
+										"/Game/FactoryGame/Resource/RawResources/OreCopper/Desc_OreCopper.Desc_OreCopper_C",
+										"/Game/FactoryGame/Resource/RawResources/CrudeOil/Desc_LiquidOil.Desc_LiquidOil_C",
+										"/Game/FactoryGame/Resource/RawResources/OreGold/Desc_OreGold.Desc_OreGold_C",
+										"/Game/FactoryGame/Resource/RawResources/RawQuartz/Desc_RawQuartz.Desc_RawQuartz_C",
+										"/Game/FactoryGame/Resource/RawResources/Sulfur/Desc_Sulfur.Desc_Sulfur_C",
+										"/Game/FactoryGame/Resource/RawResources/OreUranium/Desc_OreUranium.Desc_OreUranium_C"
+									]
 								},
 								"ParticleSystem1_9_F0CF81514E1E1C5007AC99B0C59C63CD": {
 									"type": "string",
