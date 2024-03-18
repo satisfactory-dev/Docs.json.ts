@@ -2044,7 +2044,7 @@
 				"mSchematics": {
 					"type": "string",
 					"minLength": 1,
-					"array_string": {
+					"typed_array_string": {
 						"type": "array",
 						"minItems": 1,
 						"items": {
@@ -2189,15 +2189,22 @@
 						{
 							"type": "string",
 							"minLength": 1,
-							"array_string": {
+							"typed_array_string": {
+								"type": "array",
+								"minItems": 1,
+								"items":
+								{
+											"$ref": "#/definitions/None"
+								}
+							}
+						},
+						{
+							"type": "string",
+							"minLength": 1,
+							"typed_array_string": {
 								"type": "array",
 								"minItems": 1,
 								"items": {
-									"oneOf": [
-										{
-											"$ref": "#/definitions/None"
-										},
-										{
 											"type": "string",
 											"minLength": 1,
 											"UnrealEngineStringReference": {
@@ -2205,8 +2212,6 @@
 													"starts_with": "/Game/FactoryGame/Schematics/"
 												}
 											}
-										}
-									]
 								}
 							}
 						}
@@ -2420,7 +2425,7 @@
 									"mSchematics": {
 										"type": "string",
 										"minLength": 1,
-										"array_string": {
+										"typed_array_string": {
 											"type": "array",
 											"minItems": 1,
 											"items": {

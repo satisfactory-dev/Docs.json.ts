@@ -43,6 +43,7 @@ import {
 } from './TypedStringEnum';
 import {object_only_has_that_property} from './CustomPairingTypes';
 import {$ref_choices, $ref_schema, supported_$ref} from './SupportedRefObject';
+import {supported_meta} from './SupportedMeta';
 
 const already_configured = new WeakSet<Ajv>();
 
@@ -407,8 +408,7 @@ export class TypedArrayString {
 
 		if (
 			!is_UnrealEngineStringReference_general_object(data.items) &&
-			!typed_string_const.is_supported_schema(data.items) &&
-			!typed_string_enum.is_supported_schema(data.items) &&
+			!supported_meta.is_supported_schema(data.items) &&
 			!TypedObjectString.value_is_typed_object_string_general_type(
 				data.items
 			)
