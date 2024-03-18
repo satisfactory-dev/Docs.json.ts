@@ -334,7 +334,10 @@ export function create_constructor_args<T1 extends string = string>(
 	}
 
 	if (!type) {
-		throw new UnexpectedlyUnknownNoMatchError(data, 'unsupported type found!');
+		throw new UnexpectedlyUnknownNoMatchError(
+			data,
+			'unsupported type found!'
+		);
 	}
 
 	return {

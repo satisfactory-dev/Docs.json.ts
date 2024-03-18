@@ -229,7 +229,10 @@ export function EntityName_array_from_Node_array(nodes: Node[]): EntityName[] {
 	}
 
 	if (others.length) {
-		throw new UnexpectedlyUnknownNoMatchError(others, 'Unsupported types found!');
+		throw new UnexpectedlyUnknownNoMatchError(
+			others,
+			'Unsupported types found!'
+		);
 	}
 
 	return [

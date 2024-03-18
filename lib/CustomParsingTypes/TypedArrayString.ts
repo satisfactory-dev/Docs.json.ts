@@ -1,8 +1,11 @@
 import Ajv from 'ajv/dist/2020';
 import {
 	create_UnrealEngineStringReference_reference_type,
-	is_UnrealEngineStringReference_general_object, is_UnrealEngineStringReference_value, UnrealEngineStringReference,
-	UnrealEngineStringReference_general_schema, UnrealEngineStringReference_general_type,
+	is_UnrealEngineStringReference_general_object,
+	is_UnrealEngineStringReference_value,
+	UnrealEngineStringReference,
+	UnrealEngineStringReference_general_schema,
+	UnrealEngineStringReference_general_type,
 	UnrealEngineStringReference_schema,
 } from './UnrealEngineStringReference';
 import {
@@ -54,9 +57,7 @@ const typed_array_string_schema_without_recursive_reference = {
 		type: {type: 'string', const: 'array'},
 		minItems: {type: 'number', minimum: 1},
 		items: {
-			oneOf: [
-				UnrealEngineStringReference_general_schema,
-			],
+			oneOf: [UnrealEngineStringReference_general_schema],
 		},
 	},
 };
@@ -79,7 +80,8 @@ export const typed_array_string_parent_schema_without_recursive_reference = {
 	properties: {
 		type: {type: 'string', const: 'string'},
 		minLength: {type: 'number', const: 1},
-		typed_array_string: typed_array_string_schema_without_recursive_reference,
+		typed_array_string:
+			typed_array_string_schema_without_recursive_reference,
 	},
 };
 
@@ -96,7 +98,10 @@ declare type typed_array_string = {
 declare type typed_array_string_without_recursive_reference = {
 	type: 'array';
 	minItems: number;
-	items: Exclude<typed_array_string_supported_items, typed_object_string_general_type>;
+	items: Exclude<
+		typed_array_string_supported_items,
+		typed_object_string_general_type
+	>;
 };
 
 declare type typed_array_string_parent = {
@@ -214,18 +219,27 @@ export class TypedArrayString {
 		);
 	}
 
-	public static typed_array(data: typed_array_string|typed_array_string_without_recursive_reference) : TupleTypeNode {
-		return (
-			create_minimum_size_typed_array_of_single_type(data.minItems, () => {
-				if (is_UnrealEngineStringReference_general_object(data.items)) {
+	public static typed_array(
+		data:
+			| typed_array_string
+			| typed_array_string_without_recursive_reference
+	): TupleTypeNode {
+		return create_minimum_size_typed_array_of_single_type(
+			data.minItems,
+			() => {
+				if (
+					is_UnrealEngineStringReference_general_object(data.items)
+				) {
 					return create_UnrealEngineStringReference_reference_type(
 						data.items.UnrealEngineStringReference
 					);
 				}
 
-				return TypedObjectString.general_type_to_object_type(data.items);
-			})
-		)
+				return TypedObjectString.general_type_to_object_type(
+					data.items
+				);
+			}
+		);
 	}
 
 	static TypesGenerators(): [
@@ -263,7 +277,11 @@ export class TypedArrayString {
 		const {items} = data;
 
 		if (is_UnrealEngineStringReference_general_object(items)) {
-			return new TypeNodeGenerationResult(() => create_UnrealEngineStringReference_reference_type(items.UnrealEngineStringReference));
+			return new TypeNodeGenerationResult(() =>
+				create_UnrealEngineStringReference_reference_type(
+					items.UnrealEngineStringReference
+				)
+			);
 		}
 		if (
 			!TypedObjectString.value_is_typed_object_string_general_type(
@@ -276,9 +294,7 @@ export class TypedArrayString {
 			);
 		}
 
-		return new TypeNodeGenerationResult(() =>
-			this.typed_array(data)
-		);
+		return new TypeNodeGenerationResult(() => this.typed_array(data));
 	}
 
 	static TypeNodeGeneration(): [

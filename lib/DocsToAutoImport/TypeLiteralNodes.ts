@@ -32,7 +32,10 @@ export class TypeLiteralNodes extends NodeExtraction<TypeLiteralNode> {
 		}
 
 		if (other_elements.length) {
-			throw new UnexpectedlyUnknownNoMatchError(other_elements, 'Unsupported elements found!');
+			throw new UnexpectedlyUnknownNoMatchError(
+				other_elements,
+				'Unsupported elements found!'
+			);
 		}
 
 		return types;

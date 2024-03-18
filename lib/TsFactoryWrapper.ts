@@ -6,7 +6,8 @@ import ts, {
 	LiteralTypeNode,
 	MethodDeclaration,
 	Modifier,
-	PropertyDeclaration, TypeLiteralNode,
+	PropertyDeclaration,
+	TypeLiteralNode,
 	TypeNode,
 	TypeParameterDeclaration,
 } from 'typescript';
@@ -85,7 +86,10 @@ function maybe_expression_node_from_literal(
 ): Expression | undefined {
 	if (ts.isLiteralTypeNode(node)) {
 		if (node.literal.kind !== ts.SyntaxKind.StringLiteral) {
-			throw new UnexpectedlyUnknownNoMatchError(node.literal, 'Unsupported literal type found!');
+			throw new UnexpectedlyUnknownNoMatchError(
+				node.literal,
+				'Unsupported literal type found!'
+			);
 		}
 
 		return create_literal_node_from_value(node.literal.text).literal;
@@ -312,7 +316,10 @@ export function createClass__members__with_auto_constructor<
 							property_data_ref
 						)
 					) {
-						throw new UnexpectedlyUnknownNoMatchError(property_data_ref, 'Unsupported property type!');
+						throw new UnexpectedlyUnknownNoMatchError(
+							property_data_ref,
+							'Unsupported property type!'
+						);
 					}
 
 					let type: ts.TypeNode = ts.factory.createTypeReferenceNode(
@@ -735,24 +742,24 @@ export function create_type(type: keyof typeof type_map): ts.KeywordTypeNode {
 export function create_object_type<
 	T extends {[key: string]: ts.TypeNode} = {[key: string]: ts.TypeNode},
 >(properties: T): ts.TypeLiteralNode {
-	return create_object_type_from_entries(
-		Object.entries(properties)
-	);
+	return create_object_type_from_entries(Object.entries(properties));
 }
 
 export function create_object_type_from_entries(
-	entries:[string, TypeNode][]
+	entries: [string, TypeNode][]
 ): TypeLiteralNode {
-	return ts.factory.createTypeLiteralNode(entries.map((entry) => {
-		const [property, type] = entry;
+	return ts.factory.createTypeLiteralNode(
+		entries.map((entry) => {
+			const [property, type] = entry;
 
-		return ts.factory.createPropertySignature(
-			undefined,
-			property_name_or_computed(property),
-			undefined,
-			type
-		);
-	}));
+			return ts.factory.createPropertySignature(
+				undefined,
+				property_name_or_computed(property),
+				undefined,
+				type
+			);
+		})
+	);
 }
 
 export function create_object_type_alias<

@@ -493,10 +493,7 @@
 									"typed_object_string": {
 										"CompatibleItemType": {
 											"type": "string",
-											"enum": [
-												"CIT_AMMO",
-												"CIT_WEAPON"
-											]
+											"enum": ["CIT_AMMO", "CIT_WEAPON"]
 										},
 										"CompatibleItemDescriptors": {
 											"type": "string",

@@ -33,7 +33,10 @@ export class LiteralTypeNodes extends NodeExtraction<LiteralTypeNode> {
 		}
 
 		if (others.length > 0) {
-			throw new UnexpectedlyUnknownNoMatchError(others, 'Unsupported types found!');
+			throw new UnexpectedlyUnknownNoMatchError(
+				others,
+				'Unsupported types found!'
+			);
 		}
 
 		return [];

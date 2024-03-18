@@ -17,7 +17,7 @@ export function object_has_non_empty_array_property<T extends string = string>(
 }
 
 export function object_has_property_that_equals(
-	maybe:object,
+	maybe: object,
 	property: string,
 	expects: any
 ): maybe is {[key: string]: any} & {[key in typeof property]: typeof expects} {
