@@ -19,7 +19,6 @@ import {
 	adjust_class_name,
 	auto_constructor_property_types_from_generated_types,
 	auto_constructor_property_types_from_generated_types_properties,
-	create_literal_node_from_value,
 	create_modifier,
 	create_object_type,
 	create_object_type_from_entries,
@@ -43,6 +42,7 @@ import {
 	value_is_non_array_object,
 } from './CustomPairingTypes';
 import {typed_array_string_parent_without_recursive_reference} from './TypedArrayString';
+import {typed_string_const} from './TypedStringConst';
 
 const already_configured = new WeakSet<Ajv>();
 
@@ -497,8 +497,8 @@ export class TypedObjectString {
 					definition.typed_object_string
 				);
 			}
-		} else if (this.is_supported_const_string_object(value)) {
-			value_regex = value.const;
+		} else if (typed_string_const.is_supported_schema(value)) {
+			value_regex = typed_string_const.value_regex(value);
 		} else if (
 			$ref.startsWith('#/definitions/integer-string') ||
 			$ref.startsWith('#/definitions/decimal-string')
@@ -533,19 +533,6 @@ export class TypedObjectString {
 			'object' === typeof maybe &&
 			this.keys_are_$ref_only(Object.keys(maybe)) &&
 			type_object_string_$ref_supported_array.includes(maybe.$ref)
-		);
-	}
-
-	public static is_supported_const_string_object(
-		maybe: any
-	): maybe is {type: 'string'; const: string} {
-		return (
-			'object' === typeof maybe &&
-			2 === Object.keys(maybe).length &&
-			object_has_property(maybe, 'type') &&
-			'string' === maybe.type &&
-			object_has_property(maybe, 'const') &&
-			typed_object_string_const_value_regex__native.test(maybe.const)
 		);
 	}
 
@@ -638,7 +625,7 @@ export class TypedObjectString {
 		const failed = Object.values(maybe).filter(
 			(e) =>
 				!this.is_$ref_object(e) &&
-				!this.is_supported_const_string_object(e) &&
+				!typed_string_const.is_supported_schema(e) &&
 				!this.is_supported_enum_string_object(e) &&
 				!this.is_supported_enum_string_sub_object(e) &&
 				!this.is_supported_typed_array_string(e) &&
@@ -742,8 +729,8 @@ export class TypedObjectString {
 						entry[0],
 						entry[1]
 					);
-				} else if (this.is_supported_const_string_object(entry[1])) {
-					return `(?:${entry[0]}=${entry[1].const})`;
+				} else if (typed_string_const.is_supported_schema(entry[1])) {
+					return typed_string_const.key_value_pair_regex(entry[0], entry[1]);
 				} else if (this.is_supported_enum_string_object(entry[1])) {
 					return `(?:${entry[0]}=(?:${Object.entries(entry[1]).map(
 						(sub_entry) => {
@@ -1003,11 +990,11 @@ export class TypedObjectString {
 							property,
 							value
 						);
-					} else if (this.is_supported_const_string_object(value)) {
-						return [
+					} else if (typed_string_const.is_supported_schema(value)) {
+						return typed_string_const.key_value_pair_literal_type_entry(
 							property,
-							create_literal_node_from_value(value.const),
-						];
+							value
+						);
 					} else if (this.is_supported_enum_string_object(value)) {
 						return [
 							property,
@@ -1051,11 +1038,11 @@ export class TypedObjectString {
 				Object.entries(data.typed_object_string).map((entry) => {
 					const [property, value] = entry;
 
-					if (this.is_supported_const_string_object(value)) {
-						return [
+					if (typed_string_const.is_supported_schema(value)) {
+						return typed_string_const.key_value_pair_literal_type_entry(
 							property,
-							create_literal_node_from_value(value.const),
-						];
+							value
+						);
 					} else if (this.is_supported_enum_string_object(value)) {
 						return [
 							property,

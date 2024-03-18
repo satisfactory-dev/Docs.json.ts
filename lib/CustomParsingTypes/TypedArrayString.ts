@@ -30,6 +30,7 @@ import {
 	TypesGenerationFromSchema,
 } from '../TypesGeneration';
 import ts, {TupleTypeNode, TypeAliasDeclaration} from 'typescript';
+import {typed_string_const} from './TypedStringConst';
 
 const already_configured = new WeakSet<Ajv>();
 
@@ -191,7 +192,7 @@ export class TypedArrayString {
 			return UnrealEngineStringReference.ajv_macro_generator(true)(
 				item.UnrealEngineStringReference
 			).pattern;
-		} else if (TypedObjectString.is_supported_const_string_object(item)) {
+		} else if (typed_string_const.is_supported_schema(item)) {
 			return `(?:(${item.const}|"${item.const}"))`;
 		}
 		if (

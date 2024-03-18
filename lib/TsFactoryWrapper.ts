@@ -1,12 +1,13 @@
 import ts, {
+	BooleanLiteral,
 	ClassDeclaration,
 	Expression,
 	HeritageClause,
-	KeywordTypeSyntaxKind,
+	KeywordTypeSyntaxKind, LiteralExpression,
 	LiteralTypeNode,
 	MethodDeclaration,
-	Modifier,
-	PropertyDeclaration,
+	Modifier, NullLiteral, PrefixUnaryExpression,
+	PropertyDeclaration, StringLiteral,
 	TypeLiteralNode,
 	TypeNode,
 	TypeParameterDeclaration,
@@ -892,14 +893,14 @@ export function create_index_access(identifier: string, index: number) {
 	);
 }
 
-export function create_literal_node_from_value(
-	value: string | null
-): ts.LiteralTypeNode {
+export function create_literal_node_from_value<T1 extends string|null = string|null, T2 = T1 extends null ? (ts.LiteralTypeNode & {literal: NullLiteral}) : (ts.LiteralTypeNode & {literal: StringLiteral})>(
+	value: T1
+): T2 {
 	return ts.factory.createLiteralTypeNode(
 		null === value
 			? ts.factory.createNull()
 			: ts.factory.createStringLiteral(value)
-	);
+	) as T2;
 }
 
 export function create_union(

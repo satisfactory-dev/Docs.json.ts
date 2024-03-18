@@ -1,3 +1,5 @@
+import {LiteralExpression, LiteralTypeNode} from 'typescript';
+
 export function object_has_property<T extends string = string>(
 	maybe: object,
 	property: T
@@ -47,4 +49,17 @@ export function object_only_has_that_property<T extends string = string>(
 	return (
 		object_has_property(maybe, property) && 1 === Object.keys(maybe).length
 	);
+}
+
+export abstract class SupportedSubSchemaType<
+	ObjectType extends {[key: string]: any},
+	LiteralType extends LiteralExpression
+> {
+	abstract is_supported_schema(maybe: any): maybe is ObjectType;
+
+	abstract value_regex(value: ObjectType): string;
+
+	abstract key_value_pair_regex(key: string, value: ObjectType): string;
+
+	abstract key_value_pair_literal_type_entry(key: string, value: ObjectType): [typeof key, LiteralTypeNode & {literal: LiteralType}];
 }
