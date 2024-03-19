@@ -51,11 +51,8 @@ const typed_array_string_oneOf_schema = {
 	type: 'array',
 	minItems: 1,
 	items: {
-		oneOf: [
-			UnrealEngineStringReference_general_schema,
-			$ref_schema,
-		]
-	}
+		oneOf: [UnrealEngineStringReference_general_schema, $ref_schema],
+	},
 };
 
 const typed_array_string_schema = {
@@ -79,8 +76,8 @@ const typed_array_string_schema = {
 					additionalProperties: false,
 					properties: {
 						oneOf: typed_array_string_oneOf_schema,
-					}
-				}
+					},
+				},
 			],
 		},
 	},
@@ -239,9 +236,9 @@ export const typed_array_string_parent_schema_without_recursive_reference = {
 
 declare type typed_array_string_oneOf = {
 	oneOf: [
-		($ref_choices|UnrealEngineStringReference_general_type),
-		...($ref_choices|UnrealEngineStringReference_general_type)[],
-	]
+		$ref_choices | UnrealEngineStringReference_general_type,
+		...($ref_choices | UnrealEngineStringReference_general_type)[],
+	];
 };
 
 declare type typed_array_string_supported_items =
@@ -441,7 +438,7 @@ export class TypedArrayString {
 				item.typed_object_string
 			).pattern;
 		} else if ('oneOf' in item) {
-			return `(?:${item.oneOf.map(e => this.item_to_regex(e)).join('|')})`;
+			return `(?:${item.oneOf.map((e) => this.item_to_regex(e)).join('|')})`;
 		}
 
 		throw new UnexpectedlyUnknownNoMatchError(
@@ -455,7 +452,7 @@ export class TypedArrayString {
 		reference_name: string
 	): TypeAliasDeclaration {
 		if (
-			! ('oneOf' in data.items) &&
+			!('oneOf' in data.items) &&
 			!is_UnrealEngineStringReference_general_object(data.items) &&
 			!TypedObjectString.value_is_typed_object_string_general_type(
 				data.items
@@ -498,15 +495,17 @@ export class TypedArrayString {
 				} else if (supported_$ref.is_supported_schema(data.items)) {
 					return supported_$ref.value_type(data.items);
 				} else if ('oneOf' in data.items) {
-					return ts.factory.createUnionTypeNode(data.items.oneOf.map((e) => {
-						if (supported_$ref.is_supported_schema(e)) {
-							return supported_$ref.value_type(e);
-						}
+					return ts.factory.createUnionTypeNode(
+						data.items.oneOf.map((e) => {
+							if (supported_$ref.is_supported_schema(e)) {
+								return supported_$ref.value_type(e);
+							}
 
-						return create_UnrealEngineStringReference_reference_type(
-							e.UnrealEngineStringReference
-						);
-					}));
+							return create_UnrealEngineStringReference_reference_type(
+								e.UnrealEngineStringReference
+							);
+						})
+					);
 				}
 
 				return TypedObjectString.general_type_to_object_type(
@@ -676,20 +675,24 @@ export class TypedArrayString {
 				{
 					definitions:
 						UnrealEngineStringReference_schema_definitions,
-					...typed_array_string_oneOf_schema
+					...typed_array_string_oneOf_schema,
 				},
 				(data) => {
 					return new TypeNodeGenerationResult(() => {
-						return ts.factory.createUnionTypeNode(data.oneOf.map(e => {
-							if (supported_$ref.is_supported_schema(e)) {
-								return supported_$ref.value_type(e);
-							}
+						return ts.factory.createUnionTypeNode(
+							data.oneOf.map((e) => {
+								if (supported_$ref.is_supported_schema(e)) {
+									return supported_$ref.value_type(e);
+								}
 
-							return create_UnrealEngineStringReference_reference_type(e.UnrealEngineStringReference);
-						}))
-					})
+								return create_UnrealEngineStringReference_reference_type(
+									e.UnrealEngineStringReference
+								);
+							})
+						);
+					});
 				}
-			)
+			),
 		];
 	}
 }
