@@ -16,6 +16,8 @@ import ts, {
 	UnionTypeNode,
 } from 'typescript';
 import {UnexpectedlyUnknownNoMatchError} from './SchemaBasedResultsMatching/TypeNodeGeneration';
+import {typed_object_string_type} from './CustomParsingTypes/TypedObjectString';
+import {schema} from './Schemas/Update8';
 
 declare type supported_property_modifiers = (
 	| 'public'
@@ -240,7 +242,7 @@ export type auto_constructor_property_types_from_generated_types_object<
 > = {
 	type: Type;
 	required: Required;
-	properties: auto_constructor_property_types_from_generated_types_properties<Properties>;
+	properties: {[key: string]: auto_constructor_property_types_from_generated_types_properties<Properties>}|typed_object_string_type|typeof schema.definitions['EditorCurveData--only']['typed_object_string']['EditorCurveData'];
 };
 
 export function create_callExpression__for_validation_function(

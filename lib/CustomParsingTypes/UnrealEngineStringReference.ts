@@ -773,7 +773,7 @@ export function create_conditional_UnrealEngineString_type_reference(): ts.TypeR
 }
 
 function is_string_or_string_array(
-	maybe: any
+	maybe: unknown
 ): maybe is string | [string, ...string[]] {
 	return (
 		'string' === typeof maybe ||
@@ -808,7 +808,7 @@ function is_UnrealEngineStringReference_value_object(
 }
 
 export function is_UnrealEngineStringReference_value(
-	maybe: any
+	maybe: unknown
 ): maybe is UnrealEngineStringReference_type {
 	return (
 		true === maybe ||

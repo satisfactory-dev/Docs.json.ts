@@ -93,7 +93,7 @@ type typed_object_string_$ref_only = {
 	[key: string]: type_object_string_$ref_choices;
 };
 
-type typed_object_string_type = {
+export type typed_object_string_type = {
 	[key: string]:
 		| {
 				type: 'string';
@@ -1068,7 +1068,10 @@ export class TypedObjectString {
 								properties: Object.fromEntries(
 									Object.entries(
 										data.typed_object_string
-									).map((e) => {
+									).map((e):  [
+										string,
+										auto_constructor_property_types_from_generated_types_properties
+									] => {
 										const [property, value] = e;
 
 										if (
@@ -1087,7 +1090,7 @@ export class TypedObjectString {
 
 										return [property, value];
 									})
-								) as any,
+								),
 							},
 							['public', 'readonly']
 						),
