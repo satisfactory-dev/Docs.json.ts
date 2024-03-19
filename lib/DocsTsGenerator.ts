@@ -769,8 +769,10 @@ export async function format_code(
 	);
 }
 
-export async function eslint_generated_types(files:string) {
+export async function eslint_generated_types(files: string) {
 	const results = await eslint.lintFiles(files);
 
-	process.stdout.write(`${await (await eslint_formatter).format(results)}\n`);
+	process.stdout.write(
+		`${await (await eslint_formatter).format(results)}\n`
+	);
 }
