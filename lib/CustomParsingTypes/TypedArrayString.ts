@@ -10,7 +10,6 @@ import {
 import {
 	typed_object_string_general_schema,
 	typed_object_string_general_type,
-	typed_object_string_nested_schema,
 	TypedObjectString,
 } from './TypedObjectString';
 import {
@@ -25,7 +24,6 @@ import {
 	create_minimum_size_typed_array_of_single_type,
 	create_modifier,
 	create_union,
-	possibly_create_lazy_union,
 } from '../TsFactoryWrapper';
 import {
 	TypesGeneration_concrete,
@@ -42,7 +40,6 @@ import {
 	typed_string_enum,
 	typed_string_enum_schema,
 } from './TypedStringEnum';
-import {object_only_has_that_property} from './CustomPairingTypes';
 import {$ref_choices, $ref_schema, supported_$ref} from './SupportedRefObject';
 import {supported_meta} from './SupportedMeta';
 
@@ -197,20 +194,6 @@ function generate_tuple_schema(
 
 const typed_array_string_tuple_2_schema = generate_tuple_schema(2);
 
-const typed_array_string_schema_without_recursive_reference = {
-	type: 'object',
-	required: ['type', 'minItems', 'items'],
-	additionalProperties: false,
-	properties: {
-		type: {type: 'string', const: 'array'},
-		minItems: {type: 'number', minimum: 1},
-		maxItems: {type: 'number', minimum: 1},
-		items: {
-			oneOf: [UnrealEngineStringReference_general_schema],
-		},
-	},
-};
-
 const typed_array_string_parent_schema = {
 	type: 'object',
 	required: ['type', 'minLength', 'typed_array_string'],
@@ -224,18 +207,6 @@ const typed_array_string_parent_schema = {
 				typed_array_string_tuple_2_schema,
 			],
 		},
-	},
-};
-
-export const typed_array_string_parent_schema_without_recursive_reference = {
-	type: 'object',
-	required: ['type', 'minLength', 'typed_array_string'],
-	additionalProperties: false,
-	properties: {
-		type: {type: 'string', const: 'string'},
-		minLength: {type: 'number', const: 1},
-		typed_array_string:
-			typed_array_string_schema_without_recursive_reference,
 	},
 };
 
@@ -602,8 +573,6 @@ export class TypedArrayString {
 	private static typed_array_string_node_generation_result(
 		data: typed_array_string
 	): TypeNodeGenerationResult {
-		const {items} = data;
-
 		if (
 			!('oneOf' in data.items) &&
 			!is_UnrealEngineStringReference_general_object(data.items) &&

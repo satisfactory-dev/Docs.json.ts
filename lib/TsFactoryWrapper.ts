@@ -1,16 +1,13 @@
 import ts, {
-	BooleanLiteral,
 	ClassDeclaration,
 	Expression,
 	HeritageClause,
 	KeywordTypeSyntaxKind,
-	LiteralExpression,
 	LiteralTypeNode,
 	MethodDeclaration,
 	Modifier,
 	NodeArray,
 	NullLiteral,
-	PrefixUnaryExpression,
 	PropertyDeclaration,
 	StringLiteral,
 	TypeLiteralNode,
@@ -639,28 +636,6 @@ export function create_template_span(
 	);
 }
 
-export function create_basic_reference_argument_template_span(
-	head: string,
-	identifier: string,
-	tail: string | undefined = undefined
-) {
-	if (undefined === tail) {
-		tail = identifier;
-		identifier = head;
-		head = '';
-	}
-
-	return ts.factory.createTemplateExpression(
-		ts.factory.createTemplateHead(head),
-		[
-			ts.factory.createTemplateSpan(
-				ts.factory.createIdentifier(identifier),
-				ts.factory.createTemplateTail(tail)
-			),
-		]
-	);
-}
-
 export function very_flexibly_create_regex_validation_function(
 	reference_name: string,
 	regexp_argument: ts.Expression,
@@ -855,41 +830,6 @@ export function create_this_assignment(
 				: identifier
 		)
 	);
-}
-
-export function create_minimum_size_typed_array_of_type_references(
-	reference_name: string,
-	type_parameters_generator: () => [ts.TypeNode, ...ts.TypeNode[]],
-	repeat: number = 1
-) {
-	if (repeat < 1) {
-		throw new Error(
-			`repeat must be greater than or equal to 1, ${repeat} given.`
-		);
-	} else if (repeat !== (repeat | 0)) {
-		throw new Error(`repeat must be an integer, ${repeat} given.`);
-	}
-
-	function generate(): ts.TypeReferenceNode {
-		return ts.factory.createTypeReferenceNode(
-			reference_name,
-			type_parameters_generator()
-		);
-	}
-
-	const types: (ts.TypeReferenceNode | ts.RestTypeNode)[] = [generate()];
-
-	for (let iteration = 1; iteration < repeat; ++iteration) {
-		types.push(generate());
-	}
-
-	types.push(
-		ts.factory.createRestTypeNode(
-			ts.factory.createArrayTypeNode(generate())
-		)
-	);
-
-	return ts.factory.createTupleTypeNode(types);
 }
 
 export function create_index_access(identifier: string, index: number) {

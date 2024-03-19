@@ -1,11 +1,7 @@
 import Ajv, {_, KeywordCxt} from 'ajv/dist/2020';
-
-import schema from '../schema/update8.schema.json' assert {type: 'json'};
 import {UnrealEngineStringReference} from './CustomParsingTypes/UnrealEngineStringReference';
 import {TypedObjectString} from './CustomParsingTypes/TypedObjectString';
 import {TypedArrayString} from './CustomParsingTypes/TypedArrayString';
-
-const {definitions} = schema;
 
 declare type array_tokenizer = {
 	values: any[];
@@ -240,13 +236,6 @@ export function string_to_array<T extends any[]>(data: string): T | false {
 			}
 		).values as T;
 }
-
-export type array_string_schema_type = {
-	type: 'array';
-	minItems?: number;
-	maxItems?: number;
-	prefixItems?: [object, ...object[]];
-} & ({items: object} | {items: false});
 
 const already_configured = new WeakSet();
 

@@ -7,7 +7,6 @@ import {
 	UnexpectedlyUnknownNoMatchError,
 } from './SchemaBasedResultsMatching/TypeNodeGeneration';
 import {
-	object_has_property,
 	object_only_has_that_property,
 } from './CustomParsingTypes/CustomPairingTypes';
 

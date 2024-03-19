@@ -6,7 +6,6 @@ import {
 	create_literal_node_from_value,
 	create_method_with_type_parameters,
 	create_method_without_type_parameters,
-	create_minimum_size_typed_array_of_type_references,
 	create_modifier,
 	create_template_span,
 	create_this_assignment,
@@ -24,7 +23,6 @@ import {
 import {
 	TypesGeneration_concrete,
 	TypesGenerationFromSchema,
-	TypesGenerationMatchesReferenceName,
 } from '../TypesGeneration';
 import {
 	object_has_property,

@@ -4,7 +4,6 @@ import {
 	adjust_class_name,
 	create_minimum_size_typed_array_of_single_type,
 	create_modifier,
-	create_object_type,
 } from '../TsFactoryWrapper';
 import {
 	TypeNodeGeneration,

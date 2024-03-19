@@ -2,9 +2,7 @@ import {TypesGenerationFromSchema} from '../TypesGeneration';
 import ts from 'typescript';
 import {
 	adjust_class_name,
-	create_minimum_size_typed_array_of_single_type,
 	create_modifier,
-	create_object_type,
 	create_union,
 	possibly_create_lazy_union,
 } from '../TsFactoryWrapper';
@@ -146,7 +144,7 @@ export const generators = [
 
 						throw new UnexpectedlyUnknownNoMatchError(
 							entry,
-							'Unsuppported type!'
+							'Unsupported type!'
 						);
 					})
 				)

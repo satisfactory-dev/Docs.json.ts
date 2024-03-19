@@ -10,7 +10,6 @@ import {
 import {
 	create_typed_union,
 	non_empty_string_literal_union,
-	possibly_create_lazy_union,
 } from '../TsFactoryWrapper';
 
 export type enum_schema_type = {type: 'string'; enum: [string, ...string[]]};

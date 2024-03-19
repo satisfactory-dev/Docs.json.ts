@@ -574,7 +574,7 @@ export class TypedObjectString {
 		} else if (undefined === $ref) {
 			throw new UnexpectedlyUnknownNoMatchError(
 				value,
-				'something probably snuck through from elsewhere'
+				'type safety in here is a bit fragile, check earlier in the stack'
 			);
 		} else if (
 			$ref.startsWith('#/definitions/integer-string') ||
@@ -846,7 +846,7 @@ export class TypedObjectString {
 					const unreal_engine_regex =
 						UnrealEngineStringReference.ajv_macro_generator(true)(
 							entry[1].typed_array_string.items
-								.UnrealEngineStringReference
+								?.UnrealEngineStringReference
 						).pattern;
 
 					return `(?:${annoyingly_have_to_escape_property(entry[0])}=\\(${unreal_engine_regex}(?:,${unreal_engine_regex})*\\))`;
@@ -890,8 +890,6 @@ export class TypedObjectString {
 							'Not quite supported here yet'
 						);
 					}
-
-					const foo = items;
 
 					return `(?:${annoyingly_have_to_escape_property(entry[0])}=(?:${items.map((e) => this.property_to_regex(e.typed_object_string)).join('|')}))`;
 				}

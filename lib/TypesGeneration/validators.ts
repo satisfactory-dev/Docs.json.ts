@@ -6,7 +6,6 @@ import {
 } from '../TypesGeneration';
 import {
 	adjust_class_name,
-	create_basic_reference_argument_template_span,
 	create_function,
 	create_modifier,
 	create_throw_if,
