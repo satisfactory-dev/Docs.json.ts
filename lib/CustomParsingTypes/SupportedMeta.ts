@@ -19,15 +19,15 @@ function find(value: any): SupportedSubSchemaType<any, any> {
 	return match;
 }
 
-class SupportedMeta extends SupportedSubSchemaType<any, any> {
-	is_supported_schema(maybe: any): maybe is any {
+class SupportedMeta extends SupportedSubSchemaType<{[key: string]: unknown}, any> {
+	is_supported_schema(maybe: {[key: string]: unknown}): maybe is {[key: string]: unknown} {
 		return -1 !== supported.findIndex((e) => e.is_supported_schema(maybe));
 	}
 
-	value_regex(value: any): string {
+	value_regex(value: unknown): string {
 		return find(value).value_regex(value);
 	}
-	value_type(value: any) {
+	value_type(value: unknown) {
 		return find(value).value_type(value);
 	}
 }

@@ -681,7 +681,10 @@ export class TypedObjectString {
 		const failed = Object.values(maybe).filter(
 			(e) =>
 				!this.is_$ref_object(e) &&
-				!supported_meta.is_supported_schema(e) &&
+				!(
+					value_is_non_array_object(e) &&
+					supported_meta.is_supported_schema(e)
+				) &&
 				!this.is_supported_enum_string_object(e) &&
 				!this.is_supported_typed_array_string(e) &&
 				!(

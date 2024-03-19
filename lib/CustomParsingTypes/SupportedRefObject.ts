@@ -1,6 +1,7 @@
 import {
 	object_only_has_that_property,
 	SupportedSubSchemaType,
+	value_is_non_array_object,
 } from './CustomPairingTypes';
 import ts, {TypeReferenceNode} from 'typescript';
 import {adjust_class_name} from '../TsFactoryWrapper';
@@ -46,9 +47,9 @@ class SupportedRefObject extends SupportedSubSchemaType<
 	$ref_choices,
 	TypeReferenceNode
 > {
-	is_supported_schema(maybe: any): maybe is $ref_choices {
+	is_supported_schema(maybe: unknown): maybe is $ref_choices {
 		return (
-			'object' === typeof maybe &&
+			value_is_non_array_object(maybe) &&
 			object_only_has_that_property(maybe, '$ref') &&
 			$ref_supported_array.includes(maybe.$ref)
 		);
