@@ -274,10 +274,7 @@ export class UnrealEngineStringReference {
 		};
 	}
 
-	static TypesGenerators(): [
-		TypesGeneration_concrete,
-		...TypesGeneration_concrete[],
-	] {
+	static TypesGenerators() {
 		return [
 			new TypesGenerationFromSchema<UnrealEngineStringReference_general_type>(
 				{

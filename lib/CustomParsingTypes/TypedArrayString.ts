@@ -478,10 +478,7 @@ export class TypedArrayString {
 		return !('prefixItems' in maybe.typed_array_string.items);
 	}
 
-	static TypesGenerators(): [
-		TypesGeneration_concrete,
-		...TypesGeneration_concrete[],
-	] {
+	static TypesGenerators() {
 		return [
 			new TypesGenerationFromSchema<typed_array_string_parent>(
 				{

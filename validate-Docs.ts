@@ -39,7 +39,8 @@ try {
 			process.stdout.write(JSON.stringify(error, null, '\t') + '\n');
 		}
 	} else if (err instanceof NoMatchError) {
-		const {property, stack, ...rest} = err;
+		const {property, ...rest} = err;
+		delete rest.stack;
 		process.stdout.write(JSON.stringify(property, null, '\t') + '\n');
 		console.error(rest);
 	} else {

@@ -473,7 +473,7 @@ export abstract class ResultGenerationMatcher<
 		property: object,
 		already_checked: (keyof typeof this.definitions_to_check)[] = []
 	): MatchResult {
-		let match = this.search(ajv, property, already_checked);
+		const match = this.search(ajv, property, already_checked);
 
 		if (match) {
 			return match;

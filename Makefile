@@ -27,6 +27,7 @@ lint-lib:
 
 lint: lint-lib
 	${DOCKER_PREFIX} ${DOCKER_IMAGE} ./node_modules/.bin/prettier . --check
+	${DOCKER_PREFIX} ${DOCKER_IMAGE} ./node_modules/.bin/eslint . --fix-dry-run
 
 lint-fix:
 	${DOCKER_PREFIX} ${DOCKER_IMAGE} ./node_modules/.bin/prettier . --write

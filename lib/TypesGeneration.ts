@@ -26,9 +26,9 @@ export abstract class TypesGeneration<
 	abstract test(data: T2): boolean;
 }
 
-export type TypesGeneration_concrete =
-	| TypesGenerationFromSchema<any>
-	| TypesGenerationMatchesReferenceName<any, any>;
+export type TypesGeneration_concrete<T extends object = object> =
+	| TypesGenerationFromSchema<T>
+	| TypesGenerationMatchesReferenceName<T, string>;
 
 export class TypesGenerationFromSchema<
 	T extends object | true,
@@ -101,16 +101,12 @@ export class TypesGenerationMatchesReferenceName<
 export class GenerationMatch<T extends object> {
 	readonly definition: string;
 	readonly data: T;
-	readonly generation:
-		| TypesGenerationFromSchema<T>
-		| TypesGenerationMatchesReferenceName<T, any>;
+	readonly generation: TypesGeneration_concrete<T>;
 
 	constructor(
 		definition: string,
 		data: T,
-		generation:
-			| TypesGenerationFromSchema<T>
-			| TypesGenerationMatchesReferenceName<T, any>
+		generation: TypesGeneration_concrete<T>
 	) {
 		this.definition = definition;
 		this.data = data;

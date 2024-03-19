@@ -926,10 +926,7 @@ export class TypedObjectString {
 		};
 	}
 
-	static TypesGenerators(): [
-		TypesGeneration_concrete,
-		...TypesGeneration_concrete[],
-	] {
+	static TypesGenerators() {
 		return [
 			new TypesGenerationFromSchema<typed_object_string_general_type>(
 				{
