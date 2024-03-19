@@ -11,9 +11,7 @@ import {
 	UnrealEngineStringReference_schema_definitions,
 } from './UnrealEngineStringReference';
 import schema from '../../schema/update8.schema.json' assert {type: 'json'};
-import {
-	TypesGenerationFromSchema,
-} from '../TypesGeneration';
+import {TypesGenerationFromSchema} from '../TypesGeneration';
 import {
 	adjust_class_name,
 	auto_constructor_property_types_from_generated_types,

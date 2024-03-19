@@ -582,24 +582,24 @@ export class DocsTsGenerator {
 			await unlink(remove);
 		}
 
-			type class_can_have_tree = ts.ClassDeclaration & {
-				heritageClauses: [{types: [{expression: ts.Identifier}]}];
-			};
+		type class_can_have_tree = ts.ClassDeclaration & {
+			heritageClauses: [{types: [{expression: ts.Identifier}]}];
+		};
 
-			function can_class_have_tree(
-				class_node: ts.ClassDeclaration
-			): class_node is class_can_have_tree {
-				const heritage = [...(class_node.heritageClauses || [])].map(
-					(e) => e.types
-				);
+		function can_class_have_tree(
+			class_node: ts.ClassDeclaration
+		): class_node is class_can_have_tree {
+			const heritage = [...(class_node.heritageClauses || [])].map(
+				(e) => e.types
+			);
 
-				return (
-					1 === heritage.length &&
-					1 === heritage[0].length &&
-					ts.isExpressionWithTypeArguments(heritage[0][0]) &&
-					ts.isIdentifier(heritage[0][0].expression)
-				);
-			}
+			return (
+				1 === heritage.length &&
+				1 === heritage[0].length &&
+				ts.isExpressionWithTypeArguments(heritage[0][0]) &&
+				ts.isIdentifier(heritage[0][0].expression)
+			);
+		}
 
 		for (const entry of Object.entries(files)) {
 			const result_file = ts.createSourceFile(

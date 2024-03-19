@@ -24,9 +24,7 @@ import {
 	create_modifier,
 	create_union,
 } from '../TsFactoryWrapper';
-import {
-	TypesGenerationFromSchema,
-} from '../TypesGeneration';
+import {TypesGenerationFromSchema} from '../TypesGeneration';
 import ts, {TupleTypeNode, TypeAliasDeclaration} from 'typescript';
 import {
 	const_schema_type,

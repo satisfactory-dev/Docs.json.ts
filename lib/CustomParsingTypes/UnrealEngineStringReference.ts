@@ -20,9 +20,7 @@ import {
 	TypeNodeGeneration,
 	TypeNodeGenerationResult,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
-import {
-	TypesGenerationFromSchema,
-} from '../TypesGeneration';
+import {TypesGenerationFromSchema} from '../TypesGeneration';
 import {
 	object_has_property,
 	value_is_non_array_object,
@@ -234,7 +232,9 @@ export class UnrealEngineStringReference {
 
 	static ajv_macro_generator(inner: boolean) {
 		return (data_from_schema: UnrealEngineStringReference_type) => {
-			const data: Exclude<typeof data_from_schema, true> | typeof empty_object =
+			const data:
+				| Exclude<typeof data_from_schema, true>
+				| typeof empty_object =
 				true === data_from_schema ? {} : data_from_schema;
 			const left_value = (
 				'left' in data
@@ -669,7 +669,7 @@ const empty_object = {};
 export function create_UnrealEngineStringReference_reference_type(
 	data_from_schema: UnrealEngineStringReference_type
 ): TypeReferenceNode {
-	const data: (Exclude<typeof data_from_schema, true> | typeof empty_object) =
+	const data: Exclude<typeof data_from_schema, true> | typeof empty_object =
 		true === data_from_schema ? {} : data_from_schema;
 
 	let left_value: TypeNode = create_literal_node_from_value(
