@@ -9,7 +9,8 @@ import {
 } from './UnrealEngineStringReference';
 import {
 	typed_object_string_general_schema,
-	typed_object_string_general_type, typed_object_string_nested_schema,
+	typed_object_string_general_type,
+	typed_object_string_nested_schema,
 	TypedObjectString,
 } from './TypedObjectString';
 import {
