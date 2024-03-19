@@ -17,7 +17,6 @@ import {
 	TypeNodeGenerationResult,
 	UnexpectedlyUnknownNoMatchError,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
-import {writeFile} from 'node:fs/promises';
 import {
 	adjust_class_name,
 	create_literal_node_from_value,
@@ -26,7 +25,6 @@ import {
 	create_union,
 } from '../TsFactoryWrapper';
 import {
-	TypesGeneration_concrete,
 	TypesGenerationFromSchema,
 } from '../TypesGeneration';
 import ts, {TupleTypeNode, TypeAliasDeclaration} from 'typescript';
@@ -118,7 +116,7 @@ declare type generate_tuple_schema_type<
 			};
 		};
 	} & (array_max_size extends undefined
-		? {}
+		? typeof empty_object
 		: {maxItems: {type: 'number'; const: array_max_size}});
 };
 
@@ -225,11 +223,13 @@ declare type typed_array_string_supported_items =
 	| UnrealEngineStringReference_general_type
 	| typed_object_string_general_type;
 
+const empty_object = {};
+
 declare type typed_array_string = {
 	type: 'array';
 	minItems: number;
 	items: typed_array_string_supported_items;
-} & ({maxItems: number} | {});
+} & ({maxItems: number} | typeof empty_object);
 
 declare type typed_array_string_tuple_2 = {
 	type: 'array';
@@ -241,7 +241,7 @@ declare type typed_array_string_tuple_2 = {
 		items: false;
 		prefixItems: [$ref_choices, $ref_choices];
 	};
-} & ({maxItems: number} | {});
+} & ({maxItems: number} | typeof empty_object);
 
 declare type typed_array_string_without_recursive_reference = {
 	type: 'array';
@@ -250,7 +250,7 @@ declare type typed_array_string_without_recursive_reference = {
 		typed_array_string_supported_items,
 		typed_object_string_general_type | enum_schema_type
 	>;
-} & ({maxItems: number} | {});
+} & ({maxItems: number} | typeof empty_object);
 
 declare type typed_array_string_parent = {
 	type: 'string';

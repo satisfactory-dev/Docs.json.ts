@@ -582,21 +582,6 @@ export class DocsTsGenerator {
 			await unlink(remove);
 		}
 
-		for (const entry of Object.entries(files)) {
-			const result_file = ts.createSourceFile(
-				entry[0],
-				'',
-				ts.ScriptTarget.Latest,
-				false,
-				ts.ScriptKind.TS
-			);
-
-			const classes = entry[1].filter(ts.isClassDeclaration);
-
-			const classes_mapped = Object.fromEntries(
-				classes.map((e) => [e.name?.escapedText + '', e])
-			);
-
 			type class_can_have_tree = ts.ClassDeclaration & {
 				heritageClauses: [{types: [{expression: ts.Identifier}]}];
 			};
@@ -615,6 +600,21 @@ export class DocsTsGenerator {
 					ts.isIdentifier(heritage[0][0].expression)
 				);
 			}
+
+		for (const entry of Object.entries(files)) {
+			const result_file = ts.createSourceFile(
+				entry[0],
+				'',
+				ts.ScriptTarget.Latest,
+				false,
+				ts.ScriptKind.TS
+			);
+
+			const classes = entry[1].filter(ts.isClassDeclaration);
+
+			const classes_mapped = Object.fromEntries(
+				classes.map((e) => [e.name?.escapedText + '', e])
+			);
 
 			const class_can_have_trees = Object.fromEntries(
 				classes

@@ -84,7 +84,7 @@ export const generators = [
 				$ref: {type: 'string', const: '#/definitions/None'},
 			},
 		},
-		(data, reference_name) => {
+		(_, reference_name) => {
 			return ts.factory.createTypeAliasDeclaration(
 				[create_modifier('export')],
 				adjust_class_name(reference_name),

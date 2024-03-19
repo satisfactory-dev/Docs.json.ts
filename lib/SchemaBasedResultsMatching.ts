@@ -53,13 +53,15 @@ declare type tuple_array_validator = ValidateFunction<{
 	prefixItems: [any, any];
 }>;
 
+const empty_object = {};
+
 export type array_match_type = {
 	type: 'array';
 	items: {
 		anyOf: [object, ...object[]];
 	};
-} & ({minItems: number} | {}) &
-	({maxItems: number} | {});
+} & ({minItems: number} | typeof empty_object) &
+	({maxItems: number} | typeof empty_object);
 
 declare type array_validator = ValidateFunction<array_match_type>;
 

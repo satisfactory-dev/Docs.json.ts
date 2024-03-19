@@ -12,7 +12,6 @@ import {
 } from './UnrealEngineStringReference';
 import schema from '../../schema/update8.schema.json' assert {type: 'json'};
 import {
-	TypesGeneration_concrete,
 	TypesGenerationFromSchema,
 } from '../TypesGeneration';
 import {
@@ -49,7 +48,6 @@ import {
 	typed_string_enum,
 	typed_string_enum_schema,
 } from './TypedStringEnum';
-import {writeFile} from 'node:fs/promises';
 import {supported_meta} from './SupportedMeta';
 import {supported_$ref} from './SupportedRefObject';
 
@@ -112,15 +110,17 @@ type typed_object_string_type = {
 		| typed_object_string_$ref_only;
 };
 
+const empty_object = {};
+
 export type typed_object_string_general_type = {
 	type: 'string';
 	typed_object_string: typed_object_string_type;
-} & ({minLength: 1} | {});
+} & ({minLength: 1} | typeof empty_object);
 
 type typed_object_string_nested_type = {
 	type: 'string';
 	typed_object_string: {[key: string]: typed_object_string_general_type};
-} & ({minLength: 1} | {});
+} & ({minLength: 1} | typeof empty_object);
 
 type typed_object_string_array_type = [
 	typed_object_string_general_type,

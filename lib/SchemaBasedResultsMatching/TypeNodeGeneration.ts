@@ -87,9 +87,7 @@ export class NoMatchError<
 	T extends object | unknown = object,
 > extends UnsuccessfulMatchException<T> {}
 
-export class UnexpectedlyUnknownNoMatchError<
-	T extends unknown = unknown,
-> extends NoMatchError<T> {}
+export class UnexpectedlyUnknownNoMatchError extends NoMatchError<unknown> {}
 
 export class OneOfOrAnyOfNoMatchError extends NoMatchError<object[]> {}
 
@@ -334,6 +332,8 @@ export function create_constructor_args<T1 extends string = string>(
 	};
 }
 
+const empty_object = {};
+
 declare type object_shorthand = (
 	| {
 			required: string[];
@@ -350,7 +350,7 @@ declare type object_shorthand = (
 		| {
 				properties: {[key: string]: object};
 		  }
-		| {}
+		| typeof empty_object
 	);
 
 export function create_binding_constructor(

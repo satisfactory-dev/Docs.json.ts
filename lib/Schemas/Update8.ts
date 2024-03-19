@@ -10,6 +10,8 @@ declare type NativeClass__Classes__items =
 	| {anyOf: [object_with_ref, ...object_with_ref[]]}
 	| {oneOf: [object_with_ref, ...object_with_ref[]]};
 
+const empty_object = {};
+
 export type NativeClass = {
 	type: string;
 	additionalProperties: boolean;
@@ -20,7 +22,7 @@ export type NativeClass = {
 					type: string;
 					minItems: number;
 					items: NativeClass__Classes__items;
-			  } & ({maxItems: number} | {}))
+			  } & ({maxItems: number} | typeof empty_object))
 			| {
 					type: string;
 					minItems: number;

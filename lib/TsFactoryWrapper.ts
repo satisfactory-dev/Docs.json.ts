@@ -160,7 +160,7 @@ export function createClass(
 		| undefined = undefined
 ): ClassDeclaration {
 	let resolved_modifiers: undefined | Modifier[] = undefined;
-	let resolved_heritage: HeritageClause[] = [];
+	const resolved_heritage: HeritageClause[] = [];
 
 	const {modifiers, extends: class_extends} = options;
 
@@ -760,7 +760,7 @@ export function create_object_type_alias<
 }
 
 export function needs_element_access(property: string): boolean {
-	return /[?\[\]]/.test(property);
+	return /[?[\]]/.test(property);
 }
 
 export function computed_property_name_or_undefined(

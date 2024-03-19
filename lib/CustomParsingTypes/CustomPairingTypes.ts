@@ -41,7 +41,7 @@ export function value_is_non_array_object(
 	return 'object' === typeof maybe && !(maybe instanceof Array);
 }
 
-export function array_is_non_empty<T extends any = any>(
+export function array_is_non_empty<T = unknown>(
 	maybe: T[]
 ): maybe is [T, ...T[]] {
 	return maybe.length >= 1;
@@ -57,7 +57,7 @@ export function object_only_has_that_property<T extends string = string>(
 }
 
 export function annoyingly_have_to_escape_property(property: string): string {
-	return property.replace(/([\[\]])/g, '\\$1');
+	return property.replace(/([[\]])/g, '\\$1');
 }
 
 export abstract class SupportedSubSchemaType<

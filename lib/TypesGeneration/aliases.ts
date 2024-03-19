@@ -25,7 +25,7 @@ export const generators = [
 	new TypesGenerationMatchesReferenceName<
 		{type: 'string'},
 		keyof typeof target_files
-	>(string_aliases, (data, reference_name) => {
+	>(string_aliases, (_, reference_name) => {
 		return ts.factory.createTypeAliasDeclaration(
 			[create_modifier('export')],
 			adjust_class_name(reference_name),
