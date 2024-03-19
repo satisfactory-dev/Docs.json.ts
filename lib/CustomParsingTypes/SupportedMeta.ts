@@ -19,8 +19,13 @@ function find(value: any): SupportedSubSchemaType<any, any> {
 	return match;
 }
 
-class SupportedMeta extends SupportedSubSchemaType<{[key: string]: unknown}, any> {
-	is_supported_schema(maybe: {[key: string]: unknown}): maybe is {[key: string]: unknown} {
+class SupportedMeta extends SupportedSubSchemaType<
+	{[key: string]: unknown},
+	any
+> {
+	is_supported_schema(maybe: {
+		[key: string]: unknown;
+	}): maybe is {[key: string]: unknown} {
 		return -1 !== supported.findIndex((e) => e.is_supported_schema(maybe));
 	}
 
