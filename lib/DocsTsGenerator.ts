@@ -334,13 +334,6 @@ export class DocsTsGenerator {
 	}
 
 	/**
-	 * @deprecated Provided only as a temporary measure due to the current poor performance of validation
-	 */
-	async unsafe_get<T extends DocsData = DocsData>(): Promise<T> {
-		return this.load();
-	}
-
-	/**
 	 * @throws {GenerationException}
 	 */
 	async generate_types(
