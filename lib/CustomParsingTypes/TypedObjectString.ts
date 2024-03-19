@@ -676,7 +676,10 @@ export class TypedObjectString {
 				!supported_meta.is_supported_schema(e) &&
 				!this.is_supported_enum_string_object(e) &&
 				!this.is_supported_typed_array_string(e) &&
-				!(value_is_non_array_object(e) && this.is_$ref_object_dictionary(e)) &&
+				!(
+					value_is_non_array_object(e) &&
+					this.is_$ref_object_dictionary(e)
+				) &&
 				!is_UnrealEngineStringReference_general_object(e) &&
 				!this.value_is_typed_object_string_general_type(e) &&
 				!TypedObjectString.object_is_typed_object_string_oneOf(
