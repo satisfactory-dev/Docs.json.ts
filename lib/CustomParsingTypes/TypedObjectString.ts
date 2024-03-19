@@ -442,7 +442,10 @@ export class TypedObjectString {
 			}
 
 			if (!this.is_$ref_object_dictionary(definition)) {
-				throw new UnexpectedlyUnknownNoMatchError(definition, `${$ref} not supported!`);
+				throw new UnexpectedlyUnknownNoMatchError(
+					definition,
+					`${$ref} not supported!`
+				);
 			}
 
 			value_regex = this.property_to_regex(definition);
@@ -954,19 +957,20 @@ export class TypedObjectString {
 							)
 						);
 					} else if (is_$ref_object_dictionary) {
-					if (
-						!this.$ref_object_dictionary_is_auto_constructor_properties(
-							typed_object_string
-						)
-					) {
-						return ts.factory.createTypeAliasDeclaration(
-							[create_modifier('export')],
-							adjust_class_name(reference_name),
-							undefined,
-							create_object_type(
-								Object.fromEntries(
-									Object.entries(typed_object_string).map(
-										(entry) => {
+						if (
+							!this.$ref_object_dictionary_is_auto_constructor_properties(
+								typed_object_string
+							)
+						) {
+							return ts.factory.createTypeAliasDeclaration(
+								[create_modifier('export')],
+								adjust_class_name(reference_name),
+								undefined,
+								create_object_type(
+									Object.fromEntries(
+										Object.entries(
+											typed_object_string
+										).map((entry) => {
 											return [
 												entry[0],
 												ts.factory.createTypeReferenceNode(
@@ -977,33 +981,34 @@ export class TypedObjectString {
 													)
 												),
 											];
-										}
+										})
 									)
 								)
-							)
+							);
+						}
+
+						return createClass(
+							adjust_class_name(reference_name),
+							createClass__members__with_auto_constructor(
+								{
+									type: 'object',
+									required: Object.keys(
+										typed_object_string
+									) as [string, ...string[]],
+									properties: typed_object_string,
+								},
+								['public', 'readonly']
+							),
+							{
+								modifiers: ['export'],
+							}
 						);
 					}
 
-					return createClass(
-						adjust_class_name(reference_name),
-						createClass__members__with_auto_constructor(
-							{
-								type: 'object',
-								required: Object.keys(typed_object_string) as [
-									string,
-									...string[],
-								],
-								properties: typed_object_string,
-							},
-							['public', 'readonly']
-						),
-						{
-							modifiers: ['export'],
-						}
+					throw new UnexpectedlyUnknownNoMatchError(
+						data,
+						'not yet supported'
 					);
-					}
-
-					throw new UnexpectedlyUnknownNoMatchError(data, 'not yet supported');
 				}
 			),
 			new TypesGenerationFromSchema<{

@@ -119,7 +119,10 @@ export class DocsTsAutoImports {
 
 			for (const export_name of exports_these) {
 				if (export_name in this.comes_from) {
-					throw new UnexpectedlyUnknownNoMatchError(entry, `${export_name} conflict!`);
+					throw new UnexpectedlyUnknownNoMatchError(
+						entry,
+						`${export_name} conflict!`
+					);
 				}
 
 				this.comes_from[export_name] = filename.replace(/\.ts$/, '');

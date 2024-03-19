@@ -497,7 +497,10 @@ export class TypedArrayString {
 						);
 					}
 
-					throw new UnexpectedlyUnknownNoMatchError(data, 'not yet supported');
+					throw new UnexpectedlyUnknownNoMatchError(
+						data,
+						'not yet supported'
+					);
 				}
 			),
 			new TypesGenerationFromSchema<typed_array_string>(
@@ -526,7 +529,10 @@ export class TypedArrayString {
 							return this.typed_array(e.typed_array_string);
 						}
 
-						throw new UnexpectedlyUnknownNoMatchError(e, 'not yet supported');
+						throw new UnexpectedlyUnknownNoMatchError(
+							e,
+							'not yet supported'
+						);
 					});
 
 					return ts.factory.createTypeAliasDeclaration(

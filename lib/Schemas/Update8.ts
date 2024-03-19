@@ -60,7 +60,10 @@ export function is_ref(ref: string): ref is definition_key & typeof ref {
 
 export function check_ref(ref: string): definition_key & typeof ref {
 	if (!is_ref(ref)) {
-		throw new UnexpectedlyUnknownNoMatchError({ref}, `not in the update 8 schema!`);
+		throw new UnexpectedlyUnknownNoMatchError(
+			{ref},
+			`not in the update 8 schema!`
+		);
 	}
 
 	return ref as definition_key & typeof ref;

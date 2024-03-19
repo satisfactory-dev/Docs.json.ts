@@ -7,7 +7,8 @@ import ts from 'typescript';
 import {TypesGenerationMatchesReferenceName} from '../TypesGeneration';
 import {
 	TypeNodeGeneration,
-	TypeNodeGenerationResult, UnexpectedlyUnknownNoMatchError,
+	TypeNodeGenerationResult,
+	UnexpectedlyUnknownNoMatchError,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 import {TypedObjectString} from '../CustomParsingTypes/TypedObjectString';
 import {TypedArrayString} from '../CustomParsingTypes/TypedArrayString';
