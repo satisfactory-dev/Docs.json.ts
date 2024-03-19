@@ -7,7 +7,6 @@ import {adjust_class_name} from '../TsFactoryWrapper';
 import {UnrealEngineStringReference} from './UnrealEngineStringReference';
 import update8_schema from '../../schema/update8.schema.json' assert {type: 'json'};
 
-
 const UnrealEngineStringReference_inner =
 	UnrealEngineStringReference.ajv_macro_generator(true);
 
@@ -17,11 +16,11 @@ const $ref_supported = {
 		UnrealEngineStringReference_inner(
 			update8_schema.definitions[
 				'FGSchematic--mUnlocks_mSchematics--mSchematics'
-				].UnrealEngineStringReference
+			].UnrealEngineStringReference
 		).pattern,
 	'#/definitions/None': 'None',
 	'#/definitions/integer-string': '\\d+',
-	'#/definitions/decimal-string': '\\d+\.\\d+',
+	'#/definitions/decimal-string': '\\d+.\\d+',
 };
 
 const $ref_supported_array = Object.keys(
@@ -61,7 +60,9 @@ class SupportedRefObject extends SupportedSubSchemaType<
 		const ref = value.$ref.substring(14);
 
 		return ts.factory.createTypeReferenceNode(
-			adjust_class_name(`${ref}${(ref.startsWith('integer-string') || ref.startsWith('decimal-string')) ? '--type' : ''}`)
+			adjust_class_name(
+				`${ref}${ref.startsWith('integer-string') || ref.startsWith('decimal-string') ? '--type' : ''}`
+			)
 		);
 	}
 }
