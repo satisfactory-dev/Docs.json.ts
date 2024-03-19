@@ -18,7 +18,8 @@ import {
 	create_UnrealEngineStringReference_reference_type,
 	UnrealEngineStringReference_general_type,
 	UnrealEngineStringReference_general_schema,
-	UnrealEngineStringReference_schema_definitions, is_UnrealEngineStringReference_general_object,
+	UnrealEngineStringReference_schema_definitions,
+	is_UnrealEngineStringReference_general_object,
 } from '../CustomParsingTypes/UnrealEngineStringReference';
 import {enum_schema_type} from '../CustomParsingTypes/TypedStringEnum';
 
@@ -133,13 +134,20 @@ export const generators = [
 									),
 								]
 							);
-						} else if (is_UnrealEngineStringReference_general_object(entry)) {
-						return create_UnrealEngineStringReference_reference_type(
-							entry.UnrealEngineStringReference
-						);
+						} else if (
+							is_UnrealEngineStringReference_general_object(
+								entry
+							)
+						) {
+							return create_UnrealEngineStringReference_reference_type(
+								entry.UnrealEngineStringReference
+							);
 						}
 
-						throw new UnexpectedlyUnknownNoMatchError(entry, 'Unsuppported type!');
+						throw new UnexpectedlyUnknownNoMatchError(
+							entry,
+							'Unsuppported type!'
+						);
 					})
 				)
 			);
