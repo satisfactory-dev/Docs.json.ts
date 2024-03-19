@@ -1,7 +1,8 @@
 import {UnrealEngineStringReference_general_regex} from './UnrealEngineStringReference';
 import {
 	object_has_property,
-	SupportedSubSchemaType, value_is_non_array_object,
+	SupportedSubSchemaType,
+	value_is_non_array_object,
 } from './CustomPairingTypes';
 import {LiteralTypeNode, StringLiteral} from 'typescript';
 import {create_literal_node_from_value} from '../TsFactoryWrapper';

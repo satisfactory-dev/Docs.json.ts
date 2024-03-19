@@ -749,9 +749,7 @@ export class TypedObjectString {
 		return (
 			object_only_has_that_property(maybe, 'oneOf') &&
 			is_non_empty_array(maybe.oneOf) &&
-			this.array_is_typed_object_string_general_type_array(
-				maybe.oneOf
-			)
+			this.array_is_typed_object_string_general_type_array(maybe.oneOf)
 		);
 	}
 
