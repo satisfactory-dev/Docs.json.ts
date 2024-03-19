@@ -650,9 +650,7 @@ export function adjust_unrealengine_prefix(prefix: string): string {
 }
 
 export function adjust_unrealengine_value(value: string): string {
-	return adjust_class_name(
-		value.replace(/^\/Script\/FactoryGame\./, '')
-	);
+	return adjust_class_name(value.replace(/^\/Script\/FactoryGame\./, ''));
 }
 
 export function flexibly_create_UnrealEngineString_reference_type(
