@@ -1976,8 +1976,10 @@
 						"type": "array",
 						"minItems": 1,
 						"items": {
+							"oneOf": [
+								{
 							"type": "object",
-							"required": ["ResourceDescriptor"],
+									"required": ["ResourceDescriptor", "ResourceNodeType"],
 							"additionalProperties": false,
 							"properties": {
 								"ResourceDescriptor": {
@@ -1990,6 +1992,20 @@
 									"enum": ["FrackingCore", "Geyser"]
 								}
 							}
+								},
+								{
+									"type": "object",
+									"required": ["ResourceDescriptor"],
+									"additionalProperties": false,
+									"properties": {
+										"ResourceDescriptor": {
+											"type": "string",
+											"minLength": 1,
+											"UnrealEngineStringReference": true
+										}
+									}
+								}
+							]
 						}
 					}
 				}
