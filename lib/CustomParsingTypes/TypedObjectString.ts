@@ -425,13 +425,16 @@ export class TypedObjectString {
 				);
 			}
 
-			let definition:unknown =
+			let definition: unknown =
 				schema.definitions[
 					maybe_definition_key as keyof typeof schema.definitions
 				];
 
 			if (!value_is_non_array_object(definition)) {
-				throw new UnexpectedlyUnknownNoMatchError(definition, 'Array found in definitions!');
+				throw new UnexpectedlyUnknownNoMatchError(
+					definition,
+					'Array found in definitions!'
+				);
 			}
 
 			if (
@@ -442,7 +445,10 @@ export class TypedObjectString {
 			}
 
 			if (!value_is_non_array_object(definition)) {
-				throw new UnexpectedlyUnknownNoMatchError(definition, 'Array found in definitions!');
+				throw new UnexpectedlyUnknownNoMatchError(
+					definition,
+					'Array found in definitions!'
+				);
 			}
 
 			if (!this.is_$ref_object_dictionary(definition)) {
