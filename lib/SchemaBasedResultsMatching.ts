@@ -90,7 +90,7 @@ export class ResultGeneration<
 
 	match(ajv: Ajv, data: object): MatchResult | null {
 		if (!this.validate.has(ajv)) {
-				this.validate.set(ajv, ajv.compile<Data>(this.schema));
+			this.validate.set(ajv, ajv.compile<Data>(this.schema));
 		}
 		const validate = this.validate.get(ajv) as ValidateFunction<Data>;
 
