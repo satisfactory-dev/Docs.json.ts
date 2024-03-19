@@ -1978,20 +1978,23 @@
 						"items": {
 							"oneOf": [
 								{
-							"type": "object",
-									"required": ["ResourceDescriptor", "ResourceNodeType"],
-							"additionalProperties": false,
-							"properties": {
-								"ResourceDescriptor": {
-									"type": "string",
-									"minLength": 1,
-									"UnrealEngineStringReference": true
-								},
-								"ResourceNodeType": {
-									"type": "string",
-									"enum": ["FrackingCore", "Geyser"]
-								}
-							}
+									"type": "object",
+									"required": [
+										"ResourceDescriptor",
+										"ResourceNodeType"
+									],
+									"additionalProperties": false,
+									"properties": {
+										"ResourceDescriptor": {
+											"type": "string",
+											"minLength": 1,
+											"UnrealEngineStringReference": true
+										},
+										"ResourceNodeType": {
+											"type": "string",
+											"enum": ["FrackingCore", "Geyser"]
+										}
+									}
 								},
 								{
 									"type": "object",
