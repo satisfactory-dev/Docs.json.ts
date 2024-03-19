@@ -425,18 +425,24 @@ export class TypedObjectString {
 				);
 			}
 
-			let definition: {
-				[key: string]: any;
-			} =
+			let definition:unknown =
 				schema.definitions[
 					maybe_definition_key as keyof typeof schema.definitions
 				];
+
+			if (!value_is_non_array_object(definition)) {
+				throw new UnexpectedlyUnknownNoMatchError(definition, 'Array found in definitions!');
+			}
 
 			if (
 				!this.is_$ref_object_dictionary(definition) &&
 				'typed_object_string' in definition
 			) {
 				definition = definition.typed_object_string;
+			}
+
+			if (!value_is_non_array_object(definition)) {
+				throw new UnexpectedlyUnknownNoMatchError(definition, 'Array found in definitions!');
 			}
 
 			if (!this.is_$ref_object_dictionary(definition)) {
@@ -585,25 +591,21 @@ export class TypedObjectString {
 		return `(?:${annoyingly_have_to_escape_property(property)}=${value_regex})`;
 	}
 
-	private static keys_are_$ref_only(keys: string[]): keys is ['$ref'] {
-		return 1 === keys.length && keys.includes('$ref');
-	}
-
 	private static is_$ref_object(
-		maybe: any
+		maybe: unknown
 	): maybe is type_object_string_$ref_choices {
 		return (
-			'object' === typeof maybe &&
-			this.keys_are_$ref_only(Object.keys(maybe)) &&
+			value_is_non_array_object(maybe) &&
+			object_only_has_that_property(maybe, '$ref') &&
 			type_object_string_$ref_supported_array.includes(maybe.$ref)
 		);
 	}
 
-	public static is_supported_enum_string_object(maybe: any): maybe is {
+	public static is_supported_enum_string_object(maybe: unknown): maybe is {
 		[key: string]: enum_schema_type;
 	} {
 		return (
-			'object' === typeof maybe &&
+			value_is_non_array_object(maybe) &&
 			Object.keys(maybe).every((e) =>
 				typed_object_string_const_value_regex__native.test(e)
 			) &&
@@ -614,10 +616,10 @@ export class TypedObjectString {
 	}
 
 	private static is_supported_typed_array_string(
-		maybe: any
+		maybe: unknown
 	): maybe is typed_array_string_parent_without_recursive_reference {
 		return (
-			'object' === typeof maybe &&
+			value_is_non_array_object(maybe) &&
 			3 === Object.keys(maybe).length &&
 			object_has_property_that_equals(maybe, 'type', 'string') &&
 			object_has_property_that_equals(maybe, 'minLength', 1) &&
@@ -656,7 +658,7 @@ export class TypedObjectString {
 	}
 
 	public static is_combination_dictionary(
-		maybe: any,
+		maybe: unknown,
 		current_depth = 0
 	): maybe is typed_object_string_combination_dictionary {
 		if (!value_is_non_array_object(maybe)) {
