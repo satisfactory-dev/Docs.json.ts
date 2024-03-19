@@ -378,20 +378,6 @@ type supported_type_node_generations = {
 		| '#/definitions/mDisableSnapOn';
 };
 
-await writeFile(
-	'typed-object.schema.json',
-	JSON.stringify(
-		{
-			...typed_object_string_general_schema,
-			...{
-				definitions: UnrealEngineStringReference_schema_definitions,
-			},
-		},
-		null,
-		'\t'
-	) + '\n'
-);
-
 export class TypedObjectString {
 	static configure_ajv(ajv: Ajv) {
 		if (already_configured.has(ajv)) {
@@ -456,8 +442,7 @@ export class TypedObjectString {
 			}
 
 			if (!this.is_$ref_object_dictionary(definition)) {
-				console.log(definition);
-				throw new Error(`${$ref} not supported!`);
+				throw new UnexpectedlyUnknownNoMatchError(definition, `${$ref} not supported!`);
 			}
 
 			value_regex = this.property_to_regex(definition);
@@ -918,17 +903,6 @@ export class TypedObjectString {
 					.map((sub_entry) => {
 						const [sub_property, sub_value] = sub_entry;
 
-						if (sub_value instanceof Array) {
-							console.log(
-								entry[1],
-								this.object_is_generally_supported_oneOf_array(
-									entry[1],
-									this.entry_is_supported_oneOf_item
-								)
-							);
-							throw new Error('foo');
-						}
-
 						return this.typed_object_string_$ref_to_regex(
 							sub_property,
 							sub_value
@@ -979,10 +953,8 @@ export class TypedObjectString {
 								typed_object_string
 							)
 						);
-					} else if (!is_$ref_object_dictionary) {
-						console.error(data);
-						throw new Error('foo');
-					} else if (
+					} else if (is_$ref_object_dictionary) {
+					if (
 						!this.$ref_object_dictionary_is_auto_constructor_properties(
 							typed_object_string
 						)
@@ -1029,6 +1001,9 @@ export class TypedObjectString {
 							modifiers: ['export'],
 						}
 					);
+					}
+
+					throw new UnexpectedlyUnknownNoMatchError(data, 'not yet supported');
 				}
 			),
 			new TypesGenerationFromSchema<{

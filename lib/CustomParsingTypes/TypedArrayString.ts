@@ -292,36 +292,6 @@ const empty_string_or_const_or_array_string_schema = {
 	},
 };
 
-await writeFile(
-	`typed-array-string.schema.json`,
-	JSON.stringify(
-		{
-			definitions: UnrealEngineStringReference_schema_definitions,
-			...typed_array_string_schema,
-		},
-		null,
-		'\t'
-	) + '\n'
-);
-
-await writeFile(
-	`typed-array-string--parent.schema.json`,
-	JSON.stringify(
-		{
-			definitions: UnrealEngineStringReference_schema_definitions,
-			...typed_array_string_parent_schema,
-		},
-		null,
-		'\t'
-	) + '\n'
-);
-
-await writeFile(
-	`foo.json`,
-	JSON.stringify(empty_string_or_const_or_array_string_schema, null, '\t') +
-		'\n'
-);
-
 export class TypedArrayString {
 	static configure_ajv(ajv: Ajv) {
 		if (already_configured.has(ajv)) {
@@ -527,7 +497,7 @@ export class TypedArrayString {
 						);
 					}
 
-					throw new Error('foo');
+					throw new UnexpectedlyUnknownNoMatchError(data, 'not yet supported');
 				}
 			),
 			new TypesGenerationFromSchema<typed_array_string>(
@@ -556,7 +526,7 @@ export class TypedArrayString {
 							return this.typed_array(e.typed_array_string);
 						}
 
-						throw new Error('bar');
+						throw new UnexpectedlyUnknownNoMatchError(e, 'not yet supported');
 					});
 
 					return ts.factory.createTypeAliasDeclaration(

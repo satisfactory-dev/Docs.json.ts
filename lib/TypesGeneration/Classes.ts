@@ -7,7 +7,7 @@ import ts from 'typescript';
 import {TypesGenerationMatchesReferenceName} from '../TypesGeneration';
 import {
 	TypeNodeGeneration,
-	TypeNodeGenerationResult,
+	TypeNodeGenerationResult, UnexpectedlyUnknownNoMatchError,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 import {TypedObjectString} from '../CustomParsingTypes/TypedObjectString';
 import {TypedArrayString} from '../CustomParsingTypes/TypedArrayString';
@@ -79,7 +79,10 @@ export const type_node_generators = [
 				property['$ref'].substring(14)
 			);
 			if (!(reference_name in target_files)) {
-				throw new Error(
+				throw new UnexpectedlyUnknownNoMatchError(
+					{
+						target_files,
+					},
 					`target file for ${reference_name} not configured!`
 				);
 			}

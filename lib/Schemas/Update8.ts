@@ -1,5 +1,6 @@
 import schema from '../../schema/update8.schema.json' assert {type: 'json'};
 import {Update8TypeNodeGeneration} from './Update8/TypeNodeGeneration';
+import {UnexpectedlyUnknownNoMatchError} from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 
 declare type object_with_ref = {$ref: string};
 
@@ -59,7 +60,7 @@ export function is_ref(ref: string): ref is definition_key & typeof ref {
 
 export function check_ref(ref: string): definition_key & typeof ref {
 	if (!is_ref(ref)) {
-		throw new Error(`${ref} not in the update 8 schema!`);
+		throw new UnexpectedlyUnknownNoMatchError({ref}, `not in the update 8 schema!`);
 	}
 
 	return ref as definition_key & typeof ref;

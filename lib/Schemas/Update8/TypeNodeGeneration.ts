@@ -6,7 +6,7 @@ import {
 	PropertyMatchFailure,
 	TypeNodeGeneration,
 	TypeNodeGenerationMatcher,
-	TypeNodeGenerationResult,
+	TypeNodeGenerationResult, UnexpectedlyUnknownNoMatchError,
 } from '../../SchemaBasedResultsMatching/TypeNodeGeneration';
 import ts from 'typescript';
 import {import_these_later} from '../../TypesGeneration';
@@ -118,7 +118,7 @@ export class Update8TypeNodeGeneration {
 		const parent_ref = tree[1];
 
 		if (!parent_ref) {
-			throw new Error(`No parent ref for ${ref}`);
+			throw new UnexpectedlyUnknownNoMatchError({ref}, 'No parent ref found!');
 		}
 
 		if (
@@ -259,7 +259,7 @@ export class Update8TypeNodeGeneration {
 		const parent_ref = tree[1];
 
 		if (!parent_ref) {
-			throw new Error(`No parent class found for ${ref}`);
+			throw new UnexpectedlyUnknownNoMatchError({ref}, 'No parent class found');
 		}
 
 		const modifiers: supported_modifiers[] = ['export'];
@@ -480,7 +480,14 @@ export class Update8TypeNodeGeneration {
 				EditorCurveData_required_expected
 			)
 		) {
-			throw new Error(
+			throw new UnexpectedlyUnknownNoMatchError(
+				{
+					keys: Object.keys(
+						schema.definitions['EditorCurveData--only']
+							.typed_object_string.EditorCurveData
+					),
+					EditorCurveData_required_expected,
+				},
 				'Inconsistent required properties found for EditorCurveData'
 			);
 		}
@@ -490,7 +497,8 @@ export class Update8TypeNodeGeneration {
 					.EditorCurveData
 			)
 		) {
-			throw new Error('Unsupported refs found for EditorCurveData');
+			throw new UnexpectedlyUnknownNoMatchError(schema.definitions['EditorCurveData--only'].typed_object_string
+				.EditorCurveData, 'Unsupported refs found for EditorCurveData');
 		}
 
 		this.classes.push({
