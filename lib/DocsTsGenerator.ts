@@ -128,6 +128,8 @@ export class DocsTsGenerator {
 	static readonly PERF_VALIDATION_STARTED = 'Docs.json validation started';
 	static readonly PERF_VALIDATION_COMPILED = 'Docs.json validation compiled';
 	static readonly PERF_VALIDATION_FINISHED = 'Docs.json validation finished';
+	static readonly PERF_VALIDATION_PRECOMPILE =
+		'Docs.json validation pre-compilation started';
 
 	constructor({
 		docs_path, // raw JSON or path to UTF-16LE encoded Docs.json
@@ -232,17 +234,18 @@ export class DocsTsGenerator {
 		schema: {$id: 'update8.schema.json'}
 	): Promise<T> {
 		performance.mark(DocsTsGenerator.PERF_VALIDATION_STARTED);
-		/* unfortunately this code doesn't work because of nested ajv usage :(
 		if (this.cache_path) {
 			const file_sha512 = createHash('sha512');
 
-			file_sha512.update(await readFile(`${__dirname}/../schema/${schema['$id']}`));
+			file_sha512.update(
+				await readFile(`${__dirname}/../schema/${schema['$id']}`)
+			);
 
 			const filename = `${schema['$id']}.${file_sha512.digest('hex')}.mjs`;
 			const filepath = `${this.cache_path}/${filename}`;
 
 			if (!existsSync(filepath)) {
-				console.log('precompiled validator not generated');
+				performance.mark(DocsTsGenerator.PERF_VALIDATION_PRECOMPILE);
 				default_config.ajv = new Ajv({
 					verbose: true,
 					code: {
@@ -253,6 +256,10 @@ export class DocsTsGenerator {
 					},
 				});
 				configure_ajv(default_config.ajv);
+				performance.measure(
+					'ajv configured',
+					DocsTsGenerator.PERF_VALIDATION_PRECOMPILE
+				);
 
 				await writeFile(
 					filepath,
@@ -270,6 +277,11 @@ export class DocsTsGenerator {
 						)
 					)
 				);
+				performance.measure(
+					'ajv pre-compilation done',
+					DocsTsGenerator.PERF_VALIDATION_PRECOMPILE,
+					DocsTsGenerator.PERF_VALIDATION_PRECOMPILE
+				);
 			}
 
 			const {default: validateDocs} = await import(filepath);
@@ -284,7 +296,6 @@ export class DocsTsGenerator {
 
 			return json as T;
 		}
-		 */
 
 		default_config.ajv = new Ajv({
 			verbose: true,
