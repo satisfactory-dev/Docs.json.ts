@@ -1,7 +1,7 @@
 import {UnrealEngineStringReference_general_regex} from './UnrealEngineStringReference';
 import {
 	object_has_property,
-	SupportedSubSchemaType,
+	SupportedSubSchemaType, value_is_non_array_object,
 } from './CustomPairingTypes';
 import {LiteralTypeNode, StringLiteral} from 'typescript';
 import {create_literal_node_from_value} from '../TsFactoryWrapper';
@@ -29,13 +29,14 @@ class TypedStringConst extends SupportedSubSchemaType<
 	const_schema_type,
 	StringLiteral
 > {
-	is_supported_schema(maybe: any): maybe is const_schema_type {
+	is_supported_schema(maybe: unknown): maybe is const_schema_type {
 		return (
-			'object' === typeof maybe &&
+			value_is_non_array_object(maybe) &&
 			2 === Object.keys(maybe).length &&
 			object_has_property(maybe, 'type') &&
 			'string' === maybe.type &&
 			object_has_property(maybe, 'const') &&
+			'string' === typeof maybe.const &&
 			typed_string_const_value_regex__native.test(maybe.const)
 		);
 	}

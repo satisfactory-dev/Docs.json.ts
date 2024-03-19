@@ -112,7 +112,7 @@ export class TypeNodeGenerationMatcher extends ResultGenerationMatcher<
 	TypeNodeGeneration<any>
 > {
 	protected create_type_reference_result(
-		reference: any
+		reference: string
 	): TypeNodeGenerationResult {
 		return new TypeNodeGenerationResult(() =>
 			ts.factory.createTypeReferenceNode(adjust_class_name(reference))

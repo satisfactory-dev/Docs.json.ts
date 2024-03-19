@@ -61,7 +61,7 @@ export type UnrealEngineStringReference_general_type = {
 };
 
 export function is_UnrealEngineStringReference_general_object(
-	maybe: any
+	maybe: unknown
 ): maybe is UnrealEngineStringReference_general_type {
 	return (
 		value_is_non_array_object(maybe) &&
@@ -786,14 +786,18 @@ function is_string_or_string_array(
 }
 
 function is_UnrealEngineStringReference_value_object(
-	maybe: object
+	maybe: unknown
 ): maybe is Exclude<UnrealEngineStringReference_type, true> {
+	if (!value_is_non_array_object(maybe)) {
+		return false;
+	}
+
 	const keys = Object.keys(maybe);
 
 	const has_left = 'left' in maybe && is_string_or_string_array(maybe.left);
 	const has_right =
 		object_has_property(maybe, 'right') &&
-		('object' === typeof maybe.right && !(maybe.right instanceof Array)
+		(value_is_non_array_object(maybe.right)
 			? 'starts_with' in maybe.right &&
 				1 === Object.keys(maybe.right).length &&
 				is_string_or_string_array(maybe.right.starts_with)

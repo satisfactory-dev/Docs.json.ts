@@ -1,7 +1,7 @@
 import {
 	object_has_non_empty_array_property,
 	object_has_property,
-	SupportedSubSchemaType,
+	SupportedSubSchemaType, value_is_non_array_object,
 } from './CustomPairingTypes';
 import {
 	typed_string_const_value_regex,
@@ -35,15 +35,18 @@ class TypedStringEnum extends SupportedSubSchemaType<
 	enum_schema_type,
 	non_empty_string_literal_union
 > {
-	is_supported_schema(maybe: any): maybe is enum_schema_type {
+	is_supported_schema(maybe: unknown): maybe is enum_schema_type {
 		return (
-			'object' === typeof maybe &&
+			value_is_non_array_object(maybe) &&
 			2 === Object.keys(maybe).length &&
 			object_has_property(maybe, 'type') &&
 			'string' === maybe.type &&
 			object_has_non_empty_array_property(maybe, 'enum') &&
 			maybe.enum.every((e) =>
+				(
+					'string' === typeof e &&
 				typed_string_const_value_regex__native.test(e)
+				)
 			)
 		);
 	}

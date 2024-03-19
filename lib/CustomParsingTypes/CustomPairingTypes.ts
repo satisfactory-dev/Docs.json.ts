@@ -8,18 +8,17 @@ import {
 export function object_has_property<T extends string = string>(
 	maybe: object,
 	property: T
-): maybe is {[key: string]: any} & {[key in T]: any} {
+): maybe is {[key: string]: unknown} & {[key in T]: unknown} {
 	return property in maybe;
 }
 
 export function object_has_non_empty_array_property<T extends string = string>(
 	maybe: object,
 	property: T
-): maybe is {[key: string]: any} & {[key in T]: [any, ...any[]]} {
+): maybe is {[key: string]: unknown} & {[key in T]: [unknown, ...unknown[]]} {
 	return (
 		object_has_property(maybe, property) &&
-		value_is_array(maybe[property]) &&
-		array_is_non_empty(maybe[property])
+		is_non_empty_array(maybe[property])
 	);
 }
 
@@ -31,20 +30,24 @@ export function object_has_property_that_equals(
 	return object_has_property(maybe, property) && expects === maybe[property];
 }
 
-export function value_is_array(maybe: object): maybe is any[] {
+export function value_is_array(maybe: unknown): maybe is unknown[] {
 	return maybe instanceof Array;
 }
 
+export function value_is_object(maybe: unknown): maybe is object {
+	return 'object' === typeof maybe;
+}
+
 export function value_is_non_array_object(
-	maybe: any
-): maybe is Exclude<object, any[]> {
+	maybe: unknown
+): maybe is Exclude<object, unknown[]> {
 	return 'object' === typeof maybe && !(maybe instanceof Array);
 }
 
-export function array_is_non_empty<T = unknown>(
-	maybe: T[]
-): maybe is [T, ...T[]] {
-	return maybe.length >= 1;
+export function is_non_empty_array(
+	maybe: unknown
+): maybe is [unknown, ...unknown[]] {
+	return maybe instanceof Array && maybe.length >= 1;
 }
 
 export function object_only_has_that_property<T extends string = string>(

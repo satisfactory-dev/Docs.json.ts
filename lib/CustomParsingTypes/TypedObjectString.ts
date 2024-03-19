@@ -32,7 +32,7 @@ import {
 import ts, {Node, TypeLiteralNode, TypeReferenceNode} from 'typescript';
 import {
 	annoyingly_have_to_escape_property,
-	array_is_non_empty,
+	is_non_empty_array,
 	object_has_property,
 	object_has_property_that_equals,
 	object_only_has_that_property,
@@ -622,7 +622,7 @@ export class TypedObjectString {
 			object_has_property_that_equals(maybe, 'type', 'string') &&
 			object_has_property_that_equals(maybe, 'minLength', 1) &&
 			object_has_property(maybe, 'typed_array_string') &&
-			'object' === typeof maybe.typed_array_string &&
+			value_is_non_array_object(maybe.typed_array_string) &&
 			object_has_property_that_equals(
 				maybe.typed_array_string,
 				'type',
@@ -713,6 +713,7 @@ export class TypedObjectString {
 			object_has_property(maybe, 'type') &&
 			'string' === maybe.type &&
 			object_has_property(maybe, 'typed_object_string') &&
+			value_is_non_array_object(maybe.typed_object_string) &&
 			(TypedObjectString.is_$ref_object_dictionary(
 				maybe.typed_object_string
 			) ||
@@ -747,11 +748,10 @@ export class TypedObjectString {
 	} {
 		return (
 			object_only_has_that_property(maybe, 'oneOf') &&
-			value_is_array(maybe.oneOf) &&
+			is_non_empty_array(maybe.oneOf) &&
 			this.array_is_typed_object_string_general_type_array(
 				maybe.oneOf
-			) &&
-			array_is_non_empty(maybe.oneOf)
+			)
 		);
 	}
 
@@ -771,8 +771,7 @@ export class TypedObjectString {
 	} {
 		return (
 			object_only_has_that_property(maybe, 'oneOf') &&
-			value_is_array(maybe.oneOf) &&
-			array_is_non_empty(maybe.oneOf) &&
+			is_non_empty_array(maybe.oneOf) &&
 			maybe.oneOf.every((e) => predicate(e))
 		);
 	}
