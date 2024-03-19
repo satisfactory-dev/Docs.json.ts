@@ -7,11 +7,23 @@ import {adjust_class_name} from '../TsFactoryWrapper';
 import {UnrealEngineStringReference} from './UnrealEngineStringReference';
 import update8_schema from '../../schema/update8.schema.json' assert {type: 'json'};
 
+
+const UnrealEngineStringReference_inner =
+	UnrealEngineStringReference.ajv_macro_generator(true);
+
 const $ref_supported = {
-	'#/definitions/mEventType': true,
-	'#/definitions/FGSchematic--mUnlocks_mSchematics--mSchematics': true,
-	'#/definitions/None': true,
+	'#/definitions/mEventType': 'EV_Christmas',
+	'#/definitions/FGSchematic--mUnlocks_mSchematics--mSchematics':
+		UnrealEngineStringReference_inner(
+			update8_schema.definitions[
+				'FGSchematic--mUnlocks_mSchematics--mSchematics'
+				].UnrealEngineStringReference
+		).pattern,
+	'#/definitions/None': 'None',
+	'#/definitions/integer-string': '\\d+',
+	'#/definitions/decimal-string': '\\d+\.\\d+',
 };
+
 const $ref_supported_array = Object.keys(
 	$ref_supported
 ) as (keyof typeof $ref_supported)[];
@@ -26,20 +38,6 @@ export const $ref_schema = {
 			enum: $ref_supported_array,
 		},
 	},
-};
-
-const UnrealEngineStringReference_inner =
-	UnrealEngineStringReference.ajv_macro_generator(true);
-
-const $ref_regex: {[key in keyof typeof $ref_supported]: string} = {
-	'#/definitions/mEventType': 'EV_Christmas',
-	'#/definitions/FGSchematic--mUnlocks_mSchematics--mSchematics':
-		UnrealEngineStringReference_inner(
-			update8_schema.definitions[
-				'FGSchematic--mUnlocks_mSchematics--mSchematics'
-			].UnrealEngineStringReference
-		).pattern,
-	'#/definitions/None': 'None',
 };
 
 export type $ref_choices = {
@@ -57,11 +55,13 @@ class SupportedRefObject extends SupportedSubSchemaType<
 		);
 	}
 	value_regex(value: $ref_choices): string {
-		return `(?:${$ref_regex[value.$ref]})`;
+		return `(?:${$ref_supported[value.$ref]})`;
 	}
 	value_type(value: $ref_choices): TypeReferenceNode {
+		const ref = value.$ref.substring(14);
+
 		return ts.factory.createTypeReferenceNode(
-			adjust_class_name(value.$ref.substring(14))
+			adjust_class_name(`${ref}${(ref.startsWith('integer-string') || ref.startsWith('decimal-string')) ? '--type' : ''}`)
 		);
 	}
 }
