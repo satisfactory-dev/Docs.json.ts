@@ -1972,19 +1972,15 @@
 				"mResourcePairsToAddToScanner": {
 					"type": "string",
 					"minLength": 1,
-					"array_string": {
+					"typed_array_string": {
 						"type": "array",
 						"minItems": 1,
 						"items": {
 							"oneOf": [
 								{
-									"type": "object",
-									"required": [
-										"ResourceDescriptor",
-										"ResourceNodeType"
-									],
-									"additionalProperties": false,
-									"properties": {
+									"type": "string",
+									"minLength": 1,
+									"typed_object_string": {
 										"ResourceDescriptor": {
 											"type": "string",
 											"minLength": 1,
@@ -1997,10 +1993,9 @@
 									}
 								},
 								{
-									"type": "object",
-									"required": ["ResourceDescriptor"],
-									"additionalProperties": false,
-									"properties": {
+									"type": "string",
+									"minLength": 1,
+									"typed_object_string": {
 										"ResourceDescriptor": {
 											"type": "string",
 											"minLength": 1,
@@ -4447,19 +4442,15 @@
 				"mFluidNames": {
 					"type": "string",
 					"minLength": 1,
-					"array_string": {
+					"typed_array_string": {
 						"type": "array",
 						"minItems": 1,
 						"items": {
 							"oneOf": [
 								{
-									"type": "object",
-									"required": [
-										"WwiseSafeName",
-										"ActualName"
-									],
-									"additionalProperties": false,
-									"properties": {
+									"type": "string",
+									"minLength": 1,
+									"typed_object_string": {
 										"WwiseSafeName": {
 											"type": "string",
 											"const": "Crude_Oil"
@@ -4471,13 +4462,9 @@
 									}
 								},
 								{
-									"type": "object",
-									"required": [
-										"WwiseSafeName",
-										"ActualName"
-									],
-									"additionalProperties": false,
-									"properties": {
+									"type": "string",
+									"minLength": 1,
+									"typed_object_string": {
 										"WwiseSafeName": {
 											"type": "string",
 											"const": "Fuel"
@@ -4489,13 +4476,9 @@
 									}
 								},
 								{
-									"type": "object",
-									"required": [
-										"WwiseSafeName",
-										"ActualName"
-									],
-									"additionalProperties": false,
-									"properties": {
+									"type": "string",
+									"minLength": 1,
+									"typed_object_string": {
 										"WwiseSafeName": {
 											"type": "string",
 											"const": "Heavy_Oil_Residue"
@@ -4507,13 +4490,9 @@
 									}
 								},
 								{
-									"type": "object",
-									"required": [
-										"WwiseSafeName",
-										"ActualName"
-									],
-									"additionalProperties": false,
-									"properties": {
+									"type": "string",
+									"minLength": 1,
+									"typed_object_string": {
 										"WwiseSafeName": {
 											"type": "string",
 											"const": "Water"
@@ -4525,10 +4504,9 @@
 									}
 								},
 								{
-									"type": "object",
-									"required": ["WwiseSafeName"],
-									"additionalProperties": false,
-									"properties": {
+									"type": "string",
+									"minLength": 1,
+									"typed_object_string": {
 										"WwiseSafeName": {
 											"type": "string",
 											"const": "No_Fluid"
@@ -4536,13 +4514,9 @@
 									}
 								},
 								{
-									"type": "object",
-									"required": [
-										"WwiseSafeName",
-										"ActualName"
-									],
-									"additionalProperties": false,
-									"properties": {
+									"type": "string",
+									"minLength": 1,
+									"typed_object_string": {
 										"WwiseSafeName": {
 											"type": "string",
 											"const": "Gas"

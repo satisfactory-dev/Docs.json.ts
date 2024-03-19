@@ -56,7 +56,7 @@ import {supported_$ref} from './SupportedRefObject';
 const already_configured = new WeakSet<Ajv>();
 
 const typed_object_string_property_regex = '^[A-Za-z][A-Za-z0-9_\\[\\]]*$';
-const typed_object_string_const_value_regex = `^([A-Za-z][A-Za-z0-9_]*|${UnrealEngineStringReference_general_regex})$`;
+const typed_object_string_const_value_regex = `^([A-Za-z][A-Za-z0-9_ ]*|${UnrealEngineStringReference_general_regex})$`;
 const typed_object_string_const_value_regex__native = new RegExp(
 	typed_object_string_const_value_regex
 );

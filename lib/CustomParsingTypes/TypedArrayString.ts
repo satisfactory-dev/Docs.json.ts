@@ -9,7 +9,7 @@ import {
 } from './UnrealEngineStringReference';
 import {
 	typed_object_string_general_schema,
-	typed_object_string_general_type,
+	typed_object_string_general_type, typed_object_string_nested_schema,
 	TypedObjectString,
 } from './TypedObjectString';
 import {
@@ -51,7 +51,11 @@ const typed_array_string_oneOf_schema = {
 	type: 'array',
 	minItems: 1,
 	items: {
-		oneOf: [UnrealEngineStringReference_general_schema, $ref_schema],
+		oneOf: [
+			UnrealEngineStringReference_general_schema,
+			$ref_schema,
+			typed_object_string_general_schema,
+		],
 	},
 };
 
