@@ -40,7 +40,7 @@ export function value_is_object(maybe: unknown): maybe is object {
 
 export function value_is_non_array_object(
 	maybe: unknown
-): maybe is Exclude<object, unknown[]> {
+): maybe is {[key: string]: unknown} {
 	return 'object' === typeof maybe && !(maybe instanceof Array);
 }
 

@@ -629,7 +629,7 @@ export class TypedObjectString {
 				'array'
 			) &&
 			'number' === typeof maybe.typed_array_string?.minItems &&
-			'object' === typeof maybe.typed_array_string?.items &&
+			value_is_non_array_object(maybe.typed_array_string?.items) &&
 			object_has_property_that_equals(
 				maybe.typed_array_string.items,
 				'type',
@@ -647,7 +647,7 @@ export class TypedObjectString {
 	}
 
 	public static is_$ref_object_dictionary(maybe: {
-		[key: string]: any;
+		[key: string]: unknown;
 	}): maybe is typed_object_string_$ref_only {
 		return (
 			Object.values(maybe).every((e) => this.is_$ref_object(e)) &&
@@ -676,7 +676,7 @@ export class TypedObjectString {
 				!supported_meta.is_supported_schema(e) &&
 				!this.is_supported_enum_string_object(e) &&
 				!this.is_supported_typed_array_string(e) &&
-				!this.is_$ref_object_dictionary(e) &&
+				!(value_is_non_array_object(e) && this.is_$ref_object_dictionary(e)) &&
 				!is_UnrealEngineStringReference_general_object(e) &&
 				!this.value_is_typed_object_string_general_type(e) &&
 				!TypedObjectString.object_is_typed_object_string_oneOf(
@@ -706,10 +706,10 @@ export class TypedObjectString {
 	}
 
 	public static value_is_typed_object_string_general_type(
-		maybe: any
+		maybe: unknown
 	): maybe is typed_object_string_general_type {
 		return (
-			'object' === typeof maybe &&
+			value_is_non_array_object(maybe) &&
 			object_has_property(maybe, 'type') &&
 			'string' === maybe.type &&
 			object_has_property(maybe, 'typed_object_string') &&
@@ -734,7 +734,7 @@ export class TypedObjectString {
 	}
 
 	private static array_is_typed_object_string_general_type_array(
-		maybe: any[]
+		maybe: unknown[]
 	): maybe is typed_object_string_general_type[] {
 		return maybe.every((e) =>
 			this.value_is_typed_object_string_general_type(e)
@@ -763,7 +763,7 @@ export class TypedObjectString {
 			| UnrealEngineStringReference_general_type,
 	>(
 		maybe: object,
-		predicate: (inner_maybe: any) => inner_maybe is T
+		predicate: (inner_maybe: unknown) => inner_maybe is T
 	): maybe is {
 		oneOf: [T, ...T[]];
 	} {
@@ -775,7 +775,7 @@ export class TypedObjectString {
 	}
 
 	private static entry_is_supported_oneOf_item(
-		entry: any
+		entry: unknown
 	): entry is
 		| typed_object_string_general_type
 		| type_object_string_$ref_choices
