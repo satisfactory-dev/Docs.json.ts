@@ -645,13 +645,13 @@ export class UnrealEngineStringReference {
 
 export function adjust_unrealengine_prefix(prefix: string): string {
 	return adjust_class_name(
-		prefix.replace(/^(?:\/Script\/)/, '').replace(/\.Class$/, '')
+		prefix.replace(/^\/Script\//, '').replace(/\.Class$/, '')
 	);
 }
 
 export function adjust_unrealengine_value(value: string): string {
 	return adjust_class_name(
-		value.replace(/^(?:\/Script\/FactoryGame\.)/, '')
+		value.replace(/^\/Script\/FactoryGame\./, '')
 	);
 }
 

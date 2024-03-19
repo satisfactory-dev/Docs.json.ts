@@ -111,7 +111,7 @@ export type generation_result = {
 
 type DocsDataItem = {
 	NativeClass: string;
-	Classes: ({[key: string]: any[] | string} & {ClassName: string})[];
+	Classes: ({[key: string]: unknown[] | string} & {ClassName: string})[];
 };
 
 export type DocsData = [DocsDataItem, ...DocsDataItem[]];
@@ -231,7 +231,7 @@ export class DocsTsGenerator {
 	}
 
 	private async validate<T extends DocsData>(
-		json: any,
+		json: unknown,
 		schema: {$id: 'update8.schema.json'}
 	): Promise<T> {
 		performance.mark(DocsTsGenerator.PERF_VALIDATION_STARTED);

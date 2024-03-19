@@ -16,7 +16,7 @@ export class GenerationResult<T> {
 	}
 }
 
-export type DataType = {[key: string]: any} | true;
+export type DataType = {[key: string]: unknown} | true;
 
 export type ResultGenerator<
 	T1,
@@ -50,7 +50,7 @@ declare type tuple_array_validator = ValidateFunction<{
 	minItems: 2;
 	maxItems: 2;
 	items: false;
-	prefixItems: [any, any];
+	prefixItems: [Record<string, unknown>, Record<string, unknown>];
 }>;
 
 const empty_object = {};

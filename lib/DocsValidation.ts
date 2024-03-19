@@ -4,13 +4,13 @@ import {TypedObjectString} from './CustomParsingTypes/TypedObjectString';
 import {TypedArrayString} from './CustomParsingTypes/TypedArrayString';
 
 declare type array_tokenizer = {
-	values: any[];
+	values: unknown[];
 	current_item_buffer: '';
 	current_value_nesting: number;
 };
 
 declare type object_tokenizer = {
-	properties: [string, string | object | any[]][];
+	properties: [string, string | object | unknown[]][];
 	mode: 'key' | 'value';
 	current_key_buffer: string;
 	current_value_buffer: string;
@@ -44,7 +44,7 @@ export const default_config = new DefaultConfig();
 
 export function string_to_native_type(
 	data: string
-): object | any[] | string | false {
+): object | unknown[] | string | false {
 	data = data.trim();
 	if (/^\(.+\)$/.test(data)) {
 		const object = string_to_object(data);
@@ -162,7 +162,7 @@ export function string_to_object<T extends object>(data: string): T | false {
 	) as T;
 }
 
-export function string_to_array<T extends any[]>(data: string): T | false {
+export function string_to_array<T extends unknown[]>(data: string): T | false {
 	if (!/^\(.+\)$/.test(data)) {
 		return false;
 	}
