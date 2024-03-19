@@ -303,69 +303,6 @@ export const custom_generators = [
 		nodes.push({
 			file: 'utils/validators.ts',
 			node: create_function(
-				'array_string',
-				[
-					createParameter('value', ts.SyntaxKind.StringKeyword),
-					createParameter(
-						'reference_argument',
-						ts.SyntaxKind.StringKeyword
-					),
-				],
-				ts.factory.createTypeReferenceNode('T'),
-				[
-					ts.factory.createVariableStatement(
-						undefined,
-						ts.factory.createVariableDeclarationList(
-							[
-								ts.factory.createVariableDeclaration(
-									'result',
-									undefined,
-									undefined,
-									ts.factory.createCallExpression(
-										ts.factory.createIdentifier(
-											'string_to_array'
-										),
-										[
-											ts.factory.createTypeReferenceNode(
-												'T'
-											),
-										],
-										[ts.factory.createIdentifier('value')]
-									)
-								),
-							],
-							ts.NodeFlags.Const
-						)
-					),
-					create_throw_if(
-						'Error',
-						ts.factory.createLogicalNot(
-							ts.factory.createIdentifier('result')
-						),
-						[
-							create_basic_reference_argument_template_span(
-								'reference_argument',
-								' must be a Docs.json array string!'
-							),
-						]
-					),
-					ts.factory.createReturnStatement(
-						ts.factory.createIdentifier('result')
-					),
-				],
-				[
-					ts.factory.createTypeParameterDeclaration(
-						undefined,
-						'T',
-						ts.factory.createArrayTypeNode(create_type('any'))
-					),
-				]
-			),
-		});
-
-		nodes.push({
-			file: 'utils/validators.ts',
-			node: create_function(
 				'string_has_minLength',
 				[
 					createParameter('value', ts.SyntaxKind.StringKeyword),

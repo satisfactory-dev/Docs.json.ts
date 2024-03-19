@@ -263,11 +263,6 @@ export class DocsTsGenerator {
 						).replace(
 							/^"use strict";/,
 							[
-								`import {${
-									[
-										'array_string',
-									].join(',')
-								}} from '../lib/schema-exports';`,
 								// adapted from https://stackoverflow.com/a/77047149/23528553
 								'import { createRequire } from "module";',
 								'const require = createRequire(import.meta.url);',

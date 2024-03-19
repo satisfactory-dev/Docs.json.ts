@@ -16,49 +16,6 @@ export const target_files = {
 	mFuel: 'common/arrays.ts',
 };
 
-export type array_string_schema_type = {
-	type: 'string';
-	minLength: 1;
-	array_string: {
-		type: 'array';
-		minItems: number;
-		items: object;
-	} & ({maxItems: number} | {});
-};
-
-declare type ItemClass_only = {
-	type: 'string';
-	minLength: 1;
-	array_string: {
-		type: 'array';
-		minItems: 1;
-		items: {
-			type: 'object';
-			required: ['ItemClass'];
-			properties: {
-				ItemClass: {$ref: '#/definitions/ItemClass'};
-			};
-		};
-	};
-};
-
-declare type ItemClass_and_Amount = {
-	type: 'string';
-	minLength: 1;
-	array_string: {
-		type: 'array';
-		minItems: 1;
-		items: {
-			type: 'object';
-			required: ['ItemClass', 'Amount'];
-			properties: {
-				ItemClass: {$ref: '#/definitions/ItemClass'};
-				Amount: {$ref: '#/definitions/integer-string'};
-			};
-		};
-	};
-};
-
 export const generators = [
 	new TypesGenerationMatchesReferenceName<{minItems: number}, 'mFuel'>(
 		['mFuel'],

@@ -10,10 +10,6 @@ import {
 } from '../TsFactoryWrapper';
 import {target_files as validators_target_files} from './validators';
 import {
-	array_string_type,
-	generate_array_string_schema,
-} from './json_schema_types';
-import {
 	TypeNodeGeneration,
 	TypeNodeGenerationResult,
 	UnexpectedlyUnknownNoMatchError,
@@ -22,7 +18,7 @@ import {
 	create_UnrealEngineStringReference_reference_type,
 	UnrealEngineStringReference_general_type,
 	UnrealEngineStringReference_general_schema,
-	UnrealEngineStringReference_schema_definitions,
+	UnrealEngineStringReference_schema_definitions, is_UnrealEngineStringReference_general_object,
 } from '../CustomParsingTypes/UnrealEngineStringReference';
 import {enum_schema_type} from '../CustomParsingTypes/TypedStringEnum';
 
@@ -51,27 +47,7 @@ declare type supported_oneOf_items =
 	| {$ref: '#/definitions/None'}
 	| UnrealEngineStringReference_general_type
 	| {type: 'string'; const: string}
-	| (array_string_type & {
-			array_string: {
-				items: {
-					type: 'object';
-					required: ['Value'];
-					properties: {
-						Value: {
-							$ref: '#/definitions/integer-string';
-						};
-					};
-				};
-			};
-	  })
-	| {type: 'string'; string_starts_with: string}
-	| (array_string_type & {
-			array_string: {
-				items: {
-					$ref: '#/definitions/mEventType';
-				};
-			};
-	  });
+	| {type: 'string'; string_starts_with: string};
 
 const definitions = {
 	...UnrealEngineStringReference_schema_definitions,
@@ -114,34 +90,6 @@ export const generators = [
 									const: {type: 'string'},
 								},
 							},
-							generate_array_string_schema({
-								type: 'object',
-								required: ['type', 'required', 'properties'],
-								additionalProperties: false,
-								properties: {
-									type: {type: 'string', const: 'object'},
-									required: {
-										type: 'array',
-										const: ['Value'],
-									},
-									properties: {
-										type: 'object',
-										const: {
-											Value: {
-												$ref: '#/definitions/integer-string',
-											},
-										},
-									},
-								},
-							}),
-							generate_array_string_schema({
-								type: 'object',
-								required: ['$ref'],
-								additionalProperties: false,
-								properties: {
-									$ref: {type: 'string', minLength: 15},
-								},
-							}),
 							{
 								type: 'object',
 								required: ['type', 'string_starts_with'],
@@ -174,64 +122,6 @@ export const generators = [
 							return ts.factory.createLiteralTypeNode(
 								ts.factory.createStringLiteral(entry.const)
 							);
-						} else if (
-							'array_string' in entry &&
-							'type' in entry.array_string.items &&
-							'properties' in entry.array_string.items &&
-							'object' === entry.array_string.items.type &&
-							1 === entry.array_string.items.required.length &&
-							'Value' === entry.array_string.items.required[0] &&
-							'Value' in entry.array_string.items.properties
-						) {
-							let value_reference_name = (
-								entry.array_string.items as {
-									properties: {
-										Value: {$ref: string};
-									};
-								}
-							).properties.Value['$ref'].substring(14);
-
-							if (
-								value_reference_name in validators_target_files
-							) {
-								value_reference_name = `${value_reference_name}__type`;
-							}
-
-							return create_object_type({
-								Value: create_minimum_size_typed_array_of_single_type(
-									entry.array_string.minItems,
-									() =>
-										ts.factory.createTypeReferenceNode(
-											adjust_class_name(
-												value_reference_name
-											)
-										)
-								),
-							});
-						} else if (
-							'array_string' in entry &&
-							'$ref' in entry.array_string.items &&
-							'#/definitions/mEventType' ===
-								entry.array_string.items['$ref']
-						) {
-							return create_minimum_size_typed_array_of_single_type(
-								entry.array_string.minItems,
-								() =>
-									ts.factory.createTypeReferenceNode(
-										adjust_class_name(
-											(
-												entry.array_string.items as {
-													$ref: string;
-												}
-											)['$ref'].substring(14)
-										)
-									)
-							);
-						} else if ('array_string' in entry) {
-							throw new UnexpectedlyUnknownNoMatchError(
-								entry.array_string,
-								'Unsupported array_string found'
-							);
 						} else if ('string_starts_with' in entry) {
 							return ts.factory.createTypeReferenceNode(
 								'string_starts_with',
@@ -243,11 +133,13 @@ export const generators = [
 									),
 								]
 							);
-						}
-
+						} else if (is_UnrealEngineStringReference_general_object(entry)) {
 						return create_UnrealEngineStringReference_reference_type(
 							entry.UnrealEngineStringReference
 						);
+						}
+
+						throw new UnexpectedlyUnknownNoMatchError(entry, 'Unsuppported type!');
 					})
 				)
 			);

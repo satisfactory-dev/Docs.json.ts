@@ -27,10 +27,6 @@ import {
 	TypesGenerationMatchesReferenceName,
 } from '../TypesGeneration';
 import {
-	array_string_schema_type,
-	target_files,
-} from '../TypesGeneration/arrays';
-import {
 	object_has_property,
 	value_is_non_array_object,
 } from './CustomPairingTypes';
@@ -302,35 +298,6 @@ export class UnrealEngineStringReference {
 					);
 				}
 			),
-			new TypesGenerationMatchesReferenceName<
-				array_string_schema_type,
-				keyof typeof target_files
-			>(['mDamageTypes'], (_, reference_name) => {
-				return ts.factory.createTypeAliasDeclaration(
-					[create_modifier('export')],
-					ts.factory.createIdentifier(
-						adjust_class_name(reference_name)
-					),
-					undefined,
-					create_minimum_size_typed_array_of_type_references(
-						'UnrealEngineString',
-						() => {
-							return [
-								ts.factory.createTypeReferenceNode(
-									'string_starts_with',
-									[
-										ts.factory.createLiteralTypeNode(
-											ts.factory.createStringLiteral(
-												'/Game/FactoryGame/-Shared/Blueprint/DamageTypes/'
-											)
-										),
-									]
-								),
-							];
-						}
-					)
-				);
-			}),
 		];
 	}
 

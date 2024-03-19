@@ -1,5 +1,4 @@
 import Ajv, {Schema, ValidateFunction} from 'ajv/dist/2020';
-import {array_string_schema_type} from './TypesGeneration/arrays';
 import {
 	NoMatchError,
 	OneOfOrAnyOfNoMatchError,
@@ -7,7 +6,6 @@ import {
 	PropertyMatchFailure,
 	UnexpectedlyUnknownNoMatchError,
 } from './SchemaBasedResultsMatching/TypeNodeGeneration';
-import {array_string_schema} from './TypesGeneration/json_schema_types';
 import {
 	object_has_property,
 	object_only_has_that_property,
@@ -43,9 +41,6 @@ export type ResultGenerationMatchers<
 declare type oneOf_or_anyOf_validator = ValidateFunction<
 	{oneOf: object[]} | {anyOf: object[]}
 >;
-
-declare type array_string_validator =
-	ValidateFunction<array_string_schema_type>;
 
 declare type object_validator = ValidateFunction<{
 	type: 'object';
@@ -125,8 +120,6 @@ export abstract class ResultGenerationMatcher<
 		Ajv,
 		oneOf_or_anyOf_validator
 	> = new WeakMap<Ajv, oneOf_or_anyOf_validator>();
-	private array_string_matcher: WeakMap<Ajv, array_string_validator> =
-		new WeakMap<Ajv, array_string_validator>();
 	private object_matcher: WeakMap<Ajv, object_validator> = new WeakMap<
 		Ajv,
 		object_validator
@@ -161,11 +154,6 @@ export abstract class ResultGenerationMatcher<
 		result: MatchResult
 	): MatchResult;
 
-	protected abstract create_array_string_result(
-		property: array_string_schema_type,
-		result: MatchResult
-	): MatchResult;
-
 	protected abstract create_object_result(object_types: {
 		[key: string]: MatchResult;
 	}): MatchResult;
@@ -192,7 +180,6 @@ export abstract class ResultGenerationMatcher<
 			this.object_search(ajv, property) ||
 			this.tuple_array_search(ajv, property) ||
 			this.array_search(ajv, property) ||
-			this.array_string_search(ajv, property) ||
 			this.find_by_maybe_ref(ajv, property, already_checked)
 		);
 	}
@@ -411,47 +398,6 @@ export abstract class ResultGenerationMatcher<
 			if (result) {
 				return this.create_array_result(property, result);
 			}
-		}
-
-		return null;
-	}
-
-	private array_string_search(
-		ajv: Ajv,
-		property: object,
-		already_checked: (keyof typeof this.definitions_to_check)[] = []
-	): MatchResult | null {
-		if (!this.array_string_matcher.has(ajv)) {
-			this.array_string_matcher.set(
-				ajv,
-				ajv.compile(array_string_schema)
-			);
-		}
-
-		const array_string_matcher = this.array_string_matcher.get(
-			ajv
-		) as array_string_validator;
-
-		if (array_string_matcher(property)) {
-			const result = this.search(
-				ajv,
-				property.array_string.items,
-				already_checked
-			);
-
-			if (result) {
-				return this.create_array_string_result(property, result);
-			} else if (this.throw_on_failure_to_find) {
-				throw new NoMatchError(
-					property.array_string,
-					'need to check shit'
-				);
-			}
-		} else if ('array_string' in property) {
-			throw new UnexpectedlyUnknownNoMatchError(
-				property.array_string,
-				`Unsupported array_string usage found!`
-			);
 		}
 
 		return null;

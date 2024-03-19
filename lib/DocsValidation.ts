@@ -248,32 +248,6 @@ export type array_string_schema_type = {
 	prefixItems?: [object, ...object[]];
 } & ({items: object} | {items: false});
 
-export function array_string(schema: array_string_schema_type, data: string) {
-	performance.mark('array_string validation');
-	const array_of_things = string_to_array(data);
-	performance.measure('array_string parsing', 'array_string validation');
-
-	if (false === array_of_things) {
-		return false;
-	}
-
-	const inner_validate = default_config.ajv.compile(
-		Object.assign({}, schema, {
-			$schema: 'https://json-schema.org/draft/2020-12/schema',
-			definitions,
-		})
-	);
-
-	performance.mark('array_string ajv validation');
-	const result = inner_validate(array_of_things);
-	performance.measure(
-		'array_string ajv validation',
-		'array_string validation'
-	);
-
-	return result;
-}
-
 const already_configured = new WeakSet();
 
 export function configure_ajv(ajv: Ajv): void {
@@ -282,46 +256,6 @@ export function configure_ajv(ajv: Ajv): void {
 	}
 
 	already_configured.add(ajv);
-
-	ajv.addKeyword({
-		keyword: 'array_string',
-		type: 'string',
-		metaSchema: {
-			type: 'object',
-			required: ['type'],
-			additionalProperties: false,
-			properties: {
-				type: {type: 'string', const: 'array'},
-				minItems: {type: 'number', minimum: 0},
-				maxItems: {type: 'number', minimum: 1},
-				items: {
-					oneOf: [{type: 'boolean', const: false}, {type: 'object'}],
-				},
-				prefixItems: {
-					type: 'array',
-					minItems: 1,
-					items: {type: 'object'},
-				},
-			},
-		},
-		compile: (
-			schema: {
-				type: 'array';
-				minItems?: number;
-				maxItems?: number;
-				prefixItems?: [object, ...object[]];
-			} & ({items: object} | {items: false})
-		) => {
-			return (data) => array_string(schema, data);
-		},
-		/*
-		code: (ctx:KeywordCxt) => {
-			const {data, schema} = ctx;
-
-			ctx.pass(_`array_string(${schema}, ${data})`);
-		},
-		*/
-	});
 
 	TypedObjectString.configure_ajv(ajv);
 	UnrealEngineStringReference.configure_ajv(ajv);

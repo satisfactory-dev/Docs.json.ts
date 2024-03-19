@@ -9,7 +9,6 @@ import {
 	import_these_later,
 	import_these_somewhere_later,
 } from '../TypesGeneration';
-import {array_string_schema_type} from '../TypesGeneration/arrays';
 import {
 	adjust_class_name,
 	computed_property_name_or_undefined,
@@ -186,24 +185,6 @@ export class TypeNodeGenerationMatcher extends ResultGenerationMatcher<
 				);
 			}
 
-			return ts.factory.createArrayTypeNode(result.type());
-		}, result.import_these_somewhere_later);
-	}
-
-	protected create_array_string_result(
-		property: array_string_schema_type,
-		result: TypeNodeGenerationResult
-	): TypeNodeGenerationResult {
-		return new TypeNodeGenerationResult(() => {
-			if ('minItems' in property.array_string) {
-				return create_minimum_size_typed_array_of_single_type(
-					property.array_string.minItems,
-					result.type,
-					'maxItems' in property.array_string
-						? property.array_string.maxItems
-						: undefined
-				);
-			}
 			return ts.factory.createArrayTypeNode(result.type());
 		}, result.import_these_somewhere_later);
 	}
