@@ -6,6 +6,7 @@ import {fileURLToPath} from 'node:url';
 import * as prettier from 'prettier';
 import Ajv, {ErrorObject} from 'ajv/dist/2020';
 import standalone from 'ajv/dist/standalone';
+import {ESLint} from 'eslint';
 
 import update8_schema from '../schema/update8.schema.json' assert {type: 'json'};
 
@@ -737,10 +738,15 @@ export class DocsTsGenerator {
 				)
 			);
 		}
+
+		await eslint_generated_types(`${parent_folder}/update8/**/*.ts`);
 	}
 }
 
 const prettier_config = prettier.resolveConfig(`${__dirname}/../.prettierrc`);
+
+const eslint = new ESLint({fix: true});
+const eslint_formatter = eslint.loadFormatter('stylish');
 
 export async function format_code(
 	code: string,
@@ -761,4 +767,10 @@ export async function format_code(
 			config
 		)
 	);
+}
+
+export async function eslint_generated_types(files:string) {
+	const results = await eslint.lintFiles(files);
+
+	process.stdout.write(`${await (await eslint_formatter).format(results)}\n`);
 }

@@ -8,6 +8,7 @@
     "validate": "ts-node validate-Docs.ts"
   },
   "devDependencies": {
+    "@types/eslint": "^8.56.6",
     "@types/node": "^20.11.20",
     "ts-node": "^10.9.2",
     "tslib": "^2.6.2"
