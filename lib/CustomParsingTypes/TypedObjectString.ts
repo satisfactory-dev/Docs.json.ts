@@ -1068,28 +1068,32 @@ export class TypedObjectString {
 								properties: Object.fromEntries(
 									Object.entries(
 										data.typed_object_string
-									).map((e):  [
-										string,
-										auto_constructor_property_types_from_generated_types_properties
-									] => {
-										const [property, value] = e;
+									).map(
+										(
+											e
+										): [
+											string,
+											auto_constructor_property_types_from_generated_types_properties,
+										] => {
+											const [property, value] = e;
 
-										if (
-											!this.is_$ref_object_dictionary(
-												value
-											) ||
-											!this.$ref_object_dictionary_is_auto_constructor_properties(
-												value
-											)
-										) {
-											throw new UnexpectedlyUnknownNoMatchError(
-												value,
-												`${reference_name}[${property}] not supported!`
-											);
+											if (
+												!this.is_$ref_object_dictionary(
+													value
+												) ||
+												!this.$ref_object_dictionary_is_auto_constructor_properties(
+													value
+												)
+											) {
+												throw new UnexpectedlyUnknownNoMatchError(
+													value,
+													`${reference_name}[${property}] not supported!`
+												);
+											}
+
+											return [property, value];
 										}
-
-										return [property, value];
-									})
+									)
 								),
 							},
 							['public', 'readonly']

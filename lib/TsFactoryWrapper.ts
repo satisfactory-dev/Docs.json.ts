@@ -242,7 +242,14 @@ export type auto_constructor_property_types_from_generated_types_object<
 > = {
 	type: Type;
 	required: Required;
-	properties: {[key: string]: auto_constructor_property_types_from_generated_types_properties<Properties>}|typed_object_string_type|typeof schema.definitions['EditorCurveData--only']['typed_object_string']['EditorCurveData'];
+	properties:
+		| {
+				[
+					key: string
+				]: auto_constructor_property_types_from_generated_types_properties<Properties>;
+		  }
+		| typed_object_string_type
+		| (typeof schema.definitions)['EditorCurveData--only']['typed_object_string']['EditorCurveData'];
 };
 
 export function create_callExpression__for_validation_function(
