@@ -6,9 +6,7 @@ import {
 	PropertyMatchFailure,
 	UnexpectedlyUnknownNoMatchError,
 } from './SchemaBasedResultsMatching/TypeNodeGeneration';
-import {
-	object_only_has_that_property,
-} from './CustomParsingTypes/CustomPairingTypes';
+import {object_only_has_that_property} from './CustomParsingTypes/CustomPairingTypes';
 
 export class GenerationResult<T> {
 	readonly generate: () => T;
