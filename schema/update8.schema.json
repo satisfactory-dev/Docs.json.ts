@@ -4753,6 +4753,17 @@
 						}
 					]
 				},
+				"mExtractorTypeName": {
+					"oneOf": [
+						{
+							"$ref": "#/definitions/None"
+						},
+						{
+							"type": "string",
+							"const": "Miner"
+						}
+					]
+				},
 				"mTryFindMissingResource": {
 					"$ref": "#/definitions/boolean"
 				}

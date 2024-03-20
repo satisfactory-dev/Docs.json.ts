@@ -57,7 +57,6 @@ const typed_object_string_const_value_regex__native = new RegExp(
 );
 
 const type_object_string_$ref_supported = {
-	'#/definitions/EditorCurveData--item': true,
 	'#/definitions/InfinityExtrap': true,
 	'#/definitions/empty-object': true,
 	'#/definitions/decimal-string': true,
@@ -150,7 +149,6 @@ const typed_object_string_$ref_schema = {
 		$ref: {
 			type: 'string',
 			enum: [
-				'#/definitions/EditorCurveData--item',
 				'#/definitions/InfinityExtrap',
 				'#/definitions/empty-object',
 				'#/definitions/decimal-string',
@@ -419,8 +417,7 @@ export class TypedObjectString {
 		} else if ('#/definitions/empty-object' === $ref) {
 			value_regex = '\\(\\)';
 		} else if (
-			'#/definitions/EditorCurveData--item' === $ref
-			|| '#/definitions/quaternion--inner' === $ref
+			'#/definitions/quaternion--inner' === $ref
 			|| '#/definitions/xyz--inner' === $ref
 			|| '#/definitions/xy' === $ref
 		) {
@@ -1129,20 +1126,8 @@ export class TypedObjectString {
 		];
 	}
 
-	static CustomGenerators(): [
-		{file: string; node: Node},
-		...{file: string; node: Node}[],
-	] {
+	static CustomGenerators() {
 		return [
-			{
-				file: 'classes/base.ts',
-				node: ts.factory.createTypeAliasDeclaration(
-					[create_modifier('declare')],
-					'EditorCurveData__item',
-					undefined,
-					ts.factory.createTypeReferenceNode('EditorCurveData')
-				),
-			},
 		];
 	}
 
