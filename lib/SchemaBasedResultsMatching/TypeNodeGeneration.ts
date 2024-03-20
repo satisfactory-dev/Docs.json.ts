@@ -27,7 +27,6 @@ import {
 	GenerationResult,
 	ResultGeneration,
 	ResultGenerationMatcher,
-	ResultGenerationMatchers,
 } from '../SchemaBasedResultsMatching';
 
 export class TypeNodeGenerationResult extends GenerationResult<ts.TypeNode> {
@@ -105,7 +104,7 @@ export class TypeNodeGenerationMatcher extends ResultGenerationMatcher<
 	TypeNode,
 	DataType,
 	TypeNodeGenerationResult,
-	TypeNodeGeneration<DataType>
+	TypeNodeGeneration
 > {
 	protected create_type_reference_result(
 		reference: string
