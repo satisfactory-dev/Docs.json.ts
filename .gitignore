@@ -5,3 +5,4 @@
 /lib/**/*.js
 /imports-come-from.json
 /auto-imports.json
+/.eslintcache

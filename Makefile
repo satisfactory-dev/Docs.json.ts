@@ -29,8 +29,8 @@ lint--prettier:
 	${DOCKER_PREFIX} ${DOCKER_IMAGE} ./node_modules/.bin/prettier . --check
 
 lint--eslint:
-	${DOCKER_PREFIX} ${DOCKER_IMAGE} ./node_modules/.bin/eslint . --fix-dry-run --ignore-pattern '/generated-types/'
-	${DOCKER_PREFIX} ${DOCKER_IMAGE} ./node_modules/.bin/eslint . --ignore-pattern '/generated-types/'
+	${DOCKER_PREFIX} ${DOCKER_IMAGE} ./node_modules/.bin/eslint --cache './*.ts' lib --fix-dry-run
+	${DOCKER_PREFIX} ${DOCKER_IMAGE} ./node_modules/.bin/eslint --cache './*.ts' lib
 
 lint: lint-lib lint--prettier lint--eslint
 
