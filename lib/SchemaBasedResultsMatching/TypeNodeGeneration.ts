@@ -258,16 +258,16 @@ export function create_constructor_args<T1 extends string = string>(
 	data:
 		| ({required: string[]; $ref: string} & {
 				properties: {[p: string]: object};
-		  })
+		})
 		| {
 				required: string[];
 				$ref: string;
-		  }
+		}
 		| ({required: string[]} & {properties: {[p: string]: object}})
 		| {required: string[]}
 		| ({
 				$ref: string;
-		  } & {properties: {[p: string]: object}})
+		} & {properties: {[p: string]: object}})
 		| {$ref: string},
 	property_types: {[p: string]: TypeNodeGenerationResult}
 ): {file: T1; node: ts.TypeAliasDeclaration} {
@@ -333,18 +333,18 @@ declare type object_shorthand = (
 	| {
 			required: string[];
 			$ref: string;
-	  }
+	}
 	| {
 			required: string[];
-	  }
+	}
 	| {
 			$ref: string;
-	  }
+	}
 ) &
 	(
 		| {
 				properties: {[key: string]: object};
-		  }
+		}
 		| typeof empty_object
 	);
 
@@ -433,12 +433,12 @@ export function create_binding_constructor(
 				| [
 						ShorthandPropertyAssignment,
 						...ShorthandPropertyAssignment[],
-				  ]
+				]
 				| [
 						ShorthandPropertyAssignment,
 						...ShorthandPropertyAssignment[],
 						SpreadAssignment,
-				  ] = pass_to_super.map((prop) => {
+				] = pass_to_super.map((prop) => {
 				return ts.factory.createShorthandPropertyAssignment(prop);
 			}) as [
 				ShorthandPropertyAssignment,

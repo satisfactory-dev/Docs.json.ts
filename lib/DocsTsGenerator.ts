@@ -3,7 +3,6 @@ import {basename, dirname} from 'node:path';
 import {existsSync} from 'node:fs';
 import {fileURLToPath} from 'node:url';
 
-import * as prettier from 'prettier';
 import Ajv, {ErrorObject} from 'ajv/dist/2020';
 import standalone from 'ajv/dist/standalone';
 import {ESLint} from 'eslint';
@@ -51,7 +50,6 @@ import {
 import {configure_ajv, default_config} from './DocsValidation';
 import ts from 'typescript';
 import {glob} from 'glob';
-import {BuiltInParserName} from 'prettier';
 import {
 	target_files as classes_target_files,
 	generators as classes_generators,
@@ -292,7 +290,7 @@ export class DocsTsGenerator {
 
 				await writeFile(
 					filepath,
-					await format_code(
+					(
 						standalone(
 							default_config.ajv,
 							default_config.ajv.compile(schema)
@@ -760,7 +758,7 @@ export class DocsTsGenerator {
 
 			await writeFile(
 				file_name,
-				await format_code(
+				(
 					nodes
 						.map((node) => {
 							return printer.printNode(
@@ -778,31 +776,8 @@ export class DocsTsGenerator {
 	}
 }
 
-const prettier_config = prettier.resolveConfig(`${__dirname}/../.prettierrc`);
-
 const eslint = new ESLint({fix: true});
 const eslint_formatter = eslint.loadFormatter('stylish');
-
-export async function format_code(
-	code: string,
-	parser: BuiltInParserName = 'typescript'
-): Promise<string> {
-	const config = await prettier_config;
-
-	if (!config) {
-		throw new Error('could not find prettier config');
-	}
-
-	return prettier.format(
-		code,
-		Object.assign(
-			{
-				parser,
-			},
-			config
-		)
-	);
-}
 
 export async function eslint_generated_types(files: string) {
 	const results = await eslint.lintFiles(files);

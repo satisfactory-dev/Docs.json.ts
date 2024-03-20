@@ -22,14 +22,14 @@ export type NativeClass = {
 					type: string;
 					minItems: number;
 					items: NativeClass__Classes__items;
-			  } & ({maxItems: number} | typeof empty_object))
+			} & ({maxItems: number} | typeof empty_object))
 			| {
 					type: string;
 					minItems: number;
 					maxItems: number;
 					prefixItems: [object_with_ref, ...object_with_ref[]];
 					items: NativeClass__Classes__items;
-			  };
+			};
 	};
 };
 

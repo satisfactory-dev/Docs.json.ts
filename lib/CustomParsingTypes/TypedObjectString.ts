@@ -106,10 +106,10 @@ export type typed_object_string_type = {
 		| {
 				type: 'string';
 				const: string;
-		  }
+		}
 		| {
 				[key: string]: enum_schema_type;
-		  }
+		}
 		| enum_schema_type
 		| typed_array_string_parent_without_recursive_reference
 		| type_object_string_$ref_choices

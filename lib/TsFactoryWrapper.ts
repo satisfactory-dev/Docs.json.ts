@@ -247,7 +247,7 @@ export type auto_constructor_property_types_from_generated_types_object<
 				[
 					key: string
 				]: auto_constructor_property_types_from_generated_types_properties<Properties>;
-		  }
+		}
 		| typed_object_string_type
 		| (typeof schema.definitions)['EditorCurveData--only']['typed_object_string']['EditorCurveData'];
 };

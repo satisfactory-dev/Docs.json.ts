@@ -45,13 +45,13 @@ export type UnrealEngineStringReference_type =
 	| {
 			left: UnrealEngineStringReference_string_or_string_array;
 			right: UnrealEngineStringReference_right;
-	  }
+	}
 	| {
 			left: UnrealEngineStringReference_string_or_string_array;
-	  }
+	}
 	| {
 			right: UnrealEngineStringReference_right;
-	  }
+	}
 	| true;
 
 export type UnrealEngineStringReference_general_type = {
