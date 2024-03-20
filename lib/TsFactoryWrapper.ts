@@ -98,7 +98,10 @@ function maybe_expression_node_from_literal(
 			);
 		}
 
-		return create_literal_node_from_value(node.literal.text).literal;
+		return ts.factory.createAsExpression(
+			create_literal_node_from_value(node.literal.text).literal,
+			ts.factory.createTypeReferenceNode('const')
+		);
 	}
 
 	return undefined;
