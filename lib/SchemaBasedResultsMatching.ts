@@ -78,8 +78,6 @@ export class ResultGeneration<
 	>();
 	private readonly generator: ResultGenerator<ResultType, Data, MatchResult>;
 
-	static matchers: ResultGenerationMatchers<any, any>[] = [];
-
 	constructor(
 		schema: Schema,
 		generator: ResultGenerator<ResultType, Data, MatchResult>
