@@ -73,8 +73,14 @@ export function annoyingly_have_to_escape_property(property: string): string {
 }
 
 export abstract class SupportedSubSchemaType<
-	ObjectType extends {[key: string]: unknown},
-	LiteralType extends LiteralExpression | UnionTypeNode | TypeReferenceNode,
+	ObjectType extends {[key: string]: unknown} = {[key: string]: unknown},
+	LiteralType extends
+		| LiteralExpression
+		| UnionTypeNode
+		| TypeReferenceNode =
+		| LiteralExpression
+		| UnionTypeNode
+		| TypeReferenceNode,
 > {
 	abstract is_supported_schema(maybe: unknown): maybe is ObjectType;
 

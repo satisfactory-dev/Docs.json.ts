@@ -561,10 +561,7 @@ export class TypedArrayString {
 		return new TypeNodeGenerationResult(() => this.typed_array(data));
 	}
 
-	static TypeNodeGeneration(): [
-		TypeNodeGeneration<any>,
-		...TypeNodeGeneration<any>[],
-	] {
+	static TypeNodeGeneration() {
 		return [
 			new TypeNodeGeneration<typed_array_string_parent>(
 				{

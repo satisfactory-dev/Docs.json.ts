@@ -6,7 +6,7 @@ import {UnexpectedlyUnknownNoMatchError} from '../SchemaBasedResultsMatching/Typ
 
 const supported = [supported_$ref, typed_string_enum, typed_string_const];
 
-function find(value: unknown): SupportedSubSchemaType<any, any> {
+function find(value: unknown): SupportedSubSchemaType {
 	const match = supported.find((e) => e.is_supported_schema(value));
 
 	if (!match) {
@@ -19,20 +19,17 @@ function find(value: unknown): SupportedSubSchemaType<any, any> {
 	return match;
 }
 
-class SupportedMeta extends SupportedSubSchemaType<
-	{[key: string]: unknown},
-	any
-> {
+class SupportedMeta extends SupportedSubSchemaType {
 	is_supported_schema(maybe: {
 		[key: string]: unknown;
 	}): maybe is {[key: string]: unknown} {
 		return -1 !== supported.findIndex((e) => e.is_supported_schema(maybe));
 	}
 
-	value_regex(value: unknown): string {
+	value_regex(value: {[key: string]: unknown}): string {
 		return find(value).value_regex(value);
 	}
-	value_type(value: unknown) {
+	value_type(value: {[key: string]: unknown}) {
 		return find(value).value_type(value);
 	}
 }

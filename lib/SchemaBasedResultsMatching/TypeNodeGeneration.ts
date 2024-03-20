@@ -46,7 +46,7 @@ export class TypeNodeGenerationResult extends GenerationResult<ts.TypeNode> {
 	}
 }
 
-export class TypeNodeGeneration<T extends DataType> extends ResultGeneration<
+export class TypeNodeGeneration<T extends DataType = DataType> extends ResultGeneration<
 	TypeNode,
 	T,
 	TypeNodeGenerationResult
