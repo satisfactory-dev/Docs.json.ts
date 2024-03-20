@@ -124,10 +124,12 @@ type DocsDataItem = {
 
 export type DocsData = [DocsDataItem, ...DocsDataItem[]];
 
+declare type basic_docs_type = {[key: string]: unknown}[];
+
 export class DocsTsGenerator {
 	private readonly cache_path: string | undefined;
-	private readonly docs_path: string | {[key: string]: unknown}[];
-	private docs: {[key: string]: unknown}[] | undefined;
+	private readonly docs_path: string | basic_docs_type;
+	private docs: basic_docs_type | undefined;
 
 	static readonly PERF_START_LOADING_JSON = 'Start Loading Docs.json';
 	static readonly PERF_EARLY_RETURN = 'Early Return of Docs.json';
@@ -144,7 +146,7 @@ export class DocsTsGenerator {
 		docs_path, // raw JSON or path to UTF-16LE encoded Docs.json
 		cache_path = undefined, // optional cache folder path for cacheable resources
 	}: {
-		docs_path: string | {[key: string]: unknown}[];
+		docs_path: string | basic_docs_type;
 		cache_path?: string;
 	}) {
 		this.docs_path = docs_path;
