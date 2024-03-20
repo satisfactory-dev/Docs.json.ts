@@ -401,7 +401,7 @@ export class DocsTsGenerator {
 			aliases_target_files
 		);
 
-		const generators:TypesGeneration_concrete[] = [
+		const generators: TypesGeneration_concrete[] = [
 			...enum_generators,
 			...validator_generators,
 			...constants_generators,
@@ -433,14 +433,10 @@ export class DocsTsGenerator {
 			.filter((e: [string, object]) => {
 				for (const generator of generators) {
 					if (generator instanceof TypesGenerationFromSchema) {
-						if (
-							generator.test(e[1])
-						) {
+						if (generator.test(e[1])) {
 							return true;
 						}
-					} else if (
-						generator.test(e[0])
-					) {
+					} else if (generator.test(e[0])) {
 						return true;
 					}
 				}
@@ -448,21 +444,20 @@ export class DocsTsGenerator {
 				return false;
 			})
 			.map((e: [string, object]) => {
-				const generator =
-					generators.find((maybe) => {
-						if (maybe instanceof TypesGenerationFromSchema) {
-							return (
-								maybe as TypesGenerationFromSchema<object>
-							).test(e[1]);
-						}
-
+				const generator = generators.find((maybe) => {
+					if (maybe instanceof TypesGenerationFromSchema) {
 						return (
-							maybe as TypesGenerationMatchesReferenceName<
-								object,
-								string
-							>
-						).test(e[0]);
-					}) as undefined | TypesGeneration_concrete;
+							maybe as TypesGenerationFromSchema<object>
+						).test(e[1]);
+					}
+
+					return (
+						maybe as TypesGenerationMatchesReferenceName<
+							object,
+							string
+						>
+					).test(e[0]);
+				}) as undefined | TypesGeneration_concrete;
 
 				if (!generator) {
 					throw new Error('whoops');
