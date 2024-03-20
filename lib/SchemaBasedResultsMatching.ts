@@ -24,17 +24,6 @@ export type ResultGenerator<
 	T3 extends GenerationResult<T1> = GenerationResult<T1>,
 > = (data: T2) => T3;
 
-export type ResultGenerationMatchers<
-	Result,
-	Data extends DataType = DataType,
-	Generation extends GenerationResult<Result> = GenerationResult<Result>,
-	ItemType extends ResultGeneration<
-		Result,
-		Data,
-		Generation
-	> = ResultGeneration<Result, Data, Generation>,
-> = Array<ItemType>;
-
 declare type oneOf_or_anyOf_validator = ValidateFunction<
 	{oneOf: object[]} | {anyOf: object[]}
 >;

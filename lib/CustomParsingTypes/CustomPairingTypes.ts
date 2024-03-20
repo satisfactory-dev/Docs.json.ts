@@ -32,14 +32,6 @@ export function object_has_property_that_equals(
 	return object_has_property(maybe, property) && expects === maybe[property];
 }
 
-export function value_is_array(maybe: unknown): maybe is unknown[] {
-	return maybe instanceof Array;
-}
-
-export function value_is_object(maybe: unknown): maybe is object {
-	return 'object' === typeof maybe;
-}
-
 export function value_is_non_array_object(
 	maybe: unknown
 ): maybe is {[key: string]: unknown} {
