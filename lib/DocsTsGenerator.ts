@@ -71,17 +71,21 @@ import {is_ref, Update8TypeNodeGeneration} from './Schemas/Update8';
 import {TypeNodeGenerationMatcher} from './SchemaBasedResultsMatching/TypeNodeGeneration';
 import {DocsTsAutoImports} from './DocsTsAutoImports';
 import {createHash} from 'node:crypto';
+import {
+	is_non_empty_array,
+	value_is_non_array_object,
+} from './CustomParsingTypes/CustomPairingTypes';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export class ValidationError extends Error {
 	readonly errors: ErrorObject[];
-	readonly json: any;
+	readonly json: unknown;
 
 	constructor(
 		message: string,
 		errors: ErrorObject[] | undefined | null,
-		json: any
+		json: unknown
 	) {
 		super(message);
 		this.errors = errors || [];
@@ -118,8 +122,8 @@ export type DocsData = [DocsDataItem, ...DocsDataItem[]];
 
 export class DocsTsGenerator {
 	private readonly cache_path: string | undefined;
-	private readonly docs_path: string | object[];
-	private docs: object[] | undefined;
+	private readonly docs_path: string | {[key: string]: unknown}[];
+	private docs: {[key: string]: unknown}[] | undefined;
 
 	static readonly PERF_START_LOADING_JSON = 'Start Loading Docs.json';
 	static readonly PERF_EARLY_RETURN = 'Early Return of Docs.json';
@@ -136,14 +140,14 @@ export class DocsTsGenerator {
 		docs_path, // raw JSON or path to UTF-16LE encoded Docs.json
 		cache_path = undefined, // optional cache folder path for cacheable resources
 	}: {
-		docs_path: string | object[];
+		docs_path: string | {[key: string]: unknown}[];
 		cache_path?: string;
 	}) {
 		this.docs_path = docs_path;
 		this.cache_path = cache_path;
 	}
 
-	private async load_from_file(filepath: string): Promise<any> {
+	private async load_from_file(filepath: string): Promise<unknown> {
 		const file = await readFile(filepath, {
 			encoding: 'utf-16le',
 		});
@@ -157,7 +161,7 @@ export class DocsTsGenerator {
 		return JSON.parse(utf8.trim());
 	}
 
-	private async load(): Promise<any> {
+	private async load(): Promise<Exclude<typeof this.docs, undefined>> {
 		if (undefined === this.docs) {
 			performance.mark(DocsTsGenerator.PERF_START_LOADING_JSON);
 			if ('string' !== typeof this.docs_path) {
@@ -173,6 +177,7 @@ export class DocsTsGenerator {
 				);
 				throw new Error('Probably not a JSON file');
 			} else {
+				let maybe_json:unknown;
 				try {
 					if (this.cache_path) {
 						const utf8_filename = basename(this.docs_path).replace(
@@ -188,13 +193,13 @@ export class DocsTsGenerator {
 								DocsTsGenerator.PERF_FILE_READ,
 								DocsTsGenerator.PERF_START_LOADING_JSON
 							);
-							this.docs = JSON.parse(file_contents.toString());
+							maybe_json = JSON.parse(file_contents.toString());
 							performance.measure(
 								DocsTsGenerator.PERF_FILE_PARSED,
 								DocsTsGenerator.PERF_START_LOADING_JSON
 							);
 						} else {
-							const json = await this.load_from_file(
+							maybe_json = await this.load_from_file(
 								this.docs_path
 							);
 							performance.measure(
@@ -204,13 +209,11 @@ export class DocsTsGenerator {
 
 							await writeFile(
 								utf8_filepath,
-								JSON.stringify(json, null, '\t') + '\n'
+								JSON.stringify(maybe_json, null, '\t') + '\n'
 							);
-
-							this.docs = json;
 						}
 					} else {
-						this.docs = await this.load_from_file(this.docs_path);
+						maybe_json = await this.load_from_file(this.docs_path);
 						performance.measure(
 							DocsTsGenerator.PERF_FILE_PARSED,
 							DocsTsGenerator.PERF_START_LOADING_JSON
@@ -224,6 +227,25 @@ export class DocsTsGenerator {
 
 					throw err;
 				}
+
+				if (
+					!is_non_empty_array<{[key: string]: unknown}>(
+						maybe_json,
+						value_is_non_array_object
+					)
+				) {
+					performance.measure(
+						DocsTsGenerator.PERF_FAILURE,
+						DocsTsGenerator.PERF_START_LOADING_JSON
+					);
+					throw new Error('Was expecting json to be an array!');
+				}
+
+				this.docs = maybe_json;
+			}
+
+			if (undefined === this.docs) {
+				throw new Error('this.docs not set!');
 			}
 		}
 

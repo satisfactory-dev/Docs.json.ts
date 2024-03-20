@@ -6,7 +6,7 @@ import {UnexpectedlyUnknownNoMatchError} from '../SchemaBasedResultsMatching/Typ
 
 const supported = [supported_$ref, typed_string_enum, typed_string_const];
 
-function find(value: any): SupportedSubSchemaType<any, any> {
+function find(value: unknown): SupportedSubSchemaType<any, any> {
 	const match = supported.find((e) => e.is_supported_schema(value));
 
 	if (!match) {
