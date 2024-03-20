@@ -43,9 +43,8 @@ import {
 } from './TypesGeneration/unions';
 import {
 	TypesGenerationFromSchema,
-	TypesGenerationMatchesReferenceName,
 	GenerationMatch,
-	ImportTracker,
+	ImportTracker, TypesGeneration_concrete, TypesGenerationMatchesReferenceName,
 } from './TypesGeneration';
 import {configure_ajv, default_config} from './DocsValidation';
 import ts from 'typescript';
@@ -400,10 +399,7 @@ export class DocsTsGenerator {
 			aliases_target_files
 		);
 
-		const generators: (
-			| TypesGenerationFromSchema<any>
-			| TypesGenerationMatchesReferenceName<any, any>
-		)[] = [
+		const generators = [
 			...enum_generators,
 			...validator_generators,
 			...constants_generators,
@@ -429,17 +425,15 @@ export class DocsTsGenerator {
 			throw_on_failure_to_find;
 		type_node_generation.definitions_to_check = update8_schema.definitions;
 
-		const supported_conversions: GenerationMatch<object>[] =
+		const supported_conversions =
 			Object.entries(update8_schema.definitions)
 				.filter((e: [string, object]) => {
 					for (const generator of generators) {
-						if (
-							generator.test(
-								generator instanceof TypesGenerationFromSchema
-									? e[1]
-									: e[0]
-							)
-						) {
+						if (generator instanceof TypesGenerationFromSchema) {
+							if ((generator as TypesGenerationFromSchema<object>).test(e[1])) {
+								return true;
+							}
+						} else if ((generator as TypesGenerationMatchesReferenceName<object, string>).test(e[0])) {
 							return true;
 						}
 					}
@@ -447,18 +441,23 @@ export class DocsTsGenerator {
 					return false;
 				})
 				.map((e: [string, object]) => {
+					const generator:undefined|TypesGeneration_concrete =
+						generators.find((maybe) => {
+							if (maybe instanceof TypesGenerationFromSchema) {
+								return (maybe as TypesGenerationFromSchema<object>).test(e[1]);
+							}
+
+							return (maybe as TypesGenerationMatchesReferenceName<object, string>).test(e[0]);
+						}) as undefined|TypesGeneration_concrete;
+
+					if (!generator) {
+						throw new Error('whoops');
+					}
+
 					return new GenerationMatch<object>(
 						e[0],
 						e[1],
-						generators.find((maybe) => {
-							if (maybe instanceof TypesGenerationFromSchema) {
-								return maybe.test(e[1]);
-							}
-
-							return maybe.test(e[0]);
-						}) as
-							| TypesGenerationFromSchema<object>
-							| TypesGenerationMatchesReferenceName<object, any>
+						generator
 					);
 				});
 
