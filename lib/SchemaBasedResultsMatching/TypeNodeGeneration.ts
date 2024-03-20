@@ -46,11 +46,9 @@ export class TypeNodeGenerationResult extends GenerationResult<ts.TypeNode> {
 	}
 }
 
-export class TypeNodeGeneration<T extends DataType = DataType> extends ResultGeneration<
-	TypeNode,
-	T,
-	TypeNodeGenerationResult
-> {
+export class TypeNodeGeneration<
+	T extends DataType = DataType,
+> extends ResultGeneration<TypeNode, T, TypeNodeGenerationResult> {
 	static matchers: ResultGenerationMatchers<TypeNode, any>[] = [];
 }
 
