@@ -25,8 +25,8 @@ export function object_has_non_empty_array_property<T extends string = string>(
 export function object_has_property_that_equals(
 	maybe: object,
 	property: string,
-	expects: any
-): maybe is {[key: string]: any} & {[key in typeof property]: typeof expects} {
+	expects: unknown
+): maybe is {[key: string]: unknown} & {[key in typeof property]: typeof expects} {
 	return object_has_property(maybe, property) && expects === maybe[property];
 }
 
@@ -53,7 +53,7 @@ export function is_non_empty_array(
 export function object_only_has_that_property<T extends string = string>(
 	maybe: object,
 	property: T
-): maybe is {[key in T]: any} {
+): maybe is {[key in T]: unknown} {
 	return (
 		object_has_property(maybe, property) && 1 === Object.keys(maybe).length
 	);
@@ -64,10 +64,10 @@ export function annoyingly_have_to_escape_property(property: string): string {
 }
 
 export abstract class SupportedSubSchemaType<
-	ObjectType extends {[key: string]: any},
+	ObjectType extends {[key: string]: unknown},
 	LiteralType extends LiteralExpression | UnionTypeNode | TypeReferenceNode,
 > {
-	abstract is_supported_schema(maybe: any): maybe is ObjectType;
+	abstract is_supported_schema(maybe: unknown): maybe is ObjectType;
 
 	abstract value_regex(value: ObjectType): string;
 

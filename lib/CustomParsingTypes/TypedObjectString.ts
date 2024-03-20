@@ -36,7 +36,6 @@ import {
 	object_has_property,
 	object_has_property_that_equals,
 	object_only_has_that_property,
-	value_is_array,
 	value_is_non_array_object,
 } from './CustomPairingTypes';
 import {typed_array_string_parent_without_recursive_reference} from './TypedArrayString';
@@ -84,6 +83,15 @@ const type_object_string_$ref_supported = {
 const type_object_string_$ref_supported_array = Object.keys(
 	type_object_string_$ref_supported
 ) as (keyof typeof type_object_string_$ref_supported)[];
+
+function value_is_in_type_object_string_$ref_supported_array(
+	maybe:unknown
+): maybe is keyof typeof type_object_string_$ref_supported {
+	return (
+		'string' === typeof maybe &&
+		(type_object_string_$ref_supported_array as string[]).includes(maybe)
+	);
+}
 
 type type_object_string_$ref_choices = {
 	$ref: keyof typeof type_object_string_$ref_supported;
@@ -603,7 +611,7 @@ export class TypedObjectString {
 		return (
 			value_is_non_array_object(maybe) &&
 			object_only_has_that_property(maybe, '$ref') &&
-			type_object_string_$ref_supported_array.includes(maybe.$ref)
+			value_is_in_type_object_string_$ref_supported_array(maybe.$ref)
 		);
 	}
 

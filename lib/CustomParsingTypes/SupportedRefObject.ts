@@ -28,6 +28,15 @@ const $ref_supported_array = Object.keys(
 	$ref_supported
 ) as (keyof typeof $ref_supported)[];
 
+function value_is_in_$ref_supported_array(
+	maybe:unknown
+): maybe is keyof typeof $ref_supported {
+	return (
+		'string' === typeof maybe &&
+		($ref_supported_array as string[]).includes(maybe)
+	);
+}
+
 export const $ref_schema = {
 	type: 'object',
 	required: ['$ref'],
@@ -51,7 +60,7 @@ class SupportedRefObject extends SupportedSubSchemaType<
 		return (
 			value_is_non_array_object(maybe) &&
 			object_only_has_that_property(maybe, '$ref') &&
-			$ref_supported_array.includes(maybe.$ref)
+			value_is_in_$ref_supported_array(maybe.$ref)
 		);
 	}
 	value_regex(value: $ref_choices): string {
