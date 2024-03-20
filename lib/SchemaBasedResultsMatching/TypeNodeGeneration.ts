@@ -48,8 +48,7 @@ export class TypeNodeGenerationResult extends GenerationResult<ts.TypeNode> {
 
 export class TypeNodeGeneration<
 	T extends DataType = DataType,
-> extends ResultGeneration<TypeNode, T, TypeNodeGenerationResult> {
-}
+> extends ResultGeneration<TypeNode, T, TypeNodeGenerationResult> {}
 
 abstract class UnsuccessfulMatchException<
 	T extends object | unknown,
