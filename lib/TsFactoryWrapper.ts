@@ -719,13 +719,13 @@ export function flexibly_create_regex_validation_function(
 }
 
 const type_map = {
-	any: ts.SyntaxKind.AnyKeyword,
 	boolean: ts.SyntaxKind.BooleanKeyword,
 	number: ts.SyntaxKind.NumberKeyword,
 	object: ts.SyntaxKind.ObjectKeyword,
 	string: ts.SyntaxKind.StringKeyword,
 	undefined: ts.SyntaxKind.UndefinedKeyword,
 	never: ts.SyntaxKind.NeverKeyword,
+	unknown: ts.SyntaxKind.UnknownKeyword,
 };
 
 export function create_type(type: keyof typeof type_map): ts.KeywordTypeNode {

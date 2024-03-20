@@ -230,7 +230,7 @@ export const custom_generators = [
 												create_type('string')
 											),
 										],
-										create_type('any')
+										create_type('unknown')
 									),
 								])
 							)
