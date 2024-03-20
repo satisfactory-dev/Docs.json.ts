@@ -48,9 +48,15 @@ export function value_is_non_array_object(
 
 export function is_non_empty_array<T = unknown>(
 	maybe: unknown,
-	predicate: undefined|((inner_maybe:unknown) => inner_maybe is T) = undefined
+	predicate:
+		| undefined
+		| ((inner_maybe: unknown) => inner_maybe is T) = undefined
 ): maybe is [T, ...T[]] {
-	return maybe instanceof Array && maybe.length >= 1 && (undefined === predicate || maybe.every(e => predicate(e)));
+	return (
+		maybe instanceof Array &&
+		maybe.length >= 1 &&
+		(undefined === predicate || maybe.every((e) => predicate(e)))
+	);
 }
 
 export function object_only_has_that_property<T extends string = string>(

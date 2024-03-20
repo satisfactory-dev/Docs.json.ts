@@ -177,7 +177,7 @@ export class DocsTsGenerator {
 				);
 				throw new Error('Probably not a JSON file');
 			} else {
-				let maybe_json:unknown;
+				let maybe_json: unknown;
 				try {
 					if (this.cache_path) {
 						const utf8_filename = basename(this.docs_path).replace(
