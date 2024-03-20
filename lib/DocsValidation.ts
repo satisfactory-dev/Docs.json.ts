@@ -95,8 +95,8 @@ export function string_to_object<T extends object>(data: string): T | false {
 						} else if (')' === is) {
 							--was.current_value_nesting;
 						} else if (
-							',' === is &&
-							0 === was.current_value_nesting
+							',' === is
+							&& 0 === was.current_value_nesting
 						) {
 							if (/^".+"$/.test(was.current_value_buffer)) {
 								was.current_value_buffer =
@@ -195,9 +195,11 @@ export function string_to_array<T extends unknown[]>(data: string): T | false {
 					was.current_item_buffer += is;
 				}
 				if (
-					add_value ||
-					(index === array.length - 1 &&
-						'' !== was.current_item_buffer)
+					add_value
+					|| (
+						index === array.length - 1
+						&& '' !== was.current_item_buffer
+					)
 				) {
 					if (/^".+"$/.test(was.current_item_buffer)) {
 						was.values.push(

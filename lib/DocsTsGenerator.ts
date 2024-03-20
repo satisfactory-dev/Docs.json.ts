@@ -560,8 +560,8 @@ export class DocsTsGenerator {
 		for (const match of supported_conversions) {
 			if (!(match.definition in target_files)) {
 				if (
-					is_ref(match.definition) &&
-					Update8.can_guess_filename(match.definition)
+					is_ref(match.definition)
+					&& Update8.can_guess_filename(match.definition)
 				) {
 					target_files[match.definition] = Update8.guess_filename(
 						match.definition
@@ -627,10 +627,10 @@ export class DocsTsGenerator {
 			);
 
 			return (
-				1 === heritage.length &&
-				1 === heritage[0].length &&
-				ts.isExpressionWithTypeArguments(heritage[0][0]) &&
-				ts.isIdentifier(heritage[0][0].expression)
+				1 === heritage.length
+				&& 1 === heritage[0].length
+				&& ts.isExpressionWithTypeArguments(heritage[0][0])
+				&& ts.isIdentifier(heritage[0][0].expression)
 			);
 		}
 
@@ -662,10 +662,10 @@ export class DocsTsGenerator {
 					const tree: string[] = [class_node.name?.escapedText + ''];
 
 					while (
-						checking &&
-						can_class_have_tree(checking) &&
-						checking.heritageClauses[0].types[0] &&
-						checking.heritageClauses[0].types[0].expression.escapedText.toString() in
+						checking
+						&& can_class_have_tree(checking)
+						&& checking.heritageClauses[0].types[0]
+						&& checking.heritageClauses[0].types[0].expression.escapedText.toString() in
 							class_can_have_trees
 					) {
 						const parent_class_name: string =
@@ -730,8 +730,8 @@ export class DocsTsGenerator {
 				...ImportTracker.generate_imports(entry[0]),
 				...entry[1].sort((a, b) => {
 					if (
-						ts.isTypeAliasDeclaration(a) &&
-						!ts.isTypeAliasDeclaration(b)
+						ts.isTypeAliasDeclaration(a)
+						&& !ts.isTypeAliasDeclaration(b)
 					) {
 						return -1;
 					}

@@ -344,8 +344,8 @@ export function createClass__members__with_auto_constructor<
 					);
 
 					if (
-						'required' in data &&
-						!data.required.includes(property_name)
+						'required' in data
+						&& !data.required.includes(property_name)
 					) {
 						type = ts.factory.createUnionTypeNode([
 							type,
@@ -387,8 +387,9 @@ export function createClass__members__with_auto_constructor<
 				const [property_name, property] = entry;
 
 				if (
-					property['$ref'] in
-					auto_constructor_property_types_from_generated_types
+					property[
+						'$ref'
+					] in auto_constructor_property_types_from_generated_types
 				) {
 					return create_this_assignment(
 						property_name,
@@ -396,15 +397,15 @@ export function createClass__members__with_auto_constructor<
 					);
 				}
 
-				const is_int =
-					property['$ref'] === '#/definitions/integer-string' ||
-					property['$ref'] ===
-						'#/definitions/integer-string--signed';
+				const is_int = (
+					property['$ref'] === '#/definitions/integer-string'
+					|| property['$ref'] === '#/definitions/integer-string--signed'
+				);
 
 				const is_signed = property['$ref'].endsWith('--signed');
 
-				const validate =
-					create_callExpression__for_validation_function(
+				const validate
+					= create_callExpression__for_validation_function(
 						`${is_int ? 'integer-string' : 'decimal-string'}${
 							is_signed ? '--signed' : ''
 						}`,

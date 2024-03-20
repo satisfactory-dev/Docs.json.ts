@@ -160,11 +160,11 @@ export abstract class ResultGenerationMatcher<
 		}
 
 		return (
-			this.oneOf_or_anyOf_matcher(ajv, property) ||
-			this.object_search(ajv, property) ||
-			this.tuple_array_search(ajv, property) ||
-			this.array_search(ajv, property) ||
-			this.find_by_maybe_ref(ajv, property, already_checked)
+			this.oneOf_or_anyOf_matcher(ajv, property)
+			|| this.object_search(ajv, property)
+			|| this.tuple_array_search(ajv, property)
+			|| this.array_search(ajv, property)
+			|| this.find_by_maybe_ref(ajv, property, already_checked)
 		);
 	}
 
@@ -239,9 +239,9 @@ export abstract class ResultGenerationMatcher<
 					matches as [MatchResult, ...MatchResult[]]
 				);
 			} else if (
-				this.throw_on_failure_to_find &&
-				matches.length > 0 &&
-				missing_matches
+				this.throw_on_failure_to_find
+				&& matches.length > 0
+				&& missing_matches
 			) {
 				throw new PartialMatchError(property, missing_matches);
 			} else if (this.throw_on_failure_to_find) {
@@ -434,16 +434,16 @@ export abstract class ResultGenerationMatcher<
 		already_checked: (keyof typeof this.definitions_to_check)[] = []
 	): MatchResult | null {
 		if (
-			object_only_has_that_property(property, '$ref') &&
-			'string' === typeof property.$ref &&
-			property.$ref.startsWith('#/definitions/')
+			object_only_has_that_property(property, '$ref')
+			&& 'string' === typeof property.$ref
+			&& property.$ref.startsWith('#/definitions/')
 		) {
 			const definition = property.$ref.substring(14);
 
 			if (
-				definition in this.definitions_to_check &&
-				!already_checked.includes(definition) &&
-				this.find(ajv, this.definitions_to_check[definition], [
+				definition in this.definitions_to_check
+				&& !already_checked.includes(definition)
+				&& this.find(ajv, this.definitions_to_check[definition], [
 					definition,
 					...already_checked,
 				])
@@ -487,8 +487,8 @@ export abstract class ResultGenerationMatcher<
 					return [property, this.find(ajv, property_data)];
 				} catch (err) {
 					if (
-						err instanceof NoMatchError ||
-						err instanceof PartialMatchError
+						err instanceof NoMatchError
+						|| err instanceof PartialMatchError
 					) {
 						throw new PropertyMatchFailure(property, err);
 					}

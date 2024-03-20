@@ -402,9 +402,9 @@ export function create_binding_constructor(
 					);
 
 				if (
-					property_object &&
-					'pattern' in property_object &&
-					'string' === typeof property_object.pattern
+					property_object
+					&& 'pattern' in property_object
+					&& 'string' === typeof property_object.pattern
 				) {
 					assigned_value =
 						create_callExpression__for_validation_function(

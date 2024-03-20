@@ -31,8 +31,8 @@ export class DocsTsAutoImports {
 		node: ts.Node
 	): node is ts.ClassDeclaration & {name: Identifier} {
 		return (
-			ts.isClassDeclaration(node) &&
-			DocsTsAutoImports.is_Identifier(node.name)
+			ts.isClassDeclaration(node)
+			&& DocsTsAutoImports.is_Identifier(node.name)
 		);
 	}
 
@@ -40,8 +40,8 @@ export class DocsTsAutoImports {
 		node: ts.Node
 	): node is ts.FunctionDeclaration & {name: Identifier} {
 		return (
-			ts.isFunctionDeclaration(node) &&
-			DocsTsAutoImports.is_Identifier(node.name)
+			ts.isFunctionDeclaration(node)
+			&& DocsTsAutoImports.is_Identifier(node.name)
 		);
 	}
 
@@ -49,8 +49,8 @@ export class DocsTsAutoImports {
 		node: initial_check_nodes
 	): node is typeof node & {modifiers: [ts.SyntaxKind.ExportKeyword]} {
 		return (
-			!!node.modifiers &&
-			node.modifiers
+			!!node.modifiers
+			&& node.modifiers
 				.map((inner_maybe) => inner_maybe.kind)
 				.includes(ts.SyntaxKind.ExportKeyword)
 		);
@@ -60,10 +60,10 @@ export class DocsTsAutoImports {
 		maybe: ts.Node
 	): maybe is initial_check_node_has_Identifier {
 		return (
-			(this.is_named_ClassDeclaration(maybe) ||
-				this.is_named_FunctionDeclaration(maybe) ||
-				ts.isTypeAliasDeclaration(maybe)) &&
-			this.has_export(maybe)
+			(this.is_named_ClassDeclaration(maybe)
+				|| this.is_named_FunctionDeclaration(maybe)
+				|| ts.isTypeAliasDeclaration(maybe))
+			&& this.has_export(maybe)
 		);
 	}
 

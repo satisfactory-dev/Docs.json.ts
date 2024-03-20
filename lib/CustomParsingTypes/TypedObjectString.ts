@@ -88,8 +88,8 @@ function value_is_in_type_object_string_$ref_supported_array(
 	maybe: unknown
 ): maybe is keyof typeof type_object_string_$ref_supported {
 	return (
-		'string' === typeof maybe &&
-		(type_object_string_$ref_supported_array as string[]).includes(maybe)
+		'string' === typeof maybe
+		&& (type_object_string_$ref_supported_array as string[]).includes(maybe)
 	);
 }
 
@@ -419,10 +419,10 @@ export class TypedObjectString {
 		} else if ('#/definitions/empty-object' === $ref) {
 			value_regex = '\\(\\)';
 		} else if (
-			'#/definitions/EditorCurveData--item' === $ref ||
-			'#/definitions/quaternion--inner' === $ref ||
-			'#/definitions/xyz--inner' === $ref ||
-			'#/definitions/xy' === $ref
+			'#/definitions/EditorCurveData--item' === $ref
+			|| '#/definitions/quaternion--inner' === $ref
+			|| '#/definitions/xyz--inner' === $ref
+			|| '#/definitions/xy' === $ref
 		) {
 			const maybe_definition_key = $ref.substring(14);
 
@@ -446,8 +446,8 @@ export class TypedObjectString {
 			}
 
 			if (
-				!this.is_$ref_object_dictionary(definition) &&
-				'typed_object_string' in definition
+				!this.is_$ref_object_dictionary(definition)
+				&& 'typed_object_string' in definition
 			) {
 				definition = definition.typed_object_string;
 			}
@@ -499,18 +499,18 @@ export class TypedObjectString {
 					this.entry_is_supported_oneOf_item
 				);
 			const object_has_typed_object_string =
-				object_has_property(definition, 'typed_object_string') &&
-				this.is_$ref_object_dictionary(definition.typed_object_string);
+				object_has_property(definition, 'typed_object_string')
+				&& this.is_$ref_object_dictionary(definition.typed_object_string);
 			const object_is_UnrealEngineStringReference =
 				is_UnrealEngineStringReference_general_object(definition);
 			const is_enum = typed_string_enum.is_supported_schema(definition);
 
 			if (
-				!is_enum &&
-				!object_is_UnrealEngineStringReference &&
-				!is_typed_object_array &&
-				!is_generally_supported_oneOf_array &&
-				!object_has_typed_object_string
+				!is_enum
+				&& !object_is_UnrealEngineStringReference
+				&& !is_typed_object_array
+				&& !is_generally_supported_oneOf_array
+				&& !object_has_typed_object_string
 			) {
 				throw new UnexpectedlyUnknownNoMatchError(
 					{definition},
@@ -583,8 +583,8 @@ export class TypedObjectString {
 				'type safety in here is a bit fragile, check earlier in the stack'
 			);
 		} else if (
-			$ref.startsWith('#/definitions/integer-string') ||
-			$ref.startsWith('#/definitions/decimal-string')
+			$ref.startsWith('#/definitions/integer-string')
+			|| $ref.startsWith('#/definitions/decimal-string')
 		) {
 			if ($ref.startsWith('#/definitions/decimal-string')) {
 				value_regex = '\\d+\\.\\d+';
@@ -609,9 +609,9 @@ export class TypedObjectString {
 		maybe: unknown
 	): maybe is type_object_string_$ref_choices {
 		return (
-			value_is_non_array_object(maybe) &&
-			object_only_has_that_property(maybe, '$ref') &&
-			value_is_in_type_object_string_$ref_supported_array(maybe.$ref)
+			value_is_non_array_object(maybe)
+			&& object_only_has_that_property(maybe, '$ref')
+			&& value_is_in_type_object_string_$ref_supported_array(maybe.$ref)
 		);
 	}
 
@@ -619,11 +619,11 @@ export class TypedObjectString {
 		[key: string]: enum_schema_type;
 	} {
 		return (
-			value_is_non_array_object(maybe) &&
-			Object.keys(maybe).every((e) =>
+			value_is_non_array_object(maybe)
+			&& Object.keys(maybe).every((e) =>
 				typed_object_string_const_value_regex__native.test(e)
-			) &&
-			Object.values(maybe).every((e) =>
+			)
+			&& Object.values(maybe).every((e) =>
 				typed_string_enum.is_supported_schema(e)
 			)
 		);
@@ -633,30 +633,30 @@ export class TypedObjectString {
 		maybe: unknown
 	): maybe is typed_array_string_parent_without_recursive_reference {
 		return (
-			value_is_non_array_object(maybe) &&
-			3 === Object.keys(maybe).length &&
-			object_has_property_that_equals(maybe, 'type', 'string') &&
-			object_has_property_that_equals(maybe, 'minLength', 1) &&
-			object_has_property(maybe, 'typed_array_string') &&
-			value_is_non_array_object(maybe.typed_array_string) &&
-			object_has_property_that_equals(
+			value_is_non_array_object(maybe)
+			&& 3 === Object.keys(maybe).length
+			&& object_has_property_that_equals(maybe, 'type', 'string')
+			&& object_has_property_that_equals(maybe, 'minLength', 1)
+			&& object_has_property(maybe, 'typed_array_string')
+			&& value_is_non_array_object(maybe.typed_array_string)
+			&& object_has_property_that_equals(
 				maybe.typed_array_string,
 				'type',
 				'array'
-			) &&
-			'number' === typeof maybe.typed_array_string?.minItems &&
-			value_is_non_array_object(maybe.typed_array_string?.items) &&
-			object_has_property_that_equals(
+			)
+			&& 'number' === typeof maybe.typed_array_string?.minItems
+			&& value_is_non_array_object(maybe.typed_array_string?.items)
+			&& object_has_property_that_equals(
 				maybe.typed_array_string.items,
 				'type',
 				'string'
-			) &&
-			object_has_property_that_equals(
+			)
+			&& object_has_property_that_equals(
 				maybe.typed_array_string.items,
 				'minLength',
 				1
-			) &&
-			is_UnrealEngineStringReference_value(
+			)
+			&& is_UnrealEngineStringReference_value(
 				maybe.typed_array_string.items?.UnrealEngineStringReference
 			)
 		);
@@ -666,8 +666,8 @@ export class TypedObjectString {
 		[key: string]: unknown;
 	}): maybe is typed_object_string_$ref_only {
 		return (
-			Object.values(maybe).every((e) => this.is_$ref_object(e)) &&
-			0 !== Object.keys(maybe).length
+			Object.values(maybe).every((e) => this.is_$ref_object(e))
+			&& 0 !== Object.keys(maybe).length
 		);
 	}
 
@@ -688,23 +688,23 @@ export class TypedObjectString {
 
 		const failed = Object.values(maybe).filter(
 			(e) =>
-				!this.is_$ref_object(e) &&
-				!(
-					value_is_non_array_object(e) &&
-					supported_meta.is_supported_schema(e)
-				) &&
-				!this.is_supported_enum_string_object(e) &&
-				!this.is_supported_typed_array_string(e) &&
-				!(
-					value_is_non_array_object(e) &&
-					this.is_$ref_object_dictionary(e)
-				) &&
-				!is_UnrealEngineStringReference_general_object(e) &&
-				!this.value_is_typed_object_string_general_type(e) &&
-				!TypedObjectString.object_is_typed_object_string_oneOf(
+				!this.is_$ref_object(e)
+				&& !(
+					value_is_non_array_object(e)
+					&& supported_meta.is_supported_schema(e)
+				)
+				&& !this.is_supported_enum_string_object(e)
+				&& !this.is_supported_typed_array_string(e)
+				&& !(
+					value_is_non_array_object(e)
+					&& this.is_$ref_object_dictionary(e)
+				)
+				&& !is_UnrealEngineStringReference_general_object(e)
+				&& !this.value_is_typed_object_string_general_type(e)
+				&& !TypedObjectString.object_is_typed_object_string_oneOf(
 					maybe
-				) &&
-				!this.is_combination_dictionary(e, current_depth + 1)
+				)
+				&& !this.is_combination_dictionary(e, current_depth + 1)
 		);
 
 		return Object.keys(maybe).length >= 1 && failed.length === 0;
@@ -717,8 +717,8 @@ export class TypedObjectString {
 			Exclude<keyof typeof maybe, number>
 		> {
 		return (
-			Object.keys(maybe).length >= 1 &&
-			Object.values(maybe).every((value) => {
+			Object.keys(maybe).length >= 1
+			&& Object.values(maybe).every((value) => {
 				return (
 					value.$ref in
 					auto_constructor_property_types_from_generated_types
@@ -731,27 +731,27 @@ export class TypedObjectString {
 		maybe: unknown
 	): maybe is typed_object_string_general_type {
 		return (
-			value_is_non_array_object(maybe) &&
-			object_has_property(maybe, 'type') &&
-			'string' === maybe.type &&
-			object_has_property(maybe, 'typed_object_string') &&
-			value_is_non_array_object(maybe.typed_object_string) &&
-			(TypedObjectString.is_$ref_object_dictionary(
+			value_is_non_array_object(maybe)
+			&& object_has_property(maybe, 'type')
+			&& 'string' === maybe.type
+			&& object_has_property(maybe, 'typed_object_string')
+			&& value_is_non_array_object(maybe.typed_object_string)
+			&& (TypedObjectString.is_$ref_object_dictionary(
 				maybe.typed_object_string
-			) ||
-				TypedObjectString.is_combination_dictionary(
+			)
+				|| TypedObjectString.is_combination_dictionary(
 					maybe.typed_object_string
-				) ||
-				supported_meta.is_supported_schema(
+				)
+				|| supported_meta.is_supported_schema(
 					maybe.typed_object_string
-				) ||
-				TypedObjectString.is_supported_enum_string_object(
+				)
+				|| TypedObjectString.is_supported_enum_string_object(
 					maybe.typed_object_string
-				)) &&
-			(2 === Object.keys(maybe).length ||
-				(3 === Object.keys(maybe).length &&
-					object_has_property(maybe, 'minLength') &&
-					1 === maybe.minLength))
+				))
+			&& (2 === Object.keys(maybe).length
+				|| (3 === Object.keys(maybe).length
+					&& object_has_property(maybe, 'minLength')
+					&& 1 === maybe.minLength))
 		);
 	}
 
@@ -769,9 +769,9 @@ export class TypedObjectString {
 		oneOf: typed_object_string_array_type;
 	} {
 		return (
-			object_only_has_that_property(maybe, 'oneOf') &&
-			is_non_empty_array(maybe.oneOf) &&
-			this.array_is_typed_object_string_general_type_array(maybe.oneOf)
+			object_only_has_that_property(maybe, 'oneOf')
+			&& is_non_empty_array(maybe.oneOf)
+			&& this.array_is_typed_object_string_general_type_array(maybe.oneOf)
 		);
 	}
 
@@ -790,9 +790,9 @@ export class TypedObjectString {
 		oneOf: [T, ...T[]];
 	} {
 		return (
-			object_only_has_that_property(maybe, 'oneOf') &&
-			is_non_empty_array(maybe.oneOf) &&
-			maybe.oneOf.every((e) => predicate(e))
+			object_only_has_that_property(maybe, 'oneOf')
+			&& is_non_empty_array(maybe.oneOf)
+			&& maybe.oneOf.every((e) => predicate(e))
 		);
 	}
 
@@ -805,9 +805,9 @@ export class TypedObjectString {
 		return (
 			TypedObjectString.value_is_typed_object_string_general_type(
 				entry
-			) ||
-			TypedObjectString.is_$ref_object(entry) ||
-			is_UnrealEngineStringReference_general_object(entry)
+			)
+			|| TypedObjectString.is_$ref_object(entry)
+			|| is_UnrealEngineStringReference_general_object(entry)
 		);
 	}
 
@@ -843,8 +843,8 @@ export class TypedObjectString {
 						entry[1]
 					);
 				} else if (
-					this.is_supported_typed_array_string(entry[1]) &&
-					is_UnrealEngineStringReference_general_object(
+					this.is_supported_typed_array_string(entry[1])
+					&& is_UnrealEngineStringReference_general_object(
 						entry[1].typed_array_string.items
 					)
 				) {
@@ -900,8 +900,8 @@ export class TypedObjectString {
 				}
 
 				if (
-					'UnrealEngineStringReference--inner' in entry[1] &&
-					is_UnrealEngineStringReference_value(
+					'UnrealEngineStringReference--inner' in entry[1]
+					&& is_UnrealEngineStringReference_value(
 						entry[1]['UnrealEngineStringReference--inner']
 					)
 				) {
@@ -959,8 +959,8 @@ export class TypedObjectString {
 					const is_combination_dictionary =
 						this.is_combination_dictionary(typed_object_string);
 					if (
-						is_combination_dictionary &&
-						!is_$ref_object_dictionary
+						is_combination_dictionary
+						&& !is_$ref_object_dictionary
 					) {
 						return ts.factory.createTypeAliasDeclaration(
 							[create_modifier('export')],
@@ -1102,8 +1102,8 @@ export class TypedObjectString {
 											if (
 												!this.is_$ref_object_dictionary(
 													value
-												) ||
-												!this.$ref_object_dictionary_is_auto_constructor_properties(
+												)
+												|| !this.$ref_object_dictionary_is_auto_constructor_properties(
 													value
 												)
 											) {
@@ -1327,8 +1327,8 @@ export class TypedObjectString {
 			ts.factory.createTypeReferenceNode(
 				adjust_class_name(
 					`${reference_name}${
-						reference_name.startsWith('integer-string') ||
-						reference_name.startsWith('decimal-string')
+						reference_name.startsWith('integer-string')
+						|| reference_name.startsWith('decimal-string')
 							? '__type'
 							: ''
 					}`
@@ -1393,8 +1393,8 @@ export class TypedObjectString {
 						);
 
 					if (
-						!is_$ref_object_dictionary &&
-						!is_combination_dictionary
+						!is_$ref_object_dictionary
+						&& !is_combination_dictionary
 					) {
 						throw new UnexpectedlyUnknownNoMatchError(
 							data.typed_object_string,

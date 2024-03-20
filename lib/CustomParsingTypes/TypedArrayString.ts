@@ -356,8 +356,8 @@ export class TypedArrayString {
 				})
 				.join(', *')}\\))`;
 		} else if (
-			'typed_object_string' in item &&
-			TypedObjectString.value_is_typed_object_string_general_type(
+			'typed_object_string' in item
+			&& TypedObjectString.value_is_typed_object_string_general_type(
 				item.typed_object_string
 			)
 		) {
@@ -367,8 +367,8 @@ export class TypedArrayString {
 		} else if (
 			TypedObjectString.value_is_typed_object_string_general_type(
 				item
-			) &&
-			TypedObjectString.is_$ref_object_dictionary(
+			)
+			&& TypedObjectString.is_$ref_object_dictionary(
 				item.typed_object_string
 			)
 		) {
@@ -396,9 +396,9 @@ export class TypedArrayString {
 		reference_name: string
 	): TypeAliasDeclaration {
 		if (
-			!('oneOf' in data.items) &&
-			!is_UnrealEngineStringReference_general_object(data.items) &&
-			!TypedObjectString.value_is_typed_object_string_general_type(
+			!('oneOf' in data.items)
+			&& !is_UnrealEngineStringReference_general_object(data.items)
+			&& !TypedObjectString.value_is_typed_object_string_general_type(
 				data.items
 			)
 		) {
@@ -545,10 +545,10 @@ export class TypedArrayString {
 		data: typed_array_string
 	): TypeNodeGenerationResult {
 		if (
-			!('oneOf' in data.items) &&
-			!is_UnrealEngineStringReference_general_object(data.items) &&
-			!supported_meta.is_supported_schema(data.items) &&
-			!TypedObjectString.value_is_typed_object_string_general_type(
+			!('oneOf' in data.items)
+			&& !is_UnrealEngineStringReference_general_object(data.items)
+			&& !supported_meta.is_supported_schema(data.items)
+			&& !TypedObjectString.value_is_typed_object_string_general_type(
 				data.items
 			)
 		) {

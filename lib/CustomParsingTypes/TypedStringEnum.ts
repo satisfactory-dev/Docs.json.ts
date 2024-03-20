@@ -38,15 +38,15 @@ class TypedStringEnum extends SupportedSubSchemaType<
 > {
 	is_supported_schema(maybe: unknown): maybe is enum_schema_type {
 		return (
-			value_is_non_array_object(maybe) &&
-			2 === Object.keys(maybe).length &&
-			object_has_property(maybe, 'type') &&
-			'string' === maybe.type &&
-			object_has_non_empty_array_property(maybe, 'enum') &&
-			maybe.enum.every(
+			value_is_non_array_object(maybe)
+			&& 2 === Object.keys(maybe).length
+			&& object_has_property(maybe, 'type')
+			&& 'string' === maybe.type
+			&& object_has_non_empty_array_property(maybe, 'enum')
+			&& maybe.enum.every(
 				(e) =>
-					'string' === typeof e &&
-					typed_string_const_value_regex__native.test(e)
+					'string' === typeof e
+					&& typed_string_const_value_regex__native.test(e)
 			)
 		);
 	}

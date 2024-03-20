@@ -64,15 +64,15 @@ export function is_UnrealEngineStringReference_general_object(
 	maybe: unknown
 ): maybe is UnrealEngineStringReference_general_type {
 	return (
-		value_is_non_array_object(maybe) &&
-		3 === Object.keys(maybe).length &&
-		object_has_property(maybe, 'type') &&
-		'string' === maybe.type &&
-		object_has_property(maybe, 'minLength') &&
-		1 === maybe.minLength &&
-		object_has_property(maybe, 'UnrealEngineStringReference') &&
-		(true === maybe.UnrealEngineStringReference ||
-			is_UnrealEngineStringReference_value_object(
+		value_is_non_array_object(maybe)
+		&& 3 === Object.keys(maybe).length
+		&& object_has_property(maybe, 'type')
+		&& 'string' === maybe.type
+		&& object_has_property(maybe, 'minLength')
+		&& 1 === maybe.minLength
+		&& object_has_property(maybe, 'UnrealEngineStringReference')
+		&& (true === maybe.UnrealEngineStringReference
+			|| is_UnrealEngineStringReference_value_object(
 				maybe.UnrealEngineStringReference
 			))
 	);
@@ -773,10 +773,10 @@ function is_string_or_string_array(
 	maybe: unknown
 ): maybe is string | [string, ...string[]] {
 	return (
-		'string' === typeof maybe ||
-		(maybe instanceof Array &&
-			maybe.length >= 1 &&
-			maybe.every((e) => 'string' === typeof e))
+		'string' === typeof maybe
+		|| (maybe instanceof Array
+			&& maybe.length >= 1
+			&& maybe.every((e) => 'string' === typeof e))
 	);
 }
 
@@ -791,16 +791,16 @@ function is_UnrealEngineStringReference_value_object(
 
 	const has_left = 'left' in maybe && is_string_or_string_array(maybe.left);
 	const has_right =
-		object_has_property(maybe, 'right') &&
-		(value_is_non_array_object(maybe.right)
-			? 'starts_with' in maybe.right &&
-				1 === Object.keys(maybe.right).length &&
-				is_string_or_string_array(maybe.right.starts_with)
+		object_has_property(maybe, 'right')
+		&& (value_is_non_array_object(maybe.right)
+			? 'starts_with' in maybe.right
+				&& 1 === Object.keys(maybe.right).length
+				&& is_string_or_string_array(maybe.right.starts_with)
 			: is_string_or_string_array(maybe.right));
 
 	return (
-		(2 === keys.length && has_left && has_right) ||
-		(1 === keys.length && (has_left || has_right))
+		(2 === keys.length && has_left && has_right)
+		|| (1 === keys.length && (has_left || has_right))
 	);
 }
 
@@ -808,8 +808,8 @@ export function is_UnrealEngineStringReference_value(
 	maybe: unknown
 ): maybe is UnrealEngineStringReference_type {
 	return (
-		true === maybe ||
-		('object' === typeof maybe &&
-			is_UnrealEngineStringReference_value_object(maybe))
+		true === maybe
+		|| ('object' === typeof maybe
+			&& is_UnrealEngineStringReference_value_object(maybe))
 	);
 }

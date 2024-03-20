@@ -41,8 +41,8 @@ export function get_dependency_tree(ref: definition_key): definition_key[] {
 	let checking = schema.definitions[ref];
 
 	while (
-		'$ref' in checking &&
-		checking['$ref'].startsWith('#/definitions/')
+		'$ref' in checking
+		&& checking['$ref'].startsWith('#/definitions/')
 	) {
 		ancestry.push(check_ref(checking['$ref'].substring(14)));
 

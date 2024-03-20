@@ -32,8 +32,8 @@ function value_is_in_$ref_supported_array(
 	maybe: unknown
 ): maybe is keyof typeof $ref_supported {
 	return (
-		'string' === typeof maybe &&
-		($ref_supported_array as string[]).includes(maybe)
+		'string' === typeof maybe
+		&& ($ref_supported_array as string[]).includes(maybe)
 	);
 }
 
@@ -58,9 +58,9 @@ class SupportedRefObject extends SupportedSubSchemaType<
 > {
 	is_supported_schema(maybe: unknown): maybe is $ref_choices {
 		return (
-			value_is_non_array_object(maybe) &&
-			object_only_has_that_property(maybe, '$ref') &&
-			value_is_in_$ref_supported_array(maybe.$ref)
+			value_is_non_array_object(maybe)
+			&& object_only_has_that_property(maybe, '$ref')
+			&& value_is_in_$ref_supported_array(maybe.$ref)
 		);
 	}
 	value_regex(value: $ref_choices): string {

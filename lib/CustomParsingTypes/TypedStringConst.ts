@@ -32,13 +32,13 @@ class TypedStringConst extends SupportedSubSchemaType<
 > {
 	is_supported_schema(maybe: unknown): maybe is const_schema_type {
 		return (
-			value_is_non_array_object(maybe) &&
-			2 === Object.keys(maybe).length &&
-			object_has_property(maybe, 'type') &&
-			'string' === maybe.type &&
-			object_has_property(maybe, 'const') &&
-			'string' === typeof maybe.const &&
-			typed_string_const_value_regex__native.test(maybe.const)
+			value_is_non_array_object(maybe)
+			&& 2 === Object.keys(maybe).length
+			&& object_has_property(maybe, 'type')
+			&& 'string' === maybe.type
+			&& object_has_property(maybe, 'const')
+			&& 'string' === typeof maybe.const
+			&& typed_string_const_value_regex__native.test(maybe.const)
 		);
 	}
 	value_regex(value: const_schema_type): string {

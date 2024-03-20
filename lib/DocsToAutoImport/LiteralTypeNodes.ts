@@ -25,8 +25,8 @@ export class LiteralTypeNodes extends NodeExtraction<LiteralTypeNode> {
 
 		for (const type of types) {
 			if (
-				type.kind !== ts.SyntaxKind.NullKeyword &&
-				type.kind !== ts.SyntaxKind.StringLiteral
+				type.kind !== ts.SyntaxKind.NullKeyword
+				&& type.kind !== ts.SyntaxKind.StringLiteral
 			) {
 				others.push(type);
 			}

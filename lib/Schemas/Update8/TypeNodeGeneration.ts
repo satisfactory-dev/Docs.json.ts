@@ -127,8 +127,8 @@ export class Update8TypeNodeGeneration {
 		}
 
 		if (
-			parent_ref in other_filenames &&
-			filename !== other_filenames[parent_ref]
+			parent_ref in other_filenames
+			&& filename !== other_filenames[parent_ref]
 		) {
 			const other_filename = other_filenames[parent_ref];
 			const other_class = adjust_class_name(parent_ref);
@@ -206,8 +206,8 @@ export class Update8TypeNodeGeneration {
 				const [property, type_result] = entry;
 
 				if (
-					!(property in result) &&
-					result.required_but_not_defined.includes(property)
+					!(property in result)
+					&& result.required_but_not_defined.includes(property)
 				) {
 					result.types[property] = type_result;
 				}
@@ -470,12 +470,12 @@ export class Update8TypeNodeGeneration {
 			required: [T, ...T[]]
 		): array is [T, ...T[]] {
 			return (
-				array.length > 0 &&
-				array.length ===
+				array.length > 0
+				&& array.length ===
 					array
 						.map((item) => (required as string[]).includes(item))
-						.reduce((was, is) => was + (is ? 1 : 0), 0) &&
-				array.length === required.length
+						.reduce((was, is) => was + (is ? 1 : 0), 0)
+				&& array.length === required.length
 			);
 		}
 
@@ -616,8 +616,8 @@ export class Update8TypeNodeGeneration {
 				}
 			} catch (err) {
 				if (
-					err instanceof NoMatchError ||
-					err instanceof PartialMatchError
+					err instanceof NoMatchError
+					|| err instanceof PartialMatchError
 				) {
 					throw new PropertyMatchFailure(reference_name, err);
 				}
@@ -829,8 +829,8 @@ export class Update8TypeNodeGeneration {
 				};
 
 				if (
-					'$ref' in data &&
-					data['$ref']?.startsWith('#/definitions/')
+					'$ref' in data
+					&& data['$ref']?.startsWith('#/definitions/')
 				) {
 					class_options.extends = data['$ref'].substring(14);
 				}
@@ -943,9 +943,9 @@ export class Update8TypeNodeGeneration {
 								if ('$ref' in items && items.$ref) {
 									output.push(items.$ref);
 								} else if (
-									'oneOf' in items &&
-									items.oneOf &&
-									items.oneOf.length >= 1
+									'oneOf' in items
+									&& items.oneOf
+									&& items.oneOf.length >= 1
 								) {
 									output.push(
 										...items.oneOf.map((item) => {
@@ -953,9 +953,9 @@ export class Update8TypeNodeGeneration {
 										})
 									);
 								} else if (
-									'anyOf' in items &&
-									items.anyOf instanceof Array &&
-									items.anyOf.length >= 1
+									'anyOf' in items
+									&& items.anyOf instanceof Array
+									&& items.anyOf.length >= 1
 								) {
 									output.push(
 										...items.anyOf.map((item) => {
@@ -1208,10 +1208,10 @@ export class Update8TypeNodeGeneration {
 
 	can_guess_filename(ref: definition_key) {
 		return (
-			ref in known_ref_file_targets ||
-			/^FG[A-Za-z]+--[A-Za-z-_]+$/.test(ref) ||
-			ref.startsWith('EditorCurveData--') ||
-			ref.startsWith('NativeClass--')
+			ref in known_ref_file_targets
+			|| /^FG[A-Za-z]+--[A-Za-z-_]+$/.test(ref)
+			|| ref.startsWith('EditorCurveData--')
+			|| ref.startsWith('NativeClass--')
 		);
 	}
 
@@ -1225,8 +1225,8 @@ export class Update8TypeNodeGeneration {
 		if (!this.can_guess_filename(ref)) {
 			throw new Error(`${ref} not a supported filename`);
 		} else if (
-			ref.startsWith('NativeClass--') ||
-			ref.startsWith('EditorCurveData--')
+			ref.startsWith('NativeClass--')
+			|| ref.startsWith('EditorCurveData--')
 		) {
 			return 'classes/base.ts';
 		} else if (this.is_known_key_file_target(ref)) {

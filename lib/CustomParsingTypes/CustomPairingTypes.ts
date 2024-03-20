@@ -17,8 +17,8 @@ export function object_has_non_empty_array_property<T extends string = string>(
 	property: T
 ): maybe is {[key: string]: unknown} & {[key in T]: [unknown, ...unknown[]]} {
 	return (
-		object_has_property(maybe, property) &&
-		is_non_empty_array(maybe[property])
+		object_has_property(maybe, property)
+		&& is_non_empty_array(maybe[property])
 	);
 }
 
@@ -45,9 +45,9 @@ export function is_non_empty_array<T = unknown>(
 		| ((inner_maybe: unknown) => inner_maybe is T) = undefined
 ): maybe is [T, ...T[]] {
 	return (
-		maybe instanceof Array &&
-		maybe.length >= 1 &&
-		(undefined === predicate || maybe.every((e) => predicate(e)))
+		maybe instanceof Array
+		&& maybe.length >= 1
+		&& (undefined === predicate || maybe.every((e) => predicate(e)))
 	);
 }
 
@@ -57,10 +57,10 @@ export function object_only_has_that_property<T = unknown>(
 	predicate: undefined | ((maybe: unknown) => maybe is T) = undefined
 ): maybe is {[key in typeof property]: T} {
 	return (
-		value_is_non_array_object(maybe) &&
-		object_has_property(maybe, property) &&
-		1 === Object.keys(maybe).length &&
-		(undefined === predicate || predicate(maybe[property]))
+		value_is_non_array_object(maybe)
+		&& object_has_property(maybe, property)
+		&& 1 === Object.keys(maybe).length
+		&& (undefined === predicate || predicate(maybe[property]))
 	);
 }
 

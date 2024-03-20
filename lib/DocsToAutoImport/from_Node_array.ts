@@ -47,8 +47,8 @@ export function EntityName_array_from_Node_array(nodes: Node[]): EntityName[] {
 		} else if (ts.isClassDeclaration(node)) {
 			class_declarations.push(node);
 		} else if (
-			ts.isUnionTypeNode(node) ||
-			ts.isIntersectionTypeNode(node)
+			ts.isUnionTypeNode(node)
+			|| ts.isIntersectionTypeNode(node)
 		) {
 			sub_nodes.push(...node.types);
 		} else if (ts.isTupleTypeNode(node)) {
@@ -63,10 +63,10 @@ export function EntityName_array_from_Node_array(nodes: Node[]): EntityName[] {
 		} else if (ts.isArrayTypeNode(node)) {
 			array_types.push(node);
 		} else if (
-			ts.isParenthesizedTypeNode(node) ||
-			ts.isTypeOperatorNode(node) ||
-			ts.isRestTypeNode(node) ||
-			ts.isTypeAliasDeclaration(node)
+			ts.isParenthesizedTypeNode(node)
+			|| ts.isTypeOperatorNode(node)
+			|| ts.isRestTypeNode(node)
+			|| ts.isTypeAliasDeclaration(node)
 		) {
 			sub_nodes.push(node.type);
 
@@ -101,10 +101,10 @@ export function EntityName_array_from_Node_array(nodes: Node[]): EntityName[] {
 		} else if (ts.isVariableStatement(node)) {
 			sub_nodes.push(node.declarationList);
 		} else if (
-			ts.isReturnStatement(node) ||
-			ts.isExpressionStatement(node) ||
-			ts.isThrowStatement(node) ||
-			ts.isParenthesizedExpression(node)
+			ts.isReturnStatement(node)
+			|| ts.isExpressionStatement(node)
+			|| ts.isThrowStatement(node)
+			|| ts.isParenthesizedExpression(node)
 		) {
 			if (node.expression) {
 				sub_nodes.push(node.expression);
@@ -185,8 +185,8 @@ export function EntityName_array_from_Node_array(nodes: Node[]): EntityName[] {
 		} else if (ts.isPropertyAccessExpression(node)) {
 			sub_nodes.push(node.expression);
 		} else if (
-			ts.isTemplateExpression(node) ||
-			ts.isTemplateLiteralTypeNode(node)
+			ts.isTemplateExpression(node)
+			|| ts.isTemplateLiteralTypeNode(node)
 		) {
 			sub_nodes.push(node.head, ...node.templateSpans);
 		} else if (ts.isTemplateSpan(node)) {
@@ -210,9 +210,9 @@ export function EntityName_array_from_Node_array(nodes: Node[]): EntityName[] {
 		} else if (ts.isExpressionWithTypeArguments(node)) {
 			sub_nodes.push(node.expression, ...(node.typeArguments || []));
 		} else if (
-			ts.isExportDeclaration(node) &&
-			node.exportClause &&
-			ts.isNamedExports(node.exportClause)
+			ts.isExportDeclaration(node)
+			&& node.exportClause
+			&& ts.isNamedExports(node.exportClause)
 		) {
 			sub_nodes.push(
 				...node.exportClause.elements.map((sub_node) => {
@@ -220,9 +220,9 @@ export function EntityName_array_from_Node_array(nodes: Node[]): EntityName[] {
 				})
 			);
 		} else if (
-			!ts.isToken(node) &&
-			!ts.isObjectLiteralExpression(node) &&
-			!ts.isNamedExports(node)
+			!ts.isToken(node)
+			&& !ts.isObjectLiteralExpression(node)
+			&& !ts.isNamedExports(node)
 		) {
 			others.push(node);
 		}
