@@ -401,7 +401,7 @@ export class DocsTsGenerator {
 			aliases_target_files
 		);
 
-		const generators = [
+		const generators:TypesGeneration_concrete[] = [
 			...enum_generators,
 			...validator_generators,
 			...constants_generators,
@@ -410,7 +410,7 @@ export class DocsTsGenerator {
 			...classes_generators,
 			...unions_generators,
 			...aliases_generators,
-		];
+		] as TypesGeneration_concrete[];
 
 		const type_node_generation = new TypeNodeGenerationMatcher([
 			...enum_type_node_generators,
@@ -434,19 +434,12 @@ export class DocsTsGenerator {
 				for (const generator of generators) {
 					if (generator instanceof TypesGenerationFromSchema) {
 						if (
-							(
-								generator as TypesGenerationFromSchema<object>
-							).test(e[1])
+							generator.test(e[1])
 						) {
 							return true;
 						}
 					} else if (
-						(
-							generator as TypesGenerationMatchesReferenceName<
-								object,
-								string
-							>
-						).test(e[0])
+						generator.test(e[0])
 					) {
 						return true;
 					}
@@ -455,7 +448,7 @@ export class DocsTsGenerator {
 				return false;
 			})
 			.map((e: [string, object]) => {
-				const generator: undefined | TypesGeneration_concrete =
+				const generator =
 					generators.find((maybe) => {
 						if (maybe instanceof TypesGenerationFromSchema) {
 							return (
