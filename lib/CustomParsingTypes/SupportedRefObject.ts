@@ -29,7 +29,7 @@ const $ref_supported_array = Object.keys(
 ) as (keyof typeof $ref_supported)[];
 
 function value_is_in_$ref_supported_array(
-	maybe:unknown
+	maybe: unknown
 ): maybe is keyof typeof $ref_supported {
 	return (
 		'string' === typeof maybe &&

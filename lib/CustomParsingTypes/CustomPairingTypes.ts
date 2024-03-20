@@ -26,7 +26,9 @@ export function object_has_property_that_equals(
 	maybe: object,
 	property: string,
 	expects: unknown
-): maybe is {[key: string]: unknown} & {[key in typeof property]: typeof expects} {
+): maybe is {[key: string]: unknown} & {
+	[key in typeof property]: typeof expects;
+} {
 	return object_has_property(maybe, property) && expects === maybe[property];
 }
 
