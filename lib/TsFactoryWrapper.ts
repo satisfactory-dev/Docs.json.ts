@@ -407,8 +407,8 @@ export function createClass__members__with_auto_constructor<
 
 				const is_signed = property['$ref'].endsWith('--signed');
 
-				const validate
-					= create_callExpression__for_validation_function(
+				const validate =
+					create_callExpression__for_validation_function(
 						`${is_int ? 'integer-string' : 'decimal-string'}${
 							is_signed ? '--signed' : ''
 						}`,

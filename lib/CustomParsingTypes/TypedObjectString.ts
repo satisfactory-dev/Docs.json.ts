@@ -29,7 +29,7 @@ import {
 	TypeNodeGenerationResult,
 	UnexpectedlyUnknownNoMatchError,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
-import ts, {Node, TypeLiteralNode, TypeReferenceNode} from 'typescript';
+import ts, {TypeLiteralNode, TypeReferenceNode} from 'typescript';
 import {
 	annoyingly_have_to_escape_property,
 	is_non_empty_array,
