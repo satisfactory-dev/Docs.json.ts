@@ -425,7 +425,7 @@ export class DocsTsGenerator {
 			...prefixes_type_node_generators,
 			...unions_type_node_generators,
 			...aliases_type_node_generators,
-		] as TypeNodeGeneration[];
+		] as unknown as TypeNodeGeneration[];
 
 		const type_node_generation = new TypeNodeGenerationMatcher(
 			type_node_generators_list

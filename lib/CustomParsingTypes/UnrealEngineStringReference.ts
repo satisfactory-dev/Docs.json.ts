@@ -620,10 +620,7 @@ export class UnrealEngineStringReference {
 		];
 	}
 
-	static TypeNodeGeneration(): [
-		TypeNodeGeneration<any>,
-		...TypeNodeGeneration<any>[],
-	] {
+	static TypeNodeGeneration() {
 		return [
 			new TypeNodeGeneration<UnrealEngineStringReference_general_type>(
 				{

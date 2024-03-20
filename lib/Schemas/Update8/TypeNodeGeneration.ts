@@ -47,10 +47,8 @@ import {
 	adjust_unrealengine_value,
 } from '../../CustomParsingTypes/UnrealEngineStringReference';
 import {
-	object_has_property,
 	object_only_has_that_property,
 } from '../../CustomParsingTypes/CustomPairingTypes';
-import {DataType} from '../../SchemaBasedResultsMatching';
 
 const known_ref_file_targets = {
 	'quaternion--inner': 'common/vectors.ts',
