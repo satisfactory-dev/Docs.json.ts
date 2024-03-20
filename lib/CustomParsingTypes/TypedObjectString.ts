@@ -1337,10 +1337,7 @@ export class TypedObjectString {
 		];
 	}
 
-	static TypeNodeGeneration(): [
-		TypeNodeGeneration<any>,
-		...TypeNodeGeneration<any>[],
-	] {
+	static TypeNodeGeneration() {
 		return [
 			new TypeNodeGeneration<typed_object_string_nested_type>(
 				{

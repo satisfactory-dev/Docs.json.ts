@@ -105,7 +105,7 @@ export class TypeNodeGenerationMatcher extends ResultGenerationMatcher<
 	TypeNode,
 	DataType,
 	TypeNodeGenerationResult,
-	TypeNodeGeneration<any>
+	TypeNodeGeneration<DataType>
 > {
 	protected create_type_reference_result(
 		reference: string

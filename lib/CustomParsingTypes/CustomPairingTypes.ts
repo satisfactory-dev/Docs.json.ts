@@ -59,12 +59,16 @@ export function is_non_empty_array<T = unknown>(
 	);
 }
 
-export function object_only_has_that_property<T extends string = string>(
-	maybe: object,
-	property: T
-): maybe is {[key in T]: unknown} {
+export function object_only_has_that_property<T = unknown>(
+	maybe: unknown,
+	property: string,
+	predicate: undefined | ((maybe:unknown) => maybe is T) = undefined
+): maybe is {[key in typeof property]: T} {
 	return (
-		object_has_property(maybe, property) && 1 === Object.keys(maybe).length
+		value_is_non_array_object(maybe) &&
+		object_has_property(maybe, property) &&
+		1 === Object.keys(maybe).length &&
+		(undefined === predicate || predicate(maybe[property]))
 	);
 }
 

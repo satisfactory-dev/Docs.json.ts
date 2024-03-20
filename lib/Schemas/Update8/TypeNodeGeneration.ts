@@ -46,6 +46,8 @@ import {
 	adjust_unrealengine_prefix,
 	adjust_unrealengine_value,
 } from '../../CustomParsingTypes/UnrealEngineStringReference';
+import {object_has_property, object_only_has_that_property} from '../../CustomParsingTypes/CustomPairingTypes';
+import {DataType} from '../../SchemaBasedResultsMatching';
 
 const known_ref_file_targets = {
 	'quaternion--inner': 'common/vectors.ts',
@@ -584,7 +586,7 @@ export class Update8TypeNodeGeneration {
 							);
 						});
 					}
-				)
+				) as unknown as TypeNodeGeneration
 			);
 
 			try {
@@ -792,7 +794,7 @@ export class Update8TypeNodeGeneration {
 						);
 					});
 				}
-			)
+			) as unknown as TypeNodeGeneration
 		);
 
 		this.classes.push(
@@ -989,6 +991,15 @@ export class Update8TypeNodeGeneration {
 
 		this.type_node_generator.matchers.push(
 			new TypeNodeGeneration(NativeClass_ref_schema, (data) => {
+				if (
+					!object_only_has_that_property(
+						data,
+						'$ref',
+						(maybe:unknown): maybe is string => 'string' === typeof maybe
+					)
+				) {
+					throw new Error('whoops');
+				}
 				return new TypeNodeGenerationResult(() =>
 					ts.factory.createTypeReferenceNode(
 						adjust_class_name(data.$ref.substring(14))
@@ -1114,7 +1125,7 @@ export class Update8TypeNodeGeneration {
 						);
 					});
 				}
-			)
+			) as unknown as TypeNodeGeneration
 		);
 
 		for (const entry of Object.entries(filenames)) {
