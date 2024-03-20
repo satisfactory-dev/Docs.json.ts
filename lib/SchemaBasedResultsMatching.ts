@@ -104,7 +104,11 @@ export abstract class ResultGenerationMatcher<
 	ResultType,
 	Data extends DataType,
 	MatchResult extends GenerationResult<ResultType>,
-	Matchers extends ResultGeneration<ResultType, Data, MatchResult> = ResultGeneration<ResultType, Data, MatchResult>,
+	Matchers extends ResultGeneration<
+		ResultType,
+		Data,
+		MatchResult
+	> = ResultGeneration<ResultType, Data, MatchResult>,
 > {
 	public readonly matchers: Array<Matchers>;
 	private oneOf_or_anyOf_schema_matcher: WeakMap<

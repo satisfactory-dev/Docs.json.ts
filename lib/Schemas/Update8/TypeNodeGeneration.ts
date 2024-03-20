@@ -46,7 +46,10 @@ import {
 	adjust_unrealengine_prefix,
 	adjust_unrealengine_value,
 } from '../../CustomParsingTypes/UnrealEngineStringReference';
-import {object_has_property, object_only_has_that_property} from '../../CustomParsingTypes/CustomPairingTypes';
+import {
+	object_has_property,
+	object_only_has_that_property,
+} from '../../CustomParsingTypes/CustomPairingTypes';
 import {DataType} from '../../SchemaBasedResultsMatching';
 
 const known_ref_file_targets = {
@@ -995,7 +998,8 @@ export class Update8TypeNodeGeneration {
 					!object_only_has_that_property(
 						data,
 						'$ref',
-						(maybe:unknown): maybe is string => 'string' === typeof maybe
+						(maybe: unknown): maybe is string =>
+							'string' === typeof maybe
 					)
 				) {
 					throw new Error('whoops');

@@ -69,7 +69,10 @@ import {
 	type_node_generators as aliases_type_node_generators,
 } from './TypesGeneration/aliases';
 import {is_ref, Update8TypeNodeGeneration} from './Schemas/Update8';
-import {TypeNodeGeneration, TypeNodeGenerationMatcher} from './SchemaBasedResultsMatching/TypeNodeGeneration';
+import {
+	TypeNodeGeneration,
+	TypeNodeGenerationMatcher,
+} from './SchemaBasedResultsMatching/TypeNodeGeneration';
 import {DocsTsAutoImports} from './DocsTsAutoImports';
 import {createHash} from 'node:crypto';
 import {
@@ -412,7 +415,7 @@ export class DocsTsGenerator {
 			...aliases_generators,
 		] as TypesGeneration_concrete[];
 
-		const type_node_generators_list:TypeNodeGeneration[] = [
+		const type_node_generators_list: TypeNodeGeneration[] = [
 			...enum_type_node_generators,
 			...const_type_node_generators,
 			...validators_type_node_generators,

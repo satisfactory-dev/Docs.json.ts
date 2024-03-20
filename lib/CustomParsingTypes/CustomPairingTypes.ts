@@ -62,7 +62,7 @@ export function is_non_empty_array<T = unknown>(
 export function object_only_has_that_property<T = unknown>(
 	maybe: unknown,
 	property: string,
-	predicate: undefined | ((maybe:unknown) => maybe is T) = undefined
+	predicate: undefined | ((maybe: unknown) => maybe is T) = undefined
 ): maybe is {[key in typeof property]: T} {
 	return (
 		value_is_non_array_object(maybe) &&
