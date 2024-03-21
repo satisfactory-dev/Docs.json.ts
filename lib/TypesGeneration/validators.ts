@@ -265,8 +265,8 @@ export const custom_generators = [
 				ts.factory.createIdentifier('pattern'),
 
 				[
-					createParameter('value', ts.SyntaxKind.StringKeyword),
-					createParameter('pattern', ts.SyntaxKind.StringKeyword),
+					createParameter('value', ts.factory.createTypeReferenceNode('Value')),
+					createParameter('pattern', ts.factory.createTypeReferenceNode('Pattern')),
 					createParameter(
 						'reference_argument',
 						ts.SyntaxKind.StringKeyword
@@ -282,6 +282,24 @@ export const custom_generators = [
 					ts.factory.createTemplateSpan(
 						ts.factory.createIdentifier('pattern'),
 						ts.factory.createTemplateTail('')
+					),
+				],
+				() => [
+					ts.factory.createTypeReferenceNode('Pattern'),
+					ts.factory.createTypeReferenceNode('Value'),
+				],
+				[
+					ts.factory.createTypeParameterDeclaration(
+						undefined,
+						'Pattern',
+						create_type('string'),
+						create_type('string')
+					),
+					ts.factory.createTypeParameterDeclaration(
+						undefined,
+						'Value',
+						create_type('string'),
+						create_type('string')
 					),
 				]
 			),
@@ -376,7 +394,6 @@ export const custom_generators = [
 						),
 					],
 					ts.factory.createIntersectionTypeNode([
-						create_type('never'),
 						ts.factory.createTypeReferenceNode('T'),
 						create_object_type({
 							_DocsJsonPattern:
@@ -404,12 +421,19 @@ export const custom_generators = [
 						),
 					],
 					ts.factory.createIntersectionTypeNode([
-						create_type('never'),
 						ts.factory.createTypeReferenceNode('T'),
-						create_object_type({
-							_DocsJsonPattern:
-								ts.factory.createTypeReferenceNode('pattern'),
-						}),
+						ts.factory.createMappedTypeNode(
+							undefined,
+							ts.factory.createTypeParameterDeclaration(
+								undefined,
+								'pseudo_key',
+								ts.factory.createTypeReferenceNode('pattern')
+							),
+							undefined,
+							undefined,
+							create_type('never'),
+							undefined,
+						)
 					])
 				),
 			},

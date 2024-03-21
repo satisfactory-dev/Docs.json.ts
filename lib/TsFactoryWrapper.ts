@@ -655,7 +655,10 @@ export function very_flexibly_create_regex_validation_function(
 	parameters: ts.ParameterDeclaration[],
 	return_type: () => ts.TypeNode,
 	error_template_spans: ts.TemplateSpan[],
-	return_statement: ts.ReturnStatement | undefined = undefined
+	return_statement: ts.ReturnStatement | undefined = undefined,
+	type_parameters:
+		| [ts.TypeParameterDeclaration, ...ts.TypeParameterDeclaration[]]
+		| undefined = undefined
 ): ts.FunctionDeclaration {
 	return create_function(reference_name, parameters, return_type(), [
 		create_throw_if(
@@ -693,7 +696,9 @@ export function very_flexibly_create_regex_validation_function(
 						return_type()
 					)
 				),
-	]);
+		],
+		type_parameters
+	);
 }
 
 export function flexibly_create_regex_validation_function(
@@ -701,7 +706,10 @@ export function flexibly_create_regex_validation_function(
 	regexp_argument: ts.Expression,
 	parameters: ts.ParameterDeclaration[],
 	error_template_spans: ts.TemplateSpan[],
-	pattern_argument: (() => ts.TypeNode) | undefined = undefined
+	pattern_argument: (() => [TypeNode, ...TypeNode[]]) | undefined = undefined,
+	type_parameters:
+		| [ts.TypeParameterDeclaration, ...ts.TypeParameterDeclaration[]]
+		| undefined = undefined
 ): ts.FunctionDeclaration {
 	return very_flexibly_create_regex_validation_function(
 		reference_name,
@@ -711,10 +719,12 @@ export function flexibly_create_regex_validation_function(
 			ts.factory.createTypeReferenceNode(
 				'StringPassedRegExp',
 				pattern_argument
-					? [pattern_argument()]
+					? pattern_argument()
 					: [create_type('string')]
 			),
-		error_template_spans
+		error_template_spans,
+		undefined,
+		type_parameters
 	);
 }
 
