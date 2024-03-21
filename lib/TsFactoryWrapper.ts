@@ -10,10 +10,12 @@ import ts, {
 	NodeArray,
 	NullLiteral,
 	ParenthesizedExpression,
+	PrefixUnaryExpression,
 	PropertyDeclaration,
 	PropertySignature,
 	RegularExpressionLiteral,
 	StringLiteral,
+	SyntaxKind,
 	TypeLiteralNode,
 	TypeNode,
 	TypeParameterDeclaration,
@@ -707,7 +709,7 @@ export function very_flexibly_create_regex_validation_function(
 	return create_function(reference_name, parameters, return_type(), [
 		create_throw_if(
 			'Error',
-			ts.factory.createLogicalNot(
+			not(
 				ts.factory.createCallExpression(
 					create_property_access(
 						create_new_RegExp(regexp_argument),
@@ -1035,4 +1037,12 @@ export function variable(
 		undefined,
 		value
 	);
+}
+
+export function not(
+	expression:Expression
+): PrefixUnaryExpression & {operator: SyntaxKind.ExclamationToken} {
+	return ts.factory.createLogicalNot(
+		expression
+	) as PrefixUnaryExpression & {operator: SyntaxKind.ExclamationToken};
 }

@@ -24,6 +24,7 @@ import {
 	createPropertySignature,
 	possibly_create_lazy_union,
 	variable,
+	not,
 } from '../TsFactoryWrapper';
 import {
 	TypeNodeGeneration,
@@ -467,7 +468,7 @@ export class UnrealEngineString {
 								)),
 								create_throw_if(
 									'Error',
-									ts.factory.createLogicalNot(
+									not(
 										ts.factory.createIdentifier('result')
 									),
 									[
@@ -487,7 +488,7 @@ export class UnrealEngineString {
 												'prefix_check'
 											)
 										),
-										ts.factory.createLogicalNot(
+										not(
 											ts.factory.createCallExpression(
 												create_property_access(
 													create_index_access(
@@ -513,7 +514,7 @@ export class UnrealEngineString {
 								),
 								create_throw_if(
 									'Error',
-									ts.factory.createLogicalNot(
+									not(
 										ts.factory.createCallExpression(
 											create_property_access(
 												create_new_RegExp(
