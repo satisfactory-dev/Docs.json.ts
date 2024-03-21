@@ -13,7 +13,7 @@ import {
 	flexibly_create_regex_validation_function,
 	create_object_type,
 	very_flexibly_create_regex_validation_function,
-	create_literal_node_from_value,
+	create_literal,
 } from '../TsFactoryWrapper';
 import {
 	TypeNodeGeneration,
@@ -513,7 +513,7 @@ export const type_node_generators = [
 			return new TypeNodeGenerationResult(() => {
 				return ts.factory.createTypeReferenceNode(
 					'StringPassedRegExp',
-					[create_literal_node_from_value(data.pattern)]
+					[create_literal(data.pattern)]
 				);
 			});
 		}

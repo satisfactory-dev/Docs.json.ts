@@ -10,7 +10,7 @@ import {
 	LiteralTypeNode, StringLiteral,
 } from 'typescript';
 import {
-	create_literal_node_from_value,
+	create_literal,
 } from '../TsFactoryWrapper';
 
 export const typed_string_const_value_regex = `^(?:[A-Za-z0-9][A-Za-z0-9_ -]*|${UnrealEngineString_general_regex})$`;
@@ -53,7 +53,7 @@ class TypedStringConst extends SupportedSubSchemaType<
 	value_type(
 		value: const_schema_type
 	): LiteralTypeNode & {literal: StringLiteral} {
-		return create_literal_node_from_value(value.const);
+		return create_literal(value.const);
 	}
 }
 

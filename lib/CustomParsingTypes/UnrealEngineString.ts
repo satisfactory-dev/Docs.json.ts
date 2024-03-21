@@ -6,7 +6,7 @@ import ts, {
 import {
 	adjust_class_name,
 	create_index_access,
-	create_literal_node_from_value,
+	create_literal,
 	create_method_with_type_parameters,
 	create_method_without_type_parameters,
 	create_modifier,
@@ -588,7 +588,7 @@ export class UnrealEngineString {
 									[create_type('string')]
 								)
 							),
-							create_literal_node_from_value(
+							create_literal(
 								UnrealEngineString_left_default[0]
 							)
 						),
@@ -657,7 +657,7 @@ export function create_UnrealEngineString_reference_type(
 	const data: Exclude<typeof data_from_schema, true> | typeof empty_object =
 		true === data_from_schema ? {} : data_from_schema;
 
-	let left_value: TypeNode = create_literal_node_from_value(
+	let left_value: TypeNode = create_literal(
 		UnrealEngineString_left_default[0]
 	);
 	let left_changed = false;
@@ -674,7 +674,7 @@ export function create_UnrealEngineString_reference_type(
 		];
 
 		if (1 === left_options.length) {
-			left_value = create_literal_node_from_value(left_options[0]);
+			left_value = create_literal(left_options[0]);
 		} else if (left_options.length > 1) {
 			left_value = possibly_create_lazy_union(left_options);
 		}
@@ -699,7 +699,7 @@ export function create_UnrealEngineString_reference_type(
 					'string_starts_with',
 					[
 						1 === right_options.length
-							? create_literal_node_from_value(right_options[0])
+							? create_literal(right_options[0])
 							: possibly_create_lazy_union(right_options),
 					]
 				);
@@ -712,7 +712,7 @@ export function create_UnrealEngineString_reference_type(
 			if (right_options.length >= 1) {
 				right_value =
 					1 === right_options.length
-						? create_literal_node_from_value(right_options[0])
+						? create_literal(right_options[0])
 						: possibly_create_lazy_union(right_options);
 			}
 		}

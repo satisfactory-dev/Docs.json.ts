@@ -3,7 +3,7 @@ import {
 } from '../TypesGeneration';
 import {
 	adjust_class_name,
-	create_literal_node_from_value,
+	create_literal,
 	create_modifier,
 	create_type,
 	create_union,
@@ -124,7 +124,7 @@ export const type_node_generators = [
 			return new TypeNodeGenerationResult(
 				() =>
 					ts.factory.createTypeReferenceNode('StringPassedRegExp', [
-						create_literal_node_from_value(data.pattern),
+						create_literal(data.pattern),
 					]),
 				{'utils/validators': ['StringPassedRegExp']}
 			);

@@ -4,7 +4,7 @@ import {
 import ts from 'typescript';
 import {
 	adjust_enum_name,
-	create_literal_node_from_value,
+	create_literal,
 	create_modifier,
 	create_string_starts_with,
 	create_type,
@@ -244,7 +244,7 @@ export const type_node_generators = [
 				return new TypeNodeGenerationResult(() => {
 					return create_union(
 						create_type('boolean'),
-						create_literal_node_from_value(null)
+						create_literal(null)
 					);
 				});
 			}

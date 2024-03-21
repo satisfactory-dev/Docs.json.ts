@@ -5,7 +5,7 @@ import {
 } from '../TypesGeneration';
 import {
 	adjust_class_name,
-	create_literal_node_from_value,
+	create_literal,
 	create_modifier,
 } from '../TsFactoryWrapper';
 import {
@@ -163,7 +163,7 @@ export const type_node_generators = [
 		},
 		(data) => {
 			return new TypeNodeGenerationResult(() =>
-				create_literal_node_from_value(data.const)
+				create_literal(data.const)
 			);
 		}
 	),

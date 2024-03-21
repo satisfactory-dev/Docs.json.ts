@@ -19,7 +19,7 @@ import {
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 import {
 	adjust_class_name,
-	create_literal_node_from_value,
+	create_literal,
 	create_minimum_size_typed_array_of_single_type,
 	create_modifier,
 	create_union,
@@ -527,7 +527,7 @@ export class TypedArrayString {
 						if (typed_string_const.is_supported_schema(e)) {
 							return typed_string_const.value_type(e);
 						} else if ('const' in e && '' === e.const) {
-							return create_literal_node_from_value('');
+							return create_literal('');
 						} else if (this.is_not_tuple(e)) {
 							return this.typed_array(e.typed_array_string);
 						}

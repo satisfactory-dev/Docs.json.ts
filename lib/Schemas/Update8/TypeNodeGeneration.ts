@@ -20,7 +20,7 @@ import {
 	adjust_class_name,
 	create_class_options,
 	create_lazy_union,
-	create_literal_node_from_value,
+	create_literal,
 	create_method_without_type_parameters,
 	create_minimum_size_typed_array_of_single_type,
 	create_modifier,
@@ -425,7 +425,7 @@ export class Update8TypeNodeGeneration {
 			mFuelClass: ts.factory.createTypeReferenceNode(
 				'StringPassedRegExp',
 				[
-					create_literal_node_from_value(
+					create_literal(
 						schema.definitions.mFuel.items.properties.mFuelClass
 							.pattern
 					),
@@ -440,7 +440,7 @@ export class Update8TypeNodeGeneration {
 				schema.definitions.mFuel.items.properties.mByproduct.enum
 			),
 			mByproductAmount: create_union(
-				create_literal_node_from_value(''),
+				create_literal(''),
 				ts.factory.createTypeReferenceNode(
 					mByProductAmount_reference_name
 				)

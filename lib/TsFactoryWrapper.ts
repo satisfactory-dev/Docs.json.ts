@@ -108,7 +108,7 @@ function maybe_expression_node_from_literal(
 		}
 
 		return ts.factory.createAsExpression(
-			create_literal_node_from_value(node.literal.text).literal,
+			create_literal(node.literal.text).literal,
 			ts.factory.createTypeReferenceNode('const')
 		);
 	}
@@ -668,7 +668,7 @@ export function create_new_RegExp(
 		[first, ...rest].map(
 			e => 'string' === typeof e ? ts.factory.createIdentifier(e) : (
 				e instanceof RegExp
-					? create_literal_node_from_value(e)
+					? create_literal(e)
 					: e
 			)
 		)
@@ -894,7 +894,7 @@ export function create_index_access(identifier: string, index: number) {
 	);
 }
 
-export function create_literal_node_from_value<
+export function create_literal<
 	T1 extends string | RegExp | null = string | RegExp | null,
 	T2 = T1 extends null
 		? ts.LiteralTypeNode & {literal: NullLiteral}
@@ -939,15 +939,15 @@ function map_lazy_union_item_to_type(item: lazy_union_item): ts.TypeNode {
 		}
 
 		if ('const' in item) {
-			return create_literal_node_from_value(item.const);
+			return create_literal(item.const);
 		}
 
 		return ts.factory.createTypeReferenceNode('StringPassedRegExp', [
-			create_literal_node_from_value(item.pattern),
+			create_literal(item.pattern),
 		]);
 	}
 
-	return create_literal_node_from_value(item);
+	return create_literal(item);
 }
 
 export function create_lazy_union(
@@ -985,6 +985,6 @@ export function create_typed_union(
 	items: [string, ...string[]]
 ): non_empty_string_literal_union {
 	return ts.factory.createUnionTypeNode(
-		items.map(create_literal_node_from_value)
+		items.map(create_literal)
 	) as non_empty_string_literal_union;
 }
