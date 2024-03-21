@@ -836,6 +836,10 @@ export class TypedObjectString {
 	}
 
 	private static property_to_regex(data: typed_object_string_type): string {
+		const is_general_type = (e:unknown): e is general_type => {
+			return this.value_is_general_type(e);
+		}
+
 		return `\\(${Object.entries(data)
 			.map((entry) => {
 				if (this.is_$ref_object(entry[1])) {
@@ -906,7 +910,7 @@ export class TypedObjectString {
 						general_type
 					>(
 						entry[1],
-						(e): e is general_type => this.value_is_general_type(e)
+						is_general_type
 					)
 				) {
 					const items = entry[1].oneOf;
@@ -916,7 +920,7 @@ export class TypedObjectString {
 							general_type
 						>(
 							entry[1],
-							(e): e is general_type => this.value_is_general_type(e)
+							is_general_type
 						)
 					) {
 						throw new UnexpectedlyUnknown(
