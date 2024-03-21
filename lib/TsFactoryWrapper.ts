@@ -776,12 +776,12 @@ export function createPropertySignature(
 	property: string,
 	type: TypeNode
 ) : PropertySignature {
-			return ts.factory.createPropertySignature(
-				undefined,
-				property_name_or_computed(property),
-				undefined,
-				type
-			);
+	return ts.factory.createPropertySignature(
+		undefined,
+		property_name_or_computed(property),
+		undefined,
+		type
+	);
 }
 
 export function create_object_type_alias<
