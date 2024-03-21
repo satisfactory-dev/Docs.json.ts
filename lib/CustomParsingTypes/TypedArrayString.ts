@@ -504,7 +504,7 @@ export class TypedArrayString {
 						UnrealEngineStringReference_schema_definitions,
 					...typed_array_string_schema,
 				},
-				this.typed_array_string_type_alias_generator
+				(data, reference_name) => this.typed_array_string_type_alias_generator(data, reference_name)
 			),
 			new TypesGenerationFromSchema<{
 				oneOf: [
