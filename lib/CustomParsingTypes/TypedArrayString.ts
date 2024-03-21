@@ -600,16 +600,15 @@ export class TypedArrayString {
 					return new TypeNodeGenerationResult(() => {
 						return create_minimum_size_typed_array_of_single_type(
 							data.typed_array_string.minItems,
-							() =>
-								ts.factory.createTupleTypeNode(
-									data.typed_array_string.items.prefixItems.map(
-										(e) => {
-											return supported_$ref.value_type(
-												e
-											);
-										}
-									)
-								),
+							() => ts.factory.createTupleTypeNode(
+								data.typed_array_string.items.prefixItems.map(
+									(e) => {
+										return supported_$ref.value_type(
+											e
+										);
+									}
+								)
+							),
 							'maxItems' in data.typed_array_string
 								? data.typed_array_string.maxItems
 								: undefined
