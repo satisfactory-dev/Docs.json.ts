@@ -37,13 +37,6 @@ export const target_files = {
 
 const supported_meta_types: string[] = [];
 
-ImportTracker.set_imports('utils/validators.ts', [
-	{
-		from: '../../../lib/schema-exports',
-		import_these: ['string_to_array', 'string_to_object'],
-	},
-]);
-
 declare type schema_type = {
 	type: 'string';
 	pattern: 'string';
