@@ -27,6 +27,7 @@ import {
 	type_reference_node,
 } from '../TsFactoryWrapper';
 import {
+	FragileTypeSafetyError,
 	TypeNodeGeneration,
 	TypeNodeGenerationResult,
 	UnexpectedlyUnknownNoMatchError,
@@ -104,7 +105,7 @@ function value_is_in_type_object_string_$ref_supported_array(
 ): maybe is keyof typeof type_object_string_$ref_supported {
 	return (
 		'string' === typeof maybe
-		&& (type_object_string_$ref_supported_array as string[]).includes(maybe)
+		&& $ref_in_array(maybe, type_object_string_$ref_supported_array)
 	);
 }
 
@@ -516,11 +517,15 @@ export class TypedObjectString {
 			const is_generally_supported_oneOf_array =
 				this.object_is_generally_supported_oneOf_array(
 					definition,
-					(e): e is supported_oneOf_item => this.entry_is_supported_oneOf_item(e)
+					(e): e is supported_oneOf_item => {
+						return this.entry_is_supported_oneOf_item(e);
+					}
 				);
 			const object_has_typed_object_string =
 				object_has_property(definition, 'typed_object_string')
-				&& this.is_$ref_object_dictionary(definition.typed_object_string);
+				&& this.is_$ref_object_dictionary(
+					definition.typed_object_string
+				);
 			const object_is_UnrealEngineString =
 				is_UnrealEngineString_parent(definition);
 			const is_enum = typed_string_enum.is_supported_schema(definition);
@@ -598,9 +603,8 @@ export class TypedObjectString {
 		} else if (typed_string_const.is_supported_schema(value)) {
 			value_regex = typed_string_const.value_regex(value);
 		} else if (undefined === $ref) {
-			throw new UnexpectedlyUnknownNoMatchError(
+			throw new FragileTypeSafetyError(
 				value,
-				'type safety in here is a bit fragile, check earlier in the stack'
 			);
 		} else if (
 			$ref.startsWith(local_ref('integer-string'))
@@ -730,9 +734,11 @@ export class TypedObjectString {
 		return Object.keys(maybe).length >= 1 && failed.length === 0;
 	}
 
-	private static $ref_object_dictionary_is_auto_constructor_properties(maybe: {
-		[key: string]: type_object_string_$ref_choices;
-	}): maybe is typeof maybe &
+	private static $ref_object_dictionary_is_auto_constructor_properties(
+		maybe: {
+			[key: string]: type_object_string_$ref_choices;
+		}
+	): maybe is typeof maybe &
 		auto_constructor_property_types_from_generated_types_properties<
 			Exclude<keyof typeof maybe, number>
 		> {
@@ -791,7 +797,9 @@ export class TypedObjectString {
 		return (
 			object_only_has_that_property(maybe, 'oneOf')
 			&& is_non_empty_array(maybe.oneOf)
-			&& this.array_is_typed_object_string_general_type_array(maybe.oneOf)
+			&& this.array_is_typed_object_string_general_type_array(
+				maybe.oneOf
+			)
 		);
 	}
 
@@ -894,7 +902,9 @@ export class TypedObjectString {
 				) {
 					return `(?:${annoyingly_have_to_escape_property(entry[0])}=(?:${this.property_to_regex(entry[1].typed_object_string)}))`;
 				} else if (
-					this.object_is_generally_supported_oneOf_array<typed_object_string_general_type>(
+					this.object_is_generally_supported_oneOf_array<
+						typed_object_string_general_type
+					>(
 						entry[1],
 						(e): e is typed_object_string_general_type => this.value_is_typed_object_string_general_type(e)
 					)
@@ -902,7 +912,9 @@ export class TypedObjectString {
 					const items = entry[1].oneOf;
 
 					if (
-						!this.object_is_generally_supported_oneOf_array<typed_object_string_general_type>(
+						!this.object_is_generally_supported_oneOf_array<
+							typed_object_string_general_type
+						>(
 							entry[1],
 							(e): e is typed_object_string_general_type => this.value_is_typed_object_string_general_type(e)
 						)
@@ -1224,18 +1236,14 @@ export class TypedObjectString {
 					} else if (this.is_$ref_object_dictionary(value)) {
 						return [
 							property,
-							create_object_type(
-								Object.fromEntries(
-									Object.entries(value).map(
-										(inner_entry) => {
-											return this.$ref_choice_to_object_type_entry(
-												inner_entry[0],
-												inner_entry[1]
-											);
-										}
+							create_object_type(Object.fromEntries(
+								Object.entries(value).map((inner_entry) =>
+									this.$ref_choice_to_object_type_entry(
+										inner_entry[0],
+										inner_entry[1]
 									)
 								)
-							),
+							)),
 						];
 					} else if (this.is_combination_dictionary(value)) {
 						return [

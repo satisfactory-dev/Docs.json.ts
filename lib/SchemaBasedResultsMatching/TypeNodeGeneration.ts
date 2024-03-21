@@ -85,6 +85,16 @@ export class NoMatchError<
 
 export class UnexpectedlyUnknownNoMatchError extends NoMatchError {}
 
+export class FragileTypeSafetyError extends UnexpectedlyUnknownNoMatchError
+{
+	constructor(property: unknown) {
+		super(
+			property,
+			'type safety in here is a bit fragile, check earlier in the stack'
+		);
+	}
+}
+
 export class OneOfOrAnyOfNoMatchError extends NoMatchError<object[]> {}
 
 export class PropertyMatchFailure extends NoMatchError {
