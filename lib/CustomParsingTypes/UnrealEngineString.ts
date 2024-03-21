@@ -452,8 +452,8 @@ export class UnrealEngineString {
 									'result',
 									ts.factory.createCallExpression(
 										create_property_access(
-												create_new_RegExp(
-													UnrealEngineString_regex
+											create_new_RegExp(
+												UnrealEngineString_regex
 											),
 											'exec'
 										),
@@ -516,8 +516,8 @@ export class UnrealEngineString {
 									ts.factory.createLogicalNot(
 										ts.factory.createCallExpression(
 											create_property_access(
-													create_new_RegExp(
-														'pattern'
+												create_new_RegExp(
+													'pattern'
 												),
 												'test'
 											),
