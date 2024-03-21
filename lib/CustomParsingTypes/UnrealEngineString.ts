@@ -449,23 +449,23 @@ export class UnrealEngineString {
 							],
 							[
 								create_const_statement(variable(
-										'result',
-										ts.factory.createCallExpression(
-											ts.factory.createPropertyAccessExpression(
-												parenthesize(
-													create_new_RegExp(
-														UnrealEngineString_regex
-													)
-												),
-												'exec'
+									'result',
+									ts.factory.createCallExpression(
+										ts.factory.createPropertyAccessExpression(
+											parenthesize(
+												create_new_RegExp(
+													UnrealEngineString_regex
+												)
 											),
-											undefined,
-											[
-												ts.factory.createIdentifier(
-													'unchecked_string'
-												),
-											]
-										)
+											'exec'
+										),
+										undefined,
+										[
+											ts.factory.createIdentifier(
+												'unchecked_string'
+											),
+										]
+									)
 								)),
 								create_throw_if(
 									'Error',
