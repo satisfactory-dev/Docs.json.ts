@@ -5,11 +5,15 @@ import {
 	UnionTypeNode,
 } from 'typescript';
 
-export function object_has_property<T extends string = string>(
-	maybe: object,
-	property: T
-): maybe is {[key: string]: unknown} & {[key in T]: unknown} {
-	return property in maybe;
+export function object_has_property<
+	Property extends string = string,
+	Value = unknown
+>(
+	maybe: unknown,
+	property: Property,
+	predicate: undefined|((maybe:unknown) => maybe is Value) = undefined
+): maybe is {[key: string]: unknown} & {[key in Property]: Value} {
+	return value_is_non_array_object(maybe) && property in maybe && (undefined === predicate || predicate(maybe[property]));
 }
 
 export function object_has_non_empty_array_property<T extends string = string>(

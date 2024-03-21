@@ -2,6 +2,7 @@ import Ajv, {_, KeywordCxt} from 'ajv/dist/2020';
 import {UnrealEngineStringReference} from './CustomParsingTypes/UnrealEngineStringReference';
 import {TypedObjectString} from './CustomParsingTypes/TypedObjectString';
 import {TypedArrayString} from './CustomParsingTypes/TypedArrayString';
+import {object_has_property} from './CustomParsingTypes/CustomPairingTypes';
 
 declare type array_tokenizer = {
 	values: unknown[];
@@ -263,9 +264,13 @@ export function configure_ajv(ajv: Ajv): void {
 			return (data: string) => data.startsWith(value);
 		},
 		code: (ctx: KeywordCxt) => {
-			const {schema, data} = ctx;
+			if (!object_has_property(ctx, 'schema', (maybe:unknown): maybe is string => 'string' === typeof maybe)) {
+				throw new Error(`ctx.schema was not a string, ${typeof ctx.schema} found!`);
+			}
 
-			ctx.pass(_`${data}.startsWith(${schema})`);
+			const {data} = ctx;
+
+			ctx.pass(_`${data}.startsWith(${ctx.schema})`);
 		},
 	});
 }
