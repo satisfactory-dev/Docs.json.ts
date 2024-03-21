@@ -235,6 +235,11 @@ declare type typed_array_string = {
 	items: typed_array_string_supported_items;
 } & ({maxItems: number} | typeof empty_object);
 
+declare type typed_array_string_tuple_2_prefixItems = [
+	$ref_choices,
+	$ref_choices,
+];
+
 declare type typed_array_string_tuple_2 = {
 	type: 'array';
 	minItems: 1;
@@ -243,7 +248,7 @@ declare type typed_array_string_tuple_2 = {
 		minItems: 2;
 		maxItems: 2;
 		items: false;
-		prefixItems: [$ref_choices, $ref_choices];
+		prefixItems: typed_array_string_tuple_2_prefixItems;
 	};
 } & ({maxItems: number} | typeof empty_object);
 
@@ -363,7 +368,7 @@ export class TypedArrayString {
 			return supported_$ref.value_regex(item);
 		} else if ('prefixItems' in item) {
 			return `(?:\\(${(
-				item.prefixItems as typed_array_string_tuple_2['items']['prefixItems']
+				item.prefixItems as typed_array_string_tuple_2_prefixItems
 			)
 				.map((e) => {
 					return `(?:${this.item_to_regex(e)})`;
@@ -418,7 +423,7 @@ export class TypedArrayString {
 		) {
 			throw new UnexpectedlyUnknownNoMatchError(
 				data.items,
-				'Currently unsupported in TypedArrayString.typed_array_string_type_alias_generator'
+				'Currently unsupported.'
 			);
 		}
 
@@ -518,9 +523,17 @@ export class TypedArrayString {
 						UnrealEngineString_schema_definitions,
 					...typed_array_string_schema,
 				},
-				(data, reference_name) => this.typed_array_string_type_alias_generator(data, reference_name)
+				(
+					data,
+					reference_name
+				) => this.typed_array_string_type_alias_generator(
+					data,
+					reference_name
+				)
 			),
-			new TypesGenerationFromSchema<empty_string_or_const_or_array_string_type>(
+			new TypesGenerationFromSchema<
+				empty_string_or_const_or_array_string_type
+			>(
 				empty_string_or_const_or_array_string_schema,
 				(data, reference_name) => {
 					const [a, b, ...rest] = data.oneOf.map((e) => {
@@ -562,7 +575,7 @@ export class TypedArrayString {
 		) {
 			throw new UnexpectedlyUnknownNoMatchError(
 				data.items,
-				'Currently unsupported in TypedArrayString.typed_array_string_node_generation_result'
+				'Currently unsupported.'
 			);
 		}
 
