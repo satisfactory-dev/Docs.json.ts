@@ -17,6 +17,7 @@ import {
 	create_union,
 	createClass,
 	createParameter,
+	createPropertySignature,
 	possibly_create_lazy_union,
 } from '../TsFactoryWrapper';
 import {
@@ -36,7 +37,18 @@ const already_configured = new WeakSet<Ajv>();
 export const UnrealEngineString_regex = /^([^']+)'(?:"([^"]+)"|([^"]+))'$/;
 
 export const UnrealEngineString_general_regex =
-	'/(?:[A-Z-][A-Za-z0-9_-]+/)+(?:[A-Z][A-Za-z_0-9-]+\\.[A-Z][A-Za-z_0-9-]+(?:_C)?(?::[A-Z][A-Za-z0-9_]+)?|[A-Z][A-Za-z_]+\\.[A-Z][A-Za-z_]+)';
+	`/(?:${
+		'[A-Z-][A-Za-z0-9_-]+/)+' // directory structure
+	}(?:${
+		/*
+		 * this _would_ use back references,
+		 *	except they seem to be a little unreliable
+		 */
+		'[A-Z][A-Za-z_0-9-]+\\.[A-Z][A-Za-z_0-9-]+'
+	}(?:_C)?${
+		// some strings have a `:text_goes_here` suffix
+		'(?::[A-Z][A-Za-z0-9_]+)?|[A-Z][A-Za-z_]+\\.[A-Z][A-Za-z_]+)'
+	}`;
 
 export type UnrealEngineString_string_or_string_array =
 	| string
@@ -121,41 +133,35 @@ export const UnrealEngineString_schema_definitions = {
 		pattern:
 			'^/(?:[A-Z][A-Za-z_\\-.]+/)+(?:[A-Z][A-Za-z_\\-.]+/|[A-Z][A-Za-z_\\-.]+\\.[A-Z][A-Za-z_\\-]+)$',
 	},
-	UnrealEngineString_right: {
-		oneOf: [
-			{
+	UnrealEngineString_right: {oneOf: [
+		{
+			$ref: '#/definitions/UnrealEngineString_right_string',
+		},
+		{
+			type: 'array',
+			minItems: 1,
+			items: {
 				$ref: '#/definitions/UnrealEngineString_right_string',
 			},
-			{
-				type: 'array',
-				minItems: 1,
-				items: {
-					$ref: '#/definitions/UnrealEngineString_right_string',
+		},
+		{
+			type: 'object',
+			required: ['starts_with'],
+			additionalProperties: false,
+			properties: {starts_with: {oneOf: [
+				{
+					$ref: '#/definitions/UnrealEngineString_right_starts_with',
 				},
-			},
-			{
-				type: 'object',
-				required: ['starts_with'],
-				additionalProperties: false,
-				properties: {
-					starts_with: {
-						oneOf: [
-							{
-								$ref: '#/definitions/UnrealEngineString_right_starts_with',
-							},
-							{
-								type: 'array',
-								minItems: 1,
-								items: {
-									$ref: '#/definitions/UnrealEngineString_right_starts_with',
-								},
-							},
-						],
+				{
+					type: 'array',
+					minItems: 1,
+					items: {
+						$ref: '#/definitions/UnrealEngineString_right_starts_with',
 					},
 				},
-			},
-		],
-	},
+			]}},
+		},
+	]},
 };
 
 export const UnrealEngineString_schema = {
@@ -428,10 +434,8 @@ export class UnrealEngineString {
 											'prefix_check_failed',
 											'value_check_failed',
 										].map((object_key) => {
-											return ts.factory.createPropertySignature(
-												undefined,
+											return createPropertySignature(
 												object_key,
-												undefined,
 												create_type('string')
 											);
 										})

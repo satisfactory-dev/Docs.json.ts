@@ -9,6 +9,7 @@ import ts, {
 	NodeArray,
 	NullLiteral,
 	PropertyDeclaration,
+	PropertySignature,
 	StringLiteral,
 	TypeLiteralNode,
 	TypeNode,
@@ -763,14 +764,24 @@ export function create_object_type_from_entries(
 		entries.map((entry) => {
 			const [property, type] = entry;
 
+			return createPropertySignature(
+				property,
+				type
+			);
+		})
+	);
+}
+
+export function createPropertySignature(
+	property: string,
+	type: TypeNode
+) : PropertySignature {
 			return ts.factory.createPropertySignature(
 				undefined,
 				property_name_or_computed(property),
 				undefined,
 				type
 			);
-		})
-	);
 }
 
 export function create_object_type_alias<
