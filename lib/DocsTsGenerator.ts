@@ -3,7 +3,7 @@ import {basename, dirname} from 'node:path';
 import {existsSync} from 'node:fs';
 import {fileURLToPath} from 'node:url';
 
-import Ajv, {ErrorObject} from 'ajv/dist/2020';
+import Ajv, {ErrorObject, ValidateFunction} from 'ajv/dist/2020';
 import standalone from 'ajv/dist/standalone';
 import {ESLint} from 'eslint';
 
@@ -311,7 +311,7 @@ export class DocsTsGenerator {
 				);
 			}
 
-			const {default: validateDocs} = await import(filepath);
+			const {default: validateDocs} = (await import(filepath)) as {default: ValidateFunction};
 
 			if (!validateDocs(json)) {
 				throw new ValidationError(
