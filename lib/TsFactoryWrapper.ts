@@ -9,6 +9,7 @@ import ts, {
 	NewExpression,
 	NodeArray,
 	NullLiteral,
+	ParenthesizedExpression,
 	PropertyDeclaration,
 	PropertySignature,
 	RegularExpressionLiteral,
@@ -675,6 +676,10 @@ export function create_new_RegExp(
 	);
 }
 
+export function parenthesize(expression:Expression): ParenthesizedExpression {
+	return ts.factory.createParenthesizedExpression(expression);
+}
+
 export function very_flexibly_create_regex_validation_function(
 	reference_name: string,
 	regexp_argument: Expression|string,
@@ -692,7 +697,7 @@ export function very_flexibly_create_regex_validation_function(
 			ts.factory.createLogicalNot(
 				ts.factory.createCallExpression(
 					ts.factory.createPropertyAccessExpression(
-						ts.factory.createParenthesizedExpression(
+						parenthesize(
 							create_new_RegExp(regexp_argument)
 						),
 						'test'

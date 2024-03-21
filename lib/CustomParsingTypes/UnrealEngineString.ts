@@ -18,7 +18,7 @@ import {
 	create_union,
 	createClass,
 	createParameter,
-	createPropertySignature,
+	createPropertySignature, parenthesize,
 	possibly_create_lazy_union,
 } from '../TsFactoryWrapper';
 import {
@@ -454,7 +454,7 @@ export class UnrealEngineString {
 												undefined,
 												ts.factory.createCallExpression(
 													ts.factory.createPropertyAccessExpression(
-														ts.factory.createParenthesizedExpression(
+														parenthesize(
 															create_new_RegExp(
 																UnrealEngineString_regex
 															)
@@ -524,7 +524,7 @@ export class UnrealEngineString {
 									ts.factory.createLogicalNot(
 										ts.factory.createCallExpression(
 											ts.factory.createPropertyAccessExpression(
-												ts.factory.createParenthesizedExpression(
+												parenthesize(
 													create_new_RegExp(
 														'pattern'
 													)
