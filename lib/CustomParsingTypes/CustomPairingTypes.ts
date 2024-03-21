@@ -13,7 +13,14 @@ export function object_has_property<
 	property: Property,
 	predicate: undefined|((maybe:unknown) => maybe is Value) = undefined
 ): maybe is {[key: string]: unknown} & {[key in Property]: Value} {
-	return value_is_non_array_object(maybe) && property in maybe && (undefined === predicate || predicate(maybe[property]));
+	return (
+		value_is_non_array_object(maybe)
+		&& property in maybe
+		&& (
+			undefined === predicate
+			|| predicate(maybe[property])
+		)
+	);
 }
 
 export function object_has_non_empty_array_property<T extends string = string>(
