@@ -18,7 +18,7 @@ import {
 	UnexpectedlyUnknownNoMatchError,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 import {
-	create_UnrealEngineString_reference_type,
+	UnrealEngineString_reference_type,
 	UnrealEngineString_parent_type,
 	UnrealEngineString_parent_schema,
 	UnrealEngineString_schema_definitions,
@@ -145,7 +145,7 @@ export const generators = [
 								entry
 							)
 						) {
-							return create_UnrealEngineString_reference_type(
+							return UnrealEngineString_reference_type(
 								entry.UnrealEngineString
 							);
 						}

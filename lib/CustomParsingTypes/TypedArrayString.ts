@@ -1,6 +1,6 @@
 import Ajv from 'ajv/dist/2020';
 import {
-	create_UnrealEngineString_reference_type,
+	UnrealEngineString_reference_type,
 	is_UnrealEngineString_parent,
 	UnrealEngineString,
 	UnrealEngineString_parent_schema,
@@ -446,7 +446,7 @@ export class TypedArrayString {
 				if (
 					is_UnrealEngineString_parent(data.items)
 				) {
-					return create_UnrealEngineString_reference_type(
+					return UnrealEngineString_reference_type(
 						data.items.UnrealEngineString
 					);
 				} else if (typed_string_enum.is_supported_schema(data.items)) {
@@ -464,7 +464,7 @@ export class TypedArrayString {
 								return supported_$ref.value_type(e);
 							}
 
-							return create_UnrealEngineString_reference_type(
+							return UnrealEngineString_reference_type(
 								e.UnrealEngineString
 							);
 						})
@@ -648,7 +648,7 @@ export class TypedArrayString {
 									return supported_$ref.value_type(e);
 								}
 
-								return create_UnrealEngineString_reference_type(
+								return UnrealEngineString_reference_type(
 									e.UnrealEngineString
 								);
 							})

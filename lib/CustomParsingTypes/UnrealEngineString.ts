@@ -328,7 +328,7 @@ export class UnrealEngineString {
 						[create_modifier('export')],
 						adjust_class_name(reference_name),
 						undefined,
-						create_UnrealEngineString_reference_type(
+						UnrealEngineString_reference_type(
 							data.UnrealEngineString
 						)
 					);
@@ -623,7 +623,7 @@ export class UnrealEngineString {
 				},
 				(data_from_schema) => {
 					return new TypeNodeGenerationResult(() => {
-						return create_UnrealEngineString_reference_type(
+						return UnrealEngineString_reference_type(
 							data_from_schema.UnrealEngineString
 						);
 					});
@@ -654,7 +654,7 @@ export function flexibly_create_UnrealEngineString_reference_type(
 
 const empty_object = {};
 
-export function create_UnrealEngineString_reference_type(
+export function UnrealEngineString_reference_type(
 	data_from_schema: UnrealEngineString_type
 ): TypeReferenceNode {
 	const data: Exclude<typeof data_from_schema, true> | typeof empty_object =

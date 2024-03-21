@@ -1,6 +1,6 @@
 import Ajv from 'ajv/dist/2020';
 import {
-	create_UnrealEngineString_reference_type,
+	UnrealEngineString_reference_type,
 	is_UnrealEngineString_parent,
 	is_UnrealEngineString_type,
 	UnrealEngineString,
@@ -1255,7 +1255,7 @@ export class TypedObjectString {
 											value.typed_array_string.items
 										)
 									) {
-										return create_UnrealEngineString_reference_type(
+										return UnrealEngineString_reference_type(
 											value.typed_array_string.items
 												.UnrealEngineString
 										);
@@ -1283,7 +1283,7 @@ export class TypedObjectString {
 					) {
 						return [
 							property,
-							create_UnrealEngineString_reference_type(
+							UnrealEngineString_reference_type(
 								value.UnrealEngineString
 							),
 						];
