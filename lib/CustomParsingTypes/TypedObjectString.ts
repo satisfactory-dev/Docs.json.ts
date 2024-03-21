@@ -8,6 +8,7 @@ import {
 	UnrealEngineString_parent_schema,
 	UnrealEngineString_parent_type,
 	UnrealEngineString_schema_definitions,
+	check_UnrealEngineString_parent,
 } from './UnrealEngineString';
 import schema from '../../schema/update8.schema.json' assert {type: 'json'};
 import {
@@ -873,8 +874,9 @@ export class TypedObjectString {
 				) {
 					const unreal_engine_regex =
 						UnrealEngineString.ajv_macro_generator(true)(
-							entry[1].typed_array_string.items
-								?.UnrealEngineString
+							check_UnrealEngineString_parent(
+								entry[1].typed_array_string.items
+							).UnrealEngineString
 						).pattern;
 
 					return `(?:${annoyingly_have_to_escape_property(entry[0])}=\\(${unreal_engine_regex}(?:,${unreal_engine_regex})*\\))`;
@@ -1256,27 +1258,31 @@ export class TypedObjectString {
 							create_minimum_size_typed_array_of_single_type(
 								value.typed_array_string.minItems,
 								() => {
+									const {items} = value.typed_array_string;
+
 									if (
 										is_UnrealEngineString_parent(
-											value.typed_array_string.items
+											items
 										)
 									) {
 										return UnrealEngineString_reference_type(
-											value.typed_array_string.items
+											check_UnrealEngineString_parent(
+												items
+											)
 												.UnrealEngineString
 										);
 									} else if (
 										supported_meta.is_supported_schema(
-											value.typed_array_string.items
+											items
 										)
 									) {
 										return supported_meta.value_type(
-											value.typed_array_string.items
+											items
 										);
 									}
 
 									return TypedObjectString.general_type_to_object_type(
-										value.typed_array_string.items
+										items
 									);
 								},
 								'maxItems' in value.typed_array_string
