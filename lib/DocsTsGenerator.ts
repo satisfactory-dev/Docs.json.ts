@@ -45,7 +45,6 @@ import {
 	GenerationMatch,
 	ImportTracker,
 	TypesGeneration_concrete,
-	TypesGenerationMatchesReferenceName,
 } from './TypesGeneration';
 import {configure_ajv, default_config} from './DocsValidation';
 import ts from 'typescript';
@@ -453,18 +452,11 @@ export class DocsTsGenerator {
 			.map((e: [string, object]) => {
 				const generator = generators.find((maybe) => {
 					if (maybe instanceof TypesGenerationFromSchema) {
-						return (
-							maybe as TypesGenerationFromSchema<object>
-						).test(e[1]);
+						return maybe.test(e[1]);
 					}
 
-					return (
-						maybe as TypesGenerationMatchesReferenceName<
-							object,
-							string
-						>
-					).test(e[0]);
-				}) as undefined | TypesGeneration_concrete;
+					return maybe.test(e[0]);
+				});
 
 				if (!generator) {
 					throw new Error('whoops');
