@@ -44,8 +44,8 @@ const already_configured = new WeakSet<Ajv>();
 export const UnrealEngineString_regex = /^([^']+)'(?:"([^"]+)"|([^"]+))'$/;
 
 export const UnrealEngineString_general_regex =
-	`/(?:${
-		'[A-Z-][A-Za-z0-9_-]+/)+' // directory structure
+	`/${
+		'(?:[A-Z-][A-Za-z0-9_-]+/)+' // directory structure
 	}(?:${
 		/*
 		 * this _would_ use back references,
@@ -54,8 +54,8 @@ export const UnrealEngineString_general_regex =
 		'[A-Z][A-Za-z_0-9-]+\\.[A-Z][A-Za-z_0-9-]+'
 	}(?:_C)?${
 		// some strings have a `:text_goes_here` suffix
-		'(?::[A-Z][A-Za-z0-9_]+)?|[A-Z][A-Za-z_]+\\.[A-Z][A-Za-z_]+)'
-	}`;
+		'(?::[A-Z][A-Za-z0-9_]+)?|[A-Z][A-Za-z_]+\\.[A-Z][A-Za-z_]+'
+	})`;
 
 export type UnrealEngineString_string_or_string_array =
 	| string
