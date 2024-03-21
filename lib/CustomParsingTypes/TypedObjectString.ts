@@ -999,18 +999,16 @@ export class TypedObjectString {
 									Object.fromEntries(
 										Object.entries(
 											typed_object_string
-										).map((entry) => {
-											return [
-												entry[0],
-												type_reference_node(
-													adjust_class_name(
-														entry[1].$ref.substring(
-															14
-														)
+										).map((entry) => [
+											entry[0],
+											type_reference_node(
+												adjust_class_name(
+													entry[1].$ref.substring(
+														14
 													)
-												),
-											];
-										})
+												)
+											),
+										])
 									)
 								)
 							);
