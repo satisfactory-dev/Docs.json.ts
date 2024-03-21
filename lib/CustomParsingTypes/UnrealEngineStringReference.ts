@@ -1,7 +1,7 @@
 import Ajv from 'ajv/dist/2020';
 import ts, {
 	ConditionalTypeNode,
-	Node, TypeNode, TypeReferenceNode,
+	TypeNode, TypeReferenceNode,
 } from 'typescript';
 import {
 	adjust_class_name,
