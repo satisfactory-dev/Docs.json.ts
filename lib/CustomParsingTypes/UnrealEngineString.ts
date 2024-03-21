@@ -536,7 +536,7 @@ export class UnrealEngineString {
 										ts.factory.createIdentifier(
 											'UnrealEngineString'
 										),
-										conditional_UnrealEngineString_type_arguments(),
+										conditional_type_arguments(),
 										[
 											create_index_access('result', 1),
 											ts.factory.createAsExpression(
@@ -717,7 +717,7 @@ export function create_UnrealEngineString_reference_type(
 	);
 }
 
-export function conditional_UnrealEngineString_type_arguments(
+function conditional_type_arguments(
 ) : [ConditionalTypeNode, TypeReferenceNode] {
 	return [
 		ts.factory.createConditionalTypeNode(
@@ -744,7 +744,7 @@ export function conditional_UnrealEngineString_type_arguments(
 export function conditional_UnrealEngineString_type_reference(
 ): ts.TypeReferenceNode {
 	return flexibly_create_UnrealEngineString_reference_type(
-		conditional_UnrealEngineString_type_arguments()
+		conditional_type_arguments()
 	);
 }
 
