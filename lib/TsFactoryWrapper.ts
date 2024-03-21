@@ -683,6 +683,16 @@ export function parenthesize(expression:Expression): ParenthesizedExpression {
 	return ts.factory.createParenthesizedExpression(expression);
 }
 
+export function create_property_access(
+	on: Expression,
+	property: string
+) {
+	return ts.factory.createPropertyAccessExpression(
+		ts.isNewExpression(on) ? parenthesize(on) : on,
+		property
+	);
+}
+
 export function very_flexibly_create_regex_validation_function(
 	reference_name: string,
 	regexp_argument: Expression|string,
@@ -699,10 +709,8 @@ export function very_flexibly_create_regex_validation_function(
 			'Error',
 			ts.factory.createLogicalNot(
 				ts.factory.createCallExpression(
-					ts.factory.createPropertyAccessExpression(
-						parenthesize(
-							create_new_RegExp(regexp_argument)
-						),
+					create_property_access(
+						create_new_RegExp(regexp_argument),
 						'test'
 					),
 					undefined,
@@ -884,7 +892,7 @@ export function create_this_assignment(
 					ts.factory.createThis(),
 					ts.factory.createStringLiteral(property)
 				)
-				: ts.factory.createPropertyAccessExpression(
+				: create_property_access(
 					ts.factory.createThis(),
 					property
 				),

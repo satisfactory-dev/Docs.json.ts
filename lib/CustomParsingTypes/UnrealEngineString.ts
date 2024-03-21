@@ -13,6 +13,7 @@ import {
 	create_method_without_type_parameters,
 	create_modifier,
 	create_new_RegExp,
+	create_property_access,
 	create_template_span,
 	create_this_assignment,
 	create_throw_if,
@@ -21,7 +22,6 @@ import {
 	createClass,
 	createParameter,
 	createPropertySignature,
-	parenthesize,
 	possibly_create_lazy_union,
 	variable,
 } from '../TsFactoryWrapper';
@@ -451,11 +451,9 @@ export class UnrealEngineString {
 								create_const_statement(variable(
 									'result',
 									ts.factory.createCallExpression(
-										ts.factory.createPropertyAccessExpression(
-											parenthesize(
+										create_property_access(
 												create_new_RegExp(
 													UnrealEngineString_regex
-												)
 											),
 											'exec'
 										),
@@ -491,7 +489,7 @@ export class UnrealEngineString {
 										),
 										ts.factory.createLogicalNot(
 											ts.factory.createCallExpression(
-												ts.factory.createPropertyAccessExpression(
+												create_property_access(
 													create_index_access(
 														'result',
 														1
@@ -517,11 +515,9 @@ export class UnrealEngineString {
 									'Error',
 									ts.factory.createLogicalNot(
 										ts.factory.createCallExpression(
-											ts.factory.createPropertyAccessExpression(
-												parenthesize(
+											create_property_access(
 													create_new_RegExp(
 														'pattern'
-													)
 												),
 												'test'
 											),

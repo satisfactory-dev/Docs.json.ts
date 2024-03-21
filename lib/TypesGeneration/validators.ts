@@ -14,6 +14,7 @@ import {
 	create_object_type,
 	very_flexibly_create_regex_validation_function,
 	create_literal,
+	create_property_access,
 } from '../TsFactoryWrapper';
 import {
 	TypeNodeGeneration,
@@ -332,7 +333,7 @@ export const custom_generators = [
 					create_throw_if(
 						'Error',
 						ts.factory.createLessThan(
-							ts.factory.createPropertyAccessExpression(
+							create_property_access(
 								ts.factory.createIdentifier('value'),
 								'length'
 							),
@@ -357,7 +358,7 @@ export const custom_generators = [
 										ts.factory.createTemplateMiddle(', ')
 									),
 									ts.factory.createTemplateSpan(
-										ts.factory.createPropertyAccessExpression(
+										create_property_access(
 											ts.factory.createIdentifier(
 												'value'
 											),
