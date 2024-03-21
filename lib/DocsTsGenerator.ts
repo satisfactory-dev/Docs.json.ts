@@ -368,7 +368,7 @@ export class DocsTsGenerator {
 		write_on_failure = false
 	): Promise<generation_result> {
 		try {
-			const progress = await this.actually_generate_types(
+			const progress = this.actually_generate_types(
 				throw_on_failure_to_find
 			);
 
@@ -387,9 +387,9 @@ export class DocsTsGenerator {
 	/**
 	 * @throws {GenerationException}
 	 */
-	private async actually_generate_types(
+	private actually_generate_types(
 		throw_on_failure_to_find = true
-	): Promise<generation_result> {
+	): generation_result {
 		const target_files: {[key: string]: string} = Object.assign(
 			{},
 			enum_target_files,
