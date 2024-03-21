@@ -67,13 +67,13 @@ import {
 
 const already_configured = new WeakSet<Ajv>();
 
-const typed_object_string_property_regex = '^[A-Za-z][A-Za-z0-9_\\[\\]]*$';
-const typed_object_string_const_value_regex = `^([A-Za-z][A-Za-z0-9_ ]*|${UnrealEngineString_general_regex})$`;
-const typed_object_string_const_value_regex__native = new RegExp(
-	typed_object_string_const_value_regex
+const property_regex = '^[A-Za-z][A-Za-z0-9_\\[\\]]*$';
+const const_value_regex = `^([A-Za-z][A-Za-z0-9_ ]*|${UnrealEngineString_general_regex})$`;
+const const_value_regex__native = new RegExp(
+	const_value_regex
 );
 
-const type_object_string_$ref_supported = {
+const $ref_supported = {
 	[local_ref('InfinityExtrap')]: true,
 	[local_ref('empty-object')]: true,
 	[local_ref('decimal-string')]: true,
@@ -96,25 +96,25 @@ const type_object_string_$ref_supported = {
 	[local_ref('ItemClass--prop')]: true,
 	[local_ref('MaterialSlotName')]: true,
 };
-const type_object_string_$ref_supported_array = Object.keys(
-	type_object_string_$ref_supported
-) as (keyof typeof type_object_string_$ref_supported)[];
+const $ref_supported_array = Object.keys(
+	$ref_supported
+) as (keyof typeof $ref_supported)[];
 
-function value_is_in_type_object_string_$ref_supported_array(
+function value_is_in_$ref_supported_array(
 	maybe: unknown
-): maybe is keyof typeof type_object_string_$ref_supported {
+): maybe is keyof typeof $ref_supported {
 	return (
 		'string' === typeof maybe
-		&& $ref_in_array(maybe, type_object_string_$ref_supported_array)
+		&& $ref_in_array(maybe, $ref_supported_array)
 	);
 }
 
-type type_object_string_$ref_choices = {
-	$ref: keyof typeof type_object_string_$ref_supported;
+type $ref_choices = {
+	$ref: keyof typeof $ref_supported;
 };
 
-type typed_object_string_$ref_only = {
-	[key: string]: type_object_string_$ref_choices;
+type $ref_only = {
+	[key: string]: $ref_choices;
 };
 
 export type typed_object_string_type = {
@@ -128,42 +128,42 @@ export type typed_object_string_type = {
 		}
 		| enum_schema_type
 		| typed_array_string_parent_without_recursive_reference
-		| type_object_string_$ref_choices
-		| typed_object_string_$ref_only;
+		| $ref_choices
+		| $ref_only;
 };
 
 const empty_object = {};
 
-export type typed_object_string_general_type = {
+export type general_type = {
 	type: 'string';
 	typed_object_string: typed_object_string_type;
 } & ({minLength: 1} | typeof empty_object);
 
 type supported_oneOf_item =
-	| typed_object_string_general_type
-	| type_object_string_$ref_choices
+	| general_type
+	| $ref_choices
 	| UnrealEngineString_parent_type;
 
-type typed_object_string_nested_type = {
+type nested_type = {
 	type: 'string';
-	typed_object_string: {[key: string]: typed_object_string_general_type};
+	typed_object_string: {[key: string]: general_type};
 } & ({minLength: 1} | typeof empty_object);
 
-type typed_object_string_array_type = [
-	typed_object_string_general_type,
-	...typed_object_string_general_type[],
+type array_type = [
+	general_type,
+	...general_type[],
 ];
 
-type typed_object_string_combination_dictionary = {
+type combination_dictionary = {
 	[key: string]:
-		| type_object_string_$ref_choices
+		| $ref_choices
 		| {type: 'string'; const: string}
 		| {type: 'string'; enum: [string, ...string[]]}
-		| typed_object_string_$ref_only
-		| typed_object_string_combination_dictionary;
+		| $ref_only
+		| combination_dictionary;
 };
 
-const typed_object_string_$ref_schema = {
+const $ref_schema = {
 	type: 'object',
 	required: ['$ref'],
 	additionalProperties: false,
@@ -197,7 +197,7 @@ const typed_object_string_$ref_schema = {
 	},
 };
 
-export const typed_object_supported_const_string_schema = {
+export const supported_const_string_schema = {
 	type: 'object',
 	required: ['type', 'const'],
 	additionalProperties: false,
@@ -205,7 +205,7 @@ export const typed_object_supported_const_string_schema = {
 		type: {type: 'string', const: 'string'},
 		const: {
 			type: 'string',
-			pattern: typed_object_string_const_value_regex,
+			pattern: const_value_regex,
 		},
 	},
 };
@@ -214,24 +214,24 @@ export const typed_object_string_schema = {
 	type: 'object',
 	additionalProperties: false,
 	patternProperties: {
-		[typed_object_string_property_regex]: {
+		[property_regex]: {
 			oneOf: [
-				typed_object_string_$ref_schema,
+				$ref_schema,
 				{
 					type: 'object',
 					additionalProperties: false,
 					patternProperties: {
-						[typed_object_string_property_regex]: {
+						[property_regex]: {
 							oneOf: [
-								typed_object_string_$ref_schema,
-								typed_object_supported_const_string_schema,
+								$ref_schema,
+								supported_const_string_schema,
 								typed_string_enum_schema,
 							],
 						},
 					},
 				},
 				UnrealEngineString_parent_schema,
-				typed_object_supported_const_string_schema,
+				supported_const_string_schema,
 				typed_string_enum_schema,
 				{
 					type: 'object',
@@ -267,8 +267,8 @@ export const typed_object_string_schema = {
 							type: 'object',
 							additionalProperties: false,
 							patternProperties: {
-								[typed_object_string_property_regex]: {
-									oneOf: [typed_object_string_$ref_schema],
+								[property_regex]: {
+									oneOf: [$ref_schema],
 								},
 							},
 						},
@@ -296,10 +296,10 @@ export const typed_object_string_schema = {
 									type: 'object',
 									additionalProperties: false,
 									patternProperties: {
-										[typed_object_string_property_regex]:
+										[property_regex]:
 											{
 												oneOf: [
-													typed_object_string_$ref_schema,
+													$ref_schema,
 												],
 											},
 									},
@@ -313,7 +313,7 @@ export const typed_object_string_schema = {
 	},
 };
 
-export const typed_object_string_general_schema = {
+export const general_schema = {
 	type: 'object',
 	required: ['type', 'typed_object_string'],
 	additionalProperties: false,
@@ -324,7 +324,7 @@ export const typed_object_string_general_schema = {
 	},
 };
 
-export const typed_object_string_nested_schema = {
+export const nested_schema = {
 	type: 'object',
 	required: ['type', 'typed_object_string'],
 	additionalProperties: false,
@@ -334,12 +334,12 @@ export const typed_object_string_nested_schema = {
 		typed_object_string: {
 			type: 'object',
 			patternProperties: {
-				[typed_object_string_property_regex]: {
+				[property_regex]: {
 					type: 'object',
 					additionalProperties: false,
 					patternProperties: {
-						[typed_object_string_property_regex]:
-							typed_object_string_$ref_schema,
+						[property_regex]:
+							$ref_schema,
 					},
 				},
 			},
@@ -355,7 +355,7 @@ export const typed_object_oneOf_schema = {
 		oneOf: {
 			type: 'array',
 			minItems: 1,
-			items: typed_object_string_general_schema,
+			items: general_schema,
 		},
 	},
 };
@@ -423,9 +423,9 @@ export class TypedObjectString {
 		});
 	}
 
-	private static typed_object_string_$ref_to_regex(
+	private static $ref_to_regex(
 		property: string,
-		value: type_object_string_$ref_choices
+		value: $ref_choices
 	): string {
 		const {$ref} = value;
 
@@ -511,7 +511,7 @@ export class TypedObjectString {
 				];
 
 			const is_typed_object_array =
-				this.object_is_typed_object_string_oneOf(definition);
+				this.object_is_oneOf(definition);
 			const is_generally_supported_oneOf_array =
 				this.object_is_generally_supported_oneOf_array(
 					definition,
@@ -629,11 +629,11 @@ export class TypedObjectString {
 
 	private static is_$ref_object(
 		maybe: unknown
-	): maybe is type_object_string_$ref_choices {
+	): maybe is $ref_choices {
 		return (
 			value_is_non_array_object(maybe)
 			&& object_only_has_that_property(maybe, '$ref')
-			&& value_is_in_type_object_string_$ref_supported_array(maybe.$ref)
+			&& value_is_in_$ref_supported_array(maybe.$ref)
 		);
 	}
 
@@ -643,7 +643,7 @@ export class TypedObjectString {
 		return (
 			value_is_non_array_object(maybe)
 			&& Object.keys(maybe).every((e) =>
-				typed_object_string_const_value_regex__native.test(e)
+				const_value_regex__native.test(e)
 			)
 			&& Object.values(maybe).every((e) =>
 				typed_string_enum.is_supported_schema(e)
@@ -686,7 +686,7 @@ export class TypedObjectString {
 
 	public static is_$ref_object_dictionary(maybe: {
 		[key: string]: unknown;
-	}): maybe is typed_object_string_$ref_only {
+	}): maybe is $ref_only {
 		return (
 			Object.values(maybe).every((e) => this.is_$ref_object(e))
 			&& 0 !== Object.keys(maybe).length
@@ -696,7 +696,7 @@ export class TypedObjectString {
 	public static is_combination_dictionary(
 		maybe: unknown,
 		current_depth = 0
-	): maybe is typed_object_string_combination_dictionary {
+	): maybe is combination_dictionary {
 		if (!value_is_non_array_object(maybe)) {
 			return false;
 		}
@@ -722,8 +722,8 @@ export class TypedObjectString {
 					&& this.is_$ref_object_dictionary(e)
 				)
 				&& !is_UnrealEngineString_parent(e)
-				&& !this.value_is_typed_object_string_general_type(e)
-				&& !TypedObjectString.object_is_typed_object_string_oneOf(
+				&& !this.value_is_general_type(e)
+				&& !TypedObjectString.object_is_oneOf(
 					maybe
 				)
 				&& !this.is_combination_dictionary(e, current_depth + 1)
@@ -734,7 +734,7 @@ export class TypedObjectString {
 
 	private static $ref_object_dictionary_is_auto_constructor_properties(
 		maybe: {
-			[key: string]: type_object_string_$ref_choices;
+			[key: string]: $ref_choices;
 		}
 	): maybe is typeof maybe &
 		auto_constructor_property_types_from_generated_types_properties<
@@ -751,9 +751,9 @@ export class TypedObjectString {
 		);
 	}
 
-	public static value_is_typed_object_string_general_type(
+	public static value_is_general_type(
 		maybe: unknown
-	): maybe is typed_object_string_general_type {
+	): maybe is general_type {
 		return (
 			value_is_non_array_object(maybe)
 			&& object_has_property(maybe, 'type')
@@ -779,23 +779,23 @@ export class TypedObjectString {
 		);
 	}
 
-	private static array_is_typed_object_string_general_type_array(
+	private static array_is_general_type_array(
 		maybe: unknown[]
-	): maybe is typed_object_string_general_type[] {
+	): maybe is general_type[] {
 		return maybe.every((e) =>
-			this.value_is_typed_object_string_general_type(e)
+			this.value_is_general_type(e)
 		);
 	}
 
-	public static object_is_typed_object_string_oneOf(
+	public static object_is_oneOf(
 		maybe: object
 	): maybe is {
-		oneOf: typed_object_string_array_type;
+		oneOf: array_type;
 	} {
 		return (
 			object_only_has_that_property(maybe, 'oneOf')
 			&& is_non_empty_array(maybe.oneOf)
-			&& this.array_is_typed_object_string_general_type_array(
+			&& this.array_is_general_type_array(
 				maybe.oneOf
 			)
 		);
@@ -803,11 +803,11 @@ export class TypedObjectString {
 
 	private static object_is_generally_supported_oneOf_array<
 		T extends
-			| typed_object_string_general_type
-			| type_object_string_$ref_choices
+			| general_type
+			| $ref_choices
 			| UnrealEngineString_parent_type =
-			| typed_object_string_general_type
-			| type_object_string_$ref_choices
+			| general_type
+			| $ref_choices
 			| UnrealEngineString_parent_type,
 	>(
 		maybe: object,
@@ -826,7 +826,7 @@ export class TypedObjectString {
 		entry: unknown
 	): entry is supported_oneOf_item {
 		return (
-			TypedObjectString.value_is_typed_object_string_general_type(
+			TypedObjectString.value_is_general_type(
 				entry
 			)
 			|| TypedObjectString.is_$ref_object(entry)
@@ -838,7 +838,7 @@ export class TypedObjectString {
 		return `\\(${Object.entries(data)
 			.map((entry) => {
 				if (this.is_$ref_object(entry[1])) {
-					return this.typed_object_string_$ref_to_regex(
+					return this.$ref_to_regex(
 						entry[0],
 						entry[1]
 					);
@@ -896,25 +896,25 @@ export class TypedObjectString {
 				) {
 					return `(?:${annoyingly_have_to_escape_property(entry[0])}=${UnrealEngineString.ajv_macro_generator(true)(entry[1].UnrealEngineString).pattern})`;
 				} else if (
-					this.value_is_typed_object_string_general_type(entry[1])
+					this.value_is_general_type(entry[1])
 				) {
 					return `(?:${annoyingly_have_to_escape_property(entry[0])}=(?:${this.property_to_regex(entry[1].typed_object_string)}))`;
 				} else if (
 					this.object_is_generally_supported_oneOf_array<
-						typed_object_string_general_type
+						general_type
 					>(
 						entry[1],
-						(e): e is typed_object_string_general_type => this.value_is_typed_object_string_general_type(e)
+						(e): e is general_type => this.value_is_general_type(e)
 					)
 				) {
 					const items = entry[1].oneOf;
 
 					if (
 						!this.object_is_generally_supported_oneOf_array<
-							typed_object_string_general_type
+							general_type
 						>(
 							entry[1],
-							(e): e is typed_object_string_general_type => this.value_is_typed_object_string_general_type(e)
+							(e): e is general_type => this.value_is_general_type(e)
 						)
 					) {
 						throw new UnexpectedlyUnknown(
@@ -932,7 +932,7 @@ export class TypedObjectString {
 					.map((sub_entry) => {
 						const [sub_property, sub_value] = sub_entry;
 
-						return this.typed_object_string_$ref_to_regex(
+						return this.$ref_to_regex(
 							sub_property,
 							sub_value
 						);
@@ -954,11 +954,11 @@ export class TypedObjectString {
 
 	static TypesGenerators() {
 		return [
-			new TypesGenerationFromSchema<typed_object_string_general_type>(
+			new TypesGenerationFromSchema<general_type>(
 				{
 					definitions:
 						UnrealEngineString_schema_definitions,
-					...typed_object_string_general_schema,
+					...general_schema,
 				},
 				(data, reference_name) => {
 					const {typed_object_string} = data;
@@ -1035,7 +1035,7 @@ export class TypedObjectString {
 				}
 			),
 			new TypesGenerationFromSchema<{
-				oneOf: typed_object_string_array_type;
+				oneOf: array_type;
 			}>(
 				{
 					definitions:
@@ -1081,11 +1081,11 @@ export class TypedObjectString {
 					);
 				}
 			),
-			new TypesGenerationFromSchema<typed_object_string_nested_type>(
+			new TypesGenerationFromSchema<nested_type>(
 				{
 					definitions:
 						UnrealEngineString_schema_definitions,
-					...typed_object_string_nested_schema,
+					...nested_schema,
 				},
 				(data, reference_name) => {
 					return createClass(
@@ -1144,7 +1144,7 @@ export class TypedObjectString {
 	}
 
 	private static combination_dictionary_type_to_object_type(
-		data: typed_object_string_combination_dictionary,
+		data: combination_dictionary,
 		depth = 0
 	): TypeLiteralNode {
 		return create_object_type(
@@ -1177,7 +1177,7 @@ export class TypedObjectString {
 							value
 						);
 					} else if (
-						TypedObjectString.value_is_typed_object_string_general_type(
+						TypedObjectString.value_is_general_type(
 							value
 						)
 					) {
@@ -1200,7 +1200,7 @@ export class TypedObjectString {
 	}
 
 	public static general_type_to_object_type(
-		data: typed_object_string_general_type
+		data: general_type
 	): TypeLiteralNode {
 		return create_object_type(
 			Object.fromEntries(
@@ -1311,7 +1311,7 @@ export class TypedObjectString {
 
 	private static $ref_choice_to_object_type_entry<T extends string = string>(
 		property: T,
-		value: type_object_string_$ref_choices
+		value: $ref_choices
 	): [T, TypeReferenceNode] {
 		const reference_name = value.$ref.substring(14);
 
@@ -1332,11 +1332,11 @@ export class TypedObjectString {
 
 	static TypeNodeGeneration() {
 		return [
-			new TypeNodeGeneration<typed_object_string_nested_type>(
+			new TypeNodeGeneration<nested_type>(
 				{
 					definitions:
 						UnrealEngineString_schema_definitions,
-					...typed_object_string_nested_schema,
+					...nested_schema,
 				},
 				(data) => {
 					return new TypeNodeGenerationResult(() => {
@@ -1369,11 +1369,11 @@ export class TypedObjectString {
 					});
 				}
 			),
-			new TypeNodeGeneration<typed_object_string_general_type>(
+			new TypeNodeGeneration<general_type>(
 				{
 					definitions:
 						UnrealEngineString_schema_definitions,
-					...typed_object_string_general_schema,
+					...general_schema,
 				},
 				(data) => {
 					const is_$ref_object_dictionary =

@@ -8,8 +8,8 @@ import {
 	UnrealEngineString_schema_definitions,
 } from './UnrealEngineString';
 import {
-	typed_object_string_general_schema,
-	typed_object_string_general_type,
+	general_schema,
+	general_type,
 	TypedObjectString,
 } from './TypedObjectString';
 import {
@@ -56,7 +56,7 @@ const typed_array_string_oneOf_schema = {
 		oneOf: [
 			UnrealEngineString_parent_schema,
 			$ref_schema,
-			typed_object_string_general_schema,
+			general_schema,
 		],
 	},
 };
@@ -71,7 +71,7 @@ const typed_array_string_schema = {
 		maxItems: {type: 'number', minimum: 1},
 		items: {
 			oneOf: [
-				typed_object_string_general_schema,
+				general_schema,
 				UnrealEngineString_parent_schema,
 				typed_string_enum_schema,
 				typed_string_const_schema,
@@ -225,7 +225,7 @@ declare type typed_array_string_supported_items =
 	| enum_schema_type
 	| const_schema_type
 	| UnrealEngineString_parent_type
-	| typed_object_string_general_type;
+	| general_type;
 
 const empty_object = {};
 
@@ -257,7 +257,7 @@ declare type typed_array_string_without_recursive_reference = {
 	minItems: number;
 	items: Exclude<
 		typed_array_string_supported_items,
-		typed_object_string_general_type | enum_schema_type
+		general_type | enum_schema_type
 	>;
 } & ({maxItems: number} | typeof empty_object);
 
@@ -376,7 +376,7 @@ export class TypedArrayString {
 				.join(', *')}\\))`;
 		} else if (
 			'typed_object_string' in item
-			&& TypedObjectString.value_is_typed_object_string_general_type(
+			&& TypedObjectString.value_is_general_type(
 				item.typed_object_string
 			)
 		) {
@@ -384,7 +384,7 @@ export class TypedArrayString {
 				item.typed_object_string
 			).pattern;
 		} else if (
-			TypedObjectString.value_is_typed_object_string_general_type(
+			TypedObjectString.value_is_general_type(
 				item
 			)
 			&& TypedObjectString.is_$ref_object_dictionary(
@@ -395,7 +395,7 @@ export class TypedArrayString {
 				item.typed_object_string
 			).pattern;
 		} else if (
-			TypedObjectString.value_is_typed_object_string_general_type(item)
+			TypedObjectString.value_is_general_type(item)
 		) {
 			return TypedObjectString.ajv_macro_generator(true)(
 				item.typed_object_string
@@ -417,7 +417,7 @@ export class TypedArrayString {
 		if (
 			!('oneOf' in data.items)
 			&& !is_UnrealEngineString_parent(data.items)
-			&& !TypedObjectString.value_is_typed_object_string_general_type(
+			&& !TypedObjectString.value_is_general_type(
 				data.items
 			)
 		) {
@@ -569,7 +569,7 @@ export class TypedArrayString {
 			!('oneOf' in data.items)
 			&& !is_UnrealEngineString_parent(data.items)
 			&& !supported_meta.is_supported_schema(data.items)
-			&& !TypedObjectString.value_is_typed_object_string_general_type(
+			&& !TypedObjectString.value_is_general_type(
 				data.items
 			)
 		) {
