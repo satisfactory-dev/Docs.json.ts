@@ -50,7 +50,7 @@ export class TypeNodeGeneration<
 > extends ResultGeneration<TypeNode, T, TypeNodeGenerationResult> {}
 
 abstract class UnsuccessfulMatchException<
-	T extends object | unknown,
+	T = unknown,
 > extends Error {
 	readonly property: T;
 
@@ -79,10 +79,10 @@ export class PartialMatchError extends UnsuccessfulMatchException<{
 }
 
 export class NoMatchError<
-	T extends object | unknown = object,
+	T = unknown,
 > extends UnsuccessfulMatchException<T> {}
 
-export class UnexpectedlyUnknownNoMatchError extends NoMatchError<unknown> {}
+export class UnexpectedlyUnknownNoMatchError extends NoMatchError {}
 
 export class OneOfOrAnyOfNoMatchError extends NoMatchError<object[]> {}
 
