@@ -278,37 +278,35 @@ export const typed_object_string_schema = {
 					type: 'object',
 					required: ['oneOf'],
 					additionalProperties: false,
-					properties: {
-						oneOf: {
-							type: 'array',
-							minItems: 1,
-							items: {
-								type: 'object',
-								required: [
-									'type',
-									'minLength',
-									'typed_object_string',
-								],
-								additionalProperties: false,
-								properties: {
-									type: {type: 'string', const: 'string'},
-									minLength: {type: 'number', const: 1},
-									typed_object_string: {
-										type: 'object',
-										additionalProperties: false,
-										patternProperties: {
-											[typed_object_string_property_regex]:
-												{
-													oneOf: [
-														typed_object_string_$ref_schema,
-													],
-												},
-										},
+					properties: {oneOf: {
+						type: 'array',
+						minItems: 1,
+						items: {
+							type: 'object',
+							required: [
+								'type',
+								'minLength',
+								'typed_object_string',
+							],
+							additionalProperties: false,
+							properties: {
+								type: {type: 'string', const: 'string'},
+								minLength: {type: 'number', const: 1},
+								typed_object_string: {
+									type: 'object',
+									additionalProperties: false,
+									patternProperties: {
+										[typed_object_string_property_regex]:
+											{
+												oneOf: [
+													typed_object_string_$ref_schema,
+												],
+											},
 									},
 								},
 							},
 						},
-					},
+					}},
 				},
 			],
 		},
