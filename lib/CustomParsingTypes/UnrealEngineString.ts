@@ -200,17 +200,6 @@ export const UnrealEngineString_parent_schema = {
 		UnrealEngineString: UnrealEngineString_schema,
 	},
 };
-export const UnrealEngineString_inner_schema = {
-	type: 'object',
-	required: ['type', 'minLength', 'UnrealEngineString--inner'],
-	additionalProperties: false,
-	properties: {
-		type: {type: 'string', const: 'string'},
-		minLength: {type: 'number', const: 1},
-		['UnrealEngineString--inner']:
-			UnrealEngineString_schema,
-	},
-};
 
 export const UnrealEngineString_left_default = [
 	'/Script/Engine.BlueprintGeneratedClass',

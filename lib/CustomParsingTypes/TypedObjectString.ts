@@ -7,7 +7,6 @@ import {
 	UnrealEngineString_general_regex,
 	UnrealEngineString_parent_schema,
 	UnrealEngineString_parent_type,
-	UnrealEngineString_inner_schema,
 	UnrealEngineString_schema_definitions,
 } from './UnrealEngineString';
 import schema from '../../schema/update8.schema.json' assert {type: 'json'};
@@ -225,7 +224,6 @@ export const typed_object_string_schema = {
 						},
 					},
 				},
-				UnrealEngineString_inner_schema,
 				UnrealEngineString_parent_schema,
 				typed_object_supported_const_string_schema,
 				typed_string_enum_schema,
@@ -908,24 +906,6 @@ export class TypedObjectString {
 					}
 
 					return `(?:${annoyingly_have_to_escape_property(entry[0])}=(?:${items.map((e) => this.property_to_regex(e.typed_object_string)).join('|')}))`;
-				}
-
-				if (
-					'UnrealEngineString--inner' in entry[1]
-					&& is_UnrealEngineString_type(
-						entry[1]['UnrealEngineString--inner']
-					)
-				) {
-					return `${annoyingly_have_to_escape_property(entry[0])}=${
-						UnrealEngineString.ajv_macro_generator(true)(
-							entry[1]['UnrealEngineString--inner']
-						).pattern
-					}`;
-				} else if ('UnrealEngineString--inner' in entry[1]) {
-					throw new UnexpectedlyUnknownNoMatchError(
-						entry,
-						'Not a UnrealEngineString--inner'
-					);
 				}
 
 				return `${annoyingly_have_to_escape_property(entry[0])}=\\(${Object.entries(

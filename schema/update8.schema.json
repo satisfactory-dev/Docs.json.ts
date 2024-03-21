@@ -6323,7 +6323,7 @@
 						"ExternalCurve": {
 							"type": "string",
 							"minLength": 1,
-							"UnrealEngineString--inner": {
+							"UnrealEngineString": {
 								"left": "/Script/Engine.CurveFloat",
 								"right": [
 									"/Game/FactoryGame/Resource/Parts/SpikedRebar/SpikedRebar_Falloff.SpikedRebar_Falloff",
