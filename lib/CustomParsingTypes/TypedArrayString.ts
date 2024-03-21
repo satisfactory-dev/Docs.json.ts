@@ -583,8 +583,9 @@ export class TypedArrayString {
 	}
 
 	static TypeNodeGeneration() {
-		return [
-			new TypeNodeGeneration<typed_array_string_parent>(
+		const typed_array_string_parent = new TypeNodeGeneration<
+			typed_array_string_parent
+		>(
 				{
 					definitions:
 						UnrealEngineString_schema_definitions,
@@ -621,7 +622,9 @@ export class TypedArrayString {
 						'Unsupported type found'
 					);
 				}
-			),
+		);
+		return [
+			typed_array_string_parent,
 			new TypeNodeGeneration<typed_array_string>(
 				{
 					definitions:
