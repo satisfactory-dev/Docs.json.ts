@@ -56,11 +56,11 @@ export function get_dependency_tree(ref: definition_key): definition_key[] {
 	return ancestry;
 }
 
-export function is_ref(ref: string): ref is definition_key & typeof ref {
+export function is_ref(ref: string): ref is definition_key {
 	return ref in schema.definitions;
 }
 
-export function check_ref(ref: string): definition_key & typeof ref {
+export function check_ref(ref: string): definition_key {
 	if (!is_ref(ref)) {
 		throw new UnexpectedlyUnknownNoMatchError(
 			{ref},
@@ -68,7 +68,7 @@ export function check_ref(ref: string): definition_key & typeof ref {
 		);
 	}
 
-	return ref as definition_key & typeof ref;
+	return ref;
 }
 
 export {schema, Update8TypeNodeGeneration};
