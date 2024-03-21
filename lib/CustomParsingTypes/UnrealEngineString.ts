@@ -448,27 +448,27 @@ export class UnrealEngineString {
 							],
 							[
 								create_const_statement(
-											ts.factory.createVariableDeclaration(
-												'result',
-												undefined,
-												undefined,
-												ts.factory.createCallExpression(
-													ts.factory.createPropertyAccessExpression(
-														parenthesize(
-															create_new_RegExp(
-																UnrealEngineString_regex
-															)
-														),
-														'exec'
-													),
-													undefined,
-													[
-														ts.factory.createIdentifier(
-															'unchecked_string'
-														),
-													]
-												)
+									ts.factory.createVariableDeclaration(
+										'result',
+										undefined,
+										undefined,
+										ts.factory.createCallExpression(
+											ts.factory.createPropertyAccessExpression(
+												parenthesize(
+													create_new_RegExp(
+														UnrealEngineString_regex
+													)
+												),
+												'exec'
 											),
+											undefined,
+											[
+												ts.factory.createIdentifier(
+													'unchecked_string'
+												),
+											]
+										)
+									),
 								),
 								create_throw_if(
 									'Error',
