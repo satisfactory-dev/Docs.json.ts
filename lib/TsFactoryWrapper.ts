@@ -18,6 +18,8 @@ import ts, {
 	TypeNode,
 	TypeParameterDeclaration,
 	UnionTypeNode,
+	VariableDeclaration,
+	VariableDeclarationList,
 } from 'typescript';
 import {
 	UnexpectedlyUnknownNoMatchError,
@@ -992,4 +994,14 @@ export function create_typed_union(
 	return ts.factory.createUnionTypeNode(
 		items.map(create_literal)
 	) as non_empty_string_literal_union;
+}
+
+export function create_const_declaration_list(
+	first:VariableDeclaration,
+	...rest:VariableDeclaration[]
+): VariableDeclarationList {
+	return ts.factory.createVariableDeclarationList(
+		[first, ...rest],
+		ts.NodeFlags.Const
+	);
 }
