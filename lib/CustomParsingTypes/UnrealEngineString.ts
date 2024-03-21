@@ -568,7 +568,7 @@ export class UnrealEngineString {
 								),
 							],
 							['static'],
-							create_conditional_UnrealEngineString_type_reference()
+							conditional_UnrealEngineString_type_reference()
 						),
 					],
 					{
@@ -748,7 +748,8 @@ export function conditional_UnrealEngineString_type_arguments(
 	];
 }
 
-export function create_conditional_UnrealEngineString_type_reference(): ts.TypeReferenceNode {
+export function conditional_UnrealEngineString_type_reference(
+): ts.TypeReferenceNode {
 	return flexibly_create_UnrealEngineString_reference_type(
 		conditional_UnrealEngineString_type_arguments()
 	);
