@@ -23,6 +23,7 @@ import {
 	createPropertySignature,
 	parenthesize,
 	possibly_create_lazy_union,
+	variable,
 } from '../TsFactoryWrapper';
 import {
 	TypeNodeGeneration,
@@ -447,11 +448,8 @@ export class UnrealEngineString {
 								),
 							],
 							[
-								create_const_statement(
-									ts.factory.createVariableDeclaration(
+								create_const_statement(variable(
 										'result',
-										undefined,
-										undefined,
 										ts.factory.createCallExpression(
 											ts.factory.createPropertyAccessExpression(
 												parenthesize(
@@ -468,8 +466,7 @@ export class UnrealEngineString {
 												),
 											]
 										)
-									),
-								),
+								)),
 								create_throw_if(
 									'Error',
 									ts.factory.createLogicalNot(

@@ -1016,3 +1016,15 @@ export function create_const_statement(
 		create_const_declaration_list(first, ...rest)
 	);
 }
+
+export function variable(
+	name: string,
+	value: Expression
+) : VariableDeclaration {
+	return ts.factory.createVariableDeclaration(
+		name,
+		undefined,
+		undefined,
+		value
+	);
+}
