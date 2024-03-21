@@ -1,5 +1,6 @@
 import Ajv from 'ajv/dist/2020';
 import ts, {
+	ConditionalTypeNode,
 	Node, TypeNode, TypeReferenceNode,
 } from 'typescript';
 import {
@@ -740,7 +741,8 @@ export function create_UnrealEngineStringReference_reference_type(
 	);
 }
 
-export function conditional_UnrealEngineString_type_arguments() {
+export function conditional_UnrealEngineString_type_arguments(
+) : [ConditionalTypeNode, TypeReferenceNode] {
 	return [
 		ts.factory.createConditionalTypeNode(
 			ts.factory.createTypeQueryNode(
