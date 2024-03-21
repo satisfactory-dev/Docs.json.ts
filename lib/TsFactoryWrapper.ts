@@ -16,6 +16,7 @@ import ts, {
 	RegularExpressionLiteral,
 	StringLiteral,
 	SyntaxKind,
+	TemplateExpression,
 	TypeLiteralNode,
 	TypeNode,
 	TypeParameterDeclaration,
@@ -632,45 +633,30 @@ export function create_throw_if(
 	);
 }
 
-export function create_template_span(
-	span_arguments: [string | Expression, ...(string | Expression)[]]
-): ts.TemplateExpression | ts.StringLiteral {
-	const stack = span_arguments.reduce(
-		(was, is) => {
-			if ('string' === typeof is) {
-				if (1 === was.length) {
-					was[0] += is;
-				} else {
-					(was[was.length - 1] as [Expression, string])[1] += is;
-				}
-			} else {
-				was.push([is, '']);
-			}
-
-			return was;
-		},
-		[''] as [string, ...[Expression, string][]]
+export function template_expression_from_string(
+	template: string
+): TemplateExpression {
+	const ast = ts.createSourceFile(
+		'create_span_from_template.ts',
+		template,
+		ts.ScriptTarget.Latest,
+		false,
+		ts.ScriptKind.TS
 	);
 
-	if (1 === stack.length) {
-		return ts.factory.createStringLiteral(stack[0]);
+	if (1 !== ast.statements.length) {
+		throw new Error('Input must have only one statement!');
+	} else if (!ts.isExpressionStatement(ast.statements[0])) {
+		throw new Error(
+			'Input must be an expression statement!'
+		);
+	} else if (!ts.isTemplateExpression(ast.statements[0].expression)) {
+		throw new Error(
+			'Input must be a template literal expression!'
+		);
 	}
 
-	const head = ts.factory.createTemplateHead(stack.shift() as string);
-
-	return ts.factory.createTemplateExpression(
-		head,
-		(stack as [Expression, string][]).map((entry, index) => {
-			const [expression, chunk] = entry;
-
-			return ts.factory.createTemplateSpan(
-				expression,
-				index === stack.length - 1
-					? ts.factory.createTemplateTail(chunk)
-					: ts.factory.createTemplateMiddle(chunk)
-			);
-		})
-	);
+	return ast.statements[0].expression;
 }
 
 export function create_new_RegExp(

@@ -14,7 +14,6 @@ import {
 	create_modifier,
 	create_new_RegExp,
 	create_property_access,
-	create_template_span,
 	create_this_assignment,
 	create_throw_if,
 	create_type,
@@ -26,6 +25,7 @@ import {
 	variable,
 	not,
 	type_reference_node,
+	template_expression_from_string,
 } from '../TsFactoryWrapper';
 import {
 	TypeNodeGeneration,
@@ -394,45 +394,35 @@ export class UnrealEngineString {
 											undefined,
 											undefined,
 											'not_an_UnrealEngineString_string',
-											create_template_span([
-												'UnrealEngineString value expected, "',
-												ts.factory.createIdentifier(
-													'unchecked_string'
-												),
-												'" found',
-											])
+											template_expression_from_string(
+												`\`UnrealEngineString value expected, "\${
+													unchecked_string
+												}" found\``,
+											)
 										),
 										ts.factory.createBindingElement(
 											undefined,
 											undefined,
 											'prefix_check_failed',
-											create_template_span([
-												'UnrealEngineString prefix expected to start with ',
-												ts.factory.createIdentifier(
-													'prefix_check'
-												),
-												', not found on "',
-												ts.factory.createIdentifier(
-													'unchecked_string'
-												),
-												'"',
-											])
+											template_expression_from_string(
+												`\`UnrealEngineString prefix expected to start with \${
+													prefix_check
+												}, not found on "\${
+													unchecked_string
+												}"\``,
+											)
 										),
 										ts.factory.createBindingElement(
 											undefined,
 											undefined,
 											'value_check_failed',
-											create_template_span([
-												'UnrealEngineString suffix expected to match ',
-												ts.factory.createIdentifier(
-													'pattern'
-												),
-												', not found on "',
-												ts.factory.createIdentifier(
-													'unchecked_string'
-												),
-												'"',
-											])
+											template_expression_from_string(
+												`\`UnrealEngineString suffix expected to match \${
+													pattern
+												}, not found on "\${
+													unchecked_string
+												}"\``
+											)
 										),
 									]),
 									ts.factory.createTypeLiteralNode(
