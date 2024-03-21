@@ -20,6 +20,7 @@ import ts, {
 	UnionTypeNode,
 	VariableDeclaration,
 	VariableDeclarationList,
+	VariableStatement,
 } from 'typescript';
 import {
 	UnexpectedlyUnknownNoMatchError,
@@ -1003,5 +1004,15 @@ export function create_const_declaration_list(
 	return ts.factory.createVariableDeclarationList(
 		[first, ...rest],
 		ts.NodeFlags.Const
+	);
+}
+
+export function create_const_statement(
+	first:VariableDeclaration,
+	...rest:VariableDeclaration[]
+): VariableStatement {
+	return ts.factory.createVariableStatement(
+		undefined,
+		create_const_declaration_list(first, ...rest)
 	);
 }

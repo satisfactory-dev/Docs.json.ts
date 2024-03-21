@@ -6,7 +6,7 @@ import ts, {
 } from 'typescript';
 import {
 	adjust_class_name,
-	create_const_declaration_list,
+	create_const_statement,
 	create_index_access,
 	create_literal,
 	create_method_with_type_parameters,
@@ -447,9 +447,7 @@ export class UnrealEngineString {
 								),
 							],
 							[
-								ts.factory.createVariableStatement(
-									undefined,
-									create_const_declaration_list(
+								create_const_statement(
 											ts.factory.createVariableDeclaration(
 												'result',
 												undefined,
@@ -471,7 +469,6 @@ export class UnrealEngineString {
 													]
 												)
 											),
-									)
 								),
 								create_throw_if(
 									'Error',
