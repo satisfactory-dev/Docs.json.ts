@@ -31,7 +31,7 @@ declare type oneOf_or_anyOf_validator = ValidateFunction<
 declare type object_validator = ValidateFunction<{
 	type: 'object';
 	required: [string, ...string[]];
-	properties: object;
+	properties: {[key: string]: object};
 }>;
 
 declare type tuple_array_validator = ValidateFunction<{
