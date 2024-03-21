@@ -22,8 +22,10 @@ generate: lint-lib
 	${DOCKER_PREFIX} ${DOCKER_IMAGE} npm run generate
 	${DOCKER_PREFIX_NO_LOADER} ${DOCKER_IMAGE} ./node_modules/.bin/tsc --project ./tsconfig.generated-types-check.json
 
-lint-lib:
+lint-lib--tsc:
 	${DOCKER_PREFIX_NO_LOADER} ${DOCKER_IMAGE} ./node_modules/.bin/tsc --project ./tsconfig.lib-check.json
+
+lint-lib: lint-lib--tsc lint--eslint
 
 lint--prettier:
 	${DOCKER_PREFIX} ${DOCKER_IMAGE} ./node_modules/.bin/prettier . --check
@@ -32,7 +34,7 @@ lint--eslint:
 	${DOCKER_PREFIX} ${DOCKER_IMAGE} ./node_modules/.bin/eslint --cache './*.ts' lib --fix-dry-run
 	${DOCKER_PREFIX} ${DOCKER_IMAGE} ./node_modules/.bin/eslint --cache './*.ts' lib
 
-lint: lint-lib lint--prettier lint--eslint
+lint: lint--prettier lint-lib
 
 lint-fix:
 	${DOCKER_PREFIX} ${DOCKER_IMAGE} ./node_modules/.bin/prettier . --write
