@@ -13,7 +13,9 @@ import {
 	check_UnrealEngineString_parent,
 	UnrealEngineString,
 } from './UnrealEngineString';
-import update8_schema from '../../schema/update8.schema.json' assert {type: 'json'};
+import update8_schema from '../../schema/update8.schema.json' assert {
+	type: 'json'
+};
 
 const UnrealEngineString_inner =
 	UnrealEngineString.ajv_macro_generator(true);
