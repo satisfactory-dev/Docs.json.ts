@@ -155,7 +155,9 @@ export const UnrealEngineString_schema_definitions = {
 					type: 'array',
 					minItems: 1,
 					items: {
-						$ref: local_ref('UnrealEngineString_right_starts_with'),
+						$ref: local_ref(
+							'UnrealEngineString_right_starts_with'
+						),
 					},
 				},
 			]}},
