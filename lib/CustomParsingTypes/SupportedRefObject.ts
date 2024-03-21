@@ -10,6 +10,7 @@ import {
 	adjust_class_name,
 } from '../TsFactoryWrapper';
 import {
+	check_UnrealEngineString_parent,
 	UnrealEngineString,
 } from './UnrealEngineString';
 import update8_schema from '../../schema/update8.schema.json' assert {type: 'json'};
@@ -21,9 +22,9 @@ const $ref_supported = {
 	'#/definitions/mEventType': 'EV_Christmas',
 	'#/definitions/FGSchematic--mUnlocks_mSchematics--mSchematics':
 		UnrealEngineString_inner(
-			update8_schema.definitions[
+			check_UnrealEngineString_parent(update8_schema.definitions[
 				'FGSchematic--mUnlocks_mSchematics--mSchematics'
-			].UnrealEngineString
+			]).UnrealEngineString
 		).pattern,
 	'#/definitions/None': 'None',
 	'#/definitions/integer-string': '\\d+',

@@ -83,6 +83,16 @@ export function is_UnrealEngineString_parent(
 	);
 }
 
+export function check_UnrealEngineString_parent(
+	maybe:unknown
+) : UnrealEngineString_parent_type {
+	if (!is_UnrealEngineString_parent(maybe)) {
+		throw new Error('Not an UnrealEngineString_parent object!');
+	}
+
+	return maybe;
+}
+
 export const UnrealEngineString_schema_definitions = {
 	UnrealEngineString_left_string: {
 		type: 'string',
