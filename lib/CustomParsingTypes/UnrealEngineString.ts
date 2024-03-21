@@ -488,23 +488,21 @@ export class UnrealEngineString {
 												'prefix_check'
 											)
 										),
-										not(
-											ts.factory.createCallExpression(
-												create_property_access(
-													create_index_access(
-														'result',
-														1
-													),
-													'startsWith'
+										not(ts.factory.createCallExpression(
+											create_property_access(
+												create_index_access(
+													'result',
+													1
 												),
-												undefined,
-												[
-													ts.factory.createIdentifier(
-														'prefix_check'
-													),
-												]
-											)
-										)
+												'startsWith'
+											),
+											undefined,
+											[
+												ts.factory.createIdentifier(
+													'prefix_check'
+												),
+											]
+										))
 									),
 									[
 										ts.factory.createIdentifier(
