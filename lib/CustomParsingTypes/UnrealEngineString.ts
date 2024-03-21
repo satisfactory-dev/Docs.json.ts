@@ -1,7 +1,8 @@
 import Ajv from 'ajv/dist/2020';
 import ts, {
 	ConditionalTypeNode,
-	TypeNode, TypeReferenceNode,
+	TypeNode,
+	TypeReferenceNode,
 } from 'typescript';
 import {
 	adjust_class_name,
@@ -18,7 +19,8 @@ import {
 	create_union,
 	createClass,
 	createParameter,
-	createPropertySignature, parenthesize,
+	createPropertySignature,
+	parenthesize,
 	possibly_create_lazy_union,
 } from '../TsFactoryWrapper';
 import {
