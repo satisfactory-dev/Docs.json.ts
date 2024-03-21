@@ -828,7 +828,7 @@ export class TypedObjectString {
 						const [property, value] = sub_entry;
 
 						return `(?:${annoyingly_have_to_escape_property(property)}=(?:${value.enum.join('|')}))`;
-					})}))`;
+					}).join(',')}))`;
 				} else if (typed_string_enum.is_supported_schema(entry[1])) {
 					return typed_string_enum.key_value_pair_regex(
 						entry[0],
