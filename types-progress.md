@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (242 of 242)
+100.00% Complete (241 of 241)
 
 ## Basic Types
 
@@ -50,8 +50,10 @@
 -   [x] mSnappedPassthroughs
 -   [x] mStackSize
 -   [x] None
+-   [x] SpecifiedColor
 -   [x] transformation
 -   [x] weaponState
+-   [x] xyz-array
 
 ## decimal-string
 
@@ -332,14 +334,6 @@
 -   [x] NativeClass--Classes
 -   [x] NativeClass--NativeClass
 
-## quaternion
-
--   [x] quaternion--inner
-
-## SpecifiedColor
-
--   [x] SpecifiedColor--inner
-
 ## Texture2D
 
 -   [x] Texture2D
@@ -348,12 +342,8 @@
 ## vectors
 
 -   [x] pitch-yaw-roll
+-   [x] quaternion
 -   [x] xy
 -   [x] xy--integer
 -   [x] xyz
 -   [x] xyz--integer
-
-## xyz
-
--   [x] xyz-array
--   [x] xyz--inner

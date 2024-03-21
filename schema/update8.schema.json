@@ -141,21 +141,6 @@
 				}
 			}
 		},
-		"xyz--inner": {
-			"type": "string",
-			"minLength": 1,
-			"typed_object_string": {
-				"X": {
-					"$ref": "#/definitions/decimal-string--signed"
-				},
-				"Y": {
-					"$ref": "#/definitions/decimal-string--signed"
-				},
-				"Z": {
-					"$ref": "#/definitions/decimal-string--signed"
-				}
-			}
-		},
 		"xy": {
 			"type": "string",
 			"minLength": 1,
@@ -180,7 +165,7 @@
 				}
 			}
 		},
-		"quaternion--inner": {
+		"quaternion": {
 			"type": "string",
 			"minLength": 1,
 			"typed_object_string": {
@@ -285,13 +270,13 @@
 			"minLength": 1,
 			"typed_object_string": {
 				"Rotation": {
-					"$ref": "#/definitions/quaternion--inner"
+					"$ref": "#/definitions/quaternion"
 				},
 				"Translation": {
-					"$ref": "#/definitions/xyz--inner"
+					"$ref": "#/definitions/xyz"
 				},
 				"Scale3D": {
-					"$ref": "#/definitions/xyz--inner"
+					"$ref": "#/definitions/xyz"
 				}
 			}
 		},
@@ -816,10 +801,10 @@
 									"minLength": 1,
 									"typed_object_string": {
 										"Min": {
-											"$ref": "#/definitions/xyz--inner"
+											"$ref": "#/definitions/xyz"
 										},
 										"Max": {
-											"$ref": "#/definitions/xyz--inner"
+											"$ref": "#/definitions/xyz"
 										},
 										"IsValid": {
 											"$ref": "#/definitions/boolean"
@@ -1852,7 +1837,7 @@
 				}
 			}
 		},
-		"SpecifiedColor--inner": {
+		"SpecifiedColor": {
 			"type": "string",
 			"minLength": 1,
 			"typed_object_string": {
@@ -2342,14 +2327,14 @@
 									"$ref": "#/definitions/empty-object"
 								},
 								"TintColor": {
-									"$ref": "#/definitions/SpecifiedColor--inner"
+									"$ref": "#/definitions/SpecifiedColor"
 								},
 								"OutlineSettings": {
 									"CornerRadii": {
-										"$ref": "#/definitions/quaternion--inner"
+										"$ref": "#/definitions/quaternion"
 									},
 									"Color": {
-										"$ref": "#/definitions/SpecifiedColor--inner"
+										"$ref": "#/definitions/SpecifiedColor"
 									},
 									"RoundingType": {
 										"type": "string",
@@ -2387,14 +2372,14 @@
 									"$ref": "#/definitions/empty-object"
 								},
 								"TintColor": {
-									"$ref": "#/definitions/SpecifiedColor--inner"
+									"$ref": "#/definitions/SpecifiedColor"
 								},
 								"OutlineSettings": {
 									"CornerRadii": {
-										"$ref": "#/definitions/quaternion--inner"
+										"$ref": "#/definitions/quaternion"
 									},
 									"Color": {
-										"$ref": "#/definitions/SpecifiedColor--inner"
+										"$ref": "#/definitions/SpecifiedColor"
 									},
 									"RoundingType": {
 										"type": "string",

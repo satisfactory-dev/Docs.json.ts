@@ -75,15 +75,15 @@ const type_object_string_$ref_supported = {
 	'#/definitions/integer-string': true,
 	'#/definitions/integer-string--signed': true,
 	'#/definitions/boolean': true,
-	'#/definitions/quaternion--inner': true,
-	'#/definitions/xyz--inner': true,
+	'#/definitions/quaternion': true,
+	'#/definitions/xyz': true,
 	'#/definitions/xy': true,
 	'#/definitions/color': true,
 	'#/definitions/color-decimal': true,
 	'#/definitions/mDockingRuleSet': true,
 	'#/definitions/mLightControlData': true,
 	'#/definitions/mDisableSnapOn': true,
-	'#/definitions/SpecifiedColor--inner': true,
+	'#/definitions/SpecifiedColor': true,
 	'#/definitions/Texture2D': true,
 	'#/definitions/Texture2D--basic': true,
 	'#/definitions/None': true,
@@ -172,15 +172,15 @@ const typed_object_string_$ref_schema = {
 				'#/definitions/integer-string',
 				'#/definitions/integer-string--signed',
 				'#/definitions/boolean',
-				'#/definitions/quaternion--inner',
-				'#/definitions/xyz--inner',
+				'#/definitions/quaternion',
+				'#/definitions/xyz',
 				'#/definitions/xy',
 				'#/definitions/color',
 				'#/definitions/color-decimal',
 				'#/definitions/mDockingRuleSet',
 				'#/definitions/mLightControlData',
 				'#/definitions/mDisableSnapOn',
-				'#/definitions/SpecifiedColor--inner',
+				'#/definitions/SpecifiedColor',
 				'#/definitions/Texture2D',
 				'#/definitions/Texture2D--basic',
 				'#/definitions/None',
@@ -370,7 +370,7 @@ const supported_type_node_generations = {
 				'#/definitions/mDockingRuleSet',
 				'#/definitions/mLightControlData',
 				'#/definitions/mDisableSnapOn',
-				'#/definitions/SpecifiedColor--inner',
+				'#/definitions/SpecifiedColor',
 				'#/definitions/Texture2D',
 				'#/definitions/Texture2D--basic',
 				'#/definitions/None',
@@ -383,7 +383,7 @@ const supported_type_node_generations = {
 
 type supported_type_node_generations = {
 	$ref:
-		| '#/definitions/SpecifiedColor--inner'
+		| '#/definitions/SpecifiedColor'
 		| '#/definitions/Texture2D'
 		| '#/definitions/Texture2D--basic'
 		| '#/definitions/ItemClass--prop'
@@ -432,8 +432,8 @@ export class TypedObjectString {
 		} else if ('#/definitions/empty-object' === $ref) {
 			value_regex = '\\(\\)';
 		} else if (
-			'#/definitions/quaternion--inner' === $ref
-			|| '#/definitions/xyz--inner' === $ref
+			'#/definitions/quaternion' === $ref
+			|| '#/definitions/xyz' === $ref
 			|| '#/definitions/xy' === $ref
 		) {
 			const maybe_definition_key = $ref.substring(14);
@@ -486,15 +486,15 @@ export class TypedObjectString {
 				schema.definitions[
 					$ref.substring(14) as keyof typeof schema.definitions &
 						(
-							| 'quaternion--inner'
-							| 'xyz--inner'
+							| 'quaternion'
+							| 'xyz'
 							| 'xy'
 							| 'color'
 							| 'color-decimal'
 							| 'mDockingRuleSet'
 							| 'mLightControlData'
 							| 'mDisableSnapOn'
-							| 'SpecifiedColor--inner'
+							| 'SpecifiedColor'
 							| 'Texture2D'
 							| 'Texture2D--basic'
 							| 'None'
