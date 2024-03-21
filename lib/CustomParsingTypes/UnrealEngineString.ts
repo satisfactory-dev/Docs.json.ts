@@ -95,10 +95,37 @@ export function is_UnrealEngineString_parent(
 }
 
 export function check_UnrealEngineString_parent(
-	maybe:unknown
-) : UnrealEngineString_parent_type {
+	maybe:unknown,
+	require_left: boolean = false
+) : (
+	typeof require_left extends true
+		? (UnrealEngineString_parent_type & {
+			UnrealEngineString: {
+				left: UnrealEngineString_string_or_string_array,
+			}
+		})
+		: UnrealEngineString_parent_type
+) {
 	if (!is_UnrealEngineString_parent(maybe)) {
 		throw new Error('Not an UnrealEngineString_parent object!');
+	}
+
+	return maybe;
+}
+
+export function check_UnrealEngineString_has_left_string(
+	maybe: UnrealEngineString_type
+) : UnrealEngineString_type & {
+	left: string,
+} {
+	if (
+		!object_has_property(
+			maybe,
+			'left',
+			(maybe:unknown): maybe is string => 'string' === typeof maybe
+		)
+	) {
+		throw new Error('UnrealEngineString does not have left field!');
 	}
 
 	return maybe;

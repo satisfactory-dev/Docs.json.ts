@@ -52,6 +52,8 @@ import {
 import {
 	adjust_unrealengine_prefix,
 	adjust_unrealengine_value,
+	check_UnrealEngineString_has_left_string,
+	check_UnrealEngineString_parent,
 } from '../../CustomParsingTypes/UnrealEngineString';
 import {
 	object_only_has_that_property,
@@ -860,9 +862,12 @@ export class Update8TypeNodeGeneration {
 
 		checked.push(ref);
 
-		const prefix =
-			schema.definitions['NativeClass--NativeClass']
-				.UnrealEngineString.left;
+		const prefix = check_UnrealEngineString_has_left_string(
+			check_UnrealEngineString_parent(
+				schema.definitions['NativeClass--NativeClass'],
+				true
+			).UnrealEngineString
+		).left;
 
 		const definition_name = ref.substring(14);
 
