@@ -6,6 +6,7 @@ import {
 	adjust_enum_name,
 	create_modifier,
 	create_string_starts_with,
+	type_reference_node,
 } from '../TsFactoryWrapper';
 import {
 	TypeNodeGeneration,
@@ -66,7 +67,7 @@ export const type_node_generators = [
 			const reference_name = data['$ref'].substring(14);
 
 			return new TypeNodeGenerationResult(
-				() => ts.factory.createTypeReferenceNode(reference_name),
+				() => type_reference_node(reference_name),
 				{
 					'common/prefixes': [reference_name],
 				}

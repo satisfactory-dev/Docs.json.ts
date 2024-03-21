@@ -7,6 +7,7 @@ import {
 	create_modifier,
 	create_type,
 	create_union,
+	type_reference_node,
 } from '../TsFactoryWrapper';
 import ts from 'typescript';
 import {
@@ -45,7 +46,7 @@ export const generators = [
 			[create_modifier('export')],
 			adjust_class_name(reference_name),
 			undefined,
-			ts.factory.createTypeReferenceNode(
+			type_reference_node(
 				adjust_class_name(data['$ref'].substring(14))
 			)
 		);
@@ -76,7 +77,7 @@ export const type_node_generators = [
 			const reference_name = adjust_class_name(target_name);
 
 			return new TypeNodeGenerationResult(
-				() => ts.factory.createTypeReferenceNode(reference_name),
+				() => type_reference_node(reference_name),
 				{
 					[target_files[target_name].replace(/\.ts$/, '')]: [
 						reference_name,
@@ -123,9 +124,10 @@ export const type_node_generators = [
 		(data) => {
 			return new TypeNodeGenerationResult(
 				() =>
-					ts.factory.createTypeReferenceNode('StringPassedRegExp', [
+					type_reference_node(
+						'StringPassedRegExp',
 						create_literal(data.pattern),
-					]),
+					),
 				{'utils/validators': ['StringPassedRegExp']}
 			);
 		}

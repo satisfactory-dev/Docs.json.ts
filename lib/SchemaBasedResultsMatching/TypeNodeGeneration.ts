@@ -20,6 +20,7 @@ import {
 	create_this_assignment,
 	needs_element_access,
 	property_name_or_computed,
+	type_reference_node,
 } from '../TsFactoryWrapper';
 import {
 	array_match_type,
@@ -110,7 +111,7 @@ export class TypeNodeGenerationMatcher extends ResultGenerationMatcher<
 		reference: string
 	): TypeNodeGenerationResult {
 		return new TypeNodeGenerationResult(() =>
-			ts.factory.createTypeReferenceNode(adjust_class_name(reference))
+			type_reference_node(adjust_class_name(reference))
 		);
 	}
 
@@ -296,7 +297,7 @@ export function create_constructor_args<T1 extends string = string>(
 	}
 
 	if ('$ref' in data && data['$ref']?.startsWith('#/definitions/')) {
-		const reference = ts.factory.createTypeReferenceNode(
+		const reference = type_reference_node(
 			adjust_class_name(
 				`${data['$ref'].substring(14)}__constructor_args`
 			)
@@ -480,7 +481,7 @@ export function create_binding_constructor(
 				undefined,
 				ts.factory.createObjectBindingPattern(constructor_arg),
 				undefined,
-				ts.factory.createTypeReferenceNode(
+				type_reference_node(
 					adjust_class_name(`${reference_name}__constructor_args`)
 				)
 			),

@@ -10,6 +10,7 @@ import {
 	create_type,
 	create_union,
 	possibly_create_lazy_union,
+	type_reference_node,
 } from '../TsFactoryWrapper';
 import {
 	schema as const_schema,
@@ -208,7 +209,7 @@ export const type_node_generators = [
 			const type_name = adjust_enum_name(property['$ref'].substring(14));
 
 			return new TypeNodeGenerationResult(
-				() => ts.factory.createTypeReferenceNode(type_name),
+				() => type_reference_node(type_name),
 				{
 					'common/enum': [type_name],
 				}
@@ -251,7 +252,7 @@ export const type_node_generators = [
 
 			return new TypeNodeGenerationResult(
 				() => {
-					return ts.factory.createTypeReferenceNode(reference_name);
+					return type_reference_node(reference_name);
 				},
 				{
 					'common/enum': [reference_name],

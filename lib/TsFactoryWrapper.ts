@@ -19,6 +19,7 @@ import ts, {
 	TypeLiteralNode,
 	TypeNode,
 	TypeParameterDeclaration,
+	TypeReferenceNode,
 	UnionTypeNode,
 	VariableDeclaration,
 	VariableDeclarationList,
@@ -115,11 +116,18 @@ function maybe_expression_node_from_literal(
 
 		return ts.factory.createAsExpression(
 			create_literal(node.literal.text).literal,
-			ts.factory.createTypeReferenceNode('const')
+			type_reference_node('const')
 		);
 	}
 
 	return undefined;
+}
+
+export function type_reference_node(
+	name: string,
+	...type_arguments:TypeNode[]
+) : TypeReferenceNode {
+	return ts.factory.createTypeReferenceNode(name, type_arguments);
 }
 
 export function createProperty_with_specific_type(
@@ -353,7 +361,7 @@ export function createClass__members__with_auto_constructor<
 						);
 					}
 
-					let type: ts.TypeNode = ts.factory.createTypeReferenceNode(
+					let type: ts.TypeNode = type_reference_node(
 						adjust_class_name(
 							auto_constructor_property_types_from_generated_types[
 								property_data_ref
@@ -535,11 +543,12 @@ export function create_method_without_type_parameters(
 export function create_string_starts_with(
 	string_starts_with: string
 ): ts.TypeReferenceNode {
-	return ts.factory.createTypeReferenceNode('string_starts_with', [
+	return type_reference_node(
+		'string_starts_with',
 		ts.factory.createLiteralTypeNode(
 			ts.factory.createStringLiteral(string_starts_with)
 		),
-	]);
+	);
 }
 
 function must_be_a_decimal_like_string() {
@@ -756,11 +765,13 @@ export function flexibly_create_regex_validation_function(
 		regexp_argument,
 		parameters,
 		() =>
-			ts.factory.createTypeReferenceNode(
+			type_reference_node(
 				'StringPassedRegExp',
+				...(
 				pattern_argument
 					? pattern_argument()
 					: [create_type('string')]
+				)
 			),
 		error_template_spans,
 		undefined,
@@ -951,7 +962,7 @@ declare type lazy_union_item =
 function map_lazy_union_item_to_type(item: lazy_union_item): ts.TypeNode {
 	if ('object' === typeof item) {
 		if ('$ref' in item) {
-			return ts.factory.createTypeReferenceNode(
+			return type_reference_node(
 				adjust_class_name(item.$ref.substring(14))
 			);
 		}
@@ -960,9 +971,10 @@ function map_lazy_union_item_to_type(item: lazy_union_item): ts.TypeNode {
 			return create_literal(item.const);
 		}
 
-		return ts.factory.createTypeReferenceNode('StringPassedRegExp', [
+		return type_reference_node(
+			'StringPassedRegExp',
 			create_literal(item.pattern),
-		]);
+		);
 	}
 
 	return create_literal(item);

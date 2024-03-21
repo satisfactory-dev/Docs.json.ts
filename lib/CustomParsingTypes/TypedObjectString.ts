@@ -24,6 +24,7 @@ import {
 	createClass,
 	createClass__members__with_auto_constructor,
 	possibly_create_lazy_union,
+	type_reference_node,
 } from '../TsFactoryWrapper';
 import {
 	TypeNodeGeneration,
@@ -978,7 +979,7 @@ export class TypedObjectString {
 										).map((entry) => {
 											return [
 												entry[0],
-												ts.factory.createTypeReferenceNode(
+												type_reference_node(
 													adjust_class_name(
 														entry[1].$ref.substring(
 															14
@@ -1047,7 +1048,7 @@ export class TypedObjectString {
 
 											return [
 												entry[0],
-												ts.factory.createTypeReferenceNode(
+												type_reference_node(
 													adjust_class_name(
 														entry[1].$ref.substring(
 															14
@@ -1303,7 +1304,7 @@ export class TypedObjectString {
 
 		return [
 			property,
-			ts.factory.createTypeReferenceNode(
+			type_reference_node(
 				adjust_class_name(
 					`${reference_name}${
 						reference_name.startsWith('integer-string')
@@ -1390,7 +1391,7 @@ export class TypedObjectString {
 				supported_type_node_generations,
 				(data) => {
 					return new TypeNodeGenerationResult(() =>
-						ts.factory.createTypeReferenceNode(
+						type_reference_node(
 							adjust_class_name(data.$ref.substring(14))
 						)
 					);

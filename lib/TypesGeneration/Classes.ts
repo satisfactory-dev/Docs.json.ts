@@ -2,8 +2,8 @@ import {
 	adjust_class_name,
 	create_object_type_alias,
 	possibly_create_lazy_union,
+	type_reference_node,
 } from '../TsFactoryWrapper';
-import ts from 'typescript';
 import {
 	TypesGenerationMatchesReferenceName,
 } from '../TypesGeneration';
@@ -102,7 +102,7 @@ export const type_node_generators = [
 
 			return new TypeNodeGenerationResult(
 				() => {
-					return ts.factory.createTypeReferenceNode(reference_name);
+					return type_reference_node(reference_name);
 				},
 				{
 					[target_file]: [reference_name],

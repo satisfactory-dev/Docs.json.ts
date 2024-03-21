@@ -25,6 +25,7 @@ import {
 	possibly_create_lazy_union,
 	variable,
 	not,
+	type_reference_node,
 } from '../TsFactoryWrapper';
 import {
 	TypeNodeGeneration,
@@ -322,14 +323,14 @@ export class UnrealEngineString {
 							[create_modifier('readonly')],
 							'prefix',
 							undefined,
-							ts.factory.createTypeReferenceNode('prefix'),
+							type_reference_node('prefix'),
 							undefined
 						),
 						ts.factory.createPropertyDeclaration(
 							[create_modifier('readonly')],
 							'value',
 							undefined,
-							ts.factory.createTypeReferenceNode('value'),
+							type_reference_node('value'),
 							undefined
 						),
 						create_method_without_type_parameters(
@@ -337,13 +338,13 @@ export class UnrealEngineString {
 							[
 								createParameter(
 									'prefix',
-									ts.factory.createTypeReferenceNode(
+									type_reference_node(
 										'prefix'
 									)
 								),
 								createParameter(
 									'value',
-									ts.factory.createTypeReferenceNode('value')
+									type_reference_node('value')
 								),
 							],
 							[
@@ -383,7 +384,7 @@ export class UnrealEngineString {
 								),
 								createParameter(
 									'pattern',
-									ts.factory.createTypeReferenceNode(
+									type_reference_node(
 										'pattern'
 									)
 								),
@@ -543,16 +544,14 @@ export class UnrealEngineString {
 													'result',
 													2
 												),
-												ts.factory.createTypeReferenceNode(
+												type_reference_node(
 													'StringPassedRegExp',
-													[
-														ts.factory.createTypeReferenceNode(
+													type_reference_node(
 															'pattern'
 														),
-														ts.factory.createTypeReferenceNode(
+													type_reference_node(
 															'value'
 														),
-													]
 												)
 											),
 										]
@@ -572,9 +571,9 @@ export class UnrealEngineString {
 							'prefix',
 							create_union(
 								create_type('string'),
-								ts.factory.createTypeReferenceNode(
+								type_reference_node(
 									'string_starts_with',
-									[create_type('string')]
+									create_type('string')
 								)
 							),
 							create_literal(
@@ -586,9 +585,9 @@ export class UnrealEngineString {
 							'value',
 							create_union(
 								create_type('string'),
-								ts.factory.createTypeReferenceNode(
+								type_reference_node(
 									'string_starts_with',
-									[create_type('string')]
+									create_type('string')
 								)
 							),
 							create_type('string')
@@ -632,9 +631,9 @@ export function adjust_unrealengine_value(value: string): string {
 export function flexibly_create_UnrealEngineString_reference_type(
 	type_arguments: [TypeNode, TypeNode] | [TypeNode] | undefined
 ): ts.TypeReferenceNode {
-	return ts.factory.createTypeReferenceNode(
+	return type_reference_node(
 		'UnrealEngineString',
-		type_arguments
+		...(type_arguments || [])
 	);
 }
 
@@ -684,13 +683,13 @@ export function create_UnrealEngineString_reference_type(
 			];
 
 			if (right_options.length >= 1) {
-				right_value = ts.factory.createTypeReferenceNode(
+				right_value = type_reference_node(
 					'string_starts_with',
-					[
+					(
 						1 === right_options.length
 							? create_literal(right_options[0])
-							: possibly_create_lazy_union(right_options),
-					]
+							: possibly_create_lazy_union(right_options)
+					),
 				);
 			}
 		} else {
@@ -726,17 +725,19 @@ export function conditional_UnrealEngineString_type_arguments(
 				ts.factory.createIdentifier('prefix_check')
 			),
 			create_type('string'),
-			ts.factory.createTypeReferenceNode('string_starts_with', [
+			type_reference_node(
+				'string_starts_with',
 				ts.factory.createTypeQueryNode(
 					ts.factory.createIdentifier('prefix_check')
 				),
-			]),
+			),
 			create_type('string')
 		),
-		ts.factory.createTypeReferenceNode('StringPassedRegExp', [
-			ts.factory.createTypeReferenceNode('pattern'),
-			ts.factory.createTypeReferenceNode('value'),
-		]),
+		type_reference_node(
+			'StringPassedRegExp',
+			type_reference_node('pattern'),
+			type_reference_node('value'),
+		),
 	];
 }
 

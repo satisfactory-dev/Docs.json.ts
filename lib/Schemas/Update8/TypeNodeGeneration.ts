@@ -35,6 +35,7 @@ import {
 	is_supported_properties_object,
 	possibly_create_lazy_union,
 	supported_modifiers,
+	type_reference_node,
 } from '../../TsFactoryWrapper';
 import Ajv from 'ajv/dist/2020';
 import {
@@ -400,16 +401,14 @@ export class Update8TypeNodeGeneration {
 							create_type('number')
 						),
 					],
-					ts.factory.createTypeReferenceNode(
+					type_reference_node(
 						'StrictlyTypedNumberFromRegExp',
-						[
 							ts.factory.createLiteralTypeNode(
 								ts.factory.createStringLiteral(
 									schema.definitions[reference_name].pattern
 								)
 							),
-							ts.factory.createTypeReferenceNode('T'),
-						]
+							type_reference_node('T'),
 					)
 				),
 			});
@@ -422,14 +421,12 @@ export class Update8TypeNodeGeneration {
 		);
 
 		const mFuel_item = {
-			mFuelClass: ts.factory.createTypeReferenceNode(
+			mFuelClass: type_reference_node(
 				'StringPassedRegExp',
-				[
 					create_literal(
 						schema.definitions.mFuel.items.properties.mFuelClass
 							.pattern
 					),
-				]
 			),
 			mSupplementalResourceClass: create_lazy_union(
 				'',
@@ -441,7 +438,7 @@ export class Update8TypeNodeGeneration {
 			),
 			mByproductAmount: create_union(
 				create_literal(''),
-				ts.factory.createTypeReferenceNode(
+				type_reference_node(
 					mByProductAmount_reference_name
 				)
 			),
@@ -587,7 +584,7 @@ export class Update8TypeNodeGeneration {
 					},
 					(data) => {
 						return new TypeNodeGenerationResult(() => {
-							return ts.factory.createTypeReferenceNode(
+							return type_reference_node(
 								adjust_class_name(data.$ref.substring(14))
 							);
 						});
@@ -664,7 +661,7 @@ export class Update8TypeNodeGeneration {
 				create_minimum_size_typed_array_of_single_type(
 					schema.definitions['NativeClass--Classes'].minItems,
 					() =>
-						ts.factory.createTypeReferenceNode(
+						type_reference_node(
 							adjust_class_name(
 								schema.definitions[
 									'NativeClass--Classes'
@@ -683,11 +680,11 @@ export class Update8TypeNodeGeneration {
 				[
 					createProperty(
 						'NativeClass',
-						ts.factory.createTypeReferenceNode('NativeClass')
+						type_reference_node('NativeClass')
 					),
 					createProperty(
 						'Classes',
-						ts.factory.createTypeReferenceNode('Classes')
+						type_reference_node('Classes')
 					),
 					create_method_without_type_parameters(
 						'constructor',
@@ -697,7 +694,7 @@ export class Update8TypeNodeGeneration {
 								undefined,
 								'NativeClass',
 								undefined,
-								ts.factory.createTypeReferenceNode(
+								type_reference_node(
 									'NativeClass'
 								),
 								undefined
@@ -707,7 +704,7 @@ export class Update8TypeNodeGeneration {
 								undefined,
 								'Classes',
 								undefined,
-								ts.factory.createTypeReferenceNode('Classes'),
+								type_reference_node('Classes'),
 								undefined
 							),
 						],
@@ -729,20 +726,20 @@ export class Update8TypeNodeGeneration {
 					ts.factory.createTypeParameterDeclaration(
 						undefined,
 						'Classes',
-						ts.factory.createTypeReferenceNode(
+						type_reference_node(
 							'NativeClass__Classes'
 						),
-						ts.factory.createTypeReferenceNode(
+						type_reference_node(
 							'NativeClass__Classes'
 						)
 					),
 					ts.factory.createTypeParameterDeclaration(
 						undefined,
 						'NativeClass',
-						ts.factory.createTypeReferenceNode(
+						type_reference_node(
 							'NativeClass__NativeClass'
 						),
-						ts.factory.createTypeReferenceNode(
+						type_reference_node(
 							'NativeClass__NativeClass'
 						)
 					),
@@ -790,13 +787,11 @@ export class Update8TypeNodeGeneration {
 				},
 				(data) => {
 					return new TypeNodeGenerationResult(() => {
-						return ts.factory.createTypeReferenceNode(
+						return type_reference_node(
 							'NativeClass',
-							[
 								this.type_node_generator
 									.find(ajv, data.properties.Classes)
 									.type(),
-							]
 						);
 					});
 				}
@@ -1008,7 +1003,7 @@ export class Update8TypeNodeGeneration {
 					throw new Error('whoops');
 				}
 				return new TypeNodeGenerationResult(() =>
-					ts.factory.createTypeReferenceNode(
+					type_reference_node(
 						adjust_class_name(data.$ref.substring(14))
 					)
 				);
@@ -1064,7 +1059,7 @@ export class Update8TypeNodeGeneration {
 							if (prefixItems) {
 								return ts.factory.createTupleTypeNode([
 									...prefixItems.map((item) => {
-										return ts.factory.createTypeReferenceNode(
+										return type_reference_node(
 											adjust_class_name(
 												item.$ref.substring(14)
 											)
@@ -1072,7 +1067,7 @@ export class Update8TypeNodeGeneration {
 									}),
 									ts.factory.createRestTypeNode(
 										ts.factory.createArrayTypeNode(
-											ts.factory.createTypeReferenceNode(
+											type_reference_node(
 												adjust_class_name(
 													items.$ref.substring(14)
 												)
@@ -1084,7 +1079,7 @@ export class Update8TypeNodeGeneration {
 								return create_minimum_size_typed_array_of_single_type(
 									minItems,
 									() =>
-										ts.factory.createTypeReferenceNode(
+										type_reference_node(
 											adjust_class_name(
 												items.$ref.substring(14)
 											)
@@ -1094,14 +1089,14 @@ export class Update8TypeNodeGeneration {
 							}
 
 							return ts.factory.createArrayTypeNode(
-								ts.factory.createTypeReferenceNode(
+								type_reference_node(
 									adjust_class_name(items.$ref.substring(14))
 								)
 							);
 						} else if (prefixItems) {
 							return ts.factory.createTupleTypeNode(
 								prefixItems.map((item) => {
-									return ts.factory.createTypeReferenceNode(
+									return type_reference_node(
 										adjust_class_name(
 											item.$ref.substring(14)
 										)
@@ -1114,7 +1109,7 @@ export class Update8TypeNodeGeneration {
 								() => {
 									return ts.factory.createUnionTypeNode(
 										items.oneOf.map((item) => {
-											return ts.factory.createTypeReferenceNode(
+											return type_reference_node(
 												adjust_class_name(
 													item.$ref.substring(14)
 												)

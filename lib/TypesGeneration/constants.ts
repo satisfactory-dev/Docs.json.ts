@@ -7,6 +7,7 @@ import {
 	adjust_class_name,
 	create_literal,
 	create_modifier,
+	type_reference_node,
 } from '../TsFactoryWrapper';
 import {
 	TypeNodeGeneration,
@@ -91,7 +92,7 @@ export const generators = [
 				[create_modifier('export')],
 				adjust_class_name(reference_name),
 				undefined,
-				ts.factory.createTypeReferenceNode('None')
+				type_reference_node('None')
 			);
 		}
 	),
@@ -113,7 +114,7 @@ export const type_node_generators = [
 		const reference_name = adjust_class_name(ref_key);
 
 		return new TypeNodeGenerationResult(
-			() => ts.factory.createTypeReferenceNode(reference_name),
+			() => type_reference_node(reference_name),
 			{
 				[target_files[ref_key].replace(/\.ts$/, '')]: [reference_name],
 			}
@@ -143,7 +144,7 @@ export const type_node_generators = [
 
 			return new TypeNodeGenerationResult(
 				() => {
-					return ts.factory.createTypeReferenceNode(reference_name);
+					return type_reference_node(reference_name);
 				},
 				{
 					'common/constants': [reference_name],

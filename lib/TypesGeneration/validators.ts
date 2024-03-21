@@ -15,6 +15,7 @@ import {
 	very_flexibly_create_regex_validation_function,
 	create_literal,
 	create_property_access,
+	type_reference_node,
 } from '../TsFactoryWrapper';
 import {
 	TypeNodeGeneration,
@@ -100,7 +101,7 @@ export const generators = [
 					),
 				],
 				() =>
-					ts.factory.createTypeReferenceNode(
+					type_reference_node(
 						adjust_class_name(`${reference_name}__type`)
 					),
 				[
@@ -123,7 +124,7 @@ export const generators = [
 								? [value, ts.factory.createNumericLiteral(10)]
 								: [value]
 						),
-						ts.factory.createTypeReferenceNode(
+						type_reference_node(
 							adjust_class_name(`${reference_name}__type`)
 						)
 					)
@@ -139,11 +140,12 @@ export const generators = [
 			[create_modifier('export')],
 			adjust_class_name(reference_name),
 			undefined,
-			ts.factory.createTypeReferenceNode('string_starts_with', [
+			type_reference_node(
+				'string_starts_with',
 				ts.factory.createLiteralTypeNode(
 					ts.factory.createStringLiteral(data.string_starts_with)
 				),
-			])
+			)
 		);
 	}),
 	new TypesGenerationMatchesReferenceName<
@@ -168,13 +170,11 @@ export const generators = [
 						create_type('number')
 					),
 				],
-				ts.factory.createTypeReferenceNode(
+				type_reference_node(
 					'StrictlyTypedNumberFromRegExp',
-					[
 						ts.factory.createLiteralTypeNode(
 							ts.factory.createStringLiteral(data.pattern)
 						),
-					]
 				)
 			);
 		}
@@ -235,19 +235,19 @@ export const custom_generators = [
 							)
 						),
 						ts.factory.createConditionalTypeNode(
-							ts.factory.createTypeReferenceNode('pseudo_key'),
+							type_reference_node('pseudo_key'),
 							create_type('string'),
 							ts.factory.createTemplateLiteralType(
 								ts.factory.createTemplateHead(''),
 								[
 									ts.factory.createTemplateLiteralTypeSpan(
-										ts.factory.createTypeReferenceNode(
+										type_reference_node(
 											'prefix'
 										),
 										ts.factory.createTemplateMiddle('')
 									),
 									ts.factory.createTemplateLiteralTypeSpan(
-										ts.factory.createTypeReferenceNode(
+										type_reference_node(
 											'pseudo_key'
 										),
 										ts.factory.createTemplateTail('')
@@ -271,8 +271,8 @@ export const custom_generators = [
 				'pattern',
 
 				[
-					createParameter('value', ts.factory.createTypeReferenceNode('Value')),
-					createParameter('pattern', ts.factory.createTypeReferenceNode('Pattern')),
+					createParameter('value', type_reference_node('Value')),
+					createParameter('pattern', type_reference_node('Pattern')),
 					createParameter(
 						'reference_argument',
 						ts.SyntaxKind.StringKeyword
@@ -291,8 +291,8 @@ export const custom_generators = [
 					),
 				],
 				() => [
-					ts.factory.createTypeReferenceNode('Pattern'),
-					ts.factory.createTypeReferenceNode('Value'),
+					type_reference_node('Pattern'),
+					type_reference_node('Value'),
 				],
 				[
 					ts.factory.createTypeParameterDeclaration(
@@ -400,10 +400,10 @@ export const custom_generators = [
 						),
 					],
 					ts.factory.createIntersectionTypeNode([
-						ts.factory.createTypeReferenceNode('T'),
+						type_reference_node('T'),
 						create_object_type({
 							_DocsJsonPattern:
-								ts.factory.createTypeReferenceNode('pattern'),
+								type_reference_node('pattern'),
 						}),
 					])
 				),
@@ -427,13 +427,13 @@ export const custom_generators = [
 						),
 					],
 					ts.factory.createIntersectionTypeNode([
-						ts.factory.createTypeReferenceNode('T'),
+						type_reference_node('T'),
 						ts.factory.createMappedTypeNode(
 							undefined,
 							ts.factory.createTypeParameterDeclaration(
 								undefined,
 								'pseudo_key',
-								ts.factory.createTypeReferenceNode('pattern')
+								type_reference_node('pattern')
 							),
 							undefined,
 							undefined,
@@ -455,9 +455,9 @@ export const type_node_generators = [
 
 		return new TypeNodeGenerationResult(
 			() =>
-				ts.factory.createTypeReferenceNode(
+				type_reference_node(
 					'StrictlyTypedNumberFromRegExp',
-					[create_type('string')]
+					create_type('string')
 				),
 			!(ref_key in validator_target_files)
 				? undefined
@@ -492,7 +492,7 @@ export const type_node_generators = [
 		},
 		(data) =>
 			new TypeNodeGenerationResult(() => {
-				return ts.factory.createTypeReferenceNode(
+				return type_reference_node(
 					adjust_class_name(data.$ref.substring(14))
 				);
 			})
@@ -512,9 +512,9 @@ export const type_node_generators = [
 		},
 		(data) => {
 			return new TypeNodeGenerationResult(() => {
-				return ts.factory.createTypeReferenceNode(
+				return type_reference_node(
 					'StringPassedRegExp',
-					[create_literal(data.pattern)]
+					create_literal(data.pattern)
 				);
 			});
 		}
@@ -538,15 +538,13 @@ export const type_node_generators = [
 		(property) => {
 			return new TypeNodeGenerationResult(
 				() => {
-					return ts.factory.createTypeReferenceNode(
+					return type_reference_node(
 						'string_starts_with',
-						[
 							ts.factory.createLiteralTypeNode(
 								ts.factory.createStringLiteral(
 									property.string_starts_with
 								)
 							),
-						]
 					);
 				},
 				{

@@ -2,6 +2,7 @@ import {
 	adjust_class_name,
 	createClass,
 	createClass__members__with_auto_constructor,
+	type_reference_node,
 } from '../TsFactoryWrapper';
 import {
 	TypeNodeGeneration,
@@ -50,7 +51,7 @@ export const type_node_generators = [
 			const reference_name = adjust_class_name(ref_key);
 
 			return new TypeNodeGenerationResult(
-				() => ts.factory.createTypeReferenceNode(reference_name),
+				() => type_reference_node(reference_name),
 				{
 					[target_files[ref_key]]: [reference_name],
 				}

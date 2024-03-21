@@ -6,6 +6,7 @@ import {
 	adjust_class_name,
 	create_minimum_size_typed_array_of_single_type,
 	create_modifier,
+	type_reference_node,
 } from '../TsFactoryWrapper';
 import {
 	TypeNodeGeneration,
@@ -28,7 +29,7 @@ export const generators = [
 				create_minimum_size_typed_array_of_single_type(
 					data.minItems,
 					() => {
-						return ts.factory.createTypeReferenceNode(
+						return type_reference_node(
 							adjust_class_name(`${reference_name}_item`)
 						);
 					}
@@ -61,7 +62,7 @@ export const type_node_generators = [
 
 			return new TypeNodeGenerationResult(
 				() => {
-					return ts.factory.createTypeReferenceNode(reference_name);
+					return type_reference_node(reference_name);
 				},
 				{
 					'common/arrays': [reference_name],

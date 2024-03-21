@@ -7,6 +7,7 @@ import {
 	create_modifier,
 	create_union,
 	possibly_create_lazy_union,
+	type_reference_node,
 } from '../TsFactoryWrapper';
 import {
 	target_files as validators_target_files,
@@ -120,7 +121,7 @@ export const generators = [
 				ts.factory.createUnionTypeNode(
 					data.oneOf.map((entry) => {
 						if ('$ref' in entry) {
-							return ts.factory.createTypeReferenceNode(
+							return type_reference_node(
 								adjust_class_name(entry['$ref'].substring(14))
 							);
 						} else if ('const' in entry) {
@@ -128,15 +129,13 @@ export const generators = [
 								ts.factory.createStringLiteral(entry.const)
 							);
 						} else if ('string_starts_with' in entry) {
-							return ts.factory.createTypeReferenceNode(
+							return type_reference_node(
 								'string_starts_with',
-								[
 									ts.factory.createLiteralTypeNode(
 										ts.factory.createStringLiteral(
 											entry.string_starts_with
 										)
 									),
-								]
 							);
 						} else if (
 							is_UnrealEngineString_parent(
@@ -190,16 +189,16 @@ export const generators = [
 				adjust_class_name(reference_name),
 				undefined,
 				create_union(
-					ts.factory.createTypeReferenceNode(
+					type_reference_node(
 						adjust_class_name(a.$ref.substring(14))
 					),
-					ts.factory.createTypeReferenceNode(
+					type_reference_node(
 						adjust_class_name(b.$ref.substring(14))
 					),
 					...rest
 						.map((e) => e.$ref.substring(14))
 						.map((sub_reference) => {
-							return ts.factory.createTypeReferenceNode(
+							return type_reference_node(
 								adjust_class_name(sub_reference)
 							);
 						})
@@ -233,7 +232,7 @@ export const type_node_generators = [
 
 			return new TypeNodeGenerationResult(
 				() => {
-					return ts.factory.createTypeReferenceNode(reference_name);
+					return type_reference_node(reference_name);
 				},
 				{
 					'common/unions': [reference_name],

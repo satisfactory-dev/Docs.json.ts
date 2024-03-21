@@ -3,11 +3,12 @@ import {
 	SupportedSubSchemaType,
 	value_is_non_array_object,
 } from './CustomPairingTypes';
-import ts, {
+import {
 	TypeReferenceNode,
 } from 'typescript';
 import {
 	adjust_class_name,
+	type_reference_node,
 } from '../TsFactoryWrapper';
 import {
 	check_UnrealEngineString_parent,
@@ -78,7 +79,7 @@ class SupportedRefObject extends SupportedSubSchemaType<
 	value_type(value: $ref_choices): TypeReferenceNode {
 		const ref = value.$ref.substring(14);
 
-		return ts.factory.createTypeReferenceNode(
+		return type_reference_node(
 			adjust_class_name(
 				`${ref}${ref.startsWith('integer-string') || ref.startsWith('decimal-string') ? '--type' : ''}`
 			)
