@@ -131,11 +131,11 @@ export const generators = [
 						} else if ('string_starts_with' in entry) {
 							return type_reference_node(
 								'string_starts_with',
-									ts.factory.createLiteralTypeNode(
-										ts.factory.createStringLiteral(
-											entry.string_starts_with
-										)
-									),
+								ts.factory.createLiteralTypeNode(
+									ts.factory.createStringLiteral(
+										entry.string_starts_with
+									)
+								),
 							);
 						} else if (
 							is_UnrealEngineString_parent(

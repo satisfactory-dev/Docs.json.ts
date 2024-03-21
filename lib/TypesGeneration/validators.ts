@@ -172,9 +172,9 @@ export const generators = [
 				],
 				type_reference_node(
 					'StrictlyTypedNumberFromRegExp',
-						ts.factory.createLiteralTypeNode(
-							ts.factory.createStringLiteral(data.pattern)
-						),
+					ts.factory.createLiteralTypeNode(
+						ts.factory.createStringLiteral(data.pattern)
+					),
 				)
 			);
 		}
@@ -540,11 +540,11 @@ export const type_node_generators = [
 				() => {
 					return type_reference_node(
 						'string_starts_with',
-							ts.factory.createLiteralTypeNode(
-								ts.factory.createStringLiteral(
-									property.string_starts_with
-								)
-							),
+						ts.factory.createLiteralTypeNode(
+							ts.factory.createStringLiteral(
+								property.string_starts_with
+							)
+						),
 					);
 				},
 				{

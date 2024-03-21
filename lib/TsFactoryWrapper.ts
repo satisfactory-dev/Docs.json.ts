@@ -768,9 +768,9 @@ export function flexibly_create_regex_validation_function(
 			type_reference_node(
 				'StringPassedRegExp',
 				...(
-				pattern_argument
-					? pattern_argument()
-					: [create_type('string')]
+					pattern_argument
+						? pattern_argument()
+						: [create_type('string')]
 				)
 			),
 		error_template_spans,

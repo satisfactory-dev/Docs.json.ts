@@ -547,11 +547,11 @@ export class UnrealEngineString {
 												type_reference_node(
 													'StringPassedRegExp',
 													type_reference_node(
-															'pattern'
-														),
+														'pattern'
+													),
 													type_reference_node(
-															'value'
-														),
+														'value'
+													),
 												)
 											),
 										]

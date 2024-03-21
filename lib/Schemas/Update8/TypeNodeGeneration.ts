@@ -403,12 +403,12 @@ export class Update8TypeNodeGeneration {
 					],
 					type_reference_node(
 						'StrictlyTypedNumberFromRegExp',
-							ts.factory.createLiteralTypeNode(
-								ts.factory.createStringLiteral(
-									schema.definitions[reference_name].pattern
-								)
-							),
-							type_reference_node('T'),
+						ts.factory.createLiteralTypeNode(
+							ts.factory.createStringLiteral(
+								schema.definitions[reference_name].pattern
+							)
+						),
+						type_reference_node('T'),
 					)
 				),
 			});
@@ -423,10 +423,10 @@ export class Update8TypeNodeGeneration {
 		const mFuel_item = {
 			mFuelClass: type_reference_node(
 				'StringPassedRegExp',
-					create_literal(
-						schema.definitions.mFuel.items.properties.mFuelClass
-							.pattern
-					),
+				create_literal(
+					schema.definitions.mFuel.items.properties.mFuelClass
+						.pattern
+				),
 			),
 			mSupplementalResourceClass: create_lazy_union(
 				'',
@@ -789,9 +789,9 @@ export class Update8TypeNodeGeneration {
 					return new TypeNodeGenerationResult(() => {
 						return type_reference_node(
 							'NativeClass',
-								this.type_node_generator
-									.find(ajv, data.properties.Classes)
-									.type(),
+							this.type_node_generator
+								.find(ajv, data.properties.Classes)
+								.type(),
 						);
 					});
 				}
