@@ -122,6 +122,11 @@ export type typed_object_string_general_type = {
 	typed_object_string: typed_object_string_type;
 } & ({minLength: 1} | typeof empty_object);
 
+type supported_oneOf_item =
+	| typed_object_string_general_type
+	| type_object_string_$ref_choices
+	| UnrealEngineStringReference_general_type;
+
 type typed_object_string_nested_type = {
 	type: 'string';
 	typed_object_string: {[key: string]: typed_object_string_general_type};
@@ -493,7 +498,7 @@ export class TypedObjectString {
 			const is_generally_supported_oneOf_array =
 				this.object_is_generally_supported_oneOf_array(
 					definition,
-					this.entry_is_supported_oneOf_item
+					(e): e is supported_oneOf_item => this.entry_is_supported_oneOf_item(e)
 				);
 			const object_has_typed_object_string =
 				object_has_property(definition, 'typed_object_string')
@@ -795,10 +800,7 @@ export class TypedObjectString {
 
 	private static entry_is_supported_oneOf_item(
 		entry: unknown
-	): entry is
-		| typed_object_string_general_type
-		| type_object_string_$ref_choices
-		| UnrealEngineStringReference_general_type {
+	): entry is supported_oneOf_item {
 		return (
 			TypedObjectString.value_is_typed_object_string_general_type(
 				entry
@@ -876,7 +878,7 @@ export class TypedObjectString {
 				} else if (
 					this.object_is_generally_supported_oneOf_array<typed_object_string_general_type>(
 						entry[1],
-						this.value_is_typed_object_string_general_type
+						(e): e is typed_object_string_general_type => this.value_is_typed_object_string_general_type(e)
 					)
 				) {
 					const items = entry[1].oneOf;
@@ -884,7 +886,7 @@ export class TypedObjectString {
 					if (
 						!this.object_is_generally_supported_oneOf_array<typed_object_string_general_type>(
 							entry[1],
-							this.value_is_typed_object_string_general_type
+							(e): e is typed_object_string_general_type => this.value_is_typed_object_string_general_type(e)
 						)
 					) {
 						throw new UnexpectedlyUnknownNoMatchError(
