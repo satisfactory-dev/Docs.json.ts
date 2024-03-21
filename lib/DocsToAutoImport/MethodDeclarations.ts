@@ -1,5 +1,9 @@
-import {NodeExtraction} from './NodeExtraction';
-import {MethodDeclaration, Node} from 'typescript';
+import {
+	NodeExtraction,
+} from './NodeExtraction';
+import {
+	MethodDeclaration, Node,
+} from 'typescript';
 
 export class MethodDeclarations extends NodeExtraction<MethodDeclaration> {
 	public extract(nodes: MethodDeclaration[]): Node[] {

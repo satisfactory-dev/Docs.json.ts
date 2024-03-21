@@ -283,8 +283,8 @@ export function create_constructor_args<T1 extends string = string>(
 					is in property_types
 						? property_types[is].type()
 						: ts.factory.createKeywordTypeNode(
-								ts.SyntaxKind.StringKeyword
-							);
+							ts.SyntaxKind.StringKeyword
+						);
 
 				return was;
 			},
@@ -439,11 +439,11 @@ export function create_binding_constructor(
 						...ShorthandPropertyAssignment[],
 						SpreadAssignment,
 				] = pass_to_super.map((prop) => {
-				return ts.factory.createShorthandPropertyAssignment(prop);
-			}) as [
-				ShorthandPropertyAssignment,
-				...ShorthandPropertyAssignment[],
-			];
+					return ts.factory.createShorthandPropertyAssignment(prop);
+				}) as [
+					ShorthandPropertyAssignment,
+					...ShorthandPropertyAssignment[],
+				];
 			pass_to_super_object = [
 				...pass_to_super_object,
 				ts.factory.createSpreadAssignment(rest_arg),

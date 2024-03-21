@@ -1,8 +1,18 @@
-import Ajv, {_, KeywordCxt} from 'ajv/dist/2020';
-import {UnrealEngineStringReference} from './CustomParsingTypes/UnrealEngineStringReference';
-import {TypedObjectString} from './CustomParsingTypes/TypedObjectString';
-import {TypedArrayString} from './CustomParsingTypes/TypedArrayString';
-import {object_has_property} from './CustomParsingTypes/CustomPairingTypes';
+import Ajv, {
+	_, KeywordCxt,
+} from 'ajv/dist/2020';
+import {
+	UnrealEngineStringReference,
+} from './CustomParsingTypes/UnrealEngineStringReference';
+import {
+	TypedObjectString,
+} from './CustomParsingTypes/TypedObjectString';
+import {
+	TypedArrayString,
+} from './CustomParsingTypes/TypedArrayString';
+import {
+	object_has_property,
+} from './CustomParsingTypes/CustomPairingTypes';
 
 declare type array_tokenizer = {
 	values: unknown[];

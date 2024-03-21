@@ -1,12 +1,18 @@
-import {dirname} from 'path';
-import {fileURLToPath} from 'url';
+import {
+	dirname,
+} from 'path';
+import {
+	fileURLToPath,
+} from 'url';
 
 import {
 	DocsTsGenerator,
 	generation_result,
 	GenerationException,
 } from './lib/DocsTsGenerator';
-import {writeFile} from 'node:fs/promises';
+import {
+	writeFile,
+} from 'node:fs/promises';
 import {
 	OneOfOrAnyOfNoMatchError,
 	PartialMatchError,
@@ -239,14 +245,14 @@ async function update_progress(
 				return remove_indentation(`
 					${'#'.repeat(group.depth)} ${group.title}
 
-					${group.members
-						.map((key) => {
+					${
+						group.members.map((key) => {
 							return `-   [${progress.definitions.supported.includes(key) ? 'x' : ' '}] ${key.replace(
 								/__/g,
 								'\\_\\_'
 							)}`;
-						})
-						.join('\n')}`);
+						}).join('\n')
+					}`);
 			})
 			.join('\n\n')}
 	`);

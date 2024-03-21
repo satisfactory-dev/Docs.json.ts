@@ -1,8 +1,18 @@
-import {supported_$ref} from './SupportedRefObject';
-import {typed_string_enum} from './TypedStringEnum';
-import {typed_string_const} from './TypedStringConst';
-import {SupportedSubSchemaType} from './CustomPairingTypes';
-import {UnexpectedlyUnknownNoMatchError} from '../SchemaBasedResultsMatching/TypeNodeGeneration';
+import {
+	supported_$ref,
+} from './SupportedRefObject';
+import {
+	typed_string_enum,
+} from './TypedStringEnum';
+import {
+	typed_string_const,
+} from './TypedStringConst';
+import {
+	SupportedSubSchemaType,
+} from './CustomPairingTypes';
+import {
+	UnexpectedlyUnknownNoMatchError,
+} from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 
 const supported = [supported_$ref, typed_string_enum, typed_string_const];
 

@@ -5,7 +5,9 @@ import {
 	ErrorObject,
 } from 'ajv/dist/2020';
 import ts from 'typescript';
-import {UnexpectedlyUnknownNoMatchError} from './SchemaBasedResultsMatching/TypeNodeGeneration';
+import {
+	UnexpectedlyUnknownNoMatchError,
+} from './SchemaBasedResultsMatching/TypeNodeGeneration';
 
 declare type code_generator<
 	T extends object | true,

@@ -10,8 +10,12 @@ import {
 	UnexpectedlyUnknownNoMatchError,
 } from '../../SchemaBasedResultsMatching/TypeNodeGeneration';
 import ts from 'typescript';
-import {import_these_later} from '../../TypesGeneration';
-import {basename, dirname} from 'node:path';
+import {
+	import_these_later,
+} from '../../TypesGeneration';
+import {
+	basename, dirname,
+} from 'node:path';
 import {
 	adjust_class_name,
 	create_class_options,
@@ -33,7 +37,9 @@ import {
 	supported_modifiers,
 } from '../../TsFactoryWrapper';
 import Ajv from 'ajv/dist/2020';
-import {supported_base_classes} from '../../TypesGeneration/Classes';
+import {
+	supported_base_classes,
+} from '../../TypesGeneration/Classes';
 import {
 	schema,
 	check_ref,
@@ -46,7 +52,9 @@ import {
 	adjust_unrealengine_prefix,
 	adjust_unrealengine_value,
 } from '../../CustomParsingTypes/UnrealEngineStringReference';
-import {object_only_has_that_property} from '../../CustomParsingTypes/CustomPairingTypes';
+import {
+	object_only_has_that_property,
+} from '../../CustomParsingTypes/CustomPairingTypes';
 
 const known_ref_file_targets = {
 	'quaternion--inner': 'common/vectors.ts',
@@ -165,9 +173,9 @@ export class Update8TypeNodeGeneration {
 		const types =
 			'properties' in checking
 				? this.type_node_generator.find_from_properties(
-						ajv,
-						checking.properties
-					)
+					ajv,
+					checking.properties
+				)
 				: {};
 		const properties = Object.keys(types);
 		const result: {
@@ -180,8 +188,8 @@ export class Update8TypeNodeGeneration {
 			required_but_not_defined:
 				'required' in checking
 					? checking.required.filter(
-							(maybe) => !properties.includes(maybe)
-						)
+						(maybe) => !properties.includes(maybe)
+					)
 					: [],
 		};
 
@@ -197,9 +205,9 @@ export class Update8TypeNodeGeneration {
 			const types =
 				'properties' in checking
 					? this.type_node_generator.find_from_properties(
-							ajv,
-							checking.properties
-						)
+						ajv,
+						checking.properties
+					)
 					: {};
 
 			for (const entry of Object.entries(types)) {
@@ -633,9 +641,9 @@ export class Update8TypeNodeGeneration {
 				const types =
 					'properties' in schema.definitions[reference_name]
 						? this.type_node_generator.find_from_properties(
-								ajv,
-								schema.definitions[reference_name].properties
-							)
+							ajv,
+							schema.definitions[reference_name].properties
+						)
 						: {};
 
 				return create_constructor_args(

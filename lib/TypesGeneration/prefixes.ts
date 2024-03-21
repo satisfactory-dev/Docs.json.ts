@@ -1,4 +1,6 @@
-import {TypesGenerationFromSchema} from '../TypesGeneration';
+import {
+	TypesGenerationFromSchema,
+} from '../TypesGeneration';
 import ts from 'typescript';
 import {
 	adjust_enum_name,

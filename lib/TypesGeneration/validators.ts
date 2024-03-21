@@ -19,9 +19,15 @@ import {
 	TypeNodeGeneration,
 	TypeNodeGenerationResult,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
-import {UnrealEngineStringReference} from '../CustomParsingTypes/UnrealEngineStringReference';
-import {TypedObjectString} from '../CustomParsingTypes/TypedObjectString';
-import {TypedArrayString} from '../CustomParsingTypes/TypedArrayString';
+import {
+	UnrealEngineStringReference,
+} from '../CustomParsingTypes/UnrealEngineStringReference';
+import {
+	TypedObjectString,
+} from '../CustomParsingTypes/TypedObjectString';
+import {
+	TypedArrayString,
+} from '../CustomParsingTypes/TypedArrayString';
 
 const validator_target_files = {
 	'decimal-string': 'utils/validators.ts',
@@ -432,7 +438,7 @@ export const custom_generators = [
 							undefined,
 							create_type('never'),
 							undefined,
-						)
+						),
 					])
 				),
 			},
@@ -455,9 +461,9 @@ export const type_node_generators = [
 			!(ref_key in validator_target_files)
 				? undefined
 				: {
-						[validator_target_files[ref_key].replace(/\.ts$/, '')]:
+					[validator_target_files[ref_key].replace(/\.ts$/, '')]:
 							[adjust_class_name(ref_key)],
-					}
+				}
 		);
 	}),
 	new TypeNodeGeneration<{

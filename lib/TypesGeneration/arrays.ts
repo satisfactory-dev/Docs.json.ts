@@ -1,4 +1,6 @@
-import {TypesGenerationMatchesReferenceName} from '../TypesGeneration';
+import {
+	TypesGenerationMatchesReferenceName,
+} from '../TypesGeneration';
 import ts from 'typescript';
 import {
 	adjust_class_name,

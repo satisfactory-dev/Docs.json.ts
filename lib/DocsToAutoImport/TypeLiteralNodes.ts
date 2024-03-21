@@ -1,6 +1,12 @@
-import {NodeExtraction} from './NodeExtraction';
-import ts, {Node, TypeElement, TypeLiteralNode} from 'typescript';
-import {UnexpectedlyUnknownNoMatchError} from '../SchemaBasedResultsMatching/TypeNodeGeneration';
+import {
+	NodeExtraction,
+} from './NodeExtraction';
+import ts, {
+	Node, TypeElement, TypeLiteralNode,
+} from 'typescript';
+import {
+	UnexpectedlyUnknownNoMatchError,
+} from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 
 export class TypeLiteralNodes extends NodeExtraction<TypeLiteralNode> {
 	protected extract(nodes: TypeLiteralNode[]): Node[] {

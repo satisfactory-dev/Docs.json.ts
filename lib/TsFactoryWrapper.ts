@@ -15,9 +15,15 @@ import ts, {
 	TypeParameterDeclaration,
 	UnionTypeNode,
 } from 'typescript';
-import {UnexpectedlyUnknownNoMatchError} from './SchemaBasedResultsMatching/TypeNodeGeneration';
-import {typed_object_string_type} from './CustomParsingTypes/TypedObjectString';
-import {schema} from './Schemas/Update8';
+import {
+	UnexpectedlyUnknownNoMatchError,
+} from './SchemaBasedResultsMatching/TypeNodeGeneration';
+import {
+	typed_object_string_type,
+} from './CustomParsingTypes/TypedObjectString';
+import {
+	schema,
+} from './Schemas/Update8';
 
 declare type supported_property_modifiers = (
 	| 'public'
@@ -683,21 +689,21 @@ export function very_flexibly_create_regex_validation_function(
 				reference_name in custom_pattern_errors
 					? custom_pattern_errors[reference_name]()
 					: ts.factory.createTemplateExpression(
-							ts.factory.createTemplateHead(''),
-							error_template_spans
-						),
+						ts.factory.createTemplateHead(''),
+						error_template_spans
+					),
 			]
 		),
 		return_statement
 			? return_statement
 			: ts.factory.createReturnStatement(
-					ts.factory.createAsExpression(
-						ts.factory.createIdentifier('value'),
-						return_type()
-					)
-				),
-		],
-		type_parameters
+				ts.factory.createAsExpression(
+					ts.factory.createIdentifier('value'),
+					return_type()
+				)
+			),
+	],
+	type_parameters
 	);
 }
 
@@ -791,8 +797,8 @@ export function computed_property_name_or_undefined(
 ): ts.ComputedPropertyName | undefined {
 	return needs_element_access(property)
 		? ts.factory.createComputedPropertyName(
-				ts.factory.createStringLiteral(property)
-			)
+			ts.factory.createStringLiteral(property)
+		)
 		: undefined;
 }
 
@@ -841,13 +847,13 @@ export function create_this_assignment(
 		ts.factory.createAssignment(
 			needs_element_access(property)
 				? ts.factory.createElementAccessExpression(
-						ts.factory.createThis(),
-						ts.factory.createStringLiteral(property)
-					)
+					ts.factory.createThis(),
+					ts.factory.createStringLiteral(property)
+				)
 				: ts.factory.createPropertyAccessExpression(
-						ts.factory.createThis(),
-						property
-					),
+					ts.factory.createThis(),
+					property
+				),
 			'string' === typeof identifier
 				? ts.factory.createIdentifier(identifier)
 				: identifier

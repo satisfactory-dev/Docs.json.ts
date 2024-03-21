@@ -1,5 +1,7 @@
 import Ajv from 'ajv/dist/2020';
-import ts, {Node, TypeNode, TypeReferenceNode} from 'typescript';
+import ts, {
+	Node, TypeNode, TypeReferenceNode,
+} from 'typescript';
 import {
 	adjust_class_name,
 	create_index_access,
@@ -20,7 +22,9 @@ import {
 	TypeNodeGeneration,
 	TypeNodeGenerationResult,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
-import {TypesGenerationFromSchema} from '../TypesGeneration';
+import {
+	TypesGenerationFromSchema,
+} from '../TypesGeneration';
 import {
 	object_has_property,
 	value_is_non_array_object,
@@ -246,22 +250,22 @@ export class UnrealEngineStringReference {
 			const right_value =
 				'right' in data
 					? `(?:${(data.right instanceof Array
-							? data.right
-							: [
-									'string' === typeof data.right
-										? data.right
-										: `(?:${(data.right
-												.starts_with instanceof Array
-												? data.right.starts_with
-												: [data.right.starts_with]
+						? data.right
+						: [
+							'string' === typeof data.right
+								? data.right
+								: `(?:${(data.right
+									.starts_with instanceof Array
+									? data.right.starts_with
+									: [data.right.starts_with]
 											)
-												.map(
-													(starts_with) =>
-														starts_with +
+									.map(
+										(starts_with) =>
+											starts_with +
 														'(?:[A-Z][A-Za-z0-9_.]+/)*[A-Z][A-Za-z_.0-9-]+(?::[A-Z][A-Za-z0-9]+)?'
-												)
-												.join('|')})`,
-								]
+									)
+									.join('|')})`,
+						]
 						).join('|')})`
 					: UnrealEngineStringReference_general_regex;
 
@@ -295,10 +299,7 @@ export class UnrealEngineStringReference {
 		];
 	}
 
-	static CustomGenerators(): [
-		{file: string; node: Node},
-		...{file: string; node: Node}[],
-	] {
+	static CustomGenerators() {
 		return [
 			{
 				file: 'utils/validators.ts',
@@ -739,10 +740,7 @@ export function create_UnrealEngineStringReference_reference_type(
 	);
 }
 
-export function conditional_UnrealEngineString_type_arguments(): [
-	ts.ConditionalTypeNode,
-	ts.TypeReferenceNode,
-] {
+export function conditional_UnrealEngineString_type_arguments() {
 	return [
 		ts.factory.createConditionalTypeNode(
 			ts.factory.createTypeQueryNode(

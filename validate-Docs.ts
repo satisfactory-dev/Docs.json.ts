@@ -1,7 +1,15 @@
-import {dirname} from 'node:path';
-import {fileURLToPath} from 'node:url';
-import {DocsTsGenerator, ValidationError} from './lib/DocsTsGenerator';
-import {NoMatchError} from './lib/SchemaBasedResultsMatching/TypeNodeGeneration';
+import {
+	dirname,
+} from 'node:path';
+import {
+	fileURLToPath,
+} from 'node:url';
+import {
+	DocsTsGenerator, ValidationError,
+} from './lib/DocsTsGenerator';
+import {
+	NoMatchError,
+} from './lib/SchemaBasedResultsMatching/TypeNodeGeneration';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const generator = new DocsTsGenerator({

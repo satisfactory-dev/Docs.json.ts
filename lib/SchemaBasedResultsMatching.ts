@@ -1,4 +1,6 @@
-import Ajv, {Schema, ValidateFunction} from 'ajv/dist/2020';
+import Ajv, {
+	Schema, ValidateFunction,
+} from 'ajv/dist/2020';
 import {
 	NoMatchError,
 	OneOfOrAnyOfNoMatchError,
@@ -6,7 +8,9 @@ import {
 	PropertyMatchFailure,
 	UnexpectedlyUnknownNoMatchError,
 } from './SchemaBasedResultsMatching/TypeNodeGeneration';
-import {object_only_has_that_property} from './CustomParsingTypes/CustomPairingTypes';
+import {
+	object_only_has_that_property,
+} from './CustomParsingTypes/CustomPairingTypes';
 
 export class GenerationResult<T> {
 	readonly generate: () => T;

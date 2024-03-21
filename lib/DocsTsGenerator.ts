@@ -1,11 +1,23 @@
-import {mkdir, readFile, unlink, writeFile} from 'node:fs/promises';
-import {basename, dirname} from 'node:path';
-import {existsSync} from 'node:fs';
-import {fileURLToPath} from 'node:url';
+import {
+	mkdir, readFile, unlink, writeFile,
+} from 'node:fs/promises';
+import {
+	basename, dirname,
+} from 'node:path';
+import {
+	existsSync,
+} from 'node:fs';
+import {
+	fileURLToPath,
+} from 'node:url';
 
-import Ajv, {ErrorObject, ValidateFunction} from 'ajv/dist/2020';
+import Ajv, {
+	ErrorObject, ValidateFunction,
+} from 'ajv/dist/2020';
 import standalone from 'ajv/dist/standalone';
-import {ESLint} from 'eslint';
+import {
+	ESLint,
+} from 'eslint';
 
 import update8_schema from '../schema/update8.schema.json' assert {type: 'json'};
 
@@ -46,9 +58,13 @@ import {
 	ImportTracker,
 	TypesGeneration_concrete,
 } from './TypesGeneration';
-import {configure_ajv, default_config} from './DocsValidation';
+import {
+	configure_ajv, default_config,
+} from './DocsValidation';
 import ts from 'typescript';
-import {glob} from 'glob';
+import {
+	glob,
+} from 'glob';
 import {
 	target_files as classes_target_files,
 	generators as classes_generators,
@@ -65,13 +81,19 @@ import {
 	generators as aliases_generators,
 	type_node_generators as aliases_type_node_generators,
 } from './TypesGeneration/aliases';
-import {is_ref, Update8TypeNodeGeneration} from './Schemas/Update8';
+import {
+	is_ref, Update8TypeNodeGeneration,
+} from './Schemas/Update8';
 import {
 	TypeNodeGeneration,
 	TypeNodeGenerationMatcher,
 } from './SchemaBasedResultsMatching/TypeNodeGeneration';
-import {DocsTsAutoImports} from './DocsTsAutoImports';
-import {createHash} from 'node:crypto';
+import {
+	DocsTsAutoImports,
+} from './DocsTsAutoImports';
+import {
+	createHash,
+} from 'node:crypto';
 import {
 	is_non_empty_array, object_has_property,
 	value_is_non_array_object,
@@ -399,7 +421,7 @@ export class DocsTsGenerator {
 			...arrays_target_files,
 			...classes_target_files,
 			...unions_target_files,
-			...aliases_target_files
+			...aliases_target_files,
 		};
 
 		const generators: TypesGeneration_concrete[] = [

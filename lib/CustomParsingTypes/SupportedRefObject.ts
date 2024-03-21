@@ -3,9 +3,15 @@ import {
 	SupportedSubSchemaType,
 	value_is_non_array_object,
 } from './CustomPairingTypes';
-import ts, {TypeReferenceNode} from 'typescript';
-import {adjust_class_name} from '../TsFactoryWrapper';
-import {UnrealEngineStringReference} from './UnrealEngineStringReference';
+import ts, {
+	TypeReferenceNode,
+} from 'typescript';
+import {
+	adjust_class_name,
+} from '../TsFactoryWrapper';
+import {
+	UnrealEngineStringReference,
+} from './UnrealEngineStringReference';
 import update8_schema from '../../schema/update8.schema.json' assert {type: 'json'};
 
 const UnrealEngineStringReference_inner =

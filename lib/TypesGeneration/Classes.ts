@@ -4,15 +4,23 @@ import {
 	possibly_create_lazy_union,
 } from '../TsFactoryWrapper';
 import ts from 'typescript';
-import {TypesGenerationMatchesReferenceName} from '../TypesGeneration';
+import {
+	TypesGenerationMatchesReferenceName,
+} from '../TypesGeneration';
 import {
 	TypeNodeGeneration,
 	TypeNodeGenerationResult,
 	UnexpectedlyUnknownNoMatchError,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
-import {TypedObjectString} from '../CustomParsingTypes/TypedObjectString';
-import {TypedArrayString} from '../CustomParsingTypes/TypedArrayString';
-import {enum_schema_type} from '../CustomParsingTypes/TypedStringEnum';
+import {
+	TypedObjectString,
+} from '../CustomParsingTypes/TypedObjectString';
+import {
+	TypedArrayString,
+} from '../CustomParsingTypes/TypedArrayString';
+import {
+	enum_schema_type,
+} from '../CustomParsingTypes/TypedStringEnum';
 
 declare type supported_base_classes_union =
 	| 'class--no-description-or-display-name'

@@ -1,9 +1,21 @@
-import ts, {EntityName, Identifier, TypeReferenceNode} from 'typescript';
-import {import_these_later, ImportTracker} from './TypesGeneration';
-import {basename, dirname, relative} from 'node:path';
-import {writeFile} from 'node:fs/promises';
-import {from_Node_array} from './DocsToAutoImport/from_Node_array';
-import {UnexpectedlyUnknownNoMatchError} from './SchemaBasedResultsMatching/TypeNodeGeneration';
+import ts, {
+	EntityName, Identifier, TypeReferenceNode,
+} from 'typescript';
+import {
+	import_these_later, ImportTracker,
+} from './TypesGeneration';
+import {
+	basename, dirname, relative,
+} from 'node:path';
+import {
+	writeFile,
+} from 'node:fs/promises';
+import {
+	from_Node_array,
+} from './DocsToAutoImport/from_Node_array';
+import {
+	UnexpectedlyUnknownNoMatchError,
+} from './SchemaBasedResultsMatching/TypeNodeGeneration';
 
 declare type initial_check_nodes =
 	| ts.ClassDeclaration

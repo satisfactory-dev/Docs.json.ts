@@ -1,4 +1,6 @@
-import {TypesGenerationMatchesReferenceName} from '../TypesGeneration';
+import {
+	TypesGenerationMatchesReferenceName,
+} from '../TypesGeneration';
 import {
 	adjust_class_name,
 	create_literal_node_from_value,
@@ -11,7 +13,9 @@ import {
 	TypeNodeGeneration,
 	TypeNodeGenerationResult,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
-import {UnrealEngineStringReference} from '../CustomParsingTypes/UnrealEngineStringReference';
+import {
+	UnrealEngineStringReference,
+} from '../CustomParsingTypes/UnrealEngineStringReference';
 
 export const target_files = {
 	mScannerDisplayText: 'common/aliases.ts',
@@ -100,9 +104,9 @@ export const type_node_generators = [
 				data['$ref'] === '#/definitions/boolean'
 					? create_type('boolean')
 					: create_union(
-							create_type('boolean'),
-							create_type('undefined')
-						)
+						create_type('boolean'),
+						create_type('undefined')
+					)
 			);
 		}
 	),

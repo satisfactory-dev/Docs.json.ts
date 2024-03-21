@@ -1,4 +1,6 @@
-import {NodeExtraction} from './NodeExtraction';
+import {
+	NodeExtraction,
+} from './NodeExtraction';
 import ts, {
 	BooleanLiteral,
 	LiteralExpression,
@@ -7,7 +9,9 @@ import ts, {
 	PrefixUnaryExpression,
 	EntityName,
 } from 'typescript';
-import {UnexpectedlyUnknownNoMatchError} from '../SchemaBasedResultsMatching/TypeNodeGeneration';
+import {
+	UnexpectedlyUnknownNoMatchError,
+} from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 
 export class LiteralTypeNodes extends NodeExtraction<LiteralTypeNode> {
 	protected extract(nodes: LiteralTypeNode[]): EntityName[] {

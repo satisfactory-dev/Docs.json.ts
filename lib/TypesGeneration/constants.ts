@@ -1,6 +1,8 @@
 import ts from 'typescript';
 
-import {TypesGenerationFromSchema} from '../TypesGeneration';
+import {
+	TypesGenerationFromSchema,
+} from '../TypesGeneration';
 import {
 	adjust_class_name,
 	create_literal_node_from_value,

@@ -11,7 +11,9 @@ import {
 	UnrealEngineStringReference_schema_definitions,
 } from './UnrealEngineStringReference';
 import schema from '../../schema/update8.schema.json' assert {type: 'json'};
-import {TypesGenerationFromSchema} from '../TypesGeneration';
+import {
+	TypesGenerationFromSchema,
+} from '../TypesGeneration';
 import {
 	adjust_class_name,
 	auto_constructor_property_types_from_generated_types,
@@ -29,7 +31,9 @@ import {
 	TypeNodeGenerationResult,
 	UnexpectedlyUnknownNoMatchError,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
-import ts, {TypeLiteralNode, TypeReferenceNode} from 'typescript';
+import ts, {
+	TypeLiteralNode, TypeReferenceNode,
+} from 'typescript';
 import {
 	annoyingly_have_to_escape_property,
 	is_non_empty_array,
@@ -38,15 +42,23 @@ import {
 	object_only_has_that_property,
 	value_is_non_array_object,
 } from './CustomPairingTypes';
-import {typed_array_string_parent_without_recursive_reference} from './TypedArrayString';
-import {typed_string_const} from './TypedStringConst';
+import {
+	typed_array_string_parent_without_recursive_reference,
+} from './TypedArrayString';
+import {
+	typed_string_const,
+} from './TypedStringConst';
 import {
 	enum_schema_type,
 	typed_string_enum,
 	typed_string_enum_schema,
 } from './TypedStringEnum';
-import {supported_meta} from './SupportedMeta';
-import {supported_$ref} from './SupportedRefObject';
+import {
+	supported_meta,
+} from './SupportedMeta';
+import {
+	supported_$ref,
+} from './SupportedRefObject';
 
 const already_configured = new WeakSet<Ajv>();
 

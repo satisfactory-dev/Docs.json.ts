@@ -1,4 +1,6 @@
-import {TypesGenerationFromSchema} from '../TypesGeneration';
+import {
+	TypesGenerationFromSchema,
+} from '../TypesGeneration';
 import ts from 'typescript';
 import {
 	adjust_class_name,
@@ -6,7 +8,9 @@ import {
 	create_union,
 	possibly_create_lazy_union,
 } from '../TsFactoryWrapper';
-import {target_files as validators_target_files} from './validators';
+import {
+	target_files as validators_target_files,
+} from './validators';
 import {
 	TypeNodeGeneration,
 	TypeNodeGenerationResult,
@@ -19,7 +23,9 @@ import {
 	UnrealEngineStringReference_schema_definitions,
 	is_UnrealEngineStringReference_general_object,
 } from '../CustomParsingTypes/UnrealEngineStringReference';
-import {enum_schema_type} from '../CustomParsingTypes/TypedStringEnum';
+import {
+	enum_schema_type,
+} from '../CustomParsingTypes/TypedStringEnum';
 
 export const target_files = {
 	Texture2D: 'common/unions.ts',

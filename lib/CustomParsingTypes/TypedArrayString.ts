@@ -24,8 +24,12 @@ import {
 	create_modifier,
 	create_union,
 } from '../TsFactoryWrapper';
-import {TypesGenerationFromSchema} from '../TypesGeneration';
-import ts, {TupleTypeNode, TypeAliasDeclaration} from 'typescript';
+import {
+	TypesGenerationFromSchema,
+} from '../TypesGeneration';
+import ts, {
+	TupleTypeNode, TypeAliasDeclaration,
+} from 'typescript';
 import {
 	const_schema_type,
 	typed_string_const,
@@ -36,8 +40,12 @@ import {
 	typed_string_enum,
 	typed_string_enum_schema,
 } from './TypedStringEnum';
-import {$ref_choices, $ref_schema, supported_$ref} from './SupportedRefObject';
-import {supported_meta} from './SupportedMeta';
+import {
+	$ref_choices, $ref_schema, supported_$ref,
+} from './SupportedRefObject';
+import {
+	supported_meta,
+} from './SupportedMeta';
 
 const already_configured = new WeakSet<Ajv>();
 
@@ -153,9 +161,7 @@ function generate_tuple_schema(
 			type: {type: 'string', const: 'array'},
 			minItems: {type: 'number', const: array_min_size},
 			...(array_max_size
-				? {
-						maxItems: array_max_size,
-					}
+				? {maxItems: array_max_size}
 				: {}),
 			items: {
 				type: 'object',
@@ -260,6 +266,14 @@ export type typed_array_string_parent_without_recursive_reference = {
 	type: 'string';
 	minLength: 1;
 	typed_array_string: typed_array_string_without_recursive_reference;
+};
+
+type empty_string_or_const_or_array_string_type = {
+	oneOf: [
+			const_schema_type | typed_array_string_parent,
+			const_schema_type | typed_array_string_parent,
+		...(const_schema_type | typed_array_string_parent)[],
+	];
 };
 
 const empty_string_or_const_or_array_string_schema = {
@@ -506,13 +520,7 @@ export class TypedArrayString {
 				},
 				(data, reference_name) => this.typed_array_string_type_alias_generator(data, reference_name)
 			),
-			new TypesGenerationFromSchema<{
-				oneOf: [
-					const_schema_type | typed_array_string_parent,
-					const_schema_type | typed_array_string_parent,
-					...(const_schema_type | typed_array_string_parent)[],
-				];
-			}>(
+			new TypesGenerationFromSchema<empty_string_or_const_or_array_string_type>(
 				empty_string_or_const_or_array_string_schema,
 				(data, reference_name) => {
 					const [a, b, ...rest] = data.oneOf.map((e) => {

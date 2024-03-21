@@ -1,6 +1,10 @@
 import schema from '../../schema/update8.schema.json' assert {type: 'json'};
-import {Update8TypeNodeGeneration} from './Update8/TypeNodeGeneration';
-import {UnexpectedlyUnknownNoMatchError} from '../SchemaBasedResultsMatching/TypeNodeGeneration';
+import {
+	Update8TypeNodeGeneration,
+} from './Update8/TypeNodeGeneration';
+import {
+	UnexpectedlyUnknownNoMatchError,
+} from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 
 declare type object_with_ref = {$ref: string};
 

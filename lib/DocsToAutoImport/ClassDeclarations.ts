@@ -1,5 +1,9 @@
-import {NodeExtraction} from './NodeExtraction';
-import {ClassDeclaration, Node} from 'typescript';
+import {
+	NodeExtraction,
+} from './NodeExtraction';
+import {
+	ClassDeclaration, Node,
+} from 'typescript';
 
 export class ClassDeclarations extends NodeExtraction<ClassDeclaration> {
 	protected extract(nodes: ClassDeclaration[]): Node[] {

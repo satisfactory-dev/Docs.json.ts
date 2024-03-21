@@ -10,16 +10,36 @@ import ts, {
 	TupleTypeNode,
 	TypeLiteralNode,
 } from 'typescript';
-import {TypeReferenceNodes} from './TypeReferenceNodes';
-import {ClassDeclarations} from './ClassDeclarations';
-import {TupleTypeNodes} from './TupleTypeNodes';
-import {TypeLiteralNodes} from './TypeLiteralNodes';
-import {LiteralTypeNodes} from './LiteralTypeNodes';
-import {ArrayTypeNodes} from './ArrayTypeNodes';
-import {MethodDeclarations} from './MethodDeclarations';
-import {PropertyDeclarations} from './PropertyDeclarations';
-import {FunctionDeclarations} from './FunctionDeclaration';
-import {UnexpectedlyUnknownNoMatchError} from '../SchemaBasedResultsMatching/TypeNodeGeneration';
+import {
+	TypeReferenceNodes,
+} from './TypeReferenceNodes';
+import {
+	ClassDeclarations,
+} from './ClassDeclarations';
+import {
+	TupleTypeNodes,
+} from './TupleTypeNodes';
+import {
+	TypeLiteralNodes,
+} from './TypeLiteralNodes';
+import {
+	LiteralTypeNodes,
+} from './LiteralTypeNodes';
+import {
+	ArrayTypeNodes,
+} from './ArrayTypeNodes';
+import {
+	MethodDeclarations,
+} from './MethodDeclarations';
+import {
+	PropertyDeclarations,
+} from './PropertyDeclarations';
+import {
+	FunctionDeclarations,
+} from './FunctionDeclaration';
+import {
+	UnexpectedlyUnknownNoMatchError,
+} from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 
 const recursion_limit = 10;
 

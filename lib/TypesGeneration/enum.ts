@@ -1,4 +1,6 @@
-import {TypesGenerationFromSchema} from '../TypesGeneration';
+import {
+	TypesGenerationFromSchema,
+} from '../TypesGeneration';
 import ts from 'typescript';
 import {
 	adjust_enum_name,
@@ -9,12 +11,16 @@ import {
 	create_union,
 	possibly_create_lazy_union,
 } from '../TsFactoryWrapper';
-import {schema as const_schema} from './constants';
+import {
+	schema as const_schema,
+} from './constants';
 import {
 	TypeNodeGeneration,
 	TypeNodeGenerationResult,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
-import {enum_schema_type} from '../CustomParsingTypes/TypedStringEnum';
+import {
+	enum_schema_type,
+} from '../CustomParsingTypes/TypedStringEnum';
 
 export const target_files = {
 	boolean: 'common/enum.ts',
@@ -121,9 +127,9 @@ export const generators = [
 					!reference_name.endsWith('-extended')
 						? create_type('boolean')
 						: create_union(
-								create_type('boolean'),
-								create_type('undefined')
-							)
+							create_type('boolean'),
+							create_type('undefined')
+						)
 				);
 			}
 
