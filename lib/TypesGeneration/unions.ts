@@ -27,6 +27,9 @@ import {
 import {
 	enum_schema_type,
 } from '../CustomParsingTypes/TypedStringEnum';
+import {
+	local_ref,
+} from '../StringStartsWith';
 
 export const target_files = {
 	Texture2D: 'common/unions.ts',
@@ -49,8 +52,8 @@ export const target_files = {
 };
 
 declare type supported_oneOf_items =
-	| {$ref: '#/definitions/Texture2D--basic'}
-	| {$ref: '#/definitions/None'}
+	| {$ref: local_ref<'Texture2D--basic'>}
+	| {$ref: local_ref<'None'>}
 	| UnrealEngineString_parent_type
 	| {type: 'string'; const: string}
 	| {type: 'string'; string_starts_with: string};

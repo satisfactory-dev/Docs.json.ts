@@ -12,6 +12,9 @@ import {
 	TypeNodeGeneration,
 	TypeNodeGenerationResult,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
+import {
+	local_ref,
+} from '../StringStartsWith';
 
 export const target_files = {
 	mDamageTypes: 'common/arrays.ts',
@@ -41,7 +44,7 @@ export const generators = [
 
 export const type_node_generators = [
 	new TypeNodeGeneration<{
-		$ref: '#/definitions/mDamageTypes' | '#/definitions/mFuel';
+		$ref: local_ref<'mDamageTypes'> | local_ref<'mFuel'>;
 	}>(
 		{
 			type: 'object',

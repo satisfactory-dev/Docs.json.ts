@@ -22,6 +22,9 @@ import {
 import {
 	enum_schema_type,
 } from '../CustomParsingTypes/TypedStringEnum';
+import {
+	local_ref,
+} from '../StringStartsWith';
 
 export const target_files = {
 	boolean: 'common/enum.ts',
@@ -187,7 +190,7 @@ export const type_node_generators = [
 		}
 	),
 	new TypeNodeGeneration<{
-		$ref: '#/definitions/boolean' | '#/definitions/boolean-extended';
+		$ref: local_ref<'boolean'> | local_ref<'boolean-extended'>;
 	}>(
 		{
 			type: 'object',
@@ -196,10 +199,10 @@ export const type_node_generators = [
 			properties: {
 				$ref: {
 					oneOf: [
-						{type: 'string', const: '#/definitions/boolean'},
+						{type: 'string', const: local_ref('boolean')},
 						{
 							type: 'string',
-							const: '#/definitions/boolean-extended',
+							const: local_ref('boolean-extended'),
 						},
 					],
 				},
@@ -237,11 +240,11 @@ export const type_node_generators = [
 		(property) => {
 			const reference_name = property['$ref'].substring(14);
 
-			if ('#/definitions/boolean' === property['$ref']) {
+			if (local_ref('boolean') === property['$ref']) {
 				return new TypeNodeGenerationResult(() => {
 					return create_type('boolean');
 				});
-			} else if ('#/definitions/boolean-extended' === property['$ref']) {
+			} else if (local_ref('boolean-extended') === property['$ref']) {
 				return new TypeNodeGenerationResult(() => {
 					return create_union(
 						create_type('boolean'),

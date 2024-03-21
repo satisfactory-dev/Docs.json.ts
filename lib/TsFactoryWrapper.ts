@@ -35,6 +35,9 @@ import {
 import {
 	schema,
 } from './Schemas/Update8';
+import {
+	local_ref,
+} from './StringStartsWith';
 
 declare type supported_property_modifiers = (
 	| 'public'
@@ -238,20 +241,20 @@ export function createClass(
 }
 
 export const auto_constructor_property_types_from_generated_types = {
-	'#/definitions/xyz--semi-native': adjust_class_name('xyz--semi-native'),
-	'#/definitions/decimal-string--signed': adjust_class_name(
+	[local_ref('xyz--semi-native')]: adjust_class_name('xyz--semi-native'),
+	[local_ref('decimal-string--signed')]: adjust_class_name(
 		'decimal-string--signed__type'
 	),
-	'#/definitions/decimal-string': adjust_class_name('decimal-string__type'),
-	'#/definitions/integer-string--signed': adjust_class_name(
+	[local_ref('decimal-string')]: adjust_class_name('decimal-string__type'),
+	[local_ref('integer-string--signed')]: adjust_class_name(
 		'integer-string--signed__type'
 	),
-	'#/definitions/integer-string': adjust_class_name('integer-string__type'),
-	'#/definitions/mDisableSnapOn': adjust_class_name('mDisableSnapOn'),
-	'#/definitions/mDockingRuleSet': adjust_class_name('mDockingRuleSet'),
-	'#/definitions/EditorCurveData': adjust_class_name('EditorCurveData'),
-	'#/definitions/mLightControlData': adjust_class_name('mLightControlData'),
-	'#/definitions/InfinityExtrap': adjust_class_name('InfinityExtrap'),
+	[local_ref('integer-string')]: adjust_class_name('integer-string__type'),
+	[local_ref('mDisableSnapOn')]: adjust_class_name('mDisableSnapOn'),
+	[local_ref('mDockingRuleSet')]: adjust_class_name('mDockingRuleSet'),
+	[local_ref('EditorCurveData')]: adjust_class_name('EditorCurveData'),
+	[local_ref('mLightControlData')]: adjust_class_name('mLightControlData'),
+	[local_ref('InfinityExtrap')]: adjust_class_name('InfinityExtrap'),
 };
 
 export type auto_constructor_property_types_from_generated_types_properties<
@@ -425,8 +428,8 @@ export function createClass__members__with_auto_constructor<
 				}
 
 				const is_int = (
-					property['$ref'] === '#/definitions/integer-string'
-					|| property['$ref'] === '#/definitions/integer-string--signed'
+					property['$ref'] === local_ref('integer-string')
+					|| property['$ref'] === local_ref('integer-string--signed')
 				);
 
 				const is_signed = property['$ref'].endsWith('--signed');

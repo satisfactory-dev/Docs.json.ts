@@ -17,6 +17,9 @@ import {
 import {
 	UnrealEngineString,
 } from '../CustomParsingTypes/UnrealEngineString';
+import {
+	local_ref,
+} from '../StringStartsWith';
 
 export const target_files = {
 	mScannerDisplayText: 'common/aliases.ts',
@@ -87,7 +90,7 @@ export const type_node_generators = [
 		}
 	),
 	new TypeNodeGeneration<{
-		$ref: '#/definitions/boolean' | '#/definitions/boolean-extended';
+		$ref: local_ref<'boolean'> | local_ref<'boolean-extended'>;
 	}>(
 		{
 			type: 'object',
@@ -102,7 +105,7 @@ export const type_node_generators = [
 		},
 		(data) => {
 			return new TypeNodeGenerationResult(() =>
-				data['$ref'] === '#/definitions/boolean'
+				data['$ref'] === local_ref('boolean')
 					? create_type('boolean')
 					: create_union(
 						create_type('boolean'),

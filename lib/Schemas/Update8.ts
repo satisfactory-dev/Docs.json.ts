@@ -5,6 +5,9 @@ import {
 import {
 	UnexpectedlyUnknownNoMatchError,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
+import {
+	local_ref,
+} from '../StringStartsWith';
 
 declare type object_with_ref = {$ref: string};
 
@@ -20,7 +23,7 @@ export type NativeClass = {
 	type: string;
 	additionalProperties: boolean;
 	properties: {
-		$ref: '#/definitions/NativeClass';
+		$ref: local_ref<'NativeClass'>;
 		Classes:
 			| ({
 					type: string;

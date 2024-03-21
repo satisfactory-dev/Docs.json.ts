@@ -21,6 +21,9 @@ import {
 import {
 	enum_schema_type,
 } from '../CustomParsingTypes/TypedStringEnum';
+import {
+	local_ref,
+} from '../StringStartsWith';
 
 declare type supported_base_classes_union =
 	| 'class--no-description-or-display-name'
@@ -66,7 +69,7 @@ export const generators = [
 
 export const type_node_generators = [
 	new TypeNodeGeneration<{
-		$ref: '#/definitions/mDisableSnapOn' | '#/definitions/EditorCurveData';
+		$ref: local_ref<'mDisableSnapOn'> | local_ref<'EditorCurveData'>;
 	}>(
 		{
 			type: 'object',

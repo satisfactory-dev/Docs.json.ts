@@ -59,6 +59,10 @@ import {
 import {
 	supported_$ref,
 } from './SupportedRefObject';
+import {
+	$ref_in_array,
+	local_ref,
+} from '../StringStartsWith';
 
 const already_configured = new WeakSet<Ajv>();
 
@@ -69,27 +73,27 @@ const typed_object_string_const_value_regex__native = new RegExp(
 );
 
 const type_object_string_$ref_supported = {
-	'#/definitions/InfinityExtrap': true,
-	'#/definitions/empty-object': true,
-	'#/definitions/decimal-string': true,
-	'#/definitions/decimal-string--signed': true,
-	'#/definitions/integer-string': true,
-	'#/definitions/integer-string--signed': true,
-	'#/definitions/boolean': true,
-	'#/definitions/quaternion': true,
-	'#/definitions/xyz': true,
-	'#/definitions/xy': true,
-	'#/definitions/color': true,
-	'#/definitions/color-decimal': true,
-	'#/definitions/mDockingRuleSet': true,
-	'#/definitions/mLightControlData': true,
-	'#/definitions/mDisableSnapOn': true,
-	'#/definitions/SpecifiedColor': true,
-	'#/definitions/Texture2D': true,
-	'#/definitions/Texture2D--basic': true,
-	'#/definitions/None': true,
-	'#/definitions/ItemClass--prop': true,
-	'#/definitions/MaterialSlotName': true,
+	[local_ref('InfinityExtrap')]: true,
+	[local_ref('empty-object')]: true,
+	[local_ref('decimal-string')]: true,
+	[local_ref('decimal-string--signed')]: true,
+	[local_ref('integer-string')]: true,
+	[local_ref('integer-string--signed')]: true,
+	[local_ref('boolean')]: true,
+	[local_ref('quaternion')]: true,
+	[local_ref('xyz')]: true,
+	[local_ref('xy')]: true,
+	[local_ref('color')]: true,
+	[local_ref('color-decimal')]: true,
+	[local_ref('mDockingRuleSet')]: true,
+	[local_ref('mLightControlData')]: true,
+	[local_ref('mDisableSnapOn')]: true,
+	[local_ref('SpecifiedColor')]: true,
+	[local_ref('Texture2D')]: true,
+	[local_ref('Texture2D--basic')]: true,
+	[local_ref('None')]: true,
+	[local_ref('ItemClass--prop')]: true,
+	[local_ref('MaterialSlotName')]: true,
 };
 const type_object_string_$ref_supported_array = Object.keys(
 	type_object_string_$ref_supported
@@ -166,27 +170,27 @@ const typed_object_string_$ref_schema = {
 		$ref: {
 			type: 'string',
 			enum: [
-				'#/definitions/InfinityExtrap',
-				'#/definitions/empty-object',
-				'#/definitions/decimal-string',
-				'#/definitions/decimal-string--signed',
-				'#/definitions/integer-string',
-				'#/definitions/integer-string--signed',
-				'#/definitions/boolean',
-				'#/definitions/quaternion',
-				'#/definitions/xyz',
-				'#/definitions/xy',
-				'#/definitions/color',
-				'#/definitions/color-decimal',
-				'#/definitions/mDockingRuleSet',
-				'#/definitions/mLightControlData',
-				'#/definitions/mDisableSnapOn',
-				'#/definitions/SpecifiedColor',
-				'#/definitions/Texture2D',
-				'#/definitions/Texture2D--basic',
-				'#/definitions/None',
-				'#/definitions/ItemClass--prop',
-				'#/definitions/MaterialSlotName',
+				local_ref('InfinityExtrap'),
+				local_ref('empty-object'),
+				local_ref('decimal-string'),
+				local_ref('decimal-string--signed'),
+				local_ref('integer-string'),
+				local_ref('integer-string--signed'),
+				local_ref('boolean'),
+				local_ref('quaternion'),
+				local_ref('xyz'),
+				local_ref('xy'),
+				local_ref('color'),
+				local_ref('color-decimal'),
+				local_ref('mDockingRuleSet'),
+				local_ref('mLightControlData'),
+				local_ref('mDisableSnapOn'),
+				local_ref('SpecifiedColor'),
+				local_ref('Texture2D'),
+				local_ref('Texture2D--basic'),
+				local_ref('None'),
+				local_ref('ItemClass--prop'),
+				local_ref('MaterialSlotName'),
 			],
 		},
 	},
@@ -365,18 +369,18 @@ const supported_type_node_generations = {
 		$ref: {
 			type: 'string',
 			enum: [
-				'#/definitions/transformation',
-				'#/definitions/color',
-				'#/definitions/color-decimal',
-				'#/definitions/mDockingRuleSet',
-				'#/definitions/mLightControlData',
-				'#/definitions/mDisableSnapOn',
-				'#/definitions/SpecifiedColor',
-				'#/definitions/Texture2D',
-				'#/definitions/Texture2D--basic',
-				'#/definitions/None',
-				'#/definitions/ItemClass--prop',
-				'#/definitions/MaterialSlotName',
+				local_ref('transformation'),
+				local_ref('color'),
+				local_ref('color-decimal'),
+				local_ref('mDockingRuleSet'),
+				local_ref('mLightControlData'),
+				local_ref('mDisableSnapOn'),
+				local_ref('SpecifiedColor'),
+				local_ref('Texture2D'),
+				local_ref('Texture2D--basic'),
+				local_ref('None'),
+				local_ref('ItemClass--prop'),
+				local_ref('MaterialSlotName'),
 			],
 		},
 	},
@@ -384,18 +388,18 @@ const supported_type_node_generations = {
 
 type supported_type_node_generations = {
 	$ref:
-		| '#/definitions/SpecifiedColor'
-		| '#/definitions/Texture2D'
-		| '#/definitions/Texture2D--basic'
-		| '#/definitions/ItemClass--prop'
-		| '#/definitions/MaterialSlotName'
-		| '#/definitions/None'
-		| '#/definitions/transformation'
-		| '#/definitions/color'
-		| '#/definitions/color-decimal'
-		| '#/definitions/mDockingRuleSet'
-		| '#/definitions/mLightControlData'
-		| '#/definitions/mDisableSnapOn';
+		| local_ref<'SpecifiedColor'>
+		| local_ref<'Texture2D'>
+		| local_ref<'Texture2D--basic'>
+		| local_ref<'ItemClass--prop'>
+		| local_ref<'MaterialSlotName'>
+		| local_ref<'None'>
+		| local_ref<'transformation'>
+		| local_ref<'color'>
+		| local_ref<'color-decimal'>
+		| local_ref<'mDockingRuleSet'>
+		| local_ref<'mLightControlData'>
+		| local_ref<'mDisableSnapOn'>;
 };
 
 export class TypedObjectString {
@@ -428,14 +432,14 @@ export class TypedObjectString {
 
 		let value_regex = '(?:True|False)';
 
-		if ('#/definitions/InfinityExtrap' === $ref) {
+		if (local_ref('InfinityExtrap') === $ref) {
 			value_regex = 'RCCE_Constant';
-		} else if ('#/definitions/empty-object' === $ref) {
+		} else if (local_ref('empty-object') === $ref) {
 			value_regex = '\\(\\)';
 		} else if (
-			'#/definitions/quaternion' === $ref
-			|| '#/definitions/xyz' === $ref
-			|| '#/definitions/xy' === $ref
+			local_ref('quaternion') === $ref
+			|| local_ref('xyz') === $ref
+			|| local_ref('xy') === $ref
 		) {
 			const maybe_definition_key = $ref.substring(14);
 
@@ -481,7 +485,10 @@ export class TypedObjectString {
 
 			value_regex = this.property_to_regex(definition);
 		} else if (
-			supported_type_node_generations.properties.$ref.enum.includes($ref)
+			$ref_in_array(
+				$ref,
+				supported_type_node_generations.properties.$ref.enum
+			)
 		) {
 			const definition =
 				schema.definitions[
@@ -566,10 +573,10 @@ export class TypedObjectString {
 								'missing $ref!'
 							);
 						} else if (
-							e.$ref === '#/definitions/Texture2D--basic'
+							e.$ref === local_ref('Texture2D--basic')
 						) {
 							return `(?:${schema.definitions['Texture2D--basic'].string_starts_with}(?:[A-Z][A-Za-z0-9_.]+/)*[A-Z][A-Za-z_.0-9-]+(?::[A-Z][A-Za-z0-9]+)?)`;
-						} else if (e.$ref === '#/definitions/None') {
+						} else if (e.$ref === local_ref('None')) {
 							return schema.definitions.None.const;
 						}
 
@@ -596,10 +603,10 @@ export class TypedObjectString {
 				'type safety in here is a bit fragile, check earlier in the stack'
 			);
 		} else if (
-			$ref.startsWith('#/definitions/integer-string')
-			|| $ref.startsWith('#/definitions/decimal-string')
+			$ref.startsWith(local_ref('integer-string'))
+			|| $ref.startsWith(local_ref('decimal-string'))
 		) {
-			if ($ref.startsWith('#/definitions/decimal-string')) {
+			if ($ref.startsWith(local_ref('decimal-string'))) {
 				value_regex = '\\d+\\.\\d+';
 			} else {
 				value_regex = '\\d+';
@@ -608,7 +615,7 @@ export class TypedObjectString {
 			if ($ref.endsWith('--signed')) {
 				value_regex = `(?:-${value_regex}|${value_regex})`;
 			}
-		} else if ('#/definitions/boolean' !== $ref) {
+		} else if (local_ref('boolean') !== $ref) {
 			throw new UnexpectedlyUnknownNoMatchError(
 				{property, value},
 				'Unsupported $ref_to_regex call'

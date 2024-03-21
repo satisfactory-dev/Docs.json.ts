@@ -9,6 +9,9 @@ import {
 	TypeNodeGenerationResult,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 import ts from 'typescript';
+import {
+	local_ref,
+} from '../StringStartsWith';
 
 export const target_files = {
 	xy: 'common/vectors.ts',
@@ -24,12 +27,12 @@ export const type_node_generators = [
 	new TypeNodeGeneration<{
 		type: 'object';
 		$ref:
-			| '#/definitions/xy'
-			| '#/definitions/xyz'
-			| '#/definitions/xyz--semi-native'
-			| '#/definitions/xy--integer'
-			| '#/definitions/xyz--integer'
-			| '#/definitions/pitch-yaw-roll';
+			| local_ref<'xy'>
+			| local_ref<'xyz'>
+			| local_ref<'xyz--semi-native'>
+			| local_ref<'xy--integer'>
+			| local_ref<'xyz--integer'>
+			| local_ref<'pitch-yaw-roll'>;
 	}>(
 		{
 			type: 'object',
@@ -71,9 +74,9 @@ export const custom_generators = [
 						type: 'object',
 						required: ['X', 'Y', 'Z'],
 						properties: {
-							X: {$ref: '#/definitions/decimal-string'},
-							Y: {$ref: '#/definitions/decimal-string--signed'},
-							Z: {$ref: '#/definitions/decimal-string--signed'},
+							X: {$ref: local_ref('decimal-string')},
+							Y: {$ref: local_ref('decimal-string--signed')},
+							Z: {$ref: local_ref('decimal-string--signed')},
 						},
 					},
 					['public', 'readonly']

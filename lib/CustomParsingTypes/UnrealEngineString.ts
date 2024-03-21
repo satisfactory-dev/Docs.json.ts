@@ -38,6 +38,9 @@ import {
 	object_has_property,
 	value_is_non_array_object,
 } from './CustomPairingTypes';
+import {
+	local_ref,
+} from '../StringStartsWith';
 
 const already_configured = new WeakSet<Ajv>();
 
@@ -113,13 +116,13 @@ export const UnrealEngineString_schema_definitions = {
 	UnrealEngineString_left: {
 		oneOf: [
 			{
-				$ref: '#/definitions/UnrealEngineString_left_string',
+				$ref: local_ref('UnrealEngineString_left_string'),
 			},
 			{
 				type: 'array',
 				minItems: 1,
 				items: {
-					$ref: '#/definitions/UnrealEngineString_left_string',
+					$ref: local_ref('UnrealEngineString_left_string'),
 				},
 			},
 		],
@@ -131,13 +134,13 @@ export const UnrealEngineString_schema_definitions = {
 	},
 	UnrealEngineString_right: {oneOf: [
 		{
-			$ref: '#/definitions/UnrealEngineString_right_string',
+			$ref: local_ref('UnrealEngineString_right_string'),
 		},
 		{
 			type: 'array',
 			minItems: 1,
 			items: {
-				$ref: '#/definitions/UnrealEngineString_right_string',
+				$ref: local_ref('UnrealEngineString_right_string'),
 			},
 		},
 		{
@@ -146,13 +149,13 @@ export const UnrealEngineString_schema_definitions = {
 			additionalProperties: false,
 			properties: {starts_with: {oneOf: [
 				{
-					$ref: '#/definitions/UnrealEngineString_right_starts_with',
+					$ref: local_ref('UnrealEngineString_right_starts_with'),
 				},
 				{
 					type: 'array',
 					minItems: 1,
 					items: {
-						$ref: '#/definitions/UnrealEngineString_right_starts_with',
+						$ref: local_ref('UnrealEngineString_right_starts_with'),
 					},
 				},
 			]}},
@@ -168,10 +171,10 @@ export const UnrealEngineString_schema = {
 			additionalProperties: false,
 			properties: {
 				left: {
-					$ref: '#/definitions/UnrealEngineString_left',
+					$ref: local_ref('UnrealEngineString_left'),
 				},
 				right: {
-					$ref: '#/definitions/UnrealEngineString_right',
+					$ref: local_ref('UnrealEngineString_right'),
 				},
 			},
 		},
@@ -181,7 +184,7 @@ export const UnrealEngineString_schema = {
 			additionalProperties: false,
 			properties: {
 				left: {
-					$ref: '#/definitions/UnrealEngineString_left',
+					$ref: local_ref('UnrealEngineString_left'),
 				},
 			},
 		},
@@ -191,7 +194,7 @@ export const UnrealEngineString_schema = {
 			additionalProperties: false,
 			properties: {
 				right: {
-					$ref: '#/definitions/UnrealEngineString_right',
+					$ref: local_ref('UnrealEngineString_right'),
 				},
 			},
 		},

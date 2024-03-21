@@ -12,6 +12,9 @@ import {
 	TypeNodeGeneration,
 	TypeNodeGenerationResult,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
+import {
+	local_ref,
+} from '../StringStartsWith';
 
 export const target_files = Object.entries({
 	'common/prefixes.ts': ['Texture2D--basic'],
@@ -51,7 +54,7 @@ export const generators = [
 ];
 
 export const type_node_generators = [
-	new TypeNodeGeneration<{$ref: '#/definitions/Texture2D--basic'}>(
+	new TypeNodeGeneration<{$ref: local_ref<'Texture2D--basic'>}>(
 		{
 			type: 'object',
 			required: ['$ref'],
@@ -59,7 +62,7 @@ export const type_node_generators = [
 			properties: {
 				$ref: {
 					type: 'string',
-					const: '#/definitions/Texture2D--basic',
+					const: local_ref('Texture2D--basic'),
 				},
 			},
 		},

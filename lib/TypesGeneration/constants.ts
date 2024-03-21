@@ -13,6 +13,9 @@ import {
 	TypeNodeGeneration,
 	TypeNodeGenerationResult,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
+import {
+	local_ref,
+} from '../StringStartsWith';
 
 export const target_files = {
 	'empty-object': 'common/constants.ts',
@@ -42,13 +45,13 @@ export declare type schema_type = {
 
 declare type ref_type = {
 	$ref:
-		| '#/definitions/empty-object'
-		| '#/definitions/mChainsawState'
-		| '#/definitions/mSnappedPassthroughs'
-		| '#/definitions/mAspect'
-		| '#/definitions/mPlatformDockingStatus'
-		| '#/definitions/mBatteryStatus'
-		| '#/definitions/InfinityExtrap';
+		| local_ref<'empty-object'>
+		| local_ref<'mChainsawState'>
+		| local_ref<'mSnappedPassthroughs'>
+		| local_ref<'mAspect'>
+		| local_ref<'mPlatformDockingStatus'>
+		| local_ref<'mBatteryStatus'>
+		| local_ref<'InfinityExtrap'>;
 };
 
 const ref_schema = {
@@ -78,13 +81,13 @@ export const generators = [
 			);
 		}
 	),
-	new TypesGenerationFromSchema<{$ref: '#/definitions/None'}>(
+	new TypesGenerationFromSchema<{$ref: local_ref<'None'>}>(
 		{
 			type: 'object',
 			required: ['$ref'],
 			additionalProperties: false,
 			properties: {
-				$ref: {type: 'string', const: '#/definitions/None'},
+				$ref: {type: 'string', const: local_ref('None')},
 			},
 		},
 		(_, reference_name) => {
@@ -121,7 +124,7 @@ export const type_node_generators = [
 		);
 	}),
 	new TypeNodeGeneration<{
-		$ref: '#/definitions/mOutputInventoryHandlerData';
+		$ref: local_ref<'mOutputInventoryHandlerData'>;
 	}>(
 		{
 			type: 'object',

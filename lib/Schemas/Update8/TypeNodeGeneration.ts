@@ -56,6 +56,9 @@ import {
 import {
 	object_only_has_that_property,
 } from '../../CustomParsingTypes/CustomPairingTypes';
+import {
+	local_ref,
+} from '../../StringStartsWith';
 
 const known_ref_file_targets = {
 	'quaternion': 'common/vectors.ts',
@@ -565,8 +568,8 @@ export class Update8TypeNodeGeneration {
 			this.type_node_generator.matchers.push(
 				new TypeNodeGeneration<{
 					$ref:
-						| '#/definitions/FGBuildable--mAllowedResources--default-UnrealEngineString'
-						| '#/definitions/FGSchematic--mUnlocks_mSchematics--mSchematics';
+						| local_ref<'FGBuildable--mAllowedResources--default-UnrealEngineString'>
+						| local_ref<'FGSchematic--mUnlocks_mSchematics--mSchematics'>;
 				}>(
 					{
 						type: 'object',
@@ -576,8 +579,8 @@ export class Update8TypeNodeGeneration {
 							$ref: {
 								type: 'string',
 								enum: [
-									'#/definitions/FGBuildable--mAllowedResources--default-UnrealEngineString',
-									'#/definitions/FGSchematic--mUnlocks_mSchematics--mSchematics',
+									local_ref('FGBuildable--mAllowedResources--default-UnrealEngineString'),
+									local_ref('FGSchematic--mUnlocks_mSchematics--mSchematics'),
 								],
 							},
 						},
@@ -750,7 +753,7 @@ export class Update8TypeNodeGeneration {
 		this.type_node_generator.matchers.push(
 			new TypeNodeGeneration<{
 				type: 'object';
-				$ref: '#/definitions/NativeClass';
+				$ref: local_ref<'NativeClass'>;
 				properties: {
 					Classes: {[key: string]: string | number | object} & {
 						type: 'array';
@@ -765,7 +768,7 @@ export class Update8TypeNodeGeneration {
 						type: {type: 'string', const: 'object'},
 						$ref: {
 							type: 'string',
-							const: '#/definitions/NativeClass',
+							const: local_ref('NativeClass'),
 						},
 						additionalProperties: {type: 'boolean', const: false},
 						properties: {

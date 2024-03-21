@@ -30,6 +30,9 @@ import {
 import {
 	TypedArrayString,
 } from '../CustomParsingTypes/TypedArrayString';
+import {
+	local_ref,
+} from '../StringStartsWith';
 
 const validator_target_files = {
 	'decimal-string': 'utils/validators.ts',
@@ -61,10 +64,10 @@ const schema = {
 
 declare type ref_type = {
 	$ref:
-		| '#/definitions/decimal-string'
-		| '#/definitions/decimal-string--signed'
-		| '#/definitions/integer-string'
-		| '#/definitions/integer-string--signed';
+		| local_ref<'decimal-string'>
+		| local_ref<'decimal-string--signed'>
+		| local_ref<'integer-string'>
+		| local_ref<'integer-string--signed'>;
 };
 
 const ref_schema = {
@@ -469,10 +472,10 @@ export const type_node_generators = [
 	}),
 	new TypeNodeGeneration<{
 		$ref:
-			| '#/definitions/color'
-			| '#/definitions/color-decimal'
-			| '#/definitions/mDockingRuleSet'
-			| '#/definitions/mLightControlData';
+			| local_ref<'color'>
+			| local_ref<'color-decimal'>
+			| local_ref<'mDockingRuleSet'>
+			| local_ref<'mLightControlData'>;
 	}>(
 		{
 			type: 'object',
@@ -482,10 +485,10 @@ export const type_node_generators = [
 				$ref: {
 					type: 'string',
 					enum: [
-						'#/definitions/color',
-						'#/definitions/color-decimal',
-						'#/definitions/mDockingRuleSet',
-						'#/definitions/mLightControlData',
+						local_ref('color'),
+						local_ref('color-decimal'),
+						local_ref('mDockingRuleSet'),
+						local_ref('mLightControlData'),
 					],
 				},
 			},

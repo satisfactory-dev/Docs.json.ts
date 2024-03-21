@@ -17,21 +17,24 @@ import {
 import update8_schema from '../../schema/update8.schema.json' assert {
 	type: 'json'
 };
+import {
+	local_ref,
+} from '../StringStartsWith';
 
 const UnrealEngineString_inner =
 	UnrealEngineString.ajv_macro_generator(true);
 
 const $ref_supported = {
-	'#/definitions/mEventType': 'EV_Christmas',
-	'#/definitions/FGSchematic--mUnlocks_mSchematics--mSchematics':
+	[local_ref('mEventType')]: 'EV_Christmas',
+	[local_ref('FGSchematic--mUnlocks_mSchematics--mSchematics')]:
 		UnrealEngineString_inner(
 			check_UnrealEngineString_parent(update8_schema.definitions[
 				'FGSchematic--mUnlocks_mSchematics--mSchematics'
 			]).UnrealEngineString
 		).pattern,
-	'#/definitions/None': 'None',
-	'#/definitions/integer-string': '\\d+',
-	'#/definitions/decimal-string': '\\d+.\\d+',
+	[local_ref('None')]: 'None',
+	[local_ref('integer-string')]: '\\d+',
+	[local_ref('decimal-string')]: '\\d+.\\d+',
 };
 
 const $ref_supported_array = Object.keys(
