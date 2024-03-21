@@ -528,9 +528,7 @@ export class UnrealEngineString {
 											ts.factory.createPropertyAccessExpression(
 												ts.factory.createParenthesizedExpression(
 													create_new_RegExp(
-															ts.factory.createIdentifier(
 																'pattern'
-															),
 													)
 												),
 												'test'

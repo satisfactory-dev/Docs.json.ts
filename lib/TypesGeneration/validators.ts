@@ -267,7 +267,7 @@ export const custom_generators = [
 			file: 'utils/validators.ts',
 			node: flexibly_create_regex_validation_function(
 				'regexp_argument',
-				ts.factory.createIdentifier('pattern'),
+				'pattern',
 
 				[
 					createParameter('value', ts.factory.createTypeReferenceNode('Value')),

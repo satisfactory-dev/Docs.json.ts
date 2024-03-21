@@ -658,19 +658,21 @@ export function create_template_span(
 }
 
 export function create_new_RegExp(
-	first:Expression,
-	...rest:Expression[]
+	first:(Expression|string),
+	...rest:(Expression|string)[]
 ) : NewExpression {
 	return ts.factory.createNewExpression(
 		ts.factory.createIdentifier('RegExp'),
 		undefined,
-		[first, ...rest]
+		[first, ...rest].map(
+			e => 'string' === typeof e? ts.factory.createIdentifier(e) : e
+		)
 	);
 }
 
 export function very_flexibly_create_regex_validation_function(
 	reference_name: string,
-	regexp_argument: ts.Expression,
+	regexp_argument: Expression|string,
 	parameters: ts.ParameterDeclaration[],
 	return_type: () => ts.TypeNode,
 	error_template_spans: ts.TemplateSpan[],
@@ -718,7 +720,7 @@ export function very_flexibly_create_regex_validation_function(
 
 export function flexibly_create_regex_validation_function(
 	reference_name: string,
-	regexp_argument: ts.Expression,
+	regexp_argument: Expression|string,
 	parameters: ts.ParameterDeclaration[],
 	error_template_spans: ts.TemplateSpan[],
 	pattern_argument: (() => [TypeNode, ...TypeNode[]]) | undefined = undefined,
