@@ -162,7 +162,7 @@ export class DocsTsGenerator {
 
 		const utf8 = Buffer.from(file).toString('utf-8');
 
-		return JSON.parse(utf8.trim());
+		return JSON.parse(utf8.trim()) as unknown;
 	}
 
 	private async load(): Promise<Exclude<typeof this.docs, undefined>> {
