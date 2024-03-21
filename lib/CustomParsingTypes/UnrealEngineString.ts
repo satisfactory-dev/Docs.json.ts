@@ -138,7 +138,7 @@ export const UnrealEngineString_schema_definitions = {
 	UnrealEngineString_right_starts_with: {
 		type: 'string',
 		pattern:
-			'^/(?:[A-Z][A-Za-z_\\-.]+/)+(?:[A-Z][A-Za-z_\\-.]+/|[A-Z][A-Za-z_\\-.]+\\.[A-Z][A-Za-z_\\-]+)$',
+			`^{/(?:[A-Z][A-Za-z_\\-.]+/)+}(?:[A-Z][A-Za-z_\\-.]+/|[A-Z][A-Za-z_\\-.]+\\.[A-Z][A-Za-z_\\-]+)$`,
 	},
 	UnrealEngineString_right: {oneOf: [
 		{
@@ -227,6 +227,8 @@ export const UnrealEngineString_parent_schema = {
 export const UnrealEngineString_left_default = [
 	'/Script/Engine.BlueprintGeneratedClass',
 ];
+const right_value_starts_with_suffix =
+	'(?:[A-Z][A-Za-z0-9_.]+/)*[A-Z][A-Za-z_.0-9-]+(?::[A-Z][A-Za-z0-9]+)?';
 
 export class UnrealEngineString {
 	static configure_ajv(ajv: Ajv) {
@@ -273,9 +275,11 @@ export class UnrealEngineString {
 									: [data.right.starts_with]
 											)
 									.map(
-										(starts_with) =>
-											starts_with +
-														'(?:[A-Z][A-Za-z0-9_.]+/)*[A-Z][A-Za-z_.0-9-]+(?::[A-Z][A-Za-z0-9]+)?'
+										(starts_with) => `${
+											starts_with
+										}${
+											right_value_starts_with_suffix
+										}`
 									)
 									.join('|')})`,
 						]
