@@ -127,7 +127,7 @@ export const UnrealEngineString_schema_definitions = {
 	UnrealEngineString_right_starts_with: {
 		type: 'string',
 		pattern:
-			`^{/(?:[A-Z][A-Za-z_\\-.]+/)+}(?:[A-Z][A-Za-z_\\-.]+/|[A-Z][A-Za-z_\\-.]+\\.[A-Z][A-Za-z_\\-]+)$`,
+			`^/(?:[A-Z][A-Za-z_\\-.]+/)+(?:[A-Z][A-Za-z_\\-.]+/|[A-Z][A-Za-z_\\-.]+\\.[A-Z][A-Za-z_\\-]+)$`,
 	},
 	UnrealEngineString_right: {oneOf: [
 		{
