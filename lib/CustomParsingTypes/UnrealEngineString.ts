@@ -35,39 +35,39 @@ const already_configured = new WeakSet<Ajv>();
 
 export const UnrealEngineString_regex = /^([^']+)'(?:"([^"]+)"|([^"]+))'$/;
 
-export const UnrealEngineStringReference_general_regex =
+export const UnrealEngineString_general_regex =
 	'/(?:[A-Z-][A-Za-z0-9_-]+/)+(?:[A-Z][A-Za-z_0-9-]+\\.[A-Z][A-Za-z_0-9-]+(?:_C)?(?::[A-Z][A-Za-z0-9_]+)?|[A-Z][A-Za-z_]+\\.[A-Z][A-Za-z_]+)';
 
-export type UnrealEngineStringReference_string_or_string_array =
+export type UnrealEngineString_string_or_string_array =
 	| string
 	| [string, ...string[]];
 
-export type UnrealEngineStringReference_right =
-	| UnrealEngineStringReference_string_or_string_array
-	| {starts_with: UnrealEngineStringReference_string_or_string_array};
+export type UnrealEngineString_right =
+	| UnrealEngineString_string_or_string_array
+	| {starts_with: UnrealEngineString_string_or_string_array};
 
-export type UnrealEngineStringReference_type =
+export type UnrealEngineString_type =
 	| {
-			left: UnrealEngineStringReference_string_or_string_array;
-			right: UnrealEngineStringReference_right;
+			left: UnrealEngineString_string_or_string_array;
+			right: UnrealEngineString_right;
 	}
 	| {
-			left: UnrealEngineStringReference_string_or_string_array;
+			left: UnrealEngineString_string_or_string_array;
 	}
 	| {
-			right: UnrealEngineStringReference_right;
+			right: UnrealEngineString_right;
 	}
 	| true;
 
-export type UnrealEngineStringReference_general_type = {
+export type UnrealEngineString_parent_type = {
 	type: 'string';
 	minLength: 1;
-	UnrealEngineStringReference: UnrealEngineStringReference_type;
+	UnrealEngineString: UnrealEngineString_type;
 };
 
-export function is_UnrealEngineStringReference_general_object(
+export function is_UnrealEngineString_parent(
 	maybe: unknown
-): maybe is UnrealEngineStringReference_general_type {
+): maybe is UnrealEngineString_parent_type {
 	return (
 		value_is_non_array_object(maybe)
 		&& 3 === Object.keys(maybe).length
@@ -75,52 +75,52 @@ export function is_UnrealEngineStringReference_general_object(
 		&& 'string' === maybe.type
 		&& object_has_property(maybe, 'minLength')
 		&& 1 === maybe.minLength
-		&& object_has_property(maybe, 'UnrealEngineStringReference')
-		&& (true === maybe.UnrealEngineStringReference
-			|| is_UnrealEngineStringReference_value_object(
-				maybe.UnrealEngineStringReference
+		&& object_has_property(maybe, 'UnrealEngineString')
+		&& (true === maybe.UnrealEngineString
+			|| is_UnrealEngineString_object(
+				maybe.UnrealEngineString
 			))
 	);
 }
 
-export const UnrealEngineStringReference_schema_definitions = {
-	UnrealEngineStringReference_schema_left_string: {
+export const UnrealEngineString_schema_definitions = {
+	UnrealEngineString_left_string: {
 		type: 'string',
-		pattern: `^(/Script/[A-Z][A-Za-z]+.[A-Z][A-Za-z]+(?:2D)?|${UnrealEngineStringReference_general_regex})$`,
+		pattern: `^(/Script/[A-Z][A-Za-z]+.[A-Z][A-Za-z]+(?:2D)?|${UnrealEngineString_general_regex})$`,
 	},
-	UnrealEngineStringReference_schema_right_string: {
+	UnrealEngineString_right_string: {
 		type: 'string',
-		pattern: `^${UnrealEngineStringReference_general_regex}$`,
+		pattern: `^${UnrealEngineString_general_regex}$`,
 	},
-	UnrealEngineStringReference_schema_left_property: {
+	UnrealEngineString_left: {
 		oneOf: [
 			{
-				$ref: '#/definitions/UnrealEngineStringReference_schema_left_string',
+				$ref: '#/definitions/UnrealEngineString_left_string',
 			},
 			{
 				type: 'array',
 				minItems: 1,
 				items: {
-					$ref: '#/definitions/UnrealEngineStringReference_schema_left_string',
+					$ref: '#/definitions/UnrealEngineString_left_string',
 				},
 			},
 		],
 	},
-	UnrealEngineStringReference_schema_right_starts_with: {
+	UnrealEngineString_right_starts_with: {
 		type: 'string',
 		pattern:
 			'^/(?:[A-Z][A-Za-z_\\-.]+/)+(?:[A-Z][A-Za-z_\\-.]+/|[A-Z][A-Za-z_\\-.]+\\.[A-Z][A-Za-z_\\-]+)$',
 	},
-	UnrealEngineStringReference_schema_right_property: {
+	UnrealEngineString_right: {
 		oneOf: [
 			{
-				$ref: '#/definitions/UnrealEngineStringReference_schema_right_string',
+				$ref: '#/definitions/UnrealEngineString_right_string',
 			},
 			{
 				type: 'array',
 				minItems: 1,
 				items: {
-					$ref: '#/definitions/UnrealEngineStringReference_schema_right_string',
+					$ref: '#/definitions/UnrealEngineString_right_string',
 				},
 			},
 			{
@@ -131,13 +131,13 @@ export const UnrealEngineStringReference_schema_definitions = {
 					starts_with: {
 						oneOf: [
 							{
-								$ref: '#/definitions/UnrealEngineStringReference_schema_right_starts_with',
+								$ref: '#/definitions/UnrealEngineString_right_starts_with',
 							},
 							{
 								type: 'array',
 								minItems: 1,
 								items: {
-									$ref: '#/definitions/UnrealEngineStringReference_schema_right_starts_with',
+									$ref: '#/definitions/UnrealEngineString_right_starts_with',
 								},
 							},
 						],
@@ -148,7 +148,7 @@ export const UnrealEngineStringReference_schema_definitions = {
 	},
 };
 
-export const UnrealEngineStringReference_schema = {
+export const UnrealEngineString_schema = {
 	oneOf: [
 		{
 			type: 'object',
@@ -156,10 +156,10 @@ export const UnrealEngineStringReference_schema = {
 			additionalProperties: false,
 			properties: {
 				left: {
-					$ref: '#/definitions/UnrealEngineStringReference_schema_left_property',
+					$ref: '#/definitions/UnrealEngineString_left',
 				},
 				right: {
-					$ref: '#/definitions/UnrealEngineStringReference_schema_right_property',
+					$ref: '#/definitions/UnrealEngineString_right',
 				},
 			},
 		},
@@ -169,7 +169,7 @@ export const UnrealEngineStringReference_schema = {
 			additionalProperties: false,
 			properties: {
 				left: {
-					$ref: '#/definitions/UnrealEngineStringReference_schema_left_property',
+					$ref: '#/definitions/UnrealEngineString_left',
 				},
 			},
 		},
@@ -179,7 +179,7 @@ export const UnrealEngineStringReference_schema = {
 			additionalProperties: false,
 			properties: {
 				right: {
-					$ref: '#/definitions/UnrealEngineStringReference_schema_right_property',
+					$ref: '#/definitions/UnrealEngineString_right',
 				},
 			},
 		},
@@ -190,33 +190,33 @@ export const UnrealEngineStringReference_schema = {
 	],
 };
 
-export const UnrealEngineStringReference_general_schema = {
+export const UnrealEngineString_parent_schema = {
 	type: 'object',
-	required: ['type', 'minLength', 'UnrealEngineStringReference'],
+	required: ['type', 'minLength', 'UnrealEngineString'],
 	additionalProperties: false,
 	properties: {
 		type: {type: 'string', const: 'string'},
 		minLength: {type: 'number', const: 1},
-		UnrealEngineStringReference: UnrealEngineStringReference_schema,
+		UnrealEngineString: UnrealEngineString_schema,
 	},
 };
-export const UnrealEngineStringReference_inner_schema = {
+export const UnrealEngineString_inner_schema = {
 	type: 'object',
-	required: ['type', 'minLength', 'UnrealEngineStringReference--inner'],
+	required: ['type', 'minLength', 'UnrealEngineString--inner'],
 	additionalProperties: false,
 	properties: {
 		type: {type: 'string', const: 'string'},
 		minLength: {type: 'number', const: 1},
-		['UnrealEngineStringReference--inner']:
-			UnrealEngineStringReference_schema,
+		['UnrealEngineString--inner']:
+			UnrealEngineString_schema,
 	},
 };
 
-export const UnrealEngineStringReference_left_default = [
+export const UnrealEngineString_left_default = [
 	'/Script/Engine.BlueprintGeneratedClass',
 ];
 
-export class UnrealEngineStringReference {
+export class UnrealEngineString {
 	static configure_ajv(ajv: Ajv) {
 		if (already_configured.has(ajv)) {
 			return;
@@ -225,18 +225,18 @@ export class UnrealEngineStringReference {
 		already_configured.add(ajv);
 
 		ajv.addKeyword({
-			keyword: 'UnrealEngineStringReference',
+			keyword: 'UnrealEngineString',
 			type: 'string',
 			metaSchema: {
-				definitions: UnrealEngineStringReference_schema_definitions,
-				...UnrealEngineStringReference_schema,
+				definitions: UnrealEngineString_schema_definitions,
+				...UnrealEngineString_schema,
 			},
 			macro: this.ajv_macro_generator(false),
 		});
 	}
 
 	static ajv_macro_generator(inner: boolean) {
-		return (data_from_schema: UnrealEngineStringReference_type) => {
+		return (data_from_schema: UnrealEngineString_type) => {
 			const data:
 				| Exclude<typeof data_from_schema, true>
 				| typeof empty_object =
@@ -246,7 +246,7 @@ export class UnrealEngineStringReference {
 					? data.left instanceof Array
 						? data.left
 						: [data.left]
-					: UnrealEngineStringReference_left_default
+					: UnrealEngineString_left_default
 			).join('|');
 			const right_value =
 				'right' in data
@@ -268,7 +268,7 @@ export class UnrealEngineStringReference {
 									.join('|')})`,
 						]
 						).join('|')})`
-					: UnrealEngineStringReference_general_regex;
+					: UnrealEngineString_general_regex;
 
 			const regex = `(?:(?:${left_value})'(?:${right_value}|"${right_value}")')`;
 
@@ -280,19 +280,19 @@ export class UnrealEngineStringReference {
 
 	static TypesGenerators() {
 		return [
-			new TypesGenerationFromSchema<UnrealEngineStringReference_general_type>(
+			new TypesGenerationFromSchema<UnrealEngineString_parent_type>(
 				{
 					definitions:
-						UnrealEngineStringReference_schema_definitions,
-					...UnrealEngineStringReference_general_schema,
+						UnrealEngineString_schema_definitions,
+					...UnrealEngineString_parent_schema,
 				},
 				(data, reference_name) => {
 					return ts.factory.createTypeAliasDeclaration(
 						[create_modifier('export')],
 						adjust_class_name(reference_name),
 						undefined,
-						create_UnrealEngineStringReference_reference_type(
-							data.UnrealEngineStringReference
+						create_UnrealEngineString_reference_type(
+							data.UnrealEngineString
 						)
 					);
 				}
@@ -601,7 +601,7 @@ export class UnrealEngineStringReference {
 								)
 							),
 							create_literal_node_from_value(
-								UnrealEngineStringReference_left_default[0]
+								UnrealEngineString_left_default[0]
 							)
 						),
 						ts.factory.createTypeParameterDeclaration(
@@ -624,16 +624,16 @@ export class UnrealEngineStringReference {
 
 	static TypeNodeGeneration() {
 		return [
-			new TypeNodeGeneration<UnrealEngineStringReference_general_type>(
+			new TypeNodeGeneration<UnrealEngineString_parent_type>(
 				{
 					definitions:
-						UnrealEngineStringReference_schema_definitions,
-					...UnrealEngineStringReference_general_schema,
+						UnrealEngineString_schema_definitions,
+					...UnrealEngineString_parent_schema,
 				},
 				(data_from_schema) => {
 					return new TypeNodeGenerationResult(() => {
-						return create_UnrealEngineStringReference_reference_type(
-							data_from_schema.UnrealEngineStringReference
+						return create_UnrealEngineString_reference_type(
+							data_from_schema.UnrealEngineString
 						);
 					});
 				}
@@ -663,14 +663,14 @@ export function flexibly_create_UnrealEngineString_reference_type(
 
 const empty_object = {};
 
-export function create_UnrealEngineStringReference_reference_type(
-	data_from_schema: UnrealEngineStringReference_type
+export function create_UnrealEngineString_reference_type(
+	data_from_schema: UnrealEngineString_type
 ): TypeReferenceNode {
 	const data: Exclude<typeof data_from_schema, true> | typeof empty_object =
 		true === data_from_schema ? {} : data_from_schema;
 
 	let left_value: TypeNode = create_literal_node_from_value(
-		UnrealEngineStringReference_left_default[0]
+		UnrealEngineString_left_default[0]
 	);
 	let left_changed = false;
 	let right_value: TypeNode = create_type('string');
@@ -678,7 +678,7 @@ export function create_UnrealEngineStringReference_reference_type(
 
 	if ('object' === typeof data && 'left' in data) {
 		const {left} = data as {
-			left: UnrealEngineStringReference_string_or_string_array;
+			left: UnrealEngineString_string_or_string_array;
 		};
 
 		const left_options = [
@@ -695,7 +695,7 @@ export function create_UnrealEngineStringReference_reference_type(
 	}
 
 	if ('object' === typeof data && 'right' in data) {
-		const {right} = data as {right: UnrealEngineStringReference_right};
+		const {right} = data as {right: UnrealEngineString_right};
 
 		if ('object' === typeof right && 'starts_with' in right) {
 			const {starts_with} = right;
@@ -780,9 +780,9 @@ function is_string_or_string_array(
 	);
 }
 
-function is_UnrealEngineStringReference_value_object(
+function is_UnrealEngineString_object(
 	maybe: unknown
-): maybe is Exclude<UnrealEngineStringReference_type, true> {
+): maybe is Exclude<UnrealEngineString_type, true> {
 	if (!value_is_non_array_object(maybe)) {
 		return false;
 	}
@@ -804,12 +804,12 @@ function is_UnrealEngineStringReference_value_object(
 	);
 }
 
-export function is_UnrealEngineStringReference_value(
+export function is_UnrealEngineString_type(
 	maybe: unknown
-): maybe is UnrealEngineStringReference_type {
+): maybe is UnrealEngineString_type {
 	return (
 		true === maybe
 		|| ('object' === typeof maybe
-			&& is_UnrealEngineStringReference_value_object(maybe))
+			&& is_UnrealEngineString_object(maybe))
 	);
 }

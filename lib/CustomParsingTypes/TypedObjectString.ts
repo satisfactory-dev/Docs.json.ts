@@ -1,15 +1,15 @@
 import Ajv from 'ajv/dist/2020';
 import {
-	create_UnrealEngineStringReference_reference_type,
-	is_UnrealEngineStringReference_general_object,
-	is_UnrealEngineStringReference_value,
-	UnrealEngineStringReference,
-	UnrealEngineStringReference_general_regex,
-	UnrealEngineStringReference_general_schema,
-	UnrealEngineStringReference_general_type,
-	UnrealEngineStringReference_inner_schema,
-	UnrealEngineStringReference_schema_definitions,
-} from './UnrealEngineStringReference';
+	create_UnrealEngineString_reference_type,
+	is_UnrealEngineString_parent,
+	is_UnrealEngineString_type,
+	UnrealEngineString,
+	UnrealEngineString_general_regex,
+	UnrealEngineString_parent_schema,
+	UnrealEngineString_parent_type,
+	UnrealEngineString_inner_schema,
+	UnrealEngineString_schema_definitions,
+} from './UnrealEngineString';
 import schema from '../../schema/update8.schema.json' assert {type: 'json'};
 import {
 	TypesGenerationFromSchema,
@@ -63,7 +63,7 @@ import {
 const already_configured = new WeakSet<Ajv>();
 
 const typed_object_string_property_regex = '^[A-Za-z][A-Za-z0-9_\\[\\]]*$';
-const typed_object_string_const_value_regex = `^([A-Za-z][A-Za-z0-9_ ]*|${UnrealEngineStringReference_general_regex})$`;
+const typed_object_string_const_value_regex = `^([A-Za-z][A-Za-z0-9_ ]*|${UnrealEngineString_general_regex})$`;
 const typed_object_string_const_value_regex__native = new RegExp(
 	typed_object_string_const_value_regex
 );
@@ -137,7 +137,7 @@ export type typed_object_string_general_type = {
 type supported_oneOf_item =
 	| typed_object_string_general_type
 	| type_object_string_$ref_choices
-	| UnrealEngineStringReference_general_type;
+	| UnrealEngineString_parent_type;
 
 type typed_object_string_nested_type = {
 	type: 'string';
@@ -225,8 +225,8 @@ export const typed_object_string_schema = {
 						},
 					},
 				},
-				UnrealEngineStringReference_inner_schema,
-				UnrealEngineStringReference_general_schema,
+				UnrealEngineString_inner_schema,
+				UnrealEngineString_parent_schema,
 				typed_object_supported_const_string_schema,
 				typed_string_enum_schema,
 				{
@@ -245,7 +245,7 @@ export const typed_object_string_schema = {
 								minItems: {type: 'number', minimum: 1},
 								items: {
 									oneOf: [
-										UnrealEngineStringReference_general_schema,
+										UnrealEngineString_parent_schema,
 									],
 								},
 							},
@@ -414,7 +414,7 @@ export class TypedObjectString {
 				...typed_object_string_schema,
 				...{
 					definitions:
-						UnrealEngineStringReference_schema_definitions,
+						UnrealEngineString_schema_definitions,
 				},
 			},
 			macro: this.ajv_macro_generator(false),
@@ -515,13 +515,13 @@ export class TypedObjectString {
 			const object_has_typed_object_string =
 				object_has_property(definition, 'typed_object_string')
 				&& this.is_$ref_object_dictionary(definition.typed_object_string);
-			const object_is_UnrealEngineStringReference =
-				is_UnrealEngineStringReference_general_object(definition);
+			const object_is_UnrealEngineString =
+				is_UnrealEngineString_parent(definition);
 			const is_enum = typed_string_enum.is_supported_schema(definition);
 
 			if (
 				!is_enum
-				&& !object_is_UnrealEngineStringReference
+				&& !object_is_UnrealEngineString
 				&& !is_typed_object_array
 				&& !is_generally_supported_oneOf_array
 				&& !object_has_typed_object_string
@@ -532,10 +532,10 @@ export class TypedObjectString {
 				);
 			}
 
-			if (object_is_UnrealEngineStringReference) {
+			if (object_is_UnrealEngineString) {
 				value_regex = `(?:${
-					UnrealEngineStringReference.ajv_macro_generator(true)(
-						definition.UnrealEngineStringReference
+					UnrealEngineString.ajv_macro_generator(true)(
+						definition.UnrealEngineString
 					).pattern
 				})`;
 			} else if (is_enum) {
@@ -557,10 +557,10 @@ export class TypedObjectString {
 			} else if (is_generally_supported_oneOf_array) {
 				value_regex = `(?:${definition.oneOf
 					.map((e) => {
-						if (is_UnrealEngineStringReference_general_object(e)) {
-							return UnrealEngineStringReference.ajv_macro_generator(
+						if (is_UnrealEngineString_parent(e)) {
+							return UnrealEngineString.ajv_macro_generator(
 								true
-							)(e.UnrealEngineStringReference).pattern;
+							)(e.UnrealEngineString).pattern;
 						} else if (!('$ref' in e)) {
 							throw new UnexpectedlyUnknownNoMatchError(
 								e,
@@ -670,8 +670,8 @@ export class TypedObjectString {
 				'minLength',
 				1
 			)
-			&& is_UnrealEngineStringReference_value(
-				maybe.typed_array_string.items?.UnrealEngineStringReference
+			&& is_UnrealEngineString_type(
+				maybe.typed_array_string.items?.UnrealEngineString
 			)
 		);
 	}
@@ -713,7 +713,7 @@ export class TypedObjectString {
 					value_is_non_array_object(e)
 					&& this.is_$ref_object_dictionary(e)
 				)
-				&& !is_UnrealEngineStringReference_general_object(e)
+				&& !is_UnrealEngineString_parent(e)
 				&& !this.value_is_typed_object_string_general_type(e)
 				&& !TypedObjectString.object_is_typed_object_string_oneOf(
 					maybe
@@ -793,10 +793,10 @@ export class TypedObjectString {
 		T extends
 			| typed_object_string_general_type
 			| type_object_string_$ref_choices
-			| UnrealEngineStringReference_general_type =
+			| UnrealEngineString_parent_type =
 			| typed_object_string_general_type
 			| type_object_string_$ref_choices
-			| UnrealEngineStringReference_general_type,
+			| UnrealEngineString_parent_type,
 	>(
 		maybe: object,
 		predicate: (inner_maybe: unknown) => inner_maybe is T
@@ -818,7 +818,7 @@ export class TypedObjectString {
 				entry
 			)
 			|| TypedObjectString.is_$ref_object(entry)
-			|| is_UnrealEngineStringReference_general_object(entry)
+			|| is_UnrealEngineString_parent(entry)
 		);
 	}
 
@@ -855,14 +855,14 @@ export class TypedObjectString {
 					);
 				} else if (
 					this.is_supported_typed_array_string(entry[1])
-					&& is_UnrealEngineStringReference_general_object(
+					&& is_UnrealEngineString_parent(
 						entry[1].typed_array_string.items
 					)
 				) {
 					const unreal_engine_regex =
-						UnrealEngineStringReference.ajv_macro_generator(true)(
+						UnrealEngineString.ajv_macro_generator(true)(
 							entry[1].typed_array_string.items
-								?.UnrealEngineStringReference
+								?.UnrealEngineString
 						).pattern;
 
 					return `(?:${annoyingly_have_to_escape_property(entry[0])}=\\(${unreal_engine_regex}(?:,${unreal_engine_regex})*\\))`;
@@ -880,9 +880,9 @@ export class TypedObjectString {
 						'Unsupported!'
 					);
 				} else if (
-					is_UnrealEngineStringReference_general_object(entry[1])
+					is_UnrealEngineString_parent(entry[1])
 				) {
-					return `(?:${annoyingly_have_to_escape_property(entry[0])}=${UnrealEngineStringReference.ajv_macro_generator(true)(entry[1].UnrealEngineStringReference).pattern})`;
+					return `(?:${annoyingly_have_to_escape_property(entry[0])}=${UnrealEngineString.ajv_macro_generator(true)(entry[1].UnrealEngineString).pattern})`;
 				} else if (
 					this.value_is_typed_object_string_general_type(entry[1])
 				) {
@@ -911,20 +911,20 @@ export class TypedObjectString {
 				}
 
 				if (
-					'UnrealEngineStringReference--inner' in entry[1]
-					&& is_UnrealEngineStringReference_value(
-						entry[1]['UnrealEngineStringReference--inner']
+					'UnrealEngineString--inner' in entry[1]
+					&& is_UnrealEngineString_type(
+						entry[1]['UnrealEngineString--inner']
 					)
 				) {
 					return `${annoyingly_have_to_escape_property(entry[0])}=${
-						UnrealEngineStringReference.ajv_macro_generator(true)(
-							entry[1]['UnrealEngineStringReference--inner']
+						UnrealEngineString.ajv_macro_generator(true)(
+							entry[1]['UnrealEngineString--inner']
 						).pattern
 					}`;
-				} else if ('UnrealEngineStringReference--inner' in entry[1]) {
+				} else if ('UnrealEngineString--inner' in entry[1]) {
 					throw new UnexpectedlyUnknownNoMatchError(
 						entry,
-						'Not a UnrealEngineStringReference--inner'
+						'Not a UnrealEngineString--inner'
 					);
 				}
 
@@ -959,7 +959,7 @@ export class TypedObjectString {
 			new TypesGenerationFromSchema<typed_object_string_general_type>(
 				{
 					definitions:
-						UnrealEngineStringReference_schema_definitions,
+						UnrealEngineString_schema_definitions,
 					...typed_object_string_general_schema,
 				},
 				(data, reference_name) => {
@@ -1041,7 +1041,7 @@ export class TypedObjectString {
 			}>(
 				{
 					definitions:
-						UnrealEngineStringReference_schema_definitions,
+						UnrealEngineString_schema_definitions,
 					...typed_object_oneOf_schema,
 				},
 				(data, reference_name) => {
@@ -1086,7 +1086,7 @@ export class TypedObjectString {
 			new TypesGenerationFromSchema<typed_object_string_nested_type>(
 				{
 					definitions:
-						UnrealEngineStringReference_schema_definitions,
+						UnrealEngineString_schema_definitions,
 					...typed_object_string_nested_schema,
 				},
 				(data, reference_name) => {
@@ -1263,13 +1263,13 @@ export class TypedObjectString {
 								value.typed_array_string.minItems,
 								() => {
 									if (
-										is_UnrealEngineStringReference_general_object(
+										is_UnrealEngineString_parent(
 											value.typed_array_string.items
 										)
 									) {
-										return create_UnrealEngineStringReference_reference_type(
+										return create_UnrealEngineString_reference_type(
 											value.typed_array_string.items
-												.UnrealEngineStringReference
+												.UnrealEngineString
 										);
 									} else if (
 										supported_meta.is_supported_schema(
@@ -1291,12 +1291,12 @@ export class TypedObjectString {
 							),
 						];
 					} else if (
-						is_UnrealEngineStringReference_general_object(value)
+						is_UnrealEngineString_parent(value)
 					) {
 						return [
 							property,
-							create_UnrealEngineStringReference_reference_type(
-								value.UnrealEngineStringReference
+							create_UnrealEngineString_reference_type(
+								value.UnrealEngineString
 							),
 						];
 					} else if (!this.is_$ref_object(value)) {
@@ -1341,7 +1341,7 @@ export class TypedObjectString {
 			new TypeNodeGeneration<typed_object_string_nested_type>(
 				{
 					definitions:
-						UnrealEngineStringReference_schema_definitions,
+						UnrealEngineString_schema_definitions,
 					...typed_object_string_nested_schema,
 				},
 				(data) => {
@@ -1378,7 +1378,7 @@ export class TypedObjectString {
 			new TypeNodeGeneration<typed_object_string_general_type>(
 				{
 					definitions:
-						UnrealEngineStringReference_schema_definitions,
+						UnrealEngineString_schema_definitions,
 					...typed_object_string_general_schema,
 				},
 				(data) => {

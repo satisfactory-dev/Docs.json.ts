@@ -20,8 +20,8 @@ import {
 	TypeNodeGenerationResult,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 import {
-	UnrealEngineStringReference,
-} from '../CustomParsingTypes/UnrealEngineStringReference';
+	UnrealEngineString,
+} from '../CustomParsingTypes/UnrealEngineString';
 import {
 	TypedObjectString,
 } from '../CustomParsingTypes/TypedObjectString';
@@ -311,7 +311,7 @@ export const custom_generators = [
 		});
 
 		nodes.push(
-			...UnrealEngineStringReference.CustomGenerators(),
+			...UnrealEngineString.CustomGenerators(),
 			...TypedObjectString.CustomGenerators()
 		);
 
@@ -518,7 +518,7 @@ export const type_node_generators = [
 			});
 		}
 	),
-	...UnrealEngineStringReference.TypeNodeGeneration(),
+	...UnrealEngineString.TypeNodeGeneration(),
 	...TypedObjectString.TypeNodeGeneration(),
 	...TypedArrayString.TypeNodeGeneration(),
 	new TypeNodeGeneration<{

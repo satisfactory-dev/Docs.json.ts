@@ -1,12 +1,12 @@
 import Ajv from 'ajv/dist/2020';
 import {
-	create_UnrealEngineStringReference_reference_type,
-	is_UnrealEngineStringReference_general_object,
-	UnrealEngineStringReference,
-	UnrealEngineStringReference_general_schema,
-	UnrealEngineStringReference_general_type,
-	UnrealEngineStringReference_schema_definitions,
-} from './UnrealEngineStringReference';
+	create_UnrealEngineString_reference_type,
+	is_UnrealEngineString_parent,
+	UnrealEngineString,
+	UnrealEngineString_parent_schema,
+	UnrealEngineString_parent_type,
+	UnrealEngineString_schema_definitions,
+} from './UnrealEngineString';
 import {
 	typed_object_string_general_schema,
 	typed_object_string_general_type,
@@ -54,7 +54,7 @@ const typed_array_string_oneOf_schema = {
 	minItems: 1,
 	items: {
 		oneOf: [
-			UnrealEngineStringReference_general_schema,
+			UnrealEngineString_parent_schema,
 			$ref_schema,
 			typed_object_string_general_schema,
 		],
@@ -72,7 +72,7 @@ const typed_array_string_schema = {
 		items: {
 			oneOf: [
 				typed_object_string_general_schema,
-				UnrealEngineStringReference_general_schema,
+				UnrealEngineString_parent_schema,
 				typed_string_enum_schema,
 				typed_string_const_schema,
 				$ref_schema,
@@ -214,8 +214,8 @@ const typed_array_string_parent_schema = {
 
 declare type typed_array_string_oneOf = {
 	oneOf: [
-		$ref_choices | UnrealEngineStringReference_general_type,
-		...($ref_choices | UnrealEngineStringReference_general_type)[],
+		$ref_choices | UnrealEngineString_parent_type,
+		...($ref_choices | UnrealEngineString_parent_type)[],
 	];
 };
 
@@ -224,7 +224,7 @@ declare type typed_array_string_supported_items =
 	| $ref_choices
 	| enum_schema_type
 	| const_schema_type
-	| UnrealEngineStringReference_general_type
+	| UnrealEngineString_parent_type
 	| typed_object_string_general_type;
 
 const empty_object = {};
@@ -280,7 +280,7 @@ const empty_string_or_const_or_array_string_schema = {
 	type: 'object',
 	required: ['oneOf'],
 	additionalProperties: false,
-	definitions: UnrealEngineStringReference_schema_definitions,
+	definitions: UnrealEngineString_schema_definitions,
 	properties: {
 		oneOf: {
 			type: 'array',
@@ -318,7 +318,7 @@ export class TypedArrayString {
 			metaSchema: {
 				...{
 					definitions:
-						UnrealEngineStringReference_schema_definitions,
+						UnrealEngineString_schema_definitions,
 				},
 				oneOf: [
 					typed_array_string_schema,
@@ -351,9 +351,9 @@ export class TypedArrayString {
 	public static item_to_regex(
 		item: typed_array_string_supported_items | typed_array_string_tuple_2
 	): string {
-		if (is_UnrealEngineStringReference_general_object(item)) {
-			return UnrealEngineStringReference.ajv_macro_generator(true)(
-				item.UnrealEngineStringReference
+		if (is_UnrealEngineString_parent(item)) {
+			return UnrealEngineString.ajv_macro_generator(true)(
+				item.UnrealEngineString
 			).pattern;
 		} else if (typed_string_const.is_supported_schema(item)) {
 			return typed_string_const.value_regex(item);
@@ -411,7 +411,7 @@ export class TypedArrayString {
 	): TypeAliasDeclaration {
 		if (
 			!('oneOf' in data.items)
-			&& !is_UnrealEngineStringReference_general_object(data.items)
+			&& !is_UnrealEngineString_parent(data.items)
 			&& !TypedObjectString.value_is_typed_object_string_general_type(
 				data.items
 			)
@@ -439,10 +439,10 @@ export class TypedArrayString {
 			data.minItems,
 			() => {
 				if (
-					is_UnrealEngineStringReference_general_object(data.items)
+					is_UnrealEngineString_parent(data.items)
 				) {
-					return create_UnrealEngineStringReference_reference_type(
-						data.items.UnrealEngineStringReference
+					return create_UnrealEngineString_reference_type(
+						data.items.UnrealEngineString
 					);
 				} else if (typed_string_enum.is_supported_schema(data.items)) {
 					return typed_string_enum.value_type(data.items);
@@ -459,8 +459,8 @@ export class TypedArrayString {
 								return supported_$ref.value_type(e);
 							}
 
-							return create_UnrealEngineStringReference_reference_type(
-								e.UnrealEngineStringReference
+							return create_UnrealEngineString_reference_type(
+								e.UnrealEngineString
 							);
 						})
 					);
@@ -495,7 +495,7 @@ export class TypedArrayString {
 			new TypesGenerationFromSchema<typed_array_string_parent>(
 				{
 					definitions:
-						UnrealEngineStringReference_schema_definitions,
+						UnrealEngineString_schema_definitions,
 					...typed_array_string_parent_schema,
 				},
 				(data, reference_name) => {
@@ -515,7 +515,7 @@ export class TypedArrayString {
 			new TypesGenerationFromSchema<typed_array_string>(
 				{
 					definitions:
-						UnrealEngineStringReference_schema_definitions,
+						UnrealEngineString_schema_definitions,
 					...typed_array_string_schema,
 				},
 				(data, reference_name) => this.typed_array_string_type_alias_generator(data, reference_name)
@@ -554,7 +554,7 @@ export class TypedArrayString {
 	): TypeNodeGenerationResult {
 		if (
 			!('oneOf' in data.items)
-			&& !is_UnrealEngineStringReference_general_object(data.items)
+			&& !is_UnrealEngineString_parent(data.items)
 			&& !supported_meta.is_supported_schema(data.items)
 			&& !TypedObjectString.value_is_typed_object_string_general_type(
 				data.items
@@ -574,7 +574,7 @@ export class TypedArrayString {
 			new TypeNodeGeneration<typed_array_string_parent>(
 				{
 					definitions:
-						UnrealEngineStringReference_schema_definitions,
+						UnrealEngineString_schema_definitions,
 					...typed_array_string_parent_schema,
 				},
 				(data) => {
@@ -612,7 +612,7 @@ export class TypedArrayString {
 			new TypeNodeGeneration<typed_array_string>(
 				{
 					definitions:
-						UnrealEngineStringReference_schema_definitions,
+						UnrealEngineString_schema_definitions,
 					...typed_array_string_schema,
 				},
 				(data) => {
@@ -624,7 +624,7 @@ export class TypedArrayString {
 			new TypeNodeGeneration<typed_array_string_oneOf>(
 				{
 					definitions:
-						UnrealEngineStringReference_schema_definitions,
+						UnrealEngineString_schema_definitions,
 					...typed_array_string_oneOf_schema,
 				},
 				(data) => {
@@ -635,8 +635,8 @@ export class TypedArrayString {
 									return supported_$ref.value_type(e);
 								}
 
-								return create_UnrealEngineStringReference_reference_type(
-									e.UnrealEngineStringReference
+								return create_UnrealEngineString_reference_type(
+									e.UnrealEngineString
 								);
 							})
 						);

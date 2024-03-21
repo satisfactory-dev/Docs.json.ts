@@ -14,8 +14,8 @@ import {
 	TypeNodeGenerationResult,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 import {
-	UnrealEngineStringReference,
-} from '../CustomParsingTypes/UnrealEngineStringReference';
+	UnrealEngineString,
+} from '../CustomParsingTypes/UnrealEngineString';
 
 export const target_files = {
 	mScannerDisplayText: 'common/aliases.ts',
@@ -50,7 +50,7 @@ export const generators = [
 			)
 		);
 	}),
-	...UnrealEngineStringReference.TypesGenerators(),
+	...UnrealEngineString.TypesGenerators(),
 ];
 
 export const type_node_generators = [

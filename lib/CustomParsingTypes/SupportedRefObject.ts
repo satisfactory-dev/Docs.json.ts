@@ -10,20 +10,20 @@ import {
 	adjust_class_name,
 } from '../TsFactoryWrapper';
 import {
-	UnrealEngineStringReference,
-} from './UnrealEngineStringReference';
+	UnrealEngineString,
+} from './UnrealEngineString';
 import update8_schema from '../../schema/update8.schema.json' assert {type: 'json'};
 
-const UnrealEngineStringReference_inner =
-	UnrealEngineStringReference.ajv_macro_generator(true);
+const UnrealEngineString_inner =
+	UnrealEngineString.ajv_macro_generator(true);
 
 const $ref_supported = {
 	'#/definitions/mEventType': 'EV_Christmas',
 	'#/definitions/FGSchematic--mUnlocks_mSchematics--mSchematics':
-		UnrealEngineStringReference_inner(
+		UnrealEngineString_inner(
 			update8_schema.definitions[
 				'FGSchematic--mUnlocks_mSchematics--mSchematics'
-			].UnrealEngineStringReference
+			].UnrealEngineString
 		).pattern,
 	'#/definitions/None': 'None',
 	'#/definitions/integer-string': '\\d+',

@@ -51,7 +51,7 @@ import {
 import {
 	adjust_unrealengine_prefix,
 	adjust_unrealengine_value,
-} from '../../CustomParsingTypes/UnrealEngineStringReference';
+} from '../../CustomParsingTypes/UnrealEngineString';
 import {
 	object_only_has_that_property,
 } from '../../CustomParsingTypes/CustomPairingTypes';
@@ -865,7 +865,7 @@ export class Update8TypeNodeGeneration {
 
 		const prefix =
 			schema.definitions['NativeClass--NativeClass']
-				.UnrealEngineStringReference.left;
+				.UnrealEngineString.left;
 
 		const definition_name = ref.substring(14);
 

@@ -17,12 +17,12 @@ import {
 	UnexpectedlyUnknownNoMatchError,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 import {
-	create_UnrealEngineStringReference_reference_type,
-	UnrealEngineStringReference_general_type,
-	UnrealEngineStringReference_general_schema,
-	UnrealEngineStringReference_schema_definitions,
-	is_UnrealEngineStringReference_general_object,
-} from '../CustomParsingTypes/UnrealEngineStringReference';
+	create_UnrealEngineString_reference_type,
+	UnrealEngineString_parent_type,
+	UnrealEngineString_parent_schema,
+	UnrealEngineString_schema_definitions,
+	is_UnrealEngineString_parent,
+} from '../CustomParsingTypes/UnrealEngineString';
 import {
 	enum_schema_type,
 } from '../CustomParsingTypes/TypedStringEnum';
@@ -50,12 +50,12 @@ export const target_files = {
 declare type supported_oneOf_items =
 	| {$ref: '#/definitions/Texture2D--basic'}
 	| {$ref: '#/definitions/None'}
-	| UnrealEngineStringReference_general_type
+	| UnrealEngineString_parent_type
 	| {type: 'string'; const: string}
 	| {type: 'string'; string_starts_with: string};
 
 const definitions = {
-	...UnrealEngineStringReference_schema_definitions,
+	...UnrealEngineString_schema_definitions,
 };
 export const generators = [
 	new TypesGenerationFromSchema<{
@@ -85,7 +85,7 @@ export const generators = [
 									},
 								},
 							},
-							UnrealEngineStringReference_general_schema,
+							UnrealEngineString_parent_schema,
 							{
 								type: 'object',
 								required: ['type', 'const'],
@@ -139,12 +139,12 @@ export const generators = [
 								]
 							);
 						} else if (
-							is_UnrealEngineStringReference_general_object(
+							is_UnrealEngineString_parent(
 								entry
 							)
 						) {
-							return create_UnrealEngineStringReference_reference_type(
-								entry.UnrealEngineStringReference
+							return create_UnrealEngineString_reference_type(
+								entry.UnrealEngineString
 							);
 						}
 

@@ -2,8 +2,8 @@ import Ajv, {
 	_, KeywordCxt,
 } from 'ajv/dist/2020';
 import {
-	UnrealEngineStringReference,
-} from './CustomParsingTypes/UnrealEngineStringReference';
+	UnrealEngineString,
+} from './CustomParsingTypes/UnrealEngineString';
 import {
 	TypedObjectString,
 } from './CustomParsingTypes/TypedObjectString';
@@ -260,7 +260,7 @@ export function configure_ajv(ajv: Ajv): void {
 	already_configured.add(ajv);
 
 	TypedObjectString.configure_ajv(ajv);
-	UnrealEngineStringReference.configure_ajv(ajv);
+	UnrealEngineString.configure_ajv(ajv);
 	TypedArrayString.configure_ajv(ajv);
 
 	ajv.addKeyword({
