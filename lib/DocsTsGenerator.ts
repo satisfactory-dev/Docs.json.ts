@@ -73,7 +73,7 @@ import {
 import {DocsTsAutoImports} from './DocsTsAutoImports';
 import {createHash} from 'node:crypto';
 import {
-	is_non_empty_array,
+	is_non_empty_array, object_has_property,
 	value_is_non_array_object,
 } from './CustomParsingTypes/CustomPairingTypes';
 
@@ -390,18 +390,17 @@ export class DocsTsGenerator {
 	private actually_generate_types(
 		throw_on_failure_to_find = true
 	): generation_result {
-		const target_files: {[key: string]: string} = Object.assign(
-			{},
-			enum_target_files,
-			validator_target_files,
-			vectors_target_files,
-			constants_target_files,
-			prefixes_target_files,
-			arrays_target_files,
-			classes_target_files,
-			unions_target_files,
-			aliases_target_files
-		);
+		const target_files:{[key: string]: string} = {
+			...enum_target_files,
+			...validator_target_files,
+			...vectors_target_files,
+			...constants_target_files,
+			...prefixes_target_files,
+			...arrays_target_files,
+			...classes_target_files,
+			...unions_target_files,
+			...aliases_target_files
+		};
 
 		const generators: TypesGeneration_concrete[] = [
 			...enum_generators,
@@ -527,7 +526,7 @@ export class DocsTsGenerator {
 				for (const result of Classes_results) {
 					const {file, node} = result;
 
-					if ('ref' in result) {
+					if (object_has_property(result, 'ref', (maybe:unknown): maybe is string => 'string' === typeof maybe)) {
 						target_files[result.ref] = file;
 
 						if (!supported_conversion_names.includes(result.ref)) {
