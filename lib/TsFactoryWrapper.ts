@@ -11,6 +11,7 @@ import ts, {
 	NullLiteral,
 	PropertyDeclaration,
 	PropertySignature,
+	RegularExpressionLiteral,
 	StringLiteral,
 	TypeLiteralNode,
 	TypeNode,
@@ -658,14 +659,18 @@ export function create_template_span(
 }
 
 export function create_new_RegExp(
-	first:(Expression|string),
-	...rest:(Expression|string)[]
+	first:(Expression|string|RegExp),
+	...rest:(Expression|string|RegExp)[]
 ) : NewExpression {
 	return ts.factory.createNewExpression(
 		ts.factory.createIdentifier('RegExp'),
 		undefined,
 		[first, ...rest].map(
-			e => 'string' === typeof e? ts.factory.createIdentifier(e) : e
+			e => 'string' === typeof e ? ts.factory.createIdentifier(e) : (
+				e instanceof RegExp
+					? create_literal_node_from_value(e)
+					: e
+			)
 		)
 	);
 }
@@ -890,11 +895,21 @@ export function create_index_access(identifier: string, index: number) {
 }
 
 export function create_literal_node_from_value<
-	T1 extends string | null = string | null,
+	T1 extends string | RegExp | null = string | RegExp | null,
 	T2 = T1 extends null
 		? ts.LiteralTypeNode & {literal: NullLiteral}
-		: ts.LiteralTypeNode & {literal: StringLiteral},
+		: (
+			T1 extends RegExp
+				? RegularExpressionLiteral
+				: (ts.LiteralTypeNode & {literal: StringLiteral})
+		),
 >(value: T1): T2 {
+	if (value instanceof RegExp) {
+		return ts.factory.createRegularExpressionLiteral(
+			value.toString()
+		) as T2;
+	}
+
 	return ts.factory.createLiteralTypeNode(
 		null === value
 			? ts.factory.createNull()

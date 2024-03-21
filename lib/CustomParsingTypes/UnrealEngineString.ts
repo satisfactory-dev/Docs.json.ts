@@ -456,9 +456,7 @@ export class UnrealEngineString {
 													ts.factory.createPropertyAccessExpression(
 														ts.factory.createParenthesizedExpression(
 															create_new_RegExp(
-																	ts.factory.createRegularExpressionLiteral(
-																		UnrealEngineString_regex.toString()
-																	),
+																		UnrealEngineString_regex
 															)
 														),
 														'exec'
