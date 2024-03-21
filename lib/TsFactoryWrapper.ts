@@ -6,6 +6,7 @@ import ts, {
 	LiteralTypeNode,
 	MethodDeclaration,
 	Modifier,
+	NewExpression,
 	NodeArray,
 	NullLiteral,
 	PropertyDeclaration,
@@ -656,6 +657,17 @@ export function create_template_span(
 	);
 }
 
+export function create_new_RegExp(
+	first:Expression,
+	...rest:Expression[]
+) : NewExpression {
+	return ts.factory.createNewExpression(
+		ts.factory.createIdentifier('RegExp'),
+		undefined,
+		[first, ...rest]
+	);
+}
+
 export function very_flexibly_create_regex_validation_function(
 	reference_name: string,
 	regexp_argument: ts.Expression,
@@ -674,11 +686,7 @@ export function very_flexibly_create_regex_validation_function(
 				ts.factory.createCallExpression(
 					ts.factory.createPropertyAccessExpression(
 						ts.factory.createParenthesizedExpression(
-							ts.factory.createNewExpression(
-								ts.factory.createIdentifier('RegExp'),
-								undefined,
-								[regexp_argument]
-							)
+							create_new_RegExp(regexp_argument)
 						),
 						'test'
 					),

@@ -10,6 +10,7 @@ import {
 	create_method_with_type_parameters,
 	create_method_without_type_parameters,
 	create_modifier,
+	create_new_RegExp,
 	create_template_span,
 	create_this_assignment,
 	create_throw_if,
@@ -454,16 +455,10 @@ export class UnrealEngineString {
 												ts.factory.createCallExpression(
 													ts.factory.createPropertyAccessExpression(
 														ts.factory.createParenthesizedExpression(
-															ts.factory.createNewExpression(
-																ts.factory.createIdentifier(
-																	'RegExp'
-																),
-																undefined,
-																[
+															create_new_RegExp(
 																	ts.factory.createRegularExpressionLiteral(
 																		UnrealEngineString_regex.toString()
 																	),
-																]
 															)
 														),
 														'exec'
@@ -532,16 +527,10 @@ export class UnrealEngineString {
 										ts.factory.createCallExpression(
 											ts.factory.createPropertyAccessExpression(
 												ts.factory.createParenthesizedExpression(
-													ts.factory.createNewExpression(
-														ts.factory.createIdentifier(
-															'RegExp'
-														),
-														undefined,
-														[
+													create_new_RegExp(
 															ts.factory.createIdentifier(
 																'pattern'
 															),
-														]
 													)
 												),
 												'test'
