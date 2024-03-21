@@ -30,7 +30,7 @@ import {
 	FragileTypeSafetyError,
 	TypeNodeGeneration,
 	TypeNodeGenerationResult,
-	UnexpectedlyUnknownNoMatchError,
+	UnexpectedlyUnknown,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 import ts, {
 	TypeLiteralNode, TypeReferenceNode,
@@ -445,7 +445,7 @@ export class TypedObjectString {
 			const maybe_definition_key = $ref.substring(14);
 
 			if (!(maybe_definition_key in schema.definitions)) {
-				throw new UnexpectedlyUnknownNoMatchError(
+				throw new UnexpectedlyUnknown(
 					{[property]: value},
 					'$ref not found in schema!'
 				);
@@ -457,7 +457,7 @@ export class TypedObjectString {
 				];
 
 			if (!value_is_non_array_object(definition)) {
-				throw new UnexpectedlyUnknownNoMatchError(
+				throw new UnexpectedlyUnknown(
 					definition,
 					'Array found in definitions!'
 				);
@@ -471,14 +471,14 @@ export class TypedObjectString {
 			}
 
 			if (!value_is_non_array_object(definition)) {
-				throw new UnexpectedlyUnknownNoMatchError(
+				throw new UnexpectedlyUnknown(
 					definition,
 					'Array found in definitions!'
 				);
 			}
 
 			if (!this.is_$ref_object_dictionary(definition)) {
-				throw new UnexpectedlyUnknownNoMatchError(
+				throw new UnexpectedlyUnknown(
 					definition,
 					`${$ref} not supported!`
 				);
@@ -537,7 +537,7 @@ export class TypedObjectString {
 				&& !is_generally_supported_oneOf_array
 				&& !object_has_typed_object_string
 			) {
-				throw new UnexpectedlyUnknownNoMatchError(
+				throw new UnexpectedlyUnknown(
 					{definition},
 					'typed_object_string property not usable!'
 				);
@@ -556,7 +556,7 @@ export class TypedObjectString {
 					.map((e) => e.typed_object_string)
 					.map((e, index) => {
 						if (!this.is_$ref_object_dictionary(e)) {
-							throw new UnexpectedlyUnknownNoMatchError(
+							throw new UnexpectedlyUnknown(
 								e,
 								`${property}.oneOf[${index}] not an object dictionary!`
 							);
@@ -573,7 +573,7 @@ export class TypedObjectString {
 								true
 							)(e.UnrealEngineString).pattern;
 						} else if (!('$ref' in e)) {
-							throw new UnexpectedlyUnknownNoMatchError(
+							throw new UnexpectedlyUnknown(
 								e,
 								'missing $ref!'
 							);
@@ -585,13 +585,13 @@ export class TypedObjectString {
 							return schema.definitions.None.const;
 						}
 
-						throw new UnexpectedlyUnknownNoMatchError(e);
+						throw new UnexpectedlyUnknown(e);
 					})
 					.join('|')})`;
 			} else if (
 				!this.is_$ref_object_dictionary(definition.typed_object_string)
 			) {
-				throw new UnexpectedlyUnknownNoMatchError(
+				throw new UnexpectedlyUnknown(
 					{definition},
 					'typed_object_string property not usable!'
 				);
@@ -620,7 +620,7 @@ export class TypedObjectString {
 				value_regex = `(?:-${value_regex}|${value_regex})`;
 			}
 		} else if (local_ref('boolean') !== $ref) {
-			throw new UnexpectedlyUnknownNoMatchError(
+			throw new UnexpectedlyUnknown(
 				{property, value},
 				'Unsupported $ref_to_regex call'
 			);
@@ -704,7 +704,7 @@ export class TypedObjectString {
 		}
 
 		if (current_depth > 10) {
-			throw new UnexpectedlyUnknownNoMatchError(
+			throw new UnexpectedlyUnknown(
 				maybe,
 				'Cannot exceed 10 levels of recursion!'
 			);
@@ -889,7 +889,7 @@ export class TypedObjectString {
 						return `(?:${annoyingly_have_to_escape_property(entry[0])}=\\(${value_regex}(?:,${value_regex})*\\))`;
 					}
 
-					throw new UnexpectedlyUnknownNoMatchError(
+					throw new UnexpectedlyUnknown(
 						items,
 						'Unsupported!'
 					);
@@ -919,7 +919,7 @@ export class TypedObjectString {
 							(e): e is typed_object_string_general_type => this.value_is_typed_object_string_general_type(e)
 						)
 					) {
-						throw new UnexpectedlyUnknownNoMatchError(
+						throw new UnexpectedlyUnknown(
 							entry[1],
 							'Not quite supported here yet'
 						);
@@ -1030,7 +1030,7 @@ export class TypedObjectString {
 						);
 					}
 
-					throw new UnexpectedlyUnknownNoMatchError(
+					throw new UnexpectedlyUnknown(
 						data,
 						'not yet supported'
 					);
@@ -1059,7 +1059,7 @@ export class TypedObjectString {
 											if (
 												!this.is_$ref_object(entry[1])
 											) {
-												throw new UnexpectedlyUnknownNoMatchError(
+												throw new UnexpectedlyUnknown(
 													entry,
 													`${reference_name}.oneOf[${index}][${entry[0]}] not supported!`
 												);
@@ -1118,7 +1118,7 @@ export class TypedObjectString {
 													value
 												)
 											) {
-												throw new UnexpectedlyUnknownNoMatchError(
+												throw new UnexpectedlyUnknown(
 													value,
 													`${reference_name}[${property}] not supported!`
 												);
@@ -1296,7 +1296,7 @@ export class TypedObjectString {
 							),
 						];
 					} else if (!this.is_$ref_object(value)) {
-						throw new UnexpectedlyUnknownNoMatchError(
+						throw new UnexpectedlyUnknown(
 							{[property]: value},
 							'not yet supported in general type to object type'
 						);
@@ -1351,7 +1351,7 @@ export class TypedObjectString {
 												e[1]
 											)
 										) {
-											throw new UnexpectedlyUnknownNoMatchError(
+											throw new UnexpectedlyUnknown(
 												e[1],
 												`${e[0]} not a supported type!`
 											);
@@ -1391,7 +1391,7 @@ export class TypedObjectString {
 						!is_$ref_object_dictionary
 						&& !is_combination_dictionary
 					) {
-						throw new UnexpectedlyUnknownNoMatchError(
+						throw new UnexpectedlyUnknown(
 							data.typed_object_string,
 							'not yet supported in type node generation'
 						);

@@ -10,7 +10,7 @@ import ts, {
 	EntityName,
 } from 'typescript';
 import {
-	UnexpectedlyUnknownNoMatchError,
+	UnexpectedlyUnknown,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 
 export class LiteralTypeNodes extends NodeExtraction<LiteralTypeNode> {
@@ -37,7 +37,7 @@ export class LiteralTypeNodes extends NodeExtraction<LiteralTypeNode> {
 		}
 
 		if (others.length > 0) {
-			throw new UnexpectedlyUnknownNoMatchError(
+			throw new UnexpectedlyUnknown(
 				others,
 				'Unsupported types found!'
 			);

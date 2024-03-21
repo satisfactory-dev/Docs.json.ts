@@ -3,7 +3,7 @@ import {
 	Update8TypeNodeGeneration,
 } from './Update8/TypeNodeGeneration';
 import {
-	UnexpectedlyUnknownNoMatchError,
+	UnexpectedlyUnknown,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 import {
 	local_ref,
@@ -69,7 +69,7 @@ export function is_ref(ref: string): ref is definition_key {
 
 export function check_ref(ref: string): definition_key {
 	if (!is_ref(ref)) {
-		throw new UnexpectedlyUnknownNoMatchError(
+		throw new UnexpectedlyUnknown(
 			{ref},
 			`not in the update 8 schema!`
 		);

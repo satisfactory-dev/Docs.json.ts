@@ -10,7 +10,7 @@ import {
 import {
 	TypeNodeGeneration,
 	TypeNodeGenerationResult,
-	UnexpectedlyUnknownNoMatchError,
+	UnexpectedlyUnknown,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 import {
 	TypedObjectString,
@@ -91,7 +91,7 @@ export const type_node_generators = [
 				property['$ref'].substring(14)
 			);
 			if (!(reference_name in target_files)) {
-				throw new UnexpectedlyUnknownNoMatchError(
+				throw new UnexpectedlyUnknown(
 					{
 						target_files,
 					},

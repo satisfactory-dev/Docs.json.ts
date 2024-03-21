@@ -6,7 +6,7 @@ import {
 } from 'ajv/dist/2020';
 import ts from 'typescript';
 import {
-	UnexpectedlyUnknownNoMatchError,
+	UnexpectedlyUnknown,
 } from './SchemaBasedResultsMatching/TypeNodeGeneration';
 
 declare type code_generator<
@@ -59,7 +59,7 @@ export class TypesGenerationFromSchema<
 
 	generate(data: T, reference_name: string): ts.Node {
 		if (!this.test(data)) {
-			throw new UnexpectedlyUnknownNoMatchError(
+			throw new UnexpectedlyUnknown(
 				data,
 				'Data is unsupported by this instance of code generation!'
 			);
@@ -90,7 +90,7 @@ export class TypesGenerationMatchesReferenceName<
 
 	generate(data: T1, reference_name: T2): ts.Node {
 		if (!this.test(reference_name)) {
-			throw new UnexpectedlyUnknownNoMatchError(
+			throw new UnexpectedlyUnknown(
 				{data, reference_name},
 				'Data is unsupported by this instance of code generation!'
 			);
@@ -151,7 +151,7 @@ export class ImportTracker {
 				const [from, import_these] = inner_entry;
 
 				if (from.endsWith('.ts')) {
-					throw new UnexpectedlyUnknownNoMatchError(
+					throw new UnexpectedlyUnknown(
 						from,
 						'files ending with .ts should not end up here'
 					);

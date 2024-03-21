@@ -83,9 +83,9 @@ export class NoMatchError<
 	T = unknown,
 > extends UnsuccessfulMatchException<T> {}
 
-export class UnexpectedlyUnknownNoMatchError extends NoMatchError {}
+export class UnexpectedlyUnknown extends NoMatchError {}
 
-export class FragileTypeSafetyError extends UnexpectedlyUnknownNoMatchError
+export class FragileTypeSafetyError extends UnexpectedlyUnknown
 {
 	constructor(property: unknown) {
 		super(
@@ -319,7 +319,7 @@ export function create_constructor_args<T1 extends string = string>(
 	}
 
 	if (!type) {
-		throw new UnexpectedlyUnknownNoMatchError(
+		throw new UnexpectedlyUnknown(
 			data,
 			'unsupported type found!'
 		);

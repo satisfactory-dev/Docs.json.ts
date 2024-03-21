@@ -15,7 +15,7 @@ import {
 import {
 	TypeNodeGeneration,
 	TypeNodeGenerationResult,
-	UnexpectedlyUnknownNoMatchError,
+	UnexpectedlyUnknown,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 import {
 	UnrealEngineString_reference_type,
@@ -150,7 +150,7 @@ export const generators = [
 							);
 						}
 
-						throw new UnexpectedlyUnknownNoMatchError(
+						throw new UnexpectedlyUnknown(
 							entry,
 							'Unsupported type!'
 						);

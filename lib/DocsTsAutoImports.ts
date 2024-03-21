@@ -14,7 +14,7 @@ import {
 	from_Node_array,
 } from './DocsToAutoImport/from_Node_array';
 import {
-	UnexpectedlyUnknownNoMatchError,
+	UnexpectedlyUnknown,
 } from './SchemaBasedResultsMatching/TypeNodeGeneration';
 
 declare type initial_check_nodes =
@@ -131,7 +131,7 @@ export class DocsTsAutoImports {
 
 			for (const export_name of exports_these) {
 				if (export_name in this.comes_from) {
-					throw new UnexpectedlyUnknownNoMatchError(
+					throw new UnexpectedlyUnknown(
 						entry,
 						`${export_name} conflict!`
 					);

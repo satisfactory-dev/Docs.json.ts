@@ -15,7 +15,7 @@ import {
 import {
 	TypeNodeGeneration,
 	TypeNodeGenerationResult,
-	UnexpectedlyUnknownNoMatchError,
+	UnexpectedlyUnknown,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 import {
 	adjust_class_name,
@@ -404,7 +404,7 @@ export class TypedArrayString {
 			return `(?:${item.oneOf.map((e) => this.item_to_regex(e)).join('|')})`;
 		}
 
-		throw new UnexpectedlyUnknownNoMatchError(
+		throw new UnexpectedlyUnknown(
 			item,
 			'Currently unsupported in TypedArrayString.item_to_regex'
 		);
@@ -421,7 +421,7 @@ export class TypedArrayString {
 				data.items
 			)
 		) {
-			throw new UnexpectedlyUnknownNoMatchError(
+			throw new UnexpectedlyUnknown(
 				data.items,
 				'Currently unsupported.'
 			);
@@ -511,7 +511,7 @@ export class TypedArrayString {
 						);
 					}
 
-					throw new UnexpectedlyUnknownNoMatchError(
+					throw new UnexpectedlyUnknown(
 						data,
 						'not yet supported'
 					);
@@ -545,7 +545,7 @@ export class TypedArrayString {
 							return this.typed_array(e.typed_array_string);
 						}
 
-						throw new UnexpectedlyUnknownNoMatchError(
+						throw new UnexpectedlyUnknown(
 							e,
 							'not yet supported'
 						);
@@ -573,7 +573,7 @@ export class TypedArrayString {
 				data.items
 			)
 		) {
-			throw new UnexpectedlyUnknownNoMatchError(
+			throw new UnexpectedlyUnknown(
 				data.items,
 				'Currently unsupported.'
 			);
@@ -616,7 +616,7 @@ export class TypedArrayString {
 					});
 				}
 
-				throw new UnexpectedlyUnknownNoMatchError(
+				throw new UnexpectedlyUnknown(
 					data,
 					'Unsupported type found'
 				);

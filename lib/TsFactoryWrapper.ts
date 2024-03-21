@@ -27,7 +27,7 @@ import ts, {
 	VariableStatement,
 } from 'typescript';
 import {
-	UnexpectedlyUnknownNoMatchError,
+	UnexpectedlyUnknown,
 } from './SchemaBasedResultsMatching/TypeNodeGeneration';
 import {
 	typed_object_string_type,
@@ -112,7 +112,7 @@ function maybe_expression_node_from_literal(
 ): Expression | undefined {
 	if (ts.isLiteralTypeNode(node)) {
 		if (node.literal.kind !== ts.SyntaxKind.StringLiteral) {
-			throw new UnexpectedlyUnknownNoMatchError(
+			throw new UnexpectedlyUnknown(
 				node.literal,
 				'Unsupported literal type found!'
 			);
@@ -359,7 +359,7 @@ export function createClass__members__with_auto_constructor<
 							property_data_ref
 						)
 					) {
-						throw new UnexpectedlyUnknownNoMatchError(
+						throw new UnexpectedlyUnknown(
 							property_data_ref,
 							'Unsupported property type!'
 						);

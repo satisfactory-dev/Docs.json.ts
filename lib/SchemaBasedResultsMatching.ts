@@ -6,7 +6,7 @@ import {
 	OneOfOrAnyOfNoMatchError,
 	PartialMatchError,
 	PropertyMatchFailure,
-	UnexpectedlyUnknownNoMatchError,
+	UnexpectedlyUnknown,
 } from './SchemaBasedResultsMatching/TypeNodeGeneration';
 import {
 	object_only_has_that_property,
@@ -306,7 +306,7 @@ export abstract class ResultGenerationMatcher<
 			);
 
 			if (!first) {
-				throw new UnexpectedlyUnknownNoMatchError(
+				throw new UnexpectedlyUnknown(
 					property.prefixItems[0],
 					'Failed to match first member of tuple'
 				);
@@ -319,7 +319,7 @@ export abstract class ResultGenerationMatcher<
 			);
 
 			if (!second) {
-				throw new UnexpectedlyUnknownNoMatchError(
+				throw new UnexpectedlyUnknown(
 					property.prefixItems[1],
 					'Failed to match second member of tuple'
 				);

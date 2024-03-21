@@ -7,7 +7,7 @@ import {
 	TypeNodeGeneration,
 	TypeNodeGenerationMatcher,
 	TypeNodeGenerationResult,
-	UnexpectedlyUnknownNoMatchError,
+	UnexpectedlyUnknown,
 } from '../../SchemaBasedResultsMatching/TypeNodeGeneration';
 import ts from 'typescript';
 import {
@@ -133,7 +133,7 @@ export class Update8TypeNodeGeneration {
 		const parent_ref = tree[1];
 
 		if (!parent_ref) {
-			throw new UnexpectedlyUnknownNoMatchError(
+			throw new UnexpectedlyUnknown(
 				{ref},
 				'No parent ref found!'
 			);
@@ -277,7 +277,7 @@ export class Update8TypeNodeGeneration {
 		const parent_ref = tree[1];
 
 		if (!parent_ref) {
-			throw new UnexpectedlyUnknownNoMatchError(
+			throw new UnexpectedlyUnknown(
 				{ref},
 				'No parent class found'
 			);
@@ -497,7 +497,7 @@ export class Update8TypeNodeGeneration {
 				EditorCurveData_required_expected
 			)
 		) {
-			throw new UnexpectedlyUnknownNoMatchError(
+			throw new UnexpectedlyUnknown(
 				{
 					keys: Object.keys(
 						schema.definitions['EditorCurveData--only']
@@ -514,7 +514,7 @@ export class Update8TypeNodeGeneration {
 					.EditorCurveData
 			)
 		) {
-			throw new UnexpectedlyUnknownNoMatchError(
+			throw new UnexpectedlyUnknown(
 				schema.definitions[
 					'EditorCurveData--only'
 				].typed_object_string.EditorCurveData,
