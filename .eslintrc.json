@@ -19,6 +19,13 @@
 				"ImportDeclaration": 1
 			}
 		],
+		"max-len": [
+			"warn",
+			79,
+			{
+				"ignoreTemplateLiterals": true
+			}
+		],
 		"object-curly-newline": [
 			"error",
 			{
