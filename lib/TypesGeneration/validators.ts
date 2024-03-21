@@ -1,6 +1,5 @@
 import ts from 'typescript';
 import {
-	ImportTracker,
 	TypesGenerationFromSchema,
 	TypesGenerationMatchesReferenceName,
 } from '../TypesGeneration';

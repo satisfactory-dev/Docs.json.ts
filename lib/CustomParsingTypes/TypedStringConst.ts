@@ -36,8 +36,7 @@ class TypedStringConst extends SupportedSubSchemaType<
 			&& 2 === Object.keys(maybe).length
 			&& object_has_property(maybe, 'type')
 			&& 'string' === maybe.type
-			&& object_has_property(maybe, 'const')
-			&& 'string' === typeof maybe.const
+			&& object_has_property(maybe, 'const', (maybe:unknown): maybe is string => 'string' === typeof maybe)
 			&& typed_string_const_value_regex__native.test(maybe.const)
 		);
 	}
