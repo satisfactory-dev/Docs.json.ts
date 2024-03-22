@@ -1057,7 +1057,7 @@ export class TypedObjectString {
 									Object.fromEntries(
 										Object.entries(
 											e.typed_object_string
-										).map((entry) => {
+										).map((entry) : [string, $ref_choices] => {
 											if (
 												!this.is_$ref_object(entry[1])
 											) {
@@ -1067,6 +1067,8 @@ export class TypedObjectString {
 												);
 											}
 
+											return [entry[0], entry[1]];
+										}).map((entry) => {
 											return [
 												entry[0],
 												type_reference_node(
