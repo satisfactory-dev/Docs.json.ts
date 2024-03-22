@@ -1186,7 +1186,7 @@ export class TypedObjectString {
 					) {
 						return [
 							property,
-							this.general_type_to_object_type(value),
+							this.literal_node(value),
 						];
 					}
 
@@ -1202,7 +1202,7 @@ export class TypedObjectString {
 		);
 	}
 
-	public static general_type_to_object_type(
+	public static literal_node(
 		data: general_type
 	): TypeLiteralNode {
 		return create_object_type(
@@ -1278,7 +1278,7 @@ export class TypedObjectString {
 										);
 									}
 
-									return TypedObjectString.general_type_to_object_type(
+									return TypedObjectString.literal_node(
 										items
 									);
 								},
@@ -1358,7 +1358,7 @@ export class TypedObjectString {
 
 										return [
 											e[0],
-											this.general_type_to_object_type({
+											this.literal_node({
 												type: 'string',
 												typed_object_string: e[1],
 											}),
@@ -1397,7 +1397,7 @@ export class TypedObjectString {
 					}
 
 					return new TypeNodeGenerationResult(() =>
-						this.general_type_to_object_type(data)
+						this.literal_node(data)
 					);
 				}
 			),

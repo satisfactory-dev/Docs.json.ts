@@ -471,7 +471,7 @@ export class TypedArrayString {
 					);
 				}
 
-				return TypedObjectString.general_type_to_object_type(
+				return TypedObjectString.literal_node(
 					data.items
 				);
 			},
