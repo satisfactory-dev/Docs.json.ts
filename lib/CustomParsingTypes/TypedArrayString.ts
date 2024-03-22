@@ -1,10 +1,10 @@
 import Ajv from 'ajv/dist/2020';
 import {
-	UnrealEngineString_reference_type,
 	is_UnrealEngineString_parent,
 	UnrealEngineString,
 	UnrealEngineString_parent_schema,
 	UnrealEngineString_parent_type,
+	UnrealEngineString_reference_type,
 	UnrealEngineString_schema_definitions,
 } from './UnrealEngineString';
 import {
@@ -446,8 +446,8 @@ export class TypedArrayString {
 				if (
 					is_UnrealEngineString_parent(data.items)
 				) {
-					return UnrealEngineString_reference_type(
-						data.items.UnrealEngineString
+					return UnrealEngineString.type_from_parent(
+						data.items
 					);
 				} else if (typed_string_enum.is_supported_schema(data.items)) {
 					return typed_string_enum.value_type(data.items);
@@ -650,9 +650,7 @@ export class TypedArrayString {
 									return supported_$ref.value_type(e);
 								}
 
-								return UnrealEngineString_reference_type(
-									e.UnrealEngineString
-								);
+								return UnrealEngineString.type_from_parent(e);
 							})
 						);
 					});

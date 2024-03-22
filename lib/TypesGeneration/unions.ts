@@ -15,14 +15,12 @@ import {
 import {
 	TypeNodeGeneration,
 	TypeNodeGenerationResult,
-	UnexpectedlyUnknown,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 import {
-	UnrealEngineString_reference_type,
 	UnrealEngineString_parent_type,
 	UnrealEngineString_parent_schema,
 	UnrealEngineString_schema_definitions,
-	is_UnrealEngineString_parent,
+	UnrealEngineString,
 } from '../CustomParsingTypes/UnrealEngineString';
 import {
 	enum_schema_type,
@@ -140,20 +138,9 @@ export const generators = [
 									)
 								),
 							);
-						} else if (
-							is_UnrealEngineString_parent(
-								entry
-							)
-						) {
-							return UnrealEngineString_reference_type(
-								entry.UnrealEngineString
-							);
 						}
 
-						throw new UnexpectedlyUnknown(
-							entry,
-							'Unsupported type!'
-						);
+						return UnrealEngineString.type_from_parent(entry);
 					})
 				)
 			);

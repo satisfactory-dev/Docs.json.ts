@@ -30,6 +30,7 @@ import {
 import {
 	TypeNodeGeneration,
 	TypeNodeGenerationResult,
+	UnexpectedlyUnknown,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 import {
 	TypesGenerationFromSchema,
@@ -107,7 +108,10 @@ export function check_UnrealEngineString_parent(
 		: UnrealEngineString_parent_type
 ) {
 	if (!is_UnrealEngineString_parent(maybe)) {
-		throw new Error('Not an UnrealEngineString_parent object!');
+		throw new UnexpectedlyUnknown(
+			maybe,
+			'Not an UnrealEngineString_parent object!'
+		);
 	}
 
 	return maybe;
@@ -328,9 +332,7 @@ export class UnrealEngineString {
 						[create_modifier('export')],
 						adjust_class_name(reference_name),
 						undefined,
-						UnrealEngineString_reference_type(
-							data.UnrealEngineString
-						)
+						UnrealEngineString.type_from_parent(data)
 					);
 				}
 			),
@@ -623,13 +625,21 @@ export class UnrealEngineString {
 				},
 				(data_from_schema) => {
 					return new TypeNodeGenerationResult(() => {
-						return UnrealEngineString_reference_type(
-							data_from_schema.UnrealEngineString
+						return UnrealEngineString.type_from_parent(
+							data_from_schema
 						);
 					});
 				}
 			),
 		];
+	}
+
+	static type_from_parent(
+		maybe:unknown
+	) : TypeReferenceNode {
+		return UnrealEngineString_reference_type(
+			check_UnrealEngineString_parent(maybe).UnrealEngineString
+		);
 	}
 }
 

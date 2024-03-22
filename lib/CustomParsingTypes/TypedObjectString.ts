@@ -1,6 +1,5 @@
 import Ajv from 'ajv/dist/2020';
 import {
-	UnrealEngineString_reference_type,
 	is_UnrealEngineString_parent,
 	is_UnrealEngineString_type,
 	UnrealEngineString,
@@ -1269,12 +1268,8 @@ export class TypedObjectString {
 											items
 										)
 									) {
-										return UnrealEngineString_reference_type(
-											check_UnrealEngineString_parent(
-												items
-											)
-												.UnrealEngineString
-										);
+										return UnrealEngineString
+											.type_from_parent(items);
 									} else if (
 										supported_meta.is_supported_schema(
 											items
@@ -1299,9 +1294,7 @@ export class TypedObjectString {
 					) {
 						return [
 							property,
-							UnrealEngineString_reference_type(
-								value.UnrealEngineString
-							),
+							UnrealEngineString.type_from_parent(value),
 						];
 					} else if (!this.is_$ref_object(value)) {
 						throw new UnexpectedlyUnknown(
