@@ -957,8 +957,7 @@ export class TypedObjectString {
 	}
 
 	static TypesGenerators() {
-		return [
-			new TypesGenerationFromSchema<general_type>(
+		const general_type = new TypesGenerationFromSchema<general_type>(
 				{
 					definitions:
 						UnrealEngineString_schema_definitions,
@@ -1033,7 +1032,9 @@ export class TypedObjectString {
 						'not yet supported'
 					);
 				}
-			),
+		);
+		return [
+			general_type,
 			new TypesGenerationFromSchema<{
 				oneOf: array_type;
 			}>(
