@@ -241,7 +241,7 @@ export function createClass(
 	);
 }
 
-export const auto_constructor_property_types_from_generated_types = {
+export const pre_adjusted_$ref_class_names = {
 	[local_ref('xyz--semi-native')]: adjust_class_name('xyz--semi-native'),
 	[local_ref('decimal-string--signed')]: adjust_class_name(
 		'decimal-string--signed__type'
@@ -262,9 +262,14 @@ export type auto_constructor_property_types<
 	Properties extends string = string,
 > = {
 	[key in Properties]: {
-		$ref: keyof typeof auto_constructor_property_types_from_generated_types;
+		$ref: keyof typeof pre_adjusted_$ref_class_names;
 	};
 };
+
+const EditorCurveData =
+	schema.definitions[
+		'EditorCurveData--only'
+	].typed_object_string.EditorCurveData;
 
 export type auto_constructor_property_types_from_generated_types_object<
 	Required extends [string, ...string[]],
@@ -280,7 +285,7 @@ export type auto_constructor_property_types_from_generated_types_object<
 				]: auto_constructor_property_types<Properties>;
 		}
 		| typed_object_string_type
-		| (typeof schema.definitions)['EditorCurveData--only']['typed_object_string']['EditorCurveData'];
+		| typeof EditorCurveData;
 };
 
 export function create_callExpression__for_validation_function(
@@ -309,10 +314,10 @@ export function create_callExpression__for_validation_function(
 function is_supported_auto_constructor_property_type(
 	prop: string
 ): prop is Exclude<
-	keyof typeof auto_constructor_property_types_from_generated_types,
+	keyof typeof pre_adjusted_$ref_class_names,
 	number
 > {
-	return prop in auto_constructor_property_types_from_generated_types;
+	return prop in pre_adjusted_$ref_class_names;
 }
 
 export function is_supported_properties_object(object: {
@@ -370,7 +375,7 @@ export function createClass__members__with_auto_constructor<
 
 					let type: ts.TypeNode = type_reference_node(
 						adjust_class_name(
-							auto_constructor_property_types_from_generated_types[
+							pre_adjusted_$ref_class_names[
 								property_data_ref
 							]
 						)
@@ -422,7 +427,7 @@ export function createClass__members__with_auto_constructor<
 				if (
 					property[
 						'$ref'
-					] in auto_constructor_property_types_from_generated_types
+					] in pre_adjusted_$ref_class_names
 				) {
 					return create_this_assignment(
 						property_name,

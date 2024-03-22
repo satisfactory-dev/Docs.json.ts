@@ -15,7 +15,7 @@ import {
 } from '../TypesGeneration';
 import {
 	adjust_class_name,
-	auto_constructor_property_types_from_generated_types,
+	pre_adjusted_$ref_class_names,
 	auto_constructor_property_types,
 	minimum_size_array_of_single_type,
 	create_modifier,
@@ -745,7 +745,7 @@ export class TypedObjectString {
 			&& Object.values(maybe).every((value) => {
 				return (
 					value.$ref in
-					auto_constructor_property_types_from_generated_types
+					pre_adjusted_$ref_class_names
 				);
 			})
 		);
