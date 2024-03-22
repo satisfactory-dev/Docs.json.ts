@@ -11,7 +11,9 @@ import {
 import {
 	object_only_has_that_property,
 } from './CustomParsingTypes/CustomPairingTypes';
-import {is_string} from './StringStartsWith';
+import {
+	is_string,
+} from './StringStartsWith';
 
 export class GenerationResult<T> {
 	readonly generate: () => T;

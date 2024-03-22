@@ -12,7 +12,9 @@ import {
 import {
 	create_literal,
 } from '../TsFactoryWrapper';
-import {is_string} from '../StringStartsWith';
+import {
+	is_string,
+} from '../StringStartsWith';
 
 export const typed_string_const_value_regex = `^(?:[A-Za-z0-9][A-Za-z0-9_ -]*|${UnrealEngineString_general_regex})$`;
 export const typed_string_const_value_regex__native = new RegExp(

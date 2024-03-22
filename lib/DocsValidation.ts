@@ -13,7 +13,9 @@ import {
 import {
 	object_has_property,
 } from './CustomParsingTypes/CustomPairingTypes';
-import {is_string} from './StringStartsWith';
+import {
+	is_string,
+} from './StringStartsWith';
 
 declare type array_tokenizer = {
 	values: unknown[];

@@ -29,7 +29,9 @@ import {
 	ResultGeneration,
 	ResultGenerationMatcher,
 } from '../SchemaBasedResultsMatching';
-import {is_string} from '../StringStartsWith';
+import {
+	is_string,
+} from '../StringStartsWith';
 
 export class TypeNodeGenerationResult extends GenerationResult<ts.TypeNode> {
 	readonly import_these_somewhere_later: import_these_somewhere_later;

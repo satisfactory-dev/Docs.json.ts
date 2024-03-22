@@ -100,7 +100,9 @@ import {
 	is_non_empty_array, object_has_property,
 	value_is_non_array_object,
 } from './CustomParsingTypes/CustomPairingTypes';
-import {is_string} from './StringStartsWith';
+import {
+	is_string,
+} from './StringStartsWith';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
