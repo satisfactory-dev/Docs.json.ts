@@ -348,8 +348,10 @@ export function createClass__members__with_auto_constructor<
 			): [
 				string, // property name
 				[
-					() => ts.KeywordTypeSyntaxKind | ts.TypeNode, // property type
-					() => ts.KeywordTypeSyntaxKind | ts.TypeNode, // constructor arg type
+					// property type
+					() => ts.KeywordTypeSyntaxKind | ts.TypeNode,
+					// constructor arg type
+					() => ts.KeywordTypeSyntaxKind | ts.TypeNode,
 				],
 			] => {
 				const generator = () => {
@@ -745,7 +747,9 @@ export function flexibly_create_regex_validation_function(
 	regexp_argument: Expression|string,
 	parameters: ts.ParameterDeclaration[],
 	error_template_spans: ts.TemplateSpan[],
-	pattern_argument: (() => [TypeNode, ...TypeNode[]]) | undefined = undefined,
+	pattern_argument:
+		| (() => [TypeNode, ...TypeNode[]])
+		| undefined = undefined,
 	type_parameters:
 		| [ts.TypeParameterDeclaration, ...ts.TypeParameterDeclaration[]]
 		| undefined = undefined
