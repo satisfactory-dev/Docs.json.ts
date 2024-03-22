@@ -32,9 +32,7 @@ import {
 import {
 	typed_object_string_type,
 } from './CustomParsingTypes/TypedObjectString';
-import {
-	schema,
-} from './Schemas/Update8';
+import schema from '../schema/update8.schema.json' assert {type: 'json'};
 import {
 	local_ref,
 	is_string,
