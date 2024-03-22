@@ -1088,51 +1088,45 @@ export class TypedObjectString {
 						UnrealEngineString_schema_definitions,
 					...nested_schema,
 				},
-				(data, reference_name) => {
-					return createClass(
-						adjust_class_name(reference_name),
-						createClass__members__with_auto_constructor(
-							{
-								type: 'object',
-								required: Object.keys(
-									data.typed_object_string
-								) as [string, ...string[]],
-								properties: Object.fromEntries(Object.entries(
-									data.typed_object_string
-								).map(
-									(
-										e
-									): [
-										string,
-										auto_constructor_property_types,
-									] => {
-										const [property, value] = e;
-
-										if (
-											!this.is_$ref_object_dictionary(
-												value
-											)
-											|| !this.is_auto_constructor_properties(
-												value
-											)
-										) {
-											throw new UnexpectedlyUnknown(
-												value,
-												`${reference_name}[${property}] not supported!`
-											);
-										}
-
-										return [property, value];
-									}
-								)),
-							},
-							['public', 'readonly']
-						),
+				(data, reference_name) => createClass(
+					adjust_class_name(reference_name),
+					createClass__members__with_auto_constructor(
 						{
-							modifiers: ['export'],
-						}
-					);
-				}
+							type: 'object',
+							required: Object.keys(
+								data.typed_object_string
+							) as [string, ...string[]],
+							properties: Object.fromEntries(Object.entries(
+								data.typed_object_string
+							).map((e): [
+								string,
+								auto_constructor_property_types,
+							] => {
+								const [property, value] = e;
+
+								if (
+									!this.is_$ref_object_dictionary(
+										value
+									)
+									|| !this.is_auto_constructor_properties(
+										value
+									)
+								) {
+									throw new UnexpectedlyUnknown(
+										value,
+										`${reference_name}[${property}] not supported!`
+									);
+								}
+
+								return [property, value];
+							})),
+						},
+						['public', 'readonly']
+					),
+					{
+						modifiers: ['export'],
+					}
+				)
 			),
 		];
 	}
