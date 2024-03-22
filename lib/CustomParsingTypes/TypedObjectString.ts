@@ -1057,7 +1057,9 @@ export class TypedObjectString {
 									Object.fromEntries(
 										Object.entries(
 											e.typed_object_string
-										).map((entry) : [string, $ref_choices] => {
+										).map((
+											entry
+										) : [string, $ref_choices] => {
 											if (
 												!this.is_$ref_object(entry[1])
 											) {
