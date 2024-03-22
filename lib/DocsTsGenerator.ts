@@ -316,22 +316,18 @@ export class DocsTsGenerator {
 					DocsTsGenerator.PERF_VALIDATION_PRECOMPILE
 				);
 
-				await writeFile(
-					filepath,
-					(
-						standalone(
-							default_config.ajv,
-							default_config.ajv.compile(schema)
-						).replace(
-							/^"use strict";/,
-							[
-								// adapted from https://stackoverflow.com/a/77047149/23528553
-								'import { createRequire } from "module";',
-								'const require = createRequire(import.meta.url);',
-							].join('')
-						)
-					)
-				);
+				await writeFile(filepath, standalone(
+					default_config.ajv,
+					default_config.ajv.compile(schema)
+				).replace(/^"use strict";/, [
+					'"use strict";',
+					/*
+					 * adapted from solution on stackoverflow
+					 * https://stackoverflow.com/a/77047149/23528553
+					 */
+					'import { createRequire } from "module";',
+					'const require = createRequire(import.meta.url);',
+				].join('')));
 				performance.measure(
 					'ajv pre-compilation done',
 					DocsTsGenerator.PERF_VALIDATION_PRECOMPILE,
@@ -345,7 +341,7 @@ export class DocsTsGenerator {
 
 			if (!validateDocs(json)) {
 				throw new ValidationError(
-					'Argument 1 failed to validate against the Update 8 JSON Schema',
+					'Failed to validate against the provided JSON Schema',
 					validateDocs.errors,
 					json
 				);
@@ -372,7 +368,7 @@ export class DocsTsGenerator {
 
 		if (!result) {
 			throw new ValidationError(
-				'Argument 1 failed to validate against the Update 8 JSON Schema',
+				'Failed to validate against the provided JSON Schema',
 				validateDocs.errors,
 				json
 			);
