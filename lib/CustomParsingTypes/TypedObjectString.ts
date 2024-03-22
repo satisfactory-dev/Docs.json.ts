@@ -731,7 +731,7 @@ export class TypedObjectString {
 		return Object.keys(maybe).length >= 1 && failed.length === 0;
 	}
 
-	private static $ref_object_dictionary_is_auto_constructor_properties(
+	private static is_auto_constructor_properties(
 		maybe: {
 			[key: string]: $ref_choices;
 		}
@@ -984,7 +984,7 @@ export class TypedObjectString {
 					);
 				} else if (is_$ref_object_dictionary) {
 					if (
-						!this.$ref_object_dictionary_is_auto_constructor_properties(
+						!this.is_auto_constructor_properties(
 							typed_object_string
 						)
 					) {
@@ -1112,7 +1112,7 @@ export class TypedObjectString {
 											!this.is_$ref_object_dictionary(
 												value
 											)
-											|| !this.$ref_object_dictionary_is_auto_constructor_properties(
+											|| !this.is_auto_constructor_properties(
 												value
 											)
 										) {
