@@ -994,18 +994,18 @@ export class TypedObjectString {
 								adjust_class_name(reference_name),
 								undefined,
 								create_object_type_from_entries(
-										Object.entries(
-											typed_object_string
-										).map((entry) => [
-											entry[0],
-											type_reference_node(
-												adjust_class_name(
-													entry[1].$ref.substring(
-														14
-													)
+									Object.entries(
+										typed_object_string
+									).map((entry) => [
+										entry[0],
+										type_reference_node(
+											adjust_class_name(
+												entry[1].$ref.substring(
+													14
 												)
-											),
-										])
+											)
+										),
+									])
 								)
 							);
 						}
@@ -1050,31 +1050,31 @@ export class TypedObjectString {
 						ts.factory.createUnionTypeNode(
 							data.oneOf.map((e, index) => {
 								return create_object_type_from_entries(
-										Object.entries(
-											e.typed_object_string
-										).map((
-											entry
-										) : [string, $ref_choices] => {
-											if (
-												!this.is_$ref_object(entry[1])
-											) {
-												throw new UnexpectedlyUnknown(
-													entry,
-													`${reference_name}.oneOf[${index}][${entry[0]}] not supported!`
-												);
-											}
+									Object.entries(
+										e.typed_object_string
+									).map((
+										entry
+									) : [string, $ref_choices] => {
+										if (
+											!this.is_$ref_object(entry[1])
+										) {
+											throw new UnexpectedlyUnknown(
+												entry,
+												`${reference_name}.oneOf[${index}][${entry[0]}] not supported!`
+											);
+										}
 
-											return [entry[0], entry[1]];
-										}).map((entry) => [
-											entry[0],
-											type_reference_node(
-												adjust_class_name(
-													entry[1].$ref.substring(
-														14
-													)
+										return [entry[0], entry[1]];
+									}).map((entry) => [
+										entry[0],
+										type_reference_node(
+											adjust_class_name(
+												entry[1].$ref.substring(
+													14
 												)
-											),
-										])
+											)
+										),
+									])
 								);
 							})
 						)
@@ -1146,52 +1146,52 @@ export class TypedObjectString {
 		depth = 0
 	): TypeLiteralNode {
 		return create_object_type_from_entries(
-				Object.entries(data).map((entry) => {
-					const [property, value] = entry;
+			Object.entries(data).map((entry) => {
+				const [property, value] = entry;
 
-					if (this.is_$ref_object(value)) {
-						return this.$ref_choice_to_object_type_entry(
-							property,
-							value
-						);
-					} else if (this.is_supported_enum_string_object(value)) {
-						return [
-							property,
-							create_object_type_from_entries(
-								Object.entries(value).map((entry) => {
-									const [property, value] = entry;
-
-									return [
-										property,
-										possibly_create_lazy_union(value.enum),
-									];
-								})
-							),
-						];
-					} else if (supported_meta.is_supported_schema(value)) {
-						return supported_meta.key_value_pair_literal_type_entry(
-							property,
-							value
-						);
-					} else if (
-						TypedObjectString.value_is_general_type(
-							value
-						)
-					) {
-						return [
-							property,
-							this.literal_node(value),
-						];
-					}
-
+				if (this.is_$ref_object(value)) {
+					return this.$ref_choice_to_object_type_entry(
+						property,
+						value
+					);
+				} else if (this.is_supported_enum_string_object(value)) {
 					return [
 						property,
-						this.combination_dictionary_type_to_object_type(
-							value,
-							depth + 1
+						create_object_type_from_entries(
+							Object.entries(value).map((entry) => {
+								const [property, value] = entry;
+
+								return [
+									property,
+									possibly_create_lazy_union(value.enum),
+								];
+							})
 						),
 					];
-				})
+				} else if (supported_meta.is_supported_schema(value)) {
+					return supported_meta.key_value_pair_literal_type_entry(
+						property,
+						value
+					);
+				} else if (
+					TypedObjectString.value_is_general_type(
+						value
+					)
+				) {
+					return [
+						property,
+						this.literal_node(value),
+					];
+				}
+
+				return [
+					property,
+					this.combination_dictionary_type_to_object_type(
+						value,
+						depth + 1
+					),
+				];
+			})
 		);
 	}
 
@@ -1199,105 +1199,105 @@ export class TypedObjectString {
 		data: general_type
 	): TypeLiteralNode {
 		return create_object_type_from_entries(
-				Object.entries(data.typed_object_string).map((entry) => {
-					const [property, value] = entry;
+			Object.entries(data.typed_object_string).map((entry) => {
+				const [property, value] = entry;
 
-					if (typed_string_const.is_supported_schema(value)) {
-						return typed_string_const.key_value_pair_literal_type_entry(
-							property,
-							value
-						);
-					} else if (this.is_supported_enum_string_object(value)) {
-						return [
-							property,
-							create_object_type_from_entries(
-								Object.entries(value).map((entry) => {
-									const [property, value] = entry;
-
-									return [
-										property,
-										possibly_create_lazy_union(value.enum),
-									];
-								})
-							),
-						];
-					} else if (typed_string_enum.is_supported_schema(value)) {
-						return typed_string_enum.key_value_pair_literal_type_entry(
-							property,
-							value
-						);
-					} else if (this.is_$ref_object_dictionary(value)) {
-						return [
-							property,
-							create_object_type_from_entries(
-								Object.entries(value).map((inner_entry) =>
-									this.$ref_choice_to_object_type_entry(
-										inner_entry[0],
-										inner_entry[1]
-									)
-								)
-							),
-						];
-					} else if (this.is_combination_dictionary(value)) {
-						return [
-							property,
-							this.combination_dictionary_type_to_object_type(
-								value
-							),
-						];
-					} else if (this.is_supported_typed_array_string(value)) {
-						return [
-							property,
-							create_minimum_size_typed_array_of_single_type(
-								value.typed_array_string.minItems,
-								() => {
-									const {items} = value.typed_array_string;
-
-									if (
-										is_UnrealEngineString_parent(
-											items
-										)
-									) {
-										return UnrealEngineString
-											.type_from_parent(items);
-									} else if (
-										supported_meta.is_supported_schema(
-											items
-										)
-									) {
-										return supported_meta.value_type(
-											items
-										);
-									}
-
-									return TypedObjectString.literal_node(
-										items
-									);
-								},
-								'maxItems' in value.typed_array_string
-									? value.typed_array_string.maxItems
-									: undefined
-							),
-						];
-					} else if (
-						is_UnrealEngineString_parent(value)
-					) {
-						return [
-							property,
-							UnrealEngineString.type_from_parent(value),
-						];
-					} else if (!this.is_$ref_object(value)) {
-						throw new UnexpectedlyUnknown(
-							{[property]: value},
-							'not yet supported in general type to object type'
-						);
-					}
-
-					return this.$ref_choice_to_object_type_entry(
+				if (typed_string_const.is_supported_schema(value)) {
+					return typed_string_const.key_value_pair_literal_type_entry(
 						property,
 						value
 					);
-				})
+				} else if (this.is_supported_enum_string_object(value)) {
+					return [
+						property,
+						create_object_type_from_entries(
+							Object.entries(value).map((entry) => {
+								const [property, value] = entry;
+
+								return [
+									property,
+									possibly_create_lazy_union(value.enum),
+								];
+							})
+						),
+					];
+				} else if (typed_string_enum.is_supported_schema(value)) {
+					return typed_string_enum.key_value_pair_literal_type_entry(
+						property,
+						value
+					);
+				} else if (this.is_$ref_object_dictionary(value)) {
+					return [
+						property,
+						create_object_type_from_entries(
+							Object.entries(value).map((inner_entry) =>
+								this.$ref_choice_to_object_type_entry(
+									inner_entry[0],
+									inner_entry[1]
+								)
+							)
+						),
+					];
+				} else if (this.is_combination_dictionary(value)) {
+					return [
+						property,
+						this.combination_dictionary_type_to_object_type(
+							value
+						),
+					];
+				} else if (this.is_supported_typed_array_string(value)) {
+					return [
+						property,
+						create_minimum_size_typed_array_of_single_type(
+							value.typed_array_string.minItems,
+							() => {
+								const {items} = value.typed_array_string;
+
+								if (
+									is_UnrealEngineString_parent(
+										items
+									)
+								) {
+									return UnrealEngineString
+										.type_from_parent(items);
+								} else if (
+									supported_meta.is_supported_schema(
+										items
+									)
+								) {
+									return supported_meta.value_type(
+										items
+									);
+								}
+
+								return TypedObjectString.literal_node(
+									items
+								);
+							},
+							'maxItems' in value.typed_array_string
+								? value.typed_array_string.maxItems
+								: undefined
+						),
+					];
+				} else if (
+					is_UnrealEngineString_parent(value)
+				) {
+					return [
+						property,
+						UnrealEngineString.type_from_parent(value),
+					];
+				} else if (!this.is_$ref_object(value)) {
+					throw new UnexpectedlyUnknown(
+						{[property]: value},
+						'not yet supported in general type to object type'
+					);
+				}
+
+				return this.$ref_choice_to_object_type_entry(
+					property,
+					value
+				);
+			})
 		);
 	}
 
@@ -1333,28 +1333,28 @@ export class TypedObjectString {
 				(data) => {
 					return new TypeNodeGenerationResult(() => {
 						return create_object_type_from_entries(
-								Object.entries(data.typed_object_string).map(
-									(e) => {
-										if (
-											!this.is_$ref_object_dictionary(
-												e[1]
-											)
-										) {
-											throw new UnexpectedlyUnknown(
-												e[1],
-												`${e[0]} not a supported type!`
-											);
-										}
-
-										return [
-											e[0],
-											this.literal_node({
-												type: 'string',
-												typed_object_string: e[1],
-											}),
-										];
+							Object.entries(data.typed_object_string).map(
+								(e) => {
+									if (
+										!this.is_$ref_object_dictionary(
+											e[1]
+										)
+									) {
+										throw new UnexpectedlyUnknown(
+											e[1],
+											`${e[0]} not a supported type!`
+										);
 									}
-								)
+
+									return [
+										e[0],
+										this.literal_node({
+											type: 'string',
+											typed_object_string: e[1],
+										}),
+									];
+								}
+							)
 						);
 					});
 				}
