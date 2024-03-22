@@ -36,6 +36,7 @@ import {
 	possibly_create_lazy_union,
 	supported_modifiers,
 	type_reference_node,
+	createParameter,
 } from '../../TsFactoryWrapper';
 import Ajv from 'ajv/dist/2020';
 import {
@@ -702,23 +703,15 @@ export class Update8TypeNodeGeneration {
 					create_method_without_type_parameters(
 						'constructor',
 						[
-							ts.factory.createParameterDeclaration(
-								undefined,
-								undefined,
+							createParameter(
 								'NativeClass',
-								undefined,
 								type_reference_node(
 									'NativeClass'
 								),
-								undefined
 							),
-							ts.factory.createParameterDeclaration(
-								undefined,
-								undefined,
+							createParameter(
 								'Classes',
-								undefined,
 								type_reference_node('Classes'),
-								undefined
 							),
 						],
 						[

@@ -227,11 +227,8 @@ export const custom_generators = [
 									ts.factory.createIndexSignature(
 										undefined,
 										[
-											ts.factory.createParameterDeclaration(
-												undefined,
-												undefined,
+											createParameter(
 												'key',
-												undefined,
 												create_type('string')
 											),
 										],

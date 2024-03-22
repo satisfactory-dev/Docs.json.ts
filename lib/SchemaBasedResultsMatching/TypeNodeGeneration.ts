@@ -21,6 +21,7 @@ import {
 	needs_element_access,
 	property_name_or_computed,
 	type_reference_node,
+	createParameter,
 } from '../TsFactoryWrapper';
 import {
 	array_match_type,
@@ -497,11 +498,8 @@ export function create_binding_constructor(
 	return create_method_without_type_parameters(
 		'constructor',
 		[
-			ts.factory.createParameterDeclaration(
-				undefined,
-				undefined,
+			createParameter(
 				ts.factory.createObjectBindingPattern(constructor_arg),
-				undefined,
 				type_reference_node(
 					adjust_class_name(`${reference_name}__constructor_args`)
 				)
