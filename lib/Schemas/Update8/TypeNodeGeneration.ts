@@ -22,7 +22,7 @@ import {
 	create_lazy_union,
 	create_literal,
 	create_method_without_type_parameters,
-	create_minimum_size_typed_array_of_single_type,
+	minimum_size_array_of_single_type,
 	create_modifier,
 	create_object_type,
 	create_this_assignment,
@@ -664,7 +664,7 @@ export class Update8TypeNodeGeneration {
 				undefined,
 				'NativeClass__Classes',
 				undefined,
-				create_minimum_size_typed_array_of_single_type(
+				minimum_size_array_of_single_type(
 					schema.definitions['NativeClass--Classes'].minItems,
 					() =>
 						type_reference_node(
@@ -1084,7 +1084,7 @@ export class Update8TypeNodeGeneration {
 									),
 								]);
 							} else if (minItems) {
-								return create_minimum_size_typed_array_of_single_type(
+								return minimum_size_array_of_single_type(
 									minItems,
 									() =>
 										type_reference_node(
@@ -1112,7 +1112,7 @@ export class Update8TypeNodeGeneration {
 								})
 							);
 						} else if (items && 'oneOf' in items) {
-							return create_minimum_size_typed_array_of_single_type(
+							return minimum_size_array_of_single_type(
 								minItems ? minItems : 1,
 								() => {
 									return ts.factory.createUnionTypeNode(

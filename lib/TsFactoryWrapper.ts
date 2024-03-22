@@ -853,7 +853,7 @@ export function property_name_or_computed<T extends string = string>(
 	return computed_property_name_or_undefined(property) || property;
 }
 
-export function create_minimum_size_typed_array_of_single_type(
+export function minimum_size_array_of_single_type(
 	repeat: number,
 	generate: () => ts.TypeNode,
 	max: number | undefined = undefined

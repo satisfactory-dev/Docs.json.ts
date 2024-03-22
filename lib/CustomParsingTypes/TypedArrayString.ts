@@ -20,7 +20,7 @@ import {
 import {
 	adjust_class_name,
 	create_literal,
-	create_minimum_size_typed_array_of_single_type,
+	minimum_size_array_of_single_type,
 	create_modifier,
 	create_union,
 } from '../TsFactoryWrapper';
@@ -440,7 +440,7 @@ export class TypedArrayString {
 			| typed_array_string
 			| typed_array_string_without_recursive_reference
 	): TupleTypeNode {
-		return create_minimum_size_typed_array_of_single_type(
+		return minimum_size_array_of_single_type(
 			data.minItems,
 			() => {
 				if (
@@ -598,7 +598,7 @@ export class TypedArrayString {
 					);
 				} else if (this.is_tuple(data)) {
 					return new TypeNodeGenerationResult(() => {
-						return create_minimum_size_typed_array_of_single_type(
+						return minimum_size_array_of_single_type(
 							data.typed_array_string.minItems,
 							() => ts.factory.createTupleTypeNode(
 								data.typed_array_string.items.prefixItems.map(

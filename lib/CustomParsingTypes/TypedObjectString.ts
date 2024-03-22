@@ -17,7 +17,7 @@ import {
 	adjust_class_name,
 	auto_constructor_property_types_from_generated_types,
 	auto_constructor_property_types,
-	create_minimum_size_typed_array_of_single_type,
+	minimum_size_array_of_single_type,
 	create_modifier,
 	create_object_type_from_entries,
 	createClass,
@@ -1244,7 +1244,7 @@ export class TypedObjectString {
 				} else if (this.is_supported_typed_array_string(value)) {
 					return [
 						property,
-						create_minimum_size_typed_array_of_single_type(
+						minimum_size_array_of_single_type(
 							value.typed_array_string.minItems,
 							() => {
 								const {items} = value.typed_array_string;

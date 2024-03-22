@@ -14,7 +14,7 @@ import {
 	computed_property_name_or_undefined,
 	create_callExpression__for_validation_function,
 	create_method_without_type_parameters,
-	create_minimum_size_typed_array_of_single_type,
+	minimum_size_array_of_single_type,
 	create_modifier,
 	create_object_type,
 	create_this_assignment,
@@ -189,7 +189,7 @@ export class TypeNodeGenerationMatcher extends ResultGenerationMatcher<
 	): TypeNodeGenerationResult {
 		return new TypeNodeGenerationResult(() => {
 			if ('minItems' in property) {
-				return create_minimum_size_typed_array_of_single_type(
+				return minimum_size_array_of_single_type(
 					property.minItems,
 					result.type,
 					'maxItems' in property ? property.maxItems : undefined

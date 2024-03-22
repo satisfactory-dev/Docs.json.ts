@@ -4,7 +4,7 @@ import {
 import ts from 'typescript';
 import {
 	adjust_class_name,
-	create_minimum_size_typed_array_of_single_type,
+	minimum_size_array_of_single_type,
 	create_modifier,
 	type_reference_node,
 } from '../TsFactoryWrapper';
@@ -29,7 +29,7 @@ export const generators = [
 				[create_modifier('export')],
 				adjust_class_name(reference_name),
 				undefined,
-				create_minimum_size_typed_array_of_single_type(
+				minimum_size_array_of_single_type(
 					data.minItems,
 					() => {
 						return type_reference_node(
