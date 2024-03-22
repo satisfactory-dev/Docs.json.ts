@@ -378,7 +378,7 @@ export class Update8TypeNodeGeneration {
 	}
 
 	private generate_types(ajv: Ajv) {
-		const StrictlyTypedNumberFromRegExp_reference_names: (
+		const reference_names: (
 			| 'decimal-string'
 			| 'decimal-string--signed'
 			| 'integer-string'
@@ -390,7 +390,7 @@ export class Update8TypeNodeGeneration {
 			'integer-string--signed',
 		];
 
-		for (const reference_name of StrictlyTypedNumberFromRegExp_reference_names.filter(
+		for (const reference_name of reference_names.filter(
 			is_ref
 		)) {
 			this.classes.push({
@@ -554,6 +554,20 @@ export class Update8TypeNodeGeneration {
 			),
 		});
 
+		type buildable_sub_type = { $ref:
+			| local_ref<
+				'FGBuildable--mAllowedResources--default-UnrealEngineString'
+			>
+			| local_ref<'FGSchematic--mUnlocks_mSchematics--mSchematics'>;
+		};
+
+		const buildable_sub_schema = [
+			local_ref(
+				'FGBuildable--mAllowedResources--default-UnrealEngineString'
+			),
+			local_ref('FGSchematic--mUnlocks_mSchematics--mSchematics'),
+		];
+
 		for (const mUnlocks_type of schema.definitions['FGSchematic--base']
 			.properties.mUnlocks.items.anyOf) {
 			const {$ref} = mUnlocks_type;
@@ -569,11 +583,7 @@ export class Update8TypeNodeGeneration {
 			}
 
 			this.type_node_generator.matchers.push(
-				new TypeNodeGeneration<{
-					$ref:
-						| local_ref<'FGBuildable--mAllowedResources--default-UnrealEngineString'>
-						| local_ref<'FGSchematic--mUnlocks_mSchematics--mSchematics'>;
-				}>(
+				new TypeNodeGeneration<buildable_sub_type>(
 					{
 						type: 'object',
 						required: ['$ref'],
@@ -581,10 +591,7 @@ export class Update8TypeNodeGeneration {
 						properties: {
 							$ref: {
 								type: 'string',
-								enum: [
-									local_ref('FGBuildable--mAllowedResources--default-UnrealEngineString'),
-									local_ref('FGSchematic--mUnlocks_mSchematics--mSchematics'),
-								],
+								enum: buildable_sub_schema,
 							},
 						},
 					},
