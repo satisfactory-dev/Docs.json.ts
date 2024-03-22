@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"sourceMap": false,
+		"sourceMap": true,
 		"newLine": "lf",
 		"esModuleInterop": true,
 		"strict": true,

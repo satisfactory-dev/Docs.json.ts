@@ -3,6 +3,7 @@
 /generated-types/
 /lib/**/*.mjs
 /lib/**/*.js
+/lib/**/*.map
 /imports-come-from.json
 /auto-imports.json
 /.eslintcache

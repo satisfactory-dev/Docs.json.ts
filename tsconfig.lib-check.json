@@ -1,6 +1,5 @@
 {
-	"extends": "./tsconfig",
-	"include": ["./lib/**/*.ts"],
+	"extends": "./tsconfig.lib",
 	"compilerOptions": {
 		"noEmit": true
 	}
