@@ -1068,18 +1068,16 @@ export class TypedObjectString {
 											}
 
 											return [entry[0], entry[1]];
-										}).map((entry) => {
-											return [
-												entry[0],
-												type_reference_node(
-													adjust_class_name(
-														entry[1].$ref.substring(
-															14
-														)
+										}).map((entry) => [
+											entry[0],
+											type_reference_node(
+												adjust_class_name(
+													entry[1].$ref.substring(
+														14
 													)
-												),
-											];
-										})
+												)
+											),
+										])
 									)
 								);
 							})
