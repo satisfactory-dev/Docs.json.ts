@@ -11,6 +11,7 @@ import {
 import {
 	object_only_has_that_property,
 } from './CustomParsingTypes/CustomPairingTypes';
+import {is_string} from './StringStartsWith';
 
 export class GenerationResult<T> {
 	readonly generate: () => T;
@@ -438,8 +439,7 @@ export abstract class ResultGenerationMatcher<
 		already_checked: (keyof typeof this.definitions_to_check)[] = []
 	): MatchResult | null {
 		if (
-			object_only_has_that_property(property, '$ref')
-			&& 'string' === typeof property.$ref
+			object_only_has_that_property(property, '$ref', is_string)
 			&& property.$ref.startsWith('#/definitions/')
 		) {
 			const definition = property.$ref.substring(14);

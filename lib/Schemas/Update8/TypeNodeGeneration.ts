@@ -59,6 +59,7 @@ import {
 	object_only_has_that_property,
 } from '../../CustomParsingTypes/CustomPairingTypes';
 import {
+	is_string,
 	local_ref,
 } from '../../StringStartsWith';
 
@@ -1004,8 +1005,7 @@ export class Update8TypeNodeGeneration {
 					!object_only_has_that_property(
 						data,
 						'$ref',
-						(maybe: unknown): maybe is string =>
-							'string' === typeof maybe
+						is_string
 					)
 				) {
 					throw new Error('whoops');

@@ -18,6 +18,7 @@ import update8_schema from '../../schema/update8.schema.json' assert {
 	type: 'json'
 };
 import {
+	is_string,
 	local_ref,
 } from '../StringStartsWith';
 
@@ -45,7 +46,7 @@ function value_is_in_$ref_supported_array(
 	maybe: unknown
 ): maybe is keyof typeof $ref_supported {
 	return (
-		'string' === typeof maybe
+		is_string(maybe)
 		&& ($ref_supported_array as string[]).includes(maybe)
 	);
 }

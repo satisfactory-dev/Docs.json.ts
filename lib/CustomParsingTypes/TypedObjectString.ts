@@ -61,6 +61,7 @@ import {
 } from './SupportedRefObject';
 import {
 	$ref_in_array,
+	is_string,
 	local_ref,
 } from '../StringStartsWith';
 
@@ -103,7 +104,7 @@ function value_is_in_$ref_supported_array(
 	maybe: unknown
 ): maybe is keyof typeof $ref_supported {
 	return (
-		'string' === typeof maybe
+		is_string(maybe)
 		&& $ref_in_array(maybe, $ref_supported_array)
 	);
 }

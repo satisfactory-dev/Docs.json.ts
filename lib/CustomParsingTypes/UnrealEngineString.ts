@@ -40,6 +40,7 @@ import {
 	value_is_non_array_object,
 } from './CustomPairingTypes';
 import {
+	is_string,
 	local_ref,
 } from '../StringStartsWith';
 
@@ -126,7 +127,7 @@ export function check_UnrealEngineString_has_left_string(
 		!object_has_property(
 			maybe,
 			'left',
-			(maybe:unknown): maybe is string => 'string' === typeof maybe
+			is_string
 		)
 	) {
 		throw new Error('UnrealEngineString does not have left field!');
@@ -292,7 +293,7 @@ export class UnrealEngineString {
 					? `(?:${(data.right instanceof Array
 						? data.right
 						: [
-							'string' === typeof data.right
+							is_string(data.right)
 								? data.right
 								: `(?:${(data.right
 									.starts_with instanceof Array
@@ -777,10 +778,11 @@ function is_string_or_string_array(
 	maybe: unknown
 ): maybe is string | [string, ...string[]] {
 	return (
-		'string' === typeof maybe
+		is_string(maybe)
 		|| (maybe instanceof Array
 			&& maybe.length >= 1
-			&& maybe.every((e) => 'string' === typeof e))
+			&& maybe.every(is_string)
+		)
 	);
 }
 

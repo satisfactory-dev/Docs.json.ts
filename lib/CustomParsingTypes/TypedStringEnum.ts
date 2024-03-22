@@ -12,6 +12,9 @@ import {
 	create_typed_union,
 	non_empty_string_literal_union,
 } from '../TsFactoryWrapper';
+import {
+	is_string,
+} from '../StringStartsWith';
 
 export type enum_schema_type = {type: 'string'; enum: [string, ...string[]]};
 
@@ -45,7 +48,7 @@ class TypedStringEnum extends SupportedSubSchemaType<
 			&& object_has_non_empty_array_property(maybe, 'enum')
 			&& maybe.enum.every(
 				(e) =>
-					'string' === typeof e
+					is_string(e)
 					&& typed_string_const_value_regex__native.test(e)
 			)
 		);

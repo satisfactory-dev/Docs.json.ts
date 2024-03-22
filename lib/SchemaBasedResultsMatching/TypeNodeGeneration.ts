@@ -29,6 +29,7 @@ import {
 	ResultGeneration,
 	ResultGenerationMatcher,
 } from '../SchemaBasedResultsMatching';
+import {is_string} from '../StringStartsWith';
 
 export class TypeNodeGenerationResult extends GenerationResult<ts.TypeNode> {
 	readonly import_these_somewhere_later: import_these_somewhere_later;
@@ -423,7 +424,7 @@ export function create_binding_constructor(
 				if (
 					property_object
 					&& 'pattern' in property_object
-					&& 'string' === typeof property_object.pattern
+					&& is_string(property_object.pattern)
 				) {
 					assigned_value =
 						create_callExpression__for_validation_function(

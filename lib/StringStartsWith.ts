@@ -23,12 +23,16 @@ export function local_ref<
 	}` as local_ref<T>;
 }
 
+export function is_string(maybe: unknown): maybe is string {
+	return 'string' === typeof maybe;
+}
+
 export function is_$ref(maybe: unknown): maybe is (
 	typeof maybe extends string
 		? local_ref<typeof maybe>
 		: never
 ) {
-	return 'string' === typeof maybe && maybe.startsWith('#/definitions/');
+	return is_string(maybe) && maybe.startsWith('#/definitions/');
 }
 
 export function $ref_in_array(

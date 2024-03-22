@@ -37,6 +37,7 @@ import {
 } from './Schemas/Update8';
 import {
 	local_ref,
+	is_string,
 } from './StringStartsWith';
 
 declare type supported_property_modifiers = (
@@ -670,7 +671,7 @@ export function create_new_RegExp(
 		ts.factory.createIdentifier('RegExp'),
 		undefined,
 		[first, ...rest].map(
-			e => 'string' === typeof e ? ts.factory.createIdentifier(e) : (
+			e => is_string(e) ? ts.factory.createIdentifier(e) : (
 				e instanceof RegExp
 					? create_literal(e)
 					: e
@@ -898,7 +899,7 @@ export function create_this_assignment(
 					ts.factory.createThis(),
 					property
 				),
-			'string' === typeof identifier
+			is_string(identifier)
 				? ts.factory.createIdentifier(identifier)
 				: identifier
 		)
