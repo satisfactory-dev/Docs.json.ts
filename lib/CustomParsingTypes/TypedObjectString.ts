@@ -19,7 +19,6 @@ import {
 	auto_constructor_property_types_from_generated_types_properties,
 	create_minimum_size_typed_array_of_single_type,
 	create_modifier,
-	create_object_type,
 	create_object_type_from_entries,
 	createClass,
 	createClass__members__with_auto_constructor,
@@ -994,8 +993,7 @@ export class TypedObjectString {
 								[create_modifier('export')],
 								adjust_class_name(reference_name),
 								undefined,
-								create_object_type(
-									Object.fromEntries(
+								create_object_type_from_entries(
 										Object.entries(
 											typed_object_string
 										).map((entry) => [
@@ -1008,7 +1006,6 @@ export class TypedObjectString {
 												)
 											),
 										])
-									)
 								)
 							);
 						}
@@ -1052,8 +1049,7 @@ export class TypedObjectString {
 						undefined,
 						ts.factory.createUnionTypeNode(
 							data.oneOf.map((e, index) => {
-								return create_object_type(
-									Object.fromEntries(
+								return create_object_type_from_entries(
 										Object.entries(
 											e.typed_object_string
 										).map((
@@ -1079,7 +1075,6 @@ export class TypedObjectString {
 												)
 											),
 										])
-									)
 								);
 							})
 						)
@@ -1150,8 +1145,7 @@ export class TypedObjectString {
 		data: combination_dictionary,
 		depth = 0
 	): TypeLiteralNode {
-		return create_object_type(
-			Object.fromEntries(
+		return create_object_type_from_entries(
 				Object.entries(data).map((entry) => {
 					const [property, value] = entry;
 
@@ -1198,15 +1192,13 @@ export class TypedObjectString {
 						),
 					];
 				})
-			)
 		);
 	}
 
 	public static literal_node(
 		data: general_type
 	): TypeLiteralNode {
-		return create_object_type(
-			Object.fromEntries(
+		return create_object_type_from_entries(
 				Object.entries(data.typed_object_string).map((entry) => {
 					const [property, value] = entry;
 
@@ -1237,14 +1229,14 @@ export class TypedObjectString {
 					} else if (this.is_$ref_object_dictionary(value)) {
 						return [
 							property,
-							create_object_type(Object.fromEntries(
+							create_object_type_from_entries(
 								Object.entries(value).map((inner_entry) =>
 									this.$ref_choice_to_object_type_entry(
 										inner_entry[0],
 										inner_entry[1]
 									)
 								)
-							)),
+							),
 						];
 					} else if (this.is_combination_dictionary(value)) {
 						return [
@@ -1306,7 +1298,6 @@ export class TypedObjectString {
 						value
 					);
 				})
-			)
 		);
 	}
 
@@ -1341,8 +1332,7 @@ export class TypedObjectString {
 				},
 				(data) => {
 					return new TypeNodeGenerationResult(() => {
-						return create_object_type(
-							Object.fromEntries(
+						return create_object_type_from_entries(
 								Object.entries(data.typed_object_string).map(
 									(e) => {
 										if (
@@ -1365,7 +1355,6 @@ export class TypedObjectString {
 										];
 									}
 								)
-							)
 						);
 					});
 				}
