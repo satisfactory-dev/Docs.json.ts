@@ -82,8 +82,10 @@ export const generators = [
 								properties: {
 									$ref: {
 										type: 'string',
-										pattern:
-											'^#/definitions/(Texture2D--basic|None)$',
+										enum: [
+											'#/definitions/Texture2D--basic',
+											'#/definitions/None',
+										],
 									},
 								},
 							},
