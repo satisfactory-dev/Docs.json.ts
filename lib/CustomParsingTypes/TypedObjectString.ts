@@ -1101,36 +1101,34 @@ export class TypedObjectString {
 								required: Object.keys(
 									data.typed_object_string
 								) as [string, ...string[]],
-								properties: Object.fromEntries(
-									Object.entries(
-										data.typed_object_string
-									).map(
-										(
-											e
-										): [
-											string,
-											auto_constructor_property_types_from_generated_types_properties,
-										] => {
-											const [property, value] = e;
+								properties: Object.fromEntries(Object.entries(
+									data.typed_object_string
+								).map(
+									(
+										e
+									): [
+										string,
+										auto_constructor_property_types_from_generated_types_properties,
+									] => {
+										const [property, value] = e;
 
-											if (
-												!this.is_$ref_object_dictionary(
-													value
-												)
-												|| !this.$ref_object_dictionary_is_auto_constructor_properties(
-													value
-												)
-											) {
-												throw new UnexpectedlyUnknown(
-													value,
-													`${reference_name}[${property}] not supported!`
-												);
-											}
-
-											return [property, value];
+										if (
+											!this.is_$ref_object_dictionary(
+												value
+											)
+											|| !this.$ref_object_dictionary_is_auto_constructor_properties(
+												value
+											)
+										) {
+											throw new UnexpectedlyUnknown(
+												value,
+												`${reference_name}[${property}] not supported!`
+											);
 										}
-									)
-								),
+
+										return [property, value];
+									}
+								)),
 							},
 							['public', 'readonly']
 						),
