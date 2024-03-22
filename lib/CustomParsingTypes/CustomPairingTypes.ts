@@ -103,7 +103,7 @@ export abstract class SupportedSubSchemaType<
 		? LiteralTypeNode & {literal: LiteralType}
 		: LiteralType;
 
-	key_value_pair_literal_type_entry(
+	key_value_pair_entry(
 		key: string,
 		value: ObjectType
 	): [

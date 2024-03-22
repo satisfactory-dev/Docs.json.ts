@@ -19,7 +19,9 @@ import {
 	ESLint,
 } from 'eslint';
 
-import update8_schema from '../schema/update8.schema.json' assert {type: 'json'};
+import update8_schema from '../schema/update8.schema.json' assert {
+	type: 'json'
+};
 
 import {
 	target_files as enum_target_files,
@@ -162,8 +164,10 @@ export class DocsTsGenerator {
 		'Docs.json validation pre-compilation started';
 
 	constructor({
-		docs_path, // raw JSON or path to UTF-16LE encoded Docs.json
-		cache_path = undefined, // optional cache folder path for cacheable resources
+		// raw JSON or path to UTF-16LE encoded Docs.json
+		docs_path,
+		// optional cache folder path for cacheable resources
+		cache_path = undefined,
 	}: {
 		docs_path: string | basic_docs_type;
 		cache_path?: string;
@@ -332,7 +336,9 @@ export class DocsTsGenerator {
 				);
 			}
 
-			const {default: validateDocs} = (await import(filepath)) as {default: ValidateFunction};
+			const {
+				default: validateDocs,
+			} = (await import(filepath)) as {default: ValidateFunction};
 
 			if (!validateDocs(json)) {
 				throw new ValidationError(
@@ -548,7 +554,13 @@ export class DocsTsGenerator {
 				for (const result of Classes_results) {
 					const {file, node} = result;
 
-					if (object_has_property(result, 'ref', (maybe:unknown): maybe is string => 'string' === typeof maybe)) {
+					if (object_has_property(
+						result,
+						'ref',
+						(
+							maybe:unknown
+						): maybe is string => 'string' === typeof maybe
+					)) {
 						target_files[result.ref] = file;
 
 						if (!supported_conversion_names.includes(result.ref)) {
@@ -677,12 +689,23 @@ export class DocsTsGenerator {
 					while (
 						checking
 						&& can_class_have_tree(checking)
-						&& checking.heritageClauses[0].types[0]
-						&& checking.heritageClauses[0].types[0].expression.escapedText.toString() in
+						&& (
+							checking
+								.heritageClauses[0]
+								.types[0]
+								?.expression
+								.escapedText
+								.toString()
+						) in
 							class_can_have_trees
 					) {
 						const parent_class_name: string =
-							checking.heritageClauses[0].types[0].expression.escapedText.toString();
+							checking
+								.heritageClauses[0]
+								.types[0]
+								.expression
+								.escapedText
+								.toString();
 						if (parent_class_name in classes_mapped) {
 							tree.push(parent_class_name);
 

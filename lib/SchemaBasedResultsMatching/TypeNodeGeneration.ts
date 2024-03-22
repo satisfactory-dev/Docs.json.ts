@@ -151,7 +151,11 @@ export class TypeNodeGenerationMatcher extends ResultGenerationMatcher<
 			[
 				first.import_these_somewhere_later,
 				second.import_these_somewhere_later,
-			].reduce((was, is) => this.reduce_import_these_somewhere_later(was, is), {})
+			].reduce(
+				(
+					was,
+					is
+				) => this.reduce_import_these_somewhere_later(was, is), {})
 		);
 	}
 
@@ -213,7 +217,11 @@ export class TypeNodeGenerationMatcher extends ResultGenerationMatcher<
 			},
 			Object.entries(object_types)
 				.map((entry) => entry[1].import_these_somewhere_later)
-				.reduce((was, is) => this.reduce_import_these_somewhere_later(was, is), {})
+				.reduce(
+					(
+						was,
+						is
+					) => this.reduce_import_these_somewhere_later(was, is), {})
 		);
 	}
 

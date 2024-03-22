@@ -1164,7 +1164,7 @@ export class TypedObjectString {
 						),
 					];
 				} else if (supported_meta.is_supported_schema(value)) {
-					return supported_meta.key_value_pair_literal_type_entry(
+					return supported_meta.key_value_pair_entry(
 						property,
 						value
 					);
@@ -1198,7 +1198,7 @@ export class TypedObjectString {
 				const [property, value] = entry;
 
 				if (typed_string_const.is_supported_schema(value)) {
-					return typed_string_const.key_value_pair_literal_type_entry(
+					return typed_string_const.key_value_pair_entry(
 						property,
 						value
 					);
@@ -1217,7 +1217,7 @@ export class TypedObjectString {
 						),
 					];
 				} else if (typed_string_enum.is_supported_schema(value)) {
-					return typed_string_enum.key_value_pair_literal_type_entry(
+					return typed_string_enum.key_value_pair_entry(
 						property,
 						value
 					);

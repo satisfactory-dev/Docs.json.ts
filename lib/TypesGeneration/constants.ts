@@ -136,7 +136,7 @@ export const type_node_generators = [
 						{
 							type: 'string',
 							pattern:
-								'^#/definitions/(mOutputInventoryHandlerData)$',
+								`^#/definitions/(mOutputInventoryHandlerData)$`,
 						},
 					],
 				},
