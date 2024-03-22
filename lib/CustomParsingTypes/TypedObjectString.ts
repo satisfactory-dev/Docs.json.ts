@@ -16,7 +16,7 @@ import {
 import {
 	adjust_class_name,
 	auto_constructor_property_types_from_generated_types,
-	auto_constructor_property_types_from_generated_types_properties,
+	auto_constructor_property_types,
 	create_minimum_size_typed_array_of_single_type,
 	create_modifier,
 	create_object_type_from_entries,
@@ -736,7 +736,7 @@ export class TypedObjectString {
 			[key: string]: $ref_choices;
 		}
 	): maybe is typeof maybe &
-		auto_constructor_property_types_from_generated_types_properties<
+		auto_constructor_property_types<
 			Exclude<keyof typeof maybe, number>
 		> {
 		return (
@@ -1104,7 +1104,7 @@ export class TypedObjectString {
 										e
 									): [
 										string,
-										auto_constructor_property_types_from_generated_types_properties,
+										auto_constructor_property_types,
 									] => {
 										const [property, value] = e;
 

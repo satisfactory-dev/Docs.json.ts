@@ -257,7 +257,7 @@ export const auto_constructor_property_types_from_generated_types = {
 	[local_ref('InfinityExtrap')]: adjust_class_name('InfinityExtrap'),
 };
 
-export type auto_constructor_property_types_from_generated_types_properties<
+export type auto_constructor_property_types<
 	Properties extends string = string,
 > = {
 	[key in Properties]: {
@@ -276,7 +276,7 @@ export type auto_constructor_property_types_from_generated_types_object<
 		| {
 				[
 					key: string
-				]: auto_constructor_property_types_from_generated_types_properties<Properties>;
+				]: auto_constructor_property_types<Properties>;
 		}
 		| typed_object_string_type
 		| (typeof schema.definitions)['EditorCurveData--only']['typed_object_string']['EditorCurveData'];
@@ -316,7 +316,7 @@ function is_supported_auto_constructor_property_type(
 
 export function is_supported_properties_object(object: {
 	[key: string]: {$ref: string};
-}): object is auto_constructor_property_types_from_generated_types_properties<
+}): object is auto_constructor_property_types<
 	Exclude<keyof typeof object, number>
 > {
 	for (const properties of Object.values(object)) {
