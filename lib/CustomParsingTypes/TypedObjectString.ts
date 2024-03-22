@@ -958,80 +958,80 @@ export class TypedObjectString {
 
 	static TypesGenerators() {
 		const general_type = new TypesGenerationFromSchema<general_type>(
-				{
-					definitions:
-						UnrealEngineString_schema_definitions,
-					...general_schema,
-				},
-				(data, reference_name) => {
-					const {typed_object_string} = data;
+			{
+				definitions:
+					UnrealEngineString_schema_definitions,
+				...general_schema,
+			},
+			(data, reference_name) => {
+				const {typed_object_string} = data;
 
-					const is_$ref_object_dictionary =
-						this.is_$ref_object_dictionary(typed_object_string);
-					const is_combination_dictionary =
-						this.is_combination_dictionary(typed_object_string);
+				const is_$ref_object_dictionary =
+					this.is_$ref_object_dictionary(typed_object_string);
+				const is_combination_dictionary =
+					this.is_combination_dictionary(typed_object_string);
+				if (
+					is_combination_dictionary
+					&& !is_$ref_object_dictionary
+				) {
+					return ts.factory.createTypeAliasDeclaration(
+						[create_modifier('export')],
+						adjust_class_name(reference_name),
+						undefined,
+						this.combination_dictionary_type_to_object_type(
+							typed_object_string
+						)
+					);
+				} else if (is_$ref_object_dictionary) {
 					if (
-						is_combination_dictionary
-						&& !is_$ref_object_dictionary
+						!this.$ref_object_dictionary_is_auto_constructor_properties(
+							typed_object_string
+						)
 					) {
 						return ts.factory.createTypeAliasDeclaration(
 							[create_modifier('export')],
 							adjust_class_name(reference_name),
 							undefined,
-							this.combination_dictionary_type_to_object_type(
-								typed_object_string
-							)
-						);
-					} else if (is_$ref_object_dictionary) {
-						if (
-							!this.$ref_object_dictionary_is_auto_constructor_properties(
-								typed_object_string
-							)
-						) {
-							return ts.factory.createTypeAliasDeclaration(
-								[create_modifier('export')],
-								adjust_class_name(reference_name),
-								undefined,
-								create_object_type_from_entries(
-									Object.entries(
-										typed_object_string
-									).map((entry) => [
-										entry[0],
-										type_reference_node(
-											adjust_class_name(
-												entry[1].$ref.substring(
-													14
-												)
+							create_object_type_from_entries(
+								Object.entries(
+									typed_object_string
+								).map((entry) => [
+									entry[0],
+									type_reference_node(
+										adjust_class_name(
+											entry[1].$ref.substring(
+												14
 											)
-										),
-									])
-								)
-							);
-						}
-
-						return createClass(
-							adjust_class_name(reference_name),
-							createClass__members__with_auto_constructor(
-								{
-									type: 'object',
-									required: Object.keys(
-										typed_object_string
-									) as [string, ...string[]],
-									properties: typed_object_string,
-								},
-								['public', 'readonly']
-							),
-							{
-								modifiers: ['export'],
-							}
+										)
+									),
+								])
+							)
 						);
 					}
 
-					throw new UnexpectedlyUnknown(
-						data,
-						'not yet supported'
+					return createClass(
+						adjust_class_name(reference_name),
+						createClass__members__with_auto_constructor(
+							{
+								type: 'object',
+								required: Object.keys(
+									typed_object_string
+								) as [string, ...string[]],
+								properties: typed_object_string,
+							},
+							['public', 'readonly']
+						),
+						{
+							modifiers: ['export'],
+						}
 					);
 				}
+
+				throw new UnexpectedlyUnknown(
+					data,
+					'not yet supported'
+				);
+			}
 		);
 		return [
 			general_type,
