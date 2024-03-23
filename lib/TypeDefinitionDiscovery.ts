@@ -201,6 +201,31 @@ export class TypeDefinitionDiscovery
 				type: 'object',
 				required: ['type', '$ref', 'properties'],
 				additionalProperties: false,
+				definitions: {
+					$ref: {
+						type: 'object',
+						required: [
+							'type',
+							'$ref',
+							'unevaluatedProperties',
+						],
+						additionalProperties: false,
+						properties: {
+							type: {
+								type: 'string',
+								const: 'object',
+							},
+							$ref: {
+								type: 'string',
+								enum: definitions,
+							},
+							unevaluatedProperties: {
+								type: 'boolean',
+								const: false,
+							},
+						},
+					},
+				},
 				properties: {
 					type: {type: 'string', const: 'object'},
 					$ref: {type: 'string', const: '#/definitions/NativeClass'},
@@ -227,25 +252,7 @@ export class TypeDefinitionDiscovery
 										minimum: 1,
 									},
 									items: {
-										type: 'object',
-										required: [
-											'$ref',
-										],
-										additionalProperties: false,
-										properties: {
-											type: {
-												type: 'string',
-												const: 'object',
-											},
-											$ref: {
-												type: 'string',
-												enum: definitions,
-											},
-											unevaluatedProperties: {
-												type: 'boolean',
-												const: false,
-											},
-										},
+										$ref: '#/definitions/$ref',
 									},
 								},
 							},
@@ -277,17 +284,7 @@ export class TypeDefinitionDiscovery
 										type: 'array',
 										minItems: 1,
 										items: {
-											type: 'object',
-											required: [
-												'$ref',
-											],
-											additionalProperties: false,
-											properties: {
-												$ref: {
-													type: 'string',
-													enum: definitions,
-												},
-											},
+											$ref: '#/definitions/$ref',
 										},
 									},
 								},
@@ -317,17 +314,7 @@ export class TypeDefinitionDiscovery
 											type: 'array',
 											minItems: 1,
 											items: {
-												type: 'object',
-												required: [
-													'$ref',
-												],
-												additionalProperties: false,
-												properties: {
-													$ref: {
-														type: 'string',
-														enum: definitions,
-													},
-												},
+												$ref: '#/definitions/$ref',
 											},
 										}},
 									},
@@ -358,17 +345,7 @@ export class TypeDefinitionDiscovery
 											type: 'array',
 											minItems: 1,
 											items: {
-												type: 'object',
-												required: [
-													'$ref',
-												],
-												additionalProperties: false,
-												properties: {
-													$ref: {
-														type: 'string',
-														enum: definitions,
-													},
-												},
+												$ref: '#/definitions/$ref',
 											},
 										}},
 									},
