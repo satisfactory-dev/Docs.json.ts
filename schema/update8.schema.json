@@ -1108,10 +1108,12 @@
 			],
 			"properties": {
 				"FullName": {
-					"type": "string"
+					"type": "string",
+					"pattern": "^BlueprintGeneratedClass /Game/FactoryGame/(?:-?[A-Z][A-Za-z0-9_]+/)*(Recipe_[A-Za-z0-9_]+)\\.\\1_C$"
 				},
 				"mDisplayName": {
-					"type": "string"
+					"type": "string",
+					"minLength": 1
 				},
 				"mIngredients": {
 					"oneOf": [
@@ -1125,7 +1127,10 @@
 					]
 				},
 				"mProduct": {
-					"type": "string"
+					"oneOf": [
+						{"type": "string", "const": ""},
+						{"$ref": "#/definitions/ItemClass-and-amount"}
+					]
 				},
 				"mManufacturingMenuPriority": {
 					"$ref": "#/definitions/decimal-string"
@@ -1138,10 +1143,7 @@
 				},
 				"mProducedIn": {
 					"oneOf": [
-						{
-							"type": "string",
-							"const": ""
-						},
+						{"type": "string", "const": ""},
 						{
 							"type": "string",
 							"minLength": 1,
@@ -1151,21 +1153,21 @@
 								"items": {
 									"type": "string",
 									"enum": [
-										"/Script/FactoryGame.FGBuildGun",
-										"/Game/FactoryGame/Equipment/BuildGun/BP_BuildGun.BP_BuildGun_C",
-										"/Script/FactoryGame.FGBuildableAutomatedWorkBench",
-										"/Game/FactoryGame/Buildable/Factory/AutomatedWorkBench/Build_AutomatedWorkBench.Build_AutomatedWorkBench_C",
 										"/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkBenchComponent.BP_WorkBenchComponent_C",
 										"/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkshopComponent.BP_WorkshopComponent_C",
-										"/Game/FactoryGame/Buildable/Factory/ConstructorMk1/Build_ConstructorMk1.Build_ConstructorMk1_C",
 										"/Game/FactoryGame/Buildable/Factory/AssemblerMk1/Build_AssemblerMk1.Build_AssemblerMk1_C",
-										"/Game/FactoryGame/Buildable/Factory/ManufacturerMk1/Build_ManufacturerMk1.Build_ManufacturerMk1_C",
-										"/Game/FactoryGame/Buildable/Factory/HadronCollider/Build_HadronCollider.Build_HadronCollider_C",
-										"/Game/FactoryGame/Buildable/Factory/SmelterMk1/Build_SmelterMk1.Build_SmelterMk1_C",
+										"/Game/FactoryGame/Buildable/Factory/AutomatedWorkBench/Build_AutomatedWorkBench.Build_AutomatedWorkBench_C",
+										"/Game/FactoryGame/Buildable/Factory/Blender/Build_Blender.Build_Blender_C",
+										"/Game/FactoryGame/Buildable/Factory/ConstructorMk1/Build_ConstructorMk1.Build_ConstructorMk1_C",
 										"/Game/FactoryGame/Buildable/Factory/FoundryMk1/Build_FoundryMk1.Build_FoundryMk1_C",
+										"/Game/FactoryGame/Buildable/Factory/HadronCollider/Build_HadronCollider.Build_HadronCollider_C",
+										"/Game/FactoryGame/Buildable/Factory/ManufacturerMk1/Build_ManufacturerMk1.Build_ManufacturerMk1_C",
 										"/Game/FactoryGame/Buildable/Factory/OilRefinery/Build_OilRefinery.Build_OilRefinery_C",
 										"/Game/FactoryGame/Buildable/Factory/Packager/Build_Packager.Build_Packager_C",
-										"/Game/FactoryGame/Buildable/Factory/Blender/Build_Blender.Build_Blender_C"
+										"/Game/FactoryGame/Buildable/Factory/SmelterMk1/Build_SmelterMk1.Build_SmelterMk1_C",
+										"/Game/FactoryGame/Equipment/BuildGun/BP_BuildGun.BP_BuildGun_C",
+										"/Script/FactoryGame.FGBuildGun",
+										"/Script/FactoryGame.FGBuildableAutomatedWorkBench"
 									]
 								}
 							}
@@ -1180,49 +1182,6 @@
 				},
 				"mVariablePowerConsumptionFactor": {
 					"$ref": "#/definitions/decimal-string"
-				}
-			}
-		},
-		"FGCustomizationRecipe": {
-			"type": "object",
-			"$ref": "#/definitions/FGCustomizationRecipe--FGRecipe",
-			"properties": {
-				"FullName": {
-					"type": "string",
-					"pattern": "^BlueprintGeneratedClass /Game/FactoryGame/Buildable/-Shared/Customization/(Patterns|Materials|Swatches|Skins)/"
-				},
-				"mDisplayName": {
-					"oneOf": [
-						{
-							"type": "string",
-							"enum": ["N/A", "Custom Slot"]
-						},
-						{
-							"type": "string",
-							"pattern": "^Swatch ([1-9]|1[0-5])$"
-						}
-					]
-				},
-				"mProduct": {
-					"type": "string",
-					"const": ""
-				},
-				"mProducedIn": {
-					"type": "string",
-					"minLength": 1,
-					"typed_array_string": {
-						"type": "array",
-						"minItems": 1,
-						"maxItems": 1,
-						"items": {
-							"type": "string",
-							"const": "/Game/FactoryGame/Equipment/BuildGun/BP_BuildGun.BP_BuildGun_C"
-						}
-					}
-				},
-				"mRelevantEvents": {
-					"type": "string",
-					"const": ""
 				}
 			}
 		},
@@ -1248,521 +1207,6 @@
 					}
 				}
 			]
-		},
-		"FGRecipe--base": {
-			"type": "object",
-			"$ref": "#/definitions/FGCustomizationRecipe--FGRecipe",
-			"properties": {
-				"FullName": {
-					"type": "string",
-					"minLength": 1
-				},
-				"mDisplayName": {
-					"type": "string",
-					"minLength": 1
-				},
-				"mIngredients": {
-					"$ref": "#/definitions/ItemClass-and-amount"
-				},
-				"mProduct": {
-					"type": "string",
-					"minLength": 1
-				}
-			}
-		},
-		"FGRecipe--BuildGun": {
-			"type": "object",
-			"$ref": "#/definitions/FGRecipe--base",
-			"unevaluatedProperties": false,
-			"properties": {
-				"FullName": {
-					"type": "string",
-					"pattern": "^BlueprintGeneratedClass /Game/FactoryGame/((Recipes/(Buildings|Vehicle)|Buildable/(Building|Factory/Train/(Signal|Station)|Factory/FoundationPassthrough))/|Recipe_PipeHyperStart.Recipe_PipeHyperStart_C|Prototype/Buildable/Beams)"
-				},
-				"mProducedIn": {
-					"type": "string",
-					"minLength": 1,
-					"typed_array_string": {
-						"type": "array",
-						"minItems": 1,
-						"maxItems": 1,
-						"items": {
-							"type": "string",
-							"enum": [
-								"/Game/FactoryGame/Equipment/BuildGun/BP_BuildGun.BP_BuildGun_C",
-								"/Script/FactoryGame.FGBuildGun"
-							]
-						}
-					}
-				}
-			}
-		},
-		"FGRecipe--Constructor": {
-			"type": "object",
-			"$ref": "#/definitions/FGRecipe--base",
-			"unevaluatedProperties": false,
-			"properties": {
-				"FullName": {
-					"oneOf": [
-						{
-							"type": "string",
-							"string_starts_with": "BlueprintGeneratedClass /Game/FactoryGame/Recipes/Constructor/"
-						},
-						{
-							"type": "string",
-							"pattern": "^BlueprintGeneratedClass /Game/FactoryGame/Recipes/AlternateRecipes/Parts/(Recipe_Alternate_(?:(?:Coal|Wire|Screw)_\\d|Screw)).\\1_C$"
-						},
-						{
-							"type": "string",
-							"string_starts_with": "BlueprintGeneratedClass /Game/FactoryGame/Recipes/AlternateRecipes/New_Update3/"
-						}
-					]
-				},
-				"mProducedIn": {
-					"type": "string",
-					"minLength": 1,
-					"typed_array_string": {
-						"type": "array",
-						"minItems": 1,
-						"items": {
-							"type": "string",
-							"enum": [
-								"/Game/FactoryGame/Buildable/Factory/ConstructorMk1/Build_ConstructorMk1.Build_ConstructorMk1_C",
-								"/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkBenchComponent.BP_WorkBenchComponent_C",
-								"/Script/FactoryGame.FGBuildableAutomatedWorkBench",
-								"/Game/FactoryGame/Buildable/Factory/AutomatedWorkBench/Build_AutomatedWorkBench.Build_AutomatedWorkBench_C"
-							]
-						}
-					}
-				}
-			}
-		},
-		"FGRecipe--Equipment": {
-			"type": "object",
-			"$ref": "#/definitions/FGRecipe--base",
-			"unevaluatedProperties": false,
-			"properties": {
-				"FullName": {
-					"type": "string",
-					"pattern": "^BlueprintGeneratedClass /Game/FactoryGame/Recipes/(Equipment|Vehicle)/"
-				},
-				"mProducedIn": {
-					"type": "string",
-					"minLength": 1,
-					"typed_array_string": {
-						"type": "array",
-						"minItems": 1,
-						"items": {
-							"type": "string",
-							"const": "/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkshopComponent.BP_WorkshopComponent_C"
-						}
-					}
-				}
-			}
-		},
-		"FGRecipe--Equipment--automatable": {
-			"type": "object",
-			"$ref": "#/definitions/FGRecipe--base",
-			"unevaluatedProperties": false,
-			"properties": {
-				"FullName": {
-					"type": "string",
-					"pattern": "^BlueprintGeneratedClass /Game/FactoryGame/(Recipes/)?Equipment/.+(?<!Recipe_XenoZapper.Recipe_XenoZapper_C)"
-				},
-				"mProducedIn": {
-					"type": "string",
-					"minLength": 1,
-					"typed_array_string": {
-						"type": "array",
-						"minItems": 1,
-						"items": {
-							"type": "string",
-							"enum": [
-								"/Game/FactoryGame/Buildable/Factory/ConstructorMk1/Build_ConstructorMk1.Build_ConstructorMk1_C",
-								"/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkBenchComponent.BP_WorkBenchComponent_C",
-								"/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkshopComponent.BP_WorkshopComponent_C",
-								"/Game/FactoryGame/Buildable/Factory/AssemblerMk1/Build_AssemblerMk1.Build_AssemblerMk1_C",
-								"/Game/FactoryGame/Buildable/Factory/ManufacturerMk1/Build_ManufacturerMk1.Build_ManufacturerMk1_C",
-								"/Game/FactoryGame/Buildable/Factory/Blender/Build_Blender.Build_Blender_C",
-								"/Game/FactoryGame/Buildable/Factory/OilRefinery/Build_OilRefinery.Build_OilRefinery_C"
-							]
-						}
-					}
-				}
-			}
-		},
-		"FGRecipe--Smelter": {
-			"type": "object",
-			"$ref": "#/definitions/FGRecipe--base",
-			"unevaluatedProperties": false,
-			"properties": {
-				"FullName": {
-					"oneOf": [
-						{
-							"type": "string",
-							"string_starts_with": "BlueprintGeneratedClass /Game/FactoryGame/Recipes/Smelter/"
-						},
-						{
-							"type": "string",
-							"enum": [
-								"BlueprintGeneratedClass /Game/FactoryGame/Recipes/AlternateRecipes/New_Update3/Recipe_PureAluminumIngot.Recipe_PureAluminumIngot_C"
-							]
-						}
-					]
-				},
-				"mProducedIn": {
-					"type": "string",
-					"minLength": 1,
-					"typed_array_string": {
-						"type": "array",
-						"minItems": 1,
-						"items": {
-							"type": "string",
-							"enum": [
-								"/Game/FactoryGame/Buildable/Factory/SmelterMk1/Build_SmelterMk1.Build_SmelterMk1_C",
-								"/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkBenchComponent.BP_WorkBenchComponent_C",
-								"/Script/FactoryGame.FGBuildableAutomatedWorkBench",
-								"/Game/FactoryGame/Buildable/Factory/FoundryMk1/Build_FoundryMk1.Build_FoundryMk1_C"
-							]
-						}
-					}
-				}
-			}
-		},
-		"FGRecipe--Foundry": {
-			"type": "object",
-			"$ref": "#/definitions/FGRecipe--base",
-			"unevaluatedProperties": false,
-			"properties": {
-				"FullName": {
-					"oneOf": [
-						{
-							"type": "string",
-							"string_starts_with": "BlueprintGeneratedClass /Game/FactoryGame/Recipes/AlternateRecipes/"
-						}
-					]
-				},
-				"mProducedIn": {
-					"type": "string",
-					"minLength": 1,
-					"typed_array_string": {
-						"type": "array",
-						"minItems": 1,
-						"maxItems": 1,
-						"items": {
-							"type": "string",
-							"const": "/Game/FactoryGame/Buildable/Factory/FoundryMk1/Build_FoundryMk1.Build_FoundryMk1_C"
-						}
-					}
-				}
-			}
-		},
-		"FGRecipe--maybe-buildgun-or-removed": {
-			"type": "object",
-			"$ref": "#/definitions/FGRecipe--base",
-			"unevaluatedProperties": false,
-			"properties": {
-				"FullName": {
-					"type": "string",
-					"enum": [
-						"BlueprintGeneratedClass /Game/FactoryGame/Recipes/Buildings/Foundations/Recipe_PillarTop.Recipe_PillarTop_C",
-						"BlueprintGeneratedClass /Game/FactoryGame/Recipes/Buildings/Recipe_JumpPad.Recipe_JumpPad_C",
-						"BlueprintGeneratedClass /Game/FactoryGame/Recipes/Buildings/Recipe_JumpPadTilted.Recipe_JumpPadTilted_C",
-						"BlueprintGeneratedClass /Game/FactoryGame/Recipes/Buildings/Walls/Recipe_SteelWall_8x4.Recipe_SteelWall_8x4_C",
-						"BlueprintGeneratedClass /Game/FactoryGame/Recipes/Buildings/Walls/Recipe_Wall_Window_8x4_03_Steel.Recipe_Wall_Window_8x4_03_Steel_C"
-					]
-				},
-				"mProducedIn": {
-					"type": "string",
-					"const": ""
-				}
-			}
-		},
-		"FGRecipe--Refinery": {
-			"type": "object",
-			"$ref": "#/definitions/FGRecipe--base",
-			"unevaluatedProperties": false,
-			"properties": {
-				"FullName": {
-					"oneOf": [
-						{
-							"type": "string",
-							"string_starts_with": "BlueprintGeneratedClass /Game/FactoryGame/Recipes/OilRefinery/"
-						},
-						{
-							"type": "string",
-							"string_starts_with": "BlueprintGeneratedClass /Game/FactoryGame/Recipes/AlternateRecipes/"
-						}
-					]
-				},
-				"mProducedIn": {
-					"type": "string",
-					"minLength": 1,
-					"typed_array_string": {
-						"type": "array",
-						"minItems": 1,
-						"maxItems": 1,
-						"items": {
-							"type": "string",
-							"const": "/Game/FactoryGame/Buildable/Factory/OilRefinery/Build_OilRefinery.Build_OilRefinery_C"
-						}
-					}
-				}
-			}
-		},
-		"FGRecipe--Packager": {
-			"type": "object",
-			"$ref": "#/definitions/FGRecipe--base",
-			"unevaluatedProperties": false,
-			"properties": {
-				"FullName": {
-					"oneOf": [
-						{
-							"type": "string",
-							"pattern": "^BlueprintGeneratedClass /Game/FactoryGame/Recipes/(Packager/|OilRefinery/Recipe_(Packaged|Unpackage))"
-						},
-						{
-							"type": "string",
-							"enum": [
-								"BlueprintGeneratedClass /Game/FactoryGame/Recipes/OilRefinery/Recipe_Fuel.Recipe_Fuel_C"
-							]
-						}
-					]
-				},
-				"mProducedIn": {
-					"type": "string",
-					"minLength": 1,
-					"typed_array_string": {
-						"type": "array",
-						"minItems": 1,
-						"maxItems": 1,
-						"items": {
-							"type": "string",
-							"const": "/Game/FactoryGame/Buildable/Factory/Packager/Build_Packager.Build_Packager_C"
-						}
-					}
-				}
-			}
-		},
-		"FGRecipe--Assembler": {
-			"type": "object",
-			"$ref": "#/definitions/FGRecipe--base",
-			"unevaluatedProperties": false,
-			"properties": {
-				"FullName": {
-					"oneOf": [
-						{
-							"type": "string",
-							"string_starts_with": "BlueprintGeneratedClass /Game/FactoryGame/Recipes/Assembler/"
-						},
-						{
-							"type": "string",
-							"pattern": "^BlueprintGeneratedClass /Game/FactoryGame/Recipes/AlternateRecipes/(Parts|New_Update[34])/"
-						},
-						{
-							"type": "string",
-							"pattern": "^BlueprintGeneratedClass /Game/FactoryGame/Recipes/Constructor/(Recipe_(AluminumSheet|Fabric))\\.\\1_C"
-						}
-					]
-				},
-				"mProducedIn": {
-					"type": "string",
-					"minLength": 1,
-					"typed_array_string": {
-						"type": "array",
-						"minItems": 1,
-						"items": {
-							"type": "string",
-							"enum": [
-								"/Game/FactoryGame/Buildable/Factory/AssemblerMk1/Build_AssemblerMk1.Build_AssemblerMk1_C",
-								"/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkBenchComponent.BP_WorkBenchComponent_C",
-								"/Script/FactoryGame.FGBuildableAutomatedWorkBench"
-							]
-						}
-					}
-				}
-			}
-		},
-		"FGRecipe--SpaceElevator": {
-			"type": "object",
-			"$ref": "#/definitions/FGRecipe--base",
-			"unevaluatedProperties": false,
-			"properties": {
-				"FullName": {
-					"type": "string",
-					"string_starts_with": "BlueprintGeneratedClass /Game/FactoryGame/Recipes/SpaceElevatorParts/"
-				},
-				"mProducedIn": {
-					"type": "string",
-					"minLength": 1,
-					"typed_array_string": {
-						"type": "array",
-						"minItems": 1,
-						"maxItems": 1,
-						"items": {
-							"type": "string",
-							"const": "/Game/FactoryGame/Buildable/Factory/AssemblerMk1/Build_AssemblerMk1.Build_AssemblerMk1_C"
-						}
-					}
-				}
-			}
-		},
-		"FGRecipe--Blender": {
-			"type": "object",
-			"$ref": "#/definitions/FGRecipe--base",
-			"unevaluatedProperties": false,
-			"properties": {
-				"FullName": {
-					"oneOf": [
-						{
-							"type": "string",
-							"string_starts_with": "BlueprintGeneratedClass /Game/FactoryGame/Recipes/Blender/"
-						},
-						{
-							"type": "string",
-							"string_starts_with": "BlueprintGeneratedClass /Game/FactoryGame/Recipes/AlternateRecipes/New_Update4/"
-						},
-						{
-							"type": "string",
-							"enum": [
-								"BlueprintGeneratedClass /Game/FactoryGame/Recipes/Assembler/Recipe_UraniumCell.Recipe_UraniumCell_C",
-								"BlueprintGeneratedClass /Game/FactoryGame/Recipes/Manufacturer/Recipe_Battery.Recipe_Battery_C"
-							]
-						}
-					]
-				},
-				"mProducedIn": {
-					"type": "string",
-					"minLength": 1,
-					"typed_array_string": {
-						"type": "array",
-						"minItems": 1,
-						"maxItems": 1,
-						"items": {
-							"type": "string",
-							"const": "/Game/FactoryGame/Buildable/Factory/Blender/Build_Blender.Build_Blender_C"
-						}
-					}
-				}
-			}
-		},
-		"FGRecipe--Manufacturer": {
-			"type": "object",
-			"$ref": "#/definitions/FGRecipe--base",
-			"unevaluatedProperties": false,
-			"properties": {
-				"FullName": {
-					"oneOf": [
-						{
-							"type": "string",
-							"string_starts_with": "BlueprintGeneratedClass /Game/FactoryGame/Recipes/Manufacturer/"
-						},
-						{
-							"type": "string",
-							"string_starts_with": "BlueprintGeneratedClass /Game/FactoryGame/Recipes/AlternateRecipes/"
-						},
-						{
-							"type": "string",
-							"pattern": "^BlueprintGeneratedClass /Game/FactoryGame/Recipes/SpaceElevatorParts/(Recipe_SpaceElevatorPart_[4-68])\\.\\1_C"
-						},
-						{
-							"type": "string",
-							"enum": [
-								"BlueprintGeneratedClass /Game/FactoryGame/Recipes/Constructor/Recipe_NuclearFuelRod.Recipe_NuclearFuelRod_C"
-							]
-						}
-					]
-				},
-				"mProducedIn": {
-					"type": "string",
-					"minLength": 1,
-					"typed_array_string": {
-						"type": "array",
-						"minItems": 1,
-						"items": {
-							"type": "string",
-							"enum": [
-								"/Game/FactoryGame/Buildable/Factory/ManufacturerMk1/Build_ManufacturerMk1.Build_ManufacturerMk1_C",
-								"/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkBenchComponent.BP_WorkBenchComponent_C",
-								"/Script/FactoryGame.FGBuildableAutomatedWorkBench",
-								"/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkshopComponent.BP_WorkshopComponent_C"
-							]
-						}
-					}
-				}
-			}
-		},
-		"FGRecipe--HadronCollider": {
-			"type": "object",
-			"$ref": "#/definitions/FGRecipe--base",
-			"unevaluatedProperties": false,
-			"properties": {
-				"FullName": {
-					"oneOf": [
-						{
-							"type": "string",
-							"string_starts_with": "BlueprintGeneratedClass /Game/FactoryGame/Recipes/HadronCollider/"
-						},
-						{
-							"type": "string",
-							"string_starts_with": "BlueprintGeneratedClass /Game/FactoryGame/Recipes/AlternateRecipes/New_Update4/"
-						},
-						{
-							"type": "string",
-							"enum": [
-								"BlueprintGeneratedClass /Game/FactoryGame/Recipes/SpaceElevatorParts/Recipe_SpaceElevatorPart_9.Recipe_SpaceElevatorPart_9_C"
-							]
-						}
-					]
-				},
-				"mProducedIn": {
-					"type": "string",
-					"minLength": 1,
-					"typed_array_string": {
-						"type": "array",
-						"minItems": 1,
-						"maxItems": 1,
-						"items": {
-							"type": "string",
-							"const": "/Game/FactoryGame/Buildable/Factory/HadronCollider/Build_HadronCollider.Build_HadronCollider_C"
-						}
-					}
-				}
-			}
-		},
-		"FGRecipe--SeasonalEvents": {
-			"type": "object",
-			"$ref": "#/definitions/FGRecipe--base",
-			"unevaluatedProperties": false,
-			"properties": {
-				"FullName": {
-					"oneOf": [
-						{
-							"type": "string",
-							"pattern": "^BlueprintGeneratedClass /Game/FactoryGame/(Events|Recipes/Holiday)/"
-						}
-					]
-				},
-				"mProducedIn": {
-					"type": "string",
-					"minLength": 1,
-					"typed_array_string": {
-						"type": "array",
-						"minItems": 1,
-						"items": {
-							"type": "string",
-							"enum": [
-								"/Game/FactoryGame/Buildable/Factory/ConstructorMk1/Build_ConstructorMk1.Build_ConstructorMk1_C",
-								"/Game/FactoryGame/Equipment/BuildGun/BP_BuildGun.BP_BuildGun_C",
-								"/Game/FactoryGame/Buildable/Factory/AssemblerMk1/Build_AssemblerMk1.Build_AssemblerMk1_C",
-								"/Game/FactoryGame/Buildable/Factory/SmelterMk1/Build_SmelterMk1.Build_SmelterMk1_C",
-								"/Game/FactoryGame/Buildable/Factory/FoundryMk1/Build_FoundryMk1.Build_FoundryMk1_C",
-								"/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkshopComponent.BP_WorkshopComponent_C"
-							]
-						}
-					}
-				}
-			}
 		},
 		"FGBuildableBlueprintDesigner": {
 			"type": "object",
@@ -7502,8 +6946,35 @@
 					"minItems": 1,
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGCustomizationRecipe",
-						"unevaluatedProperties": false
+						"$ref": "#/definitions/FGCustomizationRecipe--FGRecipe",
+						"unevaluatedProperties": false,
+						"properties": {
+							"mDisplayName": {
+								"oneOf": [
+									{
+										"type": "string",
+										"enum": ["N/A", "Custom Slot"]
+									},
+									{
+										"type": "string",
+										"pattern": "^Swatch ([1-9]|1[0-5])$"
+									}
+								]
+							},
+							"mProducedIn": {
+								"type": "string",
+								"minLength": 1,
+								"typed_array_string": {
+									"type": "array",
+									"minItems": 1,
+									"maxItems": 1,
+									"items": {
+										"type": "string",
+										"const": "/Game/FactoryGame/Equipment/BuildGun/BP_BuildGun.BP_BuildGun_C"
+									}
+								}
+							}
+						}
 					}
 				}
 			}
@@ -7550,83 +7021,9 @@
 					"type": "array",
 					"minItems": 1,
 					"items": {
-						"anyOf": [
-							{
-								"type": "object",
-								"$ref": "#/definitions/FGRecipe--BuildGun",
-								"unevaluatedProperties": false
-							},
-							{
-								"type": "object",
-								"$ref": "#/definitions/FGRecipe--Constructor",
-								"unevaluatedProperties": false
-							},
-							{
-								"type": "object",
-								"$ref": "#/definitions/FGRecipe--Equipment",
-								"unevaluatedProperties": false
-							},
-							{
-								"type": "object",
-								"$ref": "#/definitions/FGRecipe--Equipment--automatable",
-								"unevaluatedProperties": false
-							},
-							{
-								"type": "object",
-								"$ref": "#/definitions/FGRecipe--Smelter",
-								"unevaluatedProperties": false
-							},
-							{
-								"type": "object",
-								"$ref": "#/definitions/FGRecipe--Foundry",
-								"unevaluatedProperties": false
-							},
-							{
-								"type": "object",
-								"$ref": "#/definitions/FGRecipe--maybe-buildgun-or-removed",
-								"unevaluatedProperties": false
-							},
-							{
-								"type": "object",
-								"$ref": "#/definitions/FGRecipe--Refinery",
-								"unevaluatedProperties": false
-							},
-							{
-								"type": "object",
-								"$ref": "#/definitions/FGRecipe--Packager",
-								"unevaluatedProperties": false
-							},
-							{
-								"type": "object",
-								"$ref": "#/definitions/FGRecipe--Assembler",
-								"unevaluatedProperties": false
-							},
-							{
-								"type": "object",
-								"$ref": "#/definitions/FGRecipe--SpaceElevator",
-								"unevaluatedProperties": false
-							},
-							{
-								"type": "object",
-								"$ref": "#/definitions/FGRecipe--Blender",
-								"unevaluatedProperties": false
-							},
-							{
-								"type": "object",
-								"$ref": "#/definitions/FGRecipe--Manufacturer",
-								"unevaluatedProperties": false
-							},
-							{
-								"type": "object",
-								"$ref": "#/definitions/FGRecipe--HadronCollider",
-								"unevaluatedProperties": false
-							},
-							{
-								"type": "object",
-								"$ref": "#/definitions/FGRecipe--SeasonalEvents",
-								"unevaluatedProperties": false
-							}
-						]
+						"type": "object",
+						"$ref": "#/definitions/FGCustomizationRecipe--FGRecipe",
+						"unevaluatedProperties": false
 					}
 				}
 			}
