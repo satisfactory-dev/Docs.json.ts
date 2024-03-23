@@ -202,14 +202,13 @@ export class TypeDefinitionDiscovery
 				required: ['type', '$ref', 'properties'],
 				additionalProperties: false,
 				definitions: {
-					$ref: {
+					$ref_base: {
 						type: 'object',
 						required: [
 							'type',
 							'$ref',
 							'unevaluatedProperties',
 						],
-						additionalProperties: false,
 						properties: {
 							type: {
 								type: 'string',
@@ -224,6 +223,10 @@ export class TypeDefinitionDiscovery
 								const: false,
 							},
 						},
+					},
+					$ref: {
+						$ref: '#/definitions/$ref_base',
+						unevaluatedProperties: false,
 					},
 				},
 				properties: {
@@ -308,9 +311,9 @@ export class TypeDefinitionDiscovery
 									},
 									items: {
 										type: 'object',
-										required: ['anyOf'],
+										required: ['oneOf'],
 										additionalProperties: false,
-										properties: {anyOf: {
+										properties: {oneOf: {
 											type: 'array',
 											minItems: 1,
 											items: {
@@ -339,15 +342,19 @@ export class TypeDefinitionDiscovery
 									},
 									items: {
 										type: 'object',
-										required: ['oneOf'],
-										additionalProperties: false,
-										properties: {oneOf: {
-											type: 'array',
-											minItems: 1,
-											items: {
-												$ref: '#/definitions/$ref',
+										$ref: '#/definitions/$ref_base',
+										required: [
+											'type',
+											'$ref',
+											'unevaluatedProperties',
+											'properties',
+										],
+										unevaluatedProperties: false,
+										properties: {
+											properties: {
+												type: 'object',
 											},
-										}},
+										},
 									},
 								},
 							},
