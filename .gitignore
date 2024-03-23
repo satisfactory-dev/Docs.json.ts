@@ -7,3 +7,5 @@
 /imports-come-from.json
 /auto-imports.json
 /.eslintcache
+/*.js
+/*.js.map

@@ -23,13 +23,22 @@ export function object_has_property<
 	);
 }
 
-export function object_has_non_empty_array_property<T extends string = string>(
-	maybe: object,
-	property: T
-): maybe is {[key: string]: unknown} & {[key in T]: [unknown, ...unknown[]]} {
+export function object_has_non_empty_array_property<
+	Property extends string = string,
+	Value = unknown
+>(
+	maybe: unknown,
+	property: Property,
+	predicate:
+		| undefined
+		| ((inner_maybe: unknown) => inner_maybe is Value) = undefined
+): maybe is (
+	& {[key: string]: unknown}
+	& {[key in Property]: [Value, ...Value[]]}
+) {
 	return (
 		object_has_property(maybe, property)
-		&& is_non_empty_array(maybe[property])
+		&& is_non_empty_array(maybe[property], predicate)
 	);
 }
 

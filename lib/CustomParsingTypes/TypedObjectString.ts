@@ -67,7 +67,7 @@ import {
 
 const already_configured = new WeakSet<Ajv>();
 
-const property_regex = '^[A-Za-z][A-Za-z0-9_\\[\\]]*$';
+export const property_regex = '^[A-Za-z][A-Za-z0-9_\\[\\]]*$';
 const const_value_regex = `^([A-Za-z][A-Za-z0-9_ ]*|${UnrealEngineString_general_regex})$`;
 const const_value_regex__native = new RegExp(
 	const_value_regex

@@ -25,6 +25,9 @@ generate: lint-lib build-lib
 	${DOCKER_PREFIX} ${DOCKER_IMAGE} npm run generate
 	${DOCKER_PREFIX_NO_LOADER} ${DOCKER_IMAGE} ./node_modules/.bin/tsc --project ./tsconfig.generated-types-check.json
 
+discover: lint-lib build-lib
+	${DOCKER_PREFIX} ${DOCKER_IMAGE} ./node_modules/.bin/ts-node ./discover-types.ts
+
 lint-lib--tsc:
 	${DOCKER_PREFIX_NO_LOADER} ${DOCKER_IMAGE} ./node_modules/.bin/tsc --project ./tsconfig.lib-check.json
 

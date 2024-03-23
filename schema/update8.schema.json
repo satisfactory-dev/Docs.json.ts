@@ -23,7 +23,7 @@
 		"NativeClass": {
 			"type": "object",
 			"required": ["NativeClass", "Classes"],
-			"additionalProperties": true,
+			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
 					"$ref": "#/definitions/NativeClass--NativeClass"
@@ -327,9 +327,6 @@
 			"type": "string",
 			"enum": ["RTWOT_Default", "RTWOT_WeakSignal", "RTWOT_Flora"]
 		},
-		"mScannerDisplayText": {
-			"type": "string"
-		},
 		"ItemClass--prop": {
 			"type": "string",
 			"minLength": 1,
@@ -509,16 +506,12 @@
 					"$ref": "#/definitions/boolean"
 				},
 				"mScannerDisplayText": {
-					"$ref": "#/definitions/mScannerDisplayText"
+					"type": "string"
 				},
 				"mScannerLightColor": {
 					"$ref": "#/definitions/color"
 				}
 			}
-		},
-		"FGItemDescriptor--FGBuildingDescriptor": {
-			"type": "object",
-			"$ref": "#/definitions/FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor"
 		},
 		"FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor": {
 			"type": "object",
@@ -564,14 +557,9 @@
 				}
 			}
 		},
-		"FGItemDescriptor": {
-			"type": "object",
-			"$ref": "#/definitions/FGItemDescriptor--FGResourceDescriptor",
-			"unevaluatedProperties": false
-		},
 		"FGBuildingDescriptor": {
 			"type": "object",
-			"$ref": "#/definitions/FGItemDescriptor--FGBuildingDescriptor",
+			"$ref": "#/definitions/FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor",
 			"unevaluatedProperties": false,
 			"properties": {
 				"mForm": {
@@ -3145,6 +3133,52 @@
 				"mSwappedOutThirdPersonMaterials"
 			],
 			"properties": {
+				"mRandomAnim": {
+					"$ref": "#/definitions/integer-string"
+				},
+				"mCanPress": {
+					"$ref": "#/definitions/boolean"
+				},
+				"mAnimData": {
+					"type": "string",
+					"minLength": 1,
+					"typed_array_string": {
+						"type": "array",
+						"minItems": 3,
+						"maxItems": 3,
+						"items": {
+							"type": "string",
+							"minLength": 1,
+							"typed_object_string": {
+								"Montage_7_2E66F6A948A8606E71185682EA2AC4EC": {
+									"type": "string",
+									"minLength": 1,
+									"UnrealEngineString": {
+										"left": "/Script/Engine.AnimMontage",
+										"right": [
+											"/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_01_Montage.MedkitUse_01_Montage",
+											"/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_02_Montage.MedkitUse_02_Montage",
+											"/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_03_Montage.MedkitUse_03_Montage"
+										]
+									}
+								},
+								"CameraAnimationSequence_11_920C446448786C507704569A05006500": {
+									"type": "string",
+									"minLength": 1,
+									"UnrealEngineString": {
+										"left": "/Script/TemplateSequence.CameraAnimationSequence",
+										"right": [
+											"/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_01_CameraAnimSequence.MedkitUse_01_CameraAnimSequence",
+											"/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_02_CameraAnimSequence.MedkitUse_02_CameraAnimSequence",
+											"/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_03_CameraAnimSequence.MedkitUse_03_CameraAnimSequence"
+										]
+									}
+								}
+							}
+						}
+					}
+				},
+				"mCurrentAnimData": {"$ref": "#/definitions/empty-object"},
 				"mEquipmentSlot": {
 					"type": "string",
 					"enum": [
@@ -3896,11 +3930,6 @@
 					"$ref": "#/definitions/decimal-string"
 				}
 			}
-		},
-		"FGConsumableEquipment": {
-			"type": "object",
-			"$ref": "#/definitions/FGEquipment--base",
-			"unevaluatedProperties": true
 		},
 		"FGBuildablePillarLightweight": {
 			"type": "object",
@@ -7438,7 +7467,9 @@
 					"type": "array",
 					"minItems": 1,
 					"items": {
-						"$ref": "#/definitions/FGItemDescriptor"
+						"type": "object",
+						"$ref": "#/definitions/FGItemDescriptor--FGResourceDescriptor",
+						"unevaluatedProperties": false
 					}
 				}
 			}
@@ -8265,7 +8296,9 @@
 					"type": "array",
 					"minItems": 1,
 					"items": {
-						"$ref": "#/definitions/FGConsumableEquipment"
+						"type": "object",
+						"$ref": "#/definitions/FGEquipment--base",
+						"unevaluatedProperties": false
 					}
 				}
 			}
