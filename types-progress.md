@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (241 of 241)
+100.00% Complete (216 of 216)
 
 ## Basic Types
 
@@ -11,11 +11,12 @@
 -   [x] class--no-description-or-display-name
 -   [x] color
 -   [x] color-decimal
+-   [x] decimal-string
+-   [x] decimal-string--signed
 -   [x] empty-object
 -   [x] FGBuildingDescriptor
 -   [x] FGChainsaw
 -   [x] FGChargedWeapon
--   [x] FGConsumableEquipment
 -   [x] FGConveyorPoleStackable
 -   [x] FGGasMask
 -   [x] FGGolfCartDispenser
@@ -30,6 +31,8 @@
 -   [x] FGSuitBase
 -   [x] FGVehicleDescriptor
 -   [x] InfinityExtrap
+-   [x] integer-string
+-   [x] integer-string--signed
 -   [x] mAspect
 -   [x] MaterialSlotName
 -   [x] mBatteryStatus
@@ -46,7 +49,6 @@
 -   [x] mOutputInventoryHandlerData
 -   [x] mPlatformDockingStatus
 -   [x] mScannableType
--   [x] mScannerDisplayText
 -   [x] mSnappedPassthroughs
 -   [x] mStackSize
 -   [x] None
@@ -54,13 +56,6 @@
 -   [x] transformation
 -   [x] weaponState
 -   [x] xyz-array
-
-## decimal-string
-
--   [x] decimal-string
--   [x] decimal-string\_\_type
--   [x] decimal-string--signed
--   [x] decimal-string--signed\_\_type
 
 ## EditorCurveData
 
@@ -233,7 +228,6 @@
 
 ## FGCustomizationRecipe
 
--   [x] FGCustomizationRecipe
 -   [x] FGCustomizationRecipe--FGRecipe
 
 ## FGEquipment
@@ -252,10 +246,8 @@
 
 ## FGItemDescriptor
 
--   [x] FGItemDescriptor
 -   [x] FGItemDescriptorBiomass
 -   [x] FGItemDescriptorNuclearFuel
--   [x] FGItemDescriptor--FGBuildingDescriptor
 -   [x] FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor
 -   [x] FGItemDescriptor--FGResourceDescriptor
 -   [x] FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor
@@ -264,25 +256,6 @@
 
 -   [x] FGPoleDescriptor
 -   [x] FGPoleDescriptor--FGEquipmentDescriptor
-
-## FGRecipe
-
--   [x] FGRecipe--Assembler
--   [x] FGRecipe--base
--   [x] FGRecipe--Blender
--   [x] FGRecipe--BuildGun
--   [x] FGRecipe--Constructor
--   [x] FGRecipe--Equipment
--   [x] FGRecipe--Equipment--automatable
--   [x] FGRecipe--Foundry
--   [x] FGRecipe--HadronCollider
--   [x] FGRecipe--Manufacturer
--   [x] FGRecipe--maybe-buildgun-or-removed
--   [x] FGRecipe--Packager
--   [x] FGRecipe--Refinery
--   [x] FGRecipe--SeasonalEvents
--   [x] FGRecipe--Smelter
--   [x] FGRecipe--SpaceElevator
 
 ## FGSchematic
 
@@ -306,13 +279,6 @@
 -   [x] FGWeapon--base
 -   [x] FGWeapon--rebar-gun
 -   [x] FGWeapon--rifle
-
-## integer-string
-
--   [x] integer-string
--   [x] integer-string\_\_type
--   [x] integer-string--signed
--   [x] integer-string--signed\_\_type
 
 ## ItemClass
 
