@@ -11,27 +11,17 @@ import {
 } from './UnrealEngineString';
 import schema from '../../schema/update8.schema.json' assert {type: 'json'};
 import {
-	TypesGenerationFromSchema,
-} from '../TypesGeneration';
-import {
 	adjust_class_name,
-	pre_adjusted_$ref_class_names,
-	auto_constructor_property_types,
 	minimum_size_array_of_single_type,
-	create_modifier,
 	create_object_type_from_entries,
-	createClass,
-	createClass__members__with_auto_constructor,
 	possibly_create_lazy_union,
 	type_reference_node,
 } from '../TsFactoryWrapper';
 import {
 	FragileTypeSafetyError,
-	TypeNodeGeneration,
-	TypeNodeGenerationResult,
 	UnexpectedlyUnknown,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
-import ts, {
+import {
 	TypeLiteralNode, TypeReferenceNode,
 } from 'typescript';
 import {
@@ -143,11 +133,6 @@ type supported_oneOf_item =
 	| general_type
 	| $ref_choices
 	| UnrealEngineString_parent_type;
-
-type nested_type = {
-	type: 'string';
-	typed_object_string: {[key: string]: general_type};
-} & ({minLength: 1} | typeof empty_object);
 
 type array_type = [
 	general_type,
@@ -324,42 +309,6 @@ export const general_schema = {
 	},
 };
 
-export const nested_schema = {
-	type: 'object',
-	required: ['type', 'typed_object_string'],
-	additionalProperties: false,
-	properties: {
-		type: {type: 'string', const: 'string'},
-		minLength: {type: 'number', const: 1},
-		typed_object_string: {
-			type: 'object',
-			patternProperties: {
-				[property_regex]: {
-					type: 'object',
-					additionalProperties: false,
-					patternProperties: {
-						[property_regex]:
-							$ref_schema,
-					},
-				},
-			},
-		},
-	},
-};
-
-export const typed_object_oneOf_schema = {
-	type: 'object',
-	required: ['oneOf'],
-	additionalProperties: false,
-	properties: {
-		oneOf: {
-			type: 'array',
-			minItems: 1,
-			items: general_schema,
-		},
-	},
-};
-
 const supported_type_node_generations = {
 	type: 'object',
 	required: ['$ref'],
@@ -383,22 +332,6 @@ const supported_type_node_generations = {
 			],
 		},
 	},
-};
-
-type supported_type_node_generations = {
-	$ref:
-		| local_ref<'SpecifiedColor'>
-		| local_ref<'Texture2D'>
-		| local_ref<'Texture2D--basic'>
-		| local_ref<'ItemClass--prop'>
-		| local_ref<'MaterialSlotName'>
-		| local_ref<'None'>
-		| local_ref<'transformation'>
-		| local_ref<'color'>
-		| local_ref<'color-decimal'>
-		| local_ref<'mDockingRuleSet'>
-		| local_ref<'mLightControlData'>
-		| local_ref<'mDisableSnapOn'>;
 };
 
 export class TypedObjectString {
@@ -732,25 +665,6 @@ export class TypedObjectString {
 		return Object.keys(maybe).length >= 1 && failed.length === 0;
 	}
 
-	private static is_auto_constructor_properties(
-		maybe: {
-			[key: string]: $ref_choices;
-		}
-	): maybe is typeof maybe &
-		auto_constructor_property_types<
-			Exclude<keyof typeof maybe, number>
-		> {
-		return (
-			Object.keys(maybe).length >= 1
-			&& Object.values(maybe).every((value) => {
-				return (
-					value.$ref in
-					pre_adjusted_$ref_class_names
-				);
-			})
-		);
-	}
-
 	public static value_is_general_type(
 		maybe: unknown
 	): maybe is general_type {
@@ -957,186 +871,6 @@ export class TypedObjectString {
 		};
 	}
 
-	static TypesGenerators() {
-		const general_type = new TypesGenerationFromSchema<general_type>(
-			{
-				definitions:
-					UnrealEngineString_schema_definitions,
-				...general_schema,
-			},
-			(data, reference_name) => {
-				const {typed_object_string} = data;
-
-				const is_$ref_object_dictionary =
-					this.is_$ref_object_dictionary(typed_object_string);
-				const is_combination_dictionary =
-					this.is_combination_dictionary(typed_object_string);
-				if (
-					is_combination_dictionary
-					&& !is_$ref_object_dictionary
-				) {
-					return ts.factory.createTypeAliasDeclaration(
-						[create_modifier('export')],
-						adjust_class_name(reference_name),
-						undefined,
-						this.combination_dictionary_type_to_object_type(
-							typed_object_string
-						)
-					);
-				} else if (is_$ref_object_dictionary) {
-					if (
-						!this.is_auto_constructor_properties(
-							typed_object_string
-						)
-					) {
-						return ts.factory.createTypeAliasDeclaration(
-							[create_modifier('export')],
-							adjust_class_name(reference_name),
-							undefined,
-							create_object_type_from_entries(
-								Object.entries(
-									typed_object_string
-								).map((entry) => [
-									entry[0],
-									type_reference_node(
-										adjust_class_name(
-											entry[1].$ref.substring(
-												14
-											)
-										)
-									),
-								])
-							)
-						);
-					}
-
-					return createClass(
-						adjust_class_name(reference_name),
-						createClass__members__with_auto_constructor(
-							{
-								type: 'object',
-								required: Object.keys(
-									typed_object_string
-								) as [string, ...string[]],
-								properties: typed_object_string,
-							},
-							['public', 'readonly']
-						),
-						{
-							modifiers: ['export'],
-						}
-					);
-				}
-
-				throw new UnexpectedlyUnknown(
-					data,
-					'not yet supported'
-				);
-			}
-		);
-		return [
-			general_type,
-			new TypesGenerationFromSchema<{
-				oneOf: array_type;
-			}>(
-				{
-					definitions:
-						UnrealEngineString_schema_definitions,
-					...typed_object_oneOf_schema,
-				},
-				(data, reference_name) => {
-					return ts.factory.createTypeAliasDeclaration(
-						[create_modifier('export')],
-						adjust_class_name(reference_name),
-						undefined,
-						ts.factory.createUnionTypeNode(
-							data.oneOf.map((e, index) => {
-								return create_object_type_from_entries(
-									Object.entries(
-										e.typed_object_string
-									).map((
-										entry
-									) : [string, $ref_choices] => {
-										if (
-											!this.is_$ref_object(entry[1])
-										) {
-											throw new UnexpectedlyUnknown(
-												entry,
-												`${reference_name}.oneOf[${index}][${entry[0]}] not supported!`
-											);
-										}
-
-										return [entry[0], entry[1]];
-									}).map((entry) => [
-										entry[0],
-										type_reference_node(
-											adjust_class_name(
-												entry[1].$ref.substring(
-													14
-												)
-											)
-										),
-									])
-								);
-							})
-						)
-					);
-				}
-			),
-			new TypesGenerationFromSchema<nested_type>(
-				{
-					definitions:
-						UnrealEngineString_schema_definitions,
-					...nested_schema,
-				},
-				(data, reference_name) => createClass(
-					adjust_class_name(reference_name),
-					createClass__members__with_auto_constructor(
-						{
-							type: 'object',
-							required: Object.keys(
-								data.typed_object_string
-							) as [string, ...string[]],
-							properties: Object.fromEntries(Object.entries(
-								data.typed_object_string
-							).map((e): [
-								string,
-								auto_constructor_property_types,
-							] => {
-								const [property, value] = e;
-
-								if (
-									!this.is_$ref_object_dictionary(
-										value
-									)
-									|| !this.is_auto_constructor_properties(
-										value
-									)
-								) {
-									throw new UnexpectedlyUnknown(
-										value,
-										`${reference_name}[${property}] not supported!`
-									);
-								}
-
-								return [property, value];
-							})),
-						},
-						['public', 'readonly']
-					),
-					{
-						modifiers: ['export'],
-					}
-				)
-			),
-		];
-	}
-
-	static CustomGenerators() {
-		return [
-		];
-	}
-
 	private static combination_dictionary_type_to_object_type(
 		data: combination_dictionary,
 		depth = 0
@@ -1318,84 +1052,4 @@ export class TypedObjectString {
 		];
 	}
 
-	static TypeNodeGeneration() {
-		return [
-			new TypeNodeGeneration<nested_type>(
-				{
-					definitions:
-						UnrealEngineString_schema_definitions,
-					...nested_schema,
-				},
-				(data) => {
-					return new TypeNodeGenerationResult(() => {
-						return create_object_type_from_entries(
-							Object.entries(data.typed_object_string).map(
-								(e) => {
-									if (
-										!this.is_$ref_object_dictionary(
-											e[1]
-										)
-									) {
-										throw new UnexpectedlyUnknown(
-											e[1],
-											`${e[0]} not a supported type!`
-										);
-									}
-
-									return [
-										e[0],
-										this.literal_node({
-											type: 'string',
-											typed_object_string: e[1],
-										}),
-									];
-								}
-							)
-						);
-					});
-				}
-			),
-			new TypeNodeGeneration<general_type>(
-				{
-					definitions:
-						UnrealEngineString_schema_definitions,
-					...general_schema,
-				},
-				(data) => {
-					const is_$ref_object_dictionary =
-						this.is_$ref_object_dictionary(
-							data.typed_object_string
-						);
-					const is_combination_dictionary =
-						this.is_combination_dictionary(
-							data.typed_object_string
-						);
-
-					if (
-						!is_$ref_object_dictionary
-						&& !is_combination_dictionary
-					) {
-						throw new UnexpectedlyUnknown(
-							data.typed_object_string,
-							'not yet supported in type node generation'
-						);
-					}
-
-					return new TypeNodeGenerationResult(() =>
-						this.literal_node(data)
-					);
-				}
-			),
-			new TypeNodeGeneration<supported_type_node_generations>(
-				supported_type_node_generations,
-				(data) => {
-					return new TypeNodeGenerationResult(() =>
-						type_reference_node(
-							adjust_class_name(data.$ref.substring(14))
-						)
-					);
-				}
-			),
-		];
-	}
 }

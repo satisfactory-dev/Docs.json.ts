@@ -4,7 +4,6 @@ import {
 	UnrealEngineString,
 	UnrealEngineString_parent_schema,
 	UnrealEngineString_parent_type,
-	UnrealEngineString_reference_type,
 	UnrealEngineString_schema_definitions,
 } from './UnrealEngineString';
 import {
@@ -13,23 +12,8 @@ import {
 	TypedObjectString,
 } from './TypedObjectString';
 import {
-	TypeNodeGeneration,
-	TypeNodeGenerationResult,
 	UnexpectedlyUnknown,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
-import {
-	adjust_class_name,
-	create_literal,
-	minimum_size_array_of_single_type,
-	create_modifier,
-	create_union,
-} from '../TsFactoryWrapper';
-import {
-	TypesGenerationFromSchema,
-} from '../TypesGeneration';
-import ts, {
-	TupleTypeNode, TypeAliasDeclaration,
-} from 'typescript';
 import {
 	const_schema_type,
 	typed_string_const,
@@ -43,9 +27,6 @@ import {
 import {
 	$ref_choices, $ref_schema, supported_$ref,
 } from './SupportedRefObject';
-import {
-	supported_meta,
-} from './SupportedMeta';
 
 const already_configured = new WeakSet<Ajv>();
 
@@ -196,22 +177,6 @@ function generate_tuple_schema(
 
 const typed_array_string_tuple_2_schema = generate_tuple_schema(2);
 
-const typed_array_string_parent_schema = {
-	type: 'object',
-	required: ['type', 'minLength', 'typed_array_string'],
-	additionalProperties: false,
-	properties: {
-		type: {type: 'string', const: 'string'},
-		minLength: {type: 'number', const: 1},
-		typed_array_string: {
-			oneOf: [
-				typed_array_string_schema,
-				typed_array_string_tuple_2_schema,
-			],
-		},
-	},
-};
-
 declare type typed_array_string_oneOf = {
 	oneOf: [
 		$ref_choices | UnrealEngineString_parent_type,
@@ -261,52 +226,10 @@ declare type typed_array_string_without_recursive_reference = {
 	>;
 } & ({maxItems: number} | typeof empty_object);
 
-declare type typed_array_string_parent = {
-	type: 'string';
-	minLength: 1;
-	typed_array_string: typed_array_string | typed_array_string_tuple_2;
-};
-
 export type typed_array_string_parent_without_recursive_reference = {
 	type: 'string';
 	minLength: 1;
 	typed_array_string: typed_array_string_without_recursive_reference;
-};
-
-type empty_string_or_const_or_array_string_type = {
-	oneOf: [
-			const_schema_type | typed_array_string_parent,
-			const_schema_type | typed_array_string_parent,
-		...(const_schema_type | typed_array_string_parent)[],
-	];
-};
-
-const empty_string_or_const_or_array_string_schema = {
-	type: 'object',
-	required: ['oneOf'],
-	additionalProperties: false,
-	definitions: UnrealEngineString_schema_definitions,
-	properties: {
-		oneOf: {
-			type: 'array',
-			minItems: 2,
-			items: {
-				oneOf: [
-					{
-						type: 'object',
-						required: ['type', 'const'],
-						additionalProperties: false,
-						properties: {
-							type: {type: 'string', const: 'string'},
-							const: {type: 'string', const: ''},
-						},
-					},
-					typed_string_const_schema,
-					typed_array_string_parent_schema,
-				],
-			},
-		},
-	},
 };
 
 export class TypedArrayString {
@@ -408,254 +331,5 @@ export class TypedArrayString {
 			item,
 			'Currently unsupported in TypedArrayString.item_to_regex'
 		);
-	}
-
-	private static typed_array_string_type_alias_generator(
-		data: typed_array_string,
-		reference_name: string
-	): TypeAliasDeclaration {
-		if (
-			!('oneOf' in data.items)
-			&& !is_UnrealEngineString_parent(data.items)
-			&& !TypedObjectString.value_is_general_type(
-				data.items
-			)
-		) {
-			throw new UnexpectedlyUnknown(
-				data.items,
-				'Currently unsupported.'
-			);
-		}
-
-		return ts.factory.createTypeAliasDeclaration(
-			[create_modifier('export')],
-			adjust_class_name(reference_name),
-			undefined,
-			this.typed_array(data)
-		);
-	}
-
-	public static typed_array(
-		data:
-			| typed_array_string
-			| typed_array_string_without_recursive_reference
-	): TupleTypeNode {
-		return minimum_size_array_of_single_type(
-			data.minItems,
-			() => {
-				if (
-					is_UnrealEngineString_parent(data.items)
-				) {
-					return UnrealEngineString.type_from_parent(
-						data.items
-					);
-				} else if (typed_string_enum.is_supported_schema(data.items)) {
-					return typed_string_enum.value_type(data.items);
-				} else if (
-					typed_string_const.is_supported_schema(data.items)
-				) {
-					return typed_string_const.value_type(data.items);
-				} else if (supported_$ref.is_supported_schema(data.items)) {
-					return supported_$ref.value_type(data.items);
-				} else if ('oneOf' in data.items) {
-					return ts.factory.createUnionTypeNode(
-						data.items.oneOf.map((e) => {
-							if (supported_$ref.is_supported_schema(e)) {
-								return supported_$ref.value_type(e);
-							}
-
-							return UnrealEngineString_reference_type(
-								e.UnrealEngineString
-							);
-						})
-					);
-				}
-
-				return TypedObjectString.literal_node(
-					data.items
-				);
-			},
-			'maxItems' in data ? data.maxItems : undefined
-		);
-	}
-
-	private static is_tuple(
-		maybe: typed_array_string_parent
-	): maybe is typed_array_string_parent & {
-		typed_array_string: typed_array_string_tuple_2;
-	} {
-		return 'prefixItems' in maybe.typed_array_string.items;
-	}
-
-	private static is_not_tuple(
-		maybe: typed_array_string_parent
-	): maybe is typed_array_string_parent & {
-		typed_array_string: typed_array_string;
-	} {
-		return !('prefixItems' in maybe.typed_array_string.items);
-	}
-
-	static TypesGenerators() {
-		return [
-			new TypesGenerationFromSchema<typed_array_string_parent>(
-				{
-					definitions:
-						UnrealEngineString_schema_definitions,
-					...typed_array_string_parent_schema,
-				},
-				(data, reference_name) => {
-					if (this.is_not_tuple(data)) {
-						return this.typed_array_string_type_alias_generator(
-							data.typed_array_string,
-							reference_name
-						);
-					}
-
-					throw new UnexpectedlyUnknown(
-						data,
-						'not yet supported'
-					);
-				}
-			),
-			new TypesGenerationFromSchema<typed_array_string>(
-				{
-					definitions:
-						UnrealEngineString_schema_definitions,
-					...typed_array_string_schema,
-				},
-				(
-					data,
-					reference_name
-				) => this.typed_array_string_type_alias_generator(
-					data,
-					reference_name
-				)
-			),
-			new TypesGenerationFromSchema<
-				empty_string_or_const_or_array_string_type
-			>(
-				empty_string_or_const_or_array_string_schema,
-				(data, reference_name) => {
-					const [a, b, ...rest] = data.oneOf.map((e) => {
-						if (typed_string_const.is_supported_schema(e)) {
-							return typed_string_const.value_type(e);
-						} else if ('const' in e && '' === e.const) {
-							return create_literal('');
-						} else if (this.is_not_tuple(e)) {
-							return this.typed_array(e.typed_array_string);
-						}
-
-						throw new UnexpectedlyUnknown(
-							e,
-							'not yet supported'
-						);
-					});
-
-					return ts.factory.createTypeAliasDeclaration(
-						[create_modifier('export')],
-						adjust_class_name(reference_name),
-						undefined,
-						create_union(a, b, ...rest)
-					);
-				}
-			),
-		];
-	}
-
-	private static typed_array_string_node_generation_result(
-		data: typed_array_string
-	): TypeNodeGenerationResult {
-		if (
-			!('oneOf' in data.items)
-			&& !is_UnrealEngineString_parent(data.items)
-			&& !supported_meta.is_supported_schema(data.items)
-			&& !TypedObjectString.value_is_general_type(
-				data.items
-			)
-		) {
-			throw new UnexpectedlyUnknown(
-				data.items,
-				'Currently unsupported.'
-			);
-		}
-
-		return new TypeNodeGenerationResult(() => this.typed_array(data));
-	}
-
-	static TypeNodeGeneration() {
-		const typed_array_string_parent = new TypeNodeGeneration<
-			typed_array_string_parent
-		>(
-			{
-				definitions:
-					UnrealEngineString_schema_definitions,
-				...typed_array_string_parent_schema,
-			},
-			(data) => {
-				if (this.is_not_tuple(data)) {
-					return this.typed_array_string_node_generation_result(
-						data.typed_array_string
-					);
-				} else if (this.is_tuple(data)) {
-					return new TypeNodeGenerationResult(() => {
-						return minimum_size_array_of_single_type(
-							data.typed_array_string.minItems,
-							() => ts.factory.createTupleTypeNode(
-								data.typed_array_string.items.prefixItems.map(
-									(e) => {
-										return supported_$ref.value_type(
-											e
-										);
-									}
-								)
-							),
-							'maxItems' in data.typed_array_string
-								? data.typed_array_string.maxItems
-								: undefined
-						);
-					});
-				}
-
-				throw new UnexpectedlyUnknown(
-					data,
-					'Unsupported type found'
-				);
-			}
-		);
-		return [
-			typed_array_string_parent,
-			new TypeNodeGeneration<typed_array_string>(
-				{
-					definitions:
-						UnrealEngineString_schema_definitions,
-					...typed_array_string_schema,
-				},
-				(data) => {
-					return this.typed_array_string_node_generation_result(
-						data
-					);
-				}
-			),
-			new TypeNodeGeneration<typed_array_string_oneOf>(
-				{
-					definitions:
-						UnrealEngineString_schema_definitions,
-					...typed_array_string_oneOf_schema,
-				},
-				(data) => {
-					return new TypeNodeGenerationResult(() => {
-						return ts.factory.createUnionTypeNode(
-							data.oneOf.map((e) => {
-								if (supported_$ref.is_supported_schema(e)) {
-									return supported_$ref.value_type(e);
-								}
-
-								return UnrealEngineString.type_from_parent(e);
-							})
-						);
-					});
-				}
-			),
-		];
 	}
 }

@@ -28,13 +28,8 @@ import {
 	template_expression_from_string,
 } from '../TsFactoryWrapper';
 import {
-	TypeNodeGeneration,
-	TypeNodeGenerationResult,
 	UnexpectedlyUnknown,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
-import {
-	TypesGenerationFromSchema,
-} from '../TypesGeneration';
 import {
 	object_has_property,
 	value_is_non_array_object,
@@ -113,24 +108,6 @@ export function check_UnrealEngineString_parent(
 			maybe,
 			'Not an UnrealEngineString_parent object!'
 		);
-	}
-
-	return maybe;
-}
-
-export function check_UnrealEngineString_has_left_string(
-	maybe: UnrealEngineString_type
-) : UnrealEngineString_type & {
-	left: string,
-} {
-	if (
-		!object_has_property(
-			maybe,
-			'left',
-			is_string
-		)
-	) {
-		throw new Error('UnrealEngineString does not have left field!');
 	}
 
 	return maybe;
@@ -318,26 +295,6 @@ export class UnrealEngineString {
 				pattern: inner ? regex : `^${regex}$`,
 			};
 		};
-	}
-
-	static TypesGenerators() {
-		return [
-			new TypesGenerationFromSchema<UnrealEngineString_parent_type>(
-				{
-					definitions:
-						UnrealEngineString_schema_definitions,
-					...UnrealEngineString_parent_schema,
-				},
-				(data, reference_name) => {
-					return ts.factory.createTypeAliasDeclaration(
-						[create_modifier('export')],
-						adjust_class_name(reference_name),
-						undefined,
-						UnrealEngineString.type_from_parent(data)
-					);
-				}
-			),
-		];
 	}
 
 	static CustomGenerators() {
@@ -616,25 +573,6 @@ export class UnrealEngineString {
 		];
 	}
 
-	static TypeNodeGeneration() {
-		return [
-			new TypeNodeGeneration<UnrealEngineString_parent_type>(
-				{
-					definitions:
-						UnrealEngineString_schema_definitions,
-					...UnrealEngineString_parent_schema,
-				},
-				(data_from_schema) => {
-					return new TypeNodeGenerationResult(() => {
-						return UnrealEngineString.type_from_parent(
-							data_from_schema
-						);
-					});
-				}
-			),
-		];
-	}
-
 	static type_from_parent(
 		maybe:unknown
 	) : TypeReferenceNode {
@@ -642,12 +580,6 @@ export class UnrealEngineString {
 			check_UnrealEngineString_parent(maybe).UnrealEngineString
 		);
 	}
-}
-
-export function adjust_unrealengine_prefix(prefix: string): string {
-	return adjust_class_name(
-		prefix.replace(/^\/Script\//, '').replace(/\.Class$/, '')
-	);
 }
 
 export function adjust_unrealengine_value(value: string): string {

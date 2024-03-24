@@ -27,22 +27,8 @@ import ts, {
 	VariableStatement,
 } from 'typescript';
 import {
-	UnexpectedlyUnknown,
-} from './SchemaBasedResultsMatching/TypeNodeGeneration';
-import {
-	typed_object_string_type,
-} from './CustomParsingTypes/TypedObjectString';
-import schema from '../schema/update8.schema.json' assert {type: 'json'};
-import {
-	local_ref,
 	is_string,
 } from './StringStartsWith';
-
-declare type supported_property_modifiers = (
-	| 'public'
-	| 'abstract'
-	| 'readonly'
-)[];
 
 declare type supported_class_modifiers = ('export' | 'abstract')[];
 
@@ -62,14 +48,6 @@ export function adjust_class_name(class_name: string): string {
 	}
 
 	return class_name.replace(/[^A-Za-z_\d]/g, '_');
-}
-
-export function adjust_enum_name(enum_name: string): string {
-	if ('boolean' === enum_name) {
-		return 'Docs_boolean';
-	}
-
-	return adjust_class_name(enum_name);
 }
 
 export const modifier_map: {
@@ -101,32 +79,10 @@ export const modifier_map: {
 	},
 };
 
-export type supported_modifiers = keyof typeof modifier_map;
-
 export function create_modifier(
 	modifier: keyof typeof modifier_map
 ): ts.ModifierToken<ts.ModifierSyntaxKind> {
 	return modifier_map[modifier]();
-}
-
-function maybe_expression_node_from_literal(
-	node: TypeNode | LiteralTypeNode
-): Expression | undefined {
-	if (ts.isLiteralTypeNode(node)) {
-		if (node.literal.kind !== ts.SyntaxKind.StringLiteral) {
-			throw new UnexpectedlyUnknown(
-				node.literal,
-				'Unsupported literal type found!'
-			);
-		}
-
-		return ts.factory.createAsExpression(
-			create_literal(node.literal.text).literal,
-			type_reference_node('const')
-		);
-	}
-
-	return undefined;
 }
 
 export function type_reference_node(
@@ -134,50 +90,6 @@ export function type_reference_node(
 	...type_arguments:TypeNode[]
 ) : TypeReferenceNode {
 	return ts.factory.createTypeReferenceNode(name, type_arguments);
-}
-
-export function createProperty_with_specific_type(
-	name: string,
-	type: ts.TypeNode,
-	modifiers: supported_property_modifiers = []
-): ts.PropertyDeclaration {
-	let resolved_modifiers: undefined | Modifier[] = undefined;
-
-	if (modifiers.length) {
-		resolved_modifiers = modifiers
-			.reduce((was, is) => {
-				if (!was.includes(is)) {
-					was.push(is);
-				}
-
-				return was;
-			}, [] as supported_property_modifiers)
-			.map((modifier) => {
-				return create_modifier(modifier);
-			});
-	}
-
-	return ts.factory.createPropertyDeclaration(
-		resolved_modifiers,
-		property_name_or_computed(name),
-		undefined,
-		type,
-		maybe_expression_node_from_literal(type)
-	);
-}
-
-export function createProperty(
-	name: string,
-	type: KeywordTypeSyntaxKind | TypeNode,
-	modifiers: supported_property_modifiers = []
-): PropertyDeclaration {
-	return createProperty_with_specific_type(
-		name,
-		'number' === typeof type
-			? ts.factory.createKeywordTypeNode(type)
-			: type,
-		modifiers
-	);
 }
 
 export type create_class_options = {
@@ -240,225 +152,6 @@ export function createClass(
 		resolved_heritage,
 		members
 	);
-}
-
-export const pre_adjusted_$ref_class_names = {
-	[local_ref('xyz--semi-native')]: adjust_class_name('xyz--semi-native'),
-	[local_ref('decimal-string--signed')]: adjust_class_name(
-		'decimal-string--signed__type'
-	),
-	[local_ref('decimal-string')]: adjust_class_name('decimal-string__type'),
-	[local_ref('integer-string--signed')]: adjust_class_name(
-		'integer-string--signed__type'
-	),
-	[local_ref('integer-string')]: adjust_class_name('integer-string__type'),
-	[local_ref('mDisableSnapOn')]: adjust_class_name('mDisableSnapOn'),
-	[local_ref('mDockingRuleSet')]: adjust_class_name('mDockingRuleSet'),
-	[local_ref('EditorCurveData')]: adjust_class_name('EditorCurveData'),
-	[local_ref('mLightControlData')]: adjust_class_name('mLightControlData'),
-	[local_ref('InfinityExtrap')]: adjust_class_name('InfinityExtrap'),
-};
-
-export type auto_constructor_property_types<
-	Properties extends string = string,
-> = {
-	[key in Properties]: {
-		$ref: keyof typeof pre_adjusted_$ref_class_names;
-	};
-};
-
-const EditorCurveData =
-	schema.definitions[
-		'EditorCurveData--only'
-	].typed_object_string.EditorCurveData;
-
-export type auto_constructor_property_types_from_generated_types_object<
-	Required extends [string, ...string[]],
-	Properties extends string = string,
-	Type extends string = 'object',
-> = {
-	type: Type;
-	required: Required;
-	properties:
-		| {
-				[
-					key: string
-				]: auto_constructor_property_types<Properties>;
-		}
-		| typed_object_string_type
-		| typeof EditorCurveData;
-};
-
-export function create_callExpression__for_validation_function(
-	call_function: string,
-	argument_index: number,
-	identifier: [ts.Expression, ...ts.Expression[]]
-): ts.CallExpression {
-	return ts.factory.createCallExpression(
-		ts.factory.createIdentifier(adjust_class_name(call_function)),
-		undefined,
-		[
-			...identifier,
-			ts.factory.createTemplateExpression(
-				ts.factory.createTemplateHead('Argument '),
-				[
-					ts.factory.createTemplateSpan(
-						ts.factory.createNumericLiteral(argument_index),
-						ts.factory.createTemplateTail('')
-					),
-				]
-			),
-		]
-	);
-}
-
-function is_supported_auto_constructor_property_type(
-	prop: string
-): prop is Exclude<
-	keyof typeof pre_adjusted_$ref_class_names,
-	number
-> {
-	return prop in pre_adjusted_$ref_class_names;
-}
-
-export function is_supported_properties_object(object: {
-	[key: string]: {$ref: string};
-}): object is auto_constructor_property_types<
-	Exclude<keyof typeof object, number>
-> {
-	for (const properties of Object.values(object)) {
-		if (!is_supported_auto_constructor_property_type(properties['$ref'])) {
-			return false;
-		}
-	}
-
-	return true;
-}
-
-export function createClass__members__with_auto_constructor<
-	T extends [string, ...string[]],
-	Properties extends string = string,
->(
-	data: auto_constructor_property_types_from_generated_types_object<
-		T,
-		Properties
-	>,
-	properties_modifiers: supported_property_modifiers
-): (ts.PropertyDeclaration | ts.MethodDeclaration)[] {
-	const members: (ts.PropertyDeclaration | ts.MethodDeclaration)[] = [];
-
-	const property_types = Object.fromEntries(
-		(Object.entries(data.properties) as [string, {$ref: string}][]).map(
-			(
-				entry
-			): [
-				string, // property name
-				[
-					// property type
-					() => ts.KeywordTypeSyntaxKind | ts.TypeNode,
-					// constructor arg type
-					() => ts.KeywordTypeSyntaxKind | ts.TypeNode,
-				],
-			] => {
-				const generator = () => {
-					const [property_name, {$ref: property_data_ref}] = entry;
-
-					if (
-						!is_supported_auto_constructor_property_type(
-							property_data_ref
-						)
-					) {
-						throw new UnexpectedlyUnknown(
-							property_data_ref,
-							'Unsupported property type!'
-						);
-					}
-
-					let type: ts.TypeNode = type_reference_node(
-						adjust_class_name(
-							pre_adjusted_$ref_class_names[
-								property_data_ref
-							]
-						)
-					);
-
-					if (
-						'required' in data
-						&& !data.required.includes(property_name)
-					) {
-						type = ts.factory.createUnionTypeNode([
-							type,
-							create_type('undefined'),
-						]);
-					}
-
-					return type;
-				};
-
-				return [entry[0], [generator, generator]];
-			}
-		)
-	);
-
-	members.push(
-		...Object.entries(property_types).map((entry) => {
-			const [property_name, [generator]] = entry;
-
-			return createProperty(
-				property_name,
-				generator(),
-				properties_modifiers
-			);
-		})
-	);
-
-	members.push(
-		create_method_without_type_parameters(
-			'constructor',
-			Object.entries(property_types).map((entry) => {
-				const [property_name, [, generator]] = entry;
-
-				return [property_name, generator()];
-			}),
-			(
-				Object.entries(data.properties) as [string, {$ref: string}][]
-			).map((entry, index) => {
-				const [property_name, property] = entry;
-
-				if (
-					property[
-						'$ref'
-					] in pre_adjusted_$ref_class_names
-				) {
-					return create_this_assignment(
-						property_name,
-						property_name
-					);
-				}
-
-				const is_int = (
-					property['$ref'] === local_ref('integer-string')
-					|| property['$ref'] === local_ref('integer-string--signed')
-				);
-
-				const is_signed = property['$ref'].endsWith('--signed');
-
-				const validate =
-					create_callExpression__for_validation_function(
-						`${is_int ? 'integer-string' : 'decimal-string'}${
-							is_signed ? '--signed' : ''
-						}`,
-						index,
-						[ts.factory.createIdentifier(property_name)]
-					);
-
-				return create_this_assignment(property_name, validate);
-			}),
-			['public']
-		)
-	);
-
-	return members;
 }
 
 export function createParameter(
@@ -553,72 +246,6 @@ export function create_method_without_type_parameters(
 	return create_method(name, [], parameters, body, modifiers, return_type);
 }
 
-export function create_string_starts_with(
-	string_starts_with: string
-): ts.TypeReferenceNode {
-	return type_reference_node(
-		'string_starts_with',
-		ts.factory.createLiteralTypeNode(
-			ts.factory.createStringLiteral(string_starts_with)
-		),
-	);
-}
-
-function must_be_a_decimal_like_string() {
-	return ts.factory.createTemplateExpression(
-		ts.factory.createTemplateHead(''),
-		[
-			ts.factory.createTemplateSpan(
-				ts.factory.createIdentifier('reference_argument'),
-				ts.factory.createTemplateTail(
-					' must be a decimal-like string!'
-				)
-			),
-		]
-	);
-}
-
-function must_be_an_integer_like_string() {
-	return ts.factory.createTemplateExpression(
-		ts.factory.createTemplateHead(''),
-		[
-			ts.factory.createTemplateSpan(
-				ts.factory.createIdentifier('reference_argument'),
-				ts.factory.createTemplateTail(
-					' must be an integer-like string!'
-				)
-			),
-		]
-	);
-}
-
-export function create_function(
-	reference_name: string,
-	parameters: ts.ParameterDeclaration[],
-	return_type: ts.TypeNode,
-	body: [ts.Statement, ...ts.Statement[]],
-	type_parameters:
-		| [ts.TypeParameterDeclaration, ...ts.TypeParameterDeclaration[]]
-		| undefined = undefined
-): ts.FunctionDeclaration {
-	return ts.factory.createFunctionDeclaration(
-		[create_modifier('export')],
-		undefined,
-		adjust_class_name(reference_name),
-		type_parameters,
-		parameters,
-		return_type,
-		ts.factory.createBlock(body)
-	);
-}
-
-const custom_pattern_errors: {[key: string]: () => ts.TemplateExpression} = {
-	'decimal-string': must_be_a_decimal_like_string,
-	'decimal-string--signed': must_be_a_decimal_like_string,
-	'integer-string': must_be_an_integer_like_string,
-	'integer-string--signed': must_be_an_integer_like_string,
-};
-
 export function create_throw(
 	throw_this: string,
 	throw_arguments: [ts.Expression, ...ts.Expression[]],
@@ -702,83 +329,6 @@ export function create_property_access(
 	);
 }
 
-export function very_flexibly_create_regex_validation_function(
-	reference_name: string,
-	regexp_argument: Expression|string,
-	parameters: ts.ParameterDeclaration[],
-	return_type: () => ts.TypeNode,
-	error_template_spans: ts.TemplateSpan[],
-	return_statement: ts.ReturnStatement | undefined = undefined,
-	type_parameters:
-		| [ts.TypeParameterDeclaration, ...ts.TypeParameterDeclaration[]]
-		| undefined = undefined
-): ts.FunctionDeclaration {
-	return create_function(reference_name, parameters, return_type(), [
-		create_throw_if(
-			'Error',
-			not(
-				ts.factory.createCallExpression(
-					create_property_access(
-						create_new_RegExp(regexp_argument),
-						'test'
-					),
-					undefined,
-					[ts.factory.createIdentifier('value')]
-				)
-			),
-			[
-				reference_name in custom_pattern_errors
-					? custom_pattern_errors[reference_name]()
-					: ts.factory.createTemplateExpression(
-						ts.factory.createTemplateHead(''),
-						error_template_spans
-					),
-			]
-		),
-		return_statement
-			? return_statement
-			: ts.factory.createReturnStatement(
-				ts.factory.createAsExpression(
-					ts.factory.createIdentifier('value'),
-					return_type()
-				)
-			),
-	],
-	type_parameters
-	);
-}
-
-export function flexibly_create_regex_validation_function(
-	reference_name: string,
-	regexp_argument: Expression|string,
-	parameters: ts.ParameterDeclaration[],
-	error_template_spans: ts.TemplateSpan[],
-	pattern_argument:
-		| (() => [TypeNode, ...TypeNode[]])
-		| undefined = undefined,
-	type_parameters:
-		| [ts.TypeParameterDeclaration, ...ts.TypeParameterDeclaration[]]
-		| undefined = undefined
-): ts.FunctionDeclaration {
-	return very_flexibly_create_regex_validation_function(
-		reference_name,
-		regexp_argument,
-		parameters,
-		() =>
-			type_reference_node(
-				'StringPassedRegExp',
-				...(
-					pattern_argument
-						? pattern_argument()
-						: [create_type('string')]
-				)
-			),
-		error_template_spans,
-		undefined,
-		type_parameters
-	);
-}
-
 const type_map = {
 	boolean: ts.SyntaxKind.BooleanKeyword,
 	number: ts.SyntaxKind.NumberKeyword,
@@ -793,12 +343,6 @@ export function create_type(type: keyof typeof type_map): ts.KeywordTypeNode {
 	return ts.factory.createKeywordTypeNode(
 		type_map[type] as ts.KeywordTypeSyntaxKind
 	);
-}
-
-export function create_object_type<
-	T extends {[key: string]: ts.TypeNode} = {[key: string]: ts.TypeNode},
->(properties: T): ts.TypeLiteralNode {
-	return create_object_type_from_entries(Object.entries(properties));
 }
 
 export function create_object_type_from_entries(
@@ -825,21 +369,6 @@ export function createPropertySignature(
 		property_name_or_computed(property),
 		undefined,
 		type
-	);
-}
-
-export function create_object_type_alias<
-	T extends {[key: string]: ts.TypeNode} = {[key: string]: ts.TypeNode},
->(
-	reference_name: string,
-	modifiers: [keyof typeof modifier_map, ...(keyof typeof modifier_map)[]],
-	properties: T
-): ts.TypeAliasDeclaration {
-	return ts.factory.createTypeAliasDeclaration(
-		modifiers.map(create_modifier),
-		reference_name,
-		undefined,
-		create_object_type<T>(properties)
 	);
 }
 
