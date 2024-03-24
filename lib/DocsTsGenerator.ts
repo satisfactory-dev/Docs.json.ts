@@ -320,7 +320,7 @@ export class DocsTsGenerator {
 					DocsTsGenerator.PERF_VALIDATION_PRECOMPILE
 				);
 
-				await writeFile(filepath, await format_code(standalone(
+				await writeFile(filepath, standalone(
 					default_config.ajv,
 					default_config.ajv.compile(schema)
 				).replace(/^"use strict";/, [
@@ -331,7 +331,7 @@ export class DocsTsGenerator {
 					 */
 					'import { createRequire } from "module";',
 					'const require = createRequire(import.meta.url);',
-				].join(''))));
+				].join('')));
 				performance.measure(
 					'ajv pre-compilation done',
 					DocsTsGenerator.PERF_VALIDATION_PRECOMPILE,
@@ -795,7 +795,7 @@ export class DocsTsGenerator {
 
 			await writeFile(
 				file_name,
-				await format_code(
+				(
 					nodes
 						.map((node) => {
 							return printer.printNode(
@@ -828,7 +828,7 @@ export async function format_code(
 		throw new Error('could not find prettier config');
 	}
 
-	return prettier.format(
+	code = await prettier.format(
 		code,
 		Object.assign(
 			{
@@ -837,6 +837,8 @@ export async function format_code(
 			config
 		)
 	);
+
+	return code.replace(/(\t+) +/gm, '$1');
 }
 
 export async function eslint_generated_types(files: string) {

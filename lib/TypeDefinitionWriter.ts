@@ -64,6 +64,7 @@ import {
 	DocsDataItem,
 	DocsTsGenerator,
 	eslint_generated_types,
+	format_code,
 } from './DocsTsGenerator';
 import {
 	adjust_unrealengine_value,
@@ -425,7 +426,7 @@ export class TypeDefinitionWriter
 
 			await writeFile(
 				file_name,
-				(
+				await format_code(
 					nodes
 						.map((node) => {
 							return printer.printNode(
