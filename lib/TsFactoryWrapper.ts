@@ -61,10 +61,6 @@ export function adjust_class_name(class_name: string): string {
 		return 'Docs_class';
 	}
 
-	if (undefined === class_name) {
-		throw new Error('whut');
-	}
-
 	return class_name.replace(/[^A-Za-z_\d]/g, '_');
 }
 
