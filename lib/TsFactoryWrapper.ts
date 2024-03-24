@@ -568,6 +568,16 @@ export function create_const_statement(
 	);
 }
 
+export function create_exported_const_statement(
+	first:VariableDeclaration,
+	...rest:VariableDeclaration[]
+): VariableStatement {
+	return ts.factory.createVariableStatement(
+		[create_modifier('export')],
+		create_const_declaration_list(first, ...rest)
+	);
+}
+
 export function variable(
 	name: string,
 	value: Expression,

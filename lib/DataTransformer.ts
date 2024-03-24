@@ -30,7 +30,7 @@ import {
 	TypesDiscovery,
 } from './TypesDiscovery';
 import {
-	create_const_statement, create_literal, create_property_access,
+	create_const_statement, create_exported_const_statement, create_literal, create_property_access,
 	property_name_or_computed,
 	variable,
 } from './TsFactoryWrapper';
@@ -132,7 +132,7 @@ export class DataTransformer
 				file: `data/CoreUObject/${
 					entry_class_name
 				}.ts`,
-				node: create_const_statement(variable(
+				node: create_exported_const_statement(variable(
 					entry_class_name,
 					literal,
 					ts.factory.createTypeReferenceNode(
