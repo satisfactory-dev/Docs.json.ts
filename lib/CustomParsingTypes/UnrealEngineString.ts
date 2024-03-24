@@ -1,6 +1,5 @@
 import Ajv from 'ajv/dist/2020';
 import ts, {
-	ConditionalTypeNode,
 	TypeNode,
 	TypeReferenceNode,
 } from 'typescript';
@@ -12,15 +11,12 @@ import {
 	create_method_with_type_parameters,
 	create_method_without_type_parameters,
 	create_modifier,
-	create_new_RegExp,
 	create_property_access,
 	create_this_assignment,
 	create_throw_if,
 	create_type,
-	create_union,
 	createClass,
 	createParameter,
-	createPropertySignature,
 	possibly_create_lazy_union,
 	variable,
 	not,
@@ -38,7 +34,6 @@ import {
 	is_string,
 	local_ref,
 } from '../StringStartsWith';
-import {DataTransformer} from '../DataTransformer';
 
 const already_configured = new WeakSet<Ajv>();
 
@@ -400,10 +395,18 @@ export class UnrealEngineString {
 										)
 									),
 									ts.factory.createAsExpression(
-										parenthesize(ts.factory.createLogicalOr(
-											create_index_access('result', 2),
-											create_index_access('result', 3),
-										)),
+										parenthesize(
+											ts.factory.createLogicalOr(
+												create_index_access(
+													'result',
+													2
+												),
+												create_index_access(
+													'result',
+													3
+												),
+											)
+										),
 										ts.factory.createTypeReferenceNode(
 											'right'
 										),
@@ -547,37 +550,6 @@ export function UnrealEngineString_reference_type(
 				? [left_value, right_value]
 				: [left_value]
 			: undefined
-	);
-}
-
-function conditional_type_arguments(
-) : [ConditionalTypeNode, TypeReferenceNode] {
-	return [
-		ts.factory.createConditionalTypeNode(
-			ts.factory.createTypeQueryNode(
-				ts.factory.createIdentifier('prefix_check')
-			),
-			create_type('string'),
-			type_reference_node(
-				'StringStartsWith',
-				ts.factory.createTypeQueryNode(
-					ts.factory.createIdentifier('prefix_check')
-				),
-			),
-			create_type('string')
-		),
-		type_reference_node(
-			'StringPassedRegExp',
-			type_reference_node('pattern'),
-			type_reference_node('value'),
-		),
-	];
-}
-
-export function conditional_UnrealEngineString_type_reference(
-): ts.TypeReferenceNode {
-	return flexibly_create_UnrealEngineString_reference_type(
-		conditional_type_arguments()
 	);
 }
 

@@ -6,8 +6,6 @@ import ts, {
 	CallExpression,
 	ObjectLiteralExpression,
 	PrimaryExpression,
-	TypeLiteralNode,
-	TypeNode,
 } from 'typescript';
 import {
 	adjust_unrealengine_value,
@@ -30,7 +28,9 @@ import {
 	TypesDiscovery,
 } from './TypesDiscovery';
 import {
-	create_const_statement, create_exported_const_statement, create_literal, create_property_access,
+	create_exported_const_statement,
+	create_literal,
+	create_property_access,
 	property_name_or_computed,
 	variable,
 } from './TsFactoryWrapper';
@@ -111,7 +111,7 @@ export class DataTransformer
 							ts.factory.createTypeReferenceNode(
 								'StringStartsWith',
 								[
-									create_literal('/Script/FactoryGame.FG')
+									create_literal('/Script/FactoryGame.FG'),
 								]
 							),
 						],
@@ -155,23 +155,10 @@ export class DataTransformer
 
 				return ts.factory.createPropertyAssignment(
 					property_name_or_computed(entry[0]),
-					entry[0] in pass_through ? pass_through[entry[0]](value) : value
+					entry[0] in pass_through
+						? pass_through[entry[0]](value)
+						: value
 				);
-			})
-		);
-	}
-
-	static object_type_literal(
-		from:{[key: string]: TypeNode},
-	) : TypeLiteralNode {
-		return ts.factory.createTypeLiteralNode(
-			Object.entries(from).map((entry) => {
-				return ts.factory.createPropertySignature(
-					undefined,
-					property_name_or_computed(entry[0]),
-					undefined,
-					entry[1]
-				)
 			})
 		);
 	}

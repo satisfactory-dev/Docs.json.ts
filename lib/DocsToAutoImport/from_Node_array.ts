@@ -187,7 +187,7 @@ export function EntityName_array_from_Node_array(nodes: Node[]): EntityName[] {
 					node.initializer,
 					node.name,
 					node.type,
-					node.initializer
+					node.initializer,
 				].filter(
 					(maybe): maybe is Exclude<typeof maybe, undefined> =>
 						!!maybe
