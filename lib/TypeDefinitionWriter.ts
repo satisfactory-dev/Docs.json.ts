@@ -71,7 +71,7 @@ import {
 	UnrealEngineString as legacy_UnrealEngineString_module,
 } from './CustomParsingTypes/UnrealEngineString';
 import {
-	string_starts_with,
+	string_starts_with, StringPassedRegExp,
 } from './TypesGeneration/validators';
 import {
 	UnrealEngineString,
@@ -197,6 +197,7 @@ export class TypeDefinitionWriter
 		const custom_generators = [
 			...legacy_UnrealEngineString_module.CustomGenerators(),
 			string_starts_with,
+			StringPassedRegExp,
 		]
 
 		for (const entry of custom_generators) {

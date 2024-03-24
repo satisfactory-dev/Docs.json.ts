@@ -70,3 +70,39 @@ export const string_starts_with = {
 		)
 	),
 };
+
+export const StringPassedRegExp = {
+	file: 'utils/validators.ts',
+	node: ts.factory.createTypeAliasDeclaration(
+		[create_modifier('export')],
+		'StringPassedRegExp',
+		[
+			ts.factory.createTypeParameterDeclaration(
+				undefined,
+				'pattern',
+				create_type('string')
+			),
+			ts.factory.createTypeParameterDeclaration(
+				undefined,
+				'T',
+				create_type('string'),
+				create_type('string')
+			),
+		],
+		ts.factory.createIntersectionTypeNode([
+			type_reference_node('T'),
+			ts.factory.createMappedTypeNode(
+				undefined,
+				ts.factory.createTypeParameterDeclaration(
+					undefined,
+					'pseudo_key',
+					type_reference_node('pattern')
+				),
+				undefined,
+				undefined,
+				create_type('never'),
+				undefined,
+			),
+		])
+	),
+};
