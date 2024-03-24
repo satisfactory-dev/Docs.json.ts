@@ -184,25 +184,7 @@ export const generators = [
 	),
 ];
 
-export const custom_generators = [
-	/**
-	 * will generate a type adapted from
-	 * https://stackoverflow.com/a/70387184/23528553
-	 *
-	 * export type string_starts_with<prefix extends string> = keyof {
-	 * 	[pseudo_key in keyof {
-	 * 		[key: string]: any;
-	 * 	} as pseudo_key extends string
-	 * 		? `${prefix}${pseudo_key}` : never]
-	 * 		: string;
-	 * };
-	 *
-	 * const foo:string_starts_with<'foo'> = 'bar'; // invalid
-	 */
-	(): {file: string; node: ts.Node}[] => {
-		const nodes: {file: string; node: ts.Node}[] = [];
-
-		nodes.push({
+export const string_starts_with = {
 			file: 'utils/validators.ts',
 			node: ts.factory.createTypeAliasDeclaration(
 				[create_modifier('export')],
@@ -265,7 +247,27 @@ export const custom_generators = [
 					)
 				)
 			),
-		});
+};
+
+export const custom_generators = [
+	/**
+	 * will generate a type adapted from
+	 * https://stackoverflow.com/a/70387184/23528553
+	 *
+	 * export type string_starts_with<prefix extends string> = keyof {
+	 * 	[pseudo_key in keyof {
+	 * 		[key: string]: any;
+	 * 	} as pseudo_key extends string
+	 * 		? `${prefix}${pseudo_key}` : never]
+	 * 		: string;
+	 * };
+	 *
+	 * const foo:string_starts_with<'foo'> = 'bar'; // invalid
+	 */
+	(): {file: string; node: ts.Node}[] => {
+		const nodes: {file: string; node: ts.Node}[] = [];
+
+		nodes.push(string_starts_with);
 
 		nodes.push({
 			file: 'utils/validators.ts',

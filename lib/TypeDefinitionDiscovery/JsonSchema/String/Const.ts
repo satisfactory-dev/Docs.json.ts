@@ -13,18 +13,20 @@ import {
 type RawData = {type: 'string', const: string};
 type Type = (LiteralTypeNode & {literal: StringLiteral});
 
+export const schema = {
+	type: 'object',
+	required: ['type', 'const'],
+	additionalProperties: false,
+	properties: {
+		type: {type: 'string', const: 'string'},
+		const: {type: 'string'},
+	},
+};
+
 export class Const extends Generator<RawData, Type>
 {
 	constructor(ajv:Ajv) {
-		super(ajv, {
-			type: 'object',
-			required: ['type', 'const'],
-			additionalProperties: false,
-			properties: {
-				type: {type: 'string', const: 'string'},
-				const: {type: 'string'},
-			},
-		});
+		super(ajv, schema);
 	}
 
 	generate(): (raw_data: RawData) => Type {

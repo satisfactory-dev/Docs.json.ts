@@ -21,6 +21,36 @@ type RawData = {
 	],
 };
 
+export const schema = {
+	oneOf: [
+		{
+			type: 'object',
+			required: ['oneOf'],
+			additionalProperties: false,
+			properties: {
+				type: {type: 'string', const: 'string'},
+				oneOf: {
+					type: 'array',
+					minItems: 1,
+					items: {type: 'object'},
+				},
+			},
+		},
+		{
+			type: 'object',
+			required: ['anyOf'],
+			additionalProperties: false,
+			properties: {
+				anyOf: {
+					type: 'array',
+					minItems: 1,
+					items: {type: 'object'},
+				},
+			},
+		},
+	],
+};
+
 export class oneOf_or_anyOf extends GeneratorDoesDiscovery<
 	RawData,
 	UnionTypeNode
@@ -28,35 +58,7 @@ export class oneOf_or_anyOf extends GeneratorDoesDiscovery<
 	constructor(ajv:Ajv, discovery:TypeDefinitionDiscovery) {
 		super(
 			ajv,
-			{
-				oneOf: [
-					{
-						type: 'object',
-						required: ['oneOf'],
-						additionalProperties: false,
-						properties: {
-							type: {type: 'string', const: 'string'},
-							oneOf: {
-								type: 'array',
-								minItems: 1,
-								items: {type: 'object'},
-							},
-						},
-					},
-					{
-						type: 'object',
-						required: ['anyOf'],
-						additionalProperties: false,
-						properties: {
-							anyOf: {
-								type: 'array',
-								minItems: 1,
-								items: {type: 'object'},
-							},
-						},
-					},
-				],
-			},
+			schema,
 			discovery
 		);
 	}

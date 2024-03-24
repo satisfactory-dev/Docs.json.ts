@@ -31,6 +31,7 @@ export const schema = {
 	properties: {
 		type: {type: 'string', const: 'object'},
 		additionalProperties: {type: 'boolean', const: false},
+		unevaluatedProperties: {type: 'boolean', const: false},
 		required: {
 			type: 'array',
 			minItems: 1,

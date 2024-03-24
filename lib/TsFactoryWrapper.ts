@@ -54,8 +54,15 @@ declare type supported_method_modifiers = (
 )[];
 
 export function adjust_class_name(class_name: string): string {
+	if ('boolean' === class_name) {
+		return 'Docs_boolean';
+	}
 	if ('class' === class_name) {
 		return 'Docs_class';
+	}
+
+	if (undefined === class_name) {
+		throw new Error('whut');
 	}
 
 	return class_name.replace(/[^A-Za-z_\d]/g, '_');

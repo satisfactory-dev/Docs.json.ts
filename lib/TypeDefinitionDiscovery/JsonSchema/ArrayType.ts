@@ -10,6 +10,7 @@ import {
 	TypeDefinitionDiscovery,
 } from '../../TypeDefinitionDiscovery';
 import {
+	object_has_non_empty_array_property,
 	object_has_property,
 } from '../../CustomParsingTypes/CustomPairingTypes';
 import {
@@ -20,14 +21,19 @@ type RawData = {
 	type: 'array',
 	minItems?: 1,
 	maxItems?: 1,
-	items: {[key: string]: unknown},
+	items: {[key: string]: unknown}|false,
+	prefixItems?: {$ref: string}[],
 };
 
 export class ArrayType extends GeneratorDoesDiscovery<
 	RawData,
 	TupleTypeNode | ArrayTypeNode
 > {
-	constructor(ajv: Ajv, discovery:TypeDefinitionDiscovery) {
+	constructor(
+		ajv: Ajv,
+		supported_refs: string[],
+		discovery:TypeDefinitionDiscovery
+	) {
 		super(
 			ajv,
 			{
@@ -38,7 +44,28 @@ export class ArrayType extends GeneratorDoesDiscovery<
 					type: {type: 'string', const: 'array'},
 					minItems: {type: 'number', minimum: 0},
 					maxItems: {type: 'number', minimum: 1},
-					items: {type: 'object'},
+					items: {
+						oneOf: [
+							{type: 'object'},
+							{type: 'boolean', const: false},
+						],
+					},
+					uniqueItems: {type: 'boolean', const: true},
+					prefixItems: {
+						type: 'array',
+						minItems: 1,
+						items: {
+							type: 'object',
+							required: ['$ref'],
+							additionalProperties: false,
+							properties: {
+								$ref: {
+									type: 'string',
+									enum: supported_refs,
+								},
+							},
+						},
+					},
 				},
 			},
 			discovery,
@@ -48,6 +75,24 @@ export class ArrayType extends GeneratorDoesDiscovery<
 
 	generate() {
 		return (raw_data: RawData) => {
+			if (false === raw_data.items) {
+				if (
+					!object_has_non_empty_array_property(
+						raw_data,
+						'prefixItems'
+					)
+				) {
+					console.error(raw_data);
+					throw new Error(
+						'Must specify prefixItems when items is false!'
+					);
+				}
+
+				return ts.factory.createTupleTypeNode(
+					raw_data.prefixItems.map(e => this.discovery.find(e))
+				);
+			}
+
 			if (
 				object_has_property<
 					'minItems',

@@ -20,12 +20,17 @@ import {
 
 type RawData =
 	& ObjectTypeRawData
-	& {properties: {[key: string]: unknown} & {$ref: string}};
+	& {properties: {[key: string]: unknown}, $ref: string};
 
-type Type = IntersectionTypeNode & {types: [
-	TypeReferenceNode,
-	LiteralTypeNode,
-]};
+type Type =
+	| TypeReferenceNode
+	| (
+		& IntersectionTypeNode
+		& {types: [
+			TypeReferenceNode,
+			LiteralTypeNode,
+		]}
+	);
 
 export class ExtendsObject extends GeneratorDoesDiscovery<RawData, Type>
 {
@@ -61,23 +66,24 @@ export class ExtendsObject extends GeneratorDoesDiscovery<RawData, Type>
 	generate(): (raw_data: RawData) => Type {
 		return (raw_data: RawData): Type => {
 			const {
+				$ref,
 				properties,
 				...rest
 			} = raw_data;
-			const {
-				$ref,
-				...properties_rest
-			} = properties;
+
+			const reference_type = ts.factory.createTypeReferenceNode(
+				adjust_class_name($ref.substring(14))
+			);
+
+			if (undefined === properties) {
+				return reference_type;
+			}
 
 			return ts.factory.createIntersectionTypeNode([
-				ts.factory.createTypeReferenceNode(adjust_class_name(
-					$ref
-				)),
+				reference_type,
 				this.discovery.find({
 					...rest,
-					properties: {
-						...properties_rest,
-					},
+					properties,
 				}),
 			]) as Type;
 		};

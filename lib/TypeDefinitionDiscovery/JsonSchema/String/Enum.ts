@@ -19,17 +19,19 @@ type Type = UnionTypeNode & {
 	],
 };
 
+export const schema = {
+	type: 'object',
+	required: ['type', 'enum'],
+	additionalProperties: false,
+	properties: {
+		type: {type: 'string', const: 'string'},
+		enum: {type: 'array', minItems: 1, items: {type: 'string'}},
+	},
+};
+
 export class Enum extends Generator<RawData, Type> {
 	constructor(ajv: Ajv) {
-		super(ajv, {
-			type: 'object',
-			required: ['type', 'enum'],
-			additionalProperties: false,
-			properties: {
-				type: {type: 'string', const: 'string'},
-				enum: {type: 'array', minItems: 1, items: {type: 'string'}},
-			},
-		});
+		super(ajv, schema);
 	}
 
 	generate(): (raw_data: RawData) => Type {

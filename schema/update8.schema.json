@@ -2183,6 +2183,7 @@
 				},
 				"mBlockVisualizationSplineDataSettings": {
 					"type": "string",
+					"minLength": 1,
 					"typed_object_string": {
 						"StartTangentPrimitiveDataStartIndex": {
 							"$ref": "#/definitions/integer-string"

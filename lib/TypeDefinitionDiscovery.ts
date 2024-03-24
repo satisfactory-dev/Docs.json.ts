@@ -40,6 +40,7 @@ import {
 import {
 	UnrealEngineString,
 } from './TypeDefinitionDiscovery/CustomParsingTypes/UnrealEngineString';
+import {StringType} from './TypeDefinitionDiscovery/JsonSchema/String';
 
 type SchemaObjectWithDefinitions<Definitions extends {[key: string]: true}> =
 	& SchemaObject
@@ -225,6 +226,7 @@ export class TypeDefinitionDiscovery
 						},
 					},
 					$ref: {
+						type: 'object',
 						$ref: '#/definitions/$ref_base',
 						unevaluatedProperties: false,
 					},
@@ -461,6 +463,7 @@ export class TypeDefinitionDiscovery
 		const type = this.search(maybe);
 
 		if (!type) {
+			console.error(maybe);
 			throw new Error('Could not find a match!');
 		}
 
@@ -475,6 +478,7 @@ export class TypeDefinitionDiscovery
 			new Pattern(ajv),
 			new BooleanEnum(ajv),
 			new Enum(ajv),
+			new StringType(ajv),
 		];
 	}
 

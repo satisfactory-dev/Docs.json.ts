@@ -27,6 +27,26 @@ type typed_array_string_RawData = {
 	},
 };
 
+export const schema = {
+	type: 'object',
+	required: ['type', 'minLength', 'typed_array_string'],
+	additionalProperties: false,
+	properties: {
+		type: {type: 'string', const: 'string'},
+		minLength: {type: 'number', const: 1},
+		typed_array_string: {
+			type: 'object',
+			required: ['type', 'items'],
+			properties: {
+				type: {type: 'string', const: 'array'},
+				minItems: {type: 'number', minimum: 0},
+				maxItems: {type: 'number', minimum: 1},
+				items: {type: 'object'},
+			},
+		},
+	},
+};
+
 export class typed_array_string extends GeneratorDoesDiscovery<
 	typed_array_string_RawData,
 	TupleTypeNode|ArrayTypeNode
@@ -34,25 +54,7 @@ export class typed_array_string extends GeneratorDoesDiscovery<
 	constructor(ajv: Ajv, discovery:TypeDefinitionDiscovery) {
 		super(
 			ajv,
-			{
-				type: 'object',
-				required: ['type', 'minLength', 'typed_array_string'],
-				additionalProperties: false,
-				properties: {
-					type: {type: 'string', const: 'string'},
-					minLength: {type: 'number', const: 1},
-					typed_array_string: {
-						type: 'object',
-						required: ['type', 'items'],
-						properties: {
-							type: {type: 'string', const: 'array'},
-							minItems: {type: 'number', minimum: 0},
-							maxItems: {type: 'number', minimum: 1},
-							items: {type: 'object'},
-						},
-					},
-				},
-			},
+			schema,
 			discovery
 		);
 	}
