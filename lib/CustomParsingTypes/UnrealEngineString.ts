@@ -25,7 +25,7 @@ import {
 	variable,
 	not,
 	type_reference_node,
-	template_expression_from_string,
+	template_expression_from_string, parenthesize,
 } from '../TsFactoryWrapper';
 import {
 	UnexpectedlyUnknown,
@@ -299,12 +299,43 @@ export class UnrealEngineString {
 	}
 
 	static CustomGenerators() {
-		return [
-			{
-				file: 'utils/validators.ts',
-				node: ts.factory.createTypeAliasDeclaration(
-					[create_modifier('export')],
-					'UnrealEngineString',
+		const UnrealEngineString_class = createClass(
+			'UnrealEngineString',
+			[
+				ts.factory.createPropertyDeclaration(
+					[create_modifier('readonly')],
+					'left',
+					undefined,
+					ts.factory.createTypeReferenceNode('left'),
+					undefined
+				),
+				ts.factory.createPropertyDeclaration(
+					[create_modifier('readonly')],
+					'right',
+					undefined,
+					ts.factory.createTypeReferenceNode('right'),
+					undefined
+				),
+				create_method_without_type_parameters(
+					'constructor',
+					[
+						createParameter(
+							'left',
+							ts.factory.createTypeReferenceNode('left')
+						),
+						createParameter(
+							'right',
+							ts.factory.createTypeReferenceNode('right')
+						),
+					],
+					[
+						create_this_assignment('left', 'left'),
+						create_this_assignment('right', 'right'),
+					],
+					['protected']
+				),
+				create_method_with_type_parameters(
+					'fromString',
 					[
 						ts.factory.createTypeParameterDeclaration(
 							undefined,
@@ -319,11 +350,100 @@ export class UnrealEngineString {
 							create_type('string'),
 						),
 					],
-					DataTransformer.object_type_literal({
-						left: ts.factory.createTypeReferenceNode('left'),
-						right: ts.factory.createTypeReferenceNode('right'),
-					})
+					[
+						createParameter(
+							'value',
+							create_type('string')
+						),
+					],
+					[
+						create_const_statement(variable(
+							'result',
+							ts.factory.createCallExpression(
+								create_property_access(
+									ts.factory.createRegularExpressionLiteral(
+										UnrealEngineString_regex.toString()
+									),
+									'exec'
+								),
+								undefined,
+								[
+									ts.factory.createIdentifier('value'),
+								]
+							)
+						)),
+						create_throw_if(
+							'Error',
+							not(ts.factory.createIdentifier('result')),
+							[
+								template_expression_from_string(
+									'`Not an UnrealEngineString (${value})`'
+								),
+							]
+						),
+						ts.factory.createReturnStatement(
+							ts.factory.createNewExpression(
+								ts.factory.createIdentifier(
+									'UnrealEngineString'
+								),
+								[
+									ts.factory.createTypeReferenceNode('left'),
+									ts.factory.createTypeReferenceNode(
+										'right'
+									),
+								],
+								[
+									ts.factory.createAsExpression(
+										create_index_access('result', 1),
+										ts.factory.createTypeReferenceNode(
+											'left'
+										)
+									),
+									ts.factory.createAsExpression(
+										parenthesize(ts.factory.createLogicalOr(
+											create_index_access('result', 2),
+											create_index_access('result', 3),
+										)),
+										ts.factory.createTypeReferenceNode(
+											'right'
+										),
+									),
+								]
+							)
+						),
+					],
+					['static'],
+					ts.factory.createTypeReferenceNode(
+						'UnrealEngineString',
+						[
+							ts.factory.createTypeReferenceNode('left'),
+							ts.factory.createTypeReferenceNode('right'),
+						]
+					)
 				),
+			],
+			{
+				modifiers: ['export'],
+			},
+			[
+				ts.factory.createTypeParameterDeclaration(
+					undefined,
+					'left',
+					create_type('string'),
+					create_type('string'),
+				),
+				ts.factory.createTypeParameterDeclaration(
+					undefined,
+					'right',
+					create_type('string'),
+					create_type('string'),
+				),
+			]
+		);
+		return [
+			{
+				file: 'utils/validators.ts',
+				node: UnrealEngineString_class,
 			},
 		];
 	}
