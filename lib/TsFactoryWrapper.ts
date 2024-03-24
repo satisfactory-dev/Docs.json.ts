@@ -6,7 +6,6 @@ import ts, {
 	LiteralTypeNode,
 	MethodDeclaration,
 	Modifier,
-	NewExpression,
 	NodeArray,
 	NullLiteral,
 	ParenthesizedExpression,
@@ -296,23 +295,6 @@ export function template_expression_from_string(
 	}
 
 	return ast.statements[0].expression;
-}
-
-export function create_new_RegExp(
-	first:(Expression|string|RegExp),
-	...rest:(Expression|string|RegExp)[]
-) : NewExpression {
-	return ts.factory.createNewExpression(
-		ts.factory.createIdentifier('RegExp'),
-		undefined,
-		[first, ...rest].map(
-			e => is_string(e) ? ts.factory.createIdentifier(e) : (
-				e instanceof RegExp
-					? create_literal(e)
-					: e
-			)
-		)
-	);
 }
 
 export function parenthesize(expression:Expression): ParenthesizedExpression {
