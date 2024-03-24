@@ -40,7 +40,9 @@ import {
 import {
 	UnrealEngineString,
 } from './TypeDefinitionDiscovery/CustomParsingTypes/UnrealEngineString';
-import {StringType} from './TypeDefinitionDiscovery/JsonSchema/String';
+import {
+	StringType,
+} from './TypeDefinitionDiscovery/JsonSchema/String';
 
 type SchemaObjectWithDefinitions<Definitions extends {[key: string]: true}> =
 	& SchemaObject

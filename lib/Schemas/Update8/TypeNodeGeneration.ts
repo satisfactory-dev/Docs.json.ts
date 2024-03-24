@@ -57,6 +57,7 @@ import {
 	check_UnrealEngineString_parent,
 } from '../../CustomParsingTypes/UnrealEngineString';
 import {
+	object_has_non_empty_array_property,
 	object_only_has_that_property,
 } from '../../CustomParsingTypes/CustomPairingTypes';
 import {
@@ -963,11 +964,19 @@ export class Update8TypeNodeGeneration {
 											return item['$ref'];
 										})
 									);
-								} else if (
-									'anyOf' in items
-									&& items.anyOf instanceof Array
-									&& items.anyOf.length >= 1
-								) {
+								} else if (object_has_non_empty_array_property(
+									items,
+									'anyOf',
+									(
+										maybe:unknown
+									) : maybe is {$ref: string} => {
+										return object_only_has_that_property(
+											maybe,
+											'$ref',
+											is_string
+										);
+									}
+								)) {
 									output.push(
 										...items.anyOf.map((item) => {
 											return item.$ref;

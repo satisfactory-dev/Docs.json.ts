@@ -36,7 +36,9 @@ import {
 	schema as typed_array_string_schema,
 	typed_array_string,
 } from './typed_array_string';
-import {AnyGenerator} from '../Generator';
+import {
+	AnyGenerator,
+} from '../Generator';
 
 type typed_object_string_RawData = {
 	type: 'string',
