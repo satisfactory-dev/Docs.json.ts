@@ -570,12 +570,13 @@ export function create_const_statement(
 
 export function variable(
 	name: string,
-	value: Expression
+	value: Expression,
+	type: TypeNode|undefined = undefined
 ) : VariableDeclaration {
 	return ts.factory.createVariableDeclaration(
 		name,
 		undefined,
-		undefined,
+		type,
 		value
 	);
 }

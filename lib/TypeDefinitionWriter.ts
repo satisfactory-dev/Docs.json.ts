@@ -76,6 +76,9 @@ import {
 import {
 	UnrealEngineString,
 } from './TypeDefinitionDiscovery/CustomParsingTypes/UnrealEngineString';
+import {
+	DataTransformer,
+} from './DataTransformer';
 
 const __dirname = import.meta.dirname;
 
@@ -244,10 +247,10 @@ export class TypeDefinitionWriter
 			throw new Error('Could not find NativeClass on provided schema!');
 		}
 
-		const is_NativeClass = this.ajv.compile<DocsDataItem>({
-			definitions: schema.definitions,
-			...schema.definitions.NativeClass,
-		});
+		const is_NativeClass = await TypesDiscovery.generate_is_NativeClass(
+			this.ajv,
+			this.discovery.types_discovery
+		);
 
 		for (const entry of await docs.get()) {
 			const check = validations.find(maybe => maybe(entry));
@@ -282,6 +285,18 @@ export class TypeDefinitionWriter
 				undefined,
 				entry_type
 			));
+		}
+
+		for await (
+			const entry of (
+				new DataTransformer(this.ajv, this.discovery, docs)
+			).generate()
+		) {
+			if (!(entry.file in files)) {
+				files[entry.file] = [];
+			}
+
+			files[entry.file].push(entry.node);
 		}
 
 

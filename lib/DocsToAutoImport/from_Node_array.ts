@@ -183,7 +183,7 @@ export function EntityName_array_from_Node_array(nodes: Node[]): EntityName[] {
 			);
 		} else if (ts.isVariableDeclaration(node)) {
 			sub_nodes.push(
-				...[node.initializer, node.name].filter(
+				...[node.initializer, node.name, node.type].filter(
 					(maybe): maybe is Exclude<typeof maybe, undefined> =>
 						!!maybe
 				)

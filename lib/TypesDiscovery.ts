@@ -23,6 +23,12 @@ import {
 import {
 	non_array_object_property,
 } from './TypesDiscovery/non_array_object_property';
+import {
+	configure_ajv,
+} from './DocsValidation';
+import {
+	DocsDataItem,
+} from './DocsTsGenerator';
 
 export class TypesDiscovery
 {
@@ -141,5 +147,35 @@ export class TypesDiscovery
 			new typed_object_string(schema),
 			new non_array_object_property('typed_array_string', schema),
 		];
+	}
+
+	static async generate_is_NativeClass(
+		ajv:Ajv,
+		discovery:TypesDiscovery
+	) {
+		configure_ajv(ajv);
+
+		const schema = await discovery.schema_from_json();
+
+		if (!object_has_property(
+			schema,
+			'definitions',
+			value_is_non_array_object
+		)) {
+			throw new Error('Schema appears to have no definitions');
+		}
+
+		if (!object_has_property(
+			schema.definitions,
+			'NativeClass',
+			value_is_non_array_object
+		)) {
+			throw new Error('Could not find NativeClass on provided schema!');
+		}
+
+		return ajv.compile<DocsDataItem>({
+			definitions: schema.definitions,
+			...schema.definitions.NativeClass,
+		});
 	}
 }
