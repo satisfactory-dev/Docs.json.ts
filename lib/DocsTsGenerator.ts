@@ -141,7 +141,7 @@ export type generation_result = {
 	files: {[key: string]: ts.Node[]};
 };
 
-type DocsDataItem = {
+export type DocsDataItem = {
 	NativeClass: string;
 	Classes: ({[key: string]: unknown[] | string} & {ClassName: string})[];
 };

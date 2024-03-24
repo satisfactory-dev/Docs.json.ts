@@ -61,14 +61,20 @@ import {
 	dirname,
 } from 'node:path';
 import {
+	DocsDataItem,
+	DocsTsGenerator,
 	eslint_generated_types,
 } from './DocsTsGenerator';
 import {
-	UnrealEngineString,
+	adjust_unrealengine_value,
+	UnrealEngineString as legacy_UnrealEngineString_module,
 } from './CustomParsingTypes/UnrealEngineString';
 import {
 	string_starts_with,
 } from './TypesGeneration/validators';
+import {
+	UnrealEngineString,
+} from './TypeDefinitionDiscovery/CustomParsingTypes/UnrealEngineString';
 
 const __dirname = import.meta.dirname;
 
@@ -160,8 +166,11 @@ export class TypeDefinitionWriter
 		}
 	}
 
-	async write(parent_folder: string, cleanup = true)
-	{
+	async write(
+		docs:DocsTsGenerator,
+		parent_folder: string,
+		cleanup = true
+	) {
 		await this.prepare();
 		await writeFile(`${__dirname}/../types-progress.md`, await generate_markdown(this.discovery));
 
@@ -185,7 +194,7 @@ export class TypeDefinitionWriter
 		const files:{[key: string]: Node[]} = {};
 
 		const custom_generators = [
-			...UnrealEngineString.CustomGenerators(),
+			...legacy_UnrealEngineString_module.CustomGenerators(),
 			string_starts_with,
 		]
 
@@ -215,6 +224,64 @@ export class TypeDefinitionWriter
 				generator(schema.definitions[$ref] as never)
 			));
 		}
+
+		const validations = types.found_classes.map(
+			e => this.ajv.compile<DocsDataItem>(
+				{
+					definitions: schema.definitions,
+					...e,
+				}
+			)
+		);
+
+		if (!object_has_property(
+			schema.definitions,
+			'NativeClass',
+			value_is_non_array_object
+		)) {
+			throw new Error('Could not find NativeClass on provided schema!');
+		}
+
+		const is_NativeClass = this.ajv.compile<DocsDataItem>({
+			definitions: schema.definitions,
+			...schema.definitions.NativeClass,
+		});
+
+		for (const entry of await docs.get()) {
+			const check = validations.find(maybe => maybe(entry));
+
+			if (!check) {
+				console.error(entry);
+				throw new Error('Could not find schema!');
+			} else if (!is_NativeClass(entry)) {
+				console.error(entry);
+				throw new Error('Entry not a general NativeClass!');
+			}
+
+			const entry_type = this.discovery.find(
+				types.found_classes[validations.indexOf(check)]
+			);
+
+			const entry_class_name = adjust_unrealengine_value(
+				UnrealEngineString.fromString(entry.NativeClass).right
+			);
+
+			const entry_filename = `classes/CoreUObject/${
+				entry_class_name
+			}.ts`;
+
+			if (!(entry_filename in files)) {
+				files[entry_filename] = [];
+			}
+
+			files[entry_filename].push(ts.factory.createTypeAliasDeclaration(
+				[create_modifier('export')],
+				`${entry_class_name}__NativeClass`,
+				undefined,
+				entry_type
+			));
+		}
+
 
 		const auto_imports = new DocsTsAutoImports(files);
 		await auto_imports.generate();

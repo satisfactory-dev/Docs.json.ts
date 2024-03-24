@@ -59,9 +59,14 @@ export class ArrayType extends GeneratorDoesDiscovery<
 							required: ['$ref'],
 							additionalProperties: false,
 							properties: {
+								type: {type: 'string', const: 'object'},
 								$ref: {
 									type: 'string',
 									enum: supported_refs,
+								},
+								unevaluatedProperties: {
+									type: 'boolean',
+									const: false,
 								},
 							},
 						},

@@ -4,7 +4,10 @@ import {
 import {
 	UnrealEngineString_parent_schema,
 	UnrealEngineString_parent_type,
-	UnrealEngineString_reference_type, UnrealEngineString_schema_definitions,
+	UnrealEngineString_reference_type,
+	UnrealEngineString_regex,
+	UnrealEngineString_schema_definitions,
+	UnrealEngineString_type,
 } from '../../CustomParsingTypes/UnrealEngineString';
 import {
 	TypeReferenceNode,
@@ -27,6 +30,22 @@ export class UnrealEngineString extends Generator<
 			return UnrealEngineString_reference_type(
 				raw_data.UnrealEngineString
 			);
+		};
+	}
+
+	static fromString(value:string): (
+		& Exclude<UnrealEngineString_type, true>
+		& {left: string, right: string}
+	) {
+		const result = UnrealEngineString_regex.exec(value);
+
+		if (!result) {
+			throw new Error(`Not an UnrealEngineString (${value})`);
+		}
+
+		return {
+			left: result[1],
+			right: result[2] || result[3],
 		};
 	}
 }
