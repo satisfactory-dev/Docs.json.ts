@@ -3,8 +3,11 @@ import {
 	DocsTsGenerator,
 } from './DocsTsGenerator';
 import ts, {
+	CallExpression,
 	ObjectLiteralExpression,
 	PrimaryExpression,
+	TypeLiteralNode,
+	TypeNode,
 } from 'typescript';
 import {
 	adjust_unrealengine_value,
@@ -27,7 +30,7 @@ import {
 	TypesDiscovery,
 } from './TypesDiscovery';
 import {
-	create_const_statement,
+	create_const_statement, create_literal, create_property_access,
 	property_name_or_computed,
 	variable,
 } from './TsFactoryWrapper';
@@ -96,13 +99,42 @@ export class DataTransformer
 				UnrealEngineString.fromString(entry.NativeClass).right
 			);
 
+			const literal = DataTransformer.object_literal(entry, {
+				NativeClass: (argument:PrimaryExpression) => {
+					return ts.factory.createCallExpression(
+						create_property_access(
+							ts.factory.createIdentifier('UnrealEngineString'),
+							'fromString'
+						),
+						[
+							create_literal('/Script/CoreUObject.Class'),
+							ts.factory.createTypeReferenceNode(
+								'StringStartsWith',
+								[
+									create_literal('/Script/FactoryGame.FG')
+								]
+							),
+						],
+						[
+							argument,
+						]
+					);
+				},
+			});
+
+			/*
+			const entry_type = this.discovery.find(
+				types.found_classes[validations.indexOf(check)]
+			);
+			 */
+
 			yield {
 				file: `data/CoreUObject/${
 					entry_class_name
 				}.ts`,
 				node: create_const_statement(variable(
 					entry_class_name,
-					this.object_literal(entry),
+					literal,
 					ts.factory.createTypeReferenceNode(
 						`${entry_class_name}__NativeClass`
 					)
@@ -111,20 +143,40 @@ export class DataTransformer
 		}
 	}
 
-	private object_literal(
-		from:{[key: string]: unknown}
+	static object_literal(
+		from:{[key: string]: unknown},
+		pass_through:{
+			[key: string]: (argument:PrimaryExpression) => CallExpression
+		} = {}
 	): ObjectLiteralExpression {
 		return ts.factory.createObjectLiteralExpression(
 			Object.entries(from).map((entry) => {
+				const value = this.value_literal(entry[1]);
+
 				return ts.factory.createPropertyAssignment(
 					property_name_or_computed(entry[0]),
-					this.value_literal(entry[1])
+					entry[0] in pass_through ? pass_through[entry[0]](value) : value
 				);
 			})
 		);
 	}
 
-	private value_literal(from:unknown): PrimaryExpression
+	static object_type_literal(
+		from:{[key: string]: TypeNode},
+	) : TypeLiteralNode {
+		return ts.factory.createTypeLiteralNode(
+			Object.entries(from).map((entry) => {
+				return ts.factory.createPropertySignature(
+					undefined,
+					property_name_or_computed(entry[0]),
+					undefined,
+					entry[1]
+				)
+			})
+		);
+	}
+
+	private static value_literal(from:unknown): PrimaryExpression
 	{
 		if ('string' === typeof from) {
 			return ts.factory.createStringLiteral(from);

@@ -33,9 +33,12 @@ export class UnrealEngineString extends Generator<
 		};
 	}
 
-	static fromString(value:string): (
+	static fromString<
+		left extends string = string,
+		right extends string = string
+	>(value:string): (
 		& Exclude<UnrealEngineString_type, true>
-		& {left: string, right: string}
+		& {left: left, right: right}
 	) {
 		const result = UnrealEngineString_regex.exec(value);
 
@@ -44,8 +47,8 @@ export class UnrealEngineString extends Generator<
 		}
 
 		return {
-			left: result[1],
-			right: result[2] || result[3],
+			left: result[1] as left,
+			right: (result[2] || result[3]) as right,
 		};
 	}
 }
