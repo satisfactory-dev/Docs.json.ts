@@ -10,7 +10,7 @@ export const string_starts_with = {
 	file: 'utils/validators.ts',
 	node: ts.factory.createTypeAliasDeclaration(
 		[create_modifier('export')],
-		ts.factory.createIdentifier('string_starts_with'),
+		ts.factory.createIdentifier('StringStartsWith'),
 		[
 			ts.factory.createTypeParameterDeclaration(
 				undefined,

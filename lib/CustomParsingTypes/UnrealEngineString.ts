@@ -547,7 +547,7 @@ export class UnrealEngineString {
 							create_union(
 								create_type('string'),
 								type_reference_node(
-									'string_starts_with',
+									'StringStartsWith',
 									create_type('string')
 								)
 							),
@@ -561,7 +561,7 @@ export class UnrealEngineString {
 							create_union(
 								create_type('string'),
 								type_reference_node(
-									'string_starts_with',
+									'StringStartsWith',
 									create_type('string')
 								)
 							),
@@ -642,7 +642,7 @@ export function UnrealEngineString_reference_type(
 
 			if (right_options.length >= 1) {
 				right_value = type_reference_node(
-					'string_starts_with',
+					'StringStartsWith',
 					(
 						1 === right_options.length
 							? create_literal(right_options[0])
@@ -684,7 +684,7 @@ function conditional_type_arguments(
 			),
 			create_type('string'),
 			type_reference_node(
-				'string_starts_with',
+				'StringStartsWith',
 				ts.factory.createTypeQueryNode(
 					ts.factory.createIdentifier('prefix_check')
 				),
