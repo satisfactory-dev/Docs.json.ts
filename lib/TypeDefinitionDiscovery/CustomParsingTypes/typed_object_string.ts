@@ -60,7 +60,7 @@ export class typed_object_string extends GeneratorDoesDiscovery<
 	typed_object_string_RawData,
 	TypeLiteralNode
 > {
-	private known_types:[
+	private readonly known_types:[
 		AnyGenerator,
 		...AnyGenerator[],
 	];

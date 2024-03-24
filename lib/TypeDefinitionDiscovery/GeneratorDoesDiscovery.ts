@@ -17,7 +17,7 @@ export abstract class GeneratorDoesDiscovery<
 > extends Generator<RawData, Type> {
 	protected readonly discovery:TypeDefinitionDiscovery;
 
-	constructor(
+	protected constructor(
 		ajv: Ajv,
 		schema: SchemaObject,
 		discovery: TypeDefinitionDiscovery
