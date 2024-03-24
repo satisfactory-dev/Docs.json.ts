@@ -28,7 +28,7 @@ export class string_starts_with extends Generator<RawData, TypeReferenceNode>
 
 	generate() {
 		return (raw_data: RawData) => type_reference_node(
-			'string_starts_with',
+			'StringStartsWith',
 			create_literal(raw_data.string_starts_with),
 		);
 	}
