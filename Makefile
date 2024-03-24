@@ -26,9 +26,9 @@ generate: lint-lib build-lib
 	${DOCKER_COMPOSER_PREFIX} exec ts-node npm run generate
 	${DOCKER_COMPOSER_PREFIX} exec node ./node_modules/.bin/tsc --project ./tsconfig.generated-types-check.json
 
-discover: lint-lib build-lib discover--skip-checks
+discover: lint-lib discover--skip-checks
 
-discover--skip-checks:
+discover--skip-checks: build-lib
 	@echo 'running ./discover-types.ts'
 	${DOCKER_COMPOSER_PREFIX} exec ts-node ./node_modules/.bin/ts-node ./discover-types.ts
 
