@@ -5,6 +5,9 @@ import Ajv, {
 import {
 	DataTransformer,
 } from '../DataTransformer';
+import {
+	Expression,
+} from 'typescript';
 
 export type AnyGenerator = Generator<unknown, unknown, unknown>;
 
@@ -20,7 +23,10 @@ export abstract class Generator<
 	}
 
 	abstract generate(
-	): Promise<(raw_data:RawData) => Result>;
+		schema_data:SchemaType
+	): Promise<
+		| ((raw_data:RawData) => Result)
+	>;
 }
 
 export abstract class SchemaCompilingGenerator<
@@ -54,5 +60,14 @@ export abstract class SchemaCompilingWithAutoDefinitions<
 			definitions,
 			...schema,
 		};
+	}
+}
+
+export class ExpressionResult<T extends Expression = Expression>
+{
+	public readonly expression:T;
+
+	constructor(expression:T) {
+		this.expression = expression;
 	}
 }

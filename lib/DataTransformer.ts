@@ -3,6 +3,7 @@ import {
 	DocsTsGenerator,
 } from './DocsTsGenerator';
 import ts, {
+	Expression,
 	ObjectLiteralExpression,
 	PrimaryExpression,
 } from 'typescript';
@@ -37,7 +38,7 @@ import {
 	variable,
 } from './TsFactoryWrapper';
 import {
-	AnyGenerator,
+	AnyGenerator, ExpressionResult,
 } from './DataDiscovery/Generator';
 import {
 	DataTransformerDiscovery,
@@ -256,11 +257,13 @@ export class DataTransformer
 		);
 	}
 
-	private static value_literal(from:unknown): PrimaryExpression
+	private static value_literal(from:unknown): PrimaryExpression|Expression
 	{
 		if ('string' === typeof from) {
 			return ts.factory.createStringLiteral(from);
-		} else if (value_is_non_array_object(from)) {
+		} else if (from instanceof ExpressionResult) {
+			return (from as ExpressionResult).expression;
+		} if (value_is_non_array_object(from)) {
 			return this.object_literal(from);
 		} else if (from instanceof Array) {
 			return ts.factory.createArrayLiteralExpression(
@@ -296,12 +299,12 @@ export class DataTransformer
 				ajv,
 				transformer
 			) as AnyGenerator,
-			new StringType(ajv),
-			new Pattern(ajv),
+			new StringType(ajv) as AnyGenerator,
+			new Pattern(ajv) as AnyGenerator,
 			new Enum(ajv),
 			new String_oneOf(ajv),
 			new oneOf(ajv),
-			new typed_object_string(ajv),
+			new typed_object_string(ajv, transformer) as AnyGenerator,
 		);
 
 		return transformer;

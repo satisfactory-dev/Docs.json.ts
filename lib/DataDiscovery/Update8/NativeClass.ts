@@ -1,5 +1,5 @@
 import {
-	Generator,
+	Generator, ExpressionResult,
 } from '../Generator';
 import Ajv, {
 	ValidateFunction,
@@ -30,8 +30,8 @@ import {
 	NoMatchError,
 } from '../../DataTransformerDiscovery/NoMatchError';
 import {
-	AnyGenerator,
-} from '../Generator';
+	prefixItems,
+} from '../JsonSchema/Array/prefixItems';
 
 /**
  * @todo get auto-conversion of Classes property to behave as expected
@@ -43,6 +43,7 @@ export class NativeClass extends Generator<
 > {
 	private readonly discovery:DataTransformerDiscovery;
 	private readonly items:items;
+	private readonly prefixItems:prefixItems;
 	constructor(
 		check:ValidateFunction<DocsDataItem>,
 		discovery:DataTransformerDiscovery,
@@ -52,6 +53,7 @@ export class NativeClass extends Generator<
 		super(check);
 		this.discovery = discovery;
 		this.items = new items(ajv, data_transformer);
+		this.prefixItems = new prefixItems(ajv, data_transformer);
 	}
 
 	async generate() {
@@ -119,33 +121,21 @@ export class NativeClass extends Generator<
 					property,
 					generator(raw_data[property]),
 				]
-			})) as DocsDataItem;
+			}));
 
 			const {Classes: Classes_schema} = resolved_schema;
 
-			if (!this.items.check(Classes_schema)) {
-				throw new Error('Unsupported classes check!');
-			}
+			const generators = await this.Classes_generators(
+				Classes_schema
+			);
 
-			try {
-				const generators = Object.fromEntries(Object.entries(
-					Classes_schema.items.properties
-				).map(
-					(entry) : [string, AnyGenerator] => {
-						const [property, value] = entry;
-
-						return [
-							property,
-							this.discovery.find_generator(value),
-						];
-					}
-				));
-
-				const remapped_classes = result.Classes.map(async (
+				const remapped_classes = (
+					result as DocsDataItem
+				).Classes.map(async (
 					Classes_entry
 				) : Promise<
 					& {[key: string]: unknown}
-					& {ClassName: string}
+					& {ClassName: string|ExpressionResult}
 				> => {
 					const result = Object.fromEntries(await Promise.all(
 						Object.entries(Classes_entry).map(async (
@@ -156,9 +146,7 @@ export class NativeClass extends Generator<
 							if (property in generators) {
 								return [
 									property,
-									(
-										await generators[property].generate()
-									)(raw_data),
+								await generators[property](raw_data),
 								];
 							}
 
@@ -166,9 +154,20 @@ export class NativeClass extends Generator<
 						})
 					));
 
-					if (!object_has_property(result, 'ClassName', is_string)) {
-						console.error(result);
-						throw new Error(
+					if (
+						!object_has_property(
+							result,
+							'ClassName',
+							(e:unknown) : e is string|ExpressionResult => {
+								return (
+									is_string(e)
+									|| e instanceof ExpressionResult
+								);
+							}
+						)
+					) {
+						throw new NoMatchError(
+							result,
 							'ClassName not present as string on result!'
 						);
 					}
@@ -178,19 +177,40 @@ export class NativeClass extends Generator<
 
 				result.Classes = await Promise.all(remapped_classes);
 
-				console.log(result.Classes[0]);
-			} catch (err) {
-				if (err instanceof NoMatchError) {
-					process.stdout.write(
-						`${JSON.stringify(err.value, null, '\t')}\n`
-					);
-					console.error(err.message, err.stack);
-				} else {
-					throw err;
-				}
-			}
-			throw new Error('foo');
+			return result;
 		};
+	}
+
+	private async Classes_generators(
+		Classes_schema:unknown
+	): Promise<{[key: string]: (raw_data:unknown) => unknown}> {
+		if (this.items.check(Classes_schema)) {
+			return Object.fromEntries(await Promise.all(Object.entries(
+				Classes_schema.items.properties
+			).map(
+				async (
+					entry
+				) : Promise<[string, (raw_data:unknown) => unknown]> => {
+					const [property, value] = entry;
+
+					return [
+						property,
+						await this.discovery.find_generator(value).generate(
+							Classes_schema.items.properties[
+								property
+							]
+						),
+					];
+				}
+			)));
+		} else if (this.prefixItems.check(Classes_schema)) {
+			throw new NoMatchError(Classes_schema.prefixItems);
+		}
+
+		throw new NoMatchError(
+			{Classes_schema},
+			'Unsupported classes check!'
+		);
 	}
 
 	static async fromTypesDiscovery(

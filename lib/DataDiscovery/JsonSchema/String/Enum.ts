@@ -22,8 +22,7 @@ export class Enum extends SchemaCompilingGenerator<
 
 	generate() {
 		return Promise.resolve((raw_data: unknown) => {
-			console.log(raw_data);
-			throw new Error('bar');
+			return raw_data;
 		});
 	}
 }

@@ -43,6 +43,7 @@ import {
 import {
 	StringType,
 } from './TypeDefinitionDiscovery/JsonSchema/String';
+import {NoMatchError} from './DataTransformerDiscovery/NoMatchError';
 
 type SchemaObjectWithDefinitions<Definitions extends {[key: string]: true}> =
 	& SchemaObject
@@ -271,9 +272,7 @@ export class TypeDefinitionDiscovery
 								required: [
 									'type',
 									'items',
-									'prefixItems',
 									'minItems',
-									'maxItems',
 								],
 								additionalProperties: false,
 								properties: {
@@ -281,38 +280,11 @@ export class TypeDefinitionDiscovery
 										type: 'string',
 										const: 'array',
 									},
-									items: {type: 'boolean', const: false},
 									minItems: {
 										type: 'number',
 										minimum: 1,
 									},
 									maxItems: {
-										type: 'number',
-										minimum: 1,
-									},
-									prefixItems: {
-										type: 'array',
-										minItems: 1,
-										items: {
-											$ref: '#/definitions/$ref',
-										},
-									},
-								},
-							},
-							{
-								type: 'object',
-								required: [
-									'type',
-									'items',
-									'minItems',
-								],
-								additionalProperties: false,
-								properties: {
-									type: {
-										type: 'string',
-										const: 'array',
-									},
-									minItems: {
 										type: 'number',
 										minimum: 1,
 									},

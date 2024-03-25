@@ -6,9 +6,11 @@ import {
 import {
 	DocsTsGenerator,
 } from './lib/DocsTsGenerator';
+import {NoMatchError} from './lib/DataTransformerDiscovery/NoMatchError';
 
 const __dirname = import.meta.dirname;
 
+try {
 const bar = new TypeDefinitionWriter(
 	new Ajv({
 		verbose: true,
@@ -35,3 +37,14 @@ console.table({
 	'Found Classes': result.found_classes.length,
 	'Missing Classes': result.missing_classes.length,
 });
+} catch (err) {
+	if (err instanceof NoMatchError) {
+		process.stdout.write(`${
+			JSON.stringify(err.value, null, '\t')
+		}\n`);
+
+		console.error(err.message, err.stack);
+	} else {
+		throw err;
+	}
+}

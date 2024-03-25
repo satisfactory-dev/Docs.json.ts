@@ -8,8 +8,6 @@ import {
 	TypeNode,
 } from 'typescript';
 
-export type AnyGenerator = Generator<unknown>;
-
 export abstract class Generator<
 	RawData
 > {

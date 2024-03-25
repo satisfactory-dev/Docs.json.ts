@@ -79,6 +79,9 @@ import {
 import {
 	DataTransformer,
 } from './DataTransformer';
+import {
+	NoMatchError,
+} from './DataTransformerDiscovery/NoMatchError';
 
 const __dirname = import.meta.dirname;
 
@@ -187,6 +190,19 @@ export class TypeDefinitionWriter
 		const types = await this.discovery.discover_type_definitions();
 		const schema = await this.discovery.types_discovery.schema_from_json();
 
+		if (
+			types.missing_classes.length > 0
+			|| types.missing_types.length > 0
+		) {
+			throw new NoMatchError(
+				{
+					classes: types.missing_classes,
+					types: types.missing_types,
+				},
+				'Some missing types found!'
+			);
+		}
+
 		if (!object_has_property(
 			schema,
 			'definitions',
@@ -256,8 +272,13 @@ export class TypeDefinitionWriter
 			const check = validations.find(maybe => maybe(entry));
 
 			if (!check) {
-				console.error(types);
-				throw new Error('Could not find schema!');
+				throw new NoMatchError(
+					{
+						types,
+						entry,
+					},
+					'Could not find schema!'
+				);
 			} else if (!is_NativeClass(entry)) {
 				console.error(entry);
 				throw new Error('Entry not a general NativeClass!');

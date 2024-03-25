@@ -9,21 +9,37 @@ import {
 	schema_type as pattern_type,
 	schema as pattern_schema,
 } from '../JsonSchema/String/Pattern';
+import {
+	DataTransformer,
+} from '../../DataTransformer';
+import {
+	NoMatchError,
+} from '../../DataTransformerDiscovery/NoMatchError';
+import {
+	string_to_object,
+} from '../../DocsValidation';
+import {
+	value_is_non_array_object,
+} from '../../CustomParsingTypes/CustomPairingTypes';
+
+type schema_type = {
+	type: 'string',
+	minLength: 1,
+	typed_object_string: {
+		[key: string]: (
+			| pattern_type
+			),
+	},
+};
 
 export class typed_object_string extends SchemaCompilingGenerator<
-	{
-		type: 'string',
-		minLength: 1,
-		typed_object_string: {
-			[key: string]: (
-				| pattern_type
-			),
-		},
-	},
-	unknown,
-	unknown
+	schema_type,
+	string,
+	{[key: string]: unknown}
 > {
-	constructor(ajv: Ajv) {
+	private readonly discovery:DataTransformer;
+
+	constructor(ajv: Ajv, discovery:DataTransformer) {
 		super(ajv, {
 			type: 'object',
 			required: ['type', 'minLength', 'typed_object_string'],
@@ -44,12 +60,51 @@ export class typed_object_string extends SchemaCompilingGenerator<
 				},
 			},
 		});
+
+		this.discovery = discovery;
 	}
 
-	generate() {
-		return Promise.resolve((raw_data:unknown) => {
-			console.log(raw_data);
-			throw new Error('bar');
+	async generate(schema:schema_type) {
+		const converters = Object.fromEntries(await Promise.all(
+			Object.entries(
+				schema.typed_object_string
+			).map(async (
+				entry
+			) : Promise<[string, (raw_data:unknown) => unknown]> => {
+				return [
+					entry[0],
+					await this.discovery.data.find_generator(
+						entry[1]
+					).generate(entry[1]),
+				];
+			})
+		));
+
+		return Promise.resolve((raw_data: string) => {
+			const parsed = string_to_object(raw_data);
+
+			if (!value_is_non_array_object(parsed)) {
+				throw new NoMatchError(
+					{
+						raw_data,
+						parsed,
+					},
+					'Parsing issue!'
+				)
+			}
+
+			return Object.fromEntries(Object.entries(
+				parsed
+			).map((entry) => {
+				const [property, value] = entry;
+
+				return [
+					property,
+					property in converters
+						? converters[property](value)
+						: value,
+				];
+			}));
 		});
 	}
 }

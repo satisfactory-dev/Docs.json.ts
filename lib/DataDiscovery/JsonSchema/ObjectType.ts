@@ -11,7 +11,7 @@ type object_type = {
 export class ObjectType extends SchemaCompilingGenerator<
 	object_type,
 	object_type,
-	{[key: string]: unknown}
+	unknown
 > {
 	constructor(ajv: Ajv) {
 		super(ajv, {
@@ -31,10 +31,8 @@ export class ObjectType extends SchemaCompilingGenerator<
 	}
 
 	generate() {
-		return Promise.resolve((raw_data:object_type) => {
-			console.log(raw_data);
-			throw new Error('bar');
-			return raw_data.properties;
+		return Promise.resolve((raw_data: unknown) => {
+			return raw_data;
 		});
 	}
 }

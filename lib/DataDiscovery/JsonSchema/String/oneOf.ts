@@ -51,8 +51,8 @@ export class oneOf extends SchemaCompilingGenerator<
 	}
 
 	generate() {
-		return Promise.resolve((raw_data:unknown) => {
-			console.log(raw_data);
+		return Promise.resolve((raw_data: unknown) => {
+			return raw_data;
 		});
 	}
 }

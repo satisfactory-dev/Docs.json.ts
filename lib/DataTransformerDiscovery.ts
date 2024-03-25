@@ -9,9 +9,6 @@ import {
 } from './DataTransformer';
 import Ajv from 'ajv/dist/2020';
 import {
-	prefixItems,
-} from './DataDiscovery/JsonSchema/Array/prefixItems';
-import {
 	items,
 } from './DataDiscovery/JsonSchema/Array/items';
 import {
@@ -21,6 +18,9 @@ import {
 import {
 	NoMatchError,
 } from './DataTransformerDiscovery/NoMatchError';
+import {
+	oneOf,
+} from './DataDiscovery/JsonSchema/oneOf';
 
 export class DataTransformerDiscovery
 {
@@ -28,7 +28,7 @@ export class DataTransformerDiscovery
 	private readonly candidates: AnyGenerator[] = [];
 	private readonly $ref:Promise<$ref>;
 	private readonly items:items;
-	private readonly prefixItems:prefixItems;
+	private readonly oneOf:oneOf;
 
 	constructor(
 		ajv: Ajv,
@@ -37,7 +37,7 @@ export class DataTransformerDiscovery
 		this.discovery = discovery;
 		this.$ref = $ref.fromDataDiscovery(ajv, discovery);
 		this.items = new items(ajv, discovery);
-		this.prefixItems = new prefixItems(ajv, discovery);
+		this.oneOf = new oneOf(ajv);
 	}
 
 	add_generators(...generators:AnyGenerator[])
@@ -66,16 +66,19 @@ export class DataTransformerDiscovery
 				'properties',
 				value_is_non_array_object
 			)) {
-				console.error(value, result);
-				throw new Error('Properties not found on items!');
+				throw new NoMatchError(
+					{
+						value,
+						result,
+					},
+					'Properties not found on items!'
+				);
 			}
 
 			value.items = result;
 		}
-		if (this.prefixItems.check(value)) {
-			value.prefixItems = await Promise.all(value.prefixItems.map(
-				e => this.maybe_remap_ref(e),
-			)) as [unknown, ...unknown[]];
+		if (this.oneOf.check(value)) {
+			throw new NoMatchError(value, 'not yet supported');
 		}
 
 		if (value_is_non_array_object(value)) {
@@ -114,7 +117,7 @@ export class DataTransformerDiscovery
 					property,
 					(
 						transformer
-							? await transformer.generate()
+							? await transformer.generate(value)
 							: (raw_data:unknown) => raw_data
 					),
 				];
@@ -135,7 +138,7 @@ export class DataTransformerDiscovery
 	async find(from:unknown) {
 		const transformer = this.find_generator(from);
 
-		const match = await transformer.generate();
+		const match = await transformer.generate(from);
 
 		if (!(match instanceof Function)) {
 			throw new NoMatchError({from, match}, 'Unsupported');

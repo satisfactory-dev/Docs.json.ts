@@ -1,7 +1,17 @@
 import {
+	ExpressionResult,
 	SchemaCompilingGenerator,
 } from '../../Generator';
 import Ajv from 'ajv/dist/2020';
+import {
+	NoMatchError,
+} from '../../../DataTransformerDiscovery/NoMatchError';
+import ts, {
+	AsExpression,
+} from 'typescript';
+import {
+	create_literal,
+} from '../../../TsFactoryWrapper';
 
 export type schema_type = {type: 'string', pattern: string};
 
@@ -17,17 +27,33 @@ export const schema = {
 
 export class Pattern extends SchemaCompilingGenerator<
 	schema_type,
-	unknown,
-	unknown
+	string,
+	ExpressionResult<AsExpression>
 > {
 	constructor(ajv: Ajv) {
 		super(ajv, schema);
 	}
 
-	generate() {
-		return Promise.resolve((raw_data: unknown) => {
-			console.log(raw_data);
-			throw new Error('bar');
+	generate(schema:schema_type) {
+		const regex = new RegExp(schema.pattern);
+
+		return Promise.resolve((raw_data: string) => {
+			if (!regex.test(raw_data)) {
+				throw new NoMatchError({
+					schema,
+					raw_data,
+				}, 'RegExp mismatch');
+			}
+
+			return new ExpressionResult(ts.factory.createAsExpression(
+				create_literal(raw_data),
+				ts.factory.createTypeReferenceNode(
+					'StringPassedRegExp',
+					[
+						create_literal(schema.pattern),
+					]
+				)
+			));
 		});
 	}
 }
