@@ -185,32 +185,49 @@ export class NativeClass extends Generator<
 		Classes_schema:unknown
 	): Promise<{[key: string]: (raw_data:unknown) => unknown}> {
 		if (this.items.check(Classes_schema)) {
-			return Object.fromEntries(await Promise.all(Object.entries(
-				Classes_schema.items.properties
-			).map(
-				async (
-					entry
-				) : Promise<[string, (raw_data:unknown) => unknown]> => {
-					const [property, value] = entry;
+			if (object_has_property(Classes_schema.items, 'properties')) {
+				return this.Classes_generators_from_direct_items(
+					Classes_schema as {
+						items: {
+							properties: {[key: string]: unknown},
+						},
+					},
+				);
+			}
 
-					return [
-						property,
-						await this.discovery.find_generator(value).generate(
-							Classes_schema.items.properties[
-								property
-							]
-						),
-					];
-				}
-			)));
-		} else if (this.prefixItems.check(Classes_schema)) {
-			throw new NoMatchError(Classes_schema.prefixItems);
+			throw new NoMatchError(
+				Classes_schema.items,
+				'Not yet supported!'
+			);
 		}
 
 		throw new NoMatchError(
 			{Classes_schema},
 			'Unsupported classes check!'
 		);
+	}
+
+	private async Classes_generators_from_direct_items(
+		Classes_schema:{items: {properties: {[key: string]: unknown}}}
+	) {
+		return Object.fromEntries(await Promise.all(Object.entries(
+			Classes_schema.items.properties
+		).map(
+			async (
+				entry
+			) : Promise<[string, (raw_data:unknown) => unknown]> => {
+				const [property, value] = entry;
+
+				return [
+					property,
+					await this.discovery.find_generator(value).generate(
+						Classes_schema.items.properties[
+							property
+						]
+					),
+				];
+			}
+		)));
 	}
 
 	static async fromTypesDiscovery(

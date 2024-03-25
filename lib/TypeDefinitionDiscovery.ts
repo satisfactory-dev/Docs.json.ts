@@ -261,6 +261,10 @@ export class TypeDefinitionDiscovery
 										type: 'number',
 										minimum: 1,
 									},
+									maxItems: {
+										type: 'number',
+										minimum: 1,
+									},
 									items: {
 										$ref: '#/definitions/$ref',
 									},

@@ -9,7 +9,7 @@ import {
 } from './DataTransformer';
 import Ajv from 'ajv/dist/2020';
 import {
-	items,
+	items, items_type,
 } from './DataDiscovery/JsonSchema/Array/items';
 import {
 	object_has_property,
@@ -21,6 +21,7 @@ import {
 import {
 	oneOf,
 } from './DataDiscovery/JsonSchema/oneOf';
+import {is_string} from './StringStartsWith';
 
 export class DataTransformerDiscovery
 {
@@ -61,11 +62,18 @@ export class DataTransformerDiscovery
 			if (!value_is_non_array_object(result)) {
 				console.error(value, result);
 				throw new Error('value resolved to non-object value!');
-			} else if (!object_has_property(
+			} else if (
+				!object_has_property(
 				result,
 				'properties',
 				value_is_non_array_object
-			)) {
+				)
+				&& !object_has_property(
+					result,
+					'const',
+					is_string
+				)
+			) {
 				throw new NoMatchError(
 					{
 						value,
@@ -75,10 +83,20 @@ export class DataTransformerDiscovery
 				);
 			}
 
-			value.items = result;
+			value.items = result as items_type;
 		}
 		if (this.oneOf.check(value)) {
-			throw new NoMatchError(value, 'not yet supported');
+			value.oneOf = await Promise.all(value.oneOf.map(
+				async (e) => {
+					const result = await this.maybe_remap_ref(e);
+
+					if (!value_is_non_array_object(result)) {
+						throw new NoMatchError(result, 'type loss!');
+					}
+
+					return result;
+				}
+			));
 		}
 
 		if (value_is_non_array_object(value)) {

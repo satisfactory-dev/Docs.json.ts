@@ -76,6 +76,12 @@ import {
 import {
 	typed_object_string,
 } from './DataDiscovery/CustomParsingTypes/typed_object_string';
+import {
+	ConstType,
+} from './DataDiscovery/JsonSchema/String/ConstType';
+import {
+	typed_array_string,
+} from './DataDiscovery/CustomParsingTypes/typed_array_string';
 
 export class DataTransformer
 {
@@ -301,10 +307,12 @@ export class DataTransformer
 			) as AnyGenerator,
 			new StringType(ajv) as AnyGenerator,
 			new Pattern(ajv) as AnyGenerator,
+			new ConstType(ajv) as AnyGenerator,
 			new Enum(ajv),
 			new String_oneOf(ajv),
 			new oneOf(ajv),
 			new typed_object_string(ajv, transformer) as AnyGenerator,
+			new typed_array_string(ajv, transformer) as AnyGenerator,
 		);
 
 		return transformer;

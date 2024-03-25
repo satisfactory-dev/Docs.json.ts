@@ -6911,13 +6911,9 @@
 				"Classes": {
 					"type": "array",
 					"items": {
-						"oneOf": [
-							{
 								"type": "object",
 								"$ref": "#/definitions/FGBuildableDroneStation",
 								"unevaluatedProperties": false
-							}
-						]
 					},
 					"minItems": 1,
 					"maxItems": 1
@@ -6975,13 +6971,9 @@
 				"Classes": {
 					"type": "array",
 					"items": {
-						"oneOf": [
-							{
 								"type": "object",
 								"$ref": "#/definitions/FGBuildableBlueprintDesigner",
 								"unevaluatedProperties": false
-							}
-						]
 					},
 					"minItems": 1,
 					"maxItems": 1
