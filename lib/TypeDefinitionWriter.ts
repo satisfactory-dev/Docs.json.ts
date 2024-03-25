@@ -79,7 +79,9 @@ import {
 import {
 	DataTransformer,
 } from './DataTransformer';
-import {NativeClass} from './DataTransformer/Update8/NativeClass';
+import {
+	NativeClass,
+} from './DataTransformer/Update8/NativeClass';
 
 const __dirname = import.meta.dirname;
 

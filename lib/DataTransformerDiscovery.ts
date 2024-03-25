@@ -38,8 +38,9 @@ export class DataTransformerDiscovery
 		const output:{
 			[key: string]: (expression:PrimaryExpression) => CallExpression
 		} = {};
-		let found_something = false;
+		const found_something = false;
 		/*
+		let found_something = false;
 		for (const entry of Object.entries(from)) {
 			const [property, value] = entry;
 			const maybe = this.candidates.find(
