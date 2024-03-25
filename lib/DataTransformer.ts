@@ -1,11 +1,10 @@
 import {
-	DocsDataItem,
 	DocsTsGenerator,
 } from './DocsTsGenerator';
 import ts, {
 	CallExpression,
 	ObjectLiteralExpression,
-	PrimaryExpression,
+	PrimaryExpression, TypeNode,
 } from 'typescript';
 import {
 	adjust_unrealengine_value,
@@ -14,9 +13,13 @@ import {
 	UnrealEngineString,
 } from './TypeDefinitionDiscovery/CustomParsingTypes/UnrealEngineString';
 import {
+	ref_discovery_type,
 	TypeDefinitionDiscovery,
 } from './TypeDefinitionDiscovery';
-import Ajv from 'ajv/dist/2020';
+import Ajv, {
+	SchemaObject,
+	ValidateFunction,
+} from 'ajv/dist/2020';
 import {
 	configure_ajv,
 } from './DocsValidation';
@@ -29,76 +32,156 @@ import {
 } from './TypesDiscovery';
 import {
 	create_exported_const_statement,
-	create_literal,
-	create_property_access,
 	property_name_or_computed,
 	variable,
 } from './TsFactoryWrapper';
+import {
+	AnyGenerator, Generator,
+} from './DataTransformer/Generator';
+import {
+	DataTransformerDiscovery,
+} from './DataTransformerDiscovery';
 
 export class DataTransformer
 {
 	private readonly discovery:TypeDefinitionDiscovery;
 	private readonly ajv:Ajv;
 	private readonly docs:DocsTsGenerator;
+	private readonly data_discovery:DataTransformerDiscovery;
+	private prepare_promise:undefined|Promise<{
+		types: ref_discovery_type,
+		schema: SchemaObject & {definitions: {[key: string]: unknown}},
+		validations: ValidateFunction[],
+	}> = undefined;
 
 	constructor(
 		ajv:Ajv,
 		discovery:TypeDefinitionDiscovery,
+		candidates:[AnyGenerator, ...AnyGenerator[]],
 		docs:DocsTsGenerator
 	) {
 		configure_ajv(ajv);
 		this.ajv = ajv;
 		this.discovery = discovery;
+		this.data_discovery = new DataTransformerDiscovery(
+			ajv,
+			discovery,
+			candidates
+		);
 		this.docs = docs;
+	}
+
+	private async prepare()
+	{
+		if (!this.prepare_promise) {
+			this.prepare_promise = new Promise((yup, nope) => {
+				Promise.all([
+					this.discovery.discover_type_definitions(),
+					this.discovery.types_discovery.schema_from_json(),
+				]).then((e) => {
+					try {
+						const [types, schema] = e;
+
+						if (!object_has_property(
+							schema,
+							'definitions',
+							value_is_non_array_object
+						)) {
+							nope(new Error(
+								'Schema appears to have no definitions'
+							));
+
+							return;
+						}
+
+						const validations = types.found_classes.map(
+							e => this.ajv.compile(
+								{
+									definitions: schema.definitions,
+									...e,
+								}
+							)
+						);
+
+						yup({types, schema, validations});
+					} catch (err) {
+						nope(err);
+					}
+				}).catch(nope);
+			});
+		}
+
+		return this.prepare_promise;
+	}
+
+	async find_check(raw_data:unknown): Promise<ValidateFunction>
+	{
+		const {
+			validations,
+		} = await this.prepare();
+
+		const check = validations.find(maybe => maybe(raw_data));
+
+		if (!check) {
+			console.error(raw_data);
+			throw new Error('Could not find schema!');
+		}
+
+		return check;
+	}
+
+	async find_type(raw_data:unknown): Promise<TypeNode>
+	{
+		const check = await this.find_check(raw_data);
+
+		return this.find_type_from_check(check);
+	}
+
+	async find_type_from_check(check:ValidateFunction): Promise<TypeNode>
+	{
+		const {
+			types,
+			validations,
+		} = await this.prepare();
+
+		const index = validations.indexOf(check);
+
+		if (index < 0) {
+			throw new Error('Could not find check in validations!');
+		}
+
+		return this.discovery.find(
+			types.found_classes[index]
+		);
 	}
 
 	async* generate()
 	{
-		const [
-			types,
-			schema,
-		] = await Promise.all([
-			this.discovery.discover_type_definitions(),
-			this.discovery.types_discovery.schema_from_json(),
-		]);
-
-		if (!object_has_property(
-			schema,
-			'definitions',
-			value_is_non_array_object
-		)) {
-			throw new Error('Schema appears to have no definitions');
-		}
-
-		const validations = types.found_classes.map(
-			e => this.ajv.compile<DocsDataItem>(
-				{
-					definitions: schema.definitions,
-					...e,
-				}
-			)
-		);
-
 		const is_NativeClass = await TypesDiscovery.generate_is_NativeClass(
 			this.ajv,
 			this.discovery.types_discovery
 		);
 
 		for (const entry of await this.docs.get()) {
-			const check = validations.find(maybe => maybe(entry));
-
-			if (!check) {
-				console.error(entry);
-				throw new Error('Could not find schema!');
-			} else if (!is_NativeClass(entry)) {
+			if (!is_NativeClass(entry)) {
 				console.error(entry);
 				throw new Error('Entry not a general NativeClass!');
 			}
+			const entry_type = await this.find_type(entry);
 
 			const entry_class_name = adjust_unrealengine_value(
 				UnrealEngineString.fromString(entry.NativeClass).right
 			);
 
+			const transformer = this.data_discovery.find(entry);
+
+			const literal = (transformer instanceof Generator)
+				? transformer.generate(
+					entry_type
+				)(DataTransformer.object_literal(entry))
+				: DataTransformer.object_literal(entry, transformer);
+
+			/*
 			const literal = DataTransformer.object_literal(entry, {
 				NativeClass: (argument:PrimaryExpression) => {
 					return ts.factory.createCallExpression(
@@ -121,12 +204,7 @@ export class DataTransformer
 					);
 				},
 			});
-
-			/*
-			const entry_type = this.discovery.find(
-				types.found_classes[validations.indexOf(check)]
-			);
-			 */
+			*/
 
 			yield {
 				file: `data/CoreUObject/${

@@ -109,6 +109,13 @@ function is_schema_with_definitions(
 	);
 }
 
+export type ref_discovery_type = {
+	found_types: {[key: string]: (raw_data:never) => TypeNode},
+	missing_types: string[],
+	found_classes: {[key: string]: unknown}[],
+	missing_classes: {[key: string]: unknown}[],
+};
+
 export class TypeDefinitionDiscovery
 {
 	private readonly ajv:Ajv;
@@ -118,12 +125,7 @@ export class TypeDefinitionDiscovery
 		...AnyGenerator[],
 	];
 	private $ref_discovery:
-		| Promise<{
-			found_types: {[key: string]: (raw_data:never) => TypeNode},
-			missing_types: string[],
-			found_classes: {[key: string]: unknown}[],
-			missing_classes: {[key: string]: unknown}[],
-		}>
+		| Promise<ref_discovery_type>
 		| undefined;
 
 	constructor(

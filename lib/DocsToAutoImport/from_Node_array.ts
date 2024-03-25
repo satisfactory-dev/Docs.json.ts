@@ -99,6 +99,19 @@ export function EntityName_array_from_Node_array(nodes: Node[]): EntityName[] {
 			property_declarations.push(node);
 		} else if (ts.isFunctionDeclaration(node)) {
 			function_types.push(node);
+		} else if (ts.isArrowFunction(node)) {
+			sub_nodes.push(...[
+				...node.parameters,
+				...(node.typeParameters || []),
+				node.body,
+				...(
+					(node.type && ts.isTypeLiteralNode(node.type))
+						? [node.type]
+						: []
+				),
+			].filter(e => !!e));
+		} else if (ts.isBlock(node)) {
+			sub_nodes.push(...node.statements);
 		} else if (ts.isTypeParameterDeclaration(node)) {
 			sub_nodes.push(
 				...[node.name, node.constraint, node.expression].filter(
@@ -255,6 +268,7 @@ export function EntityName_array_from_Node_array(nodes: Node[]): EntityName[] {
 		} else if (
 			!ts.isToken(node)
 			&& !ts.isNamedExports(node)
+			&& !ts.isShorthandPropertyAssignment(node)
 		) {
 			others.push(node);
 		}

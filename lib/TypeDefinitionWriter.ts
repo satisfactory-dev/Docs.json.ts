@@ -79,6 +79,7 @@ import {
 import {
 	DataTransformer,
 } from './DataTransformer';
+import {NativeClass} from './DataTransformer/Update8/NativeClass';
 
 const __dirname = import.meta.dirname;
 
@@ -289,7 +290,14 @@ export class TypeDefinitionWriter
 
 		for await (
 			const entry of (
-				new DataTransformer(this.ajv, this.discovery, docs)
+				new DataTransformer(
+					this.ajv,
+					this.discovery,
+					[
+						new NativeClass(this.ajv),
+					],
+					docs
+				)
 			).generate()
 		) {
 			if (!(entry.file in files)) {
