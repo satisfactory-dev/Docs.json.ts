@@ -43,7 +43,6 @@ import {
 import {
 	StringType,
 } from './TypeDefinitionDiscovery/JsonSchema/String';
-import {NoMatchError} from './DataTransformerDiscovery/NoMatchError';
 
 type SchemaObjectWithDefinitions<Definitions extends {[key: string]: true}> =
 	& SchemaObject
