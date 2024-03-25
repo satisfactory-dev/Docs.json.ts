@@ -21,7 +21,9 @@ import {
 import {
 	oneOf,
 } from './DataDiscovery/JsonSchema/oneOf';
-import {is_string} from './StringStartsWith';
+import {
+	is_string,
+} from './StringStartsWith';
 
 export class DataTransformerDiscovery
 {
@@ -64,9 +66,9 @@ export class DataTransformerDiscovery
 				throw new Error('value resolved to non-object value!');
 			} else if (
 				!object_has_property(
-				result,
-				'properties',
-				value_is_non_array_object
+					result,
+					'properties',
+					value_is_non_array_object
 				)
 				&& !object_has_property(
 					result,

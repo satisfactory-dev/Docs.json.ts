@@ -28,7 +28,7 @@ type schema_type = {
 	typed_object_string: {
 		[key: string]: (
 			| pattern_type
-			),
+		),
 	},
 };
 
