@@ -3,7 +3,6 @@ import {
 	DocsTsGenerator,
 } from './DocsTsGenerator';
 import ts, {
-	CallExpression,
 	ObjectLiteralExpression,
 	PrimaryExpression,
 } from 'typescript';
@@ -55,7 +54,9 @@ import {
 import {
 	prefixItems,
 } from './DataDiscovery/JsonSchema/Array/prefixItems';
-import {items} from './DataDiscovery/JsonSchema/Array/items';
+import {
+	items,
+} from './DataDiscovery/JsonSchema/Array/items';
 
 export class DataTransformer
 {
