@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (216 of 216)
+100.00% Complete (215 of 215)
 
 ## Basic Types
 
@@ -297,7 +297,6 @@
 ## NativeClass
 
 -   [x] NativeClass
--   [x] NativeClass--Classes
 -   [x] NativeClass--NativeClass
 
 ## Texture2D

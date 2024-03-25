@@ -13,26 +13,12 @@
 				}
 			}
 		},
-		"NativeClass--Classes": {
-			"type": "array",
-			"minItems": 1,
-			"items": {
-				"$ref": "#/definitions/class--no-description-or-display-name"
-			}
-		},
 		"NativeClass": {
 			"type": "object",
 			"required": ["NativeClass", "Classes"],
-			"additionalProperties": false,
 			"properties": {
 				"NativeClass": {
 					"$ref": "#/definitions/NativeClass--NativeClass"
-				},
-				"Classes": {"$ref": "#/definitions/NativeClass--Classes"},
-				"type": {"type": "string", "const": "object"},
-				"$ref": {
-					"type": "string",
-					"const": "#/definitions/NativeClass"
 				}
 			}
 		},
@@ -6907,6 +6893,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -6922,6 +6909,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -6941,6 +6929,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -6983,6 +6972,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7002,6 +6992,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7017,6 +7008,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7032,6 +7024,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7056,6 +7049,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7071,6 +7065,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7086,6 +7081,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7110,6 +7106,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7125,6 +7122,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7140,6 +7138,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7159,6 +7158,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7188,6 +7188,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7207,6 +7208,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7222,6 +7224,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7237,6 +7240,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7261,6 +7265,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7276,6 +7281,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7295,6 +7301,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7324,6 +7331,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7339,6 +7347,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7354,6 +7363,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7398,6 +7408,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7413,6 +7424,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7432,6 +7444,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7461,6 +7474,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7476,6 +7490,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7491,6 +7506,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7510,6 +7526,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7539,6 +7556,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7563,6 +7581,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7582,6 +7601,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7601,6 +7621,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7620,6 +7641,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7635,6 +7657,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7669,6 +7692,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7708,6 +7732,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7727,6 +7752,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7751,6 +7777,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7766,6 +7793,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7785,6 +7813,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7804,6 +7833,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7823,6 +7853,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7842,6 +7873,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7857,6 +7889,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7872,6 +7905,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7896,6 +7930,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7915,6 +7950,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7934,6 +7970,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7953,6 +7990,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7968,6 +8006,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7983,6 +8022,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -7998,6 +8038,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -8017,6 +8058,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -8036,6 +8078,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -8051,6 +8094,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -8070,6 +8114,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -8089,6 +8134,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -8108,6 +8154,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -8127,6 +8174,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -8146,6 +8194,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -8165,6 +8214,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -8184,6 +8234,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -8203,6 +8254,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -8222,6 +8274,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -8241,6 +8294,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -8260,6 +8314,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -8275,6 +8330,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -8290,6 +8346,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -8305,6 +8362,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -8320,6 +8378,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -8339,6 +8398,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -8363,6 +8423,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -8382,6 +8443,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -8397,6 +8459,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -8421,6 +8484,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -8440,6 +8504,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -8459,6 +8524,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -8478,6 +8544,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -8497,6 +8564,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -8516,6 +8584,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -8535,6 +8604,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -8554,6 +8624,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -8573,6 +8644,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -8592,6 +8664,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -8611,6 +8684,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -8626,6 +8700,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -8641,6 +8716,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -8656,6 +8732,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -8675,6 +8752,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -8690,6 +8768,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -8705,6 +8784,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -8720,6 +8800,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -8739,6 +8820,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -8754,6 +8836,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
@@ -8769,6 +8852,7 @@
 		{
 			"type": "object",
 			"$ref": "#/definitions/NativeClass",
+			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",

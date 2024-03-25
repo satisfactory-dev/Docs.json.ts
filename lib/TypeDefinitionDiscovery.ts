@@ -238,6 +238,7 @@ export class TypeDefinitionDiscovery
 				properties: {
 					type: {type: 'string', const: 'object'},
 					$ref: {type: 'string', const: '#/definitions/NativeClass'},
+					unevaluatedProperties: {type: 'boolean', const: false},
 					properties: {
 						type: 'object',
 						required: ['Classes'],
@@ -375,6 +376,10 @@ export class TypeDefinitionDiscovery
 				} else {
 					result.missing_classes.push(item);
 				}
+			}
+
+			if (result.found_classes.length < 1) {
+				throw new Error('No found classes!');
 			}
 		}
 

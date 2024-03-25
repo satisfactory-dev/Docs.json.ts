@@ -1,10 +1,11 @@
 import {
+	DocsDataItem,
 	DocsTsGenerator,
 } from './DocsTsGenerator';
 import ts, {
 	CallExpression,
 	ObjectLiteralExpression,
-	PrimaryExpression, TypeNode,
+	PrimaryExpression,
 } from 'typescript';
 import {
 	adjust_unrealengine_value,
@@ -24,6 +25,7 @@ import {
 	configure_ajv,
 } from './DocsValidation';
 import {
+	object_has_non_empty_array_property,
 	object_has_property,
 	value_is_non_array_object,
 } from './CustomParsingTypes/CustomPairingTypes';
@@ -36,18 +38,30 @@ import {
 	variable,
 } from './TsFactoryWrapper';
 import {
-	AnyGenerator, Generator,
+	AnyGenerator,
 } from './DataTransformer/Generator';
+import {
+	AnyGenerator as LetsTryAgain,
+} from './DataDiscovery/Generator';
+import {
+	NativeClass,
+} from './DataDiscovery/Update8/NativeClass';
+import {
+	UnrealEngineString_left_right_generator,
+} from './DataDiscovery/CustomParsingTypes/UnrealEngineString';
 import {
 	DataTransformerDiscovery,
 } from './DataTransformerDiscovery';
+import {
+	prefixItems,
+} from './DataDiscovery/JsonSchema/Array/prefixItems';
+import {items} from './DataDiscovery/JsonSchema/Array/items';
 
 export class DataTransformer
 {
-	private readonly discovery:TypeDefinitionDiscovery;
+	public readonly discovery:TypeDefinitionDiscovery;
 	private readonly ajv:Ajv;
 	private readonly docs:DocsTsGenerator;
-	private readonly data_discovery:DataTransformerDiscovery;
 	private prepare_promise:undefined|Promise<{
 		types: ref_discovery_type,
 		schema: SchemaObject & {definitions: {[key: string]: unknown}},
@@ -57,17 +71,12 @@ export class DataTransformer
 	constructor(
 		ajv:Ajv,
 		discovery:TypeDefinitionDiscovery,
-		candidates:[AnyGenerator, ...AnyGenerator[]],
+		_:[AnyGenerator, ...AnyGenerator[]],
 		docs:DocsTsGenerator
 	) {
 		configure_ajv(ajv);
 		this.ajv = ajv;
 		this.discovery = discovery;
-		this.data_discovery = new DataTransformerDiscovery(
-			ajv,
-			discovery,
-			candidates
-		);
 		this.docs = docs;
 	}
 
@@ -94,6 +103,18 @@ export class DataTransformer
 							return;
 						}
 
+						if (!object_has_non_empty_array_property(
+							schema,
+							'prefixItems',
+							value_is_non_array_object
+						)) {
+							nope(new Error(
+								'Schema appears to have no prefixItems'
+							));
+
+							return;
+						}
+
 						const validations = types.found_classes.map(
 							e => this.ajv.compile(
 								{
@@ -114,6 +135,23 @@ export class DataTransformer
 		return this.prepare_promise;
 	}
 
+	async type_checked_schema()
+	{
+		const {schema} = await this.prepare();
+
+		if (!object_has_non_empty_array_property(
+			schema,
+			'prefixItems',
+			value_is_non_array_object
+		)) {
+			throw new Error(
+				'Schema appears to have no prefixItems'
+			);
+		}
+
+		return schema;
+	}
+
 	async find_check(raw_data:unknown): Promise<ValidateFunction>
 	{
 		const {
@@ -130,29 +168,21 @@ export class DataTransformer
 		return check;
 	}
 
-	async find_type(raw_data:unknown): Promise<TypeNode>
-	{
-		const check = await this.find_check(raw_data);
-
-		return this.find_type_from_check(check);
-	}
-
-	async find_type_from_check(check:ValidateFunction): Promise<TypeNode>
+	async find_matching_schema(entry:DocsDataItem)
 	{
 		const {
 			types,
 			validations,
 		} = await this.prepare();
 
+		const check = await this.find_check(entry);
 		const index = validations.indexOf(check);
 
 		if (index < 0) {
 			throw new Error('Could not find check in validations!');
 		}
 
-		return this.discovery.find(
-			types.found_classes[index]
-		);
+		return types.found_classes[index];
 	}
 
 	async* generate()
@@ -162,49 +192,41 @@ export class DataTransformer
 			this.discovery.types_discovery
 		);
 
+		const candidates:[LetsTryAgain, ...LetsTryAgain[]] = [
+			await UnrealEngineString_left_right_generator.from_data_discovery(
+				this.ajv,
+				this
+			) as LetsTryAgain,
+			new prefixItems(this.ajv, this),
+			new items(this.ajv, this),
+		];
+
+		const discovery = new DataTransformerDiscovery(
+			this.ajv,
+			this,
+			candidates
+		);
+
+		discovery.add_generators(
+			await NativeClass.fromTypesDiscovery(
+				this.ajv,
+				discovery
+			) as LetsTryAgain
+		);
+
 		for (const entry of await this.docs.get()) {
 			if (!is_NativeClass(entry)) {
 				console.error(entry);
 				throw new Error('Entry not a general NativeClass!');
 			}
-			const entry_type = await this.find_type(entry);
 
 			const entry_class_name = adjust_unrealengine_value(
 				UnrealEngineString.fromString(entry.NativeClass).right
 			);
 
-			const transformer = this.data_discovery.find(entry);
-
-			const literal = (transformer instanceof Generator)
-				? transformer.generate(
-					entry_type
-				)(DataTransformer.object_literal(entry))
-				: DataTransformer.object_literal(entry, transformer);
-
-			/*
-			const literal = DataTransformer.object_literal(entry, {
-				NativeClass: (argument:PrimaryExpression) => {
-					return ts.factory.createCallExpression(
-						create_property_access(
-							ts.factory.createIdentifier('UnrealEngineString'),
-							'fromString'
-						),
-						[
-							create_literal('/Script/CoreUObject.Class'),
-							ts.factory.createTypeReferenceNode(
-								'StringStartsWith',
-								[
-									create_literal('/Script/FactoryGame.FG'),
-								]
-							),
-						],
-						[
-							argument,
-						]
-					);
-				},
-			});
-			*/
+			const literal = DataTransformer.value_literal(
+				await (await discovery.find(entry))(entry)
+			);
 
 			yield {
 				file: `data/CoreUObject/${
@@ -223,9 +245,6 @@ export class DataTransformer
 
 	static object_literal(
 		from:{[key: string]: unknown},
-		pass_through:{
-			[key: string]: (argument:PrimaryExpression) => CallExpression
-		} = {}
 	): ObjectLiteralExpression {
 		return ts.factory.createObjectLiteralExpression(
 			Object.entries(from).map((entry) => {
@@ -233,9 +252,7 @@ export class DataTransformer
 
 				return ts.factory.createPropertyAssignment(
 					property_name_or_computed(entry[0]),
-					entry[0] in pass_through
-						? pass_through[entry[0]](value)
-						: value
+					value
 				);
 			})
 		);

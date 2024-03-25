@@ -23,6 +23,13 @@ export function object_has_property<
 	);
 }
 
+export function property_exists_on_object(
+	object: {[key: string]: unknown},
+	property: string,
+) :  property is keyof object {
+	return property in object;
+}
+
 export function object_has_non_empty_array_property<
 	Property extends string = string,
 	Value = unknown

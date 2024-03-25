@@ -29,6 +29,7 @@ export const schema = {
 	required: ['type', 'properties'],
 	additionalProperties: false,
 	properties: {
+		$ref: {type: 'string', pattern: '^#/definitions/'},
 		type: {type: 'string', const: 'object'},
 		additionalProperties: {type: 'boolean', const: false},
 		unevaluatedProperties: {type: 'boolean', const: false},

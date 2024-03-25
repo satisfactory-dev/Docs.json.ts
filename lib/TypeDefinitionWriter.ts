@@ -259,7 +259,7 @@ export class TypeDefinitionWriter
 			const check = validations.find(maybe => maybe(entry));
 
 			if (!check) {
-				console.error(entry);
+				console.error(types);
 				throw new Error('Could not find schema!');
 			} else if (!is_NativeClass(entry)) {
 				console.error(entry);

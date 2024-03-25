@@ -1,7 +1,7 @@
 export type StringStartsWith<
 	Prefix extends string,
 	Suffix extends string = string
-> = keyof {
+> = string & keyof {
 	[T in keyof {
 		[key: string]: unknown;
 	} as T extends string ? `${Prefix}${Suffix}` : never]: string;

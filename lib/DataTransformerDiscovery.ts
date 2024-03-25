@@ -1,60 +1,88 @@
-import Ajv from 'ajv/dist/2020';
 import {
-	TypeDefinitionDiscovery,
-} from './TypeDefinitionDiscovery';
+	$ref,
+} from './DataDiscovery/$ref';
 import {
 	AnyGenerator,
-} from './DataTransformer/Generator';
+} from './DataDiscovery/Generator';
 import {
-	CallExpression,
-	PrimaryExpression,
-} from 'typescript';
+	DataTransformer,
+} from './DataTransformer';
+import Ajv from 'ajv/dist/2020';
 
 export class DataTransformerDiscovery
 {
-	private readonly ajv:Ajv;
-	public readonly discovery:TypeDefinitionDiscovery;
+	public readonly discovery:DataTransformer;
 	private readonly candidates: [AnyGenerator, ...AnyGenerator[]];
+	private readonly $ref:Promise<$ref>;
 
 	constructor(
 		ajv: Ajv,
-		discovery:TypeDefinitionDiscovery,
+		discovery:DataTransformer,
 		candidates: [AnyGenerator, ...AnyGenerator[]],
 	) {
-		this.ajv = ajv;
 		this.discovery = discovery;
 		this.candidates = candidates;
+		this.$ref = $ref.fromDataDiscovery(ajv, discovery);
 	}
 
-	find(from:{[key: string]: unknown}) {
-		const maybe = this.candidates.find(
-			e => e.check(from)
-		);
+	add_generators(...generators:AnyGenerator[])
+	{
+		this.candidates.push(...generators);
+	}
 
-		if (maybe) {
-			return maybe;
+	async maybe_remap_ref(value:unknown)
+	{
+		const $ref = await this.$ref;
+
+		while ($ref.check(value)) {
+			value = await ((await $ref.generate())(value));
 		}
 
-		const output:{
-			[key: string]: (expression:PrimaryExpression) => CallExpression
-		} = {};
-		const found_something = false;
-		/*
-		let found_something = false;
-		for (const entry of Object.entries(from)) {
-			const [property, value] = entry;
-			const maybe = this.candidates.find(
-				e => e.check(value)
-			);
-			const type = this.discovery.find(value);
+		return value;
+	}
 
-			if (maybe) {
-				output[property] = maybe.generate(type);
-				found_something = true;
+	async find_from_object(object:{[key: string]: unknown})
+	{
+		return Object.fromEntries(await Promise.all(Object.entries(object).map(
+			async (
+				entry
+			) : Promise<[string, (raw_data:unknown) => unknown]> => {
+				const [property, value] = entry;
+
+				const transformer = this.candidates.find(e => e.check(value));
+
+				if (!transformer) {
+					console.log({[property]: value});
+					throw new Error(`no match found for ${property}`);
+				}
+
+				return [
+					property,
+					(
+						transformer
+							? await transformer.generate()
+							: (raw_data:unknown) => raw_data
+					),
+				];
 			}
-		}
-		*/
+		)));
+	}
 
-		return found_something ? output : undefined;
+	async find(from:unknown) {
+		const transformer = this.candidates.find(e => e.check(from));
+
+		if (!transformer) {
+			console.log(from);
+			throw new Error('no match found!');
+		}
+
+		const match = await transformer.generate();
+
+		if (!(match instanceof Function)) {
+			console.error(match);
+			throw new Error('Unsupported');
+		}
+
+		return match;
 	}
 }
