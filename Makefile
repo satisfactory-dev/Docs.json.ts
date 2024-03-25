@@ -15,7 +15,9 @@ shell:
 install:
 	${DOCKER_COMPOSER_PREFIX} exec ts-node npm install
 
-validate: lint-lib build-lib
+validate: lint-lib build-lib validate--skip-checks
+
+validate--skip-checks:
 	${DOCKER_COMPOSER_PREFIX} exec ts-node npm run validate
 
 build-lib:
