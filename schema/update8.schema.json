@@ -6910,13 +6910,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildableDroneStation",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildableDroneStation",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -6972,13 +6974,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildableBlueprintDesigner",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildableBlueprintDesigner",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -7137,13 +7141,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildableRailroadTrack",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildableRailroadTrack",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -7186,13 +7192,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildablePoleLightweight",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildablePoleLightweight",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -7239,13 +7247,15 @@
 					"type": "array",
 					"minItems": 2,
 					"maxItems": 2,
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildableWire",
-							"unevaluatedProperties": false
-						}
-					]}
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildableWire",
+								"unevaluatedProperties": false
+							}
+						]
+					}
 				}
 			}
 		},
@@ -7272,13 +7282,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildableTradingPost",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildableTradingPost",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -7293,18 +7305,20 @@
 					"type": "array",
 					"minItems": 3,
 					"maxItems": 3,
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGEquipmentStunSpear--xeno-zapper",
-							"unevaluatedProperties": false
-						},
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGEquipmentStunSpear",
-							"unevaluatedProperties": false
-						}
-					]}
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGEquipmentStunSpear--xeno-zapper",
+								"unevaluatedProperties": false
+							},
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGEquipmentStunSpear",
+								"unevaluatedProperties": false
+							}
+						]
+					}
 				}
 			}
 		},
@@ -7349,23 +7363,25 @@
 					"type": "array",
 					"minItems": 6,
 					"maxItems": 6,
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildableFactory--jump-pad",
-							"unevaluatedProperties": false
-						},
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildableFactory--landing-pad",
-							"unevaluatedProperties": false
-						},
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildableFactory--generic",
-							"unevaluatedProperties": false
-						}
-					]}
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildableFactory--jump-pad",
+								"unevaluatedProperties": false
+							},
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildableFactory--landing-pad",
+								"unevaluatedProperties": false
+							},
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildableFactory--generic",
+								"unevaluatedProperties": false
+							}
+						]
+					}
 				}
 			}
 		},
@@ -7392,13 +7408,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildableWalkway",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildableWalkway",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -7413,18 +7431,20 @@
 					"type": "array",
 					"minItems": 3,
 					"maxItems": 3,
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildableGeneratorFuel",
-							"unevaluatedProperties": false
-						},
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildableGeneratorFuel--biogen",
-							"unevaluatedProperties": false
-						}
-					]}
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildableGeneratorFuel",
+								"unevaluatedProperties": false
+							},
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildableGeneratorFuel--biogen",
+								"unevaluatedProperties": false
+							}
+						]
+					}
 				}
 			}
 		},
@@ -7467,13 +7487,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildablePipelineJunction",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildablePipelineJunction",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -7488,18 +7510,20 @@
 					"type": "array",
 					"minItems": 3,
 					"maxItems": 3,
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildablePipelinePump--valve",
-							"unevaluatedProperties": false
-						},
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildablePipelinePump",
-							"unevaluatedProperties": false
-						}
-					]}
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildablePipelinePump--valve",
+								"unevaluatedProperties": false
+							},
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildablePipelinePump",
+								"unevaluatedProperties": false
+							}
+						]
+					}
 				}
 			}
 		},
@@ -7512,13 +7536,15 @@
 					"type": "array",
 					"minItems": 2,
 					"maxItems": 2,
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildablePipeReservoir",
-							"unevaluatedProperties": false
-						}
-					]}
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildablePipeReservoir",
+								"unevaluatedProperties": false
+							}
+						]
+					}
 				}
 			}
 		},
@@ -7529,13 +7555,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildableWaterPump",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildableWaterPump",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -7548,13 +7576,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildableResourceSink",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildableResourceSink",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -7567,13 +7597,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildableResourceSinkShop",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildableResourceSinkShop",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -7604,23 +7636,25 @@
 					"type": "array",
 					"minItems": 4,
 					"maxItems": 4,
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildableResourceExtractor--oil-extractor",
-							"unevaluatedProperties": false
-						},
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildableResourceExtractor--miner-mk3",
-							"unevaluatedProperties": false
-						},
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildableResourceExtractor--miner",
-							"unevaluatedProperties": false
-						}
-					]}
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildableResourceExtractor--oil-extractor",
+								"unevaluatedProperties": false
+							},
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildableResourceExtractor--miner-mk3",
+								"unevaluatedProperties": false
+							},
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildableResourceExtractor--miner",
+								"unevaluatedProperties": false
+							}
+						]
+					}
 				}
 			}
 		},
@@ -7671,13 +7705,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGPortableMinerDispenser",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGPortableMinerDispenser",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -7692,13 +7728,15 @@
 					"type": "array",
 					"minItems": 2,
 					"maxItems": 2,
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGItemDescriptorNuclearFuel",
-							"unevaluatedProperties": false
-						}
-					]}
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGItemDescriptorNuclearFuel",
+								"unevaluatedProperties": false
+							}
+						]
+					}
 				}
 			}
 		},
@@ -7725,13 +7763,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildableManufacturerVariablePower",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildableManufacturerVariablePower",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -7744,13 +7784,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildableGeneratorNuclear",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildableGeneratorNuclear",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -7763,13 +7805,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildableFrackingExtractor",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildableFrackingExtractor",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -7782,13 +7826,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildableFrackingActivator",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildableFrackingActivator",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -7858,13 +7904,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGHoverPack",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGHoverPack",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -7877,13 +7925,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGSuitBase",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGSuitBase",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -7896,13 +7946,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGGasMask",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGGasMask",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -7963,13 +8015,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildableRailroadStation",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildableRailroadStation",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -7982,13 +8036,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGJetPack",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGJetPack",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -8017,13 +8073,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGPipeHyperStart",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGPipeHyperStart",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -8036,13 +8094,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildablePipeHyper",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildablePipeHyper",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -8055,13 +8115,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildablePowerStorage",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildablePowerStorage",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -8074,13 +8136,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildableDockingStation",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildableDockingStation",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -8093,13 +8157,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGConveyorPoleStackable",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGConveyorPoleStackable",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -8112,13 +8178,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildableJumppad",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildableJumppad",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -8131,13 +8199,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGChainsaw",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGChainsaw",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -8150,13 +8220,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGObjectScanner",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGObjectScanner",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -8169,13 +8241,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildableMAM",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildableMAM",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -8188,13 +8262,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildableAttachmentMerger",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildableAttachmentMerger",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -8207,13 +8283,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildableAttachmentSplitter",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildableAttachmentSplitter",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -8290,13 +8368,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGAmmoTypeSpreadshot",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGAmmoTypeSpreadshot",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -8334,13 +8414,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildableGeneratorGeoThermal",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildableGeneratorGeoThermal",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -8369,18 +8451,20 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGAmmoTypeInstantHit--chaos",
-							"unevaluatedProperties": false
-						},
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGAmmoTypeInstantHit--standard",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGAmmoTypeInstantHit--chaos",
+								"unevaluatedProperties": false
+							},
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGAmmoTypeInstantHit--standard",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 2,
 					"maxItems": 2
 				}
@@ -8393,13 +8477,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildablePriorityPowerSwitch",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildablePriorityPowerSwitch",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -8412,13 +8498,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGJumpingStilts",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGJumpingStilts",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -8431,13 +8519,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildableCircuitSwitch",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildableCircuitSwitch",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -8450,13 +8540,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGEquipmentZipline",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGEquipmentZipline",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -8469,13 +8561,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGChargedWeapon",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGChargedWeapon",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -8488,13 +8582,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGParachute",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGParachute",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -8507,13 +8603,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildableRadarTower",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildableRadarTower",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -8526,13 +8624,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildableSnowDispenser",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildableSnowDispenser",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -8545,13 +8645,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildableFactorySimpleProducer",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildableFactorySimpleProducer",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -8564,13 +8666,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildableLadder",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildableLadder",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -8631,13 +8735,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildableLightsControlPanel",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildableLightsControlPanel",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -8698,13 +8804,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildablePassthrough",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildablePassthrough",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}
@@ -8749,13 +8857,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {"oneOf": [
-						{
-							"type": "object",
-							"$ref": "#/definitions/FGBuildableSpaceElevator",
-							"unevaluatedProperties": false
-						}
-					]},
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/definitions/FGBuildableSpaceElevator",
+								"unevaluatedProperties": false
+							}
+						]
+					},
 					"minItems": 1,
 					"maxItems": 1
 				}

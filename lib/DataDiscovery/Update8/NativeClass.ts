@@ -129,53 +129,53 @@ export class NativeClass extends Generator<
 				Classes_schema
 			);
 
-				const remapped_classes = (
-					result as DocsDataItem
-				).Classes.map(async (
-					Classes_entry
-				) : Promise<
-					& {[key: string]: unknown}
-					& {ClassName: string|ExpressionResult}
-				> => {
-					const result = Object.fromEntries(await Promise.all(
-						Object.entries(Classes_entry).map(async (
-							entry
-						) : Promise<[string, unknown]> => {
-							const [property, raw_data] = entry;
+			const remapped_classes = (
+				result as DocsDataItem
+			).Classes.map(async (
+				Classes_entry
+			) : Promise<
+				& {[key: string]: unknown}
+				& {ClassName: string|ExpressionResult}
+			> => {
+				const result = Object.fromEntries(await Promise.all(
+					Object.entries(Classes_entry).map(async (
+						entry
+					) : Promise<[string, unknown]> => {
+						const [property, raw_data] = entry;
 
-							if (property in generators) {
-								return [
-									property,
+						if (property in generators) {
+							return [
+								property,
 								await generators[property](raw_data),
-								];
-							}
+							];
+						}
 
-							return [property, raw_data];
-						})
-					));
+						return [property, raw_data];
+					})
+				));
 
-					if (
-						!object_has_property(
-							result,
-							'ClassName',
-							(e:unknown) : e is string|ExpressionResult => {
-								return (
-									is_string(e)
-									|| e instanceof ExpressionResult
-								);
-							}
-						)
-					) {
-						throw new NoMatchError(
-							result,
-							'ClassName not present as string on result!'
-						);
-					}
+				if (
+					!object_has_property(
+						result,
+						'ClassName',
+						(e:unknown) : e is string|ExpressionResult => {
+							return (
+								is_string(e)
+								|| e instanceof ExpressionResult
+							);
+						}
+					)
+				) {
+					throw new NoMatchError(
+						result,
+						'ClassName not present as string on result!'
+					);
+				}
 
-					return result;
-				});
+				return result;
+			});
 
-				result.Classes = await Promise.all(remapped_classes);
+			result.Classes = await Promise.all(remapped_classes);
 
 			return result;
 		};
