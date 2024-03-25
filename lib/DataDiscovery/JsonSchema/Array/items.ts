@@ -9,7 +9,9 @@ import Ajv from 'ajv/dist/2020';
 export class items extends SchemaCompilingGenerator<
 	{
 		type: 'array',
-		items: false,
+		items:
+			& {[key: string]: unknown}
+			& {properties: {[key: string]: unknown}},
 		prefixItems: [unknown, ...unknown[]],
 		minItems: number,
 		maxItems: number,
@@ -25,7 +27,13 @@ export class items extends SchemaCompilingGenerator<
 			additionalProperties: false,
 			properties: {
 				type: {type: 'string', const: 'array'},
-				items: {type: 'object'},
+				items: {
+					type: 'object',
+					required: ['properties'],
+					properties: {
+						properties: {type: 'object'},
+					},
+				},
 				minItems: {type: 'number', minimum: 0},
 				maxItems: {type: 'number', minimum: 1},
 			},

@@ -79,9 +79,6 @@ import {
 import {
 	DataTransformer,
 } from './DataTransformer';
-import {
-	NativeClass,
-} from './DataTransformer/Update8/NativeClass';
 
 const __dirname = import.meta.dirname;
 
@@ -290,16 +287,16 @@ export class TypeDefinitionWriter
 			));
 		}
 
+		const transformer = await DataTransformer.with_default_candidates(
+			this.ajv,
+			this.discovery,
+			docs
+		);
+
+
 		for await (
 			const entry of (
-				new DataTransformer(
-					this.ajv,
-					this.discovery,
-					[
-						new NativeClass(this.ajv),
-					],
-					docs
-				)
+				transformer
 			).generate()
 		) {
 			if (!(entry.file in files)) {

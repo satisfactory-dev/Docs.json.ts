@@ -57,7 +57,7 @@ export class ValidationError extends Error {
 
 export type DocsDataItem = {
 	NativeClass: string;
-	Classes: ({[key: string]: unknown[] | string} & {ClassName: string})[];
+	Classes: ({[key: string]: unknown} & {ClassName: string})[];
 };
 
 export type DocsData = [DocsDataItem, ...DocsDataItem[]];

@@ -3,22 +3,19 @@
 	"$id": "update8.schema.json",
 	"type": "array",
 	"definitions": {
-		"NativeClass--NativeClass": {
-			"type": "string",
-			"minLength": 1,
-			"UnrealEngineString": {
-				"left": "/Script/CoreUObject.Class",
-				"right": {
-					"starts_with": "/Script/FactoryGame.FG"
-				}
-			}
-		},
 		"NativeClass": {
 			"type": "object",
 			"required": ["NativeClass", "Classes"],
 			"properties": {
 				"NativeClass": {
-					"$ref": "#/definitions/NativeClass--NativeClass"
+					"type": "string",
+					"minLength": 1,
+					"UnrealEngineString": {
+						"left": "/Script/CoreUObject.Class",
+						"right": {
+							"starts_with": "/Script/FactoryGame.FG"
+						}
+					}
 				}
 			}
 		},

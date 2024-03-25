@@ -1,7 +1,9 @@
 import {
 	TypeLiteralNode,
 } from 'typescript';
-import Ajv from 'ajv/dist/2020';
+import Ajv, {
+	SchemaObject,
+} from 'ajv/dist/2020';
 import {
 	TypeDefinitionDiscovery,
 } from '../../TypeDefinitionDiscovery';
@@ -40,7 +42,7 @@ import {
 	AnyGenerator,
 } from '../Generator';
 
-type typed_object_string_RawData = {
+export type typed_object_string_RawData = {
 	type: 'string',
 	minLength: 1,
 	typed_object_string: {
@@ -54,6 +56,51 @@ type typed_object_string_RawData = {
 			}
 	},
 };
+
+export function generate_typed_object_string_schema(
+	$ref_schema:SchemaObject|undefined = undefined
+) {
+	const oneOf: [SchemaObject, ...SchemaObject[]] = [
+		UnrealEngineString_parent_schema,
+		{
+			type: 'object',
+			additionalProperties: false,
+			patternProperties: {
+				[property_regex]: {type: 'object'},
+			},
+		},
+		oneOf_or_anyOf_schema,
+		enum_schema,
+		const_schema,
+		typed_array_string_schema,
+	];
+
+	if ($ref_schema) {
+		oneOf.unshift($ref_schema);
+	}
+
+	return {
+		type: 'object',
+		required: ['type', 'minLength', 'typed_object_string'],
+		additionalProperties: false,
+		definitions: {
+			...UnrealEngineString_schema_definitions,
+		},
+		properties: {
+			type: {type: 'string', const: 'string'},
+			minLength: {type: 'number', const: 1},
+			typed_object_string: {
+				type: 'object',
+				additionalProperties: false,
+				patternProperties: {
+					[property_regex]: {
+						oneOf,
+					},
+				},
+			},
+		},
+	};
+}
 
 
 export class typed_object_string extends GeneratorDoesDiscovery<
@@ -84,41 +131,7 @@ export class typed_object_string extends GeneratorDoesDiscovery<
 
 		super(
 			ajv,
-			{
-				type: 'object',
-				required: ['type', 'minLength', 'typed_object_string'],
-				additionalProperties: false,
-				definitions: {
-					...UnrealEngineString_schema_definitions,
-				},
-				properties: {
-					type: {type: 'string', const: 'string'},
-					minLength: {type: 'number', const: 1},
-					typed_object_string: {
-						type: 'object',
-						additionalProperties: false,
-						patternProperties: {
-							[property_regex]: {
-								oneOf: [
-									$ref_schema,
-									UnrealEngineString_parent_schema,
-									{
-										type: 'object',
-										additionalProperties: false,
-										patternProperties: {
-											[property_regex]: {type: 'object'},
-										},
-									},
-									oneOf_or_anyOf_schema,
-									enum_schema,
-									const_schema,
-									typed_array_string_schema,
-								],
-							},
-						},
-					},
-				},
-			},
+			generate_typed_object_string_schema($ref_schema),
 			discovery
 		);
 

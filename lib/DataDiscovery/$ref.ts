@@ -7,6 +7,10 @@ import Ajv, {
 import {
 	DataTransformer,
 } from '../DataTransformer';
+import {
+	object_has_property,
+	value_is_non_array_object,
+} from '../CustomParsingTypes/CustomPairingTypes';
 
 export class $ref extends SchemaCompilingGenerator<
 	{
@@ -36,7 +40,38 @@ export class $ref extends SchemaCompilingGenerator<
 				throw new Error(`${$ref} not in definitions!`);
 			}
 
-			return this.definitions[$ref];
+			const result = this.definitions[$ref];
+
+			if (raw_data.$ref === '#/definitions/NativeClass') {
+				console.log(raw_data);
+
+				throw new Error('bar');
+			}
+
+			if (object_has_property(
+				raw_data,
+				'properties',
+				value_is_non_array_object
+			)) {
+				if (!value_is_non_array_object(result)) {
+					throw new Error('Non-object resolution found!');
+				}
+
+				const {
+					properties,
+					...rest
+				} = result;
+
+				return {
+					...rest,
+					properties: {
+						...(properties || {}),
+						...raw_data.properties,
+					},
+				};
+			}
+
+			return result;
 		});
 	}
 
@@ -52,12 +87,20 @@ export class $ref extends SchemaCompilingGenerator<
 				required: ['$ref'],
 				additionalProperties: false,
 				properties: {
+					type: {type: 'string', const: 'object'},
+					unevaluatedProperties: {type: 'boolean', const: false},
 					$ref: {
 						type: 'string',
 						enum: Object.keys(
 							schema.definitions
 						).map(e => `#/definitions/${e}`),
 					},
+					required: {
+						type: 'array',
+						minItems: 1,
+						items: {type: 'string'},
+					},
+					properties: {type: 'object'},
 				},
 			}
 		)

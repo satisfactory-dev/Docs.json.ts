@@ -38,16 +38,7 @@ import {
 } from './TsFactoryWrapper';
 import {
 	AnyGenerator,
-} from './DataTransformer/Generator';
-import {
-	AnyGenerator as LetsTryAgain,
 } from './DataDiscovery/Generator';
-import {
-	NativeClass,
-} from './DataDiscovery/Update8/NativeClass';
-import {
-	UnrealEngineString_left_right_generator,
-} from './DataDiscovery/CustomParsingTypes/UnrealEngineString';
 import {
 	DataTransformerDiscovery,
 } from './DataTransformerDiscovery';
@@ -57,6 +48,33 @@ import {
 import {
 	items,
 } from './DataDiscovery/JsonSchema/Array/items';
+import {
+	ObjectType,
+} from './DataDiscovery/JsonSchema/ObjectType';
+import {
+	UnrealEngineString_left_right_generator,
+} from './DataDiscovery/CustomParsingTypes/UnrealEngineString';
+import {
+	NativeClass,
+} from './DataDiscovery/Update8/NativeClass';
+import {
+	Pattern,
+} from './DataDiscovery/JsonSchema/String/Pattern';
+import {
+	StringType,
+} from './DataDiscovery/JsonSchema/String/StringType';
+import {
+	Enum,
+} from './DataDiscovery/JsonSchema/String/Enum';
+import {
+	oneOf as String_oneOf,
+} from './DataDiscovery/JsonSchema/String/oneOf';
+import {
+	oneOf,
+} from './DataDiscovery/JsonSchema/oneOf';
+import {
+	typed_object_string,
+} from './DataDiscovery/CustomParsingTypes/typed_object_string';
 
 export class DataTransformer
 {
@@ -68,17 +86,18 @@ export class DataTransformer
 		schema: SchemaObject & {definitions: {[key: string]: unknown}},
 		validations: ValidateFunction[],
 	}> = undefined;
+	public readonly data:DataTransformerDiscovery;
 
 	constructor(
 		ajv:Ajv,
 		discovery:TypeDefinitionDiscovery,
-		_:[AnyGenerator, ...AnyGenerator[]],
-		docs:DocsTsGenerator
+		docs:DocsTsGenerator,
 	) {
 		configure_ajv(ajv);
 		this.ajv = ajv;
 		this.discovery = discovery;
 		this.docs = docs;
+		this.data = new DataTransformerDiscovery(ajv, this);
 	}
 
 	private async prepare()
@@ -193,28 +212,6 @@ export class DataTransformer
 			this.discovery.types_discovery
 		);
 
-		const candidates:[LetsTryAgain, ...LetsTryAgain[]] = [
-			await UnrealEngineString_left_right_generator.from_data_discovery(
-				this.ajv,
-				this
-			) as LetsTryAgain,
-			new prefixItems(this.ajv, this),
-			new items(this.ajv, this),
-		];
-
-		const discovery = new DataTransformerDiscovery(
-			this.ajv,
-			this,
-			candidates
-		);
-
-		discovery.add_generators(
-			await NativeClass.fromTypesDiscovery(
-				this.ajv,
-				discovery
-			) as LetsTryAgain
-		);
-
 		for (const entry of await this.docs.get()) {
 			if (!is_NativeClass(entry)) {
 				console.error(entry);
@@ -226,7 +223,7 @@ export class DataTransformer
 			);
 
 			const literal = DataTransformer.value_literal(
-				await (await discovery.find(entry))(entry)
+				await (await this.data.find(entry))(entry)
 			);
 
 			yield {
@@ -274,5 +271,39 @@ export class DataTransformer
 		console.error(from);
 
 		throw new Error('unsupported!');
+	}
+
+	static async with_default_candidates(
+		ajv: Ajv,
+		discovery: TypeDefinitionDiscovery,
+		docs: DocsTsGenerator
+	) {
+		const transformer = new this(
+			ajv,
+			discovery,
+			docs,
+		);
+
+		transformer.data.add_generators(
+			new prefixItems(ajv, transformer),
+			new items(ajv, transformer),
+			new ObjectType(ajv) as AnyGenerator,
+			await UnrealEngineString_left_right_generator.from_data_discovery(
+				ajv,
+				transformer
+			) as AnyGenerator,
+			await NativeClass.fromTypesDiscovery(
+				ajv,
+				transformer
+			) as AnyGenerator,
+			new StringType(ajv),
+			new Pattern(ajv),
+			new Enum(ajv),
+			new String_oneOf(ajv),
+			new oneOf(ajv),
+			new typed_object_string(ajv),
+		);
+
+		return transformer;
 	}
 }

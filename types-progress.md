@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (215 of 215)
+100.00% Complete (214 of 214)
 
 ## Basic Types
 
@@ -51,6 +51,7 @@
 -   [x] mScannableType
 -   [x] mSnappedPassthroughs
 -   [x] mStackSize
+-   [x] NativeClass
 -   [x] None
 -   [x] SpecifiedColor
 -   [x] transformation
@@ -293,11 +294,6 @@
 
 -   [x] mEventType
 -   [x] mEventType--optional-csv
-
-## NativeClass
-
--   [x] NativeClass
--   [x] NativeClass--NativeClass
 
 ## Texture2D
 
