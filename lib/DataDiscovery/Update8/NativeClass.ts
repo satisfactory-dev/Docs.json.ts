@@ -21,6 +21,9 @@ import {
 	DataTransformerDiscovery,
 } from '../../DataTransformerDiscovery';
 
+/**
+ * @todo get auto-conversion of Classes property to behave as expected
+ */
 export class NativeClass extends Generator<
 	DocsDataItem,
 	DocsDataItem,

@@ -14,6 +14,9 @@ import {
 	DataTransformer,
 } from '../../DataTransformer';
 
+/**
+ * @todo get this to support spitting out TypeReferenceNode instances
+ */
 export class UnrealEngineString_left_right_generator
 	extends SchemaCompilingWithAutoDefinitions<
 		UnrealEngineString_parent_type,
