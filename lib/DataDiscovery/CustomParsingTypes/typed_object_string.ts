@@ -31,6 +31,9 @@ import {
 import {
 	schema as enum_schema,
 } from '../JsonSchema/String/Enum';
+import {
+	schema as const_schema,
+} from '../JsonSchema/String/ConstType';
 
 type schema_type = {
 	type: 'string',
@@ -46,6 +49,7 @@ const schmea_sub_types = [
 	pattern_schema,
 	enum_schema,
 	UnrealEngineString_parent_schema,
+	const_schema,
 ];
 
 const schema = {
