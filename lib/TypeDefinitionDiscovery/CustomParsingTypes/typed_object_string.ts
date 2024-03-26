@@ -35,8 +35,8 @@ import {
 	schema as const_schema,
 } from '../JsonSchema/String/Const';
 import {
-	schema as typed_array_string_schema,
 	typed_array_string,
+	schema as typed_array_string_schema,
 } from './typed_array_string';
 import {
 	AnyGenerator,

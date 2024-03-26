@@ -5,8 +5,8 @@ import {
 	DocsDataItem,
 } from '../../DocsTsGenerator';
 import ts, {
-	PrimaryExpression,
-	CallExpression, TypeNode,
+	CallExpression,
+	PrimaryExpression, TypeNode,
 } from 'typescript';
 import Ajv from 'ajv/dist/2020';
 import schema from '../../../schema/update8.schema.json' assert {type: 'json'};

@@ -17,11 +17,11 @@ import {
 	create_type,
 	createClass,
 	createParameter,
-	possibly_create_lazy_union,
-	variable,
 	not,
-	type_reference_node,
-	template_expression_from_string, parenthesize,
+	parenthesize,
+	possibly_create_lazy_union,
+	template_expression_from_string,
+	type_reference_node, variable,
 } from '../TsFactoryWrapper';
 import {
 	UnexpectedlyUnknown,

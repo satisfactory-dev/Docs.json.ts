@@ -6,8 +6,8 @@ import {
 	property_regex,
 } from '../../CustomParsingTypes/TypedObjectString';
 import {
-	schema_type as pattern_type,
 	schema as pattern_schema,
+	schema_type as pattern_type,
 } from '../JsonSchema/String/Pattern';
 import {
 	DataTransformer,

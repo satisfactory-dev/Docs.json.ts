@@ -1,5 +1,6 @@
 import Ajv from 'ajv/dist/2020';
 import {
+	check_UnrealEngineString_parent,
 	is_UnrealEngineString_parent,
 	is_UnrealEngineString_type,
 	UnrealEngineString,
@@ -7,13 +8,12 @@ import {
 	UnrealEngineString_parent_schema,
 	UnrealEngineString_parent_type,
 	UnrealEngineString_schema_definitions,
-	check_UnrealEngineString_parent,
 } from './UnrealEngineString';
 import schema from '../../schema/update8.schema.json' assert {type: 'json'};
 import {
 	adjust_class_name,
-	minimum_size_array_of_single_type,
 	create_object_type_from_entries,
+	minimum_size_array_of_single_type,
 	possibly_create_lazy_union,
 	type_reference_node,
 } from '../TsFactoryWrapper';

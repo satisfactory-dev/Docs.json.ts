@@ -1,5 +1,5 @@
 import {
-	Generator, ExpressionResult, SchemaCompilingGenerator,
+	ExpressionResult, Generator, SchemaCompilingGenerator,
 } from '../Generator';
 import Ajv, {
 	SchemaObject,

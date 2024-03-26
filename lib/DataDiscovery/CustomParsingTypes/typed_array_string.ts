@@ -2,8 +2,8 @@ import {
 	SchemaCompilingGenerator,
 } from '../Generator';
 import {
-	schema_type as items_schema_type,
 	schema as items_schema,
+	schema_type as items_schema_type,
 } from '../JsonSchema/Array/items';
 import {
 	DataTransformer,

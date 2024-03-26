@@ -2,7 +2,7 @@ import {
 	NodeExtraction,
 } from './NodeExtraction';
 import {
-	PropertyDeclaration, Node,
+	Node, PropertyDeclaration,
 } from 'typescript';
 
 export class PropertyDeclarations extends NodeExtraction<PropertyDeclaration> {
