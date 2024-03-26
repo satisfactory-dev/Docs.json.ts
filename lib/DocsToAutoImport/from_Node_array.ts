@@ -99,6 +99,19 @@ export function EntityName_array_from_Node_array(nodes: Node[]): EntityName[] {
 			property_declarations.push(node);
 		} else if (ts.isFunctionDeclaration(node)) {
 			function_types.push(node);
+		} else if (ts.isArrowFunction(node)) {
+			sub_nodes.push(...[
+				...node.parameters,
+				...(node.typeParameters || []),
+				node.body,
+				...(
+					(node.type && ts.isTypeLiteralNode(node.type))
+						? [node.type]
+						: []
+				),
+			].filter(e => !!e));
+		} else if (ts.isBlock(node)) {
+			sub_nodes.push(...node.statements);
 		} else if (ts.isTypeParameterDeclaration(node)) {
 			sub_nodes.push(
 				...[node.name, node.constraint, node.expression].filter(
@@ -183,7 +196,12 @@ export function EntityName_array_from_Node_array(nodes: Node[]): EntityName[] {
 			);
 		} else if (ts.isVariableDeclaration(node)) {
 			sub_nodes.push(
-				...[node.initializer, node.name].filter(
+				...[
+					node.initializer,
+					node.name,
+					node.type,
+					node.initializer,
+				].filter(
 					(maybe): maybe is Exclude<typeof maybe, undefined> =>
 						!!maybe
 				)
@@ -239,10 +257,18 @@ export function EntityName_array_from_Node_array(nodes: Node[]): EntityName[] {
 					return sub_node.name;
 				})
 			);
+		} else if (ts.isObjectLiteralExpression(node)) {
+			sub_nodes.push(...node.properties);
+		} else if (ts.isPropertyAssignment(node)) {
+			sub_nodes.push(node.name, node.initializer);
+		} else if (ts.isArrayLiteralExpression(node)) {
+			sub_nodes.push(...node.elements);
+		} else if (ts.isComputedPropertyName(node)) {
+			sub_nodes.push(node.expression);
 		} else if (
 			!ts.isToken(node)
-			&& !ts.isObjectLiteralExpression(node)
 			&& !ts.isNamedExports(node)
+			&& !ts.isShorthandPropertyAssignment(node)
 		) {
 			others.push(node);
 		}

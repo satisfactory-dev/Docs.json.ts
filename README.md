@@ -25,7 +25,7 @@
 ## Instructions
 
 1. Checkout locally
-2. Run `make install`
+2. Run `make up install`
 3. Copy `Docs.json` to `./data/`
 4. Run `make validate`
     - if this fails, either the `Docs.json` is wrong or the schema is out-of-date

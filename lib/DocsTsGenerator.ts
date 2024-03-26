@@ -1,5 +1,6 @@
 import {
-	mkdir, readFile, unlink, writeFile,
+	readFile,
+	writeFile,
 } from 'node:fs/promises';
 import {
 	basename, dirname,
@@ -14,6 +15,7 @@ import {
 import Ajv, {
 	ErrorObject, ValidateFunction,
 } from 'ajv/dist/2020';
+import * as prettier from 'prettier';
 import standalone from 'ajv/dist/standalone';
 import {
 	ESLint,
@@ -22,87 +24,19 @@ import {
 import update8_schema from '../schema/update8.schema.json' assert {
 	type: 'json'
 };
-
-import {
-	target_files as enum_target_files,
-	generators as enum_generators,
-	type_node_generators as enum_type_node_generators,
-} from './TypesGeneration/enum';
-import {
-	target_files as validator_target_files,
-	generators as validator_generators,
-	custom_generators as validator_custom_generators,
-	type_node_generators as validators_type_node_generators,
-} from './TypesGeneration/validators';
-import {
-	target_files as vectors_target_files,
-	custom_generators as vectors_custom_generators,
-	type_node_generators as vectors_type_node_generators,
-} from './TypesGeneration/vectors';
-import {
-	target_files as constants_target_files,
-	generators as constants_generators,
-	type_node_generators as const_type_node_generators,
-} from './TypesGeneration/constants';
-import {
-	target_files as prefixes_target_files,
-	generators as prefixes_generators,
-	type_node_generators as prefixes_type_node_generators,
-} from './TypesGeneration/prefixes';
-import {
-	target_files as unions_target_files,
-	generators as unions_generators,
-	type_node_generators as unions_type_node_generators,
-} from './TypesGeneration/unions';
-import {
-	TypesGenerationFromSchema,
-	GenerationMatch,
-	ImportTracker,
-	TypesGeneration_concrete,
-} from './TypesGeneration';
 import {
 	configure_ajv, default_config,
 } from './DocsValidation';
-import ts from 'typescript';
 import {
-	glob,
-} from 'glob';
-import {
-	target_files as classes_target_files,
-	generators as classes_generators,
-	supported_base_classes as Classes_supported_base_classes,
-	type_node_generators,
-} from './TypesGeneration/Classes';
-import {
-	target_files as arrays_target_files,
-	generators as arrays_generators,
-	type_node_generators as arrays_type_node_generators,
-} from './TypesGeneration/arrays';
-import {
-	target_files as aliases_target_files,
-	generators as aliases_generators,
-	type_node_generators as aliases_type_node_generators,
-} from './TypesGeneration/aliases';
-import {
-	is_ref, Update8TypeNodeGeneration,
-} from './Schemas/Update8';
-import {
-	TypeNodeGeneration,
-	TypeNodeGenerationMatcher,
-} from './SchemaBasedResultsMatching/TypeNodeGeneration';
-import {
-	DocsTsAutoImports,
-} from './DocsTsAutoImports';
+	BuiltInParserName,
+} from 'prettier';
 import {
 	createHash,
 } from 'node:crypto';
 import {
-	is_non_empty_array, object_has_property,
+	is_non_empty_array,
 	value_is_non_array_object,
 } from './CustomParsingTypes/CustomPairingTypes';
-import {
-	is_string,
-} from './StringStartsWith';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -121,29 +55,9 @@ export class ValidationError extends Error {
 	}
 }
 
-export class GenerationException extends Error {
-	readonly progress: generation_result;
-	readonly exception: unknown;
-
-	constructor(progress: generation_result, exception: unknown) {
-		super('a generation exception occurred');
-		this.progress = progress;
-		this.exception = exception;
-	}
-}
-
-export type generation_result = {
-	definitions: {
-		keys: string[];
-		supported: string[];
-		missing_target_files: string[];
-	};
-	files: {[key: string]: ts.Node[]};
-};
-
-type DocsDataItem = {
+export type DocsDataItem = {
 	NativeClass: string;
-	Classes: ({[key: string]: unknown[] | string} & {ClassName: string})[];
+	Classes: ({[key: string]: unknown} & {ClassName: string})[];
 };
 
 export type DocsData = [DocsDataItem, ...DocsDataItem[]];
@@ -385,432 +299,35 @@ export class DocsTsGenerator {
 			}
 		);
 	}
-
-	/**
-	 * @throws {GenerationException}
-	 */
-	async generate_types(
-		parent_folder: string,
-		throw_on_failure_to_find = true,
-		write_on_failure = false
-	): Promise<generation_result> {
-		try {
-			const progress = this.actually_generate_types(
-				throw_on_failure_to_find
-			);
-
-			await this.write_files(parent_folder, progress.files);
-
-			return progress;
-		} catch (err) {
-			if (write_on_failure && err instanceof GenerationException) {
-				await this.write_files(parent_folder, err.progress.files);
-			}
-
-			throw err;
-		}
-	}
-
-	/**
-	 * @throws {GenerationException}
-	 */
-	private actually_generate_types(
-		throw_on_failure_to_find = true
-	): generation_result {
-		const target_files:{[key: string]: string} = {
-			...enum_target_files,
-			...validator_target_files,
-			...vectors_target_files,
-			...constants_target_files,
-			...prefixes_target_files,
-			...arrays_target_files,
-			...classes_target_files,
-			...unions_target_files,
-			...aliases_target_files,
-		};
-
-		const generators: TypesGeneration_concrete[] = [
-			...enum_generators,
-			...validator_generators,
-			...constants_generators,
-			...prefixes_generators,
-			...arrays_generators,
-			...classes_generators,
-			...unions_generators,
-			...aliases_generators,
-		] as TypesGeneration_concrete[];
-
-		const type_node_generators_list: TypeNodeGeneration[] = [
-			...enum_type_node_generators,
-			...const_type_node_generators,
-			...validators_type_node_generators,
-			...vectors_type_node_generators,
-			...arrays_type_node_generators,
-			...type_node_generators,
-			...prefixes_type_node_generators,
-			...unions_type_node_generators,
-			...aliases_type_node_generators,
-		] as unknown as TypeNodeGeneration[];
-
-		const type_node_generation = new TypeNodeGenerationMatcher(
-			type_node_generators_list
-		);
-		type_node_generation.throw_on_failure_to_find =
-			throw_on_failure_to_find;
-		type_node_generation.definitions_to_check = update8_schema.definitions;
-
-		const supported_conversions = Object.entries(
-			update8_schema.definitions
-		)
-			.filter((e: [string, object]) => {
-				for (const generator of generators) {
-					if (generator instanceof TypesGenerationFromSchema) {
-						if (generator.test(e[1])) {
-							return true;
-						}
-					} else if (generator.test(e[0])) {
-						return true;
-					}
-				}
-
-				return false;
-			})
-			.map((e: [string, object]) => {
-				const generator = generators.find((maybe) => {
-					if (maybe instanceof TypesGenerationFromSchema) {
-						return maybe.test(e[1]);
-					}
-
-					return maybe.test(e[0]);
-				});
-
-				if (!generator) {
-					throw new Error('whoops');
-				}
-
-				return new GenerationMatch<object>(e[0], e[1], generator);
-			});
-
-		const supported_conversion_names = supported_conversions.map(
-			(e) => e.definition
-		);
-
-		for (const supported_elsewhere of [
-			...Classes_supported_base_classes,
-		]) {
-			if (!supported_conversion_names.includes(supported_elsewhere)) {
-				supported_conversion_names.push(supported_elsewhere);
-			}
-		}
-
-		let missing_target_files = supported_conversions
-			.map((match) => {
-				return match.definition;
-			})
-			.filter((maybe) => !(maybe in target_files));
-
-		const definitions_keys = Object.keys(update8_schema.definitions);
-
-		let progress: generation_result = {
-			definitions: {
-				keys: definitions_keys,
-				supported: supported_conversion_names,
-				missing_target_files: missing_target_files,
-			},
-			files: {},
-		};
-
-		function update_progress() {
-			missing_target_files = supported_conversions
-				.map((match) => {
-					return match.definition;
-				})
-				.filter((maybe) => !(maybe in target_files));
-
-			progress = {
-				definitions: {
-					keys: definitions_keys,
-					supported: supported_conversion_names,
-					missing_target_files: missing_target_files,
-				},
-				files: progress.files,
-			};
-		}
-
-		const Update8 = new Update8TypeNodeGeneration(type_node_generation);
-
-		for (const generator of [
-			...validator_custom_generators,
-			...Update8.generate_generators(default_config.ajv),
-			...vectors_custom_generators,
-		]) {
-			try {
-				const Classes_results: (
-					| {file: string; node: ts.Node}
-					| {file: string; node: ts.Node; ref: string}
-				)[] = generator();
-
-				for (const result of Classes_results) {
-					const {file, node} = result;
-
-					if (object_has_property(
-						result,
-						'ref',
-						is_string
-					)) {
-						target_files[result.ref] = file;
-
-						if (!supported_conversion_names.includes(result.ref)) {
-							supported_conversion_names.push(result.ref);
-						}
-					}
-
-					if (!(file in progress.files)) {
-						progress.files[file] = [];
-					}
-
-					progress.files[file].push(node);
-				}
-			} catch (err) {
-				update_progress();
-				throw new GenerationException(progress, err);
-			}
-		}
-
-		update_progress();
-
-		for (const match of supported_conversions) {
-			if (!(match.definition in target_files)) {
-				if (
-					is_ref(match.definition)
-					&& Update8.can_guess_filename(match.definition)
-				) {
-					target_files[match.definition] = Update8.guess_filename(
-						match.definition
-					);
-				} else {
-					target_files[match.definition] = 'common/unassigned.ts';
-				}
-			}
-
-			const target_file = target_files[match.definition];
-
-			if (!(target_file in progress.files)) {
-				progress.files[target_file] = [];
-			}
-
-			progress.files[target_file].push(
-				match.generation.generate(match.data, match.definition)
-			);
-		}
-
-		update_progress();
-
-		try {
-			progress.files['Docs.json.ts'] = [
-				Update8.generate_DocsJsonTs(default_config.ajv),
-			];
-		} catch (err) {
-			update_progress();
-			throw new GenerationException(progress, err);
-		}
-
-		update_progress();
-
-		return progress;
-	}
-
-	private async write_files(
-		parent_folder: string,
-		files: {[key: string]: ts.Node[]}
-	) {
-		const auto_imports = new DocsTsAutoImports(files);
-		await auto_imports.generate();
-
-		const printer = ts.createPrinter({
-			newLine: ts.NewLineKind.LineFeed,
-		});
-
-		const cleanup = await glob(`${parent_folder}/update8/**/*.ts`);
-
-		for (const remove of cleanup) {
-			await unlink(remove);
-		}
-
-		type class_can_have_tree = ts.ClassDeclaration & {
-			heritageClauses: [{types: [{expression: ts.Identifier}]}];
-		};
-
-		function can_class_have_tree(
-			class_node: ts.ClassDeclaration
-		): class_node is class_can_have_tree {
-			const heritage = [...(class_node.heritageClauses || [])].map(
-				(e) => e.types
-			);
-
-			return (
-				1 === heritage.length
-				&& 1 === heritage[0].length
-				&& ts.isExpressionWithTypeArguments(heritage[0][0])
-				&& ts.isIdentifier(heritage[0][0].expression)
-			);
-		}
-
-		for (const entry of Object.entries(files)) {
-			const result_file = ts.createSourceFile(
-				entry[0],
-				'',
-				ts.ScriptTarget.Latest,
-				false,
-				ts.ScriptKind.TS
-			);
-
-			const classes = entry[1].filter(ts.isClassDeclaration);
-
-			const classes_mapped = Object.fromEntries(
-				classes.map((e) => [e.name?.escapedText + '', e])
-			);
-
-			const class_can_have_trees = Object.fromEntries(
-				classes
-					.filter(can_class_have_tree)
-					.map((e) => [e.name?.escapedText + '', e])
-			);
-
-			const class_parents = Object.values(class_can_have_trees).map(
-				(class_node) => {
-					let checking: undefined | ts.ClassDeclaration = class_node;
-
-					const tree: string[] = [class_node.name?.escapedText + ''];
-
-					while (
-						checking
-						&& can_class_have_tree(checking)
-						&& (
-							checking
-								.heritageClauses[0]
-								.types[0]
-								?.expression
-								.escapedText
-								.toString()
-						) in
-							class_can_have_trees
-					) {
-						const parent_class_name: string =
-							checking
-								.heritageClauses[0]
-								.types[0]
-								.expression
-								.escapedText
-								.toString();
-						if (parent_class_name in classes_mapped) {
-							tree.push(parent_class_name);
-
-							checking = classes_mapped[parent_class_name];
-						} else {
-							checking = undefined;
-						}
-					}
-
-					return tree;
-				}
-			);
-
-			const class_parent_classes = class_parents
-				.flat()
-				.reduce((was, is) => {
-					if (!was.includes(is)) {
-						was.push(is);
-					}
-
-					return was;
-				}, [] as string[]);
-			const class_parent_class_max_depth = Object.fromEntries(
-				class_parent_classes
-					.map((thing): [string, string[][]] => {
-						const includes = class_parents.filter((e) =>
-							e.includes(thing)
-						);
-
-						return [thing, includes];
-					})
-					.filter(
-						(
-							entry
-						): entry is [string, [string[], ...string[][]]] => {
-							return entry[1].length > 0;
-						}
-					)
-					.map((entry) => {
-						return [
-							entry[0],
-							Math.max(
-								0,
-								...entry[1].map((e) => e.indexOf(entry[0]))
-							),
-						];
-					})
-			);
-
-			const classes_in_order = class_parent_classes.sort((a, b) => {
-				return (
-					class_parent_class_max_depth[b] -
-					class_parent_class_max_depth[a]
-				);
-			});
-
-			const nodes = [
-				...ImportTracker.generate_imports(entry[0]),
-				...entry[1].sort((a, b) => {
-					if (
-						ts.isTypeAliasDeclaration(a)
-						&& !ts.isTypeAliasDeclaration(b)
-					) {
-						return -1;
-					}
-
-					if (ts.isClassDeclaration(a) && ts.isClassDeclaration(b)) {
-						return (
-							classes_in_order.indexOf(
-								a.name?.escapedText + ''
-							) -
-							classes_in_order.indexOf(b.name?.escapedText + '')
-						);
-					}
-
-					return 0;
-				}),
-			];
-
-			const file_name = `${parent_folder}/update8/${entry[0]}`;
-			const dir = dirname(file_name);
-
-			await mkdir(dir, {
-				recursive: true,
-			});
-
-			await writeFile(
-				file_name,
-				(
-					nodes
-						.map((node) => {
-							return printer.printNode(
-								ts.EmitHint.Unspecified,
-								node,
-								result_file
-							);
-						})
-						.join('\n\n')
-				)
-			);
-		}
-
-		await eslint_generated_types(`${parent_folder}/update8/**/*.ts`);
-	}
 }
+
+const prettier_config = prettier.resolveConfig(`${__dirname}/../.prettierrc`);
 
 const eslint = new ESLint({fix: true});
 const eslint_formatter = eslint.loadFormatter('stylish');
+
+export async function format_code(
+	code: string,
+	parser: BuiltInParserName = 'typescript'
+): Promise<string> {
+	const config = await prettier_config;
+
+	if (!config) {
+		throw new Error('could not find prettier config');
+	}
+
+	code = await prettier.format(
+		code,
+		Object.assign(
+			{
+				parser,
+			},
+			config
+		)
+	);
+
+	return code.replace(/(\t+) +/gm, '$1');
+}
 
 export async function eslint_generated_types(files: string) {
 	const results = await eslint.lintFiles(files);

@@ -1,5 +1,6 @@
 import Ajv from 'ajv/dist/2020';
 import {
+	check_UnrealEngineString_parent,
 	is_UnrealEngineString_parent,
 	is_UnrealEngineString_type,
 	UnrealEngineString,
@@ -7,31 +8,20 @@ import {
 	UnrealEngineString_parent_schema,
 	UnrealEngineString_parent_type,
 	UnrealEngineString_schema_definitions,
-	check_UnrealEngineString_parent,
 } from './UnrealEngineString';
 import schema from '../../schema/update8.schema.json' assert {type: 'json'};
 import {
-	TypesGenerationFromSchema,
-} from '../TypesGeneration';
-import {
 	adjust_class_name,
-	pre_adjusted_$ref_class_names,
-	auto_constructor_property_types,
-	minimum_size_array_of_single_type,
-	create_modifier,
 	create_object_type_from_entries,
-	createClass,
-	createClass__members__with_auto_constructor,
+	minimum_size_array_of_single_type,
 	possibly_create_lazy_union,
 	type_reference_node,
 } from '../TsFactoryWrapper';
 import {
 	FragileTypeSafetyError,
-	TypeNodeGeneration,
-	TypeNodeGenerationResult,
 	UnexpectedlyUnknown,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
-import ts, {
+import {
 	TypeLiteralNode, TypeReferenceNode,
 } from 'typescript';
 import {
@@ -46,6 +36,7 @@ import {
 	typed_array_string_parent_without_recursive_reference,
 } from './TypedArrayString';
 import {
+	const_schema_type,
 	typed_string_const,
 } from './TypedStringConst';
 import {
@@ -64,11 +55,20 @@ import {
 	is_string,
 	local_ref,
 } from '../StringStartsWith';
+import {
+	pattern_schema_type,
+	typed_string_pattern_is_supported_schema,
+	typed_string_pattern_schema,
+	typed_string_pattern_value_regex,
+} from './TypedStringPattern';
+import {
+	writeFileSync,
+} from 'node:fs';
 
 const already_configured = new WeakSet<Ajv>();
 
-const property_regex = '^[A-Za-z][A-Za-z0-9_\\[\\]]*$';
-const const_value_regex = `^([A-Za-z][A-Za-z0-9_ ]*|${UnrealEngineString_general_regex})$`;
+export const property_regex = '^[A-Za-z][A-Za-z0-9_\\[\\]]*$';
+const const_value_regex = `^([A-Za-z][A-Za-z0-9_ ]*|${UnrealEngineString_general_regex}|\\(\\))$`;
 const const_value_regex__native = new RegExp(
 	const_value_regex
 );
@@ -144,11 +144,6 @@ type supported_oneOf_item =
 	| $ref_choices
 	| UnrealEngineString_parent_type;
 
-type nested_type = {
-	type: 'string';
-	typed_object_string: {[key: string]: general_type};
-} & ({minLength: 1} | typeof empty_object);
-
 type array_type = [
 	general_type,
 	...general_type[],
@@ -159,6 +154,7 @@ type combination_dictionary = {
 		| $ref_choices
 		| {type: 'string'; const: string}
 		| {type: 'string'; enum: [string, ...string[]]}
+		| pattern_schema_type
 		| $ref_only
 		| combination_dictionary;
 };
@@ -210,12 +206,59 @@ export const supported_const_string_schema = {
 	},
 };
 
+const pattern_typed_object_string = {
+	type: 'object',
+	required: ['type', 'minLength', 'typed_object_string'],
+	additionalProperties: false,
+	properties: {
+		type: {type: 'string', const: 'string'},
+		minLength: {type: 'number', const: 1},
+		typed_object_string: {
+			type: 'object',
+			additionalProperties: false,
+			patternProperties: {
+				[property_regex]: {
+					oneOf: [
+						$ref_schema,
+						typed_string_pattern_schema,
+						{
+							type: 'object',
+							required: [
+								'type',
+								'minLength',
+								'typed_object_string',
+							],
+							additionalProperties: false,
+							properties: {
+								type: {type: 'string', const: 'string'},
+								minLength: {type: 'number', const: 1},
+								typed_object_string: {
+									type: 'object',
+									additionalProperties: false,
+									patternProperties: {
+										[property_regex]: {
+											oneOf: [
+												$ref_schema,
+												typed_string_pattern_schema,
+											],
+										},
+									},
+								},
+							},
+						},
+					],
+				},
+			},
+		},
+	},
+};
+
 export const typed_object_string_schema = {
 	type: 'object',
 	additionalProperties: false,
 	patternProperties: {
 		[property_regex]: {
-			oneOf: [
+			anyOf: [
 				$ref_schema,
 				{
 					type: 'object',
@@ -226,6 +269,8 @@ export const typed_object_string_schema = {
 								$ref_schema,
 								supported_const_string_schema,
 								typed_string_enum_schema,
+								typed_string_pattern_schema,
+								pattern_typed_object_string,
 							],
 						},
 					},
@@ -256,24 +301,7 @@ export const typed_object_string_schema = {
 						},
 					},
 				},
-				{
-					type: 'object',
-					required: ['type', 'minLength', 'typed_object_string'],
-					additionalProperties: false,
-					properties: {
-						type: {type: 'string', const: 'string'},
-						minLength: {type: 'number', const: 1},
-						typed_object_string: {
-							type: 'object',
-							additionalProperties: false,
-							patternProperties: {
-								[property_regex]: {
-									oneOf: [$ref_schema],
-								},
-							},
-						},
-					},
-				},
+				pattern_typed_object_string,
 				{
 					type: 'object',
 					required: ['oneOf'],
@@ -295,17 +323,43 @@ export const typed_object_string_schema = {
 								typed_object_string: {
 									type: 'object',
 									additionalProperties: false,
-									patternProperties: {
-										[property_regex]:
-											{
-												oneOf: [
-													$ref_schema,
-												],
-											},
-									},
+									patternProperties: {[property_regex]: {
+										oneOf: [
+											$ref_schema,
+											typed_string_pattern_schema,
+											typed_string_enum_schema,
+										],
+									}},
 								},
 							},
 						},
+					}},
+				},
+				typed_string_pattern_schema,
+				{
+					type: 'object',
+					required: ['oneOf'],
+					additionalProperties: false,
+					properties: {oneOf: {
+						type: 'array',
+						minItems: 1,
+						items: {oneOf: [
+							supported_const_string_schema,
+							UnrealEngineString_parent_schema,
+							{
+								type: 'object',
+								required: ['type', 'string_starts_with'],
+								additionalProperties: false,
+								properties: {
+									type: {type: 'string', const: 'string'},
+									string_starts_with: {
+										type: 'string',
+										minLength: 1,
+									},
+								},
+							},
+							pattern_typed_object_string,
+						]},
 					}},
 				},
 			],
@@ -321,42 +375,6 @@ export const general_schema = {
 		type: {type: 'string', const: 'string'},
 		minLength: {type: 'number', const: 1},
 		typed_object_string: typed_object_string_schema,
-	},
-};
-
-export const nested_schema = {
-	type: 'object',
-	required: ['type', 'typed_object_string'],
-	additionalProperties: false,
-	properties: {
-		type: {type: 'string', const: 'string'},
-		minLength: {type: 'number', const: 1},
-		typed_object_string: {
-			type: 'object',
-			patternProperties: {
-				[property_regex]: {
-					type: 'object',
-					additionalProperties: false,
-					patternProperties: {
-						[property_regex]:
-							$ref_schema,
-					},
-				},
-			},
-		},
-	},
-};
-
-export const typed_object_oneOf_schema = {
-	type: 'object',
-	required: ['oneOf'],
-	additionalProperties: false,
-	properties: {
-		oneOf: {
-			type: 'array',
-			minItems: 1,
-			items: general_schema,
-		},
 	},
 };
 
@@ -385,21 +403,11 @@ const supported_type_node_generations = {
 	},
 };
 
-type supported_type_node_generations = {
-	$ref:
-		| local_ref<'SpecifiedColor'>
-		| local_ref<'Texture2D'>
-		| local_ref<'Texture2D--basic'>
-		| local_ref<'ItemClass--prop'>
-		| local_ref<'MaterialSlotName'>
-		| local_ref<'None'>
-		| local_ref<'transformation'>
-		| local_ref<'color'>
-		| local_ref<'color-decimal'>
-		| local_ref<'mDockingRuleSet'>
-		| local_ref<'mLightControlData'>
-		| local_ref<'mDisableSnapOn'>;
-};
+type other_supported_oneOf = Exclude<{oneOf: (
+	| const_schema_type
+	| UnrealEngineString_parent_type
+	| typeof schema.definitions['Texture2D--basic']
+)[]}, $ref_choices>;
 
 export class TypedObjectString {
 	static configure_ajv(ajv: Ajv) {
@@ -421,6 +429,17 @@ export class TypedObjectString {
 			},
 			macro: this.ajv_macro_generator(false),
 		});
+
+		writeFileSync(
+			'/app/typed-object-string.meta.schema.json',
+			`${JSON.stringify({
+				...typed_object_string_schema,
+				...{
+					definitions:
+					UnrealEngineString_schema_definitions,
+				},
+			}, null, '\t')}\n`
+		);
 	}
 
 	private static $ref_to_regex(
@@ -578,7 +597,7 @@ export class TypedObjectString {
 						} else if (
 							e.$ref === local_ref('Texture2D--basic')
 						) {
-							return `(?:${schema.definitions['Texture2D--basic'].string_starts_with}(?:[A-Z][A-Za-z0-9_.]+/)*[A-Z][A-Za-z_.0-9-]+(?::[A-Z][A-Za-z0-9]+)?)`;
+							return this.Texture2D_basic_regex();
 						} else if (e.$ref === local_ref('None')) {
 							return schema.definitions.None.const;
 						}
@@ -600,6 +619,12 @@ export class TypedObjectString {
 			}
 		} else if (typed_string_const.is_supported_schema(value)) {
 			value_regex = typed_string_const.value_regex(value);
+		} else if (this.value_is_general_type(value)) {
+			value_regex = this.property_to_regex(value.typed_object_string);
+		} else if (typed_string_enum.is_supported_schema(value)) {
+			value_regex = typed_string_enum.value_regex(value);
+		} else if (typed_string_pattern_is_supported_schema(value)) {
+			value_regex = typed_string_pattern_value_regex(value);
 		} else if (undefined === $ref) {
 			throw new FragileTypeSafetyError(
 				value,
@@ -647,6 +672,20 @@ export class TypedObjectString {
 			)
 			&& Object.values(maybe).every((e) =>
 				typed_string_enum.is_supported_schema(e)
+			)
+		);
+	}
+
+	public static is_supported_pattern_string_object(
+		maybe: unknown
+	): maybe is {[key: string]: pattern_schema_type} {
+		return (
+			value_is_non_array_object(maybe)
+			&& Object.keys(maybe).every((e) =>
+				const_value_regex__native.test(e)
+			)
+			&& Object.values(maybe).every((e) =>
+				typed_string_pattern_is_supported_schema(e)
 			)
 		);
 	}
@@ -716,7 +755,9 @@ export class TypedObjectString {
 					&& supported_meta.is_supported_schema(e)
 				)
 				&& !this.is_supported_enum_string_object(e)
+				&& !this.is_supported_pattern_string_object(e)
 				&& !this.is_supported_typed_array_string(e)
+				&& !typed_string_pattern_is_supported_schema(e)
 				&& !(
 					value_is_non_array_object(e)
 					&& this.is_$ref_object_dictionary(e)
@@ -730,25 +771,6 @@ export class TypedObjectString {
 		);
 
 		return Object.keys(maybe).length >= 1 && failed.length === 0;
-	}
-
-	private static is_auto_constructor_properties(
-		maybe: {
-			[key: string]: $ref_choices;
-		}
-	): maybe is typeof maybe &
-		auto_constructor_property_types<
-			Exclude<keyof typeof maybe, number>
-		> {
-		return (
-			Object.keys(maybe).length >= 1
-			&& Object.values(maybe).every((value) => {
-				return (
-					value.$ref in
-					pre_adjusted_$ref_class_names
-				);
-			})
-		);
 	}
 
 	public static value_is_general_type(
@@ -770,6 +792,9 @@ export class TypedObjectString {
 					maybe.typed_object_string
 				)
 				|| TypedObjectString.is_supported_enum_string_object(
+					maybe.typed_object_string
+				)
+				|| TypedObjectString.is_supported_pattern_string_object(
 					maybe.typed_object_string
 				))
 			&& (2 === Object.keys(maybe).length
@@ -834,6 +859,45 @@ export class TypedObjectString {
 		);
 	}
 
+	private static is_other_supported_oneOf(
+		maybe: unknown
+	) : maybe is other_supported_oneOf {
+		return (
+			object_only_has_that_property(
+				maybe,
+				'oneOf',
+				is_non_empty_array
+			)
+			&& maybe.oneOf.every((inner_maybe) => {
+				return (
+					typed_string_const.is_supported_schema(inner_maybe)
+					|| is_UnrealEngineString_parent(inner_maybe)
+					|| this.is_Texture2D_basic(inner_maybe)
+				);
+			})
+		);
+	}
+
+	private static is_Texture2D_basic(
+		maybe: unknown
+	) : maybe is typeof schema.definitions['Texture2D--basic'] {
+		return (
+			value_is_non_array_object(maybe)
+			&& 2 === Object.keys(maybe).length
+			&& object_has_property_that_equals(maybe, 'type', 'string')
+			&& object_has_property_that_equals(
+				maybe,
+				'string_starts_with',
+				schema.definitions['Texture2D--basic'].string_starts_with
+			)
+		);
+	}
+
+	private static Texture2D_basic_regex(): string
+	{
+		return `(?:${schema.definitions['Texture2D--basic'].string_starts_with}(?:[A-Z][A-Za-z0-9_.]+/)*[A-Z][A-Za-z_.0-9-]+(?::[A-Z][A-Za-z0-9]+)?)`;
+	}
+
 	private static property_to_regex(data: typed_object_string_type): string {
 		const is_general_type = (e:unknown): e is general_type => {
 			return this.value_is_general_type(e);
@@ -859,6 +923,16 @@ export class TypedObjectString {
 
 						return `(?:${annoyingly_have_to_escape_property(property)}=(?:${value.enum.join('|')}))`;
 					}).join(',')}))`;
+				} else if (typed_string_pattern_is_supported_schema(
+					entry[1]
+				)) {
+					return `(?:${
+						annoyingly_have_to_escape_property(entry[0])
+					}=(?:${
+						typed_string_pattern_value_regex(entry[1])
+					}))`;
+				} else if(this.is_supported_pattern_string_object(entry[1])) {
+					throw new UnexpectedlyUnknown(entry[1]);
 				} else if (typed_string_enum.is_supported_schema(entry[1])) {
 					return typed_string_enum.key_value_pair_regex(
 						entry[0],
@@ -929,6 +1003,32 @@ export class TypedObjectString {
 					}
 
 					return `(?:${annoyingly_have_to_escape_property(entry[0])}=(?:${items.map((e) => this.property_to_regex(e.typed_object_string)).join('|')}))`;
+				} else if (this.is_other_supported_oneOf(entry[1])) {
+					return `(?:${
+						annoyingly_have_to_escape_property(entry[0])
+					}=(?:${
+						entry[1].oneOf.map(e => {
+							if (typed_string_const.is_supported_schema(e)) {
+								return typed_string_const.value_regex(e);
+							} else if (this.is_Texture2D_basic(e)) {
+								return this.Texture2D_basic_regex();
+							}
+
+							return `(?:${
+								UnrealEngineString.ajv_macro_generator(true)(
+									e.UnrealEngineString
+								).pattern
+							})`;
+						}).join('|')
+					}))`;
+				}
+
+				if ('enum' in entry[1]) {
+					throw new UnexpectedlyUnknown(
+						{
+							value: entry[1],
+						}
+					);
 				}
 
 				return `${annoyingly_have_to_escape_property(entry[0])}=\\(${Object.entries(
@@ -937,10 +1037,24 @@ export class TypedObjectString {
 					.map((sub_entry) => {
 						const [sub_property, sub_value] = sub_entry;
 
-						return this.$ref_to_regex(
-							sub_property,
-							sub_value
-						);
+						try {
+							return this.$ref_to_regex(
+								sub_property,
+								sub_value
+							);
+						} catch (err) {
+							if (err instanceof UnexpectedlyUnknown) {
+								throw err;
+							}
+							throw new UnexpectedlyUnknown({
+								entry,
+								sub_entry,
+								err,
+								combination: this.is_combination_dictionary(
+									sub_value
+								),
+							});
+						}
 					})
 					.join(',')}\\)`;
 			})
@@ -955,186 +1069,6 @@ export class TypedObjectString {
 				pattern: inner ? regex : `^${regex}$`,
 			};
 		};
-	}
-
-	static TypesGenerators() {
-		const general_type = new TypesGenerationFromSchema<general_type>(
-			{
-				definitions:
-					UnrealEngineString_schema_definitions,
-				...general_schema,
-			},
-			(data, reference_name) => {
-				const {typed_object_string} = data;
-
-				const is_$ref_object_dictionary =
-					this.is_$ref_object_dictionary(typed_object_string);
-				const is_combination_dictionary =
-					this.is_combination_dictionary(typed_object_string);
-				if (
-					is_combination_dictionary
-					&& !is_$ref_object_dictionary
-				) {
-					return ts.factory.createTypeAliasDeclaration(
-						[create_modifier('export')],
-						adjust_class_name(reference_name),
-						undefined,
-						this.combination_dictionary_type_to_object_type(
-							typed_object_string
-						)
-					);
-				} else if (is_$ref_object_dictionary) {
-					if (
-						!this.is_auto_constructor_properties(
-							typed_object_string
-						)
-					) {
-						return ts.factory.createTypeAliasDeclaration(
-							[create_modifier('export')],
-							adjust_class_name(reference_name),
-							undefined,
-							create_object_type_from_entries(
-								Object.entries(
-									typed_object_string
-								).map((entry) => [
-									entry[0],
-									type_reference_node(
-										adjust_class_name(
-											entry[1].$ref.substring(
-												14
-											)
-										)
-									),
-								])
-							)
-						);
-					}
-
-					return createClass(
-						adjust_class_name(reference_name),
-						createClass__members__with_auto_constructor(
-							{
-								type: 'object',
-								required: Object.keys(
-									typed_object_string
-								) as [string, ...string[]],
-								properties: typed_object_string,
-							},
-							['public', 'readonly']
-						),
-						{
-							modifiers: ['export'],
-						}
-					);
-				}
-
-				throw new UnexpectedlyUnknown(
-					data,
-					'not yet supported'
-				);
-			}
-		);
-		return [
-			general_type,
-			new TypesGenerationFromSchema<{
-				oneOf: array_type;
-			}>(
-				{
-					definitions:
-						UnrealEngineString_schema_definitions,
-					...typed_object_oneOf_schema,
-				},
-				(data, reference_name) => {
-					return ts.factory.createTypeAliasDeclaration(
-						[create_modifier('export')],
-						adjust_class_name(reference_name),
-						undefined,
-						ts.factory.createUnionTypeNode(
-							data.oneOf.map((e, index) => {
-								return create_object_type_from_entries(
-									Object.entries(
-										e.typed_object_string
-									).map((
-										entry
-									) : [string, $ref_choices] => {
-										if (
-											!this.is_$ref_object(entry[1])
-										) {
-											throw new UnexpectedlyUnknown(
-												entry,
-												`${reference_name}.oneOf[${index}][${entry[0]}] not supported!`
-											);
-										}
-
-										return [entry[0], entry[1]];
-									}).map((entry) => [
-										entry[0],
-										type_reference_node(
-											adjust_class_name(
-												entry[1].$ref.substring(
-													14
-												)
-											)
-										),
-									])
-								);
-							})
-						)
-					);
-				}
-			),
-			new TypesGenerationFromSchema<nested_type>(
-				{
-					definitions:
-						UnrealEngineString_schema_definitions,
-					...nested_schema,
-				},
-				(data, reference_name) => createClass(
-					adjust_class_name(reference_name),
-					createClass__members__with_auto_constructor(
-						{
-							type: 'object',
-							required: Object.keys(
-								data.typed_object_string
-							) as [string, ...string[]],
-							properties: Object.fromEntries(Object.entries(
-								data.typed_object_string
-							).map((e): [
-								string,
-								auto_constructor_property_types,
-							] => {
-								const [property, value] = e;
-
-								if (
-									!this.is_$ref_object_dictionary(
-										value
-									)
-									|| !this.is_auto_constructor_properties(
-										value
-									)
-								) {
-									throw new UnexpectedlyUnknown(
-										value,
-										`${reference_name}[${property}] not supported!`
-									);
-								}
-
-								return [property, value];
-							})),
-						},
-						['public', 'readonly']
-					),
-					{
-						modifiers: ['export'],
-					}
-				)
-			),
-		];
-	}
-
-	static CustomGenerators() {
-		return [
-		];
 	}
 
 	private static combination_dictionary_type_to_object_type(
@@ -1318,84 +1252,4 @@ export class TypedObjectString {
 		];
 	}
 
-	static TypeNodeGeneration() {
-		return [
-			new TypeNodeGeneration<nested_type>(
-				{
-					definitions:
-						UnrealEngineString_schema_definitions,
-					...nested_schema,
-				},
-				(data) => {
-					return new TypeNodeGenerationResult(() => {
-						return create_object_type_from_entries(
-							Object.entries(data.typed_object_string).map(
-								(e) => {
-									if (
-										!this.is_$ref_object_dictionary(
-											e[1]
-										)
-									) {
-										throw new UnexpectedlyUnknown(
-											e[1],
-											`${e[0]} not a supported type!`
-										);
-									}
-
-									return [
-										e[0],
-										this.literal_node({
-											type: 'string',
-											typed_object_string: e[1],
-										}),
-									];
-								}
-							)
-						);
-					});
-				}
-			),
-			new TypeNodeGeneration<general_type>(
-				{
-					definitions:
-						UnrealEngineString_schema_definitions,
-					...general_schema,
-				},
-				(data) => {
-					const is_$ref_object_dictionary =
-						this.is_$ref_object_dictionary(
-							data.typed_object_string
-						);
-					const is_combination_dictionary =
-						this.is_combination_dictionary(
-							data.typed_object_string
-						);
-
-					if (
-						!is_$ref_object_dictionary
-						&& !is_combination_dictionary
-					) {
-						throw new UnexpectedlyUnknown(
-							data.typed_object_string,
-							'not yet supported in type node generation'
-						);
-					}
-
-					return new TypeNodeGenerationResult(() =>
-						this.literal_node(data)
-					);
-				}
-			),
-			new TypeNodeGeneration<supported_type_node_generations>(
-				supported_type_node_generations,
-				(data) => {
-					return new TypeNodeGenerationResult(() =>
-						type_reference_node(
-							adjust_class_name(data.$ref.substring(14))
-						)
-					);
-				}
-			),
-		];
-	}
 }

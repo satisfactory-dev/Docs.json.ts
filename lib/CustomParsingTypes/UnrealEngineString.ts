@@ -1,6 +1,5 @@
 import Ajv from 'ajv/dist/2020';
 import ts, {
-	ConditionalTypeNode,
 	TypeNode,
 	TypeReferenceNode,
 } from 'typescript';
@@ -12,29 +11,21 @@ import {
 	create_method_with_type_parameters,
 	create_method_without_type_parameters,
 	create_modifier,
-	create_new_RegExp,
 	create_property_access,
 	create_this_assignment,
 	create_throw_if,
 	create_type,
-	create_union,
 	createClass,
 	createParameter,
-	createPropertySignature,
-	possibly_create_lazy_union,
-	variable,
 	not,
-	type_reference_node,
+	parenthesize,
+	possibly_create_lazy_union,
 	template_expression_from_string,
+	type_reference_node, variable,
 } from '../TsFactoryWrapper';
 import {
-	TypeNodeGeneration,
-	TypeNodeGenerationResult,
 	UnexpectedlyUnknown,
 } from '../SchemaBasedResultsMatching/TypeNodeGeneration';
-import {
-	TypesGenerationFromSchema,
-} from '../TypesGeneration';
 import {
 	object_has_property,
 	value_is_non_array_object,
@@ -113,24 +104,6 @@ export function check_UnrealEngineString_parent(
 			maybe,
 			'Not an UnrealEngineString_parent object!'
 		);
-	}
-
-	return maybe;
-}
-
-export function check_UnrealEngineString_has_left_string(
-	maybe: UnrealEngineString_type
-) : UnrealEngineString_type & {
-	left: string,
-} {
-	if (
-		!object_has_property(
-			maybe,
-			'left',
-			is_string
-		)
-	) {
-		throw new Error('UnrealEngineString does not have left field!');
 	}
 
 	return maybe;
@@ -320,318 +293,161 @@ export class UnrealEngineString {
 		};
 	}
 
-	static TypesGenerators() {
-		return [
-			new TypesGenerationFromSchema<UnrealEngineString_parent_type>(
-				{
-					definitions:
-						UnrealEngineString_schema_definitions,
-					...UnrealEngineString_parent_schema,
-				},
-				(data, reference_name) => {
-					return ts.factory.createTypeAliasDeclaration(
-						[create_modifier('export')],
-						adjust_class_name(reference_name),
-						undefined,
-						UnrealEngineString.type_from_parent(data)
-					);
-				}
-			),
-		];
-	}
-
 	static CustomGenerators() {
-		return [
-			{
-				file: 'utils/validators.ts',
-				node: createClass(
-					'UnrealEngineString',
+		const UnrealEngineString_class = createClass(
+			'UnrealEngineString',
+			[
+				ts.factory.createPropertyDeclaration(
+					[create_modifier('readonly')],
+					'left',
+					undefined,
+					ts.factory.createTypeReferenceNode('left'),
+					undefined
+				),
+				ts.factory.createPropertyDeclaration(
+					[create_modifier('readonly')],
+					'right',
+					undefined,
+					ts.factory.createTypeReferenceNode('right'),
+					undefined
+				),
+				create_method_without_type_parameters(
+					'constructor',
 					[
-						ts.factory.createPropertyDeclaration(
-							[create_modifier('readonly')],
-							'prefix',
-							undefined,
-							type_reference_node('prefix'),
-							undefined
+						createParameter(
+							'left',
+							ts.factory.createTypeReferenceNode('left')
 						),
-						ts.factory.createPropertyDeclaration(
-							[create_modifier('readonly')],
+						createParameter(
+							'right',
+							ts.factory.createTypeReferenceNode('right')
+						),
+					],
+					[
+						create_this_assignment('left', 'left'),
+						create_this_assignment('right', 'right'),
+					],
+					['protected']
+				),
+				create_method_with_type_parameters(
+					'fromString',
+					[
+						ts.factory.createTypeParameterDeclaration(
+							undefined,
+							'left',
+							create_type('string'),
+							create_type('string'),
+						),
+						ts.factory.createTypeParameterDeclaration(
+							undefined,
+							'right',
+							create_type('string'),
+							create_type('string'),
+						),
+					],
+					[
+						createParameter(
 							'value',
-							undefined,
-							type_reference_node('value'),
-							undefined
+							create_type('string')
 						),
-						create_method_without_type_parameters(
-							'constructor',
-							[
-								createParameter(
-									'prefix',
-									type_reference_node(
-										'prefix'
-									)
+					],
+					[
+						create_const_statement(variable(
+							'result',
+							ts.factory.createCallExpression(
+								create_property_access(
+									ts.factory.createRegularExpressionLiteral(
+										UnrealEngineString_regex.toString()
+									),
+									'exec'
 								),
-								createParameter(
-									'value',
-									type_reference_node('value')
-								),
-							],
+								undefined,
+								[
+									ts.factory.createIdentifier('value'),
+								]
+							)
+						)),
+						create_throw_if(
+							'Error',
+							not(ts.factory.createIdentifier('result')),
 							[
-								create_this_assignment('prefix', 'prefix'),
-								create_this_assignment('value', 'value'),
-							],
-							['protected']
+								template_expression_from_string(
+									'`Not an UnrealEngineString (${value})`'
+								),
+							]
 						),
-						create_method_with_type_parameters(
-							'fromString',
-							[
-								ts.factory.createTypeParameterDeclaration(
-									undefined,
-									'pattern',
-									create_type('string'),
-									create_type('string')
+						ts.factory.createReturnStatement(
+							ts.factory.createNewExpression(
+								ts.factory.createIdentifier(
+									'UnrealEngineString'
 								),
-								ts.factory.createTypeParameterDeclaration(
-									undefined,
-									'value',
-									create_type('string'),
-									create_type('string')
-								),
-							],
-							[
-								createParameter(
-									'unchecked_string',
-									create_type('string')
-								),
-								createParameter(
-									'prefix_check',
-									create_union(
-										create_type('string'),
-										create_type('undefined')
+								[
+									ts.factory.createTypeReferenceNode('left'),
+									ts.factory.createTypeReferenceNode(
+										'right'
 									),
-									ts.factory.createIdentifier('undefined')
-								),
-								createParameter(
-									'pattern',
-									type_reference_node(
-										'pattern'
-									)
-								),
-								createParameter(
-									ts.factory.createObjectBindingPattern([
-										ts.factory.createBindingElement(
-											undefined,
-											undefined,
-											'not_an_UnrealEngineString_string',
-											template_expression_from_string(
-												`\`UnrealEngineString value expected, "\${
-													unchecked_string
-												}" found\``,
-											)
-										),
-										ts.factory.createBindingElement(
-											undefined,
-											undefined,
-											'prefix_check_failed',
-											template_expression_from_string(
-												`\`UnrealEngineString prefix expected to start with \${
-													prefix_check
-												}, not found on "\${
-													unchecked_string
-												}"\``,
-											)
-										),
-										ts.factory.createBindingElement(
-											undefined,
-											undefined,
-											'value_check_failed',
-											template_expression_from_string(
-												`\`UnrealEngineString suffix expected to match \${
-													pattern
-												}, not found on "\${
-													unchecked_string
-												}"\``
-											)
-										),
-									]),
-									ts.factory.createTypeLiteralNode(
-										[
-											'not_an_UnrealEngineString_string',
-											'prefix_check_failed',
-											'value_check_failed',
-										].map((object_key) => {
-											return createPropertySignature(
-												object_key,
-												create_type('string')
-											);
-										})
-									)
-								),
-							],
-							[
-								create_const_statement(variable(
-									'result',
-									ts.factory.createCallExpression(
-										create_property_access(
-											create_new_RegExp(
-												UnrealEngineString_regex
-											),
-											'exec'
-										),
-										undefined,
-										[
-											ts.factory.createIdentifier(
-												'unchecked_string'
-											),
-										]
-									)
-								)),
-								create_throw_if(
-									'Error',
-									not(
-										ts.factory.createIdentifier('result')
-									),
-									[
-										ts.factory.createIdentifier(
-											'not_an_UnrealEngineString_string'
-										),
-									]
-								),
-								create_throw_if(
-									'Error',
-									ts.factory.createLogicalAnd(
-										ts.factory.createStrictInequality(
-											ts.factory.createIdentifier(
-												'undefined'
-											),
-											ts.factory.createIdentifier(
-												'prefix_check'
-											)
-										),
-										not(ts.factory.createCallExpression(
-											create_property_access(
-												create_index_access(
-													'result',
-													1
-												),
-												'startsWith'
-											),
-											undefined,
-											[
-												ts.factory.createIdentifier(
-													'prefix_check'
-												),
-											]
-										))
-									),
-									[
-										ts.factory.createIdentifier(
-											'prefix_check_failed'
-										),
-									]
-								),
-								create_throw_if(
-									'Error',
-									not(
-										ts.factory.createCallExpression(
-											create_property_access(
-												create_new_RegExp(
-													'pattern'
-												),
-												'test'
-											),
-											undefined,
-											[create_index_access('result', 2)]
+								],
+								[
+									ts.factory.createAsExpression(
+										create_index_access('result', 1),
+										ts.factory.createTypeReferenceNode(
+											'left'
 										)
 									),
-									[
-										ts.factory.createIdentifier(
-											'value_check_failed'
-										),
-									]
-								),
-								ts.factory.createReturnStatement(
-									ts.factory.createNewExpression(
-										ts.factory.createIdentifier(
-											'UnrealEngineString'
-										),
-										conditional_type_arguments(),
-										[
-											create_index_access('result', 1),
-											ts.factory.createAsExpression(
+									ts.factory.createAsExpression(
+										parenthesize(
+											ts.factory.createLogicalOr(
 												create_index_access(
 													'result',
 													2
 												),
-												type_reference_node(
-													'StringPassedRegExp',
-													type_reference_node(
-														'pattern'
-													),
-													type_reference_node(
-														'value'
-													),
-												)
-											),
-										]
-									)
-								),
-							],
-							['static'],
-							conditional_UnrealEngineString_type_reference()
-						),
-					],
-					{
-						modifiers: ['export'],
-					},
-					[
-						ts.factory.createTypeParameterDeclaration(
-							undefined,
-							'prefix',
-							create_union(
-								create_type('string'),
-								type_reference_node(
-									'string_starts_with',
-									create_type('string')
-								)
-							),
-							create_literal(
-								UnrealEngineString_left_default[0]
+												create_index_access(
+													'result',
+													3
+												),
+											)
+										),
+										ts.factory.createTypeReferenceNode(
+											'right'
+										),
+									),
+								]
 							)
 						),
-						ts.factory.createTypeParameterDeclaration(
-							undefined,
-							'value',
-							create_union(
-								create_type('string'),
-								type_reference_node(
-									'string_starts_with',
-									create_type('string')
-								)
-							),
-							create_type('string')
-						),
-					]
+					],
+					['static'],
+					ts.factory.createTypeReferenceNode(
+						'UnrealEngineString',
+						[
+							ts.factory.createTypeReferenceNode('left'),
+							ts.factory.createTypeReferenceNode('right'),
+						]
+					)
 				),
+			],
+			{
+				modifiers: ['export'],
 			},
-		];
-	}
-
-	static TypeNodeGeneration() {
+			[
+				ts.factory.createTypeParameterDeclaration(
+					undefined,
+					'left',
+					create_type('string'),
+					create_type('string'),
+				),
+				ts.factory.createTypeParameterDeclaration(
+					undefined,
+					'right',
+					create_type('string'),
+					create_type('string'),
+				),
+			]
+		);
 		return [
-			new TypeNodeGeneration<UnrealEngineString_parent_type>(
-				{
-					definitions:
-						UnrealEngineString_schema_definitions,
-					...UnrealEngineString_parent_schema,
-				},
-				(data_from_schema) => {
-					return new TypeNodeGenerationResult(() => {
-						return UnrealEngineString.type_from_parent(
-							data_from_schema
-						);
-					});
-				}
-			),
+			{
+				file: 'utils/validators.ts',
+				node: UnrealEngineString_class,
+			},
 		];
 	}
 
@@ -642,12 +458,6 @@ export class UnrealEngineString {
 			check_UnrealEngineString_parent(maybe).UnrealEngineString
 		);
 	}
-}
-
-export function adjust_unrealengine_prefix(prefix: string): string {
-	return adjust_class_name(
-		prefix.replace(/^\/Script\//, '').replace(/\.Class$/, '')
-	);
 }
 
 export function adjust_unrealengine_value(value: string): string {
@@ -710,7 +520,7 @@ export function UnrealEngineString_reference_type(
 
 			if (right_options.length >= 1) {
 				right_value = type_reference_node(
-					'string_starts_with',
+					'StringStartsWith',
 					(
 						1 === right_options.length
 							? create_literal(right_options[0])
@@ -740,37 +550,6 @@ export function UnrealEngineString_reference_type(
 				? [left_value, right_value]
 				: [left_value]
 			: undefined
-	);
-}
-
-function conditional_type_arguments(
-) : [ConditionalTypeNode, TypeReferenceNode] {
-	return [
-		ts.factory.createConditionalTypeNode(
-			ts.factory.createTypeQueryNode(
-				ts.factory.createIdentifier('prefix_check')
-			),
-			create_type('string'),
-			type_reference_node(
-				'string_starts_with',
-				ts.factory.createTypeQueryNode(
-					ts.factory.createIdentifier('prefix_check')
-				),
-			),
-			create_type('string')
-		),
-		type_reference_node(
-			'StringPassedRegExp',
-			type_reference_node('pattern'),
-			type_reference_node('value'),
-		),
-	];
-}
-
-export function conditional_UnrealEngineString_type_reference(
-): ts.TypeReferenceNode {
-	return flexibly_create_UnrealEngineString_reference_type(
-		conditional_type_arguments()
 	);
 }
 

@@ -1,44 +1,58 @@
-DOCKER_IMAGE ?= node:21-alpine
+DOCKER_COMPOSER_PREFIX = @USER=$(shell id -u):$(shell id -g) docker compose
 
-DOCKER_PREFIX_NO_LOADER = @docker run --rm -it \
-	-u $(shell id -u):$(shell id -g) \
-	-v $(shell pwd)/:/app \
-	-v ${HOME}/.npm/:/.npm/ \
-	-w /app/
+up:
+	${DOCKER_COMPOSER_PREFIX} up -d
 
-DOCKER_PREFIX = ${DOCKER_PREFIX_NO_LOADER} -e NODE_OPTIONS='--enable-source-maps --no-warnings=ExperimentalWarning --loader ts-node/esm'
+down:
+	${DOCKER_COMPOSER_PREFIX} down
+
+logs:
+	${DOCKER_COMPOSER_PREFIX} logs -f
 
 shell:
-	${DOCKER_PREFIX} --entrypoint sh ${DOCKER_IMAGE}
+	${DOCKER_COMPOSER_PREFIX} exec ts-node sh
 
 install:
-	${DOCKER_PREFIX_NO_LOADER} ${DOCKER_IMAGE} npm install
+	${DOCKER_COMPOSER_PREFIX} exec ts-node npm install
 
-validate: lint-lib build-lib
-#	${DOCKER_PREFIX_NO_LOADER} ${DOCKER_IMAGE} ./node_modules/.bin/tsc --project ./tsconfig.schema-exports.json
-	${DOCKER_PREFIX} ${DOCKER_IMAGE} npm run validate
+validate: lint-lib build-lib validate--skip-checks
+
+validate--skip-checks:
+	${DOCKER_COMPOSER_PREFIX} exec ts-node npm run validate
 
 build-lib:
-	${DOCKER_PREFIX_NO_LOADER} ${DOCKER_IMAGE} ./node_modules/.bin/tsc --project ./tsconfig.lib.json
+	@echo 'building from ./tsconfig.lib.json'
+	${DOCKER_COMPOSER_PREFIX} exec node ./node_modules/.bin/tsc --project ./tsconfig.lib.json
 
-generate: lint-lib build-lib
-	${DOCKER_PREFIX} ${DOCKER_IMAGE} npm run generate
-	${DOCKER_PREFIX_NO_LOADER} ${DOCKER_IMAGE} ./node_modules/.bin/tsc --project ./tsconfig.generated-types-check.json
+discover: lint-lib discover--skip-checks discover--post-build
+
+discover--skip-checks: build-lib
+	@echo 'running ./discover-types.ts'
+	${DOCKER_COMPOSER_PREFIX} exec ts-node ./node_modules/.bin/ts-node ./discover-types.ts
+
+discover--post-build:
+	${DOCKER_COMPOSER_PREFIX} exec node ./node_modules/.bin/tsc --project ./tsconfig.generated-types-check.json
 
 lint-lib--tsc:
-	${DOCKER_PREFIX_NO_LOADER} ${DOCKER_IMAGE} ./node_modules/.bin/tsc --project ./tsconfig.lib-check.json
+	@echo 'running syntax check'
+	${DOCKER_COMPOSER_PREFIX} exec node ./node_modules/.bin/tsc --project ./tsconfig.lib-check.json
 
 lint-lib: lint-lib--tsc lint--eslint
 
 lint--prettier:
-	${DOCKER_PREFIX} ${DOCKER_IMAGE} ./node_modules/.bin/prettier . --check
+	@echo 'running prettier'
+	${DOCKER_COMPOSER_PREFIX} exec ts-node ./node_modules/.bin/prettier . --check
 
 lint--eslint:
-	${DOCKER_PREFIX} ${DOCKER_IMAGE} ./node_modules/.bin/eslint --cache './*.ts' lib --fix-dry-run
-	${DOCKER_PREFIX} ${DOCKER_IMAGE} ./node_modules/.bin/eslint --cache './*.ts' lib
+	@echo 'checking eslint for fixable issues'
+	${DOCKER_COMPOSER_PREFIX} exec ts-node ./node_modules/.bin/eslint --cache './*.ts' lib --fix-dry-run
+	@echo 'checking eslint for all issues'
+	${DOCKER_COMPOSER_PREFIX} exec ts-node ./node_modules/.bin/eslint --cache './*.ts' lib
 
 lint: lint--prettier lint-lib
 
 lint-fix:
-	${DOCKER_PREFIX} ${DOCKER_IMAGE} ./node_modules/.bin/prettier . --write
-	${DOCKER_PREFIX} ${DOCKER_IMAGE} ./node_modules/.bin/eslint --cache './*.ts' lib --fix
+	@echo 'fixing prettier issues'
+	${DOCKER_COMPOSER_PREFIX} exec ts-node ./node_modules/.bin/prettier . --write
+	@echo 'fixing eslint issues'
+	${DOCKER_COMPOSER_PREFIX} exec ts-node ./node_modules/.bin/eslint --cache './*.ts' lib --fix

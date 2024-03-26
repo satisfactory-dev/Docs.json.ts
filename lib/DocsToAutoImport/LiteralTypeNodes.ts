@@ -3,11 +3,11 @@ import {
 } from './NodeExtraction';
 import ts, {
 	BooleanLiteral,
+	EntityName,
 	LiteralExpression,
 	LiteralTypeNode,
 	NullLiteral,
 	PrefixUnaryExpression,
-	EntityName,
 } from 'typescript';
 import {
 	UnexpectedlyUnknown,

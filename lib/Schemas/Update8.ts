@@ -1,10 +1,3 @@
-import schema from '../../schema/update8.schema.json' assert {type: 'json'};
-import {
-	Update8TypeNodeGeneration,
-} from './Update8/TypeNodeGeneration';
-import {
-	UnexpectedlyUnknown,
-} from '../SchemaBasedResultsMatching/TypeNodeGeneration';
 import {
 	local_ref,
 } from '../StringStartsWith';
@@ -39,43 +32,3 @@ export type NativeClass = {
 			};
 	};
 };
-
-export type definition_key = keyof typeof schema.definitions;
-
-export function get_dependency_tree(ref: definition_key): definition_key[] {
-	const ancestry: definition_key[] = [ref];
-
-	let checking = schema.definitions[ref];
-
-	while (
-		'$ref' in checking
-		&& checking['$ref'].startsWith('#/definitions/')
-	) {
-		ancestry.push(check_ref(checking['$ref'].substring(14)));
-
-		const next_reference_name: string = checking['$ref'].substring(14);
-
-		if (next_reference_name in schema.definitions) {
-			checking = schema.definitions[check_ref(next_reference_name)];
-		}
-	}
-
-	return ancestry;
-}
-
-export function is_ref(ref: string): ref is definition_key {
-	return ref in schema.definitions;
-}
-
-export function check_ref(ref: string): definition_key {
-	if (!is_ref(ref)) {
-		throw new UnexpectedlyUnknown(
-			{ref},
-			`not in the update 8 schema!`
-		);
-	}
-
-	return ref;
-}
-
-export {schema, Update8TypeNodeGeneration};
