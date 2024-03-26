@@ -95,7 +95,7 @@ export class DataTransformerDiscovery
 				}
 			));
 		} else if (object_has_property(value, 'oneOf')) {
-			throw new NoMatchError(value, 'whut');
+			throw new NoMatchError(value, 'Unsupported oneOf found!');
 		}
 
 		if (value_is_non_array_object(value)) {

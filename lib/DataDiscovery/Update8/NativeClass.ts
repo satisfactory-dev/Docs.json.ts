@@ -31,9 +31,6 @@ import {
 import {
 	NoMatchError,
 } from '../../DataTransformerDiscovery/NoMatchError';
-import {
-	prefixItems,
-} from '../JsonSchema/Array/prefixItems';
 
 /**
  * @todo get auto-conversion of Classes property to behave as expected
@@ -46,7 +43,6 @@ export class NativeClass extends Generator<
 	private readonly ajv:Ajv;
 	private readonly discovery:DataTransformerDiscovery;
 	private readonly items:items;
-	private readonly prefixItems:prefixItems;
 	private readonly data_transformer:DataTransformer;
 	constructor(
 		check:ValidateFunction<DocsDataItem>,
@@ -58,7 +54,6 @@ export class NativeClass extends Generator<
 		this.ajv = ajv;
 		this.discovery = discovery;
 		this.items = new items(ajv, data_transformer);
-		this.prefixItems = new prefixItems(ajv, data_transformer);
 		this.data_transformer = data_transformer;
 	}
 
