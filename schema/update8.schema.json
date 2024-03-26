@@ -4555,23 +4555,7 @@
 		"FGBuildableManufacturer": {
 			"type": "object",
 			"$ref": "#/definitions/FGBuildableManufacturer--base",
-			"unevaluatedProperties": false,
-			"not": {
-				"oneOf": [
-					{
-						"$ref": "#/definitions/FGBuildableManufacturer--packager"
-					},
-					{
-						"$ref": "#/definitions/FGBuildableManufacturer--blender"
-					},
-					{
-						"$ref": "#/definitions/FGBuildableManufacturer--smelter"
-					},
-					{
-						"$ref": "#/definitions/FGBuildableManufacturer--constructor"
-					}
-				]
-			}
+			"unevaluatedProperties": false
 		},
 		"FGBuildableManufacturer--packager": {
 			"type": "object",
