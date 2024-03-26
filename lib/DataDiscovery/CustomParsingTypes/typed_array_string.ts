@@ -15,6 +15,9 @@ import {
 import {
 	NoMatchError,
 } from '../../DataTransformerDiscovery/NoMatchError';
+import {
+	UnrealEngineString_schema_definitions,
+} from '../../CustomParsingTypes/UnrealEngineString';
 
 type schema_type = {
 	type: 'string',
@@ -34,6 +37,9 @@ export class typed_array_string extends SchemaCompilingGenerator<
 			type: 'object',
 			required: ['type', 'minLength', 'typed_array_string'],
 			additionalProperties: false,
+			definitions: {
+				...UnrealEngineString_schema_definitions,
+			},
 			properties: {
 				type: {type: 'string', const: 'string'},
 				minLength: {type: 'number', const: 1},

@@ -5,6 +5,10 @@ import {
 	DataTransformer,
 } from '../../../DataTransformer';
 import Ajv from 'ajv/dist/2020';
+import {
+	UnrealEngineString_parent_schema,
+	UnrealEngineString_schema_definitions,
+} from '../../../CustomParsingTypes/UnrealEngineString';
 
 export type items_type =
 	| (
@@ -57,6 +61,7 @@ export const schema = {
 						},
 					},
 				},
+				UnrealEngineString_parent_schema,
 			],
 		},
 		minItems: {type: 'number', minimum: 0},
@@ -71,7 +76,12 @@ export class items extends SchemaCompilingGenerator<
 > {
 	private readonly discovery:DataTransformer;
 	constructor(ajv: Ajv, discovery: DataTransformer) {
-		super(ajv, schema);
+		super(ajv, {
+			definitions: {
+				...UnrealEngineString_schema_definitions,
+			},
+			...schema,
+		});
 		this.discovery = discovery;
 	}
 

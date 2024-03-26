@@ -64,25 +64,6 @@ export class DataTransformerDiscovery
 			if (!value_is_non_array_object(result)) {
 				console.error(value, result);
 				throw new Error('value resolved to non-object value!');
-			} else if (
-				!object_has_property(
-					result,
-					'properties',
-					value_is_non_array_object
-				)
-				&& !object_has_property(
-					result,
-					'const',
-					is_string
-				)
-			) {
-				throw new NoMatchError(
-					{
-						value,
-						result,
-					},
-					'Properties not found on items!'
-				);
 			}
 
 			value.items = result as items_type;
