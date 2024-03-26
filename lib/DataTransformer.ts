@@ -219,7 +219,13 @@ export class DataTransformer
 			this.discovery.types_discovery
 		);
 
-		for (const entry of await this.docs.get()) {
+		const entries = await this.docs.get();
+
+		let progress = 0;
+
+		process.stdout.write(`${progress} of ${entries.length}`);
+
+		for (const entry of entries) {
 			if (!is_NativeClass(entry)) {
 				console.error(entry);
 				throw new Error('Entry not a general NativeClass!');
@@ -245,7 +251,10 @@ export class DataTransformer
 					)
 				)),
 			};
+
+			process.stdout.write(`\r${++progress} of ${entries.length}`);
 		}
+		process.stdout.write('\n');
 	}
 
 	static object_literal(
