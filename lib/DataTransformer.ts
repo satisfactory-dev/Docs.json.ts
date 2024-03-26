@@ -82,7 +82,9 @@ import {
 import {
 	typed_array_string,
 } from './DataDiscovery/CustomParsingTypes/typed_array_string';
-import {typed_object_string_dictionary} from './DataDiscovery/CustomParsingTypes/typed_object_string_dictionary';
+import {
+	typed_object_string_dictionary,
+} from './DataDiscovery/CustomParsingTypes/typed_object_string_dictionary';
 
 export class DataTransformer
 {
