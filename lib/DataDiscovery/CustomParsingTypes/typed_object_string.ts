@@ -67,6 +67,33 @@ export class typed_object_string extends SchemaCompilingGenerator<
 								pattern_schema,
 								enum_schema,
 								UnrealEngineString_parent_schema,
+								{
+									type: 'object',
+									required: [
+										'type',
+										'minLength',
+										'typed_object_string',
+									],
+									additionalProperties: false,
+									properties: {
+										type: {
+											type: 'string',
+											const: 'string',
+										},
+										minLength: {type: 'number', const: 1},
+										typed_object_string: {
+											type: 'object',
+											additionalProperties: false,
+											patternProperties: {
+												[property_regex]: {
+													oneOf: [
+														pattern_schema,
+													],
+												},
+											},
+										},
+									},
+								},
 							],
 						},
 					},
