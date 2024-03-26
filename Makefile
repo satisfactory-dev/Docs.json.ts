@@ -24,13 +24,13 @@ build-lib:
 	@echo 'building from ./tsconfig.lib.json'
 	${DOCKER_COMPOSER_PREFIX} exec node ./node_modules/.bin/tsc --project ./tsconfig.lib.json
 
-discover: lint-lib discover--skip-checks discover--post-build
+generate: lint-lib generate--skip-checks generate--post-build
 
-discover--skip-checks: build-lib
+generate--skip-checks: build-lib
 	@echo 'running ./discover-types.ts'
 	${DOCKER_COMPOSER_PREFIX} exec ts-node ./node_modules/.bin/ts-node ./discover-types.ts
 
-discover--post-build:
+generate--post-build:
 	${DOCKER_COMPOSER_PREFIX} exec node ./node_modules/.bin/tsc --project ./tsconfig.generated-types-check.json
 
 lint-lib--tsc:
