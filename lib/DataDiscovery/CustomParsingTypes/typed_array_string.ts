@@ -18,6 +18,9 @@ import {
 import {
 	UnrealEngineString_schema_definitions,
 } from '../../CustomParsingTypes/UnrealEngineString';
+import {
+	writeFileSync,
+} from 'node:fs';
 
 type schema_type = {
 	type: 'string',
@@ -46,6 +49,20 @@ export class typed_array_string extends SchemaCompilingGenerator<
 				typed_array_string: items_schema,
 			},
 		})
+
+		writeFileSync('/app/typed_array_string-schema.json', JSON.stringify({
+			type: 'object',
+			required: ['type', 'minLength', 'typed_array_string'],
+			additionalProperties: false,
+			definitions: {
+				...UnrealEngineString_schema_definitions,
+			},
+			properties: {
+				type: {type: 'string', const: 'string'},
+				minLength: {type: 'number', const: 1},
+				typed_array_string: items_schema,
+			},
+		}, null, '\t') + '\n');
 
 		this.discovery = discovery;
 	}

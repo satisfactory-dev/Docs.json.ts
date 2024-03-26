@@ -9,6 +9,9 @@ import {
 	UnrealEngineString_parent_schema,
 	UnrealEngineString_schema_definitions,
 } from '../../../CustomParsingTypes/UnrealEngineString';
+import {
+	schema as enum_schema,
+} from '../String/Enum';
 
 export type items_type =
 	| (
@@ -40,6 +43,45 @@ const const_schema = {
 	},
 };
 
+const schema_items = [
+
+	const_schema,
+	item_schema,
+	enum_schema,
+	{
+		type: 'object',
+		required: ['oneOf'],
+		additionalProperties: false,
+		properties: {
+			oneOf: {
+				type: 'array',
+				items: {
+					anyOf: [
+						item_schema,
+						UnrealEngineString_parent_schema,
+						const_schema,
+					],
+				},
+				minItems: 1,
+			},
+		},
+	},
+	UnrealEngineString_parent_schema,
+	{
+		type: 'object',
+		required: ['type', 'minLength', 'typed_object_string'],
+		additionalProperties: false,
+		properties: {
+			type: {type: 'string', const: 'string'},
+			minLength: {type: 'number', const: 1},
+			typed_object_string: {
+				type: 'object',
+				minProperties: 1,
+			},
+		},
+	},
+];
+
 export const schema = {
 	type: 'object',
 	required: ['type', 'items'],
@@ -48,8 +90,7 @@ export const schema = {
 		type: {type: 'string', const: 'array'},
 		items: {
 			anyOf: [
-				const_schema,
-				item_schema,
+				...schema_items,
 				{
 					type: 'object',
 					required: ['oneOf'],
@@ -57,18 +98,13 @@ export const schema = {
 					properties: {
 						oneOf: {
 							type: 'array',
-							items: {
-								anyOf: [
-									item_schema,
-									UnrealEngineString_parent_schema,
-									const_schema,
-								],
-							},
 							minItems: 1,
+							items: {
+								anyOf: schema_items,
+							},
 						},
 					},
 				},
-				UnrealEngineString_parent_schema,
 			],
 		},
 		minItems: {type: 'number', minimum: 0},

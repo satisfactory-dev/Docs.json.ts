@@ -21,6 +21,16 @@ import {
 import {
 	value_is_non_array_object,
 } from '../../CustomParsingTypes/CustomPairingTypes';
+import {
+	writeFileSync,
+} from 'node:fs';
+import {
+	UnrealEngineString_parent_schema,
+	UnrealEngineString_schema_definitions,
+} from '../../CustomParsingTypes/UnrealEngineString';
+import {
+	schema as enum_schema,
+} from '../JsonSchema/String/Enum';
 
 type schema_type = {
 	type: 'string',
@@ -44,6 +54,7 @@ export class typed_object_string extends SchemaCompilingGenerator<
 			type: 'object',
 			required: ['type', 'minLength', 'typed_object_string'],
 			additionalProperties: false,
+			definitions: UnrealEngineString_schema_definitions,
 			properties: {
 				type: {type: 'string', const: 'string'},
 				minLength: {type: 'number', const: 1},
@@ -54,12 +65,38 @@ export class typed_object_string extends SchemaCompilingGenerator<
 						[property_regex]: {
 							oneOf: [
 								pattern_schema,
+								enum_schema,
+								UnrealEngineString_parent_schema,
 							],
 						},
 					},
 				},
 			},
 		});
+
+		writeFileSync('/app/typed_object_string-schema.json', JSON.stringify({
+			type: 'object',
+			required: ['type', 'minLength', 'typed_object_string'],
+			additionalProperties: false,
+			definitions: UnrealEngineString_schema_definitions,
+			properties: {
+				type: {type: 'string', const: 'string'},
+				minLength: {type: 'number', const: 1},
+				typed_object_string: {
+					type: 'object',
+					additionalProperties: false,
+					patternProperties: {
+						[property_regex]: {
+							oneOf: [
+								pattern_schema,
+								enum_schema,
+								UnrealEngineString_parent_schema,
+							],
+						},
+					},
+				},
+			},
+		}, null, '\t') + '\n');
 
 		this.discovery = discovery;
 	}
