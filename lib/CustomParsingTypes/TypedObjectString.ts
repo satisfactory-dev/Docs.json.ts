@@ -61,7 +61,9 @@ import {
 	typed_string_pattern_schema,
 	typed_string_pattern_value_regex,
 } from './TypedStringPattern';
-import {writeFileSync} from 'node:fs';
+import {
+	writeFileSync,
+} from 'node:fs';
 
 const already_configured = new WeakSet<Ajv>();
 
