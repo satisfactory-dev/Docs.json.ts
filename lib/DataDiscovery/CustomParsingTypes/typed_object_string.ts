@@ -42,6 +42,71 @@ type schema_type = {
 	},
 };
 
+const schmea_sub_types = [
+	pattern_schema,
+	enum_schema,
+	UnrealEngineString_parent_schema,
+];
+
+const schema = {
+	type: 'object',
+	required: ['type', 'minLength', 'typed_object_string'],
+	additionalProperties: false,
+	definitions: UnrealEngineString_schema_definitions,
+	properties: {
+		type: {type: 'string', const: 'string'},
+		minLength: {type: 'number', const: 1},
+		typed_object_string: {
+			type: 'object',
+			additionalProperties: false,
+			patternProperties: {
+				[property_regex]: {
+					oneOf: [
+						...schmea_sub_types,
+						{
+							type: 'object',
+							required: [
+								'type',
+								'minLength',
+								'typed_object_string',
+							],
+							additionalProperties: false,
+							properties: {
+								type: {
+									type: 'string',
+									const: 'string',
+								},
+								minLength: {type: 'number', const: 1},
+								typed_object_string: {
+									type: 'object',
+									additionalProperties: false,
+									patternProperties: {
+										[property_regex]: {
+											oneOf: schmea_sub_types,
+										},
+									},
+								},
+							},
+						},
+						{
+							type: 'object',
+							required: ['oneOf'],
+							additionalProperties: false,
+							properties: {
+								oneOf: {
+									type: 'array',
+									minItems: 1,
+									items: {type: 'object'},
+								},
+							},
+						},
+					],
+				},
+			},
+		},
+	},
+};
+
 export class typed_object_string extends SchemaCompilingGenerator<
 	schema_type,
 	string|{[key: string]: unknown},
@@ -50,80 +115,12 @@ export class typed_object_string extends SchemaCompilingGenerator<
 	private readonly discovery:DataTransformer;
 
 	constructor(ajv: Ajv, discovery:DataTransformer) {
-		super(ajv, {
-			type: 'object',
-			required: ['type', 'minLength', 'typed_object_string'],
-			additionalProperties: false,
-			definitions: UnrealEngineString_schema_definitions,
-			properties: {
-				type: {type: 'string', const: 'string'},
-				minLength: {type: 'number', const: 1},
-				typed_object_string: {
-					type: 'object',
-					additionalProperties: false,
-					patternProperties: {
-						[property_regex]: {
-							oneOf: [
-								pattern_schema,
-								enum_schema,
-								UnrealEngineString_parent_schema,
-								{
-									type: 'object',
-									required: [
-										'type',
-										'minLength',
-										'typed_object_string',
-									],
-									additionalProperties: false,
-									properties: {
-										type: {
-											type: 'string',
-											const: 'string',
-										},
-										minLength: {type: 'number', const: 1},
-										typed_object_string: {
-											type: 'object',
-											additionalProperties: false,
-											patternProperties: {
-												[property_regex]: {
-													oneOf: [
-														pattern_schema,
-													],
-												},
-											},
-										},
-									},
-								},
-							],
-						},
-					},
-				},
-			},
-		});
+		super(ajv, schema);
 
-		writeFileSync('/app/typed_object_string-schema.json', JSON.stringify({
-			type: 'object',
-			required: ['type', 'minLength', 'typed_object_string'],
-			additionalProperties: false,
-			definitions: UnrealEngineString_schema_definitions,
-			properties: {
-				type: {type: 'string', const: 'string'},
-				minLength: {type: 'number', const: 1},
-				typed_object_string: {
-					type: 'object',
-					additionalProperties: false,
-					patternProperties: {
-						[property_regex]: {
-							oneOf: [
-								pattern_schema,
-								enum_schema,
-								UnrealEngineString_parent_schema,
-							],
-						},
-					},
-				},
-			},
-		}, null, '\t') + '\n');
+		writeFileSync(
+			'/app/typed_object_string-schema.json',
+			`${JSON.stringify(schema, null, '\t')}\n`
+		);
 
 		this.discovery = discovery;
 	}

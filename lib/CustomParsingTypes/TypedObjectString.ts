@@ -61,6 +61,7 @@ import {
 	typed_string_pattern_schema,
 	typed_string_pattern_value_regex,
 } from './TypedStringPattern';
+import {writeFileSync} from 'node:fs';
 
 const already_configured = new WeakSet<Ajv>();
 
@@ -324,6 +325,7 @@ export const typed_object_string_schema = {
 										oneOf: [
 											$ref_schema,
 											typed_string_pattern_schema,
+											typed_string_enum_schema,
 										],
 									}},
 								},
@@ -425,6 +427,17 @@ export class TypedObjectString {
 			},
 			macro: this.ajv_macro_generator(false),
 		});
+
+		writeFileSync(
+			'/app/typed-object-string.meta.schema.json',
+			`${JSON.stringify({
+				...typed_object_string_schema,
+				...{
+					definitions:
+					UnrealEngineString_schema_definitions,
+				},
+			}, null, '\t')}\n`
+		);
 	}
 
 	private static $ref_to_regex(
@@ -608,6 +621,8 @@ export class TypedObjectString {
 			value_regex = this.property_to_regex(value.typed_object_string);
 		} else if (typed_string_enum.is_supported_schema(value)) {
 			value_regex = typed_string_enum.value_regex(value);
+		} else if (typed_string_pattern_is_supported_schema(value)) {
+			value_regex = typed_string_pattern_value_regex(value);
 		} else if (undefined === $ref) {
 			throw new FragileTypeSafetyError(
 				value,
