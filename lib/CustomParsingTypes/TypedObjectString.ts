@@ -320,15 +320,12 @@ export const typed_object_string_schema = {
 								typed_object_string: {
 									type: 'object',
 									additionalProperties: false,
-									patternProperties: {
-										[property_regex]:
-											{
-												oneOf: [
-													$ref_schema,
-													typed_string_pattern_schema,
-												],
-											},
-									},
+									patternProperties: {[property_regex]: {
+										oneOf: [
+											$ref_schema,
+											typed_string_pattern_schema,
+										],
+									}},
 								},
 							},
 						},
@@ -1024,10 +1021,10 @@ export class TypedObjectString {
 						const [sub_property, sub_value] = sub_entry;
 
 						try {
-						return this.$ref_to_regex(
-							sub_property,
-							sub_value
-						);
+							return this.$ref_to_regex(
+								sub_property,
+								sub_value
+							);
 						} catch (err) {
 							if (err instanceof UnexpectedlyUnknown) {
 								throw err;
@@ -1036,7 +1033,9 @@ export class TypedObjectString {
 								entry,
 								sub_entry,
 								err,
-								combination: this.is_combination_dictionary(sub_value),
+								combination: this.is_combination_dictionary(
+									sub_value
+								),
 							});
 						}
 					})

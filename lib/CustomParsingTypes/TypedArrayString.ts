@@ -332,7 +332,7 @@ export class TypedArrayString {
 
 		throw new UnexpectedlyUnknown(
 			{
-			item,
+				item,
 			},
 			'Currently unsupported in TypedArrayString.item_to_regex'
 		);

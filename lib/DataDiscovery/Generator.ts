@@ -8,7 +8,9 @@ import {
 import {
 	Expression,
 } from 'typescript';
-import {writeFileSync} from 'node:fs';
+import {
+	writeFileSync,
+} from 'node:fs';
 
 export type AnyGenerator = Generator<unknown, unknown, unknown>;
 

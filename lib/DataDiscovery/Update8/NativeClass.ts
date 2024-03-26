@@ -252,22 +252,22 @@ export class NativeClass extends Generator<
 			this.ajv,
 			Classes_schema,
 			Object.fromEntries(await Promise.all(Object.entries(
-			Classes_schema.items.properties
-		).map(
-			async (
-				entry
-			) : Promise<[string, (raw_data:unknown) => unknown]> => {
-				const [property, value] = entry;
+				Classes_schema.items.properties
+			).map(
+				async (
+					entry
+				) : Promise<[string, (raw_data:unknown) => unknown]> => {
+					const [property, value] = entry;
 
-				return [
-					property,
-					await this.discovery.find_generator(value).generate(
-						Classes_schema.items.properties[
-							property
-						]
-					),
-				];
-			}
+					return [
+						property,
+						await this.discovery.find_generator(value).generate(
+							Classes_schema.items.properties[
+								property
+							]
+						),
+					];
+				}
 			))),
 			this.data_transformer
 		);

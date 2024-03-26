@@ -9,7 +9,9 @@ import {
 import {
 	NoMatchError,
 } from './lib/DataTransformerDiscovery/NoMatchError';
-import {writeFile} from 'node:fs/promises';
+import {
+	writeFile,
+} from 'node:fs/promises';
 
 const __dirname = import.meta.dirname;
 

@@ -9,7 +9,6 @@ import {
 	UnrealEngineString_parent_schema,
 	UnrealEngineString_schema_definitions,
 } from '../../../CustomParsingTypes/UnrealEngineString';
-import {writeFile} from 'node:fs/promises';
 
 export type items_type =
 	| (
