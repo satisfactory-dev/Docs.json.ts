@@ -27,6 +27,10 @@ import {
 import {
 	$ref_choices, $ref_schema, supported_$ref,
 } from './SupportedRefObject';
+import {
+	typed_string_pattern_is_supported_schema,
+	typed_string_pattern_schema, typed_string_pattern_value_regex,
+} from './TypedStringPattern';
 
 const already_configured = new WeakSet<Ajv>();
 
@@ -64,6 +68,26 @@ const typed_array_string_schema = {
 					additionalProperties: false,
 					properties: {
 						oneOf: typed_array_string_oneOf_schema,
+					},
+				},
+				{
+					type: 'object',
+					required: ['type', 'prefixItems'],
+					properties: {
+						type: {type: 'string', const: 'array'},
+						uniqueItems: {type: 'boolean'},
+						items: {type: 'boolean', const: false},
+						prefixItems: {
+							type: 'array',
+							minItems: 1,
+							items: {
+								anyOf: [
+									typed_string_pattern_schema,
+								],
+							},
+						},
+						minItems: {type: 'number', minimum: 0},
+						maxItems: {type: 'number', minimum: 1},
 					},
 				},
 			],
@@ -326,6 +350,8 @@ export class TypedArrayString {
 			).pattern;
 		} else if ('oneOf' in item) {
 			return `(?:${item.oneOf.map((e) => this.item_to_regex(e)).join('|')})`;
+		} else if (typed_string_pattern_is_supported_schema(item)) {
+			return typed_string_pattern_value_regex(item);
 		}
 
 		process.stdout.write(`${JSON.stringify(item, null, '\t')}\n`);

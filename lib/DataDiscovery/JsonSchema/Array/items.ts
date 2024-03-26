@@ -12,6 +12,9 @@ import {
 import {
 	schema as enum_schema,
 } from '../String/Enum';
+import {
+	schema as pattern_schema,
+} from '../String/Pattern';
 
 export type items_type =
 	| (
@@ -80,6 +83,7 @@ const schema_items = [
 			},
 		},
 	},
+	pattern_schema,
 ];
 
 export const schema = {
@@ -105,7 +109,33 @@ export const schema = {
 						},
 					},
 				},
+				{
+					type: 'object',
+					required: ['type', 'prefixItems'],
+					properties: {
+						type: {type: 'string', const: 'array'},
+						uniqueItems: {type: 'boolean'},
+						items: {type: 'boolean', const: false},
+						prefixItems: {
+							type: 'array',
+							minItems: 1,
+							items: {
+								anyOf: schema_items,
+							},
+						},
+						minItems: {type: 'number', minimum: 0},
+						maxItems: {type: 'number', minimum: 1},
+					},
+				},
 			],
+		},
+		uniqueItems: {type: 'boolean'},
+		prefixItems: {
+			type: 'array',
+			minItems: 1,
+			items: {
+				anyOf: schema_items,
+			},
 		},
 		minItems: {type: 'number', minimum: 0},
 		maxItems: {type: 'number', minimum: 1},
