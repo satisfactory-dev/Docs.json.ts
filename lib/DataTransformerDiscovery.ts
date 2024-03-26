@@ -24,6 +24,9 @@ import {
 import {
 	anyOf,
 } from './DataDiscovery/JsonSchema/anyOf';
+import {
+	prefixItems,
+} from './DataDiscovery/JsonSchema/Array/prefixItems';
 
 export class DataTransformerDiscovery
 {
@@ -33,6 +36,7 @@ export class DataTransformerDiscovery
 	private readonly items:items;
 	private readonly oneOf:oneOf;
 	private readonly anyOf:anyOf;
+	private readonly prefixItems:prefixItems;
 
 	constructor(
 		ajv: Ajv,
@@ -43,6 +47,7 @@ export class DataTransformerDiscovery
 		this.items = new items(ajv, discovery);
 		this.oneOf = new oneOf(ajv);
 		this.anyOf = new anyOf(ajv);
+		this.prefixItems = new prefixItems(ajv, discovery);
 	}
 
 	add_generators(...generators:AnyGenerator[])
@@ -82,7 +87,11 @@ export class DataTransformerDiscovery
 					return result;
 				}
 			));
-		} else if (this.anyOf.check(value)) {
+		} else if (object_has_property(value, 'oneOf')) {
+			throw new NoMatchError(value, 'Unsupported oneOf found!');
+		}
+
+		if (this.anyOf.check(value)) {
 			value.anyOf = await Promise.all(value.anyOf.map(
 				async (e) => {
 					const result = await this.maybe_remap_ref(e);
@@ -94,8 +103,27 @@ export class DataTransformerDiscovery
 					return result;
 				}
 			));
-		} else if (object_has_property(value, 'oneOf')) {
-			throw new NoMatchError(value, 'Unsupported oneOf found!');
+		} else if (object_has_property(value, 'anyOf')) {
+			throw new NoMatchError(value, 'Unsupported anyOf found!');
+		}
+
+		if (this.prefixItems.check(value)) {
+			value.prefixItems = await Promise.all(value.prefixItems.map(
+				async (e) : Promise<unknown> => {
+					const result = await this.maybe_remap_ref(e);
+
+					if (!value_is_non_array_object(result)) {
+						throw new NoMatchError(result, 'type loss!');
+					}
+
+					return result;
+				}
+			)) as [unknown, ...unknown[]];
+		} else if (object_has_property(value, 'prefixItems')) {
+			throw new NoMatchError(
+				value,
+				'Unsupported prefixItems found!'
+			);
 		}
 
 		if (value_is_non_array_object(value)) {

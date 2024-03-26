@@ -26,6 +26,7 @@ export class prefixItems extends SchemaCompilingGenerator<
 			properties: {
 				type: {type: 'string', const: 'array'},
 				items: {type: 'boolean', const: false},
+				uniqueItems: {type: 'boolean'},
 				prefixItems: {
 					type: 'array',
 					minItems: 1,
