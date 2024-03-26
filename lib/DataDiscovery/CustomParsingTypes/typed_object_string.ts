@@ -35,7 +35,7 @@ import {
 	schema as const_schema,
 } from '../JsonSchema/String/ConstType';
 
-type schema_type = {
+export type schema_type = {
 	type: 'string',
 	minLength: 1,
 	typed_object_string: {
@@ -45,7 +45,7 @@ type schema_type = {
 	},
 };
 
-const schema_sub_types = [
+export const schema_sub_types = [
 	pattern_schema,
 	enum_schema,
 	UnrealEngineString_parent_schema,
@@ -101,6 +101,40 @@ const schema = {
 									type: 'array',
 									minItems: 1,
 									items: {type: 'object'},
+								},
+							},
+						},
+						{
+							type: 'object',
+							additionalProperties: false,
+							patternProperties: {
+								[property_regex]: {
+									type: 'object',
+									required: [
+										'type',
+										'minLength',
+										'typed_object_string',
+									],
+									additionalProperties: false,
+									properties: {
+										type: {
+											type: 'string',
+											const: 'string',
+										},
+										minLength: {
+											type: 'number',
+											const: 1,
+										},
+										typed_object_string: {
+											type: 'object',
+											additionalProperties: false,
+											patternProperties: {
+												[property_regex]: {oneOf: [
+													...schema_sub_types,
+												]},
+											},
+										},
+									},
 								},
 							},
 						},

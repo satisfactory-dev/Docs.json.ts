@@ -82,6 +82,7 @@ import {
 import {
 	typed_array_string,
 } from './DataDiscovery/CustomParsingTypes/typed_array_string';
+import {typed_object_string_dictionary} from './DataDiscovery/CustomParsingTypes/typed_object_string_dictionary';
 
 export class DataTransformer
 {
@@ -322,6 +323,10 @@ export class DataTransformer
 			new oneOf(ajv),
 			new typed_object_string(ajv, transformer) as AnyGenerator,
 			new typed_array_string(ajv, transformer) as AnyGenerator,
+			new typed_object_string_dictionary(
+				ajv,
+				transformer
+			) as AnyGenerator,
 		);
 
 		return transformer;
