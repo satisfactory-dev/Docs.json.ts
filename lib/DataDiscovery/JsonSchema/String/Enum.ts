@@ -15,15 +15,32 @@ export const schema = {
 
 export class Enum extends SchemaCompilingGenerator<
 	{type: 'string', enum: [string, ...string[]]},
-	unknown,
-	unknown
+	string,
+	string|boolean|undefined
 > {
 	constructor(ajv: Ajv) {
 		super(ajv, schema);
 	}
 
-	generate() {
-		return Promise.resolve((raw_data: unknown) => {
+	generate(schema:{type: 'string', enum: [string, ...string[]]}) {
+		if (
+			schema.enum.includes('True')
+			&& schema.enum.includes('False')
+			&& (
+				2 === schema.enum.length
+				|| (
+					3 === schema.enum.length
+					&& schema.enum.includes('')
+				)
+			)
+		) {
+
+			return Promise.resolve((raw_data: string) => {
+				return '' === raw_data ? undefined : ('True' === raw_data);
+			});
+		}
+
+		return Promise.resolve((raw_data: string) => {
 			return raw_data;
 		});
 	}

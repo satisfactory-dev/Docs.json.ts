@@ -5,8 +5,11 @@ import {
 import ts, {
 	ArrayLiteralExpression,
 	Expression,
+	FalseLiteral,
+	Identifier,
 	ObjectLiteralExpression,
 	StringLiteral,
+	TrueLiteral,
 } from 'typescript';
 import {
 	adjust_unrealengine_value,
@@ -284,6 +287,9 @@ export class DataTransformer
 
 	private static value_literal(from: unknown) : (
 		| StringLiteral
+		| TrueLiteral
+		| FalseLiteral
+		| Identifier
 		| ArrayLiteralExpression
 		| Expression
 		| ObjectLiteralExpression
@@ -294,6 +300,10 @@ export class DataTransformer
 			return (from as ExpressionResult).expression;
 		} if (value_is_non_array_object(from)) {
 			return this.object_literal(from);
+		} else if ('boolean' === typeof from) {
+			return from ? ts.factory.createTrue():ts.factory.createFalse();
+		} else if (undefined === from) {
+			return ts.factory.createIdentifier('undefined');
 		} else if (!(from instanceof Array)) {
 			throw new NoMatchError(from, 'not an array!');
 		}
@@ -328,7 +338,7 @@ export class DataTransformer
 			new StringType(ajv) as AnyGenerator,
 			new Pattern(ajv) as AnyGenerator,
 			new ConstType(ajv) as AnyGenerator,
-			new Enum(ajv),
+			new Enum(ajv) as AnyGenerator,
 			new String_oneOf(ajv),
 			new oneOf(ajv),
 			new typed_object_string(ajv, transformer) as AnyGenerator,
