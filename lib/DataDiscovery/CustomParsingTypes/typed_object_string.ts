@@ -45,7 +45,7 @@ type schema_type = {
 	},
 };
 
-const schmea_sub_types = [
+const schema_sub_types = [
 	pattern_schema,
 	enum_schema,
 	UnrealEngineString_parent_schema,
@@ -66,7 +66,7 @@ const schema = {
 			patternProperties: {
 				[property_regex]: {
 					oneOf: [
-						...schmea_sub_types,
+						...schema_sub_types,
 						{
 							type: 'object',
 							required: [
@@ -86,7 +86,7 @@ const schema = {
 									additionalProperties: false,
 									patternProperties: {
 										[property_regex]: {
-											oneOf: schmea_sub_types,
+											oneOf: schema_sub_types,
 										},
 									},
 								},
