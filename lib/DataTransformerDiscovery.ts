@@ -22,8 +22,8 @@ import {
 	oneOf,
 } from './DataDiscovery/JsonSchema/oneOf';
 import {
-	is_string,
-} from './StringStartsWith';
+	anyOf,
+} from './DataDiscovery/JsonSchema/anyOf';
 
 export class DataTransformerDiscovery
 {
@@ -32,6 +32,7 @@ export class DataTransformerDiscovery
 	private readonly $ref:Promise<$ref>;
 	private readonly items:items;
 	private readonly oneOf:oneOf;
+	private readonly anyOf:anyOf;
 
 	constructor(
 		ajv: Ajv,
@@ -41,6 +42,7 @@ export class DataTransformerDiscovery
 		this.$ref = $ref.fromDataDiscovery(ajv, discovery);
 		this.items = new items(ajv, discovery);
 		this.oneOf = new oneOf(ajv);
+		this.anyOf = new anyOf(ajv);
 	}
 
 	add_generators(...generators:AnyGenerator[])
@@ -80,6 +82,20 @@ export class DataTransformerDiscovery
 					return result;
 				}
 			));
+		} else if (this.anyOf.check(value)) {
+			value.anyOf = await Promise.all(value.anyOf.map(
+				async (e) => {
+					const result = await this.maybe_remap_ref(e);
+
+					if (!value_is_non_array_object(result)) {
+						throw new NoMatchError(result, 'type loss!');
+					}
+
+					return result;
+				}
+			));
+		} else if (object_has_property(value, 'oneOf')) {
+			throw new NoMatchError(value, 'whut');
 		}
 
 		if (value_is_non_array_object(value)) {
@@ -110,8 +126,10 @@ export class DataTransformerDiscovery
 				const transformer = this.candidates.find(e => e.check(value));
 
 				if (!transformer) {
-					console.log({[property]: value});
-					throw new Error(`no match found for ${property}`);
+					throw new NoMatchError(
+						{[property]: value},
+						`no match found for ${property}`
+					);
 				}
 
 				return [

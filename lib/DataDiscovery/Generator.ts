@@ -8,6 +8,7 @@ import {
 import {
 	Expression,
 } from 'typescript';
+import {writeFileSync} from 'node:fs';
 
 export type AnyGenerator = Generator<unknown, unknown, unknown>;
 
@@ -38,7 +39,11 @@ export abstract class SchemaCompilingGenerator<
 		try {
 			super(ajv.compile<SchemaType>(schema));
 		} catch (err) {
-			console.error(err, schema);
+			console.error(err);
+			writeFileSync(
+				'/app/failed-to-compile.json',
+				JSON.stringify(schema, null, '\t')
+			);
 
 			throw new Error('Could not compile schema!');
 		}

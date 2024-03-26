@@ -1,7 +1,8 @@
 import {
-	Generator, ExpressionResult,
+	Generator, ExpressionResult, SchemaCompilingGenerator,
 } from '../Generator';
 import Ajv, {
+	SchemaObject,
 	ValidateFunction,
 } from 'ajv/dist/2020';
 import {
@@ -11,6 +12,7 @@ import {
 	DocsDataItem,
 } from '../../DocsTsGenerator';
 import {
+	object_has_non_empty_array_property,
 	object_has_property, property_exists_on_object,
 	value_is_non_array_object,
 } from '../../CustomParsingTypes/CustomPairingTypes';
@@ -41,9 +43,11 @@ export class NativeClass extends Generator<
 	DocsDataItem,
 	unknown
 > {
+	private readonly ajv:Ajv;
 	private readonly discovery:DataTransformerDiscovery;
 	private readonly items:items;
 	private readonly prefixItems:prefixItems;
+	private readonly data_transformer:DataTransformer;
 	constructor(
 		check:ValidateFunction<DocsDataItem>,
 		discovery:DataTransformerDiscovery,
@@ -51,9 +55,11 @@ export class NativeClass extends Generator<
 		data_transformer:DataTransformer
 	) {
 		super(check);
+		this.ajv = ajv;
 		this.discovery = discovery;
 		this.items = new items(ajv, data_transformer);
 		this.prefixItems = new prefixItems(ajv, data_transformer);
+		this.data_transformer = data_transformer;
 	}
 
 	async generate() {
@@ -96,15 +102,19 @@ export class NativeClass extends Generator<
 				);
 			}
 
+			const unresolved_schema = {
+				...$ref_schema.properties,
+				...(object_has_property(
+					schema,
+					'properties',
+					value_is_non_array_object
+				) ? schema.properties : {}),
+			};
+
 			const resolved_schema =
-				await this.discovery.maybe_remap_object_ref({
-					...$ref_schema.properties,
-					...(object_has_property(
-						schema,
-						'properties',
-						value_is_non_array_object
-					) ? schema.properties : {}),
-				});
+				await this.discovery.maybe_remap_object_ref(
+					unresolved_schema
+				);
 
 			const result = Object.fromEntries(Object.entries(
 				await this.discovery.find_from_object(
@@ -137,16 +147,29 @@ export class NativeClass extends Generator<
 				& {[key: string]: unknown}
 				& {ClassName: string|ExpressionResult}
 			> => {
+				const generator = generators.find(e => e.check(Classes_entry));
+
+				if (!generator) {
+					throw new NoMatchError(
+						[
+							Classes_entry,
+							(generators.map((e) => e.check(Classes_entry))),
+							(generators.map((e) => e.check.errors)),
+						],
+						'No matching generator found!'
+					);
+				}
+
 				const result = Object.fromEntries(await Promise.all(
 					Object.entries(Classes_entry).map(async (
 						entry
 					) : Promise<[string, unknown]> => {
 						const [property, raw_data] = entry;
 
-						if (property in generators) {
+						if (property in generator.result) {
 							return [
 								property,
-								await generators[property](raw_data),
+								await generator.result[property](raw_data),
 							];
 						}
 
@@ -183,15 +206,30 @@ export class NativeClass extends Generator<
 
 	private async Classes_generators(
 		Classes_schema:unknown
-	): Promise<{[key: string]: (raw_data:unknown) => unknown}> {
+	) {
 		if (this.items.check(Classes_schema)) {
 			if (object_has_property(Classes_schema.items, 'properties')) {
-				return this.Classes_generators_from_direct_items(
+				return [await this.Classes_generators_from_direct_items(
 					Classes_schema as {
 						items: {
 							properties: {[key: string]: unknown},
 						},
-					},
+					}
+				)];
+			} else if (object_has_non_empty_array_property(
+				Classes_schema.items,
+				'oneOf',
+				(e:unknown) : e is (
+					& {[key: string]: unknown}
+					& {properties: {[key: string]: unknown}}
+				) => {
+					return object_has_property(e, 'properties');
+				}
+			)) {
+				return this.Classes_generators_from_oneOf_items(
+					Classes_schema as {items: {oneOf: {
+						properties: {[key: string]: unknown},
+					}[]}}
 				);
 			}
 
@@ -210,7 +248,10 @@ export class NativeClass extends Generator<
 	private async Classes_generators_from_direct_items(
 		Classes_schema:{items: {properties: {[key: string]: unknown}}}
 	) {
-		return Object.fromEntries(await Promise.all(Object.entries(
+		return NativeClassResult.with_result(
+			this.ajv,
+			Classes_schema,
+			Object.fromEntries(await Promise.all(Object.entries(
 			Classes_schema.items.properties
 		).map(
 			async (
@@ -227,7 +268,23 @@ export class NativeClass extends Generator<
 					),
 				];
 			}
-		)));
+			))),
+			this.data_transformer
+		);
+	}
+
+	private async Classes_generators_from_oneOf_items(
+		Classes_schema:{items: {oneOf: {
+			properties: {[key: string]: unknown},
+		}[]}}
+	) {
+		return Promise.all(Classes_schema.items.oneOf.map((
+			e
+		) => {
+			return this.Classes_generators_from_direct_items({
+				items: e,
+			});
+		}));
 	}
 
 	static async fromTypesDiscovery(
@@ -242,6 +299,47 @@ export class NativeClass extends Generator<
 			data_transformer.data,
 			ajv,
 			data_transformer
+		);
+	}
+}
+
+class NativeClassResult extends SchemaCompilingGenerator<
+	unknown,
+	unknown,
+	{[key: string]: (raw_data:unknown) => unknown}
+> {
+	public readonly result:{[key: string]: (raw_data:unknown) => unknown};
+	public readonly schema:SchemaObject;
+
+	protected constructor(
+		ajv:Ajv,
+		schema:SchemaObject,
+		result:{[key: string]: (raw_data:unknown) => unknown}
+	) {
+		super(ajv, schema);
+		this.schema = schema;
+		this.result = result;
+	}
+
+	generate() {
+		return Promise.resolve(() => this.result);
+	}
+
+	static async with_result(
+		ajv:Ajv,
+		schema:SchemaObject & {items: SchemaObject},
+		result:{[key: string]: (raw_data:unknown) => unknown},
+		discovery: DataTransformer
+	) {
+		return new this(
+			ajv,
+			{
+				definitions: (
+					await discovery.type_checked_schema()
+				).definitions,
+				...schema.items,
+			},
+			result
 		);
 	}
 }

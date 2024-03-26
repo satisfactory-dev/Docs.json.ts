@@ -291,7 +291,6 @@
 			]
 		},
 		"mClassToScanFor": {
-			"type": "string",
 			"oneOf": [
 				{
 					"$ref": "#/definitions/None"
@@ -1691,7 +1690,7 @@
 				"mUnlocks": {
 					"type": "array",
 					"items": {
-						"anyOf": [
+						"oneOf": [
 							{
 								"$ref": "#/definitions/FGSchematic--mUnlocks_Class"
 							},
@@ -1822,7 +1821,7 @@
 				"mSchematicDependencies": {
 					"type": "array",
 					"items": {
-						"anyOf": [
+						"oneOf": [
 							{
 								"type": "object",
 								"required": [
@@ -2190,17 +2189,7 @@
 		"FGBuildable": {
 			"type": "object",
 			"$ref": "#/definitions/FGBuildable--base",
-			"unevaluatedProperties": false,
-			"not": {
-				"anyOf": [
-					{
-						"$ref": "#/definitions/FGBuildable--occupied"
-					},
-					{
-						"$ref": "#/definitions/FGBuildable--tiered"
-					}
-				]
-			}
+			"unevaluatedProperties": false
 		},
 		"FGBuildable--occupied": {
 			"type": "object",

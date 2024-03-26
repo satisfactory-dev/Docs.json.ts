@@ -38,6 +38,7 @@ const typed_array_string_oneOf_schema = {
 			UnrealEngineString_parent_schema,
 			$ref_schema,
 			general_schema,
+			typed_string_const_schema,
 		],
 	},
 };
@@ -327,8 +328,12 @@ export class TypedArrayString {
 			return `(?:${item.oneOf.map((e) => this.item_to_regex(e)).join('|')})`;
 		}
 
+		process.stdout.write(`${JSON.stringify(item, null, '\t')}\n`);
+
 		throw new UnexpectedlyUnknown(
+			{
 			item,
+			},
 			'Currently unsupported in TypedArrayString.item_to_regex'
 		);
 	}

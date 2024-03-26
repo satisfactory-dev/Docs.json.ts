@@ -9,6 +9,7 @@ import {
 	UnrealEngineString_parent_schema,
 	UnrealEngineString_schema_definitions,
 } from '../../../CustomParsingTypes/UnrealEngineString';
+import {writeFile} from 'node:fs/promises';
 
 export type items_type =
 	| (
@@ -30,6 +31,15 @@ const item_schema = {
 		properties: {type: 'object'},
 	},
 };
+const const_schema = {
+	type: 'object',
+	required: ['type', 'const'],
+	additionalProperties: false,
+	properties: {
+		type: {type: 'string', const: 'string'},
+		const: {type: 'string'},
+	},
+};
 
 export const schema = {
 	type: 'object',
@@ -38,16 +48,8 @@ export const schema = {
 	properties: {
 		type: {type: 'string', const: 'array'},
 		items: {
-			oneOf: [
-				{
-					type: 'object',
-					required: ['type', 'const'],
-					additionalProperties: false,
-					properties: {
-						type: {type: 'string', const: 'string'},
-						const: {type: 'string'},
-					},
-				},
+			anyOf: [
+				const_schema,
 				item_schema,
 				{
 					type: 'object',
@@ -56,7 +58,13 @@ export const schema = {
 					properties: {
 						oneOf: {
 							type: 'array',
-							items: item_schema,
+							items: {
+								anyOf: [
+									item_schema,
+									UnrealEngineString_parent_schema,
+									const_schema,
+								],
+							},
 							minItems: 1,
 						},
 					},

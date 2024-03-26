@@ -9,6 +9,7 @@ import {
 import {
 	NoMatchError,
 } from './lib/DataTransformerDiscovery/NoMatchError';
+import {writeFile} from 'node:fs/promises';
 
 const __dirname = import.meta.dirname;
 
@@ -41,9 +42,10 @@ try {
 	});
 } catch (err) {
 	if (err instanceof NoMatchError) {
-		process.stdout.write(`${
+		await writeFile(
+			'./discovery-types.failure.json',
 			JSON.stringify(err.value, null, '\t')
-		}\n`);
+		);
 
 		console.error(err.message, err.stack);
 	} else {

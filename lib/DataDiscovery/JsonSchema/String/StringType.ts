@@ -2,12 +2,6 @@ import {
 	SchemaCompilingGenerator,
 } from '../../Generator';
 import Ajv from 'ajv/dist/2020';
-import {
-	object_only_has_that_property,
-} from '../../../CustomParsingTypes/CustomPairingTypes';
-import {
-	NoMatchError,
-} from '../../../DataTransformerDiscovery/NoMatchError';
 
 type schema_type =
 	& {type: 'string'}
