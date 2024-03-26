@@ -44,7 +44,7 @@ type schema_type = {
 
 export class typed_object_string extends SchemaCompilingGenerator<
 	schema_type,
-	string,
+	string|{[key: string]: unknown},
 	{[key: string]: unknown}
 > {
 	private readonly discovery:DataTransformer;
@@ -117,8 +117,11 @@ export class typed_object_string extends SchemaCompilingGenerator<
 			})
 		));
 
-		return Promise.resolve((raw_data: string) => {
-			const parsed = string_to_object(raw_data);
+		return Promise.resolve((raw_data: string|{[key: string]: unknown}) => {
+			const parsed =
+				value_is_non_array_object(raw_data)
+					? raw_data
+					: string_to_object(raw_data);
 
 			if (!value_is_non_array_object(parsed)) {
 				throw new NoMatchError(
