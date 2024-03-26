@@ -3,9 +3,10 @@ import {
 	DocsTsGenerator,
 } from './DocsTsGenerator';
 import ts, {
+	ArrayLiteralExpression,
 	Expression,
 	ObjectLiteralExpression,
-	PrimaryExpression,
+	StringLiteral,
 } from 'typescript';
 import {
 	adjust_unrealengine_value,
@@ -85,6 +86,12 @@ import {
 import {
 	typed_object_string_dictionary,
 } from './DataDiscovery/CustomParsingTypes/typed_object_string_dictionary';
+import {
+	NoMatchError,
+} from './DataTransformerDiscovery/NoMatchError';
+import {
+	is_string,
+} from './StringStartsWith';
 
 export class DataTransformer
 {
@@ -275,23 +282,24 @@ export class DataTransformer
 		);
 	}
 
-	private static value_literal(from:unknown): PrimaryExpression|Expression
-	{
-		if ('string' === typeof from) {
+	private static value_literal(from: unknown) : (
+		| StringLiteral
+		| ArrayLiteralExpression
+		| Expression
+		| ObjectLiteralExpression
+	) {
+		if (is_string(from)) {
 			return ts.factory.createStringLiteral(from);
 		} else if (from instanceof ExpressionResult) {
 			return (from as ExpressionResult).expression;
 		} if (value_is_non_array_object(from)) {
 			return this.object_literal(from);
-		} else if (from instanceof Array) {
-			return ts.factory.createArrayLiteralExpression(
-				from.map(e => this.value_literal(e))
-			);
+		} else if (!(from instanceof Array)) {
+			throw new NoMatchError(from, 'not an array!');
 		}
-
-		console.error(from);
-
-		throw new Error('unsupported!');
+		return ts.factory.createArrayLiteralExpression(
+			from.map(e => this.value_literal(e))
+		);
 	}
 
 	static async with_default_candidates(

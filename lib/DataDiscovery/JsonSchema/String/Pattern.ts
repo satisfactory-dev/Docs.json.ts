@@ -46,7 +46,7 @@ export class Pattern extends SchemaCompilingGenerator<
 			}
 
 			return new ExpressionResult(ts.factory.createAsExpression(
-				create_literal(raw_data),
+				ts.factory.createStringLiteral(raw_data),
 				ts.factory.createTypeReferenceNode(
 					'StringPassedRegExp',
 					[

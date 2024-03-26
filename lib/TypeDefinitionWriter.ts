@@ -468,17 +468,34 @@ export class TypeDefinitionWriter
 				recursive: true,
 			});
 
+			const node_strings:string[] = [];
+
+			for (const node of nodes) {
+				try {
+					node_strings.push(printer.printNode(
+						ts.EmitHint.Unspecified,
+						node,
+						result_file
+					));
+				} catch (err) {
+					throw new NoMatchError(
+						{
+							file_name,
+							node,
+							err: (err instanceof Error) ? {
+								message: err.message,
+								stack: err.stack,
+							} : err,
+						},
+						'Error printing node!'
+					);
+				}
+			}
+
 			await writeFile(
 				file_name,
 				await format_code(
-					nodes
-						.map((node) => {
-							return printer.printNode(
-								ts.EmitHint.Unspecified,
-								node,
-								result_file
-							);
-						})
+					node_strings
 						.join('\n\n')
 				)
 			);
