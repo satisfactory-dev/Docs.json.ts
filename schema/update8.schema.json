@@ -2718,13 +2718,6 @@
 				"mRandomEquipAnim": {
 					"$ref": "#/definitions/integer-string"
 				}
-			},
-			"not": {
-				"anyOf": [
-					{
-						"$ref": "#/definitions/FGEquipmentStunSpear--xeno-zapper"
-					}
-				]
 			}
 		},
 		"FGEquipmentStunSpear--xeno-zapper": {
@@ -3328,14 +3321,7 @@
 		"FGConsumableDescriptor": {
 			"type": "object",
 			"$ref": "#/definitions/FGConsumableDescriptor--base",
-			"unevaluatedProperties": false,
-			"not": {
-				"anyOf": [
-					{
-						"$ref": "#/definitions/FGConsumableDescriptor--healing"
-					}
-				]
-			}
+			"unevaluatedProperties": false
 		},
 		"FGConsumableDescriptor--healing": {
 			"type": "object",
