@@ -1,25 +1,11 @@
 import {
-	AnyGenerator,
 	SchemaCompilingGenerator, SecondaryCheckSchemaCompilingGenerator,
 } from '../Generator';
 import Ajv, {
-	SchemaObject,
 } from 'ajv/dist/2020';
 import {
 	DataTransformer,
 } from '../../DataTransformer';
-import {
-	NoMatchError,
-} from '../../DataTransformerDiscovery/NoMatchError';
-import {
-	string_starts_with,
-} from '../CustomParsingTypes/string_starts_with';
-import {
-	RawData,
-} from '../../TypeDefinitionDiscovery/CustomParsingTypes/string_starts_with';
-import {
-	is_string,
-} from '../../StringStartsWith';
 
 export class oneOf extends SchemaCompilingGenerator<
 	{oneOf: {[key: string]: unknown}[]},
