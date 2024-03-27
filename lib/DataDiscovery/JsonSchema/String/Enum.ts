@@ -1,7 +1,10 @@
 import {
-	SchemaCompilingGenerator,
+	SecondaryCheckSchemaCompilingGenerator,
 } from '../../Generator';
 import Ajv from 'ajv/dist/2020';
+import {
+	is_string,
+} from '../../../StringStartsWith';
 
 export const schema = {
 	type: 'object',
@@ -13,7 +16,7 @@ export const schema = {
 	},
 };
 
-export class Enum extends SchemaCompilingGenerator<
+export class Enum extends SecondaryCheckSchemaCompilingGenerator<
 	{type: 'string', enum: [string, ...string[]]},
 	string,
 	string|boolean|undefined
@@ -43,5 +46,15 @@ export class Enum extends SchemaCompilingGenerator<
 		return Promise.resolve((raw_data: string) => {
 			return raw_data;
 		});
+	}
+
+	secondary_check(
+		schema_data: { type: 'string'; enum: [string, ...string[]]; },
+		raw_data: unknown
+	): raw_data is string {
+		return (
+			is_string(raw_data)
+			&& schema_data.enum.includes(raw_data)
+		);
 	}
 }

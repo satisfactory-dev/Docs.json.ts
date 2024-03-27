@@ -1,7 +1,10 @@
 import {
-	SchemaCompilingGenerator,
+	SecondaryCheckSchemaCompilingGenerator,
 } from '../../Generator';
 import Ajv from 'ajv/dist/2020';
+import {
+	is_string,
+} from '../../../StringStartsWith';
 
 export type schema_type = {type: 'string', const: string};
 
@@ -15,7 +18,7 @@ export const schema = {
 	},
 };
 
-export class ConstType extends SchemaCompilingGenerator<
+export class ConstType extends SecondaryCheckSchemaCompilingGenerator<
 	schema_type,
 	string,
 	string
@@ -28,5 +31,12 @@ export class ConstType extends SchemaCompilingGenerator<
 		return Promise.resolve(() => {
 			return schema.const;
 		});
+	}
+
+	secondary_check(
+		schema_data: schema_type,
+		raw_data: unknown
+	): raw_data is typeof schema_data.const{
+		return is_string(raw_data) && raw_data === schema_data.const;
 	}
 }

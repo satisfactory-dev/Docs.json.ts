@@ -1,6 +1,6 @@
 import {
 	AnyGenerator,
-	SchemaCompilingGenerator,
+	SchemaCompilingGenerator, SecondaryCheckSchemaCompilingGenerator,
 } from '../Generator';
 import Ajv, {
 	SchemaObject,
@@ -44,41 +44,12 @@ export class oneOf extends SchemaCompilingGenerator<
 		this.discovery = discovery;
 	}
 
-	async generate(schema:{oneOf: {[key: string]: unknown}[]}) {
-		const generators =  await Promise.all(
-			schema.oneOf.map((e) => {
-				return this.discovery.data.find_generator(e);
-			})
+	generate(schema:{oneOf: {[key: string]: unknown}[]}) {
+		return (
+			SecondaryCheckSchemaCompilingGenerator.secondary_check_generation(
+				this.discovery,
+				schema.oneOf
+			)
 		);
-
-		const string_starts_with_generators = generators.map(
-			(e, index) : [AnyGenerator, SchemaObject] => [
-				e,
-				schema.oneOf[index],
-			]
-		).filter(maybe => maybe[0] instanceof string_starts_with) as [
-			string_starts_with,
-			RawData,
-		][];
-
-		return async (raw_data: unknown) => {
-			const generator = generators.find(e => e.check(raw_data));
-
-			if (!generator && is_string(raw_data)) {
-				const maybe = string_starts_with_generators.find(
-					e => e[0].test(e[1], raw_data)
-				);
-
-				if (maybe) {
-					return (await maybe[0].generate(maybe[1]))(raw_data);
-				}
-			}
-
-			if (!generator) {
-				throw new NoMatchError(raw_data);
-			}
-
-			return (await generator.generate(raw_data))(raw_data);
-		};
 	}
 }
