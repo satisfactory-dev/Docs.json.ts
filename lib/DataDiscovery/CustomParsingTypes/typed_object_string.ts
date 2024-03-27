@@ -57,8 +57,9 @@ export const schema_sub_types = [
 	const_schema,
 ];
 
-export function schema_object(...additional_oneOf:SchemaObject[]) : SchemaObject
-{
+export function schema_object(
+	...additional_oneOf:SchemaObject[]
+) : SchemaObject {
 	return {
 		type: 'object',
 		required: [
