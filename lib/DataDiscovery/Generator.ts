@@ -170,19 +170,6 @@ async function augment_schema(
 	};
 }
 
-export abstract class SchemaCompilingWithAutoDefinitions<
-	SchemaType,
-	RawData,
-	Result
-> extends SchemaCompilingGenerator<SchemaType, RawData, Result> {
-	static async augment_schema(
-		discovery:DataTransformer,
-		schema: SchemaObject
-	) : Promise<SchemaObject> {
-		return augment_schema(discovery, schema);
-	}
-}
-
 export abstract class SecondaryCheckWithAutoDefinitions<
 	SchemaType,
 	RawData,

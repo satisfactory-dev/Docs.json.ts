@@ -12,7 +12,7 @@ export class oneOf extends SchemaCompilingGenerator<
 	unknown,
 	unknown
 > {
-	private discovery:DataTransformer;
+	private readonly discovery:DataTransformer;
 
 	constructor(ajv: Ajv, discovery:DataTransformer) {
 		super(ajv, {

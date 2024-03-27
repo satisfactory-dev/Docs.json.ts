@@ -3,6 +3,7 @@ signpostmarv
 
 # eslint.config.mjs
 tseslint
+nonoctal
 
 # filenames, because reasons
 prettierrc
