@@ -1,5 +1,5 @@
 import {
-	SchemaCompilingGenerator,
+	SecondaryCheckSchemaCompilingGenerator,
 } from '../Generator';
 import Ajv, {
 	SchemaObject,
@@ -36,6 +36,9 @@ import {
 import {
 	schema as const_schema,
 } from '../JsonSchema/String/ConstType';
+import {
+	is_string,
+} from '../../StringStartsWith';
 
 export type schema_type = {
 	type: 'string',
@@ -54,7 +57,7 @@ export const schema_sub_types = [
 	const_schema,
 ];
 
-function schema_object(...additional_oneOf:SchemaObject[]) : SchemaObject
+export function schema_object(...additional_oneOf:SchemaObject[]) : SchemaObject
 {
 	return {
 		type: 'object',
@@ -156,7 +159,9 @@ const schema = {
 	},
 };
 
-export class typed_object_string extends SchemaCompilingGenerator<
+export class typed_object_string extends
+	SecondaryCheckSchemaCompilingGenerator
+<
 	schema_type,
 	string|{[key: string]: unknown},
 	{[key: string]: unknown}
@@ -219,5 +224,44 @@ export class typed_object_string extends SchemaCompilingGenerator<
 				];
 			}));
 		});
+	}
+	secondary_check(
+		schema_data: schema_type,
+		raw_data: unknown
+	): Promise<boolean> {
+		const parsed =
+			value_is_non_array_object(raw_data)
+				? raw_data
+				: (
+					is_string(raw_data)
+						? string_to_object(raw_data)
+						: false
+				);
+
+		if (!value_is_non_array_object(parsed)) {
+			return Promise.resolve(false);
+		}
+
+		const converters = Object.fromEntries(Object.entries(
+			schema_data.typed_object_string
+		).map((
+			entry
+		) => {
+			return [
+				entry[0],
+				this.discovery.data.find_generator(
+					entry[1]
+				),
+			];
+		}));
+
+		return Promise.resolve(Object.entries(parsed).every((entry) => {
+			const [property, value] = entry;
+
+			return (
+				!(property in converters)
+				|| converters[property].check(value)
+			);
+		}));
 	}
 }

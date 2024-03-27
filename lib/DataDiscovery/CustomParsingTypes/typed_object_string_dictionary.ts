@@ -8,11 +8,14 @@ import {
 	schema_sub_types,
 	schema_type,
 	typed_object_string,
+	schema_object as typed_object_string_schema_generator,
 } from './typed_object_string';
 import {
 	DataTransformer,
 } from '../../DataTransformer';
-import Ajv from 'ajv/dist/2020';
+import Ajv, {
+	SchemaObject,
+} from 'ajv/dist/2020';
 import {
 	NoMatchError,
 } from '../../DataTransformerDiscovery/NoMatchError';
@@ -26,30 +29,24 @@ import {
 	writeFileSync,
 } from 'node:fs';
 
-const schema = {
+function schema_object(...additional_oneOf:SchemaObject[]) : SchemaObject
+{
+	return {
 	type: 'object',
 	additionalProperties: false,
 	patternProperties: {
-		[property_regex]: {
-			type: 'object',
-			required: ['type', 'minLength', 'typed_object_string'],
-			additionalProperties: false,
-			properties: {
-				type: {type: 'string', const: 'string'},
-				minLength: {type: 'number', const: 1},
-				typed_object_string: {
-					type: 'object',
-					additionalProperties: false,
-					patternProperties: {
-						[property_regex]: {
-							oneOf: schema_sub_types,
-						},
-					},
-				},
-			},
-		},
+			[property_regex]: {oneOf: [
+				typed_object_string_schema_generator(
+					typed_object_string_schema_generator()
+				),
+				...schema_sub_types,
+				...additional_oneOf,
+			]},
 	},
 };
+}
+
+const schema = schema_object(schema_object(schema_object()));
 
 export class typed_object_string_dictionary extends SchemaCompilingGenerator<
 	{

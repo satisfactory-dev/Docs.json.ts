@@ -101,6 +101,19 @@ export class typed_array_string extends SecondaryCheckSchemaCompilingGenerator<
 
 		const result = parsed && converter.check(parsed);
 
+		if (
+			parsed
+			&& false === result
+			&& converter instanceof SecondaryCheckSchemaCompilingGenerator
+		) {
+			return Promise.resolve(
+				(parsed as unknown[]).every((e) => converter.secondary_check(
+					schema_data.typed_array_string.items,
+					e
+				))
+			);
+		}
+
 		this._secondary_errors = converter.check.errors;
 
 		return Promise.resolve(result);
