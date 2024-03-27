@@ -99,6 +99,10 @@ export class typed_array_string extends SecondaryCheckSchemaCompilingGenerator<
 		);
 		const parsed = string_to_array(raw_data);
 
-		return Promise.resolve(parsed && converter.check(parsed));
+		const result = parsed && converter.check(parsed);
+
+		this._secondary_errors = converter.check.errors;
+
+		return Promise.resolve(result);
 	}
 }

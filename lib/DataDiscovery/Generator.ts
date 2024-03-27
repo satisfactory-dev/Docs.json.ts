@@ -1,4 +1,5 @@
 import Ajv, {
+	ErrorObject,
 	SchemaObject,
 	ValidateFunction,
 } from 'ajv/dist/2020';
@@ -64,6 +65,13 @@ export abstract class SecondaryCheckSchemaCompilingGenerator<
 	RawData,
 	Result
 > {
+	protected _secondary_errors:ErrorObject[]|null|undefined = undefined;
+
+	get secondary_errors()
+	{
+		return this._secondary_errors;
+	}
+
 	abstract secondary_check(
 		schema_data:SchemaType,
 		raw_data:unknown
@@ -132,9 +140,25 @@ export abstract class SecondaryCheckSchemaCompilingGenerator<
 					return maybe();
 				}
 
+				const secondary_errors = generators.filter(
+					(
+						e
+					): e is SecondaryCheckSchemaCompilingGenerator<
+						unknown,
+						unknown,
+						unknown
+					> => {
+						return (
+							e instanceof SecondaryCheckSchemaCompilingGenerator
+						);
+					}
+				).map(e => e.secondary_errors);
+
 				throw new NoMatchError({
 					against,
 					raw_data,
+					errors: generators.map(e => e.check.errors),
+					secondary_errors,
 				});
 			}
 
