@@ -1,5 +1,5 @@
 import {
-	SchemaCompilingGenerator, SecondaryCheckSchemaCompilingGenerator,
+	SecondaryCheckSchemaCompilingGenerator,
 } from '../Generator';
 import {
 	schema as items_schema,
@@ -21,7 +21,9 @@ import {
 import {
 	writeFileSync,
 } from 'node:fs';
-import {is_string} from '../../StringStartsWith';
+import {
+	is_string,
+} from '../../StringStartsWith';
 
 type schema_type = {
 	type: 'string',
