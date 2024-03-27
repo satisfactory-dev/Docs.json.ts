@@ -226,10 +226,12 @@ export class typed_object_string extends
 			}));
 		});
 	}
-	secondary_check(
+	async secondary_check(
 		schema_data: schema_type,
 		raw_data: unknown
 	): Promise<boolean> {
+		this._secondary_errors = undefined;
+
 		const parsed =
 			value_is_non_array_object(raw_data)
 				? raw_data
@@ -240,7 +242,17 @@ export class typed_object_string extends
 				);
 
 		if (!value_is_non_array_object(parsed)) {
-			return Promise.resolve(false);
+			this._secondary_errors = [
+				new NoMatchError(
+					{
+						raw_data,
+						parsed,
+					},
+					'Raw data did not parse to something usable!'
+				),
+			];
+
+			return false;
 		}
 
 		const converters = Object.fromEntries(Object.entries(
@@ -256,13 +268,48 @@ export class typed_object_string extends
 			];
 		}));
 
-		return Promise.resolve(Object.entries(parsed).every((entry) => {
+		let result = true;
+
+		for (const entry of Object.entries(parsed)) {
 			const [property, value] = entry;
 
-			return (
-				!(property in converters)
-				|| converters[property].check(value)
+			const converter = converters[property] || undefined;
+
+			result = (
+				!converter
+				|| converter.check(value)
+				|| (
+					SecondaryCheckSchemaCompilingGenerator.is(
+						converter
+					)
+					&& await converter.secondary_check(
+						schema_data.typed_object_string[property],
+						value
+					)
+				)
 			);
-		}));
+
+			if (!result) {
+				break;
+			}
+		}
+
+		if (!result) {
+			this._secondary_errors = [];
+
+			for (const converter of Object.values(converters)) {
+				if (converter.check.errors) {
+					this._secondary_errors.push(...converter.check.errors);
+				}
+				if (
+					converter instanceof SecondaryCheckSchemaCompilingGenerator
+					&& converter.secondary_errors
+				) {
+					this._secondary_errors.push(...converter.secondary_errors);
+				}
+			}
+		}
+
+		return result;
 	}
 }

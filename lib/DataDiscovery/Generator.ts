@@ -65,7 +65,11 @@ export abstract class SecondaryCheckSchemaCompilingGenerator<
 	RawData,
 	Result
 > {
-	protected _secondary_errors:ErrorObject[]|null|undefined = undefined;
+	protected _secondary_errors:(
+		| (ErrorObject|NoMatchError)[]
+		| null
+		| undefined
+	) = undefined;
 
 	get secondary_errors()
 	{
@@ -136,35 +140,34 @@ export abstract class SecondaryCheckSchemaCompilingGenerator<
 			if (!generator) {
 				const maybe = await secondary(raw_data);
 
-				if (maybe) {
-					return maybe();
-				}
-
-				const secondary_errors = generators.filter(
-					(
-						e
-					): e is SecondaryCheckSchemaCompilingGenerator<
-						unknown,
-						unknown,
-						unknown
-					> => {
-						return (
-							e instanceof SecondaryCheckSchemaCompilingGenerator
-						);
-					}
-				).map(e => e.secondary_errors);
-
-				throw new NoMatchError({
-					against,
-					raw_data,
-					errors: generators.map(e => e.check.errors),
-					secondary_errors,
-				});
+				return maybe ? maybe() : false;
 			}
 
 			return (await generator.generate(raw_data))(raw_data);
 		})
 	}
+
+	static is(
+		maybe:AnyGenerator
+	): maybe is SecondaryCheckSchemaCompilingGenerator<
+		unknown,
+		unknown,
+		unknown
+	> {
+		return maybe instanceof SecondaryCheckSchemaCompilingGenerator;
+	}
+}
+
+async function augment_schema(
+	discovery:DataTransformer,
+	schema: SchemaObject
+) : Promise<SchemaObject> {
+	const {definitions} = await discovery.type_checked_schema();
+
+	return {
+		definitions,
+		...schema,
+	};
 }
 
 export abstract class SchemaCompilingWithAutoDefinitions<
@@ -176,12 +179,35 @@ export abstract class SchemaCompilingWithAutoDefinitions<
 		discovery:DataTransformer,
 		schema: SchemaObject
 	) : Promise<SchemaObject> {
-		const {definitions} = await discovery.type_checked_schema();
+		return augment_schema(discovery, schema);
+	}
+}
 
-		return {
-			definitions,
-			...schema,
-		};
+export abstract class SecondaryCheckWithAutoDefinitions<
+	SchemaType,
+	RawData,
+	Result
+> extends SecondaryCheckSchemaCompilingGenerator<
+	SchemaType,
+	RawData,
+	Result
+>{
+	protected readonly discovery:DataTransformer;
+
+	protected constructor(
+		ajv:Ajv,
+		schema:SchemaObject,
+		discovery:DataTransformer
+	) {
+		super(ajv, schema);
+		this.discovery = discovery;
+	}
+
+	static async augment_schema(
+		discovery:DataTransformer,
+		schema: SchemaObject
+	) : Promise<SchemaObject> {
+		return augment_schema(discovery, schema);
 	}
 }
 

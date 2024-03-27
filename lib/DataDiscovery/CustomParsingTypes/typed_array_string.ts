@@ -86,12 +86,19 @@ export class typed_array_string extends SecondaryCheckSchemaCompilingGenerator<
 		};
 	}
 
-	secondary_check(
+	async secondary_check(
 		schema_data: schema_type,
 		raw_data: unknown
 	) {
+		this._secondary_errors = undefined;
 		if (!is_string(raw_data)) {
-			return Promise.resolve(false);
+			this._secondary_errors = [
+				new NoMatchError(
+					raw_data,
+					'Raw data must be a string!'
+				),
+			];
+			return false;
 		}
 
 		const converter = this.discovery.data.find_generator(
@@ -99,23 +106,34 @@ export class typed_array_string extends SecondaryCheckSchemaCompilingGenerator<
 		);
 		const parsed = string_to_array(raw_data);
 
-		const result = parsed && converter.check(parsed);
+		let result = parsed && converter.check(parsed);
 
 		if (
 			parsed
 			&& false === result
 			&& converter instanceof SecondaryCheckSchemaCompilingGenerator
 		) {
-			return Promise.resolve(
-				(parsed as unknown[]).every((e) => converter.secondary_check(
+			this._secondary_errors = converter.check.errors || [];
+
+			for (const item of parsed) {
+				if (!(await converter.secondary_check(
 					schema_data.typed_array_string.items,
-					e
-				))
-			);
+					item
+				))) {
+					result = false;
+				}
+
+				if (!result) {
+					if (converter.secondary_errors) {
+						this._secondary_errors.push(
+							...converter.secondary_errors
+						);
+					}
+					break;
+				}
+			}
 		}
 
-		this._secondary_errors = converter.check.errors;
-
-		return Promise.resolve(result);
+		return result;
 	}
 }
