@@ -42,8 +42,8 @@ export class string_starts_with extends SecondaryCheckSchemaCompilingGenerator<
 	secondary_check(
 		schema_data: RawData,
 		raw_data:unknown
-	) : raw_data is string {
-		return (
+	) {
+		return Promise.resolve(
 			is_string(raw_data)
 			&& raw_data.startsWith(schema_data.string_starts_with)
 		);

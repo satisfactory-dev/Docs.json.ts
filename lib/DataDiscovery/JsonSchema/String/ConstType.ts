@@ -36,7 +36,10 @@ export class ConstType extends SecondaryCheckSchemaCompilingGenerator<
 	secondary_check(
 		schema_data: schema_type,
 		raw_data: unknown
-	): raw_data is typeof schema_data.const{
-		return is_string(raw_data) && raw_data === schema_data.const;
+	) {
+		return Promise.resolve(
+			is_string(raw_data)
+			&& raw_data === schema_data.const
+		);
 	}
 }

@@ -1,5 +1,5 @@
 import {
-	SchemaCompilingGenerator,
+	SchemaCompilingGenerator, SecondaryCheckSchemaCompilingGenerator,
 } from '../Generator';
 import {
 	schema as items_schema,
@@ -21,6 +21,7 @@ import {
 import {
 	writeFileSync,
 } from 'node:fs';
+import {is_string} from '../../StringStartsWith';
 
 type schema_type = {
 	type: 'string',
@@ -28,7 +29,7 @@ type schema_type = {
 	typed_array_string: items_schema_type,
 };
 
-export class typed_array_string extends SchemaCompilingGenerator<
+export class typed_array_string extends SecondaryCheckSchemaCompilingGenerator<
 	schema_type,
 	string,
 	unknown[]
@@ -81,5 +82,21 @@ export class typed_array_string extends SchemaCompilingGenerator<
 
 			return parsed.map(e => converter(e));
 		};
+	}
+
+	secondary_check(
+		schema_data: schema_type,
+		raw_data: unknown
+	) {
+		if (!is_string(raw_data)) {
+			return Promise.resolve(false);
+		}
+
+		const converter = this.discovery.data.find_generator(
+			schema_data.typed_array_string.items
+		);
+		const parsed = string_to_array(raw_data);
+
+		return Promise.resolve(parsed && converter.check(parsed));
 	}
 }

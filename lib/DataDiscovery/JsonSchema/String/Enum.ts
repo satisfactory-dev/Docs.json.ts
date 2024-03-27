@@ -51,8 +51,8 @@ export class Enum extends SecondaryCheckSchemaCompilingGenerator<
 	secondary_check(
 		schema_data: { type: 'string'; enum: [string, ...string[]]; },
 		raw_data: unknown
-	): raw_data is string {
-		return (
+	) {
+		return Promise.resolve(
 			is_string(raw_data)
 			&& schema_data.enum.includes(raw_data)
 		);

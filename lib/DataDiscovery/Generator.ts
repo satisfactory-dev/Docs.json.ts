@@ -67,13 +67,13 @@ export abstract class SecondaryCheckSchemaCompilingGenerator<
 	abstract secondary_check(
 		schema_data:SchemaType,
 		raw_data:unknown
-	): raw_data is RawData;
+	): Promise<boolean>;
 
 	static secondary_check_generators(
 		discovery:DataTransformer,
 		against:SchemaObject[]
 	) {
-		return against.map(
+		const secondary = against.map(
 			(e) => {
 				return [
 					discovery.data.find_generator(e),
@@ -92,6 +92,24 @@ export abstract class SecondaryCheckSchemaCompilingGenerator<
 				SchemaObject
 			] => maybe[0] instanceof SecondaryCheckSchemaCompilingGenerator
 		);
+
+		return async (
+			raw_data:unknown
+		) => {
+			for (const generator of secondary) {
+				if (
+					await generator[0].secondary_check(generator[1], raw_data)
+				) {
+					const result = await generator[0].generate(generator[1]);
+
+					return () => {
+						return result(raw_data);
+					}
+				}
+			}
+
+			return undefined;
+		}
 	}
 
 	static secondary_check_generation(
@@ -108,15 +126,10 @@ export abstract class SecondaryCheckSchemaCompilingGenerator<
 			const generator = generators.find(e => e.check(raw_data));
 
 			if (!generator) {
-				const maybe = secondary.find(
-					e => e[0].secondary_check(
-						e[1],
-						raw_data
-					)
-				);
+				const maybe = await secondary(raw_data);
 
 				if (maybe) {
-					return (await maybe[0].generate(maybe[1]))(raw_data);
+					return maybe();
 				}
 
 				throw new NoMatchError({
