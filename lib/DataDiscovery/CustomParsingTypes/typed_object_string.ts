@@ -55,6 +55,29 @@ export const schema_sub_types = [
 	enum_schema,
 	UnrealEngineString_parent_schema,
 	const_schema,
+	{
+		type: 'object',
+		required: ['type', 'minLength', 'typed_array_string'],
+		additionalProperties: false,
+		properties: {
+			type: {type: 'string', const: 'string'},
+			minLength: {type: 'number', const: 1},
+			typed_array_string: {
+				type: 'object',
+				required: ['type', 'minItems', 'items'],
+				additionalProperties: false,
+				properties: {
+					type: {type: 'string', const: 'array'},
+					minItems: {type: 'number', minimum: 1},
+					items: {
+						oneOf: [
+							UnrealEngineString_parent_schema,
+						],
+					},
+				},
+			},
+		},
+	},
 ];
 
 export function schema_object(
