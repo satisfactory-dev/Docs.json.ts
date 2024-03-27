@@ -25,7 +25,7 @@
 			"properties": {
 				"ClassName": {
 					"type": "string",
-					"pattern": "^(Desc|Build|Recipe|Foundation_ConcretePolished_8x[24]|ResourceSink|(Ficsmas_)?Schematic|CustomizerUnlock|Research|CBG|Equip|BP_((Equipment|Item)Descriptor|EqDesc)[^_]+|BP_ConsumeableEquipment)_"
+					"minLength": 1
 				}
 			}
 		},

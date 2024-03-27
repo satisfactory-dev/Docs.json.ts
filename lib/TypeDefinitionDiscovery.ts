@@ -41,6 +41,7 @@ import {
 	UnrealEngineString,
 } from './TypeDefinitionDiscovery/CustomParsingTypes/UnrealEngineString';
 import {
+	NonEmptyString,
 	StringType,
 } from './TypeDefinitionDiscovery/JsonSchema/String';
 
@@ -463,6 +464,7 @@ export class TypeDefinitionDiscovery
 			new BooleanEnum(ajv),
 			new Enum(ajv),
 			new StringType(ajv),
+			new NonEmptyString(ajv),
 		];
 	}
 
