@@ -1,4 +1,5 @@
-import {
+import ts, {
+	IntersectionTypeNode,
 	TypeLiteralNode, TypeReferenceNode,
 } from 'typescript';
 import Ajv from 'ajv/dist/2020';
@@ -6,11 +7,15 @@ import {
 	TypeDefinitionDiscovery,
 } from '../../TypeDefinitionDiscovery';
 import {
+	adjust_class_name,
 	create_object_type_from_entries, type_reference_node,
 } from '../../TsFactoryWrapper';
 import {
 	GeneratorDoesDiscovery,
 } from '../GeneratorDoesDiscovery';
+import {
+	is_string,
+} from '../../StringStartsWith';
 
 export type RawData = {
 	type: 'object',
@@ -70,9 +75,11 @@ export const schema = {
 	},
 };
 
+type possible = TypeLiteralNode|TypeReferenceNode|IntersectionTypeNode;
+
 export class ObjectType extends GeneratorDoesDiscovery<
 	RawData,
-	TypeLiteralNode|TypeReferenceNode
+	possible
 > {
 	constructor(ajv:Ajv, discovery:TypeDefinitionDiscovery) {
 		super(ajv, schema, discovery);
@@ -80,7 +87,7 @@ export class ObjectType extends GeneratorDoesDiscovery<
 
 	generate() {
 		return (raw_data:RawData) => {
-			const type = create_object_type_from_entries(
+			let type:possible = create_object_type_from_entries(
 				Object.entries(raw_data.properties).map((entry) => {
 					return [
 						entry[0],
@@ -92,7 +99,12 @@ export class ObjectType extends GeneratorDoesDiscovery<
 			if ('not' in raw_data) {
 				const exclude = this.discovery.find(raw_data.not);
 
-				return type_reference_node('Exclude', type, exclude);
+				type = type_reference_node('Exclude', type, exclude);
+			} else if ('$ref' in raw_data && is_string(raw_data.$ref)) {
+				type = ts.factory.createIntersectionTypeNode([
+					type,
+					type_reference_node(adjust_class_name(raw_data.$ref)),
+				]);
 			}
 
 			return type;
