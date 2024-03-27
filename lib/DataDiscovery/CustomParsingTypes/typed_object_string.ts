@@ -87,6 +87,28 @@ function schema_object(...additional_oneOf:SchemaObject[]) : SchemaObject
 	};
 }
 
+const nested_schema = schema_object(
+	schema_object(),
+	{
+		type: 'object',
+		additionalProperties: false,
+		patternProperties: {
+			[property_regex]: schema_object(
+				schema_object(),
+				{
+					type: 'object',
+					additionalProperties: false,
+					patternProperties: {
+						[property_regex]: schema_object(
+							schema_object()
+						),
+					},
+				}
+			),
+		},
+	}
+);
+
 const schema = {
 	type: 'object',
 	required: ['type', 'minLength', 'typed_object_string'],
@@ -102,27 +124,7 @@ const schema = {
 				[property_regex]: {
 					oneOf: [
 						...schema_sub_types,
-						schema_object(
-							schema_object(),
-							{
-								type: 'object',
-								additionalProperties: false,
-								patternProperties: {
-									[property_regex]: schema_object(
-										schema_object(),
-										{
-											type: 'object',
-											additionalProperties: false,
-											patternProperties: {
-												[property_regex]: schema_object(
-													schema_object()
-												),
-											},
-										}
-									),
-								},
-							}
-						),
+						nested_schema,
 						{
 							type: 'object',
 							required: ['oneOf'],

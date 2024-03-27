@@ -15,7 +15,9 @@ import {
 	type_reference_node,
 } from '../../TsFactoryWrapper';
 import Ajv from 'ajv/dist/2020';
-import {is_string} from '../../StringStartsWith';
+import {
+	is_string,
+} from '../../StringStartsWith';
 
 export class string_starts_with extends SchemaCompilingGenerator<
 	RawData,
