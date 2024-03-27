@@ -198,7 +198,6 @@ export function EntityName_array_from_Node_array(nodes: Node[]): EntityName[] {
 			sub_nodes.push(
 				...[
 					node.initializer,
-					node.name,
 					node.type,
 					node.initializer,
 				].filter(
@@ -215,7 +214,7 @@ export function EntityName_array_from_Node_array(nodes: Node[]): EntityName[] {
 			);
 		} else if (ts.isBindingElement(node)) {
 			sub_nodes.push(
-				...[node.initializer, node.name].filter(
+				...[node.initializer].filter(
 					(maybe): maybe is Exclude<typeof maybe, undefined> =>
 						!!maybe
 				)
@@ -260,7 +259,7 @@ export function EntityName_array_from_Node_array(nodes: Node[]): EntityName[] {
 		} else if (ts.isObjectLiteralExpression(node)) {
 			sub_nodes.push(...node.properties);
 		} else if (ts.isPropertyAssignment(node)) {
-			sub_nodes.push(node.name, node.initializer);
+			sub_nodes.push(node.initializer);
 		} else if (ts.isArrayLiteralExpression(node)) {
 			sub_nodes.push(...node.elements);
 		} else if (ts.isComputedPropertyName(node)) {
