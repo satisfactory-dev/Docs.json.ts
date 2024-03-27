@@ -1,7 +1,9 @@
 import {
 	SchemaCompilingGenerator,
 } from '../Generator';
-import Ajv from 'ajv/dist/2020';
+import Ajv, {
+	SchemaObject,
+} from 'ajv/dist/2020';
 import {
 	property_regex,
 } from '../../CustomParsingTypes/TypedObjectString';
@@ -52,6 +54,39 @@ export const schema_sub_types = [
 	const_schema,
 ];
 
+function schema_object(...additional_oneOf:SchemaObject[]) : SchemaObject
+{
+	return {
+		type: 'object',
+		required: [
+			'type',
+			'minLength',
+			'typed_object_string',
+		],
+		additionalProperties: false,
+		properties: {
+			type: {
+				type: 'string',
+				const: 'string',
+			},
+			minLength: {
+				type: 'number',
+				const: 1,
+			},
+			typed_object_string: {
+				type: 'object',
+				additionalProperties: false,
+				patternProperties: {
+					[property_regex]: {oneOf: [
+						...schema_sub_types,
+						...additional_oneOf,
+					]},
+				},
+			},
+		},
+	};
+}
+
 const schema = {
 	type: 'object',
 	required: ['type', 'minLength', 'typed_object_string'],
@@ -67,31 +102,27 @@ const schema = {
 				[property_regex]: {
 					oneOf: [
 						...schema_sub_types,
-						{
-							type: 'object',
-							required: [
-								'type',
-								'minLength',
-								'typed_object_string',
-							],
-							additionalProperties: false,
-							properties: {
-								type: {
-									type: 'string',
-									const: 'string',
+						schema_object(
+							schema_object(),
+							{
+								type: 'object',
+								additionalProperties: false,
+								patternProperties: {
+									[property_regex]: schema_object(
+										schema_object(),
+										{
+											type: 'object',
+											additionalProperties: false,
+											patternProperties: {
+												[property_regex]: schema_object(
+													schema_object()
+												),
+											},
+										}
+									),
 								},
-								minLength: {type: 'number', const: 1},
-								typed_object_string: {
-									type: 'object',
-									additionalProperties: false,
-									patternProperties: {
-										[property_regex]: {
-											oneOf: schema_sub_types,
-										},
-									},
-								},
-							},
-						},
+							}
+						),
 						{
 							type: 'object',
 							required: ['oneOf'],
@@ -109,32 +140,10 @@ const schema = {
 							additionalProperties: false,
 							patternProperties: {
 								[property_regex]: {
-									type: 'object',
-									required: [
-										'type',
-										'minLength',
-										'typed_object_string',
+									oneOf: [
+										...schema_sub_types,
+										schema_object(schema_object()),
 									],
-									additionalProperties: false,
-									properties: {
-										type: {
-											type: 'string',
-											const: 'string',
-										},
-										minLength: {
-											type: 'number',
-											const: 1,
-										},
-										typed_object_string: {
-											type: 'object',
-											additionalProperties: false,
-											patternProperties: {
-												[property_regex]: {oneOf: [
-													...schema_sub_types,
-												]},
-											},
-										},
-									},
 								},
 							},
 						},

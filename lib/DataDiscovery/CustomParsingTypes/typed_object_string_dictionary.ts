@@ -22,6 +22,9 @@ import {
 import {
 	property_exists_on_object,
 } from '../../CustomParsingTypes/CustomPairingTypes';
+import {
+	writeFileSync,
+} from 'node:fs';
 
 const schema = {
 	type: 'object',
@@ -63,6 +66,14 @@ export class typed_object_string_dictionary extends SchemaCompilingGenerator<
 			...schema,
 		});
 		this.typed_object_string = new typed_object_string(ajv, discovery);
+
+		writeFileSync(
+			'/app/typed_object_string_dictionary.schema.json',
+			`${JSON.stringify({
+				definitions: UnrealEngineString_schema_definitions,
+				...schema,
+			}, null, '\t')}\n`
+		)
 	}
 	async generate(
 		schema_data: { [key: string]: schema_type; }

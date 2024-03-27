@@ -95,6 +95,9 @@ import {
 import {
 	is_string,
 } from './StringStartsWith';
+import {
+	string_starts_with,
+} from './DataDiscovery/CustomParsingTypes/string_starts_with';
 
 export class DataTransformer
 {
@@ -340,13 +343,14 @@ export class DataTransformer
 			new ConstType(ajv) as AnyGenerator,
 			new Enum(ajv) as AnyGenerator,
 			new String_oneOf(ajv),
-			new oneOf(ajv),
+			new oneOf(ajv, transformer),
 			new typed_object_string(ajv, transformer) as AnyGenerator,
 			new typed_array_string(ajv, transformer) as AnyGenerator,
 			new typed_object_string_dictionary(
 				ajv,
 				transformer
 			) as AnyGenerator,
+			new string_starts_with(ajv) as AnyGenerator,
 		);
 
 		return transformer;

@@ -10,20 +10,21 @@ import {
 	type_reference_node,
 } from '../../TsFactoryWrapper';
 
-type RawData = {type: 'string', string_starts_with: string};
+export type RawData = {type: 'string', string_starts_with: string};
+export const schema = {
+	type: 'object',
+	required: ['type', 'string_starts_with'],
+	additionalProperties: false,
+	properties: {
+		type: {type: 'string', const: 'string'},
+		string_starts_with: {type: 'string'},
+	},
+};
 
 export class string_starts_with extends Generator<RawData, TypeReferenceNode>
 {
 	constructor(ajv:Ajv) {
-		super(ajv, {
-			type: 'object',
-			required: ['type', 'string_starts_with'],
-			additionalProperties: false,
-			properties: {
-				type: {type: 'string', const: 'string'},
-				string_starts_with: {type: 'string'},
-			},
-		});
+		super(ajv, schema);
 	}
 
 	generate() {

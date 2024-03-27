@@ -45,7 +45,7 @@ export class DataTransformerDiscovery
 		this.discovery = discovery;
 		this.$ref = $ref.fromDataDiscovery(ajv, discovery);
 		this.items = new items(ajv, discovery);
-		this.oneOf = new oneOf(ajv);
+		this.oneOf = new oneOf(ajv, discovery);
 		this.anyOf = new anyOf(ajv);
 		this.prefixItems = new prefixItems(ajv, discovery);
 	}
