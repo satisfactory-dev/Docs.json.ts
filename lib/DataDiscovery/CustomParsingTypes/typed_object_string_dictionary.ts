@@ -32,9 +32,9 @@ import {
 function schema_object(...additional_oneOf:SchemaObject[]) : SchemaObject
 {
 	return {
-	type: 'object',
-	additionalProperties: false,
-	patternProperties: {
+		type: 'object',
+		additionalProperties: false,
+		patternProperties: {
 			[property_regex]: {oneOf: [
 				typed_object_string_schema_generator(
 					typed_object_string_schema_generator()
@@ -42,8 +42,8 @@ function schema_object(...additional_oneOf:SchemaObject[]) : SchemaObject
 				...schema_sub_types,
 				...additional_oneOf,
 			]},
-	},
-};
+		},
+	};
 }
 
 const schema = schema_object(schema_object(schema_object()));
