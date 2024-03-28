@@ -35,6 +35,7 @@
 
 -   [Docs.json.ts.dic](Docs.json.ts.dic) can be used by JetBrains' IDEs to suppress false-positive matches in the spellchecker as a result of the contents of `Docs.json`
     -   refer to JetBrains' own documentation for adding `.dic` files to the spell checking.
+-   may need to add the `NODE_OPTIONS` environment variable from the `ts-node` service listed in [docker-compose.yml](docker-compose.yml)
 
 # License
 
