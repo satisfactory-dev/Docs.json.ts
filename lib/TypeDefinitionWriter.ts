@@ -88,17 +88,6 @@ import {
 
 const __dirname = import.meta.dirname;
 
-const known_ref_file_targets = {
-	'quaternion': 'common/vectors.ts',
-	transformation: 'common/vectors.ts',
-	color: 'common/color.ts',
-	'color-decimal': 'common/color.ts',
-	mDockingRuleSet: 'common/vectors.ts',
-	mLightControlData: 'classes/CoreUObject/FGBuildableLightSource.ts',
-	mDisableSnapOn: 'classes/CoreUObject/FGBuildable.ts',
-	'SpecifiedColor': 'classes/CoreUObject/FGSchematic.ts',
-};
-
 type class_can_have_tree = ClassDeclaration & {
 	heritageClauses: [{types: [{expression: ts.Identifier}]}];
 };
@@ -225,9 +214,7 @@ export class TypeDefinitionWriter
 		for (const entry of Object.entries(types.found_types)) {
 			const [definition, generator] = entry;
 			const $ref = definition.substring(14);
-			const target_file = this.can_guess_filename($ref)
-				? this.guess_filename($ref)
-				: 'common/unassigned.ts';
+			const target_file = TypeDefinitionWriter.guess_filename($ref);
 
 			if (!(target_file in files)) {
 				files[target_file] = [];
@@ -499,33 +486,16 @@ export class TypeDefinitionWriter
 		await eslint_generated_types(`${parent_folder}/**/*.ts`);
 	}
 
-	private is_known_key_file_target(
-		ref: string
-	): ref is keyof typeof known_ref_file_targets {
-		return ref in known_ref_file_targets;
-	}
-
-	can_guess_filename(ref: string) {
-		return (
-			ref in known_ref_file_targets
-			|| /^FG[A-Za-z]+--[A-Za-z-_]+$/.test(ref)
-			|| ref.startsWith('EditorCurveData--')
-			|| ref.startsWith('NativeClass--')
-		);
-	}
-
-	guess_filename(ref: string): string {
-		if (!this.can_guess_filename(ref)) {
-			throw new Error(`${ref} not a supported filename`);
+	static guess_filename(ref: string): string {
+		if (/^FG[A-Za-z]+--[A-Za-z-_]+$/.test(ref)) {
+			return `classes/CoreUObject/${ref.split('--')[0]}.ts`;
 		} else if (
 			ref.startsWith('NativeClass--')
 			|| ref.startsWith('EditorCurveData--')
 		) {
 			return 'classes/base.ts';
-		} else if (this.is_known_key_file_target(ref)) {
-			return known_ref_file_targets[ref];
 		}
 
-		return `classes/CoreUObject/${ref.split('--')[0]}.ts`;
+		return 'common/unassigned.ts';
 	}
 }
