@@ -4,12 +4,16 @@
   "description": "TypeScript mappings for the Docs.json file that ships with Satisfactory",
   "repository": "https://github.com/Satisfactory-Clips-Archive/Docs.json.ts.git",
   "scripts": {
+    "test": "nyc jasmine --config=jasmine.json",
     "generate": "ts-node ./generate-typescript-types.ts",
     "validate": "ts-node validate-Docs.ts"
   },
   "devDependencies": {
     "@types/eslint": "^8.56.6",
+    "@types/jasmine": "^5.1.4",
     "@types/node": "^20.11.20",
+    "c8": "^9.1.0",
+    "jasmine": "^5.1.0",
     "ts-node": "^10.9.2",
     "tslib": "^2.6.2"
   },
