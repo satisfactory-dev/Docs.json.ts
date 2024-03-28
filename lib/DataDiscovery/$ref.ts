@@ -42,12 +42,6 @@ export class $ref extends SchemaCompilingGenerator<
 
 			const result = this.definitions[$ref];
 
-			if (raw_data.$ref === '#/definitions/NativeClass') {
-				console.log(raw_data);
-
-				throw new Error('bar');
-			}
-
 			if (object_has_property(
 				raw_data,
 				'properties',
