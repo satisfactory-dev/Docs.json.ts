@@ -185,12 +185,6 @@ export class DataTransformerDiscovery
 	async find(from:unknown) {
 		const transformer = this.find_generator(from);
 
-		const match = await transformer.generate(from);
-
-		if (!(match instanceof Function)) {
-			throw new NoMatchError({from, match}, 'Unsupported');
-		}
-
-		return match;
+		return await transformer.generate(from);
 	}
 }
