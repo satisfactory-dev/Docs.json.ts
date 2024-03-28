@@ -75,6 +75,7 @@ import {
 	NoMatchError,
 } from './DataTransformerDiscovery/NoMatchError';
 import {
+	FilesGenerator,
 	FromArray,
 } from './FilesGenerator';
 import {
@@ -198,7 +199,7 @@ export class TypeDefinitionWriter
 			throw new Error('Schema appears to have no definitions');
 		}
 
-		const files:{[key: string]: Node[]} = {};
+		let files:{[key: string]: Node[]} = {};
 
 		const custom_generators = new FromArray([
 			...legacy_UnrealEngineString_module.CustomGenerators(),
@@ -206,13 +207,12 @@ export class TypeDefinitionWriter
 			StringPassedRegExp,
 		]);
 
-		for await (const entry of this.discovery.generate_files()) {
-			if (!(entry.file in files)) {
-				files[entry.file] = [];
-			}
-
-			files[entry.file].push(entry.node);
-		}
+		files = await FilesGenerator.merge_files(
+			[
+				this.discovery,
+			],
+			files
+		);
 
 		const validations = types.found_classes.map(
 			e => this.ajv.compile<DocsDataItem>(
@@ -231,20 +231,17 @@ export class TypeDefinitionWriter
 			throw new Error('Could not find NativeClass on provided schema!');
 		}
 
-		for await (const entry of
-			(new DocsFiles(
+		files = await FilesGenerator.merge_files(
+			[
+				new DocsFiles(
 				docs,
 				validations,
 				this.discovery,
 				this.ajv
-			)).generate_files()
-		) {
-			if (!(entry.file in files)) {
-				files[entry.file] = [];
-			}
-
-			files[entry.file].push(entry.node);
-		}
+				),
+			],
+			files
+		);
 
 		const transformer = await DataTransformer.with_default_candidates(
 			this.ajv,
@@ -252,18 +249,13 @@ export class TypeDefinitionWriter
 			docs
 		);
 
-		for (const generator of [
+		files = await FilesGenerator.merge_files(
+			[
 			transformer,
 			custom_generators,
-		]) {
-			for await (const entry of generator.generate_files()) {
-				if (!(entry.file in files)) {
-					files[entry.file] = [];
-				}
-
-				files[entry.file].push(entry.node);
-			}
-		}
+			],
+			files
+		);
 
 
 		const auto_imports = new DocsTsAutoImports(files);
