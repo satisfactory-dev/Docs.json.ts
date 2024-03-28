@@ -43,9 +43,6 @@ import {
 	object_has_property,
 	value_is_non_array_object,
 } from './CustomParsingTypes/CustomPairingTypes';
-import {
-	create_modifiers,
-} from './TsFactoryWrapper';
 import ts, {
 	ClassDeclaration,
 	Node,
@@ -66,15 +63,11 @@ import {
 	format_code,
 } from './DocsTsGenerator';
 import {
-	adjust_unrealengine_value,
 	UnrealEngineString as legacy_UnrealEngineString_module,
 } from './CustomParsingTypes/UnrealEngineString';
 import {
 	string_starts_with, StringPassedRegExp,
 } from './TypesGeneration/validators';
-import {
-	UnrealEngineString,
-} from './TypeDefinitionDiscovery/CustomParsingTypes/UnrealEngineString';
 import {
 	DataTransformer,
 } from './DataTransformer';
@@ -84,6 +77,9 @@ import {
 import {
 	FromArray,
 } from './FilesGenerator';
+import {
+	FilesGenerator as DocsFiles,
+} from './DocsTsGenerator/FilesGenerator';
 
 const __dirname = import.meta.dirname;
 
@@ -235,49 +231,19 @@ export class TypeDefinitionWriter
 			throw new Error('Could not find NativeClass on provided schema!');
 		}
 
-		const is_NativeClass = await TypesDiscovery.generate_is_NativeClass(
-			this.ajv,
-			this.discovery.types_discovery
-		);
-
-		for (const entry of await docs.get()) {
-			const check = validations.find(maybe => maybe(entry));
-
-			if (!check) {
-				throw new NoMatchError(
-					{
-						types,
-						entry,
-					},
-					'Could not find schema!'
-				);
-			} else if (!is_NativeClass(entry)) {
-				console.error(entry);
-				throw new Error('Entry not a general NativeClass!');
+		for await (const entry of
+			(new DocsFiles(
+				docs,
+				validations,
+				this.discovery,
+				this.ajv
+			)).generate_files()
+		) {
+			if (!(entry.file in files)) {
+				files[entry.file] = [];
 			}
 
-			const entry_type = this.discovery.find(
-				types.found_classes[validations.indexOf(check)]
-			);
-
-			const entry_class_name = adjust_unrealengine_value(
-				UnrealEngineString.fromString(entry.NativeClass).right
-			);
-
-			const entry_filename = `classes/CoreUObject/${
-				entry_class_name
-			}.ts`;
-
-			if (!(entry_filename in files)) {
-				files[entry_filename] = [];
-			}
-
-			files[entry_filename].push(ts.factory.createTypeAliasDeclaration(
-				create_modifiers('export'),
-				`${entry_class_name}__NativeClass`,
-				undefined,
-				entry_type
-			));
+			files[entry.file].push(entry.node);
 		}
 
 		const transformer = await DataTransformer.with_default_candidates(
