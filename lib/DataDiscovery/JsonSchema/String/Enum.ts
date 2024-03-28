@@ -5,7 +5,9 @@ import Ajv from 'ajv/dist/2020';
 import {
 	is_string,
 } from '../../../StringStartsWith';
-import {NoMatchError} from '../../../DataTransformerDiscovery/NoMatchError';
+import {
+	NoMatchError,
+} from '../../../DataTransformerDiscovery/NoMatchError';
 
 export const schema = {
 	type: 'object',
