@@ -234,10 +234,10 @@ export class TypeDefinitionWriter
 		files = await FilesGenerator.merge_files(
 			[
 				new DocsFiles(
-				docs,
-				validations,
-				this.discovery,
-				this.ajv
+					docs,
+					validations,
+					this.discovery,
+					this.ajv
 				),
 			],
 			files
@@ -251,8 +251,8 @@ export class TypeDefinitionWriter
 
 		files = await FilesGenerator.merge_files(
 			[
-			transformer,
-			custom_generators,
+				transformer,
+				custom_generators,
 			],
 			files
 		);
