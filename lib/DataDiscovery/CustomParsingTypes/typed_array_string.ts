@@ -115,21 +115,19 @@ export class typed_array_string extends SecondaryCheckSchemaCompilingGenerator<
 		) {
 			this._secondary_errors = converter.check.errors || [];
 
+			result = true;
+
 			for (const item of parsed) {
 				if (!(await converter.secondary_check(
 					schema_data.typed_array_string.items,
 					item
 				))) {
 					result = false;
-				}
-
-				if (!result) {
 					if (converter.secondary_errors) {
 						this._secondary_errors.push(
 							...converter.secondary_errors
 						);
 					}
-					break;
 				}
 			}
 		}
