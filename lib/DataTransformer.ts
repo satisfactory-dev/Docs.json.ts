@@ -98,8 +98,11 @@ import {
 import {
 	string_starts_with,
 } from './DataDiscovery/CustomParsingTypes/string_starts_with';
+import {
+	FilesGenerator,
+} from './FilesGenerator';
 
-export class DataTransformer
+export class DataTransformer extends FilesGenerator
 {
 	public readonly discovery:TypeDefinitionDiscovery;
 	private readonly ajv:Ajv;
@@ -116,6 +119,7 @@ export class DataTransformer
 		discovery:TypeDefinitionDiscovery,
 		docs:DocsTsGenerator,
 	) {
+		super();
 		configure_ajv(ajv);
 		this.ajv = ajv;
 		this.discovery = discovery;
@@ -228,7 +232,7 @@ export class DataTransformer
 		return types.found_classes[index];
 	}
 
-	async* generate()
+	async* generate_files()
 	{
 		const is_NativeClass = await TypesDiscovery.generate_is_NativeClass(
 			this.ajv,

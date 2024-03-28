@@ -82,6 +82,9 @@ import {
 import {
 	NoMatchError,
 } from './DataTransformerDiscovery/NoMatchError';
+import {
+	FromArray,
+} from './FilesGenerator';
 
 const __dirname = import.meta.dirname;
 
@@ -213,12 +216,13 @@ export class TypeDefinitionWriter
 
 		const files:{[key: string]: Node[]} = {};
 
-		const custom_generators = [
+		const custom_generators = new FromArray([
 			...legacy_UnrealEngineString_module.CustomGenerators(),
 			string_starts_with,
 			StringPassedRegExp,
-		]
+		]);
 
+		/*
 		for (const entry of custom_generators) {
 			if (!(entry.file in files)) {
 				files[entry.file] = [];
@@ -226,6 +230,7 @@ export class TypeDefinitionWriter
 
 			files[entry.file].push(entry.node);
 		}
+		 */
 
 		for (const entry of Object.entries(types.found_types)) {
 			const [definition, generator] = entry;
@@ -314,17 +319,17 @@ export class TypeDefinitionWriter
 			docs
 		);
 
-
-		for await (
-			const entry of (
-				transformer
-			).generate()
-		) {
+		for (const generator of [
+			transformer,
+			custom_generators,
+		]) {
+			for await (const entry of generator.generate_files()) {
 			if (!(entry.file in files)) {
 				files[entry.file] = [];
 			}
 
 			files[entry.file].push(entry.node);
+			}
 		}
 
 
