@@ -64,15 +64,30 @@ export class Pattern extends SecondaryCheckSchemaCompilingGenerator<
 		schema_data: schema_type,
 		raw_data:unknown
 	) {
+		this._secondary_errors = undefined;
+
 		if (!is_string(raw_data)) {
+			this._secondary_errors = [new NoMatchError({
+				raw_data,
+			})]
+
 			return Promise.resolve(false);
 		}
 
 		const regex = new RegExp(schema_data.pattern);
 
-		return Promise.resolve(
+		const result = (
 			is_string(raw_data)
 			&& regex.test(raw_data)
 		);
+
+		if (!result) {
+			this._secondary_errors = [new NoMatchError({
+				raw_data,
+				pattern: schema_data.pattern,
+			})];
+		}
+
+		return Promise.resolve(result);
 	}
 }

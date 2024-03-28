@@ -343,7 +343,7 @@ export class DataTransformer
 			new ConstType(ajv) as AnyGenerator,
 			new Enum(ajv) as AnyGenerator,
 			new String_oneOf(ajv),
-			new oneOf(ajv, transformer),
+			new oneOf(ajv, transformer) as AnyGenerator,
 			new typed_object_string(ajv, transformer) as AnyGenerator,
 			new typed_array_string(ajv, transformer) as AnyGenerator,
 			new typed_object_string_dictionary(

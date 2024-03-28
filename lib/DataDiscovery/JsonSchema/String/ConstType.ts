@@ -5,6 +5,9 @@ import Ajv from 'ajv/dist/2020';
 import {
 	is_string,
 } from '../../../StringStartsWith';
+import {
+	NoMatchError,
+} from '../../../DataTransformerDiscovery/NoMatchError';
 
 export type schema_type = {type: 'string', const: string};
 
@@ -37,9 +40,19 @@ export class ConstType extends SecondaryCheckSchemaCompilingGenerator<
 		schema_data: schema_type,
 		raw_data: unknown
 	) {
-		return Promise.resolve(
+		this._secondary_errors = undefined;
+		const result = (
 			is_string(raw_data)
 			&& raw_data === schema_data.const
 		);
+
+		if (!result) {
+			this._secondary_errors = [new NoMatchError({
+				raw_data,
+				expecting: schema_data.const,
+			})];
+		}
+
+		return Promise.resolve(result);
 	}
 }

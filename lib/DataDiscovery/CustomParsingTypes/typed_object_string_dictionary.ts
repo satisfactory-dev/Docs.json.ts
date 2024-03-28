@@ -1,5 +1,5 @@
 import {
-	SchemaCompilingGenerator,
+	SecondaryCheckSchemaCompilingGenerator,
 } from '../Generator';
 import {
 	property_regex,
@@ -23,11 +23,17 @@ import {
 	UnrealEngineString_schema_definitions,
 } from '../../CustomParsingTypes/UnrealEngineString';
 import {
-	property_exists_on_object,
+	property_exists_on_object, value_is_non_array_object,
 } from '../../CustomParsingTypes/CustomPairingTypes';
 import {
 	writeFileSync,
 } from 'node:fs';
+import {
+	string_to_object,
+} from '../../DocsValidation';
+import {
+	is_string,
+} from '../../StringStartsWith';
 
 function schema_object(...additional_oneOf:SchemaObject[]) : SchemaObject
 {
@@ -48,7 +54,8 @@ function schema_object(...additional_oneOf:SchemaObject[]) : SchemaObject
 
 const schema = schema_object(schema_object(schema_object()));
 
-export class typed_object_string_dictionary extends SchemaCompilingGenerator<
+export class typed_object_string_dictionary
+	extends SecondaryCheckSchemaCompilingGenerator<
 	{
 		[key: string]: schema_type,
 	},
@@ -56,12 +63,14 @@ export class typed_object_string_dictionary extends SchemaCompilingGenerator<
 	{[key: string]: unknown}
 > {
 	private readonly typed_object_string:typed_object_string;
+	private readonly discovery:DataTransformer;
 
 	constructor(ajv:Ajv, discovery:DataTransformer) {
 		super(ajv, {
 			definitions: UnrealEngineString_schema_definitions,
 			...schema,
 		});
+		this.discovery = discovery;
 		this.typed_object_string = new typed_object_string(ajv, discovery);
 
 		writeFileSync(
@@ -122,5 +131,77 @@ export class typed_object_string_dictionary extends SchemaCompilingGenerator<
 				];
 			}));
 		};
+	}
+
+	async secondary_check(
+		schema_data: { [key: string]: schema_type; },
+		raw_data: unknown
+	): Promise<boolean> {
+		this._secondary_errors = undefined;
+
+		const parsed =
+			value_is_non_array_object(raw_data)
+				? raw_data
+				: (
+					is_string(raw_data)
+						? string_to_object(raw_data)
+						: false
+				);
+
+		if (!value_is_non_array_object(parsed)) {
+			this._secondary_errors = [
+				new NoMatchError(
+					{
+						raw_data,
+						parsed,
+					},
+					'Raw data did not parse to something usable!'
+				),
+			];
+
+			return false;
+		}
+
+		const converters = Object.fromEntries(Object.entries(schema_data).map(
+			e => [
+				e[0],
+				this.discovery.data.find_generator(e[1]),
+			],
+		));
+
+		let result = true;
+
+		for (const entry of Object.entries(parsed)) {
+			const [property, value] = entry;
+
+			const converter = converters[property] || undefined;
+
+			result = (
+				!converter
+				|| converter.check(value)
+				|| (
+					SecondaryCheckSchemaCompilingGenerator.is(
+						converter
+					)
+					&& await converter.secondary_check(
+						schema_data[property],
+						value
+					)
+				)
+			);
+
+			if (!result) {
+				break;
+			}
+		}
+
+		if (!result) {
+			this._secondary_errors =
+				SecondaryCheckSchemaCompilingGenerator.gather_errors(
+					Object.values(converters)
+				);
+		}
+
+		return result;
 	}
 }

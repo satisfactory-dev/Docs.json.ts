@@ -113,7 +113,12 @@ export class typed_array_string extends SecondaryCheckSchemaCompilingGenerator<
 			&& false === result
 			&& converter instanceof SecondaryCheckSchemaCompilingGenerator
 		) {
-			this._secondary_errors = converter.check.errors || [];
+			this._secondary_errors = converter.check.errors ? [
+				new NoMatchError({
+					converter: converter.constructor.name,
+					errors: converter.check.errors,
+				}),
+			] : [];
 
 			result = true;
 
@@ -124,9 +129,10 @@ export class typed_array_string extends SecondaryCheckSchemaCompilingGenerator<
 				))) {
 					result = false;
 					if (converter.secondary_errors) {
-						this._secondary_errors.push(
-							...converter.secondary_errors
-						);
+						this._secondary_errors.push(new NoMatchError({
+							converter: converter.constructor.name,
+							errors: converter.secondary_errors,
+						}));
 					}
 					break;
 				}

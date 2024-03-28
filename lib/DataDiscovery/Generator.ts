@@ -84,7 +84,7 @@ export abstract class SecondaryCheckSchemaCompilingGenerator<
 	static secondary_check_generators(
 		discovery:DataTransformer,
 		against:SchemaObject[]
-	) {
+	) : (raw_data:unknown) => Promise<(() => unknown)|undefined> {
 		const secondary = against.map(
 			(e) => {
 				return [
@@ -140,8 +140,9 @@ export abstract class SecondaryCheckSchemaCompilingGenerator<
 			if (!generator) {
 				const maybe = await secondary(raw_data);
 
-				/*
-				if (!maybe) {
+				if (maybe) {
+					return maybe();
+					/*
 					throw new NoMatchError({
 						raw_data,
 						generator_types: generators.map(
@@ -160,10 +161,19 @@ export abstract class SecondaryCheckSchemaCompilingGenerator<
 							> => SecondaryCheckSchemaCompilingGenerator.is(e)
 						).map(e => e.secondary_errors),
 					});
-				}
-				*/
 
+					 */
+				}
+
+				/*
 				return maybe ? maybe() : false;
+				 */
+			}
+
+			if (!generator) {
+				throw new NoMatchError({
+					raw_data,
+				});
 			}
 
 			return (await generator.generate(raw_data))(raw_data);
@@ -178,6 +188,24 @@ export abstract class SecondaryCheckSchemaCompilingGenerator<
 		unknown
 	> {
 		return maybe instanceof SecondaryCheckSchemaCompilingGenerator;
+	}
+
+	static gather_errors(from:AnyGenerator[]): (ErrorObject|NoMatchError)[] {
+		const result:(ErrorObject|NoMatchError)[] = [];
+
+		for (const generator of from) {
+			if (generator.check.errors) {
+				result.push(...generator.check.errors);
+			}
+			if (
+				SecondaryCheckSchemaCompilingGenerator.is(generator)
+				&& generator.secondary_errors
+			) {
+				result.push(...generator.secondary_errors)
+			}
+		}
+
+		return result;
 	}
 }
 

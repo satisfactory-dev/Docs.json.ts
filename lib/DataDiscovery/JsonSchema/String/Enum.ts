@@ -5,6 +5,7 @@ import Ajv from 'ajv/dist/2020';
 import {
 	is_string,
 } from '../../../StringStartsWith';
+import {NoMatchError} from '../../../DataTransformerDiscovery/NoMatchError';
 
 export const schema = {
 	type: 'object',
@@ -52,9 +53,20 @@ export class Enum extends SecondaryCheckSchemaCompilingGenerator<
 		schema_data: { type: 'string'; enum: [string, ...string[]]; },
 		raw_data: unknown
 	) {
-		return Promise.resolve(
+		this._secondary_errors = undefined;
+
+		const result = (
 			is_string(raw_data)
 			&& schema_data.enum.includes(raw_data)
 		);
+
+		if (!result) {
+			this._secondary_errors = [new NoMatchError({
+				raw_data,
+				expecting: schema_data.enum,
+			})];
+		}
+
+		return Promise.resolve(result);
 	}
 }

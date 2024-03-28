@@ -318,19 +318,10 @@ export class typed_object_string extends
 		}
 
 		if (!result) {
-			this._secondary_errors = [];
-
-			for (const converter of Object.values(converters)) {
-				if (converter.check.errors) {
-					this._secondary_errors.push(...converter.check.errors);
-				}
-				if (
-					converter instanceof SecondaryCheckSchemaCompilingGenerator
-					&& converter.secondary_errors
-				) {
-					this._secondary_errors.push(...converter.secondary_errors);
-				}
-			}
+			this._secondary_errors =
+				SecondaryCheckSchemaCompilingGenerator.gather_errors(
+					Object.values(converters)
+				);
 		}
 
 		return result;
