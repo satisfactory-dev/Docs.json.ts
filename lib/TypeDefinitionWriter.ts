@@ -44,7 +44,6 @@ import {
 	value_is_non_array_object,
 } from './CustomParsingTypes/CustomPairingTypes';
 import {
-	adjust_class_name,
 	create_modifiers,
 } from './TsFactoryWrapper';
 import ts, {
@@ -211,21 +210,12 @@ export class TypeDefinitionWriter
 			StringPassedRegExp,
 		]);
 
-		for (const entry of Object.entries(types.found_types)) {
-			const [definition, generator] = entry;
-			const $ref = definition.substring(14);
-			const target_file = TypeDefinitionWriter.guess_filename($ref);
-
-			if (!(target_file in files)) {
-				files[target_file] = [];
+		for await (const entry of this.discovery.generate_files()) {
+			if (!(entry.file in files)) {
+				files[entry.file] = [];
 			}
 
-			files[target_file].push(ts.factory.createTypeAliasDeclaration(
-				create_modifiers('export'),
-				adjust_class_name($ref),
-				undefined,
-				generator(schema.definitions[$ref] as never)
-			));
+			files[entry.file].push(entry.node);
 		}
 
 		const validations = types.found_classes.map(

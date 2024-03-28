@@ -16,7 +16,7 @@ import {
 import {
 	is_string,
 } from './StringStartsWith';
-import {
+import ts, {
 	TypeNode,
 } from 'typescript';
 import {
@@ -44,6 +44,16 @@ import {
 	NonEmptyString,
 	StringType,
 } from './TypeDefinitionDiscovery/JsonSchema/String';
+import {
+	FilesGenerator,
+} from './FilesGenerator';
+import {
+	TypeDefinitionWriter,
+} from './TypeDefinitionWriter';
+import {
+	adjust_class_name,
+	create_modifiers,
+} from './TsFactoryWrapper';
 
 type SchemaObjectWithDefinitions<Definitions extends {[key: string]: true}> =
 	& SchemaObject
@@ -117,8 +127,7 @@ export type ref_discovery_type = {
 	missing_classes: {[key: string]: unknown}[],
 };
 
-export class TypeDefinitionDiscovery
-{
+export class TypeDefinitionDiscovery extends FilesGenerator {
 	private readonly ajv:Ajv;
 	public readonly types_discovery:TypesDiscovery;
 	private readonly candidates: [
@@ -141,6 +150,7 @@ export class TypeDefinitionDiscovery
 			...AnyGenerator[],
 		],
 	) {
+		super();
 		this.ajv = ajv;
 		this.types_discovery = new TypesDiscovery(ajv, json, types_discovery);
 		this.candidates = type_definition_discover;
@@ -453,6 +463,35 @@ export class TypeDefinitionDiscovery
 		}
 
 		return type;
+	}
+
+	async* generate_files() {
+		const types = await this.discover_type_definitions();
+		const schema = await this.types_discovery.schema_from_json();
+
+		if (!object_has_property(
+			schema,
+			'definitions',
+			value_is_non_array_object
+		)) {
+			throw new Error('No definitions on schema!');
+		}
+
+		for (const entry of Object.entries(types.found_types)) {
+			const [definition, generator] = entry;
+			const $ref = definition.substring(14);
+			const target_file = TypeDefinitionWriter.guess_filename($ref);
+
+			yield {
+				file: target_file,
+				node: ts.factory.createTypeAliasDeclaration(
+					create_modifiers('export'),
+					adjust_class_name($ref),
+					undefined,
+					generator(schema.definitions[$ref] as never)
+				),
+			};
+		}
 	}
 
 	static standard_jsonschema_discovery(
