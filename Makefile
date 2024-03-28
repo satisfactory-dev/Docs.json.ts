@@ -13,7 +13,7 @@ shell:
 	${DOCKER_COMPOSER_PREFIX} exec ts-node sh
 
 install:
-	${DOCKER_COMPOSER_PREFIX} exec ts-node npm install
+	${DOCKER_COMPOSER_PREFIX} exec node npm install
 
 validate: lint-lib build-lib validate--skip-checks
 
