@@ -26,4 +26,4 @@ jobs:
             - name: Run tests
               run: ./node_modules/.bin/jasmine --config=./jasmine.json
               env:
-                NODE_OPTIONS: '--enable-source-maps --no-warnings=ExperimentalWarning --loader ts-node/esm'
+                  NODE_OPTIONS: '--enable-source-maps --no-warnings=ExperimentalWarning --loader ts-node/esm'
