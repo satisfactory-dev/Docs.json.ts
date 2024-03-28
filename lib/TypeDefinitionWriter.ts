@@ -222,16 +222,6 @@ export class TypeDefinitionWriter
 			StringPassedRegExp,
 		]);
 
-		/*
-		for (const entry of custom_generators) {
-			if (!(entry.file in files)) {
-				files[entry.file] = [];
-			}
-
-			files[entry.file].push(entry.node);
-		}
-		 */
-
 		for (const entry of Object.entries(types.found_types)) {
 			const [definition, generator] = entry;
 			const $ref = definition.substring(14);
@@ -324,11 +314,11 @@ export class TypeDefinitionWriter
 			custom_generators,
 		]) {
 			for await (const entry of generator.generate_files()) {
-			if (!(entry.file in files)) {
-				files[entry.file] = [];
-			}
+				if (!(entry.file in files)) {
+					files[entry.file] = [];
+				}
 
-			files[entry.file].push(entry.node);
+				files[entry.file].push(entry.node);
 			}
 		}
 

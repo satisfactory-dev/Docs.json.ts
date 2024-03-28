@@ -34,7 +34,9 @@ import {
 	is_string,
 	local_ref,
 } from '../StringStartsWith';
-import { entry } from '../FilesGenerator';
+import {
+	entry,
+} from '../FilesGenerator';
 
 const already_configured = new WeakSet<Ajv>();
 
