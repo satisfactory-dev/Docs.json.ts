@@ -77,9 +77,6 @@ import {
 	UnrealEngineString,
 } from './TypeDefinitionDiscovery/CustomParsingTypes/UnrealEngineString';
 import {
-	DataTransformer,
-} from './DataTransformer';
-import {
 	NoMatchError,
 } from './DataTransformerDiscovery/NoMatchError';
 
@@ -307,26 +304,6 @@ export class TypeDefinitionWriter
 				entry_type
 			));
 		}
-
-		const transformer = await DataTransformer.with_default_candidates(
-			this.ajv,
-			this.discovery,
-			docs
-		);
-
-
-		for await (
-			const entry of (
-				transformer
-			).generate()
-		) {
-			if (!(entry.file in files)) {
-				files[entry.file] = [];
-			}
-
-			files[entry.file].push(entry.node);
-		}
-
 
 		const auto_imports = new DocsTsAutoImports(files);
 		await auto_imports.generate();
