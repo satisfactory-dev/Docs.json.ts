@@ -71,16 +71,16 @@ for (const describing of Object.entries(spec)) {
 	const function_to_call = functions_to_call[function_name];
 
 	describe(function_name, () => {
-	for (const expectations of Object.entries(definitions)) {
-		const [expectation, assertions] = expectations;
+		for (const expectations of Object.entries(definitions)) {
+			const [expectation, assertions] = expectations;
 
-		it(expectation, () => {
-			for (const assertion of assertions) {
-				const [argument, to_equal] = assertion;
-				expect(function_to_call(argument)).toEqual(to_equal);
-			}
-		});
-	}
+			it(expectation, () => {
+				for (const assertion of assertions) {
+					const [argument, to_equal] = assertion;
+					expect(function_to_call(argument)).toEqual(to_equal);
+				}
+			});
+		}
 	});
 }
 
