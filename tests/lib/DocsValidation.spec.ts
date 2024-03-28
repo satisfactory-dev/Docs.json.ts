@@ -1,10 +1,13 @@
 import 'jasmine';
 
 import {
+	configure_ajv,
 	string_to_array,
 	string_to_native_type,
 	string_to_object,
 } from '../../lib/DocsValidation';
+import Ajv, {SchemaObject} from 'ajv/dist/2020';
+import exp from 'node:constants';
 
 type definitions = {
 	[key: string]: [string, unknown][]
@@ -67,6 +70,7 @@ for (const describing of Object.entries(spec)) {
 	] = describing as [keyof typeof spec, definitions];
 	const function_to_call = functions_to_call[function_name];
 
+	describe(function_name, () => {
 	for (const expectations of Object.entries(definitions)) {
 		const [expectation, assertions] = expectations;
 
@@ -77,4 +81,71 @@ for (const describing of Object.entries(spec)) {
 			}
 		});
 	}
+	});
 }
+
+describe('configure_ajv', () => {
+	const test_keyword_schemas:[
+		SchemaObject,
+		[string, boolean][],
+	][] = [
+		[
+			{
+				type: 'string',
+				minLength: 1,
+				typed_object_string: {
+					foo: {type: 'string', const: 'bar'},
+				},
+			},
+			[
+				['(foo=bar)', true],
+				['(foo="bar")', true],
+				['(foo=baz)', false],
+			],
+		],
+		[
+			{
+				type: 'string',
+				minLength: 1,
+				'string_starts_with': 'foo',
+			},
+			[
+				['foobar', true],
+				['bar', false],
+			],
+		],
+	];
+
+	it('Ajv fails without use', () => {
+		const ajv = new Ajv();
+		const basic = ajv.compile({type: 'string'});
+
+		expect(basic('foo')).toEqual(true);
+		expect(basic(1)).toEqual(false);
+
+		for (const entry of test_keyword_schemas) {
+			const [schema] = entry;
+
+			expect(() => {
+				return ajv.compile(schema);
+			}).toThrow();
+		}
+	});
+
+	it('Behaves when configured', () => {
+		const ajv = new Ajv();
+		configure_ajv(ajv);
+
+		for (const entry of test_keyword_schemas) {
+			const [schema, checks] = entry;
+
+			const check = ajv.compile(schema);
+
+			for (const check_entry of checks) {
+				const [input, expected] = check_entry;
+
+				expect(check(input)).toEqual(expected);
+			}
+		}
+	});
+});
