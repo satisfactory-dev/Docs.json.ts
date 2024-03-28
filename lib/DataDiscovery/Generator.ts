@@ -140,6 +140,27 @@ export abstract class SecondaryCheckSchemaCompilingGenerator<
 			if (!generator) {
 				const maybe = await secondary(raw_data);
 
+				if (!maybe) {
+					throw new NoMatchError({
+						raw_data,
+						generator_types: generators.map(
+							e => e.constructor.name
+						),
+						errors: generators.map(
+							e => e.check.errors
+						),
+						secondary_errors: generators.filter(
+							(
+								e
+							): e is SecondaryCheckSchemaCompilingGenerator<
+								unknown,
+								unknown,
+								unknown
+							> => SecondaryCheckSchemaCompilingGenerator.is(e)
+						).map(e => e.secondary_errors),
+					});
+				}
+
 				return maybe ? maybe() : false;
 			}
 
