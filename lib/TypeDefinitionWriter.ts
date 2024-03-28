@@ -45,7 +45,6 @@ import {
 } from './CustomParsingTypes/CustomPairingTypes';
 import ts, {
 	ClassDeclaration,
-	Node,
 } from 'typescript';
 import {
 	DocsTsAutoImports,
@@ -199,15 +198,6 @@ export class TypeDefinitionWriter
 			throw new Error('Schema appears to have no definitions');
 		}
 
-		let files:{[key: string]: Node[]} = {};
-
-		files = await FilesGenerator.merge_files(
-			[
-				this.discovery,
-			],
-			files
-		);
-
 		const validations = types.found_classes.map(
 			e => this.ajv.compile<DocsDataItem>(
 				{
@@ -225,34 +215,28 @@ export class TypeDefinitionWriter
 			throw new Error('Could not find NativeClass on provided schema!');
 		}
 
-		files = await FilesGenerator.merge_files(
-			[
-				new DocsFiles(
-					docs,
-					validations,
-					this.discovery,
-					this.ajv
-				),
-			],
-			files
-		);
-
 		const transformer = await DataTransformer.with_default_candidates(
 			this.ajv,
 			this.discovery,
 			docs
 		);
 
-		files = await FilesGenerator.merge_files(
+		const files = await FilesGenerator.merge_files(
 			[
+				this.discovery,
+				new DocsFiles(
+					docs,
+					validations,
+					this.discovery,
+					this.ajv
+				),
 				transformer,
 				new FromArray([
 					...legacy_UnrealEngineString_module.CustomGenerators(),
 					string_starts_with,
 					StringPassedRegExp,
 				]),
-			],
-			files
+			]
 		);
 
 
