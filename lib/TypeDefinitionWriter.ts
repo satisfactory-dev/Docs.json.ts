@@ -43,13 +43,8 @@ import {
 	object_has_property,
 	value_is_non_array_object,
 } from './CustomParsingTypes/CustomPairingTypes';
-import {
-	adjust_class_name,
-	create_modifiers,
-} from './TsFactoryWrapper';
 import ts, {
 	ClassDeclaration,
-	Node,
 } from 'typescript';
 import {
 	DocsTsAutoImports,
@@ -67,31 +62,23 @@ import {
 	format_code,
 } from './DocsTsGenerator';
 import {
-	adjust_unrealengine_value,
 	UnrealEngineString as legacy_UnrealEngineString_module,
 } from './CustomParsingTypes/UnrealEngineString';
 import {
 	string_starts_with, StringPassedRegExp,
 } from './TypesGeneration/validators';
 import {
-	UnrealEngineString,
-} from './TypeDefinitionDiscovery/CustomParsingTypes/UnrealEngineString';
-import {
 	NoMatchError,
 } from './DataTransformerDiscovery/NoMatchError';
+import {
+	FilesGenerator,
+	FromArray,
+} from './FilesGenerator';
+import {
+	FilesGenerator as DocsFiles,
+} from './DocsTsGenerator/FilesGenerator';
 
 const __dirname = import.meta.dirname;
-
-const known_ref_file_targets = {
-	'quaternion': 'common/vectors.ts',
-	transformation: 'common/vectors.ts',
-	color: 'common/color.ts',
-	'color-decimal': 'common/color.ts',
-	mDockingRuleSet: 'common/vectors.ts',
-	mLightControlData: 'classes/CoreUObject/FGBuildableLightSource.ts',
-	mDisableSnapOn: 'classes/CoreUObject/FGBuildable.ts',
-	'SpecifiedColor': 'classes/CoreUObject/FGSchematic.ts',
-};
 
 type class_can_have_tree = ClassDeclaration & {
 	heritageClauses: [{types: [{expression: ts.Identifier}]}];
@@ -208,41 +195,6 @@ export class TypeDefinitionWriter
 			throw new Error('Schema appears to have no definitions');
 		}
 
-		const files:{[key: string]: Node[]} = {};
-
-		const custom_generators = [
-			...legacy_UnrealEngineString_module.CustomGenerators(),
-			string_starts_with,
-			StringPassedRegExp,
-		]
-
-		for (const entry of custom_generators) {
-			if (!(entry.file in files)) {
-				files[entry.file] = [];
-			}
-
-			files[entry.file].push(entry.node);
-		}
-
-		for (const entry of Object.entries(types.found_types)) {
-			const [definition, generator] = entry;
-			const $ref = definition.substring(14);
-			const target_file = this.can_guess_filename($ref)
-				? this.guess_filename($ref)
-				: 'common/unassigned.ts';
-
-			if (!(target_file in files)) {
-				files[target_file] = [];
-			}
-
-			files[target_file].push(ts.factory.createTypeAliasDeclaration(
-				create_modifiers('export'),
-				adjust_class_name($ref),
-				undefined,
-				generator(schema.definitions[$ref] as never)
-			));
-		}
-
 		const validations = types.found_classes.map(
 			e => this.ajv.compile<DocsDataItem>(
 				{
@@ -260,50 +212,23 @@ export class TypeDefinitionWriter
 			throw new Error('Could not find NativeClass on provided schema!');
 		}
 
-		const is_NativeClass = await TypesDiscovery.generate_is_NativeClass(
-			this.ajv,
-			this.discovery.types_discovery
+		const files = await FilesGenerator.merge_files(
+			[
+				this.discovery,
+				new DocsFiles(
+					docs,
+					validations,
+					this.discovery,
+					this.ajv
+				),
+				new FromArray([
+					...legacy_UnrealEngineString_module.CustomGenerators(),
+					string_starts_with,
+					StringPassedRegExp,
+				]),
+			]
 		);
 
-		for (const entry of await docs.get()) {
-			const check = validations.find(maybe => maybe(entry));
-
-			if (!check) {
-				throw new NoMatchError(
-					{
-						types,
-						entry,
-					},
-					'Could not find schema!'
-				);
-			} else if (!is_NativeClass(entry)) {
-				console.error(entry);
-				throw new Error('Entry not a general NativeClass!');
-			}
-
-			const entry_type = this.discovery.find(
-				types.found_classes[validations.indexOf(check)]
-			);
-
-			const entry_class_name = adjust_unrealengine_value(
-				UnrealEngineString.fromString(entry.NativeClass).right
-			);
-
-			const entry_filename = `classes/CoreUObject/${
-				entry_class_name
-			}.ts`;
-
-			if (!(entry_filename in files)) {
-				files[entry_filename] = [];
-			}
-
-			files[entry_filename].push(ts.factory.createTypeAliasDeclaration(
-				create_modifiers('export'),
-				`${entry_class_name}__NativeClass`,
-				undefined,
-				entry_type
-			));
-		}
 
 		const auto_imports = new DocsTsAutoImports(files);
 		await auto_imports.generate();
@@ -481,33 +406,16 @@ export class TypeDefinitionWriter
 		await eslint_generated_types(`${parent_folder}/**/*.ts`);
 	}
 
-	private is_known_key_file_target(
-		ref: string
-	): ref is keyof typeof known_ref_file_targets {
-		return ref in known_ref_file_targets;
-	}
-
-	can_guess_filename(ref: string) {
-		return (
-			ref in known_ref_file_targets
-			|| /^FG[A-Za-z]+--[A-Za-z-_]+$/.test(ref)
-			|| ref.startsWith('EditorCurveData--')
-			|| ref.startsWith('NativeClass--')
-		);
-	}
-
-	guess_filename(ref: string): string {
-		if (!this.can_guess_filename(ref)) {
-			throw new Error(`${ref} not a supported filename`);
+	static guess_filename(ref: string): string {
+		if (/^FG[A-Za-z]+--[A-Za-z-_]+$/.test(ref)) {
+			return `classes/CoreUObject/${ref.split('--')[0]}.ts`;
 		} else if (
 			ref.startsWith('NativeClass--')
 			|| ref.startsWith('EditorCurveData--')
 		) {
 			return 'classes/base.ts';
-		} else if (this.is_known_key_file_target(ref)) {
-			return known_ref_file_targets[ref];
 		}
 
-		return `classes/CoreUObject/${ref.split('--')[0]}.ts`;
+		return 'common/unassigned.ts';
 	}
 }

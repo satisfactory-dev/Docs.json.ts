@@ -34,6 +34,9 @@ import {
 	is_string,
 	local_ref,
 } from '../StringStartsWith';
+import {
+	entry,
+} from '../FilesGenerator';
 
 const already_configured = new WeakSet<Ajv>();
 
@@ -293,7 +296,7 @@ export class UnrealEngineString {
 		};
 	}
 
-	static CustomGenerators() {
+	static CustomGenerators() : [entry, ...entry[]] {
 		const UnrealEngineString_class = createClass(
 			'UnrealEngineString',
 			[
