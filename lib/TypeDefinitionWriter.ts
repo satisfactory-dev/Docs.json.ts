@@ -201,12 +201,6 @@ export class TypeDefinitionWriter
 
 		let files:{[key: string]: Node[]} = {};
 
-		const custom_generators = new FromArray([
-			...legacy_UnrealEngineString_module.CustomGenerators(),
-			string_starts_with,
-			StringPassedRegExp,
-		]);
-
 		files = await FilesGenerator.merge_files(
 			[
 				this.discovery,
@@ -252,7 +246,11 @@ export class TypeDefinitionWriter
 		files = await FilesGenerator.merge_files(
 			[
 				transformer,
-				custom_generators,
+				new FromArray([
+					...legacy_UnrealEngineString_module.CustomGenerators(),
+					string_starts_with,
+					StringPassedRegExp,
+				]),
 			],
 			files
 		);
