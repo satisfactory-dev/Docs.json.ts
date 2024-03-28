@@ -9,6 +9,8 @@ on:
 jobs:
     prettier-check:
         runs-on: ubuntu-latest
+        env:
+            NODE_OPTIONS: '--enable-source-maps --no-warnings=ExperimentalWarning --loader ts-node/esm'
         strategy:
             matrix:
                 node-version: [21.x]
