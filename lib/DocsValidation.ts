@@ -52,6 +52,11 @@ class DefaultConfig {
 		configure_ajv(ajv);
 		this._ajv = ajv;
 	}
+
+	clear()
+	{
+		this._ajv = undefined;
+	}
 }
 
 export const default_config = new DefaultConfig();
@@ -255,8 +260,12 @@ export function string_to_array<T extends unknown[]>(data: string): T | false {
 
 const already_configured = new WeakSet();
 
+export function ajv_is_configured(ajv: Ajv) {
+	return already_configured.has(ajv);
+}
+
 export function configure_ajv(ajv: Ajv): void {
-	if (already_configured.has(ajv)) {
+	if (ajv_is_configured(ajv)) {
 		return;
 	}
 

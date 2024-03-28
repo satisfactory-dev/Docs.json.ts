@@ -1,17 +1,33 @@
 import 'jasmine';
 
 import {
+	ajv_is_configured,
 	configure_ajv,
+	default_config,
 	string_to_array,
 	string_to_native_type,
 	string_to_object,
 } from '../../lib/DocsValidation';
-import Ajv, {SchemaObject} from 'ajv/dist/2020';
-import exp from 'node:constants';
+import Ajv, {
+	SchemaObject,
+} from 'ajv/dist/2020';
 
 type definitions = {
 	[key: string]: [string, unknown][]
 };
+
+describe('DefaultConfig', () => {
+	it('getter', () => {
+		expect(default_config.ajv).not.toEqual(default_config.ajv);
+	});
+	it('setter', () => {
+		const default_ajv = default_config.ajv;
+		default_config.ajv = default_ajv;
+		expect(default_config.ajv).toEqual(default_ajv);
+		default_config.clear();
+		expect(default_config.ajv).not.toEqual(default_config.ajv);
+	});
+})
 
 const spec:{
 	string_to_array: definitions,
@@ -41,9 +57,11 @@ const spec:{
 			['(foo="bar",bar=baz)', {foo: 'bar', bar: 'baz'}],
 			['(foo=bar,bar="baz")', {foo: 'bar', bar: 'baz'}],
 			['(foo="bar",bar="baz")', {foo: 'bar', bar: 'baz'}],
+			['(foo=bar,bar=())', {foo: 'bar', bar: '()'}],
 		],
 		'nested objects': [
 			['(foo=(bar="baz"))', {foo: {bar: 'baz'}}],
+			['(foo=(bar=)', {foo: '(bar='}],
 		],
 	},
 	string_to_native_type: {
@@ -148,4 +166,19 @@ describe('configure_ajv', () => {
 			}
 		}
 	});
+});
+
+
+describe('ajv_is_configured', () => {
+	it('not yet configured', () => {
+		const ajv = new Ajv();
+
+		expect(ajv_is_configured(ajv)).toBeFalse();
+
+		configure_ajv(ajv);
+
+		expect(ajv_is_configured(ajv)).toBeTrue();
+
+		expect(ajv_is_configured(default_config.ajv)).toBeTrue();
+	})
 });
