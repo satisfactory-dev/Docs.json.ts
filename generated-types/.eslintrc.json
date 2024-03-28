@@ -4,7 +4,7 @@
 		"../.eslintrc.json"
 	],
 	"parserOptions": {
-		"project": "../tsconfig.json"
+		"project": "./tsconfig.json"
 	},
 	"rules": {
 		"max-len": "off",
