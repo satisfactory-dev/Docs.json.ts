@@ -5,7 +5,7 @@ import ts, {
 	KeywordTypeSyntaxKind,
 	LiteralTypeNode,
 	MethodDeclaration,
-	Modifier,
+	Modifier, ModifierSyntaxKind, ModifierToken,
 	NodeArray,
 	NullLiteral,
 	ParenthesizedExpression,
@@ -28,15 +28,22 @@ import ts, {
 import {
 	is_string,
 } from './StringStartsWith';
+import {
+	non_empty_map,
+} from './ArrayUtilities';
 
 declare type supported_class_modifiers = ('export' | 'abstract')[];
 
-declare type supported_method_modifiers = (
+declare type supported_modifier =
 	| 'abstract'
 	| 'protected'
 	| 'public'
-	| 'static'
-)[];
+	| 'static';
+
+declare type supported_method_modifiers = [
+	supported_modifier,
+	...supported_modifier[],
+];
 
 export function adjust_class_name(class_name: string): string {
 	if ('boolean' === class_name) {
@@ -78,10 +85,27 @@ export const modifier_map: {
 	},
 };
 
-export function create_modifier(
-	modifier: keyof typeof modifier_map
-): ts.ModifierToken<ts.ModifierSyntaxKind> {
-	return modifier_map[modifier]();
+type modifier = Exclude<keyof typeof modifier_map, number>;
+
+export function create_modifiers(
+	first:modifier,
+	...rest:modifier[]
+) {
+	const modifiers = rest.reduce(
+		(was:[modifier, ...modifier[]], is:modifier) => {
+			if (!was.includes(is)) {
+				was.push(is);
+			}
+
+			return was;
+		},
+		[first]
+	);
+
+	return non_empty_map<modifier, ModifierToken<ModifierSyntaxKind>>(
+		modifiers,
+		e => modifier_map[e]()
+	);
 }
 
 export function type_reference_node(
@@ -178,24 +202,12 @@ function create_method(
 	name: string,
 	type_parameters: ts.TypeParameterDeclaration[],
 	parameters: createMethod_parameters_entry[],
+	modifiers: supported_method_modifiers,
 	body: ts.Statement[],
-	modifiers: supported_method_modifiers = [],
-	return_type: ts.TypeNode | undefined = undefined
+	return_type: ts.TypeNode | undefined = undefined,
 ) {
-	const resolved_modifiers = modifiers
-		.reduce((was, is) => {
-			if (!was.includes(is)) {
-				was.push(is);
-			}
-
-			return was;
-		}, [] as supported_method_modifiers)
-		.map((modifier) => {
-			return create_modifier(modifier);
-		});
-
 	return ts.factory.createMethodDeclaration(
-		resolved_modifiers,
+		create_modifiers(...modifiers),
 		undefined,
 		name,
 		undefined,
@@ -222,27 +234,27 @@ export function create_method_with_type_parameters(
 	],
 	parameters: createMethod_parameters_entry[],
 	body: ts.Statement[],
-	modifiers: supported_method_modifiers = [],
+	modifiers: supported_method_modifiers,
 	return_type: ts.TypeNode | undefined = undefined
 ) {
 	return create_method(
 		name,
 		type_parameters,
 		parameters,
-		body,
 		modifiers,
+		body,
 		return_type
 	);
 }
 
 export function create_method_without_type_parameters(
 	name: string,
+	modifiers: supported_method_modifiers,
 	parameters: createMethod_parameters_entry[],
 	body: ts.Statement[],
-	modifiers: supported_method_modifiers = [],
-	return_type: ts.TypeNode | undefined = undefined
+	return_type: ts.TypeNode | undefined = undefined,
 ) {
-	return create_method(name, [], parameters, body, modifiers, return_type);
+	return create_method(name, [], parameters, modifiers, body, return_type);
 }
 
 export function create_throw(
@@ -555,7 +567,7 @@ export function create_exported_const_statement(
 	...rest:VariableDeclaration[]
 ): VariableStatement {
 	return ts.factory.createVariableStatement(
-		[create_modifier('export')],
+		create_modifiers('export'),
 		create_const_declaration_list(first, ...rest)
 	);
 }

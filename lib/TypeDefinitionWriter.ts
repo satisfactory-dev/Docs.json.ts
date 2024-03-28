@@ -45,7 +45,7 @@ import {
 } from './CustomParsingTypes/CustomPairingTypes';
 import {
 	adjust_class_name,
-	create_modifier,
+	create_modifiers,
 } from './TsFactoryWrapper';
 import ts, {
 	ClassDeclaration,
@@ -239,7 +239,7 @@ export class TypeDefinitionWriter
 			}
 
 			files[target_file].push(ts.factory.createTypeAliasDeclaration(
-				[create_modifier('export')],
+				create_modifiers('export'),
 				adjust_class_name($ref),
 				undefined,
 				generator(schema.definitions[$ref] as never)
@@ -301,7 +301,7 @@ export class TypeDefinitionWriter
 			}
 
 			files[entry_filename].push(ts.factory.createTypeAliasDeclaration(
-				[create_modifier('export')],
+				create_modifiers('export'),
 				`${entry_class_name}__NativeClass`,
 				undefined,
 				entry_type

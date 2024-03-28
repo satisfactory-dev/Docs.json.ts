@@ -10,7 +10,7 @@ import {
 	create_literal,
 	create_method_with_type_parameters,
 	create_method_without_type_parameters,
-	create_modifier,
+	create_modifiers,
 	create_property_access,
 	create_this_assignment,
 	create_throw_if,
@@ -298,14 +298,14 @@ export class UnrealEngineString {
 			'UnrealEngineString',
 			[
 				ts.factory.createPropertyDeclaration(
-					[create_modifier('readonly')],
+					create_modifiers('readonly'),
 					'left',
 					undefined,
 					ts.factory.createTypeReferenceNode('left'),
 					undefined
 				),
 				ts.factory.createPropertyDeclaration(
-					[create_modifier('readonly')],
+					create_modifiers('readonly'),
 					'right',
 					undefined,
 					ts.factory.createTypeReferenceNode('right'),
@@ -313,6 +313,7 @@ export class UnrealEngineString {
 				),
 				create_method_without_type_parameters(
 					'constructor',
+					['protected'],
 					[
 						createParameter(
 							'left',
@@ -326,8 +327,7 @@ export class UnrealEngineString {
 					[
 						create_this_assignment('left', 'left'),
 						create_this_assignment('right', 'right'),
-					],
-					['protected']
+					]
 				),
 				create_method_with_type_parameters(
 					'fromString',

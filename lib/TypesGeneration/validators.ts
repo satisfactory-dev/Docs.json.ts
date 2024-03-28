@@ -1,6 +1,6 @@
 import ts from 'typescript';
 import {
-	create_modifier,
+	create_modifiers,
 	create_type,
 	createParameter,
 	type_reference_node,
@@ -9,7 +9,7 @@ import {
 export const string_starts_with = {
 	file: 'utils/validators.ts',
 	node: ts.factory.createTypeAliasDeclaration(
-		[create_modifier('export')],
+		create_modifiers('export'),
 		ts.factory.createIdentifier('StringStartsWith'),
 		[
 			ts.factory.createTypeParameterDeclaration(
@@ -74,7 +74,7 @@ export const string_starts_with = {
 export const StringPassedRegExp = {
 	file: 'utils/validators.ts',
 	node: ts.factory.createTypeAliasDeclaration(
-		[create_modifier('export')],
+		create_modifiers('export'),
 		'StringPassedRegExp',
 		[
 			ts.factory.createTypeParameterDeclaration(
