@@ -140,6 +140,7 @@ export abstract class SecondaryCheckSchemaCompilingGenerator<
 			if (!generator) {
 				const maybe = await secondary(raw_data);
 
+				/*
 				if (!maybe) {
 					throw new NoMatchError({
 						raw_data,
@@ -160,6 +161,7 @@ export abstract class SecondaryCheckSchemaCompilingGenerator<
 						).map(e => e.secondary_errors),
 					});
 				}
+				*/
 
 				return maybe ? maybe() : false;
 			}

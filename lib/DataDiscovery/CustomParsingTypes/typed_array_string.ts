@@ -128,6 +128,7 @@ export class typed_array_string extends SecondaryCheckSchemaCompilingGenerator<
 							...converter.secondary_errors
 						);
 					}
+					break;
 				}
 			}
 		}
