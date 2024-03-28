@@ -7,9 +7,11 @@ import Ajv, {
 import {
 	DataTransformer,
 } from '../../DataTransformer';
+/*
 import {
 	NoMatchError,
 } from '../../DataTransformerDiscovery/NoMatchError';
+ */
 
 type schema_type = {oneOf: {[key: string]: unknown}[]};
 
@@ -52,6 +54,7 @@ export class oneOf extends SecondaryCheckSchemaCompilingGenerator<
 				return raw_data;
 			}
 
+			/*
 			throw new NoMatchError({
 				raw_data,
 				schema,
@@ -69,6 +72,8 @@ export class oneOf extends SecondaryCheckSchemaCompilingGenerator<
 					)
 				).map((e) => e.secondary_errors),
 			})
+			 */
+			return  raw_data;
 		});
 	}
 
