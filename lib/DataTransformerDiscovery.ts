@@ -172,7 +172,7 @@ export class DataTransformerDiscovery
 		)));
 	}
 
-	find_generator(from:unknown) {
+	find_generator(from:unknown) : AnyGenerator {
 		const transformer = this.candidates.find(e => e.check(from));
 
 		if (!transformer) {
