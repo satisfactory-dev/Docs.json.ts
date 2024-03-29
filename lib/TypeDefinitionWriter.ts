@@ -232,6 +232,7 @@ export class TypeDefinitionWriter
 					string_starts_with,
 					StringPassedRegExp,
 				]),
+				this.data_discovery,
 			]
 		);
 
@@ -408,6 +409,11 @@ export class TypeDefinitionWriter
 				)
 			);
 		}
+
+		await writeFile(
+			`${__dirname}/../data-progress.md`,
+			await this.data_discovery.generate_markdown()
+		);
 
 		await eslint_generated_types(`${parent_folder}/**/*.ts`);
 	}
