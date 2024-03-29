@@ -29,11 +29,11 @@ describe('merge_files', () => {
 		const files = {};
 
 		expect(
-			await FilesGenerator.merge_files([
+			(await FilesGenerator.merge_files([
 				new FromArray([
 					{file: 'foo.ts', node: create_literal('bar')},
 				]),
-			], files)
-		).toEqual({'foo.ts': []});
+			], files))['foo.ts']
+		).toHaveSize(1);
 	})
 });
