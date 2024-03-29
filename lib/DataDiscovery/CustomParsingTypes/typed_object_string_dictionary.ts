@@ -26,9 +26,6 @@ import {
 	property_exists_on_object, value_is_non_array_object,
 } from '../../CustomParsingTypes/CustomPairingTypes';
 import {
-	writeFileSync,
-} from 'node:fs';
-import {
 	string_to_object,
 } from '../../DocsValidation';
 import {
@@ -72,14 +69,6 @@ export class typed_object_string_dictionary
 		});
 		this.discovery = discovery;
 		this.typed_object_string = new typed_object_string(ajv, discovery);
-
-		writeFileSync(
-			'/app/typed_object_string_dictionary.schema.json',
-			`${JSON.stringify({
-				definitions: UnrealEngineString_schema_definitions,
-				...schema,
-			}, null, '\t')}\n`
-		)
 	}
 	async generate(
 		schema_data: { [key: string]: schema_type; }

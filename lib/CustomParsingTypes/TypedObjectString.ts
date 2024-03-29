@@ -61,9 +61,6 @@ import {
 	typed_string_pattern_schema,
 	typed_string_pattern_value_regex,
 } from './TypedStringPattern';
-import {
-	writeFileSync,
-} from 'node:fs';
 
 const already_configured = new WeakSet<Ajv>();
 
@@ -439,17 +436,6 @@ export class TypedObjectString {
 			},
 			macro: this.ajv_macro_generator(false),
 		});
-
-		writeFileSync(
-			'/app/typed-object-string.meta.schema.json',
-			`${JSON.stringify({
-				...typed_object_string_schema,
-				...{
-					definitions:
-					UnrealEngineString_schema_definitions,
-				},
-			}, null, '\t')}\n`
-		);
 	}
 
 	public static is_$ref_object_dictionary(maybe: {

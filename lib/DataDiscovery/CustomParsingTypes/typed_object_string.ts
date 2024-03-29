@@ -24,9 +24,6 @@ import {
 	value_is_non_array_object,
 } from '../../CustomParsingTypes/CustomPairingTypes';
 import {
-	writeFileSync,
-} from 'node:fs';
-import {
 	UnrealEngineString_parent_schema,
 	UnrealEngineString_schema_definitions,
 } from '../../CustomParsingTypes/UnrealEngineString';
@@ -194,11 +191,6 @@ export class typed_object_string extends
 
 	constructor(ajv: Ajv, discovery:DataTransformer) {
 		super(ajv, schema);
-
-		writeFileSync(
-			'/app/typed_object_string-schema.json',
-			`${JSON.stringify(schema, null, '\t')}\n`
-		);
 
 		this.discovery = discovery;
 	}
