@@ -39,7 +39,7 @@ import {
 } from './FunctionDeclaration';
 import {
 	UnexpectedlyUnknown,
-} from '../SchemaBasedResultsMatching/TypeNodeGeneration';
+} from '../Exceptions';
 
 const recursion_limit = 10;
 

@@ -11,7 +11,7 @@ import ts, {
 } from 'typescript';
 import {
 	UnexpectedlyUnknown,
-} from '../SchemaBasedResultsMatching/TypeNodeGeneration';
+} from '../Exceptions';
 
 export class LiteralTypeNodes extends NodeExtraction<LiteralTypeNode> {
 	protected extract(nodes: LiteralTypeNode[]): EntityName[] {

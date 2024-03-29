@@ -12,7 +12,7 @@ import {
 } from './CustomPairingTypes';
 import {
 	UnexpectedlyUnknown,
-} from '../SchemaBasedResultsMatching/TypeNodeGeneration';
+} from '../Exceptions';
 
 const supported = [supported_$ref, typed_string_enum, typed_string_const];
 

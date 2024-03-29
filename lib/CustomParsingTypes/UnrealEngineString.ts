@@ -25,7 +25,7 @@ import {
 } from '../TsFactoryWrapper';
 import {
 	UnexpectedlyUnknown,
-} from '../SchemaBasedResultsMatching/TypeNodeGeneration';
+} from '../Exceptions';
 import {
 	object_has_property,
 	value_is_non_array_object,

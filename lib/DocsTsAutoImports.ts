@@ -15,7 +15,7 @@ import {
 } from './DocsToAutoImport/from_Node_array';
 import {
 	UnexpectedlyUnknown,
-} from './SchemaBasedResultsMatching/TypeNodeGeneration';
+} from './Exceptions';
 
 declare type initial_check_nodes =
 	| ts.ClassDeclaration

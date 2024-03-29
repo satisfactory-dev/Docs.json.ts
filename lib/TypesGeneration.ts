@@ -1,7 +1,7 @@
 import ts from 'typescript';
 import {
 	UnexpectedlyUnknown,
-} from './SchemaBasedResultsMatching/TypeNodeGeneration';
+} from './Exceptions';
 
 export declare type import_these_somewhere_later = {[key: string]: string[]};
 

@@ -6,7 +6,7 @@ import ts, {
 } from 'typescript';
 import {
 	UnexpectedlyUnknown,
-} from '../SchemaBasedResultsMatching/TypeNodeGeneration';
+} from '../Exceptions';
 
 export class TypeLiteralNodes extends NodeExtraction<TypeLiteralNode> {
 	protected extract(nodes: TypeLiteralNode[]): Node[] {

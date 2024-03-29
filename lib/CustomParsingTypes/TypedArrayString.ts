@@ -13,7 +13,7 @@ import {
 } from './TypedObjectString';
 import {
 	UnexpectedlyUnknown,
-} from '../SchemaBasedResultsMatching/TypeNodeGeneration';
+} from '../Exceptions';
 import {
 	const_schema_type,
 	typed_string_const,

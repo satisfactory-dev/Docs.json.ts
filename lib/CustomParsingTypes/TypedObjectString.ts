@@ -20,7 +20,7 @@ import {
 import {
 	FragileTypeSafetyError,
 	UnexpectedlyUnknown,
-} from '../SchemaBasedResultsMatching/TypeNodeGeneration';
+} from '../Exceptions';
 import {
 	TypeLiteralNode, TypeReferenceNode,
 } from 'typescript';
