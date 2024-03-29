@@ -5,7 +5,7 @@ export class NoMatchError<
 
 	constructor(
 		property: T,
-		message = 'Could not match property to type generation!'
+		message = 'No match found!'
 	) {
 		super(message);
 		this.property = property;

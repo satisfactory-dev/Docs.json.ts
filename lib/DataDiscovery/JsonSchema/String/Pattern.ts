@@ -5,7 +5,7 @@ import {
 import Ajv from 'ajv/dist/2020';
 import {
 	NoMatchError,
-} from '../../../DataTransformerDiscovery/NoMatchError';
+} from '../../../Exceptions';
 import ts, {
 	AsExpression,
 } from 'typescript';

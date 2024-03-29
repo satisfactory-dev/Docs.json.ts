@@ -14,7 +14,7 @@ import {
 } from '../../DocsValidation';
 import {
 	NoMatchError,
-} from '../../DataTransformerDiscovery/NoMatchError';
+} from '../../Exceptions';
 import {
 	UnrealEngineString_schema_definitions,
 } from '../../CustomParsingTypes/UnrealEngineString';

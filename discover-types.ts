@@ -8,7 +8,7 @@ import {
 } from './lib/DocsTsGenerator';
 import {
 	NoMatchError,
-} from './lib/DataTransformerDiscovery/NoMatchError';
+} from './lib/Exceptions';
 import {
 	writeFile,
 } from 'node:fs/promises';
@@ -46,7 +46,7 @@ try {
 	if (err instanceof NoMatchError) {
 		await writeFile(
 			'./discovery-types.failure.json',
-			JSON.stringify(err.value, null, '\t')
+			JSON.stringify(err.property, null, '\t')
 		);
 
 		console.error(err.message, err.stack);

@@ -7,7 +7,7 @@ import {
 } from '../../../StringStartsWith';
 import {
 	NoMatchError,
-} from '../../../DataTransformerDiscovery/NoMatchError';
+} from '../../../Exceptions';
 
 export const schema = {
 	type: 'object',

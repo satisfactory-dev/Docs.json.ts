@@ -18,7 +18,7 @@ import Ajv, {
 } from 'ajv/dist/2020';
 import {
 	NoMatchError,
-} from '../../DataTransformerDiscovery/NoMatchError';
+} from '../../Exceptions';
 import {
 	UnrealEngineString_schema_definitions,
 } from '../../CustomParsingTypes/UnrealEngineString';

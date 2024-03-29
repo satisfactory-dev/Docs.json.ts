@@ -14,7 +14,7 @@ import {
 } from 'node:fs';
 import {
 	NoMatchError,
-} from '../DataTransformerDiscovery/NoMatchError';
+} from '../Exceptions';
 
 export type AnyGenerator = Generator<unknown, unknown, unknown>;
 

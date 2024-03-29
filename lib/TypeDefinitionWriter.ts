@@ -72,7 +72,7 @@ import {
 } from './DataTransformer';
 import {
 	NoMatchError,
-} from './DataTransformerDiscovery/NoMatchError';
+} from './Exceptions';
 import {
 	FilesGenerator,
 	FromArray,

@@ -17,7 +17,7 @@ import {
 } from './CustomParsingTypes/CustomPairingTypes';
 import {
 	NoMatchError,
-} from './DataTransformerDiscovery/NoMatchError';
+} from './Exceptions';
 import {
 	oneOf,
 } from './DataDiscovery/JsonSchema/oneOf';

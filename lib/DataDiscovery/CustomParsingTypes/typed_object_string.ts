@@ -16,7 +16,7 @@ import {
 } from '../../DataTransformer';
 import {
 	NoMatchError,
-} from '../../DataTransformerDiscovery/NoMatchError';
+} from '../../Exceptions';
 import {
 	string_to_object,
 } from '../../DocsValidation';

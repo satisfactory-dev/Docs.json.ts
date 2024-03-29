@@ -23,7 +23,7 @@ import {
 } from '../../CustomParsingTypes/CustomPairingTypes';
 import {
 	NoMatchError,
-} from '../../DataTransformerDiscovery/NoMatchError';
+} from '../../Exceptions';
 
 /**
  * @todo get this to support spitting out TypeReferenceNode instances

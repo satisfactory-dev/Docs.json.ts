@@ -30,7 +30,7 @@ import {
 } from '../../DataTransformer';
 import {
 	NoMatchError,
-} from '../../DataTransformerDiscovery/NoMatchError';
+} from '../../Exceptions';
 
 /**
  * @todo get auto-conversion of Classes property to behave as expected

@@ -91,7 +91,7 @@ import {
 } from './DataDiscovery/CustomParsingTypes/typed_object_string_dictionary';
 import {
 	NoMatchError,
-} from './DataTransformerDiscovery/NoMatchError';
+} from './Exceptions';
 import {
 	is_string,
 } from './StringStartsWith';
