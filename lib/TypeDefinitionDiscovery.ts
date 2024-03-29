@@ -57,6 +57,9 @@ import {
 import {
 	DocsTsGenerator,
 } from './DocsTsGenerator';
+import {
+	progress_group, reduce, remap, remove_indentation,
+} from './MarkdownUtilities';
 
 type SchemaObjectWithDefinitions<Definitions extends {[key: string]: true}> =
 	& SchemaObject
@@ -253,6 +256,126 @@ export class TypeDefinitionDiscovery extends FilesGenerator {
 				),
 			};
 		}
+	}
+
+	async generate_markdown(): Promise<string>
+	{
+		const grouped_progress: progress_group = {
+			members: [],
+			subgroups: {},
+		};
+
+		const manual_groups = {
+			class: '',
+			'class--no-description': '',
+			'class--no-description-or-display-name': '',
+			'color-decimal--semi-native': 'color',
+			'decimal-string': '',
+			'decimal-string--signed': '',
+			'integer-string': '',
+			'integer-string--signed': '',
+			'FGAmmoTypeInstantHit--base': 'FGAmmoType',
+			'FGAmmoTypeInstantHit--chaos': 'FGAmmoType',
+			'FGAmmoTypeInstantHit--standard': 'FGAmmoType',
+			FGAmmoTypeProjectile: 'FGAmmoType',
+			'FGAmmoTypeProjectile--base': 'FGAmmoType',
+			xyz: 'vectors',
+			'xyz--semi-native': 'vectors',
+			xy: 'vectors',
+			'xy--integer': 'vectors',
+			'xy--semi-native': 'vectors',
+			'xyz--integer': 'vectors',
+			quaternion: 'vectors',
+			'quaternion--semi-native': 'vectors',
+			'pitch-yaw-roll': 'vectors',
+			'FGEquipmentDescriptor--base': 'FGEquipment',
+		};
+
+		const discovered_types = await this.types_discovery.discover_types();
+
+		const all_referenced_types = [
+			...discovered_types.discovered_types,
+			...discovered_types.missed_types,
+		].map(e => e.substring(14)).sort((a, b) => a.localeCompare(b));
+		const supported_types = discovered_types.discovered_types.map(
+			e => e.substring(14)
+		);
+
+		for (const item of all_referenced_types) {
+			const parts = item.split('--');
+
+			let checking = grouped_progress;
+
+			if (item in manual_groups) {
+				if ('' !== manual_groups[item as keyof typeof manual_groups]) {
+					if (
+						!(
+							manual_groups[
+								item as keyof typeof manual_groups
+							] in checking.subgroups
+						)
+					) {
+						checking.subgroups[
+							manual_groups[item as keyof typeof manual_groups]
+						] = {
+							members: [],
+							subgroups: {},
+						};
+					}
+
+					checking = checking.subgroups[
+						manual_groups[item as keyof typeof manual_groups]
+					];
+				}
+			} else if (parts.length > 1) {
+				for (
+					let iteration = 1;
+					iteration < Math.min(2, parts.length);
+					++iteration
+				) {
+					if (!(parts[iteration - 1] in checking.subgroups)) {
+						checking.subgroups[parts[iteration - 1]] = {
+							members: [],
+							subgroups: {},
+						};
+					}
+
+					checking = checking.subgroups[parts[iteration - 1]];
+				}
+			}
+
+			if (!checking.members.includes(item)) {
+				checking.members.push(item);
+			}
+		}
+
+		remap(grouped_progress);
+
+		return remove_indentation(`
+			# Types Progress
+
+			${(
+				(supported_types.length /
+					all_referenced_types.length) *
+				100
+			).toFixed(2)}% Complete (${supported_types.length} of ${
+				all_referenced_types.length
+			})
+
+			${reduce(grouped_progress).map((group) => {
+				return remove_indentation(
+					`
+					${'#'.repeat(group.depth)} ${group.title}
+
+					${group.members.map((key) => {
+						return `-   [${supported_types.includes(key) ? 'x' : ' '}] ${key.replace(
+							/__/g,
+							'\\_\\_'
+						)}`;
+					}).join('\n')}`
+				);
+			}).join('\n\n')}
+		`);
 	}
 
 	private discover_type_definitions_from<
