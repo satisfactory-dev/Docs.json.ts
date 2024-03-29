@@ -1,6 +1,4 @@
-import Ajv, {
-	SchemaObject,
-} from 'ajv/dist/2020';
+import Ajv from 'ajv/dist/2020';
 import {
 	TypesDiscovery,
 } from './TypesDiscovery';
@@ -77,6 +75,12 @@ import {
 import {
 	FilesGenerator as DocsFiles,
 } from './DocsTsGenerator/FilesGenerator';
+import {
+	require_non_empty_array,
+} from './ArrayUtilities';
+import {
+	AnyGenerator,
+} from './TypeDefinitionDiscovery/Generator';
 
 const __dirname = import.meta.dirname;
 
@@ -101,38 +105,61 @@ function can_class_have_tree(
 
 export class TypeDefinitionWriter
 {
+	private _discovery:
+		| Promise<TypeDefinitionDiscovery>
+		| undefined = undefined;
 	private prepared = false;
 	private readonly ajv:Ajv;
-	public readonly discovery:TypeDefinitionDiscovery;
+	private readonly docs:DocsTsGenerator;
 
 	constructor(
 		ajv:Ajv,
-		schema:SchemaObject
+		docs: DocsTsGenerator,
 	) {
 		configure_ajv(ajv);
 		this.ajv = ajv;
+		this.docs = docs;
+	}
 
-		this.discovery = new TypeDefinitionDiscovery(
-			ajv,
-			schema,
-			[
-				...TypesDiscovery.standard_jsonschema_discovery(schema),
-				...TypesDiscovery.custom_parsing_types(schema),
-			],
-			[
-				...TypeDefinitionDiscovery.standard_jsonschema_discovery(ajv),
-				...TypeDefinitionDiscovery.custom_parsing_discovery(ajv),
-			],
-		);
+	get discovery(): Promise<TypeDefinitionDiscovery>
+	{
+		if (!this._discovery) {
+			const schema = this.docs.schema();
+			const type_definition_discover = require_non_empty_array<
+				AnyGenerator
+			>([
+				...TypeDefinitionDiscovery.standard_jsonschema_discovery(
+					this.ajv
+				),
+				...TypeDefinitionDiscovery.custom_parsing_discovery(
+					this.ajv
+				),
+			]);
+			this._discovery = Promise.resolve(schema.then((schema) => {
+				return new TypeDefinitionDiscovery(
+					this.ajv,
+					schema,
+					[
+						...TypesDiscovery.standard_jsonschema_discovery(
+							schema
+						),
+						...TypesDiscovery.custom_parsing_types(schema),
+					],
+					type_definition_discover,
+				);
+			}));
+		}
+
+		return this._discovery;
 	}
 
 	async write(
-		docs:DocsTsGenerator,
 		parent_folder: string,
-		cleanup = true
+		cleanup = true,
 	) {
 		await this.prepare();
-		await writeFile(`${__dirname}/../types-progress.md`, await generate_markdown(this.discovery));
+		const discovery = await this.discovery;
+		await writeFile(`${__dirname}/../types-progress.md`, await generate_markdown(discovery));
 
 		if (cleanup) {
 			for (const remove of await glob(`${parent_folder}/**/*.{ts,js,map}`)) {
@@ -140,8 +167,8 @@ export class TypeDefinitionWriter
 			}
 		}
 
-		const types = await this.discovery.discover_type_definitions();
-		const schema = await this.discovery.types_discovery.schema_from_json();
+		const types = await discovery.discover_type_definitions();
+		const schema = await discovery.types_discovery.schema_from_json();
 
 		if (
 			types.missing_classes.length > 0
@@ -183,11 +210,11 @@ export class TypeDefinitionWriter
 
 		const files = await FilesGenerator.merge_files(
 			[
-				this.discovery,
+				discovery,
 				new DocsFiles(
-					docs,
+					this.docs,
 					validations,
-					this.discovery,
+					discovery,
 					this.ajv
 				),
 				new FromArray([
@@ -379,29 +406,30 @@ export class TypeDefinitionWriter
 	{
 		if (!this.prepared) {
 			this.prepared = true;
+			const discovery = await this.discovery;
 			const discovered_types = (
-				await this.discovery.types_discovery.discover_types()
+				await discovery.types_discovery.discover_types()
 			).discovered_types;
 
-			this.discovery.add_candidates(
-				new ObjectType(this.ajv, this.discovery),
+			discovery.add_candidates(
+				new ObjectType(this.ajv, discovery),
 				new ArrayType(
 					this.ajv,
 					discovered_types,
-					this.discovery
+					discovery
 				),
 				new ExtendsObject(
 					this.ajv,
 					discovered_types,
-					this.discovery
+					discovery
 				),
 				new typed_object_string(
 					this.ajv,
 					discovered_types,
-					this.discovery
+					discovery
 				),
-				new typed_array_string(this.ajv, this.discovery),
-				new oneOf_or_anyOf(this.ajv, this.discovery),
+				new typed_array_string(this.ajv, discovery),
+				new oneOf_or_anyOf(this.ajv, discovery),
 			);
 		}
 	}

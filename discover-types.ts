@@ -1,4 +1,3 @@
-import schema from './schema/update8.schema.json' assert {type: 'json'};
 import Ajv from 'ajv/dist/2020';
 import {
 	TypeDefinitionWriter,
@@ -16,20 +15,20 @@ import {
 const __dirname = import.meta.dirname;
 
 try {
+	const docs = new DocsTsGenerator({
+		docs_path: `${__dirname}/data/Docs.json`,
+		cache_path: `${__dirname}/data/`,
+	});
+
 	const bar = new TypeDefinitionWriter(
 		new Ajv({
 			verbose: true,
 		}),
-		schema
+		docs
 	);
-	await bar.write(
-		new DocsTsGenerator({
-			docs_path: `${__dirname}/data/Docs.json`,
-			cache_path: `${__dirname}/data/`,
-		}),
-		`${__dirname}/generated-types/update8/`,
-	);
-	const result = await bar.discovery.discover_type_definitions();
+	await bar.write(`${__dirname}/generated-types/update8/`);
+	const discovery = await bar.discovery;
+	const result = await discovery.discover_type_definitions();
 
 	process.stdout.write(
 		`${
