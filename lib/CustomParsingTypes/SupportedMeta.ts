@@ -11,7 +11,7 @@ import {
 	SupportedSubSchemaType,
 } from './CustomPairingTypes';
 import {
-	UnexpectedlyUnknown,
+	NoMatchError,
 } from '../Exceptions';
 
 const supported = [supported_$ref, typed_string_enum, typed_string_const];
@@ -20,7 +20,7 @@ function find(value: unknown): SupportedSubSchemaType {
 	const match = supported.find((e) => e.is_supported_schema(value));
 
 	if (!match) {
-		throw new UnexpectedlyUnknown(
+		throw new NoMatchError(
 			value,
 			'Not a supported value!'
 		);

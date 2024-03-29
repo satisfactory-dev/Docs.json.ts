@@ -24,7 +24,7 @@ import {
 	type_reference_node, variable,
 } from '../TsFactoryWrapper';
 import {
-	UnexpectedlyUnknown,
+	NoMatchError,
 } from '../Exceptions';
 import {
 	object_has_property,
@@ -103,7 +103,7 @@ export function check_UnrealEngineString_parent(
 		: UnrealEngineString_parent_type
 ) {
 	if (!is_UnrealEngineString_parent(maybe)) {
-		throw new UnexpectedlyUnknown(
+		throw new NoMatchError(
 			maybe,
 			'Not an UnrealEngineString_parent object!'
 		);

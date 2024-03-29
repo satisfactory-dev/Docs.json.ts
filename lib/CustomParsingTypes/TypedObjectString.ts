@@ -19,7 +19,7 @@ import {
 } from '../TsFactoryWrapper';
 import {
 	FragileTypeSafetyError,
-	UnexpectedlyUnknown,
+	NoMatchError,
 } from '../Exceptions';
 import {
 	TypeLiteralNode, TypeReferenceNode,
@@ -470,7 +470,7 @@ export class TypedObjectString {
 		}
 
 		if (current_depth > 10) {
-			throw new UnexpectedlyUnknown(
+			throw new NoMatchError(
 				maybe,
 				'Cannot exceed 10 levels of recursion!'
 			);
@@ -622,7 +622,7 @@ export class TypedObjectString {
 						UnrealEngineString.type_from_parent(value),
 					];
 				} else if (!this.is_$ref_object(value)) {
-					throw new UnexpectedlyUnknown(
+					throw new NoMatchError(
 						{[property]: value},
 						'not yet supported in general type to object type'
 					);
@@ -722,7 +722,7 @@ export class TypedObjectString {
 			const maybe_definition_key = $ref.substring(14);
 
 			if (!(maybe_definition_key in schema.definitions)) {
-				throw new UnexpectedlyUnknown(
+				throw new NoMatchError(
 					{[property]: value},
 					'$ref not found in schema!'
 				);
@@ -734,7 +734,7 @@ export class TypedObjectString {
 				];
 
 			if (!value_is_non_array_object(definition)) {
-				throw new UnexpectedlyUnknown(
+				throw new NoMatchError(
 					definition,
 					'Array found in definitions!'
 				);
@@ -748,14 +748,14 @@ export class TypedObjectString {
 			}
 
 			if (!value_is_non_array_object(definition)) {
-				throw new UnexpectedlyUnknown(
+				throw new NoMatchError(
 					definition,
 					'Array found in definitions!'
 				);
 			}
 
 			if (!this.is_$ref_object_dictionary(definition)) {
-				throw new UnexpectedlyUnknown(
+				throw new NoMatchError(
 					definition,
 					`${$ref} not supported!`
 				);
@@ -814,7 +814,7 @@ export class TypedObjectString {
 				&& !is_generally_supported_oneOf_array
 				&& !object_has_typed_object_string
 			) {
-				throw new UnexpectedlyUnknown(
+				throw new NoMatchError(
 					{definition},
 					'typed_object_string property not usable!'
 				);
@@ -833,7 +833,7 @@ export class TypedObjectString {
 					.map((e) => e.typed_object_string)
 					.map((e, index) => {
 						if (!this.is_$ref_object_dictionary(e)) {
-							throw new UnexpectedlyUnknown(
+							throw new NoMatchError(
 								e,
 								`${property}.oneOf[${index}] not an object dictionary!`
 							);
@@ -850,7 +850,7 @@ export class TypedObjectString {
 								true
 							)(e.UnrealEngineString).pattern;
 						} else if (!('$ref' in e)) {
-							throw new UnexpectedlyUnknown(
+							throw new NoMatchError(
 								e,
 								'missing $ref!'
 							);
@@ -862,13 +862,13 @@ export class TypedObjectString {
 							return schema.definitions.None.const;
 						}
 
-						throw new UnexpectedlyUnknown(e);
+						throw new NoMatchError(e);
 					})
 					.join('|')})`;
 			} else if (
 				!this.is_$ref_object_dictionary(definition.typed_object_string)
 			) {
-				throw new UnexpectedlyUnknown(
+				throw new NoMatchError(
 					{definition},
 					'typed_object_string property not usable!'
 				);
@@ -903,7 +903,7 @@ export class TypedObjectString {
 				value_regex = `(?:-${value_regex}|${value_regex})`;
 			}
 		} else if (local_ref('boolean') !== $ref) {
-			throw new UnexpectedlyUnknown(
+			throw new NoMatchError(
 				{property, value},
 				'Unsupported $ref_to_regex call'
 			);
@@ -1118,7 +1118,7 @@ export class TypedObjectString {
 						typed_string_pattern_value_regex(entry[1])
 					}))`;
 				} else if(this.is_supported_pattern_string_object(entry[1])) {
-					throw new UnexpectedlyUnknown(entry[1]);
+					throw new NoMatchError(entry[1]);
 				} else if (typed_string_enum.is_supported_schema(entry[1])) {
 					return typed_string_enum.key_value_pair_regex(
 						entry[0],
@@ -1152,7 +1152,7 @@ export class TypedObjectString {
 						return `(?:${annoyingly_have_to_escape_property(entry[0])}=\\(${value_regex}(?:,${value_regex})*\\))`;
 					}
 
-					throw new UnexpectedlyUnknown(
+					throw new NoMatchError(
 						items,
 						'Unsupported!'
 					);
@@ -1182,7 +1182,7 @@ export class TypedObjectString {
 							is_general_type
 						)
 					) {
-						throw new UnexpectedlyUnknown(
+						throw new NoMatchError(
 							entry[1],
 							'Not quite supported here yet'
 						);
@@ -1210,7 +1210,7 @@ export class TypedObjectString {
 				}
 
 				if ('enum' in entry[1]) {
-					throw new UnexpectedlyUnknown(
+					throw new NoMatchError(
 						{
 							value: entry[1],
 						}
@@ -1229,10 +1229,10 @@ export class TypedObjectString {
 								sub_value
 							);
 						} catch (err) {
-							if (err instanceof UnexpectedlyUnknown) {
+							if (err instanceof NoMatchError) {
 								throw err;
 							}
-							throw new UnexpectedlyUnknown({
+							throw new NoMatchError({
 								entry,
 								sub_entry,
 								err,

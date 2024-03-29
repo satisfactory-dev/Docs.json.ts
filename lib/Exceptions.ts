@@ -12,9 +12,7 @@ export class NoMatchError<
 	}
 }
 
-export class UnexpectedlyUnknown extends NoMatchError {}
-
-export class FragileTypeSafetyError extends UnexpectedlyUnknown
+export class FragileTypeSafetyError extends NoMatchError
 {
 	constructor(property: unknown) {
 		super(

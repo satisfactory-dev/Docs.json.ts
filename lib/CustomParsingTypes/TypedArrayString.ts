@@ -12,7 +12,7 @@ import {
 	TypedObjectString,
 } from './TypedObjectString';
 import {
-	UnexpectedlyUnknown,
+	NoMatchError,
 } from '../Exceptions';
 import {
 	const_schema_type,
@@ -356,7 +356,7 @@ export class TypedArrayString {
 
 		process.stdout.write(`${JSON.stringify(item, null, '\t')}\n`);
 
-		throw new UnexpectedlyUnknown(
+		throw new NoMatchError(
 			{
 				item,
 			},
