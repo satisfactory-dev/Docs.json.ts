@@ -17,7 +17,7 @@ import Ajv, {
 } from 'ajv/dist/2020';
 
 type definitions = {
-	[key: string]: [string, unknown][]
+	[key: string]: ([string, unknown]|[string, unknown, unknown])[]
 };
 
 void describe('DefaultConfig', () => {
@@ -44,8 +44,12 @@ const spec:{
 			['()', false],
 		],
 		'with objects': [
-			['((foo=bar))', [{foo: 'bar'}]],
-			['(foo,"bar",(foo=bar))', ['foo', 'bar', {foo: 'bar'}]],
+			['((foo=bar))', [{foo: 'bar'}], ['(foo=bar)']],
+			[
+				'(foo,"bar",(foo=bar))',
+				['foo', 'bar', {foo: 'bar'}],
+				['foo', 'bar', '(foo=bar)'],
+			],
 		],
 		'with truncated object': [
 			['((bar=)', ['(bar=']],
@@ -64,7 +68,7 @@ const spec:{
 			['(foo=bar,bar=())', {foo: 'bar', bar: '()'}],
 		],
 		'nested objects': [
-			['(foo=(bar="baz"))', {foo: {bar: 'baz'}}],
+			['(foo=(bar="baz"))', {foo: {bar: 'baz'}}, {foo: '(bar="baz")'}],
 			['(foo=(bar=)', {foo: '(bar='}],
 		],
 	},
@@ -78,7 +82,7 @@ const spec:{
 };
 
 const functions_to_call:{
-	[key in keyof typeof spec]: (data:string) => unknown
+	[key in keyof typeof spec]: (data:string, shallow:boolean) => unknown
 } = {
 	string_to_array,
 	string_to_object,
@@ -100,9 +104,15 @@ for (const describing of Object.entries(spec)) {
 				for (const assertion of assertions) {
 					const [argument, to_equal] = assertion;
 					assert.deepStrictEqual(
-						function_to_call(argument),
+						function_to_call(argument, false),
 						to_equal
 					);
+					if (3 === assertion.length) {
+						assert.deepStrictEqual(
+							function_to_call(argument, true),
+							assertion[2]
+						);
+					}
 				}
 			});
 		}
