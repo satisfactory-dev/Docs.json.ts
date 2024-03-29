@@ -128,15 +128,15 @@ export type ref_discovery_type = {
 };
 
 export class TypeDefinitionDiscovery extends FilesGenerator {
+	private $ref_discovery:
+		| Promise<ref_discovery_type>
+		| undefined;
 	private readonly ajv:Ajv;
-	public readonly types_discovery:TypesDiscovery;
 	private readonly candidates: [
 		AnyGenerator,
 		...AnyGenerator[],
 	];
-	private $ref_discovery:
-		| Promise<ref_discovery_type>
-		| undefined;
+	public readonly types_discovery:TypesDiscovery;
 
 	constructor(
 		ajv:Ajv,
@@ -156,16 +156,106 @@ export class TypeDefinitionDiscovery extends FilesGenerator {
 		this.candidates = type_definition_discover;
 	}
 
-	private async schema_from_json(
-		discovered_types: {[key: string]: true}
-	) : Promise<SchemaObjectWithDefinitions<typeof discovered_types>> {
-		const schema = await this.types_discovery.schema_from_json();
+	add_candidates(...candidates:AnyGenerator[])
+	{
+		this.candidates.push(...candidates);
+	}
 
-		if (!is_schema_with_definitions(schema, discovered_types)) {
-			throw new Error('Schema definitions not as expected!');
+	async discover_type_definitions()
+	{
+		if (!this.$ref_discovery) {
+			this.$ref_discovery = new Promise((yup, nope) => {
+				this.types_discovery.discover_types().then(
+					async (discovered_types) => {
+						try {
+							if (discovered_types.missed_types.length > 0) {
+								nope(new Error(
+									`Missing some type definitions:\n${
+										discovered_types.missed_types.join(
+											'\n'
+										)
+									}`
+								));
+
+								return;
+							} else if (
+								!is_non_empty_array(
+									discovered_types.discovered_types,
+									is_string
+								)
+							) {
+								nope(new Error('No types discovered!'));
+
+								return;
+							}
+
+							const discovered_types_as_object: {
+								[key: string]: true,
+							} = Object.fromEntries(
+								discovered_types.discovered_types.map(
+									e => [e, true]
+								)
+							);
+
+							const schema = await this.schema_from_json(
+								discovered_types_as_object
+							);
+
+							yup(this.discover_type_definitions_from<
+								typeof discovered_types_as_object
+							>(
+								schema,
+								discovered_types_as_object,
+							));
+						} catch (err) {
+							nope(err);
+						}
+					}
+				).catch(nope);
+			});
 		}
 
-		return schema;
+		return this.$ref_discovery;
+	}
+
+	find(maybe:unknown): TypeNode {
+		const type = this.search(maybe);
+
+		if (!type) {
+			console.error(maybe);
+			throw new Error('Could not find a match!');
+		}
+
+		return type;
+	}
+
+	async* generate_files() {
+		const types = await this.discover_type_definitions();
+		const schema = await this.types_discovery.schema_from_json();
+
+		if (!object_has_property(
+			schema,
+			'definitions',
+			value_is_non_array_object
+		)) {
+			throw new Error('No definitions on schema!');
+		}
+
+		for (const entry of Object.entries(types.found_types)) {
+			const [definition, generator] = entry;
+			const $ref = definition.substring(14);
+			const target_file = TypeDefinitionWriter.guess_filename($ref);
+
+			yield {
+				file: target_file,
+				node: ts.factory.createTypeAliasDeclaration(
+					create_modifiers('export'),
+					adjust_class_name($ref),
+					undefined,
+					generator(schema.definitions[$ref] as never)
+				),
+			};
+		}
 	}
 
 	private discover_type_definitions_from<
@@ -380,6 +470,18 @@ export class TypeDefinitionDiscovery extends FilesGenerator {
 		return result;
 	}
 
+	private async schema_from_json(
+		discovered_types: {[key: string]: true}
+	) : Promise<SchemaObjectWithDefinitions<typeof discovered_types>> {
+		const schema = await this.types_discovery.schema_from_json();
+
+		if (!is_schema_with_definitions(schema, discovered_types)) {
+			throw new Error('Schema definitions not as expected!');
+		}
+
+		return schema;
+	}
+
 	private search(maybe:unknown): TypeNode|undefined {
 		const generator = this.candidates.find(
 			e => e.check(maybe)
@@ -392,106 +494,13 @@ export class TypeDefinitionDiscovery extends FilesGenerator {
 		return undefined;
 	}
 
-	add_candidates(...candidates:AnyGenerator[])
-	{
-		this.candidates.push(...candidates);
-	}
-
-	async discover_type_definitions()
-	{
-		if (!this.$ref_discovery) {
-			this.$ref_discovery = new Promise((yup, nope) => {
-				this.types_discovery.discover_types().then(
-					async (discovered_types) => {
-						try {
-							if (discovered_types.missed_types.length > 0) {
-								nope(new Error(
-									`Missing some type definitions:\n${
-										discovered_types.missed_types.join(
-											'\n'
-										)
-									}`
-								));
-
-								return;
-							} else if (
-								!is_non_empty_array(
-									discovered_types.discovered_types,
-									is_string
-								)
-							) {
-								nope(new Error('No types discovered!'));
-
-								return;
-							}
-
-							const discovered_types_as_object: {
-								[key: string]: true,
-							} = Object.fromEntries(
-								discovered_types.discovered_types.map(
-									e => [e, true]
-								)
-							);
-
-							const schema = await this.schema_from_json(
-								discovered_types_as_object
-							);
-
-							yup(this.discover_type_definitions_from<
-								typeof discovered_types_as_object
-							>(
-								schema,
-								discovered_types_as_object,
-							));
-						} catch (err) {
-							nope(err);
-						}
-					}
-				).catch(nope);
-			});
-		}
-
-		return this.$ref_discovery;
-	}
-
-	find(maybe:unknown): TypeNode {
-		const type = this.search(maybe);
-
-		if (!type) {
-			console.error(maybe);
-			throw new Error('Could not find a match!');
-		}
-
-		return type;
-	}
-
-	async* generate_files() {
-		const types = await this.discover_type_definitions();
-		const schema = await this.types_discovery.schema_from_json();
-
-		if (!object_has_property(
-			schema,
-			'definitions',
-			value_is_non_array_object
-		)) {
-			throw new Error('No definitions on schema!');
-		}
-
-		for (const entry of Object.entries(types.found_types)) {
-			const [definition, generator] = entry;
-			const $ref = definition.substring(14);
-			const target_file = TypeDefinitionWriter.guess_filename($ref);
-
-			yield {
-				file: target_file,
-				node: ts.factory.createTypeAliasDeclaration(
-					create_modifiers('export'),
-					adjust_class_name($ref),
-					undefined,
-					generator(schema.definitions[$ref] as never)
-				),
-			};
-		}
+	static custom_parsing_discovery(
+		ajv:Ajv
+	) : [AnyGenerator, ...AnyGenerator[]] {
+		return [
+			new string_starts_with(ajv),
+			new UnrealEngineString(ajv),
+		];
 	}
 
 	static standard_jsonschema_discovery(
@@ -504,15 +513,6 @@ export class TypeDefinitionDiscovery extends FilesGenerator {
 			new Enum(ajv),
 			new StringType(ajv),
 			new NonEmptyString(ajv),
-		];
-	}
-
-	static custom_parsing_discovery(
-		ajv:Ajv
-	) : [AnyGenerator, ...AnyGenerator[]] {
-		return [
-			new string_starts_with(ajv),
-			new UnrealEngineString(ajv),
 		];
 	}
 }

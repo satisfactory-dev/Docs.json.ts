@@ -410,6 +410,16 @@ type other_supported_oneOf = Exclude<{oneOf: (
 )[]}, $ref_choices>;
 
 export class TypedObjectString {
+	static ajv_macro_generator(inner: boolean) {
+		return (schema: typed_object_string_type) => {
+			const regex = `${this.property_to_regex(schema)}`;
+
+			return {
+				pattern: inner ? regex : `^${regex}$`,
+			};
+		};
+	}
+
 	static configure_ajv(ajv: Ajv) {
 		if (already_configured.has(ajv)) {
 			return;
@@ -440,6 +450,256 @@ export class TypedObjectString {
 				},
 			}, null, '\t')}\n`
 		);
+	}
+
+	public static is_$ref_object_dictionary(maybe: {
+		[key: string]: unknown;
+	}): maybe is $ref_only {
+		return (
+			Object.values(maybe).every((e) => this.is_$ref_object(e))
+			&& 0 !== Object.keys(maybe).length
+		);
+	}
+
+	public static is_combination_dictionary(
+		maybe: unknown,
+		current_depth = 0
+	): maybe is combination_dictionary {
+		if (!value_is_non_array_object(maybe)) {
+			return false;
+		}
+
+		if (current_depth > 10) {
+			throw new UnexpectedlyUnknown(
+				maybe,
+				'Cannot exceed 10 levels of recursion!'
+			);
+		}
+
+		const failed = Object.values(maybe).filter(
+			(e) =>
+				!this.is_$ref_object(e)
+				&& !(
+					value_is_non_array_object(e)
+					&& supported_meta.is_supported_schema(e)
+				)
+				&& !this.is_supported_enum_string_object(e)
+				&& !this.is_supported_pattern_string_object(e)
+				&& !this.is_supported_typed_array_string(e)
+				&& !typed_string_pattern_is_supported_schema(e)
+				&& !(
+					value_is_non_array_object(e)
+					&& this.is_$ref_object_dictionary(e)
+				)
+				&& !is_UnrealEngineString_parent(e)
+				&& !this.value_is_general_type(e)
+				&& !TypedObjectString.object_is_oneOf(
+					maybe
+				)
+				&& !this.is_combination_dictionary(e, current_depth + 1)
+		);
+
+		return Object.keys(maybe).length >= 1 && failed.length === 0;
+	}
+
+	public static is_supported_enum_string_object(maybe: unknown): maybe is {
+		[key: string]: enum_schema_type;
+	} {
+		return (
+			value_is_non_array_object(maybe)
+			&& Object.keys(maybe).every((e) =>
+				const_value_regex__native.test(e)
+			)
+			&& Object.values(maybe).every((e) =>
+				typed_string_enum.is_supported_schema(e)
+			)
+		);
+	}
+
+	public static is_supported_pattern_string_object(
+		maybe: unknown
+	): maybe is {[key: string]: pattern_schema_type} {
+		return (
+			value_is_non_array_object(maybe)
+			&& Object.keys(maybe).every((e) =>
+				const_value_regex__native.test(e)
+			)
+			&& Object.values(maybe).every((e) =>
+				typed_string_pattern_is_supported_schema(e)
+			)
+		);
+	}
+
+	public static literal_node(
+		data: general_type
+	): TypeLiteralNode {
+		return create_object_type_from_entries(
+			Object.entries(data.typed_object_string).map((entry) => {
+				const [property, value] = entry;
+
+				if (typed_string_const.is_supported_schema(value)) {
+					return typed_string_const.key_value_pair_entry(
+						property,
+						value
+					);
+				} else if (this.is_supported_enum_string_object(value)) {
+					return [
+						property,
+						create_object_type_from_entries(
+							Object.entries(value).map((entry) => {
+								const [property, value] = entry;
+
+								return [
+									property,
+									possibly_create_lazy_union(value.enum),
+								];
+							})
+						),
+					];
+				} else if (typed_string_enum.is_supported_schema(value)) {
+					return typed_string_enum.key_value_pair_entry(
+						property,
+						value
+					);
+				} else if (this.is_$ref_object_dictionary(value)) {
+					return [
+						property,
+						create_object_type_from_entries(
+							Object.entries(value).map((inner_entry) =>
+								this.$ref_choice_to_object_type_entry(
+									inner_entry[0],
+									inner_entry[1]
+								)
+							)
+						),
+					];
+				} else if (this.is_combination_dictionary(value)) {
+					return [
+						property,
+						this.combination_dictionary_type_to_object_type(
+							value
+						),
+					];
+				} else if (this.is_supported_typed_array_string(value)) {
+					return [
+						property,
+						minimum_size_array_of_single_type(
+							value.typed_array_string.minItems,
+							() => {
+								const {items} = value.typed_array_string;
+
+								if (
+									is_UnrealEngineString_parent(
+										items
+									)
+								) {
+									return UnrealEngineString
+										.type_from_parent(items);
+								} else if (
+									supported_meta.is_supported_schema(
+										items
+									)
+								) {
+									return supported_meta.value_type(
+										items
+									);
+								}
+
+								return TypedObjectString.literal_node(
+									items
+								);
+							},
+							'maxItems' in value.typed_array_string
+								? value.typed_array_string.maxItems
+								: undefined
+						),
+					];
+				} else if (
+					is_UnrealEngineString_parent(value)
+				) {
+					return [
+						property,
+						UnrealEngineString.type_from_parent(value),
+					];
+				} else if (!this.is_$ref_object(value)) {
+					throw new UnexpectedlyUnknown(
+						{[property]: value},
+						'not yet supported in general type to object type'
+					);
+				}
+
+				return this.$ref_choice_to_object_type_entry(
+					property,
+					value
+				);
+			})
+		);
+	}
+
+	public static object_is_oneOf(
+		maybe: object
+	): maybe is {
+		oneOf: array_type;
+	} {
+		return (
+			object_only_has_that_property(maybe, 'oneOf')
+			&& is_non_empty_array(maybe.oneOf)
+			&& this.array_is_general_type_array(
+				maybe.oneOf
+			)
+		);
+	}
+
+	public static value_is_general_type(
+		maybe: unknown
+	): maybe is general_type {
+		return (
+			value_is_non_array_object(maybe)
+			&& object_has_property(maybe, 'type')
+			&& 'string' === maybe.type
+			&& object_has_property(maybe, 'typed_object_string')
+			&& value_is_non_array_object(maybe.typed_object_string)
+			&& (TypedObjectString.is_$ref_object_dictionary(
+				maybe.typed_object_string
+			)
+				|| TypedObjectString.is_combination_dictionary(
+					maybe.typed_object_string
+				)
+				|| supported_meta.is_supported_schema(
+					maybe.typed_object_string
+				)
+				|| TypedObjectString.is_supported_enum_string_object(
+					maybe.typed_object_string
+				)
+				|| TypedObjectString.is_supported_pattern_string_object(
+					maybe.typed_object_string
+				))
+			&& (2 === Object.keys(maybe).length
+				|| (3 === Object.keys(maybe).length
+					&& object_has_property(maybe, 'minLength')
+					&& 1 === maybe.minLength))
+		);
+	}
+
+	private static $ref_choice_to_object_type_entry<T extends string = string>(
+		property: T,
+		value: $ref_choices
+	): [T, TypeReferenceNode] {
+		const reference_name = value.$ref.substring(14);
+
+		return [
+			property,
+			type_reference_node(
+				adjust_class_name(
+					`${reference_name}${
+						reference_name.startsWith('integer-string')
+						|| reference_name.startsWith('decimal-string')
+							? '__type'
+							: ''
+					}`
+				)
+			),
+		];
 	}
 
 	private static $ref_to_regex(
@@ -652,6 +912,80 @@ export class TypedObjectString {
 		return `(?:${annoyingly_have_to_escape_property(property)}=${value_regex})`;
 	}
 
+	private static array_is_general_type_array(
+		maybe: unknown[]
+	): maybe is general_type[] {
+		return maybe.every((e) =>
+			this.value_is_general_type(e)
+		);
+	}
+
+	private static combination_dictionary_type_to_object_type(
+		data: combination_dictionary,
+		depth = 0
+	): TypeLiteralNode {
+		return create_object_type_from_entries(
+			Object.entries(data).map((entry) => {
+				const [property, value] = entry;
+
+				if (this.is_$ref_object(value)) {
+					return this.$ref_choice_to_object_type_entry(
+						property,
+						value
+					);
+				} else if (this.is_supported_enum_string_object(value)) {
+					return [
+						property,
+						create_object_type_from_entries(
+							Object.entries(value).map((entry) => {
+								const [property, value] = entry;
+
+								return [
+									property,
+									possibly_create_lazy_union(value.enum),
+								];
+							})
+						),
+					];
+				} else if (supported_meta.is_supported_schema(value)) {
+					return supported_meta.key_value_pair_entry(
+						property,
+						value
+					);
+				} else if (
+					TypedObjectString.value_is_general_type(
+						value
+					)
+				) {
+					return [
+						property,
+						this.literal_node(value),
+					];
+				}
+
+				return [
+					property,
+					this.combination_dictionary_type_to_object_type(
+						value,
+						depth + 1
+					),
+				];
+			})
+		);
+	}
+
+	private static entry_is_supported_oneOf_item(
+		entry: unknown
+	): entry is supported_oneOf_item {
+		return (
+			TypedObjectString.value_is_general_type(
+				entry
+			)
+			|| TypedObjectString.is_$ref_object(entry)
+			|| is_UnrealEngineString_parent(entry)
+		);
+	}
+
 	private static is_$ref_object(
 		maybe: unknown
 	): maybe is $ref_choices {
@@ -662,31 +996,22 @@ export class TypedObjectString {
 		);
 	}
 
-	public static is_supported_enum_string_object(maybe: unknown): maybe is {
-		[key: string]: enum_schema_type;
-	} {
-		return (
-			value_is_non_array_object(maybe)
-			&& Object.keys(maybe).every((e) =>
-				const_value_regex__native.test(e)
-			)
-			&& Object.values(maybe).every((e) =>
-				typed_string_enum.is_supported_schema(e)
-			)
-		);
-	}
-
-	public static is_supported_pattern_string_object(
+	private static is_other_supported_oneOf(
 		maybe: unknown
-	): maybe is {[key: string]: pattern_schema_type} {
+	) : maybe is other_supported_oneOf {
 		return (
-			value_is_non_array_object(maybe)
-			&& Object.keys(maybe).every((e) =>
-				const_value_regex__native.test(e)
+			object_only_has_that_property(
+				maybe,
+				'oneOf',
+				is_non_empty_array
 			)
-			&& Object.values(maybe).every((e) =>
-				typed_string_pattern_is_supported_schema(e)
-			)
+			&& maybe.oneOf.every((inner_maybe) => {
+				return (
+					typed_string_const.is_supported_schema(inner_maybe)
+					|| is_UnrealEngineString_parent(inner_maybe)
+					|| this.is_Texture2D_basic(inner_maybe)
+				);
+			})
 		);
 	}
 
@@ -723,105 +1048,17 @@ export class TypedObjectString {
 		);
 	}
 
-	public static is_$ref_object_dictionary(maybe: {
-		[key: string]: unknown;
-	}): maybe is $ref_only {
-		return (
-			Object.values(maybe).every((e) => this.is_$ref_object(e))
-			&& 0 !== Object.keys(maybe).length
-		);
-	}
-
-	public static is_combination_dictionary(
-		maybe: unknown,
-		current_depth = 0
-	): maybe is combination_dictionary {
-		if (!value_is_non_array_object(maybe)) {
-			return false;
-		}
-
-		if (current_depth > 10) {
-			throw new UnexpectedlyUnknown(
-				maybe,
-				'Cannot exceed 10 levels of recursion!'
-			);
-		}
-
-		const failed = Object.values(maybe).filter(
-			(e) =>
-				!this.is_$ref_object(e)
-				&& !(
-					value_is_non_array_object(e)
-					&& supported_meta.is_supported_schema(e)
-				)
-				&& !this.is_supported_enum_string_object(e)
-				&& !this.is_supported_pattern_string_object(e)
-				&& !this.is_supported_typed_array_string(e)
-				&& !typed_string_pattern_is_supported_schema(e)
-				&& !(
-					value_is_non_array_object(e)
-					&& this.is_$ref_object_dictionary(e)
-				)
-				&& !is_UnrealEngineString_parent(e)
-				&& !this.value_is_general_type(e)
-				&& !TypedObjectString.object_is_oneOf(
-					maybe
-				)
-				&& !this.is_combination_dictionary(e, current_depth + 1)
-		);
-
-		return Object.keys(maybe).length >= 1 && failed.length === 0;
-	}
-
-	public static value_is_general_type(
+	private static is_Texture2D_basic(
 		maybe: unknown
-	): maybe is general_type {
+	) : maybe is typeof schema.definitions['Texture2D--basic'] {
 		return (
 			value_is_non_array_object(maybe)
-			&& object_has_property(maybe, 'type')
-			&& 'string' === maybe.type
-			&& object_has_property(maybe, 'typed_object_string')
-			&& value_is_non_array_object(maybe.typed_object_string)
-			&& (TypedObjectString.is_$ref_object_dictionary(
-				maybe.typed_object_string
-			)
-				|| TypedObjectString.is_combination_dictionary(
-					maybe.typed_object_string
-				)
-				|| supported_meta.is_supported_schema(
-					maybe.typed_object_string
-				)
-				|| TypedObjectString.is_supported_enum_string_object(
-					maybe.typed_object_string
-				)
-				|| TypedObjectString.is_supported_pattern_string_object(
-					maybe.typed_object_string
-				))
-			&& (2 === Object.keys(maybe).length
-				|| (3 === Object.keys(maybe).length
-					&& object_has_property(maybe, 'minLength')
-					&& 1 === maybe.minLength))
-		);
-	}
-
-	private static array_is_general_type_array(
-		maybe: unknown[]
-	): maybe is general_type[] {
-		return maybe.every((e) =>
-			this.value_is_general_type(e)
-		);
-	}
-
-	public static object_is_oneOf(
-		maybe: object
-	): maybe is {
-		oneOf: array_type;
-	} {
-		return (
-			object_only_has_that_property(maybe, 'oneOf')
-			&& is_non_empty_array(maybe.oneOf)
-			&& this.array_is_general_type_array(
-				maybe.oneOf
+			&& 2 === Object.keys(maybe).length
+			&& object_has_property_that_equals(maybe, 'type', 'string')
+			&& object_has_property_that_equals(
+				maybe,
+				'string_starts_with',
+				schema.definitions['Texture2D--basic'].string_starts_with
 			)
 		);
 	}
@@ -845,57 +1082,6 @@ export class TypedObjectString {
 			&& is_non_empty_array(maybe.oneOf)
 			&& maybe.oneOf.every((e) => predicate(e))
 		);
-	}
-
-	private static entry_is_supported_oneOf_item(
-		entry: unknown
-	): entry is supported_oneOf_item {
-		return (
-			TypedObjectString.value_is_general_type(
-				entry
-			)
-			|| TypedObjectString.is_$ref_object(entry)
-			|| is_UnrealEngineString_parent(entry)
-		);
-	}
-
-	private static is_other_supported_oneOf(
-		maybe: unknown
-	) : maybe is other_supported_oneOf {
-		return (
-			object_only_has_that_property(
-				maybe,
-				'oneOf',
-				is_non_empty_array
-			)
-			&& maybe.oneOf.every((inner_maybe) => {
-				return (
-					typed_string_const.is_supported_schema(inner_maybe)
-					|| is_UnrealEngineString_parent(inner_maybe)
-					|| this.is_Texture2D_basic(inner_maybe)
-				);
-			})
-		);
-	}
-
-	private static is_Texture2D_basic(
-		maybe: unknown
-	) : maybe is typeof schema.definitions['Texture2D--basic'] {
-		return (
-			value_is_non_array_object(maybe)
-			&& 2 === Object.keys(maybe).length
-			&& object_has_property_that_equals(maybe, 'type', 'string')
-			&& object_has_property_that_equals(
-				maybe,
-				'string_starts_with',
-				schema.definitions['Texture2D--basic'].string_starts_with
-			)
-		);
-	}
-
-	private static Texture2D_basic_regex(): string
-	{
-		return `(?:${schema.definitions['Texture2D--basic'].string_starts_with}(?:[A-Z][A-Za-z0-9_.]+/)*[A-Z][A-Za-z_.0-9-]+(?::[A-Z][A-Za-z0-9]+)?)`;
 	}
 
 	private static property_to_regex(data: typed_object_string_type): string {
@@ -1061,195 +1247,9 @@ export class TypedObjectString {
 			.join(',')}\\)`;
 	}
 
-	static ajv_macro_generator(inner: boolean) {
-		return (schema: typed_object_string_type) => {
-			const regex = `${this.property_to_regex(schema)}`;
-
-			return {
-				pattern: inner ? regex : `^${regex}$`,
-			};
-		};
-	}
-
-	private static combination_dictionary_type_to_object_type(
-		data: combination_dictionary,
-		depth = 0
-	): TypeLiteralNode {
-		return create_object_type_from_entries(
-			Object.entries(data).map((entry) => {
-				const [property, value] = entry;
-
-				if (this.is_$ref_object(value)) {
-					return this.$ref_choice_to_object_type_entry(
-						property,
-						value
-					);
-				} else if (this.is_supported_enum_string_object(value)) {
-					return [
-						property,
-						create_object_type_from_entries(
-							Object.entries(value).map((entry) => {
-								const [property, value] = entry;
-
-								return [
-									property,
-									possibly_create_lazy_union(value.enum),
-								];
-							})
-						),
-					];
-				} else if (supported_meta.is_supported_schema(value)) {
-					return supported_meta.key_value_pair_entry(
-						property,
-						value
-					);
-				} else if (
-					TypedObjectString.value_is_general_type(
-						value
-					)
-				) {
-					return [
-						property,
-						this.literal_node(value),
-					];
-				}
-
-				return [
-					property,
-					this.combination_dictionary_type_to_object_type(
-						value,
-						depth + 1
-					),
-				];
-			})
-		);
-	}
-
-	public static literal_node(
-		data: general_type
-	): TypeLiteralNode {
-		return create_object_type_from_entries(
-			Object.entries(data.typed_object_string).map((entry) => {
-				const [property, value] = entry;
-
-				if (typed_string_const.is_supported_schema(value)) {
-					return typed_string_const.key_value_pair_entry(
-						property,
-						value
-					);
-				} else if (this.is_supported_enum_string_object(value)) {
-					return [
-						property,
-						create_object_type_from_entries(
-							Object.entries(value).map((entry) => {
-								const [property, value] = entry;
-
-								return [
-									property,
-									possibly_create_lazy_union(value.enum),
-								];
-							})
-						),
-					];
-				} else if (typed_string_enum.is_supported_schema(value)) {
-					return typed_string_enum.key_value_pair_entry(
-						property,
-						value
-					);
-				} else if (this.is_$ref_object_dictionary(value)) {
-					return [
-						property,
-						create_object_type_from_entries(
-							Object.entries(value).map((inner_entry) =>
-								this.$ref_choice_to_object_type_entry(
-									inner_entry[0],
-									inner_entry[1]
-								)
-							)
-						),
-					];
-				} else if (this.is_combination_dictionary(value)) {
-					return [
-						property,
-						this.combination_dictionary_type_to_object_type(
-							value
-						),
-					];
-				} else if (this.is_supported_typed_array_string(value)) {
-					return [
-						property,
-						minimum_size_array_of_single_type(
-							value.typed_array_string.minItems,
-							() => {
-								const {items} = value.typed_array_string;
-
-								if (
-									is_UnrealEngineString_parent(
-										items
-									)
-								) {
-									return UnrealEngineString
-										.type_from_parent(items);
-								} else if (
-									supported_meta.is_supported_schema(
-										items
-									)
-								) {
-									return supported_meta.value_type(
-										items
-									);
-								}
-
-								return TypedObjectString.literal_node(
-									items
-								);
-							},
-							'maxItems' in value.typed_array_string
-								? value.typed_array_string.maxItems
-								: undefined
-						),
-					];
-				} else if (
-					is_UnrealEngineString_parent(value)
-				) {
-					return [
-						property,
-						UnrealEngineString.type_from_parent(value),
-					];
-				} else if (!this.is_$ref_object(value)) {
-					throw new UnexpectedlyUnknown(
-						{[property]: value},
-						'not yet supported in general type to object type'
-					);
-				}
-
-				return this.$ref_choice_to_object_type_entry(
-					property,
-					value
-				);
-			})
-		);
-	}
-
-	private static $ref_choice_to_object_type_entry<T extends string = string>(
-		property: T,
-		value: $ref_choices
-	): [T, TypeReferenceNode] {
-		const reference_name = value.$ref.substring(14);
-
-		return [
-			property,
-			type_reference_node(
-				adjust_class_name(
-					`${reference_name}${
-						reference_name.startsWith('integer-string')
-						|| reference_name.startsWith('decimal-string')
-							? '__type'
-							: ''
-					}`
-				)
-			),
-		];
+	private static Texture2D_basic_regex(): string
+	{
+		return `(?:${schema.definitions['Texture2D--basic'].string_starts_with}(?:[A-Z][A-Za-z0-9_.]+/)*[A-Z][A-Za-z_.0-9-]+(?::[A-Z][A-Za-z0-9]+)?)`;
 	}
 
 }

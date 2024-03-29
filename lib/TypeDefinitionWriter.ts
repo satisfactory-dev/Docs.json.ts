@@ -101,9 +101,9 @@ function can_class_have_tree(
 
 export class TypeDefinitionWriter
 {
-	public readonly discovery:TypeDefinitionDiscovery;
-	private readonly ajv:Ajv;
 	private prepared = false;
+	private readonly ajv:Ajv;
+	public readonly discovery:TypeDefinitionDiscovery;
 
 	constructor(
 		ajv:Ajv,
@@ -124,37 +124,6 @@ export class TypeDefinitionWriter
 				...TypeDefinitionDiscovery.custom_parsing_discovery(ajv),
 			],
 		);
-	}
-
-	private async prepare()
-	{
-		if (!this.prepared) {
-			this.prepared = true;
-			const discovered_types = (
-				await this.discovery.types_discovery.discover_types()
-			).discovered_types;
-
-			this.discovery.add_candidates(
-				new ObjectType(this.ajv, this.discovery),
-				new ArrayType(
-					this.ajv,
-					discovered_types,
-					this.discovery
-				),
-				new ExtendsObject(
-					this.ajv,
-					discovered_types,
-					this.discovery
-				),
-				new typed_object_string(
-					this.ajv,
-					discovered_types,
-					this.discovery
-				),
-				new typed_array_string(this.ajv, this.discovery),
-				new oneOf_or_anyOf(this.ajv, this.discovery),
-			);
-		}
 	}
 
 	async write(
@@ -404,6 +373,37 @@ export class TypeDefinitionWriter
 		}
 
 		await eslint_generated_types(`${parent_folder}/**/*.ts`);
+	}
+
+	private async prepare()
+	{
+		if (!this.prepared) {
+			this.prepared = true;
+			const discovered_types = (
+				await this.discovery.types_discovery.discover_types()
+			).discovered_types;
+
+			this.discovery.add_candidates(
+				new ObjectType(this.ajv, this.discovery),
+				new ArrayType(
+					this.ajv,
+					discovered_types,
+					this.discovery
+				),
+				new ExtendsObject(
+					this.ajv,
+					discovered_types,
+					this.discovery
+				),
+				new typed_object_string(
+					this.ajv,
+					discovered_types,
+					this.discovery
+				),
+				new typed_array_string(this.ajv, this.discovery),
+				new oneOf_or_anyOf(this.ajv, this.discovery),
+			);
+		}
 	}
 
 	static guess_filename(ref: string): string {

@@ -32,17 +32,17 @@ import {
 
 export class TypesDiscovery
 {
-	private readonly ajv:Ajv;
-	private readonly json:{[key: string]: unknown};
-	private validated = false;
-	private readonly candidates_discovery:[
-		CandidatesDiscovery,
-		...CandidatesDiscovery[],
-	];
 	private discovery:Promise<{
 		discovered_types: string[],
 		missed_types: string[],
 	}>|undefined;
+	private validated = false;
+	private readonly ajv:Ajv;
+	private readonly candidates_discovery:[
+		CandidatesDiscovery,
+		...CandidatesDiscovery[],
+	];
+	private readonly json:{[key: string]: unknown};
 
 	constructor(
 		ajv: Ajv,
@@ -55,6 +55,36 @@ export class TypesDiscovery
 		this.ajv = ajv;
 		this.json = json;
 		this.candidates_discovery = candidates_discovery;
+	}
+
+	async discover_types()
+	{
+		if (!this.discovery) {
+			this.discovery = new Promise((yup, nope) => {
+				this.schema_from_json().then((schema) => {
+					const discovered_types = new Set<string>();
+
+					this.discover_types_from(schema, schema, discovered_types);
+
+					yup({
+						discovered_types: [...discovered_types.values()],
+						missed_types: Object.keys(
+							object_has_property(
+								schema,
+								'definitions',
+								value_is_non_array_object
+							)
+								? schema.definitions
+								: {}
+						).map((key) => `#/definitions/${key}`).filter(
+							maybe => !discovered_types.has(maybe)
+						),
+					});
+				}).catch(nope);
+			});
+		}
+
+		return this.discovery;
 	}
 
 	public async schema_from_json(): Promise<SchemaObject>
@@ -97,49 +127,6 @@ export class TypesDiscovery
 		}
 	}
 
-	async discover_types()
-	{
-		if (!this.discovery) {
-			this.discovery = new Promise((yup, nope) => {
-				this.schema_from_json().then((schema) => {
-					const discovered_types = new Set<string>();
-
-					this.discover_types_from(schema, schema, discovered_types);
-
-					yup({
-						discovered_types: [...discovered_types.values()],
-						missed_types: Object.keys(
-							object_has_property(
-								schema,
-								'definitions',
-								value_is_non_array_object
-							)
-								? schema.definitions
-								: {}
-						).map((key) => `#/definitions/${key}`).filter(
-							maybe => !discovered_types.has(maybe)
-						),
-					});
-				}).catch(nope);
-			});
-		}
-
-		return this.discovery;
-	}
-
-	static standard_jsonschema_discovery(schema:SchemaObject): (
-		[CandidatesDiscovery, ...CandidatesDiscovery[]]
-	) {
-		return [
-			new non_empty_array_property('prefixItems', schema),
-			new non_empty_array_property('oneOf', schema),
-			new non_empty_array_property('anyOf', schema),
-			new non_array_object_property('items', schema),
-			new properties(schema),
-			new $ref(schema),
-		];
-	}
-
 	static custom_parsing_types(schema:SchemaObject): (
 		[CandidatesDiscovery, ...CandidatesDiscovery[]]
 	) {
@@ -177,5 +164,18 @@ export class TypesDiscovery
 			definitions: schema.definitions,
 			...schema.definitions.NativeClass,
 		});
+	}
+
+	static standard_jsonschema_discovery(schema:SchemaObject): (
+		[CandidatesDiscovery, ...CandidatesDiscovery[]]
+	) {
+		return [
+			new non_empty_array_property('prefixItems', schema),
+			new non_empty_array_property('oneOf', schema),
+			new non_empty_array_property('anyOf', schema),
+			new non_array_object_property('items', schema),
+			new properties(schema),
+			new $ref(schema),
+		];
 	}
 }
