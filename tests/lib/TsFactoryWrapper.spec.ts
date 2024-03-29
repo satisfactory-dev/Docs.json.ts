@@ -7,8 +7,10 @@ import {
 import {
 	non_empty_keys,
 } from '../../lib/ArrayUtilities';
-import exp from 'node:constants';
-import ts, {LiteralTypeNode, StringLiteral} from 'typescript';
+import ts, {
+	LiteralTypeNode,
+	StringLiteral,
+} from 'typescript';
 
 describe('adjust_class_name', () => {
 	it('behaves', () => {
