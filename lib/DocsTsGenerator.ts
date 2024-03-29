@@ -62,9 +62,12 @@ export class ValidationError extends Error {
 	}
 }
 
-export type DocsDataItem = {
+export type DocsDataItem<TypeOfUnknownProperties = unknown> = {
 	NativeClass: string;
-	Classes: ({[key: string]: unknown} & {ClassName: string})[];
+	Classes: (
+		& {[key: string]: TypeOfUnknownProperties}
+		& {ClassName: string}
+	)[];
 };
 
 export type DocsData = [DocsDataItem, ...DocsDataItem[]];
