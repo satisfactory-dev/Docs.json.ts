@@ -78,6 +78,9 @@ import {
 import {
 	AnyGenerator,
 } from './TypeDefinitionDiscovery/Generator';
+import {
+	DataDiscovery,
+} from './DataDiscovery';
 
 const __dirname = import.meta.dirname;
 
@@ -107,6 +110,7 @@ export class TypeDefinitionWriter
 		| undefined = undefined;
 	private prepared = false;
 	private readonly ajv:Ajv;
+	private readonly data_discovery:DataDiscovery;
 	private readonly docs:DocsTsGenerator;
 
 	constructor(
@@ -116,6 +120,7 @@ export class TypeDefinitionWriter
 		configure_ajv(ajv);
 		this.ajv = ajv;
 		this.docs = docs;
+		this.data_discovery = new DataDiscovery(docs);
 	}
 
 	get discovery(): Promise<TypeDefinitionDiscovery>
@@ -160,6 +165,10 @@ export class TypeDefinitionWriter
 		await writeFile(
 			`${__dirname}/../types-progress.md`,
 			await discovery.generate_markdown()
+		);
+		await writeFile(
+			`${__dirname}/../data-progress.md`,
+			await this.data_discovery.generate_markdown()
 		);
 
 		if (cleanup) {
