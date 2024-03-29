@@ -11,9 +11,10 @@ import {
 import {
 	fileURLToPath,
 } from 'node:url';
-
 import Ajv, {
-	ErrorObject, ValidateFunction,
+	ErrorObject,
+	SchemaObject,
+	ValidateFunction,
 } from 'ajv/dist/2020';
 import * as prettier from 'prettier';
 import standalone from 'ajv/dist/standalone';
@@ -34,9 +35,12 @@ import {
 	createHash,
 } from 'node:crypto';
 import {
-	is_non_empty_array,
+	is_non_empty_array, object_has_property,
 	value_is_non_array_object,
 } from './CustomParsingTypes/CustomPairingTypes';
+import {
+	is_string,
+} from './StringStartsWith';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -96,10 +100,15 @@ export class DocsTsGenerator {
 	async get() {
 		return this.validate(
 			await this.load(),
-			update8_schema as typeof update8_schema & {
-				$id: 'update8.schema.json';
-			}
+			await this.schema()
 		);
+	}
+
+	async schema(): Promise<typeof update8_schema>
+	{
+		await this.validate_schema<typeof update8_schema>(update8_schema);
+
+		return update8_schema;
 	}
 
 	private async load(): Promise<Exclude<typeof this.docs, undefined>> {
@@ -209,11 +218,49 @@ export class DocsTsGenerator {
 
 	private async validate<T extends DocsData>(
 		json: unknown,
-		schema: {$id: 'update8.schema.json'}
+		schema: SchemaObject
 	): Promise<T> {
 		performance.mark(DocsTsGenerator.PERF_VALIDATION_STARTED);
+
+		const validateDocs = await this.validate_schema<T>(schema);
+
+		performance.measure(
+			DocsTsGenerator.PERF_VALIDATION_COMPILED,
+			DocsTsGenerator.PERF_VALIDATION_STARTED
+		);
+
+		const result = validateDocs(json);
+		performance.measure(
+			DocsTsGenerator.PERF_VALIDATION_FINISHED,
+			DocsTsGenerator.PERF_VALIDATION_STARTED
+		);
+
+		if (!result) {
+			throw new ValidationError(
+				'Failed to validate against the provided JSON Schema',
+				validateDocs.errors,
+				json
+			);
+		}
+
+		return json;
+	}
+
+	private async validate_schema<
+		Result = unknown,
+		Schema extends SchemaObject = SchemaObject
+	> (schema: Schema): Promise<ValidateFunction<Result>> {
+
 		if (this.cache_path) {
 			const file_sha512 = createHash('sha512');
+
+			if (!object_has_property(schema, '$id', is_string)) {
+				throw new ValidationError(
+					'Schema does not have an id!',
+					undefined,
+					schema
+				);
+			}
 
 			file_sha512.update(
 				await readFile(`${__dirname}/../schema/${schema['$id']}`)
@@ -262,42 +309,14 @@ export class DocsTsGenerator {
 				default: validateDocs,
 			} = (await import(filepath)) as {default: ValidateFunction};
 
-			if (!validateDocs(json)) {
-				throw new ValidationError(
-					'Failed to validate against the provided JSON Schema',
-					validateDocs.errors,
-					json
-				);
-			}
-
-			return json as T;
+			return validateDocs as ValidateFunction<Result>;
 		}
 
 		default_config.ajv = new Ajv({
 			verbose: true,
 		});
 
-		const validateDocs = default_config.ajv.compile<T>(schema);
-		performance.measure(
-			DocsTsGenerator.PERF_VALIDATION_COMPILED,
-			DocsTsGenerator.PERF_VALIDATION_STARTED
-		);
-
-		const result = validateDocs(json);
-		performance.measure(
-			DocsTsGenerator.PERF_VALIDATION_FINISHED,
-			DocsTsGenerator.PERF_VALIDATION_STARTED
-		);
-
-		if (!result) {
-			throw new ValidationError(
-				'Failed to validate against the provided JSON Schema',
-				validateDocs.errors,
-				json
-			);
-		}
-
-		return json;
+		return default_config.ajv.compile<Result>(schema);
 	}
 }
 
