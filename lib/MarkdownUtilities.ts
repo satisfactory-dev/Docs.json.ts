@@ -54,12 +54,18 @@ export function reduce(
 	members: string[];
 	depth: number;
 }[] {
-	return [
-		{
+	const head = [];
+
+	if (group.members.length > 0) {
+		head.push({
 			title,
 			depth: 1 === current_depth ? 2 : current_depth,
 			members: group.members,
-		},
+		});
+	}
+
+	return [
+		...head,
 		...Object.entries(group.subgroups)
 			.map((subgroup) => {
 				return reduce(subgroup[1], subgroup[0], current_depth + 1);
