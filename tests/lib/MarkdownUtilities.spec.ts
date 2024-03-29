@@ -65,11 +65,6 @@ void describe('reduce', () => {
 			reduce(foo),
 			[
 				{
-					title: 'Basic Types',
-					depth: 2,
-					members: [],
-				},
-				{
 					title: 'bar',
 					depth: 2,
 					members: [
@@ -83,6 +78,45 @@ void describe('reduce', () => {
 					depth: 2,
 					members: [
 						'foobar',
+						'baz',
+						'bat',
+					],
+				},
+			]
+		);
+		const bar:progress_group = {
+			members: ['foobar', 'bar_foo'],
+			subgroups: {
+				foo: {
+					members: ['baz', 'bat'],
+					subgroups: {},
+				},
+				bar: {
+					members: ['baz', 'bat'],
+					subgroups: {},
+				},
+			},
+		};
+		assert.deepEqual(
+			reduce(bar, 'Test'),
+			[
+				{
+					title: 'Test',
+					depth: 2,
+					members: ['foobar', 'bar_foo'],
+				},
+				{
+					title: 'bar',
+					depth: 2,
+					members: [
+						'baz',
+						'bat',
+					],
+				},
+				{
+					title: 'foo',
+					depth: 2,
+					members: [
 						'baz',
 						'bat',
 					],
