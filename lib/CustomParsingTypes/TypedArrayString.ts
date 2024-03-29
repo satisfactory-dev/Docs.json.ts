@@ -258,6 +258,25 @@ export type typed_array_string_parent_without_recursive_reference = {
 };
 
 export class TypedArrayString {
+	static ajv_macro_generator(inner: boolean) {
+		return (schema: typed_array_string) => {
+			const item_regex = `(?:${this.item_to_regex(schema.items)})`;
+			const max_items =
+				'maxItems' in schema ? schema.maxItems : undefined;
+
+			const additional_items =
+				schema.minItems === max_items && 1 === schema.minItems
+					? ''
+					: `(?:,${item_regex})${max_items && max_items > 1 ? `{${max_items - 1},}` : schema.minItems === max_items && max_items > 1 ? `{${max_items - 1}` : '*'}`;
+
+			const regex = `(?:\\(${item_regex}${additional_items}\\))`;
+
+			return {
+				pattern: inner ? regex : `^${regex}$`,
+			};
+		};
+	}
+
 	static configure_ajv(ajv: Ajv) {
 		if (already_configured.has(ajv)) {
 			return;
@@ -280,25 +299,6 @@ export class TypedArrayString {
 			},
 			macro: this.ajv_macro_generator(false),
 		});
-	}
-
-	static ajv_macro_generator(inner: boolean) {
-		return (schema: typed_array_string) => {
-			const item_regex = `(?:${this.item_to_regex(schema.items)})`;
-			const max_items =
-				'maxItems' in schema ? schema.maxItems : undefined;
-
-			const additional_items =
-				schema.minItems === max_items && 1 === schema.minItems
-					? ''
-					: `(?:,${item_regex})${max_items && max_items > 1 ? `{${max_items - 1},}` : schema.minItems === max_items && max_items > 1 ? `{${max_items - 1}` : '*'}`;
-
-			const regex = `(?:\\(${item_regex}${additional_items}\\))`;
-
-			return {
-				pattern: inner ? regex : `^${regex}$`,
-			};
-		};
 	}
 
 	public static item_to_regex(

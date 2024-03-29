@@ -65,20 +65,20 @@ export type DocsData = [DocsDataItem, ...DocsDataItem[]];
 declare type basic_docs_type = {[key: string]: unknown}[];
 
 export class DocsTsGenerator {
+	private docs: basic_docs_type | undefined;
 	private readonly cache_path: string | undefined;
 	private readonly docs_path: string | basic_docs_type;
-	private docs: basic_docs_type | undefined;
 
-	static readonly PERF_START_LOADING_JSON = 'Start Loading Docs.json';
 	static readonly PERF_EARLY_RETURN = 'Early Return of Docs.json';
 	static readonly PERF_FAILURE = 'Failure to load Docs.json';
-	static readonly PERF_FILE_READ = 'Docs.json contents read';
 	static readonly PERF_FILE_PARSED = 'Docs.json contents parsed';
-	static readonly PERF_VALIDATION_STARTED = 'Docs.json validation started';
+	static readonly PERF_FILE_READ = 'Docs.json contents read';
+	static readonly PERF_START_LOADING_JSON = 'Start Loading Docs.json';
 	static readonly PERF_VALIDATION_COMPILED = 'Docs.json validation compiled';
 	static readonly PERF_VALIDATION_FINISHED = 'Docs.json validation finished';
 	static readonly PERF_VALIDATION_PRECOMPILE =
 		'Docs.json validation pre-compilation started';
+	static readonly PERF_VALIDATION_STARTED = 'Docs.json validation started';
 
 	constructor({
 		// raw JSON or path to UTF-16LE encoded Docs.json
@@ -93,18 +93,13 @@ export class DocsTsGenerator {
 		this.cache_path = cache_path;
 	}
 
-	private async load_from_file(filepath: string): Promise<unknown> {
-		const file = await readFile(filepath, {
-			encoding: 'utf-16le',
-		});
-		performance.measure(
-			DocsTsGenerator.PERF_FILE_READ,
-			DocsTsGenerator.PERF_START_LOADING_JSON
+	async get() {
+		return this.validate(
+			await this.load(),
+			update8_schema as typeof update8_schema & {
+				$id: 'update8.schema.json';
+			}
 		);
-
-		const utf8 = Buffer.from(file).toString('utf-8');
-
-		return JSON.parse(utf8.trim()) as unknown;
 	}
 
 	private async load(): Promise<Exclude<typeof this.docs, undefined>> {
@@ -198,6 +193,20 @@ export class DocsTsGenerator {
 		return this.docs;
 	}
 
+	private async load_from_file(filepath: string): Promise<unknown> {
+		const file = await readFile(filepath, {
+			encoding: 'utf-16le',
+		});
+		performance.measure(
+			DocsTsGenerator.PERF_FILE_READ,
+			DocsTsGenerator.PERF_START_LOADING_JSON
+		);
+
+		const utf8 = Buffer.from(file).toString('utf-8');
+
+		return JSON.parse(utf8.trim()) as unknown;
+	}
+
 	private async validate<T extends DocsData>(
 		json: unknown,
 		schema: {$id: 'update8.schema.json'}
@@ -289,15 +298,6 @@ export class DocsTsGenerator {
 		}
 
 		return json;
-	}
-
-	async get() {
-		return this.validate(
-			await this.load(),
-			update8_schema as typeof update8_schema & {
-				$id: 'update8.schema.json';
-			}
-		);
 	}
 }
 

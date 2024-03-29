@@ -28,10 +28,10 @@ import {
 } from '../TypesDiscovery';
 
 export class FilesGenerator extends Base {
+	private readonly ajv:Ajv;
+	private readonly discovery:TypeDefinitionDiscovery;
 	private readonly docs:DocsTsGenerator;
 	private readonly validations:ValidateFunction[];
-	private readonly discovery:TypeDefinitionDiscovery;
-	private readonly ajv:Ajv;
 
 	constructor(
 		docs:DocsTsGenerator,

@@ -41,9 +41,9 @@ export class NativeClass extends Generator<
 	unknown
 > {
 	private readonly ajv:Ajv;
+	private readonly data_transformer:DataTransformer;
 	private readonly discovery:DataTransformerDiscovery;
 	private readonly items:items;
-	private readonly data_transformer:DataTransformer;
 	constructor(
 		check:ValidateFunction<DocsDataItem>,
 		discovery:DataTransformerDiscovery,

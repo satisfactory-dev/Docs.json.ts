@@ -81,16 +81,6 @@ export abstract class SecondaryCheckSchemaCompilingGenerator<
 		raw_data:unknown
 	): Promise<boolean>;
 
-	static is(
-		maybe:AnyGenerator
-	): maybe is SecondaryCheckSchemaCompilingGenerator<
-		unknown,
-		unknown,
-		unknown
-	> {
-		return maybe instanceof SecondaryCheckSchemaCompilingGenerator;
-	}
-
 	static gather_errors(from:AnyGenerator[]): (ErrorObject|NoMatchError)[] {
 		const result:(ErrorObject|NoMatchError)[] = [];
 
@@ -107,6 +97,16 @@ export abstract class SecondaryCheckSchemaCompilingGenerator<
 		}
 
 		return result;
+	}
+
+	static is(
+		maybe:AnyGenerator
+	): maybe is SecondaryCheckSchemaCompilingGenerator<
+		unknown,
+		unknown,
+		unknown
+	> {
+		return maybe instanceof SecondaryCheckSchemaCompilingGenerator;
 	}
 }
 

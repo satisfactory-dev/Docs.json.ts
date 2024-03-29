@@ -17,8 +17,30 @@ export declare type imports_shorthand = {
 export class ImportTracker {
 	public static imports: {[key: string]: imports_shorthand} = {};
 
-	static set_imports(file: string, imports: imports_shorthand) {
-		this.imports[file] = imports;
+	static generate_imports(file: string): ts.ImportDeclaration[] {
+		if (!(file in this.imports)) {
+			return [];
+		}
+
+		return this.imports[file].map((entry) => {
+			return ts.factory.createImportDeclaration(
+				[],
+				ts.factory.createImportClause(
+					false,
+					undefined,
+					ts.factory.createNamedImports(
+						entry.import_these.map((import_this) => {
+							return ts.factory.createImportSpecifier(
+								false,
+								undefined,
+								ts.factory.createIdentifier(import_this)
+							);
+						})
+					)
+				),
+				ts.factory.createStringLiteral(entry.from)
+			);
+		});
 	}
 
 	static merge_and_set_imports(imports: import_these_later) {
@@ -71,29 +93,7 @@ export class ImportTracker {
 		}
 	}
 
-	static generate_imports(file: string): ts.ImportDeclaration[] {
-		if (!(file in this.imports)) {
-			return [];
-		}
-
-		return this.imports[file].map((entry) => {
-			return ts.factory.createImportDeclaration(
-				[],
-				ts.factory.createImportClause(
-					false,
-					undefined,
-					ts.factory.createNamedImports(
-						entry.import_these.map((import_this) => {
-							return ts.factory.createImportSpecifier(
-								false,
-								undefined,
-								ts.factory.createIdentifier(import_this)
-							);
-						})
-					)
-				),
-				ts.factory.createStringLiteral(entry.from)
-			);
-		});
+	static set_imports(file: string, imports: imports_shorthand) {
+		this.imports[file] = imports;
 	}
 }

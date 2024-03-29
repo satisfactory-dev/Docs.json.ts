@@ -104,15 +104,15 @@ import {
 
 export class DataTransformer extends FilesGenerator
 {
-	public readonly discovery:TypeDefinitionDiscovery;
-	private readonly ajv:Ajv;
-	private readonly docs:DocsTsGenerator;
 	private prepare_promise:undefined|Promise<{
 		types: ref_discovery_type,
 		schema: SchemaObject & {definitions: {[key: string]: unknown}},
 		validations: ValidateFunction[],
 	}> = undefined;
+	private readonly ajv:Ajv;
+	private readonly docs:DocsTsGenerator;
 	public readonly data:DataTransformerDiscovery;
+	public readonly discovery:TypeDefinitionDiscovery;
 
 	constructor(
 		ajv:Ajv,
@@ -125,78 +125,6 @@ export class DataTransformer extends FilesGenerator
 		this.discovery = discovery;
 		this.docs = docs;
 		this.data = new DataTransformerDiscovery(ajv, this);
-	}
-
-	private async prepare()
-	{
-		if (!this.prepare_promise) {
-			this.prepare_promise = new Promise((yup, nope) => {
-				Promise.all([
-					this.discovery.discover_type_definitions(),
-					this.discovery.types_discovery.schema_from_json(),
-				]).then((e) => {
-					try {
-						const [types, schema] = e;
-
-						if (!object_has_property(
-							schema,
-							'definitions',
-							value_is_non_array_object
-						)) {
-							nope(new Error(
-								'Schema appears to have no definitions'
-							));
-
-							return;
-						}
-
-						if (!object_has_non_empty_array_property(
-							schema,
-							'prefixItems',
-							value_is_non_array_object
-						)) {
-							nope(new Error(
-								'Schema appears to have no prefixItems'
-							));
-
-							return;
-						}
-
-						const validations = types.found_classes.map(
-							e => this.ajv.compile(
-								{
-									definitions: schema.definitions,
-									...e,
-								}
-							)
-						);
-
-						yup({types, schema, validations});
-					} catch (err) {
-						nope(err);
-					}
-				}).catch(nope);
-			});
-		}
-
-		return this.prepare_promise;
-	}
-
-	async type_checked_schema()
-	{
-		const {schema} = await this.prepare();
-
-		if (!object_has_non_empty_array_property(
-			schema,
-			'prefixItems',
-			value_is_non_array_object
-		)) {
-			throw new Error(
-				'Schema appears to have no prefixItems'
-			);
-		}
-
-		return schema;
 	}
 
 	async find_check(raw_data:unknown): Promise<ValidateFunction>
@@ -277,6 +205,78 @@ export class DataTransformer extends FilesGenerator
 		process.stdout.write('\n');
 	}
 
+	async type_checked_schema()
+	{
+		const {schema} = await this.prepare();
+
+		if (!object_has_non_empty_array_property(
+			schema,
+			'prefixItems',
+			value_is_non_array_object
+		)) {
+			throw new Error(
+				'Schema appears to have no prefixItems'
+			);
+		}
+
+		return schema;
+	}
+
+	private async prepare()
+	{
+		if (!this.prepare_promise) {
+			this.prepare_promise = new Promise((yup, nope) => {
+				Promise.all([
+					this.discovery.discover_type_definitions(),
+					this.discovery.types_discovery.schema_from_json(),
+				]).then((e) => {
+					try {
+						const [types, schema] = e;
+
+						if (!object_has_property(
+							schema,
+							'definitions',
+							value_is_non_array_object
+						)) {
+							nope(new Error(
+								'Schema appears to have no definitions'
+							));
+
+							return;
+						}
+
+						if (!object_has_non_empty_array_property(
+							schema,
+							'prefixItems',
+							value_is_non_array_object
+						)) {
+							nope(new Error(
+								'Schema appears to have no prefixItems'
+							));
+
+							return;
+						}
+
+						const validations = types.found_classes.map(
+							e => this.ajv.compile(
+								{
+									definitions: schema.definitions,
+									...e,
+								}
+							)
+						);
+
+						yup({types, schema, validations});
+					} catch (err) {
+						nope(err);
+					}
+				}).catch(nope);
+			});
+		}
+
+		return this.prepare_promise;
+	}
+
 	static object_literal(
 		from:{[key: string]: unknown},
 	): ObjectLiteralExpression {
@@ -289,33 +289,6 @@ export class DataTransformer extends FilesGenerator
 					value
 				);
 			})
-		);
-	}
-
-	private static value_literal(from: unknown) : (
-		| StringLiteral
-		| TrueLiteral
-		| FalseLiteral
-		| Identifier
-		| ArrayLiteralExpression
-		| Expression
-		| ObjectLiteralExpression
-	) {
-		if (is_string(from)) {
-			return ts.factory.createStringLiteral(from);
-		} else if (from instanceof ExpressionResult) {
-			return (from as ExpressionResult).expression;
-		} if (value_is_non_array_object(from)) {
-			return this.object_literal(from);
-		} else if ('boolean' === typeof from) {
-			return from ? ts.factory.createTrue():ts.factory.createFalse();
-		} else if (undefined === from) {
-			return ts.factory.createIdentifier('undefined');
-		} else if (!(from instanceof Array)) {
-			throw new NoMatchError(from, 'not an array!');
-		}
-		return ts.factory.createArrayLiteralExpression(
-			from.map(e => this.value_literal(e))
 		);
 	}
 
@@ -358,5 +331,32 @@ export class DataTransformer extends FilesGenerator
 		);
 
 		return transformer;
+	}
+
+	private static value_literal(from: unknown) : (
+		| StringLiteral
+		| TrueLiteral
+		| FalseLiteral
+		| Identifier
+		| ArrayLiteralExpression
+		| Expression
+		| ObjectLiteralExpression
+	) {
+		if (is_string(from)) {
+			return ts.factory.createStringLiteral(from);
+		} else if (from instanceof ExpressionResult) {
+			return (from as ExpressionResult).expression;
+		} if (value_is_non_array_object(from)) {
+			return this.object_literal(from);
+		} else if ('boolean' === typeof from) {
+			return from ? ts.factory.createTrue():ts.factory.createFalse();
+		} else if (undefined === from) {
+			return ts.factory.createIdentifier('undefined');
+		} else if (!(from instanceof Array)) {
+			throw new NoMatchError(from, 'not an array!');
+		}
+		return ts.factory.createArrayLiteralExpression(
+			from.map(e => this.value_literal(e))
+		);
 	}
 }

@@ -105,19 +105,6 @@ export abstract class SupportedSubSchemaType<
 		| UnionTypeNode
 		| TypeReferenceNode,
 > {
-	abstract is_supported_schema(maybe: unknown): maybe is ObjectType;
-
-	abstract value_regex(value: ObjectType): string;
-
-	key_value_pair_regex(key: string, value: ObjectType): string {
-		return `(?:${annoyingly_have_to_escape_property(key)}=(?:${this.value_regex(value)}))`;
-	}
-
-	abstract value_type(
-		value: ObjectType
-	): LiteralType extends LiteralExpression
-		? LiteralTypeNode & {literal: LiteralType}
-		: LiteralType;
 
 	key_value_pair_entry(
 		key: string,
@@ -130,4 +117,18 @@ export abstract class SupportedSubSchemaType<
 	] {
 		return [key, this.value_type(value)];
 	}
+
+	key_value_pair_regex(key: string, value: ObjectType): string {
+		return `(?:${annoyingly_have_to_escape_property(key)}=(?:${this.value_regex(value)}))`;
+	}
+
+	abstract is_supported_schema(maybe: unknown): maybe is ObjectType;
+
+	abstract value_regex(value: ObjectType): string;
+
+	abstract value_type(
+		value: ObjectType
+	): LiteralType extends LiteralExpression
+		? LiteralTypeNode & {literal: LiteralType}
+		: LiteralType;
 }

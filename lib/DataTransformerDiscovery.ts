@@ -30,13 +30,13 @@ import {
 
 export class DataTransformerDiscovery
 {
-	public readonly discovery:DataTransformer;
-	private readonly candidates: AnyGenerator[] = [];
 	private readonly $ref:Promise<$ref>;
+	private readonly anyOf:anyOf;
+	private readonly candidates: AnyGenerator[] = [];
 	private readonly items:items;
 	private readonly oneOf:oneOf;
-	private readonly anyOf:anyOf;
 	private readonly prefixItems:prefixItems;
+	public readonly discovery:DataTransformer;
 
 	constructor(
 		ajv: Ajv,
@@ -53,6 +53,61 @@ export class DataTransformerDiscovery
 	add_generators(...generators:AnyGenerator[])
 	{
 		this.candidates.push(...generators);
+	}
+
+	async find(from:unknown) {
+		const transformer = this.find_generator(from);
+
+		return await transformer.generate(from);
+	}
+
+	async find_from_object(object:{[key: string]: unknown})
+	{
+		return Object.fromEntries(await Promise.all(Object.entries(object).map(
+			async (
+				entry
+			) : Promise<[string, (raw_data:unknown) => unknown]> => {
+				const [property, value] = entry;
+
+				const transformer = this.candidates.find(e => e.check(value));
+
+				if (!transformer) {
+					throw new NoMatchError(
+						{[property]: value},
+						`no match found for ${property}`
+					);
+				}
+
+				return [
+					property,
+					(
+						transformer
+							? await transformer.generate(value)
+							: (raw_data:unknown) => raw_data
+					),
+				];
+			}
+		)));
+	}
+
+	find_generator(from:unknown) : AnyGenerator {
+		const transformer = this.candidates.find(e => e.check(from));
+
+		if (!transformer) {
+			throw new NoMatchError(from);
+		}
+
+		return transformer;
+	}
+
+	async maybe_remap_object_ref(maybe: {[key: string]: unknown})
+	{
+		return Object.fromEntries(await Promise.all(Object.entries(maybe).map(
+			async (e) : Promise<[string, unknown]> => [
+				e[0],
+				await this.maybe_remap_ref(e[1]),
+			]
+		)));
 	}
 
 	async maybe_remap_ref(value:unknown) : Promise<unknown>
@@ -131,60 +186,5 @@ export class DataTransformerDiscovery
 		}
 
 		return value;
-	}
-
-	async maybe_remap_object_ref(maybe: {[key: string]: unknown})
-	{
-		return Object.fromEntries(await Promise.all(Object.entries(maybe).map(
-			async (e) : Promise<[string, unknown]> => [
-				e[0],
-				await this.maybe_remap_ref(e[1]),
-			]
-		)));
-	}
-
-	async find_from_object(object:{[key: string]: unknown})
-	{
-		return Object.fromEntries(await Promise.all(Object.entries(object).map(
-			async (
-				entry
-			) : Promise<[string, (raw_data:unknown) => unknown]> => {
-				const [property, value] = entry;
-
-				const transformer = this.candidates.find(e => e.check(value));
-
-				if (!transformer) {
-					throw new NoMatchError(
-						{[property]: value},
-						`no match found for ${property}`
-					);
-				}
-
-				return [
-					property,
-					(
-						transformer
-							? await transformer.generate(value)
-							: (raw_data:unknown) => raw_data
-					),
-				];
-			}
-		)));
-	}
-
-	find_generator(from:unknown) : AnyGenerator {
-		const transformer = this.candidates.find(e => e.check(from));
-
-		if (!transformer) {
-			throw new NoMatchError(from);
-		}
-
-		return transformer;
-	}
-
-	async find(from:unknown) {
-		const transformer = this.find_generator(from);
-
-		return await transformer.generate(from);
 	}
 }

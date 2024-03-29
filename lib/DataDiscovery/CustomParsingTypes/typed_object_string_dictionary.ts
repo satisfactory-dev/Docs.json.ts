@@ -62,8 +62,8 @@ export class typed_object_string_dictionary
 	{[key: string]: schema_type},
 	{[key: string]: unknown}
 > {
-	private readonly typed_object_string:typed_object_string;
 	private readonly discovery:DataTransformer;
+	private readonly typed_object_string:typed_object_string;
 
 	constructor(ajv:Ajv, discovery:DataTransformer) {
 		super(ajv, {

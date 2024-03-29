@@ -27,100 +27,10 @@ declare type initial_check_node_has_Identifier = initial_check_nodes & {
 };
 
 export class DocsTsAutoImports {
-	private readonly files_entries: [string, ts.Node[]][];
 	private readonly comes_from: {[key: string]: string} = {};
+	private readonly files_entries: [string, ts.Node[]][];
 	constructor(files: {[key: string]: ts.Node[]}) {
 		this.files_entries = Object.entries(files);
-	}
-
-	private static is_Identifier(
-		maybe: Identifier | undefined | EntityName
-	): maybe is Identifier {
-		return !!maybe && ts.isIdentifier(maybe);
-	}
-
-	private static is_named_ClassDeclaration(
-		node: ts.Node
-	): node is ts.ClassDeclaration & {name: Identifier} {
-		return (
-			ts.isClassDeclaration(node)
-			&& DocsTsAutoImports.is_Identifier(node.name)
-		);
-	}
-
-	private static is_named_FunctionDeclaration(
-		node: ts.Node
-	): node is ts.FunctionDeclaration & {name: Identifier} {
-		return (
-			ts.isFunctionDeclaration(node)
-			&& DocsTsAutoImports.is_Identifier(node.name)
-		);
-	}
-
-	private static has_export(
-		node: initial_check_nodes
-	): node is typeof node & {modifiers: [ts.SyntaxKind.ExportKeyword]} {
-		return (
-			!!node.modifiers
-			&& node.modifiers
-				.map((inner_maybe) => inner_maybe.kind)
-				.includes(ts.SyntaxKind.ExportKeyword)
-		);
-	}
-
-	private static filter_node(
-		maybe: ts.Node
-	): maybe is initial_check_node_has_Identifier {
-		return (
-			(this.is_named_ClassDeclaration(maybe)
-				|| this.is_named_FunctionDeclaration(maybe)
-				|| ts.isTypeAliasDeclaration(maybe))
-			&& this.has_export(maybe)
-		);
-	}
-
-	private static filter_nodes(
-		nodes: ts.Node[]
-	): initial_check_node_has_Identifier[] {
-		return nodes.filter(
-			(maybe): maybe is initial_check_node_has_Identifier => {
-				return this.filter_node(maybe);
-			}
-		);
-	}
-
-	private static node_IdentifierName(
-		node:
-			| initial_check_node_has_Identifier
-			| (TypeReferenceNode & {typeName: Identifier})
-	) {
-		const from = ts.isTypeReferenceNode(node) ? node.typeName : node.name;
-
-		return from.escapedText.toString();
-	}
-
-	private file_exports(): {[key: string]: [string, ...string[]]} {
-		const file_exports: {[key: string]: [string, ...string[]]} = {};
-
-		for (const entry of this.files_entries) {
-			const [filename, nodes] = entry;
-
-			const check_these = DocsTsAutoImports.filter_nodes(nodes);
-
-			for (const checking of check_these) {
-				if (!(filename in file_exports)) {
-					file_exports[filename] = [
-						DocsTsAutoImports.node_IdentifierName(checking),
-					];
-				} else {
-					file_exports[filename].push(
-						DocsTsAutoImports.node_IdentifierName(checking)
-					);
-				}
-			}
-		}
-
-		return file_exports;
 	}
 
 	async generate() {
@@ -196,5 +106,95 @@ export class DocsTsAutoImports {
 		}
 
 		ImportTracker.merge_and_set_imports(auto_imports);
+	}
+
+	private file_exports(): {[key: string]: [string, ...string[]]} {
+		const file_exports: {[key: string]: [string, ...string[]]} = {};
+
+		for (const entry of this.files_entries) {
+			const [filename, nodes] = entry;
+
+			const check_these = DocsTsAutoImports.filter_nodes(nodes);
+
+			for (const checking of check_these) {
+				if (!(filename in file_exports)) {
+					file_exports[filename] = [
+						DocsTsAutoImports.node_IdentifierName(checking),
+					];
+				} else {
+					file_exports[filename].push(
+						DocsTsAutoImports.node_IdentifierName(checking)
+					);
+				}
+			}
+		}
+
+		return file_exports;
+	}
+
+	private static filter_node(
+		maybe: ts.Node
+	): maybe is initial_check_node_has_Identifier {
+		return (
+			(this.is_named_ClassDeclaration(maybe)
+				|| this.is_named_FunctionDeclaration(maybe)
+				|| ts.isTypeAliasDeclaration(maybe))
+			&& this.has_export(maybe)
+		);
+	}
+
+	private static filter_nodes(
+		nodes: ts.Node[]
+	): initial_check_node_has_Identifier[] {
+		return nodes.filter(
+			(maybe): maybe is initial_check_node_has_Identifier => {
+				return this.filter_node(maybe);
+			}
+		);
+	}
+
+	private static has_export(
+		node: initial_check_nodes
+	): node is typeof node & {modifiers: [ts.SyntaxKind.ExportKeyword]} {
+		return (
+			!!node.modifiers
+			&& node.modifiers
+				.map((inner_maybe) => inner_maybe.kind)
+				.includes(ts.SyntaxKind.ExportKeyword)
+		);
+	}
+
+	private static is_Identifier(
+		maybe: Identifier | undefined | EntityName
+	): maybe is Identifier {
+		return !!maybe && ts.isIdentifier(maybe);
+	}
+
+	private static is_named_ClassDeclaration(
+		node: ts.Node
+	): node is ts.ClassDeclaration & {name: Identifier} {
+		return (
+			ts.isClassDeclaration(node)
+			&& DocsTsAutoImports.is_Identifier(node.name)
+		);
+	}
+
+	private static is_named_FunctionDeclaration(
+		node: ts.Node
+	): node is ts.FunctionDeclaration & {name: Identifier} {
+		return (
+			ts.isFunctionDeclaration(node)
+			&& DocsTsAutoImports.is_Identifier(node.name)
+		);
+	}
+
+	private static node_IdentifierName(
+		node:
+			| initial_check_node_has_Identifier
+			| (TypeReferenceNode & {typeName: Identifier})
+	) {
+		const from = ts.isTypeReferenceNode(node) ? node.typeName : node.name;
+
+		return from.escapedText.toString();
 	}
 }

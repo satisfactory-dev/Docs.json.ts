@@ -233,24 +233,6 @@ const right_value_starts_with_suffix =
 	'(?:[A-Z][A-Za-z0-9_.]+/)*[A-Z][A-Za-z_.0-9-]+(?::[A-Z][A-Za-z0-9]+)?';
 
 export class UnrealEngineString {
-	static configure_ajv(ajv: Ajv) {
-		if (already_configured.has(ajv)) {
-			return;
-		}
-
-		already_configured.add(ajv);
-
-		ajv.addKeyword({
-			keyword: 'UnrealEngineString',
-			type: 'string',
-			metaSchema: {
-				definitions: UnrealEngineString_schema_definitions,
-				...UnrealEngineString_schema,
-			},
-			macro: this.ajv_macro_generator(false),
-		});
-	}
-
 	static ajv_macro_generator(inner: boolean) {
 		return (data_from_schema: UnrealEngineString_type) => {
 			const data:
@@ -294,6 +276,24 @@ export class UnrealEngineString {
 				pattern: inner ? regex : `^${regex}$`,
 			};
 		};
+	}
+
+	static configure_ajv(ajv: Ajv) {
+		if (already_configured.has(ajv)) {
+			return;
+		}
+
+		already_configured.add(ajv);
+
+		ajv.addKeyword({
+			keyword: 'UnrealEngineString',
+			type: 'string',
+			metaSchema: {
+				definitions: UnrealEngineString_schema_definitions,
+				...UnrealEngineString_schema,
+			},
+			macro: this.ajv_macro_generator(false),
+		});
 	}
 
 	static CustomGenerators() : [entry, ...entry[]] {
