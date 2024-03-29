@@ -1,4 +1,4 @@
-abstract class UnsuccessfulMatchException<
+export class NoMatchError<
 	T = unknown,
 > extends Error {
 	readonly property: T;
@@ -11,10 +11,6 @@ abstract class UnsuccessfulMatchException<
 		this.property = property;
 	}
 }
-
-export class NoMatchError<
-	T = unknown,
-> extends UnsuccessfulMatchException<T> {}
 
 export class UnexpectedlyUnknown extends NoMatchError {}
 
