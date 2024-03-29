@@ -9,7 +9,7 @@ import {
 	TypesDiscovery,
 } from '../../TypesDiscovery';
 import {
-	DocsDataItem,
+	DocsDataItem, DocsTsGenerator,
 } from '../../DocsTsGenerator';
 import {
 	object_has_non_empty_array_property,
@@ -284,12 +284,13 @@ export class NativeClass extends Generator<
 
 	static async fromTypesDiscovery(
 		ajv:Ajv,
-		data_transformer: DataTransformer
+		data_transformer: DataTransformer,
+		docs: DocsTsGenerator
 	) {
 		return new this(
 			await TypesDiscovery.generate_is_NativeClass(
 				ajv,
-				data_transformer.discovery.types_discovery
+				docs
 			),
 			data_transformer.data,
 			ajv,

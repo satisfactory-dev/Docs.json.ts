@@ -27,7 +27,7 @@ import {
 	configure_ajv,
 } from './DocsValidation';
 import {
-	DocsDataItem,
+	DocsDataItem, DocsTsGenerator,
 } from './DocsTsGenerator';
 
 export class TypesDiscovery
@@ -36,32 +36,25 @@ export class TypesDiscovery
 		discovered_types: string[],
 		missed_types: string[],
 	}>|undefined;
-	private validated = false;
-	private readonly ajv:Ajv;
 	private readonly candidates_discovery:[
 		CandidatesDiscovery,
 		...CandidatesDiscovery[],
 	];
-	private readonly json:{[key: string]: unknown};
+	private readonly docs:DocsTsGenerator;
 
 	constructor(
-		ajv: Ajv,
-		json:{[key: string]: unknown},
-		candidates_discovery: [
-			CandidatesDiscovery,
-			...CandidatesDiscovery[],
-		],
+		candidates_discovery: [CandidatesDiscovery, ...CandidatesDiscovery[]],
+		docs: DocsTsGenerator,
 	) {
-		this.ajv = ajv;
-		this.json = json;
 		this.candidates_discovery = candidates_discovery;
+		this.docs = docs;
 	}
 
 	async discover_types()
 	{
 		if (!this.discovery) {
 			this.discovery = new Promise((yup, nope) => {
-				this.schema_from_json().then((schema) => {
+				this.docs.schema().then((schema) => {
 					const discovered_types = new Set<string>();
 
 					this.discover_types_from(schema, schema, discovered_types);
@@ -85,23 +78,6 @@ export class TypesDiscovery
 		}
 
 		return this.discovery;
-	}
-
-	public async schema_from_json(): Promise<SchemaObject>
-	{
-		if (!this.validated) {
-			const check = await this.ajv.validateSchema(
-				this.json
-			);
-
-			if (!check) {
-				throw new Error('Could not validate schema!');
-			}
-
-			this.validated = true;
-		}
-
-		return this.json;
 	}
 
 	private discover_types_from(
@@ -138,11 +114,11 @@ export class TypesDiscovery
 
 	static async generate_is_NativeClass(
 		ajv:Ajv,
-		discovery:TypesDiscovery
+		docs:DocsTsGenerator
 	) {
 		configure_ajv(ajv);
 
-		const schema = await discovery.schema_from_json();
+		const schema = await docs.schema();
 
 		if (!object_has_property(
 			schema,

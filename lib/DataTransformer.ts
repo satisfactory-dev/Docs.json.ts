@@ -164,7 +164,7 @@ export class DataTransformer extends FilesGenerator
 	{
 		const is_NativeClass = await TypesDiscovery.generate_is_NativeClass(
 			this.ajv,
-			this.discovery.types_discovery
+			this.docs
 		);
 
 		const entries = await this.docs.get();
@@ -228,7 +228,7 @@ export class DataTransformer extends FilesGenerator
 			this.prepare_promise = new Promise((yup, nope) => {
 				Promise.all([
 					this.discovery.discover_type_definitions(),
-					this.discovery.types_discovery.schema_from_json(),
+					this.docs.schema(),
 				]).then((e) => {
 					try {
 						const [types, schema] = e;
@@ -313,7 +313,8 @@ export class DataTransformer extends FilesGenerator
 			) as AnyGenerator,
 			await NativeClass.fromTypesDiscovery(
 				ajv,
-				transformer
+				transformer,
+				docs
 			) as AnyGenerator,
 			new StringType(ajv) as AnyGenerator,
 			new Pattern(ajv) as AnyGenerator,
