@@ -1,7 +1,7 @@
 import ts from 'typescript';
 import {
-	UnexpectedlyUnknown,
-} from './SchemaBasedResultsMatching/TypeNodeGeneration';
+	NoMatchError,
+} from './Exceptions';
 
 export declare type import_these_somewhere_later = {[key: string]: string[]};
 
@@ -60,7 +60,7 @@ export class ImportTracker {
 				const [from, import_these] = inner_entry;
 
 				if (from.endsWith('.ts')) {
-					throw new UnexpectedlyUnknown(
+					throw new NoMatchError(
 						from,
 						'files ending with .ts should not end up here'
 					);

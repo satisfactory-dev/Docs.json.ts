@@ -69,7 +69,7 @@ import {
 } from './TypesGeneration/validators';
 import {
 	NoMatchError,
-} from './DataTransformerDiscovery/NoMatchError';
+} from './Exceptions';
 import {
 	FilesGenerator,
 	FromArray,

@@ -9,7 +9,7 @@ import {
 } from './lib/DocsTsGenerator';
 import {
 	NoMatchError,
-} from './lib/SchemaBasedResultsMatching/TypeNodeGeneration';
+} from './lib/Exceptions';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const generator = new DocsTsGenerator({

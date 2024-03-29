@@ -10,8 +10,8 @@ import ts, {
 	PrefixUnaryExpression,
 } from 'typescript';
 import {
-	UnexpectedlyUnknown,
-} from '../SchemaBasedResultsMatching/TypeNodeGeneration';
+	NoMatchError,
+} from '../Exceptions';
 
 export class LiteralTypeNodes extends NodeExtraction<LiteralTypeNode> {
 	protected extract(nodes: LiteralTypeNode[]): EntityName[] {
@@ -37,7 +37,7 @@ export class LiteralTypeNodes extends NodeExtraction<LiteralTypeNode> {
 		}
 
 		if (others.length > 0) {
-			throw new UnexpectedlyUnknown(
+			throw new NoMatchError(
 				others,
 				'Unsupported types found!'
 			);

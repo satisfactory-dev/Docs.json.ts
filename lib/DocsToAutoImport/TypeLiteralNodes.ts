@@ -5,8 +5,8 @@ import ts, {
 	Node, TypeElement, TypeLiteralNode,
 } from 'typescript';
 import {
-	UnexpectedlyUnknown,
-} from '../SchemaBasedResultsMatching/TypeNodeGeneration';
+	NoMatchError,
+} from '../Exceptions';
 
 export class TypeLiteralNodes extends NodeExtraction<TypeLiteralNode> {
 	protected extract(nodes: TypeLiteralNode[]): Node[] {
@@ -38,7 +38,7 @@ export class TypeLiteralNodes extends NodeExtraction<TypeLiteralNode> {
 		}
 
 		if (other_elements.length) {
-			throw new UnexpectedlyUnknown(
+			throw new NoMatchError(
 				other_elements,
 				'Unsupported elements found!'
 			);

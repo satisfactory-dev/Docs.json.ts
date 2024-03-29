@@ -38,8 +38,8 @@ import {
 	FunctionDeclarations,
 } from './FunctionDeclaration';
 import {
-	UnexpectedlyUnknown,
-} from '../SchemaBasedResultsMatching/TypeNodeGeneration';
+	NoMatchError,
+} from '../Exceptions';
 
 const recursion_limit = 10;
 
@@ -274,7 +274,7 @@ export function EntityName_array_from_Node_array(nodes: Node[]): EntityName[] {
 	}
 
 	if (others.length) {
-		throw new UnexpectedlyUnknown(
+		throw new NoMatchError(
 			others,
 			'Unsupported types found!'
 		);
