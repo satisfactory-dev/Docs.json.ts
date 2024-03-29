@@ -58,7 +58,11 @@ import {
 	DocsTsGenerator,
 } from './DocsTsGenerator';
 import {
-	progress_group, reduce, remap, remove_indentation,
+	GeneratesMarkdown,
+	progress_group,
+	reduce,
+	remap,
+	remove_indentation,
 } from './MarkdownUtilities';
 
 type SchemaObjectWithDefinitions<Definitions extends {[key: string]: true}> =
@@ -133,7 +137,10 @@ export type ref_discovery_type = {
 	missing_classes: {[key: string]: unknown}[],
 };
 
-export class TypeDefinitionDiscovery extends FilesGenerator {
+export class TypeDefinitionDiscovery
+	extends FilesGenerator
+	implements GeneratesMarkdown
+{
 	private $ref_discovery:
 		| Promise<ref_discovery_type>
 		| undefined;

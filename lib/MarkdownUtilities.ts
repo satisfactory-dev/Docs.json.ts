@@ -99,3 +99,8 @@ export function remove_indentation(input: string): string {
 
 	return str;
 }
+
+export interface GeneratesMarkdown
+{
+	generate_markdown(): Promise<string>;
+}
