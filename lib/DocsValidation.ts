@@ -131,8 +131,8 @@ export function string_to_object<T extends object>(
 							const coerced_value = shallow
 								? was.current_value_buffer
 								: string_to_native_type(
-								was.current_value_buffer
-							);
+									was.current_value_buffer
+								);
 
 							was.properties.push([
 								was.current_key_buffer,
@@ -161,8 +161,8 @@ export function string_to_object<T extends object>(
 							const coerced_value = shallow
 								? was.current_value_buffer
 								: string_to_native_type(
-								was.current_value_buffer
-							);
+									was.current_value_buffer
+								);
 
 							was.properties.push([
 								was.current_key_buffer,
@@ -243,8 +243,8 @@ export function string_to_array<T extends unknown[]>(
 						const coerced_value = shallow
 							? was.current_item_buffer
 							: string_to_native_type(
-							was.current_item_buffer
-						);
+								was.current_item_buffer
+							);
 
 						was.values.push(
 							false !== coerced_value
