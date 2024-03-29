@@ -25,6 +25,6 @@ jobs:
             - run: ./node_modules/.bin/prettier . --check
             - run: ./node_modules/.bin/eslint .
             - name: Run tests
-              run: ./node_modules/.bin/jasmine --config=./jasmine.json
+              run: npm test
               env:
                   NODE_OPTIONS: '--enable-source-maps --no-warnings=ExperimentalWarning --loader ts-node/esm'

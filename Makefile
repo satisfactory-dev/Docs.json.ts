@@ -59,8 +59,8 @@ lint-fix:
 
 .PHONY: tests
 tests: build-lib
-	${DOCKER_COMPOSER_PREFIX} exec ts-node ./node_modules/.bin/jasmine --config=./jasmine.json
+	${DOCKER_COMPOSER_PREFIX} exec ts-node npm test
 
 .PHONY: coverage
 coverage: build-lib
-	${DOCKER_COMPOSER_PREFIX} exec ts-node ./node_modules/.bin/c8 ./node_modules/.bin/jasmine --config=./jasmine.json
+	${DOCKER_COMPOSER_PREFIX} exec ts-node ./node_modules/.bin/c8 npm test

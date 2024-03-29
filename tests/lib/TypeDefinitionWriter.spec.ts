@@ -1,18 +1,25 @@
-import 'jasmine';
+import {
+	describe,
+	it,
+} from 'node:test';
+import assert from 'node:assert/strict';
 import {
 	TypeDefinitionWriter,
 } from '../../lib/TypeDefinitionWriter';
 
-describe('TypeDefinitionWriter', () => {
-	it('guess_filename', () => {
-		expect(
-			TypeDefinitionWriter.guess_filename('foo')
-		).toEqual('common/unassigned.ts');
-		expect(
-			TypeDefinitionWriter.guess_filename('NativeClass--foo')
-		).toEqual('classes/base.ts');
-		expect(
-			TypeDefinitionWriter.guess_filename('FGFoo--bar')
-		).toEqual('classes/CoreUObject/FGFoo.ts');
+void describe('TypeDefinitionWriter', () => {
+	void it('guess_filename', () => {
+		assert.strictEqual(
+			TypeDefinitionWriter.guess_filename('foo'),
+			'common/unassigned.ts'
+		);
+		assert.strictEqual(
+			TypeDefinitionWriter.guess_filename('NativeClass--foo'),
+			'classes/base.ts'
+		);
+		assert.strictEqual(
+			TypeDefinitionWriter.guess_filename('FGFoo--bar'),
+			'classes/CoreUObject/FGFoo.ts'
+		);
 	});
 });

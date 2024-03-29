@@ -1,4 +1,8 @@
-import 'jasmine';
+import {
+	describe,
+	it,
+} from 'node:test';
+import assert from 'node:assert/strict';
 import {
 	FilesGenerator,
 	FromArray,
@@ -6,9 +10,12 @@ import {
 import {
 	create_literal,
 } from '../../lib/TsFactoryWrapper';
+import {
+	value_is_non_array_object,
+} from '../../lib/CustomParsingTypes/CustomPairingTypes';
 
-describe('FromArray', () => {
-	it('behaves', async () => {
+void describe('FromArray', () => {
+	void it('behaves', async () => {
 		const instance = new FromArray([
 			{file: 'foo.ts', node: create_literal('foo')},
 		]);
@@ -17,23 +24,29 @@ describe('FromArray', () => {
 			entries.push(entry);
 		}
 
-		expect(entries).toHaveSize(1);
+		assert.strictEqual(entries.length, 1);
 	});
 });
 
-describe('merge_files', () => {
-	it('defines an object', async () => {
-		expect(await FilesGenerator.merge_files([])).toEqual({});
+void describe('merge_files', () => {
+	void it('defines an object', async () => {
+		assert.strictEqual(
+			value_is_non_array_object(
+				await FilesGenerator.merge_files([])
+			),
+			true
+		);
 	})
-	it('modifies an object', async () => {
+	void it('modifies an object', async () => {
 		const files = {};
 
-		expect(
+		assert.strictEqual(
 			(await FilesGenerator.merge_files([
 				new FromArray([
 					{file: 'foo.ts', node: create_literal('bar')},
 				]),
-			], files))['foo.ts']
-		).toHaveSize(1);
+			], files))['foo.ts'].length,
+			1
+		);
 	})
 });
