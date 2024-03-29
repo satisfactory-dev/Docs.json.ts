@@ -35,12 +35,15 @@ import {
 	createHash,
 } from 'node:crypto';
 import {
-	is_non_empty_array, object_has_property,
+	is_non_empty_array, object_has_property, property_exists_on_object,
 	value_is_non_array_object,
 } from './CustomParsingTypes/CustomPairingTypes';
 import {
 	is_string,
 } from './StringStartsWith';
+import {
+	NoMatchError,
+} from './Exceptions';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -95,6 +98,25 @@ export class DocsTsGenerator {
 	}) {
 		this.docs_path = docs_path;
 		this.cache_path = cache_path;
+	}
+
+	async definition(
+		$ref:string
+	): Promise<
+		typeof $ref extends (
+			keyof typeof update8_schema.definitions
+			) ? SchemaObject : never
+	> {
+		const schema = await this.schema();
+
+		if (!property_exists_on_object(schema.definitions, $ref)) {
+			throw new NoMatchError({
+				$ref,
+				options: Object.keys(schema.definitions),
+			});
+		}
+
+		return schema.definitions[$ref];
 	}
 
 	async get() {

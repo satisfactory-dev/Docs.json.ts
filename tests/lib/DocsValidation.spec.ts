@@ -1,4 +1,8 @@
-import 'jasmine';
+import {
+	describe,
+	it,
+} from 'node:test';
+import assert from 'node:assert/strict';
 
 import {
 	ajv_is_configured,
@@ -16,16 +20,16 @@ type definitions = {
 	[key: string]: [string, unknown][]
 };
 
-describe('DefaultConfig', () => {
-	it('getter', () => {
-		expect(default_config.ajv).not.toEqual(default_config.ajv);
+void describe('DefaultConfig', () => {
+	void it('getter', () => {
+		assert.notStrictEqual(default_config.ajv, default_config.ajv);
 	});
-	it('setter', () => {
+	void it('setter', () => {
 		const default_ajv = default_config.ajv;
 		default_config.ajv = default_ajv;
-		expect(default_config.ajv).toEqual(default_ajv);
+		assert.strictEqual(default_config.ajv, default_ajv);
 		default_config.clear();
-		expect(default_config.ajv).not.toEqual(default_config.ajv);
+		assert.notStrictEqual(default_config.ajv, default_config.ajv);
 	});
 })
 
@@ -88,21 +92,24 @@ for (const describing of Object.entries(spec)) {
 	] = describing as [keyof typeof spec, definitions];
 	const function_to_call = functions_to_call[function_name];
 
-	describe(function_name, () => {
+	void describe(function_name, () => {
 		for (const expectations of Object.entries(definitions)) {
 			const [expectation, assertions] = expectations;
 
-			it(expectation, () => {
+			void it(expectation, () => {
 				for (const assertion of assertions) {
 					const [argument, to_equal] = assertion;
-					expect(function_to_call(argument)).toEqual(to_equal);
+					assert.deepStrictEqual(
+						function_to_call(argument),
+						to_equal
+					);
 				}
 			});
 		}
 	});
 }
 
-describe('configure_ajv', () => {
+void describe('configure_ajv', () => {
 	const test_keyword_schemas:[
 		SchemaObject,
 		[string, boolean][],
@@ -134,23 +141,23 @@ describe('configure_ajv', () => {
 		],
 	];
 
-	it('Ajv fails without use', () => {
+	void it('Ajv fails without use', () => {
 		const ajv = new Ajv();
 		const basic = ajv.compile({type: 'string'});
 
-		expect(basic('foo')).toEqual(true);
-		expect(basic(1)).toEqual(false);
+		assert.strictEqual(basic('foo'), true);
+		assert.strictEqual(basic(1), false);
 
 		for (const entry of test_keyword_schemas) {
 			const [schema] = entry;
 
-			expect(() => {
+			assert.throws(() => {
 				return ajv.compile(schema);
-			}).toThrow();
+			});
 		}
 	});
 
-	it('Behaves when configured', () => {
+	void it('Behaves when configured', () => {
 		const ajv = new Ajv();
 		configure_ajv(ajv);
 
@@ -162,23 +169,23 @@ describe('configure_ajv', () => {
 			for (const check_entry of checks) {
 				const [input, expected] = check_entry;
 
-				expect(check(input)).toEqual(expected);
+				assert.strictEqual(check(input), expected);
 			}
 		}
 	});
 });
 
 
-describe('ajv_is_configured', () => {
-	it('not yet configured', () => {
+void describe('ajv_is_configured', () => {
+	void it('not yet configured', () => {
 		const ajv = new Ajv();
 
-		expect(ajv_is_configured(ajv)).toBeFalse();
+		assert.strictEqual(ajv_is_configured(ajv), false);
 
 		configure_ajv(ajv);
 
-		expect(ajv_is_configured(ajv)).toBeTrue();
+		assert.strictEqual(ajv_is_configured(ajv), true);
 
-		expect(ajv_is_configured(default_config.ajv)).toBeTrue();
+		assert.strictEqual(ajv_is_configured(default_config.ajv), true);
 	})
 });

@@ -54,6 +54,9 @@ import {
 	adjust_class_name,
 	create_modifiers,
 } from './TsFactoryWrapper';
+import {
+	DocsTsGenerator,
+} from './DocsTsGenerator';
 
 type SchemaObjectWithDefinitions<Definitions extends {[key: string]: true}> =
 	& SchemaObject
@@ -136,6 +139,7 @@ export class TypeDefinitionDiscovery extends FilesGenerator {
 		AnyGenerator,
 		...AnyGenerator[],
 	];
+	private readonly docs:DocsTsGenerator;
 	public readonly types_discovery:TypesDiscovery;
 
 	constructor(
@@ -149,11 +153,13 @@ export class TypeDefinitionDiscovery extends FilesGenerator {
 			AnyGenerator,
 			...AnyGenerator[],
 		],
+		docs:DocsTsGenerator
 	) {
 		super();
 		this.ajv = ajv;
-		this.types_discovery = new TypesDiscovery(ajv, json, types_discovery);
+		this.types_discovery = new TypesDiscovery(types_discovery, docs);
 		this.candidates = type_definition_discover;
+		this.docs = docs;
 	}
 
 	add_candidates(...candidates:AnyGenerator[])
@@ -231,15 +237,6 @@ export class TypeDefinitionDiscovery extends FilesGenerator {
 
 	async* generate_files() {
 		const types = await this.discover_type_definitions();
-		const schema = await this.types_discovery.schema_from_json();
-
-		if (!object_has_property(
-			schema,
-			'definitions',
-			value_is_non_array_object
-		)) {
-			throw new Error('No definitions on schema!');
-		}
 
 		for (const entry of Object.entries(types.found_types)) {
 			const [definition, generator] = entry;
@@ -252,7 +249,7 @@ export class TypeDefinitionDiscovery extends FilesGenerator {
 					create_modifiers('export'),
 					adjust_class_name($ref),
 					undefined,
-					generator(schema.definitions[$ref] as never)
+					generator(await this.docs.definition($ref))
 				),
 			};
 		}
@@ -470,10 +467,13 @@ export class TypeDefinitionDiscovery extends FilesGenerator {
 		return result;
 	}
 
+	/**
+	 * @todo move to DocsTsGenerator
+	 */
 	private async schema_from_json(
 		discovered_types: {[key: string]: true}
 	) : Promise<SchemaObjectWithDefinitions<typeof discovered_types>> {
-		const schema = await this.types_discovery.schema_from_json();
+		const schema = await this.docs.schema();
 
 		if (!is_schema_with_definitions(schema, discovered_types)) {
 			throw new Error('Schema definitions not as expected!');

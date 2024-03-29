@@ -1,4 +1,8 @@
-import 'jasmine';
+import {
+	describe,
+	it,
+} from 'node:test';
+import assert from 'node:assert/strict';
 import {
 	$ref_in_array,
 	is_$ref,
@@ -6,47 +10,47 @@ import {
 	local_ref,
 } from '../../lib/StringStartsWith';
 
-describe('local_ref', () => {
-	it('works', () => {
-		expect(local_ref('foo')).toEqual('#/definitions/foo');
+void describe('local_ref', () => {
+	void it('works', () => {
+		assert.strictEqual(local_ref('foo'), '#/definitions/foo');
 	})
 
-	it('throws', () => {
-		expect(() => local_ref('foo bar')).toThrow();
+	void it('throws', () => {
+		assert.throws(() => local_ref('foo bar'));
 	})
 });
 
-describe('is_string', () => {
-	it ('behaves', () => {
-		expect(is_string('foo')).toBeTrue();
-		expect(is_string(1)).toBeFalse();
+void describe('is_string', () => {
+	void it ('behaves', () => {
+		assert.strictEqual(is_string('foo'), true);
+		assert.strictEqual(is_string(1), false);
 	});
 });
 
-describe('is_$ref', () => {
-	it('behaves', () => {
-		expect(is_$ref('#/definitions/foo')).toBeTrue();
-		expect(is_$ref('foo')).toBeFalse();
+void describe('is_$ref', () => {
+	void it('behaves', () => {
+		assert.strictEqual(is_$ref('#/definitions/foo'), true);
+		assert.strictEqual(is_$ref('foo'), false);
 	});
 });
 
-describe('$ref_in_array', () => {
-	it('behaves', () => {
-		expect($ref_in_array(
+void describe('$ref_in_array', () => {
+	void it('behaves', () => {
+		assert.strictEqual($ref_in_array(
 			1,
 			['#/definitions/foo']
-		)).toBeFalse();
-		expect($ref_in_array(
+		), false);
+		assert.strictEqual($ref_in_array(
 			'foo',
 			['#/definitions/foo']
-		)).toBeFalse();
-		expect($ref_in_array(
+		), false);
+		assert.strictEqual($ref_in_array(
 			'#/definitions/bar',
 			['#/definitions/foo']
-		)).toBeFalse();
-		expect($ref_in_array(
+		), false);
+		assert.strictEqual($ref_in_array(
 			'#/definitions/foo',
 			['#/definitions/foo']
-		)).toBeTrue();
+		), true);
 	});
 });

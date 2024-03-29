@@ -146,6 +146,7 @@ export class TypeDefinitionWriter
 						...TypesDiscovery.custom_parsing_types(schema),
 					],
 					type_definition_discover,
+					this.docs,
 				);
 			}));
 		}
@@ -168,7 +169,7 @@ export class TypeDefinitionWriter
 		}
 
 		const types = await discovery.discover_type_definitions();
-		const schema = await discovery.types_discovery.schema_from_json();
+		const schema = await this.docs.schema();
 
 		if (
 			types.missing_classes.length > 0

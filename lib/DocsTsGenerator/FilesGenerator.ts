@@ -51,7 +51,7 @@ export class FilesGenerator extends Base {
 
 		const is_NativeClass = await TypesDiscovery.generate_is_NativeClass(
 			this.ajv,
-			this.discovery.types_discovery
+			this.docs
 		);
 
 		for (const entry of await this.docs.get()) {

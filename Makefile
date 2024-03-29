@@ -37,17 +37,19 @@ lint-lib--tsc:
 	@echo 'running syntax check'
 	${DOCKER_COMPOSER_PREFIX} exec node ./node_modules/.bin/tsc --project ./tsconfig.lib-check.json
 
-lint-lib: lint-lib--tsc lint--eslint
+lint-lib: lint-lib--tsc lint-lib--eslint
 
 lint--prettier:
 	@echo 'running prettier'
 	${DOCKER_COMPOSER_PREFIX} exec ts-node ./node_modules/.bin/prettier . --check
 
-lint--eslint:
+lint-lib--eslint:
 	@echo 'checking eslint for fixable issues'
 	${DOCKER_COMPOSER_PREFIX} exec ts-node ./node_modules/.bin/eslint --cache './*.ts' lib --fix-dry-run
+	${DOCKER_COMPOSER_PREFIX} exec ts-node ./node_modules/.bin/eslint --cache './*.ts' tests --fix-dry-run
 	@echo 'checking eslint for all issues'
 	${DOCKER_COMPOSER_PREFIX} exec ts-node ./node_modules/.bin/eslint --cache './*.ts' lib
+	${DOCKER_COMPOSER_PREFIX} exec ts-node ./node_modules/.bin/eslint --cache './*.ts' tests
 
 lint: lint--prettier lint-lib
 
@@ -56,11 +58,12 @@ lint-fix:
 	${DOCKER_COMPOSER_PREFIX} exec ts-node ./node_modules/.bin/prettier . --write
 	@echo 'fixing eslint issues'
 	${DOCKER_COMPOSER_PREFIX} exec ts-node ./node_modules/.bin/eslint --cache './*.ts' lib --fix
+	${DOCKER_COMPOSER_PREFIX} exec ts-node ./node_modules/.bin/eslint --cache './*.ts' tests --fix
 
 .PHONY: tests
 tests: build-lib
-	${DOCKER_COMPOSER_PREFIX} exec ts-node ./node_modules/.bin/jasmine --config=./jasmine.json
+	${DOCKER_COMPOSER_PREFIX} exec ts-node npm test
 
 .PHONY: coverage
 coverage: build-lib
-	${DOCKER_COMPOSER_PREFIX} exec ts-node ./node_modules/.bin/c8 ./node_modules/.bin/jasmine --config=./jasmine.json
+	${DOCKER_COMPOSER_PREFIX} exec ts-node ./node_modules/.bin/c8 npm test

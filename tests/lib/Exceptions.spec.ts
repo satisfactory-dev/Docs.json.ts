@@ -1,31 +1,36 @@
-import 'jasmine';
+import {
+	describe,
+	it,
+} from 'node:test';
+import assert from 'node:assert/strict';
 import {
 	FragileTypeSafetyError,
 	NoMatchError,
 } from '../../lib/Exceptions';
 
-describe('NoMatchError', () => {
-	it('has a default message', () => {
+void describe('NoMatchError', () => {
+	void it('has a default message', () => {
 		const foo = new NoMatchError(null);
 
-		expect(foo.message).toEqual('No match found!');
+		assert.strictEqual(foo.message, 'No match found!');
 	});
-	it('can have a specific message', () => {
+	void it('can have a specific message', () => {
 		const foo = new NoMatchError(null, 'foo');
 
-		expect(foo.message).toEqual('foo');
+		assert.strictEqual(foo.message,'foo');
 	});
-	it('will keep a copy of the passed value', () => {
-		expect((new NoMatchError(1)).property).toEqual(1);
-		expect((new NoMatchError(null)).property).toEqual(null);
-		expect((new NoMatchError(true)).property).toBeTrue();
-		expect((new NoMatchError(false)).property).toBeFalse();
+	void it('will keep a copy of the passed value', () => {
+		assert.strictEqual((new NoMatchError(1)).property,1);
+		assert.strictEqual((new NoMatchError(null)).property,null);
+		assert.strictEqual((new NoMatchError(true)).property, true);
+		assert.strictEqual((new NoMatchError(false)).property, false);
 	});
 })
 
-describe('FragileTypeSafetyError', () => {
-	it('has a default message', () => {
-		expect((new FragileTypeSafetyError(null)).message).toEqual(
+void describe('FragileTypeSafetyError', () => {
+	void it('has a default message', () => {
+		assert.strictEqual(
+			(new FragileTypeSafetyError(null)).message,
 			'type safety in here is a bit fragile, check earlier in the stack'
 		);
 	});

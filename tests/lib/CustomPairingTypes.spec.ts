@@ -1,4 +1,8 @@
-import 'jasmine';
+import {
+	describe,
+	it,
+} from 'node:test';
+import assert from 'node:assert/strict';
 import {
 	object_has_property,
 	object_only_has_that_property,
@@ -8,85 +12,93 @@ import {
 	is_string,
 } from '../../lib/StringStartsWith';
 
-describe('object_has_property', () => {
-	it('gets no predicate', () => {
-		expect(object_has_property([], 'foo')).toBeFalse();
-		expect(object_has_property({}, 'foo')).toBeFalse()
-		expect(object_has_property({foo:undefined}, 'foo')).toBeTrue();
+void describe('object_has_property', () => {
+	void it('gets no predicate', () => {
+		assert.strictEqual(object_has_property([], 'foo'), false);
+		assert.strictEqual(object_has_property({}, 'foo'), false)
+		assert.strictEqual(object_has_property({foo:undefined}, 'foo'), true);
 	});
-	it('gets a predicate', () => {
-		expect(
+	void it('gets a predicate', () => {
+		assert.strictEqual(
 			object_has_property(
 				{foo: 'bar'},
 				'foo',
 				is_string
-			)
-		).toBeTrue();
-		expect(
+			),
+			true
+		);
+		assert.strictEqual(
 			object_has_property(
 				{foo: 'bar'},
 				'foo',
 				value_is_non_array_object
-			)
-		).toBeFalse();
-		expect(
+			),
+			false
+		);
+		assert.strictEqual(
 			object_has_property(
 				{foo: 'bar', bar: 1},
 				'foo',
 				value_is_non_array_object
-			)
-		).toBeFalse();
+			),
+			false
+		);
 	});
 });
 
-describe('object_only_has_that_property', () => {
-	it('gets no predicate', () => {
-		expect(object_only_has_that_property([], 'foo')).toBeFalse();
-		expect(object_only_has_that_property({}, 'foo')).toBeFalse()
-		expect(
+void describe('object_only_has_that_property', () => {
+	void it('gets no predicate', () => {
+		assert.strictEqual(object_only_has_that_property([], 'foo'), false);
+		assert.strictEqual(object_only_has_that_property({}, 'foo'), false);
+		assert.strictEqual(
 			object_only_has_that_property(
 				{foo:undefined},
 				'foo'
-			)
-		).toBeTrue();
-		expect(
+			),
+			true
+		);
+		assert.strictEqual(
 			object_only_has_that_property(
 				{foo:undefined, bar: 1},
 				'foo'
-			)
-		).toBeFalse();
+			),
+			false
+		);
 	});
-	it('gets a predicate', () => {
-		expect(
+	void it('gets a predicate', () => {
+		assert.strictEqual(
 			object_only_has_that_property(
 				{foo: 'bar'},
 				'foo',
 				is_string
-			)
-		).toBeTrue();
-		expect(
+			),
+			true
+		);
+		assert.strictEqual(
 			object_only_has_that_property(
 				{foo: 'bar', bar: 1},
 				'foo',
 				is_string
-			)
-		).toBeFalse();
-		expect(
+			),
+			false
+		);
+		assert.strictEqual(
 			object_only_has_that_property(
 				{foo: 'bar'},
 				'foo',
 				value_is_non_array_object
-			)
-		).toBeFalse();
+			),
+			false
+		);
 	});
 });
 
-describe('value_is_non_array_object', () => {
-	it('behaves', () => {
-		expect(value_is_non_array_object([])).toBeFalse();
-		expect(value_is_non_array_object(1)).toBeFalse();
-		expect(value_is_non_array_object(undefined)).toBeFalse();
-		expect(value_is_non_array_object({})).toBeTrue();
-		expect(value_is_non_array_object({} as unknown[])).toBeTrue();
+void describe('value_is_non_array_object', () => {
+	void it('behaves', () => {
+		assert.strictEqual(value_is_non_array_object([]), false);
+		assert.strictEqual(value_is_non_array_object(1), false);
+		assert.strictEqual(value_is_non_array_object(undefined), false);
+		assert.strictEqual(value_is_non_array_object({}), true);
+		assert.strictEqual(value_is_non_array_object({} as unknown[]), true);
 	});
 });

@@ -1,4 +1,8 @@
-import 'jasmine';
+import {
+	describe,
+	it,
+} from 'node:test';
+import assert from 'node:assert/strict';
 import {
 	adjust_class_name, create_literal,
 	create_modifiers,
@@ -12,8 +16,8 @@ import ts, {
 	StringLiteral,
 } from 'typescript';
 
-describe('adjust_class_name', () => {
-	it('behaves', () => {
+void describe('adjust_class_name', () => {
+	void it('behaves', () => {
 		for (const entry of Object.entries({
 			'boolean': 'Docs_boolean',
 			'class': 'Docs_class',
@@ -21,41 +25,49 @@ describe('adjust_class_name', () => {
 		})) {
 			const [input, expected] = entry;
 
-			expect(adjust_class_name(input)).toEqual(expected);
+			assert.strictEqual(adjust_class_name(input), expected);
 		}
 	});
 });
 
-describe('create_modifiers', () => {
-	it('removes duplicates', () => {
-		expect(
-			create_modifiers('export', 'export', 'export')
-		).toHaveSize(1);
+void describe('create_modifiers', () => {
+	void it('removes duplicates', () => {
+		assert.strictEqual(
+			create_modifiers('export', 'export', 'export').length,
+			1
+		);
 
 		const keys = non_empty_keys(modifier_map);
 
-		expect(
+		assert.strictEqual(
 			create_modifiers(
 				...keys,
 				...keys
-			)
-		).toHaveSize(keys.length);
+			).length,
+			keys.length
+		);
 	});
 })
 
-describe('type_reference_node', () => {
-	it('behaves', () => {
+void describe('type_reference_node', () => {
+	void it('behaves', () => {
 		const type = type_reference_node(
 			'foo',
 			create_literal('bar'),
 			create_literal('baz')
 		);
 
-		expect(ts.isIdentifier(type.typeName)).toBeTrue();
-		expect(type.typeArguments).toHaveSize(2);
-		expect(ts.isLiteralTypeNode((type.typeArguments || [])[0])).toBeTrue();
-		expect(ts.isLiteralTypeNode((type.typeArguments || [])[1])).toBeTrue();
-		expect(
+		assert.strictEqual(ts.isIdentifier(type.typeName), true);
+		assert.strictEqual(type.typeArguments?.length, 2);
+		assert.strictEqual(
+			ts.isLiteralTypeNode((type.typeArguments || [])[0]),
+			true
+		);
+		assert.strictEqual(
+			ts.isLiteralTypeNode((type.typeArguments || [])[1]),
+			true
+		);
+		assert.strictEqual(
 			ts.isStringLiteral(
 				(
 					type.typeArguments as unknown as [
@@ -63,9 +75,10 @@ describe('type_reference_node', () => {
 						LiteralTypeNode
 					]
 				)[0].literal
-			)
-		).toBeTrue()
-		expect(
+			),
+			true
+		);
+		assert.strictEqual(
 			ts.isStringLiteral(
 				(
 					type.typeArguments as unknown as [
@@ -73,23 +86,26 @@ describe('type_reference_node', () => {
 						LiteralTypeNode
 					]
 				)[1].literal
-			)
-		).toBeTrue()
-		expect(
+			),
+			true
+		);
+		assert.strictEqual(
 			((
 				type.typeArguments as unknown as [
 					LiteralTypeNode,
 					LiteralTypeNode
 				]
-			)[0].literal as StringLiteral).text
-		).toEqual('bar');
-		expect(
+			)[0].literal as StringLiteral).text,
+			'bar'
+		);
+		assert.strictEqual(
 			((
 				type.typeArguments as unknown as [
 					LiteralTypeNode,
 					LiteralTypeNode
 				]
-			)[1].literal as StringLiteral).text
-		).toEqual('baz');
+			)[1].literal as StringLiteral).text,
+			'baz'
+		);
 	});
 });

@@ -4,6 +4,8 @@
 /lib/**/*.mjs
 /lib/**/*.js
 /lib/**/*.map
+/tests/**/*.js
+/tests/**/*.map
 /imports-come-from.json
 /auto-imports.json
 /.eslintcache
