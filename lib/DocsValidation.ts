@@ -62,13 +62,14 @@ class DefaultConfig {
 export const default_config = new DefaultConfig();
 
 export function string_to_native_type(
-	data: string
+	data: string,
+	shallow = false
 ): object | unknown[] | string | false {
 	data = data.trim();
 	if (/^\(.+\)$/.test(data)) {
-		const object = string_to_object(data);
+		const object = string_to_object(data, shallow);
 
-		return false !== object ? object : string_to_array(data);
+		return false !== object ? object : string_to_array(data, shallow);
 	} else if (/^".+"$/.test(data)) {
 		return data.substring(1, data.length - 1);
 	}
@@ -76,7 +77,10 @@ export function string_to_native_type(
 	return data;
 }
 
-export function string_to_object<T extends object>(data: string): T | false {
+export function string_to_object<T extends object>(
+	data: string,
+	shallow = false
+): T | false {
 	if ('' === data) {
 		return false;
 	}
@@ -124,7 +128,9 @@ export function string_to_object<T extends object>(data: string): T | false {
 										was.current_value_buffer.length - 1
 									);
 							}
-							const coerced_value = string_to_native_type(
+							const coerced_value = shallow
+								? was.current_value_buffer
+								: string_to_native_type(
 								was.current_value_buffer
 							);
 
@@ -152,7 +158,9 @@ export function string_to_object<T extends object>(data: string): T | false {
 
 					if (index === array.length - 1) {
 						if ('' !== was.current_key_buffer) {
-							const coerced_value = string_to_native_type(
+							const coerced_value = shallow
+								? was.current_value_buffer
+								: string_to_native_type(
 								was.current_value_buffer
 							);
 
@@ -181,7 +189,10 @@ export function string_to_object<T extends object>(data: string): T | false {
 	) as T;
 }
 
-export function string_to_array<T extends unknown[]>(data: string): T | false {
+export function string_to_array<T extends unknown[]>(
+	data: string,
+	shallow = false
+): T | false {
 	if (!/^\(.+\)$/.test(data)) {
 		return false;
 	}
@@ -229,7 +240,9 @@ export function string_to_array<T extends unknown[]>(data: string): T | false {
 						);
 						was.current_item_buffer = '';
 					} else {
-						const coerced_value = string_to_native_type(
+						const coerced_value = shallow
+							? was.current_item_buffer
+							: string_to_native_type(
 							was.current_item_buffer
 						);
 
