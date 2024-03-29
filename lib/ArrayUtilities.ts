@@ -27,3 +27,14 @@ export function non_empty_keys<
 ) : [string, ...string[]] {
 	return Object.keys(object) as [string, ...string[]];
 }
+
+export function require_non_empty_array<
+	Item = unknown,
+	NotEmpty = [Item, ...Item[]]
+>(maybe:Item[]): NotEmpty {
+	if (maybe.length < 1) {
+		throw new Error('Array is empty!')
+	}
+
+	return maybe as NotEmpty;
+}

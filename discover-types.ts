@@ -24,13 +24,11 @@ try {
 		new Ajv({
 			verbose: true,
 		}),
-		await docs.get()
+		docs
 	);
-	await bar.write(
-		docs,
-		`${__dirname}/generated-types/update8/`,
-	);
-	const result = await bar.discovery.discover_type_definitions();
+	await bar.write(`${__dirname}/generated-types/update8/`);
+	const discovery = await bar.discovery;
+	const result = await discovery.discover_type_definitions();
 
 	process.stdout.write(
 		`${
