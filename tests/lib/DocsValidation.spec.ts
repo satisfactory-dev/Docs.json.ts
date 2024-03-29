@@ -153,7 +153,8 @@ void describe('configure_ajv', () => {
 
 	void it('Ajv fails without use', () => {
 		const ajv = new Ajv();
-		const basic = ajv.compile({type: 'string'});
+		const schema:SchemaObject = {type: 'string'};
+		const basic = ajv.compile(schema);
 
 		assert.strictEqual(basic('foo'), true);
 		assert.strictEqual(basic(1), false);
