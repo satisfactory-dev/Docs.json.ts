@@ -11,9 +11,6 @@ import {
 	writeFile,
 } from 'node:fs/promises';
 import {
-	generate_markdown,
-} from './TypeDefinitionWriter/types-progress.md';
-import {
 	configure_ajv,
 } from './DocsValidation';
 import {
@@ -163,7 +160,10 @@ export class TypeDefinitionWriter
 	) {
 		await this.prepare();
 		const discovery = await this.discovery;
-		await writeFile(`${__dirname}/../types-progress.md`, await generate_markdown(discovery));
+		await writeFile(
+			`${__dirname}/../types-progress.md`,
+			await discovery.generate_markdown()
+		);
 
 		if (cleanup) {
 			for (const remove of await glob(`${parent_folder}/**/*.{ts,js,map}`)) {
