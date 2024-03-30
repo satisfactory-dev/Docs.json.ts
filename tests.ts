@@ -13,7 +13,7 @@ const __dirname = import.meta.dirname;
 const ac = new AbortController();
 
 run({
-	files: await glob(`${__dirname}/tests/**/*.ts`),
+	files: await glob(`${__dirname}/tests/**/*.spec.ts`),
 	concurrency: true,
 	signal: ac.signal,
 })
