@@ -45,11 +45,9 @@ lint--prettier:
 
 lint-lib--eslint:
 	@echo 'checking eslint for fixable issues'
-	${DOCKER_COMPOSER_PREFIX} exec ts-node ./node_modules/.bin/eslint --cache './*.ts' lib --fix-dry-run
-	${DOCKER_COMPOSER_PREFIX} exec ts-node ./node_modules/.bin/eslint --cache './*.ts' tests --fix-dry-run
+	${DOCKER_COMPOSER_PREFIX} exec ts-node ./node_modules/.bin/eslint --cache './*.ts' lib tests --fix-dry-run
 	@echo 'checking eslint for all issues'
-	${DOCKER_COMPOSER_PREFIX} exec ts-node ./node_modules/.bin/eslint --cache './*.ts' lib
-	${DOCKER_COMPOSER_PREFIX} exec ts-node ./node_modules/.bin/eslint --cache './*.ts' tests
+	${DOCKER_COMPOSER_PREFIX} exec ts-node ./node_modules/.bin/eslint --cache './*.ts' lib tests
 
 lint: lint--prettier lint-lib
 
@@ -57,8 +55,7 @@ lint-fix:
 	@echo 'fixing prettier issues'
 	${DOCKER_COMPOSER_PREFIX} exec ts-node ./node_modules/.bin/prettier . --write
 	@echo 'fixing eslint issues'
-	${DOCKER_COMPOSER_PREFIX} exec ts-node ./node_modules/.bin/eslint --cache './*.ts' lib --fix
-	${DOCKER_COMPOSER_PREFIX} exec ts-node ./node_modules/.bin/eslint --cache './*.ts' tests --fix
+	${DOCKER_COMPOSER_PREFIX} exec ts-node ./node_modules/.bin/eslint --cache './*.ts' lib tests --fix
 
 .PHONY: tests
 tests: build-lib
