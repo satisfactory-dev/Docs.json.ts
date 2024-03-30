@@ -15,7 +15,7 @@ import {
 	value_is_non_array_object,
 } from '../../CustomParsingTypes/CustomPairingTypes';
 
-type unbound_array = SchemaObject & {
+export type unbound_array = SchemaObject & {
 	type: 'array',
 	minItems: 1,
 	items: {[key: string]: unknown},
