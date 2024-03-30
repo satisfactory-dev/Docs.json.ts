@@ -9,9 +9,6 @@ import {
 import {
 	DataDiscovery,
 } from '../../../../lib/DataDiscovery';
-import {
-	DocsTsGenerator,
-} from '../../../../lib/DocsTsGenerator';
 import Ajv from 'ajv/dist/2020';
 import {
 	configure_ajv,

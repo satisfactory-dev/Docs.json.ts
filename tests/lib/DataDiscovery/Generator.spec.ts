@@ -5,29 +5,19 @@ import {
 import assert from 'node:assert/strict';
 import {
 	ConvertsArray,
-	ConvertsUnknown,
-	GenerationResult,
 	Generator,
 	RawGenerationResult,
 } from '../../../lib/DataDiscovery/Generator';
-import {
-	DocsTsGenerator,
-} from '../../../lib/DocsTsGenerator';
 import {
 	configure_ajv,
 } from '../../../lib/DocsValidation';
 import {
 	DataDiscovery,
 } from '../../../lib/DataDiscovery';
-import Ajv, {SchemaObject} from 'ajv/dist/2020';
-import {
-	__dirname_from_meta,
-} from '../../../lib/__dirname';
+import Ajv from 'ajv/dist/2020';
 import {
 	docs,
 } from '../../fixtures/Docs';
-
-const __dirname = __dirname_from_meta(import.meta);
 
 void describe('Generator.find', () => {
 	const ajv = new Ajv({verbose: true});
@@ -52,7 +42,7 @@ void describe('Generator.find', () => {
 					}
 				},
 			], 'foo')).result(),
-			'foo'
+			'foo',
 		);
 	});
 
