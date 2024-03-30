@@ -7,7 +7,7 @@ on:
     pull_request:
         branches: [main]
 jobs:
-    prettier-check:
+    basic-checks:
         runs-on: ubuntu-latest
         strategy:
             matrix:
@@ -28,3 +28,23 @@ jobs:
               run: npm test
               env:
                   NODE_OPTIONS: '--enable-source-maps --no-warnings=ExperimentalWarning --loader ts-node/esm'
+    coverage:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                node-version: [21.x]
+                # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        steps:
+            - uses: actions/checkout@v4
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v4
+              with:
+                  node-version: ${{ matrix.node-version }}
+                  cache: 'npm'
+            - run: npm ci
+            - name: Generate coverage
+              run: ./node_modules/.bin/c8 --reporter=text-lcov npm test
+              env:
+                  NODE_OPTIONS: '--enable-source-maps --no-warnings=ExperimentalWarning --loader ts-node/esm'
+            - name: Coveralls GitHub Action
+              uses: coverallsapp/github-action@v2.2.3
