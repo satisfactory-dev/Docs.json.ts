@@ -14,7 +14,7 @@ import {
 	configure_ajv,
 } from '../../../../lib/DocsValidation';
 import {
-	docs,
+	docs, skip_because_docs_dot_json_not_yet_bundled,
 } from '../../../fixtures/Docs';
 import {
 	is_instanceof,
@@ -38,7 +38,10 @@ void describe('Generator', () => {
 		);
 	});
 
-	void it('resolves matching values to RawGenerationResult', async () => {
+	void it(
+		'resolves matching values to RawGenerationResult',
+		skip_because_docs_dot_json_not_yet_bundled,
+		async () => {
 		const [{NativeClass, Classes: [example]}] = await docs.get();
 
 		const truncated_example = {
