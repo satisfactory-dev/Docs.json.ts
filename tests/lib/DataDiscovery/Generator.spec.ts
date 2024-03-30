@@ -5,6 +5,7 @@ import {
 import assert from 'node:assert/strict';
 import {
 	ConvertsArray,
+	ConvertsObject,
 	Generator,
 	RawGenerationResult,
 } from '../../../lib/DataDiscovery/Generator';
@@ -88,5 +89,30 @@ void describe('ConvertsArray.convert_unknown', () => {
 	void it('throws only when expected', () => {
 		assert.throws(() => example.convert_unknown({}, 1));
 		assert.doesNotThrow(() => example.convert_unknown({}, []));
+	});
+})
+
+void describe('ConvertsObject.convert_unknown', () => {
+	const ajv = new Ajv({verbose: true});
+	configure_ajv(ajv);
+	const discovery = new DataDiscovery(docs, ajv);
+
+	const example = new class extends ConvertsObject<unknown> {
+		constructor() {
+			super(discovery);
+		}
+		convert_object(): Promise<{[key: string]: unknown}> {
+			return Promise.resolve({});
+		}
+
+		matches() {
+			return Promise.resolve(undefined);
+		}
+	}
+
+	void it('throws only when expected', () => {
+		assert.throws(() => example.convert_unknown({}, 1));
+		assert.throws(() => example.convert_unknown({}, []));
+		assert.doesNotThrow(() => example.convert_unknown({}, {}));
 	});
 })
