@@ -29,16 +29,10 @@ import {
 	RawGenerationResult,
 } from '../../../../lib/DataDiscovery/Generator';
 import {
-	__dirname_from_meta,
-} from '../../../../lib/__dirname';
-
-const __dirname = __dirname_from_meta(import.meta);
+	docs,
+} from '../../../fixtures/Docs';
 
 void describe('NumberStrings.convert_unknown', async () => {
-	const docs = new DocsTsGenerator({
-		docs_path: `${__dirname}/../../../../data/Docs.json`,
-		cache_path: `${__dirname}/../../../../data/`,
-	});
 	const ajv = new Ajv({verbose: true});
 	configure_ajv(ajv);
 	const discovery = new DataDiscovery(docs, ajv);
@@ -91,10 +85,6 @@ void describe('NumberStrings.convert_unknown', async () => {
 });
 
 void describe('NumberStrings.matches', async () => {
-	const docs = new DocsTsGenerator({
-		docs_path: `${__dirname}/../../../../data/Docs.json`,
-		cache_path: `${__dirname}/../../../../data/`,
-	});
 	const ajv = new Ajv({verbose: true});
 	configure_ajv(ajv);
 	const discovery = new DataDiscovery(docs, ajv);

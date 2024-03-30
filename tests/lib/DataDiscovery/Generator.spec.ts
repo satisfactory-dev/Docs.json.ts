@@ -23,14 +23,13 @@ import Ajv, {SchemaObject} from 'ajv/dist/2020';
 import {
 	__dirname_from_meta,
 } from '../../../lib/__dirname';
+import {
+	docs,
+} from '../../fixtures/Docs';
 
 const __dirname = __dirname_from_meta(import.meta);
 
 void describe('Generator.find', () => {
-	const docs = new DocsTsGenerator({
-		docs_path: `${__dirname}/../../../data/Docs.json`,
-		cache_path: `${__dirname}/../../../data/`,
-	});
 	const ajv = new Ajv({verbose: true});
 	configure_ajv(ajv);
 	const discovery = new DataDiscovery(docs, ajv);
@@ -79,10 +78,6 @@ void describe('Generator.find', () => {
 });
 
 void describe('ConvertsArray.convert_unknown', () => {
-	const docs = new DocsTsGenerator({
-		docs_path: `${__dirname}/../../../data/Docs.json`,
-		cache_path: `${__dirname}/../../../data/`,
-	});
 	const ajv = new Ajv({verbose: true});
 	configure_ajv(ajv);
 	const discovery = new DataDiscovery(docs, ajv);

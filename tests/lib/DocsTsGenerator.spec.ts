@@ -4,20 +4,10 @@ import {
 } from 'node:test';
 import assert from 'node:assert/strict';
 import {
-	DocsTsGenerator,
-} from '../../lib/DocsTsGenerator';
-import {
-	__dirname_from_meta,
-} from '../../lib/__dirname';
-
-const __dirname = __dirname_from_meta(import.meta);
+	docs,
+} from '../fixtures/Docs';
 
 void describe('DocsTsGenerator.schema', () => {
-	const docs = new DocsTsGenerator({
-		docs_path: `${__dirname}/../../data/Docs.json`,
-		cache_path: `${__dirname}/../../data/`,
-	});
-
 	void it('will currently return update 8', async () => {
 		assert.strictEqual(
 			(await docs.schema()).$id,
@@ -27,11 +17,6 @@ void describe('DocsTsGenerator.schema', () => {
 });
 
 void describe('DocsTsGenerator.definition', () => {
-	const docs = new DocsTsGenerator({
-		docs_path: `${__dirname}/../../data/Docs.json`,
-		cache_path: `${__dirname}/../../data/`,
-	});
-
 	void it('will throw on unrecognised definitions', async () => {
 		let passed = false;
 		try {
