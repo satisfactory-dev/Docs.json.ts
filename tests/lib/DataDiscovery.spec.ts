@@ -29,11 +29,14 @@ void describe('DataDiscovery.object_literal', () => {
 
 		TypeScriptAssert.isObjectLiteralExpression(foo);
 		array_has_size(foo.properties, 1);
-		TypeScriptAssert.isPropertyAssignment(foo.properties[0]);
-		TypeScriptAssert.isIdentifier(foo.properties[0].name);
-		TypeScriptAssert.isStringLiteral(foo.properties[0].initializer);
-		assert.equal(foo.properties[0].name.text, 'foo');
-		assert.equal(foo.properties[0].initializer.text, 'bar');
+
+		const [property] = foo.properties;
+
+		TypeScriptAssert.isPropertyAssignment(property);
+		TypeScriptAssert.isIdentifier(property.name);
+		assert.equal(property.name.escapedText, 'foo');
+		TypeScriptAssert.isStringLiteral(property.initializer);
+		assert.equal(property.initializer.text, 'bar');
 	});
 
 	void it('doesn\'t convert numbers', async () => {
