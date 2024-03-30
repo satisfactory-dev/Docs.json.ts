@@ -48,3 +48,5 @@ jobs:
                   NODE_OPTIONS: '--enable-source-maps --no-warnings=ExperimentalWarning --loader ts-node/esm'
             - name: Coveralls GitHub Action
               uses: coverallsapp/github-action@v2.2.3
+              with:
+                  file: './coverage/lcov.info'
