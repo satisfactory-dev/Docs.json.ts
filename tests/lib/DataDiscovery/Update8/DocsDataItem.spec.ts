@@ -16,8 +16,12 @@ import {
 import {
 	docs,
 } from '../../../fixtures/Docs';
-import {is_instanceof} from '../../../../assert/CustomAssert';
-import {RawGenerationResult} from '../../../../lib/DataDiscovery/Generator';
+import {
+	is_instanceof,
+} from '../../../../assert/CustomAssert';
+import {
+	RawGenerationResult,
+} from '../../../../lib/DataDiscovery/Generator';
 
 void describe('Generator', () => {
 	const ajv = new Ajv({verbose: true});
