@@ -1,4 +1,6 @@
-import { existsSync } from 'node:fs';
+import {
+	existsSync,
+} from 'node:fs';
 import {
 	DocsTsGenerator,
 } from '../../lib/DocsTsGenerator';

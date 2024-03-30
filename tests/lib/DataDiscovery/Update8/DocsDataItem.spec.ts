@@ -14,7 +14,8 @@ import {
 	configure_ajv,
 } from '../../../../lib/DocsValidation';
 import {
-	docs, skip_because_docs_dot_json_not_yet_bundled,
+	docs,
+	skip_because_docs_dot_json_not_yet_bundled,
 } from '../../../fixtures/Docs';
 import {
 	is_instanceof,
@@ -42,19 +43,23 @@ void describe('Generator', () => {
 		'resolves matching values to RawGenerationResult',
 		skip_because_docs_dot_json_not_yet_bundled,
 		async () => {
-		const [{NativeClass, Classes: [example]}] = await docs.get();
+			const [{NativeClass, Classes: [example]}] = await docs.get();
 
-		const truncated_example = {
-			NativeClass,
-			Classes: [
-				example,
-			],
-		};
+			const truncated_example = {
+				NativeClass,
+				Classes: [
+					example,
+				],
+			};
 
-		const value = await instance.matches(truncated_example);
-		is_instanceof(value, RawGenerationResult);
+			const value = await instance.matches(truncated_example);
+			is_instanceof(value, RawGenerationResult);
 
-		const result = await value?.result();
-		assert.deepEqual(Object.keys(result.Classes[0]), Object.keys(example));
-	})
+			const result = await value?.result();
+			assert.deepEqual(
+				Object.keys(result.Classes[0]),
+				Object.keys(example)
+			);
+		}
+	)
 });
