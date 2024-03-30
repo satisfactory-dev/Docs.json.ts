@@ -5,7 +5,9 @@ import {
 import assert from 'node:assert/strict';
 import {
 	non_empty_keys,
-	non_empty_map, require_non_empty_array,
+	non_empty_map,
+	object_keys,
+	require_non_empty_array,
 } from '../../lib/ArrayUtilities';
 
 void describe('non_empty_map', () => {
@@ -36,5 +38,14 @@ void describe('require_non_empty_array', () => {
 	})
 	void it('doesn\'t throw', () => {
 		assert.doesNotThrow(() => require_non_empty_array([1]))
+	})
+})
+
+void describe('object_keys', () => {
+	void it('behaves', () => {
+		assert.deepEqual(
+			object_keys({foo: 1, bar: 2, baz: 3}),
+			['foo', 'bar', 'baz']
+		);
 	})
 })

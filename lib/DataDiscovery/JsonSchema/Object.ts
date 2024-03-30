@@ -19,7 +19,7 @@ import {
 	local_ref,
 } from '../../StringStartsWith';
 
-type object_extends_but_has_no_additional_properties = {
+export type object_extends_but_has_no_additional_properties = {
 	type: 'object',
 	$ref: local_ref<string>,
 	unevaluatedProperties: false,

@@ -38,3 +38,12 @@ export function require_non_empty_array<
 
 	return maybe as NotEmpty;
 }
+
+// because typescript doesn't do this automatically
+export function object_keys<
+	T extends {[key: string]: unknown} = {[key: string]: unknown}
+>(
+	object: T
+) : (keyof T)[] {
+	return Object.keys(object);
+}
