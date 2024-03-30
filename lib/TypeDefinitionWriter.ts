@@ -120,7 +120,7 @@ export class TypeDefinitionWriter
 		configure_ajv(ajv);
 		this.ajv = ajv;
 		this.docs = docs;
-		this.data_discovery = new DataDiscovery(docs);
+		this.data_discovery = new DataDiscovery(docs, ajv);
 	}
 
 	get discovery(): Promise<TypeDefinitionDiscovery>

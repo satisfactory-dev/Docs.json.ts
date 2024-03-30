@@ -42,6 +42,19 @@ import ts, {
 import {
 	UnrealEngineString,
 } from './TypeDefinitionDiscovery/CustomParsingTypes/UnrealEngineString';
+import Ajv from 'ajv/dist/2020';
+import {
+	Generator as DocsDataItemGenerator,
+} from './DataDiscovery/Update8/DocsDataItem';
+import {
+	ObjectExtendsButHasNoAdditionalProperties,
+} from './DataDiscovery/JsonSchema/Object';
+import {
+	UnboundArray,
+} from './DataDiscovery/JsonSchema/Array';
+import {
+	NumberStrings,
+} from './DataDiscovery/CustomTypes/NumberStrings';
 
 type progress = {[p: string]: string[]};
 
@@ -49,16 +62,23 @@ export class DataDiscovery
 	extends FilesGenerator
 	implements GeneratesMarkdown
 {
-	private readonly candidates:Generator<
-		DocsDataItem,
-		DocsDataItem<GenerationResult>
-	>[] = [];
-	private readonly docs:DocsTsGenerator;
+	private readonly docs_data_item_candidate:DocsDataItemGenerator;
 	private readonly progress:progress = {};
+	public readonly candidates:Generator<
+		Exclude<unknown, DocsDataItem>,
+		Exclude<unknown, DocsDataItem>
+	>[];
+	public readonly docs:DocsTsGenerator;
 
-	constructor(docs:DocsTsGenerator) {
+	constructor(docs:DocsTsGenerator, ajv:Ajv) {
 		super();
 		this.docs = docs;
+		this.docs_data_item_candidate = new DocsDataItemGenerator(this, ajv);
+		this.candidates = [
+			new UnboundArray(this, ajv),
+			new ObjectExtendsButHasNoAdditionalProperties(this, ajv),
+			new NumberStrings(this, ajv),
+		];
 	}
 
 	async expecting() : Promise<progress>
@@ -70,29 +90,26 @@ export class DataDiscovery
 		);
 	}
 
-	async generate(): Promise<GenerationResult<
-		DocsDataItem,
-		DocsDataItem<GenerationResult>
-	>[]> {
+	async generate() {
 		/*
 		const schema = await this.docs.schema();
 		 */
 
 		return await Promise.all(
-			(await this.docs.get()).map(e => Generator.find<
-				DocsDataItem,
-				DocsDataItem<GenerationResult>
-			>(
-				this.candidates,
-				e
-			))
+			(await this.docs.get()).map(async (e) => {
+				const maybe = await this.docs_data_item_candidate.matches(e);
+
+				if (!maybe) {
+					throw new NoMatchError(e);
+				}
+
+				return await maybe.result();
+			})
 		);
 	}
 
 	async* generate_files() {
-		for (const NativeClass of await this.generate()) {
-			const result = await NativeClass.result();
-
+		for (const result of await this.generate()) {
 			this.progress[result.NativeClass] = [];
 
 			const entry_class_name = adjust_unrealengine_value(

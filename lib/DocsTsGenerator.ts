@@ -62,12 +62,14 @@ export class ValidationError extends Error {
 	}
 }
 
+export type DocsDataItem_Classes_entry<TypeOfUnknownProperties = unknown> = (
+	& {[key: string]: TypeOfUnknownProperties}
+	& {ClassName: string}
+);
+
 export type DocsDataItem<TypeOfUnknownProperties = unknown> = {
 	NativeClass: string;
-	Classes: (
-		& {[key: string]: TypeOfUnknownProperties}
-		& {ClassName: string}
-	)[];
+	Classes: DocsDataItem_Classes_entry<TypeOfUnknownProperties>[];
 };
 
 export type DocsData = [DocsDataItem, ...DocsDataItem[]];
@@ -105,11 +107,7 @@ export class DocsTsGenerator {
 
 	async definition(
 		$ref:string
-	): Promise<
-		typeof $ref extends (
-			keyof typeof update8_schema.definitions
-			) ? SchemaObject : never
-	> {
+	): Promise<SchemaObject> {
 		const schema = await this.schema();
 
 		if (!property_exists_on_object(schema.definitions, $ref)) {

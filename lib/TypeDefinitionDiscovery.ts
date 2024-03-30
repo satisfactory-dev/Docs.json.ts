@@ -131,7 +131,7 @@ function is_schema_with_definitions(
 }
 
 export type ref_discovery_type = {
-	found_types: {[key: string]: (raw_data:never) => TypeNode},
+	found_types: {[key: string]: (raw_data:unknown) => TypeNode},
 	missing_types: string[],
 	found_classes: {[key: string]: unknown}[],
 	missing_classes: {[key: string]: unknown}[],
@@ -392,7 +392,7 @@ export class TypeDefinitionDiscovery
 		discovered_types: Definitions,
 	) {
 		const result: {
-			found_types: {[key: string]: (raw_data:never) => TypeNode},
+			found_types: {[key: string]: (raw_data:unknown) => TypeNode},
 			missing_types: string[],
 			found_classes: {[key: string]: unknown}[],
 			missing_classes: {[key: string]: unknown}[],
