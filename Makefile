@@ -15,16 +15,16 @@ shell:
 install:
 	${DOCKER_COMPOSER_PREFIX} exec node npm install
 
-validate: lint-lib build-lib validate--skip-checks
+validate: lint build-lib validate--skip-checks
 
 validate--skip-checks:
 	${DOCKER_COMPOSER_PREFIX} exec ts-node npm run validate
 
-build-lib:
-	@echo 'building from ./tsconfig.lib.json'
-	${DOCKER_COMPOSER_PREFIX} exec node ./node_modules/.bin/tsc --project ./tsconfig.lib.json
+build:
+	@echo 'building from ./tsconfig.app.json'
+	${DOCKER_COMPOSER_PREFIX} exec node ./node_modules/.bin/tsc --project ./tsconfig.app.json
 
-generate: lint-lib generate--skip-checks generate--post-build
+generate: lint generate--skip-checks generate--post-build
 
 generate--skip-checks: build-lib
 	@echo 'running ./discover-types.ts'
@@ -35,7 +35,7 @@ generate--post-build:
 
 lint-lib--tsc:
 	@echo 'running syntax check'
-	${DOCKER_COMPOSER_PREFIX} exec node ./node_modules/.bin/tsc --project ./tsconfig.lib-check.json
+	${DOCKER_COMPOSER_PREFIX} exec node ./node_modules/.bin/tsc --project ./tsconfig.app-check.json
 
 lint-lib: lint-lib--tsc lint-lib--eslint
 
