@@ -28,8 +28,11 @@ import {
 import {
 	RawGenerationResult,
 } from '../../../../lib/DataDiscovery/Generator';
+import {
+	__dirname_from_meta,
+} from '../../../../lib/__dirname';
 
-const __dirname = import.meta.dirname;
+const __dirname = __dirname_from_meta(import.meta);
 
 void describe('NumberStrings.convert_unknown', async () => {
 	const docs = new DocsTsGenerator({

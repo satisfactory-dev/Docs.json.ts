@@ -11,8 +11,11 @@ import {
 import {
 	writeFile,
 } from 'node:fs/promises';
+import {
+	__dirname_from_meta,
+} from './lib/__dirname';
 
-const __dirname = import.meta.dirname;
+const __dirname = __dirname_from_meta(import.meta);
 
 try {
 	const docs = new DocsTsGenerator({

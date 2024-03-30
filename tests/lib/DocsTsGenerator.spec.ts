@@ -6,8 +6,11 @@ import assert from 'node:assert/strict';
 import {
 	DocsTsGenerator,
 } from '../../lib/DocsTsGenerator';
+import {
+	__dirname_from_meta,
+} from '../../lib/__dirname';
 
-const __dirname = import.meta.dirname;
+const __dirname = __dirname_from_meta(import.meta);
 
 void describe('DocsTsGenerator.schema', () => {
 	const docs = new DocsTsGenerator({

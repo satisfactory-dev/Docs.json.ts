@@ -81,8 +81,11 @@ import {
 import {
 	DataDiscovery,
 } from './DataDiscovery';
+import {
+	__dirname_from_meta,
+} from './__dirname';
 
-const __dirname = import.meta.dirname;
+const __dirname = __dirname_from_meta(import.meta);
 
 type class_can_have_tree = ClassDeclaration & {
 	heritageClauses: [{types: [{expression: ts.Identifier}]}];

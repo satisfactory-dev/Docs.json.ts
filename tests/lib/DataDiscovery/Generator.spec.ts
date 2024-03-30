@@ -17,8 +17,11 @@ import {
 	DataDiscovery,
 } from '../../../lib/DataDiscovery';
 import Ajv from 'ajv/dist/2020';
+import {
+	__dirname_from_meta,
+} from '../../../lib/__dirname';
 
-const __dirname = import.meta.dirname;
+const __dirname = __dirname_from_meta(import.meta);
 
 void describe('Generator.find', () => {
 	const docs = new DocsTsGenerator({
