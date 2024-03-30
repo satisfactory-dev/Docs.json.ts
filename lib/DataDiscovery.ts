@@ -193,6 +193,7 @@ export class DataDiscovery
 			${reduce(grouped_progress).map((group) => {
 				return remove_indentation(
 					`${'#'.repeat(group.depth)} ${group.title}
+
 					${
 						group.members.map((key) => {
 							const done = (

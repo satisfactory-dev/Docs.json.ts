@@ -3,10 +3,12 @@
 100.00% Complete (2566 of 2566)
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGAmmoTypeInstantHit'
+
 -   [x] Desc_CartridgeChaos_C
 -   [x] Desc_CartridgeStandard_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGAmmoTypeProjectile'
+
 -   [x] Desc_Rebar_Explosive_C
 -   [x] Desc_Rebar_Stunshot_C
 -   [x] Desc_SpikedRebar_C
@@ -22,9 +24,11 @@
 -   [x] Desc_SnowballProjectile_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGAmmoTypeSpreadshot'
+
 -   [x] Desc_Rebar_Spreadshot_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildable'
+
 -   [x] Build_ConveyorCeilingAttachment_C
 -   [x] Build_ConveyorPoleWall_C
 -   [x] Build_WorkBench_C
@@ -37,22 +41,28 @@
 -   [x] Build_Workshop_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableAttachmentMerger'
+
 -   [x] Build_ConveyorAttachmentMerger_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableAttachmentSplitter'
+
 -   [x] Build_ConveyorAttachmentSplitter_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableBeamLightweight'
+
 -   [x] Build_Beam_C
 -   [x] Build_Beam_Painted_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableBlueprintDesigner'
+
 -   [x] Build_BlueprintDesigner_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableCircuitSwitch'
+
 -   [x] Build_PowerSwitch_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableConveyorBelt'
+
 -   [x] Build_ConveyorBeltMk1_C
 -   [x] Build_ConveyorBeltMk5_C
 -   [x] Build_ConveyorBeltMk4_C
@@ -60,6 +70,7 @@
 -   [x] Build_ConveyorBeltMk2_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableConveyorLift'
+
 -   [x] Build_ConveyorLiftMk1_C
 -   [x] Build_ConveyorLiftMk5_C
 -   [x] Build_ConveyorLiftMk4_C
@@ -67,6 +78,7 @@
 -   [x] Build_ConveyorLiftMk2_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableCornerWall'
+
 -   [x] Build_Wall_Concrete_8x4_Corner_01_C
 -   [x] Build_Wall_Concrete_8x4_Corner_2_C
 -   [x] Build_Wall_Concrete_8x8_Corner_01_C
@@ -105,9 +117,11 @@
 -   [x] Build_Roof_Orange_OutCorner_03_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableDockingStation'
+
 -   [x] Build_TruckStation_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableDoor'
+
 -   [x] Build_Wall_Door_8x4_01_C
 -   [x] Build_Wall_Door_8x4_01_Steel_C
 -   [x] Build_Wall_Door_8x4_03_C
@@ -117,9 +131,11 @@
 -   [x] Build_Gate_Automated_8x4_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableDroneStation'
+
 -   [x] Build_DroneStation_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableFactory'
+
 -   [x] Build_JumpPad_C
 -   [x] Build_JumpPadTilted_C
 -   [x] Build_LandingPad_C
@@ -128,18 +144,22 @@
 -   [x] Build_CandyCaneDecor_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableFactoryBuilding'
+
 -   [x] Build_Beam_Connector_C
 -   [x] Build_Beam_Connector_Double_C
 -   [x] Build_Beam_Support_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableFactorySimpleProducer'
+
 -   [x] Build_TreeGiftProducer_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableFloodlight'
+
 -   [x] Build_FloodlightPole_C
 -   [x] Build_FloodlightWall_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableFoundation'
+
 -   [x] Build_DownQuarterPipe_Asphalt_8x4_C
 -   [x] Build_DownQuarterPipeInCorner_Asphalt_8x4_C
 -   [x] Build_DownQuarterPipeOutCorner_Asphalt_8x4_C
@@ -278,6 +298,7 @@
 -   [x] Build_Flat_Frame_01_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableFoundationLightweight'
+
 -   [x] Build_Foundation_Asphalt_8x1_C
 -   [x] Build_Foundation_Asphalt_8x2_C
 -   [x] Build_Foundation_Asphalt_8x4_C
@@ -297,39 +318,50 @@
 -   [x] Build_FoundationGlass_01_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableFrackingActivator'
+
 -   [x] Build_FrackingSmasher_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableFrackingExtractor'
+
 -   [x] Build_FrackingExtractor_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableGeneratorFuel'
+
 -   [x] Build_GeneratorCoal_C
 -   [x] Build_GeneratorFuel_C
 -   [x] Build_GeneratorBiomass_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableGeneratorGeoThermal'
+
 -   [x] Build_GeneratorGeoThermal_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableGeneratorNuclear'
+
 -   [x] Build_GeneratorNuclear_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableJumppad'
+
 -   [x] Build_JumpPadAdjustable_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableLadder'
+
 -   [x] Build_Ladder_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableLightsControlPanel'
+
 -   [x] Build_LightsControlPanel_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableLightSource'
+
 -   [x] Build_StreetLight_C
 -   [x] Build_CeilingLight_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableMAM'
+
 -   [x] Build_Mam_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableManufacturer'
+
 -   [x] Build_OilRefinery_C
 -   [x] Build_FoundryMk1_C
 -   [x] Build_Packager_C
@@ -340,16 +372,20 @@
 -   [x] Build_ConstructorMk1_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableManufacturerVariablePower'
+
 -   [x] Build_HadronCollider_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePassthrough'
+
 -   [x] Build_FoundationPassthrough_Pipe_C
 -   [x] Build_FoundationPassthrough_Lift_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePassthroughPipeHyper'
+
 -   [x] Build_FoundationPassthrough_Hypertube_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePillarLightweight'
+
 -   [x] Build_PillarTop_C
 -   [x] Build_Pillar_Small_Metal_C
 -   [x] Build_PillarBase_Small_C
@@ -361,36 +397,44 @@
 -   [x] Build_PillarMiddle_Concrete_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePipeHyper'
+
 -   [x] Build_PipeHyper_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePipeline'
+
 -   [x] Build_Pipeline_C
 -   [x] Build_PipelineMK2_C
 -   [x] Build_PipelineMK2_NoIndicator_C
 -   [x] Build_Pipeline_NoIndicator_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePipelineJunction'
+
 -   [x] Build_PipelineJunction_Cross_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePipelinePump'
+
 -   [x] Build_PipelinePump_C
 -   [x] Build_Valve_C
 -   [x] Build_PipelinePumpMk2_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePipelineSupport'
+
 -   [x] Build_PipelineSupport_C
 -   [x] Build_PipeSupportStackable_C
 -   [x] Build_HyperPoleStackable_C
 -   [x] Build_PipeHyperSupport_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePipeReservoir'
+
 -   [x] Build_PipeStorageTank_C
 -   [x] Build_IndustrialTank_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePoleLightweight'
+
 -   [x] Build_ConveyorPole_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePowerPole'
+
 -   [x] Build_PowerPoleMk1_C
 -   [x] Build_PowerPoleWall_C
 -   [x] Build_PowerTower_C
@@ -404,25 +448,32 @@
 -   [x] Build_PowerPoleWall_Mk3_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePowerStorage'
+
 -   [x] Build_PowerStorageMk1_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePriorityPowerSwitch'
+
 -   [x] Build_PriorityPowerSwitch_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableRadarTower'
+
 -   [x] Build_RadarTower_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableRailroadSignal'
+
 -   [x] Build_RailroadBlockSignal_C
 -   [x] Build_RailroadPathSignal_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableRailroadStation'
+
 -   [x] Build_TrainStation_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableRailroadTrack'
+
 -   [x] Build_RailroadTrack_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableRamp'
+
 -   [x] Build_InvertedRamp_Asphalt_8x1_C
 -   [x] Build_InvertedRamp_Asphalt_8x2_C
 -   [x] Build_InvertedRamp_Asphalt_8x4_C
@@ -488,32 +539,40 @@
 -   [x] Build_Roof_Orange_04_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableResourceExtractor'
+
 -   [x] Build_OilPump_C
 -   [x] Build_MinerMk2_C
 -   [x] Build_MinerMk3_C
 -   [x] Build_MinerMk1_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableResourceSink'
+
 -   [x] Build_ResourceSink_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableResourceSinkShop'
+
 -   [x] Build_ResourceSinkShop_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableSnowDispenser'
+
 -   [x] Build_SnowDispenser_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableSpaceElevator'
+
 -   [x] Build_SpaceElevator_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableSplitterSmart'
+
 -   [x] Build_ConveyorAttachmentSplitterProgrammable_C
 -   [x] Build_ConveyorAttachmentSplitterSmart_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableStair'
+
 -   [x] Build_Stairs_Left_01_C
 -   [x] Build_Stairs_Right_01_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableStorage'
+
 -   [x] Build_StorageContainerMk2_C
 -   [x] Build_StoragePlayer_C
 -   [x] Build_StorageMedkit_C
@@ -521,20 +580,25 @@
 -   [x] Build_StorageContainerMk1_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableTradingPost'
+
 -   [x] Build_TradingPost_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableTrainPlatformCargo'
+
 -   [x] Build_TrainDockingStation_C
 -   [x] Build_TrainDockingStationLiquid_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableTrainPlatformEmpty'
+
 -   [x] Build_TrainPlatformEmpty_C
 -   [x] Build_TrainPlatformEmpty_02_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableWalkway'
+
 -   [x] Build_WalkwayStraight_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableWalkwayLightweight'
+
 -   [x] Build_WalkwayCross_C
 -   [x] Build_WalkwayRamp_C
 -   [x] Build_WalkwayT_C
@@ -547,6 +611,7 @@
 -   [x] Build_CatwalkCorner_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableWall'
+
 -   [x] Build_Wall_Conveyor_8x4_01_C
 -   [x] Build_Wall_Conveyor_8x4_01_Steel_C
 -   [x] Build_Wall_Conveyor_8x4_02_C
@@ -560,6 +625,7 @@
 -   [x] Build_Wall_Conveyor_8x4_04_Steel_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableWallLightweight'
+
 -   [x] Build_Wall_8x4_01_C
 -   [x] Build_Wall_8x4_02_C
 -   [x] Build_Wall_Gate_8x4_01_C
@@ -620,9 +686,11 @@
 -   [x] Build_Concrete_Barrier_01_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableWaterPump'
+
 -   [x] Build_WaterPump_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableWidgetSign'
+
 -   [x] Build_StandaloneWidgetSign_Small_C
 -   [x] Build_StandaloneWidgetSign_SmallVeryWide_C
 -   [x] Build_StandaloneWidgetSign_SmallWide_C
@@ -635,10 +703,12 @@
 -   [x] Build_StandaloneWidgetSign_Large_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableWire'
+
 -   [x] Build_PowerLine_C
 -   [x] Build_XmassLightsLine_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildingDescriptor'
+
 -   [x] Desc_BlueprintDesigner_C
 -   [x] Desc_Wall_Concrete_8x1_C
 -   [x] Desc_Wall_Concrete_8x4_C
@@ -1120,12 +1190,15 @@
 -   [x] Desc_Workshop_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGChainsaw'
+
 -   [x] Equip_Chainsaw_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGChargedWeapon'
+
 -   [x] Equip_NobeliskDetonator_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGConsumableDescriptor'
+
 -   [x] BP_EquipmentDescriptorBeacon_C
 -   [x] Desc_Nut_C
 -   [x] Desc_Medkit_C
@@ -1134,14 +1207,17 @@
 -   [x] Desc_Parachute_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGConsumableEquipment'
+
 -   [x] Equip_Beacon_C
 -   [x] BP_ConsumeableEquipment_C
 -   [x] Equip_MedKit_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGConveyorPoleStackable'
+
 -   [x] Build_ConveyorPoleStackable_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGCustomizationRecipe'
+
 -   [x] Recipe_Pattern_Remover_Arrows_C
 -   [x] Recipe_Pattern_Remover_Icons_C
 -   [x] Recipe_Pattern_Remover_Lines_C
@@ -1241,6 +1317,7 @@
 -   [x] Recipe_SkinFicsmas_Default_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGEquipmentDescriptor'
+
 -   [x] BP_EquipmentDescriptorShockShank_C
 -   [x] BP_ItemDescriptorPortableMiner_C
 -   [x] BP_EquipmentDescriptorHoverPack_C
@@ -1260,24 +1337,30 @@
 -   [x] Desc_GolfCartGold_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGEquipmentStunSpear'
+
 -   [x] Equip_ShockShank_C
 -   [x] Equip_StunSpear_C
 -   [x] Equip_CandyCaneBasher_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGEquipmentZipline'
+
 -   [x] Equip_Zipline_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGGasMask'
+
 -   [x] Equip_GasMask_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGGolfCartDispenser'
+
 -   [x] Equip_GolfCartDispenser_C
 -   [x] Equip_GoldGolfCartDispenser_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGHoverPack'
+
 -   [x] Equip_HoverPack_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGItemDescriptor'
+
 -   [x] Desc_NuclearWaste_C
 -   [x] Desc_PlutoniumWaste_C
 -   [x] Desc_Battery_C
@@ -1379,6 +1462,7 @@
 -   [x] Desc_Gift_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGItemDescriptorBiomass'
+
 -   [x] Desc_FlowerPetals_C
 -   [x] Desc_Wood_C
 -   [x] Desc_GenericBiomass_C
@@ -1398,25 +1482,32 @@
 -   [x] Desc_Leaves_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGItemDescriptorNuclearFuel'
+
 -   [x] Desc_NuclearFuelRod_C
 -   [x] Desc_PlutoniumFuelRod_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGJetPack'
+
 -   [x] Equip_JetPack_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGJumpingStilts'
+
 -   [x] Equip_JumpingStilts_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGObjectScanner'
+
 -   [x] Equip_ObjectScanner_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGParachute'
+
 -   [x] Equip_Parachute_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGPipeHyperStart'
+
 -   [x] Build_PipeHyperStart_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGPoleDescriptor'
+
 -   [x] Desc_ConveyorPole_C
 -   [x] Desc_PipelineSupport_C
 -   [x] Desc_PipeSupportStackable_C
@@ -1425,9 +1516,11 @@
 -   [x] Desc_ConveyorPoleStackable_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGPortableMinerDispenser'
+
 -   [x] Equip_PortableMinerDispenser_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGRecipe'
+
 -   [x] Recipe_BlueprintDesigner_C
 -   [x] Recipe_Wall_Concrete_8x1_C
 -   [x] Recipe_Wall_Concrete_8x4_C
@@ -2170,6 +2263,7 @@
 -   [x] Recipe_Fireworks_03_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGResourceDescriptor'
+
 -   [x] Desc_Water_C
 -   [x] Desc_OreIron_C
 -   [x] Desc_Stone_C
@@ -2184,6 +2278,7 @@
 -   [x] Desc_OreBauxite_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGSchematic'
+
 -   [x] ResourceSink_CyberWagon_Unlock_C
 -   [x] ResourceSink_GoldenCart_Unlock_C
 -   [x] ResourceSink_Checkmark_C
@@ -2651,9 +2746,11 @@
 -   [x] Ficsmas_Schematic_FingerGun_Emote_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGSuitBase'
+
 -   [x] Equip_HazmatSuit_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGVehicleDescriptor'
+
 -   [x] Desc_Truck_C
 -   [x] Desc_DroneTransport_C
 -   [x] Desc_FreightWagon_C
@@ -2663,5 +2760,6 @@
 -   [x] Desc_CyberWagon_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGWeapon'
+
 -   [x] Equip_RebarGun_Projectile_C
 -   [x] Equip_Rifle_C
