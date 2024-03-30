@@ -27,8 +27,15 @@ import {
 import {
 	local_ref,
 } from '../../../../lib/StringStartsWith';
-import {isAsExpression, isIdentifier, isStringLiteral, isTypeReferenceNode} from '../../../../assert/TypeScriptAssert';
-import {non_empty_keys, object_keys} from '../../../../lib/ArrayUtilities';
+import {
+	isAsExpression,
+	isIdentifier,
+	isStringLiteral,
+	isTypeReferenceNode,
+} from '../../../../assert/TypeScriptAssert';
+import {
+	object_keys,
+} from '../../../../lib/ArrayUtilities';
 
 const example_schema_decimal_string:
 	object_extends_but_has_no_additional_properties = {
