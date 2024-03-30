@@ -74,12 +74,10 @@ export type DocsDataItem<TypeOfUnknownProperties = unknown> = {
 
 export type DocsData = [DocsDataItem, ...DocsDataItem[]];
 
-declare type basic_docs_type = {[key: string]: unknown}[];
-
 export class DocsTsGenerator {
-	private docs: basic_docs_type | undefined;
+	private docs: DocsData | undefined;
 	private readonly cache_path: string | undefined;
-	private readonly docs_path: string | basic_docs_type;
+	private readonly docs_path: string | DocsData;
 
 	static readonly PERF_EARLY_RETURN = 'Early Return of Docs.json';
 	static readonly PERF_FAILURE = 'Failure to load Docs.json';
@@ -98,7 +96,7 @@ export class DocsTsGenerator {
 		// optional cache folder path for cacheable resources
 		cache_path = undefined,
 	}: {
-		docs_path: string | basic_docs_type;
+		docs_path: string | DocsData;
 		cache_path?: string;
 	}) {
 		this.docs_path = docs_path;
@@ -214,7 +212,7 @@ export class DocsTsGenerator {
 					throw new Error('Was expecting json to be an array!');
 				}
 
-				this.docs = maybe_json;
+				this.docs = maybe_json as [DocsDataItem, ...DocsDataItem[]];
 			}
 
 			if (undefined === this.docs) {
