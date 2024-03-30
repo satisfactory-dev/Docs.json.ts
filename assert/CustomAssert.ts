@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import {
-	ExpressionResult, RawGenerationResult,
+	ExpressionResult,
 } from '../lib/DataDiscovery/Generator';
 import {
 	Node,

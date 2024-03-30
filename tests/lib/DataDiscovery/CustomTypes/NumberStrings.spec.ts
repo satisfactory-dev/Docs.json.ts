@@ -22,8 +22,12 @@ import {
 	isStringLiteral,
 	isTypeReferenceNode,
 } from '../../../../assert/TypeScriptAssert';
-import {is_instanceof} from '../../../../assert/CustomAssert';
-import {RawGenerationResult} from '../../../../lib/DataDiscovery/Generator';
+import {
+	is_instanceof,
+} from '../../../../assert/CustomAssert';
+import {
+	RawGenerationResult,
+} from '../../../../lib/DataDiscovery/Generator';
 
 const __dirname = import.meta.dirname;
 

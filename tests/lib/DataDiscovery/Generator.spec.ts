@@ -4,9 +4,8 @@ import {
 } from 'node:test';
 import assert from 'node:assert/strict';
 import {
-    GenerationResult,
 	Generator,
-    RawGenerationResult,
+	RawGenerationResult,
 } from '../../../lib/DataDiscovery/Generator';
 import {
 	DocsTsGenerator,
