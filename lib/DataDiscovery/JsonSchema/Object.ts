@@ -12,7 +12,7 @@ import Ajv, {
 	ValidateFunction,
 } from 'ajv/dist/2020';
 import {
-	object_has_property, property_exists_on_object,
+	object_has_property,
 	value_is_non_array_object,
 } from '../../CustomParsingTypes/CustomPairingTypes';
 import {
