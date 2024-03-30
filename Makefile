@@ -15,7 +15,7 @@ shell:
 install:
 	${DOCKER_COMPOSER_PREFIX} exec node npm install
 
-validate: lint build-lib validate--skip-checks
+validate: lint build validate--skip-checks
 
 validate--skip-checks:
 	${DOCKER_COMPOSER_PREFIX} exec ts-node npm run validate
@@ -26,7 +26,7 @@ build:
 
 generate: lint generate--skip-checks generate--post-build
 
-generate--skip-checks: build-lib
+generate--skip-checks: build
 	@echo 'running ./discover-types.ts'
 	${DOCKER_COMPOSER_PREFIX} exec ts-node ./node_modules/.bin/ts-node ./discover-types.ts
 
@@ -58,9 +58,9 @@ lint-fix:
 	${DOCKER_COMPOSER_PREFIX} exec ts-node ./node_modules/.bin/eslint --cache './*.ts' lib tests --fix
 
 .PHONY: tests
-tests: build-lib
+tests: build
 	${DOCKER_COMPOSER_PREFIX} exec ts-node npm test
 
 .PHONY: coverage
-coverage: build-lib
+coverage: build
 	${DOCKER_COMPOSER_PREFIX} exec ts-node ./node_modules/.bin/c8 npm test
