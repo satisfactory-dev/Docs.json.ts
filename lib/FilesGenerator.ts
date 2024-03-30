@@ -41,6 +41,8 @@ export class FromArray extends FilesGenerator
 	{
 		await Promise.resolve(); // lazier than figuring out the correct syntax
 
-		yield* this.entries;
+		if (this.entries.length > 0) {
+			yield* this.entries; // phpstorm doesn't track this as a query 🤷‍♂️
+		}
 	}
 }
