@@ -40,7 +40,7 @@ jobs:
                   cache: 'npm'
             - run: npm ci
             - name: Generate coverage
-              run: ./node_modules/.bin/c8 --reporter=text-lcov npm test
+              run: ./node_modules/.bin/c8 --config=./.c8rc.coveralls.json npm test
               env:
                   NODE_OPTIONS: '--enable-source-maps --no-warnings=ExperimentalWarning --loader ts-node/esm'
             - name: Coveralls GitHub Action
