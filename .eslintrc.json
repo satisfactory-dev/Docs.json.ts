@@ -7,7 +7,7 @@
 	],
 	"parser": "@typescript-eslint/parser",
 	"parserOptions": {
-		"project": ["./tsconfig.app.json"]
+		"project": ["./tsconfig.eslint.json"]
 	},
 	"rules": {
 		"@typescript-eslint/member-ordering": [
