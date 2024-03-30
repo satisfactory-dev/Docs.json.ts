@@ -1,6 +1,6 @@
 import {
 	SchemaObject,
-} from 'ajv';
+} from 'ajv/dist/2020';
 import {
 	ConvertsUnknown,
 	ExpressionResult,
