@@ -58,6 +58,9 @@ import {
 import {
 	BooleanOrBooleanExtended,
 } from './DataDiscovery/CustomTypes/BooleanOrBooleanExtended';
+import {
+	UnrealEngineString as UnrealEngineString_DataDiscovery,
+} from './DataDiscovery/CustomTypes/UnrealEngineString';
 
 type progress = {[p: string]: string[]};
 
@@ -82,6 +85,7 @@ export class DataDiscovery
 			new ObjectExtendsButHasNoAdditionalProperties(this, ajv),
 			new NumberStrings(this, ajv),
 			new BooleanOrBooleanExtended(this, ajv),
+			new UnrealEngineString_DataDiscovery(this),
 		];
 	}
 
@@ -114,10 +118,15 @@ export class DataDiscovery
 
 	async* generate_files() {
 		for (const result of await this.generate()) {
-			this.progress[result.NativeClass] = [];
+			const NativeClass_raw =
+				'NativeClass_raw' in result
+					? result.NativeClass_raw
+					: result.NativeClass;
+
+			this.progress[NativeClass_raw] = [];
 
 			const entry_class_name = adjust_unrealengine_value(
-				UnrealEngineString.fromString(result.NativeClass).right
+				UnrealEngineString.fromString(NativeClass_raw).right
 			);
 
 			const file = `data/CoreUObject/${entry_class_name}.ts`;
@@ -133,7 +142,7 @@ export class DataDiscovery
 					),
 				};
 
-				this.progress[result.NativeClass].push(item.ClassName);
+				this.progress[NativeClass_raw].push(item.ClassName);
 			}
 
 			const result_statement = create_const_statement(variable(

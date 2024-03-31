@@ -67,8 +67,11 @@ export type DocsDataItem_Classes_entry<TypeOfUnknownProperties = unknown> = (
 	& {ClassName: string}
 );
 
-export type DocsDataItem<TypeOfUnknownProperties = unknown> = {
-	NativeClass: string;
+export type DocsDataItem<
+	TypeOfUnknownProperties = unknown,
+	TypeOfNativeClass = string
+> = {
+	NativeClass: TypeOfNativeClass;
 	Classes: DocsDataItem_Classes_entry<TypeOfUnknownProperties>[];
 };
 

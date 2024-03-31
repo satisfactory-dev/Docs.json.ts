@@ -1,6 +1,7 @@
 import {
 	Generator as Base,
 	ConvertsArray,
+	ExpressionResult,
 	RawGenerationResult,
 } from '../Generator';
 import {
@@ -19,6 +20,16 @@ import {
 import {
 	UnboundArray,
 } from '../JsonSchema/Array';
+import {
+	UnrealEngineString,
+} from '../CustomTypes/UnrealEngineString';
+import {
+	object_has_property,
+	value_is_non_array_object,
+} from '../../CustomParsingTypes/CustomPairingTypes';
+import {
+	is_UnrealEngineString_parent,
+} from '../../CustomParsingTypes/UnrealEngineString';
 
 type DocsDataItem_schema = (
 	& SchemaObject
@@ -33,9 +44,23 @@ type DocsDataItem_schema = (
 	}
 );
 
+type DocsDataItemResult =
+	| RawGenerationResult<DocsDataItem>
+	| RawGenerationResult<
+		DocsDataItem<
+			unknown,
+			ExpressionResult
+		>
+		& {
+			NativeClass_raw:string
+		}
+	>;
+
 export class Generator extends Base<
 	DocsDataItem,
-	DocsDataItem
+	DocsDataItemResult,
+	DocsDataItemResult,
+	DocsDataItemResult
 > {
 	private readonly prepare:Promise<SpecificItemGenerator[]>;
 
@@ -104,11 +129,17 @@ export class Generator extends Base<
 	}
 }
 
-class SpecificItemGenerator extends Base<DocsDataItem>
-{
+class SpecificItemGenerator extends Base<
+	DocsDataItem,
+	DocsDataItemResult,
+	DocsDataItemResult,
+	DocsDataItemResult
+> {
 	private readonly check:ValidateFunction<DocsDataItem>;
+	private readonly NativeClass_definition:Promise<SchemaObject>;
 	private readonly schema:DocsDataItem_schema;
 	private readonly unbound_array:UnboundArray;
+	private readonly unreal_engine_string:UnrealEngineString;
 
 	constructor(
 		discovery:DataDiscovery,
@@ -119,10 +150,13 @@ class SpecificItemGenerator extends Base<DocsDataItem>
 		this.check = ajv.compile<DocsDataItem>(schema);
 		this.schema = schema;
 		this.unbound_array = new UnboundArray(discovery, ajv);
+		this.unreal_engine_string = new UnrealEngineString(discovery);
+		this.NativeClass_definition = this.discovery.docs.definition(
+			'NativeClass'
+		);
 	}
 
-	async matches(raw_data: unknown)
-	{
+	async matches(raw_data: unknown) {
 		if (this.check(raw_data)) {
 			const maybe_unbound_array = await (
 				await this.unbound_array.matches(
@@ -144,6 +178,26 @@ class SpecificItemGenerator extends Base<DocsDataItem>
 				);
 			}
 
+			const NativeClass_definition = await this.NativeClass_definition;
+
+			if (
+				!object_has_property(
+					NativeClass_definition,
+					'properties',
+					value_is_non_array_object
+				)
+				|| !object_has_property(
+					NativeClass_definition.properties,
+					'NativeClass',
+					is_UnrealEngineString_parent
+				)
+			) {
+				throw new NoMatchError(
+					NativeClass_definition,
+					'UnrealEngineString expected, not found!'
+				);
+			}
+
 			const {NativeClass} = raw_data;
 
 			const Classes = await Promise.all(
@@ -153,10 +207,19 @@ class SpecificItemGenerator extends Base<DocsDataItem>
 				)).map(e => e.result())
 			) as DocsDataItem_Classes_entry[];
 
-			return new RawGenerationResult({
-				NativeClass,
+			const result: (
+				& DocsDataItem<unknown, ExpressionResult>
+				& {NativeClass_raw: string}
+			) = {
+				NativeClass_raw: NativeClass,
+				NativeClass: await this.unreal_engine_string.convert_unknown(
+					NativeClass_definition.properties.NativeClass,
+					NativeClass
+				),
 				Classes,
-			});
+			};
+
+			return new RawGenerationResult(result);
 		}
 
 		return undefined;

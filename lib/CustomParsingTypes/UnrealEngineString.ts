@@ -1,7 +1,9 @@
 import Ajv from 'ajv/dist/2020';
 import ts, {
+	StringLiteral,
 	TypeNode,
 	TypeReferenceNode,
+	UnionTypeNode,
 } from 'typescript';
 import {
 	adjust_class_name,
@@ -48,6 +50,20 @@ export const UnrealEngineString_general_regex =
 export type UnrealEngineString_string_or_string_array =
 	| string
 	| [string, ...string[]];
+
+export function string_or_string_array_to_node(
+	value:
+		| string
+		| [string, ...string[]]
+) : typeof value extends string
+	? (ts.LiteralTypeNode & {literal: StringLiteral})
+	: UnionTypeNode {
+	if (is_string(value)) {
+		return create_literal(value);
+	}
+
+	return ts.factory.createUnionTypeNode(value.map(e => create_literal(e)));
+}
 
 export type UnrealEngineString_right =
 	| UnrealEngineString_string_or_string_array

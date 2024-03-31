@@ -42,16 +42,21 @@ export class RawGenerationResult<
 export abstract class Generator<
 	Input = unknown,
 	Output = unknown,
-	Matches = Output
+	Matches = Output,
+	GenerationResultType extends GenerationResult = GenerationResult<
+		Input,
+		Matches
+	>
 > {
 	protected readonly discovery:DataDiscovery;
 
-	protected constructor(discovery:DataDiscovery) {
+	constructor(discovery:DataDiscovery) {
 		this.discovery = discovery;
 	}
 
 	abstract matches(raw_data:unknown) : Promise<
-		| GenerationResult<Input, Matches>|RawGenerationResult<this>
+		| GenerationResultType
+		| RawGenerationResult<this>
 		| undefined
 	>
 

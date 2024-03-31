@@ -7,11 +7,15 @@ import {
 	isArrayLiteralExpression,
 	isAsExpression,
 	isBooleanLiteral,
-	isIdentifier,
+	isCallExpression,
+	isIdentifier, isLiteralTypeNode,
 	isNamedImports,
 	isObjectLiteralExpression,
 	isPropertyAssignment,
-	isStringLiteral, isTypeReferenceNode,
+	isStringLiteral,
+	isTokenWithExpectedKind,
+	isTypeReferenceNode,
+	isUnionTypeNode,
 } from '../../assert/TypeScriptAssert';
 import ts, {
 	Node,
@@ -32,6 +36,10 @@ const node_spec:{
 	isPropertyAssignment: node_spec,
 	isTypeReferenceNode: node_spec,
 	isNamedImports: node_spec,
+	isCallExpression: node_spec,
+	isTokenWithExpectedKind: node_spec<[Node, ts.SyntaxKind]>,
+	isLiteralTypeNode: node_spec,
+	isUnionTypeNode: node_spec,
 } = {
 	isArrayLiteralExpression: {
 		pass: [
@@ -89,6 +97,44 @@ const node_spec:{
 		pass: [[ts.factory.createNamedImports([])]],
 		fail: [[ts.factory.createStringLiteral('foo')]],
 	},
+	isCallExpression: {
+		pass: [[ts.factory.createCallExpression(
+			ts.factory.createIdentifier('foo'),
+			undefined,
+			[]
+		)]],
+		fail: [[ts.factory.createStringLiteral('foo')]],
+	},
+	isTokenWithExpectedKind: {
+		pass: [[
+			ts.factory.createKeywordTypeNode(ts.SyntaxKind.StringKeyword),
+			ts.SyntaxKind.StringKeyword,
+		]],
+		fail: [
+			[
+				ts.factory.createStringLiteral('foo'),
+				ts.SyntaxKind.StringKeyword,
+			],
+			[
+				ts.factory.createKeywordTypeNode(ts.SyntaxKind.StringKeyword),
+				ts.SyntaxKind.NumberKeyword,
+			],
+		],
+	},
+	isLiteralTypeNode: {
+		pass: [[ts.factory.createLiteralTypeNode(
+			ts.factory.createStringLiteral('foo')
+		)]],
+		fail: [[ts.factory.createStringLiteral('foo')]],
+	},
+	isUnionTypeNode: {
+		pass: [[ts.factory.createUnionTypeNode([
+			ts.factory.createLiteralTypeNode(
+				ts.factory.createStringLiteral('foo')
+			),
+		])]],
+		fail: [[ts.factory.createStringLiteral('foo')]],
+	},
 };
 
 const functions_to_call:{[key in keyof typeof node_spec]: unknown} & {
@@ -101,6 +147,10 @@ const functions_to_call:{[key in keyof typeof node_spec]: unknown} & {
 	isPropertyAssignment: typeof isPropertyAssignment,
 	isTypeReferenceNode: typeof isTypeReferenceNode,
 	isNamedImports: typeof isNamedImports,
+	isCallExpression: typeof isCallExpression,
+	isTokenWithExpectedKind: typeof isTokenWithExpectedKind,
+	isLiteralTypeNode: typeof isLiteralTypeNode,
+	isUnionTypeNode: typeof isUnionTypeNode,
 } = {
 	isArrayLiteralExpression,
 	isAsExpression,
@@ -111,6 +161,10 @@ const functions_to_call:{[key in keyof typeof node_spec]: unknown} & {
 	isPropertyAssignment,
 	isTypeReferenceNode,
 	isNamedImports,
+	isCallExpression,
+	isTokenWithExpectedKind,
+	isLiteralTypeNode,
+	isUnionTypeNode,
 };
 
 for (
@@ -125,10 +179,17 @@ for (
 	void describe(function_name, () => {
 		void it('does not throw', () => {
 			for (const args of spec.pass) {
-				const [node, bool_arg] = args;
+				const [node, second_arg] = args;
 				if (function_to_call === isBooleanLiteral) {
 					assert.doesNotThrow(
-						() => function_to_call(node, bool_arg as boolean)
+						() => function_to_call(node, second_arg as boolean)
+					);
+				} else if (function_to_call === isTokenWithExpectedKind) {
+					assert.doesNotThrow(
+						() => function_to_call(
+							node,
+							second_arg as ts.SyntaxKind
+						)
 					);
 				} else {
 					// @ts-expect-error no it won't
@@ -138,10 +199,17 @@ for (
 		});
 		void it('does throw', () => {
 			for (const args of spec.fail) {
-				const [node, bool_arg] = args;
+				const [node, second_arg] = args;
 				if (function_to_call === isBooleanLiteral) {
 					assert.throws(
-						() => function_to_call(node, bool_arg as boolean)
+						() => function_to_call(node, second_arg as boolean)
+					);
+				} else if (function_to_call === isTokenWithExpectedKind) {
+					assert.throws(
+						() => function_to_call(
+							node,
+							second_arg as ts.SyntaxKind
+						)
 					);
 				} else {
 					// @ts-expect-error no it won't
