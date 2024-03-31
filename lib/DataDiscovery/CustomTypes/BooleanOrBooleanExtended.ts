@@ -25,7 +25,7 @@ const schema = {
 	},
 };
 
-type schema_type = SchemaObject & {
+export type schema_type = SchemaObject & {
 	$ref: local_ref<
 		| 'boolean'
 		| 'boolean-extended'
