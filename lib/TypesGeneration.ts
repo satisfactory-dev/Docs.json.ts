@@ -15,9 +15,9 @@ export declare type imports_shorthand = {
 }[];
 
 export class ImportTracker {
-	public static imports: {[key: string]: imports_shorthand} = {};
+	private imports: {[key: string]: imports_shorthand} = {};
 
-	static generate_imports(file: string): ts.ImportDeclaration[] {
+	generate_imports(file: string): ts.ImportDeclaration[] {
 		if (!(file in this.imports)) {
 			return [];
 		}
@@ -43,7 +43,7 @@ export class ImportTracker {
 		});
 	}
 
-	static merge_and_set_imports(imports: import_these_later) {
+	merge_and_set_imports(imports: import_these_later) {
 		for (const entry of Object.entries(imports)) {
 			const [filename, file_imports] = entry;
 
@@ -83,7 +83,7 @@ export class ImportTracker {
 			}
 
 			if (Object.keys(merge_here).length) {
-				ImportTracker.set_imports(
+				this.set_imports(
 					filename,
 					Object.entries(merge_here).map((unpack) => {
 						return {from: unpack[0], import_these: unpack[1]};
@@ -93,7 +93,7 @@ export class ImportTracker {
 		}
 	}
 
-	static set_imports(file: string, imports: imports_shorthand) {
+	set_imports(file: string, imports: imports_shorthand) {
 		this.imports[file] = imports;
 	}
 }
