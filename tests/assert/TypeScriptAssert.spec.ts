@@ -8,6 +8,7 @@ import {
 	isAsExpression,
 	isBooleanLiteral,
 	isIdentifier,
+	isNamedImports,
 	isObjectLiteralExpression,
 	isPropertyAssignment,
 	isStringLiteral, isTypeReferenceNode,
@@ -30,6 +31,7 @@ const node_spec:{
 	isObjectLiteralExpression: node_spec,
 	isPropertyAssignment: node_spec,
 	isTypeReferenceNode: node_spec,
+	isNamedImports: node_spec,
 } = {
 	isArrayLiteralExpression: {
 		pass: [
@@ -83,6 +85,10 @@ const node_spec:{
 		pass: [[ts.factory.createTypeReferenceNode('foo')]],
 		fail: [[ts.factory.createStringLiteral('foo')]],
 	},
+	isNamedImports: {
+		pass: [[ts.factory.createNamedImports([])]],
+		fail: [[ts.factory.createStringLiteral('foo')]],
+	},
 };
 
 const functions_to_call:{[key in keyof typeof node_spec]: unknown} & {
@@ -94,6 +100,7 @@ const functions_to_call:{[key in keyof typeof node_spec]: unknown} & {
 	isObjectLiteralExpression: typeof isObjectLiteralExpression,
 	isPropertyAssignment: typeof isPropertyAssignment,
 	isTypeReferenceNode: typeof isTypeReferenceNode,
+	isNamedImports: typeof isNamedImports,
 } = {
 	isArrayLiteralExpression,
 	isAsExpression,
@@ -103,6 +110,7 @@ const functions_to_call:{[key in keyof typeof node_spec]: unknown} & {
 	isObjectLiteralExpression,
 	isPropertyAssignment,
 	isTypeReferenceNode,
+	isNamedImports,
 };
 
 for (

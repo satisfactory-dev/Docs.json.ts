@@ -4,7 +4,10 @@ import ts, {
 	AsExpression,
 	FalseLiteral,
 	Identifier,
+	ImportClause,
+	ImportSpecifier,
 	Node,
+	NodeArray,
 	ObjectLiteralExpression,
 	PropertyAssignment,
 	StringLiteral,
@@ -78,4 +81,15 @@ export function isTypeReferenceNode(
 	message?:string|Error
 ): asserts maybe is TypeReferenceNode {
 	assert.equal(ts.isTypeReferenceNode(maybe), true, message);
+}
+
+export function isNamedImports(
+	maybe:Node,
+	message?:string|Error
+): asserts maybe is Node & {
+	readonly kind: ts.SyntaxKind.NamedImports;
+	readonly parent: ImportClause;
+	readonly elements: NodeArray<ImportSpecifier>;
+} {
+	assert.equal(ts.isNamedImports(maybe), true, message);
 }

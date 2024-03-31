@@ -32,3 +32,10 @@ export function is_instanceof(
 ): asserts maybe is typeof of {
 	assert.equal(maybe instanceof of, true, message);
 }
+
+export function not_undefined<T = unknown>(
+	maybe:T|undefined,
+	message?:string|Error
+) : asserts maybe is Exclude<typeof maybe, undefined> {
+	assert.equal(undefined !== maybe, true, message);
+}

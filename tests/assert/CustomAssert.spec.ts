@@ -4,7 +4,9 @@ import {
 } from 'node:test';
 import assert from 'node:assert/strict';
 import {
-	array_has_size, is_instanceof,
+	array_has_size,
+	is_instanceof,
+	not_undefined,
 	value_matches_ExpressionResult,
 } from '../../assert/CustomAssert';
 import ts from 'typescript';
@@ -48,5 +50,14 @@ void describe('is_instanceof', () => {
 	});
 	void it('does throw', () => {
 		assert.throws(() => is_instanceof(1, Array));
+	});
+});
+
+void describe('not_undefined', () => {
+	void it('does not throw', () => {
+		assert.doesNotThrow(() => not_undefined([]));
+	});
+	void it('does throw', () => {
+		assert.throws(() => not_undefined(undefined));
 	});
 });
