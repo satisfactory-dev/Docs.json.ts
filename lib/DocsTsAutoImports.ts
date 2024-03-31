@@ -33,7 +33,7 @@ export class DocsTsAutoImports {
 		this.files_entries = Object.entries(files);
 	}
 
-	async generate() {
+	async generate() : Promise<ImportTracker> {
 		const file_exports = this.file_exports();
 
 		for (const entry of Object.entries(file_exports)) {
@@ -105,7 +105,11 @@ export class DocsTsAutoImports {
 			}
 		}
 
-		ImportTracker.merge_and_set_imports(auto_imports);
+		const import_tracker = new ImportTracker();
+
+		import_tracker.merge_and_set_imports(auto_imports);
+
+		return import_tracker;
 	}
 
 	private file_exports(): {[key: string]: [string, ...string[]]} {

@@ -45,9 +45,6 @@ import {
 	DocsTsAutoImports,
 } from './DocsTsAutoImports';
 import {
-	ImportTracker,
-} from './TypesGeneration';
-import {
 	dirname,
 } from 'node:path';
 import {
@@ -241,7 +238,7 @@ export class TypeDefinitionWriter
 
 
 		const auto_imports = new DocsTsAutoImports(files);
-		await auto_imports.generate();
+		const import_tracker = await auto_imports.generate();
 
 		const printer = ts.createPrinter({
 			newLine: ts.NewLineKind.LineFeed,
@@ -351,7 +348,7 @@ export class TypeDefinitionWriter
 			});
 
 			const nodes = [
-				...ImportTracker.generate_imports(entry[0]),
+				...import_tracker.generate_imports(entry[0]),
 				...entry[1].sort((a, b) => {
 					if (
 						ts.isTypeAliasDeclaration(a)
