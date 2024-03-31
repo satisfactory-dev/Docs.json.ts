@@ -45,22 +45,22 @@ export class BooleanOrBooleanExtended extends DoubleCheckedStringSchema<
 			ajv,
 			schema,
 			{
-			type: 'object',
-			required: ['type', 'enum'],
-			additionalProperties: false,
-			properties: {
-				type: {type: 'string', const: 'string'},
-				enum: {
-					type: 'array',
-					minItems: 2,
-					uniqueItems: true,
-					items: {type: 'string', enum: [
-						'True',
-						'False',
-						'',
-					]},
+				type: 'object',
+				required: ['type', 'enum'],
+				additionalProperties: false,
+				properties: {
+					type: {type: 'string', const: 'string'},
+					enum: {
+						type: 'array',
+						minItems: 2,
+						uniqueItems: true,
+						items: {type: 'string', enum: [
+							'True',
+							'False',
+							'',
+						]},
+					},
 				},
-			},
 			}
 		);
 	}

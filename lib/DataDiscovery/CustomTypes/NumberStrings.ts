@@ -54,13 +54,13 @@ export class NumberStrings extends DoubleCheckedStringSchema<
 			ajv,
 			schema,
 			{
-			type: 'object',
-			required: ['type', 'pattern'],
-			additionalProperties: false,
-			properties: {
-				type: {type: 'string', const: 'string'},
-				pattern: {type: 'string', minLength: 2},
-			},
+				type: 'object',
+				required: ['type', 'pattern'],
+				additionalProperties: false,
+				properties: {
+					type: {type: 'string', const: 'string'},
+					pattern: {type: 'string', minLength: 2},
+				},
 			}
 		);
 	}
@@ -75,11 +75,11 @@ export class NumberStrings extends DoubleCheckedStringSchema<
 	): Promise<ExpressionResult<ts.Expression>> {
 		return Promise.resolve(new ExpressionResult(
 			ts.factory.createAsExpression(
-			ts.factory.createStringLiteral(raw_data),
-			type_reference_node(
-				'StringPassedRegExp',
-				create_literal(definition.pattern)
-			)
+				ts.factory.createStringLiteral(raw_data),
+				type_reference_node(
+					'StringPassedRegExp',
+					create_literal(definition.pattern)
+				)
 			)
 		));
 	}

@@ -14,7 +14,9 @@ import {
 import {
 	value_is_non_array_object,
 } from '../CustomParsingTypes/CustomPairingTypes';
-import {is_string} from '../StringStartsWith';
+import {
+	is_string,
+} from '../StringStartsWith';
 
 export abstract class GenerationResult<
 	Input = unknown,
