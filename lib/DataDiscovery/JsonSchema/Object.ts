@@ -16,6 +16,7 @@ import {
 	value_is_non_array_object,
 } from '../../CustomParsingTypes/CustomPairingTypes';
 import {
+	is_string,
 	local_ref,
 } from '../../StringStartsWith';
 
@@ -53,17 +54,16 @@ export class ObjectExtendsButHasNoAdditionalProperties extends ConvertsObject<
 		});
 	}
 
-	async convert_object(
-		schema: object_extends_but_has_no_additional_properties,
-		raw_data: {
-			[key: string]: unknown; }
-	): Promise<{ [key: string]: unknown; }
-	> {
-		const $ref = schema.$ref.substring(14);
-
+	private async resolve_converters(
+		$ref:string
+	): Promise<{[key: string]: [SchemaObject, unknown]}> {
 		const resolved = await this.discovery.docs.definition(
 			$ref
 		);
+
+		const property_converters:{
+			[key: string]: [SchemaObject, unknown]
+		} = {};
 
 		if (
 			object_has_property(
@@ -81,7 +81,7 @@ export class ObjectExtendsButHasNoAdditionalProperties extends ConvertsObject<
 		) {
 			const properties = resolved.properties;
 
-			const property_converters = Object.fromEntries(
+			for (const entry of (
 				await Promise.all(Object.entries(properties).map(
 					async (e) : Promise<[string, unknown]> => [
 						e[0],
@@ -91,8 +91,47 @@ export class ObjectExtendsButHasNoAdditionalProperties extends ConvertsObject<
 						)).result(),
 					]
 				))
-			);
+			)) {
+				const [property, result] = entry;
+				if (!(property in property_converters)) {
+					property_converters[property] = [
+						properties[property],
+						result,
+					];
+				}
+			}
+		}
 
+		if (
+			'$ref' in resolved
+			&& is_string(resolved.$ref)
+			&& resolved.$ref.startsWith('#/definitions/')
+		) {
+			for (const entry of Object.entries(
+				await this.resolve_converters(resolved.$ref.substring(14))
+			)) {
+				if (!(entry[0] in property_converters)) {
+					property_converters[entry[0]] = entry[1];
+				}
+			}
+		}
+
+		return property_converters;
+	}
+
+	async convert_object(
+		schema: object_extends_but_has_no_additional_properties,
+		raw_data: {
+			[key: string]: unknown; }
+	): Promise<{ [key: string]: unknown; }
+	> {
+		const $ref = schema.$ref.substring(14);
+
+		const property_converters = await this.resolve_converters($ref);
+
+		if (
+			Object.keys(property_converters).length > 0
+		) {
 			return Object.fromEntries(await Promise.all(Object.entries(
 				raw_data
 			).map(
@@ -100,20 +139,25 @@ export class ObjectExtendsButHasNoAdditionalProperties extends ConvertsObject<
 					const [property, value] = e;
 
 					if (
-						object_has_property(
-							property_converters,
-							property,
-							(e): e is ConvertsUnknown<unknown, unknown> => {
-								return e instanceof ConvertsUnknown;
-							}
+						property in property_converters
+						&& (
+							property_converters[
+								property
+							][1] instanceof ConvertsUnknown
 						)
 					) {
+						const [
+							schema,
+							converter,
+						] = property_converters[property] as [
+							SchemaObject,
+							ConvertsUnknown<unknown, unknown>,
+						];
+
 						return [
 							property,
-							await property_converters[
-								property
-							].convert_unknown(
-								properties[property],
+							await converter.convert_unknown(
+								schema,
 								value,
 							),
 						];
