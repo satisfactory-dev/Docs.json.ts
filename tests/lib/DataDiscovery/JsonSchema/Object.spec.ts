@@ -84,10 +84,10 @@ void describe('ObjectExtendsButHasNoAdditionalProperties', () => {
 			unevaluatedProperties: false,
 		};
 		const example = {
-			mStorageSizeX: '1.2',
-			mStorageSizeY: '1.2',
-			mTransferSpeed: '1.2',
-			mStackTransferSize: '1.2',
+			mStorageSizeX: '1',
+			mStorageSizeY: '2',
+			mTransferSpeed: '1.234567',
+			mStackTransferSize: '2.345678',
 			foo: 'bar',
 		};
 		const converted = await instance.convert_object(

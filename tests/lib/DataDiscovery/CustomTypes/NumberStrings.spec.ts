@@ -61,13 +61,28 @@ void describe('NumberStrings.convert_unknown', async () => {
 				message: 'Not a pattern schema!',
 			},
 		);
+		await assert.rejects(
+			number_strings.convert_unknown(
+				{
+					$ref: '#/definitions/decimal-string',
+				},
+				'1.2'
+			),
+			{
+				property: {
+					raw_data: '1.2',
+					pattern: '^\\d+\\.\\d{6}$',
+				},
+				message: '"1.2" does not match /^\\d+\\.\\d{6}$/!',
+			},
+		);
 	});
 	void it('succeeds', async () => {
 		const value = await number_strings.convert_unknown(
 			{
 				$ref: '#/definitions/decimal-string',
 			},
-			'1.2'
+			'1.200000'
 		);
 
 		isAsExpression(value.expression);

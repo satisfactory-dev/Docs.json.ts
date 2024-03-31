@@ -17,6 +17,9 @@ import {
 	create_literal,
 	type_reference_node,
 } from '../../TsFactoryWrapper';
+import {
+	NoMatchError,
+} from '../../Exceptions';
 
 const schema = {
 	type: 'object',
@@ -73,12 +76,22 @@ export class NumberStrings extends DoubleCheckedStringSchema<
 		definition: { type: 'string'; pattern: string; },
 		raw_data: string
 	): Promise<ExpressionResult<ts.Expression>> {
+		const {pattern} = definition;
+		const regex = new RegExp(pattern);
+
+		if (!regex.test(raw_data)) {
+			throw new NoMatchError({
+				raw_data,
+				pattern,
+			}, `"${raw_data}" does not match /${pattern}/!`);
+		}
+
 		return Promise.resolve(new ExpressionResult(
 			ts.factory.createAsExpression(
 				ts.factory.createStringLiteral(raw_data),
 				type_reference_node(
 					'StringPassedRegExp',
-					create_literal(definition.pattern)
+					create_literal(pattern)
 				)
 			)
 		));
