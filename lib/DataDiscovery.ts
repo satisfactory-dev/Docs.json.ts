@@ -55,6 +55,9 @@ import {
 import {
 	NumberStrings,
 } from './DataDiscovery/CustomTypes/NumberStrings';
+import {
+	BooleanOrBooleanExtended,
+} from './DataDiscovery/CustomTypes/BooleanOrBooleanExtended';
 
 type progress = {[p: string]: string[]};
 
@@ -78,6 +81,7 @@ export class DataDiscovery
 			new UnboundArray(this, ajv),
 			new ObjectExtendsButHasNoAdditionalProperties(this, ajv),
 			new NumberStrings(this, ajv),
+			new BooleanOrBooleanExtended(this, ajv),
 		];
 	}
 
