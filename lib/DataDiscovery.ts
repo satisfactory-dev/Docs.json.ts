@@ -122,6 +122,10 @@ export class DataDiscovery
 				'NativeClass_raw' in result
 					? result.NativeClass_raw
 					: result.NativeClass;
+			const Classes_type =
+				'Classes_type' in result
+					? result.Classes_type
+					: undefined;
 
 			this.progress[NativeClass_raw] = [];
 
@@ -137,7 +141,8 @@ export class DataDiscovery
 					node: create_const_statement(
 						variable(
 							adjust_class_name(item.ClassName),
-							await DataDiscovery.object_literal(item)
+							await DataDiscovery.object_literal(item),
+							Classes_type
 						)
 					),
 				};

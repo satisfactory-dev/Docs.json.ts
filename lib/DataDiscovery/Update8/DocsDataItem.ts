@@ -30,6 +30,19 @@ import {
 import {
 	is_UnrealEngineString_parent,
 } from '../../CustomParsingTypes/UnrealEngineString';
+import {
+	TypeReferenceNode,
+} from 'typescript';
+import {
+	ObjectExtendsButHasNoAdditionalProperties,
+} from '../JsonSchema/Object';
+import {
+	adjust_class_name,
+	type_reference_node,
+} from '../../TsFactoryWrapper';
+import {
+	local_ref,
+} from '../../StringStartsWith';
 
 type DocsDataItem_schema = (
 	& SchemaObject
@@ -44,16 +57,20 @@ type DocsDataItem_schema = (
 	}
 );
 
+type modified_DocsDataItem =
+	& DocsDataItem<
+		unknown,
+		ExpressionResult
+	>
+	& {
+		Classes_type: undefined|TypeReferenceNode,
+		NativeClass_raw:string
+	};
+
 type DocsDataItemResult =
 	| RawGenerationResult<DocsDataItem>
 	| RawGenerationResult<
-		DocsDataItem<
-			unknown,
-			ExpressionResult
-		>
-		& {
-			NativeClass_raw:string
-		}
+		modified_DocsDataItem
 	>;
 
 export class Generator extends Base<
@@ -129,13 +146,14 @@ export class Generator extends Base<
 	}
 }
 
-class SpecificItemGenerator extends Base<
+export class SpecificItemGenerator extends Base<
 	DocsDataItem,
 	DocsDataItemResult,
 	DocsDataItemResult,
 	DocsDataItemResult
 > {
 	private readonly check:ValidateFunction<DocsDataItem>;
+	private readonly extends_$ref:ObjectExtendsButHasNoAdditionalProperties;
 	private readonly NativeClass_definition:Promise<SchemaObject>;
 	private readonly schema:DocsDataItem_schema;
 	private readonly unbound_array:UnboundArray;
@@ -153,6 +171,10 @@ class SpecificItemGenerator extends Base<
 		this.unreal_engine_string = new UnrealEngineString(discovery);
 		this.NativeClass_definition = this.discovery.docs.definition(
 			'NativeClass'
+		);
+		this.extends_$ref = new ObjectExtendsButHasNoAdditionalProperties(
+			discovery,
+			ajv
 		);
 	}
 
@@ -204,14 +226,30 @@ class SpecificItemGenerator extends Base<
 				(await maybe_unbound_array.convert_array(
 					this.schema.properties.Classes,
 					raw_data.Classes
-				)).map(e => e.result())
+				)).map(e => (
+					e.result()
+				))
 			) as DocsDataItem_Classes_entry[];
 
-			const result: (
-				& DocsDataItem<unknown, ExpressionResult>
-				& {NativeClass_raw: string}
-			) = {
+			let Classes_type:undefined|TypeReferenceNode = undefined;
+
+			if (
+				await this.extends_$ref.matches(
+					this.schema.properties.Classes.items
+				)
+			) {
+				Classes_type = type_reference_node(adjust_class_name(
+					(
+						this.schema.properties.Classes.items.$ref as local_ref<
+							string
+						>
+					).substring(14)
+				));
+			}
+
+			const result:modified_DocsDataItem = {
 				NativeClass_raw: NativeClass,
+				Classes_type,
 				NativeClass: await this.unreal_engine_string.convert_unknown(
 					NativeClass_definition.properties.NativeClass,
 					NativeClass
