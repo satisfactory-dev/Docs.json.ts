@@ -54,6 +54,67 @@ export class ObjectExtendsButHasNoAdditionalProperties extends ConvertsObject<
 		});
 	}
 
+	async convert_object(
+		schema: object_extends_but_has_no_additional_properties,
+		raw_data: {
+			[key: string]: unknown; }
+	): Promise<{ [key: string]: unknown; }
+	> {
+		const $ref = schema.$ref.substring(14);
+
+		const property_converters = await this.resolve_converters($ref);
+
+		if (
+			Object.keys(property_converters).length > 0
+		) {
+			return Object.fromEntries(await Promise.all(Object.entries(
+				raw_data
+			).map(
+				async (e) : Promise<[string, unknown]> => {
+					const [property, value] = e;
+
+					if (
+						property in property_converters
+						&& (
+							property_converters[
+								property
+							][1] instanceof ConvertsUnknown
+						)
+					) {
+						const [
+							schema,
+							converter,
+						] = property_converters[property] as [
+							SchemaObject,
+							ConvertsUnknown<unknown, unknown>,
+						];
+
+						return [
+							property,
+							await converter.convert_unknown(
+								schema,
+								value,
+							),
+						];
+					}
+
+					return [property, value];
+				}
+			)));
+		}
+
+		return raw_data;
+	}
+
+	async matches(schema:unknown)
+	{
+		if ((await this.check)(schema)) {
+			return new RawGenerationResult(this);
+		}
+
+		return undefined;
+	}
+
 	private async resolve_converters(
 		$ref:string
 	): Promise<{[key: string]: [SchemaObject, unknown]}> {
@@ -117,66 +178,5 @@ export class ObjectExtendsButHasNoAdditionalProperties extends ConvertsObject<
 		}
 
 		return property_converters;
-	}
-
-	async convert_object(
-		schema: object_extends_but_has_no_additional_properties,
-		raw_data: {
-			[key: string]: unknown; }
-	): Promise<{ [key: string]: unknown; }
-	> {
-		const $ref = schema.$ref.substring(14);
-
-		const property_converters = await this.resolve_converters($ref);
-
-		if (
-			Object.keys(property_converters).length > 0
-		) {
-			return Object.fromEntries(await Promise.all(Object.entries(
-				raw_data
-			).map(
-				async (e) : Promise<[string, unknown]> => {
-					const [property, value] = e;
-
-					if (
-						property in property_converters
-						&& (
-							property_converters[
-								property
-							][1] instanceof ConvertsUnknown
-						)
-					) {
-						const [
-							schema,
-							converter,
-						] = property_converters[property] as [
-							SchemaObject,
-							ConvertsUnknown<unknown, unknown>,
-						];
-
-						return [
-							property,
-							await converter.convert_unknown(
-								schema,
-								value,
-							),
-						];
-					}
-
-					return [property, value];
-				}
-			)));
-		}
-
-		return raw_data;
-	}
-
-	async matches(schema:unknown)
-	{
-		if ((await this.check)(schema)) {
-			return new RawGenerationResult(this);
-		}
-
-		return undefined;
 	}
 }
