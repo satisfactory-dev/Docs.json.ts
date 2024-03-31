@@ -83,17 +83,12 @@ export class ImportTracker {
 			}
 
 			if (Object.keys(merge_here).length) {
-				this.set_imports(
-					filename,
-					Object.entries(merge_here).map((unpack) => {
+				this.imports[filename] = Object.entries(merge_here).map(
+					(unpack) => {
 						return {from: unpack[0], import_these: unpack[1]};
-					})
+					}
 				);
 			}
 		}
-	}
-
-	set_imports(file: string, imports: imports_shorthand) {
-		this.imports[file] = imports;
 	}
 }
