@@ -1,21 +1,16 @@
 import Ajv, {
 	SchemaObject,
-	ValidateFunction,
 } from 'ajv/dist/2020';
 import {
-	is_string,
 	local_ref,
 } from '../../StringStartsWith';
 import {
-	ConvertsUnknown,
-	ExpressionResult, RawGenerationResult,
+	DoubleCheckedStringSchema,
+	ExpressionResult,
 } from '../Generator';
 import {
 	DataDiscovery,
 } from '../../DataDiscovery';
-import {
-	NoMatchError,
-} from '../../Exceptions';
 import ts from 'typescript';
 
 const schema = {
@@ -37,24 +32,19 @@ type schema_type = SchemaObject & {
 	>
 };
 
-export class BooleanOrBooleanExtended extends ConvertsUnknown<
-	unknown,
-	ExpressionResult,
-	schema_type
-> {
-	private readonly check:ValidateFunction<schema_type>;
-	private readonly double_check:ValidateFunction<{
+export class BooleanOrBooleanExtended extends DoubleCheckedStringSchema<
+	schema_type,
+	{
 		type: 'string',
 		enum: [string, ...string[]],
-	}>;
-
+	}
+> {
 	constructor(discovery:DataDiscovery, ajv:Ajv) {
-		super(discovery);
-		this.check = ajv.compile<schema_type>(schema);
-		this.double_check = ajv.compile<{
-			type: 'string',
-			enum: [string, ...string[]],
-		}>({
+		super(
+			discovery,
+			ajv,
+			schema,
+			{
 			type: 'object',
 			required: ['type', 'enum'],
 			additionalProperties: false,
@@ -71,26 +61,19 @@ export class BooleanOrBooleanExtended extends ConvertsUnknown<
 					]},
 				},
 			},
-		});
+			}
+		);
 	}
 
-	async convert_unknown(
-		schema: schema_type,
-		raw_data: unknown
-	): Promise<ExpressionResult> {
-		if (!is_string(raw_data)) {
-			throw new NoMatchError(raw_data, 'must be a string!');
-		}
+	protected double_check_failure_message(): string {
+		return 'Not a boolean schema!';
+	}
 
-		const $ref = schema.$ref.substring(14);
-
-		const definition = await this.discovery.docs.definition($ref);
-
-		if (!this.double_check(definition)) {
-			throw new NoMatchError(definition, 'Not a boolean schema!');
-		}
-
-		return new ExpressionResult(
+	protected expression_result(
+		definition: { type: 'string'; enum: [string, ...string[]]; },
+		raw_data: string
+	) {
+		return Promise.resolve(new ExpressionResult(
 			'' === raw_data
 				? ts.factory.createIdentifier('undefined')
 				: (
@@ -98,14 +81,6 @@ export class BooleanOrBooleanExtended extends ConvertsUnknown<
 						? ts.factory.createTrue()
 						: ts.factory.createFalse()
 				)
-		);
-	}
-
-	matches(raw_data: unknown) {
-		if (this.check(raw_data)) {
-			return Promise.resolve(new RawGenerationResult(this));
-		}
-
-		return Promise.resolve(undefined);
+		));
 	}
 }

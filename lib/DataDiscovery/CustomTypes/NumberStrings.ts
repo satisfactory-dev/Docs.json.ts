@@ -2,23 +2,16 @@ import {
 	SchemaObject,
 } from 'ajv/dist/2020';
 import {
-	ConvertsUnknown,
+	DoubleCheckedStringSchema,
 	ExpressionResult,
-	RawGenerationResult,
 } from '../Generator';
 import {
-	is_string,
 	local_ref,
 } from '../../StringStartsWith';
 import {
 	DataDiscovery,
 } from '../../DataDiscovery';
-import Ajv, {
-	ValidateFunction,
-} from 'ajv/dist/2020';
-import {
-	NoMatchError,
-} from '../../Exceptions';
+import Ajv from 'ajv/dist/2020';
 import ts from 'typescript';
 import {
 	create_literal,
@@ -48,23 +41,19 @@ export type schema_type = SchemaObject & {
 	>
 };
 
-export class NumberStrings extends ConvertsUnknown<
-	unknown,
-	ExpressionResult,
-	schema_type
-> {
-	private readonly check:ValidateFunction<schema_type>;
-	private readonly double_check:ValidateFunction<{
+export class NumberStrings extends DoubleCheckedStringSchema<
+	schema_type,
+	{
 		type: 'string',
 		pattern: string,
-	}>;
+	}
+> {
 	constructor(discovery:DataDiscovery, ajv:Ajv) {
-		super(discovery);
-		this.check = ajv.compile<schema_type>(schema);
-		this.double_check = ajv.compile<{
-			type: 'string',
-			pattern: string,
-		}>({
+		super(
+			discovery,
+			ajv,
+			schema,
+			{
 			type: 'object',
 			required: ['type', 'pattern'],
 			additionalProperties: false,
@@ -72,39 +61,26 @@ export class NumberStrings extends ConvertsUnknown<
 				type: {type: 'string', const: 'string'},
 				pattern: {type: 'string', minLength: 2},
 			},
-		});
+			}
+		);
 	}
 
-	async convert_unknown(
-		schema: schema_type,
-		raw_data: unknown
-	): Promise<ExpressionResult> {
-		if (!is_string(raw_data)) {
-			throw new NoMatchError(raw_data, 'must be a string!');
-		}
+	protected double_check_failure_message(): string {
+		return 'Not a pattern schema!';
+	}
 
-		const definition = await this.discovery.docs.definition(
-			schema.$ref.substring(14)
-		);
-
-		if (!this.double_check(definition)) {
-			throw new NoMatchError(definition, 'Not a pattern schema!');
-		}
-
-		return new ExpressionResult(ts.factory.createAsExpression(
+	protected expression_result(
+		definition: { type: 'string'; pattern: string; },
+		raw_data: string
+	): Promise<ExpressionResult<ts.Expression>> {
+		return Promise.resolve(new ExpressionResult(
+			ts.factory.createAsExpression(
 			ts.factory.createStringLiteral(raw_data),
 			type_reference_node(
 				'StringPassedRegExp',
 				create_literal(definition.pattern)
 			)
+			)
 		));
-	}
-
-	matches(raw_data: unknown) {
-		if (this.check(raw_data)) {
-			return Promise.resolve(new RawGenerationResult(this));
-		}
-
-		return Promise.resolve(undefined);
 	}
 }
