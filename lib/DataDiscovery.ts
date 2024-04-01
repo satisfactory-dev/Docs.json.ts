@@ -70,6 +70,7 @@ import {
 import {
 	RefToTypedObjectStringBasic,
 } from './DataDiscovery/CustomTypes/RefToTypedObjectString';
+import {Literal} from './DataDiscovery/Literal';
 
 type progress = {[p: string]: string[]};
 
@@ -154,7 +155,7 @@ export class DataDiscovery
 					node: create_const_statement(
 						variable(
 							adjust_class_name(item.ClassName),
-							await DataDiscovery.object_literal(item),
+							await Literal.object_literal(item),
 							Classes_type
 						)
 					),
@@ -165,7 +166,7 @@ export class DataDiscovery
 
 			const result_statement = create_const_statement(variable(
 				adjust_class_name(entry_class_name),
-				await DataDiscovery.object_literal({
+				await Literal.object_literal({
 					NativeClass: result.NativeClass,
 					Classes: result.Classes.map(
 						e => new ExpressionResult(
@@ -240,60 +241,5 @@ export class DataDiscovery
 				);
 			}).join('\n\n')}
 		`);
-	}
-
-	static async object_literal(
-		from:{[key: string]: unknown},
-	): Promise<ObjectLiteralExpression> {
-		return ts.factory.createObjectLiteralExpression(
-			await Promise.all(Object.entries(from).map(async (entry) => {
-				try {
-					const value = this.value_literal(entry[1]);
-
-					return ts.factory.createPropertyAssignment(
-						property_name_or_computed(entry[0]),
-						await value
-					);
-				} catch (error) {
-					throw new NoMatchError(
-						{
-							property: entry[0],
-							original_value: entry[1],
-							error,
-						},
-						'Failed to convert property value!'
-					);
-				}
-			}))
-		);
-	}
-
-	static async value_literal(from: unknown) : Promise<
-		| StringLiteral
-		| TrueLiteral
-		| FalseLiteral
-		| Identifier
-		| ArrayLiteralExpression
-		| Expression
-		| ObjectLiteralExpression
-	> {
-		from = from instanceof GenerationResult ? await from.result() : from;
-
-		if (is_string(from)) {
-			return ts.factory.createStringLiteral(from);
-		} else if (from instanceof ExpressionResult) {
-			return (from as ExpressionResult).expression;
-		} if (value_is_non_array_object(from)) {
-			return await this.object_literal(from);
-		} else if ('boolean' === typeof from) {
-			return from ? ts.factory.createTrue():ts.factory.createFalse();
-		} else if (undefined === from) {
-			return ts.factory.createIdentifier('undefined');
-		} else if (!(from instanceof Array)) {
-			throw new NoMatchError(from, 'not an array!');
-		}
-		return ts.factory.createArrayLiteralExpression(
-			await Promise.all(from.map(e => this.value_literal(e)))
-		);
 	}
 }
