@@ -257,7 +257,7 @@ export class TypeDefinitionDiscovery
 				file: target_file,
 				node: ts.factory.createTypeAliasDeclaration(
 					create_modifiers('export'),
-					adjust_class_name($ref),
+					adjust_class_name(`${$ref}__type`),
 					undefined,
 					generator(await this.docs.definition($ref))
 				),

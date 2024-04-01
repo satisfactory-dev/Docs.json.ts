@@ -677,12 +677,7 @@ export class TypedObjectString {
 			property,
 			type_reference_node(
 				adjust_class_name(
-					`${reference_name}${
-						reference_name.startsWith('integer-string')
-						|| reference_name.startsWith('decimal-string')
-							? '__type'
-							: ''
-					}`
+					`${reference_name}__type`
 				)
 			),
 		];

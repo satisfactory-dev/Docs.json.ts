@@ -239,11 +239,11 @@ export class SpecificItemGenerator extends Base<
 				)
 			) {
 				Classes_type = type_reference_node(adjust_class_name(
-					(
+					`${(
 						this.schema.properties.Classes.items.$ref as local_ref<
 							string
 						>
-					).substring(14)
+					).substring(14)}__type`
 				));
 			}
 

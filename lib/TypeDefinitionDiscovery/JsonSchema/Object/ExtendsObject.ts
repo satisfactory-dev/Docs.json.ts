@@ -72,7 +72,7 @@ export class ExtendsObject extends GeneratorDoesDiscovery<RawData, Type>
 			} = raw_data;
 
 			const reference_type = ts.factory.createTypeReferenceNode(
-				adjust_class_name($ref.substring(14))
+				adjust_class_name(`${$ref.substring(14)}__type`)
 			);
 
 			if (undefined === properties) {
