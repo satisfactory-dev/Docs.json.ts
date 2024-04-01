@@ -14,9 +14,7 @@ import {
 import {
 	require_non_empty_array,
 } from '../../ArrayUtilities';
-import ts, {
-	Expression,
-} from 'typescript';
+import ts from 'typescript';
 import {
 	NoMatchError,
 } from '../../Exceptions';
@@ -74,7 +72,7 @@ export class RefToConst extends DoubleCheckedStringSchema<
 	protected expression_result(
 		definition: secondary_schema_type,
 		raw_data: string
-	): Promise<ExpressionResult<Expression>> {
+	): Promise<ExpressionResult> {
 		if (raw_data !== definition.const) {
 			throw new NoMatchError(
 				{
