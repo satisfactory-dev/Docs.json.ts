@@ -7,7 +7,6 @@ import {
 } from './MarkdownUtilities';
 import {
 	ExpressionResult,
-	GenerationResult,
 	Generator,
 } from './DataDiscovery/Generator';
 import {
@@ -17,28 +16,14 @@ import {
 	adjust_unrealengine_value,
 } from './CustomParsingTypes/UnrealEngineString';
 import {
-	is_string,
-} from './StringStartsWith';
-import {
-	value_is_non_array_object,
-} from './CustomParsingTypes/CustomPairingTypes';
-import {
 	NoMatchError,
 } from './Exceptions';
 import {
 	adjust_class_name,
 	create_const_statement, create_modifiers,
-	property_name_or_computed, type_reference_node, variable,
+	type_reference_node, variable,
 } from './TsFactoryWrapper';
-import ts, {
-	ArrayLiteralExpression,
-	Expression,
-	FalseLiteral,
-	Identifier,
-	ObjectLiteralExpression,
-	StringLiteral,
-	TrueLiteral,
-} from 'typescript';
+import ts from 'typescript';
 import {
 	UnrealEngineString,
 } from './TypeDefinitionDiscovery/CustomParsingTypes/UnrealEngineString';
@@ -70,7 +55,9 @@ import {
 import {
 	RefToTypedObjectStringBasic,
 } from './DataDiscovery/CustomTypes/RefToTypedObjectString';
-import {Literal} from './DataDiscovery/Literal';
+import {
+	Literal,
+} from './DataDiscovery/Literal';
 
 type progress = {[p: string]: string[]};
 
