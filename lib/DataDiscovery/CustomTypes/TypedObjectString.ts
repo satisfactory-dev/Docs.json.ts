@@ -29,9 +29,6 @@ import {
 import {
 	string_to_object,
 } from '../../DocsValidation';
-import {
-	Literal,
-} from '../Literal';
 
 export const schema_basic = {
 	type: 'object',
@@ -167,7 +164,7 @@ export class TypedObjectString_basic extends ConvertsUnknown<
 
 		try {
 			return new ExpressionResult(
-				await Literal.object_literal(converted)
+				await this.discovery.literal.object_literal(converted)
 			);
 		} catch (error) {
 			throw new NoMatchError(

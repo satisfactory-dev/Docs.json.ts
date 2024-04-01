@@ -73,10 +73,12 @@ export class DataDiscovery
 		Generator<known_DocsDataItem, known_DocsDataItem>[]
 	>;
 	public readonly docs:DocsTsGenerator;
+	public readonly literal:Literal;
 
-	constructor(docs:DocsTsGenerator, ajv:Ajv) {
+	constructor(docs:DocsTsGenerator, ajv:Ajv, literal?:Literal) {
 		super();
 		this.docs = docs;
+		this.literal = literal || new Literal();
 		this.docs_data_item_candidate = new DocsDataItemGenerator(this, ajv);
 		this.candidates = Promise.all([
 			new UnboundArray(this, ajv),
@@ -142,7 +144,7 @@ export class DataDiscovery
 					node: create_const_statement(
 						variable(
 							adjust_class_name(item.ClassName),
-							await Literal.object_literal(item),
+							await this.literal.object_literal(item),
 							Classes_type
 						)
 					),
@@ -153,7 +155,7 @@ export class DataDiscovery
 
 			const result_statement = create_const_statement(variable(
 				adjust_class_name(entry_class_name),
-				await Literal.object_literal({
+				await this.literal.object_literal({
 					NativeClass: result.NativeClass,
 					Classes: result.Classes.map(
 						e => new ExpressionResult(

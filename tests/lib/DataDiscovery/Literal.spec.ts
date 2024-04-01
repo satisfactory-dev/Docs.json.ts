@@ -21,15 +21,17 @@ import {
 } from '../../../lib/DataDiscovery/Literal';
 
 void describe('Literal.object_literal', () => {
+	const instance = new Literal();
+
 	void it('handles empty objects', async () => {
-		const foo = await Literal.object_literal({});
+		const foo = await instance.object_literal({});
 
 		TypeScriptAssert.isObjectLiteralExpression(foo);
 		array_has_size(foo.properties, 0);
 	});
 
 	void it('converts objects with non-number properties', async () => {
-		const foo = await Literal.object_literal({'foo': 'bar'});
+		const foo = await instance.object_literal({'foo': 'bar'});
 
 		TypeScriptAssert.isObjectLiteralExpression(foo);
 		array_has_size(foo.properties, 1);
@@ -45,7 +47,7 @@ void describe('Literal.object_literal', () => {
 
 	void it('doesn\'t convert numbers', async () => {
 		const random = Math.random();
-		const value = Literal.object_literal({foo: random});
+		const value = instance.object_literal({foo: random});
 		await assert.rejects(value);
 		let failure:unknown;
 		await value.catch((err) => {failure = err});
@@ -64,8 +66,10 @@ void describe('Literal.object_literal', () => {
 });
 
 void describe('Literal.value_literal', () => {
+	const instance = new Literal();
+
 	void it('converts strings to StringLiteral', async () => {
-		const value = await Literal.value_literal('foo');
+		const value = await instance.value_literal('foo');
 
 		TypeScriptAssert.isStringLiteral(value);
 		assert.equal(value.text, 'foo');
@@ -76,7 +80,7 @@ void describe('Literal.value_literal', () => {
 			ts.factory.createIdentifier('foo')
 		);
 
-		const value = await Literal.value_literal(
+		const value = await instance.value_literal(
 			expression_result
 		);
 
@@ -84,22 +88,22 @@ void describe('Literal.value_literal', () => {
 	});
 
 	void it('converts booleans', async () => {
-		const true_value = await Literal.value_literal(true);
-		const false_value = await Literal.value_literal(false);
+		const true_value = await instance.value_literal(true);
+		const false_value = await instance.value_literal(false);
 
 		TypeScriptAssert.isBooleanLiteral(true_value, true);
 		TypeScriptAssert.isBooleanLiteral(false_value, false);
 	});
 
 	void it('converts undefined', async () => {
-		const value = await Literal.value_literal(undefined);
+		const value = await instance.value_literal(undefined);
 
 		TypeScriptAssert.isIdentifier(value);
 		assert.equal(value.escapedText, 'undefined');
 	});
 
 	void it('converts arrays', async () => {
-		const value = await Literal.value_literal(['foo']);
+		const value = await instance.value_literal(['foo']);
 
 		TypeScriptAssert.isArrayLiteralExpression(value);
 		array_has_size(value.elements, 1);
@@ -108,12 +112,12 @@ void describe('Literal.value_literal', () => {
 	});
 
 	void it('converts objects', async () => {
-		const foo = await Literal.value_literal({});
+		const foo = await instance.value_literal({});
 
 		TypeScriptAssert.isObjectLiteralExpression(foo);
 		array_has_size(foo.properties, 0);
 
-		const bar = await Literal.value_literal({'foo': 'bar'});
+		const bar = await instance.value_literal({'foo': 'bar'});
 
 		TypeScriptAssert.isObjectLiteralExpression(bar);
 		array_has_size(bar.properties, 1);
@@ -121,7 +125,7 @@ void describe('Literal.value_literal', () => {
 
 	void it('doesn\'t convert numbers', async () => {
 		await assert.rejects(
-			Literal.value_literal(1),
+			instance.value_literal(1),
 			{
 				property: 1,
 				message: 'not an array!',
@@ -130,7 +134,7 @@ void describe('Literal.value_literal', () => {
 	});
 
 	void it('resolves GenerationResult', async () => {
-		const string_value = await Literal.value_literal(
+		const string_value = await instance.value_literal(
 			new RawGenerationResult('foo')
 		);
 
@@ -138,7 +142,7 @@ void describe('Literal.value_literal', () => {
 		assert.equal(string_value.text, 'foo');
 
 		await assert.rejects(
-			Literal.value_literal(
+			instance.value_literal(
 				new RawGenerationResult(2)
 			),
 			{

@@ -26,7 +26,7 @@ import ts, {
 
 export class Literal
 {
-	static async object_literal(
+	async object_literal(
 		from:{[key: string]: unknown},
 	): Promise<ObjectLiteralExpression> {
 		return ts.factory.createObjectLiteralExpression(
@@ -52,7 +52,7 @@ export class Literal
 		);
 	}
 
-	static async value_literal(from: unknown) : Promise<
+	async value_literal(from: unknown) : Promise<
 		| StringLiteral
 		| TrueLiteral
 		| FalseLiteral
