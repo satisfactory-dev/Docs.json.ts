@@ -107,7 +107,7 @@ export class TypedObjectString_basic extends ConvertsUnknown<
 			properties: schema.typed_object_string,
 		};
 
-		const check = this.shallow_schema<{[key: string]: unknown}>(
+		const check = this.ajv.compile<{[key: string]: unknown}>(
 			shallow_schema
 		);
 
@@ -184,21 +184,5 @@ export class TypedObjectString_basic extends ConvertsUnknown<
 		}
 
 		return Promise.resolve(undefined);
-	}
-
-	private shallow_schema<T>(
-		shallow_schema:SchemaObject
-	): ValidateFunction<T> {
-		try {
-			return this.ajv.compile<T>(shallow_schema);
-		} catch (error) {
-			throw new NoMatchError(
-				{
-					shallow_schema,
-					error,
-				},
-				'Could not compile schema!'
-			);
-		}
 	}
 }
