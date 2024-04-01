@@ -147,7 +147,7 @@ export class ObjectExtendsButHasNoAdditionalProperties extends ConvertsObject<
 					async (e) : Promise<[string, unknown]> => [
 						e[0],
 						await (await Base.find(
-							this.discovery.candidates,
+							await this.discovery.candidates,
 							e[1]
 						)).result(),
 					]

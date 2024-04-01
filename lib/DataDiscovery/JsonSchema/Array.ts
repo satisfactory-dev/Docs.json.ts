@@ -42,8 +42,8 @@ export class UnboundArray extends ConvertsArray<unknown> {
 
 	async convert_array(schema: unbound_array, raw_data:unknown[])
 	{
-		const converter = await (await Base.find(
-			this.discovery.candidates,
+		const converter:unknown = await (await Base.find(
+			await this.discovery.candidates,
 			schema.items
 		)).result();
 

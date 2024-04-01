@@ -61,8 +61,17 @@ import {
 import {
 	UnrealEngineString as UnrealEngineString_DataDiscovery,
 } from './DataDiscovery/CustomTypes/UnrealEngineString';
+import {
+	TypedObjectString_basic,
+} from './DataDiscovery/CustomTypes/TypedObjectString';
+import {
+	RefToConst,
+} from './DataDiscovery/CustomTypes/RefToConst';
+import {RefToTypedObjectStringBasic} from './DataDiscovery/CustomTypes/RefToTypedObjectString';
 
 type progress = {[p: string]: string[]};
+
+type known_DocsDataItem = Exclude<unknown, DocsDataItem>;
 
 export class DataDiscovery
 	extends FilesGenerator
@@ -70,23 +79,25 @@ export class DataDiscovery
 {
 	private readonly docs_data_item_candidate:DocsDataItemGenerator;
 	private readonly progress:progress = {};
-	public readonly candidates:Generator<
-		Exclude<unknown, DocsDataItem>,
-		Exclude<unknown, DocsDataItem>
-	>[];
+	public readonly candidates:Promise<
+		Generator<known_DocsDataItem, known_DocsDataItem>[]
+	>;
 	public readonly docs:DocsTsGenerator;
 
 	constructor(docs:DocsTsGenerator, ajv:Ajv) {
 		super();
 		this.docs = docs;
 		this.docs_data_item_candidate = new DocsDataItemGenerator(this, ajv);
-		this.candidates = [
+		this.candidates = Promise.all([
 			new UnboundArray(this, ajv),
 			new ObjectExtendsButHasNoAdditionalProperties(this, ajv),
 			new NumberStrings(this, ajv),
 			new BooleanOrBooleanExtended(this, ajv),
 			new UnrealEngineString_DataDiscovery(this),
-		];
+			new TypedObjectString_basic(this, ajv),
+			RefToConst.from_definitions(this, ajv),
+			RefToTypedObjectStringBasic.from_definitions(this, ajv),
+		]);
 	}
 
 	async expecting() : Promise<progress>
@@ -234,12 +245,23 @@ export class DataDiscovery
 	): Promise<ObjectLiteralExpression> {
 		return ts.factory.createObjectLiteralExpression(
 			await Promise.all(Object.entries(from).map(async (entry) => {
+				try {
 				const value = this.value_literal(entry[1]);
 
 				return ts.factory.createPropertyAssignment(
 					property_name_or_computed(entry[0]),
 					await value
 				);
+				} catch (error) {
+					throw new NoMatchError(
+						{
+							property: entry[0],
+							original_value: entry[1],
+							error,
+						},
+						'Failed to convert property value!'
+					);
+				}
 			}))
 		);
 	}
