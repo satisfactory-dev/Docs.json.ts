@@ -19,8 +19,28 @@ import {
 } from '../../../../lib/DataDiscovery/CustomTypes/TypedObjectString';
 import {
 	array_has_size,
+	is_instanceof,
+	not_undefined,
 	object_has_property,
 } from '../../../../assert/CustomAssert';
+import {
+	Literal,
+} from '../../../../lib/DataDiscovery/Literal';
+import {
+	ObjectLiteralExpression,
+} from 'typescript';
+import {
+	NoMatchError,
+} from '../../../../lib/Exceptions';
+import {
+	isAsExpression,
+	isIdentifier,
+	isLiteralTypeNode,
+	isObjectLiteralExpression,
+	isPropertyAssignment,
+	isStringLiteral,
+	isTypeReferenceNode,
+} from '../../../../assert/TypeScriptAssert';
 
 const test_schema:schema_basic_type = {
 	type: 'string',
@@ -100,6 +120,73 @@ void describe('TypedObjectString_basic.convert_unknown', () => {
 				},
 			},
 		});
+	});
+
+	void it('converts when expected', async () => {
+		const random = Math.random().toFixed(6);
+		const test = instance.convert_unknown(
+			{
+				type: 'string',
+				minLength: 1,
+				typed_object_string: {
+					foo: {$ref: '#/definitions/decimal-string'},
+				},
+			},
+			`(foo=${random})`
+		);
+		await assert.doesNotReject(test);
+		const {expression} = await test;
+		isObjectLiteralExpression(expression);
+		array_has_size(expression.properties, 1);
+		isPropertyAssignment(expression.properties[0]);
+		isIdentifier(expression.properties[0].name);
+		assert.equal(expression.properties[0].name.text, 'foo');
+		isAsExpression(expression.properties[0].initializer);
+		isStringLiteral(expression.properties[0].initializer.expression);
+		assert.equal(
+			expression.properties[0].initializer.expression.text,
+			random
+		);
+		isTypeReferenceNode(expression.properties[0].initializer.type);
+		isIdentifier(expression.properties[0].initializer.type.typeName);
+		assert.equal(
+			expression.properties[0].initializer.type.typeName.escapedText,
+			'StringPassedRegExp'
+		);
+		not_undefined(expression.properties[0].initializer.type.typeArguments);
+		const type_arguments =
+			expression.properties[0].initializer.type.typeArguments
+		;
+		array_has_size(type_arguments, 1);
+		isLiteralTypeNode(type_arguments[0]);
+		isStringLiteral(type_arguments[0].literal);
+		assert.equal(type_arguments[0].literal.text, '^\\d+\\.\\d{6}$');
+	});
+
+	void it('catches literal.object_literal() exceptions', async () => {
+		const override = new class extends Literal {
+			object_literal(): Promise<ObjectLiteralExpression> {
+				throw new Error('foo');
+			}
+		};
+		const discovery = new DataDiscovery(docs, ajv, override);
+		const instance = new TypedObjectString_basic(discovery, ajv);
+		let failure:unknown;
+		const test = instance.convert_unknown(
+			{
+				type: 'string',
+				minLength: 1,
+				typed_object_string: {
+					foo: {$ref: '#/definitions/decimal-string'},
+				},
+			},
+			'(foo=1.234567)'
+		);
+		await assert.rejects(test);
+		await test.catch((err) => {failure = err});
+		not_undefined(failure);
+		is_instanceof<NoMatchError>(failure, NoMatchError);
+		assert.equal(failure.message, 'Failed to grab object literal!');
 	});
 });
 
