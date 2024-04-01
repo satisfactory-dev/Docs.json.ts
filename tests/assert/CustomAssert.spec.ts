@@ -6,7 +6,7 @@ import assert from 'node:assert/strict';
 import {
 	array_has_size,
 	is_instanceof,
-	not_undefined,
+	not_undefined, object_has_property,
 	value_matches_ExpressionResult,
 } from '../../assert/CustomAssert';
 import ts from 'typescript';
@@ -59,5 +59,16 @@ void describe('not_undefined', () => {
 	});
 	void it('does throw', () => {
 		assert.throws(() => not_undefined(undefined));
+	});
+});
+
+void describe('object_has_property', () => {
+	void it('does not throw', () => {
+		assert.doesNotThrow(() => object_has_property({foo: 1}, 'foo'));
+	});
+	void it('does throw', () => {
+		assert.throws(() => object_has_property(undefined, 'foo'));
+		assert.throws(() => object_has_property([], 'foo'));
+		assert.throws(() => object_has_property({bar: 1}, 'foo'));
 	});
 });

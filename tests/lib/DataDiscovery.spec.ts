@@ -12,7 +12,7 @@ import {
 } from '../../lib/DataDiscovery/Generator';
 import * as TypeScriptAssert from '../../assert/TypeScriptAssert';
 import {
-	array_has_size,
+	array_has_size, is_instanceof, object_has_property,
 	value_matches_ExpressionResult,
 } from '../../assert/CustomAssert';
 import {
@@ -29,6 +29,9 @@ import {
 	configure_ajv,
 } from '../../lib/DocsValidation';
 import Ajv from 'ajv/dist/2020';
+import {
+	NoMatchError,
+} from '../../lib/Exceptions';
 
 const __dirname = __dirname_from_meta(import.meta);
 
@@ -57,13 +60,21 @@ void describe('DataDiscovery.object_literal', () => {
 
 	void it('doesn\'t convert numbers', async () => {
 		const random = Math.random();
-		await assert.rejects(
-			DataDiscovery.object_literal({foo: random}),
-			{
-				property: random,
-				message: 'not an array!',
-			}
-		);
+		const value = DataDiscovery.object_literal({foo: random});
+		await assert.rejects(value);
+		let failure:unknown;
+		await value.catch((err) => {failure = err});
+		is_instanceof<NoMatchError>(failure, NoMatchError);
+		object_has_property(failure.property, 'error');
+		is_instanceof<NoMatchError>(failure.property.error, NoMatchError);
+		assert.equal(failure.property.error.message, 'not an array!');
+		assert.deepEqual(failure.property.error.property, random);
+		delete failure.property.error;
+		assert.equal(failure.message, 'Failed to convert property value!');
+		assert.deepEqual(failure.property, {
+			original_value: random,
+			property: 'foo',
+		});
 	});
 });
 
