@@ -67,7 +67,9 @@ import {
 import {
 	RefToConst,
 } from './DataDiscovery/CustomTypes/RefToConst';
-import {RefToTypedObjectStringBasic} from './DataDiscovery/CustomTypes/RefToTypedObjectString';
+import {
+	RefToTypedObjectStringBasic,
+} from './DataDiscovery/CustomTypes/RefToTypedObjectString';
 
 type progress = {[p: string]: string[]};
 
@@ -246,12 +248,12 @@ export class DataDiscovery
 		return ts.factory.createObjectLiteralExpression(
 			await Promise.all(Object.entries(from).map(async (entry) => {
 				try {
-				const value = this.value_literal(entry[1]);
+					const value = this.value_literal(entry[1]);
 
-				return ts.factory.createPropertyAssignment(
-					property_name_or_computed(entry[0]),
-					await value
-				);
+					return ts.factory.createPropertyAssignment(
+						property_name_or_computed(entry[0]),
+						await value
+					);
 				} catch (error) {
 					throw new NoMatchError(
 						{

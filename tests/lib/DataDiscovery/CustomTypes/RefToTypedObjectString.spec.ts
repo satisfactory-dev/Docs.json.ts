@@ -12,7 +12,6 @@ import {
 } from '../../../../lib/DocsValidation';
 import {
 	isObjectLiteralExpression,
-	isStringLiteral,
 } from '../../../../assert/TypeScriptAssert';
 import {
 	docs,
