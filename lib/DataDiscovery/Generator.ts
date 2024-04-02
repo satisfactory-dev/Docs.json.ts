@@ -4,7 +4,7 @@ import {
 import {
 	DataDiscovery,
 } from '../DataDiscovery';
-import Ajv, {
+import {
 	SchemaObject,
 	ValidateFunction,
 } from 'ajv/dist/2020';
@@ -165,13 +165,12 @@ export abstract class DoubleCheckedSchema<
 
 	protected constructor(
 		discovery: DataDiscovery,
-		ajv: Ajv,
 		primary: SchemaObject,
 		secondary: SchemaObject
 	) {
 		super(discovery);
-		this.check = ajv.compile<Primary>(primary);
-		this.double_check = ajv.compile<Secondary>(secondary);
+		this.check = discovery.docs.ajv.compile<Primary>(primary);
+		this.double_check = discovery.docs.ajv.compile<Secondary>(secondary);
 	}
 
 	async convert_unknown(

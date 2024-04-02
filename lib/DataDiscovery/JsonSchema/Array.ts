@@ -7,7 +7,7 @@ import {
 import {
 	DataDiscovery,
 } from '../../DataDiscovery';
-import Ajv, {
+import {
 	SchemaObject,
 	ValidateFunction,
 } from 'ajv/dist/2020';
@@ -22,13 +22,11 @@ export type unbound_array = SchemaObject & {
 };
 
 export class UnboundArray extends ConvertsArray<unknown> {
-	private readonly ajv:Ajv;
 	public readonly check:ValidateFunction<unbound_array>;
 
-	constructor(discovery:DataDiscovery, ajv:Ajv) {
+	constructor(discovery:DataDiscovery) {
 		super(discovery);
-		this.ajv = ajv;
-		this.check = ajv.compile<unbound_array>({
+		this.check = discovery.docs.ajv.compile<unbound_array>({
 			type: 'object',
 			required: ['type', 'minItems', 'items'],
 			additionalProperties: false,

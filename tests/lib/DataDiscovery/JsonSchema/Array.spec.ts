@@ -3,14 +3,10 @@ import {
 	it,
 } from 'node:test';
 import assert from 'node:assert/strict';
-import Ajv from 'ajv/dist/2020';
 import {
 	unbound_array as unbound_array_schema_type,
 	UnboundArray,
 } from '../../../../lib/DataDiscovery/JsonSchema/Array';
-import {
-	configure_ajv,
-} from '../../../../lib/DocsValidation';
 import {
 	docs,
 } from '../../../fixtures/Docs';
@@ -25,11 +21,8 @@ import {
 } from '../../../../lib/DataDiscovery';
 
 void describe('UnboundArray', () => {
-	const ajv = new Ajv({verbose: true});
-	configure_ajv(ajv);
 	const unbound_array = new UnboundArray(
-		new DataDiscovery(docs, ajv),
-		ajv
+		new DataDiscovery(docs)
 	);
 
 	void it('matches only against array schema with no maxItems', async () => {

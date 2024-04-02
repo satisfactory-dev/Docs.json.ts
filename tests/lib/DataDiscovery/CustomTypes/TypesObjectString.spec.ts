@@ -6,10 +6,6 @@ import assert from 'node:assert/strict';
 import {
 	DataDiscovery,
 } from '../../../../lib/DataDiscovery';
-import Ajv from 'ajv/dist/2020';
-import {
-	configure_ajv,
-} from '../../../../lib/DocsValidation';
 import {
 	docs,
 } from '../../../fixtures/Docs';
@@ -51,10 +47,8 @@ const test_schema:schema_basic_type = {
 };
 
 void describe('TypedObjectString_basic.convert_unknown', () => {
-	const ajv = new Ajv({verbose: true});
-	configure_ajv(ajv);
-	const discovery = new DataDiscovery(docs, ajv);
-	const instance = new TypedObjectString_basic(discovery, ajv);
+	const discovery = new DataDiscovery(docs);
+	const instance = new TypedObjectString_basic(discovery);
 
 	void it ('throws on non-string values', async () => {
 		await assert.rejects(
@@ -169,8 +163,8 @@ void describe('TypedObjectString_basic.convert_unknown', () => {
 				throw new Error('foo');
 			}
 		};
-		const discovery = new DataDiscovery(docs, ajv, override);
-		const instance = new TypedObjectString_basic(discovery, ajv);
+		const discovery = new DataDiscovery(docs, override);
+		const instance = new TypedObjectString_basic(discovery);
 		let failure:unknown;
 		const test = instance.convert_unknown(
 			{
@@ -191,10 +185,8 @@ void describe('TypedObjectString_basic.convert_unknown', () => {
 });
 
 void describe('TypedObjectString_basic.no_matches', () => {
-	const ajv = new Ajv({verbose: true});
-	configure_ajv(ajv);
-	const discovery = new DataDiscovery(docs, ajv);
-	const instance = new TypedObjectString_basic(discovery, ajv);
+	const discovery = new DataDiscovery(docs);
+	const instance = new TypedObjectString_basic(discovery);
 
 	void it('resolves to itself', async () => {
 		assert.equal(

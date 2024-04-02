@@ -7,7 +7,7 @@ import {
 import {
 	DocsDataItem, DocsDataItem_Classes_entry,
 } from '../../DocsTsGenerator';
-import Ajv, {
+import {
 	SchemaObject,
 	ValidateFunction,
 } from 'ajv/dist/2020';
@@ -81,9 +81,11 @@ export class Generator extends Base<
 > {
 	private readonly prepare:Promise<SpecificItemGenerator[]>;
 
-	constructor(discovery:DataDiscovery, ajv:Ajv) {
+	constructor(discovery:DataDiscovery) {
 		super(discovery);
-		const check = ajv.compile<DocsDataItem_schema>({
+		const check = discovery.docs.ajv.compile<
+			DocsDataItem_schema
+		>({
 			type: 'object',
 			required: [
 				'type',
@@ -123,7 +125,7 @@ export class Generator extends Base<
 						definitions,
 					};
 
-					return new SpecificItemGenerator(discovery, ajv, schema);
+					return new SpecificItemGenerator(discovery, schema);
 				}));
 			}).catch(nope);
 		});
@@ -161,20 +163,18 @@ export class SpecificItemGenerator extends Base<
 
 	constructor(
 		discovery:DataDiscovery,
-		ajv:Ajv,
 		schema:DocsDataItem_schema
 	) {
 		super(discovery);
-		this.check = ajv.compile<DocsDataItem>(schema);
+		this.check = discovery.docs.ajv.compile<DocsDataItem>(schema);
 		this.schema = schema;
-		this.unbound_array = new UnboundArray(discovery, ajv);
+		this.unbound_array = new UnboundArray(discovery);
 		this.unreal_engine_string = new UnrealEngineString(discovery);
 		this.NativeClass_definition = this.discovery.docs.definition(
 			'NativeClass'
 		);
 		this.extends_$ref = new ObjectExtendsButHasNoAdditionalProperties(
-			discovery,
-			ajv
+			discovery
 		);
 	}
 

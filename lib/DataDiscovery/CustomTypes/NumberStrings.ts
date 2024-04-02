@@ -11,7 +11,6 @@ import {
 import {
 	DataDiscovery,
 } from '../../DataDiscovery';
-import Ajv from 'ajv/dist/2020';
 import ts from 'typescript';
 import {
 	create_literal,
@@ -51,10 +50,9 @@ export class NumberStrings extends DoubleCheckedStringSchema<
 		pattern: string,
 	}
 > {
-	constructor(discovery:DataDiscovery, ajv:Ajv) {
+	constructor(discovery:DataDiscovery) {
 		super(
 			discovery,
-			ajv,
 			schema,
 			{
 				type: 'object',

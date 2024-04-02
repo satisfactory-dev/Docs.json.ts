@@ -6,10 +6,6 @@ import assert from 'node:assert/strict';
 import {
 	DataDiscovery,
 } from '../../../../lib/DataDiscovery';
-import Ajv from 'ajv/dist/2020';
-import {
-	configure_ajv,
-} from '../../../../lib/DocsValidation';
 import {
 	isObjectLiteralExpression,
 } from '../../../../assert/TypeScriptAssert';
@@ -21,12 +17,9 @@ import {
 } from '../../../../lib/DataDiscovery/CustomTypes/RefToTypedObjectString';
 
 void describe('RefToTypedObjectStringBasic .convert_unknown', async () => {
-	const ajv = new Ajv({verbose: true});
-	configure_ajv(ajv);
-	const discovery = new DataDiscovery(docs, ajv);
+	const discovery = new DataDiscovery(docs);
 	const instance = await RefToTypedObjectStringBasic.from_definitions(
-		discovery,
-		ajv
+		discovery
 	);
 
 	void it('throws', async () => {

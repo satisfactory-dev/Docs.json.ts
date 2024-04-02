@@ -10,10 +10,6 @@ import {
 import {
 	DataDiscovery,
 } from '../../../../lib/DataDiscovery';
-import Ajv from 'ajv/dist/2020';
-import {
-	configure_ajv,
-} from '../../../../lib/DocsValidation';
 import {
 	isBooleanLiteral,
 	isIdentifier,
@@ -29,11 +25,9 @@ import {
 } from '../../../fixtures/Docs';
 
 void describe('BooleanOrBooleanExtended.convert_unknown', async () => {
-	const ajv = new Ajv({verbose: true});
-	configure_ajv(ajv);
-	const discovery = new DataDiscovery(docs, ajv);
+	const discovery = new DataDiscovery(docs);
 	const {definitions: {NativeClass}} = await docs.schema();
-	const number_strings = new BooleanOrBooleanExtended(discovery, ajv);
+	const number_strings = new BooleanOrBooleanExtended(discovery);
 
 	void it('throws', async () => {
 		await assert.rejects(
@@ -89,13 +83,11 @@ void describe('BooleanOrBooleanExtended.convert_unknown', async () => {
 });
 
 void describe('BooleanOrBooleanExtended.matches', async () => {
-	const ajv = new Ajv({verbose: true});
-	configure_ajv(ajv);
-	const discovery = new DataDiscovery(docs, ajv);
+	const discovery = new DataDiscovery(docs);
 	const {definitions: {
 		NativeClass,
 	}} = await docs.schema();
-	const instance = new BooleanOrBooleanExtended(discovery, ajv);
+	const instance = new BooleanOrBooleanExtended(discovery);
 
 	void it('resolves undefined', async () => {
 		assert.equal(await instance.matches(NativeClass), undefined);

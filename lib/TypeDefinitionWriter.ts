@@ -112,7 +112,7 @@ export class TypeDefinitionWriter
 		docs: DocsTsGenerator,
 	) {
 		this.docs = docs;
-		this.data_discovery = new DataDiscovery(docs, docs.ajv);
+		this.data_discovery = new DataDiscovery(docs);
 	}
 
 	get discovery(): Promise<TypeDefinitionDiscovery>

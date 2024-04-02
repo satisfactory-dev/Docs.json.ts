@@ -1,4 +1,4 @@
-import Ajv, {
+import {
 	SchemaObject,
 } from 'ajv/dist/2020';
 import {
@@ -39,10 +39,9 @@ export class BooleanOrBooleanExtended extends DoubleCheckedStringSchema<
 		enum: [string, ...string[]],
 	}
 > {
-	constructor(discovery:DataDiscovery, ajv:Ajv) {
+	constructor(discovery:DataDiscovery) {
 		super(
 			discovery,
-			ajv,
 			schema,
 			{
 				type: 'object',

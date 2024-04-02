@@ -10,20 +10,14 @@ import {
 	RawGenerationResult,
 } from '../../../lib/DataDiscovery/Generator';
 import {
-	configure_ajv,
-} from '../../../lib/DocsValidation';
-import {
 	DataDiscovery,
 } from '../../../lib/DataDiscovery';
-import Ajv from 'ajv/dist/2020';
 import {
 	docs,
 } from '../../fixtures/Docs';
 
 void describe('Generator.find', () => {
-	const ajv = new Ajv({verbose: true});
-	configure_ajv(ajv);
-	const discovery = new DataDiscovery(docs, ajv);
+	const discovery = new DataDiscovery(docs);
 
 	void it('resolves unmatched to raw', async () => {
 		assert.equal(
@@ -69,9 +63,7 @@ void describe('Generator.find', () => {
 });
 
 void describe('ConvertsArray.convert_unknown', () => {
-	const ajv = new Ajv({verbose: true});
-	configure_ajv(ajv);
-	const discovery = new DataDiscovery(docs, ajv);
+	const discovery = new DataDiscovery(docs);
 
 	const example = new class extends ConvertsArray<unknown> {
 		constructor() {
@@ -93,9 +85,7 @@ void describe('ConvertsArray.convert_unknown', () => {
 })
 
 void describe('ConvertsObject.convert_unknown', () => {
-	const ajv = new Ajv({verbose: true});
-	configure_ajv(ajv);
-	const discovery = new DataDiscovery(docs, ajv);
+	const discovery = new DataDiscovery(docs);
 
 	const example = new class extends ConvertsObject<unknown> {
 		constructor() {

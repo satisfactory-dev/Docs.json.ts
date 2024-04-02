@@ -3,10 +3,6 @@ import {
 	it,
 } from 'node:test';
 import assert from 'node:assert/strict';
-import Ajv from 'ajv/dist/2020';
-import {
-	configure_ajv,
-} from '../../../../lib/DocsValidation';
 import {
 	DataDiscovery,
 } from '../../../../lib/DataDiscovery';
@@ -45,11 +41,8 @@ const example_schema_decimal_string:
 	};
 
 void describe('ObjectExtendsButHasNoAdditionalProperties', () => {
-	const ajv = new Ajv({verbose: true});
-	configure_ajv(ajv);
 	const instance = new ObjectExtendsButHasNoAdditionalProperties (
-		new DataDiscovery(docs, ajv),
-		ajv
+		new DataDiscovery(docs)
 	);
 	void it('resolves to undefined only on non-matching schema', async () => {
 		assert.equal(

@@ -3,16 +3,12 @@ import {
 	it,
 } from 'node:test';
 import assert from 'node:assert/strict';
-import Ajv from 'ajv/dist/2020';
 import {
 	Generator,
 } from '../../../../lib/DataDiscovery/Update8/DocsDataItem';
 import {
 	DataDiscovery,
 } from '../../../../lib/DataDiscovery';
-import {
-	configure_ajv,
-} from '../../../../lib/DocsValidation';
 import {
 	docs,
 	skip_because_docs_dot_json_not_yet_bundled,
@@ -25,11 +21,8 @@ import {
 } from '../../../../lib/DataDiscovery/Generator';
 
 void describe('Generator', () => {
-	const ajv = new Ajv({verbose: true});
-	configure_ajv(ajv);
 	const instance = new Generator(
-		new DataDiscovery(docs, ajv),
-		ajv
+		new DataDiscovery(docs)
 	);
 
 	void it('resolves non-matching values to undefined', async () => {

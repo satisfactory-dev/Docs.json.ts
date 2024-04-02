@@ -7,7 +7,7 @@ import {
 import {
 	DataDiscovery,
 } from '../../DataDiscovery';
-import Ajv, {
+import {
 	SchemaObject,
 	ValidateFunction,
 } from 'ajv/dist/2020';
@@ -33,10 +33,10 @@ export class ObjectExtendsButHasNoAdditionalProperties extends ConvertsObject<
 		object_extends_but_has_no_additional_properties
 	>>;
 
-	constructor(discovery:DataDiscovery, ajv:Ajv) {
+	constructor(discovery:DataDiscovery) {
 		super(discovery);
 		this.check = discovery.docs.schema().then(({definitions}) => {
-			return ajv.compile<
+			return discovery.docs.ajv.compile<
 				object_extends_but_has_no_additional_properties
 			>({
 				type: 'object',

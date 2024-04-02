@@ -27,7 +27,6 @@ import ts from 'typescript';
 import {
 	UnrealEngineString,
 } from './TypeDefinitionDiscovery/CustomParsingTypes/UnrealEngineString';
-import Ajv from 'ajv/dist/2020';
 import {
 	Generator as DocsDataItemGenerator,
 } from './DataDiscovery/Update8/DocsDataItem';
@@ -75,20 +74,22 @@ export class DataDiscovery
 	public readonly docs:DocsTsGenerator;
 	public readonly literal:Literal;
 
-	constructor(docs:DocsTsGenerator, ajv:Ajv, literal?:Literal) {
+	constructor(docs:DocsTsGenerator, literal?:Literal) {
 		super();
 		this.docs = docs;
 		this.literal = literal || new Literal();
-		this.docs_data_item_candidate = new DocsDataItemGenerator(this, ajv);
+		this.docs_data_item_candidate = new DocsDataItemGenerator(
+			this
+		);
 		this.candidates = Promise.all([
-			new UnboundArray(this, ajv),
-			new ObjectExtendsButHasNoAdditionalProperties(this, ajv),
-			new NumberStrings(this, ajv),
-			new BooleanOrBooleanExtended(this, ajv),
+			new UnboundArray(this),
+			new ObjectExtendsButHasNoAdditionalProperties(this),
+			new NumberStrings(this),
+			new BooleanOrBooleanExtended(this),
 			new UnrealEngineString_DataDiscovery(this),
-			new TypedObjectString_basic(this, ajv),
-			RefToConst.from_definitions(this, ajv),
-			RefToTypedObjectStringBasic.from_definitions(this, ajv),
+			new TypedObjectString_basic(this),
+			RefToConst.from_definitions(this),
+			RefToTypedObjectStringBasic.from_definitions(this),
 		]);
 	}
 

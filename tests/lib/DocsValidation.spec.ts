@@ -156,7 +156,6 @@ void describe('configure_ajv', () => {
 	void it('Behaves when configured', () => {
 		const ajv = new Ajv();
 		configure_ajv(ajv);
-
 		for (const entry of test_keyword_schemas) {
 			const [schema, checks] = entry;
 

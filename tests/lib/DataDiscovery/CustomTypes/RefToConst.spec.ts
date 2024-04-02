@@ -6,10 +6,6 @@ import assert from 'node:assert/strict';
 import {
 	DataDiscovery,
 } from '../../../../lib/DataDiscovery';
-import Ajv from 'ajv/dist/2020';
-import {
-	configure_ajv,
-} from '../../../../lib/DocsValidation';
 import {
 	isStringLiteral,
 } from '../../../../assert/TypeScriptAssert';
@@ -21,10 +17,8 @@ import {
 } from '../../../../lib/DataDiscovery/CustomTypes/RefToConst';
 
 void describe('RefToConst.convert_unknown', async () => {
-	const ajv = new Ajv({verbose: true});
-	configure_ajv(ajv);
-	const discovery = new DataDiscovery(docs, ajv);
-	const instance = await RefToConst.from_definitions(discovery, ajv);
+	const discovery = new DataDiscovery(docs);
+	const instance = await RefToConst.from_definitions(discovery);
 
 	void it('throws', async () => {
 		await assert.rejects(

@@ -1,4 +1,4 @@
-import Ajv, {
+import {
 	SchemaObject,
 	ValidateFunction,
 } from 'ajv/dist/2020';
@@ -69,14 +69,14 @@ export class TypedObjectString_basic extends ConvertsUnknown<
 	ExpressionResult<ObjectLiteralExpression>,
 	schema_basic_type
 > {
-	private readonly ajv:Ajv;
 	private readonly check:ValidateFunction<schema_basic_type>;
 	private readonly definitions:Promise<{[key: string]: SchemaObject}>;
 
-	constructor(discovery:DataDiscovery, ajv:Ajv) {
+	constructor(discovery:DataDiscovery) {
 		super(discovery);
-		this.ajv = ajv;
-		this.check = ajv.compile<schema_basic_type>(schema_basic);
+		this.check = discovery.docs.ajv.compile<schema_basic_type>(
+			schema_basic
+		);
 		this.definitions = discovery.docs.schema().then(
 			({definitions}) => definitions
 		);
@@ -107,7 +107,9 @@ export class TypedObjectString_basic extends ConvertsUnknown<
 			properties: schema.typed_object_string,
 		};
 
-		const check = this.ajv.compile<{[key: string]: unknown}>(
+		const check = this.discovery.docs.ajv.compile<
+			{[key: string]: unknown}
+		>(
 			shallow_schema
 		);
 

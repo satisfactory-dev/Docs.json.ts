@@ -9,10 +9,6 @@ import {
 import {
 	DataDiscovery,
 } from '../../../../lib/DataDiscovery';
-import Ajv from 'ajv/dist/2020';
-import {
-	configure_ajv,
-} from '../../../../lib/DocsValidation';
 import {
 	isAsExpression,
 	isIdentifier,
@@ -30,11 +26,9 @@ import {
 } from '../../../fixtures/Docs';
 
 void describe('NumberStrings.convert_unknown', async () => {
-	const ajv = new Ajv({verbose: true});
-	configure_ajv(ajv);
-	const discovery = new DataDiscovery(docs, ajv);
+	const discovery = new DataDiscovery(docs);
 	const {definitions: {NativeClass}} = await docs.schema();
-	const number_strings = new NumberStrings(discovery, ajv);
+	const number_strings = new NumberStrings(discovery);
 
 	void it('throws', async () => {
 		await assert.rejects(
@@ -97,13 +91,11 @@ void describe('NumberStrings.convert_unknown', async () => {
 });
 
 void describe('NumberStrings.matches', async () => {
-	const ajv = new Ajv({verbose: true});
-	configure_ajv(ajv);
-	const discovery = new DataDiscovery(docs, ajv);
+	const discovery = new DataDiscovery(docs);
 	const {definitions: {
 		NativeClass,
 	}} = await docs.schema();
-	const number_strings = new NumberStrings(discovery, ajv);
+	const number_strings = new NumberStrings(discovery);
 
 	void it('resolves undefined', async () => {
 		assert.equal(await number_strings.matches(NativeClass), undefined);

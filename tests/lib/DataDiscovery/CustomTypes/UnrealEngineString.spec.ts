@@ -6,10 +6,6 @@ import assert from 'node:assert/strict';
 import {
 	UnrealEngineString,
 } from '../../../../lib/DataDiscovery/CustomTypes/UnrealEngineString';
-import Ajv from 'ajv/dist/2020';
-import {
-	configure_ajv,
-} from '../../../../lib/DocsValidation';
 import {
 	DataDiscovery,
 } from '../../../../lib/DataDiscovery';
@@ -36,9 +32,7 @@ const example_UnrealEngineString_value =
 	'/Script/CoreUObject.Class\'/Script/FactoryGame.Example\'';
 
 void describe('UnrealEngineString.convert_unknown()', () => {
-	const ajv = new Ajv({verbose: true});
-	configure_ajv(ajv);
-	const discovery = new DataDiscovery(docs, ajv);
+	const discovery = new DataDiscovery(docs);
 	const instance = new UnrealEngineString(discovery);
 
 	void it('converts the default UnrealEngineString', async () => {
@@ -151,9 +145,7 @@ void describe('UnrealEngineString.convert_unknown()', () => {
 });
 
 void describe('UnrealEngineString.matches()', () => {
-	const ajv = new Ajv({verbose: true});
-	configure_ajv(ajv);
-	const discovery = new DataDiscovery(docs, ajv);
+	const discovery = new DataDiscovery(docs);
 	const instance = new UnrealEngineString(discovery);
 
 	void it('matches', async () => {

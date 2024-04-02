@@ -5,7 +5,7 @@ import {
 import {
 	local_ref,
 } from '../../StringStartsWith';
-import Ajv, {
+import {
 	SchemaObject,
 } from 'ajv/dist/2020';
 import {
@@ -33,12 +33,10 @@ export class RefToTypedObjectStringBasic extends DoubleCheckedStringSchema<
 
 	protected constructor(
 		discovery:DataDiscovery,
-		ajv:Ajv,
 		refs:[local_ref<string>, ...local_ref<string>[]]
 	) {
 		super(
 			discovery,
-			ajv,
 			{
 				type: 'object',
 				required: ['$ref'],
@@ -52,7 +50,7 @@ export class RefToTypedObjectStringBasic extends DoubleCheckedStringSchema<
 			},
 			schema_basic
 		);
-		this.basic = new TypedObjectString_basic(discovery, ajv);
+		this.basic = new TypedObjectString_basic(discovery);
 	}
 
 	protected double_check_failure_message(): string {
@@ -66,17 +64,18 @@ export class RefToTypedObjectStringBasic extends DoubleCheckedStringSchema<
 		return this.basic.convert_unknown(definition, raw_data);
 	}
 
-	static async from_definitions(discovery:DataDiscovery, ajv:Ajv)
+	static async from_definitions(discovery:DataDiscovery)
 	{
 		const {definitions} = await discovery.docs.schema();
-		const check = ajv.compile<schema_basic_type>(schema_basic);
+		const check = discovery.docs.ajv.compile<schema_basic_type>(
+			schema_basic
+		);
 		const refs = Object.entries(definitions).filter(
 			maybe => check(maybe[1])
 		).map(e => e[0]).map(e => local_ref(e));
 
 		return new this(
 			discovery,
-			ajv,
 			require_non_empty_array<local_ref<string>>(refs)
 		);
 	}
