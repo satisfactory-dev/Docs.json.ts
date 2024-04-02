@@ -4,7 +4,7 @@
 		"../.eslintrc.json"
 	],
 	"parserOptions": {
-		"project": "../tsconfig.generated-types-check.json"
+		"project": "tsconfig.generated-types-check.json"
 	},
 	"rules": {
 		"max-len": "off",
