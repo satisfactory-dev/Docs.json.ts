@@ -7,10 +7,25 @@ import {
 import {
 	__dirname_from_meta,
 } from '../../lib/__dirname';
+import Ajv from 'ajv/dist/2020';
+import {
+	configure_ajv,
+} from '../../lib/DocsValidation';
 
 const __dirname = __dirname_from_meta(import.meta);
+const ajv = new Ajv({
+	verbose: true,
+	code: {
+		source: true,
+		es5: false,
+		esm: true,
+		optimize: true,
+	},
+});
+configure_ajv(ajv);
 
 export const docs = new DocsTsGenerator({
+	ajv,
 	docs_path: `${__dirname}/../../data/Docs.json`,
 	cache_path: `${__dirname}/../../data/`,
 });
