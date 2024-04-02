@@ -4,7 +4,6 @@ import ts, {
 import {
 	GeneratorDoesDiscovery,
 } from '../GeneratorDoesDiscovery';
-import Ajv from 'ajv/dist/2020';
 import {
 	TypeDefinitionDiscovery,
 } from '../../TypeDefinitionDiscovery';
@@ -55,9 +54,8 @@ export class oneOf_or_anyOf extends GeneratorDoesDiscovery<
 	RawData,
 	UnionTypeNode
 > {
-	constructor(ajv:Ajv, discovery:TypeDefinitionDiscovery) {
+	constructor(discovery:TypeDefinitionDiscovery) {
 		super(
-			ajv,
 			schema,
 			discovery
 		);

@@ -10,9 +10,24 @@ import {
 import {
 	NoMatchError,
 } from './lib/Exceptions';
+import Ajv from 'ajv/dist/2020';
+import {
+	configure_ajv,
+} from './lib/DocsValidation';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
+const ajv = new Ajv({
+	verbose: true,
+	code: {
+		source: true,
+		es5: false,
+		esm: true,
+		optimize: true,
+	},
+});
+configure_ajv(ajv);
 const generator = new DocsTsGenerator({
+	ajv,
 	docs_path: `${__dirname}/data/Docs.json`,
 	cache_path: `${__dirname}/data/`,
 });

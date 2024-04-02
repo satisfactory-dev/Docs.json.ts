@@ -1,4 +1,4 @@
-import Ajv, {
+import {
 	SchemaObject,
 } from 'ajv/dist/2020';
 import {
@@ -23,9 +23,6 @@ import {
 import {
 	non_array_object_property,
 } from './TypesDiscovery/non_array_object_property';
-import {
-	configure_ajv,
-} from './DocsValidation';
 import {
 	DocsDataItem, DocsTsGenerator,
 } from './DocsTsGenerator';
@@ -113,11 +110,8 @@ export class TypesDiscovery
 	}
 
 	static async generate_is_NativeClass(
-		ajv:Ajv,
 		docs:DocsTsGenerator
 	) {
-		configure_ajv(ajv);
-
 		const schema = await docs.schema();
 
 		if (!object_has_property(
@@ -136,7 +130,7 @@ export class TypesDiscovery
 			throw new Error('Could not find NativeClass on provided schema!');
 		}
 
-		return ajv.compile<DocsDataItem>({
+		return docs.ajv.compile<DocsDataItem>({
 			definitions: schema.definitions,
 			...schema.definitions.NativeClass,
 		});

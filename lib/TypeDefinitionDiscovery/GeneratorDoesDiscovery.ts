@@ -7,7 +7,7 @@ import {
 import {
 	TypeDefinitionDiscovery,
 } from '../TypeDefinitionDiscovery';
-import Ajv, {
+import {
 	SchemaObject,
 } from 'ajv/dist/2020';
 
@@ -18,11 +18,10 @@ export abstract class GeneratorDoesDiscovery<
 	protected readonly discovery:TypeDefinitionDiscovery;
 
 	protected constructor(
-		ajv: Ajv,
 		schema: SchemaObject,
 		discovery: TypeDefinitionDiscovery
 	) {
-		super(ajv, schema);
+		super(discovery.docs.ajv, schema);
 		this.discovery = discovery;
 	}
 }

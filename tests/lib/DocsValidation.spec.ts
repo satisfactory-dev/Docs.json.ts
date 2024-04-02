@@ -5,9 +5,7 @@ import {
 import assert from 'node:assert/strict';
 
 import {
-	ajv_is_configured,
 	configure_ajv,
-	default_config,
 	string_to_array,
 	string_to_native_type,
 	string_to_object,
@@ -19,19 +17,6 @@ import Ajv, {
 type definitions = {
 	[key: string]: ([string, unknown]|[string, unknown, unknown])[]
 };
-
-void describe('DefaultConfig', () => {
-	void it('getter', () => {
-		assert.notStrictEqual(default_config.ajv, default_config.ajv);
-	});
-	void it('setter', () => {
-		const default_ajv = default_config.ajv;
-		default_config.ajv = default_ajv;
-		assert.strictEqual(default_config.ajv, default_ajv);
-		default_config.clear();
-		assert.notStrictEqual(default_config.ajv, default_config.ajv);
-	});
-})
 
 const spec:{
 	string_to_array: definitions,
@@ -184,19 +169,4 @@ void describe('configure_ajv', () => {
 			}
 		}
 	});
-});
-
-
-void describe('ajv_is_configured', () => {
-	void it('not yet configured', () => {
-		const ajv = new Ajv();
-
-		assert.strictEqual(ajv_is_configured(ajv), false);
-
-		configure_ajv(ajv);
-
-		assert.strictEqual(ajv_is_configured(ajv), true);
-
-		assert.strictEqual(ajv_is_configured(default_config.ajv), true);
-	})
 });

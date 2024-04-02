@@ -1,4 +1,3 @@
-import Ajv from 'ajv/dist/2020';
 import {
 	TypesDiscovery,
 } from './TypesDiscovery';
@@ -10,9 +9,6 @@ import {
 	unlink,
 	writeFile,
 } from 'node:fs/promises';
-import {
-	configure_ajv,
-} from './DocsValidation';
 import {
 	ObjectType,
 } from './TypeDefinitionDiscovery/JsonSchema/ObjectType';
@@ -109,18 +105,14 @@ export class TypeDefinitionWriter
 		| Promise<TypeDefinitionDiscovery>
 		| undefined = undefined;
 	private prepared = false;
-	private readonly ajv:Ajv;
 	private readonly data_discovery:DataDiscovery;
 	private readonly docs:DocsTsGenerator;
 
 	constructor(
-		ajv:Ajv,
 		docs: DocsTsGenerator,
 	) {
-		configure_ajv(ajv);
-		this.ajv = ajv;
 		this.docs = docs;
-		this.data_discovery = new DataDiscovery(docs, ajv);
+		this.data_discovery = new DataDiscovery(docs, docs.ajv);
 	}
 
 	get discovery(): Promise<TypeDefinitionDiscovery>
@@ -131,15 +123,14 @@ export class TypeDefinitionWriter
 				AnyGenerator
 			>([
 				...TypeDefinitionDiscovery.standard_jsonschema_discovery(
-					this.ajv
+					this.docs.ajv
 				),
 				...TypeDefinitionDiscovery.custom_parsing_discovery(
-					this.ajv
+					this.docs.ajv
 				),
 			]);
 			this._discovery = Promise.resolve(schema.then((schema) => {
 				return new TypeDefinitionDiscovery(
-					this.ajv,
 					schema,
 					[
 						...TypesDiscovery.standard_jsonschema_discovery(
@@ -202,7 +193,7 @@ export class TypeDefinitionWriter
 		}
 
 		const validations = types.found_classes.map(
-			e => this.ajv.compile<DocsDataItem>(
+			e => this.docs.ajv.compile<DocsDataItem>(
 				{
 					definitions: schema.definitions,
 					...e,
@@ -222,10 +213,8 @@ export class TypeDefinitionWriter
 			[
 				discovery,
 				new DocsFiles(
-					this.docs,
 					validations,
-					discovery,
-					this.ajv
+					discovery
 				),
 				new FromArray([
 					...legacy_UnrealEngineString_module.CustomGenerators(),
@@ -428,24 +417,21 @@ export class TypeDefinitionWriter
 			).discovered_types;
 
 			discovery.add_candidates(
-				new ObjectType(this.ajv, discovery),
+				new ObjectType(discovery),
 				new ArrayType(
-					this.ajv,
 					discovered_types,
 					discovery
 				),
 				new ExtendsObject(
-					this.ajv,
 					discovered_types,
 					discovery
 				),
 				new typed_object_string(
-					this.ajv,
 					discovered_types,
 					discovery
 				),
-				new typed_array_string(this.ajv, discovery),
-				new oneOf_or_anyOf(this.ajv, discovery),
+				new typed_array_string(discovery),
+				new oneOf_or_anyOf(discovery),
 			);
 		}
 	}

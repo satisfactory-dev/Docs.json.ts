@@ -8,7 +8,6 @@ import ts, {
 import {
 	TypeDefinitionDiscovery,
 } from '../../TypeDefinitionDiscovery';
-import Ajv from 'ajv/dist/2020';
 import {
 	minimum_size_array_of_single_type,
 } from '../../TsFactoryWrapper';
@@ -51,9 +50,8 @@ export class typed_array_string extends GeneratorDoesDiscovery<
 	typed_array_string_RawData,
 	TupleTypeNode|ArrayTypeNode
 > {
-	constructor(ajv: Ajv, discovery:TypeDefinitionDiscovery) {
+	constructor(discovery:TypeDefinitionDiscovery) {
 		super(
-			ajv,
 			schema,
 			discovery
 		);
