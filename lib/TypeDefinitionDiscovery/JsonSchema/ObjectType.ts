@@ -2,7 +2,6 @@ import ts, {
 	IntersectionTypeNode,
 	TypeLiteralNode, TypeReferenceNode,
 } from 'typescript';
-import Ajv from 'ajv/dist/2020';
 import {
 	TypeDefinitionDiscovery,
 } from '../../TypeDefinitionDiscovery';
@@ -81,8 +80,8 @@ export class ObjectType extends GeneratorDoesDiscovery<
 	RawData,
 	possible
 > {
-	constructor(ajv:Ajv, discovery:TypeDefinitionDiscovery) {
-		super(ajv, schema, discovery);
+	constructor(discovery:TypeDefinitionDiscovery) {
+		super(schema, discovery);
 	}
 
 	generate() {

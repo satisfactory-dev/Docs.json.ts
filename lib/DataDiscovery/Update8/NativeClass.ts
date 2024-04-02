@@ -40,28 +40,25 @@ export class NativeClass extends Generator<
 	DocsDataItem,
 	unknown
 > {
-	private readonly ajv:Ajv;
 	private readonly data_transformer:DataTransformer;
 	private readonly discovery:DataTransformerDiscovery;
 	private readonly items:items;
 	constructor(
 		check:ValidateFunction<DocsDataItem>,
 		discovery:DataTransformerDiscovery,
-		ajv: Ajv,
 		data_transformer:DataTransformer
 	) {
 		super(check);
-		this.ajv = ajv;
 		this.discovery = discovery;
-		this.items = new items(ajv, data_transformer);
+		this.items = new items(data_transformer.docs.ajv);
 		this.data_transformer = data_transformer;
 	}
 
 	async generate() {
 		const root_schema =
-			await this.discovery.discovery.type_checked_schema();
+			await this.data_transformer.type_checked_schema();
 		return async (raw_data:DocsDataItem) => {
-			const schema = await this.discovery.discovery.find_matching_schema(
+			const schema = await this.data_transformer.find_matching_schema(
 				raw_data
 			);
 
@@ -244,7 +241,6 @@ export class NativeClass extends Generator<
 		Classes_schema:{items: {properties: {[key: string]: unknown}}}
 	) {
 		return NativeClassResult.with_result(
-			this.ajv,
 			Classes_schema,
 			Object.fromEntries(await Promise.all(Object.entries(
 				Classes_schema.items.properties
@@ -283,17 +279,14 @@ export class NativeClass extends Generator<
 	}
 
 	static async fromTypesDiscovery(
-		ajv:Ajv,
 		data_transformer: DataTransformer,
 		docs: DocsTsGenerator
 	) {
 		return new this(
 			await TypesDiscovery.generate_is_NativeClass(
-				ajv,
 				docs
 			),
 			data_transformer.data,
-			ajv,
 			data_transformer
 		);
 	}
@@ -322,13 +315,12 @@ class NativeClassResult extends SchemaCompilingGenerator<
 	}
 
 	static async with_result(
-		ajv:Ajv,
 		schema:SchemaObject & {items: SchemaObject},
 		result:{[key: string]: (raw_data:unknown) => unknown},
 		discovery: DataTransformer
 	) {
 		return new this(
-			ajv,
+			discovery.docs.ajv,
 			{
 				definitions: (
 					await discovery.type_checked_schema()

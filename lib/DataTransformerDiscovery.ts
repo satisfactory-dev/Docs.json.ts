@@ -7,7 +7,6 @@ import {
 import {
 	DataTransformer,
 } from './DataTransformer';
-import Ajv from 'ajv/dist/2020';
 import {
 	items, items_type,
 } from './DataDiscovery/JsonSchema/Array/items';
@@ -36,18 +35,15 @@ export class DataTransformerDiscovery
 	private readonly items:items;
 	private readonly oneOf:oneOf;
 	private readonly prefixItems:prefixItems;
-	public readonly discovery:DataTransformer;
 
 	constructor(
-		ajv: Ajv,
 		discovery:DataTransformer,
 	) {
-		this.discovery = discovery;
-		this.$ref = $ref.fromDataDiscovery(ajv, discovery);
-		this.items = new items(ajv, discovery);
-		this.oneOf = new oneOf(ajv, discovery);
-		this.anyOf = new anyOf(ajv);
-		this.prefixItems = new prefixItems(ajv, discovery);
+		this.$ref = $ref.fromDataDiscovery(discovery);
+		this.items = new items(discovery.docs.ajv);
+		this.oneOf = new oneOf(discovery);
+		this.anyOf = new anyOf(discovery.docs.ajv);
+		this.prefixItems = new prefixItems(discovery.docs.ajv);
 	}
 
 	add_generators(...generators:AnyGenerator[])

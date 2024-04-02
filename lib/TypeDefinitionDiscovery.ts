@@ -144,16 +144,14 @@ export class TypeDefinitionDiscovery
 	private $ref_discovery:
 		| Promise<ref_discovery_type>
 		| undefined;
-	private readonly ajv:Ajv;
 	private readonly candidates: [
 		AnyGenerator,
 		...AnyGenerator[],
 	];
-	private readonly docs:DocsTsGenerator;
+	public readonly docs:DocsTsGenerator;
 	public readonly types_discovery:TypesDiscovery;
 
 	constructor(
-		ajv:Ajv,
 		json:{[key: string]: unknown},
 		types_discovery: [
 			CandidatesDiscovery,
@@ -166,7 +164,6 @@ export class TypeDefinitionDiscovery
 		docs:DocsTsGenerator
 	) {
 		super();
-		this.ajv = ajv;
 		this.types_discovery = new TypesDiscovery(types_discovery, docs);
 		this.candidates = type_definition_discover;
 		this.docs = docs;
@@ -424,7 +421,7 @@ export class TypeDefinitionDiscovery
 			'prefixItems',
 			value_is_non_array_object,
 		)) {
-			const native_class = this.ajv.compile<{
+			const native_class = this.docs.ajv.compile<{
 				type: 'object',
 				$ref: '#/definitions/NativeClass',
 				properties: {

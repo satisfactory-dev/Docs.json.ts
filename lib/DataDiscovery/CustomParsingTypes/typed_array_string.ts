@@ -8,7 +8,6 @@ import {
 import {
 	DataTransformer,
 } from '../../DataTransformer';
-import Ajv from 'ajv/dist/2020';
 import {
 	string_to_array,
 } from '../../DocsValidation';
@@ -35,8 +34,8 @@ export class typed_array_string extends SecondaryCheckSchemaCompilingGenerator<
 > {
 	private readonly discovery:DataTransformer;
 
-	constructor(ajv: Ajv, discovery:DataTransformer) {
-		super(ajv, {
+	constructor(discovery:DataTransformer) {
+		super(discovery.docs.ajv, {
 			type: 'object',
 			required: ['type', 'minLength', 'typed_array_string'],
 			additionalProperties: false,

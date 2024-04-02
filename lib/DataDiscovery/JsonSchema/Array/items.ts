@@ -2,10 +2,6 @@ import {
 	SchemaCompilingGenerator,
 } from '../../Generator';
 import {
-	DataTransformer,
-} from '../../../DataTransformer';
-import Ajv from 'ajv/dist/2020';
-import {
 	UnrealEngineString_parent_schema,
 	UnrealEngineString_schema_definitions,
 } from '../../../CustomParsingTypes/UnrealEngineString';
@@ -15,6 +11,7 @@ import {
 import {
 	schema as pattern_schema,
 } from '../String/Pattern';
+import Ajv from 'ajv/dist/2020';
 
 export type items_type =
 	| (
@@ -147,15 +144,13 @@ export class items extends SchemaCompilingGenerator<
 	unknown,
 	unknown
 > {
-	private readonly discovery:DataTransformer;
-	constructor(ajv: Ajv, discovery: DataTransformer) {
+	constructor(ajv:Ajv) {
 		super(ajv, {
 			definitions: {
 				...UnrealEngineString_schema_definitions,
 			},
 			...schema,
 		});
-		this.discovery = discovery;
 	}
 
 	generate() {

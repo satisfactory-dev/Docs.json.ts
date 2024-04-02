@@ -1,7 +1,7 @@
 import {
 	SecondaryCheckSchemaCompilingGenerator,
 } from '../Generator';
-import Ajv, {
+import {
 	SchemaObject,
 } from 'ajv/dist/2020';
 import {
@@ -189,8 +189,8 @@ export class typed_object_string extends
 > {
 	private readonly discovery:DataTransformer;
 
-	constructor(ajv: Ajv, discovery:DataTransformer) {
-		super(ajv, schema);
+	constructor(discovery:DataTransformer) {
+		super(discovery.docs.ajv, schema);
 
 		this.discovery = discovery;
 	}

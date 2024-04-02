@@ -2,9 +2,6 @@ import {
 	FilesGenerator as Base,
 } from '../FilesGenerator';
 import {
-	DocsTsGenerator,
-} from '../DocsTsGenerator';
-import Ajv, {
 	ValidateFunction,
 } from 'ajv/dist/2020';
 import {
@@ -28,33 +25,26 @@ import {
 } from '../TypesDiscovery';
 
 export class FilesGenerator extends Base {
-	private readonly ajv:Ajv;
 	private readonly discovery:TypeDefinitionDiscovery;
-	private readonly docs:DocsTsGenerator;
 	private readonly validations:ValidateFunction[];
 
 	constructor(
-		docs:DocsTsGenerator,
 		validations:ValidateFunction[],
 		discovery:TypeDefinitionDiscovery,
-		ajv:Ajv
 	) {
 		super();
-		this.docs = docs;
 		this.validations = validations;
 		this.discovery = discovery;
-		this.ajv = ajv;
 	}
 
 	async* generate_files() {
 		const types = await this.discovery.discover_type_definitions();
 
 		const is_NativeClass = await TypesDiscovery.generate_is_NativeClass(
-			this.ajv,
-			this.docs
+			this.discovery.docs
 		);
 
-		for (const entry of await this.docs.get()) {
+		for (const entry of await this.discovery.docs.get()) {
 			const check = this.validations.find(maybe => maybe(entry));
 
 			if (!check) {

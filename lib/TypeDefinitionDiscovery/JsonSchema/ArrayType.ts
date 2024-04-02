@@ -5,7 +5,6 @@ import ts, {
 	ArrayTypeNode,
 	TupleTypeNode,
 } from 'typescript';
-import Ajv from 'ajv/dist/2020';
 import {
 	TypeDefinitionDiscovery,
 } from '../../TypeDefinitionDiscovery';
@@ -30,12 +29,10 @@ export class ArrayType extends GeneratorDoesDiscovery<
 	TupleTypeNode | ArrayTypeNode
 > {
 	constructor(
-		ajv: Ajv,
 		supported_refs: string[],
 		discovery:TypeDefinitionDiscovery
 	) {
 		super(
-			ajv,
 			{
 				type: 'object',
 				required: ['type', 'items'],

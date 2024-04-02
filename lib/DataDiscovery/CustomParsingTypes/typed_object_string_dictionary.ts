@@ -13,7 +13,7 @@ import {
 import {
 	DataTransformer,
 } from '../../DataTransformer';
-import Ajv, {
+import {
 	SchemaObject,
 } from 'ajv/dist/2020';
 import {
@@ -62,13 +62,13 @@ export class typed_object_string_dictionary
 	private readonly discovery:DataTransformer;
 	private readonly typed_object_string:typed_object_string;
 
-	constructor(ajv:Ajv, discovery:DataTransformer) {
-		super(ajv, {
+	constructor(discovery:DataTransformer) {
+		super(discovery.docs.ajv, {
 			definitions: UnrealEngineString_schema_definitions,
 			...schema,
 		});
 		this.discovery = discovery;
-		this.typed_object_string = new typed_object_string(ajv, discovery);
+		this.typed_object_string = new typed_object_string(discovery);
 	}
 	async generate(
 		schema_data: { [key: string]: schema_type; }

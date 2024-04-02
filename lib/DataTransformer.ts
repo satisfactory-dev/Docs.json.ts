@@ -21,13 +21,10 @@ import {
 	ref_discovery_type,
 	TypeDefinitionDiscovery,
 } from './TypeDefinitionDiscovery';
-import Ajv, {
+import {
 	SchemaObject,
 	ValidateFunction,
 } from 'ajv/dist/2020';
-import {
-	configure_ajv,
-} from './DocsValidation';
 import {
 	object_has_non_empty_array_property,
 	object_has_property,
@@ -109,22 +106,20 @@ export class DataTransformer extends FilesGenerator
 		schema: SchemaObject & {definitions: {[key: string]: unknown}},
 		validations: ValidateFunction[],
 	}> = undefined;
-	private readonly ajv:Ajv;
-	private readonly docs:DocsTsGenerator;
 	public readonly data:DataTransformerDiscovery;
 	public readonly discovery:TypeDefinitionDiscovery;
 
 	constructor(
-		ajv:Ajv,
-		discovery:TypeDefinitionDiscovery,
-		docs:DocsTsGenerator,
+		discovery:TypeDefinitionDiscovery
 	) {
 		super();
-		configure_ajv(ajv);
-		this.ajv = ajv;
 		this.discovery = discovery;
-		this.docs = docs;
-		this.data = new DataTransformerDiscovery(ajv, this);
+		this.data = new DataTransformerDiscovery(this);
+	}
+
+	get docs(): DocsTsGenerator
+	{
+		return this.discovery.docs;
 	}
 
 	async find_check(raw_data:unknown): Promise<ValidateFunction>
@@ -163,11 +158,10 @@ export class DataTransformer extends FilesGenerator
 	async* generate_files()
 	{
 		const is_NativeClass = await TypesDiscovery.generate_is_NativeClass(
-			this.ajv,
-			this.docs
+			this.discovery.docs
 		);
 
-		const entries = await this.docs.get();
+		const entries = await this.discovery.docs.get();
 
 		let progress = 0;
 
@@ -228,7 +222,7 @@ export class DataTransformer extends FilesGenerator
 			this.prepare_promise = new Promise((yup, nope) => {
 				Promise.all([
 					this.discovery.discover_type_definitions(),
-					this.docs.schema(),
+					this.discovery.docs.schema(),
 				]).then((e) => {
 					try {
 						const [types, schema] = e;
@@ -258,7 +252,7 @@ export class DataTransformer extends FilesGenerator
 						}
 
 						const validations = types.found_classes.map(
-							e => this.ajv.compile(
+							e => this.discovery.docs.ajv.compile(
 								{
 									definitions: schema.definitions,
 									...e,
@@ -293,26 +287,22 @@ export class DataTransformer extends FilesGenerator
 	}
 
 	static async with_default_candidates(
-		ajv: Ajv,
 		discovery: TypeDefinitionDiscovery,
 		docs: DocsTsGenerator
 	) {
 		const transformer = new this(
-			ajv,
-			discovery,
-			docs,
+			discovery
 		);
+		const ajv = docs.ajv;
 
 		transformer.data.add_generators(
-			new prefixItems(ajv, transformer),
-			new items(ajv, transformer),
+			new prefixItems(docs.ajv),
+			new items(docs.ajv),
 			new ObjectType(ajv) as AnyGenerator,
 			await UnrealEngineString_left_right_generator.from_data_discovery(
-				ajv,
 				transformer
 			) as AnyGenerator,
 			await NativeClass.fromTypesDiscovery(
-				ajv,
 				transformer,
 				docs
 			) as AnyGenerator,
@@ -321,11 +311,10 @@ export class DataTransformer extends FilesGenerator
 			new ConstType(ajv) as AnyGenerator,
 			new Enum(ajv) as AnyGenerator,
 			new String_oneOf(ajv),
-			new oneOf(ajv, transformer) as AnyGenerator,
-			new typed_object_string(ajv, transformer) as AnyGenerator,
-			new typed_array_string(ajv, transformer) as AnyGenerator,
+			new oneOf(transformer) as AnyGenerator,
+			new typed_object_string(transformer) as AnyGenerator,
+			new typed_array_string(transformer) as AnyGenerator,
 			new typed_object_string_dictionary(
-				ajv,
 				transformer
 			) as AnyGenerator,
 			new string_starts_with(ajv) as AnyGenerator,

@@ -1,7 +1,7 @@
 import {
 	TypeLiteralNode,
 } from 'typescript';
-import Ajv, {
+import {
 	SchemaObject,
 } from 'ajv/dist/2020';
 import {
@@ -113,7 +113,6 @@ export class typed_object_string extends GeneratorDoesDiscovery<
 	];
 
 	constructor(
-		ajv:Ajv,
 		supported_refs: string[],
 		discovery:TypeDefinitionDiscovery
 	) {
@@ -130,16 +129,15 @@ export class typed_object_string extends GeneratorDoesDiscovery<
 		};
 
 		super(
-			ajv,
 			generate_typed_object_string_schema($ref_schema),
 			discovery
 		);
 
 		this.known_types = [
-			new UnrealEngineString(ajv),
-			new Enum(ajv),
-			new Const(ajv),
-			new typed_array_string(ajv, discovery),
+			new UnrealEngineString(discovery.docs.ajv),
+			new Enum(discovery.docs.ajv),
+			new Const(discovery.docs.ajv),
+			new typed_array_string(discovery),
 		];
 	}
 

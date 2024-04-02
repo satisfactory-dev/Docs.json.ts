@@ -7,7 +7,6 @@ import {
 	RawData as ObjectTypeRawData,
 	schema as ObjectTypeSchema,
 } from '../ObjectType';
-import Ajv from 'ajv/dist/2020';
 import {
 	adjust_class_name,
 } from '../../../TsFactoryWrapper';
@@ -35,7 +34,6 @@ type Type =
 export class ExtendsObject extends GeneratorDoesDiscovery<RawData, Type>
 {
 	constructor(
-		ajv:Ajv,
 		supported_refs: string[],
 		discovery:TypeDefinitionDiscovery
 	) {
@@ -47,7 +45,6 @@ export class ExtendsObject extends GeneratorDoesDiscovery<RawData, Type>
 		} = ObjectTypeSchema;
 
 		super(
-			ajv,
 			{
 				...rest,
 				type,

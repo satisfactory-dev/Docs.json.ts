@@ -134,11 +134,10 @@ export abstract class SecondaryCheckWithAutoDefinitions<
 	protected readonly discovery:DataTransformer;
 
 	protected constructor(
-		ajv:Ajv,
 		schema:SchemaObject,
 		discovery:DataTransformer
 	) {
-		super(ajv, schema);
+		super(discovery.docs.ajv, schema);
 		this.discovery = discovery;
 	}
 

@@ -1,9 +1,6 @@
 import {
 	SchemaCompilingGenerator,
 } from '../../Generator';
-import {
-	DataTransformer,
-} from '../../../DataTransformer';
 import Ajv from 'ajv/dist/2020';
 
 export class prefixItems extends SchemaCompilingGenerator<
@@ -17,8 +14,7 @@ export class prefixItems extends SchemaCompilingGenerator<
 	unknown,
 	unknown
 > {
-	private readonly discovery:DataTransformer;
-	constructor(ajv: Ajv, discovery: DataTransformer) {
+	constructor(ajv:Ajv) {
 		super(ajv, {
 			type: 'object',
 			required: ['type', 'items', 'prefixItems', 'minItems', 'maxItems'],
@@ -36,7 +32,6 @@ export class prefixItems extends SchemaCompilingGenerator<
 				maxItems: {type: 'number', minimum: 1},
 			},
 		});
-		this.discovery = discovery;
 	}
 
 	generate() {

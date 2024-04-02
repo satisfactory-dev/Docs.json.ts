@@ -11,19 +11,30 @@ import {
 import {
 	writeFile,
 } from 'node:fs/promises';
+import {
+	configure_ajv,
+} from './lib/DocsValidation';
 
 const __dirname = import.meta.dirname;
 
 try {
+	const ajv = new Ajv({
+		verbose: true,
+		code: {
+			source: true,
+			es5: false,
+			esm: true,
+			optimize: true,
+		},
+	});
+	configure_ajv(ajv);
 	const docs = new DocsTsGenerator({
+		ajv,
 		docs_path: `${__dirname}/data/Docs.json`,
 		cache_path: `${__dirname}/data/`,
 	});
 
 	const bar = new TypeDefinitionWriter(
-		new Ajv({
-			verbose: true,
-		}),
 		docs
 	);
 	await bar.write(`${__dirname}/generated-types/update8/`);

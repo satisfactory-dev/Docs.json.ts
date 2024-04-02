@@ -6,11 +6,22 @@ import assert from 'node:assert/strict';
 import {
 	DocsTsGenerator,
 } from '../../lib/DocsTsGenerator';
+import Ajv from 'ajv/dist/2020';
 
 const __dirname = import.meta.dirname;
 
 void describe('DocsTsGenerator.schema', () => {
+	const ajv = new Ajv({
+		verbose: true,
+		code: {
+			source: true,
+			es5: false,
+			esm: true,
+			optimize: true,
+		},
+	});
 	const docs = new DocsTsGenerator({
+		ajv,
 		docs_path: `${__dirname}/../../data/Docs.json`,
 		cache_path: `${__dirname}/../../data/`,
 	});
@@ -24,7 +35,17 @@ void describe('DocsTsGenerator.schema', () => {
 });
 
 void describe('DocsTsGenerator.definition', () => {
+	const ajv = new Ajv({
+		verbose: true,
+		code: {
+			source: true,
+			es5: false,
+			esm: true,
+			optimize: true,
+		},
+	});
 	const docs = new DocsTsGenerator({
+		ajv,
 		docs_path: `${__dirname}/../../data/Docs.json`,
 		cache_path: `${__dirname}/../../data/`,
 	});

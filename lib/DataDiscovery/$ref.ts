@@ -69,12 +69,12 @@ export class $ref extends SchemaCompilingGenerator<
 		});
 	}
 
-	static async fromDataDiscovery(ajv: Ajv, discovery: DataTransformer)
+	static async fromDataDiscovery(discovery: DataTransformer)
 	{
 		const schema = await discovery.type_checked_schema();
 
 		return new $ref(
-			ajv,
+			discovery.docs.ajv,
 			schema.definitions,
 			{
 				type: 'object',

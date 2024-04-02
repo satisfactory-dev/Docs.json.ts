@@ -31,36 +31,6 @@ declare type object_tokenizer = {
 	current_value_nesting: number;
 };
 
-class DefaultConfig {
-	private _ajv: Ajv | undefined;
-
-	get ajv(): Ajv {
-		if (this._ajv) {
-			return this._ajv;
-		}
-
-		const ajv = new Ajv({
-			verbose: true,
-		});
-
-		configure_ajv(ajv);
-
-		return ajv;
-	}
-
-	set ajv(ajv: Ajv) {
-		configure_ajv(ajv);
-		this._ajv = ajv;
-	}
-
-	clear()
-	{
-		this._ajv = undefined;
-	}
-}
-
-export const default_config = new DefaultConfig();
-
 export function string_to_native_type(
 	data: string,
 	shallow = false
@@ -273,12 +243,8 @@ export function string_to_array<T extends unknown[]>(
 
 const already_configured = new WeakSet();
 
-export function ajv_is_configured(ajv: Ajv) {
-	return already_configured.has(ajv);
-}
-
 export function configure_ajv(ajv: Ajv): void {
-	if (ajv_is_configured(ajv)) {
+	if (already_configured.has(ajv)) {
 		return;
 	}
 

@@ -2,8 +2,6 @@ import {
 	AnyGenerator,
 	SecondaryCheckSchemaCompilingGenerator,
 } from '../Generator';
-import Ajv, {
-} from 'ajv/dist/2020';
 import {
 	DataTransformer,
 } from '../../DataTransformer';
@@ -22,8 +20,8 @@ export class oneOf extends SecondaryCheckSchemaCompilingGenerator<
 > {
 	private readonly discovery:DataTransformer;
 
-	constructor(ajv: Ajv, discovery:DataTransformer) {
-		super(ajv, {
+	constructor(discovery:DataTransformer) {
+		super(discovery.docs.ajv, {
 			type: 'object',
 			required: ['oneOf'],
 			additionalProperties: false,

@@ -26,9 +26,6 @@ import update8_schema from '../schema/update8.schema.json' assert {
 	type: 'json'
 };
 import {
-	configure_ajv, default_config,
-} from './DocsValidation';
-import {
 	BuiltInParserName,
 } from 'prettier';
 import {
@@ -78,6 +75,7 @@ export class DocsTsGenerator {
 	private docs: basic_docs_type | undefined;
 	private readonly cache_path: string | undefined;
 	private readonly docs_path: string | basic_docs_type;
+	public readonly ajv:Ajv;
 
 	static readonly PERF_EARLY_RETURN = 'Early Return of Docs.json';
 	static readonly PERF_FAILURE = 'Failure to load Docs.json';
@@ -91,14 +89,18 @@ export class DocsTsGenerator {
 	static readonly PERF_VALIDATION_STARTED = 'Docs.json validation started';
 
 	constructor({
+		// Ajv instance
+		ajv,
 		// raw JSON or path to UTF-16LE encoded Docs.json
 		docs_path,
 		// optional cache folder path for cacheable resources
 		cache_path = undefined,
 	}: {
+		ajv: Ajv,
 		docs_path: string | basic_docs_type;
 		cache_path?: string;
 	}) {
+		this.ajv = ajv;
 		this.docs_path = docs_path;
 		this.cache_path = cache_path;
 	}
@@ -131,7 +133,9 @@ export class DocsTsGenerator {
 
 	async schema(): Promise<typeof update8_schema>
 	{
-		await this.validate_schema<typeof update8_schema>(update8_schema);
+		await this.validate_schema<typeof update8_schema>(
+			update8_schema
+		);
 
 		return update8_schema;
 	}
@@ -274,8 +278,9 @@ export class DocsTsGenerator {
 	private async validate_schema<
 		Result = unknown,
 		Schema extends SchemaObject = SchemaObject
-	> (schema: Schema): Promise<ValidateFunction<Result>> {
-
+	> (
+		schema: Schema
+	): Promise<ValidateFunction<Result>> {
 		if (this.cache_path) {
 			const file_sha512 = createHash('sha512');
 
@@ -296,24 +301,14 @@ export class DocsTsGenerator {
 
 			if (!existsSync(filepath)) {
 				performance.mark(DocsTsGenerator.PERF_VALIDATION_PRECOMPILE);
-				default_config.ajv = new Ajv({
-					verbose: true,
-					code: {
-						source: true,
-						es5: false,
-						esm: true,
-						optimize: true,
-					},
-				});
-				configure_ajv(default_config.ajv);
 				performance.measure(
 					'ajv configured',
 					DocsTsGenerator.PERF_VALIDATION_PRECOMPILE
 				);
 
 				await writeFile(filepath, standalone(
-					default_config.ajv,
-					default_config.ajv.compile(schema)
+					this.ajv,
+					this.ajv.compile(schema)
 				).replace(/^"use strict";/, [
 					'"use strict";',
 					/*
@@ -337,11 +332,7 @@ export class DocsTsGenerator {
 			return validateDocs as ValidateFunction<Result>;
 		}
 
-		default_config.ajv = new Ajv({
-			verbose: true,
-		});
-
-		return default_config.ajv.compile<Result>(schema);
+		return this.ajv.compile<Result>(schema);
 	}
 }
 

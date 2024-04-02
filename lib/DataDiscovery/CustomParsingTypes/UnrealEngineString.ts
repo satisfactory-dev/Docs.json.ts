@@ -5,7 +5,6 @@ import {
 	UnrealEngineString,
 	UnrealEngineString_left_right,
 } from '../../TypeDefinitionDiscovery/CustomParsingTypes/UnrealEngineString';
-import Ajv from 'ajv/dist/2020';
 import {
 	UnrealEngineString_parent_schema,
 	UnrealEngineString_parent_type,
@@ -76,10 +75,9 @@ export class UnrealEngineString_left_right_generator
 		return Promise.resolve(result);
 	}
 
-	static async from_data_discovery(ajv: Ajv, discovery:DataTransformer)
+	static async from_data_discovery(discovery:DataTransformer)
 	{
 		return new this(
-			ajv,
 			await this.augment_schema(
 				discovery,
 				{
