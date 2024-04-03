@@ -64,6 +64,9 @@ import {
 	remap,
 	remove_indentation,
 } from './MarkdownUtilities';
+import {
+	compile,
+} from './AjvUtilities';
 
 type SchemaObjectWithDefinitions<Definitions extends {[key: string]: true}> =
 	& SchemaObject
@@ -421,13 +424,13 @@ export class TypeDefinitionDiscovery
 			'prefixItems',
 			value_is_non_array_object,
 		)) {
-			const native_class = this.docs.ajv.compile<{
+			const native_class = compile<{
 				type: 'object',
 				$ref: '#/definitions/NativeClass',
 				properties: {
 					Classes: {[key: string]: unknown}[],
 				},
-			}>({
+			}>(this.docs.ajv, {
 				type: 'object',
 				required: ['type', '$ref', 'properties'],
 				additionalProperties: false,

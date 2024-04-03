@@ -29,6 +29,9 @@ import {
 import {
 	string_to_object,
 } from '../../DocsValidation';
+import {
+	compile,
+} from '../../AjvUtilities';
 
 export const schema_basic = {
 	type: 'object',
@@ -74,7 +77,8 @@ export class TypedObjectString_basic extends ConvertsUnknown<
 
 	constructor(discovery:DataDiscovery) {
 		super(discovery);
-		this.check = discovery.docs.ajv.compile<schema_basic_type>(
+		this.check = compile<schema_basic_type>(
+			discovery.docs.ajv,
 			schema_basic
 		);
 		this.definitions = discovery.docs.schema().then(
@@ -107,9 +111,10 @@ export class TypedObjectString_basic extends ConvertsUnknown<
 			properties: schema.typed_object_string,
 		};
 
-		const check = this.discovery.docs.ajv.compile<
+		const check = compile<
 			{[key: string]: unknown}
 		>(
+			this.discovery.docs.ajv,
 			shallow_schema
 		);
 

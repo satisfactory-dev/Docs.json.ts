@@ -19,6 +19,9 @@ import {
 	schema_basic,
 	schema_basic_type, TypedObjectString_basic,
 } from './TypedObjectString';
+import {
+	compile,
+} from '../../AjvUtilities';
 
 type schema_type = SchemaObject & {
 	$ref: local_ref<string>,
@@ -67,7 +70,8 @@ export class RefToTypedObjectStringBasic extends DoubleCheckedStringSchema<
 	static async from_definitions(discovery:DataDiscovery)
 	{
 		const {definitions} = await discovery.docs.schema();
-		const check = discovery.docs.ajv.compile<schema_basic_type>(
+		const check = compile<schema_basic_type>(
+			discovery.docs.ajv,
 			schema_basic
 		);
 		const refs = Object.entries(definitions).filter(

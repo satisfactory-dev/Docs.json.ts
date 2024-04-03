@@ -43,6 +43,9 @@ import {
 import {
 	local_ref,
 } from '../../StringStartsWith';
+import {
+	compile,
+} from '../../AjvUtilities';
 
 type DocsDataItem_schema = (
 	& SchemaObject
@@ -83,9 +86,9 @@ export class Generator extends Base<
 
 	constructor(discovery:DataDiscovery) {
 		super(discovery);
-		const check = discovery.docs.ajv.compile<
+		const check = compile<
 			DocsDataItem_schema
-		>({
+		>(discovery.docs.ajv, {
 			type: 'object',
 			required: [
 				'type',
@@ -166,7 +169,7 @@ export class SpecificItemGenerator extends Base<
 		schema:DocsDataItem_schema
 	) {
 		super(discovery);
-		this.check = discovery.docs.ajv.compile<DocsDataItem>(schema);
+		this.check = compile<DocsDataItem>(discovery.docs.ajv, schema);
 		this.schema = schema;
 		this.unbound_array = new UnboundArray(discovery);
 		this.unreal_engine_string = new UnrealEngineString(discovery);

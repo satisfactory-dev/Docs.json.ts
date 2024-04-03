@@ -77,6 +77,9 @@ import {
 import {
 	__dirname_from_meta,
 } from './__dirname';
+import {
+	compile,
+} from './AjvUtilities';
 
 const __dirname = __dirname_from_meta(import.meta);
 
@@ -193,7 +196,8 @@ export class TypeDefinitionWriter
 		}
 
 		const validations = types.found_classes.map(
-			e => this.docs.ajv.compile<DocsDataItem>(
+			e => compile<DocsDataItem>(
+				this.docs.ajv,
 				{
 					definitions: schema.definitions,
 					...e,

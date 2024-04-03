@@ -18,6 +18,9 @@ import ts from 'typescript';
 import {
 	NoMatchError,
 } from '../../Exceptions';
+import {
+	compile,
+} from '../../AjvUtilities';
 
 type schema_type = SchemaObject & {
 	$ref: local_ref<string>,
@@ -89,7 +92,8 @@ export class RefToConst extends DoubleCheckedStringSchema<
 	static async from_definitions(discovery:DataDiscovery)
 	{
 		const {definitions} = await discovery.docs.schema();
-		const check = discovery.docs.ajv.compile<secondary_schema_type>(
+		const check = compile<secondary_schema_type>(
+			discovery.docs.ajv,
 			secondary_schema
 		);
 		const refs = Object.entries(definitions).filter(

@@ -14,6 +14,9 @@ import {
 import {
 	value_is_non_array_object,
 } from '../../CustomParsingTypes/CustomPairingTypes';
+import {
+	compile,
+} from '../../AjvUtilities';
 
 export type unbound_array = SchemaObject & {
 	type: 'array',
@@ -26,7 +29,7 @@ export class UnboundArray extends ConvertsArray<unknown> {
 
 	constructor(discovery:DataDiscovery) {
 		super(discovery);
-		this.check = discovery.docs.ajv.compile<unbound_array>({
+		this.check = compile<unbound_array>(discovery.docs.ajv, {
 			type: 'object',
 			required: ['type', 'minItems', 'items'],
 			additionalProperties: false,

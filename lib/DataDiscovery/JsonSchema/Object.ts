@@ -19,6 +19,9 @@ import {
 	is_string,
 	local_ref,
 } from '../../StringStartsWith';
+import {
+	compile,
+} from '../../AjvUtilities';
 
 export type object_extends_but_has_no_additional_properties = {
 	type: 'object',
@@ -36,9 +39,9 @@ export class ObjectExtendsButHasNoAdditionalProperties extends ConvertsObject<
 	constructor(discovery:DataDiscovery) {
 		super(discovery);
 		this.check = discovery.docs.schema().then(({definitions}) => {
-			return discovery.docs.ajv.compile<
+			return compile<
 				object_extends_but_has_no_additional_properties
-			>({
+			>(discovery.docs.ajv, {
 				type: 'object',
 				required: ['type', '$ref', 'unevaluatedProperties'],
 				additionalProperties: false,

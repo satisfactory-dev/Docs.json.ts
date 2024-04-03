@@ -12,6 +12,9 @@ import {
 	NoMatchError,
 } from '../Exceptions';
 import {
+	compile,
+} from '../AjvUtilities';
+import {
 	value_is_non_array_object,
 } from '../CustomParsingTypes/CustomPairingTypes';
 import {
@@ -169,8 +172,8 @@ export abstract class DoubleCheckedSchema<
 		secondary: SchemaObject
 	) {
 		super(discovery);
-		this.check = discovery.docs.ajv.compile<Primary>(primary);
-		this.double_check = discovery.docs.ajv.compile<Secondary>(secondary);
+		this.check = compile<Primary>(discovery.docs.ajv, primary);
+		this.double_check = compile<Secondary>(discovery.docs.ajv, secondary);
 	}
 
 	async convert_unknown(
