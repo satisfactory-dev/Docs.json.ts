@@ -7,6 +7,9 @@ import {
 	DocsTsGenerator,
 } from '../../lib/DocsTsGenerator';
 import Ajv from 'ajv/dist/2020';
+import {
+	configure_ajv,
+} from '../../lib/DocsValidation';
 
 const __dirname = import.meta.dirname;
 
@@ -20,6 +23,7 @@ void describe('DocsTsGenerator.schema', () => {
 			optimize: true,
 		},
 	});
+	configure_ajv(ajv);
 	const docs = new DocsTsGenerator({
 		ajv,
 		docs_path: `${__dirname}/../../data/Docs.json`,
