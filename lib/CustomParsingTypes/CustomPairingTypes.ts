@@ -50,7 +50,7 @@ export function object_has_non_empty_array_property<
 }
 
 export function object_has_property_that_equals(
-	maybe: object,
+	maybe: unknown,
 	property: string,
 	expects: unknown
 ): maybe is {[key: string]: unknown} & {
