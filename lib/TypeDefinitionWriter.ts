@@ -74,6 +74,9 @@ import {
 import {
 	AnyGenerator,
 } from './TypeDefinitionDiscovery/Generator';
+import {
+	compile,
+} from './AjvUtilities';
 
 const __dirname = import.meta.dirname;
 
@@ -184,7 +187,8 @@ export class TypeDefinitionWriter
 		}
 
 		const validations = types.found_classes.map(
-			e => this.docs.ajv.compile<DocsDataItem>(
+			e => compile<DocsDataItem>(
+				this.docs.ajv,
 				{
 					definitions: schema.definitions,
 					...e,

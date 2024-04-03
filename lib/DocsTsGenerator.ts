@@ -41,6 +41,9 @@ import {
 import {
 	NoMatchError,
 } from './Exceptions';
+import {
+	compile,
+} from './AjvUtilities';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -308,7 +311,7 @@ export class DocsTsGenerator {
 
 				await writeFile(filepath, standalone(
 					this.ajv,
-					this.ajv.compile(schema)
+					compile(this.ajv, schema)
 				).replace(/^"use strict";/, [
 					'"use strict";',
 					/*
@@ -332,7 +335,7 @@ export class DocsTsGenerator {
 			return validateDocs as ValidateFunction<Result>;
 		}
 
-		return this.ajv.compile<Result>(schema);
+		return compile<Result>(this.ajv, schema);
 	}
 }
 

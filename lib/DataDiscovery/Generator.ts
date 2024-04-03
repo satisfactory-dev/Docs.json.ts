@@ -10,11 +10,11 @@ import {
 	Expression,
 } from 'typescript';
 import {
-	writeFileSync,
-} from 'node:fs';
-import {
 	NoMatchError,
 } from '../Exceptions';
+import {
+	compile,
+} from '../AjvUtilities';
 
 export type AnyGenerator = Generator<unknown, unknown, unknown>;
 
@@ -42,17 +42,7 @@ export abstract class SchemaCompilingGenerator<
 	Result
 > extends Generator<SchemaType, RawData, Result> {
 	protected constructor(ajv:Ajv, schema:SchemaObject) {
-		try {
-			super(ajv.compile<SchemaType>(schema));
-		} catch (err) {
-			console.error(err);
-			writeFileSync(
-				'/app/failed-to-compile.json',
-				JSON.stringify(schema, null, '\t')
-			);
-
-			throw new Error('Could not compile schema!');
-		}
+		super(compile<SchemaType>(ajv, schema));
 	}
 }
 

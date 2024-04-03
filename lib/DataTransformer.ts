@@ -98,6 +98,9 @@ import {
 import {
 	FilesGenerator,
 } from './FilesGenerator';
+import {
+	compile,
+} from './AjvUtilities';
 
 export class DataTransformer extends FilesGenerator
 {
@@ -252,7 +255,8 @@ export class DataTransformer extends FilesGenerator
 						}
 
 						const validations = types.found_classes.map(
-							e => this.discovery.docs.ajv.compile(
+							e => compile(
+								this.discovery.docs.ajv,
 								{
 									definitions: schema.definitions,
 									...e,

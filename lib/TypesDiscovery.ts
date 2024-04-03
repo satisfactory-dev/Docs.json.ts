@@ -26,6 +26,9 @@ import {
 import {
 	DocsDataItem, DocsTsGenerator,
 } from './DocsTsGenerator';
+import {
+	compile,
+} from './AjvUtilities';
 
 export class TypesDiscovery
 {
@@ -130,7 +133,7 @@ export class TypesDiscovery
 			throw new Error('Could not find NativeClass on provided schema!');
 		}
 
-		return docs.ajv.compile<DocsDataItem>({
+		return compile<DocsDataItem>(docs.ajv, {
 			definitions: schema.definitions,
 			...schema.definitions.NativeClass,
 		});

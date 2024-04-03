@@ -5,6 +5,9 @@ import Ajv, {
 import {
 	TypeNode,
 } from 'typescript';
+import {
+	compile,
+} from '../AjvUtilities';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type AnyGenerator = Generator<any>;
@@ -16,7 +19,7 @@ export abstract class Generator<
 	public readonly check:ValidateFunction<RawData>;
 
 	protected constructor(ajv:Ajv, schema:SchemaObject) {
-		this.check = ajv.compile<RawData>(schema);
+		this.check = compile<RawData>(ajv, schema);
 	}
 
 	abstract generate(): (raw_data:RawData) => Type;
