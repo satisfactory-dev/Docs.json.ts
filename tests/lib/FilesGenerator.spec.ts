@@ -6,6 +6,7 @@ import assert from 'node:assert/strict';
 import {
 	FilesGenerator,
 	FromArray,
+	guess_filename,
 } from '../../lib/FilesGenerator';
 import {
 	create_literal,
@@ -49,4 +50,21 @@ void describe('merge_files', () => {
 			1
 		);
 	})
+});
+
+void describe('guess_filename', () => {
+	void it('guess_filename', () => {
+		assert.strictEqual(
+			guess_filename('foo'),
+			'common/unassigned.ts'
+		);
+		assert.strictEqual(
+			guess_filename('NativeClass--foo'),
+			'classes/base.ts'
+		);
+		assert.strictEqual(
+			guess_filename('FGFoo--bar'),
+			'classes/CoreUObject/FGFoo.ts'
+		);
+	});
 });
