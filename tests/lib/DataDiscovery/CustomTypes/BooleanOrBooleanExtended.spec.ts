@@ -51,7 +51,7 @@ void describe('BooleanOrBooleanExtended.convert_unknown', async () => {
 				'foo'
 			),
 			{
-				property: NativeClass,
+				property: {definition: NativeClass},
 				message: 'Not a boolean schema!',
 			},
 		);

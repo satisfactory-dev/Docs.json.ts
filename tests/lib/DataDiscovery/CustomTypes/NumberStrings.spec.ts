@@ -52,7 +52,7 @@ void describe('NumberStrings.convert_unknown', async () => {
 				'foo'
 			),
 			{
-				property: NativeClass,
+				property: {definition: NativeClass},
 				message: 'Not a pattern schema!',
 			},
 		);

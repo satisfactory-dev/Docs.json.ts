@@ -162,6 +162,7 @@ export abstract class DoubleCheckedSchema<
 	Output,
 	Primary
 > {
+	private readonly secondary_schema:SchemaObject;
 	protected readonly check:ValidateFunction<Primary>;
 	protected readonly double_check:ValidateFunction<Secondary>;
 
@@ -173,6 +174,7 @@ export abstract class DoubleCheckedSchema<
 		super(discovery);
 		this.check = compile<Primary>(discovery.docs.ajv, primary);
 		this.double_check = compile<Secondary>(discovery.docs.ajv, secondary);
+		this.secondary_schema = secondary;
 	}
 
 	async convert_unknown(
@@ -187,7 +189,11 @@ export abstract class DoubleCheckedSchema<
 
 		if (!this.double_check(definition)) {
 			throw new NoMatchError(
-				definition,
+				{
+					definition,
+					schema: this.secondary_schema,
+					errors: this.double_check.errors,
+				},
 				this.double_check_failure_message()
 			);
 		}

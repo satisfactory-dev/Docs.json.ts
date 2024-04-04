@@ -33,8 +33,10 @@ void describe('RefToConst.convert_unknown', async () => {
 			),
 			{
 				property: {
+					definition: {
 					pattern: '^\\d+\\.\\d{6}$',
 					type: 'string',
+					},
 				},
 				message: 'Schema not a const string!',
 			}
