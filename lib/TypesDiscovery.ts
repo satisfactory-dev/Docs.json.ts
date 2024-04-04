@@ -97,11 +97,8 @@ export class TypesDiscovery
 				current,
 				discovered_types
 			);
-
-			if (candidates) {
-				candidates.forEach(
-					e => this.discover_types_from(e, schema, discovered_types)
-				);
+			for (const candidate of (candidates || [])) {
+				this.discover_types_from(candidate, schema, discovered_types);
 			}
 		}
 	}
