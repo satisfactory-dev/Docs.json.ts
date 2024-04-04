@@ -229,7 +229,6 @@ export class TypeDefinitionWriter
 			]
 		);
 
-
 		const auto_imports = new DocsTsAutoImports(files);
 		const import_tracker = auto_imports.generate();
 
