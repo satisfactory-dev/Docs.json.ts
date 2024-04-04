@@ -180,8 +180,10 @@ export class TypeDefinitionWriter
 		) {
 			throw new NoMatchError(
 				{
-					classes: types.missing_classes,
-					types: types.missing_types,
+					found_types: Object.keys(types.found_types),
+					missing_types: types.missing_types,
+					found_classes: types.found_classes,
+					missing_classes: types.missing_classes,
 				},
 				'Some missing types found!'
 			);
