@@ -19,7 +19,7 @@ import {
 	rejects_partial_match,
 } from '../../../../assert/CustomAssert';
 
-void describe('RefToTypedObjectStringBasic .convert_unknown', async () => {
+void describe('RefToTypedObjectStringBasic.convert_unknown', async () => {
 	const discovery = new DataDiscovery(docs);
 	const instance = await RefToTypedObjectStringBasic.from_definitions(
 		discovery
