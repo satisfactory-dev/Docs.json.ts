@@ -36,7 +36,14 @@ void describe('Generator', () => {
 		'resolves matching values to RawGenerationResult',
 		skip_because_docs_dot_json_not_yet_bundled,
 		async () => {
-			const [{NativeClass, Classes: [example]}] = await docs.get();
+			const [
+				{
+					NativeClass,
+					Classes: [
+						example,
+					],
+				},
+			] = await docs.get();
 
 			const truncated_example = {
 				NativeClass,
