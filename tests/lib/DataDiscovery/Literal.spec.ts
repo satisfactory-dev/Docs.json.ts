@@ -50,21 +50,19 @@ void describe('Literal.object_literal', () => {
 
 	void it('doesn\'t convert numbers', async () => {
 		const random = Math.random();
-		const value = instance.object_literal({foo: random});
-		await assert.rejects(value);
-		let failure:unknown;
-		await value.catch((err) => {failure = err});
-		is_instanceof<NoMatchError>(failure, NoMatchError);
-		object_has_property(failure.property, 'error');
-		is_instanceof<NoMatchError>(failure.property.error, NoMatchError);
-		assert.equal(failure.property.error.message, 'not an array!');
-		assert.deepEqual(failure.property.error.property, random);
-		delete failure.property.error;
-		assert.equal(failure.message, 'Failed to convert property value!');
-		assert.deepEqual(failure.property, {
+		await rejects_partial_match(
+			instance.object_literal({foo: random}),
+			{
+				message: 'Failed to convert property value!',
+				property: {
+					error: {
+						message: 'not an array!',
+					},
 			original_value: random,
 			property: 'foo',
-		});
+				},
+			}
+		);
 	});
 });
 
