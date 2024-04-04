@@ -29,11 +29,14 @@ import {
 import {
 	compile,
 } from './AjvUtilities';
+import {
+	local_ref,
+} from './StringStartsWith';
 
 export class TypesDiscovery
 {
 	private discovery:Promise<{
-		discovered_types: string[],
+		discovered_types: local_ref<string>[],
 		missed_types: string[],
 	}>|undefined;
 	private readonly candidates_discovery:[
@@ -55,7 +58,7 @@ export class TypesDiscovery
 		if (!this.discovery) {
 			this.discovery = new Promise((yup, nope) => {
 				this.docs.schema().then((schema) => {
-					const discovered_types = new Set<string>();
+					const discovered_types = new Set<local_ref<string>>();
 
 					this.discover_types_from(schema, schema, discovered_types);
 
@@ -69,7 +72,7 @@ export class TypesDiscovery
 							)
 								? schema.definitions
 								: {}
-						).map((key) => `#/definitions/${key}`).filter(
+						).map(local_ref).filter(
 							maybe => !discovered_types.has(maybe)
 						),
 					});
@@ -94,11 +97,8 @@ export class TypesDiscovery
 				current,
 				discovered_types
 			);
-
-			if (candidates) {
-				candidates.forEach(
-					e => this.discover_types_from(e, schema, discovered_types)
-				);
+			for (const candidate of (candidates || [])) {
+				this.discover_types_from(candidate, schema, discovered_types);
 			}
 		}
 	}

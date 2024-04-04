@@ -15,6 +15,7 @@ import {
 } from './CustomParsingTypes/CustomPairingTypes';
 import {
 	is_string,
+	local_ref,
 } from './StringStartsWith';
 import ts, {
 	TypeNode,
@@ -204,7 +205,7 @@ export class TypeDefinitionDiscovery
 							}
 
 							const discovered_types_as_object: {
-								[key: string]: true,
+								[key: local_ref<string>]: true,
 							} = Object.fromEntries(
 								discovered_types.discovered_types.map(
 									e => [e, true]
@@ -401,10 +402,15 @@ export class TypeDefinitionDiscovery
 			missing_classes: [],
 		};
 
-		const definitions = Object.keys(discovered_types);
+		const definitions = Object.keys(
+			discovered_types
+		) as local_ref<string>[];
 
 		for (const definition of definitions) {
-			const $ref = definition.substring(14);
+			const $ref = definition.substring(14) as (
+				& string
+				& keyof typeof schema.definitions
+			);
 
 			const generator = this.candidates.find(
 				e => e.check(schema.definitions[$ref])
