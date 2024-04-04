@@ -17,6 +17,7 @@ void describe('local_ref', () => {
 
 	void it('throws', () => {
 		assert.throws(() => local_ref('foo bar'));
+		assert.throws(() => local_ref('#/definitions/foo'));
 	})
 });
 
