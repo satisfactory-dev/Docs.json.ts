@@ -28,6 +28,7 @@ void describe('ImportTracker.generate_imports()', () => {
 				baz: ['baz'],
 			},
 		});
+		assert.equal(1, instance.number_of_files);
 
 		array_has_size(instance.generate_imports('foo.ts'), 0);
 	});
@@ -36,6 +37,7 @@ void describe('ImportTracker.generate_imports()', () => {
 		`returns an empty array with some other file configured via merge_and_set_imports`,
 		() => {
 			const instance = new ImportTracker();
+			assert.equal(0, instance.number_of_files);
 			array_has_size(instance.generate_imports('foo.ts'), 0);
 		}
 	);
@@ -48,6 +50,7 @@ void describe('ImportTracker.generate_imports()', () => {
 				'baz': ['bar'],
 			},
 		});
+		assert.equal(1, instance.number_of_files);
 
 		let imports = instance.generate_imports('foo.ts');
 
@@ -87,6 +90,7 @@ void describe('ImportTracker.generate_imports()', () => {
 				'bar': ['baz'],
 			},
 		});
+		assert.equal(1, instance.number_of_files);
 
 		imports = instance.generate_imports('foo.ts');
 
@@ -99,6 +103,7 @@ void describe('ImportTracker.generate_imports()', () => {
 				'bar': ['test'],
 			},
 		});
+		assert.equal(1, instance.number_of_files);
 
 		imports = instance.generate_imports('foo.ts');
 

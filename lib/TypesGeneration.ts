@@ -17,6 +17,11 @@ export declare type imports_shorthand = {
 export class ImportTracker {
 	private imports: {[key: string]: imports_shorthand} = {};
 
+	get number_of_files(): number
+	{
+		return Object.keys(this.imports).length;
+	}
+
 	generate_imports(file: string): ts.ImportDeclaration[] {
 		if (!(file in this.imports)) {
 			return [];
