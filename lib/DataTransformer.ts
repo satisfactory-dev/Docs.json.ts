@@ -134,8 +134,7 @@ export class DataTransformer extends FilesGenerator
 		const check = validations.find(maybe => maybe(raw_data));
 
 		if (!check) {
-			console.error(raw_data);
-			throw new Error('Could not find schema!');
+			throw new NoMatchError(raw_data, 'Could not find schema!');
 		}
 
 		return check;
@@ -172,8 +171,10 @@ export class DataTransformer extends FilesGenerator
 
 		for (const entry of entries) {
 			if (!is_NativeClass(entry)) {
-				console.error(entry);
-				throw new Error('Entry not a general NativeClass!');
+				throw new NoMatchError(
+					entry,
+					'Entry not a general NativeClass!'
+				);
 			}
 
 			const entry_class_name = adjust_unrealengine_value(

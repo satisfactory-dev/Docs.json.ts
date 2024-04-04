@@ -120,8 +120,13 @@ export class DataTransformerDiscovery
 			const result = await this.maybe_remap_ref(value.items);
 
 			if (!value_is_non_array_object(result)) {
-				console.error(value, result);
-				throw new Error('value resolved to non-object value!');
+				throw new NoMatchError(
+					{
+						value,
+						result,
+					},
+					'value resolved to non-object value!'
+				);
 			}
 
 			value.items = result as items_type;

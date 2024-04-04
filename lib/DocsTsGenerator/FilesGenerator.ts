@@ -56,8 +56,10 @@ export class FilesGenerator extends Base {
 					'Could not find schema!'
 				);
 			} else if (!is_NativeClass(entry)) {
-				console.error(entry);
-				throw new Error('Entry not a general NativeClass!');
+				throw new NoMatchError(
+					entry,
+					'Entry not a general NativeClass!'
+				);
 			}
 
 			const entry_type = this.discovery.find(

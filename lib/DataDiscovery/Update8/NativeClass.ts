@@ -63,11 +63,13 @@ export class NativeClass extends Generator<
 			);
 
 			if (!object_has_property(schema, '$ref', is_string)) {
-				console.error(schema);
-				throw new Error('NativeClass schema had no $ref!');
+				throw new NoMatchError(
+					schema,
+					'NativeClass schema had no $ref!'
+				);
 			} else if (!schema.$ref.startsWith('#/definitions/')) {
-				console.error(schema);
-				throw new Error(
+				throw new NoMatchError(
+					schema,
 					`NativeClass schema had unsupported $ref! (${schema.$ref})`
 				);
 			}
