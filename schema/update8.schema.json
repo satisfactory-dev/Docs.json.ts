@@ -5686,31 +5686,22 @@
 				"01 - Default"
 			]
 		},
-		"EditorCurveData--only": {
+		"EditorCurveData": {
 			"type": "string",
 			"minLength": 1,
-			"typed_object_string": {
+			"typed_string": {
+				"type": "object",
+				"required": ["EditorCurveData"],
+				"additionalProperties": false,
+				"properties": {
 				"EditorCurveData": {
-					"DefaultValue": {
-						"$ref": "#/definitions/decimal-string"
-					},
-					"PreInfinityExtrap": {
-						"$ref": "#/definitions/InfinityExtrap"
-					},
-					"PostInfinityExtrap": {
-						"$ref": "#/definitions/InfinityExtrap"
-					}
-				}
-			}
-		},
-		"EditorCurveData": {
-			"oneOf": [
-				{"$ref": "#/definitions/EditorCurveData--only"},
-				{
 					"type": "string",
 					"minLength": 1,
-					"typed_object_string": {
-						"EditorCurveData": {
+						"typed_string": {
+							"type": "object",
+							"required": ["DefaultValue", "PreInfinityExtrap", "PostInfinityExtrap"],
+							"additionalProperties": false,
+							"properties": {
 							"DefaultValue": {
 								"$ref": "#/definitions/decimal-string"
 							},
@@ -5720,6 +5711,8 @@
 							"PostInfinityExtrap": {
 								"$ref": "#/definitions/InfinityExtrap"
 							}
+							}
+						}
 						},
 						"ExternalCurve": {
 							"type": "string",
@@ -5734,7 +5727,6 @@
 						}
 					}
 				}
-			]
 		},
 		"mDamageTypes": {
 			"type": "string",

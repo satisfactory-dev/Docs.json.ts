@@ -25,6 +25,9 @@ import {
 	typed_array_string,
 } from './TypeDefinitionDiscovery/CustomParsingTypes/typed_array_string';
 import {
+	typed_string,
+} from './TypeDefinitionDiscovery/CustomParsingTypes/typed_string';
+import {
 	oneOf_or_anyOf,
 } from './TypeDefinitionDiscovery/JsonSchema/oneOf_or_anyOf';
 import {
@@ -441,6 +444,10 @@ export class TypeDefinitionWriter
 					discovery
 				),
 				new typed_array_string(discovery),
+				new typed_string(
+					discovered_types,
+					discovery
+				),
 				new oneOf_or_anyOf(discovery),
 			);
 		}

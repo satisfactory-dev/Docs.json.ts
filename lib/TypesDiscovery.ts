@@ -32,6 +32,12 @@ import {
 import {
 	local_ref,
 } from './StringStartsWith';
+import {
+	typed_string,
+} from './TypesDiscovery/CustomParsingTypes/typed_string';
+import {
+	ConstString,
+} from './TypesDiscovery/JsonSchema/const';
 
 export class TypesDiscovery
 {
@@ -61,6 +67,19 @@ export class TypesDiscovery
 					const discovered_types = new Set<local_ref<string>>();
 
 					this.discover_types_from(schema, schema, discovered_types);
+
+					const const_string = new ConstString(schema);
+
+					const_string.discovery_candidates(
+						schema,
+						discovered_types
+					);
+
+					const typed_string_check = new typed_string(schema);
+					typed_string_check.discovery_candidates(
+						schema,
+						discovered_types
+					);
 
 					yup({
 						discovered_types: [...discovered_types.values()],
@@ -109,6 +128,7 @@ export class TypesDiscovery
 		return [
 			new typed_object_string(schema),
 			new non_array_object_property('typed_array_string', schema),
+			new typed_string(schema),
 		];
 	}
 

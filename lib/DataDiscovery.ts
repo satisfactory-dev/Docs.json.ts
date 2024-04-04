@@ -57,6 +57,12 @@ import {
 import {
 	Literal,
 } from './DataDiscovery/Literal';
+import {
+	TypedString,
+} from './DataDiscovery/CustomTypes/TypedString';
+import {
+	RefToTypedString,
+} from './DataDiscovery/CustomTypes/RefToTypedString';
 
 type progress = {[p: string]: string[]};
 
@@ -88,8 +94,10 @@ export class DataDiscovery
 			new BooleanOrBooleanExtended(this),
 			new UnrealEngineString_DataDiscovery(this),
 			new TypedObjectString_basic(this),
+			new TypedString(this),
 			RefToConst.from_definitions(this),
 			RefToTypedObjectStringBasic.from_definitions(this),
+			RefToTypedString.from_definitions(this),
 		]);
 	}
 

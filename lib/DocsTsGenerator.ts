@@ -37,10 +37,14 @@ import {
 } from './CustomParsingTypes/CustomPairingTypes';
 import {
 	is_string,
+	local_ref,
 } from './StringStartsWith';
 import {
 	NoMatchError,
 } from './Exceptions';
+import {
+	TypedString,
+} from './CustomParsingTypes/TypedString';
 import {
 	compile,
 } from './AjvUtilities';
@@ -283,6 +287,19 @@ export class DocsTsGenerator {
 	> (
 		schema: Schema
 	): Promise<ValidateFunction<Result>> {
+		if (
+			object_has_property(
+				schema,
+				'definitions',
+				value_is_non_array_object
+			)
+		) {
+			TypedString.instance().configure_ajv(
+				this.ajv,
+				Object.keys(schema.definitions).map(local_ref)
+			);
+		}
+
 		if (this.cache_path) {
 			const file_sha512 = createHash('sha512');
 

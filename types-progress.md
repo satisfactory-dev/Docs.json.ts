@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (214 of 214)
+100.00% Complete (213 of 213)
 
 ## Basic Types
 
@@ -13,6 +13,7 @@
 -   [x] color-decimal
 -   [x] decimal-string
 -   [x] decimal-string--signed
+-   [x] EditorCurveData
 -   [x] empty-object
 -   [x] FGBuildingDescriptor
 -   [x] FGChainsaw
@@ -57,11 +58,6 @@
 -   [x] transformation
 -   [x] weaponState
 -   [x] xyz-array
-
-## EditorCurveData
-
--   [x] EditorCurveData
--   [x] EditorCurveData--only
 
 ## FGAmmoType
 
