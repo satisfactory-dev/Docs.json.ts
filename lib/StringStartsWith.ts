@@ -1,3 +1,7 @@
+import {
+	NoMatchError,
+} from './Exceptions';
+
 export type StringStartsWith<
 	Prefix extends string,
 	Suffix extends string = string
@@ -16,6 +20,13 @@ export function local_ref<
 >(ref_like_string:T): local_ref<T> {
 	if (/\s+/.test(ref_like_string)) {
 		throw new Error('No spacing characters allowed!');
+	}
+
+	if (ref_like_string.startsWith('#/definitions/')) {
+		throw new NoMatchError(
+			ref_like_string,
+			'Already a local ref!'
+		);
 	}
 
 	return `#/definitions/${
