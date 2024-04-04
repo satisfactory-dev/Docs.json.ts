@@ -15,9 +15,7 @@ import {
 } from '../../../../lib/DataDiscovery/CustomTypes/TypedObjectString';
 import {
 	array_has_size,
-	is_instanceof,
 	not_undefined,
-	object_has_property,
 	rejects_partial_match,
 } from '../../../../assert/CustomAssert';
 import {
@@ -26,9 +24,6 @@ import {
 import {
 	ObjectLiteralExpression,
 } from 'typescript';
-import {
-	NoMatchError,
-} from '../../../../lib/Exceptions';
 import {
 	isAsExpression,
 	isIdentifier,
@@ -78,8 +73,8 @@ void describe('TypedObjectString_basic.convert_unknown', () => {
 			{
 				message: `Shallow parse of typed_object_string does not match schema!`,
 				property: {
-			shallow: {foo: '2'},
-			schema: test_schema,
+					shallow: {foo: '2'},
+					schema: test_schema,
 				},
 			}
 		);
@@ -96,13 +91,13 @@ void describe('TypedObjectString_basic.convert_unknown', () => {
 			{
 				message: 'Property not in schema!',
 				property: {
-			bar: '2',
-			schema: {
-				foo: {
-					type: 'string',
-					const: '1',
-				},
-			},
+					bar: '2',
+					schema: {
+						foo: {
+							type: 'string',
+							const: '1',
+						},
+					},
 				},
 			}
 		);
@@ -159,14 +154,14 @@ void describe('TypedObjectString_basic.convert_unknown', () => {
 		const instance = new TypedObjectString_basic(discovery);
 		await rejects_partial_match(
 			instance.convert_unknown(
-			{
-				type: 'string',
-				minLength: 1,
-				typed_object_string: {
-					foo: {$ref: '#/definitions/decimal-string'},
+				{
+					type: 'string',
+					minLength: 1,
+					typed_object_string: {
+						foo: {$ref: '#/definitions/decimal-string'},
+					},
 				},
-			},
-			'(foo=1.234567)'
+				'(foo=1.234567)'
 			),
 			{
 				message: 'Failed to grab object literal!',

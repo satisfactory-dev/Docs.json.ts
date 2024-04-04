@@ -11,14 +11,9 @@ import {
 import * as TypeScriptAssert from '../../../assert/TypeScriptAssert';
 import {
 	array_has_size,
-	is_instanceof,
-	object_has_property,
 	rejects_partial_match,
 	value_matches_ExpressionResult,
 } from '../../../assert/CustomAssert';
-import {
-	NoMatchError,
-} from '../../../lib/Exceptions';
 import {
 	Literal,
 } from '../../../lib/DataDiscovery/Literal';
@@ -58,8 +53,8 @@ void describe('Literal.object_literal', () => {
 					error: {
 						message: 'not an array!',
 					},
-			original_value: random,
-			property: 'foo',
+					original_value: random,
+					property: 'foo',
 				},
 			}
 		);
