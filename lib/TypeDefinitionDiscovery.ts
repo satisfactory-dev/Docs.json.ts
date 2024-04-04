@@ -46,10 +46,8 @@ import {
 } from './TypeDefinitionDiscovery/JsonSchema/String';
 import {
 	FilesGenerator,
+	guess_filename,
 } from './FilesGenerator';
-import {
-	TypeDefinitionWriter,
-} from './TypeDefinitionWriter';
 import {
 	adjust_class_name,
 	create_modifiers,
@@ -251,7 +249,7 @@ export class TypeDefinitionDiscovery
 		for (const entry of Object.entries(types.found_types)) {
 			const [definition, generator] = entry;
 			const $ref = definition.substring(14);
-			const target_file = TypeDefinitionWriter.guess_filename($ref);
+			const target_file = guess_filename($ref);
 
 			yield {
 				file: target_file,
