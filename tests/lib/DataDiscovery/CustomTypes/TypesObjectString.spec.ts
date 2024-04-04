@@ -8,7 +8,7 @@ import {
 } from '../../../../lib/DataDiscovery';
 import {
 	docs,
-} from '../../../fixtures/Docs';
+} from '../../../../lib/helpers';
 import {
 	schema_basic_type,
 	TypedObjectString_basic,

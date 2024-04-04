@@ -14,7 +14,7 @@ import {
 } from '../../../lib/DataDiscovery';
 import {
 	docs,
-} from '../../fixtures/Docs';
+} from '../../../lib/helpers';
 
 void describe('Generator.find', () => {
 	const discovery = new DataDiscovery(docs);

@@ -24,7 +24,7 @@ import {
 } from '../../../../lib/DataDiscovery/Generator';
 import {
 	docs,
-} from '../../../fixtures/Docs';
+} from '../../../../lib/helpers';
 
 void describe('NumberStrings.convert_unknown', async () => {
 	const discovery = new DataDiscovery(docs);

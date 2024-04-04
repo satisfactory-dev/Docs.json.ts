@@ -1,10 +1,6 @@
-import Ajv from 'ajv/dist/2020';
 import {
 	TypeDefinitionWriter,
 } from './lib/TypeDefinitionWriter';
-import {
-	DocsTsGenerator,
-} from './lib/DocsTsGenerator';
 import {
 	NoMatchError,
 } from './lib/Exceptions';
@@ -15,28 +11,12 @@ import {
 	__dirname_from_meta,
 } from './lib/__dirname';
 import {
-	configure_ajv,
-} from './lib/DocsValidation';
+	docs,
+} from './lib/helpers';
 
 const __dirname = __dirname_from_meta(import.meta);
 
 try {
-	const ajv = new Ajv({
-		verbose: true,
-		code: {
-			source: true,
-			es5: false,
-			esm: true,
-			optimize: true,
-		},
-	});
-	configure_ajv(ajv);
-	const docs = new DocsTsGenerator({
-		ajv,
-		docs_path: `${__dirname}/data/Docs.json`,
-		cache_path: `${__dirname}/data/`,
-	});
-
 	const bar = new TypeDefinitionWriter(
 		docs
 	);

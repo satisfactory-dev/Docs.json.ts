@@ -5,7 +5,7 @@ import {
 import assert from 'node:assert/strict';
 import {
 	docs,
-} from '../fixtures/Docs';
+} from '../../lib/helpers';
 
 void describe('DocsTsGenerator.schema', () => {
 	void it('will currently return update 8', async () => {

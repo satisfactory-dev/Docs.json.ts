@@ -11,7 +11,7 @@ import {
 } from '../../../../assert/TypeScriptAssert';
 import {
 	docs,
-} from '../../../fixtures/Docs';
+} from '../../../../lib/helpers';
 import {
 	RefToTypedObjectStringBasic,
 } from '../../../../lib/DataDiscovery/CustomTypes/RefToTypedObjectString';

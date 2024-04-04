@@ -9,7 +9,7 @@ import {
 } from '../../../../lib/DataDiscovery/JsonSchema/Array';
 import {
 	docs,
-} from '../../../fixtures/Docs';
+} from '../../../../lib/helpers';
 import {
 	is_instanceof,
 } from '../../../../assert/CustomAssert';

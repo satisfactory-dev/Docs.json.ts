@@ -8,7 +8,7 @@ import {
 import {
 	docs,
 	skip_because_docs_dot_json_not_yet_bundled,
-} from '../fixtures/Docs';
+} from '../../lib/helpers';
 import {
 	__dirname_from_meta,
 } from '../../lib/__dirname';

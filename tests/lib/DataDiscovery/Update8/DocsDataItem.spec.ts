@@ -12,7 +12,7 @@ import {
 import {
 	docs,
 	skip_because_docs_dot_json_not_yet_bundled,
-} from '../../../fixtures/Docs';
+} from '../../../../lib/helpers';
 import {
 	is_instanceof,
 } from '../../../../assert/CustomAssert';

@@ -23,7 +23,7 @@ import {
 } from '../../../../lib/DataDiscovery/Generator';
 import {
 	docs,
-} from '../../../fixtures/Docs';
+} from '../../../../lib/helpers';
 
 void describe('BooleanOrBooleanExtended.convert_unknown', async () => {
 	const discovery = new DataDiscovery(docs);

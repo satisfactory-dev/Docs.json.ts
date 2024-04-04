@@ -8,7 +8,7 @@ import {
 } from '../../../../lib/DataDiscovery';
 import {
 	docs,
-} from '../../../fixtures/Docs';
+} from '../../../../lib/helpers';
 import {
 	object_extends_but_has_no_additional_properties,
 	ObjectExtendsButHasNoAdditionalProperties,
