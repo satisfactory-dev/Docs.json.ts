@@ -18,7 +18,6 @@ export function compile<T>(
 	try {
 		return ajv.compile<T>(schema);
 	} catch (err) {
-		console.error(err);
 		writeFileSync(
 			`${__dirname}/../failed-to-compile.json`,
 			`${JSON.stringify(

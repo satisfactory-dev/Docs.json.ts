@@ -66,6 +66,9 @@ import {
 import {
 	compile,
 } from './AjvUtilities';
+import {
+	NoMatchError,
+} from './Exceptions';
 
 type SchemaObjectWithDefinitions<Definitions extends {[key: string]: true}> =
 	& SchemaObject
@@ -237,8 +240,7 @@ export class TypeDefinitionDiscovery
 		const type = this.search(maybe);
 
 		if (!type) {
-			console.error(maybe);
-			throw new Error('Could not find a match!');
+			throw new NoMatchError(maybe, 'Could not find a match!');
 		}
 
 		return type;

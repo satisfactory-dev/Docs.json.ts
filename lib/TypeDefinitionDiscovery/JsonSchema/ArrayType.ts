@@ -15,6 +15,9 @@ import {
 import {
 	minimum_size_array_of_single_type,
 } from '../../TsFactoryWrapper';
+import {
+	NoMatchError,
+} from '../../Exceptions';
 
 type RawData = {
 	type: 'array',
@@ -83,8 +86,8 @@ export class ArrayType extends GeneratorDoesDiscovery<
 						'prefixItems'
 					)
 				) {
-					console.error(raw_data);
-					throw new Error(
+					throw new NoMatchError(
+						raw_data,
 						'Must specify prefixItems when items is false!'
 					);
 				}
