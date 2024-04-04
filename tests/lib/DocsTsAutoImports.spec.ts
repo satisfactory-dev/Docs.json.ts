@@ -24,17 +24,14 @@ class Testable extends DocsTsAutoImports
 }
 
 void describe('DocsTsAutoImports.generate()', () => {
-	void it('can resolve to an empty ImportTracker', async () => {
+	void it('can resolve to an empty ImportTracker', () => {
 		const instance = new DocsTsAutoImports({});
 
-		const promise = instance.generate();
-		await assert.doesNotReject(promise);
-
-		const result = await promise;
+		const result = instance.generate();
 		assert.equal(0, result.number_of_files);
 	});
 
-	void it('can auto-resolve imports', async () => {
+	void it('can auto-resolve imports', () => {
 		const foo = ts.factory.createTypeAliasDeclaration(
 			create_modifiers('export'),
 			'foo',
@@ -62,10 +59,7 @@ void describe('DocsTsAutoImports.generate()', () => {
 			'bar.ts': ['bar'],
 		});
 
-		const promise = instance.generate();
-		await assert.doesNotReject(promise);
-
-		const result = await promise;
+		const result = instance.generate();
 		assert.equal(1, result.number_of_files);
 	});
 
@@ -97,7 +91,14 @@ void describe('DocsTsAutoImports.generate()', () => {
 			'bar.ts': ['foo'],
 		});
 
-		const promise = instance.generate();
+		const promise = new Promise((yup, nope) => {
+			try {
+				yup(instance.generate());
+			} catch (err) {
+				nope(err);
+			}
+		});
+
 		await rejects_partial_match(promise, {
 			message: 'foo conflict!',
 			property: [
