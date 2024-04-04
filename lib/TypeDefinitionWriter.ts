@@ -439,17 +439,4 @@ export class TypeDefinitionWriter
 			);
 		}
 	}
-
-	static guess_filename(ref: string): string {
-		if (/^FG[A-Za-z]+--[A-Za-z-_]+$/.test(ref)) {
-			return `classes/CoreUObject/${ref.split('--')[0]}.ts`;
-		} else if (
-			ref.startsWith('NativeClass--')
-			|| ref.startsWith('EditorCurveData--')
-		) {
-			return 'classes/base.ts';
-		}
-
-		return 'common/unassigned.ts';
-	}
 }
