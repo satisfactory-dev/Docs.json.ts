@@ -36,8 +36,8 @@ void describe('RefToTypedObjectStringBasic .convert_unknown', async () => {
 			{
 				property: {
 					definition: {
-					pattern: '^\\d+\\.\\d{6}$',
-					type: 'string',
+						pattern: '^\\d+\\.\\d{6}$',
+						type: 'string',
 					},
 				},
 				message: 'Schema not a typed_object_string string!',
