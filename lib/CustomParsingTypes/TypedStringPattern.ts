@@ -33,7 +33,6 @@ export const typed_string_pattern_schema = {
 	},
 };
 
-
 export function typed_string_pattern_value_regex(
 	value: pattern_schema_type
 ): string {

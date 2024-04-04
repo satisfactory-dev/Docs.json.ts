@@ -74,7 +74,6 @@ export class ArrayType extends GeneratorDoesDiscovery<
 		);
 	}
 
-
 	generate() {
 		return (raw_data: RawData) => {
 			if (false === raw_data.items) {

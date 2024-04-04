@@ -102,7 +102,6 @@ export function generate_typed_object_string_schema(
 	};
 }
 
-
 export class typed_object_string extends GeneratorDoesDiscovery<
 	typed_object_string_RawData,
 	TypeLiteralNode
