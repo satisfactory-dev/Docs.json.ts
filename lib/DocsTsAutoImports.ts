@@ -112,7 +112,7 @@ export class DocsTsAutoImports {
 		return import_tracker;
 	}
 
-	private file_exports(): {[key: string]: [string, ...string[]]} {
+	protected file_exports(): {[key: string]: [string, ...string[]]} {
 		const file_exports: {[key: string]: [string, ...string[]]} = {};
 
 		for (const entry of this.files_entries) {
