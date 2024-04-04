@@ -27,7 +27,6 @@ type schema_type = SchemaObject & {
 	$ref: local_ref<string>,
 };
 
-
 export class RefToTypedObjectStringBasic extends DoubleCheckedStringSchema<
 	schema_type,
 	schema_basic_type

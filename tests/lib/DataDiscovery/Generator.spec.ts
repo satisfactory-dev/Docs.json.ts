@@ -31,7 +31,6 @@ void describe('Generator.find', () => {
 						super(discovery);
 					}
 
-
 					matches() {
 						return Promise.resolve(undefined);
 					}
@@ -48,7 +47,6 @@ void describe('Generator.find', () => {
 					constructor() {
 						super(discovery);
 					}
-
 
 					matches() {
 						return Promise.resolve(new RawGenerationResult(

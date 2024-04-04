@@ -83,7 +83,6 @@ export abstract class Generator<
 	}
 }
 
-
 export class ExpressionResult<T extends Expression = Expression>
 {
 	public readonly expression:T;
