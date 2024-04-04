@@ -241,9 +241,9 @@ export function string_to_array<T extends unknown[]>(
 		).values as T;
 }
 
-const already_configured = new WeakSet();
+const already_configured = new WeakSet<Ajv>();
 
-export function configure_ajv(ajv: Ajv): void {
+export function configure_ajv(ajv: Ajv) {
 	if (already_configured.has(ajv)) {
 		return;
 	}
