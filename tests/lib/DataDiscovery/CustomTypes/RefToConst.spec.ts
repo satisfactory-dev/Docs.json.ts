@@ -15,13 +15,16 @@ import {
 import {
 	RefToConst,
 } from '../../../../lib/DataDiscovery/CustomTypes/RefToConst';
+import {
+	rejects_partial_match,
+} from '../../../../assert/CustomAssert';
 
 void describe('RefToConst.convert_unknown', async () => {
 	const discovery = new DataDiscovery(docs);
 	const instance = await RefToConst.from_definitions(discovery);
 
 	void it('throws', async () => {
-		await assert.rejects(
+		await rejects_partial_match(
 			instance.convert_unknown(
 				{
 					$ref: '#/definitions/decimal-string',
@@ -36,7 +39,7 @@ void describe('RefToConst.convert_unknown', async () => {
 				message: 'Schema not a const string!',
 			}
 		);
-		await assert.rejects(
+		await rejects_partial_match(
 			instance.convert_unknown(
 				{
 					$ref: '#/definitions/empty-object',

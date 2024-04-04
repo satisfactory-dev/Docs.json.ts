@@ -10,7 +10,10 @@ import {
 } from '../../../lib/DataDiscovery/Generator';
 import * as TypeScriptAssert from '../../../assert/TypeScriptAssert';
 import {
-	array_has_size, is_instanceof, object_has_property,
+	array_has_size,
+	is_instanceof,
+	object_has_property,
+	rejects_partial_match,
 	value_matches_ExpressionResult,
 } from '../../../assert/CustomAssert';
 import {
@@ -124,7 +127,7 @@ void describe('Literal.value_literal', () => {
 	});
 
 	void it('doesn\'t convert numbers', async () => {
-		await assert.rejects(
+		await rejects_partial_match(
 			instance.value_literal(1),
 			{
 				property: 1,
@@ -141,7 +144,7 @@ void describe('Literal.value_literal', () => {
 		TypeScriptAssert.isStringLiteral(string_value);
 		assert.equal(string_value.text, 'foo');
 
-		await assert.rejects(
+		await rejects_partial_match(
 			instance.value_literal(
 				new RawGenerationResult(2)
 			),

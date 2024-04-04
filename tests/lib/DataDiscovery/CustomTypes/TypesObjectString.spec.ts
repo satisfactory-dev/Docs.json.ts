@@ -18,6 +18,7 @@ import {
 	is_instanceof,
 	not_undefined,
 	object_has_property,
+	rejects_partial_match,
 } from '../../../../assert/CustomAssert';
 import {
 	Literal,
@@ -51,8 +52,8 @@ void describe('TypedObjectString_basic.convert_unknown', () => {
 	const instance = new TypedObjectString_basic(discovery);
 
 	void it ('throws on non-string values', async () => {
-		await assert.rejects(
-			() => instance.convert_unknown({
+		await rejects_partial_match(
+			instance.convert_unknown({
 				type: 'string',
 				minLength: 1,
 				typed_object_string: {

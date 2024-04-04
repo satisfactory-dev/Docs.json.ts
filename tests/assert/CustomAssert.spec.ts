@@ -6,7 +6,9 @@ import assert from 'node:assert/strict';
 import {
 	array_has_size,
 	is_instanceof,
-	not_undefined, object_has_property,
+	not_undefined,
+	object_has_property,
+	rejects_partial_match,
 	value_matches_ExpressionResult,
 } from '../../assert/CustomAssert';
 import ts from 'typescript';
@@ -70,5 +72,53 @@ void describe('object_has_property', () => {
 		assert.throws(() => object_has_property(undefined, 'foo'));
 		assert.throws(() => object_has_property([], 'foo'));
 		assert.throws(() => object_has_property({bar: 1}, 'foo'));
+	});
+});
+
+void describe('rejects_partial_match', () => {
+	void it('does not throw', async () => {
+		await assert.doesNotReject(
+			rejects_partial_match(
+				new Promise((yup, nope) => {
+					nope({
+						foo: 1,
+						bar: 2,
+						baz: {
+							foo: 3,
+							bar: {
+								foo: 4,
+							},
+						},
+					});
+				}),
+				{
+					bar: 2,
+					baz: {
+						foo: 3,
+					},
+				}
+			)
+		);
+	});
+	void it('does throw', async() => {
+		await assert.rejects(
+			rejects_partial_match(
+				new Promise((yup, nope) => {
+					nope({
+						foo: 1,
+						bar: 2,
+						baz: {
+							foo: 3,
+							bar: {
+								foo: 4,
+							},
+						},
+					});
+				}),
+				{
+					foo: 2,
+				}
+			)
+		);
 	});
 });

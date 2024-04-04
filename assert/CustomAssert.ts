@@ -6,6 +6,9 @@ import {
 	Node,
 	NodeArray,
 } from 'typescript';
+import {
+	value_is_non_array_object,
+} from '../lib/CustomParsingTypes/CustomPairingTypes';
 
 export function value_matches_ExpressionResult(
 	maybe: unknown,
@@ -55,4 +58,56 @@ export function object_has_property(
 		true,
 		message
 	);
+}
+
+function resolve_partial(
+	actual:{[key: string]: unknown},
+	expecting:{[key: string]: unknown},
+	message?:string|Error
+): {[key: string]: unknown} {
+	const partial_match:{[key: string]: unknown} = {};
+
+	for (const entry of Object.entries(expecting)) {
+		const [property, expecting_value] = entry;
+		object_has_property(actual, property, message);
+		const actual_value = actual[property];
+		if (
+			value_is_non_array_object(actual_value)
+			&& value_is_non_array_object(expecting_value)
+		) {
+
+			partial_match[property] = resolve_partial(
+				actual_value,
+				expecting_value
+			);
+		} else {
+			partial_match[property] = actual_value;
+		}
+	}
+
+	return partial_match;
+}
+
+export async function rejects_partial_match(
+	maybe: Promise<unknown>,
+	partial_error: {[key: string]: unknown},
+	message?:string|Error
+) : Promise<void> {
+	let failure:unknown = undefined;
+
+	await assert.rejects(maybe);
+	await maybe.catch((err) => {failure = err});
+	assert.equal(
+		value_is_non_array_object(failure),
+		true,
+		message
+	);
+
+	const partial_match:{[key: string]: unknown} = resolve_partial(
+		failure as {[key: string]: unknown},
+		partial_error,
+		message
+	);
+
+	assert.deepEqual(partial_match, partial_error, message);
 }

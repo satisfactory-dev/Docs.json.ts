@@ -17,6 +17,7 @@ import {
 } from '../../../../assert/TypeScriptAssert';
 import {
 	is_instanceof,
+	rejects_partial_match,
 } from '../../../../assert/CustomAssert';
 import {
 	RawGenerationResult,
@@ -31,7 +32,7 @@ void describe('NumberStrings.convert_unknown', async () => {
 	const number_strings = new NumberStrings(discovery);
 
 	void it('throws', async () => {
-		await assert.rejects(
+		await rejects_partial_match(
 			number_strings.convert_unknown(
 				{
 					$ref: '#/definitions/decimal-string',
@@ -43,7 +44,7 @@ void describe('NumberStrings.convert_unknown', async () => {
 				message: 'must be a string!',
 			},
 		);
-		await assert.rejects(
+		await rejects_partial_match(
 			number_strings.convert_unknown(
 				{
 					$ref: '#/definitions/NativeClass',
@@ -55,7 +56,7 @@ void describe('NumberStrings.convert_unknown', async () => {
 				message: 'Not a pattern schema!',
 			},
 		);
-		await assert.rejects(
+		await rejects_partial_match(
 			number_strings.convert_unknown(
 				{
 					$ref: '#/definitions/decimal-string',

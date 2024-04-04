@@ -15,6 +15,9 @@ import {
 import {
 	RefToTypedObjectStringBasic,
 } from '../../../../lib/DataDiscovery/CustomTypes/RefToTypedObjectString';
+import {
+	rejects_partial_match,
+} from '../../../../assert/CustomAssert';
 
 void describe('RefToTypedObjectStringBasic .convert_unknown', async () => {
 	const discovery = new DataDiscovery(docs);
@@ -23,7 +26,7 @@ void describe('RefToTypedObjectStringBasic .convert_unknown', async () => {
 	);
 
 	void it('throws', async () => {
-		await assert.rejects(
+		await rejects_partial_match(
 			instance.convert_unknown(
 				{
 					$ref: '#/definitions/decimal-string',
@@ -38,7 +41,7 @@ void describe('RefToTypedObjectStringBasic .convert_unknown', async () => {
 				message: 'Schema not a typed_object_string string!',
 			}
 		);
-		await assert.rejects(
+		await rejects_partial_match(
 			instance.convert_unknown(
 				{
 					$ref: '#/definitions/color',
