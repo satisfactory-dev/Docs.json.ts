@@ -5694,39 +5694,43 @@
 				"required": ["EditorCurveData"],
 				"additionalProperties": false,
 				"properties": {
-				"EditorCurveData": {
-					"type": "string",
-					"minLength": 1,
+					"EditorCurveData": {
+						"type": "string",
+						"minLength": 1,
 						"typed_string": {
 							"type": "object",
-							"required": ["DefaultValue", "PreInfinityExtrap", "PostInfinityExtrap"],
+							"required": [
+								"DefaultValue",
+								"PreInfinityExtrap",
+								"PostInfinityExtrap"
+							],
 							"additionalProperties": false,
 							"properties": {
-							"DefaultValue": {
-								"$ref": "#/definitions/decimal-string"
-							},
-							"PreInfinityExtrap": {
-								"$ref": "#/definitions/InfinityExtrap"
-							},
-							"PostInfinityExtrap": {
-								"$ref": "#/definitions/InfinityExtrap"
-							}
+								"DefaultValue": {
+									"$ref": "#/definitions/decimal-string"
+								},
+								"PreInfinityExtrap": {
+									"$ref": "#/definitions/InfinityExtrap"
+								},
+								"PostInfinityExtrap": {
+									"$ref": "#/definitions/InfinityExtrap"
+								}
 							}
 						}
-						},
-						"ExternalCurve": {
-							"type": "string",
-							"minLength": 1,
-							"UnrealEngineString": {
-								"left": "/Script/Engine.CurveFloat",
-								"right": [
-									"/Game/FactoryGame/Resource/Parts/SpikedRebar/SpikedRebar_Falloff.SpikedRebar_Falloff",
-									"/Game/FactoryGame/Resource/Parts/CartridgeStandard/LinearDamageFalloff.LinearDamageFalloff"
-								]
-							}
+					},
+					"ExternalCurve": {
+						"type": "string",
+						"minLength": 1,
+						"UnrealEngineString": {
+							"left": "/Script/Engine.CurveFloat",
+							"right": [
+								"/Game/FactoryGame/Resource/Parts/SpikedRebar/SpikedRebar_Falloff.SpikedRebar_Falloff",
+								"/Game/FactoryGame/Resource/Parts/CartridgeStandard/LinearDamageFalloff.LinearDamageFalloff"
+							]
 						}
 					}
 				}
+			}
 		},
 		"mDamageTypes": {
 			"type": "string",
