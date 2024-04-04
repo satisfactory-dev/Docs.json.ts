@@ -2,6 +2,6 @@
 	"reporter": ["lcovonly"],
 	"report-dir": "./coverage",
 	"all": true,
-	"include": ["lib"],
+	"include": ["assert", "lib"],
 	"exclude": ["."]
 }

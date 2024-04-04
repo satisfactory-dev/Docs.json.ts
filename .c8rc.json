@@ -2,6 +2,6 @@
 	"reporter": ["text", "html"],
 	"report-dir": "./coverage",
 	"all": true,
-	"include": ["lib"],
+	"include": ["assert", "lib"],
 	"exclude": ["."]
 }
