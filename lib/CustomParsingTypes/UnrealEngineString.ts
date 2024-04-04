@@ -40,8 +40,6 @@ import {
 	entry,
 } from '../FilesGenerator';
 
-const already_configured = new WeakSet<Ajv>();
-
 export const UnrealEngineString_regex = /^([^']+)'(?:"([^"]+)"|([^"]+))'$/;
 
 export const UnrealEngineString_general_regex =
@@ -249,6 +247,8 @@ const right_value_starts_with_suffix =
 	'(?:[A-Z][A-Za-z0-9_.]+/)*[A-Z][A-Za-z_.0-9-]+(?::[A-Z][A-Za-z0-9]+)?';
 
 export class UnrealEngineString {
+	private static already_configured:WeakSet<Ajv> = new WeakSet<Ajv>();
+
 	static ajv_macro_generator(inner: boolean) {
 		return (data_from_schema: UnrealEngineString_type) => {
 			const data:
@@ -295,11 +295,11 @@ export class UnrealEngineString {
 	}
 
 	static configure_ajv(ajv: Ajv) {
-		if (already_configured.has(ajv)) {
+		if (this.already_configured.has(ajv)) {
 			return;
 		}
 
-		already_configured.add(ajv);
+		this.already_configured.add(ajv);
 
 		ajv.addKeyword({
 			keyword: 'UnrealEngineString',
