@@ -231,7 +231,12 @@ export class TypeDefinitionWriter
 
 
 		const auto_imports = new DocsTsAutoImports(files);
-		const import_tracker = await auto_imports.generate();
+		const import_tracker = auto_imports.generate();
+
+		await writeFile(
+			`${__dirname}/../imports-come-from.json`,
+			auto_imports.imports_come_from
+		);
 
 		const printer = ts.createPrinter({
 			newLine: ts.NewLineKind.LineFeed,

@@ -8,9 +8,6 @@ import {
 	basename, dirname, relative,
 } from 'node:path';
 import {
-	writeFile,
-} from 'node:fs/promises';
-import {
 	from_Node_array,
 } from './DocsToAutoImport/from_Node_array';
 import {
@@ -33,7 +30,12 @@ export class DocsTsAutoImports {
 		this.files_entries = Object.entries(files);
 	}
 
-	async generate() : Promise<ImportTracker> {
+	get imports_come_from() : string
+	{
+		return `${JSON.stringify(this.comes_from, null, '\t')}\n`;
+	}
+
+	generate() : ImportTracker {
 		const file_exports = this.file_exports();
 
 		for (const entry of Object.entries(file_exports)) {
@@ -50,11 +52,6 @@ export class DocsTsAutoImports {
 				this.comes_from[export_name] = filename.replace(/\.ts$/, '');
 			}
 		}
-
-		await writeFile(
-			`/app/imports-come-from.json`,
-			JSON.stringify(this.comes_from, null, '\t') + '\n'
-		);
 
 		const auto_imports: import_these_later = {};
 
