@@ -71,18 +71,18 @@
 			"typed_string": {
 				"required": ["B", "G", "R", "A"],
 				"properties": {
-				"B": {
-					"$ref": "#/definitions/integer-string"
-				},
-				"G": {
-					"$ref": "#/definitions/integer-string"
-				},
-				"R": {
-					"$ref": "#/definitions/integer-string"
-				},
-				"A": {
-					"$ref": "#/definitions/integer-string"
-				}
+					"B": {
+						"$ref": "#/definitions/integer-string"
+					},
+					"G": {
+						"$ref": "#/definitions/integer-string"
+					},
+					"R": {
+						"$ref": "#/definitions/integer-string"
+					},
+					"A": {
+						"$ref": "#/definitions/integer-string"
+					}
 				}
 			}
 		},
@@ -92,18 +92,18 @@
 			"typed_string": {
 				"required": ["R", "G", "B", "A"],
 				"properties": {
-				"R": {
-					"$ref": "#/definitions/decimal-string"
-				},
-				"G": {
-					"$ref": "#/definitions/decimal-string"
-				},
-				"B": {
-					"$ref": "#/definitions/decimal-string"
-				},
-				"A": {
-					"$ref": "#/definitions/decimal-string"
-				}
+					"R": {
+						"$ref": "#/definitions/decimal-string"
+					},
+					"G": {
+						"$ref": "#/definitions/decimal-string"
+					},
+					"B": {
+						"$ref": "#/definitions/decimal-string"
+					},
+					"A": {
+						"$ref": "#/definitions/decimal-string"
+					}
 				}
 			}
 		},
@@ -121,15 +121,15 @@
 			"typed_string": {
 				"required": ["X", "Y", "Z"],
 				"properties": {
-				"X": {
-					"$ref": "#/definitions/decimal-string--signed"
-				},
-				"Y": {
-					"$ref": "#/definitions/decimal-string--signed"
-				},
-				"Z": {
-					"$ref": "#/definitions/decimal-string--signed"
-				}
+					"X": {
+						"$ref": "#/definitions/decimal-string--signed"
+					},
+					"Y": {
+						"$ref": "#/definitions/decimal-string--signed"
+					},
+					"Z": {
+						"$ref": "#/definitions/decimal-string--signed"
+					}
 				}
 			}
 		},
@@ -139,12 +139,12 @@
 			"typed_string": {
 				"required": ["X", "Y"],
 				"properties": {
-				"X": {
-					"$ref": "#/definitions/decimal-string--signed"
-				},
-				"Y": {
-					"$ref": "#/definitions/decimal-string--signed"
-				}
+					"X": {
+						"$ref": "#/definitions/decimal-string--signed"
+					},
+					"Y": {
+						"$ref": "#/definitions/decimal-string--signed"
+					}
 				}
 			}
 		},
@@ -154,12 +154,12 @@
 			"typed_string": {
 				"required": ["X", "Y"],
 				"properties": {
-				"X": {
-					"$ref": "#/definitions/integer-string"
-				},
-				"Y": {
-					"$ref": "#/definitions/integer-string"
-				}
+					"X": {
+						"$ref": "#/definitions/integer-string"
+					},
+					"Y": {
+						"$ref": "#/definitions/integer-string"
+					}
 				}
 			}
 		},
@@ -169,18 +169,18 @@
 			"typed_string": {
 				"required": ["X", "Y", "Z", "W"],
 				"properties": {
-				"X": {
-					"$ref": "#/definitions/decimal-string--signed"
-				},
-				"Y": {
-					"$ref": "#/definitions/decimal-string--signed"
-				},
-				"Z": {
-					"$ref": "#/definitions/decimal-string--signed"
-				},
-				"W": {
-					"$ref": "#/definitions/decimal-string"
-				}
+					"X": {
+						"$ref": "#/definitions/decimal-string--signed"
+					},
+					"Y": {
+						"$ref": "#/definitions/decimal-string--signed"
+					},
+					"Z": {
+						"$ref": "#/definitions/decimal-string--signed"
+					},
+					"W": {
+						"$ref": "#/definitions/decimal-string"
+					}
 				}
 			}
 		},
@@ -190,15 +190,15 @@
 			"typed_string": {
 				"required": ["Pitch", "Yaw", "Roll"],
 				"properties": {
-				"Pitch": {
-					"$ref": "#/definitions/decimal-string--signed"
-				},
-				"Yaw": {
-					"$ref": "#/definitions/decimal-string--signed"
-				},
-				"Roll": {
-					"$ref": "#/definitions/decimal-string--signed"
-				}
+					"Pitch": {
+						"$ref": "#/definitions/decimal-string--signed"
+					},
+					"Yaw": {
+						"$ref": "#/definitions/decimal-string--signed"
+					},
+					"Roll": {
+						"$ref": "#/definitions/decimal-string--signed"
+					}
 				}
 			}
 		},
@@ -208,15 +208,15 @@
 			"typed_string": {
 				"required": ["X", "Y", "Z"],
 				"properties": {
-				"X": {
-					"$ref": "#/definitions/integer-string"
-				},
-				"Y": {
-					"$ref": "#/definitions/integer-string"
-				},
-				"Z": {
-					"$ref": "#/definitions/integer-string"
-				}
+					"X": {
+						"$ref": "#/definitions/integer-string"
+					},
+					"Y": {
+						"$ref": "#/definitions/integer-string"
+					},
+					"Z": {
+						"$ref": "#/definitions/integer-string"
+					}
 				}
 			}
 		},
@@ -231,15 +231,15 @@
 					"typed_string": {
 						"required": ["X", "Y", "Z"],
 						"properties": {
-						"X": {
-							"$ref": "#/definitions/decimal-string"
-						},
-						"Y": {
-							"$ref": "#/definitions/decimal-string--signed"
-						},
-						"Z": {
-							"$ref": "#/definitions/decimal-string--signed"
-						}
+							"X": {
+								"$ref": "#/definitions/decimal-string"
+							},
+							"Y": {
+								"$ref": "#/definitions/decimal-string--signed"
+							},
+							"Z": {
+								"$ref": "#/definitions/decimal-string--signed"
+							}
 						}
 					}
 				}
@@ -280,15 +280,15 @@
 			"typed_string": {
 				"required": ["Rotation", "Translation", "Scale3D"],
 				"properties": {
-				"Rotation": {
-					"$ref": "#/definitions/quaternion"
-				},
-				"Translation": {
-					"$ref": "#/definitions/xyz"
-				},
-				"Scale3D": {
-					"$ref": "#/definitions/xyz"
-				}
+					"Rotation": {
+						"$ref": "#/definitions/quaternion"
+					},
+					"Translation": {
+						"$ref": "#/definitions/xyz"
+					},
+					"Scale3D": {
+						"$ref": "#/definitions/xyz"
+					}
 				}
 			}
 		},
@@ -349,14 +349,14 @@
 					"typed_string": {
 						"required": ["ItemClass"],
 						"properties": {
-						"ItemClass": {
+							"ItemClass": {
 								"type": "string",
 								"minLength": 1,
 								"UnrealEngineString": true
-						},
-						"Amount": {
-							"$ref": "#/definitions/integer-string"
-						}
+							},
+							"Amount": {
+								"$ref": "#/definitions/integer-string"
+							}
 						}
 					}
 				}
@@ -433,9 +433,9 @@
 									"typed_string": {
 										"required": ["Value"],
 										"properties": {
-										"Value": {
-											"$ref": "#/definitions/integer-string"
-										}
+											"Value": {
+												"$ref": "#/definitions/integer-string"
+											}
 										}
 									}
 								}
@@ -472,25 +472,25 @@
 											"CompatibleItemDescriptors"
 										],
 										"properties": {
-										"CompatibleItemType": {
-											"type": "string",
-											"enum": [
-												"CIT_AMMO",
-												"CIT_WEAPON"
-											]
-										},
-										"CompatibleItemDescriptors": {
-											"type": "string",
-											"minLength": 1,
-											"typed_string": {
-												"minItems": 1,
-												"items": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": true
+											"CompatibleItemType": {
+												"type": "string",
+												"enum": [
+													"CIT_AMMO",
+													"CIT_WEAPON"
+												]
+											},
+											"CompatibleItemDescriptors": {
+												"type": "string",
+												"minLength": 1,
+												"typed_string": {
+													"minItems": 1,
+													"items": {
+														"type": "string",
+														"minLength": 1,
+														"UnrealEngineString": true
+													}
 												}
 											}
-										}
 										}
 									}
 								}
@@ -641,80 +641,77 @@
 									"type": "string",
 									"minLength": 1,
 									"typed_string": {
-										"required": [
-											"mMaterial",
-											"mRecipe"
-										],
+										"required": ["mMaterial", "mRecipe"],
 										"properties": {
-										"mMaterial": {
-											"type": "string",
-											"enum": [
-												"/Game/FactoryGame/Buildable/-Shared/Customization/Materials/MaterialDesc_Foundation_Asphalt.MaterialDesc_Foundation_Asphalt_C",
-												"/Game/FactoryGame/Buildable/-Shared/Customization/Materials/MaterialDesc_Foundation_Concrete.MaterialDesc_Foundation_Concrete_C",
-												"/Game/FactoryGame/Buildable/-Shared/Customization/Materials/MaterialDesc_Foundation_Default.MaterialDesc_Foundation_Default_C",
-												"/Game/FactoryGame/Buildable/-Shared/Customization/Materials/MaterialDesc_Foundation_GripMetal.MaterialDesc_Foundation_GripMetal_C",
-												"/Game/FactoryGame/Buildable/-Shared/Customization/Materials/MaterialDesc_Foundation_PolishedConcrete.MaterialDesc_Foundation_PolishedConcrete_C"
-											]
-										},
-										"mRecipe": {
-											"type": "string",
-											"enum": [
-												"/Game/FactoryGame/Recipes/Buildings/Foundations/Recipe_QuarterPipeCorner_01.Recipe_QuarterPipeCorner_01_C",
+											"mMaterial": {
+												"type": "string",
+												"enum": [
+													"/Game/FactoryGame/Buildable/-Shared/Customization/Materials/MaterialDesc_Foundation_Asphalt.MaterialDesc_Foundation_Asphalt_C",
+													"/Game/FactoryGame/Buildable/-Shared/Customization/Materials/MaterialDesc_Foundation_Concrete.MaterialDesc_Foundation_Concrete_C",
+													"/Game/FactoryGame/Buildable/-Shared/Customization/Materials/MaterialDesc_Foundation_Default.MaterialDesc_Foundation_Default_C",
+													"/Game/FactoryGame/Buildable/-Shared/Customization/Materials/MaterialDesc_Foundation_GripMetal.MaterialDesc_Foundation_GripMetal_C",
+													"/Game/FactoryGame/Buildable/-Shared/Customization/Materials/MaterialDesc_Foundation_PolishedConcrete.MaterialDesc_Foundation_PolishedConcrete_C"
+												]
+											},
+											"mRecipe": {
+												"type": "string",
+												"enum": [
+													"/Game/FactoryGame/Recipes/Buildings/Foundations/Recipe_QuarterPipeCorner_01.Recipe_QuarterPipeCorner_01_C",
 
-												"/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_QuarterPipeMiddle_Asphalt_8x1.Recipe_QuarterPipeMiddle_Asphalt_8x1_C",
-												"/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_QuarterPipeMiddle_Asphalt_8x2.Recipe_QuarterPipeMiddle_Asphalt_8x2_C",
-												"/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_QuarterPipeMiddle_Asphalt_8x4.Recipe_QuarterPipeMiddle_Asphalt_8x4_C",
-												"/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_QuarterPipeMiddleInCorner_Asphalt_8x1.Recipe_QuarterPipeMiddleInCorner_Asphalt_8x1_C",
-												"/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_QuarterPipeMiddleInCorner_Asphalt_8x2.Recipe_QuarterPipeMiddleInCorner_Asphalt_8x2_C",
-												"/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_QuarterPipeMiddleInCorner_Asphalt_8x4.Recipe_QuarterPipeMiddleInCorner_Asphalt_8x4_C",
-												"/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_QuarterPipeMiddleOutCorner_Asphalt_4x1.Recipe_QuarterPipeMiddleOutCorner_Asphalt_4x1_C",
-												"/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_QuarterPipeMiddleOutCorner_Asphalt_4x2.Recipe_QuarterPipeMiddleOutCorner_Asphalt_4x2_C",
-												"/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_QuarterPipeMiddleOutCorner_Asphalt_4x4.Recipe_QuarterPipeMiddleOutCorner_Asphalt_4x4_C",
-												"/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_QuarterPipeInCorner_Asphalt_8x4.Recipe_QuarterPipeInCorner_Asphalt_8x4_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_QuarterPipeMiddle_Asphalt_8x1.Recipe_QuarterPipeMiddle_Asphalt_8x1_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_QuarterPipeMiddle_Asphalt_8x2.Recipe_QuarterPipeMiddle_Asphalt_8x2_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_QuarterPipeMiddle_Asphalt_8x4.Recipe_QuarterPipeMiddle_Asphalt_8x4_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_QuarterPipeMiddleInCorner_Asphalt_8x1.Recipe_QuarterPipeMiddleInCorner_Asphalt_8x1_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_QuarterPipeMiddleInCorner_Asphalt_8x2.Recipe_QuarterPipeMiddleInCorner_Asphalt_8x2_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_QuarterPipeMiddleInCorner_Asphalt_8x4.Recipe_QuarterPipeMiddleInCorner_Asphalt_8x4_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_QuarterPipeMiddleOutCorner_Asphalt_4x1.Recipe_QuarterPipeMiddleOutCorner_Asphalt_4x1_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_QuarterPipeMiddleOutCorner_Asphalt_4x2.Recipe_QuarterPipeMiddleOutCorner_Asphalt_4x2_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_QuarterPipeMiddleOutCorner_Asphalt_4x4.Recipe_QuarterPipeMiddleOutCorner_Asphalt_4x4_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_QuarterPipeInCorner_Asphalt_8x4.Recipe_QuarterPipeInCorner_Asphalt_8x4_C",
 
-												"/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_QuarterPipeMiddle_Concrete_8x1.Recipe_QuarterPipeMiddle_Concrete_8x1_C",
-												"/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_QuarterPipeMiddle_Concrete_8x2.Recipe_QuarterPipeMiddle_Concrete_8x2_C",
-												"/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_QuarterPipeMiddle_Concrete_8x4.Recipe_QuarterPipeMiddle_Concrete_8x4_C",
-												"/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_QuarterPipeMiddleInCorner_Concrete_8x1.Recipe_QuarterPipeMiddleInCorner_Concrete_8x1_C",
-												"/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_QuarterPipeMiddleInCorner_Concrete_8x2.Recipe_QuarterPipeMiddleInCorner_Concrete_8x2_C",
-												"/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_QuarterPipeMiddleInCorner_Concrete_8x4.Recipe_QuarterPipeMiddleInCorner_Concrete_8x4_C",
-												"/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_QuarterPipeMiddleOutCorner_Concrete_4x1.Recipe_QuarterPipeMiddleOutCorner_Concrete_4x1_C",
-												"/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_QuarterPipeMiddleOutCorner_Concrete_4x2.Recipe_QuarterPipeMiddleOutCorner_Concrete_4x2_C",
-												"/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_QuarterPipeMiddleOutCorner_Concrete_4x4.Recipe_QuarterPipeMiddleOutCorner_Concrete_4x4_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_QuarterPipeMiddle_Concrete_8x1.Recipe_QuarterPipeMiddle_Concrete_8x1_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_QuarterPipeMiddle_Concrete_8x2.Recipe_QuarterPipeMiddle_Concrete_8x2_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_QuarterPipeMiddle_Concrete_8x4.Recipe_QuarterPipeMiddle_Concrete_8x4_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_QuarterPipeMiddleInCorner_Concrete_8x1.Recipe_QuarterPipeMiddleInCorner_Concrete_8x1_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_QuarterPipeMiddleInCorner_Concrete_8x2.Recipe_QuarterPipeMiddleInCorner_Concrete_8x2_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_QuarterPipeMiddleInCorner_Concrete_8x4.Recipe_QuarterPipeMiddleInCorner_Concrete_8x4_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_QuarterPipeMiddleOutCorner_Concrete_4x1.Recipe_QuarterPipeMiddleOutCorner_Concrete_4x1_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_QuarterPipeMiddleOutCorner_Concrete_4x2.Recipe_QuarterPipeMiddleOutCorner_Concrete_4x2_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_QuarterPipeMiddleOutCorner_Concrete_4x4.Recipe_QuarterPipeMiddleOutCorner_Concrete_4x4_C",
 
-												"/Game/FactoryGame/Buildable/Building/Foundation/FicsitSet/Recipe_QuarterPipeMiddle_Ficsit_4x1.Recipe_QuarterPipeMiddle_Ficsit_4x1_C",
-												"/Game/FactoryGame/Buildable/Building/Foundation/FicsitSet/Recipe_QuarterPipeMiddle_Ficsit_4x2.Recipe_QuarterPipeMiddle_Ficsit_4x2_C",
-												"/Game/FactoryGame/Buildable/Building/Foundation/FicsitSet/Recipe_QuarterPipeMiddle_Ficsit_4x4.Recipe_QuarterPipeMiddle_Ficsit_4x4_C",
-												"/Game/FactoryGame/Buildable/Building/Foundation/FicsitSet/Recipe_QuarterPipeMiddleInCorner_Ficsit_8x1.Recipe_QuarterPipeMiddleInCorner_Ficsit_8x1_C",
-												"/Game/FactoryGame/Buildable/Building/Foundation/FicsitSet/Recipe_QuarterPipeMiddleInCorner_Ficsit_8x2.Recipe_QuarterPipeMiddleInCorner_Ficsit_8x2_C",
-												"/Game/FactoryGame/Buildable/Building/Foundation/FicsitSet/Recipe_QuarterPipeMiddleInCorner_Ficsit_8x4.Recipe_QuarterPipeMiddleInCorner_Ficsit_8x4_C",
-												"/Game/FactoryGame/Buildable/Building/Foundation/FicsitSet/Recipe_QuarterPipeMiddleOutCorner_Ficsit_4x1.Recipe_QuarterPipeMiddleOutCorner_Ficsit_4x1_C",
-												"/Game/FactoryGame/Buildable/Building/Foundation/FicsitSet/Recipe_QuarterPipeMiddleOutCorner_Ficsit_4x2.Recipe_QuarterPipeMiddleOutCorner_Ficsit_4x2_C",
-												"/Game/FactoryGame/Buildable/Building/Foundation/FicsitSet/Recipe_QuarterPipeMiddleOutCorner_Ficsit_4x4.Recipe_QuarterPipeMiddleOutCorner_Ficsit_4x4_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/FicsitSet/Recipe_QuarterPipeMiddle_Ficsit_4x1.Recipe_QuarterPipeMiddle_Ficsit_4x1_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/FicsitSet/Recipe_QuarterPipeMiddle_Ficsit_4x2.Recipe_QuarterPipeMiddle_Ficsit_4x2_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/FicsitSet/Recipe_QuarterPipeMiddle_Ficsit_4x4.Recipe_QuarterPipeMiddle_Ficsit_4x4_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/FicsitSet/Recipe_QuarterPipeMiddleInCorner_Ficsit_8x1.Recipe_QuarterPipeMiddleInCorner_Ficsit_8x1_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/FicsitSet/Recipe_QuarterPipeMiddleInCorner_Ficsit_8x2.Recipe_QuarterPipeMiddleInCorner_Ficsit_8x2_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/FicsitSet/Recipe_QuarterPipeMiddleInCorner_Ficsit_8x4.Recipe_QuarterPipeMiddleInCorner_Ficsit_8x4_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/FicsitSet/Recipe_QuarterPipeMiddleOutCorner_Ficsit_4x1.Recipe_QuarterPipeMiddleOutCorner_Ficsit_4x1_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/FicsitSet/Recipe_QuarterPipeMiddleOutCorner_Ficsit_4x2.Recipe_QuarterPipeMiddleOutCorner_Ficsit_4x2_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/FicsitSet/Recipe_QuarterPipeMiddleOutCorner_Ficsit_4x4.Recipe_QuarterPipeMiddleOutCorner_Ficsit_4x4_C",
 
-												"/Game/FactoryGame/Buildable/Building/Foundation/GripMetal/Recipe_QuarterPipeMiddle_Grip_8x1.Recipe_QuarterPipeMiddle_Grip_8x1_C",
-												"/Game/FactoryGame/Buildable/Building/Foundation/GripMetal/Recipe_QuarterPipeMiddle_Grip_8x2.Recipe_QuarterPipeMiddle_Grip_8x2_C",
-												"/Game/FactoryGame/Buildable/Building/Foundation/GripMetal/Recipe_QuarterPipeMiddle_Grip_8x4.Recipe_QuarterPipeMiddle_Grip_8x4_C",
-												"/Game/FactoryGame/Buildable/Building/Foundation/GripMetal/Recipe_QuarterPipeMiddleInCorner_Grip_8x1.Recipe_QuarterPipeMiddleInCorner_Grip_8x1_C",
-												"/Game/FactoryGame/Buildable/Building/Foundation/GripMetal/Recipe_QuarterPipeMiddleInCorner_Grip_8x2.Recipe_QuarterPipeMiddleInCorner_Grip_8x2_C",
-												"/Game/FactoryGame/Buildable/Building/Foundation/GripMetal/Recipe_QuarterPipeMiddleInCorner_Grip_8x4.Recipe_QuarterPipeMiddleInCorner_Grip_8x4_C",
-												"/Game/FactoryGame/Buildable/Building/Foundation/GripMetal/Recipe_QuarterPipeMiddleOutCorner_Grip_4x1.Recipe_QuarterPipeMiddleOutCorner_Grip_4x1_C",
-												"/Game/FactoryGame/Buildable/Building/Foundation/GripMetal/Recipe_QuarterPipeMiddleOutCorner_Grip_4x2.Recipe_QuarterPipeMiddleOutCorner_Grip_4x2_C",
-												"/Game/FactoryGame/Buildable/Building/Foundation/GripMetal/Recipe_QuarterPipeMiddleOutCorner_Grip_4x4.Recipe_QuarterPipeMiddleOutCorner_Grip_4x4_C",
-												"/Game/FactoryGame/Buildable/Building/Foundation/GripMetal/Recipe_QuarterPipeInCorner_Grip_8x4.Recipe_QuarterPipeInCorner_Grip_8x4_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/GripMetal/Recipe_QuarterPipeMiddle_Grip_8x1.Recipe_QuarterPipeMiddle_Grip_8x1_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/GripMetal/Recipe_QuarterPipeMiddle_Grip_8x2.Recipe_QuarterPipeMiddle_Grip_8x2_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/GripMetal/Recipe_QuarterPipeMiddle_Grip_8x4.Recipe_QuarterPipeMiddle_Grip_8x4_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/GripMetal/Recipe_QuarterPipeMiddleInCorner_Grip_8x1.Recipe_QuarterPipeMiddleInCorner_Grip_8x1_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/GripMetal/Recipe_QuarterPipeMiddleInCorner_Grip_8x2.Recipe_QuarterPipeMiddleInCorner_Grip_8x2_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/GripMetal/Recipe_QuarterPipeMiddleInCorner_Grip_8x4.Recipe_QuarterPipeMiddleInCorner_Grip_8x4_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/GripMetal/Recipe_QuarterPipeMiddleOutCorner_Grip_4x1.Recipe_QuarterPipeMiddleOutCorner_Grip_4x1_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/GripMetal/Recipe_QuarterPipeMiddleOutCorner_Grip_4x2.Recipe_QuarterPipeMiddleOutCorner_Grip_4x2_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/GripMetal/Recipe_QuarterPipeMiddleOutCorner_Grip_4x4.Recipe_QuarterPipeMiddleOutCorner_Grip_4x4_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/GripMetal/Recipe_QuarterPipeInCorner_Grip_8x4.Recipe_QuarterPipeInCorner_Grip_8x4_C",
 
-												"/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_QuarterPipeMiddle_PolishedConcrete_8x1.Recipe_QuarterPipeMiddle_PolishedConcrete_8x1_C",
-												"/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_QuarterPipeMiddle_PolishedConcrete_8x2.Recipe_QuarterPipeMiddle_PolishedConcrete_8x2_C",
-												"/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_QuarterPipeMiddle_PolishedConcrete_8x4.Recipe_QuarterPipeMiddle_PolishedConcrete_8x4_C",
-												"/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_QuarterPipeMiddleInCorner_PolishedConcrete_8x1.Recipe_QuarterPipeMiddleInCorner_PolishedConcrete_8x1_C",
-												"/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_QuarterPipeMiddleInCorner_PolishedConcrete_8x2.Recipe_QuarterPipeMiddleInCorner_PolishedConcrete_8x2_C",
-												"/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_QuarterPipeMiddleInCorner_PolishedConcrete_8x4.Recipe_QuarterPipeMiddleInCorner_PolishedConcrete_8x4_C",
-												"/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_QuarterPipeMiddleOutCorner_PolishedConcrete_4x1.Recipe_QuarterPipeMiddleOutCorner_PolishedConcrete_4x1_C",
-												"/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_QuarterPipeMiddleOutCorner_PolishedConcrete_4x2.Recipe_QuarterPipeMiddleOutCorner_PolishedConcrete_4x2_C",
-												"/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_QuarterPipeMiddleOutCorner_PolishedConcrete_4x4.Recipe_QuarterPipeMiddleOutCorner_PolishedConcrete_4x4_C",
-												"/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_QuarterPipeInCorner_ConcretePolished_8x4.Recipe_QuarterPipeInCorner_ConcretePolished_8x4_C"
-											]
-										}
+													"/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_QuarterPipeMiddle_PolishedConcrete_8x1.Recipe_QuarterPipeMiddle_PolishedConcrete_8x1_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_QuarterPipeMiddle_PolishedConcrete_8x2.Recipe_QuarterPipeMiddle_PolishedConcrete_8x2_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_QuarterPipeMiddle_PolishedConcrete_8x4.Recipe_QuarterPipeMiddle_PolishedConcrete_8x4_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_QuarterPipeMiddleInCorner_PolishedConcrete_8x1.Recipe_QuarterPipeMiddleInCorner_PolishedConcrete_8x1_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_QuarterPipeMiddleInCorner_PolishedConcrete_8x2.Recipe_QuarterPipeMiddleInCorner_PolishedConcrete_8x2_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_QuarterPipeMiddleInCorner_PolishedConcrete_8x4.Recipe_QuarterPipeMiddleInCorner_PolishedConcrete_8x4_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_QuarterPipeMiddleOutCorner_PolishedConcrete_4x1.Recipe_QuarterPipeMiddleOutCorner_PolishedConcrete_4x1_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_QuarterPipeMiddleOutCorner_PolishedConcrete_4x2.Recipe_QuarterPipeMiddleOutCorner_PolishedConcrete_4x2_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_QuarterPipeMiddleOutCorner_PolishedConcrete_4x4.Recipe_QuarterPipeMiddleOutCorner_PolishedConcrete_4x4_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_QuarterPipeInCorner_ConcretePolished_8x4.Recipe_QuarterPipeInCorner_ConcretePolished_8x4_C"
+												]
+											}
 										}
 									}
 								}
@@ -794,15 +791,15 @@
 									"typed_string": {
 										"required": ["Min", "Max", "IsValid"],
 										"properties": {
-										"Min": {
-											"$ref": "#/definitions/xyz"
-										},
-										"Max": {
-											"$ref": "#/definitions/xyz"
-										},
-										"IsValid": {
-											"$ref": "#/definitions/boolean"
-										}
+											"Min": {
+												"$ref": "#/definitions/xyz"
+											},
+											"Max": {
+												"$ref": "#/definitions/xyz"
+											},
+											"IsValid": {
+												"$ref": "#/definitions/boolean"
+											}
 										}
 									}
 								}
@@ -1280,9 +1277,9 @@
 			"typed_string": {
 				"required": ["SpecifiedColor"],
 				"properties": {
-				"SpecifiedColor": {
-					"$ref": "#/definitions/color-decimal"
-				}
+					"SpecifiedColor": {
+						"$ref": "#/definitions/color-decimal"
+					}
 				}
 			}
 		},
@@ -1397,24 +1394,22 @@
 					"typed_string": {
 						"minItems": 1,
 						"items": {
-									"type": "string",
-									"minLength": 1,
+							"type": "string",
+							"minLength": 1,
 							"typed_string": {
-								"required": [
-									"ResourceDescriptor"
-								],
+								"required": ["ResourceDescriptor"],
 								"properties": {
-										"ResourceDescriptor": {
-											"type": "string",
-											"minLength": 1,
-											"UnrealEngineString": true
-										},
-										"ResourceNodeType": {
-											"type": "string",
-											"enum": ["FrackingCore", "Geyser"]
-										}
+									"ResourceDescriptor": {
+										"type": "string",
+										"minLength": 1,
+										"UnrealEngineString": true
+									},
+									"ResourceNodeType": {
+										"type": "string",
+										"enum": ["FrackingCore", "Geyser"]
 									}
 								}
+							}
 						}
 					}
 				}
@@ -1528,25 +1523,25 @@
 									"ActorsAllowedToScan"
 								],
 								"properties": {
-								"ItemDescriptor": {
-									"type": "string",
-									"minLength": 1,
-									"UnrealEngineString": true
-								},
-								"ActorsAllowedToScan": {
-									"type": "string",
-									"minLength": 1,
-									"typed_string": {
-										"minItems": 1,
-										"items": {
-											"type": "string",
-											"minLength": 1,
-											"UnrealEngineString": {
-												"left": "/Script/CoreUObject.Class"
+									"ItemDescriptor": {
+										"type": "string",
+										"minLength": 1,
+										"UnrealEngineString": true
+									},
+									"ActorsAllowedToScan": {
+										"type": "string",
+										"minLength": 1,
+										"typed_string": {
+											"minItems": 1,
+											"items": {
+												"type": "string",
+												"minLength": 1,
+												"UnrealEngineString": {
+													"left": "/Script/CoreUObject.Class"
+												}
 											}
 										}
 									}
-								}
 								}
 							}
 						}
@@ -1733,8 +1728,8 @@
 					}
 				},
 				"mSchematicIcon": {
-							"type": "string",
-							"minLength": 1,
+					"type": "string",
+					"minLength": 1,
 					"typed_string": {
 						"required": [
 							"DrawAs",
@@ -1745,67 +1740,63 @@
 							"UVRegion"
 						],
 						"properties": {
-								"DrawAs": {
-									"type": "string",
-									"const": "Image"
-								},
-								"ImageSize": {
-									"$ref": "#/definitions/xy"
-								},
-								"Margin": {
-									"$ref": "#/definitions/empty-object"
-								},
-								"TintColor": {
-									"$ref": "#/definitions/SpecifiedColor"
-								},
-								"OutlineSettings": {
-							"type": "string",
-							"minLength": 1,
-							"typed_string": {
-								"required": [
-									"CornerRadii",
-									"Color",
-									"RoundingType"
-								],
-								"properties": {
-									"CornerRadii": {
-										"$ref": "#/definitions/quaternion"
-									},
-									"Color": {
-										"$ref": "#/definitions/SpecifiedColor"
-									},
-									"RoundingType": {
-										"type": "string",
-										"const": "HalfHeightRadius"
-									}
+							"DrawAs": {
+								"type": "string",
+								"const": "Image"
+							},
+							"ImageSize": {
+								"$ref": "#/definitions/xy"
+							},
+							"Margin": {
+								"$ref": "#/definitions/empty-object"
+							},
+							"TintColor": {
+								"$ref": "#/definitions/SpecifiedColor"
+							},
+							"OutlineSettings": {
+								"type": "string",
+								"minLength": 1,
+								"typed_string": {
+									"required": [
+										"CornerRadii",
+										"Color",
+										"RoundingType"
+									],
+									"properties": {
+										"CornerRadii": {
+											"$ref": "#/definitions/quaternion"
+										},
+										"Color": {
+											"$ref": "#/definitions/SpecifiedColor"
+										},
+										"RoundingType": {
+											"type": "string",
+											"const": "HalfHeightRadius"
 										}
 									}
-								},
-								"ResourceObject": {
-									"$ref": "#/definitions/Texture2D"
-								},
-								"UVRegion": {
-							"type": "string",
-							"minLength": 1,
-							"typed_string": {
-								"required": [
-									"Min",
-									"Max",
-									"bIsValid"
-								],
-								"properties": {
-									"Min": {
-										"$ref": "#/definitions/xy"
-									},
-									"Max": {
-										"$ref": "#/definitions/xy"
-									},
-									"bIsValid": {
-										"$ref": "#/definitions/boolean"
+								}
+							},
+							"ResourceObject": {
+								"$ref": "#/definitions/Texture2D"
+							},
+							"UVRegion": {
+								"type": "string",
+								"minLength": 1,
+								"typed_string": {
+									"required": ["Min", "Max", "bIsValid"],
+									"properties": {
+										"Min": {
+											"$ref": "#/definitions/xy"
+										},
+										"Max": {
+											"$ref": "#/definitions/xy"
+										},
+										"bIsValid": {
+											"$ref": "#/definitions/boolean"
+										}
 									}
 								}
 							}
-								}
 						}
 					}
 				},
@@ -2165,18 +2156,18 @@
 							"InstanceScaleIndex"
 						],
 						"properties": {
-						"StartTangentPrimitiveDataStartIndex": {
-							"$ref": "#/definitions/integer-string"
-						},
-						"EndPositionPrimitiveDataStartIndex": {
-							"$ref": "#/definitions/integer-string"
-						},
-						"EndTangentPrimitiveDataStartIndex": {
-							"$ref": "#/definitions/integer-string"
-						},
-						"InstanceScaleIndex": {
-							"$ref": "#/definitions/integer-string--signed"
-						}
+							"StartTangentPrimitiveDataStartIndex": {
+								"$ref": "#/definitions/integer-string"
+							},
+							"EndPositionPrimitiveDataStartIndex": {
+								"$ref": "#/definitions/integer-string"
+							},
+							"EndTangentPrimitiveDataStartIndex": {
+								"$ref": "#/definitions/integer-string"
+							},
+							"InstanceScaleIndex": {
+								"$ref": "#/definitions/integer-string--signed"
+							}
 						}
 					}
 				},
@@ -2567,30 +2558,30 @@
 									"CameraAnimationSequence_11_920C446448786C507704569A05006500"
 								],
 								"properties": {
-								"Montage_7_2E66F6A948A8606E71185682EA2AC4EC": {
-									"type": "string",
-									"minLength": 1,
-									"UnrealEngineString": {
-										"left": "/Script/Engine.AnimMontage",
-										"right": [
-											"/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_01_Montage.MedkitUse_01_Montage",
-											"/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_02_Montage.MedkitUse_02_Montage",
-											"/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_03_Montage.MedkitUse_03_Montage"
-										]
+									"Montage_7_2E66F6A948A8606E71185682EA2AC4EC": {
+										"type": "string",
+										"minLength": 1,
+										"UnrealEngineString": {
+											"left": "/Script/Engine.AnimMontage",
+											"right": [
+												"/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_01_Montage.MedkitUse_01_Montage",
+												"/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_02_Montage.MedkitUse_02_Montage",
+												"/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_03_Montage.MedkitUse_03_Montage"
+											]
+										}
+									},
+									"CameraAnimationSequence_11_920C446448786C507704569A05006500": {
+										"type": "string",
+										"minLength": 1,
+										"UnrealEngineString": {
+											"left": "/Script/TemplateSequence.CameraAnimationSequence",
+											"right": [
+												"/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_01_CameraAnimSequence.MedkitUse_01_CameraAnimSequence",
+												"/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_02_CameraAnimSequence.MedkitUse_02_CameraAnimSequence",
+												"/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_03_CameraAnimSequence.MedkitUse_03_CameraAnimSequence"
+											]
+										}
 									}
-								},
-								"CameraAnimationSequence_11_920C446448786C507704569A05006500": {
-									"type": "string",
-									"minLength": 1,
-									"UnrealEngineString": {
-										"left": "/Script/TemplateSequence.CameraAnimationSequence",
-										"right": [
-											"/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_01_CameraAnimSequence.MedkitUse_01_CameraAnimSequence",
-											"/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_02_CameraAnimSequence.MedkitUse_02_CameraAnimSequence",
-											"/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_03_CameraAnimSequence.MedkitUse_03_CameraAnimSequence"
-										]
-									}
-								}
 								}
 							}
 						}
@@ -2998,31 +2989,28 @@
 							"type": "string",
 							"minLength": 1,
 							"typed_string": {
-								"required": [
-									"SlotName",
-									"Material"
-								],
+								"required": ["SlotName", "Material"],
 								"properties": {
-								"SlotName": {
-									"type": "string",
-									"enum": [
-										"Body_Details",
-										"Body_01",
-										"Body_02",
-										"Body_Hands",
-										"Body_Backpack"
-									]
-								},
-								"Material": {
-									"type": "string",
-									"minLength": 1,
-									"UnrealEngineString": {
-										"left": "/Script/Engine.MaterialInstanceConstant",
-										"right": {
-											"starts_with": "/Game/FactoryGame/Character/Player/Material/"
+									"SlotName": {
+										"type": "string",
+										"enum": [
+											"Body_Details",
+											"Body_01",
+											"Body_02",
+											"Body_Hands",
+											"Body_Backpack"
+										]
+									},
+									"Material": {
+										"type": "string",
+										"minLength": 1,
+										"UnrealEngineString": {
+											"left": "/Script/Engine.MaterialInstanceConstant",
+											"right": {
+												"starts_with": "/Game/FactoryGame/Character/Player/Material/"
+											}
 										}
 									}
-								}
 								}
 							}
 						}
@@ -3407,12 +3395,12 @@
 					"typed_string": {
 						"required": ["Top", "Bottom"],
 						"properties": {
-						"Top": {
-							"$ref": "#/definitions/boolean"
-						},
-						"Bottom": {
-							"$ref": "#/definitions/boolean"
-						}
+							"Top": {
+								"$ref": "#/definitions/boolean"
+							},
+							"Bottom": {
+								"$ref": "#/definitions/boolean"
+							}
 						}
 					}
 				},
@@ -3422,12 +3410,12 @@
 					"typed_string": {
 						"required": ["Front", "Bottom"],
 						"properties": {
-						"Front": {
-							"$ref": "#/definitions/boolean"
-						},
-						"Bottom": {
-							"$ref": "#/definitions/boolean"
-						}
+							"Front": {
+								"$ref": "#/definitions/boolean"
+							},
+							"Bottom": {
+								"$ref": "#/definitions/boolean"
+							}
 						}
 					}
 				},
@@ -3437,12 +3425,12 @@
 					"typed_string": {
 						"required": ["Front", "Right"],
 						"properties": {
-						"Front": {
-							"$ref": "#/definitions/boolean"
-						},
-						"Right": {
-							"$ref": "#/definitions/boolean"
-						}
+							"Front": {
+								"$ref": "#/definitions/boolean"
+							},
+							"Right": {
+								"$ref": "#/definitions/boolean"
+							}
 						}
 					}
 				},
@@ -3452,15 +3440,15 @@
 					"typed_string": {
 						"required": ["Front", "Top", "Bottom"],
 						"properties": {
-						"Front": {
-							"$ref": "#/definitions/boolean"
-						},
-						"Top": {
-							"$ref": "#/definitions/boolean"
-						},
-						"Bottom": {
-							"$ref": "#/definitions/boolean"
-						}
+							"Front": {
+								"$ref": "#/definitions/boolean"
+							},
+							"Top": {
+								"$ref": "#/definitions/boolean"
+							},
+							"Bottom": {
+								"$ref": "#/definitions/boolean"
+							}
 						}
 					}
 				},
@@ -3470,18 +3458,18 @@
 					"typed_string": {
 						"required": ["Right", "Left", "Top", "Bottom"],
 						"properties": {
-						"Right": {
-							"$ref": "#/definitions/boolean"
-						},
-						"Left": {
-							"$ref": "#/definitions/boolean"
-						},
-						"Top": {
-							"$ref": "#/definitions/boolean"
-						},
-						"Bottom": {
-							"$ref": "#/definitions/boolean"
-						}
+							"Right": {
+								"$ref": "#/definitions/boolean"
+							},
+							"Left": {
+								"$ref": "#/definitions/boolean"
+							},
+							"Top": {
+								"$ref": "#/definitions/boolean"
+							},
+							"Bottom": {
+								"$ref": "#/definitions/boolean"
+							}
 						}
 					}
 				},
@@ -3491,18 +3479,18 @@
 					"typed_string": {
 						"required": ["Front", "Left", "Top", "Bottom"],
 						"properties": {
-						"Front": {
-							"$ref": "#/definitions/boolean"
-						},
-						"Left": {
-							"$ref": "#/definitions/boolean"
-						},
-						"Top": {
-							"$ref": "#/definitions/boolean"
-						},
-						"Bottom": {
-							"$ref": "#/definitions/boolean"
-						}
+							"Front": {
+								"$ref": "#/definitions/boolean"
+							},
+							"Left": {
+								"$ref": "#/definitions/boolean"
+							},
+							"Top": {
+								"$ref": "#/definitions/boolean"
+							},
+							"Bottom": {
+								"$ref": "#/definitions/boolean"
+							}
 						}
 					}
 				},
@@ -3512,9 +3500,9 @@
 					"typed_string": {
 						"required": ["Top"],
 						"properties": {
-						"Top": {
-							"$ref": "#/definitions/boolean"
-						}
+							"Top": {
+								"$ref": "#/definitions/boolean"
+							}
 						}
 					}
 				},
@@ -3524,9 +3512,9 @@
 					"typed_string": {
 						"required": ["Bottom"],
 						"properties": {
-						"Bottom": {
-							"$ref": "#/definitions/boolean"
-						}
+							"Bottom": {
+								"$ref": "#/definitions/boolean"
+							}
 						}
 					}
 				}
@@ -3553,18 +3541,18 @@
 					"typed_string": {
 						"required": ["Right", "Left", "Top", "Bottom"],
 						"properties": {
-						"Right": {
-							"$ref": "#/definitions/boolean"
-						},
-						"Left": {
-							"$ref": "#/definitions/boolean"
-						},
-						"Top": {
-							"$ref": "#/definitions/boolean"
-						},
-						"Bottom": {
-							"$ref": "#/definitions/boolean"
-						}
+							"Right": {
+								"$ref": "#/definitions/boolean"
+							},
+							"Left": {
+								"$ref": "#/definitions/boolean"
+							},
+							"Top": {
+								"$ref": "#/definitions/boolean"
+							},
+							"Bottom": {
+								"$ref": "#/definitions/boolean"
+							}
 						}
 					}
 				}
@@ -3901,34 +3889,14 @@
 											"ActualName"
 										],
 										"properties": {
-										"WwiseSafeName": {
-											"type": "string",
-											"const": "Crude_Oil"
-										},
-										"ActualName": {
-											"type": "string",
-											"const": "Crude Oil"
-										}
-										}
-									}
-								},
-								{
-									"type": "string",
-									"minLength": 1,
-									"typed_string": {
-										"required": [
-											"WwiseSafeName",
-											"ActualName"
-										],
-										"properties": {
-										"WwiseSafeName": {
-											"type": "string",
-											"const": "Fuel"
-										},
-										"ActualName": {
-											"type": "string",
-											"const": "Fuel"
-										}
+											"WwiseSafeName": {
+												"type": "string",
+												"const": "Crude_Oil"
+											},
+											"ActualName": {
+												"type": "string",
+												"const": "Crude Oil"
+											}
 										}
 									}
 								},
@@ -3941,49 +3909,14 @@
 											"ActualName"
 										],
 										"properties": {
-										"WwiseSafeName": {
-											"type": "string",
-											"const": "Heavy_Oil_Residue"
-										},
-										"ActualName": {
-											"type": "string",
-											"const": "Heavy Oil Residue"
-										}
-										}
-									}
-								},
-								{
-									"type": "string",
-									"minLength": 1,
-									"typed_string": {
-										"required": [
-											"WwiseSafeName",
-											"ActualName"
-										],
-										"properties": {
-										"WwiseSafeName": {
-											"type": "string",
-											"const": "Water"
-										},
-										"ActualName": {
-											"type": "string",
-											"const": "Water"
-										}
-										}
-									}
-								},
-								{
-									"type": "string",
-									"minLength": 1,
-									"typed_string": {
-										"required": [
-											"WwiseSafeName"
-										],
-										"properties": {
-										"WwiseSafeName": {
-											"type": "string",
-											"const": "No_Fluid"
-										}
+											"WwiseSafeName": {
+												"type": "string",
+												"const": "Fuel"
+											},
+											"ActualName": {
+												"type": "string",
+												"const": "Fuel"
+											}
 										}
 									}
 								},
@@ -3996,14 +3929,67 @@
 											"ActualName"
 										],
 										"properties": {
-										"WwiseSafeName": {
-											"type": "string",
-											"const": "Gas"
-										},
-										"ActualName": {
-											"type": "string",
-											"const": "Nitrogen Gas"
+											"WwiseSafeName": {
+												"type": "string",
+												"const": "Heavy_Oil_Residue"
+											},
+											"ActualName": {
+												"type": "string",
+												"const": "Heavy Oil Residue"
+											}
 										}
+									}
+								},
+								{
+									"type": "string",
+									"minLength": 1,
+									"typed_string": {
+										"required": [
+											"WwiseSafeName",
+											"ActualName"
+										],
+										"properties": {
+											"WwiseSafeName": {
+												"type": "string",
+												"const": "Water"
+											},
+											"ActualName": {
+												"type": "string",
+												"const": "Water"
+											}
+										}
+									}
+								},
+								{
+									"type": "string",
+									"minLength": 1,
+									"typed_string": {
+										"required": ["WwiseSafeName"],
+										"properties": {
+											"WwiseSafeName": {
+												"type": "string",
+												"const": "No_Fluid"
+											}
+										}
+									}
+								},
+								{
+									"type": "string",
+									"minLength": 1,
+									"typed_string": {
+										"required": [
+											"WwiseSafeName",
+											"ActualName"
+										],
+										"properties": {
+											"WwiseSafeName": {
+												"type": "string",
+												"const": "Gas"
+											},
+											"ActualName": {
+												"type": "string",
+												"const": "Nitrogen Gas"
+											}
 										}
 									}
 								}
@@ -4449,34 +4435,34 @@
 									"ParticleSystem1_9_F0CF81514E1E1C5007AC99B0C59C63CD"
 								],
 								"properties": {
-								"ResourceNode_16_2100B5C34EE8DF7958D78A974512F3C3": {
-									"type": "string",
-									"enum": [
-										"/Game/FactoryGame/Resource/RawResources/Coal/Desc_Coal.Desc_Coal_C",
-										"/Game/FactoryGame/Resource/RawResources/Stone/Desc_Stone.Desc_Stone_C",
-										"/Game/FactoryGame/Resource/RawResources/OreIron/Desc_OreIron.Desc_OreIron_C",
-										"/Game/FactoryGame/Resource/RawResources/OreBauxite/Desc_OreBauxite.Desc_OreBauxite_C",
-										"/Game/FactoryGame/Resource/RawResources/OreCopper/Desc_OreCopper.Desc_OreCopper_C",
-										"/Game/FactoryGame/Resource/RawResources/CrudeOil/Desc_LiquidOil.Desc_LiquidOil_C",
-										"/Game/FactoryGame/Resource/RawResources/OreGold/Desc_OreGold.Desc_OreGold_C",
-										"/Game/FactoryGame/Resource/RawResources/RawQuartz/Desc_RawQuartz.Desc_RawQuartz_C",
-										"/Game/FactoryGame/Resource/RawResources/Sulfur/Desc_Sulfur.Desc_Sulfur_C",
-										"/Game/FactoryGame/Resource/RawResources/OreUranium/Desc_OreUranium.Desc_OreUranium_C"
-									]
-								},
-								"ParticleSystem1_9_F0CF81514E1E1C5007AC99B0C59C63CD": {
-									"type": "string",
-									"minLength": 1,
-									"UnrealEngineString": {
-										"left": "/Script/Engine.ParticleSystem",
-										"right": {
-											"starts_with": [
-												"/Game/FactoryGame/VFX/Factory/",
-												"/Game/FactoryGame/Buildable/Factory/"
-											]
+									"ResourceNode_16_2100B5C34EE8DF7958D78A974512F3C3": {
+										"type": "string",
+										"enum": [
+											"/Game/FactoryGame/Resource/RawResources/Coal/Desc_Coal.Desc_Coal_C",
+											"/Game/FactoryGame/Resource/RawResources/Stone/Desc_Stone.Desc_Stone_C",
+											"/Game/FactoryGame/Resource/RawResources/OreIron/Desc_OreIron.Desc_OreIron_C",
+											"/Game/FactoryGame/Resource/RawResources/OreBauxite/Desc_OreBauxite.Desc_OreBauxite_C",
+											"/Game/FactoryGame/Resource/RawResources/OreCopper/Desc_OreCopper.Desc_OreCopper_C",
+											"/Game/FactoryGame/Resource/RawResources/CrudeOil/Desc_LiquidOil.Desc_LiquidOil_C",
+											"/Game/FactoryGame/Resource/RawResources/OreGold/Desc_OreGold.Desc_OreGold_C",
+											"/Game/FactoryGame/Resource/RawResources/RawQuartz/Desc_RawQuartz.Desc_RawQuartz_C",
+											"/Game/FactoryGame/Resource/RawResources/Sulfur/Desc_Sulfur.Desc_Sulfur_C",
+											"/Game/FactoryGame/Resource/RawResources/OreUranium/Desc_OreUranium.Desc_OreUranium_C"
+										]
+									},
+									"ParticleSystem1_9_F0CF81514E1E1C5007AC99B0C59C63CD": {
+										"type": "string",
+										"minLength": 1,
+										"UnrealEngineString": {
+											"left": "/Script/Engine.ParticleSystem",
+											"right": {
+												"starts_with": [
+													"/Game/FactoryGame/VFX/Factory/",
+													"/Game/FactoryGame/Buildable/Factory/"
+												]
+											}
 										}
 									}
-								}
 								}
 							}
 						}
@@ -4845,12 +4831,12 @@
 					"typed_string": {
 						"required": ["Min", "Max"],
 						"properties": {
-						"Min": {
-							"$ref": "#/definitions/decimal-string"
-						},
-						"Max": {
-							"$ref": "#/definitions/decimal-string"
-						}
+							"Min": {
+								"$ref": "#/definitions/decimal-string"
+							},
+							"Max": {
+								"$ref": "#/definitions/decimal-string"
+							}
 						}
 					}
 				}
@@ -5048,9 +5034,9 @@
 			"typed_string": {
 				"required": ["DockForDuration"],
 				"properties": {
-				"DockForDuration": {
-					"$ref": "#/definitions/decimal-string"
-				}
+					"DockForDuration": {
+						"$ref": "#/definitions/decimal-string"
+					}
 				}
 			}
 		},
@@ -5537,18 +5523,18 @@
 							"InstanceScaleIndex"
 						],
 						"properties": {
-						"StartTangentPrimitiveDataStartIndex": {
-							"$ref": "#/definitions/integer-string"
-						},
-						"EndPositionPrimitiveDataStartIndex": {
-							"$ref": "#/definitions/integer-string"
-						},
-						"EndTangentPrimitiveDataStartIndex": {
-							"$ref": "#/definitions/integer-string"
-						},
-						"InstanceScaleIndex": {
-							"$ref": "#/definitions/integer-string--signed"
-						}
+							"StartTangentPrimitiveDataStartIndex": {
+								"$ref": "#/definitions/integer-string"
+							},
+							"EndPositionPrimitiveDataStartIndex": {
+								"$ref": "#/definitions/integer-string"
+							},
+							"EndTangentPrimitiveDataStartIndex": {
+								"$ref": "#/definitions/integer-string"
+							},
+							"InstanceScaleIndex": {
+								"$ref": "#/definitions/integer-string--signed"
+							}
 						}
 					}
 				},
@@ -5641,9 +5627,9 @@
 					"typed_string": {
 						"required": ["ItemState"],
 						"properties": {
-						"ItemState": {
-							"$ref": "#/definitions/empty-object"
-						}
+							"ItemState": {
+								"$ref": "#/definitions/empty-object"
+							}
 						}
 					}
 				},
@@ -5909,43 +5895,43 @@
 									"UVChannelData"
 								],
 								"properties": {
-								"MaterialInterface": {
-									"type": "string",
-									"minLength": 1,
-									"UnrealEngineString": {
-										"left": [
-											"/Script/Engine.MaterialInstanceConstant",
-											"/Script/Engine.Material"
-										]
-									}
-								},
-								"MaterialSlotName": {
-									"$ref": "#/definitions/MaterialSlotName"
-								},
-								"ImportedMaterialSlotName": {
-									"$ref": "#/definitions/MaterialSlotName"
-								},
-								"UVChannelData": {
-									"type": "string",
-									"minLength": 1,
-									"typed_string": {
-										"required": [
-											"bInitialized",
-											"LocalUVDensities[0]"
-										],
-										"properties": {
-											"bInitialized": {
-												"$ref": "#/definitions/boolean"
-											},
-											"LocalUVDensities[0]": {
-												"$ref": "#/definitions/decimal-string"
-											},
-											"LocalUVDensities[1]": {
-												"$ref": "#/definitions/decimal-string"
+									"MaterialInterface": {
+										"type": "string",
+										"minLength": 1,
+										"UnrealEngineString": {
+											"left": [
+												"/Script/Engine.MaterialInstanceConstant",
+												"/Script/Engine.Material"
+											]
+										}
+									},
+									"MaterialSlotName": {
+										"$ref": "#/definitions/MaterialSlotName"
+									},
+									"ImportedMaterialSlotName": {
+										"$ref": "#/definitions/MaterialSlotName"
+									},
+									"UVChannelData": {
+										"type": "string",
+										"minLength": 1,
+										"typed_string": {
+											"required": [
+												"bInitialized",
+												"LocalUVDensities[0]"
+											],
+											"properties": {
+												"bInitialized": {
+													"$ref": "#/definitions/boolean"
+												},
+												"LocalUVDensities[0]": {
+													"$ref": "#/definitions/decimal-string"
+												},
+												"LocalUVDensities[1]": {
+													"$ref": "#/definitions/decimal-string"
+												}
 											}
 										}
 									}
-								}
 								}
 							}
 						}
@@ -6023,9 +6009,9 @@
 					"typed_string": {
 						"required": ["bAllowTickOnDedicatedServer"],
 						"properties": {
-						"bAllowTickOnDedicatedServer": {
-							"$ref": "#/definitions/boolean"
-						}
+							"bAllowTickOnDedicatedServer": {
+								"$ref": "#/definitions/boolean"
+							}
 						}
 					}
 				}
@@ -6124,15 +6110,15 @@
 									"typed_string": {
 										"required": ["ActorClass"],
 										"properties": {
-										"ActorClass": {
-											"type": "string",
-											"minLength": 1,
-											"UnrealEngineString": {
-												"right": {
-													"starts_with": "/Game/FactoryGame/Character/Creature/Enemy/"
+											"ActorClass": {
+												"type": "string",
+												"minLength": 1,
+												"UnrealEngineString": {
+													"right": {
+														"starts_with": "/Game/FactoryGame/Character/Creature/Enemy/"
+													}
 												}
 											}
-										}
 										}
 									}
 								}
@@ -6161,12 +6147,12 @@
 					"typed_string": {
 						"required": ["Min", "Max"],
 						"properties": {
-						"Min": {
-							"$ref": "#/definitions/integer-string"
-						},
-						"Max": {
-							"$ref": "#/definitions/integer-string"
-						}
+							"Min": {
+								"$ref": "#/definitions/integer-string"
+							},
+							"Max": {
+								"$ref": "#/definitions/integer-string"
+							}
 						}
 					}
 				},
@@ -6695,9 +6681,9 @@
 			"typed_string": {
 				"required": ["Intensity"],
 				"properties": {
-				"Intensity": {
-					"$ref": "#/definitions/decimal-string"
-				}
+					"Intensity": {
+						"$ref": "#/definitions/decimal-string"
+					}
 				}
 			}
 		},
@@ -6774,24 +6760,24 @@
 					"typed_string": {
 						"required": ["OverrideColorData"],
 						"properties": {
-						"OverrideColorData": {
-							"type": "string",
-							"minLength": 1,
-							"typed_string": {
-								"required": [
-									"PrimaryColor",
-									"SecondaryColor"
-								],
-								"properties": {
-							"PrimaryColor": {
-								"$ref": "#/definitions/color-decimal"
-							},
-							"SecondaryColor": {
-								"$ref": "#/definitions/color-decimal"
-							}
+							"OverrideColorData": {
+								"type": "string",
+								"minLength": 1,
+								"typed_string": {
+									"required": [
+										"PrimaryColor",
+										"SecondaryColor"
+									],
+									"properties": {
+										"PrimaryColor": {
+											"$ref": "#/definitions/color-decimal"
+										},
+										"SecondaryColor": {
+											"$ref": "#/definitions/color-decimal"
+										}
+									}
 								}
 							}
-						}
 						}
 					}
 				}
