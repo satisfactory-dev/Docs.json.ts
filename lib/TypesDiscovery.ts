@@ -56,13 +56,12 @@ export class TypesDiscovery
 	async discover_types()
 	{
 		if (!this.discovery) {
-			this.discovery = new Promise((yup, nope) => {
-				this.docs.schema().then((schema) => {
+			const schema = await this.docs.schema();
 					const discovered_types = new Set<local_ref<string>>();
 
 					this.discover_types_from(schema, schema, discovered_types);
 
-					yup({
+			this.discovery = Promise.resolve({
 						discovered_types: [...discovered_types.values()],
 						missed_types: Object.keys(
 							object_has_property(
@@ -76,8 +75,6 @@ export class TypesDiscovery
 							maybe => !discovered_types.has(maybe)
 						),
 					});
-				}).catch(nope);
-			});
 		}
 
 		return this.discovery;
