@@ -18,11 +18,19 @@ import {
 import {
 	typed_string_const,
 } from './TypedStringConst';
-import {typed_string_enum} from './TypedStringEnum';
-import {SchemaObject} from 'ajv/dist/2020';
-import {typed_string_pattern_is_supported_schema, typed_string_pattern_value_regex} from './TypedStringPattern';
-import schema from '../../schema/update8.schema.json';
-import {typed_string_inner_array_prefixItems_type} from './TypedString';
+import {
+	typed_string_enum,
+} from './TypedStringEnum';
+import {
+	SchemaObject,
+} from 'ajv/dist/2020';
+import {
+	typed_string_pattern_is_supported_schema,
+	typed_string_pattern_value_regex,
+} from './TypedStringPattern';
+import {
+	typed_string_inner_array_prefixItems_type,
+} from './TypedString';
 
 type typed_string_object_inner = {
 	required: [string, ...string[]],
@@ -47,11 +55,11 @@ function is_number(maybe:unknown): maybe is number {
 
 export class ValueToRegexFormatter
 {
-	private readonly definitions:{[key: string]: SchemaObject};
-	private readonly supported_$ref_object:{[key: local_ref<string>]: string};
 	private typed_string_const;
 	private typed_string_enum;
 	private UnrealEngineString;
+	private readonly definitions:{[key: string]: SchemaObject};
+	private readonly supported_$ref_object:{[key: local_ref<string>]: string};
 
 	constructor(definitions:{[key: string]: SchemaObject}) {
 		this.definitions = definitions;
@@ -71,7 +79,9 @@ export class ValueToRegexFormatter
 		};
 	}
 
-	private is_supported_$ref_object(maybe:unknown): maybe is {$ref: local_ref<string>} {
+	private is_supported_$ref_object(
+		maybe:unknown
+	): maybe is {$ref: local_ref<string>} {
 		return (
 			object_only_has_that_property(maybe, '$ref', is_string)
 			&& object_has_property(
@@ -118,15 +128,16 @@ export class ValueToRegexFormatter
 		);
 	}
 
-	private prepare_$ref_regex(definitions:{[key: string]: SchemaObject}): {[key: local_ref<string>]: string}
-	{
+	private prepare_$ref_regex(
+		definitions:{[key: string]: SchemaObject}
+	): {[key: local_ref<string>]: string} {
 		return Object.fromEntries(Object.entries(definitions)
 			.filter(maybe => {
 				return this.is_supported_definition(maybe[1])
 			}).map(entry => {
 				return [
 					local_ref(entry[0]),
-					this.value_to_regex(entry[1])
+					this.value_to_regex(entry[1]),
 				];
 			}))
 	}
@@ -208,8 +219,12 @@ export class ValueToRegexFormatter
 				value_is_non_array_object
 			)
 		) {
+			const oneOf = this.definitions[
+				value.$ref.substring(14)
+			].oneOf as {[key: string]: unknown}[];
+
 			return `(?:${
-				this.definitions[value.$ref.substring(14)].oneOf
+				oneOf
 					.map((e:SchemaObject) => this.value_to_regex(e))
 					.join('|')
 			})`;

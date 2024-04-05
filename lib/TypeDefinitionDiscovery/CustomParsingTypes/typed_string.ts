@@ -20,7 +20,8 @@ import {
 } from '../Generator';
 import {
 	generate_object_parent_schema,
-	generate_typed_string_definitions, typed_string_inner_array_prefixItems_type,
+	generate_typed_string_definitions,
+	typed_string_inner_array_prefixItems_type,
 	typed_string_inner_array_type,
 	typed_string_inner_object_type,
 	typed_string_parent_type,

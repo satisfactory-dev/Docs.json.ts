@@ -1,4 +1,6 @@
-import Ajv, {SchemaObject} from 'ajv/dist/2020';
+import Ajv, {
+	SchemaObject,
+} from 'ajv/dist/2020';
 import {
 	local_ref,
 } from '../StringStartsWith';
@@ -105,7 +107,7 @@ export function generate_typed_string_definitions(
 				typed_string_const_schema,
 				typed_string_enum_schema,
 				{$ref: '#/definitions/typed_string_parent_type'},
-			]
+			],
 		},
 		typed_string_parent_type: {
 			type: 'object',
@@ -119,14 +121,14 @@ export function generate_typed_string_definitions(
 						{$ref: '#/definitions/typed_string_object_type'},
 						{$ref: '#/definitions/typed_string_array_type'},
 						{$ref: '#/definitions/typed_string_prefixItems_type'},
-					]
-				}
-			}
+					],
+				},
+			},
 		},
 		typed_string_object_type: {
 			type: 'object',
 			required: [
-				'properties'
+				'properties',
 			],
 			additionalProperties: false,
 			properties: {
@@ -136,7 +138,7 @@ export function generate_typed_string_definitions(
 					items: {
 						type: 'string',
 						minLength: 1,
-					}
+					},
 				},
 				properties: {
 					type: 'object',
@@ -144,26 +146,26 @@ export function generate_typed_string_definitions(
 					patternProperties: {
 						[property_regex]: {
 							$ref: '#/definitions/typed_string_subtypes',
-						}
-					}
-				}
-			}
+						},
+					},
+				},
+			},
 		},
 		typed_string_array_type: {
 			type: 'object',
 			required: [
 				'minItems',
-				'items'
+				'items',
 			],
 			additionalProperties: false,
 			properties: {
 				minItems: {
 					type: 'number',
-					'minimum': 0
+					'minimum': 0,
 				},
 				maxItems: {
 					type: 'number',
-					'minimum': 1
+					'minimum': 1,
 				},
 				items: {
 					oneOf: [
@@ -178,15 +180,15 @@ export function generate_typed_string_definitions(
 									minItems: 1,
 									uniqueItems: true,
 									items: {
-										$ref: '#/definitions/typed_string_subtypes'
-									}
-								}
-							}
+										$ref: `#/definitions/typed_string_subtypes`,
+									},
+								},
+							},
 						},
 						{$ref: '#/definitions/typed_string_prefixItems_type'},
-					]
+					],
 				},
-			}
+			},
 		},
 		typed_string_prefixItems_type: {
 			type: 'object',

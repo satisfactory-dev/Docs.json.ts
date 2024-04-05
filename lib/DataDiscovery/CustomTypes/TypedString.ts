@@ -114,6 +114,19 @@ export class TypedString extends ConvertsUnknown<
 		);
 	}
 
+	async matches(
+		raw_data:unknown
+	): Promise<RawGenerationResult<this>|undefined> {
+		if (
+			value_is_non_array_object(raw_data)
+			&& (await this.check)(raw_data)
+		) {
+			return new RawGenerationResult(this);
+		}
+
+		return undefined;
+	}
+
 	private async convert_object(
 		schema: typed_string_parent_type,
 		shallow:{[key: string]: unknown}
@@ -216,18 +229,5 @@ export class TypedString extends ConvertsUnknown<
 				'Failed to grab object literal!'
 			);
 		}
-	}
-
-	async matches(
-		raw_data:unknown
-	): Promise<RawGenerationResult<this>|undefined> {
-		if (
-			value_is_non_array_object(raw_data)
-			&& (await this.check)(raw_data)
-		) {
-			return new RawGenerationResult(this);
-		}
-
-		return undefined;
 	}
 }
