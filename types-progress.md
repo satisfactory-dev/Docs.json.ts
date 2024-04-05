@@ -1,6 +1,6 @@
 # Types Progress
 
-98.10% Complete (207 of 211)
+99.05% Complete (209 of 211)
 
 ## Basic Types
 
@@ -55,7 +55,7 @@
 -   [x] mStackSize
 -   [x] NativeClass
 -   [x] None
--   [ ] SpecifiedColor
+-   [x] SpecifiedColor
 -   [x] transformation
 -   [x] weaponState
 -   [x] xyz-array
@@ -291,7 +291,7 @@
 ## vectors
 
 -   [x] pitch-yaw-roll
--   [ ] quaternion
+-   [x] quaternion
 -   [x] xy
 -   [x] xy--integer
 -   [x] xyz
