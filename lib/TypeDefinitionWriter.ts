@@ -131,7 +131,6 @@ export class TypeDefinitionWriter
 			]);
 			this._discovery = Promise.resolve(schema.then((schema) => {
 				return new TypeDefinitionDiscovery(
-					schema,
 					[
 						...TypesDiscovery.standard_jsonschema_discovery(
 							schema
