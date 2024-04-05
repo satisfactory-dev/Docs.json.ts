@@ -55,12 +55,12 @@ export class $ref extends CandidatesDiscovery
 		): schema is (
 			& SchemaObject
 			& {
-			definitions: (
-				& {[key: string]: unknown}
-				& {[k in typeof maybe]: {[key: string]: unknown}}
+				definitions: (
+					& {[key: string]: unknown}
+					& {[k in typeof maybe]: {[key: string]: unknown}}
 				)
-		}
-			) {
+			}
+		) {
 			return (
 				maybe.startsWith('#/definitions/')
 				&& maybe.substring(14) in schema.definitions
