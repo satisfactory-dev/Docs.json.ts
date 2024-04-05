@@ -56,7 +56,9 @@ export class typed_string extends CandidatesDiscovery
 				'typed_string',
 				value_is_non_array_object
 			)
-			&& 2 === Object.keys(maybe.typed_string).length
+			&& (
+				(
+					2 === Object.keys(maybe.typed_string).length
 			&& object_has_non_empty_array_property(
 				maybe.typed_string,
 				'required',
@@ -66,6 +68,37 @@ export class typed_string extends CandidatesDiscovery
 				maybe.typed_string,
 				'properties',
 				value_is_non_array_object
+			)
+				)
+				|| (
+					(
+						2 === Object.keys(maybe.typed_string).length
+						|| (
+							3 === Object.keys(
+								maybe.typed_string
+							).length
+							&& !object_has_property(
+								maybe.typed_string,
+								'minItems',
+								(
+									maybe:unknown
+								) : maybe is number => {
+									return 'number'=== typeof maybe;
+								}
+							)
+						)
+					)
+					&& object_has_property_that_equals(
+						maybe.typed_string,
+						'items',
+						false
+					)
+					&& object_has_non_empty_array_property(
+						maybe.typed_string,
+						'prefixItems',
+						value_is_non_array_object
+					)
+				)
 			)
 		);
 	}

@@ -57,6 +57,9 @@ import {
 import {
 	RefToTypedString,
 } from './DataDiscovery/CustomTypes/RefToTypedString';
+import {
+	RefToEnum,
+} from './DataDiscovery/CustomTypes/RefToEnum';
 
 type progress = {[p: string]: string[]};
 
@@ -89,6 +92,7 @@ export class DataDiscovery
 			new UnrealEngineString_DataDiscovery(this),
 			new TypedString(this),
 			RefToConst.from_definitions(this),
+			RefToEnum.from_definitions(this),
 			RefToTypedString.from_definitions(this),
 		]);
 	}

@@ -88,10 +88,14 @@ export class typed_string extends GeneratorDoesDiscovery<
 					typed_string_value.maxItems
 				);
 			} else if (typed_string.is_prefixItems_type(typed_string_value)) {
-				return ts.factory.createTupleTypeNode(
+				return minimum_size_array_of_single_type(
+					typed_string_value.minItems,
+					() => ts.factory.createTupleTypeNode(
 					typed_string_value.prefixItems.map(
 						e => this.discovery.find(e)
 					)
+					),
+					typed_string_value.maxItems
 				);
 			}
 
@@ -125,7 +129,10 @@ export class typed_string extends GeneratorDoesDiscovery<
 			| typed_string_inner_array_type
 			| typed_string_inner_array_prefixItems_type
 	): maybe is typed_string_inner_array_type {
-		return object_has_property(maybe, 'items');
+		return (
+			object_has_property(maybe, 'items')
+			&& !object_has_property(maybe, 'prefixItems')
+		);
 	}
 
 	static is_object_type(

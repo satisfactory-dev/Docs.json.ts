@@ -1,6 +1,6 @@
 # Types Progress
 
-99.05% Complete (209 of 211)
+100.00% Complete (211 of 211)
 
 ## Basic Types
 
@@ -36,7 +36,7 @@
 -   [x] integer-string--signed
 -   [x] ItemClass
 -   [x] mAspect
--   [ ] MaterialSlotName
+-   [x] MaterialSlotName
 -   [x] mBatteryStatus
 -   [x] mChainsawState
 -   [x] mClassToScanFor
@@ -267,7 +267,7 @@
 -   [x] FGSchematic--mUnlocks_mRecipes
 -   [x] FGSchematic--mUnlocks_mScannableObjects
 -   [x] FGSchematic--mUnlocks_mSchematics
--   [ ] FGSchematic--mUnlocks_mSchematics--mSchematics
+-   [x] FGSchematic--mUnlocks_mSchematics--mSchematics
 -   [x] FGSchematic--mUnlocks_mTapeUnlocks
 -   [x] FGSchematic--mUnlocks_resources_to_scan
 -   [x] FGSchematic--with-unlocks

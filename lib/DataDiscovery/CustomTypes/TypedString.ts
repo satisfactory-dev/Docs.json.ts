@@ -7,6 +7,7 @@ import {
 import {
 	generate_object_parent_schema,
 	generate_typed_string_definitions,
+	typed_string_inner_array_type,
 	typed_string_parent_type,
 } from '../../CustomParsingTypes/TypedString';
 import {
@@ -24,13 +25,15 @@ import {
 	value_is_non_array_object,
 } from '../../CustomParsingTypes/CustomPairingTypes';
 import {
+	ArrayLiteralExpression,
 	ObjectLiteralExpression,
 } from 'typescript';
 import {
 	NoMatchError,
 } from '../../Exceptions';
 import {
-	string_to_native_type,
+	string_to_array,
+	string_to_object,
 } from '../../DocsValidation';
 import {
 	is_UnrealEngineString_parent,
@@ -89,20 +92,34 @@ export class TypedString extends ConvertsUnknown<
 	async convert_unknown(
 		schema: typed_string_parent_type,
 		raw_data: unknown
-	): Promise<ExpressionResult<ObjectLiteralExpression>> {
+	): Promise<ExpressionResult<
+		| ObjectLiteralExpression
+		| ArrayLiteralExpression
+	>> {
 		if (!is_string(raw_data)) {
 			throw new NoMatchError(raw_data, 'raw data not a string!');
+		} else if (typed_string.is_object_type(schema.typed_string)) {
+			const shallow = string_to_object(raw_data, true);
+
+			if (false === shallow) {
+				throw new NoMatchError(
+					raw_data,
+					'raw data not a typed_string'
+				);
+			} else if (value_is_non_array_object(shallow)) {
+				return this.convert_object(schema, shallow);
+			}
 		}
 
-		const shallow = string_to_native_type(raw_data, true);
+		const shallow = string_to_array(raw_data, true);
 
 		if (false === shallow) {
 			throw new NoMatchError(
 				raw_data,
 				'raw data not a typed_string'
 			);
-		} else if (value_is_non_array_object(shallow)) {
-			return this.convert_object(schema, shallow);
+		} else if (typed_string.is_array_type(schema.typed_string)) {
+			return this.convert_array(schema.typed_string, shallow);
 		}
 
 		throw new NoMatchError(
@@ -125,6 +142,70 @@ export class TypedString extends ConvertsUnknown<
 		}
 
 		return undefined;
+	}
+
+	private async convert_array(
+		schema: typed_string_inner_array_type,
+		shallow: unknown[]
+	) : Promise<ExpressionResult<ArrayLiteralExpression>> {
+
+		const definitions = await this.definitions;
+
+		const check = compile<
+			{[key: string]: unknown}
+		>(
+			this.discovery.docs.ajv,
+			{
+				...schema,
+				definitions,
+				type: 'array',
+			}
+		);
+
+		if (!check(shallow)) {
+			throw new NoMatchError(
+				{
+					shallow,
+					schema,
+					errors: check.errors,
+				},
+				'Shallow parse of typed_string does not match schema!'
+			);
+		}
+
+		let converter:unknown = await (await Base.find(
+			await this.discovery.candidates,
+			schema.items
+		)).result();
+
+		if (
+			!(converter instanceof ConvertsUnknown)
+			&& is_UnrealEngineString_parent(
+				schema.items
+			)
+		) {
+			converter = this.UnrealEngineString;
+		}
+
+		if (converter instanceof ConvertsUnknown) {
+			return new ExpressionResult(
+				await this.discovery.literal.value_literal(
+					Promise.all(shallow.map(e => converter.convert_unknown(
+						schema.items,
+						e
+					)))
+				) as ArrayLiteralExpression
+			);
+		}
+
+		throw new NoMatchError(
+			{
+				shallow,
+				schema,
+				converter,
+			},
+			'No converter found!'
+		)
 	}
 
 	private async convert_object(
@@ -152,6 +233,7 @@ export class TypedString extends ConvertsUnknown<
 			{
 				...typed_string_value,
 				definitions,
+				type: 'object',
 			}
 		);
 

@@ -62,6 +62,8 @@ export type typed_string_inner_array_type = {
 
 export type typed_string_inner_array_prefixItems_type = {
 	items: false,
+	minItems: number,
+	maxItems?: number,
 	prefixItems: [typed_string_sub_types, ...typed_string_sub_types[]],
 };
 
@@ -190,12 +192,21 @@ export function generate_typed_string_definitions(
 		typed_string_prefixItems_type: {
 			type: 'object',
 			required: [
+				'minItems',
 				'items',
 				'prefixItems',
 			],
 			additionalProperties: false,
 			properties: {
 				items: {type: 'boolean', const: false},
+				minItems: {
+					type: 'number',
+					'minimum': 0,
+				},
+				maxItems: {
+					type: 'number',
+					'minimum': 1,
+				},
 				prefixItems: {
 					type: 'array',
 					minItems: 1,
@@ -231,6 +242,7 @@ export class TypedString
 			oneOf: [
 				{$ref: '#/definitions/typed_string_object_type'},
 				{$ref: '#/definitions/typed_string_array_type'},
+				{$ref: '#/definitions/typed_string_prefixItems_type'},
 			],
 		};
 

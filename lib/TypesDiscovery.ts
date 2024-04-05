@@ -35,6 +35,12 @@ import {
 import {
 	ConstString,
 } from './TypesDiscovery/JsonSchema/const';
+import {
+	EnumString,
+} from './TypesDiscovery/JsonSchema/enum';
+import {
+	UnrealEngineString,
+} from './TypesDiscovery/CustomParsingTypes/UnrealEngineString';
 
 export class TypesDiscovery
 {
@@ -63,19 +69,6 @@ export class TypesDiscovery
 			const discovered_types = new Set<local_ref<string>>();
 
 			this.discover_types_from(schema, schema, discovered_types);
-
-			const const_string = new ConstString(schema);
-
-			const_string.discovery_candidates(
-				schema,
-				discovered_types
-			);
-
-			const typed_string_check = new typed_string(schema);
-			typed_string_check.discovery_candidates(
-				schema,
-				discovered_types
-			);
 
 			this.discovery = Promise.resolve({
 				discovered_types: [...discovered_types.values()],
@@ -120,6 +113,7 @@ export class TypesDiscovery
 		[CandidatesDiscovery, ...CandidatesDiscovery[]]
 	) {
 		return [
+			new UnrealEngineString(schema),
 			new typed_string(schema),
 		];
 	}
@@ -161,6 +155,8 @@ export class TypesDiscovery
 			new non_array_object_property('items', schema),
 			new properties(schema),
 			new $ref(schema),
+			new ConstString(schema),
+			new EnumString(schema),
 		];
 	}
 }

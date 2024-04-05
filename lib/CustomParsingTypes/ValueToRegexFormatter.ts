@@ -251,9 +251,17 @@ export class ValueToRegexFormatter
 		} else if (
 			ValueToRegexFormatter.is_typed_string_array_prefixItems(value)
 		) {
-			return `(?:\\(${
+			const item_regex = `\\(${
 				value.prefixItems.map(e => this.value_to_regex(e)).join(', ')
-			}\\))`;
+			}\\)`;
+
+			return `(?:\\(${item_regex}(?:,${item_regex}){${
+				Math.max(0, value.minItems - 1)
+			},${
+				value.maxItems
+					? Math.max(1, value.maxItems - 1)
+					: ''
+			}}\\))`;
 		}
 
 		throw new NoMatchError(value, `Unsupported value! ${JSON.stringify(value)}`);
@@ -297,6 +305,15 @@ export class ValueToRegexFormatter
 			return false;
 		}
 
+		const total_keys = Object.keys(maybe).length;
+		let expected_keys = 4;
+
+		if (!object_has_property(maybe, 'maxItems')) {
+			--expected_keys;
+		} else if (!object_has_property(maybe, 'maxItems', is_number)) {
+			throw new NoMatchError(maybe, 'Unsupported maxItems value!');
+		}
+
 		return (
 			object_has_property_that_equals(maybe, 'items', false)
 			&& object_has_non_empty_array_property(
@@ -304,6 +321,7 @@ export class ValueToRegexFormatter
 				'prefixItems',
 				value_is_non_array_object
 			)
+			&& total_keys === expected_keys
 		)
 	}
 

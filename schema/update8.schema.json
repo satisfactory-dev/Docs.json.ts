@@ -4692,7 +4692,6 @@
 					"minLength": 1,
 					"typed_string": {
 						"minItems": 1,
-						"items": {
 							"items": false,
 							"prefixItems": [
 								{
@@ -4702,7 +4701,6 @@
 									"$ref": "#/definitions/decimal-string"
 								}
 							]
-						}
 					}
 				}
 			}
