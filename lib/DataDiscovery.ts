@@ -46,14 +46,8 @@ import {
 	UnrealEngineString as UnrealEngineString_DataDiscovery,
 } from './DataDiscovery/CustomTypes/UnrealEngineString';
 import {
-	TypedObjectString_basic,
-} from './DataDiscovery/CustomTypes/TypedObjectString';
-import {
 	RefToConst,
 } from './DataDiscovery/CustomTypes/RefToConst';
-import {
-	RefToTypedObjectStringBasic,
-} from './DataDiscovery/CustomTypes/RefToTypedObjectString';
 import {
 	Literal,
 } from './DataDiscovery/Literal';
@@ -93,10 +87,8 @@ export class DataDiscovery
 			new NumberStrings(this),
 			new BooleanOrBooleanExtended(this),
 			new UnrealEngineString_DataDiscovery(this),
-			new TypedObjectString_basic(this),
 			new TypedString(this),
 			RefToConst.from_definitions(this),
-			RefToTypedObjectStringBasic.from_definitions(this),
 			RefToTypedString.from_definitions(this),
 		]);
 	}

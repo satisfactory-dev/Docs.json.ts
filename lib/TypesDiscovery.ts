@@ -18,9 +18,6 @@ import {
 	$ref,
 } from './TypesDiscovery/JsonSchema/$ref';
 import {
-	typed_object_string,
-} from './TypesDiscovery/CustomParsingTypes/typed_object_string';
-import {
 	non_array_object_property,
 } from './TypesDiscovery/non_array_object_property';
 import {
@@ -126,8 +123,6 @@ export class TypesDiscovery
 		[CandidatesDiscovery, ...CandidatesDiscovery[]]
 	) {
 		return [
-			new typed_object_string(schema),
-			new non_array_object_property('typed_array_string', schema),
 			new typed_string(schema),
 		];
 	}

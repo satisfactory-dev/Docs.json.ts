@@ -19,12 +19,6 @@ import {
 	ExtendsObject,
 } from './TypeDefinitionDiscovery/JsonSchema/Object/ExtendsObject';
 import {
-	typed_object_string,
-} from './TypeDefinitionDiscovery/CustomParsingTypes/typed_object_string';
-import {
-	typed_array_string,
-} from './TypeDefinitionDiscovery/CustomParsingTypes/typed_array_string';
-import {
 	typed_string,
 } from './TypeDefinitionDiscovery/CustomParsingTypes/typed_string';
 import {
@@ -439,11 +433,6 @@ export class TypeDefinitionWriter
 					discovered_types,
 					discovery
 				),
-				new typed_object_string(
-					discovered_types,
-					discovery
-				),
-				new typed_array_string(discovery),
 				new typed_string(
 					discovered_types,
 					discovery

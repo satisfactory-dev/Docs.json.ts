@@ -113,20 +113,6 @@ void describe('configure_ajv', () => {
 			{
 				type: 'string',
 				minLength: 1,
-				typed_object_string: {
-					foo: {type: 'string', const: 'bar'},
-				},
-			},
-			[
-				['(foo=bar)', true],
-				['(foo="bar")', true],
-				['(foo=baz)', false],
-			],
-		],
-		[
-			{
-				type: 'string',
-				minLength: 1,
 				'string_starts_with': 'foo',
 			},
 			[

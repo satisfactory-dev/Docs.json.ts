@@ -1,8 +1,5 @@
 import Ajv, {SchemaObject} from 'ajv/dist/2020';
 import {
-	property_regex,
-} from './TypedObjectString';
-import {
 	local_ref,
 } from '../StringStartsWith';
 import {
@@ -80,6 +77,8 @@ export type typed_string_parent_type = {
 	typed_string: typed_string_inner_type,
 };
 
+const property_regex = '^[A-Za-z][A-Za-z0-9_\\[\\]]*$';
+
 export function generate_object_parent_schema() {
 	return {$ref: '#/definitions/typed_string_parent_type'};
 }
@@ -119,7 +118,7 @@ export function generate_typed_string_definitions(
 					oneOf: [
 						{$ref: '#/definitions/typed_string_object_type'},
 						{$ref: '#/definitions/typed_string_array_type'},
-						{$ref: '#/definitions/typed_array_string_prefixItems_type'},
+						{$ref: '#/definitions/typed_string_prefixItems_type'},
 					]
 				}
 			}
@@ -184,12 +183,12 @@ export function generate_typed_string_definitions(
 								}
 							}
 						},
-						{$ref: '#/definitions/typed_array_string_prefixItems_type'},
+						{$ref: '#/definitions/typed_string_prefixItems_type'},
 					]
 				},
 			}
 		},
-		typed_array_string_prefixItems_type: {
+		typed_string_prefixItems_type: {
 			type: 'object',
 			required: [
 				'items',

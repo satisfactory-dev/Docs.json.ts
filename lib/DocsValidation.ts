@@ -5,12 +5,6 @@ import {
 	UnrealEngineString,
 } from './CustomParsingTypes/UnrealEngineString';
 import {
-	TypedObjectString,
-} from './CustomParsingTypes/TypedObjectString';
-import {
-	TypedArrayString,
-} from './CustomParsingTypes/TypedArrayString';
-import {
 	object_has_property,
 } from './CustomParsingTypes/CustomPairingTypes';
 import {
