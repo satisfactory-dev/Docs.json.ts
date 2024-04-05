@@ -59,40 +59,37 @@ export class TypesDiscovery
 	async discover_types()
 	{
 		if (!this.discovery) {
-			this.discovery = new Promise((yup, nope) => {
-				this.docs.schema().then((schema) => {
-					const discovered_types = new Set<local_ref<string>>();
+			const schema = await this.docs.schema();
+			const discovered_types = new Set<local_ref<string>>();
 
-					this.discover_types_from(schema, schema, discovered_types);
+			this.discover_types_from(schema, schema, discovered_types);
 
-					const const_string = new ConstString(schema);
+			const const_string = new ConstString(schema);
 
-					const_string.discovery_candidates(
+			const_string.discovery_candidates(
+				schema,
+				discovered_types
+			);
+
+			const typed_string_check = new typed_string(schema);
+			typed_string_check.discovery_candidates(
+				schema,
+				discovered_types
+			);
+
+			this.discovery = Promise.resolve({
+				discovered_types: [...discovered_types.values()],
+				missed_types: Object.keys(
+					object_has_property(
 						schema,
-						discovered_types
-					);
-
-					const typed_string_check = new typed_string(schema);
-					typed_string_check.discovery_candidates(
-						schema,
-						discovered_types
-					);
-
-					yup({
-						discovered_types: [...discovered_types.values()],
-						missed_types: Object.keys(
-							object_has_property(
-								schema,
-								'definitions',
-								value_is_non_array_object
-							)
-								? schema.definitions
-								: {}
-						).map(local_ref).filter(
-							maybe => !discovered_types.has(maybe)
-						),
-					});
-				}).catch(nope);
+						'definitions',
+						value_is_non_array_object
+					)
+						? schema.definitions
+						: {}
+				).map(local_ref).filter(
+					maybe => !discovered_types.has(maybe)
+				),
 			});
 		}
 
