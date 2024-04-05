@@ -57,24 +57,24 @@ export class TypesDiscovery
 	{
 		if (!this.discovery) {
 			const schema = await this.docs.schema();
-					const discovered_types = new Set<local_ref<string>>();
+			const discovered_types = new Set<local_ref<string>>();
 
-					this.discover_types_from(schema, schema, discovered_types);
+			this.discover_types_from(schema, schema, discovered_types);
 
 			this.discovery = Promise.resolve({
-						discovered_types: [...discovered_types.values()],
-						missed_types: Object.keys(
-							object_has_property(
-								schema,
-								'definitions',
-								value_is_non_array_object
-							)
-								? schema.definitions
-								: {}
-						).map(local_ref).filter(
-							maybe => !discovered_types.has(maybe)
-						),
-					});
+				discovered_types: [...discovered_types.values()],
+				missed_types: Object.keys(
+					object_has_property(
+						schema,
+						'definitions',
+						value_is_non_array_object
+					)
+						? schema.definitions
+						: {}
+				).map(local_ref).filter(
+					maybe => !discovered_types.has(maybe)
+				),
+			});
 		}
 
 		return this.discovery;
