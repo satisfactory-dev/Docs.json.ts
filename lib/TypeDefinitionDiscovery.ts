@@ -182,29 +182,24 @@ export class TypeDefinitionDiscovery
 	async discover_type_definitions()
 	{
 		if (!this.$ref_discovery) {
-			this.$ref_discovery = new Promise((yup, nope) => {
-				this.types_discovery.discover_types().then(
-					async (discovered_types) => {
-						try {
+			const discovered_types =
+				await this.types_discovery.discover_types();
+
 							if (discovered_types.missed_types.length > 0) {
-								nope(new Error(
+								throw new Error(
 									`Missing some type definitions:\n${
 										discovered_types.missed_types.join(
 											'\n'
 										)
 									}`
-								));
-
-								return;
+								);
 							} else if (
 								!is_non_empty_array(
 									discovered_types.discovered_types,
 									is_string
 								)
 							) {
-								nope(new Error('No types discovered!'));
-
-								return;
+								throw new Error('No types discovered!');
 							}
 
 							const discovered_types_as_object: {
@@ -219,18 +214,13 @@ export class TypeDefinitionDiscovery
 								discovered_types_as_object
 							);
 
-							yup(this.discover_type_definitions_from<
+			this.$ref_discovery = Promise.resolve(
+				this.discover_type_definitions_from<
 								typeof discovered_types_as_object
 							>(
 								schema,
 								discovered_types_as_object,
 							));
-						} catch (err) {
-							nope(err);
-						}
-					}
-				).catch(nope);
-			});
 		}
 
 		return this.$ref_discovery;
