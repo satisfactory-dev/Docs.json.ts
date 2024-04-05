@@ -32,7 +32,7 @@ import {
 	createHash,
 } from 'node:crypto';
 import {
-	is_non_empty_array, object_has_property, property_exists_on_object,
+	is_non_empty_array, object_has_only_properties_that_match_predicate, object_has_property, property_exists_on_object,
 	value_is_non_array_object,
 } from './CustomParsingTypes/CustomPairingTypes';
 import {
@@ -293,11 +293,21 @@ export class DocsTsGenerator {
 				'definitions',
 				value_is_non_array_object
 			)
+			&& object_has_only_properties_that_match_predicate(
+				schema.definitions,
+				value_is_non_array_object
+			)
 		) {
-			TypedString.instance().configure_ajv(
-				this.ajv,
-				Object.keys(schema.definitions).map(local_ref)
-			);
+			const {definitions} = schema;
+
+			if (
+				object_has_only_properties_that_match_predicate(
+					definitions,
+					value_is_non_array_object
+				)
+			) {
+				TypedString.instance().configure_ajv(definitions, this.ajv);
+			}
 		}
 
 		if (this.cache_path) {

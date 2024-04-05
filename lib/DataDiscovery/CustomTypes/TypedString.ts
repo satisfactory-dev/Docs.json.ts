@@ -6,6 +6,7 @@ import {
 } from '../Generator';
 import {
 	generate_object_parent_schema,
+	generate_typed_string_definitions,
 	typed_string_parent_type,
 } from '../../CustomParsingTypes/TypedString';
 import {
@@ -29,7 +30,7 @@ import {
 	NoMatchError,
 } from '../../Exceptions';
 import {
-	string_to_object,
+	string_to_native_type,
 } from '../../DocsValidation';
 import {
 	is_UnrealEngineString_parent,
@@ -41,6 +42,9 @@ import {
 import {
 	UnrealEngineString,
 } from './UnrealEngineString';
+import {
+	typed_string,
+} from '../../TypeDefinitionDiscovery/CustomParsingTypes/typed_string';
 
 export class TypedString extends ConvertsUnknown<
 	string,
@@ -67,13 +71,11 @@ export class TypedString extends ConvertsUnknown<
 		this.check = this.definitions.then((definitions) => {
 			const local_refs = Object.keys(definitions).map(local_ref);
 			const schema = {
-				...generate_object_parent_schema(
-					local_refs,
-					[],
-					0,
-					-1
-				),
-				definitions,
+				...generate_object_parent_schema(),
+				definitions: {
+					...definitions,
+					...generate_typed_string_definitions(local_refs),
+				},
 			};
 
 			return compile<typed_string_parent_type>(
@@ -92,12 +94,39 @@ export class TypedString extends ConvertsUnknown<
 			throw new NoMatchError(raw_data, 'raw data not a string!');
 		}
 
-		const shallow = string_to_object(raw_data, true);
+		const shallow = string_to_native_type(raw_data, true);
 
 		if (false === shallow) {
 			throw new NoMatchError(
 				raw_data,
 				'raw data not a typed_string'
+			);
+		} else if (value_is_non_array_object(shallow)) {
+			return this.convert_object(schema, shallow);
+		}
+
+		throw new NoMatchError(
+			{
+				raw_data,
+				shallow,
+			},
+			'Failed to convert native type!'
+		);
+	}
+
+	private async convert_object(
+		schema: typed_string_parent_type,
+		shallow:{[key: string]: unknown}
+	) {
+		const {typed_string: typed_string_value} = schema;
+
+		if (!typed_string.is_object_type(typed_string_value)) {
+			throw new NoMatchError(
+				{
+					schema,
+					shallow,
+				},
+				'Array-typed passed to object conversion!'
 			);
 		}
 
@@ -108,7 +137,7 @@ export class TypedString extends ConvertsUnknown<
 		>(
 			this.discovery.docs.ajv,
 			{
-				...schema.typed_string,
+				...typed_string_value,
 				definitions,
 			}
 		);
@@ -128,11 +157,11 @@ export class TypedString extends ConvertsUnknown<
 			Object.entries(shallow).map(async (
 				entry
 			) : Promise<[string, unknown]> => {
-				if (!(entry[0] in schema.typed_string.properties)) {
+				if (!(entry[0] in typed_string_value.properties)) {
 					throw new NoMatchError(
 						{
 							[entry[0]]: entry[1],
-							schema: schema.typed_string.properties,
+							schema: typed_string_value.properties,
 						},
 						'Property not in schema!'
 					);
@@ -141,13 +170,13 @@ export class TypedString extends ConvertsUnknown<
 				const [property, value] = entry;
 				let converter:unknown = await (await Base.find(
 					await this.discovery.candidates,
-					schema.typed_string.properties[property]
+					typed_string_value.properties[property]
 				)).result();
 
 				if (
 					!(converter instanceof ConvertsUnknown)
 					&& is_UnrealEngineString_parent(
-						schema.typed_string.properties[property]
+						typed_string_value.properties[property]
 					)
 				) {
 					converter = this.UnrealEngineString;
@@ -157,7 +186,7 @@ export class TypedString extends ConvertsUnknown<
 					return [
 						property,
 						await converter.convert_unknown(
-							schema.typed_string.properties[property],
+							typed_string_value.properties[property],
 							value
 						),
 					];
@@ -166,7 +195,7 @@ export class TypedString extends ConvertsUnknown<
 				throw new NoMatchError(
 					{
 						data: {[property]: value},
-						schema: schema.typed_string.properties[property],
+						schema: typed_string_value.properties[property],
 						converter,
 					},
 					'No converter found!'

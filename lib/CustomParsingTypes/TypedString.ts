@@ -1,6 +1,4 @@
-import Ajv, {
-	SchemaObject,
-} from 'ajv/dist/2020';
+import Ajv, {SchemaObject} from 'ajv/dist/2020';
 import {
 	property_regex,
 } from './TypedObjectString';
@@ -9,127 +7,203 @@ import {
 } from '../StringStartsWith';
 import {
 	UnrealEngineString_parent_schema,
-	UnrealEngineString_parent_type, UnrealEngineString_schema_definitions,
+	UnrealEngineString_parent_type,
+	UnrealEngineString_schema_definitions,
 } from './UnrealEngineString';
 import {
+	const_schema_type,
 	typed_string_const_schema,
 } from './TypedStringConst';
+import {
+	ValueToRegexFormatter,
+} from './ValueToRegexFormatter';
+import {
+	writeFileSync,
+} from 'node:fs';
+import {
+	enum_schema_type,
+	typed_string_enum_schema,
+} from './TypedStringEnum';
 
-type typed_string_object_type =
+type typed_string_sub_types =
 	| {
 		$ref: local_ref<string>,
 	}
-	| UnrealEngineString_parent_type
+	| const_schema_type
+	| enum_schema_type
+	| UnrealEngineString_parent_type;
+
+type typed_string_object_type =
+	| typed_string_sub_types
 	| typed_string_parent_type;
+
+export type typed_string_inner_object_type = {
+	required: [string, ...string[]],
+	properties: {
+		[key: string]: (
+			| typed_string_object_type
+			)
+	},
+};
+
+type typed_string_inner_array_items_type =
+	| typed_string_sub_types
+	| typed_string_parent_type;
+
+export type typed_string_inner_array_type = {
+	minItems: number,
+	maxItems?: number,
+	items:
+		| typed_string_inner_array_items_type
+		| {
+			oneOf: [
+				typed_string_inner_array_items_type,
+				...typed_string_inner_array_items_type[]
+			],
+		}
+		| typed_string_inner_array_prefixItems_type
+};
+
+export type typed_string_inner_array_prefixItems_type = {
+	items: false,
+	prefixItems: [typed_string_sub_types, ...typed_string_sub_types[]],
+};
+
+type typed_string_inner_type =
+	| typed_string_inner_object_type
+	| typed_string_inner_array_type
+	| typed_string_inner_array_prefixItems_type;
 
 export type typed_string_parent_type = {
 	type: 'string',
 	minLength: 1,
-	typed_string: {
-		type: 'object',
-		required: [string, ...string[]],
-		properties: {
-			[key: string]: (
-				| typed_string_object_type
-			)
-		},
-	},
+	typed_string: typed_string_inner_type,
 };
 
-export function generate_default_subtypes(
-	definitions:local_ref<string>[]
-) : [SchemaObject, ...SchemaObject[]] {
-	return [
-		{
-			type: 'object',
-			required: ['$ref'],
-			additionalProperties: false,
-			properties: {
-				$ref: {
-					type: 'string',
-					enum: definitions,
-				},
-			},
-		},
-		UnrealEngineString_parent_schema,
-		typed_string_const_schema,
-	];
+export function generate_object_parent_schema() {
+	return {$ref: '#/definitions/typed_string_parent_type'};
 }
 
-function generate_object_meta_schema(
-	definitions:local_ref<string>[],
-	additional: SchemaObject[] = [],
-) : SchemaObject {
+export function generate_typed_string_definitions(
+	definitions:local_ref<string>[]
+) {
 	return {
-		type: 'object',
-		required: [
-			'type',
-			'additionalProperties',
-			'properties',
-		],
-		additionalProperties: false,
-		properties: {
-			type: {type: 'string', const: 'object'},
-			required: {
-				type: 'array',
-				minItems: 1,
-				items: {type: 'string', minLength: 1},
-			},
-			additionalProperties: {
-				type: 'boolean',
-				const: false,
-			},
-			properties: {
-				type: 'object',
-				additionalProperties: false,
-				patternProperties: {
-					[property_regex]: {
-						oneOf: [
-							...generate_default_subtypes(definitions),
-							...additional,
-						],
+		...UnrealEngineString_schema_definitions,
+		typed_string_subtypes: {
+			oneOf: [
+				{
+					type: 'object',
+					required: ['$ref'],
+					additionalProperties: false,
+					properties: {
+						$ref: {
+							type: 'string',
+							enum: definitions,
+						},
 					},
 				},
-			},
+				UnrealEngineString_parent_schema,
+				typed_string_const_schema,
+				typed_string_enum_schema,
+				{$ref: '#/definitions/typed_string_parent_type'},
+			]
 		},
-	};
-}
-
-export function generate_object_parent_schema(
-	refs:local_ref<string>[],
-	additional:SchemaObject[] = [],
-	max_depth = 0,
-	current_depth = 0
-) {
-	const resolve_max_depth:SchemaObject[] = [];
-
-	if (current_depth < max_depth) {
-		resolve_max_depth.push(generate_object_parent_schema(
-			refs,
-			additional,
-			max_depth,
-			current_depth + 1
-		));
-	}
-
-	return {
-		type: 'object',
-		required: ['type', 'minLength', 'typed_string'],
-		additionalProperties: false,
-		properties: {
-			type: {type: 'string', const: 'string'},
-			minLength: {type: 'number', const: 1},
-			typed_string: {
-				oneOf: [
-					generate_object_meta_schema(
-						refs,
-						[
-							...additional,
-							...resolve_max_depth,
-						]
-					),
-				],
-			} ,
+		typed_string_parent_type: {
+			type: 'object',
+			required: ['type', 'minLength', 'typed_string'],
+			additionalProperties: false,
+			properties: {
+				type: {type: 'string', const: 'string'},
+				minLength: {type: 'number', const: 1},
+				typed_string: {
+					oneOf: [
+						{$ref: '#/definitions/typed_string_object_type'},
+						{$ref: '#/definitions/typed_string_array_type'},
+						{$ref: '#/definitions/typed_array_string_prefixItems_type'},
+					]
+				}
+			}
+		},
+		typed_string_object_type: {
+			type: 'object',
+			required: [
+				'properties'
+			],
+			additionalProperties: false,
+			properties: {
+				required: {
+					type: 'array',
+					minItems: 1,
+					items: {
+						type: 'string',
+						minLength: 1,
+					}
+				},
+				properties: {
+					type: 'object',
+					additionalProperties: false,
+					patternProperties: {
+						[property_regex]: {
+							$ref: '#/definitions/typed_string_subtypes',
+						}
+					}
+				}
+			}
+		},
+		typed_string_array_type: {
+			type: 'object',
+			required: [
+				'minItems',
+				'items'
+			],
+			additionalProperties: false,
+			properties: {
+				minItems: {
+					type: 'number',
+					'minimum': 0
+				},
+				maxItems: {
+					type: 'number',
+					'minimum': 1
+				},
+				items: {
+					oneOf: [
+						{$ref: '#/definitions/typed_string_subtypes'},
+						{
+							type: 'object',
+							required: ['oneOf'],
+							additionalProperties: false,
+							properties: {
+								oneOf: {
+									type: 'array',
+									minItems: 1,
+									uniqueItems: true,
+									items: {
+										$ref: '#/definitions/typed_string_subtypes'
+									}
+								}
+							}
+						},
+						{$ref: '#/definitions/typed_array_string_prefixItems_type'},
+					]
+				},
+			}
+		},
+		typed_array_string_prefixItems_type: {
+			type: 'object',
+			required: [
+				'items',
+				'prefixItems',
+			],
+			additionalProperties: false,
+			properties: {
+				items: {type: 'boolean', const: false},
+				prefixItems: {
+					type: 'array',
+					minItems: 1,
+					items: {$ref: '#/definitions/typed_string_subtypes'},
+				},
+			},
 		},
 	};
 }
@@ -142,31 +216,42 @@ export class TypedString
 	protected constructor() {
 	}
 
-	configure_ajv(ajv:Ajv, local_refs:local_ref<string>[])
-	{
+	configure_ajv(
+		definitions:{[key: string]: SchemaObject},
+		ajv:Ajv
+	) {
 		if (this.already_configured.has(ajv)) {
 			return;
 		}
 
+		const local_refs = Object.keys(definitions).map(local_ref);
+
 		this.already_configured.add(ajv);
 
 		const meta_schema = {
-			definitions: {
-				...UnrealEngineString_schema_definitions,
-			},
+			definitions: generate_typed_string_definitions(local_refs),
 			oneOf: [
-				generate_object_meta_schema(
-					local_refs,
-					[
-						generate_object_parent_schema(local_refs),
-					]
-				),
+				{$ref: '#/definitions/typed_string_object_type'},
+				{$ref: '#/definitions/typed_string_array_type'},
 			],
 		};
 
+		writeFileSync(
+			'/app/typed-string.meta-schema.json',
+			JSON.stringify(meta_schema, null, '\t') + '\n'
+		);
+
+		const formatter = new ValueToRegexFormatter(
+			definitions
+		);
+
 		ajv.addKeyword({
 			keyword: 'typed_string',
+			type: 'string',
 			metaSchema: meta_schema,
+			macro: (schema:typed_string_inner_type) : {pattern: string} => {
+				return formatter.pattern_from_value(schema);
+			},
 		});
 	}
 

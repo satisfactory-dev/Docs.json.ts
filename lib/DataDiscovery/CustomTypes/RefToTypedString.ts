@@ -23,11 +23,9 @@ import {
 } from './TypedString';
 import {
 	generate_object_parent_schema,
+	generate_typed_string_definitions,
 	typed_string_parent_type,
 } from '../../CustomParsingTypes/TypedString';
-import {
-	UnrealEngineString_schema_definitions,
-} from '../../CustomParsingTypes/UnrealEngineString';
 
 type schema_type = SchemaObject & {
 	$ref: local_ref<string>,
@@ -59,14 +57,9 @@ export class RefToTypedString extends DoubleCheckedStringSchema<
 				},
 			},
 			{
-				...generate_object_parent_schema(
-					all_refs,
-					[],
-					0,
-					-1
-				),
+				...generate_object_parent_schema(),
 				definitions: {
-					...UnrealEngineString_schema_definitions,
+					...generate_typed_string_definitions(all_refs),
 				},
 			}
 		);
@@ -91,14 +84,9 @@ export class RefToTypedString extends DoubleCheckedStringSchema<
 		const check = compile<typed_string_parent_type>(
 			discovery.docs.ajv,
 			{
-				...generate_object_parent_schema(
-					all_refs,
-					[],
-					0,
-					-1
-				),
+				...generate_object_parent_schema(),
 				definitions: {
-					...UnrealEngineString_schema_definitions,
+					...generate_typed_string_definitions(all_refs),
 				},
 			}
 		);

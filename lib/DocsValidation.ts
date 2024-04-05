@@ -250,9 +250,7 @@ export function configure_ajv(ajv: Ajv) {
 
 	already_configured.add(ajv);
 
-	TypedObjectString.configure_ajv(ajv);
 	UnrealEngineString.configure_ajv(ajv);
-	TypedArrayString.configure_ajv(ajv);
 
 	ajv.addKeyword({
 		keyword: 'string_starts_with',

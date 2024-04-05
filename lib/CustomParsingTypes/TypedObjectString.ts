@@ -438,11 +438,12 @@ export class TypedObjectString {
 		});
 	}
 
-	public static is_$ref_object_dictionary(maybe: {
-		[key: string]: unknown;
-	}): maybe is $ref_only {
+	public static is_$ref_object_dictionary(
+		maybe: unknown
+	): maybe is $ref_only {
 		return (
-			Object.values(maybe).every((e) => this.is_$ref_object(e))
+			value_is_non_array_object(maybe)
+			&& Object.values(maybe).every((e) => this.is_$ref_object(e))
 			&& 0 !== Object.keys(maybe).length
 		);
 	}

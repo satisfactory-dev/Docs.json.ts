@@ -25,6 +25,9 @@ import {
 const UnrealEngineString_inner =
 	UnrealEngineString.ajv_macro_generator(true);
 
+/**
+ * @todo replace this with something that uses the DocsTsGenerator.definition() method
+ */
 const $ref_supported = {
 	[local_ref('mEventType')]: 'EV_Christmas',
 	[local_ref('FGSchematic--mUnlocks_mSchematics--mSchematics')]:
@@ -35,7 +38,14 @@ const $ref_supported = {
 		).pattern,
 	[local_ref('None')]: 'None',
 	[local_ref('integer-string')]: '\\d+',
-	[local_ref('decimal-string')]: '\\d+.\\d+',
+	[local_ref('integer-string--signed')]: '-?\\d+',
+	[local_ref('decimal-string')]: '\\d+.\\d{6}',
+	[local_ref('decimal-string--signed')]: '-?\\d+.\\d{6}',
+	[local_ref('InfinityExtrap')]: 'RCCE_Constant',
+	[local_ref('xyz')]: '\\(X=-?\\d+.\\d{6},Y=-?\\d+.\\d{6},Z=-?\\d+.\\d{6}\\)',
+	[local_ref('xy')]: '\\(X=-?\\d+.\\d{6},Y=-?\\d+.\\d{6}\\)',
+	[local_ref('boolean')]: '(?:True|False)',
+	[local_ref('empty-object')]: '\\(\\)',
 };
 
 const $ref_supported_array = Object.keys(

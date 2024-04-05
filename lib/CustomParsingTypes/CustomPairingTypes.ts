@@ -23,6 +23,18 @@ export function object_has_property<
 	);
 }
 
+export function object_has_only_properties_that_match_predicate<
+	Value = unknown
+>(
+	maybe: unknown,
+	predicate:(object_value:unknown) => object_value is Value
+): maybe is {[key: string]: Value} {
+	return (
+		value_is_non_array_object(maybe)
+		&& Object.values(maybe).every(e => predicate(e))
+	);
+}
+
 export function property_exists_on_object(
 	object: {[key: string]: unknown},
 	property: string,
