@@ -157,7 +157,6 @@ export class TypeDefinitionDiscovery
 	public readonly types_discovery:TypesDiscovery;
 
 	constructor(
-		json:{[key: string]: unknown},
 		types_discovery: [
 			CandidatesDiscovery,
 			...CandidatesDiscovery[],
