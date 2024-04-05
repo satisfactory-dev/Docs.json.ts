@@ -91,9 +91,9 @@ export class typed_string extends GeneratorDoesDiscovery<
 				return minimum_size_array_of_single_type(
 					typed_string_value.minItems,
 					() => ts.factory.createTupleTypeNode(
-					typed_string_value.prefixItems.map(
-						e => this.discovery.find(e)
-					)
+						typed_string_value.prefixItems.map(
+							e => this.discovery.find(e)
+						)
 					),
 					typed_string_value.maxItems
 				);

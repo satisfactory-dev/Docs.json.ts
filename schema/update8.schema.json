@@ -4692,15 +4692,15 @@
 					"minLength": 1,
 					"typed_string": {
 						"minItems": 1,
-							"items": false,
-							"prefixItems": [
-								{
-									"$ref": "#/definitions/integer-string"
-								},
-								{
-									"$ref": "#/definitions/decimal-string"
-								}
-							]
+						"items": false,
+						"prefixItems": [
+							{
+								"$ref": "#/definitions/integer-string"
+							},
+							{
+								"$ref": "#/definitions/decimal-string"
+							}
+						]
 					}
 				}
 			}
