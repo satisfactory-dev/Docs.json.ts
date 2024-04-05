@@ -185,42 +185,43 @@ export class TypeDefinitionDiscovery
 			const discovered_types =
 				await this.types_discovery.discover_types();
 
-							if (discovered_types.missed_types.length > 0) {
-								throw new Error(
-									`Missing some type definitions:\n${
-										discovered_types.missed_types.join(
-											'\n'
-										)
-									}`
-								);
-							} else if (
-								!is_non_empty_array(
-									discovered_types.discovered_types,
-									is_string
-								)
-							) {
-								throw new Error('No types discovered!');
-							}
+			if (discovered_types.missed_types.length > 0) {
+				throw new Error(
+					`Missing some type definitions:\n${
+						discovered_types.missed_types.join(
+							'\n'
+						)
+					}`
+				);
+			} else if (
+				!is_non_empty_array(
+					discovered_types.discovered_types,
+					is_string
+				)
+			) {
+				throw new Error('No types discovered!');
+			}
 
-							const discovered_types_as_object: {
-								[key: local_ref<string>]: true,
-							} = Object.fromEntries(
-								discovered_types.discovered_types.map(
-									e => [e, true]
-								)
-							);
+			const discovered_types_as_object: {
+				[key: local_ref<string>]: true,
+			} = Object.fromEntries(
+				discovered_types.discovered_types.map(
+					e => [e, true]
+				)
+			);
 
-							const schema = await this.schema_from_json(
-								discovered_types_as_object
-							);
+			const schema = await this.schema_from_json(
+				discovered_types_as_object
+			);
 
 			this.$ref_discovery = Promise.resolve(
 				this.discover_type_definitions_from<
-								typeof discovered_types_as_object
-							>(
-								schema,
-								discovered_types_as_object,
-							));
+					typeof discovered_types_as_object
+				>(
+					schema,
+					discovered_types_as_object,
+				)
+			);
 		}
 
 		return this.$ref_discovery;
