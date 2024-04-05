@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (213 of 213)
+98.10% Complete (207 of 211)
 
 ## Basic Types
 
@@ -34,8 +34,9 @@
 -   [x] InfinityExtrap
 -   [x] integer-string
 -   [x] integer-string--signed
+-   [x] ItemClass
 -   [x] mAspect
--   [x] MaterialSlotName
+-   [ ] MaterialSlotName
 -   [x] mBatteryStatus
 -   [x] mChainsawState
 -   [x] mClassToScanFor
@@ -54,7 +55,7 @@
 -   [x] mStackSize
 -   [x] NativeClass
 -   [x] None
--   [x] SpecifiedColor
+-   [ ] SpecifiedColor
 -   [x] transformation
 -   [x] weaponState
 -   [x] xyz-array
@@ -266,7 +267,7 @@
 -   [x] FGSchematic--mUnlocks_mRecipes
 -   [x] FGSchematic--mUnlocks_mScannableObjects
 -   [x] FGSchematic--mUnlocks_mSchematics
--   [x] FGSchematic--mUnlocks_mSchematics--mSchematics
+-   [ ] FGSchematic--mUnlocks_mSchematics--mSchematics
 -   [x] FGSchematic--mUnlocks_mTapeUnlocks
 -   [x] FGSchematic--mUnlocks_resources_to_scan
 -   [x] FGSchematic--with-unlocks
@@ -276,15 +277,6 @@
 -   [x] FGWeapon--base
 -   [x] FGWeapon--rebar-gun
 -   [x] FGWeapon--rifle
-
-## ItemClass
-
--   [x] ItemClass-and-amount
--   [x] ItemClass--prop
-
-## ItemClass-only
-
--   [x] ItemClass-only--array
 
 ## mEventType
 
@@ -299,7 +291,7 @@
 ## vectors
 
 -   [x] pitch-yaw-roll
--   [x] quaternion
+-   [ ] quaternion
 -   [x] xy
 -   [x] xy--integer
 -   [x] xyz
