@@ -123,7 +123,14 @@ export function string_to_object<T extends object>(
 					if (index === array.length - 1) {
 						if ('' !== was.current_key_buffer) {
 							const coerced_value = shallow
-								? was.current_value_buffer
+								? (
+									/^".+"$/.test(was.current_value_buffer)
+										? was.current_value_buffer.substring(
+											1,
+											was.current_value_buffer.length - 1
+										)
+										: was.current_value_buffer
+								)
 								: string_to_native_type(
 									was.current_value_buffer
 								);

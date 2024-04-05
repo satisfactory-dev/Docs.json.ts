@@ -22,6 +22,7 @@ import {
 	local_ref,
 } from '../../StringStartsWith';
 import {
+	object_has_non_empty_array_property,
 	value_is_non_array_object,
 } from '../../CustomParsingTypes/CustomPairingTypes';
 import {
@@ -48,6 +49,9 @@ import {
 import {
 	typed_string,
 } from '../../TypeDefinitionDiscovery/CustomParsingTypes/typed_string';
+import {
+	typed_string_const,
+} from '../../CustomParsingTypes/TypedStringConst';
 
 export class TypedString extends ConvertsUnknown<
 	string,
@@ -187,6 +191,64 @@ export class TypedString extends ConvertsUnknown<
 			converter = this.UnrealEngineString;
 		}
 
+		if (
+			!(converter instanceof ConvertsUnknown)
+			&& object_has_non_empty_array_property(
+				schema.items,
+				'oneOf',
+				value_is_non_array_object
+			)
+		) {
+			const checks = schema.items.oneOf.map(
+				(e) : [SchemaObject, ValidateFunction] => [
+					e,
+					compile(
+						this.discovery.docs.ajv,
+						e
+					),
+				]
+			);
+
+			const converted = await Promise.all(shallow.map(async (e) => {
+				const schema = checks.find(maybe => maybe[1](e));
+
+				if (!schema) {
+					throw new NoMatchError(
+						{
+							shallow,
+							e,
+						}
+					);
+				}
+
+				const schema_converter = await (await Base.find(
+					await this.discovery.candidates,
+					schema[0]
+				)).result();
+
+				if (!(schema_converter instanceof ConvertsUnknown)) {
+					throw new NoMatchError(
+						{
+							schema: schema[0],
+							shallow,
+							e,
+						}
+					);
+				}
+
+				return await schema_converter.convert_unknown(
+					schema[0],
+					e
+				) as unknown;
+			}));
+
+			return new ExpressionResult(
+				await this.discovery.literal.value_literal(
+					converted
+				) as ArrayLiteralExpression
+			) ;
+		}
+
 		if (converter instanceof ConvertsUnknown) {
 			return new ExpressionResult(
 				await this.discovery.literal.value_literal(
@@ -275,6 +337,18 @@ export class TypedString extends ConvertsUnknown<
 					)
 				) {
 					converter = this.UnrealEngineString;
+				}
+
+				if (
+					!(converter instanceof ConvertsUnknown)
+					&& typed_string_const.is_supported_schema(
+						typed_string_value.properties[property]
+					)
+				) {
+					return [
+						property,
+						value,
+					];
 				}
 
 				if (converter instanceof ConvertsUnknown) {
