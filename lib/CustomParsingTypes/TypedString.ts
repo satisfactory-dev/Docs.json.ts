@@ -17,9 +17,6 @@ import {
 	ValueToRegexFormatter,
 } from './ValueToRegexFormatter';
 import {
-	writeFileSync,
-} from 'node:fs';
-import {
 	enum_schema_type,
 	typed_string_enum_schema,
 } from './TypedStringEnum';
@@ -236,11 +233,6 @@ export class TypedString
 				{$ref: '#/definitions/typed_string_array_type'},
 			],
 		};
-
-		writeFileSync(
-			'/app/typed-string.meta-schema.json',
-			JSON.stringify(meta_schema, null, '\t') + '\n'
-		);
 
 		const formatter = new ValueToRegexFormatter(
 			definitions
