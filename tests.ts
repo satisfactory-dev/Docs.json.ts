@@ -12,6 +12,8 @@ const __dirname = import.meta.dirname;
 
 const ac = new AbortController();
 
+let already_stopped = false;
+
 run({
 	files: await glob(`${__dirname}/tests/**/*.ts`),
 	concurrency: true,
@@ -19,7 +21,10 @@ run({
 })
 	.on('test:fail', (e) => {
 		ac.abort();
+		if (!already_stopped) {
 		console.error(e);
+		}
+		already_stopped = true;
 		process.exitCode = 1;
 	})
 	.compose(tap)
