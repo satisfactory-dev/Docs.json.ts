@@ -159,7 +159,7 @@ export class SpecificItemGenerator extends Base<
 	DocsDataItemResult
 > {
 	private readonly array_only_minItems:UnboundArray;
-	private readonly array_with_maxItems:UnboundArray;
+	private readonly array_with_maxItems:MaxBoundedArray;
 	private readonly check:ValidateFunction<DocsDataItem>;
 	private readonly extends_$ref:ObjectExtendsButHasNoAdditionalProperties;
 	private readonly NativeClass_definition:Promise<SchemaObject>;
