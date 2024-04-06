@@ -7,6 +7,6 @@ import {
 
 const __dirname = import.meta.dirname;
 
-for (const remove of await glob(`${__dirname}/data/*.mjs`)) {
+for (const remove of await glob(`${__dirname}/{data/*.mjs,coverage/tmp/*.json}`)) {
 	await unlink(remove);
 }
