@@ -46,9 +46,17 @@ try {
 	});
 } catch (err) {
 	if (err instanceof NoMatchError) {
+		console.error('ran into an issue');
 		await writeFile(
 			'./discovery-types.failure.json',
-			JSON.stringify(err.property, null, '\t')
+			JSON.stringify(
+				{
+					property: err.property,
+					message: err.message,
+				},
+				null,
+				'\t'
+			)
 		);
 
 		console.error(err.message, err.stack);
