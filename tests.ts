@@ -22,7 +22,7 @@ run({
 	.on('test:fail', (e) => {
 		ac.abort();
 		if (!already_stopped) {
-		console.error(e);
+			console.error(e);
 		}
 		already_stopped = true;
 		process.exitCode = 1;
