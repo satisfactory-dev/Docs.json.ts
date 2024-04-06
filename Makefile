@@ -24,6 +24,10 @@ build:
 	@echo 'building from ./tsconfig.app.json'
 	${DOCKER_COMPOSER_PREFIX} exec node ./node_modules/.bin/tsc --project ./tsconfig.app.json
 
+clean:
+	@echo 'running ./clean.ts'
+	${DOCKER_COMPOSER_PREFIX} exec ts-node ./node_modules/.bin/ts-node ./clean.ts
+
 generate: lint generate--skip-checks generate--post-build
 
 generate--skip-checks: build
