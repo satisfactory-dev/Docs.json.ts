@@ -5,11 +5,6 @@ import {
 import {
 	DataTransformer,
 } from '../../DataTransformer';
-/*
-import {
-	NoMatchError,
-} from '../../Exceptions';
- */
 
 type schema_type = {oneOf: {[key: string]: unknown}[]};
 
@@ -52,25 +47,6 @@ export class oneOf extends SecondaryCheckSchemaCompilingGenerator<
 				return raw_data;
 			}
 
-			/*
-			throw new NoMatchError({
-				raw_data,
-				schema,
-				generators: generators.map(e => e.constructor.name),
-				errors: generators.map(e => e.check.errors),
-				secondary: generators.filter(
-					(
-						maybe
-					): maybe is SecondaryCheckSchemaCompilingGenerator<
-						unknown,
-						unknown,
-						unknown
-					> => SecondaryCheckSchemaCompilingGenerator.is(
-						maybe
-					)
-				).map((e) => e.secondary_errors),
-			})
-			 */
 			return  raw_data;
 		});
 	}
