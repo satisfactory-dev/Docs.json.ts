@@ -109,10 +109,6 @@ export class DataDiscovery
 	}
 
 	async generate() {
-		/*
-		const schema = await this.docs.schema();
-		 */
-
 		return await Promise.all(
 			(await this.docs.get()).map(async (e) => {
 				const maybe = await this.docs_data_item_candidate.matches(e);
