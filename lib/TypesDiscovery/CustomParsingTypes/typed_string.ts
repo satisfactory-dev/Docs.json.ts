@@ -83,7 +83,7 @@ export class typed_string extends CandidatesDiscovery
 								(
 									maybe:unknown
 								) : maybe is number => {
-									return 'number'=== typeof maybe;
+									return 'number' === typeof maybe;
 								}
 							)
 						)
