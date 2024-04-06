@@ -92,7 +92,8 @@ export class ObjectType extends GeneratorDoesDiscovery<
 						entry[0],
 						this.discovery.find(entry[1]),
 					];
-				})
+				}),
+				raw_data.required
 			);
 
 			if ('not' in raw_data) {

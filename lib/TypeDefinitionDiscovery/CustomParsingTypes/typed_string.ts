@@ -118,7 +118,8 @@ export class typed_string extends GeneratorDoesDiscovery<
 						entry[0],
 						this.discovery.find(entry[1]),
 					];
-				})
+				}),
+				typed_string_value.required
 			);
 		};
 	}
