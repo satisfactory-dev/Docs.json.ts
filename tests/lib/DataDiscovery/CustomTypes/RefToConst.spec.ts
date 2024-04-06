@@ -21,7 +21,10 @@ import {
 
 void describe('RefToConst.convert_unknown', async () => {
 	const discovery = new DataDiscovery(docs);
-	const instance = await RefToConst.from_definitions(discovery);
+	const instance = RefToConst.from_definitions(
+		(await docs.schema()).definitions,
+		discovery
+	);
 
 	void it('throws', async () => {
 		await rejects_partial_match(

@@ -1,6 +1,6 @@
 import {
-	DoubleCheckedStringSchema,
 	ExpressionResult,
+	FilterRefs,
 } from '../Generator';
 import {
 	local_ref,
@@ -32,7 +32,7 @@ type schema_type = SchemaObject & {
 };
 
 
-export class RefToTypedString extends DoubleCheckedStringSchema<
+export class RefToTypedString extends FilterRefs<
 	schema_type,
 	typed_string_parent_type
 > {
@@ -77,9 +77,10 @@ export class RefToTypedString extends DoubleCheckedStringSchema<
 		return this.basic.convert_unknown(definition, raw_data);
 	}
 
-	static async from_definitions(discovery:DataDiscovery)
-	{
-		const {definitions} = await discovery.docs.schema();
+	static from_definitions(
+		definitions:{[key: string]: SchemaObject},
+		discovery: DataDiscovery
+	) {
 		const all_refs = Object.keys(definitions).map(local_ref);
 		const check = compile<typed_string_parent_type>(
 			discovery.docs.ajv,
@@ -90,9 +91,10 @@ export class RefToTypedString extends DoubleCheckedStringSchema<
 				},
 			}
 		);
-		const refs = Object.entries(definitions).filter(
-			maybe => check(maybe[1])
-		).map(e => e[0]).map(e => local_ref(e));
+		const refs = this.filter_refs(
+			definitions,
+			check
+		);
 
 		return new this(
 			discovery,

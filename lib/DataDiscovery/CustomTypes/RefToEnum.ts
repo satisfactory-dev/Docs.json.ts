@@ -1,6 +1,6 @@
 import {
-	DoubleCheckedStringSchema,
 	ExpressionResult,
+	FilterRefs,
 } from '../Generator';
 import {
 	local_ref,
@@ -41,7 +41,7 @@ type secondary_schema_type = {
 	enum: [string, ...string[]],
 };
 
-export class RefToEnum extends DoubleCheckedStringSchema<
+export class RefToEnum extends FilterRefs<
 	schema_type,
 	secondary_schema_type
 > {
@@ -89,16 +89,18 @@ export class RefToEnum extends DoubleCheckedStringSchema<
 		));
 	}
 
-	static async from_definitions(discovery:DataDiscovery)
-	{
-		const {definitions} = await discovery.docs.schema();
+	static from_definitions(
+		definitions:{[key: string]: SchemaObject},
+		discovery: DataDiscovery
+	) {
 		const check = compile<secondary_schema_type>(
 			discovery.docs.ajv,
 			secondary_schema
 		);
-		const refs = Object.entries(definitions).filter(
-			maybe => check(maybe[1])
-		).map(e => e[0]).map(e => local_ref(e));
+		const refs = this.filter_refs(
+			definitions,
+			check
+		);
 
 		return new this(
 			discovery,

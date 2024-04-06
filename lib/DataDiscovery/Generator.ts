@@ -19,6 +19,7 @@ import {
 } from '../CustomParsingTypes/CustomPairingTypes';
 import {
 	is_string,
+	local_ref,
 } from '../StringStartsWith';
 
 export abstract class GenerationResult<
@@ -235,5 +236,24 @@ export abstract class DoubleCheckedStringSchema<
 		if (!is_string(raw_data)) {
 			throw new NoMatchError(raw_data, 'must be a string!');
 		}
+	}
+}
+
+export abstract class FilterRefs<
+	Primary extends {[key: string]: unknown} & {$ref: string},
+	Secondary extends {[key: string]: unknown},
+	Output extends ExpressionResult = ExpressionResult
+> extends DoubleCheckedStringSchema<
+	Primary,
+	Secondary,
+	Output
+> {
+	protected static filter_refs(
+		definitions:{[key: string]: SchemaObject},
+		check:ValidateFunction<SchemaObject>
+	): local_ref<string>[] {
+		return Object.entries(definitions).filter(
+			maybe => check(maybe[1])
+		).map(e => e[0]).map(e => local_ref(e));
 	}
 }
