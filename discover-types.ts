@@ -14,10 +14,16 @@ import {
 import {
 	configure_ajv,
 } from './lib/DocsValidation';
+import {
+	setup_PerformanceObserver,
+} from './setup_PerformanceObserver';
 
 const __dirname = import.meta.dirname;
 
+setup_PerformanceObserver();
+
 try {
+	performance.mark('start');
 	const ajv = new Ajv({
 		verbose: true,
 		code: {
@@ -37,7 +43,10 @@ try {
 	const bar = new TypeDefinitionWriter(
 		docs
 	);
+	performance.measure('bootstrap', 'start');
+	performance.mark('bootstrap done');
 	await bar.write(`${__dirname}/generated-types/update8/`);
+	performance.measure('types generated', 'bootstrap done');
 	const discovery = await bar.discovery;
 	const result = await discovery.discover_type_definitions();
 
