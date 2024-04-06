@@ -67,7 +67,7 @@ class UnspecifiedArray<
 				converter instanceof ConvertsObject
 				&& value_is_non_array_object(e)
 			) {
-				return new RawGenerationResult(converter.convert_object(
+				return new RawGenerationResult(await converter.convert_object(
 					schema.items,
 					e
 				));

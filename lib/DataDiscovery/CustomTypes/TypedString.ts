@@ -309,7 +309,9 @@ export class TypedString extends ConvertsUnknown<
 		if (converter instanceof ConvertsUnknown) {
 			return new ExpressionResult(
 				await this.discovery.literal.value_literal(
-					await Promise.all(shallow.map(e => converter.convert_unknown(
+					await Promise.all(shallow.map((
+						e
+					) => converter.convert_unknown(
 						schema.items,
 						e
 					)))

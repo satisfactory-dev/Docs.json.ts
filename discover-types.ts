@@ -51,7 +51,7 @@ try {
 			'./discovery-types.failure.json',
 			JSON.stringify(
 				{
-					property: err.property,
+					property: err.property as unknown,
 					message: err.message,
 				},
 				null,
