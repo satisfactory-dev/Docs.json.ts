@@ -12,4 +12,5 @@
 /*.js
 /*.js.map
 /discovery-types.failure.json
+/failed-to-compile.json
 /coverage/
