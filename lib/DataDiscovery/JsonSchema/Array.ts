@@ -62,7 +62,7 @@ class UnspecifiedArray<
 			schema.items
 		)).result();
 
-		return raw_data.map((e) => {
+		return await Promise.all(raw_data.map(async (e) => {
 			if (
 				converter instanceof ConvertsObject
 				&& value_is_non_array_object(e)
@@ -74,7 +74,7 @@ class UnspecifiedArray<
 			}
 
 			return new RawGenerationResult(e);
-		})
+		}))
 	}
 
 	matches(schema: unknown) {
