@@ -52,6 +52,9 @@ import {
 import {
 	typed_string_const,
 } from '../../CustomParsingTypes/TypedStringConst';
+import {
+	typed_string_enum,
+} from '../../CustomParsingTypes/TypedStringEnum';
 
 export class TypedString extends ConvertsUnknown<
 	string,
@@ -247,6 +250,33 @@ export class TypedString extends ConvertsUnknown<
 					converted
 				) as ArrayLiteralExpression
 			) ;
+		}
+
+		if (
+			!(converter instanceof ConvertsUnknown)
+			&& typed_string_enum.is_supported_schema(schema.items)
+		) {
+			const enum_schema = schema.items;
+			const checked = shallow.map((e, index) => {
+				if (!is_string(e) || !enum_schema.enum.includes(e)) {
+					throw new NoMatchError(
+						{
+							e,
+							index,
+							enum_schema,
+						},
+						'Value not found on enum!'
+					);
+				}
+
+				return e;
+			});
+
+			return new ExpressionResult(
+				await this.discovery.literal.value_literal(
+					checked
+				) as ArrayLiteralExpression
+			);
 		}
 
 		if (converter instanceof ConvertsUnknown) {
