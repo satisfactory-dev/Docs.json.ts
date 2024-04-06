@@ -14,12 +14,12 @@ import {
 
 void describe('object_has_property', () => {
 	void it('gets no predicate', () => {
-		assert.strictEqual(object_has_property([], 'foo'), false);
-		assert.strictEqual(object_has_property({}, 'foo'), false)
-		assert.strictEqual(object_has_property({foo:undefined}, 'foo'), true);
+		assert.equal(object_has_property([], 'foo'), false);
+		assert.equal(object_has_property({}, 'foo'), false)
+		assert.equal(object_has_property({foo:undefined}, 'foo'), true);
 	});
 	void it('gets a predicate', () => {
-		assert.strictEqual(
+		assert.equal(
 			object_has_property(
 				{foo: 'bar'},
 				'foo',
@@ -27,7 +27,7 @@ void describe('object_has_property', () => {
 			),
 			true
 		);
-		assert.strictEqual(
+		assert.equal(
 			object_has_property(
 				{foo: 'bar'},
 				'foo',
@@ -35,7 +35,7 @@ void describe('object_has_property', () => {
 			),
 			false
 		);
-		assert.strictEqual(
+		assert.equal(
 			object_has_property(
 				{foo: 'bar', bar: 1},
 				'foo',
@@ -48,16 +48,16 @@ void describe('object_has_property', () => {
 
 void describe('object_only_has_that_property', () => {
 	void it('gets no predicate', () => {
-		assert.strictEqual(object_only_has_that_property([], 'foo'), false);
-		assert.strictEqual(object_only_has_that_property({}, 'foo'), false);
-		assert.strictEqual(
+		assert.equal(object_only_has_that_property([], 'foo'), false);
+		assert.equal(object_only_has_that_property({}, 'foo'), false);
+		assert.equal(
 			object_only_has_that_property(
 				{foo:undefined},
 				'foo'
 			),
 			true
 		);
-		assert.strictEqual(
+		assert.equal(
 			object_only_has_that_property(
 				{foo:undefined, bar: 1},
 				'foo'
@@ -66,7 +66,7 @@ void describe('object_only_has_that_property', () => {
 		);
 	});
 	void it('gets a predicate', () => {
-		assert.strictEqual(
+		assert.equal(
 			object_only_has_that_property(
 				{foo: 'bar'},
 				'foo',
@@ -74,7 +74,7 @@ void describe('object_only_has_that_property', () => {
 			),
 			true
 		);
-		assert.strictEqual(
+		assert.equal(
 			object_only_has_that_property(
 				{foo: 'bar', bar: 1},
 				'foo',
@@ -82,7 +82,7 @@ void describe('object_only_has_that_property', () => {
 			),
 			false
 		);
-		assert.strictEqual(
+		assert.equal(
 			object_only_has_that_property(
 				{foo: 'bar'},
 				'foo',
@@ -95,10 +95,10 @@ void describe('object_only_has_that_property', () => {
 
 void describe('value_is_non_array_object', () => {
 	void it('behaves', () => {
-		assert.strictEqual(value_is_non_array_object([]), false);
-		assert.strictEqual(value_is_non_array_object(1), false);
-		assert.strictEqual(value_is_non_array_object(undefined), false);
-		assert.strictEqual(value_is_non_array_object({}), true);
-		assert.strictEqual(value_is_non_array_object({} as unknown[]), true);
+		assert.equal(value_is_non_array_object([]), false);
+		assert.equal(value_is_non_array_object(1), false);
+		assert.equal(value_is_non_array_object(undefined), false);
+		assert.equal(value_is_non_array_object({}), true);
+		assert.equal(value_is_non_array_object({} as unknown[]), true);
 	});
 });

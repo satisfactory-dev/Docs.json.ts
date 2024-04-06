@@ -88,12 +88,12 @@ for (const describing of Object.entries(spec)) {
 			void it(expectation, () => {
 				for (const assertion of assertions) {
 					const [argument, to_equal] = assertion;
-					assert.deepStrictEqual(
+					assert.deepEqual(
 						function_to_call(argument, false),
 						to_equal
 					);
 					if (3 === assertion.length) {
-						assert.deepStrictEqual(
+						assert.deepEqual(
 							function_to_call(argument, true),
 							assertion[2]
 						);
@@ -127,8 +127,8 @@ void describe('configure_ajv', () => {
 		const schema:SchemaObject = {type: 'string'};
 		const basic = ajv.compile(schema);
 
-		assert.strictEqual(basic('foo'), true);
-		assert.strictEqual(basic(1), false);
+		assert.equal(basic('foo'), true);
+		assert.equal(basic(1), false);
 
 		for (const entry of test_keyword_schemas) {
 			const [schema] = entry;
@@ -150,7 +150,7 @@ void describe('configure_ajv', () => {
 			for (const check_entry of checks) {
 				const [input, expected] = check_entry;
 
-				assert.strictEqual(check(input), expected);
+				assert.equal(check(input), expected);
 			}
 		}
 	});
