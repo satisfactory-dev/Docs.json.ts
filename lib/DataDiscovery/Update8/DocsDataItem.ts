@@ -18,6 +18,7 @@ import {
 	NoMatchError,
 } from '../../Exceptions';
 import {
+	MaxBoundedArray,
 	UnboundArray,
 } from '../JsonSchema/Array';
 import {
@@ -157,11 +158,12 @@ export class SpecificItemGenerator extends Base<
 	DocsDataItemResult,
 	DocsDataItemResult
 > {
+	private readonly array_only_minItems:UnboundArray;
+	private readonly array_with_maxItems:UnboundArray;
 	private readonly check:ValidateFunction<DocsDataItem>;
 	private readonly extends_$ref:ObjectExtendsButHasNoAdditionalProperties;
 	private readonly NativeClass_definition:Promise<SchemaObject>;
 	private readonly schema:DocsDataItem_schema;
-	private readonly unbound_array:UnboundArray;
 	private readonly unreal_engine_string:UnrealEngineString;
 
 	constructor(
@@ -171,7 +173,8 @@ export class SpecificItemGenerator extends Base<
 		super(discovery);
 		this.check = compile<DocsDataItem>(discovery.docs.ajv, schema);
 		this.schema = schema;
-		this.unbound_array = new UnboundArray(discovery);
+		this.array_only_minItems = new UnboundArray(discovery);
+		this.array_with_maxItems = new MaxBoundedArray(discovery);
 		this.unreal_engine_string = new UnrealEngineString(discovery);
 		this.NativeClass_definition = this.discovery.docs.definition(
 			'NativeClass'
@@ -181,16 +184,28 @@ export class SpecificItemGenerator extends Base<
 		);
 	}
 
-	async matches(raw_data: unknown) {
+	async matches(raw_data: unknown) : Promise<
+		| RawGenerationResult<DocsDataItem>
+		| RawGenerationResult<modified_DocsDataItem>
+		| undefined
+	> {
 		if (this.check(raw_data)) {
 			const maybe_unbound_array = await (
-				await this.unbound_array.matches(
+				await this.array_with_maxItems.matches(
+					this.schema.properties.Classes
+				)
+			)?.result() || await (
+				await this.array_only_minItems.matches(
 					this.schema.properties.Classes
 				)
 			)?.result();
 
 			if (!(maybe_unbound_array instanceof ConvertsArray)) {
-				return new RawGenerationResult(raw_data);
+				throw new NoMatchError({
+					NativeClass: raw_data.NativeClass,
+					maxItems: this.array_with_maxItems.check.errors,
+					minItems: this.array_only_minItems.check.errors,
+				});
 			} else if (
 				!maybe_unbound_array.check(this.schema.properties.Classes)
 			) {

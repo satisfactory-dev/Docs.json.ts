@@ -7259,13 +7259,9 @@
 					"minItems": 2,
 					"maxItems": 2,
 					"items": {
-						"oneOf": [
-							{
 								"type": "object",
 								"$ref": "#/definitions/FGBuildableWire",
 								"unevaluatedProperties": false
-							}
-						]
 					}
 				}
 			}

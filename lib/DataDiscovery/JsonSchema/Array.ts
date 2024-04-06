@@ -18,30 +18,44 @@ import {
 	compile,
 } from '../../AjvUtilities';
 
-export type unbound_array = SchemaObject & {
+type unspecified_array = SchemaObject & {
 	type: 'array',
-	minItems: 1,
 	items: {[key: string]: unknown},
 };
 
-export class UnboundArray extends ConvertsArray<unknown> {
-	public readonly check:ValidateFunction<unbound_array>;
+export type unbound_array = unspecified_array & {
+	minItems: 1,
+};
 
-	constructor(discovery:DataDiscovery) {
+export type max_bounded_array = unbound_array & {
+	maxItems: 1,
+};
+
+class UnspecifiedArray<
+	ArrayType extends unspecified_array,
+	Result = unknown
+> extends ConvertsArray<Result> {
+	public readonly check:ValidateFunction<ArrayType>;
+
+	protected constructor(
+		discovery:DataDiscovery,
+		required:[string, ...string[]],
+		properties:{[key: string]: SchemaObject},
+	) {
 		super(discovery);
-		this.check = compile<unbound_array>(discovery.docs.ajv, {
+		this.check = compile<ArrayType>(discovery.docs.ajv, {
 			type: 'object',
-			required: ['type', 'minItems', 'items'],
+			required,
 			additionalProperties: false,
 			properties: {
+				...properties,
 				type: {type: 'string', const: 'array'},
-				minItems: {type: 'number', const: 1},
 				items: {type: 'object'},
 			},
 		});
 	}
 
-	async convert_array(schema: unbound_array, raw_data:unknown[])
+	async convert_array(schema: ArrayType, raw_data:unknown[])
 	{
 		const converter:unknown = await (await Base.find(
 			await this.discovery.candidates,
@@ -69,5 +83,43 @@ export class UnboundArray extends ConvertsArray<unknown> {
 		}
 
 		return Promise.resolve(undefined);
+	}
+}
+
+export class UnboundArray<
+	ArrayType extends unbound_array = unbound_array,
+	Result = unknown
+> extends UnspecifiedArray<ArrayType, Result> {
+	constructor(
+		discovery:DataDiscovery,
+		required: [string, ...string[]]|([]) = [],
+		properties:{[key: string]: SchemaObject} = {}
+	) {
+		super(
+			discovery,
+			['type', 'minItems', 'items', ...required],
+			{
+				...properties,
+				minItems: {type: 'number', minimum: 1},
+			},
+		);
+	}
+}
+
+export class MaxBoundedArray<
+	ArrayType extends max_bounded_array = max_bounded_array,
+	Result = unknown
+> extends UnboundArray<
+	ArrayType,
+	Result
+> {
+	constructor(discovery:DataDiscovery) {
+		super(
+			discovery,
+			['maxItems'],
+			{
+				maxItems: {type: 'number', minimum: 1},
+			}
+		);
 	}
 }
