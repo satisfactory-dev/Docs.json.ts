@@ -25,6 +25,8 @@ const files = (from_args || '').split(' ').filter(
 	maybe => all_tests.includes(maybe)
 );
 
+let already_stopped = false;
+
 run({
 	files,
 	concurrency: true,
@@ -32,7 +34,10 @@ run({
 })
 	.on('test:fail', (e) => {
 		ac.abort();
+		if (!already_stopped) {
 		console.error(e);
+		}
+		already_stopped = true;
 		process.exitCode = 1;
 	})
 	.compose(tap)
