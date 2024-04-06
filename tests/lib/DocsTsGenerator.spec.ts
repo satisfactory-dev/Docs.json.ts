@@ -31,7 +31,7 @@ void describe('DocsTsGenerator.schema', () => {
 	});
 
 	void it('will currently return update 8', async () => {
-		assert.strictEqual(
+		assert.equal(
 			(await docs.schema()).$id,
 			'update8.schema.json'
 		);
@@ -61,7 +61,7 @@ void describe('DocsTsGenerator.definition', () => {
 		} catch (err) {
 			passed = true;
 		}
-		assert.strictEqual(passed, true);
+		assert.equal(passed, true);
 	});
 	void it('will return on a recognised definition', () => {
 		assert.doesNotThrow(

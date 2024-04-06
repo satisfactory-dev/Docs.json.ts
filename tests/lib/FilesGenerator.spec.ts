@@ -25,13 +25,13 @@ void describe('FromArray', () => {
 			entries.push(entry);
 		}
 
-		assert.strictEqual(entries.length, 1);
+		assert.equal(entries.length, 1);
 	});
 });
 
 void describe('merge_files', () => {
 	void it('defines an object', async () => {
-		assert.strictEqual(
+		assert.equal(
 			value_is_non_array_object(
 				await FilesGenerator.merge_files([])
 			),
@@ -41,7 +41,7 @@ void describe('merge_files', () => {
 	void it('modifies an object', async () => {
 		const files = {};
 
-		assert.strictEqual(
+		assert.equal(
 			(await FilesGenerator.merge_files([
 				new FromArray([
 					{file: 'foo.ts', node: create_literal('bar')},
@@ -54,15 +54,15 @@ void describe('merge_files', () => {
 
 void describe('guess_filename', () => {
 	void it('guess_filename', () => {
-		assert.strictEqual(
+		assert.equal(
 			guess_filename('foo'),
 			'common/unassigned.ts'
 		);
-		assert.strictEqual(
+		assert.equal(
 			guess_filename('NativeClass--foo'),
 			'classes/base.ts'
 		);
-		assert.strictEqual(
+		assert.equal(
 			guess_filename('FGFoo--bar'),
 			'classes/CoreUObject/FGFoo.ts'
 		);

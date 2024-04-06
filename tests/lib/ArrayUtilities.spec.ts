@@ -10,7 +10,7 @@ import {
 
 void describe('non_empty_map', () => {
 	void it('behaves', () => {
-		assert.strictEqual(
+		assert.equal(
 			non_empty_map([1,2,3], e => e).length,
 			3
 		);
@@ -19,11 +19,11 @@ void describe('non_empty_map', () => {
 
 void describe('non_empty_keys', () => {
 	void it('behaves', () => {
-		assert.strictEqual(
+		assert.equal(
 			non_empty_keys({} as {[key: string]: unknown}).length,
 			0
 		);
-		assert.deepStrictEqual(
+		assert.deepEqual(
 			non_empty_keys({foo: 1, bar: 1}),
 			['foo', 'bar']
 		);

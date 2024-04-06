@@ -12,7 +12,7 @@ import {
 
 void describe('local_ref', () => {
 	void it('works', () => {
-		assert.strictEqual(local_ref('foo'), '#/definitions/foo');
+		assert.equal(local_ref('foo'), '#/definitions/foo');
 	})
 
 	void it('throws', () => {
@@ -23,33 +23,33 @@ void describe('local_ref', () => {
 
 void describe('is_string', () => {
 	void it ('behaves', () => {
-		assert.strictEqual(is_string('foo'), true);
-		assert.strictEqual(is_string(1), false);
+		assert.equal(is_string('foo'), true);
+		assert.equal(is_string(1), false);
 	});
 });
 
 void describe('is_$ref', () => {
 	void it('behaves', () => {
-		assert.strictEqual(is_$ref('#/definitions/foo'), true);
-		assert.strictEqual(is_$ref('foo'), false);
+		assert.equal(is_$ref('#/definitions/foo'), true);
+		assert.equal(is_$ref('foo'), false);
 	});
 });
 
 void describe('$ref_in_array', () => {
 	void it('behaves', () => {
-		assert.strictEqual($ref_in_array(
+		assert.equal($ref_in_array(
 			1,
 			['#/definitions/foo']
 		), false);
-		assert.strictEqual($ref_in_array(
+		assert.equal($ref_in_array(
 			'foo',
 			['#/definitions/foo']
 		), false);
-		assert.strictEqual($ref_in_array(
+		assert.equal($ref_in_array(
 			'#/definitions/bar',
 			['#/definitions/foo']
 		), false);
-		assert.strictEqual($ref_in_array(
+		assert.equal($ref_in_array(
 			'#/definitions/foo',
 			['#/definitions/foo']
 		), true);

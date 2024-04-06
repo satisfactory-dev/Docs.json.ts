@@ -25,21 +25,21 @@ void describe('adjust_class_name', () => {
 		})) {
 			const [input, expected] = entry;
 
-			assert.strictEqual(adjust_class_name(input), expected);
+			assert.equal(adjust_class_name(input), expected);
 		}
 	});
 });
 
 void describe('create_modifiers', () => {
 	void it('removes duplicates', () => {
-		assert.strictEqual(
+		assert.equal(
 			create_modifiers('export', 'export', 'export').length,
 			1
 		);
 
 		const keys = non_empty_keys(modifier_map);
 
-		assert.strictEqual(
+		assert.equal(
 			create_modifiers(
 				...keys,
 				...keys
@@ -57,17 +57,17 @@ void describe('type_reference_node', () => {
 			create_literal('baz')
 		);
 
-		assert.strictEqual(ts.isIdentifier(type.typeName), true);
-		assert.strictEqual(type.typeArguments?.length, 2);
-		assert.strictEqual(
+		assert.equal(ts.isIdentifier(type.typeName), true);
+		assert.equal(type.typeArguments?.length, 2);
+		assert.equal(
 			ts.isLiteralTypeNode((type.typeArguments || [])[0]),
 			true
 		);
-		assert.strictEqual(
+		assert.equal(
 			ts.isLiteralTypeNode((type.typeArguments || [])[1]),
 			true
 		);
-		assert.strictEqual(
+		assert.equal(
 			ts.isStringLiteral(
 				(
 					type.typeArguments as unknown as [
@@ -78,7 +78,7 @@ void describe('type_reference_node', () => {
 			),
 			true
 		);
-		assert.strictEqual(
+		assert.equal(
 			ts.isStringLiteral(
 				(
 					type.typeArguments as unknown as [
@@ -89,7 +89,7 @@ void describe('type_reference_node', () => {
 			),
 			true
 		);
-		assert.strictEqual(
+		assert.equal(
 			((
 				type.typeArguments as unknown as [
 					LiteralTypeNode,
@@ -98,7 +98,7 @@ void describe('type_reference_node', () => {
 			)[0].literal as StringLiteral).text,
 			'bar'
 		);
-		assert.strictEqual(
+		assert.equal(
 			((
 				type.typeArguments as unknown as [
 					LiteralTypeNode,
