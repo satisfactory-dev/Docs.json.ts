@@ -86,12 +86,12 @@ export class DataDiscovery
 		);
 		this.candidates = docs.schema().then(({definitions}) => {
 			return [
-			new UnboundArray(this),
-			new ObjectExtendsButHasNoAdditionalProperties(this),
-			new NumberStrings(this),
-			new BooleanOrBooleanExtended(this),
-			new UnrealEngineString_DataDiscovery(this),
-			new TypedString(this),
+				new UnboundArray(this),
+				new ObjectExtendsButHasNoAdditionalProperties(this),
+				new NumberStrings(this),
+				new BooleanOrBooleanExtended(this),
+				new UnrealEngineString_DataDiscovery(this),
+				new TypedString(this),
 				RefToConst.from_definitions(definitions, this),
 				RefToEnum.from_definitions(definitions, this),
 				RefToTypedString.from_definitions(definitions, this),
