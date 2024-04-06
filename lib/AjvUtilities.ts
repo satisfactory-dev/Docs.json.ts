@@ -16,7 +16,13 @@ export function compile<T>(
 	schema:SchemaObject,
 ) : ValidateFunction<T> {
 	try {
-		return ajv.compile<T>(schema);
+		performance.mark('ajv compile start');
+
+		const result = ajv.compile<T>(schema);
+
+		performance.measure('ajv compile', 'ajv compile start');
+
+		return result;
 	} catch (err) {
 		writeFileSync(
 			`${__dirname}/../failed-to-compile.json`,
