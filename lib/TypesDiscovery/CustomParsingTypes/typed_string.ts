@@ -59,16 +59,16 @@ export class typed_string extends CandidatesDiscovery
 			&& (
 				(
 					2 === Object.keys(maybe.typed_string).length
-			&& object_has_non_empty_array_property(
-				maybe.typed_string,
-				'required',
-				is_string
-			)
-			&& object_has_property(
-				maybe.typed_string,
-				'properties',
-				value_is_non_array_object
-			)
+					&& object_has_non_empty_array_property(
+						maybe.typed_string,
+						'required',
+						is_string
+					)
+					&& object_has_property(
+						maybe.typed_string,
+						'properties',
+						value_is_non_array_object
+					)
 				)
 				|| (
 					(
