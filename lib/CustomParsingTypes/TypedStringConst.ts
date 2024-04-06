@@ -7,12 +7,6 @@ import {
 	value_is_non_array_object,
 } from './CustomPairingTypes';
 import {
-	LiteralTypeNode, StringLiteral,
-} from 'typescript';
-import {
-	create_literal,
-} from '../TsFactoryWrapper';
-import {
 	is_string,
 } from '../StringStartsWith';
 
@@ -36,8 +30,7 @@ export const typed_string_const_schema = {
 export type const_schema_type = {type: 'string'; const: string};
 
 class TypedStringConst extends SupportedSubSchemaType<
-	const_schema_type,
-	StringLiteral
+	const_schema_type
 > {
 	is_supported_schema(maybe: unknown): maybe is const_schema_type {
 		return (
@@ -59,12 +52,6 @@ class TypedStringConst extends SupportedSubSchemaType<
 			.replace(/\)/g, '\\)');
 
 		return `(?:(${lazy_escape}|"${lazy_escape}"))`;
-	}
-
-	value_type(
-		value: const_schema_type
-	): LiteralTypeNode & {literal: StringLiteral} {
-		return create_literal(value.const);
 	}
 }
 

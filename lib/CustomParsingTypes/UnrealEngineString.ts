@@ -26,9 +26,6 @@ import {
 	type_reference_node, variable,
 } from '../TsFactoryWrapper';
 import {
-	NoMatchError,
-} from '../Exceptions';
-import {
 	object_has_property,
 	value_is_non_array_object,
 } from './CustomPairingTypes';
@@ -102,28 +99,6 @@ export function is_UnrealEngineString_parent(
 				maybe.UnrealEngineString
 			))
 	);
-}
-
-export function check_UnrealEngineString_parent(
-	maybe:unknown,
-	require_left: boolean = false
-) : (
-	typeof require_left extends true
-		? (UnrealEngineString_parent_type & {
-			UnrealEngineString: {
-				left: UnrealEngineString_string_or_string_array,
-			}
-		})
-		: UnrealEngineString_parent_type
-) {
-	if (!is_UnrealEngineString_parent(maybe)) {
-		throw new NoMatchError(
-			maybe,
-			'Not an UnrealEngineString_parent object!'
-		);
-	}
-
-	return maybe;
 }
 
 export const UnrealEngineString_schema_definitions = {
@@ -469,14 +444,6 @@ export class UnrealEngineString {
 			},
 		];
 	}
-
-	static type_from_parent(
-		maybe:unknown
-	) : TypeReferenceNode {
-		return UnrealEngineString_reference_type(
-			check_UnrealEngineString_parent(maybe).UnrealEngineString
-		);
-	}
 }
 
 export function adjust_unrealengine_value(value: string): string {
@@ -605,15 +572,5 @@ function is_UnrealEngineString_object(
 	return (
 		(2 === keys.length && has_left && has_right)
 		|| (1 === keys.length && (has_left || has_right))
-	);
-}
-
-export function is_UnrealEngineString_type(
-	maybe: unknown
-): maybe is UnrealEngineString_type {
-	return (
-		true === maybe
-		|| ('object' === typeof maybe
-			&& is_UnrealEngineString_object(maybe))
 	);
 }

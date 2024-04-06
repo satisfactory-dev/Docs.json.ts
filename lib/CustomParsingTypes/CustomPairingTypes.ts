@@ -1,10 +1,3 @@
-import {
-	LiteralExpression,
-	LiteralTypeNode,
-	TypeReferenceNode,
-	UnionTypeNode,
-} from 'typescript';
-
 export function object_has_property<
 	Property extends string = string,
 	Value = unknown
@@ -108,39 +101,9 @@ export function annoyingly_have_to_escape_property(property: string): string {
 }
 
 export abstract class SupportedSubSchemaType<
-	ObjectType extends {[key: string]: unknown} = {[key: string]: unknown},
-	LiteralType extends
-		| LiteralExpression
-		| UnionTypeNode
-		| TypeReferenceNode =
-		| LiteralExpression
-		| UnionTypeNode
-		| TypeReferenceNode,
+	ObjectType extends {[key: string]: unknown} = {[key: string]: unknown}
 > {
-
-	key_value_pair_entry(
-		key: string,
-		value: ObjectType
-	): [
-		typeof key,
-		LiteralType extends LiteralExpression
-			? LiteralTypeNode & {literal: LiteralType}
-			: LiteralType,
-	] {
-		return [key, this.value_type(value)];
-	}
-
-	key_value_pair_regex(key: string, value: ObjectType): string {
-		return `(?:${annoyingly_have_to_escape_property(key)}=(?:${this.value_regex(value)}))`;
-	}
-
 	abstract is_supported_schema(maybe: unknown): maybe is ObjectType;
 
 	abstract value_regex(value: ObjectType): string;
-
-	abstract value_type(
-		value: ObjectType
-	): LiteralType extends LiteralExpression
-		? LiteralTypeNode & {literal: LiteralType}
-		: LiteralType;
 }

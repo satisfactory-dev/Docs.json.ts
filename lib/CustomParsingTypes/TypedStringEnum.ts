@@ -9,10 +9,6 @@ import {
 	typed_string_const_value_regex__native,
 } from './TypedStringConst';
 import {
-	create_typed_union,
-	non_empty_string_literal_union,
-} from '../TsFactoryWrapper';
-import {
 	is_string,
 } from '../StringStartsWith';
 
@@ -36,8 +32,7 @@ export const typed_string_enum_schema = {
 };
 
 class TypedStringEnum extends SupportedSubSchemaType<
-	enum_schema_type,
-	non_empty_string_literal_union
+	enum_schema_type
 > {
 	is_supported_schema(maybe: unknown): maybe is enum_schema_type {
 		return (
@@ -56,10 +51,6 @@ class TypedStringEnum extends SupportedSubSchemaType<
 	value_regex(value: enum_schema_type): string {
 		const enums = `(?:${value.enum.join('|')})`;
 		return `(?:${enums}|"${enums}")`;
-	}
-
-	value_type(value: enum_schema_type): non_empty_string_literal_union {
-		return create_typed_union(value.enum);
 	}
 }
 
