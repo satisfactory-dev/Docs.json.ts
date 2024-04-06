@@ -254,6 +254,33 @@ export class TypedString extends ConvertsUnknown<
 
 		if (
 			!(converter instanceof ConvertsUnknown)
+			&& typed_string_const.is_supported_schema(schema.items)
+		) {
+			const const_schema = schema.items;
+			const checked = shallow.map((e, index) => {
+				if (!is_string(e) || e !== const_schema.const) {
+					throw new NoMatchError(
+						{
+							e,
+							index,
+							const_schema,
+						},
+						'Value not found on const!'
+					);
+				}
+
+				return e;
+			});
+
+			return new ExpressionResult(
+				await this.discovery.literal.value_literal(
+					checked
+				) as ArrayLiteralExpression
+			);
+		}
+
+		if (
+			!(converter instanceof ConvertsUnknown)
 			&& typed_string_enum.is_supported_schema(schema.items)
 		) {
 			const enum_schema = schema.items;
@@ -355,15 +382,19 @@ export class TypedString extends ConvertsUnknown<
 				}
 
 				const [property, value] = entry;
+				const property_schema = typed_string_value.properties[
+					property
+				];
+
 				let converter:unknown = await (await Base.find(
 					await this.discovery.candidates,
-					typed_string_value.properties[property]
+					property_schema
 				)).result();
 
 				if (
 					!(converter instanceof ConvertsUnknown)
 					&& is_UnrealEngineString_parent(
-						typed_string_value.properties[property]
+						property_schema
 					)
 				) {
 					converter = this.UnrealEngineString;
@@ -372,9 +403,34 @@ export class TypedString extends ConvertsUnknown<
 				if (
 					!(converter instanceof ConvertsUnknown)
 					&& typed_string_const.is_supported_schema(
-						typed_string_value.properties[property]
+						property_schema
 					)
 				) {
+					return [
+						property,
+						value,
+					];
+				}
+
+				if (
+					!(converter instanceof ConvertsUnknown)
+					&& typed_string_enum.is_supported_schema(
+						property_schema
+					)
+				) {
+					if (
+						!is_string(value)
+						|| !property_schema.enum.includes(value)
+					) {
+						throw new NoMatchError(
+							{
+								[property]: value,
+								schema: property_schema,
+							},
+							'Value not found on enum!'
+						);
+					}
+
 					return [
 						property,
 						value,
@@ -385,7 +441,7 @@ export class TypedString extends ConvertsUnknown<
 					return [
 						property,
 						await converter.convert_unknown(
-							typed_string_value.properties[property],
+							property_schema,
 							value
 						),
 					];
@@ -394,7 +450,7 @@ export class TypedString extends ConvertsUnknown<
 				throw new NoMatchError(
 					{
 						data: {[property]: value},
-						schema: typed_string_value.properties[property],
+						schema: property_schema,
 						converter,
 					},
 					'No converter found!'
