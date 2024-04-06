@@ -15,7 +15,7 @@
 -   the schema-based results matcher has been abstracted
     -   portions of the schema that use the `object_string` keyword should parse the object string then validate the resultant object according to the schema chunk within the keyword
     -   `$ref` objects should return a result for that particular type etc.
-	-   the contents of [data-progress.md](data-progress.md) do not indicate that data generation is _valid_, only that it spits out _something_.
+    -   the contents of [data-progress.md](data-progress.md) do not indicate that data generation is _valid_, only that it spits out _something_.
 
 # Using
 
