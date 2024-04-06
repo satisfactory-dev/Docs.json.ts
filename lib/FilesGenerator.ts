@@ -48,8 +48,8 @@ export class FromArray extends FilesGenerator
 }
 
 export function guess_filename(ref: string): string {
-	if (/^FG[A-Za-z]+--[A-Za-z-_]+$/.test(ref)) {
-		return `classes/CoreUObject/${ref.split('--')[0]}.ts`;
+	if (/^FG[A-Za-z]+[-_]{2,}[A-Za-z-_]+$/.test(ref)) {
+		return `classes/CoreUObject/${ref.split(/[-_]{2,}/)[0]}.ts`;
 	} else if (
 		ref.startsWith('NativeClass--')
 		|| ref.startsWith('EditorCurveData--')

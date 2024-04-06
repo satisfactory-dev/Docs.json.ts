@@ -66,5 +66,13 @@ void describe('guess_filename', () => {
 			guess_filename('FGFoo--bar'),
 			'classes/CoreUObject/FGFoo.ts'
 		);
+		assert.equal(
+			guess_filename('FGFoo--type'),
+			'classes/CoreUObject/FGFoo.ts'
+		);
+		assert.equal(
+			guess_filename('FGFoo__type'),
+			'classes/CoreUObject/FGFoo.ts'
+		);
 	});
 });
