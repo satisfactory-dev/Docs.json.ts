@@ -12,7 +12,6 @@
     -   generated files will be included in the repo
     -   Docs.json _may_ be included
     -   Docs.utf8.json _may_ be included
--   skipping improving performance of validation (that's in a separate branch for now)
 -   the schema-based results matcher has been abstracted
     -   portions of the schema that use the `object_string` keyword should parse the object string then validate the resultant object according to the schema chunk within the keyword
     -   `$ref` objects should return a result for that particular type etc.
