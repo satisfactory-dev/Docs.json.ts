@@ -41,15 +41,18 @@
 -   `eslint` can result in the IDE slowing to a crawl if the `generated-types` folder is not excluded during development.
 
 #### Remote NodeJs Interpreter
--	Currently based from `node:21-alpine`
--	Specifying the user is recommended
+
+-   Currently based from `node:21-alpine`
+-   Specifying the user is recommended
 -   If your IDE does not allow you to pass arguments to plain docker images (looking at you, JetBrains), you will likely need to use the [docker-compose.yml](docker-compose.yml) services
 
 ##### ts-node
--	Refer to [Makefile](Makefile) for `DOCKER_PREFIX`
+
+-   Refer to [Makefile](Makefile) for `DOCKER_PREFIX`
 
 ##### node
--	Refer to [Makefile](Makefile) for `DOCKER_PREFIX_NO_LOADER`
+
+-   Refer to [Makefile](Makefile) for `DOCKER_PREFIX_NO_LOADER`
 
 # License
 
