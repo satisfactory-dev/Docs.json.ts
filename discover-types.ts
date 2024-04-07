@@ -19,7 +19,7 @@ import {
 
 const __dirname = __dirname_from_meta(import.meta);
 
-setup_PerformanceObserver();
+const perf = setup_PerformanceObserver();
 
 try {
 	performance.mark('start');
@@ -44,7 +44,15 @@ try {
 		'Found Classes': result.found_classes.length,
 		'Missing Classes': result.missing_classes.length,
 	});
+	await writeFile(
+		`${__dirname}/discover-types.perf.json`,
+		`${JSON.stringify(perf(), null, '\t')}`
+	);
 } catch (err) {
+	await writeFile(
+		`${__dirname}/discover-types.perf.json`,
+		`${JSON.stringify(perf(), null, '\t')}`
+	);
 	if (err instanceof NoMatchError) {
 		console.error('ran into an issue');
 		await writeFile(

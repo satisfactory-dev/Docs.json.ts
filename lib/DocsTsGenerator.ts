@@ -369,9 +369,6 @@ export class DocsTsGenerator {
 
 const prettier_config = prettier.resolveConfig(`${__dirname}/../.prettierrc`);
 
-const eslint = new ESLint({fix: true});
-const eslint_formatter = eslint.loadFormatter('stylish');
-
 export async function format_code(
 	code: string,
 	parser: BuiltInParserName = 'typescript'
@@ -395,8 +392,15 @@ export async function format_code(
 	return code.replace(/(\t+) +/gm, '$1');
 }
 
-export async function eslint_generated_types(files: string) {
-	const results = await eslint.lintFiles(files);
+export async function eslint_generated_types(parent_folder: string) {
+	const eslint = new ESLint({
+		fix: true,
+		cache: true,
+		cacheLocation: `${parent_folder}/.eslintcache`,
+		cacheStrategy: 'content',
+	});
+	const eslint_formatter = eslint.loadFormatter('stylish');
+	const results = await eslint.lintFiles(`${parent_folder}/**/*.ts`);
 
 	process.stdout.write(
 		`${await (await eslint_formatter).format(results)}\n`
