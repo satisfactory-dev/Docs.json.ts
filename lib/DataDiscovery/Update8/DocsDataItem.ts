@@ -35,6 +35,7 @@ import {
 	TypeReferenceNode,
 } from 'typescript';
 import {
+	ObjectExtendsAndHasAdditionalProperties,
 	ObjectExtendsButHasNoAdditionalProperties,
 } from '../JsonSchema/Object';
 import {
@@ -162,6 +163,7 @@ export class SpecificItemGenerator extends Base<
 	private readonly array_with_maxItems:MaxBoundedArray;
 	private readonly check:ValidateFunction<DocsDataItem>;
 	private readonly extends_$ref:ObjectExtendsButHasNoAdditionalProperties;
+	private readonly has_properties:ObjectExtendsAndHasAdditionalProperties;
 	private readonly NativeClass_definition:Promise<SchemaObject>;
 	private readonly schema:DocsDataItem_schema;
 	private readonly unreal_engine_string:UnrealEngineString;
@@ -180,6 +182,9 @@ export class SpecificItemGenerator extends Base<
 			'NativeClass'
 		);
 		this.extends_$ref = new ObjectExtendsButHasNoAdditionalProperties(
+			discovery
+		);
+		this.has_properties = new ObjectExtendsAndHasAdditionalProperties(
 			discovery
 		);
 	}
@@ -253,6 +258,9 @@ export class SpecificItemGenerator extends Base<
 
 			if (
 				await this.extends_$ref.matches(
+					this.schema.properties.Classes.items
+				)
+				|| await this.has_properties.matches(
 					this.schema.properties.Classes.items
 				)
 			) {

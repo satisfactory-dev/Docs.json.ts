@@ -28,44 +28,39 @@ export type object_extends_but_has_no_additional_properties = {
 	$ref: local_ref<string>,
 	unevaluatedProperties: false,
 }
+export type object_extends_and_has_additional_properties =
+	& object_extends_but_has_no_additional_properties
+	& {
+		properties: {[key: string]: SchemaObject}
+	};
 
-export class ObjectExtendsButHasNoAdditionalProperties extends ConvertsObject<
-	SchemaObject
-> {
-	private readonly check:Promise<ValidateFunction<
-		object_extends_but_has_no_additional_properties
-	>>;
+abstract class ObjectTypeResolver<
+	Check extends object_extends_but_has_no_additional_properties
+		= object_extends_but_has_no_additional_properties
+> extends ConvertsObject<SchemaObject> {
+	protected readonly check:Promise<ValidateFunction<Check>>;
 
-	constructor(discovery:DataDiscovery) {
+	constructor(
+		discovery:DataDiscovery,
+		from_schema:(definitions:{[key: string]: SchemaObject}) => SchemaObject
+	) {
 		super(discovery);
 		this.check = discovery.docs.schema().then(({definitions}) => {
 			return compile<
-				object_extends_but_has_no_additional_properties
-			>(discovery.docs.ajv, {
-				type: 'object',
-				required: ['type', '$ref', 'unevaluatedProperties'],
-				additionalProperties: false,
-				properties: {
-					type: {type: 'string', const: 'object'},
-					$ref: {
-						type: 'string',
-						enum: Object.keys(definitions).map(local_ref),
-					},
-					unevaluatedProperties: {type: 'boolean', const: false},
-				},
-			});
+				Check
+			>(discovery.docs.ajv, from_schema(definitions));
 		});
 	}
 
 	async convert_object(
-		schema: object_extends_but_has_no_additional_properties,
+		schema: Check,
 		raw_data: {
 			[key: string]: unknown; }
 	): Promise<{ [key: string]: unknown; }
 	> {
-		const $ref = schema.$ref.substring(14);
-
-		const property_converters = await this.resolve_converters($ref);
+		const property_converters = await this.resolve_property_converters(
+			schema
+		);
 
 		if (
 			Object.keys(property_converters).length > 0
@@ -118,13 +113,19 @@ export class ObjectExtendsButHasNoAdditionalProperties extends ConvertsObject<
 		return undefined;
 	}
 
-	private async resolve_converters(
+	protected async resolve_converters(
 		$ref:string
 	): Promise<{[key: string]: [SchemaObject, unknown]}> {
 		const resolved = await this.discovery.docs.definition(
 			$ref
 		);
 
+		return this.resolve_property_converters(resolved);
+	}
+
+	protected async resolve_property_converters(
+		resolved:SchemaObject
+	): Promise<{[key: string]: [SchemaObject, unknown]}> {
 		const property_converters:{
 			[key: string]: [SchemaObject, unknown]
 		} = {};
@@ -181,5 +182,55 @@ export class ObjectExtendsButHasNoAdditionalProperties extends ConvertsObject<
 		}
 
 		return property_converters;
+	}
+}
+
+export class ObjectExtendsButHasNoAdditionalProperties
+	extends ObjectTypeResolver
+{
+	constructor(discovery:DataDiscovery) {
+		super(discovery, (definitions:{[key: string]: SchemaObject}) => {
+			return {
+				type: 'object',
+				required: ['type', '$ref', 'unevaluatedProperties'],
+				additionalProperties: false,
+				properties: {
+					type: {type: 'string', const: 'object'},
+					$ref: {
+						type: 'string',
+						enum: Object.keys(definitions).map(local_ref),
+					},
+					unevaluatedProperties: {type: 'boolean', const: false},
+				},
+			};
+		});
+	}
+}
+
+export class ObjectExtendsAndHasAdditionalProperties
+	extends ObjectTypeResolver<object_extends_and_has_additional_properties>
+{
+	constructor(discovery:DataDiscovery) {
+		super(discovery, (definitions:{[key: string]: SchemaObject}) => {
+			return {
+				type: 'object',
+				required: [
+					'type',
+					'$ref',
+					'unevaluatedProperties',
+					'properties',
+				],
+				additionalProperties: false,
+				properties: {
+					type: {type: 'string', const: 'object'},
+					$ref: {
+						type: 'string',
+						enum: Object.keys(definitions).map(local_ref),
+					},
+					unevaluatedProperties: {type: 'boolean', const: false},
+					properties: {type: 'object', minProperties: 1},
+				},
+			};
+		});
 	}
 }
