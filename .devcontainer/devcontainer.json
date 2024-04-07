@@ -5,5 +5,5 @@
 	},
 	"postCreateCommand": "npm install && echo \"source ./.devcontainer/.post-create\" >> /home/node/.bashrc",
 	"remoteUser": "node",
-	"updateRemoteUserUID":true
+	"updateRemoteUserUID": true
 }
