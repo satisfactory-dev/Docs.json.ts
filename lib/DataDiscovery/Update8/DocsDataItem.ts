@@ -149,10 +149,17 @@ export class Generator extends Base<
 			}
 		}
 
+		throw new NoMatchError({
+			raw_data,
+		});
+
 		return undefined;
 	}
 }
 
+/**
+ * @todo need to add support for NativeClass.Classes with oneOf specs on items
+ */
 export class SpecificItemGenerator extends Base<
 	DocsDataItem,
 	DocsDataItemResult,
