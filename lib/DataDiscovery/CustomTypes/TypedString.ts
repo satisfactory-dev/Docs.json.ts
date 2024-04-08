@@ -485,9 +485,15 @@ export class TypedString extends ConvertsUnknown<
 		));
 
 		try {
-			return new ExpressionResult(
+			performance.mark('start');
+
+			const result = new ExpressionResult(
 				await this.discovery.literal.object_literal(converted)
 			);
+
+			performance.measure('typed_string to object_literal', 'start');
+
+			return result;
 		} catch (error) {
 			throw new NoMatchError(
 				{

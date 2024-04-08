@@ -151,6 +151,7 @@ export class DataDiscovery
 
 			let index = 0;
 			for (const item of result.Classes) {
+				performance.mark('start');
 				yield {
 					file,
 					node: create_const_statement(
@@ -165,11 +166,14 @@ export class DataDiscovery
 						)
 					),
 				};
+				performance.measure('item const generation', 'start');
 
 				++index;
 
 				this.progress[NativeClass_raw].push(item.ClassName);
 			}
+
+			performance.mark('start');
 
 			const result_statement = create_const_statement(variable(
 				adjust_class_name(entry_class_name),
@@ -187,6 +191,8 @@ export class DataDiscovery
 					adjust_class_name(`${entry_class_name}__NativeClass`)
 				),
 			));
+
+			performance.measure('NativeClass const generation', 'start');
 
 			yield {
 				file,
