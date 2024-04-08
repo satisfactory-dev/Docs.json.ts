@@ -22,6 +22,9 @@ import {
 import {
 	compile,
 } from '../../AjvUtilities';
+import {
+	NoMatchError,
+} from '../../Exceptions';
 
 export type object_extends_but_has_no_additional_properties = {
 	type: 'object',
@@ -40,7 +43,7 @@ abstract class ObjectTypeResolver<
 > extends ConvertsObject<SchemaObject> {
 	protected readonly check:Promise<ValidateFunction<Check>>;
 
-	constructor(
+	protected constructor(
 		discovery:DataDiscovery,
 		from_schema:(definitions:{[key: string]: SchemaObject}) => SchemaObject
 	) {
@@ -239,5 +242,75 @@ export class ObjectExtendsAndHasAdditionalProperties
 				},
 			};
 		});
+	}
+}
+
+type object_extends_from_oneOf = {
+	oneOf: [
+		object_extends_but_has_no_additional_properties,
+		...object_extends_but_has_no_additional_properties[],
+	],
+};
+
+export class IsOneOfRef extends ConvertsObject<SchemaObject>
+{
+	protected readonly check:Promise<ValidateFunction<
+		object_extends_from_oneOf
+	>>;
+	protected readonly resolver:ObjectExtendsButHasNoAdditionalProperties;
+
+	constructor(discovery:DataDiscovery) {
+		super(discovery);
+		this.check = discovery.docs.schema().then(({definitions}) => {
+			return compile<object_extends_from_oneOf>(discovery.docs.ajv, {
+				type: 'object',
+				required: ['oneOf'],
+				additionalProperties: false,
+				properties: {
+					oneOf: {
+						type: 'array',
+						minItems: 1,
+						items: definitions_to_ref(definitions),
+					},
+				},
+			});
+		});
+		this.resolver = new ObjectExtendsButHasNoAdditionalProperties(
+			discovery
+		);
+	}
+	async convert_object(
+		schema: object_extends_from_oneOf,
+		raw_data: {[key: string]: unknown}
+	): Promise<{[key: string]: unknown }> {
+		const {definitions} = await this.discovery.docs.schema();
+		for (const entry of schema.oneOf) {
+			const schema = {
+				...entry,
+				definitions,
+			};
+			const check = this.discovery.docs.ajv.compile(schema);
+
+			if (check(raw_data)) {
+				return this.resolver.convert_object(
+					schema,
+					raw_data
+				);
+			}
+		}
+
+		throw new NoMatchError({
+			schema,
+			raw_data,
+		});
+	}
+
+	async matches(schema:unknown)
+	{
+		if ((await this.check)(schema)) {
+			return new RawGenerationResult(this);
+		}
+
+		return undefined;
 	}
 }

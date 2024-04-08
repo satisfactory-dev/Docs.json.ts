@@ -31,6 +31,7 @@ import {
 	Generator as DocsDataItemGenerator,
 } from './DataDiscovery/Update8/DocsDataItem';
 import {
+	IsOneOfRef,
 	ObjectExtendsAndHasAdditionalProperties,
 	ObjectExtendsButHasNoAdditionalProperties,
 } from './DataDiscovery/JsonSchema/Object';
@@ -90,6 +91,7 @@ export class DataDiscovery
 				new UnboundArray(this),
 				new ObjectExtendsButHasNoAdditionalProperties(this),
 				new ObjectExtendsAndHasAdditionalProperties(this),
+				new IsOneOfRef(this),
 				new NumberStrings(this),
 				new BooleanOrBooleanExtended(this),
 				new UnrealEngineString_DataDiscovery(this),

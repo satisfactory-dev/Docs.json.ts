@@ -35,6 +35,7 @@ import {
 	TypeReferenceNode,
 } from 'typescript';
 import {
+	IsOneOfRef,
 	ObjectExtendsAndHasAdditionalProperties,
 	ObjectExtendsButHasNoAdditionalProperties,
 } from '../JsonSchema/Object';
@@ -157,9 +158,6 @@ export class Generator extends Base<
 	}
 }
 
-/**
- * @todo need to add support for NativeClass.Classes with oneOf specs on items
- */
 export class SpecificItemGenerator extends Base<
 	DocsDataItem,
 	DocsDataItemResult,
@@ -171,6 +169,7 @@ export class SpecificItemGenerator extends Base<
 	private readonly check:ValidateFunction<DocsDataItem>;
 	private readonly extends_$ref:ObjectExtendsButHasNoAdditionalProperties;
 	private readonly has_properties:ObjectExtendsAndHasAdditionalProperties;
+	private readonly is_oneOf:IsOneOfRef;
 	private readonly NativeClass_definition:Promise<SchemaObject>;
 	private readonly schema:DocsDataItem_schema;
 	private readonly unreal_engine_string:UnrealEngineString;
@@ -194,6 +193,7 @@ export class SpecificItemGenerator extends Base<
 		this.has_properties = new ObjectExtendsAndHasAdditionalProperties(
 			discovery
 		);
+		this.is_oneOf = new IsOneOfRef(discovery);
 	}
 
 	async matches(raw_data: unknown) : Promise<
@@ -264,12 +264,17 @@ export class SpecificItemGenerator extends Base<
 			let Classes_type:undefined|TypeReferenceNode = undefined;
 
 			if (
-				await this.extends_$ref.matches(
+				await Promise.any([
+					this.extends_$ref.matches(
 					this.schema.properties.Classes.items
-				)
-				|| await this.has_properties.matches(
+					),
+					this.has_properties.matches(
 					this.schema.properties.Classes.items
-				)
+					),
+					this.is_oneOf.matches(
+						this.schema.properties.Classes.items
+					),
+				])
 			) {
 				Classes_type = type_reference_node(adjust_class_name(
 					`${(
