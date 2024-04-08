@@ -62,6 +62,9 @@ import {
 import {
 	RefToEnum,
 } from './DataDiscovery/CustomTypes/RefToEnum';
+import {
+	Texture2D,
+} from './DataDiscovery/CustomTypes/Texture2D';
 
 type progress = {[p: string]: string[]};
 
@@ -95,6 +98,7 @@ export class DataDiscovery
 				new NumberStrings(this),
 				new BooleanOrBooleanExtended(this),
 				new UnrealEngineString_DataDiscovery(this),
+				new Texture2D(this),
 				new TypedString(this),
 				RefToConst.from_definitions(definitions, this),
 				RefToEnum.from_definitions(definitions, this),

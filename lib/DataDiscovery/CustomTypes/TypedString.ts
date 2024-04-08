@@ -55,6 +55,9 @@ import {
 import {
 	typed_string_enum,
 } from '../../CustomParsingTypes/TypedStringEnum';
+import {
+	Texture2D,
+} from './Texture2D';
 
 export class TypedString extends ConvertsUnknown<
 	string,
@@ -66,6 +69,7 @@ export class TypedString extends ConvertsUnknown<
 	>;
 	private readonly definitions:Promise<{[key: string]: SchemaObject}>;
 	private readonly UnrealEngineString:UnrealEngineString;
+	private readonly Texture2D:Texture2D;
 
 	constructor(discovery:DataDiscovery) {
 		super(discovery);
@@ -94,6 +98,7 @@ export class TypedString extends ConvertsUnknown<
 			);
 		});
 		this.UnrealEngineString = new UnrealEngineString(discovery);
+		this.Texture2D = new Texture2D(discovery);
 	}
 
 	async convert_unknown(
@@ -400,6 +405,13 @@ export class TypedString extends ConvertsUnknown<
 					)
 				) {
 					converter = this.UnrealEngineString;
+				}
+
+				if (
+					!(converter instanceof ConvertsUnknown)
+					&& await this.Texture2D.matches(value)
+				) {
+					converter = this.Texture2D;
 				}
 
 				if (
