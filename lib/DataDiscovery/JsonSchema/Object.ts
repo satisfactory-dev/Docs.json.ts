@@ -41,6 +41,10 @@ abstract class ObjectTypeResolver<
 	Check extends object_extends_but_has_no_additional_properties
 		= object_extends_but_has_no_additional_properties
 > extends ConvertsObject<SchemaObject> {
+	private readonly check_errors:WeakMap<object, unknown[]> = new WeakMap<
+		object,
+		unknown[]
+	>();
 	protected readonly check:Promise<ValidateFunction<Check>>;
 
 	protected constructor(
@@ -109,11 +113,28 @@ abstract class ObjectTypeResolver<
 
 	async matches(schema:unknown)
 	{
-		if ((await this.check)(schema)) {
+		const check = await this.check;
+
+		if (check(schema)) {
 			return new RawGenerationResult(this);
+		} else if(schema && 'object' === typeof schema) {
+			if (!this.check_errors.has(schema)) {
+				this.check_errors.set(schema, []);
+			}
+
+			(this.check_errors.get(schema) as unknown[]).push(check.errors);
 		}
 
 		return undefined;
+	}
+
+	validation_errors(schema:unknown): unknown[]|undefined
+	{
+		return (
+			(schema && 'object' === typeof schema)
+				? this.check_errors.get(schema)
+				: undefined
+		);
 	}
 
 	protected async resolve_converters(
@@ -254,6 +275,10 @@ type object_extends_from_oneOf = {
 
 export class IsOneOfRef extends ConvertsObject<SchemaObject>
 {
+	private readonly check_errors:WeakMap<object, unknown[]> = new WeakMap<
+		object,
+		unknown[]
+	>();
 	protected readonly check:Promise<ValidateFunction<
 		object_extends_from_oneOf
 	>>;
@@ -307,10 +332,27 @@ export class IsOneOfRef extends ConvertsObject<SchemaObject>
 
 	async matches(schema:unknown)
 	{
-		if ((await this.check)(schema)) {
+		const check = await this.check;
+
+		if (check(schema)) {
 			return new RawGenerationResult(this);
+		} else if (schema && 'object' === typeof schema) {
+			if (!this.check_errors.has(schema)) {
+				this.check_errors.set(schema, []);
+			}
+
+			(this.check_errors.get(schema) as unknown[]).push(check.errors);
 		}
 
 		return undefined;
+	}
+
+	validation_errors(schema:unknown): unknown[]|undefined
+	{
+		return (
+			(schema && 'object' === typeof schema)
+				? this.check_errors.get(schema)
+				: undefined
+		);
 	}
 }
