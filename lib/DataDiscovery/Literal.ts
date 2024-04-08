@@ -80,7 +80,9 @@ export class Literal
 
 			return result;
 		} else if ('boolean' === typeof from) {
-			const result = from ? ts.factory.createTrue():ts.factory.createFalse();
+			const result = from
+				? ts.factory.createTrue()
+				: ts.factory.createFalse();
 			performance.measure('value_literal(boolean)', 'start');
 
 			return result;

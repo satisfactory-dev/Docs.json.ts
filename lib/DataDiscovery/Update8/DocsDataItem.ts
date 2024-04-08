@@ -276,7 +276,8 @@ export class SpecificItemGenerator extends Base<
 					items
 				)
 			) {
-				Classes_type = raw_data.Classes.map(() => type_reference_node(adjust_class_name(
+				Classes_type = raw_data.Classes.map((
+				) => type_reference_node(adjust_class_name(
 					`${(
 						items.$ref as local_ref<
 							string
