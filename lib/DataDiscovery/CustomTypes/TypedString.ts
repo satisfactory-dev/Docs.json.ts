@@ -551,7 +551,7 @@ export class TypedString extends ConvertsUnknown<
 						) => {
 							const type = schema.prefixItems[index];
 
-							let converter:unknown = await (await Base.find(
+							const converter:unknown = await (await Base.find(
 								await this.discovery.candidates,
 								type
 							)).result();
@@ -568,7 +568,10 @@ export class TypedString extends ConvertsUnknown<
 								);
 							}
 
-							return await converter.convert_unknown(type, entry);
+							return await converter.convert_unknown(
+								type,
+								entry
+							) as unknown;
 						}))
 					) as ArrayLiteralExpression,
 				);
