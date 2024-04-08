@@ -63,13 +63,15 @@ type DocsDataItem_schema = (
 	}
 );
 
+type Classes_type = (undefined|TypeReferenceNode)[];
+
 type modified_DocsDataItem =
 	& DocsDataItem<
 		unknown,
 		ExpressionResult
 	>
 	& {
-		Classes_type: undefined|TypeReferenceNode,
+		Classes_type: Classes_type,
 		NativeClass_raw:string
 	};
 
@@ -261,28 +263,71 @@ export class SpecificItemGenerator extends Base<
 				))
 			) as DocsDataItem_Classes_entry[];
 
-			let Classes_type:undefined|TypeReferenceNode = undefined;
+			let Classes_type:Classes_type = [];
+
+			const {items} = this.schema.properties.Classes;
 
 			if (
-				await Promise.any([
-					this.extends_$ref.matches(
-						this.schema.properties.Classes.items
-					),
-					this.has_properties.matches(
-						this.schema.properties.Classes.items
-					),
-					this.is_oneOf.matches(
-						this.schema.properties.Classes.items
-					),
-				])
+				await this.extends_$ref.matches(
+					items
+				)
+				||
+				await this.has_properties.matches(
+					items
+				)
 			) {
-				Classes_type = type_reference_node(adjust_class_name(
+				Classes_type = raw_data.Classes.map(() => type_reference_node(adjust_class_name(
 					`${(
-						this.schema.properties.Classes.items.$ref as local_ref<
+						items.$ref as local_ref<
 							string
 						>
 					).substring(14)}__type`
-				));
+				)));
+			} else if (await this.is_oneOf.matches(items)) {
+				const {definitions} = await this.discovery.docs.schema();
+				Classes_type = raw_data.Classes.map((data) => {
+					for (
+						const type of (
+						items.oneOf as (
+							& SchemaObject
+							& {$ref: local_ref<string>}
+							)[]
+					)
+						) {
+						const check = this.discovery.docs.ajv.compile({
+							...type,
+							definitions,
+						});
+
+						if (check(data)) {
+							return type_reference_node(adjust_class_name(
+								`${(type.$ref).substring(14)}__type`
+							));
+						}
+					}
+
+					throw new NoMatchError(
+						{
+							data,
+							items,
+						},
+						'Could not determine Classes_type!'
+					);
+				});
+			} else {
+				throw new NoMatchError(
+					{
+						schema: this.schema.properties.Classes,
+						errors: [
+							this.extends_$ref,
+							this.has_properties,
+							this.is_oneOf,
+						].map(e => e.validation_errors(
+							items
+						)),
+					},
+					'Could not identify Classes type!'
+				);
 			}
 
 			const result:modified_DocsDataItem = {

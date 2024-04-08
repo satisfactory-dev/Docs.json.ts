@@ -149,6 +149,7 @@ export class DataDiscovery
 
 			const file = `data/CoreUObject/${entry_class_name}.ts`;
 
+			let index = 0;
 			for (const item of result.Classes) {
 				yield {
 					file,
@@ -156,10 +157,16 @@ export class DataDiscovery
 						variable(
 							adjust_class_name(item.ClassName),
 							await this.literal.object_literal(item),
-							Classes_type
+							(
+								Classes_type
+									? (Classes_type[index] || undefined)
+									: undefined
+							),
 						)
 					),
 				};
+
+				++index;
 
 				this.progress[NativeClass_raw].push(item.ClassName);
 			}
