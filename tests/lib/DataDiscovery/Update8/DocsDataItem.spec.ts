@@ -15,6 +15,7 @@ import {
 } from '../../../../lib/helpers';
 import {
 	is_instanceof,
+	rejects_partial_match,
 } from '../../../../assert/CustomAssert';
 import {
 	RawGenerationResult,
@@ -26,9 +27,11 @@ void describe('Generator', () => {
 	);
 
 	void it('resolves non-matching values to undefined', async () => {
-		assert.equal(
-			await instance.matches('foo'),
-			undefined
+		await rejects_partial_match(
+			instance.matches('foo'),
+			{
+				message: 'No match found!',
+			},
 		);
 	});
 
