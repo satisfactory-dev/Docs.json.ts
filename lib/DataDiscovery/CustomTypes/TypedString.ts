@@ -138,6 +138,7 @@ export class TypedString extends ConvertsUnknown<
 			{
 				raw_data,
 				shallow,
+				schema,
 			},
 			'Failed to convert native type!'
 		);
