@@ -185,25 +185,34 @@ abstract class ObjectTypeResolver<
 	}
 }
 
+function definitions_to_ref(
+	definitions:{[key: string]: SchemaObject}
+): SchemaObject & {
+	type: 'object',
+	required: [string, ...string[]],
+	additionalProperties: false,
+	properties: SchemaObject,
+} {
+	return {
+		type: 'object',
+		required: ['type', '$ref', 'unevaluatedProperties'],
+		additionalProperties: false,
+		properties: {
+			type: {type: 'string', const: 'object'},
+			$ref: {
+				type: 'string',
+				enum: Object.keys(definitions).map(local_ref),
+			},
+			unevaluatedProperties: {type: 'boolean', const: false},
+		},
+	};
+}
+
 export class ObjectExtendsButHasNoAdditionalProperties
 	extends ObjectTypeResolver
 {
 	constructor(discovery:DataDiscovery) {
-		super(discovery, (definitions:{[key: string]: SchemaObject}) => {
-			return {
-				type: 'object',
-				required: ['type', '$ref', 'unevaluatedProperties'],
-				additionalProperties: false,
-				properties: {
-					type: {type: 'string', const: 'object'},
-					$ref: {
-						type: 'string',
-						enum: Object.keys(definitions).map(local_ref),
-					},
-					unevaluatedProperties: {type: 'boolean', const: false},
-				},
-			};
-		});
+		super(discovery, definitions_to_ref);
 	}
 }
 
@@ -212,22 +221,20 @@ export class ObjectExtendsAndHasAdditionalProperties
 {
 	constructor(discovery:DataDiscovery) {
 		super(discovery, (definitions:{[key: string]: SchemaObject}) => {
+			const {
+				required,
+				properties,
+				...rest
+			} = definitions_to_ref(definitions);
+
 			return {
-				type: 'object',
+				...rest,
 				required: [
-					'type',
-					'$ref',
-					'unevaluatedProperties',
+					...required,
 					'properties',
 				],
-				additionalProperties: false,
 				properties: {
-					type: {type: 'string', const: 'object'},
-					$ref: {
-						type: 'string',
-						enum: Object.keys(definitions).map(local_ref),
-					},
-					unevaluatedProperties: {type: 'boolean', const: false},
+					...properties,
 					properties: {type: 'object', minProperties: 1},
 				},
 			};
