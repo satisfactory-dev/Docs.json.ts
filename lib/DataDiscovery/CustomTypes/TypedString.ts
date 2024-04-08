@@ -68,8 +68,8 @@ export class TypedString extends ConvertsUnknown<
 		ValidateFunction<typed_string_parent_type>
 	>;
 	private readonly definitions:Promise<{[key: string]: SchemaObject}>;
-	private readonly UnrealEngineString:UnrealEngineString;
 	private readonly Texture2D:Texture2D;
+	private readonly UnrealEngineString:UnrealEngineString;
 
 	constructor(discovery:DataDiscovery) {
 		super(discovery);

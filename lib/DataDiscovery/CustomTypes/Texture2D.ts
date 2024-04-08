@@ -80,7 +80,7 @@ export class Texture2D extends ConvertsUnknown<
 			throw new NoMatchError(
 				{
 					schema,
-					raw_data
+					raw_data,
 				},
 				'Not an UnrealEngineString!'
 			);
