@@ -7,6 +7,7 @@ import {
 import {
 	generate_object_parent_schema,
 	generate_typed_string_definitions,
+	typed_string_inner_array_prefixItems_type,
 	typed_string_inner_array_type,
 	typed_string_parent_type,
 } from '../../CustomParsingTypes/TypedString';
@@ -132,6 +133,8 @@ export class TypedString extends ConvertsUnknown<
 			);
 		} else if (typed_string.is_array_type(schema.typed_string)) {
 			return this.convert_array(schema.typed_string, shallow);
+		} else if (typed_string.is_prefixItems_type(schema.typed_string)) {
+			return this.convert_prefixItems(schema.typed_string, shallow);
 		}
 
 		throw new NoMatchError(
@@ -157,11 +160,12 @@ export class TypedString extends ConvertsUnknown<
 		return undefined;
 	}
 
-	private async convert_array(
-		schema: typed_string_inner_array_type,
-		shallow: unknown[]
-	) : Promise<ExpressionResult<ArrayLiteralExpression>> {
-
+	private async check_shallow_array_schema(
+		schema:
+			| typed_string_inner_array_type
+			| typed_string_inner_array_prefixItems_type,
+		shallow: unknown
+	) {
 		const definitions = await this.definitions;
 
 		const check = compile<
@@ -185,6 +189,13 @@ export class TypedString extends ConvertsUnknown<
 				'Shallow parse of typed_string does not match schema!'
 			);
 		}
+	}
+
+	private async convert_array(
+		schema: typed_string_inner_array_type,
+		shallow: unknown[]
+	) : Promise<ExpressionResult<ArrayLiteralExpression>> {
+		await this.check_shallow_array_schema(schema, shallow);
 
 		let converter:unknown = await (await Base.find(
 			await this.discovery.candidates,
@@ -486,5 +497,88 @@ export class TypedString extends ConvertsUnknown<
 				'Failed to grab object literal!'
 			);
 		}
+	}
+
+	private async convert_prefixItems(
+		schema: typed_string_inner_array_prefixItems_type,
+		shallow: unknown[]
+	) : Promise<ExpressionResult<ArrayLiteralExpression>> {
+		const slightly_less_than_shallow:unknown[][] = [];
+
+		for (const entry of shallow) {
+			if (!is_string(entry)) {
+				throw new NoMatchError(
+					{
+						schema,
+						shallow,
+					},
+					'Expecting string entries on shallow array',
+				);
+			}
+
+			const inner_shallow = string_to_array(entry, true);
+
+			if (false === inner_shallow) {
+				throw new NoMatchError(
+					{
+						entry,
+					},
+					'Failed to parse inner entry!'
+				);
+			}
+
+			await this.check_shallow_array_schema(schema, inner_shallow);
+
+			slightly_less_than_shallow.push(inner_shallow);
+		}
+
+		const converted = await Promise.all(slightly_less_than_shallow.map(
+			async (e:unknown[]) => {
+				if (e.length !== schema.prefixItems.length) {
+					throw new NoMatchError(
+						{
+							e,
+							schema,
+						},
+						`Expected an array of length ${schema.prefixItems.length}, received ${e.length}`,
+					);
+				}
+				return new ExpressionResult(
+					await this.discovery.literal.value_literal(
+						await Promise.all(e.map(async (
+							entry,
+							index
+						) => {
+							const type = schema.prefixItems[index];
+
+							let converter:unknown = await (await Base.find(
+								await this.discovery.candidates,
+								type
+							)).result();
+
+							if (!(converter instanceof ConvertsUnknown)) {
+								throw new NoMatchError(
+									{
+										type,
+										converter,
+										entry,
+										index,
+									},
+									'Could not find converter!'
+								);
+							}
+
+							return await converter.convert_unknown(type, entry);
+						}))
+					) as ArrayLiteralExpression,
+				);
+			}
+		));
+
+		return new ExpressionResult(
+			await this.discovery.literal.value_literal(
+				converted
+			) as ArrayLiteralExpression
+		);
 	}
 }
