@@ -19,7 +19,7 @@ import {
 
 const __dirname = __dirname_from_meta(import.meta);
 
-const perf = setup_PerformanceObserver();
+const perf = setup_PerformanceObserver(false);
 
 try {
 	performance.mark('start');

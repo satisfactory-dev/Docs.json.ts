@@ -1,4 +1,4 @@
-export function setup_PerformanceObserver()
+export function setup_PerformanceObserver(clear_lines = true)
 {
 	const measure_totals: {[key: string]: number} = {};
 	let last_total_lines = 0;
@@ -15,12 +15,12 @@ export function setup_PerformanceObserver()
 			return [e[0], `${(e[1] / 1000).toFixed(4)}s`];
 		});
 
-		if (last_total_lines) {
-			process.stdout.moveCursor(0, 0 - last_total_lines);
+		if (clear_lines && last_total_lines) {
+			process.stdout.moveCursor(0, 0 - (last_total_lines + 4));
 			process.stdout.clearLine(1);
 		}
 
-		last_total_lines = results.length + 4;
+		last_total_lines = results.length;
 
 		console.table(
 			Object.fromEntries(
