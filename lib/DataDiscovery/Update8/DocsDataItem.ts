@@ -266,10 +266,10 @@ export class SpecificItemGenerator extends Base<
 			if (
 				await Promise.any([
 					this.extends_$ref.matches(
-					this.schema.properties.Classes.items
+						this.schema.properties.Classes.items
 					),
 					this.has_properties.matches(
-					this.schema.properties.Classes.items
+						this.schema.properties.Classes.items
 					),
 					this.is_oneOf.matches(
 						this.schema.properties.Classes.items
