@@ -7,6 +7,7 @@ import {
 	is_string,
 } from '../../StringStartsWith';
 import {
+	is_UnrealEngineString_parent,
 	string_or_string_array_to_node,
 	UnrealEngineString_parent_type,
 	UnrealEngineString_regex,
@@ -75,7 +76,10 @@ export class UnrealEngineString extends ConvertsUnknown<
 	matches(
 		raw_data: unknown
 	): Promise<RawGenerationResult<this> | undefined> {
-		if (is_string(raw_data) && UnrealEngineString_regex.test(raw_data)) {
+		if (
+			(is_string(raw_data) && UnrealEngineString_regex.test(raw_data))
+			|| is_UnrealEngineString_parent(raw_data)
+		) {
 			return Promise.resolve(new RawGenerationResult(this));
 		}
 

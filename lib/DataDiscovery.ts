@@ -71,7 +71,11 @@ import {
 } from './DataDiscovery/JsonSchema/StringType';
 import {
 	OneOf,
+	RefToOneOf,
 } from './DataDiscovery/JsonSchema/OneOf';
+import {
+	StringStartsWith,
+} from './DataDiscovery/CustomTypes/StringStartsWith';
 
 type progress = {[p: string]: string[]};
 
@@ -108,11 +112,13 @@ export class DataDiscovery
 				new BooleanOrBooleanExtended(this),
 				new UnrealEngineString_DataDiscovery(this),
 				new Texture2D(this),
+				new StringStartsWith(this),
 				new TypedString(this),
 				RefToConst.from_definitions(definitions, this),
 				RefToEnum.from_definitions(definitions, this),
 				RefToTypedString.from_definitions(definitions, this),
 				new OneOf(this),
+				RefToOneOf.from_definitions(definitions, this),
 			];
 		});
 	}

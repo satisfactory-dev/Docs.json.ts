@@ -112,6 +112,7 @@ export class StringType extends ConvertsUnknown<
 		throw new NoMatchError(
 			{
 				schema,
+				raw_data,
 			},
 			'Schema unsupported',
 		);
