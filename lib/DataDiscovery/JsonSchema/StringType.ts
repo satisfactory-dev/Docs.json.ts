@@ -29,7 +29,7 @@ import {
 
 type string_schema = {
 	type: 'string',
-	minLength: number,
+	minLength?: number,
 };
 type pattern_schema = {
 	type: 'string',
@@ -70,7 +70,7 @@ export class StringType extends ConvertsUnknown<
 		});
 		this.is_string = discovery.docs.ajv.compile<string_schema>({
 			type: 'object',
-			required: ['type', 'minLength'],
+			required: ['type'],
 			additionalProperties: false,
 			properties: {
 				type: {type: 'string', const: 'string'},
