@@ -324,14 +324,18 @@ export class TypedString extends ConvertsUnknown<
 		}
 
 		if (converter instanceof ConvertsUnknown) {
-			return new ExpressionResult(
-				await this.discovery.literal.array_literal(
-					await Promise.all(shallow.map((
-						e
-					) => converter.convert_unknown(
+			const items:unknown[] = [];
+
+			for (const e of shallow) {
+				items.push(await converter.convert_unknown(
 						schema.items,
 						e
-					)))
+				));
+			}
+
+			return new ExpressionResult(
+				await this.discovery.literal.array_literal(
+					items
 				)
 			);
 		}
