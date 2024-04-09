@@ -174,11 +174,11 @@ abstract class ObjectTypeResolver<
 
 			for (const e of Object.entries(properties)) {
 				entries.push([
-						e[0],
-						await (await Base.find(
-							await this.discovery.candidates,
-							e[1]
-						)).result(),
+					e[0],
+					await (await Base.find(
+						await this.discovery.candidates,
+						e[1]
+					)).result(),
 				]);
 			}
 
