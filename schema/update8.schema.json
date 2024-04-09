@@ -3615,7 +3615,54 @@
 					}
 				},
 				"mFuel": {
-					"$ref": "#/definitions/mFuel"
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"required": [
+							"mFuelClass",
+							"mSupplementalResourceClass",
+							"mByproduct",
+							"mByproductAmount"
+						],
+						"properties": {
+							"mFuelClass": {
+								"type": "string",
+								"pattern": "^(?:FGItemDescriptor[A-Z][A-Za-z]+|Desc_[A-Z][A-Za-z]+_C)$"
+							},
+							"mSupplementalResourceClass": {
+								"oneOf": [
+									{
+										"type": "string",
+										"const": ""
+									},
+									{
+										"type": "string",
+										"pattern": "^Desc_[A-Z][A-Za-z]+_C$"
+									}
+								]
+							},
+							"mByproduct": {
+								"type": "string",
+								"enum": [
+									"",
+									"Desc_NuclearWaste_C",
+									"Desc_PlutoniumWaste_C"
+								]
+							},
+							"mByproductAmount": {
+								"oneOf": [
+									{
+										"type": "string",
+										"const": ""
+									},
+									{
+										"$ref": "#/definitions/integer-string"
+									}
+								]
+							}
+						}
+					}
 				},
 				"mAvailableFuelClasses": {
 					"type": "string",
@@ -3748,56 +3795,6 @@
 				"mCurrentGeneratorNuclearWarning": {
 					"type": "string",
 					"const": "GNW_None"
-				}
-			}
-		},
-		"mFuel": {
-			"type": "array",
-			"minItems": 1,
-			"items": {
-				"type": "object",
-				"required": [
-					"mFuelClass",
-					"mSupplementalResourceClass",
-					"mByproduct",
-					"mByproductAmount"
-				],
-				"properties": {
-					"mFuelClass": {
-						"type": "string",
-						"pattern": "^(?:FGItemDescriptor[A-Z][A-Za-z]+|Desc_[A-Z][A-Za-z]+_C)$"
-					},
-					"mSupplementalResourceClass": {
-						"oneOf": [
-							{
-								"type": "string",
-								"const": ""
-							},
-							{
-								"type": "string",
-								"pattern": "^Desc_[A-Z][A-Za-z]+_C$"
-							}
-						]
-					},
-					"mByproduct": {
-						"type": "string",
-						"enum": [
-							"",
-							"Desc_NuclearWaste_C",
-							"Desc_PlutoniumWaste_C"
-						]
-					},
-					"mByproductAmount": {
-						"oneOf": [
-							{
-								"type": "string",
-								"const": ""
-							},
-							{
-								"$ref": "#/definitions/integer-string"
-							}
-						]
-					}
 				}
 			}
 		},

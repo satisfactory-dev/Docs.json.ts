@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (210 of 210)
+100.00% Complete (209 of 209)
 
 ## Basic Types
 
@@ -46,7 +46,6 @@
 -   [x] mDockingRuleSet
 -   [x] mForm
 -   [x] mFreightCargoType
--   [x] mFuel
 -   [x] mLightControlData
 -   [x] mOutputInventoryHandlerData
 -   [x] mPlatformDockingStatus
