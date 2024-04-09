@@ -170,16 +170,20 @@ abstract class ObjectTypeResolver<
 		) {
 			const properties = resolved.properties;
 
-			for (const entry of (
-				await Promise.all(Object.entries(properties).map(
-					async (e) : Promise<[string, unknown]> => [
+			const entries:[string, unknown][] = [];
+
+			for (const e of Object.entries(properties)) {
+				entries.push([
 						e[0],
 						await (await Base.find(
 							await this.discovery.candidates,
 							e[1]
 						)).result(),
-					]
-				))
+				]);
+			}
+
+			for (const entry of (
+				entries
 			)) {
 				const [property, result] = entry;
 				if (!(property in property_converters)) {
