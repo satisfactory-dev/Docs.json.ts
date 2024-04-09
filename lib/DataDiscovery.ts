@@ -65,6 +65,13 @@ import {
 import {
 	Texture2D,
 } from './DataDiscovery/CustomTypes/Texture2D';
+import {
+	PatternType,
+	StringType,
+} from './DataDiscovery/JsonSchema/StringType';
+import {
+	OneOf,
+} from './DataDiscovery/JsonSchema/OneOf';
 
 type progress = {[p: string]: string[]};
 
@@ -91,11 +98,13 @@ export class DataDiscovery
 		);
 		this.candidates = docs.schema().then(({definitions}) => {
 			return [
+				new StringType(this),
 				new UnboundArray(this),
 				new ObjectExtendsButHasNoAdditionalProperties(this),
 				new ObjectExtendsAndHasAdditionalProperties(this),
 				new IsOneOfRef(this),
 				new NumberStrings(this),
+				new PatternType(this),
 				new BooleanOrBooleanExtended(this),
 				new UnrealEngineString_DataDiscovery(this),
 				new Texture2D(this),
@@ -103,6 +112,7 @@ export class DataDiscovery
 				RefToConst.from_definitions(definitions, this),
 				RefToEnum.from_definitions(definitions, this),
 				RefToTypedString.from_definitions(definitions, this),
+				new OneOf(this),
 			];
 		});
 	}
