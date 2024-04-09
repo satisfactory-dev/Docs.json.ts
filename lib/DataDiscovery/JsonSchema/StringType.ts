@@ -22,7 +22,10 @@ import {
 	const_schema_type,
 } from '../../CustomParsingTypes/TypedStringConst';
 import ts from 'typescript';
-import {create_literal, type_reference_node} from '../../TsFactoryWrapper';
+import {
+	create_literal,
+	type_reference_node,
+} from '../../TsFactoryWrapper';
 
 type string_schema = {
 	type: 'string',
