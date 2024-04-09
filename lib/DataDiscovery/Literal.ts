@@ -40,23 +40,23 @@ export class Literal
 		const properties:PropertyAssignment[] = [];
 
 		for (const entry of Object.entries(from)) {
-				try {
-					const value = this.value_literal(entry[1]);
+			try {
+				const value = this.value_literal(entry[1]);
 
 				properties.push(ts.factory.createPropertyAssignment(
-						property_name_or_computed(entry[0]),
-						await value
+					property_name_or_computed(entry[0]),
+					await value
 				));
-				} catch (error) {
-					throw new NoMatchError(
-						{
-							property: entry[0],
-							original_value: entry[1],
-							error,
-						},
-						'Failed to convert property value!'
-					);
-				}
+			} catch (error) {
+				throw new NoMatchError(
+					{
+						property: entry[0],
+						original_value: entry[1],
+						error,
+					},
+					'Failed to convert property value!'
+				);
+			}
 		}
 
 
