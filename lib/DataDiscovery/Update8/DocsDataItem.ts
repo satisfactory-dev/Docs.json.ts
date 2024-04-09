@@ -257,8 +257,8 @@ export class SpecificItemGenerator extends Base<
 			const Classes:DocsDataItem_Classes_entry[] = [];
 
 			for (const e of await maybe_unbound_array.convert_array(
-					this.schema.properties.Classes,
-					raw_data.Classes
+				this.schema.properties.Classes,
+				raw_data.Classes
 			)) {
 				Classes.push(await e.result() as DocsDataItem_Classes_entry);
 			}
