@@ -61,6 +61,7 @@ try {
 				{
 					property: err.property as unknown,
 					message: err.message,
+					stack: err.stack?.split('\n'),
 				},
 				null,
 				'\t'
