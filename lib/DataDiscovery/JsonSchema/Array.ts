@@ -64,6 +64,8 @@ class UnspecifiedArray<
 			schema.items
 		)).result();
 
+		performance.mark('start');
+
 		const result:RawGenerationResult[] = [];
 
 		for (const e of raw_data) {
@@ -83,6 +85,8 @@ class UnspecifiedArray<
 
 			result.push(new RawGenerationResult(e));
 		}
+
+		performance.measure(`${this.constructor.name}.convert_array()`, 'start');
 
 		return result;
 	}
