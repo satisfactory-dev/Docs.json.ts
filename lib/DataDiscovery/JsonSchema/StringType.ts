@@ -126,6 +126,15 @@ export class StringType extends ConvertsUnknown<
 			|| this.is_enum(raw_data)
 			|| this.is_string(raw_data)
 		) {
+			if ('typed_string' in raw_data) {
+				throw new NoMatchError(
+					{
+						raw_data
+					},
+					'should not have matched!'
+				);
+			}
+
 			return Promise.resolve(new RawGenerationResult(this));
 		}
 

@@ -188,6 +188,17 @@ abstract class ObjectTypeResolver<
 				entries
 			)) {
 				const [property, result] = entry;
+
+				if (!(result instanceof ConvertsUnknown)) {
+					throw new NoMatchError(
+						{
+							property,
+							result,
+						},
+						'Non-converter result found!'
+					);
+				}
+
 				if (!(property in property_converters)) {
 					property_converters[property] = [
 						properties[property],
