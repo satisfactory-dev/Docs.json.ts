@@ -75,34 +75,34 @@ abstract class ObjectTypeResolver<
 			const entries:[string, unknown][] = [];
 
 			for (const e of Object.entries(raw_data)) {
-					const [property, value] = e;
+				const [property, value] = e;
 
-					if (
-						property in property_converters
-						&& (
-							property_converters[
-								property
-							][1] instanceof ConvertsUnknown
-						)
-					) {
-						const [
-							schema,
-							converter,
-						] = property_converters[property] as [
-							SchemaObject,
-							ConvertsUnknown<unknown, unknown>,
-						];
+				if (
+					property in property_converters
+					&& (
+						property_converters[
+							property
+						][1] instanceof ConvertsUnknown
+					)
+				) {
+					const [
+						schema,
+						converter,
+					] = property_converters[property] as [
+						SchemaObject,
+						ConvertsUnknown<unknown, unknown>,
+					];
 
 					entries.push([
-							property,
-							await converter.convert_unknown(
-								schema,
-								value,
-							),
+						property,
+						await converter.convert_unknown(
+							schema,
+							value,
+						),
 					]);
 
-						continue;
-					}
+					continue;
+				}
 
 				entries.push([property, value]);
 			}
