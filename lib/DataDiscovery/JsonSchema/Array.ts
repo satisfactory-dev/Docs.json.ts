@@ -77,6 +77,8 @@ class UnspecifiedArray<
 						e
 					)
 				));
+
+				continue;
 			}
 
 			result.push(new RawGenerationResult(e));
