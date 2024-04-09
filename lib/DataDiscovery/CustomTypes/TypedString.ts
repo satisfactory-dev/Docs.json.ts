@@ -229,7 +229,9 @@ export class TypedString extends ConvertsUnknown<
 				]
 			);
 
-			const converted = await Promise.all(shallow.map(async (e) => {
+			const converted:unknown[] = [];
+
+			for (const e of shallow) {
 				const schema = checks.find(maybe => maybe[1](e));
 
 				if (!schema) {
@@ -256,11 +258,11 @@ export class TypedString extends ConvertsUnknown<
 					);
 				}
 
-				return await schema_converter.convert_unknown(
+				converted.push(await schema_converter.convert_unknown(
 					schema[0],
 					e
-				) as unknown;
-			}));
+				) as unknown);
+			}
 
 			return new ExpressionResult(
 				await this.discovery.literal.array_literal(
