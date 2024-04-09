@@ -137,11 +137,11 @@ export class DataDiscovery
 		const result:(DocsDataItem|modified_DocsDataItem)[] = [];
 
 		for (const e of await this.docs.get()) {
-				const maybe = await this.docs_data_item_candidate.matches(e);
+			const maybe = await this.docs_data_item_candidate.matches(e);
 
-				if (!maybe) {
-					throw new NoMatchError(e);
-				}
+			if (!maybe) {
+				throw new NoMatchError(e);
+			}
 
 			result.push(await maybe.result());
 		}
