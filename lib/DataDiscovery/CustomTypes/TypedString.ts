@@ -541,51 +541,51 @@ export class TypedString extends ConvertsUnknown<
 		const converted:ExpressionResult<ArrayLiteralExpression>[] = [];
 
 		for (const e of slightly_less_than_shallow) {
-				if (e.length !== schema.prefixItems.length) {
+			if (e.length !== schema.prefixItems.length) {
+				throw new NoMatchError(
+					{
+						e,
+						schema,
+					},
+					`Expected an array of length ${schema.prefixItems.length}, received ${e.length}`,
+				);
+			}
+
+			const items:unknown[] = [];
+
+			let index = 0;
+			for (const entry of e) {
+				const type = schema.prefixItems[index];
+
+				const converter:unknown = await (await Base.find(
+					await this.discovery.candidates,
+					type
+				)).result();
+
+				if (!(converter instanceof ConvertsUnknown)) {
 					throw new NoMatchError(
 						{
-							e,
-							schema,
+							type,
+							converter,
+							entry,
+							index,
 						},
-						`Expected an array of length ${schema.prefixItems.length}, received ${e.length}`,
+						'Could not find converter!'
 					);
 				}
 
-				const items:unknown[] = [];
+				items.push(await converter.convert_unknown(
+					type,
+					entry
+				) as unknown);
 
-				let index = 0;
-				for (const entry of e) {
-					const type = schema.prefixItems[index];
-
-					const converter:unknown = await (await Base.find(
-						await this.discovery.candidates,
-						type
-					)).result();
-
-					if (!(converter instanceof ConvertsUnknown)) {
-						throw new NoMatchError(
-							{
-								type,
-								converter,
-								entry,
-								index,
-							},
-							'Could not find converter!'
-						);
-					}
-
-					items.push(await converter.convert_unknown(
-						type,
-						entry
-					) as unknown);
-
-					++index;
-				}
+				++index;
+			}
 
 			converted.push(new ExpressionResult(
-					await this.discovery.literal.array_literal(
-						items
-					),
+				await this.discovery.literal.array_literal(
+					items
+				),
 			));
 		}
 
