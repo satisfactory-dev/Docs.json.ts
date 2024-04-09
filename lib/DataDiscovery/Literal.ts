@@ -26,6 +26,13 @@ import ts, {
 
 export class Literal
 {
+	async array_literal(from:unknown[]): Promise<ArrayLiteralExpression>
+	{
+		return ts.factory.createArrayLiteralExpression(
+			await Promise.all(from.map(e => this.value_literal(e)))
+		);
+	}
+
 	async object_literal(
 		from:{[key: string]: unknown},
 	): Promise<ObjectLiteralExpression> {
@@ -95,9 +102,7 @@ export class Literal
 			throw new NoMatchError(from, 'not an array!');
 		}
 
-		const result = ts.factory.createArrayLiteralExpression(
-			await Promise.all(from.map(e => this.value_literal(e)))
-		);
+		const result = await this.array_literal(from);
 
 		performance.measure('value_literal(array)', 'start');
 
