@@ -389,103 +389,103 @@ export class TypedString extends ConvertsUnknown<
 		const converted_entries:[string, unknown][] = [];
 
 		for (const entry of Object.entries(shallow)) {
-				if (!(entry[0] in typed_string_value.properties)) {
+			if (!(entry[0] in typed_string_value.properties)) {
+				throw new NoMatchError(
+					{
+						[entry[0]]: entry[1],
+						schema: typed_string_value.properties,
+					},
+					'Property not in schema!'
+				);
+			}
+
+			const [property, value] = entry;
+			const property_schema = typed_string_value.properties[
+				property
+			];
+
+			let converter:unknown = await (await Base.find(
+				await this.discovery.candidates,
+				property_schema
+			)).result();
+
+			if (
+				!(converter instanceof ConvertsUnknown)
+				&& is_UnrealEngineString_parent(
+					property_schema
+				)
+			) {
+				converter = this.UnrealEngineString;
+			}
+
+			if (
+				!(converter instanceof ConvertsUnknown)
+				&& await this.Texture2D.matches(value)
+			) {
+				converter = this.Texture2D;
+			}
+
+			if (
+				!(converter instanceof ConvertsUnknown)
+				&& typed_string_const.is_supported_schema(
+					property_schema
+				)
+			) {
+				converted_entries.push([
+					property,
+					value,
+				]);
+
+				continue;
+			}
+
+			if (
+				!(converter instanceof ConvertsUnknown)
+				&& typed_string_enum.is_supported_schema(
+					property_schema
+				)
+			) {
+				if (
+					!is_string(value)
+					|| !property_schema.enum.includes(value)
+				) {
 					throw new NoMatchError(
 						{
-							[entry[0]]: entry[1],
-							schema: typed_string_value.properties,
+							[property]: value,
+							schema: property_schema,
 						},
-						'Property not in schema!'
+						'Value not found on enum!'
 					);
 				}
 
-				const [property, value] = entry;
-				const property_schema = typed_string_value.properties[
-					property
-				];
+				converted_entries.push([
+					property,
+					value,
+				]);
 
-				let converter:unknown = await (await Base.find(
-					await this.discovery.candidates,
-					property_schema
-				)).result();
+				continue;
+			}
 
-				if (
-					!(converter instanceof ConvertsUnknown)
-					&& is_UnrealEngineString_parent(
-						property_schema
-					)
-				) {
-					converter = this.UnrealEngineString;
-				}
+			if (converter instanceof ConvertsUnknown) {
+				converted_entries.push([
+					property,
+					await converter.convert_unknown(
+						property_schema,
+						value
+					),
+				]);
 
-				if (
-					!(converter instanceof ConvertsUnknown)
-					&& await this.Texture2D.matches(value)
-				) {
-					converter = this.Texture2D;
-				}
+				continue;
+			}
 
-				if (
-					!(converter instanceof ConvertsUnknown)
-					&& typed_string_const.is_supported_schema(
-						property_schema
-					)
-				) {
-					converted_entries.push([
-						property,
-						value,
-					]);
-
-					continue;
-				}
-
-				if (
-					!(converter instanceof ConvertsUnknown)
-					&& typed_string_enum.is_supported_schema(
-						property_schema
-					)
-				) {
-					if (
-						!is_string(value)
-						|| !property_schema.enum.includes(value)
-					) {
-						throw new NoMatchError(
-							{
-								[property]: value,
-								schema: property_schema,
-							},
-							'Value not found on enum!'
-						);
-					}
-
-					converted_entries.push([
-						property,
-						value,
-					]);
-
-					continue;
-				}
-
-				if (converter instanceof ConvertsUnknown) {
-					converted_entries.push([
-						property,
-						await converter.convert_unknown(
-							property_schema,
-							value
-						),
-					]);
-
-					continue;
-				}
-
-				throw new NoMatchError(
-					{
-						data: {[property]: value},
-						schema: property_schema,
-						converter,
-					},
-					'No converter found!'
-				)
+			throw new NoMatchError(
+				{
+					data: {[property]: value},
+					schema: property_schema,
+					converter,
+				},
+				'No converter found!'
+			)
 		}
 
 		const converted = Object.fromEntries(converted_entries);
