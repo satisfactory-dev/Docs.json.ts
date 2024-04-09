@@ -549,12 +549,11 @@ export class TypedString extends ConvertsUnknown<
 						`Expected an array of length ${schema.prefixItems.length}, received ${e.length}`,
 					);
 				}
-				return new ExpressionResult(
-					await this.discovery.literal.array_literal(
-						await Promise.all(e.map(async (
-							entry,
-							index
-						) => {
+
+				const items:unknown[] = [];
+
+				let index = 0;
+				for (const entry of e) {
 							const type = schema.prefixItems[index];
 
 							const converter:unknown = await (await Base.find(
@@ -574,11 +573,17 @@ export class TypedString extends ConvertsUnknown<
 								);
 							}
 
-							return await converter.convert_unknown(
+					items.push(await converter.convert_unknown(
 								type,
 								entry
-							) as unknown;
-						}))
+					) as unknown);
+
+					++index;
+				}
+
+				return new ExpressionResult(
+					await this.discovery.literal.array_literal(
+						items
 					),
 				);
 			}
