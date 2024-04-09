@@ -55,8 +55,10 @@ class UnspecifiedArray<
 		});
 	}
 
-	async convert_array(schema: ArrayType, raw_data:unknown[]) : Promise<RawGenerationResult[]>
-	{
+	async convert_array(
+		schema: ArrayType,
+		raw_data:unknown[]
+	) : Promise<RawGenerationResult[]> {
 		const converter:unknown = await (await Base.find(
 			await this.discovery.candidates,
 			schema.items
@@ -69,10 +71,12 @@ class UnspecifiedArray<
 				converter instanceof ConvertsObject
 				&& value_is_non_array_object(e)
 			) {
-				result.push(new RawGenerationResult(await converter.convert_object(
-					schema.items,
-					e
-				)));
+				result.push(new RawGenerationResult(
+					await converter.convert_object(
+						schema.items,
+						e
+					)
+				));
 			}
 
 			result.push(new RawGenerationResult(e));
