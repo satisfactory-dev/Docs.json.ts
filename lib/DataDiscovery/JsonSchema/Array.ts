@@ -62,19 +62,23 @@ class UnspecifiedArray<
 			schema.items
 		)).result();
 
-		return await Promise.all(raw_data.map(async (e) => {
+		const result:RawGenerationResult[] = [];
+
+		for (const e of raw_data) {
 			if (
 				converter instanceof ConvertsObject
 				&& value_is_non_array_object(e)
 			) {
-				return new RawGenerationResult(await converter.convert_object(
+				result.push(new RawGenerationResult(await converter.convert_object(
 					schema.items,
 					e
-				));
+				)));
 			}
 
-			return new RawGenerationResult(e);
-		}))
+			result.push(new RawGenerationResult(e));
+		}
+
+		return await Promise.all(result)
 	}
 
 	matches(schema: unknown) {
