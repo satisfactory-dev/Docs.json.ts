@@ -83,20 +83,67 @@ export class OneOf extends ConvertsUnknown<unknown, ExpressionResult> {
 		schema: oneOf,
 		raw_data: unknown
 	) {
+		const oneOf_matches:ConvertsUnknown<unknown, ExpressionResult>[] = [];
+
 		for (const entry of schema.oneOf) {
+			let match = false;
 			for (const candidate of await this.discovery.candidates) {
-				const maybe = await (await candidate.matches(entry))?.result();
+				const maybe = await (
+					await candidate.matches(entry)
+				)?.result();
 
 				if (maybe instanceof ConvertsUnknown) {
-					return maybe.convert_unknown(entry, raw_data);
+					oneOf_matches.push(maybe);
+					match = true;
+					break;
 				}
 			}
+			if (!match) {
+				for (const alternate_candidate of [
+					await this.RefToTypedString,
+					await this.RefToConst,
+					this.StringStartsWith,
+					this.UnrealEngineString,
+				]) {
+					if (await alternate_candidate.matches(entry)) {
+						oneOf_matches.push(alternate_candidate);
+						match = true;
+						break;
+					}
+				}
+			}
+
+			if (!match) {
+				throw new NoMatchError(
+					entry,
+					'Unable to locate converter!'
+				);
+			}
+		}
+
+		const attempts:{[key: string]: boolean} = {};
+
+		let index = 0;
+		for (const match of oneOf_matches) {
+			const maybe = await (await match.matches(raw_data))?.result();
+
+			attempts[match.constructor.name] = maybe !== undefined;
+
+			console.log(match.constructor.name, maybe);
+
+			if (maybe instanceof ConvertsUnknown) {
+				return maybe.convert_unknown(schema.oneOf[index], raw_data);
+			}
+
+			++index;
 		}
 
 		throw new NoMatchError(
 			{
 				schema,
 				raw_data,
+				oneOf_matches: oneOf_matches.map(e => e.constructor.name),
+				attempts,
 			},
 			'Unable to convert oneOf!'
 		);
