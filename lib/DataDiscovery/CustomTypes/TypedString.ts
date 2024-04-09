@@ -386,10 +386,9 @@ export class TypedString extends ConvertsUnknown<
 			);
 		}
 
-		const converted = Object.fromEntries(await Promise.all(
-			Object.entries(shallow).map(async (
-				entry
-			) : Promise<[string, unknown]> => {
+		const converted_entries:[string, unknown][] = [];
+
+		for (const entry of Object.entries(shallow)) {
 				if (!(entry[0] in typed_string_value.properties)) {
 					throw new NoMatchError(
 						{
@@ -432,10 +431,12 @@ export class TypedString extends ConvertsUnknown<
 						property_schema
 					)
 				) {
-					return [
+					converted_entries.push([
 						property,
 						value,
-					];
+					]);
+
+					continue;
 				}
 
 				if (
@@ -457,20 +458,24 @@ export class TypedString extends ConvertsUnknown<
 						);
 					}
 
-					return [
+					converted_entries.push([
 						property,
 						value,
-					];
+					]);
+
+					continue;
 				}
 
 				if (converter instanceof ConvertsUnknown) {
-					return [
+					converted_entries.push([
 						property,
 						await converter.convert_unknown(
 							property_schema,
 							value
 						),
-					];
+					]);
+
+					continue;
 				}
 
 				throw new NoMatchError(
@@ -481,8 +486,9 @@ export class TypedString extends ConvertsUnknown<
 					},
 					'No converter found!'
 				)
-			})
-		));
+		}
+
+		const converted = Object.fromEntries(converted_entries);
 
 		try {
 			performance.mark('start');
