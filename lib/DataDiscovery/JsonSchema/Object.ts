@@ -72,10 +72,9 @@ abstract class ObjectTypeResolver<
 		if (
 			Object.keys(property_converters).length > 0
 		) {
-			return Object.fromEntries(await Promise.all(Object.entries(
-				raw_data
-			).map(
-				async (e) : Promise<[string, unknown]> => {
+			const entries:[string, unknown][] = [];
+
+			for (const e of Object.entries(raw_data)) {
 					const [property, value] = e;
 
 					if (
@@ -94,18 +93,21 @@ abstract class ObjectTypeResolver<
 							ConvertsUnknown<unknown, unknown>,
 						];
 
-						return [
+					entries.push([
 							property,
 							await converter.convert_unknown(
 								schema,
 								value,
 							),
-						];
+					]);
+
+						continue;
 					}
 
-					return [property, value];
-				}
-			)));
+				entries.push([property, value]);
+			}
+
+			return Object.fromEntries(entries);
 		}
 
 		return raw_data;
