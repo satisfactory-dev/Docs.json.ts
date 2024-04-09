@@ -254,14 +254,14 @@ export class SpecificItemGenerator extends Base<
 
 			const {NativeClass} = raw_data;
 
-			const Classes = await Promise.all(
-				(await maybe_unbound_array.convert_array(
+			const Classes:DocsDataItem_Classes_entry[] = [];
+
+			for (const e of await maybe_unbound_array.convert_array(
 					this.schema.properties.Classes,
 					raw_data.Classes
-				)).map(e => (
-					e.result()
-				))
-			) as DocsDataItem_Classes_entry[];
+			)) {
+				Classes.push(await e.result() as DocsDataItem_Classes_entry);
+			}
 
 			let Classes_type:Classes_type = [];
 
