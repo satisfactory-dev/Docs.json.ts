@@ -34,7 +34,10 @@ import {
 
 type Texture2D_type = {
 	oneOf: [
-		{$ref: local_ref<'Texture2D--basic'>},
+		{
+			type: 'string',
+			string_starts_with: 'Texture2D /Game/FactoryGame/',
+		},
 		{$ref: local_ref<'None'>},
 		{
 			type: 'string',

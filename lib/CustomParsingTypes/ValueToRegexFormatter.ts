@@ -115,7 +115,10 @@ export class ValueToRegexFormatter
 
 	private is_Texture2D_basic(
 		maybe: unknown
-	) : maybe is typeof this.definitions['Texture2D--basic'] {
+	) : maybe is {
+		type: 'string',
+		string_starts_with: 'Texture2D /Game/FactoryGame/',
+	} {
 		return (
 			value_is_non_array_object(maybe)
 			&& 2 === Object.keys(maybe).length
@@ -123,7 +126,7 @@ export class ValueToRegexFormatter
 			&& object_has_property_that_equals(
 				maybe,
 				'string_starts_with',
-				this.definitions['Texture2D--basic'].string_starts_with
+				'Texture2D /Game/FactoryGame/'
 			)
 		);
 	}
@@ -144,7 +147,7 @@ export class ValueToRegexFormatter
 
 	private Texture2D_basic_regex(): string
 	{
-		return `(?:${this.definitions['Texture2D--basic'].string_starts_with}(?:[A-Z][A-Za-z0-9_.]+/)*[A-Z][A-Za-z_.0-9-]+(?::[A-Z][A-Za-z0-9]+)?)`;
+		return `(?:Texture2D \\/Game\\/FactoryGame\\/(?:[A-Z][A-Za-z0-9_.]+/)*[A-Z][A-Za-z_.0-9-]+(?::[A-Z][A-Za-z0-9]+)?)`;
 	}
 
 	private typed_string_array_inner_to_regex(
@@ -242,10 +245,6 @@ export class ValueToRegexFormatter
 			);
 		} else if (
 			this.is_Texture2D_basic(value)
-			|| (
-				object_only_has_that_property(value, '$ref')
-				&& value.$ref === local_ref('Texture2D--basic')
-			)
 		) {
 			return this.Texture2D_basic_regex();
 		} else if (

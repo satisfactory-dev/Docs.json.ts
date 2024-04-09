@@ -253,14 +253,11 @@
 			"type": "string",
 			"enum": ["True", "False", ""]
 		},
-		"Texture2D--basic": {
-			"type": "string",
-			"string_starts_with": "Texture2D /Game/FactoryGame/"
-		},
 		"Texture2D": {
 			"oneOf": [
 				{
-					"$ref": "#/definitions/Texture2D--basic"
+					"type": "string",
+					"string_starts_with": "Texture2D /Game/FactoryGame/"
 				},
 				{
 					"$ref": "#/definitions/None"
