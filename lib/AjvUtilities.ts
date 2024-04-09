@@ -41,6 +41,7 @@ export function compile<T>(
 				{
 					schema,
 					err,
+					message: err instanceof Error ? err.message : undefined,
 				},
 				null,
 				'\t'
