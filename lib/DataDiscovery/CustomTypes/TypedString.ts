@@ -328,8 +328,8 @@ export class TypedString extends ConvertsUnknown<
 
 			for (const e of shallow) {
 				items.push(await converter.convert_unknown(
-						schema.items,
-						e
+					schema.items,
+					e
 				));
 			}
 
