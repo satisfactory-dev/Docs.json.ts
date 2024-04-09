@@ -554,28 +554,28 @@ export class TypedString extends ConvertsUnknown<
 
 				let index = 0;
 				for (const entry of e) {
-							const type = schema.prefixItems[index];
+					const type = schema.prefixItems[index];
 
-							const converter:unknown = await (await Base.find(
-								await this.discovery.candidates,
-								type
-							)).result();
+					const converter:unknown = await (await Base.find(
+						await this.discovery.candidates,
+						type
+					)).result();
 
-							if (!(converter instanceof ConvertsUnknown)) {
-								throw new NoMatchError(
-									{
-										type,
-										converter,
-										entry,
-										index,
-									},
-									'Could not find converter!'
-								);
-							}
+					if (!(converter instanceof ConvertsUnknown)) {
+						throw new NoMatchError(
+							{
+								type,
+								converter,
+								entry,
+								index,
+							},
+							'Could not find converter!'
+						);
+					}
 
 					items.push(await converter.convert_unknown(
-								type,
-								entry
+						type,
+						entry
 					) as unknown);
 
 					++index;
