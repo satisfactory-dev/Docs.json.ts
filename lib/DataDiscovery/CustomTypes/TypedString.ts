@@ -538,8 +538,9 @@ export class TypedString extends ConvertsUnknown<
 			slightly_less_than_shallow.push(inner_shallow);
 		}
 
-		const converted = await Promise.all(slightly_less_than_shallow.map(
-			async (e:unknown[]) => {
+		const converted:ExpressionResult<ArrayLiteralExpression>[] = [];
+
+		for (const e of slightly_less_than_shallow) {
 				if (e.length !== schema.prefixItems.length) {
 					throw new NoMatchError(
 						{
@@ -581,13 +582,12 @@ export class TypedString extends ConvertsUnknown<
 					++index;
 				}
 
-				return new ExpressionResult(
+			converted.push(new ExpressionResult(
 					await this.discovery.literal.array_literal(
 						items
 					),
-				);
-			}
-		));
+			));
+		}
 
 		return new ExpressionResult(
 			await this.discovery.literal.array_literal(
