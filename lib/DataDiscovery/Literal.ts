@@ -20,6 +20,7 @@ import ts, {
 	FalseLiteral,
 	Identifier,
 	ObjectLiteralExpression,
+	PropertyAssignment,
 	StringLiteral,
 	TrueLiteral,
 } from 'typescript';
@@ -36,15 +37,16 @@ export class Literal
 	async object_literal(
 		from:{[key: string]: unknown},
 	): Promise<ObjectLiteralExpression> {
-		return ts.factory.createObjectLiteralExpression(
-			await Promise.all(Object.entries(from).map(async (entry) => {
+		const properties:PropertyAssignment[] = [];
+
+		for (const entry of Object.entries(from)) {
 				try {
 					const value = this.value_literal(entry[1]);
 
-					return ts.factory.createPropertyAssignment(
+				properties.push(ts.factory.createPropertyAssignment(
 						property_name_or_computed(entry[0]),
 						await value
-					);
+				));
 				} catch (error) {
 					throw new NoMatchError(
 						{
@@ -55,7 +57,11 @@ export class Literal
 						'Failed to convert property value!'
 					);
 				}
-			}))
+		}
+
+
+		return ts.factory.createObjectLiteralExpression(
+			properties
 		);
 	}
 
