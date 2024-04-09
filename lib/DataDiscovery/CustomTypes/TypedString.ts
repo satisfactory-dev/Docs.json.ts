@@ -263,9 +263,9 @@ export class TypedString extends ConvertsUnknown<
 			}));
 
 			return new ExpressionResult(
-				await this.discovery.literal.value_literal(
+				await this.discovery.literal.array_literal(
 					converted
-				) as ArrayLiteralExpression
+				)
 			) ;
 		}
 
@@ -290,9 +290,9 @@ export class TypedString extends ConvertsUnknown<
 			});
 
 			return new ExpressionResult(
-				await this.discovery.literal.value_literal(
+				await this.discovery.literal.array_literal(
 					checked
-				) as ArrayLiteralExpression
+				)
 			);
 		}
 
@@ -317,22 +317,22 @@ export class TypedString extends ConvertsUnknown<
 			});
 
 			return new ExpressionResult(
-				await this.discovery.literal.value_literal(
+				await this.discovery.literal.array_literal(
 					checked
-				) as ArrayLiteralExpression
+				)
 			);
 		}
 
 		if (converter instanceof ConvertsUnknown) {
 			return new ExpressionResult(
-				await this.discovery.literal.value_literal(
+				await this.discovery.literal.array_literal(
 					await Promise.all(shallow.map((
 						e
 					) => converter.convert_unknown(
 						schema.items,
 						e
 					)))
-				) as ArrayLiteralExpression
+				)
 			);
 		}
 
@@ -550,7 +550,7 @@ export class TypedString extends ConvertsUnknown<
 					);
 				}
 				return new ExpressionResult(
-					await this.discovery.literal.value_literal(
+					await this.discovery.literal.array_literal(
 						await Promise.all(e.map(async (
 							entry,
 							index
@@ -579,15 +579,15 @@ export class TypedString extends ConvertsUnknown<
 								entry
 							) as unknown;
 						}))
-					) as ArrayLiteralExpression,
+					),
 				);
 			}
 		));
 
 		return new ExpressionResult(
-			await this.discovery.literal.value_literal(
+			await this.discovery.literal.array_literal(
 				converted
-			) as ArrayLiteralExpression
+			)
 		);
 	}
 }
