@@ -65,7 +65,7 @@ type DocsDataItem_schema = (
 
 type Classes_type = (undefined|TypeReferenceNode)[];
 
-type modified_DocsDataItem =
+export type modified_DocsDataItem =
 	& DocsDataItem<
 		unknown,
 		ExpressionResult

@@ -29,6 +29,7 @@ import {
 } from './TypeDefinitionDiscovery/CustomParsingTypes/UnrealEngineString';
 import {
 	Generator as DocsDataItemGenerator,
+	modified_DocsDataItem,
 } from './DataDiscovery/Update8/DocsDataItem';
 import {
 	IsOneOfRef,
@@ -133,17 +134,19 @@ export class DataDiscovery
 	}
 
 	async generate() {
-		return await Promise.all(
-			(await this.docs.get()).map(async (e) => {
+		const result:(DocsDataItem|modified_DocsDataItem)[] = [];
+
+		for (const e of await this.docs.get()) {
 				const maybe = await this.docs_data_item_candidate.matches(e);
 
 				if (!maybe) {
 					throw new NoMatchError(e);
 				}
 
-				return await maybe.result();
-			})
-		);
+			result.push(await maybe.result());
+		}
+
+		return result;
 	}
 
 	async* generate_files() {
