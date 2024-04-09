@@ -55,7 +55,7 @@ class UnspecifiedArray<
 		});
 	}
 
-	async convert_array(schema: ArrayType, raw_data:unknown[])
+	async convert_array(schema: ArrayType, raw_data:unknown[]) : Promise<RawGenerationResult[]>
 	{
 		const converter:unknown = await (await Base.find(
 			await this.discovery.candidates,
@@ -78,7 +78,7 @@ class UnspecifiedArray<
 			result.push(new RawGenerationResult(e));
 		}
 
-		return await Promise.all(result)
+		return result;
 	}
 
 	matches(schema: unknown) {
