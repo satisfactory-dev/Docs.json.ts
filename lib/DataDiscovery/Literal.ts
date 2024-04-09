@@ -29,8 +29,14 @@ export class Literal
 {
 	async array_literal(from:unknown[]): Promise<ArrayLiteralExpression>
 	{
+		const items:Expression[] = [];
+
+		for (const e of from) {
+			items.push(await this.value_literal(e));
+		}
+
 		return ts.factory.createArrayLiteralExpression(
-			await Promise.all(from.map(e => this.value_literal(e)))
+			items
 		);
 	}
 
