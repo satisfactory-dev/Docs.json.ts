@@ -22,88 +22,92 @@ import {
 import {
 	compile,
 } from '../../AjvUtilities';
+import {
+	NoMatchError,
+} from '../../Exceptions';
 
 export type object_extends_but_has_no_additional_properties = {
 	type: 'object',
 	$ref: local_ref<string>,
 	unevaluatedProperties: false,
 }
+export type object_extends_and_has_additional_properties =
+	& object_extends_but_has_no_additional_properties
+	& {
+		properties: {[key: string]: SchemaObject}
+	};
 
-export class ObjectExtendsButHasNoAdditionalProperties extends ConvertsObject<
-	SchemaObject
-> {
-	private readonly check:Promise<ValidateFunction<
-		object_extends_but_has_no_additional_properties
-	>>;
+abstract class ObjectTypeResolver<
+	Check extends object_extends_but_has_no_additional_properties
+		= object_extends_but_has_no_additional_properties
+> extends ConvertsObject<SchemaObject> {
+	private readonly check_errors:WeakMap<object, unknown[]> = new WeakMap<
+		object,
+		unknown[]
+	>();
+	protected readonly check:Promise<ValidateFunction<Check>>;
 
-	constructor(discovery:DataDiscovery) {
+	protected constructor(
+		discovery:DataDiscovery,
+		from_schema:(definitions:{[key: string]: SchemaObject}) => SchemaObject
+	) {
 		super(discovery);
 		this.check = discovery.docs.schema().then(({definitions}) => {
 			return compile<
-				object_extends_but_has_no_additional_properties
-			>(discovery.docs.ajv, {
-				type: 'object',
-				required: ['type', '$ref', 'unevaluatedProperties'],
-				additionalProperties: false,
-				properties: {
-					type: {type: 'string', const: 'object'},
-					$ref: {
-						type: 'string',
-						enum: Object.keys(definitions).map(local_ref),
-					},
-					unevaluatedProperties: {type: 'boolean', const: false},
-				},
-			});
+				Check
+			>(discovery.docs.ajv, from_schema(definitions));
 		});
 	}
 
 	async convert_object(
-		schema: object_extends_but_has_no_additional_properties,
+		schema: Check,
 		raw_data: {
 			[key: string]: unknown; }
 	): Promise<{ [key: string]: unknown; }
 	> {
-		const $ref = schema.$ref.substring(14);
-
-		const property_converters = await this.resolve_converters($ref);
+		const property_converters = await this.resolve_property_converters(
+			schema
+		);
 
 		if (
 			Object.keys(property_converters).length > 0
 		) {
-			return Object.fromEntries(await Promise.all(Object.entries(
-				raw_data
-			).map(
-				async (e) : Promise<[string, unknown]> => {
-					const [property, value] = e;
+			const entries:[string, unknown][] = [];
 
-					if (
-						property in property_converters
-						&& (
-							property_converters[
-								property
-							][1] instanceof ConvertsUnknown
-						)
-					) {
-						const [
+			for (const e of Object.entries(raw_data)) {
+				const [property, value] = e;
+
+				if (
+					property in property_converters
+					&& (
+						property_converters[
+							property
+						][1] instanceof ConvertsUnknown
+					)
+				) {
+					const [
+						schema,
+						converter,
+					] = property_converters[property] as [
+						SchemaObject,
+						ConvertsUnknown<unknown, unknown>,
+					];
+
+					entries.push([
+						property,
+						await converter.convert_unknown(
 							schema,
-							converter,
-						] = property_converters[property] as [
-							SchemaObject,
-							ConvertsUnknown<unknown, unknown>,
-						];
+							value,
+						),
+					]);
 
-						return [
-							property,
-							await converter.convert_unknown(
-								schema,
-								value,
-							),
-						];
-					}
-
-					return [property, value];
+					continue;
 				}
-			)));
+
+				entries.push([property, value]);
+			}
+
+			return Object.fromEntries(entries);
 		}
 
 		return raw_data;
@@ -111,20 +115,43 @@ export class ObjectExtendsButHasNoAdditionalProperties extends ConvertsObject<
 
 	async matches(schema:unknown)
 	{
-		if ((await this.check)(schema)) {
+		const check = await this.check;
+
+		if (check(schema)) {
 			return new RawGenerationResult(this);
+		} else if(schema && 'object' === typeof schema) {
+			if (!this.check_errors.has(schema)) {
+				this.check_errors.set(schema, []);
+			}
+
+			(this.check_errors.get(schema) as unknown[]).push(check.errors);
 		}
 
 		return undefined;
 	}
 
-	private async resolve_converters(
+	validation_errors(schema:unknown): unknown[]|undefined
+	{
+		return (
+			(schema && 'object' === typeof schema)
+				? this.check_errors.get(schema)
+				: undefined
+		);
+	}
+
+	protected async resolve_converters(
 		$ref:string
 	): Promise<{[key: string]: [SchemaObject, unknown]}> {
 		const resolved = await this.discovery.docs.definition(
 			$ref
 		);
 
+		return this.resolve_property_converters(resolved);
+	}
+
+	protected async resolve_property_converters(
+		resolved:SchemaObject
+	): Promise<{[key: string]: [SchemaObject, unknown]}> {
 		const property_converters:{
 			[key: string]: [SchemaObject, unknown]
 		} = {};
@@ -145,18 +172,33 @@ export class ObjectExtendsButHasNoAdditionalProperties extends ConvertsObject<
 		) {
 			const properties = resolved.properties;
 
+			const entries:[string, unknown][] = [];
+
+			for (const e of Object.entries(properties)) {
+				entries.push([
+					e[0],
+					await (await Base.find(
+						await this.discovery.candidates,
+						e[1]
+					)).result(),
+				]);
+			}
+
 			for (const entry of (
-				await Promise.all(Object.entries(properties).map(
-					async (e) : Promise<[string, unknown]> => [
-						e[0],
-						await (await Base.find(
-							await this.discovery.candidates,
-							e[1]
-						)).result(),
-					]
-				))
+				entries
 			)) {
 				const [property, result] = entry;
+
+				if (!(result instanceof ConvertsUnknown)) {
+					throw new NoMatchError(
+						{
+							property,
+							result,
+						},
+						'Non-converter result found!'
+					);
+				}
+
 				if (!(property in property_converters)) {
 					property_converters[property] = [
 						properties[property],
@@ -181,5 +223,153 @@ export class ObjectExtendsButHasNoAdditionalProperties extends ConvertsObject<
 		}
 
 		return property_converters;
+	}
+}
+
+function definitions_to_ref(
+	definitions:{[key: string]: SchemaObject}
+): SchemaObject & {
+	type: 'object',
+	required: [string, ...string[]],
+	additionalProperties: false,
+	properties: SchemaObject,
+} {
+	return {
+		type: 'object',
+		required: ['type', '$ref', 'unevaluatedProperties'],
+		additionalProperties: false,
+		properties: {
+			type: {type: 'string', const: 'object'},
+			$ref: {
+				type: 'string',
+				enum: Object.keys(definitions).map(local_ref),
+			},
+			unevaluatedProperties: {type: 'boolean', const: false},
+		},
+	};
+}
+
+export class ObjectExtendsButHasNoAdditionalProperties
+	extends ObjectTypeResolver
+{
+	constructor(discovery:DataDiscovery) {
+		super(discovery, definitions_to_ref);
+	}
+}
+
+export class ObjectExtendsAndHasAdditionalProperties
+	extends ObjectTypeResolver<object_extends_and_has_additional_properties>
+{
+	constructor(discovery:DataDiscovery) {
+		super(discovery, (definitions:{[key: string]: SchemaObject}) => {
+			const {
+				required,
+				properties,
+				...rest
+			} = definitions_to_ref(definitions);
+
+			return {
+				...rest,
+				required: [
+					...required,
+					'properties',
+				],
+				properties: {
+					...properties,
+					properties: {type: 'object', minProperties: 1},
+				},
+			};
+		});
+	}
+}
+
+type object_extends_from_oneOf = {
+	oneOf: [
+		object_extends_but_has_no_additional_properties,
+		...object_extends_but_has_no_additional_properties[],
+	],
+};
+
+export class IsOneOfRef extends ConvertsObject<SchemaObject>
+{
+	private readonly check_errors:WeakMap<object, unknown[]> = new WeakMap<
+		object,
+		unknown[]
+	>();
+	protected readonly check:Promise<ValidateFunction<
+		object_extends_from_oneOf
+	>>;
+	protected readonly resolver:ObjectExtendsButHasNoAdditionalProperties;
+
+	constructor(discovery:DataDiscovery) {
+		super(discovery);
+		this.check = discovery.docs.schema().then(({definitions}) => {
+			return compile<object_extends_from_oneOf>(discovery.docs.ajv, {
+				type: 'object',
+				required: ['oneOf'],
+				additionalProperties: false,
+				properties: {
+					oneOf: {
+						type: 'array',
+						minItems: 1,
+						items: definitions_to_ref(definitions),
+					},
+				},
+			});
+		});
+		this.resolver = new ObjectExtendsButHasNoAdditionalProperties(
+			discovery
+		);
+	}
+	async convert_object(
+		schema: object_extends_from_oneOf,
+		raw_data: {[key: string]: unknown}
+	): Promise<{[key: string]: unknown }> {
+		const {definitions} = await this.discovery.docs.schema();
+		for (const entry of schema.oneOf) {
+			const schema = {
+				...entry,
+				definitions,
+			};
+			const check = this.discovery.docs.ajv.compile(schema);
+
+			if (check(raw_data)) {
+				return this.resolver.convert_object(
+					schema,
+					raw_data
+				);
+			}
+		}
+
+		throw new NoMatchError({
+			schema,
+			raw_data,
+		});
+	}
+
+	async matches(schema:unknown)
+	{
+		const check = await this.check;
+
+		if (check(schema)) {
+			return new RawGenerationResult(this);
+		} else if (schema && 'object' === typeof schema) {
+			if (!this.check_errors.has(schema)) {
+				this.check_errors.set(schema, []);
+			}
+
+			(this.check_errors.get(schema) as unknown[]).push(check.errors);
+		}
+
+		return undefined;
+	}
+
+	validation_errors(schema:unknown): unknown[]|undefined
+	{
+		return (
+			(schema && 'object' === typeof schema)
+				? this.check_errors.get(schema)
+				: undefined
+		);
 	}
 }

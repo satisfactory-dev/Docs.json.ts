@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (211 of 211)
+100.00% Complete (209 of 209)
 
 ## Basic Types
 
@@ -46,7 +46,6 @@
 -   [x] mDockingRuleSet
 -   [x] mForm
 -   [x] mFreightCargoType
--   [x] mFuel
 -   [x] mLightControlData
 -   [x] mOutputInventoryHandlerData
 -   [x] mPlatformDockingStatus
@@ -56,6 +55,7 @@
 -   [x] NativeClass
 -   [x] None
 -   [x] SpecifiedColor
+-   [x] Texture2D
 -   [x] transformation
 -   [x] weaponState
 -   [x] xyz-array
@@ -282,11 +282,6 @@
 
 -   [x] mEventType
 -   [x] mEventType--optional-csv
-
-## Texture2D
-
--   [x] Texture2D
--   [x] Texture2D--basic
 
 ## vectors
 

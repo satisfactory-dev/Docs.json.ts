@@ -11,6 +11,8 @@ import {
 
 const __dirname = import.meta.dirname;
 
+const cache = new WeakMap<SchemaObject, ValidateFunction>();
+
 export function compile<T>(
 	ajv:Ajv,
 	schema:SchemaObject,
@@ -18,7 +20,16 @@ export function compile<T>(
 	try {
 		performance.mark('ajv compile start');
 
+		if (cache.has(schema)) {
+			const result = cache.get(schema) as ValidateFunction<T>;
+
+			performance.measure('ajv compile cached', 'ajv compile start');
+
+			return result;
+		}
+
 		const result = ajv.compile<T>(schema);
+		cache.set(schema, result);
 
 		performance.measure('ajv compile', 'ajv compile start');
 
@@ -30,6 +41,7 @@ export function compile<T>(
 				{
 					schema,
 					err,
+					message: err instanceof Error ? err.message : undefined,
 				},
 				null,
 				'\t'

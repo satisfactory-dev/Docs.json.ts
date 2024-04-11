@@ -29,8 +29,11 @@ import {
 } from './TypeDefinitionDiscovery/CustomParsingTypes/UnrealEngineString';
 import {
 	Generator as DocsDataItemGenerator,
+	modified_DocsDataItem,
 } from './DataDiscovery/Update8/DocsDataItem';
 import {
+	IsOneOfRef,
+	ObjectExtendsAndHasAdditionalProperties,
 	ObjectExtendsButHasNoAdditionalProperties,
 } from './DataDiscovery/JsonSchema/Object';
 import {
@@ -60,6 +63,20 @@ import {
 import {
 	RefToEnum,
 } from './DataDiscovery/CustomTypes/RefToEnum';
+import {
+	Texture2D,
+} from './DataDiscovery/CustomTypes/Texture2D';
+import {
+	PatternType,
+	StringType,
+} from './DataDiscovery/JsonSchema/StringType';
+import {
+	OneOf,
+	RefToOneOf,
+} from './DataDiscovery/JsonSchema/OneOf';
+import {
+	StringStartsWith,
+} from './DataDiscovery/CustomTypes/StringStartsWith';
 
 type progress = {[p: string]: string[]};
 
@@ -86,15 +103,23 @@ export class DataDiscovery
 		);
 		this.candidates = docs.schema().then(({definitions}) => {
 			return [
+				new StringType(this),
 				new UnboundArray(this),
 				new ObjectExtendsButHasNoAdditionalProperties(this),
+				new ObjectExtendsAndHasAdditionalProperties(this),
+				new IsOneOfRef(this),
 				new NumberStrings(this),
+				new PatternType(this),
 				new BooleanOrBooleanExtended(this),
 				new UnrealEngineString_DataDiscovery(this),
+				new Texture2D(this),
+				new StringStartsWith(this),
 				new TypedString(this),
 				RefToConst.from_definitions(definitions, this),
 				RefToEnum.from_definitions(definitions, this),
 				RefToTypedString.from_definitions(definitions, this),
+				new OneOf(this),
+				RefToOneOf.from_definitions(definitions, this),
 			];
 		});
 	}
@@ -109,17 +134,27 @@ export class DataDiscovery
 	}
 
 	async generate() {
-		return await Promise.all(
-			(await this.docs.get()).map(async (e) => {
-				const maybe = await this.docs_data_item_candidate.matches(e);
+		const result:(DocsDataItem|modified_DocsDataItem)[] = [];
 
-				if (!maybe) {
-					throw new NoMatchError(e);
-				}
+		for (const e of await this.docs.get()) {
+			performance.mark('start');
+			const maybe = await this.docs_data_item_candidate.matches(e);
 
-				return await maybe.result();
-			})
-		);
+			if (!maybe) {
+				throw new NoMatchError(e);
+			}
+
+			const maybe_result = await maybe.result();
+
+			performance.measure(
+				`${this.constructor.name}.generate() on item`,
+				'start'
+			);
+
+			result.push(maybe_result);
+		}
+
+		return result;
 	}
 
 	async* generate_files() {
@@ -141,20 +176,31 @@ export class DataDiscovery
 
 			const file = `data/CoreUObject/${entry_class_name}.ts`;
 
+			let index = 0;
 			for (const item of result.Classes) {
+				performance.mark('start');
 				yield {
 					file,
 					node: create_const_statement(
 						variable(
 							adjust_class_name(item.ClassName),
 							await this.literal.object_literal(item),
-							Classes_type
+							(
+								Classes_type
+									? (Classes_type[index] || undefined)
+									: undefined
+							),
 						)
 					),
 				};
+				performance.measure('item const generation', 'start');
+
+				++index;
 
 				this.progress[NativeClass_raw].push(item.ClassName);
 			}
+
+			performance.mark('start');
 
 			const result_statement = create_const_statement(variable(
 				adjust_class_name(entry_class_name),
@@ -172,6 +218,8 @@ export class DataDiscovery
 					adjust_class_name(`${entry_class_name}__NativeClass`)
 				),
 			));
+
+			performance.measure('NativeClass const generation', 'start');
 
 			yield {
 				file,

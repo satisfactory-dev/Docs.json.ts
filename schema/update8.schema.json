@@ -253,14 +253,11 @@
 			"type": "string",
 			"enum": ["True", "False", ""]
 		},
-		"Texture2D--basic": {
-			"type": "string",
-			"string_starts_with": "Texture2D /Game/FactoryGame/"
-		},
 		"Texture2D": {
 			"oneOf": [
 				{
-					"$ref": "#/definitions/Texture2D--basic"
+					"type": "string",
+					"string_starts_with": "Texture2D /Game/FactoryGame/"
 				},
 				{
 					"$ref": "#/definitions/None"
@@ -3618,7 +3615,54 @@
 					}
 				},
 				"mFuel": {
-					"$ref": "#/definitions/mFuel"
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"required": [
+							"mFuelClass",
+							"mSupplementalResourceClass",
+							"mByproduct",
+							"mByproductAmount"
+						],
+						"properties": {
+							"mFuelClass": {
+								"type": "string",
+								"pattern": "^(?:FGItemDescriptor[A-Z][A-Za-z]+|Desc_[A-Z][A-Za-z]+_C)$"
+							},
+							"mSupplementalResourceClass": {
+								"oneOf": [
+									{
+										"type": "string",
+										"const": ""
+									},
+									{
+										"type": "string",
+										"pattern": "^Desc_[A-Z][A-Za-z]+_C$"
+									}
+								]
+							},
+							"mByproduct": {
+								"type": "string",
+								"enum": [
+									"",
+									"Desc_NuclearWaste_C",
+									"Desc_PlutoniumWaste_C"
+								]
+							},
+							"mByproductAmount": {
+								"oneOf": [
+									{
+										"type": "string",
+										"const": ""
+									},
+									{
+										"$ref": "#/definitions/integer-string"
+									}
+								]
+							}
+						}
+					}
 				},
 				"mAvailableFuelClasses": {
 					"type": "string",
@@ -3751,56 +3795,6 @@
 				"mCurrentGeneratorNuclearWarning": {
 					"type": "string",
 					"const": "GNW_None"
-				}
-			}
-		},
-		"mFuel": {
-			"type": "array",
-			"minItems": 1,
-			"items": {
-				"type": "object",
-				"required": [
-					"mFuelClass",
-					"mSupplementalResourceClass",
-					"mByproduct",
-					"mByproductAmount"
-				],
-				"properties": {
-					"mFuelClass": {
-						"type": "string",
-						"pattern": "^(?:FGItemDescriptor[A-Z][A-Za-z]+|Desc_[A-Z][A-Za-z]+_C)$"
-					},
-					"mSupplementalResourceClass": {
-						"oneOf": [
-							{
-								"type": "string",
-								"const": ""
-							},
-							{
-								"type": "string",
-								"pattern": "^Desc_[A-Z][A-Za-z]+_C$"
-							}
-						]
-					},
-					"mByproduct": {
-						"type": "string",
-						"enum": [
-							"",
-							"Desc_NuclearWaste_C",
-							"Desc_PlutoniumWaste_C"
-						]
-					},
-					"mByproductAmount": {
-						"oneOf": [
-							{
-								"type": "string",
-								"const": ""
-							},
-							{
-								"$ref": "#/definitions/integer-string"
-							}
-						]
-					}
 				}
 			}
 		},
@@ -6954,15 +6948,25 @@
 						"unevaluatedProperties": false,
 						"properties": {
 							"mDisplayName": {
-								"oneOf": [
-									{
-										"type": "string",
-										"enum": ["N/A", "Custom Slot"]
-									},
-									{
-										"type": "string",
-										"pattern": "^Swatch ([1-9]|1[0-5])$"
-									}
+								"type": "string",
+								"enum": [
+									"N/A",
+									"Custom Slot",
+									"Swatch 1",
+									"Swatch 2",
+									"Swatch 3",
+									"Swatch 4",
+									"Swatch 5",
+									"Swatch 6",
+									"Swatch 7",
+									"Swatch 8",
+									"Swatch 9",
+									"Swatch 10",
+									"Swatch 11",
+									"Swatch 12",
+									"Swatch 13",
+									"Swatch 14",
+									"Swatch 15"
 								]
 							},
 							"mProducedIn": {

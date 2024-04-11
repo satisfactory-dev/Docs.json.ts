@@ -7,6 +7,7 @@ import {
 import {
 	generate_object_parent_schema,
 	generate_typed_string_definitions,
+	typed_string_inner_array_prefixItems_type,
 	typed_string_inner_array_type,
 	typed_string_parent_type,
 } from '../../CustomParsingTypes/TypedString';
@@ -55,6 +56,9 @@ import {
 import {
 	typed_string_enum,
 } from '../../CustomParsingTypes/TypedStringEnum';
+import {
+	Texture2D,
+} from './Texture2D';
 
 export class TypedString extends ConvertsUnknown<
 	string,
@@ -65,6 +69,7 @@ export class TypedString extends ConvertsUnknown<
 		ValidateFunction<typed_string_parent_type>
 	>;
 	private readonly definitions:Promise<{[key: string]: SchemaObject}>;
+	private readonly Texture2D:Texture2D;
 	private readonly UnrealEngineString:UnrealEngineString;
 
 	constructor(discovery:DataDiscovery) {
@@ -94,6 +99,7 @@ export class TypedString extends ConvertsUnknown<
 			);
 		});
 		this.UnrealEngineString = new UnrealEngineString(discovery);
+		this.Texture2D = new Texture2D(discovery);
 	}
 
 	async convert_unknown(
@@ -127,12 +133,15 @@ export class TypedString extends ConvertsUnknown<
 			);
 		} else if (typed_string.is_array_type(schema.typed_string)) {
 			return this.convert_array(schema.typed_string, shallow);
+		} else if (typed_string.is_prefixItems_type(schema.typed_string)) {
+			return this.convert_prefixItems(schema.typed_string, shallow);
 		}
 
 		throw new NoMatchError(
 			{
 				raw_data,
 				shallow,
+				schema,
 			},
 			'Failed to convert native type!'
 		);
@@ -151,11 +160,12 @@ export class TypedString extends ConvertsUnknown<
 		return undefined;
 	}
 
-	private async convert_array(
-		schema: typed_string_inner_array_type,
-		shallow: unknown[]
-	) : Promise<ExpressionResult<ArrayLiteralExpression>> {
-
+	private async check_shallow_array_schema(
+		schema:
+			| typed_string_inner_array_type
+			| typed_string_inner_array_prefixItems_type,
+		shallow: unknown
+	) {
 		const definitions = await this.definitions;
 
 		const check = compile<
@@ -179,6 +189,13 @@ export class TypedString extends ConvertsUnknown<
 				'Shallow parse of typed_string does not match schema!'
 			);
 		}
+	}
+
+	private async convert_array(
+		schema: typed_string_inner_array_type,
+		shallow: unknown[]
+	) : Promise<ExpressionResult<ArrayLiteralExpression>> {
+		await this.check_shallow_array_schema(schema, shallow);
 
 		let converter:unknown = await (await Base.find(
 			await this.discovery.candidates,
@@ -212,7 +229,9 @@ export class TypedString extends ConvertsUnknown<
 				]
 			);
 
-			const converted = await Promise.all(shallow.map(async (e) => {
+			const converted:unknown[] = [];
+
+			for (const e of shallow) {
 				const schema = checks.find(maybe => maybe[1](e));
 
 				if (!schema) {
@@ -239,16 +258,16 @@ export class TypedString extends ConvertsUnknown<
 					);
 				}
 
-				return await schema_converter.convert_unknown(
+				converted.push(await schema_converter.convert_unknown(
 					schema[0],
 					e
-				) as unknown;
-			}));
+				) as unknown);
+			}
 
 			return new ExpressionResult(
-				await this.discovery.literal.value_literal(
+				await this.discovery.literal.array_literal(
 					converted
-				) as ArrayLiteralExpression
+				)
 			) ;
 		}
 
@@ -273,9 +292,9 @@ export class TypedString extends ConvertsUnknown<
 			});
 
 			return new ExpressionResult(
-				await this.discovery.literal.value_literal(
+				await this.discovery.literal.array_literal(
 					checked
-				) as ArrayLiteralExpression
+				)
 			);
 		}
 
@@ -300,22 +319,26 @@ export class TypedString extends ConvertsUnknown<
 			});
 
 			return new ExpressionResult(
-				await this.discovery.literal.value_literal(
+				await this.discovery.literal.array_literal(
 					checked
-				) as ArrayLiteralExpression
+				)
 			);
 		}
 
 		if (converter instanceof ConvertsUnknown) {
+			const items:unknown[] = [];
+
+			for (const e of shallow) {
+				items.push(await converter.convert_unknown(
+					schema.items,
+					e
+				));
+			}
+
 			return new ExpressionResult(
-				await this.discovery.literal.value_literal(
-					await Promise.all(shallow.map((
-						e
-					) => converter.convert_unknown(
-						schema.items,
-						e
-					)))
-				) as ArrayLiteralExpression
+				await this.discovery.literal.array_literal(
+					items
+				)
 			);
 		}
 
@@ -369,101 +392,120 @@ export class TypedString extends ConvertsUnknown<
 			);
 		}
 
-		const converted = Object.fromEntries(await Promise.all(
-			Object.entries(shallow).map(async (
-				entry
-			) : Promise<[string, unknown]> => {
-				if (!(entry[0] in typed_string_value.properties)) {
+		const converted_entries:[string, unknown][] = [];
+
+		for (const entry of Object.entries(shallow)) {
+			if (!(entry[0] in typed_string_value.properties)) {
+				throw new NoMatchError(
+					{
+						[entry[0]]: entry[1],
+						schema: typed_string_value.properties,
+					},
+					'Property not in schema!'
+				);
+			}
+
+			const [property, value] = entry;
+			const property_schema = typed_string_value.properties[
+				property
+			];
+
+			let converter:unknown = await (await Base.find(
+				await this.discovery.candidates,
+				property_schema
+			)).result();
+
+			if (
+				!(converter instanceof ConvertsUnknown)
+				&& is_UnrealEngineString_parent(
+					property_schema
+				)
+			) {
+				converter = this.UnrealEngineString;
+			}
+
+			if (
+				!(converter instanceof ConvertsUnknown)
+				&& await this.Texture2D.matches(value)
+			) {
+				converter = this.Texture2D;
+			}
+
+			if (
+				!(converter instanceof ConvertsUnknown)
+				&& typed_string_const.is_supported_schema(
+					property_schema
+				)
+			) {
+				converted_entries.push([
+					property,
+					value,
+				]);
+
+				continue;
+			}
+
+			if (
+				!(converter instanceof ConvertsUnknown)
+				&& typed_string_enum.is_supported_schema(
+					property_schema
+				)
+			) {
+				if (
+					!is_string(value)
+					|| !property_schema.enum.includes(value)
+				) {
 					throw new NoMatchError(
 						{
-							[entry[0]]: entry[1],
-							schema: typed_string_value.properties,
+							[property]: value,
+							schema: property_schema,
 						},
-						'Property not in schema!'
+						'Value not found on enum!'
 					);
 				}
 
-				const [property, value] = entry;
-				const property_schema = typed_string_value.properties[
-					property
-				];
+				converted_entries.push([
+					property,
+					value,
+				]);
 
-				let converter:unknown = await (await Base.find(
-					await this.discovery.candidates,
-					property_schema
-				)).result();
+				continue;
+			}
 
-				if (
-					!(converter instanceof ConvertsUnknown)
-					&& is_UnrealEngineString_parent(
-						property_schema
-					)
-				) {
-					converter = this.UnrealEngineString;
-				}
+			if (converter instanceof ConvertsUnknown) {
+				converted_entries.push([
+					property,
+					await converter.convert_unknown(
+						property_schema,
+						value
+					),
+				]);
 
-				if (
-					!(converter instanceof ConvertsUnknown)
-					&& typed_string_const.is_supported_schema(
-						property_schema
-					)
-				) {
-					return [
-						property,
-						value,
-					];
-				}
+				continue;
+			}
 
-				if (
-					!(converter instanceof ConvertsUnknown)
-					&& typed_string_enum.is_supported_schema(
-						property_schema
-					)
-				) {
-					if (
-						!is_string(value)
-						|| !property_schema.enum.includes(value)
-					) {
-						throw new NoMatchError(
-							{
-								[property]: value,
-								schema: property_schema,
-							},
-							'Value not found on enum!'
-						);
-					}
+			throw new NoMatchError(
+				{
+					data: {[property]: value},
+					schema: property_schema,
+					converter,
+				},
+				'No converter found!'
+			)
+		}
 
-					return [
-						property,
-						value,
-					];
-				}
-
-				if (converter instanceof ConvertsUnknown) {
-					return [
-						property,
-						await converter.convert_unknown(
-							property_schema,
-							value
-						),
-					];
-				}
-
-				throw new NoMatchError(
-					{
-						data: {[property]: value},
-						schema: property_schema,
-						converter,
-					},
-					'No converter found!'
-				)
-			})
-		));
+		const converted = Object.fromEntries(converted_entries);
 
 		try {
-			return new ExpressionResult(
+			performance.mark('start');
+
+			const result = new ExpressionResult(
 				await this.discovery.literal.object_literal(converted)
 			);
+
+			performance.measure('typed_string to object_literal', 'start');
+
+			return result;
 		} catch (error) {
 			throw new NoMatchError(
 				{
@@ -473,5 +515,96 @@ export class TypedString extends ConvertsUnknown<
 				'Failed to grab object literal!'
 			);
 		}
+	}
+
+	private async convert_prefixItems(
+		schema: typed_string_inner_array_prefixItems_type,
+		shallow: unknown[]
+	) : Promise<ExpressionResult<ArrayLiteralExpression>> {
+		const slightly_less_than_shallow:unknown[][] = [];
+
+		for (const entry of shallow) {
+			if (!is_string(entry)) {
+				throw new NoMatchError(
+					{
+						schema,
+						shallow,
+					},
+					'Expecting string entries on shallow array',
+				);
+			}
+
+			const inner_shallow = string_to_array(entry, true);
+
+			if (false === inner_shallow) {
+				throw new NoMatchError(
+					{
+						entry,
+					},
+					'Failed to parse inner entry!'
+				);
+			}
+
+			await this.check_shallow_array_schema(schema, inner_shallow);
+
+			slightly_less_than_shallow.push(inner_shallow);
+		}
+
+		const converted:ExpressionResult<ArrayLiteralExpression>[] = [];
+
+		for (const e of slightly_less_than_shallow) {
+			if (e.length !== schema.prefixItems.length) {
+				throw new NoMatchError(
+					{
+						e,
+						schema,
+					},
+					`Expected an array of length ${schema.prefixItems.length}, received ${e.length}`,
+				);
+			}
+
+			const items:unknown[] = [];
+
+			let index = 0;
+			for (const entry of e) {
+				const type = schema.prefixItems[index];
+
+				const converter:unknown = await (await Base.find(
+					await this.discovery.candidates,
+					type
+				)).result();
+
+				if (!(converter instanceof ConvertsUnknown)) {
+					throw new NoMatchError(
+						{
+							type,
+							converter,
+							entry,
+							index,
+						},
+						'Could not find converter!'
+					);
+				}
+
+				items.push(await converter.convert_unknown(
+					type,
+					entry
+				) as unknown);
+
+				++index;
+			}
+
+			converted.push(new ExpressionResult(
+				await this.discovery.literal.array_literal(
+					items
+				),
+			));
+		}
+
+		return new ExpressionResult(
+			await this.discovery.literal.array_literal(
+				converted
+			)
+		);
 	}
 }

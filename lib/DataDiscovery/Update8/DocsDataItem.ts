@@ -35,6 +35,8 @@ import {
 	TypeReferenceNode,
 } from 'typescript';
 import {
+	IsOneOfRef,
+	ObjectExtendsAndHasAdditionalProperties,
 	ObjectExtendsButHasNoAdditionalProperties,
 } from '../JsonSchema/Object';
 import {
@@ -61,13 +63,15 @@ type DocsDataItem_schema = (
 	}
 );
 
-type modified_DocsDataItem =
+type Classes_type = (undefined|TypeReferenceNode)[];
+
+export type modified_DocsDataItem =
 	& DocsDataItem<
 		unknown,
 		ExpressionResult
 	>
 	& {
-		Classes_type: undefined|TypeReferenceNode,
+		Classes_type: Classes_type,
 		NativeClass_raw:string
 	};
 
@@ -148,6 +152,10 @@ export class Generator extends Base<
 			}
 		}
 
+		throw new NoMatchError({
+			raw_data,
+		});
+
 		return undefined;
 	}
 }
@@ -162,6 +170,8 @@ export class SpecificItemGenerator extends Base<
 	private readonly array_with_maxItems:MaxBoundedArray;
 	private readonly check:ValidateFunction<DocsDataItem>;
 	private readonly extends_$ref:ObjectExtendsButHasNoAdditionalProperties;
+	private readonly has_properties:ObjectExtendsAndHasAdditionalProperties;
+	private readonly is_oneOf:IsOneOfRef;
 	private readonly NativeClass_definition:Promise<SchemaObject>;
 	private readonly schema:DocsDataItem_schema;
 	private readonly unreal_engine_string:UnrealEngineString;
@@ -182,6 +192,10 @@ export class SpecificItemGenerator extends Base<
 		this.extends_$ref = new ObjectExtendsButHasNoAdditionalProperties(
 			discovery
 		);
+		this.has_properties = new ObjectExtendsAndHasAdditionalProperties(
+			discovery
+		);
+		this.is_oneOf = new IsOneOfRef(discovery);
 	}
 
 	async matches(raw_data: unknown) : Promise<
@@ -240,29 +254,81 @@ export class SpecificItemGenerator extends Base<
 
 			const {NativeClass} = raw_data;
 
-			const Classes = await Promise.all(
-				(await maybe_unbound_array.convert_array(
-					this.schema.properties.Classes,
-					raw_data.Classes
-				)).map(e => (
-					e.result()
-				))
-			) as DocsDataItem_Classes_entry[];
+			const Classes:DocsDataItem_Classes_entry[] = [];
 
-			let Classes_type:undefined|TypeReferenceNode = undefined;
+			for (const e of await maybe_unbound_array.convert_array(
+				this.schema.properties.Classes,
+				raw_data.Classes
+			)) {
+				Classes.push(await e.result() as DocsDataItem_Classes_entry);
+			}
+
+			let Classes_type:Classes_type = [];
+
+			const {items} = this.schema.properties.Classes;
 
 			if (
 				await this.extends_$ref.matches(
-					this.schema.properties.Classes.items
+					items
+				)
+				||
+				await this.has_properties.matches(
+					items
 				)
 			) {
-				Classes_type = type_reference_node(adjust_class_name(
+				Classes_type = raw_data.Classes.map((
+				) => type_reference_node(adjust_class_name(
 					`${(
-						this.schema.properties.Classes.items.$ref as local_ref<
+						items.$ref as local_ref<
 							string
 						>
 					).substring(14)}__type`
-				));
+				)));
+			} else if (await this.is_oneOf.matches(items)) {
+				const {definitions} = await this.discovery.docs.schema();
+				Classes_type = raw_data.Classes.map((data) => {
+					for (
+						const type of (
+						items.oneOf as (
+							& SchemaObject
+							& {$ref: local_ref<string>}
+							)[]
+					)
+						) {
+						const check = this.discovery.docs.ajv.compile({
+							...type,
+							definitions,
+						});
+
+						if (check(data)) {
+							return type_reference_node(adjust_class_name(
+								`${(type.$ref).substring(14)}__type`
+							));
+						}
+					}
+
+					throw new NoMatchError(
+						{
+							data,
+							items,
+						},
+						'Could not determine Classes_type!'
+					);
+				});
+			} else {
+				throw new NoMatchError(
+					{
+						schema: this.schema.properties.Classes,
+						errors: [
+							this.extends_$ref,
+							this.has_properties,
+							this.is_oneOf,
+						].map(e => e.validation_errors(
+							items
+						)),
+					},
+					'Could not identify Classes type!'
+				);
 			}
 
 			const result:modified_DocsDataItem = {

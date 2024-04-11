@@ -20,35 +20,54 @@ import ts, {
 	FalseLiteral,
 	Identifier,
 	ObjectLiteralExpression,
+	PropertyAssignment,
 	StringLiteral,
 	TrueLiteral,
 } from 'typescript';
 
 export class Literal
 {
+	async array_literal(from:unknown[]): Promise<ArrayLiteralExpression>
+	{
+		const items:Expression[] = [];
+
+		for (const e of from) {
+			items.push(await this.value_literal(e));
+		}
+
+		return ts.factory.createArrayLiteralExpression(
+			items
+		);
+	}
+
 	async object_literal(
 		from:{[key: string]: unknown},
 	): Promise<ObjectLiteralExpression> {
-		return ts.factory.createObjectLiteralExpression(
-			await Promise.all(Object.entries(from).map(async (entry) => {
-				try {
-					const value = this.value_literal(entry[1]);
+		const properties:PropertyAssignment[] = [];
 
-					return ts.factory.createPropertyAssignment(
-						property_name_or_computed(entry[0]),
-						await value
-					);
-				} catch (error) {
-					throw new NoMatchError(
-						{
-							property: entry[0],
-							original_value: entry[1],
-							error,
-						},
-						'Failed to convert property value!'
-					);
-				}
-			}))
+		for (const entry of Object.entries(from)) {
+			try {
+				const value = this.value_literal(entry[1]);
+
+				properties.push(ts.factory.createPropertyAssignment(
+					property_name_or_computed(entry[0]),
+					await value
+				));
+			} catch (error) {
+				throw new NoMatchError(
+					{
+						property: entry[0],
+						original_value: entry[1],
+						error,
+					},
+					'Failed to convert property value!'
+				);
+			}
+		}
+
+
+		return ts.factory.createObjectLiteralExpression(
+			properties
 		);
 	}
 
@@ -61,23 +80,44 @@ export class Literal
 		| Expression
 		| ObjectLiteralExpression
 	> {
+		performance.mark('start');
 		from = from instanceof GenerationResult ? await from.result() : from;
 
 		if (is_string(from)) {
-			return ts.factory.createStringLiteral(from);
+			const result = ts.factory.createStringLiteral(from);
+			performance.measure('value_literal(createStringLiteral)', 'start');
+
+			return result;
 		} else if (from instanceof ExpressionResult) {
-			return (from as ExpressionResult).expression;
+			const result = (from as ExpressionResult).expression;
+			performance.measure('value_literal(ExpressionResult)', 'start');
+
+			return result;
 		} if (value_is_non_array_object(from)) {
-			return await this.object_literal(from);
+			const result = await this.object_literal(from);
+			performance.measure('value_literal(object_literal)', 'start');
+
+			return result;
 		} else if ('boolean' === typeof from) {
-			return from ? ts.factory.createTrue():ts.factory.createFalse();
+			const result = from
+				? ts.factory.createTrue()
+				: ts.factory.createFalse();
+			performance.measure('value_literal(boolean)', 'start');
+
+			return result;
 		} else if (undefined === from) {
-			return ts.factory.createIdentifier('undefined');
+			const result = ts.factory.createIdentifier('undefined');
+			performance.measure('value_literal(undefined)', 'start');
+
+			return result;
 		} else if (!(from instanceof Array)) {
 			throw new NoMatchError(from, 'not an array!');
 		}
-		return ts.factory.createArrayLiteralExpression(
-			await Promise.all(from.map(e => this.value_literal(e)))
-		);
+
+		const result = await this.array_literal(from);
+
+		performance.measure('value_literal(array)', 'start');
+
+		return result;
 	}
 }

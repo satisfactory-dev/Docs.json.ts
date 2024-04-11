@@ -212,7 +212,7 @@ export function string_to_array<T extends unknown[]>(
 						was.current_item_buffer = '';
 					} else {
 						const coerced_value = shallow
-							? was.current_item_buffer
+							? was.current_item_buffer.trim()
 							: string_to_native_type(
 								was.current_item_buffer
 							);
@@ -220,7 +220,7 @@ export function string_to_array<T extends unknown[]>(
 						was.values.push(
 							false !== coerced_value
 								? coerced_value
-								: was.current_item_buffer
+								: was.current_item_buffer.trim()
 						);
 
 						was.current_item_buffer = '';

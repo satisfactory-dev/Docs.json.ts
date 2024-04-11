@@ -55,26 +55,40 @@ class UnspecifiedArray<
 		});
 	}
 
-	async convert_array(schema: ArrayType, raw_data:unknown[])
-	{
+	async convert_array(
+		schema: ArrayType,
+		raw_data:unknown[]
+	) : Promise<RawGenerationResult[]> {
 		const converter:unknown = await (await Base.find(
 			await this.discovery.candidates,
 			schema.items
 		)).result();
 
-		return await Promise.all(raw_data.map(async (e) => {
+		performance.mark('start');
+
+		const result:RawGenerationResult[] = [];
+
+		for (const e of raw_data) {
 			if (
 				converter instanceof ConvertsObject
 				&& value_is_non_array_object(e)
 			) {
-				return new RawGenerationResult(await converter.convert_object(
-					schema.items,
-					e
+				result.push(new RawGenerationResult(
+					await converter.convert_object(
+						schema.items,
+						e
+					)
 				));
+
+				continue;
 			}
 
-			return new RawGenerationResult(e);
-		}))
+			result.push(new RawGenerationResult(e));
+		}
+
+		performance.measure(`${this.constructor.name}.convert_array()`, 'start');
+
+		return result;
 	}
 
 	matches(schema: unknown) {
