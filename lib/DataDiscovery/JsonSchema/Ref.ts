@@ -12,15 +12,22 @@ import {
 import {
 	SchemaObject,
 } from 'ajv/dist/2020';
+import {
+	NoMatchError,
+} from '../../Exceptions';
 
 type schema_type = {
 	$ref: local_ref<string>,
 };
 
+type final_resolve_result = [SchemaObject, Converter<SchemaObject>];
+
 export class Ref extends ConverterMatchesSchema<
 	schema_type
 > {
-	private readonly cache:{[key: local_ref<string>]: boolean} = {};
+	private readonly cache:{
+		[key: local_ref<string>]: final_resolve_result,
+	} = {};
 	private readonly discovery:DataDiscovery;
 
 	constructor(discovery:DataDiscovery) {
@@ -49,41 +56,18 @@ export class Ref extends ConverterMatchesSchema<
 			);
 
 			return false;
-		} else if (schema.$ref in this.cache) {
-			performance.measure(
-				`${
-					this.constructor.name
-				}.can_convert_schema_and_raw_data() cached exit`,
-				'start'
-			);
-			return this.cache[schema.$ref];
 		}
 
-		const definition = await this.discovery.docs.definition(
-			schema.$ref.substring(14)
+		const maybe = await this.resolve_to_final_converter_schema_only(
+			schema
 		);
 
-		const converter = Converter.has_matching_schema(
-			await this.discovery.candidates,
-			definition
-		);
-
-		if (!converter) {
-			performance.measure(
-				`${
-					this.constructor.name
-				}.can_convert_schema_and_raw_data() deferred exit`,
-				'start'
-			);
-			return false;
-		}
+		const [definition, converter] = maybe;
 
 		const result = await converter.can_convert_schema_and_raw_data(
 			definition,
 			raw_data
 		);
-
-		this.cache[schema.$ref] = result;
 
 		performance.measure(
 			`${
@@ -100,14 +84,27 @@ export class Ref extends ConverterMatchesSchema<
 		raw_data: schema_type
 	): Promise<ExpressionResult> {
 		performance.mark('start');
-		const definition = await this.discovery.docs.definition(
-			schema.$ref.substring(14)
+
+		const maybe = await this.resolve_to_final_converter_schema_only(
+			schema
 		);
 
-		const result = (await Converter.find_matching_schema(
-			await this.discovery.candidates,
-			definition
-		)).convert(
+		if (undefined === maybe) {
+			throw new NoMatchError(
+				{
+					schema,
+					raw_data,
+				},
+				'No final converter found!'
+			);
+		}
+
+		const [
+			definition,
+			converter,
+		] = maybe;
+
+		const result = await converter.convert(
 			definition,
 			raw_data
 		);
@@ -118,5 +115,50 @@ export class Ref extends ConverterMatchesSchema<
 		);
 
 		return result;
+	}
+
+	async resolve_to_final_converter_schema_only(
+		schema:schema_type
+	): Promise<final_resolve_result> {
+		let checking:SchemaObject = schema;
+
+		performance.mark('start');
+
+		if (!(schema.$ref in this.cache)) {
+			while (this.can_convert_schema(checking)) {
+				checking = await this.discovery.docs.definition(
+					checking.$ref.substring(14)
+				);
+			}
+
+			if (this.can_convert_schema(checking)) {
+				throw new NoMatchError(
+					{
+						schema,
+						checking,
+					},
+					'Did not resolve past $ref type',
+				);
+			}
+
+			const converter = await Converter.find_matching_schema(
+				await this.discovery.candidates,
+				checking
+			);
+
+			performance.measure(
+				`${this.constructor.name}.resolve_to_final_converter_schema_only()`,
+				'start'
+			);
+
+			this.cache[schema.$ref] = [checking, converter];
+		} else {
+			performance.measure(
+				`${this.constructor.name}.resolve_to_final_converter_schema_only() cached`,
+				'start'
+			);
+		}
+
+		return this.cache[schema.$ref];
 	}
 }

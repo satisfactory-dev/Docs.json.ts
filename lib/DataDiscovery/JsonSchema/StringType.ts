@@ -95,7 +95,7 @@ abstract class StringConvertHasConstraints<
 					schema,
 					raw_data,
 				},
-				'Raw data probably did not match const!'
+				'Raw data probably did not pass check!'
 			);
 		}
 
