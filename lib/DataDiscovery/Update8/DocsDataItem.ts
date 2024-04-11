@@ -271,8 +271,7 @@ export class SpecificItemGenerator extends Base<
 				await this.extends_$ref.matches(
 					items
 				)
-				||
-				await this.has_properties.matches(
+				|| await this.has_properties.matches(
 					items
 				)
 			) {
@@ -293,8 +292,8 @@ export class SpecificItemGenerator extends Base<
 							& SchemaObject
 							& {$ref: local_ref<string>}
 							)[]
-					)
-						) {
+						)
+					) {
 						const check = this.discovery.docs.ajv.compile({
 							...type,
 							definitions,

@@ -27,8 +27,12 @@ import {
 import {
 	RefToConst,
 } from '../CustomTypes/RefToConst';
-import { UnrealEngineString } from '../CustomTypes/UnrealEngineString';
-import {StringStartsWith} from '../CustomTypes/StringStartsWith';
+import {
+	UnrealEngineString,
+} from '../CustomTypes/UnrealEngineString';
+import {
+	StringStartsWith,
+} from '../CustomTypes/StringStartsWith';
 
 type oneOf = {
 	oneOf: [SchemaObject, ...SchemaObject[]],
@@ -93,7 +97,9 @@ export class OneOf extends ConvertsUnknown<unknown, ExpressionResult> {
 				)?.result();
 
 				if (maybe instanceof ConvertsUnknown) {
-					oneOf_matches.push(maybe);
+					oneOf_matches.push(
+						maybe as ConvertsUnknown<unknown, ExpressionResult>
+					);
 					match = true;
 					break;
 				}

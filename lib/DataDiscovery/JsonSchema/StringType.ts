@@ -129,7 +129,7 @@ export class StringType extends ConvertsUnknown<
 			if ('typed_string' in raw_data) {
 				throw new NoMatchError(
 					{
-						raw_data
+						raw_data,
 					},
 					'should not have matched!'
 				);
