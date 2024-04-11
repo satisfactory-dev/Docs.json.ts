@@ -67,7 +67,11 @@ export function object_has_property_that_equals(
 export function value_is_non_array_object(
 	maybe: unknown
 ): maybe is {[key: string]: unknown} {
-	return 'object' === typeof maybe && !(maybe instanceof Array);
+	return (
+		'object' === typeof maybe
+		&& !(maybe instanceof Array)
+		&& null !== maybe
+	);
 }
 
 export function is_non_empty_array<T = unknown>(

@@ -3,11 +3,13 @@ import {
 	DocsTsGenerator,
 } from './DocsTsGenerator';
 import {
-	GeneratesMarkdown, progress_group, reduce, remove_indentation,
+	GeneratesMarkdown,
+	progress_group,
+	reduce,
+	remove_indentation,
 } from './MarkdownUtilities';
 import {
-	ExpressionResult,
-	Generator,
+	Converter,
 } from './DataDiscovery/Generator';
 import {
 	FilesGenerator,
@@ -16,81 +18,61 @@ import {
 	adjust_unrealengine_value,
 } from './CustomParsingTypes/UnrealEngineString';
 import {
-	NoMatchError,
-} from './Exceptions';
-import {
 	adjust_class_name,
-	create_const_statement, create_modifiers,
-	type_reference_node, variable,
+	create_const_statement,
+	create_modifiers,
+	type_reference_node,
+	variable,
 } from './TsFactoryWrapper';
-import ts from 'typescript';
+import ts, {
+	Expression,
+} from 'typescript';
 import {
 	UnrealEngineString,
 } from './TypeDefinitionDiscovery/CustomParsingTypes/UnrealEngineString';
 import {
-	Generator as DocsDataItemGenerator,
-	modified_DocsDataItem,
-} from './DataDiscovery/Update8/DocsDataItem';
-import {
-	IsOneOfRef,
-	ObjectExtendsAndHasAdditionalProperties,
-	ObjectExtendsButHasNoAdditionalProperties,
+	ObjectConverter,
 } from './DataDiscovery/JsonSchema/Object';
 import {
-	UnboundArray,
+	ArrayConverter,
 } from './DataDiscovery/JsonSchema/Array';
 import {
-	NumberStrings,
-} from './DataDiscovery/CustomTypes/NumberStrings';
-import {
-	BooleanOrBooleanExtended,
+	BooleanConverter,
 } from './DataDiscovery/CustomTypes/BooleanOrBooleanExtended';
-import {
-	UnrealEngineString as UnrealEngineString_DataDiscovery,
-} from './DataDiscovery/CustomTypes/UnrealEngineString';
-import {
-	RefToConst,
-} from './DataDiscovery/CustomTypes/RefToConst';
 import {
 	Literal,
 } from './DataDiscovery/Literal';
 import {
-	TypedString,
+	TypedStringConverter,
 } from './DataDiscovery/CustomTypes/TypedString';
 import {
-	RefToTypedString,
-} from './DataDiscovery/CustomTypes/RefToTypedString';
-import {
-	RefToEnum,
-} from './DataDiscovery/CustomTypes/RefToEnum';
-import {
-	Texture2D,
-} from './DataDiscovery/CustomTypes/Texture2D';
-import {
-	PatternType,
-	StringType,
+	BasicStringConverter,
+	ConstStringConverter,
+	EnumStringConverter,
+	PatternConverter,
 } from './DataDiscovery/JsonSchema/StringType';
 import {
-	OneOf,
-	RefToOneOf,
+	OneOfConverter,
 } from './DataDiscovery/JsonSchema/OneOf';
 import {
-	StringStartsWith,
+	StringStartsWithConverter,
 } from './DataDiscovery/CustomTypes/StringStartsWith';
+import {
+	SchemaObject,
+} from 'ajv/dist/2020';
+import {
+	UnrealEngineStringConverter,
+} from './DataDiscovery/CustomTypes/UnrealEngineString';
+import {Ref} from './DataDiscovery/JsonSchema/Ref';
 
 type progress = {[p: string]: string[]};
-
-type known_DocsDataItem = Exclude<unknown, DocsDataItem>;
 
 export class DataDiscovery
 	extends FilesGenerator
 	implements GeneratesMarkdown
 {
-	private readonly docs_data_item_candidate:DocsDataItemGenerator;
 	private readonly progress:progress = {};
-	public readonly candidates:Promise<
-		Generator<known_DocsDataItem, known_DocsDataItem>[]
-	>;
+	public readonly candidates:Promise<[Converter<SchemaObject>, ...Converter<SchemaObject>[]]>;
 	public readonly docs:DocsTsGenerator;
 	public readonly literal:Literal;
 
@@ -98,28 +80,20 @@ export class DataDiscovery
 		super();
 		this.docs = docs;
 		this.literal = literal || new Literal();
-		this.docs_data_item_candidate = new DocsDataItemGenerator(
-			this
-		);
 		this.candidates = docs.schema().then(({definitions}) => {
 			return [
-				new StringType(this),
-				new UnboundArray(this),
-				new ObjectExtendsButHasNoAdditionalProperties(this),
-				new ObjectExtendsAndHasAdditionalProperties(this),
-				new IsOneOfRef(this),
-				new NumberStrings(this),
-				new PatternType(this),
-				new BooleanOrBooleanExtended(this),
-				new UnrealEngineString_DataDiscovery(this),
-				new Texture2D(this),
-				new StringStartsWith(this),
-				new TypedString(this),
-				RefToConst.from_definitions(definitions, this),
-				RefToEnum.from_definitions(definitions, this),
-				RefToTypedString.from_definitions(definitions, this),
-				new OneOf(this),
-				RefToOneOf.from_definitions(definitions, this),
+				new BooleanConverter(docs.ajv),
+				new ArrayConverter(this),
+				new BasicStringConverter(docs.ajv),
+				new ConstStringConverter(docs.ajv),
+				new EnumStringConverter(docs.ajv),
+				new PatternConverter(docs.ajv),
+				new StringStartsWithConverter(docs.ajv),
+				new UnrealEngineStringConverter(),
+				new ObjectConverter(this),
+				new TypedStringConverter(this, definitions),
+				new OneOfConverter(this),
+				new Ref(this),
 			];
 		});
 	}
@@ -134,24 +108,39 @@ export class DataDiscovery
 	}
 
 	async generate() {
-		const result:(DocsDataItem|modified_DocsDataItem)[] = [];
+		const result:[Expression, DocsDataItem][] = [];
 
-		for (const e of await this.docs.get()) {
+		const [
+			schema,
+			docs,
+		] = await Promise.all([
+			this.docs.schema(),
+			this.docs.get(),
+		]);
+
+		let index = 0;
+		for (const e of docs) {
 			performance.mark('start');
-			const maybe = await this.docs_data_item_candidate.matches(e);
+			const converter = await Converter.find_matching_schema(
+				await this.candidates,
+				schema.prefixItems[index]
+			);
 
-			if (!maybe) {
-				throw new NoMatchError(e);
-			}
-
-			const maybe_result = await maybe.result();
+			const maybe_result = await this.literal.value_literal(
+				await converter.convert(
+					schema.prefixItems[index],
+					e
+				)
+			);
 
 			performance.measure(
 				`${this.constructor.name}.generate() on item`,
 				'start'
 			);
 
-			result.push(maybe_result);
+			result.push([maybe_result, e]);
+
+			++index;
 		}
 
 		return result;
@@ -159,14 +148,7 @@ export class DataDiscovery
 
 	async* generate_files() {
 		for (const result of await this.generate()) {
-			const NativeClass_raw =
-				'NativeClass_raw' in result
-					? result.NativeClass_raw
-					: result.NativeClass;
-			const Classes_type =
-				'Classes_type' in result
-					? result.Classes_type
-					: undefined;
+			const NativeClass_raw = result[1].NativeClass;
 
 			this.progress[NativeClass_raw] = [];
 
@@ -176,27 +158,7 @@ export class DataDiscovery
 
 			const file = `data/CoreUObject/${entry_class_name}.ts`;
 
-			let index = 0;
-			for (const item of result.Classes) {
-				performance.mark('start');
-				yield {
-					file,
-					node: create_const_statement(
-						variable(
-							adjust_class_name(item.ClassName),
-							await this.literal.object_literal(item),
-							(
-								Classes_type
-									? (Classes_type[index] || undefined)
-									: undefined
-							),
-						)
-					),
-				};
-				performance.measure('item const generation', 'start');
-
-				++index;
-
+			for (const item of result[1].Classes) {
 				this.progress[NativeClass_raw].push(item.ClassName);
 			}
 
@@ -204,16 +166,7 @@ export class DataDiscovery
 
 			const result_statement = create_const_statement(variable(
 				adjust_class_name(entry_class_name),
-				await this.literal.object_literal({
-					NativeClass: result.NativeClass,
-					Classes: result.Classes.map(
-						e => new ExpressionResult(
-							ts.factory.createIdentifier(
-								adjust_class_name(e.ClassName)
-							)
-						)
-					),
-				}),
+				result[0],
 				type_reference_node(
 					adjust_class_name(`${entry_class_name}__NativeClass`)
 				),

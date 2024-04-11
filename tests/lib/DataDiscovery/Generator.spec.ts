@@ -4,10 +4,7 @@ import {
 } from 'node:test';
 import assert from 'node:assert/strict';
 import {
-	ConvertsArray,
-	ConvertsObject,
-	Generator,
-	RawGenerationResult,
+	Converter,
 } from '../../../lib/DataDiscovery/Generator';
 import {
 	DataDiscovery,
@@ -15,92 +12,67 @@ import {
 import {
 	docs,
 } from '../../../lib/helpers';
+import {
+	is_instanceof,
+	not_undefined,
+	rejects_partial_match,
+} from '../../../assert/CustomAssert';
+import {BasicStringConverter} from '../../../lib/DataDiscovery/JsonSchema/StringType';
 
-void describe('Generator.find', () => {
-	const discovery = new DataDiscovery(docs);
+void describe('Converter', async () => {
+	const candidates = await ((new DataDiscovery(docs)).candidates);
 
-	void it('resolves unmatched to raw', async () => {
-		assert.equal(
-			await (await Generator.find([], 'foo')).result(),
-			'foo',
+	void it ('returns a converter', async () => {
+		not_undefined(
+			Converter.has_matching_schema(
+				candidates,
+				{type: 'string'}
+			)
 		);
-		assert.equal(
-			await (await Generator.find([
-				new class extends Generator {
-					constructor() {
-						super(discovery);
-					}
-
-					matches() {
-						return Promise.resolve(undefined);
-					}
-				},
-			], 'foo')).result(),
-			'foo',
+		await assert.doesNotReject(
+			Converter.find_matching_schema(
+				candidates,
+				{type: 'string'}
+			)
 		);
+		not_undefined(
+			await Converter.has_matching_schema_and_raw_data(
+				candidates,
+				{type: 'string'},
+				''
+			)
+		);
+
+		const promise = Converter.find_matching_schema(
+			candidates,
+			{type: 'string'}
+		);
+
+		await assert.doesNotReject(promise);
+
+		is_instanceof(await promise, BasicStringConverter);
 	});
-
-	void it('can resolve matched to something else', async () => {
+	void it ('returns undefined', async () => {
 		assert.equal(
-			await (await Generator.find([
-				new class extends Generator {
-					constructor() {
-						super(discovery);
-					}
-
-					matches() {
-						return Promise.resolve(new RawGenerationResult(
-							'bar',
-						));
-					}
+			Converter.has_matching_schema(candidates, {type: 'boolean'}),
+			undefined
+		);
+		await rejects_partial_match(
+			Converter.find_matching_schema(candidates, {type: 'boolean'}),
+			{
+				property: {
+					schema: {type: 'boolean'},
 				},
-			], 'foo')).result(),
-			'bar',
+				message: 'Could not identify suitable candidate!'
+			}
+		);
+		assert.equal(
+			await Converter.has_matching_schema_and_raw_data(
+				candidates,
+				{type: 'string'},
+				null
+			),
+			undefined
 		);
 	});
 });
-
-void describe('ConvertsArray.convert_unknown', () => {
-	const discovery = new DataDiscovery(docs);
-
-	const example = new class extends ConvertsArray<unknown> {
-		constructor() {
-			super(discovery);
-		}
-		convert_array(): Promise<unknown[]> {
-			return Promise.resolve([]);
-		}
-
-		matches() {
-			return Promise.resolve(undefined);
-		}
-	}
-
-	void it('throws only when expected', () => {
-		assert.throws(() => example.convert_unknown({}, 1));
-		assert.doesNotThrow(() => example.convert_unknown({}, []));
-	});
-})
-
-void describe('ConvertsObject.convert_unknown', () => {
-	const discovery = new DataDiscovery(docs);
-
-	const example = new class extends ConvertsObject<unknown> {
-		constructor() {
-			super(discovery);
-		}
-		convert_object(): Promise<{[key: string]: unknown}> {
-			return Promise.resolve({});
-		}
-
-		matches() {
-			return Promise.resolve(undefined);
-		}
-	}
-
-	void it('throws only when expected', () => {
-		assert.throws(() => example.convert_unknown({}, 1));
-		assert.throws(() => example.convert_unknown({}, []));
-		assert.doesNotThrow(() => example.convert_unknown({}, {}));
-	});
-})

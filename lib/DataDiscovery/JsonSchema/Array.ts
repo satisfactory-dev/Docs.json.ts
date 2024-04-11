@@ -1,139 +1,98 @@
 import {
-	Generator as Base,
-	ConvertsArray,
-	ConvertsObject,
-	RawGenerationResult,
+	Converter,
+	ConverterMatchesSchema,
+    ExpressionResult,
 } from '../Generator';
 import {
 	DataDiscovery,
 } from '../../DataDiscovery';
 import {
 	SchemaObject,
-	ValidateFunction,
 } from 'ajv/dist/2020';
 import {
-	value_is_non_array_object,
-} from '../../CustomParsingTypes/CustomPairingTypes';
+	ArrayLiteralExpression,
+} from 'typescript';
 import {
-	compile,
-} from '../../AjvUtilities';
+	NoMatchError,
+} from '../../Exceptions';
 
-type unspecified_array = SchemaObject & {
+type array_type = {
 	type: 'array',
-	items: {[key: string]: unknown},
+	items: SchemaObject,
+	minItems: number,
+	maxItems?: number,
 };
 
-export type unbound_array = unspecified_array & {
-	minItems: 1,
-};
+export class ArrayConverter extends ConverterMatchesSchema<
+	array_type,
+	unknown[],
+	ArrayLiteralExpression
+> {
+	private readonly discovery:DataDiscovery;
 
-export type max_bounded_array = unbound_array & {
-	maxItems: 1,
-};
-
-class UnspecifiedArray<
-	ArrayType extends unspecified_array,
-	Result = unknown
-> extends ConvertsArray<Result> {
-	public readonly check:ValidateFunction<ArrayType>;
-
-	protected constructor(
-		discovery:DataDiscovery,
-		required:[string, ...string[]],
-		properties:{[key: string]: SchemaObject},
-	) {
-		super(discovery);
-		this.check = compile<ArrayType>(discovery.docs.ajv, {
+	constructor(discovery:DataDiscovery) {
+		super(discovery.docs.ajv, {
 			type: 'object',
-			required,
+			required: ['type', 'minItems', 'items'],
 			additionalProperties: false,
 			properties: {
-				...properties,
 				type: {type: 'string', const: 'array'},
 				items: {type: 'object'},
+				minItems: {type: 'number', minimum: 0},
+				maxItems: {type: 'number', minimum: 1},
 			},
 		});
+
+		this.discovery = discovery;
 	}
 
-	async convert_array(
-		schema: ArrayType,
-		raw_data:unknown[]
-	) : Promise<RawGenerationResult[]> {
-		const converter:unknown = await (await Base.find(
+    async can_convert_schema_and_raw_data(
+		schema: SchemaObject,
+		raw_data: unknown
+	): Promise<boolean> {
+        return Promise.resolve(
+			this.can_convert_schema(schema)
+			&& raw_data instanceof Array
+			&& !!((await this.discovery.candidates).find(
+				e => e.can_convert_schema(schema.items)
+			))
+			&& !!Converter.has_matching_schema(
+				await this.discovery.candidates,
+				schema.items
+			)
+		);
+    }
+
+	async convert(
+		schema: array_type,
+		raw_data: unknown[]
+	): Promise<ExpressionResult<ArrayLiteralExpression>> {
+		if (
+			!this.can_convert_schema(schema)
+			|| !await this.can_convert_schema_and_raw_data(schema, raw_data)
+		) {
+			throw new NoMatchError(
+				{
+					schema,
+					raw_data,
+				},
+				'Cannot convert!'
+			);
+		}
+
+		const converter = await Converter.find_matching_schema(
 			await this.discovery.candidates,
 			schema.items
-		)).result();
+		);
 
-		performance.mark('start');
+		const converted:unknown[] = [];
 
-		const result:RawGenerationResult[] = [];
-
-		for (const e of raw_data) {
-			if (
-				converter instanceof ConvertsObject
-				&& value_is_non_array_object(e)
-			) {
-				result.push(new RawGenerationResult(
-					await converter.convert_object(
-						schema.items,
-						e
-					)
-				));
-
-				continue;
-			}
-
-			result.push(new RawGenerationResult(e));
+		for (const entry of raw_data) {
+			converted.push(await converter.convert(schema.items, entry));
 		}
 
-		performance.measure(`${this.constructor.name}.convert_array()`, 'start');
-
-		return result;
-	}
-
-	matches(schema: unknown) {
-		if (this.check(schema)) {
-			return Promise.resolve(new RawGenerationResult(this));
-		}
-
-		return Promise.resolve(undefined);
-	}
-}
-
-export class UnboundArray<
-	ArrayType extends unbound_array = unbound_array,
-	Result = unknown
-> extends UnspecifiedArray<ArrayType, Result> {
-	constructor(
-		discovery:DataDiscovery,
-		required: [string, ...string[]]|([]) = [],
-		properties:{[key: string]: SchemaObject} = {}
-	) {
-		super(
-			discovery,
-			['type', 'minItems', 'items', ...required],
-			{
-				...properties,
-				minItems: {type: 'number', minimum: 1},
-			},
+		return new ExpressionResult(
+			await this.discovery.literal.array_literal(converted)
 		);
-	}
-}
-
-export class MaxBoundedArray<
-	ArrayType extends max_bounded_array = max_bounded_array,
-	Result = unknown
-> extends UnboundArray<
-	ArrayType,
-	Result
-> {
-	constructor(discovery:DataDiscovery) {
-		super(
-			discovery,
-			['maxItems'],
-			{
-				maxItems: {type: 'number', minimum: 1},
-			}
-		);
-	}
+    }
 }

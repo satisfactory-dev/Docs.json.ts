@@ -1,17 +1,18 @@
-import {
+import Ajv, {
 	SchemaObject,
 } from 'ajv/dist/2020';
 import {
 	local_ref,
 } from '../../StringStartsWith';
 import {
-	DoubleCheckedStringSchema,
+	ConverterMatchesSchema,
 	ExpressionResult,
 } from '../Generator';
-import {
-	DataDiscovery,
-} from '../../DataDiscovery';
-import ts from 'typescript';
+import ts, {
+	FalseLiteral,
+	Identifier,
+	TrueLiteral,
+} from 'typescript';
 
 const schema = {
 	type: 'object',
@@ -32,46 +33,30 @@ export type schema_type = SchemaObject & {
 	>
 };
 
-export class BooleanOrBooleanExtended extends DoubleCheckedStringSchema<
+export class BooleanConverter extends ConverterMatchesSchema<
 	schema_type,
-	{
-		type: 'string',
-		enum: [string, ...string[]],
-	}
+	'True'|'False'|'',
+	TrueLiteral|FalseLiteral|Identifier
 > {
-	constructor(discovery:DataDiscovery) {
-		super(
-			discovery,
-			schema,
-			{
-				type: 'object',
-				required: ['type', 'enum'],
-				additionalProperties: false,
-				properties: {
-					type: {type: 'string', const: 'string'},
-					enum: {
-						type: 'array',
-						minItems: 2,
-						uniqueItems: true,
-						items: {type: 'string', enum: [
-							'True',
-							'False',
-							'',
-						]},
-					},
-				},
-			}
-		);
+	constructor(ajv:Ajv) {
+		super(ajv, schema);
 	}
 
-	protected double_check_failure_message(): string {
-		return 'Not a boolean schema!';
+	can_convert_schema_and_raw_data(
+		schema: SchemaObject,
+		raw_data: unknown
+	): Promise<boolean> {
+		return Promise.resolve(this.can_convert_schema(schema) && (
+			'True' === raw_data
+			|| 'False' === raw_data
+			|| '' === raw_data
+		));
 	}
 
-	protected expression_result(
-		definition: { type: 'string'; enum: [string, ...string[]]; },
-		raw_data: string
-	) {
+	convert(
+		_: schema_type,
+		raw_data: '' | 'True' | 'False'
+	): Promise<ExpressionResult<Identifier | TrueLiteral | FalseLiteral>> {
 		return Promise.resolve(new ExpressionResult(
 			'' === raw_data
 				? ts.factory.createIdentifier('undefined')

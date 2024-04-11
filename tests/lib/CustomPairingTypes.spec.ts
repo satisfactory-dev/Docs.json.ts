@@ -100,5 +100,6 @@ void describe('value_is_non_array_object', () => {
 		assert.equal(value_is_non_array_object(undefined), false);
 		assert.equal(value_is_non_array_object({}), true);
 		assert.equal(value_is_non_array_object({} as unknown[]), true);
+		assert.equal(value_is_non_array_object(null), false);
 	});
 });

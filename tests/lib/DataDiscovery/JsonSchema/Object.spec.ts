@@ -4,114 +4,62 @@ import {
 } from 'node:test';
 import assert from 'node:assert/strict';
 import {
-	DataDiscovery,
-} from '../../../../lib/DataDiscovery';
+	ObjectConverter,
+} from '../../../../lib/DataDiscovery/JsonSchema/Object';
 import {
 	docs,
 } from '../../../../lib/helpers';
 import {
-	object_extends_but_has_no_additional_properties,
-	ObjectExtendsButHasNoAdditionalProperties,
-} from '../../../../lib/DataDiscovery/JsonSchema/Object';
-import {
-	is_instanceof,
-} from '../../../../assert/CustomAssert';
-import {
-	ExpressionResult,
-	RawGenerationResult,
-} from '../../../../lib/DataDiscovery/Generator';
-import {
-	local_ref,
-} from '../../../../lib/StringStartsWith';
-import {
-	isAsExpression,
-	isIdentifier,
-	isStringLiteral,
-	isTypeReferenceNode,
-} from '../../../../assert/TypeScriptAssert';
-import {
-	object_keys,
-} from '../../../../lib/ArrayUtilities';
+	DataDiscovery,
+} from '../../../../lib/DataDiscovery';
+import {local_ref} from '../../../../lib/StringStartsWith';
 
-const example_schema_decimal_string:
-	object_extends_but_has_no_additional_properties = {
+void describe('ObjectConverter.can_convert_schema_and_raw_data()', () => {
+	const instance = new ObjectConverter(new DataDiscovery(docs));
+
+	const schema = {
 		type: 'object',
-		$ref: local_ref('decimal-string'),
+		$ref: local_ref('class--no-description-or-display-name'),
 		unevaluatedProperties: false,
+		properties: {
+			foo: {type: 'string'},
+		},
 	};
 
-void describe('ObjectExtendsButHasNoAdditionalProperties', () => {
-	const instance = new ObjectExtendsButHasNoAdditionalProperties (
-		new DataDiscovery(docs)
+	assert.equal(
+		instance.can_convert_schema(schema),
+		true,
+		'schema not valid'
 	);
-	void it('resolves to undefined only on non-matching schema', async () => {
+
+	void it ('resolves false', async () => {
 		assert.equal(
-			await instance.matches({type: 'string'}),
-			undefined,
-			'unspecified string'
+			await instance.can_convert_schema_and_raw_data({type: 'string'}, null),
+			false,
+			'Should not be able to convert string schema with null'
 		);
 
-		const value = await instance.matches(example_schema_decimal_string);
-		is_instanceof(
-			value,
-			RawGenerationResult
-		);
-		assert.equal(await value?.result(), instance);
-	});
-
-	void it('leaves non-matching objects alone', async () => {
-		const example = {foo: 'bar'};
 		assert.equal(
-			await instance.convert_object(
-				example_schema_decimal_string,
-				example
+			await instance.can_convert_schema_and_raw_data(
+				schema,
+				null
 			),
-			example
+			false,
+			'Should not be able to convert schema with null value'
 		);
 	});
 
-	void it('converts supported properties', async () => {
-		const definition:object_extends_but_has_no_additional_properties = {
-			type: 'object',
-			$ref: '#/definitions/FGBuildable--docking-station-base',
-			unevaluatedProperties: false,
-		};
-		const example = {
-			mStorageSizeX: '1',
-			mStorageSizeY: '2',
-			mTransferSpeed: '1.234567',
-			mStackTransferSize: '2.345678',
-			foo: 'bar',
-		};
-		const converted = await instance.convert_object(
-			definition,
-			example
+	void it('resolves true', async () => {
+		assert.equal(
+			await instance.can_convert_schema_and_raw_data(
+				schema,
+				{
+					ClassName: 'foo',
+					foo: 'bar',
+				},
+			),
+			true,
+			'Should be able to convert valid schema'
 		);
-
-		for (const key of object_keys(example)) {
-			if ('foo' === key) {
-				assert.equal(converted.foo, 'bar');
-				continue;
-			}
-
-			is_instanceof(converted[key], ExpressionResult);
-
-			const converted_value:ExpressionResult = (
-				converted[key] as ExpressionResult
-			);
-
-			isAsExpression(converted_value.expression);
-			isStringLiteral(converted_value.expression.expression);
-			isTypeReferenceNode(converted_value.expression.type);
-			assert.equal(
-				converted_value.expression.expression.text,
-				example[key]
-			);
-			isIdentifier(converted_value.expression.type.typeName);
-			assert.equal(
-				converted_value.expression.type.typeName.escapedText,
-				'StringPassedRegExp'
-			);
-		}
-	});
+	})
 });

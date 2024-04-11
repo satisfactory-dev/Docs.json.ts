@@ -41,7 +41,7 @@ export function string_to_native_type(
 	return data;
 }
 
-export function string_to_object<T extends object>(
+export function string_to_object<T extends {[key: string]: unknown}>(
 	data: string,
 	shallow = false
 ): T | false {

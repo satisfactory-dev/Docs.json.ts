@@ -1,63 +1,49 @@
 import {
-	ConvertsUnknown,
+	ConverterMatchesSchema,
 	ExpressionResult,
-	RawGenerationResult,
 } from '../Generator';
-import {
-	ValidateFunction,
+import Ajv, {
+    SchemaObject,
 } from 'ajv/dist/2020';
 import {
 	RawData,
 	schema,
 } from '../../TypeDefinitionDiscovery/CustomParsingTypes/string_starts_with';
 import {
-	DataDiscovery,
-} from '../../DataDiscovery';
-import {
-	compile,
-} from '../../AjvUtilities';
-import {
 	is_string,
 } from '../../StringStartsWith';
-import {
-	NoMatchError,
-} from '../../Exceptions';
-import ts from 'typescript';
+import ts, {
+	AsExpression,
+} from 'typescript';
 import {
 	create_literal,
 	type_reference_node,
 } from '../../TsFactoryWrapper';
 
-export class StringStartsWith extends ConvertsUnknown<
-	unknown,
-	ExpressionResult
+export class StringStartsWithConverter extends ConverterMatchesSchema<
+	RawData,
+	string,
+	AsExpression
 > {
-	private readonly check:ValidateFunction<RawData>;
-
-	constructor(discovery:DataDiscovery) {
-		super(discovery);
-		this.check = compile(discovery.docs.ajv, schema);
+	constructor(ajv:Ajv) {
+		super(ajv, schema);
 	}
 
-	convert_unknown(
-		schema: RawData,
+	can_convert_schema_and_raw_data(
+		schema: SchemaObject,
 		raw_data: unknown
-	): Promise<ExpressionResult> {
-		if (!is_string(raw_data)) {
-			throw new NoMatchError(
-				raw_data,
-				'string_starts_with values expected to be string!'
-			);
-		} else if (!raw_data.startsWith(schema.string_starts_with)) {
-			throw new NoMatchError(
-				{
-					schema,
-					raw_data,
-				},
-				'string does not start with expected string!'
-			);
-		}
+	): Promise<boolean> {
+		return Promise.resolve(
+			is_string(raw_data)
+			&& this.can_convert_schema(schema)
+			&& raw_data.startsWith(schema.string_starts_with)
+		);
+	}
 
+	convert(
+		schema: RawData,
+		raw_data: string
+	): Promise<ExpressionResult<ts.AsExpression>> {
 		return Promise.resolve(new ExpressionResult(
 			ts.factory.createAsExpression(
 				ts.factory.createStringLiteral(raw_data),
@@ -67,15 +53,5 @@ export class StringStartsWith extends ConvertsUnknown<
 				)
 			)
 		));
-	}
-
-	matches(
-		raw_data: unknown
-	): Promise<RawGenerationResult<this> | undefined> {
-		if (this.check(raw_data)) {
-			return Promise.resolve(new RawGenerationResult(this));
-		}
-
-		return Promise.resolve(undefined);
 	}
 }

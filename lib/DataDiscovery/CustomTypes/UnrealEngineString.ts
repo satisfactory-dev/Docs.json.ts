@@ -1,7 +1,6 @@
 import {
-	ConvertsUnknown,
+	Converter,
 	ExpressionResult,
-	RawGenerationResult,
 } from '../Generator';
 import {
 	is_string,
@@ -13,6 +12,7 @@ import {
 	UnrealEngineString_regex,
 } from '../../CustomParsingTypes/UnrealEngineString';
 import ts, {
+	CallExpression,
 	TypeNode,
 } from 'typescript';
 import {
@@ -24,21 +24,54 @@ import {
 	object_has_property,
 	value_is_non_array_object,
 } from '../../CustomParsingTypes/CustomPairingTypes';
+import {
+	SchemaObject,
+} from 'ajv';
+import {
+	NoMatchError,
+} from '../../Exceptions';
 
-export class UnrealEngineString extends ConvertsUnknown<
+export class UnrealEngineStringConverter extends Converter<
+	UnrealEngineString_parent_type,
 	string,
-	ExpressionResult,
-	UnrealEngineString_parent_type
+	CallExpression
 > {
-	convert_unknown(
-		definition: UnrealEngineString_parent_type,
+    can_convert_schema(
+		schema: SchemaObject
+	): schema is UnrealEngineString_parent_type {
+        return is_UnrealEngineString_parent(schema);
+    }
+
+    can_convert_schema_and_raw_data(
+		schema: SchemaObject,
+		raw_data: unknown
+	): Promise<boolean> {
+        return Promise.resolve(
+			this.can_convert_schema(schema)
+			&& is_string(raw_data)
+			&& UnrealEngineString_regex.test(raw_data)
+		);
+    }
+
+	async convert(
+		schema: UnrealEngineString_parent_type,
 		raw_data: string
-	): Promise<ExpressionResult<ts.Expression>> {
-		const {UnrealEngineString} = definition;
+	): Promise<ExpressionResult<CallExpression>> {
+		if (!await this.can_convert_schema_and_raw_data(schema, raw_data)) {
+			throw new NoMatchError(
+				{
+					schema,
+					raw_data,
+				},
+				'Not an UnrealEngineString!'
+			);
+		}
 		const type_args:[TypeNode, TypeNode] = [
 			create_type('string'),
 			create_type('string'),
 		];
+
+		const {UnrealEngineString} = schema;
 
 		if (true !== UnrealEngineString) {
 			if (object_has_property(UnrealEngineString, 'left')) {
@@ -62,7 +95,7 @@ export class UnrealEngineString extends ConvertsUnknown<
 			}
 		}
 
-		return Promise.resolve(new ExpressionResult(
+		return new ExpressionResult(
 			ts.factory.createCallExpression(
 				create_property_access(
 					ts.factory.createIdentifier('UnrealEngineString'),
@@ -71,18 +104,6 @@ export class UnrealEngineString extends ConvertsUnknown<
 				type_args,
 				[ts.factory.createStringLiteral(raw_data)]
 			)
-		));
-	}
-	matches(
-		raw_data: unknown
-	): Promise<RawGenerationResult<this> | undefined> {
-		if (
-			(is_string(raw_data) && UnrealEngineString_regex.test(raw_data))
-			|| is_UnrealEngineString_parent(raw_data)
-		) {
-			return Promise.resolve(new RawGenerationResult(this));
-		}
-
-		return Promise.resolve(undefined);
-	}
+		);
+    }
 }

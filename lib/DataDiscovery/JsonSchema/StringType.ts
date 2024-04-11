@@ -1,13 +1,9 @@
 import {
-	ConvertsUnknown,
+	ConverterMatchesSchema,
 	ExpressionResult,
-	RawGenerationResult,
 } from '../Generator';
-import {
-	DataDiscovery,
-} from '../../DataDiscovery';
-import {
-	ValidateFunction,
+import Ajv, {
+	SchemaObject,
 } from 'ajv/dist/2020';
 import {
 	NoMatchError,
@@ -21,7 +17,10 @@ import {
 import {
 	const_schema_type,
 } from '../../CustomParsingTypes/TypedStringConst';
-import ts from 'typescript';
+import ts, {
+	AsExpression,
+	StringLiteral,
+} from 'typescript';
 import {
 	create_literal,
 	type_reference_node,
@@ -36,17 +35,78 @@ type pattern_schema = {
 	pattern: string,
 };
 
-export class StringType extends ConvertsUnknown<
-	unknown,
-	ExpressionResult
+abstract class StringConverter<
+	Schema extends SchemaObject
+> extends ConverterMatchesSchema<
+	Schema,
+	string,
+	StringLiteral
 > {
-	private readonly is_const:ValidateFunction<const_schema_type>;
-	private readonly is_enum:ValidateFunction<enum_schema_type>;
-	private readonly is_string:ValidateFunction<string_schema>;
+	protected constructor(ajv:Ajv, schema:SchemaObject) {
+		super(ajv, schema);
+	}
 
-	constructor(discovery:DataDiscovery) {
-		super(discovery);
-		this.is_const = discovery.docs.ajv.compile<const_schema_type>({
+	async can_convert_schema_and_raw_data(
+		schema:SchemaObject,
+		raw_data:unknown
+	) : Promise<boolean> {
+		return is_string(raw_data) && this.can_convert_schema(schema);
+	}
+}
+
+export class BasicStringConverter extends StringConverter<
+	string_schema
+> {
+	constructor(ajv: Ajv) {
+		super(ajv, {
+			type: 'object',
+			required: ['type'],
+			additionalProperties: false,
+			properties: {
+				type: {type: 'string', const: 'string'},
+				minLength: {type: 'number', minimum: 0},
+			},
+		});
+	}
+
+	convert(
+		_: string_schema,
+		raw_data: string
+	): Promise<ExpressionResult<StringLiteral>> {
+		return Promise.resolve(new ExpressionResult<StringLiteral>(
+			ts.factory.createStringLiteral(raw_data)
+		));
+	}
+}
+
+abstract class StringConvertHasConstraints<
+	Schema extends SchemaObject
+> extends StringConverter<Schema> {
+	async convert(
+		schema: Schema,
+		raw_data: string
+	): Promise<ExpressionResult<StringLiteral>> {
+		if (!await this.can_convert_schema_and_raw_data(schema, raw_data)) {
+			throw new NoMatchError(
+				{
+					schema,
+					raw_data,
+				},
+				'Raw data probably did not match const!'
+			);
+		}
+
+		return Promise.resolve(new ExpressionResult<StringLiteral>(
+			ts.factory.createStringLiteral(raw_data)
+		));
+	}
+}
+
+export class ConstStringConverter extends StringConvertHasConstraints<
+	const_schema_type
+> {
+	constructor(ajv:Ajv) {
+		super(ajv, {
 			type: 'object',
 			required: ['type', 'const'],
 			additionalProperties: false,
@@ -55,7 +115,25 @@ export class StringType extends ConvertsUnknown<
 				const: {type: 'string'},
 			},
 		});
-		this.is_enum = discovery.docs.ajv.compile<enum_schema_type>({
+	}
+
+	async can_convert_schema_and_raw_data(
+		schema:SchemaObject,
+		raw_data:unknown
+	) : Promise<boolean> {
+		return (
+			this.can_convert_schema(schema)
+			&& is_string(raw_data)
+			&& schema.const === raw_data
+		);
+	}
+}
+
+export class EnumStringConverter extends StringConvertHasConstraints<
+	enum_schema_type
+> {
+	constructor(ajv:Ajv) {
+		super(ajv, {
 			type: 'object',
 			required: ['type', 'enum'],
 			additionalProperties: false,
@@ -68,89 +146,27 @@ export class StringType extends ConvertsUnknown<
 				},
 			},
 		});
-		this.is_string = discovery.docs.ajv.compile<string_schema>({
-			type: 'object',
-			required: ['type'],
-			additionalProperties: false,
-			properties: {
-				type: {type: 'string', const: 'string'},
-				minLength: {type: 'number', minimum: 0},
-			},
-		});
 	}
 
-	async convert_unknown(
-		schema: {[p: string]: unknown},
-		raw_data: unknown
-	): Promise<ExpressionResult> {
-		if (!is_string(raw_data)) {
-			throw new NoMatchError(
-				{
-					schema,
-					raw_data,
-				},
-				'string schema should have string data!'
-			);
-		}
-
-		if (
-			(
-				this.is_const(schema)
-				&& raw_data === schema.const
-			)
-			|| (
-				this.is_enum(schema)
-				&& schema.enum.includes(raw_data)
-			)
-			|| this.is_string(schema)
-		) {
-			return Promise.resolve(new ExpressionResult(
-				await this.discovery.literal.value_literal(raw_data)
-			));
-		}
-
-		throw new NoMatchError(
-			{
-				schema,
-				raw_data,
-			},
-			'Schema unsupported',
+	async can_convert_schema_and_raw_data(
+		schema:SchemaObject,
+		raw_data:unknown
+	) : Promise<boolean> {
+		return (
+			this.can_convert_schema(schema)
+			&& is_string(raw_data)
+			&& schema.enum.includes(raw_data)
 		);
-	}
-
-	matches(
-		raw_data: unknown
-	): Promise<RawGenerationResult<this>|undefined> {
-		if (
-			this.is_const(raw_data)
-			|| this.is_enum(raw_data)
-			|| this.is_string(raw_data)
-		) {
-			if ('typed_string' in raw_data) {
-				throw new NoMatchError(
-					{
-						raw_data
-					},
-					'should not have matched!'
-				);
-			}
-
-			return Promise.resolve(new RawGenerationResult(this));
-		}
-
-		return Promise.resolve(undefined);
 	}
 }
 
-export class PatternType extends ConvertsUnknown<
-	unknown,
-	ExpressionResult
+export class PatternConverter extends ConverterMatchesSchema<
+	pattern_schema,
+	string,
+	AsExpression
 > {
-	private readonly is_pattern:ValidateFunction<pattern_schema>;
-
-	constructor(discovery:DataDiscovery) {
-		super(discovery);
-		this.is_pattern = discovery.docs.ajv.compile<pattern_schema>({
+	constructor(ajv:Ajv) {
+		super(ajv, {
 			type: 'object',
 			required: ['type', 'pattern'],
 			additionalProperties: false,
@@ -161,27 +177,26 @@ export class PatternType extends ConvertsUnknown<
 		});
 	}
 
-	convert_unknown(
-		schema: pattern_schema,
-		raw_data: unknown
-	): Promise<ExpressionResult> {
-		if (!is_string(raw_data)) {
+    can_convert_schema_and_raw_data(schema: SchemaObject, raw_data: unknown): Promise<boolean> {
+        return Promise.resolve(
+			this.can_convert_schema(schema)
+			&& is_string(raw_data)
+			&& (new RegExp(schema.pattern)).test(raw_data)
+		);
+    }
+
+    async convert(schema: pattern_schema, raw_data: string): Promise<ExpressionResult<AsExpression>> {
+		if (
+			!this.can_convert_schema(schema)
+			|| !await this.can_convert_schema_and_raw_data(schema, raw_data)
+		) {
 			throw new NoMatchError(
 				{
+					schema,
 					raw_data,
 				},
-				'Expecting string value!'
+				'Cannot convert schema!'
 			);
-		}
-
-		const {pattern} = schema;
-		const regex = new RegExp(pattern);
-
-		if (!regex.test(raw_data)) {
-			throw new NoMatchError({
-				raw_data,
-				pattern,
-			}, `"${raw_data}" does not match /${pattern}/!`);
 		}
 
 		return Promise.resolve(new ExpressionResult(
@@ -189,17 +204,9 @@ export class PatternType extends ConvertsUnknown<
 				ts.factory.createStringLiteral(raw_data),
 				type_reference_node(
 					'StringPassedRegExp',
-					create_literal(pattern)
+					create_literal(schema.pattern)
 				)
 			)
 		));
-	}
-
-	matches(raw_data: unknown) {
-		if (this.is_pattern(raw_data)) {
-			return Promise.resolve(new RawGenerationResult(this));
-		}
-
-		return Promise.resolve(undefined);
-	}
+    }
 }

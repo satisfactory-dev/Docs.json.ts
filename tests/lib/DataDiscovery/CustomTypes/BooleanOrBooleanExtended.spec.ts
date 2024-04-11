@@ -4,106 +4,65 @@ import {
 } from 'node:test';
 import assert from 'node:assert/strict';
 import {
-	BooleanOrBooleanExtended,
-	schema_type,
+	BooleanConverter,
 } from '../../../../lib/DataDiscovery/CustomTypes/BooleanOrBooleanExtended';
-import {
-	DataDiscovery,
-} from '../../../../lib/DataDiscovery';
-import {
-	isBooleanLiteral,
-	isIdentifier,
-} from '../../../../assert/TypeScriptAssert';
-import {
-	is_instanceof,
-	rejects_partial_match,
-} from '../../../../assert/CustomAssert';
-import {
-	RawGenerationResult,
-} from '../../../../lib/DataDiscovery/Generator';
 import {
 	docs,
 } from '../../../../lib/helpers';
+import {local_ref} from '../../../../lib/StringStartsWith';
+import {isBooleanLiteral, isIdentifier} from '../../../../assert/TypeScriptAssert';
 
-void describe('BooleanOrBooleanExtended.convert_unknown', async () => {
-	const discovery = new DataDiscovery(docs);
-	const {definitions: {NativeClass}} = await docs.schema();
-	const number_strings = new BooleanOrBooleanExtended(discovery);
+const schema = {$ref: local_ref('boolean-extended')};
 
-	void it('throws', async () => {
-		await rejects_partial_match(
-			number_strings.convert_unknown(
-				{
-					$ref: '#/definitions/boolean',
-				},
-				1
+void describe('BooleanConverter.can_convert_schema_and_raw_data()', () => {
+	const instance = new BooleanConverter(docs.ajv);
+
+	void it('resolves false', async () => {
+		assert.equal(
+			await instance.can_convert_schema_and_raw_data(
+				{type: 'string'},
+				'True'
 			),
-			{
-				property: 1,
-				message: 'must be a string!',
-			},
+			false
 		);
-		await rejects_partial_match(
-			number_strings.convert_unknown(
-				{
-					$ref: '#/definitions/NativeClass',
-				} as unknown as schema_type,
-				'foo'
+		assert.equal(
+			await instance.can_convert_schema_and_raw_data(
+				schema,
+				true
 			),
-			{
-				property: {definition: NativeClass},
-				message: 'Not a boolean schema!',
-			},
+			false
 		);
-	});
-	void it('succeeds', async () => {
-		const true_value = await number_strings.convert_unknown(
-			{
-				$ref: '#/definitions/boolean',
-			},
-			'True'
+		assert.equal(
+			await instance.can_convert_schema_and_raw_data(
+				schema,
+				'True'
+			),
+			true
 		);
-		const false_value = await number_strings.convert_unknown(
-			{
-				$ref: '#/definitions/boolean',
-			},
-			'False'
-		);
-		const undefined_value = await number_strings.convert_unknown(
-			{
-				$ref: '#/definitions/boolean-extended',
-			},
-			''
-		);
-
-		isBooleanLiteral(true_value.expression, true);
-		isBooleanLiteral(false_value.expression, false);
-		isIdentifier(undefined_value.expression);
-		assert.equal(undefined_value.expression.text, 'undefined');
 	});
 });
 
-void describe('BooleanOrBooleanExtended.matches', async () => {
-	const discovery = new DataDiscovery(docs);
-	const {definitions: {
-		NativeClass,
-	}} = await docs.schema();
-	const instance = new BooleanOrBooleanExtended(discovery);
+void describe('BooleanConverter.convert()', () => {
+	const instance = new BooleanConverter(docs.ajv);
 
-	void it('resolves undefined', async () => {
-		assert.equal(await instance.matches(NativeClass), undefined);
+	void it('resolves True', async () => {
+		isBooleanLiteral(
+			(await instance.convert(schema, 'True')).expression,
+			true,
+		);
 	});
-	void it('resolves to BooleanOrBooleanExtended', async () => {
-		const value = await instance.matches({
-			$ref: '#/definitions/boolean',
-		});
 
-		is_instanceof(value, RawGenerationResult);
+	void it('resolves False', async () => {
+		isBooleanLiteral(
+			(await instance.convert(schema, 'False')).expression,
+			false,
+		);
+	});
 
-		const result = await value.result();
+	void it('resolved undefined', async() => {
+		const result = (await instance.convert(schema, '')).expression;
 
-		is_instanceof(result, BooleanOrBooleanExtended);
-
-		assert.equal(result, instance);
+		isIdentifier(result);
+		assert.equal(result.text, 'undefined');
 	});
 });

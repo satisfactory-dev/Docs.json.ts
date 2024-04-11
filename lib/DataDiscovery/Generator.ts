@@ -1,10 +1,7 @@
 import {
 	Expression,
 } from 'typescript';
-import {
-	DataDiscovery,
-} from '../DataDiscovery';
-import {
+import Ajv, {
 	SchemaObject,
 	ValidateFunction,
 } from 'ajv/dist/2020';
@@ -14,73 +11,73 @@ import {
 import {
 	compile,
 } from '../AjvUtilities';
-import {
-	value_is_non_array_object,
-} from '../CustomParsingTypes/CustomPairingTypes';
-import {
-	is_string,
-	local_ref,
-} from '../StringStartsWith';
 
-export abstract class GenerationResult<
-	Input = unknown,
-	Output = unknown
+export abstract class Converter<
+	Schema extends SchemaObject,
+	RawData = unknown,
+	Output extends Expression = Expression
 > {
-	protected readonly input:Input;
+	abstract can_convert_schema(schema: SchemaObject): schema is Schema;
 
-	constructor(input:Input) {
-		this.input = input;
+	abstract can_convert_schema_and_raw_data(schema:SchemaObject, raw_data:unknown): Promise<boolean>;
+
+	abstract convert(schema:Schema, raw_data:RawData) : Promise<ExpressionResult<Output>>;
+
+	static has_matching_schema(
+		candidates: [Converter<SchemaObject>, ...Converter<SchemaObject>[]],
+		schema: SchemaObject
+	) : Converter<SchemaObject>|undefined {
+		return candidates.find(e => e.can_convert_schema(schema));
 	}
 
-	abstract result(): Promise<Output>;
-}
-
-export class RawGenerationResult<
-	Input = unknown
-> extends GenerationResult<Input, Input> {
-	result(): Promise<Input> {
-		return Promise.resolve(this.input);
-	}
-}
-
-export abstract class Generator<
-	Input = unknown,
-	Output = unknown,
-	Matches = Output,
-	GenerationResultType extends GenerationResult = GenerationResult<
-		Input,
-		Matches
-	>
-> {
-	protected readonly discovery:DataDiscovery;
-
-	constructor(discovery:DataDiscovery) {
-		this.discovery = discovery;
-	}
-
-	abstract matches(raw_data:unknown) : Promise<
-		| GenerationResultType
-		| RawGenerationResult<this>
-		| undefined
-	>
-
-	static async find<
-		Input = unknown,
-		Output = unknown
-	>(
-		candidates:Generator<Input, Output>[],
-		raw_data:unknown
-	) {
+	static async has_matching_schema_and_raw_data(
+		candidates: [Converter<SchemaObject>, ...Converter<SchemaObject>[]],
+		schema: SchemaObject,
+		raw_data: unknown
+	) : Promise<Converter<SchemaObject>|undefined> {
 		for (const candidate of candidates) {
-			const maybe = await candidate.matches(raw_data);
-			if (maybe) {
-				return maybe;
+			if (await candidate.can_convert_schema_and_raw_data(schema, raw_data)) {
+				return candidate;
 			}
 		}
 
-		return new RawGenerationResult<
-			Input
-		>(raw_data as Input);
+		return undefined;
+	}
+
+	static async find_matching_schema(
+		candidates: [Converter<SchemaObject>, ...Converter<SchemaObject>[]],
+		schema: SchemaObject
+	) : Promise<Converter<SchemaObject>> {
+		const converter = this.has_matching_schema(candidates, schema);
+
+		if (converter) {
+			return converter;
+		}
+
+		throw new NoMatchError(
+			{
+				schema,
+			},
+			'Could not identify suitable candidate!'
+		);
+	}
+}
+
+export abstract class ConverterMatchesSchema<
+	Schema extends SchemaObject,
+	RawData = unknown,
+	Output extends Expression = Expression
+> extends Converter<Schema, RawData, Output> {
+	protected check_schema:ValidateFunction<Schema>;
+
+	protected constructor(ajv: Ajv, schema:SchemaObject) {
+		super();
+		this.check_schema = compile<Schema>(ajv, schema);
+	}
+
+	can_convert_schema(schema:SchemaObject) : schema is Schema
+	{
+		return !!this.check_schema(schema);
 	}
 }
 
@@ -90,170 +87,5 @@ export class ExpressionResult<T extends Expression = Expression>
 
 	constructor(expression:T) {
 		this.expression = expression;
-	}
-}
-
-export abstract class ConvertsUnknown<
-	Input,
-	Output,
-	Schema extends {[key: string]: unknown} = {[key: string]: unknown}
-> extends Generator<Input, Output, ConvertsUnknown<Input, Output, Schema>> {
-	abstract convert_unknown(
-		schema:Schema,
-		raw_data:unknown
-	) : Promise<Output>;
-
-	abstract matches(raw_data:unknown) : Promise<
-		| RawGenerationResult<this>
-		| undefined
-	>
-}
-
-export abstract class ConvertsArray<
-	Input,
-	Schema extends {[key: string]: unknown} = {[key: string]: unknown}
-> extends ConvertsUnknown<Input, unknown[], Schema> {
-	convert_unknown(schema:Schema, raw_data:unknown)
-	{
-		if (!(raw_data instanceof Array)) {
-			throw new NoMatchError(
-				raw_data,
-				'Raw data not an array!'
-			);
-		}
-
-		return this.convert_array(schema, raw_data);
-	}
-
-	abstract convert_array(
-		schema:Schema,
-		raw_data:unknown[]
-	): Promise<unknown[]>;
-}
-
-export abstract class ConvertsObject<
-	Input,
-	Schema extends {[key: string]: unknown} = {[key: string]: unknown}
-> extends ConvertsUnknown<Input, {[key: string]: unknown}, Schema> {
-	convert_unknown(schema:Schema, raw_data:unknown)
-	{
-		if (!value_is_non_array_object(raw_data)) {
-			throw new NoMatchError(
-				raw_data,
-				'Raw data not an object!'
-			);
-		}
-
-		return this.convert_object(schema, raw_data);
-	}
-
-	abstract convert_object(
-		schema:Schema,
-		raw_data:{[key: string]: unknown}
-	): Promise<{[key: string]: unknown}>;
-}
-
-export abstract class DoubleCheckedSchema<
-	Input,
-	Primary extends {[key: string]: unknown} & {$ref: string},
-	Secondary extends {[key: string]: unknown},
-	Output extends ExpressionResult = ExpressionResult
-> extends ConvertsUnknown<
-	Input,
-	Output,
-	Primary
-> {
-	private readonly secondary_schema:SchemaObject;
-	protected readonly check:ValidateFunction<Primary>;
-	protected readonly double_check:ValidateFunction<Secondary>;
-
-	protected constructor(
-		discovery: DataDiscovery,
-		primary: SchemaObject,
-		secondary: SchemaObject
-	) {
-		super(discovery);
-		this.check = compile<Primary>(discovery.docs.ajv, primary);
-		this.double_check = compile<Secondary>(discovery.docs.ajv, secondary);
-		this.secondary_schema = secondary;
-	}
-
-	async convert_unknown(
-		schema: Primary,
-		raw_data: unknown
-	) {
-		this.check_raw_data(raw_data);
-
-		const definition = await this.discovery.docs.definition(
-			schema.$ref.substring(14)
-		);
-
-		if (!this.double_check(definition)) {
-			throw new NoMatchError(
-				{
-					definition,
-					schema: this.secondary_schema,
-					errors: this.double_check.errors,
-				},
-				this.double_check_failure_message()
-			);
-		}
-
-		return this.expression_result(definition, raw_data);
-	}
-
-	matches(raw_data: unknown) {
-		if (this.check(raw_data)) {
-			return Promise.resolve(new RawGenerationResult(this));
-		}
-
-		return Promise.resolve(undefined);
-	}
-
-	protected abstract check_raw_data(
-		raw_data:unknown
-	): asserts raw_data is Input;
-
-	protected abstract double_check_failure_message(): string;
-
-	protected abstract expression_result(
-		definition:Secondary,
-		raw_data:Input
-	): Promise<Output>;
-}
-
-export abstract class DoubleCheckedStringSchema<
-	Primary extends {[key: string]: unknown} & {$ref: string},
-	Secondary extends {[key: string]: unknown},
-	Output extends ExpressionResult = ExpressionResult
-> extends DoubleCheckedSchema<
-	string,
-	Primary,
-	Secondary,
-	Output
-> {
-	protected check_raw_data(raw_data: unknown): asserts raw_data is string {
-		if (!is_string(raw_data)) {
-			throw new NoMatchError(raw_data, 'must be a string!');
-		}
-	}
-}
-
-export abstract class FilterRefs<
-	Primary extends {[key: string]: unknown} & {$ref: string},
-	Secondary extends {[key: string]: unknown},
-	Output extends ExpressionResult = ExpressionResult
-> extends DoubleCheckedStringSchema<
-	Primary,
-	Secondary,
-	Output
-> {
-	protected static filter_refs(
-		definitions:{[key: string]: SchemaObject},
-		check:ValidateFunction<SchemaObject>
-	): local_ref<string>[] {
-		return Object.entries(definitions).filter(
-			maybe => check(maybe[1])
-		).map(e => e[0]).map(e => local_ref(e));
 	}
 }

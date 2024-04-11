@@ -6,7 +6,6 @@ import {
 } from '../Exceptions';
 import {
 	ExpressionResult,
-	GenerationResult,
 } from './Generator';
 import {
 	is_string,
@@ -65,7 +64,6 @@ export class Literal
 			}
 		}
 
-
 		return ts.factory.createObjectLiteralExpression(
 			properties
 		);
@@ -81,7 +79,6 @@ export class Literal
 		| ObjectLiteralExpression
 	> {
 		performance.mark('start');
-		from = from instanceof GenerationResult ? await from.result() : from;
 
 		if (is_string(from)) {
 			const result = ts.factory.createStringLiteral(from);

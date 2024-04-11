@@ -6,7 +6,6 @@ import assert from 'node:assert/strict';
 import ts from 'typescript';
 import {
 	ExpressionResult,
-	RawGenerationResult,
 } from '../../../lib/DataDiscovery/Generator';
 import * as TypeScriptAssert from '../../../assert/TypeScriptAssert';
 import {
@@ -124,25 +123,6 @@ void describe('Literal.value_literal', () => {
 			instance.value_literal(1),
 			{
 				property: 1,
-				message: 'not an array!',
-			}
-		);
-	});
-
-	void it('resolves GenerationResult', async () => {
-		const string_value = await instance.value_literal(
-			new RawGenerationResult('foo')
-		);
-
-		TypeScriptAssert.isStringLiteral(string_value);
-		assert.equal(string_value.text, 'foo');
-
-		await rejects_partial_match(
-			instance.value_literal(
-				new RawGenerationResult(2)
-			),
-			{
-				property: 2,
 				message: 'not an array!',
 			}
 		);
