@@ -18,6 +18,7 @@ export function setup_PerformanceObserver(clear_lines = true)
 				{
 					'total time': `${(e[1][0] / 1000).toFixed(4)}s`,
 					amount: e[1][1],
+					'average per call': `${(e[1][0] / e[1][1]).toFixed(4)}ms`,
 				},
 			];
 		});
