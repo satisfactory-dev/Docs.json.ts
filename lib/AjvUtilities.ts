@@ -13,6 +13,8 @@ const __dirname = import.meta.dirname;
 
 const cache = new WeakMap<SchemaObject, ValidateFunction>();
 
+const duplicate_compile_check: {[key: string]: ValidateFunction} = {};
+
 export function compile<T>(
 	ajv:Ajv,
 	schema:SchemaObject,
@@ -28,8 +30,16 @@ export function compile<T>(
 			return result;
 		}
 
+		const key = JSON.stringify(schema);
+		if (key in duplicate_compile_check) {
+			performance.measure('ajv compile duplicate', 'ajv compile start');
+
+			return duplicate_compile_check[key] as ValidateFunction<T>;
+		}
+
 		const result = ajv.compile<T>(schema);
 		cache.set(schema, result);
+		duplicate_compile_check[key] = result;
 
 		performance.measure('ajv compile', 'ajv compile start');
 
