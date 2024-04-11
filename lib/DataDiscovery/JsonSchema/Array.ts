@@ -1,7 +1,7 @@
 import {
 	Converter,
 	ConverterMatchesSchema,
-    ExpressionResult,
+	ExpressionResult,
 } from '../Generator';
 import {
 	DataDiscovery,
@@ -46,11 +46,11 @@ export class ArrayConverter extends ConverterMatchesSchema<
 		this.discovery = discovery;
 	}
 
-    async can_convert_schema_and_raw_data(
+	async can_convert_schema_and_raw_data(
 		schema: SchemaObject,
 		raw_data: unknown
 	): Promise<boolean> {
-        return Promise.resolve(
+		return Promise.resolve(
 			this.can_convert_schema(schema)
 			&& raw_data instanceof Array
 			&& !!((await this.discovery.candidates).find(
@@ -61,7 +61,7 @@ export class ArrayConverter extends ConverterMatchesSchema<
 				schema.items
 			)
 		);
-    }
+	}
 
 	async convert(
 		schema: array_type,
@@ -94,5 +94,5 @@ export class ArrayConverter extends ConverterMatchesSchema<
 		return new ExpressionResult(
 			await this.discovery.literal.array_literal(converted)
 		);
-    }
+	}
 }

@@ -1,7 +1,7 @@
 import {
-	ExpressionResult,
-	ConverterMatchesSchema,
 	Converter,
+	ConverterMatchesSchema,
+	ExpressionResult,
 } from '../Generator';
 import {
 	generate_object_parent_schema,
@@ -44,10 +44,13 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 	string,
 	ArrayLiteralExpression|ObjectLiteralExpression
 > {
-	private readonly discovery:DataDiscovery;
 	private readonly definitions:{[key: string]: SchemaObject};
+	private readonly discovery:DataDiscovery;
 
-	constructor(discovery:DataDiscovery, definitions:{[key: string]: SchemaObject}) {
+	constructor(
+		discovery:DataDiscovery,
+		definitions:{[key: string]: SchemaObject}
+	) {
 		const local_refs = Object.keys(definitions).map(local_ref);
 		super(discovery.docs.ajv, {
 			...generate_object_parent_schema(),
@@ -330,7 +333,10 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 					type
 				);
 
-				if (!converter.can_convert_schema_and_raw_data(type, entry)) {
+				if (!await converter.can_convert_schema_and_raw_data(
+					type,
+					entry
+				)) {
 					throw new NoMatchError(
 						{
 							entry,

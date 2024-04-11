@@ -46,11 +46,14 @@ abstract class StringConverter<
 		super(ajv, schema);
 	}
 
-	async can_convert_schema_and_raw_data(
+	can_convert_schema_and_raw_data(
 		schema:SchemaObject,
 		raw_data:unknown
 	) : Promise<boolean> {
-		return is_string(raw_data) && this.can_convert_schema(schema);
+		return Promise.resolve(
+			is_string(raw_data)
+			&& this.can_convert_schema(schema)
+		);
 	}
 }
 
@@ -117,11 +120,11 @@ export class ConstStringConverter extends StringConvertHasConstraints<
 		});
 	}
 
-	async can_convert_schema_and_raw_data(
+	can_convert_schema_and_raw_data(
 		schema:SchemaObject,
 		raw_data:unknown
 	) : Promise<boolean> {
-		return (
+		return Promise.resolve(
 			this.can_convert_schema(schema)
 			&& is_string(raw_data)
 			&& schema.const === raw_data
@@ -148,11 +151,11 @@ export class EnumStringConverter extends StringConvertHasConstraints<
 		});
 	}
 
-	async can_convert_schema_and_raw_data(
+	can_convert_schema_and_raw_data(
 		schema:SchemaObject,
 		raw_data:unknown
 	) : Promise<boolean> {
-		return (
+		return Promise.resolve(
 			this.can_convert_schema(schema)
 			&& is_string(raw_data)
 			&& schema.enum.includes(raw_data)
@@ -176,16 +179,21 @@ export class PatternConverter extends ConverterMatchesSchema<
 			},
 		});
 	}
-
-    can_convert_schema_and_raw_data(schema: SchemaObject, raw_data: unknown): Promise<boolean> {
-        return Promise.resolve(
+	can_convert_schema_and_raw_data(
+		schema: SchemaObject,
+		raw_data: unknown
+	): Promise<boolean> {
+		return Promise.resolve(
 			this.can_convert_schema(schema)
 			&& is_string(raw_data)
 			&& (new RegExp(schema.pattern)).test(raw_data)
 		);
-    }
+	}
 
-    async convert(schema: pattern_schema, raw_data: string): Promise<ExpressionResult<AsExpression>> {
+	async convert(
+		schema: pattern_schema,
+		raw_data: string
+	): Promise<ExpressionResult<AsExpression>> {
 		if (
 			!this.can_convert_schema(schema)
 			|| !await this.can_convert_schema_and_raw_data(schema, raw_data)
@@ -208,5 +216,5 @@ export class PatternConverter extends ConverterMatchesSchema<
 				)
 			)
 		));
-    }
+	}
 }

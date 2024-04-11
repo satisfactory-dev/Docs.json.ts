@@ -9,8 +9,13 @@ import {
 import {
 	docs,
 } from '../../../../lib/helpers';
-import {local_ref} from '../../../../lib/StringStartsWith';
-import {isBooleanLiteral, isIdentifier} from '../../../../assert/TypeScriptAssert';
+import {
+	local_ref,
+} from '../../../../lib/StringStartsWith';
+import {
+	isBooleanLiteral,
+	isIdentifier,
+} from '../../../../assert/TypeScriptAssert';
 
 const schema = {$ref: local_ref('boolean-extended')};
 

@@ -20,8 +20,8 @@ type schema_type = {
 export class Ref extends ConverterMatchesSchema<
 	schema_type
 > {
+	private readonly cache:{[key: local_ref<string>]: boolean} = {};
 	private readonly discovery:DataDiscovery;
-	private cache:{[key: local_ref<string>]: boolean} = {};
 
 	constructor(discovery:DataDiscovery) {
 		super(discovery.docs.ajv, {
@@ -59,7 +59,9 @@ export class Ref extends ConverterMatchesSchema<
 			return this.cache[schema.$ref];
 		}
 
-		const definition = await this.discovery.docs.definition(schema.$ref.substring(14));
+		const definition = await this.discovery.docs.definition(
+			schema.$ref.substring(14)
+		);
 
 		const converter = Converter.has_matching_schema(
 			await this.discovery.candidates,
@@ -76,7 +78,10 @@ export class Ref extends ConverterMatchesSchema<
 			return false;
 		}
 
-		const result = await converter.can_convert_schema_and_raw_data(definition, raw_data);
+		const result = await converter.can_convert_schema_and_raw_data(
+			definition,
+			raw_data
+		);
 
 		this.cache[schema.$ref] = result;
 
@@ -95,7 +100,9 @@ export class Ref extends ConverterMatchesSchema<
 		raw_data: schema_type
 	): Promise<ExpressionResult> {
 		performance.mark('start');
-		const definition = await this.discovery.docs.definition(schema.$ref.substring(14));
+		const definition = await this.discovery.docs.definition(
+			schema.$ref.substring(14)
+		);
 
 		const result = (await Converter.find_matching_schema(
 			await this.discovery.candidates,

@@ -10,6 +10,7 @@ coverallsapp
 
 # filenames, because reasons
 prettierrc
+eslintcache
 
 # yes these are words
 unstaged

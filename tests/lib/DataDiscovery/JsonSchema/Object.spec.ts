@@ -12,7 +12,9 @@ import {
 import {
 	DataDiscovery,
 } from '../../../../lib/DataDiscovery';
-import {local_ref} from '../../../../lib/StringStartsWith';
+import {
+	local_ref,
+} from '../../../../lib/StringStartsWith';
 
 void describe('ObjectConverter.can_convert_schema_and_raw_data()', () => {
 	const instance = new ObjectConverter(new DataDiscovery(docs));
@@ -34,7 +36,10 @@ void describe('ObjectConverter.can_convert_schema_and_raw_data()', () => {
 
 	void it ('resolves false', async () => {
 		assert.equal(
-			await instance.can_convert_schema_and_raw_data({type: 'string'}, null),
+			await instance.can_convert_schema_and_raw_data(
+				{type: 'string'},
+				null
+			),
 			false,
 			'Should not be able to convert string schema with null'
 		);

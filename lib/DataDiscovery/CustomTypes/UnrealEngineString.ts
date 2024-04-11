@@ -36,22 +36,22 @@ export class UnrealEngineStringConverter extends Converter<
 	string,
 	CallExpression
 > {
-    can_convert_schema(
+	can_convert_schema(
 		schema: SchemaObject
 	): schema is UnrealEngineString_parent_type {
-        return is_UnrealEngineString_parent(schema);
-    }
+		return is_UnrealEngineString_parent(schema);
+	}
 
-    can_convert_schema_and_raw_data(
+	can_convert_schema_and_raw_data(
 		schema: SchemaObject,
 		raw_data: unknown
 	): Promise<boolean> {
-        return Promise.resolve(
+		return Promise.resolve(
 			this.can_convert_schema(schema)
 			&& is_string(raw_data)
 			&& UnrealEngineString_regex.test(raw_data)
 		);
-    }
+	}
 
 	async convert(
 		schema: UnrealEngineString_parent_type,
@@ -105,5 +105,5 @@ export class UnrealEngineStringConverter extends Converter<
 				[ts.factory.createStringLiteral(raw_data)]
 			)
 		);
-    }
+	}
 }

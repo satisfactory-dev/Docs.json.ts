@@ -63,7 +63,9 @@ import {
 import {
 	UnrealEngineStringConverter,
 } from './DataDiscovery/CustomTypes/UnrealEngineString';
-import {Ref} from './DataDiscovery/JsonSchema/Ref';
+import {
+	Ref,
+} from './DataDiscovery/JsonSchema/Ref';
 
 type progress = {[p: string]: string[]};
 
@@ -72,7 +74,10 @@ export class DataDiscovery
 	implements GeneratesMarkdown
 {
 	private readonly progress:progress = {};
-	public readonly candidates:Promise<[Converter<SchemaObject>, ...Converter<SchemaObject>[]]>;
+	public readonly candidates:Promise<[
+		Converter<SchemaObject>,
+		...Converter<SchemaObject>[],
+	]>;
 	public readonly docs:DocsTsGenerator;
 	public readonly literal:Literal;
 

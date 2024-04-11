@@ -73,24 +73,33 @@ export class OneOfConverter extends ConverterMatchesSchema<oneOf> {
 				try {
 					return await converter.convert(entry, raw_data);
 				} catch (err) {
+					const {oneOf} = schema;
+					const matches = await Promise.all(oneOf.map(async (
+						e
+					) => !!await Converter.has_matching_schema_and_raw_data(
+						candidates,
+						e,
+						raw_data
+					)));
+					const instance = await Promise.all(oneOf.map(async (
+						e
+					) => {
+						const maybe =
+							await Converter.has_matching_schema_and_raw_data(
+								candidates,
+								e,
+								raw_data,
+							);
+
+						return maybe ? maybe.constructor.name : undefined;
+					}));
+
 					throw new NoMatchError(
 						{
 							schema,
 							raw_data,
-							matches: await Promise.all(schema.oneOf.map(async (e) => !!await Converter.has_matching_schema_and_raw_data(
-								candidates,
-								e,
-								raw_data
-							))),
-							instance: await Promise.all(schema.oneOf.map(async (e) => {
-								const maybe = await Converter.has_matching_schema_and_raw_data(
-									candidates,
-									e,
-									raw_data,
-								);
-
-								return maybe ? maybe.constructor.name : undefined;
-							})),
+							matches,
+							instance,
 						},
 						'Failed to convert oneOf',
 					)
@@ -102,7 +111,9 @@ export class OneOfConverter extends ConverterMatchesSchema<oneOf> {
 			{
 				schema,
 				raw_data,
-				oneOf: await Promise.all(schema.oneOf.map(e => Converter.has_matching_schema_and_raw_data(
+				oneOf: await Promise.all(schema.oneOf.map((
+					e
+				) => Converter.has_matching_schema_and_raw_data(
 					candidates,
 					e,
 					raw_data

@@ -17,7 +17,9 @@ import {
 	not_undefined,
 	rejects_partial_match,
 } from '../../../assert/CustomAssert';
-import {BasicStringConverter} from '../../../lib/DataDiscovery/JsonSchema/StringType';
+import {
+	BasicStringConverter,
+} from '../../../lib/DataDiscovery/JsonSchema/StringType';
 
 void describe('Converter', async () => {
 	const candidates = await ((new DataDiscovery(docs)).candidates);
@@ -63,7 +65,7 @@ void describe('Converter', async () => {
 				property: {
 					schema: {type: 'boolean'},
 				},
-				message: 'Could not identify suitable candidate!'
+				message: 'Could not identify suitable candidate!',
 			}
 		);
 		assert.equal(

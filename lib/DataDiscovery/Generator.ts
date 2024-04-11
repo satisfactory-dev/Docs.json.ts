@@ -19,9 +19,33 @@ export abstract class Converter<
 > {
 	abstract can_convert_schema(schema: SchemaObject): schema is Schema;
 
-	abstract can_convert_schema_and_raw_data(schema:SchemaObject, raw_data:unknown): Promise<boolean>;
+	abstract can_convert_schema_and_raw_data(
+		schema:SchemaObject,
+		raw_data:unknown
+	): Promise<boolean>;
 
-	abstract convert(schema:Schema, raw_data:RawData) : Promise<ExpressionResult<Output>>;
+	abstract convert(
+		schema:Schema,
+		raw_data:RawData
+	) : Promise<ExpressionResult<Output>>;
+
+	static find_matching_schema(
+		candidates: [Converter<SchemaObject>, ...Converter<SchemaObject>[]],
+		schema: SchemaObject
+	) : Promise<Converter<SchemaObject>> {
+		const converter = this.has_matching_schema(candidates, schema);
+
+		if (converter) {
+			return Promise.resolve(converter);
+		}
+
+		throw new NoMatchError(
+			{
+				schema,
+			},
+			'Could not identify suitable candidate!'
+		);
+	}
 
 	static has_matching_schema(
 		candidates: [Converter<SchemaObject>, ...Converter<SchemaObject>[]],
@@ -36,30 +60,15 @@ export abstract class Converter<
 		raw_data: unknown
 	) : Promise<Converter<SchemaObject>|undefined> {
 		for (const candidate of candidates) {
-			if (await candidate.can_convert_schema_and_raw_data(schema, raw_data)) {
+			if (await candidate.can_convert_schema_and_raw_data(
+				schema,
+				raw_data
+			)) {
 				return candidate;
 			}
 		}
 
 		return undefined;
-	}
-
-	static async find_matching_schema(
-		candidates: [Converter<SchemaObject>, ...Converter<SchemaObject>[]],
-		schema: SchemaObject
-	) : Promise<Converter<SchemaObject>> {
-		const converter = this.has_matching_schema(candidates, schema);
-
-		if (converter) {
-			return converter;
-		}
-
-		throw new NoMatchError(
-			{
-				schema,
-			},
-			'Could not identify suitable candidate!'
-		);
 	}
 }
 

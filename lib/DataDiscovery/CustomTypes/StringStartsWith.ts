@@ -3,7 +3,7 @@ import {
 	ExpressionResult,
 } from '../Generator';
 import Ajv, {
-    SchemaObject,
+	SchemaObject,
 } from 'ajv/dist/2020';
 import {
 	RawData,

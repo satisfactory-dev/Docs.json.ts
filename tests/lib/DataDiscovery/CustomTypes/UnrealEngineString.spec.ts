@@ -6,8 +6,12 @@ import assert from 'node:assert/strict';
 import {
 	UnrealEngineStringConverter,
 } from '../../../../lib/DataDiscovery/CustomTypes/UnrealEngineString';
-import {rejects_partial_match} from '../../../../assert/CustomAssert';
-import {isCallExpression} from '../../../../assert/TypeScriptAssert';
+import {
+	rejects_partial_match,
+} from '../../../../assert/CustomAssert';
+import {
+	isCallExpression,
+} from '../../../../assert/TypeScriptAssert';
 
 const example_UnrealEngineString_value =
 	'/Script/CoreUObject.Class\'/Script/FactoryGame.Example\'';

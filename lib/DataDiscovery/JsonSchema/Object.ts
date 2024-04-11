@@ -1,7 +1,7 @@
 import {
+	Converter,
 	ConverterMatchesSchema,
 	ExpressionResult,
-	Converter,
 } from '../Generator';
 import {
 	DataDiscovery,
@@ -73,7 +73,9 @@ export class ObjectConverter extends ConverterMatchesSchema<
 
 		const result:{[key: string]: ExpressionResult} = {};
 
-		const missing_keys = Object.keys(raw_data).filter(maybe => !(maybe in converters));
+		const missing_keys = Object.keys(raw_data).filter((
+			maybe
+		) => !(maybe in converters));
 
 		if (missing_keys.length) {
 			throw new NoMatchError(
@@ -110,7 +112,9 @@ export class ObjectConverter extends ConverterMatchesSchema<
 			);
 		}
 
-		return new ExpressionResult(await this.discovery.literal.object_literal(result));
+		return new ExpressionResult(
+			await this.discovery.literal.object_literal(result)
+		);
 	}
 
 	private async resolve_converters(
@@ -147,9 +151,11 @@ export class ObjectConverter extends ConverterMatchesSchema<
 			&& is_string(schema.$ref)
 			&& schema.$ref.startsWith('#/definitions/')
 		) {
-			const $ref_converters = Object.entries(await this.resolve_converters_for_$ref(
-				schema.$ref as local_ref<string>
-			));
+			const $ref_converters = Object.entries(
+				await this.resolve_converters_for_$ref(
+					schema.$ref as local_ref<string>
+				)
+			);
 
 			for (const entry of $ref_converters) {
 				const [property, converter] = entry;
@@ -205,9 +211,11 @@ export class ObjectConverter extends ConverterMatchesSchema<
 			&& is_string(schema.$ref)
 			&& schema.$ref.startsWith('#/definitions/')
 		) {
-			for (const entry of Object.entries(await this.resolve_schema(await this.discovery.docs.definition(
-				schema.$ref.substring(14)
-			)))) {
+			for (const entry of Object.entries(
+				await this.resolve_schema(await this.discovery.docs.definition(
+					schema.$ref.substring(14)
+				))
+			)) {
 				const [property, sub_schema] = entry;
 
 				if (!(property in resolved_schema)) {
