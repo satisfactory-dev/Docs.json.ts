@@ -70,7 +70,7 @@ export class OneOfConverter extends ConverterMatchesSchema<oneOf> {
 			);
 
 			if (converter) {
-					return await converter.convert(entry, raw_data);
+				return await converter.convert(entry, raw_data);
 			}
 		}
 
