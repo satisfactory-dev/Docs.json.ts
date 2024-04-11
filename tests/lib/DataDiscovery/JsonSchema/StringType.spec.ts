@@ -12,7 +12,9 @@ import {
 import {
 	isStringLiteral,
 } from '../../../../assert/TypeScriptAssert';
-import {rejects_partial_match} from '../../../../assert/CustomAssert';
+import {
+	rejects_partial_match,
+} from '../../../../assert/CustomAssert';
 
 void describe('ConstStringConverter', () => {
 	const instance = new ConstStringConverter(docs.ajv);
