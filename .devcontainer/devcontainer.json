@@ -5,5 +5,14 @@
 	},
 	"postCreateCommand": "npm install && echo \"source ./.devcontainer/.post-create\" >> /home/node/.bashrc",
 	"remoteUser": "node",
-	"updateRemoteUserUID": true
+	"updateRemoteUserUID": true,
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"EditorConfig.EditorConfig",
+				"dbaeumer.vscode-eslint",
+				"ms-vscode.makefile-tools"
+			]
+		}
+	}
 }
