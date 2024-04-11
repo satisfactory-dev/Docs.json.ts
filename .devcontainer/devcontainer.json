@@ -1,0 +1,19 @@
+{
+	"name": "Docs.json.ts",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"postCreateCommand": "npm install && echo \"source ./.devcontainer/.post-create\" >> /home/node/.bashrc",
+	"remoteUser": "node",
+	"updateRemoteUserUID": true,
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"EditorConfig.EditorConfig",
+				"dbaeumer.vscode-eslint",
+				"ms-azuretools.vscode-docker",
+				"ms-vscode.makefile-tools"
+			]
+		}
+	}
+}
