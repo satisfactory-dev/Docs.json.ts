@@ -39,12 +39,12 @@ export abstract class Converter<
 			return Promise.resolve(converter);
 		}
 
-		throw new NoMatchError(
+		return Promise.reject(new NoMatchError(
 			{
 				schema,
 			},
 			'Could not identify suitable candidate!'
-		);
+		));
 	}
 
 	static has_matching_schema(

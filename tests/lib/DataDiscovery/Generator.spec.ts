@@ -54,11 +54,7 @@ void describe('Converter', async () => {
 
 		is_instanceof(await promise, BasicStringConverter);
 	});
-	void it ('returns undefined', async () => {
-		assert.equal(
-			Converter.has_matching_schema(candidates, {type: 'boolean'}),
-			undefined
-		);
+	void it('fails', async() => {
 		await rejects_partial_match(
 			Converter.find_matching_schema(candidates, {type: 'boolean'}),
 			{
@@ -68,12 +64,23 @@ void describe('Converter', async () => {
 				message: 'Could not identify suitable candidate!',
 			}
 		);
+	});
+	void it ('returns undefined', async () => {
 		assert.equal(
-			await Converter.has_matching_schema_and_raw_data(
-				candidates,
-				{type: 'string'},
-				null
-			),
+			Converter.has_matching_schema(candidates, {type: 'boolean'}),
+			undefined
+		);
+		const promise = Converter.has_matching_schema_and_raw_data(
+			candidates,
+			{type: 'string'},
+			null
+		);
+		await assert.doesNotReject(
+			promise,
+			'Converter.has_matching_schema_and_raw_data should not throw!'
+		);
+		assert.equal(
+			await promise,
 			undefined
 		);
 	});
