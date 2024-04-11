@@ -12,10 +12,7 @@ import {
 import {
 	local_ref,
 } from '../../../../lib/StringStartsWith';
-import {
-	isBooleanLiteral,
-	isIdentifier,
-} from '../../../../assert/TypeScriptAssert';
+import ts_assert from '@signpostmarv/ts-assert';
 
 const schema = {$ref: local_ref('boolean-extended')};
 
@@ -51,14 +48,14 @@ void describe('BooleanConverter.convert()', () => {
 	const instance = new BooleanConverter(docs.ajv);
 
 	void it('resolves True', async () => {
-		isBooleanLiteral(
+		ts_assert.isBooleanLiteral(
 			(await instance.convert(schema, 'True')).expression,
 			true,
 		);
 	});
 
 	void it('resolves False', async () => {
-		isBooleanLiteral(
+		ts_assert.isBooleanLiteral(
 			(await instance.convert(schema, 'False')).expression,
 			false,
 		);
@@ -67,7 +64,7 @@ void describe('BooleanConverter.convert()', () => {
 	void it('resolved undefined', async() => {
 		const result = (await instance.convert(schema, '')).expression;
 
-		isIdentifier(result);
+		ts_assert.isIdentifier(result);
 		assert.equal(result.text, 'undefined');
 	});
 });

@@ -7,7 +7,6 @@ import ts from 'typescript';
 import {
 	ExpressionResult,
 } from '../../../lib/DataDiscovery/Generator';
-import * as TypeScriptAssert from '../../../assert/TypeScriptAssert';
 import {
 	array_has_size,
 	rejects_partial_match,
@@ -16,6 +15,7 @@ import {
 import {
 	Literal,
 } from '../../../lib/DataDiscovery/Literal';
+import ts_assert from '@signpostmarv/ts-assert';
 
 void describe('Literal.object_literal', () => {
 	const instance = new Literal();
@@ -23,22 +23,22 @@ void describe('Literal.object_literal', () => {
 	void it('handles empty objects', async () => {
 		const foo = await instance.object_literal({});
 
-		TypeScriptAssert.isObjectLiteralExpression(foo);
+		ts_assert.isObjectLiteralExpression(foo);
 		array_has_size(foo.properties, 0);
 	});
 
 	void it('converts objects with non-number properties', async () => {
 		const foo = await instance.object_literal({'foo': 'bar'});
 
-		TypeScriptAssert.isObjectLiteralExpression(foo);
+		ts_assert.isObjectLiteralExpression(foo);
 		array_has_size(foo.properties, 1);
 
 		const [property] = foo.properties;
 
-		TypeScriptAssert.isPropertyAssignment(property);
-		TypeScriptAssert.isIdentifier(property.name);
+		ts_assert.isPropertyAssignment(property);
+		ts_assert.isIdentifier(property.name);
 		assert.equal(property.name.escapedText, 'foo');
-		TypeScriptAssert.isStringLiteral(property.initializer);
+		ts_assert.isStringLiteral(property.initializer);
 		assert.equal(property.initializer.text, 'bar');
 	});
 
@@ -66,7 +66,7 @@ void describe('Literal.value_literal', () => {
 	void it('converts strings to StringLiteral', async () => {
 		const value = await instance.value_literal('foo');
 
-		TypeScriptAssert.isStringLiteral(value);
+		ts_assert.isStringLiteral(value);
 		assert.equal(value.text, 'foo');
 	});
 
@@ -86,35 +86,35 @@ void describe('Literal.value_literal', () => {
 		const true_value = await instance.value_literal(true);
 		const false_value = await instance.value_literal(false);
 
-		TypeScriptAssert.isBooleanLiteral(true_value, true);
-		TypeScriptAssert.isBooleanLiteral(false_value, false);
+		ts_assert.isBooleanLiteral(true_value, true);
+		ts_assert.isBooleanLiteral(false_value, false);
 	});
 
 	void it('converts undefined', async () => {
 		const value = await instance.value_literal(undefined);
 
-		TypeScriptAssert.isIdentifier(value);
+		ts_assert.isIdentifier(value);
 		assert.equal(value.escapedText, 'undefined');
 	});
 
 	void it('converts arrays', async () => {
 		const value = await instance.value_literal(['foo']);
 
-		TypeScriptAssert.isArrayLiteralExpression(value);
+		ts_assert.isArrayLiteralExpression(value);
 		array_has_size(value.elements, 1);
-		TypeScriptAssert.isStringLiteral(value.elements[0]);
+		ts_assert.isStringLiteral(value.elements[0]);
 		assert.equal(value.elements[0].text, 'foo');
 	});
 
 	void it('converts objects', async () => {
 		const foo = await instance.value_literal({});
 
-		TypeScriptAssert.isObjectLiteralExpression(foo);
+		ts_assert.isObjectLiteralExpression(foo);
 		array_has_size(foo.properties, 0);
 
 		const bar = await instance.value_literal({'foo': 'bar'});
 
-		TypeScriptAssert.isObjectLiteralExpression(bar);
+		ts_assert.isObjectLiteralExpression(bar);
 		array_has_size(bar.properties, 1);
 	});
 

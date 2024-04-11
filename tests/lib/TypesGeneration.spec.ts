@@ -10,9 +10,7 @@ import {
 import {
 	ImportTracker,
 } from '../../lib/TypesGeneration';
-import {
-	isNamedImports, isStringLiteral,
-} from '../../assert/TypeScriptAssert';
+import ts_assert from '@signpostmarv/ts-assert';
 
 void describe('ImportTracker.generate_imports()', () => {
 	void it('returns an empty array with no configured imports', () => {
@@ -62,13 +60,13 @@ void describe('ImportTracker.generate_imports()', () => {
 			const import_entry = imports[index];
 
 			not_undefined(import_entry.importClause);
-			isStringLiteral(import_entry.moduleSpecifier);
+			ts_assert.isStringLiteral(import_entry.moduleSpecifier);
 			assert.equal(
 				import_entry.moduleSpecifier.text,
 				module_specifier
 			);
 			not_undefined(import_entry.importClause.namedBindings);
-			isNamedImports(import_entry.importClause.namedBindings);
+			ts_assert.isNamedImports(import_entry.importClause.namedBindings);
 
 			const {elements} = import_entry.importClause.namedBindings;
 

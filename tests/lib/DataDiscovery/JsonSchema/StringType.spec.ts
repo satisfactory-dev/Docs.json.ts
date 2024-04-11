@@ -9,9 +9,7 @@ import {
 import {
 	docs,
 } from '../../../../lib/helpers';
-import {
-	isStringLiteral,
-} from '../../../../assert/TypeScriptAssert';
+import ts_assert from '@signpostmarv/ts-assert';
 import {
 	rejects_partial_match,
 } from '../../../../assert/CustomAssert';
@@ -87,7 +85,7 @@ void describe('ConstStringConverter', () => {
 
 			const result = (await promise).expression;
 
-			isStringLiteral(result);
+			ts_assert.isStringLiteral(result);
 			assert.equal(result.text, 'Foo');
 		});
 

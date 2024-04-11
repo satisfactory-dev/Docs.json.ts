@@ -9,9 +9,7 @@ import {
 import {
 	rejects_partial_match,
 } from '../../../../assert/CustomAssert';
-import {
-	isCallExpression,
-} from '../../../../assert/TypeScriptAssert';
+import ts_assert from '@signpostmarv/ts-assert';
 
 const example_UnrealEngineString_value =
 	'/Script/CoreUObject.Class\'/Script/FactoryGame.Example\'';
@@ -112,6 +110,6 @@ void describe('UnrealEngineStringConverter.convert()', () => {
 
 		const result = (await promise).expression;
 
-		isCallExpression(result);
+		ts_assert.isCallExpression(result);
 	});
 });
