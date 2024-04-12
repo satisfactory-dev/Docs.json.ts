@@ -38,6 +38,25 @@ void describe('TypedStringConverter', async () => {
 			},
 		},
 	};
+	const nested_object_schema:typed_string_parent_type = {
+		type: 'string',
+		minLength: 1,
+		typed_string: {
+			required: ['foo'],
+			properties: {
+				foo: {
+					type: 'string',
+					minLength: 1,
+					typed_string: {
+						required: ['bar'],
+						properties: {
+							bar: {type: 'string', const: 'baz'},
+						},
+					},
+				},
+			},
+		},
+	};
 	const array_schema:typed_string_parent_type = {
 		type: 'string',
 		minLength: 1,
@@ -135,6 +154,13 @@ void describe('TypedStringConverter', async () => {
 			true,
 			[['bar']],
 		],
+		[
+			nested_object_schema,
+			'(foo=(bar=baz))',
+			true,
+			true,
+			{foo:{bar: 'baz'}},
+		],
 	];
 
 	void describe('can_convert_schema', () => {
@@ -221,6 +247,10 @@ void describe('TypedStringConverter', async () => {
 			[
 				object_schema,
 				'(foo=baz)',
+			],
+			[
+				nested_object_schema,
+				'(foo=(bar=bar))',
 			],
 		];
 
