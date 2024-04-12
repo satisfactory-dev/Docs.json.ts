@@ -30,7 +30,7 @@ export type string_schema = {
 	type: 'string',
 	minLength?: number,
 };
-type pattern_schema = {
+export type pattern_schema = {
 	type: 'string',
 	pattern: string,
 };

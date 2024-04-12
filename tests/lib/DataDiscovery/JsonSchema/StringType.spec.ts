@@ -7,6 +7,8 @@ import {
 	BasicStringConverter,
 	ConstStringConverter,
 	EnumStringConverter,
+	PatternConverter,
+	pattern_schema,
 	string_schema,
 } from '../../../../lib/DataDiscovery/JsonSchema/StringType';
 import {
@@ -14,6 +16,8 @@ import {
 } from '../../../../lib/helpers';
 import ts_assert from '@signpostmarv/ts-assert';
 import {
+	array_has_size,
+	not_undefined,
 	rejects_partial_match,
 } from '../../../../assert/CustomAssert';
 import {
@@ -33,7 +37,10 @@ import {
 } from '../../../../lib/CustomParsingTypes/TypedStringEnum';
 
 type data_sets<
-	InstanceType extends ConverterMatchesSchema<SchemaType>,
+	InstanceType extends (
+		| ConverterMatchesSchema<SchemaType>
+		| PatternConverter
+	),
 	SchemaType extends SchemaObject,
 > = {
 	make_instance: () => InstanceType,
@@ -52,6 +59,10 @@ const enum_string_schema:enum_schema_type = {
 	type: 'string',
 	enum: ['Foo', 'Bar'],
 };
+const pattern_string_schema:pattern_schema = {
+	type: 'string',
+	pattern: '^Foo(Bar|Baz)$',
+};
 
 function generate_basic_expression_check(
 	expecting:string
@@ -66,6 +77,7 @@ const data_sets: {
 	BasicStringConverter: data_sets<BasicStringConverter, string_schema>,
 	ConstStringConverter: data_sets<ConstStringConverter, const_schema_type>,
 	EnumStringConverter: data_sets<EnumStringConverter, enum_schema_type>,
+	PatternConverter: data_sets<PatternConverter, pattern_schema>,
 } = {
 	BasicStringConverter: {
 		make_instance: () => new BasicStringConverter(docs.ajv),
@@ -155,6 +167,67 @@ const data_sets: {
 					enum_string_schema,
 					'Foo',
 					generate_basic_expression_check('Foo'),
+				],
+			],
+		},
+	},
+	PatternConverter: {
+		make_instance: () => new PatternConverter(docs.ajv),
+		can_convert_schema: [
+			[basic_string_schema, false],
+			[const_string_schema, false],
+			[basic_number_schema, false],
+			[enum_string_schema, false],
+			[pattern_string_schema, true],
+		],
+		can_convert_schema_and_raw_data: [
+			[pattern_string_schema, 'FooBar', true],
+			[pattern_string_schema, 'FooBaz', true],
+			[pattern_string_schema, 'FooFoo', false],
+			[pattern_string_schema, 'foobar', false],
+			[pattern_string_schema, 'foobaz', false],
+		],
+		convert: {
+			succeeds: [
+				[
+					pattern_string_schema,
+					'FooBar',
+					(expression:Expression) => {
+						ts_assert.isAsExpression(expression);
+						ts_assert.isStringLiteral(expression.expression);
+						assert.equal(expression.expression.text, 'FooBar');
+						ts_assert.isTypeReferenceNode(expression.type);
+						ts_assert.isIdentifier(expression.type.typeName);
+						assert.equal(
+							expression.type.typeName.text,
+							'StringPassedRegExp'
+						);
+						not_undefined(expression.type.typeArguments);
+						array_has_size(expression.type.typeArguments, 1);
+						ts_assert.isLiteralTypeNode(
+							expression.type.typeArguments[0]
+						);
+						ts_assert.isStringLiteral(
+							expression.type.typeArguments[0].literal
+						);
+						assert.equal(
+							expression.type.typeArguments[0].literal.text,
+							'^Foo(Bar|Baz)$'
+						);
+					},
+				],
+			],
+			fails:  [
+				[
+					pattern_string_schema,
+					'foobar',
+					{
+						property: {
+							schema: pattern_string_schema,
+							raw_data: 'foobar',
+						},
+						message: 'Cannot convert schema!',
+					},
 				],
 			],
 		},
