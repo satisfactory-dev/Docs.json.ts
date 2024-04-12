@@ -145,11 +145,11 @@ void describe('UnrealEngineStringConverter', () => {
 
 				const promise = instance.convert(schema, raw_data);
 
-			await assert.doesNotReject(promise);
+				await assert.doesNotReject(promise);
 
-			const result = (await promise).expression;
+				const result = (await promise).expression;
 
-			ts_assert.isCallExpression(result);
+				ts_assert.isCallExpression(result);
 			}
 		});
 	});
