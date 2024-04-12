@@ -46,6 +46,17 @@ void describe('TypedStringConverter', async () => {
 			items: {type: 'string', const: 'bar'},
 		},
 	};
+	const prefix_schema:typed_string_parent_type = {
+		type: 'string',
+		minLength: 1,
+		typed_string: {
+			items: false,
+			minItems: 1,
+			prefixItems: [
+				{type: 'string', const: 'bar'},
+			],
+		},
+	};
 	/**
 	 * @todo add cases where raw_data is valid but doesn't match shape
 	 */
@@ -116,6 +127,13 @@ void describe('TypedStringConverter', async () => {
 			true,
 			true,
 			['bar', 'bar', 'bar', 'bar'],
+		],
+		[
+			prefix_schema,
+			'((bar))',
+			true,
+			true,
+			[['bar']],
 		],
 	];
 
