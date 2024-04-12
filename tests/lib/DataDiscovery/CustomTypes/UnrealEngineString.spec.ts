@@ -10,6 +10,12 @@ import {
 	rejects_partial_match,
 } from '../../../../assert/CustomAssert';
 import ts_assert from '@signpostmarv/ts-assert';
+import {
+	UnrealEngineString_parent_type,
+} from '../../../../lib/CustomParsingTypes/UnrealEngineString';
+import {
+	is_string,
+} from '../../../../lib/StringStartsWith';
 
 void describe('UnrealEngineStringConverter', () => {
 	const example_UnrealEngineString_value =
@@ -67,51 +73,84 @@ void describe('UnrealEngineStringConverter', () => {
 	);
 
 	void describe('convert()', () => {
-		void it('rejects true', async () => {
-			const result = instance.convert(
+		const convert_args:(
+			| [ // rejects
+				UnrealEngineString_parent_type,
+				string,
+				string,
+			]
+			| [ // passes
+				UnrealEngineString_parent_type,
+				string,
+			]
+		)[] = [
+			[
+				{
+					type: 'string',
+					minLength: 1,
+					UnrealEngineString: {
+						left: 'foo',
+					},
+				},
+				'',
+				'Not an UnrealEngineString!',
+			],
+			[
 				{
 					type: 'string',
 					minLength: 1,
 					UnrealEngineString: true,
 				},
-				''
-			);
-
-			await rejects_partial_match(
-				result,
+				'',
+				'Not an UnrealEngineString!',
+			],
+			[
 				{
-					property: {
-						schema: {
-							type: 'string',
-							minLength: 1,
-							UnrealEngineString: true,
+					type: 'string',
+					minLength: 1,
+					UnrealEngineString: true,
+				},
+				example_UnrealEngineString_value,
+			],
+		];
+
+		void it('rejects', async () => {
+			for (
+				const entry of convert_args.filter(
+					maybe => is_string(maybe[2])
+				)
+			) {
+				const [schema, raw_data, message] = entry;
+
+				await rejects_partial_match(
+					instance.convert(schema, raw_data),
+					{
+						property: {
+							schema,
+							raw_data,
 						},
-						raw_data: '',
-					},
-					message: 'Not an UnrealEngineString!',
-				}
-			);
+						message,
+					}
+				);
+			}
 		});
 
-		/**
-		 * @todo full coverage on instance.convert()
-		 * @todo deep check on the call expression
-		 */
-		void it('passes true', async () => {
-			const promise = instance.convert(
-				{
-					type: 'string',
-					minLength: 1,
-					UnrealEngineString: true,
-				},
-				example_UnrealEngineString_value
-			);
+		void it('passes', async () => {
+			for (
+				const entry of convert_args.filter(
+					maybe => 2 === maybe.length
+				)
+			) {
+				const [schema, raw_data] = entry;
+
+				const promise = instance.convert(schema, raw_data);
 
 			await assert.doesNotReject(promise);
 
 			const result = (await promise).expression;
 
 			ts_assert.isCallExpression(result);
+			}
 		});
 	});
 })
