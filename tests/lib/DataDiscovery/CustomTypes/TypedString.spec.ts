@@ -28,13 +28,19 @@ void describe('TypedStringConverter', async () => {
 		discovery,
 		(await docs.schema()).definitions,
 	);
-	const object_schema = {type: 'string', minLength: 1, typed_string: {
+	const object_schema:typed_string_parent_type = {
+		type: 'string',
+		minLength: 1,
+		typed_string: {
 		required: ['foo'],
 		properties: {
 			foo: {type: 'string', const: 'bar'},
 		},
 	}};
-	const array_schema = {type: 'string', minLength: 1, typed_string: {
+	const array_schema:typed_string_parent_type = {
+		type: 'string',
+		minLength: 1,
+		typed_string: {
 		minItems: 1,
 		items: {type: 'string', const: 'bar'},
 	}};
@@ -179,7 +185,20 @@ void describe('TypedStringConverter', async () => {
 			string,
 			unknown[]|{[key:string]: unknown},
 		][] = [];
-		const fails:[typed_string_parent_type, string][] = [];
+		const fails:[typed_string_parent_type, string][] = [
+			[
+				object_schema,
+				'',
+			],
+			[
+				array_schema,
+				'',
+			],
+			[
+				object_schema,
+				'(foo)',
+			],
+		];
 
 		for (const entry of can_convert_args) {
 			const [

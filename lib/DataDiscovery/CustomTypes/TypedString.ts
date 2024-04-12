@@ -38,6 +38,7 @@ import {
 import {
 	typed_string,
 } from '../../TypeDefinitionDiscovery/CustomParsingTypes/typed_string';
+import assert from 'node:assert/strict';
 
 export class TypedStringConverter extends ConverterMatchesSchema<
 	typed_string_parent_type,
@@ -75,7 +76,10 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 					'required' in schema.typed_string
 					&& false !== string_to_object(raw_data, true)
 				)
-				|| false !== string_to_array(raw_data, true)
+				|| (
+					!('required' in schema.typed_string)
+					&& false !== string_to_array(raw_data, true)
+				)
 			)
 		);
 	}
@@ -98,35 +102,39 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 		} else if (typed_string.is_object_type(schema.typed_string)) {
 			const shallow = string_to_object(raw_data, true);
 
-			if (false === shallow) {
-				throw new NoMatchError(
+			assert.notEqual(shallow, false, new NoMatchError(
 					{
 						raw_data,
 
 					},
 					'raw data not a typed_string!'
-				);
-			}
+			));
 
 			return this.convert_object(
 				schema.typed_string,
-				shallow
+				shallow as Exclude<typeof shallow, false>
 			);
 		}
 
 		const shallow = string_to_array(raw_data, true);
 
-		if (false === shallow) {
-			throw new NoMatchError(
+		assert.notEqual(shallow, false, new NoMatchError(
 				{
 					raw_data,
 				},
 				'raw data not a typed string!'
+		));
+
+		if (typed_string.is_array_type(schema.typed_string)) {
+			return this.convert_array(
+				schema.typed_string,
+				shallow as Exclude<typeof shallow, false>
 			);
-		} else if (typed_string.is_array_type(schema.typed_string)) {
-			return this.convert_array(schema.typed_string, shallow);
 		} else if (typed_string.is_prefixItems_type(schema.typed_string)) {
-			return this.convert_prefixItems(schema.typed_string, shallow);
+			return this.convert_prefixItems(
+				schema.typed_string,
+				shallow as Exclude<typeof shallow, false>
+			);
 		}
 
 		throw new NoMatchError(
