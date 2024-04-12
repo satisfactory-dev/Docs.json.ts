@@ -67,7 +67,7 @@ void describe('UnrealEngineStringConverter', () => {
 	);
 
 	void describe('convert()', () => {
-		void it('rejects', async () => {
+		void it('rejects true', async () => {
 			const result = instance.convert(
 				{
 					type: 'string',
@@ -97,7 +97,7 @@ void describe('UnrealEngineStringConverter', () => {
 		 * @todo full coverage on instance.convert()
 		 * @todo deep check on the call expression
 		 */
-		void it('passes', async () => {
+		void it('passes true', async () => {
 			const promise = instance.convert(
 				{
 					type: 'string',
