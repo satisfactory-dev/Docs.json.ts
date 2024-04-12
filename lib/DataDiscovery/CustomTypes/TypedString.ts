@@ -161,7 +161,7 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 					schema,
 					errors: check.errors,
 				},
-				'Shallow parse of typed_string does not match schema!'
+				'Shallow parse of typed_string does not match array schema!'
 			);
 		}
 	}
@@ -213,7 +213,7 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 					schema,
 					errors: check.errors,
 				},
-				'Shallow parse of typed_string does not match schema!'
+				'Shallow parse of typed_string does not match object schema!'
 			);
 		}
 
