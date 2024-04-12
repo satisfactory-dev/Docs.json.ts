@@ -48,7 +48,10 @@ type data_sets<
 const basic_string_schema:string_schema = {type: 'string'};
 const const_string_schema:const_schema_type = {type: 'string', const: 'Foo'};
 const basic_number_schema = {type: 'number'};
-const enum_string_schema:enum_schema_type = {type: 'string', enum: ['Foo', 'Bar']};
+const enum_string_schema:enum_schema_type = {
+	type: 'string',
+	enum: ['Foo', 'Bar'],
+};
 
 function generate_basic_expression_check(
 	expecting:string
