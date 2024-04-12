@@ -132,16 +132,15 @@ for (const data_set of Object.entries(data_sets)) {
 	const instance = data.make_instance();
 
 	void describe(converter, () => {
-
-	void describe('can_convert_schema', () => {
+		void describe('can_convert_schema', () => {
 			void it('behaves', () => {
 				for (const entry of data.can_convert_schema) {
 					const [schema, expectation] = entry;
-			assert.equal(
-					instance.can_convert_schema(schema),
+					assert.equal(
+						instance.can_convert_schema(schema),
 						expectation
-			);
-			}
+					);
+				}
 			})
 		})
 	})
@@ -150,12 +149,12 @@ for (const data_set of Object.entries(data_sets)) {
 		void it('behaves', async() => {
 			for (const entry of data.can_convert_schema_and_raw_data) {
 				const [schema, raw_data, expectation] = entry;
-			const promise = instance.can_convert_schema_and_raw_data(
+				const promise = instance.can_convert_schema_and_raw_data(
 					schema,
 					raw_data,
-			);
+				);
 
-			await assert.doesNotReject(promise);
+				await assert.doesNotReject(promise);
 				assert.equal(await promise, expectation);
 			}
 		})
@@ -167,9 +166,9 @@ for (const data_set of Object.entries(data_sets)) {
 				const [schema, raw_data, expectation] = entry;
 				const promise = instance.convert(schema, raw_data);
 
-			await assert.doesNotReject(promise);
+				await assert.doesNotReject(promise);
 
-			const {expression} = await promise;
+				const {expression} = await promise;
 				expectation(expression);
 			}
 		})
@@ -177,18 +176,18 @@ for (const data_set of Object.entries(data_sets)) {
 		const {fails} = data.convert;
 
 		if (fails) {
-		void it ('fails', async() => {
-			for (const entry of fails) {
-				const [schema, raw_data, failure] = entry;
-			await rejects_partial_match(
-				instance.convert(
-						schema,
-						raw_data
-				),
-					failure
-			);
-			}
-		});
+			void it ('fails', async() => {
+				for (const entry of fails) {
+					const [schema, raw_data, failure] = entry;
+					await rejects_partial_match(
+						instance.convert(
+							schema,
+							raw_data
+						),
+						failure
+					);
+				}
+			});
 		}
 	})
 }
