@@ -103,11 +103,11 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 			const shallow = string_to_object(raw_data, true);
 
 			assert.notEqual(shallow, false, new NoMatchError(
-					{
-						raw_data,
+				{
+					raw_data,
 
-					},
-					'raw data not a typed_string!'
+				},
+				'raw data not a typed_string!'
 			));
 
 			return this.convert_object(
@@ -119,10 +119,10 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 		const shallow = string_to_array(raw_data, true);
 
 		assert.notEqual(shallow, false, new NoMatchError(
-				{
-					raw_data,
-				},
-				'raw data not a typed string!'
+			{
+				raw_data,
+			},
+			'raw data not a typed string!'
 		));
 
 		if (typed_string.is_array_type(schema.typed_string)) {

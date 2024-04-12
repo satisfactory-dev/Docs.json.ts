@@ -32,27 +32,29 @@ void describe('TypedStringConverter', async () => {
 		type: 'string',
 		minLength: 1,
 		typed_string: {
-		required: ['foo'],
-		properties: {
-			foo: {type: 'string', const: 'bar'},
+			required: ['foo'],
+			properties: {
+				foo: {type: 'string', const: 'bar'},
+			},
 		},
-	}};
+	};
 	const array_schema:typed_string_parent_type = {
 		type: 'string',
 		minLength: 1,
 		typed_string: {
-		minItems: 1,
-		items: {type: 'string', const: 'bar'},
-	}};
+			minItems: 1,
+			items: {type: 'string', const: 'bar'},
+		},
+	};
 	/**
 	 * @todo add cases where raw_data is valid but doesn't match shape
 	 */
 	const can_convert_args:(
 		| [
-		SchemaObject, // schema
-		unknown, // raw_data
-		boolean, // passes can_convert_schema
-		boolean, // passes can_convert_schema_and_raw_data
+			SchemaObject, // schema
+			unknown, // raw_data
+			boolean, // passes can_convert_schema
+			boolean, // passes can_convert_schema_and_raw_data
 		]
 		| [
 			SchemaObject,
