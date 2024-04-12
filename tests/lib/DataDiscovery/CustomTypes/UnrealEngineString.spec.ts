@@ -7,6 +7,8 @@ import {
 	UnrealEngineStringConverter,
 } from '../../../../lib/DataDiscovery/CustomTypes/UnrealEngineString';
 import {
+	array_has_size,
+	not_undefined,
 	rejects_partial_match,
 } from '../../../../assert/CustomAssert';
 import ts_assert from '@signpostmarv/ts-assert';
@@ -18,8 +20,15 @@ import {
 } from '../../../../lib/StringStartsWith';
 
 void describe('UnrealEngineStringConverter', () => {
+	const example_UnrealEngineString_value_left = '/Script/CoreUObject.Class';
+	const example_UnrealEngineString_value_right =
+		'/Script/FactoryGame.Example';
 	const example_UnrealEngineString_value =
-		'/Script/CoreUObject.Class\'/Script/FactoryGame.Example\'';
+		`${
+			example_UnrealEngineString_value_left
+		}'${
+			example_UnrealEngineString_value_right
+		}'`;
 
 	const instance = new UnrealEngineStringConverter();
 
@@ -112,6 +121,49 @@ void describe('UnrealEngineStringConverter', () => {
 				},
 				example_UnrealEngineString_value,
 			],
+			[
+				{
+					type: 'string',
+					minLength: 1,
+					UnrealEngineString: {
+						left: example_UnrealEngineString_value_left,
+					},
+				},
+				example_UnrealEngineString_value,
+			],
+			[
+				{
+					type: 'string',
+					minLength: 1,
+					UnrealEngineString: {
+						right: example_UnrealEngineString_value_right,
+					},
+				},
+				example_UnrealEngineString_value,
+			],
+			[
+				{
+					type: 'string',
+					minLength: 1,
+					UnrealEngineString: {
+						left: example_UnrealEngineString_value_left,
+						right: example_UnrealEngineString_value_right,
+					},
+				},
+				example_UnrealEngineString_value,
+			],
+			[
+				{
+					type: 'string',
+					minLength: 1,
+					UnrealEngineString: {
+						right: {
+							starts_with: '/Script/FactoryGame.',
+						},
+					},
+				},
+				example_UnrealEngineString_value,
+			],
 		];
 
 		void it('rejects', async () => {
@@ -150,6 +202,18 @@ void describe('UnrealEngineStringConverter', () => {
 				const result = (await promise).expression;
 
 				ts_assert.isCallExpression(result);
+				ts_assert.isPropertyAccessExpression(result.expression);
+				ts_assert.isIdentifier(result.expression.expression);
+				assert.equal(
+					result.expression.expression.text,
+					'UnrealEngineString'
+				);
+				ts_assert.isIdentifier(result.expression.name);
+				assert.equal(result.expression.name.text, 'fromString');
+				not_undefined(result.arguments);
+				array_has_size(result.arguments, 1);
+				ts_assert.isStringLiteral(result.arguments[0]);
+				assert.equal(result.arguments[0].text, raw_data);
 			}
 		});
 	});
