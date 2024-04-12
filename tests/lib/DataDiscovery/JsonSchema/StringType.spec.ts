@@ -14,7 +14,9 @@ import ts_assert from '@signpostmarv/ts-assert';
 import {
 	rejects_partial_match,
 } from '../../../../assert/CustomAssert';
-import { SchemaObject } from 'ajv';
+import {
+	SchemaObject,
+} from 'ajv';
 
 void describe('BasicStringConverter', () => {
 	const instance = new BasicStringConverter(docs.ajv);
