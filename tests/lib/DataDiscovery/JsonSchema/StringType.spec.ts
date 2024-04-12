@@ -24,10 +24,15 @@ import {
 import {
 	const_schema_type,
 } from '../../../../lib/CustomParsingTypes/TypedStringConst';
+import {
+	ConverterMatchesSchema,
+} from '../../../../lib/DataDiscovery/Generator';
 
 type data_sets<
+	InstanceType extends ConverterMatchesSchema<SchemaType>,
 	SchemaType extends SchemaObject,
 > = {
+	make_instance: () => InstanceType,
 	can_convert_schema: [SchemaObject, boolean][],
 	can_convert_schema_and_raw_data: [SchemaObject, unknown, boolean][],
 	convert: {
@@ -50,10 +55,11 @@ function generate_basic_expression_check(
 }
 
 const data_sets: {
-	BasicStringConverter: data_sets<string_schema>,
-	ConstStringConverter: data_sets<const_schema_type>,
+	BasicStringConverter: data_sets<BasicStringConverter, string_schema>,
+	ConstStringConverter: data_sets<ConstStringConverter, const_schema_type>,
 } = {
 	BasicStringConverter: {
+		make_instance: () => new BasicStringConverter(docs.ajv),
 		can_convert_schema: [
 			[basic_string_schema, true],
 			[const_string_schema, false],
@@ -75,6 +81,7 @@ const data_sets: {
 		},
 	},
 	ConstStringConverter: {
+		make_instance: () => new ConstStringConverter(docs.ajv),
 		can_convert_schema: [
 			[basic_string_schema, false],
 			[const_string_schema, true],
@@ -120,80 +127,43 @@ const data_sets: {
 	},
 };
 
-void describe('BasicStringConverter', () => {
-	const instance = new BasicStringConverter(docs.ajv);
+for (const data_set of Object.entries(data_sets)) {
+	const [converter, data] = data_set;
+	const instance = data.make_instance();
+
+	void describe(converter, () => {
 
 	void describe('can_convert_schema', () => {
-		const pass = data_sets.BasicStringConverter.can_convert_schema.filter(
-			maybe => maybe[1],
-		);
-		const fail = data_sets.BasicStringConverter.can_convert_schema.filter(
-			maybe => !maybe[1],
-		);
-		void it('returns true', () => {
-			for (const entry of pass) {
-				const [schema] = entry;
-
+			void it('behaves', () => {
+				for (const entry of data.can_convert_schema) {
+					const [schema, expectation] = entry;
 			assert.equal(
 					instance.can_convert_schema(schema),
-				true
+						expectation
 			);
 			}
-		})
-		void it('returns false', () => {
-			for (const entry of fail) {
-				const [schema] = entry;
-
-			assert.equal(
-					instance.can_convert_schema(schema),
-				false
-			);
-			}
+			})
 		})
 	})
 
 	void describe('can_convert_schema_and_raw_data', () => {
-		const pass = data_sets.BasicStringConverter.can_convert_schema_and_raw_data.filter(
-			maybe => maybe[2],
-		);
-		const fail = data_sets.BasicStringConverter.can_convert_schema_and_raw_data.filter(
-			maybe => !maybe[2],
-		);
-		void it ('resolves true', async () => {
-			for (const entry of pass) {
-				const [schema, raw_data] = entry;
+		void it('behaves', async() => {
+			for (const entry of data.can_convert_schema_and_raw_data) {
+				const [schema, raw_data, expectation] = entry;
 			const promise = instance.can_convert_schema_and_raw_data(
 					schema,
 					raw_data,
 			);
 
 			await assert.doesNotReject(promise);
-			assert.equal(await promise, true);
+				assert.equal(await promise, expectation);
 			}
-		});
-		void it ('resolves false', async () => {
-			for (const entry of fail) {
-				const [schema, raw_data] = entry;
-
-				const promise = instance.can_convert_schema_and_raw_data(
-					schema,
-					raw_data,
-				);
-
-				await assert.doesNotReject(promise);
-
-				if (await promise) {
-					console.error(schema, raw_data);
-				}
-
-				assert.equal(await promise, false);
-			}
-		});
+		})
 	})
 
 	void describe('convert', () => {
-		void it('behaves', async () => {
-			for (const entry of data_sets.BasicStringConverter.convert.succeeds) {
+		void it('succeeds', async () => {
+			for (const entry of data.convert.succeeds) {
 				const [schema, raw_data, expectation] = entry;
 				const promise = instance.convert(schema, raw_data);
 
@@ -203,89 +173,8 @@ void describe('BasicStringConverter', () => {
 				expectation(expression);
 			}
 		})
-	})
-})
 
-void describe('ConstStringConverter', () => {
-	const instance = new ConstStringConverter(docs.ajv);
-
-	void describe('can_convert_schema', () => {
-		const pass = data_sets.ConstStringConverter.can_convert_schema.filter(
-			maybe => maybe[1],
-		);
-		const fail = data_sets.ConstStringConverter.can_convert_schema.filter(
-			maybe => !maybe[1],
-		);
-		void it('returns true', () => {
-			for (const entry of pass) {
-				const [schema] = entry;
-
-			assert.equal(
-					instance.can_convert_schema(schema),
-				true
-			);
-			}
-		})
-		void it('returns false', () => {
-			for (const entry of fail) {
-				const [schema] = entry;
-
-			assert.equal(
-					instance.can_convert_schema(schema),
-				false
-			);
-			}
-		})
-	})
-
-	void describe('can_convert_schema_and_raw_data', () => {
-		const pass = data_sets.ConstStringConverter.can_convert_schema_and_raw_data.filter(
-			maybe => maybe[2],
-		);
-		const fail = data_sets.ConstStringConverter.can_convert_schema_and_raw_data.filter(
-			maybe => !maybe[2],
-		);
-		void it ('resolves true', async () => {
-			for (const entry of pass) {
-				const [schema, raw_data] = entry;
-			const promise = instance.can_convert_schema_and_raw_data(
-					schema,
-					raw_data,
-			);
-
-			await assert.doesNotReject(promise);
-			assert.equal(await promise, true);
-			}
-		});
-		void it ('resolves false', async () => {
-			for (const entry of fail) {
-				const [schema, raw_data] = entry;
-
-			const promise = instance.can_convert_schema_and_raw_data(
-					schema,
-					raw_data,
-			);
-
-			await assert.doesNotReject(promise);
-			assert.equal(await promise, false);
-			}
-		});
-	});
-
-	void describe('convert', () => {
-		void it('succeeds', async () => {
-			for (const entry of data_sets.ConstStringConverter.convert.succeeds) {
-				const [schema, raw_data, expectation] = entry;
-				const promise = instance.convert(schema, raw_data);
-
-			await assert.doesNotReject(promise);
-
-				const {expression} = await promise;
-				expectation(expression);
-			}
-		});
-
-		const {fails} = data_sets.ConstStringConverter.convert;
+		const {fails} = data.convert;
 
 		if (fails) {
 		void it ('fails', async() => {
@@ -301,5 +190,5 @@ void describe('ConstStringConverter', () => {
 			}
 		});
 		}
-	});
-});
+	})
+}
