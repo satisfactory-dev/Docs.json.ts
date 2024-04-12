@@ -218,6 +218,10 @@ void describe('TypedStringConverter', async () => {
 				object_schema,
 				'(foo)',
 			],
+			[
+				object_schema,
+				'(foo=baz)',
+			],
 		];
 
 		for (const entry of can_convert_args) {
