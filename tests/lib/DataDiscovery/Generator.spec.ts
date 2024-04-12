@@ -20,23 +20,47 @@ import {
 import {
 	BasicStringConverter,
 } from '../../../lib/DataDiscovery/JsonSchema/StringType';
+import { SchemaObject } from 'ajv';
+import { schema } from '../../../lib/TypeDefinitionDiscovery/CustomParsingTypes/string_starts_with';
 
 void describe('Converter', async () => {
 	const candidates = await ((new DataDiscovery(docs)).candidates);
+	const expected_converters:[
+		SchemaObject,
+		typeof BasicStringConverter
+	][] = [
+		[
+			{type: 'string'},
+			BasicStringConverter,
+		],
+	];
 
-	void it ('returns a converter', async () => {
+	void it ('returns an expected converter', async () => {
+		for (const entry of expected_converters) {
+			const [schema, expected] = entry;
+
 		not_undefined(
 			Converter.has_matching_schema(
 				candidates,
-				{type: 'string'}
+					schema
 			)
 		);
 		await assert.doesNotReject(
 			Converter.find_matching_schema(
 				candidates,
-				{type: 'string'}
+					schema
 			)
 		);
+
+		const promise = Converter.find_matching_schema(
+			candidates,
+				schema
+		);
+
+		await assert.doesNotReject(promise);
+			is_instanceof(await promise, expected);
+		}
+
 		not_undefined(
 			await Converter.has_matching_schema_and_raw_data(
 				candidates,
@@ -44,15 +68,6 @@ void describe('Converter', async () => {
 				''
 			)
 		);
-
-		const promise = Converter.find_matching_schema(
-			candidates,
-			{type: 'string'}
-		);
-
-		await assert.doesNotReject(promise);
-
-		is_instanceof(await promise, BasicStringConverter);
 	});
 	void it('fails', async() => {
 		await rejects_partial_match(
