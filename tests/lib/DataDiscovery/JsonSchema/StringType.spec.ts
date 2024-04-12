@@ -170,9 +170,19 @@ for (const data_set of Object.entries(data_sets)) {
 			void it('behaves', () => {
 				for (const entry of data.can_convert_schema) {
 					const [schema, expectation] = entry;
+
+					const actual = instance.can_convert_schema(schema);
+
 					assert.equal(
-						instance.can_convert_schema(schema),
-						expectation
+						actual,
+						expectation,
+						`${instance.constructor.name}.can_convert_schema(${
+							JSON.stringify(schema)
+						}) returned ${
+							JSON.stringify(actual)
+						}, expected ${
+							JSON.stringify(expectation)
+						}`
 					);
 				}
 			})
