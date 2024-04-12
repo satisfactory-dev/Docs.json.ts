@@ -15,10 +15,17 @@ import {
 import {
 	SchemaObject,
 } from 'ajv';
+import {
+	typed_string_parent_type,
+} from '../../../../lib/CustomParsingTypes/TypedString';
+import {
+	is_string,
+} from '../../../../lib/StringStartsWith';
 
 void describe('TypedStringConverter', async () => {
+	const discovery = new DataDiscovery(docs);
 	const instance = new TypedStringConverter(
-		new DataDiscovery(docs),
+		discovery,
 		(await docs.schema()).definitions,
 	);
 	const object_schema = {type: 'string', minLength: 1, typed_string: {
@@ -34,12 +41,21 @@ void describe('TypedStringConverter', async () => {
 	/**
 	 * @todo add cases where raw_data is valid but doesn't match shape
 	 */
-	const can_convert_args:[
+	const can_convert_args:(
+		| [
 		SchemaObject, // schema
 		unknown, // raw_data
 		boolean, // passes can_convert_schema
 		boolean, // passes can_convert_schema_and_raw_data
-	][] = [
+		]
+		| [
+			SchemaObject,
+			unknown,
+			boolean,
+			boolean,
+			unknown[]|{[key: string]: unknown}, // expected result
+		]
+	)[] = [
 		[
 			{type: 'string'},
 			null,
@@ -57,18 +73,14 @@ void describe('TypedStringConverter', async () => {
 			'(foo=bar)',
 			true,
 			true,
+			{foo: 'bar'},
 		],
 		[
 			object_schema,
 			'(foo="bar")',
 			true,
 			true,
-		],
-		[
-			object_schema,
-			'(foo=bar   )',
-			true,
-			true,
+			{foo: 'bar'},
 		],
 		[
 			array_schema,
@@ -81,24 +93,21 @@ void describe('TypedStringConverter', async () => {
 			'(bar)',
 			true,
 			true,
+			['bar'],
 		],
 		[
 			array_schema,
 			'("bar")',
 			true,
 			true,
+			['bar'],
 		],
 		[
 			array_schema,
-			'(bar    )',
+			'(bar, bar,"bar", bar)',
 			true,
 			true,
-		],
-		[
-			array_schema,
-			'(bar, bar,"bar"    ,bar)',
-			true,
-			true,
+			['bar', 'bar', 'bar', 'bar'],
 		],
 	];
 
@@ -163,4 +172,65 @@ void describe('TypedStringConverter', async () => {
 			}
 		});
 	});
+
+	void describe('convert', () => {
+		const passes:[
+			typed_string_parent_type,
+			string,
+			unknown[]|{[key:string]: unknown},
+		][] = [];
+		const fails:[typed_string_parent_type, string][] = [];
+
+		for (const entry of can_convert_args) {
+			const [
+				schema,
+				raw_data,
+				first_pass,
+				second_pass,
+				expecting,
+			] = entry;
+
+			if (!is_string(raw_data)) {
+				continue;
+			}
+
+			if (undefined !== expecting && first_pass && second_pass) {
+				passes.push([
+					schema as typed_string_parent_type,
+					raw_data,
+					expecting,
+				]);
+			} else {
+				fails.push([schema as typed_string_parent_type, raw_data]);
+			}
+		}
+
+		void it('passes', async () => {
+			for (const entry of passes) {
+				const [schema, raw_data, expecting] = entry;
+				const promise = instance.convert(schema, raw_data);
+
+				try {
+					await assert.doesNotReject(promise);
+				} catch (err) {
+					console.error(schema, raw_data);
+
+					throw err;
+				}
+				assert.deepEqual(
+					(await promise).expression,
+					await discovery.literal.value_literal(expecting)
+				);
+			}
+		});
+
+		void it('fails', async () => {
+			for (const entry of fails) {
+				const [schema, raw_data] = entry;
+				const promise = instance.convert(schema, raw_data);
+
+				await assert.rejects(promise);
+			}
+		})
+	})
 })
