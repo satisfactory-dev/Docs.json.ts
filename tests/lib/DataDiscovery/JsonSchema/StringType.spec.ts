@@ -164,7 +164,7 @@ for (const data_set of Object.entries(data_sets)) {
 		void it('succeeds', async () => {
 			for (const entry of data.convert.succeeds) {
 				const [schema, raw_data, expectation] = entry;
-				const promise = instance.convert(schema, raw_data);
+				const promise = instance.convert(schema as never, raw_data);
 
 				await assert.doesNotReject(promise);
 
@@ -181,7 +181,7 @@ for (const data_set of Object.entries(data_sets)) {
 					const [schema, raw_data, failure] = entry;
 					await rejects_partial_match(
 						instance.convert(
-							schema,
+							schema as never,
 							raw_data
 						),
 						failure
