@@ -11,12 +11,13 @@ import {
 } from '../../../../assert/CustomAssert';
 import ts_assert from '@signpostmarv/ts-assert';
 
+void describe('UnrealEngineStringConverter', () => {
 const example_UnrealEngineString_value =
 	'/Script/CoreUObject.Class\'/Script/FactoryGame.Example\'';
 
 const instance = new UnrealEngineStringConverter();
 
-void describe('UnrealEngineStringConverter.can_convert_schema()', () => {
+	void describe('can_convert_schema()', () => {
 	void it ('returns false', () => {
 		assert.equal(
 			instance.can_convert_schema({type: 'string'}),
@@ -37,7 +38,7 @@ void describe('UnrealEngineStringConverter.can_convert_schema()', () => {
 });
 
 void describe(
-	'UnrealEngineStringConverter.can_convert_schema_and_raw_data()',
+		'can_convert_schema_and_raw_data()',
 	() => {
 		void it('resolves false', async () => {
 			assert.equal(
@@ -65,7 +66,7 @@ void describe(
 	}
 );
 
-void describe('UnrealEngineStringConverter.convert()', () => {
+	void describe('convert()', () => {
 	void it('rejects', async () => {
 		const result = instance.convert(
 			{
@@ -113,3 +114,4 @@ void describe('UnrealEngineStringConverter.convert()', () => {
 		ts_assert.isCallExpression(result);
 	});
 });
+})
