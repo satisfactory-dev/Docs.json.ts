@@ -39,25 +39,25 @@ void describe('Converter', async () => {
 		for (const entry of expected_converters) {
 			const [schema, expected] = entry;
 
-		not_undefined(
-			Converter.has_matching_schema(
-				candidates,
+			not_undefined(
+				Converter.has_matching_schema(
+					candidates,
 					schema
-			)
-		);
-		await assert.doesNotReject(
-			Converter.find_matching_schema(
-				candidates,
+				)
+			);
+			await assert.doesNotReject(
+				Converter.find_matching_schema(
+					candidates,
 					schema
-			)
-		);
+				)
+			);
 
-		const promise = Converter.find_matching_schema(
-			candidates,
+			const promise = Converter.find_matching_schema(
+				candidates,
 				schema
-		);
+			);
 
-		await assert.doesNotReject(promise);
+			await assert.doesNotReject(promise);
 			is_instanceof(await promise, expected);
 		}
 
