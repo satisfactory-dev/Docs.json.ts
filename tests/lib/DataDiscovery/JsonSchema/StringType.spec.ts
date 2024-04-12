@@ -6,6 +6,7 @@ import assert from 'node:assert/strict';
 import {
 	BasicStringConverter,
 	ConstStringConverter,
+	EnumStringConverter,
 	string_schema,
 } from '../../../../lib/DataDiscovery/JsonSchema/StringType';
 import {
@@ -27,6 +28,9 @@ import {
 import {
 	ConverterMatchesSchema,
 } from '../../../../lib/DataDiscovery/Generator';
+import {
+	enum_schema_type,
+} from '../../../../lib/CustomParsingTypes/TypedStringEnum';
 
 type data_sets<
 	InstanceType extends ConverterMatchesSchema<SchemaType>,
@@ -44,6 +48,7 @@ type data_sets<
 const basic_string_schema:string_schema = {type: 'string'};
 const const_string_schema:const_schema_type = {type: 'string', const: 'Foo'};
 const basic_number_schema = {type: 'number'};
+const enum_string_schema:enum_schema_type = {type: 'string', enum: ['Foo', 'Bar']};
 
 function generate_basic_expression_check(
 	expecting:string
@@ -57,6 +62,7 @@ function generate_basic_expression_check(
 const data_sets: {
 	BasicStringConverter: data_sets<BasicStringConverter, string_schema>,
 	ConstStringConverter: data_sets<ConstStringConverter, const_schema_type>,
+	EnumStringConverter: data_sets<EnumStringConverter, enum_schema_type>,
 } = {
 	BasicStringConverter: {
 		make_instance: () => new BasicStringConverter(docs.ajv),
@@ -121,6 +127,31 @@ const data_sets: {
 						},
 						message: 'Raw data probably did not pass check!',
 					},
+				],
+			],
+		},
+	},
+	EnumStringConverter: {
+		make_instance: () => new EnumStringConverter(docs.ajv),
+		can_convert_schema: [
+			[basic_string_schema, false],
+			[const_string_schema, false],
+			[basic_number_schema, false],
+			[enum_string_schema, true],
+		],
+		can_convert_schema_and_raw_data: [
+			[enum_string_schema, 'Foo', true],
+			[enum_string_schema, 'Bar', true],
+			[enum_string_schema, 'Baz', false],
+			[enum_string_schema, 'foo', false],
+			[enum_string_schema, 'bar', false],
+		],
+		convert: {
+			succeeds: [
+				[
+					enum_string_schema,
+					'Foo',
+					generate_basic_expression_check('Foo'),
 				],
 			],
 		},
