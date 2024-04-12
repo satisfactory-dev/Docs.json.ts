@@ -7,8 +7,8 @@ import {
 	BasicStringConverter,
 	ConstStringConverter,
 	EnumStringConverter,
-	PatternConverter,
 	pattern_schema,
+	PatternConverter,
 	string_schema,
 } from '../../../../lib/DataDiscovery/JsonSchema/StringType';
 import {
