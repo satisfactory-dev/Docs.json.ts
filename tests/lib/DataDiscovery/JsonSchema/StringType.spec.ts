@@ -6,6 +6,7 @@ import assert from 'node:assert/strict';
 import {
 	BasicStringConverter,
 	ConstStringConverter,
+	string_schema,
 } from '../../../../lib/DataDiscovery/JsonSchema/StringType';
 import {
 	docs,
@@ -17,46 +18,161 @@ import {
 import {
 	SchemaObject,
 } from 'ajv';
+import {
+	Expression,
+} from 'typescript';
+import {
+	const_schema_type,
+} from '../../../../lib/CustomParsingTypes/TypedStringConst';
+
+type data_sets<
+	SchemaType extends SchemaObject,
+> = {
+	can_convert_schema: [SchemaObject, boolean][],
+	can_convert_schema_and_raw_data: [SchemaObject, unknown, boolean][],
+	convert: {
+		succeeds: [SchemaType, string, (expression:Expression) => void][],
+		fails?: [SchemaType, string, {[key: string]: unknown}][],
+	},
+};
+
+const basic_string_schema:string_schema = {type: 'string'};
+const const_string_schema:const_schema_type = {type: 'string', const: 'Foo'};
+const basic_number_schema = {type: 'number'};
+
+function generate_basic_expression_check(
+	expecting:string
+): ((expression:Expression) => void) {
+	return (expression:Expression) => {
+		ts_assert.isStringLiteral(expression);
+		assert.equal(expression.text, expecting);
+	};
+}
+
+const data_sets: {
+	BasicStringConverter: data_sets<string_schema>,
+	ConstStringConverter: data_sets<const_schema_type>,
+} = {
+	BasicStringConverter: {
+		can_convert_schema: [
+			[basic_string_schema, true],
+			[const_string_schema, false],
+			[basic_number_schema, false],
+		],
+		can_convert_schema_and_raw_data: [
+			[basic_string_schema, '', true],
+			[basic_string_schema, null, false],
+			[basic_number_schema, '', false],
+		],
+		convert: {
+			succeeds: [
+				[
+					basic_string_schema,
+					'',
+					generate_basic_expression_check(''),
+				],
+			],
+		},
+	},
+	ConstStringConverter: {
+		can_convert_schema: [
+			[basic_string_schema, false],
+			[const_string_schema, true],
+			[basic_number_schema, false],
+		],
+		can_convert_schema_and_raw_data: [
+			[const_string_schema, 'Foo', true],
+			[const_string_schema, 'Bar', false],
+		],
+		convert: {
+			succeeds: [
+				[
+					const_string_schema,
+					'Foo',
+					generate_basic_expression_check('Foo'),
+				],
+			],
+			fails: [
+				[
+					const_string_schema,
+					'',
+					{
+						property: {
+							schema: const_string_schema,
+							raw_data: '',
+						},
+						message: 'Raw data probably did not pass check!',
+					},
+				],
+				[
+					const_string_schema,
+					'Bar',
+					{
+						property: {
+							schema: const_string_schema,
+							raw_data: 'Bar',
+						},
+						message: 'Raw data probably did not pass check!',
+					},
+				],
+			],
+		},
+	},
+};
 
 void describe('BasicStringConverter', () => {
 	const instance = new BasicStringConverter(docs.ajv);
 
 	void describe('can_convert_schema', () => {
+		const pass = data_sets.BasicStringConverter.can_convert_schema.filter(
+			maybe => maybe[1],
+		);
+		const fail = data_sets.BasicStringConverter.can_convert_schema.filter(
+			maybe => !maybe[1],
+		);
 		void it('returns true', () => {
+			for (const entry of pass) {
+				const [schema] = entry;
+
 			assert.equal(
-				instance.can_convert_schema({type: 'string'}),
-				true,
+					instance.can_convert_schema(schema),
+				true
 			);
+			}
 		})
-		void it('return false', () => {
+		void it('returns false', () => {
+			for (const entry of fail) {
+				const [schema] = entry;
+
 			assert.equal(
-				instance.can_convert_schema({type: 'string', const: 'foo'}),
+					instance.can_convert_schema(schema),
 				false
 			);
-			assert.equal(
-				instance.can_convert_schema({type: 'number'}),
-				false
-			);
+			}
 		})
 	})
 
 	void describe('can_convert_schema_and_raw_data', () => {
+		const pass = data_sets.BasicStringConverter.can_convert_schema_and_raw_data.filter(
+			maybe => maybe[2],
+		);
+		const fail = data_sets.BasicStringConverter.can_convert_schema_and_raw_data.filter(
+			maybe => !maybe[2],
+		);
 		void it ('resolves true', async () => {
+			for (const entry of pass) {
+				const [schema, raw_data] = entry;
 			const promise = instance.can_convert_schema_and_raw_data(
-				{type: 'string'},
-				'',
+					schema,
+					raw_data,
 			);
 
 			await assert.doesNotReject(promise);
 			assert.equal(await promise, true);
+			}
 		});
 		void it ('resolves false', async () => {
-			const fails:[SchemaObject, unknown][] = [
-				[{type: 'string'}, null],
-				[{type: 'number'}, ''],
-			];
-
-			for (const entry of fails) {
+			for (const entry of fail) {
 				const [schema, raw_data] = entry;
 
 				const promise = instance.can_convert_schema_and_raw_data(
@@ -65,6 +181,11 @@ void describe('BasicStringConverter', () => {
 				);
 
 				await assert.doesNotReject(promise);
+
+				if (await promise) {
+					console.error(schema, raw_data);
+				}
+
 				assert.equal(await promise, false);
 			}
 		});
@@ -72,14 +193,15 @@ void describe('BasicStringConverter', () => {
 
 	void describe('convert', () => {
 		void it('behaves', async () => {
-			const promise = instance.convert({type: 'string'}, '');
+			for (const entry of data_sets.BasicStringConverter.convert.succeeds) {
+				const [schema, raw_data, expectation] = entry;
+				const promise = instance.convert(schema, raw_data);
 
 			await assert.doesNotReject(promise);
 
 			const {expression} = await promise;
-
-			ts_assert.isStringLiteral(expression);
-			assert.equal(expression.text, '');
+				expectation(expression);
+			}
 		})
 	})
 })
@@ -88,116 +210,96 @@ void describe('ConstStringConverter', () => {
 	const instance = new ConstStringConverter(docs.ajv);
 
 	void describe('can_convert_schema', () => {
+		const pass = data_sets.ConstStringConverter.can_convert_schema.filter(
+			maybe => maybe[1],
+		);
+		const fail = data_sets.ConstStringConverter.can_convert_schema.filter(
+			maybe => !maybe[1],
+		);
 		void it('returns true', () => {
+			for (const entry of pass) {
+				const [schema] = entry;
+
 			assert.equal(
-				instance.can_convert_schema({
-					type: 'string',
-					const: 'Foo',
-				}),
-				true,
+					instance.can_convert_schema(schema),
+				true
 			);
-		});
+			}
+		})
 		void it('returns false', () => {
+			for (const entry of fail) {
+				const [schema] = entry;
+
 			assert.equal(
-				instance.can_convert_schema({type: 'string'}),
+					instance.can_convert_schema(schema),
 				false
 			);
-			assert.equal(
-				instance.can_convert_schema({
-					type: 'boolean',
-					const: true,
-				}),
-				false
-			);
-		});
-	});
+			}
+		})
+	})
 
 	void describe('can_convert_schema_and_raw_data', () => {
-		void it('resolves true', async () => {
+		const pass = data_sets.ConstStringConverter.can_convert_schema_and_raw_data.filter(
+			maybe => maybe[2],
+		);
+		const fail = data_sets.ConstStringConverter.can_convert_schema_and_raw_data.filter(
+			maybe => !maybe[2],
+		);
+		void it ('resolves true', async () => {
+			for (const entry of pass) {
+				const [schema, raw_data] = entry;
 			const promise = instance.can_convert_schema_and_raw_data(
-				{
-					type: 'string',
-					const: 'Foo',
-				},
-				'Foo',
+					schema,
+					raw_data,
 			);
 
 			await assert.doesNotReject(promise);
-
 			assert.equal(await promise, true);
+			}
 		});
-		void it('resolves false', async () => {
+		void it ('resolves false', async () => {
+			for (const entry of fail) {
+				const [schema, raw_data] = entry;
+
 			const promise = instance.can_convert_schema_and_raw_data(
-				{
-					type: 'string',
-					const: 'Foo',
-				},
-				'Bar',
+					schema,
+					raw_data,
 			);
 
 			await assert.doesNotReject(promise);
-
 			assert.equal(await promise, false);
+			}
 		});
 	});
 
 	void describe('convert', () => {
 		void it('succeeds', async () => {
-			const promise = instance.convert(
-				{
-					type: 'string',
-					const: 'Foo',
-				},
-				'Foo',
-			);
+			for (const entry of data_sets.ConstStringConverter.convert.succeeds) {
+				const [schema, raw_data, expectation] = entry;
+				const promise = instance.convert(schema, raw_data);
 
 			await assert.doesNotReject(promise);
 
-			const result = (await promise).expression;
-
-			ts_assert.isStringLiteral(result);
-			assert.equal(result.text, 'Foo');
+				const {expression} = await promise;
+				expectation(expression);
+			}
 		});
 
-		void it ('fails', async () => {
+		const {fails} = data_sets.ConstStringConverter.convert;
+
+		if (fails) {
+		void it ('fails', async() => {
+			for (const entry of fails) {
+				const [schema, raw_data, failure] = entry;
 			await rejects_partial_match(
 				instance.convert(
-					{
-						type: 'string',
-						const: 'Foo',
-					},
-					'Bar',
+						schema,
+						raw_data
 				),
-				{
-					property: {
-						schema: {
-							type: 'string',
-							const: 'Foo',
-						},
-						raw_data: 'Bar',
-					},
-					message: 'Raw data probably did not pass check!',
-				},
+					failure
 			);
-			await rejects_partial_match(
-				instance.convert(
-					{
-						type: 'string',
-						const: 'Foo',
-					},
-					'',
-				),
-				{
-					property: {
-						schema: {
-							type: 'string',
-							const: 'Foo',
-						},
-						raw_data: '',
-					},
-					message: 'Raw data probably did not pass check!',
-				},
-			);
+			}
 		});
+		}
 	});
 });

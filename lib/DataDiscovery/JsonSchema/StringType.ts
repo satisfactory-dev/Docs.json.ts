@@ -26,7 +26,7 @@ import {
 	type_reference_node,
 } from '../../TsFactoryWrapper';
 
-type string_schema = {
+export type string_schema = {
 	type: 'string',
 	minLength?: number,
 };
