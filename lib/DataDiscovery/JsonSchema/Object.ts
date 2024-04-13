@@ -24,7 +24,7 @@ import {
 	ObjectLiteralExpression,
 } from 'typescript';
 
-type schema_type = {
+export type schema_type = {
 	type: 'object',
 	$ref: local_ref<string>,
 	unevaluatedProperties?: false,
