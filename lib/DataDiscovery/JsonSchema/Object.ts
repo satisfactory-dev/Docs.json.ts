@@ -73,16 +73,10 @@ export class ObjectConverter extends ConverterMatchesSchema<
 		);
 	}
 
-	async convert(
+	async check_converters(
 		schema: schema_type,
 		raw_data: {[key: string]: unknown}
-	): Promise<ExpressionResult<ObjectLiteralExpression>> {
-		performance.mark(`${this.constructor.name}.convert() start`);
-		const sub_schema = await this.resolve_schema(schema);
-		performance.measure(
-			`${this.constructor.name}.convert() sub_schema`,
-			`${this.constructor.name}.convert() start`
-		);
+	) {
 		performance.mark(`${this.constructor.name}.convert() start`);
 		const converters = await this.resolve_converters(schema);
 		performance.measure(
@@ -90,8 +84,6 @@ export class ObjectConverter extends ConverterMatchesSchema<
 			`${this.constructor.name}.convert() start`
 		);
 		performance.mark(`${this.constructor.name}.convert() start`);
-
-		const result:{[key: string]: ExpressionResult} = {};
 
 		const missing_keys = Object.keys(raw_data).filter((
 			maybe
@@ -111,6 +103,23 @@ export class ObjectConverter extends ConverterMatchesSchema<
 				'Missing converters'
 			);
 		}
+
+		return converters;
+	}
+
+	async convert(
+		schema: schema_type,
+		raw_data: {[key: string]: unknown}
+	): Promise<ExpressionResult<ObjectLiteralExpression>> {
+		performance.mark(`${this.constructor.name}.convert() start`);
+		const sub_schema = await this.resolve_schema(schema);
+		performance.measure(
+			`${this.constructor.name}.convert() sub_schema`,
+			`${this.constructor.name}.convert() start`
+		);
+
+		const converters = await this.check_converters(schema, raw_data);
+		const result:{[key: string]: ExpressionResult} = {};
 
 		for (const entry of Object.entries(raw_data)) {
 			const [property, value] = entry;
