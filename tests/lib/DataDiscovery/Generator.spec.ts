@@ -39,11 +39,21 @@ import {
 import {
 	UnrealEngineStringConverter,
 } from '../../../lib/DataDiscovery/CustomTypes/UnrealEngineString';
-import { ObjectConverter } from '../../../lib/DataDiscovery/JsonSchema/Object';
-import { StringStartsWithConverter } from '../../../lib/DataDiscovery/CustomTypes/StringStartsWith';
-import { TypedStringConverter } from '../../../lib/DataDiscovery/CustomTypes/TypedString';
-import { Ref } from '../../../lib/DataDiscovery/JsonSchema/Ref';
-import { OneOfConverter } from '../../../lib/DataDiscovery/JsonSchema/OneOf';
+import {
+	ObjectConverter,
+} from '../../../lib/DataDiscovery/JsonSchema/Object';
+import {
+	StringStartsWithConverter,
+} from '../../../lib/DataDiscovery/CustomTypes/StringStartsWith';
+import {
+	TypedStringConverter,
+} from '../../../lib/DataDiscovery/CustomTypes/TypedString';
+import {
+	Ref,
+} from '../../../lib/DataDiscovery/JsonSchema/Ref';
+import {
+	OneOfConverter,
+} from '../../../lib/DataDiscovery/JsonSchema/OneOf';
 
 void describe('Converter', async () => {
 	const candidates = await ((new DataDiscovery(docs)).candidates);
@@ -146,13 +156,13 @@ void describe('Converter', async () => {
 			for (const entry of expected_converters) {
 				const [schema] = entry;
 
-			not_undefined(
-				Converter.has_matching_schema(
-					candidates,
-					schema
+				not_undefined(
+					Converter.has_matching_schema(
+						candidates,
+						schema
 					),
 					`expected to find something for ${JSON.stringify(schema)}`
-			);
+				);
 			}
 		})
 	})
@@ -163,12 +173,12 @@ void describe('Converter', async () => {
 			for (const entry of expected_converters) {
 				const [schema] = entry;
 
-			await assert.doesNotReject(
-				Converter.find_matching_schema(
-					candidates,
-					schema
-				)
-			);
+				await assert.doesNotReject(
+					Converter.find_matching_schema(
+						candidates,
+						schema
+					)
+				);
 			}
 		})
 	})
@@ -216,13 +226,13 @@ void describe('Converter', async () => {
 
 	void describe('has_matching_schema_and_raw_data', () => {
 		void it ('resolves to something', async () => {
-		not_undefined(
-			await Converter.has_matching_schema_and_raw_data(
-				candidates,
-				{type: 'string'},
-				''
-			)
-		);
+			not_undefined(
+				await Converter.has_matching_schema_and_raw_data(
+					candidates,
+					{type: 'string'},
+					''
+				)
+			);
 		})
 	});
 	void it('fails', async() => {
