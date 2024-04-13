@@ -5,11 +5,11 @@ export function setup_PerformanceObserver(clear_lines = true)
 	const tweak_order_by_prefix = [
 		'bootstrap',
 		'ajv compile',
-		'TypeDefinitionWriter.write()',
+		'TypeDefinitionWriter.',
 		'Docs.json',
-		'ObjectConverter.convert()',
-		'ObjectConverter.resolve_schema()',
+		'ObjectConverter.',
 		'Ref.',
+		'TypedStringConverter.',
 	];
 
 	let last_total_lines = 0;

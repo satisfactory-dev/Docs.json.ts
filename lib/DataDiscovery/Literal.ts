@@ -83,7 +83,7 @@ export class Literal
 		if (is_string(from)) {
 			const result = ts.factory.createStringLiteral(from);
 			performance.measure(
-				'value_literal(createStringLiteral)',
+				`${this.constructor.name}.value_literal() createStringLiteral`,
 				`${this.constructor.name}.value_literal() start`
 			);
 
@@ -91,7 +91,7 @@ export class Literal
 		} else if (from instanceof ExpressionResult) {
 			const result = (from as ExpressionResult).expression;
 			performance.measure(
-				'value_literal(ExpressionResult)',
+				`${this.constructor.name}.value_literal() ExpressionResult`,
 				`${this.constructor.name}.value_literal() start`
 			);
 
@@ -99,7 +99,7 @@ export class Literal
 		} if (value_is_non_array_object(from)) {
 			const result = await this.object_literal(from);
 			performance.measure(
-				'value_literal(object_literal)',
+				`${this.constructor.name}.value_literal() object_literal`,
 				`${this.constructor.name}.value_literal() start`
 			);
 
@@ -109,7 +109,7 @@ export class Literal
 				? ts.factory.createTrue()
 				: ts.factory.createFalse();
 			performance.measure(
-				'value_literal(boolean)',
+				`${this.constructor.name}.value_literal() boolean`,
 				`${this.constructor.name}.value_literal() start`
 			);
 
@@ -117,7 +117,7 @@ export class Literal
 		} else if (undefined === from) {
 			const result = ts.factory.createIdentifier('undefined');
 			performance.measure(
-				'value_literal(undefined)',
+				`${this.constructor.name}.value_literal() undefined`,
 				`${this.constructor.name}.value_literal() start`
 			);
 
@@ -129,7 +129,7 @@ export class Literal
 		const result = await this.array_literal(from);
 
 		performance.measure(
-			'value_literal(array)',
+			`${this.constructor.name}.value_literal() array`,
 			`${this.constructor.name}.value_literal() start`
 		);
 

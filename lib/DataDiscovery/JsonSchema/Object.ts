@@ -219,15 +219,15 @@ export class ObjectConverter extends ConverterMatchesSchema<
 		depth = 0
 	): Promise<{[key: string]: SchemaObject}> {
 		performance.mark(
-			`${this.constructor.name}.resolve_schema(SchemaObject) start`
+			`${this.constructor.name}.resolve_schema() start`
 		);
 
 		const json_string = JSON.stringify(schema);
 
 		if (json_string in this.already_resolved) {
 			performance.measure(
-				`${this.constructor.name}.resolve_schema(SchemaObject) previously resolved`,
-				`${this.constructor.name}.resolve_schema(SchemaObject) start`
+				`${this.constructor.name}.resolve_schema() previously resolved`,
+				`${this.constructor.name}.resolve_schema() start`
 			);
 
 			return this.already_resolved[json_string];
@@ -280,8 +280,8 @@ export class ObjectConverter extends ConverterMatchesSchema<
 		}
 
 		performance.measure(
-			`${this.constructor.name}.resolve_schema(SchemaObject)`,
-			`${this.constructor.name}.resolve_schema(SchemaObject) start`
+			`${this.constructor.name}.resolve_schema()`,
+			`${this.constructor.name}.resolve_schema() start`
 		);
 
 		this.already_resolved[json_string] = resolved_schema;
