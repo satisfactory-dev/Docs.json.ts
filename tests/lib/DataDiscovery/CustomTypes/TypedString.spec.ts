@@ -206,7 +206,17 @@ void describe('TypedStringConverter', async () => {
 				);
 
 				await assert.doesNotReject(promise);
-				assert.equal(await promise, true);
+				assert.equal(
+					await promise,
+					true,
+					`failed to behave as expected with ${
+						instance.constructor.name
+					}.can_convert_schema_and_raw_data(${
+						JSON.stringify(schema)
+					}, ${
+						JSON.stringify(raw_data)
+					})`
+				);
 			}
 		});
 

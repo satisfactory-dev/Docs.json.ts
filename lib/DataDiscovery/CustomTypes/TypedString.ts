@@ -78,7 +78,24 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 				)
 				|| (
 					!('required' in schema.typed_string)
-					&& false !== string_to_array(raw_data, true)
+					&& (
+						(
+							typed_string.is_array_type(schema.typed_string)
+							&& this.check_shallow_array_schema(
+								schema.typed_string,
+								string_to_array(raw_data, true)
+							)
+						)
+						|| (
+							typed_string.is_prefixItems_type(
+								schema.typed_string
+							)
+							&& this.check_shallow_array_prefixItems_schema(
+								schema.typed_string,
+								string_to_array(raw_data, true)
+							)
+						)
+					)
 				)
 			)
 		);
@@ -147,13 +164,61 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 		);
 	}
 
+	private check_shallow_array_prefixItems_schema(
+		schema: typed_string_inner_array_prefixItems_type,
+		shallow: unknown
+	) {
+		if (!(shallow instanceof Array)) {
+			return false;
+		}
+
+		for (const entry of (shallow as unknown[])) {
+			if (!is_string(entry)) {
+				return false;
+			}
+
+			const inner_shallow = string_to_array(entry, true);
+
+			if (
+				false === inner_shallow
+				|| !this.check_shallow_array_schema(schema, inner_shallow)
+			) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
 	private check_shallow_array_schema(
 		schema:
 			| typed_string_inner_array_type
 			| typed_string_inner_array_prefixItems_type,
 		shallow: unknown
-	): asserts shallow is {[key: string]: unknown} {
-		const check = compile<{[key: string]: unknown}>(
+	) {
+		if (false === shallow) {
+			return false;
+		}
+
+		const check = compile<unknown[]>(
+			this.discovery.docs.ajv,
+			{
+				...schema,
+				definitions: this.definitions,
+				type: 'array',
+			},
+		);
+
+		return !!check(shallow);
+	}
+
+	private check_shallow_array_schema_assert(
+		schema:
+			| typed_string_inner_array_type
+			| typed_string_inner_array_prefixItems_type,
+		shallow: unknown
+	): asserts shallow is unknown[] {
+		const check = compile<unknown[]>(
 			this.discovery.docs.ajv,
 			{
 				...schema,
@@ -179,7 +244,7 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 		shallow: unknown[]
 	) : Promise<ExpressionResult<ArrayLiteralExpression>> {
 		performance.mark(`${this.constructor.name}.convert_array() start`);
-		this.check_shallow_array_schema(schema, shallow);
+		this.check_shallow_array_schema_assert(schema, shallow);
 
 		const converter = await Converter.find_matching_schema(
 			await this.discovery.candidates,
@@ -323,7 +388,7 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 				);
 			}
 
-			this.check_shallow_array_schema(schema, inner_shallow);
+			this.check_shallow_array_schema_assert(schema, inner_shallow);
 
 			slightly_less_than_shallow.push(inner_shallow);
 		}
