@@ -396,17 +396,17 @@ export function minimum_size_array_of_single_type(
 	generate: () => ts.TypeNode,
 	max: number | undefined = undefined
 ): ts.TupleTypeNode {
-	if (repeat < 1) {
+	if (repeat < 0) {
 		throw new Error(
-			`repeat must be greater than or equal to 1, ${repeat} given.`
+			`repeat must be greater than or equal to 0, ${repeat} given.`
 		);
 	} else if (repeat !== (repeat | 0)) {
 		throw new Error(`repeat must be an integer, ${repeat} given.`);
 	}
 
-	const types = [generate()];
+	const types = [];
 
-	for (let iteration = 1; iteration < repeat; ++iteration) {
+	for (let iteration = 0; iteration < repeat; ++iteration) {
 		types.push(generate());
 	}
 
