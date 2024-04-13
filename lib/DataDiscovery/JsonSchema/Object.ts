@@ -67,9 +67,13 @@ export class ObjectConverter extends ConverterMatchesSchema<
 		schema:SchemaObject,
 		raw_data:unknown
 	) : Promise<boolean> {
-		return Promise.resolve(
+		return (
 			this.can_convert_schema(schema)
 			&& value_is_non_array_object(raw_data)
+			&& 0 === this.check_converters_for_missing_keys(
+				raw_data,
+				await this.resolve_converters(schema)
+			).length
 		);
 	}
 
@@ -77,22 +81,18 @@ export class ObjectConverter extends ConverterMatchesSchema<
 		schema: schema_type,
 		raw_data: {[key: string]: unknown}
 	) {
-		performance.mark(`${this.constructor.name}.convert() start`);
 		const converters = await this.resolve_converters(schema);
-		performance.measure(
-			`${this.constructor.name}.convert() resolve_converters`,
-			`${this.constructor.name}.convert() start`
-		);
-		performance.mark(`${this.constructor.name}.convert() start`);
+		performance.mark(`${this.constructor.name}.check_converters() start`);
 
-		const missing_keys = Object.keys(raw_data).filter((
-			maybe
-		) => !(maybe in converters));
+		const missing_keys = this.check_converters_for_missing_keys(
+			raw_data,
+			converters
+		);
 
 		if (missing_keys.length) {
 			performance.measure(
-				`${this.constructor.name}.convert() missing converters`,
-				`${this.constructor.name}.convert() start`
+				`${this.constructor.name}.check_converters() missing converters`,
+				`${this.constructor.name}.check_converters() start`
 			);
 			throw new NoMatchError(
 				{
@@ -105,6 +105,15 @@ export class ObjectConverter extends ConverterMatchesSchema<
 		}
 
 		return converters;
+	}
+
+	check_converters_for_missing_keys(
+		raw_data: {[key: string]: unknown},
+		converters: {[key: string]: Converter<SchemaObject>}
+	) {
+		return Object.keys(raw_data).filter((
+			maybe
+		) => !(maybe in converters));
 	}
 
 	async convert(
@@ -165,6 +174,7 @@ export class ObjectConverter extends ConverterMatchesSchema<
 	private async resolve_converters(
 		schema: SchemaObject
 	): Promise<{[key: string]: Converter<SchemaObject>}> {
+		performance.mark(`${this.constructor.name}.resolve_converters() start`);
 		const converters:{[key: string]: Converter<SchemaObject>} = {};
 
 		if (
@@ -209,6 +219,11 @@ export class ObjectConverter extends ConverterMatchesSchema<
 				}
 			}
 		}
+
+		performance.measure(
+			`${this.constructor.name}.resolve_converters() resolve_converters`,
+			`${this.constructor.name}.resolve_converters() start`
+		);
 
 		return converters;
 	}
