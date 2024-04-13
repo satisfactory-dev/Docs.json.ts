@@ -92,6 +92,10 @@ void describe('Converter', async () => {
 			ArrayConverter,
 		],
 		[
+			{type: 'array', minItems: 0, items: {type: 'string'}},
+			ArrayConverter,
+		],
+		[
 			{type: 'string', minLength: 1, UnrealEngineString: true},
 			UnrealEngineStringConverter,
 		],

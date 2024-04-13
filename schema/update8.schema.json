@@ -1689,6 +1689,7 @@
 				},
 				"mUnlocks": {
 					"type": "array",
+					"minItems": 0,
 					"items": {
 						"oneOf": [
 							{
