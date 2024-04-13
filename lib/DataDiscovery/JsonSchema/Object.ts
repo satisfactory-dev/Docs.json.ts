@@ -74,8 +74,19 @@ export class ObjectConverter extends ConverterMatchesSchema<
 		schema: schema_type,
 		raw_data: {[key: string]: unknown}
 	): Promise<ExpressionResult<ObjectLiteralExpression>> {
+		performance.mark(`${this.constructor.name}.convert() start`);
 		const sub_schema = await this.resolve_schema(schema);
+		performance.measure(
+			`${this.constructor.name}.convert() sub_schema`,
+			`${this.constructor.name}.convert() start`
+		);
+		performance.mark(`${this.constructor.name}.convert() start`);
 		const converters = await this.resolve_converters(schema);
+		performance.measure(
+			`${this.constructor.name}.convert() resolve_converters`,
+			`${this.constructor.name}.convert() start`
+		);
+		performance.mark(`${this.constructor.name}.convert() start`);
 
 		const result:{[key: string]: ExpressionResult} = {};
 
@@ -84,6 +95,10 @@ export class ObjectConverter extends ConverterMatchesSchema<
 		) => !(maybe in converters));
 
 		if (missing_keys.length) {
+			performance.measure(
+				`${this.constructor.name}.convert() missing converters`,
+				`${this.constructor.name}.convert() start`
+			);
 			throw new NoMatchError(
 				{
 					missing_keys,
@@ -117,10 +132,22 @@ export class ObjectConverter extends ConverterMatchesSchema<
 				value
 			);
 		}
+		performance.measure(
+			`${this.constructor.name}.convert() converted`,
+			`${this.constructor.name}.convert() start`
+		);
+		performance.mark(`${this.constructor.name}.convert() start`);
 
-		return new ExpressionResult(
+		const expression = new ExpressionResult(
 			await this.discovery.literal.object_literal(result)
 		);
+
+		performance.measure(
+			`${this.constructor.name}.convert() expression`,
+			`${this.constructor.name}.convert() start`
+		);
+
+		return expression;
 	}
 
 	private async resolve_converters(

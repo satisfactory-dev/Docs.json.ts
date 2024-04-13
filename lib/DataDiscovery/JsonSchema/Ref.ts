@@ -46,13 +46,17 @@ export class Ref extends ConverterMatchesSchema<
 		schema: SchemaObject,
 		raw_data: unknown
 	): Promise<boolean> {
-		performance.mark('start');
+		performance.mark(
+			`${this.constructor.name}.can_convert_schema_and_raw_data() start`
+		);
 		if (!this.can_convert_schema(schema)) {
 			performance.measure(
 				`${
 					this.constructor.name
 				}.can_convert_schema_and_raw_data() early exit`,
-				'start'
+				`${
+					this.constructor.name
+				}.can_convert_schema_and_raw_data() start`
 			);
 
 			return false;
@@ -73,7 +77,7 @@ export class Ref extends ConverterMatchesSchema<
 			`${
 				this.constructor.name
 			}.can_convert_schema_and_raw_data() resolved`,
-			'start'
+			`${this.constructor.name}.can_convert_schema_and_raw_data() start`
 		);
 
 		return result;
@@ -83,7 +87,7 @@ export class Ref extends ConverterMatchesSchema<
 		schema: schema_type,
 		raw_data: schema_type
 	): Promise<ExpressionResult> {
-		performance.mark('start');
+		performance.mark(`${this.constructor.name}.convert() start`);
 
 		const maybe = await this.resolve_to_final_converter_schema_only(
 			schema
@@ -111,7 +115,7 @@ export class Ref extends ConverterMatchesSchema<
 
 		performance.measure(
 			`${this.constructor.name}.convert()`,
-			'start'
+			`${this.constructor.name}.convert() start`
 		);
 
 		return result;
@@ -122,7 +126,9 @@ export class Ref extends ConverterMatchesSchema<
 	): Promise<final_resolve_result> {
 		let checking:SchemaObject = schema;
 
-		performance.mark('start');
+		performance.mark(`${
+			this.constructor.name
+		}.resolve_to_final_converter_schema_only() start`);
 
 		if (!(schema.$ref in this.cache)) {
 			while (this.can_convert_schema(checking)) {
@@ -148,14 +154,18 @@ export class Ref extends ConverterMatchesSchema<
 
 			performance.measure(
 				`${this.constructor.name}.resolve_to_final_converter_schema_only()`,
-				'start'
+				`${
+					this.constructor.name
+				}.resolve_to_final_converter_schema_only() start`
 			);
 
 			this.cache[schema.$ref] = [checking, converter];
 		} else {
 			performance.measure(
 				`${this.constructor.name}.resolve_to_final_converter_schema_only() cached`,
-				'start'
+				`${
+					this.constructor.name
+				}.resolve_to_final_converter_schema_only() start`
 			);
 		}
 

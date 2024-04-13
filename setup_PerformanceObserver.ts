@@ -1,6 +1,16 @@
 export function setup_PerformanceObserver(clear_lines = true)
 {
 	const measure_totals: {[key: string]: [number, number]} = {};
+
+	const tweak_order_by_prefix = [
+		'bootstrap',
+		'ajv compile',
+		'TypeDefinitionWriter.write()',
+		'Docs.json',
+		'ObjectConverter.convert()',
+		'Ref.',
+	];
+
 	let last_total_lines = 0;
 
 	const obs = new PerformanceObserver((list) => {
@@ -12,7 +22,9 @@ export function setup_PerformanceObserver(clear_lines = true)
 			measure_totals[entry.name][1] += 1;
 		}
 
-		const results = Object.entries(measure_totals).map((e) => {
+		const results = Object.entries(measure_totals).map((
+			e
+		): [string, {[key: string]: string|number}] => {
 			return [
 				e[0],
 				{
@@ -32,7 +44,32 @@ export function setup_PerformanceObserver(clear_lines = true)
 
 		console.table(
 			Object.fromEntries(
-				results
+				results.sort((a, b) => {
+					const a_prefix = tweak_order_by_prefix.find(
+						maybe => a[0].startsWith(maybe)
+					);
+					const b_prefix = tweak_order_by_prefix.find(
+						maybe => b[0].startsWith(maybe)
+					);
+
+					if (a_prefix || b_prefix) {
+						if (!b_prefix) {
+							return -1;
+						} else if (!a_prefix) {
+							return 1;
+						}
+
+						return (
+							tweak_order_by_prefix.indexOf(
+								a_prefix
+							) - tweak_order_by_prefix.indexOf(
+								b_prefix
+							)
+						);
+					}
+
+					return 0; // leave in order they came in
+				})
 			)
 		);
 

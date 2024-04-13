@@ -150,13 +150,19 @@ export class TypeDefinitionWriter
 		parent_folder: string,
 		cleanup = true,
 	) {
-		performance.mark('start');
+		performance.mark(`${this.constructor.name}.write() start`);
 		await this.prepare();
-		performance.measure(`${this.constructor.name}.write() prepare`, 'start');
-		performance.mark('start');
+		performance.measure(
+			`${this.constructor.name}.write() prepare`,
+			`${this.constructor.name}.write() start`
+		);
+		performance.mark(`${this.constructor.name}.write() start`);
 		const discovery = await this.discovery;
-		performance.measure(`${this.constructor.name}.write() discovery`, 'start');
-		performance.mark('start');
+		performance.measure(
+			`${this.constructor.name}.write() discovery`,
+			`${this.constructor.name}.write() start`
+		);
+		performance.mark(`${this.constructor.name}.write() start`);
 		await writeFile(
 			`${__dirname}/../types-progress.md`,
 			await discovery.generate_markdown()
@@ -165,17 +171,23 @@ export class TypeDefinitionWriter
 			`${__dirname}/../data-progress.md`,
 			await this.data_discovery.generate_markdown()
 		);
-		performance.measure(`${this.constructor.name}.write() generate_markdown`, 'start');
+		performance.measure(
+			`${this.constructor.name}.write() generate_markdown`,
+			`${this.constructor.name}.write() start`
+		);
 
 		if (cleanup) {
-			performance.mark('start');
+			performance.mark(`${this.constructor.name}.write() start`);
 			for (const remove of await glob(`${parent_folder}/**/*.{ts,js,map}`)) {
 				await unlink(remove);
 			}
-			performance.measure(`${this.constructor.name}.write() cleanup`, 'start');
+			performance.measure(
+				`${this.constructor.name}.write() cleanup`,
+				`${this.constructor.name}.write() start`
+			);
 		}
 
-		performance.mark('start');
+		performance.mark(`${this.constructor.name}.write() start`);
 		const types = await discovery.discover_type_definitions();
 		const schema = await this.docs.schema();
 
@@ -235,12 +247,18 @@ export class TypeDefinitionWriter
 				this.data_discovery,
 			]
 		);
-		performance.measure(`${this.constructor.name}.write() FilesGenerator`, 'start');
-		performance.mark('start');
+		performance.measure(
+			`${this.constructor.name}.write() FilesGenerator`,
+			`${this.constructor.name}.write() start`
+		);
+		performance.mark(`${this.constructor.name}.write() start`);
 
 		const auto_imports = new DocsTsAutoImports(files);
 		const import_tracker = auto_imports.generate();
-		performance.measure(`${this.constructor.name}.write() auto_imports`, 'start');
+		performance.measure(
+			`${this.constructor.name}.write() auto_imports`,
+			`${this.constructor.name}.write() start`
+		);
 
 		await writeFile(
 			`${__dirname}/../imports-come-from.json`,
@@ -251,7 +269,7 @@ export class TypeDefinitionWriter
 			newLine: ts.NewLineKind.LineFeed,
 		});
 
-		performance.mark('start');
+		performance.mark(`${this.constructor.name}.write() start`);
 		for (const entry of Object.entries(files)) {
 			const result_file = ts.createSourceFile(
 				entry[0],
@@ -417,18 +435,27 @@ export class TypeDefinitionWriter
 				)
 			);
 		}
-		performance.measure(`${this.constructor.name}.write() actually write files`, 'start');
+		performance.measure(
+			`${this.constructor.name}.write() actually write files`,
+			`${this.constructor.name}.write() start`
+		);
 
-		performance.mark('start');
+		performance.mark(`${this.constructor.name}.write() start`);
 		await writeFile(
 			`${__dirname}/../data-progress.md`,
 			await this.data_discovery.generate_markdown()
 		);
-		performance.measure(`${this.constructor.name}.write() generate_markdown`, 'start');
+		performance.measure(
+			`${this.constructor.name}.write() generate_markdown`,
+			`${this.constructor.name}.write() start`
+		);
 
-		performance.mark('start');
+		performance.mark(`${this.constructor.name}.write() start`);
 		await eslint_generated_types(parent_folder);
-		performance.measure(`${this.constructor.name}.write() eslint`, 'start');
+		performance.measure(
+			`${this.constructor.name}.write() eslint`,
+			`${this.constructor.name}.write() start`
+		);
 	}
 
 	private async prepare()

@@ -125,7 +125,7 @@ export class DataDiscovery
 
 		let index = 0;
 		for (const e of docs) {
-			performance.mark('start');
+			performance.mark(`${this.constructor.name}.generate() start`);
 			const converter = await Converter.find_matching_schema(
 				await this.candidates,
 				schema.prefixItems[index]
@@ -140,7 +140,7 @@ export class DataDiscovery
 
 			performance.measure(
 				`${this.constructor.name}.generate() on item`,
-				'start'
+				`${this.constructor.name}.generate() start`
 			);
 
 			result.push([maybe_result, e]);
@@ -167,7 +167,9 @@ export class DataDiscovery
 				this.progress[NativeClass_raw].push(item.ClassName);
 			}
 
-			performance.mark('start');
+			performance.mark(
+				`${this.constructor.name}.generate_files() const generation start`
+			);
 
 			const result_statement = create_const_statement(variable(
 				adjust_class_name(entry_class_name),
@@ -177,7 +179,10 @@ export class DataDiscovery
 				),
 			));
 
-			performance.measure('NativeClass const generation', 'start');
+			performance.measure(
+				`${this.constructor.name}.generate_files() const generation`,
+				`${this.constructor.name}.generate_files() const generation start`
+			);
 
 			yield {
 				file,

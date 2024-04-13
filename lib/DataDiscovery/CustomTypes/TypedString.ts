@@ -178,6 +178,7 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 		schema: typed_string_inner_array_type,
 		shallow: unknown[]
 	) : Promise<ExpressionResult<ArrayLiteralExpression>> {
+		performance.mark(`${this.constructor.name}.convert_array() start`);
 		this.check_shallow_array_schema(schema, shallow);
 
 		const converter = await Converter.find_matching_schema(
@@ -191,18 +192,25 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 			items.push(await converter.convert(schema.items, e));
 		}
 
-		return new ExpressionResult(
+		const result = new ExpressionResult(
 			await this.discovery.literal.array_literal(
 				items
 			)
 		);
+
+		performance.measure(
+			`${this.constructor.name}.convert_array()`,
+			`${this.constructor.name}.convert_array() start`
+		);
+
+		return result;
 	}
 
 	private async convert_object(
 		schema:typed_string_inner_object_type,
 		shallow:{[key: string]: unknown}
 	) : Promise<ExpressionResult<ObjectLiteralExpression>> {
-		performance.mark('start');
+		performance.mark(`${this.constructor.name}.convert_object() start`);
 		const check = compile<
 			{[key: string]: unknown}
 		>(
@@ -257,18 +265,21 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 		const converted = Object.fromEntries(converted_entries);
 
 		performance.measure(
-			'typed_string to object_literal bootstrap',
-			'start'
+			`${this.constructor.name}.convert_object() bootstrap`,
+			`${this.constructor.name}.convert_object() start`
 		);
 
 		try {
-			performance.mark('start');
+			performance.mark(`${this.constructor.name}.convert_object() start`);
 
 			const result = new ExpressionResult(
 				await this.discovery.literal.object_literal(converted)
 			);
 
-			performance.measure('typed_string to object_literal', 'start');
+			performance.measure(
+				`${this.constructor.name}.convert_object()`,
+				`${this.constructor.name}.convert_object() start`
+			);
 
 			return result;
 		} catch (error) {
@@ -286,7 +297,7 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 		schema: typed_string_inner_array_prefixItems_type,
 		shallow: unknown[]
 	): Promise<ExpressionResult<ArrayLiteralExpression>> {
-		performance.mark('start');
+		performance.mark(`${this.constructor.name}.convert_prefixItems() start`);
 		const slightly_less_than_shallow:unknown[][] = [];
 
 		for (const entry of shallow) {
@@ -371,7 +382,7 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 
 		performance.measure(
 			`${this.constructor.name}.convert_prefixItems()`,
-			'start'
+			`${this.constructor.name}.convert_prefixItems() start`
 		);
 
 		return result;
