@@ -68,6 +68,10 @@ void describe('Converter', async () => {
 			BasicStringConverter,
 		],
 		[
+			{type: 'string', minLength: 1},
+			BasicStringConverter,
+		],
+		[
 			{type: 'string', const: 'foo'},
 			ConstStringConverter,
 		],
