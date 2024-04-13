@@ -8,6 +8,7 @@ export function setup_PerformanceObserver(clear_lines = true)
 		'TypeDefinitionWriter.write()',
 		'Docs.json',
 		'ObjectConverter.convert()',
+		'ObjectConverter.resolve_schema()',
 		'Ref.',
 	];
 

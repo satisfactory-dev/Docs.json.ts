@@ -37,6 +37,9 @@ export class ObjectConverter extends ConverterMatchesSchema<
 	{[key: string]: unknown},
 	ObjectLiteralExpression
 > {
+	private readonly already_resolved:{
+		[key: string]: {[key: string]: SchemaObject},
+	} = {};
 	private readonly discovery:DataDiscovery;
 
 	constructor(discovery:DataDiscovery) {
@@ -212,8 +215,24 @@ export class ObjectConverter extends ConverterMatchesSchema<
 	}
 
 	private async resolve_schema(
-		schema: SchemaObject
+		schema: SchemaObject,
+		depth = 0
 	): Promise<{[key: string]: SchemaObject}> {
+		performance.mark(
+			`${this.constructor.name}.resolve_schema(SchemaObject) start`
+		);
+
+		const json_string = JSON.stringify(schema);
+
+		if (json_string in this.already_resolved) {
+			performance.measure(
+				`${this.constructor.name}.resolve_schema(SchemaObject) previously resolved`,
+				`${this.constructor.name}.resolve_schema(SchemaObject) start`
+			);
+
+			return this.already_resolved[json_string];
+		}
+
 		const resolved_schema:{[key: string]: SchemaObject} = {};
 
 		if (
@@ -245,9 +264,12 @@ export class ObjectConverter extends ConverterMatchesSchema<
 			&& schema.$ref.startsWith('#/definitions/')
 		) {
 			for (const entry of Object.entries(
-				await this.resolve_schema(await this.discovery.docs.definition(
-					schema.$ref.substring(14)
-				))
+				await this.resolve_schema(
+					await this.discovery.docs.definition(
+						schema.$ref.substring(14)
+					),
+					depth + 1
+				)
 			)) {
 				const [property, sub_schema] = entry;
 
@@ -256,6 +278,13 @@ export class ObjectConverter extends ConverterMatchesSchema<
 				}
 			}
 		}
+
+		performance.measure(
+			`${this.constructor.name}.resolve_schema(SchemaObject)`,
+			`${this.constructor.name}.resolve_schema(SchemaObject) start`
+		);
+
+		this.already_resolved[json_string] = resolved_schema;
 
 		return resolved_schema;
 	}
