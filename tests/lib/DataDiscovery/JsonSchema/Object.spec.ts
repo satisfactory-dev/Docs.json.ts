@@ -16,9 +16,10 @@ import {
 	local_ref,
 } from '../../../../lib/StringStartsWith';
 
-void describe('ObjectConverter.can_convert_schema_and_raw_data()', () => {
+void describe('ObjectConverter', () => {
 	const instance = new ObjectConverter(new DataDiscovery(docs));
 
+	void describe('can_convert_schema_and_raw_data', () => {
 	const schema = {
 		type: 'object',
 		$ref: local_ref('class--no-description-or-display-name'),
@@ -66,5 +67,6 @@ void describe('ObjectConverter.can_convert_schema_and_raw_data()', () => {
 			true,
 			'Should be able to convert valid schema'
 		);
+	})
 	})
 });
