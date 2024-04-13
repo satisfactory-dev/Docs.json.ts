@@ -38,7 +38,7 @@ export type typed_string_inner_object_type = {
 	properties: {
 		[key: string]: (
 			| typed_string_object_type
-			)
+		)
 	},
 };
 
