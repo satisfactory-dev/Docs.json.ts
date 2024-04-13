@@ -132,6 +132,9 @@ export class ObjectConverter extends ConverterMatchesSchema<
 
 		for (const entry of Object.entries(raw_data)) {
 			const [property, value] = entry;
+			performance.mark(
+				`${this.constructor.name}.convert() property start`
+			);
 
 			if (!await converters[property].can_convert_schema_and_raw_data(
 				sub_schema[property],
@@ -147,10 +150,21 @@ export class ObjectConverter extends ConverterMatchesSchema<
 					'Cannot convert value!'
 				);
 			}
+			performance.measure(
+				`${this.constructor.name}.convert() property checked`,
+				`${this.constructor.name}.convert() property start`
+			);
+			performance.mark(
+				`${this.constructor.name}.convert() property start`
+			);
 
 			result[property] = await converters[property].convert(
 				sub_schema[property],
 				value
+			);
+			performance.measure(
+				`${this.constructor.name}.convert() property converted`,
+				`${this.constructor.name}.convert() property start`
 			);
 		}
 		performance.measure(
