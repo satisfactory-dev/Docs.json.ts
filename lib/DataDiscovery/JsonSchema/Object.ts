@@ -45,7 +45,7 @@ export class ObjectConverter extends ConverterMatchesSchema<
 	constructor(discovery:DataDiscovery) {
 		super(discovery.docs.ajv, {
 			type: 'object',
-			required: ['type', '$ref'],
+			required: ['type'],
 			additionalProperties: false,
 			properties: {
 				type: {type: 'string', const: 'object'},
@@ -55,6 +55,7 @@ export class ObjectConverter extends ConverterMatchesSchema<
 					minItems: 1,
 					items: {type: 'string'},
 				},
+				additionalProperties: {type: 'boolean', const: false},
 				unevaluatedProperties: {type: 'boolean', const: false},
 				properties: {type: 'object', minProperties: 1},
 			},

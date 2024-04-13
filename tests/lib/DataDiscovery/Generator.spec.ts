@@ -116,6 +116,17 @@ void describe('Converter', async () => {
 			ObjectConverter,
 		],
 		[
+			{
+				type: 'object',
+				required: ['foo'],
+				unevaluatedProperties: false,
+				properties: {
+					foo: {type: 'string'},
+				},
+			},
+			ObjectConverter,
+		],
+		[
 			{type: 'string', string_starts_with: 'foo'},
 			StringStartsWithConverter,
 		],
