@@ -28,6 +28,7 @@ type schema_type = {
 	type: 'object',
 	$ref: local_ref<string>,
 	unevaluatedProperties?: false,
+	required?: [string, ...string[]],
 	properties?: {[key: string]: SchemaObject},
 };
 
@@ -46,6 +47,11 @@ export class ObjectConverter extends ConverterMatchesSchema<
 			properties: {
 				type: {type: 'string', const: 'object'},
 				$ref: {type: 'string', pattern: '^#/definitions/'},
+				required: {
+					type: 'array',
+					minItems: 1,
+					items: {type: 'string'},
+				},
 				unevaluatedProperties: {type: 'boolean', const: false},
 				properties: {type: 'object', minProperties: 1},
 			},
