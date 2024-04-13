@@ -20,8 +20,9 @@ import {
 import {
 	BasicStringConverter,
 } from '../../../lib/DataDiscovery/JsonSchema/StringType';
-import { SchemaObject } from 'ajv';
-import { schema } from '../../../lib/TypeDefinitionDiscovery/CustomParsingTypes/string_starts_with';
+import {
+	SchemaObject,
+} from 'ajv';
 
 void describe('Converter', async () => {
 	const candidates = await ((new DataDiscovery(docs)).candidates);
