@@ -48,6 +48,12 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 > {
 	private readonly definitions:{[key: string]: SchemaObject};
 	private readonly discovery:DataDiscovery;
+	private readonly regex_schema_cache:{
+		[key: string]: [
+			RegExp,
+			SchemaObject,
+		][],
+	} = {};
 
 	constructor(
 		discovery:DataDiscovery,
@@ -121,33 +127,20 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 				},
 				'Cannot convert!'
 			)
-		} else if (typed_string.is_object_type(schema.typed_string)) {
+		} else if (
+			typed_string.is_object_type(schema.typed_string)
+			|| typed_string.is_object_pattern_type(schema.typed_string)
+		) {
 			const shallow = string_to_object(raw_data, true);
 
 			assert.notEqual(shallow, false, new NoMatchError(
 				{
 					raw_data,
-
 				},
 				'raw data not a typed_string!'
 			));
 
 			return this.convert_object(
-				schema.typed_string,
-				shallow as Exclude<typeof shallow, false>
-			);
-		} else if (typed_string.is_object_pattern_type(schema.typed_string)) {
-			const shallow = string_to_object(raw_data, true);
-
-			assert.notEqual(shallow, false, new NoMatchError(
-				{
-					raw_data,
-
-				},
-				'raw data not a typed_string!'
-			));
-
-			return this.convert_object_pattern(
 				schema.typed_string,
 				shallow as Exclude<typeof shallow, false>
 			);
@@ -292,49 +285,23 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 	}
 
 	private async convert_object(
-		schema:typed_string_inner_object_type,
+		schema:
+			| typed_string_inner_object_type
+			| typed_string_inner_object_pattern_type,
 		shallow:{[key: string]: unknown}
 	) : Promise<ExpressionResult<ObjectLiteralExpression>> {
 		performance.mark(`${this.constructor.name}.convert_object() start`);
-		const check = compile<
-			{[key: string]: unknown}
-		>(
-			this.discovery.docs.ajv,
-			{
-				...schema,
-				definitions: this.definitions,
-				type: 'object',
-			}
-		);
-
-		if (!check(shallow)) {
-			throw new NoMatchError(
-				{
-					shallow,
-					schema,
-					errors: check.errors,
-				},
-				'Shallow parse of typed_string does not match object schema!'
-			);
-		}
+		this.convert_object_check_shallow_parse(schema, shallow);
 
 		const converted_entries:[string, ExpressionResult][] = [];
 
 		for (const entry of Object.entries(shallow)) {
 			const [property, value] = entry;
 
-			if (!(property in schema.properties)) {
-				throw new NoMatchError(
-					{
-						property,
-						value,
-						schema,
-					},
-					'Property not in schema!'
-				);
-			}
-
-			const property_schema = schema.properties[property];
+			const property_schema = this.convert_object_property_schema(
+				schema,
+				property
+			);
 
 			const converter = await Converter.find_matching_schema(
 				await this.discovery.candidates,
@@ -378,11 +345,17 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 		}
 	}
 
-	private async convert_object_pattern(
-		schema: typed_string_inner_object_pattern_type,
+	private convert_object_check_shallow_parse(
+		schema:
+			| typed_string_inner_object_type
+			| typed_string_inner_object_pattern_type,
 		shallow:{[key: string]: unknown}
-	) : Promise<ExpressionResult<ObjectLiteralExpression>> {
-		performance.mark(`${this.constructor.name}.convert_object_pattern() start`);
+	) {
+		performance.mark(
+			`${
+				this.constructor.name
+			}.convert_object_check_shallow_parse() start`
+		);
 		const check = compile<
 			{[key: string]: unknown}
 		>(
@@ -394,7 +367,18 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 			}
 		);
 
-		if (!check(shallow)) {
+		const result = check(shallow);
+
+		performance.measure(
+			`${
+				this.constructor.name
+			}.convert_object_check_shallow_parse()`,
+			`${
+				this.constructor.name
+			}.convert_object_check_shallow_parse() start`
+		);
+
+		if (!result) {
 			throw new NoMatchError(
 				{
 					shallow,
@@ -404,79 +388,107 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 				'Shallow parse of typed_string does not match object schema!'
 			);
 		}
+	}
 
-		const converted_entries:[string, ExpressionResult][] = [];
-
-		const regex_schema = Object.entries(schema.patternProperties).map(
-			(e) : [RegExp, {[key: string]: unknown}] => {
-				return [
-					new RegExp(e[0]),
-					e[1],
-				];
-			}
+	private convert_object_property_schema(
+		schema:
+			| typed_string_inner_object_type
+			| typed_string_inner_object_pattern_type,
+		property: string
+	) : SchemaObject {
+		performance.mark(
+			`${
+				this.constructor.name
+			}.convert_object_property_schema() start`
 		);
 
-		for (const entry of Object.entries(shallow)) {
-			const [property, value] = entry;
-
-			const property_regex_schema = regex_schema.find(
-				maybe => maybe[0].test(property)
-			);
-
-			if (!property_regex_schema) {
+		if ('properties' in schema) {
+			if (!(property in schema.properties)) {
+				performance.measure(
+					`${
+						this.constructor.name
+					}.convert_object_property_schema() object failure`,
+					`${
+						this.constructor.name
+					}.convert_object_property_schema() start`
+				);
 				throw new NoMatchError(
 					{
 						property,
-						value,
 						schema,
-						regex_schema,
 					},
 					'Property not in schema!'
 				);
 			}
-
-			const [, property_schema] = property_regex_schema;
-
-			const converter = await Converter.find_matching_schema(
-				await this.discovery.candidates,
-				property_schema
+			performance.measure(
+				`${
+					this.constructor.name
+				}.convert_object_property_schema() object schema`,
+				`${
+					this.constructor.name
+				}.convert_object_property_schema() start`
 			);
 
-			converted_entries.push([
-				property,
-				await converter.convert(property_schema, value),
-			]);
+			return schema.properties[property];
 		}
 
-		const converted = Object.fromEntries(converted_entries);
+		const json_string = JSON.stringify(schema.patternProperties);
 
-		performance.measure(
-			`${this.constructor.name}.convert_object_pattern() bootstrap`,
-			`${this.constructor.name}.convert_object_pattern() start`
+		if (!(json_string in this.regex_schema_cache)) {
+			this.regex_schema_cache[json_string] = Object.entries(
+				schema.patternProperties
+			).map(
+				(e) : [RegExp, {[key: string]: unknown}] => {
+					return [
+						new RegExp(e[0]),
+						e[1],
+					];
+				}
+			);
+			performance.measure(
+				`${
+					this.constructor.name
+				}.convert_object_property_schema() pattern caching`,
+				`${
+					this.constructor.name
+				}.convert_object_property_schema() start`
+			);
+		}
+
+		const property_regex_schema = this.regex_schema_cache[
+			json_string
+		].find(
+			maybe => maybe[0].test(property)
 		);
 
-		try {
-			performance.mark(`${this.constructor.name}.convert_object_pattern() start`);
-
-			const result = new ExpressionResult(
-				await this.discovery.literal.object_literal(converted)
-			);
-
+		if (!property_regex_schema) {
 			performance.measure(
-				`${this.constructor.name}.convert_object_pattern()`,
-				`${this.constructor.name}.convert_object_pattern() start`
+				`${
+					this.constructor.name
+				}.convert_object_property_schema() pattern failure`,
+				`${
+					this.constructor.name
+				}.convert_object_property_schema() start`
 			);
-
-			return result;
-		} catch (error) {
 			throw new NoMatchError(
 				{
-					converted,
-					error,
+					property,
+					schema,
 				},
-				'Failed to grab object literal!'
+				'Property not in schema!'
 			);
 		}
+
+		performance.measure(
+			`${
+				this.constructor.name
+			}.convert_object_property_schema() pattern schema`,
+			`${
+				this.constructor.name
+			}.convert_object_property_schema() start`
+		);
+
+		return property_regex_schema[1];
 	}
 
 	private async convert_prefixItems(
