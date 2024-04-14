@@ -3754,23 +3754,23 @@
 					"typed_string": {
 						"minItems": 1,
 						"items": {
-									"type": "string",
-									"minLength": 1,
-									"typed_string": {
-										"required": [
+							"type": "string",
+							"minLength": 1,
+							"typed_string": {
+								"required": [
 									"WwiseSafeName"
-										],
-										"properties": {
-											"WwiseSafeName": {
-												"type": "string",
+								],
+								"properties": {
+									"WwiseSafeName": {
+										"type": "string",
 										"pattern": "^[A-Z][A-Za-z]+(_[A-Z][A-Za-z]+)*$"
-											},
-											"ActualName": {
-												"type": "string",
+									},
+									"ActualName": {
+										"type": "string",
 										"pattern": "^[A-Z][A-Za-z]+( [A-Z][A-Za-z]+)*$"
-											}
-										}
 									}
+								}
+							}
 						}
 					}
 				},
