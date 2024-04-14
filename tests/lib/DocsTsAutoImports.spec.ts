@@ -25,88 +25,88 @@ class Testable extends DocsTsAutoImports
 
 void describe('DocsTsAutoImports', () => {
 	void describe('generate', () => {
-	void it('can resolve to an empty ImportTracker', () => {
-		const instance = new DocsTsAutoImports({});
+		void it('can resolve to an empty ImportTracker', () => {
+			const instance = new DocsTsAutoImports({});
 
-		const result = instance.generate();
-		assert.equal(0, result.number_of_files);
-	});
-
-	void it('can auto-resolve imports', () => {
-		const foo = ts.factory.createTypeAliasDeclaration(
-			create_modifiers('export'),
-			'foo',
-			undefined,
-			create_literal('foo')
-		);
-		const bar = ts.factory.createTypeAliasDeclaration(
-			create_modifiers('export'),
-			'bar',
-			undefined,
-			type_reference_node('foo')
-		);
-
-		const instance = new Testable({
-			'foo.ts': [
-				foo,
-			],
-			'bar.ts': [
-				bar,
-			],
+			const result = instance.generate();
+			assert.equal(0, result.number_of_files);
 		});
 
-		assert.deepEqual(instance.file_exports(), {
-			'foo.ts': ['foo'],
-			'bar.ts': ['bar'],
+		void it('can auto-resolve imports', () => {
+			const foo = ts.factory.createTypeAliasDeclaration(
+				create_modifiers('export'),
+				'foo',
+				undefined,
+				create_literal('foo')
+			);
+			const bar = ts.factory.createTypeAliasDeclaration(
+				create_modifiers('export'),
+				'bar',
+				undefined,
+				type_reference_node('foo')
+			);
+
+			const instance = new Testable({
+				'foo.ts': [
+					foo,
+				],
+				'bar.ts': [
+					bar,
+				],
+			});
+
+			assert.deepEqual(instance.file_exports(), {
+				'foo.ts': ['foo'],
+				'bar.ts': ['bar'],
+			});
+
+			const result = instance.generate();
+			assert.equal(1, result.number_of_files);
 		});
 
-		const result = instance.generate();
-		assert.equal(1, result.number_of_files);
-	});
+		void it('throws an error on conflicting exports', async () => {
+			const foo = ts.factory.createTypeAliasDeclaration(
+				create_modifiers('export'),
+				'foo',
+				undefined,
+				create_literal('foo')
+			);
+			const bar = ts.factory.createTypeAliasDeclaration(
+				create_modifiers('export'),
+				'foo',
+				undefined,
+				type_reference_node('foo')
+			);
 
-	void it('throws an error on conflicting exports', async () => {
-		const foo = ts.factory.createTypeAliasDeclaration(
-			create_modifiers('export'),
-			'foo',
-			undefined,
-			create_literal('foo')
-		);
-		const bar = ts.factory.createTypeAliasDeclaration(
-			create_modifiers('export'),
-			'foo',
-			undefined,
-			type_reference_node('foo')
-		);
+			const instance = new Testable({
+				'foo.ts': [
+					foo,
+				],
+				'bar.ts': [
+					bar,
+				],
+			});
 
-		const instance = new Testable({
-			'foo.ts': [
-				foo,
-			],
-			'bar.ts': [
-				bar,
-			],
-		});
+			assert.deepEqual(instance.file_exports(), {
+				'foo.ts': ['foo'],
+				'bar.ts': ['foo'],
+			});
 
-		assert.deepEqual(instance.file_exports(), {
-			'foo.ts': ['foo'],
-			'bar.ts': ['foo'],
-		});
+			const promise = new Promise((yup, nope) => {
+				try {
+					yup(instance.generate());
+				} catch (err) {
+					nope(err);
+				}
+			});
 
-		const promise = new Promise((yup, nope) => {
-			try {
-				yup(instance.generate());
-			} catch (err) {
-				nope(err);
-			}
-		});
-
-		await rejects_partial_match(promise, {
-			message: 'foo conflict!',
-			property: [
-				'bar.ts',
-				['foo'],
-			],
-		});
-	})
+			await rejects_partial_match(promise, {
+				message: 'foo conflict!',
+				property: [
+					'bar.ts',
+					['foo'],
+				],
+			});
+		})
 	})
 });
