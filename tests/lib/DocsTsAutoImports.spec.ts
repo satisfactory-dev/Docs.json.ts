@@ -23,7 +23,8 @@ class Testable extends DocsTsAutoImports
 	}
 }
 
-void describe('DocsTsAutoImports.generate()', () => {
+void describe('DocsTsAutoImports', () => {
+	void describe('generate', () => {
 	void it('can resolve to an empty ImportTracker', () => {
 		const instance = new DocsTsAutoImports({});
 
@@ -106,5 +107,6 @@ void describe('DocsTsAutoImports.generate()', () => {
 				['foo'],
 			],
 		});
+	})
 	})
 });
