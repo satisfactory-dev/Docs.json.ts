@@ -226,5 +226,27 @@ void describe('typed_string', async () => {
 				'foo'
 			);
 		})
+		/**
+		 * @todo whenever I have the patience, do a full-depth assertion
+		 */
+		void it('behaves with object pattern type', () => {
+			const result = instance.generate()({
+				type: 'string',
+				minLength: 1,
+				typed_string: {
+					minProperties: 1,
+					patternProperties: {
+						'^(Foo|Bar)$': {type: 'string', const: 'foo'},
+					},
+				},
+			});
+
+			ts_assert.isUnionTypeNode(result);
+			array_has_size(result.types, 2);
+			ts_assert.isParenthesizedTypeNode(result.types[0]);
+			ts_assert.isIntersectionTypeNode(result.types[0].type);
+			ts_assert.isParenthesizedTypeNode(result.types[1]);
+			ts_assert.isIntersectionTypeNode(result.types[1].type);
+		})
 	})
 })
