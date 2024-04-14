@@ -79,10 +79,8 @@ export class ValueToRegexFormatter
 	}
 
 	pattern_from_value(value:unknown): {pattern: string} {
-		const regex = `${this.value_to_regex(value)}`;
-
 		return {
-			pattern: `^${regex}$`,
+			pattern: `^${this.value_to_regex(value)}$`,
 		};
 	}
 
