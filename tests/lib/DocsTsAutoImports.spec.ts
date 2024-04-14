@@ -61,7 +61,7 @@ void describe('DocsTsAutoImports', () => {
 			});
 
 			const result = instance.generate();
-			assert.equal(1, result.number_of_files);
+			assert.equal(result.number_of_files, 1);
 		});
 
 		void it('throws an error on conflicting exports', async () => {
