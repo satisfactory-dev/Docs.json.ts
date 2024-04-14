@@ -25,6 +25,7 @@ import {
 	SchemaObject,
 } from 'ajv/dist/2020';
 import {
+	typed_string_pattern_general,
 	typed_string_pattern_is_supported_schema,
 	typed_string_pattern_value_regex,
 } from './TypedStringPattern';
@@ -61,6 +62,7 @@ export class ValueToRegexFormatter
 {
 	private typed_string_const;
 	private typed_string_enum;
+	private typed_string_pattern_general;
 	private UnrealEngineString;
 	private readonly definitions:{[key: string]: SchemaObject};
 	private readonly supported_$ref_object:{[key: local_ref<string>]: string};
@@ -72,6 +74,7 @@ export class ValueToRegexFormatter
 		);
 		this.typed_string_const = typed_string_const;
 		this.typed_string_enum = typed_string_enum;
+		this.typed_string_pattern_general = typed_string_pattern_general;
 		this.supported_$ref_object = this.prepare_$ref_regex(definitions);
 	}
 
@@ -100,6 +103,7 @@ export class ValueToRegexFormatter
 		return (
 			this.typed_string_const.is_supported_schema(maybe)
 			|| this.typed_string_enum.is_supported_schema(maybe)
+			|| this.typed_string_pattern_general.is_supported_schema(maybe)
 			|| typed_string_pattern_is_supported_schema(maybe)
 			|| is_UnrealEngineString_parent(maybe)
 			|| ValueToRegexFormatter.is_typed_string_object_parent(maybe)
@@ -231,6 +235,10 @@ export class ValueToRegexFormatter
 			return this.typed_string_const.value_regex(value);
 		} else if(this.typed_string_enum.is_supported_schema(value)) {
 			return this.typed_string_enum.value_regex(value);
+		} else if (
+			this.typed_string_pattern_general.is_supported_schema(value)
+		) {
+			return this.typed_string_pattern_general.value_regex(value);
 		} else if (typed_string_pattern_is_supported_schema(value)) {
 			return typed_string_pattern_value_regex(value);
 		} else if (is_UnrealEngineString_parent(value)) {

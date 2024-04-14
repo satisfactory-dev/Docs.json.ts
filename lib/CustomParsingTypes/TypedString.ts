@@ -20,6 +20,9 @@ import {
 	enum_schema_type,
 	typed_string_enum_schema,
 } from './TypedStringEnum';
+import {
+	typed_string_pattern_general_schema_self_testing,
+} from './TypedStringPattern';
 
 type typed_string_sub_types =
 	| {
@@ -140,6 +143,7 @@ export function generate_typed_string_definitions(
 				UnrealEngineString_parent_schema,
 				typed_string_const_schema,
 				typed_string_enum_schema,
+				typed_string_pattern_general_schema_self_testing,
 				{$ref: '#/definitions/typed_string_parent_type'},
 			],
 		},

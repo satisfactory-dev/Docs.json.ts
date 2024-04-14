@@ -3754,121 +3754,23 @@
 					"typed_string": {
 						"minItems": 1,
 						"items": {
-							"oneOf": [
-								{
 									"type": "string",
 									"minLength": 1,
 									"typed_string": {
 										"required": [
-											"WwiseSafeName",
-											"ActualName"
+									"WwiseSafeName"
 										],
 										"properties": {
 											"WwiseSafeName": {
 												"type": "string",
-												"const": "Crude_Oil"
+										"pattern": "^[A-Z][A-Za-z]+(_[A-Z][A-Za-z]+)*$"
 											},
 											"ActualName": {
 												"type": "string",
-												"const": "Crude Oil"
+										"pattern": "^[A-Z][A-Za-z]+( [A-Z][A-Za-z]+)*$"
 											}
 										}
 									}
-								},
-								{
-									"type": "string",
-									"minLength": 1,
-									"typed_string": {
-										"required": [
-											"WwiseSafeName",
-											"ActualName"
-										],
-										"properties": {
-											"WwiseSafeName": {
-												"type": "string",
-												"const": "Fuel"
-											},
-											"ActualName": {
-												"type": "string",
-												"const": "Fuel"
-											}
-										}
-									}
-								},
-								{
-									"type": "string",
-									"minLength": 1,
-									"typed_string": {
-										"required": [
-											"WwiseSafeName",
-											"ActualName"
-										],
-										"properties": {
-											"WwiseSafeName": {
-												"type": "string",
-												"const": "Heavy_Oil_Residue"
-											},
-											"ActualName": {
-												"type": "string",
-												"const": "Heavy Oil Residue"
-											}
-										}
-									}
-								},
-								{
-									"type": "string",
-									"minLength": 1,
-									"typed_string": {
-										"required": [
-											"WwiseSafeName",
-											"ActualName"
-										],
-										"properties": {
-											"WwiseSafeName": {
-												"type": "string",
-												"const": "Water"
-											},
-											"ActualName": {
-												"type": "string",
-												"const": "Water"
-											}
-										}
-									}
-								},
-								{
-									"type": "string",
-									"minLength": 1,
-									"typed_string": {
-										"required": ["WwiseSafeName"],
-										"properties": {
-											"WwiseSafeName": {
-												"type": "string",
-												"const": "No_Fluid"
-											}
-										}
-									}
-								},
-								{
-									"type": "string",
-									"minLength": 1,
-									"typed_string": {
-										"required": [
-											"WwiseSafeName",
-											"ActualName"
-										],
-										"properties": {
-											"WwiseSafeName": {
-												"type": "string",
-												"const": "Gas"
-											},
-											"ActualName": {
-												"type": "string",
-												"const": "Nitrogen Gas"
-											}
-										}
-									}
-								}
-							]
 						}
 					}
 				},
