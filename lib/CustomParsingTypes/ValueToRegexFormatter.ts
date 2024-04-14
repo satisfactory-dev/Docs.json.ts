@@ -78,11 +78,11 @@ export class ValueToRegexFormatter
 		this.supported_$ref_object = this.prepare_$ref_regex(definitions);
 	}
 
-	pattern_from_value(value:unknown, inner = false): {pattern: string} {
+	pattern_from_value(value:unknown): {pattern: string} {
 		const regex = `${this.value_to_regex(value)}`;
 
 		return {
-			pattern: inner ? regex : `^${regex}$`,
+			pattern: `^${regex}$`,
 		};
 	}
 
