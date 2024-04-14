@@ -45,6 +45,12 @@ void describe('DocsTsAutoImports', () => {
 				undefined,
 				type_reference_node('foo')
 			);
+			const baz = ts.factory.createTypeAliasDeclaration(
+				create_modifiers('export'),
+				'baz',
+				undefined,
+				type_reference_node('foo')
+			);
 
 			const instance = new Testable({
 				'foo.ts': [
@@ -52,12 +58,13 @@ void describe('DocsTsAutoImports', () => {
 				],
 				'bar.ts': [
 					bar,
+					baz,
 				],
 			});
 
 			assert.deepEqual(instance.file_exports(), {
 				'foo.ts': ['foo'],
-				'bar.ts': ['bar'],
+				'bar.ts': ['bar', 'baz'],
 			});
 
 			const result = instance.generate();
@@ -68,6 +75,7 @@ void describe('DocsTsAutoImports', () => {
 					{
 						foo: 'foo',
 						bar: 'bar',
+						baz: 'bar',
 					},
 					null,
 					'\t'
