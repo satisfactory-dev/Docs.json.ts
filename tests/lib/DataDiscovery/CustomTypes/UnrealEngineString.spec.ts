@@ -203,13 +203,14 @@ void describe('UnrealEngineStringConverter', () => {
 
 				ts_assert.isCallExpression(result);
 				ts_assert.isPropertyAccessExpression(result.expression);
-				ts_assert.isIdentifier(result.expression.expression);
-				assert.equal(
-					result.expression.expression.text,
+				ts_assert.isExpectedIdentifier(
+					result.expression.expression,
 					'UnrealEngineString'
 				);
-				ts_assert.isIdentifier(result.expression.name);
-				assert.equal(result.expression.name.text, 'fromString');
+				ts_assert.isExpectedIdentifier(
+					result.expression.name,
+					'fromString'
+				);
 				not_undefined(result.arguments);
 				array_has_size(result.arguments, 1);
 				ts_assert.isStringLiteral(result.arguments[0]);

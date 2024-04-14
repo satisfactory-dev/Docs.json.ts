@@ -64,7 +64,6 @@ void describe('BooleanConverter.convert()', () => {
 	void it('resolved undefined', async() => {
 		const result = (await instance.convert(schema, '')).expression;
 
-		ts_assert.isIdentifier(result);
-		assert.equal(result.text, 'undefined');
+		ts_assert.isUndefined(result);
 	});
 });

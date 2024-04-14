@@ -88,8 +88,10 @@ void describe('StringStartsWithConverter', () => {
 			ts_assert.isStringLiteral(expression.expression);
 			assert.equal(expression.expression.text, 'foobar');
 			ts_assert.isTypeReferenceNode(expression.type);
-			ts_assert.isIdentifier(expression.type.typeName);
-			assert.equal(expression.type.typeName.text, 'StringStartsWith');
+			ts_assert.isExpectedIdentifier(
+				expression.type.typeName,
+				'StringStartsWith'
+			);
 			not_undefined(expression.type.typeArguments);
 			array_has_size(expression.type.typeArguments, 1);
 			ts_assert.isLiteralTypeNode(expression.type.typeArguments[0]);

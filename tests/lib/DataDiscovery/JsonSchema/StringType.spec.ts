@@ -197,9 +197,8 @@ const data_sets: {
 						ts_assert.isStringLiteral(expression.expression);
 						assert.equal(expression.expression.text, 'FooBar');
 						ts_assert.isTypeReferenceNode(expression.type);
-						ts_assert.isIdentifier(expression.type.typeName);
-						assert.equal(
-							expression.type.typeName.text,
+						ts_assert.isExpectedIdentifier(
+							expression.type.typeName,
 							'StringPassedRegExp'
 						);
 						not_undefined(expression.type.typeArguments);

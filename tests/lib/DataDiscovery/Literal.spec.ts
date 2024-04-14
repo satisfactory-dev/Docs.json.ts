@@ -36,8 +36,7 @@ void describe('Literal.object_literal', () => {
 		const [property] = foo.properties;
 
 		ts_assert.isPropertyAssignment(property);
-		ts_assert.isIdentifier(property.name);
-		assert.equal(property.name.escapedText, 'foo');
+		ts_assert.isExpectedIdentifier(property.name, 'foo');
 		ts_assert.isStringLiteral(property.initializer);
 		assert.equal(property.initializer.text, 'bar');
 	});
@@ -93,8 +92,7 @@ void describe('Literal.value_literal', () => {
 	void it('converts undefined', async () => {
 		const value = await instance.value_literal(undefined);
 
-		ts_assert.isIdentifier(value);
-		assert.equal(value.escapedText, 'undefined');
+		ts_assert.isUndefined(value);
 	});
 
 	void it('converts arrays', async () => {
