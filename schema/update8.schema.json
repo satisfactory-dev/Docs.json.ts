@@ -3757,9 +3757,7 @@
 							"type": "string",
 							"minLength": 1,
 							"typed_string": {
-								"required": [
-									"WwiseSafeName"
-								],
+								"required": ["WwiseSafeName"],
 								"properties": {
 									"WwiseSafeName": {
 										"type": "string",
