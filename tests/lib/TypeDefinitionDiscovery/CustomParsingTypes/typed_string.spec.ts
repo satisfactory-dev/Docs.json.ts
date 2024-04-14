@@ -22,6 +22,7 @@ import {
 import ts_assert from '@signpostmarv/ts-assert';
 import {
 	array_has_size,
+	not_undefined,
 } from '../../../../assert/CustomAssert';
 
 void describe('typed_string', async () => {
@@ -247,6 +248,52 @@ void describe('typed_string', async () => {
 			ts_assert.isIntersectionTypeNode(result.types[0].type);
 			ts_assert.isParenthesizedTypeNode(result.types[1]);
 			ts_assert.isIntersectionTypeNode(result.types[1].type);
+		})
+
+		void it('behaves with object standard found type', () => {
+			const result = instance.generate()({
+				type: 'string',
+				minLength: 1,
+				typed_string: {
+					required: ['foo'],
+					properties: {
+						foo: {type: 'string', const: 'bar'},
+					},
+				},
+			});
+
+			ts_assert.isTypeLiteralNode(result);
+			array_has_size(result.members, 1);
+			ts_assert.isPropertySignature(result.members[0]);
+			ts_assert.isExpectedIdentifier(result.members[0].name, 'foo');
+			not_undefined(result.members[0].type);
+			ts_assert.isLiteralTypeNode(result.members[0].type);
+			ts_assert.isStringLiteral(result.members[0].type.literal);
+			assert.equal(result.members[0].type.literal.text, 'bar');
+		})
+
+		void it('behaves with object standard known type', () => {
+			const result = instance.generate()({
+				type: 'string',
+				minLength: 1,
+				typed_string: {
+					required: ['foo'],
+					properties: {
+						foo: {
+							type: 'string',
+							minLength: 1,
+							UnrealEngineString: true,
+						},
+					},
+				},
+			});
+
+			ts_assert.isTypeLiteralNode(result);
+			array_has_size(result.members, 1);
+			ts_assert.isPropertySignature(result.members[0]);
+			ts_assert.isExpectedIdentifier(result.members[0].name, 'foo');
+			not_undefined(result.members[0].type);
+			ts_assert.isTypeReferenceNode(result.members[0].type);
 		})
 	})
 })
