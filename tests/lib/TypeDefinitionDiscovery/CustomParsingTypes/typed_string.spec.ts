@@ -187,5 +187,44 @@ void describe('typed_string', async () => {
 			array_has_size(result.elements, 2);
 			ts_assert.isTypeReferenceNode(result.elements[0]);
 		})
+		void it('behaves with prefixItems type', () => {
+			const result = instance.generate()({
+				type: 'string',
+				minLength: 1,
+				typed_string: {
+					minItems: 1,
+					items: false,
+					prefixItems: [{
+						type: 'string',
+						const: 'foo',
+					}],
+				},
+			});
+
+			ts_assert.isTupleTypeNode(result);
+			array_has_size(result.elements, 2);
+			ts_assert.isTupleTypeNode(result.elements[0]);
+			array_has_size(result.elements[0].elements, 1);
+			ts_assert.isLiteralTypeNode(result.elements[0].elements[0])
+			ts_assert.isStringLiteral(result.elements[0].elements[0].literal);
+			assert.equal(
+				result.elements[0].elements[0].literal.text,
+				'foo'
+			);
+			ts_assert.isRestTypeNode(result.elements[1]);
+			ts_assert.isArrayTypeNode(result.elements[1].type);
+			ts_assert.isTupleTypeNode(result.elements[1].type.elementType);
+			array_has_size(result.elements[1].type.elementType.elements, 1);
+			ts_assert.isLiteralTypeNode(
+				result.elements[1].type.elementType.elements[0]
+			)
+			ts_assert.isStringLiteral(
+				result.elements[1].type.elementType.elements[0].literal
+			);
+			assert.equal(
+				result.elements[1].type.elementType.elements[0].literal.text,
+				'foo'
+			);
+		})
 	})
 })
