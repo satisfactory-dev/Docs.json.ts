@@ -62,6 +62,17 @@ void describe('DocsTsAutoImports', () => {
 
 			const result = instance.generate();
 			assert.equal(result.number_of_files, 1);
+			assert.equal(
+				instance.imports_come_from,
+				JSON.stringify(
+					{
+						foo: 'foo',
+						bar: 'bar',
+					},
+					null,
+					'\t'
+				) + '\n'
+			);
 		});
 
 		void it('throws an error on conflicting exports', async () => {
