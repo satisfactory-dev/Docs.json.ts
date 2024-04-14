@@ -38,6 +38,16 @@ void describe('TypedStringConverter', async () => {
 			},
 		},
 	};
+	const object_pattern_schema:typed_string_parent_type = {
+		type: 'string',
+		minLength: 1,
+		typed_string: {
+			minProperties: 1,
+			patternProperties: {
+				'^(Foo|Bar)$': {type: 'string', const: 'foo'},
+			},
+		},
+	};
 	const nested_object_schema:typed_string_parent_type = {
 		type: 'string',
 		minLength: 1,
@@ -160,6 +170,13 @@ void describe('TypedStringConverter', async () => {
 			true,
 			true,
 			{foo:{bar: 'baz'}},
+		],
+		[
+			object_pattern_schema,
+			'(Foo=foo)',
+			true,
+			true,
+			{Foo:'foo'},
 		],
 	];
 

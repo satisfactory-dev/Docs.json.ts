@@ -609,12 +609,21 @@ export class TypeDefinitionDiscovery
 	}
 
 	private search(maybe:unknown): TypeNode|undefined {
+		performance.mark(`${this.constructor.name}.search() start`);
+
 		const generator = this.candidates.find(
 			e => e.check(maybe)
 		);
 
 		if (generator) {
-			return generator.generate()(maybe);
+			const result = generator.generate()(maybe);
+
+			performance.measure(
+				`${this.constructor.name}.search()`,
+				`${this.constructor.name}.search() start`
+			);
+
+			return result;
 		}
 
 		return undefined;

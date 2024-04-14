@@ -41,6 +41,7 @@ import {
 } from '../../../lib/DataDiscovery/CustomTypes/UnrealEngineString';
 import {
 	ObjectConverter,
+	PatternedObjectConverter,
 } from '../../../lib/DataDiscovery/JsonSchema/Object';
 import {
 	StringStartsWithConverter,
@@ -127,6 +128,16 @@ void describe('Converter', async () => {
 			ObjectConverter,
 		],
 		[
+			{
+				type: 'object',
+				minProperties: 1,
+				patternProperties: {
+					'^(Foo|Bar)$': {type: 'string'},
+				},
+			},
+			PatternedObjectConverter,
+		],
+		[
 			{type: 'string', string_starts_with: 'foo'},
 			StringStartsWithConverter,
 		],
@@ -135,6 +146,15 @@ void describe('Converter', async () => {
 				required: ['foo'],
 				properties: {
 					foo: {type: 'string', const: 'bar'},
+				},
+			}},
+			TypedStringConverter,
+		],
+		[
+			{type: 'string', minLength: 1, typed_string: {
+				minProperties: 1,
+				patternProperties: {
+					'^(Foo|Bar)$': {type: 'string', const: 'foo'},
 				},
 			}},
 			TypedStringConverter,

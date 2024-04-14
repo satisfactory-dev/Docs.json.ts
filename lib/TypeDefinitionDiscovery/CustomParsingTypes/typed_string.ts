@@ -1,13 +1,18 @@
 import ts, {
+	IntersectionTypeNode,
 	TupleTypeNode,
 	TypeLiteralNode,
+	UnionTypeNode,
 } from 'typescript';
 import {
 	TypeDefinitionDiscovery,
 } from '../../TypeDefinitionDiscovery';
 import {
 	create_object_type_from_entries,
+	create_type,
+	createPropertySignature,
 	minimum_size_array_of_single_type,
+	type_reference_node,
 } from '../../TsFactoryWrapper';
 import {
 	GeneratorDoesDiscovery,
@@ -23,6 +28,7 @@ import {
 	generate_typed_string_definitions,
 	typed_string_inner_array_prefixItems_type,
 	typed_string_inner_array_type,
+	typed_string_inner_object_pattern_type,
 	typed_string_inner_object_type,
 	typed_string_parent_type,
 } from '../../CustomParsingTypes/TypedString';
@@ -32,10 +38,13 @@ import {
 import {
 	object_has_property,
 } from '../../CustomParsingTypes/CustomPairingTypes';
+import {
+	require_non_empty_array,
+} from '../../ArrayUtilities';
 
 export class typed_string extends GeneratorDoesDiscovery<
 	typed_string_parent_type,
-	TypeLiteralNode|TupleTypeNode
+	TypeLiteralNode|TupleTypeNode|UnionTypeNode
 > {
 	private readonly known_types:[
 		AnyGenerator,
@@ -63,10 +72,10 @@ export class typed_string extends GeneratorDoesDiscovery<
 
 	generate(): (
 		raw_data: typed_string_parent_type
-	) => TypeLiteralNode|TupleTypeNode {
+	) => TypeLiteralNode|TupleTypeNode|UnionTypeNode {
 		return (
 			raw_data:typed_string_parent_type
-		) : TypeLiteralNode|TupleTypeNode => {
+		) : TypeLiteralNode|TupleTypeNode|UnionTypeNode => {
 			const {typed_string: typed_string_value} = raw_data;
 
 			if (typed_string.is_array_type(typed_string_value)) {
@@ -97,6 +106,67 @@ export class typed_string extends GeneratorDoesDiscovery<
 					),
 					typed_string_value.maxItems
 				);
+			} else if (
+				typed_string.is_object_pattern_type(typed_string_value)
+			) {
+				const [
+					property_regex,
+					value,
+				] = Object.entries(typed_string_value.patternProperties)[0];
+				const properties = property_regex.substring(
+					2,
+					property_regex.length - 2
+				).split('|');
+				const combinations = properties.map((
+					e
+				): [string, [string, ...string[]]] => [
+					e,
+					require_non_empty_array(
+						properties.filter(maybe => maybe !== e)
+					),
+				]);
+
+				const value_generator = () => this.discovery.find(value);
+
+				const result:[
+					IntersectionTypeNode,
+					...IntersectionTypeNode[],
+				] = require_non_empty_array(combinations.map((
+					spec
+				): IntersectionTypeNode => {
+					const [required, optional] = spec;
+
+					const required_type = ts.factory.createTypeLiteralNode([
+						createPropertySignature(
+							required,
+							value_generator()
+						),
+					]);
+
+					const optional_types = optional.map((property) => {
+						return ts.factory.createUnionTypeNode([
+							ts.factory.createTypeLiteralNode([
+								createPropertySignature(
+									property,
+									value_generator()
+								),
+							]),
+							type_reference_node(
+								'Record',
+								create_type('string'),
+								create_type('never')
+							),
+						])
+					});
+
+					return ts.factory.createIntersectionTypeNode([
+						required_type,
+						...optional_types,
+					]);
+				}));
+
+
+				return ts.factory.createUnionTypeNode(result);
 			}
 
 			return create_object_type_from_entries(
@@ -127,6 +197,7 @@ export class typed_string extends GeneratorDoesDiscovery<
 	static is_array_type(
 		maybe:
 			| typed_string_inner_object_type
+			| typed_string_inner_object_pattern_type
 			| typed_string_inner_array_type
 			| typed_string_inner_array_prefixItems_type
 	): maybe is typed_string_inner_array_type {
@@ -136,9 +207,20 @@ export class typed_string extends GeneratorDoesDiscovery<
 		);
 	}
 
+	static is_object_pattern_type(
+		maybe:
+			| typed_string_inner_object_type
+			| typed_string_inner_object_pattern_type
+			| typed_string_inner_array_type
+			| typed_string_inner_array_prefixItems_type
+	): maybe is typed_string_inner_object_pattern_type {
+		return object_has_property(maybe, 'minProperties');
+	}
+
 	static is_object_type(
 		maybe:
 			| typed_string_inner_object_type
+			| typed_string_inner_object_pattern_type
 			| typed_string_inner_array_type
 			| typed_string_inner_array_prefixItems_type
 	): maybe is typed_string_inner_object_type {
@@ -148,6 +230,7 @@ export class typed_string extends GeneratorDoesDiscovery<
 	static is_prefixItems_type(
 		maybe:
 			| typed_string_inner_object_type
+			| typed_string_inner_object_pattern_type
 			| typed_string_inner_array_type
 			| typed_string_inner_array_prefixItems_type
 	): maybe is typed_string_inner_array_prefixItems_type {

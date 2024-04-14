@@ -32,6 +32,7 @@ import {
 } from './TypeDefinitionDiscovery/CustomParsingTypes/UnrealEngineString';
 import {
 	ObjectConverter,
+	PatternedObjectConverter,
 } from './DataDiscovery/JsonSchema/Object';
 import {
 	ArrayConverter,
@@ -96,6 +97,7 @@ export class DataDiscovery
 				new StringStartsWithConverter(docs.ajv),
 				new UnrealEngineStringConverter(),
 				new ObjectConverter(this),
+				new PatternedObjectConverter(this),
 				new TypedStringConverter(this, definitions),
 				new OneOfConverter(this),
 				new Ref(this),

@@ -21,8 +21,13 @@ import {
 	NoMatchError,
 } from '../../Exceptions';
 import {
+	Expression,
 	ObjectLiteralExpression,
 } from 'typescript';
+import {
+	pattern_properties_regex,
+	typed_string_inner_object_pattern_type,
+} from '../../CustomParsingTypes/TypedString';
 
 export type schema_type = {
 	type: 'object',
@@ -32,34 +37,22 @@ export type schema_type = {
 	properties?: {[key: string]: SchemaObject},
 };
 
-export class ObjectConverter extends ConverterMatchesSchema<
-	schema_type,
-	{[key: string]: unknown},
-	ObjectLiteralExpression
+abstract class ObjectConverterMatchesSchema<
+	Schema extends SchemaObject,
+	RawData = unknown,
+	Output extends Expression = Expression
+> extends ConverterMatchesSchema<
+	Schema,
+	RawData,
+	Output
 > {
-	private readonly already_resolved:{
+	protected readonly already_resolved:{
 		[key: string]: {[key: string]: SchemaObject},
 	} = {};
-	private readonly discovery:DataDiscovery;
+	protected readonly discovery:DataDiscovery;
 
-	constructor(discovery:DataDiscovery) {
-		super(discovery.docs.ajv, {
-			type: 'object',
-			required: ['type'],
-			additionalProperties: false,
-			properties: {
-				type: {type: 'string', const: 'object'},
-				$ref: {type: 'string', pattern: '^#/definitions/'},
-				required: {
-					type: 'array',
-					minItems: 1,
-					items: {type: 'string'},
-				},
-				additionalProperties: {type: 'boolean', const: false},
-				unevaluatedProperties: {type: 'boolean', const: false},
-				properties: {type: 'object', minProperties: 1},
-			},
-		});
+	constructor(discovery:DataDiscovery, schema:SchemaObject) {
+		super(discovery.docs.ajv, schema);
 
 		this.discovery = discovery;
 	}
@@ -117,76 +110,7 @@ export class ObjectConverter extends ConverterMatchesSchema<
 		) => !(maybe in converters));
 	}
 
-	async convert(
-		schema: schema_type,
-		raw_data: {[key: string]: unknown}
-	): Promise<ExpressionResult<ObjectLiteralExpression>> {
-		performance.mark(`${this.constructor.name}.convert() start`);
-		const sub_schema = await this.resolve_schema(schema);
-		performance.measure(
-			`${this.constructor.name}.convert() sub_schema`,
-			`${this.constructor.name}.convert() start`
-		);
-
-		const converters = await this.check_converters(schema, raw_data);
-		const result:{[key: string]: ExpressionResult} = {};
-
-		for (const entry of Object.entries(raw_data)) {
-			const [property, value] = entry;
-			performance.mark(
-				`${this.constructor.name}.convert() property start`
-			);
-
-			if (!await converters[property].can_convert_schema_and_raw_data(
-				sub_schema[property],
-				value
-			)) {
-				throw new NoMatchError(
-					{
-						property,
-						value,
-						sub_schema: sub_schema[property],
-						instance: converters[property].constructor.name,
-					},
-					'Cannot convert value!'
-				);
-			}
-			performance.measure(
-				`${this.constructor.name}.convert() property checked`,
-				`${this.constructor.name}.convert() property start`
-			);
-			performance.mark(
-				`${this.constructor.name}.convert() property start`
-			);
-
-			result[property] = await converters[property].convert(
-				sub_schema[property],
-				value
-			);
-			performance.measure(
-				`${this.constructor.name}.convert() property converted`,
-				`${this.constructor.name}.convert() property start`
-			);
-		}
-		performance.measure(
-			`${this.constructor.name}.convert() converted`,
-			`${this.constructor.name}.convert() start`
-		);
-		performance.mark(`${this.constructor.name}.convert() start`);
-
-		const expression = new ExpressionResult(
-			await this.discovery.literal.object_literal(result)
-		);
-
-		performance.measure(
-			`${this.constructor.name}.convert() expression`,
-			`${this.constructor.name}.convert() start`
-		);
-
-		return expression;
-	}
-
-	private async resolve_converters(
+	protected async resolve_converters(
 		schema: SchemaObject
 	): Promise<{[key: string]: Converter<SchemaObject>}> {
 		performance.mark(`${this.constructor.name}.resolve_converters() start`);
@@ -243,7 +167,7 @@ export class ObjectConverter extends ConverterMatchesSchema<
 		return converters;
 	}
 
-	private async resolve_converters_for_$ref(
+	protected async resolve_converters_for_$ref(
 		$ref:local_ref<string>
 	): Promise<{[key: string]: Converter<SchemaObject>}> {
 		const definition = await this.discovery.docs.definition(
@@ -253,7 +177,7 @@ export class ObjectConverter extends ConverterMatchesSchema<
 		return this.resolve_converters(definition);
 	}
 
-	private async resolve_schema(
+	protected async resolve_schema(
 		schema: SchemaObject,
 		depth = 0
 	): Promise<{[key: string]: SchemaObject}> {
@@ -326,5 +250,148 @@ export class ObjectConverter extends ConverterMatchesSchema<
 		this.already_resolved[json_string] = resolved_schema;
 
 		return resolved_schema;
+	}
+}
+
+export class ObjectConverter extends ObjectConverterMatchesSchema<
+	schema_type,
+	{[key: string]: unknown},
+	ObjectLiteralExpression
+> {
+	constructor(discovery:DataDiscovery) {
+		super(discovery, {
+			type: 'object',
+			required: ['type'],
+			additionalProperties: false,
+			properties: {
+				type: {type: 'string', const: 'object'},
+				$ref: {type: 'string', pattern: '^#/definitions/'},
+				required: {
+					type: 'array',
+					minItems: 1,
+					items: {type: 'string'},
+				},
+				additionalProperties: {type: 'boolean', const: false},
+				unevaluatedProperties: {type: 'boolean', const: false},
+				properties: {type: 'object', minProperties: 1},
+			},
+		});
+	}
+
+	async convert(
+		schema: schema_type,
+		raw_data: {[key: string]: unknown}
+	): Promise<ExpressionResult<ObjectLiteralExpression>> {
+		performance.mark(`${this.constructor.name}.convert() start`);
+		const sub_schema = await this.resolve_schema(schema);
+		performance.measure(
+			`${this.constructor.name}.convert() sub_schema`,
+			`${this.constructor.name}.convert() start`
+		);
+
+		const converters = await this.check_converters(schema, raw_data);
+		const result:{[key: string]: ExpressionResult} = {};
+
+		for (const entry of Object.entries(raw_data)) {
+			const [property, value] = entry;
+			performance.mark(
+				`${this.constructor.name}.convert() property start`
+			);
+
+			if (!await converters[property].can_convert_schema_and_raw_data(
+				sub_schema[property],
+				value
+			)) {
+				throw new NoMatchError(
+					{
+						property,
+						value,
+						sub_schema: sub_schema[property],
+						instance: converters[property].constructor.name,
+					},
+					'Cannot convert value!'
+				);
+			}
+			performance.measure(
+				`${this.constructor.name}.convert() property checked`,
+				`${this.constructor.name}.convert() property start`
+			);
+			performance.mark(
+				`${this.constructor.name}.convert() property start`
+			);
+
+			result[property] = await converters[property].convert(
+				sub_schema[property],
+				value
+			);
+			performance.measure(
+				`${this.constructor.name}.convert() property converted`,
+				`${this.constructor.name}.convert() property start`
+			);
+		}
+		performance.measure(
+			`${this.constructor.name}.convert() converted`,
+			`${this.constructor.name}.convert() start`
+		);
+		performance.mark(`${this.constructor.name}.convert() start`);
+
+		const expression = new ExpressionResult(
+			await this.discovery.literal.object_literal(result)
+		);
+
+		performance.measure(
+			`${this.constructor.name}.convert() expression`,
+			`${this.constructor.name}.convert() start`
+		);
+
+		return expression;
+	}
+}
+
+export class PatternedObjectConverter extends ObjectConverterMatchesSchema<
+	typed_string_inner_object_pattern_type,
+	{[key: string]: unknown},
+	ObjectLiteralExpression
+> {
+	constructor(
+		discovery:DataDiscovery
+	) {
+		super(discovery, {
+			type: 'object',
+			required: ['type', 'minProperties', 'patternProperties'],
+			additionalProperties: false,
+			properties: {
+				type: {type: 'string', const: 'object'},
+				$ref: {type: 'string', pattern: '^#/definitions/'},
+				additionalProperties: {type: 'boolean', const: false},
+				unevaluatedProperties: {type: 'boolean', const: false},
+				minProperties: {type: 'number', minimum: 1},
+				maxProperties: {type: 'number', minimum: 1},
+				patternProperties: {
+					type: 'object',
+					minProperties: 1,
+					maxProperties: 1,
+					patternProperties: {
+						[pattern_properties_regex]: {
+							type: 'object',
+							minProperties: 1,
+						},
+					},
+				},
+			},
+		});
+	}
+
+	convert(
+		schema: typed_string_inner_object_pattern_type,
+		raw_data: { [key: string]: unknown; }
+	): Promise<ExpressionResult<ObjectLiteralExpression>> {
+		throw new NoMatchError(
+			{
+				schema,
+				raw_data,
+			},
+			'Method not implemented.'
+		);
 	}
 }

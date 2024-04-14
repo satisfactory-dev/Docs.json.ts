@@ -3387,137 +3387,16 @@
 			}
 		},
 		"mDisableSnapOn": {
-			"oneOf": [
-				{
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"required": ["Top", "Bottom"],
-						"properties": {
-							"Top": {
-								"$ref": "#/definitions/boolean"
-							},
-							"Bottom": {
-								"$ref": "#/definitions/boolean"
-							}
-						}
-					}
-				},
-				{
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"required": ["Front", "Bottom"],
-						"properties": {
-							"Front": {
-								"$ref": "#/definitions/boolean"
-							},
-							"Bottom": {
-								"$ref": "#/definitions/boolean"
-							}
-						}
-					}
-				},
-				{
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"required": ["Front", "Right"],
-						"properties": {
-							"Front": {
-								"$ref": "#/definitions/boolean"
-							},
-							"Right": {
-								"$ref": "#/definitions/boolean"
-							}
-						}
-					}
-				},
-				{
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"required": ["Front", "Top", "Bottom"],
-						"properties": {
-							"Front": {
-								"$ref": "#/definitions/boolean"
-							},
-							"Top": {
-								"$ref": "#/definitions/boolean"
-							},
-							"Bottom": {
-								"$ref": "#/definitions/boolean"
-							}
-						}
-					}
-				},
-				{
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"required": ["Right", "Left", "Top", "Bottom"],
-						"properties": {
-							"Right": {
-								"$ref": "#/definitions/boolean"
-							},
-							"Left": {
-								"$ref": "#/definitions/boolean"
-							},
-							"Top": {
-								"$ref": "#/definitions/boolean"
-							},
-							"Bottom": {
-								"$ref": "#/definitions/boolean"
-							}
-						}
-					}
-				},
-				{
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"required": ["Front", "Left", "Top", "Bottom"],
-						"properties": {
-							"Front": {
-								"$ref": "#/definitions/boolean"
-							},
-							"Left": {
-								"$ref": "#/definitions/boolean"
-							},
-							"Top": {
-								"$ref": "#/definitions/boolean"
-							},
-							"Bottom": {
-								"$ref": "#/definitions/boolean"
-							}
-						}
-					}
-				},
-				{
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"required": ["Top"],
-						"properties": {
-							"Top": {
-								"$ref": "#/definitions/boolean"
-							}
-						}
-					}
-				},
-				{
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"required": ["Bottom"],
-						"properties": {
-							"Bottom": {
-								"$ref": "#/definitions/boolean"
-							}
-						}
+			"type": "string",
+			"minLength": 1,
+			"typed_string": {
+				"minProperties": 1,
+				"patternProperties": {
+					"^(Front|Right|Left|Right|Top|Bottom)$": {
+						"$ref": "#/definitions/boolean"
 					}
 				}
-			]
+			}
 		},
 		"FGBuildableWalkwayLightweight": {
 			"type": "object",

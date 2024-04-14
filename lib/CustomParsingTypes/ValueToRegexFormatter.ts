@@ -36,6 +36,10 @@ type typed_string_object_inner = {
 	required: [string, ...string[]],
 	properties: {[key: string]: unknown}
 };
+type typed_string_object_pattern_inner = {
+	minProperties: number,
+	patternProperties: {[key: string]: unknown}
+};
 type typed_string_array_inner = {
 	minItems?: number,
 	items: unknown,
@@ -185,10 +189,34 @@ export class ValueToRegexFormatter
 		).join('')}\\)`;
 	}
 
+	private typed_string_object_pattern_inner_to_regex(
+		typed_string_object:typed_string_object_pattern_inner
+	): string {
+		const [property_regex, value] = Object.entries(
+			typed_string_object.patternProperties
+		)[0];
+
+		const regex = `(?:${
+			annoyingly_have_to_escape_property(
+				property_regex.substring(1, property_regex.length - 1)
+			)
+		})=(?:${
+			this.value_to_regex(value)
+		})`;
+
+		return `\\(${regex}(,${regex}){${
+			typed_string_object.minProperties - 1
+		},}\\)`;
+	}
+
 	private value_to_regex(value:unknown): string
 	{
 		if (ValueToRegexFormatter.is_typed_string_object_inner(value)) {
 			return this.typed_string_object_inner_to_regex(value);
+		} else if (
+			ValueToRegexFormatter.is_typed_string_object_pattern_inner(value)
+		) {
+			return this.typed_string_object_pattern_inner_to_regex(value);
 		} else if (
 			ValueToRegexFormatter.is_typed_string_object_parent(value)
 		) {
@@ -354,6 +382,24 @@ export class ValueToRegexFormatter
 				this.is_typed_string_object_inner(maybe.typed_string)
 				|| this.is_typed_string_array_inner(maybe.typed_string)
 			)
+		);
+	}
+
+	private static is_typed_string_object_pattern_inner(
+		maybe:unknown
+	): maybe is typed_string_object_pattern_inner {
+		return (
+			object_has_property(
+				maybe,
+				'minProperties',
+				is_number
+			)
+			&& object_has_property(
+				maybe,
+				'patternProperties',
+				value_is_non_array_object
+			)
+			&& 2 === Object.keys(maybe).length
 		);
 	}
 }

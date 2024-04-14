@@ -42,6 +42,15 @@ export type typed_string_inner_object_type = {
 	},
 };
 
+export type typed_string_inner_object_pattern_type = {
+	minProperties: number,
+	patternProperties: {
+		[key: string]: (
+			| typed_string_object_type
+		)
+	},
+};
+
 type typed_string_inner_array_items_type =
 	| typed_string_sub_types
 	| typed_string_parent_type;
@@ -69,6 +78,7 @@ export type typed_string_inner_array_prefixItems_type = {
 
 type typed_string_inner_type =
 	| typed_string_inner_object_type
+	| typed_string_inner_object_pattern_type
 	| typed_string_inner_array_type
 	| typed_string_inner_array_prefixItems_type;
 
@@ -79,6 +89,31 @@ export type typed_string_parent_type = {
 };
 
 const property_regex = '^[A-Za-z][A-Za-z0-9_\\[\\]]*$';
+export const pattern_properties_regex =
+	'^\\^\\([A-za-z]+(\\|[A-za-z]+)*\\)\\$$';
+
+export const pattern_properties_schema = {
+	type: 'object',
+	required: [
+		'minProperties',
+		'patternProperties',
+	],
+	additionalProperties: false,
+	properties: {
+		minProperties: {type: 'number', minimum: 1},
+		patternProperties: {
+			type: 'object',
+			additionalProperties: false,
+			minProperties: 1,
+			maxProperties: 1,
+			patternProperties: {
+				[pattern_properties_regex]: {
+					$ref: '#/definitions/typed_string_subtypes',
+				},
+			},
+		},
+	},
+};
 
 export function generate_object_parent_schema() {
 	return {$ref: '#/definitions/typed_string_parent_type'};
@@ -118,6 +153,7 @@ export function generate_typed_string_definitions(
 				typed_string: {
 					oneOf: [
 						{$ref: '#/definitions/typed_string_object_type'},
+						{$ref: `#/definitions/typed_string_object_pattern_type`},
 						{$ref: '#/definitions/typed_string_array_type'},
 						{$ref: '#/definitions/typed_string_prefixItems_type'},
 					],
@@ -150,6 +186,7 @@ export function generate_typed_string_definitions(
 				},
 			},
 		},
+		typed_string_object_pattern_type: pattern_properties_schema,
 		typed_string_array_type: {
 			type: 'object',
 			required: [
@@ -241,6 +278,7 @@ export class TypedString
 			definitions: generate_typed_string_definitions(local_refs),
 			oneOf: [
 				{$ref: '#/definitions/typed_string_object_type'},
+				{$ref: '#/definitions/typed_string_object_pattern_type'},
 				{$ref: '#/definitions/typed_string_array_type'},
 				{$ref: '#/definitions/typed_string_prefixItems_type'},
 			],
