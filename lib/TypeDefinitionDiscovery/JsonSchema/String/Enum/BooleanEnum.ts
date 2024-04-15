@@ -11,7 +11,7 @@ import {
 } from '../../../../TsFactoryWrapper';
 import Ajv from 'ajv/dist/2020';
 
-type boolean_or_null_type = {
+export type boolean_or_null_type = {
 	type: 'string',
 	enum: ['True', 'False']
 } | {
