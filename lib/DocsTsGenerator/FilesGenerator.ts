@@ -92,18 +92,18 @@ export class FilesGenerator extends Base {
 		file: string,
 		node: TypeAliasDeclaration,
 	} {
-			const entry_filename = `classes/CoreUObject/${
-				entry_class_name
-			}.ts`;
+		const entry_filename = `classes/CoreUObject/${
+			entry_class_name
+		}.ts`;
 
 		return {
-				file: entry_filename,
-				node: ts.factory.createTypeAliasDeclaration(
-					create_modifiers('export'),
-					`${entry_class_name}__NativeClass`,
-					undefined,
-					entry_type
-				),
-			};
+			file: entry_filename,
+			node: ts.factory.createTypeAliasDeclaration(
+				create_modifiers('export'),
+				`${entry_class_name}__NativeClass`,
+				undefined,
+				entry_type
+			),
+		};
 	}
 }
