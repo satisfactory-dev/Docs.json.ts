@@ -13,7 +13,10 @@ import {
 import {
 	UnrealEngineString,
 } from '../TypeDefinitionDiscovery/CustomParsingTypes/UnrealEngineString';
-import ts from 'typescript';
+import ts, {
+	TypeAliasDeclaration,
+	TypeNode,
+} from 'typescript';
 import {
 	create_modifiers,
 } from '../TsFactoryWrapper';
@@ -66,15 +69,34 @@ export class FilesGenerator extends Base {
 				types.found_classes[this.validations.indexOf(check)]
 			);
 
-			const entry_class_name = adjust_unrealengine_value(
-				UnrealEngineString.fromString(entry.NativeClass).right
+			yield this.generate_files_entry_yield(
+				entry_type,
+				this.generate_files_class_name(
+					entry.NativeClass
+				)
 			);
+		}
+	}
 
+	protected generate_files_class_name(value:string): string
+	{
+		return adjust_unrealengine_value(
+			UnrealEngineString.fromString(value).right
+		);
+	}
+
+	protected generate_files_entry_yield(
+		entry_type:TypeNode,
+		entry_class_name:string,
+	) : {
+		file: string,
+		node: TypeAliasDeclaration,
+	} {
 			const entry_filename = `classes/CoreUObject/${
 				entry_class_name
 			}.ts`;
 
-			yield {
+		return {
 				file: entry_filename,
 				node: ts.factory.createTypeAliasDeclaration(
 					create_modifiers('export'),
@@ -83,6 +105,5 @@ export class FilesGenerator extends Base {
 					entry_type
 				),
 			};
-		}
 	}
 }
