@@ -6,7 +6,9 @@ import assert from 'node:assert/strict';
 import {
 	typed_string,
 } from '../../../../lib/TypesDiscovery/CustomParsingTypes/typed_string';
-import { SchemaObject } from 'ajv';
+import {
+	SchemaObject,
+} from 'ajv';
 
 void describe('typed_string', () => {
 	const instance = new typed_string({});
