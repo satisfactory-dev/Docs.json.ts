@@ -61,7 +61,7 @@ void describe('FilesGenerator', async () => {
 		}
 	};
 
-	void describe('generate_file', async () => {
+	void describe('generate_file', () => {
 		void it('falls over as expected', async() => {
 			const promise = instance.generate_file({
 				NativeClass: 'foo',

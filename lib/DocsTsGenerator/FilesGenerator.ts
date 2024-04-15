@@ -21,8 +21,8 @@ import {
 	create_modifiers,
 } from '../TsFactoryWrapper';
 import {
-	TypeDefinitionDiscovery,
 	ref_discovery_type,
+	TypeDefinitionDiscovery,
 } from '../TypeDefinitionDiscovery';
 import {
 	TypesDiscovery,
