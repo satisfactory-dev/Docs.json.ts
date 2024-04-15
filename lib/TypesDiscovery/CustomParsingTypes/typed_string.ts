@@ -72,21 +72,28 @@ export class typed_string extends CandidatesDiscovery
 				)
 				|| (
 					(
-						2 === Object.keys(maybe.typed_string).length
+						(
+							4 === Object.keys(maybe.typed_string).length
+							&& object_has_property(
+								maybe.typed_string,
+								'maxItems',
+								(e): e is number => 'number' === typeof e,
+							)
+						)
 						|| (
 							3 === Object.keys(
 								maybe.typed_string
 							).length
 							&& !object_has_property(
 								maybe.typed_string,
-								'minItems',
-								(
-									maybe:unknown
-								) : maybe is number => {
-									return 'number' === typeof maybe;
-								}
+								'maxItems',
 							)
 						)
+					)
+					&& object_has_property(
+						maybe.typed_string,
+						'minItems',
+						(e): e is number => 'number' === typeof e,
 					)
 					&& object_has_property_that_equals(
 						maybe.typed_string,
