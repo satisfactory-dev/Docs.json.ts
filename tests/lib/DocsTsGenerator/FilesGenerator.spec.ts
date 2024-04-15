@@ -22,7 +22,11 @@ import ts_assert from '@signpostmarv/ts-assert';
 import {
 	array_has_size,
 	not_undefined,
+	rejects_partial_match,
 } from '../../../assert/CustomAssert';
+import {
+	DocsDataItem,
+} from '../../../lib/DocsTsGenerator';
 
 void describe('FilesGenerator', async () => {
 	const type_definition_writer = new TypeDefinitionWriter(docs);
@@ -34,6 +38,11 @@ void describe('FilesGenerator', async () => {
 				[],
 				discovery
 			);
+		}
+
+		public generate_file(entry:DocsDataItem)
+		{
+			return super.generate_file(entry);
 		}
 
 		public generate_files_class_name(value:string)
@@ -51,6 +60,25 @@ void describe('FilesGenerator', async () => {
 			);
 		}
 	};
+
+	void describe('generate_file', async () => {
+		void it('falls over as expected', async() => {
+			const promise = instance.generate_file({
+				NativeClass: 'foo',
+				Classes: [],
+			});
+
+			await rejects_partial_match(promise, {
+				property: {
+					entry: {
+						NativeClass: 'foo',
+						Classes: [],
+					},
+				},
+				message: 'Could not find matching validator!',
+			});
+		})
+	})
 
 	void describe('generate_files_class_name', () => {
 		void it('behaves', () => {

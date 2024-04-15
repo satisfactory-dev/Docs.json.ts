@@ -22,13 +22,19 @@ import {
 } from '../TsFactoryWrapper';
 import {
 	TypeDefinitionDiscovery,
+	ref_discovery_type,
 } from '../TypeDefinitionDiscovery';
 import {
 	TypesDiscovery,
 } from '../TypesDiscovery';
+import {
+	DocsDataItem,
+} from '../DocsTsGenerator';
 
 export class FilesGenerator extends Base {
 	private readonly discovery:TypeDefinitionDiscovery;
+	private readonly is_NativeClass:Promise<ValidateFunction<DocsDataItem>>;
+	private readonly types:Promise<ref_discovery_type>;
 	private readonly validations:ValidateFunction[];
 
 	constructor(
@@ -38,16 +44,25 @@ export class FilesGenerator extends Base {
 		super();
 		this.validations = validations;
 		this.discovery = discovery;
+		this.is_NativeClass = TypesDiscovery.generate_is_NativeClass(
+			this.discovery.docs
+		);
+		this.types = this.discovery.discover_type_definitions();
 	}
 
 	async* generate_files() {
-		const types = await this.discovery.discover_type_definitions();
-
-		const is_NativeClass = await TypesDiscovery.generate_is_NativeClass(
-			this.discovery.docs
-		);
-
 		for (const entry of await this.discovery.docs.get()) {
+			yield await this.generate_file(entry);
+		}
+	}
+
+	protected async generate_file(entry:DocsDataItem): Promise<{
+		file: string,
+		node: TypeAliasDeclaration,
+	}> {
+		const types = await this.types;
+		const is_NativeClass = await this.is_NativeClass;
+
 			const check = this.validations.find(maybe => maybe(entry));
 
 			if (!check) {
@@ -56,7 +71,7 @@ export class FilesGenerator extends Base {
 						types,
 						entry,
 					},
-					'Could not find schema!'
+					'Could not find matching validator!'
 				);
 			} else if (!is_NativeClass(entry)) {
 				throw new NoMatchError(
@@ -69,13 +84,12 @@ export class FilesGenerator extends Base {
 				types.found_classes[this.validations.indexOf(check)]
 			);
 
-			yield this.generate_files_entry_yield(
+		return this.generate_files_entry_yield(
 				entry_type,
 				this.generate_files_class_name(
 					entry.NativeClass
 				)
 			);
-		}
 	}
 
 	protected generate_files_class_name(value:string): string
