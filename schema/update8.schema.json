@@ -6531,6 +6531,14 @@
 			"type": "object",
 			"$ref": "#/definitions/FGBuildableLightSource--base",
 			"unevaluatedProperties": false,
+			"required": [
+				"OnBuildableLightSourceStateChanged",
+				"mIsEnabled",
+				"mLightControlData",
+				"mPowerConsumption",
+				"mHasPower",
+				"mIsDay"
+			],
 			"properties": {
 				"newCustomizationData": {
 					"type": "string",
