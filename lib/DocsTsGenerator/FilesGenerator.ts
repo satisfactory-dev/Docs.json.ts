@@ -63,33 +63,33 @@ export class FilesGenerator extends Base {
 		const types = await this.types;
 		const is_NativeClass = await this.is_NativeClass;
 
-			const check = this.validations.find(maybe => maybe(entry));
+		const check = this.validations.find(maybe => maybe(entry));
 
-			if (!check) {
-				throw new NoMatchError(
-					{
-						types,
-						entry,
-					},
-					'Could not find matching validator!'
-				);
-			} else if (!is_NativeClass(entry)) {
-				throw new NoMatchError(
+		if (!check) {
+			throw new NoMatchError(
+				{
+					types,
 					entry,
-					'Entry not a general NativeClass!'
-				);
-			}
-
-			const entry_type = this.discovery.find(
-				types.found_classes[this.validations.indexOf(check)]
+				},
+				'Could not find matching validator!'
 			);
+		} else if (!is_NativeClass(entry)) {
+			throw new NoMatchError(
+				entry,
+				'Entry not a general NativeClass!'
+			);
+		}
+
+		const entry_type = this.discovery.find(
+			types.found_classes[this.validations.indexOf(check)]
+		);
 
 		return this.generate_files_entry_yield(
-				entry_type,
-				this.generate_files_class_name(
-					entry.NativeClass
-				)
-			);
+			entry_type,
+			this.generate_files_class_name(
+				entry.NativeClass
+			)
+		);
 	}
 
 	protected generate_files_class_name(value:string): string
