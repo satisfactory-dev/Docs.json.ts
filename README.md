@@ -22,7 +22,8 @@
 ## Requirements
 
 -   Docker
-    -   only tested with Docker for windows & git bash terminals
+    -   recommend vscode devcontainer support
+	-   phpstorm's devcontainer support works but doesn't seem as capable
 -   A copy of Update 8's `Docs.json` file
 
 ## Instructions
