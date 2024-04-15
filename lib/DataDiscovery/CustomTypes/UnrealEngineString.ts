@@ -16,6 +16,7 @@ import ts, {
 	TypeNode,
 } from 'typescript';
 import {
+	create_literal,
 	create_property_access,
 	create_type,
 	type_reference_node,
@@ -67,7 +68,7 @@ export class UnrealEngineStringConverter extends Converter<
 			);
 		}
 		const type_args:[TypeNode, TypeNode] = [
-			create_type('string'),
+			create_literal('/Script/Engine.BlueprintGeneratedClass'),
 			create_type('string'),
 		];
 
