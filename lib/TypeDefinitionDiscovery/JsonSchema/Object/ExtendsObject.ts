@@ -16,10 +16,13 @@ import {
 import {
 	GeneratorDoesDiscovery,
 } from '../../GeneratorDoesDiscovery';
+import {
+	local_ref,
+} from '../../../StringStartsWith';
 
 type RawData =
 	& ObjectTypeRawData
-	& {properties: {[key: string]: unknown}, $ref: string};
+	& {properties: {[key: string]: unknown}, $ref: local_ref<string>};
 
 type Type =
 	| TypeReferenceNode
@@ -68,9 +71,7 @@ export class ExtendsObject extends GeneratorDoesDiscovery<RawData, Type>
 				...rest
 			} = raw_data;
 
-			const reference_type = ts.factory.createTypeReferenceNode(
-				adjust_class_name(`${$ref.substring(14)}__type`)
-			);
+			const reference_type = this.create_reference_type($ref);
 
 			if (undefined === properties) {
 				return reference_type;
@@ -84,5 +85,13 @@ export class ExtendsObject extends GeneratorDoesDiscovery<RawData, Type>
 				}),
 			]) as Type;
 		};
+	}
+
+	protected create_reference_type(
+		$ref: local_ref<string>
+	): TypeReferenceNode {
+		return ts.factory.createTypeReferenceNode(
+			adjust_class_name(`${$ref.substring(14)}__type`)
+		);
 	}
 }
