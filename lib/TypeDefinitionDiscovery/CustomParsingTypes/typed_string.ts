@@ -1,5 +1,4 @@
 import ts, {
-	IntersectionTypeNode,
 	TupleTypeNode,
 	TypeLiteralNode,
 	UnionTypeNode,
@@ -9,10 +8,8 @@ import {
 } from '../../TypeDefinitionDiscovery';
 import {
 	create_object_type_from_entries,
-	create_type,
 	createPropertySignature,
 	minimum_size_array_of_single_type,
-	type_reference_node,
 } from '../../TsFactoryWrapper';
 import {
 	GeneratorDoesDiscovery,
@@ -38,9 +35,40 @@ import {
 import {
 	object_has_property,
 } from '../../CustomParsingTypes/CustomPairingTypes';
-import {
-	require_non_empty_array,
-} from '../../ArrayUtilities';
+
+function create_combinations(values:Set<string>) : string[][] {
+	const as_array:string[] = [...values.values()];
+	const entered:string[] = [JSON.stringify(as_array)];
+	const result:string[][] = [as_array];
+
+	const filter_these_out:string[] = [];
+
+	for (const item of as_array) {
+		const filtered:string[] = as_array.filter(
+			(maybe) => {
+				return (
+					maybe !== item
+					&& !filter_these_out.includes(maybe)
+				);
+			}
+		);
+
+		if (filtered.length) {
+			for (
+				const entry of create_combinations(new Set<string>(filtered))
+			) {
+				const json_string = JSON.stringify(entry);
+
+				if (!entered.includes(json_string)) {
+					entered.push(json_string);
+					result.push(entry);
+				}
+			}
+		}
+	}
+
+	return [...(new Set<string[]>(result)).values()];
+}
 
 export class typed_string extends GeneratorDoesDiscovery<
 	typed_string_parent_type,
@@ -117,54 +145,21 @@ export class typed_string extends GeneratorDoesDiscovery<
 					2,
 					property_regex.length - 2
 				).split('|');
-				const combinations = properties.map((
-					e
-				): [string, [string, ...string[]]] => [
-					e,
-					require_non_empty_array(
-						properties.filter(maybe => maybe !== e)
-					),
-				]);
+
+				const combinations = create_combinations(new Set(properties));
 
 				const value_generator = () => this.discovery.find(value);
 
-				const result:[
-					IntersectionTypeNode,
-					...IntersectionTypeNode[],
-				] = require_non_empty_array(combinations.map((
-					spec
-				): IntersectionTypeNode => {
-					const [required, optional] = spec;
-
-					const required_type = ts.factory.createTypeLiteralNode([
-						createPropertySignature(
-							required,
-							value_generator()
-						),
-					]);
-
-					const optional_types = optional.map((property) => {
-						return ts.factory.createUnionTypeNode([
-							ts.factory.createTypeLiteralNode([
-								createPropertySignature(
-									property,
-									value_generator()
-								),
-							]),
-							type_reference_node(
-								'Record',
-								create_type('string'),
-								create_type('never')
-							),
-						])
-					});
-
-					return ts.factory.createIntersectionTypeNode([
-						required_type,
-						...optional_types,
-					]);
-				}));
-
+				const result = combinations.map(
+					(required:string[]): TypeLiteralNode => {
+						return ts.factory.createTypeLiteralNode(
+							required.map(property => createPropertySignature(
+								property,
+								value_generator()
+							))
+						)
+					}
+				);
 
 				return ts.factory.createUnionTypeNode(result);
 			}

@@ -243,11 +243,10 @@ void describe('typed_string', async () => {
 			});
 
 			ts_assert.isUnionTypeNode(result);
-			array_has_size(result.types, 2);
-			ts_assert.isParenthesizedTypeNode(result.types[0]);
-			ts_assert.isIntersectionTypeNode(result.types[0].type);
-			ts_assert.isParenthesizedTypeNode(result.types[1]);
-			ts_assert.isIntersectionTypeNode(result.types[1].type);
+			array_has_size(result.types, 3);
+			ts_assert.isTypeLiteralNode(result.types[0]);
+			ts_assert.isTypeLiteralNode(result.types[1]);
+			ts_assert.isTypeLiteralNode(result.types[2]);
 		})
 
 		void it('behaves with object standard found type', () => {
