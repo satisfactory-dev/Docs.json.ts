@@ -69,7 +69,13 @@ export class OneOfConverter extends ConverterMatchesSchema<oneOf> {
 				raw_data
 			);
 
-			if (converter) {
+			if (
+				converter
+				&& await converter.can_convert_schema_and_raw_data(
+					entry,
+					raw_data
+				)
+			) {
 				return await converter.convert(entry, raw_data);
 			}
 		}

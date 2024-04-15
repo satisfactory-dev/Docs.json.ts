@@ -68,6 +68,12 @@ abstract class ObjectConverterMatchesSchema<
 				raw_data,
 				await this.resolve_converters(schema)
 			).length
+			&& await new Promise((yup => {
+				this.convert(
+					schema,
+					raw_data as RawData
+				).then(() => yup(true)).catch(() => yup(false));
+			}))
 		);
 	}
 
