@@ -10,7 +10,7 @@ import {
 } from '../Generator';
 import ts, {
 	FalseLiteral,
-	Identifier,
+	NullLiteral,
 	TrueLiteral,
 } from 'typescript';
 
@@ -36,7 +36,7 @@ export type schema_type = SchemaObject & {
 export class BooleanConverter extends ConverterMatchesSchema<
 	schema_type,
 	'True'|'False'|'',
-	TrueLiteral|FalseLiteral|Identifier
+	TrueLiteral|FalseLiteral|NullLiteral
 > {
 	constructor(ajv:Ajv) {
 		super(ajv, schema);
@@ -56,10 +56,10 @@ export class BooleanConverter extends ConverterMatchesSchema<
 	convert(
 		_: schema_type,
 		raw_data: '' | 'True' | 'False'
-	): Promise<ExpressionResult<Identifier | TrueLiteral | FalseLiteral>> {
+	): Promise<ExpressionResult<NullLiteral | TrueLiteral | FalseLiteral>> {
 		return Promise.resolve(new ExpressionResult(
 			'' === raw_data
-				? ts.factory.createIdentifier('undefined')
+				? ts.factory.createNull()
 				: (
 					'True' === raw_data
 						? ts.factory.createTrue()

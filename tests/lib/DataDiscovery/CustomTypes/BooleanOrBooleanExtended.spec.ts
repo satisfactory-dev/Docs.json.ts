@@ -13,6 +13,7 @@ import {
 	local_ref,
 } from '../../../../lib/StringStartsWith';
 import ts_assert from '@signpostmarv/ts-assert';
+import ts from 'typescript';
 
 const schema = {$ref: local_ref('boolean-extended')};
 
@@ -64,6 +65,6 @@ void describe('BooleanConverter.convert()', () => {
 	void it('resolved undefined', async() => {
 		const result = (await instance.convert(schema, '')).expression;
 
-		ts_assert.isUndefined(result);
+		ts_assert.isTokenWithExpectedKind(result, ts.SyntaxKind.NullKeyword);
 	});
 });
