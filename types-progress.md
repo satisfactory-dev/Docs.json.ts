@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (209 of 209)
+100.00% Complete (207 of 207)
 
 ## Basic Types
 
@@ -145,8 +145,6 @@
 -   [x] FGBuildable--pipeline-flow-accessory
 -   [x] FGBuildable--pole--base
 -   [x] FGBuildable--power-switch--base
--   [x] FGBuildable--spline-base
--   [x] FGBuildable--spline-base--has-spline-data
 -   [x] FGBuildable--splitter--base
 -   [x] FGBuildable--tiered
 

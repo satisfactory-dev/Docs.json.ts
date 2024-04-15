@@ -2070,18 +2070,9 @@
 				}
 			}
 		},
-		"FGBuildable--spline-base": {
-			"type": "object",
-			"$ref": "#/definitions/FGBuildable--base",
-			"properties": {
-				"mMeshLength": {
-					"$ref": "#/definitions/decimal-string"
-				}
-			}
-		},
 		"FGBuildableRailroadTrack": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--spline-base",
+			"$ref": "#/definitions/FGBuildable--base",
 			"unevaluatedProperties": false,
 			"required": [
 				"mMeshLength",
@@ -2101,6 +2092,9 @@
 				"ClassName": {
 					"type": "string",
 					"const": "Build_RailroadTrack_C"
+				},
+				"mMeshLength": {
+					"$ref": "#/definitions/decimal-string"
 				},
 				"mConnections": {
 					"type": "string",
@@ -2248,19 +2242,9 @@
 			"unevaluatedProperties": false,
 			"required": ["mSubCategories", "mForm"]
 		},
-		"FGBuildable--spline-base--has-spline-data": {
-			"type": "object",
-			"$ref": "#/definitions/FGBuildable--spline-base",
-			"properties": {
-				"mSplineData": {
-					"type": "string",
-					"const": ""
-				}
-			}
-		},
 		"FGBuildableConveyorBelt--base": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--spline-base--has-spline-data",
+			"$ref": "#/definitions/FGBuildable--base",
 			"required": [
 				"mItemMeshMap",
 				"mSpeed",
@@ -2288,6 +2272,13 @@
 			"unevaluatedProperties": false,
 			"required": ["mMeshLength", "mSplineData", "mCustomSkins"],
 			"properties": {
+				"mMeshLength": {
+					"$ref": "#/definitions/decimal-string"
+				},
+				"mSplineData": {
+					"type": "string",
+					"const": ""
+				},
 				"mCustomSkins": {
 					"type": "string",
 					"minLength": 1,
@@ -3699,10 +3690,9 @@
 		},
 		"FGBuildablePipeline": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--spline-base--has-spline-data",
+			"$ref": "#/definitions/FGBuildable--base",
 			"unevaluatedProperties": false,
 			"required": [
-				"mSplineData",
 				"mRadius",
 				"mFlowLimit",
 				"mFlowIndicatorMinimumPipeLength",
@@ -3719,9 +3709,17 @@
 				"mIsRattling",
 				"mUpdateSoundsHandle",
 				"mMeshLength",
+				"mSplineData",
 				"mSnappedPassthroughs"
 			],
 			"properties": {
+				"mMeshLength": {
+					"$ref": "#/definitions/decimal-string"
+				},
+				"mSplineData": {
+					"type": "string",
+					"const": ""
+				},
 				"mRadius": {
 					"$ref": "#/definitions/decimal-string"
 				},
@@ -5077,10 +5075,17 @@
 		},
 		"FGBuildablePipeHyper": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--spline-base--has-spline-data",
+			"$ref": "#/definitions/FGBuildable--base",
 			"unevaluatedProperties": false,
-			"required": ["mSnappedPassthroughs", "mMeshLength"],
+			"required": ["mSnappedPassthroughs", "mSplineData", "mMeshLength"],
 			"properties": {
+				"mMeshLength": {
+					"$ref": "#/definitions/decimal-string"
+				},
+				"mSplineData": {
+					"type": "string",
+					"const": ""
+				},
 				"mSnappedPassthroughs": {
 					"type": "string",
 					"const": ""
