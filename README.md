@@ -12,9 +12,6 @@
     -   generated files will be included in the repo
     -   Docs.json _may_ be included
     -   Docs.utf8.json _may_ be included
--   the schema-based results matcher has been abstracted
-    -   portions of the schema that use the `object_string` keyword should parse the object string then validate the resultant object according to the schema chunk within the keyword
-    -   `$ref` objects should return a result for that particular type etc.
     -   the contents of [data-progress.md](data-progress.md) do not indicate that data generation is _valid_, only that it spits out _something_.
 
 # Using
@@ -54,6 +51,44 @@
 ##### node
 
 -   Refer to [Makefile](Makefile) for `DOCKER_PREFIX_NO_LOADER`
+
+## In a separate project
+
+Until such time as this project is published as an npm package,
+it is recommended to use it as a git submodule due to ts-node having
+issues with importing .ts files from node_modules
+(so the project can't be installed direct from git), i.e.:
+
+1. In your new project, run `git submodule add
+https://github.com/Satisfactory-Clips-Archive/Docs.json.ts.git`
+1. refer to [package.json](package.json) to install packages that won't have
+   been installed due to circumventing the `npm install` approach.
+1. refer to [discover-types.ts](discover-types.ts) for how to generate the
+   types & data
+
+    - You will need to replace the usage of the `docs` helper with
+      something like the following (where `${__dirname}/data/` is the data
+      path in your new project):
+
+        ```ts
+        const __dirname = __dirname_from_meta(import.meta);
+        const ajv = new Ajv({
+        	verbose: true,
+        	code: {
+        		source: true,
+        		es5: false,
+        		esm: true,
+        		optimize: true,
+        	},
+        });
+        configure_ajv(ajv);
+
+        export const docs = new DocsTsGenerator({
+        	ajv,
+        	docs_path: `${__dirname}/data/Docs.json`,
+        	cache_path: `${__dirname}/data/`,
+        });
+        ```
 
 # License
 
