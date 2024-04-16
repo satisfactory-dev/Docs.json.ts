@@ -66,6 +66,62 @@ void describe('ArrayType', async () => {
 				ts_assert.isStringLiteral(type.elements[0].literal);
 				assert.equal(type.elements[0].literal.text, 'foo');
 			})
+
+			void it('behaves with minItems only', () => {
+				const get_type = () => result({
+					type: 'array',
+					minItems: 1,
+					items: {
+						type: 'string',
+						const: 'foo',
+					},
+				});
+
+				assert.doesNotThrow(get_type);
+
+				const type = get_type();
+
+				ts_assert.isTupleTypeNode(type);
+				array_has_size(type.elements, 2);
+				ts_assert.isLiteralTypeNode(type.elements[0]);
+				ts_assert.isStringLiteral(type.elements[0].literal);
+				assert.equal(type.elements[0].literal.text, 'foo');
+
+				ts_assert.isRestTypeNode(type.elements[1]);
+				ts_assert.isArrayTypeNode(type.elements[1].type);
+				ts_assert.isLiteralTypeNode(
+					type.elements[1].type.elementType
+				);
+				ts_assert.isStringLiteral(
+					type.elements[1].type.elementType.literal
+				);
+				assert.equal(
+					type.elements[1].type.elementType.literal.text,
+					'foo'
+				);
+			})
+
+			void it('behaves with minItems and maxItems', () => {
+				const get_type = () => result({
+					type: 'array',
+					minItems: 1,
+					maxItems: 1,
+					items: {
+						type: 'string',
+						const: 'foo',
+					},
+				});
+
+				assert.doesNotThrow(get_type);
+
+				const type = get_type();
+
+				ts_assert.isTupleTypeNode(type);
+				array_has_size(type.elements, 1);
+				ts_assert.isLiteralTypeNode(type.elements[0]);
+				ts_assert.isStringLiteral(type.elements[0].literal);
+				assert.equal(type.elements[0].literal.text, 'foo');
+			})
 		})
 	})
 })
