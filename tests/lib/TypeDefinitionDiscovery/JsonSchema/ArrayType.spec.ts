@@ -122,6 +122,32 @@ void describe('ArrayType', async () => {
 				ts_assert.isStringLiteral(type.elements[0].literal);
 				assert.equal(type.elements[0].literal.text, 'foo');
 			})
+
+			void it('behaves with no bounds', () => {
+				const get_type = () => result({
+					type: 'array',
+					items: {
+						type: 'string',
+						const: 'foo',
+					},
+				});
+
+				assert.doesNotThrow(get_type);
+
+				const type = get_type();
+
+				ts_assert.isArrayTypeNode(type);
+				ts_assert.isLiteralTypeNode(
+					type.elementType
+				);
+				ts_assert.isStringLiteral(
+					type.elementType.literal
+				);
+				assert.equal(
+					type.elementType.literal.text,
+					'foo'
+				);
+			})
 		})
 	})
 })
