@@ -9,16 +9,12 @@ on:
 jobs:
     basic-checks:
         runs-on: ubuntu-latest
-        strategy:
-            matrix:
-                node-version: [21.x]
-                # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
         steps:
             - uses: actions/checkout@v4
-            - name: Use Node.js ${{ matrix.node-version }}
+            - name: Use Node.js 21.x
               uses: actions/setup-node@v4
               with:
-                  node-version: ${{ matrix.node-version }}
+                  node-version: 21.x
                   cache: 'npm'
             - run: npm ci
             - run: ./node_modules/.bin/tsc --project ./tsconfig.app-check.json
@@ -33,10 +29,10 @@ jobs:
                 # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
         steps:
             - uses: actions/checkout@v4
-            - name: Use Node.js ${{ matrix.node-version }}
+            - name: Use Node.js 21.x
               uses: actions/setup-node@v4
               with:
-                  node-version: ${{ matrix.node-version }}
+                  node-version: 21.x
                   cache: 'npm'
             - run: npm ci
             - name: Generate coverage
