@@ -13,6 +13,13 @@ import ts, {
 void describe('EntityName_array_from_Node_array', () => {
 	const empty_behaves:{[key: string]: Node[]} = {
 		'[]': [],
+		ArrayTypeNode: [
+			ts.factory.createArrayTypeNode(
+				ts.factory.createLiteralTypeNode(
+					ts.factory.createStringLiteral('foo')
+				)
+			),
+		],
 		ClassDeclaration: [
 			ts.factory.createClassDeclaration(
 				undefined,
@@ -66,4 +73,14 @@ void describe('EntityName_array_from_Node_array', () => {
 			assert.deepEqual(result, []);
 		})
 	}
+
+	void it('behaves with ArrayTypeNode', () => {
+		const result = EntityName_array_from_Node_array([
+			ts.factory.createTypeReferenceNode('foo'),
+		]);
+
+		assert.deepEqual(result, [
+			ts.factory.createIdentifier('foo'),
+		]);
+	})
 })
