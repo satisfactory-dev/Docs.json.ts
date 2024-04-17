@@ -6824,7 +6824,12 @@
 					"items": {
 						"type": "object",
 						"$ref": "#/definitions/FGCustomizationRecipe--FGRecipe",
-						"unevaluatedProperties": false
+						"unevaluatedProperties": false,
+						"properties": {
+							"mIngredients": {
+								"$ref": "#/definitions/ItemClass"
+							}
+						}
 					}
 				}
 			}
