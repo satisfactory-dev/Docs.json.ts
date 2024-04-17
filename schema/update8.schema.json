@@ -359,6 +359,30 @@
 				}
 			}
 		},
+		"ItemClass--amount-required": {
+			"type": "string",
+			"minLength": 1,
+			"typed_string": {
+				"minItems": 1,
+				"items": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["ItemClass", "Amount"],
+						"properties": {
+							"ItemClass": {
+								"type": "string",
+								"minLength": 1,
+								"UnrealEngineString": true
+							},
+							"Amount": {
+								"$ref": "#/definitions/integer-string"
+							}
+						}
+					}
+				}
+			}
+		},
 		"FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor": {
 			"type": "object",
 			"$ref": "#/definitions/class",
@@ -1190,7 +1214,7 @@
 			"$ref": "#/definitions/FGCustomizationRecipe--FGRecipe",
 			"properties": {
 				"mIngredients": {
-					"$ref": "#/definitions/ItemClass"
+					"$ref": "#/definitions/ItemClass--amount-required"
 				}
 			}
 		},
