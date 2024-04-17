@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (209 of 209)
+100.00% Complete (210 of 210)
 
 ## Basic Types
 
@@ -285,6 +285,10 @@
 
 -   [x] mEventType
 -   [x] mEventType--optional-csv
+
+## UnrealEngineString
+
+-   [x] UnrealEngineString--array
 
 ## vectors
 

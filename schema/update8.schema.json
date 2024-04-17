@@ -3,6 +3,18 @@
 	"$id": "update8.schema.json",
 	"type": "array",
 	"$defs": {
+		"UnrealEngineString--array": {
+			"type": "string",
+			"minLength": 1,
+			"typed_string": {
+				"minItems": 1,
+				"items": {
+					"type": "string",
+					"minLength": 1,
+					"UnrealEngineString": true
+				}
+			}
+		},
 		"NativeClass": {
 			"type": "object",
 			"required": ["NativeClass", "Classes"],
@@ -501,16 +513,7 @@
 												]
 											},
 											"CompatibleItemDescriptors": {
-												"type": "string",
-												"minLength": 1,
-												"typed_string": {
-													"minItems": 1,
-													"items": {
-														"type": "string",
-														"minLength": 1,
-														"UnrealEngineString": true
-													}
-												}
+												"$ref": "#/$defs/UnrealEngineString--array"
 											}
 										}
 									}
@@ -1371,16 +1374,7 @@
 					"enum": ["BP_UnlockRecipe_C", "BP_UnlockBlueprints_C"]
 				},
 				"mRecipes": {
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"minItems": 1,
-						"items": {
-							"type": "string",
-							"minLength": 1,
-							"UnrealEngineString": true
-						}
-					}
+					"$ref": "#/$defs/UnrealEngineString--array"
 				}
 			}
 		},
@@ -1458,16 +1452,7 @@
 					"const": "BP_UnlockEmote_C"
 				},
 				"mEmotes": {
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"minItems": 1,
-						"items": {
-							"type": "string",
-							"minLength": 1,
-							"UnrealEngineString": true
-						}
-					}
+					"$ref": "#/$defs/UnrealEngineString--array"
 				}
 			}
 		},
@@ -4013,16 +3998,7 @@
 							"const": ""
 						},
 						{
-							"type": "string",
-							"minLength": 1,
-							"typed_string": {
-								"minItems": 1,
-								"items": {
-									"type": "string",
-									"minLength": 1,
-									"UnrealEngineString": true
-								}
-							}
+							"$ref": "#/$defs/UnrealEngineString--array"
 						}
 					]
 				},
@@ -4669,16 +4645,7 @@
 					"$ref": "#/$defs/None"
 				},
 				"mAllowedResources": {
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"minItems": 1,
-						"items": {
-							"type": "string",
-							"minLength": 1,
-							"UnrealEngineString": true
-						}
-					}
+					"$ref": "#/$defs/UnrealEngineString--array"
 				}
 			}
 		},
@@ -4725,16 +4692,7 @@
 					"$ref": "#/$defs/decimal-string"
 				},
 				"mAllowedResources": {
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"minItems": 1,
-						"items": {
-							"type": "string",
-							"minLength": 1,
-							"UnrealEngineString": true
-						}
-					}
+					"$ref": "#/$defs/UnrealEngineString--array"
 				}
 			}
 		},
@@ -6091,16 +6049,7 @@
 					"$ref": "#/$defs/integer-string"
 				},
 				"mAllowedAmmoClasses": {
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"minItems": 1,
-						"items": {
-							"type": "string",
-							"minLength": 1,
-							"UnrealEngineString": true
-						}
-					}
+					"$ref": "#/$defs/UnrealEngineString--array"
 				},
 				"mAttachMagazineToPlayer": {
 					"$ref": "#/$defs/boolean"
@@ -6353,16 +6302,7 @@
 					"$ref": "#/$defs/decimal-string"
 				},
 				"mScannableDescriptors": {
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"minItems": 1,
-						"items": {
-							"type": "string",
-							"minLength": 1,
-							"UnrealEngineString": true
-						}
-					}
+					"$ref": "#/$defs/UnrealEngineString--array"
 				}
 			}
 		},
