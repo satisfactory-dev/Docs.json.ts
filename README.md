@@ -1,20 +1,21 @@
 [![Coverage Status](https://coveralls.io/repos/github/Satisfactory-Clips-Archive/Docs.json.ts/badge.svg?branch=main)](https://coveralls.io/github/Satisfactory-Clips-Archive/Docs.json.ts?branch=main)
 [![Workflow Status](https://github.com/Satisfactory-Clips-Archive/Docs.json.ts/actions/workflows/node.js.yml/badge.svg?branch=main)](https://github.com/Satisfactory-Clips-Archive/Docs.json.ts/actions/workflows/node.js.yml?query=branch%3Amain)
 
-# Notes
-
--   Very alpha.
--   Does not include Docs.json intentionally.
-
-## Current Plan for Development:
+# Current Plan for Development:
 
 -   If [the relevant QA Site post](https://questions.satisfactorygame.com/post/65e5367dcd33105bd53f931f) gets resolved via a public announcement and/or the inclusion of a license:
     -   generated files will be included in the repo
     -   Docs.json _may_ be included
     -   Docs.utf8.json _may_ be included
-    -   the contents of [data-progress.md](data-progress.md) do not indicate that data generation is _valid_, only that it spits out _something_.
+-   the contents of [data-progress.md](data-progress.md) do not indicate that data generation is _valid_, only that it spits out _something_.
 
 # Using
+
+## Troubleshooting
+
+-   If `SyntaxError: Invalid or unexpected token` occurs
+    -   Clear out previous precompiled Ajv validators
+    -   Clear out the generated types folder
 
 ## Requirements
 
