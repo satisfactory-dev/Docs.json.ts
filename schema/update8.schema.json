@@ -1185,6 +1185,15 @@
 				}
 			}
 		},
+		"FGRecipe": {
+			"type": "object",
+			"$ref": "#/definitions/FGCustomizationRecipe--FGRecipe",
+			"properties": {
+				"mIngredients": {
+					"$ref": "#/definitions/ItemClass"
+				}
+			}
+		},
 		"mEventType": {
 			"type": "string",
 			"enum": ["EV_Christmas"]
@@ -6823,13 +6832,8 @@
 					"minItems": 1,
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGCustomizationRecipe--FGRecipe",
-						"unevaluatedProperties": false,
-						"properties": {
-							"mIngredients": {
-								"$ref": "#/definitions/ItemClass"
-							}
-						}
+						"$ref": "#/definitions/FGRecipe",
+						"unevaluatedProperties": false
 					}
 				}
 			}
