@@ -1215,6 +1215,9 @@
 			"properties": {
 				"mIngredients": {
 					"$ref": "#/definitions/ItemClass--amount-required"
+				},
+				"mProduct": {
+					"$ref": "#/definitions/ItemClass--amount-required"
 				}
 			}
 		},
