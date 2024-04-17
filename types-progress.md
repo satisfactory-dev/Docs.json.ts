@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (208 of 208)
+100.00% Complete (209 of 209)
 
 ## Basic Types
 
@@ -35,7 +35,6 @@
 -   [x] InfinityExtrap
 -   [x] integer-string
 -   [x] integer-string--signed
--   [x] ItemClass
 -   [x] mAspect
 -   [x] MaterialSlotName
 -   [x] mBatteryStatus
@@ -276,6 +275,11 @@
 -   [x] FGWeapon--base
 -   [x] FGWeapon--rebar-gun
 -   [x] FGWeapon--rifle
+
+## ItemClass
+
+-   [x] ItemClass
+-   [x] ItemClass--amount-required
 
 ## mEventType
 
