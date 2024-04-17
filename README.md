@@ -16,6 +16,9 @@
 -   If `SyntaxError: Invalid or unexpected token` occurs
     -   Clear out previous precompiled Ajv validators
     -   Clear out the generated types folder
+-   If validation fails despite no apparent changes to the schema
+    -   Clear out previous precompiled Ajv validators as the post-processing
+        (conversion of custom types to regex, etc.) may have changed.
 
 ## Requirements
 
