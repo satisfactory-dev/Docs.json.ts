@@ -28,7 +28,7 @@ export class UnrealEngineString extends Generator<
 > {
 	constructor(ajv: Ajv) {
 		super(ajv, {
-			definitions: UnrealEngineString_schema_definitions,
+			$defs: UnrealEngineString_schema_definitions,
 			...UnrealEngineString_parent_schema,
 		});
 	}

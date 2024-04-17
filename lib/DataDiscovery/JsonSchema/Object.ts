@@ -149,7 +149,7 @@ abstract class ObjectConverterMatchesSchema<
 		if (
 			'$ref' in schema
 			&& is_string(schema.$ref)
-			&& schema.$ref.startsWith('#/definitions/')
+			&& schema.$ref.startsWith('#/$defs/')
 		) {
 			const $ref_converters = Object.entries(
 				await this.resolve_converters_for_$ref(
@@ -177,7 +177,7 @@ abstract class ObjectConverterMatchesSchema<
 		$ref:local_ref<string>
 	): Promise<{[key: string]: Converter<SchemaObject>}> {
 		const definition = await this.discovery.docs.definition(
-			$ref.substring(14)
+			$ref.substring(8)
 		);
 
 		return this.resolve_converters(definition);
@@ -230,12 +230,12 @@ abstract class ObjectConverterMatchesSchema<
 		if (
 			'$ref' in schema
 			&& is_string(schema.$ref)
-			&& schema.$ref.startsWith('#/definitions/')
+			&& schema.$ref.startsWith('#/$defs/')
 		) {
 			for (const entry of Object.entries(
 				await this.resolve_schema(
 					await this.discovery.docs.definition(
-						schema.$ref.substring(14)
+						schema.$ref.substring(8)
 					),
 					depth + 1
 				)
@@ -271,7 +271,7 @@ export class ObjectConverter extends ObjectConverterMatchesSchema<
 			additionalProperties: false,
 			properties: {
 				type: {type: 'string', const: 'object'},
-				$ref: {type: 'string', pattern: '^#/definitions/'},
+				$ref: {type: 'string', pattern: '^#/\\$defs/'},
 				required: {
 					type: 'array',
 					minItems: 1,
@@ -368,7 +368,7 @@ export class PatternedObjectConverter extends ObjectConverterMatchesSchema<
 			additionalProperties: false,
 			properties: {
 				type: {type: 'string', const: 'object'},
-				$ref: {type: 'string', pattern: '^#/definitions/'},
+				$ref: {type: 'string', pattern: '^#/\\$defs/'},
 				additionalProperties: {type: 'boolean', const: false},
 				unevaluatedProperties: {type: 'boolean', const: false},
 				minProperties: {type: 'number', minimum: 1},

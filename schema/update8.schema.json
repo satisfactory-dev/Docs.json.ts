@@ -2,7 +2,7 @@
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "update8.schema.json",
 	"type": "array",
-	"definitions": {
+	"$defs": {
 		"NativeClass": {
 			"type": "object",
 			"required": ["NativeClass", "Classes"],
@@ -31,7 +31,7 @@
 		},
 		"class--no-description": {
 			"type": "object",
-			"$ref": "#/definitions/class--no-description-or-display-name",
+			"$ref": "#/$defs/class--no-description-or-display-name",
 			"required": ["mDisplayName"],
 			"properties": {
 				"mDisplayName": {
@@ -41,7 +41,7 @@
 		},
 		"class": {
 			"type": "object",
-			"$ref": "#/definitions/class--no-description",
+			"$ref": "#/$defs/class--no-description",
 			"required": ["mDescription"],
 			"properties": {
 				"mDescription": {
@@ -72,16 +72,16 @@
 				"required": ["B", "G", "R", "A"],
 				"properties": {
 					"B": {
-						"$ref": "#/definitions/integer-string"
+						"$ref": "#/$defs/integer-string"
 					},
 					"G": {
-						"$ref": "#/definitions/integer-string"
+						"$ref": "#/$defs/integer-string"
 					},
 					"R": {
-						"$ref": "#/definitions/integer-string"
+						"$ref": "#/$defs/integer-string"
 					},
 					"A": {
-						"$ref": "#/definitions/integer-string"
+						"$ref": "#/$defs/integer-string"
 					}
 				}
 			}
@@ -93,16 +93,16 @@
 				"required": ["R", "G", "B", "A"],
 				"properties": {
 					"R": {
-						"$ref": "#/definitions/decimal-string"
+						"$ref": "#/$defs/decimal-string"
 					},
 					"G": {
-						"$ref": "#/definitions/decimal-string"
+						"$ref": "#/$defs/decimal-string"
 					},
 					"B": {
-						"$ref": "#/definitions/decimal-string"
+						"$ref": "#/$defs/decimal-string"
 					},
 					"A": {
-						"$ref": "#/definitions/decimal-string"
+						"$ref": "#/$defs/decimal-string"
 					}
 				}
 			}
@@ -122,13 +122,13 @@
 				"required": ["X", "Y", "Z"],
 				"properties": {
 					"X": {
-						"$ref": "#/definitions/decimal-string--signed"
+						"$ref": "#/$defs/decimal-string--signed"
 					},
 					"Y": {
-						"$ref": "#/definitions/decimal-string--signed"
+						"$ref": "#/$defs/decimal-string--signed"
 					},
 					"Z": {
-						"$ref": "#/definitions/decimal-string--signed"
+						"$ref": "#/$defs/decimal-string--signed"
 					}
 				}
 			}
@@ -140,10 +140,10 @@
 				"required": ["X", "Y"],
 				"properties": {
 					"X": {
-						"$ref": "#/definitions/decimal-string--signed"
+						"$ref": "#/$defs/decimal-string--signed"
 					},
 					"Y": {
-						"$ref": "#/definitions/decimal-string--signed"
+						"$ref": "#/$defs/decimal-string--signed"
 					}
 				}
 			}
@@ -155,10 +155,10 @@
 				"required": ["X", "Y"],
 				"properties": {
 					"X": {
-						"$ref": "#/definitions/integer-string"
+						"$ref": "#/$defs/integer-string"
 					},
 					"Y": {
-						"$ref": "#/definitions/integer-string"
+						"$ref": "#/$defs/integer-string"
 					}
 				}
 			}
@@ -170,16 +170,16 @@
 				"required": ["X", "Y", "Z", "W"],
 				"properties": {
 					"X": {
-						"$ref": "#/definitions/decimal-string--signed"
+						"$ref": "#/$defs/decimal-string--signed"
 					},
 					"Y": {
-						"$ref": "#/definitions/decimal-string--signed"
+						"$ref": "#/$defs/decimal-string--signed"
 					},
 					"Z": {
-						"$ref": "#/definitions/decimal-string--signed"
+						"$ref": "#/$defs/decimal-string--signed"
 					},
 					"W": {
-						"$ref": "#/definitions/decimal-string"
+						"$ref": "#/$defs/decimal-string"
 					}
 				}
 			}
@@ -191,13 +191,13 @@
 				"required": ["Pitch", "Yaw", "Roll"],
 				"properties": {
 					"Pitch": {
-						"$ref": "#/definitions/decimal-string--signed"
+						"$ref": "#/$defs/decimal-string--signed"
 					},
 					"Yaw": {
-						"$ref": "#/definitions/decimal-string--signed"
+						"$ref": "#/$defs/decimal-string--signed"
 					},
 					"Roll": {
-						"$ref": "#/definitions/decimal-string--signed"
+						"$ref": "#/$defs/decimal-string--signed"
 					}
 				}
 			}
@@ -209,13 +209,13 @@
 				"required": ["X", "Y", "Z"],
 				"properties": {
 					"X": {
-						"$ref": "#/definitions/integer-string"
+						"$ref": "#/$defs/integer-string"
 					},
 					"Y": {
-						"$ref": "#/definitions/integer-string"
+						"$ref": "#/$defs/integer-string"
 					},
 					"Z": {
-						"$ref": "#/definitions/integer-string"
+						"$ref": "#/$defs/integer-string"
 					}
 				}
 			}
@@ -232,13 +232,13 @@
 						"required": ["X", "Y", "Z"],
 						"properties": {
 							"X": {
-								"$ref": "#/definitions/decimal-string"
+								"$ref": "#/$defs/decimal-string"
 							},
 							"Y": {
-								"$ref": "#/definitions/decimal-string--signed"
+								"$ref": "#/$defs/decimal-string--signed"
 							},
 							"Z": {
-								"$ref": "#/definitions/decimal-string--signed"
+								"$ref": "#/$defs/decimal-string--signed"
 							}
 						}
 					}
@@ -260,7 +260,7 @@
 					"string_starts_with": "Texture2D /Game/FactoryGame/"
 				},
 				{
-					"$ref": "#/definitions/None"
+					"$ref": "#/$defs/None"
 				},
 				{
 					"type": "string",
@@ -278,13 +278,13 @@
 				"required": ["Rotation", "Translation", "Scale3D"],
 				"properties": {
 					"Rotation": {
-						"$ref": "#/definitions/quaternion"
+						"$ref": "#/$defs/quaternion"
 					},
 					"Translation": {
-						"$ref": "#/definitions/xyz"
+						"$ref": "#/$defs/xyz"
 					},
 					"Scale3D": {
-						"$ref": "#/definitions/xyz"
+						"$ref": "#/$defs/xyz"
 					}
 				}
 			}
@@ -319,7 +319,7 @@
 		"mClassToScanFor": {
 			"oneOf": [
 				{
-					"$ref": "#/definitions/None"
+					"$ref": "#/$defs/None"
 				},
 				{
 					"type": "string",
@@ -352,7 +352,7 @@
 								"UnrealEngineString": true
 							},
 							"Amount": {
-								"$ref": "#/definitions/integer-string"
+								"$ref": "#/$defs/integer-string"
 							}
 						}
 					}
@@ -376,7 +376,7 @@
 								"UnrealEngineString": true
 							},
 							"Amount": {
-								"$ref": "#/definitions/integer-string"
+								"$ref": "#/$defs/integer-string"
 							}
 						}
 					}
@@ -385,7 +385,7 @@
 		},
 		"FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor": {
 			"type": "object",
-			"$ref": "#/definitions/class",
+			"$ref": "#/$defs/class",
 			"required": [
 				"mAbbreviatedDisplayName",
 				"mStackSize",
@@ -414,28 +414,28 @@
 					"type": "string"
 				},
 				"mStackSize": {
-					"$ref": "#/definitions/mStackSize"
+					"$ref": "#/$defs/mStackSize"
 				},
 				"mCanBeDiscarded": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mRememberPickUp": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mEnergyValue": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mRadioactiveDecay": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mSmallIcon": {
-					"$ref": "#/definitions/Texture2D"
+					"$ref": "#/$defs/Texture2D"
 				},
 				"mPersistentBigIcon": {
-					"$ref": "#/definitions/Texture2D"
+					"$ref": "#/$defs/Texture2D"
 				},
 				"mCrosshairMaterial": {
-					"$ref": "#/definitions/mCrosshairMaterial"
+					"$ref": "#/$defs/mCrosshairMaterial"
 				},
 				"mDescriptorStatBars": {
 					"oneOf": [
@@ -455,7 +455,7 @@
 										"required": ["Value"],
 										"properties": {
 											"Value": {
-												"$ref": "#/definitions/integer-string"
+												"$ref": "#/$defs/integer-string"
 											}
 										}
 									}
@@ -465,13 +465,13 @@
 					]
 				},
 				"mMenuPriority": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mFluidColor": {
-					"$ref": "#/definitions/color"
+					"$ref": "#/$defs/color"
 				},
 				"mGasColor": {
-					"$ref": "#/definitions/color"
+					"$ref": "#/$defs/color"
 				},
 				"mCompatibleItemDescriptors": {
 					"oneOf": [
@@ -520,25 +520,25 @@
 					]
 				},
 				"mClassToScanFor": {
-					"$ref": "#/definitions/mClassToScanFor"
+					"$ref": "#/$defs/mClassToScanFor"
 				},
 				"mScannableType": {
-					"$ref": "#/definitions/mScannableType"
+					"$ref": "#/$defs/mScannableType"
 				},
 				"mShouldOverrideScannerDisplayText": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mScannerDisplayText": {
 					"type": "string"
 				},
 				"mScannerLightColor": {
-					"$ref": "#/definitions/color"
+					"$ref": "#/$defs/color"
 				}
 			}
 		},
 		"FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor": {
 			"type": "object",
-			"$ref": "#/definitions/FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor",
+			"$ref": "#/$defs/FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor",
 			"properties": {
 				"mSubCategories": {
 					"oneOf": [
@@ -565,23 +565,23 @@
 					]
 				},
 				"mForm": {
-					"$ref": "#/definitions/mForm"
+					"$ref": "#/$defs/mForm"
 				}
 			}
 		},
 		"FGItemDescriptor--FGResourceDescriptor": {
 			"type": "object",
-			"$ref": "#/definitions/FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor",
+			"$ref": "#/$defs/FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor",
 			"required": ["mResourceSinkPoints"],
 			"properties": {
 				"mResourceSinkPoints": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				}
 			}
 		},
 		"FGBuildingDescriptor": {
 			"type": "object",
-			"$ref": "#/definitions/FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor",
+			"$ref": "#/$defs/FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor",
 			"unevaluatedProperties": false,
 			"properties": {
 				"mForm": {
@@ -615,7 +615,7 @@
 		},
 		"FGBuildable--base": {
 			"type": "object",
-			"$ref": "#/definitions/class",
+			"$ref": "#/$defs/class",
 			"required": [
 				"MaxRenderDistance",
 				"mAlternativeMaterialRecipes",
@@ -645,7 +645,7 @@
 			],
 			"properties": {
 				"MaxRenderDistance": {
-					"$ref": "#/definitions/decimal-string--signed"
+					"$ref": "#/$defs/decimal-string--signed"
 				},
 				"mAlternativeMaterialRecipes": {
 					"oneOf": [
@@ -741,43 +741,43 @@
 					]
 				},
 				"mContainsComponents": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mIsConsideredForBaseWeightValue": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mBuildEffectSpeed": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mAllowColoring": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mAllowPatterning": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mSkipBuildEffect": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mForceNetUpdateOnRegisterPlayer": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mToggleDormancyOnInteraction": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mIsMultiSpawnedBuildable": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mShouldShowAttachmentPointVisuals": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mCreateClearanceMeshRepresentation": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mCanContainLightweightInstances": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mAffectsOcclusion": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mOcclusionShape": {
 					"type": "string",
@@ -789,7 +789,7 @@
 					]
 				},
 				"mScaleCustomOffset": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mCustomScaleType": {
 					"type": "string",
@@ -813,13 +813,13 @@
 										"required": ["Min", "Max", "IsValid"],
 										"properties": {
 											"Min": {
-												"$ref": "#/definitions/xyz"
+												"$ref": "#/$defs/xyz"
 											},
 											"Max": {
-												"$ref": "#/definitions/xyz"
+												"$ref": "#/$defs/xyz"
 											},
 											"IsValid": {
-												"$ref": "#/definitions/boolean"
+												"$ref": "#/$defs/boolean"
 											}
 										}
 									}
@@ -837,22 +837,22 @@
 					"const": ""
 				},
 				"mIsUseable": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mHideOnBuildEffectStart": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mShouldModifyWorldGrid": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mBlueprintBuildEffectID": {
-					"$ref": "#/definitions/integer-string--signed"
+					"$ref": "#/$defs/integer-string--signed"
 				}
 			}
 		},
 		"FGBuildable--consumes-power-base": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--base",
+			"$ref": "#/$defs/FGBuildable--base",
 			"required": [
 				"mPowerConsumption",
 				"mPowerConsumptionExponent",
@@ -885,96 +885,96 @@
 			],
 			"properties": {
 				"mPowerConsumption": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mPowerConsumptionExponent": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mDoesHaveShutdownAnimation": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mOnHasPowerChanged": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mOnHasProductionChanged": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mOnHasStandbyChanged": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mMinimumProducingTime": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mMinimumStoppedTime": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mCanEverMonitorProductivity": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mCanChangePotential": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mMinPotential": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mMaxPotential": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mMaxPotentialIncreasePerCrystal": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mFluidStackSizeDefault": {
 					"type": "string",
 					"const": "SS_FLUID"
 				},
 				"mFluidStackSizeMultiplier": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"OnReplicationDetailActorCreatedEvent": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mInventoryPotentialHandlerData": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mEffectUpdateInterval": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mDefaultProductivityMeasurementDuration": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mLastProductivityMeasurementProduceDuration": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mLastProductivityMeasurementDuration": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mCurrentProductivityMeasurementProduceDuration": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mCurrentProductivityMeasurementDuration": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mProductivityMonitorEnabled": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mCachedSkeletalMeshes": {
 					"type": "string",
 					"const": ""
 				},
 				"mAddToSignificanceManager": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mSignificanceRange": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mTickExponent": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
 		"FGBuildable--docking-station-base": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--consumes-power-base",
+			"$ref": "#/$defs/FGBuildable--consumes-power-base",
 			"required": [
 				"mStorageSizeX",
 				"mStorageSizeY",
@@ -983,22 +983,22 @@
 			],
 			"properties": {
 				"mStorageSizeX": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mStorageSizeY": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mTransferSpeed": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mStackTransferSize": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
 		"FGBuildableDroneStation": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--docking-station-base",
+			"$ref": "#/$defs/FGBuildable--docking-station-base",
 			"unevaluatedProperties": false,
 			"required": [
 				"mStoppedProducingAnimationSounds",
@@ -1036,10 +1036,10 @@
 					"const": "Drone Port"
 				},
 				"mStoppedProducingAnimationSounds": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mStoppedAkComponents": {
-					"$ref": "#/definitions/boolean-extended"
+					"$ref": "#/$defs/boolean-extended"
 				},
 				"mSocketStoppedAkComponents": {
 					"type": "string",
@@ -1050,13 +1050,13 @@
 					"const": "DS_UNDOCKED"
 				},
 				"m_OffsetTime": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mDroneDockingStartLocationLocal": {
-					"$ref": "#/definitions/xyz"
+					"$ref": "#/$defs/xyz"
 				},
 				"mDroneDockingLocationLocal": {
-					"$ref": "#/definitions/xyz"
+					"$ref": "#/$defs/xyz"
 				},
 				"mBatteryClasses": {
 					"type": "string",
@@ -1067,47 +1067,47 @@
 					"const": ""
 				},
 				"mStationHasDronesInQueue": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mItemTransferringStage": {
 					"type": "string",
 					"const": "ITS_NONE"
 				},
 				"mTransferProgress": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mDroneQueueRadius": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mDroneQueueSeparationRadius": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mDroneQueueVerticalSeparation": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mTripPowerCost": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mTripPowerPerMeterCost": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mTripInformationSampleCount": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mBatteryStorageSizeX": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mBatteryStorageSizeY": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mInputInventoryHandler": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mOutputInventoryHandler": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mBatteryInventoryHandler": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mMapText": {
 					"type": "string",
@@ -1117,7 +1117,7 @@
 		},
 		"FGCustomizationRecipe--FGRecipe": {
 			"type": "object",
-			"$ref": "#/definitions/class--no-description",
+			"$ref": "#/$defs/class--no-description",
 			"required": [
 				"FullName",
 				"mDisplayName",
@@ -1147,24 +1147,24 @@
 							"const": ""
 						},
 						{
-							"$ref": "#/definitions/ItemClass"
+							"$ref": "#/$defs/ItemClass"
 						}
 					]
 				},
 				"mProduct": {
 					"oneOf": [
 						{"type": "string", "const": ""},
-						{"$ref": "#/definitions/ItemClass"}
+						{"$ref": "#/$defs/ItemClass"}
 					]
 				},
 				"mManufacturingMenuPriority": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mManufactoringDuration": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mManualManufacturingMultiplier": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mProducedIn": {
 					"oneOf": [
@@ -1199,25 +1199,25 @@
 					]
 				},
 				"mRelevantEvents": {
-					"$ref": "#/definitions/mEventType--optional-csv"
+					"$ref": "#/$defs/mEventType--optional-csv"
 				},
 				"mVariablePowerConsumptionConstant": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mVariablePowerConsumptionFactor": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
 		"FGRecipe": {
 			"type": "object",
-			"$ref": "#/definitions/FGCustomizationRecipe--FGRecipe",
+			"$ref": "#/$defs/FGCustomizationRecipe--FGRecipe",
 			"properties": {
 				"mIngredients": {
-					"$ref": "#/definitions/ItemClass--amount-required"
+					"$ref": "#/$defs/ItemClass--amount-required"
 				},
 				"mProduct": {
-					"$ref": "#/definitions/ItemClass--amount-required"
+					"$ref": "#/$defs/ItemClass--amount-required"
 				}
 			}
 		},
@@ -1237,7 +1237,7 @@
 					"typed_string": {
 						"minItems": 1,
 						"items": {
-							"$ref": "#/definitions/mEventType"
+							"$ref": "#/$defs/mEventType"
 						}
 					}
 				}
@@ -1245,7 +1245,7 @@
 		},
 		"FGBuildableBlueprintDesigner": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--base",
+			"$ref": "#/$defs/FGBuildable--base",
 			"unevaluatedProperties": false,
 			"required": [
 				"mTerminalDistanceFromEdge",
@@ -1269,19 +1269,19 @@
 					"const": "Blueprint Designer"
 				},
 				"mTerminalDistanceFromEdge": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mTerminalHalfDepth": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mDimensions": {
-					"$ref": "#/definitions/xyz--integer"
+					"$ref": "#/$defs/xyz--integer"
 				},
 				"OnRecordDataChanged": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"OnBlueprintCostChanged": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mCurrentCost": {
 					"type": "string",
@@ -1300,7 +1300,7 @@
 					"const": "(IconID=-1,Color=(R=0.000000,G=0.000000,B=0.000000,A=1.000000))"
 				},
 				"mIsDismantlingAll": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				}
 			}
 		},
@@ -1311,7 +1311,7 @@
 				"required": ["SpecifiedColor"],
 				"properties": {
 					"SpecifiedColor": {
-						"$ref": "#/definitions/color-decimal"
+						"$ref": "#/$defs/color-decimal"
 					}
 				}
 			}
@@ -1499,7 +1499,7 @@
 					"typed_string": {
 						"minItems": 1,
 						"items": {
-							"$ref": "#/definitions/FGSchematic--mUnlocks_mSchematics--mSchematics"
+							"$ref": "#/$defs/FGSchematic--mUnlocks_mSchematics--mSchematics"
 						}
 					}
 				}
@@ -1515,7 +1515,7 @@
 					"const": "BP_UnlockInventorySlot_C"
 				},
 				"mNumInventorySlotsToUnlock": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				}
 			}
 		},
@@ -1529,7 +1529,7 @@
 					"const": "BP_UnlockArmEquipmentSlot_C"
 				},
 				"mNumArmEquipmentSlotsToUnlock": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				}
 			}
 		},
@@ -1592,13 +1592,13 @@
 					"const": "BP_UnlockGiveItem_C"
 				},
 				"mItemsToGive": {
-					"$ref": "#/definitions/ItemClass"
+					"$ref": "#/$defs/ItemClass"
 				}
 			}
 		},
 		"FGSchematic--base": {
 			"type": "object",
-			"$ref": "#/definitions/class",
+			"$ref": "#/$defs/class",
 			"required": [
 				"FullName",
 				"mType",
@@ -1647,7 +1647,7 @@
 							"typed_string": {
 								"minItems": 1,
 								"items": {
-									"$ref": "#/definitions/None"
+									"$ref": "#/$defs/None"
 								}
 							}
 						},
@@ -1670,10 +1670,10 @@
 					]
 				},
 				"mMenuPriority": {
-					"$ref": "#/definitions/decimal-string--signed"
+					"$ref": "#/$defs/decimal-string--signed"
 				},
 				"mTechTier": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mCost": {
 					"oneOf": [
@@ -1682,12 +1682,12 @@
 							"const": ""
 						},
 						{
-							"$ref": "#/definitions/ItemClass"
+							"$ref": "#/$defs/ItemClass"
 						}
 					]
 				},
 				"mTimeToComplete": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mRelevantShopSchematics": {
 					"oneOf": [
@@ -1712,7 +1712,7 @@
 											}
 										},
 										{
-											"$ref": "#/definitions/None"
+											"$ref": "#/$defs/None"
 										}
 									]
 								}
@@ -1721,7 +1721,7 @@
 					]
 				},
 				"mIsPlayerSpecific": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mUnlocks": {
 					"type": "array",
@@ -1729,34 +1729,34 @@
 					"items": {
 						"oneOf": [
 							{
-								"$ref": "#/definitions/FGSchematic--mUnlocks_Class"
+								"$ref": "#/$defs/FGSchematic--mUnlocks_Class"
 							},
 							{
-								"$ref": "#/definitions/FGSchematic--mUnlocks_mTapeUnlocks"
+								"$ref": "#/$defs/FGSchematic--mUnlocks_mTapeUnlocks"
 							},
 							{
-								"$ref": "#/definitions/FGSchematic--mUnlocks_mRecipes"
+								"$ref": "#/$defs/FGSchematic--mUnlocks_mRecipes"
 							},
 							{
-								"$ref": "#/definitions/FGSchematic--mUnlocks_resources_to_scan"
+								"$ref": "#/$defs/FGSchematic--mUnlocks_resources_to_scan"
 							},
 							{
-								"$ref": "#/definitions/FGSchematic--mUnlocks_mEmotes"
+								"$ref": "#/$defs/FGSchematic--mUnlocks_mEmotes"
 							},
 							{
-								"$ref": "#/definitions/FGSchematic--mUnlocks_mSchematics"
+								"$ref": "#/$defs/FGSchematic--mUnlocks_mSchematics"
 							},
 							{
-								"$ref": "#/definitions/FGSchematic--mUnlocks_inventory_slots"
+								"$ref": "#/$defs/FGSchematic--mUnlocks_inventory_slots"
 							},
 							{
-								"$ref": "#/definitions/FGSchematic--mUnlocks_equipment_slots"
+								"$ref": "#/$defs/FGSchematic--mUnlocks_equipment_slots"
 							},
 							{
-								"$ref": "#/definitions/FGSchematic--mUnlocks_mScannableObjects"
+								"$ref": "#/$defs/FGSchematic--mUnlocks_mScannableObjects"
 							},
 							{
-								"$ref": "#/definitions/FGSchematic--mUnlocks_mItemsToGive"
+								"$ref": "#/$defs/FGSchematic--mUnlocks_mItemsToGive"
 							}
 						]
 					}
@@ -1779,13 +1779,13 @@
 								"const": "Image"
 							},
 							"ImageSize": {
-								"$ref": "#/definitions/xy"
+								"$ref": "#/$defs/xy"
 							},
 							"Margin": {
-								"$ref": "#/definitions/empty-object"
+								"$ref": "#/$defs/empty-object"
 							},
 							"TintColor": {
-								"$ref": "#/definitions/SpecifiedColor"
+								"$ref": "#/$defs/SpecifiedColor"
 							},
 							"OutlineSettings": {
 								"type": "string",
@@ -1798,10 +1798,10 @@
 									],
 									"properties": {
 										"CornerRadii": {
-											"$ref": "#/definitions/quaternion"
+											"$ref": "#/$defs/quaternion"
 										},
 										"Color": {
-											"$ref": "#/definitions/SpecifiedColor"
+											"$ref": "#/$defs/SpecifiedColor"
 										},
 										"RoundingType": {
 											"type": "string",
@@ -1811,7 +1811,7 @@
 								}
 							},
 							"ResourceObject": {
-								"$ref": "#/definitions/Texture2D"
+								"$ref": "#/$defs/Texture2D"
 							},
 							"UVRegion": {
 								"type": "string",
@@ -1820,13 +1820,13 @@
 									"required": ["Min", "Max", "bIsValid"],
 									"properties": {
 										"Min": {
-											"$ref": "#/definitions/xy"
+											"$ref": "#/$defs/xy"
 										},
 										"Max": {
-											"$ref": "#/definitions/xy"
+											"$ref": "#/$defs/xy"
 										},
 										"bIsValid": {
-											"$ref": "#/definitions/boolean"
+											"$ref": "#/$defs/boolean"
 										}
 									}
 								}
@@ -1835,7 +1835,7 @@
 					}
 				},
 				"mSmallSchematicIcon": {
-					"$ref": "#/definitions/Texture2D"
+					"$ref": "#/$defs/Texture2D"
 				},
 				"mSchematicDependencies": {
 					"type": "array",
@@ -1860,12 +1860,12 @@
 										"typed_string": {
 											"minItems": 1,
 											"items": {
-												"$ref": "#/definitions/FGSchematic--mUnlocks_mSchematics--mSchematics"
+												"$ref": "#/$defs/FGSchematic--mUnlocks_mSchematics--mSchematics"
 											}
 										}
 									},
 									"mRequireAllSchematicsToBePurchased": {
-										"$ref": "#/definitions/boolean"
+										"$ref": "#/$defs/boolean"
 									}
 								}
 							},
@@ -1887,13 +1887,13 @@
 					}
 				},
 				"mDependenciesBlocksSchematicAccess": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mHiddenUntilDependenciesMet": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mRelevantEvents": {
-					"$ref": "#/definitions/mEventType--optional-csv"
+					"$ref": "#/$defs/mEventType--optional-csv"
 				},
 				"mIncludeInBuilds": {
 					"type": "string",
@@ -1903,12 +1903,12 @@
 		},
 		"FGSchematic": {
 			"type": "object",
-			"$ref": "#/definitions/FGSchematic--base",
+			"$ref": "#/$defs/FGSchematic--base",
 			"unevaluatedProperties": false
 		},
 		"FGSchematic--with-unlocks": {
 			"type": "object",
-			"$ref": "#/definitions/FGSchematic--base",
+			"$ref": "#/$defs/FGSchematic--base",
 			"unevaluatedProperties": false,
 			"required": [
 				"mUnlockName",
@@ -1941,17 +1941,17 @@
 		},
 		"FGBuildableWall--base": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--base",
+			"$ref": "#/$defs/FGBuildable--base",
 			"required": ["mHeight", "mDisplayName", "mDescription"],
 			"properties": {
 				"mHeight": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
 		"FGBuildableWall--base--rectangle": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildableWall--base",
+			"$ref": "#/$defs/FGBuildableWall--base",
 			"required": [
 				"mWidth",
 				"mElevation",
@@ -1961,13 +1961,13 @@
 			],
 			"properties": {
 				"mWidth": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mElevation": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mAngularDepth": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mWallType": {
 					"type": "string",
@@ -2007,26 +2007,26 @@
 		},
 		"FGBuildableWallLightweight": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildableWall--base--rectangle",
+			"$ref": "#/$defs/FGBuildableWall--base--rectangle",
 			"unevaluatedProperties": false
 		},
 		"FGBuildableCornerWall": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildableWall--base",
+			"$ref": "#/$defs/FGBuildableWall--base",
 			"unevaluatedProperties": false,
 			"required": ["mSize", "mIsInverted"],
 			"properties": {
 				"mSize": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mIsInverted": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				}
 			}
 		},
 		"FGBuildableDoor--base": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildableWall--base--rectangle",
+			"$ref": "#/$defs/FGBuildableWall--base--rectangle",
 			"required": [
 				"mCanBeLocked",
 				"mAnimationRate",
@@ -2037,40 +2037,40 @@
 			],
 			"properties": {
 				"mCanBeLocked": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mAnimationRate": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mMovementRate": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"EasingFunction": {
 					"type": "string",
 					"enum": ["ExpoInOut", "Linear"]
 				},
 				"BlendExp": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"Steps": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				}
 			}
 		},
 		"FGBuildableDoor": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildableDoor--base",
+			"$ref": "#/$defs/FGBuildableDoor--base",
 			"unevaluatedProperties": false,
 			"required": ["IsDoorOpen"],
 			"properties": {
 				"IsDoorOpen": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				}
 			}
 		},
 		"FGBuildableDoor--automated": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildableDoor--base",
+			"$ref": "#/$defs/FGBuildableDoor--base",
 			"unevaluatedProperties": false,
 			"required": ["bigOverlapList"],
 			"properties": {
@@ -2082,7 +2082,7 @@
 		},
 		"FGResourceDescriptor": {
 			"type": "object",
-			"$ref": "#/definitions/FGItemDescriptor--FGResourceDescriptor",
+			"$ref": "#/$defs/FGItemDescriptor--FGResourceDescriptor",
 			"unevaluatedProperties": false,
 			"required": [
 				"mDecalSize",
@@ -2092,13 +2092,13 @@
 			],
 			"properties": {
 				"mDecalSize": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mPingColor": {
-					"$ref": "#/definitions/color-decimal"
+					"$ref": "#/$defs/color-decimal"
 				},
 				"mCollectSpeedMultiplier": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mManualMiningAudioName": {
 					"type": "string",
@@ -2108,7 +2108,7 @@
 		},
 		"FGBuildableRailroadTrack": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--base",
+			"$ref": "#/$defs/FGBuildable--base",
 			"unevaluatedProperties": false,
 			"required": [
 				"mMeshLength",
@@ -2130,7 +2130,7 @@
 					"const": "Build_RailroadTrack_C"
 				},
 				"mMeshLength": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mConnections": {
 					"type": "string",
@@ -2150,29 +2150,29 @@
 					}
 				},
 				"mIsOwnedByPlatform": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mTrackGraphID": {
-					"$ref": "#/definitions/integer-string--signed"
+					"$ref": "#/$defs/integer-string--signed"
 				},
 				"mOverlappingTracks": {
 					"type": "string",
 					"const": ""
 				},
 				"mVehicles": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mSignalBlockID": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mBlockVisualizationMeshLength": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mBlockVisualizationNumPrimitiveDataFloats": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mBlockVisualizationNumPerInstancePrimitiveDataCountOffset": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mBlockVisualizationSplineDataSettings": {
 					"type": "string",
@@ -2186,33 +2186,33 @@
 						],
 						"properties": {
 							"StartTangentPrimitiveDataStartIndex": {
-								"$ref": "#/definitions/integer-string"
+								"$ref": "#/$defs/integer-string"
 							},
 							"EndPositionPrimitiveDataStartIndex": {
-								"$ref": "#/definitions/integer-string"
+								"$ref": "#/$defs/integer-string"
 							},
 							"EndTangentPrimitiveDataStartIndex": {
-								"$ref": "#/definitions/integer-string"
+								"$ref": "#/$defs/integer-string"
 							},
 							"InstanceScaleIndex": {
-								"$ref": "#/definitions/integer-string--signed"
+								"$ref": "#/$defs/integer-string--signed"
 							}
 						}
 					}
 				},
 				"mBlockVisualizationColorDataStartIndex": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				}
 			}
 		},
 		"FGBuildable": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--base",
+			"$ref": "#/$defs/FGBuildable--base",
 			"unevaluatedProperties": false
 		},
 		"FGBuildable--occupied": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--base",
+			"$ref": "#/$defs/FGBuildable--base",
 			"unevaluatedProperties": false,
 			"required": ["mOccupiedText"],
 			"properties": {
@@ -2224,63 +2224,63 @@
 		},
 		"FGBuildable--tiered": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--base",
+			"$ref": "#/$defs/FGBuildable--base",
 			"unevaluatedProperties": false,
 			"required": ["Tier"],
 			"properties": {
 				"Tier": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				}
 			}
 		},
 		"FGBuildable--pole--base": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--base",
+			"$ref": "#/$defs/FGBuildable--base",
 			"required": ["mUseStaticHeight", "mCanStack", "mStackHeight"],
 			"properties": {
 				"mUseStaticHeight": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mCanStack": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mStackHeight": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
 		"FGBuildablePoleLightweight": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--pole--base",
+			"$ref": "#/$defs/FGBuildable--pole--base",
 			"unevaluatedProperties": false,
 			"required": ["mHeight", "mSelectedPoleVersion"],
 			"properties": {
 				"mHeight": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mSelectedPoleVersion": {
-					"$ref": "#/definitions/integer-string--signed"
+					"$ref": "#/$defs/integer-string--signed"
 				}
 			}
 		},
 		"FGConveyorPoleStackable": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildablePoleLightweight"
+			"$ref": "#/$defs/FGBuildablePoleLightweight"
 		},
 		"FGPoleDescriptor--FGEquipmentDescriptor": {
 			"type": "object",
-			"$ref": "#/definitions/FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor",
+			"$ref": "#/$defs/FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor",
 			"required": ["mSubCategories", "mForm"]
 		},
 		"FGPoleDescriptor": {
 			"type": "object",
-			"$ref": "#/definitions/FGPoleDescriptor--FGEquipmentDescriptor",
+			"$ref": "#/$defs/FGPoleDescriptor--FGEquipmentDescriptor",
 			"unevaluatedProperties": false,
 			"required": ["mSubCategories", "mForm"]
 		},
 		"FGBuildableConveyorBelt--base": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--base",
+			"$ref": "#/$defs/FGBuildable--base",
 			"required": [
 				"mItemMeshMap",
 				"mSpeed",
@@ -2289,27 +2289,27 @@
 			],
 			"properties": {
 				"mItemMeshMap": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mSpeed": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mItems": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mConveyorChainFlags": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				}
 			}
 		},
 		"FGBuildableConveyorBelt": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildableConveyorBelt--base",
+			"$ref": "#/$defs/FGBuildableConveyorBelt--base",
 			"unevaluatedProperties": false,
 			"required": ["mMeshLength", "mSplineData", "mCustomSkins"],
 			"properties": {
 				"mMeshLength": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mSplineData": {
 					"type": "string",
@@ -2332,7 +2332,7 @@
 		},
 		"FGBuildableConveyorLift": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildableConveyorBelt--base",
+			"$ref": "#/$defs/FGBuildableConveyorBelt--base",
 			"unevaluatedProperties": false,
 			"required": [
 				"mMeshHeight",
@@ -2342,22 +2342,22 @@
 			],
 			"properties": {
 				"mMeshHeight": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mIsReversed": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mTopTransform": {
-					"$ref": "#/definitions/transformation"
+					"$ref": "#/$defs/transformation"
 				},
 				"mSnappedPassthroughs": {
-					"$ref": "#/definitions/mSnappedPassthroughs"
+					"$ref": "#/$defs/mSnappedPassthroughs"
 				}
 			}
 		},
 		"FGBuildableWire": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--base",
+			"$ref": "#/$defs/FGBuildable--base",
 			"unevaluatedProperties": false,
 			"required": [
 				"mMaxLength",
@@ -2370,32 +2370,32 @@
 			],
 			"properties": {
 				"mMaxLength": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mMaxPowerTowerLength": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mLengthPerCost": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mConnections": {
-					"$ref": "#/definitions/None"
+					"$ref": "#/$defs/None"
 				},
 				"mConnectionLocations": {
-					"$ref": "#/definitions/xyz"
+					"$ref": "#/$defs/xyz"
 				},
 				"mWireInstances": {
 					"type": "string",
 					"const": ""
 				},
 				"mCachedLength": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
 		"FGBuildablePowerPole": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--base",
+			"$ref": "#/$defs/FGBuildable--base",
 			"unevaluatedProperties": false,
 			"required": [
 				"mPowerConnections",
@@ -2418,16 +2418,16 @@
 					]
 				},
 				"mPowerTowerWireMaxLength": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mHasPower": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				}
 			}
 		},
 		"FGBuildableTradingPost": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--consumes-power-base",
+			"$ref": "#/$defs/FGBuildable--consumes-power-base",
 			"unevaluatedProperties": false,
 			"required": [
 				"mWorkBenchOccupied",
@@ -2476,7 +2476,7 @@
 					}
 				},
 				"mShipUpgradeLevel": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mStorageText": {
 					"type": "string",
@@ -2521,23 +2521,23 @@
 					"const": ""
 				},
 				"mStorageInventorySize": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mStorageVisibilityLevel": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mSpawningGroundZOffset": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mGroundSearchZDistance": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mDefaultResources": {
 					"type": "string",
 					"const": ""
 				},
 				"mNeedPlayingBuildEffectNotification": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mRepresentationText": {
 					"type": "string",
@@ -2547,7 +2547,7 @@
 		},
 		"FGEquipment--base": {
 			"type": "object",
-			"$ref": "#/definitions/class--no-description-or-display-name",
+			"$ref": "#/$defs/class--no-description-or-display-name",
 			"required": [
 				"mEquipmentSlot",
 				"mAttachSocket",
@@ -2564,10 +2564,10 @@
 			],
 			"properties": {
 				"mRandomAnim": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mCanPress": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mAnimData": {
 					"type": "string",
@@ -2613,7 +2613,7 @@
 						}
 					}
 				},
-				"mCurrentAnimData": {"$ref": "#/definitions/empty-object"},
+				"mCurrentAnimData": {"$ref": "#/$defs/empty-object"},
 				"mEquipmentSlot": {
 					"type": "string",
 					"enum": [
@@ -2640,7 +2640,7 @@
 					"minLength": 1
 				},
 				"mNeedsDefaultEquipmentMappingContext": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mCostToUse": {
 					"oneOf": [
@@ -2649,7 +2649,7 @@
 							"const": ""
 						},
 						{
-							"$ref": "#/definitions/ItemClass"
+							"$ref": "#/$defs/ItemClass"
 						}
 					]
 				},
@@ -2672,26 +2672,26 @@
 					"enum": ["BE_None", "BE_Jetpack"]
 				},
 				"mHasPersistentOwner": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mOnlyVisibleToOwner": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mDefaultEquipmentActions": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mReceivedDamageModifiers": {
 					"type": "string",
 					"const": ""
 				},
 				"mSwappedOutThirdPersonMaterials": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				}
 			}
 		},
 		"FGEquipmentStunSpear--base": {
 			"type": "object",
-			"$ref": "#/definitions/FGEquipment--base",
+			"$ref": "#/$defs/FGEquipment--base",
 			"required": [
 				"mDamageTypes",
 				"mSecondSwingMaxTime",
@@ -2701,64 +2701,64 @@
 			],
 			"properties": {
 				"mDamageTypes": {
-					"$ref": "#/definitions/mDamageTypes"
+					"$ref": "#/$defs/mDamageTypes"
 				},
 				"mSecondSwingMaxTime": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mSecondSwingCooldDownTime": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mAttackDistance": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mAttackSweepRadius": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
 		"FGEquipmentStunSpear": {
 			"type": "object",
-			"$ref": "#/definitions/FGEquipmentStunSpear--base",
+			"$ref": "#/$defs/FGEquipmentStunSpear--base",
 			"unevaluatedProperties": false,
 			"required": ["mRandomAttackAnim", "mRandomEquipAnim"],
 			"properties": {
 				"mDamageTypes": {
-					"$ref": "#/definitions/mDamageTypes"
+					"$ref": "#/$defs/mDamageTypes"
 				},
 				"mArmAnimation": {
 					"type": "string",
 					"const": "AE_StunSpear"
 				},
 				"mRandomAttackAnim": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mRandomEquipAnim": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				}
 			}
 		},
 		"FGEquipmentStunSpear--xeno-zapper": {
 			"type": "object",
-			"$ref": "#/definitions/FGEquipmentStunSpear--base",
+			"$ref": "#/$defs/FGEquipmentStunSpear--base",
 			"unevaluatedProperties": false,
 			"required": ["mPunchAnimationWeight"],
 			"properties": {
 				"mDamageTypes": {
-					"$ref": "#/definitions/mDamageTypes"
+					"$ref": "#/$defs/mDamageTypes"
 				},
 				"mArmAnimation": {
 					"type": "string",
 					"const": "AE_ShockShank"
 				},
 				"mPunchAnimationWeight": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
 		"FGHoverPack": {
 			"type": "object",
-			"$ref": "#/definitions/FGEquipment--base",
+			"$ref": "#/$defs/FGEquipment--base",
 			"unevaluatedProperties": false,
 			"required": [
 				"mHoverPackActiveTimer",
@@ -2795,105 +2795,105 @@
 			],
 			"properties": {
 				"mHoverPackActiveTimer": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mCurrentPlayerVelocity": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mCurrentMouseDelta": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mHoverpackJoystickTimer": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mCurrentBatteryPowerLevel": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"m_PreviousHoverMode": {
 					"type": "string",
 					"const": "HPM_Inactive"
 				},
 				"ConnectionLocationUpdatedDelegate": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"ConnectionStatusUpdatedDelegate": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"HoverModeChangedDelegate": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"RangeWarningToggleDelegate": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mHoverSpeed": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mHoverAccelerationSpeed": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mHoverSprintMultiplier": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mHoverFriction": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mJumpKeyHoldActivationTime": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mFallSpeedLimitWhenPowered": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mPowerConnectionSearchRadius": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mPowerConnectionSearchTickRate": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mPowerConnectionDisconnectionTime": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mPowerCapacity": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mPowerDrainRate": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mPowerConsumption": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mCurrentPowerLevel": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mRangeWarningNormalizedDistanceThreshold": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mCurrentHoverMode": {
 					"type": "string",
 					"const": "HPM_Inactive"
 				},
 				"mHasConnection": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mShouldAutomaticallyHoverWhenConnected": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mCrouchHoverCancelTime": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mCharacterUseDistanceWhenActive": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mActiveNoiseFrequency": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mCurrentConnectionLocation": {
-					"$ref": "#/definitions/xyz"
+					"$ref": "#/$defs/xyz"
 				}
 			}
 		},
 		"FGJetPack": {
 			"type": "object",
-			"$ref": "#/definitions/FGEquipment--base",
+			"$ref": "#/$defs/FGEquipment--base",
 			"unevaluatedProperties": false,
 			"required": [
 				"FuelTypeDescriptos",
@@ -2916,28 +2916,28 @@
 					"const": ""
 				},
 				"mOnFuelAmountChanged": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mOnBurnPercentChanged": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mOnFuelTypeChanged": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mDefaultAirControl": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mRTPCInterval": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mThrustCooldown": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mCurrentFuel": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mIsThrusting": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mFuelTypes": {
 					"type": "string",
@@ -2956,19 +2956,19 @@
 					}
 				},
 				"mSelectedFuelType": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mCurrentFuelType": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mActiveNoiseFrequency": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
 		"FGSuitBase": {
 			"type": "object",
-			"$ref": "#/definitions/FGEquipment--base",
+			"$ref": "#/$defs/FGEquipment--base",
 			"unevaluatedProperties": false,
 			"required": [
 				"mImmunity",
@@ -2983,28 +2983,28 @@
 			],
 			"properties": {
 				"mImmunity": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mIsWorking": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mHasNegatedDamage": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mDamageNegated": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mFilterDuration": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mCountdown": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mDisableEffectTimer": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mIsBurningFuel": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mSuit1PMeshMaterials": {
 					"type": "string",
@@ -3046,7 +3046,7 @@
 		},
 		"FGGasMask": {
 			"type": "object",
-			"$ref": "#/definitions/FGEquipment--base",
+			"$ref": "#/$defs/FGEquipment--base",
 			"unevaluatedProperties": false,
 			"required": [
 				"mDamageTypesToProtectAgainst",
@@ -3057,28 +3057,28 @@
 			],
 			"properties": {
 				"mDamageTypesToProtectAgainst": {
-					"$ref": "#/definitions/mDamageTypes"
+					"$ref": "#/$defs/mDamageTypes"
 				},
 				"mPostProcessEnabled": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mFilterCountdown": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mFilterDuration": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mIsInPoisonGas": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				}
 			}
 		},
 		"mChainsawState": {
-			"$ref": "#/definitions/None"
+			"$ref": "#/$defs/None"
 		},
 		"FGChainsaw": {
 			"type": "object",
-			"$ref": "#/definitions/FGEquipment--base",
+			"$ref": "#/$defs/FGEquipment--base",
 			"unevaluatedProperties": false,
 			"required": [
 				"mSawingMontageLength",
@@ -3097,49 +3097,49 @@
 			],
 			"properties": {
 				"mSawingMontageLength": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mInterpSawProgress": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mCurrentOutputDataSFX": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mCurrentAkID": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mCurrentHasFuel": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mPreviousState": {
-					"$ref": "#/definitions/mChainsawState"
+					"$ref": "#/$defs/mChainsawState"
 				},
 				"mEnergyConsumption": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mSawDownTreeTime": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mCollateralPickupRadius": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mExcludeChainsawableFoliage": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mEnergyStored": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mSawingProgress": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mChainsawState": {
-					"$ref": "#/definitions/mChainsawState"
+					"$ref": "#/$defs/mChainsawState"
 				}
 			}
 		},
 		"FGObjectScanner": {
 			"type": "object",
-			"$ref": "#/definitions/FGEquipment--base",
+			"$ref": "#/$defs/FGEquipment--base",
 			"unevaluatedProperties": false,
 			"required": [
 				"mPlayingSound",
@@ -3159,66 +3159,66 @@
 			],
 			"properties": {
 				"mPlayingSound": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mScreenUpdateTimer": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mScanlineLerpT": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mScreenUpdateTime": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mNormalizedCloesnessToObject": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mObjectIsWithinRange": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mIsPlayingStaticSound": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mBeepDelayMax": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mBeepDelayMin": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mDetectionRange": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mUpdateClosestObjectTime": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mClosestObjectInScanRange": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mNormalizedDistanceToClosestObject": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mAngleToClosestObject": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
 		"FGJumpingStilts": {
 			"type": "object",
-			"$ref": "#/definitions/FGEquipment--base",
+			"$ref": "#/$defs/FGEquipment--base",
 			"unevaluatedProperties": false,
 			"required": ["mSprintSpeedFactor", "mJumpSpeedFactor"],
 			"properties": {
 				"mSprintSpeedFactor": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mJumpSpeedFactor": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
 		"FGEquipmentZipline": {
 			"type": "object",
-			"$ref": "#/definitions/FGEquipment--base",
+			"$ref": "#/$defs/FGEquipment--base",
 			"unevaluatedProperties": false,
 			"required": [
 				"mShouldPlayDeactivateSound",
@@ -3233,37 +3233,37 @@
 			],
 			"properties": {
 				"mShouldPlayDeactivateSound": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mZiplineJumpLaunchVelocity": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mMaxZiplineAngle": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mTraceDistance": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mTraceStartOffset": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mTraceRadius": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mVisualizeTraceDistance": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mActiveNoiseFrequency": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mZiplineReattachCooldown": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
 		"FGParachute": {
 			"type": "object",
-			"$ref": "#/definitions/FGEquipment--base",
+			"$ref": "#/$defs/FGEquipment--base",
 			"unevaluatedProperties": false,
 			"required": [
 				"ArmEquipmentsToSkipAnim",
@@ -3294,31 +3294,31 @@
 					"const": ""
 				},
 				"mUseDistanceOverride": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mIsDeployed": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				}
 			}
 		},
 		"FGEquipmentDescriptor--base": {
 			"type": "object",
-			"$ref": "#/definitions/FGPoleDescriptor--FGEquipmentDescriptor",
+			"$ref": "#/$defs/FGPoleDescriptor--FGEquipmentDescriptor",
 			"required": ["mResourceSinkPoints"],
 			"properties": {
 				"mResourceSinkPoints": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				}
 			}
 		},
 		"FGEquipmentDescriptor": {
 			"type": "object",
-			"$ref": "#/definitions/FGEquipmentDescriptor--base",
+			"$ref": "#/$defs/FGEquipmentDescriptor--base",
 			"unevaluatedProperties": false
 		},
 		"FGConsumableDescriptor--base": {
 			"type": "object",
-			"$ref": "#/definitions/FGEquipmentDescriptor--base",
+			"$ref": "#/$defs/FGEquipmentDescriptor--base",
 			"required": [
 				"mCustomHandsMeshScale",
 				"mCustomRotation",
@@ -3326,68 +3326,68 @@
 			],
 			"properties": {
 				"mCustomHandsMeshScale": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mCustomRotation": {
-					"$ref": "#/definitions/pitch-yaw-roll"
+					"$ref": "#/$defs/pitch-yaw-roll"
 				},
 				"mCustomLocation": {
-					"$ref": "#/definitions/xyz"
+					"$ref": "#/$defs/xyz"
 				}
 			}
 		},
 		"FGConsumableDescriptor": {
 			"type": "object",
-			"$ref": "#/definitions/FGConsumableDescriptor--base",
+			"$ref": "#/$defs/FGConsumableDescriptor--base",
 			"unevaluatedProperties": false
 		},
 		"FGConsumableDescriptor--healing": {
 			"type": "object",
-			"$ref": "#/definitions/FGConsumableDescriptor--base",
+			"$ref": "#/$defs/FGConsumableDescriptor--base",
 			"unevaluatedProperties": false,
 			"required": ["mHealthGain"],
 			"properties": {
 				"mHealthGain": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
 		"FGBuildablePillarLightweight": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--base",
+			"$ref": "#/$defs/FGBuildable--base",
 			"unevaluatedProperties": false,
 			"required": ["mSize", "mIsSupport"],
 			"properties": {
 				"mSize": {
-					"$ref": "#/definitions/xyz"
+					"$ref": "#/$defs/xyz"
 				},
 				"mIsSupport": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				}
 			}
 		},
 		"FGBuildableFactory--jump-pad": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--consumes-power-base",
+			"$ref": "#/$defs/FGBuildable--consumes-power-base",
 			"unevaluatedProperties": false,
 			"required": ["JumpForceCharacter", "JumpForcePhysics"],
 			"properties": {
 				"JumpForceCharacter": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"JumpForcePhysics": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
 		"FGBuildableFactory--landing-pad": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--consumes-power-base",
+			"$ref": "#/$defs/FGBuildable--consumes-power-base",
 			"unevaluatedProperties": false,
 			"required": ["mDampeningFactor", "mPlayerList"],
 			"properties": {
 				"mDampeningFactor": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mPlayerList": {
 					"type": "string",
@@ -3397,19 +3397,19 @@
 		},
 		"FGBuildableFactory--generic": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--consumes-power-base",
+			"$ref": "#/$defs/FGBuildable--consumes-power-base",
 			"unevaluatedProperties": false
 		},
 		"FGBuildableWalkway--base": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--base",
+			"$ref": "#/$defs/FGBuildable--base",
 			"required": ["mSize", "mElevation", "mDisableSnapOn"],
 			"properties": {
 				"mSize": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mElevation": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
@@ -3420,24 +3420,24 @@
 				"minProperties": 1,
 				"patternProperties": {
 					"^(Front|Right|Left|Right|Top|Bottom)$": {
-						"$ref": "#/definitions/boolean"
+						"$ref": "#/$defs/boolean"
 					}
 				}
 			}
 		},
 		"FGBuildableWalkwayLightweight": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildableWalkway--base",
+			"$ref": "#/$defs/FGBuildableWalkway--base",
 			"unevaluatedProperties": false,
 			"properties": {
 				"mDisableSnapOn": {
-					"$ref": "#/definitions/mDisableSnapOn"
+					"$ref": "#/$defs/mDisableSnapOn"
 				}
 			}
 		},
 		"FGBuildableWalkway": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildableWalkway--base",
+			"$ref": "#/$defs/FGBuildableWalkway--base",
 			"unevaluatedProperties": false,
 			"properties": {
 				"mDisableSnapOn": {
@@ -3447,16 +3447,16 @@
 						"required": ["Right", "Left", "Top", "Bottom"],
 						"properties": {
 							"Right": {
-								"$ref": "#/definitions/boolean"
+								"$ref": "#/$defs/boolean"
 							},
 							"Left": {
-								"$ref": "#/definitions/boolean"
+								"$ref": "#/$defs/boolean"
 							},
 							"Top": {
-								"$ref": "#/definitions/boolean"
+								"$ref": "#/$defs/boolean"
 							},
 							"Bottom": {
-								"$ref": "#/definitions/boolean"
+								"$ref": "#/$defs/boolean"
 							}
 						}
 					}
@@ -3465,20 +3465,20 @@
 		},
 		"FGBuildableGenerator--base": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--consumes-power-base",
+			"$ref": "#/$defs/FGBuildable--consumes-power-base",
 			"required": ["mPowerProduction", "mLoadPercentage"],
 			"properties": {
 				"mPowerProduction": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mLoadPercentage": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
 		"FGBuildableGeneratorFuel--base": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildableGenerator--base",
+			"$ref": "#/$defs/FGBuildableGenerator--base",
 			"required": [
 				"mFuelInventoryHandlerData",
 				"mFuelClasses",
@@ -3495,7 +3495,7 @@
 			],
 			"properties": {
 				"mFuelInventoryHandlerData": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mFuelClasses": {
 					"type": "string",
@@ -3565,7 +3565,7 @@
 										"const": ""
 									},
 									{
-										"$ref": "#/definitions/integer-string"
+										"$ref": "#/$defs/integer-string"
 									}
 								]
 							}
@@ -3581,19 +3581,19 @@
 					"enum": ["RF_SOLID", "RF_LIQUID"]
 				},
 				"mFuelLoadAmount": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mRequiresSupplementalResource": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mSupplementalLoadAmount": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mSupplementalToPowerRatio": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mIsFullBlast": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mCachedInputConnections": {
 					"type": "string",
@@ -3604,13 +3604,13 @@
 					"const": ""
 				},
 				"mCachedLoadPercentage": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
 		"FGBuildableGeneratorFuel": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildableGeneratorFuel--base",
+			"$ref": "#/$defs/FGBuildableGeneratorFuel--base",
 			"unevaluatedProperties": false,
 			"required": ["m_SFXSockets", "m_CurrentPotential"],
 			"properties": {
@@ -3631,22 +3631,22 @@
 					}
 				},
 				"m_CurrentPotential": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mRTPCInterval": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
 		"FGBuildableGeneratorFuel--biogen": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildableGeneratorFuel--base",
+			"$ref": "#/$defs/FGBuildableGeneratorFuel--base",
 			"unevaluatedProperties": false,
 			"required": ["mCachedLoadPercentage"]
 		},
 		"FGBuildableGeneratorGeoThermal": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildableGenerator--base",
+			"$ref": "#/$defs/FGBuildableGenerator--base",
 			"unevaluatedProperties": false,
 			"required": [
 				"mProductionEffectsRunning",
@@ -3659,34 +3659,34 @@
 			],
 			"properties": {
 				"mProductionEffectsRunning": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mVariablePowerProductionConstant": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mVariablePowerProductionFactor": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mVariablePowerProductionCycleLength": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mMinPowerProduction": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mMaxPowerProduction": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mVariablePowerProductionCycleOffset": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
 		"mOutputInventoryHandlerData": {
-			"$ref": "#/definitions/empty-object"
+			"$ref": "#/$defs/empty-object"
 		},
 		"FGBuildableGeneratorNuclear": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildableGeneratorFuel--base",
+			"$ref": "#/$defs/FGBuildableGeneratorFuel--base",
 			"unevaluatedProperties": false,
 			"required": [
 				"mOutputInventoryHandlerData",
@@ -3695,10 +3695,10 @@
 			],
 			"properties": {
 				"mOutputInventoryHandlerData": {
-					"$ref": "#/definitions/mOutputInventoryHandlerData"
+					"$ref": "#/$defs/mOutputInventoryHandlerData"
 				},
 				"mWasteLeftFromCurrentFuel": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mCurrentGeneratorNuclearWarning": {
 					"type": "string",
@@ -3708,15 +3708,15 @@
 		},
 		"FGBuildablePipelineSupport": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--pole--base",
+			"$ref": "#/$defs/FGBuildable--pole--base",
 			"unevaluatedProperties": false,
 			"required": ["mLength", "mVerticalAngle"],
 			"properties": {
 				"mLength": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mVerticalAngle": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
@@ -3726,7 +3726,7 @@
 		},
 		"FGBuildablePipeline": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--base",
+			"$ref": "#/$defs/FGBuildable--base",
 			"unevaluatedProperties": false,
 			"required": [
 				"mRadius",
@@ -3750,33 +3750,33 @@
 			],
 			"properties": {
 				"mMeshLength": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mSplineData": {
 					"type": "string",
 					"const": ""
 				},
 				"mRadius": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mFlowLimit": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mFlowIndicatorMinimumPipeLength": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mPipeConnections": {
 					"type": "string",
 					"const": ""
 				},
 				"mFluidBox": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mIndicatorData": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mMaxIndicatorTurnAngle": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mIgnoreActorsForIndicator": {
 					"type": "string",
@@ -3811,32 +3811,32 @@
 					"const": ""
 				},
 				"mLastContentForSound": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mLastFlowForSound": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mRattleLimit": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mIsRattling": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mUpdateSoundsHandle": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mSnappedPassthroughs": {
-					"$ref": "#/definitions/mSnappedPassthroughs"
+					"$ref": "#/$defs/mSnappedPassthroughs"
 				}
 			}
 		},
 		"FGBuildable--pipeline-accessory--base": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--consumes-power-base",
+			"$ref": "#/$defs/FGBuildable--consumes-power-base",
 			"required": ["mFluidBox", "mPipeConnections"],
 			"properties": {
 				"mFluidBox": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mPipeConnections": {
 					"type": "string",
@@ -3846,7 +3846,7 @@
 		},
 		"FGBuildable--pipeline-accessory": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--pipeline-accessory--base",
+			"$ref": "#/$defs/FGBuildable--pipeline-accessory--base",
 			"required": [
 				"mRadius",
 				"mFluidBoxVolume",
@@ -3855,13 +3855,13 @@
 			],
 			"properties": {
 				"mRadius": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mFluidBoxVolume": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mFluidBox": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mPipeConnections": {
 					"type": "string",
@@ -3871,12 +3871,12 @@
 		},
 		"FGBuildablePipelineJunction": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--pipeline-accessory",
+			"$ref": "#/$defs/FGBuildable--pipeline-accessory",
 			"unevaluatedProperties": false
 		},
 		"FGBuildable--pipeline-flow-accessory": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--pipeline-accessory",
+			"$ref": "#/$defs/FGBuildable--pipeline-accessory",
 			"required": [
 				"mLastFlowUpdate",
 				"mUpdateFlowTime",
@@ -3892,46 +3892,46 @@
 			],
 			"properties": {
 				"mLastFlowUpdate": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mUpdateFlowTime": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mAnimSpeed": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mLastFlowValue": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mTimeScaleOffset": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mMaxPressure": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mDesignPressure": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mDefaultFlowLimit": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mUserFlowLimit": {
-					"$ref": "#/definitions/decimal-string--signed"
+					"$ref": "#/$defs/decimal-string--signed"
 				},
 				"mMinimumFlowPercentForStandby": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mIndicatorData": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mPistonAudioTimer": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				}
 			}
 		},
 		"FGBuildablePipelinePump": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--pipeline-flow-accessory",
+			"$ref": "#/$defs/FGBuildable--pipeline-flow-accessory",
 			"unevaluatedProperties": false,
 			"required": [
 				"mIsPipePumpPlaying",
@@ -3940,24 +3940,24 @@
 			],
 			"properties": {
 				"mIsPipePumpPlaying": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mIsExceedingHeadLift": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mCurrentAudioHeadLift": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
 		"FGBuildablePipelinePump--valve": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--pipeline-flow-accessory",
+			"$ref": "#/$defs/FGBuildable--pipeline-flow-accessory",
 			"unevaluatedProperties": false
 		},
 		"FGBuildablePipeReservoir": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--pipeline-accessory--base",
+			"$ref": "#/$defs/FGBuildable--pipeline-accessory--base",
 			"unevaluatedProperties": false,
 			"required": [
 				"mStackingHeight",
@@ -3966,19 +3966,19 @@
 			],
 			"properties": {
 				"mStackingHeight": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mStorageCapacity": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mIndicatorData": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				}
 			}
 		},
 		"FGBuildable--extractor-base--shared": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--consumes-power-base",
+			"$ref": "#/$defs/FGBuildable--consumes-power-base",
 			"required": [
 				"mAllowedResourceForms",
 				"mOnlyAllowCertainResources",
@@ -4004,7 +4004,7 @@
 					}
 				},
 				"mOnlyAllowCertainResources": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mAllowedResources": {
 					"oneOf": [
@@ -4029,7 +4029,7 @@
 				"mExtractorTypeName": {
 					"oneOf": [
 						{
-							"$ref": "#/definitions/None"
+							"$ref": "#/$defs/None"
 						},
 						{
 							"type": "string",
@@ -4038,13 +4038,13 @@
 					]
 				},
 				"mTryFindMissingResource": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				}
 			}
 		},
 		"FGBuildable--extractor-base": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--extractor-base--shared",
+			"$ref": "#/$defs/FGBuildable--extractor-base--shared",
 			"required": [
 				"mPipeOutputConnections",
 				"mReplicatedFlowRate",
@@ -4059,25 +4059,25 @@
 					"const": ""
 				},
 				"mReplicatedFlowRate": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mExtractStartupTime": {
-					"$ref": "#/definitions/decimal-string--signed"
+					"$ref": "#/$defs/decimal-string--signed"
 				},
 				"mExtractStartupTimer": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mExtractCycleTime": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mItemsPerCycle": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				}
 			}
 		},
 		"FGBuildableWaterPump": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--extractor-base",
+			"$ref": "#/$defs/FGBuildable--extractor-base",
 			"unevaluatedProperties": false,
 			"required": [
 				"mWaterpumpTimeline_RTPC_B8FA6F944E717E3B7A286E84901F620E",
@@ -4088,20 +4088,20 @@
 			],
 			"properties": {
 				"mWaterpumpTimeline_RTPC_B8FA6F944E717E3B7A286E84901F620E": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mWaterpumpTimeline__Direction_B8FA6F944E717E3B7A286E84901F620E": {
 					"type": "string",
 					"const": "Forward"
 				},
 				"HasLostSignificance": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mMinimumDepthForPlacement": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mDepthTraceOriginOffset": {
-					"$ref": "#/definitions/xyz"
+					"$ref": "#/$defs/xyz"
 				},
 				"mAllowedResourceForms": {
 					"type": "string",
@@ -4129,13 +4129,13 @@
 					}
 				},
 				"mExtractorTypeName": {
-					"$ref": "#/definitions/None"
+					"$ref": "#/$defs/None"
 				}
 			}
 		},
 		"FGBuildableResourceSink": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--consumes-power-base",
+			"$ref": "#/$defs/FGBuildable--consumes-power-base",
 			"unevaluatedProperties": false,
 			"required": [
 				"IsAnimationProducing",
@@ -4149,50 +4149,50 @@
 			],
 			"properties": {
 				"IsAnimationProducing": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"EnableTickGrinder": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"EnableTickEngine": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mGrinderInterpDuration": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mEngineInterpDuration": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mCouponInventoryHandler": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mProcessingTime": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mProducingTimer": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
 		"FGBuildableResourceSinkShop": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--consumes-power-base",
+			"$ref": "#/$defs/FGBuildable--consumes-power-base",
 			"unevaluatedProperties": false,
 			"required": ["mShopInventoryDefaultSize"],
 			"properties": {
 				"mShopInventoryDefaultSize": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				}
 			}
 		},
 		"FGItemDescriptorBiomass": {
 			"type": "object",
-			"$ref": "#/definitions/FGItemDescriptor--FGResourceDescriptor",
+			"$ref": "#/$defs/FGItemDescriptor--FGResourceDescriptor",
 			"unevaluatedProperties": false
 		},
 		"FGBuildableResourceExtractor--oil-extractor": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--extractor-base",
+			"$ref": "#/$defs/FGBuildable--extractor-base",
 			"unevaluatedProperties": false,
 			"properties": {
 				"mAllowedResourceForms": {
@@ -4221,13 +4221,13 @@
 					}
 				},
 				"mExtractorTypeName": {
-					"$ref": "#/definitions/None"
+					"$ref": "#/$defs/None"
 				}
 			}
 		},
 		"FGBuildableResourceExtractor--miner--base": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--extractor-base",
+			"$ref": "#/$defs/FGBuildable--extractor-base",
 			"required": ["mParticleMap"],
 			"properties": {
 				"mParticleMap": {
@@ -4278,10 +4278,10 @@
 					}
 				},
 				"mCanPlayAfterStartUpStopped": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"CanPlayAfterStartUpStopped": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mAllowedResourceForms": {
 					"type": "string",
@@ -4302,12 +4302,12 @@
 		},
 		"FGBuildableResourceExtractor--miner": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildableResourceExtractor--miner--base",
+			"$ref": "#/$defs/FGBuildableResourceExtractor--miner--base",
 			"unevaluatedProperties": false
 		},
 		"FGBuildableResourceExtractor--miner-mk3": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildableResourceExtractor--miner--base",
+			"$ref": "#/$defs/FGBuildableResourceExtractor--miner--base",
 			"unevaluatedProperties": false,
 			"required": [
 				"mInternalMiningState_0",
@@ -4321,19 +4321,19 @@
 					"const": "NewEnumerator0"
 				},
 				"mToggleMiningStateHandle_0": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mMinimumDrillTime_0": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mMaximumDrillTime_0": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
 		"FGBuildableManufacturer--base": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--consumes-power-base",
+			"$ref": "#/$defs/FGBuildable--consumes-power-base",
 			"required": [
 				"mCurrentRecipeChanged",
 				"mManufacturingSpeed",
@@ -4346,19 +4346,19 @@
 			],
 			"properties": {
 				"IsPowered": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"bIsPendingToKillVfx": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mProductionEffectsRunning": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mCurrentRecipeChanged": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mManufacturingSpeed": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mFactoryInputConnections": {
 					"type": "string",
@@ -4377,16 +4377,16 @@
 					"const": ""
 				},
 				"mInputInventoryHandlerData": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mOutputInventoryHandlerData": {
-					"$ref": "#/definitions/mOutputInventoryHandlerData"
+					"$ref": "#/$defs/mOutputInventoryHandlerData"
 				},
 				"mStoppedProducingAnimationSounds": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mStoppedAkComponents": {
-					"$ref": "#/definitions/boolean-extended"
+					"$ref": "#/$defs/boolean-extended"
 				},
 				"mSocketStoppedAkComponents": {
 					"type": "string",
@@ -4396,12 +4396,12 @@
 		},
 		"FGBuildableManufacturer": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildableManufacturer--base",
+			"$ref": "#/$defs/FGBuildableManufacturer--base",
 			"unevaluatedProperties": false
 		},
 		"FGBuildableManufacturer--packager": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildableManufacturer--base",
+			"$ref": "#/$defs/FGBuildableManufacturer--base",
 			"unevaluatedProperties": false,
 			"required": ["mCurrentColor_VFX", "CurrentPackagingMode"],
 			"properties": {
@@ -4410,7 +4410,7 @@
 					"const": "Build_Packager_C"
 				},
 				"mCurrentColor_VFX": {
-					"$ref": "#/definitions/color-decimal"
+					"$ref": "#/$defs/color-decimal"
 				},
 				"CurrentPackagingMode": {
 					"type": "string",
@@ -4420,7 +4420,7 @@
 		},
 		"FGBuildableManufacturer--blender": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildableManufacturer--base",
+			"$ref": "#/$defs/FGBuildableManufacturer--base",
 			"unevaluatedProperties": false,
 			"required": [
 				"mCurrentColorVFX",
@@ -4434,7 +4434,7 @@
 					"const": "Build_Blender_C"
 				},
 				"mCurrentColorVFX": {
-					"$ref": "#/definitions/color-decimal"
+					"$ref": "#/$defs/color-decimal"
 				},
 				"m_NotifyNameREferences": {
 					"type": "string",
@@ -4452,13 +4452,13 @@
 					"const": ""
 				},
 				"mIsRadioActive": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				}
 			}
 		},
 		"FGBuildableManufacturer--smelter": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildableManufacturer--base",
+			"$ref": "#/$defs/FGBuildableManufacturer--base",
 			"unevaluatedProperties": false,
 			"required": ["mIsPendingToKillVFX", "mCachedCurrentPotential"],
 			"properties": {
@@ -4467,16 +4467,16 @@
 					"const": "Build_SmelterMk1_C"
 				},
 				"mIsPendingToKillVFX": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mCachedCurrentPotential": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				}
 			}
 		},
 		"FGBuildableManufacturer--constructor": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildableManufacturer--base",
+			"$ref": "#/$defs/FGBuildableManufacturer--base",
 			"unevaluatedProperties": false,
 			"required": [
 				"mCurrentRecipeCheck",
@@ -4504,10 +4504,10 @@
 						"items": false,
 						"prefixItems": [
 							{
-								"$ref": "#/definitions/integer-string"
+								"$ref": "#/$defs/integer-string"
 							},
 							{
-								"$ref": "#/definitions/decimal-string"
+								"$ref": "#/$defs/decimal-string"
 							}
 						]
 					}
@@ -4516,7 +4516,7 @@
 		},
 		"FGBuildableManufacturerVariablePower": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildableManufacturer--base",
+			"$ref": "#/$defs/FGBuildableManufacturer--base",
 			"unevaluatedProperties": false,
 			"required": [
 				"mSequenceDuration",
@@ -4534,46 +4534,46 @@
 			],
 			"properties": {
 				"mSequenceDuration": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mLightningTimer": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mGameTimeAtProducing": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mCurrentProducingSeekTime": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mStartVector_VFX_Small_Start": {
-					"$ref": "#/definitions/xyz-array"
+					"$ref": "#/$defs/xyz-array"
 				},
 				"mStartVector_VFX_Small_End": {
-					"$ref": "#/definitions/xyz-array"
+					"$ref": "#/$defs/xyz-array"
 				},
 				"mStartVector_VFX_Medium_Start": {
-					"$ref": "#/definitions/xyz-array"
+					"$ref": "#/$defs/xyz-array"
 				},
 				"mStartVector_VFX_Medium_End": {
-					"$ref": "#/definitions/xyz-array"
+					"$ref": "#/$defs/xyz-array"
 				},
 				"mStartVector_VFX_Large_Start": {
-					"$ref": "#/definitions/xyz-array"
+					"$ref": "#/$defs/xyz-array"
 				},
 				"mStartVector_VFX_Large_End": {
-					"$ref": "#/definitions/xyz-array"
+					"$ref": "#/$defs/xyz-array"
 				},
 				"mEstimatedMininumPowerConsumption": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mEstimatedMaximumPowerConsumption": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
 		"FGEquipment--placeable": {
 			"type": "object",
-			"$ref": "#/definitions/FGEquipment--base",
+			"$ref": "#/$defs/FGEquipment--base",
 			"required": ["mAllowedResourceForms", "mPlaceDistanceMax"],
 			"properties": {
 				"mAllowedResourceForms": {
@@ -4588,18 +4588,18 @@
 					}
 				},
 				"mPlaceDistanceMax": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
 		"FGPortableMinerDispenser": {
 			"type": "object",
-			"$ref": "#/definitions/FGEquipment--placeable",
+			"$ref": "#/$defs/FGEquipment--placeable",
 			"unevaluatedProperties": false
 		},
 		"FGItemDescriptorNuclearFuel": {
 			"type": "object",
-			"$ref": "#/definitions/FGItemDescriptor--FGResourceDescriptor",
+			"$ref": "#/$defs/FGItemDescriptor--FGResourceDescriptor",
 			"unevaluatedProperties": false,
 			"required": ["mSpentFuelClass", "mAmountOfWaste"],
 			"properties": {
@@ -4613,24 +4613,24 @@
 					}
 				},
 				"mAmountOfWaste": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				}
 			}
 		},
 		"FGVehicleDescriptor": {
 			"type": "object",
-			"$ref": "#/definitions/FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor",
+			"$ref": "#/$defs/FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor",
 			"unevaluatedProperties": false,
 			"required": ["mForm"],
 			"properties": {
 				"mFuelConsumption": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mInventorySize": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mForm": {
-					"$ref": "#/definitions/mForm"
+					"$ref": "#/$defs/mForm"
 				},
 				"mPowerConsumption": {
 					"type": "string",
@@ -4639,10 +4639,10 @@
 						"required": ["Min", "Max"],
 						"properties": {
 							"Min": {
-								"$ref": "#/definitions/decimal-string"
+								"$ref": "#/$defs/decimal-string"
 							},
 							"Max": {
-								"$ref": "#/definitions/decimal-string"
+								"$ref": "#/$defs/decimal-string"
 							}
 						}
 					}
@@ -4651,7 +4651,7 @@
 		},
 		"FGBuildableFrackingExtractor": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--extractor-base",
+			"$ref": "#/$defs/FGBuildable--extractor-base",
 			"unevaluatedProperties": false,
 			"properties": {
 				"mAllowedResourceForms": {
@@ -4666,13 +4666,13 @@
 					}
 				},
 				"mExtractorTypeName": {
-					"$ref": "#/definitions/None"
+					"$ref": "#/$defs/None"
 				}
 			}
 		},
 		"FGBuildableFrackingActivator": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--extractor-base--shared",
+			"$ref": "#/$defs/FGBuildable--extractor-base--shared",
 			"unevaluatedProperties": false,
 			"required": [
 				"CurrentPotentialChangedDelegate",
@@ -4686,31 +4686,31 @@
 			],
 			"properties": {
 				"mExtractorTypeName": {
-					"$ref": "#/definitions/None"
+					"$ref": "#/$defs/None"
 				},
 				"CurrentPotentialChangedDelegate": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"ConnectedExtractorCountChangedDelegate": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mActivationStartupTime": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mActivationStartupTimer": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mSatelliteActivationComplete": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mSatelliteNodeCount": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mConnectedExtractorCount": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mDefaultPotentialExtractionPerMinute": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
@@ -4720,7 +4720,7 @@
 		},
 		"FGBuildableRailroadSignal": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--base",
+			"$ref": "#/$defs/FGBuildable--base",
 			"unevaluatedProperties": false,
 			"required": [
 				"mOnAspectChangedDelegate",
@@ -4737,16 +4737,16 @@
 			],
 			"properties": {
 				"mPreviousAspect": {
-					"$ref": "#/definitions/mAspect"
+					"$ref": "#/$defs/mAspect"
 				},
 				"mOnAspectChangedDelegate": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mOnBlockValidationChangedDelegate": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mDrawDebugVisualState": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mGuardedConnections": {
 					"type": "string",
@@ -4757,23 +4757,23 @@
 					"const": ""
 				},
 				"mAspect": {
-					"$ref": "#/definitions/mAspect"
+					"$ref": "#/$defs/mAspect"
 				},
 				"mBlockValidation": {
 					"type": "string",
 					"const": "RBV_Unvalidated"
 				},
 				"mIsPathSignal": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mIsBiDirectional": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mVisualState": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mSignificanceRange": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
@@ -4787,7 +4787,7 @@
 		},
 		"FGBuildableTrainPlatform--base": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--consumes-power-base",
+			"$ref": "#/$defs/FGBuildable--consumes-power-base",
 			"required": [
 				"mPlatformConnections",
 				"mIsOrientationReversed",
@@ -4816,22 +4816,22 @@
 					}
 				},
 				"mIsOrientationReversed": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mPlatformDockingStatus": {
-					"$ref": "#/definitions/mPlatformDockingStatus"
+					"$ref": "#/$defs/mPlatformDockingStatus"
 				},
 				"mSavedDockingStatus": {
-					"$ref": "#/definitions/mPlatformDockingStatus"
+					"$ref": "#/$defs/mPlatformDockingStatus"
 				},
 				"mDockingSequenceTimerHandle": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mIdleUpdateTimerHandle": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mDockWasCancelled": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				}
 			}
 		},
@@ -4842,24 +4842,24 @@
 				"required": ["DockForDuration"],
 				"properties": {
 					"DockForDuration": {
-						"$ref": "#/definitions/decimal-string"
+						"$ref": "#/$defs/decimal-string"
 					}
 				}
 			}
 		},
 		"FGBuildableTrainPlatformCargo--FGBuildableRailroadStation": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildableTrainPlatform--base",
+			"$ref": "#/$defs/FGBuildableTrainPlatform--base",
 			"required": ["mCurrentDockForDuration"],
 			"properties": {
 				"mCurrentDockForDuration": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
 		"FGBuildableTrainPlatformCargo": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildableTrainPlatformCargo--FGBuildableRailroadStation",
+			"$ref": "#/$defs/FGBuildableTrainPlatformCargo--FGBuildableRailroadStation",
 			"unevaluatedProperties": false,
 			"required": [
 				"mOnTransferRateUpdated",
@@ -4898,43 +4898,43 @@
 			],
 			"properties": {
 				"mStorageSizeX": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mStorageSizeY": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mOnTransferRateUpdated": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mFreightCargoType": {
-					"$ref": "#/definitions/mFreightCargoType"
+					"$ref": "#/$defs/mFreightCargoType"
 				},
 				"mCanUnloadAny": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mIsFullUnload": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mCanLoadAny": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mIsFullLoad": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mTimeToCompleteLoad": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mTimeToSwapLoadVisibility": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mTimeToCompleteUnload": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mTimeToSwapUnloadVisibility": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mWaitForConditionUpdatePeriod": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mStorageInputConnections": {
 					"type": "string",
@@ -4949,7 +4949,7 @@
 					"const": ""
 				},
 				"mDockingRuleSet": {
-					"$ref": "#/definitions/mDockingRuleSet"
+					"$ref": "#/$defs/mDockingRuleSet"
 				},
 				"mLoadItemFilter": {
 					"type": "string",
@@ -4960,57 +4960,57 @@
 					"const": ""
 				},
 				"mHasFullyLoadUnloadRule": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mDockForDuration": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mMustDockForDuration": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mHasAnyRelevantStacksToMove": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mAllowDepartureNoValidItemsToTransfer": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mShouldExecuteLoadOrUnload": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mRanCompleteBeforeNone": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mSwapCargoVisibilityTimerHandle": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mTimeSinceLastLoadTransferUpdate": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mTimeSinceLastUnloadTransferUpdate": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mSmoothedLoadRate": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mSmoothedUnloadRate": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mReplicatedOutflowRate": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mReplicatedInflowRate": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
 		"FGBuildableTrainPlatformEmpty": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildableTrainPlatform--base",
+			"$ref": "#/$defs/FGBuildableTrainPlatform--base",
 			"unevaluatedProperties": false
 		},
 		"FGBuildableRailroadStation": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildableTrainPlatformCargo--FGBuildableRailroadStation",
+			"$ref": "#/$defs/FGBuildableTrainPlatformCargo--FGBuildableRailroadStation",
 			"unevaluatedProperties": false,
 			"required": [
 				"mMapText",
@@ -5024,20 +5024,20 @@
 					"const": "Train Station"
 				},
 				"mShouldTeleportHere": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mDockedPlatformList": {
 					"type": "string",
 					"const": ""
 				},
 				"mCurrentDockedWithRuleSet": {
-					"$ref": "#/definitions/mDockingRuleSet"
+					"$ref": "#/$defs/mDockingRuleSet"
 				}
 			}
 		},
 		"FGBuildableStorage": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--consumes-power-base",
+			"$ref": "#/$defs/FGBuildable--consumes-power-base",
 			"unevaluatedProperties": false,
 			"required": [
 				"mStackingHeight",
@@ -5046,19 +5046,19 @@
 			],
 			"properties": {
 				"mStackingHeight": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mInventorySizeX": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mInventorySizeY": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				}
 			}
 		},
 		"FGPipeHyperStart": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--consumes-power-base",
+			"$ref": "#/$defs/FGBuildable--consumes-power-base",
 			"unevaluatedProperties": false,
 			"required": [
 				"mWindDirectionFromTurbine",
@@ -5075,48 +5075,48 @@
 			],
 			"properties": {
 				"mWindDirectionFromTurbine": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mIsWindSoundPlaying?": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mAudioTimerCounter": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"AudioCounterTimer": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"IsEnginePlaying": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mOpeningOffset": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mInitialMinSpeedFactor": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mLength": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mCanStack": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mStackHeight": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mUseStaticHeight": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				}
 			}
 		},
 		"FGBuildablePipeHyper": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--base",
+			"$ref": "#/$defs/FGBuildable--base",
 			"unevaluatedProperties": false,
 			"required": ["mSnappedPassthroughs", "mSplineData", "mMeshLength"],
 			"properties": {
 				"mMeshLength": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mSplineData": {
 					"type": "string",
@@ -5134,7 +5134,7 @@
 		},
 		"FGBuildablePowerStorage": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--consumes-power-base",
+			"$ref": "#/$defs/FGBuildable--consumes-power-base",
 			"unevaluatedProperties": false,
 			"required": [
 				"m_PreviousBatteryStatus",
@@ -5149,37 +5149,37 @@
 			],
 			"properties": {
 				"m_PreviousBatteryStatus": {
-					"$ref": "#/definitions/mBatteryStatus"
+					"$ref": "#/$defs/mBatteryStatus"
 				},
 				"mCurrentGameTimeSinceStateChange": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mActivationEventID": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mBatteryStatus": {
-					"$ref": "#/definitions/mBatteryStatus"
+					"$ref": "#/$defs/mBatteryStatus"
 				},
 				"mPowerStore": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mPowerStoreCapacity": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mPowerInputCapacity": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mIndicatorLevelMax": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mIndicatorLevel": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				}
 			}
 		},
 		"FGBuildableDockingStation": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--docking-station-base",
+			"$ref": "#/$defs/FGBuildable--docking-station-base",
 			"unevaluatedProperties": false,
 			"required": [
 				"VehicleFuelConsumptionRateChangedDelegate",
@@ -5200,46 +5200,46 @@
 			],
 			"properties": {
 				"VehicleFuelConsumptionRateChangedDelegate": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"ItemTransferRateChangedDelegate": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"MaximumStackTransferRateChangedDelegate": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mDockPosition": {
-					"$ref": "#/definitions/xy"
+					"$ref": "#/$defs/xy"
 				},
 				"mMinimumDockingTime": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mFuelInventorySizeX": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mFuelInventorySizeY": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mFuelTransferSpeed": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mFuelInventoryHandlerData": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mInventoryHandlerData": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mForceSignificance": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mVehicleFuelConsumptionRate": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mItemTransferRate": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mMaximumStackTransferRate": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mDockingVehicleStatistics": {
 					"type": "string",
@@ -5249,7 +5249,7 @@
 		},
 		"FGBuildableJumppad": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--consumes-power-base",
+			"$ref": "#/$defs/FGBuildable--consumes-power-base",
 			"unevaluatedProperties": false,
 			"required": [
 				"mPowerBankCapacity",
@@ -5276,28 +5276,28 @@
 			],
 			"properties": {
 				"mPowerBankCapacity": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mLaunchPowerCost": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mChargeRateMultiplier": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mCurrentPowerLevel": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mLaunchVelocity": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mLaunchAngle": {
-					"$ref": "#/definitions/decimal-string--signed"
+					"$ref": "#/$defs/decimal-string--signed"
 				},
 				"mPlayerChainJumpResetTime": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mHasPowerForLaunch": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"ComponentsToLaunch": {
 					"type": "string",
@@ -5312,19 +5312,19 @@
 					"const": ""
 				},
 				"mTrajectoryData": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mTrajectoryMeshScale": {
-					"$ref": "#/definitions/xyz"
+					"$ref": "#/$defs/xyz"
 				},
 				"mTrajectoryMeshRotation": {
-					"$ref": "#/definitions/pitch-yaw-roll"
+					"$ref": "#/$defs/pitch-yaw-roll"
 				},
 				"mDestinationMeshHeightOffset": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mTrajectorySplineMeshNumPrimitiveDataFloats": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mTrajectorySplineMeshSplineDataSettings": {
 					"type": "string",
@@ -5338,37 +5338,37 @@
 						],
 						"properties": {
 							"StartTangentPrimitiveDataStartIndex": {
-								"$ref": "#/definitions/integer-string"
+								"$ref": "#/$defs/integer-string"
 							},
 							"EndPositionPrimitiveDataStartIndex": {
-								"$ref": "#/definitions/integer-string"
+								"$ref": "#/$defs/integer-string"
 							},
 							"EndTangentPrimitiveDataStartIndex": {
-								"$ref": "#/definitions/integer-string"
+								"$ref": "#/$defs/integer-string"
 							},
 							"InstanceScaleIndex": {
-								"$ref": "#/definitions/integer-string--signed"
+								"$ref": "#/$defs/integer-string--signed"
 							}
 						}
 					}
 				},
 				"mNumArrows": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mKillTimer": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mTrajectoryGravityMultiplier": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mShowTrajectoryCounter": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				}
 			}
 		},
 		"FGBuildableMAM": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--base",
+			"$ref": "#/$defs/FGBuildable--base",
 			"unevaluatedProperties": false,
 			"required": [
 				"mOccupiedText",
@@ -5385,39 +5385,39 @@
 					"minLength": 1
 				},
 				"mSignificanceRange": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
 		"FGBuildableAttachmentMerger": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--base",
+			"$ref": "#/$defs/FGBuildable--base",
 			"unevaluatedProperties": false,
 			"required": ["mCurrentInputIndex"],
 			"properties": {
 				"mCurrentInputIndex": {
-					"$ref": "#/definitions/integer-string--signed"
+					"$ref": "#/$defs/integer-string--signed"
 				}
 			}
 		},
 		"FGBuildable--splitter--base": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--base",
+			"$ref": "#/$defs/FGBuildable--base",
 			"required": ["mCurrentOutputIndex"],
 			"properties": {
 				"mCurrentOutputIndex": {
-					"$ref": "#/definitions/integer-string--signed"
+					"$ref": "#/$defs/integer-string--signed"
 				}
 			}
 		},
 		"FGBuildableAttachmentSplitter": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--splitter--base",
+			"$ref": "#/$defs/FGBuildable--splitter--base",
 			"unevaluatedProperties": false
 		},
 		"FGBuildableSplitterSmart": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--splitter--base",
+			"$ref": "#/$defs/FGBuildable--splitter--base",
 			"unevaluatedProperties": false,
 			"required": [
 				"OnSortRulesChangedDelegate",
@@ -5430,10 +5430,10 @@
 			],
 			"properties": {
 				"OnSortRulesChangedDelegate": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mMaxNumSortRules": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mLastItem": {
 					"type": "string",
@@ -5442,19 +5442,19 @@
 						"required": ["ItemState"],
 						"properties": {
 							"ItemState": {
-								"$ref": "#/definitions/empty-object"
+								"$ref": "#/$defs/empty-object"
 							}
 						}
 					}
 				},
 				"mItemToLastOutputMap": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mLastOutputIndex": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mCurrentInventoryIndex": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mDistributionTable": {
 					"type": "string",
@@ -5464,7 +5464,7 @@
 		},
 		"FGBuildableFoundation--base": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--base",
+			"$ref": "#/$defs/FGBuildable--base",
 			"required": [
 				"mWidth",
 				"mDepth",
@@ -5476,37 +5476,37 @@
 			],
 			"properties": {
 				"mWidth": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mDepth": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mHeight": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mElevation": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mIsFrame": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mDisableSnapOn": {
 					"oneOf": [
 						{
-							"$ref": "#/definitions/empty-object"
+							"$ref": "#/$defs/empty-object"
 						},
 						{
-							"$ref": "#/definitions/mDisableSnapOn"
+							"$ref": "#/$defs/mDisableSnapOn"
 						}
 					]
 				},
 				"mDisableAttachmentSnapOn": {
 					"oneOf": [
 						{
-							"$ref": "#/definitions/empty-object"
+							"$ref": "#/$defs/empty-object"
 						},
 						{
-							"$ref": "#/definitions/mDisableSnapOn"
+							"$ref": "#/$defs/mDisableSnapOn"
 						}
 					]
 				}
@@ -5514,25 +5514,25 @@
 		},
 		"FGBuildableFoundation": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildableFoundation--base",
+			"$ref": "#/$defs/FGBuildableFoundation--base",
 			"unevaluatedProperties": false
 		},
 		"FGBuildableFoundationLightweight": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildableFoundation--base",
+			"$ref": "#/$defs/FGBuildableFoundation--base",
 			"unevaluatedProperties": false
 		},
 		"FGBuildableRamp": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildableFoundation--base",
+			"$ref": "#/$defs/FGBuildableFoundation--base",
 			"unevaluatedProperties": false,
 			"required": ["mIsDoubleRamp", "mIsRoof"],
 			"properties": {
 				"mIsDoubleRamp": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mIsRoof": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				}
 			}
 		},
@@ -5572,13 +5572,13 @@
 							],
 							"properties": {
 								"DefaultValue": {
-									"$ref": "#/definitions/decimal-string"
+									"$ref": "#/$defs/decimal-string"
 								},
 								"PreInfinityExtrap": {
-									"$ref": "#/definitions/InfinityExtrap"
+									"$ref": "#/$defs/InfinityExtrap"
 								},
 								"PostInfinityExtrap": {
-									"$ref": "#/definitions/InfinityExtrap"
+									"$ref": "#/$defs/InfinityExtrap"
 								}
 							}
 						}
@@ -5619,7 +5619,7 @@
 		},
 		"FGAmmoTypeProjectile--base": {
 			"type": "object",
-			"$ref": "#/definitions/FGItemDescriptor--FGResourceDescriptor",
+			"$ref": "#/$defs/FGItemDescriptor--FGResourceDescriptor",
 			"required": [
 				"AmmoFiredDelegate",
 				"mFiringTransform",
@@ -5649,49 +5649,49 @@
 			],
 			"properties": {
 				"AmmoFiredDelegate": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mFiringTransform": {
-					"$ref": "#/definitions/transformation"
+					"$ref": "#/$defs/transformation"
 				},
 				"mFiringDirection": {
-					"$ref": "#/definitions/xyz"
+					"$ref": "#/$defs/xyz"
 				},
 				"mMagazineSize": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mMaxAmmoEffectiveRange": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mReloadTimeMultiplier": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mFireRate": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mFiringTransformIgnoresDispersion": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mDispersionFireRateMultiplier": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mDispersionPerShot": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mRestingDispersion": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mFiringDispersion": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mDispersionRecoveryTime": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mHasBeenInitialized": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mWeaponDamageMultiplier": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mMagazineMeshMaterials": {
 					"type": "string",
@@ -5720,10 +5720,10 @@
 										}
 									},
 									"MaterialSlotName": {
-										"$ref": "#/definitions/MaterialSlotName"
+										"$ref": "#/$defs/MaterialSlotName"
 									},
 									"ImportedMaterialSlotName": {
-										"$ref": "#/definitions/MaterialSlotName"
+										"$ref": "#/$defs/MaterialSlotName"
 									},
 									"UVChannelData": {
 										"type": "string",
@@ -5735,13 +5735,13 @@
 											],
 											"properties": {
 												"bInitialized": {
-													"$ref": "#/definitions/boolean"
+													"$ref": "#/$defs/boolean"
 												},
 												"LocalUVDensities[0]": {
-													"$ref": "#/definitions/decimal-string"
+													"$ref": "#/$defs/decimal-string"
 												},
 												"LocalUVDensities[1]": {
-													"$ref": "#/definitions/decimal-string"
+													"$ref": "#/$defs/decimal-string"
 												}
 											}
 										}
@@ -5772,15 +5772,15 @@
 							"const": ""
 						},
 						{
-							"$ref": "#/definitions/mDamageTypes"
+							"$ref": "#/$defs/mDamageTypes"
 						}
 					]
 				},
 				"mAmmoDamageFalloff": {
-					"$ref": "#/definitions/EditorCurveData"
+					"$ref": "#/$defs/EditorCurveData"
 				},
 				"mMuzzleFlashScale": {
-					"$ref": "#/definitions/xyz"
+					"$ref": "#/$defs/xyz"
 				},
 				"mFiringSounds": {
 					"oneOf": [
@@ -5812,10 +5812,10 @@
 					"const": ""
 				},
 				"mAmmoColor": {
-					"$ref": "#/definitions/color-decimal"
+					"$ref": "#/$defs/color-decimal"
 				},
 				"mAmmoScale": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mAmmoTickFunction": {
 					"type": "string",
@@ -5824,7 +5824,7 @@
 						"required": ["bAllowTickOnDedicatedServer"],
 						"properties": {
 							"bAllowTickOnDedicatedServer": {
-								"$ref": "#/definitions/boolean"
+								"$ref": "#/$defs/boolean"
 							}
 						}
 					}
@@ -5833,7 +5833,7 @@
 		},
 		"FGAmmoTypeProjectile": {
 			"type": "object",
-			"$ref": "#/definitions/FGAmmoTypeProjectile--base",
+			"$ref": "#/$defs/FGAmmoTypeProjectile--base",
 			"unevaluatedProperties": false,
 			"required": [
 				"mInitialProjectileSpeedOverride",
@@ -5855,22 +5855,22 @@
 			],
 			"properties": {
 				"mInitialProjectileSpeedOverride": {
-					"$ref": "#/definitions/decimal-string--signed"
+					"$ref": "#/$defs/decimal-string--signed"
 				},
 				"mProjectileMaxSpeedOverride": {
-					"$ref": "#/definitions/decimal-string--signed"
+					"$ref": "#/$defs/decimal-string--signed"
 				},
 				"mProjectileHealthOverride": {
-					"$ref": "#/definitions/decimal-string--signed"
+					"$ref": "#/$defs/decimal-string--signed"
 				},
 				"mProjectileLifespan": {
-					"$ref": "#/definitions/decimal-string--signed"
+					"$ref": "#/$defs/decimal-string--signed"
 				},
 				"mProjectileStickspan": {
-					"$ref": "#/definitions/decimal-string--signed"
+					"$ref": "#/$defs/decimal-string--signed"
 				},
 				"mCanTakeDamageBySameProjectileOrChild": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mDamageTypesAtEndOfLife": {
 					"oneOf": [
@@ -5879,33 +5879,33 @@
 							"const": ""
 						},
 						{
-							"$ref": "#/definitions/mDamageTypes"
+							"$ref": "#/$defs/mDamageTypes"
 						}
 					]
 				},
 				"mGravityScaleOverLifespan": {
-					"$ref": "#/definitions/EditorCurveData"
+					"$ref": "#/$defs/EditorCurveData"
 				},
 				"mHomingProjectile": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mHomingNeedsValidTarget": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mMaxHomingAccelerationMagnitudeOverride": {
-					"$ref": "#/definitions/decimal-string--signed"
+					"$ref": "#/$defs/decimal-string--signed"
 				},
 				"mHomingMagnitudeMultiplierOverLifespan": {
-					"$ref": "#/definitions/EditorCurveData"
+					"$ref": "#/$defs/EditorCurveData"
 				},
 				"mHomingMagnitudeMultiplierOverDistanceToTarget": {
-					"$ref": "#/definitions/EditorCurveData"
+					"$ref": "#/$defs/EditorCurveData"
 				},
 				"mHomingOverlapSize": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mHomingAngleLimit": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mHomingOverrideTargets": {
 					"oneOf": [
@@ -5944,7 +5944,7 @@
 		},
 		"FGAmmoTypeSpreadshot": {
 			"type": "object",
-			"$ref": "#/definitions/FGAmmoTypeProjectile--base",
+			"$ref": "#/$defs/FGAmmoTypeProjectile--base",
 			"unevaluatedProperties": false,
 			"required": [
 				"SpreadTrail_Velocity",
@@ -5953,7 +5953,7 @@
 			],
 			"properties": {
 				"SpreadTrail_Velocity": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mNumShots": {
 					"type": "string",
@@ -5962,32 +5962,32 @@
 						"required": ["Min", "Max"],
 						"properties": {
 							"Min": {
-								"$ref": "#/definitions/integer-string"
+								"$ref": "#/$defs/integer-string"
 							},
 							"Max": {
-								"$ref": "#/definitions/integer-string"
+								"$ref": "#/$defs/integer-string"
 							}
 						}
 					}
 				},
 				"mSpreadAngleDegrees": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
 		"FGAmmoTypeInstantHit--base": {
 			"type": "object",
-			"$ref": "#/definitions/FGAmmoTypeProjectile--base",
+			"$ref": "#/$defs/FGAmmoTypeProjectile--base",
 			"required": ["mPlayFireEffects"],
 			"properties": {
 				"mPlayFireEffects": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				}
 			}
 		},
 		"FGAmmoTypeInstantHit--chaos": {
 			"type": "object",
-			"$ref": "#/definitions/FGAmmoTypeInstantHit--base",
+			"$ref": "#/$defs/FGAmmoTypeInstantHit--base",
 			"unevaluatedProperties": false,
 			"required": ["Location", "Trail_Velocity"],
 			"properties": {
@@ -5996,16 +5996,16 @@
 					"const": "Desc_CartridgeChaos_C"
 				},
 				"Location": {
-					"$ref": "#/definitions/xyz"
+					"$ref": "#/$defs/xyz"
 				},
 				"Trail_Velocity": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
 		"FGAmmoTypeInstantHit--standard": {
 			"type": "object",
-			"$ref": "#/definitions/FGAmmoTypeInstantHit--base",
+			"$ref": "#/$defs/FGAmmoTypeInstantHit--base",
 			"unevaluatedProperties": false,
 			"properties": {
 				"ClassName": {
@@ -6020,7 +6020,7 @@
 		},
 		"FGWeapon--base": {
 			"type": "object",
-			"$ref": "#/definitions/FGEquipment--base",
+			"$ref": "#/$defs/FGEquipment--base",
 			"required": [
 				"mShowCycleAmmoRadialMenuTimer",
 				"mOnWeaponStateChanged",
@@ -6046,25 +6046,25 @@
 			],
 			"properties": {
 				"mShowCycleAmmoRadialMenuTimer": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mOnWeaponStateChanged": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mWeaponState": {
-					"$ref": "#/definitions/weaponState"
+					"$ref": "#/$defs/weaponState"
 				},
 				"mAutomaticallyReload": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mAutoReloadDelay": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mAutoReloadTimerHandle": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mCurrentAmmoCount": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mAllowedAmmoClasses": {
 					"type": "string",
@@ -6079,7 +6079,7 @@
 					}
 				},
 				"mAttachMagazineToPlayer": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mMuzzleSocketName": {
 					"type": "string",
@@ -6094,37 +6094,37 @@
 					"enum": ["EjectMagazine", "hand_rSocket"]
 				},
 				"mDispersionOnNoMagazine": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mWeaponDamageMultiplier": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mFiringBlocksDispersionReduction": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mCurrentDispersion": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mReloadTime": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mAmmoSwitchUsedRadialMenu": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mOnAmmoCyclingPressed": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mOnAmmoCyclingReleased": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mBlockSprintWhenFiring": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				}
 			}
 		},
 		"FGWeapon--rebar-gun": {
 			"type": "object",
-			"$ref": "#/definitions/FGWeapon--base",
+			"$ref": "#/$defs/FGWeapon--base",
 			"unevaluatedProperties": false,
 			"required": [
 				"mMuteDryFire",
@@ -6139,25 +6139,25 @@
 					"const": "Equip_RebarGun_Projectile_C"
 				},
 				"mMuteDryFire": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mRandomReloadAnim": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mRandomStingerAnim": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mRebarGunStingerID": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mRebarGunEquipID": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				}
 			}
 		},
 		"FGWeapon--rifle": {
 			"type": "object",
-			"$ref": "#/definitions/FGWeapon--base",
+			"$ref": "#/$defs/FGWeapon--base",
 			"unevaluatedProperties": false,
 			"required": ["Fire", "mHasReloadedOnce"],
 			"properties": {
@@ -6166,16 +6166,16 @@
 					"const": "Equip_Rifle_C"
 				},
 				"Fire": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mHasReloadedOnce": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				}
 			}
 		},
 		"FGChargedWeapon": {
 			"type": "object",
-			"$ref": "#/definitions/FGWeapon--base",
+			"$ref": "#/$defs/FGWeapon--base",
 			"unevaluatedProperties": false,
 			"required": [
 				"mRadialMenuShowUpTime",
@@ -6188,32 +6188,32 @@
 			],
 			"properties": {
 				"mRadialMenuShowUpTime": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mDispensedProjectiles": {
 					"type": "string",
 					"const": ""
 				},
 				"mIsPendingExecuteFire": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mMaxChargeTime": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mMaxThrowForce": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mMinThrowForce": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mDelayBetweenSecondaryTriggers": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
 		"FGBuildable--circuits-base": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--base",
+			"$ref": "#/$defs/FGBuildable--base",
 			"required": [
 				"mOnCircuitsChanged",
 				"mIsBridgeConnected",
@@ -6221,10 +6221,10 @@
 			],
 			"properties": {
 				"mOnCircuitsChanged": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mIsBridgeConnected": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mConnections": {
 					"type": "string",
@@ -6234,7 +6234,7 @@
 		},
 		"FGBuildable--power-switch--base": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--circuits-base",
+			"$ref": "#/$defs/FGBuildable--circuits-base",
 			"required": [
 				"mTextRenderers",
 				"bIsSignificant",
@@ -6252,25 +6252,25 @@
 					"const": ""
 				},
 				"bIsSignificant": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mMaxCharacters": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mOnIsSwitchOnChanged": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mOnIsConnectedChanged": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mOnBuildingTagChanged": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mIsSwitchOn": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mHasBuildingTag": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mBuildingTag": {
 					"type": "string",
@@ -6280,7 +6280,7 @@
 		},
 		"FGBuildablePriorityPowerSwitch": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--power-switch--base",
+			"$ref": "#/$defs/FGBuildable--power-switch--base",
 			"unevaluatedProperties": false,
 			"required": [
 				"mOnPriorityChanged",
@@ -6297,16 +6297,16 @@
 			],
 			"properties": {
 				"mOnPriorityChanged": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mPriority": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				}
 			}
 		},
 		"FGBuildableCircuitSwitch": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--power-switch--base",
+			"$ref": "#/$defs/FGBuildable--power-switch--base",
 			"unevaluatedProperties": false,
 			"properties": {
 				"ClassName": {
@@ -6317,7 +6317,7 @@
 		},
 		"FGBuildableRadarTower": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--consumes-power-base",
+			"$ref": "#/$defs/FGBuildable--consumes-power-base",
 			"unevaluatedProperties": false,
 			"required": ["mMapText", "mRevealRadius", "mScannableDescriptors"],
 			"properties": {
@@ -6326,7 +6326,7 @@
 					"const": "Radar Tower"
 				},
 				"mRevealRadius": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mScannableDescriptors": {
 					"type": "string",
@@ -6344,26 +6344,26 @@
 		},
 		"FGBuildableSnowDispenser": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--base",
+			"$ref": "#/$defs/FGBuildable--base",
 			"unevaluatedProperties": false
 		},
 		"FGBuildableFactorySimpleProducer": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--consumes-power-base",
+			"$ref": "#/$defs/FGBuildable--consumes-power-base",
 			"unevaluatedProperties": false,
 			"required": ["mTimeToProduceItem", "mEventType"],
 			"properties": {
 				"mTimeToProduceItem": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mEventType": {
-					"$ref": "#/definitions/mEventType"
+					"$ref": "#/$defs/mEventType"
 				}
 			}
 		},
 		"FGBuildableLadder": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--base",
+			"$ref": "#/$defs/FGBuildable--base",
 			"unevaluatedProperties": false,
 			"required": [
 				"mWidth",
@@ -6374,16 +6374,16 @@
 			],
 			"properties": {
 				"mWidth": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mMeshHeight": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mMaxSegmentCount": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mNumSegments": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mLadderMeshes": {
 					"type": "string",
@@ -6393,7 +6393,7 @@
 		},
 		"FGBuildableStair": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--base",
+			"$ref": "#/$defs/FGBuildable--base",
 			"unevaluatedProperties": false,
 			"required": ["mStairDirection", "mHeight", "mSize"],
 			"properties": {
@@ -6402,16 +6402,16 @@
 					"enum": ["EBSD_Left", "EBSD_Right"]
 				},
 				"mHeight": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mSize": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
 		"FGGolfCartDispenser": {
 			"type": "object",
-			"$ref": "#/definitions/FGEquipment--base",
+			"$ref": "#/$defs/FGEquipment--base",
 			"unevaluatedProperties": false,
 			"required": [
 				"mMaxSpawnDistance",
@@ -6422,26 +6422,26 @@
 			],
 			"properties": {
 				"mMaxSpawnDistance": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mSpawningClearance": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mBuildDisqualifierText": {
 					"type": "string",
 					"minLength": 1
 				},
 				"canDisplayDisqualifier": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mPlaceDistanceMax": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
 		"FGBuildablePassthrough": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--base",
+			"$ref": "#/$defs/FGBuildable--base",
 			"unevaluatedProperties": false,
 			"required": [
 				"mSnappedBuildingThickness",
@@ -6457,31 +6457,31 @@
 			],
 			"properties": {
 				"mSnappedBuildingThickness": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mMidMeshLength": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mGenerateTunnelCollision": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mEndCapRotation": {
-					"$ref": "#/definitions/pitch-yaw-roll"
+					"$ref": "#/$defs/pitch-yaw-roll"
 				},
 				"mMidMeshRotation": {
-					"$ref": "#/definitions/pitch-yaw-roll"
+					"$ref": "#/$defs/pitch-yaw-roll"
 				},
 				"mEndCapTranslation": {
-					"$ref": "#/definitions/xyz"
+					"$ref": "#/$defs/xyz"
 				},
 				"mClearanceHeightMin": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mClearanceThickness": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mCostSegmentLength": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mGeneratedMeshComponents": {
 					"type": "string",
@@ -6496,14 +6496,14 @@
 				"required": ["Intensity"],
 				"properties": {
 					"Intensity": {
-						"$ref": "#/definitions/decimal-string"
+						"$ref": "#/$defs/decimal-string"
 					}
 				}
 			}
 		},
 		"FGBuildableLightsControlPanel": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--circuits-base",
+			"$ref": "#/$defs/FGBuildable--circuits-base",
 			"unevaluatedProperties": false,
 			"required": [
 				"OnLightControlPanelStateChanged",
@@ -6514,16 +6514,16 @@
 			],
 			"properties": {
 				"OnLightControlPanelStateChanged": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mLightControlData": {
-					"$ref": "#/definitions/mLightControlData"
+					"$ref": "#/$defs/mLightControlData"
 				},
 				"mIsEnabled": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mOnControlledBuildablesChanged": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mControlledBuildables": {
 					"type": "string",
@@ -6533,7 +6533,7 @@
 		},
 		"FGBuildableLightSource--base": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--base",
+			"$ref": "#/$defs/FGBuildable--base",
 			"required": [
 				"OnBuildableLightSourceStateChanged",
 				"mIsEnabled",
@@ -6544,28 +6544,28 @@
 			],
 			"properties": {
 				"OnBuildableLightSourceStateChanged": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mIsEnabled": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mLightControlData": {
-					"$ref": "#/definitions/mLightControlData"
+					"$ref": "#/$defs/mLightControlData"
 				},
 				"mPowerConsumption": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mHasPower": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				},
 				"mIsDay": {
-					"$ref": "#/definitions/boolean"
+					"$ref": "#/$defs/boolean"
 				}
 			}
 		},
 		"FGBuildableLightSource": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildableLightSource--base",
+			"$ref": "#/$defs/FGBuildableLightSource--base",
 			"unevaluatedProperties": false,
 			"required": [
 				"OnBuildableLightSourceStateChanged",
@@ -6592,10 +6592,10 @@
 									],
 									"properties": {
 										"PrimaryColor": {
-											"$ref": "#/definitions/color-decimal"
+											"$ref": "#/$defs/color-decimal"
 										},
 										"SecondaryColor": {
-											"$ref": "#/definitions/color-decimal"
+											"$ref": "#/$defs/color-decimal"
 										}
 									}
 								}
@@ -6607,18 +6607,18 @@
 		},
 		"FGBuildableFloodlight": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildableLightSource--base",
+			"$ref": "#/$defs/FGBuildableLightSource--base",
 			"unevaluatedProperties": false,
 			"required": ["mFixtureAngle"],
 			"properties": {
 				"mFixtureAngle": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				}
 			}
 		},
 		"FGBuildableWidgetSign": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--base",
+			"$ref": "#/$defs/FGBuildable--base",
 			"unevaluatedProperties": false,
 			"required": [
 				"mGainSignificanceDistance",
@@ -6641,16 +6641,16 @@
 			],
 			"properties": {
 				"mGainSignificanceDistance": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mTextElementToDataMap": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mIconElementToDataMap": {
-					"$ref": "#/definitions/empty-object"
+					"$ref": "#/$defs/empty-object"
 				},
 				"mSignDrawSize": {
-					"$ref": "#/definitions/xy--integer"
+					"$ref": "#/$defs/xy--integer"
 				},
 				"mPrefabTextElementSaveData": {
 					"type": "string",
@@ -6661,69 +6661,69 @@
 					"const": ""
 				},
 				"mForegroundColor": {
-					"$ref": "#/definitions/color-decimal"
+					"$ref": "#/$defs/color-decimal"
 				},
 				"mBackgroundColor": {
-					"$ref": "#/definitions/color-decimal"
+					"$ref": "#/$defs/color-decimal"
 				},
 				"mAuxilaryColor": {
-					"$ref": "#/definitions/color-decimal"
+					"$ref": "#/$defs/color-decimal"
 				},
 				"mEmissive": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mGlossiness": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mDataVersion": {
-					"$ref": "#/definitions/integer-string"
+					"$ref": "#/$defs/integer-string"
 				},
 				"mSignPoles": {
 					"type": "string",
 					"const": ""
 				},
 				"mWorldDimensions": {
-					"$ref": "#/definitions/xy"
+					"$ref": "#/$defs/xy"
 				},
 				"mPoleOffset": {
-					"$ref": "#/definitions/xyz"
+					"$ref": "#/$defs/xyz"
 				},
 				"mPoleScale": {
-					"$ref": "#/definitions/xy"
+					"$ref": "#/$defs/xy"
 				},
 				"mSignToSignOffset": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
 		"FGBuildableBeamLightweight": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--base",
+			"$ref": "#/$defs/FGBuildable--base",
 			"unevaluatedProperties": false,
 			"required": ["mSize", "mDefaultLength", "mMaxLength", "mLength"],
 			"properties": {
 				"mSize": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mDefaultLength": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mMaxLength": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mLength": {
-					"$ref": "#/definitions/decimal-string"
+					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
 		"FGBuildableFactoryBuilding": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--base",
+			"$ref": "#/$defs/FGBuildable--base",
 			"unevaluatedProperties": false
 		},
 		"FGBuildableSpaceElevator": {
 			"type": "object",
-			"$ref": "#/definitions/FGBuildable--consumes-power-base",
+			"$ref": "#/$defs/FGBuildable--consumes-power-base",
 			"unevaluatedProperties": false
 		}
 	},
@@ -6733,7 +6733,7 @@
 	"prefixItems": [
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -6741,7 +6741,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGItemDescriptor--FGResourceDescriptor",
+						"$ref": "#/$defs/FGItemDescriptor--FGResourceDescriptor",
 						"unevaluatedProperties": false
 					}
 				}
@@ -6749,14 +6749,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableDroneStation",
+						"$ref": "#/$defs/FGBuildableDroneStation",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -6766,7 +6766,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -6774,7 +6774,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGCustomizationRecipe--FGRecipe",
+						"$ref": "#/$defs/FGCustomizationRecipe--FGRecipe",
 						"unevaluatedProperties": false,
 						"properties": {
 							"mDisplayName": {
@@ -6818,14 +6818,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableBlueprintDesigner",
+						"$ref": "#/$defs/FGBuildableBlueprintDesigner",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -6835,7 +6835,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -6843,7 +6843,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildingDescriptor",
+						"$ref": "#/$defs/FGBuildingDescriptor",
 						"unevaluatedProperties": false
 					}
 				}
@@ -6851,7 +6851,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -6859,7 +6859,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGRecipe",
+						"$ref": "#/$defs/FGRecipe",
 						"unevaluatedProperties": false
 					}
 				}
@@ -6867,7 +6867,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -6877,12 +6877,12 @@
 						"oneOf": [
 							{
 								"type": "object",
-								"$ref": "#/definitions/FGSchematic",
+								"$ref": "#/$defs/FGSchematic",
 								"unevaluatedProperties": false
 							},
 							{
 								"type": "object",
-								"$ref": "#/definitions/FGSchematic--with-unlocks",
+								"$ref": "#/$defs/FGSchematic--with-unlocks",
 								"unevaluatedProperties": false
 							}
 						]
@@ -6892,7 +6892,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -6900,7 +6900,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableWallLightweight",
+						"$ref": "#/$defs/FGBuildableWallLightweight",
 						"unevaluatedProperties": false
 					}
 				}
@@ -6908,7 +6908,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -6916,7 +6916,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableWallLightweight",
+						"$ref": "#/$defs/FGBuildableWallLightweight",
 						"unevaluatedProperties": false
 					}
 				}
@@ -6924,7 +6924,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -6934,12 +6934,12 @@
 						"oneOf": [
 							{
 								"type": "object",
-								"$ref": "#/definitions/FGBuildableDoor",
+								"$ref": "#/$defs/FGBuildableDoor",
 								"unevaluatedProperties": false
 							},
 							{
 								"type": "object",
-								"$ref": "#/definitions/FGBuildableDoor--automated",
+								"$ref": "#/$defs/FGBuildableDoor--automated",
 								"unevaluatedProperties": false
 							}
 						]
@@ -6949,7 +6949,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -6957,7 +6957,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableCornerWall",
+						"$ref": "#/$defs/FGBuildableCornerWall",
 						"unevaluatedProperties": false
 					}
 				}
@@ -6965,7 +6965,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -6973,7 +6973,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGResourceDescriptor",
+						"$ref": "#/$defs/FGResourceDescriptor",
 						"unevaluatedProperties": false
 					}
 				}
@@ -6981,14 +6981,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableRailroadTrack",
+						"$ref": "#/$defs/FGBuildableRailroadTrack",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -6998,7 +6998,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7008,17 +7008,17 @@
 						"oneOf": [
 							{
 								"type": "object",
-								"$ref": "#/definitions/FGBuildable",
+								"$ref": "#/$defs/FGBuildable",
 								"unevaluatedProperties": false
 							},
 							{
 								"type": "object",
-								"$ref": "#/definitions/FGBuildable--occupied",
+								"$ref": "#/$defs/FGBuildable--occupied",
 								"unevaluatedProperties": false
 							},
 							{
 								"type": "object",
-								"$ref": "#/definitions/FGBuildable--tiered",
+								"$ref": "#/$defs/FGBuildable--tiered",
 								"unevaluatedProperties": false
 							}
 						]
@@ -7028,14 +7028,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildablePoleLightweight",
+						"$ref": "#/$defs/FGBuildablePoleLightweight",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -7045,7 +7045,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7053,7 +7053,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGPoleDescriptor",
+						"$ref": "#/$defs/FGPoleDescriptor",
 						"unevaluatedProperties": false
 					}
 				}
@@ -7061,7 +7061,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7069,7 +7069,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableConveyorBelt",
+						"$ref": "#/$defs/FGBuildableConveyorBelt",
 						"unevaluatedProperties": false
 					}
 				}
@@ -7077,7 +7077,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7086,7 +7086,7 @@
 					"maxItems": 2,
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableWire",
+						"$ref": "#/$defs/FGBuildableWire",
 						"unevaluatedProperties": false
 					}
 				}
@@ -7094,7 +7094,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7102,7 +7102,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildablePowerPole",
+						"$ref": "#/$defs/FGBuildablePowerPole",
 						"unevaluatedProperties": false
 					}
 				}
@@ -7110,14 +7110,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableTradingPost",
+						"$ref": "#/$defs/FGBuildableTradingPost",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -7127,7 +7127,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7138,12 +7138,12 @@
 						"oneOf": [
 							{
 								"type": "object",
-								"$ref": "#/definitions/FGEquipmentStunSpear--xeno-zapper",
+								"$ref": "#/$defs/FGEquipmentStunSpear--xeno-zapper",
 								"unevaluatedProperties": false
 							},
 							{
 								"type": "object",
-								"$ref": "#/definitions/FGEquipmentStunSpear",
+								"$ref": "#/$defs/FGEquipmentStunSpear",
 								"unevaluatedProperties": false
 							}
 						]
@@ -7153,7 +7153,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7161,7 +7161,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGEquipmentDescriptor",
+						"$ref": "#/$defs/FGEquipmentDescriptor",
 						"unevaluatedProperties": false
 					}
 				}
@@ -7169,7 +7169,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7177,7 +7177,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildablePillarLightweight",
+						"$ref": "#/$defs/FGBuildablePillarLightweight",
 						"unevaluatedProperties": false
 					}
 				}
@@ -7185,7 +7185,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7196,17 +7196,17 @@
 						"oneOf": [
 							{
 								"type": "object",
-								"$ref": "#/definitions/FGBuildableFactory--jump-pad",
+								"$ref": "#/$defs/FGBuildableFactory--jump-pad",
 								"unevaluatedProperties": false
 							},
 							{
 								"type": "object",
-								"$ref": "#/definitions/FGBuildableFactory--landing-pad",
+								"$ref": "#/$defs/FGBuildableFactory--landing-pad",
 								"unevaluatedProperties": false
 							},
 							{
 								"type": "object",
-								"$ref": "#/definitions/FGBuildableFactory--generic",
+								"$ref": "#/$defs/FGBuildableFactory--generic",
 								"unevaluatedProperties": false
 							}
 						]
@@ -7216,7 +7216,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7224,7 +7224,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableWalkwayLightweight",
+						"$ref": "#/$defs/FGBuildableWalkwayLightweight",
 						"unevaluatedProperties": false
 					}
 				}
@@ -7232,14 +7232,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableWalkway",
+						"$ref": "#/$defs/FGBuildableWalkway",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -7249,7 +7249,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7260,12 +7260,12 @@
 						"oneOf": [
 							{
 								"type": "object",
-								"$ref": "#/definitions/FGBuildableGeneratorFuel",
+								"$ref": "#/$defs/FGBuildableGeneratorFuel",
 								"unevaluatedProperties": false
 							},
 							{
 								"type": "object",
-								"$ref": "#/definitions/FGBuildableGeneratorFuel--biogen",
+								"$ref": "#/$defs/FGBuildableGeneratorFuel--biogen",
 								"unevaluatedProperties": false
 							}
 						]
@@ -7275,7 +7275,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7283,7 +7283,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildablePipelineSupport",
+						"$ref": "#/$defs/FGBuildablePipelineSupport",
 						"unevaluatedProperties": false
 					}
 				}
@@ -7291,7 +7291,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7299,7 +7299,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildablePipeline",
+						"$ref": "#/$defs/FGBuildablePipeline",
 						"unevaluatedProperties": false
 					}
 				}
@@ -7307,14 +7307,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildablePipelineJunction",
+						"$ref": "#/$defs/FGBuildablePipelineJunction",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -7324,7 +7324,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7335,12 +7335,12 @@
 						"oneOf": [
 							{
 								"type": "object",
-								"$ref": "#/definitions/FGBuildablePipelinePump--valve",
+								"$ref": "#/$defs/FGBuildablePipelinePump--valve",
 								"unevaluatedProperties": false
 							},
 							{
 								"type": "object",
-								"$ref": "#/definitions/FGBuildablePipelinePump",
+								"$ref": "#/$defs/FGBuildablePipelinePump",
 								"unevaluatedProperties": false
 							}
 						]
@@ -7350,7 +7350,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7359,7 +7359,7 @@
 					"maxItems": 2,
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildablePipeReservoir",
+						"$ref": "#/$defs/FGBuildablePipeReservoir",
 						"unevaluatedProperties": false
 					}
 				}
@@ -7367,14 +7367,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableWaterPump",
+						"$ref": "#/$defs/FGBuildableWaterPump",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -7384,14 +7384,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableResourceSink",
+						"$ref": "#/$defs/FGBuildableResourceSink",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -7401,14 +7401,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableResourceSinkShop",
+						"$ref": "#/$defs/FGBuildableResourceSinkShop",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -7418,7 +7418,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7426,7 +7426,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGItemDescriptorBiomass",
+						"$ref": "#/$defs/FGItemDescriptorBiomass",
 						"unevaluatedProperties": false
 					}
 				}
@@ -7434,7 +7434,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7445,17 +7445,17 @@
 						"oneOf": [
 							{
 								"type": "object",
-								"$ref": "#/definitions/FGBuildableResourceExtractor--oil-extractor",
+								"$ref": "#/$defs/FGBuildableResourceExtractor--oil-extractor",
 								"unevaluatedProperties": false
 							},
 							{
 								"type": "object",
-								"$ref": "#/definitions/FGBuildableResourceExtractor--miner-mk3",
+								"$ref": "#/$defs/FGBuildableResourceExtractor--miner-mk3",
 								"unevaluatedProperties": false
 							},
 							{
 								"type": "object",
-								"$ref": "#/definitions/FGBuildableResourceExtractor--miner",
+								"$ref": "#/$defs/FGBuildableResourceExtractor--miner",
 								"unevaluatedProperties": false
 							}
 						]
@@ -7465,7 +7465,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7475,27 +7475,27 @@
 						"oneOf": [
 							{
 								"type": "object",
-								"$ref": "#/definitions/FGBuildableManufacturer",
+								"$ref": "#/$defs/FGBuildableManufacturer",
 								"unevaluatedProperties": false
 							},
 							{
 								"type": "object",
-								"$ref": "#/definitions/FGBuildableManufacturer--packager",
+								"$ref": "#/$defs/FGBuildableManufacturer--packager",
 								"unevaluatedProperties": false
 							},
 							{
 								"type": "object",
-								"$ref": "#/definitions/FGBuildableManufacturer--blender",
+								"$ref": "#/$defs/FGBuildableManufacturer--blender",
 								"unevaluatedProperties": false
 							},
 							{
 								"type": "object",
-								"$ref": "#/definitions/FGBuildableManufacturer--smelter",
+								"$ref": "#/$defs/FGBuildableManufacturer--smelter",
 								"unevaluatedProperties": false
 							},
 							{
 								"type": "object",
-								"$ref": "#/definitions/FGBuildableManufacturer--constructor",
+								"$ref": "#/$defs/FGBuildableManufacturer--constructor",
 								"unevaluatedProperties": false
 							}
 						]
@@ -7505,14 +7505,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGPortableMinerDispenser",
+						"$ref": "#/$defs/FGPortableMinerDispenser",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -7522,7 +7522,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7531,7 +7531,7 @@
 					"maxItems": 2,
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGItemDescriptorNuclearFuel",
+						"$ref": "#/$defs/FGItemDescriptorNuclearFuel",
 						"unevaluatedProperties": false
 					}
 				}
@@ -7539,7 +7539,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7547,7 +7547,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGVehicleDescriptor",
+						"$ref": "#/$defs/FGVehicleDescriptor",
 						"unevaluatedProperties": false
 					}
 				}
@@ -7555,14 +7555,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableManufacturerVariablePower",
+						"$ref": "#/$defs/FGBuildableManufacturerVariablePower",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -7572,14 +7572,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableGeneratorNuclear",
+						"$ref": "#/$defs/FGBuildableGeneratorNuclear",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -7589,14 +7589,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableFrackingExtractor",
+						"$ref": "#/$defs/FGBuildableFrackingExtractor",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -7606,14 +7606,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableFrackingActivator",
+						"$ref": "#/$defs/FGBuildableFrackingActivator",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -7623,7 +7623,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7631,7 +7631,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableConveyorLift",
+						"$ref": "#/$defs/FGBuildableConveyorLift",
 						"unevaluatedProperties": false
 					}
 				}
@@ -7639,7 +7639,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7647,7 +7647,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGEquipment--base",
+						"$ref": "#/$defs/FGEquipment--base",
 						"unevaluatedProperties": false
 					}
 				}
@@ -7655,7 +7655,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7665,12 +7665,12 @@
 						"oneOf": [
 							{
 								"type": "object",
-								"$ref": "#/definitions/FGConsumableDescriptor",
+								"$ref": "#/$defs/FGConsumableDescriptor",
 								"unevaluatedProperties": false
 							},
 							{
 								"type": "object",
-								"$ref": "#/definitions/FGConsumableDescriptor--healing",
+								"$ref": "#/$defs/FGConsumableDescriptor--healing",
 								"unevaluatedProperties": false
 							}
 						]
@@ -7680,14 +7680,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGHoverPack",
+						"$ref": "#/$defs/FGHoverPack",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -7697,14 +7697,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGSuitBase",
+						"$ref": "#/$defs/FGSuitBase",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -7714,14 +7714,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGGasMask",
+						"$ref": "#/$defs/FGGasMask",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -7731,7 +7731,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7739,7 +7739,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableRailroadSignal",
+						"$ref": "#/$defs/FGBuildableRailroadSignal",
 						"unevaluatedProperties": false
 					}
 				}
@@ -7747,7 +7747,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7755,7 +7755,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableTrainPlatformCargo",
+						"$ref": "#/$defs/FGBuildableTrainPlatformCargo",
 						"unevaluatedProperties": false
 					}
 				}
@@ -7763,7 +7763,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7771,7 +7771,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableTrainPlatformEmpty",
+						"$ref": "#/$defs/FGBuildableTrainPlatformEmpty",
 						"unevaluatedProperties": false
 					}
 				}
@@ -7779,14 +7779,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableRailroadStation",
+						"$ref": "#/$defs/FGBuildableRailroadStation",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -7796,14 +7796,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGJetPack",
+						"$ref": "#/$defs/FGJetPack",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -7813,7 +7813,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7821,7 +7821,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableStorage",
+						"$ref": "#/$defs/FGBuildableStorage",
 						"unevaluatedProperties": false
 					}
 				}
@@ -7829,14 +7829,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGPipeHyperStart",
+						"$ref": "#/$defs/FGPipeHyperStart",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -7846,14 +7846,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildablePipeHyper",
+						"$ref": "#/$defs/FGBuildablePipeHyper",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -7863,14 +7863,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildablePowerStorage",
+						"$ref": "#/$defs/FGBuildablePowerStorage",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -7880,14 +7880,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableDockingStation",
+						"$ref": "#/$defs/FGBuildableDockingStation",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -7897,14 +7897,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGConveyorPoleStackable",
+						"$ref": "#/$defs/FGConveyorPoleStackable",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -7914,14 +7914,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableJumppad",
+						"$ref": "#/$defs/FGBuildableJumppad",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -7931,14 +7931,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGChainsaw",
+						"$ref": "#/$defs/FGChainsaw",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -7948,14 +7948,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGObjectScanner",
+						"$ref": "#/$defs/FGObjectScanner",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -7965,14 +7965,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableMAM",
+						"$ref": "#/$defs/FGBuildableMAM",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -7982,14 +7982,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableAttachmentMerger",
+						"$ref": "#/$defs/FGBuildableAttachmentMerger",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -7999,14 +7999,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableAttachmentSplitter",
+						"$ref": "#/$defs/FGBuildableAttachmentSplitter",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -8016,7 +8016,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8024,7 +8024,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableFoundation",
+						"$ref": "#/$defs/FGBuildableFoundation",
 						"unevaluatedProperties": false
 					}
 				}
@@ -8032,7 +8032,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8040,7 +8040,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableFoundationLightweight",
+						"$ref": "#/$defs/FGBuildableFoundationLightweight",
 						"unevaluatedProperties": false
 					}
 				}
@@ -8048,7 +8048,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8056,7 +8056,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableRamp",
+						"$ref": "#/$defs/FGBuildableRamp",
 						"unevaluatedProperties": false
 					}
 				}
@@ -8064,7 +8064,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8072,7 +8072,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGAmmoTypeProjectile",
+						"$ref": "#/$defs/FGAmmoTypeProjectile",
 						"unevaluatedProperties": false
 					}
 				}
@@ -8080,14 +8080,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGAmmoTypeSpreadshot",
+						"$ref": "#/$defs/FGAmmoTypeSpreadshot",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -8097,7 +8097,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8107,12 +8107,12 @@
 						"oneOf": [
 							{
 								"type": "object",
-								"$ref": "#/definitions/FGWeapon--rebar-gun",
+								"$ref": "#/$defs/FGWeapon--rebar-gun",
 								"unevaluatedProperties": false
 							},
 							{
 								"type": "object",
-								"$ref": "#/definitions/FGWeapon--rifle",
+								"$ref": "#/$defs/FGWeapon--rifle",
 								"unevaluatedProperties": false
 							}
 						]
@@ -8122,14 +8122,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableGeneratorGeoThermal",
+						"$ref": "#/$defs/FGBuildableGeneratorGeoThermal",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -8139,7 +8139,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8147,7 +8147,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableSplitterSmart",
+						"$ref": "#/$defs/FGBuildableSplitterSmart",
 						"unevaluatedProperties": false
 					}
 				}
@@ -8155,7 +8155,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8164,12 +8164,12 @@
 						"oneOf": [
 							{
 								"type": "object",
-								"$ref": "#/definitions/FGAmmoTypeInstantHit--chaos",
+								"$ref": "#/$defs/FGAmmoTypeInstantHit--chaos",
 								"unevaluatedProperties": false
 							},
 							{
 								"type": "object",
-								"$ref": "#/definitions/FGAmmoTypeInstantHit--standard",
+								"$ref": "#/$defs/FGAmmoTypeInstantHit--standard",
 								"unevaluatedProperties": false
 							}
 						]
@@ -8181,14 +8181,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildablePriorityPowerSwitch",
+						"$ref": "#/$defs/FGBuildablePriorityPowerSwitch",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -8198,14 +8198,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGJumpingStilts",
+						"$ref": "#/$defs/FGJumpingStilts",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -8215,14 +8215,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableCircuitSwitch",
+						"$ref": "#/$defs/FGBuildableCircuitSwitch",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -8232,14 +8232,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGEquipmentZipline",
+						"$ref": "#/$defs/FGEquipmentZipline",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -8249,14 +8249,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGChargedWeapon",
+						"$ref": "#/$defs/FGChargedWeapon",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -8266,14 +8266,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGParachute",
+						"$ref": "#/$defs/FGParachute",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -8283,14 +8283,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableRadarTower",
+						"$ref": "#/$defs/FGBuildableRadarTower",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -8300,14 +8300,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableSnowDispenser",
+						"$ref": "#/$defs/FGBuildableSnowDispenser",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -8317,14 +8317,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableFactorySimpleProducer",
+						"$ref": "#/$defs/FGBuildableFactorySimpleProducer",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -8334,14 +8334,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableLadder",
+						"$ref": "#/$defs/FGBuildableLadder",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -8351,7 +8351,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8359,7 +8359,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableStair",
+						"$ref": "#/$defs/FGBuildableStair",
 						"unevaluatedProperties": false
 					}
 				}
@@ -8367,7 +8367,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8375,7 +8375,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGGolfCartDispenser",
+						"$ref": "#/$defs/FGGolfCartDispenser",
 						"unevaluatedProperties": false
 					}
 				}
@@ -8383,7 +8383,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8391,7 +8391,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildablePassthrough",
+						"$ref": "#/$defs/FGBuildablePassthrough",
 						"unevaluatedProperties": false
 					}
 				}
@@ -8399,14 +8399,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableLightsControlPanel",
+						"$ref": "#/$defs/FGBuildableLightsControlPanel",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -8416,7 +8416,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8424,7 +8424,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableLightSource",
+						"$ref": "#/$defs/FGBuildableLightSource",
 						"unevaluatedProperties": false
 					}
 				}
@@ -8432,7 +8432,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8440,7 +8440,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableFloodlight",
+						"$ref": "#/$defs/FGBuildableFloodlight",
 						"unevaluatedProperties": false
 					}
 				}
@@ -8448,7 +8448,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8456,7 +8456,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableWidgetSign",
+						"$ref": "#/$defs/FGBuildableWidgetSign",
 						"unevaluatedProperties": false
 					}
 				}
@@ -8464,14 +8464,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildablePassthrough",
+						"$ref": "#/$defs/FGBuildablePassthrough",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
@@ -8481,7 +8481,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8489,7 +8489,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableBeamLightweight",
+						"$ref": "#/$defs/FGBuildableBeamLightweight",
 						"unevaluatedProperties": false
 					}
 				}
@@ -8497,7 +8497,7 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8505,7 +8505,7 @@
 					"minItems": 1,
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableFactoryBuilding",
+						"$ref": "#/$defs/FGBuildableFactoryBuilding",
 						"unevaluatedProperties": false
 					}
 				}
@@ -8513,14 +8513,14 @@
 		},
 		{
 			"type": "object",
-			"$ref": "#/definitions/NativeClass",
+			"$ref": "#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/definitions/FGBuildableSpaceElevator",
+						"$ref": "#/$defs/FGBuildableSpaceElevator",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,

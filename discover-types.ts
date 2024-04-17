@@ -31,7 +31,7 @@ try {
 	await bar.write(`${__dirname}/generated-types/update8/`);
 	performance.measure('types generated', 'bootstrap done');
 	const discovery = await bar.discovery;
-	const result = await discovery.discover_type_definitions();
+	const result = await discovery.discover_type_$defs();
 
 	process.stdout.write(
 		`${

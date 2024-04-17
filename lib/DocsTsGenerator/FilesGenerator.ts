@@ -47,7 +47,7 @@ export class FilesGenerator extends Base {
 		this.is_NativeClass = TypesDiscovery.generate_is_NativeClass(
 			this.discovery.docs
 		);
-		this.types = this.discovery.discover_type_definitions();
+		this.types = this.discovery.discover_type_$defs();
 	}
 
 	async* generate_files() {

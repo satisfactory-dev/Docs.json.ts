@@ -12,12 +12,12 @@ import {
 
 void describe('local_ref', () => {
 	void it('works', () => {
-		assert.equal(local_ref('foo'), '#/definitions/foo');
+		assert.equal(local_ref('foo'), '#/$defs/foo');
 	})
 
 	void it('throws', () => {
 		assert.throws(() => local_ref('foo bar'));
-		assert.throws(() => local_ref('#/definitions/foo'));
+		assert.throws(() => local_ref('#/$defs/foo'));
 	})
 });
 
@@ -30,7 +30,7 @@ void describe('is_string', () => {
 
 void describe('is_$ref', () => {
 	void it('behaves', () => {
-		assert.equal(is_$ref('#/definitions/foo'), true);
+		assert.equal(is_$ref('#/$defs/foo'), true);
 		assert.equal(is_$ref('foo'), false);
 	});
 });
@@ -39,19 +39,19 @@ void describe('$ref_in_array', () => {
 	void it('behaves', () => {
 		assert.equal($ref_in_array(
 			1,
-			['#/definitions/foo']
+			['#/$defs/foo']
 		), false);
 		assert.equal($ref_in_array(
 			'foo',
-			['#/definitions/foo']
+			['#/$defs/foo']
 		), false);
 		assert.equal($ref_in_array(
-			'#/definitions/bar',
-			['#/definitions/foo']
+			'#/$defs/bar',
+			['#/$defs/foo']
 		), false);
 		assert.equal($ref_in_array(
-			'#/definitions/foo',
-			['#/definitions/foo']
+			'#/$defs/foo',
+			['#/$defs/foo']
 		), true);
 	});
 });

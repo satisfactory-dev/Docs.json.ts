@@ -122,14 +122,14 @@ export class DocsTsGenerator {
 	): Promise<SchemaObject> {
 		const schema = await this.schema();
 
-		if (!property_exists_on_object(schema.definitions, $ref)) {
+		if (!property_exists_on_object(schema.$defs, $ref)) {
 			throw new NoMatchError({
 				$ref,
-				options: Object.keys(schema.definitions),
+				options: Object.keys(schema.$defs),
 			});
 		}
 
-		return schema.definitions[$ref];
+		return schema.$defs[$ref];
 	}
 
 	async get() {
@@ -292,23 +292,23 @@ export class DocsTsGenerator {
 		if (
 			object_has_property(
 				schema,
-				'definitions',
+				'$defs',
 				value_is_non_array_object
 			)
 			&& object_has_only_properties_that_match_predicate(
-				schema.definitions,
+				schema.$defs,
 				value_is_non_array_object
 			)
 		) {
-			const {definitions} = schema;
+			const {$defs} = schema;
 
 			if (
 				object_has_only_properties_that_match_predicate(
-					definitions,
+					$defs,
 					value_is_non_array_object
 				)
 			) {
-				TypedString.instance().configure_ajv(definitions, this.ajv);
+				TypedString.instance().configure_ajv($defs, this.ajv);
 			}
 		}
 

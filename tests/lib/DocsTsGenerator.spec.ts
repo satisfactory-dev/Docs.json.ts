@@ -17,7 +17,7 @@ void describe('DocsTsGenerator.schema', () => {
 });
 
 void describe('DocsTsGenerator.definition', () => {
-	void it('will throw on unrecognised definitions', async () => {
+	void it('will throw on unrecognised definition', async () => {
 		let passed = false;
 		try {
 			await docs.definition('nope');

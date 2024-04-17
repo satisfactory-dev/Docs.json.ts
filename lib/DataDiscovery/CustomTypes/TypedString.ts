@@ -5,7 +5,7 @@ import {
 } from '../Generator';
 import {
 	generate_object_parent_schema,
-	generate_typed_string_definitions,
+	generate_typed_string_$defs,
 	typed_string_inner_array_prefixItems_type,
 	typed_string_inner_array_type,
 	typed_string_inner_object_pattern_type,
@@ -46,7 +46,7 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 	string,
 	ArrayLiteralExpression|ObjectLiteralExpression
 > {
-	private readonly definitions:{[key: string]: SchemaObject};
+	private readonly $defs:{[key: string]: SchemaObject};
 	private readonly discovery:DataDiscovery;
 	private readonly regex_schema_cache:{
 		[key: string]: [
@@ -57,18 +57,18 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 
 	constructor(
 		discovery:DataDiscovery,
-		definitions:{[key: string]: SchemaObject}
+		$defs:{[key: string]: SchemaObject}
 	) {
-		const local_refs = Object.keys(definitions).map(local_ref);
+		const local_refs = Object.keys($defs).map(local_ref);
 		super(discovery.docs.ajv, {
 			...generate_object_parent_schema(),
-			definitions: {
-				...definitions,
-				...generate_typed_string_definitions(local_refs),
+			$defs: {
+				...$defs,
+				...generate_typed_string_$defs(local_refs),
 			},
 		});
 		this.discovery = discovery;
-		this.definitions = definitions;
+		this.$defs = $defs;
 	}
 
 	can_convert_schema_and_raw_data(
@@ -217,7 +217,7 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 			this.discovery.docs.ajv,
 			{
 				...schema,
-				definitions: this.definitions,
+				$defs: this.$defs,
 				type: 'array',
 			},
 		);
@@ -235,7 +235,7 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 			this.discovery.docs.ajv,
 			{
 				...schema,
-				definitions: this.definitions,
+				$defs: this.$defs,
 				type: 'array',
 			},
 		);
@@ -362,7 +362,7 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 			this.discovery.docs.ajv,
 			{
 				...schema,
-				definitions: this.definitions,
+				$defs: this.$defs,
 				type: 'object',
 			}
 		);

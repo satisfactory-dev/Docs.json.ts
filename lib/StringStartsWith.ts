@@ -13,7 +13,7 @@ export type StringStartsWith<
 
 export type local_ref<
 	T extends string
-> = StringStartsWith<'#/definitions/', T>;
+> = StringStartsWith<'#/$defs/', T>;
 
 export function local_ref<
 	T extends string = string
@@ -22,14 +22,14 @@ export function local_ref<
 		throw new Error('No spacing characters allowed!');
 	}
 
-	if (ref_like_string.startsWith('#/definitions/')) {
+	if (ref_like_string.startsWith('#/$defs/')) {
 		throw new NoMatchError(
 			ref_like_string,
 			'Already a local ref!'
 		);
 	}
 
-	return `#/definitions/${
+	return `#/$defs/${
 		ref_like_string
 	}` as local_ref<T>;
 }
@@ -43,7 +43,7 @@ export function is_$ref(maybe: unknown): maybe is (
 		? local_ref<typeof maybe>
 		: never
 ) {
-	return is_string(maybe) && maybe.startsWith('#/definitions/');
+	return is_string(maybe) && maybe.startsWith('#/$defs/');
 }
 
 export function $ref_in_array(

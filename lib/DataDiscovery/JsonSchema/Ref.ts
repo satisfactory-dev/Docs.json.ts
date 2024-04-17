@@ -36,7 +36,7 @@ export class Ref extends ConverterMatchesSchema<
 			required: ['$ref'],
 			additionalProperties: false,
 			properties: {
-				$ref: {type: 'string', pattern: '^#/definitions/'},
+				$ref: {type: 'string', pattern: '^#/\\$defs/'},
 			},
 		});
 		this.discovery = discovery;
@@ -133,7 +133,7 @@ export class Ref extends ConverterMatchesSchema<
 		if (!(schema.$ref in this.cache)) {
 			while (this.can_convert_schema(checking)) {
 				checking = await this.discovery.docs.definition(
-					checking.$ref.substring(14)
+					checking.$ref.substring(8)
 				);
 			}
 

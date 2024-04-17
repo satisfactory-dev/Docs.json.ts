@@ -86,7 +86,7 @@ export class DataDiscovery
 		super();
 		this.docs = docs;
 		this.literal = literal || new Literal();
-		this.candidates = docs.schema().then(({definitions}) => {
+		this.candidates = docs.schema().then(({$defs}) => {
 			return [
 				new BooleanConverter(docs.ajv),
 				new ArrayConverter(this),
@@ -98,7 +98,7 @@ export class DataDiscovery
 				new UnrealEngineStringConverter(),
 				new ObjectConverter(this),
 				new PatternedObjectConverter(this),
-				new TypedStringConverter(this, definitions),
+				new TypedStringConverter(this, $defs),
 				new OneOfConverter(this),
 				new Ref(this),
 			];

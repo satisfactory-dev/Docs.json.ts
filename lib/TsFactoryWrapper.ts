@@ -491,7 +491,7 @@ function map_lazy_union_item_to_type(item: lazy_union_item): ts.TypeNode {
 	if ('object' === typeof item) {
 		if ('$ref' in item) {
 			return type_reference_node(
-				adjust_class_name(item.$ref.substring(14))
+				adjust_class_name(item.$ref.substring(8))
 			);
 		}
 

@@ -23,7 +23,7 @@ void describe('ExtendsObject', async () => {
 		constructor() {
 			super(
 				[
-					'#/definitions/foo',
+					'#/$defs/foo',
 				],
 				discovery
 			);
@@ -37,7 +37,7 @@ void describe('ExtendsObject', async () => {
 
 	void describe('create_reference_type', () => {
 		void it('behaves', () => {
-			const result = instance.create_reference_type('#/definitions/foo');
+			const result = instance.create_reference_type('#/$defs/foo');
 
 			ts_assert.isTypeReferenceNode(result);
 			ts_assert.isExpectedIdentifier(result.typeName, 'foo__type');

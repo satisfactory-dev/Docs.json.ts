@@ -73,39 +73,39 @@ import {
 type SchemaObjectWithDefinitions<Definitions extends {[key: string]: true}> =
 	& SchemaObject
 	& {
-	definitions: {
+	$defs: {
 		[key in keyof Definitions]: {
 			[key: string]: unknown,
 		}
 	}
 }
 
-function is_schema_with_definitions(
+function is_schema_with_$defs(
 	schema:SchemaObject,
 	discovered_types: {[key: string]: true}
 ): schema is SchemaObjectWithDefinitions<typeof discovered_types> {
 	if (!object_has_property(
 		schema,
-		'definitions',
+		'$defs',
 		value_is_non_array_object
 	)) {
 		throw new Error('foo');
-	} else if (!Object.keys(schema.definitions).every(
+	} else if (!Object.keys(schema.$defs).every(
 		maybe => (
-			maybe.startsWith('#/definitions/')
+			maybe.startsWith('#/$defs/')
 				? maybe
-				: `#/definitions/${maybe}`
+				: `#/$defs/${maybe}`
 		) in discovered_types
 	)) {
 		throw new Error('bar');
 	} else if (!Object.keys(discovered_types).every(maybe => {
 		const ref = (
-			maybe.startsWith('#/definitions/')
-				? maybe.substring(14)
+			maybe.startsWith('#/$defs/')
+				? maybe.substring(8)
 				: maybe
 		);
 
-		return value_is_non_array_object(schema.definitions[ref]);
+		return value_is_non_array_object(schema.$defs[ref]);
 	})) {
 		throw new Error('baz');
 	}
@@ -113,24 +113,24 @@ function is_schema_with_definitions(
 	return (
 		object_has_property(
 			schema,
-			'definitions',
+			'$defs',
 			value_is_non_array_object
 		)
-		&& Object.keys(schema.definitions).every(
+		&& Object.keys(schema.$defs).every(
 			maybe => (
-				maybe.startsWith('#/definitions/')
+				maybe.startsWith('#/$defs/')
 					? maybe
-					: `#/definitions/${maybe}`
+					: `#/$defs/${maybe}`
 			) in discovered_types
 		)
 		&& Object.keys(discovered_types).every(maybe => {
 			const ref = (
-				maybe.startsWith('#/definitions/')
-					? maybe.substring(14)
+				maybe.startsWith('#/$defs/')
+					? maybe.substring(8)
 					: maybe
 			);
 
-			return value_is_non_array_object(schema.definitions[ref]);
+			return value_is_non_array_object(schema.$defs[ref]);
 		})
 	);
 }
@@ -178,7 +178,7 @@ export class TypeDefinitionDiscovery
 		this.candidates.push(...candidates);
 	}
 
-	async discover_type_definitions()
+	async discover_type_$defs()
 	{
 		if (!this.$ref_discovery) {
 			const discovered_types =
@@ -186,7 +186,7 @@ export class TypeDefinitionDiscovery
 
 			if (discovered_types.missed_types.length > 0) {
 				throw new Error(
-					`Missing some type definitions:\n${
+					`Missing some type $defs:\n${
 						discovered_types.missed_types.join(
 							'\n'
 						)
@@ -237,11 +237,11 @@ export class TypeDefinitionDiscovery
 	}
 
 	async* generate_files() {
-		const types = await this.discover_type_definitions();
+		const types = await this.discover_type_$defs();
 
 		for (const entry of Object.entries(types.found_types)) {
 			const [definition, generator] = entry;
-			const $ref = definition.substring(14);
+			const $ref = definition.substring(8);
 			const target_file = guess_filename($ref);
 
 			yield {
@@ -294,9 +294,9 @@ export class TypeDefinitionDiscovery
 		const all_referenced_types = [
 			...discovered_types.discovered_types,
 			...discovered_types.missed_types,
-		].map(e => e.substring(14)).sort((a, b) => a.localeCompare(b));
+		].map(e => e.substring(8)).sort((a, b) => a.localeCompare(b));
 		const supported_types = discovered_types.discovered_types.map(
-			e => e.substring(14)
+			e => e.substring(8)
 		);
 
 		for (const item of all_referenced_types) {
@@ -394,18 +394,18 @@ export class TypeDefinitionDiscovery
 			missing_classes: [],
 		};
 
-		const definitions = Object.keys(
+		const $defs = Object.keys(
 			discovered_types
 		) as local_ref<string>[];
 
-		for (const definition of definitions) {
-			const $ref = definition.substring(14) as (
+		for (const definition of $defs) {
+			const $ref = definition.substring(8) as (
 				& string
-				& keyof typeof schema.definitions
+				& keyof typeof schema.$defs
 			);
 
 			const generator = this.candidates.find(
-				e => e.check(schema.definitions[$ref])
+				e => e.check(schema.$defs[$ref])
 			);
 
 			if (generator) {
@@ -422,7 +422,7 @@ export class TypeDefinitionDiscovery
 		)) {
 			const native_class = compile<{
 				type: 'object',
-				$ref: '#/definitions/NativeClass',
+				$ref: '#/$defs/NativeClass',
 				properties: {
 					Classes: {[key: string]: unknown}[],
 				},
@@ -430,7 +430,7 @@ export class TypeDefinitionDiscovery
 				type: 'object',
 				required: ['type', '$ref', 'properties'],
 				additionalProperties: false,
-				definitions: {
+				$defs: {
 					$ref_base: {
 						type: 'object',
 						required: [
@@ -445,7 +445,7 @@ export class TypeDefinitionDiscovery
 							},
 							$ref: {
 								type: 'string',
-								enum: definitions,
+								enum: $defs,
 							},
 							unevaluatedProperties: {
 								type: 'boolean',
@@ -455,13 +455,13 @@ export class TypeDefinitionDiscovery
 					},
 					$ref: {
 						type: 'object',
-						$ref: '#/definitions/$ref_base',
+						$ref: '#/$defs/$ref_base',
 						unevaluatedProperties: false,
 					},
 				},
 				properties: {
 					type: {type: 'string', const: 'object'},
-					$ref: {type: 'string', const: '#/definitions/NativeClass'},
+					$ref: {type: 'string', const: '#/$defs/NativeClass'},
 					unevaluatedProperties: {type: 'boolean', const: false},
 					properties: {
 						type: 'object',
@@ -490,7 +490,7 @@ export class TypeDefinitionDiscovery
 										minimum: 1,
 									},
 									items: {
-										$ref: '#/definitions/$ref',
+										$ref: '#/$defs/$ref',
 									},
 								},
 							},
@@ -523,7 +523,7 @@ export class TypeDefinitionDiscovery
 											type: 'array',
 											minItems: 1,
 											items: {
-												$ref: '#/definitions/$ref',
+												$ref: '#/$defs/$ref',
 											},
 										}},
 									},
@@ -548,7 +548,7 @@ export class TypeDefinitionDiscovery
 									},
 									items: {
 										type: 'object',
-										$ref: '#/definitions/$ref_base',
+										$ref: '#/$defs/$ref_base',
 										required: [
 											'type',
 											'$ref',
@@ -601,8 +601,8 @@ export class TypeDefinitionDiscovery
 	) : Promise<SchemaObjectWithDefinitions<typeof discovered_types>> {
 		const schema = await this.docs.schema();
 
-		if (!is_schema_with_definitions(schema, discovered_types)) {
-			throw new Error('Schema definitions not as expected!');
+		if (!is_schema_with_$defs(schema, discovered_types)) {
+			throw new Error('Schema $defs not as expected!');
 		}
 
 		return schema;

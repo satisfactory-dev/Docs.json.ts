@@ -75,10 +75,10 @@ export class TypesDiscovery
 				missed_types: Object.keys(
 					object_has_property(
 						schema,
-						'definitions',
+						'$defs',
 						value_is_non_array_object
 					)
-						? schema.definitions
+						? schema.$defs
 						: {}
 				).map(local_ref).filter(
 					maybe => !discovered_types.has(maybe)
@@ -125,14 +125,14 @@ export class TypesDiscovery
 
 		if (!object_has_property(
 			schema,
-			'definitions',
+			'$defs',
 			value_is_non_array_object
 		)) {
-			throw new Error('Schema appears to have no definitions');
+			throw new Error('Schema appears to have no $defs');
 		}
 
 		if (!object_has_property(
-			schema.definitions,
+			schema.$defs,
 			'NativeClass',
 			value_is_non_array_object
 		)) {
@@ -140,8 +140,8 @@ export class TypesDiscovery
 		}
 
 		return compile<DocsDataItem>(docs.ajv, {
-			definitions: schema.definitions,
-			...schema.definitions.NativeClass,
+			$defs: schema.$defs,
+			...schema.$defs.NativeClass,
 		});
 	}
 

@@ -91,7 +91,7 @@ export class ExtendsObject extends GeneratorDoesDiscovery<RawData, Type>
 		$ref: local_ref<string>
 	): TypeReferenceNode {
 		return ts.factory.createTypeReferenceNode(
-			adjust_class_name(`${$ref.substring(14)}__type`)
+			adjust_class_name(`${$ref.substring(8)}__type`)
 		);
 	}
 }

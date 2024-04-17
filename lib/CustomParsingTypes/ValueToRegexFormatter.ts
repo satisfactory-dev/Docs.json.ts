@@ -64,18 +64,18 @@ export class ValueToRegexFormatter
 	private typed_string_enum;
 	private typed_string_pattern_general;
 	private UnrealEngineString;
-	private readonly definitions:{[key: string]: SchemaObject};
+	private readonly $defs:{[key: string]: SchemaObject};
 	private readonly supported_$ref_object:{[key: local_ref<string>]: string};
 
-	constructor(definitions:{[key: string]: SchemaObject}) {
-		this.definitions = definitions;
+	constructor($defs:{[key: string]: SchemaObject}) {
+		this.$defs = $defs;
 		this.UnrealEngineString = UnrealEngineString.ajv_macro_generator(
 			true
 		);
 		this.typed_string_const = typed_string_const;
 		this.typed_string_enum = typed_string_enum;
 		this.typed_string_pattern_general = typed_string_pattern_general;
-		this.supported_$ref_object = this.prepare_$ref_regex(definitions);
+		this.supported_$ref_object = this.prepare_$ref_regex($defs);
 	}
 
 	pattern_from_value(value:unknown): {pattern: string} {
@@ -138,9 +138,9 @@ export class ValueToRegexFormatter
 	}
 
 	private prepare_$ref_regex(
-		definitions:{[key: string]: SchemaObject}
+		$defs:{[key: string]: SchemaObject}
 	): {[key: local_ref<string>]: string} {
-		return Object.fromEntries(Object.entries(definitions)
+		return Object.fromEntries(Object.entries($defs)
 			.filter(maybe => {
 				return this.is_supported_definition(maybe[1])
 			}).map(entry => {
@@ -245,19 +245,19 @@ export class ValueToRegexFormatter
 			return `(?:${value.oneOf.map(e => this.value_to_regex(e)).join('|')})`;
 		} else if (
 			object_only_has_that_property(value, '$ref', is_string)
-			&& value.$ref.startsWith('#/definitions/')
-			&& value.$ref.substring(14) in this.definitions
+			&& value.$ref.startsWith('#/$defs/')
+			&& value.$ref.substring(8) in this.$defs
 			&& object_only_has_that_property(
-				this.definitions[value.$ref.substring(14)],
+				this.$defs[value.$ref.substring(8)],
 				'oneOf'
 			)
 			&& is_non_empty_array(
-				this.definitions[value.$ref.substring(14)].oneOf,
+				this.$defs[value.$ref.substring(8)].oneOf,
 				value_is_non_array_object
 			)
 		) {
-			const oneOf = this.definitions[
-				value.$ref.substring(14)
+			const oneOf = this.$defs[
+				value.$ref.substring(8)
 			].oneOf as {[key: string]: unknown}[];
 
 			return `(?:${
@@ -268,14 +268,14 @@ export class ValueToRegexFormatter
 		} else if (
 			undefined === this.supported_$ref_object
 			&& object_only_has_that_property(value, '$ref', is_string)
-			&& value.$ref.startsWith('#/definitions/')
-			&& value.$ref.substring(14) in this.definitions
+			&& value.$ref.startsWith('#/$defs/')
+			&& value.$ref.substring(8) in this.$defs
 			&& this.is_supported_definition(
-				this.definitions[value.$ref.substring(14)]
+				this.$defs[value.$ref.substring(8)]
 			)
 		) {
 			return this.value_to_regex(
-				this.definitions[value.$ref.substring(14)]
+				this.$defs[value.$ref.substring(8)]
 			);
 		} else if (
 			this.is_Texture2D_basic(value)

@@ -22,7 +22,7 @@ import {
 } from '../Generator';
 import {
 	generate_object_parent_schema,
-	generate_typed_string_definitions,
+	generate_typed_string_$defs,
 	typed_string_inner_array_prefixItems_type,
 	typed_string_inner_array_type,
 	typed_string_inner_object_pattern_type,
@@ -86,8 +86,8 @@ export class typed_string extends GeneratorDoesDiscovery<
 		super(
 			{
 				...generate_object_parent_schema(),
-				definitions: {
-					...generate_typed_string_definitions(supported_refs),
+				$defs: {
+					...generate_typed_string_$defs(supported_refs),
 				},
 			},
 			discovery

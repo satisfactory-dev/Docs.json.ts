@@ -280,7 +280,7 @@ export class UnrealEngineString {
 			keyword: 'UnrealEngineString',
 			type: 'string',
 			metaSchema: {
-				definitions: UnrealEngineString_schema_definitions,
+				$defs: UnrealEngineString_schema_definitions,
 				...UnrealEngineString_schema,
 			},
 			macro: this.ajv_macro_generator(false),

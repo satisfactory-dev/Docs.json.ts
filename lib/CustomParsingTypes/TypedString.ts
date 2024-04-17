@@ -111,7 +111,7 @@ export const pattern_properties_schema = {
 			maxProperties: 1,
 			patternProperties: {
 				[pattern_properties_regex]: {
-					$ref: '#/definitions/typed_string_subtypes',
+					$ref: '#/$defs/typed_string_subtypes',
 				},
 			},
 		},
@@ -119,11 +119,11 @@ export const pattern_properties_schema = {
 };
 
 export function generate_object_parent_schema() {
-	return {$ref: '#/definitions/typed_string_parent_type'};
+	return {$ref: '#/$defs/typed_string_parent_type'};
 }
 
-export function generate_typed_string_definitions(
-	definitions:local_ref<string>[]
+export function generate_typed_string_$defs(
+	$defs:local_ref<string>[]
 ) {
 	return {
 		...UnrealEngineString_schema_definitions,
@@ -136,7 +136,7 @@ export function generate_typed_string_definitions(
 					properties: {
 						$ref: {
 							type: 'string',
-							enum: definitions,
+							enum: $defs,
 						},
 					},
 				},
@@ -144,7 +144,7 @@ export function generate_typed_string_definitions(
 				typed_string_const_schema,
 				typed_string_enum_schema,
 				typed_string_pattern_general_schema_self_testing,
-				{$ref: '#/definitions/typed_string_parent_type'},
+				{$ref: '#/$defs/typed_string_parent_type'},
 			],
 		},
 		typed_string_parent_type: {
@@ -156,10 +156,10 @@ export function generate_typed_string_definitions(
 				minLength: {type: 'number', const: 1},
 				typed_string: {
 					oneOf: [
-						{$ref: '#/definitions/typed_string_object_type'},
-						{$ref: `#/definitions/typed_string_object_pattern_type`},
-						{$ref: '#/definitions/typed_string_array_type'},
-						{$ref: '#/definitions/typed_string_prefixItems_type'},
+						{$ref: '#/$defs/typed_string_object_type'},
+						{$ref: `#/$defs/typed_string_object_pattern_type`},
+						{$ref: '#/$defs/typed_string_array_type'},
+						{$ref: '#/$defs/typed_string_prefixItems_type'},
 					],
 				},
 			},
@@ -184,7 +184,7 @@ export function generate_typed_string_definitions(
 					additionalProperties: false,
 					patternProperties: {
 						[property_regex]: {
-							$ref: '#/definitions/typed_string_subtypes',
+							$ref: '#/$defs/typed_string_subtypes',
 						},
 					},
 				},
@@ -209,7 +209,7 @@ export function generate_typed_string_definitions(
 				},
 				items: {
 					oneOf: [
-						{$ref: '#/definitions/typed_string_subtypes'},
+						{$ref: '#/$defs/typed_string_subtypes'},
 						{
 							type: 'object',
 							required: ['oneOf'],
@@ -220,12 +220,12 @@ export function generate_typed_string_definitions(
 									minItems: 1,
 									uniqueItems: true,
 									items: {
-										$ref: `#/definitions/typed_string_subtypes`,
+										$ref: `#/$defs/typed_string_subtypes`,
 									},
 								},
 							},
 						},
-						{$ref: '#/definitions/typed_string_prefixItems_type'},
+						{$ref: '#/$defs/typed_string_prefixItems_type'},
 					],
 				},
 			},
@@ -251,7 +251,7 @@ export function generate_typed_string_definitions(
 				prefixItems: {
 					type: 'array',
 					minItems: 1,
-					items: {$ref: '#/definitions/typed_string_subtypes'},
+					items: {$ref: '#/$defs/typed_string_subtypes'},
 				},
 			},
 		},
@@ -267,29 +267,29 @@ export class TypedString
 	}
 
 	configure_ajv(
-		definitions:{[key: string]: SchemaObject},
+		$defs:{[key: string]: SchemaObject},
 		ajv:Ajv
 	) {
 		if (this.already_configured.has(ajv)) {
 			return;
 		}
 
-		const local_refs = Object.keys(definitions).map(local_ref);
+		const local_refs = Object.keys($defs).map(local_ref);
 
 		this.already_configured.add(ajv);
 
 		const meta_schema = {
-			definitions: generate_typed_string_definitions(local_refs),
+			$defs: generate_typed_string_$defs(local_refs),
 			oneOf: [
-				{$ref: '#/definitions/typed_string_object_type'},
-				{$ref: '#/definitions/typed_string_object_pattern_type'},
-				{$ref: '#/definitions/typed_string_array_type'},
-				{$ref: '#/definitions/typed_string_prefixItems_type'},
+				{$ref: '#/$defs/typed_string_object_type'},
+				{$ref: '#/$defs/typed_string_object_pattern_type'},
+				{$ref: '#/$defs/typed_string_array_type'},
+				{$ref: '#/$defs/typed_string_prefixItems_type'},
 			],
 		};
 
 		const formatter = new ValueToRegexFormatter(
-			definitions
+			$defs
 		);
 
 		ajv.addKeyword({

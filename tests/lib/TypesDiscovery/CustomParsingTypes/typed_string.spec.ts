@@ -17,7 +17,7 @@ void describe('typed_string', () => {
 			[{}, []],
 			[
 				{
-					definitions: {
+					$defs: {
 						foo: {type: 'string', const: 'foo'},
 					},
 				},
@@ -25,7 +25,7 @@ void describe('typed_string', () => {
 			],
 			[
 				{
-					definitions: {
+					$defs: {
 						foo: {type: 'string', minLength: 1},
 					},
 				},
@@ -33,7 +33,7 @@ void describe('typed_string', () => {
 			],
 			[
 				{
-					definitions: {
+					$defs: {
 						foo: {
 							type: 'string',
 							minLength: 1,
@@ -45,7 +45,7 @@ void describe('typed_string', () => {
 			],
 			[
 				{
-					definitions: {
+					$defs: {
 						foo: {
 							type: 'string',
 							minLength: 1,
@@ -59,7 +59,7 @@ void describe('typed_string', () => {
 			],
 			[
 				{
-					definitions: {
+					$defs: {
 						foo: {
 							type: 'string',
 							minLength: 1,
@@ -75,7 +75,7 @@ void describe('typed_string', () => {
 			],
 			[
 				{
-					definitions: {
+					$defs: {
 						foo: {
 							type: 'string',
 							minLength: 1,
@@ -88,11 +88,11 @@ void describe('typed_string', () => {
 						},
 					},
 				},
-				['#/definitions/foo'],
+				['#/$defs/foo'],
 			],
 			[
 				{
-					definitions: {
+					$defs: {
 						foo: {
 							type: 'string',
 							minLength: 1,
@@ -107,7 +107,7 @@ void describe('typed_string', () => {
 			],
 			[
 				{
-					definitions: {
+					$defs: {
 						foo: {
 							type: 'string',
 							minLength: 1,
@@ -119,11 +119,11 @@ void describe('typed_string', () => {
 						},
 					},
 				},
-				['#/definitions/foo'],
+				['#/$defs/foo'],
 			],
 			[
 				{
-					definitions: {
+					$defs: {
 						foo: {
 							type: 'string',
 							minLength: 1,
@@ -136,7 +136,7 @@ void describe('typed_string', () => {
 						},
 					},
 				},
-				['#/definitions/foo'],
+				['#/$defs/foo'],
 			],
 		];
 

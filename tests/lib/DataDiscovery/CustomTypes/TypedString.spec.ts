@@ -26,7 +26,7 @@ void describe('TypedStringConverter', async () => {
 	const discovery = new DataDiscovery(docs);
 	const instance = new TypedStringConverter(
 		discovery,
-		(await docs.schema()).definitions,
+		(await docs.schema()).$defs,
 	);
 	const object_schema:typed_string_parent_type = {
 		type: 'string',

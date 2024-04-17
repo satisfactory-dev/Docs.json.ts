@@ -77,12 +77,12 @@ const functions_to_call:{
 for (const describing of Object.entries(spec)) {
 	const [
 		function_name,
-		definitions,
+		$defs,
 	] = describing as [keyof typeof spec, definitions];
 	const function_to_call = functions_to_call[function_name];
 
 	void describe(function_name, () => {
-		for (const expectations of Object.entries(definitions)) {
+		for (const expectations of Object.entries($defs)) {
 			const [expectation, assertions] = expectations;
 
 			void it(expectation, () => {

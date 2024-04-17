@@ -188,7 +188,7 @@ export class TypeDefinitionWriter
 		}
 
 		performance.mark(`${this.constructor.name}.write() start`);
-		const types = await discovery.discover_type_definitions();
+		const types = await discovery.discover_type_$defs();
 		const schema = await this.docs.schema();
 
 		if (
@@ -208,24 +208,24 @@ export class TypeDefinitionWriter
 
 		if (!object_has_property(
 			schema,
-			'definitions',
+			'$defs',
 			value_is_non_array_object
 		)) {
-			throw new Error('Schema appears to have no definitions');
+			throw new Error('Schema appears to have no $defs');
 		}
 
 		const validations = types.found_classes.map(
 			e => compile<DocsDataItem>(
 				this.docs.ajv,
 				{
-					definitions: schema.definitions,
+					$defs: schema.$defs,
 					...e,
 				}
 			)
 		);
 
 		if (!object_has_property(
-			schema.definitions,
+			schema.$defs,
 			'NativeClass',
 			value_is_non_array_object
 		)) {

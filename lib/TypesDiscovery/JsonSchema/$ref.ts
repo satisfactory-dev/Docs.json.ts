@@ -14,18 +14,18 @@ import {
 
 export class $ref extends CandidatesDiscovery
 {
-	private readonly definitions:{[key: string]: true};
+	private readonly $defs:{[key: string]: true};
 
 	constructor(schema:SchemaObject) {
 		super(schema);
-		this.definitions =
+		this.$defs =
 			object_has_property(
 				schema,
-				'definitions',
+				'$defs',
 				value_is_non_array_object
 			)
 				? Object.fromEntries(
-					Object.keys(schema.definitions).map(e => [e, true])
+					Object.keys(schema.$defs).map(e => [e, true])
 				)
 				: {};
 	}
@@ -35,18 +35,18 @@ export class $ref extends CandidatesDiscovery
 		discovered_types: Set<string>,
 	): [unknown, ...unknown[]] | undefined {
 
-		const definitions = this.definitions;
+		const $defs = this.$defs;
 
 		function has_definition_$ref(
 			maybe:unknown
 		) : maybe is (
 			& {[key: string]: unknown}
-			& {$ref: Exclude<(keyof typeof definitions), number>}
+			& {$ref: Exclude<(keyof typeof $defs), number>}
 			) {
 			return (
 				object_has_property(maybe, '$ref', is_string)
-				&& maybe.$ref.startsWith('#/definitions/')
-				&& maybe.$ref.substring(14) in definitions
+				&& maybe.$ref.startsWith('#/$defs/')
+				&& maybe.$ref.substring(8) in $defs
 			);
 		}
 
@@ -55,15 +55,15 @@ export class $ref extends CandidatesDiscovery
 		): schema is (
 			& SchemaObject
 			& {
-				definitions: (
+				$defs: (
 					& {[key: string]: unknown}
 					& {[k in typeof maybe]: {[key: string]: unknown}}
 				)
 			}
 		) {
 			return (
-				maybe.startsWith('#/definitions/')
-				&& maybe.substring(14) in schema.definitions
+				maybe.startsWith('#/$defs/')
+				&& maybe.substring(8) in schema.$defs
 			);
 		}
 
@@ -73,7 +73,7 @@ export class $ref extends CandidatesDiscovery
 			&& !discovered_types.has(current.$ref)
 		) {
 			discovered_types.add(current.$ref);
-			return [this.schema.definitions[current.$ref.substring(14)]];
+			return [this.schema.$defs[current.$ref.substring(8)]];
 		}
 
 		return undefined;

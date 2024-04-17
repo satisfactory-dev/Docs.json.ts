@@ -24,11 +24,11 @@ export class UnrealEngineString extends CandidatesDiscovery
 		if (
 			object_has_property(
 				current,
-				'definitions',
+				'$defs',
 				value_is_non_array_object
 			)
 		) {
-			for (const entry of Object.entries(current.definitions)) {
+			for (const entry of Object.entries(current.$defs)) {
 				const [property, value] = entry;
 
 				if (is_UnrealEngineString_parent(value)) {
