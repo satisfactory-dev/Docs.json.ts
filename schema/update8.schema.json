@@ -4060,7 +4060,9 @@
 				"mWaterpumpTimeline__Direction_B8FA6F944E717E3B7A286E84901F620E",
 				"HasLostSignificance",
 				"mMinimumDepthForPlacement",
-				"mDepthTraceOriginOffset"
+				"mDepthTraceOriginOffset",
+				"mAllowedResourceForms",
+				"mAllowedResources"
 			],
 			"properties": {
 				"mWaterpumpTimeline_RTPC_B8FA6F944E717E3B7A286E84901F620E": {
@@ -4170,6 +4172,11 @@
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--extractor-base",
 			"unevaluatedProperties": false,
+			"required": [
+				"mAllowedResourceForms",
+				"mAllowedResources",
+				"mExtractorTypeName"
+			],
 			"properties": {
 				"mAllowedResourceForms": {
 					"type": "string",
@@ -4204,7 +4211,7 @@
 		"FGBuildableResourceExtractor--miner--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--extractor-base",
-			"required": ["mParticleMap"],
+			"required": ["mParticleMap", "mAllowedResources"],
 			"properties": {
 				"mParticleMap": {
 					"type": "string",
@@ -4273,6 +4280,10 @@
 				"mExtractorTypeName": {
 					"type": "string",
 					"const": "Miner"
+				},
+				"mAllowedResources": {
+					"type": "string",
+					"const": ""
 				}
 			}
 		},
@@ -4629,6 +4640,11 @@
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--extractor-base",
 			"unevaluatedProperties": false,
+			"required": [
+				"mAllowedResourceForms",
+				"mExtractorTypeName",
+				"mAllowedResources"
+			],
 			"properties": {
 				"mAllowedResourceForms": {
 					"type": "string",
@@ -4661,7 +4677,8 @@
 				"mSatelliteActivationComplete",
 				"mSatelliteNodeCount",
 				"mConnectedExtractorCount",
-				"mDefaultPotentialExtractionPerMinute"
+				"mDefaultPotentialExtractionPerMinute",
+				"mAllowedResources"
 			],
 			"properties": {
 				"mExtractorTypeName": {
