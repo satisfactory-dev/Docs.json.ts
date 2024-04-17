@@ -4667,6 +4667,18 @@
 				},
 				"mExtractorTypeName": {
 					"$ref": "#/$defs/None"
+				},
+				"mAllowedResources": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"minItems": 1,
+						"items": {
+							"type": "string",
+							"minLength": 1,
+							"UnrealEngineString": true
+						}
+					}
 				}
 			}
 		},
@@ -4711,6 +4723,18 @@
 				},
 				"mDefaultPotentialExtractionPerMinute": {
 					"$ref": "#/$defs/decimal-string"
+				},
+				"mAllowedResources": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"minItems": 1,
+						"items": {
+							"type": "string",
+							"minLength": 1,
+							"UnrealEngineString": true
+						}
+					}
 				}
 			}
 		},
