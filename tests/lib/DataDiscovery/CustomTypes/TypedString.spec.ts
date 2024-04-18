@@ -310,7 +310,7 @@ void describe('TypedStringConverter', async () => {
 				const [schema, raw_data, expecting] = entry;
 				const promise = instance.convert(schema, raw_data);
 
-					await assert.doesNotReject(promise);
+				await assert.doesNotReject(promise);
 				assert.deepEqual(
 					(await promise).expression,
 					await discovery.literal.value_literal(expecting)
