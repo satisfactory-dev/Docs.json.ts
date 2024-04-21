@@ -1063,7 +1063,19 @@
 				},
 				"mBatteryClasses": {
 					"type": "string",
-					"const": "(/Script/Engine.BlueprintGeneratedClass'\"/Game/FactoryGame/Resource/Parts/Battery/Desc_Battery.Desc_Battery_C\"')"
+					"minLength": 1,
+					"typed_string": {
+						"minItems": 1,
+						"items": {
+							"type": "string",
+							"minLength": 1,
+							"UnrealEngineString": {
+								"right": {
+									"starts_with": "/Game/FactoryGame/Resource/Parts/Battery/"
+								}
+							}
+						}
+					}
 				},
 				"mDroneDockingQueue": {
 					"type": "string",
@@ -1300,7 +1312,18 @@
 				},
 				"mCurrentRecordData": {
 					"type": "string",
-					"const": "(IconID=-1,Color=(R=0.000000,G=0.000000,B=0.000000,A=1.000000))"
+					"minLength": 1,
+					"typed_string": {
+						"required": ["IconID", "Color"],
+						"properties": {
+							"IconID": {
+								"$ref": "#/$defs/integer-string--signed"
+							},
+							"Color": {
+								"$ref": "#/$defs/color-decimal"
+							}
+						}
+					}
 				},
 				"mIsDismantlingAll": {
 					"$ref": "#/$defs/boolean"
@@ -2621,8 +2644,67 @@
 					]
 				},
 				"mComponentNameToFirstPersonMaterials": {
-					"type": "string",
-					"minLength": 1
+					"oneOf": [
+						{"$ref": "#/$defs/empty-object"},
+						{
+							"type": "string",
+							"minLength": 1,
+							"typed_string": {
+								"minItems": 1,
+								"items": false,
+								"prefixItems": [
+									{
+										"type": "string",
+										"enum": [
+											"1P_PortableMiner",
+											"Bacon_skl",
+											"Chainsaw_skl",
+											"NobeliskDetonator_Skl_01",
+											"RebarGun_skl",
+											"Rifle",
+											"ScannerSkeletalMesh",
+											"ShockShank_skl",
+											"SK_1pHoverPack_01",
+											"SK_Medkit",
+											"SK_JumpingStiltLeft_02",
+											"SkeletalMesh",
+											"SM_Gasmask_01",
+											"SM_GolfcartEquipment_01",
+											"StunSpear_skl"
+										]
+									},
+									{
+										"type": "string",
+										"minLength": 1,
+										"typed_string": {
+											"required": [
+												"FirstPersonMaterials"
+											],
+											"properties": {
+												"FirstPersonMaterials": {
+													"type": "string",
+													"minLength": 1,
+													"typed_string": {
+														"minItems": 1,
+														"items": {
+															"type": "string",
+															"minLength": 1,
+															"UnrealEngineString": {
+																"left": "/Script/Engine.MaterialInstanceConstant",
+																"right": {
+																	"starts_with": "/Game/FactoryGame/"
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								]
+							}
+						}
+					]
 				},
 				"mNeedsDefaultEquipmentMappingContext": {
 					"$ref": "#/$defs/boolean"
@@ -5241,8 +5323,7 @@
 					"$ref": "#/$defs/decimal-string"
 				},
 				"mDockingVehicleStatistics": {
-					"type": "string",
-					"const": "()"
+					"$ref": "#/$defs/empty-object"
 				}
 			}
 		},

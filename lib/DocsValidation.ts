@@ -49,9 +49,11 @@ export function string_to_object<T extends {[key: string]: unknown}>(
 		return false;
 	}
 
-	const match = /^\([^=]+=[^,]+(,[^=]+=(\([^)]+)\)|,[^=]+=[^,]+)*\)$/.test(
-		data
-	);
+	const match =
+		/^\([^=]+=([^,]+|\([^)]+\))(,[^=]+=(\([^)]+)\)|,[^=]+=[^,]+)*\)$/
+			.test(
+				data
+			);
 
 	if (!match) {
 		return false;
