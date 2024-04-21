@@ -558,7 +558,7 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 						{
 							entry,
 							type,
-							converter,
+							converter: converter.constructor.name,
 						},
 						'Cannot convert entry!'
 					);
