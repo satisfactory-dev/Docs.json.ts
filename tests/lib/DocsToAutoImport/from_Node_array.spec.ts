@@ -107,4 +107,60 @@ void describe('EntityName_array_from_Node_array', () => {
 			[]
 		);
 	})
+
+	void it('behaves with ArrowFunction', () => {
+		assert.deepEqual(
+			EntityName_array_from_Node_array([
+				ts.factory.createArrowFunction(
+					undefined,
+					undefined,
+					[],
+					undefined,
+					undefined,
+					ts.factory.createBlock([])
+				),
+			]),
+			[]
+		);
+	})
+
+	void it ('behaves with TypeParameterDeclaration', () => {
+		assert.deepEqual(
+			EntityName_array_from_Node_array([
+				ts.factory.createTypeParameterDeclaration(
+					undefined,
+					'foo',
+					undefined,
+					undefined
+				),
+			]),
+			[
+				ts.factory.createIdentifier('foo'),
+			]
+		)
+	})
+
+	void it('behaves with IfStatement', () => {
+		assert.deepEqual(
+			EntityName_array_from_Node_array([
+				ts.factory.createIfStatement(
+					ts.factory.createTrue(),
+					ts.factory.createReturnStatement()
+				),
+			]),
+			[]
+		);
+	})
+
+	void it('behaves with VariableStatement', () => {
+		assert.deepEqual(
+			EntityName_array_from_Node_array([
+				ts.factory.createVariableStatement(
+					undefined,
+					[]
+				),
+			]),
+			[]
+		)
+	})
 })
