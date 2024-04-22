@@ -42,29 +42,9 @@
     -   refer to JetBrains' own documentation for adding `.dic` files to the spell checking.
 -   `eslint` can result in the IDE slowing to a crawl if the `generated-types` folder is not excluded during development.
 
-#### Remote NodeJs Interpreter
-
--   Currently based from `node:21-alpine`
--   Specifying the user is recommended
--   If your IDE does not allow you to pass arguments to plain docker images (looking at you, JetBrains), you will likely need to use the [docker-compose.yml](docker-compose.yml) services
-
-##### ts-node
-
--   Refer to [Makefile](Makefile) for `DOCKER_PREFIX`
-
-##### node
-
--   Refer to [Makefile](Makefile) for `DOCKER_PREFIX_NO_LOADER`
-
 ## In a separate project
 
-Until such time as this project is published as an npm package,
-it is recommended to use it as a git submodule due to ts-node having
-issues with importing .ts files from node_modules
-(so the project can't be installed direct from git), i.e.:
-
-1. In your new project, run `git submodule add
-https://github.com/Satisfactory-Clips-Archive/Docs.json.ts.git`
+1. run `npm install --save @satisfactory-clips-archive/docs.json.ts`
 1. refer to [package.json](package.json) to install packages that won't have
    been installed due to circumventing the `npm install` approach.
 1. refer to [discover-types.ts](discover-types.ts) for how to generate the
