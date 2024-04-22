@@ -2,6 +2,7 @@
   "type": "module",
   "name": "@satisfactory-clips-archive/docs.json.ts",
   "description": "TypeScript mappings for the Docs.json file that ships with Satisfactory",
+  "license": "Apache-2.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Satisfactory-Clips-Archive/Docs.json.ts.git"
