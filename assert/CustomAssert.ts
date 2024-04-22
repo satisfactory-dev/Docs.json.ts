@@ -1,4 +1,4 @@
-import assert from 'node:assert/strict';
+import assert from 'assert';
 import {
 	ExpressionResult,
 } from '../lib/DataDiscovery/Generator';
@@ -15,7 +15,7 @@ export function value_matches_ExpressionResult(
 	expression_result: ExpressionResult,
 	message?:string|Error
 ): asserts maybe is typeof expression_result.expression {
-	assert.deepEqual(maybe, expression_result.expression, message);
+	assert.deepStrictEqual(maybe, expression_result.expression, message);
 }
 
 export function array_has_size(
@@ -23,7 +23,7 @@ export function array_has_size(
 	size:number,
 	message?:string|Error
 ): asserts maybe is ((unknown[]) & {length: typeof size}) {
-	assert.equal(maybe.length, size, message);
+	assert.strictEqual(maybe.length, size, message);
 }
 
 export function is_instanceof<T>(
@@ -33,14 +33,14 @@ export function is_instanceof<T>(
 	},
 	message?:string|Error
 ): asserts maybe is T & typeof of {
-	assert.equal(maybe instanceof of, true, message);
+	assert.strictEqual(maybe instanceof of, true, message);
 }
 
 export function not_undefined<T = unknown>(
 	maybe:T|undefined,
 	message?:string|Error
 ) : asserts maybe is Exclude<typeof maybe, undefined> {
-	assert.equal(undefined !== maybe, true, message);
+	assert.strictEqual(undefined !== maybe, true, message);
 }
 
 export function object_has_property(
@@ -51,9 +51,9 @@ export function object_has_property(
 	& {[key: string]: unknown}
 	& {[key in typeof property]: unknown}
 ) {
-	assert.equal(typeof maybe, 'object', message);
-	assert.equal(maybe instanceof Array, false, message);
-	assert.equal(
+	assert.strictEqual(typeof maybe, 'object', message);
+	assert.strictEqual(maybe instanceof Array, false, message);
+	assert.strictEqual(
 		property in (maybe as {[key: string]: unknown}),
 		true,
 		message
@@ -97,7 +97,7 @@ export async function rejects_partial_match(
 
 	await assert.rejects(maybe);
 	await maybe.catch((err) => {failure = err});
-	assert.equal(
+	assert.strictEqual(
 		value_is_non_array_object(failure),
 		true,
 		message
@@ -109,5 +109,5 @@ export async function rejects_partial_match(
 		message
 	);
 
-	assert.deepEqual(partial_match, partial_error, message);
+	assert.deepStrictEqual(partial_match, partial_error, message);
 }
