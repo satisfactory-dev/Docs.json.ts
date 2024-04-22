@@ -23,10 +23,6 @@ jobs:
     coverage:
         needs: basic-checks
         runs-on: ubuntu-latest
-        strategy:
-            matrix:
-                node-version: [21.x]
-                # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
         steps:
             - uses: actions/checkout@v4
             - name: Use Node.js 21.x
