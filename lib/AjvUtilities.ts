@@ -5,15 +5,21 @@ import Ajv, {
 import {
 	NoMatchError,
 } from './Exceptions';
-import {
-	writeFileSync,
-} from 'node:fs';
-
-const __dirname = import.meta.dirname;
 
 const cache = new WeakMap<SchemaObject, ValidateFunction>();
 
 const duplicate_compile_check: {[key: string]: ValidateFunction} = {};
+
+export class FailedToCompileSchema extends NoMatchError
+{
+	constructor(
+		schema:SchemaObject,
+		err:unknown,
+		message = 'Failed to compile schema'
+	) {
+		super({err, schema}, message);
+	}
+}
 
 export function compile<T>(
 	ajv:Ajv,
@@ -45,18 +51,6 @@ export function compile<T>(
 
 		return result;
 	} catch (err) {
-		writeFileSync(
-			`${__dirname}/../failed-to-compile.json`,
-			`${JSON.stringify(
-				{
-					schema,
-					err,
-					message: err instanceof Error ? err.message : undefined,
-				},
-				null,
-				'\t'
-			)}\n`
-		);
-		throw new NoMatchError({err, schema}, 'Failed to compile schema');
+		throw new FailedToCompileSchema(schema, err);
 	}
 }
