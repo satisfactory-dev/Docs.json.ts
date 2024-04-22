@@ -1,8 +1,10 @@
-/tests/
 types-progress.md
-/**/*.js
-/**/*.map
-/*.ts
+/**/*.ts
+/**/*.js.map
+!/**/*.d.ts
+/tests/**/*.*
+/*.js
+/*.d.ts
 /discover-types.perf.json
 /discovery-types.failure.json
 /failed-to-compile.json
@@ -24,5 +26,3 @@ types-progress.md
 /.prettierignore
 /.prettierrc
 /tsconfig*.json
-!/tsconfig.json
-!/tsconfig.app.json

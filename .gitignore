@@ -13,8 +13,10 @@
 /.eslintcache
 /*.js
 /*.js.map
+/*.d.ts
 /discovery-types.failure.json
 /failed-to-compile.json
 /coverage/
 /discover-types.perf.json
 /.idea/
+/**/*.d.ts
