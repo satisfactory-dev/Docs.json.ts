@@ -76,7 +76,9 @@ void describe('EntityName_array_from_Node_array', () => {
 
 	void it('behaves with ArrayTypeNode', () => {
 		const result = EntityName_array_from_Node_array([
+			ts.factory.createArrayTypeNode(
 			ts.factory.createTypeReferenceNode('foo'),
+			),
 		]);
 
 		assert.deepEqual(result, [
