@@ -83,4 +83,28 @@ void describe('EntityName_array_from_Node_array', () => {
 			ts.factory.createIdentifier('foo'),
 		]);
 	})
+
+	void it('behaves with TypeLiteralNode', () => {
+		assert.deepEqual(
+			EntityName_array_from_Node_array([
+				ts.factory.createTypeLiteralNode(undefined),
+			]),
+			[]
+		);
+		assert.deepEqual(
+			EntityName_array_from_Node_array([
+				ts.factory.createTypeLiteralNode([
+					ts.factory.createIndexSignature(
+						undefined,
+						[
+						],
+						ts.factory.createKeywordTypeNode(
+							ts.SyntaxKind.StringKeyword
+						)
+					),
+				]),
+			]),
+			[]
+		);
+	})
 })
