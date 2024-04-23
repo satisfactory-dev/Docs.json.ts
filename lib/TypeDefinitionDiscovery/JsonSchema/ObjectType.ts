@@ -22,9 +22,9 @@ export type RawData = {
 	additionalProperties: false,
 	properties: {[key: string]: unknown},
 	not?: {
-		anyOf: {[key: string]: unknown}
+		anyOf: {[key: string]: unknown}[]
 	}|{
-		oneOf: {[key: string]: unknown}
+		oneOf: {[key: string]: unknown}[]
 	}
 };
 
