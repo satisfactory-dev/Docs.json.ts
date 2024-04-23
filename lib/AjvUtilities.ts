@@ -54,3 +54,37 @@ export function compile<T>(
 		throw new FailedToCompileSchema(schema, err);
 	}
 }
+
+export function esmify(code:string): string
+{
+	const replacements:{[key: string]: [string, string]} = {
+		'require("ajv/dist/runtime/equal").default': [
+			'fast_deep_equal',
+			`import fast_deep_equal from 'fast-deep-equal';`,
+		],
+		'require("ajv/dist/runtime/ucs2length").default': [
+			'ucs2length.default',
+			`import ucs2length from 'ajv/dist/runtime/ucs2length';`,
+		],
+	};
+
+	const import_these:string[] = [];
+
+	for (const entry of Object.entries(replacements)) {
+		const [look_for, [replace_with, add_to_import]] = entry;
+
+		if (code.includes(look_for)) {
+			code = code.replace(look_for, replace_with);
+			import_these.push(add_to_import);
+		}
+	}
+
+	if (import_these.length) {
+		code = code.replace(/^"use strict";/, [
+			'"use strict";',
+			...import_these,
+		].join(''));
+	}
+
+	return code;
+}

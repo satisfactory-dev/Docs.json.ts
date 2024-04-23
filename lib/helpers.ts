@@ -15,11 +15,13 @@ import {
 const __dirname = __dirname_from_meta(import.meta);
 const ajv = new Ajv({
 	verbose: true,
+	logger: false,
+	allErrors: true,
 	code: {
 		source: true,
-		es5: false,
 		esm: true,
-		optimize: true,
+		lines: true,
+		optimize: 2,
 	},
 });
 configure_ajv(ajv);

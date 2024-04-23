@@ -8,6 +8,7 @@ import Ajv, {
 } from 'ajv/dist/2020';
 import {
 	compile,
+	esmify,
 } from '../../lib/AjvUtilities';
 
 void describe('AjvUtilities', () => {
@@ -70,4 +71,46 @@ void describe('AjvUtilities', () => {
 			);
 		}
 	})
+
+	void describe('esmify', () => {
+		const data_sets:[string, string][] = [
+			['', ''],
+			[
+				'require("ajv/dist/runtime/equal").default',
+				// no import because there's no "use strict;" header
+				'fast_deep_equal',
+			],
+			[
+				'"use strict";',
+				// nothing to modify
+				'"use strict";',
+			],
+			[
+				'"use strict";require("ajv/dist/runtime/equal").default',
+				[
+					'"use strict";',
+					'import fast_deep_equal from \'fast-deep-equal\';',
+					'fast_deep_equal',
+				].join(''),
+			],
+		];
+
+		for (const data_set of data_sets) {
+			const [input, expectation] = data_set;
+
+			void it(
+				`esmify(${
+					JSON.stringify(input)
+				}) returns ${
+					JSON.stringify(expectation)
+				}`,
+				() => {
+					assert.equal(
+						esmify(input),
+						expectation
+					)
+				}
+			)
+		}
+	});
 })

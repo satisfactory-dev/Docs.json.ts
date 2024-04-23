@@ -49,6 +49,7 @@ import {
 } from './CustomParsingTypes/TypedString';
 import {
 	compile,
+	esmify,
 } from './AjvUtilities';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -337,18 +338,10 @@ export class DocsTsGenerator {
 					DocsTsGenerator.PERF_VALIDATION_PRECOMPILE
 				);
 
-				await writeFile(filepath, standalone(
+				await writeFile(filepath, esmify(standalone(
 					this.ajv,
 					compile(this.ajv, schema)
-				).replace(/^"use strict";/, [
-					'"use strict";',
-					/*
-					 * adapted from solution on stackoverflow
-					 * https://stackoverflow.com/a/77047149/23528553
-					 */
-					'import { createRequire } from "module";',
-					'const require = createRequire(import.meta.url);',
-				].join('')));
+				)));
 				performance.measure(
 					'ajv pre-compilation done',
 					DocsTsGenerator.PERF_VALIDATION_PRECOMPILE,
