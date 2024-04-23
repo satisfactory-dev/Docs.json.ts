@@ -301,51 +301,9 @@
 				}
 			}
 		},
-		"mStackSize": {
-			"type": "string",
-			"enum": [
-				"SS_ONE",
-				"SS_FLUID",
-				"SS_SMALL",
-				"SS_MEDIUM",
-				"SS_BIG",
-				"SS_HUGE"
-			]
-		},
 		"mForm": {
 			"type": "string",
 			"enum": ["RF_SOLID", "RF_LIQUID", "RF_GAS", "RF_INVALID"]
-		},
-		"mCrosshairMaterial": {
-			"oneOf": [
-				{
-					"type": "string",
-					"enum": ["", "None"]
-				},
-				{
-					"type": "string",
-					"string_starts_with": "/Game/FactoryGame/Interface/UI/Material/Crosshairs/"
-				}
-			]
-		},
-		"mClassToScanFor": {
-			"oneOf": [
-				{
-					"$ref": "#/$defs/None"
-				},
-				{
-					"type": "string",
-					"string_starts_with": "/Game/FactoryGame/Resource/Environment/"
-				},
-				{
-					"type": "string",
-					"string_starts_with": "/Game/FactoryGame/World/Benefit/"
-				}
-			]
-		},
-		"mScannableType": {
-			"type": "string",
-			"enum": ["RTWOT_Default", "RTWOT_WeakSignal", "RTWOT_Flora"]
 		},
 		"ItemClass": {
 			"type": "string",
@@ -426,7 +384,15 @@
 					"type": "string"
 				},
 				"mStackSize": {
-					"$ref": "#/$defs/mStackSize"
+					"type": "string",
+					"enum": [
+						"SS_ONE",
+						"SS_FLUID",
+						"SS_SMALL",
+						"SS_MEDIUM",
+						"SS_BIG",
+						"SS_HUGE"
+					]
 				},
 				"mCanBeDiscarded": {
 					"$ref": "#/$defs/boolean"
@@ -447,7 +413,16 @@
 					"$ref": "#/$defs/Texture2D"
 				},
 				"mCrosshairMaterial": {
-					"$ref": "#/$defs/mCrosshairMaterial"
+					"oneOf": [
+						{
+							"type": "string",
+							"enum": ["", "None"]
+						},
+						{
+							"type": "string",
+							"string_starts_with": "/Game/FactoryGame/Interface/UI/Material/Crosshairs/"
+						}
+					]
 				},
 				"mDescriptorStatBars": {
 					"oneOf": [
@@ -523,10 +498,27 @@
 					]
 				},
 				"mClassToScanFor": {
-					"$ref": "#/$defs/mClassToScanFor"
+					"oneOf": [
+						{
+							"$ref": "#/$defs/None"
+						},
+						{
+							"type": "string",
+							"string_starts_with": "/Game/FactoryGame/Resource/Environment/"
+						},
+						{
+							"type": "string",
+							"string_starts_with": "/Game/FactoryGame/World/Benefit/"
+						}
+					]
 				},
 				"mScannableType": {
-					"$ref": "#/$defs/mScannableType"
+					"type": "string",
+					"enum": [
+						"RTWOT_Default",
+						"RTWOT_WeakSignal",
+						"RTWOT_Flora"
+					]
 				},
 				"mShouldOverrideScannerDisplayText": {
 					"$ref": "#/$defs/boolean"
@@ -4852,10 +4844,6 @@
 				}
 			}
 		},
-		"mFreightCargoType": {
-			"type": "string",
-			"enum": ["FCT_Standard", "FCT_Liquid"]
-		},
 		"mPlatformDockingStatus": {
 			"type": "string",
 			"const": "ETPDS_None"
@@ -4982,7 +4970,8 @@
 					"$ref": "#/$defs/empty-object"
 				},
 				"mFreightCargoType": {
-					"$ref": "#/$defs/mFreightCargoType"
+					"type": "string",
+					"enum": ["FCT_Standard", "FCT_Liquid"]
 				},
 				"mCanUnloadAny": {
 					"$ref": "#/$defs/boolean"

@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (209 of 209)
+100.00% Complete (204 of 204)
 
 ## Basic Types
 
@@ -39,19 +39,14 @@
 -   [x] MaterialSlotName
 -   [x] mBatteryStatus
 -   [x] mChainsawState
--   [x] mClassToScanFor
--   [x] mCrosshairMaterial
 -   [x] mDamageTypes
 -   [x] mDisableSnapOn
 -   [x] mDockingRuleSet
 -   [x] mForm
--   [x] mFreightCargoType
 -   [x] mLightControlData
 -   [x] mOutputInventoryHandlerData
 -   [x] mPlatformDockingStatus
--   [x] mScannableType
 -   [x] mSnappedPassthroughs
--   [x] mStackSize
 -   [x] NativeClass
 -   [x] None
 -   [x] SpecifiedColor
