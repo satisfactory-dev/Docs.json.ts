@@ -84,21 +84,6 @@ type class_can_have_tree = ClassDeclaration & {
 	heritageClauses: [{types: [{expression: ts.Identifier}]}];
 };
 
-function can_class_have_tree(
-	class_node: ts.ClassDeclaration
-): class_node is class_can_have_tree {
-	const heritage = [...(class_node.heritageClauses || [])].map(
-		(e) => e.types
-	);
-
-	return (
-		1 === heritage.length
-		&& 1 === heritage[0].length
-		&& ts.isExpressionWithTypeArguments(heritage[0][0])
-		&& ts.isIdentifier(heritage[0][0].expression)
-	);
-}
-
 export class TypeDefinitionWriter
 {
 	private _discovery:
@@ -287,7 +272,11 @@ export class TypeDefinitionWriter
 
 			const class_can_have_trees = Object.fromEntries(
 				classes
-					.filter(can_class_have_tree)
+					.filter(
+						maybe => TypeDefinitionWriter.can_class_have_tree(
+							maybe
+						)
+					)
 					.map((e) => [e.name?.escapedText + '', e])
 			);
 
@@ -299,7 +288,7 @@ export class TypeDefinitionWriter
 
 					while (
 						checking
-						&& can_class_have_tree(checking)
+						&& TypeDefinitionWriter.can_class_have_tree(checking)
 						&& (
 							checking
 								.heritageClauses[0]
@@ -484,5 +473,20 @@ export class TypeDefinitionWriter
 				new oneOf_or_anyOf(discovery),
 			);
 		}
+	}
+
+	static can_class_have_tree(
+		class_node: ts.ClassDeclaration
+	): class_node is class_can_have_tree {
+		const heritage = [...(class_node.heritageClauses || [])].map(
+			(e) => e.types
+		);
+
+		return (
+			1 === heritage.length
+			&& 1 === heritage[0].length
+			&& ts.isExpressionWithTypeArguments(heritage[0][0])
+			&& ts.isIdentifier(heritage[0][0].expression)
+		);
 	}
 }
