@@ -2213,20 +2213,14 @@
 				}
 			}
 		},
-		"FGBuildable": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
-			"unevaluatedProperties": false
-		},
 		"FGBuildable--occupied": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--base",
-			"unevaluatedProperties": false,
 			"required": ["mOccupiedText"],
 			"properties": {
 				"mOccupiedText": {
 					"type": "string",
-					"minLength": 1
+					"pattern": " occupied!?$"
 				}
 			}
 		},
@@ -2460,11 +2454,11 @@
 			"properties": {
 				"mWorkBenchOccupied": {
 					"type": "string",
-					"minLength": 1
+					"const": "Craft Bench occupied"
 				},
 				"mWorkBenchFree": {
 					"type": "string",
-					"minLength": 1
+					"const": "Use Craft Bench"
 				},
 				"Meshes": {
 					"type": "string",
@@ -2488,15 +2482,15 @@
 				},
 				"mStorageText": {
 					"type": "string",
-					"minLength": 1
+					"const": "Open Storage"
 				},
 				"mMamFreeText": {
 					"type": "string",
-					"minLength": 1
+					"const": "Use MAM"
 				},
 				"mMamOccupiedText": {
 					"type": "string",
-					"minLength": 1
+					"const": "MAM is occupied"
 				},
 				"mMeshes": {
 					"type": "string",
@@ -2549,7 +2543,7 @@
 				},
 				"mRepresentationText": {
 					"type": "string",
-					"minLength": 1
+					"const": "The HUB"
 				}
 			}
 		},
@@ -5448,21 +5442,12 @@
 		},
 		"FGBuildableMAM": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
-			"unevaluatedProperties": false,
-			"required": [
-				"mOccupiedText",
-				"mCurrentResearchState",
-				"mSignificanceRange"
-			],
+			"$ref": "#/$defs/FGBuildable--occupied",
+			"required": ["mCurrentResearchState", "mSignificanceRange"],
 			"properties": {
-				"mOccupiedText": {
-					"type": "string",
-					"minLength": 1
-				},
 				"mCurrentResearchState": {
 					"type": "string",
-					"minLength": 1
+					"enum": ["ERS_NotResearching"]
 				},
 				"mSignificanceRange": {
 					"$ref": "#/$defs/decimal-string"
@@ -6491,7 +6476,7 @@
 				},
 				"mBuildDisqualifierText": {
 					"type": "string",
-					"minLength": 1
+					"const": "Vehicles cannot be built or deployed on top of existing vehicles."
 				},
 				"canDisplayDisqualifier": {
 					"$ref": "#/$defs/boolean"
@@ -7070,7 +7055,7 @@
 						"oneOf": [
 							{
 								"type": "object",
-								"$ref": "#/$defs/FGBuildable",
+								"$ref": "#/$defs/FGBuildable--base",
 								"unevaluatedProperties": false
 							},
 							{

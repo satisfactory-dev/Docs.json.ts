@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (210 of 210)
+100.00% Complete (209 of 209)
 
 ## Basic Types
 
@@ -71,7 +71,6 @@
 
 ## FGBuildable
 
--   [x] FGBuildable
 -   [x] FGBuildableAttachmentMerger
 -   [x] FGBuildableAttachmentSplitter
 -   [x] FGBuildableBeamLightweight
