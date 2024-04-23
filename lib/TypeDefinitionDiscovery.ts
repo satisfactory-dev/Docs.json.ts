@@ -84,32 +84,6 @@ function is_schema_with_$defs(
 	schema:SchemaObject,
 	discovered_types: {[key: string]: true}
 ): schema is SchemaObjectWithDefinitions<typeof discovered_types> {
-	if (!object_has_property(
-		schema,
-		'$defs',
-		value_is_non_array_object
-	)) {
-		throw new Error('foo');
-	} else if (!Object.keys(schema.$defs).every(
-		maybe => (
-			maybe.startsWith('#/$defs/')
-				? maybe
-				: `#/$defs/${maybe}`
-		) in discovered_types
-	)) {
-		throw new Error('bar');
-	} else if (!Object.keys(discovered_types).every(maybe => {
-		const ref = (
-			maybe.startsWith('#/$defs/')
-				? maybe.substring(8)
-				: maybe
-		);
-
-		return value_is_non_array_object(schema.$defs[ref]);
-	})) {
-		throw new Error('baz');
-	}
-
 	return (
 		object_has_property(
 			schema,
