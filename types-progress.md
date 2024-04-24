@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (204 of 204)
+100.00% Complete (205 of 205)
 
 ## Basic Types
 
@@ -18,7 +18,6 @@
 -   [x] FGBuildingDescriptor
 -   [x] FGChainsaw
 -   [x] FGChargedWeapon
--   [x] FGConveyorPoleStackable
 -   [x] FGGasMask
 -   [x] FGGolfCartDispenser
 -   [x] FGHoverPack
@@ -27,11 +26,11 @@
 -   [x] FGObjectScanner
 -   [x] FGParachute
 -   [x] FGPipeHyperStart
+-   [x] FGPoleDescriptor
 -   [x] FGPortableMinerDispenser
 -   [x] FGRecipe
 -   [x] FGResourceDescriptor
 -   [x] FGSuitBase
--   [x] FGVehicleDescriptor
 -   [x] InfinityExtrap
 -   [x] integer-string
 -   [x] integer-string--signed
@@ -242,11 +241,6 @@
 -   [x] FGItemDescriptor--FGResourceDescriptor
 -   [x] FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor
 
-## FGPoleDescriptor
-
--   [x] FGPoleDescriptor
--   [x] FGPoleDescriptor--FGEquipmentDescriptor
-
 ## FGSchematic
 
 -   [x] FGSchematic
@@ -263,6 +257,13 @@
 -   [x] FGSchematic--mUnlocks_mTapeUnlocks
 -   [x] FGSchematic--mUnlocks_resources_to_scan
 -   [x] FGSchematic--with-unlocks
+
+## FGVehicleDescriptor
+
+-   [x] FGVehicleDescriptor--fueled-with-inventory
+-   [x] FGVehicleDescriptor--powered-no-inventory
+-   [x] FGVehicleDescriptor--unfueled-with-inventory
+-   [x] FGVehicleDescriptor--with-inventory
 
 ## FGWeapon
 

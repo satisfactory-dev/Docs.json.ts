@@ -363,12 +363,10 @@
 				"mRememberPickUp",
 				"mEnergyValue",
 				"mRadioactiveDecay",
-				"mForm",
 				"mSmallIcon",
 				"mPersistentBigIcon",
 				"mCrosshairMaterial",
 				"mDescriptorStatBars",
-				"mSubCategories",
 				"mMenuPriority",
 				"mFluidColor",
 				"mGasColor",
@@ -534,6 +532,7 @@
 		"FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor": {
 			"type": "object",
 			"$ref": "#/$defs/FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor",
+			"required": ["mSubCategories", "mForm"],
 			"properties": {
 				"mSubCategories": {
 					"oneOf": [
@@ -2257,20 +2256,35 @@
 				}
 			}
 		},
-		"FGConveyorPoleStackable": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildablePoleLightweight"
-		},
-		"FGPoleDescriptor--FGEquipmentDescriptor": {
-			"type": "object",
-			"$ref": "#/$defs/FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor",
-			"required": ["mSubCategories", "mForm"]
-		},
 		"FGPoleDescriptor": {
 			"type": "object",
-			"$ref": "#/$defs/FGPoleDescriptor--FGEquipmentDescriptor",
+			"$ref": "#/$defs/FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor",
 			"unevaluatedProperties": false,
-			"required": ["mSubCategories", "mForm"]
+			"required": ["mSubCategories", "mForm"],
+			"properties": {
+				"mForm": {
+					"type": "string",
+					"const": "RF_INVALID"
+				},
+				"mSubCategories": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"minItems": 1,
+						"items": {
+							"type": "string",
+							"minLength": 1,
+							"UnrealEngineString": {
+								"right": [
+									"/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Transport/SC_ConverPole.SC_ConverPole_C",
+									"/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Transport/SC_PipeSupport.SC_PipeSupport_C",
+									"/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Transport/SC_HyperTubes.SC_HyperTubes_C"
+								]
+							}
+						}
+					}
+				}
+			}
 		},
 		"FGBuildableConveyorBelt--base": {
 			"type": "object",
@@ -3356,7 +3370,7 @@
 		},
 		"FGEquipmentDescriptor--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGPoleDescriptor--FGEquipmentDescriptor",
+			"$ref": "#/$defs/FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor",
 			"required": ["mResourceSinkPoints"],
 			"properties": {
 				"mResourceSinkPoints": {
@@ -4672,21 +4686,12 @@
 				}
 			}
 		},
-		"FGVehicleDescriptor": {
+		"FGVehicleDescriptor--powered-no-inventory": {
 			"type": "object",
 			"$ref": "#/$defs/FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor",
 			"unevaluatedProperties": false,
-			"required": ["mForm"],
+			"required": ["mPowerConsumption"],
 			"properties": {
-				"mFuelConsumption": {
-					"$ref": "#/$defs/decimal-string"
-				},
-				"mInventorySize": {
-					"$ref": "#/$defs/integer-string"
-				},
-				"mForm": {
-					"$ref": "#/$defs/mForm"
-				},
 				"mPowerConsumption": {
 					"type": "string",
 					"minLength": 1,
@@ -4701,6 +4706,32 @@
 							}
 						}
 					}
+				}
+			}
+		},
+		"FGVehicleDescriptor--with-inventory": {
+			"type": "object",
+			"$ref": "#/$defs/FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor",
+			"required": ["mInventorySize"],
+			"properties": {
+				"mInventorySize": {
+					"$ref": "#/$defs/integer-string"
+				}
+			}
+		},
+		"FGVehicleDescriptor--unfueled-with-inventory": {
+			"type": "object",
+			"$ref": "#/$defs/FGVehicleDescriptor--with-inventory",
+			"unevaluatedProperties": false
+		},
+		"FGVehicleDescriptor--fueled-with-inventory": {
+			"type": "object",
+			"$ref": "#/$defs/FGVehicleDescriptor--with-inventory",
+			"unevaluatedProperties": false,
+			"required": ["mFuelConsumption"],
+			"properties": {
+				"mFuelConsumption": {
+					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
@@ -7582,9 +7613,23 @@
 					"type": "array",
 					"minItems": 1,
 					"items": {
-						"type": "object",
-						"$ref": "#/$defs/FGVehicleDescriptor",
-						"unevaluatedProperties": false
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/$defs/FGVehicleDescriptor--powered-no-inventory",
+								"unevaluatedProperties": false
+							},
+							{
+								"type": "object",
+								"$ref": "#/$defs/FGVehicleDescriptor--unfueled-with-inventory",
+								"unevaluatedProperties": false
+							},
+							{
+								"type": "object",
+								"$ref": "#/$defs/FGVehicleDescriptor--fueled-with-inventory",
+								"unevaluatedProperties": false
+							}
+						]
 					}
 				}
 			}
@@ -7940,7 +7985,7 @@
 					"type": "array",
 					"items": {
 						"type": "object",
-						"$ref": "#/$defs/FGConveyorPoleStackable",
+						"$ref": "#/$defs/FGBuildablePoleLightweight",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
