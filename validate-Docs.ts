@@ -1,4 +1,10 @@
 import {
+	writeFile,
+} from 'fs/promises';
+import {
+	FailedToCompileSchema,
+} from './lib/AjvUtilities';
+import {
 	ValidationError,
 } from './lib/DocsTsGenerator';
 import {
@@ -10,6 +16,11 @@ import {
 import {
 	setup_PerformanceObserver,
 } from './setup_PerformanceObserver';
+import {
+	__dirname_from_meta,
+} from './lib/__dirname';
+
+const __dirname = __dirname_from_meta(import.meta);
 
 setup_PerformanceObserver();
 
@@ -27,6 +38,13 @@ try {
 		console.error(rest);
 	} else {
 		throw err;
+	}
+
+	if (err instanceof FailedToCompileSchema) {
+		await writeFile(
+			`${__dirname}/failed-to-compile.json`,
+			`${JSON.stringify(err, null, '\t')}\n`
+		);
 	}
 
 	console.error(err.stack);
