@@ -34,7 +34,9 @@ import {
 	not_matching_string_schema,
 	not_matching_string_type,
 } from '../../TypeDefinitionDiscovery/JsonSchema/String';
-import { compile } from '../../AjvUtilities';
+import {
+	compile,
+} from '../../AjvUtilities';
 
 export type string_schema = {
 	type: 'string',
