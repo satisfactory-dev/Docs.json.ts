@@ -4,6 +4,7 @@ import {
 } from '../Generator';
 import Ajv, {
 	SchemaObject,
+	ValidateFunction,
 } from 'ajv/dist/2020';
 import {
 	NoMatchError,
@@ -25,6 +26,15 @@ import {
 	create_literal,
 	type_reference_node,
 } from '../../TsFactoryWrapper';
+import {
+	object_has_property,
+	value_is_non_array_object,
+} from '../../CustomParsingTypes/CustomPairingTypes';
+import {
+	not_matching_string_schema,
+	not_matching_string_type,
+} from '../../TypeDefinitionDiscovery/JsonSchema/String';
+import { compile } from '../../AjvUtilities';
 
 export type string_schema = {
 	type: 'string',
@@ -42,17 +52,35 @@ abstract class StringConverter<
 	string,
 	StringLiteral
 > {
+	private readonly maybe_not:ValidateFunction<not_matching_string_type>;
+
 	protected constructor(ajv:Ajv, schema:SchemaObject) {
 		super(ajv, schema);
+		this.maybe_not = compile<not_matching_string_type>(
+			ajv,
+			not_matching_string_schema
+		);
 	}
 
 	can_convert_schema_and_raw_data(
 		schema:SchemaObject,
 		raw_data:unknown
 	) : Promise<boolean> {
+		if (
+			!is_string(raw_data)
+			|| (
+				object_has_property(schema, 'not', value_is_non_array_object)
+				&& (
+					!this.maybe_not(schema.not)
+					|| schema.not.enum.includes(raw_data)
+				)
+			)
+		) {
+			return Promise.resolve(false);
+		}
+
 		return Promise.resolve(
-			is_string(raw_data)
-			&& this.can_convert_schema(schema)
+			this.can_convert_schema(schema)
 		);
 	}
 }
@@ -68,6 +96,7 @@ export class BasicStringConverter extends StringConverter<
 			properties: {
 				type: {type: 'string', const: 'string'},
 				minLength: {type: 'number', minimum: 0},
+				not: not_matching_string_schema,
 			},
 		});
 	}

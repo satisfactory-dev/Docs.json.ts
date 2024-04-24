@@ -43,6 +43,7 @@ import {
 } from './TypeDefinitionDiscovery/CustomParsingTypes/UnrealEngineString';
 import {
 	NonEmptyString,
+	NonEmptyStringWithExclusions,
 	StringType,
 } from './TypeDefinitionDiscovery/JsonSchema/String';
 import {
@@ -622,6 +623,7 @@ export class TypeDefinitionDiscovery
 			new Enum(ajv),
 			new StringType(ajv),
 			new NonEmptyString(ajv),
+			new NonEmptyStringWithExclusions(ajv),
 		];
 	}
 }

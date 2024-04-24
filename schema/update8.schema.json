@@ -577,7 +577,23 @@
 			"type": "object",
 			"$ref": "#/$defs/FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor",
 			"unevaluatedProperties": false,
+			"required": ["mForm", "mSubCategories", "ClassName"],
 			"properties": {
+				"ClassName": {
+					"type": "string",
+					"minLength": 1,
+					"not": {
+						"type": "string",
+						"enum": [
+							"Desc_ConveyorPole_C",
+							"Desc_PipelineSupport_C",
+							"Desc_PipeSupportStackable_C",
+							"Desc_HyperPoleStackable_C",
+							"Desc_PipeHyperSupport_C",
+							"Desc_ConveyorPoleStackable_C"
+						]
+					}
+				},
 				"mForm": {
 					"type": "string",
 					"const": "RF_INVALID"
