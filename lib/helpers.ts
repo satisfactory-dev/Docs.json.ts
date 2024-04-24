@@ -16,7 +16,7 @@ const __dirname = __dirname_from_meta(import.meta);
 const ajv = new Ajv({
 	verbose: true,
 	logger: false,
-	allErrors: true,
+	allErrors: false,
 	code: {
 		source: true,
 		esm: true,
