@@ -2,9 +2,6 @@ import {
 	writeFile,
 } from 'fs/promises';
 import {
-	FailedToCompileSchema,
-} from './lib/AjvUtilities';
-import {
 	ValidationError,
 } from './lib/DocsTsGenerator';
 import {
@@ -40,12 +37,10 @@ try {
 		throw err;
 	}
 
-	if (err instanceof FailedToCompileSchema) {
 		await writeFile(
 			`${__dirname}/failed-to-compile.json`,
 			`${JSON.stringify(err, null, '\t')}\n`
 		);
-	}
 
 	console.error(err.stack);
 }
