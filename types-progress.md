@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (205 of 205)
+100.00% Complete (206 of 206)
 
 ## Basic Types
 
@@ -83,7 +83,6 @@
 -   [x] FGBuildableFoundationLightweight
 -   [x] FGBuildableFrackingActivator
 -   [x] FGBuildableFrackingExtractor
--   [x] FGBuildableGeneratorFuel
 -   [x] FGBuildableGeneratorGeoThermal
 -   [x] FGBuildableGeneratorNuclear
 -   [x] FGBuildableJumppad
@@ -168,6 +167,8 @@
 
 -   [x] FGBuildableGeneratorFuel--base
 -   [x] FGBuildableGeneratorFuel--biogen
+-   [x] FGBuildableGeneratorFuel--liquid
+-   [x] FGBuildableGeneratorFuel--solid
 
 ## FGBuildableLightSource
 
