@@ -3565,8 +3565,6 @@
 			"required": [
 				"mFuelInventoryHandlerData",
 				"mFuelClasses",
-				"mDefaultFuelClasses",
-				"mFuel",
 				"mAvailableFuelClasses",
 				"mFuelLoadAmount",
 				"mRequiresSupplementalResource",
@@ -3583,77 +3581,6 @@
 				"mFuelClasses": {
 					"type": "string",
 					"const": ""
-				},
-				"mDefaultFuelClasses": {
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"minItems": 1,
-						"items": {
-							"type": "string",
-							"enum": [
-								"/Game/FactoryGame/Resource/RawResources/Coal/Desc_Coal.Desc_Coal_C",
-								"/Game/FactoryGame/Resource/Parts/CompactedCoal/Desc_CompactedCoal.Desc_CompactedCoal_C",
-								"/Game/FactoryGame/Resource/Parts/PetroleumCoke/Desc_PetroleumCoke.Desc_PetroleumCoke_C",
-								"/Game/FactoryGame/Resource/Parts/Fuel/Desc_LiquidFuel.Desc_LiquidFuel_C",
-								"/Game/FactoryGame/Resource/Parts/Turbofuel/Desc_LiquidTurboFuel.Desc_LiquidTurboFuel_C",
-								"/Game/FactoryGame/Resource/Parts/BioFuel/Desc_LiquidBiofuel.Desc_LiquidBiofuel_C",
-								"/Script/FactoryGame.FGItemDescriptorBiomass",
-								"/Game/FactoryGame/Resource/Parts/NuclearFuelRod/Desc_NuclearFuelRod.Desc_NuclearFuelRod_C",
-								"/Game/FactoryGame/Resource/Parts/PlutoniumFuelRods/Desc_PlutoniumFuelRod.Desc_PlutoniumFuelRod_C"
-							]
-						}
-					}
-				},
-				"mFuel": {
-					"type": "array",
-					"minItems": 1,
-					"items": {
-						"type": "object",
-						"required": [
-							"mFuelClass",
-							"mSupplementalResourceClass",
-							"mByproduct",
-							"mByproductAmount"
-						],
-						"properties": {
-							"mFuelClass": {
-								"type": "string",
-								"pattern": "^(?:FGItemDescriptor[A-Z][A-Za-z]+|Desc_[A-Z][A-Za-z]+_C)$"
-							},
-							"mSupplementalResourceClass": {
-								"oneOf": [
-									{
-										"type": "string",
-										"const": ""
-									},
-									{
-										"type": "string",
-										"pattern": "^Desc_[A-Z][A-Za-z]+_C$"
-									}
-								]
-							},
-							"mByproduct": {
-								"type": "string",
-								"enum": [
-									"",
-									"Desc_NuclearWaste_C",
-									"Desc_PlutoniumWaste_C"
-								]
-							},
-							"mByproductAmount": {
-								"oneOf": [
-									{
-										"type": "string",
-										"const": ""
-									},
-									{
-										"$ref": "#/$defs/integer-string"
-									}
-								]
-							}
-						}
-					}
 				},
 				"mAvailableFuelClasses": {
 					"type": "string",
@@ -3685,17 +3612,21 @@
 				"mCachedPipeInputConnections": {
 					"type": "string",
 					"const": ""
-				},
-				"mCachedLoadPercentage": {
-					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
-		"FGBuildableGeneratorFuel": {
+		"FGBuildableGeneratorFuel--solid": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableGeneratorFuel--base",
 			"unevaluatedProperties": false,
-			"required": ["m_SFXSockets", "m_CurrentPotential"],
+			"required": [
+				"m_SFXSockets",
+				"m_CurrentPotential",
+				"mDefaultFuelClasses",
+				"mFuel",
+				"mFuelResourceForm",
+				"mFuelLoadAmount"
+			],
 			"properties": {
 				"m_SFXSockets": {
 					"type": "string",
@@ -3706,9 +3637,7 @@
 							"type": "string",
 							"enum": [
 								"AudioSocketTurbine",
-								"CoalGeneratorPotential",
-								"AudioSocket_Exhaust",
-								"AudioSocket_Root"
+								"CoalGeneratorPotential"
 							]
 						}
 					}
@@ -3716,7 +3645,148 @@
 				"m_CurrentPotential": {
 					"$ref": "#/$defs/integer-string"
 				},
+				"mDefaultFuelClasses": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"minItems": 1,
+						"items": {
+							"type": "string",
+							"enum": [
+								"/Game/FactoryGame/Resource/RawResources/Coal/Desc_Coal.Desc_Coal_C",
+								"/Game/FactoryGame/Resource/Parts/CompactedCoal/Desc_CompactedCoal.Desc_CompactedCoal_C",
+								"/Game/FactoryGame/Resource/Parts/PetroleumCoke/Desc_PetroleumCoke.Desc_PetroleumCoke_C"
+							]
+						}
+					}
+				},
+				"mFuel": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"required": [
+							"mFuelClass",
+							"mSupplementalResourceClass",
+							"mByproduct",
+							"mByproductAmount"
+						],
+						"properties": {
+							"mFuelClass": {
+								"type": "string",
+								"enum": [
+									"Desc_Coal_C",
+									"Desc_CompactedCoal_C",
+									"Desc_PetroleumCoke_C"
+								]
+							},
+							"mSupplementalResourceClass": {
+								"type": "string",
+								"const": "Desc_Water_C"
+							},
+							"mByproduct": {
+								"type": "string",
+								"const": ""
+							},
+							"mByproductAmount": {
+								"type": "string",
+								"const": ""
+							}
+						}
+					}
+				},
+				"mFuelResourceForm": {
+					"type": "string",
+					"const": "RF_SOLID"
+				}
+			}
+		},
+		"FGBuildableGeneratorFuel--liquid": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableGeneratorFuel--base",
+			"unevaluatedProperties": false,
+			"required": [
+				"m_SFXSockets",
+				"m_CurrentPotential",
+				"mDefaultFuelClasses",
+				"mFuel",
+				"mFuelResourceForm",
+				"mRTPCInterval",
+				"mCachedLoadPercentage"
+			],
+			"properties": {
+				"m_SFXSockets": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"minItems": 1,
+						"items": {
+							"type": "string",
+							"enum": ["AudioSocket_Exhaust", "AudioSocket_Root"]
+						}
+					}
+				},
+				"m_CurrentPotential": {
+					"$ref": "#/$defs/integer-string"
+				},
+				"mDefaultFuelClasses": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"minItems": 1,
+						"items": {
+							"type": "string",
+							"enum": [
+								"/Game/FactoryGame/Resource/Parts/Fuel/Desc_LiquidFuel.Desc_LiquidFuel_C",
+								"/Game/FactoryGame/Resource/Parts/Turbofuel/Desc_LiquidTurboFuel.Desc_LiquidTurboFuel_C",
+								"/Game/FactoryGame/Resource/Parts/BioFuel/Desc_LiquidBiofuel.Desc_LiquidBiofuel_C"
+							]
+						}
+					}
+				},
+				"mFuel": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"required": [
+							"mFuelClass",
+							"mSupplementalResourceClass",
+							"mByproduct",
+							"mByproductAmount"
+						],
+						"properties": {
+							"mFuelClass": {
+								"type": "string",
+								"enum": [
+									"Desc_LiquidFuel_C",
+									"Desc_LiquidTurboFuel_C",
+									"Desc_LiquidBiofuel_C"
+								]
+							},
+							"mSupplementalResourceClass": {
+								"type": "string",
+								"const": ""
+							},
+							"mByproduct": {
+								"type": "string",
+								"const": ""
+							},
+							"mByproductAmount": {
+								"type": "string",
+								"const": ""
+							}
+						}
+					}
+				},
+				"mFuelResourceForm": {
+					"type": "string",
+					"const": "RF_LIQUID"
+				},
 				"mRTPCInterval": {
+					"$ref": "#/$defs/decimal-string"
+				},
+				"mCachedLoadPercentage": {
 					"$ref": "#/$defs/decimal-string"
 				}
 			}
@@ -3725,7 +3795,65 @@
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableGeneratorFuel--base",
 			"unevaluatedProperties": false,
-			"required": ["mCachedLoadPercentage"]
+			"required": [
+				"mDefaultFuelClasses",
+				"mFuel",
+				"mFuelResourceForm",
+				"mCachedLoadPercentage"
+			],
+			"properties": {
+				"mDefaultFuelClasses": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"minItems": 1,
+						"items": {
+							"type": "string",
+							"enum": [
+								"/Script/FactoryGame.FGItemDescriptorBiomass"
+							]
+						}
+					}
+				},
+				"mFuel": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"required": [
+							"mFuelClass",
+							"mSupplementalResourceClass",
+							"mByproduct",
+							"mByproductAmount"
+						],
+						"properties": {
+							"mFuelClass": {
+								"type": "string",
+								"enum": ["FGItemDescriptorBiomass"]
+							},
+							"mSupplementalResourceClass": {
+								"type": "string",
+								"const": ""
+							},
+							"mByproduct": {
+								"type": "string",
+								"const": ""
+							},
+							"mByproductAmount": {
+								"type": "string",
+								"const": ""
+							}
+						}
+					}
+				},
+				"mFuelResourceForm": {
+					"type": "string",
+					"const": "RF_SOLID"
+				},
+				"mCachedLoadPercentage": {
+					"$ref": "#/$defs/decimal-string"
+				}
+			}
 		},
 		"FGBuildableGeneratorGeoThermal": {
 			"type": "object",
@@ -3774,7 +3902,11 @@
 			"required": [
 				"mOutputInventoryHandlerData",
 				"mWasteLeftFromCurrentFuel",
-				"mCurrentGeneratorNuclearWarning"
+				"mCurrentGeneratorNuclearWarning",
+				"mDefaultFuelClasses",
+				"mFuel",
+				"mFuelResourceForm",
+				"mCachedLoadPercentage"
 			],
 			"properties": {
 				"mOutputInventoryHandlerData": {
@@ -3786,6 +3918,87 @@
 				"mCurrentGeneratorNuclearWarning": {
 					"type": "string",
 					"const": "GNW_None"
+				},
+				"mDefaultFuelClasses": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"minItems": 1,
+						"items": {
+							"type": "string",
+							"enum": [
+								"/Game/FactoryGame/Resource/Parts/NuclearFuelRod/Desc_NuclearFuelRod.Desc_NuclearFuelRod_C",
+								"/Game/FactoryGame/Resource/Parts/PlutoniumFuelRods/Desc_PlutoniumFuelRod.Desc_PlutoniumFuelRod_C"
+							]
+						}
+					}
+				},
+				"mFuel": {
+					"type": "array",
+					"minItems": 1,
+					"maxItems": 2,
+					"items": false,
+					"prefixItems": [
+						{
+							"type": "object",
+							"required": [
+								"mFuelClass",
+								"mSupplementalResourceClass",
+								"mByproduct",
+								"mByproductAmount"
+							],
+							"properties": {
+								"mFuelClass": {
+									"type": "string",
+									"const": "Desc_NuclearFuelRod_C"
+								},
+								"mSupplementalResourceClass": {
+									"type": "string",
+									"const": "Desc_Water_C"
+								},
+								"mByproduct": {
+									"type": "string",
+									"const": "Desc_NuclearWaste_C"
+								},
+								"mByproductAmount": {
+									"$ref": "#/$defs/integer-string"
+								}
+							}
+						},
+						{
+							"type": "object",
+							"required": [
+								"mFuelClass",
+								"mSupplementalResourceClass",
+								"mByproduct",
+								"mByproductAmount"
+							],
+							"properties": {
+								"mFuelClass": {
+									"type": "string",
+									"const": "Desc_PlutoniumFuelRod_C"
+								},
+								"mSupplementalResourceClass": {
+									"type": "string",
+									"const": "Desc_Water_C"
+								},
+								"mByproduct": {
+									"type": "string",
+									"const": "Desc_PlutoniumWaste_C"
+								},
+								"mByproductAmount": {
+									"$ref": "#/$defs/integer-string"
+								}
+							}
+						}
+					]
+				},
+				"mFuelResourceForm": {
+					"type": "string",
+					"const": "RF_SOLID"
+				},
+				"mCachedLoadPercentage": {
+					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
@@ -6090,7 +6303,7 @@
 			"type": "object",
 			"$ref": "#/$defs/FGAmmoTypeInstantHit--base",
 			"unevaluatedProperties": false,
-			"required": ["Location", "Trail_Velocity"],
+			"required": ["ClassName", "Location", "Trail_Velocity"],
 			"properties": {
 				"ClassName": {
 					"type": "string",
@@ -7339,20 +7552,24 @@
 					"type": "array",
 					"minItems": 3,
 					"maxItems": 3,
-					"items": {
-						"oneOf": [
-							{
-								"type": "object",
-								"$ref": "#/$defs/FGBuildableGeneratorFuel",
-								"unevaluatedProperties": false
-							},
-							{
-								"type": "object",
-								"$ref": "#/$defs/FGBuildableGeneratorFuel--biogen",
-								"unevaluatedProperties": false
-							}
-						]
-					}
+					"items": false,
+					"prefixItems": [
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGBuildableGeneratorFuel--solid",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGBuildableGeneratorFuel--liquid",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGBuildableGeneratorFuel--biogen",
+							"unevaluatedProperties": false
+						}
+					]
 				}
 			}
 		},
