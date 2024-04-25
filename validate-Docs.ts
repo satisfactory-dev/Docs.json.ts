@@ -37,10 +37,10 @@ try {
 		throw err;
 	}
 
-		await writeFile(
-			`${__dirname}/failed-to-compile.json`,
-			`${JSON.stringify(err, null, '\t')}\n`
-		);
+	await writeFile(
+		`${__dirname}/failed-to-compile.json`,
+		`${JSON.stringify(err, null, '\t')}\n`
+	);
 
 	console.error(err.stack);
 }
