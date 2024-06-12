@@ -23,7 +23,7 @@ import {
 	array_has_size,
 	not_undefined,
 	rejects_partial_match,
-} from '../../../assert/CustomAssert';
+} from '@satisfactory-clips-archive/custom-assert/assert/CustomAssert';
 import {
 	DocsDataItem,
 } from '../../../lib/DocsTsGenerator';

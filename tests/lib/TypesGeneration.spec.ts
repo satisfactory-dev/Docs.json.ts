@@ -6,7 +6,7 @@ import assert from 'node:assert/strict';
 import {
 	array_has_size,
 	not_undefined,
-} from '../../assert/CustomAssert';
+} from '@satisfactory-clips-archive/custom-assert/assert/CustomAssert';
 import {
 	ImportTracker,
 } from '../../lib/TypesGeneration';

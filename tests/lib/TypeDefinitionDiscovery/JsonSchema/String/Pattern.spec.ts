@@ -13,7 +13,7 @@ import ts_assert from '@signpostmarv/ts-assert';
 import {
 	array_has_size,
 	not_undefined,
-} from '../../../../../assert/CustomAssert';
+} from '@satisfactory-clips-archive/custom-assert/assert/CustomAssert';
 
 void describe('Pattern', () => {
 	const instance = new Pattern(docs.ajv);

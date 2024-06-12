@@ -12,7 +12,7 @@ import {
 import ts_assert from '@signpostmarv/ts-assert';
 import {
 	array_has_size,
-} from '../../../../../assert/CustomAssert';
+} from '@satisfactory-clips-archive/custom-assert/assert/CustomAssert';
 
 void describe('Enum', () => {
 	const instance = new Enum(docs.ajv);
