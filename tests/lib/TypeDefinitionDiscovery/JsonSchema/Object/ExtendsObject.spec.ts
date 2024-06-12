@@ -4,6 +4,7 @@ import {
 } from 'node:test';
 import {
 	ExtendsObject,
+// eslint-disable-next-line max-len
 } from '../../../../../lib/TypeDefinitionDiscovery/JsonSchema/Object/ExtendsObject';
 import {
 	docs,

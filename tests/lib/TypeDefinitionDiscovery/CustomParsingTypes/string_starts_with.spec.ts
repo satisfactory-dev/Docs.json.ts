@@ -5,6 +5,7 @@ import {
 import assert from 'node:assert/strict';
 import {
 	string_starts_with,
+// eslint-disable-next-line max-len
 } from '../../../../lib/TypeDefinitionDiscovery/CustomParsingTypes/string_starts_with';
 import {
 	docs,

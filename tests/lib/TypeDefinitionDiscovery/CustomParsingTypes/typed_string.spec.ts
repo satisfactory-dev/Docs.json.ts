@@ -6,6 +6,7 @@ import assert from 'node:assert/strict';
 
 import {
 	typed_string,
+// eslint-disable-next-line max-len
 } from '../../../../lib/TypeDefinitionDiscovery/CustomParsingTypes/typed_string';
 import {
 	TypeDefinitionWriter,

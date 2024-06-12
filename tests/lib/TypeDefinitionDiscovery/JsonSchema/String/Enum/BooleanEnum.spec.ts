@@ -4,6 +4,7 @@ import {
 } from 'node:test';
 import {
 	BooleanEnum,
+// eslint-disable-next-line max-len
 } from '../../../../../../lib/TypeDefinitionDiscovery/JsonSchema/String/Enum/BooleanEnum';
 import {
 	docs,
