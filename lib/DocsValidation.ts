@@ -5,9 +5,6 @@ import {
 	UnrealEngineString,
 } from './CustomParsingTypes/UnrealEngineString';
 import {
-	object_has_property,
-} from './CustomParsingTypes/CustomPairingTypes';
-import {
 	is_string,
 } from './StringStartsWith';
 
@@ -266,13 +263,15 @@ export function configure_ajv(ajv: Ajv) {
 			return (data: string) => data.startsWith(value);
 		},
 		code: (ctx: KeywordCxt) => {
-			if (!object_has_property(ctx, 'schema', is_string)) {
-				throw new Error(`ctx.schema was not a string, ${typeof ctx.schema} found!`);
+			const schema:unknown = ctx?.schema;
+
+			if (!is_string(schema)) {
+				throw new Error(`ctx.schema was not a string, ${typeof schema} found!`);
 			}
 
 			const {data} = ctx;
 
-			ctx.pass(_`${data}.startsWith(${ctx.schema})`);
+			ctx.pass(_`${data}.startsWith(${schema})`);
 		},
 	});
 }
