@@ -15,7 +15,7 @@ import {
 import ts_assert from '@signpostmarv/ts-assert';
 import {
 	array_has_size,
-} from '@satisfactory-clips-archive/custom-assert/assert/CustomAssert';
+} from '@satisfactory-clips-archive/custom-assert';
 
 void describe('ArrayType', async () => {
 	const type_definition_writer = new TypeDefinitionWriter(docs);

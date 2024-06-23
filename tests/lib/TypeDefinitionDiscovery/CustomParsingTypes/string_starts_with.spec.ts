@@ -14,7 +14,7 @@ import ts_assert from '@signpostmarv/ts-assert';
 import {
 	array_has_size,
 	not_undefined,
-} from '@satisfactory-clips-archive/custom-assert/assert/CustomAssert';
+} from '@satisfactory-clips-archive/custom-assert';
 
 void describe('string_starts_with', () => {
 	const instance = new string_starts_with(docs.ajv);

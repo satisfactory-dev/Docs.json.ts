@@ -11,7 +11,7 @@ import {
 import ts_assert from '@signpostmarv/ts-assert';
 import {
 	array_has_size,
-} from '@satisfactory-clips-archive/custom-assert/assert/CustomAssert';
+} from '@satisfactory-clips-archive/custom-assert';
 
 void describe('string_or_string_array_to_node', () => {
 	void it('returns a union given an array', () => {

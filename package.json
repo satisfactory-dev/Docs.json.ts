@@ -14,8 +14,8 @@
     "validate": "ts-node validate-Docs.ts"
   },
   "devDependencies": {
-    "@satisfactory-clips-archive/custom-assert": "^0.1.2",
-    "@signpostmarv/ts-assert": "^0.2.1",
+    "@satisfactory-clips-archive/custom-assert": "^0.1.4",
+    "@signpostmarv/ts-assert": "^0.2.2",
     "@types/eslint": "^8.56.6",
     "@types/node": "^20.11.20",
     "c8": "^9.1.0",
@@ -28,7 +28,7 @@
     "eslint": "^8.57.0",
     "glob": "^10.3.10",
     "prettier": "^3.2.5",
-    "typescript": "^5.4.2",
+    "typescript": "~5.4.2",
     "typescript-eslint": "^7.3.1"
   }
 }
