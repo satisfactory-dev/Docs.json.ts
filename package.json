@@ -19,8 +19,7 @@
     "@types/eslint": "^8.56.6",
     "@types/node": "^20.11.20",
     "c8": "^9.1.0",
-    "ts-node": "^10.9.2",
-    "tslib": "^2.6.2"
+    "ts-node": "^10.9.2"
   },
   "dependencies": {
     "@eslint/js": "^8.57.0",
