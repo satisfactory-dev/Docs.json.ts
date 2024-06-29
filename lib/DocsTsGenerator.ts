@@ -22,7 +22,7 @@ import {
 	ESLint,
 } from 'eslint';
 
-import update8_schema from '../schema/update8.schema.json' assert {
+import update8_schema from '../schema/update8.schema.json' with {
 	type: 'json'
 };
 import {
