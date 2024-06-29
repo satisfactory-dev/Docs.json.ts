@@ -19,7 +19,7 @@ import {
 	array_has_size,
 	not_undefined,
 	rejects_partial_match,
-} from '@satisfactory-clips-archive/custom-assert';
+} from '@satisfactory-dev/custom-assert';
 import {
 	SchemaObject,
 } from 'ajv';

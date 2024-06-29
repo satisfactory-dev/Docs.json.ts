@@ -18,7 +18,7 @@ import {
 } from '../../../../lib/StringStartsWith';
 import {
 	rejects_partial_match,
-} from '@satisfactory-clips-archive/custom-assert';
+} from '@satisfactory-dev/custom-assert';
 
 void describe('ObjectConverter', () => {
 	const instance = new ObjectConverter(new DataDiscovery(docs));

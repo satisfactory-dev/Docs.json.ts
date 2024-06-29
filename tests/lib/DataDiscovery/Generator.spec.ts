@@ -17,7 +17,7 @@ import {
 	is_instanceof,
 	not_undefined,
 	rejects_partial_match,
-} from '@satisfactory-clips-archive/custom-assert';
+} from '@satisfactory-dev/custom-assert';
 import {
 	BasicStringConverter,
 	ConstStringConverter,

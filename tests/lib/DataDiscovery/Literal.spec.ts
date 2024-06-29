@@ -10,7 +10,7 @@ import {
 import {
 	array_has_size,
 	rejects_partial_match,
-} from '@satisfactory-clips-archive/custom-assert';
+} from '@satisfactory-dev/custom-assert';
 import {
 	value_matches_ExpressionResult,
 } from '../../../assert/CustomAssert';

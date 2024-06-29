@@ -14,7 +14,7 @@ import {
 import ts from 'typescript';
 import {
 	rejects_partial_match,
-} from '@satisfactory-clips-archive/custom-assert';
+} from '@satisfactory-dev/custom-assert';
 
 class Testable extends DocsTsAutoImports
 {

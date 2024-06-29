@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "name": "@satisfactory-clips-archive/docs.json.ts",
+  "name": "@satisfactory-dev/docs.json.ts",
   "description": "TypeScript mappings for the Docs.json file that ships with Satisfactory",
   "license": "Apache-2.0",
   "keywords": [
@@ -18,7 +18,7 @@
     "validate": "ts-node validate-Docs.ts"
   },
   "devDependencies": {
-    "@satisfactory-clips-archive/custom-assert": "^0.2.1",
+    "@satisfactory-dev/custom-assert": "^0.2.2",
     "@signpostmarv/ts-assert": "^0.3.0",
     "@types/eslint": "^8.56.6",
     "@types/node": "^20.11.20",

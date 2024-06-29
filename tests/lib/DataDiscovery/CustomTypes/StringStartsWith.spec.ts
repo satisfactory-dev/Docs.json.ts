@@ -15,7 +15,7 @@ import {
 import ts_assert from '@signpostmarv/ts-assert';
 import {
 	array_has_size, not_undefined,
-} from '@satisfactory-clips-archive/custom-assert';
+} from '@satisfactory-dev/custom-assert';
 
 void describe('StringStartsWithConverter', () => {
 	const instance = new StringStartsWithConverter(docs.ajv);

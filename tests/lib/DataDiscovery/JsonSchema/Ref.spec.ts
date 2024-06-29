@@ -18,7 +18,7 @@ import {
 import {
 	is_instanceof,
 	not_undefined,
-} from '@satisfactory-clips-archive/custom-assert';
+} from '@satisfactory-dev/custom-assert';
 import {
 	ConstStringConverter,
 } from '../../../../lib/DataDiscovery/JsonSchema/StringType';

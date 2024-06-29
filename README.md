@@ -1,5 +1,5 @@
-[![Coverage Status](https://coveralls.io/repos/github/Satisfactory-Clips-Archive/Docs.json.ts/badge.svg?branch=main)](https://coveralls.io/github/Satisfactory-Clips-Archive/Docs.json.ts?branch=main)
-[![Workflow Status](https://github.com/Satisfactory-Clips-Archive/Docs.json.ts/actions/workflows/node.js.yml/badge.svg?branch=main)](https://github.com/Satisfactory-Clips-Archive/Docs.json.ts/actions/workflows/node.js.yml?query=branch%3Amain)
+[![Coverage Status](https://coveralls.io/repos/github/satisfactory-dev/Docs.json.ts/badge.svg?branch=main)](https://coveralls.io/github/satisfactory-dev/Docs.json.ts?branch=main)
+[![Workflow Status](https://github.com/satisfactory-dev/Docs.json.ts/actions/workflows/node.js.yml/badge.svg?branch=main)](https://github.com/satisfactory-dev/Docs.json.ts/actions/workflows/node.js.yml?query=branch%3Amain)
 
 # Current Plan for Development:
 
@@ -48,7 +48,7 @@
 
 ## In a separate project
 
-1. run `npm install --save @satisfactory-clips-archive/docs.json.ts`
+1. run `npm install --save @satisfactory-dev/docs.json.ts`
 1. refer to [discover-types.ts](discover-types.ts) for how to generate the
    types & data
 
