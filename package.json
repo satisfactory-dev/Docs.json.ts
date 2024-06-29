@@ -9,9 +9,9 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Satisfactory-Clips-Archive/Docs.json.ts.git"
+    "url": "git+https://github.com/satisfactory-dev/Docs.json.ts.git"
   },
-  "funding": "https://github.com/Satisfactory-Clips-Archive/Docs.json.ts?sponsor=1",
+  "funding": "https://github.com/satisfactory-dev/Docs.json.ts?sponsor=1",
   "scripts": {
     "test": "ts-node ./tests.ts",
     "generate": "ts-node ./generate-typescript-types.ts",
