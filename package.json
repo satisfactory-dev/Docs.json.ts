@@ -12,8 +12,6 @@
     "url": "git+https://github.com/satisfactory-dev/Docs.json.ts.git"
   },
   "funding": "https://github.com/satisfactory-dev/Docs.json.ts?sponsor=1",
-  "exports": "./lib/index.js",
-  "types": "./lib/index.d.ts",
   "scripts": {
     "test": "ts-node ./tests.ts",
     "generate": "ts-node ./generate-typescript-types.ts",
