@@ -422,7 +422,7 @@ export class TypeDefinitionWriter
 			if (this.docs.types_from_module) {
 				code = code.replace(
 					/} from '(?:\.\.\/)+(classes|common|utils)\//g,
-					`} from '${this.docs.types_from_module}/$1`
+					`} from '${this.docs.types_from_module}/$1/`
 				);
 			}
 
