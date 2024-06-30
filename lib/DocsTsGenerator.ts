@@ -33,14 +33,12 @@ import {
 } from 'node:crypto';
 import {
 	is_non_empty_array,
+	is_string,
 	object_has_only_properties_that_match_predicate,
 	object_has_property,
 	property_exists_on_object,
 	value_is_non_array_object,
-} from './CustomParsingTypes/CustomPairingTypes';
-import {
-	is_string,
-} from './StringStartsWith';
+} from '@satisfactory-dev/predicates.ts';
 import {
 	NoMatchError,
 } from './Exceptions';

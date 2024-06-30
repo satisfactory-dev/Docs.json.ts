@@ -1,4 +1,8 @@
 import {
+	is_string,
+} from '@satisfactory-dev/predicates.ts';
+
+import {
 	Converter,
 	ConverterMatchesSchema,
 	ExpressionResult,
@@ -19,7 +23,6 @@ import {
 	DataDiscovery,
 } from '../../DataDiscovery';
 import {
-	is_string,
 	local_ref,
 } from '../../StringStartsWith';
 import {

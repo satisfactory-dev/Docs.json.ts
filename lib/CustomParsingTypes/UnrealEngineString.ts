@@ -6,6 +6,12 @@ import ts, {
 	UnionTypeNode,
 } from 'typescript';
 import {
+	is_string,
+	object_has_property,
+	value_is_non_array_object,
+} from '@satisfactory-dev/predicates.ts';
+
+import {
 	adjust_class_name,
 	create_const_statement,
 	create_index_access,
@@ -26,11 +32,6 @@ import {
 	type_reference_node, variable,
 } from '../TsFactoryWrapper';
 import {
-	object_has_property,
-	value_is_non_array_object,
-} from './CustomPairingTypes';
-import {
-	is_string,
 	local_ref,
 } from '../StringStartsWith';
 import {

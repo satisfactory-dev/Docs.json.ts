@@ -7,11 +7,14 @@ import Ajv, {
 	ValidateFunction,
 } from 'ajv/dist/2020';
 import {
+	is_string,
+	object_has_property,
+	value_is_non_array_object,
+} from '@satisfactory-dev/predicates.ts';
+
+import {
 	NoMatchError,
 } from '../../Exceptions';
-import {
-	is_string,
-} from '../../StringStartsWith';
 import {
 	enum_schema_type,
 } from '../../CustomParsingTypes/TypedStringEnum';
@@ -26,10 +29,6 @@ import {
 	create_literal,
 	type_reference_node,
 } from '../../TsFactoryWrapper';
-import {
-	object_has_property,
-	value_is_non_array_object,
-} from '../../CustomParsingTypes/CustomPairingTypes';
 import {
 	not_matching_string_schema,
 	not_matching_string_type,

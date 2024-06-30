@@ -1,10 +1,13 @@
 import {
+	is_string,
+	object_has_property,
+	value_is_non_array_object,
+} from '@satisfactory-dev/predicates.ts';
+
+import {
 	Converter,
 	ExpressionResult,
 } from '../Generator';
-import {
-	is_string,
-} from '../../StringStartsWith';
 import {
 	is_UnrealEngineString_parent,
 	string_or_string_array_to_node,
@@ -21,10 +24,6 @@ import {
 	create_type,
 	type_reference_node,
 } from '../../TsFactoryWrapper';
-import {
-	object_has_property,
-	value_is_non_array_object,
-} from '../../CustomParsingTypes/CustomPairingTypes';
 import {
 	SchemaObject,
 } from 'ajv';

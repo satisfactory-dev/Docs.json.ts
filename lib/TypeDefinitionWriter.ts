@@ -29,8 +29,9 @@ import {
 } from 'glob';
 import {
 	object_has_property,
+	require_non_empty_array,
 	value_is_non_array_object,
-} from './CustomParsingTypes/CustomPairingTypes';
+} from '@satisfactory-dev/predicates.ts';
 import ts, {
 	ClassDeclaration,
 } from 'typescript';
@@ -62,9 +63,6 @@ import {
 import {
 	FilesGenerator as DocsFiles,
 } from './DocsTsGenerator/FilesGenerator';
-import {
-	require_non_empty_array,
-} from './ArrayUtilities';
 import {
 	AnyGenerator,
 } from './TypeDefinitionDiscovery/Generator';

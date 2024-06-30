@@ -11,7 +11,7 @@ import {
 import {
 	object_has_non_empty_array_property,
 	object_has_property,
-} from '../../CustomParsingTypes/CustomPairingTypes';
+} from '@satisfactory-dev/predicates.ts';
 import {
 	minimum_size_array_of_single_type,
 } from '../../TsFactoryWrapper';

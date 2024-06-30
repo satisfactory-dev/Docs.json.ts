@@ -27,10 +27,8 @@ import ts, {
 } from 'typescript';
 import {
 	is_string,
-} from './StringStartsWith';
-import {
 	non_empty_map,
-} from './ArrayUtilities';
+} from '@satisfactory-dev/predicates.ts';
 
 declare type supported_class_modifiers = ('export' | 'abstract')[];
 

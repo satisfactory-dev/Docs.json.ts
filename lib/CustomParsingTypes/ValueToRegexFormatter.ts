@@ -1,12 +1,17 @@
 import {
-	annoyingly_have_to_escape_property, is_non_empty_array,
+	is_non_empty_array,
+	is_string,
 	object_has_non_empty_array_property,
 	object_has_property,
 	object_has_property_that_equals, object_only_has_that_property,
 	value_is_non_array_object,
+} from '@satisfactory-dev/predicates.ts';
+
+import {
+	annoyingly_have_to_escape_property,
 } from './CustomPairingTypes';
 import {
-	is_string, local_ref,
+	local_ref,
 } from '../StringStartsWith';
 import {
 	NoMatchError,

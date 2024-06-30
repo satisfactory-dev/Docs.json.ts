@@ -6,7 +6,6 @@ import assert from 'node:assert/strict';
 import {
 	$ref_in_array,
 	is_$ref,
-	is_string,
 	local_ref,
 } from '../../lib/StringStartsWith';
 
@@ -19,13 +18,6 @@ void describe('local_ref', () => {
 		assert.throws(() => local_ref('foo bar'));
 		assert.throws(() => local_ref('#/$defs/foo'));
 	})
-});
-
-void describe('is_string', () => {
-	void it ('behaves', () => {
-		assert.equal(is_string('foo'), true);
-		assert.equal(is_string(1), false);
-	});
 });
 
 void describe('is_$ref', () => {

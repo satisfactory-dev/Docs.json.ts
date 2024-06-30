@@ -9,10 +9,8 @@ import {
 } from './Generator';
 import {
 	is_string,
-} from '../StringStartsWith';
-import {
 	value_is_non_array_object,
-} from '../CustomParsingTypes/CustomPairingTypes';
+} from '@satisfactory-dev/predicates.ts';
 import ts, {
 	ArrayLiteralExpression,
 	Expression,

@@ -1,4 +1,8 @@
 import {
+	is_string,
+} from '@satisfactory-dev/predicates.ts';
+
+import {
 	NoMatchError,
 } from './Exceptions';
 
@@ -32,10 +36,6 @@ export function local_ref<
 	return `#/$defs/${
 		ref_like_string
 	}` as local_ref<T>;
-}
-
-export function is_string(maybe: unknown): maybe is string {
-	return 'string' === typeof maybe;
 }
 
 export function is_$ref(maybe: unknown): maybe is (

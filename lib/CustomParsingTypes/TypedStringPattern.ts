@@ -1,12 +1,13 @@
 import {
+	is_string,
 	object_has_property,
 	object_has_property_that_equals,
-	SupportedSubSchemaType,
 	value_is_non_array_object,
-} from './CustomPairingTypes';
+} from '@satisfactory-dev/predicates.ts';
+
 import {
-	is_string,
-} from '../StringStartsWith';
+	SupportedSubSchemaType,
+} from './CustomPairingTypes';
 
 export type pattern_schema_type = {
 	type: 'string',

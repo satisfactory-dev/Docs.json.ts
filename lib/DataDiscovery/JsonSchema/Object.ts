@@ -10,11 +10,12 @@ import {
 	SchemaObject,
 } from 'ajv/dist/2020';
 import {
+	is_string,
 	object_has_property,
 	value_is_non_array_object,
-} from '../../CustomParsingTypes/CustomPairingTypes';
+} from '@satisfactory-dev/predicates.ts';
+
 import {
-	is_string,
 	local_ref,
 } from '../../StringStartsWith';
 import {

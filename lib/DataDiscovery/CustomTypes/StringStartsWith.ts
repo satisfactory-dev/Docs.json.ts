@@ -11,7 +11,7 @@ import {
 } from '../../TypeDefinitionDiscovery/CustomParsingTypes/string_starts_with';
 import {
 	is_string,
-} from '../../StringStartsWith';
+} from '@satisfactory-dev/predicates.ts';
 import ts, {
 	AsExpression,
 } from 'typescript';

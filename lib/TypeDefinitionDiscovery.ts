@@ -9,12 +9,12 @@ import {
 } from './TypesDiscovery/CandidatesDiscovery';
 import {
 	is_non_empty_array,
+	is_string,
 	object_has_non_empty_array_property,
 	object_has_property,
 	value_is_non_array_object,
-} from './CustomParsingTypes/CustomPairingTypes';
+} from '@satisfactory-dev/predicates.ts';
 import {
-	is_string,
 	local_ref,
 } from './StringStartsWith';
 import ts, {

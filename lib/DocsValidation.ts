@@ -6,7 +6,7 @@ import {
 } from './CustomParsingTypes/UnrealEngineString';
 import {
 	is_string,
-} from './StringStartsWith';
+} from '@satisfactory-dev/predicates.ts';
 
 declare type array_tokenizer = {
 	values: unknown[];

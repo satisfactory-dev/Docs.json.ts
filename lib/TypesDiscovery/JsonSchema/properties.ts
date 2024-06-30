@@ -5,7 +5,7 @@ import {
 	is_non_empty_array,
 	object_has_property,
 	value_is_non_array_object,
-} from '../../CustomParsingTypes/CustomPairingTypes';
+} from '@satisfactory-dev/predicates.ts';
 
 export class properties extends CandidatesDiscovery
 {

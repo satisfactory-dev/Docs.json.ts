@@ -10,7 +10,8 @@ import {
 } from '../../lib/TsFactoryWrapper';
 import {
 	non_empty_keys,
-} from '../../lib/ArrayUtilities';
+} from '@satisfactory-dev/predicates.ts';
+
 import ts, {
 	LiteralTypeNode,
 	StringLiteral,

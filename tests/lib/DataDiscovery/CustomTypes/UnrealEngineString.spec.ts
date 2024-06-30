@@ -17,7 +17,7 @@ import {
 } from '../../../../lib/CustomParsingTypes/UnrealEngineString';
 import {
 	is_string,
-} from '../../../../lib/StringStartsWith';
+} from '@satisfactory-dev/predicates.ts';
 
 void describe('UnrealEngineStringConverter', () => {
 	const example_UnrealEngineString_value_left = '/Script/CoreUObject.Class';

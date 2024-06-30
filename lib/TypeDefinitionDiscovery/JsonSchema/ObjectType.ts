@@ -14,7 +14,7 @@ import {
 } from '../GeneratorDoesDiscovery';
 import {
 	is_string,
-} from '../../StringStartsWith';
+} from '@satisfactory-dev/predicates.ts';
 
 export type RawData = {
 	type: 'object',

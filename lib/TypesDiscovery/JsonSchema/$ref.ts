@@ -5,12 +5,10 @@ import {
 	SchemaObject,
 } from 'ajv/dist/2020';
 import {
+	is_string,
 	object_has_property,
 	value_is_non_array_object,
-} from '../../CustomParsingTypes/CustomPairingTypes';
-import {
-	is_string,
-} from '../../StringStartsWith';
+} from '@satisfactory-dev/predicates.ts';
 
 export class $ref extends CandidatesDiscovery
 {

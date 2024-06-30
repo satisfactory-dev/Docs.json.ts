@@ -20,7 +20,7 @@ import {
 } from '../../../../lib/CustomParsingTypes/TypedString';
 import {
 	is_string,
-} from '../../../../lib/StringStartsWith';
+} from '@satisfactory-dev/predicates.ts';
 
 void describe('TypedStringConverter', async () => {
 	const discovery = new DataDiscovery(docs);

@@ -34,7 +34,7 @@ import {
 } from '../../StringStartsWith';
 import {
 	object_has_property,
-} from '../../CustomParsingTypes/CustomPairingTypes';
+} from '@satisfactory-dev/predicates.ts';
 
 function create_combinations(values:Set<string>) : string[][] {
 	const as_array:string[] = [...values.values()];

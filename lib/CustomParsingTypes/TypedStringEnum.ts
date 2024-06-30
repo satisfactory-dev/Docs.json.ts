@@ -1,16 +1,17 @@
 import {
+	is_string,
 	object_has_non_empty_array_property,
 	object_has_property,
-	SupportedSubSchemaType,
 	value_is_non_array_object,
+} from '@satisfactory-dev/predicates.ts';
+
+import {
+	SupportedSubSchemaType,
 } from './CustomPairingTypes';
 import {
 	typed_string_const_value_regex,
 	typed_string_const_value_regex__native,
 } from './TypedStringConst';
-import {
-	is_string,
-} from '../StringStartsWith';
 
 export type enum_schema_type = {type: 'string'; enum: [string, ...string[]]};
 

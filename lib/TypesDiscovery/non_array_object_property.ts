@@ -4,7 +4,7 @@ import {
 import {
 	object_has_property,
 	value_is_non_array_object,
-} from '../CustomParsingTypes/CustomPairingTypes';
+} from '@satisfactory-dev/predicates.ts';
 
 export class non_array_object_property extends PropertyDependentDiscovery
 {

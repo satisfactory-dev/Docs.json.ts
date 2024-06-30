@@ -13,7 +13,7 @@ import {
 } from '../../lib/TsFactoryWrapper';
 import {
 	value_is_non_array_object,
-} from '../../lib/CustomParsingTypes/CustomPairingTypes';
+} from '@satisfactory-dev/predicates.ts';
 
 void describe('FromArray', () => {
 	void it('behaves', async () => {
