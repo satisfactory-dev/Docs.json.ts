@@ -87,6 +87,7 @@ export class DocsTsGenerator {
 	private readonly cache_path: string | undefined;
 	private readonly docs_path: string | DocsData;
 	public readonly ajv:Ajv;
+	readonly types_from_module: string|undefined;
 
 	static readonly PERF_EARLY_RETURN = 'Early Return of Docs.json';
 	static readonly PERF_FAILURE = 'Failure to load Docs.json';
@@ -106,14 +107,17 @@ export class DocsTsGenerator {
 		docs_path,
 		// optional cache folder path for cacheable resources
 		cache_path = undefined,
+		types_from_module = undefined,
 	}: {
 		ajv: Ajv,
 		docs_path: string | DocsData;
 		cache_path?: string;
+		types_from_module?: string,
 	}) {
 		this.ajv = ajv;
 		this.docs_path = docs_path;
 		this.cache_path = cache_path;
+		this.types_from_module = types_from_module;
 	}
 
 	async definition(

@@ -414,12 +414,21 @@ export class TypeDefinitionWriter
 				}
 			}
 
+			let code = await format_code(
+				node_strings
+					.join('\n\n')
+			);
+
+			if (this.docs.types_from_module) {
+				code = code.replace(
+					/} from '(?:\.\.\/)+(classes|common|utils)\//g,
+					`} from '${this.docs.types_from_module}/$1`
+				);
+			}
+
 			await writeFile(
 				file_name,
-				await format_code(
-					node_strings
-						.join('\n\n')
-				)
+				code
 			);
 		}
 		performance.measure(
