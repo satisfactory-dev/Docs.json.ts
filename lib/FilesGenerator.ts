@@ -55,6 +55,17 @@ export function guess_filename(ref: string): string {
 		|| ref.startsWith('EditorCurveData--')
 	) {
 		return 'classes/base.ts';
+	} else if (
+		[
+			'boolean',
+			'boolean-extended',
+			'integer-string',
+			'integer-string--signed',
+			'decimal-string',
+			'decimal-string--signed',
+		].includes(ref)
+	) {
+		return 'common/scalar.ts';
 	}
 
 	return 'common/unassigned.ts';

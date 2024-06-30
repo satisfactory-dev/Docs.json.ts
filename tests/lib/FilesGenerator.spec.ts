@@ -59,6 +59,10 @@ void describe('guess_filename', () => {
 			'common/unassigned.ts'
 		);
 		assert.equal(
+			guess_filename('boolean'),
+			'common/scalar.ts'
+		);
+		assert.equal(
 			guess_filename('NativeClass--foo'),
 			'classes/base.ts'
 		);
