@@ -4,7 +4,7 @@
 # Current Plan for Development:
 
 -   If [the relevant QA Site post](https://questions.satisfactorygame.com/post/65e5367dcd33105bd53f931f) gets resolved via a public announcement and/or the inclusion of a license:
-    -   generated files will be included in the repo
+    -   all generated files will be included in the repo
     -   Docs.json _may_ be included
     -   Docs.utf8.json _may_ be included
 -   the contents of [data-progress.md](data-progress.md) do not indicate that data generation is _valid_, only that it spits out _something_.
