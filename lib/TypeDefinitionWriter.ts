@@ -74,7 +74,7 @@ import {
 } from './__dirname';
 import {
 	compile,
-} from './AjvUtilities';
+} from '@satisfactory-dev/ajv-utilities';
 
 const __dirname = __dirname_from_meta(import.meta);
 

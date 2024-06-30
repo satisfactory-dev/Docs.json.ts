@@ -35,7 +35,7 @@ import {
 } from '../../TypeDefinitionDiscovery/JsonSchema/String';
 import {
 	compile,
-} from '../../AjvUtilities';
+} from '@satisfactory-dev/ajv-utilities';
 
 export type string_schema = {
 	type: 'string',

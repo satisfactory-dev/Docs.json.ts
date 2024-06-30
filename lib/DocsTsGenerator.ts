@@ -48,7 +48,7 @@ import {
 import {
 	compile,
 	esmify,
-} from './AjvUtilities';
+} from '@satisfactory-dev/ajv-utilities';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 

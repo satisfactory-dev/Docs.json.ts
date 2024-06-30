@@ -25,7 +25,7 @@ import {
 } from './DocsTsGenerator';
 import {
 	compile,
-} from './AjvUtilities';
+} from '@satisfactory-dev/ajv-utilities';
 import {
 	local_ref,
 } from './StringStartsWith';

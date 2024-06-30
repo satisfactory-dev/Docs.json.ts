@@ -10,7 +10,7 @@ import {
 } from '../Exceptions';
 import {
 	compile,
-} from '../AjvUtilities';
+} from '@satisfactory-dev/ajv-utilities';
 
 export abstract class Converter<
 	Schema extends SchemaObject,

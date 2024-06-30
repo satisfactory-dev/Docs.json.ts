@@ -66,7 +66,7 @@ import {
 } from './MarkdownUtilities';
 import {
 	compile,
-} from './AjvUtilities';
+} from '@satisfactory-dev/ajv-utilities';
 import {
 	NoMatchError,
 } from './Exceptions';

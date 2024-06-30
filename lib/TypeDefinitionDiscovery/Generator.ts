@@ -7,7 +7,7 @@ import {
 } from 'typescript';
 import {
 	compile,
-} from '../AjvUtilities';
+} from '@satisfactory-dev/ajv-utilities';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type AnyGenerator = Generator<any>;

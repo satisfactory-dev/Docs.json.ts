@@ -38,7 +38,7 @@ import {
 } from '../../DocsValidation';
 import {
 	compile,
-} from '../../AjvUtilities';
+} from '@satisfactory-dev/ajv-utilities';
 import {
 	typed_string,
 } from '../../TypeDefinitionDiscovery/CustomParsingTypes/typed_string';
