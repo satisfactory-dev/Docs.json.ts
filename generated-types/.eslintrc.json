@@ -1,8 +1,6 @@
 {
 	"root": false,
-	"extends": [
-		"../.eslintrc.json"
-	],
+	"extends": ["../.eslintrc.json"],
 	"parserOptions": {
 		"project": "tsconfig.generated-types-check.json"
 	},
