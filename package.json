@@ -19,9 +19,10 @@
   },
   "devDependencies": {
     "@satisfactory-dev/custom-assert": "^0.2.3",
+    "@signpostmarv/eslint-config": "^0.2.0",
     "@signpostmarv/setup-performance-observer": "^0.1.3",
     "@signpostmarv/ts-assert": "^0.3.1",
-    "@types/eslint": "^8.56.6",
+    "@types/eslint": "^9.6.1",
     "@types/node": "^20.11.20",
     "c8": "^10.1.2",
     "ts-node": "^10.9.2"
@@ -30,10 +31,10 @@
     "@satisfactory-dev/ajv-utilities": "^0.1.1",
     "@satisfactory-dev/predicates.ts": "^0.1.1",
     "ajv": "^8.12.0",
-    "eslint": "^8.57.0",
+    "eslint": "^9.9.1",
     "glob": "^10.3.10",
     "prettier": "~3.3.2",
     "typescript": "~5.5.2",
-    "typescript-eslint": "^7.3.1"
+    "typescript-eslint": "^8.2.0"
   }
 }

@@ -398,6 +398,9 @@ export async function eslint_generated_types(parent_folder: string) {
 	const results = await eslint.lintFiles(`${parent_folder}/**/*.ts`);
 
 	process.stdout.write(
-		`${await (await eslint_formatter).format(results)}\n`
+		`${await (await eslint_formatter).format(results, {
+			cwd: parent_folder,
+			rulesMeta: eslint.getRulesMetaForResults(results),
+		})}\n`
 	);
 }
