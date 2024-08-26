@@ -29,3 +29,4 @@ types-progress.md
 /.prettierrc
 /tsconfig*.json
 /**/.gitkeep
+/**/eslint.config*.mjs
