@@ -19,7 +19,7 @@ jobs:
             - run: npm ci
             - run: ./node_modules/.bin/tsc --project ./tsconfig.app-check.json
             - run: ./node_modules/.bin/prettier . --check
-            - run: ./node_modules/.bin/eslint "./**/*.ts" --ignore-pattern "./generated-types/**/*.*"
+            - run: ./node_modules/.bin/eslint "./**/*.ts" --ignore-pattern "generated-types"
     coverage:
         needs: basic-checks
         runs-on: ubuntu-latest
