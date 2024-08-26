@@ -93,7 +93,7 @@ export class ObjectType extends GeneratorDoesDiscovery<
 						this.discovery.find(entry[1]),
 					];
 				}),
-				raw_data.required
+				raw_data.required,
 			);
 
 			if ('not' in raw_data) {
@@ -103,7 +103,7 @@ export class ObjectType extends GeneratorDoesDiscovery<
 			} else if ('$ref' in raw_data && is_string(raw_data.$ref)) {
 				type = ts.factory.createIntersectionTypeNode([
 					type_reference_node(adjust_class_name(
-						`${raw_data.$ref.substring(8)}__type`
+						`${raw_data.$ref.substring(8)}__type`,
 					)),
 					type,
 				]);

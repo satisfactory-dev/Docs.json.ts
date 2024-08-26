@@ -59,9 +59,9 @@ void describe('UnrealEngineStringConverter', () => {
 				assert.equal(
 					await instance.can_convert_schema_and_raw_data(
 						{type: 'string'},
-						example_UnrealEngineString_value
+						example_UnrealEngineString_value,
 					),
-					false
+					false,
 				)
 			});
 
@@ -75,10 +75,10 @@ void describe('UnrealEngineStringConverter', () => {
 						},
 						example_UnrealEngineString_value,
 					),
-					true
+					true,
 				);
 			});
-		}
+		},
 	);
 
 	void describe('convert()', () => {
@@ -169,7 +169,7 @@ void describe('UnrealEngineStringConverter', () => {
 		void it('rejects', async () => {
 			for (
 				const entry of convert_args.filter(
-					maybe => is_string(maybe[2])
+					maybe => is_string(maybe[2]),
 				)
 			) {
 				const [schema, raw_data, message] = entry;
@@ -182,7 +182,7 @@ void describe('UnrealEngineStringConverter', () => {
 							raw_data,
 						},
 						message,
-					}
+					},
 				);
 			}
 		});
@@ -190,7 +190,7 @@ void describe('UnrealEngineStringConverter', () => {
 		void it('passes', async () => {
 			for (
 				const entry of convert_args.filter(
-					maybe => 2 === maybe.length
+					maybe => 2 === maybe.length,
 				)
 			) {
 				const [schema, raw_data] = entry;
@@ -205,11 +205,11 @@ void describe('UnrealEngineStringConverter', () => {
 				ts_assert.isPropertyAccessExpression(result.expression);
 				ts_assert.isExpectedIdentifier(
 					result.expression.expression,
-					'UnrealEngineString'
+					'UnrealEngineString',
 				);
 				ts_assert.isExpectedIdentifier(
 					result.expression.name,
-					'fromString'
+					'fromString',
 				);
 				not_undefined(result.arguments);
 				array_has_size(result.arguments, 1);

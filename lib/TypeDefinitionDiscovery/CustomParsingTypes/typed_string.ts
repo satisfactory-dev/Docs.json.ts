@@ -50,7 +50,7 @@ function create_combinations(values:Set<string>) : string[][] {
 					maybe !== item
 					&& !filter_these_out.includes(maybe)
 				);
-			}
+			},
 		);
 
 		if (filtered.length) {
@@ -81,7 +81,7 @@ export class typed_string extends GeneratorDoesDiscovery<
 
 	constructor(
 		supported_refs: local_ref<string>[],
-		discovery:TypeDefinitionDiscovery
+		discovery:TypeDefinitionDiscovery,
 	) {
 		super(
 			{
@@ -90,7 +90,7 @@ export class typed_string extends GeneratorDoesDiscovery<
 					...generate_typed_string_$defs(supported_refs),
 				},
 			},
-			discovery
+			discovery,
 		);
 
 		this.known_types = [
@@ -102,7 +102,7 @@ export class typed_string extends GeneratorDoesDiscovery<
 		raw_data: typed_string_parent_type
 	) => TypeLiteralNode|TupleTypeNode|UnionTypeNode {
 		return (
-			raw_data:typed_string_parent_type
+			raw_data:typed_string_parent_type,
 		) : TypeLiteralNode|TupleTypeNode|UnionTypeNode => {
 			const {typed_string: typed_string_value} = raw_data;
 
@@ -112,9 +112,9 @@ export class typed_string extends GeneratorDoesDiscovery<
 						return minimum_size_array_of_single_type(
 							typed_string_value.minItems,
 							() => known_type.generate()(
-								typed_string_value.items as never
+								typed_string_value.items as never,
 							),
-							typed_string_value.maxItems
+							typed_string_value.maxItems,
 						)
 					}
 				}
@@ -122,17 +122,17 @@ export class typed_string extends GeneratorDoesDiscovery<
 				return minimum_size_array_of_single_type(
 					typed_string_value.minItems,
 					() => this.discovery.find(typed_string_value.items),
-					typed_string_value.maxItems
+					typed_string_value.maxItems,
 				);
 			} else if (typed_string.is_prefixItems_type(typed_string_value)) {
 				return minimum_size_array_of_single_type(
 					typed_string_value.minItems,
 					() => ts.factory.createTupleTypeNode(
 						typed_string_value.prefixItems.map(
-							e => this.discovery.find(e)
-						)
+							e => this.discovery.find(e),
+						),
 					),
-					typed_string_value.maxItems
+					typed_string_value.maxItems,
 				);
 			} else if (
 				typed_string.is_object_pattern_type(typed_string_value)
@@ -143,7 +143,7 @@ export class typed_string extends GeneratorDoesDiscovery<
 				] = Object.entries(typed_string_value.patternProperties)[0];
 				const properties = property_regex.substring(
 					2,
-					property_regex.length - 2
+					property_regex.length - 2,
 				).split('|');
 
 				const combinations = create_combinations(new Set(properties));
@@ -155,10 +155,10 @@ export class typed_string extends GeneratorDoesDiscovery<
 						return ts.factory.createTypeLiteralNode(
 							required.map(property => createPropertySignature(
 								property,
-								value_generator()
-							))
+								value_generator(),
+							)),
 						)
-					}
+					},
 				);
 
 				return ts.factory.createUnionTypeNode(result);
@@ -166,9 +166,9 @@ export class typed_string extends GeneratorDoesDiscovery<
 
 			return create_object_type_from_entries(
 				Object.entries(
-					typed_string_value.properties
+					typed_string_value.properties,
 				).map((
-					entry
+					entry,
 				) => {
 					for (const known_type of this.known_types) {
 						if (known_type.check(entry[1])) {
@@ -184,7 +184,7 @@ export class typed_string extends GeneratorDoesDiscovery<
 						this.discovery.find(entry[1]),
 					];
 				}),
-				typed_string_value.required
+				typed_string_value.required,
 			);
 		};
 	}
@@ -194,7 +194,7 @@ export class typed_string extends GeneratorDoesDiscovery<
 			| typed_string_inner_object_type
 			| typed_string_inner_object_pattern_type
 			| typed_string_inner_array_type
-			| typed_string_inner_array_prefixItems_type
+			| typed_string_inner_array_prefixItems_type,
 	): maybe is typed_string_inner_array_type {
 		return (
 			object_has_property(maybe, 'items')
@@ -207,7 +207,7 @@ export class typed_string extends GeneratorDoesDiscovery<
 			| typed_string_inner_object_type
 			| typed_string_inner_object_pattern_type
 			| typed_string_inner_array_type
-			| typed_string_inner_array_prefixItems_type
+			| typed_string_inner_array_prefixItems_type,
 	): maybe is typed_string_inner_object_pattern_type {
 		return object_has_property(maybe, 'minProperties');
 	}
@@ -217,7 +217,7 @@ export class typed_string extends GeneratorDoesDiscovery<
 			| typed_string_inner_object_type
 			| typed_string_inner_object_pattern_type
 			| typed_string_inner_array_type
-			| typed_string_inner_array_prefixItems_type
+			| typed_string_inner_array_prefixItems_type,
 	): maybe is typed_string_inner_object_type {
 		return object_has_property(maybe, 'properties');
 	}
@@ -227,7 +227,7 @@ export class typed_string extends GeneratorDoesDiscovery<
 			| typed_string_inner_object_type
 			| typed_string_inner_object_pattern_type
 			| typed_string_inner_array_type
-			| typed_string_inner_array_prefixItems_type
+			| typed_string_inner_array_prefixItems_type,
 	): maybe is typed_string_inner_array_prefixItems_type {
 		return object_has_property(maybe, 'prefixItems');
 	}

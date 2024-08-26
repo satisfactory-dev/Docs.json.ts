@@ -24,23 +24,23 @@ void describe('BooleanConverter.can_convert_schema_and_raw_data()', () => {
 		assert.equal(
 			await instance.can_convert_schema_and_raw_data(
 				{type: 'string'},
-				'True'
+				'True',
 			),
-			false
+			false,
 		);
 		assert.equal(
 			await instance.can_convert_schema_and_raw_data(
 				schema,
-				true
+				true,
 			),
-			false
+			false,
 		);
 		assert.equal(
 			await instance.can_convert_schema_and_raw_data(
 				schema,
-				'True'
+				'True',
 			),
-			true
+			true,
 		);
 	});
 });

@@ -31,7 +31,7 @@ export abstract class Converter<
 
 	static find_matching_schema(
 		candidates: [Converter<SchemaObject>, ...Converter<SchemaObject>[]],
-		schema: SchemaObject
+		schema: SchemaObject,
 	) : Promise<Converter<SchemaObject>> {
 		const converter = this.has_matching_schema(candidates, schema);
 
@@ -43,13 +43,13 @@ export abstract class Converter<
 			{
 				schema,
 			},
-			'Could not identify suitable candidate!'
+			'Could not identify suitable candidate!',
 		));
 	}
 
 	static has_matching_schema(
 		candidates: [Converter<SchemaObject>, ...Converter<SchemaObject>[]],
-		schema: SchemaObject
+		schema: SchemaObject,
 	) : Converter<SchemaObject>|undefined {
 		return candidates.find(e => e.can_convert_schema(schema));
 	}
@@ -57,12 +57,12 @@ export abstract class Converter<
 	static async has_matching_schema_and_raw_data(
 		candidates: [Converter<SchemaObject>, ...Converter<SchemaObject>[]],
 		schema: SchemaObject,
-		raw_data: unknown
+		raw_data: unknown,
 	) : Promise<Converter<SchemaObject>|undefined> {
 		for (const candidate of candidates) {
 			if (await candidate.can_convert_schema_and_raw_data(
 				schema,
-				raw_data
+				raw_data,
 			)) {
 				return candidate;
 			}

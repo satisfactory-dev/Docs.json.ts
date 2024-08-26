@@ -44,10 +44,10 @@ export class Ref extends ConverterMatchesSchema<
 
 	async can_convert_schema_and_raw_data(
 		schema: SchemaObject,
-		raw_data: unknown
+		raw_data: unknown,
 	): Promise<boolean> {
 		performance.mark(
-			`${this.constructor.name}.can_convert_schema_and_raw_data() start`
+			`${this.constructor.name}.can_convert_schema_and_raw_data() start`,
 		);
 		if (!this.can_convert_schema(schema)) {
 			performance.measure(
@@ -56,28 +56,28 @@ export class Ref extends ConverterMatchesSchema<
 				}.can_convert_schema_and_raw_data() early exit`,
 				`${
 					this.constructor.name
-				}.can_convert_schema_and_raw_data() start`
+				}.can_convert_schema_and_raw_data() start`,
 			);
 
 			return false;
 		}
 
 		const maybe = await this.resolve_to_final_converter_schema_only(
-			schema
+			schema,
 		);
 
 		const [definition, converter] = maybe;
 
 		const result = await converter.can_convert_schema_and_raw_data(
 			definition,
-			raw_data
+			raw_data,
 		);
 
 		performance.measure(
 			`${
 				this.constructor.name
 			}.can_convert_schema_and_raw_data() resolved`,
-			`${this.constructor.name}.can_convert_schema_and_raw_data() start`
+			`${this.constructor.name}.can_convert_schema_and_raw_data() start`,
 		);
 
 		return result;
@@ -85,12 +85,12 @@ export class Ref extends ConverterMatchesSchema<
 
 	async convert(
 		schema: schema_type,
-		raw_data: schema_type
+		raw_data: schema_type,
 	): Promise<ExpressionResult> {
 		performance.mark(`${this.constructor.name}.convert() start`);
 
 		const maybe = await this.resolve_to_final_converter_schema_only(
-			schema
+			schema,
 		);
 
 		if (undefined === maybe) {
@@ -99,7 +99,7 @@ export class Ref extends ConverterMatchesSchema<
 					schema,
 					raw_data,
 				},
-				'No final converter found!'
+				'No final converter found!',
 			);
 		}
 
@@ -110,19 +110,19 @@ export class Ref extends ConverterMatchesSchema<
 
 		const result = await converter.convert(
 			definition,
-			raw_data
+			raw_data,
 		);
 
 		performance.measure(
 			`${this.constructor.name}.convert()`,
-			`${this.constructor.name}.convert() start`
+			`${this.constructor.name}.convert() start`,
 		);
 
 		return result;
 	}
 
 	async resolve_to_final_converter_schema_only(
-		schema:schema_type
+		schema:schema_type,
 	): Promise<final_resolve_result> {
 		let checking:SchemaObject = schema;
 
@@ -133,7 +133,7 @@ export class Ref extends ConverterMatchesSchema<
 		if (!(schema.$ref in this.cache)) {
 			while (this.can_convert_schema(checking)) {
 				checking = await this.discovery.docs.definition(
-					checking.$ref.substring(8)
+					checking.$ref.substring(8),
 				);
 			}
 
@@ -149,14 +149,14 @@ export class Ref extends ConverterMatchesSchema<
 
 			const converter = await Converter.find_matching_schema(
 				await this.discovery.candidates,
-				checking
+				checking,
 			);
 
 			performance.measure(
 				`${this.constructor.name}.resolve_to_final_converter_schema_only()`,
 				`${
 					this.constructor.name
-				}.resolve_to_final_converter_schema_only() start`
+				}.resolve_to_final_converter_schema_only() start`,
 			);
 
 			this.cache[schema.$ref] = [checking, converter];
@@ -165,7 +165,7 @@ export class Ref extends ConverterMatchesSchema<
 				`${this.constructor.name}.resolve_to_final_converter_schema_only() cached`,
 				`${
 					this.constructor.name
-				}.resolve_to_final_converter_schema_only() start`
+				}.resolve_to_final_converter_schema_only() start`,
 			);
 		}
 

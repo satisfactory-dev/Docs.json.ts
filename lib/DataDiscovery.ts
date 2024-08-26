@@ -110,7 +110,7 @@ export class DataDiscovery
 		const json = await this.docs.get();
 
 		return Object.fromEntries(
-			json.map(e => [e.NativeClass, e.Classes.map(e => e.ClassName)])
+			json.map(e => [e.NativeClass, e.Classes.map(e => e.ClassName)]),
 		);
 	}
 
@@ -130,19 +130,19 @@ export class DataDiscovery
 			performance.mark(`${this.constructor.name}.generate() start`);
 			const converter = await Converter.find_matching_schema(
 				await this.candidates,
-				schema.prefixItems[index]
+				schema.prefixItems[index],
 			);
 
 			const maybe_result = await this.literal.value_literal(
 				await converter.convert(
 					schema.prefixItems[index],
-					e
-				)
+					e,
+				),
 			);
 
 			performance.measure(
 				`${this.constructor.name}.generate() on item`,
-				`${this.constructor.name}.generate() start`
+				`${this.constructor.name}.generate() start`,
 			);
 
 			result.push([maybe_result, e]);
@@ -160,7 +160,7 @@ export class DataDiscovery
 			this.progress[NativeClass_raw] = [];
 
 			const entry_class_name = adjust_unrealengine_value(
-				UnrealEngineString.fromString(NativeClass_raw).right
+				UnrealEngineString.fromString(NativeClass_raw).right,
 			);
 
 			const file = `data/CoreUObject/${entry_class_name}.ts`;
@@ -170,20 +170,20 @@ export class DataDiscovery
 			}
 
 			performance.mark(
-				`${this.constructor.name}.generate_files() const generation start`
+				`${this.constructor.name}.generate_files() const generation start`,
 			);
 
 			const result_statement = create_const_statement(variable(
 				adjust_class_name(entry_class_name),
 				result[0],
 				type_reference_node(
-					adjust_class_name(`${entry_class_name}__NativeClass`)
+					adjust_class_name(`${entry_class_name}__NativeClass`),
 				),
 			));
 
 			performance.measure(
 				`${this.constructor.name}.generate_files() const generation`,
-				`${this.constructor.name}.generate_files() const generation start`
+				`${this.constructor.name}.generate_files() const generation start`,
 			);
 
 			yield {
@@ -191,7 +191,7 @@ export class DataDiscovery
 				node: ts.factory.updateVariableStatement(
 					result_statement,
 					create_modifiers('export'),
-					result_statement.declarationList
+					result_statement.declarationList,
 				),
 			}
 		}
@@ -210,7 +210,7 @@ export class DataDiscovery
 
 					return was;
 				},
-				{} as {[key: string]: progress_group}
+				{} as {[key: string]: progress_group},
 			),
 		};
 
@@ -239,10 +239,10 @@ export class DataDiscovery
 							);
 							return `-   [${done ? 'x' : ' '}] ${key.replace(
 								/__/g,
-								'\\_\\_'
+								'\\_\\_',
 							)}`;
 						}).join('\n')
-					}`
+					}`,
 				);
 			}).join('\n\n')}
 		`);

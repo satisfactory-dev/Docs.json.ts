@@ -31,27 +31,27 @@ export class StringStartsWithConverter extends ConverterMatchesSchema<
 
 	can_convert_schema_and_raw_data(
 		schema: SchemaObject,
-		raw_data: unknown
+		raw_data: unknown,
 	): Promise<boolean> {
 		return Promise.resolve(
 			is_string(raw_data)
 			&& this.can_convert_schema(schema)
-			&& raw_data.startsWith(schema.string_starts_with)
+			&& raw_data.startsWith(schema.string_starts_with),
 		);
 	}
 
 	convert(
 		schema: RawData,
-		raw_data: string
+		raw_data: string,
 	): Promise<ExpressionResult<ts.AsExpression>> {
 		return Promise.resolve(new ExpressionResult(
 			ts.factory.createAsExpression(
 				ts.factory.createStringLiteral(raw_data),
 				type_reference_node(
 					'StringStartsWith',
-					create_literal(schema.string_starts_with)
-				)
-			)
+					create_literal(schema.string_starts_with),
+				),
+			),
 		));
 	}
 }

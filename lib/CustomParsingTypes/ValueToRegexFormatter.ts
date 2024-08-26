@@ -75,7 +75,7 @@ export class ValueToRegexFormatter
 	constructor($defs:{[key: string]: SchemaObject}) {
 		this.$defs = $defs;
 		this.UnrealEngineString = UnrealEngineString.ajv_macro_generator(
-			true
+			true,
 		);
 		this.typed_string_const = typed_string_const;
 		this.typed_string_enum = typed_string_enum;
@@ -90,13 +90,13 @@ export class ValueToRegexFormatter
 	}
 
 	private is_supported_$ref_object(
-		maybe:unknown
+		maybe:unknown,
 	): maybe is {$ref: local_ref<string>} {
 		return (
 			object_only_has_that_property(maybe, '$ref', is_string)
 			&& object_has_property(
 				this.supported_$ref_object,
-				maybe.$ref
+				maybe.$ref,
 			)
 		);
 	}
@@ -113,11 +113,11 @@ export class ValueToRegexFormatter
 			|| (
 				object_only_has_that_property(
 					maybe,
-					'oneOf'
+					'oneOf',
 				)
 				&& is_non_empty_array(
 					maybe.oneOf,
-					value_is_non_array_object
+					value_is_non_array_object,
 				)
 				&& maybe.oneOf.every(e => this.is_supported_definition(e))
 			)
@@ -125,7 +125,7 @@ export class ValueToRegexFormatter
 	}
 
 	private is_Texture2D_basic(
-		maybe: unknown
+		maybe: unknown,
 	) : maybe is {
 		type: 'string',
 		string_starts_with: 'Texture2D /Game/FactoryGame/',
@@ -137,13 +137,13 @@ export class ValueToRegexFormatter
 			&& object_has_property_that_equals(
 				maybe,
 				'string_starts_with',
-				'Texture2D /Game/FactoryGame/'
+				'Texture2D /Game/FactoryGame/',
 			)
 		);
 	}
 
 	private prepare_$ref_regex(
-		$defs:{[key: string]: SchemaObject}
+		$defs:{[key: string]: SchemaObject},
 	): {[key: local_ref<string>]: string} {
 		return Object.fromEntries(Object.entries($defs)
 			.filter(maybe => {
@@ -162,7 +162,7 @@ export class ValueToRegexFormatter
 	}
 
 	private typed_string_array_inner_to_regex(
-		typed_string_array:typed_string_array_inner
+		typed_string_array:typed_string_array_inner,
 	): string {
 		const regex = this.value_to_regex(typed_string_array.items);
 
@@ -174,7 +174,7 @@ export class ValueToRegexFormatter
 	}
 
 	private typed_string_object_inner_to_regex(
-		typed_string_object:typed_string_object_inner
+		typed_string_object:typed_string_object_inner,
 	): string {
 		return `\\(${Object.entries(typed_string_object.properties).map(
 			(entry, index) => {
@@ -192,20 +192,20 @@ export class ValueToRegexFormatter
 						? ''
 						: '?'
 				}`;
-			}
+			},
 		).join('')}\\)`;
 	}
 
 	private typed_string_object_pattern_inner_to_regex(
-		typed_string_object:typed_string_object_pattern_inner
+		typed_string_object:typed_string_object_pattern_inner,
 	): string {
 		const [property_regex, value] = Object.entries(
-			typed_string_object.patternProperties
+			typed_string_object.patternProperties,
 		)[0];
 
 		const regex = `(?:${
 			annoyingly_have_to_escape_property(
-				property_regex.substring(1, property_regex.length - 1)
+				property_regex.substring(1, property_regex.length - 1),
 			)
 		})=(?:${
 			this.value_to_regex(value)
@@ -254,11 +254,11 @@ export class ValueToRegexFormatter
 			&& value.$ref.substring(8) in this.$defs
 			&& object_only_has_that_property(
 				this.$defs[value.$ref.substring(8)],
-				'oneOf'
+				'oneOf',
 			)
 			&& is_non_empty_array(
 				this.$defs[value.$ref.substring(8)].oneOf,
-				value_is_non_array_object
+				value_is_non_array_object,
 			)
 		) {
 			const oneOf = this.$defs[
@@ -276,11 +276,11 @@ export class ValueToRegexFormatter
 			&& value.$ref.startsWith('#/$defs/')
 			&& value.$ref.substring(8) in this.$defs
 			&& this.is_supported_definition(
-				this.$defs[value.$ref.substring(8)]
+				this.$defs[value.$ref.substring(8)],
 			)
 		) {
 			return this.value_to_regex(
-				this.$defs[value.$ref.substring(8)]
+				this.$defs[value.$ref.substring(8)],
 			);
 		} else if (
 			this.is_Texture2D_basic(value)
@@ -306,7 +306,7 @@ export class ValueToRegexFormatter
 	}
 
 	private static is_typed_string_array_inner(
-		maybe:unknown
+		maybe:unknown,
 	): maybe is typed_string_array_inner {
 		if (!value_is_non_array_object(maybe)) {
 			return false;
@@ -330,14 +330,14 @@ export class ValueToRegexFormatter
 		return (
 			object_has_property(
 				maybe,
-				'items'
+				'items',
 			)
 			&& total_keys === expected_keys
 		);
 	}
 
 	private static is_typed_string_array_prefixItems(
-		maybe: unknown
+		maybe: unknown,
 	): maybe is typed_string_inner_array_prefixItems_type {
 		if (!value_is_non_array_object(maybe)) {
 			return false;
@@ -357,32 +357,32 @@ export class ValueToRegexFormatter
 			&& object_has_non_empty_array_property(
 				maybe,
 				'prefixItems',
-				value_is_non_array_object
+				value_is_non_array_object,
 			)
 			&& total_keys === expected_keys
 		)
 	}
 
 	private static is_typed_string_object_inner(
-		maybe:unknown
+		maybe:unknown,
 	): maybe is typed_string_object_inner {
 		return (
 			object_has_non_empty_array_property(
 				maybe,
 				'required',
-				is_string
+				is_string,
 			)
 			&& object_has_property(
 				maybe,
 				'properties',
-				value_is_non_array_object
+				value_is_non_array_object,
 			)
 			&& 2 === Object.keys(maybe).length
 		);
 	}
 
 	private static is_typed_string_object_parent(
-		maybe:unknown
+		maybe:unknown,
 	): maybe is typed_string_object_parent  {
 		return (
 			object_has_property_that_equals(maybe, 'type', 'string')
@@ -397,18 +397,18 @@ export class ValueToRegexFormatter
 	}
 
 	private static is_typed_string_object_pattern_inner(
-		maybe:unknown
+		maybe:unknown,
 	): maybe is typed_string_object_pattern_inner {
 		return (
 			object_has_property(
 				maybe,
 				'minProperties',
-				is_number
+				is_number,
 			)
 			&& object_has_property(
 				maybe,
 				'patternProperties',
-				value_is_non_array_object
+				value_is_non_array_object,
 			)
 			&& 2 === Object.keys(maybe).length
 		);

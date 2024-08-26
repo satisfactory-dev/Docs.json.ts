@@ -17,7 +17,7 @@ void describe('__dirname_from_meta', () => {
 	void it('behaves', () => {
 		assert.equal(
 			__dirname_from_meta(import.meta),
-			fileURLToPath(dirname(import.meta.url))
+			fileURLToPath(dirname(import.meta.url)),
 		);
 		assert.equal(
 			__dirname_from_meta({
@@ -26,7 +26,7 @@ void describe('__dirname_from_meta', () => {
 				url: 'file:///app/foo/bar.ts',
 				resolve: () => '',
 			}),
-			'/app/foo'
+			'/app/foo',
 		);
 	});
 });

@@ -24,7 +24,7 @@ export class ConstString extends CandidatesDiscovery
 			object_has_property(
 				current,
 				'$defs',
-				value_is_non_array_object
+				value_is_non_array_object,
 			)
 		) {
 			for (const entry of Object.entries(current.$defs)) {
@@ -40,13 +40,13 @@ export class ConstString extends CandidatesDiscovery
 	}
 
 	private is_const_string(
-		maybe:unknown
+		maybe:unknown,
 	): maybe is {type: 'string', const: string} {
 		return (
 			object_has_property_that_equals(
 				maybe,
 				'type',
-				'string'
+				'string',
 			)
 			&& object_has_property(maybe, 'const', is_string)
 			&& 2 === Object.keys(maybe).length

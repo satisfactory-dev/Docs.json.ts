@@ -10,7 +10,7 @@ export abstract class FilesGenerator
 
 	static async merge_files(
 		generators:FilesGenerator[],
-		onto:{[key: string]: Node[]}|undefined = undefined
+		onto:{[key: string]: Node[]}|undefined = undefined,
 	): Promise<{[key: string]: Node[]}> {
 		onto = onto || {};
 

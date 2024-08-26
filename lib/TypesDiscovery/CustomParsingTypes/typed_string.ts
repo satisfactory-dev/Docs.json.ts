@@ -29,7 +29,7 @@ export class typed_string extends CandidatesDiscovery
 			object_has_property(
 				current,
 				'$defs',
-				value_is_non_array_object
+				value_is_non_array_object,
 			)
 		) {
 			for (const entry of Object.entries(current.$defs)) {
@@ -45,7 +45,7 @@ export class typed_string extends CandidatesDiscovery
 	}
 
 	private is_typed_string(
-		maybe:unknown
+		maybe:unknown,
 	) : maybe is typed_string_parent_type {
 		return (
 			value_is_non_array_object(maybe)
@@ -55,7 +55,7 @@ export class typed_string extends CandidatesDiscovery
 			&& object_has_property(
 				maybe,
 				'typed_string',
-				value_is_non_array_object
+				value_is_non_array_object,
 			)
 			&& (
 				(
@@ -63,12 +63,12 @@ export class typed_string extends CandidatesDiscovery
 					&& object_has_non_empty_array_property(
 						maybe.typed_string,
 						'required',
-						is_string
+						is_string,
 					)
 					&& object_has_property(
 						maybe.typed_string,
 						'properties',
-						value_is_non_array_object
+						value_is_non_array_object,
 					)
 				)
 				|| (
@@ -83,7 +83,7 @@ export class typed_string extends CandidatesDiscovery
 						)
 						|| (
 							3 === Object.keys(
-								maybe.typed_string
+								maybe.typed_string,
 							).length
 							&& !object_has_property(
 								maybe.typed_string,
@@ -99,12 +99,12 @@ export class typed_string extends CandidatesDiscovery
 					&& object_has_property_that_equals(
 						maybe.typed_string,
 						'items',
-						false
+						false,
 					)
 					&& object_has_non_empty_array_property(
 						maybe.typed_string,
 						'prefixItems',
-						value_is_non_array_object
+						value_is_non_array_object,
 					)
 				)
 			)

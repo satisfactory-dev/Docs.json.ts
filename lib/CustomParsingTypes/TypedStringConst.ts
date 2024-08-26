@@ -13,7 +13,7 @@ import {
 
 export const typed_string_const_value_regex = `^(?:[A-Za-z0-9][A-Za-z0-9_ -]*|${UnrealEngineString_general_regex}|\\(\\))$`;
 export const typed_string_const_value_regex__native = new RegExp(
-	typed_string_const_value_regex
+	typed_string_const_value_regex,
 );
 export const typed_string_const_schema = {
 	type: 'object',
@@ -42,7 +42,7 @@ class TypedStringConst extends SupportedSubSchemaType<
 			&& object_has_property(
 				maybe,
 				'const',
-				is_string
+				is_string,
 			)
 			&& typed_string_const_value_regex__native.test(maybe.const)
 		);

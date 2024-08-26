@@ -59,13 +59,13 @@ abstract class StringConverter<
 		super(ajv, schema);
 		this.maybe_not = compile<not_matching_string_type>(
 			ajv,
-			not_matching_string_schema
+			not_matching_string_schema,
 		);
 	}
 
 	can_convert_schema_and_raw_data(
 		schema:SchemaObject,
-		raw_data:unknown
+		raw_data:unknown,
 	) : Promise<boolean> {
 		if (
 			!is_string(raw_data)
@@ -81,7 +81,7 @@ abstract class StringConverter<
 		}
 
 		return Promise.resolve(
-			this.can_convert_schema(schema)
+			this.can_convert_schema(schema),
 		);
 	}
 }
@@ -104,10 +104,10 @@ export class BasicStringConverter extends StringConverter<
 
 	convert(
 		_: string_schema,
-		raw_data: string
+		raw_data: string,
 	): Promise<ExpressionResult<StringLiteral>> {
 		return Promise.resolve(new ExpressionResult<StringLiteral>(
-			ts.factory.createStringLiteral(raw_data)
+			ts.factory.createStringLiteral(raw_data),
 		));
 	}
 }
@@ -117,7 +117,7 @@ abstract class StringConvertHasConstraints<
 > extends StringConverter<Schema> {
 	async convert(
 		schema: Schema,
-		raw_data: string
+		raw_data: string,
 	): Promise<ExpressionResult<StringLiteral>> {
 		if (!await this.can_convert_schema_and_raw_data(schema, raw_data)) {
 			throw new NoMatchError(
@@ -125,12 +125,12 @@ abstract class StringConvertHasConstraints<
 					schema,
 					raw_data,
 				},
-				'Raw data probably did not pass check!'
+				'Raw data probably did not pass check!',
 			);
 		}
 
 		return Promise.resolve(new ExpressionResult<StringLiteral>(
-			ts.factory.createStringLiteral(raw_data)
+			ts.factory.createStringLiteral(raw_data),
 		));
 	}
 }
@@ -152,12 +152,12 @@ export class ConstStringConverter extends StringConvertHasConstraints<
 
 	can_convert_schema_and_raw_data(
 		schema:SchemaObject,
-		raw_data:unknown
+		raw_data:unknown,
 	) : Promise<boolean> {
 		return Promise.resolve(
 			this.can_convert_schema(schema)
 			&& is_string(raw_data)
-			&& schema.const === raw_data
+			&& schema.const === raw_data,
 		);
 	}
 }
@@ -183,12 +183,12 @@ export class EnumStringConverter extends StringConvertHasConstraints<
 
 	can_convert_schema_and_raw_data(
 		schema:SchemaObject,
-		raw_data:unknown
+		raw_data:unknown,
 	) : Promise<boolean> {
 		return Promise.resolve(
 			this.can_convert_schema(schema)
 			&& is_string(raw_data)
-			&& schema.enum.includes(raw_data)
+			&& schema.enum.includes(raw_data),
 		);
 	}
 }
@@ -211,18 +211,18 @@ export class PatternConverter extends ConverterMatchesSchema<
 	}
 	can_convert_schema_and_raw_data(
 		schema: SchemaObject,
-		raw_data: unknown
+		raw_data: unknown,
 	): Promise<boolean> {
 		return Promise.resolve(
 			this.can_convert_schema(schema)
 			&& is_string(raw_data)
-			&& (new RegExp(schema.pattern)).test(raw_data)
+			&& (new RegExp(schema.pattern)).test(raw_data),
 		);
 	}
 
 	async convert(
 		schema: pattern_schema,
-		raw_data: string
+		raw_data: string,
 	): Promise<ExpressionResult<AsExpression>> {
 		if (
 			!this.can_convert_schema(schema)
@@ -233,7 +233,7 @@ export class PatternConverter extends ConverterMatchesSchema<
 					schema,
 					raw_data,
 				},
-				'Cannot convert schema!'
+				'Cannot convert schema!',
 			);
 		}
 
@@ -242,9 +242,9 @@ export class PatternConverter extends ConverterMatchesSchema<
 				ts.factory.createStringLiteral(raw_data),
 				type_reference_node(
 					'StringPassedRegExp',
-					create_literal(schema.pattern)
-				)
-			)
+					create_literal(schema.pattern),
+				),
+			),
 		));
 	}
 }

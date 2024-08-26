@@ -73,7 +73,7 @@ void describe('UnrealEngineString.check', () => {
 			assert.equal(
 				instance.check(input),
 				true,
-				JSON.stringify(instance.check.errors, null, '\t')
+				JSON.stringify(instance.check.errors, null, '\t'),
 			);
 		});
 	}

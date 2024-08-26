@@ -24,7 +24,7 @@ declare type object_tokenizer = {
 
 export function string_to_native_type(
 	data: string,
-	shallow = false
+	shallow = false,
 ): object | unknown[] | string | false {
 	data = data.trim();
 	if (/^\(.+\)$/.test(data)) {
@@ -40,7 +40,7 @@ export function string_to_native_type(
 
 export function string_to_object<T extends {[key: string]: unknown}>(
 	data: string,
-	shallow = false
+	shallow = false,
 ): T | false {
 	if ('' === data) {
 		return false;
@@ -49,7 +49,7 @@ export function string_to_object<T extends {[key: string]: unknown}>(
 	const match =
 		/^\([^=]+=([^,]+|\([^)]+\))(,[^=]+=(\([^)]+)\)|,[^=]+=[^,]+)*\)$/
 			.test(
-				data
+				data,
 			);
 
 	if (!match) {
@@ -65,7 +65,7 @@ export function string_to_object<T extends {[key: string]: unknown}>(
 					was: object_tokenizer,
 					is: string,
 					index: number,
-					array: string[]
+					array: string[],
 				): object_tokenizer => {
 					let add_buffer = false;
 					if ('key' === was.mode && '=' !== is) {
@@ -88,13 +88,13 @@ export function string_to_object<T extends {[key: string]: unknown}>(
 								was.current_value_buffer =
 									was.current_value_buffer.substring(
 										1,
-										was.current_value_buffer.length - 1
+										was.current_value_buffer.length - 1,
 									);
 							}
 							const coerced_value = shallow
 								? was.current_value_buffer
 								: string_to_native_type(
-									was.current_value_buffer
+									was.current_value_buffer,
 								);
 
 							was.properties.push([
@@ -126,12 +126,13 @@ export function string_to_object<T extends {[key: string]: unknown}>(
 									/^".+"$/.test(was.current_value_buffer)
 										? was.current_value_buffer.substring(
 											1,
-											was.current_value_buffer.length - 1
+											// eslint-disable-next-line max-len
+											was.current_value_buffer.length - 1,
 										)
 										: was.current_value_buffer
 								)
 								: string_to_native_type(
-									was.current_value_buffer
+									was.current_value_buffer,
 								);
 
 							was.properties.push([
@@ -154,14 +155,14 @@ export function string_to_object<T extends {[key: string]: unknown}>(
 					current_key_buffer: '',
 					current_value_buffer: '',
 					current_value_nesting: 0,
-				}
-			).properties
+				},
+			).properties,
 	) as T;
 }
 
 export function string_to_array<T extends unknown[]>(
 	data: string,
-	shallow = false
+	shallow = false,
 ): T | false {
 	if (!/^\(.+\)$/.test(data)) {
 		return false;
@@ -175,7 +176,7 @@ export function string_to_array<T extends unknown[]>(
 				was: array_tokenizer,
 				is: string,
 				index: number,
-				array: string[]
+				array: string[],
 			): array_tokenizer => {
 				let add_buffer = true;
 				let add_value = false;
@@ -205,21 +206,21 @@ export function string_to_array<T extends unknown[]>(
 						was.values.push(
 							was.current_item_buffer.substring(
 								1,
-								was.current_item_buffer.length - 1
-							)
+								was.current_item_buffer.length - 1,
+							),
 						);
 						was.current_item_buffer = '';
 					} else {
 						const coerced_value = shallow
 							? was.current_item_buffer.trim()
 							: string_to_native_type(
-								was.current_item_buffer
+								was.current_item_buffer,
 							);
 
 						was.values.push(
 							false !== coerced_value
 								? coerced_value
-								: was.current_item_buffer.trim()
+								: was.current_item_buffer.trim(),
 						);
 
 						was.current_item_buffer = '';
@@ -237,7 +238,7 @@ export function string_to_array<T extends unknown[]>(
 				values: [],
 				current_item_buffer: '',
 				current_value_nesting: 0,
-			}
+			},
 		).values as T;
 }
 

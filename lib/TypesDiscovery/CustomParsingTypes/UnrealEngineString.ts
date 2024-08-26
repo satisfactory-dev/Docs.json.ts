@@ -26,7 +26,7 @@ export class UnrealEngineString extends CandidatesDiscovery
 			object_has_property(
 				current,
 				'$defs',
-				value_is_non_array_object
+				value_is_non_array_object,
 			)
 		) {
 			for (const entry of Object.entries(current.$defs)) {

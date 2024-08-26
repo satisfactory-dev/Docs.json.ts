@@ -219,7 +219,7 @@ void describe('TypedStringConverter', async () => {
 
 				const promise = instance.can_convert_schema_and_raw_data(
 					schema,
-					raw_data
+					raw_data,
 				);
 
 				await assert.doesNotReject(promise);
@@ -232,7 +232,7 @@ void describe('TypedStringConverter', async () => {
 						JSON.stringify(schema)
 					}, ${
 						JSON.stringify(raw_data)
-					})`
+					})`,
 				);
 			}
 		});
@@ -243,7 +243,7 @@ void describe('TypedStringConverter', async () => {
 
 				const promise = instance.can_convert_schema_and_raw_data(
 					schema,
-					raw_data
+					raw_data,
 				);
 
 				await assert.doesNotReject(promise);
@@ -313,7 +313,7 @@ void describe('TypedStringConverter', async () => {
 				await assert.doesNotReject(promise);
 				assert.deepEqual(
 					(await promise).expression,
-					await discovery.literal.value_literal(expecting)
+					await discovery.literal.value_literal(expecting),
 				);
 			}
 		});

@@ -35,7 +35,7 @@ void describe('typed_string', async () => {
 
 	const instance = new typed_string(
 		discovered_types,
-		discovery
+		discovery,
 	);
 
 	const static_schema_checks:[
@@ -99,7 +99,7 @@ void describe('typed_string', async () => {
 
 				assert.equal(
 					typed_string.is_array_type(schema),
-					expectation
+					expectation,
 				);
 			}
 		})
@@ -112,7 +112,7 @@ void describe('typed_string', async () => {
 
 				assert.equal(
 					typed_string.is_object_pattern_type(schema),
-					expectation
+					expectation,
 				);
 			}
 		})
@@ -125,7 +125,7 @@ void describe('typed_string', async () => {
 
 				assert.equal(
 					typed_string.is_object_type(schema),
-					expectation
+					expectation,
 				);
 			}
 		})
@@ -138,7 +138,7 @@ void describe('typed_string', async () => {
 
 				assert.equal(
 					typed_string.is_prefixItems_type(schema),
-					expectation
+					expectation,
 				);
 			}
 		})
@@ -165,10 +165,10 @@ void describe('typed_string', async () => {
 			ts_assert.isRestTypeNode(result.elements[1]);
 			ts_assert.isArrayTypeNode(result.elements[1].type);
 			ts_assert.isLiteralTypeNode(
-				result.elements[1].type.elementType
+				result.elements[1].type.elementType,
 			);
 			ts_assert.isStringLiteral(
-				result.elements[1].type.elementType.literal
+				result.elements[1].type.elementType.literal,
 			);
 		})
 		void it('behaves with known array type', () => {
@@ -211,21 +211,21 @@ void describe('typed_string', async () => {
 			ts_assert.isStringLiteral(result.elements[0].elements[0].literal);
 			assert.equal(
 				result.elements[0].elements[0].literal.text,
-				'foo'
+				'foo',
 			);
 			ts_assert.isRestTypeNode(result.elements[1]);
 			ts_assert.isArrayTypeNode(result.elements[1].type);
 			ts_assert.isTupleTypeNode(result.elements[1].type.elementType);
 			array_has_size(result.elements[1].type.elementType.elements, 1);
 			ts_assert.isLiteralTypeNode(
-				result.elements[1].type.elementType.elements[0]
+				result.elements[1].type.elementType.elements[0],
 			)
 			ts_assert.isStringLiteral(
-				result.elements[1].type.elementType.elements[0].literal
+				result.elements[1].type.elementType.elements[0].literal,
 			);
 			assert.equal(
 				result.elements[1].type.elementType.elements[0].literal.text,
-				'foo'
+				'foo',
 			);
 		})
 		/**

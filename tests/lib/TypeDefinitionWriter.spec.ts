@@ -51,9 +51,9 @@ void describe('TypeDefinitionWriter', () => {
 					heritage_args[1].map(
 						e => ts.factory.createExpressionWithTypeArguments(
 							ts.factory.createIdentifier(e),
-							undefined
+							undefined,
 						),
-					)
+					),
 				)];
 
 			void it(
@@ -72,12 +72,12 @@ void describe('TypeDefinitionWriter', () => {
 								undefined,
 								undefined,
 								heritage_clause,
-								[]
-							)
+								[],
+							),
 						),
-						expectation
+						expectation,
 					);
-				}
+				},
 			)
 		}
 	})

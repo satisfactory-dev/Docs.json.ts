@@ -65,7 +65,7 @@ const pattern_string_schema:pattern_schema = {
 };
 
 function generate_basic_expression_check(
-	expecting:string
+	expecting:string,
 ): ((expression:Expression) => void) {
 	return (expression:Expression) => {
 		ts_assert.isStringLiteral(expression);
@@ -199,19 +199,19 @@ const data_sets: {
 						ts_assert.isTypeReferenceNode(expression.type);
 						ts_assert.isExpectedIdentifier(
 							expression.type.typeName,
-							'StringPassedRegExp'
+							'StringPassedRegExp',
 						);
 						not_undefined(expression.type.typeArguments);
 						array_has_size(expression.type.typeArguments, 1);
 						ts_assert.isLiteralTypeNode(
-							expression.type.typeArguments[0]
+							expression.type.typeArguments[0],
 						);
 						ts_assert.isStringLiteral(
-							expression.type.typeArguments[0].literal
+							expression.type.typeArguments[0].literal,
 						);
 						assert.equal(
 							expression.type.typeArguments[0].literal.text,
-							'^Foo(Bar|Baz)$'
+							'^Foo(Bar|Baz)$',
 						);
 					},
 				],
@@ -254,7 +254,7 @@ for (const data_set of Object.entries(data_sets)) {
 							JSON.stringify(actual)
 						}, expected ${
 							JSON.stringify(expectation)
-						}`
+						}`,
 					);
 				}
 			})
@@ -298,9 +298,9 @@ for (const data_set of Object.entries(data_sets)) {
 					await rejects_partial_match(
 						instance.convert(
 							schema as never,
-							raw_data
+							raw_data,
 						),
-						failure
+						failure,
 					);
 				}
 			});

@@ -10,13 +10,13 @@ import {
 export class properties extends CandidatesDiscovery
 {
 	discovery_candidates(
-		current: unknown
+		current: unknown,
 	): [unknown, ...unknown[]] | undefined {
 		if (
 			object_has_property(
 				current,
 				'properties',
-				value_is_non_array_object
+				value_is_non_array_object,
 			)
 		) {
 			const properties = Object.values(current.properties);

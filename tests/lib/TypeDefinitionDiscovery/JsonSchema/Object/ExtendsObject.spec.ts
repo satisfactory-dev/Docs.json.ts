@@ -26,7 +26,7 @@ void describe('ExtendsObject', async () => {
 				[
 					'#/$defs/foo',
 				],
-				discovery
+				discovery,
 			);
 		}
 

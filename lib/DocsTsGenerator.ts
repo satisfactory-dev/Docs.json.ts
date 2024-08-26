@@ -59,7 +59,7 @@ export class ValidationError extends Error {
 	constructor(
 		message: string,
 		errors: ErrorObject[] | undefined | null,
-		json: unknown
+		json: unknown,
 	) {
 		super(message);
 		this.errors = errors || [];
@@ -121,7 +121,7 @@ export class DocsTsGenerator {
 	}
 
 	async definition(
-		$ref:string
+		$ref:string,
 	): Promise<SchemaObject> {
 		const schema = await this.schema();
 
@@ -138,14 +138,14 @@ export class DocsTsGenerator {
 	async get() {
 		return this.validate(
 			await this.load(),
-			await this.schema()
+			await this.schema(),
 		);
 	}
 
 	async schema(): Promise<typeof update8_schema>
 	{
 		await this.validate_schema<typeof update8_schema>(
-			update8_schema
+			update8_schema,
 		);
 
 		return update8_schema;
@@ -157,13 +157,13 @@ export class DocsTsGenerator {
 			if ('string' !== typeof this.docs_path) {
 				performance.measure(
 					DocsTsGenerator.PERF_EARLY_RETURN,
-					DocsTsGenerator.PERF_START_LOADING_JSON
+					DocsTsGenerator.PERF_START_LOADING_JSON,
 				);
 				return this.docs_path;
 			} else if (!this.docs_path.endsWith('.json')) {
 				performance.measure(
 					DocsTsGenerator.PERF_FAILURE,
-					DocsTsGenerator.PERF_START_LOADING_JSON
+					DocsTsGenerator.PERF_START_LOADING_JSON,
 				);
 				throw new Error('Probably not a JSON file');
 			} else {
@@ -172,7 +172,7 @@ export class DocsTsGenerator {
 					if (this.cache_path) {
 						const utf8_filename = basename(this.docs_path).replace(
 							/\.json$/,
-							'.utf8.json'
+							'.utf8.json',
 						);
 						const utf8_filepath = `${this.cache_path}/${utf8_filename}`;
 
@@ -181,38 +181,38 @@ export class DocsTsGenerator {
 								await readFile(utf8_filepath);
 							performance.measure(
 								DocsTsGenerator.PERF_FILE_READ,
-								DocsTsGenerator.PERF_START_LOADING_JSON
+								DocsTsGenerator.PERF_START_LOADING_JSON,
 							);
 							maybe_json = JSON.parse(file_contents.toString());
 							performance.measure(
 								DocsTsGenerator.PERF_FILE_PARSED,
-								DocsTsGenerator.PERF_START_LOADING_JSON
+								DocsTsGenerator.PERF_START_LOADING_JSON,
 							);
 						} else {
 							maybe_json = await this.load_from_file(
-								this.docs_path
+								this.docs_path,
 							);
 							performance.measure(
 								DocsTsGenerator.PERF_FILE_PARSED,
-								DocsTsGenerator.PERF_START_LOADING_JSON
+								DocsTsGenerator.PERF_START_LOADING_JSON,
 							);
 
 							await writeFile(
 								utf8_filepath,
-								JSON.stringify(maybe_json, null, '\t') + '\n'
+								JSON.stringify(maybe_json, null, '\t') + '\n',
 							);
 						}
 					} else {
 						maybe_json = await this.load_from_file(this.docs_path);
 						performance.measure(
 							DocsTsGenerator.PERF_FILE_PARSED,
-							DocsTsGenerator.PERF_START_LOADING_JSON
+							DocsTsGenerator.PERF_START_LOADING_JSON,
 						);
 					}
 				} catch (err) {
 					performance.measure(
 						DocsTsGenerator.PERF_FAILURE,
-						DocsTsGenerator.PERF_START_LOADING_JSON
+						DocsTsGenerator.PERF_START_LOADING_JSON,
 					);
 
 					throw err;
@@ -221,12 +221,12 @@ export class DocsTsGenerator {
 				if (
 					!is_non_empty_array<{[key: string]: unknown}>(
 						maybe_json,
-						value_is_non_array_object
+						value_is_non_array_object,
 					)
 				) {
 					performance.measure(
 						DocsTsGenerator.PERF_FAILURE,
-						DocsTsGenerator.PERF_START_LOADING_JSON
+						DocsTsGenerator.PERF_START_LOADING_JSON,
 					);
 					throw new Error('Was expecting json to be an array!');
 				}
@@ -248,7 +248,7 @@ export class DocsTsGenerator {
 		});
 		performance.measure(
 			DocsTsGenerator.PERF_FILE_READ,
-			DocsTsGenerator.PERF_START_LOADING_JSON
+			DocsTsGenerator.PERF_START_LOADING_JSON,
 		);
 
 		const utf8 = Buffer.from(file).toString('utf-8');
@@ -258,7 +258,7 @@ export class DocsTsGenerator {
 
 	private async validate<T extends DocsData>(
 		json: unknown,
-		schema: SchemaObject
+		schema: SchemaObject,
 	): Promise<T> {
 		performance.mark(DocsTsGenerator.PERF_VALIDATION_STARTED);
 
@@ -266,20 +266,20 @@ export class DocsTsGenerator {
 
 		performance.measure(
 			DocsTsGenerator.PERF_VALIDATION_COMPILED,
-			DocsTsGenerator.PERF_VALIDATION_STARTED
+			DocsTsGenerator.PERF_VALIDATION_STARTED,
 		);
 
 		const result = validateDocs(json);
 		performance.measure(
 			DocsTsGenerator.PERF_VALIDATION_FINISHED,
-			DocsTsGenerator.PERF_VALIDATION_STARTED
+			DocsTsGenerator.PERF_VALIDATION_STARTED,
 		);
 
 		if (!result) {
 			throw new ValidationError(
 				'Failed to validate against the provided JSON Schema',
 				validateDocs.errors,
-				json
+				json,
 			);
 		}
 
@@ -288,19 +288,19 @@ export class DocsTsGenerator {
 
 	private async validate_schema<
 		Result = unknown,
-		Schema extends SchemaObject = SchemaObject
+		Schema extends SchemaObject = SchemaObject,
 	> (
-		schema: Schema
+		schema: Schema,
 	): Promise<ValidateFunction<Result>> {
 		if (
 			object_has_property(
 				schema,
 				'$defs',
-				value_is_non_array_object
+				value_is_non_array_object,
 			)
 			&& object_has_only_properties_that_match_predicate(
 				schema.$defs,
-				value_is_non_array_object
+				value_is_non_array_object,
 			)
 		) {
 			const {$defs} = schema;
@@ -308,7 +308,7 @@ export class DocsTsGenerator {
 			if (
 				object_has_only_properties_that_match_predicate(
 					$defs,
-					value_is_non_array_object
+					value_is_non_array_object,
 				)
 			) {
 				TypedString.instance().configure_ajv($defs, this.ajv);
@@ -322,12 +322,12 @@ export class DocsTsGenerator {
 				throw new ValidationError(
 					'Schema does not have an id!',
 					undefined,
-					schema
+					schema,
 				);
 			}
 
 			file_sha512.update(
-				await readFile(`${__dirname}/../schema/${schema['$id']}`)
+				await readFile(`${__dirname}/../schema/${schema['$id']}`),
 			);
 
 			const filename = `${schema['$id']}.${file_sha512.digest('hex')}.mjs`;
@@ -337,17 +337,17 @@ export class DocsTsGenerator {
 				performance.mark(DocsTsGenerator.PERF_VALIDATION_PRECOMPILE);
 				performance.measure(
 					'ajv configured',
-					DocsTsGenerator.PERF_VALIDATION_PRECOMPILE
+					DocsTsGenerator.PERF_VALIDATION_PRECOMPILE,
 				);
 
 				await writeFile(filepath, esmify(standalone(
 					this.ajv,
-					compile(this.ajv, schema)
+					compile(this.ajv, schema),
 				)));
 				performance.measure(
 					'ajv pre-compilation done',
 					DocsTsGenerator.PERF_VALIDATION_PRECOMPILE,
-					DocsTsGenerator.PERF_VALIDATION_PRECOMPILE
+					DocsTsGenerator.PERF_VALIDATION_PRECOMPILE,
 				);
 			}
 
@@ -366,7 +366,7 @@ const prettier_config = prettier.resolveConfig(`${__dirname}/../.prettierrc`);
 
 export async function format_code(
 	code: string,
-	parser: BuiltInParserName = 'typescript'
+	parser: BuiltInParserName = 'typescript',
 ): Promise<string> {
 	const config = await prettier_config;
 
@@ -380,8 +380,8 @@ export async function format_code(
 			{
 				parser,
 			},
-			config
-		)
+			config,
+		),
 	);
 
 	return code.replace(/(\t+) +/gm, '$1');
@@ -401,6 +401,6 @@ export async function eslint_generated_types(parent_folder: string) {
 		`${await (await eslint_formatter).format(results, {
 			cwd: parent_folder,
 			rulesMeta: eslint.getRulesMetaForResults(results),
-		})}\n`
+		})}\n`,
 	);
 }

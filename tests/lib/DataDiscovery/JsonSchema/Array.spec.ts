@@ -23,9 +23,9 @@ void describe('ArrayConverter.can_convert_schema_and_raw_data()', () => {
 		assert.equal(
 			await instance.can_convert_schema_and_raw_data(
 				{type: 'string'},
-				null
+				null,
 			),
-			false
+			false,
 		);
 	});
 
@@ -37,9 +37,9 @@ void describe('ArrayConverter.can_convert_schema_and_raw_data()', () => {
 					minItems: 1,
 					items: {type: 'string'},
 				},
-				['']
+				[''],
 			),
-			true
+			true,
 		)
 	});
 });

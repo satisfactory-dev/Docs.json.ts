@@ -45,7 +45,7 @@ class TypedStringEnum extends SupportedSubSchemaType<
 			&& maybe.enum.every(
 				(e) =>
 					is_string(e)
-					&& typed_string_const_value_regex__native.test(e)
+					&& typed_string_const_value_regex__native.test(e),
 			)
 		);
 	}

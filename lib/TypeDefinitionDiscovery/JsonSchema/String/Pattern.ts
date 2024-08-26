@@ -30,7 +30,7 @@ export class Pattern extends Generator<
 		raw_data:{type: 'string', pattern: string}
 	) => TypeReferenceNode {
 		return (
-			raw_data:{type: 'string', pattern: string}
+			raw_data:{type: 'string', pattern: string},
 		) => {
 			return type_reference_node(
 				'StringPassedRegExp',

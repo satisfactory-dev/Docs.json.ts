@@ -25,7 +25,7 @@ export class EnumString extends CandidatesDiscovery
 			object_has_property(
 				current,
 				'$defs',
-				value_is_non_array_object
+				value_is_non_array_object,
 			)
 		) {
 			for (const entry of Object.entries(current.$defs)) {
@@ -41,13 +41,13 @@ export class EnumString extends CandidatesDiscovery
 	}
 
 	private is_enum_string(
-		maybe:unknown
+		maybe:unknown,
 	): maybe is {type: 'string', enum: [string, ...string[]]} {
 		return (
 			object_has_property_that_equals(
 				maybe,
 				'type',
-				'string'
+				'string',
 			)
 			&& object_has_non_empty_array_property(maybe, 'enum', is_string)
 			&& 2 === Object.keys(maybe).length

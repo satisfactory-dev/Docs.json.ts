@@ -25,7 +25,7 @@ void describe('ArrayType', async () => {
 	).discovered_types;
 	const instance = new ArrayType(
 		discovered_types,
-		discovery
+		discovery,
 	);
 
 	void describe('generate', () => {
@@ -40,8 +40,8 @@ void describe('ArrayType', async () => {
 						property: {type: 'array', items: false},
 						message:
 							'Must specify prefixItems when items is false!',
-					}
-				)}
+					},
+				)},
 			)
 
 			void it('behaves with prefixItems', () => {
@@ -90,14 +90,14 @@ void describe('ArrayType', async () => {
 				ts_assert.isRestTypeNode(type.elements[1]);
 				ts_assert.isArrayTypeNode(type.elements[1].type);
 				ts_assert.isLiteralTypeNode(
-					type.elements[1].type.elementType
+					type.elements[1].type.elementType,
 				);
 				ts_assert.isStringLiteral(
-					type.elements[1].type.elementType.literal
+					type.elements[1].type.elementType.literal,
 				);
 				assert.equal(
 					type.elements[1].type.elementType.literal.text,
-					'foo'
+					'foo',
 				);
 			})
 
@@ -138,14 +138,14 @@ void describe('ArrayType', async () => {
 
 				ts_assert.isArrayTypeNode(type);
 				ts_assert.isLiteralTypeNode(
-					type.elementType
+					type.elementType,
 				);
 				ts_assert.isStringLiteral(
-					type.elementType.literal
+					type.elementType.literal,
 				);
 				assert.equal(
 					type.elementType.literal.text,
-					'foo'
+					'foo',
 				);
 			})
 		})

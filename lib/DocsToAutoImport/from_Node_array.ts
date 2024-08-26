@@ -117,8 +117,8 @@ export function EntityName_array_from_Node_array(nodes: Node[]): EntityName[] {
 				...[node.name, node.constraint, node.expression].filter(
 					(maybe): maybe is Exclude<typeof maybe, undefined> => {
 						return undefined !== maybe;
-					}
-				)
+					},
+				),
 			);
 		} else if (ts.isIfStatement(node)) {
 			sub_nodes.push(
@@ -128,8 +128,8 @@ export function EntityName_array_from_Node_array(nodes: Node[]): EntityName[] {
 					node.thenStatement,
 				].filter(
 					(maybe): maybe is Exclude<typeof maybe, undefined> =>
-						!!maybe
-				)
+						!!maybe,
+				),
 			);
 		} else if (ts.isVariableStatement(node)) {
 			sub_nodes.push(node.declarationList);
@@ -146,8 +146,8 @@ export function EntityName_array_from_Node_array(nodes: Node[]): EntityName[] {
 			sub_nodes.push(
 				...[node.initializer, node.type].filter(
 					(maybe): maybe is Exclude<typeof maybe, undefined> =>
-						!!maybe
-				)
+						!!maybe,
+				),
 			);
 		} else if (ts.isNewExpression(node)) {
 			sub_nodes.push(
@@ -157,16 +157,16 @@ export function EntityName_array_from_Node_array(nodes: Node[]): EntityName[] {
 					...(node.typeArguments || []),
 				].filter(
 					(maybe): maybe is Exclude<typeof maybe, undefined> =>
-						!!maybe
-				)
+						!!maybe,
+				),
 			);
 		} else if (ts.isPrefixUnaryExpression(node)) {
 			sub_nodes.push(node.operand);
 		} else if (ts.isBinaryExpression(node)) {
 			sub_nodes.push(
 				...[node.left, node.right].filter(
-					(maybe) => !ts.isIdentifier(maybe)
-				)
+					(maybe) => !ts.isIdentifier(maybe),
+				),
 			);
 		} else if (ts.isVariableDeclarationList(node)) {
 			sub_nodes.push(...node.declarations);
@@ -175,7 +175,7 @@ export function EntityName_array_from_Node_array(nodes: Node[]): EntityName[] {
 				node.trueType,
 				node.checkType,
 				node.extendsType,
-				node.falseType
+				node.falseType,
 			);
 		} else if (ts.isObjectBindingPattern(node)) {
 			sub_nodes.push(...node.elements);
@@ -191,8 +191,8 @@ export function EntityName_array_from_Node_array(nodes: Node[]): EntityName[] {
 					...(node.typeArguments || []),
 				].filter(
 					(maybe): maybe is Exclude<typeof maybe, undefined> =>
-						!!maybe
-				)
+						!!maybe,
+				),
 			);
 		} else if (ts.isVariableDeclaration(node)) {
 			sub_nodes.push(
@@ -202,22 +202,22 @@ export function EntityName_array_from_Node_array(nodes: Node[]): EntityName[] {
 					node.initializer,
 				].filter(
 					(maybe): maybe is Exclude<typeof maybe, undefined> =>
-						!!maybe
-				)
+						!!maybe,
+				),
 			);
 		} else if (ts.isTypeQueryNode(node)) {
 			sub_nodes.push(
 				...[...(node.typeArguments || []), node.exprName].filter(
 					(maybe): maybe is Exclude<typeof maybe, undefined> =>
-						!!maybe
-				)
+						!!maybe,
+				),
 			);
 		} else if (ts.isBindingElement(node)) {
 			sub_nodes.push(
 				...[node.initializer].filter(
 					(maybe): maybe is Exclude<typeof maybe, undefined> =>
-						!!maybe
-				)
+						!!maybe,
+				),
 			);
 		} else if (ts.isPropertyAccessExpression(node)) {
 			sub_nodes.push(node.expression);
@@ -237,8 +237,8 @@ export function EntityName_array_from_Node_array(nodes: Node[]): EntityName[] {
 					node.typeParameter,
 				].filter(
 					(maybe): maybe is Exclude<typeof maybe, undefined> =>
-						!!maybe
-				)
+						!!maybe,
+				),
 			);
 		} else if (ts.isTemplateLiteralTypeSpan(node)) {
 			sub_nodes.push(node.literal, node.type);
@@ -254,7 +254,7 @@ export function EntityName_array_from_Node_array(nodes: Node[]): EntityName[] {
 			sub_nodes.push(
 				...node.exportClause.elements.map((sub_node) => {
 					return sub_node.name;
-				})
+				}),
 			);
 		} else if (ts.isObjectLiteralExpression(node)) {
 			sub_nodes.push(...node.properties);
@@ -276,7 +276,7 @@ export function EntityName_array_from_Node_array(nodes: Node[]): EntityName[] {
 	if (others.length) {
 		throw new NoMatchError(
 			others,
-			'Unsupported types found!'
+			'Unsupported types found!',
 		);
 	}
 

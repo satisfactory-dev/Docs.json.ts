@@ -50,7 +50,7 @@ export type UnrealEngineString_string_or_string_array =
 export function string_or_string_array_to_node(
 	value:
 		| string
-		| [string, ...string[]]
+		| [string, ...string[]],
 ) : typeof value extends string
 	? (ts.LiteralTypeNode & {literal: StringLiteral})
 	: UnionTypeNode {
@@ -85,7 +85,7 @@ export type UnrealEngineString_parent_type = {
 };
 
 export function is_UnrealEngineString_parent(
-	maybe: unknown
+	maybe: unknown,
 ): maybe is UnrealEngineString_parent_type {
 	return (
 		value_is_non_array_object(maybe)
@@ -97,7 +97,7 @@ export function is_UnrealEngineString_parent(
 		&& object_has_property(maybe, 'UnrealEngineString')
 		&& (true === maybe.UnrealEngineString
 			|| is_UnrealEngineString_object(
-				maybe.UnrealEngineString
+				maybe.UnrealEngineString,
 			))
 	);
 }
@@ -154,7 +154,7 @@ export const UnrealEngineString_schema_definitions = {
 					minItems: 1,
 					items: {
 						$ref: local_ref(
-							'UnrealEngineString_right_starts_with'
+							'UnrealEngineString_right_starts_with',
 						),
 					},
 				},
@@ -255,7 +255,7 @@ export class UnrealEngineString {
 											starts_with
 										}${
 											right_value_starts_with_suffix
-										}`
+										}`,
 									)
 									.join('|')})`,
 						]
@@ -297,14 +297,14 @@ export class UnrealEngineString {
 					'left',
 					undefined,
 					ts.factory.createTypeReferenceNode('left'),
-					undefined
+					undefined,
 				),
 				ts.factory.createPropertyDeclaration(
 					create_modifiers('readonly'),
 					'right',
 					undefined,
 					ts.factory.createTypeReferenceNode('right'),
-					undefined
+					undefined,
 				),
 				create_method_without_type_parameters(
 					'constructor',
@@ -312,17 +312,17 @@ export class UnrealEngineString {
 					[
 						createParameter(
 							'left',
-							ts.factory.createTypeReferenceNode('left')
+							ts.factory.createTypeReferenceNode('left'),
 						),
 						createParameter(
 							'right',
-							ts.factory.createTypeReferenceNode('right')
+							ts.factory.createTypeReferenceNode('right'),
 						),
 					],
 					[
 						create_this_assignment('left', 'left'),
 						create_this_assignment('right', 'right'),
-					]
+					],
 				),
 				create_method_with_type_parameters(
 					'fromString',
@@ -343,7 +343,7 @@ export class UnrealEngineString {
 					[
 						createParameter(
 							'value',
-							create_type('string')
+							create_type('string'),
 						),
 					],
 					[
@@ -352,62 +352,62 @@ export class UnrealEngineString {
 							ts.factory.createCallExpression(
 								create_property_access(
 									ts.factory.createRegularExpressionLiteral(
-										UnrealEngineString_regex.toString()
+										UnrealEngineString_regex.toString(),
 									),
-									'exec'
+									'exec',
 								),
 								undefined,
 								[
 									ts.factory.createIdentifier('value'),
-								]
-							)
+								],
+							),
 						)),
 						create_throw_if(
 							'Error',
 							not(ts.factory.createIdentifier('result')),
 							[
 								template_expression_from_string(
-									'`Not an UnrealEngineString (${value})`'
+									'`Not an UnrealEngineString (${value})`',
 								),
-							]
+							],
 						),
 						ts.factory.createReturnStatement(
 							ts.factory.createNewExpression(
 								ts.factory.createIdentifier(
-									'UnrealEngineString'
+									'UnrealEngineString',
 								),
 								[
 									ts.factory.createTypeReferenceNode('left'),
 									ts.factory.createTypeReferenceNode(
-										'right'
+										'right',
 									),
 								],
 								[
 									ts.factory.createAsExpression(
 										create_index_access('result', 1),
 										ts.factory.createTypeReferenceNode(
-											'left'
-										)
+											'left',
+										),
 									),
 									ts.factory.createAsExpression(
 										parenthesize(
 											ts.factory.createLogicalOr(
 												create_index_access(
 													'result',
-													2
+													2,
 												),
 												create_index_access(
 													'result',
-													3
+													3,
 												),
-											)
+											),
 										),
 										ts.factory.createTypeReferenceNode(
-											'right'
+											'right',
 										),
 									),
-								]
-							)
+								],
+							),
 						),
 					],
 					['static'],
@@ -416,8 +416,8 @@ export class UnrealEngineString {
 						[
 							ts.factory.createTypeReferenceNode('left'),
 							ts.factory.createTypeReferenceNode('right'),
-						]
-					)
+						],
+					),
 				),
 			],
 			{
@@ -436,7 +436,7 @@ export class UnrealEngineString {
 					create_type('string'),
 					create_type('string'),
 				),
-			]
+			],
 		);
 		return [
 			{
@@ -452,24 +452,24 @@ export function adjust_unrealengine_value(value: string): string {
 }
 
 export function flexibly_create_UnrealEngineString_reference_type(
-	type_arguments: [TypeNode, TypeNode] | [TypeNode] | undefined
+	type_arguments: [TypeNode, TypeNode] | [TypeNode] | undefined,
 ): ts.TypeReferenceNode {
 	return type_reference_node(
 		'UnrealEngineString',
-		...(type_arguments || [])
+		...(type_arguments || []),
 	);
 }
 
 const empty_object = {};
 
 export function UnrealEngineString_reference_type(
-	data_from_schema: UnrealEngineString_type
+	data_from_schema: UnrealEngineString_type,
 ): TypeReferenceNode {
 	const data: Exclude<typeof data_from_schema, true> | typeof empty_object =
 		true === data_from_schema ? {} : data_from_schema;
 
 	let left_value: TypeNode = create_literal(
-		UnrealEngineString_left_default[0]
+		UnrealEngineString_left_default[0],
 	);
 	let left_changed = false;
 	let right_value: TypeNode = create_type('string');
@@ -501,7 +501,7 @@ export function UnrealEngineString_reference_type(
 
 			const right_options = [
 				...new Set(
-					starts_with instanceof Array ? starts_with : [starts_with]
+					starts_with instanceof Array ? starts_with : [starts_with],
 				).values(),
 			];
 
@@ -536,12 +536,12 @@ export function UnrealEngineString_reference_type(
 			? right_changed
 				? [left_value, right_value]
 				: [left_value]
-			: undefined
+			: undefined,
 	);
 }
 
 function is_string_or_string_array(
-	maybe: unknown
+	maybe: unknown,
 ): maybe is string | [string, ...string[]] {
 	return (
 		is_string(maybe)
@@ -553,7 +553,7 @@ function is_string_or_string_array(
 }
 
 function is_UnrealEngineString_object(
-	maybe: unknown
+	maybe: unknown,
 ): maybe is Exclude<UnrealEngineString_type, true> {
 	if (!value_is_non_array_object(maybe)) {
 		return false;

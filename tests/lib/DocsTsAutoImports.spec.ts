@@ -37,19 +37,19 @@ void describe('DocsTsAutoImports', () => {
 				create_modifiers('export'),
 				'foo',
 				undefined,
-				create_literal('foo')
+				create_literal('foo'),
 			);
 			const bar = ts.factory.createTypeAliasDeclaration(
 				create_modifiers('export'),
 				'bar',
 				undefined,
-				type_reference_node('foo')
+				type_reference_node('foo'),
 			);
 			const baz = ts.factory.createTypeAliasDeclaration(
 				create_modifiers('export'),
 				'baz',
 				undefined,
-				type_reference_node('foo')
+				type_reference_node('foo'),
 			);
 
 			const instance = new Testable({
@@ -78,8 +78,8 @@ void describe('DocsTsAutoImports', () => {
 						baz: 'bar',
 					},
 					null,
-					'\t'
-				) + '\n'
+					'\t',
+				) + '\n',
 			);
 		});
 
@@ -88,13 +88,13 @@ void describe('DocsTsAutoImports', () => {
 				create_modifiers('export'),
 				'foo',
 				undefined,
-				create_literal('foo')
+				create_literal('foo'),
 			);
 			const bar = ts.factory.createTypeAliasDeclaration(
 				create_modifiers('export'),
 				'foo',
 				undefined,
-				type_reference_node('foo')
+				type_reference_node('foo'),
 			);
 
 			const instance = new Testable({

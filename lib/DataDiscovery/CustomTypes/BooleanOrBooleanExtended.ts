@@ -44,7 +44,7 @@ export class BooleanConverter extends ConverterMatchesSchema<
 
 	can_convert_schema_and_raw_data(
 		schema: SchemaObject,
-		raw_data: unknown
+		raw_data: unknown,
 	): Promise<boolean> {
 		return Promise.resolve(this.can_convert_schema(schema) && (
 			'True' === raw_data
@@ -55,7 +55,7 @@ export class BooleanConverter extends ConverterMatchesSchema<
 
 	convert(
 		_: schema_type,
-		raw_data: '' | 'True' | 'False'
+		raw_data: '' | 'True' | 'False',
 	): Promise<ExpressionResult<NullLiteral | TrueLiteral | FalseLiteral>> {
 		return Promise.resolve(new ExpressionResult(
 			'' === raw_data
@@ -64,7 +64,7 @@ export class BooleanConverter extends ConverterMatchesSchema<
 					'True' === raw_data
 						? ts.factory.createTrue()
 						: ts.factory.createFalse()
-				)
+				),
 		));
 	}
 }

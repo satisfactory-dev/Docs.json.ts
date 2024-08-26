@@ -38,12 +38,12 @@ export class ImportTracker {
 							return ts.factory.createImportSpecifier(
 								false,
 								undefined,
-								ts.factory.createIdentifier(import_this)
+								ts.factory.createIdentifier(import_this),
 							);
-						})
-					)
+						}),
+					),
 				),
-				ts.factory.createStringLiteral(entry.from)
+				ts.factory.createStringLiteral(entry.from),
 			);
 		});
 	}
@@ -58,7 +58,7 @@ export class ImportTracker {
 						shorthand_entry.from,
 						shorthand_entry.import_these,
 					];
-				})
+				}),
 			);
 
 			for (const inner_entry of Object.entries(file_imports)) {
@@ -67,7 +67,7 @@ export class ImportTracker {
 				if (from.endsWith('.ts')) {
 					throw new NoMatchError(
 						from,
-						'files ending with .ts should not end up here'
+						'files ending with .ts should not end up here',
 					);
 				}
 
@@ -91,7 +91,7 @@ export class ImportTracker {
 				this.imports[filename] = Object.entries(merge_here).map(
 					(unpack) => {
 						return {from: unpack[0], import_these: unpack[1]};
-					}
+					},
 				);
 			}
 		}

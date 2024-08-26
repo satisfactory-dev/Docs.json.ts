@@ -17,7 +17,7 @@ export class FunctionDeclarations extends NodeExtraction<FunctionDeclaration> {
 			])
 			.flat()
 			.filter(
-				(maybe): maybe is Exclude<typeof maybe, undefined> => !!maybe
+				(maybe): maybe is Exclude<typeof maybe, undefined> => !!maybe,
 			);
 	}
 }

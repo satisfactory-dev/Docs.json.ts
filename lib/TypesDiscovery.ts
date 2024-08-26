@@ -76,12 +76,12 @@ export class TypesDiscovery
 					object_has_property(
 						schema,
 						'$defs',
-						value_is_non_array_object
+						value_is_non_array_object,
 					)
 						? schema.$defs
-						: {}
+						: {},
 				).map(local_ref).filter(
-					maybe => !discovered_types.has(maybe)
+					maybe => !discovered_types.has(maybe),
 				),
 			});
 		}
@@ -92,7 +92,7 @@ export class TypesDiscovery
 	private discover_types_from(
 		current:unknown,
 		schema:SchemaObject,
-		discovered_types:Set<string>
+		discovered_types:Set<string>,
 	) {
 		if (!value_is_non_array_object(current)) {
 			return;
@@ -101,7 +101,7 @@ export class TypesDiscovery
 		for (const discovery of this.candidates_discovery) {
 			const candidates = discovery.discovery_candidates(
 				current,
-				discovered_types
+				discovered_types,
 			);
 			for (const candidate of (candidates || [])) {
 				this.discover_types_from(candidate, schema, discovered_types);
@@ -119,14 +119,14 @@ export class TypesDiscovery
 	}
 
 	static async generate_is_NativeClass(
-		docs:DocsTsGenerator
+		docs:DocsTsGenerator,
 	) {
 		const schema = await docs.schema();
 
 		if (!object_has_property(
 			schema,
 			'$defs',
-			value_is_non_array_object
+			value_is_non_array_object,
 		)) {
 			throw new Error('Schema appears to have no $defs');
 		}
@@ -134,7 +134,7 @@ export class TypesDiscovery
 		if (!object_has_property(
 			schema.$defs,
 			'NativeClass',
-			value_is_non_array_object
+			value_is_non_array_object,
 		)) {
 			throw new Error('Could not find NativeClass on provided schema!');
 		}

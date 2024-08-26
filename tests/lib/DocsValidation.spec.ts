@@ -90,12 +90,12 @@ for (const describing of Object.entries(spec)) {
 					const [argument, to_equal] = assertion;
 					assert.deepEqual(
 						function_to_call(argument, false),
-						to_equal
+						to_equal,
 					);
 					if (3 === assertion.length) {
 						assert.deepEqual(
 							function_to_call(argument, true),
-							assertion[2]
+							assertion[2],
 						);
 					}
 				}

@@ -56,7 +56,7 @@ void describe('Literal.object_literal', () => {
 					original_value: random,
 					property: 'foo',
 				},
-			}
+			},
 		);
 	});
 });
@@ -73,11 +73,11 @@ void describe('Literal.value_literal', () => {
 
 	void it('leaves ExpressionResult alone', async () => {
 		const expression_result = new ExpressionResult(
-			ts.factory.createIdentifier('foo')
+			ts.factory.createIdentifier('foo'),
 		);
 
 		const value = await instance.value_literal(
-			expression_result
+			expression_result,
 		);
 
 		value_matches_ExpressionResult(value, expression_result);
@@ -124,7 +124,7 @@ void describe('Literal.value_literal', () => {
 			{
 				property: 1,
 				message: 'not an array!',
-			}
+			},
 		);
 	});
 });

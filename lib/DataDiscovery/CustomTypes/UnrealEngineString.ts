@@ -37,25 +37,25 @@ export class UnrealEngineStringConverter extends Converter<
 	CallExpression
 > {
 	can_convert_schema(
-		schema: SchemaObject
+		schema: SchemaObject,
 	): schema is UnrealEngineString_parent_type {
 		return is_UnrealEngineString_parent(schema);
 	}
 
 	can_convert_schema_and_raw_data(
 		schema: SchemaObject,
-		raw_data: unknown
+		raw_data: unknown,
 	): Promise<boolean> {
 		return Promise.resolve(
 			this.can_convert_schema(schema)
 			&& is_string(raw_data)
-			&& UnrealEngineString_regex.test(raw_data)
+			&& UnrealEngineString_regex.test(raw_data),
 		);
 	}
 
 	async convert(
 		schema: UnrealEngineString_parent_type,
-		raw_data: string
+		raw_data: string,
 	): Promise<ExpressionResult<CallExpression>> {
 		if (!await this.can_convert_schema_and_raw_data(schema, raw_data)) {
 			throw new NoMatchError(
@@ -63,7 +63,7 @@ export class UnrealEngineStringConverter extends Converter<
 					schema,
 					raw_data,
 				},
-				'Not an UnrealEngineString!'
+				'Not an UnrealEngineString!',
 			);
 		}
 		const type_args:[TypeNode, TypeNode] = [
@@ -76,7 +76,7 @@ export class UnrealEngineStringConverter extends Converter<
 		if (true !== UnrealEngineString) {
 			if (object_has_property(UnrealEngineString, 'left')) {
 				type_args[0] = string_or_string_array_to_node(
-					UnrealEngineString.left
+					UnrealEngineString.left,
 				);
 			}
 			if (object_has_property(UnrealEngineString, 'right')) {
@@ -84,12 +84,12 @@ export class UnrealEngineStringConverter extends Converter<
 					type_args[1] = type_reference_node(
 						'StringStartsWith',
 						string_or_string_array_to_node(
-							UnrealEngineString.right.starts_with
-						)
+							UnrealEngineString.right.starts_with,
+						),
 					);
 				} else {
 					type_args[1] = string_or_string_array_to_node(
-						UnrealEngineString.right
+						UnrealEngineString.right,
 					);
 				}
 			}
@@ -99,11 +99,11 @@ export class UnrealEngineStringConverter extends Converter<
 			ts.factory.createCallExpression(
 				create_property_access(
 					ts.factory.createIdentifier('UnrealEngineString'),
-					'fromString'
+					'fromString',
 				),
 				type_args,
-				[ts.factory.createStringLiteral(raw_data)]
-			)
+				[ts.factory.createStringLiteral(raw_data)],
+			),
 		);
 	}
 }

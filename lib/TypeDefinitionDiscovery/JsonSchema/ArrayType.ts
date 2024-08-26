@@ -33,7 +33,7 @@ export class ArrayType extends GeneratorDoesDiscovery<
 > {
 	constructor(
 		supported_refs: string[],
-		discovery:TypeDefinitionDiscovery
+		discovery:TypeDefinitionDiscovery,
 	) {
 		super(
 			{
@@ -83,17 +83,17 @@ export class ArrayType extends GeneratorDoesDiscovery<
 				if (
 					!object_has_non_empty_array_property(
 						raw_data,
-						'prefixItems'
+						'prefixItems',
 					)
 				) {
 					throw new NoMatchError(
 						raw_data,
-						'Must specify prefixItems when items is false!'
+						'Must specify prefixItems when items is false!',
 					);
 				}
 
 				return ts.factory.createTupleTypeNode(
-					raw_data.prefixItems.map(e => this.discovery.find(e))
+					raw_data.prefixItems.map(e => this.discovery.find(e)),
 				);
 			}
 
@@ -103,20 +103,20 @@ export class ArrayType extends GeneratorDoesDiscovery<
 					number
 				>(
 					raw_data,
-					'minItems'
+					'minItems',
 				)
 			) {
 				return minimum_size_array_of_single_type(
 					raw_data.minItems,
 					() => this.discovery.find(
-						raw_data.items
+						raw_data.items,
 					),
-					raw_data.maxItems
+					raw_data.maxItems,
 				)
 			}
 
 			return ts.factory.createArrayTypeNode(this.discovery.find(
-				raw_data.items
+				raw_data.items,
 			));
 		};
 	}

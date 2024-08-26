@@ -97,12 +97,12 @@ export function create_modifiers(
 
 			return was;
 		},
-		[first]
+		[first],
 	);
 
 	return non_empty_map<modifier, ModifierToken<ModifierSyntaxKind>>(
 		modifiers,
-		e => modifier_map[e]()
+		e => modifier_map[e](),
 	);
 }
 
@@ -124,7 +124,7 @@ export function createClass(
 	options: create_class_options = {},
 	type_parameters:
 		| [TypeParameterDeclaration, ...TypeParameterDeclaration[]]
-		| undefined = undefined
+		| undefined = undefined,
 ): ClassDeclaration {
 	let resolved_modifiers: undefined | Modifier[] = undefined;
 	const resolved_heritage: HeritageClause[] = [];
@@ -143,12 +143,12 @@ export function createClass(
 			.map((modifier) => {
 				if ('export' === modifier) {
 					return ts.factory.createModifier(
-						ts.SyntaxKind.ExportKeyword
+						ts.SyntaxKind.ExportKeyword,
 					);
 				}
 
 				return ts.factory.createModifier(
-					ts.SyntaxKind.AbstractKeyword
+					ts.SyntaxKind.AbstractKeyword,
 				);
 			});
 	}
@@ -158,11 +158,11 @@ export function createClass(
 			ts.factory.createHeritageClause(ts.SyntaxKind.ExtendsKeyword, [
 				ts.factory.createExpressionWithTypeArguments(
 					ts.factory.createIdentifier(
-						adjust_class_name(class_extends)
+						adjust_class_name(class_extends),
 					),
-					undefined
+					undefined,
 				),
-			])
+			]),
 		);
 	}
 
@@ -171,14 +171,14 @@ export function createClass(
 		ts.factory.createIdentifier(adjust_class_name(name)),
 		type_parameters,
 		resolved_heritage,
-		members
+		members,
 	);
 }
 
 export function createParameter(
 	name: string | ts.ObjectBindingPattern,
 	type: KeywordTypeSyntaxKind | TypeNode,
-	initializer: ts.Expression | undefined = undefined
+	initializer: ts.Expression | undefined = undefined,
 ) {
 	return ts.factory.createParameterDeclaration(
 		undefined,
@@ -188,7 +188,7 @@ export function createParameter(
 		'object' === typeof type
 			? type
 			: ts.factory.createKeywordTypeNode(type),
-		initializer
+		initializer,
 	);
 }
 
@@ -220,7 +220,7 @@ function create_method(
 			return createParameter(name, type);
 		}),
 		return_type,
-		ts.factory.createBlock(body)
+		ts.factory.createBlock(body),
 	);
 }
 
@@ -233,7 +233,7 @@ export function create_method_with_type_parameters(
 	parameters: createMethod_parameters_entry[],
 	body: ts.Statement[],
 	modifiers: supported_method_modifiers,
-	return_type: ts.TypeNode | undefined = undefined
+	return_type: ts.TypeNode | undefined = undefined,
 ) {
 	return create_method(
 		name,
@@ -241,7 +241,7 @@ export function create_method_with_type_parameters(
 		parameters,
 		modifiers,
 		body,
-		return_type
+		return_type,
 	);
 }
 
@@ -258,14 +258,14 @@ export function create_method_without_type_parameters(
 export function create_throw(
 	throw_this: string,
 	throw_arguments: [ts.Expression, ...ts.Expression[]],
-	type_parameters: [ts.TypeNode, ...ts.TypeNode[]] | undefined = undefined
+	type_parameters: [ts.TypeNode, ...ts.TypeNode[]] | undefined = undefined,
 ) {
 	return ts.factory.createThrowStatement(
 		ts.factory.createNewExpression(
 			ts.factory.createIdentifier(throw_this),
 			type_parameters,
-			throw_arguments
-		)
+			throw_arguments,
+		),
 	);
 }
 
@@ -273,34 +273,34 @@ export function create_throw_if(
 	throw_this: string,
 	throw_if: ts.Expression,
 	throw_arguments: [ts.Expression, ...ts.Expression[]],
-	type_parameters: [ts.TypeNode, ...ts.TypeNode[]] | undefined = undefined
+	type_parameters: [ts.TypeNode, ...ts.TypeNode[]] | undefined = undefined,
 ) {
 	return ts.factory.createIfStatement(
 		throw_if,
-		create_throw(throw_this, throw_arguments, type_parameters)
+		create_throw(throw_this, throw_arguments, type_parameters),
 	);
 }
 
 export function template_expression_from_string(
-	template: string
+	template: string,
 ): TemplateExpression {
 	const ast = ts.createSourceFile(
 		'create_span_from_template.ts',
 		template,
 		ts.ScriptTarget.Latest,
 		false,
-		ts.ScriptKind.TS
+		ts.ScriptKind.TS,
 	);
 
 	if (1 !== ast.statements.length) {
 		throw new Error('Input must have only one statement!');
 	} else if (!ts.isExpressionStatement(ast.statements[0])) {
 		throw new Error(
-			'Input must be an expression statement!'
+			'Input must be an expression statement!',
 		);
 	} else if (!ts.isTemplateExpression(ast.statements[0].expression)) {
 		throw new Error(
-			'Input must be a template literal expression!'
+			'Input must be a template literal expression!',
 		);
 	}
 
@@ -313,11 +313,11 @@ export function parenthesize(expression:Expression): ParenthesizedExpression {
 
 export function create_property_access(
 	on: Expression,
-	property: string
+	property: string,
 ) {
 	return ts.factory.createPropertyAccessExpression(
 		ts.isNewExpression(on) ? parenthesize(on) : on,
-		property
+		property,
 	);
 }
 
@@ -333,13 +333,13 @@ const type_map = {
 
 export function create_type(type: keyof typeof type_map): ts.KeywordTypeNode {
 	return ts.factory.createKeywordTypeNode(
-		type_map[type] as ts.KeywordTypeSyntaxKind
+		type_map[type] as ts.KeywordTypeSyntaxKind,
 	);
 }
 
 export function create_object_type_from_entries(
 	entries: [string, TypeNode][],
-	required?:[string, ...string[]]
+	required?:[string, ...string[]],
 ): TypeLiteralNode {
 	return ts.factory.createTypeLiteralNode(
 		entries.map((entry) => {
@@ -348,16 +348,16 @@ export function create_object_type_from_entries(
 			return createPropertySignature(
 				property,
 				type,
-				required ? required.includes(property) : true
+				required ? required.includes(property) : true,
 			);
-		})
+		}),
 	);
 }
 
 export function createPropertySignature(
 	property: string,
 	type: TypeNode,
-	required = true
+	required = true,
 ) : PropertySignature {
 	return ts.factory.createPropertySignature(
 		undefined,
@@ -365,7 +365,7 @@ export function createPropertySignature(
 		required
 			? undefined
 			: ts.factory.createToken(ts.SyntaxKind.QuestionToken),
-		type
+		type,
 	);
 }
 
@@ -374,17 +374,17 @@ export function needs_element_access(property: string): boolean {
 }
 
 export function computed_property_name_or_undefined(
-	property: string
+	property: string,
 ): ts.ComputedPropertyName | undefined {
 	return needs_element_access(property)
 		? ts.factory.createComputedPropertyName(
-			ts.factory.createStringLiteral(property)
+			ts.factory.createStringLiteral(property),
 		)
 		: undefined;
 }
 
 export function property_name_or_computed<T extends string = string>(
-	property: T
+	property: T,
 ): T | ts.ComputedPropertyName {
 	return computed_property_name_or_undefined(property) || property;
 }
@@ -392,11 +392,11 @@ export function property_name_or_computed<T extends string = string>(
 export function minimum_size_array_of_single_type(
 	repeat: number,
 	generate: () => ts.TypeNode,
-	max: number | undefined = undefined
+	max: number | undefined = undefined,
 ): ts.TupleTypeNode {
 	if (repeat < 0) {
 		throw new Error(
-			`repeat must be greater than or equal to 0, ${repeat} given.`
+			`repeat must be greater than or equal to 0, ${repeat} given.`,
 		);
 	} else if (repeat !== (repeat | 0)) {
 		throw new Error(`repeat must be an integer, ${repeat} given.`);
@@ -415,37 +415,37 @@ export function minimum_size_array_of_single_type(
 	return ts.factory.createTupleTypeNode([
 		...types,
 		ts.factory.createRestTypeNode(
-			ts.factory.createArrayTypeNode(generate())
+			ts.factory.createArrayTypeNode(generate()),
 		),
 	]);
 }
 
 export function create_this_assignment(
 	property: string,
-	identifier: string | ts.Expression
+	identifier: string | ts.Expression,
 ): ts.ExpressionStatement {
 	return ts.factory.createExpressionStatement(
 		ts.factory.createAssignment(
 			needs_element_access(property)
 				? ts.factory.createElementAccessExpression(
 					ts.factory.createThis(),
-					ts.factory.createStringLiteral(property)
+					ts.factory.createStringLiteral(property),
 				)
 				: create_property_access(
 					ts.factory.createThis(),
-					property
+					property,
 				),
 			is_string(identifier)
 				? ts.factory.createIdentifier(identifier)
-				: identifier
-		)
+				: identifier,
+		),
 	);
 }
 
 export function create_index_access(identifier: string, index: number) {
 	return ts.factory.createElementAccessExpression(
 		ts.factory.createIdentifier(identifier),
-		index
+		index,
 	);
 }
 
@@ -461,14 +461,14 @@ export function create_literal<
 >(value: T1): T2 {
 	if (value instanceof RegExp) {
 		return ts.factory.createRegularExpressionLiteral(
-			value.toString()
+			value.toString(),
 		) as T2;
 	}
 
 	return ts.factory.createLiteralTypeNode(
 		null === value
 			? ts.factory.createNull()
-			: ts.factory.createStringLiteral(value)
+			: ts.factory.createStringLiteral(value),
 	) as T2;
 }
 
@@ -489,7 +489,7 @@ function map_lazy_union_item_to_type(item: lazy_union_item): ts.TypeNode {
 	if ('object' === typeof item) {
 		if ('$ref' in item) {
 			return type_reference_node(
-				adjust_class_name(item.$ref.substring(8))
+				adjust_class_name(item.$ref.substring(8)),
 			);
 		}
 
@@ -514,12 +514,12 @@ export function create_lazy_union(
 	return create_union(
 		map_lazy_union_item_to_type(a),
 		map_lazy_union_item_to_type(b),
-		...rest.map(map_lazy_union_item_to_type)
+		...rest.map(map_lazy_union_item_to_type),
 	);
 }
 
 export function possibly_create_lazy_union(
-	items: lazy_union_item[]
+	items: lazy_union_item[],
 ): ts.TypeNode {
 	if (items.length < 1) {
 		throw new Error('Cannot create lazy unions from empty arrays!');
@@ -538,10 +538,10 @@ export type non_empty_string_literal_union = UnionTypeNode & {
 };
 
 export function create_typed_union(
-	items: [string, ...string[]]
+	items: [string, ...string[]],
 ): non_empty_string_literal_union {
 	return ts.factory.createUnionTypeNode(
-		items.map(create_literal)
+		items.map(create_literal),
 	) as non_empty_string_literal_union;
 }
 
@@ -551,7 +551,7 @@ export function create_const_declaration_list(
 ): VariableDeclarationList {
 	return ts.factory.createVariableDeclarationList(
 		[first, ...rest],
-		ts.NodeFlags.Const
+		ts.NodeFlags.Const,
 	);
 }
 
@@ -561,27 +561,27 @@ export function create_const_statement(
 ): VariableStatement {
 	return ts.factory.createVariableStatement(
 		undefined,
-		create_const_declaration_list(first, ...rest)
+		create_const_declaration_list(first, ...rest),
 	);
 }
 
 export function variable(
 	name: string,
 	value: Expression,
-	type: TypeNode|undefined = undefined
+	type: TypeNode|undefined = undefined,
 ) : VariableDeclaration {
 	return ts.factory.createVariableDeclaration(
 		name,
 		undefined,
 		type,
-		value
+		value,
 	);
 }
 
 export function not(
-	expression:Expression
+	expression:Expression,
 ): PrefixUnaryExpression & {operator: SyntaxKind.ExclamationToken} {
 	return ts.factory.createLogicalNot(
-		expression
+		expression,
 	) as PrefixUnaryExpression & {operator: SyntaxKind.ExclamationToken};
 }

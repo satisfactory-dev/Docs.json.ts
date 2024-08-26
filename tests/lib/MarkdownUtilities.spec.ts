@@ -40,7 +40,7 @@ void describe('remap', () => {
 						subgroups: {},
 					},
 				},
-			}
+			},
 		);
 	})
 })
@@ -82,7 +82,7 @@ void describe('reduce', () => {
 						'bat',
 					],
 				},
-			]
+			],
 		);
 		const bar:progress_group = {
 			members: ['foobar', 'bar_foo'],
@@ -121,7 +121,7 @@ void describe('reduce', () => {
 						'bat',
 					],
 				},
-			]
+			],
 		);
 	});
 })
@@ -131,9 +131,9 @@ void describe('remove_indentation', () => {
 		assert.equal(
 			remove_indentation(
 				`foo
-				bar`
+				bar`,
 			),
-			'foo\nbar'
+			'foo\nbar',
 		);
 	})
 	void it('will not need to bother', () => {

@@ -63,7 +63,7 @@ export class BooleanEnum extends Generator<
 	generate(): (raw_data:boolean_or_null_type) => boolean_or_null_return {
 		return (raw_data:boolean_or_null_type) => {
 			const boolean = ts.factory.createKeywordTypeNode(
-				ts.SyntaxKind.BooleanKeyword
+				ts.SyntaxKind.BooleanKeyword,
 			);
 
 			return 2 === raw_data.enum.length

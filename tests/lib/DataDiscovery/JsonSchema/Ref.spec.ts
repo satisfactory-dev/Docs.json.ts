@@ -31,14 +31,14 @@ void describe('Ref.can_convert_schema_and_raw_data()', () => {
 			{
 				$ref: local_ref('None'),
 			},
-			'None'
+			'None',
 		);
 
 		await assert.doesNotReject(promise);
 
 		assert.equal(
 			await promise,
-			true
+			true,
 		);
 	});
 
@@ -47,14 +47,14 @@ void describe('Ref.can_convert_schema_and_raw_data()', () => {
 			{
 				$ref: local_ref('None'),
 			},
-			null
+			null,
 		);
 
 		await assert.doesNotReject(promise);
 
 		assert.equal(
 			await promise,
-			false
+			false,
 		);
 	});
 });

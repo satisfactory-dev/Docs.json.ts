@@ -48,24 +48,24 @@ export class ArrayConverter extends ConverterMatchesSchema<
 
 	async can_convert_schema_and_raw_data(
 		schema: SchemaObject,
-		raw_data: unknown
+		raw_data: unknown,
 	): Promise<boolean> {
 		return Promise.resolve(
 			this.can_convert_schema(schema)
 			&& raw_data instanceof Array
 			&& !!((await this.discovery.candidates).find(
-				e => e.can_convert_schema(schema.items)
+				e => e.can_convert_schema(schema.items),
 			))
 			&& !!Converter.has_matching_schema(
 				await this.discovery.candidates,
-				schema.items
-			)
+				schema.items,
+			),
 		);
 	}
 
 	async convert(
 		schema: array_type,
-		raw_data: unknown[]
+		raw_data: unknown[],
 	): Promise<ExpressionResult<ArrayLiteralExpression>> {
 		if (
 			!this.can_convert_schema(schema)
@@ -76,13 +76,13 @@ export class ArrayConverter extends ConverterMatchesSchema<
 					schema,
 					raw_data,
 				},
-				'Cannot convert!'
+				'Cannot convert!',
 			);
 		}
 
 		const converter = await Converter.find_matching_schema(
 			await this.discovery.candidates,
-			schema.items
+			schema.items,
 		);
 
 		const converted:unknown[] = [];
@@ -92,7 +92,7 @@ export class ArrayConverter extends ConverterMatchesSchema<
 		}
 
 		return new ExpressionResult(
-			await this.discovery.literal.array_literal(converted)
+			await this.discovery.literal.array_literal(converted),
 		);
 	}
 }

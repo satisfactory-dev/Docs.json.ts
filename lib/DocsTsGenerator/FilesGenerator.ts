@@ -45,7 +45,7 @@ export class FilesGenerator extends Base {
 		this.validations = validations;
 		this.discovery = discovery;
 		this.is_NativeClass = TypesDiscovery.generate_is_NativeClass(
-			this.discovery.docs
+			this.discovery.docs,
 		);
 		this.types = this.discovery.discover_type_$defs();
 	}
@@ -71,31 +71,31 @@ export class FilesGenerator extends Base {
 					types,
 					entry,
 				},
-				'Could not find matching validator!'
+				'Could not find matching validator!',
 			);
 		} else if (!is_NativeClass(entry)) {
 			throw new NoMatchError(
 				entry,
-				'Entry not a general NativeClass!'
+				'Entry not a general NativeClass!',
 			);
 		}
 
 		const entry_type = this.discovery.find(
-			types.found_classes[this.validations.indexOf(check)]
+			types.found_classes[this.validations.indexOf(check)],
 		);
 
 		return this.generate_files_entry_yield(
 			entry_type,
 			this.generate_files_class_name(
-				entry.NativeClass
-			)
+				entry.NativeClass,
+			),
 		);
 	}
 
 	protected generate_files_class_name(value:string): string
 	{
 		return adjust_unrealengine_value(
-			UnrealEngineString.fromString(value).right
+			UnrealEngineString.fromString(value).right,
 		);
 	}
 
@@ -116,7 +116,7 @@ export class FilesGenerator extends Base {
 				create_modifiers('export'),
 				`${entry_class_name}__NativeClass`,
 				undefined,
-				entry_type
+				entry_type,
 			),
 		};
 	}

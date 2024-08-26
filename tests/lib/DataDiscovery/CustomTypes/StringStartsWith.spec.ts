@@ -90,17 +90,17 @@ void describe('StringStartsWithConverter', () => {
 			ts_assert.isTypeReferenceNode(expression.type);
 			ts_assert.isExpectedIdentifier(
 				expression.type.typeName,
-				'StringStartsWith'
+				'StringStartsWith',
 			);
 			not_undefined(expression.type.typeArguments);
 			array_has_size(expression.type.typeArguments, 1);
 			ts_assert.isLiteralTypeNode(expression.type.typeArguments[0]);
 			ts_assert.isStringLiteral(
-				expression.type.typeArguments[0].literal
+				expression.type.typeArguments[0].literal,
 			);
 			assert.equal(
 				expression.type.typeArguments[0].literal.text,
-				'foo'
+				'foo',
 			);
 		})
 	})

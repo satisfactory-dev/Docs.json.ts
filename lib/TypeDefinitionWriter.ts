@@ -106,17 +106,17 @@ export class TypeDefinitionWriter
 				AnyGenerator
 			>([
 				...TypeDefinitionDiscovery.standard_jsonschema_discovery(
-					this.docs.ajv
+					this.docs.ajv,
 				),
 				...TypeDefinitionDiscovery.custom_parsing_discovery(
-					this.docs.ajv
+					this.docs.ajv,
 				),
 			]);
 			this._discovery = Promise.resolve(schema.then((schema) => {
 				return new TypeDefinitionDiscovery(
 					[
 						...TypesDiscovery.standard_jsonschema_discovery(
-							schema
+							schema,
 						),
 						...TypesDiscovery.custom_parsing_types(schema),
 					],
@@ -137,26 +137,26 @@ export class TypeDefinitionWriter
 		await this.prepare();
 		performance.measure(
 			`${this.constructor.name}.write() prepare`,
-			`${this.constructor.name}.write() start`
+			`${this.constructor.name}.write() start`,
 		);
 		performance.mark(`${this.constructor.name}.write() start`);
 		const discovery = await this.discovery;
 		performance.measure(
 			`${this.constructor.name}.write() discovery`,
-			`${this.constructor.name}.write() start`
+			`${this.constructor.name}.write() start`,
 		);
 		performance.mark(`${this.constructor.name}.write() start`);
 		await writeFile(
 			`${__dirname}/../types-progress.md`,
-			await discovery.generate_markdown()
+			await discovery.generate_markdown(),
 		);
 		await writeFile(
 			`${__dirname}/../data-progress.md`,
-			await this.data_discovery.generate_markdown()
+			await this.data_discovery.generate_markdown(),
 		);
 		performance.measure(
 			`${this.constructor.name}.write() generate_markdown`,
-			`${this.constructor.name}.write() start`
+			`${this.constructor.name}.write() start`,
 		);
 
 		if (cleanup) {
@@ -166,7 +166,7 @@ export class TypeDefinitionWriter
 			}
 			performance.measure(
 				`${this.constructor.name}.write() cleanup`,
-				`${this.constructor.name}.write() start`
+				`${this.constructor.name}.write() start`,
 			);
 		}
 
@@ -185,14 +185,14 @@ export class TypeDefinitionWriter
 					found_classes: types.found_classes,
 					missing_classes: types.missing_classes,
 				},
-				'Some missing types found!'
+				'Some missing types found!',
 			);
 		}
 
 		if (!object_has_property(
 			schema,
 			'$defs',
-			value_is_non_array_object
+			value_is_non_array_object,
 		)) {
 			throw new Error('Schema appears to have no $defs');
 		}
@@ -203,14 +203,14 @@ export class TypeDefinitionWriter
 				{
 					$defs: schema.$defs,
 					...e,
-				}
-			)
+				},
+			),
 		);
 
 		if (!object_has_property(
 			schema.$defs,
 			'NativeClass',
-			value_is_non_array_object
+			value_is_non_array_object,
 		)) {
 			throw new Error('Could not find NativeClass on provided schema!');
 		}
@@ -220,7 +220,7 @@ export class TypeDefinitionWriter
 				discovery,
 				new DocsFiles(
 					validations,
-					discovery
+					discovery,
 				),
 				new FromArray([
 					...legacy_UnrealEngineString_module.CustomGenerators(),
@@ -228,11 +228,11 @@ export class TypeDefinitionWriter
 					StringPassedRegExp,
 				]),
 				this.data_discovery,
-			]
+			],
 		);
 		performance.measure(
 			`${this.constructor.name}.write() FilesGenerator`,
-			`${this.constructor.name}.write() start`
+			`${this.constructor.name}.write() start`,
 		);
 		performance.mark(`${this.constructor.name}.write() start`);
 
@@ -240,12 +240,12 @@ export class TypeDefinitionWriter
 		const import_tracker = auto_imports.generate();
 		performance.measure(
 			`${this.constructor.name}.write() auto_imports`,
-			`${this.constructor.name}.write() start`
+			`${this.constructor.name}.write() start`,
 		);
 
 		await writeFile(
 			`${__dirname}/../imports-come-from.json`,
-			auto_imports.imports_come_from
+			auto_imports.imports_come_from,
 		);
 
 		const printer = ts.createPrinter({
@@ -259,23 +259,23 @@ export class TypeDefinitionWriter
 				'',
 				ts.ScriptTarget.Latest,
 				false,
-				ts.ScriptKind.TS
+				ts.ScriptKind.TS,
 			);
 
 			const classes = entry[1].filter(ts.isClassDeclaration);
 
 			const classes_mapped = Object.fromEntries(
-				classes.map((e) => [e.name?.escapedText + '', e])
+				classes.map((e) => [e.name?.escapedText + '', e]),
 			);
 
 			const class_can_have_trees = Object.fromEntries(
 				classes
 					.filter(
 						maybe => TypeDefinitionWriter.can_class_have_tree(
-							maybe
-						)
+							maybe,
+						),
 					)
-					.map((e) => [e.name?.escapedText + '', e])
+					.map((e) => [e.name?.escapedText + '', e]),
 			);
 
 			const class_parents = Object.values(class_can_have_trees).map(
@@ -314,7 +314,7 @@ export class TypeDefinitionWriter
 					}
 
 					return tree;
-				}
+				},
 			);
 
 			const class_parent_classes = class_parents
@@ -330,27 +330,27 @@ export class TypeDefinitionWriter
 				class_parent_classes
 					.map((thing): [string, string[][]] => {
 						const includes = class_parents.filter((e) =>
-							e.includes(thing)
+							e.includes(thing),
 						);
 
 						return [thing, includes];
 					})
 					.filter(
 						(
-							entry
+							entry,
 						): entry is [string, [string[], ...string[][]]] => {
 							return entry[1].length > 0;
-						}
+						},
 					)
 					.map((entry) => {
 						return [
 							entry[0],
 							Math.max(
 								0,
-								...entry[1].map((e) => e.indexOf(entry[0]))
+								...entry[1].map((e) => e.indexOf(entry[0])),
 							),
 						];
-					})
+					}),
 			);
 
 			const classes_in_order = class_parent_classes.sort((a, b) => {
@@ -373,7 +373,7 @@ export class TypeDefinitionWriter
 					if (ts.isClassDeclaration(a) && ts.isClassDeclaration(b)) {
 						return (
 							classes_in_order.indexOf(
-								a.name?.escapedText + ''
+								a.name?.escapedText + '',
 							) -
 							classes_in_order.indexOf(b.name?.escapedText + '')
 						);
@@ -397,7 +397,7 @@ export class TypeDefinitionWriter
 					node_strings.push(printer.printNode(
 						ts.EmitHint.Unspecified,
 						node,
-						result_file
+						result_file,
 					));
 				} catch (err) {
 					throw new NoMatchError(
@@ -409,48 +409,48 @@ export class TypeDefinitionWriter
 								stack: err.stack,
 							} : err,
 						},
-						'Error printing node!'
+						'Error printing node!',
 					);
 				}
 			}
 
 			let code = await format_code(
 				node_strings
-					.join('\n\n')
+					.join('\n\n'),
 			);
 
 			if (this.docs.types_from_module) {
 				code = code.replace(
 					/} from '(?:\.\.\/)+(classes|common|utils)\//g,
-					`} from '${this.docs.types_from_module}/$1/`
+					`} from '${this.docs.types_from_module}/$1/`,
 				);
 			}
 
 			await writeFile(
 				file_name,
-				code
+				code,
 			);
 		}
 		performance.measure(
 			`${this.constructor.name}.write() actually write files`,
-			`${this.constructor.name}.write() start`
+			`${this.constructor.name}.write() start`,
 		);
 
 		performance.mark(`${this.constructor.name}.write() start`);
 		await writeFile(
 			`${__dirname}/../data-progress.md`,
-			await this.data_discovery.generate_markdown()
+			await this.data_discovery.generate_markdown(),
 		);
 		performance.measure(
 			`${this.constructor.name}.write() generate_markdown`,
-			`${this.constructor.name}.write() start`
+			`${this.constructor.name}.write() start`,
 		);
 
 		performance.mark(`${this.constructor.name}.write() start`);
 		await eslint_generated_types(parent_folder);
 		performance.measure(
 			`${this.constructor.name}.write() eslint`,
-			`${this.constructor.name}.write() start`
+			`${this.constructor.name}.write() start`,
 		);
 	}
 
@@ -467,15 +467,15 @@ export class TypeDefinitionWriter
 				new ObjectType(discovery),
 				new ArrayType(
 					discovered_types,
-					discovery
+					discovery,
 				),
 				new ExtendsObject(
 					discovered_types,
-					discovery
+					discovery,
 				),
 				new typed_string(
 					discovered_types,
-					discovery
+					discovery,
 				),
 				new oneOf_or_anyOf(discovery),
 			);
@@ -483,10 +483,10 @@ export class TypeDefinitionWriter
 	}
 
 	static can_class_have_tree(
-		class_node: ts.ClassDeclaration
+		class_node: ts.ClassDeclaration,
 	): class_node is class_can_have_tree {
 		const heritage = [...(class_node.heritageClauses || [])].map(
-			(e) => e.types
+			(e) => e.types,
 		);
 
 		return (

@@ -123,7 +123,7 @@ export function generate_object_parent_schema() {
 }
 
 export function generate_typed_string_$defs(
-	$defs:local_ref<string>[]
+	$defs:local_ref<string>[],
 ) {
 	return {
 		...UnrealEngineString_schema_definitions,
@@ -268,7 +268,7 @@ export class TypedString
 
 	configure_ajv(
 		$defs:{[key: string]: SchemaObject},
-		ajv:Ajv
+		ajv:Ajv,
 	) {
 		if (this.already_configured.has(ajv)) {
 			return;
@@ -289,7 +289,7 @@ export class TypedString
 		};
 
 		const formatter = new ValueToRegexFormatter(
-			$defs
+			$defs,
 		);
 
 		ajv.addKeyword({

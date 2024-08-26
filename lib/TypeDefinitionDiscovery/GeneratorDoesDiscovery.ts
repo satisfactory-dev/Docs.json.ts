@@ -19,7 +19,7 @@ export abstract class GeneratorDoesDiscovery<
 
 	protected constructor(
 		schema: SchemaObject,
-		discovery: TypeDefinitionDiscovery
+		discovery: TypeDefinitionDiscovery,
 	) {
 		super(discovery.docs.ajv, schema);
 		this.discovery = discovery;

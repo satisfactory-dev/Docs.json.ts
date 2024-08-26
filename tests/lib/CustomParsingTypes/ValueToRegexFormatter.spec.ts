@@ -12,7 +12,7 @@ import {
 
 void describe('ValueToRegexFormatter.pattern_from_value()', async () => {
 	const instance = new ValueToRegexFormatter(
-		(await docs.schema()).$defs
+		(await docs.schema()).$defs,
 	);
 	void it('does not throw', async () => {
 		const typed_string_types = [
@@ -24,7 +24,7 @@ void describe('ValueToRegexFormatter.pattern_from_value()', async () => {
 		for (const typed_string_type of typed_string_types) {
 			const definition = await docs.definition(typed_string_type);
 			assert.doesNotThrow(
-				() => instance.pattern_from_value(definition)
+				() => instance.pattern_from_value(definition),
 			)
 		}
 	});

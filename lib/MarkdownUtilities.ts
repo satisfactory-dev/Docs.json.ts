@@ -48,7 +48,7 @@ export function remap(group: progress_group) {
 export function reduce(
 	group: progress_group,
 	title: string = 'Basic Types',
-	current_depth: number = 1
+	current_depth: number = 1,
 ): {
 	title: string;
 	members: string[];
@@ -89,7 +89,7 @@ export function remove_indentation(input: string): string {
 	if (matches) {
 		const min = matches.reduce(
 			(was, is) => Math.min(was, is.length),
-			Infinity
+			Infinity,
 		);
 
 		if (min > 0 && min !== Infinity) {

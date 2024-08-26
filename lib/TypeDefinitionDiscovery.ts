@@ -83,20 +83,20 @@ type SchemaObjectWithDefinitions<Definitions extends {[key: string]: true}> =
 
 function is_schema_with_$defs(
 	schema:SchemaObject,
-	discovered_types: {[key: string]: true}
+	discovered_types: {[key: string]: true},
 ): schema is SchemaObjectWithDefinitions<typeof discovered_types> {
 	return (
 		object_has_property(
 			schema,
 			'$defs',
-			value_is_non_array_object
+			value_is_non_array_object,
 		)
 		&& Object.keys(schema.$defs).every(
 			maybe => (
 				maybe.startsWith('#/$defs/')
 					? maybe
 					: `#/$defs/${maybe}`
-			) in discovered_types
+			) in discovered_types,
 		)
 		&& Object.keys(discovered_types).every(maybe => {
 			const ref = (
@@ -140,7 +140,7 @@ export class TypeDefinitionDiscovery
 			AnyGenerator,
 			...AnyGenerator[],
 		],
-		docs:DocsTsGenerator
+		docs:DocsTsGenerator,
 	) {
 		super();
 		this.types_discovery = new TypesDiscovery(types_discovery, docs);
@@ -163,14 +163,14 @@ export class TypeDefinitionDiscovery
 				throw new Error(
 					`Missing some type $defs:\n${
 						discovered_types.missed_types.join(
-							'\n'
+							'\n',
 						)
-					}`
+					}`,
 				);
 			} else if (
 				!is_non_empty_array(
 					discovered_types.discovered_types,
-					is_string
+					is_string,
 				)
 			) {
 				throw new Error('No types discovered!');
@@ -180,12 +180,12 @@ export class TypeDefinitionDiscovery
 				[key: local_ref<string>]: true,
 			} = Object.fromEntries(
 				discovered_types.discovered_types.map(
-					e => [e, true]
-				)
+					e => [e, true],
+				),
 			);
 
 			const schema = await this.schema_from_json(
-				discovered_types_as_object
+				discovered_types_as_object,
 			);
 
 			this.$ref_discovery = Promise.resolve(
@@ -194,7 +194,7 @@ export class TypeDefinitionDiscovery
 				>(
 					schema,
 					discovered_types_as_object,
-				)
+				),
 			);
 		}
 
@@ -225,7 +225,7 @@ export class TypeDefinitionDiscovery
 					create_modifiers('export'),
 					adjust_class_name(`${$ref}__type`),
 					undefined,
-					generator(await this.docs.definition($ref))
+					generator(await this.docs.definition($ref)),
 				),
 			};
 		}
@@ -271,7 +271,7 @@ export class TypeDefinitionDiscovery
 			...discovered_types.missed_types,
 		].map(e => e.substring(8)).sort((a, b) => a.localeCompare(b));
 		const supported_types = discovered_types.discovered_types.map(
-			e => e.substring(8)
+			e => e.substring(8),
 		);
 
 		for (const item of all_referenced_types) {
@@ -343,9 +343,9 @@ export class TypeDefinitionDiscovery
 					${group.members.map((key) => {
 						return `-   [${supported_types.includes(key) ? 'x' : ' '}] ${key.replace(
 							/__/g,
-							'\\_\\_'
+							'\\_\\_',
 						)}`;
-					}).join('\n')}`
+					}).join('\n')}`,
 				);
 			}).join('\n\n')}
 		`);
@@ -370,7 +370,7 @@ export class TypeDefinitionDiscovery
 		};
 
 		const $defs = Object.keys(
-			discovered_types
+			discovered_types,
 		) as local_ref<string>[];
 
 		for (const definition of $defs) {
@@ -380,7 +380,7 @@ export class TypeDefinitionDiscovery
 			);
 
 			const generator = this.candidates.find(
-				e => e.check(schema.$defs[$ref])
+				e => e.check(schema.$defs[$ref]),
 			);
 
 			if (generator) {
@@ -561,8 +561,8 @@ export class TypeDefinitionDiscovery
 			Object.entries(result.found_types).sort(
 				(a, b) => {
 					return a[0].localeCompare(b[0]);
-				}
-			)
+				},
+			),
 		);
 
 		return result;
@@ -572,7 +572,7 @@ export class TypeDefinitionDiscovery
 	 * @todo move to DocsTsGenerator
 	 */
 	private async schema_from_json(
-		discovered_types: {[key: string]: true}
+		discovered_types: {[key: string]: true},
 	) : Promise<SchemaObjectWithDefinitions<typeof discovered_types>> {
 		const schema = await this.docs.schema();
 
@@ -587,7 +587,7 @@ export class TypeDefinitionDiscovery
 		performance.mark(`${this.constructor.name}.search() start`);
 
 		const generator = this.candidates.find(
-			e => e.check(maybe)
+			e => e.check(maybe),
 		);
 
 		if (generator) {
@@ -595,7 +595,7 @@ export class TypeDefinitionDiscovery
 
 			performance.measure(
 				`${this.constructor.name}.search()`,
-				`${this.constructor.name}.search() start`
+				`${this.constructor.name}.search() start`,
 			);
 
 			return result;
@@ -605,7 +605,7 @@ export class TypeDefinitionDiscovery
 	}
 
 	static custom_parsing_discovery(
-		ajv:Ajv
+		ajv:Ajv,
 	) : [AnyGenerator, ...AnyGenerator[]] {
 		return [
 			new string_starts_with(ajv),
@@ -614,7 +614,7 @@ export class TypeDefinitionDiscovery
 	}
 
 	static standard_jsonschema_discovery(
-		ajv:Ajv
+		ajv:Ajv,
 	) : [AnyGenerator, ...AnyGenerator[]] {
 		return [
 			new Const(ajv),

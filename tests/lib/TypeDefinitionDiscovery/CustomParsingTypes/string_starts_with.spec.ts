@@ -29,7 +29,7 @@ void describe('string_starts_with', () => {
 			ts_assert.isTypeReferenceNode(result);
 			ts_assert.isExpectedIdentifier(
 				result.typeName,
-				'StringStartsWith'
+				'StringStartsWith',
 			);
 			not_undefined(result.typeArguments);
 			array_has_size(result.typeArguments, 1);
@@ -37,7 +37,7 @@ void describe('string_starts_with', () => {
 			ts_assert.isStringLiteral(result.typeArguments[0].literal);
 			assert.equal(
 				result.typeArguments[0].literal.text,
-				'foo'
+				'foo',
 			);
 		})
 	})

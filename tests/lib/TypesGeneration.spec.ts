@@ -37,7 +37,7 @@ void describe('ImportTracker.generate_imports()', () => {
 			const instance = new ImportTracker();
 			assert.equal(0, instance.number_of_files);
 			array_has_size(instance.generate_imports('foo.ts'), 0);
-		}
+		},
 	);
 
 	void it('returns an expected array of ImportDeclaration instances', () => {
@@ -55,7 +55,7 @@ void describe('ImportTracker.generate_imports()', () => {
 		function check_element(
 			index:number,
 			module_specifier:string,
-			name_bindings:[string, ...string[]]
+			name_bindings:[string, ...string[]],
 		) {
 			const import_entry = imports[index];
 
@@ -63,7 +63,7 @@ void describe('ImportTracker.generate_imports()', () => {
 			ts_assert.isStringLiteral(import_entry.moduleSpecifier);
 			assert.equal(
 				import_entry.moduleSpecifier.text,
-				module_specifier
+				module_specifier,
 			);
 			not_undefined(import_entry.importClause.namedBindings);
 			ts_assert.isNamedImports(import_entry.importClause.namedBindings);
@@ -75,7 +75,7 @@ void describe('ImportTracker.generate_imports()', () => {
 			name_bindings.forEach((name_binding, name_binding_index) => {
 				assert.equal(
 					elements[name_binding_index].name.text,
-					name_binding
+					name_binding,
 				);
 			});
 		}

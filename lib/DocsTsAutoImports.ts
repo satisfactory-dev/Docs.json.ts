@@ -45,7 +45,7 @@ export class DocsTsAutoImports {
 				if (export_name in this.comes_from) {
 					throw new NoMatchError(
 						entry,
-						`${export_name} conflict!`
+						`${export_name} conflict!`,
 					);
 				}
 
@@ -68,7 +68,7 @@ export class DocsTsAutoImports {
 				.filter(
 					(maybe) =>
 						filename.replace(/\.ts$/, '') !==
-						this.comes_from[maybe]
+						this.comes_from[maybe],
 				);
 
 			if (reference_names.length) {
@@ -93,7 +93,7 @@ export class DocsTsAutoImports {
 
 					if (
 						!auto_imports[filename][import_from].includes(
-							import_this
+							import_this,
 						)
 					) {
 						auto_imports[filename][import_from].push(import_this);
@@ -124,7 +124,7 @@ export class DocsTsAutoImports {
 					];
 				} else {
 					file_exports[filename].push(
-						DocsTsAutoImports.node_IdentifierName(checking)
+						DocsTsAutoImports.node_IdentifierName(checking),
 					);
 				}
 			}
@@ -134,7 +134,7 @@ export class DocsTsAutoImports {
 	}
 
 	private static filter_node(
-		maybe: ts.Node
+		maybe: ts.Node,
 	): maybe is initial_check_node_has_Identifier {
 		return (
 			(this.is_named_ClassDeclaration(maybe)
@@ -145,17 +145,17 @@ export class DocsTsAutoImports {
 	}
 
 	private static filter_nodes(
-		nodes: ts.Node[]
+		nodes: ts.Node[],
 	): initial_check_node_has_Identifier[] {
 		return nodes.filter(
 			(maybe): maybe is initial_check_node_has_Identifier => {
 				return this.filter_node(maybe);
-			}
+			},
 		);
 	}
 
 	private static has_export(
-		node: initial_check_nodes
+		node: initial_check_nodes,
 	): node is typeof node & {modifiers: [ts.SyntaxKind.ExportKeyword]} {
 		return (
 			!!node.modifiers
@@ -166,13 +166,13 @@ export class DocsTsAutoImports {
 	}
 
 	private static is_Identifier(
-		maybe: Identifier | undefined | EntityName
+		maybe: Identifier | undefined | EntityName,
 	): maybe is Identifier {
 		return !!maybe && ts.isIdentifier(maybe);
 	}
 
 	private static is_named_ClassDeclaration(
-		node: ts.Node
+		node: ts.Node,
 	): node is ts.ClassDeclaration & {name: Identifier} {
 		return (
 			ts.isClassDeclaration(node)
@@ -181,7 +181,7 @@ export class DocsTsAutoImports {
 	}
 
 	private static is_named_FunctionDeclaration(
-		node: ts.Node
+		node: ts.Node,
 	): node is ts.FunctionDeclaration & {name: Identifier} {
 		return (
 			ts.isFunctionDeclaration(node)
@@ -192,7 +192,7 @@ export class DocsTsAutoImports {
 	private static node_IdentifierName(
 		node:
 			| initial_check_node_has_Identifier
-			| (TypeReferenceNode & {typeName: Identifier})
+			| (TypeReferenceNode & {typeName: Identifier}),
 	) {
 		const from = ts.isTypeReferenceNode(node) ? node.typeName : node.name;
 

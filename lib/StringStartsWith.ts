@@ -29,7 +29,7 @@ export function local_ref<
 	if (ref_like_string.startsWith('#/$defs/')) {
 		throw new NoMatchError(
 			ref_like_string,
-			'Already a local ref!'
+			'Already a local ref!',
 		);
 	}
 
@@ -48,7 +48,7 @@ export function is_$ref(maybe: unknown): maybe is (
 
 export function $ref_in_array(
 	maybe_$ref: unknown,
-	$ref_array: local_ref<string>[]
+	$ref_array: local_ref<string>[],
 ) {
 	return is_$ref(maybe_$ref) && $ref_array.includes(maybe_$ref);
 }

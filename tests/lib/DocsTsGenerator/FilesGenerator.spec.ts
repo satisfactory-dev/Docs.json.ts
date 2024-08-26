@@ -36,7 +36,7 @@ void describe('FilesGenerator', async () => {
 		{
 			super(
 				[],
-				discovery
+				discovery,
 			);
 		}
 
@@ -56,7 +56,7 @@ void describe('FilesGenerator', async () => {
 		) {
 			return super.generate_files_entry_yield(
 				entry_type,
-				entry_class_name
+				entry_class_name,
 			);
 		}
 	};
@@ -84,7 +84,7 @@ void describe('FilesGenerator', async () => {
 		void it('behaves', () => {
 			assert.equal(
 				instance.generate_files_class_name('foo\'bar\''),
-				'bar'
+				'bar',
 			)
 		})
 	})
@@ -95,7 +95,7 @@ void describe('FilesGenerator', async () => {
 
 			const result = instance.generate_files_entry_yield(
 				entry_type,
-				'bar'
+				'bar',
 			);
 
 			assert.equal(result.file, 'classes/CoreUObject/bar.ts');
@@ -105,11 +105,11 @@ void describe('FilesGenerator', async () => {
 			array_has_size(result.node.modifiers, 1);
 			ts_assert.isTokenWithExpectedKind(
 				result.node.modifiers[0],
-				ts.SyntaxKind.ExportKeyword
+				ts.SyntaxKind.ExportKeyword,
 			);
 			ts_assert.isExpectedIdentifier(
 				result.node.name,
-				'bar__NativeClass'
+				'bar__NativeClass',
 			);
 			assert.equal(result.node.typeParameters, undefined);
 			assert.equal(result.node.type, entry_type);

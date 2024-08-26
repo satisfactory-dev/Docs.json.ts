@@ -38,7 +38,7 @@ export class ExtendsObject extends GeneratorDoesDiscovery<RawData, Type>
 {
 	constructor(
 		supported_refs: string[],
-		discovery:TypeDefinitionDiscovery
+		discovery:TypeDefinitionDiscovery,
 	) {
 		const {
 			type,
@@ -59,7 +59,7 @@ export class ExtendsObject extends GeneratorDoesDiscovery<RawData, Type>
 					unevaluatedProperties: {type: 'boolean', const: false},
 				},
 			},
-			discovery
+			discovery,
 		);
 	}
 
@@ -88,10 +88,10 @@ export class ExtendsObject extends GeneratorDoesDiscovery<RawData, Type>
 	}
 
 	protected create_reference_type(
-		$ref: local_ref<string>
+		$ref: local_ref<string>,
 	): TypeReferenceNode {
 		return ts.factory.createTypeReferenceNode(
-			adjust_class_name(`${$ref.substring(8)}__type`)
+			adjust_class_name(`${$ref.substring(8)}__type`),
 		);
 	}
 }

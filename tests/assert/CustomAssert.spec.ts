@@ -17,7 +17,7 @@ void describe('value_matches_ExpressionResult', () => {
 
 		assert.doesNotThrow(() => value_matches_ExpressionResult(
 			value,
-			new ExpressionResult(value)
+			new ExpressionResult(value),
 		));
 	});
 	void it('does throw', () => {
@@ -25,7 +25,7 @@ void describe('value_matches_ExpressionResult', () => {
 
 		assert.throws(() => value_matches_ExpressionResult(
 			value,
-			new ExpressionResult(ts.factory.createStringLiteral('bar'))
+			new ExpressionResult(ts.factory.createStringLiteral('bar')),
 		));
 	});
 });

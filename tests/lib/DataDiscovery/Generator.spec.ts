@@ -198,9 +198,9 @@ void describe('Converter', async () => {
 				not_undefined(
 					Converter.has_matching_schema(
 						candidates,
-						schema
+						schema,
 					),
-					`expected to find something for ${JSON.stringify(schema)}`
+					`expected to find something for ${JSON.stringify(schema)}`,
 				);
 			}
 		})
@@ -215,8 +215,8 @@ void describe('Converter', async () => {
 				await assert.doesNotReject(
 					Converter.find_matching_schema(
 						candidates,
-						schema
-					)
+						schema,
+					),
 				);
 			}
 		})
@@ -232,7 +232,7 @@ void describe('Converter', async () => {
 
 			const promise = Converter.find_matching_schema(
 				candidates,
-				schema
+				schema,
 			);
 
 			await assert.doesNotReject(promise);
@@ -243,12 +243,12 @@ void describe('Converter', async () => {
 					expected.constructor.name
 				}, receieved ${
 					(await promise).constructor.name
-				}`
+				}`,
 			);
 
 			candidates_remaining_to_be_checked =
 				candidates_remaining_to_be_checked.filter(
-					maybe => !(maybe instanceof expected)
+					maybe => !(maybe instanceof expected),
 				);
 		}
 
@@ -259,7 +259,7 @@ void describe('Converter', async () => {
 				candidates_remaining_to_be_checked
 					.map(e => e.constructor.name)
 					.join(', ')
-			} found unchecked!`
+			} found unchecked!`,
 		);
 	});
 
@@ -269,8 +269,8 @@ void describe('Converter', async () => {
 				await Converter.has_matching_schema_and_raw_data(
 					candidates,
 					{type: 'string'},
-					''
-				)
+					'',
+				),
 			);
 		})
 	});
@@ -282,26 +282,26 @@ void describe('Converter', async () => {
 					schema: {type: 'boolean'},
 				},
 				message: 'Could not identify suitable candidate!',
-			}
+			},
 		);
 	});
 	void it ('returns undefined', async () => {
 		assert.equal(
 			Converter.has_matching_schema(candidates, {type: 'boolean'}),
-			undefined
+			undefined,
 		);
 		const promise = Converter.has_matching_schema_and_raw_data(
 			candidates,
 			{type: 'string'},
-			null
+			null,
 		);
 		await assert.doesNotReject(
 			promise,
-			'Converter.has_matching_schema_and_raw_data should not throw!'
+			'Converter.has_matching_schema_and_raw_data should not throw!',
 		);
 		assert.equal(
 			await promise,
-			undefined
+			undefined,
 		);
 	});
 });

@@ -31,7 +31,7 @@ void describe('FragileTypeSafetyError', () => {
 	void it('has a default message', () => {
 		assert.equal(
 			(new FragileTypeSafetyError(null)).message,
-			'type safety in here is a bit fragile, check earlier in the stack'
+			'type safety in here is a bit fragile, check earlier in the stack',
 		);
 	});
 })

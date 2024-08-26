@@ -49,7 +49,7 @@ export class NonEmptyString extends Generator<
 		return () => type_reference_node(
 			'Exclude',
 			create_type('string'),
-			create_literal('')
+			create_literal(''),
 		);
 	}
 }
@@ -107,7 +107,7 @@ export class NonEmptyStringWithExclusions extends Generator<
 			possibly_create_lazy_union([
 				'',
 				...raw_data.not.enum,
-			])
+			]),
 		);
 	}
 }

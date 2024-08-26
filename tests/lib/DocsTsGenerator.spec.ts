@@ -11,7 +11,7 @@ void describe('DocsTsGenerator.schema', () => {
 	void it('will currently return update 8', async () => {
 		assert.equal(
 			(await docs.schema()).$id,
-			'update8.schema.json'
+			'update8.schema.json',
 		);
 	});
 });
@@ -28,7 +28,7 @@ void describe('DocsTsGenerator.definition', () => {
 	});
 	void it('will return on a recognised definition', () => {
 		assert.doesNotThrow(
-			async () => await docs.definition('NativeClass')
+			async () => await docs.definition('NativeClass'),
 		);
 	});
 });

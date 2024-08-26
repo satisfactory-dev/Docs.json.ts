@@ -33,7 +33,7 @@ export class Literal
 		}
 
 		return ts.factory.createArrayLiteralExpression(
-			items
+			items,
 		);
 	}
 
@@ -48,7 +48,7 @@ export class Literal
 
 				properties.push(ts.factory.createPropertyAssignment(
 					property_name_or_computed(entry[0]),
-					await value
+					await value,
 				));
 			} catch (error) {
 				throw new NoMatchError(
@@ -57,13 +57,13 @@ export class Literal
 						original_value: entry[1],
 						error,
 					},
-					'Failed to convert property value!'
+					'Failed to convert property value!',
 				);
 			}
 		}
 
 		return ts.factory.createObjectLiteralExpression(
-			properties
+			properties,
 		);
 	}
 
@@ -82,7 +82,7 @@ export class Literal
 			const result = ts.factory.createStringLiteral(from);
 			performance.measure(
 				`${this.constructor.name}.value_literal() createStringLiteral`,
-				`${this.constructor.name}.value_literal() start`
+				`${this.constructor.name}.value_literal() start`,
 			);
 
 			return result;
@@ -90,7 +90,7 @@ export class Literal
 			const result = (from as ExpressionResult).expression;
 			performance.measure(
 				`${this.constructor.name}.value_literal() ExpressionResult`,
-				`${this.constructor.name}.value_literal() start`
+				`${this.constructor.name}.value_literal() start`,
 			);
 
 			return result;
@@ -98,7 +98,7 @@ export class Literal
 			const result = await this.object_literal(from);
 			performance.measure(
 				`${this.constructor.name}.value_literal() object_literal`,
-				`${this.constructor.name}.value_literal() start`
+				`${this.constructor.name}.value_literal() start`,
 			);
 
 			return result;
@@ -108,7 +108,7 @@ export class Literal
 				: ts.factory.createFalse();
 			performance.measure(
 				`${this.constructor.name}.value_literal() boolean`,
-				`${this.constructor.name}.value_literal() start`
+				`${this.constructor.name}.value_literal() start`,
 			);
 
 			return result;
@@ -116,7 +116,7 @@ export class Literal
 			const result = ts.factory.createIdentifier('undefined');
 			performance.measure(
 				`${this.constructor.name}.value_literal() undefined`,
-				`${this.constructor.name}.value_literal() start`
+				`${this.constructor.name}.value_literal() start`,
 			);
 
 			return result;
@@ -128,7 +128,7 @@ export class Literal
 
 		performance.measure(
 			`${this.constructor.name}.value_literal() array`,
-			`${this.constructor.name}.value_literal() start`
+			`${this.constructor.name}.value_literal() start`,
 		);
 
 		return result;

@@ -15,7 +15,7 @@ export const string_starts_with = {
 			ts.factory.createTypeParameterDeclaration(
 				undefined,
 				'prefix',
-				create_type('string')
+				create_type('string'),
 			),
 		],
 		ts.factory.createTypeOperatorNode(
@@ -33,13 +33,13 @@ export const string_starts_with = {
 								[
 									createParameter(
 										'key',
-										create_type('string')
+										create_type('string'),
 									),
 								],
-								create_type('unknown')
+								create_type('unknown'),
 							),
-						])
-					)
+						]),
+					),
 				),
 				ts.factory.createConditionalTypeNode(
 					type_reference_node('pseudo_key'),
@@ -49,25 +49,25 @@ export const string_starts_with = {
 						[
 							ts.factory.createTemplateLiteralTypeSpan(
 								type_reference_node(
-									'prefix'
+									'prefix',
 								),
-								ts.factory.createTemplateMiddle('')
+								ts.factory.createTemplateMiddle(''),
 							),
 							ts.factory.createTemplateLiteralTypeSpan(
 								type_reference_node(
-									'pseudo_key'
+									'pseudo_key',
 								),
-								ts.factory.createTemplateTail('')
+								ts.factory.createTemplateTail(''),
 							),
-						]
+						],
 					),
-					create_type('never')
+					create_type('never'),
 				),
 				undefined,
 				create_type('string'),
-				undefined
-			)
-		)
+				undefined,
+			),
+		),
 	),
 };
 
@@ -80,13 +80,13 @@ export const StringPassedRegExp = {
 			ts.factory.createTypeParameterDeclaration(
 				undefined,
 				'pattern',
-				create_type('string')
+				create_type('string'),
 			),
 			ts.factory.createTypeParameterDeclaration(
 				undefined,
 				'T',
 				create_type('string'),
-				create_type('string')
+				create_type('string'),
 			),
 		],
 		ts.factory.createIntersectionTypeNode([
@@ -96,13 +96,13 @@ export const StringPassedRegExp = {
 				ts.factory.createTypeParameterDeclaration(
 					undefined,
 					'pseudo_key',
-					type_reference_node('pattern')
+					type_reference_node('pattern'),
 				),
 				undefined,
 				undefined,
 				create_type('never'),
 				undefined,
 			),
-		])
+		]),
 	),
 };

@@ -146,10 +146,10 @@ void describe('UnrealEngineString', () => {
 				],
 			];
 			const inner = UnrealEngineString.ajv_macro_generator(
-				true
+				true,
 			);
 			const standalone = UnrealEngineString.ajv_macro_generator(
-				false
+				false,
 			);
 
 			for (const data_set of data_sets) {
@@ -164,9 +164,9 @@ void describe('UnrealEngineString', () => {
 							inner(data),
 							{
 								pattern,
-							}
+							},
 						);
-					}
+					},
 				)
 				void it(
 					`UnrealEngineString.ajv_macro_generator(false)(${
@@ -178,9 +178,9 @@ void describe('UnrealEngineString', () => {
 							standalone(data),
 							{
 								pattern: `^${pattern}$`,
-							}
+							},
 						);
-					}
+					},
 				)
 			}
 		})

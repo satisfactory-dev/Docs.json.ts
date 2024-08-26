@@ -40,14 +40,14 @@ export class OneOfConverter extends ConverterMatchesSchema<oneOf> {
 
 	async can_convert_schema_and_raw_data(
 		schema: SchemaObject,
-		raw_data: unknown
+		raw_data: unknown,
 	): Promise<boolean> {
 		if (this.can_convert_schema(schema)) {
 			for (const entry of schema.oneOf) {
 				if (await Converter.has_matching_schema_and_raw_data(
 					await this.discovery.candidates,
 					entry,
-					raw_data
+					raw_data,
 				)) {
 					return true;
 				}
@@ -66,14 +66,14 @@ export class OneOfConverter extends ConverterMatchesSchema<oneOf> {
 			const converter = await Converter.has_matching_schema_and_raw_data(
 				candidates,
 				entry,
-				raw_data
+				raw_data,
 			);
 
 			if (
 				converter
 				&& await converter.can_convert_schema_and_raw_data(
 					entry,
-					raw_data
+					raw_data,
 				)
 			) {
 				return await converter.convert(entry, raw_data);
@@ -85,14 +85,14 @@ export class OneOfConverter extends ConverterMatchesSchema<oneOf> {
 				schema,
 				raw_data,
 				oneOf: await Promise.all(schema.oneOf.map((
-					e
+					e,
 				) => Converter.has_matching_schema_and_raw_data(
 					candidates,
 					e,
-					raw_data
+					raw_data,
 				))),
 			},
-			'Unable to convert data!'
+			'Unable to convert data!',
 		);
 	}
 }

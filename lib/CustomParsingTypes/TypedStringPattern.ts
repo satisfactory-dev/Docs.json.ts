@@ -87,13 +87,13 @@ const typed_string_pattern_general_schema_enum_regex =
 	);
 
 export function typed_string_pattern_value_regex(
-	value: pattern_schema_type
+	value: pattern_schema_type,
 ): string {
 	return `(?:${value.pattern.substring(1, value.pattern.length - 1)})`;
 }
 
 export function typed_string_pattern_is_supported_schema(
-	maybe: unknown
+	maybe: unknown,
 ) : maybe is pattern_schema_type {
 	return (
 		value_is_non_array_object(maybe)
@@ -102,18 +102,18 @@ export function typed_string_pattern_is_supported_schema(
 		&& 'string' === maybe.type
 		&& object_has_property(maybe, 'pattern', is_string)
 		&& typed_string_pattern_schema.properties.pattern.enum.includes(
-			maybe.pattern
+			maybe.pattern,
 		)
 	);
 }
 
 function is_supported_pattern_string(
-	e:unknown
+	e:unknown,
 ): e is pattern_schema_general_type['pattern'] {
 	return (
 		is_string(e)
 		&& !!typed_string_pattern_general_schema_enum_regex.find(
-			(regex) => regex.test(e)
+			(regex) => regex.test(e),
 		)
 	)
 }
@@ -122,7 +122,7 @@ class TypedStringPatternGeneral extends SupportedSubSchemaType<
 	pattern_schema_general_type
 > {
 	is_supported_schema(
-		maybe: unknown
+		maybe: unknown,
 	): maybe is pattern_schema_general_type {
 		return (
 			value_is_non_array_object(maybe)
@@ -130,12 +130,12 @@ class TypedStringPatternGeneral extends SupportedSubSchemaType<
 			&& object_has_property_that_equals(
 				maybe,
 				'type',
-				'string'
+				'string',
 			)
 			&& object_has_property(
 				maybe,
 				'pattern',
-				is_supported_pattern_string
+				is_supported_pattern_string,
 			)
 		);
 	}

@@ -5,7 +5,7 @@ export class NoMatchError<
 
 	constructor(
 		property: T,
-		message = 'No match found!'
+		message = 'No match found!',
 	) {
 		super(message);
 		this.property = property;
@@ -17,7 +17,7 @@ export class FragileTypeSafetyError extends NoMatchError
 	constructor(property: unknown) {
 		super(
 			property,
-			'type safety in here is a bit fragile, check earlier in the stack'
+			'type safety in here is a bit fragile, check earlier in the stack',
 		);
 	}
 }

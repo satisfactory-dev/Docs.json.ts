@@ -29,8 +29,8 @@ export class TypeLiteralNodes extends NodeExtraction<TypeLiteralNode> {
 						...element.parameters,
 					].filter(
 						(maybe): maybe is Exclude<typeof maybe, undefined> =>
-							!!maybe
-					)
+							!!maybe,
+					),
 				);
 			} else {
 				other_elements.push(element);
@@ -40,7 +40,7 @@ export class TypeLiteralNodes extends NodeExtraction<TypeLiteralNode> {
 		if (other_elements.length) {
 			throw new NoMatchError(
 				other_elements,
-				'Unsupported elements found!'
+				'Unsupported elements found!',
 			);
 		}
 

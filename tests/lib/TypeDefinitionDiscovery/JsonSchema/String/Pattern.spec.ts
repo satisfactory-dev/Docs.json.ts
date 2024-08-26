@@ -28,7 +28,7 @@ void describe('Pattern', () => {
 			ts_assert.isTypeReferenceNode(result);
 			ts_assert.isExpectedIdentifier(
 				result.typeName,
-				'StringPassedRegExp'
+				'StringPassedRegExp',
 			);
 			not_undefined(result.typeArguments);
 			array_has_size(result.typeArguments, 1);
@@ -36,7 +36,7 @@ void describe('Pattern', () => {
 			ts_assert.isStringLiteral(result.typeArguments[0].literal);
 			assert.equal(
 				result.typeArguments[0].literal.text,
-				'^(Foo|Bar)$'
+				'^(Foo|Bar)$',
 			);
 		})
 	})

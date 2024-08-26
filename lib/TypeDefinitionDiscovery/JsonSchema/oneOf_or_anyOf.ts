@@ -57,7 +57,7 @@ export class oneOf_or_anyOf extends GeneratorDoesDiscovery<
 	constructor(discovery:TypeDefinitionDiscovery) {
 		super(
 			schema,
-			discovery
+			discovery,
 		);
 	}
 

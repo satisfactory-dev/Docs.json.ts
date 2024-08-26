@@ -36,7 +36,7 @@ export class UnrealEngineString extends Generator<
 	generate() {
 		return (raw_data: UnrealEngineString_parent_type) => {
 			return UnrealEngineString_reference_type(
-				raw_data.UnrealEngineString
+				raw_data.UnrealEngineString,
 			);
 		};
 	}

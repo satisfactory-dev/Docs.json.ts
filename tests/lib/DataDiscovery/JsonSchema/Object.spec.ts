@@ -36,26 +36,26 @@ void describe('ObjectConverter', () => {
 		assert.equal(
 			instance.can_convert_schema(schema),
 			true,
-			'schema not valid'
+			'schema not valid',
 		);
 
 		void it ('resolves false', async () => {
 			assert.equal(
 				await instance.can_convert_schema_and_raw_data(
 					{type: 'string'},
-					null
+					null,
 				),
 				false,
-				'Should not be able to convert string schema with null'
+				'Should not be able to convert string schema with null',
 			);
 
 			assert.equal(
 				await instance.can_convert_schema_and_raw_data(
 					schema,
-					null
+					null,
 				),
 				false,
-				'Should not be able to convert schema with null value'
+				'Should not be able to convert schema with null value',
 			);
 		});
 
@@ -69,7 +69,7 @@ void describe('ObjectConverter', () => {
 					},
 				),
 				true,
-				'Should be able to convert valid schema'
+				'Should be able to convert valid schema',
 			);
 		})
 	})
@@ -111,7 +111,7 @@ void describe('ObjectConverter', () => {
 				if (failure) {
 					await rejects_partial_match(
 						promise,
-						failure
+						failure,
 					);
 				} else {
 					await assert.doesNotReject(promise);

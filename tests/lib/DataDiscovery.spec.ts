@@ -28,5 +28,5 @@ void describe(
 			await readFile(`${__dirname}/../fixtures/data-progress--empty.md`)
 		).toString();
 		assert.equal(actual, expecting);
-	}
+	},
 );

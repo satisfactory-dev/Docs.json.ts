@@ -60,7 +60,7 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 
 	constructor(
 		discovery:DataDiscovery,
-		$defs:{[key: string]: SchemaObject}
+		$defs:{[key: string]: SchemaObject},
 	) {
 		const local_refs = Object.keys($defs).map(local_ref);
 		super(discovery.docs.ajv, {
@@ -76,7 +76,7 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 
 	can_convert_schema_and_raw_data(
 		schema: SchemaObject,
-		raw_data: unknown
+		raw_data: unknown,
 	): Promise<boolean> {
 		return Promise.resolve(
 			this.can_convert_schema(schema)
@@ -97,27 +97,27 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 							typed_string.is_array_type(schema.typed_string)
 							&& this.check_shallow_array_schema(
 								schema.typed_string,
-								string_to_array(raw_data, true)
+								string_to_array(raw_data, true),
 							)
 						)
 						|| (
 							typed_string.is_prefixItems_type(
-								schema.typed_string
+								schema.typed_string,
 							)
 							&& this.check_shallow_array_prefixItems_schema(
 								schema.typed_string,
-								string_to_array(raw_data, true)
+								string_to_array(raw_data, true),
 							)
 						)
 					)
 				)
-			)
+			),
 		);
 	}
 
 	async convert(
 		schema: typed_string_parent_type,
-		raw_data: string
+		raw_data: string,
 	): Promise<ExpressionResult<
 		| ArrayLiteralExpression
 		| ObjectLiteralExpression
@@ -128,7 +128,7 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 					schema,
 					raw_data,
 				},
-				'Cannot convert!'
+				'Cannot convert!',
 			)
 		} else if (
 			typed_string.is_object_type(schema.typed_string)
@@ -140,12 +140,12 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 				{
 					raw_data,
 				},
-				'raw data not a typed_string!'
+				'raw data not a typed_string!',
 			));
 
 			return this.convert_object(
 				schema.typed_string,
-				shallow as Exclude<typeof shallow, false>
+				shallow as Exclude<typeof shallow, false>,
 			);
 		}
 
@@ -155,18 +155,18 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 			{
 				raw_data,
 			},
-			'raw data not a typed string!'
+			'raw data not a typed string!',
 		));
 
 		if (typed_string.is_array_type(schema.typed_string)) {
 			return this.convert_array(
 				schema.typed_string,
-				shallow as Exclude<typeof shallow, false>
+				shallow as Exclude<typeof shallow, false>,
 			);
 		} else if (typed_string.is_prefixItems_type(schema.typed_string)) {
 			return this.convert_prefixItems(
 				schema.typed_string,
-				shallow as Exclude<typeof shallow, false>
+				shallow as Exclude<typeof shallow, false>,
 			);
 		}
 
@@ -176,13 +176,13 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 				shallow,
 				schema,
 			},
-			'Failed to convert native type!'
+			'Failed to convert native type!',
 		);
 	}
 
 	private check_shallow_array_prefixItems_schema(
 		schema: typed_string_inner_array_prefixItems_type,
-		shallow: unknown
+		shallow: unknown,
 	) {
 		if (!(shallow instanceof Array)) {
 			return false;
@@ -210,7 +210,7 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 		schema:
 			| typed_string_inner_array_type
 			| typed_string_inner_array_prefixItems_type,
-		shallow: unknown
+		shallow: unknown,
 	) {
 		if (false === shallow) {
 			return false;
@@ -232,7 +232,7 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 		schema:
 			| typed_string_inner_array_type
 			| typed_string_inner_array_prefixItems_type,
-		shallow: unknown
+		shallow: unknown,
 	): asserts shallow is unknown[] {
 		const check = compile<unknown[]>(
 			this.discovery.docs.ajv,
@@ -250,21 +250,21 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 					schema,
 					errors: check.errors,
 				},
-				'Shallow parse of typed_string does not match array schema!'
+				'Shallow parse of typed_string does not match array schema!',
 			);
 		}
 	}
 
 	private async convert_array(
 		schema: typed_string_inner_array_type,
-		shallow: unknown[]
+		shallow: unknown[],
 	) : Promise<ExpressionResult<ArrayLiteralExpression>> {
 		performance.mark(`${this.constructor.name}.convert_array() start`);
 		this.check_shallow_array_schema_assert(schema, shallow);
 
 		const converter = await Converter.find_matching_schema(
 			await this.discovery.candidates,
-			schema.items
+			schema.items,
 		);
 
 		const items:ExpressionResult[] = [];
@@ -275,13 +275,13 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 
 		const result = new ExpressionResult(
 			await this.discovery.literal.array_literal(
-				items
-			)
+				items,
+			),
 		);
 
 		performance.measure(
 			`${this.constructor.name}.convert_array()`,
-			`${this.constructor.name}.convert_array() start`
+			`${this.constructor.name}.convert_array() start`,
 		);
 
 		return result;
@@ -291,7 +291,7 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 		schema:
 			| typed_string_inner_object_type
 			| typed_string_inner_object_pattern_type,
-		shallow:{[key: string]: unknown}
+		shallow:{[key: string]: unknown},
 	) : Promise<ExpressionResult<ObjectLiteralExpression>> {
 		performance.mark(`${this.constructor.name}.convert_object() start`);
 		this.convert_object_check_shallow_parse(schema, shallow);
@@ -303,12 +303,12 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 
 			const property_schema = this.convert_object_property_schema(
 				schema,
-				property
+				property,
 			);
 
 			const converter = await Converter.find_matching_schema(
 				await this.discovery.candidates,
-				property_schema
+				property_schema,
 			);
 
 			converted_entries.push([
@@ -321,19 +321,19 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 
 		performance.measure(
 			`${this.constructor.name}.convert_object() bootstrap`,
-			`${this.constructor.name}.convert_object() start`
+			`${this.constructor.name}.convert_object() start`,
 		);
 
 		try {
 			performance.mark(`${this.constructor.name}.convert_object() start`);
 
 			const result = new ExpressionResult(
-				await this.discovery.literal.object_literal(converted)
+				await this.discovery.literal.object_literal(converted),
 			);
 
 			performance.measure(
 				`${this.constructor.name}.convert_object()`,
-				`${this.constructor.name}.convert_object() start`
+				`${this.constructor.name}.convert_object() start`,
 			);
 
 			return result;
@@ -343,7 +343,7 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 					converted,
 					error,
 				},
-				'Failed to grab object literal!'
+				'Failed to grab object literal!',
 			);
 		}
 	}
@@ -352,12 +352,12 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 		schema:
 			| typed_string_inner_object_type
 			| typed_string_inner_object_pattern_type,
-		shallow:{[key: string]: unknown}
+		shallow:{[key: string]: unknown},
 	) {
 		performance.mark(
 			`${
 				this.constructor.name
-			}.convert_object_check_shallow_parse() start`
+			}.convert_object_check_shallow_parse() start`,
 		);
 		const check = compile<
 			{[key: string]: unknown}
@@ -367,7 +367,7 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 				...schema,
 				$defs: this.$defs,
 				type: 'object',
-			}
+			},
 		);
 
 		const result = check(shallow);
@@ -378,7 +378,7 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 			}.convert_object_check_shallow_parse()`,
 			`${
 				this.constructor.name
-			}.convert_object_check_shallow_parse() start`
+			}.convert_object_check_shallow_parse() start`,
 		);
 
 		if (!result) {
@@ -388,7 +388,7 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 					schema,
 					errors: check.errors,
 				},
-				'Shallow parse of typed_string does not match object schema!'
+				'Shallow parse of typed_string does not match object schema!',
 			);
 		}
 	}
@@ -397,12 +397,12 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 		schema:
 			| typed_string_inner_object_type
 			| typed_string_inner_object_pattern_type,
-		property: string
+		property: string,
 	) : SchemaObject {
 		performance.mark(
 			`${
 				this.constructor.name
-			}.convert_object_property_schema() start`
+			}.convert_object_property_schema() start`,
 		);
 
 		if ('properties' in schema) {
@@ -413,14 +413,14 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 					}.convert_object_property_schema() object failure`,
 					`${
 						this.constructor.name
-					}.convert_object_property_schema() start`
+					}.convert_object_property_schema() start`,
 				);
 				throw new NoMatchError(
 					{
 						property,
 						schema,
 					},
-					'Property not in schema!'
+					'Property not in schema!',
 				);
 			}
 			performance.measure(
@@ -429,7 +429,7 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 				}.convert_object_property_schema() object schema`,
 				`${
 					this.constructor.name
-				}.convert_object_property_schema() start`
+				}.convert_object_property_schema() start`,
 			);
 
 			return schema.properties[property];
@@ -439,14 +439,14 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 
 		if (!(json_string in this.regex_schema_cache)) {
 			this.regex_schema_cache[json_string] = Object.entries(
-				schema.patternProperties
+				schema.patternProperties,
 			).map(
 				(e) : [RegExp, {[key: string]: unknown}] => {
 					return [
 						new RegExp(e[0]),
 						e[1],
 					];
-				}
+				},
 			);
 			performance.measure(
 				`${
@@ -454,14 +454,14 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 				}.convert_object_property_schema() pattern caching`,
 				`${
 					this.constructor.name
-				}.convert_object_property_schema() start`
+				}.convert_object_property_schema() start`,
 			);
 		}
 
 		const property_regex_schema = this.regex_schema_cache[
 			json_string
 		].find(
-			maybe => maybe[0].test(property)
+			maybe => maybe[0].test(property),
 		);
 
 		if (!property_regex_schema) {
@@ -471,14 +471,14 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 				}.convert_object_property_schema() pattern failure`,
 				`${
 					this.constructor.name
-				}.convert_object_property_schema() start`
+				}.convert_object_property_schema() start`,
 			);
 			throw new NoMatchError(
 				{
 					property,
 					schema,
 				},
-				'Property not in schema!'
+				'Property not in schema!',
 			);
 		}
 
@@ -488,7 +488,7 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 			}.convert_object_property_schema() pattern schema`,
 			`${
 				this.constructor.name
-			}.convert_object_property_schema() start`
+			}.convert_object_property_schema() start`,
 		);
 
 		return property_regex_schema[1];
@@ -496,7 +496,7 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 
 	private async convert_prefixItems(
 		schema: typed_string_inner_array_prefixItems_type,
-		shallow: unknown[]
+		shallow: unknown[],
 	): Promise<ExpressionResult<ArrayLiteralExpression>> {
 		performance.mark(`${this.constructor.name}.convert_prefixItems() start`);
 		const slightly_less_than_shallow:unknown[][] = [];
@@ -509,7 +509,7 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 						shallow,
 						entry,
 					},
-					'Expecting string entries on shallow array!'
+					'Expecting string entries on shallow array!',
 				);
 			}
 
@@ -520,7 +520,7 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 					{
 						entry,
 					},
-					'Failed to parse inner entry!'
+					'Failed to parse inner entry!',
 				);
 			}
 
@@ -550,12 +550,12 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 
 				const converter = await Converter.find_matching_schema(
 					await this.discovery.candidates,
-					type
+					type,
 				);
 
 				if (!await converter.can_convert_schema_and_raw_data(
 					type,
-					entry
+					entry,
 				)) {
 					throw new NoMatchError(
 						{
@@ -563,7 +563,7 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 							type,
 							converter: converter.constructor.name,
 						},
-						'Cannot convert entry!'
+						'Cannot convert entry!',
 					);
 				}
 
@@ -573,17 +573,17 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 			}
 
 			converted.push(new ExpressionResult(
-				await this.discovery.literal.array_literal(items)
+				await this.discovery.literal.array_literal(items),
 			));
 		}
 
 		const result = new ExpressionResult(
-			await this.discovery.literal.array_literal(converted)
+			await this.discovery.literal.array_literal(converted),
 		);
 
 		performance.measure(
 			`${this.constructor.name}.convert_prefixItems()`,
-			`${this.constructor.name}.convert_prefixItems() start`
+			`${this.constructor.name}.convert_prefixItems() start`,
 		);
 
 		return result;

@@ -33,9 +33,9 @@ void describe('merge_files', () => {
 	void it('defines an object', async () => {
 		assert.equal(
 			value_is_non_array_object(
-				await FilesGenerator.merge_files([])
+				await FilesGenerator.merge_files([]),
 			),
-			true
+			true,
 		);
 	})
 	void it('modifies an object', async () => {
@@ -47,7 +47,7 @@ void describe('merge_files', () => {
 					{file: 'foo.ts', node: create_literal('bar')},
 				]),
 			], files))['foo.ts'].length,
-			1
+			1,
 		);
 	})
 });
@@ -56,31 +56,31 @@ void describe('guess_filename', () => {
 	void it('guess_filename', () => {
 		assert.equal(
 			guess_filename('foo'),
-			'common/unassigned.ts'
+			'common/unassigned.ts',
 		);
 		assert.equal(
 			guess_filename('boolean'),
-			'common/scalar.ts'
+			'common/scalar.ts',
 		);
 		assert.equal(
 			guess_filename('NativeClass--foo'),
-			'classes/base.ts'
+			'classes/base.ts',
 		);
 		assert.equal(
 			guess_filename('FGFoo--bar'),
-			'classes/CoreUObject/FGFoo.ts'
+			'classes/CoreUObject/FGFoo.ts',
 		);
 		assert.equal(
 			guess_filename('FGFoo--type'),
-			'classes/CoreUObject/FGFoo.ts'
+			'classes/CoreUObject/FGFoo.ts',
 		);
 		assert.equal(
 			guess_filename('FGFoo__type'),
-			'classes/CoreUObject/FGFoo.ts'
+			'classes/CoreUObject/FGFoo.ts',
 		);
 		assert.equal(
 			guess_filename('FGFoo'),
-			'classes/CoreUObject/FGFoo.ts'
+			'classes/CoreUObject/FGFoo.ts',
 		);
 	});
 });

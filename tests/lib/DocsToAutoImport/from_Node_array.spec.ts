@@ -17,8 +17,8 @@ void describe('EntityName_array_from_Node_array', () => {
 		ArrayTypeNode: [
 			ts.factory.createArrayTypeNode(
 				ts.factory.createLiteralTypeNode(
-					ts.factory.createStringLiteral('foo')
-				)
+					ts.factory.createStringLiteral('foo'),
+				),
 			),
 		],
 		ClassDeclaration: [
@@ -27,7 +27,7 @@ void describe('EntityName_array_from_Node_array', () => {
 				undefined,
 				undefined,
 				undefined,
-				[]
+				[],
 			),
 		],
 		FunctionDeclaration: [
@@ -38,7 +38,7 @@ void describe('EntityName_array_from_Node_array', () => {
 				undefined,
 				[],
 				undefined,
-				undefined
+				undefined,
 			),
 		],
 		MethodDeclaration: [
@@ -79,8 +79,8 @@ void describe('EntityName_array_from_Node_array', () => {
 					[
 					],
 					ts.factory.createKeywordTypeNode(
-						ts.SyntaxKind.StringKeyword
-					)
+						ts.SyntaxKind.StringKeyword,
+					),
 				),
 			]),
 		],
@@ -91,7 +91,7 @@ void describe('EntityName_array_from_Node_array', () => {
 				[],
 				undefined,
 				undefined,
-				ts.factory.createBlock([])
+				ts.factory.createBlock([]),
 			),
 			ts.factory.createArrowFunction(
 				undefined,
@@ -99,19 +99,19 @@ void describe('EntityName_array_from_Node_array', () => {
 				[],
 				ts.factory.createTypeLiteralNode([]),
 				undefined,
-				ts.factory.createBlock([])
+				ts.factory.createBlock([]),
 			),
 		],
 		IfStatement: [
 			ts.factory.createIfStatement(
 				ts.factory.createTrue(),
-				ts.factory.createReturnStatement()
+				ts.factory.createReturnStatement(),
 			),
 		],
 		VariableStatement: [
 			ts.factory.createVariableStatement(
 				undefined,
-				[]
+				[],
 			),
 		],
 		Parameter: [
@@ -121,7 +121,7 @@ void describe('EntityName_array_from_Node_array', () => {
 				'foo',
 				undefined,
 				undefined,
-				undefined
+				undefined,
 			),
 		],
 		BinaryExpression: [
@@ -139,7 +139,7 @@ void describe('EntityName_array_from_Node_array', () => {
 				'foo',
 				undefined,
 				undefined,
-				undefined
+				undefined,
 			),
 		],
 		BindingElement: [
@@ -147,25 +147,25 @@ void describe('EntityName_array_from_Node_array', () => {
 				undefined,
 				undefined,
 				'foo',
-				undefined
+				undefined,
 			),
 		],
 		TemplateExpression: [
 			ts.factory.createTemplateExpression(
 				ts.factory.createTemplateHead(''),
-				[]
+				[],
 			),
 		],
 		TemplateLiteralTypeNode: [
 			ts.factory.createTemplateLiteralType(
 				ts.factory.createTemplateHead(''),
-				[]
+				[],
 			),
 		],
 		HeritageClause: [
 			ts.factory.createHeritageClause(
 				ts.SyntaxKind.ExtendsKeyword,
-				[]
+				[],
 			),
 		],
 		ExportDeclaration: [
@@ -174,19 +174,19 @@ void describe('EntityName_array_from_Node_array', () => {
 				false,
 				ts.factory.createNamedExports([]),
 				undefined,
-				undefined
+				undefined,
 			),
 		],
 		ObjectLiteralExpression: [
 			ts.factory.createObjectLiteralExpression(
 				undefined,
-				undefined
+				undefined,
 			),
 		],
 		ArrayLiteralExpression: [
 			ts.factory.createArrayLiteralExpression(
 				undefined,
-				undefined
+				undefined,
 			),
 		],
 	};
@@ -217,13 +217,13 @@ void describe('EntityName_array_from_Node_array', () => {
 			EntityName_array_from_Node_array([
 				ts.factory.createParenthesizedType(
 					ts.factory.createArrayTypeNode(
-						ts.factory.createTypeReferenceNode('foo')
+						ts.factory.createTypeReferenceNode('foo'),
 					),
 				),
 			]),
 			[
 				ts.factory.createIdentifier('foo'),
-			]
+			],
 		)
 	})
 
@@ -232,12 +232,12 @@ void describe('EntityName_array_from_Node_array', () => {
 			EntityName_array_from_Node_array([
 				ts.factory.createTypeOperatorNode(
 					ts.SyntaxKind.KeyOfKeyword,
-					ts.factory.createTypeReferenceNode('foo')
+					ts.factory.createTypeReferenceNode('foo'),
 				),
 			]),
 			[
 				ts.factory.createIdentifier('foo'),
-			]
+			],
 		)
 	})
 
@@ -245,12 +245,12 @@ void describe('EntityName_array_from_Node_array', () => {
 		assert.deepEqual(
 			EntityName_array_from_Node_array([
 				ts.factory.createRestTypeNode(
-					ts.factory.createTypeReferenceNode('foo')
+					ts.factory.createTypeReferenceNode('foo'),
 				),
 			]),
 			[
 				ts.factory.createIdentifier('foo'),
-			]
+			],
 		)
 	})
 
@@ -261,12 +261,12 @@ void describe('EntityName_array_from_Node_array', () => {
 					undefined,
 					'foo',
 					undefined,
-					ts.factory.createTypeReferenceNode('bar')
+					ts.factory.createTypeReferenceNode('bar'),
 				),
 			]),
 			[
 				ts.factory.createIdentifier('bar'),
-			]
+			],
 		)
 	})
 
@@ -277,12 +277,12 @@ void describe('EntityName_array_from_Node_array', () => {
 					undefined,
 					'foo',
 					undefined,
-					undefined
+					undefined,
 				),
 			]),
 			[
 				ts.factory.createIdentifier('foo'),
-			]
+			],
 		)
 	})
 
@@ -290,12 +290,12 @@ void describe('EntityName_array_from_Node_array', () => {
 		assert.deepEqual(
 			EntityName_array_from_Node_array([
 				ts.factory.createReturnStatement(
-					ts.factory.createIdentifier('foo')
+					ts.factory.createIdentifier('foo'),
 				),
 			]),
 			[
 				ts.factory.createIdentifier('foo'),
-			]
+			],
 		)
 	})
 
@@ -305,12 +305,12 @@ void describe('EntityName_array_from_Node_array', () => {
 				ts.factory.createNewExpression(
 					ts.factory.createIdentifier('foo'),
 					undefined,
-					undefined
+					undefined,
 				),
 			]),
 			[
 				ts.factory.createIdentifier('foo'),
-			]
+			],
 		)
 	})
 
@@ -323,7 +323,7 @@ void describe('EntityName_array_from_Node_array', () => {
 			]),
 			[
 				ts.factory.createIdentifier('foo'),
-			]
+			],
 		)
 	})
 
@@ -334,7 +334,7 @@ void describe('EntityName_array_from_Node_array', () => {
 					ts.factory.createTypeReferenceNode('foo'),
 					ts.factory.createTypeReferenceNode('bar'),
 					ts.factory.createTypeReferenceNode('baz'),
-					ts.factory.createTypeReferenceNode('bat')
+					ts.factory.createTypeReferenceNode('bat'),
 				),
 			]),
 			[
@@ -342,7 +342,7 @@ void describe('EntityName_array_from_Node_array', () => {
 				ts.factory.createIdentifier('foo'),
 				ts.factory.createIdentifier('bar'),
 				ts.factory.createIdentifier('bat'),
-			]
+			],
 		)
 	})
 
@@ -357,7 +357,7 @@ void describe('EntityName_array_from_Node_array', () => {
 			[
 				ts.factory.createIdentifier('bar'),
 				ts.factory.createIdentifier('foo'),
-			]
+			],
 		)
 	})
 
@@ -366,12 +366,12 @@ void describe('EntityName_array_from_Node_array', () => {
 			EntityName_array_from_Node_array([
 				ts.factory.createElementAccessExpression(
 					ts.factory.createIdentifier('foo'),
-					1
+					1,
 				),
 			]),
 			[
 				ts.factory.createIdentifier('foo'),
-			]
+			],
 		)
 	})
 
@@ -381,12 +381,12 @@ void describe('EntityName_array_from_Node_array', () => {
 				ts.factory.createCallExpression(
 					ts.factory.createIdentifier('foo'),
 					undefined,
-					undefined
+					undefined,
 				),
 			]),
 			[
 				ts.factory.createIdentifier('foo'),
-			]
+			],
 		)
 	})
 
@@ -395,12 +395,12 @@ void describe('EntityName_array_from_Node_array', () => {
 			EntityName_array_from_Node_array([
 				ts.factory.createTypeQueryNode(
 					ts.factory.createIdentifier('foo'),
-					undefined
+					undefined,
 				),
 			]),
 			[
 				ts.factory.createIdentifier('foo'),
-			]
+			],
 		)
 	})
 
@@ -409,12 +409,12 @@ void describe('EntityName_array_from_Node_array', () => {
 			EntityName_array_from_Node_array([
 				ts.factory.createPropertyAccessExpression(
 					ts.factory.createIdentifier('foo'),
-					'bar'
+					'bar',
 				),
 			]),
 			[
 				ts.factory.createIdentifier('foo'),
-			]
+			],
 		)
 	})
 
@@ -423,12 +423,12 @@ void describe('EntityName_array_from_Node_array', () => {
 			EntityName_array_from_Node_array([
 				ts.factory.createTemplateSpan(
 					ts.factory.createIdentifier('foo'),
-					ts.factory.createTemplateTail('bar')
+					ts.factory.createTemplateTail('bar'),
 				),
 			]),
 			[
 				ts.factory.createIdentifier('foo'),
-			]
+			],
 		)
 	})
 
@@ -441,17 +441,17 @@ void describe('EntityName_array_from_Node_array', () => {
 						undefined,
 						'foo',
 						undefined,
-						undefined
+						undefined,
 					),
 					undefined,
 					undefined,
 					undefined,
-					undefined
+					undefined,
 				),
 			]),
 			[
 				ts.factory.createIdentifier('foo'),
-			]
+			],
 		)
 	})
 
@@ -460,12 +460,12 @@ void describe('EntityName_array_from_Node_array', () => {
 			EntityName_array_from_Node_array([
 				ts.factory.createTemplateLiteralTypeSpan(
 					ts.factory.createTypeReferenceNode('foo'),
-					ts.factory.createTemplateTail('bar')
+					ts.factory.createTemplateTail('bar'),
 				),
 			]),
 			[
 				ts.factory.createIdentifier('foo'),
-			]
+			],
 		)
 	})
 
@@ -474,12 +474,12 @@ void describe('EntityName_array_from_Node_array', () => {
 			EntityName_array_from_Node_array([
 				ts.factory.createExpressionWithTypeArguments(
 					ts.factory.createIdentifier('foo'),
-					undefined
+					undefined,
 				),
 			]),
 			[
 				ts.factory.createIdentifier('foo'),
-			]
+			],
 		)
 	})
 
@@ -493,16 +493,16 @@ void describe('EntityName_array_from_Node_array', () => {
 						ts.factory.createExportSpecifier(
 							false,
 							'foo',
-							'bar'
+							'bar',
 						),
 					]),
 					undefined,
-					undefined
+					undefined,
 				),
 			]),
 			[
 				ts.factory.createIdentifier('bar'),
-			]
+			],
 		)
 	})
 
@@ -516,7 +516,7 @@ void describe('EntityName_array_from_Node_array', () => {
 			]),
 			[
 				ts.factory.createIdentifier('bar'),
-			]
+			],
 		)
 	})
 
@@ -524,23 +524,23 @@ void describe('EntityName_array_from_Node_array', () => {
 		assert.deepEqual(
 			EntityName_array_from_Node_array([
 				ts.factory.createComputedPropertyName(
-					ts.factory.createIdentifier('foo')
+					ts.factory.createIdentifier('foo'),
 				),
 			]),
 			[
 				ts.factory.createIdentifier('foo'),
-			]
+			],
 		)
 
 		assert.deepEqual(
 			from_Node_array([
 				ts.factory.createComputedPropertyName(
-					ts.factory.createIdentifier('foo')
+					ts.factory.createIdentifier('foo'),
 				),
 			]),
 			[
 				'foo',
-			]
+			],
 		)
 	})
 
@@ -552,12 +552,12 @@ void describe('EntityName_array_from_Node_array', () => {
 					false,
 					undefined,
 					undefined,
-					undefined
+					undefined,
 				),
 			]),
 			{
 				message: 'Unsupported types found!',
-			}
+			},
 		)
 	})
 })

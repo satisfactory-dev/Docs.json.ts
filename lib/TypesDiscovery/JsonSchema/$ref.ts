@@ -20,10 +20,10 @@ export class $ref extends CandidatesDiscovery
 			object_has_property(
 				schema,
 				'$defs',
-				value_is_non_array_object
+				value_is_non_array_object,
 			)
 				? Object.fromEntries(
-					Object.keys(schema.$defs).map(e => [e, true])
+					Object.keys(schema.$defs).map(e => [e, true]),
 				)
 				: {};
 	}
@@ -36,7 +36,7 @@ export class $ref extends CandidatesDiscovery
 		const $defs = this.$defs;
 
 		function has_definition_$ref(
-			maybe:unknown
+			maybe:unknown,
 		) : maybe is (
 			& {[key: string]: unknown}
 			& {$ref: Exclude<(keyof typeof $defs), number>}
@@ -49,7 +49,7 @@ export class $ref extends CandidatesDiscovery
 		}
 
 		function schema_has_definition<T extends string = string>(
-			maybe:T, schema:SchemaObject
+			maybe:T, schema:SchemaObject,
 		): schema is (
 			& SchemaObject
 			& {

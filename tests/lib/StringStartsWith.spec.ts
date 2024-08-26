@@ -31,19 +31,19 @@ void describe('$ref_in_array', () => {
 	void it('behaves', () => {
 		assert.equal($ref_in_array(
 			1,
-			['#/$defs/foo']
+			['#/$defs/foo'],
 		), false);
 		assert.equal($ref_in_array(
 			'foo',
-			['#/$defs/foo']
+			['#/$defs/foo'],
 		), false);
 		assert.equal($ref_in_array(
 			'#/$defs/bar',
-			['#/$defs/foo']
+			['#/$defs/foo'],
 		), false);
 		assert.equal($ref_in_array(
 			'#/$defs/foo',
-			['#/$defs/foo']
+			['#/$defs/foo'],
 		), true);
 	});
 });

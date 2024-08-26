@@ -16,7 +16,7 @@ export class MethodDeclarations extends NodeExtraction<MethodDeclaration> {
 			])
 			.flat()
 			.filter(
-				(maybe): maybe is Exclude<typeof maybe, undefined> => !!maybe
+				(maybe): maybe is Exclude<typeof maybe, undefined> => !!maybe,
 			);
 	}
 }
