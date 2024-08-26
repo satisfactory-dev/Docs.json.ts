@@ -21,7 +21,7 @@ void describe('DocsTsGenerator.definition', () => {
 		let passed = false;
 		try {
 			await docs.definition('nope');
-		} catch (err) {
+		} catch {
 			passed = true;
 		}
 		assert.equal(passed, true);
