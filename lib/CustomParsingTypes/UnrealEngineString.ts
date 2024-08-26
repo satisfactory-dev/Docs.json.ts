@@ -229,7 +229,7 @@ export class UnrealEngineString {
 		return (data_from_schema: UnrealEngineString_type) => {
 			const data:
 				| Exclude<typeof data_from_schema, true>
-				| typeof empty_object =
+				| empty_object =
 				true === data_from_schema ? {} : data_from_schema;
 			const left_value = (
 				'left' in data
@@ -460,12 +460,12 @@ export function flexibly_create_UnrealEngineString_reference_type(
 	);
 }
 
-const empty_object = {};
+type empty_object = Record<never, never>;
 
 export function UnrealEngineString_reference_type(
 	data_from_schema: UnrealEngineString_type,
 ): TypeReferenceNode {
-	const data: Exclude<typeof data_from_schema, true> | typeof empty_object =
+	const data: Exclude<typeof data_from_schema, true> | empty_object =
 		true === data_from_schema ? {} : data_from_schema;
 
 	let left_value: TypeNode = create_literal(
