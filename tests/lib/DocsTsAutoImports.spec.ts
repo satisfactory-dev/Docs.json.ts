@@ -115,7 +115,11 @@ void describe('DocsTsAutoImports', () => {
 				try {
 					yup(instance.generate());
 				} catch (err) {
-					nope(err);
+					nope((
+						err instanceof Error
+							? err
+							: new Error('Unknown error')
+					));
 				}
 			});
 
