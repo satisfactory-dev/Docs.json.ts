@@ -390,6 +390,7 @@ export async function format_code(
 export async function eslint_generated_types(parent_folder: string) {
 	const eslint = new ESLint({
 		fix: true,
+		cwd: parent_folder,
 		cache: true,
 		cacheLocation: `${parent_folder}/.eslintcache`,
 		cacheStrategy: 'content',
