@@ -4,11 +4,11 @@ export default [
 	...config,
 	{
 		languageOptions: {
-			"parserOptions": {
-				"project": "tsconfig.generated-types-check.json"
+			parserOptions: {
+				project: "tsconfig.generated-types-check.json"
 			},
 		},
-		"rules": {
+		rules: {
 			'comma-dangle': 'warn',
 			"max-len": "off",
 			"object-curly-newline": "off",
