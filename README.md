@@ -75,6 +75,7 @@
         	cache_path: `${__dirname}/data/`,
         });
         ```
+	1. note: this package will auto-fix issues in generated code according to eslint configs relative to the directory passed to `TypeDefinitionWriter::write()`
 
 # License
 
