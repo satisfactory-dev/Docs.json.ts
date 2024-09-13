@@ -1,4 +1,5 @@
 import {
+	docs_versions,
 	DocsDataItem,
 	DocsTsGenerator,
 } from './DocsTsGenerator';
@@ -81,12 +82,18 @@ export class DataDiscovery
 	]>;
 	public readonly docs:DocsTsGenerator;
 	public readonly literal:Literal;
+	public readonly version: keyof docs_versions;
 
-	constructor(docs:DocsTsGenerator, literal?:Literal) {
+	constructor(
+		docs:DocsTsGenerator,
+		version: keyof docs_versions,
+		literal?:Literal,
+	) {
 		super();
 		this.docs = docs;
 		this.literal = literal || new Literal();
-		this.candidates = docs.update8_schema().then(({$defs}) => {
+		this.version = version;
+		this.candidates = docs.schema(version).then(({$defs}) => {
 			return [
 				new BooleanConverter(docs.ajv),
 				new ArrayConverter(this),
@@ -105,9 +112,8 @@ export class DataDiscovery
 		});
 	}
 
-	async expecting() : Promise<progress>
-	{
-		const json = await this.docs.get();
+	async expecting() : Promise<progress> {
+		const json = await this.docs.get(this.version);
 
 		return Object.fromEntries(
 			json.map(e => [e.NativeClass, e.Classes.map(e => e.ClassName)]),
@@ -121,8 +127,8 @@ export class DataDiscovery
 			schema,
 			docs,
 		] = await Promise.all([
-			this.docs.update8_schema(),
-			this.docs.get(),
+			this.docs.schema(this.version),
+			this.docs.get(this.version),
 		]);
 
 		let index = 0;

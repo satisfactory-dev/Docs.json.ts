@@ -3,6 +3,7 @@ import {
 } from 'node:fs';
 import {
 	DocsTsGenerator,
+	DocsTsGeneratorVersion,
 } from './DocsTsGenerator';
 import {
 	__dirname_from_meta,
@@ -26,10 +27,14 @@ const ajv = new Ajv({
 });
 configure_ajv(ajv);
 
-export const update8 = new DocsTsGenerator({
+export const docs = new DocsTsGenerator({
 	ajv,
+	docs_versions: {
+		update8: new DocsTsGeneratorVersion({
 	docs_path: `${__dirname}/../data/update8/Docs.json`,
 	cache_path: `${__dirname}/../data/update8/`,
+		}),
+	},
 });
 
 export const skip_because_docs_dot_json_not_yet_bundled = {

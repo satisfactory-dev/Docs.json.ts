@@ -6,7 +6,7 @@ import {
 	DataDiscovery,
 } from '../../lib/DataDiscovery';
 import {
-	update8,
+	docs,
 	skip_because_docs_dot_json_not_yet_bundled,
 } from '../../lib/helpers';
 import {
@@ -22,7 +22,7 @@ void describe(
 	'generate_markdown',
 	skip_because_docs_dot_json_not_yet_bundled,
 	async () => {
-		const discovery = new DataDiscovery(update8);
+		const discovery = new DataDiscovery(docs, 'update8');
 		const actual = await (discovery.generate_markdown());
 		const expecting = (
 			await readFile(`${__dirname}/../fixtures/data-progress--empty.md`)

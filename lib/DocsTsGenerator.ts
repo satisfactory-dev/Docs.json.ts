@@ -22,9 +22,6 @@ import {
 	ESLint,
 } from 'eslint';
 
-import update8_schema from '../schema/update8.schema.json' with {
-	type: 'json'
-};
 import {
 	BuiltInParserName,
 } from 'prettier';
@@ -49,6 +46,10 @@ import {
 	compile,
 	esmify,
 } from '@satisfactory-dev/ajv-utilities';
+import {
+	DocsSchema,
+	DocsSchemaByVersion,
+} from './DocsSchema';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -82,10 +83,34 @@ export type DocsDataItem<
 
 export type DocsData = [DocsDataItem, ...DocsDataItem[]];
 
+export class DocsTsGeneratorVersion
+{
+	docs: DocsData | undefined;
+	readonly cache_path: string | undefined;
+	readonly docs_path: string | DocsData;
+
+	constructor({
+		// raw JSON or path to UTF-16LE encoded Docs.json
+		docs_path,
+		// optional cache folder path for cacheable resources
+		cache_path = undefined,
+	}: {
+		cache_path: string | undefined,
+		docs_path: string | DocsData,
+	}) {
+		this.cache_path = cache_path;
+		this.docs_path = docs_path;
+	}
+}
+
+export type docs_versions = {
+	update8?: DocsTsGeneratorVersion,
+};
+
 export class DocsTsGenerator {
-	private docs: DocsData | undefined;
-	private readonly cache_path: string | undefined;
-	private readonly docs_path: string | DocsData;
+	private docs_versions: docs_versions;
+	// eslint-disable-next-line max-len
+	private readonly schema_data:DocsSchemaByVersion = new DocsSchemaByVersion();
 	public readonly ajv:Ajv;
 	readonly types_from_module: string|undefined;
 
@@ -103,27 +128,28 @@ export class DocsTsGenerator {
 	constructor({
 		// Ajv instance
 		ajv,
-		// raw JSON or path to UTF-16LE encoded Docs.json
-		docs_path,
-		// optional cache folder path for cacheable resources
-		cache_path = undefined,
+		// Docs object
+		docs_versions,
 		types_from_module = undefined,
 	}: {
 		ajv: Ajv,
-		docs_path: string | DocsData;
-		cache_path?: string;
+		docs_versions: docs_versions;
 		types_from_module?: string,
 	}) {
+		if (Object.keys(docs_versions).length < 1) {
+			throw new Error('No versions specified!');
+		}
+
 		this.ajv = ajv;
-		this.docs_path = docs_path;
-		this.cache_path = cache_path;
+		this.docs_versions = docs_versions;
 		this.types_from_module = types_from_module;
 	}
 
 	async definition(
+		version: keyof docs_versions,
 		$ref:string,
 	): Promise<SchemaObject> {
-		const schema = await this.update8_schema();
+		const schema = await this.schema(version);
 
 		if (!property_exists_on_object(schema.$defs, $ref)) {
 			throw new NoMatchError({
@@ -135,32 +161,55 @@ export class DocsTsGenerator {
 		return schema.$defs[$ref];
 	}
 
-	async get() {
+	async get(
+		version: keyof docs_versions,
+	) {
 		return this.validate(
-			await this.load(),
-			await this.update8_schema(),
+			version,
+			await this.load(version),
+			await this.schema(version),
 		);
 	}
 
-	async update8_schema(): Promise<typeof update8_schema>
-	{
-		await this.validate_schema<typeof update8_schema>(
-			update8_schema,
+	async schema<T extends keyof docs_versions>(
+		version: T,
+	): Promise<T extends 'update8'
+		? DocsSchemaByVersion['update8']['en_US']['schema']
+		: DocsSchema<unknown>['schema']
+	> {
+		if ('update8' === version) {
+			const schema = this.schema_data.update8.en_US.schema;
+
+		// eslint-disable-next-line max-len
+		await this.validate_schema<DocsSchemaByVersion['update8']['en_US']['schema']>(
+				version,
+				schema,
 		);
 
-		return update8_schema;
+			return schema;
+		}
+
+		throw new Error('Could not find specified schema!');
 	}
 
-	private async load(): Promise<Exclude<typeof this.docs, undefined>> {
-		if (undefined === this.docs) {
+	private async load(
+		version: keyof docs_versions,
+	): Promise<DocsData> {
+		const docs = this.docs_versions[version];
+
+		if (undefined === docs) {
+			throw new Error('Requested version not configured!');
+		}
+
+		if (undefined === docs.docs) {
 			performance.mark(DocsTsGenerator.PERF_START_LOADING_JSON);
-			if ('string' !== typeof this.docs_path) {
+			if ('string' !== typeof docs.docs_path) {
 				performance.measure(
 					DocsTsGenerator.PERF_EARLY_RETURN,
 					DocsTsGenerator.PERF_START_LOADING_JSON,
 				);
-				return this.docs_path;
-			} else if (!this.docs_path.endsWith('.json')) {
+				return docs.docs_path;
+			} else if (!docs.docs_path.endsWith('.json')) {
 				performance.measure(
 					DocsTsGenerator.PERF_FAILURE,
 					DocsTsGenerator.PERF_START_LOADING_JSON,
@@ -169,12 +218,12 @@ export class DocsTsGenerator {
 			} else {
 				let maybe_json: unknown;
 				try {
-					if (this.cache_path) {
-						const utf8_filename = basename(this.docs_path).replace(
+					if (docs.cache_path) {
+						const utf8_filename = basename(docs.docs_path).replace(
 							/\.json$/,
 							'.utf8.json',
 						);
-						const utf8_filepath = `${this.cache_path}/${utf8_filename}`;
+						const utf8_filepath = `${docs.cache_path}/${utf8_filename}`;
 
 						if (existsSync(utf8_filepath)) {
 							const file_contents =
@@ -190,7 +239,7 @@ export class DocsTsGenerator {
 							);
 						} else {
 							maybe_json = await this.load_from_file(
-								this.docs_path,
+								docs.docs_path,
 							);
 							performance.measure(
 								DocsTsGenerator.PERF_FILE_PARSED,
@@ -203,7 +252,7 @@ export class DocsTsGenerator {
 							);
 						}
 					} else {
-						maybe_json = await this.load_from_file(this.docs_path);
+						maybe_json = await this.load_from_file(docs.docs_path);
 						performance.measure(
 							DocsTsGenerator.PERF_FILE_PARSED,
 							DocsTsGenerator.PERF_START_LOADING_JSON,
@@ -231,15 +280,15 @@ export class DocsTsGenerator {
 					throw new Error('Was expecting json to be an array!');
 				}
 
-				this.docs = maybe_json as [DocsDataItem, ...DocsDataItem[]];
+				docs.docs = maybe_json as [DocsDataItem, ...DocsDataItem[]];
 			}
 
-			if (undefined === this.docs) {
-				throw new Error('this.docs not set!');
+			if (undefined === docs.docs) {
+				throw new Error('docs not set!');
 			}
 		}
 
-		return this.docs;
+		return docs.docs;
 	}
 
 	private async load_from_file(filepath: string): Promise<unknown> {
@@ -257,12 +306,16 @@ export class DocsTsGenerator {
 	}
 
 	private async validate<T extends DocsData>(
+		version: keyof docs_versions,
 		json: unknown,
 		schema: SchemaObject,
 	): Promise<T> {
 		performance.mark(DocsTsGenerator.PERF_VALIDATION_STARTED);
 
-		const validateDocs = await this.validate_schema<T>(schema);
+		const validateDocs = await this.validate_schema<T>(
+			version,
+			schema,
+		);
 
 		performance.measure(
 			DocsTsGenerator.PERF_VALIDATION_COMPILED,
@@ -290,8 +343,15 @@ export class DocsTsGenerator {
 		Result = unknown,
 		Schema extends SchemaObject = SchemaObject,
 	> (
+		version: keyof docs_versions,
 		schema: Schema,
 	): Promise<ValidateFunction<Result>> {
+		const docs = this.docs_versions[version];
+
+		if (undefined === docs) {
+			throw new Error('Requested version not configured!');
+		}
+
 		if (
 			object_has_property(
 				schema,
@@ -315,7 +375,7 @@ export class DocsTsGenerator {
 			}
 		}
 
-		if (this.cache_path) {
+		if (docs.cache_path) {
 			const file_sha512 = createHash('sha512');
 
 			if (!object_has_property(schema, '$id', is_string)) {
@@ -331,7 +391,7 @@ export class DocsTsGenerator {
 			);
 
 			const filename = `${schema['$id']}.${file_sha512.digest('hex')}.mjs`;
-			const filepath = `${this.cache_path}/${filename}`;
+			const filepath = `${docs.cache_path}/${filename}`;
 
 			if (!existsSync(filepath)) {
 				performance.mark(DocsTsGenerator.PERF_VALIDATION_PRECOMPILE);

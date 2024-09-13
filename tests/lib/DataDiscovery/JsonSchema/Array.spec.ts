@@ -10,14 +10,14 @@ import {
 	DataDiscovery,
 } from '../../../../lib/DataDiscovery';
 import {
-	update8,
+	docs,
 } from '../../../../lib/helpers';
 
 /**
  * @todo add full coverage on ArrayConverter
  */
 void describe('ArrayConverter.can_convert_schema_and_raw_data()', () => {
-	const instance = new ArrayConverter(new DataDiscovery(update8));
+	const instance = new ArrayConverter(new DataDiscovery(docs, 'update8'));
 
 	void it('resolves false', async () => {
 		assert.equal(

@@ -133,6 +133,7 @@ export class Ref extends ConverterMatchesSchema<
 		if (!(schema.$ref in this.cache)) {
 			while (this.can_convert_schema(checking)) {
 				checking = await this.discovery.docs.definition(
+					this.discovery.version,
 					checking.$ref.substring(8),
 				);
 			}

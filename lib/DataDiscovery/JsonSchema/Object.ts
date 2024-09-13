@@ -178,6 +178,7 @@ abstract class ObjectConverterMatchesSchema<
 		$ref:local_ref<string>,
 	): Promise<{[key: string]: Converter<SchemaObject>}> {
 		const definition = await this.discovery.docs.definition(
+			this.discovery.version,
 			$ref.substring(8),
 		);
 
@@ -236,6 +237,7 @@ abstract class ObjectConverterMatchesSchema<
 			for (const entry of Object.entries(
 				await this.resolve_schema(
 					await this.discovery.docs.definition(
+						this.discovery.version,
 						schema.$ref.substring(8),
 					),
 					depth + 1,

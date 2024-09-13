@@ -7,7 +7,7 @@ import {
 	Enum,
 } from '../../../../../lib/TypeDefinitionDiscovery/JsonSchema/String/Enum';
 import {
-	update8,
+	docs,
 } from '../../../../../lib/helpers';
 import ts_assert from '@signpostmarv/ts-assert';
 import {
@@ -15,7 +15,7 @@ import {
 } from '@satisfactory-dev/custom-assert';
 
 void describe('Enum', () => {
-	const instance = new Enum(update8.ajv);
+	const instance = new Enum(docs.ajv);
 
 	void describe('generate', () => {
 		void it('behaves', () => {

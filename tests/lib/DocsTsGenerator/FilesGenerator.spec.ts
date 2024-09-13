@@ -10,7 +10,7 @@ import {
 	TypeDefinitionWriter,
 } from '../../../lib/TypeDefinitionWriter';
 import {
-	update8,
+	docs,
 } from '../../../lib/helpers';
 import {
 	create_literal,
@@ -29,7 +29,7 @@ import {
 } from '../../../lib/DocsTsGenerator';
 
 void describe('FilesGenerator', async () => {
-	const type_definition_writer = new TypeDefinitionWriter(update8);
+	const type_definition_writer = new TypeDefinitionWriter(docs, 'update8');
 	const discovery = await type_definition_writer.discovery;
 	const instance = new class Testable extends FilesGenerator{
 		constructor()
@@ -37,6 +37,7 @@ void describe('FilesGenerator', async () => {
 			super(
 				[],
 				discovery,
+				'update8',
 			);
 		}
 

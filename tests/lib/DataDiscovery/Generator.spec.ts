@@ -10,7 +10,7 @@ import {
 	DataDiscovery,
 } from '../../../lib/DataDiscovery';
 import {
-	update8,
+	docs,
 } from '../../../lib/helpers';
 import {
 	array_has_size,
@@ -57,7 +57,7 @@ import {
 } from '../../../lib/DataDiscovery/JsonSchema/OneOf';
 
 void describe('Converter', async () => {
-	const candidates = await ((new DataDiscovery(update8)).candidates);
+	const candidates = await ((new DataDiscovery(docs, 'update8')).candidates);
 	const expected_converters:[
 		SchemaObject,
 		{

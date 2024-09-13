@@ -7,7 +7,7 @@ import {
 // eslint-disable-next-line max-len
 } from '../../../../../../lib/TypeDefinitionDiscovery/JsonSchema/String/Enum/BooleanEnum';
 import {
-	update8,
+	docs,
 } from '../../../../../../lib/helpers';
 import ts_assert from '@signpostmarv/ts-assert';
 import ts from 'typescript';
@@ -16,7 +16,7 @@ import {
 } from '@satisfactory-dev/custom-assert';
 
 void describe('BooleanEnum', () => {
-	const instance = new BooleanEnum(update8.ajv);
+	const instance = new BooleanEnum(docs.ajv);
 
 	void describe('generate', () => {
 		void it('behaves with boolean only', () => {

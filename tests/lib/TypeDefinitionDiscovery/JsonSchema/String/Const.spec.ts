@@ -7,12 +7,12 @@ import {
 	Const,
 } from '../../../../../lib/TypeDefinitionDiscovery/JsonSchema/String/Const';
 import {
-	update8,
+	docs,
 } from '../../../../../lib/helpers';
 import ts_assert from '@signpostmarv/ts-assert';
 
 void describe('Const', () => {
-	const instance = new Const(update8.ajv);
+	const instance = new Const(docs.ajv);
 
 	void describe('generate', () => {
 		void it('behaves', () => {

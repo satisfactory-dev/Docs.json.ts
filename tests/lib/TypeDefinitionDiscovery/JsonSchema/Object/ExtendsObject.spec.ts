@@ -7,7 +7,7 @@ import {
 // eslint-disable-next-line max-len
 } from '../../../../../lib/TypeDefinitionDiscovery/JsonSchema/Object/ExtendsObject';
 import {
-	update8,
+	docs,
 } from '../../../../../lib/helpers';
 import ts_assert from '@signpostmarv/ts-assert';
 import {
@@ -18,7 +18,7 @@ import {
 } from '../../../../../lib/StringStartsWith';
 
 void describe('ExtendsObject', async () => {
-	const type_definition_writer = new TypeDefinitionWriter(update8);
+	const type_definition_writer = new TypeDefinitionWriter(docs, 'update8');
 	const discovery = await type_definition_writer.discovery;
 	const instance = new class extends ExtendsObject {
 		constructor() {

@@ -55,6 +55,7 @@ import {
 	create_modifiers,
 } from './TsFactoryWrapper';
 import {
+	docs_versions,
 	DocsTsGenerator,
 } from './DocsTsGenerator';
 import {
@@ -128,6 +129,7 @@ export class TypeDefinitionDiscovery
 		AnyGenerator,
 		...AnyGenerator[],
 	];
+	private readonly version: keyof docs_versions;
 	public readonly docs:DocsTsGenerator;
 	public readonly types_discovery:TypesDiscovery;
 
@@ -141,11 +143,17 @@ export class TypeDefinitionDiscovery
 			...AnyGenerator[],
 		],
 		docs:DocsTsGenerator,
+		version: keyof docs_versions,
 	) {
 		super();
-		this.types_discovery = new TypesDiscovery(types_discovery, docs);
+		this.types_discovery = new TypesDiscovery(
+			types_discovery,
+			docs,
+			version,
+		);
 		this.candidates = type_definition_discover;
 		this.docs = docs;
+		this.version = version;
 	}
 
 	add_candidates(...candidates:AnyGenerator[])
@@ -225,7 +233,10 @@ export class TypeDefinitionDiscovery
 					create_modifiers('export'),
 					adjust_class_name(`${$ref}__type`),
 					undefined,
-					generator(await this.docs.definition($ref)),
+					generator(await this.docs.definition(
+						this.version,
+						$ref,
+					)),
 				),
 			};
 		}
@@ -574,7 +585,7 @@ export class TypeDefinitionDiscovery
 	private async schema_from_json(
 		discovered_types: {[key: string]: true},
 	) : Promise<SchemaObjectWithDefinitions<typeof discovered_types>> {
-		const schema = await this.docs.update8_schema();
+		const schema = await this.docs.schema(this.version);
 
 		if (!is_schema_with_$defs(schema, discovered_types)) {
 			throw new Error('Schema $defs not as expected!');

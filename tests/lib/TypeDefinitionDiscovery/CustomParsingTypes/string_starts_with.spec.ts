@@ -8,7 +8,7 @@ import {
 // eslint-disable-next-line max-len
 } from '../../../../lib/TypeDefinitionDiscovery/CustomParsingTypes/string_starts_with';
 import {
-	update8,
+	docs,
 } from '../../../../lib/helpers';
 import ts_assert from '@signpostmarv/ts-assert';
 import {
@@ -17,7 +17,7 @@ import {
 } from '@satisfactory-dev/custom-assert';
 
 void describe('string_starts_with', () => {
-	const instance = new string_starts_with(update8.ajv);
+	const instance = new string_starts_with(docs.ajv);
 
 	void describe('generate', () => {
 		void it ('behaves', () => {

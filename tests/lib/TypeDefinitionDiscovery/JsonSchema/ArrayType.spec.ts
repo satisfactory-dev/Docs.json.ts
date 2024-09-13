@@ -10,7 +10,7 @@ import {
 	TypeDefinitionWriter,
 } from '../../../../lib/TypeDefinitionWriter';
 import {
-	update8,
+	docs,
 } from '../../../../lib/helpers';
 import ts_assert from '@signpostmarv/ts-assert';
 import {
@@ -18,7 +18,7 @@ import {
 } from '@satisfactory-dev/custom-assert';
 
 void describe('ArrayType', async () => {
-	const type_definition_writer = new TypeDefinitionWriter(update8);
+	const type_definition_writer = new TypeDefinitionWriter(docs, 'update8');
 	const discovery = await type_definition_writer.discovery;
 	const discovered_types = (
 		await discovery.types_discovery.discover_types()

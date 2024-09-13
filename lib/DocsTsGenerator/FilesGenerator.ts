@@ -28,6 +28,7 @@ import {
 	TypesDiscovery,
 } from '../TypesDiscovery';
 import {
+	docs_versions,
 	DocsDataItem,
 } from '../DocsTsGenerator';
 
@@ -36,22 +37,26 @@ export class FilesGenerator extends Base {
 	private readonly is_NativeClass:Promise<ValidateFunction<DocsDataItem>>;
 	private readonly types:Promise<ref_discovery_type>;
 	private readonly validations:ValidateFunction[];
+	private readonly version: keyof docs_versions;
 
 	constructor(
 		validations:ValidateFunction[],
 		discovery:TypeDefinitionDiscovery,
+		version: keyof docs_versions,
 	) {
 		super();
 		this.validations = validations;
 		this.discovery = discovery;
 		this.is_NativeClass = TypesDiscovery.generate_is_NativeClass(
 			this.discovery.docs,
+			version,
 		);
 		this.types = this.discovery.discover_type_$defs();
+		this.version = version;
 	}
 
 	async* generate_files() {
-		for (const entry of await this.discovery.docs.get()) {
+		for (const entry of await this.discovery.docs.get(this.version)) {
 			yield await this.generate_file(entry);
 		}
 	}

@@ -21,6 +21,7 @@ import {
 	non_array_object_property,
 } from './TypesDiscovery/non_array_object_property';
 import {
+	docs_versions,
 	DocsDataItem, DocsTsGenerator,
 } from './DocsTsGenerator';
 import {
@@ -53,19 +54,22 @@ export class TypesDiscovery
 		...CandidatesDiscovery[],
 	];
 	private readonly docs:DocsTsGenerator;
+	private readonly version: keyof docs_versions;
 
 	constructor(
 		candidates_discovery: [CandidatesDiscovery, ...CandidatesDiscovery[]],
 		docs: DocsTsGenerator,
+		version: keyof docs_versions,
 	) {
 		this.candidates_discovery = candidates_discovery;
 		this.docs = docs;
+		this.version = version;
 	}
 
 	async discover_types()
 	{
 		if (!this.discovery) {
-			const schema = await this.docs.update8_schema();
+			const schema = await this.docs.schema(this.version);
 			const discovered_types = new Set<local_ref<string>>();
 
 			this.discover_types_from(schema, schema, discovered_types);
@@ -120,8 +124,9 @@ export class TypesDiscovery
 
 	static async generate_is_NativeClass(
 		docs:DocsTsGenerator,
+		version: keyof docs_versions,
 	) {
-		const schema = await docs.update8_schema();
+		const schema = await docs.schema(version);
 
 		if (!object_has_property(
 			schema,

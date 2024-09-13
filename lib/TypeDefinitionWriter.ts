@@ -42,6 +42,7 @@ import {
 	dirname,
 } from 'node:path';
 import {
+	docs_versions,
 	DocsDataItem,
 	DocsTsGenerator,
 	eslint_generated_types,
@@ -90,18 +91,21 @@ export class TypeDefinitionWriter
 	private prepared = false;
 	private readonly data_discovery:DataDiscovery;
 	private readonly docs:DocsTsGenerator;
+	private readonly version: keyof docs_versions;
 
 	constructor(
 		docs: DocsTsGenerator,
+		version: keyof docs_versions,
 	) {
 		this.docs = docs;
-		this.data_discovery = new DataDiscovery(docs);
+		this.data_discovery = new DataDiscovery(docs, version);
+		this.version = version;
 	}
 
 	get discovery(): Promise<TypeDefinitionDiscovery>
 	{
 		if (!this._discovery) {
-			const schema = this.docs.update8_schema();
+			const schema = this.docs.schema(this.version);
 			const type_definition_discover = require_non_empty_array<
 				AnyGenerator
 			>([
@@ -122,6 +126,7 @@ export class TypeDefinitionWriter
 					],
 					type_definition_discover,
 					this.docs,
+					this.version,
 				);
 			}));
 		}
@@ -172,7 +177,7 @@ export class TypeDefinitionWriter
 
 		performance.mark(`${this.constructor.name}.write() start`);
 		const types = await discovery.discover_type_$defs();
-		const schema = await this.docs.update8_schema();
+		const schema = await this.docs.schema(this.version);
 
 		if (
 			types.missing_classes.length > 0
@@ -221,6 +226,7 @@ export class TypeDefinitionWriter
 				new DocsFiles(
 					validations,
 					discovery,
+					this.version,
 				),
 				new FromArray([
 					...legacy_UnrealEngineString_module.CustomGenerators(),
