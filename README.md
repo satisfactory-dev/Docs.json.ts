@@ -35,7 +35,7 @@
     - `NODE_OPTIONS` env var may require opening a fresh terminal if you
       receieve an error along the lines of
       `TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".ts"`
-1. Copy `Docs.json` to `./data/`
+1. Copy `Docs.json` to `./data/update8/`
 1. Run `make validate`
     - if this fails, either the `Docs.json` is wrong or the schema is out-of-date
     - if this succeeds, run `make generate`
@@ -71,8 +71,8 @@
 
         export const docs = new DocsTsGenerator({
         	ajv,
-        	docs_path: `${__dirname}/data/Docs.json`,
-        	cache_path: `${__dirname}/data/`,
+        	docs_path: `${__dirname}/data/update8/Docs.json`,
+        	cache_path: `${__dirname}/data/update8/`,
         });
         ```
 	1. note: this package will auto-fix issues in generated code according to eslint configs relative to the directory passed to `TypeDefinitionWriter::write()`

@@ -28,13 +28,13 @@ configure_ajv(ajv);
 
 export const docs = new DocsTsGenerator({
 	ajv,
-	docs_path: `${__dirname}/../data/Docs.json`,
-	cache_path: `${__dirname}/../data/`,
+	docs_path: `${__dirname}/../data/update8/Docs.json`,
+	cache_path: `${__dirname}/../data/update8/`,
 });
 
 export const skip_because_docs_dot_json_not_yet_bundled = {
 	skip:
-		existsSync(`${__dirname}/../data/Docs.json`)
+		existsSync(`${__dirname}/../data/update8/Docs.json`)
 			? false
 			: 'Docs.json not yet bundled!',
 };

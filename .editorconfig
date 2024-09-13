@@ -15,5 +15,5 @@ insert_final_newline = true
 indent_style = space
 indent_size = 2
 
-[data/Docs.json]
+[data/update8/Docs.json]
 charset = utf-16le
