@@ -31,8 +31,8 @@ export const docs = new DocsTsGenerator({
 	ajv,
 	docs_versions: {
 		update8: new DocsTsGeneratorVersion({
-	docs_path: `${__dirname}/../data/update8/Docs.json`,
-	cache_path: `${__dirname}/../data/update8/`,
+			docs_path: `${__dirname}/../data/update8/Docs.json`,
+			cache_path: `${__dirname}/../data/update8/`,
 		}),
 	},
 });

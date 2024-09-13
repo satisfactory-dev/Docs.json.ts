@@ -180,11 +180,11 @@ export class DocsTsGenerator {
 		if ('update8' === version) {
 			const schema = this.schema_data.update8.en_US.schema;
 
-		// eslint-disable-next-line max-len
-		await this.validate_schema<DocsSchemaByVersion['update8']['en_US']['schema']>(
+			// eslint-disable-next-line max-len
+			await this.validate_schema<DocsSchemaByVersion['update8']['en_US']['schema']>(
 				version,
 				schema,
-		);
+			);
 
 			return schema;
 		}
