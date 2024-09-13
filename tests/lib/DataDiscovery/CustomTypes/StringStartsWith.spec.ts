@@ -7,7 +7,7 @@ import {
 	StringStartsWithConverter,
 } from '../../../../lib/DataDiscovery/CustomTypes/StringStartsWith';
 import {
-	docs,
+	update8,
 } from '../../../../lib/helpers';
 import {
 	SchemaObject,
@@ -18,7 +18,7 @@ import {
 } from '@satisfactory-dev/custom-assert';
 
 void describe('StringStartsWithConverter', () => {
-	const instance = new StringStartsWithConverter(docs.ajv);
+	const instance = new StringStartsWithConverter(update8.ajv);
 
 	void describe('can_convert_schema_and_raw_data', () => {
 		void it('resolves true', async () => {

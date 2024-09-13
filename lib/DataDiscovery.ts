@@ -86,7 +86,7 @@ export class DataDiscovery
 		super();
 		this.docs = docs;
 		this.literal = literal || new Literal();
-		this.candidates = docs.schema().then(({$defs}) => {
+		this.candidates = docs.update8_schema().then(({$defs}) => {
 			return [
 				new BooleanConverter(docs.ajv),
 				new ArrayConverter(this),
@@ -121,7 +121,7 @@ export class DataDiscovery
 			schema,
 			docs,
 		] = await Promise.all([
-			this.docs.schema(),
+			this.docs.update8_schema(),
 			this.docs.get(),
 		]);
 

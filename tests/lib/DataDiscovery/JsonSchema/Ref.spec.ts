@@ -10,7 +10,7 @@ import {
 	Ref,
 } from '../../../../lib/DataDiscovery/JsonSchema/Ref';
 import {
-	docs,
+	update8,
 } from '../../../../lib/helpers';
 import {
 	local_ref,
@@ -24,7 +24,7 @@ import {
 } from '../../../../lib/DataDiscovery/JsonSchema/StringType';
 
 void describe('Ref.can_convert_schema_and_raw_data()', () => {
-	const instance = new Ref(new DataDiscovery(docs));
+	const instance = new Ref(new DataDiscovery(update8));
 
 	void it ('resolves true', async() => {
 		const promise = instance.can_convert_schema_and_raw_data(
@@ -60,7 +60,7 @@ void describe('Ref.can_convert_schema_and_raw_data()', () => {
 });
 
 void describe('Ref.resolve_to_final_converter_schema_only()', () => {
-	const instance = new Ref(new DataDiscovery(docs));
+	const instance = new Ref(new DataDiscovery(update8));
 
 	void it ('resolves to ConstStringConverter', async() => {
 		const promise = instance.resolve_to_final_converter_schema_only({

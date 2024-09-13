@@ -12,7 +12,7 @@ import {
 	TypeDefinitionWriter,
 } from '../../../../lib/TypeDefinitionWriter';
 import {
-	docs,
+	update8,
 } from '../../../../lib/helpers';
 import {
 	typed_string_inner_array_prefixItems_type,
@@ -27,7 +27,7 @@ import {
 } from '@satisfactory-dev/custom-assert';
 
 void describe('typed_string', async () => {
-	const type_definition_writer = new TypeDefinitionWriter(docs);
+	const type_definition_writer = new TypeDefinitionWriter(update8);
 	const discovery = await type_definition_writer.discovery;
 	const discovered_types = (
 		await discovery.types_discovery.discover_types()

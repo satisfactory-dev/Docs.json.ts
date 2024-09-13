@@ -7,7 +7,7 @@ import {
 	Pattern,
 } from '../../../../../lib/TypeDefinitionDiscovery/JsonSchema/String/Pattern';
 import {
-	docs,
+	update8,
 } from '../../../../../lib/helpers';
 import ts_assert from '@signpostmarv/ts-assert';
 import {
@@ -16,7 +16,7 @@ import {
 } from '@satisfactory-dev/custom-assert';
 
 void describe('Pattern', () => {
-	const instance = new Pattern(docs.ajv);
+	const instance = new Pattern(update8.ajv);
 
 	void describe('generate', () => {
 		void it('behaves', () => {

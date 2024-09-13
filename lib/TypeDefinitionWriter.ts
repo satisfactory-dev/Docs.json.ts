@@ -101,7 +101,7 @@ export class TypeDefinitionWriter
 	get discovery(): Promise<TypeDefinitionDiscovery>
 	{
 		if (!this._discovery) {
-			const schema = this.docs.schema();
+			const schema = this.docs.update8_schema();
 			const type_definition_discover = require_non_empty_array<
 				AnyGenerator
 			>([
@@ -172,7 +172,7 @@ export class TypeDefinitionWriter
 
 		performance.mark(`${this.constructor.name}.write() start`);
 		const types = await discovery.discover_type_$defs();
-		const schema = await this.docs.schema();
+		const schema = await this.docs.update8_schema();
 
 		if (
 			types.missing_classes.length > 0

@@ -7,7 +7,7 @@ import {
 	BooleanConverter,
 } from '../../../../lib/DataDiscovery/CustomTypes/BooleanOrBooleanExtended';
 import {
-	docs,
+	update8,
 } from '../../../../lib/helpers';
 import {
 	local_ref,
@@ -18,7 +18,7 @@ import ts from 'typescript';
 const schema = {$ref: local_ref('boolean-extended')};
 
 void describe('BooleanConverter.can_convert_schema_and_raw_data()', () => {
-	const instance = new BooleanConverter(docs.ajv);
+	const instance = new BooleanConverter(update8.ajv);
 
 	void it('resolves false', async () => {
 		assert.equal(
@@ -46,7 +46,7 @@ void describe('BooleanConverter.can_convert_schema_and_raw_data()', () => {
 });
 
 void describe('BooleanConverter.convert()', () => {
-	const instance = new BooleanConverter(docs.ajv);
+	const instance = new BooleanConverter(update8.ajv);
 
 	void it('resolves True', async () => {
 		ts_assert.isBooleanLiteral(

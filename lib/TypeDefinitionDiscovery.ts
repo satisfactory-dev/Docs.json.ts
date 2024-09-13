@@ -574,7 +574,7 @@ export class TypeDefinitionDiscovery
 	private async schema_from_json(
 		discovered_types: {[key: string]: true},
 	) : Promise<SchemaObjectWithDefinitions<typeof discovered_types>> {
-		const schema = await this.docs.schema();
+		const schema = await this.docs.update8_schema();
 
 		if (!is_schema_with_$defs(schema, discovered_types)) {
 			throw new Error('Schema $defs not as expected!');

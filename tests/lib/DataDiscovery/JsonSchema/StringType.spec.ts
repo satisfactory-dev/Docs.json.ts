@@ -12,7 +12,7 @@ import {
 	string_schema,
 } from '../../../../lib/DataDiscovery/JsonSchema/StringType';
 import {
-	docs,
+	update8,
 } from '../../../../lib/helpers';
 import ts_assert from '@signpostmarv/ts-assert';
 import {
@@ -80,7 +80,7 @@ const data_sets: {
 	PatternConverter: data_sets<PatternConverter, pattern_schema>,
 } = {
 	BasicStringConverter: {
-		make_instance: () => new BasicStringConverter(docs.ajv),
+		make_instance: () => new BasicStringConverter(update8.ajv),
 		can_convert_schema: [
 			[basic_string_schema, true],
 			[const_string_schema, false],
@@ -102,7 +102,7 @@ const data_sets: {
 		},
 	},
 	ConstStringConverter: {
-		make_instance: () => new ConstStringConverter(docs.ajv),
+		make_instance: () => new ConstStringConverter(update8.ajv),
 		can_convert_schema: [
 			[basic_string_schema, false],
 			[const_string_schema, true],
@@ -147,7 +147,7 @@ const data_sets: {
 		},
 	},
 	EnumStringConverter: {
-		make_instance: () => new EnumStringConverter(docs.ajv),
+		make_instance: () => new EnumStringConverter(update8.ajv),
 		can_convert_schema: [
 			[basic_string_schema, false],
 			[const_string_schema, false],
@@ -172,7 +172,7 @@ const data_sets: {
 		},
 	},
 	PatternConverter: {
-		make_instance: () => new PatternConverter(docs.ajv),
+		make_instance: () => new PatternConverter(update8.ajv),
 		can_convert_schema: [
 			[basic_string_schema, false],
 			[const_string_schema, false],

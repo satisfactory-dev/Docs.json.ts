@@ -11,7 +11,7 @@ import {
 	__dirname_from_meta,
 } from './lib/__dirname';
 import {
-	docs,
+	update8,
 } from './lib/helpers';
 import {
 	setup_PerformanceObserver,
@@ -24,7 +24,7 @@ const perf = setup_PerformanceObserver();
 try {
 	performance.mark('start');
 	const bar = new TypeDefinitionWriter(
-		docs,
+		update8,
 	);
 	performance.measure('bootstrap', 'start');
 	performance.mark('bootstrap done');

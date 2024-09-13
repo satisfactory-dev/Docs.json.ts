@@ -26,7 +26,7 @@ const ajv = new Ajv({
 });
 configure_ajv(ajv);
 
-export const docs = new DocsTsGenerator({
+export const update8 = new DocsTsGenerator({
 	ajv,
 	docs_path: `${__dirname}/../data/update8/Docs.json`,
 	cache_path: `${__dirname}/../data/update8/`,

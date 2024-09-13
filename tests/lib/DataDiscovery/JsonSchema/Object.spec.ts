@@ -8,7 +8,7 @@ import {
 	schema_type,
 } from '../../../../lib/DataDiscovery/JsonSchema/Object';
 import {
-	docs,
+	update8,
 } from '../../../../lib/helpers';
 import {
 	DataDiscovery,
@@ -21,7 +21,7 @@ import {
 } from '@satisfactory-dev/custom-assert';
 
 void describe('ObjectConverter', () => {
-	const instance = new ObjectConverter(new DataDiscovery(docs));
+	const instance = new ObjectConverter(new DataDiscovery(update8));
 
 	void describe('can_convert_schema_and_raw_data', () => {
 		const schema = {

@@ -65,7 +65,7 @@ export class TypesDiscovery
 	async discover_types()
 	{
 		if (!this.discovery) {
-			const schema = await this.docs.schema();
+			const schema = await this.docs.update8_schema();
 			const discovered_types = new Set<local_ref<string>>();
 
 			this.discover_types_from(schema, schema, discovered_types);
@@ -121,7 +121,7 @@ export class TypesDiscovery
 	static async generate_is_NativeClass(
 		docs:DocsTsGenerator,
 	) {
-		const schema = await docs.schema();
+		const schema = await docs.update8_schema();
 
 		if (!object_has_property(
 			schema,

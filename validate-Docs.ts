@@ -8,7 +8,7 @@ import {
 	NoMatchError,
 } from './lib/Exceptions';
 import {
-	docs,
+	update8,
 } from './lib/helpers';
 import {
 	setup_PerformanceObserver,
@@ -22,7 +22,7 @@ const __dirname = __dirname_from_meta(import.meta);
 setup_PerformanceObserver();
 
 try {
-	await docs.get();
+	await update8.get();
 } catch (err) {
 	if (err instanceof ValidationError) {
 		for (const error of err.errors) {

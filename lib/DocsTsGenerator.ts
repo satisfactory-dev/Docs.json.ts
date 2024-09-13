@@ -123,7 +123,7 @@ export class DocsTsGenerator {
 	async definition(
 		$ref:string,
 	): Promise<SchemaObject> {
-		const schema = await this.schema();
+		const schema = await this.update8_schema();
 
 		if (!property_exists_on_object(schema.$defs, $ref)) {
 			throw new NoMatchError({
@@ -138,11 +138,11 @@ export class DocsTsGenerator {
 	async get() {
 		return this.validate(
 			await this.load(),
-			await this.schema(),
+			await this.update8_schema(),
 		);
 	}
 
-	async schema(): Promise<typeof update8_schema>
+	async update8_schema(): Promise<typeof update8_schema>
 	{
 		await this.validate_schema<typeof update8_schema>(
 			update8_schema,

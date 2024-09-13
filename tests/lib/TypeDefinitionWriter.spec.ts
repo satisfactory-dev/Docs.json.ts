@@ -8,13 +8,13 @@ import {
 	TypeDefinitionWriter,
 } from '../../lib/TypeDefinitionWriter';
 import {
-	docs,
+	update8,
 } from '../../lib/helpers';
 
 void describe('TypeDefinitionWriter', () => {
 	void describe('discovery', () => {
 		void it ('does not throw', () => {
-			const instance = new TypeDefinitionWriter(docs);
+			const instance = new TypeDefinitionWriter(update8);
 
 			assert.doesNotThrow(() => instance.discovery);
 		})

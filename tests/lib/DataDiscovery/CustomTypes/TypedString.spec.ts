@@ -10,7 +10,7 @@ import {
 	DataDiscovery,
 } from '../../../../lib/DataDiscovery';
 import {
-	docs,
+	update8,
 } from '../../../../lib/helpers';
 import {
 	SchemaObject,
@@ -23,10 +23,10 @@ import {
 } from '@satisfactory-dev/predicates.ts';
 
 void describe('TypedStringConverter', async () => {
-	const discovery = new DataDiscovery(docs);
+	const discovery = new DataDiscovery(update8);
 	const instance = new TypedStringConverter(
 		discovery,
-		(await docs.schema()).$defs,
+		(await update8.update8_schema()).$defs,
 	);
 	const object_schema:typed_string_parent_type = {
 		type: 'string',
