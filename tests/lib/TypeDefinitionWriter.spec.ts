@@ -4,6 +4,11 @@ import {
 } from 'node:test';
 import assert from 'node:assert/strict';
 import ts from 'typescript';
+
+import {
+	object_keys,
+} from '@satisfactory-dev/predicates.ts';
+
 import {
 	TypeDefinitionWriter,
 } from '../../lib/TypeDefinitionWriter';
@@ -13,11 +18,13 @@ import {
 
 void describe('TypeDefinitionWriter', () => {
 	void describe('discovery', () => {
-		void it ('does not throw', () => {
-			const instance = new TypeDefinitionWriter(docs, 'update8');
+		for (const version of object_keys(docs.docs_versions)) {
+			void it (`${version}: does not throw`, () => {
+				const instance = new TypeDefinitionWriter(docs, version);
 
 			assert.doesNotThrow(() => instance.discovery);
 		})
+		}
 	})
 
 	void describe('can_have_class_tree', () => {

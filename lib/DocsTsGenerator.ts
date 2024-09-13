@@ -108,10 +108,10 @@ export type docs_versions = {
 };
 
 export class DocsTsGenerator {
-	private docs_versions: docs_versions;
 	// eslint-disable-next-line max-len
 	private readonly schema_data:DocsSchemaByVersion = new DocsSchemaByVersion();
 	public readonly ajv:Ajv;
+	readonly docs_versions: docs_versions;
 	readonly types_from_module: string|undefined;
 
 	static readonly PERF_EARLY_RETURN = 'Early Return of Docs.json';
