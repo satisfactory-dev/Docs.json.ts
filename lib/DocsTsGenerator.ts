@@ -47,7 +47,6 @@ import {
 	esmify,
 } from '@satisfactory-dev/ajv-utilities';
 import {
-	DocsSchema,
 	DocsSchemaByVersion,
 } from './DocsSchema';
 
@@ -104,6 +103,7 @@ export class DocsTsGeneratorVersion
 }
 
 export type docs_versions = {
+	version_1_0_0_0?: DocsTsGeneratorVersion,
 	update8?: DocsTsGeneratorVersion,
 };
 
@@ -171,14 +171,13 @@ export class DocsTsGenerator {
 		);
 	}
 
-	async schema<T extends keyof docs_versions>(
+	schema<T extends keyof docs_versions>(
 		version: T,
-	): Promise<T extends 'update8'
-		? DocsSchemaByVersion['update8']['en_US']['schema']
-		: DocsSchema<unknown>['schema']
-	> {
+	) {
 		if ('update8' === version) {
 			return this.schema_update8();
+		} else if ('version_1_0_0_0' === version) {
+			return this.schema_version_1_0_0_0();
 		}
 
 		throw new Error('Could not find specified schema!');
@@ -192,6 +191,20 @@ export class DocsTsGenerator {
 		// eslint-disable-next-line max-len
 		await this.validate_schema<DocsSchemaByVersion['update8']['en_US']['schema']>(
 			'update8',
+			schema,
+		);
+
+		return schema;
+	}
+
+	// eslint-disable-next-line max-len
+	async schema_version_1_0_0_0(): Promise<DocsSchemaByVersion['version_1_0_0_0']['en_US']['schema']>
+	{
+		const schema = this.schema_data.version_1_0_0_0.en_US.schema;
+
+		// eslint-disable-next-line max-len
+		await this.validate_schema<DocsSchemaByVersion['version_1_0_0_0']['en_US']['schema']>(
+			'version_1_0_0_0',
 			schema,
 		);
 

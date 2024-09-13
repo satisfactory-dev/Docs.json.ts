@@ -30,6 +30,10 @@ configure_ajv(ajv);
 export const docs = new DocsTsGenerator({
 	ajv,
 	docs_versions: {
+		version_1_0_0_0: new DocsTsGeneratorVersion({
+			docs_path: `${__dirname}/../data/1.0/en-US.json`,
+			cache_path: `${__dirname}/../data/1.0/`,
+		}),
 		update8: new DocsTsGeneratorVersion({
 			docs_path: `${__dirname}/../data/update8/Docs.json`,
 			cache_path: `${__dirname}/../data/update8/`,
