@@ -22,8 +22,8 @@ void describe('TypeDefinitionWriter', () => {
 			void it (`${version}: does not throw`, () => {
 				const instance = new TypeDefinitionWriter(docs, version);
 
-			assert.doesNotThrow(() => instance.discovery);
-		})
+				assert.doesNotThrow(() => instance.discovery);
+			})
 		}
 	})
 
