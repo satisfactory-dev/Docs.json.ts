@@ -17,3 +17,9 @@ indent_size = 2
 
 [data/update8/Docs.json]
 charset = utf-16le
+
+[data/1.0/*.json]
+charset = utf-16le
+
+[data/1.0/*.utf8.json]
+charset = utf-8
