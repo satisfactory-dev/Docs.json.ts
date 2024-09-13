@@ -16,7 +16,7 @@ import {
 } from '../../../lib/helpers';
 
 for (const version of object_keys(docs.docs_versions)) {
-	void describe('ValueToRegexFormatter.pattern_from_value()', async () => {
+	void describe(`${version}: ValueToRegexFormatter.pattern_from_value()`, async () => {
 		const instance = new ValueToRegexFormatter(
 			(await docs.schema(version)).$defs,
 		);
