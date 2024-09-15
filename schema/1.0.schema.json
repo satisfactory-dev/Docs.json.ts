@@ -3719,6 +3719,274 @@
 				}
 			}
 		},
+		"FGConsumableEquipment--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGEquipment--base",
+			"required": ["mEquipMontage"],
+			"properties": {
+				"mStingerMontage": {
+					"$ref": "#/$defs/empty-object"
+				},
+				"mUnEquipMontage": {
+					"$ref": "#/$defs/empty-object"
+				}
+			}
+		},
+		"FGConsumableEquipment--equipment": {
+			"type": "object",
+			"$ref": "#/$defs/FGConsumableEquipment--base",
+			"unevaluatedProperties": false,
+			"required": ["mEatMontage", "mReEquipAfterEatMontage"],
+			"properties": {
+				"mEatMontage": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["Montage_1P", "Montage_3P", "CameraAnim"],
+						"properties": {
+							"Montage_1P": {
+								"type": "string",
+								"minLength": 1,
+								"UnrealEngineString": {
+									"left": "/Script/Engine.AnimMontage",
+									"right": {
+										"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
+									}
+								}
+							},
+							"Montage_3P": {
+								"type": "string",
+								"minLength": 1,
+								"UnrealEngineString": {
+									"left": "/Script/Engine.AnimMontage",
+									"right": {
+										"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
+									}
+								}
+							},
+							"CameraAnim": {
+								"type": "string",
+								"minLength": 1,
+								"UnrealEngineString": {
+									"left": "/Script/TemplateSequence.CameraAnimationSequence",
+									"right": {
+										"starts_with": "/Game/FactoryGame/Character/Player/CameraShake/"
+									}
+								}
+							}
+						}
+					}
+				},
+				"mReEquipAfterEatMontage": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["Montage_1P"],
+						"properties": {
+							"Montage_1P": {
+								"type": "string",
+								"minLength": 1,
+								"UnrealEngineString": {
+									"left": "/Script/Engine.AnimMontage",
+									"right": {
+										"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
+									}
+								}
+							}
+						}
+					}
+				},
+				"mEquipMontage": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["Montages"],
+						"properties": {
+							"Montages": {
+								"type": "string",
+								"minLength": 1,
+								"typed_string": {
+									"minItems": 1,
+									"maxItems": 1,
+									"items": {
+										"type": "string",
+										"minLength": 1,
+										"typed_string": {
+											"required": [
+												"Montage_1P",
+												"Montage_3P"
+											],
+											"properties": {
+												"Montage_1P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
+														}
+													}
+												},
+												"Montage_3P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"FGConsumableEquipment--medkit": {
+			"type": "object",
+			"$ref": "#/$defs/FGConsumableEquipment--base",
+			"unevaluatedProperties": false,
+			"required": ["mMedkitUseMontages", "mCurrentMedkitUseMontage"],
+			"properties": {
+				"mEquipMontage": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["Montages"],
+						"properties": {
+							"Montages": {
+								"type": "string",
+								"minLength": 1,
+								"typed_string": {
+									"minItems": 1,
+									"maxItems": 1,
+									"items": {
+										"type": "string",
+										"minLength": 1,
+										"typed_string": {
+											"required": [
+												"Montage_1P",
+												"AudioEvent"
+											],
+											"properties": {
+												"Montage_1P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
+														}
+													}
+												},
+												"AudioEvent": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/AkAudio.AkAudioEvent",
+														"right": {
+															"starts_with": "/Game/WwiseAudio/Events/Equipment/"
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"mMedkitUseMontages": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["Montages"],
+						"properties": {
+							"Montages": {
+								"type": "string",
+								"minLength": 1,
+								"typed_string": {
+									"minItems": 3,
+									"maxItems": 3,
+									"items": {
+										"type": "string",
+										"minLength": 1,
+										"typed_string": {
+											"required": [
+												"Montage_1P",
+												"Montage_3P",
+												"AudioEvent",
+												"CameraAnim"
+											],
+											"properties": {
+												"Montage_1P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
+														}
+													}
+												},
+												"Montage_3P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
+														}
+													}
+												},
+												"AudioEvent": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/AkAudio.AkAudioEvent",
+														"right": {
+															"starts_with": "/Game/WwiseAudio/Events/Equipment/"
+														}
+													}
+												},
+												"CameraAnim": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/TemplateSequence.CameraAnimationSequence",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Character/Player/CameraShake/"
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"mCurrentMedkitUseMontage": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["Weight"],
+						"properties": {
+							"Weight": {
+								"$ref": "#/$defs/decimal-string"
+							}
+						}
+					}
+				}
+			}
+		},
 		"FGEquipmentDescriptor--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor",
@@ -8902,11 +9170,19 @@
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
-					"items": {
-						"type": "object",
-						"$ref": "#/$defs/FGEquipment--base",
-						"unevaluatedProperties": false
-					}
+					"maxItems": 2,
+					"prefixItems": [
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGConsumableEquipment--equipment",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGConsumableEquipment--medkit",
+							"unevaluatedProperties": false
+						}
+					]
 				}
 			}
 		},
