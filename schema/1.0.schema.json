@@ -8894,32 +8894,6 @@
 			}
 		},
 		{
-			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGConsumableDescriptor'",
-			"type": "object",
-			"$ref": "#/$defs/NativeClass",
-			"unevaluatedProperties": false,
-			"properties": {
-				"Classes": {
-					"type": "array",
-					"minItems": 1,
-					"items": {
-						"oneOf": [
-							{
-								"type": "object",
-								"$ref": "#/$defs/FGConsumableDescriptor",
-								"unevaluatedProperties": false
-							},
-							{
-								"type": "object",
-								"$ref": "#/$defs/FGConsumableDescriptor--healing",
-								"unevaluatedProperties": false
-							}
-						]
-					}
-				}
-			}
-		},
-		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGConsumableEquipment'",
 			"type": "object",
 			"$ref": "#/$defs/NativeClass",
@@ -9917,6 +9891,32 @@
 					},
 					"minItems": 1,
 					"maxItems": 1
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGConsumableDescriptor'",
+			"type": "object",
+			"$ref": "#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/$defs/FGConsumableDescriptor",
+								"unevaluatedProperties": false
+							},
+							{
+								"type": "object",
+								"$ref": "#/$defs/FGConsumableDescriptor--healing",
+								"unevaluatedProperties": false
+							}
+						]
+					}
 				}
 			}
 		},
