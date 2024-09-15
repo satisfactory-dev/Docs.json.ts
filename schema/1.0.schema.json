@@ -9069,23 +9069,6 @@
 			}
 		},
 		{
-			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableStair'",
-			"type": "object",
-			"$ref": "#/$defs/NativeClass",
-			"unevaluatedProperties": false,
-			"properties": {
-				"Classes": {
-					"type": "array",
-					"minItems": 1,
-					"items": {
-						"type": "object",
-						"$ref": "#/$defs/FGBuildableStair",
-						"unevaluatedProperties": false
-					}
-				}
-			}
-		},
-		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGGolfCartDispenser'",
 			"type": "object",
 			"$ref": "#/$defs/NativeClass",
