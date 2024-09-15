@@ -169,7 +169,7 @@ export class ValueToRegexFormatter
 		return `\\(${regex}${
 			undefined === typed_string_array.minItems
 				? ''
-				: `(?:,${regex}){${typed_string_array.minItems - 1},}`
+				: `(?:, ?${regex}){${typed_string_array.minItems - 1},}`
 		}\\)`;
 	}
 

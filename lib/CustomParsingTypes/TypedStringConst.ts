@@ -52,7 +52,7 @@ class TypedStringConst extends SupportedSubSchemaType<
 			.replace(/\(/g, '\\(')
 			.replace(/\)/g, '\\)');
 
-		return `(?:(${lazy_escape}|"${lazy_escape}"))`;
+		return `(?:(${lazy_escape}|"${lazy_escape}"|\\\\"${lazy_escape}\\\\"))`;
 	}
 }
 

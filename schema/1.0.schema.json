@@ -5480,7 +5480,7 @@
 		"FGEquipment--placeable": {
 			"type": "object",
 			"$ref": "#/$defs/FGEquipment--base",
-			"required": ["mAllowedResourceForms", "mPlaceDistanceMax"],
+			"required": ["mAllowedResourceForms"],
 			"properties": {
 				"mAllowedResourceForms": {
 					"type": "string",
@@ -5492,9 +5492,6 @@
 							"const": "RF_SOLID"
 						}
 					}
-				},
-				"mPlaceDistanceMax": {
-					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
@@ -7927,26 +7924,591 @@
 			"$ref": "#/$defs/FGWeapon--base",
 			"unevaluatedProperties": false,
 			"required": [
+				"AmmoTypeToAkEvent",
 				"mRadialMenuShowUpTime",
+				"mPrimaryFireStartMontageList",
+				"mReloadMontageList",
+				"mSecondaryFireMontageList",
+				"mPrimaryFireEndMontageList",
 				"mDispensedProjectiles",
-				"mIsPendingExecuteFire",
 				"mMaxChargeTime",
+				"mReleaseCooldown",
 				"mMaxThrowForce",
 				"mMinThrowForce",
 				"mDelayBetweenSecondaryTriggers"
 			],
 			"properties": {
+				"AmmoTypeToAkEvent": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"minItems": 1,
+						"items": {
+							"type": "string",
+							"minLength": 1,
+							"typed_string": {
+								"minItems": 2,
+								"maxItems": 2,
+								"items": {
+									"oneOf": [
+										{
+											"type": "string",
+											"minLength": 1,
+											"UnrealEngineString": {
+												"left": "/Script/Engine.BlueprintGeneratedClass",
+												"right": {
+													"starts_with": "/Game/FactoryGame/"
+												},
+												"quote_mode": "double"
+											}
+										},
+										{
+											"type": "string",
+											"minLength": 1,
+											"UnrealEngineString": {
+												"left": "/Script/AkAudio.AkAudioEvent",
+												"right": {
+													"starts_with": "/Game/WwiseAudio/Events/"
+												},
+												"quote_mode": "double"
+											}
+										}
+									]
+								}
+							}
+						}
+					}
+				},
 				"mRadialMenuShowUpTime": {
 					"$ref": "#/$defs/decimal-string"
+				},
+				"mPrimaryFireStartMontageList": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["Montages"],
+						"properties": {
+							"Montages": {
+								"type": "string",
+								"minLength": 1,
+								"typed_string": {
+									"minItems": 1,
+									"maxItems": 1,
+									"items": {
+										"type": "string",
+										"minLength": 1,
+										"typed_string": {
+											"required": [
+												"Montage_1P",
+												"Montage_3P",
+												"Montage_Equipment",
+												"AudioEvent",
+												"bSeparate3PAudioEvent",
+												"AudioEvent3P"
+											],
+											"properties": {
+												"Montage_1P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
+														}
+													}
+												},
+												"Montage_3P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
+														}
+													}
+												},
+												"Montage_Equipment": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Equipment/NobeliskDetonator/Animation/"
+														}
+													}
+												},
+												"AudioEvent": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/AkAudio.AkAudioEvent",
+														"right": {
+															"starts_with": "/Game/WwiseAudio/Events/Equipment/Nobelisk/"
+														}
+													}
+												},
+												"bSeparate3PAudioEvent": {
+													"$ref": "#/$defs/boolean"
+												},
+												"AudioEvent3P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/AkAudio.AkAudioEvent",
+														"right": {
+															"starts_with": "/Game/WwiseAudio/Events/Equipment/Nobelisk/"
+														},
+														"quote_mode": "double"
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"mReloadMontageList": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["Montages"],
+						"properties": {
+							"Montages": {
+								"type": "string",
+								"minLength": 1,
+								"typed_string": {
+									"minItems": 1,
+									"maxItems": 1,
+									"items": {
+										"type": "string",
+										"minLength": 1,
+										"typed_string": {
+											"required": [
+												"Montage_1P",
+												"Montage_3P",
+												"Montage_Equipment",
+												"AudioEvent",
+												"bSeparate3PAudioEvent",
+												"AudioEvent3P"
+											],
+											"properties": {
+												"Montage_1P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
+														}
+													}
+												},
+												"Montage_3P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
+														}
+													}
+												},
+												"Montage_Equipment": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Equipment/NobeliskDetonator/Animation/"
+														}
+													}
+												},
+												"AudioEvent": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/AkAudio.AkAudioEvent",
+														"right": {
+															"starts_with": "/Game/WwiseAudio/Events/Equipment/Nobelisk/"
+														}
+													}
+												},
+												"bSeparate3PAudioEvent": {
+													"$ref": "#/$defs/boolean"
+												},
+												"AudioEvent3P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/AkAudio.AkAudioEvent",
+														"right": {
+															"starts_with": "/Game/WwiseAudio/Events/Equipment/Nobelisk/"
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"mSecondaryFireMontageList": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["Montages"],
+						"properties": {
+							"Montages": {
+								"type": "string",
+								"minLength": 1,
+								"typed_string": {
+									"minItems": 1,
+									"maxItems": 1,
+									"items": {
+										"type": "string",
+										"minLength": 1,
+										"typed_string": {
+											"required": [
+												"Filter",
+												"FilterMontageTag",
+												"Exclusive",
+												"Montage_1P",
+												"Montage_3P",
+												"Montage_Equipment"
+											],
+											"properties": {
+												"Filter": {
+													"$ref": "#/$defs/boolean"
+												},
+												"FilterMontageTag": {
+													"type": "string",
+													"const": "HasAmmunition"
+												},
+												"InvertFilter": {
+													"$ref": "#/$defs/boolean"
+												},
+												"Exclusive": {
+													"$ref": "#/$defs/boolean"
+												},
+												"Montage_1P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
+														}
+													}
+												},
+												"Montage_3P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
+														}
+													}
+												},
+												"Montage_Equipment": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Equipment/NobeliskDetonator/Animation/"
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"mPrimaryFireEndMontageList": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["Montages"],
+						"properties": {
+							"Montages": {
+								"type": "string",
+								"minLength": 1,
+								"typed_string": {
+									"minItems": 3,
+									"maxItems": 3,
+									"items": {
+										"type": "string",
+										"minLength": 1,
+										"typed_string": {
+											"required": [
+												"Filter",
+												"FilterMontageTag",
+												"Exclusive",
+												"Montage_1P",
+												"Montage_3P",
+												"Montage_Equipment",
+												"AudioEvent",
+												"bSeparate3PAudioEvent",
+												"AudioEvent3P"
+											],
+											"properties": {
+												"Filter": {
+													"$ref": "#/$defs/boolean"
+												},
+												"FilterMontageTag": {
+													"type": "string",
+													"enum": [
+														"LowCharged",
+														"MediumCharged",
+														"FullyCharged"
+													]
+												},
+												"Exclusive": {
+													"$ref": "#/$defs/boolean"
+												},
+												"Montage_1P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
+														},
+														"quote_mode": "double"
+													}
+												},
+												"Montage_3P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
+														}
+													}
+												},
+												"Montage_Equipment": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Equipment/NobeliskDetonator/Animation/"
+														},
+														"quote_mode": "double"
+													}
+												},
+												"AudioEvent": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/AkAudio.AkAudioEvent",
+														"right": {
+															"starts_with": "/Game/WwiseAudio/Events/Equipment/Nobelisk/"
+														}
+													}
+												},
+												"bSeparate3PAudioEvent": {
+													"$ref": "#/$defs/boolean"
+												},
+												"AudioEvent3P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/AkAudio.AkAudioEvent",
+														"right": {
+															"starts_with": "/Game/WwiseAudio/Events/Equipment/Nobelisk/"
+														},
+														"quote_mode": "double"
+													}
+												},
+												"CameraAnim": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/TemplateSequence.CameraAnimationSequence",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Character/Player/CameraShake/"
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"mEquipMontage": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["Montages"],
+						"properties": {
+							"Montages": {
+								"type": "string",
+								"minLength": 1,
+								"typed_string": {
+									"minItems": 2,
+									"maxItems": 2,
+									"items": {
+										"type": "string",
+										"minLength": 1,
+										"typed_string": {
+											"required": [
+												"Filter",
+												"FilterMontageTag",
+												"Exclusive",
+												"Montage_1P",
+												"Montage_3P",
+												"Montage_Equipment"
+											],
+											"properties": {
+												"Filter": {
+													"$ref": "#/$defs/boolean"
+												},
+												"FilterMontageTag": {
+													"type": "string",
+													"enum": ["HasAmmunition"]
+												},
+												"InvertFilter": {
+													"$ref": "#/$defs/boolean"
+												},
+												"Exclusive": {
+													"$ref": "#/$defs/boolean"
+												},
+												"Montage_1P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
+														},
+														"quote_mode": "double"
+													}
+												},
+												"Montage_3P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
+														}
+													}
+												},
+												"Montage_Equipment": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Equipment/NobeliskDetonator/Animation/"
+														},
+														"quote_mode": "double"
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"mStingerMontage": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["Montages"],
+						"properties": {
+							"Montages": {
+								"type": "string",
+								"minLength": 1,
+								"typed_string": {
+									"minItems": 1,
+									"maxItems": 1,
+									"items": {
+										"type": "string",
+										"minLength": 1,
+										"typed_string": {
+											"required": [
+												"Montage_1P",
+												"Montage_3P",
+												"Montage_Equipment",
+												"AudioEvent"
+											],
+											"properties": {
+												"Montage_1P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
+														},
+														"quote_mode": "double"
+													}
+												},
+												"Montage_3P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
+														}
+													}
+												},
+												"Montage_Equipment": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Equipment/NobeliskDetonator/Animation/"
+														},
+														"quote_mode": "double"
+													}
+												},
+												"AudioEvent": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/AkAudio.AkAudioEvent",
+														"right": {
+															"starts_with": "/Game/WwiseAudio/Events/Equipment/Nobelisk/"
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"mUnEquipMontage": {
+					"$ref": "#/$defs/empty-object"
 				},
 				"mDispensedProjectiles": {
 					"type": "string",
 					"const": ""
 				},
-				"mIsPendingExecuteFire": {
-					"$ref": "#/$defs/boolean"
-				},
 				"mMaxChargeTime": {
+					"$ref": "#/$defs/decimal-string"
+				},
+				"mReleaseCooldown": {
 					"$ref": "#/$defs/decimal-string"
 				},
 				"mMaxThrowForce": {
@@ -8154,28 +8716,112 @@
 			"$ref": "#/$defs/FGEquipment--base",
 			"unevaluatedProperties": false,
 			"required": [
-				"mMaxSpawnDistance",
-				"mSpawningClearance",
 				"mBuildDisqualifierText",
 				"canDisplayDisqualifier",
-				"mPlaceDistanceMax"
+				"mChristmasMaterial",
+				"mChristmasMaterial1P",
+				"mCartPlacementClearance",
+				"mCartPlacementDistance"
 			],
 			"properties": {
-				"mMaxSpawnDistance": {
-					"$ref": "#/$defs/decimal-string"
-				},
-				"mSpawningClearance": {
-					"$ref": "#/$defs/decimal-string"
-				},
 				"mBuildDisqualifierText": {
 					"type": "string",
-					"const": "Vehicles cannot be built or deployed on top of existing vehicles."
+					"const": "Vehicles cannot be built or deployed on top of existing vehicles!"
 				},
 				"canDisplayDisqualifier": {
 					"$ref": "#/$defs/boolean"
 				},
-				"mPlaceDistanceMax": {
+				"mChristmasMaterial": {
+					"type": "string",
+					"enum": [
+						"None",
+						"/Game/FactoryGame/Buildable/Vehicle/Golfcart/Material/MI_ChrismasCart_Inst.MI_ChrismasCart_Inst"
+					]
+				},
+				"mChristmasMaterial1P": {
+					"type": "string",
+					"enum": [
+						"None",
+						"/Game/FactoryGame/Buildable/Vehicle/Golfcart/Material/MI_ChrismasCart_Inst_1p.MI_ChrismasCart_Inst_1p"
+					]
+				},
+				"mCartPlacementClearance": {
+					"$ref": "#/$defs/xyz"
+				},
+				"mCartPlacementDistance": {
 					"$ref": "#/$defs/decimal-string"
+				},
+				"mEquipMontage": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["Montages"],
+						"properties": {
+							"Montages": {
+								"type": "string",
+								"minLength": 1,
+								"typed_string": {
+									"minItems": 1,
+									"maxItems": 1,
+									"items": {
+										"type": "string",
+										"minLength": 1,
+										"typed_string": {
+											"required": [
+												"Montage_1P",
+												"Montage_3P"
+											],
+											"properties": {
+												"Montage_1P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
+														},
+														"quote_mode": "double"
+													}
+												},
+												"Montage_3P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"mStingerMontage": {
+					"$ref": "#/$defs/empty-object"
+				},
+				"mUnEquipMontage": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["AudioEvent"],
+						"properties": {
+							"AudioEvent": {
+								"type": "string",
+								"minLength": 1,
+								"UnrealEngineString": {
+									"left": "/Script/AkAudio.AkAudioEvent",
+									"right": {
+										"starts_with": "/Game/WwiseAudio/Events/Character/Player/ResourcePickUp/"
+									}
+								}
+							}
+						}
+					}
 				}
 			}
 		},
@@ -9229,7 +9875,8 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"minItems": 1,
+					"minItems": 2,
+					"maxItems": 2,
 					"items": {
 						"type": "object",
 						"$ref": "#/$defs/FGGolfCartDispenser",

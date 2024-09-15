@@ -51,7 +51,7 @@ class TypedStringEnum extends SupportedSubSchemaType<
 	}
 	value_regex(value: enum_schema_type): string {
 		const enums = `(?:${value.enum.join('|')})`;
-		return `(?:${enums}|"${enums}")`;
+		return `(?:${enums}|"${enums}"|\\\\"${enums}\\\\")`;
 	}
 }
 

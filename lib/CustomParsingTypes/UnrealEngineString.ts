@@ -258,7 +258,8 @@ export const UnrealEngineString_left_default = [
 	'/Script/Engine.BlueprintGeneratedClass',
 ];
 const right_value_starts_with_suffix =
-	'(?:[A-Z][A-Za-z0-9_.]+/)*[A-Z][A-Za-z_.0-9-]+(?::[A-Z][A-Za-z0-9]+)?';
+	// eslint-disable-next-line max-len
+	'(?:_?[A-Z0-9][A-Za-z0-9_.]+/)*[A-Z0-9][A-Za-z_.0-9-]+(?::[A-Z0-9][A-Za-z0-9]+)?';
 
 export class UnrealEngineString {
 	private static already_configured:WeakSet<Ajv> = new WeakSet<Ajv>();
