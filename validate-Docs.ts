@@ -16,13 +16,17 @@ import {
 import {
 	__dirname_from_meta,
 } from './lib/__dirname';
+import {
+	versions_list,
+} from './version-configs';
 
 const __dirname = __dirname_from_meta(import.meta);
 
 setup_PerformanceObserver();
 
+for (const [version, sub_path] of versions_list) {
 try {
-	await docs.get('update8');
+		await docs.get(version);
 } catch (err) {
 	if (err instanceof ValidationError) {
 		for (const error of err.errors) {
@@ -38,9 +42,10 @@ try {
 	}
 
 	await writeFile(
-		`${__dirname}/failed-to-compile.json`,
+			`${__dirname}/failed-to-compile.${sub_path}.json`,
 		`${JSON.stringify(err, null, '\t')}\n`,
 	);
 
 	console.error(err.stack);
+}
 }

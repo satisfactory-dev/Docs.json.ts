@@ -4,4 +4,4 @@ LICENSE.md
 **/*.ts
 **/*.js
 **/*.mjs
-discover-types.perf.json
+discover-types.*.perf.json

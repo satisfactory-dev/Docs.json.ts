@@ -7,10 +7,10 @@ types-progress.md
 /*.d.ts
 !/setup_PerformanceObserver.js
 !/setup_PerformanceObserver.d.ts
-/discover-types.perf.json
-/discovery-types.failure.json
-/failed-to-compile.json
-/imports-come-from.json
+/discover-types.*.perf.json
+/discovery-types.*.failure.json
+/failed-to-compile.*.json
+/imports-come-from.*.json
 /generated-types/*/data/
 /data/
 /coverage/

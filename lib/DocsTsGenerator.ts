@@ -178,18 +178,24 @@ export class DocsTsGenerator {
 		: DocsSchema<unknown>['schema']
 	> {
 		if ('update8' === version) {
+			return this.schema_update8();
+		}
+
+		throw new Error('Could not find specified schema!');
+	}
+
+	// eslint-disable-next-line max-len
+	async schema_update8(): Promise<DocsSchemaByVersion['update8']['en_US']['schema']>
+	{
 			const schema = this.schema_data.update8.en_US.schema;
 
 			// eslint-disable-next-line max-len
 			await this.validate_schema<DocsSchemaByVersion['update8']['en_US']['schema']>(
-				version,
+			'update8',
 				schema,
 			);
 
 			return schema;
-		}
-
-		throw new Error('Could not find specified schema!');
 	}
 
 	private async load(

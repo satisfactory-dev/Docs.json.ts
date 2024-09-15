@@ -250,7 +250,7 @@ export class TypeDefinitionWriter
 		);
 
 		await writeFile(
-			`${__dirname}/../imports-come-from.json`,
+			`${__dirname}/../imports-come-from.${this.version}.json`,
 			auto_imports.imports_come_from,
 		);
 
