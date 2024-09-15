@@ -11,7 +11,7 @@ import {
 	SupportedSubSchemaType,
 } from './CustomPairingTypes';
 
-export const typed_string_const_value_regex = `^(?:[A-Za-z0-9][A-Za-z0-9_ -]*|${UnrealEngineString_general_regex}|\\(\\))$`;
+export const typed_string_const_value_regex = `^(?:[A-Za-z0-9][A-Za-z0-9_ -]*|${UnrealEngineString_general_regex}|\\(\\)|(?:[A-Z][a-z]+(?:\\.[A-Z][a-z]+)+\\.[A-Z][A-Za-z]+(?:\\d+-\\d+)?))$`;
 export const typed_string_const_value_regex__native = new RegExp(
 	typed_string_const_value_regex,
 );
