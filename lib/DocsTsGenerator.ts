@@ -357,7 +357,7 @@ export class DocsTsGenerator {
 
 		if (!result) {
 			throw new ValidationError(
-				'Failed to validate against the provided JSON Schema',
+				`Failed to validate ${version} against the provided JSON Schema`,
 				validateDocs.errors,
 				json,
 			);
