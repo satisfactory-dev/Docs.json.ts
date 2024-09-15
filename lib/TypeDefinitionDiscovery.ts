@@ -414,7 +414,7 @@ export class TypeDefinitionDiscovery
 				},
 			}>(this.docs.ajv, {
 				type: 'object',
-				required: ['type', '$ref', 'properties'],
+				required: ['$comment', 'type', '$ref', 'properties'],
 				additionalProperties: false,
 				$defs: {
 					$ref_base: {
@@ -446,6 +446,11 @@ export class TypeDefinitionDiscovery
 					},
 				},
 				properties: {
+					$comment: {
+						type: 'string',
+						// eslint-disable-next-line max-len
+						pattern: '^\\/Script\\/CoreUObject\\.Class\'\\/Script\\/FactoryGame\\.',
+					},
 					type: {type: 'string', const: 'object'},
 					$ref: {type: 'string', const: '#/$defs/NativeClass'},
 					unevaluatedProperties: {type: 'boolean', const: false},
@@ -557,6 +562,9 @@ export class TypeDefinitionDiscovery
 
 			for (const item of schema.prefixItems) {
 				if (native_class(item)) {
+					if ('$comment' in item) {
+						delete item.$comment;
+					}
 					result.found_classes.push(item);
 				} else {
 					result.missing_classes.push(item);
