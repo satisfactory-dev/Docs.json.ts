@@ -187,15 +187,15 @@ export class DocsTsGenerator {
 	// eslint-disable-next-line max-len
 	async schema_update8(): Promise<DocsSchemaByVersion['update8']['en_US']['schema']>
 	{
-			const schema = this.schema_data.update8.en_US.schema;
+		const schema = this.schema_data.update8.en_US.schema;
 
-			// eslint-disable-next-line max-len
-			await this.validate_schema<DocsSchemaByVersion['update8']['en_US']['schema']>(
+		// eslint-disable-next-line max-len
+		await this.validate_schema<DocsSchemaByVersion['update8']['en_US']['schema']>(
 			'update8',
-				schema,
-			);
+			schema,
+		);
 
-			return schema;
+		return schema;
 	}
 
 	private async load(

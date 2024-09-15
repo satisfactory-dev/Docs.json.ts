@@ -25,27 +25,27 @@ const __dirname = __dirname_from_meta(import.meta);
 setup_PerformanceObserver();
 
 for (const [version, sub_path] of versions_list) {
-try {
+	try {
 		await docs.get(version);
-} catch (err) {
-	if (err instanceof ValidationError) {
-		for (const error of err.errors) {
-			process.stdout.write(JSON.stringify(error, null, '\t') + '\n');
+	} catch (err) {
+		if (err instanceof ValidationError) {
+			for (const error of err.errors) {
+				process.stdout.write(JSON.stringify(error, null, '\t') + '\n');
+			}
+		} else if (err instanceof NoMatchError) {
+			const {property, ...rest} = err as NoMatchError;
+			delete rest.stack;
+			process.stdout.write(JSON.stringify(property, null, '\t') + '\n');
+			console.error(rest);
+		} else {
+			throw err;
 		}
-	} else if (err instanceof NoMatchError) {
-		const {property, ...rest} = err as NoMatchError;
-		delete rest.stack;
-		process.stdout.write(JSON.stringify(property, null, '\t') + '\n');
-		console.error(rest);
-	} else {
-		throw err;
-	}
 
-	await writeFile(
+		await writeFile(
 			`${__dirname}/failed-to-compile.${sub_path}.json`,
-		`${JSON.stringify(err, null, '\t')}\n`,
-	);
+			`${JSON.stringify(err, null, '\t')}\n`,
+		);
 
-	console.error(err.stack);
-}
+		console.error(err.stack);
+	}
 }
