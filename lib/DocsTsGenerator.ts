@@ -49,6 +49,9 @@ import {
 import {
 	DocsSchemaByVersion,
 } from './DocsSchema';
+import {
+	UnrealEngineString,
+} from './CustomParsingTypes/UnrealEngineString';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -87,18 +90,23 @@ export class DocsTsGeneratorVersion
 	docs: DocsData | undefined;
 	readonly cache_path: string | undefined;
 	readonly docs_path: string | DocsData;
+	// eslint-disable-next-line max-len
+	readonly UnrealEngineString_quote_mode: typeof UnrealEngineString['quote_mode'];
 
 	constructor({
 		// raw JSON or path to UTF-16LE encoded Docs.json
 		docs_path,
 		// optional cache folder path for cacheable resources
 		cache_path = undefined,
+		UnrealEngineString_quote_mode,
 	}: {
 		cache_path: string | undefined,
 		docs_path: string | DocsData,
+		UnrealEngineString_quote_mode: typeof UnrealEngineString['quote_mode'],
 	}) {
 		this.cache_path = cache_path;
 		this.docs_path = docs_path;
+		this.UnrealEngineString_quote_mode = UnrealEngineString_quote_mode;
 	}
 }
 
@@ -418,6 +426,9 @@ export class DocsTsGenerator {
 					'ajv configured',
 					DocsTsGenerator.PERF_VALIDATION_PRECOMPILE,
 				);
+
+				// eslint-disable-next-line max-len
+				UnrealEngineString.quote_mode = docs.UnrealEngineString_quote_mode;
 
 				await writeFile(filepath, esmify(standalone(
 					this.ajv,

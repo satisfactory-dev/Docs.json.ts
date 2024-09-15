@@ -69,13 +69,17 @@ export type UnrealEngineString_type =
 	| {
 			left: UnrealEngineString_string_or_string_array;
 			right: UnrealEngineString_right;
+			quote_mode?: typeof UnrealEngineString['quote_mode'],
 	}
 	| {
 			left: UnrealEngineString_string_or_string_array;
+			quote_mode?: typeof UnrealEngineString['quote_mode'],
 	}
 	| {
 			right: UnrealEngineString_right;
+			quote_mode?: typeof UnrealEngineString['quote_mode'],
 	}
+	| typeof UnrealEngineString['quote_mode']
 	| true;
 
 export type UnrealEngineString_parent_type = {
@@ -95,10 +99,22 @@ export function is_UnrealEngineString_parent(
 		&& object_has_property(maybe, 'minLength')
 		&& 1 === maybe.minLength
 		&& object_has_property(maybe, 'UnrealEngineString')
-		&& (true === maybe.UnrealEngineString
+		&& (
+			true === maybe.UnrealEngineString
 			|| is_UnrealEngineString_object(
 				maybe.UnrealEngineString,
-			))
+			)
+			|| (
+				is_string(maybe.UnrealEngineString)
+				&& [
+					'original',
+					'new',
+					'double_escaped',
+					'double',
+					'both',
+				].includes(maybe.UnrealEngineString)
+			)
+		)
 	);
 }
 
@@ -161,6 +177,16 @@ export const UnrealEngineString_schema_definitions = {
 			]}},
 		},
 	]},
+	UnrealEngineString_quote_mode: {
+		type: 'string',
+		enum: [
+			'original',
+			'both',
+			'double_escaped',
+			'double',
+			'new',
+		],
+	},
 };
 
 export const UnrealEngineString_schema = {
@@ -176,6 +202,9 @@ export const UnrealEngineString_schema = {
 				right: {
 					$ref: local_ref('UnrealEngineString_right'),
 				},
+				quote_mode: {
+					$ref: local_ref('UnrealEngineString_quote_mode'),
+				},
 			},
 		},
 		{
@@ -185,6 +214,9 @@ export const UnrealEngineString_schema = {
 			properties: {
 				left: {
 					$ref: local_ref('UnrealEngineString_left'),
+				},
+				quote_mode: {
+					$ref: local_ref('UnrealEngineString_quote_mode'),
 				},
 			},
 		},
@@ -196,7 +228,13 @@ export const UnrealEngineString_schema = {
 				right: {
 					$ref: local_ref('UnrealEngineString_right'),
 				},
+				quote_mode: {
+					$ref: local_ref('UnrealEngineString_quote_mode'),
+				},
 			},
+		},
+		{
+			$ref: local_ref('UnrealEngineString_quote_mode'),
 		},
 		{
 			type: 'boolean',
@@ -225,12 +263,19 @@ const right_value_starts_with_suffix =
 export class UnrealEngineString {
 	private static already_configured:WeakSet<Ajv> = new WeakSet<Ajv>();
 
+	// eslint-disable-next-line max-len
+	static quote_mode:'both'|'original'|'new'|'double_escaped'|'double' = 'both';
+
 	static ajv_macro_generator(inner: boolean) {
 		return (data_from_schema: UnrealEngineString_type) => {
 			const data:
 				| Exclude<typeof data_from_schema, true>
 				| empty_object =
-				true === data_from_schema ? {} : data_from_schema;
+				(
+					true === data_from_schema
+					|| is_string(data_from_schema)
+				) ? {} : data_from_schema;
+
 			const left_value = (
 				'left' in data
 					? data.left instanceof Array
@@ -262,7 +307,25 @@ export class UnrealEngineString {
 						).join('|')})`
 					: UnrealEngineString_general_regex;
 
-			const regex = `(?:(?:${left_value})'(?:${right_value}|"${right_value}")')`;
+			let regex = `(?:(?:${left_value})'(?:${right_value}|"${right_value}")'|"(?:${left_value})'${right_value}'"|\\\\"(?:${left_value})'${right_value}'\\\\")`;
+
+			let quote_mode = this.quote_mode;
+
+			if (is_string(data_from_schema)) {
+				quote_mode = data_from_schema;
+			} else if ('quote_mode' in data && undefined !== data.quote_mode) {
+				quote_mode = data.quote_mode;
+			}
+
+			if ('original' === quote_mode) {
+				regex = `(?:(?:${left_value})'(?:${right_value}|"${right_value}")')`;
+			} else if ('new' === quote_mode) {
+				regex = `(?:"(?:${left_value})'${right_value}'"|\\\\"(?:${left_value})'${right_value}'\\\\")`;
+			} else if ('double_escaped' === quote_mode) {
+				regex = `(?:\\\\"(?:${left_value})'${right_value}'\\\\")`;
+			} else if ('double' === quote_mode) {
+				regex = `(?:"(?:${left_value})'${right_value}'")`;
+			}
 
 			return {
 				pattern: inner ? regex : `^${regex}$`,
@@ -569,9 +632,22 @@ function is_UnrealEngineString_object(
 				&& 1 === Object.keys(maybe.right).length
 				&& is_string_or_string_array(maybe.right.starts_with)
 			: is_string_or_string_array(maybe.right));
+	const has_quote_mode = (
+		'quote_mode' in maybe
+		&& is_string(maybe.quote_mode)
+		&& [
+			'original',
+			'double_escaped',
+			'double',
+			'both',
+			'new',
+		].includes(maybe.quote_mode)
+	);
 
 	return (
-		(2 === keys.length && has_left && has_right)
+		(3 === keys.length && has_left && has_right && has_quote_mode)
+		|| (2 === keys.length && has_left && has_right)
+		|| (2 === keys.length && has_quote_mode && (has_left || has_right))
 		|| (1 === keys.length && (has_left || has_right))
 	);
 }
