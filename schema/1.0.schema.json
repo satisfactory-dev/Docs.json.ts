@@ -2500,19 +2500,26 @@
 				}
 			}
 		},
-		"FGBuildable--pole--base": {
+		"FGBuildable--pole--base--no-static": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--base",
-			"required": ["mUseStaticHeight", "mCanStack", "mStackHeight"],
+			"required": ["mCanStack", "mStackHeight"],
 			"properties": {
-				"mUseStaticHeight": {
-					"$ref": "#/$defs/boolean"
-				},
 				"mCanStack": {
 					"$ref": "#/$defs/boolean"
 				},
 				"mStackHeight": {
 					"$ref": "#/$defs/decimal-string"
+				}
+			}
+		},
+		"FGBuildable--pole--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--pole--base--no-static",
+			"required": ["mUseStaticHeight"],
+			"properties": {
+				"mUseStaticHeight": {
+					"$ref": "#/$defs/boolean"
 				}
 			}
 		},
@@ -10099,6 +10106,24 @@
 					"items": {
 						"$ref": "#/$defs/FGPowerShardDescriptor"
 					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePoleBase'",
+			"type": "object",
+			"$ref": "#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"$ref": "#/$defs/FGBuildable--pole--base--no-static",
+						"unevaluatedProperties": false
+					},
+					"minItems": 1,
+					"maxItems": 1
 				}
 			}
 		},
