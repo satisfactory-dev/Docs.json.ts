@@ -2742,37 +2742,41 @@
 				"mMeshes",
 				"ABClass",
 				"mSkeletalMeshSoftPtr",
+				"mStages",
+				"mLadderVisibilityLevel",
 				"mGenerators",
 				"mStorageInventorySize",
 				"mStorageVisibilityLevel",
+				"mLockerVisibilityLevel",
+				"mMiniGameAndCalendarVisibilityLevel",
 				"mSpawningGroundZOffset",
 				"mGroundSearchZDistance",
 				"mDefaultResources",
-				"mNeedPlayingBuildEffectNotification",
 				"mRepresentationText"
 			],
 			"properties": {
 				"mWorkBenchOccupied": {
 					"type": "string",
-					"const": "Craft Bench occupied"
+					"const": "Crafting Bench occupied"
 				},
 				"mWorkBenchFree": {
 					"type": "string",
-					"const": "Use Craft Bench"
+					"const": "Use Crafting Bench"
 				},
 				"Meshes": {
 					"type": "string",
 					"minLength": 1,
 					"typed_string": {
-						"minItems": 1,
+						"minItems": 6,
+						"maxItems": 6,
 						"items": {
 							"type": "string",
 							"minLength": 1,
 							"UnrealEngineString": {
 								"left": "/Script/Engine.StaticMesh",
-								"right": {
-									"starts_with": "/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/"
-								}
+								"right": [
+									"/Game/Geometry/Meshes/1M_Cube_Chamfer.1M_Cube_Chamfer"
+								]
 							}
 						}
 					}
@@ -2786,27 +2790,21 @@
 				},
 				"mMamFreeText": {
 					"type": "string",
-					"const": "Use MAM"
+					"const": "Use the MAM"
 				},
 				"mMamOccupiedText": {
 					"type": "string",
-					"const": "MAM is occupied"
+					"const": "The MAM is occupied"
 				},
 				"mMeshes": {
 					"type": "string",
 					"minLength": 1,
 					"typed_string": {
 						"minItems": 6,
+						"maxItems": 6,
 						"items": {
 							"type": "string",
-							"enum": [
-								"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1",
-								"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2",
-								"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3",
-								"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4",
-								"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5",
-								"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6"
-							]
+							"const": "/Game/Geometry/Meshes/1M_Cube_Chamfer.1M_Cube_Chamfer"
 						}
 					}
 				},
@@ -2818,6 +2816,28 @@
 					"type": "string",
 					"const": "/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/SK_Tradingpost.SK_Tradingpost"
 				},
+				"mStages": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"minItems": 6,
+						"maxItems": 6,
+						"items": {
+							"type": "string",
+							"enum": [
+								"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/SM_Hub_Stg_01.SM_Hub_Stg_01",
+								"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/SM_Hub_Stg_02.SM_Hub_Stg_02",
+								"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/SM_Hub_Stg_03.SM_Hub_Stg_03",
+								"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/SM_Hub_Stg_04.SM_Hub_Stg_04",
+								"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/SM_Hub_Stg_05.SM_Hub_Stg_05",
+								"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/SM_Hub_Stg_06.SM_Hub_Stg_06"
+							]
+						}
+					}
+				},
+				"mLadderVisibilityLevel": {
+					"$ref": "#/$defs/integer-string"
+				},
 				"mGenerators": {
 					"type": "string",
 					"const": ""
@@ -2826,6 +2846,12 @@
 					"$ref": "#/$defs/integer-string"
 				},
 				"mStorageVisibilityLevel": {
+					"$ref": "#/$defs/integer-string"
+				},
+				"mLockerVisibilityLevel": {
+					"$ref": "#/$defs/integer-string"
+				},
+				"mMiniGameAndCalendarVisibilityLevel": {
 					"$ref": "#/$defs/integer-string"
 				},
 				"mSpawningGroundZOffset": {
@@ -2837,9 +2863,6 @@
 				"mDefaultResources": {
 					"type": "string",
 					"const": ""
-				},
-				"mNeedPlayingBuildEffectNotification": {
-					"$ref": "#/$defs/boolean"
 				},
 				"mRepresentationText": {
 					"type": "string",
