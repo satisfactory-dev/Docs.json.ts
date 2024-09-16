@@ -9527,6 +9527,63 @@
 											}
 										}
 									}
+								},
+								{
+									"type": "string",
+									"minLength": 1,
+									"typed_string": {
+										"required": [
+											"Type",
+											"ClearanceBox",
+											"RelativeTransform",
+											"ExcludeForSnapping"
+										],
+										"properties": {
+											"Type": {
+												"type": "string",
+												"enum": ["CT_Soft"]
+											},
+											"ClearanceBox": {
+												"type": "string",
+												"minLength": 1,
+												"typed_string": {
+													"required": [
+														"Min",
+														"Max",
+														"IsValid"
+													],
+													"properties": {
+														"Min": {
+															"$ref": "#/$defs/xyz"
+														},
+														"Max": {
+															"$ref": "#/$defs/xyz"
+														},
+														"IsValid": {
+															"$ref": "#/$defs/boolean"
+														}
+													}
+												}
+											},
+											"RelativeTransform": {
+												"type": "string",
+												"minLength": 1,
+												"typed_string": {
+													"required": [
+														"Translation"
+													],
+													"properties": {
+														"Translation": {
+															"$ref": "#/$defs/xyz"
+														}
+													}
+												}
+											},
+											"ExcludeForSnapping": {
+												"$ref": "#/$defs/boolean"
+											}
+										}
+									}
 								}
 							]
 						}
