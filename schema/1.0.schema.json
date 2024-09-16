@@ -9513,6 +9513,27 @@
 					}
 				}
 			]
+		},
+		"FGPowerShardDescriptor": {
+			"type": "object",
+			"$ref": "#/$defs/FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor",
+			"required": [
+				"mPowerShardType",
+				"mExtraPotential",
+				"mExtraProductionBoost"
+			],
+			"properties": {
+				"mPowerShardType": {
+					"type": "string",
+					"enum": ["PST_Overclock", "PST_ProductionBoost"]
+				},
+				"mExtraPotential": {
+					"$ref": "#/$defs/decimal-string"
+				},
+				"mExtraProductionBoost": {
+					"$ref": "#/$defs/decimal-string"
+				}
+			}
 		}
 	},
 	"items": false,
@@ -10062,6 +10083,22 @@
 					},
 					"minItems": 1,
 					"maxItems": 1
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGPowerShardDescriptor'",
+			"type": "object",
+			"$ref": "#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 2,
+					"maxItems": 2,
+					"items": {
+						"$ref": "#/$defs/FGPowerShardDescriptor"
+					}
 				}
 			}
 		},
