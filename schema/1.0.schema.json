@@ -5507,6 +5507,7 @@
 				"mRadius",
 				"mFlowLimit",
 				"mFlowIndicatorMinimumPipeLength",
+				"mSoundSplineComponentEmitterInterval",
 				"mPipeConnections",
 				"mFluidBox",
 				"mIndicatorData",
@@ -5516,9 +5517,12 @@
 				"mCurrentFluid",
 				"mLastContentForSound",
 				"mLastFlowForSound",
+				"mLastElapsedTime",
+				"mLastFlowForSoundUpdateThreshold",
 				"mRattleLimit",
 				"mIsRattling",
 				"mUpdateSoundsHandle",
+				"mUpdateSoundsTimerInterval",
 				"mMeshLength",
 				"mSplineData",
 				"mSnappedPassthroughs"
@@ -5538,6 +5542,9 @@
 					"$ref": "#/$defs/decimal-string"
 				},
 				"mFlowIndicatorMinimumPipeLength": {
+					"$ref": "#/$defs/decimal-string"
+				},
+				"mSoundSplineComponentEmitterInterval": {
 					"$ref": "#/$defs/decimal-string"
 				},
 				"mPipeConnections": {
@@ -5591,6 +5598,12 @@
 				"mLastFlowForSound": {
 					"$ref": "#/$defs/decimal-string"
 				},
+				"mLastElapsedTime": {
+					"$ref": "#/$defs/decimal-string"
+				},
+				"mLastFlowForSoundUpdateThreshold": {
+					"$ref": "#/$defs/decimal-string"
+				},
 				"mRattleLimit": {
 					"$ref": "#/$defs/decimal-string"
 				},
@@ -5599,6 +5612,9 @@
 				},
 				"mUpdateSoundsHandle": {
 					"$ref": "#/$defs/empty-object"
+				},
+				"mUpdateSoundsTimerInterval": {
+					"$ref": "#/$defs/decimal-string"
 				},
 				"mSnappedPassthroughs": {
 					"$ref": "#/$defs/mSnappedPassthroughs"
