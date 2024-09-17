@@ -3084,9 +3084,12 @@
 			"type": "object",
 			"$ref": "#/$defs/FGEquipment--base",
 			"required": [
+				"mFirstSwingMontageList",
+				"mSecondSwingMontageList",
 				"mDamageTypes",
-				"mSecondSwingMaxTime",
-				"mSecondSwingCooldDownTime",
+				"mSecondSwingMinDelay",
+				"mSecondSwingMaxDelay",
+				"mSecondSwingUseCoolDown",
 				"mAttackDistance",
 				"mAttackSweepRadius"
 			],
@@ -3094,10 +3097,13 @@
 				"mDamageTypes": {
 					"$ref": "#/$defs/mDamageTypes"
 				},
-				"mSecondSwingMaxTime": {
+				"mSecondSwingMinDelay": {
 					"$ref": "#/$defs/decimal-string"
 				},
-				"mSecondSwingCooldDownTime": {
+				"mSecondSwingMaxDelay": {
+					"$ref": "#/$defs/decimal-string"
+				},
+				"mSecondSwingUseCoolDown": {
 					"$ref": "#/$defs/decimal-string"
 				},
 				"mAttackDistance": {
@@ -3112,20 +3118,496 @@
 			"type": "object",
 			"$ref": "#/$defs/FGEquipmentStunSpear--base",
 			"unevaluatedProperties": false,
-			"required": ["mRandomAttackAnim", "mRandomEquipAnim"],
 			"properties": {
+				"mSecondSwingMontageList": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["Montages"],
+						"properties": {
+							"Montages": {
+								"type": "string",
+								"minLength": 1,
+								"typed_string": {
+									"minItems": 1,
+									"maxItems": 1,
+									"items": {
+										"type": "string",
+										"minLength": 1,
+										"typed_string": {
+											"required": [
+												"Montage_1P",
+												"Montage_3P",
+												"Montage_Equipment",
+												"AudioEvent",
+												"CameraAnim"
+											],
+											"properties": {
+												"Montage_1P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
+														}
+													}
+												},
+												"Montage_3P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
+														}
+													}
+												},
+												"Montage_Equipment": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Equipment/StunSpear/Animation/"
+														}
+													}
+												},
+												"AudioEvent": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/AkAudio.AkAudioEvent",
+														"right": {
+															"starts_with": "/Game/WwiseAudio/Events/Equipment/ShockBaton/"
+														}
+													}
+												},
+												"CameraAnim": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/TemplateSequence.CameraAnimationSequence",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Character/Player/CameraShake/"
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"mFirstSwingMontageList": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["Montages"],
+						"properties": {
+							"Montages": {
+								"type": "string",
+								"minLength": 1,
+								"typed_string": {
+									"minItems": 1,
+									"maxItems": 2,
+									"items": {
+										"oneOf": [
+											{
+												"type": "string",
+												"minLength": 1,
+												"typed_string": {
+													"required": [
+														"Weight",
+														"Montage_1P",
+														"Montage_3P",
+														"Montage_Equipment",
+														"AudioEvent",
+														"CameraAnim"
+													],
+													"properties": {
+														"Weight": {
+															"$ref": "#/$defs/decimal-string"
+														},
+														"Montage_1P": {
+															"type": "string",
+															"minLength": 1,
+															"UnrealEngineString": {
+																"left": "/Script/Engine.AnimMontage",
+																"right": {
+																	"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
+																}
+															}
+														},
+														"Montage_3P": {
+															"type": "string",
+															"minLength": 1,
+															"UnrealEngineString": {
+																"left": "/Script/Engine.AnimMontage",
+																"right": {
+																	"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
+																}
+															}
+														},
+														"Montage_Equipment": {
+															"type": "string",
+															"minLength": 1,
+															"UnrealEngineString": {
+																"left": "/Script/Engine.AnimMontage",
+																"right": {
+																	"starts_with": "/Game/FactoryGame/Equipment/StunSpear/Animation/"
+																}
+															}
+														},
+														"AudioEvent": {
+															"type": "string",
+															"minLength": 1,
+															"UnrealEngineString": {
+																"left": "/Script/AkAudio.AkAudioEvent",
+																"right": {
+																	"starts_with": "/Game/WwiseAudio/Events/Equipment/ShockBaton/"
+																}
+															}
+														},
+														"CameraAnim": {
+															"type": "string",
+															"minLength": 1,
+															"UnrealEngineString": {
+																"left": "/Script/TemplateSequence.CameraAnimationSequence",
+																"right": {
+																	"starts_with": "/Game/FactoryGame/Character/Player/CameraShake/"
+																}
+															}
+														}
+													}
+												}
+											},
+											{
+												"type": "string",
+												"minLength": 1,
+												"typed_string": {
+													"required": [
+														"Montage_1P",
+														"Montage_3P",
+														"AudioEvent",
+														"CameraAnim"
+													],
+													"properties": {
+														"Montage_1P": {
+															"type": "string",
+															"minLength": 1,
+															"UnrealEngineString": {
+																"left": "/Script/Engine.AnimMontage",
+																"right": {
+																	"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
+																}
+															}
+														},
+														"Montage_3P": {
+															"type": "string",
+															"minLength": 1,
+															"UnrealEngineString": {
+																"left": "/Script/Engine.AnimMontage",
+																"right": {
+																	"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
+																}
+															}
+														},
+														"AudioEvent": {
+															"type": "string",
+															"minLength": 1,
+															"UnrealEngineString": {
+																"left": "/Script/AkAudio.AkAudioEvent",
+																"right": {
+																	"starts_with": "/Game/WwiseAudio/Events/Equipment/ShockBaton/"
+																}
+															}
+														},
+														"CameraAnim": {
+															"type": "string",
+															"minLength": 1,
+															"UnrealEngineString": {
+																"left": "/Script/TemplateSequence.CameraAnimationSequence",
+																"right": {
+																	"starts_with": "/Game/FactoryGame/Character/Player/CameraShake/"
+																}
+															}
+														}
+													}
+												}
+											}
+										]
+									}
+								}
+							}
+						}
+					}
+				},
+				"mEquipMontage": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["Montages"],
+						"properties": {
+							"Montages": {
+								"type": "string",
+								"minLength": 1,
+								"typed_string": {
+									"minItems": 3,
+									"maxItems": 3,
+									"items": {
+										"oneOf": [
+											{
+												"type": "string",
+												"minLength": 1,
+												"typed_string": {
+													"required": [
+														"Filter",
+														"Exclusive",
+														"Montage_1P",
+														"Montage_3P",
+														"Montage_Equipment",
+														"AudioEvent"
+													],
+													"properties": {
+														"Filter": {
+															"$ref": "#/$defs/boolean"
+														},
+														"Exclusive": {
+															"$ref": "#/$defs/boolean"
+														},
+														"Montage_1P": {
+															"type": "string",
+															"minLength": 1,
+															"UnrealEngineString": {
+																"left": "/Script/Engine.AnimMontage",
+																"right": {
+																	"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
+																}
+															}
+														},
+														"Montage_3P": {
+															"type": "string",
+															"minLength": 1,
+															"UnrealEngineString": {
+																"left": "/Script/Engine.AnimMontage",
+																"right": {
+																	"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
+																}
+															}
+														},
+														"Montage_Equipment": {
+															"type": "string",
+															"minLength": 1,
+															"UnrealEngineString": {
+																"left": "/Script/Engine.AnimMontage",
+																"right": {
+																	"starts_with": "/Game/FactoryGame/Equipment/StunSpear/Animation/"
+																}
+															}
+														},
+														"AudioEvent": {
+															"type": "string",
+															"minLength": 1,
+															"UnrealEngineString": {
+																"left": "/Script/AkAudio.AkAudioEvent",
+																"right": {
+																	"starts_with": "/Game/WwiseAudio/Events/Equipment/ShockBaton/"
+																}
+															}
+														}
+													}
+												}
+											},
+											{
+												"type": "string",
+												"minLength": 1,
+												"typed_string": {
+													"required": [
+														"Weight",
+														"Montage_1P",
+														"Montage_3P",
+														"Montage_Equipment",
+														"AudioEvent"
+													],
+													"properties": {
+														"Weight": {
+															"$ref": "#/$defs/decimal-string"
+														},
+														"Montage_1P": {
+															"type": "string",
+															"minLength": 1,
+															"UnrealEngineString": {
+																"left": "/Script/Engine.AnimMontage",
+																"right": {
+																	"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
+																}
+															}
+														},
+														"Montage_3P": {
+															"type": "string",
+															"minLength": 1,
+															"UnrealEngineString": {
+																"left": "/Script/Engine.AnimMontage",
+																"right": {
+																	"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
+																}
+															}
+														},
+														"Montage_Equipment": {
+															"type": "string",
+															"minLength": 1,
+															"UnrealEngineString": {
+																"left": "/Script/Engine.AnimMontage",
+																"right": {
+																	"starts_with": "/Game/FactoryGame/Equipment/StunSpear/Animation/"
+																}
+															}
+														},
+														"AudioEvent": {
+															"type": "string",
+															"minLength": 1,
+															"UnrealEngineString": {
+																"left": "/Script/AkAudio.AkAudioEvent",
+																"right": {
+																	"starts_with": "/Game/WwiseAudio/Events/Equipment/ShockBaton/"
+																}
+															}
+														}
+													}
+												}
+											}
+										]
+									}
+								}
+							}
+						}
+					}
+				},
+				"mStingerMontage": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["Montages"],
+						"properties": {
+							"Montages": {
+								"type": "string",
+								"minLength": 1,
+								"typed_string": {
+									"minItems": 1,
+									"maxItems": 1,
+									"items": {
+										"type": "string",
+										"minLength": 1,
+										"typed_string": {
+											"required": [
+												"Montage_1P",
+												"Montage_3P",
+												"Montage_Equipment",
+												"AudioEvent",
+												"bSeparate3PAudioEvent",
+												"AudioEvent3P",
+												"CameraAnim"
+											],
+											"properties": {
+												"Montage_1P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
+														}
+													}
+												},
+												"Montage_3P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
+														}
+													}
+												},
+												"Montage_Equipment": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Equipment/StunSpear/Animation/"
+														}
+													}
+												},
+												"AudioEvent": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/AkAudio.AkAudioEvent",
+														"right": {
+															"starts_with": "/Game/WwiseAudio/Events/Equipment/ShockBaton/"
+														}
+													}
+												},
+												"bSeparate3PAudioEvent": {
+													"$ref": "#/$defs/boolean"
+												},
+												"AudioEvent3P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/AkAudio.AkAudioEvent",
+														"right": {
+															"starts_with": "/Game/WwiseAudio/Events/Equipment/ShockBaton/"
+														}
+													}
+												},
+												"CameraAnim": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/TemplateSequence.CameraAnimationSequence",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Character/Player/CameraShake/"
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"mUnEquipMontage": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["AudioEvent"],
+						"properties": {
+							"AudioEvent": {
+								"type": "string",
+								"minLength": 1,
+								"UnrealEngineString": {
+									"left": "/Script/AkAudio.AkAudioEvent",
+									"right": {
+										"starts_with": "/Game/WwiseAudio/Events/Equipment/ShockBaton/"
+									}
+								}
+							}
+						}
+					}
+				},
 				"mDamageTypes": {
 					"$ref": "#/$defs/mDamageTypes"
 				},
 				"mArmAnimation": {
 					"type": "string",
 					"const": "AE_StunSpear"
-				},
-				"mRandomAttackAnim": {
-					"$ref": "#/$defs/integer-string"
-				},
-				"mRandomEquipAnim": {
-					"$ref": "#/$defs/integer-string"
 				}
 			}
 		},
@@ -3133,8 +3615,205 @@
 			"type": "object",
 			"$ref": "#/$defs/FGEquipmentStunSpear--base",
 			"unevaluatedProperties": false,
-			"required": ["mPunchAnimationWeight"],
 			"properties": {
+				"mFirstSwingMontageList": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["Montages"],
+						"properties": {
+							"Montages": {
+								"type": "string",
+								"minLength": 1,
+								"typed_string": {
+									"minItems": 1,
+									"maxItems": 2,
+									"items": {
+										"type": "string",
+										"minLength": 1,
+										"typed_string": {
+											"required": [
+												"Montage_1P",
+												"Montage_3P",
+												"Montage_Equipment",
+												"AudioEvent",
+												"bSeparate3PAudioEvent",
+												"AudioEvent3P",
+												"CameraAnim"
+											],
+											"properties": {
+												"Montage_1P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
+														}
+													}
+												},
+												"Montage_3P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
+														}
+													}
+												},
+												"Montage_Equipment": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Equipment/ShockShank/Animation/"
+														}
+													}
+												},
+												"AudioEvent": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/AkAudio.AkAudioEvent",
+														"right": {
+															"starts_with": "/Game/WwiseAudio/Events/Equipment/ShockShank/"
+														}
+													}
+												},
+												"bSeparate3PAudioEvent": {
+													"$ref": "#/$defs/boolean"
+												},
+												"AudioEvent3P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/AkAudio.AkAudioEvent",
+														"right": {
+															"starts_with": "/Game/WwiseAudio/Events/Equipment/ShockShank/"
+														}
+													}
+												},
+												"CameraAnim": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/TemplateSequence.CameraAnimationSequence",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Character/Player/CameraShake/"
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"mSecondSwingMontageList": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["Montages"],
+						"properties": {
+							"Montages": {
+								"type": "string",
+								"minLength": 1,
+								"typed_string": {
+									"minItems": 1,
+									"maxItems": 2,
+									"items": {
+										"type": "string",
+										"minLength": 1,
+										"typed_string": {
+											"required": [
+												"Weight",
+												"Montage_1P",
+												"Montage_3P",
+												"Montage_Equipment",
+												"AudioEvent",
+												"bSeparate3PAudioEvent",
+												"AudioEvent3P",
+												"CameraAnim"
+											],
+											"properties": {
+												"Weight": {
+													"$ref": "#/$defs/decimal-string"
+												},
+												"Montage_1P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
+														}
+													}
+												},
+												"Montage_3P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
+														}
+													}
+												},
+												"Montage_Equipment": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Equipment/ShockShank/Animation/"
+														}
+													}
+												},
+												"AudioEvent": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/AkAudio.AkAudioEvent",
+														"right": {
+															"starts_with": "/Game/WwiseAudio/Events/Equipment/ShockShank/"
+														}
+													}
+												},
+												"bSeparate3PAudioEvent": {
+													"$ref": "#/$defs/boolean"
+												},
+												"AudioEvent3P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/AkAudio.AkAudioEvent",
+														"right": {
+															"starts_with": "/Game/WwiseAudio/Events/Equipment/ShockShank/"
+														}
+													}
+												},
+												"CameraAnim": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/TemplateSequence.CameraAnimationSequence",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Character/Player/CameraShake/"
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
 				"mDamageTypes": {
 					"$ref": "#/$defs/mDamageTypes"
 				},
@@ -3142,8 +3821,170 @@
 					"type": "string",
 					"const": "AE_ShockShank"
 				},
-				"mPunchAnimationWeight": {
-					"$ref": "#/$defs/decimal-string"
+				"mEquipMontage": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["Montages"],
+						"properties": {
+							"Montages": {
+								"type": "string",
+								"minLength": 1,
+								"typed_string": {
+									"minItems": 1,
+									"maxItems": 1,
+									"items": {
+										"type": "string",
+										"minLength": 1,
+										"typed_string": {
+											"required": [
+												"Montage_1P",
+												"Montage_3P",
+												"Montage_Equipment",
+												"AudioEvent",
+												"bSeparate3PAudioEvent",
+												"AudioEvent3P"
+											],
+											"properties": {
+												"Montage_1P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
+														}
+													}
+												},
+												"Montage_3P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
+														}
+													}
+												},
+												"Montage_Equipment": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Equipment/ShockShank/Animation/"
+														}
+													}
+												},
+												"AudioEvent": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/AkAudio.AkAudioEvent",
+														"right": {
+															"starts_with": "/Game/WwiseAudio/Events/Equipment/ShockShank/"
+														}
+													}
+												},
+												"bSeparate3PAudioEvent": {
+													"$ref": "#/$defs/boolean"
+												},
+												"AudioEvent3P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/AkAudio.AkAudioEvent",
+														"right": {
+															"starts_with": "/Game/WwiseAudio/Events/Equipment/ShockShank/"
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"mStingerMontage": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["Montages"],
+						"properties": {
+							"Montages": {
+								"type": "string",
+								"minLength": 1,
+								"typed_string": {
+									"minItems": 1,
+									"maxItems": 1,
+									"items": {
+										"type": "string",
+										"minLength": 1,
+										"typed_string": {
+											"required": [
+												"Montage_1P",
+												"Montage_Equipment",
+												"AudioEvent"
+											],
+											"properties": {
+												"Montage_1P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
+														}
+													}
+												},
+												"Montage_Equipment": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Equipment/ShockShank/Animation/"
+														}
+													}
+												},
+												"AudioEvent": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/AkAudio.AkAudioEvent",
+														"right": {
+															"starts_with": "/Game/WwiseAudio/Events/Equipment/ShockShank/"
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"mUnEquipMontage": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["AudioEvent"],
+						"properties": {
+							"AudioEvent": {
+								"type": "string",
+								"minLength": 1,
+								"UnrealEngineString": {
+									"left": "/Script/AkAudio.AkAudioEvent",
+									"right": {
+										"starts_with": "/Game/WwiseAudio/Events/Equipment/ShockShank/"
+									}
+								}
+							}
+						}
+					}
 				}
 			}
 		},
@@ -10366,20 +11207,24 @@
 					"type": "array",
 					"minItems": 3,
 					"maxItems": 3,
-					"items": {
-						"oneOf": [
-							{
-								"type": "object",
-								"$ref": "#/$defs/FGEquipmentStunSpear--xeno-zapper",
-								"unevaluatedProperties": false
-							},
-							{
-								"type": "object",
-								"$ref": "#/$defs/FGEquipmentStunSpear",
-								"unevaluatedProperties": false
-							}
-						]
-					}
+					"items": false,
+					"prefixItems": [
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGEquipmentStunSpear--xeno-zapper",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGEquipmentStunSpear",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGEquipmentStunSpear",
+							"unevaluatedProperties": false
+						}
+					]
 				}
 			}
 		},
