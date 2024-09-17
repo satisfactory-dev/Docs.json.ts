@@ -11358,22 +11358,22 @@
 					"minItems": 3,
 					"maxItems": 3,
 					"prefixItems": [
-							{
-								"type": "object",
-								"$ref": "#/$defs/FGBuildableGeneratorFuel--solid",
-								"unevaluatedProperties": false
-							},
-							{
-								"type": "object",
-								"$ref": "#/$defs/FGBuildableGeneratorFuel--liquid",
-								"unevaluatedProperties": false
-							},
-							{
-								"type": "object",
-								"$ref": "#/$defs/FGBuildableGeneratorFuel--biogen",
-								"unevaluatedProperties": false
-							}
-						]
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGBuildableGeneratorFuel--solid",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGBuildableGeneratorFuel--liquid",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGBuildableGeneratorFuel--biogen",
+							"unevaluatedProperties": false
+						}
+					]
 				}
 			}
 		},
