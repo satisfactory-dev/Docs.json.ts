@@ -5049,8 +5049,8 @@
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableGenerator--base",
 			"required": [
-				"mFuelInventoryHandlerData",
 				"mFuelClasses",
+				"mFuelClassesInInventory",
 				"mAvailableFuelClasses",
 				"mFuelLoadAmount",
 				"mRequiresSupplementalResource",
@@ -5061,20 +5061,17 @@
 				"mCachedPipeInputConnections"
 			],
 			"properties": {
-				"mFuelInventoryHandlerData": {
-					"$ref": "#/$defs/empty-object"
-				},
 				"mFuelClasses": {
+					"type": "string",
+					"const": ""
+				},
+				"mFuelClassesInInventory": {
 					"type": "string",
 					"const": ""
 				},
 				"mAvailableFuelClasses": {
 					"type": "string",
 					"const": ""
-				},
-				"mFuelResourceForm": {
-					"type": "string",
-					"enum": ["RF_SOLID", "RF_LIQUID"]
 				},
 				"mFuelLoadAmount": {
 					"$ref": "#/$defs/integer-string"
@@ -5110,7 +5107,6 @@
 				"m_CurrentPotential",
 				"mDefaultFuelClasses",
 				"mFuel",
-				"mFuelResourceForm",
 				"mFuelLoadAmount"
 			],
 			"properties": {
@@ -5180,10 +5176,6 @@
 							}
 						}
 					}
-				},
-				"mFuelResourceForm": {
-					"type": "string",
-					"const": "RF_SOLID"
 				}
 			}
 		},
@@ -5195,8 +5187,6 @@
 				"m_SFXSockets",
 				"m_CurrentPotential",
 				"mDefaultFuelClasses",
-				"mFuel",
-				"mFuelResourceForm",
 				"mRTPCInterval",
 				"mCachedLoadPercentage"
 			],
@@ -5225,7 +5215,9 @@
 							"enum": [
 								"/Game/FactoryGame/Resource/Parts/Fuel/Desc_LiquidFuel.Desc_LiquidFuel_C",
 								"/Game/FactoryGame/Resource/Parts/Turbofuel/Desc_LiquidTurboFuel.Desc_LiquidTurboFuel_C",
-								"/Game/FactoryGame/Resource/Parts/BioFuel/Desc_LiquidBiofuel.Desc_LiquidBiofuel_C"
+								"/Game/FactoryGame/Resource/Parts/BioFuel/Desc_LiquidBiofuel.Desc_LiquidBiofuel_C",
+								"/Game/FactoryGame/Resource/Parts/RocketFuel/Desc_RocketFuel.Desc_RocketFuel_C",
+								"/Game/FactoryGame/Resource/Parts/IonizedFuel/Desc_IonizedFuel.Desc_IonizedFuel_C"
 							]
 						}
 					}
@@ -5247,7 +5239,9 @@
 								"enum": [
 									"Desc_LiquidFuel_C",
 									"Desc_LiquidTurboFuel_C",
-									"Desc_LiquidBiofuel_C"
+									"Desc_LiquidBiofuel_C",
+									"Desc_RocketFuel_C",
+									"Desc_IonizedFuel_C"
 								]
 							},
 							"mSupplementalResourceClass": {
@@ -5265,10 +5259,6 @@
 						}
 					}
 				},
-				"mFuelResourceForm": {
-					"type": "string",
-					"const": "RF_LIQUID"
-				},
 				"mRTPCInterval": {
 					"$ref": "#/$defs/decimal-string"
 				},
@@ -5284,7 +5274,6 @@
 			"required": [
 				"mDefaultFuelClasses",
 				"mFuel",
-				"mFuelResourceForm",
 				"mCachedLoadPercentage"
 			],
 			"properties": {
@@ -5296,7 +5285,12 @@
 						"items": {
 							"type": "string",
 							"enum": [
-								"/Script/FactoryGame.FGItemDescriptorBiomass"
+								"/Game/FactoryGame/Resource/Parts/GenericBiomass/Desc_Leaves.Desc_Leaves_C",
+								"/Game/FactoryGame/Resource/Parts/GenericBiomass/Desc_Wood.Desc_Wood_C",
+								"/Game/FactoryGame/Resource/Parts/GenericBiomass/Desc_Mycelia.Desc_Mycelia_C",
+								"/Game/FactoryGame/Resource/Parts/GenericBiomass/Desc_GenericBiomass.Desc_GenericBiomass_C",
+								"/Game/FactoryGame/Resource/Parts/BioFuel/Desc_Biofuel.Desc_Biofuel_C",
+								"/Game/FactoryGame/Resource/Parts/BioFuel/Desc_PackagedBiofuel.Desc_PackagedBiofuel_C"
 							]
 						}
 					}
@@ -5315,7 +5309,14 @@
 						"properties": {
 							"mFuelClass": {
 								"type": "string",
-								"enum": ["FGItemDescriptorBiomass"]
+								"enum": [
+									"Desc_Leaves_C",
+									"Desc_Wood_C",
+									"Desc_Mycelia_C",
+									"Desc_GenericBiomass_C",
+									"Desc_Biofuel_C",
+									"Desc_PackagedBiofuel_C"
+								]
 							},
 							"mSupplementalResourceClass": {
 								"type": "string",
@@ -5331,10 +5332,6 @@
 							}
 						}
 					}
-				},
-				"mFuelResourceForm": {
-					"type": "string",
-					"const": "RF_SOLID"
 				},
 				"mCachedLoadPercentage": {
 					"$ref": "#/$defs/decimal-string"
@@ -5391,7 +5388,6 @@
 				"mCurrentGeneratorNuclearWarning",
 				"mDefaultFuelClasses",
 				"mFuel",
-				"mFuelResourceForm",
 				"mCachedLoadPercentage"
 			],
 			"properties": {
@@ -5479,10 +5475,6 @@
 							}
 						]
 					}
-				},
-				"mFuelResourceForm": {
-					"type": "string",
-					"const": "RF_SOLID"
 				},
 				"mCachedLoadPercentage": {
 					"$ref": "#/$defs/decimal-string"
@@ -7174,7 +7166,6 @@
 				"mFuelInventorySizeX",
 				"mFuelInventorySizeY",
 				"mFuelTransferSpeed",
-				"mFuelInventoryHandlerData",
 				"mInventoryHandlerData",
 				"mForceSignificance",
 				"mVehicleFuelConsumptionRate",
@@ -7206,9 +7197,6 @@
 				},
 				"mFuelTransferSpeed": {
 					"$ref": "#/$defs/decimal-string"
-				},
-				"mFuelInventoryHandlerData": {
-					"$ref": "#/$defs/empty-object"
 				},
 				"mInventoryHandlerData": {
 					"$ref": "#/$defs/empty-object"
@@ -10397,6 +10385,52 @@
 									"minLength": 1,
 									"typed_string": {
 										"required": [
+											"ClearanceBox",
+											"RelativeTransform"
+										],
+										"properties": {
+											"ClearanceBox": {
+												"type": "string",
+												"minLength": 1,
+												"typed_string": {
+													"required": [
+														"Min",
+														"Max",
+														"IsValid"
+													],
+													"properties": {
+														"Min": {
+															"$ref": "#/$defs/xyz"
+														},
+														"Max": {
+															"$ref": "#/$defs/xyz"
+														},
+														"IsValid": {
+															"$ref": "#/$defs/boolean"
+														}
+													}
+												}
+											},
+											"RelativeTransform": {
+												"type": "string",
+												"minLength": 1,
+												"typed_string": {
+													"required": ["Rotation"],
+													"properties": {
+														"Rotation": {
+															"$ref": "#/$defs/quaternion"
+														}
+													}
+												}
+											}
+										}
+									}
+								},
+								{
+									"type": "string",
+									"minLength": 1,
+									"typed_string": {
+										"required": [
 											"Type",
 											"ClearanceBox",
 											"RelativeTransform",
@@ -11320,10 +11354,10 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
+					"items": false,
 					"minItems": 3,
 					"maxItems": 3,
-					"items": {
-						"oneOf": [
+					"prefixItems": [
 							{
 								"type": "object",
 								"$ref": "#/$defs/FGBuildableGeneratorFuel--solid",
@@ -11340,7 +11374,6 @@
 								"unevaluatedProperties": false
 							}
 						]
-					}
 				}
 			}
 		},
