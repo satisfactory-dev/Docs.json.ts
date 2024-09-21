@@ -2639,8 +2639,10 @@
 			"required": [
 				"mMeshHeight",
 				"mIsReversed",
+				"mFlipMeshOnReverse",
 				"mTopTransform",
-				"mSnappedPassthroughs"
+				"mSnappedPassthroughs",
+				"mOpposingConnectionClearance"
 			],
 			"properties": {
 				"mMeshHeight": {
@@ -2649,11 +2651,17 @@
 				"mIsReversed": {
 					"$ref": "#/$defs/boolean"
 				},
+				"mFlipMeshOnReverse": {
+					"$ref": "#/$defs/boolean"
+				},
 				"mTopTransform": {
 					"$ref": "#/$defs/transformation"
 				},
 				"mSnappedPassthroughs": {
 					"$ref": "#/$defs/mSnappedPassthroughs"
+				},
+				"mOpposingConnectionClearance": {
+					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
@@ -12052,6 +12060,7 @@
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
+					"maxItems": 6,
 					"items": {
 						"type": "object",
 						"$ref": "#/$defs/FGBuildableConveyorLift",
