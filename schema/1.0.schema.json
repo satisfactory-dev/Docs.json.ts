@@ -4443,42 +4443,102 @@
 			"$ref": "#/$defs/FGEquipment--base",
 			"unevaluatedProperties": false,
 			"required": [
-				"mPlayingSound",
-				"mScreenUpdateTimer",
-				"mScanlineLerpT",
-				"mScreenUpdateTime",
-				"mNormalizedCloesnessToObject",
-				"mObjectIsWithinRange",
-				"mIsPlayingStaticSound",
 				"mBeepDelayMax",
 				"mBeepDelayMin",
 				"mDetectionRange",
 				"mUpdateClosestObjectTime",
 				"mClosestObjectInScanRange",
 				"mNormalizedDistanceToClosestObject",
-				"mAngleToClosestObject"
+				"mAngleToClosestObject",
+				"mScannerCycleLeftMontage",
+				"mScannerCycleRightMontage"
 			],
 			"properties": {
-				"mPlayingSound": {
-					"$ref": "#/$defs/boolean"
+				"mScannerCycleLeftMontage": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": [
+							"Montage_1P",
+							"Montage_Equipment",
+							"AudioEvent"
+						],
+						"properties": {
+							"Montage_1P": {
+								"type": "string",
+								"minLength": 1,
+								"UnrealEngineString": {
+									"left": "/Script/Engine.AnimMontage",
+									"right": {
+										"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
+									}
+								}
+							},
+							"Montage_Equipment": {
+								"type": "string",
+								"minLength": 1,
+								"UnrealEngineString": {
+									"left": "/Script/Engine.AnimMontage",
+									"right": {
+										"starts_with": "/Game/FactoryGame/Equipment/ObjectScanner/Animation/"
+									}
+								}
+							},
+							"AudioEvent": {
+								"type": "string",
+								"minLength": 1,
+								"UnrealEngineString": {
+									"left": "/Script/AkAudio.AkAudioEvent",
+									"right": {
+										"starts_with": "/Game/WwiseAudio/Events/Equipment/ObjectScanner/"
+									}
+								}
+							}
+						}
+					}
 				},
-				"mScreenUpdateTimer": {
-					"$ref": "#/$defs/empty-object"
-				},
-				"mScanlineLerpT": {
-					"$ref": "#/$defs/decimal-string"
-				},
-				"mScreenUpdateTime": {
-					"$ref": "#/$defs/decimal-string"
-				},
-				"mNormalizedCloesnessToObject": {
-					"$ref": "#/$defs/decimal-string"
-				},
-				"mObjectIsWithinRange": {
-					"$ref": "#/$defs/boolean"
-				},
-				"mIsPlayingStaticSound": {
-					"$ref": "#/$defs/boolean"
+				"mScannerCycleRightMontage": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": [
+							"Montage_1P",
+							"Montage_Equipment",
+							"AudioEvent"
+						],
+						"properties": {
+							"Montage_1P": {
+								"type": "string",
+								"minLength": 1,
+								"UnrealEngineString": {
+									"left": "/Script/Engine.AnimMontage",
+									"right": {
+										"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
+									}
+								}
+							},
+							"Montage_Equipment": {
+								"type": "string",
+								"minLength": 1,
+								"UnrealEngineString": {
+									"left": "/Script/Engine.AnimMontage",
+									"right": {
+										"starts_with": "/Game/FactoryGame/Equipment/ObjectScanner/Animation/"
+									}
+								}
+							},
+							"AudioEvent": {
+								"type": "string",
+								"minLength": 1,
+								"UnrealEngineString": {
+									"left": "/Script/AkAudio.AkAudioEvent",
+									"right": {
+										"starts_with": "/Game/WwiseAudio/Events/Equipment/ObjectScanner/"
+									}
+								}
+							}
+						}
+					}
 				},
 				"mBeepDelayMax": {
 					"$ref": "#/$defs/decimal-string"
@@ -4500,6 +4560,88 @@
 				},
 				"mAngleToClosestObject": {
 					"$ref": "#/$defs/decimal-string"
+				},
+				"mEquipMontage": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["Montages"],
+						"properties": {
+							"Montages": {
+								"type": "string",
+								"minLength": 1,
+								"typed_string": {
+									"minItems": 1,
+									"maxItems": 1,
+									"items": {
+										"type": "string",
+										"minLength": 1,
+										"typed_string": {
+											"required": [
+												"Montage_1P",
+												"Montage_Equipment",
+												"AudioEvent"
+											],
+											"properties": {
+												"Montage_1P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
+														}
+													}
+												},
+												"Montage_3P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
+														}
+													}
+												},
+												"AudioEvent": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/AkAudio.AkAudioEvent",
+														"right": {
+															"starts_with": "/Game/WwiseAudio/Events/Character/Player/ResourcePickUp/"
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"mStingerMontage": {
+					"$ref": "#/$defs/empty-object"
+				},
+				"mUnEquipMontage": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["AudioEvent"],
+						"properties": {
+							"AudioEvent": {
+								"type": "string",
+								"minLength": 1,
+								"UnrealEngineString": {
+									"left": "/Script/AkAudio.AkAudioEvent",
+									"right": {
+										"starts_with": "/Game/WwiseAudio/Events/Equipment/ObjectScanner/"
+									}
+								}
+							}
+						}
+					}
 				}
 			}
 		},
