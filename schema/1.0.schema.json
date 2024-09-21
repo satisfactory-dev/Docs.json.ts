@@ -6419,7 +6419,12 @@
 			"required": [
 				"mCurrentRecipeCheck",
 				"mPreviousRecipeCheck",
-				"CurrentPotentialConvert"
+				"CurrentPotentialConvert",
+				"mAOAttenuationScalingFactor",
+				"mAOLayerZOffset",
+				"RTPC_AO_VolumeDB",
+				"RTPC_AO_HighpassValue",
+				"RTPC_AO_Pitch"
 			],
 			"properties": {
 				"ClassName": {
@@ -6449,6 +6454,21 @@
 							}
 						]
 					}
+				},
+				"mAOAttenuationScalingFactor": {
+					"$ref": "#/$defs/decimal-string"
+				},
+				"mAOLayerZOffset": {
+					"$ref": "#/$defs/decimal-string"
+				},
+				"RTPC_AO_VolumeDB": {
+					"$ref": "#/$defs/decimal-string"
+				},
+				"RTPC_AO_HighpassValue": {
+					"$ref": "#/$defs/decimal-string"
+				},
+				"RTPC_AO_Pitch": {
+					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
@@ -11834,19 +11854,34 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"minItems": 1,
-					"items": {
-						"oneOf": [
+					"minItems": 8,
+					"maxItems": 8,
+					"prefixItems": [
 							{
 								"type": "object",
 								"$ref": "#/$defs/FGBuildableManufacturer",
 								"unevaluatedProperties": false
 							},
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGBuildableManufacturer",
+							"unevaluatedProperties": false
+						},
 							{
 								"type": "object",
 								"$ref": "#/$defs/FGBuildableManufacturer--packager",
 								"unevaluatedProperties": false
 							},
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGBuildableManufacturer",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGBuildableManufacturer",
+							"unevaluatedProperties": false
+						},
 							{
 								"type": "object",
 								"$ref": "#/$defs/FGBuildableManufacturer--blender",
@@ -11863,7 +11898,6 @@
 								"unevaluatedProperties": false
 							}
 						]
-					}
 				}
 			}
 		},
