@@ -6271,9 +6271,7 @@
 				"mFactoryInputConnections",
 				"mPipeInputConnections",
 				"mFactoryOutputConnections",
-				"mPipeOutputConnections",
-				"mInputInventoryHandlerData",
-				"mOutputInventoryHandlerData"
+				"mPipeOutputConnections"
 			],
 			"properties": {
 				"IsPowered": {
@@ -6306,12 +6304,6 @@
 				"mPipeOutputConnections": {
 					"type": "string",
 					"const": ""
-				},
-				"mInputInventoryHandlerData": {
-					"$ref": "#/$defs/empty-object"
-				},
-				"mOutputInventoryHandlerData": {
-					"$ref": "#/$defs/mOutputInventoryHandlerData"
 				},
 				"mStoppedProducingAnimationSounds": {
 					"$ref": "#/$defs/boolean"
@@ -6445,10 +6437,35 @@
 				}
 			}
 		},
-		"FGBuildableManufacturerVariablePower": {
+		"FGBuildableManufacturerVariablePower--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableManufacturer--base",
-			"unevaluatedProperties": false,
+			"required": [
+				"mEstimatedMininumPowerConsumption",
+				"mEstimatedMaximumPowerConsumption"
+			],
+			"properties": {
+				"mEstimatedMininumPowerConsumption": {
+					"$ref": "#/$defs/decimal-string"
+				},
+				"mEstimatedMaximumPowerConsumption": {
+					"$ref": "#/$defs/decimal-string"
+				}
+			}
+		},
+		"FGBuildableManufacturerVariablePower--QuantumEncoder": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableManufacturerVariablePower--base",
+			"required": ["IsAnimProducing"],
+			"properties": {
+				"IsAnimProducing": {
+					"$ref": "#/$defs/boolean"
+				}
+			}
+		},
+		"FGBuildableManufacturerVariablePower--HadronCollider": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableManufacturerVariablePower--base",
 			"required": [
 				"mSequenceDuration",
 				"mLightningTimer",
@@ -10515,6 +10532,61 @@
 												"minLength": 1,
 												"typed_string": {
 													"required": [
+														"Rotation",
+														"Translation"
+													],
+													"properties": {
+														"Rotation": {
+															"$ref": "#/$defs/quaternion"
+														},
+														"Translation": {
+															"$ref": "#/$defs/xyz"
+														}
+													}
+												}
+											},
+											"ExcludeForSnapping": {
+												"$ref": "#/$defs/boolean"
+											}
+										}
+									}
+								},
+								{
+									"type": "string",
+									"minLength": 1,
+									"typed_string": {
+										"required": [
+											"ClearanceBox",
+											"RelativeTransform"
+										],
+										"properties": {
+											"ClearanceBox": {
+												"type": "string",
+												"minLength": 1,
+												"typed_string": {
+													"required": [
+														"Min",
+														"Max",
+														"IsValid"
+													],
+													"properties": {
+														"Min": {
+															"$ref": "#/$defs/xyz"
+														},
+														"Max": {
+															"$ref": "#/$defs/xyz"
+														},
+														"IsValid": {
+															"$ref": "#/$defs/boolean"
+														}
+													}
+												}
+											},
+											"RelativeTransform": {
+												"type": "string",
+												"minLength": 1,
+												"typed_string": {
+													"required": [
 														"Translation"
 													],
 													"properties": {
@@ -11677,13 +11749,26 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {
-						"type": "object",
-						"$ref": "#/$defs/FGBuildableManufacturerVariablePower",
-						"unevaluatedProperties": false
-					},
-					"minItems": 1,
-					"maxItems": 1
+					"items": false,
+					"minItems": 3,
+					"maxItems": 3,
+					"prefixItems": [
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGBuildableManufacturerVariablePower--QuantumEncoder",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGBuildableManufacturerVariablePower--base",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGBuildableManufacturerVariablePower--HadronCollider",
+							"unevaluatedProperties": false
+						}
+					]
 				}
 			}
 		},
