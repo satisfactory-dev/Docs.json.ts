@@ -5927,7 +5927,6 @@
 				"EnableTickEngine",
 				"mGrinderInterpDuration",
 				"mEngineInterpDuration",
-				"mCouponInventoryHandler",
 				"mProcessingTime",
 				"mProducingTimer"
 			],
@@ -5946,9 +5945,6 @@
 				},
 				"mEngineInterpDuration": {
 					"$ref": "#/$defs/decimal-string"
-				},
-				"mCouponInventoryHandler": {
-					"$ref": "#/$defs/empty-object"
 				},
 				"mProcessingTime": {
 					"$ref": "#/$defs/decimal-string"
