@@ -11857,21 +11857,6 @@
 					"minItems": 8,
 					"maxItems": 8,
 					"prefixItems": [
-							{
-								"type": "object",
-								"$ref": "#/$defs/FGBuildableManufacturer",
-								"unevaluatedProperties": false
-							},
-						{
-							"type": "object",
-							"$ref": "#/$defs/FGBuildableManufacturer",
-							"unevaluatedProperties": false
-						},
-							{
-								"type": "object",
-								"$ref": "#/$defs/FGBuildableManufacturer--packager",
-								"unevaluatedProperties": false
-							},
 						{
 							"type": "object",
 							"$ref": "#/$defs/FGBuildableManufacturer",
@@ -11882,22 +11867,37 @@
 							"$ref": "#/$defs/FGBuildableManufacturer",
 							"unevaluatedProperties": false
 						},
-							{
-								"type": "object",
-								"$ref": "#/$defs/FGBuildableManufacturer--blender",
-								"unevaluatedProperties": false
-							},
-							{
-								"type": "object",
-								"$ref": "#/$defs/FGBuildableManufacturer--smelter",
-								"unevaluatedProperties": false
-							},
-							{
-								"type": "object",
-								"$ref": "#/$defs/FGBuildableManufacturer--constructor",
-								"unevaluatedProperties": false
-							}
-						]
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGBuildableManufacturer--packager",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGBuildableManufacturer",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGBuildableManufacturer",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGBuildableManufacturer--blender",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGBuildableManufacturer--smelter",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGBuildableManufacturer--constructor",
+							"unevaluatedProperties": false
+						}
+					]
 				}
 			}
 		},
