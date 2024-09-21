@@ -5833,7 +5833,6 @@
 			"$ref": "#/$defs/FGBuildable--extractor-base--shared",
 			"required": [
 				"mPipeOutputConnections",
-				"mReplicatedFlowRate",
 				"mExtractStartupTime",
 				"mExtractStartupTimer",
 				"mExtractCycleTime",
@@ -5843,9 +5842,6 @@
 				"mPipeOutputConnections": {
 					"type": "string",
 					"const": ""
-				},
-				"mReplicatedFlowRate": {
-					"$ref": "#/$defs/decimal-string"
 				},
 				"mExtractStartupTime": {
 					"$ref": "#/$defs/decimal-string--signed"
