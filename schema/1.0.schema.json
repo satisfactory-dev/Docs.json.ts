@@ -6210,6 +6210,10 @@
 				"CanPlayAfterStartUpStopped": {
 					"$ref": "#/$defs/boolean"
 				},
+				"SAMReference": {
+					"type": "string",
+					"const": "/Game/FactoryGame/Resource/RawResources/SAM/Desc_SAM.Desc_SAM_C"
+				},
 				"mAllowedResourceForms": {
 					"type": "string",
 					"minLength": 1,
@@ -6235,6 +6239,17 @@
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableResourceExtractor--miner--base",
 			"unevaluatedProperties": false
+		},
+		"FGBuildableResourceExtractor--miner-mk1": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableResourceExtractor--miner--base",
+			"unevaluatedProperties": false,
+			"required": ["InternalStartUpTimer"],
+			"properties": {
+				"InternalStartUpTimer": {
+					"$ref": "#/$defs/decimal-string"
+				}
+			}
 		},
 		"FGBuildableResourceExtractor--miner-mk3": {
 			"type": "object",
@@ -10695,6 +10710,9 @@
 													"properties": {
 														"Translation": {
 															"$ref": "#/$defs/xyz"
+														},
+														"Scale3D": {
+															"$ref": "#/$defs/xyz"
 														}
 													}
 												}
@@ -11782,25 +11800,29 @@
 					"type": "array",
 					"minItems": 4,
 					"maxItems": 4,
-					"items": {
-						"oneOf": [
-							{
-								"type": "object",
-								"$ref": "#/$defs/FGBuildableResourceExtractor--oil-extractor",
-								"unevaluatedProperties": false
-							},
-							{
-								"type": "object",
-								"$ref": "#/$defs/FGBuildableResourceExtractor--miner-mk3",
-								"unevaluatedProperties": false
-							},
-							{
-								"type": "object",
-								"$ref": "#/$defs/FGBuildableResourceExtractor--miner",
-								"unevaluatedProperties": false
-							}
-						]
-					}
+					"items": false,
+					"prefixItems": [
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGBuildableResourceExtractor--oil-extractor",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGBuildableResourceExtractor--miner",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGBuildableResourceExtractor--miner-mk1",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGBuildableResourceExtractor--miner-mk3",
+							"unevaluatedProperties": false
+						}
+					]
 				}
 			}
 		},
