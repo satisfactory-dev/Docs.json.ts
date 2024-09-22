@@ -770,7 +770,28 @@
 													"/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_QuarterPipeMiddleOutCorner_PolishedConcrete_4x1.Recipe_QuarterPipeMiddleOutCorner_PolishedConcrete_4x1_C",
 													"/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_QuarterPipeMiddleOutCorner_PolishedConcrete_4x2.Recipe_QuarterPipeMiddleOutCorner_PolishedConcrete_4x2_C",
 													"/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_QuarterPipeMiddleOutCorner_PolishedConcrete_4x4.Recipe_QuarterPipeMiddleOutCorner_PolishedConcrete_4x4_C",
-													"/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_QuarterPipeInCorner_ConcretePolished_8x4.Recipe_QuarterPipeInCorner_ConcretePolished_8x4_C"
+													"/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_QuarterPipeInCorner_ConcretePolished_8x4.Recipe_QuarterPipeInCorner_ConcretePolished_8x4_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_Stair_Concrete_8x1.Recipe_Stair_Concrete_8x1_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/FicsitSet/Recipe_Stair_FicsitSet_8x1_01.Recipe_Stair_FicsitSet_8x1_01_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/GripMetal/Recipe_Stair_GripMetal_8x1.Recipe_Stair_GripMetal_8x1_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_Stair_PolishedConcrete_8x1.Recipe_Stair_PolishedConcrete_8x1_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_Stair_Concrete_8x2.Recipe_Stair_Concrete_8x2_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/FicsitSet/Recipe_Stair_FicsitSet_8x2_01.Recipe_Stair_FicsitSet_8x2_01_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/GripMetal/Recipe_Stair_GripMetal_8x2.Recipe_Stair_GripMetal_8x2_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_Stair_PolishedConcrete_8x2.Recipe_Stair_PolishedConcrete_8x2_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/ConcreteSet/Recipe_Stair_Concrete_8x4.Recipe_Stair_Concrete_8x4_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/FicsitSet/Recipe_Stair_FicsitSet_8x4_01.Recipe_Stair_FicsitSet_8x4_01_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/GripMetal/Recipe_Stair_GripMetal_8x4.Recipe_Stair_GripMetal_8x4_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_Stair_PolishedConcrete_8x4.Recipe_Stair_PolishedConcrete_8x4_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_Stair_Asphalt_8x1.Recipe_Stair_Asphalt_8x1_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/FicsitSet/Recipe_Stair_FicsitSet_8x1_01.Recipe_Stair_FicsitSet_8x1_01_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/GripMetal/Recipe_Stair_GripMetal_8x1.Recipe_Stair_GripMetal_8x1_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_Stair_PolishedConcrete_8x1.Recipe_Stair_PolishedConcrete_8x1_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_Stair_Asphalt_8x2.Recipe_Stair_Asphalt_8x2_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/FicsitSet/Recipe_Stair_FicsitSet_8x2_01.Recipe_Stair_FicsitSet_8x2_01_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/GripMetal/Recipe_Stair_GripMetal_8x2.Recipe_Stair_GripMetal_8x2_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/PolishedConcreteSet/Recipe_Stair_PolishedConcrete_8x2.Recipe_Stair_PolishedConcrete_8x2_C",
+													"/Game/FactoryGame/Buildable/Building/Foundation/AsphaltSet/Recipe_Stair_Asphalt_8x4.Recipe_Stair_Asphalt_8x4_C"
 												]
 											}
 										}
@@ -7808,12 +7829,15 @@
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableFoundation--base",
 			"unevaluatedProperties": false,
-			"required": ["mIsDoubleRamp", "mIsRoof"],
+			"required": ["mIsDoubleRamp", "mIsRoof", "mIsInverted"],
 			"properties": {
 				"mIsDoubleRamp": {
 					"$ref": "#/$defs/boolean"
 				},
 				"mIsRoof": {
+					"$ref": "#/$defs/boolean"
+				},
+				"mIsInverted": {
 					"$ref": "#/$defs/boolean"
 				}
 			}
@@ -12574,23 +12598,6 @@
 					"items": {
 						"type": "object",
 						"$ref": "#/$defs/FGBuildableFoundation",
-						"unevaluatedProperties": false
-					}
-				}
-			}
-		},
-		{
-			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableFoundationLightweight'",
-			"type": "object",
-			"$ref": "#/$defs/NativeClass",
-			"unevaluatedProperties": false,
-			"properties": {
-				"Classes": {
-					"type": "array",
-					"minItems": 1,
-					"items": {
-						"type": "object",
-						"$ref": "#/$defs/FGBuildableFoundationLightweight",
 						"unevaluatedProperties": false
 					}
 				}
