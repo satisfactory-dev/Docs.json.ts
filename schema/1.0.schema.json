@@ -4438,36 +4438,52 @@
 		"mChainsawState": {
 			"$ref": "#/$defs/None"
 		},
+		"FGChainsaw--Montage_Equipment": {
+			"type": "string",
+			"minLength": 1,
+			"UnrealEngineString": {
+				"left": "/Script/Engine.AnimMontage",
+				"right": {
+					"starts_with": "/Game/FactoryGame/Equipment/Chainsaw/Animation/"
+				}
+			}
+		},
 		"FGChainsaw": {
 			"type": "object",
 			"$ref": "#/$defs/FGEquipment--base",
 			"unevaluatedProperties": false,
 			"required": [
-				"mSawingMontageLength",
 				"mInterpSawProgress",
 				"mCurrentOutputDataSFX",
-				"mCurrentAkID",
+				"StartUpToIdleID",
 				"mCurrentHasFuel",
 				"mPreviousState",
+				"mChainsawEngageMontage",
+				"mChainsawSawingMontage",
+				"mChainsawEquipFuelMontage",
+				"mChainsawEquipNoFuelMontage",
+				"mChainsawEquipStingerMontage",
+				"mShowAOESelectorUITimer",
+				"EngagePlayingID",
+				"IdlePlaying ID",
+				"Playing ID",
+				"SawingPlayingID",
 				"mEnergyConsumption",
 				"mSawDownTreeTime",
 				"mCollateralPickupRadius",
-				"mExcludeChainsawableFoliage",
+				"mIsAOEOn",
 				"mEnergyStored",
 				"mSawingProgress",
 				"mChainsawState"
 			],
 			"properties": {
-				"mSawingMontageLength": {
-					"$ref": "#/$defs/decimal-string"
-				},
 				"mInterpSawProgress": {
 					"$ref": "#/$defs/decimal-string"
 				},
 				"mCurrentOutputDataSFX": {
 					"$ref": "#/$defs/decimal-string"
 				},
-				"mCurrentAkID": {
+				"StartUpToIdleID": {
 					"$ref": "#/$defs/integer-string"
 				},
 				"mCurrentHasFuel": {
@@ -4475,6 +4491,117 @@
 				},
 				"mPreviousState": {
 					"$ref": "#/$defs/mChainsawState"
+				},
+				"mChainsawEngageMontage": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["Montage_1P", "Montage_Equipment"],
+						"properties": {
+							"Montage_1P": {
+								"$ref": "#/$defs/Montage_1P"
+							},
+							"Montage_Equipment": {
+								"$ref": "#/$defs/FGChainsaw--Montage_Equipment"
+							}
+						}
+					}
+				},
+				"mChainsawSawingMontage": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": [
+							"Montage_1P",
+							"Montage_3P",
+							"Montage_Equipment"
+						],
+						"properties": {
+							"Montage_1P": {
+								"$ref": "#/$defs/Montage_1P"
+							},
+							"Montage_3P": {
+								"$ref": "#/$defs/Montage_3P"
+							},
+							"Montage_Equipment": {
+								"$ref": "#/$defs/FGChainsaw--Montage_Equipment"
+							}
+						}
+					}
+				},
+				"mChainsawEquipFuelMontage": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": [
+							"Montage_1P",
+							"Montage_3P",
+							"Montage_Equipment"
+						],
+						"properties": {
+							"Montage_1P": {
+								"$ref": "#/$defs/Montage_1P"
+							},
+							"Montage_3P": {
+								"$ref": "#/$defs/Montage_3P"
+							},
+							"Montage_Equipment": {
+								"$ref": "#/$defs/FGChainsaw--Montage_Equipment"
+							}
+						}
+					}
+				},
+				"mChainsawEquipNoFuelMontage": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": [
+							"Montage_1P",
+							"Montage_3P",
+							"Montage_Equipment"
+						],
+						"properties": {
+							"Montage_1P": {
+								"$ref": "#/$defs/Montage_1P"
+							},
+							"Montage_3P": {
+								"$ref": "#/$defs/Montage_3P"
+							},
+							"Montage_Equipment": {
+								"$ref": "#/$defs/FGChainsaw--Montage_Equipment"
+							}
+						}
+					}
+				},
+				"mChainsawEquipStingerMontage": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["Montage_1P", "Montage_Equipment"],
+						"properties": {
+							"Montage_1P": {
+								"$ref": "#/$defs/Montage_1P"
+							},
+							"Montage_Equipment": {
+								"$ref": "#/$defs/FGChainsaw--Montage_Equipment"
+							}
+						}
+					}
+				},
+				"mShowAOESelectorUITimer": {
+					"$ref": "#/$defs/empty-object"
+				},
+				"EngagePlayingID": {
+					"$ref": "#/$defs/integer-string"
+				},
+				"IdlePlaying ID": {
+					"$ref": "#/$defs/integer-string"
+				},
+				"Playing ID": {
+					"$ref": "#/$defs/integer-string"
+				},
+				"SawingPlayingID": {
+					"$ref": "#/$defs/integer-string"
 				},
 				"mEnergyConsumption": {
 					"$ref": "#/$defs/decimal-string"
@@ -4485,7 +4612,7 @@
 				"mCollateralPickupRadius": {
 					"$ref": "#/$defs/decimal-string"
 				},
-				"mExcludeChainsawableFoliage": {
+				"mIsAOEOn": {
 					"$ref": "#/$defs/boolean"
 				},
 				"mEnergyStored": {
@@ -4496,6 +4623,15 @@
 				},
 				"mChainsawState": {
 					"$ref": "#/$defs/mChainsawState"
+				},
+				"mEquipMontage": {
+					"$ref": "#/$defs/empty-object"
+				},
+				"mStingerMontage": {
+					"$ref": "#/$defs/empty-object"
+				},
+				"mUnEquipMontage": {
+					"$ref": "#/$defs/empty-object"
 				}
 			}
 		},
