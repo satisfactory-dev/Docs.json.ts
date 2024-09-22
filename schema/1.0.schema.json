@@ -10834,6 +10834,266 @@
 					"$ref": "#/$defs/decimal-string"
 				}
 			}
+		},
+		"FGBuildablePortal--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--consumes-power-base",
+			"required": [
+				"HeatingUpPlaying ID",
+				"LightningEndLoc",
+				"LightningStartLoc",
+				"LightningStartSocket",
+				"mTeleportationCompleteRepNotify",
+				"PortalActive",
+				"PortalFluctuation",
+				"mOnLinkedPortalChanged",
+				"mOnPortalTraversableChanged",
+				"mOnHeatUpStateChanged",
+				"mMaxPortalTravelTime",
+				"mIsPortalTraversable",
+				"mActorRepresentationColor",
+				"mActorRepresentationViewDistance",
+				"mActorRepresentationFogOfWarRevealRadius",
+				"mPortalName",
+				"mTeleportPowerConsumptionTimeLeft",
+				"mTeleportPowerConsumption",
+				"mCachedFactoryTickData"
+			],
+			"properties": {
+				"HeatingUpPlaying ID": {
+					"$ref": "#/$defs/integer-string"
+				},
+				"LightningEndLoc": {
+					"$ref": "#/$defs/xyz"
+				},
+				"LightningStartLoc": {
+					"$ref": "#/$defs/xyz"
+				},
+				"LightningStartSocket": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"minItems": 5,
+						"maxItems": 5,
+						"items": {
+							"oneOf": [
+								{
+									"type": "string",
+									"const": "LightningStartLocSocket"
+								},
+								{
+									"type": "string",
+									"const": "LightningStartLocSocketL"
+								},
+								{
+									"type": "string",
+									"const": "LightningStartLocSocketR"
+								},
+								{
+									"type": "string",
+									"const": "LightningStartLocSocketA"
+								},
+								{
+									"type": "string",
+									"const": "LightningStartLocSocketB"
+								}
+							]
+						}
+					}
+				},
+				"LightningEndSocket": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"minItems": 5,
+						"maxItems": 5,
+						"items": {
+							"oneOf": [
+								{
+									"type": "string",
+									"const": "LightningEndLocSocket"
+								},
+								{
+									"type": "string",
+									"const": "LightningEndLocSocketL"
+								},
+								{
+									"type": "string",
+									"const": "LightningEndLocSocketR"
+								},
+								{
+									"type": "string",
+									"const": "LightningEndLocSocketA"
+								},
+								{
+									"type": "string",
+									"const": "LightningEndLocSocketB"
+								}
+							]
+						}
+					}
+				},
+				"mTeleportationCompleteRepNotify": {
+					"$ref": "#/$defs/integer-string"
+				},
+				"mTeleportationBeginRepNotify": {
+					"$ref": "#/$defs/integer-string"
+				},
+				"PortalActive": {
+					"$ref": "#/$defs/decimal-string"
+				},
+				"PortalFluctuation": {
+					"$ref": "#/$defs/decimal-string"
+				},
+				"mOnLinkedPortalChanged": {
+					"$ref": "#/$defs/empty-object"
+				},
+				"mOnPortalTraversableChanged": {
+					"$ref": "#/$defs/empty-object"
+				},
+				"mOnHeatUpStateChanged": {
+					"$ref": "#/$defs/empty-object"
+				},
+				"mMaxPortalTravelTime": {
+					"$ref": "#/$defs/decimal-string"
+				},
+				"mIsPortalTraversable": {
+					"$ref": "#/$defs/boolean"
+				},
+				"mActorRepresentationColor": {
+					"$ref": "#/$defs/color-decimal"
+				},
+				"mActorRepresentationViewDistance": {
+					"type": "string",
+					"const": "CVD_Far"
+				},
+				"mActorRepresentationFogOfWarRevealRadius": {
+					"$ref": "#/$defs/decimal-string"
+				},
+				"mTeleportPowerConsumptionTimeLeft": {
+					"$ref": "#/$defs/decimal-string"
+				},
+				"mTeleportPowerConsumption": {
+					"$ref": "#/$defs/decimal-string"
+				},
+				"mCachedFactoryTickData": {
+					"$ref": "#/$defs/empty-object"
+				}
+			}
+		},
+		"FGBuildablePortal": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildablePortal--base",
+			"required": [
+				"OffsetFromPortalSurface",
+				"LightningStartVector",
+				"LightningEndVector",
+				"In Value",
+				"mFuelSlotSize",
+				"mMinFuelToStartProducing",
+				"mMinFuelToStartProducingAfterAbruptStop",
+				"mCachedInputConnections",
+				"mHeatUpComplete",
+				"mHeatUpCycleTime",
+				"mCurrentHeatUpProgress",
+				"mCurrentProductionProgress",
+				"mLinkedPortalDisconnectCooldownTimeLeft",
+				"mCurrentProductionCycleTime",
+				"mTrippedProductionStop",
+				"mCachedHasEnoughFuelForProduce"
+			],
+			"properties": {
+				"ClassName": {
+					"type": "string",
+					"const": "Build_Portal_C"
+				},
+				"OffsetFromPortalSurface": {
+					"$ref": "#/$defs/decimal-string"
+				},
+				"LightningStartVector": {
+					"$ref": "#/$defs/xyz-array"
+				},
+				"LightningEndVector": {
+					"$ref": "#/$defs/xyz-array"
+				},
+				"In Value": {
+					"$ref": "#/$defs/decimal-string"
+				},
+				"mFuelSlotSize": {
+					"$ref": "#/$defs/integer-string"
+				},
+				"mMinFuelToStartProducing": {
+					"$ref": "#/$defs/integer-string"
+				},
+				"mMinFuelToStartProducingAfterAbruptStop": {
+					"$ref": "#/$defs/integer-string"
+				},
+				"mPortalDisconnectedCooldownTime": {
+					"$ref": "#/$defs/decimal-string"
+				},
+				"mCachedInputConnections": {
+					"type": "string",
+					"const": ""
+				},
+				"mHeatUpComplete": {
+					"$ref": "#/$defs/boolean"
+				},
+				"mHeatUpCycleTime": {
+					"$ref": "#/$defs/decimal-string"
+				},
+				"mCurrentHeatUpProgress": {
+					"$ref": "#/$defs/decimal-string"
+				},
+				"mCurrentProductionProgress": {
+					"$ref": "#/$defs/decimal-string"
+				},
+				"mLinkedPortalDisconnectCooldownTimeLeft": {
+					"$ref": "#/$defs/decimal-string"
+				},
+				"mCurrentProductionCycleTime": {
+					"$ref": "#/$defs/decimal-string"
+				},
+				"mTrippedProductionStop": {
+					"$ref": "#/$defs/boolean"
+				},
+				"mCachedHasEnoughFuelForProduce": {
+					"$ref": "#/$defs/boolean"
+				},
+				"mPortalName": {
+					"type": "string",
+					"const": "Portal"
+				}
+			}
+		},
+		"FGBuildablePortalSatellite": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildablePortal--base",
+			"required": [
+				"Lightning End Socket",
+				"Lightning Start Socket",
+				"mWasHeatingUpLastTick"
+			],
+			"properties": {
+				"ClassName": {
+					"type": "string",
+					"const": "Build_PortalSatellite_C"
+				},
+				"mPortalName": {
+					"type": "string",
+					"const": "Satellite Portal"
+				},
+				"Lightning End Socket": {
+					"type": "string",
+					"const": ""
+				},
+				"Lightning Start Socket": {
+					"type": "string",
+					"const": ""
+				},
+				"mWasHeatingUpLastTick": {
+					"$ref": "#/$defs/boolean"
+				}
+			}
 		}
 	},
 	"items": false,
@@ -12064,6 +12324,42 @@
 					"items": {
 						"type": "object",
 						"$ref": "#/$defs/FGBuildableConveyorLift",
+						"unevaluatedProperties": false
+					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePortal'",
+			"type": "object",
+			"$ref": "#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"maxItems": 1,
+					"items": {
+						"type": "object",
+						"$ref": "#/$defs/FGBuildablePortal",
+						"unevaluatedProperties": false
+					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePortalSatellite'",
+			"type": "object",
+			"$ref": "#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"maxItems": 1,
+					"items": {
+						"type": "object",
+						"$ref": "#/$defs/FGBuildablePortalSatellite",
 						"unevaluatedProperties": false
 					}
 				}
