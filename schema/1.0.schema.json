@@ -3220,7 +3220,11 @@
 		},
 		"FilterMontageTag": {
 			"type": "string",
-			"enum": ["HasAmmunition", "EquipmentInHand_None"]
+			"enum": [
+				"HasAmmunition",
+				"EquipmentInHand_None",
+				"EquipmentInHand_TwoHanded"
+			]
 		},
 		"FilterMontageTag--charged": {
 			"type": "string",
@@ -5189,43 +5193,242 @@
 				}
 			}
 		},
+		"FGParachute--AudioEvent": {
+			"type": "string",
+			"minLength": 1,
+			"UnrealEngineString": {
+				"left": "/Script/AkAudio.AkAudioEvent",
+				"right": {
+					"starts_with": "/Game/WwiseAudio/Events/Equipment/Parachute/"
+				}
+			}
+		},
 		"FGParachute": {
 			"type": "object",
 			"$ref": "#/$defs/FGEquipment--base",
 			"unevaluatedProperties": false,
 			"required": [
-				"ArmEquipmentsToSkipAnim",
 				"DeployedVFXComponents",
+				"mParachuteDeployMontageList",
+				"mParachuteDetachMontageList",
 				"mUseDistanceOverride",
 				"mIsDeployed"
 			],
 			"properties": {
-				"ArmEquipmentsToSkipAnim": {
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"minItems": 1,
-						"items": {
-							"type": "string",
-							"enum": [
-								"AE_ChainSaw",
-								"AE_PortableMiner",
-								"AE_Generic2Hand",
-								"AE_Nobelisk",
-								"AE_Rifle"
-							]
-						}
-					}
-				},
 				"DeployedVFXComponents": {
 					"type": "string",
 					"const": ""
+				},
+				"mParachuteDeployMontageList": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["Montages"],
+						"properties": {
+							"Montages": {
+								"type": "string",
+								"minLength": 1,
+								"typed_string": {
+									"minItems": 3,
+									"maxItems": 3,
+									"items": {
+										"oneOf": [
+											{
+												"type": "string",
+												"minLength": 1,
+												"typed_string": {
+													"required": [
+														"Filter",
+														"FilterMontageTag",
+														"Exclusive",
+														"Montage_1P",
+														"Montage_3P",
+														"AudioEvent",
+														"CameraAnim"
+													],
+													"properties": {
+														"Filter": {
+															"$ref": "#/$defs/boolean"
+														},
+														"FilterMontageTag": {
+															"$ref": "#/$defs/FilterMontageTag"
+														},
+														"Exclusive": {
+															"$ref": "#/$defs/boolean"
+														},
+														"Montage_1P": {
+															"$ref": "#/$defs/Montage_1P"
+														},
+														"Montage_3P": {
+															"$ref": "#/$defs/Montage_3P"
+														},
+														"AudioEvent": {
+															"$ref": "#/$defs/FGParachute--AudioEvent"
+														},
+														"CameraAnim": {
+															"$ref": "#/$defs/CameraAnim"
+														}
+													}
+												}
+											},
+											{
+												"type": "string",
+												"minLength": 1,
+												"typed_string": {
+													"required": [
+														"Filter",
+														"FilterMontageTag",
+														"Exclusive",
+														"Montage_3P",
+														"AudioEvent",
+														"CameraAnim"
+													],
+													"properties": {
+														"Filter": {
+															"$ref": "#/$defs/boolean"
+														},
+														"FilterMontageTag": {
+															"$ref": "#/$defs/FilterMontageTag"
+														},
+														"Exclusive": {
+															"$ref": "#/$defs/boolean"
+														},
+														"Montage_3P": {
+															"$ref": "#/$defs/Montage_3P"
+														},
+														"AudioEvent": {
+															"$ref": "#/$defs/FGParachute--AudioEvent"
+														},
+														"CameraAnim": {
+															"$ref": "#/$defs/CameraAnim"
+														}
+													}
+												}
+											},
+											{
+												"type": "string",
+												"minLength": 1,
+												"typed_string": {
+													"required": [
+														"Montage_1P",
+														"Montage_3P",
+														"AudioEvent",
+														"CameraAnim"
+													],
+													"properties": {
+														"Montage_1P": {
+															"$ref": "#/$defs/Montage_1P"
+														},
+														"Montage_3P": {
+															"$ref": "#/$defs/Montage_3P"
+														},
+														"AudioEvent": {
+															"$ref": "#/$defs/FGParachute--AudioEvent"
+														},
+														"CameraAnim": {
+															"$ref": "#/$defs/CameraAnim"
+														}
+													}
+												}
+											}
+										]
+									}
+								}
+							}
+						}
+					}
+				},
+				"mParachuteDetachMontageList": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["Montages"],
+						"properties": {
+							"Montages": {
+								"type": "string",
+								"minLength": 1,
+								"typed_string": {
+									"minItems": 2,
+									"maxItems": 2,
+									"items": {
+										"oneOf": [
+											{
+												"type": "string",
+												"minLength": 1,
+												"typed_string": {
+													"required": [
+														"Filter",
+														"FilterMontageTag",
+														"InvertFilter",
+														"Exclusive",
+														"Montage_1P",
+														"Montage_3P",
+														"AudioEvent"
+													],
+													"properties": {
+														"Filter": {
+															"$ref": "#/$defs/boolean"
+														},
+														"FilterMontageTag": {
+															"$ref": "#/$defs/FilterMontageTag"
+														},
+														"InvertFilter": {
+															"$ref": "#/$defs/boolean"
+														},
+														"Exclusive": {
+															"$ref": "#/$defs/boolean"
+														},
+														"Montage_1P": {
+															"$ref": "#/$defs/Montage_1P"
+														},
+														"Montage_3P": {
+															"$ref": "#/$defs/Montage_3P"
+														},
+														"AudioEvent": {
+															"$ref": "#/$defs/FGParachute--AudioEvent"
+														}
+													}
+												}
+											},
+											{
+												"type": "string",
+												"minLength": 1,
+												"typed_string": {
+													"required": [
+														"Montage_3P",
+														"AudioEvent"
+													],
+													"properties": {
+														"Montage_3P": {
+															"$ref": "#/$defs/Montage_3P"
+														},
+														"AudioEvent": {
+															"$ref": "#/$defs/FGParachute--AudioEvent"
+														}
+													}
+												}
+											}
+										]
+									}
+								}
+							}
+						}
+					}
 				},
 				"mUseDistanceOverride": {
 					"$ref": "#/$defs/decimal-string"
 				},
 				"mIsDeployed": {
 					"$ref": "#/$defs/boolean"
+				},
+				"mEquipMontage": {
+					"$ref": "#/$defs/empty-object"
+				},
+				"mStingerMontage": {
+					"$ref": "#/$defs/empty-object"
+				},
+				"mUnEquipMontage": {
+					"$ref": "#/$defs/empty-object"
 				}
 			}
 		},
