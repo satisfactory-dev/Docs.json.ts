@@ -3013,7 +3013,8 @@
 						"root",
 						"None",
 						"helmetSocket",
-						"jumpingStilt_lSocket"
+						"jumpingStilt_lSocket",
+						"backpack"
 					]
 				},
 				"mComponentNameToFirstPersonMaterials": {
@@ -4129,12 +4130,13 @@
 				"mOnFuelTypeChanged",
 				"mDefaultAirControl",
 				"mRTPCInterval",
-				"mThrustCooldown",
 				"mCurrentFuel",
 				"mIsThrusting",
-				"mFuelTypes",
+				"mAllowedFuelTypes",
 				"mSelectedFuelType",
 				"mCurrentFuelType",
+				"mUnlockedFuelTypes",
+				"mAvailableFuelTypes",
 				"mActiveNoiseFrequency"
 			],
 			"properties": {
@@ -4157,16 +4159,13 @@
 				"mRTPCInterval": {
 					"$ref": "#/$defs/decimal-string"
 				},
-				"mThrustCooldown": {
-					"$ref": "#/$defs/decimal-string"
-				},
 				"mCurrentFuel": {
 					"$ref": "#/$defs/decimal-string"
 				},
 				"mIsThrusting": {
 					"$ref": "#/$defs/boolean"
 				},
-				"mFuelTypes": {
+				"mAllowedFuelTypes": {
 					"type": "string",
 					"minLength": 1,
 					"typed_string": {
@@ -4175,8 +4174,9 @@
 							"type": "string",
 							"minLength": 1,
 							"UnrealEngineString": {
+								"left": "/Script/FactoryGame.FGJetPackFuelParameters",
 								"right": {
-									"starts_with": "/Game/FactoryGame/Testing/JetPack/"
+									"starts_with": "/Game/FactoryGame/Equipment/JetPack/FuelTypes/"
 								}
 							}
 						}
@@ -4188,8 +4188,74 @@
 				"mCurrentFuelType": {
 					"$ref": "#/$defs/integer-string"
 				},
+				"mUnlockedFuelTypes": {
+					"type": "string",
+					"const": ""
+				},
+				"mAvailableFuelTypes": {
+					"type": "string",
+					"const": ""
+				},
 				"mActiveNoiseFrequency": {
 					"$ref": "#/$defs/decimal-string"
+				},
+				"mEquipMontage": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["Montages"],
+						"properties": {
+							"Montages": {
+								"type": "string",
+								"minLength": 1,
+								"typed_string": {
+									"minItems": 1,
+									"maxItems": 1,
+									"items": {
+										"type": "string",
+										"minLength": 1,
+										"typed_string": {
+											"required": ["AudioEvent"],
+											"properties": {
+												"AudioEvent": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/AkAudio.AkAudioEvent",
+														"right": {
+															"starts_with": "/Game/WwiseAudio/Events/Equipment/HoverPack/"
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"mStingerMontage": {
+					"$ref": "#/$defs/empty-object"
+				},
+				"mUnEquipMontage": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["AudioEvent"],
+						"properties": {
+							"AudioEvent": {
+								"type": "string",
+								"minLength": 1,
+								"UnrealEngineString": {
+									"left": "/Script/AkAudio.AkAudioEvent",
+									"right": {
+										"starts_with": "/Game/WwiseAudio/Events/Equipment/JetPack/"
+									}
+								}
+							}
+						}
+					}
 				}
 			}
 		},
