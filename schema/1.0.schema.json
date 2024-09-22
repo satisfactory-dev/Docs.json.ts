@@ -4835,6 +4835,38 @@
 				}
 			}
 		},
+		"FGJumpingStilts--AudioEvent": {
+			"type": "string",
+			"minLength": 1,
+			"UnrealEngineString": {
+				"left": "/Script/AkAudio.AkAudioEvent",
+				"right": {
+					"starts_with": "/Game/WwiseAudio/Events/Equipment/BladeRunners/"
+				}
+			}
+		},
+		"FGJumpingStilts--Montage": {
+			"type": "string",
+			"minLength": 1,
+			"typed_string": {
+				"required": [
+					"AudioEvent",
+					"bSeparate3PAudioEvent",
+					"AudioEvent_3P"
+				],
+				"properties": {
+					"AudioEvent": {
+						"$ref": "#/$defs/FGJumpingStilts--AudioEvent"
+					},
+					"bSeparate3PAudioEvent": {
+						"$ref": "#/$defs/boolean"
+					},
+					"AudioEvent3P": {
+						"$ref": "#/$defs/FGJumpingStilts--AudioEvent"
+					}
+				}
+			}
+		},
 		"FGJumpingStilts": {
 			"type": "object",
 			"$ref": "#/$defs/FGEquipment--base",
@@ -4846,6 +4878,32 @@
 				},
 				"mJumpSpeedFactor": {
 					"$ref": "#/$defs/decimal-string"
+				},
+				"mEquipMontage": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["Montages"],
+						"properties": {
+							"Montages": {
+								"type": "string",
+								"minLength": 1,
+								"typed_string": {
+									"minItems": 1,
+									"maxItems": 1,
+									"items": {
+										"$ref": "#/$defs/FGJumpingStilts--Montage"
+									}
+								}
+							}
+						}
+					}
+				},
+				"mStingerMontage": {
+					"$ref": "#/$defs/empty-object"
+				},
+				"mUnEquipMontage": {
+					"$ref": "#/$defs/FGJumpingStilts--Montage"
 				}
 			}
 		},
