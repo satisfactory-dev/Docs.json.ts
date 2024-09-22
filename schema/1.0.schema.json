@@ -10600,10 +10600,14 @@
 			"required": [
 				"mGainSignificanceDistance",
 				"mTextElementToDataMap",
+				"mTextElementToLocDataMap",
 				"mIconElementToDataMap",
 				"mSignDrawSize",
+				"mSoftActivePrefabLayout",
+				"mActivePrefabLayout",
 				"mPrefabTextElementSaveData",
 				"mPrefabIconElementSaveData",
+				"mGlobalPrefabIconElementSaveData",
 				"mForegroundColor",
 				"mBackgroundColor",
 				"mAuxilaryColor",
@@ -10623,17 +10627,31 @@
 				"mTextElementToDataMap": {
 					"$ref": "#/$defs/empty-object"
 				},
+				"mTextElementToLocDataMap": {
+					"$ref": "#/$defs/empty-object"
+				},
 				"mIconElementToDataMap": {
 					"$ref": "#/$defs/empty-object"
 				},
 				"mSignDrawSize": {
 					"$ref": "#/$defs/xy--integer"
 				},
+				"mSoftActivePrefabLayout": {
+					"type": "string",
+					"const": "None"
+				},
+				"mActivePrefabLayout": {
+					"$ref": "#/$defs/empty-object"
+				},
 				"mPrefabTextElementSaveData": {
 					"type": "string",
 					"const": ""
 				},
 				"mPrefabIconElementSaveData": {
+					"type": "string",
+					"const": ""
+				},
+				"mGlobalPrefabIconElementSaveData": {
 					"type": "string",
 					"const": ""
 				},
