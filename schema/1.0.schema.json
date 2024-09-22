@@ -7328,7 +7328,6 @@
 				"mFuelInventorySizeX",
 				"mFuelInventorySizeY",
 				"mFuelTransferSpeed",
-				"mInventoryHandlerData",
 				"mForceSignificance",
 				"mVehicleFuelConsumptionRate",
 				"mItemTransferRate",
@@ -7359,9 +7358,6 @@
 				},
 				"mFuelTransferSpeed": {
 					"$ref": "#/$defs/decimal-string"
-				},
-				"mInventoryHandlerData": {
-					"$ref": "#/$defs/empty-object"
 				},
 				"mForceSignificance": {
 					"$ref": "#/$defs/boolean"
