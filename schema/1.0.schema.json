@@ -10938,6 +10938,104 @@
 					"$ref": "#/$defs/decimal-string"
 				}
 			}
+		},
+		"FGBuildablePowerBooster": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--consumes-power-base",
+			"unevaluatedProperties": false,
+			"required": [
+				"IsInProducingAnimState",
+				"LaserSocketNames",
+				"mVFX_LaserSubtract",
+				"mVFX_SummerSloop_Loc_Offset",
+				"mVFX_SubVector",
+				"m_Beam_TargetLoc",
+				"mShrine_location",
+				"bFirstRun",
+				"mBasePowerProduction",
+				"mBaseBoostPercentage",
+				"mCurrentFuelBoostPercentage",
+				"mDefaultFuelClasses",
+				"mAvailableFuelClasses",
+				"mCachedInputConnections",
+				"mCurrentFuelDuration",
+				"mCurrentFuelDurationLeft"
+			],
+			"properties": {
+				"IsInProducingAnimState": {
+					"$ref": "#/$defs/boolean"
+				},
+				"LaserSocketNames": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"minItems": 1,
+						"items": {
+							"type": "string",
+							"enum": [
+								"LeftArmLaser01_Vfx_Socket",
+								"LeftArmLaser02_Vfx_Socket",
+								"RightArmLaser01_Vfx_Socket",
+								"RightArmLaser02_Vfx_Socket"
+							]
+						}
+					}
+				},
+				"mVFX_LaserSubtract": {
+					"$ref": "#/$defs/decimal-string"
+				},
+				"mVFX_SummerSloop_Loc_Offset": {
+					"$ref": "#/$defs/xyz"
+				},
+				"mVFX_SubVector": {
+					"$ref": "#/$defs/xyz"
+				},
+				"m_Beam_TargetLoc": {
+					"$ref": "#/$defs/xyz"
+				},
+				"mShrine_location": {
+					"$ref": "#/$defs/xyz"
+				},
+				"bFirstRun": {
+					"$ref": "#/$defs/boolean"
+				},
+				"mBasePowerProduction": {
+					"$ref": "#/$defs/decimal-string"
+				},
+				"mBaseBoostPercentage": {
+					"$ref": "#/$defs/decimal-string"
+				},
+				"mCurrentFuelBoostPercentage": {
+					"$ref": "#/$defs/decimal-string"
+				},
+				"mDefaultFuelClasses": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"minItems": 1,
+						"items": {
+							"type": "string",
+							"enum": [
+								"/Game/FactoryGame/Resource/Parts/AlienPowerFuel/Desc_AlienPowerFuel.Desc_AlienPowerFuel_C"
+							]
+						}
+					}
+				},
+				"mAvailableFuelClasses": {
+					"type": "string",
+					"const": ""
+				},
+				"mCachedInputConnections": {
+					"type": "string",
+					"const": ""
+				},
+				"mCurrentFuelDuration": {
+					"$ref": "#/$defs/decimal-string"
+				},
+				"mCurrentFuelDurationLeft": {
+					"$ref": "#/$defs/decimal-string"
+				}
+			}
 		}
 	},
 	"items": false,
@@ -12615,6 +12713,23 @@
 					"items": {
 						"type": "object",
 						"$ref": "#/$defs/FGBuildableRamp",
+						"unevaluatedProperties": false
+					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePowerBooster'",
+			"type": "object",
+			"$ref": "#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"$ref": "#/$defs/FGBuildablePowerBooster",
 						"unevaluatedProperties": false
 					}
 				}
