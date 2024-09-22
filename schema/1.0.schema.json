@@ -13555,6 +13555,23 @@
 			}
 		},
 		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableCornerWallLightweight'",
+			"type": "object",
+			"$ref": "#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"$ref": "#/$defs/FGBuildableCornerWall",
+						"unevaluatedProperties": false
+					}
+				}
+			}
+		},
+		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableWidgetSign'",
 			"type": "object",
 			"$ref": "#/$defs/NativeClass",
