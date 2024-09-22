@@ -152,11 +152,11 @@ export class TypeDefinitionWriter
 		);
 		performance.mark(`${this.constructor.name}.write() start`);
 		await writeFile(
-			`${__dirname}/../types-progress.md`,
+			`${__dirname}/../types-progress--${this.version}.md`,
 			await discovery.generate_markdown(),
 		);
 		await writeFile(
-			`${__dirname}/../data-progress.md`,
+			`${__dirname}/../data-progress--${this.version}.md`,
 			await this.data_discovery.generate_markdown(),
 		);
 		performance.measure(
@@ -444,7 +444,7 @@ export class TypeDefinitionWriter
 
 		performance.mark(`${this.constructor.name}.write() start`);
 		await writeFile(
-			`${__dirname}/../data-progress.md`,
+			`${__dirname}/../data-progress--${this.version}.md`,
 			await this.data_discovery.generate_markdown(),
 		);
 		performance.measure(
