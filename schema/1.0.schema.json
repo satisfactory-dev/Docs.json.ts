@@ -4453,6 +4453,78 @@
 				},
 				"mIsInPoisonGas": {
 					"$ref": "#/$defs/boolean"
+				},
+				"mEquipMontage": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["Montages"],
+						"properties": {
+							"Montages": {
+								"type": "string",
+								"minLength": 1,
+								"typed_string": {
+									"minItems": 1,
+									"maxItems": 1,
+									"items": {
+										"type": "string",
+										"minLength": 1,
+										"typed_string": {
+											"required": [
+												"Montage_1P",
+												"Montage_3P",
+												"AudioEvent",
+												"bSeparate3PAudioEvent",
+												"AudioEvent3P",
+												"CameraAnim"
+											],
+											"properties": {
+												"Montage_1P": {
+													"$ref": "#/$defs/Montage_1P"
+												},
+												"Montage_3P": {
+													"$ref": "#/$defs/Montage_3P"
+												},
+												"AudioEvent": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/AkAudio.AkAudioEvent",
+														"right": {
+															"starts_with": "/Game/WwiseAudio/Events/Equipment/GasMask/"
+														}
+													}
+												},
+												"bSeparate3PAudioEvent": {
+													"$ref": "#/$defs/boolean"
+												},
+												"AudioEvent3P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/AkAudio.AkAudioEvent",
+														"right": {
+															"starts_with": "/Game/WwiseAudio/Events/Equipment/GasMask/"
+														},
+														"quote_mode": "double"
+													}
+												},
+												"CameraAnim": {
+													"$ref": "#/$defs/CameraAnim"
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"mStingerMontage": {
+					"$ref": "#/$defs/empty-object"
+				},
+				"mUnEquipMontage": {
+					"$ref": "#/$defs/empty-object"
 				}
 			}
 		},
