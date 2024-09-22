@@ -10874,6 +10874,20 @@
 					"$ref": "#/$defs/boolean"
 				}
 			}
+		},
+		"FGItemDescriptorPowerBoosterFuel": {
+			"type": "object",
+			"$ref": "#/$defs/FGItemDescriptor--FGResourceDescriptor",
+			"unevaluatedProperties": false,
+			"required": ["mBoostPercentage", "mBoostDuration"],
+			"properties": {
+				"mBoostPercentage": {
+					"$ref": "#/$defs/decimal-string"
+				},
+				"mBoostDuration": {
+					"$ref": "#/$defs/decimal-string"
+				}
+			}
 		}
 	},
 	"items": false,
@@ -12446,6 +12460,24 @@
 								"unevaluatedProperties": false
 							}
 						]
+					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGItemDescriptorPowerBoosterFuel'",
+			"type": "object",
+			"$ref": "#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"maxItems": 1,
+					"items": {
+						"type": "object",
+						"$ref": "#/$defs/FGItemDescriptorPowerBoosterFuel",
+						"unevaluatedProperties": false
 					}
 				}
 			}
