@@ -7669,20 +7669,26 @@
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--base",
 			"unevaluatedProperties": false,
-			"required": ["mCurrentInputIndex"],
+			"required": ["mCurrentInputIndex", "mInventorySize"],
 			"properties": {
 				"mCurrentInputIndex": {
 					"$ref": "#/$defs/integer-string--signed"
+				},
+				"mInventorySize": {
+					"$ref": "#/$defs/integer-string"
 				}
 			}
 		},
 		"FGBuildable--splitter--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--base",
-			"required": ["mCurrentOutputIndex"],
+			"required": ["mCurrentOutputIndex", "mInventorySize"],
 			"properties": {
 				"mCurrentOutputIndex": {
 					"$ref": "#/$defs/integer-string--signed"
+				},
+				"mInventorySize": {
+					"$ref": "#/$defs/integer-string"
 				}
 			}
 		},
