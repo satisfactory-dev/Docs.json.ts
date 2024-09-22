@@ -3166,6 +3166,44 @@
 				}
 			}
 		},
+		"Montage_1P": {
+			"type": "string",
+			"minLength": 1,
+			"UnrealEngineString": {
+				"left": "/Script/Engine.AnimMontage",
+				"right": {
+					"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
+				}
+			}
+		},
+		"Montage_3P": {
+			"type": "string",
+			"minLength": 1,
+			"UnrealEngineString": {
+				"left": "/Script/Engine.AnimMontage",
+				"right": {
+					"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
+				}
+			}
+		},
+		"CameraAnim": {
+			"type": "string",
+			"minLength": 1,
+			"UnrealEngineString": {
+				"left": "/Script/TemplateSequence.CameraAnimationSequence",
+				"right": {
+					"starts_with": "/Game/FactoryGame/Character/Player/CameraShake/"
+				}
+			}
+		},
+		"FilterMontageTag": {
+			"type": "string",
+			"enum": ["HasAmmunition", "EquipmentInHand_None"]
+		},
+		"FilterMontageTag--charged": {
+			"type": "string",
+			"enum": ["LowCharged", "MediumCharged", "FullyCharged"]
+		},
 		"FGEquipmentStunSpear": {
 			"type": "object",
 			"$ref": "#/$defs/FGEquipmentStunSpear--base",
@@ -3196,24 +3234,10 @@
 											],
 											"properties": {
 												"Montage_1P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
-														}
-													}
+													"$ref": "#/$defs/Montage_1P"
 												},
 												"Montage_3P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
-														}
-													}
+													"$ref": "#/$defs/Montage_3P"
 												},
 												"Montage_Equipment": {
 													"type": "string",
@@ -3236,14 +3260,7 @@
 													}
 												},
 												"CameraAnim": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/TemplateSequence.CameraAnimationSequence",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/CameraShake/"
-														}
-													}
+													"$ref": "#/$defs/CameraAnim"
 												}
 											}
 										}
@@ -3284,24 +3301,10 @@
 															"$ref": "#/$defs/decimal-string"
 														},
 														"Montage_1P": {
-															"type": "string",
-															"minLength": 1,
-															"UnrealEngineString": {
-																"left": "/Script/Engine.AnimMontage",
-																"right": {
-																	"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
-																}
-															}
+															"$ref": "#/$defs/Montage_1P"
 														},
 														"Montage_3P": {
-															"type": "string",
-															"minLength": 1,
-															"UnrealEngineString": {
-																"left": "/Script/Engine.AnimMontage",
-																"right": {
-																	"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
-																}
-															}
+															"$ref": "#/$defs/Montage_3P"
 														},
 														"Montage_Equipment": {
 															"type": "string",
@@ -3324,14 +3327,7 @@
 															}
 														},
 														"CameraAnim": {
-															"type": "string",
-															"minLength": 1,
-															"UnrealEngineString": {
-																"left": "/Script/TemplateSequence.CameraAnimationSequence",
-																"right": {
-																	"starts_with": "/Game/FactoryGame/Character/Player/CameraShake/"
-																}
-															}
+															"$ref": "#/$defs/CameraAnim"
 														}
 													}
 												}
@@ -3348,24 +3344,10 @@
 													],
 													"properties": {
 														"Montage_1P": {
-															"type": "string",
-															"minLength": 1,
-															"UnrealEngineString": {
-																"left": "/Script/Engine.AnimMontage",
-																"right": {
-																	"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
-																}
-															}
+															"$ref": "#/$defs/Montage_1P"
 														},
 														"Montage_3P": {
-															"type": "string",
-															"minLength": 1,
-															"UnrealEngineString": {
-																"left": "/Script/Engine.AnimMontage",
-																"right": {
-																	"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
-																}
-															}
+															"$ref": "#/$defs/Montage_3P"
 														},
 														"AudioEvent": {
 															"type": "string",
@@ -3378,14 +3360,7 @@
 															}
 														},
 														"CameraAnim": {
-															"type": "string",
-															"minLength": 1,
-															"UnrealEngineString": {
-																"left": "/Script/TemplateSequence.CameraAnimationSequence",
-																"right": {
-																	"starts_with": "/Game/FactoryGame/Character/Player/CameraShake/"
-																}
-															}
+															"$ref": "#/$defs/CameraAnim"
 														}
 													}
 												}
@@ -3431,24 +3406,10 @@
 															"$ref": "#/$defs/boolean"
 														},
 														"Montage_1P": {
-															"type": "string",
-															"minLength": 1,
-															"UnrealEngineString": {
-																"left": "/Script/Engine.AnimMontage",
-																"right": {
-																	"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
-																}
-															}
+															"$ref": "#/$defs/Montage_1P"
 														},
 														"Montage_3P": {
-															"type": "string",
-															"minLength": 1,
-															"UnrealEngineString": {
-																"left": "/Script/Engine.AnimMontage",
-																"right": {
-																	"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
-																}
-															}
+															"$ref": "#/$defs/Montage_3P"
 														},
 														"Montage_Equipment": {
 															"type": "string",
@@ -3489,24 +3450,10 @@
 															"$ref": "#/$defs/decimal-string"
 														},
 														"Montage_1P": {
-															"type": "string",
-															"minLength": 1,
-															"UnrealEngineString": {
-																"left": "/Script/Engine.AnimMontage",
-																"right": {
-																	"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
-																}
-															}
+															"$ref": "#/$defs/Montage_1P"
 														},
 														"Montage_3P": {
-															"type": "string",
-															"minLength": 1,
-															"UnrealEngineString": {
-																"left": "/Script/Engine.AnimMontage",
-																"right": {
-																	"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
-																}
-															}
+															"$ref": "#/$defs/Montage_3P"
 														},
 														"Montage_Equipment": {
 															"type": "string",
@@ -3565,24 +3512,10 @@
 											],
 											"properties": {
 												"Montage_1P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
-														}
-													}
+													"$ref": "#/$defs/Montage_1P"
 												},
 												"Montage_3P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
-														}
-													}
+													"$ref": "#/$defs/Montage_3P"
 												},
 												"Montage_Equipment": {
 													"type": "string",
@@ -3618,14 +3551,7 @@
 													}
 												},
 												"CameraAnim": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/TemplateSequence.CameraAnimationSequence",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/CameraShake/"
-														}
-													}
+													"$ref": "#/$defs/CameraAnim"
 												}
 											}
 										}
@@ -3695,24 +3621,10 @@
 											],
 											"properties": {
 												"Montage_1P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
-														}
-													}
+													"$ref": "#/$defs/Montage_1P"
 												},
 												"Montage_3P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
-														}
-													}
+													"$ref": "#/$defs/Montage_3P"
 												},
 												"Montage_Equipment": {
 													"type": "string",
@@ -3748,14 +3660,7 @@
 													}
 												},
 												"CameraAnim": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/TemplateSequence.CameraAnimationSequence",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/CameraShake/"
-														}
-													}
+													"$ref": "#/$defs/CameraAnim"
 												}
 											}
 										}
@@ -3796,24 +3701,10 @@
 													"$ref": "#/$defs/decimal-string"
 												},
 												"Montage_1P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
-														}
-													}
+													"$ref": "#/$defs/Montage_1P"
 												},
 												"Montage_3P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
-														}
-													}
+													"$ref": "#/$defs/Montage_3P"
 												},
 												"Montage_Equipment": {
 													"type": "string",
@@ -3849,14 +3740,7 @@
 													}
 												},
 												"CameraAnim": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/TemplateSequence.CameraAnimationSequence",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/CameraShake/"
-														}
-													}
+													"$ref": "#/$defs/CameraAnim"
 												}
 											}
 										}
@@ -3899,24 +3783,10 @@
 											],
 											"properties": {
 												"Montage_1P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
-														}
-													}
+													"$ref": "#/$defs/Montage_1P"
 												},
 												"Montage_3P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
-														}
-													}
+													"$ref": "#/$defs/Montage_3P"
 												},
 												"Montage_Equipment": {
 													"type": "string",
@@ -3982,14 +3852,7 @@
 											],
 											"properties": {
 												"Montage_1P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
-														}
-													}
+													"$ref": "#/$defs/Montage_1P"
 												},
 												"Montage_Equipment": {
 													"type": "string",
@@ -4040,17 +3903,25 @@
 				}
 			}
 		},
+		"FGHoverPack--AudioEvent": {
+			"type": "string",
+			"minLength": 1,
+			"UnrealEngineString": {
+				"left": "/Script/AkAudio.AkAudioEvent",
+				"right": {
+					"starts_with": "/Game/WwiseAudio/Events/Equipment/HoverPack/"
+				}
+			}
+		},
 		"FGHoverPack": {
 			"type": "object",
 			"$ref": "#/$defs/FGEquipment--base",
 			"unevaluatedProperties": false,
 			"required": [
-				"mHoverPackActiveTimer",
-				"mCurrentPlayerVelocity",
-				"mCurrentMouseDelta",
-				"mHoverpackJoystickTimer",
-				"mCurrentBatteryPowerLevel",
-				"m_PreviousHoverMode",
+				"mCurrentPlayerVelocity_SFX",
+				"mCurrentMouseDelta_SFX",
+				"mLowBatteryWarningActive_SFX",
+				"mPropellerVFX",
 				"ConnectionLocationUpdatedDelegate",
 				"ConnectionStatusUpdatedDelegate",
 				"HoverModeChangedDelegate",
@@ -4069,6 +3940,7 @@
 				"mPowerConsumption",
 				"mCurrentPowerLevel",
 				"mRangeWarningNormalizedDistanceThreshold",
+				"mDisplayRangeWarning",
 				"mCurrentHoverMode",
 				"mHasConnection",
 				"mShouldAutomaticallyHoverWhenConnected",
@@ -4078,24 +3950,18 @@
 				"mCurrentConnectionLocation"
 			],
 			"properties": {
-				"mHoverPackActiveTimer": {
-					"$ref": "#/$defs/empty-object"
-				},
-				"mCurrentPlayerVelocity": {
+				"mCurrentPlayerVelocity_SFX": {
 					"$ref": "#/$defs/decimal-string"
 				},
-				"mCurrentMouseDelta": {
+				"mCurrentMouseDelta_SFX": {
 					"$ref": "#/$defs/decimal-string"
 				},
-				"mHoverpackJoystickTimer": {
-					"$ref": "#/$defs/empty-object"
+				"mLowBatteryWarningActive_SFX": {
+					"$ref": "#/$defs/boolean"
 				},
-				"mCurrentBatteryPowerLevel": {
-					"$ref": "#/$defs/decimal-string"
-				},
-				"m_PreviousHoverMode": {
+				"mPropellerVFX": {
 					"type": "string",
-					"const": "HPM_Inactive"
+					"const": ""
 				},
 				"ConnectionLocationUpdatedDelegate": {
 					"$ref": "#/$defs/empty-object"
@@ -4151,6 +4017,9 @@
 				"mRangeWarningNormalizedDistanceThreshold": {
 					"$ref": "#/$defs/decimal-string"
 				},
+				"mDisplayRangeWarning": {
+					"$ref": "#/$defs/boolean"
+				},
 				"mCurrentHoverMode": {
 					"type": "string",
 					"const": "HPM_Inactive"
@@ -4172,6 +4041,80 @@
 				},
 				"mCurrentConnectionLocation": {
 					"$ref": "#/$defs/xyz"
+				},
+				"mEquipMontage": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["Montages"],
+						"properties": {
+							"Montages": {
+								"type": "string",
+								"minLength": 1,
+								"typed_string": {
+									"minItems": 2,
+									"maxItems": 2,
+									"items": {
+										"oneOf": [
+											{
+												"type": "string",
+												"minLength": 1,
+												"typed_string": {
+													"required": [
+														"Filter",
+														"FilterMontageTag",
+														"Exclusive",
+														"AudioEvent"
+													],
+													"properties": {
+														"Filter": {
+															"$ref": "#/$defs/boolean"
+														},
+														"FilterMontageTag": {
+															"$ref": "#/$defs/FilterMontageTag"
+														},
+														"Exclusive": {
+															"$ref": "#/$defs/boolean"
+														},
+														"AudioEvent": {
+															"$ref": "#/$defs/FGHoverPack--AudioEvent"
+														}
+													}
+												}
+											},
+											{
+												"type": "string",
+												"minLength": 1,
+												"typed_string": {
+													"required": ["AudioEvent"],
+													"properties": {
+														"AudioEvent": {
+															"$ref": "#/$defs/FGHoverPack--AudioEvent"
+														}
+													}
+												}
+											}
+										]
+									}
+								}
+							}
+						}
+					}
+				},
+				"mStingerMontage": {
+					"$ref": "#/$defs/empty-object"
+				},
+				"mUnEquipMontage": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["AudioEvent"],
+						"properties": {
+							"AudioEvent": {
+								"$ref": "#/$defs/FGHoverPack--AudioEvent"
+							}
+						}
+					}
 				}
 			}
 		},
@@ -4517,14 +4460,7 @@
 						],
 						"properties": {
 							"Montage_1P": {
-								"type": "string",
-								"minLength": 1,
-								"UnrealEngineString": {
-									"left": "/Script/Engine.AnimMontage",
-									"right": {
-										"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
-									}
-								}
+								"$ref": "#/$defs/Montage_1P"
 							},
 							"Montage_Equipment": {
 								"type": "string",
@@ -4560,14 +4496,7 @@
 						],
 						"properties": {
 							"Montage_1P": {
-								"type": "string",
-								"minLength": 1,
-								"UnrealEngineString": {
-									"left": "/Script/Engine.AnimMontage",
-									"right": {
-										"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
-									}
-								}
+								"$ref": "#/$defs/Montage_1P"
 							},
 							"Montage_Equipment": {
 								"type": "string",
@@ -4636,24 +4565,10 @@
 											],
 											"properties": {
 												"Montage_1P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
-														}
-													}
+													"$ref": "#/$defs/Montage_1P"
 												},
 												"Montage_3P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
-														}
-													}
+													"$ref": "#/$defs/Montage_3P"
 												},
 												"AudioEvent": {
 													"type": "string",
@@ -4822,34 +4737,13 @@
 						"required": ["Montage_1P", "Montage_3P", "CameraAnim"],
 						"properties": {
 							"Montage_1P": {
-								"type": "string",
-								"minLength": 1,
-								"UnrealEngineString": {
-									"left": "/Script/Engine.AnimMontage",
-									"right": {
-										"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
-									}
-								}
+								"$ref": "#/$defs/Montage_1P"
 							},
 							"Montage_3P": {
-								"type": "string",
-								"minLength": 1,
-								"UnrealEngineString": {
-									"left": "/Script/Engine.AnimMontage",
-									"right": {
-										"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
-									}
-								}
+								"$ref": "#/$defs/Montage_3P"
 							},
 							"CameraAnim": {
-								"type": "string",
-								"minLength": 1,
-								"UnrealEngineString": {
-									"left": "/Script/TemplateSequence.CameraAnimationSequence",
-									"right": {
-										"starts_with": "/Game/FactoryGame/Character/Player/CameraShake/"
-									}
-								}
+								"$ref": "#/$defs/CameraAnim"
 							}
 						}
 					}
@@ -4861,14 +4755,7 @@
 						"required": ["Montage_1P"],
 						"properties": {
 							"Montage_1P": {
-								"type": "string",
-								"minLength": 1,
-								"UnrealEngineString": {
-									"left": "/Script/Engine.AnimMontage",
-									"right": {
-										"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
-									}
-								}
+								"$ref": "#/$defs/Montage_1P"
 							}
 						}
 					}
@@ -4895,24 +4782,10 @@
 											],
 											"properties": {
 												"Montage_1P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
-														}
-													}
+													"$ref": "#/$defs/Montage_1P"
 												},
 												"Montage_3P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
-														}
-													}
+													"$ref": "#/$defs/Montage_3P"
 												}
 											}
 										}
@@ -4952,14 +4825,7 @@
 											],
 											"properties": {
 												"Montage_1P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
-														}
-													}
+													"$ref": "#/$defs/Montage_1P"
 												},
 												"AudioEvent": {
 													"type": "string",
@@ -5003,24 +4869,10 @@
 											],
 											"properties": {
 												"Montage_1P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
-														}
-													}
+													"$ref": "#/$defs/Montage_1P"
 												},
 												"Montage_3P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
-														}
-													}
+													"$ref": "#/$defs/Montage_3P"
 												},
 												"AudioEvent": {
 													"type": "string",
@@ -5033,14 +4885,7 @@
 													}
 												},
 												"CameraAnim": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/TemplateSequence.CameraAnimationSequence",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/CameraShake/"
-														}
-													}
+													"$ref": "#/$defs/CameraAnim"
 												}
 											}
 										}
@@ -6673,24 +6518,10 @@
 											],
 											"properties": {
 												"Montage_1P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
-														}
-													}
+													"$ref": "#/$defs/Montage_1P"
 												},
 												"Montage_3P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
-														}
-													}
+													"$ref": "#/$defs/Montage_3P"
 												},
 												"Montage_Equipment": {
 													"type": "string",
@@ -6744,34 +6575,13 @@
 											],
 											"properties": {
 												"Montage_1P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
-														}
-													}
+													"$ref": "#/$defs/Montage_1P"
 												},
 												"Montage_3P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
-														}
-													}
+													"$ref": "#/$defs/Montage_3P"
 												},
 												"Montage_Equipment": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
-														}
-													}
+													"$ref": "#/$defs/Montage_1P"
 												},
 												"AudioEvent": {
 													"type": "string",
@@ -8374,24 +8184,10 @@
 						],
 						"properties": {
 							"Montage_1P": {
-								"type": "string",
-								"minLength": 1,
-								"UnrealEngineString": {
-									"left": "/Script/Engine.AnimMontage",
-									"right": {
-										"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
-									}
-								}
+								"$ref": "#/$defs/Montage_1P"
 							},
 							"Montage_3P": {
-								"type": "string",
-								"minLength": 1,
-								"UnrealEngineString": {
-									"left": "/Script/Engine.AnimMontage",
-									"right": {
-										"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
-									}
-								}
+								"$ref": "#/$defs/Montage_3P"
 							},
 							"Montage_Equipment": {
 								"type": "string",
@@ -8414,14 +8210,7 @@
 								}
 							},
 							"CameraAnim": {
-								"type": "string",
-								"minLength": 1,
-								"UnrealEngineString": {
-									"left": "/Script/TemplateSequence.CameraAnimationSequence",
-									"right": {
-										"starts_with": "/Game/FactoryGame/Character/Player/CameraShake/"
-									}
-								}
+								"$ref": "#/$defs/CameraAnim"
 							}
 						}
 					}
@@ -8470,24 +8259,10 @@
 															"$ref": "#/$defs/decimal-string"
 														},
 														"Montage_1P": {
-															"type": "string",
-															"minLength": 1,
-															"UnrealEngineString": {
-																"left": "/Script/Engine.AnimMontage",
-																"right": {
-																	"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
-																}
-															}
+															"$ref": "#/$defs/Montage_1P"
 														},
 														"Montage_3P": {
-															"type": "string",
-															"minLength": 1,
-															"UnrealEngineString": {
-																"left": "/Script/Engine.AnimMontage",
-																"right": {
-																	"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
-																}
-															}
+															"$ref": "#/$defs/Montage_3P"
 														},
 														"Montage_Equipment": {
 															"type": "string",
@@ -8500,14 +8275,7 @@
 															}
 														},
 														"CameraAnim": {
-															"type": "string",
-															"minLength": 1,
-															"UnrealEngineString": {
-																"left": "/Script/TemplateSequence.CameraAnimationSequence",
-																"right": {
-																	"starts_with": "/Game/FactoryGame/Character/Player/CameraShake/"
-																}
-															}
+															"$ref": "#/$defs/CameraAnim"
 														}
 													}
 												}
@@ -8524,24 +8292,10 @@
 													],
 													"properties": {
 														"Montage_1P": {
-															"type": "string",
-															"minLength": 1,
-															"UnrealEngineString": {
-																"left": "/Script/Engine.AnimMontage",
-																"right": {
-																	"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
-																}
-															}
+															"$ref": "#/$defs/Montage_1P"
 														},
 														"Montage_3P": {
-															"type": "string",
-															"minLength": 1,
-															"UnrealEngineString": {
-																"left": "/Script/Engine.AnimMontage",
-																"right": {
-																	"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
-																}
-															}
+															"$ref": "#/$defs/Montage_3P"
 														},
 														"Montage_Equipment": {
 															"type": "string",
@@ -8554,14 +8308,7 @@
 															}
 														},
 														"CameraAnim": {
-															"type": "string",
-															"minLength": 1,
-															"UnrealEngineString": {
-																"left": "/Script/TemplateSequence.CameraAnimationSequence",
-																"right": {
-																	"starts_with": "/Game/FactoryGame/Character/Player/CameraShake/"
-																}
-															}
+															"$ref": "#/$defs/CameraAnim"
 														}
 													}
 												}
@@ -8599,24 +8346,10 @@
 													],
 													"properties": {
 														"Montage_1P": {
-															"type": "string",
-															"minLength": 1,
-															"UnrealEngineString": {
-																"left": "/Script/Engine.AnimMontage",
-																"right": {
-																	"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
-																}
-															}
+															"$ref": "#/$defs/Montage_1P"
 														},
 														"Montage_3P": {
-															"type": "string",
-															"minLength": 1,
-															"UnrealEngineString": {
-																"left": "/Script/Engine.AnimMontage",
-																"right": {
-																	"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
-																}
-															}
+															"$ref": "#/$defs/Montage_3P"
 														},
 														"Montage_Equipment": {
 															"type": "string",
@@ -8629,14 +8362,7 @@
 															}
 														},
 														"CameraAnim": {
-															"type": "string",
-															"minLength": 1,
-															"UnrealEngineString": {
-																"left": "/Script/TemplateSequence.CameraAnimationSequence",
-																"right": {
-																	"starts_with": "/Game/FactoryGame/Character/Player/CameraShake/"
-																}
-															}
+															"$ref": "#/$defs/CameraAnim"
 														}
 													}
 												}
@@ -8714,24 +8440,10 @@
 													],
 													"properties": {
 														"Montage_1P": {
-															"type": "string",
-															"minLength": 1,
-															"UnrealEngineString": {
-																"left": "/Script/Engine.AnimMontage",
-																"right": {
-																	"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
-																}
-															}
+															"$ref": "#/$defs/Montage_1P"
 														},
 														"Montage_3P": {
-															"type": "string",
-															"minLength": 1,
-															"UnrealEngineString": {
-																"left": "/Script/Engine.AnimMontage",
-																"right": {
-																	"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
-																}
-															}
+															"$ref": "#/$defs/Montage_3P"
 														},
 														"Montage_Equipment": {
 															"type": "string",
@@ -8789,24 +8501,10 @@
 													],
 													"properties": {
 														"Montage_1P": {
-															"type": "string",
-															"minLength": 1,
-															"UnrealEngineString": {
-																"left": "/Script/Engine.AnimMontage",
-																"right": {
-																	"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
-																}
-															}
+															"$ref": "#/$defs/Montage_1P"
 														},
 														"Montage_3P": {
-															"type": "string",
-															"minLength": 1,
-															"UnrealEngineString": {
-																"left": "/Script/Engine.AnimMontage",
-																"right": {
-																	"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
-																}
-															}
+															"$ref": "#/$defs/Montage_3P"
 														},
 														"Montage_Equipment": {
 															"type": "string",
@@ -8901,24 +8599,10 @@
 											],
 											"properties": {
 												"Montage_1P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
-														}
-													}
+													"$ref": "#/$defs/Montage_1P"
 												},
 												"Montage_3P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
-														}
-													}
+													"$ref": "#/$defs/Montage_3P"
 												},
 												"Montage_Equipment": {
 													"type": "string",
@@ -8987,24 +8671,10 @@
 											],
 											"properties": {
 												"Montage_1P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
-														}
-													}
+													"$ref": "#/$defs/Montage_1P"
 												},
 												"Montage_3P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
-														}
-													}
+													"$ref": "#/$defs/Montage_3P"
 												},
 												"Montage_Equipment": {
 													"type": "string",
@@ -9076,24 +8746,10 @@
 											],
 											"properties": {
 												"Montage_1P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
-														}
-													}
+													"$ref": "#/$defs/Montage_1P"
 												},
 												"Montage_3P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
-														}
-													}
+													"$ref": "#/$defs/Montage_3P"
 												},
 												"Montage_Equipment": {
 													"type": "string",
@@ -9162,24 +8818,10 @@
 											],
 											"properties": {
 												"Montage_1P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
-														}
-													}
+													"$ref": "#/$defs/Montage_1P"
 												},
 												"Montage_3P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
-														}
-													}
+													"$ref": "#/$defs/Montage_3P"
 												},
 												"Montage_Equipment": {
 													"type": "string",
@@ -9316,24 +8958,10 @@
 											],
 											"properties": {
 												"Montage_1P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
-														}
-													}
+													"$ref": "#/$defs/Montage_1P"
 												},
 												"Montage_3P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
-														}
-													}
+													"$ref": "#/$defs/Montage_3P"
 												},
 												"Montage_Equipment": {
 													"type": "string",
@@ -9403,24 +9031,10 @@
 											],
 											"properties": {
 												"Montage_1P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
-														}
-													}
+													"$ref": "#/$defs/Montage_1P"
 												},
 												"Montage_3P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
-														}
-													}
+													"$ref": "#/$defs/Montage_3P"
 												},
 												"Montage_Equipment": {
 													"type": "string",
@@ -9492,8 +9106,7 @@
 													"$ref": "#/$defs/boolean"
 												},
 												"FilterMontageTag": {
-													"type": "string",
-													"const": "HasAmmunition"
+													"$ref": "#/$defs/FilterMontageTag"
 												},
 												"InvertFilter": {
 													"$ref": "#/$defs/boolean"
@@ -9502,24 +9115,10 @@
 													"$ref": "#/$defs/boolean"
 												},
 												"Montage_1P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
-														}
-													}
+													"$ref": "#/$defs/Montage_1P"
 												},
 												"Montage_3P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
-														}
-													}
+													"$ref": "#/$defs/Montage_3P"
 												},
 												"Montage_Equipment": {
 													"type": "string",
@@ -9571,36 +9170,16 @@
 													"$ref": "#/$defs/boolean"
 												},
 												"FilterMontageTag": {
-													"type": "string",
-													"enum": [
-														"LowCharged",
-														"MediumCharged",
-														"FullyCharged"
-													]
+													"$ref": "#/$defs/FilterMontageTag--charged"
 												},
 												"Exclusive": {
 													"$ref": "#/$defs/boolean"
 												},
 												"Montage_1P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
-														},
-														"quote_mode": "double"
-													}
+													"$ref": "#/$defs/Montage_1P"
 												},
 												"Montage_3P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
-														}
-													}
+													"$ref": "#/$defs/Montage_3P"
 												},
 												"Montage_Equipment": {
 													"type": "string",
@@ -9638,14 +9217,7 @@
 													}
 												},
 												"CameraAnim": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/TemplateSequence.CameraAnimationSequence",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/CameraShake/"
-														}
-													}
+													"$ref": "#/$defs/CameraAnim"
 												}
 											}
 										}
@@ -9684,8 +9256,7 @@
 													"$ref": "#/$defs/boolean"
 												},
 												"FilterMontageTag": {
-													"type": "string",
-													"enum": ["HasAmmunition"]
+													"$ref": "#/$defs/FilterMontageTag"
 												},
 												"InvertFilter": {
 													"$ref": "#/$defs/boolean"
@@ -9694,25 +9265,10 @@
 													"$ref": "#/$defs/boolean"
 												},
 												"Montage_1P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
-														},
-														"quote_mode": "double"
-													}
+													"$ref": "#/$defs/Montage_1P"
 												},
 												"Montage_3P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
-														}
-													}
+													"$ref": "#/$defs/Montage_3P"
 												},
 												"Montage_Equipment": {
 													"type": "string",
@@ -9757,25 +9313,10 @@
 											],
 											"properties": {
 												"Montage_1P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
-														},
-														"quote_mode": "double"
-													}
+													"$ref": "#/$defs/Montage_1P"
 												},
 												"Montage_3P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
-														}
-													}
+													"$ref": "#/$defs/Montage_3P"
 												},
 												"Montage_Equipment": {
 													"type": "string",
@@ -10081,25 +9622,10 @@
 											],
 											"properties": {
 												"Montage_1P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/FirstPerson/"
-														},
-														"quote_mode": "double"
-													}
+													"$ref": "#/$defs/Montage_1P"
 												},
 												"Montage_3P": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/Engine.AnimMontage",
-														"right": {
-															"starts_with": "/Game/FactoryGame/Character/Player/Animation/ThirdPerson/"
-														}
-													}
+													"$ref": "#/$defs/Montage_3P"
 												}
 											}
 										}
