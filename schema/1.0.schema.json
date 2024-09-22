@@ -1363,10 +1363,9 @@
 				}
 			]
 		},
-		"FGBuildableBlueprintDesigner": {
+		"FGBuildableBlueprintDesigner--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--base",
-			"unevaluatedProperties": false,
 			"required": [
 				"mTerminalDistanceFromEdge",
 				"mTerminalHalfDepth",
@@ -1375,19 +1374,10 @@
 				"OnBlueprintCostChanged",
 				"mCurrentCost",
 				"mBuildables",
-				"mIntersectComponents",
 				"mCurrentRecordData",
 				"mIsDismantlingAll"
 			],
 			"properties": {
-				"ClassName": {
-					"type": "string",
-					"const": "Build_BlueprintDesigner_C"
-				},
-				"mDisplayName": {
-					"type": "string",
-					"const": "Blueprint Designer"
-				},
 				"mTerminalDistanceFromEdge": {
 					"$ref": "#/$defs/decimal-string"
 				},
@@ -1411,10 +1401,6 @@
 					"type": "string",
 					"const": ""
 				},
-				"mIntersectComponents": {
-					"type": "string",
-					"const": ""
-				},
 				"mCurrentRecordData": {
 					"type": "string",
 					"minLength": 1,
@@ -1422,7 +1408,20 @@
 						"required": ["IconID", "Color"],
 						"properties": {
 							"IconID": {
-								"$ref": "#/$defs/integer-string--signed"
+								"type": "string",
+								"minLength": 1,
+								"typed_string": {
+									"required": ["IconLibrary", "IconID"],
+									"properties": {
+										"IconLibrary": {
+											"type": "string",
+											"const": "None"
+										},
+										"IconID": {
+											"$ref": "#/$defs/integer-string--signed"
+										}
+									}
+								}
 							},
 							"Color": {
 								"$ref": "#/$defs/color-decimal"
@@ -1432,6 +1431,51 @@
 				},
 				"mIsDismantlingAll": {
 					"$ref": "#/$defs/boolean"
+				}
+			}
+		},
+		"FGBuildableBlueprintDesigner--mk1": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableBlueprintDesigner--base",
+			"unevaluatedProperties": false,
+			"properties": {
+				"ClassName": {
+					"type": "string",
+					"const": "Build_BlueprintDesigner_C"
+				},
+				"mDisplayName": {
+					"type": "string",
+					"const": "Blueprint Designer Mk.1"
+				}
+			}
+		},
+		"FGBuildableBlueprintDesigner--mk2": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableBlueprintDesigner--base",
+			"unevaluatedProperties": false,
+			"properties": {
+				"ClassName": {
+					"type": "string",
+					"const": "Build_BlueprintDesigner_MK2_C"
+				},
+				"mDisplayName": {
+					"type": "string",
+					"const": "Blueprint Designer Mk.2"
+				}
+			}
+		},
+		"FGBuildableBlueprintDesigner--mk3": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableBlueprintDesigner--base",
+			"unevaluatedProperties": false,
+			"properties": {
+				"ClassName": {
+					"type": "string",
+					"const": "Build_BlueprintDesigner_Mk3_C"
+				},
+				"mDisplayName": {
+					"type": "string",
+					"const": "Blueprint Designer Mk.3"
 				}
 			}
 		},
@@ -12373,13 +12417,26 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"items": {
-						"type": "object",
-						"$ref": "#/$defs/FGBuildableBlueprintDesigner",
-						"unevaluatedProperties": false
-					},
-					"minItems": 1,
-					"maxItems": 1
+					"items": false,
+					"minItems": 3,
+					"maxItems": 3,
+					"prefixItems": [
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGBuildableBlueprintDesigner--mk3",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGBuildableBlueprintDesigner--mk2",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGBuildableBlueprintDesigner--mk1",
+							"unevaluatedProperties": false
+						}
+					]
 				}
 			}
 		},
