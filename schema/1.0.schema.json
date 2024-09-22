@@ -10716,10 +10716,26 @@
 			"$ref": "#/$defs/FGBuildable--base",
 			"unevaluatedProperties": false
 		},
+		"FGBuildableSpaceElevator--mSpaceElevatorState": {
+			"type": "string",
+			"enum": ["ESES_Load"]
+		},
 		"FGBuildableSpaceElevator": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--consumes-power-base",
-			"unevaluatedProperties": false
+			"unevaluatedProperties": false,
+			"required": [
+				"mOnSpaceElevatorStateUpdated",
+				"mSpaceElevatorState"
+			],
+			"properties": {
+				"mOnSpaceElevatorStateUpdated": {
+					"$ref": "#/$defs/empty-object"
+				},
+				"mSpaceElevatorState": {
+					"$ref": "#/$defs/FGBuildableSpaceElevator--mSpaceElevatorState"
+				}
+			}
 		},
 		"mClearanceData": {
 			"oneOf": [
@@ -10796,6 +10812,9 @@
 														}
 													}
 												}
+											},
+											"ExcludeForSnapping": {
+												"$ref": "#/$defs/boolean"
 											}
 										}
 									}
