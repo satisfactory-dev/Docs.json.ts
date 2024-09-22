@@ -4912,7 +4912,10 @@
 			"$ref": "#/$defs/FGEquipment--base",
 			"unevaluatedProperties": false,
 			"required": [
-				"mShouldPlayDeactivateSound",
+				"mZiplineAttachMontage",
+				"mZiplineDetachMontage",
+				"mZiplineTryAttachMontage",
+				"mWantToGrab",
 				"mZiplineJumpLaunchVelocity",
 				"mMaxZiplineAngle",
 				"mTraceDistance",
@@ -4923,7 +4926,94 @@
 				"mZiplineReattachCooldown"
 			],
 			"properties": {
-				"mShouldPlayDeactivateSound": {
+				"mZiplineAttachMontage": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["Montage_1P", "Montage_3P", "CameraAnim"],
+						"properties": {
+							"Montage_1P": {
+								"$ref": "#/$defs/Montage_1P"
+							},
+							"Montage_3P": {
+								"$ref": "#/$defs/Montage_3P"
+							},
+							"CameraAnim": {
+								"$ref": "#/$defs/CameraAnim"
+							}
+						}
+					}
+				},
+				"mZiplineDetachMontage": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": [
+							"Montage_1P",
+							"Montage_Equipment",
+							"AudioEvent",
+							"CameraAnim"
+						],
+						"properties": {
+							"Montage_1P": {
+								"$ref": "#/$defs/Montage_1P"
+							},
+							"Montage_Equipment": {
+								"type": "string",
+								"minLength": 1,
+								"UnrealEngineString": {
+									"left": "/Script/Engine.AnimMontage",
+									"right": {
+										"starts_with": "/Game/FactoryGame/Equipment/Zipline/Animation/"
+									}
+								}
+							},
+							"AudioEvent": {
+								"type": "string",
+								"minLength": 1,
+								"UnrealEngineString": {
+									"left": "/Script/AkAudio.AkAudioEvent",
+									"right": {
+										"starts_with": "/Game/WwiseAudio/Events/Equipment/Zipline/"
+									}
+								}
+							},
+							"CameraAnim": {
+								"$ref": "#/$defs/CameraAnim"
+							}
+						}
+					}
+				},
+				"mZiplineTryAttachMontage": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": [
+							"Montage_1P",
+							"Montage_3P",
+							"Montage_Equipment"
+						],
+						"properties": {
+							"Montage_1P": {
+								"$ref": "#/$defs/Montage_1P"
+							},
+							"Montage_3P": {
+								"$ref": "#/$defs/Montage_3P"
+							},
+							"Montage_Equipment": {
+								"type": "string",
+								"minLength": 1,
+								"UnrealEngineString": {
+									"left": "/Script/Engine.AnimMontage",
+									"right": {
+										"starts_with": "/Game/FactoryGame/Equipment/Zipline/Animation/"
+									}
+								}
+							}
+						}
+					}
+				},
+				"mWantToGrab": {
 					"$ref": "#/$defs/boolean"
 				},
 				"mZiplineJumpLaunchVelocity": {
@@ -4949,6 +5039,81 @@
 				},
 				"mZiplineReattachCooldown": {
 					"$ref": "#/$defs/decimal-string"
+				},
+				"mEquipMontage": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["Montages"],
+						"properties": {
+							"Montages": {
+								"type": "string",
+								"minLength": 1,
+								"typed_string": {
+									"minItems": 1,
+									"maxItems": 1,
+									"items": {
+										"type": "string",
+										"minLength": 1,
+										"typed_string": {
+											"required": [
+												"Montage_1P",
+												"Montage_3P",
+												"Montage_Equipment",
+												"AudioEvent"
+											],
+											"properties": {
+												"Montage_1P": {
+													"$ref": "#/$defs/Montage_1P"
+												},
+												"Montage_3P": {
+													"$ref": "#/$defs/Montage_3P"
+												},
+												"Montage_Equipment": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Equipment/Zipline/Animation/"
+														}
+													}
+												},
+												"AudioEvent": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/AkAudio.AkAudioEvent",
+														"right": {
+															"starts_with": "/Game/WwiseAudio/Events/Equipment/Zipline/"
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"mStingerMontage": {
+					"$ref": "#/$defs/empty-object"
+				},
+				"mUnEquipMontage": {
+					"required": ["AudioEvent"],
+					"properties": {
+						"AudioEvent": {
+							"type": "string",
+							"minLength": 1,
+							"UnrealEngineString": {
+								"left": "/Script/AkAudio.AkAudioEvent",
+								"right": {
+									"starts_with": "/Game/FactoryGame/Equipment/Zipline/Animation/"
+								}
+							}
+						}
+					}
 				}
 			}
 		},
