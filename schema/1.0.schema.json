@@ -7634,13 +7634,33 @@
 		"FGBuildableMAM": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--occupied",
-			"required": ["mCurrentResearchState", "mSignificanceRange"],
+			"required": [
+				"mCurrentResearchState",
+				"mSignificanceRange",
+				"Centrifuge_NewTrack_1_BB49BD99478F0FC67F8D7E9A54C7E849",
+				"Centrifuge_NewTrack_0_BB49BD99478F0FC67F8D7E9A54C7E849",
+				"Centrifuge__Direction_BB49BD99478F0FC67F8D7E9A54C7E849",
+				"Centrifuge Duration"
+			],
 			"properties": {
 				"mCurrentResearchState": {
 					"type": "string",
 					"enum": ["ERS_NotResearching"]
 				},
 				"mSignificanceRange": {
+					"$ref": "#/$defs/decimal-string"
+				},
+				"Centrifuge_NewTrack_1_BB49BD99478F0FC67F8D7E9A54C7E849": {
+					"$ref": "#/$defs/decimal-string"
+				},
+				"Centrifuge_NewTrack_0_BB49BD99478F0FC67F8D7E9A54C7E849": {
+					"$ref": "#/$defs/decimal-string"
+				},
+				"Centrifuge__Direction_BB49BD99478F0FC67F8D7E9A54C7E849": {
+					"type": "string",
+					"const": "Forward"
+				},
+				"Centrifuge Duration": {
 					"$ref": "#/$defs/decimal-string"
 				}
 			}
