@@ -576,6 +576,10 @@ export class TypeDefinitionDiscovery
 										type: 'number',
 										minimum: 1,
 									},
+									items: {
+										type: 'boolean',
+										const: false,
+									},
 									prefixItems: {
 										type: 'array',
 										minItems: 1,
