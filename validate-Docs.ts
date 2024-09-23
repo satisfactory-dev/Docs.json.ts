@@ -17,14 +17,16 @@ import {
 	__dirname_from_meta,
 } from './lib/__dirname';
 import {
-	versions_list,
+	versions,
 } from './version-configs';
 
 const __dirname = __dirname_from_meta(import.meta);
 
 setup_PerformanceObserver();
 
-for (const [version, sub_path] of versions_list) {
+const version = 'update8';
+const sub_path = versions.update8;
+
 	try {
 		await docs.get(version);
 	} catch (err) {
@@ -48,4 +50,3 @@ for (const [version, sub_path] of versions_list) {
 
 		console.error(err.stack);
 	}
-}
