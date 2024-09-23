@@ -1,6 +1,6 @@
 # Types Progress
 
-99.17% Complete (238 of 240)
+100.00% Complete (238 of 238)
 
 ## Basic Types
 
@@ -81,7 +81,6 @@
 -   [x] FGBuildableFactorySimpleProducer
 -   [x] FGBuildableFloodlight
 -   [x] FGBuildableFoundation
--   [ ] FGBuildableFoundationLightweight
 -   [x] FGBuildableFrackingActivator
 -   [x] FGBuildableFrackingExtractor
 -   [x] FGBuildableGeneratorGeoThermal
@@ -117,7 +116,6 @@
 -   [x] FGBuildableSnowDispenser
 -   [x] FGBuildableSpaceElevator
 -   [x] FGBuildableSplitterSmart
--   [ ] FGBuildableStair
 -   [x] FGBuildableStorage
 -   [x] FGBuildableTradingPost
 -   [x] FGBuildableTrainPlatformCargo

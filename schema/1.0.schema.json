@@ -8317,11 +8317,6 @@
 			"$ref": "#/$defs/FGBuildableFoundation--base",
 			"unevaluatedProperties": false
 		},
-		"FGBuildableFoundationLightweight": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildableFoundation--base",
-			"unevaluatedProperties": false
-		},
 		"FGBuildableRamp": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableFoundation--base",
@@ -10296,24 +10291,6 @@
 				"mLadderMeshes": {
 					"type": "string",
 					"const": ""
-				}
-			}
-		},
-		"FGBuildableStair": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
-			"unevaluatedProperties": false,
-			"required": ["mStairDirection", "mHeight", "mSize"],
-			"properties": {
-				"mStairDirection": {
-					"type": "string",
-					"enum": ["EBSD_Left", "EBSD_Right"]
-				},
-				"mHeight": {
-					"$ref": "#/$defs/decimal-string"
-				},
-				"mSize": {
-					"$ref": "#/$defs/decimal-string"
 				}
 			}
 		},
