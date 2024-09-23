@@ -17,14 +17,15 @@ import {
 	setup_PerformanceObserver,
 } from './setup_PerformanceObserver';
 import {
-	versions_list,
+	versions,
 } from './version-configs';
 
 const __dirname = __dirname_from_meta(import.meta);
 
 const perf = setup_PerformanceObserver();
 
-for (const [version, sub_path] of versions_list) {
+const version = 'update8';
+const sub_path = versions.update8;
 	try {
 		performance.mark('start');
 		const bar = new TypeDefinitionWriter(
@@ -78,4 +79,3 @@ for (const [version, sub_path] of versions_list) {
 			throw err;
 		}
 	}
-}
