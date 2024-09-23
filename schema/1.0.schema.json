@@ -5182,12 +5182,12 @@
 					"typed_string": {
 						"required": ["AudioEvent"],
 						"properties": {
-						"AudioEvent": {
-							"type": "string",
-							"minLength": 1,
-							"UnrealEngineString": {
-								"left": "/Script/AkAudio.AkAudioEvent",
-								"right": {
+							"AudioEvent": {
+								"type": "string",
+								"minLength": 1,
+								"UnrealEngineString": {
+									"left": "/Script/AkAudio.AkAudioEvent",
+									"right": {
 										"starts_with": "/Game/WwiseAudio/Events/Equipment/Zipline/"
 									}
 								}
