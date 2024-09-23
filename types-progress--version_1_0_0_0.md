@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (238 of 238)
+100.00% Complete (241 of 241)
 
 ## Basic Types
 
@@ -178,6 +178,12 @@
 -   [x] FGBuildableGeneratorFuel--biogen
 -   [x] FGBuildableGeneratorFuel--liquid
 -   [x] FGBuildableGeneratorFuel--solid
+
+## FGBuildableGeneratorNuclear
+
+-   [x] FGBuildableGeneratorNuclear--mFuel--FicsoniumFuelRod
+-   [x] FGBuildableGeneratorNuclear--mFuel--NuclearFuelRod
+-   [x] FGBuildableGeneratorNuclear--mFuel--PlutoniumFuelRod
 
 ## FGBuildableLightSource
 
