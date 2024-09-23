@@ -555,6 +555,36 @@ export class TypeDefinitionDiscovery
 									},
 								},
 							},
+							{
+								type: 'object',
+								required: [
+									'type',
+									'prefixItems',
+									'minItems',
+								],
+								additionalProperties: false,
+								properties: {
+									type: {
+										type: 'string',
+										const: 'array',
+									},
+									minItems: {
+										type: 'number',
+										minimum: 1,
+									},
+									maxItems: {
+										type: 'number',
+										minimum: 1,
+									},
+									prefixItems: {
+										type: 'array',
+										minItems: 1,
+										items: {
+											$ref: '#/$defs/$ref',
+										},
+									},
+								},
+							},
 						]}},
 					},
 				},

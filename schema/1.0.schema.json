@@ -11157,7 +11157,7 @@
 		},
 		"FGPowerShardDescriptor": {
 			"type": "object",
-			"$ref": "#/$defs/FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor",
+			"$ref": "#/$defs/FGItemDescriptor--FGResourceDescriptor",
 			"required": [
 				"mPowerShardType",
 				"mExtraPotential",
@@ -12131,7 +12131,9 @@
 					"minItems": 2,
 					"maxItems": 2,
 					"items": {
-						"$ref": "#/$defs/FGPowerShardDescriptor"
+						"type": "object",
+						"$ref": "#/$defs/FGPowerShardDescriptor",
+						"unevaluatedProperties": false
 					}
 				}
 			}
