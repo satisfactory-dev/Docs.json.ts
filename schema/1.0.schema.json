@@ -9006,40 +9006,40 @@
 									"minItems": 2,
 									"maxItems": 2,
 									"items": {
-												"type": "string",
-												"minLength": 1,
-												"typed_string": {
-													"required": [
-														"Montage_1P",
-														"Montage_3P",
-														"Montage_Equipment",
-														"CameraAnim"
-													],
-													"properties": {
-														"Weight": {
-															"$ref": "#/$defs/decimal-string"
-														},
-														"Montage_1P": {
-															"$ref": "#/$defs/Montage_1P"
-														},
-														"Montage_3P": {
-															"$ref": "#/$defs/Montage_3P"
-														},
-														"Montage_Equipment": {
-															"type": "string",
-															"minLength": 1,
-															"UnrealEngineString": {
-																"left": "/Script/Engine.AnimMontage",
-																"right": {
-																	"starts_with": "/Game/FactoryGame/Equipment/RebarGun/Animation/"
-																}
-															}
-														},
-														"CameraAnim": {
-															"$ref": "#/$defs/CameraAnim"
+										"type": "string",
+										"minLength": 1,
+										"typed_string": {
+											"required": [
+												"Montage_1P",
+												"Montage_3P",
+												"Montage_Equipment",
+												"CameraAnim"
+											],
+											"properties": {
+												"Weight": {
+													"$ref": "#/$defs/decimal-string"
+												},
+												"Montage_1P": {
+													"$ref": "#/$defs/Montage_1P"
+												},
+												"Montage_3P": {
+													"$ref": "#/$defs/Montage_3P"
+												},
+												"Montage_Equipment": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Equipment/RebarGun/Animation/"
 														}
 													}
+												},
+												"CameraAnim": {
+													"$ref": "#/$defs/CameraAnim"
 												}
+											}
+										}
 									}
 								}
 							}
@@ -10700,59 +10700,59 @@
 					"typed_string": {
 						"minItems": 1,
 						"items": {
-									"type": "string",
-									"minLength": 1,
-									"typed_string": {
-										"required": ["ClearanceBox"],
-										"properties": {
-											"Type": {
-												"type": "string",
-												"enum": ["CT_Soft"]
-											},
-											"ClearanceBox": {
-												"type": "string",
-												"minLength": 1,
-												"typed_string": {
-													"required": [
-														"Min",
-														"Max",
-														"IsValid"
-													],
-													"properties": {
-														"Min": {
-															"$ref": "#/$defs/xyz"
-														},
-														"Max": {
-															"$ref": "#/$defs/xyz"
-														},
-														"IsValid": {
-															"$ref": "#/$defs/boolean"
-														}
-													}
+							"type": "string",
+							"minLength": 1,
+							"typed_string": {
+								"required": ["ClearanceBox"],
+								"properties": {
+									"Type": {
+										"type": "string",
+										"enum": ["CT_Soft"]
+									},
+									"ClearanceBox": {
+										"type": "string",
+										"minLength": 1,
+										"typed_string": {
+											"required": [
+												"Min",
+												"Max",
+												"IsValid"
+											],
+											"properties": {
+												"Min": {
+													"$ref": "#/$defs/xyz"
+												},
+												"Max": {
+													"$ref": "#/$defs/xyz"
+												},
+												"IsValid": {
+													"$ref": "#/$defs/boolean"
 												}
-											},
-											"RelativeTransform": {
-												"type": "string",
-												"minLength": 1,
-												"typed_string": {
-													"properties": {
-														"Rotation": {
-															"$ref": "#/$defs/quaternion"
-														},
-														"Translation": {
-															"$ref": "#/$defs/xyz"
-														},
-														"Scale3D": {
-															"$ref": "#/$defs/xyz"
-														}
-													}
-												}
-											},
-											"ExcludeForSnapping": {
-												"$ref": "#/$defs/boolean"
 											}
 										}
+									},
+									"RelativeTransform": {
+										"type": "string",
+										"minLength": 1,
+										"typed_string": {
+											"properties": {
+												"Rotation": {
+													"$ref": "#/$defs/quaternion"
+												},
+												"Translation": {
+													"$ref": "#/$defs/xyz"
+												},
+												"Scale3D": {
+													"$ref": "#/$defs/xyz"
+												}
+											}
+										}
+									},
+									"ExcludeForSnapping": {
+										"$ref": "#/$defs/boolean"
 									}
+								}
+							}
 						}
 					}
 				}
