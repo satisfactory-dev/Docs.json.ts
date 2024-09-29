@@ -3309,16 +3309,12 @@
 									"minItems": 1,
 									"maxItems": 2,
 									"items": {
-										"oneOf": [
-											{
 												"type": "string",
 												"minLength": 1,
 												"typed_string": {
 													"required": [
-														"Weight",
 														"Montage_1P",
 														"Montage_3P",
-														"Montage_Equipment",
 														"AudioEvent",
 														"CameraAnim"
 													],
@@ -3357,41 +3353,6 @@
 														}
 													}
 												}
-											},
-											{
-												"type": "string",
-												"minLength": 1,
-												"typed_string": {
-													"required": [
-														"Montage_1P",
-														"Montage_3P",
-														"AudioEvent",
-														"CameraAnim"
-													],
-													"properties": {
-														"Montage_1P": {
-															"$ref": "#/$defs/Montage_1P"
-														},
-														"Montage_3P": {
-															"$ref": "#/$defs/Montage_3P"
-														},
-														"AudioEvent": {
-															"type": "string",
-															"minLength": 1,
-															"UnrealEngineString": {
-																"left": "/Script/AkAudio.AkAudioEvent",
-																"right": {
-																	"starts_with": "/Game/WwiseAudio/Events/Equipment/ShockBaton/"
-																}
-															}
-														},
-														"CameraAnim": {
-															"$ref": "#/$defs/CameraAnim"
-														}
-													}
-												}
-											}
-										]
 									}
 								}
 							}
@@ -3411,20 +3372,19 @@
 									"minItems": 3,
 									"maxItems": 3,
 									"items": {
-										"oneOf": [
-											{
 												"type": "string",
 												"minLength": 1,
 												"typed_string": {
 													"required": [
-														"Filter",
-														"Exclusive",
 														"Montage_1P",
 														"Montage_3P",
 														"Montage_Equipment",
 														"AudioEvent"
 													],
 													"properties": {
+												"Weight": {
+													"$ref": "#/$defs/decimal-string"
+												},
 														"Filter": {
 															"$ref": "#/$defs/boolean"
 														},
@@ -3459,52 +3419,6 @@
 														}
 													}
 												}
-											},
-											{
-												"type": "string",
-												"minLength": 1,
-												"typed_string": {
-													"required": [
-														"Weight",
-														"Montage_1P",
-														"Montage_3P",
-														"Montage_Equipment",
-														"AudioEvent"
-													],
-													"properties": {
-														"Weight": {
-															"$ref": "#/$defs/decimal-string"
-														},
-														"Montage_1P": {
-															"$ref": "#/$defs/Montage_1P"
-														},
-														"Montage_3P": {
-															"$ref": "#/$defs/Montage_3P"
-														},
-														"Montage_Equipment": {
-															"type": "string",
-															"minLength": 1,
-															"UnrealEngineString": {
-																"left": "/Script/Engine.AnimMontage",
-																"right": {
-																	"starts_with": "/Game/FactoryGame/Equipment/StunSpear/Animation/"
-																}
-															}
-														},
-														"AudioEvent": {
-															"type": "string",
-															"minLength": 1,
-															"UnrealEngineString": {
-																"left": "/Script/AkAudio.AkAudioEvent",
-																"right": {
-																	"starts_with": "/Game/WwiseAudio/Events/Equipment/ShockBaton/"
-																}
-															}
-														}
-													}
-												}
-											}
-										]
 									}
 								}
 							}
