@@ -23,8 +23,16 @@ type array_type = {
 	maxItems?: number,
 };
 
+type prefix_array_type = {
+	type: 'array',
+	items?: false,
+	prefixItems: [SchemaObject, ...SchemaObject[]],
+	minItems: number,
+	maxItems?: number,
+};
+
 export class ArrayConverter extends ConverterMatchesSchema<
-	array_type,
+	array_type|prefix_array_type,
 	unknown[],
 	ArrayLiteralExpression
 > {
@@ -32,6 +40,8 @@ export class ArrayConverter extends ConverterMatchesSchema<
 
 	constructor(discovery:DataDiscovery) {
 		super(discovery.docs.ajv, {
+			oneOf: [
+				{
 			type: 'object',
 			required: ['type', 'minItems', 'items'],
 			additionalProperties: false,
@@ -41,6 +51,22 @@ export class ArrayConverter extends ConverterMatchesSchema<
 				minItems: {type: 'number', minimum: 0},
 				maxItems: {type: 'number', minimum: 1},
 			},
+				},
+				{
+					type: 'object',
+					required: ['type', 'minItems', 'prefixItems'],
+					additionalProperties: false,
+					properties: {
+						type: {type: 'string', const: 'array'},
+						items: {type: 'boolean', const: false},
+						prefixItems: {type: 'array', items: {
+							type: 'object',
+						}},
+						minItems: {type: 'number', minimum: 0},
+						maxItems: {type: 'number', minimum: 1},
+					},
+				},
+			],
 		});
 
 		this.discovery = discovery;
@@ -53,18 +79,37 @@ export class ArrayConverter extends ConverterMatchesSchema<
 		return Promise.resolve(
 			this.can_convert_schema(schema)
 			&& raw_data instanceof Array
-			&& !!((await this.discovery.candidates).find(
-				e => e.can_convert_schema(schema.items),
-			))
-			&& !!Converter.has_matching_schema(
-				await this.discovery.candidates,
-				schema.items,
+			&& (
+				(
+					!('prefixItems' in schema)
+					&& !!((await this.discovery.candidates).find(
+						e => e.can_convert_schema(schema.items),
+					))
+					&& !!Converter.has_matching_schema(
+						await this.discovery.candidates,
+						schema.items,
+					)
+				)
+				|| (
+					('prefixItems' in schema)
+					&& !!await Promise.all(schema.prefixItems.map(
+						async (sub_schema) => (
+							!! (await this.discovery.candidates).find(
+								e => e.can_convert_schema(sub_schema),
+							)
+							&& !!Converter.has_matching_schema(
+								await this.discovery.candidates,
+								sub_schema,
+							)
+						),
+					))
+				)
 			),
 		);
 	}
 
 	async convert(
-		schema: array_type,
+		schema: array_type|prefix_array_type,
 		raw_data: unknown[],
 	): Promise<ExpressionResult<ArrayLiteralExpression>> {
 		if (
@@ -80,6 +125,19 @@ export class ArrayConverter extends ConverterMatchesSchema<
 			);
 		}
 
+		const converted:unknown[] = 'prefixItems' in schema
+			? await this.#convert_prefixItems_type(schema, raw_data)
+			: await this.#convert_array_type(schema, raw_data);
+
+		return new ExpressionResult(
+			await this.discovery.literal.array_literal(converted),
+		);
+	}
+
+	async #convert_array_type(
+		schema: array_type,
+		raw_data: unknown[],
+	): Promise<unknown[]> {
 		const converter = await Converter.find_matching_schema(
 			await this.discovery.candidates,
 			schema.items,
@@ -91,8 +149,42 @@ export class ArrayConverter extends ConverterMatchesSchema<
 			converted.push(await converter.convert(schema.items, entry));
 		}
 
-		return new ExpressionResult(
-			await this.discovery.literal.array_literal(converted),
-		);
+		return converted;
+	}
+
+	async #convert_prefixItems_type(
+		schema: prefix_array_type,
+		raw_data: unknown[],
+	): Promise<unknown[]> {
+		if (raw_data.length > schema.prefixItems.length) {
+			throw new NoMatchError(
+				{
+					schema,
+					raw_data,
+				},
+				`Schema requires prefixItems of no more than ${
+					schema.prefixItems.length
+				}, ${
+					raw_data.length
+				} found!`,
+			);
+		}
+
+		const converted:unknown[] = [];
+
+		let index = 0;
+
+		for (const entry of schema.prefixItems) {
+			const converter = await Converter.find_matching_schema(
+				await this.discovery.candidates,
+				entry,
+			);
+
+			converted.push(await converter.convert(entry, raw_data[index]));
+
+			++index;
+		}
+
+		return converted;
 	}
 }
