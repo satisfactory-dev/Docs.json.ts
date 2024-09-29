@@ -4774,7 +4774,7 @@
 										"typed_string": {
 											"required": [
 												"Montage_1P",
-												"Montage_Equipment",
+												"Montage_3P",
 												"AudioEvent"
 											],
 											"properties": {
