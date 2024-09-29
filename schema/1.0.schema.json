@@ -3996,27 +3996,27 @@
 									"minItems": 2,
 									"maxItems": 2,
 									"items": {
-												"type": "string",
-												"minLength": 1,
-												"typed_string": {
-													"required": [
-														"AudioEvent"
-													],
-													"properties": {
-														"Filter": {
-															"$ref": "#/$defs/boolean"
-														},
-														"FilterMontageTag": {
-															"$ref": "#/$defs/FilterMontageTag"
-														},
-														"Exclusive": {
-															"$ref": "#/$defs/boolean"
-														},
-														"AudioEvent": {
-															"$ref": "#/$defs/FGHoverPack--AudioEvent"
-														}
-													}
+										"type": "string",
+										"minLength": 1,
+										"typed_string": {
+											"required": [
+												"AudioEvent"
+											],
+											"properties": {
+												"Filter": {
+													"$ref": "#/$defs/boolean"
+												},
+												"FilterMontageTag": {
+													"$ref": "#/$defs/FilterMontageTag"
+												},
+												"Exclusive": {
+													"$ref": "#/$defs/boolean"
+												},
+												"AudioEvent": {
+													"$ref": "#/$defs/FGHoverPack--AudioEvent"
 												}
+											}
+										}
 									}
 								}
 							}
