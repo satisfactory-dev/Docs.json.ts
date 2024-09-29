@@ -279,7 +279,8 @@
 					"type": "string",
 					"minLength": 1,
 					"UnrealEngineString": {
-						"left": "/Script/Engine.Texture2D"
+						"left": "/Script/Engine.Texture2D",
+						"quote_mode": "both"
 					}
 				}
 			]
@@ -2894,7 +2895,7 @@
 					"minLength": 1,
 					"typed_string": {
 						"minItems": 6,
-						"maxItems": 6,
+						"maxItems": 7,
 						"items": {
 							"type": "string",
 							"enum": [
@@ -3780,7 +3781,7 @@
 								"minLength": 1,
 								"typed_string": {
 									"minItems": 1,
-									"maxItems": 1,
+									"maxItems": 2,
 									"items": {
 										"type": "string",
 										"minLength": 1,
