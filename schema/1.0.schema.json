@@ -9006,13 +9006,10 @@
 									"minItems": 2,
 									"maxItems": 2,
 									"items": {
-										"oneOf": [
-											{
 												"type": "string",
 												"minLength": 1,
 												"typed_string": {
 													"required": [
-														"Weight",
 														"Montage_1P",
 														"Montage_3P",
 														"Montage_Equipment",
@@ -9043,41 +9040,6 @@
 														}
 													}
 												}
-											},
-											{
-												"type": "string",
-												"minLength": 1,
-												"typed_string": {
-													"required": [
-														"Montage_1P",
-														"Montage_3P",
-														"Montage_Equipment",
-														"CameraAnim"
-													],
-													"properties": {
-														"Montage_1P": {
-															"$ref": "#/$defs/Montage_1P"
-														},
-														"Montage_3P": {
-															"$ref": "#/$defs/Montage_3P"
-														},
-														"Montage_Equipment": {
-															"type": "string",
-															"minLength": 1,
-															"UnrealEngineString": {
-																"left": "/Script/Engine.AnimMontage",
-																"right": {
-																	"starts_with": "/Game/FactoryGame/Equipment/RebarGun/Animation/"
-																}
-															}
-														},
-														"CameraAnim": {
-															"$ref": "#/$defs/CameraAnim"
-														}
-													}
-												}
-											}
-										]
 									}
 								}
 							}
@@ -10738,86 +10700,11 @@
 					"typed_string": {
 						"minItems": 1,
 						"items": {
-							"oneOf": [
-								{
 									"type": "string",
 									"minLength": 1,
 									"typed_string": {
 										"required": ["ClearanceBox"],
 										"properties": {
-											"ClearanceBox": {
-												"type": "string",
-												"minLength": 1,
-												"typed_string": {
-													"required": [
-														"Min",
-														"Max",
-														"IsValid"
-													],
-													"properties": {
-														"Min": {
-															"$ref": "#/$defs/xyz"
-														},
-														"Max": {
-															"$ref": "#/$defs/xyz"
-														},
-														"IsValid": {
-															"$ref": "#/$defs/boolean"
-														}
-													}
-												}
-											}
-										}
-									}
-								},
-								{
-									"type": "string",
-									"minLength": 1,
-									"typed_string": {
-										"required": ["Type", "ClearanceBox"],
-										"properties": {
-											"Type": {
-												"type": "string",
-												"enum": ["CT_Soft"]
-											},
-											"ClearanceBox": {
-												"type": "string",
-												"minLength": 1,
-												"typed_string": {
-													"required": [
-														"Min",
-														"Max",
-														"IsValid"
-													],
-													"properties": {
-														"Min": {
-															"$ref": "#/$defs/xyz"
-														},
-														"Max": {
-															"$ref": "#/$defs/xyz"
-														},
-														"IsValid": {
-															"$ref": "#/$defs/boolean"
-														}
-													}
-												}
-											},
-											"ExcludeForSnapping": {
-												"$ref": "#/$defs/boolean"
-											}
-										}
-									}
-								},
-								{
-									"type": "string",
-									"minLength": 1,
-									"typed_string": {
-										"required": [
-											"Type",
-											"ClearanceBox",
-											"RelativeTransform"
-										],
-										"properties": {
 											"Type": {
 												"type": "string",
 												"enum": ["CT_Soft"]
@@ -10848,267 +10735,10 @@
 												"type": "string",
 												"minLength": 1,
 												"typed_string": {
-													"required": [
-														"Translation"
-													],
-													"properties": {
-														"Translation": {
-															"$ref": "#/$defs/xyz"
-														}
-													}
-												}
-											}
-										}
-									}
-								},
-								{
-									"type": "string",
-									"minLength": 1,
-									"typed_string": {
-										"required": [
-											"Type",
-											"ClearanceBox",
-											"RelativeTransform"
-										],
-										"properties": {
-											"Type": {
-												"type": "string",
-												"enum": ["CT_Soft"]
-											},
-											"ClearanceBox": {
-												"type": "string",
-												"minLength": 1,
-												"typed_string": {
-													"required": [
-														"Min",
-														"Max",
-														"IsValid"
-													],
-													"properties": {
-														"Min": {
-															"$ref": "#/$defs/xyz"
-														},
-														"Max": {
-															"$ref": "#/$defs/xyz"
-														},
-														"IsValid": {
-															"$ref": "#/$defs/boolean"
-														}
-													}
-												}
-											},
-											"RelativeTransform": {
-												"type": "string",
-												"minLength": 1,
-												"typed_string": {
-													"required": ["Rotation"],
-													"properties": {
-														"Rotation": {
-															"$ref": "#/$defs/quaternion"
-														}
-													}
-												}
-											}
-										}
-									}
-								},
-								{
-									"type": "string",
-									"minLength": 1,
-									"typed_string": {
-										"required": [
-											"ClearanceBox",
-											"RelativeTransform"
-										],
-										"properties": {
-											"ClearanceBox": {
-												"type": "string",
-												"minLength": 1,
-												"typed_string": {
-													"required": [
-														"Min",
-														"Max",
-														"IsValid"
-													],
-													"properties": {
-														"Min": {
-															"$ref": "#/$defs/xyz"
-														},
-														"Max": {
-															"$ref": "#/$defs/xyz"
-														},
-														"IsValid": {
-															"$ref": "#/$defs/boolean"
-														}
-													}
-												}
-											},
-											"RelativeTransform": {
-												"type": "string",
-												"minLength": 1,
-												"typed_string": {
-													"required": [
-														"Rotation",
-														"Translation"
-													],
 													"properties": {
 														"Rotation": {
 															"$ref": "#/$defs/quaternion"
 														},
-														"Translation": {
-															"$ref": "#/$defs/xyz"
-														}
-													}
-												}
-											},
-											"ExcludeForSnapping": {
-												"$ref": "#/$defs/boolean"
-											}
-										}
-									}
-								},
-								{
-									"type": "string",
-									"minLength": 1,
-									"typed_string": {
-										"required": [
-											"ClearanceBox",
-											"RelativeTransform"
-										],
-										"properties": {
-											"ClearanceBox": {
-												"type": "string",
-												"minLength": 1,
-												"typed_string": {
-													"required": [
-														"Min",
-														"Max",
-														"IsValid"
-													],
-													"properties": {
-														"Min": {
-															"$ref": "#/$defs/xyz"
-														},
-														"Max": {
-															"$ref": "#/$defs/xyz"
-														},
-														"IsValid": {
-															"$ref": "#/$defs/boolean"
-														}
-													}
-												}
-											},
-											"RelativeTransform": {
-												"type": "string",
-												"minLength": 1,
-												"typed_string": {
-													"required": [
-														"Translation"
-													],
-													"properties": {
-														"Translation": {
-															"$ref": "#/$defs/xyz"
-														}
-													}
-												}
-											},
-											"ExcludeForSnapping": {
-												"$ref": "#/$defs/boolean"
-											}
-										}
-									}
-								},
-								{
-									"type": "string",
-									"minLength": 1,
-									"typed_string": {
-										"required": [
-											"ClearanceBox",
-											"RelativeTransform"
-										],
-										"properties": {
-											"ClearanceBox": {
-												"type": "string",
-												"minLength": 1,
-												"typed_string": {
-													"required": [
-														"Min",
-														"Max",
-														"IsValid"
-													],
-													"properties": {
-														"Min": {
-															"$ref": "#/$defs/xyz"
-														},
-														"Max": {
-															"$ref": "#/$defs/xyz"
-														},
-														"IsValid": {
-															"$ref": "#/$defs/boolean"
-														}
-													}
-												}
-											},
-											"RelativeTransform": {
-												"type": "string",
-												"minLength": 1,
-												"typed_string": {
-													"required": ["Rotation"],
-													"properties": {
-														"Rotation": {
-															"$ref": "#/$defs/quaternion"
-														}
-													}
-												}
-											}
-										}
-									}
-								},
-								{
-									"type": "string",
-									"minLength": 1,
-									"typed_string": {
-										"required": [
-											"Type",
-											"ClearanceBox",
-											"RelativeTransform",
-											"ExcludeForSnapping"
-										],
-										"properties": {
-											"Type": {
-												"type": "string",
-												"enum": ["CT_Soft"]
-											},
-											"ClearanceBox": {
-												"type": "string",
-												"minLength": 1,
-												"typed_string": {
-													"required": [
-														"Min",
-														"Max",
-														"IsValid"
-													],
-													"properties": {
-														"Min": {
-															"$ref": "#/$defs/xyz"
-														},
-														"Max": {
-															"$ref": "#/$defs/xyz"
-														},
-														"IsValid": {
-															"$ref": "#/$defs/boolean"
-														}
-													}
-												}
-											},
-											"RelativeTransform": {
-												"type": "string",
-												"minLength": 1,
-												"typed_string": {
-													"required": [
-														"Translation"
-													],
-													"properties": {
 														"Translation": {
 															"$ref": "#/$defs/xyz"
 														},
@@ -11123,45 +10753,6 @@
 											}
 										}
 									}
-								},
-								{
-									"type": "string",
-									"minLength": 1,
-									"typed_string": {
-										"required": [
-											"ClearanceBox",
-											"ExcludeForSnapping"
-										],
-										"properties": {
-											"ClearanceBox": {
-												"type": "string",
-												"minLength": 1,
-												"typed_string": {
-													"required": [
-														"Min",
-														"Max",
-														"IsValid"
-													],
-													"properties": {
-														"Min": {
-															"$ref": "#/$defs/xyz"
-														},
-														"Max": {
-															"$ref": "#/$defs/xyz"
-														},
-														"IsValid": {
-															"$ref": "#/$defs/boolean"
-														}
-													}
-												}
-											},
-											"ExcludeForSnapping": {
-												"$ref": "#/$defs/boolean"
-											}
-										}
-									}
-								}
-							]
 						}
 					}
 				}
