@@ -42,15 +42,15 @@ export class ArrayConverter extends ConverterMatchesSchema<
 		super(discovery.docs.ajv, {
 			oneOf: [
 				{
-			type: 'object',
-			required: ['type', 'minItems', 'items'],
-			additionalProperties: false,
-			properties: {
-				type: {type: 'string', const: 'array'},
-				items: {type: 'object'},
-				minItems: {type: 'number', minimum: 0},
-				maxItems: {type: 'number', minimum: 1},
-			},
+					type: 'object',
+					required: ['type', 'minItems', 'items'],
+					additionalProperties: false,
+					properties: {
+						type: {type: 'string', const: 'array'},
+						items: {type: 'object'},
+						minItems: {type: 'number', minimum: 0},
+						maxItems: {type: 'number', minimum: 1},
+					},
 				},
 				{
 					type: 'object',
