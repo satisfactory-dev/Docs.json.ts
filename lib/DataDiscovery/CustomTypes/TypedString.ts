@@ -112,6 +112,11 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 						)
 					)
 				)
+				|| (
+					!('required' in schema.typed_string)
+					&& ('properties' in schema.typed_string)
+					&& typed_string.is_object_type(schema.typed_string)
+				)
 			),
 		);
 	}
