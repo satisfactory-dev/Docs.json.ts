@@ -9911,8 +9911,7 @@
 														"left": "/Script/Engine.AnimMontage",
 														"right": {
 															"starts_with": "/Game/FactoryGame/Equipment/NobeliskDetonator/Animation/"
-														},
-														"quote_mode": "double"
+														}
 													}
 												},
 												"AudioEvent": {
@@ -9999,8 +9998,7 @@
 														"left": "/Script/Engine.AnimMontage",
 														"right": {
 															"starts_with": "/Game/FactoryGame/Equipment/NobeliskDetonator/Animation/"
-														},
-														"quote_mode": "double"
+														}
 													}
 												}
 											}
@@ -10047,8 +10045,7 @@
 														"left": "/Script/Engine.AnimMontage",
 														"right": {
 															"starts_with": "/Game/FactoryGame/Equipment/NobeliskDetonator/Animation/"
-														},
-														"quote_mode": "double"
+														}
 													}
 												},
 												"AudioEvent": {
