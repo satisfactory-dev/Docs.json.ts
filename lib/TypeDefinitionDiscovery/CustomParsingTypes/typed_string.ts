@@ -27,6 +27,7 @@ import {
 	typed_string_inner_array_type,
 	typed_string_inner_object_pattern_type,
 	typed_string_inner_object_type,
+	typed_string_inner_object_type_no_required,
 	typed_string_parent_type,
 } from '../../CustomParsingTypes/TypedString';
 import {
@@ -184,13 +185,18 @@ export class typed_string extends GeneratorDoesDiscovery<
 						this.discovery.find(entry[1]),
 					];
 				}),
-				typed_string_value.required,
+				(
+					'required' in typed_string_value
+						? typed_string_value.required
+						: undefined
+				),
 			);
 		};
 	}
 
 	static is_array_type(
 		maybe:
+			| typed_string_inner_object_type_no_required
 			| typed_string_inner_object_type
 			| typed_string_inner_object_pattern_type
 			| typed_string_inner_array_type
@@ -204,6 +210,7 @@ export class typed_string extends GeneratorDoesDiscovery<
 
 	static is_object_pattern_type(
 		maybe:
+			| typed_string_inner_object_type_no_required
 			| typed_string_inner_object_type
 			| typed_string_inner_object_pattern_type
 			| typed_string_inner_array_type
@@ -214,16 +221,21 @@ export class typed_string extends GeneratorDoesDiscovery<
 
 	static is_object_type(
 		maybe:
+			| typed_string_inner_object_type_no_required
 			| typed_string_inner_object_type
 			| typed_string_inner_object_pattern_type
 			| typed_string_inner_array_type
 			| typed_string_inner_array_prefixItems_type,
-	): maybe is typed_string_inner_object_type {
+	): maybe is (
+		| typed_string_inner_object_type
+		| typed_string_inner_object_type_no_required
+	) {
 		return object_has_property(maybe, 'properties');
 	}
 
 	static is_prefixItems_type(
 		maybe:
+			| typed_string_inner_object_type_no_required
 			| typed_string_inner_object_type
 			| typed_string_inner_object_pattern_type
 			| typed_string_inner_array_type

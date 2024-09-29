@@ -42,6 +42,10 @@ type typed_string_object_inner = {
 	required: [string, ...string[]],
 	properties: {[key: string]: unknown}
 };
+type typed_string_object_inner_no_required = {
+	required: [string, ...string[]],
+	properties: {[key: string]: unknown}
+};
 type typed_string_object_pattern_inner = {
 	minProperties: number,
 	patternProperties: {[key: string]: unknown}
@@ -56,6 +60,7 @@ type typed_string_object_parent  = {
 	minLength: 1,
 	typed_string:
 		| typed_string_object_inner
+		| typed_string_object_inner_no_required
 		| typed_string_array_inner
 };
 
@@ -174,21 +179,24 @@ export class ValueToRegexFormatter
 	}
 
 	private typed_string_object_inner_to_regex(
-		typed_string_object:typed_string_object_inner,
+		typed_string_object:(
+			| typed_string_object_inner
+			| typed_string_object_inner_no_required
+		),
 	): string {
 		return `\\(${Object.entries(typed_string_object.properties).map(
 			(entry, index) => {
 				const [property, value] = entry;
-				return `(?:${
+				return `(?:(?:${
 					index > 0
-						? ','
+						? ',?'
 						: ''
 				}${
 					annoyingly_have_to_escape_property(property)
-				}=(?:${
+				})=(?:${
 					this.value_to_regex(value)
 				}))${
-					typed_string_object.required.includes(property)
+					(typed_string_object?.required || []).includes(property)
 						? ''
 						: '?'
 				}`;
@@ -218,7 +226,12 @@ export class ValueToRegexFormatter
 
 	private value_to_regex(value:unknown): string
 	{
-		if (ValueToRegexFormatter.is_typed_string_object_inner(value)) {
+		if (
+			ValueToRegexFormatter.is_typed_string_object_inner(value)
+			|| ValueToRegexFormatter.is_typed_string_object_inner_no_required(
+				value,
+			)
+		) {
 			return this.typed_string_object_inner_to_regex(value);
 		} else if (
 			ValueToRegexFormatter.is_typed_string_object_pattern_inner(value)
@@ -381,6 +394,19 @@ export class ValueToRegexFormatter
 		);
 	}
 
+	private static is_typed_string_object_inner_no_required(
+		maybe:unknown,
+	): maybe is typed_string_object_inner {
+		return (
+			object_has_property(
+				maybe,
+				'properties',
+				value_is_non_array_object,
+			)
+			&& 1 === Object.keys(maybe).length
+		);
+	}
+
 	private static is_typed_string_object_parent(
 		maybe:unknown,
 	): maybe is typed_string_object_parent  {
@@ -392,6 +418,9 @@ export class ValueToRegexFormatter
 			&& (
 				this.is_typed_string_object_inner(maybe.typed_string)
 				|| this.is_typed_string_array_inner(maybe.typed_string)
+				|| this.is_typed_string_object_inner_no_required(
+					maybe.typed_string,
+				)
 			)
 		);
 	}

@@ -36,8 +36,14 @@ type typed_string_object_type =
 	| typed_string_sub_types
 	| typed_string_parent_type;
 
-export type typed_string_inner_object_type = {
+export type typed_string_inner_object_type = (
+	& typed_string_inner_object_type_no_required
+	& {
 	required: [string, ...string[]],
+	}
+);
+
+export type typed_string_inner_object_type_no_required = {
 	properties: {
 		[key: string]: (
 			| typed_string_object_type
@@ -80,6 +86,7 @@ export type typed_string_inner_array_prefixItems_type = {
 };
 
 type typed_string_inner_type =
+	| typed_string_inner_object_type_no_required
 	| typed_string_inner_object_type
 	| typed_string_inner_object_pattern_type
 	| typed_string_inner_array_type

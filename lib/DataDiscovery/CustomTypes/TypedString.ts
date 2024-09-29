@@ -14,6 +14,7 @@ import {
 	typed_string_inner_array_type,
 	typed_string_inner_object_pattern_type,
 	typed_string_inner_object_type,
+	typed_string_inner_object_type_no_required,
 	typed_string_parent_type,
 } from '../../CustomParsingTypes/TypedString';
 import {
@@ -289,6 +290,7 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 
 	private async convert_object(
 		schema:
+			| typed_string_inner_object_type_no_required
 			| typed_string_inner_object_type
 			| typed_string_inner_object_pattern_type,
 		shallow:{[key: string]: unknown},
@@ -350,6 +352,7 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 
 	private convert_object_check_shallow_parse(
 		schema:
+			| typed_string_inner_object_type_no_required
 			| typed_string_inner_object_type
 			| typed_string_inner_object_pattern_type,
 		shallow:{[key: string]: unknown},
@@ -395,6 +398,7 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 
 	private convert_object_property_schema(
 		schema:
+			| typed_string_inner_object_type_no_required
 			| typed_string_inner_object_type
 			| typed_string_inner_object_pattern_type,
 		property: string,
