@@ -3996,15 +3996,10 @@
 									"minItems": 2,
 									"maxItems": 2,
 									"items": {
-										"oneOf": [
-											{
 												"type": "string",
 												"minLength": 1,
 												"typed_string": {
 													"required": [
-														"Filter",
-														"FilterMontageTag",
-														"Exclusive",
 														"AudioEvent"
 													],
 													"properties": {
@@ -4022,20 +4017,6 @@
 														}
 													}
 												}
-											},
-											{
-												"type": "string",
-												"minLength": 1,
-												"typed_string": {
-													"required": ["AudioEvent"],
-													"properties": {
-														"AudioEvent": {
-															"$ref": "#/$defs/FGHoverPack--AudioEvent"
-														}
-													}
-												}
-											}
-										]
 									}
 								}
 							}
