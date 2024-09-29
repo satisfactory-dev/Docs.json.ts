@@ -13,6 +13,7 @@ import {
 	string_or_string_array_to_node,
 	UnrealEngineString_parent_type,
 	UnrealEngineString_regex,
+	UnrealEngineString_regex_quoted,
 } from '../../CustomParsingTypes/UnrealEngineString';
 import ts, {
 	CallExpression,
@@ -49,7 +50,10 @@ export class UnrealEngineStringConverter extends Converter<
 		return Promise.resolve(
 			this.can_convert_schema(schema)
 			&& is_string(raw_data)
-			&& UnrealEngineString_regex.test(raw_data),
+			&& (
+				UnrealEngineString_regex.test(raw_data)
+				|| UnrealEngineString_regex_quoted.test(raw_data)
+			),
 		);
 	}
 

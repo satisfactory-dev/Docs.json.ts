@@ -6,6 +6,7 @@ import {
 	UnrealEngineString_parent_type,
 	UnrealEngineString_reference_type,
 	UnrealEngineString_regex,
+	UnrealEngineString_regex_quoted,
 	UnrealEngineString_schema_definitions,
 	UnrealEngineString_type,
 } from '../../CustomParsingTypes/UnrealEngineString';
@@ -45,7 +46,11 @@ export class UnrealEngineString extends Generator<
 		left extends string = string,
 		right extends string = string
 	>(value:string): UnrealEngineString_left_right<left, right> {
-		const result = UnrealEngineString_regex.exec(value);
+		let result = UnrealEngineString_regex.exec(value);
+
+		if (!result) {
+			result = UnrealEngineString_regex_quoted.exec(value);
+		}
 
 		if (!result) {
 			throw new Error(`Not an UnrealEngineString (${value})`);

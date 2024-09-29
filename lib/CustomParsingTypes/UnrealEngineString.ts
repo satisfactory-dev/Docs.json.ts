@@ -39,6 +39,7 @@ import {
 } from '../FilesGenerator';
 
 export const UnrealEngineString_regex = /^([^']+)'(?:"([^"]+)"|([^"]+))'$/;
+export const UnrealEngineString_regex_quoted = /^"([^']+)'(?:"([^"]+)"|([^"]+))'"$/;
 
 export const UnrealEngineString_general_regex =
 	`/(?:[A-Z-][A-Za-z0-9_-]+/)+(?:[A-Z][A-Za-z_0-9-]+\\.[A-Z][A-Za-z_0-9-]+(?:_C)?(?::[A-Z][A-Za-z0-9_]+)?|[A-Z0-9][A-Za-z_]+\\.[A-Z0-9][A-Za-z_]+)`;
