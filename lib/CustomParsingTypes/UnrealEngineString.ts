@@ -39,6 +39,7 @@ import {
 } from '../FilesGenerator';
 
 export const UnrealEngineString_regex = /^([^']+)'(?:"([^"]+)"|([^"]+))'$/;
+// eslint-disable-next-line max-len
 export const UnrealEngineString_regex_quoted = /^"([^']+)'(?:"([^"]+)"|([^"]+))'"$/;
 
 export const UnrealEngineString_general_regex =
