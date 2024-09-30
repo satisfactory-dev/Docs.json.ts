@@ -62,6 +62,8 @@ export class OneOfConverter extends ConverterMatchesSchema<oneOf> {
 	> {
 		const candidates = await this.discovery.candidates;
 
+		const failures:NoMatchError[] = [];
+
 		for (const entry of schema.oneOf) {
 			const converter = await Converter.has_matching_schema_and_raw_data(
 				candidates,
@@ -76,7 +78,13 @@ export class OneOfConverter extends ConverterMatchesSchema<oneOf> {
 					raw_data,
 				)
 			) {
+				try {
 				return await converter.convert(entry, raw_data);
+				} catch (err) {
+					if (err instanceof NoMatchError) {
+						failures.push(err);
+					}
+				}
 			}
 		}
 
