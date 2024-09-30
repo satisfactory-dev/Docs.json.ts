@@ -79,7 +79,7 @@ export class OneOfConverter extends ConverterMatchesSchema<oneOf> {
 				)
 			) {
 				try {
-				return await converter.convert(entry, raw_data);
+					return await converter.convert(entry, raw_data);
 				} catch (err) {
 					if (err instanceof NoMatchError) {
 						failures.push(err);
