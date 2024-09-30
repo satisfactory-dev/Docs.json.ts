@@ -51,7 +51,7 @@ export function adjust_class_name(class_name: string): string {
 		return 'Docs_class';
 	}
 
-	return class_name.replace(/[^A-Za-z_\d]/g, '_');
+	return class_name.replace(/[^A-Za-z_\d ]/g, '_');
 }
 
 export const modifier_map: {
@@ -370,7 +370,7 @@ export function createPropertySignature(
 }
 
 export function needs_element_access(property: string): boolean {
-	return /[?[\]]/.test(property);
+	return /[?[\] ]/.test(property);
 }
 
 export function computed_property_name_or_undefined(
