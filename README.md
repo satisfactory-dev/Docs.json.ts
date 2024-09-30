@@ -25,7 +25,9 @@
 -   Docker
     -   recommend vscode devcontainer support
     -   phpstorm's devcontainer support works but doesn't seem as capable
--   A copy of Update 8's `Docs.json` file
+-   One or both of:
+    -   A copy of Update 8's `Docs.json` file
+    -   A copy of 1.0's equivalent of `Docs.json` files (they're semi-localised now)
 
 ## Instructions
 
@@ -35,9 +37,10 @@
     - `NODE_OPTIONS` env var may require opening a fresh terminal if you
       receieve an error along the lines of
       `TypeError [ERR_UNKNOWN_FILE_EXTENSION]: Unknown file extension ".ts"`
-1. Copy `Docs.json` to `./data/update8/`
+1.  - Copy `Docs.json` to `./data/update8/`
+    - Copy `en-US.json` to `./data/1.0/`
 1. Run `make validate`
-    - if this fails, either the `Docs.json` is wrong or the schema is out-of-date
+    - if this fails, either the `Docs.json` (or equivalent thereof) is wrong or the schema is out-of-date
     - if this succeeds, run `make generate`
 
 ### IDE Integration
@@ -52,29 +55,41 @@
 1. refer to [discover-types.ts](discover-types.ts) for how to generate the
    types & data
 
-    - You will need to replace the usage of the `docs` helper with
-      something like the following (where `${__dirname}/data/` is the data
-      path in your new project):
+-   You will need to replace the usage of the `docs` helper with
+    something like the following (where `${__dirname}/data/` is the data
+    path in your new project):
 
-        ```ts
-        const __dirname = __dirname_from_meta(import.meta);
-        const ajv = new Ajv({
-        	verbose: true,
-        	code: {
-        		source: true,
-        		es5: false,
-        		esm: true,
-        		optimize: true,
-        	},
-        });
-        configure_ajv(ajv);
+          ```ts
+          const __dirname = __dirname_from_meta(import.meta);
+          const ajv = new Ajv({
+          	verbose: true,
+          	logger: false,
+          	allErrors: false,
+          	code: {
+          		source: true,
+          		esm: true,
+          		lines: true,
+          		optimize: 2,
+          	},
+          });
+          configure_ajv(ajv);
 
-        export const docs = new DocsTsGenerator({
-        	ajv,
-        	docs_path: `${__dirname}/data/update8/Docs.json`,
-        	cache_path: `${__dirname}/data/update8/`,
-        });
-        ```
+          export const docs = new DocsTsGenerator({
+          	ajv,
+          	docs_versions: {
+          		version_1_0_0_0: new DocsTsGeneratorVersion({
+          			docs_path: `${__dirname}/../data/1.0/en-US.json`,
+          			cache_path: `${__dirname}/../data/1.0/`,
+          			UnrealEngineString_quote_mode: 'double',
+          		}),
+          		update8: new DocsTsGeneratorVersion({
+          			docs_path: `${__dirname}/../data/update8/Docs.json`,
+          			cache_path: `${__dirname}/../data/update8/`,
+          			UnrealEngineString_quote_mode: 'original',
+          		}),
+          	},
+          });
+          ```
 
     1. note: this package will auto-fix issues in generated code according to eslint configs relative to the directory passed to `TypeDefinitionWriter::write()`
 
