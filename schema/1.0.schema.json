@@ -4403,8 +4403,7 @@
 														"left": "/Script/AkAudio.AkAudioEvent",
 														"right": {
 															"starts_with": "/Game/WwiseAudio/Events/Equipment/GasMask/"
-														},
-														"quote_mode": "double"
+														}
 													}
 												},
 												"CameraAnim": {
