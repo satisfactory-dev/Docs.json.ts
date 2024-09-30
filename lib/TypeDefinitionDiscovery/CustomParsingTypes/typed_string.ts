@@ -190,6 +190,7 @@ export class typed_string extends GeneratorDoesDiscovery<
 						? typed_string_value.required
 						: undefined
 				),
+				false,
 			);
 		};
 	}

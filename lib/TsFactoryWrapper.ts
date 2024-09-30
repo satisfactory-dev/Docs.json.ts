@@ -340,6 +340,7 @@ export function create_type(type: keyof typeof type_map): ts.KeywordTypeNode {
 export function create_object_type_from_entries(
 	entries: [string, TypeNode][],
 	required?:[string, ...string[]],
+	default_required = true,
 ): TypeLiteralNode {
 	return ts.factory.createTypeLiteralNode(
 		entries.map((entry) => {
@@ -348,7 +349,7 @@ export function create_object_type_from_entries(
 			return createPropertySignature(
 				property,
 				type,
-				required ? required.includes(property) : true,
+				required ? required.includes(property) : default_required,
 			);
 		}),
 	);

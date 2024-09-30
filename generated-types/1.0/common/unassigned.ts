@@ -152,9 +152,9 @@ export type mClearanceData__type =
 					IsValid: boolean__type;
 				};
 				RelativeTransform?: {
-					Rotation: quaternion__type;
-					Translation: xyz__type;
-					Scale3D: xyz__type;
+					Rotation?: quaternion__type;
+					Translation?: xyz__type;
+					Scale3D?: xyz__type;
 				};
 				ExcludeForSnapping?: boolean__type;
 			},
@@ -166,9 +166,9 @@ export type mClearanceData__type =
 					IsValid: boolean__type;
 				};
 				RelativeTransform?: {
-					Rotation: quaternion__type;
-					Translation: xyz__type;
-					Scale3D: xyz__type;
+					Rotation?: quaternion__type;
+					Translation?: xyz__type;
+					Scale3D?: xyz__type;
 				};
 				ExcludeForSnapping?: boolean__type;
 			}[],
