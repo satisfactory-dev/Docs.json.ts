@@ -133,6 +133,20 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 				{
 					schema,
 					raw_data,
+					can_convert: this.can_convert_schema(schema),
+					is_string: is_string(raw_data),
+					is_array_type: typed_string.is_array_type(
+						schema.typed_string,
+					),
+					string_to_array: string_to_array(raw_data),
+					shallow: (
+						typed_string.is_array_type(
+							schema.typed_string,
+						) && this.check_shallow_array_schema(
+							schema.typed_string,
+							string_to_array(raw_data),
+						)
+					),
 				},
 				'Cannot convert!',
 			)

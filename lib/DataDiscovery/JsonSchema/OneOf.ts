@@ -92,13 +92,31 @@ export class OneOfConverter extends ConverterMatchesSchema<oneOf> {
 			{
 				schema,
 				raw_data,
-				oneOf: await Promise.all(schema.oneOf.map((
+				failures,
+				oneOf: await Promise.all(schema.oneOf.map(async (
 					e,
-				) => Converter.has_matching_schema_and_raw_data(
-					candidates,
-					e,
-					raw_data,
-				))),
+				) => {
+					// eslint-disable-next-line max-len
+					const converter = await Converter.has_matching_schema_and_raw_data(
+						candidates,
+						e,
+						raw_data,
+					);
+
+					return [
+						e,
+						converter,
+						(
+							converter
+								// eslint-disable-next-line max-len
+								? await converter.can_convert_schema_and_raw_data(
+									e,
+									raw_data,
+								)
+								: 'no converter'
+						),
+					];
+				})),
 			},
 			'Unable to convert data!',
 		);

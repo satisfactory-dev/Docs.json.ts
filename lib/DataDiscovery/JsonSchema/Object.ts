@@ -313,10 +313,16 @@ export class ObjectConverter extends ObjectConverterMatchesSchema<
 			)) {
 				throw new NoMatchError(
 					{
+						raw_data,
 						property,
+						converter: converters[property].constructor.name,
+						can_convert_schema: converters[
+							property
+						].can_convert_schema(sub_schema[property]),
 						value,
 						sub_schema: sub_schema[property],
 						instance: converters[property].constructor.name,
+						schema,
 					},
 					'Cannot convert value!',
 				);

@@ -66,6 +66,14 @@ export class UnrealEngineStringConverter extends Converter<
 				{
 					schema,
 					raw_data,
+					can_convert: this.can_convert_schema(schema),
+					is_string: is_string(raw_data),
+					regex: UnrealEngineString_regex,
+					regex_quoted: UnrealEngineString_regex_quoted,
+					test_regex: UnrealEngineString_regex.test(raw_data),
+					test_regex_quoted: UnrealEngineString_regex_quoted.test(
+						raw_data,
+					),
 				},
 				'Not an UnrealEngineString!',
 			);

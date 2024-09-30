@@ -65,6 +65,7 @@ try {
 			`./discovery-types.${sub_path}.failure.json`,
 			JSON.stringify(
 				{
+					now: performance.now(),
 					property: err.property as unknown,
 					message: err.message,
 					stack: err.stack?.split('\n'),
