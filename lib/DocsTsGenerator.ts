@@ -90,6 +90,7 @@ export class DocsTsGeneratorVersion
 	docs: DocsData | undefined;
 	readonly cache_path: string | undefined;
 	readonly docs_path: string | DocsData;
+	readonly types_from_module: string|undefined;
 	// eslint-disable-next-line max-len
 	readonly UnrealEngineString_quote_mode: typeof UnrealEngineString['quote_mode'];
 
@@ -99,14 +100,17 @@ export class DocsTsGeneratorVersion
 		// optional cache folder path for cacheable resources
 		cache_path = undefined,
 		UnrealEngineString_quote_mode,
+		types_from_module = undefined,
 	}: {
 		cache_path: string | undefined,
 		docs_path: string | DocsData,
 		UnrealEngineString_quote_mode: typeof UnrealEngineString['quote_mode'],
+		types_from_module?: string,
 	}) {
 		this.cache_path = cache_path;
 		this.docs_path = docs_path;
 		this.UnrealEngineString_quote_mode = UnrealEngineString_quote_mode;
+		this.types_from_module = types_from_module;
 	}
 }
 
@@ -120,7 +124,6 @@ export class DocsTsGenerator {
 	private readonly schema_data:DocsSchemaByVersion = new DocsSchemaByVersion();
 	public readonly ajv:Ajv;
 	readonly docs_versions: docs_versions;
-	readonly types_from_module: string|undefined;
 
 	static readonly PERF_EARLY_RETURN = 'Early Return of Docs.json';
 	static readonly PERF_FAILURE = 'Failure to load Docs.json';
@@ -138,11 +141,9 @@ export class DocsTsGenerator {
 		ajv,
 		// Docs object
 		docs_versions,
-		types_from_module = undefined,
 	}: {
 		ajv: Ajv,
 		docs_versions: docs_versions;
-		types_from_module?: string,
 	}) {
 		if (Object.keys(docs_versions).length < 1) {
 			throw new Error('No versions specified!');
@@ -150,7 +151,6 @@ export class DocsTsGenerator {
 
 		this.ajv = ajv;
 		this.docs_versions = docs_versions;
-		this.types_from_module = types_from_module;
 	}
 
 	async definition(

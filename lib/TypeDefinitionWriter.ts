@@ -425,10 +425,14 @@ export class TypeDefinitionWriter
 					.join('\n\n'),
 			);
 
-			if (this.docs.types_from_module) {
+			const types_from_module = this.docs.docs_versions[
+				this.version
+			]?.types_from_module;
+
+			if (types_from_module) {
 				code = code.replace(
 					/} from '(?:\.\.\/)+(classes|common|utils)\//g,
-					`} from '${this.docs.types_from_module}/$1/`,
+					`} from '${types_from_module}/$1/`,
 				);
 			}
 
