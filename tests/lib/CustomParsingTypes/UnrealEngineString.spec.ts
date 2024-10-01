@@ -42,26 +42,26 @@ const general_regex =
 		regex_uppercase
 	}][A-Za-z0-9_]+)?|[${
 		regex_uppercase
-	}][${
+	}0-9][${
 		regex_alpha
 	}_]+\\.[${
 		regex_uppercase
-	}][${
+	}0-9][${
 		regex_alpha
 	}_]+)`;
 
 const right_regex_suffix =
-	`(?:[${
+	`(?:_?[${
 		regex_uppercase
-	}][${
+	}0-9][${
 		regex_alpha
 	}0-9_.]+/)*[${
 		regex_uppercase
-	}][${
+	}0-9][${
 		regex_alpha
 	}_.0-9-]+(?::[${
 		regex_uppercase
-	}][${
+	}0-9][${
 		regex_alpha
 	}0-9]+)?`;
 
@@ -78,7 +78,11 @@ void describe('UnrealEngineString', () => {
 						general_regex
 					}|"${
 						general_regex
-					}")')`,
+					}")'|"(?:/Script/Engine.BlueprintGeneratedClass)'${
+						general_regex
+					}'"|\\\\"(?:/Script/Engine.BlueprintGeneratedClass)'${
+						general_regex
+					}'\\\\")`,
 				],
 				[
 					{left: 'foo'},
@@ -86,7 +90,11 @@ void describe('UnrealEngineString', () => {
 						general_regex
 					}|"${
 						general_regex
-					}")')`,
+					}")'|"(?:foo)'${
+						general_regex
+					}'"|\\\\"(?:foo)'${
+						general_regex
+					}'\\\\")`,
 				],
 				[
 					{left: ['foo']},
@@ -94,7 +102,11 @@ void describe('UnrealEngineString', () => {
 						general_regex
 					}|"${
 						general_regex
-					}")')`,
+					}")'|"(?:foo)'${
+						general_regex
+					}'"|\\\\"(?:foo)'${
+						general_regex
+					}'\\\\")`,
 				],
 				[
 					{left: ['foo', 'bar']},
@@ -102,19 +114,47 @@ void describe('UnrealEngineString', () => {
 						general_regex
 					}|"${
 						general_regex
-					}")')`,
+					}")'|"(?:foo|bar)'${
+						general_regex
+					}'"|\\\\"(?:foo|bar)'${
+						general_regex
+					}'\\\\")`,
 				],
 				[
 					{right: 'foo'},
-					`(?:(?:/Script/Engine.BlueprintGeneratedClass)'(?:(?:foo)|"(?:foo)")')`,
+					`(?:(?:/Script/Engine.BlueprintGeneratedClass)'(?:${
+						'(?:foo)'
+					}|"${
+						'(?:foo)'
+					}")'|"(?:/Script/Engine.BlueprintGeneratedClass)'${
+						'(?:foo)'
+					}'"|\\\\"(?:/Script/Engine.BlueprintGeneratedClass)'${
+						'(?:foo)'
+					}'\\\\")`,
 				],
 				[
 					{right: ['foo']},
-					`(?:(?:/Script/Engine.BlueprintGeneratedClass)'(?:(?:foo)|"(?:foo)")')`,
+					`(?:(?:/Script/Engine.BlueprintGeneratedClass)'(?:${
+						'(?:foo)'
+					}|"${
+						'(?:foo)'
+					}")'|"(?:/Script/Engine.BlueprintGeneratedClass)'${
+						'(?:foo)'
+					}'"|\\\\"(?:/Script/Engine.BlueprintGeneratedClass)'${
+						'(?:foo)'
+					}'\\\\")`,
 				],
 				[
 					{right: ['foo', 'bar']},
-					`(?:(?:/Script/Engine.BlueprintGeneratedClass)'(?:(?:foo|bar)|"(?:foo|bar)")')`,
+					`(?:(?:/Script/Engine.BlueprintGeneratedClass)'(?:${
+						'(?:foo|bar)'
+					}|"${
+						'(?:foo|bar)'
+					}")'|"(?:/Script/Engine.BlueprintGeneratedClass)'${
+						'(?:foo|bar)'
+					}'"|\\\\"(?:/Script/Engine.BlueprintGeneratedClass)'${
+						'(?:foo|bar)'
+					}'\\\\")`,
 				],
 				[
 					{right: {starts_with: 'foo'}},
@@ -122,7 +162,11 @@ void describe('UnrealEngineString', () => {
 						right_regex_suffix
 					}))|"(?:(?:foo${
 						right_regex_suffix
-					}))")')`,
+					}))")'|"(?:/Script/Engine.BlueprintGeneratedClass)'(?:(?:foo${
+						right_regex_suffix
+					}))'"|\\\\"(?:/Script/Engine.BlueprintGeneratedClass)'(?:(?:foo${
+						right_regex_suffix
+					}))'\\\\")`,
 				],
 				[
 					{right: {starts_with: ['foo']}},
@@ -130,7 +174,11 @@ void describe('UnrealEngineString', () => {
 						right_regex_suffix
 					}))|"(?:(?:foo${
 						right_regex_suffix
-					}))")')`,
+					}))")'|"(?:/Script/Engine.BlueprintGeneratedClass)'(?:(?:foo${
+						right_regex_suffix
+					}))'"|\\\\"(?:/Script/Engine.BlueprintGeneratedClass)'(?:(?:foo${
+						right_regex_suffix
+					}))'\\\\")`,
 				],
 				[
 					{right: {starts_with: ['foo', 'bar']}},
@@ -142,7 +190,15 @@ void describe('UnrealEngineString', () => {
 						right_regex_suffix
 					}|bar${
 						right_regex_suffix
-					}))")')`,
+					}))")'|"(?:/Script/Engine.BlueprintGeneratedClass)'(?:(?:foo${
+						right_regex_suffix
+					}|bar${
+						right_regex_suffix
+					}))'"|\\\\"(?:/Script/Engine.BlueprintGeneratedClass)'(?:(?:foo${
+						right_regex_suffix
+					}|bar${
+						right_regex_suffix
+					}))'\\\\")`,
 				],
 			];
 			const inner = UnrealEngineString.ajv_macro_generator(
