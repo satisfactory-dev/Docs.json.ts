@@ -4634,6 +4634,7 @@
 				"mBeepDelayMin",
 				"mDetectionRange",
 				"mUpdateClosestObjectTime",
+				"mClosestObject",
 				"mClosestObjectInScanRange",
 				"mNormalizedDistanceToClosestObject",
 				"mAngleToClosestObject",
@@ -4724,6 +4725,18 @@
 				},
 				"mUpdateClosestObjectTime": {
 					"$ref": "#/$defs/decimal-string"
+				},
+				"mClosestObject": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["ActorLocation"],
+						"properties": {
+							"ActorLocation": {
+								"$ref": "#/$defs/xyz"
+							}
+						}
+					}
 				},
 				"mClosestObjectInScanRange": {
 					"$ref": "#/$defs/boolean"

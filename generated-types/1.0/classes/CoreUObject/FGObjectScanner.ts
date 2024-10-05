@@ -1,6 +1,7 @@
 import {
 	Montage_1P__type,
 	Montage_3P__type,
+	xyz__type,
 	empty_object__type,
 	NativeClass__type,
 } from '../../common/unassigned';
@@ -38,6 +39,9 @@ export type FGObjectScanner__type = FGEquipment__base__type & {
 	mBeepDelayMin: decimal_string__type;
 	mDetectionRange: decimal_string__type;
 	mUpdateClosestObjectTime: decimal_string__type;
+	mClosestObject: {
+		ActorLocation: xyz__type;
+	};
 	mClosestObjectInScanRange: boolean__type;
 	mNormalizedDistanceToClosestObject: decimal_string__type;
 	mAngleToClosestObject: decimal_string__type;
