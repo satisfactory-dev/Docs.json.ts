@@ -40,7 +40,7 @@ export class $ref extends CandidatesDiscovery
 		) : maybe is (
 			& {[key: string]: unknown}
 			& {$ref: Exclude<(keyof typeof $defs), number>}
-			) {
+		) {
 			return (
 				object_has_property(maybe, '$ref', is_string)
 				&& maybe.$ref.startsWith('#/$defs/')
