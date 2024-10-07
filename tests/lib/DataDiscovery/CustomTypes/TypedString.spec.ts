@@ -22,11 +22,15 @@ import {
 	is_string,
 } from '@satisfactory-dev/predicates.ts';
 
+// eslint-disable-next-line max-len
+import common_schema from '../../../../schema/common.schema.json' with {type: 'json'};
+
 void describe('TypedStringConverter', async () => {
 	const discovery = new DataDiscovery(docs, 'update8');
 	const instance = new TypedStringConverter(
 		discovery,
 		(await docs.schema('update8')).$defs,
+		common_schema.$defs,
 	);
 	const object_schema:typed_string_parent_type = {
 		type: 'string',

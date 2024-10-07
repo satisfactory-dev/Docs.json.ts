@@ -72,6 +72,8 @@ import {
 	NoMatchError,
 } from './Exceptions';
 
+import common_schema from '../schema/common.schema.json' with {type: 'json'}
+
 type SchemaObjectWithDefinitions<Definitions extends {[key: string]: true}> =
 	& SchemaObject
 	& {
@@ -94,12 +96,29 @@ function is_schema_with_$defs(
 		)
 		&& Object.keys(schema.$defs).every(
 			maybe => (
+				maybe.startsWith('common.schema.json#/$defs/')
+					? maybe
+					: (
 				maybe.startsWith('#/$defs/')
 					? maybe
 					: `#/$defs/${maybe}`
+					)
 			) in discovered_types,
 		)
 		&& Object.keys(discovered_types).every(maybe => {
+			if (maybe.startsWith('common.schema.json#/$defs/')) {
+				const ref = maybe.substring(26);
+				const common_$defs = common_schema.$defs;
+
+				return (
+					object_has_property(
+						common_$defs,
+						ref,
+						value_is_non_array_object,
+					)
+				);
+			}
+
 			const ref = (
 				maybe.startsWith('#/$defs/')
 					? maybe.substring(8)

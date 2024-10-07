@@ -26,15 +26,24 @@ import {
 	not_undefined,
 } from '@satisfactory-dev/custom-assert';
 
+// eslint-disable-next-line max-len
+import common_schema from '../../../../schema/common.schema.json' with {type: 'json'};
+import {
+	common_ref,
+} from '../../../../lib';
+
 void describe('typed_string', async () => {
 	const type_definition_writer = new TypeDefinitionWriter(docs, 'update8');
 	const discovery = await type_definition_writer.discovery;
-	const discovered_types = (
+	const {
+		discovered_types,
+	} = (
 		await discovery.types_discovery.discover_types()
-	).discovered_types;
+	);
 
 	const instance = new typed_string(
 		discovered_types,
+		Object.keys(common_schema.$defs).map(common_ref),
 		discovery,
 	);
 

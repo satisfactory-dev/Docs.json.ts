@@ -54,6 +54,10 @@
 -   [x] weaponState
 -   [x] xyz-array
 
+## chema.json#/$defs/UnrealEngineString
+
+-   [x] chema.json#/$defs/UnrealEngineString--array
+
 ## FGAmmoType
 
 -   [x] FGAmmoTypeSpreadshot
@@ -281,10 +285,6 @@
 
 -   [x] mEventType
 -   [x] mEventType--optional-csv
-
-## UnrealEngineString
-
--   [x] UnrealEngineString--array
 
 ## vectors
 

@@ -31,6 +31,7 @@ import {
 	typed_string_parent_type,
 } from '../../CustomParsingTypes/TypedString';
 import {
+	common_ref,
 	local_ref,
 } from '../../StringStartsWith';
 import {
@@ -82,13 +83,17 @@ export class typed_string extends GeneratorDoesDiscovery<
 
 	constructor(
 		supported_refs: local_ref<string>[],
+		supported_common_refs: common_ref<string>[],
 		discovery:TypeDefinitionDiscovery,
 	) {
 		super(
 			{
 				...generate_object_parent_schema(),
 				$defs: {
-					...generate_typed_string_$defs(supported_refs),
+					...generate_typed_string_$defs(
+						supported_refs,
+						supported_common_refs,
+					),
 				},
 			},
 			discovery,

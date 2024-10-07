@@ -69,6 +69,8 @@ import {
 	Ref,
 } from './DataDiscovery/JsonSchema/Ref';
 
+import common_schema from '../schema/common.schema.json' with {type: 'json'};
+
 type progress = {[p: string]: string[]};
 
 export class DataDiscovery
@@ -93,6 +95,11 @@ export class DataDiscovery
 		this.docs = docs;
 		this.literal = literal || new Literal();
 		this.version = version;
+
+		const {
+			$defs: common_$defs,
+		} = common_schema;
+
 		this.candidates = docs.schema(version).then(({$defs}) => {
 			return [
 				new BooleanConverter(docs.ajv),
@@ -105,7 +112,11 @@ export class DataDiscovery
 				new UnrealEngineStringConverter(),
 				new ObjectConverter(this),
 				new PatternedObjectConverter(this),
-				new TypedStringConverter(this, $defs),
+				new TypedStringConverter(
+					this,
+					$defs,
+					common_$defs,
+				),
 				new OneOfConverter(this),
 				new Ref(this),
 			];
@@ -131,17 +142,26 @@ export class DataDiscovery
 			this.docs.get(this.version),
 		]);
 
+		if ('common' === this.version) {
+			return result;
+		} else if (
+			!('prefixItems' in schema)
+			|| !Array.isArray(schema.prefixItems)
+		) {
+			throw new Error(`Unsupported schema!`);
+		}
+
 		let index = 0;
 		for (const e of docs) {
 			performance.mark(`${this.constructor.name}.generate() start`);
 			const converter = await Converter.find_matching_schema(
 				await this.candidates,
-				schema.prefixItems[index],
+				schema.prefixItems[index] as SchemaObject,
 			);
 
 			const maybe_result = await this.literal.value_literal(
 				await converter.convert(
-					schema.prefixItems[index],
+					schema.prefixItems[index] as SchemaObject,
 					e,
 				),
 			);

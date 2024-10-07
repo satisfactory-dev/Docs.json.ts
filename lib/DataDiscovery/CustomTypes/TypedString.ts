@@ -24,6 +24,7 @@ import {
 	DataDiscovery,
 } from '../../DataDiscovery';
 import {
+	common_ref,
 	local_ref,
 } from '../../StringStartsWith';
 import {
@@ -62,13 +63,18 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 	constructor(
 		discovery:DataDiscovery,
 		$defs:{[key: string]: SchemaObject},
+		common_$defs: {[key: string]: SchemaObject},
 	) {
 		const local_refs = Object.keys($defs).map(local_ref);
+		const common_refs = Object.keys(common_$defs).map(common_ref);
 		super(discovery.docs.ajv, {
 			...generate_object_parent_schema(),
 			$defs: {
 				...$defs,
-				...generate_typed_string_$defs(local_refs),
+				...generate_typed_string_$defs(
+					local_refs,
+					common_refs,
+				),
 			},
 		});
 		this.discovery = discovery;

@@ -3,6 +3,7 @@ import {
 } from "./lib/DocsTsGenerator";
 
 export const versions: Record<keyof docs_versions, string> = {
+	common: 'common',
 	update8: 'update8',
 	version_1_0_0_0: '1.0',
 };

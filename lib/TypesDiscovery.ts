@@ -16,6 +16,7 @@ import {
 } from './TypesDiscovery/non_empty_array_property';
 import {
 	$ref,
+	common_$ref,
 } from './TypesDiscovery/JsonSchema/$ref';
 import {
 	non_array_object_property,
@@ -160,6 +161,7 @@ export class TypesDiscovery
 			new non_array_object_property('items', schema),
 			new properties(schema),
 			new $ref(schema),
+			new common_$ref(),
 			new ConstString(schema),
 			new EnumString(schema),
 		];

@@ -2,6 +2,7 @@ import Ajv, {
 	SchemaObject,
 } from 'ajv/dist/2020';
 import {
+	common_ref,
 	local_ref,
 } from '../StringStartsWith';
 import {
@@ -131,6 +132,7 @@ export function generate_object_parent_schema() {
 
 export function generate_typed_string_$defs(
 	$defs:local_ref<string>[],
+	common_$defs: common_ref<string>[],
 ) {
 	return {
 		...UnrealEngineString_schema_definitions,
@@ -143,7 +145,10 @@ export function generate_typed_string_$defs(
 					properties: {
 						$ref: {
 							type: 'string',
-							enum: $defs,
+							enum: [
+								...$defs,
+								...common_$defs,
+							],
 						},
 					},
 				},
@@ -275,6 +280,7 @@ export class TypedString
 
 	configure_ajv(
 		$defs:{[key: string]: SchemaObject},
+		common_$defs: {[key: string]: SchemaObject},
 		ajv:Ajv,
 	) {
 		if (this.already_configured.has(ajv)) {
@@ -282,11 +288,15 @@ export class TypedString
 		}
 
 		const local_refs = Object.keys($defs).map(local_ref);
+		const common_refs = Object.keys(common_$defs).map(common_ref);
 
 		this.already_configured.add(ajv);
 
 		const meta_schema = {
-			$defs: generate_typed_string_$defs(local_refs),
+			$defs: generate_typed_string_$defs(
+				local_refs,
+				common_refs,
+			),
 			oneOf: [
 				{$ref: '#/$defs/typed_string_object_type'},
 				{$ref: '#/$defs/typed_string_object_pattern_type'},
@@ -297,6 +307,7 @@ export class TypedString
 
 		const formatter = new ValueToRegexFormatter(
 			$defs,
+			common_$defs,
 		);
 
 		ajv.addKeyword({

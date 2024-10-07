@@ -19,7 +19,11 @@ clean:
 
 generate: lint generate--skip-checks generate--post-build
 
-generate--skip-checks: build generate--skip-checks--update8 generate--skip-checks--version-1
+generate--skip-checks: build generate--skip-checks--common generate--skip-checks--update8 generate--skip-checks--version-1
+
+generate--skip-checks--common:
+	@echo 'running ./generate-common-types.ts'
+	@./node_modules/.bin/ts-node ./generate-common-types.ts
 
 generate--skip-checks--update8:
 	@echo 'running ./discover-types.ts'

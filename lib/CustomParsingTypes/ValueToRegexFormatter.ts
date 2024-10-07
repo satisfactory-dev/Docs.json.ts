@@ -11,6 +11,7 @@ import {
 	annoyingly_have_to_escape_property,
 } from './CustomPairingTypes';
 import {
+	common_ref,
 	local_ref,
 } from '../StringStartsWith';
 import {
@@ -75,10 +76,17 @@ export class ValueToRegexFormatter
 	private typed_string_pattern_general;
 	private UnrealEngineString;
 	private readonly $defs:{[key: string]: SchemaObject};
+	private readonly common_$defs: {[key: string]: SchemaObject};
 	private readonly supported_$ref_object:{[key: local_ref<string>]: string};
+	// eslint-disable-next-line max-len
+	private readonly supported_common_$ref_object: {[key: common_ref<string>]: string};
 
-	constructor($defs:{[key: string]: SchemaObject}) {
+	constructor(
+		$defs:{[key: string]: SchemaObject},
+		common_$defs: {[key: string]: SchemaObject},
+	) {
 		this.$defs = $defs;
+		this.common_$defs = common_$defs;
 		this.UnrealEngineString = UnrealEngineString.ajv_macro_generator(
 			true,
 		);
@@ -86,6 +94,8 @@ export class ValueToRegexFormatter
 		this.typed_string_enum = typed_string_enum;
 		this.typed_string_pattern_general = typed_string_pattern_general;
 		this.supported_$ref_object = this.prepare_$ref_regex($defs);
+		// eslint-disable-next-line max-len
+		this.supported_common_$ref_object = this.prepare_common_$ref_regex(common_$defs);
 	}
 
 	pattern_from_value(value:unknown): {pattern: string} {
@@ -101,6 +111,18 @@ export class ValueToRegexFormatter
 			object_only_has_that_property(maybe, '$ref', is_string)
 			&& object_has_property(
 				this.supported_$ref_object,
+				maybe.$ref,
+			)
+		);
+	}
+
+	private is_supported_common_$ref_object(
+		maybe:unknown,
+	): maybe is {$ref: common_ref<string>} {
+		return (
+			object_only_has_that_property(maybe, '$ref', is_string)
+			&& object_has_property(
+				this.supported_common_$ref_object,
 				maybe.$ref,
 			)
 		);
@@ -156,6 +178,20 @@ export class ValueToRegexFormatter
 			}).map(entry => {
 				return [
 					local_ref(entry[0]),
+					this.value_to_regex(entry[1]),
+				];
+			}))
+	}
+
+	private prepare_common_$ref_regex(
+		$defs:{[key: string]: SchemaObject},
+	): {[key: common_ref<string>]: string} {
+		return Object.fromEntries(Object.entries($defs)
+			.filter(maybe => {
+				return this.is_supported_definition(maybe[1])
+			}).map(entry => {
+				return [
+					common_ref(entry[0]),
 					this.value_to_regex(entry[1]),
 				];
 			}))
@@ -247,6 +283,8 @@ export class ValueToRegexFormatter
 			return this.typed_string_array_inner_to_regex(value);
 		} else if (this.is_supported_$ref_object(value)) {
 			return this.supported_$ref_object[value.$ref];
+		} else if (this.is_supported_common_$ref_object(value)) {
+			return this.supported_common_$ref_object[value.$ref];
 		} else if(this.typed_string_const.is_supported_schema(value)) {
 			return this.typed_string_const.value_regex(value);
 		} else if(this.typed_string_enum.is_supported_schema(value)) {
@@ -284,6 +322,28 @@ export class ValueToRegexFormatter
 					.join('|')
 			})`;
 		} else if (
+			object_only_has_that_property(value, '$ref', is_string)
+			&& value.$ref.startsWith('common.schema.json#/$defs/')
+			&& value.$ref.substring(26) in this.common_$defs
+			&& object_only_has_that_property(
+				this.common_$defs[value.$ref.substring(26)],
+				'oneOf',
+			)
+			&& is_non_empty_array(
+				this.common_$defs[value.$ref.substring(26)].oneOf,
+				value_is_non_array_object,
+			)
+		) {
+			const oneOf = this.common_$defs[
+				value.$ref.substring(15)
+			].oneOf as {[key: string]: unknown}[];
+
+			return `(?:${
+				oneOf
+					.map((e:SchemaObject) => this.value_to_regex(e))
+					.join('|')
+			})`;
+		} else if (
 			undefined === this.supported_$ref_object
 			&& object_only_has_that_property(value, '$ref', is_string)
 			&& value.$ref.startsWith('#/$defs/')
@@ -294,6 +354,18 @@ export class ValueToRegexFormatter
 		) {
 			return this.value_to_regex(
 				this.$defs[value.$ref.substring(8)],
+			);
+		} else if (
+			undefined === this.supported_common_$ref_object
+			&& object_only_has_that_property(value, '$ref', is_string)
+			&& value.$ref.startsWith('common.schema.json#/$defs/')
+			&& value.$ref.substring(26) in this.common_$defs
+			&& this.is_supported_definition(
+				this.common_$defs[value.$ref.substring(26)],
+			)
+		) {
+			return this.value_to_regex(
+				this.common_$defs[value.$ref.substring(26)],
 			);
 		} else if (
 			this.is_Texture2D_basic(value)

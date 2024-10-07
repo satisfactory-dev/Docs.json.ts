@@ -20,9 +20,11 @@ import {
 void describe('ArrayType', async () => {
 	const type_definition_writer = new TypeDefinitionWriter(docs, 'update8');
 	const discovery = await type_definition_writer.discovery;
-	const discovered_types = (
+	const {
+		discovered_types,
+	} = (
 		await discovery.types_discovery.discover_types()
-	).discovered_types;
+	);
 	const instance = new ArrayType(
 		discovered_types,
 		discovery,

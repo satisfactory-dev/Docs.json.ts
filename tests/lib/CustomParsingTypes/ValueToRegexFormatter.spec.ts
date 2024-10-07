@@ -14,11 +14,14 @@ import {
 import {
 	docs,
 } from '../../../lib/helpers';
+// eslint-disable-next-line max-len
+import common_schema from '../../../schema/common.schema.json' with {type: 'json'};
 
 for (const version of object_keys(docs.docs_versions)) {
 	void describe(`${version}: ValueToRegexFormatter.pattern_from_value()`, async () => {
 		const instance = new ValueToRegexFormatter(
 			(await docs.schema(version)).$defs,
+			common_schema.$defs,
 		);
 		void it('does not throw', async () => {
 			const typed_string_types = [

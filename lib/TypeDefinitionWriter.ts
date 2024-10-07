@@ -77,6 +77,11 @@ import {
 	compile,
 } from '@satisfactory-dev/ajv-utilities';
 
+import common_schema from '../schema/common.schema.json' with {type: 'json'};
+import {
+	common_ref,
+} from './StringStartsWith';
+
 const __dirname = __dirname_from_meta(import.meta);
 
 type class_can_have_tree = ClassDeclaration & {
@@ -469,9 +474,22 @@ export class TypeDefinitionWriter
 		if (!this.prepared) {
 			this.prepared = true;
 			const discovery = await this.discovery;
-			const discovered_types = (
+			const {
+				discovered_types,
+			} = (
 				await discovery.types_discovery.discover_types()
-			).discovered_types;
+			);
+
+			if ('common' === this.version) {
+				discovered_types.push(
+					...Object.keys(
+						common_schema.$defs,
+					).map(
+						(e): `#/$defs/${string}` => `#/$defs/${e}`,
+					).filter(maybe => !discovered_types.includes(maybe)),
+				);
+			}
+
 
 			discovery.add_candidates(
 				new ObjectType(discovery),
@@ -485,6 +503,7 @@ export class TypeDefinitionWriter
 				),
 				new typed_string(
 					discovered_types,
+					Object.keys(common_schema).map(common_ref),
 					discovery,
 				),
 				new oneOf_or_anyOf(discovery),

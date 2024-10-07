@@ -33,7 +33,12 @@ export const schema = {
 	required: ['type', 'properties'],
 	additionalProperties: false,
 	properties: {
-		$ref: {type: 'string', pattern: '^#/\\$defs/'},
+		$ref: {
+			oneOf: [
+				{type: 'string', pattern: '^#/\\$defs/'},
+				{type: 'string', pattern: '^common\\.schema\\.json#/\\$defs/'},
+			],
+		},
 		type: {type: 'string', const: 'object'},
 		additionalProperties: {type: 'boolean', const: false},
 		unevaluatedProperties: {type: 'boolean', const: false},

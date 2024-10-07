@@ -1,5 +1,5 @@
 import Ajv, {
-	_, KeywordCxt,
+	_, AnySchema, KeywordCxt,
 } from 'ajv/dist/2020';
 import {
 	UnrealEngineString,
@@ -7,6 +7,8 @@ import {
 import {
 	is_string,
 } from '@satisfactory-dev/predicates.ts';
+
+import common_schema from '../schema/common.schema.json' with {type: 'json'};
 
 declare type array_tokenizer = {
 	values: unknown[];
@@ -250,6 +252,8 @@ export function configure_ajv(ajv: Ajv) {
 	}
 
 	already_configured.add(ajv);
+
+	ajv.addSchema(common_schema as AnySchema);
 
 	UnrealEngineString.configure_ajv(ajv);
 

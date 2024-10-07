@@ -30,6 +30,11 @@ configure_ajv(ajv);
 export const docs = new DocsTsGenerator({
 	ajv,
 	docs_versions: {
+		common: new DocsTsGeneratorVersion({
+			docs_path: `${__dirname}/../data/common/faux.json`,
+			cache_path: `${__dirname}/../data/common/`,
+			UnrealEngineString_quote_mode: 'original',
+		}),
 		version_1_0_0_0: new DocsTsGeneratorVersion({
 			docs_path: `${__dirname}/../data/1.0/en-US.json`,
 			cache_path: `${__dirname}/../data/1.0/`,

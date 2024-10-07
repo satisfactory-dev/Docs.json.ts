@@ -1,0 +1,98 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "common.schema.json",
+	"type": "array",
+	"$defs": {
+		"UnrealEngineString--array": {
+			"type": "string",
+			"minLength": 1,
+			"typed_string": {
+				"minItems": 1,
+				"items": {
+					"type": "string",
+					"minLength": 1,
+					"UnrealEngineString": true
+				}
+			}
+		},
+		"NativeClass": {
+			"type": "object",
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"minLength": 1,
+					"UnrealEngineString": {
+						"left": "/Script/CoreUObject.Class",
+						"right": {
+							"starts_with": "/Script/FactoryGame.FG"
+						}
+					}
+				}
+			}
+		},
+		"class--no-description-or-display-name": {
+			"type": "object",
+			"required": ["ClassName"],
+			"properties": {
+				"ClassName": {
+					"type": "string",
+					"minLength": 1
+				}
+			}
+		},
+		"class--no-description": {
+			"type": "object",
+			"$ref": "#/$defs/class--no-description-or-display-name",
+			"required": ["mDisplayName"],
+			"properties": {
+				"mDisplayName": {
+					"type": "string"
+				}
+			}
+		},
+		"class": {
+			"type": "object",
+			"$ref": "#/$defs/class--no-description",
+			"required": ["mDescription"],
+			"properties": {
+				"mDescription": {
+					"type": "string"
+				}
+			}
+		},
+		"faux-1": {
+			"type": "object",
+			"$ref": "#/$defs/class",
+			"required": ["faux"],
+			"unevaluatedProperties": false,
+			"properties": {
+				"faux": {
+					"$ref": "#/$defs/UnrealEngineString--array"
+				}
+			}
+		}
+	},
+	"items": false,
+	"minItems": 1,
+	"maxItems": 1,
+	"prefixItems": [
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.Faux",
+			"type": "object",
+			"$ref": "#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"$ref": "#/$defs/faux-1",
+						"unevaluatedProperties": false
+					}
+				}
+			}
+		}
+	]
+}

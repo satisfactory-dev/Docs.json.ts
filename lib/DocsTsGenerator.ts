@@ -53,6 +53,8 @@ import {
 	UnrealEngineString,
 } from './CustomParsingTypes/UnrealEngineString';
 
+import common_schema from '../schema/common.schema.json' with {type: 'json'};
+
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export class ValidationError extends Error {
@@ -117,6 +119,7 @@ export class DocsTsGeneratorVersion
 export type docs_versions = {
 	version_1_0_0_0?: DocsTsGeneratorVersion,
 	update8?: DocsTsGeneratorVersion,
+	common: DocsTsGeneratorVersion,
 };
 
 export class DocsTsGenerator {
@@ -186,9 +189,25 @@ export class DocsTsGenerator {
 			return this.schema_update8();
 		} else if ('version_1_0_0_0' === version) {
 			return this.schema_version_1_0_0_0();
+		} else if ('common' === version) {
+			return this.schema_common();
 		}
 
 		throw new Error('Could not find specified schema!');
+	}
+
+	// eslint-disable-next-line max-len
+	async schema_common(): Promise<DocsSchemaByVersion['common']['en_US']['schema']>
+	{
+		const schema = this.schema_data.common.en_US.schema;
+
+		// eslint-disable-next-line max-len
+		await this.validate_schema<DocsSchemaByVersion['common']['en_US']['schema']>(
+			'common',
+			schema,
+		);
+
+		return schema;
 	}
 
 	// eslint-disable-next-line max-len
@@ -391,14 +410,25 @@ export class DocsTsGenerator {
 			)
 		) {
 			const {$defs} = schema;
+			const {
+				$defs: common_$defs,
+			} = common_schema;
 
 			if (
 				object_has_only_properties_that_match_predicate(
 					$defs,
 					value_is_non_array_object,
 				)
+				&& object_has_only_properties_that_match_predicate(
+					common_$defs,
+					value_is_non_array_object,
+				)
 			) {
-				TypedString.instance().configure_ajv($defs, this.ajv);
+				TypedString.instance().configure_ajv(
+					$defs,
+					common_$defs,
+					this.ajv,
+				);
 			}
 		}
 
