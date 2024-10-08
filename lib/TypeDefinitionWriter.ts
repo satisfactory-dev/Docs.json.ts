@@ -220,9 +220,9 @@ export class TypeDefinitionWriter
 		if (
 			'common' === this.version
 				? !object_has_property(
-			schema.$defs,
-			'NativeClass',
-			value_is_non_array_object,
+					schema.$defs,
+					'NativeClass',
+					value_is_non_array_object,
 				)
 				: !object_has_property(
 					common_schema.$defs,
