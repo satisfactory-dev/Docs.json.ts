@@ -473,7 +473,10 @@ export class TypeDefinitionDiscovery
 						pattern: '^\\/Script\\/CoreUObject\\.Class\'\\/Script\\/FactoryGame\\.',
 					},
 					type: {type: 'string', const: 'object'},
-					$ref: {type: 'string', const: '#/$defs/NativeClass'},
+					$ref: {type: 'string', enum: [
+						'#/$defs/NativeClass',
+						'common.schema.json#/$defs/NativeClass',
+					]},
 					unevaluatedProperties: {type: 'boolean', const: false},
 					properties: {
 						type: 'object',
