@@ -99,9 +99,9 @@ function is_schema_with_$defs(
 				maybe.startsWith('common.schema.json#/$defs/')
 					? maybe
 					: (
-				maybe.startsWith('#/$defs/')
-					? maybe
-					: `#/$defs/${maybe}`
+						maybe.startsWith('#/$defs/')
+							? maybe
+							: `#/$defs/${maybe}`
 					)
 			) in discovered_types,
 		)

@@ -10,6 +10,7 @@ import {
 	value_is_non_array_object,
 } from '@satisfactory-dev/predicates.ts';
 
+// eslint-disable-next-line max-len
 import common_schema from '../../../schema/common.schema.json' with {type: 'json'};
 
 export class $ref extends CandidatesDiscovery
@@ -135,7 +136,9 @@ export class common_$ref extends CandidatesDiscovery
 			);
 		}
 
-		function schema_has_definition_from_external<T extends string = string>(
+		function schema_has_definition_from_external<
+			T extends string = string
+		>(
 			maybe:T, schema:SchemaObject,
 		): schema is (
 			& SchemaObject
