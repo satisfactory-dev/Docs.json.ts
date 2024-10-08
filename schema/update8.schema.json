@@ -6968,7 +6968,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGItemDescriptor'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -6985,7 +6985,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableDroneStation'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7003,7 +7003,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGCustomizationRecipe'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7056,7 +7056,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableBlueprintDesigner'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7074,7 +7074,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildingDescriptor'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7091,7 +7091,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGRecipe'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7108,7 +7108,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGSchematic'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7134,7 +7134,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableWallLightweight'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7151,7 +7151,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableWall'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7168,7 +7168,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableDoor'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7194,7 +7194,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableCornerWall'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7211,7 +7211,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGResourceDescriptor'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7228,7 +7228,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableRailroadTrack'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7246,7 +7246,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildable'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7277,7 +7277,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePoleLightweight'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7295,7 +7295,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGPoleDescriptor'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7312,7 +7312,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableConveyorBelt'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7329,7 +7329,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableWire'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7347,7 +7347,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePowerPole'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7364,7 +7364,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableTradingPost'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7382,7 +7382,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGEquipmentStunSpear'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7409,7 +7409,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGEquipmentDescriptor'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7426,7 +7426,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePillarLightweight'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7443,7 +7443,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableFactory'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7475,7 +7475,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableWalkwayLightweight'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7492,7 +7492,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableWalkway'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7510,7 +7510,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableGeneratorFuel'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7542,7 +7542,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePipelineSupport'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7559,7 +7559,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePipeline'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7576,7 +7576,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePipelineJunction'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7594,7 +7594,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePipelinePump'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7621,7 +7621,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePipeReservoir'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7639,7 +7639,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableWaterPump'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7657,7 +7657,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableResourceSink'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7675,7 +7675,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableResourceSinkShop'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7693,7 +7693,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGItemDescriptorBiomass'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7710,7 +7710,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableResourceExtractor'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7742,7 +7742,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableManufacturer'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7783,7 +7783,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGPortableMinerDispenser'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7801,7 +7801,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGItemDescriptorNuclearFuel'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7819,7 +7819,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGVehicleDescriptor'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7850,7 +7850,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableManufacturerVariablePower'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7868,7 +7868,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableGeneratorNuclear'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7886,7 +7886,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableFrackingExtractor'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7904,7 +7904,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableFrackingActivator'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7922,7 +7922,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableConveyorLift'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7939,7 +7939,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGConsumableEquipment'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7956,7 +7956,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGConsumableDescriptor'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -7982,7 +7982,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGHoverPack'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8000,7 +8000,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGSuitBase'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8018,7 +8018,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGGasMask'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8036,7 +8036,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableRailroadSignal'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8053,7 +8053,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableTrainPlatformCargo'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8070,7 +8070,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableTrainPlatformEmpty'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8087,7 +8087,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableRailroadStation'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8105,7 +8105,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGJetPack'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8123,7 +8123,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableStorage'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8140,7 +8140,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGPipeHyperStart'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8158,7 +8158,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePipeHyper'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8176,7 +8176,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePowerStorage'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8194,7 +8194,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableDockingStation'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8212,7 +8212,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGConveyorPoleStackable'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8230,7 +8230,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableJumppad'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8248,7 +8248,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGChainsaw'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8266,7 +8266,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGObjectScanner'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8284,7 +8284,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableMAM'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8302,7 +8302,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableAttachmentMerger'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8320,7 +8320,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableAttachmentSplitter'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8338,7 +8338,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableFoundation'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8355,7 +8355,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableFoundationLightweight'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8372,7 +8372,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableRamp'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8389,7 +8389,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGAmmoTypeProjectile'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8406,7 +8406,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGAmmoTypeSpreadshot'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8424,7 +8424,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGWeapon'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8450,7 +8450,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableGeneratorGeoThermal'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8468,7 +8468,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableSplitterSmart'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8485,7 +8485,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGAmmoTypeInstantHit'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8512,7 +8512,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePriorityPowerSwitch'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8530,7 +8530,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGJumpingStilts'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8548,7 +8548,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableCircuitSwitch'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8566,7 +8566,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGEquipmentZipline'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8584,7 +8584,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGChargedWeapon'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8602,7 +8602,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGParachute'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8620,7 +8620,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableRadarTower'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8638,7 +8638,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableSnowDispenser'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8656,7 +8656,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableFactorySimpleProducer'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8674,7 +8674,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableLadder'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8692,7 +8692,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableStair'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8709,7 +8709,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGGolfCartDispenser'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8726,7 +8726,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePassthrough'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8743,7 +8743,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableLightsControlPanel'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8761,7 +8761,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableLightSource'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8778,7 +8778,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableFloodlight'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8795,7 +8795,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableWidgetSign'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8812,7 +8812,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePassthroughPipeHyper'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8830,7 +8830,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableBeamLightweight'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8847,7 +8847,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableFactoryBuilding'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
@@ -8864,7 +8864,7 @@
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableSpaceElevator'",
 			"type": "object",
-			"$ref": "common.json.schema#/$defs/NativeClass",
+			"$ref": "common.schema.json#/$defs/NativeClass",
 			"unevaluatedProperties": false,
 			"properties": {
 				"Classes": {
