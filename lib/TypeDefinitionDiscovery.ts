@@ -392,11 +392,13 @@ export class TypeDefinitionDiscovery
 		const result: {
 			found_types: {[key: string]: (raw_data:unknown) => TypeNode},
 			missing_types: string[],
+			common_types: string[],
 			found_classes: {[key: string]: unknown}[],
 			missing_classes: {[key: string]: unknown}[],
 		} = {
 			found_types: {},
 			missing_types: [],
+			common_types: [],
 			found_classes: [],
 			missing_classes: [],
 		};
@@ -417,6 +419,20 @@ export class TypeDefinitionDiscovery
 
 			if (generator) {
 				result.found_types[definition] = generator.generate();
+			} else if (
+				'common' !== this.version
+				&& (
+					(
+						definition.startsWith('#/$defs/')
+						&& definition.substring(8) in common_schema.$defs
+					)
+					|| (
+						definition.startsWith('common.schema.json#/$defs/')
+						&& definition.substring(26) in common_schema.$defs
+					)
+				)
+			) {
+				result.common_types.push(definition);
 			} else {
 				result.missing_types.push(definition);
 			}
