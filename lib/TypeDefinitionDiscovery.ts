@@ -125,7 +125,9 @@ function is_schema_with_$defs(
 					: maybe
 			);
 
-			return value_is_non_array_object(schema.$defs[ref]);
+			return value_is_non_array_object(schema.$defs[ref]) || (
+				ref in common_schema.$defs
+			);
 		})
 	);
 }
