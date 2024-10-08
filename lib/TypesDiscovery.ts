@@ -44,6 +44,8 @@ import {
 	UnrealEngineString,
 } from './TypesDiscovery/CustomParsingTypes/UnrealEngineString';
 
+import common_schema from '../schema/common.schema.json' with {type: 'json'};
+
 export class TypesDiscovery
 {
 	private discovery:Promise<{
@@ -137,8 +139,10 @@ export class TypesDiscovery
 			throw new Error('Schema appears to have no $defs');
 		}
 
+		const target_schema = 'common' === version ? schema : common_schema;
+
 		if (!object_has_property(
-			schema.$defs,
+			target_schema.$defs,
 			'NativeClass',
 			value_is_non_array_object,
 		)) {
@@ -146,8 +150,8 @@ export class TypesDiscovery
 		}
 
 		return compile<DocsDataItem>(docs.ajv, {
-			$defs: schema.$defs,
-			...schema.$defs.NativeClass,
+			$defs: target_schema.$defs,
+			...target_schema.$defs.NativeClass,
 		});
 	}
 

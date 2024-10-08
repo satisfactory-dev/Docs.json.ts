@@ -217,11 +217,19 @@ export class TypeDefinitionWriter
 			),
 		);
 
-		if (!object_has_property(
+		if (
+			'common' === this.version
+				? !object_has_property(
 			schema.$defs,
 			'NativeClass',
 			value_is_non_array_object,
-		)) {
+				)
+				: !object_has_property(
+					common_schema.$defs,
+					'NativeClass',
+					value_is_non_array_object,
+				)
+		) {
 			throw new Error('Could not find NativeClass on provided schema!');
 		}
 
