@@ -209,6 +209,7 @@ export class PatternConverter extends ConverterMatchesSchema<
 			},
 		});
 	}
+
 	can_convert_schema_and_raw_data(
 		schema: SchemaObject,
 		raw_data: unknown,
