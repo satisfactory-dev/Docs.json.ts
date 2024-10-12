@@ -1,17 +1,17 @@
 import {
-	integer_string__signed__type,
-	boolean__type,
-} from '../../common/scalar';
-
-import {
 	color_decimal__type,
 	xyz__integer__type,
 	empty_object__type,
 } from '../../common/unassigned';
 
+import {boolean__type} from '../../common/scalar';
+
 import {FGBuildable__base__type} from './FGBuildable';
 
-import {decimal_string__type} from '../../../common/common/scalar';
+import {
+	integer_string__signed__type,
+	decimal_string__type,
+} from '../../../common/common/scalar';
 
 import {NativeClass__type} from '../../../common/common/unassigned';
 

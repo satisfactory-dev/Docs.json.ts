@@ -31,8 +31,8 @@
 -   [x] FGResourceDescriptor
 -   [x] FGSuitBase
 -   [x] InfinityExtrap
--   [x] integer-string
--   [x] integer-string--signed
+-   [x] integer-string (common type)
+-   [x] integer-string--signed (common type)
 -   [x] mAspect
 -   [x] MaterialSlotName
 -   [x] mBatteryStatus

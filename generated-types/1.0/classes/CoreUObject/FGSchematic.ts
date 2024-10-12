@@ -4,8 +4,6 @@ import {
 	StringPassedRegExp,
 } from '../../utils/validators';
 
-import {integer_string__type, boolean__type} from '../../common/scalar';
-
 import {
 	ItemClass__type,
 	quaternion__type,
@@ -17,16 +15,19 @@ import {
 	None__type,
 } from '../../common/unassigned';
 
+import {boolean__type} from '../../common/scalar';
+
+import {
+	integer_string__type,
+	decimal_string__type,
+	decimal_string__signed__type,
+} from '../../../common/common/scalar';
+
 import {
 	UnrealEngineString__array__type,
 	class__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned';
-
-import {
-	decimal_string__type,
-	decimal_string__signed__type,
-} from '../../../common/common/scalar';
 
 export type FGSchematic__type = FGSchematic__base__type;
 

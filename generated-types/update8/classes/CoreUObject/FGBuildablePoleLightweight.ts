@@ -1,8 +1,9 @@
-import {integer_string__signed__type} from '../../common/scalar';
-
 import {FGBuildable__pole__base__type} from './FGBuildable';
 
-import {decimal_string__type} from '../../../common/common/scalar';
+import {
+	decimal_string__type,
+	integer_string__signed__type,
+} from '../../../common/common/scalar';
 
 import {NativeClass__type} from '../../../common/common/unassigned';
 

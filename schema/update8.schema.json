@@ -3,14 +3,6 @@
 	"$id": "update8.schema.json",
 	"type": "array",
 	"$defs": {
-		"integer-string": {
-			"type": "string",
-			"pattern": "^\\d+$"
-		},
-		"integer-string--signed": {
-			"type": "string",
-			"pattern": "^-?\\d+$"
-		},
 		"color": {
 			"type": "string",
 			"minLength": 1,
@@ -18,16 +10,16 @@
 				"required": ["B", "G", "R", "A"],
 				"properties": {
 					"B": {
-						"$ref": "#/$defs/integer-string"
+						"$ref": "common.schema.json#/$defs/integer-string"
 					},
 					"G": {
-						"$ref": "#/$defs/integer-string"
+						"$ref": "common.schema.json#/$defs/integer-string"
 					},
 					"R": {
-						"$ref": "#/$defs/integer-string"
+						"$ref": "common.schema.json#/$defs/integer-string"
 					},
 					"A": {
-						"$ref": "#/$defs/integer-string"
+						"$ref": "common.schema.json#/$defs/integer-string"
 					}
 				}
 			}
@@ -101,10 +93,10 @@
 				"required": ["X", "Y"],
 				"properties": {
 					"X": {
-						"$ref": "#/$defs/integer-string"
+						"$ref": "common.schema.json#/$defs/integer-string"
 					},
 					"Y": {
-						"$ref": "#/$defs/integer-string"
+						"$ref": "common.schema.json#/$defs/integer-string"
 					}
 				}
 			}
@@ -155,13 +147,13 @@
 				"required": ["X", "Y", "Z"],
 				"properties": {
 					"X": {
-						"$ref": "#/$defs/integer-string"
+						"$ref": "common.schema.json#/$defs/integer-string"
 					},
 					"Y": {
-						"$ref": "#/$defs/integer-string"
+						"$ref": "common.schema.json#/$defs/integer-string"
 					},
 					"Z": {
-						"$ref": "#/$defs/integer-string"
+						"$ref": "common.schema.json#/$defs/integer-string"
 					}
 				}
 			}
@@ -256,7 +248,7 @@
 								"UnrealEngineString": true
 							},
 							"Amount": {
-								"$ref": "#/$defs/integer-string"
+								"$ref": "common.schema.json#/$defs/integer-string"
 							}
 						}
 					}
@@ -280,7 +272,7 @@
 								"UnrealEngineString": true
 							},
 							"Amount": {
-								"$ref": "#/$defs/integer-string"
+								"$ref": "common.schema.json#/$defs/integer-string"
 							}
 						}
 					}
@@ -374,7 +366,7 @@
 										"required": ["Value"],
 										"properties": {
 											"Value": {
-												"$ref": "#/$defs/integer-string"
+												"$ref": "common.schema.json#/$defs/integer-string"
 											}
 										}
 									}
@@ -503,7 +495,7 @@
 			"required": ["mResourceSinkPoints"],
 			"properties": {
 				"mResourceSinkPoints": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				}
 			}
 		},
@@ -785,7 +777,7 @@
 					"$ref": "#/$defs/boolean"
 				},
 				"mBlueprintBuildEffectID": {
-					"$ref": "#/$defs/integer-string--signed"
+					"$ref": "common.schema.json#/$defs/integer-string--signed"
 				}
 			}
 		},
@@ -867,7 +859,7 @@
 					"const": "SS_FLUID"
 				},
 				"mFluidStackSizeMultiplier": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"OnReplicationDetailActorCreatedEvent": {
 					"$ref": "#/$defs/empty-object"
@@ -922,10 +914,10 @@
 			],
 			"properties": {
 				"mStorageSizeX": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mStorageSizeY": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mTransferSpeed": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -1043,13 +1035,13 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mTripInformationSampleCount": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mBatteryStorageSizeX": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mBatteryStorageSizeY": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mInputInventoryHandler": {
 					"$ref": "#/$defs/empty-object"
@@ -1253,7 +1245,7 @@
 						"required": ["IconID", "Color"],
 						"properties": {
 							"IconID": {
-								"$ref": "#/$defs/integer-string--signed"
+								"$ref": "common.schema.json#/$defs/integer-string--signed"
 							},
 							"Color": {
 								"$ref": "#/$defs/color-decimal"
@@ -1459,7 +1451,7 @@
 					"const": "BP_UnlockInventorySlot_C"
 				},
 				"mNumInventorySlotsToUnlock": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				}
 			}
 		},
@@ -1473,7 +1465,7 @@
 					"const": "BP_UnlockArmEquipmentSlot_C"
 				},
 				"mNumArmEquipmentSlotsToUnlock": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				}
 			}
 		},
@@ -1617,7 +1609,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string--signed"
 				},
 				"mTechTier": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mCost": {
 					"oneOf": [
@@ -1997,7 +1989,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"Steps": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				}
 			}
 		},
@@ -2097,7 +2089,7 @@
 					"$ref": "#/$defs/boolean"
 				},
 				"mTrackGraphID": {
-					"$ref": "#/$defs/integer-string--signed"
+					"$ref": "common.schema.json#/$defs/integer-string--signed"
 				},
 				"mOverlappingTracks": {
 					"type": "string",
@@ -2107,16 +2099,16 @@
 					"$ref": "#/$defs/empty-object"
 				},
 				"mSignalBlockID": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mBlockVisualizationMeshLength": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mBlockVisualizationNumPrimitiveDataFloats": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mBlockVisualizationNumPerInstancePrimitiveDataCountOffset": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mBlockVisualizationSplineDataSettings": {
 					"type": "string",
@@ -2130,22 +2122,22 @@
 						],
 						"properties": {
 							"StartTangentPrimitiveDataStartIndex": {
-								"$ref": "#/$defs/integer-string"
+								"$ref": "common.schema.json#/$defs/integer-string"
 							},
 							"EndPositionPrimitiveDataStartIndex": {
-								"$ref": "#/$defs/integer-string"
+								"$ref": "common.schema.json#/$defs/integer-string"
 							},
 							"EndTangentPrimitiveDataStartIndex": {
-								"$ref": "#/$defs/integer-string"
+								"$ref": "common.schema.json#/$defs/integer-string"
 							},
 							"InstanceScaleIndex": {
-								"$ref": "#/$defs/integer-string--signed"
+								"$ref": "common.schema.json#/$defs/integer-string--signed"
 							}
 						}
 					}
 				},
 				"mBlockVisualizationColorDataStartIndex": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				}
 			}
 		},
@@ -2167,7 +2159,7 @@
 			"required": ["Tier"],
 			"properties": {
 				"Tier": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				}
 			}
 		},
@@ -2197,7 +2189,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mSelectedPoleVersion": {
-					"$ref": "#/$defs/integer-string--signed"
+					"$ref": "common.schema.json#/$defs/integer-string--signed"
 				}
 			}
 		},
@@ -2251,7 +2243,7 @@
 					"$ref": "#/$defs/empty-object"
 				},
 				"mConveyorChainFlags": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				}
 			}
 		},
@@ -2429,7 +2421,7 @@
 					}
 				},
 				"mShipUpgradeLevel": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mStorageText": {
 					"type": "string",
@@ -2474,10 +2466,10 @@
 					"const": ""
 				},
 				"mStorageInventorySize": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mStorageVisibilityLevel": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mSpawningGroundZOffset": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -2517,7 +2509,7 @@
 			],
 			"properties": {
 				"mRandomAnim": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mCanPress": {
 					"$ref": "#/$defs/boolean"
@@ -2690,7 +2682,7 @@
 					"$ref": "#/$defs/boolean"
 				},
 				"mDefaultEquipmentActions": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mReceivedDamageModifiers": {
 					"type": "string",
@@ -2743,10 +2735,10 @@
 					"const": "AE_StunSpear"
 				},
 				"mRandomAttackAnim": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mRandomEquipAnim": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				}
 			}
 		},
@@ -2968,10 +2960,10 @@
 					}
 				},
 				"mSelectedFuelType": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mCurrentFuelType": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mActiveNoiseFrequency": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -3118,7 +3110,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mCurrentAkID": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mCurrentHasFuel": {
 					"$ref": "#/$defs/boolean"
@@ -3319,7 +3311,7 @@
 			"required": ["mResourceSinkPoints"],
 			"properties": {
 				"mResourceSinkPoints": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				}
 			}
 		},
@@ -3520,13 +3512,13 @@
 					"enum": ["RF_SOLID", "RF_LIQUID"]
 				},
 				"mFuelLoadAmount": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mRequiresSupplementalResource": {
 					"$ref": "#/$defs/boolean"
 				},
 				"mSupplementalLoadAmount": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mSupplementalToPowerRatio": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -3572,7 +3564,7 @@
 					}
 				},
 				"m_CurrentPotential": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mDefaultFuelClasses": {
 					"type": "string",
@@ -3656,7 +3648,7 @@
 					}
 				},
 				"m_CurrentPotential": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mDefaultFuelClasses": {
 					"type": "string",
@@ -3842,7 +3834,7 @@
 					"$ref": "#/$defs/mOutputInventoryHandlerData"
 				},
 				"mWasteLeftFromCurrentFuel": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mCurrentGeneratorNuclearWarning": {
 					"type": "string",
@@ -3890,7 +3882,7 @@
 										"const": "Desc_NuclearWaste_C"
 									},
 									"mByproductAmount": {
-										"$ref": "#/$defs/integer-string"
+										"$ref": "common.schema.json#/$defs/integer-string"
 									}
 								}
 							},
@@ -3916,7 +3908,7 @@
 										"const": "Desc_PlutoniumWaste_C"
 									},
 									"mByproductAmount": {
-										"$ref": "#/$defs/integer-string"
+										"$ref": "common.schema.json#/$defs/integer-string"
 									}
 								}
 							}
@@ -4288,7 +4280,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mItemsPerCycle": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				}
 			}
 		},
@@ -4400,7 +4392,7 @@
 			"required": ["mShopInventoryDefaultSize"],
 			"properties": {
 				"mShopInventoryDefaultSize": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				}
 			}
 		},
@@ -4698,7 +4690,7 @@
 					"$ref": "#/$defs/boolean"
 				},
 				"mCachedCurrentPotential": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				}
 			}
 		},
@@ -4732,7 +4724,7 @@
 						"items": false,
 						"prefixItems": [
 							{
-								"$ref": "#/$defs/integer-string"
+								"$ref": "common.schema.json#/$defs/integer-string"
 							},
 							{
 								"$ref": "common.schema.json#/$defs/decimal-string"
@@ -4841,7 +4833,7 @@
 					}
 				},
 				"mAmountOfWaste": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				}
 			}
 		},
@@ -4874,7 +4866,7 @@
 			"required": ["mInventorySize"],
 			"properties": {
 				"mInventorySize": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				}
 			}
 		},
@@ -4958,10 +4950,10 @@
 					"$ref": "#/$defs/boolean"
 				},
 				"mSatelliteNodeCount": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mConnectedExtractorCount": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mDefaultPotentialExtractionPerMinute": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -5027,7 +5019,7 @@
 					"$ref": "#/$defs/boolean"
 				},
 				"mVisualState": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mSignificanceRange": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -5151,10 +5143,10 @@
 			],
 			"properties": {
 				"mStorageSizeX": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mStorageSizeY": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mOnTransferRateUpdated": {
 					"$ref": "#/$defs/empty-object"
@@ -5303,10 +5295,10 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mInventorySizeX": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mInventorySizeY": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				}
 			}
 		},
@@ -5409,7 +5401,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mActivationEventID": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mBatteryStatus": {
 					"$ref": "#/$defs/mBatteryStatus"
@@ -5424,10 +5416,10 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mIndicatorLevelMax": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mIndicatorLevel": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				}
 			}
 		},
@@ -5469,10 +5461,10 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mFuelInventorySizeX": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mFuelInventorySizeY": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mFuelTransferSpeed": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -5577,7 +5569,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mTrajectorySplineMeshNumPrimitiveDataFloats": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mTrajectorySplineMeshSplineDataSettings": {
 					"type": "string",
@@ -5591,22 +5583,22 @@
 						],
 						"properties": {
 							"StartTangentPrimitiveDataStartIndex": {
-								"$ref": "#/$defs/integer-string"
+								"$ref": "common.schema.json#/$defs/integer-string"
 							},
 							"EndPositionPrimitiveDataStartIndex": {
-								"$ref": "#/$defs/integer-string"
+								"$ref": "common.schema.json#/$defs/integer-string"
 							},
 							"EndTangentPrimitiveDataStartIndex": {
-								"$ref": "#/$defs/integer-string"
+								"$ref": "common.schema.json#/$defs/integer-string"
 							},
 							"InstanceScaleIndex": {
-								"$ref": "#/$defs/integer-string--signed"
+								"$ref": "common.schema.json#/$defs/integer-string--signed"
 							}
 						}
 					}
 				},
 				"mNumArrows": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mKillTimer": {
 					"$ref": "#/$defs/empty-object"
@@ -5615,7 +5607,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mShowTrajectoryCounter": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				}
 			}
 		},
@@ -5640,7 +5632,7 @@
 			"required": ["mCurrentInputIndex"],
 			"properties": {
 				"mCurrentInputIndex": {
-					"$ref": "#/$defs/integer-string--signed"
+					"$ref": "common.schema.json#/$defs/integer-string--signed"
 				}
 			}
 		},
@@ -5650,7 +5642,7 @@
 			"required": ["mCurrentOutputIndex"],
 			"properties": {
 				"mCurrentOutputIndex": {
-					"$ref": "#/$defs/integer-string--signed"
+					"$ref": "common.schema.json#/$defs/integer-string--signed"
 				}
 			}
 		},
@@ -5677,7 +5669,7 @@
 					"$ref": "#/$defs/empty-object"
 				},
 				"mMaxNumSortRules": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mLastItem": {
 					"type": "string",
@@ -5695,10 +5687,10 @@
 					"$ref": "#/$defs/empty-object"
 				},
 				"mLastOutputIndex": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mCurrentInventoryIndex": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mDistributionTable": {
 					"type": "string",
@@ -5902,7 +5894,7 @@
 					"$ref": "#/$defs/xyz"
 				},
 				"mMagazineSize": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mMaxAmmoEffectiveRange": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -6206,10 +6198,10 @@
 						"required": ["Min", "Max"],
 						"properties": {
 							"Min": {
-								"$ref": "#/$defs/integer-string"
+								"$ref": "common.schema.json#/$defs/integer-string"
 							},
 							"Max": {
-								"$ref": "#/$defs/integer-string"
+								"$ref": "common.schema.json#/$defs/integer-string"
 							}
 						}
 					}
@@ -6308,7 +6300,7 @@
 					"$ref": "#/$defs/empty-object"
 				},
 				"mCurrentAmmoCount": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mAllowedAmmoClasses": {
 					"$ref": "common.schema.json#/$defs/UnrealEngineString--array"
@@ -6377,16 +6369,16 @@
 					"$ref": "#/$defs/boolean"
 				},
 				"mRandomReloadAnim": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mRandomStingerAnim": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mRebarGunStingerID": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mRebarGunEquipID": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				}
 			}
 		},
@@ -6436,10 +6428,10 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mMaxThrowForce": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mMinThrowForce": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mDelayBetweenSecondaryTriggers": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -6490,7 +6482,7 @@
 					"$ref": "#/$defs/boolean"
 				},
 				"mMaxCharacters": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mOnIsSwitchOnChanged": {
 					"$ref": "#/$defs/empty-object"
@@ -6535,7 +6527,7 @@
 					"$ref": "#/$defs/empty-object"
 				},
 				"mPriority": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				}
 			}
 		},
@@ -6606,10 +6598,10 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mMaxSegmentCount": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mNumSegments": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mLadderMeshes": {
 					"type": "string",
@@ -6838,7 +6830,7 @@
 			"required": ["mFixtureAngle"],
 			"properties": {
 				"mFixtureAngle": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				}
 			}
 		},
@@ -6902,7 +6894,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mDataVersion": {
-					"$ref": "#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mSignPoles": {
 					"type": "string",

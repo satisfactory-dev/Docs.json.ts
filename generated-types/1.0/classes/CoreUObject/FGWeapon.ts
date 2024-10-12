@@ -8,11 +8,14 @@ import {
 
 import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
 
-import {boolean__type, integer_string__type} from '../../common/scalar';
+import {boolean__type} from '../../common/scalar';
 
 import {FGEquipment__base__type} from './FGEquipment';
 
-import {decimal_string__type} from '../../../common/common/scalar';
+import {
+	decimal_string__type,
+	integer_string__type,
+} from '../../../common/common/scalar';
 
 import {
 	UnrealEngineString__array__type,

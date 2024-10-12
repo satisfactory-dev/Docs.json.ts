@@ -6,6 +6,8 @@
 	"common_type__UnrealEngineString__array__type": "common/unassigned",
 	"common_type__decimal_string__type": "common/scalar",
 	"common_type__decimal_string__signed__type": "common/scalar",
+	"common_type__integer_string__type": "common/scalar",
+	"common_type__integer_string__signed__type": "common/scalar",
 	"common_type__UnrealEngineString": "utils/validators",
 	"common_type__StringStartsWith": "utils/validators",
 	"common_type__StringPassedRegExp": "utils/validators"

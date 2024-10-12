@@ -70,6 +70,14 @@
 			"type": "string",
 			"pattern": "^-?\\d+\\.\\d{6}$"
 		},
+		"integer-string": {
+			"type": "string",
+			"pattern": "^\\d+$"
+		},
+		"integer-string--signed": {
+			"type": "string",
+			"pattern": "^-?\\d+$"
+		},
 		"faux-1": {
 			"type": "object",
 			"$ref": "#/$defs/class",
@@ -86,6 +94,12 @@
 						},
 						{
 							"$ref": "#/$defs/decimal-string--signed"
+						},
+						{
+							"$ref": "#/$defs/integer-string"
+						},
+						{
+							"$ref": "#/$defs/integer-string--signed"
 						}
 					]
 				}

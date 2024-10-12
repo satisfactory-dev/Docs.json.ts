@@ -3,7 +3,7 @@ import {
 	FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type,
 } from './FGItemDescriptor';
 
-import {integer_string__type} from '../../common/scalar';
+import {integer_string__type} from '../../../common/common/scalar';
 
 import {NativeClass__type} from '../../../common/common/unassigned';
 

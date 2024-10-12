@@ -1,8 +1,8 @@
 import {empty_object__type} from '../../common/unassigned';
 
-import {integer_string__type} from '../../common/scalar';
-
 import {FGBuildable__power_switch__base__type} from './FGBuildable';
+
+import {integer_string__type} from '../../../common/common/scalar';
 
 import {NativeClass__type} from '../../../common/common/unassigned';
 

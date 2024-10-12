@@ -1,6 +1,6 @@
-import {integer_string__type} from '../../common/scalar';
-
 import {FGBuildableLightSource__base__type} from './FGBuildableLightSource';
+
+import {integer_string__type} from '../../../common/common/scalar';
 
 import {NativeClass__type} from '../../../common/common/unassigned';
 
