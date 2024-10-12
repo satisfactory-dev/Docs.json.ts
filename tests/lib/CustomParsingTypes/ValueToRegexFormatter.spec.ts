@@ -18,6 +18,10 @@ import {
 import common_schema from '../../../schema/common.schema.json' with {type: 'json'};
 
 for (const version of object_keys(docs.docs_versions)) {
+	if ('common' === version) {
+		continue;
+	}
+
 	void describe(`${version}: ValueToRegexFormatter.pattern_from_value()`, async () => {
 		const instance = new ValueToRegexFormatter(
 			(await docs.schema(version)).$defs,
