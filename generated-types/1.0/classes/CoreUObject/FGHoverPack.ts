@@ -6,10 +6,11 @@ import {
 	FilterMontageTag__type,
 	empty_object__type,
 	xyz__type,
-	NativeClass__type,
 } from '../../common/unassigned';
 
 import {FGEquipment__base__type} from './FGEquipment';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGHoverPack__type = FGEquipment__base__type & {
 	mCurrentPlayerVelocity_SFX: decimal_string__type;

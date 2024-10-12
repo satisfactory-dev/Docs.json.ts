@@ -3,7 +3,6 @@ import {
 	Montage_3P__type,
 	CameraAnim__type,
 	mDamageTypes__type,
-	NativeClass__type,
 } from '../../common/unassigned';
 
 import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
@@ -11,6 +10,8 @@ import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
 import {decimal_string__type, boolean__type} from '../../common/scalar';
 
 import {FGEquipment__base__type} from './FGEquipment';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGEquipmentStunSpear__type = FGEquipmentStunSpear__base__type & {
 	mSecondSwingMontageList: {
@@ -293,10 +294,11 @@ export type FGEquipmentStunSpear__xeno_zapper__type =
 		};
 	};
 
-export type FGEquipmentStunSpear__NativeClass = NativeClass__type & {
-	Classes: [
-		FGEquipmentStunSpear__xeno_zapper__type,
-		FGEquipmentStunSpear__type,
-		FGEquipmentStunSpear__type,
-	];
-};
+export type FGEquipmentStunSpear__NativeClass =
+	NativeClass__type & {
+		Classes: [
+			FGEquipmentStunSpear__xeno_zapper__type,
+			FGEquipmentStunSpear__type,
+			FGEquipmentStunSpear__type,
+		];
+	};

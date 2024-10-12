@@ -2,7 +2,7 @@ import {decimal_string__type, integer_string__type} from '../../common/scalar';
 
 import {FGBuildable__consumes_power_base__type} from './FGBuildable';
 
-import {NativeClass__type} from '../../common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableStorage__type =
 	FGBuildable__consumes_power_base__type & {
@@ -11,6 +11,7 @@ export type FGBuildableStorage__type =
 		mInventorySizeY: integer_string__type;
 	};
 
-export type FGBuildableStorage__NativeClass = NativeClass__type & {
-	Classes: [FGBuildableStorage__type, ...FGBuildableStorage__type[]];
-};
+export type FGBuildableStorage__NativeClass =
+	NativeClass__type & {
+		Classes: [FGBuildableStorage__type, ...FGBuildableStorage__type[]];
+	};

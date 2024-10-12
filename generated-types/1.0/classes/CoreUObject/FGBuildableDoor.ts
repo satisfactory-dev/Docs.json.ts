@@ -6,7 +6,7 @@ import {
 
 import {FGBuildableWall__base__rectangle__type} from './FGBuildableWall';
 
-import {NativeClass__type} from '../../common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableDoor__type = FGBuildableDoor__base__type & {
 	IsDoorOpen: boolean__type;

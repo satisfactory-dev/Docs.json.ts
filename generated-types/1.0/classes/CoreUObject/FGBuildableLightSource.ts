@@ -2,12 +2,13 @@ import {
 	color_decimal__type,
 	empty_object__type,
 	mLightControlData__type,
-	NativeClass__type,
 } from '../../common/unassigned';
 
 import {boolean__type, decimal_string__type} from '../../common/scalar';
 
 import {FGBuildable__base__type} from './FGBuildable';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableLightSource__type =
 	FGBuildableLightSource__base__type & {
@@ -28,6 +29,7 @@ export type FGBuildableLightSource__base__type = FGBuildable__base__type & {
 	mIsDay: boolean__type;
 };
 
-export type FGBuildableLightSource__NativeClass = NativeClass__type & {
-	Classes: [FGBuildableLightSource__type, ...FGBuildableLightSource__type[]];
-};
+export type FGBuildableLightSource__NativeClass =
+	NativeClass__type & {
+		Classes: [FGBuildableLightSource__type, ...FGBuildableLightSource__type[]];
+	};

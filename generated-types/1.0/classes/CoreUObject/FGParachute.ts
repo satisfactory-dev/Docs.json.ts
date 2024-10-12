@@ -8,10 +8,11 @@ import {
 	Montage_3P__type,
 	CameraAnim__type,
 	empty_object__type,
-	NativeClass__type,
 } from '../../common/unassigned';
 
 import {FGEquipment__base__type} from './FGEquipment';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGParachute__type = FGEquipment__base__type & {
 	DeployedVFXComponents: '';

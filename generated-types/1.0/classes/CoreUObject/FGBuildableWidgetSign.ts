@@ -6,10 +6,11 @@ import {
 	color_decimal__type,
 	xy__type,
 	xyz__type,
-	NativeClass__type,
 } from '../../common/unassigned';
 
 import {FGBuildable__base__type} from './FGBuildable';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableWidgetSign__type = FGBuildable__base__type & {
 	mGainSignificanceDistance: decimal_string__type;
@@ -35,6 +36,7 @@ export type FGBuildableWidgetSign__type = FGBuildable__base__type & {
 	mSignToSignOffset: decimal_string__type;
 };
 
-export type FGBuildableWidgetSign__NativeClass = NativeClass__type & {
-	Classes: [FGBuildableWidgetSign__type, ...FGBuildableWidgetSign__type[]];
-};
+export type FGBuildableWidgetSign__NativeClass =
+	NativeClass__type & {
+		Classes: [FGBuildableWidgetSign__type, ...FGBuildableWidgetSign__type[]];
+	};

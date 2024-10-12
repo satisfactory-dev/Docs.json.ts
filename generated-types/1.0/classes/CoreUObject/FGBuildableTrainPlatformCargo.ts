@@ -7,10 +7,11 @@ import {
 import {
 	empty_object__type,
 	mDockingRuleSet__type,
-	NativeClass__type,
 } from '../../common/unassigned';
 
 import {FGBuildableTrainPlatform__base__type} from './FGBuildableTrainPlatform';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableTrainPlatformCargo__type =
 	FGBuildableTrainPlatformCargo__FGBuildableRailroadStation__type & {
@@ -54,9 +55,10 @@ export type FGBuildableTrainPlatformCargo__FGBuildableRailroadStation__type =
 		mCurrentDockForDuration: decimal_string__type;
 	};
 
-export type FGBuildableTrainPlatformCargo__NativeClass = NativeClass__type & {
-	Classes: [
-		FGBuildableTrainPlatformCargo__type,
-		...FGBuildableTrainPlatformCargo__type[],
-	];
-};
+export type FGBuildableTrainPlatformCargo__NativeClass =
+	NativeClass__type & {
+		Classes: [
+			FGBuildableTrainPlatformCargo__type,
+			...FGBuildableTrainPlatformCargo__type[],
+		];
+	};

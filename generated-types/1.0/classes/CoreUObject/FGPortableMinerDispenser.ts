@@ -1,12 +1,10 @@
-import {
-	Montage_1P__type,
-	Montage_3P__type,
-	NativeClass__type,
-} from '../../common/unassigned';
+import {Montage_1P__type, Montage_3P__type} from '../../common/unassigned';
 
 import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
 
 import {FGEquipment__placeable__type} from './FGEquipment';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGPortableMinerDispenser__type = FGEquipment__placeable__type & {
 	mEquipMontage: {
@@ -46,6 +44,7 @@ export type FGPortableMinerDispenser__type = FGEquipment__placeable__type & {
 	};
 };
 
-export type FGPortableMinerDispenser__NativeClass = NativeClass__type & {
-	Classes: [FGPortableMinerDispenser__type];
-};
+export type FGPortableMinerDispenser__NativeClass =
+	NativeClass__type & {
+		Classes: [FGPortableMinerDispenser__type];
+	};

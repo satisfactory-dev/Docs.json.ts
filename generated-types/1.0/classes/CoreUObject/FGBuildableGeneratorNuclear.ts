@@ -2,7 +2,7 @@ import {integer_string__type, decimal_string__type} from '../../common/scalar';
 
 import {FGBuildableGeneratorFuel__base__type} from './FGBuildableGeneratorFuel';
 
-import {NativeClass__type} from '../../common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableGeneratorNuclear__type =
 	FGBuildableGeneratorFuel__base__type & {
@@ -49,6 +49,7 @@ export type FGBuildableGeneratorNuclear__mFuel__PlutoniumFuelRod__type = {
 	mByproductAmount: integer_string__type;
 };
 
-export type FGBuildableGeneratorNuclear__NativeClass = NativeClass__type & {
-	Classes: [FGBuildableGeneratorNuclear__type];
-};
+export type FGBuildableGeneratorNuclear__NativeClass =
+	NativeClass__type & {
+		Classes: [FGBuildableGeneratorNuclear__type];
+	};

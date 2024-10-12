@@ -12,7 +12,6 @@ import {
 } from '../../common/scalar';
 
 import {
-	UnrealEngineString__array__type,
 	ItemClass__type,
 	quaternion__type,
 	SpecifiedColor__type,
@@ -21,9 +20,13 @@ import {
 	Texture2D__type,
 	mEventType__optional_csv__type,
 	None__type,
+} from '../../common/unassigned';
+
+import {
+	UnrealEngineString__array__type,
 	class__type,
 	NativeClass__type,
-} from '../../common/unassigned';
+} from '../../../common/common/unassigned';
 
 export type FGSchematic__type = FGSchematic__base__type;
 

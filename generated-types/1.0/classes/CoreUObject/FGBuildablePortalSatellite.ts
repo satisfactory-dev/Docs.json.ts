@@ -2,7 +2,7 @@ import {boolean__type} from '../../common/scalar';
 
 import {FGBuildablePortal__base__type} from './FGBuildablePortal';
 
-import {NativeClass__type} from '../../common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildablePortalSatellite__type =
 	FGBuildablePortal__base__type & {
@@ -13,6 +13,7 @@ export type FGBuildablePortalSatellite__type =
 		mWasHeatingUpLastTick: boolean__type;
 	};
 
-export type FGBuildablePortalSatellite__NativeClass = NativeClass__type & {
-	Classes: [FGBuildablePortalSatellite__type];
-};
+export type FGBuildablePortalSatellite__NativeClass =
+	NativeClass__type & {
+		Classes: [FGBuildablePortalSatellite__type];
+	};

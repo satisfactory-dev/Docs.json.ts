@@ -10,13 +10,16 @@ import {
 	CameraAnim__type,
 	empty_object__type,
 	weaponState__type,
-	UnrealEngineString__array__type,
-	NativeClass__type,
 } from '../../common/unassigned';
 
 import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
 
 import {FGEquipment__base__type} from './FGEquipment';
+
+import {
+	UnrealEngineString__array__type,
+	NativeClass__type,
+} from '../../../common/common/unassigned';
 
 export type FGWeapon__base__type = FGEquipment__base__type & {
 	mShowCycleAmmoRadialMenuTimer: empty_object__type;

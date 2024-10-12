@@ -4,7 +4,7 @@ import {integer_string__type, decimal_string__type} from '../../common/scalar';
 
 import {FGBuildable__consumes_power_base__type} from './FGBuildable';
 
-import {NativeClass__type} from '../../common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableTradingPost__type =
 	FGBuildable__consumes_power_base__type & {
@@ -120,6 +120,7 @@ export type FGBuildableTradingPost__type =
 		mRepresentationText: 'The HUB';
 	};
 
-export type FGBuildableTradingPost__NativeClass = NativeClass__type & {
-	Classes: [FGBuildableTradingPost__type];
-};
+export type FGBuildableTradingPost__NativeClass =
+	NativeClass__type & {
+		Classes: [FGBuildableTradingPost__type];
+	};

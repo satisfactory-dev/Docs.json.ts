@@ -1,8 +1,4 @@
-import {
-	empty_object__type,
-	xy__type,
-	NativeClass__type,
-} from '../../common/unassigned';
+import {empty_object__type, xy__type} from '../../common/unassigned';
 
 import {
 	decimal_string__type,
@@ -11,6 +7,8 @@ import {
 } from '../../common/scalar';
 
 import {FGBuildable__docking_station_base__type} from './FGBuildable';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableDockingStation__type =
 	FGBuildable__docking_station_base__type & {
@@ -29,6 +27,7 @@ export type FGBuildableDockingStation__type =
 		mDockingVehicleStatistics: empty_object__type;
 	};
 
-export type FGBuildableDockingStation__NativeClass = NativeClass__type & {
-	Classes: [FGBuildableDockingStation__type];
-};
+export type FGBuildableDockingStation__NativeClass =
+	NativeClass__type & {
+		Classes: [FGBuildableDockingStation__type];
+	};

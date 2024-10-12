@@ -10,13 +10,16 @@ import {
 	mClearanceData__type,
 	empty_object__type,
 	xyz__type,
-	UnrealEngineString__array__type,
 	None__type,
-	class__type,
-	NativeClass__type,
 } from '../../common/unassigned';
 
 import {StringPassedRegExp} from '../../utils/validators';
+
+import {
+	UnrealEngineString__array__type,
+	class__type,
+	NativeClass__type,
+} from '../../../common/common/unassigned';
 
 export type FGBuildable__base__type = class__type & {
 	MaxRenderDistance: decimal_string__signed__type;

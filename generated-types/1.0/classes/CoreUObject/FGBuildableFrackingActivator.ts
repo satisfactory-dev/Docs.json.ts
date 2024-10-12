@@ -1,9 +1,4 @@
-import {
-	None__type,
-	empty_object__type,
-	UnrealEngineString__array__type,
-	NativeClass__type,
-} from '../../common/unassigned';
+import {None__type, empty_object__type} from '../../common/unassigned';
 
 import {
 	decimal_string__type,
@@ -12,6 +7,11 @@ import {
 } from '../../common/scalar';
 
 import {FGBuildable__extractor_base__shared__type} from './FGBuildable';
+
+import {
+	UnrealEngineString__array__type,
+	NativeClass__type,
+} from '../../../common/common/unassigned';
 
 export type FGBuildableFrackingActivator__type =
 	FGBuildable__extractor_base__shared__type & {
@@ -27,6 +27,7 @@ export type FGBuildableFrackingActivator__type =
 		mAllowedResources: UnrealEngineString__array__type;
 	};
 
-export type FGBuildableFrackingActivator__NativeClass = NativeClass__type & {
-	Classes: [FGBuildableFrackingActivator__type];
-};
+export type FGBuildableFrackingActivator__NativeClass =
+	NativeClass__type & {
+		Classes: [FGBuildableFrackingActivator__type];
+	};

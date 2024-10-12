@@ -2,7 +2,7 @@ import {decimal_string__type} from '../../common/scalar';
 
 import {FGItemDescriptor__FGResourceDescriptor__type} from './FGItemDescriptor';
 
-import {NativeClass__type} from '../../common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGItemDescriptorPowerBoosterFuel__type =
 	FGItemDescriptor__FGResourceDescriptor__type & {

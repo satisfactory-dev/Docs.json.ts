@@ -6,7 +6,7 @@ import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
 
 import {FGBuildable__base__type} from './FGBuildable';
 
-import {NativeClass__type} from '../../common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableWall__base__type = FGBuildable__base__type & {
 	mHeight: decimal_string__type;

@@ -1,8 +1,10 @@
 import {boolean__type, decimal_string__type} from '../../common/scalar';
 
-import {xyz__type, NativeClass__type} from '../../common/unassigned';
+import {xyz__type} from '../../common/unassigned';
 
 import {FGBuildable__consumes_power_base__type} from './FGBuildable';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildablePowerBooster__type =
 	FGBuildable__consumes_power_base__type & {
@@ -40,6 +42,10 @@ export type FGBuildablePowerBooster__type =
 		mCurrentFuelDurationLeft: decimal_string__type;
 	};
 
-export type FGBuildablePowerBooster__NativeClass = NativeClass__type & {
-	Classes: [FGBuildablePowerBooster__type, ...FGBuildablePowerBooster__type[]];
-};
+export type FGBuildablePowerBooster__NativeClass =
+	NativeClass__type & {
+		Classes: [
+			FGBuildablePowerBooster__type,
+			...FGBuildablePowerBooster__type[],
+		];
+	};

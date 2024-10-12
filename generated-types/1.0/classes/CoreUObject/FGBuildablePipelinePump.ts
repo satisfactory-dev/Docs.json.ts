@@ -2,7 +2,7 @@ import {FGBuildable__pipeline_flow_accessory__type} from './FGBuildable';
 
 import {boolean__type, decimal_string__type} from '../../common/scalar';
 
-import {NativeClass__type} from '../../common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildablePipelinePump__type =
 	FGBuildable__pipeline_flow_accessory__type & {
@@ -14,10 +14,11 @@ export type FGBuildablePipelinePump__type =
 export type FGBuildablePipelinePump__valve__type =
 	FGBuildable__pipeline_flow_accessory__type;
 
-export type FGBuildablePipelinePump__NativeClass = NativeClass__type & {
-	Classes: [
-		FGBuildablePipelinePump__valve__type | FGBuildablePipelinePump__type,
-		FGBuildablePipelinePump__valve__type | FGBuildablePipelinePump__type,
-		FGBuildablePipelinePump__valve__type | FGBuildablePipelinePump__type,
-	];
-};
+export type FGBuildablePipelinePump__NativeClass =
+	NativeClass__type & {
+		Classes: [
+			FGBuildablePipelinePump__valve__type | FGBuildablePipelinePump__type,
+			FGBuildablePipelinePump__valve__type | FGBuildablePipelinePump__type,
+			FGBuildablePipelinePump__valve__type | FGBuildablePipelinePump__type,
+		];
+	};

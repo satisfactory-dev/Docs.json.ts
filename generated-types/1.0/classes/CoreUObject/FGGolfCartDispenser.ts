@@ -3,7 +3,6 @@ import {
 	Montage_3P__type,
 	xyz__type,
 	empty_object__type,
-	NativeClass__type,
 } from '../../common/unassigned';
 
 import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
@@ -11,6 +10,8 @@ import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
 import {boolean__type, decimal_string__type} from '../../common/scalar';
 
 import {FGEquipment__base__type} from './FGEquipment';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGGolfCartDispenser__type = FGEquipment__base__type & {
 	mBuildDisqualifierText: 'Vehicles cannot be built or deployed on top of existing vehicles!';
@@ -40,6 +41,7 @@ export type FGGolfCartDispenser__type = FGEquipment__base__type & {
 	};
 };
 
-export type FGGolfCartDispenser__NativeClass = NativeClass__type & {
-	Classes: [FGGolfCartDispenser__type, FGGolfCartDispenser__type];
-};
+export type FGGolfCartDispenser__NativeClass =
+	NativeClass__type & {
+		Classes: [FGGolfCartDispenser__type, FGGolfCartDispenser__type];
+	};

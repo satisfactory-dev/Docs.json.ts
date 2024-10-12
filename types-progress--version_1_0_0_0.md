@@ -1,15 +1,15 @@
 # Types Progress
 
-100.00% Complete (241 of 241)
+100.00% Complete (243 of 243)
 
 ## Basic Types
 
 -   [x] boolean
 -   [x] boolean-extended
 -   [x] CameraAnim
--   [x] class
--   [x] class--no-description
--   [x] class--no-description-or-display-name
+-   [x] class (common type)
+-   [x] class--no-description (common type)
+-   [x] class--no-description-or-display-name (common type)
 -   [x] color
 -   [x] color-decimal
 -   [x] decimal-string
@@ -48,7 +48,7 @@
 -   [x] Montage_3P
 -   [x] mPlatformDockingStatus
 -   [x] mSnappedPassthroughs
--   [x] NativeClass
+-   [x] NativeClass (common type)
 -   [x] None
 -   [x] SpecifiedColor
 -   [x] Texture2D
@@ -352,7 +352,7 @@
 
 ## UnrealEngineString
 
--   [x] UnrealEngineString--array
+-   [x] UnrealEngineString--array (common type)
 
 ## vectors
 

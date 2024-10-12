@@ -8,10 +8,11 @@ import {
 import {
 	empty_object__type,
 	color_decimal__type,
-	NativeClass__type,
 } from '../../common/unassigned';
 
 import {FGBuildable__consumes_power_base__type} from './FGBuildable';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableManufacturer__type =
 	FGBuildableManufacturer__base__type;
@@ -75,15 +76,16 @@ export type FGBuildableManufacturer__smelter__type =
 		mCachedCurrentPotential: integer_string__type;
 	};
 
-export type FGBuildableManufacturer__NativeClass = NativeClass__type & {
-	Classes: [
-		FGBuildableManufacturer__type,
-		FGBuildableManufacturer__type,
-		FGBuildableManufacturer__packager__type,
-		FGBuildableManufacturer__type,
-		FGBuildableManufacturer__type,
-		FGBuildableManufacturer__blender__type,
-		FGBuildableManufacturer__smelter__type,
-		FGBuildableManufacturer__constructor__type,
-	];
-};
+export type FGBuildableManufacturer__NativeClass =
+	NativeClass__type & {
+		Classes: [
+			FGBuildableManufacturer__type,
+			FGBuildableManufacturer__type,
+			FGBuildableManufacturer__packager__type,
+			FGBuildableManufacturer__type,
+			FGBuildableManufacturer__type,
+			FGBuildableManufacturer__blender__type,
+			FGBuildableManufacturer__smelter__type,
+			FGBuildableManufacturer__constructor__type,
+		];
+	};

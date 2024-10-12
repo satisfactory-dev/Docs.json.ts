@@ -26,7 +26,8 @@
 						"left": "/Script/CoreUObject.Class",
 						"right": {
 							"starts_with": "/Script/FactoryGame.FG"
-						}
+						},
+						"quote_mode": "both"
 					}
 				}
 			}

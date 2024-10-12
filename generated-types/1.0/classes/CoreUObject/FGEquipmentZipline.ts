@@ -3,7 +3,6 @@ import {
 	Montage_3P__type,
 	CameraAnim__type,
 	empty_object__type,
-	NativeClass__type,
 } from '../../common/unassigned';
 
 import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
@@ -11,6 +10,8 @@ import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
 import {boolean__type, decimal_string__type} from '../../common/scalar';
 
 import {FGEquipment__base__type} from './FGEquipment';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGEquipmentZipline__type = FGEquipment__base__type & {
 	mZiplineAttachMontage: {
@@ -72,6 +73,7 @@ export type FGEquipmentZipline__type = FGEquipment__base__type & {
 	};
 };
 
-export type FGEquipmentZipline__NativeClass = NativeClass__type & {
-	Classes: [FGEquipmentZipline__type];
-};
+export type FGEquipmentZipline__NativeClass =
+	NativeClass__type & {
+		Classes: [FGEquipmentZipline__type];
+	};

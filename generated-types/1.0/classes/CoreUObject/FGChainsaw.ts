@@ -5,7 +5,6 @@ import {
 	Montage_3P__type,
 	mChainsawState__type,
 	empty_object__type,
-	NativeClass__type,
 } from '../../common/unassigned';
 
 import {
@@ -15,6 +14,8 @@ import {
 } from '../../common/scalar';
 
 import {FGEquipment__base__type} from './FGEquipment';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGChainsaw__type = FGEquipment__base__type & {
 	mInterpSawProgress: decimal_string__type;

@@ -1,10 +1,11 @@
-import {
-	None__type,
-	UnrealEngineString__array__type,
-	NativeClass__type,
-} from '../../common/unassigned';
+import {None__type} from '../../common/unassigned';
 
 import {FGBuildable__extractor_base__type} from './FGBuildable';
+
+import {
+	UnrealEngineString__array__type,
+	NativeClass__type,
+} from '../../../common/common/unassigned';
 
 export type FGBuildableFrackingExtractor__type =
 	FGBuildable__extractor_base__type & {
@@ -16,6 +17,7 @@ export type FGBuildableFrackingExtractor__type =
 		mAllowedResources: UnrealEngineString__array__type;
 	};
 
-export type FGBuildableFrackingExtractor__NativeClass = NativeClass__type & {
-	Classes: [FGBuildableFrackingExtractor__type];
-};
+export type FGBuildableFrackingExtractor__NativeClass =
+	NativeClass__type & {
+		Classes: [FGBuildableFrackingExtractor__type];
+	};

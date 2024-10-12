@@ -1,8 +1,4 @@
-import {
-	mAspect__type,
-	empty_object__type,
-	NativeClass__type,
-} from '../../common/unassigned';
+import {mAspect__type, empty_object__type} from '../../common/unassigned';
 
 import {
 	boolean__type,
@@ -11,6 +7,8 @@ import {
 } from '../../common/scalar';
 
 import {FGBuildable__base__type} from './FGBuildable';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableRailroadSignal__type = FGBuildable__base__type & {
 	mPreviousAspect?: mAspect__type;
@@ -27,9 +25,10 @@ export type FGBuildableRailroadSignal__type = FGBuildable__base__type & {
 	mSignificanceRange: decimal_string__type;
 };
 
-export type FGBuildableRailroadSignal__NativeClass = NativeClass__type & {
-	Classes: [
-		FGBuildableRailroadSignal__type,
-		...FGBuildableRailroadSignal__type[],
-	];
-};
+export type FGBuildableRailroadSignal__NativeClass =
+	NativeClass__type & {
+		Classes: [
+			FGBuildableRailroadSignal__type,
+			...FGBuildableRailroadSignal__type[],
+		];
+	};

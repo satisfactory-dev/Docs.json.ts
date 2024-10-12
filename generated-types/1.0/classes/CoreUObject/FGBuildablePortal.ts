@@ -9,10 +9,11 @@ import {
 	xyz__type,
 	empty_object__type,
 	color_decimal__type,
-	NativeClass__type,
 } from '../../common/unassigned';
 
 import {FGBuildable__consumes_power_base__type} from './FGBuildable';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildablePortal__type = FGBuildablePortal__base__type & {
 	ClassName?: 'Build_Portal_C';

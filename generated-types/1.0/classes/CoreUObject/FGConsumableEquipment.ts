@@ -3,7 +3,6 @@ import {
 	Montage_3P__type,
 	CameraAnim__type,
 	empty_object__type,
-	NativeClass__type,
 } from '../../common/unassigned';
 
 import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
@@ -11,6 +10,8 @@ import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
 import {decimal_string__type} from '../../common/scalar';
 
 import {FGEquipment__base__type} from './FGEquipment';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGConsumableEquipment__base__type = FGEquipment__base__type & {
 	mStingerMontage?: empty_object__type;
@@ -86,9 +87,10 @@ export type FGConsumableEquipment__medkit__type =
 		};
 	};
 
-export type FGConsumableEquipment__NativeClass = NativeClass__type & {
-	Classes: [
-		FGConsumableEquipment__equipment__type,
-		FGConsumableEquipment__medkit__type,
-	];
-};
+export type FGConsumableEquipment__NativeClass =
+	NativeClass__type & {
+		Classes: [
+			FGConsumableEquipment__equipment__type,
+			FGConsumableEquipment__medkit__type,
+		];
+	};

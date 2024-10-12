@@ -5,7 +5,6 @@ import {
 	color_decimal__type,
 	xyz__integer__type,
 	empty_object__type,
-	NativeClass__type,
 } from '../../common/unassigned';
 
 import {
@@ -15,6 +14,8 @@ import {
 } from '../../common/scalar';
 
 import {FGBuildable__base__type} from './FGBuildable';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableBlueprintDesigner__base__type =
 	FGBuildable__base__type & {
@@ -35,10 +36,11 @@ export type FGBuildableBlueprintDesigner__base__type =
 		mIsDismantlingAll: boolean__type;
 	};
 
-export type FGBuildableBlueprintDesigner__NativeClass = NativeClass__type & {
-	Classes: [
-		FGBuildableBlueprintDesigner__mk3__type,
-		FGBuildableBlueprintDesigner__mk2__type,
-		FGBuildableBlueprintDesigner__mk1__type,
-	];
-};
+export type FGBuildableBlueprintDesigner__NativeClass =
+	NativeClass__type & {
+		Classes: [
+			FGBuildableBlueprintDesigner__mk3__type,
+			FGBuildableBlueprintDesigner__mk2__type,
+			FGBuildableBlueprintDesigner__mk1__type,
+		];
+	};

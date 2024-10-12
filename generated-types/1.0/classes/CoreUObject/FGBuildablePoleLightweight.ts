@@ -5,7 +5,7 @@ import {
 
 import {FGBuildable__pole__base__type} from './FGBuildable';
 
-import {NativeClass__type} from '../../common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildablePoleLightweight__type =
 	FGBuildable__pole__base__type & {
@@ -13,6 +13,7 @@ export type FGBuildablePoleLightweight__type =
 		mSelectedPoleVersion: integer_string__signed__type;
 	};
 
-export type FGBuildablePoleLightweight__NativeClass = NativeClass__type & {
-	Classes: [FGBuildablePoleLightweight__type];
-};
+export type FGBuildablePoleLightweight__NativeClass =
+	NativeClass__type & {
+		Classes: [FGBuildablePoleLightweight__type];
+	};
