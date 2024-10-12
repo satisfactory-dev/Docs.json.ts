@@ -106,9 +106,15 @@ export class ObjectType extends GeneratorDoesDiscovery<
 
 				type = type_reference_node('Exclude', type, exclude);
 			} else if ('$ref' in raw_data && is_string(raw_data.$ref)) {
+				const $ref_substring = raw_data.$ref.startsWith(
+					'common.schema.json#/$defs/',
+				)
+					? `common_type__${raw_data.$ref.substring(26)}`
+					: raw_data.$ref.substring(8);
+
 				type = ts.factory.createIntersectionTypeNode([
 					type_reference_node(adjust_class_name(
-						`${raw_data.$ref.substring(8)}__type`,
+						`${$ref_substring}__type`,
 					)),
 					type,
 				]);

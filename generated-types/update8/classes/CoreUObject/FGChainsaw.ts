@@ -4,12 +4,11 @@ import {
 	boolean__type,
 } from '../../common/scalar';
 
-import {
-	mChainsawState__type,
-	NativeClass__type,
-} from '../../common/unassigned';
+import {mChainsawState__type} from '../../common/unassigned';
 
 import {FGEquipment__base__type} from './FGEquipment';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGChainsaw__type = FGEquipment__base__type & {
 	mSawingMontageLength: decimal_string__type;

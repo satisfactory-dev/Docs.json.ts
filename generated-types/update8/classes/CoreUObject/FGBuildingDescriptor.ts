@@ -2,7 +2,7 @@ import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
 
 import {FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type} from './FGItemDescriptor';
 
-import {NativeClass__type} from '../../common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildingDescriptor__type =
 	FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type & {
@@ -43,6 +43,7 @@ export type FGBuildingDescriptor__type =
 		];
 	};
 
-export type FGBuildingDescriptor__NativeClass = NativeClass__type & {
-	Classes: [FGBuildingDescriptor__type, ...FGBuildingDescriptor__type[]];
-};
+export type FGBuildingDescriptor__NativeClass =
+	NativeClass__type & {
+		Classes: [FGBuildingDescriptor__type, ...FGBuildingDescriptor__type[]];
+	};

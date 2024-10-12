@@ -6,7 +6,7 @@ import {
 
 import {FGWeapon__base__type} from './FGWeapon';
 
-import {NativeClass__type} from '../../common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGChargedWeapon__type = FGWeapon__base__type & {
 	mRadialMenuShowUpTime: decimal_string__type;

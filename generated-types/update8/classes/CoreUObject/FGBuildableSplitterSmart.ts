@@ -1,8 +1,10 @@
-import {empty_object__type, NativeClass__type} from '../../common/unassigned';
+import {empty_object__type} from '../../common/unassigned';
 
 import {integer_string__type} from '../../common/scalar';
 
 import {FGBuildable__splitter__base__type} from './FGBuildable';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableSplitterSmart__type =
 	FGBuildable__splitter__base__type & {
@@ -17,9 +19,10 @@ export type FGBuildableSplitterSmart__type =
 		mDistributionTable: '';
 	};
 
-export type FGBuildableSplitterSmart__NativeClass = NativeClass__type & {
-	Classes: [
-		FGBuildableSplitterSmart__type,
-		...FGBuildableSplitterSmart__type[],
-	];
-};
+export type FGBuildableSplitterSmart__NativeClass =
+	NativeClass__type & {
+		Classes: [
+			FGBuildableSplitterSmart__type,
+			...FGBuildableSplitterSmart__type[],
+		];
+	};

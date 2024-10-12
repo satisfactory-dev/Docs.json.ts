@@ -8,13 +8,16 @@ import {
 	Texture2D__type,
 	color__type,
 	mForm__type,
-	UnrealEngineString__array__type,
 	None__type,
-	class__type,
-	NativeClass__type,
 } from '../../common/unassigned';
 
 import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
+
+import {
+	UnrealEngineString__array__type,
+	class__type,
+	NativeClass__type,
+} from '../../../common/common/unassigned';
 
 export type FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type =
 	class__type & {

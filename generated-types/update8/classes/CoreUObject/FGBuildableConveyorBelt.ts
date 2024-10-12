@@ -1,8 +1,10 @@
 import {decimal_string__type, integer_string__type} from '../../common/scalar';
 
-import {empty_object__type, NativeClass__type} from '../../common/unassigned';
+import {empty_object__type} from '../../common/unassigned';
 
 import {FGBuildable__base__type} from './FGBuildable';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableConveyorBelt__type =
 	FGBuildableConveyorBelt__base__type & {
@@ -21,6 +23,10 @@ export type FGBuildableConveyorBelt__base__type = FGBuildable__base__type & {
 	mConveyorChainFlags: integer_string__type;
 };
 
-export type FGBuildableConveyorBelt__NativeClass = NativeClass__type & {
-	Classes: [FGBuildableConveyorBelt__type, ...FGBuildableConveyorBelt__type[]];
-};
+export type FGBuildableConveyorBelt__NativeClass =
+	NativeClass__type & {
+		Classes: [
+			FGBuildableConveyorBelt__type,
+			...FGBuildableConveyorBelt__type[],
+		];
+	};

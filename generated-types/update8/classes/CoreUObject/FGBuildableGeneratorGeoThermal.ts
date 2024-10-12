@@ -2,7 +2,7 @@ import {boolean__type, decimal_string__type} from '../../common/scalar';
 
 import {FGBuildableGenerator__base__type} from './FGBuildableGenerator';
 
-import {NativeClass__type} from '../../common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableGeneratorGeoThermal__type =
 	FGBuildableGenerator__base__type & {
@@ -15,6 +15,7 @@ export type FGBuildableGeneratorGeoThermal__type =
 		mVariablePowerProductionCycleOffset: decimal_string__type;
 	};
 
-export type FGBuildableGeneratorGeoThermal__NativeClass = NativeClass__type & {
-	Classes: [FGBuildableGeneratorGeoThermal__type];
-};
+export type FGBuildableGeneratorGeoThermal__NativeClass =
+	NativeClass__type & {
+		Classes: [FGBuildableGeneratorGeoThermal__type];
+	};

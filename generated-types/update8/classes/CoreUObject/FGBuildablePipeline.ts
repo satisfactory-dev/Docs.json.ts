@@ -5,10 +5,11 @@ import {decimal_string__type, boolean__type} from '../../common/scalar';
 import {
 	empty_object__type,
 	mSnappedPassthroughs__type,
-	NativeClass__type,
 } from '../../common/unassigned';
 
 import {FGBuildable__base__type} from './FGBuildable';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildablePipeline__type = FGBuildable__base__type & {
 	mMeshLength: decimal_string__type;
@@ -40,6 +41,7 @@ export type FGBuildablePipeline__type = FGBuildable__base__type & {
 	mSnappedPassthroughs: mSnappedPassthroughs__type;
 };
 
-export type FGBuildablePipeline__NativeClass = NativeClass__type & {
-	Classes: [FGBuildablePipeline__type, ...FGBuildablePipeline__type[]];
-};
+export type FGBuildablePipeline__NativeClass =
+	NativeClass__type & {
+		Classes: [FGBuildablePipeline__type, ...FGBuildablePipeline__type[]];
+	};

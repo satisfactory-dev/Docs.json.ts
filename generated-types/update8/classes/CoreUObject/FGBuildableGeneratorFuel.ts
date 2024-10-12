@@ -1,4 +1,4 @@
-import {empty_object__type, NativeClass__type} from '../../common/unassigned';
+import {empty_object__type} from '../../common/unassigned';
 
 import {
 	integer_string__type,
@@ -7,6 +7,8 @@ import {
 } from '../../common/scalar';
 
 import {FGBuildableGenerator__base__type} from './FGBuildableGenerator';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableGeneratorFuel__base__type =
 	FGBuildableGenerator__base__type & {
@@ -133,22 +135,23 @@ export type FGBuildableGeneratorFuel__solid__type =
 		mFuelResourceForm: 'RF_SOLID';
 	};
 
-export type FGBuildableGeneratorFuel__NativeClass = NativeClass__type & {
-	Classes: [
-		(
-			| FGBuildableGeneratorFuel__solid__type
-			| FGBuildableGeneratorFuel__liquid__type
-			| FGBuildableGeneratorFuel__biogen__type
-		),
-		(
-			| FGBuildableGeneratorFuel__solid__type
-			| FGBuildableGeneratorFuel__liquid__type
-			| FGBuildableGeneratorFuel__biogen__type
-		),
-		(
-			| FGBuildableGeneratorFuel__solid__type
-			| FGBuildableGeneratorFuel__liquid__type
-			| FGBuildableGeneratorFuel__biogen__type
-		),
-	];
-};
+export type FGBuildableGeneratorFuel__NativeClass =
+	NativeClass__type & {
+		Classes: [
+			(
+				| FGBuildableGeneratorFuel__solid__type
+				| FGBuildableGeneratorFuel__liquid__type
+				| FGBuildableGeneratorFuel__biogen__type
+			),
+			(
+				| FGBuildableGeneratorFuel__solid__type
+				| FGBuildableGeneratorFuel__liquid__type
+				| FGBuildableGeneratorFuel__biogen__type
+			),
+			(
+				| FGBuildableGeneratorFuel__solid__type
+				| FGBuildableGeneratorFuel__liquid__type
+				| FGBuildableGeneratorFuel__biogen__type
+			),
+		];
+	};

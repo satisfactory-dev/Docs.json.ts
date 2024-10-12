@@ -10,10 +10,11 @@ import {
 	empty_object__type,
 	xyz__type,
 	pitch_yaw_roll__type,
-	NativeClass__type,
 } from '../../common/unassigned';
 
 import {FGBuildable__consumes_power_base__type} from './FGBuildable';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableJumppad__type =
 	FGBuildable__consumes_power_base__type & {
@@ -45,6 +46,7 @@ export type FGBuildableJumppad__type =
 		mShowTrajectoryCounter: integer_string__type;
 	};
 
-export type FGBuildableJumppad__NativeClass = NativeClass__type & {
-	Classes: [FGBuildableJumppad__type];
-};
+export type FGBuildableJumppad__NativeClass =
+	NativeClass__type & {
+		Classes: [FGBuildableJumppad__type];
+	};

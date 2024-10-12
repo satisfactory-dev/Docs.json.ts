@@ -3,12 +3,13 @@ import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
 import {
 	FGBuildableResourceExtractor__miner_mk3__type,
 	None__type,
-	NativeClass__type,
 } from '../../common/unassigned';
 
 import {boolean__type} from '../../common/scalar';
 
 import {FGBuildable__extractor_base__type} from './FGBuildable';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableResourceExtractor__miner__type =
 	FGBuildableResourceExtractor__miner__base__type;
@@ -80,27 +81,28 @@ export type FGBuildableResourceExtractor__oil_extractor__type =
 		mExtractorTypeName: None__type;
 	};
 
-export type FGBuildableResourceExtractor__NativeClass = NativeClass__type & {
-	Classes: [
-		(
-			| FGBuildableResourceExtractor__oil_extractor__type
-			| FGBuildableResourceExtractor__miner_mk3__type
-			| FGBuildableResourceExtractor__miner__type
-		),
-		(
-			| FGBuildableResourceExtractor__oil_extractor__type
-			| FGBuildableResourceExtractor__miner_mk3__type
-			| FGBuildableResourceExtractor__miner__type
-		),
-		(
-			| FGBuildableResourceExtractor__oil_extractor__type
-			| FGBuildableResourceExtractor__miner_mk3__type
-			| FGBuildableResourceExtractor__miner__type
-		),
-		(
-			| FGBuildableResourceExtractor__oil_extractor__type
-			| FGBuildableResourceExtractor__miner_mk3__type
-			| FGBuildableResourceExtractor__miner__type
-		),
-	];
-};
+export type FGBuildableResourceExtractor__NativeClass =
+	NativeClass__type & {
+		Classes: [
+			(
+				| FGBuildableResourceExtractor__oil_extractor__type
+				| FGBuildableResourceExtractor__miner_mk3__type
+				| FGBuildableResourceExtractor__miner__type
+			),
+			(
+				| FGBuildableResourceExtractor__oil_extractor__type
+				| FGBuildableResourceExtractor__miner_mk3__type
+				| FGBuildableResourceExtractor__miner__type
+			),
+			(
+				| FGBuildableResourceExtractor__oil_extractor__type
+				| FGBuildableResourceExtractor__miner_mk3__type
+				| FGBuildableResourceExtractor__miner__type
+			),
+			(
+				| FGBuildableResourceExtractor__oil_extractor__type
+				| FGBuildableResourceExtractor__miner_mk3__type
+				| FGBuildableResourceExtractor__miner__type
+			),
+		];
+	};

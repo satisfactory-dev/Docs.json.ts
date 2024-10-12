@@ -40,6 +40,7 @@ import {
 } from './DocsTsAutoImports';
 import {
 	dirname,
+	relative,
 } from 'node:path';
 import {
 	docs_versions,
@@ -267,6 +268,13 @@ export class TypeDefinitionWriter
 			auto_imports.imports_come_from,
 		);
 
+		if ('common' === this.version) {
+			await writeFile(
+				`${__dirname}/../common-imports.json`,
+				auto_imports.non_faux_imports_come_from,
+			);
+		}
+
 		const printer = ts.createPrinter({
 			newLine: ts.NewLineKind.LineFeed,
 		});
@@ -438,9 +446,15 @@ export class TypeDefinitionWriter
 					.join('\n\n'),
 			);
 
-			const types_from_module = this.docs.docs_versions[
+			const {
+				types_from_module,
+				common_types_from_module,
+			} = this.docs.docs_versions[
 				this.version
-			]?.types_from_module;
+			] || {
+				types_from_module: undefined,
+				common_types_from_module: undefined,
+			};
 
 			if (types_from_module) {
 				code = code.replace(
@@ -448,6 +462,25 @@ export class TypeDefinitionWriter
 					`} from '${types_from_module}/$1/`,
 				);
 			}
+
+			if (common_types_from_module) {
+				code = code.replace(
+					/} from 'import_from_common;(classes|common|utils)\//g,
+					`} from '${common_types_from_module}/$1/`,
+				);
+			} else {
+				code = code.replace(
+					/} from 'import_from_common;(classes|common|utils)\//g,
+					`} from '${
+						relative(
+							dir,
+							dirname(parent_folder),
+						)
+					}/common/$1/`,
+				);
+			}
+
+			code = code.replace(/common_type__/g, '');
 
 			await writeFile(
 				file_name,

@@ -2,7 +2,7 @@ import {UnrealEngineString} from '../../utils/validators';
 
 import {FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type} from './FGItemDescriptor';
 
-import {NativeClass__type} from '../../common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGPoleDescriptor__type =
 	FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type & {

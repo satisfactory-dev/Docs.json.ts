@@ -1,8 +1,10 @@
-import {mDamageTypes__type, NativeClass__type} from '../../common/unassigned';
+import {mDamageTypes__type} from '../../common/unassigned';
 
 import {boolean__type, decimal_string__type} from '../../common/scalar';
 
 import {FGEquipment__base__type} from './FGEquipment';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGGasMask__type = FGEquipment__base__type & {
 	mDamageTypesToProtectAgainst: mDamageTypes__type;

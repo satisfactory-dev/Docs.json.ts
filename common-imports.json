@@ -1,0 +1,10 @@
+{
+	"common_type__class__type": "common/unassigned",
+	"common_type__class__no_description__type": "common/unassigned",
+	"common_type__class__no_description_or_display_name__type": "common/unassigned",
+	"common_type__NativeClass__type": "common/unassigned",
+	"common_type__UnrealEngineString__array__type": "common/unassigned",
+	"common_type__UnrealEngineString": "utils/validators",
+	"common_type__StringStartsWith": "utils/validators",
+	"common_type__StringPassedRegExp": "utils/validators"
+}

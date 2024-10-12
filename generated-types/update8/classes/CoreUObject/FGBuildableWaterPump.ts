@@ -2,13 +2,11 @@ import {UnrealEngineString} from '../../utils/validators';
 
 import {decimal_string__type, boolean__type} from '../../common/scalar';
 
-import {
-	xyz__type,
-	None__type,
-	NativeClass__type,
-} from '../../common/unassigned';
+import {xyz__type, None__type} from '../../common/unassigned';
 
 import {FGBuildable__extractor_base__type} from './FGBuildable';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableWaterPump__type = FGBuildable__extractor_base__type & {
 	mWaterpumpTimeline_RTPC_B8FA6F944E717E3B7A286E84901F620E: decimal_string__type;
@@ -30,6 +28,7 @@ export type FGBuildableWaterPump__type = FGBuildable__extractor_base__type & {
 	mExtractorTypeName?: None__type;
 };
 
-export type FGBuildableWaterPump__NativeClass = NativeClass__type & {
-	Classes: [FGBuildableWaterPump__type];
-};
+export type FGBuildableWaterPump__NativeClass =
+	NativeClass__type & {
+		Classes: [FGBuildableWaterPump__type];
+	};

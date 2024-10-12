@@ -3,10 +3,11 @@ import {decimal_string__type, boolean__type} from '../../common/scalar';
 import {
 	empty_object__type,
 	mDisableSnapOn__type,
-	NativeClass__type,
 } from '../../common/unassigned';
 
 import {FGBuildable__base__type} from './FGBuildable';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableFoundation__type = FGBuildableFoundation__base__type;
 
@@ -20,6 +21,7 @@ export type FGBuildableFoundation__base__type = FGBuildable__base__type & {
 	mDisableAttachmentSnapOn: empty_object__type | mDisableSnapOn__type;
 };
 
-export type FGBuildableFoundation__NativeClass = NativeClass__type & {
-	Classes: [FGBuildableFoundation__type, ...FGBuildableFoundation__type[]];
-};
+export type FGBuildableFoundation__NativeClass =
+	NativeClass__type & {
+		Classes: [FGBuildableFoundation__type, ...FGBuildableFoundation__type[]];
+	};

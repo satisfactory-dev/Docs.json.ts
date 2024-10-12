@@ -1,12 +1,10 @@
 import {decimal_string__type} from '../../common/scalar';
 
-import {
-	pitch_yaw_roll__type,
-	xyz__type,
-	NativeClass__type,
-} from '../../common/unassigned';
+import {pitch_yaw_roll__type, xyz__type} from '../../common/unassigned';
 
 import {FGEquipmentDescriptor__base__type} from './FGEquipmentDescriptor';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGConsumableDescriptor__type = FGConsumableDescriptor__base__type;
 
@@ -22,12 +20,13 @@ export type FGConsumableDescriptor__healing__type =
 		mHealthGain: decimal_string__type;
 	};
 
-export type FGConsumableDescriptor__NativeClass = NativeClass__type & {
-	Classes: [
-		FGConsumableDescriptor__type | FGConsumableDescriptor__healing__type,
-		...(
-			| FGConsumableDescriptor__type
-			| FGConsumableDescriptor__healing__type
-		)[],
-	];
-};
+export type FGConsumableDescriptor__NativeClass =
+	NativeClass__type & {
+		Classes: [
+			FGConsumableDescriptor__type | FGConsumableDescriptor__healing__type,
+			...(
+				| FGConsumableDescriptor__type
+				| FGConsumableDescriptor__healing__type
+			)[],
+		];
+	};

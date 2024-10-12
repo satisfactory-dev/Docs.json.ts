@@ -1,8 +1,10 @@
 import {boolean__type, decimal_string__type} from '../../common/scalar';
 
-import {empty_object__type, NativeClass__type} from '../../common/unassigned';
+import {empty_object__type} from '../../common/unassigned';
 
 import {FGEquipment__base__type} from './FGEquipment';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGObjectScanner__type = FGEquipment__base__type & {
 	mPlayingSound: boolean__type;

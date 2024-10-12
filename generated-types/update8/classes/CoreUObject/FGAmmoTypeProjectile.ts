@@ -15,10 +15,11 @@ import {
 	xyz__type,
 	color_decimal__type,
 	mDamageTypes__type,
-	NativeClass__type,
 } from '../../common/unassigned';
 
 import {FGItemDescriptor__FGResourceDescriptor__type} from './FGItemDescriptor';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGAmmoTypeProjectile__type = FGAmmoTypeProjectile__base__type & {
 	mInitialProjectileSpeedOverride: decimal_string__signed__type;
@@ -124,6 +125,7 @@ export type FGAmmoTypeProjectile__base__type =
 		};
 	};
 
-export type FGAmmoTypeProjectile__NativeClass = NativeClass__type & {
-	Classes: [FGAmmoTypeProjectile__type, ...FGAmmoTypeProjectile__type[]];
-};
+export type FGAmmoTypeProjectile__NativeClass =
+	NativeClass__type & {
+		Classes: [FGAmmoTypeProjectile__type, ...FGAmmoTypeProjectile__type[]];
+	};

@@ -2,7 +2,7 @@ import {boolean__type, decimal_string__type} from '../../common/scalar';
 
 import {FGEquipment__base__type} from './FGEquipment';
 
-import {NativeClass__type} from '../../common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGEquipmentZipline__type = FGEquipment__base__type & {
 	mShouldPlayDeactivateSound: boolean__type;
@@ -16,6 +16,7 @@ export type FGEquipmentZipline__type = FGEquipment__base__type & {
 	mZiplineReattachCooldown: decimal_string__type;
 };
 
-export type FGEquipmentZipline__NativeClass = NativeClass__type & {
-	Classes: [FGEquipmentZipline__type];
-};
+export type FGEquipmentZipline__NativeClass =
+	NativeClass__type & {
+		Classes: [FGEquipmentZipline__type];
+	};

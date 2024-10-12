@@ -1,12 +1,10 @@
 import {decimal_string__type} from '../../common/scalar';
 
-import {
-	empty_object__type,
-	xyz_array__type,
-	NativeClass__type,
-} from '../../common/unassigned';
+import {empty_object__type, xyz_array__type} from '../../common/unassigned';
 
 import {FGBuildableManufacturer__base__type} from './FGBuildableManufacturer';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableManufacturerVariablePower__type =
 	FGBuildableManufacturer__base__type & {

@@ -5,7 +5,7 @@ import {
 
 import {integer_string__type} from '../../common/scalar';
 
-import {NativeClass__type} from '../../common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGEquipmentDescriptor__type = FGEquipmentDescriptor__base__type;
 
@@ -14,9 +14,10 @@ export type FGEquipmentDescriptor__base__type =
 		mResourceSinkPoints: integer_string__type;
 	};
 
-export type FGEquipmentDescriptor__NativeClass = NativeClass__type & {
-	Classes: [
-		FGItemDescriptor__FGResourceDescriptor__type,
-		...FGItemDescriptor__FGResourceDescriptor__type[],
-	];
-};
+export type FGEquipmentDescriptor__NativeClass =
+	NativeClass__type & {
+		Classes: [
+			FGItemDescriptor__FGResourceDescriptor__type,
+			...FGItemDescriptor__FGResourceDescriptor__type[],
+		];
+	};

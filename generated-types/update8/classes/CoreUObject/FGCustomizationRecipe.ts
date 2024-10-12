@@ -5,9 +5,12 @@ import {decimal_string__type} from '../../common/scalar';
 import {
 	mEventType__optional_csv__type,
 	ItemClass__type,
+} from '../../common/unassigned';
+
+import {
 	class__no_description__type,
 	NativeClass__type,
-} from '../../common/unassigned';
+} from '../../../common/common/unassigned';
 
 export type FGCustomizationRecipe__FGRecipe__type =
 	class__no_description__type & {
@@ -61,53 +64,54 @@ export type FGCustomizationRecipe__FGRecipe__type =
 		mVariablePowerConsumptionFactor: decimal_string__type;
 	};
 
-export type FGCustomizationRecipe__NativeClass = NativeClass__type & {
-	Classes: [
-		FGCustomizationRecipe__FGRecipe__type & {
-			mDisplayName:
-				| 'N/A'
-				| 'Custom Slot'
-				| 'Swatch 1'
-				| 'Swatch 2'
-				| 'Swatch 3'
-				| 'Swatch 4'
-				| 'Swatch 5'
-				| 'Swatch 6'
-				| 'Swatch 7'
-				| 'Swatch 8'
-				| 'Swatch 9'
-				| 'Swatch 10'
-				| 'Swatch 11'
-				| 'Swatch 12'
-				| 'Swatch 13'
-				| 'Swatch 14'
-				| 'Swatch 15';
-			mProducedIn: [
-				'/Game/FactoryGame/Equipment/BuildGun/BP_BuildGun.BP_BuildGun_C',
-			];
-		},
-		...(FGCustomizationRecipe__FGRecipe__type & {
-			mDisplayName:
-				| 'N/A'
-				| 'Custom Slot'
-				| 'Swatch 1'
-				| 'Swatch 2'
-				| 'Swatch 3'
-				| 'Swatch 4'
-				| 'Swatch 5'
-				| 'Swatch 6'
-				| 'Swatch 7'
-				| 'Swatch 8'
-				| 'Swatch 9'
-				| 'Swatch 10'
-				| 'Swatch 11'
-				| 'Swatch 12'
-				| 'Swatch 13'
-				| 'Swatch 14'
-				| 'Swatch 15';
-			mProducedIn: [
-				'/Game/FactoryGame/Equipment/BuildGun/BP_BuildGun.BP_BuildGun_C',
-			];
-		})[],
-	];
-};
+export type FGCustomizationRecipe__NativeClass =
+	NativeClass__type & {
+		Classes: [
+			FGCustomizationRecipe__FGRecipe__type & {
+				mDisplayName:
+					| 'N/A'
+					| 'Custom Slot'
+					| 'Swatch 1'
+					| 'Swatch 2'
+					| 'Swatch 3'
+					| 'Swatch 4'
+					| 'Swatch 5'
+					| 'Swatch 6'
+					| 'Swatch 7'
+					| 'Swatch 8'
+					| 'Swatch 9'
+					| 'Swatch 10'
+					| 'Swatch 11'
+					| 'Swatch 12'
+					| 'Swatch 13'
+					| 'Swatch 14'
+					| 'Swatch 15';
+				mProducedIn: [
+					'/Game/FactoryGame/Equipment/BuildGun/BP_BuildGun.BP_BuildGun_C',
+				];
+			},
+			...(FGCustomizationRecipe__FGRecipe__type & {
+				mDisplayName:
+					| 'N/A'
+					| 'Custom Slot'
+					| 'Swatch 1'
+					| 'Swatch 2'
+					| 'Swatch 3'
+					| 'Swatch 4'
+					| 'Swatch 5'
+					| 'Swatch 6'
+					| 'Swatch 7'
+					| 'Swatch 8'
+					| 'Swatch 9'
+					| 'Swatch 10'
+					| 'Swatch 11'
+					| 'Swatch 12'
+					| 'Swatch 13'
+					| 'Swatch 14'
+					| 'Swatch 15';
+				mProducedIn: [
+					'/Game/FactoryGame/Equipment/BuildGun/BP_BuildGun.BP_BuildGun_C',
+				];
+			})[],
+		];
+	};

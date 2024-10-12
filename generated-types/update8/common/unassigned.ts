@@ -9,19 +9,6 @@ import {
 
 import {FGBuildableResourceExtractor__miner__base__type} from '../classes/CoreUObject/FGBuildableResourceExtractor';
 
-export type class__type = class__no_description__type & {
-	mDescription: string;
-};
-
-export type class__no_description__type =
-	class__no_description_or_display_name__type & {
-		mDisplayName: string;
-	};
-
-export type class__no_description_or_display_name__type = {
-	ClassName: Exclude<string, ''>;
-};
-
 export type color__type = {
 	B: integer_string__type;
 	G: integer_string__type;
@@ -284,13 +271,6 @@ export type mPlatformDockingStatus__type = 'ETPDS_None';
 
 export type mSnappedPassthroughs__type = '';
 
-export type NativeClass__type = {
-	NativeClass: UnrealEngineString<
-		'/Script/CoreUObject.Class',
-		StringStartsWith<'/Script/FactoryGame.FG'>
-	>;
-};
-
 export type None__type = 'None';
 
 export type pitch_yaw_roll__type = {
@@ -320,11 +300,6 @@ export type transformation__type = {
 	Translation: xyz__type;
 	Scale3D: xyz__type;
 };
-
-export type UnrealEngineString__array__type = [
-	UnrealEngineString,
-	...UnrealEngineString[],
-];
 
 export type weaponState__type = 'EWS_Unequipped';
 

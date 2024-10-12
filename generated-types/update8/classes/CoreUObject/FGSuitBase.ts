@@ -4,7 +4,7 @@ import {decimal_string__type, boolean__type} from '../../common/scalar';
 
 import {FGEquipment__base__type} from './FGEquipment';
 
-import {NativeClass__type} from '../../common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGSuitBase__type = FGEquipment__base__type & {
 	mImmunity: decimal_string__type;

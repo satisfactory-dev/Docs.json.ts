@@ -16,6 +16,7 @@ import {
 } from '@satisfactory-dev/predicates.ts';
 
 import {
+	common_ref,
 	local_ref,
 } from '../../StringStartsWith';
 import {
@@ -164,6 +165,23 @@ abstract class ObjectConverterMatchesSchema<
 					converters[property] = converter;
 				}
 			}
+		} else if (
+			'$ref' in schema
+			&& is_string(schema.$ref)
+			&& schema.$ref.startsWith('common.schema.json#/$defs/')
+		) {
+			const $ref_converters = Object.entries(
+				await this.resolve_converters_for_common_$ref(
+					schema.$ref as common_ref<string>,
+				),
+			);
+
+			for (const entry of $ref_converters) {
+				const [property, converter] = entry;
+				if (!(property in converters)) {
+					converters[property] = converter;
+				}
+			}
 		}
 
 		performance.measure(
@@ -185,9 +203,20 @@ abstract class ObjectConverterMatchesSchema<
 		return this.resolve_converters(definition);
 	}
 
+	protected async resolve_converters_for_common_$ref(
+		$ref: common_ref<string>,
+	): Promise<{[key: string]: Converter<SchemaObject>}> {
+		const definition = await this.discovery.docs.definition_from_common(
+			$ref.substring(26),
+		);
+
+		return this.resolve_converters(definition);
+	}
+
 	protected async resolve_schema(
 		schema: SchemaObject,
 		depth = 0,
+		is_common = false,
 	): Promise<{[key: string]: SchemaObject}> {
 		performance.mark(
 			`${this.constructor.name}.resolve_schema() start`,
@@ -237,10 +266,31 @@ abstract class ObjectConverterMatchesSchema<
 			for (const entry of Object.entries(
 				await this.resolve_schema(
 					await this.discovery.docs.definition(
-						this.discovery.version,
+						is_common ? 'common' : this.discovery.version,
 						schema.$ref.substring(8),
 					),
 					depth + 1,
+					is_common,
+				),
+			)) {
+				const [property, sub_schema] = entry;
+
+				if (!(property in resolved_schema)) {
+					resolved_schema[property] = sub_schema;
+				}
+			}
+		} else if (
+			'$ref' in schema
+			&& is_string(schema.$ref)
+			&& schema.$ref.startsWith('common.schema.json#/$defs/')
+		) {
+			for (const entry of Object.entries(
+				await this.resolve_schema(
+					await this.discovery.docs.definition_from_common(
+						schema.$ref.substring(26),
+					),
+					depth + 1,
+					true,
 				),
 			)) {
 				const [property, sub_schema] = entry;
@@ -274,7 +324,10 @@ export class ObjectConverter extends ObjectConverterMatchesSchema<
 			additionalProperties: false,
 			properties: {
 				type: {type: 'string', const: 'object'},
-				$ref: {type: 'string', pattern: '^#/\\$defs/'},
+				$ref: {
+					type: 'string',
+					pattern: '^(common.schema.json)?#/\\$defs/',
+				},
 				required: {
 					type: 'array',
 					minItems: 1,
@@ -377,7 +430,10 @@ export class PatternedObjectConverter extends ObjectConverterMatchesSchema<
 			additionalProperties: false,
 			properties: {
 				type: {type: 'string', const: 'object'},
-				$ref: {type: 'string', pattern: '^#/\\$defs/'},
+				$ref: {
+					type: 'string',
+					pattern: '^(common.schema.json)#/\\$defs/',
+				},
 				additionalProperties: {type: 'boolean', const: false},
 				unevaluatedProperties: {type: 'boolean', const: false},
 				minProperties: {type: 'number', minimum: 1},

@@ -36,7 +36,8 @@ export class Ref extends ConverterMatchesSchema<
 			required: ['$ref'],
 			additionalProperties: false,
 			properties: {
-				$ref: {type: 'string', pattern: '^#/\\$defs/'},
+				// eslint-disable-next-line max-len
+				$ref: {type: 'string', pattern: '^(common.schema.json)?#/\\$defs/'},
 			},
 		});
 		this.discovery = discovery;
@@ -130,12 +131,22 @@ export class Ref extends ConverterMatchesSchema<
 			this.constructor.name
 		}.resolve_to_final_converter_schema_only() start`);
 
+		let version = this.discovery.version;
+
 		if (!(schema.$ref in this.cache)) {
 			while (this.can_convert_schema(checking)) {
+				if (checking.$ref.startsWith('common.schema.json#/$defs/')) {
+					version = 'common';
+					checking = await this.discovery.docs.definition(
+						version,
+						checking.$ref.substring(26),
+					);
+				} else {
 				checking = await this.discovery.docs.definition(
-					this.discovery.version,
+						version,
 					checking.$ref.substring(8),
 				);
+				}
 			}
 
 			if (this.can_convert_schema(checking)) {

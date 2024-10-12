@@ -1,11 +1,10 @@
 import {boolean__type} from '../../common/scalar';
 
-import {
-	mDockingRuleSet__type,
-	NativeClass__type,
-} from '../../common/unassigned';
+import {mDockingRuleSet__type} from '../../common/unassigned';
 
 import {FGBuildableTrainPlatformCargo__FGBuildableRailroadStation__type} from './FGBuildableTrainPlatformCargo';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableRailroadStation__type =
 	FGBuildableTrainPlatformCargo__FGBuildableRailroadStation__type & {
@@ -15,6 +14,7 @@ export type FGBuildableRailroadStation__type =
 		mCurrentDockedWithRuleSet: mDockingRuleSet__type;
 	};
 
-export type FGBuildableRailroadStation__NativeClass = NativeClass__type & {
-	Classes: [FGBuildableRailroadStation__type];
-};
+export type FGBuildableRailroadStation__NativeClass =
+	NativeClass__type & {
+		Classes: [FGBuildableRailroadStation__type];
+	};

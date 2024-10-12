@@ -1,12 +1,10 @@
 import {decimal_string__type} from '../../common/scalar';
 
-import {
-	None__type,
-	xyz__type,
-	NativeClass__type,
-} from '../../common/unassigned';
+import {None__type, xyz__type} from '../../common/unassigned';
 
 import {FGBuildable__base__type} from './FGBuildable';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableWire__type = FGBuildable__base__type & {
 	mMaxLength: decimal_string__type;

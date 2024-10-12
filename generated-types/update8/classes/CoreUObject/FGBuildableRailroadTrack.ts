@@ -7,9 +7,11 @@ import {
 	boolean__type,
 } from '../../common/scalar';
 
-import {empty_object__type, NativeClass__type} from '../../common/unassigned';
+import {empty_object__type} from '../../common/unassigned';
 
 import {FGBuildable__base__type} from './FGBuildable';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableRailroadTrack__type = FGBuildable__base__type & {
 	ClassName?: 'Build_RailroadTrack_C';
@@ -41,6 +43,7 @@ export type FGBuildableRailroadTrack__type = FGBuildable__base__type & {
 	mBlockVisualizationColorDataStartIndex: integer_string__type;
 };
 
-export type FGBuildableRailroadTrack__NativeClass = NativeClass__type & {
-	Classes: [FGBuildableRailroadTrack__type];
-};
+export type FGBuildableRailroadTrack__NativeClass =
+	NativeClass__type & {
+		Classes: [FGBuildableRailroadTrack__type];
+	};

@@ -8,10 +8,11 @@ import {
 	color_decimal__type,
 	xyz__integer__type,
 	empty_object__type,
-	NativeClass__type,
 } from '../../common/unassigned';
 
 import {FGBuildable__base__type} from './FGBuildable';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableBlueprintDesigner__type = FGBuildable__base__type & {
 	ClassName?: 'Build_BlueprintDesigner_C';
@@ -31,6 +32,7 @@ export type FGBuildableBlueprintDesigner__type = FGBuildable__base__type & {
 	mIsDismantlingAll: boolean__type;
 };
 
-export type FGBuildableBlueprintDesigner__NativeClass = NativeClass__type & {
-	Classes: [FGBuildableBlueprintDesigner__type];
-};
+export type FGBuildableBlueprintDesigner__NativeClass =
+	NativeClass__type & {
+		Classes: [FGBuildableBlueprintDesigner__type];
+	};

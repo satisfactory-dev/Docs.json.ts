@@ -15,6 +15,7 @@ import {
 	value_is_non_array_object,
 } from '@satisfactory-dev/predicates.ts';
 import {
+	common_ref,
 	local_ref,
 } from './StringStartsWith';
 import ts, {
@@ -298,13 +299,30 @@ export class TypeDefinitionDiscovery
 
 		const discovered_types = await this.types_discovery.discover_types();
 
+		const all_referenced_common_types = [
+			...discovered_types.discovered_types,
+			...discovered_types.missed_types,
+		]
+			.filter(e => e.startsWith('common.schema.json#/$defs/'))
+			.map(e => e.substring(26));
+
 		const all_referenced_types = [
 			...discovered_types.discovered_types,
 			...discovered_types.missed_types,
-		].map(e => e.substring(8)).sort((a, b) => a.localeCompare(b));
-		const supported_types = discovered_types.discovered_types.map(
-			e => e.substring(8),
-		);
+		].map(e => {
+			if (e.startsWith('common.schema.json#/$defs/')) {
+				return e.substring(26);
+			}
+
+			return e.substring(8);
+		}).sort((a, b) => a.localeCompare(b));
+		const supported_types = discovered_types.discovered_types.map((e) => {
+			if (e.startsWith('common.schema.json#/$defs/')) {
+				return e.substring(26);
+			}
+
+			return e.substring(8);
+		});
 
 		for (const item of all_referenced_types) {
 			const parts = item.split('--');
@@ -376,7 +394,11 @@ export class TypeDefinitionDiscovery
 						return `-   [${supported_types.includes(key) ? 'x' : ' '}] ${key.replace(
 							/__/g,
 							'\\_\\_',
-						)}`;
+						)}${
+							all_referenced_common_types.includes(key)
+								? ' (common type)'
+								: ''
+						}`;
 					}).join('\n')}`,
 				);
 			}).join('\n\n')}
@@ -405,12 +427,18 @@ export class TypeDefinitionDiscovery
 
 		const $defs = Object.keys(
 			discovered_types,
-		) as local_ref<string>[];
+		) as (local_ref<string>|common_ref<string>)[];
 
 		for (const definition of $defs) {
-			const $ref = definition.substring(8) as (
-				& string
-				& keyof typeof schema.$defs
+			const $ref = (
+				definition.startsWith('#/$defs/')
+					? definition.substring(8) as (
+						& string
+						& keyof typeof schema.$defs
+					)
+					: definition.substring(26) as (
+						& keyof typeof common_schema.$defs
+					)
 			);
 
 			const generator = this.candidates.find(

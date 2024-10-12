@@ -14,6 +14,8 @@ import {
 	NoMatchError,
 } from './Exceptions';
 
+import common_types_map from '../common-imports.json' with {type: 'json'}
+
 declare type initial_check_nodes =
 	| ts.ClassDeclaration
 	| ts.FunctionDeclaration
@@ -33,6 +35,24 @@ export class DocsTsAutoImports {
 	get imports_come_from() : string
 	{
 		return `${JSON.stringify(this.comes_from, null, '\t')}\n`;
+	}
+
+	get non_faux_imports_come_from(): string
+	{
+		return `${JSON.stringify(
+			Object.fromEntries(
+				Object.entries(
+					this.comes_from,
+				)
+					.filter(maybe => !/(faux|common_type)/i.test(maybe[0]))
+					.map(e => [
+						`common_type__${e[0]}`,
+						e[1],
+					]),
+			),
+			null,
+			'\t',
+		)}\n`;
 	}
 
 	generate() : ImportTracker {
@@ -71,6 +91,14 @@ export class DocsTsAutoImports {
 						this.comes_from[maybe],
 				);
 
+			const common_reference_names: (keyof typeof common_types_map)[] = [
+				...(new Set(node_names)).values(),
+			].filter(
+				(maybe): maybe is (
+					keyof typeof common_types_map
+				) => maybe in common_types_map,
+			);
+
 			if (reference_names.length) {
 				if (!(filename in auto_imports)) {
 					auto_imports[filename] = {};
@@ -86,6 +114,28 @@ export class DocsTsAutoImports {
 					if (!import_from.startsWith('.')) {
 						import_from = `./${import_from}`;
 					}
+
+					if (!(import_from in auto_imports[filename])) {
+						auto_imports[filename][import_from] = [];
+					}
+
+					if (
+						!auto_imports[filename][import_from].includes(
+							import_this,
+						)
+					) {
+						auto_imports[filename][import_from].push(import_this);
+					}
+				}
+			}
+
+			if (common_reference_names.length) {
+				if (!(filename in auto_imports)) {
+					auto_imports[filename] = {};
+				}
+
+				for (const import_this of common_reference_names) {
+					const import_from = `import_from_common;${common_types_map[import_this]}`;
 
 					if (!(import_from in auto_imports[filename])) {
 						auto_imports[filename][import_from] = [];

@@ -91,6 +91,7 @@ export class DocsTsGeneratorVersion
 {
 	docs: DocsData | undefined;
 	readonly cache_path: string | undefined;
+	readonly common_types_from_module: string|undefined;
 	readonly docs_path: string | DocsData;
 	readonly types_from_module: string|undefined;
 	// eslint-disable-next-line max-len
@@ -103,16 +104,19 @@ export class DocsTsGeneratorVersion
 		cache_path = undefined,
 		UnrealEngineString_quote_mode,
 		types_from_module = undefined,
+		common_types_from_module = undefined,
 	}: {
 		cache_path: string | undefined,
 		docs_path: string | DocsData,
 		UnrealEngineString_quote_mode: typeof UnrealEngineString['quote_mode'],
 		types_from_module?: string,
+		common_types_from_module?: string,
 	}) {
 		this.cache_path = cache_path;
 		this.docs_path = docs_path;
 		this.UnrealEngineString_quote_mode = UnrealEngineString_quote_mode;
 		this.types_from_module = types_from_module;
+		this.common_types_from_module = common_types_from_module;
 	}
 }
 
@@ -163,13 +167,23 @@ export class DocsTsGenerator {
 		const schema = await this.schema(version);
 
 		if (!property_exists_on_object(schema.$defs, $ref)) {
-			throw new NoMatchError({
-				$ref,
-				options: Object.keys(schema.$defs),
-			});
+			return this.definition_from_common($ref);
 		}
 
 		return schema.$defs[$ref];
+	}
+
+	definition_from_common(
+		$ref:string,
+	): Promise<SchemaObject> {
+		if (!property_exists_on_object(common_schema.$defs, $ref)) {
+			throw new NoMatchError({
+				$ref,
+				options: Object.keys(common_schema.$defs),
+			});
+		}
+
+		return Promise.resolve(common_schema.$defs[$ref]);
 	}
 
 	async get(

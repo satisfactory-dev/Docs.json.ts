@@ -17,6 +17,7 @@ import {
 	GeneratorDoesDiscovery,
 } from '../../GeneratorDoesDiscovery';
 import {
+	common_ref,
 	local_ref,
 } from '../../../StringStartsWith';
 
@@ -88,10 +89,14 @@ export class ExtendsObject extends GeneratorDoesDiscovery<RawData, Type>
 	}
 
 	protected create_reference_type(
-		$ref: local_ref<string>,
+		$ref: local_ref<string>|common_ref<string>,
 	): TypeReferenceNode {
+		const ref_substring = $ref.startsWith('common.schema.json#/$defs/')
+			? `common_type__${$ref.substring(26)}`
+			: $ref.substring(8);
+
 		return ts.factory.createTypeReferenceNode(
-			adjust_class_name(`${$ref.substring(8)}__type`),
+			adjust_class_name(`${ref_substring}__type`),
 		);
 	}
 }

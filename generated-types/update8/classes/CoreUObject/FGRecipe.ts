@@ -1,9 +1,8 @@
-import {
-	ItemClass__amount_required__type,
-	NativeClass__type,
-} from '../../common/unassigned';
+import {ItemClass__amount_required__type} from '../../common/unassigned';
 
 import {FGCustomizationRecipe__FGRecipe__type} from './FGCustomizationRecipe';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGRecipe__type = FGCustomizationRecipe__FGRecipe__type & {
 	mIngredients: ItemClass__amount_required__type;

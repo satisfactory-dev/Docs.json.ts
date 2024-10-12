@@ -1,11 +1,10 @@
-import {
-	mBatteryStatus__type,
-	NativeClass__type,
-} from '../../common/unassigned';
+import {mBatteryStatus__type} from '../../common/unassigned';
 
 import {decimal_string__type, integer_string__type} from '../../common/scalar';
 
 import {FGBuildable__consumes_power_base__type} from './FGBuildable';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildablePowerStorage__type =
 	FGBuildable__consumes_power_base__type & {
@@ -20,6 +19,7 @@ export type FGBuildablePowerStorage__type =
 		mIndicatorLevel: integer_string__type;
 	};
 
-export type FGBuildablePowerStorage__NativeClass = NativeClass__type & {
-	Classes: [FGBuildablePowerStorage__type];
-};
+export type FGBuildablePowerStorage__NativeClass =
+	NativeClass__type & {
+		Classes: [FGBuildablePowerStorage__type];
+	};

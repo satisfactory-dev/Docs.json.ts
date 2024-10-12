@@ -1,14 +1,14 @@
 # Types Progress
 
-100.00% Complete (206 of 206)
+100.00% Complete (208 of 208)
 
 ## Basic Types
 
 -   [x] boolean
 -   [x] boolean-extended
--   [x] class
--   [x] class--no-description
--   [x] class--no-description-or-display-name
+-   [x] class (common type)
+-   [x] class--no-description (common type)
+-   [x] class--no-description-or-display-name (common type)
 -   [x] color
 -   [x] color-decimal
 -   [x] decimal-string
@@ -46,17 +46,13 @@
 -   [x] mOutputInventoryHandlerData
 -   [x] mPlatformDockingStatus
 -   [x] mSnappedPassthroughs
--   [x] NativeClass
+-   [x] NativeClass (common type)
 -   [x] None
 -   [x] SpecifiedColor
 -   [x] Texture2D
 -   [x] transformation
 -   [x] weaponState
 -   [x] xyz-array
-
-## chema.json#/$defs/UnrealEngineString
-
--   [x] chema.json#/$defs/UnrealEngineString--array
 
 ## FGAmmoType
 
@@ -285,6 +281,10 @@
 
 -   [x] mEventType
 -   [x] mEventType--optional-csv
+
+## UnrealEngineString
+
+-   [x] UnrealEngineString--array (common type)
 
 ## vectors
 
