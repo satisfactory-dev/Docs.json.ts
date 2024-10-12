@@ -142,10 +142,10 @@ export class Ref extends ConverterMatchesSchema<
 						checking.$ref.substring(26),
 					);
 				} else {
-				checking = await this.discovery.docs.definition(
+					checking = await this.discovery.docs.definition(
 						version,
-					checking.$ref.substring(8),
-				);
+						checking.$ref.substring(8),
+					);
 				}
 			}
 
