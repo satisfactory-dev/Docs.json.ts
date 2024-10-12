@@ -83,6 +83,8 @@ export class OneOfConverter extends ConverterMatchesSchema<oneOf> {
 				} catch (err) {
 					if (err instanceof NoMatchError) {
 						failures.push(err);
+					} else {
+						throw err;
 					}
 				}
 			}
