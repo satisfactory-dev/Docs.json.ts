@@ -2,7 +2,6 @@ import {
 	FGBuildableBlueprintDesigner__mk3__type,
 	FGBuildableBlueprintDesigner__mk2__type,
 	FGBuildableBlueprintDesigner__mk1__type,
-	color_decimal__type,
 	xyz__integer__type,
 	empty_object__type,
 } from '../../common/unassigned';
@@ -16,7 +15,10 @@ import {
 	decimal_string__type,
 } from '../../../common/common/scalar';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {
+	color_decimal__type,
+	NativeClass__type,
+} from '../../../common/common/unassigned';
 
 export type FGBuildableBlueprintDesigner__base__type =
 	FGBuildable__base__type & {

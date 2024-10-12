@@ -256,7 +256,7 @@ export class TypeDefinitionWriter
 		);
 		performance.mark(`${this.constructor.name}.write() start`);
 
-		const auto_imports = new DocsTsAutoImports(files);
+		const auto_imports = new DocsTsAutoImports(files, this.version);
 		const import_tracker = auto_imports.generate();
 		performance.measure(
 			`${this.constructor.name}.write() auto_imports`,
@@ -540,11 +540,12 @@ export class TypeDefinitionWriter
 				),
 				new ExtendsObject(
 					discovered_types,
+					Object.keys(common_schema.$defs).map(common_ref),
 					discovery,
 				),
 				new typed_string(
 					discovered_types,
-					Object.keys(common_schema).map(common_ref),
+					Object.keys(common_schema.$defs).map(common_ref),
 					discovery,
 				),
 				new oneOf_or_anyOf(discovery),

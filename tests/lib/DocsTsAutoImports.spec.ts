@@ -26,7 +26,7 @@ class Testable extends DocsTsAutoImports
 void describe('DocsTsAutoImports', () => {
 	void describe('generate', () => {
 		void it('can resolve to an empty ImportTracker', () => {
-			const instance = new DocsTsAutoImports({});
+			const instance = new DocsTsAutoImports({}, 'update8');
 
 			const result = instance.generate();
 			assert.equal(0, result.number_of_files);
@@ -60,7 +60,7 @@ void describe('DocsTsAutoImports', () => {
 					bar,
 					baz,
 				],
-			});
+			}, 'update8');
 
 			assert.deepEqual(instance.file_exports(), {
 				'foo.ts': ['foo'],
@@ -104,7 +104,7 @@ void describe('DocsTsAutoImports', () => {
 				'bar.ts': [
 					bar,
 				],
-			});
+			}, 'update8');
 
 			assert.deepEqual(instance.file_exports(), {
 				'foo.ts': ['foo'],

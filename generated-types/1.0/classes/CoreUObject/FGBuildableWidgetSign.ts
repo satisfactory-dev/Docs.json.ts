@@ -1,7 +1,6 @@
 import {
 	empty_object__type,
 	xy__integer__type,
-	color_decimal__type,
 	xy__type,
 	xyz__type,
 } from '../../common/unassigned';
@@ -13,7 +12,10 @@ import {
 	integer_string__type,
 } from '../../../common/common/scalar';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {
+	color_decimal__type,
+	NativeClass__type,
+} from '../../../common/common/unassigned';
 
 export type FGBuildableWidgetSign__type = FGBuildable__base__type & {
 	mGainSignificanceDistance: decimal_string__type;

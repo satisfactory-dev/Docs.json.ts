@@ -2,7 +2,6 @@ import {
 	xyz_array__type,
 	xyz__type,
 	empty_object__type,
-	color_decimal__type,
 } from '../../common/unassigned';
 
 import {boolean__type} from '../../common/scalar';
@@ -14,7 +13,10 @@ import {
 	integer_string__type,
 } from '../../../common/common/scalar';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {
+	color_decimal__type,
+	NativeClass__type,
+} from '../../../common/common/unassigned';
 
 export type FGBuildablePortal__type = FGBuildablePortal__base__type & {
 	ClassName?: 'Build_Portal_C';

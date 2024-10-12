@@ -12,24 +12,12 @@ import {
 	decimal_string__signed__type,
 } from '../../common/common/scalar';
 
+import {color_decimal__type} from '../../common/common/unassigned';
+
 export type CameraAnim__type = UnrealEngineString<
 	'/Script/TemplateSequence.CameraAnimationSequence',
 	StringStartsWith<'/Game/FactoryGame/Character/Player/CameraShake/'>
 >;
-
-export type color__type = {
-	B: integer_string__type;
-	G: integer_string__type;
-	R: integer_string__type;
-	A: integer_string__type;
-};
-
-export type color_decimal__type = {
-	R: decimal_string__type;
-	G: decimal_string__type;
-	B: decimal_string__type;
-	A: decimal_string__type;
-};
 
 export type EditorCurveData__type = {
 	EditorCurveData: {

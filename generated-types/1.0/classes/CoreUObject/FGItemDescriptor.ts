@@ -2,7 +2,6 @@ import {boolean__type} from '../../common/scalar';
 
 import {
 	Texture2D__type,
-	color__type,
 	mGasType__type,
 	mForm__type,
 	None__type,
@@ -16,6 +15,7 @@ import {
 } from '../../../common/common/scalar';
 
 import {
+	color__type,
 	UnrealEngineString__array__type,
 	class__type,
 	NativeClass__type,

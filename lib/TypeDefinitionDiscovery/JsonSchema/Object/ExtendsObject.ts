@@ -39,6 +39,7 @@ export class ExtendsObject extends GeneratorDoesDiscovery<RawData, Type>
 {
 	constructor(
 		supported_refs: string[],
+		common_supported_refs: string[],
 		discovery:TypeDefinitionDiscovery,
 	) {
 		const {
@@ -56,7 +57,10 @@ export class ExtendsObject extends GeneratorDoesDiscovery<RawData, Type>
 				required: ['$ref'],
 				properties: {
 					...properties,
-					$ref: {type: 'string', enum: supported_refs},
+					$ref: {type: 'string', enum: [
+						...supported_refs,
+						...common_supported_refs,
+					]},
 					unevaluatedProperties: {type: 'boolean', const: false},
 				},
 			},

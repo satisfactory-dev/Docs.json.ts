@@ -8,7 +8,6 @@ import {
 	empty_object__type,
 	transformation__type,
 	xyz__type,
-	color_decimal__type,
 	mDamageTypes__type,
 } from '../../common/unassigned';
 
@@ -20,7 +19,10 @@ import {
 	integer_string__type,
 } from '../../../common/common/scalar';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {
+	color_decimal__type,
+	NativeClass__type,
+} from '../../../common/common/unassigned';
 
 export type FGAmmoTypeProjectile__type = FGAmmoTypeProjectile__base__type & {
 	mInitialProjectileSpeedOverride: decimal_string__signed__type;

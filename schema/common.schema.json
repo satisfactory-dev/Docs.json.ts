@@ -78,6 +78,48 @@
 			"type": "string",
 			"pattern": "^-?\\d+$"
 		},
+		"color": {
+			"type": "string",
+			"minLength": 1,
+			"typed_string": {
+				"required": ["B", "G", "R", "A"],
+				"properties": {
+					"B": {
+						"$ref": "common.schema.json#/$defs/integer-string"
+					},
+					"G": {
+						"$ref": "common.schema.json#/$defs/integer-string"
+					},
+					"R": {
+						"$ref": "common.schema.json#/$defs/integer-string"
+					},
+					"A": {
+						"$ref": "common.schema.json#/$defs/integer-string"
+					}
+				}
+			}
+		},
+		"color-decimal": {
+			"type": "string",
+			"minLength": 1,
+			"typed_string": {
+				"required": ["R", "G", "B", "A"],
+				"properties": {
+					"R": {
+						"$ref": "common.schema.json#/$defs/decimal-string"
+					},
+					"G": {
+						"$ref": "common.schema.json#/$defs/decimal-string"
+					},
+					"B": {
+						"$ref": "common.schema.json#/$defs/decimal-string"
+					},
+					"A": {
+						"$ref": "common.schema.json#/$defs/decimal-string"
+					}
+				}
+			}
+		},
 		"faux-1": {
 			"type": "object",
 			"$ref": "#/$defs/class",
@@ -100,6 +142,12 @@
 						},
 						{
 							"$ref": "#/$defs/integer-string--signed"
+						},
+						{
+							"$ref": "#/$defs/color"
+						},
+						{
+							"$ref": "#/$defs/color-decimal"
 						}
 					]
 				}

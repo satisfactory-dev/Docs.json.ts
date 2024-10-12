@@ -15,6 +15,9 @@ import {
 } from './Exceptions';
 
 import common_types_map from '../common-imports.json' with {type: 'json'}
+import {
+	docs_versions,
+} from './DocsTsGenerator';
 
 declare type initial_check_nodes =
 	| ts.ClassDeclaration
@@ -28,8 +31,13 @@ declare type initial_check_node_has_Identifier = initial_check_nodes & {
 export class DocsTsAutoImports {
 	private readonly comes_from: {[key: string]: string} = {};
 	private readonly files_entries: [string, ts.Node[]][];
-	constructor(files: {[key: string]: ts.Node[]}) {
+	private readonly version: keyof docs_versions;
+	constructor(
+		files: {[key: string]: ts.Node[]},
+		version: keyof docs_versions,
+	) {
 		this.files_entries = Object.entries(files);
+		this.version = version;
 	}
 
 	get imports_come_from() : string
@@ -129,7 +137,7 @@ export class DocsTsAutoImports {
 				}
 			}
 
-			if (common_reference_names.length) {
+			if (common_reference_names.length && 'common' !== this.version) {
 				if (!(filename in auto_imports)) {
 					auto_imports[filename] = {};
 				}

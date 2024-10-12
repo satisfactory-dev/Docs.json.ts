@@ -3,48 +3,6 @@
 	"$id": "1.0.schema.json",
 	"type": "array",
 	"$defs": {
-		"color": {
-			"type": "string",
-			"minLength": 1,
-			"typed_string": {
-				"required": ["B", "G", "R", "A"],
-				"properties": {
-					"B": {
-						"$ref": "common.schema.json#/$defs/integer-string"
-					},
-					"G": {
-						"$ref": "common.schema.json#/$defs/integer-string"
-					},
-					"R": {
-						"$ref": "common.schema.json#/$defs/integer-string"
-					},
-					"A": {
-						"$ref": "common.schema.json#/$defs/integer-string"
-					}
-				}
-			}
-		},
-		"color-decimal": {
-			"type": "string",
-			"minLength": 1,
-			"typed_string": {
-				"required": ["R", "G", "B", "A"],
-				"properties": {
-					"R": {
-						"$ref": "common.schema.json#/$defs/decimal-string"
-					},
-					"G": {
-						"$ref": "common.schema.json#/$defs/decimal-string"
-					},
-					"B": {
-						"$ref": "common.schema.json#/$defs/decimal-string"
-					},
-					"A": {
-						"$ref": "common.schema.json#/$defs/decimal-string"
-					}
-				}
-			}
-		},
 		"empty-object": {
 			"type": "string",
 			"const": "()"
@@ -387,10 +345,10 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mFluidColor": {
-					"$ref": "#/$defs/color"
+					"$ref": "common.schema.json#/$defs/color"
 				},
 				"mGasColor": {
-					"$ref": "#/$defs/color"
+					"$ref": "common.schema.json#/$defs/color"
 				},
 				"mGasType": {
 					"$ref": "#/$defs/mGasType"
@@ -466,7 +424,7 @@
 					"type": "string"
 				},
 				"mScannerLightColor": {
-					"$ref": "#/$defs/color"
+					"$ref": "common.schema.json#/$defs/color"
 				},
 				"mIsAlienItem": {
 					"$ref": "#/$defs/boolean"
@@ -1371,7 +1329,7 @@
 								}
 							},
 							"Color": {
-								"$ref": "#/$defs/color-decimal"
+								"$ref": "common.schema.json#/$defs/color-decimal"
 							}
 						}
 					}
@@ -1433,7 +1391,7 @@
 				"required": ["SpecifiedColor"],
 				"properties": {
 					"SpecifiedColor": {
-						"$ref": "#/$defs/color-decimal"
+						"$ref": "common.schema.json#/$defs/color-decimal"
 					}
 				}
 			}
@@ -2359,7 +2317,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mPingColor": {
-					"$ref": "#/$defs/color-decimal"
+					"$ref": "common.schema.json#/$defs/color-decimal"
 				},
 				"mCollectSpeedMultiplier": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -6830,7 +6788,7 @@
 					"const": "Build_Packager_C"
 				},
 				"mCurrentColor_VFX": {
-					"$ref": "#/$defs/color-decimal"
+					"$ref": "common.schema.json#/$defs/color-decimal"
 				},
 				"CurrentPackagingMode": {
 					"type": "string",
@@ -6854,7 +6812,7 @@
 					"const": "Build_Blender_C"
 				},
 				"mCurrentColorVFX": {
-					"$ref": "#/$defs/color-decimal"
+					"$ref": "common.schema.json#/$defs/color-decimal"
 				},
 				"m_NotifyNameREferences": {
 					"type": "string",
@@ -8454,7 +8412,7 @@
 					"const": ""
 				},
 				"mAmmoColor": {
-					"$ref": "#/$defs/color-decimal"
+					"$ref": "common.schema.json#/$defs/color-decimal"
 				},
 				"mAmmoScale": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -10344,10 +10302,10 @@
 									],
 									"properties": {
 										"PrimaryColor": {
-											"$ref": "#/$defs/color-decimal"
+											"$ref": "common.schema.json#/$defs/color-decimal"
 										},
 										"SecondaryColor": {
-											"$ref": "#/$defs/color-decimal"
+											"$ref": "common.schema.json#/$defs/color-decimal"
 										}
 									}
 								}
@@ -10431,13 +10389,13 @@
 					"const": ""
 				},
 				"mForegroundColor": {
-					"$ref": "#/$defs/color-decimal"
+					"$ref": "common.schema.json#/$defs/color-decimal"
 				},
 				"mBackgroundColor": {
-					"$ref": "#/$defs/color-decimal"
+					"$ref": "common.schema.json#/$defs/color-decimal"
 				},
 				"mAuxilaryColor": {
-					"$ref": "#/$defs/color-decimal"
+					"$ref": "common.schema.json#/$defs/color-decimal"
 				},
 				"mEmissive": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -10729,7 +10687,7 @@
 					"$ref": "#/$defs/boolean"
 				},
 				"mActorRepresentationColor": {
-					"$ref": "#/$defs/color-decimal"
+					"$ref": "common.schema.json#/$defs/color-decimal"
 				},
 				"mActorRepresentationViewDistance": {
 					"type": "string",

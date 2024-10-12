@@ -9,8 +9,8 @@
 -   [x] class (common type)
 -   [x] class--no-description (common type)
 -   [x] class--no-description-or-display-name (common type)
--   [x] color
--   [x] color-decimal
+-   [x] color (common type)
+-   [x] color-decimal (common type)
 -   [x] decimal-string (common type)
 -   [x] decimal-string--signed (common type)
 -   [x] EditorCurveData

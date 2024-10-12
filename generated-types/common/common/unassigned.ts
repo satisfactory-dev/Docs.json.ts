@@ -20,13 +20,29 @@ export type class__no_description_or_display_name__type = {
 	ClassName: Exclude<string, ''>;
 };
 
+export type color__type = {
+	B: integer_string__type;
+	G: integer_string__type;
+	R: integer_string__type;
+	A: integer_string__type;
+};
+
+export type color_decimal__type = {
+	R: decimal_string__type;
+	G: decimal_string__type;
+	B: decimal_string__type;
+	A: decimal_string__type;
+};
+
 export type faux_1__type = class__type & {
 	faux:
 		| UnrealEngineString__array__type
 		| decimal_string__type
 		| decimal_string__signed__type
 		| integer_string__type
-		| integer_string__signed__type;
+		| integer_string__signed__type
+		| color__type
+		| color_decimal__type;
 };
 
 export type NativeClass__type = {
