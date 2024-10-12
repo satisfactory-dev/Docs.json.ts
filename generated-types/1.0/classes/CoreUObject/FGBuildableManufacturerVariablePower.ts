@@ -1,8 +1,10 @@
-import {decimal_string__type, boolean__type} from '../../common/scalar';
-
 import {empty_object__type, xyz_array__type} from '../../common/unassigned';
 
+import {boolean__type} from '../../common/scalar';
+
 import {FGBuildableManufacturer__base__type} from './FGBuildableManufacturer';
+
+import {decimal_string__type} from '../../../common/common/scalar';
 
 import {NativeClass__type} from '../../../common/common/unassigned';
 

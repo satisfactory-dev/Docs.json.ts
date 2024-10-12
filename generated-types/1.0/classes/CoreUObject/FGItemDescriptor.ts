@@ -1,8 +1,4 @@
-import {
-	boolean__type,
-	decimal_string__type,
-	integer_string__type,
-} from '../../common/scalar';
+import {boolean__type, integer_string__type} from '../../common/scalar';
 
 import {
 	Texture2D__type,
@@ -13,6 +9,8 @@ import {
 } from '../../common/unassigned';
 
 import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
+
+import {decimal_string__type} from '../../../common/common/scalar';
 
 import {
 	UnrealEngineString__array__type,

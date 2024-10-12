@@ -1,8 +1,4 @@
-import {
-	integer_string__type,
-	boolean__type,
-	decimal_string__type,
-} from '../../common/scalar';
+import {integer_string__type, boolean__type} from '../../common/scalar';
 
 import {
 	empty_object__type,
@@ -10,6 +6,8 @@ import {
 } from '../../common/unassigned';
 
 import {FGBuildableTrainPlatform__base__type} from './FGBuildableTrainPlatform';
+
+import {decimal_string__type} from '../../../common/common/scalar';
 
 import {NativeClass__type} from '../../../common/common/unassigned';
 

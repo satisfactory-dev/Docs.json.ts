@@ -1,8 +1,8 @@
-import {decimal_string__type} from '../../common/scalar';
-
 import {pitch_yaw_roll__type, xyz__type} from '../../common/unassigned';
 
 import {FGEquipmentDescriptor__base__type} from './FGEquipmentDescriptor';
+
+import {decimal_string__type} from '../../../common/common/scalar';
 
 import {NativeClass__type} from '../../../common/common/unassigned';
 

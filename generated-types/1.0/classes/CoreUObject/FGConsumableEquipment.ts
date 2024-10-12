@@ -7,9 +7,9 @@ import {
 
 import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
 
-import {decimal_string__type} from '../../common/scalar';
-
 import {FGEquipment__base__type} from './FGEquipment';
+
+import {decimal_string__type} from '../../../common/common/scalar';
 
 import {NativeClass__type} from '../../../common/common/unassigned';
 

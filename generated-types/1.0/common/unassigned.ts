@@ -1,15 +1,15 @@
 import {UnrealEngineString, StringStartsWith} from '../utils/validators';
 
-import {
-	integer_string__type,
-	decimal_string__type,
-	decimal_string__signed__type,
-	boolean__type,
-} from './scalar';
+import {integer_string__type, boolean__type} from './scalar';
 
 import {FGBuildableBlueprintDesigner__base__type} from '../classes/CoreUObject/FGBuildableBlueprintDesigner';
 
 import {FGBuildableResourceExtractor__miner__base__type} from '../classes/CoreUObject/FGBuildableResourceExtractor';
+
+import {
+	decimal_string__type,
+	decimal_string__signed__type,
+} from '../../common/common/scalar';
 
 export type CameraAnim__type = UnrealEngineString<
 	'/Script/TemplateSequence.CameraAnimationSequence',

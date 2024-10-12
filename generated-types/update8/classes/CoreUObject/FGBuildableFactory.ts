@@ -1,6 +1,6 @@
 import {FGBuildable__consumes_power_base__type} from './FGBuildable';
 
-import {decimal_string__type} from '../../common/scalar';
+import {decimal_string__type} from '../../../common/common/scalar';
 
 import {NativeClass__type} from '../../../common/common/unassigned';
 

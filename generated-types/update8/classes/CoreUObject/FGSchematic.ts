@@ -4,12 +4,7 @@ import {
 	StringPassedRegExp,
 } from '../../utils/validators';
 
-import {
-	integer_string__type,
-	boolean__type,
-	decimal_string__signed__type,
-	decimal_string__type,
-} from '../../common/scalar';
+import {integer_string__type, boolean__type} from '../../common/scalar';
 
 import {
 	ItemClass__type,
@@ -27,6 +22,11 @@ import {
 	class__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned';
+
+import {
+	decimal_string__signed__type,
+	decimal_string__type,
+} from '../../../common/common/scalar';
 
 export type FGSchematic__type = FGSchematic__base__type;
 

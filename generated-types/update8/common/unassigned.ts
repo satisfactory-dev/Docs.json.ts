@@ -1,13 +1,13 @@
 import {UnrealEngineString, StringStartsWith} from '../utils/validators';
 
-import {
-	integer_string__type,
-	decimal_string__type,
-	decimal_string__signed__type,
-	boolean__type,
-} from './scalar';
+import {integer_string__type, boolean__type} from './scalar';
 
 import {FGBuildableResourceExtractor__miner__base__type} from '../classes/CoreUObject/FGBuildableResourceExtractor';
+
+import {
+	decimal_string__type,
+	decimal_string__signed__type,
+} from '../../common/common/scalar';
 
 export type color__type = {
 	B: integer_string__type;

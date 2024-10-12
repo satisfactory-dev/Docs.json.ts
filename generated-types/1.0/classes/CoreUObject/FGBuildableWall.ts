@@ -1,10 +1,10 @@
 import {FGBuildableWallLightweight__type} from './FGBuildableWallLightweight';
 
-import {decimal_string__type} from '../../common/scalar';
-
 import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
 
 import {FGBuildable__base__type} from './FGBuildable';
+
+import {decimal_string__type} from '../../../common/common/scalar';
 
 import {NativeClass__type} from '../../../common/common/unassigned';
 

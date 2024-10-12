@@ -1,8 +1,10 @@
-import {boolean__type, decimal_string__type} from '../../common/scalar';
+import {boolean__type} from '../../common/scalar';
 
 import {xyz__type} from '../../common/unassigned';
 
 import {FGAmmoTypeProjectile__base__type} from './FGAmmoTypeProjectile';
+
+import {decimal_string__type} from '../../../common/common/scalar';
 
 import {NativeClass__type} from '../../../common/common/unassigned';
 

@@ -1,9 +1,4 @@
-import {
-	boolean__type,
-	decimal_string__type,
-	decimal_string__signed__type,
-	integer_string__type,
-} from '../../common/scalar';
+import {boolean__type, integer_string__type} from '../../common/scalar';
 
 import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
 
@@ -18,6 +13,11 @@ import {
 } from '../../common/unassigned';
 
 import {FGItemDescriptor__FGResourceDescriptor__type} from './FGItemDescriptor';
+
+import {
+	decimal_string__type,
+	decimal_string__signed__type,
+} from '../../../common/common/scalar';
 
 import {NativeClass__type} from '../../../common/common/unassigned';
 

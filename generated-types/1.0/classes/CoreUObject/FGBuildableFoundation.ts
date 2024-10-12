@@ -1,4 +1,4 @@
-import {decimal_string__type, boolean__type} from '../../common/scalar';
+import {boolean__type} from '../../common/scalar';
 
 import {
 	empty_object__type,
@@ -6,6 +6,8 @@ import {
 } from '../../common/unassigned';
 
 import {FGBuildable__base__type} from './FGBuildable';
+
+import {decimal_string__type} from '../../../common/common/scalar';
 
 export type FGBuildableFoundation__type = FGBuildableFoundation__base__type;
 

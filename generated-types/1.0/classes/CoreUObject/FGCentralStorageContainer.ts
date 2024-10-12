@@ -1,6 +1,6 @@
-import {decimal_string__type} from '../../common/scalar';
-
 import {FGBuildableStorage__type} from './FGBuildableStorage';
+
+import {decimal_string__type} from '../../../common/common/scalar';
 
 import {NativeClass__type} from '../../../common/common/unassigned';
 

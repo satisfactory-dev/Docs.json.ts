@@ -1,7 +1,9 @@
 # Data Progress
 
-0.00% Complete (0 of 2)
+0.00% Complete (0 of 4)
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGFauxEntry'
 
+-   [ ] faux
+-   [ ] faux
 -   [ ] faux

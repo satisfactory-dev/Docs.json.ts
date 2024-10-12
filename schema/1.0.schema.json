@@ -3,14 +3,6 @@
 	"$id": "1.0.schema.json",
 	"type": "array",
 	"$defs": {
-		"decimal-string": {
-			"type": "string",
-			"pattern": "^\\d+\\.\\d{6}$"
-		},
-		"decimal-string--signed": {
-			"type": "string",
-			"pattern": "^-?\\d+\\.\\d{6}$"
-		},
 		"integer-string": {
 			"type": "string",
 			"pattern": "^\\d+$"
@@ -47,16 +39,16 @@
 				"required": ["R", "G", "B", "A"],
 				"properties": {
 					"R": {
-						"$ref": "#/$defs/decimal-string"
+						"$ref": "common.schema.json#/$defs/decimal-string"
 					},
 					"G": {
-						"$ref": "#/$defs/decimal-string"
+						"$ref": "common.schema.json#/$defs/decimal-string"
 					},
 					"B": {
-						"$ref": "#/$defs/decimal-string"
+						"$ref": "common.schema.json#/$defs/decimal-string"
 					},
 					"A": {
-						"$ref": "#/$defs/decimal-string"
+						"$ref": "common.schema.json#/$defs/decimal-string"
 					}
 				}
 			}
@@ -76,13 +68,13 @@
 				"required": ["X", "Y", "Z"],
 				"properties": {
 					"X": {
-						"$ref": "#/$defs/decimal-string--signed"
+						"$ref": "common.schema.json#/$defs/decimal-string--signed"
 					},
 					"Y": {
-						"$ref": "#/$defs/decimal-string--signed"
+						"$ref": "common.schema.json#/$defs/decimal-string--signed"
 					},
 					"Z": {
-						"$ref": "#/$defs/decimal-string--signed"
+						"$ref": "common.schema.json#/$defs/decimal-string--signed"
 					}
 				}
 			}
@@ -94,10 +86,10 @@
 				"required": ["X", "Y"],
 				"properties": {
 					"X": {
-						"$ref": "#/$defs/decimal-string--signed"
+						"$ref": "common.schema.json#/$defs/decimal-string--signed"
 					},
 					"Y": {
-						"$ref": "#/$defs/decimal-string--signed"
+						"$ref": "common.schema.json#/$defs/decimal-string--signed"
 					}
 				}
 			}
@@ -124,16 +116,16 @@
 				"required": ["X", "Y", "Z", "W"],
 				"properties": {
 					"X": {
-						"$ref": "#/$defs/decimal-string--signed"
+						"$ref": "common.schema.json#/$defs/decimal-string--signed"
 					},
 					"Y": {
-						"$ref": "#/$defs/decimal-string--signed"
+						"$ref": "common.schema.json#/$defs/decimal-string--signed"
 					},
 					"Z": {
-						"$ref": "#/$defs/decimal-string--signed"
+						"$ref": "common.schema.json#/$defs/decimal-string--signed"
 					},
 					"W": {
-						"$ref": "#/$defs/decimal-string"
+						"$ref": "common.schema.json#/$defs/decimal-string"
 					}
 				}
 			}
@@ -145,13 +137,13 @@
 				"required": ["Pitch", "Yaw", "Roll"],
 				"properties": {
 					"Pitch": {
-						"$ref": "#/$defs/decimal-string--signed"
+						"$ref": "common.schema.json#/$defs/decimal-string--signed"
 					},
 					"Yaw": {
-						"$ref": "#/$defs/decimal-string--signed"
+						"$ref": "common.schema.json#/$defs/decimal-string--signed"
 					},
 					"Roll": {
-						"$ref": "#/$defs/decimal-string--signed"
+						"$ref": "common.schema.json#/$defs/decimal-string--signed"
 					}
 				}
 			}
@@ -186,13 +178,13 @@
 						"required": ["X", "Y", "Z"],
 						"properties": {
 							"X": {
-								"$ref": "#/$defs/decimal-string"
+								"$ref": "common.schema.json#/$defs/decimal-string"
 							},
 							"Y": {
-								"$ref": "#/$defs/decimal-string--signed"
+								"$ref": "common.schema.json#/$defs/decimal-string--signed"
 							},
 							"Z": {
-								"$ref": "#/$defs/decimal-string--signed"
+								"$ref": "common.schema.json#/$defs/decimal-string--signed"
 							}
 						}
 					}
@@ -349,10 +341,10 @@
 					"$ref": "#/$defs/boolean"
 				},
 				"mEnergyValue": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mRadioactiveDecay": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mSmallIcon": {
 					"$ref": "#/$defs/Texture2D"
@@ -400,7 +392,7 @@
 					]
 				},
 				"mMenuPriority": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mFluidColor": {
 					"$ref": "#/$defs/color"
@@ -632,7 +624,7 @@
 			],
 			"properties": {
 				"MaxRenderDistance": {
-					"$ref": "#/$defs/decimal-string--signed"
+					"$ref": "common.schema.json#/$defs/decimal-string--signed"
 				},
 				"mAlternativeMaterialRecipes": {
 					"oneOf": [
@@ -747,7 +739,7 @@
 					"$ref": "#/$defs/boolean"
 				},
 				"mIsConsideredForBaseWeightValue": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"bForceLegacyBuildEffect": {
 					"$ref": "#/$defs/boolean"
@@ -756,7 +748,7 @@
 					"$ref": "#/$defs/boolean"
 				},
 				"mBuildEffectSpeed": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mAllowColoring": {
 					"$ref": "#/$defs/boolean"
@@ -807,7 +799,7 @@
 					]
 				},
 				"mScaleCustomOffset": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mCustomScaleType": {
 					"type": "string",
@@ -873,22 +865,22 @@
 					"$ref": "#/$defs/integer-string"
 				},
 				"mTimelapseDelay": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mAlienOverClockingZOffset": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mAlienOverClockingAttenuationScalingFactor": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mAlienOverClockingVolumeDB_RTPC": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mAlienOverClockingHighpass_RTPC": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mAlienOverClockingPitch_RTPC": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mBlueprintBuildEffectID": {
 					"$ref": "#/$defs/integer-string--signed"
@@ -941,10 +933,10 @@
 			],
 			"properties": {
 				"mPowerConsumption": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mPowerConsumptionExponent": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mDoesHaveShutdownAnimation": {
 					"$ref": "#/$defs/boolean"
@@ -959,10 +951,10 @@
 					"$ref": "#/$defs/empty-object"
 				},
 				"mMinimumProducingTime": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mMinimumStoppedTime": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mCanEverMonitorProductivity": {
 					"$ref": "#/$defs/boolean"
@@ -971,10 +963,10 @@
 					"$ref": "#/$defs/boolean"
 				},
 				"mMinPotential": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mMaxPotential": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mFluidStackSizeDefault": {
 					"type": "string",
@@ -984,22 +976,22 @@
 					"$ref": "#/$defs/integer-string"
 				},
 				"mEffectUpdateInterval": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mDefaultProductivityMeasurementDuration": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mLastProductivityMeasurementProduceDuration": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mLastProductivityMeasurementDuration": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mCurrentProductivityMeasurementProduceDuration": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mCurrentProductivityMeasurementDuration": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mProductivityMonitorEnabled": {
 					"$ref": "#/$defs/boolean"
@@ -1016,13 +1008,13 @@
 					"const": ""
 				},
 				"mSignificanceRange": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mTickExponent": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mProductionBoostPowerConsumptionExponent": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mOnPendingPotentialChanged": {
 					"$ref": "#/$defs/empty-object"
@@ -1037,7 +1029,7 @@
 					"$ref": "#/$defs/boolean"
 				},
 				"mBaseProductionBoost": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mPotentialShardSlots": {
 					"$ref": "#/$defs/integer-string"
@@ -1046,7 +1038,7 @@
 					"$ref": "#/$defs/integer-string"
 				},
 				"mProductionShardBoostMultiplier": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mHasInventoryPotential": {
 					"$ref": "#/$defs/boolean"
@@ -1079,10 +1071,10 @@
 					"$ref": "#/$defs/integer-string"
 				},
 				"mTransferSpeed": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mStackTransferSize": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
@@ -1136,7 +1128,7 @@
 					"const": "DS_UNDOCKED"
 				},
 				"m_OffsetTime": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mDroneDockingStartLocationLocal": {
 					"$ref": "#/$defs/xyz"
@@ -1156,22 +1148,22 @@
 					"const": "ITS_NONE"
 				},
 				"mTransferProgress": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mDroneQueueRadius": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mDroneQueueSeparationRadius": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mDroneQueueVerticalSeparation": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mTripPowerCost": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mTripPowerPerMeterCost": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mTripInformationSampleCount": {
 					"$ref": "#/$defs/integer-string"
@@ -1231,13 +1223,13 @@
 					]
 				},
 				"mManufacturingMenuPriority": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mManufactoringDuration": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mManualManufacturingMultiplier": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mProducedIn": {
 					"oneOf": [
@@ -1277,10 +1269,10 @@
 					"$ref": "#/$defs/mEventType--optional-csv"
 				},
 				"mVariablePowerConsumptionConstant": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mVariablePowerConsumptionFactor": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
@@ -1342,10 +1334,10 @@
 			],
 			"properties": {
 				"mTerminalDistanceFromEdge": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mTerminalHalfDepth": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mDimensions": {
 					"$ref": "#/$defs/xyz--integer"
@@ -1741,7 +1733,7 @@
 					"const": "BP_UnlockCentralStorageUploadSpeed_C"
 				},
 				"mUploadSpeedPercentageDecrease": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
@@ -1931,7 +1923,7 @@
 					]
 				},
 				"mMenuPriority": {
-					"$ref": "#/$defs/decimal-string--signed"
+					"$ref": "common.schema.json#/$defs/decimal-string--signed"
 				},
 				"mTechTier": {
 					"$ref": "#/$defs/integer-string"
@@ -1948,7 +1940,7 @@
 					]
 				},
 				"mTimeToComplete": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mRelevantShopSchematics": {
 					"oneOf": [
@@ -2225,7 +2217,7 @@
 			"required": ["mHeight", "mDisplayName", "mDescription"],
 			"properties": {
 				"mHeight": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
@@ -2241,13 +2233,13 @@
 			],
 			"properties": {
 				"mWidth": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mElevation": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mAngularDepth": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mWallType": {
 					"type": "string",
@@ -2297,7 +2289,7 @@
 			"required": ["mSize", "mIsInverted"],
 			"properties": {
 				"mSize": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mIsInverted": {
 					"$ref": "#/$defs/boolean"
@@ -2320,17 +2312,17 @@
 					"$ref": "#/$defs/boolean"
 				},
 				"mAnimationRate": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mMovementRate": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"EasingFunction": {
 					"type": "string",
 					"enum": ["ExpoInOut", "Linear"]
 				},
 				"BlendExp": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"Steps": {
 					"$ref": "#/$defs/integer-string"
@@ -2372,13 +2364,13 @@
 			],
 			"properties": {
 				"mDecalSize": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mPingColor": {
 					"$ref": "#/$defs/color-decimal"
 				},
 				"mCollectSpeedMultiplier": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mManualMiningAudioName": {
 					"type": "string",
@@ -2410,7 +2402,7 @@
 					"const": "Build_RailroadTrack_C"
 				},
 				"mMeshLength": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mConnections": {
 					"type": "string",
@@ -2446,7 +2438,7 @@
 					"$ref": "#/$defs/integer-string"
 				},
 				"mBlockVisualizationMeshLength": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mBlockVisualizationNumPrimitiveDataFloats": {
 					"$ref": "#/$defs/integer-string"
@@ -2516,7 +2508,7 @@
 					"$ref": "#/$defs/boolean"
 				},
 				"mStackHeight": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
@@ -2537,7 +2529,7 @@
 			"required": ["mHeight", "mSelectedPoleVersion"],
 			"properties": {
 				"mHeight": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mSelectedPoleVersion": {
 					"$ref": "#/$defs/integer-string--signed"
@@ -2589,7 +2581,7 @@
 					"$ref": "#/$defs/empty-object"
 				},
 				"mSpeed": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mItems": {
 					"type": "string",
@@ -2618,7 +2610,7 @@
 			"required": ["mMeshLength", "mSplineData", "mCustomSkins"],
 			"properties": {
 				"mMeshLength": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mSplineData": {
 					"type": "string",
@@ -2653,7 +2645,7 @@
 			],
 			"properties": {
 				"mMeshHeight": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mIsReversed": {
 					"$ref": "#/$defs/boolean"
@@ -2668,7 +2660,7 @@
 					"$ref": "#/$defs/mSnappedPassthroughs"
 				},
 				"mOpposingConnectionClearance": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
@@ -2687,13 +2679,13 @@
 			],
 			"properties": {
 				"mMaxLength": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mMaxPowerTowerLength": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mLengthPerCost": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mConnections": {
 					"$ref": "#/$defs/None"
@@ -2706,7 +2698,7 @@
 					"const": ""
 				},
 				"mCachedLength": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
@@ -2735,7 +2727,7 @@
 					]
 				},
 				"mPowerTowerWireMaxLength": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mHasPower": {
 					"$ref": "#/$defs/boolean"
@@ -2870,10 +2862,10 @@
 					"$ref": "#/$defs/integer-string"
 				},
 				"mSpawningGroundZOffset": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mGroundSearchZDistance": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mDefaultResources": {
 					"type": "string",
@@ -3088,7 +3080,7 @@
 					"$ref": "#/$defs/boolean"
 				},
 				"mMontageBlendOutTime": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mEquipmentLookAtDescOverride": {
 					"type": "string",
@@ -3114,19 +3106,19 @@
 					"$ref": "#/$defs/mDamageTypes"
 				},
 				"mSecondSwingMinDelay": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mSecondSwingMaxDelay": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mSecondSwingUseCoolDown": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mAttackDistance": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mAttackSweepRadius": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
@@ -3262,7 +3254,7 @@
 											],
 											"properties": {
 												"Weight": {
-													"$ref": "#/$defs/decimal-string"
+													"$ref": "common.schema.json#/$defs/decimal-string"
 												},
 												"Montage_1P": {
 													"$ref": "#/$defs/Montage_1P"
@@ -3325,7 +3317,7 @@
 											],
 											"properties": {
 												"Weight": {
-													"$ref": "#/$defs/decimal-string"
+													"$ref": "common.schema.json#/$defs/decimal-string"
 												},
 												"Filter": {
 													"$ref": "#/$defs/boolean"
@@ -3580,7 +3572,7 @@
 											],
 											"properties": {
 												"Weight": {
-													"$ref": "#/$defs/decimal-string"
+													"$ref": "common.schema.json#/$defs/decimal-string"
 												},
 												"Montage_1P": {
 													"$ref": "#/$defs/Montage_1P"
@@ -3833,10 +3825,10 @@
 			],
 			"properties": {
 				"mCurrentPlayerVelocity_SFX": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mCurrentMouseDelta_SFX": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mLowBatteryWarningActive_SFX": {
 					"$ref": "#/$defs/boolean"
@@ -3858,46 +3850,46 @@
 					"$ref": "#/$defs/empty-object"
 				},
 				"mHoverSpeed": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mHoverAccelerationSpeed": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mHoverSprintMultiplier": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mHoverFriction": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mJumpKeyHoldActivationTime": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mFallSpeedLimitWhenPowered": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mPowerConnectionSearchRadius": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mPowerConnectionSearchTickRate": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mPowerConnectionDisconnectionTime": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mPowerCapacity": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mPowerDrainRate": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mPowerConsumption": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mCurrentPowerLevel": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mRangeWarningNormalizedDistanceThreshold": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mDisplayRangeWarning": {
 					"$ref": "#/$defs/boolean"
@@ -3913,13 +3905,13 @@
 					"$ref": "#/$defs/boolean"
 				},
 				"mCrouchHoverCancelTime": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mCharacterUseDistanceWhenActive": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mActiveNoiseFrequency": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mCurrentConnectionLocation": {
 					"$ref": "#/$defs/xyz"
@@ -4014,13 +4006,13 @@
 					"$ref": "#/$defs/empty-object"
 				},
 				"mDefaultAirControl": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mRTPCInterval": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mCurrentFuel": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mIsThrusting": {
 					"$ref": "#/$defs/boolean"
@@ -4057,7 +4049,7 @@
 					"const": ""
 				},
 				"mActiveNoiseFrequency": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mEquipMontage": {
 					"type": "string",
@@ -4136,7 +4128,7 @@
 			],
 			"properties": {
 				"mImmunity": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mIsWorking": {
 					"$ref": "#/$defs/boolean"
@@ -4145,16 +4137,16 @@
 					"$ref": "#/$defs/boolean"
 				},
 				"mDamageNegated": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mFilterDuration": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mCountdown": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mDisableEffectTimer": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mIsBurningFuel": {
 					"$ref": "#/$defs/boolean"
@@ -4285,10 +4277,10 @@
 					"$ref": "#/$defs/boolean"
 				},
 				"mFilterCountdown": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mFilterDuration": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mIsInPoisonGas": {
 					"$ref": "#/$defs/boolean"
@@ -4409,10 +4401,10 @@
 			],
 			"properties": {
 				"mInterpSawProgress": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mCurrentOutputDataSFX": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"StartUpToIdleID": {
 					"$ref": "#/$defs/integer-string"
@@ -4535,22 +4527,22 @@
 					"$ref": "#/$defs/integer-string"
 				},
 				"mEnergyConsumption": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mSawDownTreeTime": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mCollateralPickupRadius": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mIsAOEOn": {
 					"$ref": "#/$defs/boolean"
 				},
 				"mEnergyStored": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mSawingProgress": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mChainsawState": {
 					"$ref": "#/$defs/mChainsawState"
@@ -4656,16 +4648,16 @@
 					}
 				},
 				"mBeepDelayMax": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mBeepDelayMin": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mDetectionRange": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mUpdateClosestObjectTime": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mClosestObject": {
 					"type": "string",
@@ -4683,10 +4675,10 @@
 					"$ref": "#/$defs/boolean"
 				},
 				"mNormalizedDistanceToClosestObject": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mAngleToClosestObject": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mEquipMontage": {
 					"type": "string",
@@ -4797,10 +4789,10 @@
 			"required": ["mSprintSpeedFactor", "mJumpSpeedFactor"],
 			"properties": {
 				"mSprintSpeedFactor": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mJumpSpeedFactor": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mEquipMontage": {
 					"type": "string",
@@ -4940,28 +4932,28 @@
 					"$ref": "#/$defs/boolean"
 				},
 				"mZiplineJumpLaunchVelocity": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mMaxZiplineAngle": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mTraceDistance": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mTraceStartOffset": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mTraceRadius": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mVisualizeTraceDistance": {
 					"$ref": "#/$defs/boolean"
 				},
 				"mActiveNoiseFrequency": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mZiplineReattachCooldown": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mEquipMontage": {
 					"type": "string",
@@ -5267,7 +5259,7 @@
 					}
 				},
 				"mUseDistanceOverride": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mIsDeployed": {
 					"$ref": "#/$defs/boolean"
@@ -5474,7 +5466,7 @@
 						"required": ["Weight"],
 						"properties": {
 							"Weight": {
-								"$ref": "#/$defs/decimal-string"
+								"$ref": "common.schema.json#/$defs/decimal-string"
 							}
 						}
 					}
@@ -5506,7 +5498,7 @@
 			],
 			"properties": {
 				"mCustomHandsMeshScale": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mCustomRotation": {
 					"$ref": "#/$defs/pitch-yaw-roll"
@@ -5528,7 +5520,7 @@
 			"required": ["mHealthGain"],
 			"properties": {
 				"mHealthGain": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
@@ -5553,10 +5545,10 @@
 			"required": ["JumpForceCharacter", "JumpForcePhysics"],
 			"properties": {
 				"JumpForceCharacter": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"JumpForcePhysics": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
@@ -5567,7 +5559,7 @@
 			"required": ["mDampeningFactor", "mPlayerList"],
 			"properties": {
 				"mDampeningFactor": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mPlayerList": {
 					"type": "string",
@@ -5586,10 +5578,10 @@
 			"required": ["mSize", "mElevation", "mDisableSnapOn"],
 			"properties": {
 				"mSize": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mElevation": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
@@ -5649,10 +5641,10 @@
 			"required": ["mPowerProduction", "mLoadPercentage"],
 			"properties": {
 				"mPowerProduction": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mLoadPercentage": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
@@ -5694,7 +5686,7 @@
 					"$ref": "#/$defs/integer-string"
 				},
 				"mSupplementalToPowerRatio": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mIsFullBlast": {
 					"$ref": "#/$defs/boolean"
@@ -5871,10 +5863,10 @@
 					}
 				},
 				"mRTPCInterval": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mCachedLoadPercentage": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
@@ -5945,7 +5937,7 @@
 					}
 				},
 				"mCachedLoadPercentage": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
@@ -5967,22 +5959,22 @@
 					"$ref": "#/$defs/boolean"
 				},
 				"mVariablePowerProductionConstant": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mVariablePowerProductionFactor": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mVariablePowerProductionCycleLength": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mMinPowerProduction": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mMaxPowerProduction": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mVariablePowerProductionCycleOffset": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
@@ -6117,7 +6109,7 @@
 					]
 				},
 				"mCachedLoadPercentage": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
@@ -6128,10 +6120,10 @@
 			"required": ["mLength", "mVerticalAngle"],
 			"properties": {
 				"mLength": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mVerticalAngle": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
@@ -6169,23 +6161,23 @@
 			],
 			"properties": {
 				"mMeshLength": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mSplineData": {
 					"type": "string",
 					"const": ""
 				},
 				"mRadius": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mFlowLimit": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mFlowIndicatorMinimumPipeLength": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mSoundSplineComponentEmitterInterval": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mPipeConnections": {
 					"type": "string",
@@ -6198,7 +6190,7 @@
 					"$ref": "#/$defs/empty-object"
 				},
 				"mMaxIndicatorTurnAngle": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mIgnoreActorsForIndicator": {
 					"type": "string",
@@ -6233,19 +6225,19 @@
 					"const": ""
 				},
 				"mLastContentForSound": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mLastFlowForSound": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mLastElapsedTime": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mLastFlowForSoundUpdateThreshold": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mRattleLimit": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mIsRattling": {
 					"$ref": "#/$defs/boolean"
@@ -6254,7 +6246,7 @@
 					"$ref": "#/$defs/empty-object"
 				},
 				"mUpdateSoundsTimerInterval": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mSnappedPassthroughs": {
 					"$ref": "#/$defs/mSnappedPassthroughs"
@@ -6286,10 +6278,10 @@
 			],
 			"properties": {
 				"mRadius": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mFluidBoxVolume": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mFluidBox": {
 					"$ref": "#/$defs/empty-object"
@@ -6324,34 +6316,34 @@
 			],
 			"properties": {
 				"mLastFlowUpdate": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mUpdateFlowTime": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mAnimSpeed": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mLastFlowValue": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mTimeScaleOffset": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mMaxPressure": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mDesignPressure": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mDefaultFlowLimit": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mUserFlowLimit": {
-					"$ref": "#/$defs/decimal-string--signed"
+					"$ref": "common.schema.json#/$defs/decimal-string--signed"
 				},
 				"mMinimumFlowPercentForStandby": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mIndicatorData": {
 					"$ref": "#/$defs/empty-object"
@@ -6360,7 +6352,7 @@
 					"$ref": "#/$defs/empty-object"
 				},
 				"mUpdateAudioFlowTime": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
@@ -6381,7 +6373,7 @@
 					"$ref": "#/$defs/boolean"
 				},
 				"mCurrentAudioHeadLift": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
@@ -6401,10 +6393,10 @@
 			],
 			"properties": {
 				"mStackingHeight": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mStorageCapacity": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mIndicatorData": {
 					"$ref": "#/$defs/empty-object"
@@ -6484,13 +6476,13 @@
 					"const": ""
 				},
 				"mExtractStartupTime": {
-					"$ref": "#/$defs/decimal-string--signed"
+					"$ref": "common.schema.json#/$defs/decimal-string--signed"
 				},
 				"mExtractStartupTimer": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mExtractCycleTime": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mItemsPerCycle": {
 					"$ref": "#/$defs/integer-string"
@@ -6512,7 +6504,7 @@
 			],
 			"properties": {
 				"mWaterpumpTimeline_RTPC_B8FA6F944E717E3B7A286E84901F620E": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mWaterpumpTimeline__Direction_B8FA6F944E717E3B7A286E84901F620E": {
 					"type": "string",
@@ -6522,7 +6514,7 @@
 					"$ref": "#/$defs/boolean"
 				},
 				"mMinimumDepthForPlacement": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mDepthTraceOriginOffset": {
 					"$ref": "#/$defs/xyz"
@@ -6581,16 +6573,16 @@
 					"$ref": "#/$defs/boolean"
 				},
 				"mGrinderInterpDuration": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mEngineInterpDuration": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mProcessingTime": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mProducingTimer": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
@@ -6745,7 +6737,7 @@
 			"required": ["InternalStartUpTimer"],
 			"properties": {
 				"InternalStartUpTimer": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
@@ -6768,10 +6760,10 @@
 					"$ref": "#/$defs/empty-object"
 				},
 				"mMinimumDrillTime_0": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mMaximumDrillTime_0": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
@@ -6800,7 +6792,7 @@
 					"$ref": "#/$defs/empty-object"
 				},
 				"mManufacturingSpeed": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mFactoryInputConnections": {
 					"type": "string",
@@ -6948,25 +6940,25 @@
 								"$ref": "#/$defs/integer-string"
 							},
 							{
-								"$ref": "#/$defs/decimal-string"
+								"$ref": "common.schema.json#/$defs/decimal-string"
 							}
 						]
 					}
 				},
 				"mAOAttenuationScalingFactor": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mAOLayerZOffset": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"RTPC_AO_VolumeDB": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"RTPC_AO_HighpassValue": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"RTPC_AO_Pitch": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
@@ -6979,10 +6971,10 @@
 			],
 			"properties": {
 				"mEstimatedMininumPowerConsumption": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mEstimatedMaximumPowerConsumption": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
@@ -7015,16 +7007,16 @@
 			],
 			"properties": {
 				"mSequenceDuration": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mLightningTimer": {
 					"$ref": "#/$defs/empty-object"
 				},
 				"mGameTimeAtProducing": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mCurrentProducingSeekTime": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mStartVector_VFX_Small_Start": {
 					"$ref": "#/$defs/xyz-array"
@@ -7045,10 +7037,10 @@
 					"$ref": "#/$defs/xyz-array"
 				},
 				"mEstimatedMininumPowerConsumption": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mEstimatedMaximumPowerConsumption": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
@@ -7245,10 +7237,10 @@
 						"required": ["Min", "Max"],
 						"properties": {
 							"Min": {
-								"$ref": "#/$defs/decimal-string"
+								"$ref": "common.schema.json#/$defs/decimal-string"
 							},
 							"Max": {
-								"$ref": "#/$defs/decimal-string"
+								"$ref": "common.schema.json#/$defs/decimal-string"
 							}
 						}
 					}
@@ -7277,7 +7269,7 @@
 			"required": ["mFuelConsumption"],
 			"properties": {
 				"mFuelConsumption": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
@@ -7336,10 +7328,10 @@
 					"$ref": "#/$defs/empty-object"
 				},
 				"mActivationStartupTime": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mActivationStartupTimer": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mSatelliteActivationComplete": {
 					"$ref": "#/$defs/boolean"
@@ -7351,7 +7343,7 @@
 					"$ref": "#/$defs/integer-string"
 				},
 				"mDefaultPotentialExtractionPerMinute": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mAllowedResources": {
 					"$ref": "common.schema.json#/$defs/UnrealEngineString--array"
@@ -7417,7 +7409,7 @@
 					"$ref": "#/$defs/integer-string"
 				},
 				"mSignificanceRange": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
@@ -7482,7 +7474,7 @@
 				"required": ["DockForDuration"],
 				"properties": {
 					"DockForDuration": {
-						"$ref": "#/$defs/decimal-string"
+						"$ref": "common.schema.json#/$defs/decimal-string"
 					}
 				}
 			}
@@ -7493,7 +7485,7 @@
 			"required": ["mCurrentDockForDuration"],
 			"properties": {
 				"mCurrentDockForDuration": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
@@ -7563,19 +7555,19 @@
 					"$ref": "#/$defs/boolean"
 				},
 				"mTimeToCompleteLoad": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mTimeToSwapLoadVisibility": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mTimeToCompleteUnload": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mTimeToSwapUnloadVisibility": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mWaitForConditionUpdatePeriod": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mStorageInputConnections": {
 					"type": "string",
@@ -7604,7 +7596,7 @@
 					"$ref": "#/$defs/boolean"
 				},
 				"mDockForDuration": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mMustDockForDuration": {
 					"$ref": "#/$defs/boolean"
@@ -7625,22 +7617,22 @@
 					"$ref": "#/$defs/empty-object"
 				},
 				"mTimeSinceLastLoadTransferUpdate": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mTimeSinceLastUnloadTransferUpdate": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mSmoothedLoadRate": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mSmoothedUnloadRate": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mReplicatedOutflowRate": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mReplicatedInflowRate": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
@@ -7686,7 +7678,7 @@
 			],
 			"properties": {
 				"mStackingHeight": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mInventorySizeX": {
 					"$ref": "#/$defs/integer-string"
@@ -7721,7 +7713,7 @@
 					"$ref": "#/$defs/boolean"
 				},
 				"mAudioTimerCounter": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"AudioCounterTimer": {
 					"$ref": "#/$defs/empty-object"
@@ -7730,19 +7722,19 @@
 					"$ref": "#/$defs/boolean"
 				},
 				"mOpeningOffset": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mInitialMinSpeedFactor": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mLength": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mCanStack": {
 					"$ref": "#/$defs/boolean"
 				},
 				"mStackHeight": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mUseStaticHeight": {
 					"$ref": "#/$defs/boolean"
@@ -7756,7 +7748,7 @@
 			"required": ["mSnappedPassthroughs", "mSplineData", "mMeshLength"],
 			"properties": {
 				"mMeshLength": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mSplineData": {
 					"type": "string",
@@ -7795,7 +7787,7 @@
 					"$ref": "#/$defs/mBatteryStatus"
 				},
 				"mCurrentGameTimeSinceStateChange": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mActivationEventID": {
 					"$ref": "#/$defs/integer-string"
@@ -7810,16 +7802,16 @@
 					"$ref": "#/$defs/mBatteryStatus"
 				},
 				"mPowerStore": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mPowerStoreCapacity": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mPowerInput": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mPowerInputCapacity": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mIndicatorLevelMax": {
 					"$ref": "#/$defs/integer-string"
@@ -7862,7 +7854,7 @@
 					"$ref": "#/$defs/xy"
 				},
 				"mMinimumDockingTime": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mFuelInventorySizeX": {
 					"$ref": "#/$defs/integer-string"
@@ -7871,19 +7863,19 @@
 					"$ref": "#/$defs/integer-string"
 				},
 				"mFuelTransferSpeed": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mForceSignificance": {
 					"$ref": "#/$defs/boolean"
 				},
 				"mVehicleFuelConsumptionRate": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mItemTransferRate": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mMaximumStackTransferRate": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mDockingVehicleStatistics": {
 					"$ref": "#/$defs/empty-object"
@@ -7919,25 +7911,25 @@
 			],
 			"properties": {
 				"mPowerBankCapacity": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mLaunchPowerCost": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mChargeRateMultiplier": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mCurrentPowerLevel": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mLaunchVelocity": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mLaunchAngle": {
-					"$ref": "#/$defs/decimal-string--signed"
+					"$ref": "common.schema.json#/$defs/decimal-string--signed"
 				},
 				"mPlayerChainJumpResetTime": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mHasPowerForLaunch": {
 					"$ref": "#/$defs/boolean"
@@ -7964,7 +7956,7 @@
 					"$ref": "#/$defs/pitch-yaw-roll"
 				},
 				"mDestinationMeshHeightOffset": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mTrajectorySplineMeshNumPrimitiveDataFloats": {
 					"$ref": "#/$defs/integer-string"
@@ -8002,7 +7994,7 @@
 					"$ref": "#/$defs/empty-object"
 				},
 				"mTrajectoryGravityMultiplier": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mShowTrajectoryCounter": {
 					"$ref": "#/$defs/integer-string"
@@ -8026,20 +8018,20 @@
 					"enum": ["ERS_NotResearching"]
 				},
 				"mSignificanceRange": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"Centrifuge_NewTrack_1_BB49BD99478F0FC67F8D7E9A54C7E849": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"Centrifuge_NewTrack_0_BB49BD99478F0FC67F8D7E9A54C7E849": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"Centrifuge__Direction_BB49BD99478F0FC67F8D7E9A54C7E849": {
 					"type": "string",
 					"const": "Forward"
 				},
 				"Centrifuge Duration": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
@@ -8136,16 +8128,16 @@
 			],
 			"properties": {
 				"mWidth": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mDepth": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mHeight": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mElevation": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mIsFrame": {
 					"$ref": "#/$defs/boolean"
@@ -8230,7 +8222,7 @@
 							],
 							"properties": {
 								"DefaultValue": {
-									"$ref": "#/$defs/decimal-string"
+									"$ref": "common.schema.json#/$defs/decimal-string"
 								},
 								"PreInfinityExtrap": {
 									"$ref": "#/$defs/InfinityExtrap"
@@ -8319,37 +8311,37 @@
 					"$ref": "#/$defs/integer-string"
 				},
 				"mMaxAmmoEffectiveRange": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mReloadTimeMultiplier": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mFireRate": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mFiringTransformIgnoresDispersion": {
 					"$ref": "#/$defs/boolean"
 				},
 				"mDispersionFireRateMultiplier": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mDispersionPerShot": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mRestingDispersion": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mFiringDispersion": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mDispersionRecoveryTime": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mHasBeenInitialized": {
 					"$ref": "#/$defs/boolean"
 				},
 				"mWeaponDamageMultiplier": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mMagazineMeshMaterials": {
 					"type": "string",
@@ -8396,10 +8388,10 @@
 													"$ref": "#/$defs/boolean"
 												},
 												"LocalUVDensities[0]": {
-													"$ref": "#/$defs/decimal-string"
+													"$ref": "common.schema.json#/$defs/decimal-string"
 												},
 												"LocalUVDensities[1]": {
-													"$ref": "#/$defs/decimal-string"
+													"$ref": "common.schema.json#/$defs/decimal-string"
 												}
 											}
 										}
@@ -8473,7 +8465,7 @@
 					"$ref": "#/$defs/color-decimal"
 				},
 				"mAmmoScale": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mAmmoTickFunction": {
 					"type": "string",
@@ -8513,19 +8505,19 @@
 			],
 			"properties": {
 				"mInitialProjectileSpeedOverride": {
-					"$ref": "#/$defs/decimal-string--signed"
+					"$ref": "common.schema.json#/$defs/decimal-string--signed"
 				},
 				"mProjectileMaxSpeedOverride": {
-					"$ref": "#/$defs/decimal-string--signed"
+					"$ref": "common.schema.json#/$defs/decimal-string--signed"
 				},
 				"mProjectileHealthOverride": {
-					"$ref": "#/$defs/decimal-string--signed"
+					"$ref": "common.schema.json#/$defs/decimal-string--signed"
 				},
 				"mProjectileLifespan": {
-					"$ref": "#/$defs/decimal-string--signed"
+					"$ref": "common.schema.json#/$defs/decimal-string--signed"
 				},
 				"mProjectileStickspan": {
-					"$ref": "#/$defs/decimal-string--signed"
+					"$ref": "common.schema.json#/$defs/decimal-string--signed"
 				},
 				"mCanTakeDamageBySameProjectileOrChild": {
 					"$ref": "#/$defs/boolean"
@@ -8551,7 +8543,7 @@
 					"$ref": "#/$defs/boolean"
 				},
 				"mMaxHomingAccelerationMagnitudeOverride": {
-					"$ref": "#/$defs/decimal-string--signed"
+					"$ref": "common.schema.json#/$defs/decimal-string--signed"
 				},
 				"mHomingMagnitudeMultiplierOverLifespan": {
 					"$ref": "#/$defs/EditorCurveData"
@@ -8560,10 +8552,10 @@
 					"$ref": "#/$defs/EditorCurveData"
 				},
 				"mHomingOverlapSize": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mHomingAngleLimit": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mHomingOverrideTargets": {
 					"oneOf": [
@@ -8611,7 +8603,7 @@
 			],
 			"properties": {
 				"SpreadTrail_Velocity": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mNumShots": {
 					"type": "string",
@@ -8629,7 +8621,7 @@
 					}
 				},
 				"mSpreadAngleDegrees": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
@@ -8657,7 +8649,7 @@
 					"$ref": "#/$defs/xyz"
 				},
 				"Trail_Velocity": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
@@ -8716,7 +8708,7 @@
 					"$ref": "#/$defs/boolean"
 				},
 				"mAutoReloadDelay": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mAutoReloadTimerHandle": {
 					"$ref": "#/$defs/empty-object"
@@ -8743,19 +8735,19 @@
 					"enum": ["EjectMagazine", "hand_rSocket"]
 				},
 				"mDispersionOnNoMagazine": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mWeaponDamageMultiplier": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mFiringBlocksDispersionReduction": {
 					"$ref": "#/$defs/boolean"
 				},
 				"mCurrentDispersion": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mReloadTime": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mAmmoSwitchUsedRadialMenu": {
 					"$ref": "#/$defs/boolean"
@@ -8864,7 +8856,7 @@
 											],
 											"properties": {
 												"Weight": {
-													"$ref": "#/$defs/decimal-string"
+													"$ref": "common.schema.json#/$defs/decimal-string"
 												},
 												"Montage_1P": {
 													"$ref": "#/$defs/Montage_1P"
@@ -9501,7 +9493,7 @@
 					}
 				},
 				"mRadialMenuShowUpTime": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mPrimaryFireStartMontageList": {
 					"type": "string",
@@ -9921,10 +9913,10 @@
 					"const": ""
 				},
 				"mMaxChargeTime": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mReleaseCooldown": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mMaxThrowForce": {
 					"$ref": "#/$defs/integer-string"
@@ -9933,7 +9925,7 @@
 					"$ref": "#/$defs/integer-string"
 				},
 				"mDelayBetweenSecondaryTriggers": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
@@ -10052,7 +10044,7 @@
 					"const": "Radar Tower"
 				},
 				"mRevealRadius": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mScannableDescriptors": {
 					"$ref": "common.schema.json#/$defs/UnrealEngineString--array"
@@ -10071,7 +10063,7 @@
 			"required": ["mTimeToProduceItem", "mEventType"],
 			"properties": {
 				"mTimeToProduceItem": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mEventType": {
 					"$ref": "#/$defs/mEventType"
@@ -10091,10 +10083,10 @@
 			],
 			"properties": {
 				"mWidth": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mMeshHeight": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mMaxSegmentCount": {
 					"$ref": "#/$defs/integer-string"
@@ -10146,7 +10138,7 @@
 					"$ref": "#/$defs/xyz"
 				},
 				"mCartPlacementDistance": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mEquipMontage": {
 					"type": "string",
@@ -10225,10 +10217,10 @@
 			],
 			"properties": {
 				"mSnappedBuildingThickness": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mMidMeshLength": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mGenerateTunnelCollision": {
 					"$ref": "#/$defs/boolean"
@@ -10243,13 +10235,13 @@
 					"$ref": "#/$defs/xyz"
 				},
 				"mClearanceHeightMin": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mClearanceThickness": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mCostSegmentLength": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mGeneratedMeshComponents": {
 					"type": "string",
@@ -10264,7 +10256,7 @@
 				"required": ["Intensity"],
 				"properties": {
 					"Intensity": {
-						"$ref": "#/$defs/decimal-string"
+						"$ref": "common.schema.json#/$defs/decimal-string"
 					}
 				}
 			}
@@ -10321,7 +10313,7 @@
 					"$ref": "#/$defs/mLightControlData"
 				},
 				"mPowerConsumption": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mHasPower": {
 					"$ref": "#/$defs/boolean"
@@ -10413,7 +10405,7 @@
 			],
 			"properties": {
 				"mGainSignificanceDistance": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mTextElementToDataMap": {
 					"$ref": "#/$defs/empty-object"
@@ -10456,10 +10448,10 @@
 					"$ref": "#/$defs/color-decimal"
 				},
 				"mEmissive": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mGlossiness": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mDataVersion": {
 					"$ref": "#/$defs/integer-string"
@@ -10478,7 +10470,7 @@
 					"$ref": "#/$defs/xy"
 				},
 				"mSignToSignOffset": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
@@ -10489,16 +10481,16 @@
 			"required": ["mSize", "mDefaultLength", "mMaxLength", "mLength"],
 			"properties": {
 				"mSize": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mDefaultLength": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mMaxLength": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mLength": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
@@ -10612,10 +10604,10 @@
 					"enum": ["PST_Overclock", "PST_ProductionBoost"]
 				},
 				"mExtraPotential": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mExtraProductionBoost": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
@@ -10724,10 +10716,10 @@
 					"$ref": "#/$defs/integer-string"
 				},
 				"PortalActive": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"PortalFluctuation": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mOnLinkedPortalChanged": {
 					"$ref": "#/$defs/empty-object"
@@ -10739,7 +10731,7 @@
 					"$ref": "#/$defs/empty-object"
 				},
 				"mMaxPortalTravelTime": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mIsPortalTraversable": {
 					"$ref": "#/$defs/boolean"
@@ -10752,13 +10744,13 @@
 					"const": "CVD_Far"
 				},
 				"mActorRepresentationFogOfWarRevealRadius": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mTeleportPowerConsumptionTimeLeft": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mTeleportPowerConsumption": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mCachedFactoryTickData": {
 					"$ref": "#/$defs/empty-object"
@@ -10792,7 +10784,7 @@
 					"const": "Build_Portal_C"
 				},
 				"OffsetFromPortalSurface": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"LightningStartVector": {
 					"$ref": "#/$defs/xyz-array"
@@ -10801,7 +10793,7 @@
 					"$ref": "#/$defs/xyz-array"
 				},
 				"In Value": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mFuelSlotSize": {
 					"$ref": "#/$defs/integer-string"
@@ -10813,7 +10805,7 @@
 					"$ref": "#/$defs/integer-string"
 				},
 				"mPortalDisconnectedCooldownTime": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mCachedInputConnections": {
 					"type": "string",
@@ -10823,19 +10815,19 @@
 					"$ref": "#/$defs/boolean"
 				},
 				"mHeatUpCycleTime": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mCurrentHeatUpProgress": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mCurrentProductionProgress": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mLinkedPortalDisconnectCooldownTimeLeft": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mCurrentProductionCycleTime": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mTrippedProductionStop": {
 					"$ref": "#/$defs/boolean"
@@ -10886,10 +10878,10 @@
 			"required": ["mBoostPercentage", "mBoostDuration"],
 			"properties": {
 				"mBoostPercentage": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mBoostDuration": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
@@ -10936,7 +10928,7 @@
 					}
 				},
 				"mVFX_LaserSubtract": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mVFX_SummerSloop_Loc_Offset": {
 					"$ref": "#/$defs/xyz"
@@ -10954,13 +10946,13 @@
 					"$ref": "#/$defs/boolean"
 				},
 				"mBasePowerProduction": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mBaseBoostPercentage": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mCurrentFuelBoostPercentage": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mDefaultFuelClasses": {
 					"type": "string",
@@ -10984,10 +10976,10 @@
 					"const": ""
 				},
 				"mCurrentFuelDuration": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mCurrentFuelDurationLeft": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
@@ -11002,13 +10994,13 @@
 			],
 			"properties": {
 				"TimeToExecuteCheckAfterItemAdded": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mUploadTimer": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mTimeToUpload": {
-					"$ref": "#/$defs/decimal-string"
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		}

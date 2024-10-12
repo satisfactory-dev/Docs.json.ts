@@ -12,8 +12,8 @@
 -   [x] class--no-description-or-display-name (common type)
 -   [x] color
 -   [x] color-decimal
--   [x] decimal-string
--   [x] decimal-string--signed
+-   [x] decimal-string (common type)
+-   [x] decimal-string--signed (common type)
 -   [x] EditorCurveData
 -   [x] empty-object
 -   [x] FGBuildingDescriptor

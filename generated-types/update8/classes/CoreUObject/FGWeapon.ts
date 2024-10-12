@@ -1,12 +1,10 @@
 import {empty_object__type, weaponState__type} from '../../common/unassigned';
 
-import {
-	boolean__type,
-	decimal_string__type,
-	integer_string__type,
-} from '../../common/scalar';
+import {boolean__type, integer_string__type} from '../../common/scalar';
 
 import {FGEquipment__base__type} from './FGEquipment';
+
+import {decimal_string__type} from '../../../common/common/scalar';
 
 import {
 	UnrealEngineString__array__type,

@@ -1,7 +1,5 @@
 import {
-	decimal_string__signed__type,
 	boolean__type,
-	decimal_string__type,
 	integer_string__signed__type,
 	integer_string__type,
 } from '../../common/scalar';
@@ -13,6 +11,11 @@ import {
 } from '../../common/unassigned';
 
 import {StringPassedRegExp} from '../../utils/validators';
+
+import {
+	decimal_string__signed__type,
+	decimal_string__type,
+} from '../../../common/common/scalar';
 
 import {
 	UnrealEngineString__array__type,

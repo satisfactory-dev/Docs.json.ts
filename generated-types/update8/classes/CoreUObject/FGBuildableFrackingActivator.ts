@@ -1,12 +1,10 @@
 import {None__type, empty_object__type} from '../../common/unassigned';
 
-import {
-	decimal_string__type,
-	boolean__type,
-	integer_string__type,
-} from '../../common/scalar';
+import {boolean__type, integer_string__type} from '../../common/scalar';
 
 import {FGBuildable__extractor_base__shared__type} from './FGBuildable';
+
+import {decimal_string__type} from '../../../common/common/scalar';
 
 import {
 	UnrealEngineString__array__type,

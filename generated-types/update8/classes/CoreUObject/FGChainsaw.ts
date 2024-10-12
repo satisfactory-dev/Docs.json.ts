@@ -1,12 +1,10 @@
-import {
-	decimal_string__type,
-	integer_string__type,
-	boolean__type,
-} from '../../common/scalar';
+import {integer_string__type, boolean__type} from '../../common/scalar';
 
 import {mChainsawState__type} from '../../common/unassigned';
 
 import {FGEquipment__base__type} from './FGEquipment';
+
+import {decimal_string__type} from '../../../common/common/scalar';
 
 import {NativeClass__type} from '../../../common/common/unassigned';
 

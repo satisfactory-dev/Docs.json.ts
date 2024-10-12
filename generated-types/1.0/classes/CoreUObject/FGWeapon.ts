@@ -1,10 +1,4 @@
 import {
-	decimal_string__type,
-	boolean__type,
-	integer_string__type,
-} from '../../common/scalar';
-
-import {
 	Montage_1P__type,
 	Montage_3P__type,
 	CameraAnim__type,
@@ -14,7 +8,11 @@ import {
 
 import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
 
+import {boolean__type, integer_string__type} from '../../common/scalar';
+
 import {FGEquipment__base__type} from './FGEquipment';
+
+import {decimal_string__type} from '../../../common/common/scalar';
 
 import {
 	UnrealEngineString__array__type,
