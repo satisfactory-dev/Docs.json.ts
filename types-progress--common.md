@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (14 of 14)
+100.00% Complete (20 of 20)
 
 ## Basic Types
 
@@ -21,3 +21,12 @@
 ## UnrealEngineString
 
 -   [x] UnrealEngineString--array
+
+## vectors
+
+-   [x] pitch-yaw-roll
+-   [x] quaternion
+-   [x] xy
+-   [x] xy--integer
+-   [x] xyz
+-   [x] xyz--integer

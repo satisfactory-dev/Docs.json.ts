@@ -6,7 +6,6 @@ import {
 	MaterialSlotName__type,
 	EditorCurveData__type,
 	transformation__type,
-	xyz__type,
 	mDamageTypes__type,
 } from '../../common/unassigned';
 
@@ -20,6 +19,7 @@ import {
 
 import {
 	empty_object__type,
+	xyz__type,
 	color_decimal__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned';

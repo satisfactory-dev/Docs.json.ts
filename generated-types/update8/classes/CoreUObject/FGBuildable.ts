@@ -2,8 +2,6 @@ import {boolean__type} from '../../common/scalar';
 
 import {StringPassedRegExp} from '../../utils/validators';
 
-import {xyz__type} from '../../common/unassigned';
-
 import {
 	decimal_string__signed__type,
 	decimal_string__type,
@@ -13,6 +11,7 @@ import {
 
 import {
 	empty_object__type,
+	xyz__type,
 	UnrealEngineString__array__type,
 	None__type,
 	class__type,

@@ -128,6 +128,111 @@
 			"type": "string",
 			"const": "None"
 		},
+		"xyz": {
+			"type": "string",
+			"minLength": 1,
+			"typed_string": {
+				"required": ["X", "Y", "Z"],
+				"properties": {
+					"X": {
+						"$ref": "common.schema.json#/$defs/decimal-string--signed"
+					},
+					"Y": {
+						"$ref": "common.schema.json#/$defs/decimal-string--signed"
+					},
+					"Z": {
+						"$ref": "common.schema.json#/$defs/decimal-string--signed"
+					}
+				}
+			}
+		},
+		"xy": {
+			"type": "string",
+			"minLength": 1,
+			"typed_string": {
+				"required": ["X", "Y"],
+				"properties": {
+					"X": {
+						"$ref": "common.schema.json#/$defs/decimal-string--signed"
+					},
+					"Y": {
+						"$ref": "common.schema.json#/$defs/decimal-string--signed"
+					}
+				}
+			}
+		},
+		"xy--integer": {
+			"type": "string",
+			"minLength": 1,
+			"typed_string": {
+				"required": ["X", "Y"],
+				"properties": {
+					"X": {
+						"$ref": "common.schema.json#/$defs/integer-string"
+					},
+					"Y": {
+						"$ref": "common.schema.json#/$defs/integer-string"
+					}
+				}
+			}
+		},
+		"quaternion": {
+			"type": "string",
+			"minLength": 1,
+			"typed_string": {
+				"required": ["X", "Y", "Z", "W"],
+				"properties": {
+					"X": {
+						"$ref": "common.schema.json#/$defs/decimal-string--signed"
+					},
+					"Y": {
+						"$ref": "common.schema.json#/$defs/decimal-string--signed"
+					},
+					"Z": {
+						"$ref": "common.schema.json#/$defs/decimal-string--signed"
+					},
+					"W": {
+						"$ref": "common.schema.json#/$defs/decimal-string"
+					}
+				}
+			}
+		},
+		"pitch-yaw-roll": {
+			"type": "string",
+			"minLength": 1,
+			"typed_string": {
+				"required": ["Pitch", "Yaw", "Roll"],
+				"properties": {
+					"Pitch": {
+						"$ref": "common.schema.json#/$defs/decimal-string--signed"
+					},
+					"Yaw": {
+						"$ref": "common.schema.json#/$defs/decimal-string--signed"
+					},
+					"Roll": {
+						"$ref": "common.schema.json#/$defs/decimal-string--signed"
+					}
+				}
+			}
+		},
+		"xyz--integer": {
+			"type": "string",
+			"minLength": 1,
+			"typed_string": {
+				"required": ["X", "Y", "Z"],
+				"properties": {
+					"X": {
+						"$ref": "common.schema.json#/$defs/integer-string"
+					},
+					"Y": {
+						"$ref": "common.schema.json#/$defs/integer-string"
+					},
+					"Z": {
+						"$ref": "common.schema.json#/$defs/integer-string"
+					}
+				}
+			}
+		},
 		"faux-1": {
 			"type": "object",
 			"$ref": "#/$defs/class",
@@ -162,6 +267,24 @@
 						},
 						{
 							"$ref": "#/$defs/None"
+						},
+						{
+							"$ref": "#/$defs/xyz"
+						},
+						{
+							"$ref": "#/$defs/xy"
+						},
+						{
+							"$ref": "#/$defs/xy--integer"
+						},
+						{
+							"$ref": "#/$defs/quaternion"
+						},
+						{
+							"$ref": "#/$defs/pitch-yaw-roll"
+						},
+						{
+							"$ref": "#/$defs/xyz--integer"
 						}
 					]
 				}

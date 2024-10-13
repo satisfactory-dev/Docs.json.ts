@@ -1,7 +1,5 @@
 import {boolean__type} from '../../common/scalar';
 
-import {xyz__type, pitch_yaw_roll__type} from '../../common/unassigned';
-
 import {FGBuildable__consumes_power_base__type} from './FGBuildable';
 
 import {
@@ -13,6 +11,8 @@ import {
 
 import {
 	empty_object__type,
+	xyz__type,
+	pitch_yaw_roll__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned';
 

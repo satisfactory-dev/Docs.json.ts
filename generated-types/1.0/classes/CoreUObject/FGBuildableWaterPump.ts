@@ -2,13 +2,12 @@ import {UnrealEngineString} from '../../utils/validators';
 
 import {boolean__type} from '../../common/scalar';
 
-import {xyz__type} from '../../common/unassigned';
-
 import {FGBuildable__extractor_base__type} from './FGBuildable';
 
 import {decimal_string__type} from '../../../common/common/scalar';
 
 import {
+	xyz__type,
 	None__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned';

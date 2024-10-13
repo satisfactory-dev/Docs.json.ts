@@ -1,12 +1,14 @@
 import {boolean__type} from '../../common/scalar';
 
-import {pitch_yaw_roll__type, xyz__type} from '../../common/unassigned';
-
 import {FGBuildable__base__type} from './FGBuildable';
 
 import {decimal_string__type} from '../../../common/common/scalar';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {
+	pitch_yaw_roll__type,
+	xyz__type,
+	NativeClass__type,
+} from '../../../common/common/unassigned';
 
 export type FGBuildablePassthrough__type = FGBuildable__base__type & {
 	mSnappedBuildingThickness: decimal_string__type;

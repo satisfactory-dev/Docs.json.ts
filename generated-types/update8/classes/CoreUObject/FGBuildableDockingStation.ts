@@ -1,11 +1,10 @@
-import {xy__type} from '../../common/unassigned';
-
 import {boolean__type} from '../../common/scalar';
 
 import {FGBuildable__docking_station_base__type} from './FGBuildable';
 
 import {
 	empty_object__type,
+	xy__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned';
 

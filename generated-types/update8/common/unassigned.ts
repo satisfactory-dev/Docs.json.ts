@@ -12,6 +12,8 @@ import {
 
 import {
 	color_decimal__type,
+	quaternion__type,
+	xyz__type,
 	None__type,
 	empty_object__type,
 } from '../../common/common/unassigned';
@@ -263,19 +265,6 @@ export type mPlatformDockingStatus__type = 'ETPDS_None';
 
 export type mSnappedPassthroughs__type = '';
 
-export type pitch_yaw_roll__type = {
-	Pitch: decimal_string__signed__type;
-	Yaw: decimal_string__signed__type;
-	Roll: decimal_string__signed__type;
-};
-
-export type quaternion__type = {
-	X: decimal_string__signed__type;
-	Y: decimal_string__signed__type;
-	Z: decimal_string__signed__type;
-	W: decimal_string__type;
-};
-
 export type SpecifiedColor__type = {
 	SpecifiedColor: color_decimal__type;
 };
@@ -292,28 +281,6 @@ export type transformation__type = {
 };
 
 export type weaponState__type = 'EWS_Unequipped';
-
-export type xy__type = {
-	X: decimal_string__signed__type;
-	Y: decimal_string__signed__type;
-};
-
-export type xy__integer__type = {
-	X: integer_string__type;
-	Y: integer_string__type;
-};
-
-export type xyz__type = {
-	X: decimal_string__signed__type;
-	Y: decimal_string__signed__type;
-	Z: decimal_string__signed__type;
-};
-
-export type xyz__integer__type = {
-	X: integer_string__type;
-	Y: integer_string__type;
-	Z: integer_string__type;
-};
 
 export type xyz_array__type = [
 	{

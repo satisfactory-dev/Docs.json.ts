@@ -1,5 +1,3 @@
-import {xyz__integer__type} from '../../common/unassigned';
-
 import {boolean__type} from '../../common/scalar';
 
 import {FGBuildable__base__type} from './FGBuildable';
@@ -11,6 +9,7 @@ import {
 
 import {
 	color_decimal__type,
+	xyz__integer__type,
 	empty_object__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned';

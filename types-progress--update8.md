@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (208 of 208)
+100.00% Complete (207 of 207)
 
 ## Basic Types
 
@@ -288,9 +288,8 @@
 
 ## vectors
 
--   [x] pitch-yaw-roll
--   [x] quaternion
--   [x] xy
--   [x] xy--integer
--   [x] xyz
--   [x] xyz--integer
+-   [x] pitch-yaw-roll (common type)
+-   [x] xy (common type)
+-   [x] xy--integer (common type)
+-   [x] xyz (common type)
+-   [x] xyz--integer (common type)

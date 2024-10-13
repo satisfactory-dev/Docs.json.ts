@@ -1,11 +1,10 @@
 import {boolean__type} from '../../common/scalar';
 
-import {xyz__type} from '../../common/unassigned';
-
 import {FGEquipment__base__type} from './FGEquipment';
 
 import {
 	empty_object__type,
+	xyz__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned';
 

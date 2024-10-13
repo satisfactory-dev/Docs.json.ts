@@ -1,11 +1,10 @@
-import {xyz__type} from '../../common/unassigned';
-
 import {FGBuildable__base__type} from './FGBuildable';
 
 import {decimal_string__type} from '../../../common/common/scalar';
 
 import {
 	None__type,
+	xyz__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned';
 

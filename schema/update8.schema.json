@@ -3,111 +3,6 @@
 	"$id": "update8.schema.json",
 	"type": "array",
 	"$defs": {
-		"xyz": {
-			"type": "string",
-			"minLength": 1,
-			"typed_string": {
-				"required": ["X", "Y", "Z"],
-				"properties": {
-					"X": {
-						"$ref": "common.schema.json#/$defs/decimal-string--signed"
-					},
-					"Y": {
-						"$ref": "common.schema.json#/$defs/decimal-string--signed"
-					},
-					"Z": {
-						"$ref": "common.schema.json#/$defs/decimal-string--signed"
-					}
-				}
-			}
-		},
-		"xy": {
-			"type": "string",
-			"minLength": 1,
-			"typed_string": {
-				"required": ["X", "Y"],
-				"properties": {
-					"X": {
-						"$ref": "common.schema.json#/$defs/decimal-string--signed"
-					},
-					"Y": {
-						"$ref": "common.schema.json#/$defs/decimal-string--signed"
-					}
-				}
-			}
-		},
-		"xy--integer": {
-			"type": "string",
-			"minLength": 1,
-			"typed_string": {
-				"required": ["X", "Y"],
-				"properties": {
-					"X": {
-						"$ref": "common.schema.json#/$defs/integer-string"
-					},
-					"Y": {
-						"$ref": "common.schema.json#/$defs/integer-string"
-					}
-				}
-			}
-		},
-		"quaternion": {
-			"type": "string",
-			"minLength": 1,
-			"typed_string": {
-				"required": ["X", "Y", "Z", "W"],
-				"properties": {
-					"X": {
-						"$ref": "common.schema.json#/$defs/decimal-string--signed"
-					},
-					"Y": {
-						"$ref": "common.schema.json#/$defs/decimal-string--signed"
-					},
-					"Z": {
-						"$ref": "common.schema.json#/$defs/decimal-string--signed"
-					},
-					"W": {
-						"$ref": "common.schema.json#/$defs/decimal-string"
-					}
-				}
-			}
-		},
-		"pitch-yaw-roll": {
-			"type": "string",
-			"minLength": 1,
-			"typed_string": {
-				"required": ["Pitch", "Yaw", "Roll"],
-				"properties": {
-					"Pitch": {
-						"$ref": "common.schema.json#/$defs/decimal-string--signed"
-					},
-					"Yaw": {
-						"$ref": "common.schema.json#/$defs/decimal-string--signed"
-					},
-					"Roll": {
-						"$ref": "common.schema.json#/$defs/decimal-string--signed"
-					}
-				}
-			}
-		},
-		"xyz--integer": {
-			"type": "string",
-			"minLength": 1,
-			"typed_string": {
-				"required": ["X", "Y", "Z"],
-				"properties": {
-					"X": {
-						"$ref": "common.schema.json#/$defs/integer-string"
-					},
-					"Y": {
-						"$ref": "common.schema.json#/$defs/integer-string"
-					},
-					"Z": {
-						"$ref": "common.schema.json#/$defs/integer-string"
-					}
-				}
-			}
-		},
 		"xyz-array": {
 			"type": "string",
 			"minLength": 1,
@@ -166,13 +61,13 @@
 				"required": ["Rotation", "Translation", "Scale3D"],
 				"properties": {
 					"Rotation": {
-						"$ref": "#/$defs/quaternion"
+						"$ref": "common.schema.json#/$defs/quaternion"
 					},
 					"Translation": {
-						"$ref": "#/$defs/xyz"
+						"$ref": "common.schema.json#/$defs/xyz"
 					},
 					"Scale3D": {
-						"$ref": "#/$defs/xyz"
+						"$ref": "common.schema.json#/$defs/xyz"
 					}
 				}
 			}
@@ -694,10 +589,10 @@
 										"required": ["Min", "Max", "IsValid"],
 										"properties": {
 											"Min": {
-												"$ref": "#/$defs/xyz"
+												"$ref": "common.schema.json#/$defs/xyz"
 											},
 											"Max": {
-												"$ref": "#/$defs/xyz"
+												"$ref": "common.schema.json#/$defs/xyz"
 											},
 											"IsValid": {
 												"$ref": "#/$defs/boolean"
@@ -934,10 +829,10 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mDroneDockingStartLocationLocal": {
-					"$ref": "#/$defs/xyz"
+					"$ref": "common.schema.json#/$defs/xyz"
 				},
 				"mDroneDockingLocationLocal": {
-					"$ref": "#/$defs/xyz"
+					"$ref": "common.schema.json#/$defs/xyz"
 				},
 				"mBatteryClasses": {
 					"type": "string",
@@ -1168,7 +1063,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mDimensions": {
-					"$ref": "#/$defs/xyz--integer"
+					"$ref": "common.schema.json#/$defs/xyz--integer"
 				},
 				"OnRecordDataChanged": {
 					"$ref": "common.schema.json#/$defs/empty-object"
@@ -1665,7 +1560,7 @@
 								"const": "Image"
 							},
 							"ImageSize": {
-								"$ref": "#/$defs/xy"
+								"$ref": "common.schema.json#/$defs/xy"
 							},
 							"Margin": {
 								"$ref": "common.schema.json#/$defs/empty-object"
@@ -1684,7 +1579,7 @@
 									],
 									"properties": {
 										"CornerRadii": {
-											"$ref": "#/$defs/quaternion"
+											"$ref": "common.schema.json#/$defs/quaternion"
 										},
 										"Color": {
 											"$ref": "#/$defs/SpecifiedColor"
@@ -1706,10 +1601,10 @@
 									"required": ["Min", "Max", "bIsValid"],
 									"properties": {
 										"Min": {
-											"$ref": "#/$defs/xy"
+											"$ref": "common.schema.json#/$defs/xy"
 										},
 										"Max": {
-											"$ref": "#/$defs/xy"
+											"$ref": "common.schema.json#/$defs/xy"
 										},
 										"bIsValid": {
 											"$ref": "#/$defs/boolean"
@@ -2277,7 +2172,7 @@
 					"$ref": "common.schema.json#/$defs/None"
 				},
 				"mConnectionLocations": {
-					"$ref": "#/$defs/xyz"
+					"$ref": "common.schema.json#/$defs/xyz"
 				},
 				"mWireInstances": {
 					"type": "string",
@@ -2841,7 +2736,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mCurrentConnectionLocation": {
-					"$ref": "#/$defs/xyz"
+					"$ref": "common.schema.json#/$defs/xyz"
 				}
 			}
 		},
@@ -3283,10 +3178,10 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mCustomRotation": {
-					"$ref": "#/$defs/pitch-yaw-roll"
+					"$ref": "common.schema.json#/$defs/pitch-yaw-roll"
 				},
 				"mCustomLocation": {
-					"$ref": "#/$defs/xyz"
+					"$ref": "common.schema.json#/$defs/xyz"
 				}
 			}
 		},
@@ -3313,7 +3208,7 @@
 			"required": ["mSize", "mIsSupport"],
 			"properties": {
 				"mSize": {
-					"$ref": "#/$defs/xyz"
+					"$ref": "common.schema.json#/$defs/xyz"
 				},
 				"mIsSupport": {
 					"$ref": "#/$defs/boolean"
@@ -4262,7 +4157,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mDepthTraceOriginOffset": {
-					"$ref": "#/$defs/xyz"
+					"$ref": "common.schema.json#/$defs/xyz"
 				},
 				"mAllowedResourceForms": {
 					"type": "string",
@@ -5405,7 +5300,7 @@
 					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mDockPosition": {
-					"$ref": "#/$defs/xy"
+					"$ref": "common.schema.json#/$defs/xy"
 				},
 				"mMinimumDockingTime": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -5510,10 +5405,10 @@
 					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mTrajectoryMeshScale": {
-					"$ref": "#/$defs/xyz"
+					"$ref": "common.schema.json#/$defs/xyz"
 				},
 				"mTrajectoryMeshRotation": {
-					"$ref": "#/$defs/pitch-yaw-roll"
+					"$ref": "common.schema.json#/$defs/pitch-yaw-roll"
 				},
 				"mDestinationMeshHeightOffset": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -5841,7 +5736,7 @@
 					"$ref": "#/$defs/transformation"
 				},
 				"mFiringDirection": {
-					"$ref": "#/$defs/xyz"
+					"$ref": "common.schema.json#/$defs/xyz"
 				},
 				"mMagazineSize": {
 					"$ref": "common.schema.json#/$defs/integer-string"
@@ -5966,7 +5861,7 @@
 					"$ref": "#/$defs/EditorCurveData"
 				},
 				"mMuzzleFlashScale": {
-					"$ref": "#/$defs/xyz"
+					"$ref": "common.schema.json#/$defs/xyz"
 				},
 				"mFiringSounds": {
 					"oneOf": [
@@ -6182,7 +6077,7 @@
 					"const": "Desc_CartridgeChaos_C"
 				},
 				"Location": {
-					"$ref": "#/$defs/xyz"
+					"$ref": "common.schema.json#/$defs/xyz"
 				},
 				"Trail_Velocity": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -6634,13 +6529,13 @@
 					"$ref": "#/$defs/boolean"
 				},
 				"mEndCapRotation": {
-					"$ref": "#/$defs/pitch-yaw-roll"
+					"$ref": "common.schema.json#/$defs/pitch-yaw-roll"
 				},
 				"mMidMeshRotation": {
-					"$ref": "#/$defs/pitch-yaw-roll"
+					"$ref": "common.schema.json#/$defs/pitch-yaw-roll"
 				},
 				"mEndCapTranslation": {
-					"$ref": "#/$defs/xyz"
+					"$ref": "common.schema.json#/$defs/xyz"
 				},
 				"mClearanceHeightMin": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -6818,7 +6713,7 @@
 					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mSignDrawSize": {
-					"$ref": "#/$defs/xy--integer"
+					"$ref": "common.schema.json#/$defs/xy--integer"
 				},
 				"mPrefabTextElementSaveData": {
 					"type": "string",
@@ -6851,13 +6746,13 @@
 					"const": ""
 				},
 				"mWorldDimensions": {
-					"$ref": "#/$defs/xy"
+					"$ref": "common.schema.json#/$defs/xy"
 				},
 				"mPoleOffset": {
-					"$ref": "#/$defs/xyz"
+					"$ref": "common.schema.json#/$defs/xyz"
 				},
 				"mPoleScale": {
-					"$ref": "#/$defs/xy"
+					"$ref": "common.schema.json#/$defs/xy"
 				},
 				"mSignToSignOffset": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
