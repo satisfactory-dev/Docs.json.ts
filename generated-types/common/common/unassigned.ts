@@ -1,6 +1,8 @@
 import {UnrealEngineString, StringStartsWith} from '../utils/validators';
 
 import {
+	boolean__type,
+	boolean_extended__type,
 	decimal_string__type,
 	decimal_string__signed__type,
 	integer_string__type,
@@ -54,6 +56,11 @@ export type faux_1__type = class__type & {
 		| pitch_yaw_roll__type
 		| xyz__integer__type
 		| xyz_array__type;
+};
+
+export type faux_2__type = class__type & {
+	faux_bool?: boolean__type;
+	faux_bool_extended?: boolean_extended__type;
 };
 
 export type NativeClass__type = {

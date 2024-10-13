@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (23 of 23)
+100.00% Complete (24 of 24)
 
 ## Basic Types
 
@@ -15,6 +15,7 @@
 -   [x] decimal-string--signed
 -   [x] empty-object
 -   [x] faux-1
+-   [x] faux-2
 -   [x] integer-string
 -   [x] integer-string--signed
 -   [x] NativeClass

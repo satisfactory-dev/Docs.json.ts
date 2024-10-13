@@ -325,6 +325,20 @@
 					]
 				}
 			}
+		},
+		"faux-2": {
+			"type": "object",
+			"$ref": "#/$defs/class",
+			"required": ["faux"],
+			"unevaluatedProperties": false,
+			"properties": {
+				"faux_bool": {
+					"$ref": "#/$defs/boolean"
+				},
+				"faux_bool_extended": {
+					"$ref": "#/$defs/boolean-extended"
+				}
+			}
 		}
 	},
 	"items": false,
@@ -341,9 +355,18 @@
 					"type": "array",
 					"minItems": 1,
 					"items": {
+						"oneOf": [
+							{
 						"type": "object",
 						"$ref": "#/$defs/faux-1",
 						"unevaluatedProperties": false
+							},
+							{
+								"type": "object",
+								"$ref": "#/$defs/faux-2",
+								"unevaluatedProperties": false
+							}
+						]
 					}
 				}
 			}
