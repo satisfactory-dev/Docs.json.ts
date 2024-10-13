@@ -357,9 +357,9 @@
 					"items": {
 						"oneOf": [
 							{
-						"type": "object",
-						"$ref": "#/$defs/faux-1",
-						"unevaluatedProperties": false
+								"type": "object",
+								"$ref": "#/$defs/faux-1",
+								"unevaluatedProperties": false
 							},
 							{
 								"type": "object",
