@@ -9,10 +9,8 @@ import {
 	quaternion__type,
 	SpecifiedColor__type,
 	xy__type,
-	empty_object__type,
 	Texture2D__type,
 	mEventType__optional_csv__type,
-	None__type,
 } from '../../common/unassigned';
 
 import {boolean__type} from '../../common/scalar';
@@ -25,6 +23,8 @@ import {
 
 import {
 	UnrealEngineString__array__type,
+	empty_object__type,
+	None__type,
 	class__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned';

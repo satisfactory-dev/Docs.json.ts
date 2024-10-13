@@ -2,14 +2,17 @@ import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
 
 import {boolean__type} from '../../common/scalar';
 
-import {empty_object__type, ItemClass__type} from '../../common/unassigned';
+import {ItemClass__type} from '../../common/unassigned';
 
 import {
 	integer_string__type,
 	decimal_string__type,
 } from '../../../common/common/scalar';
 
-import {class__no_description_or_display_name__type} from '../../../common/common/unassigned';
+import {
+	empty_object__type,
+	class__no_description_or_display_name__type,
+} from '../../../common/common/unassigned';
 
 export type FGEquipment__base__type =
 	class__no_description_or_display_name__type & {

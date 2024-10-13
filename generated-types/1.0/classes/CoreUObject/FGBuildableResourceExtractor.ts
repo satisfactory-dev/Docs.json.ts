@@ -3,14 +3,16 @@ import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
 import {
 	FGBuildableResourceExtractor__miner_mk1__type,
 	FGBuildableResourceExtractor__miner_mk3__type,
-	None__type,
 } from '../../common/unassigned';
 
 import {boolean__type} from '../../common/scalar';
 
 import {FGBuildable__extractor_base__type} from './FGBuildable';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {
+	None__type,
+	NativeClass__type,
+} from '../../../common/common/unassigned';
 
 export type FGBuildableResourceExtractor__miner__type =
 	FGBuildableResourceExtractor__miner__base__type;

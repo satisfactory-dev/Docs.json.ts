@@ -1,11 +1,6 @@
 import {boolean__type} from '../../common/scalar';
 
-import {
-	mClearanceData__type,
-	empty_object__type,
-	xyz__type,
-	None__type,
-} from '../../common/unassigned';
+import {mClearanceData__type, xyz__type} from '../../common/unassigned';
 
 import {StringPassedRegExp} from '../../utils/validators';
 
@@ -17,7 +12,9 @@ import {
 } from '../../../common/common/scalar';
 
 import {
+	empty_object__type,
 	UnrealEngineString__array__type,
+	None__type,
 	class__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned';

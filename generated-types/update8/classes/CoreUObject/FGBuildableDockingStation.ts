@@ -1,15 +1,18 @@
-import {empty_object__type, xy__type} from '../../common/unassigned';
+import {xy__type} from '../../common/unassigned';
 
 import {boolean__type} from '../../common/scalar';
 
 import {FGBuildable__docking_station_base__type} from './FGBuildable';
 
 import {
+	empty_object__type,
+	NativeClass__type,
+} from '../../../common/common/unassigned';
+
+import {
 	decimal_string__type,
 	integer_string__type,
 } from '../../../common/common/scalar';
-
-import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableDockingStation__type =
 	FGBuildable__docking_station_base__type & {

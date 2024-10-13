@@ -1,8 +1,9 @@
-import {empty_object__type} from '../../common/unassigned';
-
 import {FGBuildable__consumes_power_base__type} from './FGBuildable';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {
+	empty_object__type,
+	NativeClass__type,
+} from '../../../common/common/unassigned';
 
 export type FGBuildableSpaceElevator__type =
 	FGBuildable__consumes_power_base__type & {

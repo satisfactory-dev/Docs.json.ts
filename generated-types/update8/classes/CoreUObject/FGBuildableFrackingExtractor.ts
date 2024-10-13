@@ -1,8 +1,7 @@
-import {None__type} from '../../common/unassigned';
-
 import {FGBuildable__extractor_base__type} from './FGBuildable';
 
 import {
+	None__type,
 	UnrealEngineString__array__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned';

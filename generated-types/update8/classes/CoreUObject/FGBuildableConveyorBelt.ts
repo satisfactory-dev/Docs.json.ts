@@ -1,5 +1,3 @@
-import {empty_object__type} from '../../common/unassigned';
-
 import {FGBuildable__base__type} from './FGBuildable';
 
 import {
@@ -7,7 +5,10 @@ import {
 	integer_string__type,
 } from '../../../common/common/scalar';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {
+	empty_object__type,
+	NativeClass__type,
+} from '../../../common/common/unassigned';
 
 export type FGBuildableConveyorBelt__type =
 	FGBuildableConveyorBelt__base__type & {

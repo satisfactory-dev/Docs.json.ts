@@ -1,10 +1,6 @@
 import {boolean__type} from '../../common/scalar';
 
-import {
-	empty_object__type,
-	xyz__type,
-	pitch_yaw_roll__type,
-} from '../../common/unassigned';
+import {xyz__type, pitch_yaw_roll__type} from '../../common/unassigned';
 
 import {FGBuildable__consumes_power_base__type} from './FGBuildable';
 
@@ -15,7 +11,10 @@ import {
 	decimal_string__signed__type,
 } from '../../../common/common/scalar';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {
+	empty_object__type,
+	NativeClass__type,
+} from '../../../common/common/unassigned';
 
 export type FGBuildableJumppad__type =
 	FGBuildable__consumes_power_base__type & {

@@ -1,14 +1,12 @@
-import {
-	empty_object__type,
-	mLightControlData__type,
-} from '../../common/unassigned';
-
 import {boolean__type} from '../../common/scalar';
+
+import {mLightControlData__type} from '../../common/unassigned';
 
 import {FGBuildable__base__type} from './FGBuildable';
 
 import {
 	color_decimal__type,
+	empty_object__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned';
 

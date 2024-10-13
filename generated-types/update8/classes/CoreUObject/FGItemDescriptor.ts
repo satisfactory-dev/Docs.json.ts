@@ -1,10 +1,6 @@
 import {boolean__type} from '../../common/scalar';
 
-import {
-	Texture2D__type,
-	mForm__type,
-	None__type,
-} from '../../common/unassigned';
+import {Texture2D__type, mForm__type} from '../../common/unassigned';
 
 import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
 
@@ -16,6 +12,7 @@ import {
 import {
 	color__type,
 	UnrealEngineString__array__type,
+	None__type,
 	class__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned';

@@ -120,6 +120,14 @@
 				}
 			}
 		},
+		"empty-object": {
+			"type": "string",
+			"const": "()"
+		},
+		"None": {
+			"type": "string",
+			"const": "None"
+		},
 		"faux-1": {
 			"type": "object",
 			"$ref": "#/$defs/class",
@@ -148,6 +156,12 @@
 						},
 						{
 							"$ref": "#/$defs/color-decimal"
+						},
+						{
+							"$ref": "#/$defs/empty-object"
+						},
+						{
+							"$ref": "#/$defs/None"
 						}
 					]
 				}

@@ -12,7 +12,11 @@ import {
 	decimal_string__signed__type,
 } from '../../common/common/scalar';
 
-import {color_decimal__type} from '../../common/common/unassigned';
+import {
+	color_decimal__type,
+	None__type,
+	empty_object__type,
+} from '../../common/common/unassigned';
 
 export type CameraAnim__type = UnrealEngineString<
 	'/Script/TemplateSequence.CameraAnimationSequence',
@@ -31,8 +35,6 @@ export type EditorCurveData__type = {
 		| '/Game/FactoryGame/Resource/Parts/CartridgeStandard/LinearDamageFalloff.LinearDamageFalloff'
 	>;
 };
-
-export type empty_object__type = '()';
 
 export type FGBuildableBlueprintDesigner__mk1__type =
 	FGBuildableBlueprintDesigner__base__type & {
@@ -342,8 +344,6 @@ export type Montage_3P__type = UnrealEngineString<
 export type mPlatformDockingStatus__type = 'ETPDS_None';
 
 export type mSnappedPassthroughs__type = '';
-
-export type None__type = 'None';
 
 export type pitch_yaw_roll__type = {
 	Pitch: decimal_string__signed__type;

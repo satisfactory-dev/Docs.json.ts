@@ -6,7 +6,6 @@ import {
 	FilterMontageTag__type,
 	FilterMontageTag__charged__type,
 	CameraAnim__type,
-	empty_object__type,
 } from '../../common/unassigned';
 
 import {boolean__type} from '../../common/scalar';
@@ -18,7 +17,10 @@ import {
 	integer_string__type,
 } from '../../../common/common/scalar';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {
+	empty_object__type,
+	NativeClass__type,
+} from '../../../common/common/unassigned';
 
 export type FGChargedWeapon__type = FGWeapon__base__type & {
 	AmmoTypeToAkEvent: [

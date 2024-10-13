@@ -1,9 +1,6 @@
-import {
-	empty_object__type,
-	mDockingRuleSet__type,
-} from '../../common/unassigned';
-
 import {boolean__type} from '../../common/scalar';
+
+import {mDockingRuleSet__type} from '../../common/unassigned';
 
 import {FGBuildableTrainPlatform__base__type} from './FGBuildableTrainPlatform';
 
@@ -12,7 +9,10 @@ import {
 	decimal_string__type,
 } from '../../../common/common/scalar';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {
+	empty_object__type,
+	NativeClass__type,
+} from '../../../common/common/unassigned';
 
 export type FGBuildableTrainPlatformCargo__type =
 	FGBuildableTrainPlatformCargo__FGBuildableRailroadStation__type & {

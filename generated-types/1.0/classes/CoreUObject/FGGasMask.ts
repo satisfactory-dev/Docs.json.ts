@@ -3,7 +3,6 @@ import {
 	Montage_3P__type,
 	CameraAnim__type,
 	mDamageTypes__type,
-	empty_object__type,
 } from '../../common/unassigned';
 
 import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
@@ -14,7 +13,10 @@ import {FGEquipment__base__type} from './FGEquipment';
 
 import {decimal_string__type} from '../../../common/common/scalar';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {
+	empty_object__type,
+	NativeClass__type,
+} from '../../../common/common/unassigned';
 
 export type FGGasMask__type = FGEquipment__base__type & {
 	mDamageTypesToProtectAgainst: mDamageTypes__type;

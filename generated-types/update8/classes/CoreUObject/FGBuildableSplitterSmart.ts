@@ -1,10 +1,11 @@
-import {empty_object__type} from '../../common/unassigned';
-
 import {FGBuildable__splitter__base__type} from './FGBuildable';
 
-import {integer_string__type} from '../../../common/common/scalar';
+import {
+	empty_object__type,
+	NativeClass__type,
+} from '../../../common/common/unassigned';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {integer_string__type} from '../../../common/common/scalar';
 
 export type FGBuildableSplitterSmart__type =
 	FGBuildable__splitter__base__type & {

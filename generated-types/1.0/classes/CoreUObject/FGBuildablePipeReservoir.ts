@@ -1,10 +1,11 @@
-import {empty_object__type} from '../../common/unassigned';
-
 import {FGBuildable__pipeline_accessory__base__type} from './FGBuildable';
 
 import {decimal_string__type} from '../../../common/common/scalar';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {
+	empty_object__type,
+	NativeClass__type,
+} from '../../../common/common/unassigned';
 
 export type FGBuildablePipeReservoir__type =
 	FGBuildable__pipeline_accessory__base__type & {

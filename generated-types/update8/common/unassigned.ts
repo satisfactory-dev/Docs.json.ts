@@ -10,7 +10,11 @@ import {
 	decimal_string__signed__type,
 } from '../../common/common/scalar';
 
-import {color_decimal__type} from '../../common/common/unassigned';
+import {
+	color_decimal__type,
+	None__type,
+	empty_object__type,
+} from '../../common/common/unassigned';
 
 export type EditorCurveData__type = {
 	EditorCurveData: {
@@ -24,8 +28,6 @@ export type EditorCurveData__type = {
 		| '/Game/FactoryGame/Resource/Parts/CartridgeStandard/LinearDamageFalloff.LinearDamageFalloff'
 	>;
 };
-
-export type empty_object__type = '()';
 
 export type FGBuildableResourceExtractor__miner_mk3__type =
 	FGBuildableResourceExtractor__miner__base__type & {
@@ -254,13 +256,12 @@ export type mLightControlData__type = {
 	Intensity: decimal_string__type;
 };
 
-export type mOutputInventoryHandlerData__type = empty_object__type;
+export type mOutputInventoryHandlerData__type =
+	empty_object__type;
 
 export type mPlatformDockingStatus__type = 'ETPDS_None';
 
 export type mSnappedPassthroughs__type = '';
-
-export type None__type = 'None';
 
 export type pitch_yaw_roll__type = {
 	Pitch: decimal_string__signed__type;

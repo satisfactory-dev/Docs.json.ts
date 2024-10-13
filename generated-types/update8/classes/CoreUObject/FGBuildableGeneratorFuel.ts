@@ -1,15 +1,16 @@
-import {empty_object__type} from '../../common/unassigned';
-
 import {boolean__type} from '../../common/scalar';
 
 import {FGBuildableGenerator__base__type} from './FGBuildableGenerator';
 
 import {
+	empty_object__type,
+	NativeClass__type,
+} from '../../../common/common/unassigned';
+
+import {
 	integer_string__type,
 	decimal_string__type,
 } from '../../../common/common/scalar';
-
-import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableGeneratorFuel__base__type =
 	FGBuildableGenerator__base__type & {

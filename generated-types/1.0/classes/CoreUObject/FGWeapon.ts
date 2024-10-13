@@ -2,7 +2,6 @@ import {
 	Montage_1P__type,
 	Montage_3P__type,
 	CameraAnim__type,
-	empty_object__type,
 	weaponState__type,
 } from '../../common/unassigned';
 
@@ -18,6 +17,7 @@ import {
 } from '../../../common/common/scalar';
 
 import {
+	empty_object__type,
 	UnrealEngineString__array__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned';

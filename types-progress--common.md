@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (12 of 12)
+100.00% Complete (14 of 14)
 
 ## Basic Types
 
@@ -11,10 +11,12 @@
 -   [x] color-decimal
 -   [x] decimal-string
 -   [x] decimal-string--signed
+-   [x] empty-object
 -   [x] faux-1
 -   [x] integer-string
 -   [x] integer-string--signed
 -   [x] NativeClass
+-   [x] None
 
 ## UnrealEngineString
 

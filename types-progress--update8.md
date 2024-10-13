@@ -14,7 +14,7 @@
 -   [x] decimal-string (common type)
 -   [x] decimal-string--signed (common type)
 -   [x] EditorCurveData
--   [x] empty-object
+-   [x] empty-object (common type)
 -   [x] FGBuildingDescriptor
 -   [x] FGChainsaw
 -   [x] FGChargedWeapon
@@ -47,7 +47,7 @@
 -   [x] mPlatformDockingStatus
 -   [x] mSnappedPassthroughs
 -   [x] NativeClass (common type)
--   [x] None
+-   [x] None (common type)
 -   [x] SpecifiedColor
 -   [x] Texture2D
 -   [x] transformation

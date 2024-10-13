@@ -1,8 +1,4 @@
-import {
-	xyz_array__type,
-	xyz__type,
-	empty_object__type,
-} from '../../common/unassigned';
+import {xyz_array__type, xyz__type} from '../../common/unassigned';
 
 import {boolean__type} from '../../common/scalar';
 
@@ -14,6 +10,7 @@ import {
 } from '../../../common/common/scalar';
 
 import {
+	empty_object__type,
 	color_decimal__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned';

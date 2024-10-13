@@ -3,14 +3,6 @@
 	"$id": "1.0.schema.json",
 	"type": "array",
 	"$defs": {
-		"empty-object": {
-			"type": "string",
-			"const": "()"
-		},
-		"None": {
-			"type": "string",
-			"const": "None"
-		},
 		"xyz": {
 			"type": "string",
 			"minLength": 1,
@@ -156,7 +148,7 @@
 					"string_starts_with": "Texture2D /Game/FactoryGame/"
 				},
 				{
-					"$ref": "#/$defs/None"
+					"$ref": "common.schema.json#/$defs/None"
 				},
 				{
 					"type": "string",
@@ -393,7 +385,7 @@
 				"mClassToScanFor": {
 					"oneOf": [
 						{
-							"$ref": "#/$defs/None"
+							"$ref": "common.schema.json#/$defs/None"
 						},
 						{
 							"type": "string",
@@ -892,13 +884,13 @@
 					"$ref": "#/$defs/boolean"
 				},
 				"mOnHasPowerChanged": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mOnHasProductionChanged": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mOnHasStandbyChanged": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mMinimumProducingTime": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -967,13 +959,13 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mOnPendingPotentialChanged": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mOnPendingProductionBoostChanged": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mOnCurrentProductivityChanged": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mCanChangeProductionBoost": {
 					"$ref": "#/$defs/boolean"
@@ -1293,10 +1285,10 @@
 					"$ref": "#/$defs/xyz--integer"
 				},
 				"OnRecordDataChanged": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"OnBlueprintCostChanged": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mCurrentCost": {
 					"type": "string",
@@ -1759,7 +1751,7 @@
 				},
 				"mStatisticGameplayTag": {
 					"oneOf": [
-						{"$ref": "#/$defs/empty-object"},
+						{"$ref": "common.schema.json#/$defs/empty-object"},
 						{
 							"type": "string",
 							"minLength": 1,
@@ -1820,7 +1812,7 @@
 				},
 				"mSchematicUnlockTag": {
 					"oneOf": [
-						{"$ref": "#/$defs/empty-object"},
+						{"$ref": "common.schema.json#/$defs/empty-object"},
 						{
 							"type": "string",
 							"minLength": 1,
@@ -1850,7 +1842,7 @@
 							"typed_string": {
 								"minItems": 1,
 								"items": {
-									"$ref": "#/$defs/None"
+									"$ref": "common.schema.json#/$defs/None"
 								}
 							}
 						},
@@ -1915,7 +1907,7 @@
 											}
 										},
 										{
-											"$ref": "#/$defs/None"
+											"$ref": "common.schema.json#/$defs/None"
 										}
 									]
 								}
@@ -1997,7 +1989,7 @@
 								"$ref": "#/$defs/xy"
 							},
 							"Margin": {
-								"$ref": "#/$defs/empty-object"
+								"$ref": "common.schema.json#/$defs/empty-object"
 							},
 							"TintColor": {
 								"$ref": "#/$defs/SpecifiedColor"
@@ -2382,7 +2374,7 @@
 					"const": ""
 				},
 				"mVehicles": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mSignalBlockID": {
 					"$ref": "common.schema.json#/$defs/integer-string"
@@ -2528,7 +2520,7 @@
 			],
 			"properties": {
 				"mItemMeshMap": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mSpeed": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -2638,7 +2630,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mConnections": {
-					"$ref": "#/$defs/None"
+					"$ref": "common.schema.json#/$defs/None"
 				},
 				"mConnectionLocations": {
 					"$ref": "#/$defs/xyz"
@@ -2899,7 +2891,7 @@
 						}
 					}
 				},
-				"mCurrentAnimData": {"$ref": "#/$defs/empty-object"},
+				"mCurrentAnimData": {"$ref": "common.schema.json#/$defs/empty-object"},
 				"mEquipmentSlot": {
 					"type": "string",
 					"enum": [
@@ -2924,7 +2916,7 @@
 				},
 				"mComponentNameToFirstPersonMaterials": {
 					"oneOf": [
-						{"$ref": "#/$defs/empty-object"},
+						{"$ref": "common.schema.json#/$defs/empty-object"},
 						{
 							"type": "string",
 							"minLength": 1,
@@ -3024,7 +3016,7 @@
 					"const": ""
 				},
 				"mSwappedOutThirdPersonMaterials": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mHasStingerMontage": {
 					"$ref": "#/$defs/boolean"
@@ -3788,16 +3780,16 @@
 					"const": ""
 				},
 				"ConnectionLocationUpdatedDelegate": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"ConnectionStatusUpdatedDelegate": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"HoverModeChangedDelegate": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"RangeWarningToggleDelegate": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mHoverSpeed": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -3905,7 +3897,7 @@
 					}
 				},
 				"mStingerMontage": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mUnEquipMontage": {
 					"type": "string",
@@ -3947,13 +3939,13 @@
 					"const": ""
 				},
 				"mOnFuelAmountChanged": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mOnBurnPercentChanged": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mOnFuelTypeChanged": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mDefaultAirControl": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -4038,7 +4030,7 @@
 					}
 				},
 				"mStingerMontage": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mUnEquipMontage": {
 					"type": "string",
@@ -4185,7 +4177,7 @@
 					}
 				},
 				"mStingerMontage": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mUnEquipMontage": {
 					"type": "string",
@@ -4301,15 +4293,15 @@
 					}
 				},
 				"mStingerMontage": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mUnEquipMontage": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				}
 			}
 		},
 		"mChainsawState": {
-			"$ref": "#/$defs/None"
+			"$ref": "common.schema.json#/$defs/None"
 		},
 		"FGChainsaw--Montage_Equipment": {
 			"type": "string",
@@ -4462,7 +4454,7 @@
 					}
 				},
 				"mShowAOESelectorUITimer": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"EngagePlayingID": {
 					"$ref": "common.schema.json#/$defs/integer-string"
@@ -4498,13 +4490,13 @@
 					"$ref": "#/$defs/mChainsawState"
 				},
 				"mEquipMontage": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mStingerMontage": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mUnEquipMontage": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				}
 			}
 		},
@@ -4677,7 +4669,7 @@
 					}
 				},
 				"mStingerMontage": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mUnEquipMontage": {
 					"type": "string",
@@ -4765,7 +4757,7 @@
 					}
 				},
 				"mStingerMontage": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mUnEquipMontage": {
 					"$ref": "#/$defs/FGJumpingStilts--Montage"
@@ -4963,7 +4955,7 @@
 					}
 				},
 				"mStingerMontage": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mUnEquipMontage": {
 					"type": "string",
@@ -5215,13 +5207,13 @@
 					"$ref": "#/$defs/boolean"
 				},
 				"mEquipMontage": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mStingerMontage": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mUnEquipMontage": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				}
 			}
 		},
@@ -5231,10 +5223,10 @@
 			"required": ["mEquipMontage"],
 			"properties": {
 				"mStingerMontage": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mUnEquipMontage": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				}
 			}
 		},
@@ -6134,10 +6126,10 @@
 					"const": ""
 				},
 				"mFluidBox": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mIndicatorData": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mMaxIndicatorTurnAngle": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -6193,7 +6185,7 @@
 					"$ref": "#/$defs/boolean"
 				},
 				"mUpdateSoundsHandle": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mUpdateSoundsTimerInterval": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -6209,7 +6201,7 @@
 			"required": ["mFluidBox", "mPipeConnections"],
 			"properties": {
 				"mFluidBox": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mPipeConnections": {
 					"type": "string",
@@ -6234,7 +6226,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mFluidBox": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mPipeConnections": {
 					"type": "string",
@@ -6296,10 +6288,10 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mIndicatorData": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mPistonAudioTimer": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mUpdateAudioFlowTime": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -6349,7 +6341,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mIndicatorData": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				}
 			}
 		},
@@ -6397,7 +6389,7 @@
 				"mExtractorTypeName": {
 					"oneOf": [
 						{
-							"$ref": "#/$defs/None"
+							"$ref": "common.schema.json#/$defs/None"
 						},
 						{
 							"type": "string",
@@ -6495,7 +6487,7 @@
 					}
 				},
 				"mExtractorTypeName": {
-					"$ref": "#/$defs/None"
+					"$ref": "common.schema.json#/$defs/None"
 				}
 			}
 		},
@@ -6588,7 +6580,7 @@
 					}
 				},
 				"mExtractorTypeName": {
-					"$ref": "#/$defs/None"
+					"$ref": "common.schema.json#/$defs/None"
 				}
 			}
 		},
@@ -6707,7 +6699,7 @@
 					"const": "NewEnumerator0"
 				},
 				"mToggleMiningStateHandle_0": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mMinimumDrillTime_0": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -6739,7 +6731,7 @@
 					"$ref": "#/$defs/boolean"
 				},
 				"mCurrentRecipeChanged": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mManufacturingSpeed": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -6960,7 +6952,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mLightningTimer": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mGameTimeAtProducing": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -7245,7 +7237,7 @@
 					}
 				},
 				"mExtractorTypeName": {
-					"$ref": "#/$defs/None"
+					"$ref": "common.schema.json#/$defs/None"
 				},
 				"mAllowedResources": {
 					"$ref": "common.schema.json#/$defs/UnrealEngineString--array"
@@ -7269,13 +7261,13 @@
 			],
 			"properties": {
 				"mExtractorTypeName": {
-					"$ref": "#/$defs/None"
+					"$ref": "common.schema.json#/$defs/None"
 				},
 				"CurrentPotentialChangedDelegate": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"ConnectedExtractorCountChangedDelegate": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mActivationStartupTime": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -7326,10 +7318,10 @@
 					"$ref": "#/$defs/mAspect"
 				},
 				"mOnAspectChangedDelegate": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mOnBlockValidationChangedDelegate": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mDrawDebugVisualState": {
 					"$ref": "#/$defs/boolean"
@@ -7407,10 +7399,10 @@
 					"$ref": "#/$defs/mPlatformDockingStatus"
 				},
 				"mDockingSequenceTimerHandle": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mIdleUpdateTimerHandle": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mDockWasCancelled": {
 					"$ref": "#/$defs/boolean"
@@ -7486,7 +7478,7 @@
 					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mOnTransferRateUpdated": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mFreightCargoType": {
 					"type": "string",
@@ -7564,7 +7556,7 @@
 					"$ref": "#/$defs/boolean"
 				},
 				"mSwapCargoVisibilityTimerHandle": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mTimeSinceLastLoadTransferUpdate": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -7657,7 +7649,7 @@
 			],
 			"properties": {
 				"mWindDirectionFromTurbine": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mIsWindSoundPlaying?": {
 					"$ref": "#/$defs/boolean"
@@ -7666,7 +7658,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"AudioCounterTimer": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"IsEnginePlaying": {
 					"$ref": "#/$defs/boolean"
@@ -7792,13 +7784,13 @@
 			],
 			"properties": {
 				"VehicleFuelConsumptionRateChangedDelegate": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"ItemTransferRateChangedDelegate": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"MaximumStackTransferRateChangedDelegate": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mDockPosition": {
 					"$ref": "#/$defs/xy"
@@ -7828,7 +7820,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mDockingVehicleStatistics": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				}
 			}
 		},
@@ -7897,7 +7889,7 @@
 					"const": ""
 				},
 				"mTrajectoryData": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mTrajectoryMeshScale": {
 					"$ref": "#/$defs/xyz"
@@ -7941,7 +7933,7 @@
 					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mKillTimer": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mTrajectoryGravityMultiplier": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -8032,7 +8024,7 @@
 			],
 			"properties": {
 				"OnSortRulesChangedDelegate": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mMaxNumSortRules": {
 					"$ref": "common.schema.json#/$defs/integer-string"
@@ -8044,13 +8036,13 @@
 						"required": ["ItemState"],
 						"properties": {
 							"ItemState": {
-								"$ref": "#/$defs/empty-object"
+								"$ref": "common.schema.json#/$defs/empty-object"
 							}
 						}
 					}
 				},
 				"mItemToLastOutputMap": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mLastOutputIndex": {
 					"$ref": "common.schema.json#/$defs/integer-string"
@@ -8095,7 +8087,7 @@
 				"mDisableSnapOn": {
 					"oneOf": [
 						{
-							"$ref": "#/$defs/empty-object"
+							"$ref": "common.schema.json#/$defs/empty-object"
 						},
 						{
 							"$ref": "#/$defs/mDisableSnapOn"
@@ -8105,7 +8097,7 @@
 				"mDisableAttachmentSnapOn": {
 					"oneOf": [
 						{
-							"$ref": "#/$defs/empty-object"
+							"$ref": "common.schema.json#/$defs/empty-object"
 						},
 						{
 							"$ref": "#/$defs/mDisableSnapOn"
@@ -8249,7 +8241,7 @@
 			],
 			"properties": {
 				"AmmoFiredDelegate": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mFiringTransform": {
 					"$ref": "#/$defs/transformation"
@@ -8646,10 +8638,10 @@
 			],
 			"properties": {
 				"mShowCycleAmmoRadialMenuTimer": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mOnWeaponStateChanged": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mWeaponState": {
 					"$ref": "#/$defs/weaponState"
@@ -8661,7 +8653,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mAutoReloadTimerHandle": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mCurrentAmmoCount": {
 					"$ref": "common.schema.json#/$defs/integer-string"
@@ -8703,10 +8695,10 @@
 					"$ref": "#/$defs/boolean"
 				},
 				"mOnAmmoCyclingPressed": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mOnAmmoCyclingReleased": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mBlockSprintWhenFiring": {
 					"$ref": "#/$defs/boolean"
@@ -9083,7 +9075,7 @@
 					"const": "Equip_Rifle_C"
 				},
 				"Fire": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mHasReloadedOnce": {
 					"$ref": "#/$defs/boolean"
@@ -9233,7 +9225,7 @@
 					}
 				},
 				"mFailedToFireMontageList": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mEquipMontage": {
 					"type": "string",
@@ -9380,7 +9372,7 @@
 					}
 				},
 				"mUnEquipMontage": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				}
 			}
 		},
@@ -9856,7 +9848,7 @@
 					}
 				},
 				"mUnEquipMontage": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mDispensedProjectiles": {
 					"type": "string",
@@ -9889,7 +9881,7 @@
 			],
 			"properties": {
 				"mOnCircuitsChanged": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mIsBridgeConnected": {
 					"$ref": "#/$defs/boolean"
@@ -9926,13 +9918,13 @@
 					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mOnIsSwitchOnChanged": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mOnIsConnectedChanged": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mOnBuildingTagChanged": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mIsSwitchOn": {
 					"$ref": "#/$defs/boolean"
@@ -9965,7 +9957,7 @@
 			],
 			"properties": {
 				"mOnPriorityChanged": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mPriority": {
 					"$ref": "common.schema.json#/$defs/integer-string"
@@ -10126,7 +10118,7 @@
 					}
 				},
 				"mStingerMontage": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mUnEquipMontage": {
 					"type": "string",
@@ -10224,7 +10216,7 @@
 			],
 			"properties": {
 				"OnLightControlPanelStateChanged": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mLightControlData": {
 					"$ref": "#/$defs/mLightControlData"
@@ -10233,7 +10225,7 @@
 					"$ref": "#/$defs/boolean"
 				},
 				"mOnControlledBuildablesChanged": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mControlledBuildables": {
 					"type": "string",
@@ -10254,7 +10246,7 @@
 			],
 			"properties": {
 				"OnBuildableLightSourceStateChanged": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mIsEnabled": {
 					"$ref": "#/$defs/boolean"
@@ -10358,13 +10350,13 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mTextElementToDataMap": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mTextElementToLocDataMap": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mIconElementToDataMap": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mSignDrawSize": {
 					"$ref": "#/$defs/xy--integer"
@@ -10374,7 +10366,7 @@
 					"const": "None"
 				},
 				"mActivePrefabLayout": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mPrefabTextElementSaveData": {
 					"type": "string",
@@ -10463,7 +10455,7 @@
 			],
 			"properties": {
 				"mOnSpaceElevatorStateUpdated": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mSpaceElevatorState": {
 					"$ref": "#/$defs/FGBuildableSpaceElevator--mSpaceElevatorState"
@@ -10672,13 +10664,13 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mOnLinkedPortalChanged": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mOnPortalTraversableChanged": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mOnHeatUpStateChanged": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mMaxPortalTravelTime": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -10703,7 +10695,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mCachedFactoryTickData": {
-					"$ref": "#/$defs/empty-object"
+					"$ref": "common.schema.json#/$defs/empty-object"
 				}
 			}
 		},

@@ -1,9 +1,4 @@
-import {
-	empty_object__type,
-	xy__integer__type,
-	xy__type,
-	xyz__type,
-} from '../../common/unassigned';
+import {xy__integer__type, xy__type, xyz__type} from '../../common/unassigned';
 
 import {FGBuildable__base__type} from './FGBuildable';
 
@@ -13,6 +8,7 @@ import {
 } from '../../../common/common/scalar';
 
 import {
+	empty_object__type,
 	color_decimal__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned';

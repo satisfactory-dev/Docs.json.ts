@@ -1,18 +1,19 @@
-import {empty_object__type, weaponState__type} from '../../common/unassigned';
+import {weaponState__type} from '../../common/unassigned';
 
 import {boolean__type} from '../../common/scalar';
 
 import {FGEquipment__base__type} from './FGEquipment';
 
 import {
-	decimal_string__type,
-	integer_string__type,
-} from '../../../common/common/scalar';
-
-import {
+	empty_object__type,
 	UnrealEngineString__array__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned';
+
+import {
+	decimal_string__type,
+	integer_string__type,
+} from '../../../common/common/scalar';
 
 export type FGWeapon__base__type = FGEquipment__base__type & {
 	mShowCycleAmmoRadialMenuTimer: empty_object__type;

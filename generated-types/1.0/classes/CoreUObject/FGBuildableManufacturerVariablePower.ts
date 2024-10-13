@@ -1,4 +1,4 @@
-import {empty_object__type, xyz_array__type} from '../../common/unassigned';
+import {xyz_array__type} from '../../common/unassigned';
 
 import {boolean__type} from '../../common/scalar';
 
@@ -6,7 +6,10 @@ import {FGBuildableManufacturer__base__type} from './FGBuildableManufacturer';
 
 import {decimal_string__type} from '../../../common/common/scalar';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {
+	empty_object__type,
+	NativeClass__type,
+} from '../../../common/common/unassigned';
 
 export type FGBuildableManufacturerVariablePower__base__type =
 	FGBuildableManufacturer__base__type & {

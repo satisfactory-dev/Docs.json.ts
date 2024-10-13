@@ -2,17 +2,16 @@ import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
 
 import {boolean__type} from '../../common/scalar';
 
-import {
-	FilterMontageTag__type,
-	empty_object__type,
-	xyz__type,
-} from '../../common/unassigned';
+import {FilterMontageTag__type, xyz__type} from '../../common/unassigned';
 
 import {FGEquipment__base__type} from './FGEquipment';
 
 import {decimal_string__type} from '../../../common/common/scalar';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {
+	empty_object__type,
+	NativeClass__type,
+} from '../../../common/common/unassigned';
 
 export type FGHoverPack__type = FGEquipment__base__type & {
 	mCurrentPlayerVelocity_SFX: decimal_string__type;

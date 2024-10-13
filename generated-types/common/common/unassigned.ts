@@ -34,6 +34,8 @@ export type color_decimal__type = {
 	A: decimal_string__type;
 };
 
+export type empty_object__type = '()';
+
 export type faux_1__type = class__type & {
 	faux:
 		| UnrealEngineString__array__type
@@ -42,7 +44,9 @@ export type faux_1__type = class__type & {
 		| integer_string__type
 		| integer_string__signed__type
 		| color__type
-		| color_decimal__type;
+		| color_decimal__type
+		| empty_object__type
+		| None__type;
 };
 
 export type NativeClass__type = {
@@ -51,6 +55,8 @@ export type NativeClass__type = {
 		StringStartsWith<'/Script/FactoryGame.FG'>
 	>;
 };
+
+export type None__type = 'None';
 
 export type UnrealEngineString__array__type = [
 	UnrealEngineString,

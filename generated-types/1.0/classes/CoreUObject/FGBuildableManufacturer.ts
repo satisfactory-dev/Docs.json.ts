@@ -1,7 +1,5 @@
 import {boolean__type, boolean_extended__type} from '../../common/scalar';
 
-import {empty_object__type} from '../../common/unassigned';
-
 import {FGBuildable__consumes_power_base__type} from './FGBuildable';
 
 import {
@@ -10,6 +8,7 @@ import {
 } from '../../../common/common/scalar';
 
 import {
+	empty_object__type,
 	color_decimal__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned';

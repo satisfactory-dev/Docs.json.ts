@@ -5,7 +5,6 @@ import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
 import {
 	MaterialSlotName__type,
 	EditorCurveData__type,
-	empty_object__type,
 	transformation__type,
 	xyz__type,
 	mDamageTypes__type,
@@ -20,6 +19,7 @@ import {
 } from '../../../common/common/scalar';
 
 import {
+	empty_object__type,
 	color_decimal__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned';

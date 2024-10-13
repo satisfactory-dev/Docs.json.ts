@@ -2,8 +2,6 @@ import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
 
 import {boolean__type} from '../../common/scalar';
 
-import {empty_object__type} from '../../common/unassigned';
-
 import {FGBuildable__base__type} from './FGBuildable';
 
 import {
@@ -12,7 +10,10 @@ import {
 	decimal_string__type,
 } from '../../../common/common/scalar';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {
+	empty_object__type,
+	NativeClass__type,
+} from '../../../common/common/unassigned';
 
 export type FGBuildableRailroadTrack__type = FGBuildable__base__type & {
 	ClassName?: 'Build_RailroadTrack_C';
