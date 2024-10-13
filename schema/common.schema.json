@@ -233,6 +233,31 @@
 				}
 			}
 		},
+		"xyz-array": {
+			"type": "string",
+			"minLength": 1,
+			"typed_string": {
+				"minItems": 1,
+				"items": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["X", "Y", "Z"],
+						"properties": {
+							"X": {
+								"$ref": "common.schema.json#/$defs/decimal-string"
+							},
+							"Y": {
+								"$ref": "common.schema.json#/$defs/decimal-string--signed"
+							},
+							"Z": {
+								"$ref": "common.schema.json#/$defs/decimal-string--signed"
+							}
+						}
+					}
+				}
+			}
+		},
 		"faux-1": {
 			"type": "object",
 			"$ref": "#/$defs/class",
@@ -285,6 +310,9 @@
 						},
 						{
 							"$ref": "#/$defs/xyz--integer"
+						},
+						{
+							"$ref": "#/$defs/xyz-array"
 						}
 					]
 				}

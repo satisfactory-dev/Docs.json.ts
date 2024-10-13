@@ -1,5 +1,3 @@
-import {xyz_array__type} from '../../common/unassigned';
-
 import {boolean__type} from '../../common/scalar';
 
 import {FGBuildable__consumes_power_base__type} from './FGBuildable';
@@ -10,6 +8,7 @@ import {
 } from '../../../common/common/scalar';
 
 import {
+	xyz_array__type,
 	xyz__type,
 	empty_object__type,
 	color_decimal__type,

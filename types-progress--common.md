@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (20 of 20)
+100.00% Complete (21 of 21)
 
 ## Basic Types
 
@@ -17,6 +17,7 @@
 -   [x] integer-string--signed
 -   [x] NativeClass
 -   [x] None
+-   [x] xyz-array
 
 ## UnrealEngineString
 

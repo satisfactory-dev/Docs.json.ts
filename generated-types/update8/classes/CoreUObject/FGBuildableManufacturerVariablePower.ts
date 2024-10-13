@@ -1,11 +1,10 @@
-import {xyz_array__type} from '../../common/unassigned';
-
 import {FGBuildableManufacturer__base__type} from './FGBuildableManufacturer';
 
 import {decimal_string__type} from '../../../common/common/scalar';
 
 import {
 	empty_object__type,
+	xyz_array__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned';
 

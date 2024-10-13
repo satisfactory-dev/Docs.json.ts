@@ -7,7 +7,6 @@ import {FGBuildableResourceExtractor__miner__base__type} from '../classes/CoreUO
 import {
 	integer_string__type,
 	decimal_string__type,
-	decimal_string__signed__type,
 } from '../../common/common/scalar';
 
 import {
@@ -281,16 +280,3 @@ export type transformation__type = {
 };
 
 export type weaponState__type = 'EWS_Unequipped';
-
-export type xyz_array__type = [
-	{
-		X: decimal_string__type;
-		Y: decimal_string__signed__type;
-		Z: decimal_string__signed__type;
-	},
-	...{
-		X: decimal_string__type;
-		Y: decimal_string__signed__type;
-		Z: decimal_string__signed__type;
-	}[],
-];

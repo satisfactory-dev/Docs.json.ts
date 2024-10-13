@@ -54,7 +54,7 @@
 -   [x] Texture2D
 -   [x] transformation
 -   [x] weaponState
--   [x] xyz-array
+-   [x] xyz-array (common type)
 
 ## FGAmmoType
 

@@ -52,7 +52,8 @@ export type faux_1__type = class__type & {
 		| xy__integer__type
 		| quaternion__type
 		| pitch_yaw_roll__type
-		| xyz__integer__type;
+		| xyz__integer__type
+		| xyz_array__type;
 };
 
 export type NativeClass__type = {
@@ -103,3 +104,16 @@ export type xyz__integer__type = {
 	Y: integer_string__type;
 	Z: integer_string__type;
 };
+
+export type xyz_array__type = [
+	{
+		X: decimal_string__type;
+		Y: decimal_string__signed__type;
+		Z: decimal_string__signed__type;
+	},
+	...{
+		X: decimal_string__type;
+		Y: decimal_string__signed__type;
+		Z: decimal_string__signed__type;
+	}[],
+];
