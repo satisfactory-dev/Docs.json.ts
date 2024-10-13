@@ -1,10 +1,9 @@
-import {boolean__type} from '../../common/scalar';
-
 import {FGBuildable__base__type} from './FGBuildable';
 
 import {
 	integer_string__signed__type,
 	decimal_string__type,
+	boolean__type,
 } from '../../../common/common/scalar';
 
 import {

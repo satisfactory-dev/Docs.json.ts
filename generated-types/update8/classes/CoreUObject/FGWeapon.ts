@@ -1,7 +1,5 @@
 import {weaponState__type} from '../../common/unassigned';
 
-import {boolean__type} from '../../common/scalar';
-
 import {FGEquipment__base__type} from './FGEquipment';
 
 import {
@@ -11,6 +9,7 @@ import {
 } from '../../../common/common/unassigned';
 
 import {
+	boolean__type,
 	decimal_string__type,
 	integer_string__type,
 } from '../../../common/common/scalar';

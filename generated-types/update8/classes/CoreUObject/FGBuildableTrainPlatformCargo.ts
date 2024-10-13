@@ -1,11 +1,10 @@
-import {boolean__type} from '../../common/scalar';
-
 import {mDockingRuleSet__type} from '../../common/unassigned';
 
 import {FGBuildableTrainPlatform__base__type} from './FGBuildableTrainPlatform';
 
 import {
 	integer_string__type,
+	boolean__type,
 	decimal_string__type,
 } from '../../../common/common/scalar';
 

@@ -1,11 +1,10 @@
 import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
 
-import {boolean__type} from '../../common/scalar';
-
 import {ItemClass__type} from '../../common/unassigned';
 
 import {
 	integer_string__type,
+	boolean__type,
 	decimal_string__type,
 } from '../../../common/common/scalar';
 

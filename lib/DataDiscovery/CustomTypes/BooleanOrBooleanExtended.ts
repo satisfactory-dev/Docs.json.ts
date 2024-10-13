@@ -2,6 +2,7 @@ import Ajv, {
 	SchemaObject,
 } from 'ajv/dist/2020';
 import {
+	common_ref,
 	local_ref,
 } from '../../StringStartsWith';
 import {
@@ -22,15 +23,23 @@ const schema = {
 		$ref: {type: 'string', enum: [
 			local_ref('boolean'),
 			local_ref('boolean-extended'),
+			common_ref('boolean'),
+			common_ref('boolean-extended'),
 		]},
 	},
 };
 
 export type schema_type = SchemaObject & {
-	$ref: local_ref<
+	$ref: (
+		| local_ref<
 		| 'boolean'
 		| 'boolean-extended'
 	>
+		| common_ref<
+			| 'boolean'
+			| 'boolean-extended'
+		>
+	)
 };
 
 export class BooleanConverter extends ConverterMatchesSchema<

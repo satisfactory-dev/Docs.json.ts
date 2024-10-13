@@ -4,8 +4,8 @@
 
 ## Basic Types
 
--   [x] boolean
--   [x] boolean-extended
+-   [x] boolean (common type)
+-   [x] boolean-extended (common type)
 -   [x] CameraAnim
 -   [x] class (common type)
 -   [x] class--no-description (common type)

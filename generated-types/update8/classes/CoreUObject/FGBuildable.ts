@@ -1,9 +1,8 @@
-import {boolean__type} from '../../common/scalar';
-
 import {StringPassedRegExp} from '../../utils/validators';
 
 import {
 	decimal_string__signed__type,
+	boolean__type,
 	decimal_string__type,
 	integer_string__signed__type,
 	integer_string__type,

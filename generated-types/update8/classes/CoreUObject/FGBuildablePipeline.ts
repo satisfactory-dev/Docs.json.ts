@@ -1,12 +1,13 @@
 import {StringPassedRegExp} from '../../utils/validators';
 
-import {boolean__type} from '../../common/scalar';
-
 import {mSnappedPassthroughs__type} from '../../common/unassigned';
 
 import {FGBuildable__base__type} from './FGBuildable';
 
-import {decimal_string__type} from '../../../common/common/scalar';
+import {
+	decimal_string__type,
+	boolean__type,
+} from '../../../common/common/scalar';
 
 import {
 	empty_object__type,

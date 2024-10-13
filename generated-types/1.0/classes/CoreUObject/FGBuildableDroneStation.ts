@@ -1,8 +1,8 @@
-import {boolean__type, boolean_extended__type} from '../../common/scalar';
-
 import {FGBuildable__docking_station_base__type} from './FGBuildable';
 
 import {
+	boolean__type,
+	boolean_extended__type,
 	decimal_string__type,
 	integer_string__type,
 } from '../../../common/common/scalar';

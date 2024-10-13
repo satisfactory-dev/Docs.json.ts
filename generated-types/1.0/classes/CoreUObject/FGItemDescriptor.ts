@@ -1,5 +1,3 @@
-import {boolean__type} from '../../common/scalar';
-
 import {
 	Texture2D__type,
 	mGasType__type,
@@ -9,6 +7,7 @@ import {
 import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
 
 import {
+	boolean__type,
 	decimal_string__type,
 	integer_string__type,
 } from '../../../common/common/scalar';

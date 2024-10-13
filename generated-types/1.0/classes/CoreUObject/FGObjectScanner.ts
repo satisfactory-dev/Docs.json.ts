@@ -2,8 +2,6 @@ import {Montage_1P__type, Montage_3P__type} from '../../common/unassigned';
 
 import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
 
-import {boolean__type} from '../../common/scalar';
-
 import {FGEquipment__base__type} from './FGEquipment';
 
 import {
@@ -12,7 +10,10 @@ import {
 	NativeClass__type,
 } from '../../../common/common/unassigned';
 
-import {decimal_string__type} from '../../../common/common/scalar';
+import {
+	decimal_string__type,
+	boolean__type,
+} from '../../../common/common/scalar';
 
 export type FGObjectScanner__type = FGEquipment__base__type & {
 	mScannerCycleLeftMontage: {

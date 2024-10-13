@@ -1,8 +1,7 @@
-import {boolean__type} from '../../common/scalar';
-
 import {FGBuildableWall__base__rectangle__type} from './FGBuildableWall';
 
 import {
+	boolean__type,
 	decimal_string__type,
 	integer_string__type,
 } from '../../../common/common/scalar';

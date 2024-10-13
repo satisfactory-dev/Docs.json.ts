@@ -1,12 +1,11 @@
 import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
 
-import {boolean__type} from '../../common/scalar';
-
 import {FGBuildable__consumes_power_base__type} from './FGBuildable';
 
 import {
 	integer_string__type,
 	decimal_string__type,
+	boolean__type,
 } from '../../../common/common/scalar';
 
 import {NativeClass__type} from '../../../common/common/unassigned';

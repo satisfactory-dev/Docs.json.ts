@@ -1,5 +1,3 @@
-import {boolean__type} from '../../common/scalar';
-
 import {FGBuildable__consumes_power_base__type} from './FGBuildable';
 
 import {
@@ -7,6 +5,7 @@ import {
 	integer_string__signed__type,
 	decimal_string__type,
 	decimal_string__signed__type,
+	boolean__type,
 } from '../../../common/common/scalar';
 
 import {

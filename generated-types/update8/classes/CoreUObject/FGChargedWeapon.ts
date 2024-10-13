@@ -1,9 +1,8 @@
-import {boolean__type} from '../../common/scalar';
-
 import {FGWeapon__base__type} from './FGWeapon';
 
 import {
 	decimal_string__type,
+	boolean__type,
 	integer_string__type,
 } from '../../../common/common/scalar';
 

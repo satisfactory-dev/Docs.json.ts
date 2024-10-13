@@ -1,5 +1,3 @@
-import {boolean__type} from '../../common/scalar';
-
 import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
 
 import {
@@ -12,6 +10,7 @@ import {
 import {FGItemDescriptor__FGResourceDescriptor__type} from './FGItemDescriptor';
 
 import {
+	boolean__type,
 	decimal_string__type,
 	decimal_string__signed__type,
 	integer_string__type,

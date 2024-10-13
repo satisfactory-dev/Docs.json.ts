@@ -1,8 +1,9 @@
 import {FGBuildable__pipeline_flow_accessory__type} from './FGBuildable';
 
-import {boolean__type} from '../../common/scalar';
-
-import {decimal_string__type} from '../../../common/common/scalar';
+import {
+	boolean__type,
+	decimal_string__type,
+} from '../../../common/common/scalar';
 
 import {NativeClass__type} from '../../../common/common/unassigned';
 

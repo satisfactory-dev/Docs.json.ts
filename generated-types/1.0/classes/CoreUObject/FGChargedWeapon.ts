@@ -8,11 +8,10 @@ import {
 	CameraAnim__type,
 } from '../../common/unassigned';
 
-import {boolean__type} from '../../common/scalar';
-
 import {FGWeapon__base__type} from './FGWeapon';
 
 import {
+	boolean__type,
 	decimal_string__type,
 	integer_string__type,
 } from '../../../common/common/scalar';

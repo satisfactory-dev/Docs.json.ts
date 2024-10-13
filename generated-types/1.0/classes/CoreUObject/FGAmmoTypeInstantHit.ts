@@ -1,13 +1,14 @@
-import {boolean__type} from '../../common/scalar';
-
 import {FGAmmoTypeProjectile__base__type} from './FGAmmoTypeProjectile';
+
+import {
+	boolean__type,
+	decimal_string__type,
+} from '../../../common/common/scalar';
 
 import {
 	xyz__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned';
-
-import {decimal_string__type} from '../../../common/common/scalar';
 
 export type FGAmmoTypeInstantHit__base__type =
 	FGAmmoTypeProjectile__base__type & {

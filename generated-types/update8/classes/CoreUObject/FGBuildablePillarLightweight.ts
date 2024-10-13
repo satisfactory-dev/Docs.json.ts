@@ -1,11 +1,11 @@
-import {boolean__type} from '../../common/scalar';
-
 import {FGBuildable__base__type} from './FGBuildable';
 
 import {
 	xyz__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned';
+
+import {boolean__type} from '../../../common/common/scalar';
 
 export type FGBuildablePillarLightweight__type = FGBuildable__base__type & {
 	mSize: xyz__type;

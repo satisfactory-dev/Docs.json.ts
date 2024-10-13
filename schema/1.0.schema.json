@@ -3,14 +3,6 @@
 	"$id": "1.0.schema.json",
 	"type": "array",
 	"$defs": {
-		"boolean": {
-			"type": "string",
-			"enum": ["True", "False"]
-		},
-		"boolean-extended": {
-			"type": "string",
-			"enum": ["True", "False", ""]
-		},
 		"Texture2D": {
 			"oneOf": [
 				{
@@ -147,10 +139,10 @@
 					]
 				},
 				"mCanBeDiscarded": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mRememberPickUp": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mEnergyValue": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -280,7 +272,7 @@
 					]
 				},
 				"mShouldOverrideScannerDisplayText": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mScannerDisplayText": {
 					"type": "string"
@@ -289,10 +281,10 @@
 					"$ref": "common.schema.json#/$defs/color"
 				},
 				"mIsAlienItem": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mNeedsPickUpMarker": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				}
 			}
 		},
@@ -548,58 +540,58 @@
 					]
 				},
 				"mContainsComponents": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mIsConsideredForBaseWeightValue": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"bForceLegacyBuildEffect": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"bForceBuildEffectSolo": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mBuildEffectSpeed": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mAllowColoring": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mAllowPatterning": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mInteractionRegisterPlayerWithCircuit": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mSkipBuildEffect": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mForceNetUpdateOnRegisterPlayer": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mToggleDormancyOnInteraction": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mIsMultiSpawnedBuildable": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mShouldShowAttachmentPointVisuals": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mCanContainLightweightInstances": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mManagedByLightweightBuildableSubsystem": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mRemoveBuildableFromSubsystemOnDismantle": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mHasBeenRemovedFromSubsystem": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mAffectsOcclusion": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mOcclusionShape": {
 					"type": "string",
@@ -641,7 +633,7 @@
 												"$ref": "common.schema.json#/$defs/xyz"
 											},
 											"IsValid": {
-												"$ref": "#/$defs/boolean"
+												"$ref": "common.schema.json#/$defs/boolean"
 											}
 										}
 									}
@@ -655,23 +647,23 @@
 					"const": ""
 				},
 				"mReplicatedBuiltInsideBlueprintDesigner": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mInteractingPlayers": {
 					"type": "string",
 					"const": ""
 				},
 				"mIsUseable": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mClearanceData": {
 					"$ref": "#/$defs/mClearanceData"
 				},
 				"mHideOnBuildEffectStart": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mShouldModifyWorldGrid": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mTimelapseBucketId": {
 					"$ref": "common.schema.json#/$defs/integer-string"
@@ -751,7 +743,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mDoesHaveShutdownAnimation": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mOnHasPowerChanged": {
 					"$ref": "common.schema.json#/$defs/empty-object"
@@ -769,10 +761,10 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mCanEverMonitorProductivity": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mCanChangePotential": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mMinPotential": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -806,14 +798,14 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mProductivityMonitorEnabled": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mCachedSkeletalMeshes": {
 					"type": "string",
 					"const": ""
 				},
 				"mAddToSignificanceManager": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mAlienOverClockingParticleEffects": {
 					"type": "string",
@@ -838,7 +830,7 @@
 					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mCanChangeProductionBoost": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mBaseProductionBoost": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -853,16 +845,16 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mHasInventoryPotential": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mIsTickRateManaged": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mOverridePotentialShardSlots": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mOverrideProductionShardSlotSize": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				}
 			}
 		},
@@ -926,10 +918,10 @@
 					"const": "Drone Port"
 				},
 				"mStoppedProducingAnimationSounds": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mStoppedAkComponents": {
-					"$ref": "#/$defs/boolean-extended"
+					"$ref": "common.schema.json#/$defs/boolean-extended"
 				},
 				"mSocketStoppedAkComponents": {
 					"type": "string",
@@ -953,7 +945,7 @@
 					"const": ""
 				},
 				"mStationHasDronesInQueue": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mItemTransferringStage": {
 					"type": "string",
@@ -1197,7 +1189,7 @@
 					}
 				},
 				"mIsDismantlingAll": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				}
 			}
 		},
@@ -1786,7 +1778,7 @@
 					]
 				},
 				"mIsPlayerSpecific": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mUnlocks": {
 					"type": "array",
@@ -1903,7 +1895,7 @@
 											"$ref": "common.schema.json#/$defs/xy"
 										},
 										"bIsValid": {
-											"$ref": "#/$defs/boolean"
+											"$ref": "common.schema.json#/$defs/boolean"
 										}
 									}
 								}
@@ -1942,7 +1934,7 @@
 										}
 									},
 									"mRequireAllSchematicsToBePurchased": {
-										"$ref": "#/$defs/boolean"
+										"$ref": "common.schema.json#/$defs/boolean"
 									}
 								}
 							},
@@ -1963,7 +1955,7 @@
 										"enum": ["EGP_Victory"]
 									},
 									"mOnlyAllowInSelectedPhase": {
-										"$ref": "#/$defs/boolean"
+										"$ref": "common.schema.json#/$defs/boolean"
 									}
 								}
 							}
@@ -1971,10 +1963,10 @@
 					}
 				},
 				"mDependenciesBlocksSchematicAccess": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mHiddenUntilDependenciesMet": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mRelevantEvents": {
 					"$ref": "#/$defs/mEventType--optional-csv"
@@ -2104,7 +2096,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mIsInverted": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				}
 			}
 		},
@@ -2121,7 +2113,7 @@
 			],
 			"properties": {
 				"mCanBeLocked": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mAnimationRate": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -2148,7 +2140,7 @@
 			"required": ["IsDoorOpen"],
 			"properties": {
 				"IsDoorOpen": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				}
 			}
 		},
@@ -2234,7 +2226,7 @@
 					}
 				},
 				"mIsOwnedByPlatform": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mTrackGraphID": {
 					"$ref": "common.schema.json#/$defs/integer-string--signed"
@@ -2317,7 +2309,7 @@
 			"required": ["mCanStack", "mStackHeight"],
 			"properties": {
 				"mCanStack": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mStackHeight": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -2330,7 +2322,7 @@
 			"required": ["mUseStaticHeight"],
 			"properties": {
 				"mUseStaticHeight": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				}
 			}
 		},
@@ -2460,10 +2452,10 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mIsReversed": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mFlipMeshOnReverse": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mTopTransform": {
 					"$ref": "#/$defs/transformation"
@@ -2542,7 +2534,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mHasPower": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				}
 			}
 		},
@@ -2715,7 +2707,7 @@
 					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mCanPress": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mAnimData": {
 					"type": "string",
@@ -2847,7 +2839,7 @@
 					]
 				},
 				"mNeedsDefaultEquipmentMappingContext": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mCostToUse": {
 					"oneOf": [
@@ -2889,7 +2881,7 @@
 					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mHasStingerMontage": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mMontageBlendOutTime": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -3132,10 +3124,10 @@
 													"$ref": "common.schema.json#/$defs/decimal-string"
 												},
 												"Filter": {
-													"$ref": "#/$defs/boolean"
+													"$ref": "common.schema.json#/$defs/boolean"
 												},
 												"Exclusive": {
-													"$ref": "#/$defs/boolean"
+													"$ref": "common.schema.json#/$defs/boolean"
 												},
 												"Montage_1P": {
 													"$ref": "#/$defs/Montage_1P"
@@ -3224,7 +3216,7 @@
 													}
 												},
 												"bSeparate3PAudioEvent": {
-													"$ref": "#/$defs/boolean"
+													"$ref": "common.schema.json#/$defs/boolean"
 												},
 												"AudioEvent3P": {
 													"type": "string",
@@ -3333,7 +3325,7 @@
 													}
 												},
 												"bSeparate3PAudioEvent": {
-													"$ref": "#/$defs/boolean"
+													"$ref": "common.schema.json#/$defs/boolean"
 												},
 												"AudioEvent3P": {
 													"type": "string",
@@ -3413,7 +3405,7 @@
 													}
 												},
 												"bSeparate3PAudioEvent": {
-													"$ref": "#/$defs/boolean"
+													"$ref": "common.schema.json#/$defs/boolean"
 												},
 												"AudioEvent3P": {
 													"type": "string",
@@ -3495,7 +3487,7 @@
 													}
 												},
 												"bSeparate3PAudioEvent": {
-													"$ref": "#/$defs/boolean"
+													"$ref": "common.schema.json#/$defs/boolean"
 												},
 												"AudioEvent3P": {
 													"type": "string",
@@ -3643,7 +3635,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mLowBatteryWarningActive_SFX": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mPropellerVFX": {
 					"type": "string",
@@ -3704,17 +3696,17 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mDisplayRangeWarning": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mCurrentHoverMode": {
 					"type": "string",
 					"const": "HPM_Inactive"
 				},
 				"mHasConnection": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mShouldAutomaticallyHoverWhenConnected": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mCrouchHoverCancelTime": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -3747,13 +3739,13 @@
 											"required": ["AudioEvent"],
 											"properties": {
 												"Filter": {
-													"$ref": "#/$defs/boolean"
+													"$ref": "common.schema.json#/$defs/boolean"
 												},
 												"FilterMontageTag": {
 													"$ref": "#/$defs/FilterMontageTag"
 												},
 												"Exclusive": {
-													"$ref": "#/$defs/boolean"
+													"$ref": "common.schema.json#/$defs/boolean"
 												},
 												"AudioEvent": {
 													"$ref": "#/$defs/FGHoverPack--AudioEvent"
@@ -3827,7 +3819,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mIsThrusting": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mAllowedFuelTypes": {
 					"type": "string",
@@ -3943,10 +3935,10 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mIsWorking": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mHasNegatedDamage": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mDamageNegated": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -3961,7 +3953,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mIsBurningFuel": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mSuitMeshMaterials": {
 					"type": "string",
@@ -4086,7 +4078,7 @@
 					"$ref": "#/$defs/mDamageTypes"
 				},
 				"mPostProcessEnabled": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mFilterCountdown": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -4095,7 +4087,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mIsInPoisonGas": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mEquipMontage": {
 					"type": "string",
@@ -4139,7 +4131,7 @@
 													}
 												},
 												"bSeparate3PAudioEvent": {
-													"$ref": "#/$defs/boolean"
+													"$ref": "common.schema.json#/$defs/boolean"
 												},
 												"AudioEvent3P": {
 													"type": "string",
@@ -4222,7 +4214,7 @@
 					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mCurrentHasFuel": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mPreviousState": {
 					"$ref": "#/$defs/mChainsawState"
@@ -4348,7 +4340,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mIsAOEOn": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mEnergyStored": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -4484,7 +4476,7 @@
 					}
 				},
 				"mClosestObjectInScanRange": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mNormalizedDistanceToClosestObject": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -4586,7 +4578,7 @@
 						"$ref": "#/$defs/FGJumpingStilts--AudioEvent"
 					},
 					"bSeparate3PAudioEvent": {
-						"$ref": "#/$defs/boolean"
+						"$ref": "common.schema.json#/$defs/boolean"
 					},
 					"AudioEvent3P": {
 						"$ref": "#/$defs/FGJumpingStilts--AudioEvent"
@@ -4741,7 +4733,7 @@
 					}
 				},
 				"mWantToGrab": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mZiplineJumpLaunchVelocity": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -4759,7 +4751,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mVisualizeTraceDistance": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mActiveNoiseFrequency": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -4903,13 +4895,13 @@
 													],
 													"properties": {
 														"Filter": {
-															"$ref": "#/$defs/boolean"
+															"$ref": "common.schema.json#/$defs/boolean"
 														},
 														"FilterMontageTag": {
 															"$ref": "#/$defs/FilterMontageTag"
 														},
 														"Exclusive": {
-															"$ref": "#/$defs/boolean"
+															"$ref": "common.schema.json#/$defs/boolean"
 														},
 														"Montage_1P": {
 															"$ref": "#/$defs/Montage_1P"
@@ -4940,13 +4932,13 @@
 													],
 													"properties": {
 														"Filter": {
-															"$ref": "#/$defs/boolean"
+															"$ref": "common.schema.json#/$defs/boolean"
 														},
 														"FilterMontageTag": {
 															"$ref": "#/$defs/FilterMontageTag"
 														},
 														"Exclusive": {
-															"$ref": "#/$defs/boolean"
+															"$ref": "common.schema.json#/$defs/boolean"
 														},
 														"Montage_3P": {
 															"$ref": "#/$defs/Montage_3P"
@@ -5022,16 +5014,16 @@
 													],
 													"properties": {
 														"Filter": {
-															"$ref": "#/$defs/boolean"
+															"$ref": "common.schema.json#/$defs/boolean"
 														},
 														"FilterMontageTag": {
 															"$ref": "#/$defs/FilterMontageTag"
 														},
 														"InvertFilter": {
-															"$ref": "#/$defs/boolean"
+															"$ref": "common.schema.json#/$defs/boolean"
 														},
 														"Exclusive": {
-															"$ref": "#/$defs/boolean"
+															"$ref": "common.schema.json#/$defs/boolean"
 														},
 														"Montage_1P": {
 															"$ref": "#/$defs/Montage_1P"
@@ -5074,7 +5066,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mIsDeployed": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mEquipMontage": {
 					"$ref": "common.schema.json#/$defs/empty-object"
@@ -5346,7 +5338,7 @@
 					"$ref": "common.schema.json#/$defs/xyz"
 				},
 				"mIsSupport": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				}
 			}
 		},
@@ -5404,7 +5396,7 @@
 				"minProperties": 1,
 				"patternProperties": {
 					"^(Front|Right|Left|Right|Top|Bottom)$": {
-						"$ref": "#/$defs/boolean"
+						"$ref": "common.schema.json#/$defs/boolean"
 					}
 				}
 			}
@@ -5431,16 +5423,16 @@
 						"required": ["Right", "Left", "Top", "Bottom"],
 						"properties": {
 							"Right": {
-								"$ref": "#/$defs/boolean"
+								"$ref": "common.schema.json#/$defs/boolean"
 							},
 							"Left": {
-								"$ref": "#/$defs/boolean"
+								"$ref": "common.schema.json#/$defs/boolean"
 							},
 							"Top": {
-								"$ref": "#/$defs/boolean"
+								"$ref": "common.schema.json#/$defs/boolean"
 							},
 							"Bottom": {
-								"$ref": "#/$defs/boolean"
+								"$ref": "common.schema.json#/$defs/boolean"
 							}
 						}
 					}
@@ -5492,7 +5484,7 @@
 					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mRequiresSupplementalResource": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mSupplementalLoadAmount": {
 					"$ref": "common.schema.json#/$defs/integer-string"
@@ -5501,7 +5493,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mIsFullBlast": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mCachedInputConnections": {
 					"type": "string",
@@ -5768,7 +5760,7 @@
 			],
 			"properties": {
 				"mProductionEffectsRunning": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mVariablePowerProductionConstant": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -6052,7 +6044,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mIsRattling": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mUpdateSoundsHandle": {
 					"$ref": "common.schema.json#/$defs/empty-object"
@@ -6179,10 +6171,10 @@
 			],
 			"properties": {
 				"mIsPipePumpPlaying": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mIsExceedingHeadLift": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mCurrentAudioHeadLift": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -6243,7 +6235,7 @@
 					}
 				},
 				"mOnlyAllowCertainResources": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mAllowedResources": {
 					"oneOf": [
@@ -6268,7 +6260,7 @@
 					]
 				},
 				"mTryFindMissingResource": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				}
 			}
 		},
@@ -6323,7 +6315,7 @@
 					"const": "Forward"
 				},
 				"HasLostSignificance": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mMinimumDepthForPlacement": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -6376,13 +6368,13 @@
 			],
 			"properties": {
 				"IsAnimationProducing": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"EnableTickGrinder": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"EnableTickEngine": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mGrinderInterpDuration": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -6507,10 +6499,10 @@
 					}
 				},
 				"mCanPlayAfterStartUpStopped": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"CanPlayAfterStartUpStopped": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"SAMReference": {
 					"type": "string",
@@ -6592,13 +6584,13 @@
 			],
 			"properties": {
 				"IsPowered": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"bIsPendingToKillVfx": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mProductionEffectsRunning": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mCurrentRecipeChanged": {
 					"$ref": "common.schema.json#/$defs/empty-object"
@@ -6623,10 +6615,10 @@
 					"const": ""
 				},
 				"mStoppedProducingAnimationSounds": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mStoppedAkComponents": {
-					"$ref": "#/$defs/boolean-extended"
+					"$ref": "common.schema.json#/$defs/boolean-extended"
 				},
 				"mSocketStoppedAkComponents": {
 					"type": "string",
@@ -6692,7 +6684,7 @@
 					"const": ""
 				},
 				"mIsRadioActive": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				}
 			}
 		},
@@ -6707,7 +6699,7 @@
 					"const": "Build_SmelterMk1_C"
 				},
 				"mIsPendingToKillVFX": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mCachedCurrentPotential": {
 					"$ref": "common.schema.json#/$defs/integer-string"
@@ -6796,7 +6788,7 @@
 			"required": ["IsAnimProducing"],
 			"properties": {
 				"IsAnimProducing": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				}
 			}
 		},
@@ -7146,7 +7138,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mSatelliteActivationComplete": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mSatelliteNodeCount": {
 					"$ref": "common.schema.json#/$defs/integer-string"
@@ -7194,7 +7186,7 @@
 					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mDrawDebugVisualState": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mGuardedConnections": {
 					"type": "string",
@@ -7212,10 +7204,10 @@
 					"const": "RBV_Unvalidated"
 				},
 				"mIsPathSignal": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mIsBiDirectional": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mVisualState": {
 					"$ref": "common.schema.json#/$defs/integer-string"
@@ -7260,7 +7252,7 @@
 					}
 				},
 				"mIsOrientationReversed": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mPlatformDockingStatus": {
 					"$ref": "#/$defs/mPlatformDockingStatus"
@@ -7275,7 +7267,7 @@
 					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mDockWasCancelled": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				}
 			}
 		},
@@ -7355,16 +7347,16 @@
 					"enum": ["FCT_Standard", "FCT_Liquid"]
 				},
 				"mCanUnloadAny": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mIsFullUnload": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mCanLoadAny": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mIsFullLoad": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mTimeToCompleteLoad": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -7405,25 +7397,25 @@
 					"const": ""
 				},
 				"mHasFullyLoadUnloadRule": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mDockForDuration": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mMustDockForDuration": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mHasAnyRelevantStacksToMove": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mAllowDepartureNoValidItemsToTransfer": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mShouldExecuteLoadOrUnload": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mRanCompleteBeforeNone": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mSwapCargoVisibilityTimerHandle": {
 					"$ref": "common.schema.json#/$defs/empty-object"
@@ -7469,7 +7461,7 @@
 					"const": "Train Station"
 				},
 				"mShouldTeleportHere": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mDockedPlatformList": {
 					"type": "string",
@@ -7522,7 +7514,7 @@
 					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mIsWindSoundPlaying?": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mAudioTimerCounter": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -7531,7 +7523,7 @@
 					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"IsEnginePlaying": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mOpeningOffset": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -7543,13 +7535,13 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mCanStack": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mStackHeight": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mUseStaticHeight": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				}
 			}
 		},
@@ -7678,7 +7670,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mForceSignificance": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mVehicleFuelConsumptionRate": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -7744,7 +7736,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mHasPowerForLaunch": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"ComponentsToLaunch": {
 					"type": "string",
@@ -7952,7 +7944,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mIsFrame": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mDisableSnapOn": {
 					"oneOf": [
@@ -7988,13 +7980,13 @@
 			"required": ["mIsDoubleRamp", "mIsRoof", "mIsInverted"],
 			"properties": {
 				"mIsDoubleRamp": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mIsRoof": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mIsInverted": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				}
 			}
 		},
@@ -8132,7 +8124,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mFiringTransformIgnoresDispersion": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mDispersionFireRateMultiplier": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -8150,7 +8142,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mHasBeenInitialized": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mWeaponDamageMultiplier": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -8197,7 +8189,7 @@
 											],
 											"properties": {
 												"bInitialized": {
-													"$ref": "#/$defs/boolean"
+													"$ref": "common.schema.json#/$defs/boolean"
 												},
 												"LocalUVDensities[0]": {
 													"$ref": "common.schema.json#/$defs/decimal-string"
@@ -8286,7 +8278,7 @@
 						"required": ["bAllowTickOnDedicatedServer"],
 						"properties": {
 							"bAllowTickOnDedicatedServer": {
-								"$ref": "#/$defs/boolean"
+								"$ref": "common.schema.json#/$defs/boolean"
 							}
 						}
 					}
@@ -8332,7 +8324,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string--signed"
 				},
 				"mCanTakeDamageBySameProjectileOrChild": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mDamageTypesAtEndOfLife": {
 					"oneOf": [
@@ -8349,10 +8341,10 @@
 					"$ref": "#/$defs/EditorCurveData"
 				},
 				"mHomingProjectile": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mHomingNeedsValidTarget": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mMaxHomingAccelerationMagnitudeOverride": {
 					"$ref": "common.schema.json#/$defs/decimal-string--signed"
@@ -8443,7 +8435,7 @@
 			"required": ["mPlayFireEffects"],
 			"properties": {
 				"mPlayFireEffects": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				}
 			}
 		},
@@ -8517,7 +8509,7 @@
 					"$ref": "#/$defs/weaponState"
 				},
 				"mAutomaticallyReload": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mAutoReloadDelay": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -8532,7 +8524,7 @@
 					"$ref": "common.schema.json#/$defs/UnrealEngineString--array"
 				},
 				"mAttachMagazineToPlayer": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mMuzzleSocketName": {
 					"type": "string",
@@ -8553,7 +8545,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mFiringBlocksDispersionReduction": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mCurrentDispersion": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -8562,7 +8554,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mAmmoSwitchUsedRadialMenu": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mOnAmmoCyclingPressed": {
 					"$ref": "common.schema.json#/$defs/empty-object"
@@ -8571,7 +8563,7 @@
 					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mBlockSprintWhenFiring": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				}
 			}
 		},
@@ -8631,7 +8623,7 @@
 					}
 				},
 				"mSupressDryFireMontage": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				}
 			}
 		},
@@ -8948,7 +8940,7 @@
 					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mHasReloadedOnce": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mReloadMontageList": {
 					"type": "string",
@@ -9002,7 +8994,7 @@
 													}
 												},
 												"bSeparate3PAudioEvent": {
-													"$ref": "#/$defs/boolean"
+													"$ref": "common.schema.json#/$defs/boolean"
 												},
 												"AudioEvent3P": {
 													"type": "string",
@@ -9074,7 +9066,7 @@
 													}
 												},
 												"bSeparate3PAudioEvent": {
-													"$ref": "#/$defs/boolean"
+													"$ref": "common.schema.json#/$defs/boolean"
 												},
 												"AudioEvent3P": {
 													"type": "string",
@@ -9149,7 +9141,7 @@
 													}
 												},
 												"bSeparate3PAudioEvent": {
-													"$ref": "#/$defs/boolean"
+													"$ref": "common.schema.json#/$defs/boolean"
 												},
 												"AudioEvent3P": {
 													"type": "string",
@@ -9221,7 +9213,7 @@
 													}
 												},
 												"bSeparate3PAudioEvent": {
-													"$ref": "#/$defs/boolean"
+													"$ref": "common.schema.json#/$defs/boolean"
 												},
 												"AudioEvent3P": {
 													"type": "string",
@@ -9359,7 +9351,7 @@
 													}
 												},
 												"bSeparate3PAudioEvent": {
-													"$ref": "#/$defs/boolean"
+													"$ref": "common.schema.json#/$defs/boolean"
 												},
 												"AudioEvent3P": {
 													"type": "string",
@@ -9431,7 +9423,7 @@
 													}
 												},
 												"bSeparate3PAudioEvent": {
-													"$ref": "#/$defs/boolean"
+													"$ref": "common.schema.json#/$defs/boolean"
 												},
 												"AudioEvent3P": {
 													"type": "string",
@@ -9477,16 +9469,16 @@
 											],
 											"properties": {
 												"Filter": {
-													"$ref": "#/$defs/boolean"
+													"$ref": "common.schema.json#/$defs/boolean"
 												},
 												"FilterMontageTag": {
 													"$ref": "#/$defs/FilterMontageTag"
 												},
 												"InvertFilter": {
-													"$ref": "#/$defs/boolean"
+													"$ref": "common.schema.json#/$defs/boolean"
 												},
 												"Exclusive": {
-													"$ref": "#/$defs/boolean"
+													"$ref": "common.schema.json#/$defs/boolean"
 												},
 												"Montage_1P": {
 													"$ref": "#/$defs/Montage_1P"
@@ -9541,13 +9533,13 @@
 											],
 											"properties": {
 												"Filter": {
-													"$ref": "#/$defs/boolean"
+													"$ref": "common.schema.json#/$defs/boolean"
 												},
 												"FilterMontageTag": {
 													"$ref": "#/$defs/FilterMontageTag--charged"
 												},
 												"Exclusive": {
-													"$ref": "#/$defs/boolean"
+													"$ref": "common.schema.json#/$defs/boolean"
 												},
 												"Montage_1P": {
 													"$ref": "#/$defs/Montage_1P"
@@ -9576,7 +9568,7 @@
 													}
 												},
 												"bSeparate3PAudioEvent": {
-													"$ref": "#/$defs/boolean"
+													"$ref": "common.schema.json#/$defs/boolean"
 												},
 												"AudioEvent3P": {
 													"type": "string",
@@ -9625,16 +9617,16 @@
 											],
 											"properties": {
 												"Filter": {
-													"$ref": "#/$defs/boolean"
+													"$ref": "common.schema.json#/$defs/boolean"
 												},
 												"FilterMontageTag": {
 													"$ref": "#/$defs/FilterMontageTag"
 												},
 												"InvertFilter": {
-													"$ref": "#/$defs/boolean"
+													"$ref": "common.schema.json#/$defs/boolean"
 												},
 												"Exclusive": {
-													"$ref": "#/$defs/boolean"
+													"$ref": "common.schema.json#/$defs/boolean"
 												},
 												"Montage_1P": {
 													"$ref": "#/$defs/Montage_1P"
@@ -9754,7 +9746,7 @@
 					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mIsBridgeConnected": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mConnections": {
 					"type": "string",
@@ -9782,7 +9774,7 @@
 					"const": ""
 				},
 				"bIsSignificant": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mMaxCharacters": {
 					"$ref": "common.schema.json#/$defs/integer-string"
@@ -9797,10 +9789,10 @@
 					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mIsSwitchOn": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mHasBuildingTag": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mBuildingTag": {
 					"type": "string",
@@ -9930,7 +9922,7 @@
 					"const": "Vehicles cannot be built or deployed on top of existing vehicles!"
 				},
 				"canDisplayDisqualifier": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mChristmasMaterial": {
 					"type": "string",
@@ -10035,7 +10027,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mGenerateTunnelCollision": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mEndCapRotation": {
 					"$ref": "common.schema.json#/$defs/pitch-yaw-roll"
@@ -10092,7 +10084,7 @@
 					"$ref": "#/$defs/mLightControlData"
 				},
 				"mIsEnabled": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mOnControlledBuildablesChanged": {
 					"$ref": "common.schema.json#/$defs/empty-object"
@@ -10119,7 +10111,7 @@
 					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mIsEnabled": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mLightControlData": {
 					"$ref": "#/$defs/mLightControlData"
@@ -10128,10 +10120,10 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mHasPower": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mIsDay": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				}
 			}
 		},
@@ -10370,7 +10362,7 @@
 													"$ref": "common.schema.json#/$defs/xyz"
 												},
 												"IsValid": {
-													"$ref": "#/$defs/boolean"
+													"$ref": "common.schema.json#/$defs/boolean"
 												}
 											}
 										}
@@ -10393,7 +10385,7 @@
 										}
 									},
 									"ExcludeForSnapping": {
-										"$ref": "#/$defs/boolean"
+										"$ref": "common.schema.json#/$defs/boolean"
 									}
 								}
 							}
@@ -10546,7 +10538,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mIsPortalTraversable": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mActorRepresentationColor": {
 					"$ref": "common.schema.json#/$defs/color-decimal"
@@ -10624,7 +10616,7 @@
 					"const": ""
 				},
 				"mHeatUpComplete": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mHeatUpCycleTime": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -10642,10 +10634,10 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mTrippedProductionStop": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mCachedHasEnoughFuelForProduce": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mPortalName": {
 					"type": "string",
@@ -10679,7 +10671,7 @@
 					"const": ""
 				},
 				"mWasHeatingUpLastTick": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				}
 			}
 		},
@@ -10721,7 +10713,7 @@
 			],
 			"properties": {
 				"IsInProducingAnimState": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"LaserSocketNames": {
 					"type": "string",
@@ -10755,7 +10747,7 @@
 					"$ref": "common.schema.json#/$defs/xyz"
 				},
 				"bFirstRun": {
-					"$ref": "#/$defs/boolean"
+					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mBasePowerProduction": {
 					"$ref": "common.schema.json#/$defs/decimal-string"

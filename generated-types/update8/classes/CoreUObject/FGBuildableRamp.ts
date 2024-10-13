@@ -1,6 +1,6 @@
-import {boolean__type} from '../../common/scalar';
-
 import {FGBuildableFoundation__base__type} from './FGBuildableFoundation';
+
+import {boolean__type} from '../../../common/common/scalar';
 
 import {NativeClass__type} from '../../../common/common/unassigned';
 

@@ -1,8 +1,8 @@
-import {boolean__type} from '../../common/scalar';
-
 import {mDockingRuleSet__type} from '../../common/unassigned';
 
 import {FGBuildableTrainPlatformCargo__FGBuildableRailroadStation__type} from './FGBuildableTrainPlatformCargo';
+
+import {boolean__type} from '../../../common/common/scalar';
 
 import {NativeClass__type} from '../../../common/common/unassigned';
 

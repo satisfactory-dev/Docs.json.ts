@@ -1,5 +1,3 @@
-import {boolean__type} from '../../common/scalar';
-
 import {
 	transformation__type,
 	mSnappedPassthroughs__type,
@@ -7,7 +5,10 @@ import {
 
 import {FGBuildableConveyorBelt__base__type} from './FGBuildableConveyorBelt';
 
-import {decimal_string__type} from '../../../common/common/scalar';
+import {
+	decimal_string__type,
+	boolean__type,
+} from '../../../common/common/scalar';
 
 import {NativeClass__type} from '../../../common/common/unassigned';
 

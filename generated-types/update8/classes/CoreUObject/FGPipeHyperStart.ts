@@ -1,5 +1,3 @@
-import {boolean__type} from '../../common/scalar';
-
 import {FGBuildable__consumes_power_base__type} from './FGBuildable';
 
 import {
@@ -7,7 +5,10 @@ import {
 	NativeClass__type,
 } from '../../../common/common/unassigned';
 
-import {decimal_string__type} from '../../../common/common/scalar';
+import {
+	boolean__type,
+	decimal_string__type,
+} from '../../../common/common/scalar';
 
 export type FGPipeHyperStart__type = FGBuildable__consumes_power_base__type & {
 	mWindDirectionFromTurbine: empty_object__type;

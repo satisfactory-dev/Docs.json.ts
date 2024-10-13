@@ -2,17 +2,18 @@ import {Montage_1P__type, Montage_3P__type} from '../../common/unassigned';
 
 import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
 
-import {boolean__type} from '../../common/scalar';
-
 import {FGEquipment__base__type} from './FGEquipment';
+
+import {
+	boolean__type,
+	decimal_string__type,
+} from '../../../common/common/scalar';
 
 import {
 	xyz__type,
 	empty_object__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned';
-
-import {decimal_string__type} from '../../../common/common/scalar';
 
 export type FGGolfCartDispenser__type = FGEquipment__base__type & {
 	mBuildDisqualifierText: 'Vehicles cannot be built or deployed on top of existing vehicles!';

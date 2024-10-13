@@ -1,9 +1,11 @@
 # Types Progress
 
-100.00% Complete (21 of 21)
+100.00% Complete (23 of 23)
 
 ## Basic Types
 
+-   [x] boolean
+-   [x] boolean-extended
 -   [x] class
 -   [x] class--no-description
 -   [x] class--no-description-or-display-name

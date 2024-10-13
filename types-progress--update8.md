@@ -4,8 +4,8 @@
 
 ## Basic Types
 
--   [x] boolean
--   [x] boolean-extended
+-   [x] boolean (common type)
+-   [x] boolean-extended (common type)
 -   [x] class (common type)
 -   [x] class--no-description (common type)
 -   [x] class--no-description-or-display-name (common type)

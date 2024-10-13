@@ -11,11 +11,10 @@ import {
 	mEventType__optional_csv__type,
 } from '../../common/unassigned';
 
-import {boolean__type} from '../../common/scalar';
-
 import {
 	integer_string__type,
 	decimal_string__type,
+	boolean__type,
 	decimal_string__signed__type,
 } from '../../../common/common/scalar';
 

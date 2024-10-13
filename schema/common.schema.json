@@ -258,6 +258,14 @@
 				}
 			}
 		},
+		"boolean": {
+			"type": "string",
+			"enum": ["True", "False"]
+		},
+		"boolean-extended": {
+			"type": "string",
+			"enum": ["True", "False", ""]
+		},
 		"faux-1": {
 			"type": "object",
 			"$ref": "#/$defs/class",

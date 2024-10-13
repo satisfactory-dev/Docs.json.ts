@@ -44,7 +44,10 @@ declare type supported_method_modifiers = [
 ];
 
 export function adjust_class_name(class_name: string): string {
-	if ('boolean' === class_name) {
+	if (
+		'boolean' === class_name
+		|| 'common_type__boolean' === class_name
+	) {
 		return 'Docs_boolean';
 	}
 	if ('class' === class_name) {

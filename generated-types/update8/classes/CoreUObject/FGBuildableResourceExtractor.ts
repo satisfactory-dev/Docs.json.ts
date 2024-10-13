@@ -2,9 +2,9 @@ import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
 
 import {FGBuildableResourceExtractor__miner_mk3__type} from '../../common/unassigned';
 
-import {boolean__type} from '../../common/scalar';
-
 import {FGBuildable__extractor_base__type} from './FGBuildable';
+
+import {boolean__type} from '../../../common/common/scalar';
 
 import {
 	None__type,

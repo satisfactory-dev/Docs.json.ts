@@ -1,5 +1,3 @@
-import {boolean__type} from '../../common/scalar';
-
 import {mLightControlData__type} from '../../common/unassigned';
 
 import {FGBuildable__base__type} from './FGBuildable';
@@ -10,7 +8,10 @@ import {
 	NativeClass__type,
 } from '../../../common/common/unassigned';
 
-import {decimal_string__type} from '../../../common/common/scalar';
+import {
+	boolean__type,
+	decimal_string__type,
+} from '../../../common/common/scalar';
 
 export type FGBuildableLightSource__type =
 	FGBuildableLightSource__base__type & {

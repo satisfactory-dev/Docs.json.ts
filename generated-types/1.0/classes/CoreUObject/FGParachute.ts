@@ -1,7 +1,5 @@
 import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
 
-import {boolean__type} from '../../common/scalar';
-
 import {
 	FilterMontageTag__type,
 	Montage_1P__type,
@@ -11,7 +9,10 @@ import {
 
 import {FGEquipment__base__type} from './FGEquipment';
 
-import {decimal_string__type} from '../../../common/common/scalar';
+import {
+	boolean__type,
+	decimal_string__type,
+} from '../../../common/common/scalar';
 
 import {
 	empty_object__type,

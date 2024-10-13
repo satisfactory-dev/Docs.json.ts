@@ -1,7 +1,5 @@
 import {mAspect__type} from '../../common/unassigned';
 
-import {boolean__type} from '../../common/scalar';
-
 import {FGBuildable__base__type} from './FGBuildable';
 
 import {
@@ -10,6 +8,7 @@ import {
 } from '../../../common/common/unassigned';
 
 import {
+	boolean__type,
 	integer_string__type,
 	decimal_string__type,
 } from '../../../common/common/scalar';

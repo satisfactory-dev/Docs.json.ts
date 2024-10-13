@@ -1,6 +1,6 @@
-import {boolean__type} from '../../common/scalar';
-
 import {FGBuildablePortal__base__type} from './FGBuildablePortal';
+
+import {boolean__type} from '../../../common/common/scalar';
 
 import {NativeClass__type} from '../../../common/common/unassigned';
 

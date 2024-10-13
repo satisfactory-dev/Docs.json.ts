@@ -1,5 +1,3 @@
-import {boolean__type} from '../../common/scalar';
-
 import {FGBuildable__docking_station_base__type} from './FGBuildable';
 
 import {
@@ -11,6 +9,7 @@ import {
 import {
 	decimal_string__type,
 	integer_string__type,
+	boolean__type,
 } from '../../../common/common/scalar';
 
 export type FGBuildableDockingStation__type =
