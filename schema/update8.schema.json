@@ -2370,7 +2370,9 @@
 						}
 					}
 				},
-				"mCurrentAnimData": {"$ref": "common.schema.json#/$defs/empty-object"},
+				"mCurrentAnimData": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
 				"mEquipmentSlot": {
 					"type": "string",
 					"enum": [
