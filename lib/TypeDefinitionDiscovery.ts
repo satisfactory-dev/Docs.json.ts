@@ -444,12 +444,21 @@ export class TypeDefinitionDiscovery
 					)
 			);
 
+			let use_definition:string = definition;
+
+			if (
+				'common' === this.version
+				&& definition.startsWith('common.schema.json#/$defs/')
+			) {
+				use_definition = definition.substring(18);
+			}
+
 			const generator = this.candidates.find(
 				e => e.check(schema.$defs[$ref]),
 			);
 
 			if (generator) {
-				result.found_types[definition] = generator.generate();
+				result.found_types[use_definition] = generator.generate();
 			} else if (
 				'common' !== this.version
 				&& (
