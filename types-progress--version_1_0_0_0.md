@@ -51,7 +51,7 @@
 -   [x] NativeClass (common type)
 -   [x] None (common type)
 -   [x] SpecifiedColor
--   [x] Texture2D
+-   [x] Texture2D (common type)
 -   [x] transformation
 -   [x] weaponState
 -   [x] xyz-array (common type)

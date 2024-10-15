@@ -1,8 +1,4 @@
-import {
-	Texture2D__type,
-	mGasType__type,
-	mForm__type,
-} from '../../common/unassigned';
+import {mGasType__type, mForm__type} from '../../common/unassigned';
 
 import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
 
@@ -13,6 +9,7 @@ import {
 } from '../../../common/common/scalar';
 
 import {
+	Texture2D__type,
 	color__type,
 	UnrealEngineString__array__type,
 	None__type,

@@ -3,24 +3,6 @@
 	"$id": "update8.schema.json",
 	"type": "array",
 	"$defs": {
-		"Texture2D": {
-			"oneOf": [
-				{
-					"type": "string",
-					"string_starts_with": "Texture2D /Game/FactoryGame/"
-				},
-				{
-					"$ref": "common.schema.json#/$defs/None"
-				},
-				{
-					"type": "string",
-					"minLength": 1,
-					"UnrealEngineString": {
-						"left": "/Script/Engine.Texture2D"
-					}
-				}
-			]
-		},
 		"transformation": {
 			"type": "string",
 			"minLength": 1,
@@ -143,10 +125,10 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mSmallIcon": {
-					"$ref": "#/$defs/Texture2D"
+					"$ref": "common.schema.json#/$defs/Texture2D"
 				},
 				"mPersistentBigIcon": {
-					"$ref": "#/$defs/Texture2D"
+					"$ref": "common.schema.json#/$defs/Texture2D"
 				},
 				"mCrosshairMaterial": {
 					"oneOf": [
@@ -1559,7 +1541,7 @@
 								}
 							},
 							"ResourceObject": {
-								"$ref": "#/$defs/Texture2D"
+								"$ref": "common.schema.json#/$defs/Texture2D"
 							},
 							"UVRegion": {
 								"type": "string",
@@ -1583,7 +1565,7 @@
 					}
 				},
 				"mSmallSchematicIcon": {
-					"$ref": "#/$defs/Texture2D"
+					"$ref": "common.schema.json#/$defs/Texture2D"
 				},
 				"mSchematicDependencies": {
 					"type": "array",

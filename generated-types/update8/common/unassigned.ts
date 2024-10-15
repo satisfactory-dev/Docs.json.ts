@@ -1,4 +1,4 @@
-import {UnrealEngineString, StringStartsWith} from '../utils/validators';
+import {UnrealEngineString} from '../utils/validators';
 
 import {FGBuildableResourceExtractor__miner__base__type} from '../classes/CoreUObject/FGBuildableResourceExtractor';
 
@@ -266,11 +266,6 @@ export type mSnappedPassthroughs__type = '';
 export type SpecifiedColor__type = {
 	SpecifiedColor: color_decimal__type;
 };
-
-export type Texture2D__type =
-	| StringStartsWith<'Texture2D /Game/FactoryGame/'>
-	| None__type
-	| UnrealEngineString<'/Script/Engine.Texture2D'>;
 
 export type transformation__type = {
 	Rotation: quaternion__type;

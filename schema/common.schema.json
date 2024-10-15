@@ -266,6 +266,25 @@
 			"type": "string",
 			"enum": ["True", "False", ""]
 		},
+		"Texture2D": {
+			"oneOf": [
+				{
+					"type": "string",
+					"string_starts_with": "Texture2D /Game/FactoryGame/"
+				},
+				{
+					"$ref": "common.schema.json#/$defs/None"
+				},
+				{
+					"type": "string",
+					"minLength": 1,
+					"UnrealEngineString": {
+						"left": "/Script/Engine.Texture2D",
+						"quote_mode": "both"
+					}
+				}
+			]
+		},
 		"faux-1": {
 			"type": "object",
 			"$ref": "#/$defs/class",
@@ -329,14 +348,44 @@
 		"faux-2": {
 			"type": "object",
 			"$ref": "#/$defs/class",
-			"required": ["faux"],
+			"required": ["faux_bool"],
 			"unevaluatedProperties": false,
 			"properties": {
 				"faux_bool": {
 					"$ref": "#/$defs/boolean"
-				},
+				}
+			}
+		},
+		"faux-3": {
+			"type": "object",
+			"$ref": "#/$defs/class",
+			"required": ["faux_bool_extended"],
+			"unevaluatedProperties": false,
+			"properties": {
 				"faux_bool_extended": {
 					"$ref": "#/$defs/boolean-extended"
+				}
+			}
+		},
+		"faux-4": {
+			"type": "object",
+			"$ref": "#/$defs/class",
+			"required": ["faux_texture"],
+			"unevaluatedProperties": false,
+			"properties": {
+				"faux_texture": {
+					"$ref": "#/$defs/Texture2D"
+				}
+			}
+		},
+		"faux-5": {
+			"type": "object",
+			"$ref": "#/$defs/class",
+			"required": ["faux_none"],
+			"unevaluatedProperties": false,
+			"properties": {
+				"faux_none": {
+					"$ref": "#/$defs/None"
 				}
 			}
 		}
@@ -364,6 +413,21 @@
 							{
 								"type": "object",
 								"$ref": "#/$defs/faux-2",
+								"unevaluatedProperties": false
+							},
+							{
+								"type": "object",
+								"$ref": "#/$defs/faux-3",
+								"unevaluatedProperties": false
+							},
+							{
+								"type": "object",
+								"$ref": "#/$defs/faux-4",
+								"unevaluatedProperties": false
+							},
+							{
+								"type": "object",
+								"$ref": "#/$defs/faux-5",
 								"unevaluatedProperties": false
 							}
 						]

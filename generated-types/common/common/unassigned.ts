@@ -59,8 +59,19 @@ export type faux_1__type = class__type & {
 };
 
 export type faux_2__type = class__type & {
-	faux_bool?: boolean__type;
-	faux_bool_extended?: boolean_extended__type;
+	faux_bool: boolean__type;
+};
+
+export type faux_3__type = class__type & {
+	faux_bool_extended: boolean_extended__type;
+};
+
+export type faux_4__type = class__type & {
+	faux_texture: Texture2D__type;
+};
+
+export type faux_5__type = class__type & {
+	faux_none: None__type;
 };
 
 export type NativeClass__type = {
@@ -84,6 +95,11 @@ export type quaternion__type = {
 	Z: decimal_string__signed__type;
 	W: decimal_string__type;
 };
+
+export type Texture2D__type =
+	| StringStartsWith<'Texture2D /Game/FactoryGame/'>
+	| None__type
+	| UnrealEngineString<'/Script/Engine.Texture2D'>;
 
 export type UnrealEngineString__array__type = [
 	UnrealEngineString,
