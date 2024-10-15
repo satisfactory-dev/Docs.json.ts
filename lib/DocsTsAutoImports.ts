@@ -70,14 +70,28 @@ export class DocsTsAutoImports {
 			const [filename, exports_these] = entry;
 
 			for (const export_name of exports_these) {
-				if (export_name in this.comes_from) {
+				const export_filename = filename.replace(/\.ts$/, '');
+
+				if (
+					export_name in this.comes_from
+					&& export_filename !== this.comes_from[
+						export_name
+					]
+				) {
 					throw new NoMatchError(
-						entry,
+						{
+							export_name,
+							export_filename,
+							export_filename_conflict: this.comes_from[
+								export_name
+							],
+							entry,
+						},
 						`${export_name} conflict!`,
 					);
 				}
 
-				this.comes_from[export_name] = filename.replace(/\.ts$/, '');
+				this.comes_from[export_name] = export_filename;
 			}
 		}
 

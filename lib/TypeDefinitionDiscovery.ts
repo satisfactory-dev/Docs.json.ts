@@ -246,7 +246,10 @@ export class TypeDefinitionDiscovery
 
 		for (const entry of Object.entries(types.found_types)) {
 			const [definition, generator] = entry;
-			const $ref = definition.substring(8);
+
+			const $ref = definition.startsWith('common.schema.json#/$defs/')
+				? definition.substring(26)
+				: definition.substring(8);
 			const target_file = guess_filename($ref);
 
 			yield {
