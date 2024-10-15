@@ -335,7 +335,7 @@ export class ValueToRegexFormatter
 			)
 		) {
 			const oneOf = this.common_$defs[
-				value.$ref.substring(15)
+				value.$ref.substring(26)
 			].oneOf as {[key: string]: unknown}[];
 
 			return `(?:${
