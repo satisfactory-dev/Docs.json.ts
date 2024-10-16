@@ -127,9 +127,9 @@ void describe('DocsTsAutoImports', () => {
 				message: 'foo conflict!',
 				property: {
 					entry: [
-					'bar.ts',
-					['foo'],
-				],
+						'bar.ts',
+						['foo'],
+					],
 					export_filename: 'bar',
 					export_filename_conflict: 'foo',
 					export_name: 'foo',
