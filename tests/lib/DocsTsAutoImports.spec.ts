@@ -125,10 +125,15 @@ void describe('DocsTsAutoImports', () => {
 
 			await rejects_partial_match(promise, {
 				message: 'foo conflict!',
-				property: [
+				property: {
+					entry: [
 					'bar.ts',
 					['foo'],
 				],
+					export_filename: 'bar',
+					export_filename_conflict: 'foo',
+					export_name: 'foo',
+				},
 			});
 		})
 	})
