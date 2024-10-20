@@ -3,24 +3,6 @@
 	"$id": "1.0.schema.json",
 	"type": "array",
 	"$defs": {
-		"transformation": {
-			"type": "string",
-			"minLength": 1,
-			"typed_string": {
-				"required": ["Rotation", "Translation", "Scale3D"],
-				"properties": {
-					"Rotation": {
-						"$ref": "common.schema.json#/$defs/quaternion"
-					},
-					"Translation": {
-						"$ref": "common.schema.json#/$defs/xyz"
-					},
-					"Scale3D": {
-						"$ref": "common.schema.json#/$defs/xyz"
-					}
-				}
-			}
-		},
 		"mForm": {
 			"type": "string",
 			"enum": ["RF_SOLID", "RF_LIQUID", "RF_GAS", "RF_INVALID"]
@@ -2439,7 +2421,7 @@
 					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mTopTransform": {
-					"$ref": "#/$defs/transformation"
+					"$ref": "common.schema.json#/$defs/transformation"
 				},
 				"mSnappedPassthroughs": {
 					"$ref": "#/$defs/mSnappedPassthroughs"
@@ -8089,7 +8071,7 @@
 					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mFiringTransform": {
-					"$ref": "#/$defs/transformation"
+					"$ref": "common.schema.json#/$defs/transformation"
 				},
 				"mFiringDirection": {
 					"$ref": "common.schema.json#/$defs/xyz"

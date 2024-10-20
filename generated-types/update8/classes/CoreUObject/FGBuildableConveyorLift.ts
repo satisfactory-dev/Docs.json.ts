@@ -1,7 +1,4 @@
-import {
-	transformation__type,
-	mSnappedPassthroughs__type,
-} from '../../common/unassigned';
+import {mSnappedPassthroughs__type} from '../../common/unassigned';
 
 import {FGBuildableConveyorBelt__base__type} from './FGBuildableConveyorBelt';
 
@@ -10,7 +7,10 @@ import {
 	boolean__type,
 } from '../../../common/common/scalar';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {
+	transformation__type,
+	NativeClass__type,
+} from '../../../common/common/unassigned';
 
 export type FGBuildableConveyorLift__type =
 	FGBuildableConveyorBelt__base__type & {

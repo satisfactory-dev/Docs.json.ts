@@ -12,9 +12,9 @@ import {
 
 import {
 	color_decimal__type,
-	quaternion__type,
-	xyz__type,
 	None__type,
+	xyz__type,
+	quaternion__type,
 	empty_object__type,
 } from '../../common/common/unassigned';
 
@@ -347,12 +347,6 @@ export type mSnappedPassthroughs__type = '';
 
 export type SpecifiedColor__type = {
 	SpecifiedColor: color_decimal__type;
-};
-
-export type transformation__type = {
-	Rotation: quaternion__type;
-	Translation: xyz__type;
-	Scale3D: xyz__type;
 };
 
 export type weaponState__type = 'EWS_Unequipped';

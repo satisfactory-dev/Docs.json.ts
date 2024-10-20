@@ -285,6 +285,24 @@
 				}
 			]
 		},
+		"transformation": {
+			"type": "string",
+			"minLength": 1,
+			"typed_string": {
+				"required": ["Rotation", "Translation", "Scale3D"],
+				"properties": {
+					"Rotation": {
+						"$ref": "common.schema.json#/$defs/quaternion"
+					},
+					"Translation": {
+						"$ref": "common.schema.json#/$defs/xyz"
+					},
+					"Scale3D": {
+						"$ref": "common.schema.json#/$defs/xyz"
+					}
+				}
+			}
+		},
 		"faux-1": {
 			"type": "object",
 			"$ref": "#/$defs/class",
@@ -340,6 +358,9 @@
 						},
 						{
 							"$ref": "#/$defs/xyz-array"
+						},
+						{
+							"$ref": "#/$defs/transformation"
 						}
 					]
 				}

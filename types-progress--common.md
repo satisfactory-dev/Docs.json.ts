@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (29 of 29)
+100.00% Complete (30 of 30)
 
 ## Basic Types
 
@@ -24,6 +24,7 @@
 -   [x] NativeClass
 -   [x] None (common type)
 -   [x] Texture2D
+-   [x] transformation
 -   [x] xyz-array
 
 ## UnrealEngineString

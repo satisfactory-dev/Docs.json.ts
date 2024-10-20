@@ -50,7 +50,7 @@
 -   [x] None (common type)
 -   [x] SpecifiedColor
 -   [x] Texture2D (common type)
--   [x] transformation
+-   [x] transformation (common type)
 -   [x] weaponState
 -   [x] xyz-array (common type)
 

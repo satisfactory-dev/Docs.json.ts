@@ -16,6 +16,7 @@
 	"common_type__pitch_yaw_roll__type": "common/unassigned",
 	"common_type__quaternion__type": "common/unassigned",
 	"common_type__Texture2D__type": "common/unassigned",
+	"common_type__transformation__type": "common/unassigned",
 	"common_type__UnrealEngineString__array__type": "common/unassigned",
 	"common_type__xy__type": "common/unassigned",
 	"common_type__xy__integer__type": "common/unassigned",

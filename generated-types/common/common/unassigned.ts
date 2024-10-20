@@ -55,7 +55,8 @@ export type faux_1__type = class__type & {
 		| quaternion__type
 		| pitch_yaw_roll__type
 		| xyz__integer__type
-		| xyz_array__type;
+		| xyz_array__type
+		| transformation__type;
 };
 
 export type faux_2__type = class__type & {
@@ -100,6 +101,12 @@ export type Texture2D__type =
 	| StringStartsWith<'Texture2D /Game/FactoryGame/'>
 	| None__type
 	| UnrealEngineString<'/Script/Engine.Texture2D'>;
+
+export type transformation__type = {
+	Rotation: quaternion__type;
+	Translation: xyz__type;
+	Scale3D: xyz__type;
+};
 
 export type UnrealEngineString__array__type = [
 	UnrealEngineString,
