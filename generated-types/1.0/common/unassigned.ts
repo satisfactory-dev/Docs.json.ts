@@ -323,8 +323,6 @@ export type mEventType__optional_csv__type =
 	| ''
 	| [mEventType__type, ...mEventType__type[]];
 
-export type mForm__type = 'RF_SOLID' | 'RF_LIQUID' | 'RF_GAS' | 'RF_INVALID';
-
 export type mGasType__type = 'GT_NORMAL' | 'GT_ENERGY';
 
 export type mLightControlData__type = {

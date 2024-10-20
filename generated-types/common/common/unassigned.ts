@@ -75,6 +75,12 @@ export type faux_5__type = class__type & {
 	faux_none: None__type;
 };
 
+export type faux_6__type = class__type & {
+	mForm: mForm__type;
+};
+
+export type mForm__type = 'RF_SOLID' | 'RF_LIQUID' | 'RF_GAS' | 'RF_INVALID';
+
 export type NativeClass__type = {
 	NativeClass: UnrealEngineString<
 		'/Script/CoreUObject.Class',

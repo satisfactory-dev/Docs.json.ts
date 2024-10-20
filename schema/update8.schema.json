@@ -3,10 +3,6 @@
 	"$id": "update8.schema.json",
 	"type": "array",
 	"$defs": {
-		"mForm": {
-			"type": "string",
-			"enum": ["RF_SOLID", "RF_LIQUID", "RF_GAS", "RF_INVALID"]
-		},
 		"ItemClass": {
 			"type": "string",
 			"minLength": 1,
@@ -261,7 +257,7 @@
 					]
 				},
 				"mForm": {
-					"$ref": "#/$defs/mForm"
+					"$ref": "common.schema.json#/$defs/mForm"
 				}
 			}
 		},

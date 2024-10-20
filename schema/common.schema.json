@@ -303,6 +303,10 @@
 				}
 			}
 		},
+		"mForm": {
+			"type": "string",
+			"enum": ["RF_SOLID", "RF_LIQUID", "RF_GAS", "RF_INVALID"]
+		},
 		"faux-1": {
 			"type": "object",
 			"$ref": "#/$defs/class",
@@ -409,6 +413,17 @@
 					"$ref": "#/$defs/None"
 				}
 			}
+		},
+		"faux-6": {
+			"type": "object",
+			"$ref": "#/$defs/class",
+			"required": ["mForm"],
+			"unevaluatedProperties": false,
+			"properties": {
+				"mForm": {
+					"$ref": "#/$defs/mForm"
+				}
+			}
 		}
 	},
 	"items": false,
@@ -449,6 +464,11 @@
 							{
 								"type": "object",
 								"$ref": "#/$defs/faux-5",
+								"unevaluatedProperties": false
+							},
+							{
+								"type": "object",
+								"$ref": "#/$defs/faux-6",
 								"unevaluatedProperties": false
 							}
 						]

@@ -1,5 +1,3 @@
-import {mForm__type} from '../../common/unassigned';
-
 import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
 
 import {
@@ -11,6 +9,7 @@ import {
 import {
 	Texture2D__type,
 	color__type,
+	mForm__type,
 	UnrealEngineString__array__type,
 	None__type,
 	class__type,

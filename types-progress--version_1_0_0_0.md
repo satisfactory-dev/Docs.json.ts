@@ -41,7 +41,7 @@
 -   [x] mDamageTypes
 -   [x] mDisableSnapOn
 -   [x] mDockingRuleSet
--   [x] mForm
+-   [x] mForm (common type)
 -   [x] mGasType
 -   [x] mLightControlData
 -   [x] Montage_1P

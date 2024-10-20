@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (30 of 30)
+100.00% Complete (32 of 32)
 
 ## Basic Types
 
@@ -19,8 +19,10 @@
 -   [x] faux-3
 -   [x] faux-4
 -   [x] faux-5
+-   [x] faux-6
 -   [x] integer-string
 -   [x] integer-string--signed
+-   [x] mForm
 -   [x] NativeClass
 -   [x] None (common type)
 -   [x] Texture2D

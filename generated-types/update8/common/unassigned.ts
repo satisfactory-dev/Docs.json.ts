@@ -248,8 +248,6 @@ export type mEventType__optional_csv__type =
 	| ''
 	| [mEventType__type, ...mEventType__type[]];
 
-export type mForm__type = 'RF_SOLID' | 'RF_LIQUID' | 'RF_GAS' | 'RF_INVALID';
-
 export type mLightControlData__type = {
 	Intensity: decimal_string__type;
 };

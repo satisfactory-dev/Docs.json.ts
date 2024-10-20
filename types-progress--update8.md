@@ -41,7 +41,7 @@
 -   [x] mDamageTypes
 -   [x] mDisableSnapOn
 -   [x] mDockingRuleSet
--   [x] mForm
+-   [x] mForm (common type)
 -   [x] mLightControlData
 -   [x] mOutputInventoryHandlerData
 -   [x] mPlatformDockingStatus
