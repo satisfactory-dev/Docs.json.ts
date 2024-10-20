@@ -1,7 +1,5 @@
 import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
 
-import {ItemClass__type} from '../../common/unassigned';
-
 import {
 	integer_string__type,
 	boolean__type,
@@ -10,6 +8,7 @@ import {
 
 import {
 	empty_object__type,
+	ItemClass__type,
 	class__no_description_or_display_name__type,
 } from '../../../common/common/unassigned';
 

@@ -307,6 +307,54 @@
 			"type": "string",
 			"enum": ["RF_SOLID", "RF_LIQUID", "RF_GAS", "RF_INVALID"]
 		},
+		"ItemClass": {
+			"type": "string",
+			"minLength": 1,
+			"typed_string": {
+				"minItems": 1,
+				"items": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["ItemClass"],
+						"properties": {
+							"ItemClass": {
+								"type": "string",
+								"minLength": 1,
+								"UnrealEngineString": true
+							},
+							"Amount": {
+								"$ref": "common.schema.json#/$defs/integer-string"
+							}
+						}
+					}
+				}
+			}
+		},
+		"ItemClass--amount-required": {
+			"type": "string",
+			"minLength": 1,
+			"typed_string": {
+				"minItems": 1,
+				"items": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["ItemClass", "Amount"],
+						"properties": {
+							"ItemClass": {
+								"type": "string",
+								"minLength": 1,
+								"UnrealEngineString": true
+							},
+							"Amount": {
+								"$ref": "common.schema.json#/$defs/integer-string"
+							}
+						}
+					}
+				}
+			}
+		},
 		"faux-1": {
 			"type": "object",
 			"$ref": "#/$defs/class",
@@ -365,6 +413,12 @@
 						},
 						{
 							"$ref": "#/$defs/transformation"
+						},
+						{
+							"$ref": "#/$defs/ItemClass"
+						},
+						{
+							"$ref": "#/$defs/ItemClass--amount-required"
 						}
 					]
 				}

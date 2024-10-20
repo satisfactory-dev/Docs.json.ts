@@ -274,8 +274,8 @@
 
 ## ItemClass
 
--   [x] ItemClass
--   [x] ItemClass--amount-required
+-   [x] ItemClass (common type)
+-   [x] ItemClass--amount-required (common type)
 
 ## mEventType
 

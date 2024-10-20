@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (32 of 32)
+100.00% Complete (34 of 34)
 
 ## Basic Types
 
@@ -28,6 +28,11 @@
 -   [x] Texture2D
 -   [x] transformation
 -   [x] xyz-array
+
+## ItemClass
+
+-   [x] ItemClass
+-   [x] ItemClass--amount-required
 
 ## UnrealEngineString
 

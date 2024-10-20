@@ -5,7 +5,6 @@ import {
 } from '../../utils/validators';
 
 import {
-	ItemClass__type,
 	SpecifiedColor__type,
 	mEventType__optional_csv__type,
 } from '../../common/unassigned';
@@ -19,6 +18,7 @@ import {
 
 import {
 	UnrealEngineString__array__type,
+	ItemClass__type,
 	quaternion__type,
 	xy__type,
 	empty_object__type,

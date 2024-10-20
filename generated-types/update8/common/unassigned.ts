@@ -3,7 +3,6 @@ import {UnrealEngineString} from '../utils/validators';
 import {FGBuildableResourceExtractor__miner__base__type} from '../classes/CoreUObject/FGBuildableResourceExtractor';
 
 import {
-	integer_string__type,
 	decimal_string__type,
 	boolean__type,
 } from '../../common/common/scalar';
@@ -36,28 +35,6 @@ export type FGBuildableResourceExtractor__miner_mk3__type =
 	};
 
 export type InfinityExtrap__type = 'RCCE_Constant';
-
-export type ItemClass__type = [
-	{
-		ItemClass: UnrealEngineString;
-		Amount?: integer_string__type;
-	},
-	...{
-		ItemClass: UnrealEngineString;
-		Amount?: integer_string__type;
-	}[],
-];
-
-export type ItemClass__amount_required__type = [
-	{
-		ItemClass: UnrealEngineString;
-		Amount: integer_string__type;
-	},
-	...{
-		ItemClass: UnrealEngineString;
-		Amount: integer_string__type;
-	}[],
-];
 
 export type mAspect__type = 'RSA_None';
 

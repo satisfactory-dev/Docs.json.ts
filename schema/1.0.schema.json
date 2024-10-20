@@ -7,54 +7,6 @@
 			"type": "string",
 			"enum": ["GT_NORMAL", "GT_ENERGY"]
 		},
-		"ItemClass": {
-			"type": "string",
-			"minLength": 1,
-			"typed_string": {
-				"minItems": 1,
-				"items": {
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"required": ["ItemClass"],
-						"properties": {
-							"ItemClass": {
-								"type": "string",
-								"minLength": 1,
-								"UnrealEngineString": true
-							},
-							"Amount": {
-								"$ref": "common.schema.json#/$defs/integer-string"
-							}
-						}
-					}
-				}
-			}
-		},
-		"ItemClass--amount-required": {
-			"type": "string",
-			"minLength": 1,
-			"typed_string": {
-				"minItems": 1,
-				"items": {
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"required": ["ItemClass", "Amount"],
-						"properties": {
-							"ItemClass": {
-								"type": "string",
-								"minLength": 1,
-								"UnrealEngineString": true
-							},
-							"Amount": {
-								"$ref": "common.schema.json#/$defs/integer-string"
-							}
-						}
-					}
-				}
-			}
-		},
 		"FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor": {
 			"type": "object",
 			"$ref": "common.schema.json#/$defs/class",
@@ -975,14 +927,14 @@
 							"const": ""
 						},
 						{
-							"$ref": "#/$defs/ItemClass"
+							"$ref": "common.schema.json#/$defs/ItemClass"
 						}
 					]
 				},
 				"mProduct": {
 					"oneOf": [
 						{"type": "string", "const": ""},
-						{"$ref": "#/$defs/ItemClass"}
+						{"$ref": "common.schema.json#/$defs/ItemClass"}
 					]
 				},
 				"mManufacturingMenuPriority": {
@@ -1046,7 +998,7 @@
 				"mIngredients": {
 					"oneOf": [
 						{
-							"$ref": "#/$defs/ItemClass--amount-required"
+							"$ref": "common.schema.json#/$defs/ItemClass--amount-required"
 						},
 						{
 							"type": "string",
@@ -1055,7 +1007,7 @@
 					]
 				},
 				"mProduct": {
-					"$ref": "#/$defs/ItemClass--amount-required"
+					"$ref": "common.schema.json#/$defs/ItemClass--amount-required"
 				}
 			}
 		},
@@ -1468,7 +1420,7 @@
 					"const": "BP_UnlockGiveItem_C"
 				},
 				"mItemsToGive": {
-					"$ref": "#/$defs/ItemClass"
+					"$ref": "common.schema.json#/$defs/ItemClass"
 				}
 			}
 		},
@@ -1698,7 +1650,7 @@
 							"const": ""
 						},
 						{
-							"$ref": "#/$defs/ItemClass"
+							"$ref": "common.schema.json#/$defs/ItemClass"
 						}
 					]
 				},
@@ -2809,7 +2761,7 @@
 							"const": ""
 						},
 						{
-							"$ref": "#/$defs/ItemClass"
+							"$ref": "common.schema.json#/$defs/ItemClass"
 						}
 					]
 				},
