@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (243 of 243)
+100.00% Complete (247 of 247)
 
 ## Basic Types
 
@@ -58,7 +58,11 @@
 
 ## common-base
 
+-   [x] common-base--FGBuildingDescriptor--ClassName (common type)
+-   [x] common-base--FGBuildingDescriptor--mForm (common type)
+-   [x] common-base--FGBuildingDescriptor--mSubCategories (common type)
 -   [x] common-base--FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor (common type)
+-   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor--mSubCategories (common type)
 
 ## FGAmmoType
 

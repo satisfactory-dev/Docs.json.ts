@@ -53,28 +53,7 @@
 			"required": ["mSubCategories", "mForm"],
 			"properties": {
 				"mSubCategories": {
-					"oneOf": [
-						{
-							"type": "string",
-							"const": ""
-						},
-						{
-							"type": "string",
-							"minLength": 1,
-							"typed_string": {
-								"minItems": 1,
-								"items": {
-									"type": "string",
-									"minLength": 1,
-									"UnrealEngineString": {
-										"right": {
-											"starts_with": "/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Transport/"
-										}
-									}
-								}
-							}
-						}
-					]
+					"$ref": "common.schema.json#/$defs/common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor--mSubCategories"
 				},
 				"mForm": {
 					"$ref": "common.schema.json#/$defs/mForm"
@@ -98,46 +77,13 @@
 			"required": ["mForm", "mSubCategories", "ClassName"],
 			"properties": {
 				"ClassName": {
-					"type": "string",
-					"minLength": 1,
-					"not": {
-						"type": "string",
-						"enum": [
-							"Desc_ConveyorPole_C",
-							"Desc_PipelineSupport_C",
-							"Desc_PipeSupportStackable_C",
-							"Desc_HyperPoleStackable_C",
-							"Desc_PipeHyperSupport_C",
-							"Desc_ConveyorPoleStackable_C"
-						]
-					}
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildingDescriptor--ClassName"
 				},
 				"mForm": {
-					"type": "string",
-					"const": "RF_INVALID"
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildingDescriptor--mForm"
 				},
 				"mSubCategories": {
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"minItems": 1,
-						"items": {
-							"type": "string",
-							"minLength": 1,
-							"UnrealEngineString": {
-								"right": {
-									"starts_with": [
-										"/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Special/",
-										"/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Walls/",
-										"/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Transport/",
-										"/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Power/",
-										"/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Production/",
-										"/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Organisation/"
-									]
-								}
-							}
-						}
-					}
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildingDescriptor--mSubCategories"
 				}
 			}
 		},

@@ -515,6 +515,72 @@
 				}
 			}
 		},
+		"common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor--mSubCategories": {
+			"oneOf": [
+				{
+					"type": "string",
+					"const": ""
+				},
+				{
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"minItems": 1,
+						"items": {
+							"type": "string",
+							"minLength": 1,
+							"UnrealEngineString": {
+								"right": {
+									"starts_with": "/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Transport/"
+								}
+							}
+						}
+					}
+				}
+			]
+		},
+		"common-base--FGBuildingDescriptor--ClassName": {
+			"type": "string",
+			"minLength": 1,
+			"not": {
+				"type": "string",
+				"enum": [
+					"Desc_ConveyorPole_C",
+					"Desc_PipelineSupport_C",
+					"Desc_PipeSupportStackable_C",
+					"Desc_HyperPoleStackable_C",
+					"Desc_PipeHyperSupport_C",
+					"Desc_ConveyorPoleStackable_C"
+				]
+			}
+		},
+		"common-base--FGBuildingDescriptor--mForm": {
+			"type": "string",
+			"const": "RF_INVALID"
+		},
+		"common-base--FGBuildingDescriptor--mSubCategories": {
+			"type": "string",
+			"minLength": 1,
+			"typed_string": {
+				"minItems": 1,
+				"items": {
+					"type": "string",
+					"minLength": 1,
+					"UnrealEngineString": {
+						"right": {
+							"starts_with": [
+								"/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Special/",
+								"/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Walls/",
+								"/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Transport/",
+								"/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Power/",
+								"/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Production/",
+								"/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Organisation/"
+							]
+						}
+					}
+				}
+			}
+		},
 		"faux-1": {
 			"type": "object",
 			"$ref": "#/$defs/class",
@@ -654,6 +720,42 @@
 					"$ref": "#/$defs/ItemClass--amount-required"
 				}
 			}
+		},
+		"faux-9": {
+			"type": "object",
+			"$ref": "#/$defs/class",
+			"required": ["faux", "mSubCategories"],
+			"unevaluatedProperties": false,
+			"properties": {
+				"faux": {
+					"type": "string",
+					"const": "FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor--mSubCategories"
+				},
+				"mSubCategories": {
+					"$ref": "#/$defs/common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor--mSubCategories"
+				}
+			}
+		},
+		"faux-10": {
+			"type": "object",
+			"$ref": "#/$defs/class",
+			"required": ["faux", "mForm", "mSubCategories"],
+			"unevaluatedProperties": false,
+			"properties": {
+				"faux": {
+					"type": "string",
+					"const": "FGBuildingDescriptor--properties"
+				},
+				"ClassName": {
+					"$ref": "#/$defs/common-base--FGBuildingDescriptor--ClassName"
+				},
+				"mForm": {
+					"$ref": "#/$defs/common-base--FGBuildingDescriptor--mForm"
+				},
+				"mSubCategories": {
+					"$ref": "#/$defs/common-base--FGBuildingDescriptor--mSubCategories"
+				}
+			}
 		}
 	},
 	"items": false,
@@ -714,6 +816,16 @@
 							{
 								"type": "object",
 								"$ref": "#/$defs/common-base--FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor",
+								"unevaluatedProperties": false
+							},
+							{
+								"type": "object",
+								"$ref": "#/$defs/faux-9",
+								"unevaluatedProperties": false
+							},
+							{
+								"type": "object",
+								"$ref": "#/$defs/faux-10",
 								"unevaluatedProperties": false
 							}
 						]

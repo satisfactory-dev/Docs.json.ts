@@ -36,6 +36,44 @@ export type color_decimal__type = {
 	A: decimal_string__type;
 };
 
+export type common_base__FGBuildingDescriptor__ClassName__type = Exclude<
+	string,
+	| ''
+	| 'Desc_ConveyorPole_C'
+	| 'Desc_PipelineSupport_C'
+	| 'Desc_PipeSupportStackable_C'
+	| 'Desc_HyperPoleStackable_C'
+	| 'Desc_PipeHyperSupport_C'
+	| 'Desc_ConveyorPoleStackable_C'
+>;
+
+export type common_base__FGBuildingDescriptor__mForm__type = 'RF_INVALID';
+
+export type common_base__FGBuildingDescriptor__mSubCategories__type = [
+	UnrealEngineString<
+		'/Script/Engine.BlueprintGeneratedClass',
+		StringStartsWith<
+			| '/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Special/'
+			| '/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Walls/'
+			| '/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Transport/'
+			| '/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Power/'
+			| '/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Production/'
+			| '/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Organisation/'
+		>
+	>,
+	...UnrealEngineString<
+		'/Script/Engine.BlueprintGeneratedClass',
+		StringStartsWith<
+			| '/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Special/'
+			| '/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Walls/'
+			| '/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Transport/'
+			| '/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Power/'
+			| '/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Production/'
+			| '/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Organisation/'
+		>
+	>[],
+];
+
 export type common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type =
 	class__type & {
 		mAbbreviatedDisplayName: string;
@@ -86,6 +124,20 @@ export type common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescr
 		mScannerLightColor: color__type;
 	};
 
+export type common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__mSubCategories__type =
+
+		| ''
+		| [
+				UnrealEngineString<
+					'/Script/Engine.BlueprintGeneratedClass',
+					StringStartsWith<'/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Transport/'>
+				>,
+				...UnrealEngineString<
+					'/Script/Engine.BlueprintGeneratedClass',
+					StringStartsWith<'/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Transport/'>
+				>[],
+		];
+
 export type empty_object__type = '()';
 
 export type faux_1__type = class__type & {
@@ -107,6 +159,13 @@ export type faux_1__type = class__type & {
 		| xyz__integer__type
 		| xyz_array__type
 		| transformation__type;
+};
+
+export type faux_10__type = class__type & {
+	faux: 'FGBuildingDescriptor--properties';
+	ClassName?: common_base__FGBuildingDescriptor__ClassName__type;
+	mForm: common_base__FGBuildingDescriptor__mForm__type;
+	mSubCategories: common_base__FGBuildingDescriptor__mSubCategories__type;
 };
 
 export type faux_2__type = class__type & {
@@ -135,6 +194,11 @@ export type faux_7__type = class__type & {
 
 export type faux_8__type = class__type & {
 	ItemClass: ItemClass__amount_required__type;
+};
+
+export type faux_9__type = class__type & {
+	faux: 'FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor--mSubCategories';
+	mSubCategories: common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__mSubCategories__type;
 };
 
 export type ItemClass__type = [

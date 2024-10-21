@@ -8,6 +8,8 @@ import {
 	faux_7__type,
 	faux_8__type,
 	common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type,
+	faux_9__type,
+	faux_10__type,
 	NativeClass__type,
 } from '../../common/unassigned';
 
@@ -23,6 +25,8 @@ export type FGFauxEntry__NativeClass = NativeClass__type & {
 			| faux_7__type
 			| faux_8__type
 			| common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type
+			| faux_9__type
+			| faux_10__type
 		),
 		...(
 			| faux_1__type
@@ -34,6 +38,8 @@ export type FGFauxEntry__NativeClass = NativeClass__type & {
 			| faux_7__type
 			| faux_8__type
 			| common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type
+			| faux_9__type
+			| faux_10__type
 		)[],
 	];
 };

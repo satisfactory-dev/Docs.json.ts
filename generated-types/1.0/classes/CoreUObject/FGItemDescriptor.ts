@@ -1,6 +1,6 @@
 import {mGasType__type} from '../../common/unassigned';
 
-import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
+import {StringStartsWith} from '../../utils/validators';
 
 import {
 	boolean__type,
@@ -8,6 +8,7 @@ import {
 } from '../../../common/common/scalar';
 
 import {
+	common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__mSubCategories__type,
 	mForm__type,
 	None__type,
 	common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type,
@@ -33,18 +34,7 @@ export type FGItemDescriptor__FGResourceDescriptor__type =
 
 export type FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type =
 	FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type & {
-		mSubCategories:
-			| ''
-			| [
-					UnrealEngineString<
-						'/Script/Engine.BlueprintGeneratedClass',
-						StringStartsWith<'/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Transport/'>
-					>,
-					...UnrealEngineString<
-						'/Script/Engine.BlueprintGeneratedClass',
-						StringStartsWith<'/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Transport/'>
-					>[],
-			];
+		mSubCategories: common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__mSubCategories__type;
 		mForm: mForm__type;
 	};
 
