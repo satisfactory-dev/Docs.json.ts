@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (34 of 34)
+100.00% Complete (36 of 36)
 
 ## Basic Types
 
@@ -20,6 +20,8 @@
 -   [x] faux-4
 -   [x] faux-5
 -   [x] faux-6
+-   [x] faux-7
+-   [x] faux-8
 -   [x] integer-string
 -   [x] integer-string--signed
 -   [x] mForm

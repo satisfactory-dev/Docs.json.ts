@@ -56,9 +56,7 @@ export type faux_1__type = class__type & {
 		| pitch_yaw_roll__type
 		| xyz__integer__type
 		| xyz_array__type
-		| transformation__type
-		| ItemClass__type
-		| ItemClass__amount_required__type;
+		| transformation__type;
 };
 
 export type faux_2__type = class__type & {
@@ -79,6 +77,14 @@ export type faux_5__type = class__type & {
 
 export type faux_6__type = class__type & {
 	mForm: mForm__type;
+};
+
+export type faux_7__type = class__type & {
+	ItemClass_opt: ItemClass__type;
+};
+
+export type faux_8__type = class__type & {
+	ItemClass: ItemClass__amount_required__type;
 };
 
 export type ItemClass__type = [

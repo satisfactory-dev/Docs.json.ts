@@ -413,12 +413,6 @@
 						},
 						{
 							"$ref": "#/$defs/transformation"
-						},
-						{
-							"$ref": "#/$defs/ItemClass"
-						},
-						{
-							"$ref": "#/$defs/ItemClass--amount-required"
 						}
 					]
 				}
@@ -478,6 +472,28 @@
 					"$ref": "#/$defs/mForm"
 				}
 			}
+		},
+		"faux-7": {
+			"type": "object",
+			"$ref": "#/$defs/class",
+			"required": ["ItemClass_opt"],
+			"unevaluatedProperties": false,
+			"properties": {
+				"ItemClass_opt": {
+					"$ref": "#/$defs/ItemClass"
+				}
+			}
+		},
+		"faux-8": {
+			"type": "object",
+			"$ref": "#/$defs/class",
+			"required": ["ItemClass"],
+			"unevaluatedProperties": false,
+			"properties": {
+				"ItemClass": {
+					"$ref": "#/$defs/ItemClass--amount-required"
+				}
+			}
 		}
 	},
 	"items": false,
@@ -523,6 +539,16 @@
 							{
 								"type": "object",
 								"$ref": "#/$defs/faux-6",
+								"unevaluatedProperties": false
+							},
+							{
+								"type": "object",
+								"$ref": "#/$defs/faux-7",
+								"unevaluatedProperties": false
+							},
+							{
+								"type": "object",
+								"$ref": "#/$defs/faux-8",
 								"unevaluatedProperties": false
 							}
 						]
