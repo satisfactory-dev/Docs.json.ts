@@ -355,6 +355,166 @@
 				}
 			}
 		},
+		"common-base--FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/class",
+			"required": [
+				"mAbbreviatedDisplayName",
+				"mStackSize",
+				"mCanBeDiscarded",
+				"mRememberPickUp",
+				"mEnergyValue",
+				"mRadioactiveDecay",
+				"mSmallIcon",
+				"mPersistentBigIcon",
+				"mCrosshairMaterial",
+				"mDescriptorStatBars",
+				"mMenuPriority",
+				"mFluidColor",
+				"mGasColor",
+				"mCompatibleItemDescriptors",
+				"mScannableType",
+				"mShouldOverrideScannerDisplayText",
+				"mScannerDisplayText",
+				"mScannerLightColor"
+			],
+			"properties": {
+				"mAbbreviatedDisplayName": {
+					"type": "string"
+				},
+				"mStackSize": {
+					"type": "string",
+					"enum": [
+						"SS_ONE",
+						"SS_FLUID",
+						"SS_SMALL",
+						"SS_MEDIUM",
+						"SS_BIG",
+						"SS_HUGE"
+					]
+				},
+				"mCanBeDiscarded": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mRememberPickUp": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mEnergyValue": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mRadioactiveDecay": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mSmallIcon": {
+					"$ref": "common.schema.json#/$defs/Texture2D"
+				},
+				"mPersistentBigIcon": {
+					"$ref": "common.schema.json#/$defs/Texture2D"
+				},
+				"mCrosshairMaterial": {
+					"oneOf": [
+						{
+							"type": "string",
+							"enum": ["", "None"]
+						},
+						{
+							"type": "string",
+							"string_starts_with": "/Game/FactoryGame/Interface/UI/Material/Crosshairs/"
+						}
+					]
+				},
+				"mDescriptorStatBars": {
+					"oneOf": [
+						{
+							"type": "string",
+							"const": ""
+						},
+						{
+							"type": "string",
+							"minLength": 1,
+							"typed_string": {
+								"minItems": 1,
+								"items": {
+									"type": "string",
+									"minLength": 1,
+									"typed_string": {
+										"required": ["Value"],
+										"properties": {
+											"Value": {
+												"$ref": "common.schema.json#/$defs/integer-string"
+											}
+										}
+									}
+								}
+							}
+						}
+					]
+				},
+				"mMenuPriority": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mFluidColor": {
+					"$ref": "common.schema.json#/$defs/color"
+				},
+				"mGasColor": {
+					"$ref": "common.schema.json#/$defs/color"
+				},
+				"mCompatibleItemDescriptors": {
+					"oneOf": [
+						{
+							"type": "string",
+							"const": ""
+						},
+						{
+							"type": "string",
+							"minLength": 1,
+							"typed_string": {
+								"minItems": 1,
+								"items": {
+									"type": "string",
+									"minLength": 1,
+									"typed_string": {
+										"required": [
+											"CompatibleItemType",
+											"CompatibleItemDescriptors"
+										],
+										"properties": {
+											"CompatibleItemType": {
+												"type": "string",
+												"enum": [
+													"CIT_AMMO",
+													"CIT_WEAPON"
+												]
+											},
+											"CompatibleItemDescriptors": {
+												"$ref": "common.schema.json#/$defs/UnrealEngineString--array"
+											}
+										}
+									}
+								}
+							}
+						}
+					]
+				},
+				"mScannableType": {
+					"type": "string",
+					"enum": [
+						"RTWOT_Default",
+						"RTWOT_WeakSignal",
+						"RTWOT_Flora"
+					]
+				},
+				"mShouldOverrideScannerDisplayText": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mScannerDisplayText": {
+					"type": "string"
+				},
+				"mScannerLightColor": {
+					"$ref": "common.schema.json#/$defs/color"
+				}
+			}
+		},
 		"faux-1": {
 			"type": "object",
 			"$ref": "#/$defs/class",
@@ -549,6 +709,11 @@
 							{
 								"type": "object",
 								"$ref": "#/$defs/faux-8",
+								"unevaluatedProperties": false
+							},
+							{
+								"type": "object",
+								"$ref": "#/$defs/common-base--FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor",
 								"unevaluatedProperties": false
 							}
 						]

@@ -4,74 +4,24 @@ import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
 
 import {
 	boolean__type,
-	decimal_string__type,
 	integer_string__type,
 } from '../../../common/common/scalar';
 
 import {
-	Texture2D__type,
-	color__type,
 	mForm__type,
-	UnrealEngineString__array__type,
 	None__type,
-	class__type,
+	common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned';
 
 export type FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type =
-	class__type & {
-		mAbbreviatedDisplayName: string;
-		mStackSize:
-			| 'SS_ONE'
-			| 'SS_FLUID'
-			| 'SS_SMALL'
-			| 'SS_MEDIUM'
-			| 'SS_BIG'
-			| 'SS_HUGE';
-		mCanBeDiscarded: boolean__type;
-		mRememberPickUp: boolean__type;
-		mEnergyValue: decimal_string__type;
-		mRadioactiveDecay: decimal_string__type;
-		mSmallIcon: Texture2D__type;
-		mPersistentBigIcon: Texture2D__type;
-		mCrosshairMaterial:
-			| ('' | 'None')
-			| StringStartsWith<'/Game/FactoryGame/Interface/UI/Material/Crosshairs/'>;
-		mDescriptorStatBars:
-			| ''
-			| [
-					{
-						Value: integer_string__type;
-					},
-					...{
-						Value: integer_string__type;
-					}[],
-			];
-		mMenuPriority: decimal_string__type;
-		mFluidColor: color__type;
-		mGasColor: color__type;
+	common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type & {
 		mGasType: mGasType__type;
-		mCompatibleItemDescriptors:
-			| ''
-			| [
-					{
-						CompatibleItemType: 'CIT_AMMO' | 'CIT_WEAPON';
-						CompatibleItemDescriptors: UnrealEngineString__array__type;
-					},
-					...{
-						CompatibleItemType: 'CIT_AMMO' | 'CIT_WEAPON';
-						CompatibleItemDescriptors: UnrealEngineString__array__type;
-					}[],
-			];
 		mClassToScanFor:
 			| None__type
 			| StringStartsWith<'/Game/FactoryGame/Resource/Environment/'>
 			| StringStartsWith<'/Game/FactoryGame/World/Benefit/'>
 			| StringStartsWith<'/Game/FactoryGame/Prototype/WAT/'>;
-		mScannableType: 'RTWOT_Default' | 'RTWOT_WeakSignal' | 'RTWOT_Flora';
-		mShouldOverrideScannerDisplayText: boolean__type;
-		mScannerDisplayText: string;
-		mScannerLightColor: color__type;
 		mIsAlienItem: boolean__type;
 		mNeedsPickUpMarker: boolean__type;
 	};

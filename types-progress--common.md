@@ -1,17 +1,17 @@
 # Types Progress
 
-100.00% Complete (36 of 36)
+100.00% Complete (42 of 42)
 
 ## Basic Types
 
--   [x] boolean
+-   [x] boolean (common type)
 -   [x] boolean-extended
--   [x] class
+-   [x] class (common type)
 -   [x] class--no-description
 -   [x] class--no-description-or-display-name
--   [x] color
+-   [x] color (common type)
 -   [x] color-decimal
--   [x] decimal-string
+-   [x] decimal-string (common type)
 -   [x] decimal-string--signed
 -   [x] empty-object
 -   [x] faux-1
@@ -27,9 +27,13 @@
 -   [x] mForm
 -   [x] NativeClass
 -   [x] None (common type)
--   [x] Texture2D
+-   [x] Texture2D (common type)
 -   [x] transformation
 -   [x] xyz-array
+
+## common-base
+
+-   [x] common-base--FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor
 
 ## ItemClass
 

@@ -36,6 +36,56 @@ export type color_decimal__type = {
 	A: decimal_string__type;
 };
 
+export type common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type =
+	class__type & {
+		mAbbreviatedDisplayName: string;
+		mStackSize:
+			| 'SS_ONE'
+			| 'SS_FLUID'
+			| 'SS_SMALL'
+			| 'SS_MEDIUM'
+			| 'SS_BIG'
+			| 'SS_HUGE';
+		mCanBeDiscarded: boolean__type;
+		mRememberPickUp: boolean__type;
+		mEnergyValue: decimal_string__type;
+		mRadioactiveDecay: decimal_string__type;
+		mSmallIcon: Texture2D__type;
+		mPersistentBigIcon: Texture2D__type;
+		mCrosshairMaterial:
+			| ('' | 'None')
+			| StringStartsWith<'/Game/FactoryGame/Interface/UI/Material/Crosshairs/'>;
+		mDescriptorStatBars:
+			| ''
+			| [
+					{
+						Value: integer_string__type;
+					},
+					...{
+						Value: integer_string__type;
+					}[],
+			];
+		mMenuPriority: decimal_string__type;
+		mFluidColor: color__type;
+		mGasColor: color__type;
+		mCompatibleItemDescriptors:
+			| ''
+			| [
+					{
+						CompatibleItemType: 'CIT_AMMO' | 'CIT_WEAPON';
+						CompatibleItemDescriptors: UnrealEngineString__array__type;
+					},
+					...{
+						CompatibleItemType: 'CIT_AMMO' | 'CIT_WEAPON';
+						CompatibleItemDescriptors: UnrealEngineString__array__type;
+					}[],
+			];
+		mScannableType: 'RTWOT_Default' | 'RTWOT_WeakSignal' | 'RTWOT_Flora';
+		mShouldOverrideScannerDisplayText: boolean__type;
+		mScannerDisplayText: string;
+		mScannerLightColor: color__type;
+	};
+
 export type empty_object__type = '()';
 
 export type faux_1__type = class__type & {

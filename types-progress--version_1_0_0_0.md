@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (242 of 242)
+100.00% Complete (243 of 243)
 
 ## Basic Types
 
@@ -55,6 +55,10 @@
 -   [x] transformation (common type)
 -   [x] weaponState
 -   [x] xyz-array (common type)
+
+## common-base
+
+-   [x] common-base--FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor (common type)
 
 ## FGAmmoType
 

@@ -7,6 +7,7 @@ import {
 	faux_6__type,
 	faux_7__type,
 	faux_8__type,
+	common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type,
 	NativeClass__type,
 } from '../../common/unassigned';
 
@@ -21,6 +22,7 @@ export type FGFauxEntry__NativeClass = NativeClass__type & {
 			| faux_6__type
 			| faux_7__type
 			| faux_8__type
+			| common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type
 		),
 		...(
 			| faux_1__type
@@ -31,6 +33,7 @@ export type FGFauxEntry__NativeClass = NativeClass__type & {
 			| faux_6__type
 			| faux_7__type
 			| faux_8__type
+			| common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type
 		)[],
 	];
 };
