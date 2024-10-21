@@ -279,9 +279,11 @@ export class DocsTsGenerator {
 				let maybe_json: unknown;
 				try {
 					if (docs.cache_path) {
+						const file_sha512 = createHash('sha512');
+						file_sha512.update(await readFile(docs.docs_path));
 						const utf8_filename = basename(docs.docs_path).replace(
 							/\.json$/,
-							'.utf8.json',
+							`.utf8.${file_sha512.digest('hex')}.json`,
 						);
 						const utf8_filepath = `${docs.cache_path}/${utf8_filename}`;
 
