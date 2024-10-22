@@ -1,10 +1,9 @@
 import {StringPassedRegExp} from '../../utils/validators';
 
-import {mEventType__optional_csv__type} from '../../common/unassigned';
-
 import {decimal_string__type} from '../../../common/common/scalar';
 
 import {
+	mEventType__optional_csv__type,
 	ItemClass__type,
 	class__no_description__type,
 	NativeClass__type,

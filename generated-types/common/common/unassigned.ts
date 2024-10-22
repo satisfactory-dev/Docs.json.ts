@@ -228,6 +228,11 @@ export type faux_11__type = class__type & {
 	FGBuildable: common_base__FGBuildable__base__type;
 };
 
+export type faux_12__type = class__type & {
+	faux: 'mEventType--optional-csv';
+	mEventType__optional_csv?: mEventType__optional_csv__type;
+};
+
 export type faux_2__type = class__type & {
 	faux_bool: boolean__type;
 };
@@ -282,6 +287,12 @@ export type ItemClass__amount_required__type = [
 		Amount: integer_string__type;
 	}[],
 ];
+
+export type mEventType__type = 'EV_Christmas';
+
+export type mEventType__optional_csv__type =
+	| ''
+	| [mEventType__type, ...mEventType__type[]];
 
 export type mForm__type = 'RF_SOLID' | 'RF_LIQUID' | 'RF_GAS' | 'RF_INVALID';
 

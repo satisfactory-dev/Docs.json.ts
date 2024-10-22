@@ -19,6 +19,8 @@
 	"common_type__empty_object__type": "common/unassigned",
 	"common_type__ItemClass__type": "common/unassigned",
 	"common_type__ItemClass__amount_required__type": "common/unassigned",
+	"common_type__mEventType__type": "common/unassigned",
+	"common_type__mEventType__optional_csv__type": "common/unassigned",
 	"common_type__mForm__type": "common/unassigned",
 	"common_type__NativeClass__type": "common/unassigned",
 	"common_type__None__type": "common/unassigned",

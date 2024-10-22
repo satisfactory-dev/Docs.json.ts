@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (52 of 52)
+100.00% Complete (55 of 55)
 
 ## Basic Types
 
@@ -17,6 +17,7 @@
 -   [x] faux-1
 -   [x] faux-10
 -   [x] faux-11
+-   [x] faux-12
 -   [x] faux-2
 -   [x] faux-3
 -   [x] faux-4
@@ -47,6 +48,11 @@
 
 -   [x] ItemClass
 -   [x] ItemClass--amount-required
+
+## mEventType
+
+-   [x] mEventType
+-   [x] mEventType--optional-csv
 
 ## UnrealEngineString
 

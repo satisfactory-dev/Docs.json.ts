@@ -529,7 +529,7 @@
 					]
 				},
 				"mRelevantEvents": {
-					"$ref": "#/$defs/mEventType--optional-csv"
+					"$ref": "common.schema.json#/$defs/mEventType--optional-csv"
 				},
 				"mVariablePowerConsumptionConstant": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -550,28 +550,6 @@
 					"$ref": "common.schema.json#/$defs/ItemClass--amount-required"
 				}
 			}
-		},
-		"mEventType": {
-			"type": "string",
-			"enum": ["EV_Christmas"]
-		},
-		"mEventType--optional-csv": {
-			"oneOf": [
-				{
-					"type": "string",
-					"const": ""
-				},
-				{
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"minItems": 1,
-						"items": {
-							"$ref": "#/$defs/mEventType"
-						}
-					}
-				}
-			]
 		},
 		"FGBuildableBlueprintDesigner": {
 			"type": "object",
@@ -1216,7 +1194,7 @@
 					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mRelevantEvents": {
-					"$ref": "#/$defs/mEventType--optional-csv"
+					"$ref": "common.schema.json#/$defs/mEventType--optional-csv"
 				},
 				"mIncludeInBuilds": {
 					"type": "string",
@@ -5964,7 +5942,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mEventType": {
-					"$ref": "#/$defs/mEventType"
+					"$ref": "common.schema.json#/$defs/mEventType"
 				}
 			}
 		},

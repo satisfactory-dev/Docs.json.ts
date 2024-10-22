@@ -288,8 +288,8 @@
 
 ## mEventType
 
--   [x] mEventType
--   [x] mEventType--optional-csv
+-   [x] mEventType (common type)
+-   [x] mEventType--optional-csv (common type)
 
 ## UnrealEngineString
 

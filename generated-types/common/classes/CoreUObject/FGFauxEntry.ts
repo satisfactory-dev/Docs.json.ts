@@ -11,6 +11,7 @@ import {
 	faux_9__type,
 	faux_10__type,
 	faux_11__type,
+	faux_12__type,
 	NativeClass__type,
 } from '../../common/unassigned';
 
@@ -29,6 +30,7 @@ export type FGFauxEntry__NativeClass = NativeClass__type & {
 			| faux_9__type
 			| faux_10__type
 			| faux_11__type
+			| faux_12__type
 		),
 		...(
 			| faux_1__type
@@ -43,6 +45,7 @@ export type FGFauxEntry__NativeClass = NativeClass__type & {
 			| faux_9__type
 			| faux_10__type
 			| faux_11__type
+			| faux_12__type
 		)[],
 	];
 };

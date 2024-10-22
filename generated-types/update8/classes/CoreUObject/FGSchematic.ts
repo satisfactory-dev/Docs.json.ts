@@ -4,10 +4,7 @@ import {
 	StringPassedRegExp,
 } from '../../utils/validators';
 
-import {
-	SpecifiedColor__type,
-	mEventType__optional_csv__type,
-} from '../../common/unassigned';
+import {SpecifiedColor__type} from '../../common/unassigned';
 
 import {
 	integer_string__type,
@@ -23,6 +20,7 @@ import {
 	xy__type,
 	empty_object__type,
 	Texture2D__type,
+	mEventType__optional_csv__type,
 	None__type,
 	class__type,
 	NativeClass__type,

@@ -749,6 +749,28 @@
 				}
 			}
 		},
+		"mEventType": {
+			"type": "string",
+			"enum": ["EV_Christmas"]
+		},
+		"mEventType--optional-csv": {
+			"oneOf": [
+				{
+					"type": "string",
+					"const": ""
+				},
+				{
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"minItems": 1,
+						"items": {
+							"$ref": "common.schema.json#/$defs/mEventType"
+						}
+					}
+				}
+			]
+		},
 		"faux-1": {
 			"type": "object",
 			"$ref": "#/$defs/class",
@@ -939,6 +961,21 @@
 					"$ref": "#/$defs/common-base--FGBuildable--base"
 				}
 			}
+		},
+		"faux-12": {
+			"type": "object",
+			"$ref": "#/$defs/class",
+			"required": ["faux", "mEventType--optional-csv"],
+			"unevaluatedProperties": false,
+			"properties": {
+				"faux": {
+					"type": "string",
+					"const": "mEventType--optional-csv"
+				},
+				"mEventType__optional_csv": {
+					"$ref": "#/$defs/mEventType--optional-csv"
+				}
+			}
 		}
 	},
 	"items": false,
@@ -1014,6 +1051,11 @@
 							{
 								"type": "object",
 								"$ref": "#/$defs/faux-11",
+								"unevaluatedProperties": false
+							},
+							{
+								"type": "object",
+								"$ref": "#/$defs/faux-12",
 								"unevaluatedProperties": false
 							}
 						]

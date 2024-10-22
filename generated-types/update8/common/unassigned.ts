@@ -219,12 +219,6 @@ export type mDockingRuleSet__type = {
 	DockForDuration: decimal_string__type;
 };
 
-export type mEventType__type = 'EV_Christmas';
-
-export type mEventType__optional_csv__type =
-	| ''
-	| [mEventType__type, ...mEventType__type[]];
-
 export type mLightControlData__type = {
 	Intensity: decimal_string__type;
 };
