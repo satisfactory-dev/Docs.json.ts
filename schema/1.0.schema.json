@@ -89,52 +89,25 @@
 		},
 		"FGBuildable--base": {
 			"type": "object",
-			"$ref": "common.schema.json#/$defs/class",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--base",
 			"required": [
-				"MaxRenderDistance",
-				"mAlternativeMaterialRecipes",
-				"mContainsComponents",
-				"mIsConsideredForBaseWeightValue",
 				"bForceLegacyBuildEffect",
 				"bForceBuildEffectSolo",
-				"mBuildEffectSpeed",
-				"mAllowColoring",
-				"mAllowPatterning",
 				"mInteractionRegisterPlayerWithCircuit",
-				"mSkipBuildEffect",
-				"mForceNetUpdateOnRegisterPlayer",
-				"mToggleDormancyOnInteraction",
-				"mIsMultiSpawnedBuildable",
-				"mShouldShowAttachmentPointVisuals",
-				"mCanContainLightweightInstances",
 				"mManagedByLightweightBuildableSubsystem",
 				"mRemoveBuildableFromSubsystemOnDismantle",
 				"mHasBeenRemovedFromSubsystem",
-				"mAffectsOcclusion",
-				"mOcclusionShape",
-				"mScaleCustomOffset",
-				"mCustomScaleType",
-				"mOcclusionBoxInfo",
-				"mAttachmentPoints",
 				"mReplicatedBuiltInsideBlueprintDesigner",
-				"mInteractingPlayers",
-				"mIsUseable",
 				"mClearanceData",
-				"mHideOnBuildEffectStart",
-				"mShouldModifyWorldGrid",
 				"mTimelapseBucketId",
 				"mTimelapseDelay",
 				"mAlienOverClockingZOffset",
 				"mAlienOverClockingAttenuationScalingFactor",
 				"mAlienOverClockingVolumeDB_RTPC",
 				"mAlienOverClockingHighpass_RTPC",
-				"mAlienOverClockingPitch_RTPC",
-				"mBlueprintBuildEffectID"
+				"mAlienOverClockingPitch_RTPC"
 			],
 			"properties": {
-				"MaxRenderDistance": {
-					"$ref": "common.schema.json#/$defs/decimal-string--signed"
-				},
 				"mAlternativeMaterialRecipes": {
 					"oneOf": [
 						{
@@ -244,25 +217,10 @@
 						}
 					]
 				},
-				"mContainsComponents": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mIsConsideredForBaseWeightValue": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
 				"bForceLegacyBuildEffect": {
 					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"bForceBuildEffectSolo": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mBuildEffectSpeed": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mAllowColoring": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mAllowPatterning": {
 					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mInteractionRegisterPlayerWithCircuit": {
@@ -283,9 +241,6 @@
 				"mShouldShowAttachmentPointVisuals": {
 					"$ref": "common.schema.json#/$defs/boolean"
 				},
-				"mCanContainLightweightInstances": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
 				"mManagedByLightweightBuildableSubsystem": {
 					"$ref": "common.schema.json#/$defs/boolean"
 				},
@@ -295,80 +250,11 @@
 				"mHasBeenRemovedFromSubsystem": {
 					"$ref": "common.schema.json#/$defs/boolean"
 				},
-				"mAffectsOcclusion": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mOcclusionShape": {
-					"type": "string",
-					"enum": [
-						"ROCS_Box",
-						"ROCS_Ramp",
-						"ROCS_Box_Special",
-						"ROCS_CornerRamp"
-					]
-				},
-				"mScaleCustomOffset": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mCustomScaleType": {
-					"type": "string",
-					"enum": ["ROCSS_Center", "ROCSS_Top", "ROCSS_Bot"]
-				},
-				"mOcclusionBoxInfo": {
-					"oneOf": [
-						{
-							"type": "string",
-							"const": ""
-						},
-						{
-							"type": "string",
-							"minLength": 1,
-							"typed_string": {
-								"minItems": 1,
-								"items": {
-									"type": "string",
-									"minLength": 1,
-									"typed_string": {
-										"required": ["Min", "Max", "IsValid"],
-										"properties": {
-											"Min": {
-												"$ref": "common.schema.json#/$defs/xyz"
-											},
-											"Max": {
-												"$ref": "common.schema.json#/$defs/xyz"
-											},
-											"IsValid": {
-												"$ref": "common.schema.json#/$defs/boolean"
-											}
-										}
-									}
-								}
-							}
-						}
-					]
-				},
-				"mAttachmentPoints": {
-					"type": "string",
-					"const": ""
-				},
 				"mReplicatedBuiltInsideBlueprintDesigner": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mInteractingPlayers": {
-					"type": "string",
-					"const": ""
-				},
-				"mIsUseable": {
 					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mClearanceData": {
 					"$ref": "#/$defs/mClearanceData"
-				},
-				"mHideOnBuildEffectStart": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mShouldModifyWorldGrid": {
-					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mTimelapseBucketId": {
 					"$ref": "common.schema.json#/$defs/integer-string"
@@ -390,9 +276,6 @@
 				},
 				"mAlienOverClockingPitch_RTPC": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mBlueprintBuildEffectID": {
-					"$ref": "common.schema.json#/$defs/integer-string--signed"
 				}
 			}
 		},

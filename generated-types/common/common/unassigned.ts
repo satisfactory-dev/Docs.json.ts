@@ -36,6 +36,61 @@ export type color_decimal__type = {
 	A: decimal_string__type;
 };
 
+export type common_base__FGBuildable__base__type = class__type & {
+	MaxRenderDistance: decimal_string__signed__type;
+	mAlternativeMaterialRecipes:
+		| string
+		| [
+				{
+					mMaterial: Exclude<string, ''>;
+					mRecipe: Exclude<string, ''>;
+				},
+				...{
+					mMaterial: Exclude<string, ''>;
+					mRecipe: Exclude<string, ''>;
+				}[],
+		];
+	mContainsComponents: boolean__type;
+	mIsConsideredForBaseWeightValue: decimal_string__type;
+	mBuildEffectSpeed: decimal_string__type;
+	mAllowColoring: boolean__type;
+	mAllowPatterning: boolean__type;
+	mSkipBuildEffect: boolean__type;
+	mForceNetUpdateOnRegisterPlayer: boolean__type;
+	mToggleDormancyOnInteraction: boolean__type;
+	mIsMultiSpawnedBuildable: boolean__type;
+	mShouldShowAttachmentPointVisuals: boolean__type;
+	mCanContainLightweightInstances: boolean__type;
+	mAffectsOcclusion: boolean__type;
+	mOcclusionShape:
+		| 'ROCS_Box'
+		| 'ROCS_Ramp'
+		| 'ROCS_Box_Special'
+		| 'ROCS_CornerRamp';
+	mScaleCustomOffset: decimal_string__type;
+	mCustomScaleType: 'ROCSS_Center' | 'ROCSS_Top' | 'ROCSS_Bot';
+	mOcclusionBoxInfo:
+		| ''
+		| [
+				{
+					Min: xyz__type;
+					Max: xyz__type;
+					IsValid: boolean__type;
+				},
+				...{
+					Min: xyz__type;
+					Max: xyz__type;
+					IsValid: boolean__type;
+				}[],
+		];
+	mAttachmentPoints: '';
+	mInteractingPlayers: '';
+	mIsUseable: boolean__type;
+	mHideOnBuildEffectStart: boolean__type;
+	mShouldModifyWorldGrid: boolean__type;
+	mBlueprintBuildEffectID?: integer_string__signed__type;
+};
+
 export type common_base__FGBuildingDescriptor__ClassName__type = Exclude<
 	string,
 	| ''
@@ -166,6 +221,11 @@ export type faux_10__type = class__type & {
 	ClassName?: common_base__FGBuildingDescriptor__ClassName__type;
 	mForm: common_base__FGBuildingDescriptor__mForm__type;
 	mSubCategories: common_base__FGBuildingDescriptor__mSubCategories__type;
+};
+
+export type faux_11__type = class__type & {
+	faux: 'FGBuildable--base';
+	FGBuildable: common_base__FGBuildable__base__type;
 };
 
 export type faux_2__type = class__type & {

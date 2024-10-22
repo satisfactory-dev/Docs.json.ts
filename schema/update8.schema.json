@@ -69,38 +69,12 @@
 		},
 		"FGBuildable--base": {
 			"type": "object",
-			"$ref": "common.schema.json#/$defs/class",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--base",
 			"required": [
-				"MaxRenderDistance",
-				"mAlternativeMaterialRecipes",
-				"mContainsComponents",
-				"mIsConsideredForBaseWeightValue",
-				"mBuildEffectSpeed",
-				"mAllowColoring",
-				"mAllowPatterning",
-				"mSkipBuildEffect",
-				"mForceNetUpdateOnRegisterPlayer",
-				"mToggleDormancyOnInteraction",
-				"mIsMultiSpawnedBuildable",
-				"mShouldShowAttachmentPointVisuals",
 				"mCreateClearanceMeshRepresentation",
-				"mCanContainLightweightInstances",
-				"mAffectsOcclusion",
-				"mOcclusionShape",
-				"mScaleCustomOffset",
-				"mCustomScaleType",
-				"mOcclusionBoxInfo",
-				"mAttachmentPoints",
-				"mInteractingPlayers",
-				"mIsUseable",
-				"mHideOnBuildEffectStart",
-				"mShouldModifyWorldGrid",
 				"mBlueprintBuildEffectID"
 			],
 			"properties": {
-				"MaxRenderDistance": {
-					"$ref": "common.schema.json#/$defs/decimal-string--signed"
-				},
 				"mAlternativeMaterialRecipes": {
 					"oneOf": [
 						{
@@ -189,113 +163,8 @@
 						}
 					]
 				},
-				"mContainsComponents": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mIsConsideredForBaseWeightValue": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mBuildEffectSpeed": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mAllowColoring": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mAllowPatterning": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mSkipBuildEffect": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mForceNetUpdateOnRegisterPlayer": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mToggleDormancyOnInteraction": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mIsMultiSpawnedBuildable": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mShouldShowAttachmentPointVisuals": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
 				"mCreateClearanceMeshRepresentation": {
 					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mCanContainLightweightInstances": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mAffectsOcclusion": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mOcclusionShape": {
-					"type": "string",
-					"enum": [
-						"ROCS_Box",
-						"ROCS_Ramp",
-						"ROCS_Box_Special",
-						"ROCS_CornerRamp"
-					]
-				},
-				"mScaleCustomOffset": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mCustomScaleType": {
-					"type": "string",
-					"enum": ["ROCSS_Center", "ROCSS_Top", "ROCSS_Bot"]
-				},
-				"mOcclusionBoxInfo": {
-					"oneOf": [
-						{
-							"type": "string",
-							"const": ""
-						},
-						{
-							"type": "string",
-							"minLength": 1,
-							"typed_string": {
-								"minItems": 1,
-								"items": {
-									"type": "string",
-									"minLength": 1,
-									"typed_string": {
-										"required": ["Min", "Max", "IsValid"],
-										"properties": {
-											"Min": {
-												"$ref": "common.schema.json#/$defs/xyz"
-											},
-											"Max": {
-												"$ref": "common.schema.json#/$defs/xyz"
-											},
-											"IsValid": {
-												"$ref": "common.schema.json#/$defs/boolean"
-											}
-										}
-									}
-								}
-							}
-						}
-					]
-				},
-				"mAttachmentPoints": {
-					"type": "string",
-					"const": ""
-				},
-				"mInteractingPlayers": {
-					"type": "string",
-					"const": ""
-				},
-				"mIsUseable": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mHideOnBuildEffectStart": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mShouldModifyWorldGrid": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mBlueprintBuildEffectID": {
-					"$ref": "common.schema.json#/$defs/integer-string--signed"
 				}
 			}
 		},

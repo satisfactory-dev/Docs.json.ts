@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (48 of 48)
+100.00% Complete (52 of 52)
 
 ## Basic Types
 
@@ -12,10 +12,11 @@
 -   [x] color (common type)
 -   [x] color-decimal
 -   [x] decimal-string (common type)
--   [x] decimal-string--signed
+-   [x] decimal-string--signed (common type)
 -   [x] empty-object
 -   [x] faux-1
 -   [x] faux-10
+-   [x] faux-11
 -   [x] faux-2
 -   [x] faux-3
 -   [x] faux-4
@@ -25,7 +26,7 @@
 -   [x] faux-8
 -   [x] faux-9
 -   [x] integer-string
--   [x] integer-string--signed
+-   [x] integer-string--signed (common type)
 -   [x] mForm
 -   [x] NativeClass
 -   [x] None (common type)
@@ -35,6 +36,7 @@
 
 ## common-base
 
+-   [x] common-base--FGBuildable--base
 -   [x] common-base--FGBuildingDescriptor--ClassName
 -   [x] common-base--FGBuildingDescriptor--mForm
 -   [x] common-base--FGBuildingDescriptor--mSubCategories
