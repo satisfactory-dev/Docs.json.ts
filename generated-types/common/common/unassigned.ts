@@ -1,4 +1,8 @@
-import {UnrealEngineString, StringStartsWith} from '../utils/validators';
+import {
+	UnrealEngineString,
+	StringStartsWith,
+	StringPassedRegExp,
+} from '../utils/validators';
 
 import {
 	boolean__type,
@@ -128,6 +132,20 @@ export type common_base__FGBuildingDescriptor__mSubCategories__type = [
 		>
 	>[],
 ];
+
+export type common_base__FGCustomizationRecipe__FGRecipe__type =
+	class__no_description__type & {
+		FullName: StringPassedRegExp<'^BlueprintGeneratedClass /Game/FactoryGame/(?:-?[A-Z][A-Za-z0-9_]+/)*(Recipe_[A-Za-z0-9_]+)\\.\\1_C$'>;
+		mDisplayName: Exclude<string, ''>;
+		mIngredients: '' | ItemClass__type;
+		mProduct: '' | ItemClass__type;
+		mManufacturingMenuPriority: decimal_string__type;
+		mManufactoringDuration: decimal_string__type;
+		mManualManufacturingMultiplier: decimal_string__type;
+		mRelevantEvents: mEventType__optional_csv__type;
+		mVariablePowerConsumptionConstant: decimal_string__type;
+		mVariablePowerConsumptionFactor: decimal_string__type;
+	};
 
 export type common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type =
 	class__type & {

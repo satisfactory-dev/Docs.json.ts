@@ -574,55 +574,8 @@
 		},
 		"FGCustomizationRecipe--FGRecipe": {
 			"type": "object",
-			"$ref": "common.schema.json#/$defs/class--no-description",
-			"required": [
-				"FullName",
-				"mDisplayName",
-				"mIngredients",
-				"mProduct",
-				"mManufacturingMenuPriority",
-				"mManufactoringDuration",
-				"mManualManufacturingMultiplier",
-				"mProducedIn",
-				"mRelevantEvents",
-				"mVariablePowerConsumptionConstant",
-				"mVariablePowerConsumptionFactor"
-			],
+			"$ref": "common.schema.json#/$defs/common-base--FGCustomizationRecipe--FGRecipe",
 			"properties": {
-				"FullName": {
-					"type": "string",
-					"pattern": "^BlueprintGeneratedClass /Game/FactoryGame/(?:-?[A-Z][A-Za-z0-9_]+/)*(Recipe_[A-Za-z0-9_]+)\\.\\1_C$"
-				},
-				"mDisplayName": {
-					"type": "string",
-					"minLength": 1
-				},
-				"mIngredients": {
-					"oneOf": [
-						{
-							"type": "string",
-							"const": ""
-						},
-						{
-							"$ref": "common.schema.json#/$defs/ItemClass"
-						}
-					]
-				},
-				"mProduct": {
-					"oneOf": [
-						{"type": "string", "const": ""},
-						{"$ref": "common.schema.json#/$defs/ItemClass"}
-					]
-				},
-				"mManufacturingMenuPriority": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mManufactoringDuration": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mManualManufacturingMultiplier": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
 				"mProducedIn": {
 					"oneOf": [
 						{"type": "string", "const": ""},
@@ -656,15 +609,6 @@
 							}
 						}
 					]
-				},
-				"mRelevantEvents": {
-					"$ref": "common.schema.json#/$defs/mEventType--optional-csv"
-				},
-				"mVariablePowerConsumptionConstant": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mVariablePowerConsumptionFactor": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},

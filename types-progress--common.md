@@ -1,13 +1,13 @@
 # Types Progress
 
-100.00% Complete (55 of 55)
+100.00% Complete (59 of 59)
 
 ## Basic Types
 
 -   [x] boolean (common type)
 -   [x] boolean-extended
 -   [x] class (common type)
--   [x] class--no-description
+-   [x] class--no-description (common type)
 -   [x] class--no-description-or-display-name
 -   [x] color (common type)
 -   [x] color-decimal
@@ -41,18 +41,19 @@
 -   [x] common-base--FGBuildingDescriptor--ClassName
 -   [x] common-base--FGBuildingDescriptor--mForm
 -   [x] common-base--FGBuildingDescriptor--mSubCategories
+-   [x] common-base--FGCustomizationRecipe--FGRecipe
 -   [x] common-base--FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor--mSubCategories
 
 ## ItemClass
 
--   [x] ItemClass
+-   [x] ItemClass (common type)
 -   [x] ItemClass--amount-required
 
 ## mEventType
 
 -   [x] mEventType
--   [x] mEventType--optional-csv
+-   [x] mEventType--optional-csv (common type)
 
 ## UnrealEngineString
 
