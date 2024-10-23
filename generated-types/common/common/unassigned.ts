@@ -336,6 +336,10 @@ export type quaternion__type = {
 	W: decimal_string__type;
 };
 
+export type SpecifiedColor__type = {
+	SpecifiedColor: color_decimal__type;
+};
+
 export type Texture2D__type =
 	| StringStartsWith<'Texture2D /Game/FactoryGame/'>
 	| None__type

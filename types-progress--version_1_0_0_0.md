@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (249 of 249)
+100.00% Complete (248 of 248)
 
 ## Basic Types
 
@@ -50,7 +50,6 @@
 -   [x] mSnappedPassthroughs
 -   [x] NativeClass (common type)
 -   [x] None (common type)
--   [x] SpecifiedColor
 -   [x] Texture2D (common type)
 -   [x] transformation (common type)
 -   [x] weaponState

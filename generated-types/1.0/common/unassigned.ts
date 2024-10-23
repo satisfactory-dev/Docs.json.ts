@@ -10,7 +10,6 @@ import {
 } from '../../common/common/scalar';
 
 import {
-	color_decimal__type,
 	None__type,
 	xyz__type,
 	quaternion__type,
@@ -313,9 +312,5 @@ export type Montage_3P__type = UnrealEngineString<
 export type mPlatformDockingStatus__type = 'ETPDS_None';
 
 export type mSnappedPassthroughs__type = '';
-
-export type SpecifiedColor__type = {
-	SpecifiedColor: color_decimal__type;
-};
 
 export type weaponState__type = 'EWS_Unequipped';

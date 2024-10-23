@@ -8,7 +8,6 @@ import {
 } from '../../common/common/scalar';
 
 import {
-	color_decimal__type,
 	None__type,
 	empty_object__type,
 } from '../../common/common/unassigned';
@@ -229,9 +228,5 @@ export type mOutputInventoryHandlerData__type =
 export type mPlatformDockingStatus__type = 'ETPDS_None';
 
 export type mSnappedPassthroughs__type = '';
-
-export type SpecifiedColor__type = {
-	SpecifiedColor: color_decimal__type;
-};
 
 export type weaponState__type = 'EWS_Unequipped';

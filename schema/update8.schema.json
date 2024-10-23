@@ -567,18 +567,6 @@
 				}
 			}
 		},
-		"SpecifiedColor": {
-			"type": "string",
-			"minLength": 1,
-			"typed_string": {
-				"required": ["SpecifiedColor"],
-				"properties": {
-					"SpecifiedColor": {
-						"$ref": "common.schema.json#/$defs/color-decimal"
-					}
-				}
-			}
-		},
 		"FGSchematic--mUnlocks_Class": {
 			"type": "object",
 			"required": ["Class"],
@@ -1030,7 +1018,7 @@
 								"$ref": "common.schema.json#/$defs/empty-object"
 							},
 							"TintColor": {
-								"$ref": "#/$defs/SpecifiedColor"
+								"$ref": "common.schema.json#/$defs/SpecifiedColor"
 							},
 							"OutlineSettings": {
 								"type": "string",
@@ -1046,7 +1034,7 @@
 											"$ref": "common.schema.json#/$defs/quaternion"
 										},
 										"Color": {
-											"$ref": "#/$defs/SpecifiedColor"
+											"$ref": "common.schema.json#/$defs/SpecifiedColor"
 										},
 										"RoundingType": {
 											"type": "string",

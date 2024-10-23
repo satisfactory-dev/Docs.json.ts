@@ -833,6 +833,18 @@
 				}
 			}
 		},
+		"SpecifiedColor": {
+			"type": "string",
+			"minLength": 1,
+			"typed_string": {
+				"required": ["SpecifiedColor"],
+				"properties": {
+					"SpecifiedColor": {
+						"$ref": "common.schema.json#/$defs/color-decimal"
+					}
+				}
+			}
+		},
 		"faux-1": {
 			"type": "object",
 			"$ref": "#/$defs/class",

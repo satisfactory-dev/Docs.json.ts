@@ -4,8 +4,6 @@ import {
 	StringPassedRegExp,
 } from '../../utils/validators';
 
-import {SpecifiedColor__type} from '../../common/unassigned';
-
 import {
 	integer_string__type,
 	boolean__type,
@@ -17,6 +15,7 @@ import {
 	UnrealEngineString__array__type,
 	ItemClass__type,
 	quaternion__type,
+	SpecifiedColor__type,
 	xy__type,
 	empty_object__type,
 	Texture2D__type,

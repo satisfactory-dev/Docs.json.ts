@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (59 of 59)
+100.00% Complete (60 of 60)
 
 ## Basic Types
 
@@ -31,6 +31,7 @@
 -   [x] mForm
 -   [x] NativeClass
 -   [x] None (common type)
+-   [x] SpecifiedColor
 -   [x] Texture2D (common type)
 -   [x] transformation
 -   [x] xyz-array
