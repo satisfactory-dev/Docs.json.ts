@@ -6,9 +6,7 @@
 		"FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor": {
 			"type": "object",
 			"$ref": "common.schema.json#/$defs/common-base--FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor",
-			"required": [
-				"mClassToScanFor"
-			],
+			"required": ["mClassToScanFor"],
 			"properties": {
 				"mClassToScanFor": {
 					"oneOf": [
@@ -832,11 +830,7 @@
 		"FGSchematic--base": {
 			"type": "object",
 			"$ref": "common.schema.json#/$defs/FGSchematic--base",
-			"required": [
-				"mType",
-				"mUnlocks",
-				"mSchematicDependencies"
-			],
+			"required": ["mType", "mUnlocks", "mSchematicDependencies"],
 			"properties": {
 				"mType": {
 					"type": "string",

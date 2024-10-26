@@ -624,10 +624,7 @@
 							"minItems": 1,
 							"items": {
 								"type": "object",
-								"required": [
-									"mMaterial",
-									"mRecipe"
-								],
+								"required": ["mMaterial", "mRecipe"],
 								"properties": {
 									"mMaterial": {
 										"type": "string",
