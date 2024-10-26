@@ -886,19 +886,6 @@
 				}
 			}
 		},
-		"FGSchematic--mUnlocks_mSchematics--mSchematics": {
-			"type": "string",
-			"minLength": 1,
-			"UnrealEngineString": {
-				"left": "/Script/Engine.BlueprintGeneratedClass",
-				"right": {
-					"starts_with": [
-						"/Game/FactoryGame/Schematics/",
-						"/Game/FactoryGame/Events/Christmas/"
-					]
-				}
-			}
-		},
 		"FGSchematic--mUnlocks_mSchematics": {
 			"type": "object",
 			"required": ["Class", "mSchematics"],
@@ -914,7 +901,7 @@
 					"typed_string": {
 						"minItems": 1,
 						"items": {
-							"$ref": "#/$defs/FGSchematic--mUnlocks_mSchematics--mSchematics"
+							"$ref": "common.schema.json#/$defs/FGSchematic--mUnlocks_mSchematics--mSchematics"
 						}
 					}
 				}
@@ -1245,7 +1232,7 @@
 										"typed_string": {
 											"minItems": 1,
 											"items": {
-												"$ref": "#/$defs/FGSchematic--mUnlocks_mSchematics--mSchematics"
+												"$ref": "common.schema.json#/$defs/FGSchematic--mUnlocks_mSchematics--mSchematics"
 											}
 										}
 									},

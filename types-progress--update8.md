@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (219 of 219)
+100.00% Complete (218 of 218)
 
 ## Basic Types
 
@@ -264,7 +264,6 @@
 -   [x] FGSchematic--mUnlocks_mRecipes
 -   [x] FGSchematic--mUnlocks_mScannableObjects
 -   [x] FGSchematic--mUnlocks_mSchematics
--   [x] FGSchematic--mUnlocks_mSchematics--mSchematics
 -   [x] FGSchematic--mUnlocks_mTapeUnlocks
 -   [x] FGSchematic--mUnlocks_resources_to_scan
 -   [x] FGSchematic--with-unlocks

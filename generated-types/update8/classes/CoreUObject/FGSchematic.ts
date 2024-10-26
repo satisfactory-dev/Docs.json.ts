@@ -4,6 +4,8 @@ import {
 	StringPassedRegExp,
 } from '../../utils/validators';
 
+import {FGSchematic__mUnlocks_mSchematics__mSchematics__type} from '../../../common/classes/CoreUObject/FGSchematic';
+
 import {
 	integer_string__type,
 	boolean__type,
@@ -122,14 +124,6 @@ export type FGSchematic__mUnlocks_mSchematics__type = {
 		...FGSchematic__mUnlocks_mSchematics__mSchematics__type[],
 	];
 };
-
-export type FGSchematic__mUnlocks_mSchematics__mSchematics__type =
-	UnrealEngineString<
-		'/Script/Engine.BlueprintGeneratedClass',
-		StringStartsWith<
-			'/Game/FactoryGame/Schematics/' | '/Game/FactoryGame/Events/Christmas/'
-		>
-	>;
 
 export type FGSchematic__mUnlocks_mTapeUnlocks__type = {
 	Class: 'FGUnlockTape';

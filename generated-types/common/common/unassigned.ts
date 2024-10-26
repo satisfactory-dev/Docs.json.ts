@@ -13,6 +13,8 @@ import {
 	integer_string__signed__type,
 } from './scalar';
 
+import {FGSchematic__mUnlocks_mSchematics__mSchematics__type} from '../classes/CoreUObject/FGSchematic';
+
 export type class__type = class__no_description__type & {
 	mDescription: string;
 };
@@ -323,6 +325,11 @@ export type faux_11__type = class__type & {
 export type faux_12__type = class__type & {
 	faux: 'mEventType--optional-csv';
 	mEventType__optional_csv?: mEventType__optional_csv__type;
+};
+
+export type faux_13__type = class__type & {
+	faux: 'FGSchematic--mUnlocks_mSchematics--mSchematics';
+	FGSchematic__mUnlocks_mSchematics__mSchematics: FGSchematic__mUnlocks_mSchematics__mSchematics__type;
 };
 
 export type faux_2__type = class__type & {

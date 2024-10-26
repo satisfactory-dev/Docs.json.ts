@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (61 of 61)
+100.00% Complete (63 of 63)
 
 ## Basic Types
 
@@ -18,6 +18,7 @@
 -   [x] faux-10
 -   [x] faux-11
 -   [x] faux-12
+-   [x] faux-13
 -   [x] faux-2
 -   [x] faux-3
 -   [x] faux-4
@@ -46,6 +47,10 @@
 -   [x] common-base--FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor--mSubCategories
 -   [x] common-base--FGSchematic--base
+
+## FGSchematic
+
+-   [x] FGSchematic--mUnlocks_mSchematics--mSchematics
 
 ## ItemClass
 
