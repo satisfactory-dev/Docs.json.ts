@@ -121,12 +121,25 @@ export class DocsTsAutoImports {
 				) => maybe in common_types_map,
 			);
 
+			if (common_reference_names.length && this.version === 'common') {
+				reference_names.push(
+					...common_reference_names.map(
+						e => e.substring(13),
+					).filter(
+						maybe => !reference_names.includes(maybe),
+					),
+				);
+			}
+
 			if (reference_names.length) {
 				if (!(filename in auto_imports)) {
 					auto_imports[filename] = {};
 				}
 
 				for (const import_this of reference_names) {
+					if (`${this.comes_from[import_this]}.ts` === filename) {
+						continue;
+					}
 					let import_from = `${relative(dirname(filename), dirname(this.comes_from[import_this]))}/${basename(this.comes_from[import_this])}`;
 
 					if (import_from.startsWith('/')) {

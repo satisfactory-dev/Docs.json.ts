@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (60 of 60)
+100.00% Complete (61 of 61)
 
 ## Basic Types
 
@@ -45,6 +45,10 @@
 -   [x] common-base--FGCustomizationRecipe--FGRecipe
 -   [x] common-base--FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor--mSubCategories
+
+## FGSchematic
+
+-   [x] FGSchematic--base
 
 ## ItemClass
 

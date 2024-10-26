@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (213 of 213)
+100.00% Complete (219 of 219)
 
 ## Basic Types
 
@@ -254,7 +254,7 @@
 ## FGSchematic
 
 -   [x] FGSchematic
--   [x] FGSchematic--base
+-   [x] FGSchematic--base (common type)
 -   [x] FGSchematic--mUnlocks_Class
 -   [x] FGSchematic--mUnlocks_equipment_slots
 -   [x] FGSchematic--mUnlocks_inventory_slots

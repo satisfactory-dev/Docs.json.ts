@@ -1069,33 +1069,15 @@
 		},
 		"FGSchematic--base": {
 			"type": "object",
-			"$ref": "common.schema.json#/$defs/class",
+			"$ref": "common.schema.json#/$defs/FGSchematic--base",
 			"required": [
-				"FullName",
 				"mType",
 				"mStatisticGameplayTag",
 				"mSchematicUnlockTag",
-				"mSubCategories",
-				"mMenuPriority",
-				"mTechTier",
-				"mCost",
-				"mTimeToComplete",
-				"mRelevantShopSchematics",
-				"mIsPlayerSpecific",
 				"mUnlocks",
-				"mSchematicIcon",
-				"mSmallSchematicIcon",
-				"mSchematicDependencies",
-				"mDependenciesBlocksSchematicAccess",
-				"mHiddenUntilDependenciesMet",
-				"mRelevantEvents",
-				"mIncludeInBuilds"
+				"mSchematicDependencies"
 			],
 			"properties": {
-				"FullName": {
-					"type": "string",
-					"pattern": "^BlueprintGeneratedClass /Game/FactoryGame/(Schematics|Events/Christmas)/"
-				},
 				"mType": {
 					"type": "string",
 					"enum": [
@@ -1190,94 +1172,6 @@
 						}
 					]
 				},
-				"mSubCategories": {
-					"oneOf": [
-						{
-							"type": "string",
-							"const": ""
-						},
-						{
-							"type": "string",
-							"minLength": 1,
-							"typed_string": {
-								"minItems": 1,
-								"items": {
-									"$ref": "common.schema.json#/$defs/None"
-								}
-							}
-						},
-						{
-							"type": "string",
-							"minLength": 1,
-							"typed_string": {
-								"minItems": 1,
-								"items": {
-									"type": "string",
-									"minLength": 1,
-									"UnrealEngineString": {
-										"right": {
-											"starts_with": "/Game/FactoryGame/Schematics/"
-										}
-									}
-								}
-							}
-						}
-					]
-				},
-				"mMenuPriority": {
-					"$ref": "common.schema.json#/$defs/decimal-string--signed"
-				},
-				"mTechTier": {
-					"$ref": "common.schema.json#/$defs/integer-string"
-				},
-				"mCost": {
-					"oneOf": [
-						{
-							"type": "string",
-							"const": ""
-						},
-						{
-							"$ref": "common.schema.json#/$defs/ItemClass"
-						}
-					]
-				},
-				"mTimeToComplete": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mRelevantShopSchematics": {
-					"oneOf": [
-						{
-							"type": "string",
-							"const": ""
-						},
-						{
-							"type": "string",
-							"minLength": 1,
-							"typed_string": {
-								"minItems": 1,
-								"items": {
-									"oneOf": [
-										{
-											"type": "string",
-											"minLength": 1,
-											"UnrealEngineString": {
-												"right": {
-													"starts_with": "/Game/FactoryGame/Schematics/ResourceSink/"
-												}
-											}
-										},
-										{
-											"$ref": "common.schema.json#/$defs/None"
-										}
-									]
-								}
-							}
-						}
-					]
-				},
-				"mIsPlayerSpecific": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
 				"mUnlocks": {
 					"type": "array",
 					"minItems": 0,
@@ -1327,82 +1221,6 @@
 							}
 						]
 					}
-				},
-				"mSchematicIcon": {
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"required": [
-							"DrawAs",
-							"ImageSize",
-							"Margin",
-							"TintColor",
-							"OutlineSettings",
-							"UVRegion"
-						],
-						"properties": {
-							"DrawAs": {
-								"type": "string",
-								"const": "Image"
-							},
-							"ImageSize": {
-								"$ref": "common.schema.json#/$defs/xy"
-							},
-							"Margin": {
-								"$ref": "common.schema.json#/$defs/empty-object"
-							},
-							"TintColor": {
-								"$ref": "common.schema.json#/$defs/SpecifiedColor"
-							},
-							"OutlineSettings": {
-								"type": "string",
-								"minLength": 1,
-								"typed_string": {
-									"required": [
-										"CornerRadii",
-										"Color",
-										"RoundingType"
-									],
-									"properties": {
-										"CornerRadii": {
-											"$ref": "common.schema.json#/$defs/quaternion"
-										},
-										"Color": {
-											"$ref": "common.schema.json#/$defs/SpecifiedColor"
-										},
-										"RoundingType": {
-											"type": "string",
-											"const": "HalfHeightRadius"
-										}
-									}
-								}
-							},
-							"ResourceObject": {
-								"$ref": "common.schema.json#/$defs/Texture2D"
-							},
-							"UVRegion": {
-								"type": "string",
-								"minLength": 1,
-								"typed_string": {
-									"required": ["Min", "Max", "bIsValid"],
-									"properties": {
-										"Min": {
-											"$ref": "common.schema.json#/$defs/xy"
-										},
-										"Max": {
-											"$ref": "common.schema.json#/$defs/xy"
-										},
-										"bIsValid": {
-											"$ref": "common.schema.json#/$defs/boolean"
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				"mSmallSchematicIcon": {
-					"$ref": "common.schema.json#/$defs/Texture2D"
 				},
 				"mSchematicDependencies": {
 					"type": "array",
@@ -1459,19 +1277,6 @@
 							}
 						]
 					}
-				},
-				"mDependenciesBlocksSchematicAccess": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mHiddenUntilDependenciesMet": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mRelevantEvents": {
-					"$ref": "common.schema.json#/$defs/mEventType--optional-csv"
-				},
-				"mIncludeInBuilds": {
-					"type": "string",
-					"enum": ["IIB_PublicBuilds"]
 				}
 			}
 		},

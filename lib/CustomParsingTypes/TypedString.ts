@@ -289,6 +289,9 @@ export class TypedString
 
 		const local_refs = Object.keys($defs).map(local_ref);
 		const common_refs = Object.keys(common_$defs).map(common_ref);
+		local_refs.push(...common_refs.map(
+			(e: common_ref<string>): local_ref<string> => (e.substring(18) as local_ref<string>)
+		));
 
 		this.already_configured.add(ajv);
 

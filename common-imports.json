@@ -36,6 +36,7 @@
 	"common_type__xyz__type": "common/unassigned",
 	"common_type__xyz__integer__type": "common/unassigned",
 	"common_type__xyz_array__type": "common/unassigned",
+	"common_type__FGSchematic__base__type": "classes/CoreUObject/FGSchematic",
 	"common_type__UnrealEngineString": "utils/validators",
 	"common_type__StringStartsWith": "utils/validators",
 	"common_type__StringPassedRegExp": "utils/validators"

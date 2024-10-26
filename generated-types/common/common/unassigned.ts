@@ -13,6 +13,8 @@ import {
 	integer_string__signed__type,
 } from './scalar';
 
+import {FGSchematic__base__type} from '../classes/CoreUObject/FGSchematic';
+
 export type class__type = class__no_description__type & {
 	mDescription: string;
 };
@@ -231,7 +233,8 @@ export type faux_1__type = class__type & {
 		| pitch_yaw_roll__type
 		| xyz__integer__type
 		| xyz_array__type
-		| transformation__type;
+		| transformation__type
+		| FGSchematic__base__type;
 };
 
 export type faux_10__type = class__type & {

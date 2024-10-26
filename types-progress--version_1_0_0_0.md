@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (248 of 248)
+100.00% Complete (254 of 254)
 
 ## Basic Types
 
@@ -312,7 +312,7 @@
 ## FGSchematic
 
 -   [x] FGSchematic
--   [x] FGSchematic--base
+-   [x] FGSchematic--base (common type)
 -   [x] FGSchematic--mItemStackLimitIncrease
 -   [x] FGSchematic--mNumSlotsToUnlock
 -   [x] FGSchematic--mUnlocks_Class
