@@ -1093,6 +1093,268 @@
 				}
 			}
 		},
+		"FGSchematic--mUnlocks_mTapeUnlocks": {
+			"type": "object",
+			"required": ["Class", "mTapeUnlocks"],
+			"additionalProperties": false,
+			"properties": {
+				"Class": {
+					"type": "string",
+					"const": "FGUnlockTape"
+				},
+				"mTapeUnlocks": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"minItems": 1,
+						"items": {
+							"type": "string",
+							"minLength": 1,
+							"UnrealEngineString": {
+								"right": {
+									"starts_with": "/Game/FactoryGame/Resource/Tape/"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"FGSchematic--mUnlocks_mRecipes": {
+			"type": "object",
+			"required": ["Class", "mRecipes"],
+			"additionalProperties": false,
+			"properties": {
+				"Class": {
+					"type": "string",
+					"enum": ["BP_UnlockRecipe_C", "BP_UnlockBlueprints_C"]
+				},
+				"mRecipes": {
+					"$ref": "common.schema.json#/$defs/UnrealEngineString--array"
+				}
+			}
+		},
+		"FGSchematic--mUnlocks_resources_to_scan": {
+			"type": "object",
+			"required": [
+				"Class",
+				"mResourcesToAddToScanner",
+				"mResourcePairsToAddToScanner"
+			],
+			"additionalProperties": false,
+			"properties": {
+				"Class": {
+					"type": "string",
+					"const": "BP_UnlockScannableResource_C"
+				},
+				"mResourcesToAddToScanner": {
+					"oneOf": [
+						{
+							"type": "string",
+							"const": ""
+						},
+						{
+							"type": "string",
+							"minLength": 1,
+							"typed_string": {
+								"minItems": 1,
+								"items": {
+									"type": "string",
+									"minLength": 1,
+									"UnrealEngineString": {
+										"right": {
+											"starts_with": "/Game/FactoryGame/Resource/"
+										}
+									}
+								}
+							}
+						}
+					]
+				},
+				"mResourcePairsToAddToScanner": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"minItems": 1,
+						"items": {
+							"type": "string",
+							"minLength": 1,
+							"typed_string": {
+								"required": ["ResourceDescriptor"],
+								"properties": {
+									"ResourceDescriptor": {
+										"type": "string",
+										"minLength": 1,
+										"UnrealEngineString": true
+									},
+									"ResourceNodeType": {
+										"type": "string",
+										"enum": ["FrackingCore", "Geyser"]
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"FGSchematic--mUnlocks_mEmotes": {
+			"type": "object",
+			"required": ["Class", "mEmotes"],
+			"additionalProperties": false,
+			"properties": {
+				"Class": {
+					"type": "string",
+					"const": "BP_UnlockEmote_C"
+				},
+				"mEmotes": {
+					"$ref": "common.schema.json#/$defs/UnrealEngineString--array"
+				}
+			}
+		},
+		"FGSchematic--mUnlocks_mSchematics": {
+			"type": "object",
+			"required": ["Class", "mSchematics"],
+			"additionalProperties": false,
+			"properties": {
+				"Class": {
+					"type": "string",
+					"const": "BP_UnlockSchematic_C"
+				},
+				"mSchematics": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"minItems": 1,
+						"items": {
+							"$ref": "common.schema.json#/$defs/FGSchematic--mUnlocks_mSchematics--mSchematics"
+						}
+					}
+				}
+			}
+		},
+		"FGSchematic--mUnlocks_inventory_slots": {
+			"type": "object",
+			"required": ["Class", "mNumInventorySlotsToUnlock"],
+			"additionalProperties": false,
+			"properties": {
+				"Class": {
+					"type": "string",
+					"const": "BP_UnlockInventorySlot_C"
+				},
+				"mNumInventorySlotsToUnlock": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				}
+			}
+		},
+		"FGSchematic--mUnlocks_equipment_slots": {
+			"type": "object",
+			"required": ["Class", "mNumArmEquipmentSlotsToUnlock"],
+			"additionalProperties": false,
+			"properties": {
+				"Class": {
+					"type": "string",
+					"const": "BP_UnlockArmEquipmentSlot_C"
+				},
+				"mNumArmEquipmentSlotsToUnlock": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				}
+			}
+		},
+		"FGSchematic--mUnlocks_mScannableObjects": {
+			"type": "object",
+			"required": ["Class", "mScannableObjects"],
+			"additionalProperties": false,
+			"properties": {
+				"Class": {
+					"type": "string",
+					"const": "BP_UnlockScannableObject_C"
+				},
+				"mScannableObjects": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"minItems": 1,
+						"items": {
+							"type": "string",
+							"minLength": 1,
+							"typed_string": {
+								"required": [
+									"ItemDescriptor",
+									"ActorsAllowedToScan"
+								],
+								"properties": {
+									"ItemDescriptor": {
+										"type": "string",
+										"minLength": 1,
+										"UnrealEngineString": true
+									},
+									"ActorsAllowedToScan": {
+										"type": "string",
+										"minLength": 1,
+										"typed_string": {
+											"minItems": 1,
+											"items": {
+												"type": "string",
+												"minLength": 1,
+												"UnrealEngineString": {
+													"left": "/Script/CoreUObject.Class"
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"FGSchematic--mUnlocks_mItemsToGive": {
+			"type": "object",
+			"required": ["Class", "mItemsToGive"],
+			"additionalProperties": false,
+			"properties": {
+				"Class": {
+					"type": "string",
+					"const": "BP_UnlockGiveItem_C"
+				},
+				"mItemsToGive": {
+					"$ref": "common.schema.json#/$defs/ItemClass"
+				}
+			}
+		},
+		"common-base--FGSchematic--mUnlocks": {
+			"oneOf": [
+				{
+					"$ref": "common.schema.json#/$defs/FGSchematic--mUnlocks_mTapeUnlocks"
+				},
+				{
+					"$ref": "common.schema.json#/$defs/FGSchematic--mUnlocks_mRecipes"
+				},
+				{
+					"$ref": "common.schema.json#/$defs/FGSchematic--mUnlocks_resources_to_scan"
+				},
+				{
+					"$ref": "common.schema.json#/$defs/FGSchematic--mUnlocks_mEmotes"
+				},
+				{
+					"$ref": "common.schema.json#/$defs/FGSchematic--mUnlocks_mSchematics"
+				},
+				{
+					"$ref": "common.schema.json#/$defs/FGSchematic--mUnlocks_inventory_slots"
+				},
+				{
+					"$ref": "common.schema.json#/$defs/FGSchematic--mUnlocks_equipment_slots"
+				},
+				{
+					"$ref": "common.schema.json#/$defs/FGSchematic--mUnlocks_mScannableObjects"
+				},
+				{
+					"$ref": "common.schema.json#/$defs/FGSchematic--mUnlocks_mItemsToGive"
+				}
+			]
+		},
 		"faux-1": {
 			"type": "object",
 			"$ref": "#/$defs/class",
@@ -1315,6 +1577,51 @@
 					"$ref": "#/$defs/FGSchematic--mUnlocks_mSchematics--mSchematics"
 				}
 			}
+		},
+		"faux-14": {
+			"type": "object",
+			"$ref": "#/$defs/class",
+			"required": ["faux", "common_base__FGSchematic__mUnlocks"],
+			"properties": {
+				"faux": {
+					"type": "string",
+					"const": "common-base--FGSchematic--mUnlocks"
+				},
+				"common_base__FGSchematic__mUnlocks": {
+					"$ref": "#/$defs/common-base--FGSchematic--mUnlocks"
+				},
+				"optional": {
+					"oneOf": [
+						{
+							"$ref": "#/$defs/FGSchematic--mUnlocks_mTapeUnlocks"
+						},
+						{
+							"$ref": "#/$defs/FGSchematic--mUnlocks_mRecipes"
+						},
+						{
+							"$ref": "#/$defs/FGSchematic--mUnlocks_resources_to_scan"
+						},
+						{
+							"$ref": "#/$defs/FGSchematic--mUnlocks_mEmotes"
+						},
+						{
+							"$ref": "#/$defs/FGSchematic--mUnlocks_mSchematics"
+						},
+						{
+							"$ref": "#/$defs/FGSchematic--mUnlocks_inventory_slots"
+						},
+						{
+							"$ref": "#/$defs/FGSchematic--mUnlocks_equipment_slots"
+						},
+						{
+							"$ref": "#/$defs/FGSchematic--mUnlocks_mScannableObjects"
+						},
+						{
+							"$ref": "#/$defs/FGSchematic--mUnlocks_mItemsToGive"
+						}
+					]
+				}
+			}
 		}
 	},
 	"items": false,
@@ -1405,6 +1712,11 @@
 							{
 								"type": "object",
 								"$ref": "#/$defs/faux-13",
+								"unevaluatedProperties": false
+							},
+							{
+								"type": "object",
+								"$ref": "#/$defs/faux-14",
 								"unevaluatedProperties": false
 							}
 						]

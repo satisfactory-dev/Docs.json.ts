@@ -14,6 +14,7 @@ import {
 	faux_12__type,
 	common_base__FGCustomizationRecipe__FGRecipe__type,
 	faux_13__type,
+	faux_14__type,
 	NativeClass__type,
 } from '../../common/unassigned';
 
@@ -35,6 +36,7 @@ export type FGFauxEntry__NativeClass = NativeClass__type & {
 			| faux_12__type
 			| common_base__FGCustomizationRecipe__FGRecipe__type
 			| faux_13__type
+			| faux_14__type
 		),
 		...(
 			| faux_1__type
@@ -52,6 +54,7 @@ export type FGFauxEntry__NativeClass = NativeClass__type & {
 			| faux_12__type
 			| common_base__FGCustomizationRecipe__FGRecipe__type
 			| faux_13__type
+			| faux_14__type
 		)[],
 	];
 };

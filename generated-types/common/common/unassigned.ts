@@ -13,7 +13,18 @@ import {
 	integer_string__signed__type,
 } from './scalar';
 
-import {FGSchematic__mUnlocks_mSchematics__mSchematics__type} from '../classes/CoreUObject/FGSchematic';
+import {
+	FGSchematic__mUnlocks_mSchematics__mSchematics__type,
+	FGSchematic__mUnlocks_mTapeUnlocks__type,
+	FGSchematic__mUnlocks_mRecipes__type,
+	FGSchematic__mUnlocks_resources_to_scan__type,
+	FGSchematic__mUnlocks_mEmotes__type,
+	FGSchematic__mUnlocks_mSchematics__type,
+	FGSchematic__mUnlocks_inventory_slots__type,
+	FGSchematic__mUnlocks_equipment_slots__type,
+	FGSchematic__mUnlocks_mScannableObjects__type,
+	FGSchematic__mUnlocks_mItemsToGive__type,
+} from '../classes/CoreUObject/FGSchematic';
 
 export type class__type = class__no_description__type & {
 	mDescription: string;
@@ -286,6 +297,17 @@ export type common_base__FGSchematic__base__type = class__type & {
 	mIncludeInBuilds: 'IIB_PublicBuilds';
 };
 
+export type common_base__FGSchematic__mUnlocks__type =
+	| FGSchematic__mUnlocks_mTapeUnlocks__type
+	| FGSchematic__mUnlocks_mRecipes__type
+	| FGSchematic__mUnlocks_resources_to_scan__type
+	| FGSchematic__mUnlocks_mEmotes__type
+	| FGSchematic__mUnlocks_mSchematics__type
+	| FGSchematic__mUnlocks_inventory_slots__type
+	| FGSchematic__mUnlocks_equipment_slots__type
+	| FGSchematic__mUnlocks_mScannableObjects__type
+	| FGSchematic__mUnlocks_mItemsToGive__type;
+
 export type empty_object__type = '()';
 
 export type faux_1__type = class__type & {
@@ -330,6 +352,21 @@ export type faux_12__type = class__type & {
 export type faux_13__type = class__type & {
 	faux: 'FGSchematic--mUnlocks_mSchematics--mSchematics';
 	FGSchematic__mUnlocks_mSchematics__mSchematics: FGSchematic__mUnlocks_mSchematics__mSchematics__type;
+};
+
+export type faux_14__type = class__type & {
+	faux: 'common-base--FGSchematic--mUnlocks';
+	common_base__FGSchematic__mUnlocks: common_base__FGSchematic__mUnlocks__type;
+	optional?:
+		| FGSchematic__mUnlocks_mTapeUnlocks__type
+		| FGSchematic__mUnlocks_mRecipes__type
+		| FGSchematic__mUnlocks_resources_to_scan__type
+		| FGSchematic__mUnlocks_mEmotes__type
+		| FGSchematic__mUnlocks_mSchematics__type
+		| FGSchematic__mUnlocks_inventory_slots__type
+		| FGSchematic__mUnlocks_equipment_slots__type
+		| FGSchematic__mUnlocks_mScannableObjects__type
+		| FGSchematic__mUnlocks_mItemsToGive__type;
 };
 
 export type faux_2__type = class__type & {

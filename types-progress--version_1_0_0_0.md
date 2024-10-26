@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (253 of 253)
+100.00% Complete (254 of 254)
 
 ## Basic Types
 
@@ -65,6 +65,7 @@
 -   [x] common-base--FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor (common type)
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor--mSubCategories (common type)
 -   [x] common-base--FGSchematic--base (common type)
+-   [x] common-base--FGSchematic--mUnlocks (common type)
 
 ## FGAmmoType
 
@@ -317,16 +318,16 @@
 -   [x] FGSchematic--mItemStackLimitIncrease
 -   [x] FGSchematic--mNumSlotsToUnlock
 -   [x] FGSchematic--mUnlocks_Class
--   [x] FGSchematic--mUnlocks_equipment_slots
--   [x] FGSchematic--mUnlocks_inventory_slots
+-   [x] FGSchematic--mUnlocks_equipment_slots (common type)
+-   [x] FGSchematic--mUnlocks_inventory_slots (common type)
 -   [x] FGSchematic--mUnlocks_mCustomizationUnlocks
--   [x] FGSchematic--mUnlocks_mEmotes
--   [x] FGSchematic--mUnlocks_mItemsToGive
--   [x] FGSchematic--mUnlocks_mRecipes
--   [x] FGSchematic--mUnlocks_mScannableObjects
--   [x] FGSchematic--mUnlocks_mSchematics
--   [x] FGSchematic--mUnlocks_mTapeUnlocks
--   [x] FGSchematic--mUnlocks_resources_to_scan
+-   [x] FGSchematic--mUnlocks_mEmotes (common type)
+-   [x] FGSchematic--mUnlocks_mItemsToGive (common type)
+-   [x] FGSchematic--mUnlocks_mRecipes (common type)
+-   [x] FGSchematic--mUnlocks_mScannableObjects (common type)
+-   [x] FGSchematic--mUnlocks_mSchematics (common type)
+-   [x] FGSchematic--mUnlocks_mTapeUnlocks (common type)
+-   [x] FGSchematic--mUnlocks_resources_to_scan (common type)
 -   [x] FGSchematic--mUploadSpeedPercentageDecrease
 -   [x] FGSchematic--with-unlocks
 
