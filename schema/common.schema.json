@@ -1567,7 +1567,10 @@
 		"faux-13": {
 			"type": "object",
 			"$ref": "#/$defs/class",
-			"required": ["faux", "FGSchematic__mUnlocks_mSchematics__mSchematics"],
+			"required": [
+				"faux",
+				"FGSchematic__mUnlocks_mSchematics__mSchematics"
+			],
 			"properties": {
 				"faux": {
 					"type": "string",
