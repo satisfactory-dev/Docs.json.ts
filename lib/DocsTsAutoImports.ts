@@ -114,7 +114,7 @@ export class DocsTsAutoImports {
 				);
 
 			const common_reference_names: (keyof typeof common_types_map)[] = [
-				...(new Set(node_names)).values(),
+				...node_names,
 			].filter(
 				(maybe): maybe is (
 					keyof typeof common_types_map

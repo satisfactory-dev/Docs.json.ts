@@ -296,7 +296,7 @@ export function EntityName_array_from_Node_array(nodes: Node[]): EntityName[] {
 }
 
 export function from_Node_array(nodes: Node[]): string[] {
-	return [
+	return [...(new Set([
 		...EntityName_array_from_Node_array(nodes).map((checking) => {
 			let recursion_iteration = 0;
 
@@ -311,5 +311,5 @@ export function from_Node_array(nodes: Node[]): string[] {
 
 			return checking.escapedText.toString();
 		}),
-	];
+	])).values()];
 }
