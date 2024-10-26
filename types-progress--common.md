@@ -45,10 +45,7 @@
 -   [x] common-base--FGCustomizationRecipe--FGRecipe
 -   [x] common-base--FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor--mSubCategories
-
-## FGSchematic
-
--   [x] FGSchematic--base
+-   [x] common-base--FGSchematic--base
 
 ## ItemClass
 

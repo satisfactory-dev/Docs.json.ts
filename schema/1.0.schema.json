@@ -1069,7 +1069,7 @@
 		},
 		"FGSchematic--base": {
 			"type": "object",
-			"$ref": "common.schema.json#/$defs/FGSchematic--base",
+			"$ref": "common.schema.json#/$defs/common-base--FGSchematic--base",
 			"required": [
 				"mType",
 				"mStatisticGameplayTag",

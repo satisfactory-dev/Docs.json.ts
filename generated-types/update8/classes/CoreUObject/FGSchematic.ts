@@ -12,53 +12,53 @@ import {
 import {
 	UnrealEngineString__array__type,
 	ItemClass__type,
+	common_base__FGSchematic__base__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned';
 
-import {FGSchematic__base__type} from '../../../common/classes/CoreUObject/FGSchematic';
-
 export type FGSchematic__type = FGSchematic__base__type;
 
-export type FGSchematic__base__type = FGSchematic__base__type & {
-	mType:
-		| 'EST_Custom'
-		| 'EST_ResourceSink'
-		| 'EST_Milestone'
-		| 'EST_Alternate'
-		| 'EST_MAM'
-		| 'EST_HardDrive'
-		| 'EST_Tutorial';
-	mUnlocks: [
-		...(
-			| FGSchematic__mUnlocks_Class__type
-			| FGSchematic__mUnlocks_mTapeUnlocks__type
-			| FGSchematic__mUnlocks_mRecipes__type
-			| FGSchematic__mUnlocks_resources_to_scan__type
-			| FGSchematic__mUnlocks_mEmotes__type
-			| FGSchematic__mUnlocks_mSchematics__type
-			| FGSchematic__mUnlocks_inventory_slots__type
-			| FGSchematic__mUnlocks_equipment_slots__type
-			| FGSchematic__mUnlocks_mScannableObjects__type
-			| FGSchematic__mUnlocks_mItemsToGive__type
-		)[],
-	];
-	mSchematicDependencies: [
-		...(
-			| {
-					Class: StringPassedRegExp<'BP_[A-Z][A-z]+_C$'>;
-					mSchematics: [
-						FGSchematic__mUnlocks_mSchematics__mSchematics__type,
-						...FGSchematic__mUnlocks_mSchematics__mSchematics__type[],
-					];
-					mRequireAllSchematicsToBePurchased: boolean__type;
-			}
-			| {
-					Class: 'BP_GamePhaseReachedDependency_C';
-					mGamePhase: 'EGP_FoodCourt';
-			}
-		)[],
-	];
-};
+export type FGSchematic__base__type =
+	common_base__FGSchematic__base__type & {
+		mType:
+			| 'EST_Custom'
+			| 'EST_ResourceSink'
+			| 'EST_Milestone'
+			| 'EST_Alternate'
+			| 'EST_MAM'
+			| 'EST_HardDrive'
+			| 'EST_Tutorial';
+		mUnlocks: [
+			...(
+				| FGSchematic__mUnlocks_Class__type
+				| FGSchematic__mUnlocks_mTapeUnlocks__type
+				| FGSchematic__mUnlocks_mRecipes__type
+				| FGSchematic__mUnlocks_resources_to_scan__type
+				| FGSchematic__mUnlocks_mEmotes__type
+				| FGSchematic__mUnlocks_mSchematics__type
+				| FGSchematic__mUnlocks_inventory_slots__type
+				| FGSchematic__mUnlocks_equipment_slots__type
+				| FGSchematic__mUnlocks_mScannableObjects__type
+				| FGSchematic__mUnlocks_mItemsToGive__type
+			)[],
+		];
+		mSchematicDependencies: [
+			...(
+				| {
+						Class: StringPassedRegExp<'BP_[A-Z][A-z]+_C$'>;
+						mSchematics: [
+							FGSchematic__mUnlocks_mSchematics__mSchematics__type,
+							...FGSchematic__mUnlocks_mSchematics__mSchematics__type[],
+						];
+						mRequireAllSchematicsToBePurchased: boolean__type;
+				}
+				| {
+						Class: 'BP_GamePhaseReachedDependency_C';
+						mGamePhase: 'EGP_FoodCourt';
+				}
+			)[],
+		];
+	};
 
 export type FGSchematic__mUnlocks_Class__type = {
 	Class:
@@ -177,47 +177,6 @@ export type FGSchematic__with_unlocks__type = FGSchematic__base__type & {
 	mUnlockIconBig: 'Unsupported texture. Contact developer for support';
 	mUnlockIconSmall: 'Unsupported texture. Contact developer for support';
 	mUnlockIconCategory: 'Unsupported texture. Contact developer for support';
-};
-
-export type FGSchematic__base__type = FGSchematic__base__type & {
-	mType:
-		| 'EST_Custom'
-		| 'EST_ResourceSink'
-		| 'EST_Milestone'
-		| 'EST_Alternate'
-		| 'EST_MAM'
-		| 'EST_HardDrive'
-		| 'EST_Tutorial';
-	mUnlocks: [
-		...(
-			| FGSchematic__mUnlocks_Class__type
-			| FGSchematic__mUnlocks_mTapeUnlocks__type
-			| FGSchematic__mUnlocks_mRecipes__type
-			| FGSchematic__mUnlocks_resources_to_scan__type
-			| FGSchematic__mUnlocks_mEmotes__type
-			| FGSchematic__mUnlocks_mSchematics__type
-			| FGSchematic__mUnlocks_inventory_slots__type
-			| FGSchematic__mUnlocks_equipment_slots__type
-			| FGSchematic__mUnlocks_mScannableObjects__type
-			| FGSchematic__mUnlocks_mItemsToGive__type
-		)[],
-	];
-	mSchematicDependencies: [
-		...(
-			| {
-					Class: StringPassedRegExp<'BP_[A-Z][A-z]+_C$'>;
-					mSchematics: [
-						FGSchematic__mUnlocks_mSchematics__mSchematics__type,
-						...FGSchematic__mUnlocks_mSchematics__mSchematics__type[],
-					];
-					mRequireAllSchematicsToBePurchased: boolean__type;
-			}
-			| {
-					Class: 'BP_GamePhaseReachedDependency_C';
-					mGamePhase: 'EGP_FoodCourt';
-			}
-		)[],
-	];
 };
 
 export type FGSchematic__NativeClass = NativeClass__type & {

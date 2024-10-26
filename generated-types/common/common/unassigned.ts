@@ -5,15 +5,13 @@ import {
 } from '../utils/validators';
 
 import {
-	boolean__type,
-	boolean_extended__type,
-	decimal_string__type,
 	decimal_string__signed__type,
 	integer_string__type,
+	decimal_string__type,
+	boolean__type,
+	boolean_extended__type,
 	integer_string__signed__type,
 } from './scalar';
-
-import {FGSchematic__base__type} from '../classes/CoreUObject/FGSchematic';
 
 export type class__type = class__no_description__type & {
 	mDescription: string;
@@ -213,6 +211,79 @@ export type common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescripto
 				>[],
 		];
 
+export type common_base__FGSchematic__base__type = class__type & {
+	FullName: StringPassedRegExp<'^BlueprintGeneratedClass /Game/FactoryGame/(Schematics|Events/Christmas)/'>;
+	mType: Exclude<string, ''>;
+	mSubCategories:
+		| ''
+		| [None__type, ...None__type[]]
+		| [
+				UnrealEngineString<
+					'/Script/Engine.BlueprintGeneratedClass',
+					StringStartsWith<'/Game/FactoryGame/Schematics/'>
+				>,
+				...UnrealEngineString<
+					'/Script/Engine.BlueprintGeneratedClass',
+					StringStartsWith<'/Game/FactoryGame/Schematics/'>
+				>[],
+		];
+	mMenuPriority: decimal_string__signed__type;
+	mTechTier: integer_string__type;
+	mCost: '' | ItemClass__type;
+	mTimeToComplete: decimal_string__type;
+	mRelevantShopSchematics:
+		| ''
+		| [
+				(
+					| UnrealEngineString<
+							'/Script/Engine.BlueprintGeneratedClass',
+							StringStartsWith<'/Game/FactoryGame/Schematics/ResourceSink/'>
+					>
+					| None__type
+				),
+				...(
+					| UnrealEngineString<
+							'/Script/Engine.BlueprintGeneratedClass',
+							StringStartsWith<'/Game/FactoryGame/Schematics/ResourceSink/'>
+					>
+					| None__type
+				)[],
+		];
+	mIsPlayerSpecific: boolean__type;
+	mUnlocks: [
+		...{
+			Class: Exclude<string, ''>;
+		}[],
+	];
+	mSchematicIcon: {
+		DrawAs: 'Image';
+		ImageSize: xy__type;
+		Margin: empty_object__type;
+		TintColor: SpecifiedColor__type;
+		OutlineSettings: {
+			CornerRadii: quaternion__type;
+			Color: SpecifiedColor__type;
+			RoundingType: 'HalfHeightRadius';
+		};
+		ResourceObject?: Texture2D__type;
+		UVRegion: {
+			Min: xy__type;
+			Max: xy__type;
+			bIsValid: boolean__type;
+		};
+	};
+	mSmallSchematicIcon: Texture2D__type;
+	mSchematicDependencies: [
+		...{
+			Class: Exclude<string, ''>;
+		}[],
+	];
+	mDependenciesBlocksSchematicAccess: boolean__type;
+	mHiddenUntilDependenciesMet: boolean__type;
+	mRelevantEvents: mEventType__optional_csv__type;
+	mIncludeInBuilds: 'IIB_PublicBuilds';
+};
+
 export type empty_object__type = '()';
 
 export type faux_1__type = class__type & {
@@ -234,7 +305,7 @@ export type faux_1__type = class__type & {
 		| xyz__integer__type
 		| xyz_array__type
 		| transformation__type
-		| FGSchematic__base__type;
+		| common_base__FGSchematic__base__type;
 };
 
 export type faux_10__type = class__type & {

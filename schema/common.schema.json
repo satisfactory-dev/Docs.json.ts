@@ -842,7 +842,7 @@
 				}
 			}
 		},
-		"FGSchematic--base": {
+		"common-base--FGSchematic--base": {
 			"type": "object",
 			"$ref": "#/$defs/class",
 			"required": [
@@ -1140,7 +1140,7 @@
 							"$ref": "#/$defs/transformation"
 						},
 						{
-							"$ref": "#/$defs/FGSchematic--base"
+							"$ref": "#/$defs/common-base--FGSchematic--base"
 						}
 					]
 				}

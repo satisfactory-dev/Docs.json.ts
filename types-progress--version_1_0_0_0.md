@@ -64,6 +64,7 @@
 -   [x] common-base--FGCustomizationRecipe--FGRecipe (common type)
 -   [x] common-base--FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor (common type)
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor--mSubCategories (common type)
+-   [x] common-base--FGSchematic--base (common type)
 
 ## FGAmmoType
 
@@ -312,7 +313,7 @@
 ## FGSchematic
 
 -   [x] FGSchematic
--   [x] FGSchematic--base (common type)
+-   [x] FGSchematic--base
 -   [x] FGSchematic--mItemStackLimitIncrease
 -   [x] FGSchematic--mNumSlotsToUnlock
 -   [x] FGSchematic--mUnlocks_Class
