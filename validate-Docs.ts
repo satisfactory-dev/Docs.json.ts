@@ -19,7 +19,9 @@ import {
 import {
 	versions,
 } from './version-configs';
-import { FailedToCompileSchema } from '@satisfactory-dev/ajv-utilities';
+import {
+	FailedToCompileSchema,
+} from '@satisfactory-dev/ajv-utilities';
 
 const __dirname = __dirname_from_meta(import.meta);
 
@@ -35,7 +37,11 @@ try {
 		`${__dirname}/failed-to-compile.${sub_path}.json`,
 		`${JSON.stringify({
 			err_is_Error: (err instanceof Error),
-			err_type: (err instanceof Error) ? err.constructor.name : typeof err,
+			err_type: (
+				err instanceof Error
+			)
+				? err.constructor.name
+				: typeof err,
 			err_is_FailedToCompileSchema: (
 				(
 					err instanceof FailedToCompileSchema
