@@ -1,11 +1,7 @@
-import {StringPassedRegExp} from '../../utils/validators';
-
-import {FGSchematic__mUnlocks_mSchematics__mSchematics__type} from '../../../common/classes/CoreUObject/FGSchematic';
-
-import {boolean__type} from '../../../common/common/scalar';
-
 import {
 	common_base__FGSchematic__mUnlocks__type,
+	common_base__FGSchematic__base__mSchematicDependencies__mRequireAllSchematicsToBePurchased__type,
+	common_base__FGSchematic__base__mSchematicDependencies__mGamePhase__type,
 	common_base__FGSchematic__base__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned';
@@ -30,18 +26,10 @@ export type FGSchematic__base__type =
 		];
 		mSchematicDependencies: [
 			...(
-				| {
-						Class: StringPassedRegExp<'BP_[A-Z][A-z]+_C$'>;
-						mSchematics: [
-							FGSchematic__mUnlocks_mSchematics__mSchematics__type,
-							...FGSchematic__mUnlocks_mSchematics__mSchematics__type[],
-						];
-						mRequireAllSchematicsToBePurchased: boolean__type;
-				}
-				| {
-						Class: 'BP_GamePhaseReachedDependency_C';
+				| common_base__FGSchematic__base__mSchematicDependencies__mRequireAllSchematicsToBePurchased__type
+				| (common_base__FGSchematic__base__mSchematicDependencies__mGamePhase__type & {
 						mGamePhase: 'EGP_FoodCourt';
-				}
+				})
 			)[],
 		];
 	};

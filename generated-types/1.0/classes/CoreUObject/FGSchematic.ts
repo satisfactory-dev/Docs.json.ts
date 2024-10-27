@@ -1,5 +1,3 @@
-import {StringPassedRegExp} from '../../utils/validators';
-
 import {
 	integer_string__type,
 	decimal_string__type,
@@ -9,12 +7,12 @@ import {
 import {
 	UnrealEngineString__array__type,
 	common_base__FGSchematic__mUnlocks__type,
+	common_base__FGSchematic__base__mSchematicDependencies__mRequireAllSchematicsToBePurchased__type,
+	common_base__FGSchematic__base__mSchematicDependencies__mGamePhase__type,
 	empty_object__type,
 	common_base__FGSchematic__base__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned';
-
-import {FGSchematic__mUnlocks_mSchematics__mSchematics__type} from '../../../common/classes/CoreUObject/FGSchematic';
 
 export type FGSchematic__type = FGSchematic__base__type;
 
@@ -93,19 +91,11 @@ export type FGSchematic__base__type =
 		];
 		mSchematicDependencies: [
 			...(
-				| {
-						Class: StringPassedRegExp<'BP_[A-Z][A-z]+_C$'>;
-						mSchematics: [
-							FGSchematic__mUnlocks_mSchematics__mSchematics__type,
-							...FGSchematic__mUnlocks_mSchematics__mSchematics__type[],
-						];
-						mRequireAllSchematicsToBePurchased: boolean__type;
-				}
-				| {
-						Class: 'BP_GamePhaseReachedDependency_C';
+				| common_base__FGSchematic__base__mSchematicDependencies__mRequireAllSchematicsToBePurchased__type
+				| (common_base__FGSchematic__base__mSchematicDependencies__mGamePhase__type & {
 						mGamePhase: 'EGP_Victory';
 						mOnlyAllowInSelectedPhase: boolean__type;
-				}
+				})
 			)[],
 		];
 	};

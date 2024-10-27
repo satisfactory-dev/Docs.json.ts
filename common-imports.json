@@ -18,6 +18,8 @@
 	"common_type__common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type": "common/unassigned",
 	"common_type__common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__mSubCategories__type": "common/unassigned",
 	"common_type__common_base__FGSchematic__base__type": "common/unassigned",
+	"common_type__common_base__FGSchematic__base__mSchematicDependencies__mGamePhase__type": "common/unassigned",
+	"common_type__common_base__FGSchematic__base__mSchematicDependencies__mRequireAllSchematicsToBePurchased__type": "common/unassigned",
 	"common_type__common_base__FGSchematic__mUnlocks__type": "common/unassigned",
 	"common_type__empty_object__type": "common/unassigned",
 	"common_type__ItemClass__type": "common/unassigned",

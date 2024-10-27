@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (85 of 85)
+100.00% Complete (87 of 87)
 
 ## Basic Types
 
@@ -48,6 +48,8 @@
 -   [x] common-base--FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor--mSubCategories
 -   [x] common-base--FGSchematic--base
+-   [x] common-base--FGSchematic--base--mSchematicDependencies--mGamePhase
+-   [x] common-base--FGSchematic--base--mSchematicDependencies--mRequireAllSchematicsToBePurchased
 -   [x] common-base--FGSchematic--mUnlocks
 
 ## FGSchematic

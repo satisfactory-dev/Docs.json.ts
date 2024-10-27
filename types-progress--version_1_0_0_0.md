@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (254 of 254)
+100.00% Complete (256 of 256)
 
 ## Basic Types
 
@@ -65,6 +65,8 @@
 -   [x] common-base--FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor (common type)
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor--mSubCategories (common type)
 -   [x] common-base--FGSchematic--base (common type)
+-   [x] common-base--FGSchematic--base--mSchematicDependencies--mGamePhase (common type)
+-   [x] common-base--FGSchematic--base--mSchematicDependencies--mRequireAllSchematicsToBePurchased (common type)
 -   [x] common-base--FGSchematic--mUnlocks (common type)
 
 ## FGAmmoType

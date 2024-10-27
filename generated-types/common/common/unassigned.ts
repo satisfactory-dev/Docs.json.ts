@@ -297,6 +297,22 @@ export type common_base__FGSchematic__base__type = class__type & {
 	mIncludeInBuilds: 'IIB_PublicBuilds';
 };
 
+export type common_base__FGSchematic__base__mSchematicDependencies__mGamePhase__type =
+	{
+		Class: 'BP_GamePhaseReachedDependency_C';
+		mGamePhase: Exclude<string, ''>;
+	};
+
+export type common_base__FGSchematic__base__mSchematicDependencies__mRequireAllSchematicsToBePurchased__type =
+	{
+		Class: StringPassedRegExp<'BP_[A-Z][A-z]+_C$'>;
+		mSchematics: [
+			FGSchematic__mUnlocks_mSchematics__mSchematics__type,
+			...FGSchematic__mUnlocks_mSchematics__mSchematics__type[],
+		];
+		mRequireAllSchematicsToBePurchased: boolean__type;
+	};
+
 export type common_base__FGSchematic__mUnlocks__type =
 	| FGSchematic__mUnlocks_mTapeUnlocks__type
 	| FGSchematic__mUnlocks_mRecipes__type
@@ -367,6 +383,8 @@ export type faux_14__type = class__type & {
 		| FGSchematic__mUnlocks_equipment_slots__type
 		| FGSchematic__mUnlocks_mScannableObjects__type
 		| FGSchematic__mUnlocks_mItemsToGive__type;
+	optional2?: common_base__FGSchematic__base__mSchematicDependencies__mRequireAllSchematicsToBePurchased__type;
+	optional3?: common_base__FGSchematic__base__mSchematicDependencies__mGamePhase__type;
 };
 
 export type faux_2__type = class__type & {

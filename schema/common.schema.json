@@ -1324,6 +1324,47 @@
 				}
 			}
 		},
+		"common-base--FGSchematic--base--mSchematicDependencies--mRequireAllSchematicsToBePurchased": {
+			"type": "object",
+			"required": [
+				"Class",
+				"mSchematics",
+				"mRequireAllSchematicsToBePurchased"
+			],
+			"properties": {
+				"Class": {
+					"type": "string",
+					"pattern": "BP_[A-Z][A-z]+_C$"
+				},
+				"mSchematics": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"minItems": 1,
+						"items": {
+							"$ref": "common.schema.json#/$defs/FGSchematic--mUnlocks_mSchematics--mSchematics"
+						}
+					}
+				},
+				"mRequireAllSchematicsToBePurchased": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				}
+			}
+		},
+		"common-base--FGSchematic--base--mSchematicDependencies--mGamePhase": {
+			"type": "object",
+			"required": ["Class", "mGamePhase"],
+			"properties": {
+				"Class": {
+					"type": "string",
+					"const": "BP_GamePhaseReachedDependency_C"
+				},
+				"mGamePhase": {
+					"type": "string",
+					"minLength": 1
+				}
+			}
+		},
 		"common-base--FGSchematic--mUnlocks": {
 			"oneOf": [
 				{
@@ -1623,6 +1664,12 @@
 							"$ref": "#/$defs/FGSchematic--mUnlocks_mItemsToGive"
 						}
 					]
+				},
+				"optional2": {
+					"$ref": "#/$defs/common-base--FGSchematic--base--mSchematicDependencies--mRequireAllSchematicsToBePurchased"
+				},
+				"optional3": {
+					"$ref": "#/$defs/common-base--FGSchematic--base--mSchematicDependencies--mGamePhase"
 				}
 			}
 		}

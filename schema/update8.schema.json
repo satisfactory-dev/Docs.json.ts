@@ -620,40 +620,13 @@
 					"items": {
 						"oneOf": [
 							{
-								"type": "object",
-								"required": [
-									"Class",
-									"mSchematics",
-									"mRequireAllSchematicsToBePurchased"
-								],
-								"properties": {
-									"Class": {
-										"type": "string",
-										"pattern": "BP_[A-Z][A-z]+_C$"
-									},
-									"mSchematics": {
-										"type": "string",
-										"minLength": 1,
-										"typed_string": {
-											"minItems": 1,
-											"items": {
-												"$ref": "common.schema.json#/$defs/FGSchematic--mUnlocks_mSchematics--mSchematics"
-											}
-										}
-									},
-									"mRequireAllSchematicsToBePurchased": {
-										"$ref": "common.schema.json#/$defs/boolean"
-									}
-								}
+								"$ref": "common.schema.json#/$defs/common-base--FGSchematic--base--mSchematicDependencies--mRequireAllSchematicsToBePurchased"
 							},
 							{
 								"type": "object",
-								"required": ["Class", "mGamePhase"],
+								"$ref": "common.schema.json#/$defs/common-base--FGSchematic--base--mSchematicDependencies--mGamePhase",
+								"required": ["mGamePhase"],
 								"properties": {
-									"Class": {
-										"type": "string",
-										"const": "BP_GamePhaseReachedDependency_C"
-									},
 									"mGamePhase": {
 										"type": "string",
 										"enum": ["EGP_FoodCourt"]
