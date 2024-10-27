@@ -1,5 +1,3 @@
-import {mDockingRuleSet__type} from '../../common/unassigned';
-
 import {FGBuildableTrainPlatform__base__type} from './FGBuildableTrainPlatform';
 
 import {
@@ -10,6 +8,7 @@ import {
 
 import {
 	empty_object__type,
+	mDockingRuleSet__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned';
 

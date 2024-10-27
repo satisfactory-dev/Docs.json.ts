@@ -461,6 +461,16 @@ export type faux_15__type = class__type & {
 	FGSchematic__mUnlocks_mSchematics__mSchematics?: common_base__FGEquipment__base__type;
 };
 
+export type faux_16__type = class__type & {
+	faux: 'faux-16';
+	mAspect?: mAspect__type;
+	mPlatformDockingStatus?: mPlatformDockingStatus__type;
+	mDockingRuleSet?: mDockingRuleSet__type;
+	mBatteryStatus?: mBatteryStatus__type;
+	InfinityExtrap?: InfinityExtrap__type;
+	mDamageTypes?: mDamageTypes__type;
+};
+
 export type faux_2__type = class__type & {
 	faux_bool: boolean__type;
 };
@@ -494,6 +504,8 @@ export type faux_9__type = class__type & {
 	mSubCategories: common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__mSubCategories__type;
 };
 
+export type InfinityExtrap__type = 'RCCE_Constant';
+
 export type ItemClass__type = [
 	{
 		ItemClass: UnrealEngineString;
@@ -516,6 +528,31 @@ export type ItemClass__amount_required__type = [
 	}[],
 ];
 
+export type mAspect__type = 'RSA_None';
+
+export type mBatteryStatus__type = 'BS_Idle';
+
+export type mDamageTypes__type = [
+	UnrealEngineString<
+		| '/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_PointDamageType_Energy.BP_PointDamageType_Energy_C'
+		| '/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_PointDamageType_Gas.BP_PointDamageType_Gas_C'
+		| '/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_RadialDamageType_Gas.BP_RadialDamageType_Gas_C'
+		| '/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_PointDamageType_Physical.BP_PointDamageType_Physical_C'
+		| '/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_RadialDamageType_Explosive.BP_RadialDamageType_Explosive_C'
+	>,
+	...UnrealEngineString<
+		| '/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_PointDamageType_Energy.BP_PointDamageType_Energy_C'
+		| '/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_PointDamageType_Gas.BP_PointDamageType_Gas_C'
+		| '/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_RadialDamageType_Gas.BP_RadialDamageType_Gas_C'
+		| '/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_PointDamageType_Physical.BP_PointDamageType_Physical_C'
+		| '/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_RadialDamageType_Explosive.BP_RadialDamageType_Explosive_C'
+	>[],
+];
+
+export type mDockingRuleSet__type = {
+	DockForDuration: decimal_string__type;
+};
+
 export type mEventType__type = 'EV_Christmas';
 
 export type mEventType__optional_csv__type =
@@ -523,6 +560,8 @@ export type mEventType__optional_csv__type =
 	| [mEventType__type, ...mEventType__type[]];
 
 export type mForm__type = 'RF_SOLID' | 'RF_LIQUID' | 'RF_GAS' | 'RF_INVALID';
+
+export type mPlatformDockingStatus__type = 'ETPDS_None';
 
 export type NativeClass__type = {
 	NativeClass: UnrealEngineString<

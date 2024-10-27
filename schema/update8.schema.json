@@ -1414,7 +1414,7 @@
 			],
 			"properties": {
 				"mDamageTypes": {
-					"$ref": "#/$defs/mDamageTypes"
+					"$ref": "common.schema.json#/$defs/mDamageTypes"
 				},
 				"mSecondSwingMaxTime": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -1437,7 +1437,7 @@
 			"required": ["mRandomAttackAnim", "mRandomEquipAnim"],
 			"properties": {
 				"mDamageTypes": {
-					"$ref": "#/$defs/mDamageTypes"
+					"$ref": "common.schema.json#/$defs/mDamageTypes"
 				},
 				"mArmAnimation": {
 					"type": "string",
@@ -1458,7 +1458,7 @@
 			"required": ["mPunchAnimationWeight"],
 			"properties": {
 				"mDamageTypes": {
-					"$ref": "#/$defs/mDamageTypes"
+					"$ref": "common.schema.json#/$defs/mDamageTypes"
 				},
 				"mArmAnimation": {
 					"type": "string",
@@ -1770,7 +1770,7 @@
 			],
 			"properties": {
 				"mDamageTypesToProtectAgainst": {
-					"$ref": "#/$defs/mDamageTypes"
+					"$ref": "common.schema.json#/$defs/mDamageTypes"
 				},
 				"mPostProcessEnabled": {
 					"$ref": "common.schema.json#/$defs/boolean"
@@ -3672,10 +3672,6 @@
 				}
 			}
 		},
-		"mAspect": {
-			"type": "string",
-			"const": "RSA_None"
-		},
 		"FGBuildableRailroadSignal": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--base",
@@ -3695,7 +3691,7 @@
 			],
 			"properties": {
 				"mPreviousAspect": {
-					"$ref": "#/$defs/mAspect"
+					"$ref": "common.schema.json#/$defs/mAspect"
 				},
 				"mOnAspectChangedDelegate": {
 					"$ref": "common.schema.json#/$defs/empty-object"
@@ -3715,7 +3711,7 @@
 					"const": ""
 				},
 				"mAspect": {
-					"$ref": "#/$defs/mAspect"
+					"$ref": "common.schema.json#/$defs/mAspect"
 				},
 				"mBlockValidation": {
 					"type": "string",
@@ -3734,10 +3730,6 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
-		},
-		"mPlatformDockingStatus": {
-			"type": "string",
-			"const": "ETPDS_None"
 		},
 		"FGBuildableTrainPlatform--base": {
 			"type": "object",
@@ -3773,10 +3765,10 @@
 					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mPlatformDockingStatus": {
-					"$ref": "#/$defs/mPlatformDockingStatus"
+					"$ref": "common.schema.json#/$defs/mPlatformDockingStatus"
 				},
 				"mSavedDockingStatus": {
-					"$ref": "#/$defs/mPlatformDockingStatus"
+					"$ref": "common.schema.json#/$defs/mPlatformDockingStatus"
 				},
 				"mDockingSequenceTimerHandle": {
 					"$ref": "common.schema.json#/$defs/empty-object"
@@ -3786,18 +3778,6 @@
 				},
 				"mDockWasCancelled": {
 					"$ref": "common.schema.json#/$defs/boolean"
-				}
-			}
-		},
-		"mDockingRuleSet": {
-			"type": "string",
-			"minLength": 1,
-			"typed_string": {
-				"required": ["DockForDuration"],
-				"properties": {
-					"DockForDuration": {
-						"$ref": "common.schema.json#/$defs/decimal-string"
-					}
 				}
 			}
 		},
@@ -3904,7 +3884,7 @@
 					"const": ""
 				},
 				"mDockingRuleSet": {
-					"$ref": "#/$defs/mDockingRuleSet"
+					"$ref": "common.schema.json#/$defs/mDockingRuleSet"
 				},
 				"mLoadItemFilter": {
 					"type": "string",
@@ -3986,7 +3966,7 @@
 					"const": ""
 				},
 				"mCurrentDockedWithRuleSet": {
-					"$ref": "#/$defs/mDockingRuleSet"
+					"$ref": "common.schema.json#/$defs/mDockingRuleSet"
 				}
 			}
 		},
@@ -4083,10 +4063,6 @@
 				}
 			}
 		},
-		"mBatteryStatus": {
-			"type": "string",
-			"const": "BS_Idle"
-		},
 		"FGBuildablePowerStorage": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--consumes-power-base",
@@ -4104,7 +4080,7 @@
 			],
 			"properties": {
 				"m_PreviousBatteryStatus": {
-					"$ref": "#/$defs/mBatteryStatus"
+					"$ref": "common.schema.json#/$defs/mBatteryStatus"
 				},
 				"mCurrentGameTimeSinceStateChange": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -4113,7 +4089,7 @@
 					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"mBatteryStatus": {
-					"$ref": "#/$defs/mBatteryStatus"
+					"$ref": "common.schema.json#/$defs/mBatteryStatus"
 				},
 				"mPowerStore": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -4481,10 +4457,6 @@
 				}
 			}
 		},
-		"InfinityExtrap": {
-			"type": "string",
-			"const": "RCCE_Constant"
-		},
 		"MaterialSlotName": {
 			"type": "string",
 			"enum": [
@@ -4520,10 +4492,10 @@
 									"$ref": "common.schema.json#/$defs/decimal-string"
 								},
 								"PreInfinityExtrap": {
-									"$ref": "#/$defs/InfinityExtrap"
+									"$ref": "common.schema.json#/$defs/InfinityExtrap"
 								},
 								"PostInfinityExtrap": {
-									"$ref": "#/$defs/InfinityExtrap"
+									"$ref": "common.schema.json#/$defs/InfinityExtrap"
 								}
 							}
 						}
@@ -4538,26 +4510,6 @@
 								"/Game/FactoryGame/Resource/Parts/CartridgeStandard/LinearDamageFalloff.LinearDamageFalloff"
 							]
 						}
-					}
-				}
-			}
-		},
-		"mDamageTypes": {
-			"type": "string",
-			"minLength": 1,
-			"typed_string": {
-				"minItems": 1,
-				"items": {
-					"type": "string",
-					"minLength": 1,
-					"UnrealEngineString": {
-						"left": [
-							"/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_PointDamageType_Energy.BP_PointDamageType_Energy_C",
-							"/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_PointDamageType_Gas.BP_PointDamageType_Gas_C",
-							"/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_RadialDamageType_Gas.BP_RadialDamageType_Gas_C",
-							"/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_PointDamageType_Physical.BP_PointDamageType_Physical_C",
-							"/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_RadialDamageType_Explosive.BP_RadialDamageType_Explosive_C"
-						]
 					}
 				}
 			}
@@ -4717,7 +4669,7 @@
 							"const": ""
 						},
 						{
-							"$ref": "#/$defs/mDamageTypes"
+							"$ref": "common.schema.json#/$defs/mDamageTypes"
 						}
 					]
 				},
@@ -4824,7 +4776,7 @@
 							"const": ""
 						},
 						{
-							"$ref": "#/$defs/mDamageTypes"
+							"$ref": "common.schema.json#/$defs/mDamageTypes"
 						}
 					]
 				},

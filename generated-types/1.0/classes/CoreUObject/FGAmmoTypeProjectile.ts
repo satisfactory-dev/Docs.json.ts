@@ -3,7 +3,6 @@ import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
 import {
 	MaterialSlotName__type,
 	EditorCurveData__type,
-	mDamageTypes__type,
 } from '../../common/unassigned';
 
 import {FGItemDescriptor__FGResourceDescriptor__type} from './FGItemDescriptor';
@@ -20,6 +19,7 @@ import {
 	transformation__type,
 	xyz__type,
 	color_decimal__type,
+	mDamageTypes__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned';
 

@@ -1522,6 +1522,54 @@
 				}
 			}
 		},
+		"mAspect": {
+			"type": "string",
+			"const": "RSA_None"
+		},
+		"mPlatformDockingStatus": {
+			"type": "string",
+			"const": "ETPDS_None"
+		},
+		"mDockingRuleSet": {
+			"type": "string",
+			"minLength": 1,
+			"typed_string": {
+				"required": ["DockForDuration"],
+				"properties": {
+					"DockForDuration": {
+						"$ref": "common.schema.json#/$defs/decimal-string"
+					}
+				}
+			}
+		},
+		"mBatteryStatus": {
+			"type": "string",
+			"const": "BS_Idle"
+		},
+		"InfinityExtrap": {
+			"type": "string",
+			"const": "RCCE_Constant"
+		},
+		"mDamageTypes": {
+			"type": "string",
+			"minLength": 1,
+			"typed_string": {
+				"minItems": 1,
+				"items": {
+					"type": "string",
+					"minLength": 1,
+					"UnrealEngineString": {
+						"left": [
+							"/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_PointDamageType_Energy.BP_PointDamageType_Energy_C",
+							"/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_PointDamageType_Gas.BP_PointDamageType_Gas_C",
+							"/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_RadialDamageType_Gas.BP_RadialDamageType_Gas_C",
+							"/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_PointDamageType_Physical.BP_PointDamageType_Physical_C",
+							"/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_RadialDamageType_Explosive.BP_RadialDamageType_Explosive_C"
+						]
+					}
+				}
+			}
+		},
 		"faux-1": {
 			"type": "object",
 			"$ref": "#/$defs/class",
@@ -1815,6 +1863,37 @@
 					"$ref": "#/$defs/common-base--FGEquipment--base"
 				}
 			}
+		},
+		"faux-16": {
+			"type": "object",
+			"$ref": "#/$defs/class",
+			"required": [
+				"faux"
+			],
+			"properties": {
+				"faux": {
+					"type": "string",
+					"const": "faux-16"
+				},
+				"mAspect": {
+					"$ref": "#/$defs/mAspect"
+				},
+				"mPlatformDockingStatus": {
+					"$ref": "#/$defs/mPlatformDockingStatus"
+				},
+				"mDockingRuleSet": {
+					"$ref": "#/$defs/mDockingRuleSet"
+				},
+				"mBatteryStatus": {
+					"$ref": "#/$defs/mBatteryStatus"
+				},
+				"InfinityExtrap": {
+					"$ref": "#/$defs/InfinityExtrap"
+				},
+				"mDamageTypes": {
+					"$ref": "#/$defs/mDamageTypes"
+				}
+			}
 		}
 	},
 	"items": false,
@@ -1915,6 +1994,11 @@
 							{
 								"type": "object",
 								"$ref": "#/$defs/faux-15",
+								"unevaluatedProperties": false
+							},
+							{
+								"type": "object",
+								"$ref": "#/$defs/faux-16",
 								"unevaluatedProperties": false
 							}
 						]

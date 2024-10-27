@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (91 of 91)
+100.00% Complete (98 of 98)
 
 ## Basic Types
 
@@ -21,6 +21,7 @@
 -   [x] faux-13
 -   [x] faux-14
 -   [x] faux-15
+-   [x] faux-16
 -   [x] faux-2
 -   [x] faux-3
 -   [x] faux-4
@@ -29,9 +30,15 @@
 -   [x] faux-7
 -   [x] faux-8
 -   [x] faux-9
+-   [x] InfinityExtrap
 -   [x] integer-string (common type)
 -   [x] integer-string--signed (common type)
+-   [x] mAspect
+-   [x] mBatteryStatus
+-   [x] mDamageTypes
+-   [x] mDockingRuleSet
 -   [x] mForm
+-   [x] mPlatformDockingStatus
 -   [x] NativeClass
 -   [x] None (common type)
 -   [x] SpecifiedColor

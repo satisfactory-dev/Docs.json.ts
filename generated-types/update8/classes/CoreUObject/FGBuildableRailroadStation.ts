@@ -1,10 +1,11 @@
-import {mDockingRuleSet__type} from '../../common/unassigned';
-
 import {FGBuildableTrainPlatformCargo__FGBuildableRailroadStation__type} from './FGBuildableTrainPlatformCargo';
 
 import {boolean__type} from '../../../common/common/scalar';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {
+	mDockingRuleSet__type,
+	NativeClass__type,
+} from '../../../common/common/unassigned';
 
 export type FGBuildableRailroadStation__type =
 	FGBuildableTrainPlatformCargo__FGBuildableRailroadStation__type & {

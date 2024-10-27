@@ -8,6 +8,7 @@ import {
 } from '../../common/common/scalar';
 
 import {
+	InfinityExtrap__type,
 	None__type,
 	empty_object__type,
 } from '../../common/common/unassigned';
@@ -33,10 +34,6 @@ export type FGBuildableResourceExtractor__miner_mk3__type =
 		mMaximumDrillTime_0: decimal_string__type;
 	};
 
-export type InfinityExtrap__type = 'RCCE_Constant';
-
-export type mAspect__type = 'RSA_None';
-
 export type MaterialSlotName__type =
 	| 'lambert1'
 	| 'lambert10'
@@ -49,26 +46,7 @@ export type MaterialSlotName__type =
 	| 'Rifle'
 	| '01 - Default';
 
-export type mBatteryStatus__type = 'BS_Idle';
-
 export type mChainsawState__type = None__type;
-
-export type mDamageTypes__type = [
-	UnrealEngineString<
-		| '/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_PointDamageType_Energy.BP_PointDamageType_Energy_C'
-		| '/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_PointDamageType_Gas.BP_PointDamageType_Gas_C'
-		| '/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_RadialDamageType_Gas.BP_RadialDamageType_Gas_C'
-		| '/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_PointDamageType_Physical.BP_PointDamageType_Physical_C'
-		| '/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_RadialDamageType_Explosive.BP_RadialDamageType_Explosive_C'
-	>,
-	...UnrealEngineString<
-		| '/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_PointDamageType_Energy.BP_PointDamageType_Energy_C'
-		| '/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_PointDamageType_Gas.BP_PointDamageType_Gas_C'
-		| '/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_RadialDamageType_Gas.BP_RadialDamageType_Gas_C'
-		| '/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_PointDamageType_Physical.BP_PointDamageType_Physical_C'
-		| '/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_RadialDamageType_Explosive.BP_RadialDamageType_Explosive_C'
-	>[],
-];
 
 export type mDisableSnapOn__type =
 	| {
@@ -214,18 +192,12 @@ export type mDisableSnapOn__type =
 			Top: boolean__type;
 	};
 
-export type mDockingRuleSet__type = {
-	DockForDuration: decimal_string__type;
-};
-
 export type mLightControlData__type = {
 	Intensity: decimal_string__type;
 };
 
 export type mOutputInventoryHandlerData__type =
 	empty_object__type;
-
-export type mPlatformDockingStatus__type = 'ETPDS_None';
 
 export type mSnappedPassthroughs__type = '';
 

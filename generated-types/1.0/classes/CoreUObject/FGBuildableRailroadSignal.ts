@@ -1,8 +1,7 @@
-import {mAspect__type} from '../../common/unassigned';
-
 import {FGBuildable__base__type} from './FGBuildable';
 
 import {
+	mAspect__type,
 	empty_object__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned';

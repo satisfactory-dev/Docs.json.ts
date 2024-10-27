@@ -10,6 +10,7 @@ import {
 } from '../../common/common/scalar';
 
 import {
+	InfinityExtrap__type,
 	None__type,
 	xyz__type,
 	quaternion__type,
@@ -75,10 +76,6 @@ export type FilterMontageTag__charged__type =
 	| 'MediumCharged'
 	| 'FullyCharged';
 
-export type InfinityExtrap__type = 'RCCE_Constant';
-
-export type mAspect__type = 'RSA_None';
-
 export type MaterialSlotName__type =
 	| 'lambert1'
 	| 'lambert10'
@@ -90,8 +87,6 @@ export type MaterialSlotName__type =
 	| 'Rocket2'
 	| 'Rifle'
 	| '01 - Default';
-
-export type mBatteryStatus__type = 'BS_Idle';
 
 export type mChainsawState__type = None__type;
 
@@ -127,23 +122,6 @@ export type mClearanceData__type =
 				ExcludeForSnapping?: boolean__type;
 			}[],
 	];
-
-export type mDamageTypes__type = [
-	UnrealEngineString<
-		| '/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_PointDamageType_Energy.BP_PointDamageType_Energy_C'
-		| '/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_PointDamageType_Gas.BP_PointDamageType_Gas_C'
-		| '/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_RadialDamageType_Gas.BP_RadialDamageType_Gas_C'
-		| '/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_PointDamageType_Physical.BP_PointDamageType_Physical_C'
-		| '/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_RadialDamageType_Explosive.BP_RadialDamageType_Explosive_C'
-	>,
-	...UnrealEngineString<
-		| '/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_PointDamageType_Energy.BP_PointDamageType_Energy_C'
-		| '/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_PointDamageType_Gas.BP_PointDamageType_Gas_C'
-		| '/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_RadialDamageType_Gas.BP_RadialDamageType_Gas_C'
-		| '/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_PointDamageType_Physical.BP_PointDamageType_Physical_C'
-		| '/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_RadialDamageType_Explosive.BP_RadialDamageType_Explosive_C'
-	>[],
-];
 
 export type mDisableSnapOn__type =
 	| {
@@ -289,10 +267,6 @@ export type mDisableSnapOn__type =
 			Top: boolean__type;
 	};
 
-export type mDockingRuleSet__type = {
-	DockForDuration: decimal_string__type;
-};
-
 export type mGasType__type = 'GT_NORMAL' | 'GT_ENERGY';
 
 export type mLightControlData__type = {
@@ -308,8 +282,6 @@ export type Montage_3P__type = UnrealEngineString<
 	'/Script/Engine.AnimMontage',
 	StringStartsWith<'/Game/FactoryGame/Character/Player/Animation/ThirdPerson/'>
 >;
-
-export type mPlatformDockingStatus__type = 'ETPDS_None';
 
 export type mSnappedPassthroughs__type = '';
 

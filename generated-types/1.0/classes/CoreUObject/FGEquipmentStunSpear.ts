@@ -2,7 +2,6 @@ import {
 	Montage_1P__type,
 	Montage_3P__type,
 	CameraAnim__type,
-	mDamageTypes__type,
 } from '../../common/unassigned';
 
 import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
@@ -14,7 +13,10 @@ import {
 	boolean__type,
 } from '../../../common/common/scalar';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {
+	mDamageTypes__type,
+	NativeClass__type,
+} from '../../../common/common/unassigned';
 
 export type FGEquipmentStunSpear__type = FGEquipmentStunSpear__base__type & {
 	mSecondSwingMontageList: {

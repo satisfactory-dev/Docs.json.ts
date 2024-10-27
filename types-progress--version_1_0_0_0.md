@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (257 of 257)
+100.00% Complete (256 of 256)
 
 ## Basic Types
 
@@ -30,23 +30,22 @@
 -   [x] FGRecipe
 -   [x] FGResourceDescriptor
 -   [x] FGSuitBase
--   [x] InfinityExtrap
 -   [x] integer-string (common type)
 -   [x] integer-string--signed (common type)
--   [x] mAspect
+-   [x] mAspect (common type)
 -   [x] MaterialSlotName
--   [x] mBatteryStatus
+-   [x] mBatteryStatus (common type)
 -   [x] mChainsawState
 -   [x] mClearanceData
--   [x] mDamageTypes
+-   [x] mDamageTypes (common type)
 -   [x] mDisableSnapOn
--   [x] mDockingRuleSet
+-   [x] mDockingRuleSet (common type)
 -   [x] mForm (common type)
 -   [x] mGasType
 -   [x] mLightControlData
 -   [x] Montage_1P
 -   [x] Montage_3P
--   [x] mPlatformDockingStatus
+-   [x] mPlatformDockingStatus (common type)
 -   [x] mSnappedPassthroughs
 -   [x] NativeClass (common type)
 -   [x] None (common type)

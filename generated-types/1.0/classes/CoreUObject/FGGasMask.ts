@@ -2,7 +2,6 @@ import {
 	Montage_1P__type,
 	Montage_3P__type,
 	CameraAnim__type,
-	mDamageTypes__type,
 } from '../../common/unassigned';
 
 import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
@@ -15,6 +14,7 @@ import {
 } from '../../../common/common/scalar';
 
 import {
+	mDamageTypes__type,
 	empty_object__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned';
