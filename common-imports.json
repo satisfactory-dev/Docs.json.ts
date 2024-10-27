@@ -15,6 +15,7 @@
 	"common_type__common_base__FGBuildingDescriptor__mForm__type": "common/unassigned",
 	"common_type__common_base__FGBuildingDescriptor__mSubCategories__type": "common/unassigned",
 	"common_type__common_base__FGCustomizationRecipe__FGRecipe__type": "common/unassigned",
+	"common_type__common_base__FGEquipment__base__type": "common/unassigned",
 	"common_type__common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type": "common/unassigned",
 	"common_type__common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__mSubCategories__type": "common/unassigned",
 	"common_type__common_base__FGSchematic__base__type": "common/unassigned",

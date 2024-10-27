@@ -1396,6 +1396,132 @@
 				}
 			]
 		},
+		"common-base--FGEquipment--base": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/class--no-description-or-display-name",
+			"required": [
+				"mEquipmentSlot",
+				"mAttachSocket",
+				"mNeedsDefaultEquipmentMappingContext",
+				"mCostToUse",
+				"mArmAnimation",
+				"mBackAnimation",
+				"mDefaultEquipmentActions",
+				"mReceivedDamageModifiers",
+				"mSwappedOutThirdPersonMaterials"
+			],
+			"properties": {
+				"mRandomAnim": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				},
+				"mCanPress": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mAnimData": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"minItems": 3,
+						"maxItems": 3,
+						"items": {
+							"type": "string",
+							"minLength": 1,
+							"typed_string": {
+								"required": [
+									"Montage_7_2E66F6A948A8606E71185682EA2AC4EC",
+									"CameraAnimationSequence_11_920C446448786C507704569A05006500"
+								],
+								"properties": {
+									"Montage_7_2E66F6A948A8606E71185682EA2AC4EC": {
+										"type": "string",
+										"minLength": 1,
+										"UnrealEngineString": {
+											"left": "/Script/Engine.AnimMontage",
+											"right": [
+												"/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_01_Montage.MedkitUse_01_Montage",
+												"/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_02_Montage.MedkitUse_02_Montage",
+												"/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_03_Montage.MedkitUse_03_Montage"
+											]
+										}
+									},
+									"CameraAnimationSequence_11_920C446448786C507704569A05006500": {
+										"type": "string",
+										"minLength": 1,
+										"UnrealEngineString": {
+											"left": "/Script/TemplateSequence.CameraAnimationSequence",
+											"right": [
+												"/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_01_CameraAnimSequence.MedkitUse_01_CameraAnimSequence",
+												"/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_02_CameraAnimSequence.MedkitUse_02_CameraAnimSequence",
+												"/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_03_CameraAnimSequence.MedkitUse_03_CameraAnimSequence"
+											]
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"mCurrentAnimData": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mEquipmentSlot": {
+					"type": "string",
+					"enum": [
+						"ES_ARMS",
+						"ES_BACK",
+						"ES_BODY",
+						"ES_HEAD",
+						"ES_LEGS"
+					]
+				},
+				"mAttachSocket": {
+					"type": "string",
+					"minLength": 1
+				},
+				"mNeedsDefaultEquipmentMappingContext": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mCostToUse": {
+					"oneOf": [
+						{
+							"type": "string",
+							"const": ""
+						},
+						{
+							"$ref": "common.schema.json#/$defs/ItemClass"
+						}
+					]
+				},
+				"mArmAnimation": {
+					"type": "string",
+					"enum": [
+						"AE_ShockShank",
+						"AE_StunSpear",
+						"AE_Generic2Hand",
+						"AE_Generic1Hand",
+						"AE_None",
+						"AE_ChainSaw",
+						"AE_RebarGun",
+						"AE_Rifle",
+						"AE_Nobelisk"
+					]
+				},
+				"mBackAnimation": {
+					"type": "string",
+					"enum": ["BE_None", "BE_Jetpack"]
+				},
+				"mDefaultEquipmentActions": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				},
+				"mReceivedDamageModifiers": {
+					"type": "string",
+					"const": ""
+				},
+				"mSwappedOutThirdPersonMaterials": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				}
+			}
+		},
 		"faux-1": {
 			"type": "object",
 			"$ref": "#/$defs/class",
@@ -1672,6 +1798,23 @@
 					"$ref": "#/$defs/common-base--FGSchematic--base--mSchematicDependencies--mGamePhase"
 				}
 			}
+		},
+		"faux-15": {
+			"type": "object",
+			"$ref": "#/$defs/class",
+			"required": [
+				"faux",
+				"common_base__FGEquipment__base"
+			],
+			"properties": {
+				"faux": {
+					"type": "string",
+					"const": "common-base--FGEquipment--base"
+				},
+				"FGSchematic__mUnlocks_mSchematics__mSchematics": {
+					"$ref": "#/$defs/common-base--FGEquipment--base"
+				}
+			}
 		}
 	},
 	"items": false,
@@ -1767,6 +1910,11 @@
 							{
 								"type": "object",
 								"$ref": "#/$defs/faux-14",
+								"unevaluatedProperties": false
+							},
+							{
+								"type": "object",
+								"$ref": "#/$defs/faux-15",
 								"unevaluatedProperties": false
 							}
 						]

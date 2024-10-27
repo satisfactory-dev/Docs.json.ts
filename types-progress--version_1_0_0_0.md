@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (256 of 256)
+100.00% Complete (257 of 257)
 
 ## Basic Types
 
@@ -62,6 +62,7 @@
 -   [x] common-base--FGBuildingDescriptor--mForm (common type)
 -   [x] common-base--FGBuildingDescriptor--mSubCategories (common type)
 -   [x] common-base--FGCustomizationRecipe--FGRecipe (common type)
+-   [x] common-base--FGEquipment--base (common type)
 -   [x] common-base--FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor (common type)
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor--mSubCategories (common type)
 -   [x] common-base--FGSchematic--base (common type)

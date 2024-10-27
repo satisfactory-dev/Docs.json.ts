@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (87 of 87)
+100.00% Complete (91 of 91)
 
 ## Basic Types
 
@@ -8,18 +8,19 @@
 -   [x] boolean-extended
 -   [x] class (common type)
 -   [x] class--no-description (common type)
--   [x] class--no-description-or-display-name
+-   [x] class--no-description-or-display-name (common type)
 -   [x] color (common type)
 -   [x] color-decimal
 -   [x] decimal-string (common type)
 -   [x] decimal-string--signed (common type)
--   [x] empty-object
+-   [x] empty-object (common type)
 -   [x] faux-1
 -   [x] faux-10
 -   [x] faux-11
 -   [x] faux-12
 -   [x] faux-13
 -   [x] faux-14
+-   [x] faux-15
 -   [x] faux-2
 -   [x] faux-3
 -   [x] faux-4
@@ -45,6 +46,7 @@
 -   [x] common-base--FGBuildingDescriptor--mForm
 -   [x] common-base--FGBuildingDescriptor--mSubCategories
 -   [x] common-base--FGCustomizationRecipe--FGRecipe
+-   [x] common-base--FGEquipment--base
 -   [x] common-base--FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor--mSubCategories
 -   [x] common-base--FGSchematic--base
