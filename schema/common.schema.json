@@ -1850,10 +1850,7 @@
 		"faux-15": {
 			"type": "object",
 			"$ref": "#/$defs/class",
-			"required": [
-				"faux",
-				"common_base__FGEquipment__base"
-			],
+			"required": ["faux", "common_base__FGEquipment__base"],
 			"properties": {
 				"faux": {
 					"type": "string",
@@ -1867,9 +1864,7 @@
 		"faux-16": {
 			"type": "object",
 			"$ref": "#/$defs/class",
-			"required": [
-				"faux"
-			],
+			"required": ["faux"],
 			"properties": {
 				"faux": {
 					"type": "string",

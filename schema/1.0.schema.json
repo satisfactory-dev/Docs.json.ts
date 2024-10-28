@@ -965,7 +965,10 @@
 							{
 								"type": "object",
 								"$ref": "common.schema.json#/$defs/common-base--FGSchematic--base--mSchematicDependencies--mGamePhase",
-								"required": ["mGamePhase", "mOnlyAllowInSelectedPhase"],
+								"required": [
+									"mGamePhase",
+									"mOnlyAllowInSelectedPhase"
+								],
 								"properties": {
 									"mGamePhase": {
 										"type": "string",
