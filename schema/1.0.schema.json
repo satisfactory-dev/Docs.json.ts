@@ -3453,14 +3453,14 @@
 		"FGJumpingStilts--AudioEvent": {
 			"oneOf": [
 				{
-			"type": "string",
-			"minLength": 1,
-			"UnrealEngineString": {
-				"left": "/Script/AkAudio.AkAudioEvent",
-				"right": {
-					"starts_with": "/Game/WwiseAudio/Events/Equipment/BladeRunners/"
-				}
-			}
+					"type": "string",
+					"minLength": 1,
+					"UnrealEngineString": {
+						"left": "/Script/AkAudio.AkAudioEvent",
+						"right": {
+							"starts_with": "/Game/WwiseAudio/Events/Equipment/BladeRunners/"
+						}
+					}
 				},
 				{
 					"type": "string",
@@ -3753,14 +3753,14 @@
 		"FGParachute--AudioEvent": {
 			"oneOf": [
 				{
-			"type": "string",
-			"minLength": 1,
-			"UnrealEngineString": {
-				"left": "/Script/AkAudio.AkAudioEvent",
-				"right": {
-					"starts_with": "/Game/WwiseAudio/Events/Equipment/Parachute/"
-				}
-			}
+					"type": "string",
+					"minLength": 1,
+					"UnrealEngineString": {
+						"left": "/Script/AkAudio.AkAudioEvent",
+						"right": {
+							"starts_with": "/Game/WwiseAudio/Events/Equipment/Parachute/"
+						}
+					}
 				},
 				{
 					"type": "string",
