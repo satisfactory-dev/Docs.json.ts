@@ -136,15 +136,33 @@ export type FGParachute__type = FGEquipment__base__type & {
 	};
 	mUseDistanceOverride: decimal_string__type;
 	mIsDeployed: boolean__type;
-	mEquipMontage?: empty_object__type;
+	mEquipMontage?: FGParachute__mEquipMontage__type;
 	mStingerMontage?: empty_object__type;
-	mUnEquipMontage?: empty_object__type;
+	mUnEquipMontage?: FGParachute__mUnEquipMontage__type;
 };
 
 export type FGParachute__AudioEvent__type = UnrealEngineString<
 	'/Script/AkAudio.AkAudioEvent',
-	StringStartsWith<'/Game/WwiseAudio/Events/Equipment/Parachute/'>
+	StringStartsWith<
+		| '/Game/WwiseAudio/Events/Equipment/Parachute/'
+		| '/Game/WwiseAudio/Events/Equipment/Equipment_Gear/Parachute/'
+	>
 >;
+
+export type FGParachute__mEquipMontage__type = {
+	Montages: [
+		{
+			AudioEvent: UnrealEngineString<
+				'/Script/AkAudio.AkAudioEvent',
+				StringStartsWith<'/Game/WwiseAudio/Events/Equipment/Equipment_Gear/Parachute/'>
+			>;
+		},
+	];
+};
+
+export type FGParachute__mUnEquipMontage__type = {
+	AudioEvent: FGParachute__AudioEvent__type;
+};
 
 export type FGParachute__NativeClass = NativeClass__type & {
 	Classes: [FGParachute__type];

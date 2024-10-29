@@ -2739,6 +2739,7 @@
 -   [x] Research_Caterium_2_C
 -   [x] Research_Mycelia_GasMask_C
 -   [x] Research_Mycelia_8_C
+-   [x] Research_Mycelia_7_C
 -   [x] Research_Nutrients_2_C
 -   [x] Research_Mycelia_6_C
 -   [x] Research_Mycelia_5_C
@@ -2746,7 +2747,6 @@
 -   [x] Research_Mycelia_3_C
 -   [x] Research_Mycelia_2_1_C
 -   [x] Research_Mycelia_2_C
--   [x] Research_Mycelia_7_C
 -   [x] Research_Nutrients_4_C
 -   [x] Research_Nutrients_3_C
 -   [x] Research_Nutrients_1_C

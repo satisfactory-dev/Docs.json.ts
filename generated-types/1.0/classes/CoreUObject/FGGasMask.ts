@@ -1,10 +1,10 @@
+import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
+
 import {
 	Montage_1P__type,
 	Montage_3P__type,
 	CameraAnim__type,
 } from '../../common/unassigned';
-
-import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
 
 import {FGEquipment__base__type} from './FGEquipment';
 
@@ -44,7 +44,14 @@ export type FGGasMask__type = FGEquipment__base__type & {
 		];
 	};
 	mStingerMontage?: empty_object__type;
-	mUnEquipMontage?: empty_object__type;
+	mUnEquipMontage?: FGGasMask__mUnEquipMontage__type;
+};
+
+export type FGGasMask__mUnEquipMontage__type = {
+	AudioEvent: UnrealEngineString<
+		'/Script/AkAudio.AkAudioEvent',
+		StringStartsWith<'/Game/WwiseAudio/Events/Equipment/Equipment_Gear/GasMask/'>
+	>;
 };
 
 export type FGGasMask__NativeClass = NativeClass__type & {

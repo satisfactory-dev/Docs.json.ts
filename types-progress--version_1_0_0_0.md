@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (256 of 256)
+100.00% Complete (259 of 259)
 
 ## Basic Types
 
@@ -19,7 +19,6 @@
 -   [x] FGBuildingDescriptor
 -   [x] FGCentralStorageContainer
 -   [x] FGChargedWeapon
--   [x] FGGasMask
 -   [x] FGGolfCartDispenser
 -   [x] FGJetPack
 -   [x] FGObjectScanner
@@ -288,6 +287,11 @@
 -   [x] FGEquipmentStunSpear--base
 -   [x] FGEquipmentStunSpear--xeno-zapper
 
+## FGGasMask
+
+-   [x] FGGasMask
+-   [x] FGGasMask--mUnEquipMontage
+
 ## FGHoverPack
 
 -   [x] FGHoverPack
@@ -312,6 +316,8 @@
 
 -   [x] FGParachute
 -   [x] FGParachute--AudioEvent
+-   [x] FGParachute--mEquipMontage
+-   [x] FGParachute--mUnEquipMontage
 
 ## FGSchematic
 

@@ -24,7 +24,10 @@ export type FGJumpingStilts__type = FGEquipment__base__type & {
 
 export type FGJumpingStilts__AudioEvent__type = UnrealEngineString<
 	'/Script/AkAudio.AkAudioEvent',
-	StringStartsWith<'/Game/WwiseAudio/Events/Equipment/BladeRunners/'>
+	StringStartsWith<
+		| '/Game/WwiseAudio/Events/Equipment/BladeRunners/'
+		| '/Game/WwiseAudio/Events/Equipment/Equipment_Gear/BladeRunners/'
+	>
 >;
 
 export type FGJumpingStilts__Montage__type = {
