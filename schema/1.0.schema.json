@@ -3451,17 +3451,17 @@
 			}
 		},
 		"FGJumpingStilts--AudioEvent": {
-					"type": "string",
-					"minLength": 1,
-					"UnrealEngineString": {
-						"left": "/Script/AkAudio.AkAudioEvent",
-						"right": {
+			"type": "string",
+			"minLength": 1,
+			"UnrealEngineString": {
+				"left": "/Script/AkAudio.AkAudioEvent",
+				"right": {
 					"starts_with": [
 						"/Game/WwiseAudio/Events/Equipment/BladeRunners/",
 						"/Game/WwiseAudio/Events/Equipment/Equipment_Gear/BladeRunners/"
 					]
-						}
-					}
+				}
+			}
 		},
 		"FGJumpingStilts--Montage": {
 			"type": "string",
@@ -3740,17 +3740,17 @@
 			}
 		},
 		"FGParachute--AudioEvent": {
-					"type": "string",
-					"minLength": 1,
-					"UnrealEngineString": {
-						"left": "/Script/AkAudio.AkAudioEvent",
-						"right": {
+			"type": "string",
+			"minLength": 1,
+			"UnrealEngineString": {
+				"left": "/Script/AkAudio.AkAudioEvent",
+				"right": {
 					"starts_with": [
 						"/Game/WwiseAudio/Events/Equipment/Parachute/",
 						"/Game/WwiseAudio/Events/Equipment/Equipment_Gear/Parachute/"
 					]
-						}
-					}
+				}
+			}
 		},
 		"FGParachute--mEquipMontage": {
 			"type": "string",
