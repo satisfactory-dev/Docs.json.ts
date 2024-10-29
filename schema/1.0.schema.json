@@ -3790,9 +3790,7 @@
 								"type": "string",
 								"minLength": 1,
 								"typed_string": {
-									"required": [
-										"AudioEvent"
-									],
+									"required": ["AudioEvent"],
 									"properties": {
 										"AudioEvent": {
 											"type": "string",
