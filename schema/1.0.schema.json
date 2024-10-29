@@ -1201,10 +1201,6 @@
 				"mOverlappingTracks",
 				"mVehicles",
 				"mSignalBlockID",
-				"mBlockVisualizationMeshLength",
-				"mBlockVisualizationNumPrimitiveDataFloats",
-				"mBlockVisualizationNumPerInstancePrimitiveDataCountOffset",
-				"mBlockVisualizationSplineDataSettings",
 				"mBlockVisualizationColorDataStartIndex"
 			],
 			"properties": {
@@ -1247,41 +1243,6 @@
 				},
 				"mSignalBlockID": {
 					"$ref": "common.schema.json#/$defs/integer-string"
-				},
-				"mBlockVisualizationMeshLength": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mBlockVisualizationNumPrimitiveDataFloats": {
-					"$ref": "common.schema.json#/$defs/integer-string"
-				},
-				"mBlockVisualizationNumPerInstancePrimitiveDataCountOffset": {
-					"$ref": "common.schema.json#/$defs/integer-string"
-				},
-				"mBlockVisualizationSplineDataSettings": {
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"required": [
-							"StartTangentPrimitiveDataStartIndex",
-							"EndPositionPrimitiveDataStartIndex",
-							"EndTangentPrimitiveDataStartIndex",
-							"InstanceScaleIndex"
-						],
-						"properties": {
-							"StartTangentPrimitiveDataStartIndex": {
-								"$ref": "common.schema.json#/$defs/integer-string"
-							},
-							"EndPositionPrimitiveDataStartIndex": {
-								"$ref": "common.schema.json#/$defs/integer-string"
-							},
-							"EndTangentPrimitiveDataStartIndex": {
-								"$ref": "common.schema.json#/$defs/integer-string"
-							},
-							"InstanceScaleIndex": {
-								"$ref": "common.schema.json#/$defs/integer-string--signed"
-							}
-						}
-					}
 				},
 				"mBlockVisualizationColorDataStartIndex": {
 					"$ref": "common.schema.json#/$defs/integer-string"
@@ -2978,6 +2939,25 @@
 				}
 			}
 		},
+		"FGGasMask--mUnEquipMontage": {
+			"type": "string",
+			"minLength": 1,
+			"typed_string": {
+				"required": ["AudioEvent"],
+				"properties": {
+					"AudioEvent": {
+						"type": "string",
+						"minLength": 1,
+						"UnrealEngineString": {
+							"left": "/Script/AkAudio.AkAudioEvent",
+							"right": {
+								"starts_with": "/Game/WwiseAudio/Events/Equipment/Equipment_Gear/GasMask/"
+							}
+						}
+					}
+				}
+			}
+		},
 		"FGGasMask": {
 			"type": "object",
 			"$ref": "#/$defs/FGEquipment--base",
@@ -3074,7 +3054,7 @@
 					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mUnEquipMontage": {
-					"$ref": "common.schema.json#/$defs/empty-object"
+					"$ref": "#/$defs/FGGasMask--mUnEquipMontage"
 				}
 			}
 		},
@@ -3471,6 +3451,8 @@
 			}
 		},
 		"FGJumpingStilts--AudioEvent": {
+			"oneOf": [
+				{
 			"type": "string",
 			"minLength": 1,
 			"UnrealEngineString": {
@@ -3479,6 +3461,18 @@
 					"starts_with": "/Game/WwiseAudio/Events/Equipment/BladeRunners/"
 				}
 			}
+				},
+				{
+					"type": "string",
+					"minLength": 1,
+					"UnrealEngineString": {
+						"left": "/Script/AkAudio.AkAudioEvent",
+						"right": {
+							"starts_with": "/Game/WwiseAudio/Events/Equipment/Equipment_Gear/BladeRunners/"
+						}
+					}
+				}
+			]
 		},
 		"FGJumpingStilts--Montage": {
 			"type": "string",
@@ -3757,12 +3751,76 @@
 			}
 		},
 		"FGParachute--AudioEvent": {
+			"oneOf": [
+				{
 			"type": "string",
 			"minLength": 1,
 			"UnrealEngineString": {
 				"left": "/Script/AkAudio.AkAudioEvent",
 				"right": {
 					"starts_with": "/Game/WwiseAudio/Events/Equipment/Parachute/"
+				}
+			}
+				},
+				{
+					"type": "string",
+					"minLength": 1,
+					"UnrealEngineString": {
+						"left": "/Script/AkAudio.AkAudioEvent",
+						"right": {
+							"starts_with": "/Game/WwiseAudio/Events/Equipment/Equipment_Gear/Parachute/"
+						}
+					}
+				}
+			]
+		},
+		"FGParachute--mEquipMontage": {
+			"type": "string",
+			"minLength": 1,
+			"typed_string": {
+				"required": ["Montages"],
+				"properties": {
+					"Montages": {
+						"type": "string",
+						"minLength": 1,
+						"typed_string": {
+							"minItems": 1,
+							"maxItems": 1,
+							"items": {
+								"type": "string",
+								"minLength": 1,
+								"typed_string": {
+									"required": [
+										"AudioEvent"
+									],
+									"properties": {
+										"AudioEvent": {
+											"type": "string",
+											"minLength": 1,
+											"UnrealEngineString": {
+												"left": "/Script/AkAudio.AkAudioEvent",
+												"right": {
+													"starts_with": "/Game/WwiseAudio/Events/Equipment/Equipment_Gear/Parachute/"
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"FGParachute--mUnEquipMontage": {
+			"type": "string",
+			"minLength": 1,
+			"typed_string": {
+				"required": ["AudioEvent"],
+				"properties": {
+					"AudioEvent": {
+						"$ref": "#/$defs/FGParachute--AudioEvent"
+					}
 				}
 			}
 		},
@@ -3985,13 +4043,13 @@
 					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mEquipMontage": {
-					"$ref": "common.schema.json#/$defs/empty-object"
+					"$ref": "#/$defs/FGParachute--mEquipMontage"
 				},
 				"mStingerMontage": {
 					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mUnEquipMontage": {
-					"$ref": "common.schema.json#/$defs/empty-object"
+					"$ref": "#/$defs/FGParachute--mUnEquipMontage"
 				}
 			}
 		},
