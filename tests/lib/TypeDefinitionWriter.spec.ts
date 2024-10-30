@@ -14,11 +14,19 @@ import {
 } from '../../lib/TypeDefinitionWriter';
 import {
 	docs,
+	skip_because_docs_dot_json_not_yet_bundled,
 } from '../../lib/helpers';
 
 void describe('TypeDefinitionWriter', () => {
 	void describe('discovery', () => {
 		for (const version of object_keys(docs.docs_versions)) {
+			if (
+				skip_because_docs_dot_json_not_yet_bundled
+				&& 'common' !== version
+			) {
+				continue;
+			}
+
 			void it (`${version}: does not throw`, () => {
 				const instance = new TypeDefinitionWriter(docs, version);
 
