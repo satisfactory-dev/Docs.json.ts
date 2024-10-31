@@ -14,6 +14,10 @@ types-progress.md
 /generated-types/*/data/
 /data/
 !/data/common/faux.json
+/data/**/*.mjs
+/data/1.0/*.json
+/data/update8/*.json
+/data/common/faux.utf8.*.json
 /coverage/
 /data-progress.md
 /.c8rc*.json
