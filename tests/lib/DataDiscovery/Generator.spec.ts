@@ -55,7 +55,9 @@ import {
 import {
 	OneOfConverter,
 } from '../../../lib/DataDiscovery/JsonSchema/OneOf';
-import { AllOfConverter } from '../../../lib/DataDiscovery/JsonSchema/AllOf';
+import {
+	AllOfConverter,
+} from '../../../lib/DataDiscovery/JsonSchema/AllOf';
 
 void describe('Converter', async () => {
 	const candidates = await ((new DataDiscovery(docs, 'update8')).candidates);
