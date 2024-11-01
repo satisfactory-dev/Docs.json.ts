@@ -472,6 +472,7 @@ export class ObjectConverter extends ObjectConverterMatchesSchema<
 							property
 						].can_convert_schema(sub_schema[property]),
 						value,
+						has_sub_schema: !!sub_schema[property],
 						sub_schema: sub_schema[property],
 						instance: converters[property].constructor.name,
 						schema,
