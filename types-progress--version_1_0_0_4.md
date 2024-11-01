@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (259 of 259)
+100.00% Complete (260 of 260)
 
 ## Basic Types
 
@@ -62,6 +62,7 @@
 -   [x] common-base--FGCustomizationRecipe--FGRecipe (common type)
 -   [x] common-base--FGEquipment--base (common type)
 -   [x] common-base--FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor (common type)
+-   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor (common type)
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor--mSubCategories (common type)
 -   [x] common-base--FGSchematic--base (common type)
 -   [x] common-base--FGSchematic--base--mSchematicDependencies--mGamePhase (common type)

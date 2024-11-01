@@ -9,6 +9,7 @@ import {
 	faux_8__type,
 	common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type,
 	faux_9__type,
+	faux_9b__type,
 	faux_10__type,
 	faux_11__type,
 	faux_12__type,
@@ -33,6 +34,7 @@ export type FGFauxEntry__NativeClass = NativeClass__type & {
 			| faux_8__type
 			| common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type
 			| faux_9__type
+			| faux_9b__type
 			| faux_10__type
 			| faux_11__type
 			| faux_12__type
@@ -53,6 +55,7 @@ export type FGFauxEntry__NativeClass = NativeClass__type & {
 			| faux_8__type
 			| common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type
 			| faux_9__type
+			| faux_9b__type
 			| faux_10__type
 			| faux_11__type
 			| faux_12__type

@@ -57,6 +57,9 @@ import {
 	OneOfConverter,
 } from './DataDiscovery/JsonSchema/OneOf';
 import {
+	AllOfConverter,
+} from './DataDiscovery/JsonSchema/AllOf';
+import {
 	StringStartsWithConverter,
 } from './DataDiscovery/CustomTypes/StringStartsWith';
 import {
@@ -118,6 +121,7 @@ export class DataDiscovery
 					common_$defs,
 				),
 				new OneOfConverter(this),
+				new AllOfConverter(this),
 				new Ref(this),
 			];
 		});

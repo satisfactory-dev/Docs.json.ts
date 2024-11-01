@@ -12,6 +12,7 @@ import {
 import {
 	is_string,
 	object_has_property,
+	object_only_has_that_property,
 	value_is_non_array_object,
 } from '@satisfactory-dev/predicates.ts';
 
@@ -124,6 +125,27 @@ abstract class ObjectConverterMatchesSchema<
 		performance.mark(`${this.constructor.name}.resolve_converters() start`);
 		const converters:{[key: string]: Converter<SchemaObject>} = {};
 
+		if (this.schema_is_allOf_$refs(schema)) {
+			for (const sub_schema of schema.allOf) {
+				const $ref_converters = Object.entries(
+					sub_schema.$ref.startsWith('#/$defs/')
+						? await this.resolve_converters_for_$ref(
+							sub_schema.$ref as local_ref<string>,
+						)
+						: await this.resolve_converters_for_common_$ref(
+							sub_schema.$ref as common_ref<string>,
+						),
+				);
+
+				for (const entry of $ref_converters) {
+					const [property, converter] = entry;
+					if (!(property in converters)) {
+						converters[property] = converter;
+					}
+				}
+			}
+		}
+
 		if (
 			object_has_property(
 				schema,
@@ -235,6 +257,45 @@ abstract class ObjectConverterMatchesSchema<
 
 		const resolved_schema:{[key: string]: SchemaObject} = {};
 
+		if (this.schema_is_allOf_$refs(schema)) {
+			for (const allOf_schema_entry of schema.allOf) {
+				if (allOf_schema_entry.$ref.startsWith('#/$defs/')) {
+					for (const entry of Object.entries(
+						await this.resolve_schema(
+							await this.discovery.docs.definition(
+								is_common ? 'common' : this.discovery.version,
+								allOf_schema_entry.$ref.substring(8),
+							),
+							depth + 1,
+							is_common,
+						),
+					)) {
+						const [property, sub_schema] = entry;
+
+						if (!(property in resolved_schema)) {
+							resolved_schema[property] = sub_schema;
+						}
+					}
+				} else {
+					for (const entry of Object.entries(
+						await this.resolve_schema(
+							await this.discovery.docs.definition_from_common(
+								allOf_schema_entry.$ref.substring(26),
+							),
+							depth + 1,
+							true,
+						),
+					)) {
+						const [property, sub_schema] = entry;
+
+						if (!(property in resolved_schema)) {
+							resolved_schema[property] = sub_schema;
+						}
+					}
+				}
+			}
+		}
+
 		if (
 			object_has_property(
 				schema,
@@ -309,6 +370,44 @@ abstract class ObjectConverterMatchesSchema<
 		this.already_resolved[json_string] = resolved_schema;
 
 		return resolved_schema;
+	}
+
+	protected schema_is_allOf_$refs(maybe: unknown): maybe is {allOf: [
+		{$ref: local_ref<string>|common_ref<string>},
+		...{$ref: local_ref<string>|common_ref<string>}[]
+	]} {
+		return object_has_property(
+			maybe,
+			'allOf',
+			(maybe): maybe is [
+				{$ref: local_ref<string>|common_ref<string>},
+				...{$ref: local_ref<string>|common_ref<string>}[]
+			] => {
+				return (
+					Array.isArray(maybe)
+					&& maybe.every((inner): inner is {$ref: string} => {
+						return object_only_has_that_property(
+							inner,
+							'$ref',
+							(maybe_inner): maybe_inner is (
+								| local_ref<string>
+								| common_ref<string>
+							) => {
+								return (
+									is_string(maybe_inner)
+									&& (
+										maybe_inner.startsWith('#/$defs/')
+										|| maybe_inner.startsWith(
+											'common.schema.json#/$defs/',
+										)
+									)
+								)
+							},
+						);
+					})
+				)
+			},
+		);
 	}
 }
 

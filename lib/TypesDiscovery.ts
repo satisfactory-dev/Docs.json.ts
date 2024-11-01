@@ -162,6 +162,7 @@ export class TypesDiscovery
 			new non_empty_array_property('prefixItems', schema),
 			new non_empty_array_property('oneOf', schema),
 			new non_empty_array_property('anyOf', schema),
+			new non_empty_array_property('allOf', schema),
 			new non_array_object_property('items', schema),
 			new properties(schema),
 			new $ref(schema),

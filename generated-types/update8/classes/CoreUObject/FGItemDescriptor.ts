@@ -3,10 +3,9 @@ import {StringStartsWith} from '../../utils/validators';
 import {integer_string__type} from '../../../common/common/scalar';
 
 import {
-	common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__mSubCategories__type,
-	mForm__type,
 	None__type,
 	common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type,
+	common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned';
 
@@ -24,10 +23,8 @@ export type FGItemDescriptor__FGResourceDescriptor__type =
 	};
 
 export type FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type =
-	FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type & {
-		mSubCategories: common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__mSubCategories__type;
-		mForm: mForm__type;
-	};
+	common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type &
+		FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type;
 
 export type FGItemDescriptor__NativeClass = NativeClass__type & {
 	Classes: [

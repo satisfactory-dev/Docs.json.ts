@@ -279,6 +279,12 @@ export type common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescr
 		mScannerLightColor: color__type;
 	};
 
+export type common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type =
+	common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type & {
+		mSubCategories: common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__mSubCategories__type;
+		mForm: mForm__type;
+	};
+
 export type common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__mSubCategories__type =
 
 		| ''
@@ -502,6 +508,11 @@ export type faux_8__type = class__type & {
 export type faux_9__type = class__type & {
 	faux: 'FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor--mSubCategories';
 	mSubCategories: common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__mSubCategories__type;
+};
+
+export type faux_9b__type = class__type & {
+	faux: 'common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor';
+	FGPoleDescriptor: common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type;
 };
 
 export type InfinityExtrap__type = 'RCCE_Constant';

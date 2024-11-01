@@ -48,17 +48,14 @@
 			}
 		},
 		"FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor": {
-			"type": "object",
-			"$ref": "#/$defs/FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor",
-			"required": ["mSubCategories", "mForm"],
-			"properties": {
-				"mSubCategories": {
-					"$ref": "common.schema.json#/$defs/common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor--mSubCategories"
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor"
 				},
-				"mForm": {
-					"$ref": "common.schema.json#/$defs/mForm"
+				{
+					"$ref": "#/$defs/FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor"
 				}
-			}
+			]
 		},
 		"FGItemDescriptor--FGResourceDescriptor": {
 			"type": "object",

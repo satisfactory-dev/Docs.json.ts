@@ -22,6 +22,9 @@ import {
 	typed_string,
 } from './TypeDefinitionDiscovery/CustomParsingTypes/typed_string';
 import {
+	allOf,
+} from './TypeDefinitionDiscovery/JsonSchema/allOf';
+import {
 	oneOf_or_anyOf,
 } from './TypeDefinitionDiscovery/JsonSchema/oneOf_or_anyOf';
 import {
@@ -549,6 +552,7 @@ export class TypeDefinitionWriter
 					discovery,
 				),
 				new oneOf_or_anyOf(discovery),
+				new allOf(discovery),
 			);
 		}
 	}

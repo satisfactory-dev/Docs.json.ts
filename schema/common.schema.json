@@ -515,6 +515,19 @@
 				}
 			}
 		},
+		"common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor",
+			"required": ["mSubCategories", "mForm"],
+			"properties": {
+				"mSubCategories": {
+					"$ref": "common.schema.json#/$defs/common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor--mSubCategories"
+				},
+				"mForm": {
+					"$ref": "common.schema.json#/$defs/mForm"
+				}
+			}
+		},
 		"common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor--mSubCategories": {
 			"oneOf": [
 				{
@@ -1728,6 +1741,21 @@
 				}
 			}
 		},
+		"faux-9b": {
+			"type": "object",
+			"$ref": "#/$defs/class",
+			"required": ["faux", "FGPoleDescriptor"],
+			"unevaluatedProperties": false,
+			"properties": {
+				"faux": {
+					"type": "string",
+					"const": "common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor"
+				},
+				"FGPoleDescriptor": {
+					"$ref": "#/$defs/common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor"
+				}
+			}
+		},
 		"faux-10": {
 			"type": "object",
 			"$ref": "#/$defs/class",
@@ -1954,6 +1982,11 @@
 							{
 								"type": "object",
 								"$ref": "#/$defs/faux-9",
+								"unevaluatedProperties": false
+							},
+							{
+								"type": "object",
+								"$ref": "#/$defs/faux-9b",
 								"unevaluatedProperties": false
 							},
 							{

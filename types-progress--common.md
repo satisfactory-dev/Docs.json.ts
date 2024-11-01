@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (98 of 98)
+100.00% Complete (103 of 103)
 
 ## Basic Types
 
@@ -30,6 +30,7 @@
 -   [x] faux-7
 -   [x] faux-8
 -   [x] faux-9
+-   [x] faux-9b
 -   [x] InfinityExtrap
 -   [x] integer-string (common type)
 -   [x] integer-string--signed (common type)
@@ -37,7 +38,7 @@
 -   [x] mBatteryStatus
 -   [x] mDamageTypes
 -   [x] mDockingRuleSet
--   [x] mForm
+-   [x] mForm (common type)
 -   [x] mPlatformDockingStatus
 -   [x] NativeClass
 -   [x] None (common type)
@@ -54,8 +55,9 @@
 -   [x] common-base--FGBuildingDescriptor--mSubCategories
 -   [x] common-base--FGCustomizationRecipe--FGRecipe
 -   [x] common-base--FGEquipment--base
--   [x] common-base--FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor
--   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor--mSubCategories
+-   [x] common-base--FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor (common type)
+-   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor
+-   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor--mSubCategories (common type)
 -   [x] common-base--FGSchematic--base
 -   [x] common-base--FGSchematic--base--mSchematicDependencies--mGamePhase
 -   [x] common-base--FGSchematic--base--mSchematicDependencies--mRequireAllSchematicsToBePurchased
