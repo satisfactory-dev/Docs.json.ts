@@ -46,21 +46,14 @@
 			}
 		},
 		"FGBuildingDescriptor": {
-			"type": "object",
-			"$ref": "#/$defs/FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor",
-			"unevaluatedProperties": false,
-			"required": ["mForm", "mSubCategories", "ClassName"],
-			"properties": {
-				"ClassName": {
-					"$ref": "common.schema.json#/$defs/common-base--FGBuildingDescriptor--ClassName"
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildingDescriptor"
 				},
-				"mForm": {
-					"$ref": "common.schema.json#/$defs/common-base--FGBuildingDescriptor--mForm"
-				},
-				"mSubCategories": {
-					"$ref": "common.schema.json#/$defs/common-base--FGBuildingDescriptor--mSubCategories"
+				{
+					"$ref": "#/$defs/FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor"
 				}
-			}
+			]
 		},
 		"FGBuildable--base": {
 			"type": "object",

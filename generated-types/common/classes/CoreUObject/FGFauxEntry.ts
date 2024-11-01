@@ -11,6 +11,7 @@ import {
 	faux_9__type,
 	faux_9b__type,
 	faux_10__type,
+	faux_10b__type,
 	faux_11__type,
 	faux_12__type,
 	common_base__FGCustomizationRecipe__FGRecipe__type,
@@ -36,6 +37,7 @@ export type FGFauxEntry__NativeClass = NativeClass__type & {
 			| faux_9__type
 			| faux_9b__type
 			| faux_10__type
+			| faux_10b__type
 			| faux_11__type
 			| faux_12__type
 			| common_base__FGCustomizationRecipe__FGRecipe__type
@@ -57,6 +59,7 @@ export type FGFauxEntry__NativeClass = NativeClass__type & {
 			| faux_9__type
 			| faux_9b__type
 			| faux_10__type
+			| faux_10b__type
 			| faux_11__type
 			| faux_12__type
 			| common_base__FGCustomizationRecipe__FGRecipe__type

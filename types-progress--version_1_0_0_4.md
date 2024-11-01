@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (260 of 260)
+100.00% Complete (261 of 261)
 
 ## Basic Types
 
@@ -56,6 +56,7 @@
 ## common-base
 
 -   [x] common-base--FGBuildable--base (common type)
+-   [x] common-base--FGBuildingDescriptor (common type)
 -   [x] common-base--FGBuildingDescriptor--ClassName (common type)
 -   [x] common-base--FGBuildingDescriptor--mForm (common type)
 -   [x] common-base--FGBuildingDescriptor--mSubCategories (common type)

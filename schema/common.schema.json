@@ -552,6 +552,22 @@
 				}
 			]
 		},
+		"common-base--FGBuildingDescriptor": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor",
+			"required": ["mForm", "mSubCategories", "ClassName"],
+			"properties": {
+				"ClassName": {
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildingDescriptor--ClassName"
+				},
+				"mForm": {
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildingDescriptor--mForm"
+				},
+				"mSubCategories": {
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildingDescriptor--mSubCategories"
+				}
+			}
+		},
 		"common-base--FGBuildingDescriptor--ClassName": {
 			"type": "string",
 			"minLength": 1,
@@ -1777,6 +1793,21 @@
 				}
 			}
 		},
+		"faux-10b": {
+			"type": "object",
+			"$ref": "#/$defs/class",
+			"required": ["faux", "FGBuildingDescriptor"],
+			"unevaluatedProperties": false,
+			"properties": {
+				"faux": {
+					"type": "string",
+					"const": "FGBuildingDescriptor"
+				},
+				"FGBuildingDescriptor": {
+					"$ref": "#/$defs/common-base--FGBuildingDescriptor"
+				}
+			}
+		},
 		"faux-11": {
 			"type": "object",
 			"$ref": "#/$defs/class",
@@ -1992,6 +2023,11 @@
 							{
 								"type": "object",
 								"$ref": "#/$defs/faux-10",
+								"unevaluatedProperties": false
+							},
+							{
+								"type": "object",
+								"$ref": "#/$defs/faux-10b",
 								"unevaluatedProperties": false
 							},
 							{

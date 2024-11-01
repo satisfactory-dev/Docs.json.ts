@@ -108,6 +108,13 @@ export type common_base__FGBuildable__base__type = class__type & {
 	mBlueprintBuildEffectID?: integer_string__signed__type;
 };
 
+export type common_base__FGBuildingDescriptor__type =
+	common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type & {
+		ClassName: common_base__FGBuildingDescriptor__ClassName__type;
+		mForm: common_base__FGBuildingDescriptor__mForm__type;
+		mSubCategories: common_base__FGBuildingDescriptor__mSubCategories__type;
+	};
+
 export type common_base__FGBuildingDescriptor__ClassName__type = Exclude<
 	string,
 	| ''
@@ -428,6 +435,11 @@ export type faux_10__type = class__type & {
 	ClassName?: common_base__FGBuildingDescriptor__ClassName__type;
 	mForm: common_base__FGBuildingDescriptor__mForm__type;
 	mSubCategories: common_base__FGBuildingDescriptor__mSubCategories__type;
+};
+
+export type faux_10b__type = class__type & {
+	faux: 'FGBuildingDescriptor';
+	FGBuildingDescriptor: common_base__FGBuildingDescriptor__type;
 };
 
 export type faux_11__type = class__type & {

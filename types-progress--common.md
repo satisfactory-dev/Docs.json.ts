@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (103 of 103)
+100.00% Complete (108 of 108)
 
 ## Basic Types
 
@@ -16,6 +16,7 @@
 -   [x] empty-object (common type)
 -   [x] faux-1
 -   [x] faux-10
+-   [x] faux-10b
 -   [x] faux-11
 -   [x] faux-12
 -   [x] faux-13
@@ -50,9 +51,10 @@
 ## common-base
 
 -   [x] common-base--FGBuildable--base
--   [x] common-base--FGBuildingDescriptor--ClassName
--   [x] common-base--FGBuildingDescriptor--mForm
--   [x] common-base--FGBuildingDescriptor--mSubCategories
+-   [x] common-base--FGBuildingDescriptor
+-   [x] common-base--FGBuildingDescriptor--ClassName (common type)
+-   [x] common-base--FGBuildingDescriptor--mForm (common type)
+-   [x] common-base--FGBuildingDescriptor--mSubCategories (common type)
 -   [x] common-base--FGCustomizationRecipe--FGRecipe
 -   [x] common-base--FGEquipment--base
 -   [x] common-base--FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor (common type)
