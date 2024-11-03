@@ -359,10 +359,7 @@
 		"FGBuildableDroneStation--version-1": {
 			"type": "object",
 			"$ref": "common.schema.json#/$defs/common-base--FGBuildableDroneStation",
-			"required": [
-				"mFuelStorageSizeX",
-				"mFuelStorageSizeY"
-			],
+			"required": ["mFuelStorageSizeX", "mFuelStorageSizeY"],
 			"properties": {
 				"mFuelStorageSizeX": {
 					"$ref": "common.schema.json#/$defs/integer-string"
@@ -4843,9 +4840,7 @@
 		"FGBuildable--pipeline-flow-accessory": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--pipeline-flow-accessory--merged",
-			"required": [
-				"mUpdateAudioFlowTime"
-			],
+			"required": ["mUpdateAudioFlowTime"],
 			"properties": {
 				"mUpdateAudioFlowTime": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
