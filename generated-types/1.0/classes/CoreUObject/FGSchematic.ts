@@ -6,13 +6,16 @@ import {
 
 import {
 	UnrealEngineString__array__type,
+	empty_object__type,
+	NativeClass__type,
+} from '../../../common/common/unassigned';
+
+import {
 	common_base__FGSchematic__mUnlocks__type,
 	common_base__FGSchematic__base__mSchematicDependencies__mRequireAllSchematicsToBePurchased__type,
 	common_base__FGSchematic__base__mSchematicDependencies__mGamePhase__type,
-	empty_object__type,
 	common_base__FGSchematic__base__type,
-	NativeClass__type,
-} from '../../../common/common/unassigned';
+} from '../../../common/classes/CoreUObject/FGSchematic';
 
 export type FGSchematic__type = FGSchematic__base__type;
 

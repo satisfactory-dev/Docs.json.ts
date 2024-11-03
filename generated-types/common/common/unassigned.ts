@@ -1,20 +1,31 @@
-import {
-	UnrealEngineString,
-	StringStartsWith,
-	StringPassedRegExp,
-} from '../utils/validators';
+import {UnrealEngineString, StringStartsWith} from '../utils/validators';
 
 import {
-	decimal_string__signed__type,
-	integer_string__type,
-	decimal_string__type,
-	boolean__type,
-	boolean_extended__type,
-	integer_string__signed__type,
-} from './scalar';
+	common_base__FGBuildingDescriptor__ClassName__type,
+	common_base__FGBuildingDescriptor__mForm__type,
+	common_base__FGBuildingDescriptor__mSubCategories__type,
+	common_base__FGBuildingDescriptor__type,
+} from '../classes/CoreUObject/FGBuildingDescriptor';
+
+import {
+	common_base__FGBuildable__base__type,
+	common_base__FGBuildable__consumes_power_base__type,
+	common_base__FGBuildable__docking_station_base__type,
+	common_base__FGBuildable__occupied__type,
+	common_base__FGBuildable__tiered__type,
+	common_base__FGBuildable__pipeline_accessory__base__type,
+	common_base__FGBuildable__pipeline_accessory__type,
+	common_base__FGBuildable__pipeline_flow_accessory__type,
+	common_base__FGBuildable__pole__base__no_static__type,
+	common_base__FGBuildable__pole__base__with_static__type,
+} from '../classes/CoreUObject/FGBuildable';
 
 import {
 	FGSchematic__mUnlocks_mSchematics__mSchematics__type,
+	common_base__FGSchematic__mUnlocks__type,
+	common_base__FGSchematic__base__mSchematicDependencies__mRequireAllSchematicsToBePurchased__type,
+	common_base__FGSchematic__base__mSchematicDependencies__mGamePhase__type,
+	common_base__FGSchematic__base__type,
 	FGSchematic__mUnlocks_mTapeUnlocks__type,
 	FGSchematic__mUnlocks_mRecipes__type,
 	FGSchematic__mUnlocks_resources_to_scan__type,
@@ -25,6 +36,44 @@ import {
 	FGSchematic__mUnlocks_mScannableObjects__type,
 	FGSchematic__mUnlocks_mItemsToGive__type,
 } from '../classes/CoreUObject/FGSchematic';
+
+import {common_base__FGEquipment__base__type} from '../classes/CoreUObject/FGEquipment';
+
+import {common_base__FGBuildableDroneStation__type} from '../classes/CoreUObject/FGBuildableDroneStation';
+
+import {
+	boolean__type,
+	boolean_extended__type,
+	decimal_string__type,
+	decimal_string__signed__type,
+	integer_string__type,
+	integer_string__signed__type,
+} from './scalar';
+
+import {common_base__FGBuildableTradingPost__type} from '../classes/CoreUObject/FGBuildableTradingPost';
+
+import {
+	common_base__FGBuildableFactory__jump_pad__type,
+	common_base__FGBuildableFactory__landing_pad__type,
+} from '../classes/CoreUObject/FGBuildableFactory';
+
+import {common_base__FGBuildableMAM__type} from '../classes/CoreUObject/FGBuildableMAM';
+
+import {common_base__FGBuildablePipelineJunction__type} from '../classes/CoreUObject/FGBuildablePipelineJunction';
+
+import {
+	common_base__FGBuildablePipelinePump__type,
+	common_base__FGBuildablePipelinePump__valve__type,
+} from '../classes/CoreUObject/FGBuildablePipelinePump';
+
+import {common_base__FGBuildablePipeReservoir__type} from '../classes/CoreUObject/FGBuildablePipeReservoir';
+
+import {common_base__FGBuildablePoleLightweight__type} from '../classes/CoreUObject/FGBuildablePoleLightweight';
+
+import {
+	common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__mSubCategories__type,
+	common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type,
+} from '../classes/CoreUObject/FGItemDescriptor';
 
 export type class__type = class__no_description__type & {
 	mDescription: string;
@@ -52,538 +101,6 @@ export type color_decimal__type = {
 	B: decimal_string__type;
 	A: decimal_string__type;
 };
-
-export type common_base__FGBuildable__base__type = class__type & {
-	MaxRenderDistance: decimal_string__signed__type;
-	mAlternativeMaterialRecipes:
-		| string
-		| [
-				{
-					mMaterial: Exclude<string, ''>;
-					mRecipe: Exclude<string, ''>;
-				},
-				...{
-					mMaterial: Exclude<string, ''>;
-					mRecipe: Exclude<string, ''>;
-				}[],
-		];
-	mContainsComponents: boolean__type;
-	mIsConsideredForBaseWeightValue: decimal_string__type;
-	mBuildEffectSpeed: decimal_string__type;
-	mAllowColoring: boolean__type;
-	mAllowPatterning: boolean__type;
-	mSkipBuildEffect: boolean__type;
-	mForceNetUpdateOnRegisterPlayer: boolean__type;
-	mToggleDormancyOnInteraction: boolean__type;
-	mIsMultiSpawnedBuildable: boolean__type;
-	mShouldShowAttachmentPointVisuals: boolean__type;
-	mCanContainLightweightInstances: boolean__type;
-	mAffectsOcclusion: boolean__type;
-	mOcclusionShape:
-		| 'ROCS_Box'
-		| 'ROCS_Ramp'
-		| 'ROCS_Box_Special'
-		| 'ROCS_CornerRamp';
-	mScaleCustomOffset: decimal_string__type;
-	mCustomScaleType: 'ROCSS_Center' | 'ROCSS_Top' | 'ROCSS_Bot';
-	mOcclusionBoxInfo:
-		| ''
-		| [
-				{
-					Min: xyz__type;
-					Max: xyz__type;
-					IsValid: boolean__type;
-				},
-				...{
-					Min: xyz__type;
-					Max: xyz__type;
-					IsValid: boolean__type;
-				}[],
-		];
-	mAttachmentPoints: '';
-	mInteractingPlayers: '';
-	mIsUseable: boolean__type;
-	mHideOnBuildEffectStart: boolean__type;
-	mShouldModifyWorldGrid: boolean__type;
-	mBlueprintBuildEffectID?: integer_string__signed__type;
-};
-
-export type common_base__FGBuildable__consumes_power_base__type =
-	common_base__FGBuildable__base__type & {
-		mPowerConsumption: decimal_string__type;
-		mPowerConsumptionExponent: decimal_string__type;
-		mDoesHaveShutdownAnimation: boolean__type;
-		mOnHasPowerChanged: empty_object__type;
-		mOnHasProductionChanged: empty_object__type;
-		mOnHasStandbyChanged: empty_object__type;
-		mMinimumProducingTime: decimal_string__type;
-		mMinimumStoppedTime: decimal_string__type;
-		mCanEverMonitorProductivity: boolean__type;
-		mCanChangePotential: boolean__type;
-		mMinPotential: decimal_string__type;
-		mMaxPotential: decimal_string__type;
-		mFluidStackSizeDefault: 'SS_FLUID';
-		mFluidStackSizeMultiplier: integer_string__type;
-		mEffectUpdateInterval: decimal_string__type;
-		mDefaultProductivityMeasurementDuration: decimal_string__type;
-		mLastProductivityMeasurementProduceDuration: decimal_string__type;
-		mLastProductivityMeasurementDuration: decimal_string__type;
-		mCurrentProductivityMeasurementProduceDuration: decimal_string__type;
-		mCurrentProductivityMeasurementDuration: decimal_string__type;
-		mProductivityMonitorEnabled: boolean__type;
-		mCachedSkeletalMeshes: '';
-		mAddToSignificanceManager: boolean__type;
-		mSignificanceRange: decimal_string__type;
-		mTickExponent: decimal_string__type;
-	};
-
-export type common_base__FGBuildable__docking_station_base__type =
-	common_base__FGBuildable__consumes_power_base__type & {
-		mStorageSizeX: integer_string__type;
-		mStorageSizeY: integer_string__type;
-		mTransferSpeed: decimal_string__type;
-		mStackTransferSize: decimal_string__type;
-	};
-
-export type common_base__FGBuildable__occupied__type =
-	common_base__FGBuildable__base__type & {
-		mOccupiedText: StringPassedRegExp<' occupied!?$'>;
-	};
-
-export type common_base__FGBuildable__pipeline_accessory__type =
-	common_base__FGBuildable__pipeline_accessory__base__type & {
-		mRadius: decimal_string__type;
-		mFluidBoxVolume: decimal_string__type;
-		mFluidBox: empty_object__type;
-		mPipeConnections: '';
-	};
-
-export type common_base__FGBuildable__pipeline_accessory__base__type =
-	common_base__FGBuildable__consumes_power_base__type & {
-		mFluidBox: empty_object__type;
-		mPipeConnections: '';
-	};
-
-export type common_base__FGBuildable__pipeline_flow_accessory__type =
-	common_base__FGBuildable__pipeline_accessory__type & {
-		mLastFlowUpdate: decimal_string__type;
-		mUpdateFlowTime: decimal_string__type;
-		mAnimSpeed: decimal_string__type;
-		mLastFlowValue: decimal_string__type;
-		mTimeScaleOffset: decimal_string__type;
-		mMaxPressure: decimal_string__type;
-		mDesignPressure: decimal_string__type;
-		mDefaultFlowLimit: decimal_string__type;
-		mUserFlowLimit: decimal_string__signed__type;
-		mMinimumFlowPercentForStandby: decimal_string__type;
-		mIndicatorData: empty_object__type;
-		mPistonAudioTimer?: empty_object__type;
-	};
-
-export type common_base__FGBuildable__pole__base__no_static__type =
-	common_base__FGBuildable__base__type & {
-		mCanStack: boolean__type;
-		mStackHeight: decimal_string__type;
-	};
-
-export type common_base__FGBuildable__pole__base__with_static__type =
-	common_base__FGBuildable__pole__base__no_static__type & {
-		mUseStaticHeight: boolean__type;
-	};
-
-export type common_base__FGBuildable__tiered__type =
-	common_base__FGBuildable__base__type & {
-		Tier: integer_string__type;
-	};
-
-export type common_base__FGBuildableDroneStation__type =
-	common_base__FGBuildable__docking_station_base__type & {
-		ClassName?: 'Build_DroneStation_C';
-		mDisplayName?: 'Drone Port';
-		mStoppedProducingAnimationSounds: boolean__type;
-		mStoppedAkComponents: boolean_extended__type;
-		mSocketStoppedAkComponents: '';
-		m_DockingStates: 'DS_UNDOCKED';
-		m_OffsetTime: decimal_string__type;
-		mDroneDockingStartLocationLocal: xyz__type;
-		mDroneDockingLocationLocal: xyz__type;
-		mDroneDockingQueue: '';
-		mStationHasDronesInQueue: boolean__type;
-		mItemTransferringStage: 'ITS_NONE';
-		mTransferProgress: decimal_string__type;
-		mDroneQueueRadius: decimal_string__type;
-		mDroneQueueSeparationRadius: decimal_string__type;
-		mDroneQueueVerticalSeparation: decimal_string__type;
-		mTripPowerCost: decimal_string__type;
-		mTripPowerPerMeterCost: decimal_string__type;
-		mTripInformationSampleCount: integer_string__type;
-		mMapText: '';
-	};
-
-export type common_base__FGBuildableFactory__jump_pad__type =
-	common_base__FGBuildable__consumes_power_base__type & {
-		JumpForceCharacter: decimal_string__type;
-		JumpForcePhysics: decimal_string__type;
-	};
-
-export type common_base__FGBuildableFactory__landing_pad__type =
-	common_base__FGBuildable__consumes_power_base__type & {
-		mDampeningFactor: decimal_string__type;
-		mPlayerList: '';
-	};
-
-export type common_base__FGBuildableMAM__type =
-	common_base__FGBuildable__occupied__type & {
-		mCurrentResearchState: 'ERS_NotResearching';
-		mSignificanceRange: decimal_string__type;
-	};
-
-export type common_base__FGBuildablePipelineJunction__type =
-	common_base__FGBuildable__pipeline_accessory__type;
-
-export type common_base__FGBuildablePipelinePump__type =
-	common_base__FGBuildable__pipeline_flow_accessory__type & {
-		mIsPipePumpPlaying: boolean__type;
-		mIsExceedingHeadLift: boolean__type;
-		mCurrentAudioHeadLift: decimal_string__type;
-	};
-
-export type common_base__FGBuildablePipelinePump__valve__type =
-	common_base__FGBuildable__pipeline_flow_accessory__type;
-
-export type common_base__FGBuildablePipeReservoir__type =
-	common_base__FGBuildable__pipeline_accessory__base__type & {
-		mStackingHeight: decimal_string__type;
-		mStorageCapacity: decimal_string__type;
-		mIndicatorData: empty_object__type;
-	};
-
-export type common_base__FGBuildablePoleLightweight__type =
-	common_base__FGBuildable__pole__base__with_static__type & {
-		mHeight: decimal_string__type;
-		mSelectedPoleVersion: integer_string__signed__type;
-	};
-
-export type common_base__FGBuildableTradingPost__type =
-	common_base__FGBuildable__consumes_power_base__type & {
-		mWorkBenchOccupied: Exclude<string, ''>;
-		mWorkBenchFree: Exclude<string, ''>;
-		Meshes: [
-			UnrealEngineString<'/Script/Engine.StaticMesh'>,
-			...UnrealEngineString<'/Script/Engine.StaticMesh'>[],
-		];
-		mShipUpgradeLevel: integer_string__type;
-		mStorageText: 'Open Storage';
-		mMamFreeText: Exclude<string, ''>;
-		mMamOccupiedText: Exclude<string, ''>;
-		ABClass: '/Game/FactoryGame/Buildable/Factory/TradingPost/BPA_Tradingpost.BPA_Tradingpost_C';
-		mSkeletalMeshSoftPtr: '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/SK_Tradingpost.SK_Tradingpost';
-		mGenerators: '';
-		mStorageInventorySize: integer_string__type;
-		mStorageVisibilityLevel: integer_string__type;
-		mSpawningGroundZOffset: decimal_string__type;
-		mGroundSearchZDistance: decimal_string__type;
-		mDefaultResources: '';
-		mRepresentationText: 'The HUB';
-	};
-
-export type common_base__FGBuildingDescriptor__type =
-	common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type & {
-		ClassName: common_base__FGBuildingDescriptor__ClassName__type;
-		mForm: common_base__FGBuildingDescriptor__mForm__type;
-		mSubCategories: common_base__FGBuildingDescriptor__mSubCategories__type;
-	};
-
-export type common_base__FGBuildingDescriptor__ClassName__type = Exclude<
-	string,
-	| ''
-	| 'Desc_ConveyorPole_C'
-	| 'Desc_PipelineSupport_C'
-	| 'Desc_PipeSupportStackable_C'
-	| 'Desc_HyperPoleStackable_C'
-	| 'Desc_PipeHyperSupport_C'
-	| 'Desc_ConveyorPoleStackable_C'
->;
-
-export type common_base__FGBuildingDescriptor__mForm__type = 'RF_INVALID';
-
-export type common_base__FGBuildingDescriptor__mSubCategories__type = [
-	UnrealEngineString<
-		'/Script/Engine.BlueprintGeneratedClass',
-		StringStartsWith<
-			| '/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Special/'
-			| '/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Walls/'
-			| '/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Transport/'
-			| '/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Power/'
-			| '/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Production/'
-			| '/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Organisation/'
-		>
-	>,
-	...UnrealEngineString<
-		'/Script/Engine.BlueprintGeneratedClass',
-		StringStartsWith<
-			| '/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Special/'
-			| '/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Walls/'
-			| '/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Transport/'
-			| '/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Power/'
-			| '/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Production/'
-			| '/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Organisation/'
-		>
-	>[],
-];
-
-export type common_base__FGCustomizationRecipe__FGRecipe__type =
-	class__no_description__type & {
-		FullName: StringPassedRegExp<'^BlueprintGeneratedClass /Game/FactoryGame/(?:-?[A-Z][A-Za-z0-9_]+/)*(Recipe_[A-Za-z0-9_]+)\\.\\1_C$'>;
-		mDisplayName: Exclude<string, ''>;
-		mIngredients: '' | ItemClass__type;
-		mProduct: '' | ItemClass__type;
-		mManufacturingMenuPriority: decimal_string__type;
-		mManufactoringDuration: decimal_string__type;
-		mManualManufacturingMultiplier: decimal_string__type;
-		mRelevantEvents: mEventType__optional_csv__type;
-		mVariablePowerConsumptionConstant: decimal_string__type;
-		mVariablePowerConsumptionFactor: decimal_string__type;
-	};
-
-export type common_base__FGEquipment__base__type =
-	class__no_description_or_display_name__type & {
-		mRandomAnim?: integer_string__type;
-		mCanPress?: boolean__type;
-		mAnimData?: [
-			{
-				Montage_7_2E66F6A948A8606E71185682EA2AC4EC: UnrealEngineString<
-					'/Script/Engine.AnimMontage',
-					| '/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_01_Montage.MedkitUse_01_Montage'
-					| '/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_02_Montage.MedkitUse_02_Montage'
-					| '/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_03_Montage.MedkitUse_03_Montage'
-				>;
-				CameraAnimationSequence_11_920C446448786C507704569A05006500: UnrealEngineString<
-					'/Script/TemplateSequence.CameraAnimationSequence',
-					| '/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_01_CameraAnimSequence.MedkitUse_01_CameraAnimSequence'
-					| '/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_02_CameraAnimSequence.MedkitUse_02_CameraAnimSequence'
-					| '/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_03_CameraAnimSequence.MedkitUse_03_CameraAnimSequence'
-				>;
-			},
-			{
-				Montage_7_2E66F6A948A8606E71185682EA2AC4EC: UnrealEngineString<
-					'/Script/Engine.AnimMontage',
-					| '/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_01_Montage.MedkitUse_01_Montage'
-					| '/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_02_Montage.MedkitUse_02_Montage'
-					| '/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_03_Montage.MedkitUse_03_Montage'
-				>;
-				CameraAnimationSequence_11_920C446448786C507704569A05006500: UnrealEngineString<
-					'/Script/TemplateSequence.CameraAnimationSequence',
-					| '/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_01_CameraAnimSequence.MedkitUse_01_CameraAnimSequence'
-					| '/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_02_CameraAnimSequence.MedkitUse_02_CameraAnimSequence'
-					| '/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_03_CameraAnimSequence.MedkitUse_03_CameraAnimSequence'
-				>;
-			},
-			{
-				Montage_7_2E66F6A948A8606E71185682EA2AC4EC: UnrealEngineString<
-					'/Script/Engine.AnimMontage',
-					| '/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_01_Montage.MedkitUse_01_Montage'
-					| '/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_02_Montage.MedkitUse_02_Montage'
-					| '/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_03_Montage.MedkitUse_03_Montage'
-				>;
-				CameraAnimationSequence_11_920C446448786C507704569A05006500: UnrealEngineString<
-					'/Script/TemplateSequence.CameraAnimationSequence',
-					| '/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_01_CameraAnimSequence.MedkitUse_01_CameraAnimSequence'
-					| '/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_02_CameraAnimSequence.MedkitUse_02_CameraAnimSequence'
-					| '/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_03_CameraAnimSequence.MedkitUse_03_CameraAnimSequence'
-				>;
-			},
-		];
-		mCurrentAnimData?: empty_object__type;
-		mEquipmentSlot: 'ES_ARMS' | 'ES_BACK' | 'ES_BODY' | 'ES_HEAD' | 'ES_LEGS';
-		mAttachSocket: Exclude<string, ''>;
-		mNeedsDefaultEquipmentMappingContext: boolean__type;
-		mCostToUse: '' | ItemClass__type;
-		mArmAnimation:
-			| 'AE_ShockShank'
-			| 'AE_StunSpear'
-			| 'AE_Generic2Hand'
-			| 'AE_Generic1Hand'
-			| 'AE_None'
-			| 'AE_ChainSaw'
-			| 'AE_RebarGun'
-			| 'AE_Rifle'
-			| 'AE_Nobelisk';
-		mBackAnimation: 'BE_None' | 'BE_Jetpack';
-		mDefaultEquipmentActions: integer_string__type;
-		mReceivedDamageModifiers: '';
-		mSwappedOutThirdPersonMaterials: empty_object__type;
-	};
-
-export type common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type =
-	class__type & {
-		mAbbreviatedDisplayName: string;
-		mStackSize:
-			| 'SS_ONE'
-			| 'SS_FLUID'
-			| 'SS_SMALL'
-			| 'SS_MEDIUM'
-			| 'SS_BIG'
-			| 'SS_HUGE';
-		mCanBeDiscarded: boolean__type;
-		mRememberPickUp: boolean__type;
-		mEnergyValue: decimal_string__type;
-		mRadioactiveDecay: decimal_string__type;
-		mSmallIcon: Texture2D__type;
-		mPersistentBigIcon: Texture2D__type;
-		mCrosshairMaterial:
-			| ('' | 'None')
-			| StringStartsWith<'/Game/FactoryGame/Interface/UI/Material/Crosshairs/'>;
-		mDescriptorStatBars:
-			| ''
-			| [
-					{
-						Value: integer_string__type;
-					},
-					...{
-						Value: integer_string__type;
-					}[],
-			];
-		mMenuPriority: decimal_string__type;
-		mFluidColor: color__type;
-		mGasColor: color__type;
-		mCompatibleItemDescriptors:
-			| ''
-			| [
-					{
-						CompatibleItemType: 'CIT_AMMO' | 'CIT_WEAPON';
-						CompatibleItemDescriptors: UnrealEngineString__array__type;
-					},
-					...{
-						CompatibleItemType: 'CIT_AMMO' | 'CIT_WEAPON';
-						CompatibleItemDescriptors: UnrealEngineString__array__type;
-					}[],
-			];
-		mScannableType: 'RTWOT_Default' | 'RTWOT_WeakSignal' | 'RTWOT_Flora';
-		mShouldOverrideScannerDisplayText: boolean__type;
-		mScannerDisplayText: string;
-		mScannerLightColor: color__type;
-	};
-
-export type common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type =
-	common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type & {
-		mSubCategories: common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__mSubCategories__type;
-		mForm: mForm__type;
-	};
-
-export type common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__mSubCategories__type =
-
-		| ''
-		| [
-				UnrealEngineString<
-					'/Script/Engine.BlueprintGeneratedClass',
-					StringStartsWith<'/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Transport/'>
-				>,
-				...UnrealEngineString<
-					'/Script/Engine.BlueprintGeneratedClass',
-					StringStartsWith<'/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Transport/'>
-				>[],
-		];
-
-export type common_base__FGSchematic__base__type = class__type & {
-	FullName: StringPassedRegExp<'^BlueprintGeneratedClass /Game/FactoryGame/(Schematics|Events/Christmas)/'>;
-	mType: Exclude<string, ''>;
-	mSubCategories:
-		| ''
-		| [None__type, ...None__type[]]
-		| [
-				UnrealEngineString<
-					'/Script/Engine.BlueprintGeneratedClass',
-					StringStartsWith<'/Game/FactoryGame/Schematics/'>
-				>,
-				...UnrealEngineString<
-					'/Script/Engine.BlueprintGeneratedClass',
-					StringStartsWith<'/Game/FactoryGame/Schematics/'>
-				>[],
-		];
-	mMenuPriority: decimal_string__signed__type;
-	mTechTier: integer_string__type;
-	mCost: '' | ItemClass__type;
-	mTimeToComplete: decimal_string__type;
-	mRelevantShopSchematics:
-		| ''
-		| [
-				(
-					| UnrealEngineString<
-							'/Script/Engine.BlueprintGeneratedClass',
-							StringStartsWith<'/Game/FactoryGame/Schematics/ResourceSink/'>
-					>
-					| None__type
-				),
-				...(
-					| UnrealEngineString<
-							'/Script/Engine.BlueprintGeneratedClass',
-							StringStartsWith<'/Game/FactoryGame/Schematics/ResourceSink/'>
-					>
-					| None__type
-				)[],
-		];
-	mIsPlayerSpecific: boolean__type;
-	mUnlocks: [
-		...{
-			Class: Exclude<string, ''>;
-		}[],
-	];
-	mSchematicIcon: {
-		DrawAs: 'Image';
-		ImageSize: xy__type;
-		Margin: empty_object__type;
-		TintColor: SpecifiedColor__type;
-		OutlineSettings: {
-			CornerRadii: quaternion__type;
-			Color: SpecifiedColor__type;
-			RoundingType: 'HalfHeightRadius';
-		};
-		ResourceObject?: Texture2D__type;
-		UVRegion: {
-			Min: xy__type;
-			Max: xy__type;
-			bIsValid: boolean__type;
-		};
-	};
-	mSmallSchematicIcon: Texture2D__type;
-	mSchematicDependencies: [
-		...{
-			Class: Exclude<string, ''>;
-		}[],
-	];
-	mDependenciesBlocksSchematicAccess: boolean__type;
-	mHiddenUntilDependenciesMet: boolean__type;
-	mRelevantEvents: mEventType__optional_csv__type;
-	mIncludeInBuilds: 'IIB_PublicBuilds';
-};
-
-export type common_base__FGSchematic__base__mSchematicDependencies__mGamePhase__type =
-	{
-		Class: 'BP_GamePhaseReachedDependency_C';
-		mGamePhase: Exclude<string, ''>;
-	};
-
-export type common_base__FGSchematic__base__mSchematicDependencies__mRequireAllSchematicsToBePurchased__type =
-	{
-		Class: StringPassedRegExp<'BP_[A-Z][A-z]+_C$'>;
-		mSchematics: [
-			FGSchematic__mUnlocks_mSchematics__mSchematics__type,
-			...FGSchematic__mUnlocks_mSchematics__mSchematics__type[],
-		];
-		mRequireAllSchematicsToBePurchased: boolean__type;
-	};
-
-export type common_base__FGSchematic__mUnlocks__type =
-	| FGSchematic__mUnlocks_mTapeUnlocks__type
-	| FGSchematic__mUnlocks_mRecipes__type
-	| FGSchematic__mUnlocks_resources_to_scan__type
-	| FGSchematic__mUnlocks_mEmotes__type
-	| FGSchematic__mUnlocks_mSchematics__type
-	| FGSchematic__mUnlocks_inventory_slots__type
-	| FGSchematic__mUnlocks_equipment_slots__type
-	| FGSchematic__mUnlocks_mScannableObjects__type
-	| FGSchematic__mUnlocks_mItemsToGive__type;
 
 export type empty_object__type = '()';
 

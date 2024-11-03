@@ -3,8 +3,9 @@ import {FGBuildable__consumes_power_base__type} from './FGBuildable';
 import {
 	common_base__FGBuildableFactory__jump_pad__type,
 	common_base__FGBuildableFactory__landing_pad__type,
-	NativeClass__type,
-} from '../../../common/common/unassigned';
+} from '../../../common/classes/CoreUObject/FGBuildableFactory';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableFactory__generic__type =
 	FGBuildable__consumes_power_base__type;

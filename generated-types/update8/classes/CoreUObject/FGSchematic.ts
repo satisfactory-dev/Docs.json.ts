@@ -3,8 +3,9 @@ import {
 	common_base__FGSchematic__base__mSchematicDependencies__mRequireAllSchematicsToBePurchased__type,
 	common_base__FGSchematic__base__mSchematicDependencies__mGamePhase__type,
 	common_base__FGSchematic__base__type,
-	NativeClass__type,
-} from '../../../common/common/unassigned';
+} from '../../../common/classes/CoreUObject/FGSchematic';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGSchematic__type = FGSchematic__base__type;
 

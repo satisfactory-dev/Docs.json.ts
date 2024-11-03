@@ -1,7 +1,6 @@
-import {
-	common_base__FGCustomizationRecipe__FGRecipe__type,
-	NativeClass__type,
-} from '../../../common/common/unassigned';
+import {common_base__FGCustomizationRecipe__FGRecipe__type} from '../../../common/classes/CoreUObject/FGCustomizationRecipe';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGCustomizationRecipe__FGRecipe__type =
 	common_base__FGCustomizationRecipe__FGRecipe__type & {

@@ -15,6 +15,10 @@ import {
 	empty_object__type,
 	UnrealEngineString__array__type,
 	None__type,
+	NativeClass__type,
+} from '../../../common/common/unassigned';
+
+import {
 	common_base__FGBuildable__base__type,
 	common_base__FGBuildable__docking_station_base__type,
 	common_base__FGBuildable__occupied__type,
@@ -24,8 +28,7 @@ import {
 	common_base__FGBuildable__pole__base__no_static__type,
 	common_base__FGBuildable__pole__base__with_static__type,
 	common_base__FGBuildable__tiered__type,
-	NativeClass__type,
-} from '../../../common/common/unassigned';
+} from '../../../common/classes/CoreUObject/FGBuildable';
 
 export type FGBuildable__base__type =
 	common_base__FGBuildable__base__type & {

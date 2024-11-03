@@ -6,10 +6,9 @@ import {
 	decimal_string__type,
 } from '../../../common/common/scalar';
 
-import {
-	empty_object__type,
-	common_base__FGEquipment__base__type,
-} from '../../../common/common/unassigned';
+import {empty_object__type} from '../../../common/common/unassigned';
+
+import {common_base__FGEquipment__base__type} from '../../../common/classes/CoreUObject/FGEquipment';
 
 export type FGEquipment__base__type =
 	common_base__FGEquipment__base__type & {

@@ -1,9 +1,8 @@
 import {FGBuildable__occupied__type} from './FGBuildable';
 
-import {
-	common_base__FGBuildableMAM__type,
-	NativeClass__type,
-} from '../../../common/common/unassigned';
+import {common_base__FGBuildableMAM__type} from '../../../common/classes/CoreUObject/FGBuildableMAM';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableMAM__type = FGBuildableMAM__merged__type;
 

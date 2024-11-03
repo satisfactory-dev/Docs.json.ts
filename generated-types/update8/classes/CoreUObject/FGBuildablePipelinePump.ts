@@ -3,8 +3,9 @@ import {FGBuildable__pipeline_flow_accessory__type} from './FGBuildable';
 import {
 	common_base__FGBuildablePipelinePump__type,
 	common_base__FGBuildablePipelinePump__valve__type,
-	NativeClass__type,
-} from '../../../common/common/unassigned';
+} from '../../../common/classes/CoreUObject/FGBuildablePipelinePump';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildablePipelinePump__type =
 	FGBuildablePipelinePump__merged__type;

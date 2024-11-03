@@ -9,10 +9,13 @@ import {
 
 import {
 	None__type,
-	common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type,
-	common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned';
+
+import {
+	common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type,
+	common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type,
+} from '../../../common/classes/CoreUObject/FGItemDescriptor';
 
 export type FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type =
 	common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type & {

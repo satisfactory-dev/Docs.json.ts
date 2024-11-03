@@ -1,9 +1,8 @@
 import {FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type} from './FGItemDescriptor';
 
-import {
-	common_base__FGBuildingDescriptor__type,
-	NativeClass__type,
-} from '../../../common/common/unassigned';
+import {common_base__FGBuildingDescriptor__type} from '../../../common/classes/CoreUObject/FGBuildingDescriptor';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildingDescriptor__type =
 	common_base__FGBuildingDescriptor__type &

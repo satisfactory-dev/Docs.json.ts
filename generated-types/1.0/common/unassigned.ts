@@ -16,10 +16,13 @@ import {
 	xyz__type,
 	quaternion__type,
 	empty_object__type,
-	common_base__FGBuildable__consumes_power_base__type,
-	common_base__FGBuildableDroneStation__type,
-	common_base__FGBuildableTradingPost__type,
 } from '../../common/common/unassigned';
+
+import {common_base__FGBuildable__consumes_power_base__type} from '../../common/classes/CoreUObject/FGBuildable';
+
+import {common_base__FGBuildableDroneStation__type} from '../../common/classes/CoreUObject/FGBuildableDroneStation';
+
+import {common_base__FGBuildableTradingPost__type} from '../../common/classes/CoreUObject/FGBuildableTradingPost';
 
 export type CameraAnim__type = UnrealEngineString<
 	'/Script/TemplateSequence.CameraAnimationSequence',
