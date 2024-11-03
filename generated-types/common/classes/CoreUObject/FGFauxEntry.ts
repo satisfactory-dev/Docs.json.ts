@@ -19,6 +19,17 @@ import {
 	faux_14__type,
 	faux_15__type,
 	faux_16__type,
+	faux_17__type,
+	faux_18__type,
+	faux_19__type,
+	faux_20__type,
+	faux_21__type,
+	faux_22__type,
+	faux_23__type,
+	faux_24__type,
+	faux_25__type,
+	faux_26__type,
+	faux_27__type,
 	NativeClass__type,
 } from '../../common/unassigned';
 
@@ -45,6 +56,17 @@ export type FGFauxEntry__NativeClass = NativeClass__type & {
 			| faux_14__type
 			| faux_15__type
 			| faux_16__type
+			| faux_17__type
+			| faux_18__type
+			| faux_19__type
+			| faux_20__type
+			| faux_21__type
+			| faux_22__type
+			| faux_23__type
+			| faux_24__type
+			| faux_25__type
+			| faux_26__type
+			| faux_27__type
 		),
 		...(
 			| faux_1__type
@@ -67,6 +89,17 @@ export type FGFauxEntry__NativeClass = NativeClass__type & {
 			| faux_14__type
 			| faux_15__type
 			| faux_16__type
+			| faux_17__type
+			| faux_18__type
+			| faux_19__type
+			| faux_20__type
+			| faux_21__type
+			| faux_22__type
+			| faux_23__type
+			| faux_24__type
+			| faux_25__type
+			| faux_26__type
+			| faux_27__type
 		)[],
 	];
 };

@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (261 of 261)
+100.00% Complete (299 of 299)
 
 ## Basic Types
 
@@ -56,6 +56,25 @@
 ## common-base
 
 -   [x] common-base--FGBuildable--base (common type)
+-   [x] common-base--FGBuildable--consumes-power-base (common type)
+-   [x] common-base--FGBuildable--docking-station-base (common type)
+-   [x] common-base--FGBuildable--occupied (common type)
+-   [x] common-base--FGBuildable--pipeline-accessory (common type)
+-   [x] common-base--FGBuildable--pipeline-accessory--base (common type)
+-   [x] common-base--FGBuildable--pipeline-flow-accessory (common type)
+-   [x] common-base--FGBuildable--pole--base--no-static (common type)
+-   [x] common-base--FGBuildable--pole--base--with-static (common type)
+-   [x] common-base--FGBuildable--tiered (common type)
+-   [x] common-base--FGBuildableDroneStation (common type)
+-   [x] common-base--FGBuildableFactory--jump-pad (common type)
+-   [x] common-base--FGBuildableFactory--landing-pad (common type)
+-   [x] common-base--FGBuildableMAM (common type)
+-   [x] common-base--FGBuildablePipelineJunction (common type)
+-   [x] common-base--FGBuildablePipelinePump (common type)
+-   [x] common-base--FGBuildablePipelinePump--valve (common type)
+-   [x] common-base--FGBuildablePipeReservoir (common type)
+-   [x] common-base--FGBuildablePoleLightweight (common type)
+-   [x] common-base--FGBuildableTradingPost (common type)
 -   [x] common-base--FGBuildingDescriptor (common type)
 -   [x] common-base--FGBuildingDescriptor--ClassName (common type)
 -   [x] common-base--FGBuildingDescriptor--mForm (common type)
@@ -143,18 +162,23 @@
 -   [x] FGBuildable--base
 -   [x] FGBuildable--circuits-base
 -   [x] FGBuildable--consumes-power-base
+-   [x] FGBuildable--consumes-power-base--version-1
 -   [x] FGBuildable--docking-station-base
 -   [x] FGBuildable--extractor-base
 -   [x] FGBuildable--extractor-base--shared
--   [x] FGBuildable--occupied
+-   [x] FGBuildable--occupied--final
+-   [x] FGBuildable--occupied--merged
 -   [x] FGBuildable--pipeline-accessory
 -   [x] FGBuildable--pipeline-accessory--base
 -   [x] FGBuildable--pipeline-flow-accessory
--   [x] FGBuildable--pole--base
+-   [x] FGBuildable--pipeline-flow-accessory--merged
 -   [x] FGBuildable--pole--base--no-static
+-   [x] FGBuildable--pole--base--no-static--merged
+-   [x] FGBuildable--pole--base--with-static--merged
 -   [x] FGBuildable--power-switch--base
 -   [x] FGBuildable--splitter--base
 -   [x] FGBuildable--tiered
+-   [x] FGBuildable--tiered--merged
 
 ## FGBuildableBlueprintDesigner
 
@@ -172,11 +196,18 @@
 -   [x] FGBuildableDoor--automated
 -   [x] FGBuildableDoor--base
 
+## FGBuildableDroneStation
+
+-   [x] FGBuildableDroneStation--merged
+-   [x] FGBuildableDroneStation--version-1
+
 ## FGBuildableFactory
 
 -   [x] FGBuildableFactory--generic
 -   [x] FGBuildableFactory--jump-pad
+-   [x] FGBuildableFactory--jump-pad--merged
 -   [x] FGBuildableFactory--landing-pad
+-   [x] FGBuildableFactory--landing-pad--merged
 
 ## FGBuildableFoundation
 
@@ -203,6 +234,10 @@
 
 -   [x] FGBuildableLightSource--base
 
+## FGBuildableMAM
+
+-   [x] FGBuildableMAM--merged
+
 ## FGBuildableManufacturer
 
 -   [x] FGBuildableManufacturer--base
@@ -217,9 +252,23 @@
 -   [x] FGBuildableManufacturerVariablePower--HadronCollider
 -   [x] FGBuildableManufacturerVariablePower--QuantumEncoder
 
+## FGBuildablePipelineJunction
+
+-   [x] FGBuildablePipelineJunction--merged
+
 ## FGBuildablePipelinePump
 
+-   [x] FGBuildablePipelinePump--merged
 -   [x] FGBuildablePipelinePump--valve
+-   [x] FGBuildablePipelinePump--valve--merged
+
+## FGBuildablePipeReservoir
+
+-   [x] FGBuildablePipeReservoir--merged
+
+## FGBuildablePoleLightweight
+
+-   [x] FGBuildablePoleLightweight--merged
 
 ## FGBuildablePortal
 
@@ -236,6 +285,11 @@
 ## FGBuildableSpaceElevator
 
 -   [x] FGBuildableSpaceElevator--mSpaceElevatorState
+
+## FGBuildableTradingPost
+
+-   [x] FGBuildableTradingPost--merged
+-   [x] FGBuildableTradingPost--version-1
 
 ## FGBuildableTrainPlatform
 

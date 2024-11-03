@@ -156,214 +156,58 @@
 				}
 			}
 		},
-		"FGBuildable--consumes-power-base": {
+		"FGBuildable--consumes-power-base--update8": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--consumes-power-base",
 			"required": [
-				"mPowerConsumption",
-				"mPowerConsumptionExponent",
-				"mDoesHaveShutdownAnimation",
-				"mOnHasPowerChanged",
-				"mOnHasProductionChanged",
-				"mOnHasStandbyChanged",
-				"mMinimumProducingTime",
-				"mMinimumStoppedTime",
-				"mCanEverMonitorProductivity",
-				"mCanChangePotential",
-				"mMinPotential",
-				"mMaxPotential",
 				"mMaxPotentialIncreasePerCrystal",
-				"mFluidStackSizeDefault",
-				"mFluidStackSizeMultiplier",
 				"OnReplicationDetailActorCreatedEvent",
-				"mInventoryPotentialHandlerData",
-				"mEffectUpdateInterval",
-				"mDefaultProductivityMeasurementDuration",
-				"mLastProductivityMeasurementProduceDuration",
-				"mLastProductivityMeasurementDuration",
-				"mCurrentProductivityMeasurementProduceDuration",
-				"mCurrentProductivityMeasurementDuration",
-				"mProductivityMonitorEnabled",
-				"mCachedSkeletalMeshes",
-				"mAddToSignificanceManager",
-				"mSignificanceRange",
-				"mTickExponent"
+				"mInventoryPotentialHandlerData"
 			],
 			"properties": {
-				"mPowerConsumption": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mPowerConsumptionExponent": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mDoesHaveShutdownAnimation": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mOnHasPowerChanged": {
-					"$ref": "common.schema.json#/$defs/empty-object"
-				},
-				"mOnHasProductionChanged": {
-					"$ref": "common.schema.json#/$defs/empty-object"
-				},
-				"mOnHasStandbyChanged": {
-					"$ref": "common.schema.json#/$defs/empty-object"
-				},
-				"mMinimumProducingTime": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mMinimumStoppedTime": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mCanEverMonitorProductivity": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mCanChangePotential": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mMinPotential": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mMaxPotential": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
 				"mMaxPotentialIncreasePerCrystal": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mFluidStackSizeDefault": {
-					"type": "string",
-					"const": "SS_FLUID"
-				},
-				"mFluidStackSizeMultiplier": {
-					"$ref": "common.schema.json#/$defs/integer-string"
 				},
 				"OnReplicationDetailActorCreatedEvent": {
 					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mInventoryPotentialHandlerData": {
 					"$ref": "common.schema.json#/$defs/empty-object"
-				},
-				"mEffectUpdateInterval": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mDefaultProductivityMeasurementDuration": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mLastProductivityMeasurementProduceDuration": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mLastProductivityMeasurementDuration": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mCurrentProductivityMeasurementProduceDuration": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mCurrentProductivityMeasurementDuration": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mProductivityMonitorEnabled": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mCachedSkeletalMeshes": {
-					"type": "string",
-					"const": ""
-				},
-				"mAddToSignificanceManager": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mSignificanceRange": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mTickExponent": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
+		},
+		"FGBuildable--consumes-power-base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--consumes-power-base--update8"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
 		},
 		"FGBuildable--docking-station-base": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildable--consumes-power-base",
-			"required": [
-				"mStorageSizeX",
-				"mStorageSizeY",
-				"mTransferSpeed",
-				"mStackTransferSize"
-			],
-			"properties": {
-				"mStorageSizeX": {
-					"$ref": "common.schema.json#/$defs/integer-string"
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildable--docking-station-base"
 				},
-				"mStorageSizeY": {
-					"$ref": "common.schema.json#/$defs/integer-string"
-				},
-				"mTransferSpeed": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mStackTransferSize": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
+				{
+					"$ref": "#/$defs/FGBuildable--consumes-power-base"
 				}
-			}
+			]
 		},
-		"FGBuildableDroneStation": {
+		"FGBuildableDroneStation--update8": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--docking-station-base",
-			"unevaluatedProperties": false,
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildableDroneStation",
 			"required": [
-				"mStoppedProducingAnimationSounds",
-				"mStoppedAkComponents",
-				"mSocketStoppedAkComponents",
-				"m_DockingStates",
-				"m_OffsetTime",
-				"mDroneDockingStartLocationLocal",
-				"mDroneDockingLocationLocal",
 				"mBatteryClasses",
-				"mDroneDockingQueue",
-				"mStationHasDronesInQueue",
-				"mItemTransferringStage",
-				"mTransferProgress",
-				"mDroneQueueRadius",
-				"mDroneQueueSeparationRadius",
-				"mDroneQueueVerticalSeparation",
-				"mTripPowerCost",
-				"mTripPowerPerMeterCost",
-				"mTripInformationSampleCount",
 				"mBatteryStorageSizeX",
 				"mBatteryStorageSizeY",
 				"mInputInventoryHandler",
 				"mOutputInventoryHandler",
-				"mBatteryInventoryHandler",
-				"mMapText"
+				"mBatteryInventoryHandler"
 			],
 			"properties": {
-				"ClassName": {
-					"type": "string",
-					"const": "Build_DroneStation_C"
-				},
-				"mDisplayName": {
-					"type": "string",
-					"const": "Drone Port"
-				},
-				"mStoppedProducingAnimationSounds": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mStoppedAkComponents": {
-					"$ref": "common.schema.json#/$defs/boolean-extended"
-				},
-				"mSocketStoppedAkComponents": {
-					"type": "string",
-					"const": ""
-				},
-				"m_DockingStates": {
-					"type": "string",
-					"const": "DS_UNDOCKED"
-				},
-				"m_OffsetTime": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mDroneDockingStartLocationLocal": {
-					"$ref": "common.schema.json#/$defs/xyz"
-				},
-				"mDroneDockingLocationLocal": {
-					"$ref": "common.schema.json#/$defs/xyz"
-				},
 				"mBatteryClasses": {
 					"type": "string",
 					"minLength": 1,
@@ -380,38 +224,6 @@
 						}
 					}
 				},
-				"mDroneDockingQueue": {
-					"type": "string",
-					"const": ""
-				},
-				"mStationHasDronesInQueue": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mItemTransferringStage": {
-					"type": "string",
-					"const": "ITS_NONE"
-				},
-				"mTransferProgress": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mDroneQueueRadius": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mDroneQueueSeparationRadius": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mDroneQueueVerticalSeparation": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mTripPowerCost": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mTripPowerPerMeterCost": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mTripInformationSampleCount": {
-					"$ref": "common.schema.json#/$defs/integer-string"
-				},
 				"mBatteryStorageSizeX": {
 					"$ref": "common.schema.json#/$defs/integer-string"
 				},
@@ -426,12 +238,23 @@
 				},
 				"mBatteryInventoryHandler": {
 					"$ref": "common.schema.json#/$defs/empty-object"
-				},
-				"mMapText": {
-					"type": "string",
-					"const": ""
 				}
 			}
+		},
+		"FGBuildableDroneStation--merged": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableDroneStation--update8"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--docking-station-base"
+				}
+			]
+		},
+		"FGBuildableDroneStation": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableDroneStation--merged",
+			"unevaluatedProperties": false
 		},
 		"FGCustomizationRecipe--FGRecipe": {
 			"type": "object",
@@ -932,57 +755,69 @@
 				}
 			}
 		},
+		"FGBuildable--occupied--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildable--occupied"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
 		"FGBuildable--occupied": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
-			"required": ["mOccupiedText"],
-			"properties": {
-				"mOccupiedText": {
-					"type": "string",
-					"pattern": " occupied!?$"
+			"$ref": "#/$defs/FGBuildable--occupied--merged"
+		},
+		"FGBuildable--tiered--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildable--tiered"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
 				}
-			}
+			]
 		},
 		"FGBuildable--tiered": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
-			"unevaluatedProperties": false,
-			"required": ["Tier"],
-			"properties": {
-				"Tier": {
-					"$ref": "common.schema.json#/$defs/integer-string"
-				}
-			}
+			"$ref": "#/$defs/FGBuildable--tiered--merged",
+			"unevaluatedProperties": false
 		},
-		"FGBuildable--pole--base": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
-			"required": ["mUseStaticHeight", "mCanStack", "mStackHeight"],
-			"properties": {
-				"mUseStaticHeight": {
-					"$ref": "common.schema.json#/$defs/boolean"
+		"FGBuildable--pole--base--no-static--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildable--pole--base--no-static"
 				},
-				"mCanStack": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mStackHeight": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
+				{
+					"$ref": "#/$defs/FGBuildable--base"
 				}
-			}
+			]
+		},
+		"FGBuildable--pole--base--with-static--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildable--pole--base--with-static"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--pole--base--no-static--merged"
+				}
+			]
+		},
+		"FGBuildablePoleLightweight--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildablePoleLightweight"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--pole--base--with-static--merged"
+				}
+			]
 		},
 		"FGBuildablePoleLightweight": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--pole--base",
-			"unevaluatedProperties": false,
-			"required": ["mHeight", "mSelectedPoleVersion"],
-			"properties": {
-				"mHeight": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mSelectedPoleVersion": {
-					"$ref": "common.schema.json#/$defs/integer-string--signed"
-				}
-			}
+			"$ref": "#/$defs/FGBuildablePoleLightweight--merged",
+			"unevaluatedProperties": false
 		},
 		"FGPoleDescriptor": {
 			"type": "object",
@@ -1161,29 +996,14 @@
 				}
 			}
 		},
-		"FGBuildableTradingPost": {
+		"FGBuildableTradingPost--update8": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--consumes-power-base",
-			"unevaluatedProperties": false,
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildableTradingPost",
 			"required": [
 				"mWorkBenchOccupied",
 				"mWorkBenchFree",
-				"Meshes",
-				"mShipUpgradeLevel",
-				"mStorageText",
-				"mMamFreeText",
-				"mMamOccupiedText",
 				"mMeshes",
-				"ABClass",
-				"mSkeletalMeshSoftPtr",
-				"mGenerators",
-				"mStorageInventorySize",
-				"mStorageVisibilityLevel",
-				"mSpawningGroundZOffset",
-				"mGroundSearchZDistance",
-				"mDefaultResources",
-				"mNeedPlayingBuildEffectNotification",
-				"mRepresentationText"
+				"mNeedPlayingBuildEffectNotification"
 			],
 			"properties": {
 				"mWorkBenchOccupied": {
@@ -1211,13 +1031,6 @@
 						}
 					}
 				},
-				"mShipUpgradeLevel": {
-					"$ref": "common.schema.json#/$defs/integer-string"
-				},
-				"mStorageText": {
-					"type": "string",
-					"const": "Open Storage"
-				},
 				"mMamFreeText": {
 					"type": "string",
 					"const": "Use MAM"
@@ -1244,42 +1057,25 @@
 						}
 					}
 				},
-				"ABClass": {
-					"type": "string",
-					"const": "/Game/FactoryGame/Buildable/Factory/TradingPost/BPA_Tradingpost.BPA_Tradingpost_C"
-				},
-				"mSkeletalMeshSoftPtr": {
-					"type": "string",
-					"const": "/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/SK_Tradingpost.SK_Tradingpost"
-				},
-				"mGenerators": {
-					"type": "string",
-					"const": ""
-				},
-				"mStorageInventorySize": {
-					"$ref": "common.schema.json#/$defs/integer-string"
-				},
-				"mStorageVisibilityLevel": {
-					"$ref": "common.schema.json#/$defs/integer-string"
-				},
-				"mSpawningGroundZOffset": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mGroundSearchZDistance": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mDefaultResources": {
-					"type": "string",
-					"const": ""
-				},
 				"mNeedPlayingBuildEffectNotification": {
 					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mRepresentationText": {
-					"type": "string",
-					"const": "The HUB"
 				}
 			}
+		},
+		"FGBuildableTradingPost--merged": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableTradingPost--update8"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--consumes-power-base"
+				}
+			]
+		},
+		"FGBuildableTradingPost": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableTradingPost--merged",
+			"unevaluatedProperties": false
 		},
 		"FGEquipment--base": {
 			"type": "object",
@@ -2069,34 +1865,35 @@
 				}
 			}
 		},
+		"FGBuildableFactory--jump-pad--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableFactory--jump-pad"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--consumes-power-base"
+				}
+			]
+		},
 		"FGBuildableFactory--jump-pad": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--consumes-power-base",
-			"unevaluatedProperties": false,
-			"required": ["JumpForceCharacter", "JumpForcePhysics"],
-			"properties": {
-				"JumpForceCharacter": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
+			"$ref": "#/$defs/FGBuildableFactory--jump-pad--merged",
+			"unevaluatedProperties": false
+		},
+		"FGBuildableFactory--landing-pad--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableFactory--landing-pad"
 				},
-				"JumpForcePhysics": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
+				{
+					"$ref": "#/$defs/FGBuildable--consumes-power-base"
 				}
-			}
+			]
 		},
 		"FGBuildableFactory--landing-pad": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--consumes-power-base",
-			"unevaluatedProperties": false,
-			"required": ["mDampeningFactor", "mPlayerList"],
-			"properties": {
-				"mDampeningFactor": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mPlayerList": {
-					"type": "string",
-					"const": ""
-				}
-			}
+			"$ref": "#/$defs/FGBuildableFactory--landing-pad--merged",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableFactory--generic": {
 			"type": "object",
@@ -2625,7 +2422,7 @@
 		},
 		"FGBuildablePipelineSupport": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--pole--base",
+			"$ref": "#/$defs/FGBuildable--pole--base--with-static--merged",
 			"unevaluatedProperties": false,
 			"required": ["mLength", "mVerticalAngle"],
 			"properties": {
@@ -2748,150 +2545,94 @@
 			}
 		},
 		"FGBuildable--pipeline-accessory--base": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildable--consumes-power-base",
-			"required": ["mFluidBox", "mPipeConnections"],
-			"properties": {
-				"mFluidBox": {
-					"$ref": "common.schema.json#/$defs/empty-object"
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildable--pipeline-accessory--base"
 				},
-				"mPipeConnections": {
-					"type": "string",
-					"const": ""
+				{
+					"$ref": "#/$defs/FGBuildable--consumes-power-base"
 				}
-			}
+			]
 		},
 		"FGBuildable--pipeline-accessory": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildable--pipeline-accessory--base",
-			"required": [
-				"mRadius",
-				"mFluidBoxVolume",
-				"mFluidBox",
-				"mPipeConnections"
-			],
-			"properties": {
-				"mRadius": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildable--pipeline-accessory"
 				},
-				"mFluidBoxVolume": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mFluidBox": {
-					"$ref": "common.schema.json#/$defs/empty-object"
-				},
-				"mPipeConnections": {
-					"type": "string",
-					"const": ""
+				{
+					"$ref": "#/$defs/FGBuildable--pipeline-accessory--base"
 				}
-			}
+			]
+		},
+		"FGBuildablePipelineJunction--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildablePipelineJunction"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--pipeline-accessory"
+				}
+			]
 		},
 		"FGBuildablePipelineJunction": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--pipeline-accessory",
+			"$ref": "#/$defs/FGBuildablePipelineJunction--merged",
 			"unevaluatedProperties": false
 		},
 		"FGBuildable--pipeline-flow-accessory": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildable--pipeline-accessory",
-			"required": [
-				"mLastFlowUpdate",
-				"mUpdateFlowTime",
-				"mAnimSpeed",
-				"mLastFlowValue",
-				"mTimeScaleOffset",
-				"mMaxPressure",
-				"mDesignPressure",
-				"mDefaultFlowLimit",
-				"mUserFlowLimit",
-				"mMinimumFlowPercentForStandby",
-				"mIndicatorData"
-			],
-			"properties": {
-				"mLastFlowUpdate": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildable--pipeline-flow-accessory"
 				},
-				"mUpdateFlowTime": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mAnimSpeed": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mLastFlowValue": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mTimeScaleOffset": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mMaxPressure": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mDesignPressure": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mDefaultFlowLimit": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mUserFlowLimit": {
-					"$ref": "common.schema.json#/$defs/decimal-string--signed"
-				},
-				"mMinimumFlowPercentForStandby": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mIndicatorData": {
-					"$ref": "common.schema.json#/$defs/empty-object"
-				},
-				"mPistonAudioTimer": {
-					"$ref": "common.schema.json#/$defs/empty-object"
+				{
+					"$ref": "#/$defs/FGBuildable--pipeline-accessory"
 				}
-			}
+			]
+		},
+		"FGBuildablePipelinePump--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildablePipelinePump"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--pipeline-flow-accessory"
+				}
+			]
 		},
 		"FGBuildablePipelinePump": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--pipeline-flow-accessory",
-			"unevaluatedProperties": false,
-			"required": [
-				"mIsPipePumpPlaying",
-				"mIsExceedingHeadLift",
-				"mCurrentAudioHeadLift"
-			],
-			"properties": {
-				"mIsPipePumpPlaying": {
-					"$ref": "common.schema.json#/$defs/boolean"
+			"$ref": "#/$defs/FGBuildablePipelinePump--merged",
+			"unevaluatedProperties": false
+		},
+		"FGBuildablePipelinePump--valve--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildablePipelinePump--valve"
 				},
-				"mIsExceedingHeadLift": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mCurrentAudioHeadLift": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
+				{
+					"$ref": "#/$defs/FGBuildable--pipeline-flow-accessory"
 				}
-			}
+			]
 		},
 		"FGBuildablePipelinePump--valve": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--pipeline-flow-accessory",
+			"$ref": "#/$defs/FGBuildablePipelinePump--valve--merged",
 			"unevaluatedProperties": false
+		},
+		"FGBuildablePipeReservoir--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildablePipeReservoir"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--pipeline-accessory--base"
+				}
+			]
 		},
 		"FGBuildablePipeReservoir": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--pipeline-accessory--base",
-			"unevaluatedProperties": false,
-			"required": [
-				"mStackingHeight",
-				"mStorageCapacity",
-				"mIndicatorData"
-			],
-			"properties": {
-				"mStackingHeight": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mStorageCapacity": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mIndicatorData": {
-					"$ref": "common.schema.json#/$defs/empty-object"
-				}
-			}
+			"$ref": "#/$defs/FGBuildablePipeReservoir--merged",
+			"unevaluatedProperties": false
 		},
 		"FGBuildable--extractor-base--shared": {
 			"type": "object",
@@ -4286,19 +4027,20 @@
 				}
 			}
 		},
+		"FGBuildableMAM--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableMAM"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--occupied"
+				}
+			]
+		},
 		"FGBuildableMAM": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--occupied",
-			"required": ["mCurrentResearchState", "mSignificanceRange"],
-			"properties": {
-				"mCurrentResearchState": {
-					"type": "string",
-					"enum": ["ERS_NotResearching"]
-				},
-				"mSignificanceRange": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				}
-			}
+			"$ref": "#/$defs/FGBuildableMAM--merged",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableAttachmentMerger": {
 			"type": "object",

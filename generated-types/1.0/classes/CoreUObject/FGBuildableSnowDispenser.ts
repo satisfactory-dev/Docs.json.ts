@@ -1,6 +1,6 @@
 import {
 	FGBuildable__base__type,
-	FGBuildable__occupied__type,
+	FGBuildable__occupied__final__type,
 	FGBuildable__tiered__type,
 } from './FGBuildable';
 
@@ -13,12 +13,12 @@ export type FGBuildableSnowDispenser__NativeClass =
 		Classes: [
 			(
 				| FGBuildable__base__type
-				| FGBuildable__occupied__type
+				| FGBuildable__occupied__final__type
 				| FGBuildable__tiered__type
 			),
 			...(
 				| FGBuildable__base__type
-				| FGBuildable__occupied__type
+				| FGBuildable__occupied__final__type
 				| FGBuildable__tiered__type
 			)[],
 		];

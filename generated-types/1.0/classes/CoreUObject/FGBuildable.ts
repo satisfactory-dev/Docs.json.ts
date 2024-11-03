@@ -1,6 +1,7 @@
-import {mClearanceData__type} from '../../common/unassigned';
-
-import {StringPassedRegExp} from '../../utils/validators';
+import {
+	mClearanceData__type,
+	FGBuildable__consumes_power_base__version_1__type,
+} from '../../common/unassigned';
 
 import {
 	boolean__type,
@@ -15,6 +16,14 @@ import {
 	UnrealEngineString__array__type,
 	None__type,
 	common_base__FGBuildable__base__type,
+	common_base__FGBuildable__docking_station_base__type,
+	common_base__FGBuildable__occupied__type,
+	common_base__FGBuildable__pipeline_accessory__type,
+	common_base__FGBuildable__pipeline_accessory__base__type,
+	common_base__FGBuildable__pipeline_flow_accessory__type,
+	common_base__FGBuildable__pole__base__no_static__type,
+	common_base__FGBuildable__pole__base__with_static__type,
+	common_base__FGBuildable__tiered__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned';
 
@@ -211,55 +220,11 @@ export type FGBuildable__circuits_base__type = FGBuildable__base__type & {
 };
 
 export type FGBuildable__consumes_power_base__type =
-	FGBuildable__base__type & {
-		mPowerConsumption: decimal_string__type;
-		mPowerConsumptionExponent: decimal_string__type;
-		mDoesHaveShutdownAnimation: boolean__type;
-		mOnHasPowerChanged: empty_object__type;
-		mOnHasProductionChanged: empty_object__type;
-		mOnHasStandbyChanged: empty_object__type;
-		mMinimumProducingTime: decimal_string__type;
-		mMinimumStoppedTime: decimal_string__type;
-		mCanEverMonitorProductivity: boolean__type;
-		mCanChangePotential: boolean__type;
-		mMinPotential: decimal_string__type;
-		mMaxPotential: decimal_string__type;
-		mFluidStackSizeDefault: 'SS_FLUID';
-		mFluidStackSizeMultiplier: integer_string__type;
-		mEffectUpdateInterval: decimal_string__type;
-		mDefaultProductivityMeasurementDuration: decimal_string__type;
-		mLastProductivityMeasurementProduceDuration: decimal_string__type;
-		mLastProductivityMeasurementDuration: decimal_string__type;
-		mCurrentProductivityMeasurementProduceDuration: decimal_string__type;
-		mCurrentProductivityMeasurementDuration: decimal_string__type;
-		mProductivityMonitorEnabled: boolean__type;
-		mCachedSkeletalMeshes: '';
-		mAddToSignificanceManager: boolean__type;
-		mAlienOverClockingParticleEffects: '';
-		mSignificanceRange: decimal_string__type;
-		mTickExponent: decimal_string__type;
-		mProductionBoostPowerConsumptionExponent: decimal_string__type;
-		mOnPendingPotentialChanged: empty_object__type;
-		mOnPendingProductionBoostChanged: empty_object__type;
-		mOnCurrentProductivityChanged: empty_object__type;
-		mCanChangeProductionBoost: boolean__type;
-		mBaseProductionBoost: decimal_string__type;
-		mPotentialShardSlots: integer_string__type;
-		mProductionShardSlotSize: integer_string__type;
-		mProductionShardBoostMultiplier: decimal_string__type;
-		mHasInventoryPotential: boolean__type;
-		mIsTickRateManaged: boolean__type;
-		mOverridePotentialShardSlots: boolean__type;
-		mOverrideProductionShardSlotSize: boolean__type;
-	};
+	FGBuildable__consumes_power_base__version_1__type & FGBuildable__base__type;
 
 export type FGBuildable__docking_station_base__type =
-	FGBuildable__consumes_power_base__type & {
-		mStorageSizeX: integer_string__type;
-		mStorageSizeY: integer_string__type;
-		mTransferSpeed: decimal_string__type;
-		mStackTransferSize: decimal_string__type;
-	};
+	common_base__FGBuildable__docking_station_base__type &
+		FGBuildable__consumes_power_base__type;
 
 export type FGBuildable__extractor_base__type =
 	FGBuildable__extractor_base__shared__type & {
@@ -282,51 +247,40 @@ export type FGBuildable__extractor_base__shared__type =
 		mTryFindMissingResource: boolean__type;
 	};
 
-export type FGBuildable__occupied__type = FGBuildable__base__type & {
-	mOccupiedText: StringPassedRegExp<' occupied!?$'>;
-};
+export type FGBuildable__occupied__final__type =
+	FGBuildable__occupied__merged__type;
+
+export type FGBuildable__occupied__merged__type =
+	common_base__FGBuildable__occupied__type &
+		FGBuildable__base__type;
 
 export type FGBuildable__pipeline_accessory__type =
-	FGBuildable__pipeline_accessory__base__type & {
-		mRadius: decimal_string__type;
-		mFluidBoxVolume: decimal_string__type;
-		mFluidBox: empty_object__type;
-		mPipeConnections: '';
-	};
+	common_base__FGBuildable__pipeline_accessory__type &
+		FGBuildable__pipeline_accessory__base__type;
 
 export type FGBuildable__pipeline_accessory__base__type =
-	FGBuildable__consumes_power_base__type & {
-		mFluidBox: empty_object__type;
-		mPipeConnections: '';
-	};
+	common_base__FGBuildable__pipeline_accessory__base__type &
+		FGBuildable__consumes_power_base__type;
 
 export type FGBuildable__pipeline_flow_accessory__type =
-	FGBuildable__pipeline_accessory__type & {
-		mLastFlowUpdate: decimal_string__type;
-		mUpdateFlowTime: decimal_string__type;
-		mAnimSpeed: decimal_string__type;
-		mLastFlowValue: decimal_string__type;
-		mTimeScaleOffset: decimal_string__type;
-		mMaxPressure: decimal_string__type;
-		mDesignPressure: decimal_string__type;
-		mDefaultFlowLimit: decimal_string__type;
-		mUserFlowLimit: decimal_string__signed__type;
-		mMinimumFlowPercentForStandby: decimal_string__type;
-		mIndicatorData: empty_object__type;
-		mPistonAudioTimer?: empty_object__type;
+	FGBuildable__pipeline_flow_accessory__merged__type & {
 		mUpdateAudioFlowTime: decimal_string__type;
 	};
 
-export type FGBuildable__pole__base__type =
-	FGBuildable__pole__base__no_static__type & {
-		mUseStaticHeight: boolean__type;
-	};
+export type FGBuildable__pipeline_flow_accessory__merged__type =
+	common_base__FGBuildable__pipeline_flow_accessory__type &
+		FGBuildable__pipeline_accessory__type;
 
 export type FGBuildable__pole__base__no_static__type =
-	FGBuildable__base__type & {
-		mCanStack: boolean__type;
-		mStackHeight: decimal_string__type;
-	};
+	FGBuildable__pole__base__no_static__merged__type;
+
+export type FGBuildable__pole__base__no_static__merged__type =
+	common_base__FGBuildable__pole__base__no_static__type &
+		FGBuildable__base__type;
+
+export type FGBuildable__pole__base__with_static__merged__type =
+	common_base__FGBuildable__pole__base__with_static__type &
+		FGBuildable__pole__base__no_static__merged__type;
 
 export type FGBuildable__power_switch__base__type =
 	FGBuildable__circuits_base__type & {
@@ -346,20 +300,22 @@ export type FGBuildable__splitter__base__type = FGBuildable__base__type & {
 	mInventorySize: integer_string__type;
 };
 
-export type FGBuildable__tiered__type = FGBuildable__base__type & {
-	Tier: integer_string__type;
-};
+export type FGBuildable__tiered__type = FGBuildable__tiered__merged__type;
+
+export type FGBuildable__tiered__merged__type =
+	common_base__FGBuildable__tiered__type &
+		FGBuildable__base__type;
 
 export type FGBuildable__NativeClass = NativeClass__type & {
 	Classes: [
 		(
 			| FGBuildable__base__type
-			| FGBuildable__occupied__type
+			| FGBuildable__occupied__final__type
 			| FGBuildable__tiered__type
 		),
 		...(
 			| FGBuildable__base__type
-			| FGBuildable__occupied__type
+			| FGBuildable__occupied__final__type
 			| FGBuildable__tiered__type
 		)[],
 	];

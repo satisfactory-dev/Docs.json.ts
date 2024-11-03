@@ -108,6 +108,185 @@ export type common_base__FGBuildable__base__type = class__type & {
 	mBlueprintBuildEffectID?: integer_string__signed__type;
 };
 
+export type common_base__FGBuildable__consumes_power_base__type =
+	common_base__FGBuildable__base__type & {
+		mPowerConsumption: decimal_string__type;
+		mPowerConsumptionExponent: decimal_string__type;
+		mDoesHaveShutdownAnimation: boolean__type;
+		mOnHasPowerChanged: empty_object__type;
+		mOnHasProductionChanged: empty_object__type;
+		mOnHasStandbyChanged: empty_object__type;
+		mMinimumProducingTime: decimal_string__type;
+		mMinimumStoppedTime: decimal_string__type;
+		mCanEverMonitorProductivity: boolean__type;
+		mCanChangePotential: boolean__type;
+		mMinPotential: decimal_string__type;
+		mMaxPotential: decimal_string__type;
+		mFluidStackSizeDefault: 'SS_FLUID';
+		mFluidStackSizeMultiplier: integer_string__type;
+		mEffectUpdateInterval: decimal_string__type;
+		mDefaultProductivityMeasurementDuration: decimal_string__type;
+		mLastProductivityMeasurementProduceDuration: decimal_string__type;
+		mLastProductivityMeasurementDuration: decimal_string__type;
+		mCurrentProductivityMeasurementProduceDuration: decimal_string__type;
+		mCurrentProductivityMeasurementDuration: decimal_string__type;
+		mProductivityMonitorEnabled: boolean__type;
+		mCachedSkeletalMeshes: '';
+		mAddToSignificanceManager: boolean__type;
+		mSignificanceRange: decimal_string__type;
+		mTickExponent: decimal_string__type;
+	};
+
+export type common_base__FGBuildable__docking_station_base__type =
+	common_base__FGBuildable__consumes_power_base__type & {
+		mStorageSizeX: integer_string__type;
+		mStorageSizeY: integer_string__type;
+		mTransferSpeed: decimal_string__type;
+		mStackTransferSize: decimal_string__type;
+	};
+
+export type common_base__FGBuildable__occupied__type =
+	common_base__FGBuildable__base__type & {
+		mOccupiedText: StringPassedRegExp<' occupied!?$'>;
+	};
+
+export type common_base__FGBuildable__pipeline_accessory__type =
+	common_base__FGBuildable__pipeline_accessory__base__type & {
+		mRadius: decimal_string__type;
+		mFluidBoxVolume: decimal_string__type;
+		mFluidBox: empty_object__type;
+		mPipeConnections: '';
+	};
+
+export type common_base__FGBuildable__pipeline_accessory__base__type =
+	common_base__FGBuildable__consumes_power_base__type & {
+		mFluidBox: empty_object__type;
+		mPipeConnections: '';
+	};
+
+export type common_base__FGBuildable__pipeline_flow_accessory__type =
+	common_base__FGBuildable__pipeline_accessory__type & {
+		mLastFlowUpdate: decimal_string__type;
+		mUpdateFlowTime: decimal_string__type;
+		mAnimSpeed: decimal_string__type;
+		mLastFlowValue: decimal_string__type;
+		mTimeScaleOffset: decimal_string__type;
+		mMaxPressure: decimal_string__type;
+		mDesignPressure: decimal_string__type;
+		mDefaultFlowLimit: decimal_string__type;
+		mUserFlowLimit: decimal_string__signed__type;
+		mMinimumFlowPercentForStandby: decimal_string__type;
+		mIndicatorData: empty_object__type;
+		mPistonAudioTimer?: empty_object__type;
+	};
+
+export type common_base__FGBuildable__pole__base__no_static__type =
+	common_base__FGBuildable__base__type & {
+		mCanStack: boolean__type;
+		mStackHeight: decimal_string__type;
+	};
+
+export type common_base__FGBuildable__pole__base__with_static__type =
+	common_base__FGBuildable__pole__base__no_static__type & {
+		mUseStaticHeight: boolean__type;
+	};
+
+export type common_base__FGBuildable__tiered__type =
+	common_base__FGBuildable__base__type & {
+		Tier: integer_string__type;
+	};
+
+export type common_base__FGBuildableDroneStation__type =
+	common_base__FGBuildable__docking_station_base__type & {
+		ClassName?: 'Build_DroneStation_C';
+		mDisplayName?: 'Drone Port';
+		mStoppedProducingAnimationSounds: boolean__type;
+		mStoppedAkComponents: boolean_extended__type;
+		mSocketStoppedAkComponents: '';
+		m_DockingStates: 'DS_UNDOCKED';
+		m_OffsetTime: decimal_string__type;
+		mDroneDockingStartLocationLocal: xyz__type;
+		mDroneDockingLocationLocal: xyz__type;
+		mDroneDockingQueue: '';
+		mStationHasDronesInQueue: boolean__type;
+		mItemTransferringStage: 'ITS_NONE';
+		mTransferProgress: decimal_string__type;
+		mDroneQueueRadius: decimal_string__type;
+		mDroneQueueSeparationRadius: decimal_string__type;
+		mDroneQueueVerticalSeparation: decimal_string__type;
+		mTripPowerCost: decimal_string__type;
+		mTripPowerPerMeterCost: decimal_string__type;
+		mTripInformationSampleCount: integer_string__type;
+		mMapText: '';
+	};
+
+export type common_base__FGBuildableFactory__jump_pad__type =
+	common_base__FGBuildable__consumes_power_base__type & {
+		JumpForceCharacter: decimal_string__type;
+		JumpForcePhysics: decimal_string__type;
+	};
+
+export type common_base__FGBuildableFactory__landing_pad__type =
+	common_base__FGBuildable__consumes_power_base__type & {
+		mDampeningFactor: decimal_string__type;
+		mPlayerList: '';
+	};
+
+export type common_base__FGBuildableMAM__type =
+	common_base__FGBuildable__occupied__type & {
+		mCurrentResearchState: 'ERS_NotResearching';
+		mSignificanceRange: decimal_string__type;
+	};
+
+export type common_base__FGBuildablePipelineJunction__type =
+	common_base__FGBuildable__pipeline_accessory__type;
+
+export type common_base__FGBuildablePipelinePump__type =
+	common_base__FGBuildable__pipeline_flow_accessory__type & {
+		mIsPipePumpPlaying: boolean__type;
+		mIsExceedingHeadLift: boolean__type;
+		mCurrentAudioHeadLift: decimal_string__type;
+	};
+
+export type common_base__FGBuildablePipelinePump__valve__type =
+	common_base__FGBuildable__pipeline_flow_accessory__type;
+
+export type common_base__FGBuildablePipeReservoir__type =
+	common_base__FGBuildable__pipeline_accessory__base__type & {
+		mStackingHeight: decimal_string__type;
+		mStorageCapacity: decimal_string__type;
+		mIndicatorData: empty_object__type;
+	};
+
+export type common_base__FGBuildablePoleLightweight__type =
+	common_base__FGBuildable__pole__base__with_static__type & {
+		mHeight: decimal_string__type;
+		mSelectedPoleVersion: integer_string__signed__type;
+	};
+
+export type common_base__FGBuildableTradingPost__type =
+	common_base__FGBuildable__consumes_power_base__type & {
+		mWorkBenchOccupied: Exclude<string, ''>;
+		mWorkBenchFree: Exclude<string, ''>;
+		Meshes: [
+			UnrealEngineString<'/Script/Engine.StaticMesh'>,
+			...UnrealEngineString<'/Script/Engine.StaticMesh'>[],
+		];
+		mShipUpgradeLevel: integer_string__type;
+		mStorageText: 'Open Storage';
+		mMamFreeText: Exclude<string, ''>;
+		mMamOccupiedText: Exclude<string, ''>;
+		ABClass: '/Game/FactoryGame/Buildable/Factory/TradingPost/BPA_Tradingpost.BPA_Tradingpost_C';
+		mSkeletalMeshSoftPtr: '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/SK_Tradingpost.SK_Tradingpost';
+		mGenerators: '';
+		mStorageInventorySize: integer_string__type;
+		mStorageVisibilityLevel: integer_string__type;
+		mSpawningGroundZOffset: decimal_string__type;
+		mGroundSearchZDistance: decimal_string__type;
+		mDefaultResources: '';
+		mRepresentationText: 'The HUB';
+	};
+
 export type common_base__FGBuildingDescriptor__type =
 	common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type & {
 		ClassName: common_base__FGBuildingDescriptor__ClassName__type;
@@ -489,8 +668,71 @@ export type faux_16__type = class__type & {
 	mDamageTypes?: mDamageTypes__type;
 };
 
+export type faux_17__type = class__type & {
+	faux?: 'common-base--FGBuildable--consumes-power-base';
+	ref: common_base__FGBuildable__consumes_power_base__type;
+};
+
+export type faux_18__type = class__type & {
+	faux?: 'common-base--FGBuildable--docking-station-base';
+	ref: common_base__FGBuildable__docking_station_base__type;
+};
+
+export type faux_19__type = class__type & {
+	faux?: 'common-base--FGBuildableDroneStation';
+	ref: common_base__FGBuildableDroneStation__type;
+};
+
 export type faux_2__type = class__type & {
 	faux_bool: boolean__type;
+};
+
+export type faux_20__type = class__type & {
+	faux?: 'common-base--FGBuildableTradingPost';
+	ref: common_base__FGBuildableTradingPost__type;
+};
+
+export type faux_21__type = class__type & {
+	faux?: 'common-base--FGBuildableFactory--jump-pad';
+	ref: common_base__FGBuildableFactory__jump_pad__type;
+};
+
+export type faux_22__type = class__type & {
+	faux?: 'common-base--FGBuildableFactory--landing-pad';
+	ref: common_base__FGBuildableFactory__landing_pad__type;
+};
+
+export type faux_23__type = class__type & {
+	faux?: 'common-base--FGBuildable--occupied';
+	ref: common_base__FGBuildable__occupied__type;
+};
+
+export type faux_24__type = class__type & {
+	faux?: 'common-base--FGBuildable--tiered';
+	ref: common_base__FGBuildable__tiered__type;
+};
+
+export type faux_25__type = class__type & {
+	faux?: 'common-base--FGBuildableMAM';
+	ref: common_base__FGBuildableMAM__type;
+};
+
+export type faux_26__type = class__type & {
+	faux?: 'pipeline-stuff';
+	ref: common_base__FGBuildable__pipeline_accessory__base__type;
+	accessory?: common_base__FGBuildable__pipeline_accessory__type;
+	junction?: common_base__FGBuildablePipelineJunction__type;
+	flow_accessory?: common_base__FGBuildable__pipeline_flow_accessory__type;
+	pump?: common_base__FGBuildablePipelinePump__type;
+	valve?: common_base__FGBuildablePipelinePump__valve__type;
+	reservoir?: common_base__FGBuildablePipeReservoir__type;
+};
+
+export type faux_27__type = class__type & {
+	faux?: 'pole-stuff';
+	base_no_static?: common_base__FGBuildable__pole__base__no_static__type;
+	base_with_static?: common_base__FGBuildable__pole__base__with_static__type;
+	lightweight?: common_base__FGBuildablePoleLightweight__type;
 };
 
 export type faux_3__type = class__type & {

@@ -1,11 +1,11 @@
 # Types Progress
 
-100.00% Complete (108 of 108)
+100.00% Complete (148 of 148)
 
 ## Basic Types
 
 -   [x] boolean (common type)
--   [x] boolean-extended
+-   [x] boolean-extended (common type)
 -   [x] class (common type)
 -   [x] class--no-description (common type)
 -   [x] class--no-description-or-display-name (common type)
@@ -23,7 +23,18 @@
 -   [x] faux-14
 -   [x] faux-15
 -   [x] faux-16
+-   [x] faux-17
+-   [x] faux-18
+-   [x] faux-19
 -   [x] faux-2
+-   [x] faux-20
+-   [x] faux-21
+-   [x] faux-22
+-   [x] faux-23
+-   [x] faux-24
+-   [x] faux-25
+-   [x] faux-26
+-   [x] faux-27
 -   [x] faux-3
 -   [x] faux-4
 -   [x] faux-5
@@ -50,7 +61,26 @@
 
 ## common-base
 
--   [x] common-base--FGBuildable--base
+-   [x] common-base--FGBuildable--base (common type)
+-   [x] common-base--FGBuildable--consumes-power-base (common type)
+-   [x] common-base--FGBuildable--docking-station-base
+-   [x] common-base--FGBuildable--occupied (common type)
+-   [x] common-base--FGBuildable--pipeline-accessory (common type)
+-   [x] common-base--FGBuildable--pipeline-accessory--base (common type)
+-   [x] common-base--FGBuildable--pipeline-flow-accessory (common type)
+-   [x] common-base--FGBuildable--pole--base--no-static (common type)
+-   [x] common-base--FGBuildable--pole--base--with-static (common type)
+-   [x] common-base--FGBuildable--tiered
+-   [x] common-base--FGBuildableDroneStation
+-   [x] common-base--FGBuildableFactory--jump-pad
+-   [x] common-base--FGBuildableFactory--landing-pad
+-   [x] common-base--FGBuildableMAM
+-   [x] common-base--FGBuildablePipelineJunction
+-   [x] common-base--FGBuildablePipelinePump
+-   [x] common-base--FGBuildablePipelinePump--valve
+-   [x] common-base--FGBuildablePipeReservoir
+-   [x] common-base--FGBuildablePoleLightweight
+-   [x] common-base--FGBuildableTradingPost
 -   [x] common-base--FGBuildingDescriptor
 -   [x] common-base--FGBuildingDescriptor--ClassName (common type)
 -   [x] common-base--FGBuildingDescriptor--mForm (common type)
@@ -98,5 +128,5 @@
 -   [x] quaternion
 -   [x] xy
 -   [x] xy--integer
--   [x] xyz
+-   [x] xyz (common type)
 -   [x] xyz--integer
