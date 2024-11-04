@@ -464,9 +464,7 @@
 		"FGBuildableBlueprintDesigner--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableBlueprintDesigner--merged",
-			"required": [
-				"mCurrentRecordData"
-			],
+			"required": ["mCurrentRecordData"],
 			"properties": {
 				"mCurrentRecordData": {
 					"type": "string",

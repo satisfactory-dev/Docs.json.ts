@@ -327,10 +327,7 @@
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableBlueprintDesigner--merged",
 			"unevaluatedProperties": false,
-			"required": [
-				"mIntersectComponents",
-				"mCurrentRecordData"
-			],
+			"required": ["mIntersectComponents", "mCurrentRecordData"],
 			"properties": {
 				"ClassName": {
 					"type": "string",
