@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (265 of 265)
+100.00% Complete (266 of 266)
 
 ## Basic Types
 
@@ -89,6 +89,7 @@
 -   [x] common-base--FGSchematic--base--mSchematicDependencies--mGamePhase (common type)
 -   [x] common-base--FGSchematic--base--mSchematicDependencies--mRequireAllSchematicsToBePurchased (common type)
 -   [x] common-base--FGSchematic--mUnlocks (common type)
+-   [x] common-base--FGSchematic--mUnlocks_Class (common type)
 
 ## FGAmmoType
 

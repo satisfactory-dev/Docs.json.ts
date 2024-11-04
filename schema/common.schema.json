@@ -1638,6 +1638,16 @@
 				}
 			}
 		},
+		"common-base--FGSchematic--mUnlocks_Class": {
+			"type": "object",
+			"required": ["Class"],
+			"properties": {
+				"Class": {
+					"type": "string",
+					"minLength": 1
+				}
+			}
+		},
 		"FGSchematic--mUnlocks_mSchematics--mSchematics": {
 			"type": "string",
 			"minLength": 1,
@@ -2789,6 +2799,20 @@
 					"$ref": "#/$defs/common-base--FGBuildableBlueprintDesigner"
 				}
 			}
+		},
+		"faux-31": {
+			"type": "object",
+			"$ref": "#/$defs/class",
+			"required": ["ref"],
+			"properties": {
+				"faux": {
+					"type": "string",
+					"const": "FGSchematic--mUnlocks_Class"
+				},
+				"ref": {
+					"$ref": "#/$defs/common-base--FGSchematic--mUnlocks_Class"
+				}
+			}
 		}
 	},
 	"items": false,
@@ -2974,6 +2998,11 @@
 							{
 								"type": "object",
 								"$ref": "#/$defs/faux-30",
+								"unevaluatedProperties": false
+							},
+							{
+								"type": "object",
+								"$ref": "#/$defs/faux-31",
 								"unevaluatedProperties": false
 							}
 						]

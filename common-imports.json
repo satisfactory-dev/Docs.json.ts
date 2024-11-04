@@ -71,6 +71,7 @@
 	"common_type__common_base__FGSchematic__base__mSchematicDependencies__mGamePhase__type": "classes/CoreUObject/FGSchematic",
 	"common_type__common_base__FGSchematic__base__mSchematicDependencies__mRequireAllSchematicsToBePurchased__type": "classes/CoreUObject/FGSchematic",
 	"common_type__common_base__FGSchematic__mUnlocks__type": "classes/CoreUObject/FGSchematic",
+	"common_type__common_base__FGSchematic__mUnlocks_Class__type": "classes/CoreUObject/FGSchematic",
 	"common_type__FGSchematic__mUnlocks_equipment_slots__type": "classes/CoreUObject/FGSchematic",
 	"common_type__FGSchematic__mUnlocks_inventory_slots__type": "classes/CoreUObject/FGSchematic",
 	"common_type__FGSchematic__mUnlocks_mEmotes__type": "classes/CoreUObject/FGSchematic",

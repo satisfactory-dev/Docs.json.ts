@@ -25,6 +25,7 @@ import {
 	common_base__FGSchematic__mUnlocks__type,
 	common_base__FGSchematic__base__mSchematicDependencies__mRequireAllSchematicsToBePurchased__type,
 	common_base__FGSchematic__base__mSchematicDependencies__mGamePhase__type,
+	common_base__FGSchematic__mUnlocks_Class__type,
 	common_base__FGSchematic__base__type,
 	FGSchematic__mUnlocks_mTapeUnlocks__type,
 	FGSchematic__mUnlocks_mRecipes__type,
@@ -274,6 +275,11 @@ export type faux_3__type = class__type & {
 export type faux_30__type = class__type & {
 	faux?: 'FGBuildableBlueprintDesigner';
 	ref: common_base__FGBuildableBlueprintDesigner__type;
+};
+
+export type faux_31__type = class__type & {
+	faux?: 'FGSchematic--mUnlocks_Class';
+	ref: common_base__FGSchematic__mUnlocks_Class__type;
 };
 
 export type faux_4__type = class__type & {

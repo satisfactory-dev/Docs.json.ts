@@ -124,6 +124,10 @@ export type common_base__FGSchematic__mUnlocks__type =
 	| FGSchematic__mUnlocks_mScannableObjects__type
 	| FGSchematic__mUnlocks_mItemsToGive__type;
 
+export type common_base__FGSchematic__mUnlocks_Class__type = {
+	Class: Exclude<string, ''>;
+};
+
 export type FGSchematic__mUnlocks_equipment_slots__type = {
 	Class: 'BP_UnlockArmEquipmentSlot_C';
 	mNumArmEquipmentSlotsToUnlock: integer_string__type;

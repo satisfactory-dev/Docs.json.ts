@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (158 of 158)
+100.00% Complete (160 of 160)
 
 ## Basic Types
 
@@ -39,6 +39,7 @@
 -   [x] faux-29
 -   [x] faux-3
 -   [x] faux-30
+-   [x] faux-31
 -   [x] faux-4
 -   [x] faux-5
 -   [x] faux-6
@@ -100,6 +101,7 @@
 -   [x] common-base--FGSchematic--base--mSchematicDependencies--mGamePhase
 -   [x] common-base--FGSchematic--base--mSchematicDependencies--mRequireAllSchematicsToBePurchased
 -   [x] common-base--FGSchematic--mUnlocks
+-   [x] common-base--FGSchematic--mUnlocks_Class
 
 ## FGSchematic
 

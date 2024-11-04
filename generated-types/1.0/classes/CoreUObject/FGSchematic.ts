@@ -15,6 +15,7 @@ import {
 	common_base__FGSchematic__base__mSchematicDependencies__mRequireAllSchematicsToBePurchased__type,
 	common_base__FGSchematic__base__mSchematicDependencies__mGamePhase__type,
 	common_base__FGSchematic__base__type,
+	common_base__FGSchematic__mUnlocks_Class__type,
 } from '../../../common/classes/CoreUObject/FGSchematic';
 
 export type FGSchematic__type = FGSchematic__base__type;
@@ -113,16 +114,17 @@ export type FGSchematic__mNumSlotsToUnlock__type = {
 	mNumSlotsToUnlock: integer_string__type;
 };
 
-export type FGSchematic__mUnlocks_Class__type = {
-	Class:
-		| 'BP_UnlockInfoOnly_C'
-		| 'BP_UnlockCheckmark_C'
-		| 'BP_UnlockCustomizer_C'
-		| 'BP_UnlockMap_C'
-		| 'BP_UnlockBuildEfficiency_C'
-		| 'BP_UnlockBuildOverclock_C'
-		| 'BP_UnlockBuildProductionBoost_C';
-};
+export type FGSchematic__mUnlocks_Class__type =
+	common_base__FGSchematic__mUnlocks_Class__type & {
+		Class:
+			| 'BP_UnlockInfoOnly_C'
+			| 'BP_UnlockCheckmark_C'
+			| 'BP_UnlockCustomizer_C'
+			| 'BP_UnlockMap_C'
+			| 'BP_UnlockBuildEfficiency_C'
+			| 'BP_UnlockBuildOverclock_C'
+			| 'BP_UnlockBuildProductionBoost_C';
+	};
 
 export type FGSchematic__mUnlocks_mCustomizationUnlocks__type = {
 	Class: 'FGUnlockCustomization';
