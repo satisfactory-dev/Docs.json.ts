@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (155 of 155)
+100.00% Complete (158 of 158)
 
 ## Basic Types
 
@@ -38,6 +38,7 @@
 -   [x] faux-28
 -   [x] faux-29
 -   [x] faux-3
+-   [x] faux-30
 -   [x] faux-4
 -   [x] faux-5
 -   [x] faux-6
@@ -73,6 +74,7 @@
 -   [x] common-base--FGBuildable--pole--base--no-static (common type)
 -   [x] common-base--FGBuildable--pole--base--with-static (common type)
 -   [x] common-base--FGBuildable--tiered
+-   [x] common-base--FGBuildableBlueprintDesigner
 -   [x] common-base--FGBuildableDroneStation
 -   [x] common-base--FGBuildableFactory--jump-pad
 -   [x] common-base--FGBuildableFactory--landing-pad
@@ -133,4 +135,4 @@
 -   [x] xy
 -   [x] xy--integer
 -   [x] xyz (common type)
--   [x] xyz--integer
+-   [x] xyz--integer (common type)

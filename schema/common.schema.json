@@ -1117,6 +1117,49 @@
 				}
 			}
 		},
+		"common-base--FGBuildableBlueprintDesigner": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--base",
+			"required": [
+				"mTerminalDistanceFromEdge",
+				"mTerminalHalfDepth",
+				"mDimensions",
+				"OnRecordDataChanged",
+				"OnBlueprintCostChanged",
+				"mCurrentCost",
+				"mBuildables",
+				"mCurrentRecordData",
+				"mIsDismantlingAll"
+			],
+			"properties": {
+				"mTerminalDistanceFromEdge": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mTerminalHalfDepth": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mDimensions": {
+					"$ref": "common.schema.json#/$defs/xyz--integer"
+				},
+				"OnRecordDataChanged": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"OnBlueprintCostChanged": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mCurrentCost": {
+					"type": "string",
+					"const": ""
+				},
+				"mBuildables": {
+					"type": "string",
+					"const": ""
+				},
+				"mIsDismantlingAll": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				}
+			}
+		},
 		"common-base--FGBuildableFactory--jump-pad": {
 			"type": "object",
 			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--consumes-power-base",
@@ -2732,6 +2775,20 @@
 					"$ref": "#/$defs/common-base--FGRecipe"
 				}
 			}
+		},
+		"faux-30": {
+			"type": "object",
+			"$ref": "#/$defs/class",
+			"required": ["ref"],
+			"properties": {
+				"faux": {
+					"type": "string",
+					"const": "FGBuildableBlueprintDesigner"
+				},
+				"ref": {
+					"$ref": "#/$defs/common-base--FGBuildableBlueprintDesigner"
+				}
+			}
 		}
 	},
 	"items": false,
@@ -2912,6 +2969,11 @@
 							{
 								"type": "object",
 								"$ref": "#/$defs/faux-29",
+								"unevaluatedProperties": false
+							},
+							{
+								"type": "object",
+								"$ref": "#/$defs/faux-30",
 								"unevaluatedProperties": false
 							}
 						]

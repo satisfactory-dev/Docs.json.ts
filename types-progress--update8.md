@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (263 of 263)
+100.00% Complete (265 of 265)
 
 ## Basic Types
 
@@ -63,6 +63,7 @@
 -   [x] common-base--FGBuildable--pole--base--no-static (common type)
 -   [x] common-base--FGBuildable--pole--base--with-static (common type)
 -   [x] common-base--FGBuildable--tiered (common type)
+-   [x] common-base--FGBuildableBlueprintDesigner (common type)
 -   [x] common-base--FGBuildableDroneStation (common type)
 -   [x] common-base--FGBuildableFactory--jump-pad (common type)
 -   [x] common-base--FGBuildableFactory--landing-pad (common type)
@@ -178,6 +179,10 @@
 -   [x] FGBuildable--splitter--base
 -   [x] FGBuildable--tiered
 -   [x] FGBuildable--tiered--merged
+
+## FGBuildableBlueprintDesigner
+
+-   [x] FGBuildableBlueprintDesigner--merged
 
 ## FGBuildableConveyorBelt
 

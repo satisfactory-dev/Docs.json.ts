@@ -313,21 +313,23 @@
 				}
 			}
 		},
+		"FGBuildableBlueprintDesigner--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableBlueprintDesigner"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
 		"FGBuildableBlueprintDesigner": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
+			"$ref": "#/$defs/FGBuildableBlueprintDesigner--merged",
 			"unevaluatedProperties": false,
 			"required": [
-				"mTerminalDistanceFromEdge",
-				"mTerminalHalfDepth",
-				"mDimensions",
-				"OnRecordDataChanged",
-				"OnBlueprintCostChanged",
-				"mCurrentCost",
-				"mBuildables",
 				"mIntersectComponents",
-				"mCurrentRecordData",
-				"mIsDismantlingAll"
+				"mCurrentRecordData"
 			],
 			"properties": {
 				"ClassName": {
@@ -337,29 +339,6 @@
 				"mDisplayName": {
 					"type": "string",
 					"const": "Blueprint Designer"
-				},
-				"mTerminalDistanceFromEdge": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mTerminalHalfDepth": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mDimensions": {
-					"$ref": "common.schema.json#/$defs/xyz--integer"
-				},
-				"OnRecordDataChanged": {
-					"$ref": "common.schema.json#/$defs/empty-object"
-				},
-				"OnBlueprintCostChanged": {
-					"$ref": "common.schema.json#/$defs/empty-object"
-				},
-				"mCurrentCost": {
-					"type": "string",
-					"const": ""
-				},
-				"mBuildables": {
-					"type": "string",
-					"const": ""
 				},
 				"mIntersectComponents": {
 					"type": "string",
@@ -379,9 +358,6 @@
 							}
 						}
 					}
-				},
-				"mIsDismantlingAll": {
-					"$ref": "common.schema.json#/$defs/boolean"
 				}
 			}
 		},

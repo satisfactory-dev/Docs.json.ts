@@ -78,6 +78,8 @@ import {
 
 import {common_base__FGRecipe__type} from '../classes/CoreUObject/FGRecipe';
 
+import {common_base__FGBuildableBlueprintDesigner__type} from '../classes/CoreUObject/FGBuildableBlueprintDesigner';
+
 export type class__type = class__no_description__type & {
 	mDescription: string;
 };
@@ -267,6 +269,11 @@ export type faux_29__type = class__type & {
 
 export type faux_3__type = class__type & {
 	faux_bool_extended: boolean_extended__type;
+};
+
+export type faux_30__type = class__type & {
+	faux?: 'FGBuildableBlueprintDesigner';
+	ref: common_base__FGBuildableBlueprintDesigner__type;
 };
 
 export type faux_4__type = class__type & {
