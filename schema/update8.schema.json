@@ -36,14 +36,14 @@
 			]
 		},
 		"FGItemDescriptor--FGResourceDescriptor": {
-			"type": "object",
-			"$ref": "#/$defs/FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor",
-			"required": ["mResourceSinkPoints"],
-			"properties": {
-				"mResourceSinkPoints": {
-					"$ref": "common.schema.json#/$defs/integer-string"
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGItemDescriptor--FGResourceDescriptor"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor"
 				}
-			}
+			]
 		},
 		"FGBuildingDescriptor": {
 			"allOf": [

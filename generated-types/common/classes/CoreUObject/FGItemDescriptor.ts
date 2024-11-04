@@ -64,6 +64,11 @@ export type common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescr
 		mScannerLightColor: color__type;
 	};
 
+export type common_base__FGItemDescriptor__FGResourceDescriptor__type =
+	common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type & {
+		mResourceSinkPoints: integer_string__type;
+	};
+
 export type common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type =
 	common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type & {
 		mSubCategories: common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__mSubCategories__type;

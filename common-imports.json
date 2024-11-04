@@ -62,6 +62,7 @@
 	"common_type__common_base__FGCustomizationRecipe__FGRecipe__type": "classes/CoreUObject/FGCustomizationRecipe",
 	"common_type__common_base__FGEquipment__base__type": "classes/CoreUObject/FGEquipment",
 	"common_type__common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type": "classes/CoreUObject/FGItemDescriptor",
+	"common_type__common_base__FGItemDescriptor__FGResourceDescriptor__type": "classes/CoreUObject/FGItemDescriptor",
 	"common_type__common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type": "classes/CoreUObject/FGItemDescriptor",
 	"common_type__common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__mSubCategories__type": "classes/CoreUObject/FGItemDescriptor",
 	"common_type__common_base__FGSchematic__base__type": "classes/CoreUObject/FGSchematic",

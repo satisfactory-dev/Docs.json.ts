@@ -71,6 +71,7 @@ import {common_base__FGBuildablePipeReservoir__type} from '../classes/CoreUObjec
 import {common_base__FGBuildablePoleLightweight__type} from '../classes/CoreUObject/FGBuildablePoleLightweight';
 
 import {
+	common_base__FGItemDescriptor__FGResourceDescriptor__type,
 	common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__mSubCategories__type,
 	common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type,
 } from '../classes/CoreUObject/FGItemDescriptor';
@@ -246,10 +247,15 @@ export type faux_26__type = class__type & {
 };
 
 export type faux_27__type = class__type & {
-	faux?: 'pole-stuff';
-	base_no_static?: common_base__FGBuildable__pole__base__no_static__type;
-	base_with_static?: common_base__FGBuildable__pole__base__with_static__type;
-	lightweight?: common_base__FGBuildablePoleLightweight__type;
+	faux: 'pole-stuff';
+	base_no_static: common_base__FGBuildable__pole__base__no_static__type;
+	base_with_static: common_base__FGBuildable__pole__base__with_static__type;
+	lightweight: common_base__FGBuildablePoleLightweight__type;
+};
+
+export type faux_28__type = class__type & {
+	faux?: 'FGItemDescriptor--FGResourceDescriptor';
+	ref: common_base__FGItemDescriptor__FGResourceDescriptor__type;
 };
 
 export type faux_3__type = class__type & {

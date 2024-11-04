@@ -552,6 +552,16 @@
 				}
 			]
 		},
+		"common-base--FGItemDescriptor--FGResourceDescriptor": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor",
+			"required": ["mResourceSinkPoints"],
+			"properties": {
+				"mResourceSinkPoints": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				}
+			}
+		},
 		"common-base--FGBuildingDescriptor": {
 			"type": "object",
 			"$ref": "common.schema.json#/$defs/common-base--FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor",
@@ -2670,7 +2680,6 @@
 		"faux-27": {
 			"type": "object",
 			"$ref": "#/$defs/class",
-			"required": ["ref"],
 			"properties": {
 				"faux": {
 					"type": "string",
@@ -2684,6 +2693,20 @@
 				},
 				"lightweight": {
 					"$ref": "#/$defs/common-base--FGBuildablePoleLightweight"
+				}
+			}
+		},
+		"faux-28": {
+			"type": "object",
+			"$ref": "#/$defs/class",
+			"required": ["ref"],
+			"properties": {
+				"faux": {
+					"type": "string",
+					"const": "FGItemDescriptor--FGResourceDescriptor"
+				},
+				"ref": {
+					"$ref": "#/$defs/common-base--FGItemDescriptor--FGResourceDescriptor"
 				}
 			}
 		}
@@ -2856,6 +2879,11 @@
 							{
 								"type": "object",
 								"$ref": "#/$defs/faux-27",
+								"unevaluatedProperties": false
+							},
+							{
+								"type": "object",
+								"$ref": "#/$defs/faux-28",
 								"unevaluatedProperties": false
 							}
 						]

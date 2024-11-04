@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (148 of 148)
+100.00% Complete (151 of 151)
 
 ## Basic Types
 
@@ -35,6 +35,7 @@
 -   [x] faux-25
 -   [x] faux-26
 -   [x] faux-27
+-   [x] faux-28
 -   [x] faux-3
 -   [x] faux-4
 -   [x] faux-5
@@ -88,7 +89,8 @@
 -   [x] common-base--FGCustomizationRecipe--FGRecipe
 -   [x] common-base--FGEquipment--base
 -   [x] common-base--FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor (common type)
--   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor
+-   [x] common-base--FGItemDescriptor--FGResourceDescriptor
+-   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor (common type)
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor--mSubCategories (common type)
 -   [x] common-base--FGSchematic--base
 -   [x] common-base--FGSchematic--base--mSchematicDependencies--mGamePhase

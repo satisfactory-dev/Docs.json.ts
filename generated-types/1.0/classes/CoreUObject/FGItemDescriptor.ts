@@ -2,10 +2,7 @@ import {mGasType__type} from '../../common/unassigned';
 
 import {StringStartsWith} from '../../utils/validators';
 
-import {
-	boolean__type,
-	integer_string__type,
-} from '../../../common/common/scalar';
+import {boolean__type} from '../../../common/common/scalar';
 
 import {
 	None__type,
@@ -14,6 +11,7 @@ import {
 
 import {
 	common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type,
+	common_base__FGItemDescriptor__FGResourceDescriptor__type,
 	common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type,
 } from '../../../common/classes/CoreUObject/FGItemDescriptor';
 
@@ -30,9 +28,8 @@ export type FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type =
 	};
 
 export type FGItemDescriptor__FGResourceDescriptor__type =
-	FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type & {
-		mResourceSinkPoints: integer_string__type;
-	};
+	common_base__FGItemDescriptor__FGResourceDescriptor__type &
+		FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type;
 
 export type FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type =
 	common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type &
