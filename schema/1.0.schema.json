@@ -424,9 +424,19 @@
 				}
 			}
 		},
+		"FGRecipe--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGRecipe"
+				},
+				{
+					"$ref": "#/$defs/FGCustomizationRecipe--FGRecipe"
+				}
+			]
+		},
 		"FGRecipe": {
 			"type": "object",
-			"$ref": "#/$defs/FGCustomizationRecipe--FGRecipe",
+			"$ref": "#/$defs/FGRecipe--merged",
 			"properties": {
 				"mIngredients": {
 					"oneOf": [
@@ -438,9 +448,6 @@
 							"const": ""
 						}
 					]
-				},
-				"mProduct": {
-					"$ref": "common.schema.json#/$defs/ItemClass--amount-required"
 				}
 			}
 		},

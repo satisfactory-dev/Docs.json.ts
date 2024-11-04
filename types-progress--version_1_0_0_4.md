@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (300 of 300)
+100.00% Complete (302 of 302)
 
 ## Basic Types
 
@@ -26,7 +26,6 @@
 -   [x] FGPoleDescriptor
 -   [x] FGPortableMinerDispenser
 -   [x] FGPowerShardDescriptor
--   [x] FGRecipe
 -   [x] FGResourceDescriptor
 -   [x] FGSuitBase
 -   [x] integer-string (common type)
@@ -85,6 +84,7 @@
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor (common type)
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor (common type)
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor--mSubCategories (common type)
+-   [x] common-base--FGRecipe (common type)
 -   [x] common-base--FGSchematic--base (common type)
 -   [x] common-base--FGSchematic--base--mSchematicDependencies--mGamePhase (common type)
 -   [x] common-base--FGSchematic--base--mSchematicDependencies--mRequireAllSchematicsToBePurchased (common type)
@@ -375,6 +375,11 @@
 -   [x] FGParachute--AudioEvent
 -   [x] FGParachute--mEquipMontage
 -   [x] FGParachute--mUnEquipMontage
+
+## FGRecipe
+
+-   [x] FGRecipe
+-   [x] FGRecipe--merged
 
 ## FGSchematic
 

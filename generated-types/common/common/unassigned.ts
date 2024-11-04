@@ -76,6 +76,8 @@ import {
 	common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type,
 } from '../classes/CoreUObject/FGItemDescriptor';
 
+import {common_base__FGRecipe__type} from '../classes/CoreUObject/FGRecipe';
+
 export type class__type = class__no_description__type & {
 	mDescription: string;
 };
@@ -256,6 +258,11 @@ export type faux_27__type = class__type & {
 export type faux_28__type = class__type & {
 	faux?: 'FGItemDescriptor--FGResourceDescriptor';
 	ref: common_base__FGItemDescriptor__FGResourceDescriptor__type;
+};
+
+export type faux_29__type = class__type & {
+	faux?: 'FGRecipe';
+	ref: common_base__FGRecipe__type;
 };
 
 export type faux_3__type = class__type & {

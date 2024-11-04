@@ -1108,6 +1108,15 @@
 				}
 			}
 		},
+		"common-base--FGRecipe": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGCustomizationRecipe--FGRecipe",
+			"properties": {
+				"mProduct": {
+					"$ref": "common.schema.json#/$defs/ItemClass--amount-required"
+				}
+			}
+		},
 		"common-base--FGBuildableFactory--jump-pad": {
 			"type": "object",
 			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--consumes-power-base",
@@ -2709,6 +2718,20 @@
 					"$ref": "#/$defs/common-base--FGItemDescriptor--FGResourceDescriptor"
 				}
 			}
+		},
+		"faux-29": {
+			"type": "object",
+			"$ref": "#/$defs/class",
+			"required": ["ref"],
+			"properties": {
+				"faux": {
+					"type": "string",
+					"const": "FGRecipe"
+				},
+				"ref": {
+					"$ref": "#/$defs/common-base--FGRecipe"
+				}
+			}
 		}
 	},
 	"items": false,
@@ -2884,6 +2907,11 @@
 							{
 								"type": "object",
 								"$ref": "#/$defs/faux-28",
+								"unevaluatedProperties": false
+							},
+							{
+								"type": "object",
+								"$ref": "#/$defs/faux-29",
 								"unevaluatedProperties": false
 							}
 						]

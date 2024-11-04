@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (151 of 151)
+100.00% Complete (155 of 155)
 
 ## Basic Types
 
@@ -36,6 +36,7 @@
 -   [x] faux-26
 -   [x] faux-27
 -   [x] faux-28
+-   [x] faux-29
 -   [x] faux-3
 -   [x] faux-4
 -   [x] faux-5
@@ -86,12 +87,13 @@
 -   [x] common-base--FGBuildingDescriptor--ClassName (common type)
 -   [x] common-base--FGBuildingDescriptor--mForm (common type)
 -   [x] common-base--FGBuildingDescriptor--mSubCategories (common type)
--   [x] common-base--FGCustomizationRecipe--FGRecipe
+-   [x] common-base--FGCustomizationRecipe--FGRecipe (common type)
 -   [x] common-base--FGEquipment--base
 -   [x] common-base--FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor (common type)
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor (common type)
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor--mSubCategories (common type)
+-   [x] common-base--FGRecipe
 -   [x] common-base--FGSchematic--base
 -   [x] common-base--FGSchematic--base--mSchematicDependencies--mGamePhase
 -   [x] common-base--FGSchematic--base--mSchematicDependencies--mRequireAllSchematicsToBePurchased
@@ -113,7 +115,7 @@
 ## ItemClass
 
 -   [x] ItemClass (common type)
--   [x] ItemClass--amount-required
+-   [x] ItemClass--amount-required (common type)
 
 ## mEventType
 

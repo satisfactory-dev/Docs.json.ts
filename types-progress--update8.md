@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (261 of 261)
+100.00% Complete (263 of 263)
 
 ## Basic Types
 
@@ -28,7 +28,6 @@
 -   [x] FGPipeHyperStart
 -   [x] FGPoleDescriptor
 -   [x] FGPortableMinerDispenser
--   [x] FGRecipe
 -   [x] FGResourceDescriptor
 -   [x] FGSuitBase
 -   [x] integer-string (common type)
@@ -84,6 +83,7 @@
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor (common type)
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor (common type)
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor--mSubCategories (common type)
+-   [x] common-base--FGRecipe (common type)
 -   [x] common-base--FGSchematic--base (common type)
 -   [x] common-base--FGSchematic--base--mSchematicDependencies--mGamePhase (common type)
 -   [x] common-base--FGSchematic--base--mSchematicDependencies--mRequireAllSchematicsToBePurchased (common type)
@@ -310,6 +310,11 @@
 -   [x] FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor
 -   [x] FGItemDescriptor--FGResourceDescriptor
 -   [x] FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor
+
+## FGRecipe
+
+-   [x] FGRecipe
+-   [x] FGRecipe--merged
 
 ## FGSchematic
 
