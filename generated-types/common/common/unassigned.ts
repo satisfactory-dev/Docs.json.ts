@@ -81,7 +81,10 @@ import {common_base__FGRecipe__type} from '../classes/CoreUObject/FGRecipe';
 
 import {common_base__FGBuildableBlueprintDesigner__type} from '../classes/CoreUObject/FGBuildableBlueprintDesigner';
 
-import {common_base__FGBuildableWall__base__type} from '../classes/CoreUObject/FGBuildableWall';
+import {
+	common_base__FGBuildableWall__base__type,
+	common_base__FGBuildableWall__base__rectangle__type,
+} from '../classes/CoreUObject/FGBuildableWall';
 
 export type class__type = class__no_description__type & {
 	mDescription: string;
@@ -286,7 +289,8 @@ export type faux_31__type = class__type & {
 
 export type faux_32__type = class__type & {
 	faux?: 'FGBuildableWall--base';
-	ref: common_base__FGBuildableWall__base__type;
+	base: common_base__FGBuildableWall__base__type;
+	rectangle?: common_base__FGBuildableWall__base__rectangle__type;
 };
 
 export type faux_4__type = class__type & {

@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (267 of 267)
+100.00% Complete (268 of 268)
 
 ## Basic Types
 
@@ -75,6 +75,7 @@
 -   [x] common-base--FGBuildablePoleLightweight (common type)
 -   [x] common-base--FGBuildableTradingPost (common type)
 -   [x] common-base--FGBuildableWall--base (common type)
+-   [x] common-base--FGBuildableWall--base--rectangle (common type)
 -   [x] common-base--FGBuildingDescriptor (common type)
 -   [x] common-base--FGBuildingDescriptor--ClassName (common type)
 -   [x] common-base--FGBuildingDescriptor--mForm (common type)

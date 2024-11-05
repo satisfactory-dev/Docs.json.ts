@@ -481,60 +481,14 @@
 			]
 		},
 		"FGBuildableWall--base--rectangle": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildableWall--base",
-			"required": [
-				"mWidth",
-				"mElevation",
-				"mAngularDepth",
-				"mWallType",
-				"mAngledVariants"
-			],
-			"properties": {
-				"mWidth": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableWall--base--rectangle"
 				},
-				"mElevation": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mAngularDepth": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mWallType": {
-					"type": "string",
-					"enum": [
-						"BWT_Normal",
-						"BWT_Glass",
-						"BWT_DiagonalDown",
-						"BWT_DiagonalUp",
-						"BWT_Frame"
-					]
-				},
-				"mAngledVariants": {
-					"oneOf": [
-						{
-							"type": "string",
-							"const": ""
-						},
-						{
-							"type": "string",
-							"minLength": 1,
-							"typed_string": {
-								"minItems": 1,
-								"items": {
-									"type": "string",
-									"minLength": 1,
-									"UnrealEngineString": {
-										"right": {
-											"starts_with": "/Game/FactoryGame/Buildable/Building/Fence/"
-										}
-									}
-								}
-							}
-						}
-					]
+				{
+					"$ref": "#/$defs/FGBuildableWall--base"
 				}
-			}
+			]
 		},
 		"FGBuildableWallLightweight": {
 			"type": "object",
