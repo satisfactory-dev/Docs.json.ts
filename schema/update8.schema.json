@@ -471,14 +471,14 @@
 			}
 		},
 		"FGBuildableWall--base": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
-			"required": ["mHeight", "mDisplayName", "mDescription"],
-			"properties": {
-				"mHeight": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableWall--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
 				}
-			}
+			]
 		},
 		"FGBuildableWall--base--rectangle": {
 			"type": "object",

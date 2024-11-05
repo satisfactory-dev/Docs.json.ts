@@ -6,11 +6,13 @@ import {FGBuildable__base__type} from './FGBuildable';
 
 import {decimal_string__type} from '../../../common/common/scalar';
 
+import {common_base__FGBuildableWall__base__type} from '../../../common/classes/CoreUObject/FGBuildableWall';
+
 import {NativeClass__type} from '../../../common/common/unassigned';
 
-export type FGBuildableWall__base__type = FGBuildable__base__type & {
-	mHeight: decimal_string__type;
-};
+export type FGBuildableWall__base__type =
+	common_base__FGBuildableWall__base__type &
+		FGBuildable__base__type;
 
 export type FGBuildableWall__base__rectangle__type =
 	FGBuildableWall__base__type & {

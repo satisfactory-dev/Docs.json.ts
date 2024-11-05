@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (266 of 266)
+100.00% Complete (267 of 267)
 
 ## Basic Types
 
@@ -74,6 +74,7 @@
 -   [x] common-base--FGBuildablePipeReservoir (common type)
 -   [x] common-base--FGBuildablePoleLightweight (common type)
 -   [x] common-base--FGBuildableTradingPost (common type)
+-   [x] common-base--FGBuildableWall--base (common type)
 -   [x] common-base--FGBuildingDescriptor (common type)
 -   [x] common-base--FGBuildingDescriptor--ClassName (common type)
 -   [x] common-base--FGBuildingDescriptor--mForm (common type)

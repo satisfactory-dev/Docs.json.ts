@@ -1964,6 +1964,16 @@
 				}
 			]
 		},
+		"common-base--FGBuildableWall--base": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--base",
+			"required": ["mHeight", "mDisplayName", "mDescription"],
+			"properties": {
+				"mHeight": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				}
+			}
+		},
 		"common-base--FGBuildableTradingPost": {
 			"type": "object",
 			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--consumes-power-base",
@@ -2813,6 +2823,20 @@
 					"$ref": "#/$defs/common-base--FGSchematic--mUnlocks_Class"
 				}
 			}
+		},
+		"faux-32": {
+			"type": "object",
+			"$ref": "#/$defs/class",
+			"required": ["ref"],
+			"properties": {
+				"faux": {
+					"type": "string",
+					"const": "FGBuildableWall--base"
+				},
+				"ref": {
+					"$ref": "#/$defs/common-base--FGBuildableWall--base"
+				}
+			}
 		}
 	},
 	"items": false,
@@ -3003,6 +3027,11 @@
 							{
 								"type": "object",
 								"$ref": "#/$defs/faux-31",
+								"unevaluatedProperties": false
+							},
+							{
+								"type": "object",
+								"$ref": "#/$defs/faux-32",
 								"unevaluatedProperties": false
 							}
 						]
