@@ -841,75 +841,60 @@
 			"$ref": "#/$defs/FGBuildableWall--base--rectangle",
 			"unevaluatedProperties": false
 		},
+		"FGBuildableCornerWall--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableCornerWall"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableWall--base"
+				}
+			]
+		},
 		"FGBuildableCornerWall": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableWall--base",
-			"unevaluatedProperties": false,
-			"required": ["mSize", "mIsInverted"],
-			"properties": {
-				"mSize": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mIsInverted": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				}
-			}
+			"$ref": "#/$defs/FGBuildableCornerWall--merged",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableDoor--base": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildableWall--base--rectangle",
-			"required": [
-				"mCanBeLocked",
-				"mAnimationRate",
-				"mMovementRate",
-				"EasingFunction",
-				"BlendExp",
-				"Steps"
-			],
-			"properties": {
-				"mCanBeLocked": {
-					"$ref": "common.schema.json#/$defs/boolean"
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableDoor--base"
 				},
-				"mAnimationRate": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mMovementRate": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"EasingFunction": {
-					"type": "string",
-					"enum": ["ExpoInOut", "Linear"]
-				},
-				"BlendExp": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"Steps": {
-					"$ref": "common.schema.json#/$defs/integer-string"
+				{
+					"$ref": "#/$defs/FGBuildableWall--base--rectangle"
 				}
-			}
+			]
+		},
+		"FGBuildableDoor--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableDoor"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableDoor--base"
+				}
+			]
 		},
 		"FGBuildableDoor": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableDoor--base",
-			"unevaluatedProperties": false,
-			"required": ["IsDoorOpen"],
-			"properties": {
-				"IsDoorOpen": {
-					"$ref": "common.schema.json#/$defs/boolean"
+			"$ref": "#/$defs/FGBuildableDoor--merged",
+			"unevaluatedProperties": false
+		},
+		"FGBuildableDoor--automated--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableDoor--automated"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableDoor--base"
 				}
-			}
+			]
 		},
 		"FGBuildableDoor--automated": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableDoor--base",
-			"unevaluatedProperties": false,
-			"required": ["bigOverlapList"],
-			"properties": {
-				"bigOverlapList": {
-					"type": "string",
-					"const": ""
-				}
-			}
+			"$ref": "#/$defs/FGBuildableDoor--automated--merged",
+			"unevaluatedProperties": false
 		},
 		"FGResourceDescriptor": {
 			"type": "object",

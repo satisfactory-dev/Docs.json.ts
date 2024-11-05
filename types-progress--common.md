@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (164 of 164)
+100.00% Complete (170 of 170)
 
 ## Basic Types
 
@@ -77,6 +77,10 @@
 -   [x] common-base--FGBuildable--pole--base--with-static (common type)
 -   [x] common-base--FGBuildable--tiered
 -   [x] common-base--FGBuildableBlueprintDesigner
+-   [x] common-base--FGBuildableCornerWall
+-   [x] common-base--FGBuildableDoor
+-   [x] common-base--FGBuildableDoor--automated
+-   [x] common-base--FGBuildableDoor--base (common type)
 -   [x] common-base--FGBuildableDroneStation
 -   [x] common-base--FGBuildableFactory--jump-pad
 -   [x] common-base--FGBuildableFactory--landing-pad
@@ -88,7 +92,7 @@
 -   [x] common-base--FGBuildablePoleLightweight
 -   [x] common-base--FGBuildableTradingPost
 -   [x] common-base--FGBuildableWall--base (common type)
--   [x] common-base--FGBuildableWall--base--rectangle
+-   [x] common-base--FGBuildableWall--base--rectangle (common type)
 -   [x] common-base--FGBuildingDescriptor
 -   [x] common-base--FGBuildingDescriptor--ClassName (common type)
 -   [x] common-base--FGBuildingDescriptor--mForm (common type)

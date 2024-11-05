@@ -86,6 +86,14 @@ import {
 	common_base__FGBuildableWall__base__rectangle__type,
 } from '../classes/CoreUObject/FGBuildableWall';
 
+import {common_base__FGBuildableCornerWall__type} from '../classes/CoreUObject/FGBuildableCornerWall';
+
+import {
+	common_base__FGBuildableDoor__base__type,
+	common_base__FGBuildableDoor__type,
+	common_base__FGBuildableDoor__automated__type,
+} from '../classes/CoreUObject/FGBuildableDoor';
+
 export type class__type = class__no_description__type & {
 	mDescription: string;
 };
@@ -291,6 +299,10 @@ export type faux_32__type = class__type & {
 	faux?: 'FGBuildableWall--base';
 	base: common_base__FGBuildableWall__base__type;
 	rectangle?: common_base__FGBuildableWall__base__rectangle__type;
+	corner?: common_base__FGBuildableCornerWall__type;
+	door_base?: common_base__FGBuildableDoor__base__type;
+	door?: common_base__FGBuildableDoor__type;
+	door_autoamted?: common_base__FGBuildableDoor__automated__type;
 };
 
 export type faux_4__type = class__type & {

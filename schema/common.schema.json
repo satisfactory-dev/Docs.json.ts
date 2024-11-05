@@ -2030,6 +2030,73 @@
 				}
 			}
 		},
+		"common-base--FGBuildableCornerWall": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildableWall--base",
+			"required": ["mSize", "mIsInverted"],
+			"properties": {
+				"mSize": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mIsInverted": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				}
+			}
+		},
+		"common-base--FGBuildableDoor--base": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildableWall--base--rectangle",
+			"required": [
+				"mCanBeLocked",
+				"mAnimationRate",
+				"mMovementRate",
+				"EasingFunction",
+				"BlendExp",
+				"Steps"
+			],
+			"properties": {
+				"mCanBeLocked": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mAnimationRate": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mMovementRate": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"EasingFunction": {
+					"type": "string",
+					"enum": ["ExpoInOut", "Linear"]
+				},
+				"BlendExp": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"Steps": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				}
+			}
+		},
+		"common-base--FGBuildableDoor": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildableDoor--base",
+			"required": ["IsDoorOpen"],
+			"properties": {
+				"IsDoorOpen": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				}
+			}
+		},
+		"common-base--FGBuildableDoor--automated": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildableDoor--base",
+			"required": ["bigOverlapList"],
+			"properties": {
+				"bigOverlapList": {
+					"type": "string",
+					"const": ""
+				}
+			}
+		},
 		"common-base--FGBuildableTradingPost": {
 			"type": "object",
 			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--consumes-power-base",
@@ -2894,6 +2961,18 @@
 				},
 				"rectangle": {
 					"$ref": "#/$defs/common-base--FGBuildableWall--base--rectangle"
+				},
+				"corner": {
+					"$ref": "#/$defs/common-base--FGBuildableCornerWall"
+				},
+				"door_base": {
+					"$ref": "#/$defs/common-base--FGBuildableDoor--base"
+				},
+				"door": {
+					"$ref": "#/$defs/common-base--FGBuildableDoor"
+				},
+				"door_autoamted": {
+					"$ref": "#/$defs/common-base--FGBuildableDoor--automated"
 				}
 			}
 		}
