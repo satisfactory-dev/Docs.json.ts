@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (314 of 314)
+100.00% Complete (316 of 316)
 
 ## Basic Types
 
@@ -97,6 +97,7 @@
 -   [x] common-base--FGSchematic--base--mSchematicDependencies--mRequireAllSchematicsToBePurchased (common type)
 -   [x] common-base--FGSchematic--mUnlocks (common type)
 -   [x] common-base--FGSchematic--mUnlocks_Class (common type)
+-   [x] common-base--FGSchematic--with-unlocks (common type)
 
 ## FGAmmoType
 
@@ -415,6 +416,7 @@
 -   [x] FGSchematic--mUnlocks_resources_to_scan (common type)
 -   [x] FGSchematic--mUploadSpeedPercentageDecrease
 -   [x] FGSchematic--with-unlocks
+-   [x] FGSchematic--with-unlocks--merged
 
 ## FGVehicleDescriptor
 

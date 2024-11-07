@@ -16,6 +16,7 @@ import {
 	common_base__FGSchematic__base__mSchematicDependencies__mGamePhase__type,
 	common_base__FGSchematic__base__type,
 	common_base__FGSchematic__mUnlocks_Class__type,
+	common_base__FGSchematic__with_unlocks__type,
 } from '../../../common/classes/CoreUObject/FGSchematic';
 
 export type FGSchematic__type = FGSchematic__base__type;
@@ -136,13 +137,12 @@ export type FGSchematic__mUploadSpeedPercentageDecrease__type = {
 	mUploadSpeedPercentageDecrease: decimal_string__type;
 };
 
-export type FGSchematic__with_unlocks__type = FGSchematic__base__type & {
-	mUnlockName: Exclude<string, ''>;
-	mUnlockDescription: string;
-	mUnlockIconBig: 'Unsupported texture. Contact developer for support';
-	mUnlockIconSmall: 'Unsupported texture. Contact developer for support';
-	mUnlockIconCategory: 'Unsupported texture. Contact developer for support';
-};
+export type FGSchematic__with_unlocks__type =
+	FGSchematic__with_unlocks__merged__type;
+
+export type FGSchematic__with_unlocks__merged__type =
+	common_base__FGSchematic__with_unlocks__type &
+		FGSchematic__base__type;
 
 export type FGSchematic__NativeClass = NativeClass__type & {
 	Classes: [

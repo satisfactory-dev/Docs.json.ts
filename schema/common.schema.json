@@ -1413,10 +1413,8 @@
 				"mTimeToComplete",
 				"mRelevantShopSchematics",
 				"mIsPlayerSpecific",
-				"mUnlocks",
 				"mSchematicIcon",
 				"mSmallSchematicIcon",
-				"mSchematicDependencies",
 				"mDependenciesBlocksSchematicAccess",
 				"mHiddenUntilDependenciesMet",
 				"mRelevantEvents",
@@ -1519,20 +1517,6 @@
 				"mIsPlayerSpecific": {
 					"$ref": "common.schema.json#/$defs/boolean"
 				},
-				"mUnlocks": {
-					"type": "array",
-					"minItems": 0,
-					"items": {
-						"type": "object",
-						"required": ["Class"],
-						"properties": {
-							"Class": {
-								"type": "string",
-								"minLength": 1
-							}
-						}
-					}
-				},
 				"mSchematicIcon": {
 					"type": "string",
 					"minLength": 1,
@@ -1609,20 +1593,6 @@
 				"mSmallSchematicIcon": {
 					"$ref": "common.schema.json#/$defs/Texture2D"
 				},
-				"mSchematicDependencies": {
-					"type": "array",
-					"minItems": 0,
-					"items": {
-						"type": "object",
-						"required": ["Class"],
-						"properties": {
-							"Class": {
-								"type": "string",
-								"minLength": 1
-							}
-						}
-					}
-				},
 				"mDependenciesBlocksSchematicAccess": {
 					"$ref": "common.schema.json#/$defs/boolean"
 				},
@@ -1658,7 +1628,8 @@
 						"/Game/FactoryGame/Schematics/",
 						"/Game/FactoryGame/Events/Christmas/"
 					]
-				}
+				},
+				"quote_mode": "both"
 			}
 		},
 		"FGSchematic--mUnlocks_mTapeUnlocks": {
@@ -1963,6 +1934,38 @@
 					"$ref": "common.schema.json#/$defs/FGSchematic--mUnlocks_mItemsToGive"
 				}
 			]
+		},
+		"common-base--FGSchematic--with-unlocks": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGSchematic--base",
+			"required": [
+				"mUnlockName",
+				"mUnlockDescription",
+				"mUnlockIconBig",
+				"mUnlockIconSmall",
+				"mUnlockIconCategory"
+			],
+			"properties": {
+				"mUnlockName": {
+					"type": "string",
+					"minLength": 1
+				},
+				"mUnlockDescription": {
+					"type": "string"
+				},
+				"mUnlockIconBig": {
+					"type": "string",
+					"const": "Unsupported texture. Contact developer for support"
+				},
+				"mUnlockIconSmall": {
+					"type": "string",
+					"const": "Unsupported texture. Contact developer for support"
+				},
+				"mUnlockIconCategory": {
+					"type": "string",
+					"const": "Unsupported texture. Contact developer for support"
+				}
+			}
 		},
 		"common-base--FGBuildableWall--base": {
 			"type": "object",
@@ -2944,6 +2947,9 @@
 				},
 				"ref": {
 					"$ref": "#/$defs/common-base--FGSchematic--mUnlocks_Class"
+				},
+				"schematic_with_unlocks": {
+					"$ref": "#/$defs/common-base--FGSchematic--with-unlocks"
 				}
 			}
 		},

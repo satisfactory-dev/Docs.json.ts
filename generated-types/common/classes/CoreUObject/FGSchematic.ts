@@ -63,11 +63,6 @@ export type common_base__FGSchematic__base__type = class__type & {
 				)[],
 		];
 	mIsPlayerSpecific: boolean__type;
-	mUnlocks: [
-		...{
-			Class: Exclude<string, ''>;
-		}[],
-	];
 	mSchematicIcon: {
 		DrawAs: 'Image';
 		ImageSize: xy__type;
@@ -86,11 +81,6 @@ export type common_base__FGSchematic__base__type = class__type & {
 		};
 	};
 	mSmallSchematicIcon: Texture2D__type;
-	mSchematicDependencies: [
-		...{
-			Class: Exclude<string, ''>;
-		}[],
-	];
 	mDependenciesBlocksSchematicAccess: boolean__type;
 	mHiddenUntilDependenciesMet: boolean__type;
 	mRelevantEvents: mEventType__optional_csv__type;
@@ -127,6 +117,15 @@ export type common_base__FGSchematic__mUnlocks__type =
 export type common_base__FGSchematic__mUnlocks_Class__type = {
 	Class: Exclude<string, ''>;
 };
+
+export type common_base__FGSchematic__with_unlocks__type =
+	common_base__FGSchematic__base__type & {
+		mUnlockName: Exclude<string, ''>;
+		mUnlockDescription: string;
+		mUnlockIconBig: 'Unsupported texture. Contact developer for support';
+		mUnlockIconSmall: 'Unsupported texture. Contact developer for support';
+		mUnlockIconCategory: 'Unsupported texture. Contact developer for support';
+	};
 
 export type FGSchematic__mUnlocks_equipment_slots__type = {
 	Class: 'BP_UnlockArmEquipmentSlot_C';

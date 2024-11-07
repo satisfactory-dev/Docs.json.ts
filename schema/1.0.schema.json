@@ -783,38 +783,20 @@
 			"$ref": "#/$defs/FGSchematic--base",
 			"unevaluatedProperties": false
 		},
+		"FGSchematic--with-unlocks--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGSchematic--with-unlocks"
+				},
+				{
+					"$ref": "#/$defs/FGSchematic--base"
+				}
+			]
+		},
 		"FGSchematic--with-unlocks": {
 			"type": "object",
-			"$ref": "#/$defs/FGSchematic--base",
-			"unevaluatedProperties": false,
-			"required": [
-				"mUnlockName",
-				"mUnlockDescription",
-				"mUnlockIconBig",
-				"mUnlockIconSmall",
-				"mUnlockIconCategory"
-			],
-			"properties": {
-				"mUnlockName": {
-					"type": "string",
-					"minLength": 1
-				},
-				"mUnlockDescription": {
-					"type": "string"
-				},
-				"mUnlockIconBig": {
-					"type": "string",
-					"const": "Unsupported texture. Contact developer for support"
-				},
-				"mUnlockIconSmall": {
-					"type": "string",
-					"const": "Unsupported texture. Contact developer for support"
-				},
-				"mUnlockIconCategory": {
-					"type": "string",
-					"const": "Unsupported texture. Contact developer for support"
-				}
-			}
+			"$ref": "#/$defs/FGSchematic--with-unlocks--merged",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableWall--base": {
 			"allOf": [
