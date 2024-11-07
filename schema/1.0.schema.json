@@ -878,26 +878,22 @@
 			"$ref": "#/$defs/FGBuildableDoor--automated--merged",
 			"unevaluatedProperties": false
 		},
+		"FGResourceDescriptor--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGResourceDescriptor"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--FGResourceDescriptor"
+				}
+			]
+		},
 		"FGResourceDescriptor": {
 			"type": "object",
-			"$ref": "#/$defs/FGItemDescriptor--FGResourceDescriptor",
+			"$ref": "#/$defs/FGResourceDescriptor--merged",
 			"unevaluatedProperties": false,
-			"required": [
-				"mDecalSize",
-				"mPingColor",
-				"mCollectSpeedMultiplier",
-				"mManualMiningAudioName"
-			],
+			"required": ["mManualMiningAudioName"],
 			"properties": {
-				"mDecalSize": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mPingColor": {
-					"$ref": "common.schema.json#/$defs/color-decimal"
-				},
-				"mCollectSpeedMultiplier": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
 				"mManualMiningAudioName": {
 					"type": "string",
 					"enum": ["Metal", "Sam"]

@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (172 of 172)
+100.00% Complete (175 of 175)
 
 ## Basic Types
 
@@ -10,7 +10,7 @@
 -   [x] class--no-description (common type)
 -   [x] class--no-description-or-display-name (common type)
 -   [x] color (common type)
--   [x] color-decimal
+-   [x] color-decimal (common type)
 -   [x] decimal-string (common type)
 -   [x] decimal-string--signed (common type)
 -   [x] empty-object (common type)
@@ -100,10 +100,11 @@
 -   [x] common-base--FGCustomizationRecipe--FGRecipe (common type)
 -   [x] common-base--FGEquipment--base
 -   [x] common-base--FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor (common type)
--   [x] common-base--FGItemDescriptor--FGResourceDescriptor
+-   [x] common-base--FGItemDescriptor--FGResourceDescriptor (common type)
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor (common type)
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor--mSubCategories (common type)
 -   [x] common-base--FGRecipe
+-   [x] common-base--FGResourceDescriptor
 -   [x] common-base--FGSchematic--base (common type)
 -   [x] common-base--FGSchematic--base--mSchematicDependencies--mGamePhase
 -   [x] common-base--FGSchematic--base--mSchematicDependencies--mRequireAllSchematicsToBePurchased

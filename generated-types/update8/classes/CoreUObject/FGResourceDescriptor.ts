@@ -1,19 +1,16 @@
 import {FGItemDescriptor__FGResourceDescriptor__type} from './FGItemDescriptor';
 
-import {decimal_string__type} from '../../../common/common/scalar';
+import {common_base__FGResourceDescriptor__type} from '../../../common/classes/CoreUObject/FGResourceDescriptor';
 
-import {
-	color_decimal__type,
-	NativeClass__type,
-} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned';
 
-export type FGResourceDescriptor__type =
-	FGItemDescriptor__FGResourceDescriptor__type & {
-		mDecalSize: decimal_string__type;
-		mPingColor: color_decimal__type;
-		mCollectSpeedMultiplier: decimal_string__type;
-		mManualMiningAudioName: 'Metal';
-	};
+export type FGResourceDescriptor__type = FGResourceDescriptor__merged__type & {
+	mManualMiningAudioName: 'Metal';
+};
+
+export type FGResourceDescriptor__merged__type =
+	common_base__FGResourceDescriptor__type &
+		FGItemDescriptor__FGResourceDescriptor__type;
 
 export type FGResourceDescriptor__NativeClass =
 	NativeClass__type & {

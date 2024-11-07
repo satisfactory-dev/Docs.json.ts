@@ -2100,6 +2100,31 @@
 				}
 			}
 		},
+		"common-base--FGResourceDescriptor": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGItemDescriptor--FGResourceDescriptor",
+			"required": [
+				"mDecalSize",
+				"mPingColor",
+				"mCollectSpeedMultiplier",
+				"mManualMiningAudioName"
+			],
+			"properties": {
+				"mDecalSize": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mPingColor": {
+					"$ref": "common.schema.json#/$defs/color-decimal"
+				},
+				"mCollectSpeedMultiplier": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mManualMiningAudioName": {
+					"type": "string",
+					"minLength": 1
+				}
+			}
+		},
 		"common-base--FGBuildableTradingPost": {
 			"type": "object",
 			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--consumes-power-base",
@@ -2905,6 +2930,9 @@
 				},
 				"ref": {
 					"$ref": "#/$defs/common-base--FGItemDescriptor--FGResourceDescriptor"
+				},
+				"resource_descriptor": {
+					"$ref": "#/$defs/common-base--FGResourceDescriptor"
 				}
 			}
 		},

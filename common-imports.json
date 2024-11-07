@@ -73,6 +73,7 @@
 	"common_type__common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type": "classes/CoreUObject/FGItemDescriptor",
 	"common_type__common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__mSubCategories__type": "classes/CoreUObject/FGItemDescriptor",
 	"common_type__common_base__FGRecipe__type": "classes/CoreUObject/FGRecipe",
+	"common_type__common_base__FGResourceDescriptor__type": "classes/CoreUObject/FGResourceDescriptor",
 	"common_type__common_base__FGSchematic__base__type": "classes/CoreUObject/FGSchematic",
 	"common_type__common_base__FGSchematic__base__mSchematicDependencies__mGamePhase__type": "classes/CoreUObject/FGSchematic",
 	"common_type__common_base__FGSchematic__base__mSchematicDependencies__mRequireAllSchematicsToBePurchased__type": "classes/CoreUObject/FGSchematic",

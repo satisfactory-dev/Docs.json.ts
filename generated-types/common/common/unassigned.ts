@@ -78,6 +78,8 @@ import {
 	common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type,
 } from '../classes/CoreUObject/FGItemDescriptor';
 
+import {common_base__FGResourceDescriptor__type} from '../classes/CoreUObject/FGResourceDescriptor';
+
 import {common_base__FGRecipe__type} from '../classes/CoreUObject/FGRecipe';
 
 import {common_base__FGBuildableBlueprintDesigner__type} from '../classes/CoreUObject/FGBuildableBlueprintDesigner';
@@ -275,6 +277,7 @@ export type faux_27__type = class__type & {
 export type faux_28__type = class__type & {
 	faux?: 'FGItemDescriptor--FGResourceDescriptor';
 	ref: common_base__FGItemDescriptor__FGResourceDescriptor__type;
+	resource_descriptor?: common_base__FGResourceDescriptor__type;
 };
 
 export type faux_29__type = class__type & {
