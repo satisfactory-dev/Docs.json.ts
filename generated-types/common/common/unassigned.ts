@@ -99,6 +99,8 @@ import {
 
 import {common_base__FGBuildableRailroadTrack__type} from '../classes/CoreUObject/FGBuildableRailroadTrack';
 
+import {common_base__FGPoleDescriptor__type} from '../classes/CoreUObject/FGPoleDescriptor';
+
 export type class__type = class__no_description__type & {
 	mDescription: string;
 };
@@ -343,8 +345,9 @@ export type faux_9__type = class__type & {
 };
 
 export type faux_9b__type = class__type & {
-	faux: 'common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor';
-	FGPoleDescriptor: common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type;
+	faux: 'stashing all the remaining descriptors here';
+	FGItemDescriptor_FGResourceDescriptor_FGPoleDescriptor?: common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type;
+	FGPoleDescriptor?: common_base__FGPoleDescriptor__type;
 };
 
 export type InfinityExtrap__type = 'RCCE_Constant';

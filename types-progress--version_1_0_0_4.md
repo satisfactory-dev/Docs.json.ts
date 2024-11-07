@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (320 of 320)
+100.00% Complete (322 of 322)
 
 ## Basic Types
 
@@ -23,7 +23,6 @@
 -   [x] FGJetPack
 -   [x] FGObjectScanner
 -   [x] FGPipeHyperStart
--   [x] FGPoleDescriptor
 -   [x] FGPortableMinerDispenser
 -   [x] FGPowerShardDescriptor
 -   [x] FGSuitBase
@@ -91,6 +90,7 @@
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor (common type)
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor (common type)
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor--mSubCategories (common type)
+-   [x] common-base--FGPoleDescriptor (common type)
 -   [x] common-base--FGRecipe (common type)
 -   [x] common-base--FGResourceDescriptor (common type)
 -   [x] common-base--FGSchematic--base (common type)
@@ -396,6 +396,11 @@
 -   [x] FGParachute--AudioEvent
 -   [x] FGParachute--mEquipMontage
 -   [x] FGParachute--mUnEquipMontage
+
+## FGPoleDescriptor
+
+-   [x] FGPoleDescriptor
+-   [x] FGPoleDescriptor--merged
 
 ## FGRecipe
 

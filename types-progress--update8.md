@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (281 of 281)
+100.00% Complete (283 of 283)
 
 ## Basic Types
 
@@ -26,7 +26,6 @@
 -   [x] FGObjectScanner
 -   [x] FGParachute
 -   [x] FGPipeHyperStart
--   [x] FGPoleDescriptor
 -   [x] FGPortableMinerDispenser
 -   [x] FGSuitBase
 -   [x] integer-string (common type)
@@ -90,6 +89,7 @@
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor (common type)
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor (common type)
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor--mSubCategories (common type)
+-   [x] common-base--FGPoleDescriptor (common type)
 -   [x] common-base--FGRecipe (common type)
 -   [x] common-base--FGResourceDescriptor (common type)
 -   [x] common-base--FGSchematic--base (common type)
@@ -334,6 +334,11 @@
 -   [x] FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor
 -   [x] FGItemDescriptor--FGResourceDescriptor
 -   [x] FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor
+
+## FGPoleDescriptor
+
+-   [x] FGPoleDescriptor
+-   [x] FGPoleDescriptor--merged
 
 ## FGRecipe
 

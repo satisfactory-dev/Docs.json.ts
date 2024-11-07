@@ -985,35 +985,20 @@
 			"$ref": "#/$defs/FGBuildablePoleLightweight--merged",
 			"unevaluatedProperties": false
 		},
+		"FGPoleDescriptor--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGPoleDescriptor"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor"
+				}
+			]
+		},
 		"FGPoleDescriptor": {
 			"type": "object",
-			"$ref": "#/$defs/FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor",
-			"unevaluatedProperties": false,
-			"required": ["mSubCategories", "mForm"],
-			"properties": {
-				"mForm": {
-					"type": "string",
-					"const": "RF_INVALID"
-				},
-				"mSubCategories": {
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"minItems": 1,
-						"items": {
-							"type": "string",
-							"minLength": 1,
-							"UnrealEngineString": {
-								"right": [
-									"/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Transport/SC_ConverPole.SC_ConverPole_C",
-									"/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Transport/SC_PipeSupport.SC_PipeSupport_C",
-									"/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Transport/SC_HyperTubes.SC_HyperTubes_C"
-								]
-							}
-						}
-					}
-				}
-			}
+			"$ref": "#/$defs/FGPoleDescriptor--merged",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableConveyorBelt--base": {
 			"type": "object",

@@ -1244,6 +1244,35 @@
 				}
 			}
 		},
+		"common-base--FGPoleDescriptor": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor",
+			"required": ["mSubCategories", "mForm"],
+			"properties": {
+				"mForm": {
+					"type": "string",
+					"const": "RF_INVALID"
+				},
+				"mSubCategories": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"minItems": 1,
+						"items": {
+							"type": "string",
+							"minLength": 1,
+							"UnrealEngineString": {
+								"right": [
+									"/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Transport/SC_ConverPole.SC_ConverPole_C",
+									"/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Transport/SC_PipeSupport.SC_PipeSupport_C",
+									"/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Transport/SC_HyperTubes.SC_HyperTubes_C"
+								]
+							}
+						}
+					}
+				}
+			}
+		},
 		"common-base--FGBuildable--pipeline-accessory--base": {
 			"type": "object",
 			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--consumes-power-base",
@@ -2612,15 +2641,18 @@
 		"faux-9b": {
 			"type": "object",
 			"$ref": "#/$defs/class",
-			"required": ["faux", "FGPoleDescriptor"],
+			"required": ["faux"],
 			"unevaluatedProperties": false,
 			"properties": {
 				"faux": {
 					"type": "string",
-					"const": "common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor"
+					"const": "stashing all the remaining descriptors here"
+				},
+				"FGItemDescriptor_FGResourceDescriptor_FGPoleDescriptor": {
+					"$ref": "#/$defs/common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor"
 				},
 				"FGPoleDescriptor": {
-					"$ref": "#/$defs/common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor"
+					"$ref": "#/$defs/common-base--FGPoleDescriptor"
 				}
 			}
 		},
