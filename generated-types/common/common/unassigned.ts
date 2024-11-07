@@ -97,6 +97,8 @@ import {
 	common_base__FGBuildableDoor__automated__type,
 } from '../classes/CoreUObject/FGBuildableDoor';
 
+import {common_base__FGBuildableRailroadTrack__type} from '../classes/CoreUObject/FGBuildableRailroadTrack';
+
 export type class__type = class__no_description__type & {
 	mDescription: string;
 };
@@ -308,6 +310,11 @@ export type faux_32__type = class__type & {
 	door_base?: common_base__FGBuildableDoor__base__type;
 	door?: common_base__FGBuildableDoor__type;
 	door_autoamted?: common_base__FGBuildableDoor__automated__type;
+};
+
+export type faux_33__type = class__type & {
+	faux?: 'FGBuildableRailroadTrack';
+	ref?: common_base__FGBuildableRailroadTrack__type;
 };
 
 export type faux_4__type = class__type & {

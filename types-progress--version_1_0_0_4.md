@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (318 of 318)
+100.00% Complete (320 of 320)
 
 ## Basic Types
 
@@ -77,6 +77,7 @@
 -   [x] common-base--FGBuildablePipelinePump--valve (common type)
 -   [x] common-base--FGBuildablePipeReservoir (common type)
 -   [x] common-base--FGBuildablePoleLightweight (common type)
+-   [x] common-base--FGBuildableRailroadTrack (common type)
 -   [x] common-base--FGBuildableTradingPost (common type)
 -   [x] common-base--FGBuildableWall--base (common type)
 -   [x] common-base--FGBuildableWall--base--rectangle (common type)
@@ -290,6 +291,10 @@
 ## FGBuildablePortal
 
 -   [x] FGBuildablePortal--base
+
+## FGBuildableRailroadTrack
+
+-   [x] FGBuildableRailroadTrack--merged
 
 ## FGBuildableResourceExtractor
 

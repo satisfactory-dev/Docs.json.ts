@@ -2125,6 +2125,65 @@
 				}
 			}
 		},
+		"common-base--FGBuildableRailroadTrack": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--base",
+			"required": [
+				"mMeshLength",
+				"mConnections",
+				"mIsOwnedByPlatform",
+				"mTrackGraphID",
+				"mOverlappingTracks",
+				"mVehicles",
+				"mSignalBlockID",
+				"mBlockVisualizationColorDataStartIndex"
+			],
+			"properties": {
+				"ClassName": {
+					"type": "string",
+					"const": "Build_RailroadTrack_C"
+				},
+				"mMeshLength": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mConnections": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"minItems": 1,
+						"items": {
+							"type": "string",
+							"minLength": 1,
+							"UnrealEngineString": {
+								"left": "/Script/FactoryGame.FGRailroadTrackConnectionComponent",
+								"right": {
+									"starts_with": "/Game/FactoryGame/Buildable/Factory/Train/Track/"
+								}
+							}
+						}
+					}
+				},
+				"mIsOwnedByPlatform": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mTrackGraphID": {
+					"$ref": "common.schema.json#/$defs/integer-string--signed"
+				},
+				"mOverlappingTracks": {
+					"type": "string",
+					"const": ""
+				},
+				"mVehicles": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mSignalBlockID": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				},
+				"mBlockVisualizationColorDataStartIndex": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				}
+			}
+		},
 		"common-base--FGBuildableTradingPost": {
 			"type": "object",
 			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--consumes-power-base",
@@ -3009,6 +3068,20 @@
 					"$ref": "#/$defs/common-base--FGBuildableDoor--automated"
 				}
 			}
+		},
+		"faux-33": {
+			"type": "object",
+			"$ref": "#/$defs/class",
+			"required": ["base"],
+			"properties": {
+				"faux": {
+					"type": "string",
+					"const": "FGBuildableRailroadTrack"
+				},
+				"ref": {
+					"$ref": "#/$defs/common-base--FGBuildableRailroadTrack"
+				}
+			}
 		}
 	},
 	"items": false,
@@ -3204,6 +3277,11 @@
 							{
 								"type": "object",
 								"$ref": "#/$defs/faux-32",
+								"unevaluatedProperties": false
+							},
+							{
+								"type": "object",
+								"$ref": "#/$defs/faux-33",
 								"unevaluatedProperties": false
 							}
 						]

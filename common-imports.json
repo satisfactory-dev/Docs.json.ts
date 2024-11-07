@@ -59,6 +59,7 @@
 	"common_type__common_base__FGBuildablePipelinePump__valve__type": "classes/CoreUObject/FGBuildablePipelinePump",
 	"common_type__common_base__FGBuildablePipeReservoir__type": "classes/CoreUObject/FGBuildablePipeReservoir",
 	"common_type__common_base__FGBuildablePoleLightweight__type": "classes/CoreUObject/FGBuildablePoleLightweight",
+	"common_type__common_base__FGBuildableRailroadTrack__type": "classes/CoreUObject/FGBuildableRailroadTrack",
 	"common_type__common_base__FGBuildableTradingPost__type": "classes/CoreUObject/FGBuildableTradingPost",
 	"common_type__common_base__FGBuildableWall__base__type": "classes/CoreUObject/FGBuildableWall",
 	"common_type__common_base__FGBuildableWall__base__rectangle__type": "classes/CoreUObject/FGBuildableWall",

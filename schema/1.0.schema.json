@@ -900,65 +900,20 @@
 				}
 			}
 		},
+		"FGBuildableRailroadTrack--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableRailroadTrack"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
 		"FGBuildableRailroadTrack": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
-			"unevaluatedProperties": false,
-			"required": [
-				"mMeshLength",
-				"mConnections",
-				"mIsOwnedByPlatform",
-				"mTrackGraphID",
-				"mOverlappingTracks",
-				"mVehicles",
-				"mSignalBlockID",
-				"mBlockVisualizationColorDataStartIndex"
-			],
-			"properties": {
-				"ClassName": {
-					"type": "string",
-					"const": "Build_RailroadTrack_C"
-				},
-				"mMeshLength": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mConnections": {
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"minItems": 1,
-						"items": {
-							"type": "string",
-							"minLength": 1,
-							"UnrealEngineString": {
-								"left": "/Script/FactoryGame.FGRailroadTrackConnectionComponent",
-								"right": {
-									"starts_with": "/Game/FactoryGame/Buildable/Factory/Train/Track/"
-								}
-							}
-						}
-					}
-				},
-				"mIsOwnedByPlatform": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mTrackGraphID": {
-					"$ref": "common.schema.json#/$defs/integer-string--signed"
-				},
-				"mOverlappingTracks": {
-					"type": "string",
-					"const": ""
-				},
-				"mVehicles": {
-					"$ref": "common.schema.json#/$defs/empty-object"
-				},
-				"mSignalBlockID": {
-					"$ref": "common.schema.json#/$defs/integer-string"
-				},
-				"mBlockVisualizationColorDataStartIndex": {
-					"$ref": "common.schema.json#/$defs/integer-string"
-				}
-			}
+			"$ref": "#/$defs/FGBuildableRailroadTrack--merged",
+			"unevaluatedProperties": false
 		},
 		"FGBuildable--occupied--merged": {
 			"allOf": [
