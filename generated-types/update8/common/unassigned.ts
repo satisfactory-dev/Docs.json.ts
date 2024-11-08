@@ -309,6 +309,4 @@ export type mLightControlData__type = {
 export type mOutputInventoryHandlerData__type =
 	empty_object__type;
 
-export type mSnappedPassthroughs__type = '';
-
 export type weaponState__type = 'EWS_Unequipped';

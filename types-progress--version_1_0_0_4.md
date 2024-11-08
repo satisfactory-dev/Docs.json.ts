@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (322 of 322)
+100.00% Complete (328 of 328)
 
 ## Basic Types
 
@@ -42,7 +42,6 @@
 -   [x] Montage_1P
 -   [x] Montage_3P
 -   [x] mPlatformDockingStatus (common type)
--   [x] mSnappedPassthroughs
 -   [x] NativeClass (common type)
 -   [x] None (common type)
 -   [x] Texture2D (common type)
@@ -63,6 +62,9 @@
 -   [x] common-base--FGBuildable--pole--base--with-static (common type)
 -   [x] common-base--FGBuildable--tiered (common type)
 -   [x] common-base--FGBuildableBlueprintDesigner (common type)
+-   [x] common-base--FGBuildableConveyorBelt (common type)
+-   [x] common-base--FGBuildableConveyorBelt--base (common type)
+-   [x] common-base--FGBuildableConveyorLift (common type)
 -   [x] common-base--FGBuildableCornerWall (common type)
 -   [x] common-base--FGBuildableDoor (common type)
 -   [x] common-base--FGBuildableDoor--automated (common type)
@@ -99,6 +101,7 @@
 -   [x] common-base--FGSchematic--mUnlocks (common type)
 -   [x] common-base--FGSchematic--mUnlocks_Class (common type)
 -   [x] common-base--FGSchematic--with-unlocks (common type)
+-   [x] common-base--mSnappedPassthroughs (common type)
 
 ## FGAmmoType
 
@@ -202,6 +205,12 @@
 ## FGBuildableConveyorBelt
 
 -   [x] FGBuildableConveyorBelt--base
+-   [x] FGBuildableConveyorBelt--base--merged
+-   [x] FGBuildableConveyorBelt--merged
+
+## FGBuildableConveyorLift
+
+-   [x] FGBuildableConveyorLift--merged
 
 ## FGBuildableCornerWall
 

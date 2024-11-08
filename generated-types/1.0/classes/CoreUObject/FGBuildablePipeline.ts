@@ -1,7 +1,5 @@
 import {StringPassedRegExp} from '../../utils/validators';
 
-import {mSnappedPassthroughs__type} from '../../common/unassigned';
-
 import {FGBuildable__base__type} from './FGBuildable';
 
 import {
@@ -11,6 +9,7 @@ import {
 
 import {
 	empty_object__type,
+	common_base__mSnappedPassthroughs__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned';
 
@@ -45,7 +44,7 @@ export type FGBuildablePipeline__type = FGBuildable__base__type & {
 	mIsRattling: boolean__type;
 	mUpdateSoundsHandle: empty_object__type;
 	mUpdateSoundsTimerInterval: decimal_string__type;
-	mSnappedPassthroughs: mSnappedPassthroughs__type;
+	mSnappedPassthroughs: common_base__mSnappedPassthroughs__type;
 };
 
 export type FGBuildablePipeline__NativeClass =

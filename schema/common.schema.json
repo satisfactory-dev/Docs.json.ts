@@ -1273,6 +1273,81 @@
 				}
 			}
 		},
+		"common-base--FGBuildableConveyorBelt--base": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--base",
+			"required": [
+				"mItemMeshMap",
+				"mSpeed",
+				"mConveyorChainFlags"
+			],
+			"properties": {
+				"mItemMeshMap": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mSpeed": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mConveyorChainFlags": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				}
+			}
+		},
+		"common-base--FGBuildableConveyorBelt": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildableConveyorBelt--base",
+			"required": ["mMeshLength", "mSplineData", "mCustomSkins"],
+			"properties": {
+				"mMeshLength": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mSplineData": {
+					"type": "string",
+					"const": ""
+				},
+				"mCustomSkins": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"minItems": 1,
+						"items": {
+							"type": "string",
+							"enum": [
+								"/Game/FactoryGame/Buildable/-Shared/Customization/Skins/SkinDesc_Test1.SkinDesc_Test1_C"
+							]
+						}
+					}
+				}
+			}
+		},
+		"common-base--FGBuildableConveyorLift": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildableConveyorBelt--base",
+			"required": [
+				"mMeshHeight",
+				"mIsReversed",
+				"mTopTransform",
+				"mSnappedPassthroughs"
+			],
+			"properties": {
+				"mMeshHeight": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mIsReversed": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mTopTransform": {
+					"$ref": "common.schema.json#/$defs/transformation"
+				},
+				"mSnappedPassthroughs": {
+					"$ref": "common.schema.json#/$defs/common-base--mSnappedPassthroughs"
+				}
+			}
+		},
+		"common-base--mSnappedPassthroughs": {
+			"type": "string",
+			"const": ""
+		},
 		"common-base--FGBuildable--pipeline-accessory--base": {
 			"type": "object",
 			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--consumes-power-base",
@@ -3114,6 +3189,26 @@
 					"$ref": "#/$defs/common-base--FGBuildableRailroadTrack"
 				}
 			}
+		},
+		"faux-34": {
+			"type": "object",
+			"$ref": "#/$defs/class",
+			"required": ["base"],
+			"properties": {
+				"faux": {
+					"type": "string",
+					"const": "FGBuildableConveyorBelt"
+				},
+				"base": {
+					"$ref": "#/$defs/common-base--FGBuildableConveyorBelt--base"
+				},
+				"belt": {
+					"$ref": "#/$defs/common-base--FGBuildableConveyorBelt"
+				},
+				"lift": {
+					"$ref": "#/$defs/common-base--FGBuildableConveyorLift"
+				}
+			}
 		}
 	},
 	"items": false,
@@ -3314,6 +3409,11 @@
 							{
 								"type": "object",
 								"$ref": "#/$defs/faux-33",
+								"unevaluatedProperties": false
+							},
+							{
+								"type": "object",
+								"$ref": "#/$defs/faux-34",
 								"unevaluatedProperties": false
 							}
 						]

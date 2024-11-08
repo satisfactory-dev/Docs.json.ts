@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (178 of 178)
+100.00% Complete (186 of 186)
 
 ## Basic Types
 
@@ -42,6 +42,7 @@
 -   [x] faux-31
 -   [x] faux-32
 -   [x] faux-33
+-   [x] faux-34
 -   [x] faux-4
 -   [x] faux-5
 -   [x] faux-6
@@ -62,7 +63,7 @@
 -   [x] None (common type)
 -   [x] SpecifiedColor
 -   [x] Texture2D (common type)
--   [x] transformation
+-   [x] transformation (common type)
 -   [x] xyz-array
 
 ## common-base
@@ -78,6 +79,9 @@
 -   [x] common-base--FGBuildable--pole--base--with-static (common type)
 -   [x] common-base--FGBuildable--tiered
 -   [x] common-base--FGBuildableBlueprintDesigner
+-   [x] common-base--FGBuildableConveyorBelt
+-   [x] common-base--FGBuildableConveyorBelt--base (common type)
+-   [x] common-base--FGBuildableConveyorLift
 -   [x] common-base--FGBuildableCornerWall
 -   [x] common-base--FGBuildableDoor
 -   [x] common-base--FGBuildableDoor--automated
@@ -114,6 +118,7 @@
 -   [x] common-base--FGSchematic--mUnlocks
 -   [x] common-base--FGSchematic--mUnlocks_Class
 -   [x] common-base--FGSchematic--with-unlocks
+-   [x] common-base--mSnappedPassthroughs (common type)
 
 ## FGSchematic
 

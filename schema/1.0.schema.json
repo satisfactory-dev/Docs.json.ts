@@ -1000,23 +1000,24 @@
 			"$ref": "#/$defs/FGPoleDescriptor--merged",
 			"unevaluatedProperties": false
 		},
+		"FGBuildableConveyorBelt--base--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableConveyorBelt--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
 		"FGBuildableConveyorBelt--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
+			"$ref": "#/$defs/FGBuildableConveyorBelt--base--merged",
 			"required": [
-				"mItemMeshMap",
-				"mSpeed",
 				"mItems",
-				"mConveyorChainFlags",
 				"mChainSegmentIndex"
 			],
 			"properties": {
-				"mItemMeshMap": {
-					"$ref": "common.schema.json#/$defs/empty-object"
-				},
-				"mSpeed": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
 				"mItems": {
 					"type": "string",
 					"minLength": 1,
@@ -1029,69 +1030,48 @@
 						}
 					}
 				},
-				"mConveyorChainFlags": {
-					"$ref": "common.schema.json#/$defs/integer-string"
-				},
 				"mChainSegmentIndex": {
 					"$ref": "common.schema.json#/$defs/integer-string--signed"
 				}
 			}
 		},
+		"FGBuildableConveyorBelt--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableConveyorBelt"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableConveyorBelt--base"
+				}
+			]
+		},
 		"FGBuildableConveyorBelt": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableConveyorBelt--base",
+			"$ref": "#/$defs/FGBuildableConveyorBelt--merged",
 			"unevaluatedProperties": false,
-			"required": ["mMeshLength", "mSplineData", "mCustomSkins"],
-			"properties": {
-				"mMeshLength": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
+			"required": ["mMeshLength", "mSplineData", "mCustomSkins"]
+		},
+		"FGBuildableConveyorLift--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableConveyorLift"
 				},
-				"mSplineData": {
-					"type": "string",
-					"const": ""
-				},
-				"mCustomSkins": {
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"minItems": 1,
-						"items": {
-							"type": "string",
-							"enum": [
-								"/Game/FactoryGame/Buildable/-Shared/Customization/Skins/SkinDesc_Test1.SkinDesc_Test1_C"
-							]
-						}
-					}
+				{
+					"$ref": "#/$defs/FGBuildableConveyorBelt--base"
 				}
-			}
+			]
 		},
 		"FGBuildableConveyorLift": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableConveyorBelt--base",
+			"$ref": "#/$defs/FGBuildableConveyorLift--merged",
 			"unevaluatedProperties": false,
 			"required": [
-				"mMeshHeight",
-				"mIsReversed",
 				"mFlipMeshOnReverse",
-				"mTopTransform",
-				"mSnappedPassthroughs",
 				"mOpposingConnectionClearance"
 			],
 			"properties": {
-				"mMeshHeight": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mIsReversed": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
 				"mFlipMeshOnReverse": {
 					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mTopTransform": {
-					"$ref": "common.schema.json#/$defs/transformation"
-				},
-				"mSnappedPassthroughs": {
-					"$ref": "#/$defs/mSnappedPassthroughs"
 				},
 				"mOpposingConnectionClearance": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -4505,10 +4485,6 @@
 				}
 			}
 		},
-		"mSnappedPassthroughs": {
-			"type": "string",
-			"const": ""
-		},
 		"FGBuildablePipeline": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--base",
@@ -4627,7 +4603,7 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mSnappedPassthroughs": {
-					"$ref": "#/$defs/mSnappedPassthroughs"
+					"$ref": "common.schema.json#/$defs/common-base--mSnappedPassthroughs"
 				}
 			}
 		},

@@ -1,35 +1,32 @@
 import {FGBuildable__base__type} from './FGBuildable';
 
-import {
-	integer_string__signed__type,
-	decimal_string__type,
-	integer_string__type,
-} from '../../../common/common/scalar';
+import {integer_string__signed__type} from '../../../common/common/scalar';
 
 import {
-	empty_object__type,
-	NativeClass__type,
-} from '../../../common/common/unassigned';
+	common_base__FGBuildableConveyorBelt__base__type,
+	common_base__FGBuildableConveyorBelt__type,
+} from '../../../common/classes/CoreUObject/FGBuildableConveyorBelt';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableConveyorBelt__type =
-	FGBuildableConveyorBelt__base__type & {
-		mMeshLength: decimal_string__type;
-		mSplineData: '';
-		mCustomSkins: [
-			'/Game/FactoryGame/Buildable/-Shared/Customization/Skins/SkinDesc_Test1.SkinDesc_Test1_C',
-			...'/Game/FactoryGame/Buildable/-Shared/Customization/Skins/SkinDesc_Test1.SkinDesc_Test1_C'[],
-		];
+	FGBuildableConveyorBelt__merged__type;
+
+export type FGBuildableConveyorBelt__base__type =
+	FGBuildableConveyorBelt__base__merged__type & {
+		mItems: {
+			ArrayReplicationKey: integer_string__signed__type;
+		};
+		mChainSegmentIndex: integer_string__signed__type;
 	};
 
-export type FGBuildableConveyorBelt__base__type = FGBuildable__base__type & {
-	mItemMeshMap: empty_object__type;
-	mSpeed: decimal_string__type;
-	mItems: {
-		ArrayReplicationKey: integer_string__signed__type;
-	};
-	mConveyorChainFlags: integer_string__type;
-	mChainSegmentIndex: integer_string__signed__type;
-};
+export type FGBuildableConveyorBelt__base__merged__type =
+	common_base__FGBuildableConveyorBelt__base__type &
+		FGBuildable__base__type;
+
+export type FGBuildableConveyorBelt__merged__type =
+	common_base__FGBuildableConveyorBelt__type &
+		FGBuildableConveyorBelt__base__type;
 
 export type FGBuildableConveyorBelt__NativeClass =
 	NativeClass__type & {

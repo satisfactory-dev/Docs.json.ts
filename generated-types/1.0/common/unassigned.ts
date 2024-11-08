@@ -417,6 +417,4 @@ export type Montage_3P__type = UnrealEngineString<
 	StringStartsWith<'/Game/FactoryGame/Character/Player/Animation/ThirdPerson/'>
 >;
 
-export type mSnappedPassthroughs__type = '';
-
 export type weaponState__type = 'EWS_Unequipped';
