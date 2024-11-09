@@ -1317,23 +1317,27 @@
 				}
 			}
 		},
+		"FGEquipmentStunSpear--base--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGEquipmentStunSpear--base"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--base"
+				}
+			]
+		},
 		"FGEquipmentStunSpear--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment--base",
+			"$ref": "#/$defs/FGEquipmentStunSpear--base--merged",
 			"required": [
 				"mFirstSwingMontageList",
 				"mSecondSwingMontageList",
-				"mDamageTypes",
 				"mSecondSwingMinDelay",
 				"mSecondSwingMaxDelay",
-				"mSecondSwingUseCoolDown",
-				"mAttackDistance",
-				"mAttackSweepRadius"
+				"mSecondSwingUseCoolDown"
 			],
 			"properties": {
-				"mDamageTypes": {
-					"$ref": "common.schema.json#/$defs/mDamageTypes"
-				},
 				"mSecondSwingMinDelay": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
@@ -1341,12 +1345,6 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mSecondSwingUseCoolDown": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mAttackDistance": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mAttackSweepRadius": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
@@ -1393,9 +1391,19 @@
 			"type": "string",
 			"enum": ["LowCharged", "MediumCharged", "FullyCharged"]
 		},
+		"FGEquipmentStunSpear--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGEquipmentStunSpear"
+				},
+				{
+					"$ref": "#/$defs/FGEquipmentStunSpear--base"
+				}
+			]
+		},
 		"FGEquipmentStunSpear": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipmentStunSpear--base",
+			"$ref": "#/$defs/FGEquipmentStunSpear--merged",
 			"unevaluatedProperties": false,
 			"properties": {
 				"mSecondSwingMontageList": {
@@ -1682,19 +1690,22 @@
 							}
 						}
 					}
-				},
-				"mDamageTypes": {
-					"$ref": "common.schema.json#/$defs/mDamageTypes"
-				},
-				"mArmAnimation": {
-					"type": "string",
-					"const": "AE_StunSpear"
 				}
 			}
 		},
+		"FGEquipmentStunSpear--xeno-zapper--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGEquipmentStunSpear--xeno-zapper"
+				},
+				{
+					"$ref": "#/$defs/FGEquipmentStunSpear--base"
+				}
+			]
+		},
 		"FGEquipmentStunSpear--xeno-zapper": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipmentStunSpear--base",
+			"$ref": "#/$defs/FGEquipmentStunSpear--xeno-zapper--merged",
 			"unevaluatedProperties": false,
 			"properties": {
 				"mFirstSwingMontageList": {
@@ -1852,13 +1863,6 @@
 							}
 						}
 					}
-				},
-				"mDamageTypes": {
-					"$ref": "common.schema.json#/$defs/mDamageTypes"
-				},
-				"mArmAnimation": {
-					"type": "string",
-					"const": "AE_ShockShank"
 				},
 				"mEquipMontage": {
 					"type": "string",

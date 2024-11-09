@@ -2623,6 +2623,47 @@
 				}
 			}
 		},
+		"common-base--FGEquipmentStunSpear--base": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGEquipment--base",
+			"required": [
+				"mDamageTypes",
+				"mAttackDistance",
+				"mAttackSweepRadius"
+			],
+			"properties": {
+				"mDamageTypes": {
+					"$ref": "common.schema.json#/$defs/mDamageTypes"
+				},
+				"mAttackDistance": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mAttackSweepRadius": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				}
+			}
+		},
+		"common-base--FGEquipmentStunSpear": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGEquipmentStunSpear--base",
+			"required": ["mArmAnimation"],
+			"properties": {
+				"mArmAnimation": {
+					"type": "string",
+					"const": "AE_StunSpear"
+				}
+			}
+		},
+		"common-base--FGEquipmentStunSpear--xeno-zapper": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGEquipmentStunSpear--base",
+			"properties": {
+				"mArmAnimation": {
+					"type": "string",
+					"const": "AE_ShockShank"
+				}
+			}
+		},
 		"faux-1": {
 			"type": "object",
 			"$ref": "#/$defs/class",
@@ -2944,6 +2985,15 @@
 				},
 				"FGSchematic__mUnlocks_mSchematics__mSchematics": {
 					"$ref": "#/$defs/common-base--FGEquipment--base"
+				},
+				"FGEquipmentStunSpear_base": {
+					"$ref": "#/$defs/common-base--FGEquipmentStunSpear--base"
+				},
+				"FGEquipmentStunSpear": {
+					"$ref": "#/$defs/common-base--FGEquipmentStunSpear"
+				},
+				"FGEquipmentStunSpear_xeno_zapper": {
+					"$ref": "#/$defs/common-base--FGEquipmentStunSpear--xeno-zapper"
 				}
 			}
 		},

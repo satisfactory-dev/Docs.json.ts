@@ -41,6 +41,12 @@ import {
 
 import {common_base__FGEquipment__base__type} from '../classes/CoreUObject/FGEquipment';
 
+import {
+	common_base__FGEquipmentStunSpear__base__type,
+	common_base__FGEquipmentStunSpear__type,
+	common_base__FGEquipmentStunSpear__xeno_zapper__type,
+} from '../classes/CoreUObject/FGEquipmentStunSpear';
+
 import {common_base__FGBuildableDroneStation__type} from '../classes/CoreUObject/FGBuildableDroneStation';
 
 import {
@@ -212,6 +218,9 @@ export type faux_14__type = class__type & {
 export type faux_15__type = class__type & {
 	faux: 'common-base--FGEquipment--base';
 	FGSchematic__mUnlocks_mSchematics__mSchematics?: common_base__FGEquipment__base__type;
+	FGEquipmentStunSpear_base?: common_base__FGEquipmentStunSpear__base__type;
+	FGEquipmentStunSpear?: common_base__FGEquipmentStunSpear__type;
+	FGEquipmentStunSpear_xeno_zapper?: common_base__FGEquipmentStunSpear__xeno_zapper__type;
 };
 
 export type faux_16__type = class__type & {

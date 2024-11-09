@@ -14,11 +14,14 @@ import {
 } from '../../../common/common/scalar';
 
 import {
-	mDamageTypes__type,
-	NativeClass__type,
-} from '../../../common/common/unassigned';
+	common_base__FGEquipmentStunSpear__base__type,
+	common_base__FGEquipmentStunSpear__type,
+	common_base__FGEquipmentStunSpear__xeno_zapper__type,
+} from '../../../common/classes/CoreUObject/FGEquipmentStunSpear';
 
-export type FGEquipmentStunSpear__type = FGEquipmentStunSpear__base__type & {
+import {NativeClass__type} from '../../../common/common/unassigned';
+
+export type FGEquipmentStunSpear__type = FGEquipmentStunSpear__merged__type & {
 	mSecondSwingMontageList: {
 		Montages: [
 			{
@@ -145,21 +148,25 @@ export type FGEquipmentStunSpear__type = FGEquipmentStunSpear__base__type & {
 			StringStartsWith<'/Game/WwiseAudio/Events/Equipment/ShockBaton/'>
 		>;
 	};
-	mDamageTypes: mDamageTypes__type;
-	mArmAnimation: 'AE_StunSpear';
 };
 
-export type FGEquipmentStunSpear__base__type = FGEquipment__base__type & {
-	mDamageTypes: mDamageTypes__type;
-	mSecondSwingMinDelay: decimal_string__type;
-	mSecondSwingMaxDelay: decimal_string__type;
-	mSecondSwingUseCoolDown: decimal_string__type;
-	mAttackDistance: decimal_string__type;
-	mAttackSweepRadius: decimal_string__type;
-};
+export type FGEquipmentStunSpear__base__type =
+	FGEquipmentStunSpear__base__merged__type & {
+		mSecondSwingMinDelay: decimal_string__type;
+		mSecondSwingMaxDelay: decimal_string__type;
+		mSecondSwingUseCoolDown: decimal_string__type;
+	};
+
+export type FGEquipmentStunSpear__base__merged__type =
+	common_base__FGEquipmentStunSpear__base__type &
+		FGEquipment__base__type;
+
+export type FGEquipmentStunSpear__merged__type =
+	common_base__FGEquipmentStunSpear__type &
+		FGEquipmentStunSpear__base__type;
 
 export type FGEquipmentStunSpear__xeno_zapper__type =
-	FGEquipmentStunSpear__base__type & {
+	FGEquipmentStunSpear__xeno_zapper__merged__type & {
 		mFirstSwingMontageList: {
 			Montages: [
 				{
@@ -242,8 +249,6 @@ export type FGEquipmentStunSpear__xeno_zapper__type =
 				}[],
 			];
 		};
-		mDamageTypes: mDamageTypes__type;
-		mArmAnimation: 'AE_ShockShank';
 		mEquipMontage: {
 			Montages: [
 				{
@@ -298,6 +303,10 @@ export type FGEquipmentStunSpear__xeno_zapper__type =
 			>;
 		};
 	};
+
+export type FGEquipmentStunSpear__xeno_zapper__merged__type =
+	common_base__FGEquipmentStunSpear__xeno_zapper__type &
+		FGEquipmentStunSpear__base__type;
 
 export type FGEquipmentStunSpear__NativeClass =
 	NativeClass__type & {

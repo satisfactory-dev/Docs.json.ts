@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (293 of 293)
+100.00% Complete (299 of 299)
 
 ## Basic Types
 
@@ -89,6 +89,9 @@
 -   [x] common-base--FGBuildingDescriptor--mSubCategories (common type)
 -   [x] common-base--FGCustomizationRecipe--FGRecipe (common type)
 -   [x] common-base--FGEquipment--base (common type)
+-   [x] common-base--FGEquipmentStunSpear (common type)
+-   [x] common-base--FGEquipmentStunSpear--base (common type)
+-   [x] common-base--FGEquipmentStunSpear--xeno-zapper (common type)
 -   [x] common-base--FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor (common type)
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor (common type)
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor (common type)
@@ -344,7 +347,10 @@
 ## FGEquipmentStunSpear
 
 -   [x] FGEquipmentStunSpear--base
+-   [x] FGEquipmentStunSpear--base--merged
+-   [x] FGEquipmentStunSpear--merged
 -   [x] FGEquipmentStunSpear--xeno-zapper
+-   [x] FGEquipmentStunSpear--xeno-zapper--merged
 
 ## FGItemDescriptor
 

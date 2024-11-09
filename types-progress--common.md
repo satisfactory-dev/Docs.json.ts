@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (189 of 189)
+100.00% Complete (195 of 195)
 
 ## Basic Types
 
@@ -56,7 +56,7 @@
 -   [x] integer-string--signed (common type)
 -   [x] mAspect
 -   [x] mBatteryStatus
--   [x] mDamageTypes
+-   [x] mDamageTypes (common type)
 -   [x] mDockingRuleSet
 -   [x] mForm (common type)
 -   [x] mPlatformDockingStatus
@@ -107,7 +107,10 @@
 -   [x] common-base--FGBuildingDescriptor--mForm (common type)
 -   [x] common-base--FGBuildingDescriptor--mSubCategories (common type)
 -   [x] common-base--FGCustomizationRecipe--FGRecipe (common type)
--   [x] common-base--FGEquipment--base
+-   [x] common-base--FGEquipment--base (common type)
+-   [x] common-base--FGEquipmentStunSpear
+-   [x] common-base--FGEquipmentStunSpear--base (common type)
+-   [x] common-base--FGEquipmentStunSpear--xeno-zapper
 -   [x] common-base--FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor (common type)
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor (common type)
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor (common type)
