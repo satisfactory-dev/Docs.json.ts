@@ -2212,46 +2212,24 @@
 				}
 			}
 		},
+		"FGSuitBase--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGSuitBase"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--base"
+				}
+			]
+		},
 		"FGSuitBase": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment--base",
+			"$ref": "#/$defs/FGSuitBase--merged",
 			"unevaluatedProperties": false,
 			"required": [
-				"mImmunity",
-				"mIsWorking",
-				"mHasNegatedDamage",
-				"mDamageNegated",
-				"mFilterDuration",
-				"mCountdown",
-				"mDisableEffectTimer",
-				"mIsBurningFuel",
 				"mSuitMeshMaterials"
 			],
 			"properties": {
-				"mImmunity": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mIsWorking": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mHasNegatedDamage": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mDamageNegated": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mFilterDuration": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mCountdown": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mDisableEffectTimer": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mIsBurningFuel": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
 				"mSuitMeshMaterials": {
 					"type": "string",
 					"minLength": 1,

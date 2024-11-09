@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (197 of 197)
+100.00% Complete (198 of 198)
 
 ## Basic Types
 
@@ -126,6 +126,7 @@
 -   [x] common-base--FGSchematic--mUnlocks
 -   [x] common-base--FGSchematic--mUnlocks_Class
 -   [x] common-base--FGSchematic--with-unlocks
+-   [x] common-base--FGSuitBase
 -   [x] common-base--mSnappedPassthroughs (common type)
 
 ## FGSchematic

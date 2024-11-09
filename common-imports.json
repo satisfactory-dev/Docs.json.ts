@@ -103,6 +103,7 @@
 	"common_type__FGSchematic__mUnlocks_mSchematics__mSchematics__type": "classes/CoreUObject/FGSchematic",
 	"common_type__FGSchematic__mUnlocks_mTapeUnlocks__type": "classes/CoreUObject/FGSchematic",
 	"common_type__FGSchematic__mUnlocks_resources_to_scan__type": "classes/CoreUObject/FGSchematic",
+	"common_type__common_base__FGSuitBase__type": "classes/CoreUObject/FGSuitBase",
 	"common_type__UnrealEngineString": "utils/validators",
 	"common_type__StringStartsWith": "utils/validators",
 	"common_type__StringPassedRegExp": "utils/validators"

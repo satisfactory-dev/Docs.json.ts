@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (303 of 303)
+100.00% Complete (305 of 305)
 
 ## Basic Types
 
@@ -25,7 +25,6 @@
 -   [x] FGParachute
 -   [x] FGPipeHyperStart
 -   [x] FGPortableMinerDispenser
--   [x] FGSuitBase
 -   [x] integer-string (common type)
 -   [x] integer-string--signed (common type)
 -   [x] mAspect (common type)
@@ -105,6 +104,7 @@
 -   [x] common-base--FGSchematic--mUnlocks (common type)
 -   [x] common-base--FGSchematic--mUnlocks_Class (common type)
 -   [x] common-base--FGSchematic--with-unlocks (common type)
+-   [x] common-base--FGSuitBase (common type)
 -   [x] common-base--mSnappedPassthroughs (common type)
 
 ## FGAmmoType
@@ -401,6 +401,11 @@
 -   [x] FGSchematic--mUnlocks_resources_to_scan (common type)
 -   [x] FGSchematic--with-unlocks
 -   [x] FGSchematic--with-unlocks--merged
+
+## FGSuitBase
+
+-   [x] FGSuitBase
+-   [x] FGSuitBase--merged
 
 ## FGVehicleDescriptor
 

@@ -2822,6 +2822,46 @@
 				}
 			}
 		},
+		"common-base--FGSuitBase": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGEquipment--base",
+			"required": [
+				"mImmunity",
+				"mIsWorking",
+				"mHasNegatedDamage",
+				"mDamageNegated",
+				"mFilterDuration",
+				"mCountdown",
+				"mDisableEffectTimer",
+				"mIsBurningFuel"
+			],
+			"properties": {
+				"mImmunity": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mIsWorking": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mHasNegatedDamage": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mDamageNegated": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mFilterDuration": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mCountdown": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mDisableEffectTimer": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mIsBurningFuel": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				}
+			}
+		},
 		"faux-1": {
 			"type": "object",
 			"$ref": "#/$defs/class",
@@ -3158,6 +3198,9 @@
 				},
 				"jetpack": {
 					"$ref": "#/$defs/common-base--FGJetPack"
+				},
+				"suit": {
+					"$ref": "#/$defs/common-base--FGSuitBase"
 				}
 			}
 		},
