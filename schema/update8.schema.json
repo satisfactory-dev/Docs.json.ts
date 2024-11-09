@@ -704,9 +704,7 @@
 		"FGBuildableConveyorBelt--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableConveyorBelt--base--merged",
-			"required": [
-				"mItems"
-			],
+			"required": ["mItems"],
 			"properties": {
 				"mItems": {
 					"$ref": "common.schema.json#/$defs/empty-object"
@@ -964,10 +962,7 @@
 		"FGEquipmentStunSpear--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGEquipmentStunSpear--base--merged",
-			"required": [
-				"mSecondSwingMaxTime",
-				"mSecondSwingCooldDownTime"
-			],
+			"required": ["mSecondSwingMaxTime", "mSecondSwingCooldDownTime"],
 			"properties": {
 				"mSecondSwingMaxTime": {
 					"$ref": "common.schema.json#/$defs/decimal-string"

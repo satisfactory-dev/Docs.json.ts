@@ -1276,11 +1276,7 @@
 		"common-base--FGBuildableConveyorBelt--base": {
 			"type": "object",
 			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--base",
-			"required": [
-				"mItemMeshMap",
-				"mSpeed",
-				"mConveyorChainFlags"
-			],
+			"required": ["mItemMeshMap", "mSpeed", "mConveyorChainFlags"],
 			"properties": {
 				"mItemMeshMap": {
 					"$ref": "common.schema.json#/$defs/empty-object"

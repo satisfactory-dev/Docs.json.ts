@@ -1013,10 +1013,7 @@
 		"FGBuildableConveyorBelt--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableConveyorBelt--base--merged",
-			"required": [
-				"mItems",
-				"mChainSegmentIndex"
-			],
+			"required": ["mItems", "mChainSegmentIndex"],
 			"properties": {
 				"mItems": {
 					"type": "string",
@@ -1065,10 +1062,7 @@
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableConveyorLift--merged",
 			"unevaluatedProperties": false,
-			"required": [
-				"mFlipMeshOnReverse",
-				"mOpposingConnectionClearance"
-			],
+			"required": ["mFlipMeshOnReverse", "mOpposingConnectionClearance"],
 			"properties": {
 				"mFlipMeshOnReverse": {
 					"$ref": "common.schema.json#/$defs/boolean"
