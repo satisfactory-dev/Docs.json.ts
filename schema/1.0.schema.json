@@ -1218,11 +1218,9 @@
 			"required": [
 				"mAttachSocket",
 				"mComponentNameToFirstPersonMaterials",
-				"mNeedsDefaultEquipmentMappingContext",
 				"mCostToUse",
 				"mArmAnimation",
 				"mBackAnimation",
-				"mDefaultEquipmentActions",
 				"mReceivedDamageModifiers",
 				"mSwappedOutThirdPersonMaterials",
 				"mEquipMontage",
@@ -1306,19 +1304,6 @@
 							}
 						}
 					]
-				},
-				"mNeedsDefaultEquipmentMappingContext": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mDefaultEquipmentActions": {
-					"$ref": "common.schema.json#/$defs/integer-string"
-				},
-				"mReceivedDamageModifiers": {
-					"type": "string",
-					"const": ""
-				},
-				"mSwappedOutThirdPersonMaterials": {
-					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mHasStingerMontage": {
 					"$ref": "common.schema.json#/$defs/boolean"

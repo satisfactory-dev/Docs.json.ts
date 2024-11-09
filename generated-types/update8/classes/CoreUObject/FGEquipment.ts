@@ -2,7 +2,6 @@ import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
 
 import {
 	boolean__type,
-	integer_string__type,
 	decimal_string__type,
 } from '../../../common/common/scalar';
 
@@ -85,12 +84,8 @@ export type FGEquipment__base__type =
 						},
 					][],
 			];
-		mNeedsDefaultEquipmentMappingContext?: boolean__type;
 		mHasPersistentOwner: boolean__type;
 		mOnlyVisibleToOwner: boolean__type;
-		mDefaultEquipmentActions: integer_string__type;
-		mReceivedDamageModifiers: '';
-		mSwappedOutThirdPersonMaterials: empty_object__type;
 	};
 
 export type FGEquipment__placeable__type = FGEquipment__base__type & {

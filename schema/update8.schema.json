@@ -866,9 +866,7 @@
 				"mBackAnimation",
 				"mHasPersistentOwner",
 				"mOnlyVisibleToOwner",
-				"mDefaultEquipmentActions",
-				"mReceivedDamageModifiers",
-				"mSwappedOutThirdPersonMaterials"
+				"mReceivedDamageModifiers"
 			],
 			"properties": {
 				"mAttachSocket": {
@@ -945,24 +943,11 @@
 						}
 					]
 				},
-				"mNeedsDefaultEquipmentMappingContext": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
 				"mHasPersistentOwner": {
 					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mOnlyVisibleToOwner": {
 					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mDefaultEquipmentActions": {
-					"$ref": "common.schema.json#/$defs/integer-string"
-				},
-				"mReceivedDamageModifiers": {
-					"type": "string",
-					"const": ""
-				},
-				"mSwappedOutThirdPersonMaterials": {
-					"$ref": "common.schema.json#/$defs/empty-object"
 				}
 			}
 		},
