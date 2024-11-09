@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (186 of 186)
+100.00% Complete (189 of 189)
 
 ## Basic Types
 
@@ -43,6 +43,7 @@
 -   [x] faux-32
 -   [x] faux-33
 -   [x] faux-34
+-   [x] faux-35
 -   [x] faux-4
 -   [x] faux-5
 -   [x] faux-6
@@ -95,10 +96,12 @@
 -   [x] common-base--FGBuildablePipelinePump--valve
 -   [x] common-base--FGBuildablePipeReservoir
 -   [x] common-base--FGBuildablePoleLightweight
+-   [x] common-base--FGBuildablePowerPole
 -   [x] common-base--FGBuildableRailroadTrack
 -   [x] common-base--FGBuildableTradingPost
 -   [x] common-base--FGBuildableWall--base (common type)
 -   [x] common-base--FGBuildableWall--base--rectangle (common type)
+-   [x] common-base--FGBuildableWire
 -   [x] common-base--FGBuildingDescriptor
 -   [x] common-base--FGBuildingDescriptor--ClassName (common type)
 -   [x] common-base--FGBuildingDescriptor--mForm (common type)

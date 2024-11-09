@@ -2288,6 +2288,74 @@
 				}
 			}
 		},
+		"common-base--FGBuildableWire": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--base",
+			"required": [
+				"mMaxLength",
+				"mMaxPowerTowerLength",
+				"mLengthPerCost",
+				"mConnections",
+				"mConnectionLocations",
+				"mWireInstances",
+				"mCachedLength"
+			],
+			"properties": {
+				"mMaxLength": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mMaxPowerTowerLength": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mLengthPerCost": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mConnections": {
+					"$ref": "common.schema.json#/$defs/None"
+				},
+				"mConnectionLocations": {
+					"$ref": "common.schema.json#/$defs/xyz"
+				},
+				"mWireInstances": {
+					"type": "string",
+					"const": ""
+				},
+				"mCachedLength": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				}
+			}
+		},
+		"common-base--FGBuildablePowerPole": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--base",
+			"required": [
+				"mPowerConnections",
+				"mPowerPoleType",
+				"mPowerTowerWireMaxLength",
+				"mHasPower"
+			],
+			"properties": {
+				"mPowerConnections": {
+					"type": "string",
+					"const": ""
+				},
+				"mPowerPoleType": {
+					"type": "string",
+					"enum": [
+						"PPT_POLE",
+						"PPT_WALL",
+						"PPT_TOWER",
+						"PPT_WALL_DOUBLE"
+					]
+				},
+				"mPowerTowerWireMaxLength": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mHasPower": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				}
+			}
+		},
 		"common-base--FGBuildableTradingPost": {
 			"type": "object",
 			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--consumes-power-base",
@@ -3209,6 +3277,23 @@
 					"$ref": "#/$defs/common-base--FGBuildableConveyorLift"
 				}
 			}
+		},
+		"faux-35": {
+			"type": "object",
+			"$ref": "#/$defs/class",
+			"required": ["base"],
+			"properties": {
+				"faux": {
+					"type": "string",
+					"const": "cabling"
+				},
+				"wire": {
+					"$ref": "#/$defs/common-base--FGBuildableWire"
+				},
+				"pole": {
+					"$ref": "#/$defs/common-base--FGBuildablePowerPole"
+				}
+			}
 		}
 	},
 	"items": false,
@@ -3414,6 +3499,11 @@
 							{
 								"type": "object",
 								"$ref": "#/$defs/faux-34",
+								"unevaluatedProperties": false
+							},
+							{
+								"type": "object",
+								"$ref": "#/$defs/faux-35",
 								"unevaluatedProperties": false
 							}
 						]

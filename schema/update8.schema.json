@@ -744,75 +744,35 @@
 			"$ref": "#/$defs/FGBuildableConveyorLift--merged",
 			"unevaluatedProperties": false
 		},
+		"FGBuildableWire--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableWire"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
 		"FGBuildableWire": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
-			"unevaluatedProperties": false,
-			"required": [
-				"mMaxLength",
-				"mMaxPowerTowerLength",
-				"mLengthPerCost",
-				"mConnections",
-				"mConnectionLocations",
-				"mWireInstances",
-				"mCachedLength"
-			],
-			"properties": {
-				"mMaxLength": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
+			"$ref": "#/$defs/FGBuildableWire--merged",
+			"unevaluatedProperties": false
+		},
+		"FGBuildablePowerPole--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildablePowerPole"
 				},
-				"mMaxPowerTowerLength": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mLengthPerCost": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mConnections": {
-					"$ref": "common.schema.json#/$defs/None"
-				},
-				"mConnectionLocations": {
-					"$ref": "common.schema.json#/$defs/xyz"
-				},
-				"mWireInstances": {
-					"type": "string",
-					"const": ""
-				},
-				"mCachedLength": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
+				{
+					"$ref": "#/$defs/FGBuildable--base"
 				}
-			}
+			]
 		},
 		"FGBuildablePowerPole": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
-			"unevaluatedProperties": false,
-			"required": [
-				"mPowerConnections",
-				"mPowerPoleType",
-				"mPowerTowerWireMaxLength",
-				"mHasPower"
-			],
-			"properties": {
-				"mPowerConnections": {
-					"type": "string",
-					"const": ""
-				},
-				"mPowerPoleType": {
-					"type": "string",
-					"enum": [
-						"PPT_POLE",
-						"PPT_WALL",
-						"PPT_TOWER",
-						"PPT_WALL_DOUBLE"
-					]
-				},
-				"mPowerTowerWireMaxLength": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mHasPower": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				}
-			}
+			"$ref": "#/$defs/FGBuildablePowerPole--merged",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableTradingPost--update8": {
 			"type": "object",

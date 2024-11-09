@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (289 of 289)
+100.00% Complete (293 of 293)
 
 ## Basic Types
 
@@ -77,10 +77,12 @@
 -   [x] common-base--FGBuildablePipelinePump--valve (common type)
 -   [x] common-base--FGBuildablePipeReservoir (common type)
 -   [x] common-base--FGBuildablePoleLightweight (common type)
+-   [x] common-base--FGBuildablePowerPole (common type)
 -   [x] common-base--FGBuildableRailroadTrack (common type)
 -   [x] common-base--FGBuildableTradingPost (common type)
 -   [x] common-base--FGBuildableWall--base (common type)
 -   [x] common-base--FGBuildableWall--base--rectangle (common type)
+-   [x] common-base--FGBuildableWire (common type)
 -   [x] common-base--FGBuildingDescriptor (common type)
 -   [x] common-base--FGBuildingDescriptor--ClassName (common type)
 -   [x] common-base--FGBuildingDescriptor--mForm (common type)
@@ -279,6 +281,10 @@
 
 -   [x] FGBuildablePoleLightweight--merged
 
+## FGBuildablePowerPole
+
+-   [x] FGBuildablePowerPole--merged
+
 ## FGBuildableRailroadTrack
 
 -   [x] FGBuildableRailroadTrack--merged
@@ -311,6 +317,10 @@
 
 -   [x] FGBuildableWall--base
 -   [x] FGBuildableWall--base--rectangle
+
+## FGBuildableWire
+
+-   [x] FGBuildableWire--merged
 
 ## FGConsumableDescriptor
 

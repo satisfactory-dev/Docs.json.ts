@@ -106,6 +106,10 @@ import {
 
 import {common_base__FGBuildableConveyorLift__type} from '../classes/CoreUObject/FGBuildableConveyorLift';
 
+import {common_base__FGBuildableWire__type} from '../classes/CoreUObject/FGBuildableWire';
+
+import {common_base__FGBuildablePowerPole__type} from '../classes/CoreUObject/FGBuildablePowerPole';
+
 import {common_base__FGPoleDescriptor__type} from '../classes/CoreUObject/FGPoleDescriptor';
 
 export type class__type = class__no_description__type & {
@@ -333,6 +337,12 @@ export type faux_34__type = class__type & {
 	base: common_base__FGBuildableConveyorBelt__base__type;
 	belt?: common_base__FGBuildableConveyorBelt__type;
 	lift?: common_base__FGBuildableConveyorLift__type;
+};
+
+export type faux_35__type = class__type & {
+	faux?: 'cabling';
+	wire?: common_base__FGBuildableWire__type;
+	pole?: common_base__FGBuildablePowerPole__type;
 };
 
 export type faux_4__type = class__type & {
