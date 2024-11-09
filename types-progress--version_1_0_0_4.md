@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (338 of 338)
+100.00% Complete (342 of 342)
 
 ## Basic Types
 
@@ -20,7 +20,6 @@
 -   [x] FGCentralStorageContainer
 -   [x] FGChargedWeapon
 -   [x] FGGolfCartDispenser
--   [x] FGJetPack
 -   [x] FGObjectScanner
 -   [x] FGPipeHyperStart
 -   [x] FGPortableMinerDispenser
@@ -93,10 +92,12 @@
 -   [x] common-base--FGEquipmentStunSpear (common type)
 -   [x] common-base--FGEquipmentStunSpear--base (common type)
 -   [x] common-base--FGEquipmentStunSpear--xeno-zapper (common type)
+-   [x] common-base--FGHoverPack (common type)
 -   [x] common-base--FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor (common type)
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor (common type)
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor (common type)
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor--mSubCategories (common type)
+-   [x] common-base--FGJetPack (common type)
 -   [x] common-base--FGPoleDescriptor (common type)
 -   [x] common-base--FGRecipe (common type)
 -   [x] common-base--FGResourceDescriptor (common type)
@@ -399,6 +400,7 @@
 
 -   [x] FGHoverPack
 -   [x] FGHoverPack--AudioEvent
+-   [x] FGHoverPack--merged
 
 ## FGItemDescriptor
 
@@ -408,6 +410,11 @@
 -   [x] FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor
 -   [x] FGItemDescriptor--FGResourceDescriptor
 -   [x] FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor
+
+## FGJetPack
+
+-   [x] FGJetPack
+-   [x] FGJetPack--merged
 
 ## FGJumpingStilts
 

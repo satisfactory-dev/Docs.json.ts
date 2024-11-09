@@ -47,6 +47,10 @@ import {
 	common_base__FGEquipmentStunSpear__xeno_zapper__type,
 } from '../classes/CoreUObject/FGEquipmentStunSpear';
 
+import {common_base__FGHoverPack__type} from '../classes/CoreUObject/FGHoverPack';
+
+import {common_base__FGJetPack__type} from '../classes/CoreUObject/FGJetPack';
+
 import {common_base__FGBuildableDroneStation__type} from '../classes/CoreUObject/FGBuildableDroneStation';
 
 import {
@@ -221,6 +225,8 @@ export type faux_15__type = class__type & {
 	FGEquipmentStunSpear_base?: common_base__FGEquipmentStunSpear__base__type;
 	FGEquipmentStunSpear?: common_base__FGEquipmentStunSpear__type;
 	FGEquipmentStunSpear_xeno_zapper?: common_base__FGEquipmentStunSpear__xeno_zapper__type;
+	hoverpack?: common_base__FGHoverPack__type;
+	jetpack?: common_base__FGJetPack__type;
 };
 
 export type faux_16__type = class__type & {

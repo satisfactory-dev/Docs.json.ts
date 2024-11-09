@@ -2020,41 +2020,26 @@
 				}
 			}
 		},
+		"FGHoverPack--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGHoverPack"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--base"
+				}
+			]
+		},
 		"FGHoverPack": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment--base",
+			"$ref": "#/$defs/FGHoverPack--merged",
 			"unevaluatedProperties": false,
 			"required": [
 				"mCurrentPlayerVelocity_SFX",
 				"mCurrentMouseDelta_SFX",
 				"mLowBatteryWarningActive_SFX",
 				"mPropellerVFX",
-				"ConnectionLocationUpdatedDelegate",
-				"ConnectionStatusUpdatedDelegate",
-				"HoverModeChangedDelegate",
-				"RangeWarningToggleDelegate",
-				"mHoverSpeed",
-				"mHoverAccelerationSpeed",
-				"mHoverSprintMultiplier",
-				"mHoverFriction",
-				"mJumpKeyHoldActivationTime",
-				"mFallSpeedLimitWhenPowered",
-				"mPowerConnectionSearchRadius",
-				"mPowerConnectionSearchTickRate",
-				"mPowerConnectionDisconnectionTime",
-				"mPowerCapacity",
-				"mPowerDrainRate",
-				"mPowerConsumption",
-				"mCurrentPowerLevel",
-				"mRangeWarningNormalizedDistanceThreshold",
-				"mDisplayRangeWarning",
-				"mCurrentHoverMode",
-				"mHasConnection",
-				"mShouldAutomaticallyHoverWhenConnected",
-				"mCrouchHoverCancelTime",
-				"mCharacterUseDistanceWhenActive",
-				"mActiveNoiseFrequency",
-				"mCurrentConnectionLocation"
+				"mDisplayRangeWarning"
 			],
 			"properties": {
 				"mCurrentPlayerVelocity_SFX": {
@@ -2070,84 +2055,8 @@
 					"type": "string",
 					"const": ""
 				},
-				"ConnectionLocationUpdatedDelegate": {
-					"$ref": "common.schema.json#/$defs/empty-object"
-				},
-				"ConnectionStatusUpdatedDelegate": {
-					"$ref": "common.schema.json#/$defs/empty-object"
-				},
-				"HoverModeChangedDelegate": {
-					"$ref": "common.schema.json#/$defs/empty-object"
-				},
-				"RangeWarningToggleDelegate": {
-					"$ref": "common.schema.json#/$defs/empty-object"
-				},
-				"mHoverSpeed": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mHoverAccelerationSpeed": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mHoverSprintMultiplier": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mHoverFriction": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mJumpKeyHoldActivationTime": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mFallSpeedLimitWhenPowered": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mPowerConnectionSearchRadius": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mPowerConnectionSearchTickRate": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mPowerConnectionDisconnectionTime": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mPowerCapacity": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mPowerDrainRate": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mPowerConsumption": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mCurrentPowerLevel": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mRangeWarningNormalizedDistanceThreshold": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
 				"mDisplayRangeWarning": {
 					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mCurrentHoverMode": {
-					"type": "string",
-					"const": "HPM_Inactive"
-				},
-				"mHasConnection": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mShouldAutomaticallyHoverWhenConnected": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mCrouchHoverCancelTime": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mCharacterUseDistanceWhenActive": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mActiveNoiseFrequency": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mCurrentConnectionLocation": {
-					"$ref": "common.schema.json#/$defs/xyz"
 				},
 				"mEquipMontage": {
 					"type": "string",
@@ -2204,52 +2113,26 @@
 				}
 			}
 		},
+		"FGJetPack--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGJetPack"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--base"
+				}
+			]
+		},
 		"FGJetPack": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment--base",
+			"$ref": "#/$defs/FGJetPack--merged",
 			"unevaluatedProperties": false,
 			"required": [
-				"FuelTypeDescriptos",
-				"mOnFuelAmountChanged",
-				"mOnBurnPercentChanged",
-				"mOnFuelTypeChanged",
-				"mDefaultAirControl",
-				"mRTPCInterval",
-				"mCurrentFuel",
-				"mIsThrusting",
 				"mAllowedFuelTypes",
-				"mSelectedFuelType",
-				"mCurrentFuelType",
 				"mUnlockedFuelTypes",
-				"mAvailableFuelTypes",
-				"mActiveNoiseFrequency"
+				"mAvailableFuelTypes"
 			],
 			"properties": {
-				"FuelTypeDescriptos": {
-					"type": "string",
-					"const": ""
-				},
-				"mOnFuelAmountChanged": {
-					"$ref": "common.schema.json#/$defs/empty-object"
-				},
-				"mOnBurnPercentChanged": {
-					"$ref": "common.schema.json#/$defs/empty-object"
-				},
-				"mOnFuelTypeChanged": {
-					"$ref": "common.schema.json#/$defs/empty-object"
-				},
-				"mDefaultAirControl": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mRTPCInterval": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mCurrentFuel": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mIsThrusting": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
 				"mAllowedFuelTypes": {
 					"type": "string",
 					"minLength": 1,
@@ -2267,12 +2150,6 @@
 						}
 					}
 				},
-				"mSelectedFuelType": {
-					"$ref": "common.schema.json#/$defs/integer-string"
-				},
-				"mCurrentFuelType": {
-					"$ref": "common.schema.json#/$defs/integer-string"
-				},
 				"mUnlockedFuelTypes": {
 					"type": "string",
 					"const": ""
@@ -2280,9 +2157,6 @@
 				"mAvailableFuelTypes": {
 					"type": "string",
 					"const": ""
-				},
-				"mActiveNoiseFrequency": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mEquipMontage": {
 					"type": "string",

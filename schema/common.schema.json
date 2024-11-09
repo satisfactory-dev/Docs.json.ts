@@ -2664,6 +2664,168 @@
 				}
 			}
 		},
+		"common-base--FGHoverPack": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGEquipment--base",
+			"required": [
+				"ConnectionLocationUpdatedDelegate",
+				"ConnectionStatusUpdatedDelegate",
+				"HoverModeChangedDelegate",
+				"RangeWarningToggleDelegate",
+				"mHoverSpeed",
+				"mHoverAccelerationSpeed",
+				"mHoverSprintMultiplier",
+				"mHoverFriction",
+				"mJumpKeyHoldActivationTime",
+				"mFallSpeedLimitWhenPowered",
+				"mPowerConnectionSearchRadius",
+				"mPowerConnectionSearchTickRate",
+				"mPowerConnectionDisconnectionTime",
+				"mPowerCapacity",
+				"mPowerDrainRate",
+				"mPowerConsumption",
+				"mCurrentPowerLevel",
+				"mRangeWarningNormalizedDistanceThreshold",
+				"mCurrentHoverMode",
+				"mHasConnection",
+				"mShouldAutomaticallyHoverWhenConnected",
+				"mCrouchHoverCancelTime",
+				"mCharacterUseDistanceWhenActive",
+				"mActiveNoiseFrequency",
+				"mCurrentConnectionLocation"
+			],
+			"properties": {
+				"ConnectionLocationUpdatedDelegate": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"ConnectionStatusUpdatedDelegate": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"HoverModeChangedDelegate": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"RangeWarningToggleDelegate": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mHoverSpeed": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mHoverAccelerationSpeed": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mHoverSprintMultiplier": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mHoverFriction": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mJumpKeyHoldActivationTime": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mFallSpeedLimitWhenPowered": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mPowerConnectionSearchRadius": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mPowerConnectionSearchTickRate": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mPowerConnectionDisconnectionTime": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mPowerCapacity": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mPowerDrainRate": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mPowerConsumption": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mCurrentPowerLevel": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mRangeWarningNormalizedDistanceThreshold": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mCurrentHoverMode": {
+					"type": "string",
+					"const": "HPM_Inactive"
+				},
+				"mHasConnection": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mShouldAutomaticallyHoverWhenConnected": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mCrouchHoverCancelTime": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mCharacterUseDistanceWhenActive": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mActiveNoiseFrequency": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mCurrentConnectionLocation": {
+					"$ref": "common.schema.json#/$defs/xyz"
+				}
+			}
+		},
+		"common-base--FGJetPack": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGEquipment--base",
+			"required": [
+				"FuelTypeDescriptos",
+				"mOnFuelAmountChanged",
+				"mOnBurnPercentChanged",
+				"mOnFuelTypeChanged",
+				"mDefaultAirControl",
+				"mRTPCInterval",
+				"mCurrentFuel",
+				"mIsThrusting",
+				"mSelectedFuelType",
+				"mCurrentFuelType",
+				"mActiveNoiseFrequency"
+			],
+			"properties": {
+				"FuelTypeDescriptos": {
+					"type": "string",
+					"const": ""
+				},
+				"mOnFuelAmountChanged": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mOnBurnPercentChanged": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mOnFuelTypeChanged": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mDefaultAirControl": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mRTPCInterval": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mCurrentFuel": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mIsThrusting": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mSelectedFuelType": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				},
+				"mCurrentFuelType": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				},
+				"mActiveNoiseFrequency": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				}
+			}
+		},
 		"faux-1": {
 			"type": "object",
 			"$ref": "#/$defs/class",
@@ -2994,6 +3156,12 @@
 				},
 				"FGEquipmentStunSpear_xeno_zapper": {
 					"$ref": "#/$defs/common-base--FGEquipmentStunSpear--xeno-zapper"
+				},
+				"hoverpack": {
+					"$ref": "#/$defs/common-base--FGHoverPack"
+				},
+				"jetpack": {
+					"$ref": "#/$defs/common-base--FGJetPack"
 				}
 			}
 		},

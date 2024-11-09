@@ -7,21 +7,9 @@ import {
 	NativeClass__type,
 } from '../../../common/common/unassigned';
 
-import {
-	decimal_string__type,
-	boolean__type,
-	integer_string__type,
-} from '../../../common/common/scalar';
+import {common_base__FGJetPack__type} from '../../../common/classes/CoreUObject/FGJetPack';
 
-export type FGJetPack__type = FGEquipment__base__type & {
-	FuelTypeDescriptos: '';
-	mOnFuelAmountChanged: empty_object__type;
-	mOnBurnPercentChanged: empty_object__type;
-	mOnFuelTypeChanged: empty_object__type;
-	mDefaultAirControl: decimal_string__type;
-	mRTPCInterval: decimal_string__type;
-	mCurrentFuel: decimal_string__type;
-	mIsThrusting: boolean__type;
+export type FGJetPack__type = FGJetPack__merged__type & {
 	mAllowedFuelTypes: [
 		UnrealEngineString<
 			'/Script/FactoryGame.FGJetPackFuelParameters',
@@ -32,11 +20,8 @@ export type FGJetPack__type = FGEquipment__base__type & {
 			StringStartsWith<'/Game/FactoryGame/Equipment/JetPack/FuelTypes/'>
 		>[],
 	];
-	mSelectedFuelType: integer_string__type;
-	mCurrentFuelType: integer_string__type;
 	mUnlockedFuelTypes: '';
 	mAvailableFuelTypes: '';
-	mActiveNoiseFrequency: decimal_string__type;
 	mEquipMontage?: {
 		Montages: [
 			{
@@ -55,6 +40,9 @@ export type FGJetPack__type = FGEquipment__base__type & {
 		>;
 	};
 };
+
+export type FGJetPack__merged__type =
+	common_base__FGJetPack__type & FGEquipment__base__type;
 
 export type FGJetPack__NativeClass = NativeClass__type & {
 	Classes: [FGJetPack__type];

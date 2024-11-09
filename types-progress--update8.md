@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (299 of 299)
+100.00% Complete (303 of 303)
 
 ## Basic Types
 
@@ -20,8 +20,6 @@
 -   [x] FGChargedWeapon
 -   [x] FGGasMask
 -   [x] FGGolfCartDispenser
--   [x] FGHoverPack
--   [x] FGJetPack
 -   [x] FGJumpingStilts
 -   [x] FGObjectScanner
 -   [x] FGParachute
@@ -92,10 +90,12 @@
 -   [x] common-base--FGEquipmentStunSpear (common type)
 -   [x] common-base--FGEquipmentStunSpear--base (common type)
 -   [x] common-base--FGEquipmentStunSpear--xeno-zapper (common type)
+-   [x] common-base--FGHoverPack (common type)
 -   [x] common-base--FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor (common type)
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor (common type)
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor (common type)
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor--mSubCategories (common type)
+-   [x] common-base--FGJetPack (common type)
 -   [x] common-base--FGPoleDescriptor (common type)
 -   [x] common-base--FGRecipe (common type)
 -   [x] common-base--FGResourceDescriptor (common type)
@@ -352,6 +352,11 @@
 -   [x] FGEquipmentStunSpear--xeno-zapper
 -   [x] FGEquipmentStunSpear--xeno-zapper--merged
 
+## FGHoverPack
+
+-   [x] FGHoverPack
+-   [x] FGHoverPack--merged
+
 ## FGItemDescriptor
 
 -   [x] FGItemDescriptorBiomass
@@ -359,6 +364,11 @@
 -   [x] FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor
 -   [x] FGItemDescriptor--FGResourceDescriptor
 -   [x] FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor
+
+## FGJetPack
+
+-   [x] FGJetPack
+-   [x] FGJetPack--merged
 
 ## FGPoleDescriptor
 
