@@ -8,24 +8,17 @@ import {
 
 import {FGEquipment__base__type} from './FGEquipment';
 
-import {
-	boolean__type,
-	decimal_string__type,
-} from '../../../common/common/scalar';
+import {boolean__type} from '../../../common/common/scalar';
 
 import {
-	mDamageTypes__type,
 	empty_object__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned';
 
-export type FGGasMask__type = FGEquipment__base__type & {
-	mDamageTypesToProtectAgainst: mDamageTypes__type;
-	mPostProcessEnabled: boolean__type;
-	mFilterCountdown: decimal_string__type;
-	mFilterDuration: decimal_string__type;
-	mIsInPoisonGas: boolean__type;
-	mEquipMontage?: {
+import {common_base__FGGasMask__type} from '../../../common/classes/CoreUObject/FGGasMask';
+
+export type FGGasMask__type = FGGasMask__merged__type & {
+	mEquipMontage: {
 		Montages: [
 			{
 				Montage_1P: Montage_1P__type;
@@ -43,9 +36,12 @@ export type FGGasMask__type = FGEquipment__base__type & {
 			},
 		];
 	};
-	mStingerMontage?: empty_object__type;
-	mUnEquipMontage?: FGGasMask__mUnEquipMontage__type;
+	mStingerMontage: empty_object__type;
+	mUnEquipMontage: FGGasMask__mUnEquipMontage__type;
 };
+
+export type FGGasMask__merged__type =
+	common_base__FGGasMask__type & FGEquipment__base__type;
 
 export type FGGasMask__mUnEquipMontage__type = {
 	AudioEvent: UnrealEngineString<

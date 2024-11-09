@@ -1165,34 +1165,20 @@
 				}
 			}
 		},
+		"FGGasMask--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGGasMask"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--base"
+				}
+			]
+		},
 		"FGGasMask": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment--base",
-			"unevaluatedProperties": false,
-			"required": [
-				"mDamageTypesToProtectAgainst",
-				"mPostProcessEnabled",
-				"mFilterCountdown",
-				"mFilterDuration",
-				"mIsInPoisonGas"
-			],
-			"properties": {
-				"mDamageTypesToProtectAgainst": {
-					"$ref": "common.schema.json#/$defs/mDamageTypes"
-				},
-				"mPostProcessEnabled": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mFilterCountdown": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mFilterDuration": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mIsInPoisonGas": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				}
-			}
+			"$ref": "#/$defs/FGGasMask--merged",
+			"unevaluatedProperties": false
 		},
 		"mChainsawState": {
 			"$ref": "common.schema.json#/$defs/None"

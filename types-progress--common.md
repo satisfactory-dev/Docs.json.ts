@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (198 of 198)
+100.00% Complete (199 of 199)
 
 ## Basic Types
 
@@ -111,6 +111,7 @@
 -   [x] common-base--FGEquipmentStunSpear
 -   [x] common-base--FGEquipmentStunSpear--base (common type)
 -   [x] common-base--FGEquipmentStunSpear--xeno-zapper
+-   [x] common-base--FGGasMask
 -   [x] common-base--FGHoverPack
 -   [x] common-base--FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor (common type)
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor (common type)

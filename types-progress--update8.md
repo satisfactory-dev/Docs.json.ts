@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (305 of 305)
+100.00% Complete (308 of 308)
 
 ## Basic Types
 
@@ -18,7 +18,6 @@
 -   [x] FGBuildingDescriptor
 -   [x] FGChainsaw
 -   [x] FGChargedWeapon
--   [x] FGGasMask
 -   [x] FGGolfCartDispenser
 -   [x] FGJumpingStilts
 -   [x] FGObjectScanner
@@ -89,6 +88,7 @@
 -   [x] common-base--FGEquipmentStunSpear (common type)
 -   [x] common-base--FGEquipmentStunSpear--base (common type)
 -   [x] common-base--FGEquipmentStunSpear--xeno-zapper (common type)
+-   [x] common-base--FGGasMask (common type)
 -   [x] common-base--FGHoverPack (common type)
 -   [x] common-base--FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor (common type)
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor (common type)
@@ -351,6 +351,11 @@
 -   [x] FGEquipmentStunSpear--merged
 -   [x] FGEquipmentStunSpear--xeno-zapper
 -   [x] FGEquipmentStunSpear--xeno-zapper--merged
+
+## FGGasMask
+
+-   [x] FGGasMask
+-   [x] FGGasMask--merged
 
 ## FGHoverPack
 
