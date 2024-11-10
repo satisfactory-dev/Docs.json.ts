@@ -3089,6 +3089,29 @@
 			"type": "object",
 			"$ref": "common.schema.json#/$defs/common-base--FGConsumableDescriptor--base"
 		},
+		"common-base--FGConsumableDescriptor--healing": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGConsumableDescriptor--base",
+			"required": ["mHealthGain"],
+			"properties": {
+				"mHealthGain": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				}
+			}
+		},
+		"common-base--FGBuildablePillarLightweight": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--base",
+			"required": ["mSize", "mIsSupport"],
+			"properties": {
+				"mSize": {
+					"$ref": "common.schema.json#/$defs/xyz"
+				},
+				"mIsSupport": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				}
+			}
+		},
 		"faux-1": {
 			"type": "object",
 			"$ref": "#/$defs/class",
@@ -3274,6 +3297,9 @@
 				},
 				"FGConsumableDescriptor": {
 					"$ref": "#/$defs/common-base--FGConsumableDescriptor"
+				},
+				"FGConsumableDescriptor_healing": {
+					"$ref": "#/$defs/common-base--FGConsumableDescriptor--healing"
 				}
 			}
 		},
@@ -3325,6 +3351,9 @@
 				},
 				"FGBuildable": {
 					"$ref": "#/$defs/common-base--FGBuildable--base"
+				},
+				"FGBuildablePillarLightweight": {
+					"$ref": "#/$defs/common-base--FGBuildablePillarLightweight"
 				}
 			}
 		},

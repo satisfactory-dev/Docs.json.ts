@@ -1,9 +1,8 @@
 import {FGEquipmentDescriptor__base__type} from './FGEquipmentDescriptor';
 
-import {decimal_string__type} from '../../../common/common/scalar';
-
 import {
 	common_base__FGConsumableDescriptor__base__type,
+	common_base__FGConsumableDescriptor__healing__type,
 	common_base__FGConsumableDescriptor__type,
 } from '../../../common/classes/CoreUObject/FGConsumableDescriptor';
 
@@ -20,9 +19,11 @@ export type FGConsumableDescriptor__base__merged__type =
 		FGEquipmentDescriptor__base__type;
 
 export type FGConsumableDescriptor__healing__type =
-	FGConsumableDescriptor__base__type & {
-		mHealthGain: decimal_string__type;
-	};
+	FGConsumableDescriptor__healing__base__type;
+
+export type FGConsumableDescriptor__healing__base__type =
+	common_base__FGConsumableDescriptor__healing__type &
+		FGConsumableDescriptor__base__type;
 
 export type FGConsumableDescriptor__merged__type =
 	common_base__FGConsumableDescriptor__type &

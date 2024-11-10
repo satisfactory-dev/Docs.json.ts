@@ -13,3 +13,8 @@ export type common_base__FGConsumableDescriptor__base__type =
 		mCustomRotation: pitch_yaw_roll__type;
 		mCustomLocation: xyz__type;
 	};
+
+export type common_base__FGConsumableDescriptor__healing__type =
+	common_base__FGConsumableDescriptor__base__type & {
+		mHealthGain: decimal_string__type;
+	};

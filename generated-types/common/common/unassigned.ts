@@ -20,6 +20,8 @@ import {
 	common_base__FGBuildable__pole__base__with_static__type,
 } from '../classes/CoreUObject/FGBuildable';
 
+import {common_base__FGBuildablePillarLightweight__type} from '../classes/CoreUObject/FGBuildablePillarLightweight';
+
 import {
 	FGSchematic__mUnlocks_mSchematics__mSchematics__type,
 	common_base__FGSchematic__mUnlocks__type,
@@ -144,6 +146,7 @@ import {
 import {
 	common_base__FGConsumableDescriptor__base__type,
 	common_base__FGConsumableDescriptor__type,
+	common_base__FGConsumableDescriptor__healing__type,
 } from '../classes/CoreUObject/FGConsumableDescriptor';
 
 export type class__type = class__no_description__type & {
@@ -216,6 +219,7 @@ export type faux_10b__type = class__type & {
 export type faux_11__type = class__type & {
 	faux: 'FGBuildable--base';
 	FGBuildable: common_base__FGBuildable__base__type;
+	FGBuildablePillarLightweight?: common_base__FGBuildablePillarLightweight__type;
 };
 
 export type faux_12__type = class__type & {
@@ -427,6 +431,7 @@ export type faux_9b__type = class__type & {
 	FGEquipmentDescriptor?: common_base__FGEquipmentDescriptor__type;
 	FGConsumableDescriptor_base?: common_base__FGConsumableDescriptor__base__type;
 	FGConsumableDescriptor?: common_base__FGConsumableDescriptor__type;
+	FGConsumableDescriptor_healing?: common_base__FGConsumableDescriptor__healing__type;
 };
 
 export type InfinityExtrap__type = 'RCCE_Constant';

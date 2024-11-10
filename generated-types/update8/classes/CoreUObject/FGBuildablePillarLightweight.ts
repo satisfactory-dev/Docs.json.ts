@@ -1,16 +1,15 @@
 import {FGBuildable__base__type} from './FGBuildable';
 
-import {
-	xyz__type,
-	NativeClass__type,
-} from '../../../common/common/unassigned';
+import {common_base__FGBuildablePillarLightweight__type} from '../../../common/classes/CoreUObject/FGBuildablePillarLightweight';
 
-import {boolean__type} from '../../../common/common/scalar';
+import {NativeClass__type} from '../../../common/common/unassigned';
 
-export type FGBuildablePillarLightweight__type = FGBuildable__base__type & {
-	mSize: xyz__type;
-	mIsSupport: boolean__type;
-};
+export type FGBuildablePillarLightweight__type =
+	FGBuildablePillarLightweight__merged__type;
+
+export type FGBuildablePillarLightweight__merged__type =
+	common_base__FGBuildablePillarLightweight__type &
+		FGBuildable__base__type;
 
 export type FGBuildablePillarLightweight__NativeClass =
 	NativeClass__type & {

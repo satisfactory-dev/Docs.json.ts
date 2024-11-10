@@ -3602,30 +3602,35 @@
 			"$ref": "#/$defs/FGConsumableDescriptor--base",
 			"unevaluatedProperties": false
 		},
+		"FGConsumableDescriptor--healing--base": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGConsumableDescriptor--healing"
+				},
+				{
+					"$ref": "#/$defs/FGConsumableDescriptor--base"
+				}
+			]
+		},
 		"FGConsumableDescriptor--healing": {
 			"type": "object",
-			"$ref": "#/$defs/FGConsumableDescriptor--base",
-			"unevaluatedProperties": false,
-			"required": ["mHealthGain"],
-			"properties": {
-				"mHealthGain": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
+			"$ref": "#/$defs/FGConsumableDescriptor--healing--base",
+			"unevaluatedProperties": false
+		},
+		"FGBuildablePillarLightweight--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildablePillarLightweight"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
 				}
-			}
+			]
 		},
 		"FGBuildablePillarLightweight": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
-			"unevaluatedProperties": false,
-			"required": ["mSize", "mIsSupport"],
-			"properties": {
-				"mSize": {
-					"$ref": "common.schema.json#/$defs/xyz"
-				},
-				"mIsSupport": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				}
-			}
+			"$ref": "#/$defs/FGBuildablePillarLightweight--merged",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableFactory--jump-pad--merged": {
 			"allOf": [

@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (213 of 213)
+100.00% Complete (215 of 215)
 
 ## Basic Types
 
@@ -91,6 +91,7 @@
 -   [x] common-base--FGBuildableFactory--jump-pad
 -   [x] common-base--FGBuildableFactory--landing-pad
 -   [x] common-base--FGBuildableMAM
+-   [x] common-base--FGBuildablePillarLightweight
 -   [x] common-base--FGBuildablePipelineJunction
 -   [x] common-base--FGBuildablePipelinePump
 -   [x] common-base--FGBuildablePipelinePump--valve
@@ -109,6 +110,7 @@
 -   [x] common-base--FGChainsaw
 -   [x] common-base--FGConsumableDescriptor
 -   [x] common-base--FGConsumableDescriptor--base (common type)
+-   [x] common-base--FGConsumableDescriptor--healing
 -   [x] common-base--FGCustomizationRecipe--FGRecipe (common type)
 -   [x] common-base--FGEquipment--base (common type)
 -   [x] common-base--FGEquipmentDescriptor

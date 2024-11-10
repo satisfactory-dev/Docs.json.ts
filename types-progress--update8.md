@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (326 of 326)
+100.00% Complete (330 of 330)
 
 ## Basic Types
 
@@ -63,6 +63,7 @@
 -   [x] common-base--FGBuildableFactory--jump-pad (common type)
 -   [x] common-base--FGBuildableFactory--landing-pad (common type)
 -   [x] common-base--FGBuildableMAM (common type)
+-   [x] common-base--FGBuildablePillarLightweight (common type)
 -   [x] common-base--FGBuildablePipelineJunction (common type)
 -   [x] common-base--FGBuildablePipelinePump (common type)
 -   [x] common-base--FGBuildablePipelinePump--valve (common type)
@@ -81,6 +82,7 @@
 -   [x] common-base--FGChainsaw (common type)
 -   [x] common-base--FGConsumableDescriptor (common type)
 -   [x] common-base--FGConsumableDescriptor--base (common type)
+-   [x] common-base--FGConsumableDescriptor--healing (common type)
 -   [x] common-base--FGCustomizationRecipe--FGRecipe (common type)
 -   [x] common-base--FGEquipment--base (common type)
 -   [x] common-base--FGEquipmentDescriptor (common type)
@@ -271,6 +273,10 @@
 -   [x] FGBuildableManufacturer--packager
 -   [x] FGBuildableManufacturer--smelter
 
+## FGBuildablePillarLightweight
+
+-   [x] FGBuildablePillarLightweight--merged
+
 ## FGBuildablePipelineJunction
 
 -   [x] FGBuildablePipelineJunction--merged
@@ -341,6 +347,7 @@
 -   [x] FGConsumableDescriptor--base
 -   [x] FGConsumableDescriptor--base--merged
 -   [x] FGConsumableDescriptor--healing
+-   [x] FGConsumableDescriptor--healing--base
 -   [x] FGConsumableDescriptor--merged
 
 ## FGCustomizationRecipe
