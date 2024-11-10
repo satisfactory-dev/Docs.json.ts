@@ -3349,8 +3349,47 @@
 					"type": "string",
 					"const": "FGBuildable--base"
 				},
-				"FGBuildable": {
+				"FGBuildable_base": {
 					"$ref": "#/$defs/common-base--FGBuildable--base"
+				},
+				"FGBuildable_consumes_power_base": {
+					"$ref": "#/$defs/common-base--FGBuildable--consumes-power-base"
+				},
+				"FGBuildable_docking_station_base": {
+					"$ref": "#/$defs/common-base--FGBuildable--docking-station-base"
+				},
+				"FGBuildableDroneStation": {
+					"$ref": "#/$defs/common-base--FGBuildableDroneStation"
+				},
+				"FGBuildableBlueprintDesigner": {
+					"$ref": "#/$defs/common-base--FGBuildableBlueprintDesigner"
+				},
+				"FGBuildableFactory_jump_pad": {
+					"$ref": "#/$defs/common-base--FGBuildableFactory--jump-pad"
+				},
+				"FGBuildableFactory_landing_pad": {
+					"$ref": "#/$defs/common-base--FGBuildableFactory--landing-pad"
+				},
+				"FGBuildable_occupied": {
+					"$ref": "#/$defs/common-base--FGBuildable--occupied"
+				},
+				"FGBuildable_tiered": {
+					"$ref": "#/$defs/common-base--FGBuildable--tiered"
+				},
+				"FGBuildableMAM": {
+					"$ref": "#/$defs/common-base--FGBuildableMAM"
+				},
+				"FGBuildableRailroadTrack": {
+					"$ref": "#/$defs/common-base--FGBuildableRailroadTrack"
+				},
+				"FGBuildableWire": {
+					"$ref": "#/$defs/common-base--FGBuildableWire"
+				},
+				"FGBuildablePowerPole": {
+					"$ref": "#/$defs/common-base--FGBuildablePowerPole"
+				},
+				"FGBuildableTradingPost": {
+					"$ref": "#/$defs/common-base--FGBuildableTradingPost"
 				},
 				"FGBuildablePillarLightweight": {
 					"$ref": "#/$defs/common-base--FGBuildablePillarLightweight"
@@ -3522,132 +3561,6 @@
 				}
 			}
 		},
-		"faux-17": {
-			"type": "object",
-			"$ref": "#/$defs/class",
-			"required": ["ref"],
-			"properties": {
-				"faux": {
-					"type": "string",
-					"const": "common-base--FGBuildable--consumes-power-base"
-				},
-				"ref": {
-					"$ref": "#/$defs/common-base--FGBuildable--consumes-power-base"
-				}
-			}
-		},
-		"faux-18": {
-			"type": "object",
-			"$ref": "#/$defs/class",
-			"required": ["ref"],
-			"properties": {
-				"faux": {
-					"type": "string",
-					"const": "common-base--FGBuildable--docking-station-base"
-				},
-				"ref": {
-					"$ref": "#/$defs/common-base--FGBuildable--docking-station-base"
-				}
-			}
-		},
-		"faux-19": {
-			"type": "object",
-			"$ref": "#/$defs/class",
-			"required": ["ref"],
-			"properties": {
-				"faux": {
-					"type": "string",
-					"const": "common-base--FGBuildableDroneStation"
-				},
-				"ref": {
-					"$ref": "#/$defs/common-base--FGBuildableDroneStation"
-				}
-			}
-		},
-		"faux-20": {
-			"type": "object",
-			"$ref": "#/$defs/class",
-			"required": ["ref"],
-			"properties": {
-				"faux": {
-					"type": "string",
-					"const": "common-base--FGBuildableTradingPost"
-				},
-				"ref": {
-					"$ref": "#/$defs/common-base--FGBuildableTradingPost"
-				}
-			}
-		},
-		"faux-21": {
-			"type": "object",
-			"$ref": "#/$defs/class",
-			"required": ["ref"],
-			"properties": {
-				"faux": {
-					"type": "string",
-					"const": "common-base--FGBuildableFactory--jump-pad"
-				},
-				"ref": {
-					"$ref": "#/$defs/common-base--FGBuildableFactory--jump-pad"
-				}
-			}
-		},
-		"faux-22": {
-			"type": "object",
-			"$ref": "#/$defs/class",
-			"required": ["ref"],
-			"properties": {
-				"faux": {
-					"type": "string",
-					"const": "common-base--FGBuildableFactory--landing-pad"
-				},
-				"ref": {
-					"$ref": "#/$defs/common-base--FGBuildableFactory--landing-pad"
-				}
-			}
-		},
-		"faux-23": {
-			"type": "object",
-			"$ref": "#/$defs/class",
-			"required": ["ref"],
-			"properties": {
-				"faux": {
-					"type": "string",
-					"const": "common-base--FGBuildable--occupied"
-				},
-				"ref": {
-					"$ref": "#/$defs/common-base--FGBuildable--occupied"
-				}
-			}
-		},
-		"faux-24": {
-			"type": "object",
-			"$ref": "#/$defs/class",
-			"required": ["ref"],
-			"properties": {
-				"faux": {
-					"type": "string",
-					"const": "common-base--FGBuildable--tiered"
-				},
-				"ref": {
-					"$ref": "#/$defs/common-base--FGBuildable--tiered"
-				}
-			}
-		},
-		"faux-25": {
-			"type": "object",
-			"$ref": "#/$defs/class",
-			"required": ["ref"],
-			"properties": {
-				"faux": {
-					"type": "string",
-					"const": "common-base--FGBuildableMAM"
-				},
-				"ref": {
-					"$ref": "#/$defs/common-base--FGBuildableMAM"
-				}
-			}
-		},
 		"faux-26": {
 			"type": "object",
 			"$ref": "#/$defs/class",
@@ -3730,20 +3643,6 @@
 				}
 			}
 		},
-		"faux-30": {
-			"type": "object",
-			"$ref": "#/$defs/class",
-			"required": ["ref"],
-			"properties": {
-				"faux": {
-					"type": "string",
-					"const": "FGBuildableBlueprintDesigner"
-				},
-				"ref": {
-					"$ref": "#/$defs/common-base--FGBuildableBlueprintDesigner"
-				}
-			}
-		},
 		"faux-31": {
 			"type": "object",
 			"$ref": "#/$defs/class",
@@ -3790,20 +3689,6 @@
 				}
 			}
 		},
-		"faux-33": {
-			"type": "object",
-			"$ref": "#/$defs/class",
-			"required": ["base"],
-			"properties": {
-				"faux": {
-					"type": "string",
-					"const": "FGBuildableRailroadTrack"
-				},
-				"ref": {
-					"$ref": "#/$defs/common-base--FGBuildableRailroadTrack"
-				}
-			}
-		},
 		"faux-34": {
 			"type": "object",
 			"$ref": "#/$defs/class",
@@ -3821,23 +3706,6 @@
 				},
 				"lift": {
 					"$ref": "#/$defs/common-base--FGBuildableConveyorLift"
-				}
-			}
-		},
-		"faux-35": {
-			"type": "object",
-			"$ref": "#/$defs/class",
-			"required": ["base"],
-			"properties": {
-				"faux": {
-					"type": "string",
-					"const": "cabling"
-				},
-				"wire": {
-					"$ref": "#/$defs/common-base--FGBuildableWire"
-				},
-				"pole": {
-					"$ref": "#/$defs/common-base--FGBuildablePowerPole"
 				}
 			}
 		}
@@ -3959,51 +3827,6 @@
 							},
 							{
 								"type": "object",
-								"$ref": "#/$defs/faux-17",
-								"unevaluatedProperties": false
-							},
-							{
-								"type": "object",
-								"$ref": "#/$defs/faux-18",
-								"unevaluatedProperties": false
-							},
-							{
-								"type": "object",
-								"$ref": "#/$defs/faux-19",
-								"unevaluatedProperties": false
-							},
-							{
-								"type": "object",
-								"$ref": "#/$defs/faux-20",
-								"unevaluatedProperties": false
-							},
-							{
-								"type": "object",
-								"$ref": "#/$defs/faux-21",
-								"unevaluatedProperties": false
-							},
-							{
-								"type": "object",
-								"$ref": "#/$defs/faux-22",
-								"unevaluatedProperties": false
-							},
-							{
-								"type": "object",
-								"$ref": "#/$defs/faux-23",
-								"unevaluatedProperties": false
-							},
-							{
-								"type": "object",
-								"$ref": "#/$defs/faux-24",
-								"unevaluatedProperties": false
-							},
-							{
-								"type": "object",
-								"$ref": "#/$defs/faux-25",
-								"unevaluatedProperties": false
-							},
-							{
-								"type": "object",
 								"$ref": "#/$defs/faux-26",
 								"unevaluatedProperties": false
 							},
@@ -4024,11 +3847,6 @@
 							},
 							{
 								"type": "object",
-								"$ref": "#/$defs/faux-30",
-								"unevaluatedProperties": false
-							},
-							{
-								"type": "object",
 								"$ref": "#/$defs/faux-31",
 								"unevaluatedProperties": false
 							},
@@ -4039,17 +3857,7 @@
 							},
 							{
 								"type": "object",
-								"$ref": "#/$defs/faux-33",
-								"unevaluatedProperties": false
-							},
-							{
-								"type": "object",
 								"$ref": "#/$defs/faux-34",
-								"unevaluatedProperties": false
-							},
-							{
-								"type": "object",
-								"$ref": "#/$defs/faux-35",
 								"unevaluatedProperties": false
 							}
 						]

@@ -20,6 +20,25 @@ import {
 	common_base__FGBuildable__pole__base__with_static__type,
 } from '../classes/CoreUObject/FGBuildable';
 
+import {common_base__FGBuildableDroneStation__type} from '../classes/CoreUObject/FGBuildableDroneStation';
+
+import {common_base__FGBuildableBlueprintDesigner__type} from '../classes/CoreUObject/FGBuildableBlueprintDesigner';
+
+import {
+	common_base__FGBuildableFactory__jump_pad__type,
+	common_base__FGBuildableFactory__landing_pad__type,
+} from '../classes/CoreUObject/FGBuildableFactory';
+
+import {common_base__FGBuildableMAM__type} from '../classes/CoreUObject/FGBuildableMAM';
+
+import {common_base__FGBuildableRailroadTrack__type} from '../classes/CoreUObject/FGBuildableRailroadTrack';
+
+import {common_base__FGBuildableWire__type} from '../classes/CoreUObject/FGBuildableWire';
+
+import {common_base__FGBuildablePowerPole__type} from '../classes/CoreUObject/FGBuildablePowerPole';
+
+import {common_base__FGBuildableTradingPost__type} from '../classes/CoreUObject/FGBuildableTradingPost';
+
 import {common_base__FGBuildablePillarLightweight__type} from '../classes/CoreUObject/FGBuildablePillarLightweight';
 
 import {
@@ -67,8 +86,6 @@ import {common_base__FGEquipmentZipline__type} from '../classes/CoreUObject/FGEq
 
 import {common_base__FGParachute__type} from '../classes/CoreUObject/FGParachute';
 
-import {common_base__FGBuildableDroneStation__type} from '../classes/CoreUObject/FGBuildableDroneStation';
-
 import {
 	boolean__type,
 	boolean_extended__type,
@@ -77,15 +94,6 @@ import {
 	integer_string__type,
 	integer_string__signed__type,
 } from './scalar';
-
-import {common_base__FGBuildableTradingPost__type} from '../classes/CoreUObject/FGBuildableTradingPost';
-
-import {
-	common_base__FGBuildableFactory__jump_pad__type,
-	common_base__FGBuildableFactory__landing_pad__type,
-} from '../classes/CoreUObject/FGBuildableFactory';
-
-import {common_base__FGBuildableMAM__type} from '../classes/CoreUObject/FGBuildableMAM';
 
 import {common_base__FGBuildablePipelineJunction__type} from '../classes/CoreUObject/FGBuildablePipelineJunction';
 
@@ -108,8 +116,6 @@ import {common_base__FGResourceDescriptor__type} from '../classes/CoreUObject/FG
 
 import {common_base__FGRecipe__type} from '../classes/CoreUObject/FGRecipe';
 
-import {common_base__FGBuildableBlueprintDesigner__type} from '../classes/CoreUObject/FGBuildableBlueprintDesigner';
-
 import {
 	common_base__FGBuildableWall__base__type,
 	common_base__FGBuildableWall__base__rectangle__type,
@@ -123,18 +129,12 @@ import {
 	common_base__FGBuildableDoor__automated__type,
 } from '../classes/CoreUObject/FGBuildableDoor';
 
-import {common_base__FGBuildableRailroadTrack__type} from '../classes/CoreUObject/FGBuildableRailroadTrack';
-
 import {
 	common_base__FGBuildableConveyorBelt__base__type,
 	common_base__FGBuildableConveyorBelt__type,
 } from '../classes/CoreUObject/FGBuildableConveyorBelt';
 
 import {common_base__FGBuildableConveyorLift__type} from '../classes/CoreUObject/FGBuildableConveyorLift';
-
-import {common_base__FGBuildableWire__type} from '../classes/CoreUObject/FGBuildableWire';
-
-import {common_base__FGBuildablePowerPole__type} from '../classes/CoreUObject/FGBuildablePowerPole';
 
 import {common_base__FGPoleDescriptor__type} from '../classes/CoreUObject/FGPoleDescriptor';
 
@@ -218,7 +218,20 @@ export type faux_10b__type = class__type & {
 
 export type faux_11__type = class__type & {
 	faux: 'FGBuildable--base';
-	FGBuildable: common_base__FGBuildable__base__type;
+	FGBuildable_base?: common_base__FGBuildable__base__type;
+	FGBuildable_consumes_power_base?: common_base__FGBuildable__consumes_power_base__type;
+	FGBuildable_docking_station_base?: common_base__FGBuildable__docking_station_base__type;
+	FGBuildableDroneStation?: common_base__FGBuildableDroneStation__type;
+	FGBuildableBlueprintDesigner?: common_base__FGBuildableBlueprintDesigner__type;
+	FGBuildableFactory_jump_pad?: common_base__FGBuildableFactory__jump_pad__type;
+	FGBuildableFactory_landing_pad?: common_base__FGBuildableFactory__landing_pad__type;
+	FGBuildable_occupied?: common_base__FGBuildable__occupied__type;
+	FGBuildable_tiered?: common_base__FGBuildable__tiered__type;
+	FGBuildableMAM?: common_base__FGBuildableMAM__type;
+	FGBuildableRailroadTrack?: common_base__FGBuildableRailroadTrack__type;
+	FGBuildableWire?: common_base__FGBuildableWire__type;
+	FGBuildablePowerPole?: common_base__FGBuildablePowerPole__type;
+	FGBuildableTradingPost?: common_base__FGBuildableTradingPost__type;
 	FGBuildablePillarLightweight?: common_base__FGBuildablePillarLightweight__type;
 };
 
@@ -277,53 +290,8 @@ export type faux_16__type = class__type & {
 	mDamageTypes?: mDamageTypes__type;
 };
 
-export type faux_17__type = class__type & {
-	faux?: 'common-base--FGBuildable--consumes-power-base';
-	ref: common_base__FGBuildable__consumes_power_base__type;
-};
-
-export type faux_18__type = class__type & {
-	faux?: 'common-base--FGBuildable--docking-station-base';
-	ref: common_base__FGBuildable__docking_station_base__type;
-};
-
-export type faux_19__type = class__type & {
-	faux?: 'common-base--FGBuildableDroneStation';
-	ref: common_base__FGBuildableDroneStation__type;
-};
-
 export type faux_2__type = class__type & {
 	faux_bool: boolean__type;
-};
-
-export type faux_20__type = class__type & {
-	faux?: 'common-base--FGBuildableTradingPost';
-	ref: common_base__FGBuildableTradingPost__type;
-};
-
-export type faux_21__type = class__type & {
-	faux?: 'common-base--FGBuildableFactory--jump-pad';
-	ref: common_base__FGBuildableFactory__jump_pad__type;
-};
-
-export type faux_22__type = class__type & {
-	faux?: 'common-base--FGBuildableFactory--landing-pad';
-	ref: common_base__FGBuildableFactory__landing_pad__type;
-};
-
-export type faux_23__type = class__type & {
-	faux?: 'common-base--FGBuildable--occupied';
-	ref: common_base__FGBuildable__occupied__type;
-};
-
-export type faux_24__type = class__type & {
-	faux?: 'common-base--FGBuildable--tiered';
-	ref: common_base__FGBuildable__tiered__type;
-};
-
-export type faux_25__type = class__type & {
-	faux?: 'common-base--FGBuildableMAM';
-	ref: common_base__FGBuildableMAM__type;
 };
 
 export type faux_26__type = class__type & {
@@ -359,11 +327,6 @@ export type faux_3__type = class__type & {
 	faux_bool_extended: boolean_extended__type;
 };
 
-export type faux_30__type = class__type & {
-	faux?: 'FGBuildableBlueprintDesigner';
-	ref: common_base__FGBuildableBlueprintDesigner__type;
-};
-
 export type faux_31__type = class__type & {
 	faux?: 'FGSchematic--mUnlocks_Class';
 	ref: common_base__FGSchematic__mUnlocks_Class__type;
@@ -380,22 +343,11 @@ export type faux_32__type = class__type & {
 	door_autoamted?: common_base__FGBuildableDoor__automated__type;
 };
 
-export type faux_33__type = class__type & {
-	faux?: 'FGBuildableRailroadTrack';
-	ref?: common_base__FGBuildableRailroadTrack__type;
-};
-
 export type faux_34__type = class__type & {
 	faux?: 'FGBuildableConveyorBelt';
 	base: common_base__FGBuildableConveyorBelt__base__type;
 	belt?: common_base__FGBuildableConveyorBelt__type;
 	lift?: common_base__FGBuildableConveyorLift__type;
-};
-
-export type faux_35__type = class__type & {
-	faux?: 'cabling';
-	wire?: common_base__FGBuildableWire__type;
-	pole?: common_base__FGBuildablePowerPole__type;
 };
 
 export type faux_4__type = class__type & {

@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (215 of 215)
+100.00% Complete (203 of 203)
 
 ## Basic Types
 
@@ -23,27 +23,15 @@
 -   [x] faux-14
 -   [x] faux-15
 -   [x] faux-16
--   [x] faux-17
--   [x] faux-18
--   [x] faux-19
 -   [x] faux-2
--   [x] faux-20
--   [x] faux-21
--   [x] faux-22
--   [x] faux-23
--   [x] faux-24
--   [x] faux-25
 -   [x] faux-26
 -   [x] faux-27
 -   [x] faux-28
 -   [x] faux-29
 -   [x] faux-3
--   [x] faux-30
 -   [x] faux-31
 -   [x] faux-32
--   [x] faux-33
 -   [x] faux-34
--   [x] faux-35
 -   [x] faux-4
 -   [x] faux-5
 -   [x] faux-6
