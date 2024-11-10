@@ -3112,6 +3112,71 @@
 				}
 			}
 		},
+		"common-base--FGBuildableFactory--generic": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--consumes-power-base"
+		},
+		"common-base--FGBuildableWalkway--base": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--base",
+			"required": ["mSize", "mElevation", "mDisableSnapOn"],
+			"properties": {
+				"mSize": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mElevation": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				}
+			}
+		},
+		"common-base--mDisableSnapOn": {
+			"type": "string",
+			"minLength": 1,
+			"typed_string": {
+				"minProperties": 1,
+				"patternProperties": {
+					"^(Front|Right|Left|Right|Top|Bottom)$": {
+						"$ref": "common.schema.json#/$defs/boolean"
+					}
+				}
+			}
+		},
+		"common-base--FGBuildableWalkwayLightweight": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildableWalkway--base",
+			"properties": {
+				"mDisableSnapOn": {
+					"$ref": "common.schema.json#/$defs/common-base--mDisableSnapOn"
+				}
+			}
+		},
+		"common-base--FGBuildableWalkway": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildableWalkway--base",
+			"properties": {
+				"mDisableSnapOn": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["Right", "Left", "Top", "Bottom"],
+						"properties": {
+							"Right": {
+								"$ref": "common.schema.json#/$defs/boolean"
+							},
+							"Left": {
+								"$ref": "common.schema.json#/$defs/boolean"
+							},
+							"Top": {
+								"$ref": "common.schema.json#/$defs/boolean"
+							},
+							"Bottom": {
+								"$ref": "common.schema.json#/$defs/boolean"
+							}
+						}
+					}
+				}
+			}
+		},
 		"faux-1": {
 			"type": "object",
 			"$ref": "#/$defs/class",
@@ -3393,6 +3458,21 @@
 				},
 				"FGBuildablePillarLightweight": {
 					"$ref": "#/$defs/common-base--FGBuildablePillarLightweight"
+				},
+				"FGBuildableFactory_generic": {
+					"$ref": "#/$defs/common-base--FGBuildableFactory--generic"
+				},
+				"FGBuildableWalkway_base": {
+					"$ref": "#/$defs/common-base--FGBuildableWalkway--base"
+				},
+				"mDisableSnapOn": {
+					"$ref": "#/$defs/common-base--mDisableSnapOn"
+				},
+				"FGBuildableWalkwayLightweight": {
+					"$ref": "#/$defs/common-base--FGBuildableWalkwayLightweight"
+				},
+				"FGBuildableWalkway": {
+					"$ref": "#/$defs/common-base--FGBuildableWalkway"
 				}
 			}
 		},

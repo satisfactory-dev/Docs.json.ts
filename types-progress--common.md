@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (203 of 203)
+100.00% Complete (210 of 210)
 
 ## Basic Types
 
@@ -76,6 +76,7 @@
 -   [x] common-base--FGBuildableDoor--automated
 -   [x] common-base--FGBuildableDoor--base (common type)
 -   [x] common-base--FGBuildableDroneStation
+-   [x] common-base--FGBuildableFactory--generic
 -   [x] common-base--FGBuildableFactory--jump-pad
 -   [x] common-base--FGBuildableFactory--landing-pad
 -   [x] common-base--FGBuildableMAM
@@ -88,6 +89,9 @@
 -   [x] common-base--FGBuildablePowerPole
 -   [x] common-base--FGBuildableRailroadTrack
 -   [x] common-base--FGBuildableTradingPost
+-   [x] common-base--FGBuildableWalkway
+-   [x] common-base--FGBuildableWalkway--base (common type)
+-   [x] common-base--FGBuildableWalkwayLightweight
 -   [x] common-base--FGBuildableWall--base (common type)
 -   [x] common-base--FGBuildableWall--base--rectangle (common type)
 -   [x] common-base--FGBuildableWire
@@ -128,6 +132,7 @@
 -   [x] common-base--FGSchematic--with-unlocks
 -   [x] common-base--FGSuitBase
 -   [x] common-base--mChainsawState (common type)
+-   [x] common-base--mDisableSnapOn (common type)
 -   [x] common-base--mSnappedPassthroughs (common type)
 
 ## FGSchematic

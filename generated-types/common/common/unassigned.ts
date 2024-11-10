@@ -27,6 +27,7 @@ import {common_base__FGBuildableBlueprintDesigner__type} from '../classes/CoreUO
 import {
 	common_base__FGBuildableFactory__jump_pad__type,
 	common_base__FGBuildableFactory__landing_pad__type,
+	common_base__FGBuildableFactory__generic__type,
 } from '../classes/CoreUObject/FGBuildableFactory';
 
 import {common_base__FGBuildableMAM__type} from '../classes/CoreUObject/FGBuildableMAM';
@@ -40,6 +41,13 @@ import {common_base__FGBuildablePowerPole__type} from '../classes/CoreUObject/FG
 import {common_base__FGBuildableTradingPost__type} from '../classes/CoreUObject/FGBuildableTradingPost';
 
 import {common_base__FGBuildablePillarLightweight__type} from '../classes/CoreUObject/FGBuildablePillarLightweight';
+
+import {
+	common_base__FGBuildableWalkway__base__type,
+	common_base__FGBuildableWalkway__type,
+} from '../classes/CoreUObject/FGBuildableWalkway';
+
+import {common_base__FGBuildableWalkwayLightweight__type} from '../classes/CoreUObject/FGBuildableWalkwayLightweight';
 
 import {
 	FGSchematic__mUnlocks_mSchematics__mSchematics__type,
@@ -178,6 +186,150 @@ export type color_decimal__type = {
 
 export type common_base__mChainsawState__type = None__type;
 
+export type common_base__mDisableSnapOn__type =
+	| {
+			Front: boolean__type;
+			Right: boolean__type;
+			Left: boolean__type;
+			Top: boolean__type;
+			Bottom: boolean__type;
+	}
+	| {
+			Right: boolean__type;
+			Left: boolean__type;
+			Top: boolean__type;
+			Bottom: boolean__type;
+	}
+	| {
+			Left: boolean__type;
+			Top: boolean__type;
+			Bottom: boolean__type;
+	}
+	| {
+			Top: boolean__type;
+			Bottom: boolean__type;
+	}
+	| {
+			Bottom: boolean__type;
+	}
+	| {
+			Top: boolean__type;
+	}
+	| {
+			Left: boolean__type;
+			Bottom: boolean__type;
+	}
+	| {
+			Left: boolean__type;
+	}
+	| {
+			Left: boolean__type;
+			Top: boolean__type;
+	}
+	| {
+			Right: boolean__type;
+			Top: boolean__type;
+			Bottom: boolean__type;
+	}
+	| {
+			Right: boolean__type;
+			Bottom: boolean__type;
+	}
+	| {
+			Right: boolean__type;
+	}
+	| {
+			Right: boolean__type;
+			Top: boolean__type;
+	}
+	| {
+			Right: boolean__type;
+			Left: boolean__type;
+			Bottom: boolean__type;
+	}
+	| {
+			Right: boolean__type;
+			Left: boolean__type;
+	}
+	| {
+			Right: boolean__type;
+			Left: boolean__type;
+			Top: boolean__type;
+	}
+	| {
+			Front: boolean__type;
+			Left: boolean__type;
+			Top: boolean__type;
+			Bottom: boolean__type;
+	}
+	| {
+			Front: boolean__type;
+			Top: boolean__type;
+			Bottom: boolean__type;
+	}
+	| {
+			Front: boolean__type;
+			Bottom: boolean__type;
+	}
+	| {
+			Front: boolean__type;
+	}
+	| {
+			Front: boolean__type;
+			Top: boolean__type;
+	}
+	| {
+			Front: boolean__type;
+			Left: boolean__type;
+			Bottom: boolean__type;
+	}
+	| {
+			Front: boolean__type;
+			Left: boolean__type;
+	}
+	| {
+			Front: boolean__type;
+			Left: boolean__type;
+			Top: boolean__type;
+	}
+	| {
+			Front: boolean__type;
+			Right: boolean__type;
+			Top: boolean__type;
+			Bottom: boolean__type;
+	}
+	| {
+			Front: boolean__type;
+			Right: boolean__type;
+			Bottom: boolean__type;
+	}
+	| {
+			Front: boolean__type;
+			Right: boolean__type;
+	}
+	| {
+			Front: boolean__type;
+			Right: boolean__type;
+			Top: boolean__type;
+	}
+	| {
+			Front: boolean__type;
+			Right: boolean__type;
+			Left: boolean__type;
+			Bottom: boolean__type;
+	}
+	| {
+			Front: boolean__type;
+			Right: boolean__type;
+			Left: boolean__type;
+	}
+	| {
+			Front: boolean__type;
+			Right: boolean__type;
+			Left: boolean__type;
+			Top: boolean__type;
+	};
+
 export type common_base__mSnappedPassthroughs__type = '';
 
 export type empty_object__type = '()';
@@ -233,6 +385,11 @@ export type faux_11__type = class__type & {
 	FGBuildablePowerPole?: common_base__FGBuildablePowerPole__type;
 	FGBuildableTradingPost?: common_base__FGBuildableTradingPost__type;
 	FGBuildablePillarLightweight?: common_base__FGBuildablePillarLightweight__type;
+	FGBuildableFactory_generic?: common_base__FGBuildableFactory__generic__type;
+	FGBuildableWalkway_base?: common_base__FGBuildableWalkway__base__type;
+	mDisableSnapOn?: common_base__mDisableSnapOn__type;
+	FGBuildableWalkwayLightweight?: common_base__FGBuildableWalkwayLightweight__type;
+	FGBuildableWalkway?: common_base__FGBuildableWalkway__type;
 };
 
 export type faux_12__type = class__type & {

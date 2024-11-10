@@ -3662,23 +3662,34 @@
 			"$ref": "#/$defs/FGBuildableFactory--landing-pad--merged",
 			"unevaluatedProperties": false
 		},
+		"FGBuildableFactory--generic--merged": {
+			"anyOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableFactory--generic"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--consumes-power-base"
+				}
+			]
+		},
 		"FGBuildableFactory--generic": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--consumes-power-base",
+			"$ref": "#/$defs/FGBuildableFactory--generic--merged",
 			"unevaluatedProperties": false
+		},
+		"FGBuildableWalkway--base--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableWalkway--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
 		},
 		"FGBuildableWalkway--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
-			"required": ["mSize", "mElevation", "mDisableSnapOn"],
-			"properties": {
-				"mSize": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mElevation": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				}
-			}
+			"$ref": "#/$defs/FGBuildableWalkway--base--merged"
 		},
 		"mDisableSnapOn": {
 			"type": "string",
@@ -3692,43 +3703,35 @@
 				}
 			}
 		},
+		"FGBuildableWalkwayLightweight--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableWalkwayLightweight"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableWalkway--base"
+				}
+			]
+		},
 		"FGBuildableWalkwayLightweight": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableWalkway--base",
-			"unevaluatedProperties": false,
-			"properties": {
-				"mDisableSnapOn": {
-					"$ref": "#/$defs/mDisableSnapOn"
+			"$ref": "#/$defs/FGBuildableWalkwayLightweight--merged",
+			"unevaluatedProperties": false
+		},
+		"FGBuildableWalkway--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableWalkway"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableWalkway--base"
 				}
-			}
+			]
 		},
 		"FGBuildableWalkway": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableWalkway--base",
-			"unevaluatedProperties": false,
-			"properties": {
-				"mDisableSnapOn": {
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"required": ["Right", "Left", "Top", "Bottom"],
-						"properties": {
-							"Right": {
-								"$ref": "common.schema.json#/$defs/boolean"
-							},
-							"Left": {
-								"$ref": "common.schema.json#/$defs/boolean"
-							},
-							"Top": {
-								"$ref": "common.schema.json#/$defs/boolean"
-							},
-							"Bottom": {
-								"$ref": "common.schema.json#/$defs/boolean"
-							}
-						}
-					}
-				}
-			}
+			"$ref": "#/$defs/FGBuildableWalkway--merged",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableGenerator--base": {
 			"type": "object",

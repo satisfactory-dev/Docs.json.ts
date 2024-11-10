@@ -1,6 +1,9 @@
+import {common_base__FGBuildable__consumes_power_base__type} from './FGBuildable';
+
 import {decimal_string__type} from '../../common/scalar';
 
-import {common_base__FGBuildable__consumes_power_base__type} from './FGBuildable';
+export type common_base__FGBuildableFactory__generic__type =
+	common_base__FGBuildable__consumes_power_base__type;
 
 export type common_base__FGBuildableFactory__jump_pad__type =
 	common_base__FGBuildable__consumes_power_base__type & {
