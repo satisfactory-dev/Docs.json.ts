@@ -55,6 +55,8 @@ import {common_base__FGSuitBase__type} from '../classes/CoreUObject/FGSuitBase';
 
 import {common_base__FGGasMask__type} from '../classes/CoreUObject/FGGasMask';
 
+import {common_base__FGChainsaw__type} from '../classes/CoreUObject/FGChainsaw';
+
 import {common_base__FGBuildableDroneStation__type} from '../classes/CoreUObject/FGBuildableDroneStation';
 
 import {
@@ -153,6 +155,8 @@ export type color_decimal__type = {
 	A: decimal_string__type;
 };
 
+export type common_base__mChainsawState__type = None__type;
+
 export type common_base__mSnappedPassthroughs__type = '';
 
 export type empty_object__type = '()';
@@ -233,6 +237,8 @@ export type faux_15__type = class__type & {
 	jetpack?: common_base__FGJetPack__type;
 	suit?: common_base__FGSuitBase__type;
 	mask?: common_base__FGGasMask__type;
+	chainsaw?: common_base__FGChainsaw__type;
+	chainsaw_state?: common_base__mChainsawState__type;
 };
 
 export type faux_16__type = class__type & {

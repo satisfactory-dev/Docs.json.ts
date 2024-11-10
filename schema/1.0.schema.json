@@ -2449,9 +2449,6 @@
 				}
 			}
 		},
-		"mChainsawState": {
-			"$ref": "common.schema.json#/$defs/None"
-		},
 		"FGChainsaw--Montage_Equipment": {
 			"type": "string",
 			"minLength": 1,
@@ -2462,16 +2459,22 @@
 				}
 			}
 		},
+		"FGChainsaw--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGChainsaw"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--base"
+				}
+			]
+		},
 		"FGChainsaw": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment--base",
+			"$ref": "#/$defs/FGChainsaw--merged",
 			"unevaluatedProperties": false,
 			"required": [
-				"mInterpSawProgress",
-				"mCurrentOutputDataSFX",
 				"StartUpToIdleID",
-				"mCurrentHasFuel",
-				"mPreviousState",
 				"mChainsawEngageMontage",
 				"mChainsawSawingMontage",
 				"mChainsawEquipFuelMontage",
@@ -2482,29 +2485,11 @@
 				"IdlePlaying ID",
 				"Playing ID",
 				"SawingPlayingID",
-				"mEnergyConsumption",
-				"mSawDownTreeTime",
-				"mCollateralPickupRadius",
-				"mIsAOEOn",
-				"mEnergyStored",
-				"mSawingProgress",
-				"mChainsawState"
+				"mIsAOEOn"
 			],
 			"properties": {
-				"mInterpSawProgress": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mCurrentOutputDataSFX": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
 				"StartUpToIdleID": {
 					"$ref": "common.schema.json#/$defs/integer-string"
-				},
-				"mCurrentHasFuel": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mPreviousState": {
-					"$ref": "#/$defs/mChainsawState"
 				},
 				"mChainsawEngageMontage": {
 					"type": "string",
@@ -2617,26 +2602,8 @@
 				"SawingPlayingID": {
 					"$ref": "common.schema.json#/$defs/integer-string"
 				},
-				"mEnergyConsumption": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mSawDownTreeTime": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mCollateralPickupRadius": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
 				"mIsAOEOn": {
 					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mEnergyStored": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mSawingProgress": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mChainsawState": {
-					"$ref": "#/$defs/mChainsawState"
 				},
 				"mEquipMontage": {
 					"$ref": "common.schema.json#/$defs/empty-object"

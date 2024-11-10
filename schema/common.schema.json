@@ -2890,6 +2890,57 @@
 				}
 			}
 		},
+		"common-base--mChainsawState": {
+			"$ref": "common.schema.json#/$defs/None"
+		},
+		"common-base--FGChainsaw": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGEquipment--base",
+			"required": [
+				"mInterpSawProgress",
+				"mCurrentOutputDataSFX",
+				"mCurrentHasFuel",
+				"mPreviousState",
+				"mEnergyConsumption",
+				"mSawDownTreeTime",
+				"mCollateralPickupRadius",
+				"mEnergyStored",
+				"mSawingProgress",
+				"mChainsawState"
+			],
+			"properties": {
+				"mInterpSawProgress": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mCurrentOutputDataSFX": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mCurrentHasFuel": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mPreviousState": {
+					"$ref": "common.schema.json#/$defs/common-base--mChainsawState"
+				},
+				"mEnergyConsumption": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mSawDownTreeTime": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mCollateralPickupRadius": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mEnergyStored": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mSawingProgress": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mChainsawState": {
+					"$ref": "common.schema.json#/$defs/common-base--mChainsawState"
+				}
+			}
+		},
 		"faux-1": {
 			"type": "object",
 			"$ref": "#/$defs/class",
@@ -3232,6 +3283,12 @@
 				},
 				"mask": {
 					"$ref": "#/$defs/common-base--FGGasMask"
+				},
+				"chainsaw": {
+					"$ref": "#/$defs/common-base--FGChainsaw"
+				},
+				"chainsaw_state": {
+					"$ref": "#/$defs/common-base--mChainsawState"
 				}
 			}
 		},

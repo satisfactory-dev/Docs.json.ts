@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (199 of 199)
+100.00% Complete (202 of 202)
 
 ## Basic Types
 
@@ -106,6 +106,7 @@
 -   [x] common-base--FGBuildingDescriptor--ClassName (common type)
 -   [x] common-base--FGBuildingDescriptor--mForm (common type)
 -   [x] common-base--FGBuildingDescriptor--mSubCategories (common type)
+-   [x] common-base--FGChainsaw
 -   [x] common-base--FGCustomizationRecipe--FGRecipe (common type)
 -   [x] common-base--FGEquipment--base (common type)
 -   [x] common-base--FGEquipmentStunSpear
@@ -128,6 +129,7 @@
 -   [x] common-base--FGSchematic--mUnlocks_Class
 -   [x] common-base--FGSchematic--with-unlocks
 -   [x] common-base--FGSuitBase
+-   [x] common-base--mChainsawState (common type)
 -   [x] common-base--mSnappedPassthroughs (common type)
 
 ## FGSchematic

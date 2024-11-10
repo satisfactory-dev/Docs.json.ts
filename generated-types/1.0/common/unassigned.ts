@@ -12,7 +12,6 @@ import {
 
 import {
 	InfinityExtrap__type,
-	None__type,
 	xyz__type,
 	quaternion__type,
 	empty_object__type,
@@ -221,8 +220,6 @@ export type MaterialSlotName__type =
 	| 'Rocket2'
 	| 'Rifle'
 	| '01 - Default';
-
-export type mChainsawState__type = None__type;
 
 export type mClearanceData__type =
 	| ''

@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (347 of 347)
+100.00% Complete (349 of 349)
 
 ## Basic Types
 
@@ -29,7 +29,6 @@
 -   [x] mAspect (common type)
 -   [x] MaterialSlotName
 -   [x] mBatteryStatus (common type)
--   [x] mChainsawState
 -   [x] mClearanceData
 -   [x] mDamageTypes (common type)
 -   [x] mDisableSnapOn
@@ -86,6 +85,7 @@
 -   [x] common-base--FGBuildingDescriptor--ClassName (common type)
 -   [x] common-base--FGBuildingDescriptor--mForm (common type)
 -   [x] common-base--FGBuildingDescriptor--mSubCategories (common type)
+-   [x] common-base--FGChainsaw (common type)
 -   [x] common-base--FGCustomizationRecipe--FGRecipe (common type)
 -   [x] common-base--FGEquipment--base (common type)
 -   [x] common-base--FGEquipmentStunSpear (common type)
@@ -108,6 +108,7 @@
 -   [x] common-base--FGSchematic--mUnlocks_Class (common type)
 -   [x] common-base--FGSchematic--with-unlocks (common type)
 -   [x] common-base--FGSuitBase (common type)
+-   [x] common-base--mChainsawState (common type)
 -   [x] common-base--mSnappedPassthroughs (common type)
 
 ## FGAmmoType
@@ -357,6 +358,7 @@
 ## FGChainsaw
 
 -   [x] FGChainsaw
+-   [x] FGChainsaw--merged
 -   [x] FGChainsaw--Montage_Equipment
 
 ## FGConsumableDescriptor

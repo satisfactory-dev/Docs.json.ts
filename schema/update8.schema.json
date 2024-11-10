@@ -1180,67 +1180,34 @@
 			"$ref": "#/$defs/FGGasMask--merged",
 			"unevaluatedProperties": false
 		},
-		"mChainsawState": {
-			"$ref": "common.schema.json#/$defs/None"
+		"FGChainsaw--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGChainsaw"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--base"
+				}
+			]
 		},
 		"FGChainsaw": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment--base",
+			"$ref": "#/$defs/FGChainsaw--merged",
 			"unevaluatedProperties": false,
 			"required": [
 				"mSawingMontageLength",
-				"mInterpSawProgress",
-				"mCurrentOutputDataSFX",
 				"mCurrentAkID",
-				"mCurrentHasFuel",
-				"mPreviousState",
-				"mEnergyConsumption",
-				"mSawDownTreeTime",
-				"mCollateralPickupRadius",
-				"mExcludeChainsawableFoliage",
-				"mEnergyStored",
-				"mSawingProgress",
-				"mChainsawState"
+				"mExcludeChainsawableFoliage"
 			],
 			"properties": {
 				"mSawingMontageLength": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
-				"mInterpSawProgress": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mCurrentOutputDataSFX": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
 				"mCurrentAkID": {
 					"$ref": "common.schema.json#/$defs/integer-string"
 				},
-				"mCurrentHasFuel": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mPreviousState": {
-					"$ref": "#/$defs/mChainsawState"
-				},
-				"mEnergyConsumption": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mSawDownTreeTime": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mCollateralPickupRadius": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
 				"mExcludeChainsawableFoliage": {
 					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mEnergyStored": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mSawingProgress": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mChainsawState": {
-					"$ref": "#/$defs/mChainsawState"
 				}
 			}
 		},

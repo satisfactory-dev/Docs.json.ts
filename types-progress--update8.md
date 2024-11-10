@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (308 of 308)
+100.00% Complete (310 of 310)
 
 ## Basic Types
 
@@ -16,7 +16,6 @@
 -   [x] EditorCurveData
 -   [x] empty-object (common type)
 -   [x] FGBuildingDescriptor
--   [x] FGChainsaw
 -   [x] FGChargedWeapon
 -   [x] FGGolfCartDispenser
 -   [x] FGJumpingStilts
@@ -29,7 +28,6 @@
 -   [x] mAspect (common type)
 -   [x] MaterialSlotName
 -   [x] mBatteryStatus (common type)
--   [x] mChainsawState
 -   [x] mDamageTypes (common type)
 -   [x] mDisableSnapOn
 -   [x] mDockingRuleSet (common type)
@@ -83,6 +81,7 @@
 -   [x] common-base--FGBuildingDescriptor--ClassName (common type)
 -   [x] common-base--FGBuildingDescriptor--mForm (common type)
 -   [x] common-base--FGBuildingDescriptor--mSubCategories (common type)
+-   [x] common-base--FGChainsaw (common type)
 -   [x] common-base--FGCustomizationRecipe--FGRecipe (common type)
 -   [x] common-base--FGEquipment--base (common type)
 -   [x] common-base--FGEquipmentStunSpear (common type)
@@ -105,6 +104,7 @@
 -   [x] common-base--FGSchematic--mUnlocks_Class (common type)
 -   [x] common-base--FGSchematic--with-unlocks (common type)
 -   [x] common-base--FGSuitBase (common type)
+-   [x] common-base--mChainsawState (common type)
 -   [x] common-base--mSnappedPassthroughs (common type)
 
 ## FGAmmoType
@@ -324,6 +324,11 @@
 ## FGBuildableWire
 
 -   [x] FGBuildableWire--merged
+
+## FGChainsaw
+
+-   [x] FGChainsaw
+-   [x] FGChainsaw--merged
 
 ## FGConsumableDescriptor
 
