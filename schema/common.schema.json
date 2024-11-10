@@ -2941,6 +2941,42 @@
 				}
 			}
 		},
+		"common-base--FGObjectScanner": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGEquipment--base",
+			"required": [
+				"mBeepDelayMax",
+				"mBeepDelayMin",
+				"mDetectionRange",
+				"mUpdateClosestObjectTime",
+				"mClosestObjectInScanRange",
+				"mNormalizedDistanceToClosestObject",
+				"mAngleToClosestObject"
+			],
+			"properties": {
+				"mBeepDelayMax": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mBeepDelayMin": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mDetectionRange": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mUpdateClosestObjectTime": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mClosestObjectInScanRange": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mNormalizedDistanceToClosestObject": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mAngleToClosestObject": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				}
+			}
+		},
 		"faux-1": {
 			"type": "object",
 			"$ref": "#/$defs/class",
@@ -3289,6 +3325,9 @@
 				},
 				"chainsaw_state": {
 					"$ref": "#/$defs/common-base--mChainsawState"
+				},
+				"object_scanner": {
+					"$ref": "#/$defs/common-base--FGObjectScanner"
 				}
 			}
 		},

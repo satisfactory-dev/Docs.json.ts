@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (202 of 202)
+100.00% Complete (203 of 203)
 
 ## Basic Types
 
@@ -119,6 +119,7 @@
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor (common type)
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor--mSubCategories (common type)
 -   [x] common-base--FGJetPack
+-   [x] common-base--FGObjectScanner
 -   [x] common-base--FGPoleDescriptor
 -   [x] common-base--FGRecipe
 -   [x] common-base--FGResourceDescriptor

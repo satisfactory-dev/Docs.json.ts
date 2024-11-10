@@ -2616,19 +2616,22 @@
 				}
 			}
 		},
+		"FGObjectScanner--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGObjectScanner"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--base"
+				}
+			]
+		},
 		"FGObjectScanner": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment--base",
+			"$ref": "#/$defs/FGObjectScanner--merged",
 			"unevaluatedProperties": false,
 			"required": [
-				"mBeepDelayMax",
-				"mBeepDelayMin",
-				"mDetectionRange",
-				"mUpdateClosestObjectTime",
 				"mClosestObject",
-				"mClosestObjectInScanRange",
-				"mNormalizedDistanceToClosestObject",
-				"mAngleToClosestObject",
 				"mScannerCycleLeftMontage",
 				"mScannerCycleRightMontage"
 			],
@@ -2705,18 +2708,6 @@
 						}
 					}
 				},
-				"mBeepDelayMax": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mBeepDelayMin": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mDetectionRange": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mUpdateClosestObjectTime": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
 				"mClosestObject": {
 					"type": "string",
 					"minLength": 1,
@@ -2728,15 +2719,6 @@
 							}
 						}
 					}
-				},
-				"mClosestObjectInScanRange": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mNormalizedDistanceToClosestObject": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mAngleToClosestObject": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mEquipMontage": {
 					"type": "string",

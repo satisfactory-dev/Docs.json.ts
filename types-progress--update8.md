@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (310 of 310)
+100.00% Complete (312 of 312)
 
 ## Basic Types
 
@@ -19,7 +19,6 @@
 -   [x] FGChargedWeapon
 -   [x] FGGolfCartDispenser
 -   [x] FGJumpingStilts
--   [x] FGObjectScanner
 -   [x] FGParachute
 -   [x] FGPipeHyperStart
 -   [x] FGPortableMinerDispenser
@@ -94,6 +93,7 @@
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor (common type)
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor--mSubCategories (common type)
 -   [x] common-base--FGJetPack (common type)
+-   [x] common-base--FGObjectScanner (common type)
 -   [x] common-base--FGPoleDescriptor (common type)
 -   [x] common-base--FGRecipe (common type)
 -   [x] common-base--FGResourceDescriptor (common type)
@@ -379,6 +379,11 @@
 
 -   [x] FGJetPack
 -   [x] FGJetPack--merged
+
+## FGObjectScanner
+
+-   [x] FGObjectScanner
+-   [x] FGObjectScanner--merged
 
 ## FGPoleDescriptor
 

@@ -87,6 +87,7 @@
 	"common_type__common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type": "classes/CoreUObject/FGItemDescriptor",
 	"common_type__common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__mSubCategories__type": "classes/CoreUObject/FGItemDescriptor",
 	"common_type__common_base__FGJetPack__type": "classes/CoreUObject/FGJetPack",
+	"common_type__common_base__FGObjectScanner__type": "classes/CoreUObject/FGObjectScanner",
 	"common_type__common_base__FGPoleDescriptor__type": "classes/CoreUObject/FGPoleDescriptor",
 	"common_type__common_base__FGRecipe__type": "classes/CoreUObject/FGRecipe",
 	"common_type__common_base__FGResourceDescriptor__type": "classes/CoreUObject/FGResourceDescriptor",

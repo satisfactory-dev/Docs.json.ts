@@ -10,7 +10,9 @@ import {
 	NativeClass__type,
 } from '../../../common/common/unassigned';
 
-export type FGObjectScanner__type = FGEquipment__base__type & {
+import {common_base__FGObjectScanner__type} from '../../../common/classes/CoreUObject/FGObjectScanner';
+
+export type FGObjectScanner__type = FGObjectScanner__merged__type & {
 	mPlayingSound: boolean__type;
 	mScreenUpdateTimer: empty_object__type;
 	mScanlineLerpT: decimal_string__type;
@@ -18,14 +20,10 @@ export type FGObjectScanner__type = FGEquipment__base__type & {
 	mNormalizedCloesnessToObject: decimal_string__type;
 	mObjectIsWithinRange: boolean__type;
 	mIsPlayingStaticSound: boolean__type;
-	mBeepDelayMax: decimal_string__type;
-	mBeepDelayMin: decimal_string__type;
-	mDetectionRange: decimal_string__type;
-	mUpdateClosestObjectTime: decimal_string__type;
-	mClosestObjectInScanRange: boolean__type;
-	mNormalizedDistanceToClosestObject: decimal_string__type;
-	mAngleToClosestObject: decimal_string__type;
 };
+
+export type FGObjectScanner__merged__type =
+	common_base__FGObjectScanner__type & FGEquipment__base__type;
 
 export type FGObjectScanner__NativeClass = NativeClass__type & {
 	Classes: [FGObjectScanner__type];

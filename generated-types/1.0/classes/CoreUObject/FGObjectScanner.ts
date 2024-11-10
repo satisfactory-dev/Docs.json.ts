@@ -10,12 +10,9 @@ import {
 	NativeClass__type,
 } from '../../../common/common/unassigned';
 
-import {
-	decimal_string__type,
-	boolean__type,
-} from '../../../common/common/scalar';
+import {common_base__FGObjectScanner__type} from '../../../common/classes/CoreUObject/FGObjectScanner';
 
-export type FGObjectScanner__type = FGEquipment__base__type & {
+export type FGObjectScanner__type = FGObjectScanner__merged__type & {
 	mScannerCycleLeftMontage: {
 		Montage_1P: Montage_1P__type;
 		Montage_Equipment: UnrealEngineString<
@@ -38,16 +35,9 @@ export type FGObjectScanner__type = FGEquipment__base__type & {
 			StringStartsWith<'/Game/WwiseAudio/Events/Equipment/ObjectScanner/'>
 		>;
 	};
-	mBeepDelayMax: decimal_string__type;
-	mBeepDelayMin: decimal_string__type;
-	mDetectionRange: decimal_string__type;
-	mUpdateClosestObjectTime: decimal_string__type;
 	mClosestObject: {
 		ActorLocation: xyz__type;
 	};
-	mClosestObjectInScanRange: boolean__type;
-	mNormalizedDistanceToClosestObject: decimal_string__type;
-	mAngleToClosestObject: decimal_string__type;
 	mEquipMontage?: {
 		Montages: [
 			{
@@ -68,6 +58,9 @@ export type FGObjectScanner__type = FGEquipment__base__type & {
 		>;
 	};
 };
+
+export type FGObjectScanner__merged__type =
+	common_base__FGObjectScanner__type & FGEquipment__base__type;
 
 export type FGObjectScanner__NativeClass = NativeClass__type & {
 	Classes: [FGObjectScanner__type];
