@@ -1285,9 +1285,7 @@
 			"type": "object",
 			"$ref": "#/$defs/FGEquipmentZipline--merged",
 			"unevaluatedProperties": false,
-			"required": [
-				"mShouldPlayDeactivateSound"
-			],
+			"required": ["mShouldPlayDeactivateSound"],
 			"properties": {
 				"mShouldPlayDeactivateSound": {
 					"$ref": "common.schema.json#/$defs/boolean"
@@ -1308,9 +1306,7 @@
 			"type": "object",
 			"$ref": "#/$defs/FGParachute--merged",
 			"unevaluatedProperties": false,
-			"required": [
-				"ArmEquipmentsToSkipAnim"
-			],
+			"required": ["ArmEquipmentsToSkipAnim"],
 			"properties": {
 				"ArmEquipmentsToSkipAnim": {
 					"type": "string",
