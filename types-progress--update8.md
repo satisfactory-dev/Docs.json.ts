@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (322 of 322)
+100.00% Complete (326 of 326)
 
 ## Basic Types
 
@@ -79,6 +79,8 @@
 -   [x] common-base--FGBuildingDescriptor--mForm (common type)
 -   [x] common-base--FGBuildingDescriptor--mSubCategories (common type)
 -   [x] common-base--FGChainsaw (common type)
+-   [x] common-base--FGConsumableDescriptor (common type)
+-   [x] common-base--FGConsumableDescriptor--base (common type)
 -   [x] common-base--FGCustomizationRecipe--FGRecipe (common type)
 -   [x] common-base--FGEquipment--base (common type)
 -   [x] common-base--FGEquipmentDescriptor (common type)
@@ -337,7 +339,9 @@
 
 -   [x] FGConsumableDescriptor
 -   [x] FGConsumableDescriptor--base
+-   [x] FGConsumableDescriptor--base--merged
 -   [x] FGConsumableDescriptor--healing
+-   [x] FGConsumableDescriptor--merged
 
 ## FGCustomizationRecipe
 

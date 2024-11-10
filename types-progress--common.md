@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (209 of 209)
+100.00% Complete (213 of 213)
 
 ## Basic Types
 
@@ -107,6 +107,8 @@
 -   [x] common-base--FGBuildingDescriptor--mForm (common type)
 -   [x] common-base--FGBuildingDescriptor--mSubCategories (common type)
 -   [x] common-base--FGChainsaw
+-   [x] common-base--FGConsumableDescriptor
+-   [x] common-base--FGConsumableDescriptor--base (common type)
 -   [x] common-base--FGCustomizationRecipe--FGRecipe (common type)
 -   [x] common-base--FGEquipment--base (common type)
 -   [x] common-base--FGEquipmentDescriptor
@@ -167,7 +169,7 @@
 
 ## vectors
 
--   [x] pitch-yaw-roll
+-   [x] pitch-yaw-roll (common type)
 -   [x] quaternion
 -   [x] xy
 -   [x] xy--integer

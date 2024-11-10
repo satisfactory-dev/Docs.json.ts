@@ -3065,6 +3065,30 @@
 			"type": "object",
 			"$ref": "common.schema.json#/$defs/common-base--FGEquipmentDescriptor--base"
 		},
+		"common-base--FGConsumableDescriptor--base": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGEquipmentDescriptor--base",
+			"required": [
+				"mCustomHandsMeshScale",
+				"mCustomRotation",
+				"mCustomLocation"
+			],
+			"properties": {
+				"mCustomHandsMeshScale": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mCustomRotation": {
+					"$ref": "common.schema.json#/$defs/pitch-yaw-roll"
+				},
+				"mCustomLocation": {
+					"$ref": "common.schema.json#/$defs/xyz"
+				}
+			}
+		},
+		"common-base--FGConsumableDescriptor": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGConsumableDescriptor--base"
+		},
 		"faux-1": {
 			"type": "object",
 			"$ref": "#/$defs/class",
@@ -3244,6 +3268,12 @@
 				},
 				"FGEquipmentDescriptor": {
 					"$ref": "#/$defs/common-base--FGEquipmentDescriptor"
+				},
+				"FGConsumableDescriptor_base": {
+					"$ref": "#/$defs/common-base--FGConsumableDescriptor--base"
+				},
+				"FGConsumableDescriptor": {
+					"$ref": "#/$defs/common-base--FGConsumableDescriptor"
 				}
 			}
 		},

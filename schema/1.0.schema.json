@@ -3583,25 +3583,19 @@
 			"$ref": "#/$defs/FGEquipmentDescriptor--merged",
 			"unevaluatedProperties": false
 		},
+		"FGConsumableDescriptor--base--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGConsumableDescriptor--base"
+				},
+				{
+					"$ref": "#/$defs/FGEquipmentDescriptor--base"
+				}
+			]
+		},
 		"FGConsumableDescriptor--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipmentDescriptor--base",
-			"required": [
-				"mCustomHandsMeshScale",
-				"mCustomRotation",
-				"mCustomLocation"
-			],
-			"properties": {
-				"mCustomHandsMeshScale": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mCustomRotation": {
-					"$ref": "common.schema.json#/$defs/pitch-yaw-roll"
-				},
-				"mCustomLocation": {
-					"$ref": "common.schema.json#/$defs/xyz"
-				}
-			}
+			"$ref": "#/$defs/FGConsumableDescriptor--base--merged"
 		},
 		"FGConsumableDescriptor": {
 			"type": "object",

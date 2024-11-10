@@ -141,6 +141,11 @@ import {
 	common_base__FGEquipmentDescriptor__type,
 } from '../classes/CoreUObject/FGEquipmentDescriptor';
 
+import {
+	common_base__FGConsumableDescriptor__base__type,
+	common_base__FGConsumableDescriptor__type,
+} from '../classes/CoreUObject/FGConsumableDescriptor';
+
 export type class__type = class__no_description__type & {
 	mDescription: string;
 };
@@ -420,6 +425,8 @@ export type faux_9b__type = class__type & {
 	FGPoleDescriptor?: common_base__FGPoleDescriptor__type;
 	FGEquipmentDescriptor_base?: common_base__FGEquipmentDescriptor__base__type;
 	FGEquipmentDescriptor?: common_base__FGEquipmentDescriptor__type;
+	FGConsumableDescriptor_base?: common_base__FGConsumableDescriptor__base__type;
+	FGConsumableDescriptor?: common_base__FGConsumableDescriptor__type;
 };
 
 export type InfinityExtrap__type = 'RCCE_Constant';
