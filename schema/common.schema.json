@@ -1160,33 +1160,6 @@
 				}
 			}
 		},
-		"common-base--FGBuildableFactory--jump-pad": {
-			"type": "object",
-			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--consumes-power-base",
-			"required": ["JumpForceCharacter", "JumpForcePhysics"],
-			"properties": {
-				"JumpForceCharacter": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"JumpForcePhysics": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				}
-			}
-		},
-		"common-base--FGBuildableFactory--landing-pad": {
-			"type": "object",
-			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--consumes-power-base",
-			"required": ["mDampeningFactor", "mPlayerList"],
-			"properties": {
-				"mDampeningFactor": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mPlayerList": {
-					"type": "string",
-					"const": ""
-				}
-			}
-		},
 		"common-base--FGBuildable--occupied": {
 			"type": "object",
 			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--base",
@@ -3109,6 +3082,33 @@
 				},
 				"mIsSupport": {
 					"$ref": "common.schema.json#/$defs/boolean"
+				}
+			}
+		},
+		"common-base--FGBuildableFactory--jump-pad": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--consumes-power-base",
+			"required": ["JumpForceCharacter", "JumpForcePhysics"],
+			"properties": {
+				"JumpForceCharacter": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"JumpForcePhysics": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				}
+			}
+		},
+		"common-base--FGBuildableFactory--landing-pad": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--consumes-power-base",
+			"required": ["mDampeningFactor", "mPlayerList"],
+			"properties": {
+				"mDampeningFactor": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mPlayerList": {
+					"type": "string",
+					"const": ""
 				}
 			}
 		},
