@@ -1123,9 +1123,7 @@
 			"type": "object",
 			"$ref": "#/$defs/FGSuitBase--merged",
 			"unevaluatedProperties": false,
-			"required": [
-				"mSuit1PMeshMaterials"
-			],
+			"required": ["mSuit1PMeshMaterials"],
 			"properties": {
 				"mSuit1PMeshMaterials": {
 					"type": "string",
