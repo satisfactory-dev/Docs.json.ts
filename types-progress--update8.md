@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (312 of 312)
+100.00% Complete (318 of 318)
 
 ## Basic Types
 
@@ -18,8 +18,6 @@
 -   [x] FGBuildingDescriptor
 -   [x] FGChargedWeapon
 -   [x] FGGolfCartDispenser
--   [x] FGJumpingStilts
--   [x] FGParachute
 -   [x] FGPipeHyperStart
 -   [x] FGPortableMinerDispenser
 -   [x] integer-string (common type)
@@ -86,6 +84,7 @@
 -   [x] common-base--FGEquipmentStunSpear (common type)
 -   [x] common-base--FGEquipmentStunSpear--base (common type)
 -   [x] common-base--FGEquipmentStunSpear--xeno-zapper (common type)
+-   [x] common-base--FGEquipmentZipline (common type)
 -   [x] common-base--FGGasMask (common type)
 -   [x] common-base--FGHoverPack (common type)
 -   [x] common-base--FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor (common type)
@@ -93,7 +92,9 @@
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor (common type)
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor--mSubCategories (common type)
 -   [x] common-base--FGJetPack (common type)
+-   [x] common-base--FGJumpingStilts (common type)
 -   [x] common-base--FGObjectScanner (common type)
+-   [x] common-base--FGParachute (common type)
 -   [x] common-base--FGPoleDescriptor (common type)
 -   [x] common-base--FGRecipe (common type)
 -   [x] common-base--FGResourceDescriptor (common type)
@@ -357,6 +358,10 @@
 -   [x] FGEquipmentStunSpear--xeno-zapper
 -   [x] FGEquipmentStunSpear--xeno-zapper--merged
 
+## FGEquipmentZipline
+
+-   [x] FGEquipmentZipline--merged
+
 ## FGGasMask
 
 -   [x] FGGasMask
@@ -380,10 +385,20 @@
 -   [x] FGJetPack
 -   [x] FGJetPack--merged
 
+## FGJumpingStilts
+
+-   [x] FGJumpingStilts
+-   [x] FGJumpingStilts--merged
+
 ## FGObjectScanner
 
 -   [x] FGObjectScanner
 -   [x] FGObjectScanner--merged
+
+## FGParachute
+
+-   [x] FGParachute
+-   [x] FGParachute--merged
 
 ## FGPoleDescriptor
 

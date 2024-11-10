@@ -8,17 +8,16 @@ import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
 
 import {FGEquipment__base__type} from './FGEquipment';
 
-import {
-	boolean__type,
-	decimal_string__type,
-} from '../../../common/common/scalar';
+import {boolean__type} from '../../../common/common/scalar';
 
 import {
 	empty_object__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned';
 
-export type FGEquipmentZipline__type = FGEquipment__base__type & {
+import {common_base__FGEquipmentZipline__type} from '../../../common/classes/CoreUObject/FGEquipmentZipline';
+
+export type FGEquipmentZipline__type = FGEquipmentZipline__merged__type & {
 	mZiplineAttachMontage: {
 		Montage_1P: Montage_1P__type;
 		Montage_3P: Montage_3P__type;
@@ -45,15 +44,7 @@ export type FGEquipmentZipline__type = FGEquipment__base__type & {
 		>;
 	};
 	mWantToGrab: boolean__type;
-	mZiplineJumpLaunchVelocity: decimal_string__type;
-	mMaxZiplineAngle: decimal_string__type;
-	mTraceDistance: decimal_string__type;
-	mTraceStartOffset: decimal_string__type;
-	mTraceRadius: decimal_string__type;
-	mVisualizeTraceDistance: boolean__type;
-	mActiveNoiseFrequency: decimal_string__type;
-	mZiplineReattachCooldown: decimal_string__type;
-	mEquipMontage?: {
+	mEquipMontage: {
 		Montages: [
 			{
 				Montage_1P: Montage_1P__type;
@@ -69,14 +60,17 @@ export type FGEquipmentZipline__type = FGEquipment__base__type & {
 			},
 		];
 	};
-	mStingerMontage?: empty_object__type;
-	mUnEquipMontage?: {
+	mStingerMontage: empty_object__type;
+	mUnEquipMontage: {
 		AudioEvent: UnrealEngineString<
 			'/Script/AkAudio.AkAudioEvent',
 			StringStartsWith<'/Game/WwiseAudio/Events/Equipment/Zipline/'>
 		>;
 	};
 };
+
+export type FGEquipmentZipline__merged__type =
+	common_base__FGEquipmentZipline__type & FGEquipment__base__type;
 
 export type FGEquipmentZipline__NativeClass =
 	NativeClass__type & {

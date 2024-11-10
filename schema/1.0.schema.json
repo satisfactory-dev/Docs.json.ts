@@ -2823,18 +2823,26 @@
 				}
 			}
 		},
+		"FGJumpingStilts--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGJumpingStilts"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--base"
+				}
+			]
+		},
 		"FGJumpingStilts": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment--base",
+			"$ref": "#/$defs/FGJumpingStilts--merged",
 			"unevaluatedProperties": false,
-			"required": ["mSprintSpeedFactor", "mJumpSpeedFactor"],
+			"required": [
+				"mEquipMontage",
+				"mStingerMontage",
+				"mUnEquipMontage"
+			],
 			"properties": {
-				"mSprintSpeedFactor": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mJumpSpeedFactor": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
 				"mEquipMontage": {
 					"type": "string",
 					"minLength": 1,
@@ -2863,23 +2871,28 @@
 				}
 			}
 		},
+		"FGEquipmentZipline--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGEquipmentZipline"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--base"
+				}
+			]
+		},
 		"FGEquipmentZipline": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment--base",
+			"$ref": "#/$defs/FGEquipmentZipline--merged",
 			"unevaluatedProperties": false,
 			"required": [
 				"mZiplineAttachMontage",
 				"mZiplineDetachMontage",
 				"mZiplineTryAttachMontage",
 				"mWantToGrab",
-				"mZiplineJumpLaunchVelocity",
-				"mMaxZiplineAngle",
-				"mTraceDistance",
-				"mTraceStartOffset",
-				"mTraceRadius",
-				"mVisualizeTraceDistance",
-				"mActiveNoiseFrequency",
-				"mZiplineReattachCooldown"
+				"mEquipMontage",
+				"mStingerMontage",
+				"mUnEquipMontage"
 			],
 			"properties": {
 				"mZiplineAttachMontage": {
@@ -2971,30 +2984,6 @@
 				},
 				"mWantToGrab": {
 					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mZiplineJumpLaunchVelocity": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mMaxZiplineAngle": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mTraceDistance": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mTraceStartOffset": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mTraceRadius": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mVisualizeTraceDistance": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mActiveNoiseFrequency": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mZiplineReattachCooldown": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mEquipMontage": {
 					"type": "string",
@@ -3138,22 +3127,28 @@
 				}
 			}
 		},
+		"FGParachute--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGParachute"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--base"
+				}
+			]
+		},
 		"FGParachute": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment--base",
+			"$ref": "#/$defs/FGParachute--merged",
 			"unevaluatedProperties": false,
 			"required": [
-				"DeployedVFXComponents",
 				"mParachuteDeployMontageList",
 				"mParachuteDetachMontageList",
-				"mUseDistanceOverride",
-				"mIsDeployed"
+				"mEquipMontage",
+				"mStingerMontage",
+				"mUnEquipMontage"
 			],
 			"properties": {
-				"DeployedVFXComponents": {
-					"type": "string",
-					"const": ""
-				},
 				"mParachuteDeployMontageList": {
 					"type": "string",
 					"minLength": 1,
@@ -3349,12 +3344,6 @@
 							}
 						}
 					}
-				},
-				"mUseDistanceOverride": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mIsDeployed": {
-					"$ref": "common.schema.json#/$defs/boolean"
 				},
 				"mEquipMontage": {
 					"$ref": "#/$defs/FGParachute--mEquipMontage"

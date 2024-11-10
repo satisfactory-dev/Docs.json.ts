@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (351 of 351)
+100.00% Complete (357 of 357)
 
 ## Basic Types
 
@@ -90,6 +90,7 @@
 -   [x] common-base--FGEquipmentStunSpear (common type)
 -   [x] common-base--FGEquipmentStunSpear--base (common type)
 -   [x] common-base--FGEquipmentStunSpear--xeno-zapper (common type)
+-   [x] common-base--FGEquipmentZipline (common type)
 -   [x] common-base--FGGasMask (common type)
 -   [x] common-base--FGHoverPack (common type)
 -   [x] common-base--FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor (common type)
@@ -97,7 +98,9 @@
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor (common type)
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor--mSubCategories (common type)
 -   [x] common-base--FGJetPack (common type)
+-   [x] common-base--FGJumpingStilts (common type)
 -   [x] common-base--FGObjectScanner (common type)
+-   [x] common-base--FGParachute (common type)
 -   [x] common-base--FGPoleDescriptor (common type)
 -   [x] common-base--FGRecipe (common type)
 -   [x] common-base--FGResourceDescriptor (common type)
@@ -394,6 +397,10 @@
 -   [x] FGEquipmentStunSpear--xeno-zapper
 -   [x] FGEquipmentStunSpear--xeno-zapper--merged
 
+## FGEquipmentZipline
+
+-   [x] FGEquipmentZipline--merged
+
 ## FGGasMask
 
 -   [x] FGGasMask
@@ -424,6 +431,7 @@
 
 -   [x] FGJumpingStilts
 -   [x] FGJumpingStilts--AudioEvent
+-   [x] FGJumpingStilts--merged
 -   [x] FGJumpingStilts--Montage
 
 ## FGObjectScanner
@@ -436,6 +444,7 @@
 -   [x] FGParachute
 -   [x] FGParachute--AudioEvent
 -   [x] FGParachute--mEquipMontage
+-   [x] FGParachute--merged
 -   [x] FGParachute--mUnEquipMontage
 
 ## FGPoleDescriptor

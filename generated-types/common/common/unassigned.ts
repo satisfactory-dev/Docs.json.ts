@@ -59,6 +59,12 @@ import {common_base__FGChainsaw__type} from '../classes/CoreUObject/FGChainsaw';
 
 import {common_base__FGObjectScanner__type} from '../classes/CoreUObject/FGObjectScanner';
 
+import {common_base__FGJumpingStilts__type} from '../classes/CoreUObject/FGJumpingStilts';
+
+import {common_base__FGEquipmentZipline__type} from '../classes/CoreUObject/FGEquipmentZipline';
+
+import {common_base__FGParachute__type} from '../classes/CoreUObject/FGParachute';
+
 import {common_base__FGBuildableDroneStation__type} from '../classes/CoreUObject/FGBuildableDroneStation';
 
 import {
@@ -242,6 +248,9 @@ export type faux_15__type = class__type & {
 	chainsaw?: common_base__FGChainsaw__type;
 	chainsaw_state?: common_base__mChainsawState__type;
 	object_scanner?: common_base__FGObjectScanner__type;
+	jumping_stilts?: common_base__FGJumpingStilts__type;
+	zipline?: common_base__FGEquipmentZipline__type;
+	parachute?: common_base__FGParachute__type;
 };
 
 export type faux_16__type = class__type & {

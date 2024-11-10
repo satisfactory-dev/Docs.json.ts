@@ -1256,74 +1256,60 @@
 				}
 			}
 		},
+		"FGJumpingStilts--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGJumpingStilts"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--base"
+				}
+			]
+		},
 		"FGJumpingStilts": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment--base",
-			"unevaluatedProperties": false,
-			"required": ["mSprintSpeedFactor", "mJumpSpeedFactor"],
-			"properties": {
-				"mSprintSpeedFactor": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
+			"$ref": "#/$defs/FGJumpingStilts--merged",
+			"unevaluatedProperties": false
+		},
+		"FGEquipmentZipline--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGEquipmentZipline"
 				},
-				"mJumpSpeedFactor": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
+				{
+					"$ref": "#/$defs/FGEquipment--base"
 				}
-			}
+			]
 		},
 		"FGEquipmentZipline": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment--base",
+			"$ref": "#/$defs/FGEquipmentZipline--merged",
 			"unevaluatedProperties": false,
 			"required": [
-				"mShouldPlayDeactivateSound",
-				"mZiplineJumpLaunchVelocity",
-				"mMaxZiplineAngle",
-				"mTraceDistance",
-				"mTraceStartOffset",
-				"mTraceRadius",
-				"mVisualizeTraceDistance",
-				"mActiveNoiseFrequency",
-				"mZiplineReattachCooldown"
+				"mShouldPlayDeactivateSound"
 			],
 			"properties": {
 				"mShouldPlayDeactivateSound": {
 					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mZiplineJumpLaunchVelocity": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mMaxZiplineAngle": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mTraceDistance": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mTraceStartOffset": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mTraceRadius": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mVisualizeTraceDistance": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mActiveNoiseFrequency": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mZiplineReattachCooldown": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
+		"FGParachute--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGParachute"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--base"
+				}
+			]
+		},
 		"FGParachute": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment--base",
+			"$ref": "#/$defs/FGParachute--merged",
 			"unevaluatedProperties": false,
 			"required": [
-				"ArmEquipmentsToSkipAnim",
-				"DeployedVFXComponents",
-				"mUseDistanceOverride",
-				"mIsDeployed"
+				"ArmEquipmentsToSkipAnim"
 			],
 			"properties": {
 				"ArmEquipmentsToSkipAnim": {
@@ -1342,16 +1328,6 @@
 							]
 						}
 					}
-				},
-				"DeployedVFXComponents": {
-					"type": "string",
-					"const": ""
-				},
-				"mUseDistanceOverride": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mIsDeployed": {
-					"$ref": "common.schema.json#/$defs/boolean"
 				}
 			}
 		},

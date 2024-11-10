@@ -1,13 +1,10 @@
 import {FGEquipment__base__type} from './FGEquipment';
 
-import {
-	decimal_string__type,
-	boolean__type,
-} from '../../../common/common/scalar';
+import {common_base__FGParachute__type} from '../../../common/classes/CoreUObject/FGParachute';
 
 import {NativeClass__type} from '../../../common/common/unassigned';
 
-export type FGParachute__type = FGEquipment__base__type & {
+export type FGParachute__type = FGParachute__merged__type & {
 	ArmEquipmentsToSkipAnim: [
 		(
 			| 'AE_ChainSaw'
@@ -24,10 +21,10 @@ export type FGParachute__type = FGEquipment__base__type & {
 			| 'AE_Rifle'
 		)[],
 	];
-	DeployedVFXComponents: '';
-	mUseDistanceOverride: decimal_string__type;
-	mIsDeployed: boolean__type;
 };
+
+export type FGParachute__merged__type =
+	common_base__FGParachute__type & FGEquipment__base__type;
 
 export type FGParachute__NativeClass = NativeClass__type & {
 	Classes: [FGParachute__type];

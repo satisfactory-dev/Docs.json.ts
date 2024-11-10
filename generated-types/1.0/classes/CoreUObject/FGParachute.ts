@@ -9,18 +9,16 @@ import {
 
 import {FGEquipment__base__type} from './FGEquipment';
 
-import {
-	boolean__type,
-	decimal_string__type,
-} from '../../../common/common/scalar';
+import {boolean__type} from '../../../common/common/scalar';
 
 import {
 	empty_object__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned';
 
-export type FGParachute__type = FGEquipment__base__type & {
-	DeployedVFXComponents: '';
+import {common_base__FGParachute__type} from '../../../common/classes/CoreUObject/FGParachute';
+
+export type FGParachute__type = FGParachute__merged__type & {
 	mParachuteDeployMontageList: {
 		Montages: [
 			(
@@ -134,11 +132,9 @@ export type FGParachute__type = FGEquipment__base__type & {
 			),
 		];
 	};
-	mUseDistanceOverride: decimal_string__type;
-	mIsDeployed: boolean__type;
-	mEquipMontage?: FGParachute__mEquipMontage__type;
-	mStingerMontage?: empty_object__type;
-	mUnEquipMontage?: FGParachute__mUnEquipMontage__type;
+	mEquipMontage: FGParachute__mEquipMontage__type;
+	mStingerMontage: empty_object__type;
+	mUnEquipMontage: FGParachute__mUnEquipMontage__type;
 };
 
 export type FGParachute__AudioEvent__type = UnrealEngineString<
@@ -159,6 +155,9 @@ export type FGParachute__mEquipMontage__type = {
 		},
 	];
 };
+
+export type FGParachute__merged__type =
+	common_base__FGParachute__type & FGEquipment__base__type;
 
 export type FGParachute__mUnEquipMontage__type = {
 	AudioEvent: FGParachute__AudioEvent__type;
