@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (357 of 357)
+100.00% Complete (361 of 361)
 
 ## Basic Types
 
@@ -87,6 +87,8 @@
 -   [x] common-base--FGChainsaw (common type)
 -   [x] common-base--FGCustomizationRecipe--FGRecipe (common type)
 -   [x] common-base--FGEquipment--base (common type)
+-   [x] common-base--FGEquipmentDescriptor (common type)
+-   [x] common-base--FGEquipmentDescriptor--base (common type)
 -   [x] common-base--FGEquipmentStunSpear (common type)
 -   [x] common-base--FGEquipmentStunSpear--base (common type)
 -   [x] common-base--FGEquipmentStunSpear--xeno-zapper (common type)
@@ -388,6 +390,11 @@
 -   [x] FGEquipment--base
 -   [x] FGEquipment--placeable
 -   [x] FGEquipmentDescriptor--base
+
+## FGEquipmentDescriptor
+
+-   [x] FGEquipmentDescriptor--base--merged
+-   [x] FGEquipmentDescriptor--merged
 
 ## FGEquipmentStunSpear
 

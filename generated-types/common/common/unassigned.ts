@@ -136,6 +136,11 @@ import {common_base__FGBuildablePowerPole__type} from '../classes/CoreUObject/FG
 
 import {common_base__FGPoleDescriptor__type} from '../classes/CoreUObject/FGPoleDescriptor';
 
+import {
+	common_base__FGEquipmentDescriptor__base__type,
+	common_base__FGEquipmentDescriptor__type,
+} from '../classes/CoreUObject/FGEquipmentDescriptor';
+
 export type class__type = class__no_description__type & {
 	mDescription: string;
 };
@@ -413,6 +418,8 @@ export type faux_9b__type = class__type & {
 	faux: 'stashing all the remaining descriptors here';
 	FGItemDescriptor_FGResourceDescriptor_FGPoleDescriptor?: common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type;
 	FGPoleDescriptor?: common_base__FGPoleDescriptor__type;
+	FGEquipmentDescriptor_base?: common_base__FGEquipmentDescriptor__base__type;
+	FGEquipmentDescriptor?: common_base__FGEquipmentDescriptor__type;
 };
 
 export type InfinityExtrap__type = 'RCCE_Constant';

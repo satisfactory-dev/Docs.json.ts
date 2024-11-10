@@ -3051,6 +3051,20 @@
 				}
 			}
 		},
+		"common-base--FGEquipmentDescriptor--base": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor",
+			"required": ["mResourceSinkPoints"],
+			"properties": {
+				"mResourceSinkPoints": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				}
+			}
+		},
+		"common-base--FGEquipmentDescriptor": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGEquipmentDescriptor--base"
+		},
 		"faux-1": {
 			"type": "object",
 			"$ref": "#/$defs/class",
@@ -3224,6 +3238,12 @@
 				},
 				"FGPoleDescriptor": {
 					"$ref": "#/$defs/common-base--FGPoleDescriptor"
+				},
+				"FGEquipmentDescriptor_base": {
+					"$ref": "#/$defs/common-base--FGEquipmentDescriptor--base"
+				},
+				"FGEquipmentDescriptor": {
+					"$ref": "#/$defs/common-base--FGEquipmentDescriptor"
 				}
 			}
 		},

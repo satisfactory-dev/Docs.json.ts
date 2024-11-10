@@ -1327,19 +1327,33 @@
 				}
 			}
 		},
+		"FGEquipmentDescriptor--base--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGEquipmentDescriptor--base"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor"
+				}
+			]
+		},
 		"FGEquipmentDescriptor--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor",
-			"required": ["mResourceSinkPoints"],
-			"properties": {
-				"mResourceSinkPoints": {
-					"$ref": "common.schema.json#/$defs/integer-string"
+			"$ref": "#/$defs/FGEquipmentDescriptor--base--merged"
+		},
+		"FGEquipmentDescriptor--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGEquipmentDescriptor"
+				},
+				{
+					"$ref": "#/$defs/FGEquipmentDescriptor--base"
 				}
-			}
+			]
 		},
 		"FGEquipmentDescriptor": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipmentDescriptor--base",
+			"$ref": "#/$defs/FGEquipmentDescriptor--merged",
 			"unevaluatedProperties": false
 		},
 		"FGConsumableDescriptor--base": {

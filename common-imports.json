@@ -77,6 +77,8 @@
 	"common_type__common_base__FGChainsaw__type": "classes/CoreUObject/FGChainsaw",
 	"common_type__common_base__FGCustomizationRecipe__FGRecipe__type": "classes/CoreUObject/FGCustomizationRecipe",
 	"common_type__common_base__FGEquipment__base__type": "classes/CoreUObject/FGEquipment",
+	"common_type__common_base__FGEquipmentDescriptor__type": "classes/CoreUObject/FGEquipmentDescriptor",
+	"common_type__common_base__FGEquipmentDescriptor__base__type": "classes/CoreUObject/FGEquipmentDescriptor",
 	"common_type__common_base__FGEquipmentStunSpear__type": "classes/CoreUObject/FGEquipmentStunSpear",
 	"common_type__common_base__FGEquipmentStunSpear__base__type": "classes/CoreUObject/FGEquipmentStunSpear",
 	"common_type__common_base__FGEquipmentStunSpear__xeno_zapper__type": "classes/CoreUObject/FGEquipmentStunSpear",
