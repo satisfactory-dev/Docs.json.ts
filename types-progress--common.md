@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (210 of 210)
+100.00% Complete (218 of 218)
 
 ## Basic Types
 
@@ -79,6 +79,12 @@
 -   [x] common-base--FGBuildableFactory--generic
 -   [x] common-base--FGBuildableFactory--jump-pad
 -   [x] common-base--FGBuildableFactory--landing-pad
+-   [x] common-base--FGBuildableGenerator--base (common type)
+-   [x] common-base--FGBuildableGeneratorFuel--base (common type)
+-   [x] common-base--FGBuildableGeneratorFuel--biogen
+-   [x] common-base--FGBuildableGeneratorFuel--liquid
+-   [x] common-base--FGBuildableGeneratorFuel--solid
+-   [x] common-base--FGBuildableGeneratorGeoThermal
 -   [x] common-base--FGBuildableMAM
 -   [x] common-base--FGBuildablePillarLightweight
 -   [x] common-base--FGBuildablePipelineJunction

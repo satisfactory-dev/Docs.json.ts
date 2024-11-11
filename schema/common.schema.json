@@ -3177,6 +3177,292 @@
 				}
 			}
 		},
+		"common-base--FGBuildableGenerator--base": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--consumes-power-base",
+			"required": ["mPowerProduction", "mLoadPercentage"],
+			"properties": {
+				"mPowerProduction": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mLoadPercentage": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				}
+			}
+		},
+		"common-base--FGBuildableGeneratorFuel--base": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildableGenerator--base",
+			"required": [
+				"mFuelClasses",
+				"mAvailableFuelClasses",
+				"mFuelLoadAmount",
+				"mRequiresSupplementalResource",
+				"mSupplementalLoadAmount",
+				"mSupplementalToPowerRatio",
+				"mIsFullBlast",
+				"mCachedInputConnections",
+				"mCachedPipeInputConnections"
+			],
+			"properties": {
+				"mFuelClasses": {
+					"type": "string",
+					"const": ""
+				},
+				"mAvailableFuelClasses": {
+					"type": "string",
+					"const": ""
+				},
+				"mFuelLoadAmount": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				},
+				"mRequiresSupplementalResource": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mSupplementalLoadAmount": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				},
+				"mSupplementalToPowerRatio": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mIsFullBlast": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mCachedInputConnections": {
+					"type": "string",
+					"const": ""
+				},
+				"mCachedPipeInputConnections": {
+					"type": "string",
+					"const": ""
+				}
+			}
+		},
+		"common-base--FGBuildableGeneratorFuel--solid": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildableGeneratorFuel--base",
+			"required": [
+				"m_SFXSockets",
+				"m_CurrentPotential",
+				"mDefaultFuelClasses",
+				"mFuel",
+				"mFuelLoadAmount"
+			],
+			"properties": {
+				"m_SFXSockets": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"minItems": 1,
+						"items": {
+							"type": "string",
+							"enum": [
+								"AudioSocketTurbine",
+								"CoalGeneratorPotential"
+							]
+						}
+					}
+				},
+				"m_CurrentPotential": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				},
+				"mDefaultFuelClasses": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"minItems": 1,
+						"items": {
+							"type": "string",
+							"enum": [
+								"/Game/FactoryGame/Resource/RawResources/Coal/Desc_Coal.Desc_Coal_C",
+								"/Game/FactoryGame/Resource/Parts/CompactedCoal/Desc_CompactedCoal.Desc_CompactedCoal_C",
+								"/Game/FactoryGame/Resource/Parts/PetroleumCoke/Desc_PetroleumCoke.Desc_PetroleumCoke_C"
+							]
+						}
+					}
+				},
+				"mFuel": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"required": [
+							"mFuelClass",
+							"mSupplementalResourceClass",
+							"mByproduct",
+							"mByproductAmount"
+						],
+						"properties": {
+							"mFuelClass": {
+								"type": "string",
+								"enum": [
+									"Desc_Coal_C",
+									"Desc_CompactedCoal_C",
+									"Desc_PetroleumCoke_C"
+								]
+							},
+							"mSupplementalResourceClass": {
+								"type": "string",
+								"const": "Desc_Water_C"
+							},
+							"mByproduct": {
+								"type": "string",
+								"const": ""
+							},
+							"mByproductAmount": {
+								"type": "string",
+								"const": ""
+							}
+						}
+					}
+				}
+			}
+		},
+		"common-base--FGBuildableGeneratorFuel--liquid": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildableGeneratorFuel--base",
+			"required": [
+				"m_SFXSockets",
+				"m_CurrentPotential",
+				"mFuel",
+				"mRTPCInterval",
+				"mCachedLoadPercentage"
+			],
+			"properties": {
+				"m_SFXSockets": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"minItems": 1,
+						"items": {
+							"type": "string",
+							"enum": ["AudioSocket_Exhaust", "AudioSocket_Root"]
+						}
+					}
+				},
+				"m_CurrentPotential": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				},
+				"mFuel": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"required": [
+							"mFuelClass",
+							"mSupplementalResourceClass",
+							"mByproduct",
+							"mByproductAmount"
+						],
+						"properties": {
+							"mFuelClass": {
+								"type": "string",
+								"minLength": 1
+							},
+							"mSupplementalResourceClass": {
+								"type": "string",
+								"const": ""
+							},
+							"mByproduct": {
+								"type": "string",
+								"const": ""
+							},
+							"mByproductAmount": {
+								"type": "string",
+								"const": ""
+							}
+						}
+					}
+				},
+				"mRTPCInterval": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mCachedLoadPercentage": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				}
+			}
+		},
+		"common-base--FGBuildableGeneratorFuel--biogen": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildableGeneratorFuel--base",
+			"required": [
+				"mDefaultFuelClasses",
+				"mFuel",
+				"mCachedLoadPercentage"
+			],
+			"properties": {
+				"mFuel": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"required": [
+							"mFuelClass",
+							"mSupplementalResourceClass",
+							"mByproduct",
+							"mByproductAmount"
+						],
+						"properties": {
+							"mFuelClass": {
+								"type": "string",
+								"minLength": 1
+							},
+							"mSupplementalResourceClass": {
+								"type": "string",
+								"const": ""
+							},
+							"mByproduct": {
+								"type": "string",
+								"const": ""
+							},
+							"mByproductAmount": {
+								"type": "string",
+								"const": ""
+							}
+						}
+					}
+				},
+				"mCachedLoadPercentage": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				}
+			}
+		},
+		"common-base--FGBuildableGeneratorGeoThermal": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildableGenerator--base",
+			"required": [
+				"mProductionEffectsRunning",
+				"mVariablePowerProductionConstant",
+				"mVariablePowerProductionFactor",
+				"mVariablePowerProductionCycleLength",
+				"mMinPowerProduction",
+				"mMaxPowerProduction",
+				"mVariablePowerProductionCycleOffset"
+			],
+			"properties": {
+				"mProductionEffectsRunning": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mVariablePowerProductionConstant": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mVariablePowerProductionFactor": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mVariablePowerProductionCycleLength": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mMinPowerProduction": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mMaxPowerProduction": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mVariablePowerProductionCycleOffset": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				}
+			}
+		},
 		"faux-1": {
 			"type": "object",
 			"$ref": "#/$defs/class",
@@ -3473,6 +3759,24 @@
 				},
 				"FGBuildableWalkway": {
 					"$ref": "#/$defs/common-base--FGBuildableWalkway"
+				},
+				"FGBuildableGenerator_base": {
+					"$ref": "#/$defs/common-base--FGBuildableGenerator--base"
+				},
+				"FGBuildableGeneratorFuel_base": {
+					"$ref": "#/$defs/common-base--FGBuildableGeneratorFuel--base"
+				},
+				"FGBuildableGeneratorFuel_solid": {
+					"$ref": "#/$defs/common-base--FGBuildableGeneratorFuel--solid"
+				},
+				"FGBuildableGeneratorFuel_liquid": {
+					"$ref": "#/$defs/common-base--FGBuildableGeneratorFuel--liquid"
+				},
+				"FGBuildableGeneratorFuel_biogen": {
+					"$ref": "#/$defs/common-base--FGBuildableGeneratorFuel--biogen"
+				},
+				"FGBuildableGeneratorGeoThermal": {
+					"$ref": "#/$defs/common-base--FGBuildableGeneratorGeoThermal"
 				}
 			}
 		},

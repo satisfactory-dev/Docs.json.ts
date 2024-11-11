@@ -1516,189 +1516,91 @@
 			"$ref": "#/$defs/FGBuildableWalkway--merged",
 			"unevaluatedProperties": false
 		},
+		"FGBuildableGenerator--base--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableGenerator--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--consumes-power-base"
+				}
+			]
+		},
 		"FGBuildableGenerator--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--consumes-power-base",
-			"required": ["mPowerProduction", "mLoadPercentage"],
-			"properties": {
-				"mPowerProduction": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
+			"$ref": "#/$defs/FGBuildableGenerator--base--merged"
+		},
+		"FGBuildableGeneratorFuel--base--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableGeneratorFuel--base"
 				},
-				"mLoadPercentage": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
+				{
+					"$ref": "#/$defs/FGBuildableGenerator--base"
 				}
-			}
+			]
 		},
 		"FGBuildableGeneratorFuel--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableGenerator--base",
+			"$ref": "#/$defs/FGBuildableGeneratorFuel--base--merged",
 			"required": [
 				"mFuelInventoryHandlerData",
-				"mFuelClasses",
-				"mAvailableFuelClasses",
-				"mFuelLoadAmount",
-				"mRequiresSupplementalResource",
-				"mSupplementalLoadAmount",
-				"mSupplementalToPowerRatio",
-				"mIsFullBlast",
-				"mCachedInputConnections",
-				"mCachedPipeInputConnections"
+				"mFuelResourceForm"
 			],
 			"properties": {
 				"mFuelInventoryHandlerData": {
 					"$ref": "common.schema.json#/$defs/empty-object"
 				},
-				"mFuelClasses": {
-					"type": "string",
-					"const": ""
-				},
-				"mAvailableFuelClasses": {
-					"type": "string",
-					"const": ""
-				},
 				"mFuelResourceForm": {
 					"type": "string",
 					"enum": ["RF_SOLID", "RF_LIQUID"]
-				},
-				"mFuelLoadAmount": {
-					"$ref": "common.schema.json#/$defs/integer-string"
-				},
-				"mRequiresSupplementalResource": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mSupplementalLoadAmount": {
-					"$ref": "common.schema.json#/$defs/integer-string"
-				},
-				"mSupplementalToPowerRatio": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mIsFullBlast": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mCachedInputConnections": {
-					"type": "string",
-					"const": ""
-				},
-				"mCachedPipeInputConnections": {
-					"type": "string",
-					"const": ""
 				}
 			}
 		},
+		"FGBuildableGeneratorFuel--solid--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableGeneratorFuel--solid"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableGeneratorFuel--base"
+				}
+			]
+		},
 		"FGBuildableGeneratorFuel--solid": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableGeneratorFuel--base",
+			"$ref": "#/$defs/FGBuildableGeneratorFuel--solid--merged",
 			"unevaluatedProperties": false,
 			"required": [
-				"m_SFXSockets",
-				"m_CurrentPotential",
-				"mDefaultFuelClasses",
-				"mFuel",
-				"mFuelResourceForm",
-				"mFuelLoadAmount"
+				"mFuelResourceForm"
 			],
 			"properties": {
-				"m_SFXSockets": {
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"minItems": 1,
-						"items": {
-							"type": "string",
-							"enum": [
-								"AudioSocketTurbine",
-								"CoalGeneratorPotential"
-							]
-						}
-					}
-				},
-				"m_CurrentPotential": {
-					"$ref": "common.schema.json#/$defs/integer-string"
-				},
-				"mDefaultFuelClasses": {
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"minItems": 1,
-						"items": {
-							"type": "string",
-							"enum": [
-								"/Game/FactoryGame/Resource/RawResources/Coal/Desc_Coal.Desc_Coal_C",
-								"/Game/FactoryGame/Resource/Parts/CompactedCoal/Desc_CompactedCoal.Desc_CompactedCoal_C",
-								"/Game/FactoryGame/Resource/Parts/PetroleumCoke/Desc_PetroleumCoke.Desc_PetroleumCoke_C"
-							]
-						}
-					}
-				},
-				"mFuel": {
-					"type": "array",
-					"minItems": 1,
-					"items": {
-						"type": "object",
-						"required": [
-							"mFuelClass",
-							"mSupplementalResourceClass",
-							"mByproduct",
-							"mByproductAmount"
-						],
-						"properties": {
-							"mFuelClass": {
-								"type": "string",
-								"enum": [
-									"Desc_Coal_C",
-									"Desc_CompactedCoal_C",
-									"Desc_PetroleumCoke_C"
-								]
-							},
-							"mSupplementalResourceClass": {
-								"type": "string",
-								"const": "Desc_Water_C"
-							},
-							"mByproduct": {
-								"type": "string",
-								"const": ""
-							},
-							"mByproductAmount": {
-								"type": "string",
-								"const": ""
-							}
-						}
-					}
-				},
 				"mFuelResourceForm": {
 					"type": "string",
 					"const": "RF_SOLID"
 				}
 			}
 		},
+		"FGBuildableGeneratorFuel--liquid--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableGeneratorFuel--liquid"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableGeneratorFuel--base"
+				}
+			]
+		},
 		"FGBuildableGeneratorFuel--liquid": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableGeneratorFuel--base",
+			"$ref": "#/$defs/FGBuildableGeneratorFuel--liquid--merged",
 			"unevaluatedProperties": false,
 			"required": [
-				"m_SFXSockets",
-				"m_CurrentPotential",
 				"mDefaultFuelClasses",
 				"mFuel",
-				"mFuelResourceForm",
-				"mRTPCInterval",
-				"mCachedLoadPercentage"
+				"mFuelResourceForm"
 			],
 			"properties": {
-				"m_SFXSockets": {
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"minItems": 1,
-						"items": {
-							"type": "string",
-							"enum": ["AudioSocket_Exhaust", "AudioSocket_Root"]
-						}
-					}
-				},
-				"m_CurrentPotential": {
-					"$ref": "common.schema.json#/$defs/integer-string"
-				},
 				"mDefaultFuelClasses": {
 					"type": "string",
 					"minLength": 1,
@@ -1752,24 +1654,27 @@
 				"mFuelResourceForm": {
 					"type": "string",
 					"const": "RF_LIQUID"
-				},
-				"mRTPCInterval": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mCachedLoadPercentage": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
+		"FGBuildableGeneratorFuel--biogen--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableGeneratorFuel--biogen"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableGeneratorFuel--base"
+				}
+			]
+		},
 		"FGBuildableGeneratorFuel--biogen": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableGeneratorFuel--base",
+			"$ref": "#/$defs/FGBuildableGeneratorFuel--biogen--merged",
 			"unevaluatedProperties": false,
 			"required": [
 				"mDefaultFuelClasses",
 				"mFuel",
-				"mFuelResourceForm",
-				"mCachedLoadPercentage"
+				"mFuelResourceForm"
 			],
 			"properties": {
 				"mDefaultFuelClasses": {
@@ -1819,48 +1724,23 @@
 				"mFuelResourceForm": {
 					"type": "string",
 					"const": "RF_SOLID"
-				},
-				"mCachedLoadPercentage": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
+		"FGBuildableGeneratorGeoThermal--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableGeneratorGeoThermal"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableGenerator--base"
+				}
+			]
+		},
 		"FGBuildableGeneratorGeoThermal": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableGenerator--base",
-			"unevaluatedProperties": false,
-			"required": [
-				"mProductionEffectsRunning",
-				"mVariablePowerProductionConstant",
-				"mVariablePowerProductionFactor",
-				"mVariablePowerProductionCycleLength",
-				"mMinPowerProduction",
-				"mMaxPowerProduction",
-				"mVariablePowerProductionCycleOffset"
-			],
-			"properties": {
-				"mProductionEffectsRunning": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mVariablePowerProductionConstant": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mVariablePowerProductionFactor": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mVariablePowerProductionCycleLength": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mMinPowerProduction": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mMaxPowerProduction": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mVariablePowerProductionCycleOffset": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				}
-			}
+			"$ref": "#/$defs/FGBuildableGeneratorGeoThermal--merged",
+			"unevaluatedProperties": false
 		},
 		"mOutputInventoryHandlerData": {
 			"$ref": "common.schema.json#/$defs/empty-object"

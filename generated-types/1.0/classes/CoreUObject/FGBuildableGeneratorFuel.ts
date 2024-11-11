@@ -1,29 +1,25 @@
 import {FGBuildableGenerator__base__type} from './FGBuildableGenerator';
 
 import {
-	integer_string__type,
-	boolean__type,
-	decimal_string__type,
-} from '../../../common/common/scalar';
+	common_base__FGBuildableGeneratorFuel__base__type,
+	common_base__FGBuildableGeneratorFuel__biogen__type,
+	common_base__FGBuildableGeneratorFuel__liquid__type,
+	common_base__FGBuildableGeneratorFuel__solid__type,
+} from '../../../common/classes/CoreUObject/FGBuildableGeneratorFuel';
 
 import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableGeneratorFuel__base__type =
-	FGBuildableGenerator__base__type & {
-		mFuelClasses: '';
+	FGBuildableGeneratorFuel__base__merged__type & {
 		mFuelClassesInInventory: '';
-		mAvailableFuelClasses: '';
-		mFuelLoadAmount: integer_string__type;
-		mRequiresSupplementalResource: boolean__type;
-		mSupplementalLoadAmount: integer_string__type;
-		mSupplementalToPowerRatio: decimal_string__type;
-		mIsFullBlast: boolean__type;
-		mCachedInputConnections: '';
-		mCachedPipeInputConnections: '';
 	};
+
+export type FGBuildableGeneratorFuel__base__merged__type =
+	common_base__FGBuildableGeneratorFuel__base__type &
+		FGBuildableGenerator__base__type;
 
 export type FGBuildableGeneratorFuel__biogen__type =
-	FGBuildableGeneratorFuel__base__type & {
+	FGBuildableGeneratorFuel__biogen__merged__type & {
 		mDefaultFuelClasses: [
 			(
 				| '/Game/FactoryGame/Resource/Parts/GenericBiomass/Desc_Leaves.Desc_Leaves_C'
@@ -68,16 +64,14 @@ export type FGBuildableGeneratorFuel__biogen__type =
 				mByproductAmount: '';
 			}[],
 		];
-		mCachedLoadPercentage: decimal_string__type;
 	};
+
+export type FGBuildableGeneratorFuel__biogen__merged__type =
+	common_base__FGBuildableGeneratorFuel__biogen__type &
+		FGBuildableGeneratorFuel__base__type;
 
 export type FGBuildableGeneratorFuel__liquid__type =
-	FGBuildableGeneratorFuel__base__type & {
-		m_SFXSockets: [
-			'AudioSocket_Exhaust' | 'AudioSocket_Root',
-			...('AudioSocket_Exhaust' | 'AudioSocket_Root')[],
-		];
-		m_CurrentPotential: integer_string__type;
+	FGBuildableGeneratorFuel__liquid__merged__type & {
 		mDefaultFuelClasses: [
 			(
 				| '/Game/FactoryGame/Resource/Parts/Fuel/Desc_LiquidFuel.Desc_LiquidFuel_C'
@@ -92,76 +86,44 @@ export type FGBuildableGeneratorFuel__liquid__type =
 				| '/Game/FactoryGame/Resource/Parts/BioFuel/Desc_LiquidBiofuel.Desc_LiquidBiofuel_C'
 				| '/Game/FactoryGame/Resource/Parts/RocketFuel/Desc_RocketFuel.Desc_RocketFuel_C'
 				| '/Game/FactoryGame/Resource/Parts/IonizedFuel/Desc_IonizedFuel.Desc_IonizedFuel_C'
-			)[],
-		];
-		mFuel?: [
-			{
-				mFuelClass:
-					| 'Desc_LiquidFuel_C'
-					| 'Desc_LiquidTurboFuel_C'
-					| 'Desc_LiquidBiofuel_C'
-					| 'Desc_RocketFuel_C'
-					| 'Desc_IonizedFuel_C';
-				mSupplementalResourceClass: '';
-				mByproduct: '';
-				mByproductAmount: '';
-			},
-			...{
-				mFuelClass:
-					| 'Desc_LiquidFuel_C'
-					| 'Desc_LiquidTurboFuel_C'
-					| 'Desc_LiquidBiofuel_C'
-					| 'Desc_RocketFuel_C'
-					| 'Desc_IonizedFuel_C';
-				mSupplementalResourceClass: '';
-				mByproduct: '';
-				mByproductAmount: '';
-			}[],
-		];
-		mRTPCInterval: decimal_string__type;
-		mCachedLoadPercentage: decimal_string__type;
-	};
-
-export type FGBuildableGeneratorFuel__solid__type =
-	FGBuildableGeneratorFuel__base__type & {
-		m_SFXSockets: [
-			'AudioSocketTurbine' | 'CoalGeneratorPotential',
-			...('AudioSocketTurbine' | 'CoalGeneratorPotential')[],
-		];
-		m_CurrentPotential: integer_string__type;
-		mDefaultFuelClasses: [
-			(
-				| '/Game/FactoryGame/Resource/RawResources/Coal/Desc_Coal.Desc_Coal_C'
-				| '/Game/FactoryGame/Resource/Parts/CompactedCoal/Desc_CompactedCoal.Desc_CompactedCoal_C'
-				| '/Game/FactoryGame/Resource/Parts/PetroleumCoke/Desc_PetroleumCoke.Desc_PetroleumCoke_C'
-			),
-			...(
-				| '/Game/FactoryGame/Resource/RawResources/Coal/Desc_Coal.Desc_Coal_C'
-				| '/Game/FactoryGame/Resource/Parts/CompactedCoal/Desc_CompactedCoal.Desc_CompactedCoal_C'
-				| '/Game/FactoryGame/Resource/Parts/PetroleumCoke/Desc_PetroleumCoke.Desc_PetroleumCoke_C'
 			)[],
 		];
 		mFuel: [
 			{
 				mFuelClass:
-					| 'Desc_Coal_C'
-					| 'Desc_CompactedCoal_C'
-					| 'Desc_PetroleumCoke_C';
-				mSupplementalResourceClass: 'Desc_Water_C';
+					| 'Desc_LiquidFuel_C'
+					| 'Desc_LiquidTurboFuel_C'
+					| 'Desc_LiquidBiofuel_C'
+					| 'Desc_RocketFuel_C'
+					| 'Desc_IonizedFuel_C';
+				mSupplementalResourceClass: '';
 				mByproduct: '';
 				mByproductAmount: '';
 			},
 			...{
 				mFuelClass:
-					| 'Desc_Coal_C'
-					| 'Desc_CompactedCoal_C'
-					| 'Desc_PetroleumCoke_C';
-				mSupplementalResourceClass: 'Desc_Water_C';
+					| 'Desc_LiquidFuel_C'
+					| 'Desc_LiquidTurboFuel_C'
+					| 'Desc_LiquidBiofuel_C'
+					| 'Desc_RocketFuel_C'
+					| 'Desc_IonizedFuel_C';
+				mSupplementalResourceClass: '';
 				mByproduct: '';
 				mByproductAmount: '';
 			}[],
 		];
 	};
+
+export type FGBuildableGeneratorFuel__liquid__merged__type =
+	common_base__FGBuildableGeneratorFuel__liquid__type &
+		FGBuildableGeneratorFuel__base__type;
+
+export type FGBuildableGeneratorFuel__solid__type =
+	FGBuildableGeneratorFuel__solid__merged__type;
+
+export type FGBuildableGeneratorFuel__solid__merged__type =
+	common_base__FGBuildableGeneratorFuel__solid__type &
+		FGBuildableGeneratorFuel__base__type;
 
 export type FGBuildableGeneratorFuel__NativeClass =
 	NativeClass__type & {

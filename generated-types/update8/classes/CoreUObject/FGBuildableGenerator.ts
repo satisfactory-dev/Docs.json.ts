@@ -1,9 +1,10 @@
 import {FGBuildable__consumes_power_base__type} from './FGBuildable';
 
-import {decimal_string__type} from '../../../common/common/scalar';
+import {common_base__FGBuildableGenerator__base__type} from '../../../common/classes/CoreUObject/FGBuildableGenerator';
 
 export type FGBuildableGenerator__base__type =
-	FGBuildable__consumes_power_base__type & {
-		mPowerProduction: decimal_string__type;
-		mLoadPercentage: decimal_string__type;
-	};
+	FGBuildableGenerator__base__merged__type;
+
+export type FGBuildableGenerator__base__merged__type =
+	common_base__FGBuildableGenerator__base__type &
+		FGBuildable__consumes_power_base__type;

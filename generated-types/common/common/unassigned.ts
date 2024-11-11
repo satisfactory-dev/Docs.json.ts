@@ -49,6 +49,17 @@ import {
 
 import {common_base__FGBuildableWalkwayLightweight__type} from '../classes/CoreUObject/FGBuildableWalkwayLightweight';
 
+import {common_base__FGBuildableGenerator__base__type} from '../classes/CoreUObject/FGBuildableGenerator';
+
+import {
+	common_base__FGBuildableGeneratorFuel__base__type,
+	common_base__FGBuildableGeneratorFuel__solid__type,
+	common_base__FGBuildableGeneratorFuel__liquid__type,
+	common_base__FGBuildableGeneratorFuel__biogen__type,
+} from '../classes/CoreUObject/FGBuildableGeneratorFuel';
+
+import {common_base__FGBuildableGeneratorGeoThermal__type} from '../classes/CoreUObject/FGBuildableGeneratorGeoThermal';
+
 import {
 	FGSchematic__mUnlocks_mSchematics__mSchematics__type,
 	common_base__FGSchematic__mUnlocks__type,
@@ -390,6 +401,12 @@ export type faux_11__type = class__type & {
 	mDisableSnapOn?: common_base__mDisableSnapOn__type;
 	FGBuildableWalkwayLightweight?: common_base__FGBuildableWalkwayLightweight__type;
 	FGBuildableWalkway?: common_base__FGBuildableWalkway__type;
+	FGBuildableGenerator_base?: common_base__FGBuildableGenerator__base__type;
+	FGBuildableGeneratorFuel_base?: common_base__FGBuildableGeneratorFuel__base__type;
+	FGBuildableGeneratorFuel_solid?: common_base__FGBuildableGeneratorFuel__solid__type;
+	FGBuildableGeneratorFuel_liquid?: common_base__FGBuildableGeneratorFuel__liquid__type;
+	FGBuildableGeneratorFuel_biogen?: common_base__FGBuildableGeneratorFuel__biogen__type;
+	FGBuildableGeneratorGeoThermal?: common_base__FGBuildableGeneratorGeoThermal__type;
 };
 
 export type faux_12__type = class__type & {

@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (376 of 376)
+100.00% Complete (388 of 388)
 
 ## Basic Types
 
@@ -69,6 +69,12 @@
 -   [x] common-base--FGBuildableFactory--generic (common type)
 -   [x] common-base--FGBuildableFactory--jump-pad (common type)
 -   [x] common-base--FGBuildableFactory--landing-pad (common type)
+-   [x] common-base--FGBuildableGenerator--base (common type)
+-   [x] common-base--FGBuildableGeneratorFuel--base (common type)
+-   [x] common-base--FGBuildableGeneratorFuel--biogen (common type)
+-   [x] common-base--FGBuildableGeneratorFuel--liquid (common type)
+-   [x] common-base--FGBuildableGeneratorFuel--solid (common type)
+-   [x] common-base--FGBuildableGeneratorGeoThermal (common type)
 -   [x] common-base--FGBuildableMAM (common type)
 -   [x] common-base--FGBuildablePillarLightweight (common type)
 -   [x] common-base--FGBuildablePipelineJunction (common type)
@@ -265,13 +271,22 @@
 ## FGBuildableGenerator
 
 -   [x] FGBuildableGenerator--base
+-   [x] FGBuildableGenerator--base--merged
 
 ## FGBuildableGeneratorFuel
 
 -   [x] FGBuildableGeneratorFuel--base
+-   [x] FGBuildableGeneratorFuel--base--merged
 -   [x] FGBuildableGeneratorFuel--biogen
+-   [x] FGBuildableGeneratorFuel--biogen--merged
 -   [x] FGBuildableGeneratorFuel--liquid
+-   [x] FGBuildableGeneratorFuel--liquid--merged
 -   [x] FGBuildableGeneratorFuel--solid
+-   [x] FGBuildableGeneratorFuel--solid--merged
+
+## FGBuildableGeneratorGeoThermal
+
+-   [x] FGBuildableGeneratorGeoThermal--merged
 
 ## FGBuildableGeneratorNuclear
 
