@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (218 of 218)
+100.00% Complete (223 of 223)
 
 ## Basic Types
 
@@ -85,6 +85,10 @@
 -   [x] common-base--FGBuildableGeneratorFuel--liquid
 -   [x] common-base--FGBuildableGeneratorFuel--solid
 -   [x] common-base--FGBuildableGeneratorGeoThermal
+-   [x] common-base--FGBuildableGeneratorNuclear
+-   [x] common-base--FGBuildableGeneratorNuclear--mFuel--base (common type)
+-   [x] common-base--FGBuildableGeneratorNuclear--mFuel--NuclearFuelRod
+-   [x] common-base--FGBuildableGeneratorNuclear--mFuel--PlutoniumFuelRod
 -   [x] common-base--FGBuildableMAM
 -   [x] common-base--FGBuildablePillarLightweight
 -   [x] common-base--FGBuildablePipelineJunction

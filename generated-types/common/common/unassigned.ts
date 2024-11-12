@@ -61,6 +61,13 @@ import {
 import {common_base__FGBuildableGeneratorGeoThermal__type} from '../classes/CoreUObject/FGBuildableGeneratorGeoThermal';
 
 import {
+	common_base__FGBuildableGeneratorNuclear__mFuel__base__type,
+	common_base__FGBuildableGeneratorNuclear__mFuel__NuclearFuelRod__type,
+	common_base__FGBuildableGeneratorNuclear__mFuel__PlutoniumFuelRod__type,
+	common_base__FGBuildableGeneratorNuclear__type,
+} from '../classes/CoreUObject/FGBuildableGeneratorNuclear';
+
+import {
 	FGSchematic__mUnlocks_mSchematics__mSchematics__type,
 	common_base__FGSchematic__mUnlocks__type,
 	common_base__FGSchematic__base__mSchematicDependencies__mRequireAllSchematicsToBePurchased__type,
@@ -407,6 +414,10 @@ export type faux_11__type = class__type & {
 	FGBuildableGeneratorFuel_liquid?: common_base__FGBuildableGeneratorFuel__liquid__type;
 	FGBuildableGeneratorFuel_biogen?: common_base__FGBuildableGeneratorFuel__biogen__type;
 	FGBuildableGeneratorGeoThermal?: common_base__FGBuildableGeneratorGeoThermal__type;
+	FGBuildableGeneratorNuclear_mFuel_base?: common_base__FGBuildableGeneratorNuclear__mFuel__base__type;
+	FGBuildableGeneratorNuclear_mFuel_NuclearFuelRod?: common_base__FGBuildableGeneratorNuclear__mFuel__NuclearFuelRod__type;
+	FGBuildableGeneratorNuclear_mFuel_PlutoniumFuelRod?: common_base__FGBuildableGeneratorNuclear__mFuel__PlutoniumFuelRod__type;
+	FGBuildableGeneratorNuclear?: common_base__FGBuildableGeneratorNuclear__type;
 };
 
 export type faux_12__type = class__type & {

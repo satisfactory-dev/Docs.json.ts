@@ -1,16 +1,16 @@
 import {FGBuildableGeneratorFuel__base__type} from './FGBuildableGeneratorFuel';
 
 import {
-	integer_string__type,
-	decimal_string__type,
-} from '../../../common/common/scalar';
+	common_base__FGBuildableGeneratorNuclear__mFuel__NuclearFuelRod__type,
+	common_base__FGBuildableGeneratorNuclear__mFuel__PlutoniumFuelRod__type,
+	common_base__FGBuildableGeneratorNuclear__type,
+	common_base__FGBuildableGeneratorNuclear__mFuel__base__type,
+} from '../../../common/classes/CoreUObject/FGBuildableGeneratorNuclear';
 
 import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableGeneratorNuclear__type =
-	FGBuildableGeneratorFuel__base__type & {
-		mWasteLeftFromCurrentFuel: integer_string__type;
-		mCurrentGeneratorNuclearWarning: 'GNW_None';
+	FGBuildableGeneratorNuclear__merged__type & {
 		mDefaultFuelClasses: [
 			(
 				| '/Game/FactoryGame/Resource/Parts/NuclearFuelRod/Desc_NuclearFuelRod.Desc_NuclearFuelRod_C'
@@ -24,33 +24,22 @@ export type FGBuildableGeneratorNuclear__type =
 			)[],
 		];
 		mFuel: [
-			FGBuildableGeneratorNuclear__mFuel__NuclearFuelRod__type,
-			FGBuildableGeneratorNuclear__mFuel__PlutoniumFuelRod__type,
+			common_base__FGBuildableGeneratorNuclear__mFuel__NuclearFuelRod__type,
+			common_base__FGBuildableGeneratorNuclear__mFuel__PlutoniumFuelRod__type,
 			FGBuildableGeneratorNuclear__mFuel__FicsoniumFuelRod__type,
 		];
-		mCachedLoadPercentage: decimal_string__type;
 	};
 
-export type FGBuildableGeneratorNuclear__mFuel__FicsoniumFuelRod__type = {
-	mFuelClass: 'Desc_FicsoniumFuelRod_C';
-	mSupplementalResourceClass: 'Desc_Water_C';
-	mByproduct: '';
-	mByproductAmount: '';
-};
+export type FGBuildableGeneratorNuclear__merged__type =
+	common_base__FGBuildableGeneratorNuclear__type &
+		FGBuildableGeneratorFuel__base__type;
 
-export type FGBuildableGeneratorNuclear__mFuel__NuclearFuelRod__type = {
-	mFuelClass: 'Desc_NuclearFuelRod_C';
-	mSupplementalResourceClass: 'Desc_Water_C';
-	mByproduct: 'Desc_NuclearWaste_C';
-	mByproductAmount: integer_string__type;
-};
-
-export type FGBuildableGeneratorNuclear__mFuel__PlutoniumFuelRod__type = {
-	mFuelClass: 'Desc_PlutoniumFuelRod_C';
-	mSupplementalResourceClass: 'Desc_Water_C';
-	mByproduct: 'Desc_PlutoniumWaste_C';
-	mByproductAmount: integer_string__type;
-};
+export type FGBuildableGeneratorNuclear__mFuel__FicsoniumFuelRod__type =
+	common_base__FGBuildableGeneratorNuclear__mFuel__base__type & {
+		mFuelClass: 'Desc_FicsoniumFuelRod_C';
+		mByproduct: '';
+		mByproductAmount: '';
+	};
 
 export type FGBuildableGeneratorNuclear__NativeClass =
 	NativeClass__type & {

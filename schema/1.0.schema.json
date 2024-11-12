@@ -3953,63 +3953,12 @@
 			"$ref": "#/$defs/FGBuildableGeneratorGeoThermal--merged",
 			"unevaluatedProperties": false
 		},
-		"FGBuildableGeneratorNuclear--mFuel--NuclearFuelRod": {
-			"type": "object",
-			"required": [
-				"mFuelClass",
-				"mSupplementalResourceClass",
-				"mByproduct",
-				"mByproductAmount"
-			],
-			"properties": {
-				"mFuelClass": {
-					"type": "string",
-					"const": "Desc_NuclearFuelRod_C"
-				},
-				"mSupplementalResourceClass": {
-					"type": "string",
-					"const": "Desc_Water_C"
-				},
-				"mByproduct": {
-					"type": "string",
-					"const": "Desc_NuclearWaste_C"
-				},
-				"mByproductAmount": {
-					"$ref": "common.schema.json#/$defs/integer-string"
-				}
-			}
-		},
-		"FGBuildableGeneratorNuclear--mFuel--PlutoniumFuelRod": {
-			"type": "object",
-			"required": [
-				"mFuelClass",
-				"mSupplementalResourceClass",
-				"mByproduct",
-				"mByproductAmount"
-			],
-			"properties": {
-				"mFuelClass": {
-					"type": "string",
-					"const": "Desc_PlutoniumFuelRod_C"
-				},
-				"mSupplementalResourceClass": {
-					"type": "string",
-					"const": "Desc_Water_C"
-				},
-				"mByproduct": {
-					"type": "string",
-					"const": "Desc_PlutoniumWaste_C"
-				},
-				"mByproductAmount": {
-					"$ref": "common.schema.json#/$defs/integer-string"
-				}
-			}
-		},
 		"FGBuildableGeneratorNuclear--mFuel--FicsoniumFuelRod": {
 			"type": "object",
+			"unevaluatedProperties": false,
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildableGeneratorNuclear--mFuel--base",
 			"required": [
 				"mFuelClass",
-				"mSupplementalResourceClass",
 				"mByproduct",
 				"mByproductAmount"
 			],
@@ -4018,10 +3967,6 @@
 					"type": "string",
 					"const": "Desc_FicsoniumFuelRod_C"
 				},
-				"mSupplementalResourceClass": {
-					"type": "string",
-					"const": "Desc_Water_C"
-				},
 				"mByproduct": {
 					"type": "string",
 					"const": ""
@@ -4032,25 +3977,26 @@
 				}
 			}
 		},
+		"FGBuildableGeneratorNuclear--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableGeneratorNuclear"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableGeneratorFuel--base"
+				}
+			]
+		},
 		"FGBuildableGeneratorNuclear": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableGeneratorFuel--base",
+			"$ref": "#/$defs/FGBuildableGeneratorNuclear--merged",
 			"unevaluatedProperties": false,
 			"required": [
-				"mWasteLeftFromCurrentFuel",
-				"mCurrentGeneratorNuclearWarning",
 				"mDefaultFuelClasses",
 				"mFuel",
 				"mCachedLoadPercentage"
 			],
 			"properties": {
-				"mWasteLeftFromCurrentFuel": {
-					"$ref": "common.schema.json#/$defs/integer-string"
-				},
-				"mCurrentGeneratorNuclearWarning": {
-					"type": "string",
-					"const": "GNW_None"
-				},
 				"mDefaultFuelClasses": {
 					"type": "string",
 					"minLength": 1,
@@ -4073,18 +4019,15 @@
 					"items": false,
 					"prefixItems": [
 						{
-							"$ref": "#/$defs/FGBuildableGeneratorNuclear--mFuel--NuclearFuelRod"
+							"$ref": "common.schema.json#/$defs/common-base--FGBuildableGeneratorNuclear--mFuel--NuclearFuelRod"
 						},
 						{
-							"$ref": "#/$defs/FGBuildableGeneratorNuclear--mFuel--PlutoniumFuelRod"
+							"$ref": "common.schema.json#/$defs/common-base--FGBuildableGeneratorNuclear--mFuel--PlutoniumFuelRod"
 						},
 						{
 							"$ref": "#/$defs/FGBuildableGeneratorNuclear--mFuel--FicsoniumFuelRod"
 						}
 					]
-				},
-				"mCachedLoadPercentage": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
