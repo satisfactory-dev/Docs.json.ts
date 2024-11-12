@@ -3430,6 +3430,111 @@
 				}
 			}
 		},
+		"common-base--FGBuildablePipeline": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--base",
+			"required": [
+				"mRadius",
+				"mFlowLimit",
+				"mFlowIndicatorMinimumPipeLength",
+				"mPipeConnections",
+				"mFluidBox",
+				"mIndicatorData",
+				"mMaxIndicatorTurnAngle",
+				"mIgnoreActorsForIndicator",
+				"mFluidNames",
+				"mCurrentFluid",
+				"mLastContentForSound",
+				"mLastFlowForSound",
+				"mRattleLimit",
+				"mIsRattling",
+				"mUpdateSoundsHandle",
+				"mMeshLength",
+				"mSplineData",
+				"mSnappedPassthroughs"
+			],
+			"properties": {
+				"mMeshLength": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mSplineData": {
+					"type": "string",
+					"const": ""
+				},
+				"mRadius": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mFlowLimit": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mFlowIndicatorMinimumPipeLength": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mPipeConnections": {
+					"type": "string",
+					"const": ""
+				},
+				"mFluidBox": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mIndicatorData": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mMaxIndicatorTurnAngle": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mIgnoreActorsForIndicator": {
+					"type": "string",
+					"const": ""
+				},
+				"mFluidNames": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"minItems": 1,
+						"items": {
+							"type": "string",
+							"minLength": 1,
+							"typed_string": {
+								"required": ["WwiseSafeName"],
+								"properties": {
+									"WwiseSafeName": {
+										"type": "string",
+										"pattern": "^[A-Z][A-Za-z]+(_[A-Z][A-Za-z]+)*$"
+									},
+									"ActualName": {
+										"type": "string",
+										"pattern": "^[A-Z][A-Za-z]+( [A-Z][A-Za-z]+)*$"
+									}
+								}
+							}
+						}
+					}
+				},
+				"mCurrentFluid": {
+					"type": "string",
+					"const": ""
+				},
+				"mLastContentForSound": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mLastFlowForSound": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mRattleLimit": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mIsRattling": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mUpdateSoundsHandle": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mSnappedPassthroughs": {
+					"$ref": "common.schema.json#/$defs/common-base--mSnappedPassthroughs"
+				}
+			}
+		},
 		"common-base--FGBuildable--pipeline-accessory--base": {
 			"type": "object",
 			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--consumes-power-base",
@@ -3898,6 +4003,9 @@
 				},
 				"FGBuildableGeneratorNuclear": {
 					"$ref": "#/$defs/common-base--FGBuildableGeneratorNuclear"
+				},
+				"FGBuildablePipeline": {
+					"$ref": "#/$defs/common-base--FGBuildablePipeline"
 				}
 			}
 		},

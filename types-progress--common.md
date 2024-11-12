@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (223 of 223)
+100.00% Complete (224 of 224)
 
 ## Basic Types
 
@@ -91,6 +91,7 @@
 -   [x] common-base--FGBuildableGeneratorNuclear--mFuel--PlutoniumFuelRod
 -   [x] common-base--FGBuildableMAM
 -   [x] common-base--FGBuildablePillarLightweight
+-   [x] common-base--FGBuildablePipeline
 -   [x] common-base--FGBuildablePipelineJunction
 -   [x] common-base--FGBuildablePipelinePump
 -   [x] common-base--FGBuildablePipelinePump--valve

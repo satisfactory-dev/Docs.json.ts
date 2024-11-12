@@ -67,6 +67,8 @@ import {
 	common_base__FGBuildableGeneratorNuclear__type,
 } from '../classes/CoreUObject/FGBuildableGeneratorNuclear';
 
+import {common_base__FGBuildablePipeline__type} from '../classes/CoreUObject/FGBuildablePipeline';
+
 import {
 	FGSchematic__mUnlocks_mSchematics__mSchematics__type,
 	common_base__FGSchematic__mUnlocks__type,
@@ -418,6 +420,7 @@ export type faux_11__type = class__type & {
 	FGBuildableGeneratorNuclear_mFuel_NuclearFuelRod?: common_base__FGBuildableGeneratorNuclear__mFuel__NuclearFuelRod__type;
 	FGBuildableGeneratorNuclear_mFuel_PlutoniumFuelRod?: common_base__FGBuildableGeneratorNuclear__mFuel__PlutoniumFuelRod__type;
 	FGBuildableGeneratorNuclear?: common_base__FGBuildableGeneratorNuclear__type;
+	FGBuildablePipeline?: common_base__FGBuildablePipeline__type;
 };
 
 export type faux_12__type = class__type & {

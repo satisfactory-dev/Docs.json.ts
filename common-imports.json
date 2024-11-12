@@ -72,6 +72,7 @@
 	"common_type__common_base__FGBuildableGeneratorNuclear__mFuel__PlutoniumFuelRod__type": "classes/CoreUObject/FGBuildableGeneratorNuclear",
 	"common_type__common_base__FGBuildableMAM__type": "classes/CoreUObject/FGBuildableMAM",
 	"common_type__common_base__FGBuildablePillarLightweight__type": "classes/CoreUObject/FGBuildablePillarLightweight",
+	"common_type__common_base__FGBuildablePipeline__type": "classes/CoreUObject/FGBuildablePipeline",
 	"common_type__common_base__FGBuildablePipelineJunction__type": "classes/CoreUObject/FGBuildablePipelineJunction",
 	"common_type__common_base__FGBuildablePipelinePump__type": "classes/CoreUObject/FGBuildablePipelinePump",
 	"common_type__common_base__FGBuildablePipelinePump__valve__type": "classes/CoreUObject/FGBuildablePipelinePump",

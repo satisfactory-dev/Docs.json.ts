@@ -4045,103 +4045,28 @@
 				}
 			}
 		},
+		"FGBuildablePipeline--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildablePipeline"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
 		"FGBuildablePipeline": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
+			"$ref": "#/$defs/FGBuildablePipeline--merged",
 			"unevaluatedProperties": false,
 			"required": [
-				"mRadius",
-				"mFlowLimit",
-				"mFlowIndicatorMinimumPipeLength",
 				"mSoundSplineComponentEmitterInterval",
-				"mPipeConnections",
-				"mFluidBox",
-				"mIndicatorData",
-				"mMaxIndicatorTurnAngle",
-				"mIgnoreActorsForIndicator",
-				"mFluidNames",
-				"mCurrentFluid",
-				"mLastContentForSound",
-				"mLastFlowForSound",
 				"mLastElapsedTime",
 				"mLastFlowForSoundUpdateThreshold",
-				"mRattleLimit",
-				"mIsRattling",
-				"mUpdateSoundsHandle",
-				"mUpdateSoundsTimerInterval",
-				"mMeshLength",
-				"mSplineData",
-				"mSnappedPassthroughs"
+				"mUpdateSoundsTimerInterval"
 			],
 			"properties": {
-				"mMeshLength": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mSplineData": {
-					"type": "string",
-					"const": ""
-				},
-				"mRadius": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mFlowLimit": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mFlowIndicatorMinimumPipeLength": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
 				"mSoundSplineComponentEmitterInterval": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mPipeConnections": {
-					"type": "string",
-					"const": ""
-				},
-				"mFluidBox": {
-					"$ref": "common.schema.json#/$defs/empty-object"
-				},
-				"mIndicatorData": {
-					"$ref": "common.schema.json#/$defs/empty-object"
-				},
-				"mMaxIndicatorTurnAngle": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mIgnoreActorsForIndicator": {
-					"type": "string",
-					"const": ""
-				},
-				"mFluidNames": {
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"minItems": 1,
-						"items": {
-							"type": "string",
-							"minLength": 1,
-							"typed_string": {
-								"required": ["WwiseSafeName"],
-								"properties": {
-									"WwiseSafeName": {
-										"type": "string",
-										"pattern": "^[A-Z][A-Za-z]+(_[A-Z][A-Za-z]+)*$"
-									},
-									"ActualName": {
-										"type": "string",
-										"pattern": "^[A-Z][A-Za-z]+( [A-Z][A-Za-z]+)*$"
-									}
-								}
-							}
-						}
-					}
-				},
-				"mCurrentFluid": {
-					"type": "string",
-					"const": ""
-				},
-				"mLastContentForSound": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mLastFlowForSound": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mLastElapsedTime": {
@@ -4150,20 +4075,8 @@
 				"mLastFlowForSoundUpdateThreshold": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
-				"mRattleLimit": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mIsRattling": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mUpdateSoundsHandle": {
-					"$ref": "common.schema.json#/$defs/empty-object"
-				},
 				"mUpdateSoundsTimerInterval": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mSnappedPassthroughs": {
-					"$ref": "common.schema.json#/$defs/common-base--mSnappedPassthroughs"
 				}
 			}
 		},
