@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (351 of 351)
+100.00% Complete (353 of 353)
 
 ## Basic Types
 
@@ -277,6 +277,11 @@
 ## FGBuildableGeneratorGeoThermal
 
 -   [x] FGBuildableGeneratorGeoThermal--merged
+
+## FGBuildableGeneratorNuclear
+
+-   [x] FGBuildableGeneratorNuclear--mFuel--NuclearFuelRod
+-   [x] FGBuildableGeneratorNuclear--mFuel--PlutoniumFuelRod
 
 ## FGBuildableLightSource
 

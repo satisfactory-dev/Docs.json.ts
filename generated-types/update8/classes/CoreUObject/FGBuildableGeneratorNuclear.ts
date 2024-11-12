@@ -25,38 +25,26 @@ export type FGBuildableGeneratorNuclear__type =
 			)[],
 		];
 		mFuel: [
-			(
-				| {
-						mFuelClass: 'Desc_NuclearFuelRod_C';
-						mSupplementalResourceClass: 'Desc_Water_C';
-						mByproduct: 'Desc_NuclearWaste_C';
-						mByproductAmount: integer_string__type;
-				}
-				| {
-						mFuelClass: 'Desc_PlutoniumFuelRod_C';
-						mSupplementalResourceClass: 'Desc_Water_C';
-						mByproduct: 'Desc_PlutoniumWaste_C';
-						mByproductAmount: integer_string__type;
-				}
-			),
-			...(
-				| {
-						mFuelClass: 'Desc_NuclearFuelRod_C';
-						mSupplementalResourceClass: 'Desc_Water_C';
-						mByproduct: 'Desc_NuclearWaste_C';
-						mByproductAmount: integer_string__type;
-				}
-				| {
-						mFuelClass: 'Desc_PlutoniumFuelRod_C';
-						mSupplementalResourceClass: 'Desc_Water_C';
-						mByproduct: 'Desc_PlutoniumWaste_C';
-						mByproductAmount: integer_string__type;
-				}
-			)[],
+			FGBuildableGeneratorNuclear__mFuel__NuclearFuelRod__type,
+			FGBuildableGeneratorNuclear__mFuel__PlutoniumFuelRod__type,
 		];
 		mFuelResourceForm: 'RF_SOLID';
 		mCachedLoadPercentage: decimal_string__type;
 	};
+
+export type FGBuildableGeneratorNuclear__mFuel__NuclearFuelRod__type = {
+	mFuelClass: 'Desc_NuclearFuelRod_C';
+	mSupplementalResourceClass: 'Desc_Water_C';
+	mByproduct: 'Desc_NuclearWaste_C';
+	mByproductAmount: integer_string__type;
+};
+
+export type FGBuildableGeneratorNuclear__mFuel__PlutoniumFuelRod__type = {
+	mFuelClass: 'Desc_PlutoniumFuelRod_C';
+	mSupplementalResourceClass: 'Desc_Water_C';
+	mByproduct: 'Desc_PlutoniumWaste_C';
+	mByproductAmount: integer_string__type;
+};
 
 export type FGBuildableGeneratorNuclear__NativeClass =
 	NativeClass__type & {

@@ -1745,6 +1745,58 @@
 		"mOutputInventoryHandlerData": {
 			"$ref": "common.schema.json#/$defs/empty-object"
 		},
+		"FGBuildableGeneratorNuclear--mFuel--NuclearFuelRod": {
+			"type": "object",
+			"required": [
+				"mFuelClass",
+				"mSupplementalResourceClass",
+				"mByproduct",
+				"mByproductAmount"
+			],
+			"properties": {
+				"mFuelClass": {
+					"type": "string",
+					"const": "Desc_NuclearFuelRod_C"
+				},
+				"mSupplementalResourceClass": {
+					"type": "string",
+					"const": "Desc_Water_C"
+				},
+				"mByproduct": {
+					"type": "string",
+					"const": "Desc_NuclearWaste_C"
+				},
+				"mByproductAmount": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				}
+			}
+		},
+		"FGBuildableGeneratorNuclear--mFuel--PlutoniumFuelRod": {
+			"type": "object",
+			"required": [
+				"mFuelClass",
+				"mSupplementalResourceClass",
+				"mByproduct",
+				"mByproductAmount"
+			],
+			"properties": {
+				"mFuelClass": {
+					"type": "string",
+					"const": "Desc_PlutoniumFuelRod_C"
+				},
+				"mSupplementalResourceClass": {
+					"type": "string",
+					"const": "Desc_Water_C"
+				},
+				"mByproduct": {
+					"type": "string",
+					"const": "Desc_PlutoniumWaste_C"
+				},
+				"mByproductAmount": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				}
+			}
+		},
 		"FGBuildableGeneratorNuclear": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableGeneratorFuel--base",
@@ -1785,64 +1837,17 @@
 				},
 				"mFuel": {
 					"type": "array",
-					"minItems": 1,
+					"minItems": 2,
 					"maxItems": 2,
-					"items": {
-						"oneOf": [
+					"items": false,
+					"prefixItems": [
 							{
-								"type": "object",
-								"required": [
-									"mFuelClass",
-									"mSupplementalResourceClass",
-									"mByproduct",
-									"mByproductAmount"
-								],
-								"properties": {
-									"mFuelClass": {
-										"type": "string",
-										"const": "Desc_NuclearFuelRod_C"
-									},
-									"mSupplementalResourceClass": {
-										"type": "string",
-										"const": "Desc_Water_C"
-									},
-									"mByproduct": {
-										"type": "string",
-										"const": "Desc_NuclearWaste_C"
-									},
-									"mByproductAmount": {
-										"$ref": "common.schema.json#/$defs/integer-string"
-									}
-								}
+								"$ref": "#/$defs/FGBuildableGeneratorNuclear--mFuel--NuclearFuelRod"
 							},
 							{
-								"type": "object",
-								"required": [
-									"mFuelClass",
-									"mSupplementalResourceClass",
-									"mByproduct",
-									"mByproductAmount"
-								],
-								"properties": {
-									"mFuelClass": {
-										"type": "string",
-										"const": "Desc_PlutoniumFuelRod_C"
-									},
-									"mSupplementalResourceClass": {
-										"type": "string",
-										"const": "Desc_Water_C"
-									},
-									"mByproduct": {
-										"type": "string",
-										"const": "Desc_PlutoniumWaste_C"
-									},
-									"mByproductAmount": {
-										"$ref": "common.schema.json#/$defs/integer-string"
-									}
-								}
+								"$ref": "#/$defs/FGBuildableGeneratorNuclear--mFuel--PlutoniumFuelRod"
 							}
 						]
-					}
 				},
 				"mFuelResourceForm": {
 					"type": "string",
