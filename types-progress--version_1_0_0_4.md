@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (393 of 393)
+100.00% Complete (403 of 403)
 
 ## Basic Types
 
@@ -50,6 +50,8 @@
 -   [x] common-base--FGBuildable--base (common type)
 -   [x] common-base--FGBuildable--consumes-power-base (common type)
 -   [x] common-base--FGBuildable--docking-station-base (common type)
+-   [x] common-base--FGBuildable--extractor-base (common type)
+-   [x] common-base--FGBuildable--extractor-base--shared (common type)
 -   [x] common-base--FGBuildable--occupied (common type)
 -   [x] common-base--FGBuildable--pipeline-accessory (common type)
 -   [x] common-base--FGBuildable--pipeline-accessory--base (common type)
@@ -89,12 +91,15 @@
 -   [x] common-base--FGBuildablePoleLightweight (common type)
 -   [x] common-base--FGBuildablePowerPole (common type)
 -   [x] common-base--FGBuildableRailroadTrack (common type)
+-   [x] common-base--FGBuildableResourceSink (common type)
+-   [x] common-base--FGBuildableResourceSinkShop (common type)
 -   [x] common-base--FGBuildableTradingPost (common type)
 -   [x] common-base--FGBuildableWalkway (common type)
 -   [x] common-base--FGBuildableWalkway--base (common type)
 -   [x] common-base--FGBuildableWalkwayLightweight (common type)
 -   [x] common-base--FGBuildableWall--base (common type)
 -   [x] common-base--FGBuildableWall--base--rectangle (common type)
+-   [x] common-base--FGBuildableWaterPump (common type)
 -   [x] common-base--FGBuildableWire (common type)
 -   [x] common-base--FGBuildingDescriptor (common type)
 -   [x] common-base--FGBuildingDescriptor--ClassName (common type)
@@ -211,7 +216,9 @@
 -   [x] FGBuildable--consumes-power-base--version-1
 -   [x] FGBuildable--docking-station-base
 -   [x] FGBuildable--extractor-base
+-   [x] FGBuildable--extractor-base--merged
 -   [x] FGBuildable--extractor-base--shared
+-   [x] FGBuildable--extractor-base--shared--merged
 -   [x] FGBuildable--occupied--final
 -   [x] FGBuildable--occupied--merged
 -   [x] FGBuildable--pipeline-accessory
@@ -366,6 +373,14 @@
 -   [x] FGBuildableResourceExtractor--miner-mk3
 -   [x] FGBuildableResourceExtractor--oil-extractor
 
+## FGBuildableResourceSink
+
+-   [x] FGBuildableResourceSink--merged
+
+## FGBuildableResourceSinkShop
+
+-   [x] FGBuildableResourceSinkShop--merged
+
 ## FGBuildableSpaceElevator
 
 -   [x] FGBuildableSpaceElevator--mSpaceElevatorState
@@ -397,6 +412,10 @@
 
 -   [x] FGBuildableWall--base
 -   [x] FGBuildableWall--base--rectangle
+
+## FGBuildableWaterPump
+
+-   [x] FGBuildableWaterPump--merged
 
 ## FGBuildableWire
 

@@ -11,6 +11,8 @@ import {
 import {
 	empty_object__type,
 	xyz__type,
+	UnrealEngineString__array__type,
+	None__type,
 	class__type,
 } from '../../common/unassigned';
 
@@ -104,6 +106,27 @@ export type common_base__FGBuildable__docking_station_base__type =
 		mStorageSizeY: integer_string__type;
 		mTransferSpeed: decimal_string__type;
 		mStackTransferSize: decimal_string__type;
+	};
+
+export type common_base__FGBuildable__extractor_base__type =
+	common_base__FGBuildable__extractor_base__shared__type & {
+		mPipeOutputConnections: '';
+		mExtractStartupTime: decimal_string__signed__type;
+		mExtractStartupTimer: decimal_string__type;
+		mExtractCycleTime: decimal_string__type;
+		mItemsPerCycle: integer_string__type;
+	};
+
+export type common_base__FGBuildable__extractor_base__shared__type =
+	common_base__FGBuildable__consumes_power_base__type & {
+		mAllowedResourceForms: [
+			'RF_LIQUID' | 'RF_SOLID' | 'RF_GAS' | 'RF_HEAT',
+			...('RF_LIQUID' | 'RF_SOLID' | 'RF_GAS' | 'RF_HEAT')[],
+		];
+		mOnlyAllowCertainResources: boolean__type;
+		mAllowedResources: '' | UnrealEngineString__array__type;
+		mExtractorTypeName: None__type | 'Miner';
+		mTryFindMissingResource: boolean__type;
 	};
 
 export type common_base__FGBuildable__occupied__type =

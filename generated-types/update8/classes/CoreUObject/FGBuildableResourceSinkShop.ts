@@ -1,13 +1,15 @@
 import {FGBuildable__consumes_power_base__type} from './FGBuildable';
 
-import {integer_string__type} from '../../../common/common/scalar';
+import {common_base__FGBuildableResourceSinkShop__type} from '../../../common/classes/CoreUObject/FGBuildableResourceSinkShop';
 
 import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableResourceSinkShop__type =
-	FGBuildable__consumes_power_base__type & {
-		mShopInventoryDefaultSize: integer_string__type;
-	};
+	FGBuildableResourceSinkShop__merged__type;
+
+export type FGBuildableResourceSinkShop__merged__type =
+	common_base__FGBuildableResourceSinkShop__type &
+		FGBuildable__consumes_power_base__type;
 
 export type FGBuildableResourceSinkShop__NativeClass =
 	NativeClass__type & {

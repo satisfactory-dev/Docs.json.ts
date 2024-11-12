@@ -1923,207 +1923,94 @@
 			"$ref": "#/$defs/FGBuildablePipeReservoir--merged",
 			"unevaluatedProperties": false
 		},
+		"FGBuildable--extractor-base--shared--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildable--extractor-base--shared"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--consumes-power-base"
+				}
+			]
+		},
 		"FGBuildable--extractor-base--shared": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--consumes-power-base",
-			"required": [
-				"mAllowedResourceForms",
-				"mOnlyAllowCertainResources",
-				"mAllowedResources",
-				"mExtractorTypeName",
-				"mTryFindMissingResource"
-			],
-			"properties": {
-				"mAllowedResourceForms": {
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"minItems": 1,
-						"items": {
-							"type": "string",
-							"enum": [
-								"RF_LIQUID",
-								"RF_SOLID",
-								"RF_GAS",
-								"RF_HEAT"
-							]
-						}
-					}
+			"$ref": "#/$defs/FGBuildable--extractor-base--shared--merged"
+		},
+		"FGBuildable--extractor-base--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildable--extractor-base"
 				},
-				"mOnlyAllowCertainResources": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mAllowedResources": {
-					"oneOf": [
-						{
-							"type": "string",
-							"const": ""
-						},
-						{
-							"$ref": "common.schema.json#/$defs/UnrealEngineString--array"
-						}
-					]
-				},
-				"mExtractorTypeName": {
-					"oneOf": [
-						{
-							"$ref": "common.schema.json#/$defs/None"
-						},
-						{
-							"type": "string",
-							"const": "Miner"
-						}
-					]
-				},
-				"mTryFindMissingResource": {
-					"$ref": "common.schema.json#/$defs/boolean"
+				{
+					"$ref": "#/$defs/FGBuildable--extractor-base--shared"
 				}
-			}
+			]
 		},
 		"FGBuildable--extractor-base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--extractor-base--shared",
+			"$ref": "#/$defs/FGBuildable--extractor-base--merged",
 			"required": [
-				"mPipeOutputConnections",
-				"mReplicatedFlowRate",
-				"mExtractStartupTime",
-				"mExtractStartupTimer",
-				"mExtractCycleTime",
-				"mItemsPerCycle"
+				"mReplicatedFlowRate"
 			],
 			"properties": {
-				"mPipeOutputConnections": {
-					"type": "string",
-					"const": ""
-				},
 				"mReplicatedFlowRate": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mExtractStartupTime": {
-					"$ref": "common.schema.json#/$defs/decimal-string--signed"
-				},
-				"mExtractStartupTimer": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mExtractCycleTime": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mItemsPerCycle": {
-					"$ref": "common.schema.json#/$defs/integer-string"
 				}
 			}
+		},
+		"FGBuildableWaterPump--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableWaterPump"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--extractor-base"
+				}
+			]
 		},
 		"FGBuildableWaterPump": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--extractor-base",
-			"unevaluatedProperties": false,
-			"required": [
-				"mWaterpumpTimeline_RTPC_B8FA6F944E717E3B7A286E84901F620E",
-				"mWaterpumpTimeline__Direction_B8FA6F944E717E3B7A286E84901F620E",
-				"HasLostSignificance",
-				"mMinimumDepthForPlacement",
-				"mDepthTraceOriginOffset",
-				"mAllowedResourceForms",
-				"mAllowedResources"
-			],
-			"properties": {
-				"mWaterpumpTimeline_RTPC_B8FA6F944E717E3B7A286E84901F620E": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
+			"$ref": "#/$defs/FGBuildableWaterPump--merged",
+			"unevaluatedProperties": false
+		},
+		"FGBuildableResourceSink--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableResourceSink"
 				},
-				"mWaterpumpTimeline__Direction_B8FA6F944E717E3B7A286E84901F620E": {
-					"type": "string",
-					"const": "Forward"
-				},
-				"HasLostSignificance": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mMinimumDepthForPlacement": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mDepthTraceOriginOffset": {
-					"$ref": "common.schema.json#/$defs/xyz"
-				},
-				"mAllowedResourceForms": {
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"minItems": 1,
-						"items": {
-							"type": "string",
-							"const": "RF_LIQUID"
-						}
-					}
-				},
-				"mAllowedResources": {
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"minItems": 1,
-						"items": {
-							"type": "string",
-							"minLength": 1,
-							"UnrealEngineString": {
-								"right": "/Game/FactoryGame/Resource/RawResources/Water/Desc_Water.Desc_Water_C"
-							}
-						}
-					}
-				},
-				"mExtractorTypeName": {
-					"$ref": "common.schema.json#/$defs/None"
+				{
+					"$ref": "#/$defs/FGBuildable--consumes-power-base"
 				}
-			}
+			]
 		},
 		"FGBuildableResourceSink": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--consumes-power-base",
+			"$ref": "#/$defs/FGBuildableResourceSink--merged",
 			"unevaluatedProperties": false,
 			"required": [
-				"IsAnimationProducing",
-				"EnableTickGrinder",
-				"EnableTickEngine",
-				"mGrinderInterpDuration",
-				"mEngineInterpDuration",
-				"mCouponInventoryHandler",
-				"mProcessingTime",
-				"mProducingTimer"
+				"mCouponInventoryHandler"
 			],
 			"properties": {
-				"IsAnimationProducing": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"EnableTickGrinder": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"EnableTickEngine": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mGrinderInterpDuration": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mEngineInterpDuration": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
 				"mCouponInventoryHandler": {
 					"$ref": "common.schema.json#/$defs/empty-object"
-				},
-				"mProcessingTime": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mProducingTimer": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
+		"FGBuildableResourceSinkShop--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableResourceSinkShop"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--consumes-power-base"
+				}
+			]
+		},
 		"FGBuildableResourceSinkShop": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--consumes-power-base",
-			"unevaluatedProperties": false,
-			"required": ["mShopInventoryDefaultSize"],
-			"properties": {
-				"mShopInventoryDefaultSize": {
-					"$ref": "common.schema.json#/$defs/integer-string"
-				}
-			}
+			"$ref": "#/$defs/FGBuildableResourceSinkShop--merged",
+			"unevaluatedProperties": false
 		},
 		"FGItemDescriptorBiomass": {
 			"type": "object",

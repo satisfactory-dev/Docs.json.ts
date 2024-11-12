@@ -13,6 +13,8 @@ import {
 	common_base__FGBuildable__docking_station_base__type,
 	common_base__FGBuildable__occupied__type,
 	common_base__FGBuildable__tiered__type,
+	common_base__FGBuildable__extractor_base__shared__type,
+	common_base__FGBuildable__extractor_base__type,
 	common_base__FGBuildable__pipeline_accessory__base__type,
 	common_base__FGBuildable__pipeline_accessory__type,
 	common_base__FGBuildable__pipeline_flow_accessory__type,
@@ -68,6 +70,12 @@ import {
 } from '../classes/CoreUObject/FGBuildableGeneratorNuclear';
 
 import {common_base__FGBuildablePipeline__type} from '../classes/CoreUObject/FGBuildablePipeline';
+
+import {common_base__FGBuildableWaterPump__type} from '../classes/CoreUObject/FGBuildableWaterPump';
+
+import {common_base__FGBuildableResourceSink__type} from '../classes/CoreUObject/FGBuildableResourceSink';
+
+import {common_base__FGBuildableResourceSinkShop__type} from '../classes/CoreUObject/FGBuildableResourceSinkShop';
 
 import {
 	FGSchematic__mUnlocks_mSchematics__mSchematics__type,
@@ -421,6 +429,11 @@ export type faux_11__type = class__type & {
 	FGBuildableGeneratorNuclear_mFuel_PlutoniumFuelRod?: common_base__FGBuildableGeneratorNuclear__mFuel__PlutoniumFuelRod__type;
 	FGBuildableGeneratorNuclear?: common_base__FGBuildableGeneratorNuclear__type;
 	FGBuildablePipeline?: common_base__FGBuildablePipeline__type;
+	FGBuildable_extractor_base_shared?: common_base__FGBuildable__extractor_base__shared__type;
+	FGBuildable_extractor_base?: common_base__FGBuildable__extractor_base__type;
+	FGBuildableWaterPump?: common_base__FGBuildableWaterPump__type;
+	FGBuildableResourceSink?: common_base__FGBuildableResourceSink__type;
+	FGBuildableResourceSinkShop?: common_base__FGBuildableResourceSinkShop__type;
 };
 
 export type faux_12__type = class__type & {

@@ -7,20 +7,19 @@ import {
 	boolean__type,
 	integer_string__type,
 	decimal_string__type,
-	decimal_string__signed__type,
 	integer_string__signed__type,
 } from '../../../common/common/scalar';
 
 import {
 	empty_object__type,
-	UnrealEngineString__array__type,
-	None__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned';
 
 import {
 	common_base__FGBuildable__base__type,
 	common_base__FGBuildable__docking_station_base__type,
+	common_base__FGBuildable__extractor_base__type,
+	common_base__FGBuildable__extractor_base__shared__type,
 	common_base__FGBuildable__occupied__type,
 	common_base__FGBuildable__pipeline_accessory__type,
 	common_base__FGBuildable__pipeline_accessory__base__type,
@@ -230,25 +229,18 @@ export type FGBuildable__docking_station_base__type =
 		FGBuildable__consumes_power_base__type;
 
 export type FGBuildable__extractor_base__type =
-	FGBuildable__extractor_base__shared__type & {
-		mPipeOutputConnections: '';
-		mExtractStartupTime: decimal_string__signed__type;
-		mExtractStartupTimer: decimal_string__type;
-		mExtractCycleTime: decimal_string__type;
-		mItemsPerCycle: integer_string__type;
-	};
+	FGBuildable__extractor_base__merged__type;
+
+export type FGBuildable__extractor_base__merged__type =
+	common_base__FGBuildable__extractor_base__type &
+		FGBuildable__extractor_base__shared__type;
 
 export type FGBuildable__extractor_base__shared__type =
-	FGBuildable__consumes_power_base__type & {
-		mAllowedResourceForms: [
-			'RF_LIQUID' | 'RF_SOLID' | 'RF_GAS' | 'RF_HEAT',
-			...('RF_LIQUID' | 'RF_SOLID' | 'RF_GAS' | 'RF_HEAT')[],
-		];
-		mOnlyAllowCertainResources: boolean__type;
-		mAllowedResources: '' | UnrealEngineString__array__type;
-		mExtractorTypeName: None__type | 'Miner';
-		mTryFindMissingResource: boolean__type;
-	};
+	FGBuildable__extractor_base__shared__merged__type;
+
+export type FGBuildable__extractor_base__shared__merged__type =
+	common_base__FGBuildable__extractor_base__shared__type &
+		FGBuildable__consumes_power_base__type;
 
 export type FGBuildable__occupied__final__type =
 	FGBuildable__occupied__merged__type;

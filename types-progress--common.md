@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (224 of 224)
+100.00% Complete (231 of 231)
 
 ## Basic Types
 
@@ -60,6 +60,8 @@
 -   [x] common-base--FGBuildable--base (common type)
 -   [x] common-base--FGBuildable--consumes-power-base (common type)
 -   [x] common-base--FGBuildable--docking-station-base
+-   [x] common-base--FGBuildable--extractor-base (common type)
+-   [x] common-base--FGBuildable--extractor-base--shared (common type)
 -   [x] common-base--FGBuildable--occupied (common type)
 -   [x] common-base--FGBuildable--pipeline-accessory (common type)
 -   [x] common-base--FGBuildable--pipeline-accessory--base (common type)
@@ -99,12 +101,15 @@
 -   [x] common-base--FGBuildablePoleLightweight
 -   [x] common-base--FGBuildablePowerPole
 -   [x] common-base--FGBuildableRailroadTrack
+-   [x] common-base--FGBuildableResourceSink
+-   [x] common-base--FGBuildableResourceSinkShop
 -   [x] common-base--FGBuildableTradingPost
 -   [x] common-base--FGBuildableWalkway
 -   [x] common-base--FGBuildableWalkway--base (common type)
 -   [x] common-base--FGBuildableWalkwayLightweight
 -   [x] common-base--FGBuildableWall--base (common type)
 -   [x] common-base--FGBuildableWall--base--rectangle (common type)
+-   [x] common-base--FGBuildableWaterPump
 -   [x] common-base--FGBuildableWire
 -   [x] common-base--FGBuildingDescriptor
 -   [x] common-base--FGBuildingDescriptor--ClassName (common type)
