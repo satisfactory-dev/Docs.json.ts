@@ -1289,6 +1289,10 @@
 				}
 			}
 		},
+		"common-base--mSnappedPassthroughs": {
+			"type": "string",
+			"const": ""
+		},
 		"common-base--FGBuildableConveyorLift": {
 			"type": "object",
 			"$ref": "common.schema.json#/$defs/common-base--FGBuildableConveyorBelt--base",
@@ -1310,152 +1314,6 @@
 				},
 				"mSnappedPassthroughs": {
 					"$ref": "common.schema.json#/$defs/common-base--mSnappedPassthroughs"
-				}
-			}
-		},
-		"common-base--mSnappedPassthroughs": {
-			"type": "string",
-			"const": ""
-		},
-		"common-base--FGBuildable--pipeline-accessory--base": {
-			"type": "object",
-			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--consumes-power-base",
-			"required": ["mFluidBox", "mPipeConnections"],
-			"properties": {
-				"mFluidBox": {
-					"$ref": "common.schema.json#/$defs/empty-object"
-				},
-				"mPipeConnections": {
-					"type": "string",
-					"const": ""
-				}
-			}
-		},
-		"common-base--FGBuildable--pipeline-accessory": {
-			"type": "object",
-			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--pipeline-accessory--base",
-			"required": [
-				"mRadius",
-				"mFluidBoxVolume",
-				"mFluidBox",
-				"mPipeConnections"
-			],
-			"properties": {
-				"mRadius": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mFluidBoxVolume": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mFluidBox": {
-					"$ref": "common.schema.json#/$defs/empty-object"
-				},
-				"mPipeConnections": {
-					"type": "string",
-					"const": ""
-				}
-			}
-		},
-		"common-base--FGBuildablePipelineJunction": {
-			"type": "object",
-			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--pipeline-accessory"
-		},
-		"common-base--FGBuildable--pipeline-flow-accessory": {
-			"type": "object",
-			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--pipeline-accessory",
-			"required": [
-				"mLastFlowUpdate",
-				"mUpdateFlowTime",
-				"mAnimSpeed",
-				"mLastFlowValue",
-				"mTimeScaleOffset",
-				"mMaxPressure",
-				"mDesignPressure",
-				"mDefaultFlowLimit",
-				"mUserFlowLimit",
-				"mMinimumFlowPercentForStandby",
-				"mIndicatorData"
-			],
-			"properties": {
-				"mLastFlowUpdate": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mUpdateFlowTime": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mAnimSpeed": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mLastFlowValue": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mTimeScaleOffset": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mMaxPressure": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mDesignPressure": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mDefaultFlowLimit": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mUserFlowLimit": {
-					"$ref": "common.schema.json#/$defs/decimal-string--signed"
-				},
-				"mMinimumFlowPercentForStandby": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mIndicatorData": {
-					"$ref": "common.schema.json#/$defs/empty-object"
-				},
-				"mPistonAudioTimer": {
-					"$ref": "common.schema.json#/$defs/empty-object"
-				}
-			}
-		},
-		"common-base--FGBuildablePipelinePump": {
-			"type": "object",
-			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--pipeline-flow-accessory",
-			"required": [
-				"mIsPipePumpPlaying",
-				"mIsExceedingHeadLift",
-				"mCurrentAudioHeadLift"
-			],
-			"properties": {
-				"mIsPipePumpPlaying": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mIsExceedingHeadLift": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mCurrentAudioHeadLift": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				}
-			}
-		},
-		"common-base--FGBuildablePipelinePump--valve": {
-			"type": "object",
-			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--pipeline-flow-accessory"
-		},
-		"common-base--FGBuildablePipeReservoir": {
-			"type": "object",
-			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--pipeline-accessory--base",
-			"required": [
-				"mStackingHeight",
-				"mStorageCapacity",
-				"mIndicatorData"
-			],
-			"properties": {
-				"mStackingHeight": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mStorageCapacity": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mIndicatorData": {
-					"$ref": "common.schema.json#/$defs/empty-object"
 				}
 			}
 		},
@@ -3569,6 +3427,148 @@
 				},
 				"mCachedLoadPercentage": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
+				}
+			}
+		},
+		"common-base--FGBuildable--pipeline-accessory--base": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--consumes-power-base",
+			"required": ["mFluidBox", "mPipeConnections"],
+			"properties": {
+				"mFluidBox": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mPipeConnections": {
+					"type": "string",
+					"const": ""
+				}
+			}
+		},
+		"common-base--FGBuildable--pipeline-accessory": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--pipeline-accessory--base",
+			"required": [
+				"mRadius",
+				"mFluidBoxVolume",
+				"mFluidBox",
+				"mPipeConnections"
+			],
+			"properties": {
+				"mRadius": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mFluidBoxVolume": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mFluidBox": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mPipeConnections": {
+					"type": "string",
+					"const": ""
+				}
+			}
+		},
+		"common-base--FGBuildablePipelineJunction": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--pipeline-accessory"
+		},
+		"common-base--FGBuildable--pipeline-flow-accessory": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--pipeline-accessory",
+			"required": [
+				"mLastFlowUpdate",
+				"mUpdateFlowTime",
+				"mAnimSpeed",
+				"mLastFlowValue",
+				"mTimeScaleOffset",
+				"mMaxPressure",
+				"mDesignPressure",
+				"mDefaultFlowLimit",
+				"mUserFlowLimit",
+				"mMinimumFlowPercentForStandby",
+				"mIndicatorData"
+			],
+			"properties": {
+				"mLastFlowUpdate": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mUpdateFlowTime": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mAnimSpeed": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mLastFlowValue": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mTimeScaleOffset": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mMaxPressure": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mDesignPressure": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mDefaultFlowLimit": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mUserFlowLimit": {
+					"$ref": "common.schema.json#/$defs/decimal-string--signed"
+				},
+				"mMinimumFlowPercentForStandby": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mIndicatorData": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mPistonAudioTimer": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				}
+			}
+		},
+		"common-base--FGBuildablePipelinePump": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--pipeline-flow-accessory",
+			"required": [
+				"mIsPipePumpPlaying",
+				"mIsExceedingHeadLift",
+				"mCurrentAudioHeadLift"
+			],
+			"properties": {
+				"mIsPipePumpPlaying": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mIsExceedingHeadLift": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mCurrentAudioHeadLift": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				}
+			}
+		},
+		"common-base--FGBuildablePipelinePump--valve": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--pipeline-flow-accessory"
+		},
+		"common-base--FGBuildablePipeReservoir": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--pipeline-accessory--base",
+			"required": [
+				"mStackingHeight",
+				"mStorageCapacity",
+				"mIndicatorData"
+			],
+			"properties": {
+				"mStackingHeight": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mStorageCapacity": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mIndicatorData": {
+					"$ref": "common.schema.json#/$defs/empty-object"
 				}
 			}
 		},
