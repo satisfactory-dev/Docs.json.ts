@@ -15,6 +15,7 @@ import {
 	xyz__type,
 	quaternion__type,
 	empty_object__type,
+	common_base__FGBuildableResourceExtractor__miner_mk3__type,
 } from '../../common/common/unassigned';
 
 import {common_base__FGBuildable__consumes_power_base__type} from '../../common/classes/CoreUObject/FGBuildable';
@@ -89,12 +90,11 @@ export type FGBuildableResourceExtractor__miner_mk1__type =
 	};
 
 export type FGBuildableResourceExtractor__miner_mk3__type =
-	FGBuildableResourceExtractor__miner__base__type & {
-		mInternalMiningState_0: 'NewEnumerator0';
-		mToggleMiningStateHandle_0: empty_object__type;
-		mMinimumDrillTime_0: decimal_string__type;
-		mMaximumDrillTime_0: decimal_string__type;
-	};
+	FGBuildableResourceExtractor__miner_mk3__merged__type;
+
+export type FGBuildableResourceExtractor__miner_mk3__merged__type =
+	common_base__FGBuildableResourceExtractor__miner_mk3__type &
+		FGBuildableResourceExtractor__miner__base__type;
 
 export type FGBuildableTradingPost__version_1__type =
 	common_base__FGBuildableTradingPost__type & {

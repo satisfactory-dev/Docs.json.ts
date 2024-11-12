@@ -4285,137 +4285,70 @@
 			"$ref": "#/$defs/FGBuildableResourceSinkShop--merged",
 			"unevaluatedProperties": false
 		},
+		"FGItemDescriptorBiomass--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGItemDescriptorBiomass"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--FGResourceDescriptor"
+				}
+			]
+		},
 		"FGItemDescriptorBiomass": {
 			"type": "object",
-			"$ref": "#/$defs/FGItemDescriptor--FGResourceDescriptor",
+			"$ref": "#/$defs/FGItemDescriptorBiomass--merged",
 			"unevaluatedProperties": false
+		},
+		"FGBuildableResourceExtractor--oil-extractor--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableResourceExtractor--oil-extractor"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--extractor-base"
+				}
+			]
 		},
 		"FGBuildableResourceExtractor--oil-extractor": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--extractor-base",
-			"unevaluatedProperties": false,
-			"required": [
-				"mAllowedResourceForms",
-				"mAllowedResources",
-				"mExtractorTypeName"
-			],
-			"properties": {
-				"mAllowedResourceForms": {
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"minItems": 1,
-						"items": {
-							"type": "string",
-							"const": "RF_LIQUID"
-						}
-					}
+			"$ref": "#/$defs/FGBuildableResourceExtractor--oil-extractor--merged",
+			"unevaluatedProperties": false
+		},
+		"FGBuildableResourceExtractor--miner--base--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableResourceExtractor--miner--base"
 				},
-				"mAllowedResources": {
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"minItems": 1,
-						"items": {
-							"type": "string",
-							"minLength": 1,
-							"UnrealEngineString": {
-								"right": "/Game/FactoryGame/Resource/RawResources/CrudeOil/Desc_LiquidOil.Desc_LiquidOil_C"
-							}
-						}
-					}
-				},
-				"mExtractorTypeName": {
-					"$ref": "common.schema.json#/$defs/None"
+				{
+					"$ref": "#/$defs/FGBuildable--extractor-base"
 				}
-			}
+			]
 		},
 		"FGBuildableResourceExtractor--miner--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--extractor-base",
-			"required": ["mParticleMap", "mAllowedResources"],
+			"$ref": "#/$defs/FGBuildableResourceExtractor--miner--base--merged",
+			"required": ["SAMReference"],
 			"properties": {
-				"mParticleMap": {
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"minItems": 1,
-						"items": {
-							"type": "string",
-							"minLength": 1,
-							"typed_string": {
-								"required": [
-									"ResourceNode_16_2100B5C34EE8DF7958D78A974512F3C3",
-									"ParticleSystem1_9_F0CF81514E1E1C5007AC99B0C59C63CD"
-								],
-								"properties": {
-									"ResourceNode_16_2100B5C34EE8DF7958D78A974512F3C3": {
-										"type": "string",
-										"enum": [
-											"/Game/FactoryGame/Resource/RawResources/Coal/Desc_Coal.Desc_Coal_C",
-											"/Game/FactoryGame/Resource/RawResources/Stone/Desc_Stone.Desc_Stone_C",
-											"/Game/FactoryGame/Resource/RawResources/OreIron/Desc_OreIron.Desc_OreIron_C",
-											"/Game/FactoryGame/Resource/RawResources/OreBauxite/Desc_OreBauxite.Desc_OreBauxite_C",
-											"/Game/FactoryGame/Resource/RawResources/OreCopper/Desc_OreCopper.Desc_OreCopper_C",
-											"/Game/FactoryGame/Resource/RawResources/CrudeOil/Desc_LiquidOil.Desc_LiquidOil_C",
-											"/Game/FactoryGame/Resource/RawResources/OreGold/Desc_OreGold.Desc_OreGold_C",
-											"/Game/FactoryGame/Resource/RawResources/RawQuartz/Desc_RawQuartz.Desc_RawQuartz_C",
-											"/Game/FactoryGame/Resource/RawResources/Sulfur/Desc_Sulfur.Desc_Sulfur_C",
-											"/Game/FactoryGame/Resource/RawResources/OreUranium/Desc_OreUranium.Desc_OreUranium_C"
-										]
-									},
-									"ParticleSystem1_9_F0CF81514E1E1C5007AC99B0C59C63CD": {
-										"type": "string",
-										"minLength": 1,
-										"UnrealEngineString": {
-											"left": "/Script/Engine.ParticleSystem",
-											"right": {
-												"starts_with": [
-													"/Game/FactoryGame/VFX/Factory/",
-													"/Game/FactoryGame/Buildable/Factory/"
-												]
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				},
-				"mCanPlayAfterStartUpStopped": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"CanPlayAfterStartUpStopped": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
 				"SAMReference": {
 					"type": "string",
 					"const": "/Game/FactoryGame/Resource/RawResources/SAM/Desc_SAM.Desc_SAM_C"
-				},
-				"mAllowedResourceForms": {
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"minItems": 1,
-						"items": {
-							"type": "string",
-							"const": "RF_SOLID"
-						}
-					}
-				},
-				"mExtractorTypeName": {
-					"type": "string",
-					"const": "Miner"
-				},
-				"mAllowedResources": {
-					"type": "string",
-					"const": ""
 				}
 			}
 		},
+		"FGBuildableResourceExtractor--miner--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableResourceExtractor--miner"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--miner--base"
+				}
+			]
+		},
 		"FGBuildableResourceExtractor--miner": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableResourceExtractor--miner--base",
+			"$ref": "#/$defs/FGBuildableResourceExtractor--miner--merged",
 			"unevaluatedProperties": false
 		},
 		"FGBuildableResourceExtractor--miner-mk1": {
@@ -4429,31 +4362,20 @@
 				}
 			}
 		},
+		"FGBuildableResourceExtractor--miner-mk3--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableResourceExtractor--miner-mk3"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--miner--base"
+				}
+			]
+		},
 		"FGBuildableResourceExtractor--miner-mk3": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableResourceExtractor--miner--base",
-			"unevaluatedProperties": false,
-			"required": [
-				"mInternalMiningState_0",
-				"mToggleMiningStateHandle_0",
-				"mMinimumDrillTime_0",
-				"mMaximumDrillTime_0"
-			],
-			"properties": {
-				"mInternalMiningState_0": {
-					"type": "string",
-					"const": "NewEnumerator0"
-				},
-				"mToggleMiningStateHandle_0": {
-					"$ref": "common.schema.json#/$defs/empty-object"
-				},
-				"mMinimumDrillTime_0": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mMaximumDrillTime_0": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				}
-			}
+			"$ref": "#/$defs/FGBuildableResourceExtractor--miner-mk3--merged",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableManufacturer--base": {
 			"type": "object",

@@ -77,6 +77,14 @@ import {common_base__FGBuildableResourceSink__type} from '../classes/CoreUObject
 
 import {common_base__FGBuildableResourceSinkShop__type} from '../classes/CoreUObject/FGBuildableResourceSinkShop';
 
+import {common_base__FGItemDescriptorBiomass__type} from '../classes/CoreUObject/FGItemDescriptorBiomass';
+
+import {
+	common_base__FGBuildableResourceExtractor__oil_extractor__type,
+	common_base__FGBuildableResourceExtractor__miner__base__type,
+	common_base__FGBuildableResourceExtractor__miner__type,
+} from '../classes/CoreUObject/FGBuildableResourceExtractor';
+
 import {
 	FGSchematic__mUnlocks_mSchematics__mSchematics__type,
 	common_base__FGSchematic__mUnlocks__type,
@@ -211,6 +219,14 @@ export type color_decimal__type = {
 	B: decimal_string__type;
 	A: decimal_string__type;
 };
+
+export type common_base__FGBuildableResourceExtractor__miner_mk3__type =
+	common_base__FGBuildableResourceExtractor__miner__base__type & {
+		mInternalMiningState_0: 'NewEnumerator0';
+		mToggleMiningStateHandle_0: empty_object__type;
+		mMinimumDrillTime_0: decimal_string__type;
+		mMaximumDrillTime_0: decimal_string__type;
+	};
 
 export type common_base__mChainsawState__type = None__type;
 
@@ -434,6 +450,11 @@ export type faux_11__type = class__type & {
 	FGBuildableWaterPump?: common_base__FGBuildableWaterPump__type;
 	FGBuildableResourceSink?: common_base__FGBuildableResourceSink__type;
 	FGBuildableResourceSinkShop?: common_base__FGBuildableResourceSinkShop__type;
+	FGItemDescriptorBiomass?: common_base__FGItemDescriptorBiomass__type;
+	FGBuildableResourceExtractor_oil_extractor?: common_base__FGBuildableResourceExtractor__oil_extractor__type;
+	FGBuildableResourceExtractor_miner_base?: common_base__FGBuildableResourceExtractor__miner__base__type;
+	FGBuildableResourceExtractor_miner?: common_base__FGBuildableResourceExtractor__miner__type;
+	FGBuildableResourceExtractor_miner_mk3?: common_base__FGBuildableResourceExtractor__miner_mk3__type;
 };
 
 export type faux_12__type = class__type & {

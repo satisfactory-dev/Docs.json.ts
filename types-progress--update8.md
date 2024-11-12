@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (368 of 368)
+100.00% Complete (379 of 379)
 
 ## Basic Types
 
@@ -85,6 +85,10 @@
 -   [x] common-base--FGBuildablePoleLightweight (common type)
 -   [x] common-base--FGBuildablePowerPole (common type)
 -   [x] common-base--FGBuildableRailroadTrack (common type)
+-   [x] common-base--FGBuildableResourceExtractor--miner (common type)
+-   [x] common-base--FGBuildableResourceExtractor--miner--base (common type)
+-   [x] common-base--FGBuildableResourceExtractor--miner-mk3 (common type)
+-   [x] common-base--FGBuildableResourceExtractor--oil-extractor (common type)
 -   [x] common-base--FGBuildableResourceSink (common type)
 -   [x] common-base--FGBuildableResourceSinkShop (common type)
 -   [x] common-base--FGBuildableTradingPost (common type)
@@ -117,6 +121,7 @@
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor (common type)
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor (common type)
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor--mSubCategories (common type)
+-   [x] common-base--FGItemDescriptorBiomass (common type)
 -   [x] common-base--FGJetPack (common type)
 -   [x] common-base--FGJumpingStilts (common type)
 -   [x] common-base--FGObjectScanner (common type)
@@ -348,8 +353,12 @@
 
 -   [x] FGBuildableResourceExtractor--miner
 -   [x] FGBuildableResourceExtractor--miner--base
+-   [x] FGBuildableResourceExtractor--miner--base--merged
+-   [x] FGBuildableResourceExtractor--miner--merged
 -   [x] FGBuildableResourceExtractor--miner-mk3
+-   [x] FGBuildableResourceExtractor--miner-mk3--merged
 -   [x] FGBuildableResourceExtractor--oil-extractor
+-   [x] FGBuildableResourceExtractor--oil-extractor--merged
 
 ## FGBuildableResourceSink
 
@@ -456,6 +465,10 @@
 -   [x] FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor
 -   [x] FGItemDescriptor--FGResourceDescriptor
 -   [x] FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor
+
+## FGItemDescriptorBiomass
+
+-   [x] FGItemDescriptorBiomass--merged
 
 ## FGJetPack
 

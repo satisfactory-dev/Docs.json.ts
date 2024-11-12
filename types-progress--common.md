@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (231 of 231)
+100.00% Complete (237 of 237)
 
 ## Basic Types
 
@@ -101,6 +101,10 @@
 -   [x] common-base--FGBuildablePoleLightweight
 -   [x] common-base--FGBuildablePowerPole
 -   [x] common-base--FGBuildableRailroadTrack
+-   [x] common-base--FGBuildableResourceExtractor--miner
+-   [x] common-base--FGBuildableResourceExtractor--miner--base (common type)
+-   [x] common-base--FGBuildableResourceExtractor--miner-mk3
+-   [x] common-base--FGBuildableResourceExtractor--oil-extractor
 -   [x] common-base--FGBuildableResourceSink
 -   [x] common-base--FGBuildableResourceSinkShop
 -   [x] common-base--FGBuildableTradingPost
@@ -133,6 +137,7 @@
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor (common type)
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor (common type)
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor--mSubCategories (common type)
+-   [x] common-base--FGItemDescriptorBiomass
 -   [x] common-base--FGJetPack
 -   [x] common-base--FGJumpingStilts
 -   [x] common-base--FGObjectScanner
