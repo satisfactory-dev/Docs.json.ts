@@ -1,62 +1,37 @@
 import {FGBuildable__consumes_power_base__type} from './FGBuildable';
 
-import {
-	integer_string__type,
-	decimal_string__type,
-	boolean__type,
-	boolean_extended__type,
-} from '../../../common/common/scalar';
+import {decimal_string__type} from '../../../common/common/scalar';
 
 import {
-	empty_object__type,
-	color_decimal__type,
-	NativeClass__type,
-} from '../../../common/common/unassigned';
+	common_base__FGBuildableManufacturer__base__type,
+	common_base__FGBuildableManufacturer__blender__type,
+	common_base__FGBuildableManufacturer__constructor__type,
+	common_base__FGBuildableManufacturer__type,
+	common_base__FGBuildableManufacturer__packager__type,
+	common_base__FGBuildableManufacturer__smelter__type,
+} from '../../../common/classes/CoreUObject/FGBuildableManufacturer';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableManufacturer__type =
-	FGBuildableManufacturer__base__type;
+	FGBuildableManufacturer__merged__type;
 
 export type FGBuildableManufacturer__base__type =
-	FGBuildable__consumes_power_base__type & {
-		IsPowered?: boolean__type;
-		bIsPendingToKillVfx?: boolean__type;
-		mProductionEffectsRunning?: boolean__type;
-		mCurrentRecipeChanged: empty_object__type;
-		mManufacturingSpeed: decimal_string__type;
-		mFactoryInputConnections: '';
-		mPipeInputConnections: '';
-		mFactoryOutputConnections: '';
-		mPipeOutputConnections: '';
-		mStoppedProducingAnimationSounds?: boolean__type;
-		mStoppedAkComponents?: boolean_extended__type;
-		mSocketStoppedAkComponents?: '';
-	};
+	FGBuildableManufacturer__base__merged__type;
+
+export type FGBuildableManufacturer__base__merged__type =
+	common_base__FGBuildableManufacturer__base__type &
+		FGBuildable__consumes_power_base__type;
 
 export type FGBuildableManufacturer__blender__type =
-	FGBuildableManufacturer__base__type & {
-		ClassName?: 'Build_Blender_C';
-		mCurrentColorVFX: color_decimal__type;
-		m_NotifyNameREferences: [
-			'Arm_04_ClawBase' | 'Arm_02_SFXSocket',
-			'Arm_04_ClawBase' | 'Arm_02_SFXSocket',
-			...('Arm_04_ClawBase' | 'Arm_02_SFXSocket')[],
-		];
-		mColor: '';
-		mIsRadioActive: boolean__type;
-	};
+	FGBuildableManufacturer__blender__merged__type;
+
+export type FGBuildableManufacturer__blender__merged__type =
+	common_base__FGBuildableManufacturer__blender__type &
+		FGBuildableManufacturer__base__type;
 
 export type FGBuildableManufacturer__constructor__type =
-	FGBuildableManufacturer__base__type & {
-		ClassName?: 'Build_ConstructorMk1_C';
-		mCurrentRecipeCheck: '';
-		mPreviousRecipeCheck: '';
-		CurrentPotentialConvert: [
-			[integer_string__type, decimal_string__type],
-			...[
-				integer_string__type,
-				decimal_string__type,
-			][],
-		];
+	FGBuildableManufacturer__constructor__merged__type & {
 		mAOAttenuationScalingFactor: decimal_string__type;
 		mAOLayerZOffset: decimal_string__type;
 		RTPC_AO_VolumeDB: decimal_string__type;
@@ -64,19 +39,27 @@ export type FGBuildableManufacturer__constructor__type =
 		RTPC_AO_Pitch: decimal_string__type;
 	};
 
+export type FGBuildableManufacturer__constructor__merged__type =
+	common_base__FGBuildableManufacturer__constructor__type &
+		FGBuildableManufacturer__base__type;
+
+export type FGBuildableManufacturer__merged__type =
+	common_base__FGBuildableManufacturer__type &
+		FGBuildableManufacturer__base__type;
+
 export type FGBuildableManufacturer__packager__type =
-	FGBuildableManufacturer__base__type & {
-		ClassName?: 'Build_Packager_C';
-		mCurrentColor_VFX: color_decimal__type;
-		CurrentPackagingMode: '';
-	};
+	FGBuildableManufacturer__packager__merged__type;
+
+export type FGBuildableManufacturer__packager__merged__type =
+	common_base__FGBuildableManufacturer__packager__type &
+		FGBuildableManufacturer__base__type;
 
 export type FGBuildableManufacturer__smelter__type =
-	FGBuildableManufacturer__base__type & {
-		ClassName?: 'Build_SmelterMk1_C';
-		mIsPendingToKillVFX: boolean__type;
-		mCachedCurrentPotential: integer_string__type;
-	};
+	FGBuildableManufacturer__smelter__merged__type;
+
+export type FGBuildableManufacturer__smelter__merged__type =
+	common_base__FGBuildableManufacturer__smelter__type &
+		FGBuildableManufacturer__base__type;
 
 export type FGBuildableManufacturer__NativeClass =
 	NativeClass__type & {

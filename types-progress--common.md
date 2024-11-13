@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (237 of 237)
+100.00% Complete (248 of 248)
 
 ## Basic Types
 
@@ -53,7 +53,7 @@
 -   [x] SpecifiedColor
 -   [x] Texture2D (common type)
 -   [x] transformation (common type)
--   [x] xyz-array
+-   [x] xyz-array (common type)
 
 ## common-base
 
@@ -92,6 +92,14 @@
 -   [x] common-base--FGBuildableGeneratorNuclear--mFuel--NuclearFuelRod
 -   [x] common-base--FGBuildableGeneratorNuclear--mFuel--PlutoniumFuelRod
 -   [x] common-base--FGBuildableMAM
+-   [x] common-base--FGBuildableManufacturer
+-   [x] common-base--FGBuildableManufacturer--base (common type)
+-   [x] common-base--FGBuildableManufacturer--blender
+-   [x] common-base--FGBuildableManufacturer--constructor
+-   [x] common-base--FGBuildableManufacturer--packager
+-   [x] common-base--FGBuildableManufacturer--smelter
+-   [x] common-base--FGBuildableManufacturerVariablePower--base (common type)
+-   [x] common-base--FGBuildableManufacturerVariablePower--HadronCollider
 -   [x] common-base--FGBuildablePillarLightweight
 -   [x] common-base--FGBuildablePipeline
 -   [x] common-base--FGBuildablePipelineJunction

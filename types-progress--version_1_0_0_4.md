@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (414 of 414)
+100.00% Complete (430 of 430)
 
 ## Basic Types
 
@@ -82,6 +82,14 @@
 -   [x] common-base--FGBuildableGeneratorNuclear--mFuel--NuclearFuelRod (common type)
 -   [x] common-base--FGBuildableGeneratorNuclear--mFuel--PlutoniumFuelRod (common type)
 -   [x] common-base--FGBuildableMAM (common type)
+-   [x] common-base--FGBuildableManufacturer (common type)
+-   [x] common-base--FGBuildableManufacturer--base (common type)
+-   [x] common-base--FGBuildableManufacturer--blender (common type)
+-   [x] common-base--FGBuildableManufacturer--constructor (common type)
+-   [x] common-base--FGBuildableManufacturer--packager (common type)
+-   [x] common-base--FGBuildableManufacturer--smelter (common type)
+-   [x] common-base--FGBuildableManufacturerVariablePower--base (common type)
+-   [x] common-base--FGBuildableManufacturerVariablePower--HadronCollider (common type)
 -   [x] common-base--FGBuildablePillarLightweight (common type)
 -   [x] common-base--FGBuildablePipeline (common type)
 -   [x] common-base--FGBuildablePipelineJunction (common type)
@@ -321,15 +329,23 @@
 ## FGBuildableManufacturer
 
 -   [x] FGBuildableManufacturer--base
+-   [x] FGBuildableManufacturer--base--merged
 -   [x] FGBuildableManufacturer--blender
+-   [x] FGBuildableManufacturer--blender--merged
 -   [x] FGBuildableManufacturer--constructor
+-   [x] FGBuildableManufacturer--constructor--merged
+-   [x] FGBuildableManufacturer--merged
 -   [x] FGBuildableManufacturer--packager
+-   [x] FGBuildableManufacturer--packager--merged
 -   [x] FGBuildableManufacturer--smelter
+-   [x] FGBuildableManufacturer--smelter--merged
 
 ## FGBuildableManufacturerVariablePower
 
 -   [x] FGBuildableManufacturerVariablePower--base
+-   [x] FGBuildableManufacturerVariablePower--base--merged
 -   [x] FGBuildableManufacturerVariablePower--HadronCollider
+-   [x] FGBuildableManufacturerVariablePower--HadronCollider--merged
 -   [x] FGBuildableManufacturerVariablePower--QuantumEncoder
 
 ## FGBuildablePillarLightweight

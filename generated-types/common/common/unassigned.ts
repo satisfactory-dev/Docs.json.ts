@@ -86,6 +86,20 @@ import {
 } from '../classes/CoreUObject/FGBuildableResourceExtractor';
 
 import {
+	common_base__FGBuildableManufacturer__base__type,
+	common_base__FGBuildableManufacturer__type,
+	common_base__FGBuildableManufacturer__packager__type,
+	common_base__FGBuildableManufacturer__blender__type,
+	common_base__FGBuildableManufacturer__smelter__type,
+	common_base__FGBuildableManufacturer__constructor__type,
+} from '../classes/CoreUObject/FGBuildableManufacturer';
+
+import {
+	common_base__FGBuildableManufacturerVariablePower__base__type,
+	common_base__FGBuildableManufacturerVariablePower__HadronCollider__type,
+} from '../classes/CoreUObject/FGBuildableManufacturerVariablePower';
+
+import {
 	FGSchematic__mUnlocks_mSchematics__mSchematics__type,
 	common_base__FGSchematic__mUnlocks__type,
 	common_base__FGSchematic__base__mSchematicDependencies__mRequireAllSchematicsToBePurchased__type,
@@ -455,6 +469,14 @@ export type faux_11__type = class__type & {
 	FGBuildableResourceExtractor_miner_base?: common_base__FGBuildableResourceExtractor__miner__base__type;
 	FGBuildableResourceExtractor_miner?: common_base__FGBuildableResourceExtractor__miner__type;
 	FGBuildableResourceExtractor_miner_mk3?: common_base__FGBuildableResourceExtractor__miner_mk3__type;
+	FGBuildableManufacturer_base?: common_base__FGBuildableManufacturer__base__type;
+	FGBuildableManufacturer?: common_base__FGBuildableManufacturer__type;
+	FGBuildableManufacturer_packager?: common_base__FGBuildableManufacturer__packager__type;
+	FGBuildableManufacturer_blender?: common_base__FGBuildableManufacturer__blender__type;
+	FGBuildableManufacturer_smelter?: common_base__FGBuildableManufacturer__smelter__type;
+	FGBuildableManufacturer_constructor?: common_base__FGBuildableManufacturer__constructor__type;
+	FGBuildableManufacturerVariablePower_base?: common_base__FGBuildableManufacturerVariablePower__base__type;
+	FGBuildableManufacturerVariablePower_HadronCollider?: common_base__FGBuildableManufacturerVariablePower__HadronCollider__type;
 };
 
 export type faux_12__type = class__type & {

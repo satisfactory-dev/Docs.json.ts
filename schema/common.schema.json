@@ -4019,6 +4019,240 @@
 				}
 			}
 		},
+		"common-base--FGBuildableManufacturer--base": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--consumes-power-base",
+			"required": [
+				"mCurrentRecipeChanged",
+				"mManufacturingSpeed",
+				"mFactoryInputConnections",
+				"mPipeInputConnections",
+				"mFactoryOutputConnections",
+				"mPipeOutputConnections"
+			],
+			"properties": {
+				"IsPowered": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"bIsPendingToKillVfx": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mProductionEffectsRunning": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mCurrentRecipeChanged": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mManufacturingSpeed": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mFactoryInputConnections": {
+					"type": "string",
+					"const": ""
+				},
+				"mPipeInputConnections": {
+					"type": "string",
+					"const": ""
+				},
+				"mFactoryOutputConnections": {
+					"type": "string",
+					"const": ""
+				},
+				"mPipeOutputConnections": {
+					"type": "string",
+					"const": ""
+				},
+				"mStoppedProducingAnimationSounds": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mStoppedAkComponents": {
+					"$ref": "common.schema.json#/$defs/boolean-extended"
+				},
+				"mSocketStoppedAkComponents": {
+					"type": "string",
+					"const": ""
+				}
+			}
+		},
+		"common-base--FGBuildableManufacturer": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildableManufacturer--base"
+		},
+		"common-base--FGBuildableManufacturer--packager": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildableManufacturer--base",
+			"required": ["mCurrentColor_VFX", "CurrentPackagingMode"],
+			"properties": {
+				"ClassName": {
+					"type": "string",
+					"const": "Build_Packager_C"
+				},
+				"mCurrentColor_VFX": {
+					"$ref": "common.schema.json#/$defs/color-decimal"
+				},
+				"CurrentPackagingMode": {
+					"type": "string",
+					"const": ""
+				}
+			}
+		},
+		"common-base--FGBuildableManufacturer--blender": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildableManufacturer--base",
+			"required": [
+				"mCurrentColorVFX",
+				"m_NotifyNameREferences",
+				"mColor",
+				"mIsRadioActive"
+			],
+			"properties": {
+				"ClassName": {
+					"type": "string",
+					"const": "Build_Blender_C"
+				},
+				"mCurrentColorVFX": {
+					"$ref": "common.schema.json#/$defs/color-decimal"
+				},
+				"m_NotifyNameREferences": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"minItems": 2,
+						"items": {
+							"type": "string",
+							"enum": ["Arm_04_ClawBase", "Arm_02_SFXSocket"]
+						}
+					}
+				},
+				"mColor": {
+					"type": "string",
+					"const": ""
+				},
+				"mIsRadioActive": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				}
+			}
+		},
+		"common-base--FGBuildableManufacturer--smelter": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildableManufacturer--base",
+			"required": ["mIsPendingToKillVFX", "mCachedCurrentPotential"],
+			"properties": {
+				"ClassName": {
+					"type": "string",
+					"const": "Build_SmelterMk1_C"
+				},
+				"mIsPendingToKillVFX": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mCachedCurrentPotential": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				}
+			}
+		},
+		"common-base--FGBuildableManufacturer--constructor": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildableManufacturer--base",
+			"required": [
+				"mCurrentRecipeCheck",
+				"mPreviousRecipeCheck",
+				"CurrentPotentialConvert"
+			],
+			"properties": {
+				"ClassName": {
+					"type": "string",
+					"const": "Build_ConstructorMk1_C"
+				},
+				"mCurrentRecipeCheck": {
+					"type": "string",
+					"const": ""
+				},
+				"mPreviousRecipeCheck": {
+					"type": "string",
+					"const": ""
+				},
+				"CurrentPotentialConvert": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"minItems": 1,
+						"items": false,
+						"prefixItems": [
+							{
+								"$ref": "common.schema.json#/$defs/integer-string"
+							},
+							{
+								"$ref": "common.schema.json#/$defs/decimal-string"
+							}
+						]
+					}
+				}
+			}
+		},
+		"common-base--FGBuildableManufacturerVariablePower--base": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildableManufacturer--base",
+			"required": [
+				"mEstimatedMininumPowerConsumption",
+				"mEstimatedMaximumPowerConsumption"
+			],
+			"properties": {
+				"mEstimatedMininumPowerConsumption": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mEstimatedMaximumPowerConsumption": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				}
+			}
+		},
+		"common-base--FGBuildableManufacturerVariablePower--HadronCollider": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildableManufacturerVariablePower--base",
+			"required": [
+				"mSequenceDuration",
+				"mLightningTimer",
+				"mGameTimeAtProducing",
+				"mCurrentProducingSeekTime",
+				"mStartVector_VFX_Small_Start",
+				"mStartVector_VFX_Small_End",
+				"mStartVector_VFX_Medium_Start",
+				"mStartVector_VFX_Medium_End",
+				"mStartVector_VFX_Large_Start",
+				"mStartVector_VFX_Large_End"
+			],
+			"properties": {
+				"mSequenceDuration": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mLightningTimer": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mGameTimeAtProducing": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mCurrentProducingSeekTime": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mStartVector_VFX_Small_Start": {
+					"$ref": "common.schema.json#/$defs/xyz-array"
+				},
+				"mStartVector_VFX_Small_End": {
+					"$ref": "common.schema.json#/$defs/xyz-array"
+				},
+				"mStartVector_VFX_Medium_Start": {
+					"$ref": "common.schema.json#/$defs/xyz-array"
+				},
+				"mStartVector_VFX_Medium_End": {
+					"$ref": "common.schema.json#/$defs/xyz-array"
+				},
+				"mStartVector_VFX_Large_Start": {
+					"$ref": "common.schema.json#/$defs/xyz-array"
+				},
+				"mStartVector_VFX_Large_End": {
+					"$ref": "common.schema.json#/$defs/xyz-array"
+				}
+			}
+		},
 		"faux-1": {
 			"type": "object",
 			"$ref": "#/$defs/class",
@@ -4378,6 +4612,30 @@
 				},
 				"FGBuildableResourceExtractor_miner_mk3": {
 					"$ref": "#/$defs/common-base--FGBuildableResourceExtractor--miner-mk3"
+				},
+				"FGBuildableManufacturer_base": {
+					"$ref": "#/$defs/common-base--FGBuildableManufacturer--base"
+				},
+				"FGBuildableManufacturer": {
+					"$ref": "#/$defs/common-base--FGBuildableManufacturer"
+				},
+				"FGBuildableManufacturer_packager": {
+					"$ref": "#/$defs/common-base--FGBuildableManufacturer--packager"
+				},
+				"FGBuildableManufacturer_blender": {
+					"$ref": "#/$defs/common-base--FGBuildableManufacturer--blender"
+				},
+				"FGBuildableManufacturer_smelter": {
+					"$ref": "#/$defs/common-base--FGBuildableManufacturer--smelter"
+				},
+				"FGBuildableManufacturer_constructor": {
+					"$ref": "#/$defs/common-base--FGBuildableManufacturer--constructor"
+				},
+				"FGBuildableManufacturerVariablePower_base": {
+					"$ref": "#/$defs/common-base--FGBuildableManufacturerVariablePower--base"
+				},
+				"FGBuildableManufacturerVariablePower_HadronCollider": {
+					"$ref": "#/$defs/common-base--FGBuildableManufacturerVariablePower--HadronCollider"
 				}
 			}
 		},
