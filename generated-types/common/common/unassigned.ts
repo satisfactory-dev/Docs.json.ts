@@ -100,6 +100,18 @@ import {
 } from '../classes/CoreUObject/FGBuildableManufacturerVariablePower';
 
 import {
+	common_base__FGEquipment__placeable__type,
+	common_base__FGEquipment__base__type,
+} from '../classes/CoreUObject/FGEquipment';
+
+import {common_base__FGPortableMinerDispenser__type} from '../classes/CoreUObject/FGPortableMinerDispenser';
+
+import {
+	common_base__FGItemDescriptorNuclearFuel__waste__type,
+	common_base__FGItemDescriptorNuclearFuel__type,
+} from '../classes/CoreUObject/FGItemDescriptorNuclearFuel';
+
+import {
 	FGSchematic__mUnlocks_mSchematics__mSchematics__type,
 	common_base__FGSchematic__mUnlocks__type,
 	common_base__FGSchematic__base__mSchematicDependencies__mRequireAllSchematicsToBePurchased__type,
@@ -117,8 +129,6 @@ import {
 	FGSchematic__mUnlocks_mScannableObjects__type,
 	FGSchematic__mUnlocks_mItemsToGive__type,
 } from '../classes/CoreUObject/FGSchematic';
-
-import {common_base__FGEquipment__base__type} from '../classes/CoreUObject/FGEquipment';
 
 import {
 	common_base__FGEquipmentStunSpear__base__type,
@@ -477,6 +487,10 @@ export type faux_11__type = class__type & {
 	FGBuildableManufacturer_constructor?: common_base__FGBuildableManufacturer__constructor__type;
 	FGBuildableManufacturerVariablePower_base?: common_base__FGBuildableManufacturerVariablePower__base__type;
 	FGBuildableManufacturerVariablePower_HadronCollider?: common_base__FGBuildableManufacturerVariablePower__HadronCollider__type;
+	FGEquipment_placeable?: common_base__FGEquipment__placeable__type;
+	FGPortableMinerDispenser?: common_base__FGPortableMinerDispenser__type;
+	FGItemDescriptorNuclearFuel_waste?: common_base__FGItemDescriptorNuclearFuel__waste__type;
+	FGItemDescriptorNuclearFuel?: common_base__FGItemDescriptorNuclearFuel__type;
 };
 
 export type faux_12__type = class__type & {

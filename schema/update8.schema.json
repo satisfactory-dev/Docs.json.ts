@@ -2216,49 +2216,59 @@
 			"$ref": "#/$defs/FGBuildableManufacturerVariablePower--HadronCollider--merged",
 			"unevaluatedProperties": false
 		},
+		"FGEquipment--placeable--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGEquipment--placeable"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--base"
+				}
+			]
+		},
 		"FGEquipment--placeable": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment--base",
-			"required": ["mAllowedResourceForms", "mPlaceDistanceMax"],
+			"$ref": "#/$defs/FGEquipment--placeable--merged",
+			"required": ["mPlaceDistanceMax"],
 			"properties": {
-				"mAllowedResourceForms": {
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"minItems": 1,
-						"items": {
-							"type": "string",
-							"const": "RF_SOLID"
-						}
-					}
-				},
 				"mPlaceDistanceMax": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
+		"FGPortableMinerDispenser--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGPortableMinerDispenser"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--placeable"
+				}
+			]
+		},
 		"FGPortableMinerDispenser": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment--placeable",
+			"$ref": "#/$defs/FGPortableMinerDispenser--merged",
 			"unevaluatedProperties": false
+		},
+		"FGItemDescriptorNuclearFuel--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGItemDescriptorNuclearFuel"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--FGResourceDescriptor"
+				}
+			]
 		},
 		"FGItemDescriptorNuclearFuel": {
 			"type": "object",
-			"$ref": "#/$defs/FGItemDescriptor--FGResourceDescriptor",
+			"$ref": "#/$defs/FGItemDescriptorNuclearFuel--merged",
 			"unevaluatedProperties": false,
-			"required": ["mSpentFuelClass", "mAmountOfWaste"],
+			"required": ["mSpentFuelClass"],
 			"properties": {
 				"mSpentFuelClass": {
-					"type": "string",
-					"minLength": 1,
-					"UnrealEngineString": {
-						"right": {
-							"starts_with": "/Game/FactoryGame/Resource/Parts/NuclearWaste/"
-						}
-					}
-				},
-				"mAmountOfWaste": {
-					"$ref": "common.schema.json#/$defs/integer-string"
+					"$ref": "common.schema.json#/$defs/common-base--FGItemDescriptorNuclearFuel--waste"
 				}
 			}
 		},

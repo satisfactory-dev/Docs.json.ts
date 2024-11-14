@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (248 of 248)
+100.00% Complete (253 of 253)
 
 ## Basic Types
 
@@ -133,6 +133,7 @@
 -   [x] common-base--FGConsumableDescriptor--healing
 -   [x] common-base--FGCustomizationRecipe--FGRecipe (common type)
 -   [x] common-base--FGEquipment--base (common type)
+-   [x] common-base--FGEquipment--placeable (common type)
 -   [x] common-base--FGEquipmentDescriptor
 -   [x] common-base--FGEquipmentDescriptor--base (common type)
 -   [x] common-base--FGEquipmentStunSpear
@@ -146,11 +147,14 @@
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor (common type)
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor--mSubCategories (common type)
 -   [x] common-base--FGItemDescriptorBiomass
+-   [x] common-base--FGItemDescriptorNuclearFuel
+-   [x] common-base--FGItemDescriptorNuclearFuel--waste
 -   [x] common-base--FGJetPack
 -   [x] common-base--FGJumpingStilts
 -   [x] common-base--FGObjectScanner
 -   [x] common-base--FGParachute
 -   [x] common-base--FGPoleDescriptor
+-   [x] common-base--FGPortableMinerDispenser
 -   [x] common-base--FGRecipe
 -   [x] common-base--FGResourceDescriptor
 -   [x] common-base--FGSchematic--base (common type)

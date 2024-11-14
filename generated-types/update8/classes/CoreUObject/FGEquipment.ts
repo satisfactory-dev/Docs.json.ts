@@ -7,7 +7,10 @@ import {
 
 import {empty_object__type} from '../../../common/common/unassigned';
 
-import {common_base__FGEquipment__base__type} from '../../../common/classes/CoreUObject/FGEquipment';
+import {
+	common_base__FGEquipment__base__type,
+	common_base__FGEquipment__placeable__type,
+} from '../../../common/classes/CoreUObject/FGEquipment';
 
 export type FGEquipment__base__type =
 	common_base__FGEquipment__base__type & {
@@ -88,7 +91,11 @@ export type FGEquipment__base__type =
 		mOnlyVisibleToOwner: boolean__type;
 	};
 
-export type FGEquipment__placeable__type = FGEquipment__base__type & {
-	mAllowedResourceForms: ['RF_SOLID', ...'RF_SOLID'[]];
-	mPlaceDistanceMax: decimal_string__type;
-};
+export type FGEquipment__placeable__type =
+	FGEquipment__placeable__merged__type & {
+		mPlaceDistanceMax: decimal_string__type;
+	};
+
+export type FGEquipment__placeable__merged__type =
+	common_base__FGEquipment__placeable__type &
+		FGEquipment__base__type;

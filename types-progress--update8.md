@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (396 of 396)
+100.00% Complete (403 of 403)
 
 ## Basic Types
 
@@ -19,7 +19,6 @@
 -   [x] FGChargedWeapon
 -   [x] FGGolfCartDispenser
 -   [x] FGPipeHyperStart
--   [x] FGPortableMinerDispenser
 -   [x] integer-string (common type)
 -   [x] integer-string--signed (common type)
 -   [x] mAspect (common type)
@@ -117,6 +116,7 @@
 -   [x] common-base--FGConsumableDescriptor--healing (common type)
 -   [x] common-base--FGCustomizationRecipe--FGRecipe (common type)
 -   [x] common-base--FGEquipment--base (common type)
+-   [x] common-base--FGEquipment--placeable (common type)
 -   [x] common-base--FGEquipmentDescriptor (common type)
 -   [x] common-base--FGEquipmentDescriptor--base (common type)
 -   [x] common-base--FGEquipmentStunSpear (common type)
@@ -130,11 +130,14 @@
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor (common type)
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor--mSubCategories (common type)
 -   [x] common-base--FGItemDescriptorBiomass (common type)
+-   [x] common-base--FGItemDescriptorNuclearFuel (common type)
+-   [x] common-base--FGItemDescriptorNuclearFuel--waste (common type)
 -   [x] common-base--FGJetPack (common type)
 -   [x] common-base--FGJumpingStilts (common type)
 -   [x] common-base--FGObjectScanner (common type)
 -   [x] common-base--FGParachute (common type)
 -   [x] common-base--FGPoleDescriptor (common type)
+-   [x] common-base--FGPortableMinerDispenser (common type)
 -   [x] common-base--FGRecipe (common type)
 -   [x] common-base--FGResourceDescriptor (common type)
 -   [x] common-base--FGSchematic--base (common type)
@@ -449,6 +452,7 @@
 -   [x] FGEquipmentZipline
 -   [x] FGEquipment--base
 -   [x] FGEquipment--placeable
+-   [x] FGEquipment--placeable--merged
 -   [x] FGEquipmentDescriptor--base
 
 ## FGEquipmentDescriptor
@@ -490,6 +494,10 @@
 
 -   [x] FGItemDescriptorBiomass--merged
 
+## FGItemDescriptorNuclearFuel
+
+-   [x] FGItemDescriptorNuclearFuel--merged
+
 ## FGJetPack
 
 -   [x] FGJetPack
@@ -514,6 +522,11 @@
 
 -   [x] FGPoleDescriptor
 -   [x] FGPoleDescriptor--merged
+
+## FGPortableMinerDispenser
+
+-   [x] FGPortableMinerDispenser
+-   [x] FGPortableMinerDispenser--merged
 
 ## FGRecipe
 

@@ -1,21 +1,25 @@
-import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
-
 import {FGItemDescriptor__FGResourceDescriptor__type} from './FGItemDescriptor';
 
-import {integer_string__type} from '../../../common/common/scalar';
+import {
+	common_base__FGItemDescriptorNuclearFuel__waste__type,
+	common_base__FGItemDescriptorNuclearFuel__type,
+} from '../../../common/classes/CoreUObject/FGItemDescriptorNuclearFuel';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {
+	None__type,
+	NativeClass__type,
+} from '../../../common/common/unassigned';
 
 export type FGItemDescriptorNuclearFuel__type =
-	FGItemDescriptor__FGResourceDescriptor__type & {
+	FGItemDescriptorNuclearFuel__merged__type & {
 		mSpentFuelClass:
-			| UnrealEngineString<
-					'/Script/Engine.BlueprintGeneratedClass',
-					StringStartsWith<'/Game/FactoryGame/Resource/Parts/NuclearWaste/'>
-			>
-			| 'None';
-		mAmountOfWaste: integer_string__type;
+			| common_base__FGItemDescriptorNuclearFuel__waste__type
+			| None__type;
 	};
+
+export type FGItemDescriptorNuclearFuel__merged__type =
+	common_base__FGItemDescriptorNuclearFuel__type &
+		FGItemDescriptor__FGResourceDescriptor__type;
 
 export type FGItemDescriptorNuclearFuel__NativeClass =
 	NativeClass__type & {

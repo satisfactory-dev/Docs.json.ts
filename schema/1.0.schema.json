@@ -4529,28 +4529,39 @@
 			"$ref": "#/$defs/FGBuildableManufacturerVariablePower--HadronCollider--merged",
 			"unevaluatedProperties": false
 		},
+		"FGEquipment--placeable--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGEquipment--placeable"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--base"
+				}
+			]
+		},
 		"FGEquipment--placeable": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment--base",
-			"required": ["mAllowedResourceForms"],
-			"properties": {
-				"mAllowedResourceForms": {
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"minItems": 1,
-						"items": {
-							"type": "string",
-							"const": "RF_SOLID"
-						}
-					}
+			"$ref": "#/$defs/FGEquipment--placeable--merged"
+		},
+		"FGPortableMinerDispenser--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGPortableMinerDispenser"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--placeable"
 				}
-			}
+			]
 		},
 		"FGPortableMinerDispenser": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment--placeable",
+			"$ref": "#/$defs/FGPortableMinerDispenser--merged",
 			"unevaluatedProperties": false,
+			"required": [
+				"mEquipMontage",
+				"mStingerMontage",
+				"mUnEquipMontage"
+			],
 			"properties": {
 				"mEquipMontage": {
 					"type": "string",
@@ -4680,32 +4691,31 @@
 				}
 			}
 		},
+		"FGItemDescriptorNuclearFuel--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGItemDescriptorNuclearFuel"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--FGResourceDescriptor"
+				}
+			]
+		},
 		"FGItemDescriptorNuclearFuel": {
 			"type": "object",
-			"$ref": "#/$defs/FGItemDescriptor--FGResourceDescriptor",
+			"$ref": "#/$defs/FGItemDescriptorNuclearFuel--merged",
 			"unevaluatedProperties": false,
-			"required": ["mSpentFuelClass", "mAmountOfWaste"],
+			"required": ["mSpentFuelClass"],
 			"properties": {
 				"mSpentFuelClass": {
 					"oneOf": [
 						{
-							"type": "string",
-							"minLength": 1,
-							"UnrealEngineString": {
-								"right": {
-									"starts_with": "/Game/FactoryGame/Resource/Parts/NuclearWaste/"
-								},
-								"quote_mode": "original"
-							}
+							"$ref": "common.schema.json#/$defs/common-base--FGItemDescriptorNuclearFuel--waste"
 						},
 						{
-							"type": "string",
-							"const": "None"
+							"$ref": "common.schema.json#/$defs/None"
 						}
 					]
-				},
-				"mAmountOfWaste": {
-					"$ref": "common.schema.json#/$defs/integer-string"
 				}
 			}
 		},

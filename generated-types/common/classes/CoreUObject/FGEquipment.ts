@@ -76,3 +76,8 @@ export type common_base__FGEquipment__base__type =
 		mReceivedDamageModifiers: '';
 		mSwappedOutThirdPersonMaterials: empty_object__type;
 	};
+
+export type common_base__FGEquipment__placeable__type =
+	common_base__FGEquipment__base__type & {
+		mAllowedResourceForms: ['RF_SOLID', ...'RF_SOLID'[]];
+	};

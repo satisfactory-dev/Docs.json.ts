@@ -4253,6 +4253,48 @@
 				}
 			}
 		},
+		"common-base--FGEquipment--placeable": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGEquipment--base",
+			"required": ["mAllowedResourceForms"],
+			"properties": {
+				"mAllowedResourceForms": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"minItems": 1,
+						"items": {
+							"type": "string",
+							"const": "RF_SOLID"
+						}
+					}
+				}
+			}
+		},
+		"common-base--FGPortableMinerDispenser": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGEquipment--placeable"
+		},
+		"common-base--FGItemDescriptorNuclearFuel--waste": {
+			"type": "string",
+			"minLength": 1,
+			"UnrealEngineString": {
+				"right": {
+					"starts_with": "/Game/FactoryGame/Resource/Parts/NuclearWaste/"
+				},
+				"quote_mode": "both"
+			}
+		},
+		"common-base--FGItemDescriptorNuclearFuel": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGItemDescriptor--FGResourceDescriptor",
+			"required": ["mAmountOfWaste"],
+			"properties": {
+				"mAmountOfWaste": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				}
+			}
+		},
 		"faux-1": {
 			"type": "object",
 			"$ref": "#/$defs/class",
@@ -4636,6 +4678,18 @@
 				},
 				"FGBuildableManufacturerVariablePower_HadronCollider": {
 					"$ref": "#/$defs/common-base--FGBuildableManufacturerVariablePower--HadronCollider"
+				},
+				"FGEquipment_placeable": {
+					"$ref": "#/$defs/common-base--FGEquipment--placeable"
+				},
+				"FGPortableMinerDispenser": {
+					"$ref": "#/$defs/common-base--FGPortableMinerDispenser"
+				},
+				"FGItemDescriptorNuclearFuel_waste": {
+					"$ref": "#/$defs/common-base--FGItemDescriptorNuclearFuel--waste"
+				},
+				"FGItemDescriptorNuclearFuel": {
+					"$ref": "#/$defs/common-base--FGItemDescriptorNuclearFuel"
 				}
 			}
 		},
