@@ -112,6 +112,12 @@ import {
 } from '../classes/CoreUObject/FGItemDescriptorNuclearFuel';
 
 import {
+	common_base__FGVehicleDescriptor__powered_no_inventory__type,
+	common_base__FGVehicleDescriptor__with_inventory__type,
+	common_base__FGVehicleDescriptor__fueled_with_inventory__type,
+} from '../classes/CoreUObject/FGVehicleDescriptor';
+
+import {
 	FGSchematic__mUnlocks_mSchematics__mSchematics__type,
 	common_base__FGSchematic__mUnlocks__type,
 	common_base__FGSchematic__base__mSchematicDependencies__mRequireAllSchematicsToBePurchased__type,
@@ -491,6 +497,9 @@ export type faux_11__type = class__type & {
 	FGPortableMinerDispenser?: common_base__FGPortableMinerDispenser__type;
 	FGItemDescriptorNuclearFuel_waste?: common_base__FGItemDescriptorNuclearFuel__waste__type;
 	FGItemDescriptorNuclearFuel?: common_base__FGItemDescriptorNuclearFuel__type;
+	FGVehicleDescriptor_powered_no_inventory?: common_base__FGVehicleDescriptor__powered_no_inventory__type;
+	FGVehicleDescriptor_with_inventory?: common_base__FGVehicleDescriptor__with_inventory__type;
+	FGVehicleDescriptor_fueled_with_inventory?: common_base__FGVehicleDescriptor__fueled_with_inventory__type;
 };
 
 export type faux_12__type = class__type & {

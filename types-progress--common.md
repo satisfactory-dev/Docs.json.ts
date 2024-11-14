@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (253 of 253)
+100.00% Complete (257 of 257)
 
 ## Basic Types
 
@@ -164,6 +164,9 @@
 -   [x] common-base--FGSchematic--mUnlocks_Class
 -   [x] common-base--FGSchematic--with-unlocks
 -   [x] common-base--FGSuitBase
+-   [x] common-base--FGVehicleDescriptor--fueled-with-inventory
+-   [x] common-base--FGVehicleDescriptor--powered-no-inventory
+-   [x] common-base--FGVehicleDescriptor--with-inventory (common type)
 -   [x] common-base--mChainsawState (common type)
 -   [x] common-base--mDisableSnapOn (common type)
 -   [x] common-base--mSnappedPassthroughs (common type)

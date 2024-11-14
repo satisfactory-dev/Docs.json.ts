@@ -4295,6 +4295,48 @@
 				}
 			}
 		},
+		"common-base--FGVehicleDescriptor--powered-no-inventory": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor",
+			"required": ["mPowerConsumption"],
+			"properties": {
+				"mPowerConsumption": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["Min", "Max"],
+						"properties": {
+							"Min": {
+								"$ref": "common.schema.json#/$defs/decimal-string"
+							},
+							"Max": {
+								"$ref": "common.schema.json#/$defs/decimal-string"
+							}
+						}
+					}
+				}
+			}
+		},
+		"common-base--FGVehicleDescriptor--with-inventory": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor",
+			"required": ["mInventorySize"],
+			"properties": {
+				"mInventorySize": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				}
+			}
+		},
+		"common-base--FGVehicleDescriptor--fueled-with-inventory": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGVehicleDescriptor--with-inventory",
+			"required": ["mFuelConsumption"],
+			"properties": {
+				"mFuelConsumption": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				}
+			}
+		},
 		"faux-1": {
 			"type": "object",
 			"$ref": "#/$defs/class",
@@ -4690,6 +4732,15 @@
 				},
 				"FGItemDescriptorNuclearFuel": {
 					"$ref": "#/$defs/common-base--FGItemDescriptorNuclearFuel"
+				},
+				"FGVehicleDescriptor_powered_no_inventory": {
+					"$ref": "#/$defs/common-base--FGVehicleDescriptor--powered-no-inventory"
+				},
+				"FGVehicleDescriptor_with_inventory": {
+					"$ref": "#/$defs/common-base--FGVehicleDescriptor--with-inventory"
+				},
+				"FGVehicleDescriptor_fueled_with_inventory": {
+					"$ref": "#/$defs/common-base--FGVehicleDescriptor--fueled-with-inventory"
 				}
 			}
 		},

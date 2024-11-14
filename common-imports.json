@@ -155,6 +155,9 @@
 	"common_type__FGSchematic__mUnlocks_mTapeUnlocks__type": "classes/CoreUObject/FGSchematic",
 	"common_type__FGSchematic__mUnlocks_resources_to_scan__type": "classes/CoreUObject/FGSchematic",
 	"common_type__common_base__FGSuitBase__type": "classes/CoreUObject/FGSuitBase",
+	"common_type__common_base__FGVehicleDescriptor__fueled_with_inventory__type": "classes/CoreUObject/FGVehicleDescriptor",
+	"common_type__common_base__FGVehicleDescriptor__powered_no_inventory__type": "classes/CoreUObject/FGVehicleDescriptor",
+	"common_type__common_base__FGVehicleDescriptor__with_inventory__type": "classes/CoreUObject/FGVehicleDescriptor",
 	"common_type__UnrealEngineString": "utils/validators",
 	"common_type__StringStartsWith": "utils/validators",
 	"common_type__StringPassedRegExp": "utils/validators"

@@ -2272,54 +2272,54 @@
 				}
 			}
 		},
+		"FGVehicleDescriptor--powered-no-inventory--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGVehicleDescriptor--powered-no-inventory"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor"
+				}
+			]
+		},
 		"FGVehicleDescriptor--powered-no-inventory": {
 			"type": "object",
-			"$ref": "#/$defs/FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor",
-			"unevaluatedProperties": false,
-			"required": ["mPowerConsumption"],
-			"properties": {
-				"mPowerConsumption": {
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"required": ["Min", "Max"],
-						"properties": {
-							"Min": {
-								"$ref": "common.schema.json#/$defs/decimal-string"
-							},
-							"Max": {
-								"$ref": "common.schema.json#/$defs/decimal-string"
-							}
-						}
-					}
+			"$ref": "#/$defs/FGVehicleDescriptor--powered-no-inventory--merged",
+			"unevaluatedProperties": false
+		},
+		"FGVehicleDescriptor--with-inventory--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGVehicleDescriptor--with-inventory"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor"
 				}
-			}
+			]
 		},
 		"FGVehicleDescriptor--with-inventory": {
 			"type": "object",
-			"$ref": "#/$defs/FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor",
-			"required": ["mInventorySize"],
-			"properties": {
-				"mInventorySize": {
-					"$ref": "common.schema.json#/$defs/integer-string"
-				}
-			}
+			"$ref": "#/$defs/FGVehicleDescriptor--with-inventory--merged"
 		},
 		"FGVehicleDescriptor--unfueled-with-inventory": {
 			"type": "object",
 			"$ref": "#/$defs/FGVehicleDescriptor--with-inventory",
 			"unevaluatedProperties": false
 		},
+		"FGVehicleDescriptor--fueled-with-inventory--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGVehicleDescriptor--fueled-with-inventory"
+				},
+				{
+					"$ref": "#/$defs/FGVehicleDescriptor--with-inventory"
+				}
+			]
+		},
 		"FGVehicleDescriptor--fueled-with-inventory": {
 			"type": "object",
-			"$ref": "#/$defs/FGVehicleDescriptor--with-inventory",
-			"unevaluatedProperties": false,
-			"required": ["mFuelConsumption"],
-			"properties": {
-				"mFuelConsumption": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				}
-			}
+			"$ref": "#/$defs/FGVehicleDescriptor--fueled-with-inventory--merged",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableFrackingExtractor": {
 			"type": "object",
