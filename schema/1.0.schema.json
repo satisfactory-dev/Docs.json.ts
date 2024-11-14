@@ -3760,9 +3760,7 @@
 		"FGBuildableGeneratorFuel--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableGeneratorFuel--base--merged",
-			"required": [
-				"mFuelClassesInInventory"
-			],
+			"required": ["mFuelClassesInInventory"],
 			"properties": {
 				"mFuelClassesInInventory": {
 					"type": "string",
@@ -3799,10 +3797,7 @@
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableGeneratorFuel--liquid--merged",
 			"unevaluatedProperties": false,
-			"required": [
-				"mDefaultFuelClasses",
-				"mFuel"
-			],
+			"required": ["mDefaultFuelClasses", "mFuel"],
 			"properties": {
 				"mDefaultFuelClasses": {
 					"type": "string",
@@ -3957,11 +3952,7 @@
 			"type": "object",
 			"unevaluatedProperties": false,
 			"$ref": "common.schema.json#/$defs/common-base--FGBuildableGeneratorNuclear--mFuel--base",
-			"required": [
-				"mFuelClass",
-				"mByproduct",
-				"mByproductAmount"
-			],
+			"required": ["mFuelClass", "mByproduct", "mByproductAmount"],
 			"properties": {
 				"mFuelClass": {
 					"type": "string",

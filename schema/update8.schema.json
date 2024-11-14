@@ -1543,10 +1543,7 @@
 		"FGBuildableGeneratorFuel--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableGeneratorFuel--base--merged",
-			"required": [
-				"mFuelInventoryHandlerData",
-				"mFuelResourceForm"
-			],
+			"required": ["mFuelInventoryHandlerData", "mFuelResourceForm"],
 			"properties": {
 				"mFuelInventoryHandlerData": {
 					"$ref": "common.schema.json#/$defs/empty-object"
@@ -1571,9 +1568,7 @@
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableGeneratorFuel--solid--merged",
 			"unevaluatedProperties": false,
-			"required": [
-				"mFuelResourceForm"
-			],
+			"required": ["mFuelResourceForm"],
 			"properties": {
 				"mFuelResourceForm": {
 					"type": "string",
@@ -1595,11 +1590,7 @@
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableGeneratorFuel--liquid--merged",
 			"unevaluatedProperties": false,
-			"required": [
-				"mDefaultFuelClasses",
-				"mFuel",
-				"mFuelResourceForm"
-			],
+			"required": ["mDefaultFuelClasses", "mFuel", "mFuelResourceForm"],
 			"properties": {
 				"mDefaultFuelClasses": {
 					"type": "string",
@@ -1671,11 +1662,7 @@
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableGeneratorFuel--biogen--merged",
 			"unevaluatedProperties": false,
-			"required": [
-				"mDefaultFuelClasses",
-				"mFuel",
-				"mFuelResourceForm"
-			],
+			"required": ["mDefaultFuelClasses", "mFuel", "mFuelResourceForm"],
 			"properties": {
 				"mDefaultFuelClasses": {
 					"type": "string",
@@ -1950,9 +1937,7 @@
 		"FGBuildable--extractor-base": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--extractor-base--merged",
-			"required": [
-				"mReplicatedFlowRate"
-			],
+			"required": ["mReplicatedFlowRate"],
 			"properties": {
 				"mReplicatedFlowRate": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -1988,9 +1973,7 @@
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableResourceSink--merged",
 			"unevaluatedProperties": false,
-			"required": [
-				"mCouponInventoryHandler"
-			],
+			"required": ["mCouponInventoryHandler"],
 			"properties": {
 				"mCouponInventoryHandler": {
 					"$ref": "common.schema.json#/$defs/empty-object"
