@@ -1,20 +1,15 @@
 import {FGBuildable__extractor_base__type} from './FGBuildable';
 
-import {
-	None__type,
-	UnrealEngineString__array__type,
-	NativeClass__type,
-} from '../../../common/common/unassigned';
+import {common_base__FGBuildableFrackingExtractor__type} from '../../../common/classes/CoreUObject/FGBuildableFrackingExtractor';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableFrackingExtractor__type =
-	FGBuildable__extractor_base__type & {
-		mAllowedResourceForms: [
-			'RF_LIQUID' | 'RF_GAS',
-			...('RF_LIQUID' | 'RF_GAS')[],
-		];
-		mExtractorTypeName: None__type;
-		mAllowedResources: UnrealEngineString__array__type;
-	};
+	FGBuildableFrackingExtractor__merged__type;
+
+export type FGBuildableFrackingExtractor__merged__type =
+	common_base__FGBuildableFrackingExtractor__type &
+		FGBuildable__extractor_base__type;
 
 export type FGBuildableFrackingExtractor__NativeClass =
 	NativeClass__type & {

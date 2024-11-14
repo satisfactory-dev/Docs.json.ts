@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (257 of 257)
+100.00% Complete (269 of 269)
 
 ## Basic Types
 
@@ -42,12 +42,12 @@
 -   [x] InfinityExtrap
 -   [x] integer-string (common type)
 -   [x] integer-string--signed (common type)
--   [x] mAspect
+-   [x] mAspect (common type)
 -   [x] mBatteryStatus
 -   [x] mDamageTypes (common type)
--   [x] mDockingRuleSet
+-   [x] mDockingRuleSet (common type)
 -   [x] mForm (common type)
--   [x] mPlatformDockingStatus
+-   [x] mPlatformDockingStatus (common type)
 -   [x] NativeClass
 -   [x] None (common type)
 -   [x] SpecifiedColor
@@ -81,6 +81,8 @@
 -   [x] common-base--FGBuildableFactory--generic
 -   [x] common-base--FGBuildableFactory--jump-pad
 -   [x] common-base--FGBuildableFactory--landing-pad
+-   [x] common-base--FGBuildableFrackingActivator
+-   [x] common-base--FGBuildableFrackingExtractor
 -   [x] common-base--FGBuildableGenerator--base (common type)
 -   [x] common-base--FGBuildableGeneratorFuel--base (common type)
 -   [x] common-base--FGBuildableGeneratorFuel--biogen
@@ -108,6 +110,8 @@
 -   [x] common-base--FGBuildablePipeReservoir
 -   [x] common-base--FGBuildablePoleLightweight
 -   [x] common-base--FGBuildablePowerPole
+-   [x] common-base--FGBuildableRailroadSignal
+-   [x] common-base--FGBuildableRailroadStation
 -   [x] common-base--FGBuildableRailroadTrack
 -   [x] common-base--FGBuildableResourceExtractor--miner
 -   [x] common-base--FGBuildableResourceExtractor--miner--base (common type)
@@ -116,6 +120,9 @@
 -   [x] common-base--FGBuildableResourceSink
 -   [x] common-base--FGBuildableResourceSinkShop
 -   [x] common-base--FGBuildableTradingPost
+-   [x] common-base--FGBuildableTrainPlatform--base (common type)
+-   [x] common-base--FGBuildableTrainPlatformCargo
+-   [x] common-base--FGBuildableTrainPlatformCargo--FGBuildableRailroadStation (common type)
 -   [x] common-base--FGBuildableWalkway
 -   [x] common-base--FGBuildableWalkway--base (common type)
 -   [x] common-base--FGBuildableWalkwayLightweight

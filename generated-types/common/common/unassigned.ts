@@ -117,6 +117,21 @@ import {
 	common_base__FGVehicleDescriptor__fueled_with_inventory__type,
 } from '../classes/CoreUObject/FGVehicleDescriptor';
 
+import {common_base__FGBuildableFrackingExtractor__type} from '../classes/CoreUObject/FGBuildableFrackingExtractor';
+
+import {common_base__FGBuildableFrackingActivator__type} from '../classes/CoreUObject/FGBuildableFrackingActivator';
+
+import {common_base__FGBuildableRailroadSignal__type} from '../classes/CoreUObject/FGBuildableRailroadSignal';
+
+import {common_base__FGBuildableTrainPlatform__base__type} from '../classes/CoreUObject/FGBuildableTrainPlatform';
+
+import {
+	common_base__FGBuildableTrainPlatformCargo__FGBuildableRailroadStation__type,
+	common_base__FGBuildableTrainPlatformCargo__type,
+} from '../classes/CoreUObject/FGBuildableTrainPlatformCargo';
+
+import {common_base__FGBuildableRailroadStation__type} from '../classes/CoreUObject/FGBuildableRailroadStation';
+
 import {
 	FGSchematic__mUnlocks_mSchematics__mSchematics__type,
 	common_base__FGSchematic__mUnlocks__type,
@@ -500,6 +515,13 @@ export type faux_11__type = class__type & {
 	FGVehicleDescriptor_powered_no_inventory?: common_base__FGVehicleDescriptor__powered_no_inventory__type;
 	FGVehicleDescriptor_with_inventory?: common_base__FGVehicleDescriptor__with_inventory__type;
 	FGVehicleDescriptor_fueled_with_inventory?: common_base__FGVehicleDescriptor__fueled_with_inventory__type;
+	FGBuildableFrackingExtractor?: common_base__FGBuildableFrackingExtractor__type;
+	FGBuildableFrackingActivator?: common_base__FGBuildableFrackingActivator__type;
+	FGBuildableRailroadSignal?: common_base__FGBuildableRailroadSignal__type;
+	FGBuildableTrainPlatform_base?: common_base__FGBuildableTrainPlatform__base__type;
+	FGBuildableTrainPlatformCargo_FGBuildableRailroadStation?: common_base__FGBuildableTrainPlatformCargo__FGBuildableRailroadStation__type;
+	FGBuildableTrainPlatformCargo?: common_base__FGBuildableTrainPlatformCargo__type;
+	FGBuildableRailroadStation?: common_base__FGBuildableRailroadStation__type;
 };
 
 export type faux_12__type = class__type & {

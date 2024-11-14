@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (443 of 443)
+100.00% Complete (457 of 457)
 
 ## Basic Types
 
@@ -70,6 +70,8 @@
 -   [x] common-base--FGBuildableFactory--generic (common type)
 -   [x] common-base--FGBuildableFactory--jump-pad (common type)
 -   [x] common-base--FGBuildableFactory--landing-pad (common type)
+-   [x] common-base--FGBuildableFrackingActivator (common type)
+-   [x] common-base--FGBuildableFrackingExtractor (common type)
 -   [x] common-base--FGBuildableGenerator--base (common type)
 -   [x] common-base--FGBuildableGeneratorFuel--base (common type)
 -   [x] common-base--FGBuildableGeneratorFuel--biogen (common type)
@@ -97,6 +99,8 @@
 -   [x] common-base--FGBuildablePipeReservoir (common type)
 -   [x] common-base--FGBuildablePoleLightweight (common type)
 -   [x] common-base--FGBuildablePowerPole (common type)
+-   [x] common-base--FGBuildableRailroadSignal (common type)
+-   [x] common-base--FGBuildableRailroadStation (common type)
 -   [x] common-base--FGBuildableRailroadTrack (common type)
 -   [x] common-base--FGBuildableResourceExtractor--miner (common type)
 -   [x] common-base--FGBuildableResourceExtractor--miner--base (common type)
@@ -105,6 +109,9 @@
 -   [x] common-base--FGBuildableResourceSink (common type)
 -   [x] common-base--FGBuildableResourceSinkShop (common type)
 -   [x] common-base--FGBuildableTradingPost (common type)
+-   [x] common-base--FGBuildableTrainPlatform--base (common type)
+-   [x] common-base--FGBuildableTrainPlatformCargo (common type)
+-   [x] common-base--FGBuildableTrainPlatformCargo--FGBuildableRailroadStation (common type)
 -   [x] common-base--FGBuildableWalkway (common type)
 -   [x] common-base--FGBuildableWalkway--base (common type)
 -   [x] common-base--FGBuildableWalkwayLightweight (common type)
@@ -299,6 +306,14 @@
 
 -   [x] FGBuildableFoundation--base
 
+## FGBuildableFrackingActivator
+
+-   [x] FGBuildableFrackingActivator--merged
+
+## FGBuildableFrackingExtractor
+
+-   [x] FGBuildableFrackingExtractor--merged
+
 ## FGBuildableGenerator
 
 -   [x] FGBuildableGenerator--base
@@ -388,6 +403,14 @@
 
 -   [x] FGBuildablePowerPole--merged
 
+## FGBuildableRailroadSignal
+
+-   [x] FGBuildableRailroadSignal--merged
+
+## FGBuildableRailroadStation
+
+-   [x] FGBuildableRailroadStation--merged
+
 ## FGBuildableRailroadTrack
 
 -   [x] FGBuildableRailroadTrack--merged
@@ -424,10 +447,13 @@
 ## FGBuildableTrainPlatform
 
 -   [x] FGBuildableTrainPlatform--base
+-   [x] FGBuildableTrainPlatform--base--merged
 
 ## FGBuildableTrainPlatformCargo
 
 -   [x] FGBuildableTrainPlatformCargo--FGBuildableRailroadStation
+-   [x] FGBuildableTrainPlatformCargo--FGBuildableRailroadStation--merged
+-   [x] FGBuildableTrainPlatformCargo--merged
 
 ## FGBuildableWalkway
 

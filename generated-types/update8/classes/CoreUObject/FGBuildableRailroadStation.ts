@@ -1,19 +1,15 @@
 import {FGBuildableTrainPlatformCargo__FGBuildableRailroadStation__type} from './FGBuildableTrainPlatformCargo';
 
-import {boolean__type} from '../../../common/common/scalar';
+import {common_base__FGBuildableRailroadStation__type} from '../../../common/classes/CoreUObject/FGBuildableRailroadStation';
 
-import {
-	mDockingRuleSet__type,
-	NativeClass__type,
-} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableRailroadStation__type =
-	FGBuildableTrainPlatformCargo__FGBuildableRailroadStation__type & {
-		mMapText: 'Train Station';
-		mShouldTeleportHere: boolean__type;
-		mDockedPlatformList: '';
-		mCurrentDockedWithRuleSet: mDockingRuleSet__type;
-	};
+	FGBuildableRailroadStation__merged__type;
+
+export type FGBuildableRailroadStation__merged__type =
+	common_base__FGBuildableRailroadStation__type &
+		FGBuildableTrainPlatformCargo__FGBuildableRailroadStation__type;
 
 export type FGBuildableRailroadStation__NativeClass =
 	NativeClass__type & {

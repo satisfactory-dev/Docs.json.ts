@@ -2304,380 +2304,113 @@
 			"$ref": "#/$defs/FGVehicleDescriptor--fueled-with-inventory--merged",
 			"unevaluatedProperties": false
 		},
+		"FGBuildableFrackingExtractor--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableFrackingExtractor"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--extractor-base"
+				}
+			]
+		},
 		"FGBuildableFrackingExtractor": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--extractor-base",
-			"unevaluatedProperties": false,
-			"required": [
-				"mAllowedResourceForms",
-				"mExtractorTypeName",
-				"mAllowedResources"
-			],
-			"properties": {
-				"mAllowedResourceForms": {
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"minItems": 1,
-						"items": {
-							"type": "string",
-							"enum": ["RF_LIQUID", "RF_GAS"]
-						}
-					}
+			"$ref": "#/$defs/FGBuildableFrackingExtractor--merged",
+			"unevaluatedProperties": false
+		},
+		"FGBuildableFrackingActivator--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableFrackingActivator"
 				},
-				"mExtractorTypeName": {
-					"$ref": "common.schema.json#/$defs/None"
-				},
-				"mAllowedResources": {
-					"$ref": "common.schema.json#/$defs/UnrealEngineString--array"
+				{
+					"$ref": "#/$defs/FGBuildable--extractor-base--shared"
 				}
-			}
+			]
 		},
 		"FGBuildableFrackingActivator": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--extractor-base--shared",
-			"unevaluatedProperties": false,
-			"required": [
-				"CurrentPotentialChangedDelegate",
-				"ConnectedExtractorCountChangedDelegate",
-				"mActivationStartupTime",
-				"mActivationStartupTimer",
-				"mSatelliteActivationComplete",
-				"mSatelliteNodeCount",
-				"mConnectedExtractorCount",
-				"mDefaultPotentialExtractionPerMinute",
-				"mAllowedResources"
-			],
-			"properties": {
-				"mExtractorTypeName": {
-					"$ref": "common.schema.json#/$defs/None"
+			"$ref": "#/$defs/FGBuildableFrackingActivator--merged",
+			"unevaluatedProperties": false
+		},
+		"FGBuildableRailroadSignal--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableRailroadSignal"
 				},
-				"CurrentPotentialChangedDelegate": {
-					"$ref": "common.schema.json#/$defs/empty-object"
-				},
-				"ConnectedExtractorCountChangedDelegate": {
-					"$ref": "common.schema.json#/$defs/empty-object"
-				},
-				"mActivationStartupTime": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mActivationStartupTimer": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mSatelliteActivationComplete": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mSatelliteNodeCount": {
-					"$ref": "common.schema.json#/$defs/integer-string"
-				},
-				"mConnectedExtractorCount": {
-					"$ref": "common.schema.json#/$defs/integer-string"
-				},
-				"mDefaultPotentialExtractionPerMinute": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mAllowedResources": {
-					"$ref": "common.schema.json#/$defs/UnrealEngineString--array"
+				{
+					"$ref": "#/$defs/FGBuildable--base"
 				}
-			}
+			]
 		},
 		"FGBuildableRailroadSignal": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
-			"unevaluatedProperties": false,
-			"required": [
-				"mOnAspectChangedDelegate",
-				"mOnBlockValidationChangedDelegate",
-				"mDrawDebugVisualState",
-				"mGuardedConnections",
-				"mObservedConnections",
-				"mAspect",
-				"mBlockValidation",
-				"mIsPathSignal",
-				"mIsBiDirectional",
-				"mVisualState",
-				"mSignificanceRange"
-			],
-			"properties": {
-				"mPreviousAspect": {
-					"$ref": "common.schema.json#/$defs/mAspect"
+			"$ref": "#/$defs/FGBuildableRailroadSignal--merged",
+			"unevaluatedProperties": false
+		},
+		"FGBuildableTrainPlatform--base--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableTrainPlatform--base"
 				},
-				"mOnAspectChangedDelegate": {
-					"$ref": "common.schema.json#/$defs/empty-object"
-				},
-				"mOnBlockValidationChangedDelegate": {
-					"$ref": "common.schema.json#/$defs/empty-object"
-				},
-				"mDrawDebugVisualState": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mGuardedConnections": {
-					"type": "string",
-					"const": ""
-				},
-				"mObservedConnections": {
-					"type": "string",
-					"const": ""
-				},
-				"mAspect": {
-					"$ref": "common.schema.json#/$defs/mAspect"
-				},
-				"mBlockValidation": {
-					"type": "string",
-					"const": "RBV_Unvalidated"
-				},
-				"mIsPathSignal": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mIsBiDirectional": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mVisualState": {
-					"$ref": "common.schema.json#/$defs/integer-string"
-				},
-				"mSignificanceRange": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
+				{
+					"$ref": "#/$defs/FGBuildable--consumes-power-base"
 				}
-			}
+			]
 		},
 		"FGBuildableTrainPlatform--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--consumes-power-base",
-			"required": [
-				"mPlatformConnections",
-				"mIsOrientationReversed",
-				"mPlatformDockingStatus",
-				"mSavedDockingStatus",
-				"mDockingSequenceTimerHandle",
-				"mIdleUpdateTimerHandle",
-				"mDockWasCancelled"
-			],
-			"properties": {
-				"mPlatformConnections": {
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"minItems": 1,
-						"items": {
-							"type": "string",
-							"minLength": 1,
-							"UnrealEngineString": {
-								"left": "/Script/FactoryGame.FGTrainPlatformConnection",
-								"right": {
-									"starts_with": "/Game/FactoryGame/Buildable/Factory/Train/Station/"
-								}
-							}
-						}
-					}
+			"$ref": "#/$defs/FGBuildableTrainPlatform--base--merged"
+		},
+		"FGBuildableTrainPlatformCargo--FGBuildableRailroadStation--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableTrainPlatformCargo--FGBuildableRailroadStation"
 				},
-				"mIsOrientationReversed": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mPlatformDockingStatus": {
-					"$ref": "common.schema.json#/$defs/mPlatformDockingStatus"
-				},
-				"mSavedDockingStatus": {
-					"$ref": "common.schema.json#/$defs/mPlatformDockingStatus"
-				},
-				"mDockingSequenceTimerHandle": {
-					"$ref": "common.schema.json#/$defs/empty-object"
-				},
-				"mIdleUpdateTimerHandle": {
-					"$ref": "common.schema.json#/$defs/empty-object"
-				},
-				"mDockWasCancelled": {
-					"$ref": "common.schema.json#/$defs/boolean"
+				{
+					"$ref": "#/$defs/FGBuildableTrainPlatform--base"
 				}
-			}
+			]
 		},
 		"FGBuildableTrainPlatformCargo--FGBuildableRailroadStation": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableTrainPlatform--base",
-			"required": ["mCurrentDockForDuration"],
-			"properties": {
-				"mCurrentDockForDuration": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
+			"$ref": "#/$defs/FGBuildableTrainPlatformCargo--FGBuildableRailroadStation--merged"
+		},
+		"FGBuildableTrainPlatformCargo--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableTrainPlatformCargo"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableTrainPlatformCargo--FGBuildableRailroadStation"
 				}
-			}
+			]
 		},
 		"FGBuildableTrainPlatformCargo": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableTrainPlatformCargo--FGBuildableRailroadStation",
-			"unevaluatedProperties": false,
-			"required": [
-				"mOnTransferRateUpdated",
-				"mFreightCargoType",
-				"mStorageSizeX",
-				"mStorageSizeY",
-				"mCanUnloadAny",
-				"mIsFullUnload",
-				"mCanLoadAny",
-				"mIsFullLoad",
-				"mTimeToCompleteLoad",
-				"mTimeToSwapLoadVisibility",
-				"mTimeToCompleteUnload",
-				"mTimeToSwapUnloadVisibility",
-				"mWaitForConditionUpdatePeriod",
-				"mStorageInputConnections",
-				"mPipeInputConnections",
-				"mPipeOutputConnections",
-				"mDockingRuleSet",
-				"mLoadItemFilter",
-				"mUnloadItemFilter",
-				"mHasFullyLoadUnloadRule",
-				"mDockForDuration",
-				"mMustDockForDuration",
-				"mHasAnyRelevantStacksToMove",
-				"mAllowDepartureNoValidItemsToTransfer",
-				"mShouldExecuteLoadOrUnload",
-				"mRanCompleteBeforeNone",
-				"mSwapCargoVisibilityTimerHandle",
-				"mTimeSinceLastLoadTransferUpdate",
-				"mTimeSinceLastUnloadTransferUpdate",
-				"mSmoothedLoadRate",
-				"mSmoothedUnloadRate",
-				"mReplicatedOutflowRate",
-				"mReplicatedInflowRate"
-			],
-			"properties": {
-				"mStorageSizeX": {
-					"$ref": "common.schema.json#/$defs/integer-string"
-				},
-				"mStorageSizeY": {
-					"$ref": "common.schema.json#/$defs/integer-string"
-				},
-				"mOnTransferRateUpdated": {
-					"$ref": "common.schema.json#/$defs/empty-object"
-				},
-				"mFreightCargoType": {
-					"type": "string",
-					"enum": ["FCT_Standard", "FCT_Liquid"]
-				},
-				"mCanUnloadAny": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mIsFullUnload": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mCanLoadAny": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mIsFullLoad": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mTimeToCompleteLoad": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mTimeToSwapLoadVisibility": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mTimeToCompleteUnload": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mTimeToSwapUnloadVisibility": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mWaitForConditionUpdatePeriod": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mStorageInputConnections": {
-					"type": "string",
-					"const": ""
-				},
-				"mPipeInputConnections": {
-					"type": "string",
-					"const": ""
-				},
-				"mPipeOutputConnections": {
-					"type": "string",
-					"const": ""
-				},
-				"mDockingRuleSet": {
-					"$ref": "common.schema.json#/$defs/mDockingRuleSet"
-				},
-				"mLoadItemFilter": {
-					"type": "string",
-					"const": ""
-				},
-				"mUnloadItemFilter": {
-					"type": "string",
-					"const": ""
-				},
-				"mHasFullyLoadUnloadRule": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mDockForDuration": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mMustDockForDuration": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mHasAnyRelevantStacksToMove": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mAllowDepartureNoValidItemsToTransfer": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mShouldExecuteLoadOrUnload": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mRanCompleteBeforeNone": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mSwapCargoVisibilityTimerHandle": {
-					"$ref": "common.schema.json#/$defs/empty-object"
-				},
-				"mTimeSinceLastLoadTransferUpdate": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mTimeSinceLastUnloadTransferUpdate": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mSmoothedLoadRate": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mSmoothedUnloadRate": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mReplicatedOutflowRate": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mReplicatedInflowRate": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				}
-			}
+			"$ref": "#/$defs/FGBuildableTrainPlatformCargo--merged",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableTrainPlatformEmpty": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableTrainPlatform--base",
 			"unevaluatedProperties": false
 		},
+		"FGBuildableRailroadStation--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableRailroadStation"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableTrainPlatformCargo--FGBuildableRailroadStation"
+				}
+			]
+		},
 		"FGBuildableRailroadStation": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableTrainPlatformCargo--FGBuildableRailroadStation",
-			"unevaluatedProperties": false,
-			"required": [
-				"mMapText",
-				"mShouldTeleportHere",
-				"mDockedPlatformList",
-				"mCurrentDockedWithRuleSet"
-			],
-			"properties": {
-				"mMapText": {
-					"type": "string",
-					"const": "Train Station"
-				},
-				"mShouldTeleportHere": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mDockedPlatformList": {
-					"type": "string",
-					"const": ""
-				},
-				"mCurrentDockedWithRuleSet": {
-					"$ref": "common.schema.json#/$defs/mDockingRuleSet"
-				}
-			}
+			"$ref": "#/$defs/FGBuildableRailroadStation--merged",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableStorage": {
 			"type": "object",
