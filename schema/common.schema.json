@@ -1317,20 +1317,6 @@
 				}
 			}
 		},
-		"common-base--FGBuildableMAM": {
-			"type": "object",
-			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--occupied",
-			"required": ["mCurrentResearchState", "mSignificanceRange"],
-			"properties": {
-				"mCurrentResearchState": {
-					"type": "string",
-					"enum": ["ERS_NotResearching"]
-				},
-				"mSignificanceRange": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				}
-			}
-		},
 		"common-base--FGSchematic--base": {
 			"type": "object",
 			"$ref": "#/$defs/class",
@@ -5011,6 +4997,20 @@
 				},
 				"mShowTrajectoryCounter": {
 					"$ref": "common.schema.json#/$defs/integer-string"
+				}
+			}
+		},
+		"common-base--FGBuildableMAM": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--occupied",
+			"required": ["mCurrentResearchState", "mSignificanceRange"],
+			"properties": {
+				"mCurrentResearchState": {
+					"type": "string",
+					"enum": ["ERS_NotResearching"]
+				},
+				"mSignificanceRange": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},
