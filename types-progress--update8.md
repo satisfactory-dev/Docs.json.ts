@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (423 of 423)
+100.00% Complete (435 of 435)
 
 ## Basic Types
 
@@ -18,7 +18,6 @@
 -   [x] FGBuildingDescriptor
 -   [x] FGChargedWeapon
 -   [x] FGGolfCartDispenser
--   [x] FGPipeHyperStart
 -   [x] integer-string (common type)
 -   [x] integer-string--signed (common type)
 -   [x] mAspect (common type)
@@ -57,6 +56,7 @@
 -   [x] common-base--FGBuildableConveyorBelt--base (common type)
 -   [x] common-base--FGBuildableConveyorLift (common type)
 -   [x] common-base--FGBuildableCornerWall (common type)
+-   [x] common-base--FGBuildableDockingStation (common type)
 -   [x] common-base--FGBuildableDoor (common type)
 -   [x] common-base--FGBuildableDoor--automated (common type)
 -   [x] common-base--FGBuildableDoor--base (common type)
@@ -76,6 +76,7 @@
 -   [x] common-base--FGBuildableGeneratorNuclear--mFuel--base (common type)
 -   [x] common-base--FGBuildableGeneratorNuclear--mFuel--NuclearFuelRod (common type)
 -   [x] common-base--FGBuildableGeneratorNuclear--mFuel--PlutoniumFuelRod (common type)
+-   [x] common-base--FGBuildableJumppad (common type)
 -   [x] common-base--FGBuildableMAM (common type)
 -   [x] common-base--FGBuildableManufacturer (common type)
 -   [x] common-base--FGBuildableManufacturer--base (common type)
@@ -86,6 +87,7 @@
 -   [x] common-base--FGBuildableManufacturerVariablePower--base (common type)
 -   [x] common-base--FGBuildableManufacturerVariablePower--HadronCollider (common type)
 -   [x] common-base--FGBuildablePillarLightweight (common type)
+-   [x] common-base--FGBuildablePipeHyper (common type)
 -   [x] common-base--FGBuildablePipeline (common type)
 -   [x] common-base--FGBuildablePipelineJunction (common type)
 -   [x] common-base--FGBuildablePipelinePump (common type)
@@ -93,6 +95,7 @@
 -   [x] common-base--FGBuildablePipeReservoir (common type)
 -   [x] common-base--FGBuildablePoleLightweight (common type)
 -   [x] common-base--FGBuildablePowerPole (common type)
+-   [x] common-base--FGBuildablePowerStorage (common type)
 -   [x] common-base--FGBuildableRailroadSignal (common type)
 -   [x] common-base--FGBuildableRailroadStation (common type)
 -   [x] common-base--FGBuildableRailroadTrack (common type)
@@ -102,6 +105,7 @@
 -   [x] common-base--FGBuildableResourceExtractor--oil-extractor (common type)
 -   [x] common-base--FGBuildableResourceSink (common type)
 -   [x] common-base--FGBuildableResourceSinkShop (common type)
+-   [x] common-base--FGBuildableStorage (common type)
 -   [x] common-base--FGBuildableTradingPost (common type)
 -   [x] common-base--FGBuildableTrainPlatform--base (common type)
 -   [x] common-base--FGBuildableTrainPlatformCargo (common type)
@@ -143,6 +147,7 @@
 -   [x] common-base--FGJumpingStilts (common type)
 -   [x] common-base--FGObjectScanner (common type)
 -   [x] common-base--FGParachute (common type)
+-   [x] common-base--FGPipeHyperStart (common type)
 -   [x] common-base--FGPoleDescriptor (common type)
 -   [x] common-base--FGPortableMinerDispenser (common type)
 -   [x] common-base--FGRecipe (common type)
@@ -271,6 +276,10 @@
 
 -   [x] FGBuildableCornerWall--merged
 
+## FGBuildableDockingStation
+
+-   [x] FGBuildableDockingStation--merged
+
 ## FGBuildableDoor
 
 -   [x] FGBuildableDoor--automated
@@ -328,6 +337,10 @@
 
 -   [x] FGBuildableGeneratorNuclear--merged
 
+## FGBuildableJumppad
+
+-   [x] FGBuildableJumppad--merged
+
 ## FGBuildableLightSource
 
 -   [x] FGBuildableLightSource--base
@@ -360,6 +373,10 @@
 
 -   [x] FGBuildablePillarLightweight--merged
 
+## FGBuildablePipeHyper
+
+-   [x] FGBuildablePipeHyper--merged
+
 ## FGBuildablePipeline
 
 -   [x] FGBuildablePipeline--merged
@@ -385,6 +402,10 @@
 ## FGBuildablePowerPole
 
 -   [x] FGBuildablePowerPole--merged
+
+## FGBuildablePowerStorage
+
+-   [x] FGBuildablePowerStorage--merged
 
 ## FGBuildableRailroadSignal
 
@@ -416,6 +437,10 @@
 ## FGBuildableResourceSinkShop
 
 -   [x] FGBuildableResourceSinkShop--merged
+
+## FGBuildableStorage
+
+-   [x] FGBuildableStorage--merged
 
 ## FGBuildableTradingPost
 
@@ -546,6 +571,11 @@
 
 -   [x] FGParachute
 -   [x] FGParachute--merged
+
+## FGPipeHyperStart
+
+-   [x] FGPipeHyperStart
+-   [x] FGPipeHyperStart--merged
 
 ## FGPoleDescriptor
 

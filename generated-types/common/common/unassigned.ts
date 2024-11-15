@@ -132,6 +132,18 @@ import {
 
 import {common_base__FGBuildableRailroadStation__type} from '../classes/CoreUObject/FGBuildableRailroadStation';
 
+import {common_base__FGBuildableStorage__type} from '../classes/CoreUObject/FGBuildableStorage';
+
+import {common_base__FGPipeHyperStart__type} from '../classes/CoreUObject/FGPipeHyperStart';
+
+import {common_base__FGBuildablePipeHyper__type} from '../classes/CoreUObject/FGBuildablePipeHyper';
+
+import {common_base__FGBuildablePowerStorage__type} from '../classes/CoreUObject/FGBuildablePowerStorage';
+
+import {common_base__FGBuildableDockingStation__type} from '../classes/CoreUObject/FGBuildableDockingStation';
+
+import {common_base__FGBuildableJumppad__type} from '../classes/CoreUObject/FGBuildableJumppad';
+
 import {
 	FGSchematic__mUnlocks_mSchematics__mSchematics__type,
 	common_base__FGSchematic__mUnlocks__type,
@@ -522,6 +534,12 @@ export type faux_11__type = class__type & {
 	FGBuildableTrainPlatformCargo_FGBuildableRailroadStation?: common_base__FGBuildableTrainPlatformCargo__FGBuildableRailroadStation__type;
 	FGBuildableTrainPlatformCargo?: common_base__FGBuildableTrainPlatformCargo__type;
 	FGBuildableRailroadStation?: common_base__FGBuildableRailroadStation__type;
+	FGBuildableStorage?: common_base__FGBuildableStorage__type;
+	FGPipeHyperStart?: common_base__FGPipeHyperStart__type;
+	FGBuildablePipeHyper?: common_base__FGBuildablePipeHyper__type;
+	FGBuildablePowerStorage?: common_base__FGBuildablePowerStorage__type;
+	FGBuildableDockingStation?: common_base__FGBuildableDockingStation__type;
+	FGBuildableJumppad?: common_base__FGBuildableJumppad__type;
 };
 
 export type faux_12__type = class__type & {

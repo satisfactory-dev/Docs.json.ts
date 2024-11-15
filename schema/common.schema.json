@@ -4702,6 +4702,318 @@
 				}
 			}
 		},
+		"common-base--FGBuildableStorage": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--consumes-power-base",
+			"required": [
+				"mStackingHeight",
+				"mInventorySizeX",
+				"mInventorySizeY"
+			],
+			"properties": {
+				"mStackingHeight": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mInventorySizeX": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				},
+				"mInventorySizeY": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				}
+			}
+		},
+		"common-base--FGPipeHyperStart": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--consumes-power-base",
+			"required": [
+				"mWindDirectionFromTurbine",
+				"mIsWindSoundPlaying?",
+				"mAudioTimerCounter",
+				"AudioCounterTimer",
+				"IsEnginePlaying",
+				"mOpeningOffset",
+				"mInitialMinSpeedFactor",
+				"mLength",
+				"mCanStack",
+				"mStackHeight",
+				"mUseStaticHeight"
+			],
+			"properties": {
+				"mWindDirectionFromTurbine": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mIsWindSoundPlaying?": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mAudioTimerCounter": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"AudioCounterTimer": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"IsEnginePlaying": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mOpeningOffset": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mInitialMinSpeedFactor": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mLength": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mCanStack": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mStackHeight": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mUseStaticHeight": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				}
+			}
+		},
+		"common-base--FGBuildablePipeHyper": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--base",
+			"required": ["mSnappedPassthroughs", "mSplineData", "mMeshLength"],
+			"properties": {
+				"mMeshLength": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mSplineData": {
+					"type": "string",
+					"const": ""
+				},
+				"mSnappedPassthroughs": {
+					"type": "string",
+					"const": ""
+				}
+			}
+		},
+		"common-base--FGBuildablePowerStorage": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--consumes-power-base",
+			"required": [
+				"m_PreviousBatteryStatus",
+				"mCurrentGameTimeSinceStateChange",
+				"mActivationEventID",
+				"mBatteryStatus",
+				"mPowerStore",
+				"mPowerStoreCapacity",
+				"mPowerInputCapacity",
+				"mIndicatorLevelMax",
+				"mIndicatorLevel"
+			],
+			"properties": {
+				"m_PreviousBatteryStatus": {
+					"$ref": "common.schema.json#/$defs/mBatteryStatus"
+				},
+				"mCurrentGameTimeSinceStateChange": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mActivationEventID": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				},
+				"mBatteryStatus": {
+					"$ref": "common.schema.json#/$defs/mBatteryStatus"
+				},
+				"mPowerStore": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mPowerStoreCapacity": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mPowerInputCapacity": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mIndicatorLevelMax": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				},
+				"mIndicatorLevel": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				}
+			}
+		},
+		"common-base--FGBuildableDockingStation": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--docking-station-base",
+			"required": [
+				"VehicleFuelConsumptionRateChangedDelegate",
+				"ItemTransferRateChangedDelegate",
+				"MaximumStackTransferRateChangedDelegate",
+				"mDockPosition",
+				"mMinimumDockingTime",
+				"mFuelInventorySizeX",
+				"mFuelInventorySizeY",
+				"mFuelTransferSpeed",
+				"mForceSignificance",
+				"mVehicleFuelConsumptionRate",
+				"mItemTransferRate",
+				"mMaximumStackTransferRate",
+				"mDockingVehicleStatistics"
+			],
+			"properties": {
+				"VehicleFuelConsumptionRateChangedDelegate": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"ItemTransferRateChangedDelegate": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"MaximumStackTransferRateChangedDelegate": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mDockPosition": {
+					"$ref": "common.schema.json#/$defs/xy"
+				},
+				"mMinimumDockingTime": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mFuelInventorySizeX": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				},
+				"mFuelInventorySizeY": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				},
+				"mFuelTransferSpeed": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mForceSignificance": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mVehicleFuelConsumptionRate": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mItemTransferRate": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mMaximumStackTransferRate": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mDockingVehicleStatistics": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				}
+			}
+		},
+		"common-base--FGBuildableJumppad": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--consumes-power-base",
+			"required": [
+				"mPowerBankCapacity",
+				"mLaunchPowerCost",
+				"mChargeRateMultiplier",
+				"mCurrentPowerLevel",
+				"mLaunchVelocity",
+				"mLaunchAngle",
+				"mPlayerChainJumpResetTime",
+				"mHasPowerForLaunch",
+				"ComponentsToLaunch",
+				"CharactersToLaunch",
+				"VehiclesToLaunch",
+				"mTrajectoryData",
+				"mTrajectoryMeshScale",
+				"mTrajectoryMeshRotation",
+				"mDestinationMeshHeightOffset",
+				"mTrajectorySplineMeshNumPrimitiveDataFloats",
+				"mTrajectorySplineMeshSplineDataSettings",
+				"mNumArrows",
+				"mKillTimer",
+				"mTrajectoryGravityMultiplier",
+				"mShowTrajectoryCounter"
+			],
+			"properties": {
+				"mPowerBankCapacity": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mLaunchPowerCost": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mChargeRateMultiplier": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mCurrentPowerLevel": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mLaunchVelocity": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mLaunchAngle": {
+					"$ref": "common.schema.json#/$defs/decimal-string--signed"
+				},
+				"mPlayerChainJumpResetTime": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mHasPowerForLaunch": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"ComponentsToLaunch": {
+					"type": "string",
+					"const": ""
+				},
+				"CharactersToLaunch": {
+					"type": "string",
+					"const": ""
+				},
+				"VehiclesToLaunch": {
+					"type": "string",
+					"const": ""
+				},
+				"mTrajectoryData": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mTrajectoryMeshScale": {
+					"$ref": "common.schema.json#/$defs/xyz"
+				},
+				"mTrajectoryMeshRotation": {
+					"$ref": "common.schema.json#/$defs/pitch-yaw-roll"
+				},
+				"mDestinationMeshHeightOffset": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mTrajectorySplineMeshNumPrimitiveDataFloats": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				},
+				"mTrajectorySplineMeshSplineDataSettings": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": [
+							"StartTangentPrimitiveDataStartIndex",
+							"EndPositionPrimitiveDataStartIndex",
+							"EndTangentPrimitiveDataStartIndex",
+							"InstanceScaleIndex"
+						],
+						"properties": {
+							"StartTangentPrimitiveDataStartIndex": {
+								"$ref": "common.schema.json#/$defs/integer-string"
+							},
+							"EndPositionPrimitiveDataStartIndex": {
+								"$ref": "common.schema.json#/$defs/integer-string"
+							},
+							"EndTangentPrimitiveDataStartIndex": {
+								"$ref": "common.schema.json#/$defs/integer-string"
+							},
+							"InstanceScaleIndex": {
+								"$ref": "common.schema.json#/$defs/integer-string--signed"
+							}
+						}
+					}
+				},
+				"mNumArrows": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				},
+				"mKillTimer": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mTrajectoryGravityMultiplier": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mShowTrajectoryCounter": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				}
+			}
+		},
 		"faux-1": {
 			"type": "object",
 			"$ref": "#/$defs/class",
@@ -5127,6 +5439,24 @@
 				},
 				"FGBuildableRailroadStation": {
 					"$ref": "#/$defs/common-base--FGBuildableRailroadStation"
+				},
+				"FGBuildableStorage": {
+					"$ref": "#/$defs/common-base--FGBuildableStorage"
+				},
+				"FGPipeHyperStart": {
+					"$ref": "#/$defs/common-base--FGPipeHyperStart"
+				},
+				"FGBuildablePipeHyper": {
+					"$ref": "#/$defs/common-base--FGBuildablePipeHyper"
+				},
+				"FGBuildablePowerStorage": {
+					"$ref": "#/$defs/common-base--FGBuildablePowerStorage"
+				},
+				"FGBuildableDockingStation": {
+					"$ref": "#/$defs/common-base--FGBuildableDockingStation"
+				},
+				"FGBuildableJumppad": {
+					"$ref": "#/$defs/common-base--FGBuildableJumppad"
 				}
 			}
 		},

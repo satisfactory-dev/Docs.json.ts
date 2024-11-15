@@ -1,27 +1,15 @@
 import {FGBuildable__consumes_power_base__type} from './FGBuildable';
 
-import {
-	mBatteryStatus__type,
-	NativeClass__type,
-} from '../../../common/common/unassigned';
+import {common_base__FGBuildablePowerStorage__type} from '../../../common/classes/CoreUObject/FGBuildablePowerStorage';
 
-import {
-	decimal_string__type,
-	integer_string__type,
-} from '../../../common/common/scalar';
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildablePowerStorage__type =
-	FGBuildable__consumes_power_base__type & {
-		m_PreviousBatteryStatus: mBatteryStatus__type;
-		mCurrentGameTimeSinceStateChange: decimal_string__type;
-		mActivationEventID: integer_string__type;
-		mBatteryStatus: mBatteryStatus__type;
-		mPowerStore: decimal_string__type;
-		mPowerStoreCapacity: decimal_string__type;
-		mPowerInputCapacity: decimal_string__type;
-		mIndicatorLevelMax: integer_string__type;
-		mIndicatorLevel: integer_string__type;
-	};
+	FGBuildablePowerStorage__merged__type;
+
+export type FGBuildablePowerStorage__merged__type =
+	common_base__FGBuildablePowerStorage__type &
+		FGBuildable__consumes_power_base__type;
 
 export type FGBuildablePowerStorage__NativeClass =
 	NativeClass__type & {

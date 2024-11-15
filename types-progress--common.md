@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (269 of 269)
+100.00% Complete (278 of 278)
 
 ## Basic Types
 
@@ -43,7 +43,7 @@
 -   [x] integer-string (common type)
 -   [x] integer-string--signed (common type)
 -   [x] mAspect (common type)
--   [x] mBatteryStatus
+-   [x] mBatteryStatus (common type)
 -   [x] mDamageTypes (common type)
 -   [x] mDockingRuleSet (common type)
 -   [x] mForm (common type)
@@ -59,7 +59,7 @@
 
 -   [x] common-base--FGBuildable--base (common type)
 -   [x] common-base--FGBuildable--consumes-power-base (common type)
--   [x] common-base--FGBuildable--docking-station-base
+-   [x] common-base--FGBuildable--docking-station-base (common type)
 -   [x] common-base--FGBuildable--extractor-base (common type)
 -   [x] common-base--FGBuildable--extractor-base--shared (common type)
 -   [x] common-base--FGBuildable--occupied (common type)
@@ -74,6 +74,7 @@
 -   [x] common-base--FGBuildableConveyorBelt--base (common type)
 -   [x] common-base--FGBuildableConveyorLift
 -   [x] common-base--FGBuildableCornerWall
+-   [x] common-base--FGBuildableDockingStation
 -   [x] common-base--FGBuildableDoor
 -   [x] common-base--FGBuildableDoor--automated
 -   [x] common-base--FGBuildableDoor--base (common type)
@@ -93,6 +94,7 @@
 -   [x] common-base--FGBuildableGeneratorNuclear--mFuel--base (common type)
 -   [x] common-base--FGBuildableGeneratorNuclear--mFuel--NuclearFuelRod
 -   [x] common-base--FGBuildableGeneratorNuclear--mFuel--PlutoniumFuelRod
+-   [x] common-base--FGBuildableJumppad
 -   [x] common-base--FGBuildableMAM
 -   [x] common-base--FGBuildableManufacturer
 -   [x] common-base--FGBuildableManufacturer--base (common type)
@@ -103,6 +105,7 @@
 -   [x] common-base--FGBuildableManufacturerVariablePower--base (common type)
 -   [x] common-base--FGBuildableManufacturerVariablePower--HadronCollider
 -   [x] common-base--FGBuildablePillarLightweight
+-   [x] common-base--FGBuildablePipeHyper
 -   [x] common-base--FGBuildablePipeline
 -   [x] common-base--FGBuildablePipelineJunction
 -   [x] common-base--FGBuildablePipelinePump
@@ -110,6 +113,7 @@
 -   [x] common-base--FGBuildablePipeReservoir
 -   [x] common-base--FGBuildablePoleLightweight
 -   [x] common-base--FGBuildablePowerPole
+-   [x] common-base--FGBuildablePowerStorage
 -   [x] common-base--FGBuildableRailroadSignal
 -   [x] common-base--FGBuildableRailroadStation
 -   [x] common-base--FGBuildableRailroadTrack
@@ -119,6 +123,7 @@
 -   [x] common-base--FGBuildableResourceExtractor--oil-extractor
 -   [x] common-base--FGBuildableResourceSink
 -   [x] common-base--FGBuildableResourceSinkShop
+-   [x] common-base--FGBuildableStorage
 -   [x] common-base--FGBuildableTradingPost
 -   [x] common-base--FGBuildableTrainPlatform--base (common type)
 -   [x] common-base--FGBuildableTrainPlatformCargo
@@ -160,6 +165,7 @@
 -   [x] common-base--FGJumpingStilts
 -   [x] common-base--FGObjectScanner
 -   [x] common-base--FGParachute
+-   [x] common-base--FGPipeHyperStart
 -   [x] common-base--FGPoleDescriptor
 -   [x] common-base--FGPortableMinerDispenser
 -   [x] common-base--FGRecipe
@@ -209,7 +215,7 @@
 
 -   [x] pitch-yaw-roll (common type)
 -   [x] quaternion
--   [x] xy
+-   [x] xy (common type)
 -   [x] xy--integer
 -   [x] xyz (common type)
 -   [x] xyz--integer (common type)
