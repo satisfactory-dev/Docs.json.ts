@@ -2486,10 +2486,7 @@
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableDockingStation--merged",
 			"unevaluatedProperties": false,
-			"required": [
-				"mFuelInventoryHandlerData",
-				"mInventoryHandlerData"
-			],
+			"required": ["mFuelInventoryHandlerData", "mInventoryHandlerData"],
 			"properties": {
 				"mFuelInventoryHandlerData": {
 					"$ref": "common.schema.json#/$defs/empty-object"
