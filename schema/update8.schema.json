@@ -1474,18 +1474,6 @@
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableWalkway--base--merged"
 		},
-		"mDisableSnapOn": {
-			"type": "string",
-			"minLength": 1,
-			"typed_string": {
-				"minProperties": 1,
-				"patternProperties": {
-					"^(Front|Right|Left|Right|Top|Bottom)$": {
-						"$ref": "common.schema.json#/$defs/boolean"
-					}
-				}
-			}
-		},
 		"FGBuildableWalkwayLightweight--merged": {
 			"allOf": [
 				{

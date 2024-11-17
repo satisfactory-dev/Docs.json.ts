@@ -24,7 +24,6 @@
 -   [x] MaterialSlotName
 -   [x] mBatteryStatus (common type)
 -   [x] mDamageTypes (common type)
--   [x] mDisableSnapOn
 -   [x] mDockingRuleSet (common type)
 -   [x] mForm (common type)
 -   [x] mLightControlData

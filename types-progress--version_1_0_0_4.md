@@ -28,7 +28,6 @@
 -   [x] mBatteryStatus (common type)
 -   [x] mClearanceData
 -   [x] mDamageTypes (common type)
--   [x] mDisableSnapOn
 -   [x] mDockingRuleSet (common type)
 -   [x] mForm (common type)
 -   [x] mGasType
