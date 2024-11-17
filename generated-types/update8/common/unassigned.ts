@@ -9,7 +9,6 @@ import {
 } from '../../common/common/scalar';
 
 import {
-	InfinityExtrap__type,
 	empty_object__type,
 	common_base__FGBuildableResourceExtractor__miner_mk3__type,
 } from '../../common/common/unassigned';
@@ -19,19 +18,6 @@ import {common_base__FGBuildable__consumes_power_base__type} from '../../common/
 import {common_base__FGBuildableDroneStation__type} from '../../common/classes/CoreUObject/FGBuildableDroneStation';
 
 import {common_base__FGBuildableTradingPost__type} from '../../common/classes/CoreUObject/FGBuildableTradingPost';
-
-export type EditorCurveData__type = {
-	EditorCurveData: {
-		DefaultValue: decimal_string__type;
-		PreInfinityExtrap: InfinityExtrap__type;
-		PostInfinityExtrap: InfinityExtrap__type;
-	};
-	ExternalCurve?: UnrealEngineString<
-		'/Script/Engine.CurveFloat',
-		| '/Game/FactoryGame/Resource/Parts/SpikedRebar/SpikedRebar_Falloff.SpikedRebar_Falloff'
-		| '/Game/FactoryGame/Resource/Parts/CartridgeStandard/LinearDamageFalloff.LinearDamageFalloff'
-	>;
-};
 
 export type FGBuildable__consumes_power_base__update8__type =
 	common_base__FGBuildable__consumes_power_base__type & {
@@ -142,18 +128,6 @@ export type FGBuildableTradingPost__update8__type =
 		];
 		mNeedPlayingBuildEffectNotification: boolean__type;
 	};
-
-export type MaterialSlotName__type =
-	| 'lambert1'
-	| 'lambert10'
-	| 'lambert9_001'
-	| 'lambert2'
-	| 'Material_002'
-	| 'Material_003'
-	| 'Rocket1'
-	| 'Rocket2'
-	| 'Rifle'
-	| '01 - Default';
 
 export type mLightControlData__type = {
 	Intensity: decimal_string__type;

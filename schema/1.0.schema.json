@@ -5121,63 +5121,6 @@
 				}
 			}
 		},
-		"MaterialSlotName": {
-			"type": "string",
-			"enum": [
-				"lambert1",
-				"lambert10",
-				"lambert9_001",
-				"lambert2",
-				"Material_002",
-				"Material_003",
-				"Rocket1",
-				"Rocket2",
-				"Rifle",
-				"01 - Default"
-			]
-		},
-		"EditorCurveData": {
-			"type": "string",
-			"minLength": 1,
-			"typed_string": {
-				"required": ["EditorCurveData"],
-				"properties": {
-					"EditorCurveData": {
-						"type": "string",
-						"minLength": 1,
-						"typed_string": {
-							"required": [
-								"DefaultValue",
-								"PreInfinityExtrap",
-								"PostInfinityExtrap"
-							],
-							"properties": {
-								"DefaultValue": {
-									"$ref": "common.schema.json#/$defs/decimal-string"
-								},
-								"PreInfinityExtrap": {
-									"$ref": "common.schema.json#/$defs/InfinityExtrap"
-								},
-								"PostInfinityExtrap": {
-									"$ref": "common.schema.json#/$defs/InfinityExtrap"
-								}
-							}
-						}
-					},
-					"ExternalCurve": {
-						"type": "string",
-						"minLength": 1,
-						"UnrealEngineString": {
-							"left": "/Script/Engine.CurveFloat",
-							"right": [
-								"/Game/FactoryGame/Resource/Parts/SpikedRebar/SpikedRebar_Falloff.SpikedRebar_Falloff",
-								"/Game/FactoryGame/Resource/Parts/CartridgeStandard/LinearDamageFalloff.LinearDamageFalloff"
-							]
-						}
-					}
-				}
-			}
-		},
 		"FGAmmoTypeProjectile--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGItemDescriptor--FGResourceDescriptor",
@@ -5281,10 +5224,10 @@
 										}
 									},
 									"MaterialSlotName": {
-										"$ref": "#/$defs/MaterialSlotName"
+										"$ref": "common.schema.json#/$defs/common-base--MaterialSlotName"
 									},
 									"ImportedMaterialSlotName": {
-										"$ref": "#/$defs/MaterialSlotName"
+										"$ref": "common.schema.json#/$defs/common-base--MaterialSlotName"
 									},
 									"UVChannelData": {
 										"type": "string",
@@ -5338,7 +5281,7 @@
 					]
 				},
 				"mAmmoDamageFalloff": {
-					"$ref": "#/$defs/EditorCurveData"
+					"$ref": "common.schema.json#/$defs/common-base--EditorCurveData"
 				},
 				"mMuzzleFlashScale": {
 					"$ref": "common.schema.json#/$defs/xyz"
@@ -5445,7 +5388,7 @@
 					]
 				},
 				"mGravityScaleOverLifespan": {
-					"$ref": "#/$defs/EditorCurveData"
+					"$ref": "common.schema.json#/$defs/common-base--EditorCurveData"
 				},
 				"mHomingProjectile": {
 					"$ref": "common.schema.json#/$defs/boolean"
@@ -5457,10 +5400,10 @@
 					"$ref": "common.schema.json#/$defs/decimal-string--signed"
 				},
 				"mHomingMagnitudeMultiplierOverLifespan": {
-					"$ref": "#/$defs/EditorCurveData"
+					"$ref": "common.schema.json#/$defs/common-base--EditorCurveData"
 				},
 				"mHomingMagnitudeMultiplierOverDistanceToTarget": {
-					"$ref": "#/$defs/EditorCurveData"
+					"$ref": "common.schema.json#/$defs/common-base--EditorCurveData"
 				},
 				"mHomingOverlapSize": {
 					"$ref": "common.schema.json#/$defs/decimal-string"

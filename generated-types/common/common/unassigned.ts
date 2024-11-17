@@ -291,6 +291,19 @@ export type color_decimal__type = {
 	A: decimal_string__type;
 };
 
+export type common_base__EditorCurveData__type = {
+	EditorCurveData: {
+		DefaultValue: decimal_string__type;
+		PreInfinityExtrap: InfinityExtrap__type;
+		PostInfinityExtrap: InfinityExtrap__type;
+	};
+	ExternalCurve?: UnrealEngineString<
+		'/Script/Engine.CurveFloat',
+		| '/Game/FactoryGame/Resource/Parts/SpikedRebar/SpikedRebar_Falloff.SpikedRebar_Falloff'
+		| '/Game/FactoryGame/Resource/Parts/CartridgeStandard/LinearDamageFalloff.LinearDamageFalloff'
+	>;
+};
+
 export type common_base__FGBuildableResourceExtractor__miner_mk3__type =
 	common_base__FGBuildableResourceExtractor__miner__base__type & {
 		mInternalMiningState_0: 'NewEnumerator0';
@@ -298,6 +311,18 @@ export type common_base__FGBuildableResourceExtractor__miner_mk3__type =
 		mMinimumDrillTime_0: decimal_string__type;
 		mMaximumDrillTime_0: decimal_string__type;
 	};
+
+export type common_base__MaterialSlotName__type =
+	| 'lambert1'
+	| 'lambert10'
+	| 'lambert9_001'
+	| 'lambert2'
+	| 'Material_002'
+	| 'Material_003'
+	| 'Rocket1'
+	| 'Rocket2'
+	| 'Rifle'
+	| '01 - Default';
 
 export type common_base__mChainsawState__type = None__type;
 
@@ -561,6 +586,8 @@ export type faux_11__type = class__type & {
 	FGBuildableFoundation_base?: common_base__FGBuildableFoundation__base__type;
 	FGBuildableFoundation?: common_base__FGBuildableFoundation__type;
 	FGBuildableRamp?: common_base__FGBuildableRamp__type;
+	MaterialSlotName?: common_base__MaterialSlotName__type;
+	EditorCurveData?: common_base__EditorCurveData__type;
 };
 
 export type faux_12__type = class__type & {

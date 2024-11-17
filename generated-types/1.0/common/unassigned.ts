@@ -11,7 +11,6 @@ import {
 } from '../../common/common/scalar';
 
 import {
-	InfinityExtrap__type,
 	xyz__type,
 	quaternion__type,
 	empty_object__type,
@@ -28,19 +27,6 @@ export type CameraAnim__type = UnrealEngineString<
 	'/Script/TemplateSequence.CameraAnimationSequence',
 	StringStartsWith<'/Game/FactoryGame/Character/Player/CameraShake/'>
 >;
-
-export type EditorCurveData__type = {
-	EditorCurveData: {
-		DefaultValue: decimal_string__type;
-		PreInfinityExtrap: InfinityExtrap__type;
-		PostInfinityExtrap: InfinityExtrap__type;
-	};
-	ExternalCurve?: UnrealEngineString<
-		'/Script/Engine.CurveFloat',
-		| '/Game/FactoryGame/Resource/Parts/SpikedRebar/SpikedRebar_Falloff.SpikedRebar_Falloff'
-		| '/Game/FactoryGame/Resource/Parts/CartridgeStandard/LinearDamageFalloff.LinearDamageFalloff'
-	>;
-};
 
 export type FGBuildable__consumes_power_base__version_1__type =
 	common_base__FGBuildable__consumes_power_base__type & {
@@ -208,18 +194,6 @@ export type FilterMontageTag__charged__type =
 	| 'LowCharged'
 	| 'MediumCharged'
 	| 'FullyCharged';
-
-export type MaterialSlotName__type =
-	| 'lambert1'
-	| 'lambert10'
-	| 'lambert9_001'
-	| 'lambert2'
-	| 'Material_002'
-	| 'Material_003'
-	| 'Rocket1'
-	| 'Rocket2'
-	| 'Rifle'
-	| '01 - Default';
 
 export type mClearanceData__type =
 	| ''

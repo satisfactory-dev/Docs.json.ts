@@ -1,10 +1,5 @@
 import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
 
-import {
-	MaterialSlotName__type,
-	EditorCurveData__type,
-} from '../../common/unassigned';
-
 import {FGItemDescriptor__FGResourceDescriptor__type} from './FGItemDescriptor';
 
 import {
@@ -15,6 +10,8 @@ import {
 } from '../../../common/common/scalar';
 
 import {
+	common_base__MaterialSlotName__type,
+	common_base__EditorCurveData__type,
 	empty_object__type,
 	transformation__type,
 	xyz__type,
@@ -31,12 +28,12 @@ export type FGAmmoTypeProjectile__type = FGAmmoTypeProjectile__base__type & {
 	mProjectileStickspan: decimal_string__signed__type;
 	mCanTakeDamageBySameProjectileOrChild: boolean__type;
 	mDamageTypesAtEndOfLife: '' | mDamageTypes__type;
-	mGravityScaleOverLifespan: EditorCurveData__type;
+	mGravityScaleOverLifespan: common_base__EditorCurveData__type;
 	mHomingProjectile: boolean__type;
 	mHomingNeedsValidTarget: boolean__type;
 	mMaxHomingAccelerationMagnitudeOverride: decimal_string__signed__type;
-	mHomingMagnitudeMultiplierOverLifespan: EditorCurveData__type;
-	mHomingMagnitudeMultiplierOverDistanceToTarget: EditorCurveData__type;
+	mHomingMagnitudeMultiplierOverLifespan: common_base__EditorCurveData__type;
+	mHomingMagnitudeMultiplierOverDistanceToTarget: common_base__EditorCurveData__type;
 	mHomingOverlapSize: decimal_string__type;
 	mHomingAngleLimit: decimal_string__type;
 	mHomingOverrideTargets:
@@ -79,8 +76,8 @@ export type FGAmmoTypeProjectile__base__type =
 				MaterialInterface: UnrealEngineString<
 					'/Script/Engine.MaterialInstanceConstant' | '/Script/Engine.Material'
 				>;
-				MaterialSlotName: MaterialSlotName__type;
-				ImportedMaterialSlotName: MaterialSlotName__type;
+				MaterialSlotName: common_base__MaterialSlotName__type;
+				ImportedMaterialSlotName: common_base__MaterialSlotName__type;
 				UVChannelData: {
 					bInitialized: boolean__type;
 					['LocalUVDensities[0]']: decimal_string__type;
@@ -91,8 +88,8 @@ export type FGAmmoTypeProjectile__base__type =
 				MaterialInterface: UnrealEngineString<
 					'/Script/Engine.MaterialInstanceConstant' | '/Script/Engine.Material'
 				>;
-				MaterialSlotName: MaterialSlotName__type;
-				ImportedMaterialSlotName: MaterialSlotName__type;
+				MaterialSlotName: common_base__MaterialSlotName__type;
+				ImportedMaterialSlotName: common_base__MaterialSlotName__type;
 				UVChannelData: {
 					bInitialized: boolean__type;
 					['LocalUVDensities[0]']: decimal_string__type;
@@ -105,7 +102,7 @@ export type FGAmmoTypeProjectile__base__type =
 			...UnrealEngineString<'/Script/Engine.MaterialInstanceConstant'>[],
 		];
 		mDamageTypesOnImpact: '' | mDamageTypes__type;
-		mAmmoDamageFalloff: EditorCurveData__type;
+		mAmmoDamageFalloff: common_base__EditorCurveData__type;
 		mMuzzleFlashScale: xyz__type;
 		mFiringSounds:
 			| ''

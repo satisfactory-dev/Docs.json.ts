@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (448 of 448)
+100.00% Complete (447 of 447)
 
 ## Basic Types
 
@@ -13,7 +13,6 @@
 -   [x] color-decimal (common type)
 -   [x] decimal-string (common type)
 -   [x] decimal-string--signed (common type)
--   [x] EditorCurveData
 -   [x] empty-object (common type)
 -   [x] FGBuildingDescriptor
 -   [x] FGChargedWeapon
@@ -21,7 +20,6 @@
 -   [x] integer-string (common type)
 -   [x] integer-string--signed (common type)
 -   [x] mAspect (common type)
--   [x] MaterialSlotName
 -   [x] mBatteryStatus (common type)
 -   [x] mDamageTypes (common type)
 -   [x] mDockingRuleSet (common type)
@@ -38,6 +36,7 @@
 
 ## common-base
 
+-   [x] common-base--EditorCurveData (common type)
 -   [x] common-base--FGBuildable--base (common type)
 -   [x] common-base--FGBuildable--consumes-power-base (common type)
 -   [x] common-base--FGBuildable--docking-station-base (common type)

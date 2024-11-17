@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (287 of 287)
+100.00% Complete (289 of 289)
 
 ## Basic Types
 
@@ -57,6 +57,7 @@
 
 ## common-base
 
+-   [x] common-base--EditorCurveData
 -   [x] common-base--FGBuildable--base (common type)
 -   [x] common-base--FGBuildable--consumes-power-base (common type)
 -   [x] common-base--FGBuildable--docking-station-base (common type)
@@ -187,6 +188,7 @@
 -   [x] common-base--FGVehicleDescriptor--fueled-with-inventory
 -   [x] common-base--FGVehicleDescriptor--powered-no-inventory
 -   [x] common-base--FGVehicleDescriptor--with-inventory (common type)
+-   [x] common-base--MaterialSlotName
 -   [x] common-base--mChainsawState (common type)
 -   [x] common-base--mDisableSnapOn (common type)
 -   [x] common-base--mSnappedPassthroughs (common type)
