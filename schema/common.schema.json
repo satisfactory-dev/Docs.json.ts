@@ -5014,6 +5014,76 @@
 				}
 			}
 		},
+		"common-base--FGBuildableAttachmentMerger": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--base",
+			"required": ["mCurrentInputIndex"],
+			"properties": {
+				"mCurrentInputIndex": {
+					"$ref": "common.schema.json#/$defs/integer-string--signed"
+				}
+			}
+		},
+		"common-base--FGBuildable--splitter--base": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--base",
+			"required": ["mCurrentOutputIndex"],
+			"properties": {
+				"mCurrentOutputIndex": {
+					"$ref": "common.schema.json#/$defs/integer-string--signed"
+				}
+			}
+		},
+		"common-base--FGBuildableAttachmentSplitter": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--splitter--base"
+		},
+		"common-base--FGBuildableSplitterSmart": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--splitter--base",
+			"required": [
+				"OnSortRulesChangedDelegate",
+				"mMaxNumSortRules",
+				"mLastItem",
+				"mItemToLastOutputMap",
+				"mLastOutputIndex",
+				"mCurrentInventoryIndex",
+				"mDistributionTable"
+			],
+			"properties": {
+				"OnSortRulesChangedDelegate": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mMaxNumSortRules": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				},
+				"mLastItem": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["ItemState"],
+						"properties": {
+							"ItemState": {
+								"$ref": "common.schema.json#/$defs/empty-object"
+							}
+						}
+					}
+				},
+				"mItemToLastOutputMap": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mLastOutputIndex": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				},
+				"mCurrentInventoryIndex": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				},
+				"mDistributionTable": {
+					"type": "string",
+					"const": ""
+				}
+			}
+		},
 		"faux-1": {
 			"type": "object",
 			"$ref": "#/$defs/class",
@@ -5457,6 +5527,18 @@
 				},
 				"FGBuildableJumppad": {
 					"$ref": "#/$defs/common-base--FGBuildableJumppad"
+				},
+				"FGBuildableAttachmentMerger": {
+					"$ref": "#/$defs/common-base--FGBuildableAttachmentMerger"
+				},
+				"FGBuildable_splitter_base": {
+					"$ref": "#/$defs/common-base--FGBuildable--splitter--base"
+				},
+				"FGBuildableAttachmentSplitter": {
+					"$ref": "#/$defs/common-base--FGBuildableAttachmentSplitter"
+				},
+				"FGBuildableSplitterSmart": {
+					"$ref": "#/$defs/common-base--FGBuildableSplitterSmart"
 				}
 			}
 		},

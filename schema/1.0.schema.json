@@ -5009,84 +5009,79 @@
 				}
 			}
 		},
-		"FGBuildableAttachmentMerger": {
+		"FGBuildableAttachmentMergerSplitter--with-inventory-size": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
-			"unevaluatedProperties": false,
-			"required": ["mCurrentInputIndex", "mInventorySize"],
+			"required": ["mInventorySize"],
 			"properties": {
-				"mCurrentInputIndex": {
-					"$ref": "common.schema.json#/$defs/integer-string--signed"
-				},
 				"mInventorySize": {
 					"$ref": "common.schema.json#/$defs/integer-string"
 				}
 			}
+		},
+		"FGBuildableAttachmentMerger--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableAttachmentMerger"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableAttachmentMergerSplitter--with-inventory-size"
+				}
+			]
+		},
+		"FGBuildableAttachmentMerger": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableAttachmentMerger--merged",
+			"unevaluatedProperties": false
+		},
+		"FGBuildable--splitter--base--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildable--splitter--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableAttachmentMergerSplitter--with-inventory-size"
+				}
+			]
 		},
 		"FGBuildable--splitter--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
-			"required": ["mCurrentOutputIndex", "mInventorySize"],
-			"properties": {
-				"mCurrentOutputIndex": {
-					"$ref": "common.schema.json#/$defs/integer-string--signed"
+			"$ref": "#/$defs/FGBuildable--splitter--base--merged"
+		},
+		"FGBuildableAttachmentSplitter--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableAttachmentSplitter"
 				},
-				"mInventorySize": {
-					"$ref": "common.schema.json#/$defs/integer-string"
+				{
+					"$ref": "#/$defs/FGBuildable--splitter--base"
 				}
-			}
+			]
 		},
 		"FGBuildableAttachmentSplitter": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--splitter--base",
+			"$ref": "#/$defs/FGBuildableAttachmentSplitter--merged",
 			"unevaluatedProperties": false
+		},
+		"FGBuildableSplitterSmart--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableSplitterSmart"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--splitter--base"
+				}
+			]
 		},
 		"FGBuildableSplitterSmart": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--splitter--base",
-			"unevaluatedProperties": false,
-			"required": [
-				"OnSortRulesChangedDelegate",
-				"mMaxNumSortRules",
-				"mLastItem",
-				"mItemToLastOutputMap",
-				"mLastOutputIndex",
-				"mCurrentInventoryIndex",
-				"mDistributionTable"
-			],
-			"properties": {
-				"OnSortRulesChangedDelegate": {
-					"$ref": "common.schema.json#/$defs/empty-object"
-				},
-				"mMaxNumSortRules": {
-					"$ref": "common.schema.json#/$defs/integer-string"
-				},
-				"mLastItem": {
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"required": ["ItemState"],
-						"properties": {
-							"ItemState": {
-								"$ref": "common.schema.json#/$defs/empty-object"
-							}
-						}
-					}
-				},
-				"mItemToLastOutputMap": {
-					"$ref": "common.schema.json#/$defs/empty-object"
-				},
-				"mLastOutputIndex": {
-					"$ref": "common.schema.json#/$defs/integer-string"
-				},
-				"mCurrentInventoryIndex": {
-					"$ref": "common.schema.json#/$defs/integer-string"
-				},
-				"mDistributionTable": {
-					"type": "string",
-					"const": ""
-				}
-			}
+			"$ref": "#/$defs/FGBuildableSplitterSmart--merged",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableFoundation--base": {
 			"type": "object",

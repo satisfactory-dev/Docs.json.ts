@@ -15,6 +15,7 @@ import {
 	common_base__FGBuildable__tiered__type,
 	common_base__FGBuildable__extractor_base__shared__type,
 	common_base__FGBuildable__extractor_base__type,
+	common_base__FGBuildable__splitter__base__type,
 	common_base__FGBuildable__pipeline_accessory__base__type,
 	common_base__FGBuildable__pipeline_accessory__type,
 	common_base__FGBuildable__pipeline_flow_accessory__type,
@@ -143,6 +144,12 @@ import {common_base__FGBuildablePowerStorage__type} from '../classes/CoreUObject
 import {common_base__FGBuildableDockingStation__type} from '../classes/CoreUObject/FGBuildableDockingStation';
 
 import {common_base__FGBuildableJumppad__type} from '../classes/CoreUObject/FGBuildableJumppad';
+
+import {common_base__FGBuildableAttachmentMerger__type} from '../classes/CoreUObject/FGBuildableAttachmentMerger';
+
+import {common_base__FGBuildableAttachmentSplitter__type} from '../classes/CoreUObject/FGBuildableAttachmentSplitter';
+
+import {common_base__FGBuildableSplitterSmart__type} from '../classes/CoreUObject/FGBuildableSplitterSmart';
 
 import {
 	FGSchematic__mUnlocks_mSchematics__mSchematics__type,
@@ -540,6 +547,10 @@ export type faux_11__type = class__type & {
 	FGBuildablePowerStorage?: common_base__FGBuildablePowerStorage__type;
 	FGBuildableDockingStation?: common_base__FGBuildableDockingStation__type;
 	FGBuildableJumppad?: common_base__FGBuildableJumppad__type;
+	FGBuildableAttachmentMerger?: common_base__FGBuildableAttachmentMerger__type;
+	FGBuildable_splitter_base?: common_base__FGBuildable__splitter__base__type;
+	FGBuildableAttachmentSplitter?: common_base__FGBuildableAttachmentSplitter__type;
+	FGBuildableSplitterSmart?: common_base__FGBuildableSplitterSmart__type;
 };
 
 export type faux_12__type = class__type & {

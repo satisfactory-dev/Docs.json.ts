@@ -3,11 +3,12 @@ import {
 	FGBuildable__consumes_power_base__version_1__type,
 } from '../../common/unassigned';
 
+import {FGBuildableAttachmentMergerSplitter__with_inventory_size__type} from './FGBuildableAttachmentMergerSplitter';
+
 import {
 	boolean__type,
 	integer_string__type,
 	decimal_string__type,
-	integer_string__signed__type,
 } from '../../../common/common/scalar';
 
 import {
@@ -26,6 +27,7 @@ import {
 	common_base__FGBuildable__pipeline_flow_accessory__type,
 	common_base__FGBuildable__pole__base__no_static__type,
 	common_base__FGBuildable__pole__base__with_static__type,
+	common_base__FGBuildable__splitter__base__type,
 	common_base__FGBuildable__tiered__type,
 } from '../../../common/classes/CoreUObject/FGBuildable';
 
@@ -290,10 +292,13 @@ export type FGBuildable__power_switch__base__type =
 		mBuildingTag: '';
 	};
 
-export type FGBuildable__splitter__base__type = FGBuildable__base__type & {
-	mCurrentOutputIndex: integer_string__signed__type;
-	mInventorySize: integer_string__type;
-};
+export type FGBuildable__splitter__base__type =
+	FGBuildable__splitter__base__merged__type;
+
+export type FGBuildable__splitter__base__merged__type =
+	common_base__FGBuildable__splitter__base__type &
+		FGBuildable__base__type &
+		FGBuildableAttachmentMergerSplitter__with_inventory_size__type;
 
 export type FGBuildable__tiered__type = FGBuildable__tiered__merged__type;
 

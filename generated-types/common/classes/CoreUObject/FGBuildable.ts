@@ -175,6 +175,11 @@ export type common_base__FGBuildable__pole__base__with_static__type =
 		mUseStaticHeight: boolean__type;
 	};
 
+export type common_base__FGBuildable__splitter__base__type =
+	common_base__FGBuildable__base__type & {
+		mCurrentOutputIndex: integer_string__signed__type;
+	};
+
 export type common_base__FGBuildable__tiered__type =
 	common_base__FGBuildable__base__type & {
 		Tier: integer_string__type;

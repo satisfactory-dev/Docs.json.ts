@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (435 of 435)
+100.00% Complete (443 of 443)
 
 ## Basic Types
 
@@ -50,7 +50,10 @@
 -   [x] common-base--FGBuildable--pipeline-flow-accessory (common type)
 -   [x] common-base--FGBuildable--pole--base--no-static (common type)
 -   [x] common-base--FGBuildable--pole--base--with-static (common type)
+-   [x] common-base--FGBuildable--splitter--base (common type)
 -   [x] common-base--FGBuildable--tiered (common type)
+-   [x] common-base--FGBuildableAttachmentMerger (common type)
+-   [x] common-base--FGBuildableAttachmentSplitter (common type)
 -   [x] common-base--FGBuildableBlueprintDesigner (common type)
 -   [x] common-base--FGBuildableConveyorBelt (common type)
 -   [x] common-base--FGBuildableConveyorBelt--base (common type)
@@ -105,6 +108,7 @@
 -   [x] common-base--FGBuildableResourceExtractor--oil-extractor (common type)
 -   [x] common-base--FGBuildableResourceSink (common type)
 -   [x] common-base--FGBuildableResourceSinkShop (common type)
+-   [x] common-base--FGBuildableSplitterSmart (common type)
 -   [x] common-base--FGBuildableStorage (common type)
 -   [x] common-base--FGBuildableTradingPost (common type)
 -   [x] common-base--FGBuildableTrainPlatform--base (common type)
@@ -255,8 +259,17 @@
 -   [x] FGBuildable--pole--base--with-static--merged
 -   [x] FGBuildable--power-switch--base
 -   [x] FGBuildable--splitter--base
+-   [x] FGBuildable--splitter--base--merged
 -   [x] FGBuildable--tiered
 -   [x] FGBuildable--tiered--merged
+
+## FGBuildableAttachmentMerger
+
+-   [x] FGBuildableAttachmentMerger--merged
+
+## FGBuildableAttachmentSplitter
+
+-   [x] FGBuildableAttachmentSplitter--merged
 
 ## FGBuildableBlueprintDesigner
 
@@ -437,6 +450,10 @@
 ## FGBuildableResourceSinkShop
 
 -   [x] FGBuildableResourceSinkShop--merged
+
+## FGBuildableSplitterSmart
+
+-   [x] FGBuildableSplitterSmart--merged
 
 ## FGBuildableStorage
 

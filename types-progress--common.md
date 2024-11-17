@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (278 of 278)
+100.00% Complete (283 of 283)
 
 ## Basic Types
 
@@ -68,7 +68,10 @@
 -   [x] common-base--FGBuildable--pipeline-flow-accessory (common type)
 -   [x] common-base--FGBuildable--pole--base--no-static (common type)
 -   [x] common-base--FGBuildable--pole--base--with-static (common type)
+-   [x] common-base--FGBuildable--splitter--base (common type)
 -   [x] common-base--FGBuildable--tiered
+-   [x] common-base--FGBuildableAttachmentMerger
+-   [x] common-base--FGBuildableAttachmentSplitter
 -   [x] common-base--FGBuildableBlueprintDesigner
 -   [x] common-base--FGBuildableConveyorBelt
 -   [x] common-base--FGBuildableConveyorBelt--base (common type)
@@ -123,6 +126,7 @@
 -   [x] common-base--FGBuildableResourceExtractor--oil-extractor
 -   [x] common-base--FGBuildableResourceSink
 -   [x] common-base--FGBuildableResourceSinkShop
+-   [x] common-base--FGBuildableSplitterSmart
 -   [x] common-base--FGBuildableStorage
 -   [x] common-base--FGBuildableTradingPost
 -   [x] common-base--FGBuildableTrainPlatform--base (common type)
