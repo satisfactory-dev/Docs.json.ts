@@ -2805,9 +2805,7 @@
 			"type": "object",
 			"$ref": "#/$defs/FGChargedWeapon--merged",
 			"unevaluatedProperties": false,
-			"required": [
-				"mIsPendingExecuteFire"
-			],
+			"required": ["mIsPendingExecuteFire"],
 			"properties": {
 				"mIsPendingExecuteFire": {
 					"$ref": "common.schema.json#/$defs/boolean"
@@ -4793,17 +4791,17 @@
 					"maxItems": 2,
 					"items": false,
 					"prefixItems": [
-							{
-								"type": "object",
-								"$ref": "#/$defs/FGWeapon--rebar-gun",
-								"unevaluatedProperties": false
-							},
-							{
-								"type": "object",
-								"$ref": "#/$defs/FGWeapon--rifle",
-								"unevaluatedProperties": false
-							}
-						]
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGWeapon--rebar-gun",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGWeapon--rifle",
+							"unevaluatedProperties": false
+						}
+					]
 				}
 			}
 		},
