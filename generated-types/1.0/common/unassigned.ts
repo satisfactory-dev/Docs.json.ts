@@ -243,5 +243,3 @@ export type Montage_3P__type = UnrealEngineString<
 	'/Script/Engine.AnimMontage',
 	StringStartsWith<'/Game/FactoryGame/Character/Player/Animation/ThirdPerson/'>
 >;
-
-export type weaponState__type = 'EWS_Unequipped';

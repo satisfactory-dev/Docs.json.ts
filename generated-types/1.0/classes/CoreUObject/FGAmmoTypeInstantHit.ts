@@ -1,31 +1,33 @@
 import {FGAmmoTypeProjectile__base__type} from './FGAmmoTypeProjectile';
 
 import {
-	boolean__type,
-	decimal_string__type,
-} from '../../../common/common/scalar';
+	common_base__FGAmmoTypeInstantHit__base__type,
+	common_base__FGAmmoTypeInstantHit__chaos__type,
+	common_base__FGAmmoTypeInstantHit__standard__type,
+} from '../../../common/classes/CoreUObject/FGAmmoTypeInstantHit';
 
-import {
-	xyz__type,
-	NativeClass__type,
-} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGAmmoTypeInstantHit__base__type =
-	FGAmmoTypeProjectile__base__type & {
-		mPlayFireEffects: boolean__type;
-	};
+	FGAmmoTypeInstantHit__base__merged__type;
+
+export type FGAmmoTypeInstantHit__base__merged__type =
+	common_base__FGAmmoTypeInstantHit__base__type &
+		FGAmmoTypeProjectile__base__type;
 
 export type FGAmmoTypeInstantHit__chaos__type =
-	FGAmmoTypeInstantHit__base__type & {
-		ClassName: 'Desc_CartridgeChaos_C';
-		Location: xyz__type;
-		Trail_Velocity: decimal_string__type;
-	};
+	FGAmmoTypeInstantHit__chaos__merged__type;
+
+export type FGAmmoTypeInstantHit__chaos__merged__type =
+	common_base__FGAmmoTypeInstantHit__chaos__type &
+		FGAmmoTypeInstantHit__base__type;
 
 export type FGAmmoTypeInstantHit__standard__type =
-	FGAmmoTypeInstantHit__base__type & {
-		ClassName: 'Desc_CartridgeStandard_C';
-	};
+	FGAmmoTypeInstantHit__standard__merged__type;
+
+export type FGAmmoTypeInstantHit__standard__merged__type =
+	common_base__FGAmmoTypeInstantHit__standard__type &
+		FGAmmoTypeInstantHit__base__type;
 
 export type FGAmmoTypeInstantHit__NativeClass =
 	NativeClass__type & {

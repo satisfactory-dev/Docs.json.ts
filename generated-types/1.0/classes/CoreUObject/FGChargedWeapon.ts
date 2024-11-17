@@ -13,7 +13,6 @@ import {FGWeapon__base__type} from './FGWeapon';
 import {
 	boolean__type,
 	decimal_string__type,
-	integer_string__type,
 } from '../../../common/common/scalar';
 
 import {
@@ -21,7 +20,9 @@ import {
 	NativeClass__type,
 } from '../../../common/common/unassigned';
 
-export type FGChargedWeapon__type = FGWeapon__base__type & {
+import {common_base__FGChargedWeapon__type} from '../../../common/classes/CoreUObject/FGChargedWeapon';
+
+export type FGChargedWeapon__type = FGChargedWeapon__merged__type & {
 	AmmoTypeToAkEvent: [
 		[
 			(
@@ -68,7 +69,6 @@ export type FGChargedWeapon__type = FGWeapon__base__type & {
 			),
 		][],
 	];
-	mRadialMenuShowUpTime: decimal_string__type;
 	mPrimaryFireStartMontageList: {
 		Montages: [
 			{
@@ -251,13 +251,11 @@ export type FGChargedWeapon__type = FGWeapon__base__type & {
 		];
 	};
 	mUnEquipMontage?: empty_object__type;
-	mDispensedProjectiles: '';
-	mMaxChargeTime: decimal_string__type;
 	mReleaseCooldown: decimal_string__type;
-	mMaxThrowForce: integer_string__type;
-	mMinThrowForce: integer_string__type;
-	mDelayBetweenSecondaryTriggers: decimal_string__type;
 };
+
+export type FGChargedWeapon__merged__type =
+	common_base__FGChargedWeapon__type & FGWeapon__base__type;
 
 export type FGChargedWeapon__NativeClass = NativeClass__type & {
 	Classes: [FGChargedWeapon__type];

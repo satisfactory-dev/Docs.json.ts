@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (289 of 289)
+100.00% Complete (307 of 307)
 
 ## Basic Types
 
@@ -57,7 +57,13 @@
 
 ## common-base
 
--   [x] common-base--EditorCurveData
+-   [x] common-base--EditorCurveData (common type)
+-   [x] common-base--FGAmmoTypeInstantHit--base (common type)
+-   [x] common-base--FGAmmoTypeInstantHit--chaos
+-   [x] common-base--FGAmmoTypeInstantHit--standard
+-   [x] common-base--FGAmmoTypeProjectile
+-   [x] common-base--FGAmmoTypeProjectile--base (common type)
+-   [x] common-base--FGAmmoTypeSpreadshot
 -   [x] common-base--FGBuildable--base (common type)
 -   [x] common-base--FGBuildable--consumes-power-base (common type)
 -   [x] common-base--FGBuildable--docking-station-base (common type)
@@ -148,6 +154,7 @@
 -   [x] common-base--FGBuildingDescriptor--mForm (common type)
 -   [x] common-base--FGBuildingDescriptor--mSubCategories (common type)
 -   [x] common-base--FGChainsaw
+-   [x] common-base--FGChargedWeapon
 -   [x] common-base--FGConsumableDescriptor
 -   [x] common-base--FGConsumableDescriptor--base (common type)
 -   [x] common-base--FGConsumableDescriptor--healing
@@ -188,10 +195,15 @@
 -   [x] common-base--FGVehicleDescriptor--fueled-with-inventory
 -   [x] common-base--FGVehicleDescriptor--powered-no-inventory
 -   [x] common-base--FGVehicleDescriptor--with-inventory (common type)
+-   [x] common-base--FGWeapon--base (common type)
+-   [x] common-base--FGWeapon--gun-base (common type)
+-   [x] common-base--FGWeapon--rebar-gun
+-   [x] common-base--FGWeapon--rifle
 -   [x] common-base--MaterialSlotName
 -   [x] common-base--mChainsawState (common type)
 -   [x] common-base--mDisableSnapOn (common type)
 -   [x] common-base--mSnappedPassthroughs (common type)
+-   [x] common-base--weaponState (common type)
 
 ## FGSchematic
 

@@ -159,6 +159,28 @@ import {
 import {common_base__FGBuildableRamp__type} from '../classes/CoreUObject/FGBuildableRamp';
 
 import {
+	common_base__FGAmmoTypeProjectile__base__type,
+	common_base__FGAmmoTypeProjectile__type,
+} from '../classes/CoreUObject/FGAmmoTypeProjectile';
+
+import {common_base__FGAmmoTypeSpreadshot__type} from '../classes/CoreUObject/FGAmmoTypeSpreadshot';
+
+import {
+	common_base__FGAmmoTypeInstantHit__base__type,
+	common_base__FGAmmoTypeInstantHit__chaos__type,
+	common_base__FGAmmoTypeInstantHit__standard__type,
+} from '../classes/CoreUObject/FGAmmoTypeInstantHit';
+
+import {
+	common_base__FGWeapon__base__type,
+	common_base__FGWeapon__gun_base__type,
+	common_base__FGWeapon__rebar_gun__type,
+	common_base__FGWeapon__rifle__type,
+} from '../classes/CoreUObject/FGWeapon';
+
+import {common_base__FGChargedWeapon__type} from '../classes/CoreUObject/FGChargedWeapon';
+
+import {
 	FGSchematic__mUnlocks_mSchematics__mSchematics__type,
 	common_base__FGSchematic__mUnlocks__type,
 	common_base__FGSchematic__base__mSchematicDependencies__mRequireAllSchematicsToBePurchased__type,
@@ -472,6 +494,8 @@ export type common_base__mDisableSnapOn__type =
 
 export type common_base__mSnappedPassthroughs__type = '';
 
+export type common_base__weaponState__type = 'EWS_Unequipped';
+
 export type empty_object__type = '()';
 
 export type faux_1__type = class__type & {
@@ -588,6 +612,18 @@ export type faux_11__type = class__type & {
 	FGBuildableRamp?: common_base__FGBuildableRamp__type;
 	MaterialSlotName?: common_base__MaterialSlotName__type;
 	EditorCurveData?: common_base__EditorCurveData__type;
+	FGAmmoTypeProjectile_base?: common_base__FGAmmoTypeProjectile__base__type;
+	FGAmmoTypeProjectile?: common_base__FGAmmoTypeProjectile__type;
+	FGAmmoTypeSpreadshot?: common_base__FGAmmoTypeSpreadshot__type;
+	FGAmmoTypeInstantHit_base?: common_base__FGAmmoTypeInstantHit__base__type;
+	FGAmmoTypeInstantHit_chaos?: common_base__FGAmmoTypeInstantHit__chaos__type;
+	FGAmmoTypeInstantHit_standard?: common_base__FGAmmoTypeInstantHit__standard__type;
+	weaponState?: common_base__weaponState__type;
+	FGWeapon_base?: common_base__FGWeapon__base__type;
+	FGWeapon_gun_base?: common_base__FGWeapon__gun_base__type;
+	FGWeapon_rebar_gun?: common_base__FGWeapon__rebar_gun__type;
+	FGWeapon_rifle?: common_base__FGWeapon__rifle__type;
+	FGChargedWeapon?: common_base__FGChargedWeapon__type;
 };
 
 export type faux_12__type = class__type & {

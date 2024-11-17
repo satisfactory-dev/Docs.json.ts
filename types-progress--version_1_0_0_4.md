@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (482 of 482)
+100.00% Complete (505 of 505)
 
 ## Basic Types
 
@@ -17,7 +17,6 @@
 -   [x] empty-object (common type)
 -   [x] FGBuildingDescriptor
 -   [x] FGCentralStorageContainer
--   [x] FGChargedWeapon
 -   [x] FGGolfCartDispenser
 -   [x] FGPowerShardDescriptor
 -   [x] integer-string (common type)
@@ -37,12 +36,17 @@
 -   [x] None (common type)
 -   [x] Texture2D (common type)
 -   [x] transformation (common type)
--   [x] weaponState
 -   [x] xyz-array (common type)
 
 ## common-base
 
 -   [x] common-base--EditorCurveData (common type)
+-   [x] common-base--FGAmmoTypeInstantHit--base (common type)
+-   [x] common-base--FGAmmoTypeInstantHit--chaos (common type)
+-   [x] common-base--FGAmmoTypeInstantHit--standard (common type)
+-   [x] common-base--FGAmmoTypeProjectile (common type)
+-   [x] common-base--FGAmmoTypeProjectile--base (common type)
+-   [x] common-base--FGAmmoTypeSpreadshot (common type)
 -   [x] common-base--FGBuildable--base (common type)
 -   [x] common-base--FGBuildable--consumes-power-base (common type)
 -   [x] common-base--FGBuildable--docking-station-base (common type)
@@ -133,6 +137,7 @@
 -   [x] common-base--FGBuildingDescriptor--mForm (common type)
 -   [x] common-base--FGBuildingDescriptor--mSubCategories (common type)
 -   [x] common-base--FGChainsaw (common type)
+-   [x] common-base--FGChargedWeapon (common type)
 -   [x] common-base--FGConsumableDescriptor--base (common type)
 -   [x] common-base--FGConsumableDescriptor--healing (common type)
 -   [x] common-base--FGCustomizationRecipe--FGRecipe (common type)
@@ -172,9 +177,14 @@
 -   [x] common-base--FGVehicleDescriptor--fueled-with-inventory (common type)
 -   [x] common-base--FGVehicleDescriptor--powered-no-inventory (common type)
 -   [x] common-base--FGVehicleDescriptor--with-inventory (common type)
+-   [x] common-base--FGWeapon--base (common type)
+-   [x] common-base--FGWeapon--gun-base (common type)
+-   [x] common-base--FGWeapon--rebar-gun (common type)
+-   [x] common-base--FGWeapon--rifle (common type)
 -   [x] common-base--mChainsawState (common type)
 -   [x] common-base--mDisableSnapOn (common type)
 -   [x] common-base--mSnappedPassthroughs (common type)
+-   [x] common-base--weaponState (common type)
 
 ## FGAmmoType
 
@@ -184,6 +194,21 @@
 -   [x] FGAmmoTypeInstantHit--standard
 -   [x] FGAmmoTypeProjectile
 -   [x] FGAmmoTypeProjectile--base
+
+## FGAmmoTypeInstantHit
+
+-   [x] FGAmmoTypeInstantHit--base--merged
+-   [x] FGAmmoTypeInstantHit--chaos--merged
+-   [x] FGAmmoTypeInstantHit--standard--merged
+
+## FGAmmoTypeProjectile
+
+-   [x] FGAmmoTypeProjectile--base--merged
+-   [x] FGAmmoTypeProjectile--merged
+
+## FGAmmoTypeSpreadshot
+
+-   [x] FGAmmoTypeSpreadshot--merged
 
 ## FGBuildable
 
@@ -537,6 +562,11 @@
 -   [x] FGChainsaw--merged
 -   [x] FGChainsaw--Montage_Equipment
 
+## FGChargedWeapon
+
+-   [x] FGChargedWeapon
+-   [x] FGChargedWeapon--merged
+
 ## FGConsumableDescriptor
 
 -   [x] FGConsumableDescriptor
@@ -700,9 +730,13 @@
 ## FGWeapon
 
 -   [x] FGWeapon--base
+-   [x] FGWeapon--base--merged
 -   [x] FGWeapon--gun-base
+-   [x] FGWeapon--gun-base--merged
 -   [x] FGWeapon--rebar-gun
+-   [x] FGWeapon--rebar-gun--merged
 -   [x] FGWeapon--rifle
+-   [x] FGWeapon--rifle--merged
 
 ## FilterMontageTag
 

@@ -1,45 +1,30 @@
-import {weaponState__type} from '../../common/unassigned';
-
 import {FGEquipment__base__type} from './FGEquipment';
 
 import {
-	empty_object__type,
-	UnrealEngineString__array__type,
-	NativeClass__type,
-} from '../../../common/common/unassigned';
-
-import {
 	boolean__type,
-	decimal_string__type,
 	integer_string__type,
 } from '../../../common/common/scalar';
 
-export type FGWeapon__base__type = FGEquipment__base__type & {
-	mShowCycleAmmoRadialMenuTimer: empty_object__type;
-	mOnWeaponStateChanged: empty_object__type;
-	mWeaponState: weaponState__type;
-	mAutomaticallyReload: boolean__type;
-	mAutoReloadDelay: decimal_string__type;
-	mAutoReloadTimerHandle: empty_object__type;
-	mCurrentAmmoCount: integer_string__type;
-	mAllowedAmmoClasses: UnrealEngineString__array__type;
-	mAttachMagazineToPlayer: boolean__type;
-	mMuzzleSocketName: 'muzzleSocket' | 'MuzzleSocket' | 'None';
-	mCurrentMagazineBoneName: 'CurrentMagazine' | 'hand_rSocket';
-	mEjectMagazineBoneName: 'EjectMagazine' | 'hand_rSocket';
-	mDispersionOnNoMagazine: decimal_string__type;
-	mWeaponDamageMultiplier: decimal_string__type;
-	mFiringBlocksDispersionReduction: boolean__type;
-	mCurrentDispersion: decimal_string__type;
-	mReloadTime: decimal_string__type;
-	mAmmoSwitchUsedRadialMenu: boolean__type;
-	mOnAmmoCyclingPressed: empty_object__type;
-	mOnAmmoCyclingReleased: empty_object__type;
-	mBlockSprintWhenFiring: boolean__type;
-};
+import {
+	common_base__FGWeapon__base__type,
+	common_base__FGWeapon__gun_base__type,
+	common_base__FGWeapon__rebar_gun__type,
+	common_base__FGWeapon__rifle__type,
+} from '../../../common/classes/CoreUObject/FGWeapon';
 
-export type FGWeapon__rebar_gun__type = FGWeapon__base__type & {
-	ClassName?: 'Equip_RebarGun_Projectile_C';
+import {NativeClass__type} from '../../../common/common/unassigned';
+
+export type FGWeapon__base__type = FGWeapon__base__merged__type;
+
+export type FGWeapon__base__merged__type =
+	common_base__FGWeapon__base__type & FGEquipment__base__type;
+
+export type FGWeapon__gun_base__type = FGWeapon__gun_base__merged__type;
+
+export type FGWeapon__gun_base__merged__type =
+	common_base__FGWeapon__gun_base__type & FGWeapon__base__type;
+
+export type FGWeapon__rebar_gun__type = FGWeapon__rebar_gun__merged__type & {
 	mMuteDryFire: boolean__type;
 	mRandomReloadAnim: integer_string__type;
 	mRandomStingerAnim: integer_string__type;
@@ -47,15 +32,15 @@ export type FGWeapon__rebar_gun__type = FGWeapon__base__type & {
 	mRebarGunEquipID: integer_string__type;
 };
 
-export type FGWeapon__rifle__type = FGWeapon__base__type & {
-	ClassName?: 'Equip_Rifle_C';
-	Fire: empty_object__type;
-	mHasReloadedOnce: boolean__type;
-};
+export type FGWeapon__rebar_gun__merged__type =
+	common_base__FGWeapon__rebar_gun__type &
+		FGWeapon__gun_base__type;
+
+export type FGWeapon__rifle__type = FGWeapon__rifle__merged__type;
+
+export type FGWeapon__rifle__merged__type =
+	common_base__FGWeapon__rifle__type & FGWeapon__gun_base__type;
 
 export type FGWeapon__NativeClass = NativeClass__type & {
-	Classes: [
-		FGWeapon__rebar_gun__type | FGWeapon__rifle__type,
-		...(FGWeapon__rebar_gun__type | FGWeapon__rifle__type)[],
-	];
+	Classes: [FGWeapon__rebar_gun__type, FGWeapon__rifle__type];
 };

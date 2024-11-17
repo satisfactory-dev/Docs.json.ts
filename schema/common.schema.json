@@ -5208,6 +5208,562 @@
 				}
 			}
 		},
+		"common-base--FGAmmoTypeProjectile--base": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGItemDescriptor--FGResourceDescriptor",
+			"required": [
+				"AmmoFiredDelegate",
+				"mFiringTransform",
+				"mFiringDirection",
+				"mMagazineSize",
+				"mMaxAmmoEffectiveRange",
+				"mReloadTimeMultiplier",
+				"mFireRate",
+				"mFiringTransformIgnoresDispersion",
+				"mDispersionFireRateMultiplier",
+				"mDispersionPerShot",
+				"mRestingDispersion",
+				"mFiringDispersion",
+				"mDispersionRecoveryTime",
+				"mHasBeenInitialized",
+				"mWeaponDamageMultiplier",
+				"mMagazineMeshMaterials",
+				"mMagazineMeshMaterials1p",
+				"mDamageTypesOnImpact",
+				"mAmmoDamageFalloff",
+				"mMuzzleFlashScale",
+				"mFiringSounds",
+				"mFiringSounds1P",
+				"mAmmoColor",
+				"mAmmoScale",
+				"mAmmoTickFunction"
+			],
+			"properties": {
+				"AmmoFiredDelegate": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mFiringTransform": {
+					"$ref": "common.schema.json#/$defs/transformation"
+				},
+				"mFiringDirection": {
+					"$ref": "common.schema.json#/$defs/xyz"
+				},
+				"mMagazineSize": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				},
+				"mMaxAmmoEffectiveRange": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mReloadTimeMultiplier": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mFireRate": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mFiringTransformIgnoresDispersion": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mDispersionFireRateMultiplier": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mDispersionPerShot": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mRestingDispersion": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mFiringDispersion": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mDispersionRecoveryTime": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mHasBeenInitialized": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mWeaponDamageMultiplier": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mMagazineMeshMaterials": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"minItems": 1,
+						"items": {
+							"type": "string",
+							"minLength": 1,
+							"typed_string": {
+								"required": [
+									"MaterialInterface",
+									"MaterialSlotName",
+									"ImportedMaterialSlotName",
+									"UVChannelData"
+								],
+								"properties": {
+									"MaterialInterface": {
+										"type": "string",
+										"minLength": 1,
+										"UnrealEngineString": {
+											"left": [
+												"/Script/Engine.MaterialInstanceConstant",
+												"/Script/Engine.Material"
+											]
+										}
+									},
+									"MaterialSlotName": {
+										"$ref": "common.schema.json#/$defs/common-base--MaterialSlotName"
+									},
+									"ImportedMaterialSlotName": {
+										"$ref": "common.schema.json#/$defs/common-base--MaterialSlotName"
+									},
+									"UVChannelData": {
+										"type": "string",
+										"minLength": 1,
+										"typed_string": {
+											"required": [
+												"bInitialized",
+												"LocalUVDensities[0]"
+											],
+											"properties": {
+												"bInitialized": {
+													"$ref": "common.schema.json#/$defs/boolean"
+												},
+												"LocalUVDensities[0]": {
+													"$ref": "common.schema.json#/$defs/decimal-string"
+												},
+												"LocalUVDensities[1]": {
+													"$ref": "common.schema.json#/$defs/decimal-string"
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"mMagazineMeshMaterials1p": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"minItems": 1,
+						"items": {
+							"type": "string",
+							"minLength": 1,
+							"UnrealEngineString": {
+								"left": "/Script/Engine.MaterialInstanceConstant"
+							}
+						}
+					}
+				},
+				"mDamageTypesOnImpact": {
+					"oneOf": [
+						{
+							"type": "string",
+							"const": ""
+						},
+						{
+							"$ref": "common.schema.json#/$defs/mDamageTypes"
+						}
+					]
+				},
+				"mAmmoDamageFalloff": {
+					"$ref": "common.schema.json#/$defs/common-base--EditorCurveData"
+				},
+				"mMuzzleFlashScale": {
+					"$ref": "common.schema.json#/$defs/xyz"
+				},
+				"mFiringSounds": {
+					"oneOf": [
+						{
+							"type": "string",
+							"const": ""
+						},
+						{
+							"type": "string",
+							"minLength": 1,
+							"typed_string": {
+								"minItems": 1,
+								"items": {
+									"type": "string",
+									"minLength": 1,
+									"UnrealEngineString": {
+										"left": "/Script/AkAudio.AkAudioEvent",
+										"right": {
+											"starts_with": "/Game/WwiseAudio/Events/"
+										}
+									}
+								}
+							}
+						}
+					]
+				},
+				"mFiringSounds1P": {
+					"type": "string",
+					"const": ""
+				},
+				"mAmmoColor": {
+					"$ref": "common.schema.json#/$defs/color-decimal"
+				},
+				"mAmmoScale": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mAmmoTickFunction": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["bAllowTickOnDedicatedServer"],
+						"properties": {
+							"bAllowTickOnDedicatedServer": {
+								"$ref": "common.schema.json#/$defs/boolean"
+							}
+						}
+					}
+				}
+			}
+		},
+		"common-base--FGAmmoTypeProjectile": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGAmmoTypeProjectile--base",
+			"required": [
+				"mInitialProjectileSpeedOverride",
+				"mProjectileMaxSpeedOverride",
+				"mProjectileHealthOverride",
+				"mProjectileLifespan",
+				"mProjectileStickspan",
+				"mCanTakeDamageBySameProjectileOrChild",
+				"mDamageTypesAtEndOfLife",
+				"mGravityScaleOverLifespan",
+				"mHomingProjectile",
+				"mHomingNeedsValidTarget",
+				"mMaxHomingAccelerationMagnitudeOverride",
+				"mHomingMagnitudeMultiplierOverLifespan",
+				"mHomingMagnitudeMultiplierOverDistanceToTarget",
+				"mHomingOverlapSize",
+				"mHomingAngleLimit",
+				"mHomingOverrideTargets"
+			],
+			"properties": {
+				"mInitialProjectileSpeedOverride": {
+					"$ref": "common.schema.json#/$defs/decimal-string--signed"
+				},
+				"mProjectileMaxSpeedOverride": {
+					"$ref": "common.schema.json#/$defs/decimal-string--signed"
+				},
+				"mProjectileHealthOverride": {
+					"$ref": "common.schema.json#/$defs/decimal-string--signed"
+				},
+				"mProjectileLifespan": {
+					"$ref": "common.schema.json#/$defs/decimal-string--signed"
+				},
+				"mProjectileStickspan": {
+					"$ref": "common.schema.json#/$defs/decimal-string--signed"
+				},
+				"mCanTakeDamageBySameProjectileOrChild": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mDamageTypesAtEndOfLife": {
+					"oneOf": [
+						{
+							"type": "string",
+							"const": ""
+						},
+						{
+							"$ref": "common.schema.json#/$defs/mDamageTypes"
+						}
+					]
+				},
+				"mGravityScaleOverLifespan": {
+					"$ref": "common.schema.json#/$defs/common-base--EditorCurveData"
+				},
+				"mHomingProjectile": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mHomingNeedsValidTarget": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mMaxHomingAccelerationMagnitudeOverride": {
+					"$ref": "common.schema.json#/$defs/decimal-string--signed"
+				},
+				"mHomingMagnitudeMultiplierOverLifespan": {
+					"$ref": "common.schema.json#/$defs/common-base--EditorCurveData"
+				},
+				"mHomingMagnitudeMultiplierOverDistanceToTarget": {
+					"$ref": "common.schema.json#/$defs/common-base--EditorCurveData"
+				},
+				"mHomingOverlapSize": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mHomingAngleLimit": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mHomingOverrideTargets": {
+					"oneOf": [
+						{
+							"type": "string",
+							"const": ""
+						},
+						{
+							"type": "string",
+							"minLength": 1,
+							"typed_string": {
+								"minItems": 1,
+								"items": {
+									"type": "string",
+									"minLength": 1,
+									"typed_string": {
+										"required": ["ActorClass"],
+										"properties": {
+											"ActorClass": {
+												"type": "string",
+												"minLength": 1,
+												"UnrealEngineString": {
+													"right": {
+														"starts_with": "/Game/FactoryGame/Character/Creature/Enemy/"
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					]
+				}
+			}
+		},
+		"common-base--FGAmmoTypeSpreadshot": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGAmmoTypeProjectile--base",
+			"required": [
+				"SpreadTrail_Velocity",
+				"mNumShots",
+				"mSpreadAngleDegrees"
+			],
+			"properties": {
+				"SpreadTrail_Velocity": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mNumShots": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["Min", "Max"],
+						"properties": {
+							"Min": {
+								"$ref": "common.schema.json#/$defs/integer-string"
+							},
+							"Max": {
+								"$ref": "common.schema.json#/$defs/integer-string"
+							}
+						}
+					}
+				},
+				"mSpreadAngleDegrees": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				}
+			}
+		},
+		"common-base--FGAmmoTypeInstantHit--base": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGAmmoTypeProjectile--base",
+			"required": ["mPlayFireEffects"],
+			"properties": {
+				"mPlayFireEffects": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				}
+			}
+		},
+		"common-base--FGAmmoTypeInstantHit--chaos": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGAmmoTypeInstantHit--base",
+			"required": ["ClassName", "Location", "Trail_Velocity"],
+			"properties": {
+				"ClassName": {
+					"type": "string",
+					"const": "Desc_CartridgeChaos_C"
+				},
+				"Location": {
+					"$ref": "common.schema.json#/$defs/xyz"
+				},
+				"Trail_Velocity": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				}
+			}
+		},
+		"common-base--FGAmmoTypeInstantHit--standard": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGAmmoTypeInstantHit--base",
+			"properties": {
+				"ClassName": {
+					"type": "string",
+					"const": "Desc_CartridgeStandard_C"
+				}
+			}
+		},
+		"common-base--weaponState": {
+			"type": "string",
+			"enum": ["EWS_Unequipped"]
+		},
+		"common-base--FGWeapon--base": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGEquipment--base",
+			"required": [
+				"mShowCycleAmmoRadialMenuTimer",
+				"mOnWeaponStateChanged",
+				"mWeaponState",
+				"mAutomaticallyReload",
+				"mAutoReloadDelay",
+				"mAutoReloadTimerHandle",
+				"mCurrentAmmoCount",
+				"mAllowedAmmoClasses",
+				"mAttachMagazineToPlayer",
+				"mMuzzleSocketName",
+				"mCurrentMagazineBoneName",
+				"mEjectMagazineBoneName",
+				"mDispersionOnNoMagazine",
+				"mWeaponDamageMultiplier",
+				"mFiringBlocksDispersionReduction",
+				"mCurrentDispersion",
+				"mReloadTime",
+				"mAmmoSwitchUsedRadialMenu",
+				"mOnAmmoCyclingPressed",
+				"mOnAmmoCyclingReleased",
+				"mBlockSprintWhenFiring"
+			],
+			"properties": {
+				"mShowCycleAmmoRadialMenuTimer": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mOnWeaponStateChanged": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mWeaponState": {
+					"$ref": "common.schema.json#/$defs/common-base--weaponState"
+				},
+				"mAutomaticallyReload": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mAutoReloadDelay": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mAutoReloadTimerHandle": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mCurrentAmmoCount": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				},
+				"mAllowedAmmoClasses": {
+					"$ref": "common.schema.json#/$defs/UnrealEngineString--array"
+				},
+				"mAttachMagazineToPlayer": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mMuzzleSocketName": {
+					"type": "string",
+					"enum": ["muzzleSocket", "MuzzleSocket", "None"]
+				},
+				"mCurrentMagazineBoneName": {
+					"type": "string",
+					"enum": ["CurrentMagazine", "hand_rSocket"]
+				},
+				"mEjectMagazineBoneName": {
+					"type": "string",
+					"enum": ["EjectMagazine", "hand_rSocket"]
+				},
+				"mDispersionOnNoMagazine": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mWeaponDamageMultiplier": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mFiringBlocksDispersionReduction": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mCurrentDispersion": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mReloadTime": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mAmmoSwitchUsedRadialMenu": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mOnAmmoCyclingPressed": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mOnAmmoCyclingReleased": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mBlockSprintWhenFiring": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				}
+			}
+		},
+		"common-base--FGWeapon--gun-base": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGWeapon--base"
+		},
+		"common-base--FGWeapon--rebar-gun": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGWeapon--gun-base",
+			"properties": {
+				"ClassName": {
+					"type": "string",
+					"const": "Equip_RebarGun_Projectile_C"
+				}
+			}
+		},
+		"common-base--FGWeapon--rifle": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGWeapon--gun-base",
+			"required": ["Fire", "mHasReloadedOnce"],
+			"properties": {
+				"ClassName": {
+					"type": "string",
+					"const": "Equip_Rifle_C"
+				},
+				"Fire": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mHasReloadedOnce": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				}
+			}
+		},
+		"common-base--FGChargedWeapon": {
+			"type": "object",
+			"$ref": "#/$defs/common-base--FGWeapon--base",
+			"required": [
+				"mRadialMenuShowUpTime",
+				"mDispensedProjectiles",
+				"mMaxChargeTime",
+				"mMaxThrowForce",
+				"mMinThrowForce",
+				"mDelayBetweenSecondaryTriggers"
+			],
+			"properties": {
+				"mRadialMenuShowUpTime": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mDispensedProjectiles": {
+					"type": "string",
+					"const": ""
+				},
+				"mMaxChargeTime": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mMaxThrowForce": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				},
+				"mMinThrowForce": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				},
+				"mDelayBetweenSecondaryTriggers": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				}
+			}
+		},
 		"faux-1": {
 			"type": "object",
 			"$ref": "#/$defs/class",
@@ -5678,6 +6234,42 @@
 				},
 				"EditorCurveData": {
 					"$ref": "#/$defs/common-base--EditorCurveData"
+				},
+				"FGAmmoTypeProjectile_base": {
+					"$ref": "#/$defs/common-base--FGAmmoTypeProjectile--base"
+				},
+				"FGAmmoTypeProjectile": {
+					"$ref": "#/$defs/common-base--FGAmmoTypeProjectile"
+				},
+				"FGAmmoTypeSpreadshot": {
+					"$ref": "#/$defs/common-base--FGAmmoTypeSpreadshot"
+				},
+				"FGAmmoTypeInstantHit_base": {
+					"$ref": "#/$defs/common-base--FGAmmoTypeInstantHit--base"
+				},
+				"FGAmmoTypeInstantHit_chaos": {
+					"$ref": "#/$defs/common-base--FGAmmoTypeInstantHit--chaos"
+				},
+				"FGAmmoTypeInstantHit_standard": {
+					"$ref": "#/$defs/common-base--FGAmmoTypeInstantHit--standard"
+				},
+				"weaponState": {
+					"$ref": "#/$defs/common-base--weaponState"
+				},
+				"FGWeapon_base": {
+					"$ref": "#/$defs/common-base--FGWeapon--base"
+				},
+				"FGWeapon_gun_base": {
+					"$ref": "#/$defs/common-base--FGWeapon--gun-base"
+				},
+				"FGWeapon_rebar_gun": {
+					"$ref": "#/$defs/common-base--FGWeapon--rebar-gun"
+				},
+				"FGWeapon_rifle": {
+					"$ref": "#/$defs/common-base--FGWeapon--rifle"
+				},
+				"FGChargedWeapon": {
+					"$ref": "#/$defs/common-base--FGChargedWeapon"
 				}
 			}
 		},
