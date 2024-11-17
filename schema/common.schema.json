@@ -5084,6 +5084,73 @@
 				}
 			}
 		},
+		"common-base--FGBuildableFoundation--base": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--base",
+			"required": [
+				"mWidth",
+				"mDepth",
+				"mHeight",
+				"mElevation",
+				"mIsFrame",
+				"mDisableSnapOn",
+				"mDisableAttachmentSnapOn"
+			],
+			"properties": {
+				"mWidth": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mDepth": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mHeight": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mElevation": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mIsFrame": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mDisableSnapOn": {
+					"oneOf": [
+						{
+							"$ref": "common.schema.json#/$defs/empty-object"
+						},
+						{
+							"$ref": "common.schema.json#/$defs/common-base--mDisableSnapOn"
+						}
+					]
+				},
+				"mDisableAttachmentSnapOn": {
+					"oneOf": [
+						{
+							"$ref": "common.schema.json#/$defs/empty-object"
+						},
+						{
+							"$ref": "common.schema.json#/$defs/common-base--mDisableSnapOn"
+						}
+					]
+				}
+			}
+		},
+		"common-base--FGBuildableFoundation": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildableFoundation--base"
+		},
+		"common-base--FGBuildableRamp": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildableFoundation--base",
+			"required": ["mIsDoubleRamp", "mIsRoof"],
+			"properties": {
+				"mIsDoubleRamp": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mIsRoof": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				}
+			}
+		},
 		"faux-1": {
 			"type": "object",
 			"$ref": "#/$defs/class",
@@ -5539,6 +5606,15 @@
 				},
 				"FGBuildableSplitterSmart": {
 					"$ref": "#/$defs/common-base--FGBuildableSplitterSmart"
+				},
+				"FGBuildableFoundation_base": {
+					"$ref": "#/$defs/common-base--FGBuildableFoundation--base"
+				},
+				"FGBuildableFoundation": {
+					"$ref": "#/$defs/common-base--FGBuildableFoundation"
+				},
+				"FGBuildableRamp": {
+					"$ref": "#/$defs/common-base--FGBuildableRamp"
 				}
 			}
 		},

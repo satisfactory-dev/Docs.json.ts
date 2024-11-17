@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (283 of 283)
+100.00% Complete (287 of 287)
 
 ## Basic Types
 
@@ -85,6 +85,8 @@
 -   [x] common-base--FGBuildableFactory--generic
 -   [x] common-base--FGBuildableFactory--jump-pad
 -   [x] common-base--FGBuildableFactory--landing-pad
+-   [x] common-base--FGBuildableFoundation
+-   [x] common-base--FGBuildableFoundation--base (common type)
 -   [x] common-base--FGBuildableFrackingActivator
 -   [x] common-base--FGBuildableFrackingExtractor
 -   [x] common-base--FGBuildableGenerator--base (common type)
@@ -120,6 +122,7 @@
 -   [x] common-base--FGBuildableRailroadSignal
 -   [x] common-base--FGBuildableRailroadStation
 -   [x] common-base--FGBuildableRailroadTrack
+-   [x] common-base--FGBuildableRamp
 -   [x] common-base--FGBuildableResourceExtractor--miner
 -   [x] common-base--FGBuildableResourceExtractor--miner--base (common type)
 -   [x] common-base--FGBuildableResourceExtractor--miner-mk3

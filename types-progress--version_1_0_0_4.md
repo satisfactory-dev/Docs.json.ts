@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (478 of 478)
+100.00% Complete (483 of 483)
 
 ## Basic Types
 
@@ -73,6 +73,8 @@
 -   [x] common-base--FGBuildableFactory--generic (common type)
 -   [x] common-base--FGBuildableFactory--jump-pad (common type)
 -   [x] common-base--FGBuildableFactory--landing-pad (common type)
+-   [x] common-base--FGBuildableFoundation (common type)
+-   [x] common-base--FGBuildableFoundation--base (common type)
 -   [x] common-base--FGBuildableFrackingActivator (common type)
 -   [x] common-base--FGBuildableFrackingExtractor (common type)
 -   [x] common-base--FGBuildableGenerator--base (common type)
@@ -108,6 +110,7 @@
 -   [x] common-base--FGBuildableRailroadSignal (common type)
 -   [x] common-base--FGBuildableRailroadStation (common type)
 -   [x] common-base--FGBuildableRailroadTrack (common type)
+-   [x] common-base--FGBuildableRamp (common type)
 -   [x] common-base--FGBuildableResourceExtractor--miner (common type)
 -   [x] common-base--FGBuildableResourceExtractor--miner--base (common type)
 -   [x] common-base--FGBuildableResourceExtractor--miner-mk3 (common type)
@@ -331,6 +334,8 @@
 ## FGBuildableFoundation
 
 -   [x] FGBuildableFoundation--base
+-   [x] FGBuildableFoundation--base--merged
+-   [x] FGBuildableFoundation--merged
 
 ## FGBuildableFrackingActivator
 
@@ -452,6 +457,10 @@
 ## FGBuildableRailroadTrack
 
 -   [x] FGBuildableRailroadTrack--merged
+
+## FGBuildableRamp
+
+-   [x] FGBuildableRamp--merged
 
 ## FGBuildableResourceExtractor
 

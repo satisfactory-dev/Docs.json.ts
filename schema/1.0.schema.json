@@ -5083,73 +5083,51 @@
 			"$ref": "#/$defs/FGBuildableSplitterSmart--merged",
 			"unevaluatedProperties": false
 		},
+		"FGBuildableFoundation--base--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableFoundation--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
 		"FGBuildableFoundation--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
-			"required": [
-				"mWidth",
-				"mDepth",
-				"mHeight",
-				"mElevation",
-				"mIsFrame",
-				"mDisableSnapOn",
-				"mDisableAttachmentSnapOn"
-			],
-			"properties": {
-				"mWidth": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
+			"$ref": "#/$defs/FGBuildableFoundation--base--merged"
+		},
+		"FGBuildableFoundation--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableFoundation"
 				},
-				"mDepth": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mHeight": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mElevation": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"mIsFrame": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mDisableSnapOn": {
-					"oneOf": [
-						{
-							"$ref": "common.schema.json#/$defs/empty-object"
-						},
-						{
-							"$ref": "#/$defs/mDisableSnapOn"
-						}
-					]
-				},
-				"mDisableAttachmentSnapOn": {
-					"oneOf": [
-						{
-							"$ref": "common.schema.json#/$defs/empty-object"
-						},
-						{
-							"$ref": "#/$defs/mDisableSnapOn"
-						}
-					]
+				{
+					"$ref": "#/$defs/FGBuildableFoundation--base"
 				}
-			}
+			]
 		},
 		"FGBuildableFoundation": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableFoundation--base",
+			"$ref": "#/$defs/FGBuildableFoundation--merged",
 			"unevaluatedProperties": false
+		},
+		"FGBuildableRamp--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableRamp"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableFoundation--base"
+				}
+			]
 		},
 		"FGBuildableRamp": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableFoundation--base",
+			"$ref": "#/$defs/FGBuildableRamp--merged",
 			"unevaluatedProperties": false,
-			"required": ["mIsDoubleRamp", "mIsRoof", "mIsInverted"],
+			"required": ["mIsInverted"],
 			"properties": {
-				"mIsDoubleRamp": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mIsRoof": {
-					"$ref": "common.schema.json#/$defs/boolean"
-				},
 				"mIsInverted": {
 					"$ref": "common.schema.json#/$defs/boolean"
 				}

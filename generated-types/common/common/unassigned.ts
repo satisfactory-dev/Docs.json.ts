@@ -152,6 +152,13 @@ import {common_base__FGBuildableAttachmentSplitter__type} from '../classes/CoreU
 import {common_base__FGBuildableSplitterSmart__type} from '../classes/CoreUObject/FGBuildableSplitterSmart';
 
 import {
+	common_base__FGBuildableFoundation__base__type,
+	common_base__FGBuildableFoundation__type,
+} from '../classes/CoreUObject/FGBuildableFoundation';
+
+import {common_base__FGBuildableRamp__type} from '../classes/CoreUObject/FGBuildableRamp';
+
+import {
 	FGSchematic__mUnlocks_mSchematics__mSchematics__type,
 	common_base__FGSchematic__mUnlocks__type,
 	common_base__FGSchematic__base__mSchematicDependencies__mRequireAllSchematicsToBePurchased__type,
@@ -551,6 +558,9 @@ export type faux_11__type = class__type & {
 	FGBuildable_splitter_base?: common_base__FGBuildable__splitter__base__type;
 	FGBuildableAttachmentSplitter?: common_base__FGBuildableAttachmentSplitter__type;
 	FGBuildableSplitterSmart?: common_base__FGBuildableSplitterSmart__type;
+	FGBuildableFoundation_base?: common_base__FGBuildableFoundation__base__type;
+	FGBuildableFoundation?: common_base__FGBuildableFoundation__type;
+	FGBuildableRamp?: common_base__FGBuildableRamp__type;
 };
 
 export type faux_12__type = class__type & {

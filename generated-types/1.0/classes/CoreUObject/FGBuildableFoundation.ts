@@ -1,24 +1,19 @@
-import {mDisableSnapOn__type} from '../../common/unassigned';
-
 import {FGBuildable__base__type} from './FGBuildable';
 
 import {
-	decimal_string__type,
-	boolean__type,
-} from '../../../common/common/scalar';
+	common_base__FGBuildableFoundation__base__type,
+	common_base__FGBuildableFoundation__type,
+} from '../../../common/classes/CoreUObject/FGBuildableFoundation';
 
-import {empty_object__type} from '../../../common/common/unassigned';
+export type FGBuildableFoundation__type = FGBuildableFoundation__merged__type;
 
-export type FGBuildableFoundation__type = FGBuildableFoundation__base__type;
+export type FGBuildableFoundation__base__type =
+	FGBuildableFoundation__base__merged__type;
 
-export type FGBuildableFoundation__base__type = FGBuildable__base__type & {
-	mWidth: decimal_string__type;
-	mDepth: decimal_string__type;
-	mHeight: decimal_string__type;
-	mElevation: decimal_string__type;
-	mIsFrame: boolean__type;
-	mDisableSnapOn: empty_object__type | mDisableSnapOn__type;
-	mDisableAttachmentSnapOn:
-		| empty_object__type
-		| mDisableSnapOn__type;
-};
+export type FGBuildableFoundation__base__merged__type =
+	common_base__FGBuildableFoundation__base__type &
+		FGBuildable__base__type;
+
+export type FGBuildableFoundation__merged__type =
+	common_base__FGBuildableFoundation__type &
+		FGBuildableFoundation__base__type;
