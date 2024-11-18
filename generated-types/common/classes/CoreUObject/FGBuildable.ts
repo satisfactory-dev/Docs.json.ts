@@ -18,18 +18,6 @@ import {
 
 export type common_base__FGBuildable__base__type = class__type & {
 	MaxRenderDistance: decimal_string__signed__type;
-	mAlternativeMaterialRecipes:
-		| string
-		| [
-				{
-					mMaterial: Exclude<string, ''>;
-					mRecipe: Exclude<string, ''>;
-				},
-				...{
-					mMaterial: Exclude<string, ''>;
-					mRecipe: Exclude<string, ''>;
-				}[],
-		];
 	mContainsComponents: boolean__type;
 	mIsConsideredForBaseWeightValue: decimal_string__type;
 	mBuildEffectSpeed: decimal_string__type;
