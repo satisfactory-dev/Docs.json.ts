@@ -25,7 +25,7 @@ run({
 	.on('test:fail', (e) => {
 		ac.abort();
 		if (!already_stopped) {
-			console.error(e);
+			process.stderr.write(JSON.stringify(e, null, '\t') + '\n');
 		}
 		already_stopped = true;
 		process.exitCode = 1;
