@@ -29,7 +29,7 @@ for (const version of object_keys(docs.docs_versions)) {
 		);
 		void it('does not throw', async () => {
 			const typed_string_types = [
-				'EditorCurveData',
+				'common-base--EditorCurveData',
 				'color',
 				'color-decimal',
 			];
