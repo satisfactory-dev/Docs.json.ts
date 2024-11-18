@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (471 of 471)
+100.00% Complete (508 of 508)
 
 ## Basic Types
 
@@ -15,7 +15,6 @@
 -   [x] decimal-string--signed (common type)
 -   [x] empty-object (common type)
 -   [x] FGBuildingDescriptor
--   [x] FGGolfCartDispenser
 -   [x] integer-string (common type)
 -   [x] integer-string--signed (common type)
 -   [x] mAspect (common type)
@@ -23,7 +22,6 @@
 -   [x] mDamageTypes (common type)
 -   [x] mDockingRuleSet (common type)
 -   [x] mForm (common type)
--   [x] mLightControlData
 -   [x] mOutputInventoryHandlerData
 -   [x] mPlatformDockingStatus (common type)
 -   [x] NativeClass (common type)
@@ -42,6 +40,7 @@
 -   [x] common-base--FGAmmoTypeProjectile--base (common type)
 -   [x] common-base--FGAmmoTypeSpreadshot (common type)
 -   [x] common-base--FGBuildable--base (common type)
+-   [x] common-base--FGBuildable--circuits-base (common type)
 -   [x] common-base--FGBuildable--consumes-power-base (common type)
 -   [x] common-base--FGBuildable--docking-station-base (common type)
 -   [x] common-base--FGBuildable--extractor-base (common type)
@@ -52,11 +51,14 @@
 -   [x] common-base--FGBuildable--pipeline-flow-accessory (common type)
 -   [x] common-base--FGBuildable--pole--base--no-static (common type)
 -   [x] common-base--FGBuildable--pole--base--with-static (common type)
+-   [x] common-base--FGBuildable--power-switch--base (common type)
 -   [x] common-base--FGBuildable--splitter--base (common type)
 -   [x] common-base--FGBuildable--tiered (common type)
 -   [x] common-base--FGBuildableAttachmentMerger (common type)
 -   [x] common-base--FGBuildableAttachmentSplitter (common type)
+-   [x] common-base--FGBuildableBeamLightweight (common type)
 -   [x] common-base--FGBuildableBlueprintDesigner (common type)
+-   [x] common-base--FGBuildableCircuitSwitch (common type)
 -   [x] common-base--FGBuildableConveyorBelt (common type)
 -   [x] common-base--FGBuildableConveyorBelt--base (common type)
 -   [x] common-base--FGBuildableConveyorLift (common type)
@@ -69,6 +71,9 @@
 -   [x] common-base--FGBuildableFactory--generic (common type)
 -   [x] common-base--FGBuildableFactory--jump-pad (common type)
 -   [x] common-base--FGBuildableFactory--landing-pad (common type)
+-   [x] common-base--FGBuildableFactoryBuilding (common type)
+-   [x] common-base--FGBuildableFactorySimpleProducer (common type)
+-   [x] common-base--FGBuildableFloodlight (common type)
 -   [x] common-base--FGBuildableFoundation (common type)
 -   [x] common-base--FGBuildableFoundation--base (common type)
 -   [x] common-base--FGBuildableFrackingActivator (common type)
@@ -84,6 +89,10 @@
 -   [x] common-base--FGBuildableGeneratorNuclear--mFuel--NuclearFuelRod (common type)
 -   [x] common-base--FGBuildableGeneratorNuclear--mFuel--PlutoniumFuelRod (common type)
 -   [x] common-base--FGBuildableJumppad (common type)
+-   [x] common-base--FGBuildableLadder (common type)
+-   [x] common-base--FGBuildableLightsControlPanel (common type)
+-   [x] common-base--FGBuildableLightSource (common type)
+-   [x] common-base--FGBuildableLightSource--base (common type)
 -   [x] common-base--FGBuildableMAM (common type)
 -   [x] common-base--FGBuildableManufacturer (common type)
 -   [x] common-base--FGBuildableManufacturer--base (common type)
@@ -93,6 +102,7 @@
 -   [x] common-base--FGBuildableManufacturer--smelter (common type)
 -   [x] common-base--FGBuildableManufacturerVariablePower--base (common type)
 -   [x] common-base--FGBuildableManufacturerVariablePower--HadronCollider (common type)
+-   [x] common-base--FGBuildablePassthrough (common type)
 -   [x] common-base--FGBuildablePillarLightweight (common type)
 -   [x] common-base--FGBuildablePipeHyper (common type)
 -   [x] common-base--FGBuildablePipeline (common type)
@@ -103,6 +113,8 @@
 -   [x] common-base--FGBuildablePoleLightweight (common type)
 -   [x] common-base--FGBuildablePowerPole (common type)
 -   [x] common-base--FGBuildablePowerStorage (common type)
+-   [x] common-base--FGBuildablePriorityPowerSwitch (common type)
+-   [x] common-base--FGBuildableRadarTower (common type)
 -   [x] common-base--FGBuildableRailroadSignal (common type)
 -   [x] common-base--FGBuildableRailroadStation (common type)
 -   [x] common-base--FGBuildableRailroadTrack (common type)
@@ -113,6 +125,8 @@
 -   [x] common-base--FGBuildableResourceExtractor--oil-extractor (common type)
 -   [x] common-base--FGBuildableResourceSink (common type)
 -   [x] common-base--FGBuildableResourceSinkShop (common type)
+-   [x] common-base--FGBuildableSnowDispenser (common type)
+-   [x] common-base--FGBuildableSpaceElevator (common type)
 -   [x] common-base--FGBuildableSplitterSmart (common type)
 -   [x] common-base--FGBuildableStorage (common type)
 -   [x] common-base--FGBuildableTradingPost (common type)
@@ -125,6 +139,7 @@
 -   [x] common-base--FGBuildableWall--base (common type)
 -   [x] common-base--FGBuildableWall--base--rectangle (common type)
 -   [x] common-base--FGBuildableWaterPump (common type)
+-   [x] common-base--FGBuildableWidgetSign (common type)
 -   [x] common-base--FGBuildableWire (common type)
 -   [x] common-base--FGBuildingDescriptor (common type)
 -   [x] common-base--FGBuildingDescriptor--ClassName (common type)
@@ -145,6 +160,7 @@
 -   [x] common-base--FGEquipmentStunSpear--xeno-zapper (common type)
 -   [x] common-base--FGEquipmentZipline (common type)
 -   [x] common-base--FGGasMask (common type)
+-   [x] common-base--FGGolfCartDispenser (common type)
 -   [x] common-base--FGHoverPack (common type)
 -   [x] common-base--FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor (common type)
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor (common type)
@@ -178,6 +194,7 @@
 -   [x] common-base--FGWeapon--rifle (common type)
 -   [x] common-base--mChainsawState (common type)
 -   [x] common-base--mDisableSnapOn (common type)
+-   [x] common-base--mLightControlData (common type)
 -   [x] common-base--mSnappedPassthroughs (common type)
 -   [x] common-base--weaponState (common type)
 
@@ -269,6 +286,7 @@
 -   [x] FGBuildableWire
 -   [x] FGBuildable--base
 -   [x] FGBuildable--circuits-base
+-   [x] FGBuildable--circuits-base--merged
 -   [x] FGBuildable--consumes-power-base
 -   [x] FGBuildable--consumes-power-base--update8
 -   [x] FGBuildable--docking-station-base
@@ -284,6 +302,7 @@
 -   [x] FGBuildable--pole--base--no-static--merged
 -   [x] FGBuildable--pole--base--with-static--merged
 -   [x] FGBuildable--power-switch--base
+-   [x] FGBuildable--power-switch--base--merged
 -   [x] FGBuildable--splitter--base
 -   [x] FGBuildable--splitter--base--merged
 -   [x] FGBuildable--tiered
@@ -297,9 +316,17 @@
 
 -   [x] FGBuildableAttachmentSplitter--merged
 
+## FGBuildableBeamLightweight
+
+-   [x] FGBuildableBeamLightweight--merged
+
 ## FGBuildableBlueprintDesigner
 
 -   [x] FGBuildableBlueprintDesigner--merged
+
+## FGBuildableCircuitSwitch
+
+-   [x] FGBuildableCircuitSwitch--merged
 
 ## FGBuildableConveyorBelt
 
@@ -339,6 +366,18 @@
 -   [x] FGBuildableFactory--jump-pad--merged
 -   [x] FGBuildableFactory--landing-pad
 -   [x] FGBuildableFactory--landing-pad--merged
+
+## FGBuildableFactoryBuilding
+
+-   [x] FGBuildableFactoryBuilding--merged
+
+## FGBuildableFactorySimpleProducer
+
+-   [x] FGBuildableFactorySimpleProducer--merged
+
+## FGBuildableFloodlight
+
+-   [x] FGBuildableFloodlight--merged
 
 ## FGBuildableFoundation
 
@@ -382,9 +421,19 @@
 
 -   [x] FGBuildableJumppad--merged
 
+## FGBuildableLadder
+
+-   [x] FGBuildableLadder--merged
+
+## FGBuildableLightsControlPanel
+
+-   [x] FGBuildableLightsControlPanel--merged
+
 ## FGBuildableLightSource
 
 -   [x] FGBuildableLightSource--base
+-   [x] FGBuildableLightSource--base--merged
+-   [x] FGBuildableLightSource--merged
 
 ## FGBuildableMAM
 
@@ -409,6 +458,10 @@
 -   [x] FGBuildableManufacturerVariablePower--base
 -   [x] FGBuildableManufacturerVariablePower--base--merged
 -   [x] FGBuildableManufacturerVariablePower--HadronCollider--merged
+
+## FGBuildablePassthrough
+
+-   [x] FGBuildablePassthrough--merged
 
 ## FGBuildablePillarLightweight
 
@@ -448,6 +501,14 @@
 
 -   [x] FGBuildablePowerStorage--merged
 
+## FGBuildablePriorityPowerSwitch
+
+-   [x] FGBuildablePriorityPowerSwitch--merged
+
+## FGBuildableRadarTower
+
+-   [x] FGBuildableRadarTower--merged
+
 ## FGBuildableRailroadSignal
 
 -   [x] FGBuildableRailroadSignal--merged
@@ -482,6 +543,14 @@
 ## FGBuildableResourceSinkShop
 
 -   [x] FGBuildableResourceSinkShop--merged
+
+## FGBuildableSnowDispenser
+
+-   [x] FGBuildableSnowDispenser--merged
+
+## FGBuildableSpaceElevator
+
+-   [x] FGBuildableSpaceElevator--merged
 
 ## FGBuildableSplitterSmart
 
@@ -525,6 +594,10 @@
 ## FGBuildableWaterPump
 
 -   [x] FGBuildableWaterPump--merged
+
+## FGBuildableWidgetSign
+
+-   [x] FGBuildableWidgetSign--merged
 
 ## FGBuildableWire
 
@@ -584,6 +657,11 @@
 
 -   [x] FGGasMask
 -   [x] FGGasMask--merged
+
+## FGGolfCartDispenser
+
+-   [x] FGGolfCartDispenser
+-   [x] FGGolfCartDispenser--merged
 
 ## FGHoverPack
 

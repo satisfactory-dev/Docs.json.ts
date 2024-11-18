@@ -1,22 +1,15 @@
-import {mLightControlData__type} from '../../common/unassigned';
-
 import {FGBuildable__circuits_base__type} from './FGBuildable';
 
-import {
-	empty_object__type,
-	NativeClass__type,
-} from '../../../common/common/unassigned';
+import {common_base__FGBuildableLightsControlPanel__type} from '../../../common/classes/CoreUObject/FGBuildableLightsControlPanel';
 
-import {boolean__type} from '../../../common/common/scalar';
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableLightsControlPanel__type =
-	FGBuildable__circuits_base__type & {
-		OnLightControlPanelStateChanged: empty_object__type;
-		mLightControlData: mLightControlData__type;
-		mIsEnabled: boolean__type;
-		mOnControlledBuildablesChanged: empty_object__type;
-		mControlledBuildables: '';
-	};
+	FGBuildableLightsControlPanel__merged__type;
+
+export type FGBuildableLightsControlPanel__merged__type =
+	common_base__FGBuildableLightsControlPanel__type &
+		FGBuildable__circuits_base__type;
 
 export type FGBuildableLightsControlPanel__NativeClass =
 	NativeClass__type & {

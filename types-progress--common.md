@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (307 of 307)
+100.00% Complete (332 of 332)
 
 ## Basic Types
 
@@ -65,6 +65,7 @@
 -   [x] common-base--FGAmmoTypeProjectile--base (common type)
 -   [x] common-base--FGAmmoTypeSpreadshot
 -   [x] common-base--FGBuildable--base (common type)
+-   [x] common-base--FGBuildable--circuits-base (common type)
 -   [x] common-base--FGBuildable--consumes-power-base (common type)
 -   [x] common-base--FGBuildable--docking-station-base (common type)
 -   [x] common-base--FGBuildable--extractor-base (common type)
@@ -75,11 +76,14 @@
 -   [x] common-base--FGBuildable--pipeline-flow-accessory (common type)
 -   [x] common-base--FGBuildable--pole--base--no-static (common type)
 -   [x] common-base--FGBuildable--pole--base--with-static (common type)
+-   [x] common-base--FGBuildable--power-switch--base (common type)
 -   [x] common-base--FGBuildable--splitter--base (common type)
 -   [x] common-base--FGBuildable--tiered
 -   [x] common-base--FGBuildableAttachmentMerger
 -   [x] common-base--FGBuildableAttachmentSplitter
+-   [x] common-base--FGBuildableBeamLightweight
 -   [x] common-base--FGBuildableBlueprintDesigner
+-   [x] common-base--FGBuildableCircuitSwitch
 -   [x] common-base--FGBuildableConveyorBelt
 -   [x] common-base--FGBuildableConveyorBelt--base (common type)
 -   [x] common-base--FGBuildableConveyorLift
@@ -92,6 +96,9 @@
 -   [x] common-base--FGBuildableFactory--generic
 -   [x] common-base--FGBuildableFactory--jump-pad
 -   [x] common-base--FGBuildableFactory--landing-pad
+-   [x] common-base--FGBuildableFactoryBuilding
+-   [x] common-base--FGBuildableFactorySimpleProducer
+-   [x] common-base--FGBuildableFloodlight
 -   [x] common-base--FGBuildableFoundation
 -   [x] common-base--FGBuildableFoundation--base (common type)
 -   [x] common-base--FGBuildableFrackingActivator
@@ -107,6 +114,10 @@
 -   [x] common-base--FGBuildableGeneratorNuclear--mFuel--NuclearFuelRod
 -   [x] common-base--FGBuildableGeneratorNuclear--mFuel--PlutoniumFuelRod
 -   [x] common-base--FGBuildableJumppad
+-   [x] common-base--FGBuildableLadder
+-   [x] common-base--FGBuildableLightsControlPanel
+-   [x] common-base--FGBuildableLightSource
+-   [x] common-base--FGBuildableLightSource--base (common type)
 -   [x] common-base--FGBuildableMAM
 -   [x] common-base--FGBuildableManufacturer
 -   [x] common-base--FGBuildableManufacturer--base (common type)
@@ -116,6 +127,7 @@
 -   [x] common-base--FGBuildableManufacturer--smelter
 -   [x] common-base--FGBuildableManufacturerVariablePower--base (common type)
 -   [x] common-base--FGBuildableManufacturerVariablePower--HadronCollider
+-   [x] common-base--FGBuildablePassthrough
 -   [x] common-base--FGBuildablePillarLightweight
 -   [x] common-base--FGBuildablePipeHyper
 -   [x] common-base--FGBuildablePipeline
@@ -126,6 +138,8 @@
 -   [x] common-base--FGBuildablePoleLightweight
 -   [x] common-base--FGBuildablePowerPole
 -   [x] common-base--FGBuildablePowerStorage
+-   [x] common-base--FGBuildablePriorityPowerSwitch
+-   [x] common-base--FGBuildableRadarTower
 -   [x] common-base--FGBuildableRailroadSignal
 -   [x] common-base--FGBuildableRailroadStation
 -   [x] common-base--FGBuildableRailroadTrack
@@ -136,6 +150,8 @@
 -   [x] common-base--FGBuildableResourceExtractor--oil-extractor
 -   [x] common-base--FGBuildableResourceSink
 -   [x] common-base--FGBuildableResourceSinkShop
+-   [x] common-base--FGBuildableSnowDispenser
+-   [x] common-base--FGBuildableSpaceElevator
 -   [x] common-base--FGBuildableSplitterSmart
 -   [x] common-base--FGBuildableStorage
 -   [x] common-base--FGBuildableTradingPost
@@ -148,6 +164,7 @@
 -   [x] common-base--FGBuildableWall--base (common type)
 -   [x] common-base--FGBuildableWall--base--rectangle (common type)
 -   [x] common-base--FGBuildableWaterPump
+-   [x] common-base--FGBuildableWidgetSign
 -   [x] common-base--FGBuildableWire
 -   [x] common-base--FGBuildingDescriptor
 -   [x] common-base--FGBuildingDescriptor--ClassName (common type)
@@ -168,6 +185,7 @@
 -   [x] common-base--FGEquipmentStunSpear--xeno-zapper
 -   [x] common-base--FGEquipmentZipline
 -   [x] common-base--FGGasMask
+-   [x] common-base--FGGolfCartDispenser
 -   [x] common-base--FGHoverPack
 -   [x] common-base--FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor (common type)
 -   [x] common-base--FGItemDescriptor--FGResourceDescriptor (common type)
@@ -202,6 +220,7 @@
 -   [x] common-base--MaterialSlotName
 -   [x] common-base--mChainsawState (common type)
 -   [x] common-base--mDisableSnapOn (common type)
+-   [x] common-base--mLightControlData (common type)
 -   [x] common-base--mSnappedPassthroughs (common type)
 -   [x] common-base--weaponState (common type)
 
@@ -225,7 +244,7 @@
 
 ## mEventType
 
--   [x] mEventType
+-   [x] mEventType (common type)
 -   [x] mEventType--optional-csv (common type)
 
 ## UnrealEngineString
@@ -237,6 +256,6 @@
 -   [x] pitch-yaw-roll (common type)
 -   [x] quaternion
 -   [x] xy (common type)
--   [x] xy--integer
+-   [x] xy--integer (common type)
 -   [x] xyz (common type)
 -   [x] xyz--integer (common type)

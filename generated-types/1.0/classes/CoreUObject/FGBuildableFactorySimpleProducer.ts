@@ -1,17 +1,15 @@
 import {FGBuildable__consumes_power_base__type} from './FGBuildable';
 
-import {decimal_string__type} from '../../../common/common/scalar';
+import {common_base__FGBuildableFactorySimpleProducer__type} from '../../../common/classes/CoreUObject/FGBuildableFactorySimpleProducer';
 
-import {
-	mEventType__type,
-	NativeClass__type,
-} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableFactorySimpleProducer__type =
-	FGBuildable__consumes_power_base__type & {
-		mTimeToProduceItem: decimal_string__type;
-		mEventType: mEventType__type;
-	};
+	FGBuildableFactorySimpleProducer__merged__type;
+
+export type FGBuildableFactorySimpleProducer__merged__type =
+	common_base__FGBuildableFactorySimpleProducer__type &
+		FGBuildable__consumes_power_base__type;
 
 export type FGBuildableFactorySimpleProducer__NativeClass =
 	NativeClass__type & {

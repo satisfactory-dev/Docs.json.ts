@@ -12,12 +12,8 @@ import {
 } from '../../../common/common/scalar';
 
 import {
-	empty_object__type,
-	NativeClass__type,
-} from '../../../common/common/unassigned';
-
-import {
 	common_base__FGBuildable__base__type,
+	common_base__FGBuildable__circuits_base__type,
 	common_base__FGBuildable__docking_station_base__type,
 	common_base__FGBuildable__extractor_base__type,
 	common_base__FGBuildable__extractor_base__shared__type,
@@ -27,9 +23,12 @@ import {
 	common_base__FGBuildable__pipeline_flow_accessory__type,
 	common_base__FGBuildable__pole__base__no_static__type,
 	common_base__FGBuildable__pole__base__with_static__type,
+	common_base__FGBuildable__power_switch__base__type,
 	common_base__FGBuildable__splitter__base__type,
 	common_base__FGBuildable__tiered__type,
 } from '../../../common/classes/CoreUObject/FGBuildable';
+
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildable__base__type =
 	common_base__FGBuildable__base__type & {
@@ -217,11 +216,12 @@ export type FGBuildable__base__type =
 		mAlienOverClockingPitch_RTPC: decimal_string__type;
 	};
 
-export type FGBuildable__circuits_base__type = FGBuildable__base__type & {
-	mOnCircuitsChanged: empty_object__type;
-	mIsBridgeConnected: boolean__type;
-	mConnections: '';
-};
+export type FGBuildable__circuits_base__type =
+	FGBuildable__circuits_base__merged__type;
+
+export type FGBuildable__circuits_base__merged__type =
+	common_base__FGBuildable__circuits_base__type &
+		FGBuildable__base__type;
 
 export type FGBuildable__consumes_power_base__type =
 	FGBuildable__consumes_power_base__version_1__type & FGBuildable__base__type;
@@ -280,17 +280,11 @@ export type FGBuildable__pole__base__with_static__merged__type =
 		FGBuildable__pole__base__no_static__merged__type;
 
 export type FGBuildable__power_switch__base__type =
-	FGBuildable__circuits_base__type & {
-		mTextRenderers: '';
-		bIsSignificant: boolean__type;
-		mMaxCharacters: integer_string__type;
-		mOnIsSwitchOnChanged: empty_object__type;
-		mOnIsConnectedChanged: empty_object__type;
-		mOnBuildingTagChanged: empty_object__type;
-		mIsSwitchOn: boolean__type;
-		mHasBuildingTag: boolean__type;
-		mBuildingTag: '';
-	};
+	FGBuildable__power_switch__base__merged__type;
+
+export type FGBuildable__power_switch__base__merged__type =
+	common_base__FGBuildable__power_switch__base__type &
+		FGBuildable__circuits_base__type;
 
 export type FGBuildable__splitter__base__type =
 	FGBuildable__splitter__base__merged__type;

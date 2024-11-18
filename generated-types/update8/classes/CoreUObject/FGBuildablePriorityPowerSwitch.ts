@@ -1,17 +1,15 @@
 import {FGBuildable__power_switch__base__type} from './FGBuildable';
 
-import {
-	empty_object__type,
-	NativeClass__type,
-} from '../../../common/common/unassigned';
+import {common_base__FGBuildablePriorityPowerSwitch__type} from '../../../common/classes/CoreUObject/FGBuildablePriorityPowerSwitch';
 
-import {integer_string__type} from '../../../common/common/scalar';
+import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildablePriorityPowerSwitch__type =
-	FGBuildable__power_switch__base__type & {
-		mOnPriorityChanged: empty_object__type;
-		mPriority: integer_string__type;
-	};
+	FGBuildablePriorityPowerSwitch__merged__type;
+
+export type FGBuildablePriorityPowerSwitch__merged__type =
+	common_base__FGBuildablePriorityPowerSwitch__type &
+		FGBuildable__power_switch__base__type;
 
 export type FGBuildablePriorityPowerSwitch__NativeClass =
 	NativeClass__type & {

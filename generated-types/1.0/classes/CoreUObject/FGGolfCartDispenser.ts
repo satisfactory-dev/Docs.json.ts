@@ -5,19 +5,17 @@ import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
 import {FGEquipment__base__type} from './FGEquipment';
 
 import {
-	boolean__type,
-	decimal_string__type,
-} from '../../../common/common/scalar';
-
-import {
 	xyz__type,
 	empty_object__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned';
 
-export type FGGolfCartDispenser__type = FGEquipment__base__type & {
+import {decimal_string__type} from '../../../common/common/scalar';
+
+import {common_base__FGGolfCartDispenser__type} from '../../../common/classes/CoreUObject/FGGolfCartDispenser';
+
+export type FGGolfCartDispenser__type = FGGolfCartDispenser__merged__type & {
 	mBuildDisqualifierText: 'Vehicles cannot be built or deployed on top of existing vehicles!';
-	canDisplayDisqualifier: boolean__type;
 	mChristmasMaterial:
 		| 'None'
 		| '/Game/FactoryGame/Buildable/Vehicle/Golfcart/Material/MI_ChrismasCart_Inst.MI_ChrismasCart_Inst';
@@ -42,6 +40,10 @@ export type FGGolfCartDispenser__type = FGEquipment__base__type & {
 		>;
 	};
 };
+
+export type FGGolfCartDispenser__merged__type =
+	common_base__FGGolfCartDispenser__type &
+		FGEquipment__base__type;
 
 export type FGGolfCartDispenser__NativeClass =
 	NativeClass__type & {

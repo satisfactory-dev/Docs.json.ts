@@ -5764,6 +5764,467 @@
 				}
 			}
 		},
+		"common-base--FGBuildable--circuits-base": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--base",
+			"required": [
+				"mOnCircuitsChanged",
+				"mIsBridgeConnected",
+				"mConnections"
+			],
+			"properties": {
+				"mOnCircuitsChanged": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mIsBridgeConnected": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mConnections": {
+					"type": "string",
+					"const": ""
+				}
+			}
+		},
+		"common-base--FGBuildable--power-switch--base": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--circuits-base",
+			"required": [
+				"mTextRenderers",
+				"bIsSignificant",
+				"mMaxCharacters",
+				"mOnIsSwitchOnChanged",
+				"mOnIsConnectedChanged",
+				"mOnBuildingTagChanged",
+				"mIsSwitchOn",
+				"mHasBuildingTag",
+				"mBuildingTag"
+			],
+			"properties": {
+				"mTextRenderers": {
+					"type": "string",
+					"const": ""
+				},
+				"bIsSignificant": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mMaxCharacters": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				},
+				"mOnIsSwitchOnChanged": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mOnIsConnectedChanged": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mOnBuildingTagChanged": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mIsSwitchOn": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mHasBuildingTag": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mBuildingTag": {
+					"type": "string",
+					"const": ""
+				}
+			}
+		},
+		"common-base--FGBuildablePriorityPowerSwitch": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--power-switch--base",
+			"required": [
+				"mOnPriorityChanged",
+				"mPriority",
+				"mOnIsSwitchOnChanged",
+				"mOnIsConnectedChanged",
+				"mOnBuildingTagChanged",
+				"mIsSwitchOn",
+				"mHasBuildingTag",
+				"mBuildingTag",
+				"mOnCircuitsChanged",
+				"mIsBridgeConnected",
+				"mConnections"
+			],
+			"properties": {
+				"mOnPriorityChanged": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mPriority": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				}
+			}
+		},
+		"common-base--FGBuildableCircuitSwitch": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--power-switch--base",
+			"properties": {
+				"ClassName": {
+					"type": "string",
+					"const": "Build_PowerSwitch_C"
+				}
+			}
+		},
+		"common-base--FGBuildableRadarTower": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--consumes-power-base",
+			"required": ["mMapText", "mRevealRadius", "mScannableDescriptors"],
+			"properties": {
+				"mMapText": {
+					"type": "string",
+					"const": "Radar Tower"
+				},
+				"mRevealRadius": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mScannableDescriptors": {
+					"$ref": "common.schema.json#/$defs/UnrealEngineString--array"
+				}
+			}
+		},
+		"common-base--FGBuildableSnowDispenser": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--base"
+		},
+		"common-base--FGBuildableFactorySimpleProducer": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--consumes-power-base",
+			"required": ["mTimeToProduceItem", "mEventType"],
+			"properties": {
+				"mTimeToProduceItem": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mEventType": {
+					"$ref": "common.schema.json#/$defs/mEventType"
+				}
+			}
+		},
+		"common-base--FGBuildableLadder": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--base",
+			"required": [
+				"mWidth",
+				"mMeshHeight",
+				"mMaxSegmentCount",
+				"mNumSegments",
+				"mLadderMeshes"
+			],
+			"properties": {
+				"mWidth": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mMeshHeight": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mMaxSegmentCount": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				},
+				"mNumSegments": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				},
+				"mLadderMeshes": {
+					"type": "string",
+					"const": ""
+				}
+			}
+		},
+		"common-base--FGGolfCartDispenser": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGEquipment--base",
+			"required": [
+				"mBuildDisqualifierText",
+				"canDisplayDisqualifier"
+			],
+			"properties": {
+				"mBuildDisqualifierText": {
+					"type": "string",
+					"minLength": 1
+				},
+				"canDisplayDisqualifier": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				}
+			}
+		},
+		"common-base--FGBuildablePassthrough": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--base",
+			"required": [
+				"mSnappedBuildingThickness",
+				"mMidMeshLength",
+				"mGenerateTunnelCollision",
+				"mEndCapRotation",
+				"mMidMeshRotation",
+				"mEndCapTranslation",
+				"mClearanceHeightMin",
+				"mClearanceThickness",
+				"mCostSegmentLength",
+				"mGeneratedMeshComponents"
+			],
+			"properties": {
+				"mSnappedBuildingThickness": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mMidMeshLength": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mGenerateTunnelCollision": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mEndCapRotation": {
+					"$ref": "common.schema.json#/$defs/pitch-yaw-roll"
+				},
+				"mMidMeshRotation": {
+					"$ref": "common.schema.json#/$defs/pitch-yaw-roll"
+				},
+				"mEndCapTranslation": {
+					"$ref": "common.schema.json#/$defs/xyz"
+				},
+				"mClearanceHeightMin": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mClearanceThickness": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mCostSegmentLength": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mGeneratedMeshComponents": {
+					"type": "string",
+					"const": ""
+				}
+			}
+		},
+		"common-base--mLightControlData": {
+			"type": "string",
+			"minLength": 1,
+			"typed_string": {
+				"required": ["Intensity"],
+				"properties": {
+					"Intensity": {
+						"$ref": "common.schema.json#/$defs/decimal-string"
+					}
+				}
+			}
+		},
+		"common-base--FGBuildableLightsControlPanel": {
+			"type": "object",
+			"$ref": "#/$defs/common-base--FGBuildable--circuits-base",
+			"required": [
+				"OnLightControlPanelStateChanged",
+				"mLightControlData",
+				"mIsEnabled",
+				"mOnControlledBuildablesChanged",
+				"mControlledBuildables"
+			],
+			"properties": {
+				"OnLightControlPanelStateChanged": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mLightControlData": {
+					"$ref": "common.schema.json#/$defs/common-base--mLightControlData"
+				},
+				"mIsEnabled": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mOnControlledBuildablesChanged": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mControlledBuildables": {
+					"type": "string",
+					"const": ""
+				}
+			}
+		},
+		"common-base--FGBuildableLightSource--base": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--base",
+			"required": [
+				"OnBuildableLightSourceStateChanged",
+				"mIsEnabled",
+				"mLightControlData",
+				"mPowerConsumption",
+				"mHasPower",
+				"mIsDay"
+			],
+			"properties": {
+				"OnBuildableLightSourceStateChanged": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mIsEnabled": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mLightControlData": {
+					"$ref": "common.schema.json#/$defs/common-base--mLightControlData"
+				},
+				"mPowerConsumption": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mHasPower": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mIsDay": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				}
+			}
+		},
+		"common-base--FGBuildableLightSource": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildableLightSource--base",
+			"required": [
+				"OnBuildableLightSourceStateChanged",
+				"mIsEnabled",
+				"mLightControlData",
+				"mPowerConsumption",
+				"mHasPower",
+				"mIsDay"
+			],
+			"properties": {
+				"newCustomizationData": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["OverrideColorData"],
+						"properties": {
+							"OverrideColorData": {
+								"type": "string",
+								"minLength": 1,
+								"typed_string": {
+									"required": [
+										"PrimaryColor",
+										"SecondaryColor"
+									],
+									"properties": {
+										"PrimaryColor": {
+											"$ref": "common.schema.json#/$defs/color-decimal"
+										},
+										"SecondaryColor": {
+											"$ref": "common.schema.json#/$defs/color-decimal"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"common-base--FGBuildableFloodlight": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildableLightSource--base",
+			"required": ["mFixtureAngle"],
+			"properties": {
+				"mFixtureAngle": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				}
+			}
+		},
+		"common-base--FGBuildableWidgetSign": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--base",
+			"required": [
+				"mGainSignificanceDistance",
+				"mTextElementToDataMap",
+				"mIconElementToDataMap",
+				"mSignDrawSize",
+				"mPrefabTextElementSaveData",
+				"mPrefabIconElementSaveData",
+				"mForegroundColor",
+				"mBackgroundColor",
+				"mAuxilaryColor",
+				"mEmissive",
+				"mGlossiness",
+				"mDataVersion",
+				"mSignPoles",
+				"mWorldDimensions",
+				"mPoleOffset",
+				"mPoleScale",
+				"mSignToSignOffset"
+			],
+			"properties": {
+				"mGainSignificanceDistance": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mTextElementToDataMap": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mIconElementToDataMap": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mSignDrawSize": {
+					"$ref": "common.schema.json#/$defs/xy--integer"
+				},
+				"mPrefabTextElementSaveData": {
+					"type": "string",
+					"const": ""
+				},
+				"mPrefabIconElementSaveData": {
+					"type": "string",
+					"const": ""
+				},
+				"mForegroundColor": {
+					"$ref": "common.schema.json#/$defs/color-decimal"
+				},
+				"mBackgroundColor": {
+					"$ref": "common.schema.json#/$defs/color-decimal"
+				},
+				"mAuxilaryColor": {
+					"$ref": "common.schema.json#/$defs/color-decimal"
+				},
+				"mEmissive": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mGlossiness": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mDataVersion": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				},
+				"mSignPoles": {
+					"type": "string",
+					"const": ""
+				},
+				"mWorldDimensions": {
+					"$ref": "common.schema.json#/$defs/xy"
+				},
+				"mPoleOffset": {
+					"$ref": "common.schema.json#/$defs/xyz"
+				},
+				"mPoleScale": {
+					"$ref": "common.schema.json#/$defs/xy"
+				},
+				"mSignToSignOffset": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				}
+			}
+		},
+		"common-base--FGBuildableBeamLightweight": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--base",
+			"required": ["mSize", "mDefaultLength", "mMaxLength", "mLength"],
+			"properties": {
+				"mSize": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mDefaultLength": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mMaxLength": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mLength": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				}
+			}
+		},
+		"common-base--FGBuildableFactoryBuilding": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--base"
+		},
+		"common-base--FGBuildableSpaceElevator": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--consumes-power-base"
+		},
 		"faux-1": {
 			"type": "object",
 			"$ref": "#/$defs/class",
@@ -6270,6 +6731,63 @@
 				},
 				"FGChargedWeapon": {
 					"$ref": "#/$defs/common-base--FGChargedWeapon"
+				},
+				"FGBuildable_circuits_base": {
+					"$ref": "#/$defs/common-base--FGBuildable--circuits-base"
+				},
+				"FGBuildable_power_switch_base": {
+					"$ref": "#/$defs/common-base--FGBuildable--power-switch--base"
+				},
+				"FGBuildablePriorityPowerSwitch": {
+					"$ref": "#/$defs/common-base--FGBuildablePriorityPowerSwitch"
+				},
+				"FGBuildableCircuitSwitch": {
+					"$ref": "#/$defs/common-base--FGBuildableCircuitSwitch"
+				},
+				"FGBuildableRadarTower": {
+					"$ref": "#/$defs/common-base--FGBuildableRadarTower"
+				},
+				"FGBuildableSnowDispenser": {
+					"$ref": "#/$defs/common-base--FGBuildableSnowDispenser"
+				},
+				"FGBuildableFactorySimpleProducer": {
+					"$ref": "#/$defs/common-base--FGBuildableFactorySimpleProducer"
+				},
+				"FGBuildableLadder": {
+					"$ref": "#/$defs/common-base--FGBuildableLadder"
+				},
+				"FGGolfCartDispenser": {
+					"$ref": "#/$defs/common-base--FGGolfCartDispenser"
+				},
+				"FGBuildablePassthrough": {
+					"$ref": "#/$defs/common-base--FGBuildablePassthrough"
+				},
+				"mLightControlData": {
+					"$ref": "#/$defs/common-base--mLightControlData"
+				},
+				"FGBuildableLightsControlPanel": {
+					"$ref": "#/$defs/common-base--FGBuildableLightsControlPanel"
+				},
+				"FGBuildableLightSource_base": {
+					"$ref": "#/$defs/common-base--FGBuildableLightSource--base"
+				},
+				"FGBuildableLightSource": {
+					"$ref": "#/$defs/common-base--FGBuildableLightSource"
+				},
+				"FGBuildableFloodlight": {
+					"$ref": "#/$defs/common-base--FGBuildableFloodlight"
+				},
+				"FGBuildableWidgetSign": {
+					"$ref": "#/$defs/common-base--FGBuildableWidgetSign"
+				},
+				"FGBuildableBeamLightweight": {
+					"$ref": "#/$defs/common-base--FGBuildableBeamLightweight"
+				},
+				"FGBuildableFactoryBuilding": {
+					"$ref": "#/$defs/common-base--FGBuildableFactoryBuilding"
+				},
+				"FGBuildableSpaceElevator": {
+					"$ref": "#/$defs/common-base--FGBuildableSpaceElevator"
 				}
 			}
 		},

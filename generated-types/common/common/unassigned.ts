@@ -16,6 +16,8 @@ import {
 	common_base__FGBuildable__extractor_base__shared__type,
 	common_base__FGBuildable__extractor_base__type,
 	common_base__FGBuildable__splitter__base__type,
+	common_base__FGBuildable__circuits_base__type,
+	common_base__FGBuildable__power_switch__base__type,
 	common_base__FGBuildable__pipeline_accessory__base__type,
 	common_base__FGBuildable__pipeline_accessory__type,
 	common_base__FGBuildable__pipeline_flow_accessory__type,
@@ -179,6 +181,39 @@ import {
 } from '../classes/CoreUObject/FGWeapon';
 
 import {common_base__FGChargedWeapon__type} from '../classes/CoreUObject/FGChargedWeapon';
+
+import {common_base__FGBuildablePriorityPowerSwitch__type} from '../classes/CoreUObject/FGBuildablePriorityPowerSwitch';
+
+import {common_base__FGBuildableCircuitSwitch__type} from '../classes/CoreUObject/FGBuildableCircuitSwitch';
+
+import {common_base__FGBuildableRadarTower__type} from '../classes/CoreUObject/FGBuildableRadarTower';
+
+import {common_base__FGBuildableSnowDispenser__type} from '../classes/CoreUObject/FGBuildableSnowDispenser';
+
+import {common_base__FGBuildableFactorySimpleProducer__type} from '../classes/CoreUObject/FGBuildableFactorySimpleProducer';
+
+import {common_base__FGBuildableLadder__type} from '../classes/CoreUObject/FGBuildableLadder';
+
+import {common_base__FGGolfCartDispenser__type} from '../classes/CoreUObject/FGGolfCartDispenser';
+
+import {common_base__FGBuildablePassthrough__type} from '../classes/CoreUObject/FGBuildablePassthrough';
+
+import {common_base__FGBuildableLightsControlPanel__type} from '../classes/CoreUObject/FGBuildableLightsControlPanel';
+
+import {
+	common_base__FGBuildableLightSource__base__type,
+	common_base__FGBuildableLightSource__type,
+} from '../classes/CoreUObject/FGBuildableLightSource';
+
+import {common_base__FGBuildableFloodlight__type} from '../classes/CoreUObject/FGBuildableFloodlight';
+
+import {common_base__FGBuildableWidgetSign__type} from '../classes/CoreUObject/FGBuildableWidgetSign';
+
+import {common_base__FGBuildableBeamLightweight__type} from '../classes/CoreUObject/FGBuildableBeamLightweight';
+
+import {common_base__FGBuildableFactoryBuilding__type} from '../classes/CoreUObject/FGBuildableFactoryBuilding';
+
+import {common_base__FGBuildableSpaceElevator__type} from '../classes/CoreUObject/FGBuildableSpaceElevator';
 
 import {
 	FGSchematic__mUnlocks_mSchematics__mSchematics__type,
@@ -492,6 +527,10 @@ export type common_base__mDisableSnapOn__type =
 			Top: boolean__type;
 	};
 
+export type common_base__mLightControlData__type = {
+	Intensity: decimal_string__type;
+};
+
 export type common_base__mSnappedPassthroughs__type = '';
 
 export type common_base__weaponState__type = 'EWS_Unequipped';
@@ -624,6 +663,25 @@ export type faux_11__type = class__type & {
 	FGWeapon_rebar_gun?: common_base__FGWeapon__rebar_gun__type;
 	FGWeapon_rifle?: common_base__FGWeapon__rifle__type;
 	FGChargedWeapon?: common_base__FGChargedWeapon__type;
+	FGBuildable_circuits_base?: common_base__FGBuildable__circuits_base__type;
+	FGBuildable_power_switch_base?: common_base__FGBuildable__power_switch__base__type;
+	FGBuildablePriorityPowerSwitch?: common_base__FGBuildablePriorityPowerSwitch__type;
+	FGBuildableCircuitSwitch?: common_base__FGBuildableCircuitSwitch__type;
+	FGBuildableRadarTower?: common_base__FGBuildableRadarTower__type;
+	FGBuildableSnowDispenser?: common_base__FGBuildableSnowDispenser__type;
+	FGBuildableFactorySimpleProducer?: common_base__FGBuildableFactorySimpleProducer__type;
+	FGBuildableLadder?: common_base__FGBuildableLadder__type;
+	FGGolfCartDispenser?: common_base__FGGolfCartDispenser__type;
+	FGBuildablePassthrough?: common_base__FGBuildablePassthrough__type;
+	mLightControlData?: common_base__mLightControlData__type;
+	FGBuildableLightsControlPanel?: common_base__FGBuildableLightsControlPanel__type;
+	FGBuildableLightSource_base?: common_base__FGBuildableLightSource__base__type;
+	FGBuildableLightSource?: common_base__FGBuildableLightSource__type;
+	FGBuildableFloodlight?: common_base__FGBuildableFloodlight__type;
+	FGBuildableWidgetSign?: common_base__FGBuildableWidgetSign__type;
+	FGBuildableBeamLightweight?: common_base__FGBuildableBeamLightweight__type;
+	FGBuildableFactoryBuilding?: common_base__FGBuildableFactoryBuilding__type;
+	FGBuildableSpaceElevator?: common_base__FGBuildableSpaceElevator__type;
 };
 
 export type faux_12__type = class__type & {

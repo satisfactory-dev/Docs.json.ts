@@ -5,17 +5,17 @@ import {FGBuildableBlueprintDesigner__base__type} from '../classes/CoreUObject/F
 import {FGBuildableResourceExtractor__miner__base__type} from '../classes/CoreUObject/FGBuildableResourceExtractor';
 
 import {
-	decimal_string__type,
-	boolean__type,
-	integer_string__type,
-} from '../../common/common/scalar';
-
-import {
 	xyz__type,
 	quaternion__type,
 	empty_object__type,
 	common_base__FGBuildableResourceExtractor__miner_mk3__type,
 } from '../../common/common/unassigned';
+
+import {
+	boolean__type,
+	decimal_string__type,
+	integer_string__type,
+} from '../../common/common/scalar';
 
 import {common_base__FGBuildable__consumes_power_base__type} from '../../common/classes/CoreUObject/FGBuildable';
 
@@ -229,10 +229,6 @@ export type mClearanceData__type =
 	];
 
 export type mGasType__type = 'GT_NORMAL' | 'GT_ENERGY';
-
-export type mLightControlData__type = {
-	Intensity: decimal_string__type;
-};
 
 export type Montage_1P__type = UnrealEngineString<
 	'/Script/Engine.AnimMontage',

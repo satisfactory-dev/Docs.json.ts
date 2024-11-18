@@ -3,15 +3,15 @@ import {UnrealEngineString, StringStartsWith} from '../utils/validators';
 import {FGBuildableResourceExtractor__miner__base__type} from '../classes/CoreUObject/FGBuildableResourceExtractor';
 
 import {
+	empty_object__type,
+	common_base__FGBuildableResourceExtractor__miner_mk3__type,
+} from '../../common/common/unassigned';
+
+import {
 	decimal_string__type,
 	integer_string__type,
 	boolean__type,
 } from '../../common/common/scalar';
-
-import {
-	empty_object__type,
-	common_base__FGBuildableResourceExtractor__miner_mk3__type,
-} from '../../common/common/unassigned';
 
 import {common_base__FGBuildable__consumes_power_base__type} from '../../common/classes/CoreUObject/FGBuildable';
 
@@ -128,10 +128,6 @@ export type FGBuildableTradingPost__update8__type =
 		];
 		mNeedPlayingBuildEffectNotification: boolean__type;
 	};
-
-export type mLightControlData__type = {
-	Intensity: decimal_string__type;
-};
 
 export type mOutputInventoryHandlerData__type =
 	empty_object__type;

@@ -71,6 +71,13 @@ export type common_base__FGBuildable__base__type = class__type & {
 	mBlueprintBuildEffectID?: integer_string__signed__type;
 };
 
+export type common_base__FGBuildable__circuits_base__type =
+	common_base__FGBuildable__base__type & {
+		mOnCircuitsChanged: empty_object__type;
+		mIsBridgeConnected: boolean__type;
+		mConnections: '';
+	};
+
 export type common_base__FGBuildable__consumes_power_base__type =
 	common_base__FGBuildable__base__type & {
 		mPowerConsumption: decimal_string__type;
@@ -173,6 +180,19 @@ export type common_base__FGBuildable__pole__base__no_static__type =
 export type common_base__FGBuildable__pole__base__with_static__type =
 	common_base__FGBuildable__pole__base__no_static__type & {
 		mUseStaticHeight: boolean__type;
+	};
+
+export type common_base__FGBuildable__power_switch__base__type =
+	common_base__FGBuildable__circuits_base__type & {
+		mTextRenderers: '';
+		bIsSignificant: boolean__type;
+		mMaxCharacters: integer_string__type;
+		mOnIsSwitchOnChanged: empty_object__type;
+		mOnIsConnectedChanged: empty_object__type;
+		mOnBuildingTagChanged: empty_object__type;
+		mIsSwitchOn: boolean__type;
+		mHasBuildingTag: boolean__type;
+		mBuildingTag: '';
 	};
 
 export type common_base__FGBuildable__splitter__base__type =
