@@ -121,7 +121,7 @@ export class DocsTsGeneratorVersion
 }
 
 export type docs_versions = {
-	version_1_0_0_4?: DocsTsGeneratorVersion,
+	version_1_0_0_7?: DocsTsGeneratorVersion,
 	update8?: DocsTsGeneratorVersion,
 	common: DocsTsGeneratorVersion,
 };
@@ -201,8 +201,8 @@ export class DocsTsGenerator {
 	) {
 		if ('update8' === version) {
 			return this.schema_update8();
-		} else if ('version_1_0_0_4' === version) {
-			return this.schema_version_1_0_0_4();
+		} else if ('version_1_0_0_7' === version) {
+			return this.schema_version_1_0_0_7();
 		} else if ('common' === version) {
 			return this.schema_common();
 		}
@@ -239,13 +239,13 @@ export class DocsTsGenerator {
 	}
 
 	// eslint-disable-next-line max-len
-	async schema_version_1_0_0_4(): Promise<DocsSchemaByVersion['version_1_0_0_4']['en_US']['schema']>
+	async schema_version_1_0_0_7(): Promise<DocsSchemaByVersion['version_1_0_0_7']['en_US']['schema']>
 	{
-		const schema = this.schema_data.version_1_0_0_4.en_US.schema;
+		const schema = this.schema_data.version_1_0_0_7.en_US.schema;
 
 		// eslint-disable-next-line max-len
-		await this.validate_schema<DocsSchemaByVersion['version_1_0_0_4']['en_US']['schema']>(
-			'version_1_0_0_4',
+		await this.validate_schema<DocsSchemaByVersion['version_1_0_0_7']['en_US']['schema']>(
+			'version_1_0_0_7',
 			schema,
 		);
 

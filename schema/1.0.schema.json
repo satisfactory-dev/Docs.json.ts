@@ -2203,7 +2203,7 @@
 								"UnrealEngineString": {
 									"left": "/Script/AkAudio.AkAudioEvent",
 									"right": {
-										"starts_with": "/Game/WwiseAudio/Events/Equipment/JetPack/"
+										"starts_with": "/Game/WwiseAudio/Events/Equipment/HoverPack/"
 									}
 								}
 							}

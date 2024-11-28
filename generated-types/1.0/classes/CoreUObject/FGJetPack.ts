@@ -36,7 +36,7 @@ export type FGJetPack__type = FGJetPack__merged__type & {
 	mUnEquipMontage?: {
 		AudioEvent: UnrealEngineString<
 			'/Script/AkAudio.AkAudioEvent',
-			StringStartsWith<'/Game/WwiseAudio/Events/Equipment/JetPack/'>
+			StringStartsWith<'/Game/WwiseAudio/Events/Equipment/HoverPack/'>
 		>;
 	};
 };
