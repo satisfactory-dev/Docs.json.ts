@@ -8378,22 +8378,22 @@
 					"maxItems": 3,
 					"items": false,
 					"prefixItems": [
-							{
-								"type": "object",
-								"$ref": "#/$defs/FGBuildableFactory--jump-pad",
-								"unevaluatedProperties": false
-							},
-							{
-								"type": "object",
-								"$ref": "#/$defs/FGBuildableFactory--jump-pad",
-								"unevaluatedProperties": false
-							},
-							{
-								"type": "object",
-								"$ref": "#/$defs/FGBuildableFactory--landing-pad",
-								"unevaluatedProperties": false
-							}
-						]
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGBuildableFactory--jump-pad",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGBuildableFactory--jump-pad",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGBuildableFactory--landing-pad",
+							"unevaluatedProperties": false
+						}
+					]
 				}
 			}
 		},
