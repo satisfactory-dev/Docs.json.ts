@@ -6787,10 +6787,7 @@
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--base",
 			"unevaluatedProperties": false,
-			"required": [
-				"SFXLocation",
-				"mSignificanceRange"
-			],
+			"required": ["SFXLocation", "mSignificanceRange"],
 			"properties": {
 				"SFXLocation": {
 					"$ref": "common.schema.json#/$defs/xyz"
