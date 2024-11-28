@@ -2156,7 +2156,42 @@
 		"FGBuildableManufacturer--constructor": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableManufacturer--constructor--merged",
-			"unevaluatedProperties": false
+			"unevaluatedProperties": false,
+			"required": [
+				"mCurrentRecipeCheck",
+				"mPreviousRecipeCheck",
+				"CurrentPotentialConvert"
+			],
+			"properties": {
+				"ClassName": {
+					"type": "string",
+					"const": "Build_ConstructorMk1_C"
+				},
+				"mCurrentRecipeCheck": {
+					"type": "string",
+					"const": ""
+				},
+				"mPreviousRecipeCheck": {
+					"type": "string",
+					"const": ""
+				},
+				"CurrentPotentialConvert": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"minItems": 1,
+						"items": false,
+						"prefixItems": [
+							{
+								"$ref": "common.schema.json#/$defs/integer-string"
+							},
+							{
+								"$ref": "common.schema.json#/$defs/decimal-string"
+							}
+						]
+					}
+				}
+			}
 		},
 		"FGBuildableManufacturerVariablePower--base--merged": {
 			"allOf": [

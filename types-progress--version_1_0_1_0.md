@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (542 of 542)
+100.00% Complete (541 of 541)
 
 ## Basic Types
 
@@ -74,7 +74,6 @@
 -   [x] common-base--FGBuildableDoor--automated (common type)
 -   [x] common-base--FGBuildableDoor--base (common type)
 -   [x] common-base--FGBuildableDroneStation (common type)
--   [x] common-base--FGBuildableFactory--generic (common type)
 -   [x] common-base--FGBuildableFactory--jump-pad (common type)
 -   [x] common-base--FGBuildableFactory--landing-pad (common type)
 -   [x] common-base--FGBuildableFactoryBuilding (common type)
@@ -275,6 +274,7 @@
 -   [x] FGBuildableRamp
 -   [x] FGBuildableResourceSink
 -   [x] FGBuildableResourceSinkShop
+-   [x] FGBuildableSnowCannon
 -   [x] FGBuildableSnowDispenser
 -   [x] FGBuildableSpaceElevator
 -   [x] FGBuildableSplitterSmart
@@ -374,8 +374,6 @@
 
 ## FGBuildableFactory
 
--   [x] FGBuildableFactory--generic
--   [x] FGBuildableFactory--generic--merged
 -   [x] FGBuildableFactory--jump-pad
 -   [x] FGBuildableFactory--jump-pad--merged
 -   [x] FGBuildableFactory--landing-pad
@@ -674,6 +672,7 @@
 
 -   [x] FGEquipmentStunSpear--base
 -   [x] FGEquipmentStunSpear--base--merged
+-   [x] FGEquipmentStunSpear--candy-cane-basher
 -   [x] FGEquipmentStunSpear--merged
 -   [x] FGEquipmentStunSpear--xeno-zapper
 -   [x] FGEquipmentStunSpear--xeno-zapper--merged

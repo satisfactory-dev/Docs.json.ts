@@ -1,6 +1,6 @@
 # Data Progress
 
-100.00% Complete (2842 of 2842)
+100.00% Complete (2851 of 2851)
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGAmmoTypeInstantHit'
 
@@ -35,7 +35,9 @@
 -   [x] Build_HyperTubeWallSupport_C
 -   [x] Build_LookoutTower_C
 -   [x] Build_WreathDecor_C
+-   [x] Build_Snowman_C
 -   [x] Build_XmassTree_C
+-   [x] Build_CandyCaneDecor_C
 -   [x] Build_HyperTubeWallHole_C
 -   [x] Build_PipelineSupportWallHole_C
 -   [x] Build_Workshop_C
@@ -146,8 +148,6 @@
 -   [x] Build_JumpPad_C
 -   [x] Build_JumpPadTilted_C
 -   [x] Build_LandingPad_C
--   [x] Build_Snowman_C
--   [x] Build_CandyCaneDecor_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableFactoryBuilding'
 
@@ -588,6 +588,10 @@
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableResourceSinkShop'
 
 -   [x] Build_ResourceSinkShop_C
+
+## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableSnowCannon'
+
+-   [x] Build_SnowCannon_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableSnowDispenser'
 
@@ -1138,6 +1142,7 @@
 -   [x] Desc_ConveyorAttachmentSplitterSmart_C
 -   [x] Desc_RadarTower_C
 -   [x] Desc_WreathDecor_C
+-   [x] Desc_SnowCannon_C
 -   [x] Desc_SnowDispenser_C
 -   [x] Desc_xmassLights_C
 -   [x] Desc_TreeGiftProducer_C
@@ -1401,8 +1406,6 @@
 -   [x] BP_EquipmentDescriptorRifle_C
 -   [x] BP_EquipmentDescriptorHazmatSuit_C
 -   [x] BP_EquipmentDescriptorNobeliskDetonator_C
--   [x] Desc_GolfCart_C
--   [x] Desc_GolfCartGold_C
 -   [x] BP_ItemDescriptorPortableMiner_C
 -   [x] BP_EquipmentDescriptorShockShank_C
 -   [x] BP_EquipmentDescriptorObjectScanner_C
@@ -1414,6 +1417,8 @@
 -   [x] BP_EqDescZipLine_C
 -   [x] BP_EquipmentDescriptorGasmask_C
 -   [x] BP_EquipmentDescriptorCandyCane_C
+-   [x] Desc_GolfCart_C
+-   [x] Desc_GolfCartGold_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGEquipmentStunSpear'
 
@@ -1453,16 +1458,13 @@
 -   [x] Desc_PackagedRocketFuel_C
 -   [x] Desc_TurboFuel_C
 -   [x] Desc_HazmatFilter_C
--   [x] Desc_CompactedCoal_C
--   [x] Desc_PackagedOilResidue_C
--   [x] Desc_PetroleumCoke_C
--   [x] Desc_PackagedOil_C
 -   [x] Desc_IronRod_C
 -   [x] Desc_Wire_C
 -   [x] Desc_Cable_C
 -   [x] Desc_IronIngot_C
 -   [x] Desc_IronPlateReinforced_C
 -   [x] Desc_Rotor_C
+-   [x] Desc_CompactedCoal_C
 -   [x] Desc_LiquidFuel_C
 -   [x] Desc_RocketFuel_C
 -   [x] Desc_CopperSheet_C
@@ -1504,9 +1506,12 @@
 -   [x] Desc_Rubber_C
 -   [x] Desc_PolymerResin_C
 -   [x] Desc_HeavyOilResidue_C
+-   [x] Desc_PetroleumCoke_C
 -   [x] Desc_QuartzCrystal_C
 -   [x] Desc_SteelIngot_C
 -   [x] Desc_SpaceElevatorPart_2_C
+-   [x] Desc_PackagedOil_C
+-   [x] Desc_PackagedOilResidue_C
 -   [x] Desc_PackagedWater_C
 -   [x] Desc_CopperIngot_C
 -   [x] Desc_AluminumScrap_C
@@ -1548,31 +1553,31 @@
 -   [x] Desc_GunpowderMK2_C
 -   [x] Desc_XmasStar_C
 -   [x] Desc_XmasBallCluster_C
+-   [x] Desc_XmasBranch_C
 -   [x] Desc_XmasWreath_C
 -   [x] Desc_CandyCane_C
 -   [x] Desc_Snow_C
 -   [x] Desc_XmasBow_C
--   [x] Desc_XmasBall3_C
--   [x] Desc_XmasBall4_C
--   [x] Desc_XmasBranch_C
+-   [x] Desc_Gift_C
 -   [x] Desc_XmasBall1_C
 -   [x] Desc_XmasBall2_C
--   [x] Desc_Gift_C
+-   [x] Desc_XmasBall3_C
+-   [x] Desc_XmasBall4_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGItemDescriptorBiomass'
 
--   [x] Desc_Biofuel_C
--   [x] Desc_PackagedBiofuel_C
--   [x] Desc_GenericBiomass_C
 -   [x] Desc_Leaves_C
--   [x] Desc_Mycelia_C
 -   [x] Desc_Wood_C
+-   [x] Desc_GenericBiomass_C
+-   [x] Desc_Biofuel_C
 -   [x] Desc_LiquidBiofuel_C
+-   [x] Desc_PackagedBiofuel_C
 -   [x] Desc_PackagedAlumina_C
 -   [x] Desc_PackagedNitrogenGas_C
 -   [x] Desc_PackagedNitricAcid_C
 -   [x] Desc_PackagedSulfuricAcid_C
 -   [x] Desc_Fabric_C
+-   [x] Desc_Mycelia_C
 -   [x] Desc_HogParts_C
 -   [x] Desc_SpitterParts_C
 -   [x] Desc_StingerParts_C
@@ -2314,17 +2319,18 @@
 -   [x] Recipe_Nobelisk_C
 -   [x] Recipe_NobeliskDetonator_C
 -   [x] Recipe_GunpowderMK2_C
+-   [x] Recipe_XmasWreath_C
 -   [x] Recipe_Snowball_C
 -   [x] Recipe_WreathDecor_C
 -   [x] Recipe_XmasStar_C
+-   [x] Recipe_XmasBall3_C
+-   [x] Recipe_XmasBall4_C
+-   [x] Recipe_SnowCannon_C
 -   [x] Recipe_SnowDispenser_C
--   [x] Recipe_XmasWreath_C
 -   [x] Recipe_xmassLights_C
 -   [x] Recipe_XmasBallCluster_C
 -   [x] Recipe_XmasBall1_C
 -   [x] Recipe_XmasBall2_C
--   [x] Recipe_XmasBall3_C
--   [x] Recipe_XmasBall4_C
 -   [x] Recipe_TreeGiftProducer_C
 -   [x] Recipe_Snowman_C
 -   [x] Recipe_Snow_C
@@ -2467,8 +2473,8 @@
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGResourceDescriptor'
 
 -   [x] Desc_OreIron_C
--   [x] Desc_Coal_C
 -   [x] Desc_Water_C
+-   [x] Desc_Coal_C
 -   [x] Desc_NitrogenGas_C
 -   [x] Desc_Sulfur_C
 -   [x] Desc_SAM_C
@@ -2650,15 +2656,19 @@
 -   [x] Schematic_Helmet_Welder_C
 -   [x] Schematic_Helmet_Scout_C
 -   [x] Schematic_Helmet_Golden_C
+-   [x] Schematic_Helmet_Ficsmas_C
 -   [x] Schematic_Helmet_Default_C
 -   [x] Schematic_Helmet_Bobble_C
 -   [x] Schematic_Helmet_Beta_C
 -   [x] Schematic_Trinket_Somersloop_C
 -   [x] Schematic_Trinket_Nut_C
 -   [x] Schematic_Trinket_NuclearWaste_C
+-   [x] Schematic_Trinket_FicsmasStar_C
+-   [x] Schematic_Trinket_FicsmasBall_C
 -   [x] Schematic_Trinket_FicsitCoupon_C
 -   [x] Schematic_Trinket_Default_C
 -   [x] Schematic_Trinket_Checkit_C
+-   [x] Schematic_Trinket_AirFreshener_C
 -   [x] Schematic_9-5_C
 -   [x] Schematic_9-4_C
 -   [x] Schematic_9-3_C
@@ -3019,6 +3029,7 @@
 -   [x] Schematic_JoelSyntholm_C
 -   [x] Schematic_Huntdown_C
 -   [x] Schematic_Goat_C
+-   [x] Schematic_FicsmasHits_C
 -   [x] Schematic_DeepRockGalactic_C
 -   [x] Schematic_AbsoluteFicsit_C
 -   [x] Schematic_Tutorial1_C

@@ -1,8 +1,8 @@
 import {
-	integer_string__type,
-	decimal_string__type,
 	boolean__type,
+	decimal_string__type,
 	boolean_extended__type,
+	integer_string__type,
 } from '../../common/scalar';
 
 import {
@@ -45,18 +45,7 @@ export type common_base__FGBuildableManufacturer__blender__type =
 	};
 
 export type common_base__FGBuildableManufacturer__constructor__type =
-	common_base__FGBuildableManufacturer__base__type & {
-		ClassName?: 'Build_ConstructorMk1_C';
-		mCurrentRecipeCheck: '';
-		mPreviousRecipeCheck: '';
-		CurrentPotentialConvert: [
-			[integer_string__type, decimal_string__type],
-			...[
-				integer_string__type,
-				decimal_string__type,
-			][],
-		];
-	};
+	common_base__FGBuildableManufacturer__base__type;
 
 export type common_base__FGBuildableManufacturer__packager__type =
 	common_base__FGBuildableManufacturer__base__type & {

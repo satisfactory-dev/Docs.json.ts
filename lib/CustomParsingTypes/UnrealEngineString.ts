@@ -43,7 +43,7 @@ export const UnrealEngineString_regex = /^([^']+)'(?:"([^"]+)"|([^"]+))'$/;
 export const UnrealEngineString_regex_quoted = /^"([^']+)'(?:"([^"]+)"|([^"]+))'"$/;
 
 export const UnrealEngineString_general_regex =
-	`/(?:[A-Z-][A-Za-z0-9_-]+/)+(?:[A-Z][A-Za-z_0-9-]+\\.[A-Z][A-Za-z_0-9-]+(?:_C)?(?::[A-Z][A-Za-z0-9_]+)?|[A-Z0-9][A-Za-z_]+\\.[A-Z0-9][A-Za-z_]+)`;
+	`/(?:[A-Z-][A-Za-z0-9_-]+/)+(?:_?[A-Z][A-Za-z_0-9-]+\\.[A-Z][A-Za-z_0-9-]+(?:_C)?(?::[A-Z][A-Za-z0-9_]+)?|[A-Z0-9][A-Za-z_]+\\.[A-Z0-9][A-Za-z_]+)`;
 
 export type UnrealEngineString_string_or_string_array =
 	| string
@@ -146,7 +146,7 @@ export const UnrealEngineString_schema_definitions = {
 	UnrealEngineString_right_starts_with: {
 		type: 'string',
 		pattern:
-			`^/(?:[A-Z][A-Za-z_\\-.]+/)+(?:[A-Z][A-Za-z_\\-.]+/|[A-Z][A-Za-z_\\-.]+\\.[A-Z][A-Za-z_\\-]+)$`,
+			`^/(?:_?[A-Z][A-Za-z_\\-.]+/)+(?:[A-Z][A-Za-z_\\-.]+/|[A-Z][A-Za-z_\\-.]+\\.[A-Z][A-Za-z_\\-]+)$`,
 	},
 	UnrealEngineString_right: {oneOf: [
 		{

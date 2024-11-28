@@ -370,6 +370,7 @@ export type common_base__FGBuildableResourceExtractor__miner_mk3__type =
 	};
 
 export type common_base__MaterialSlotName__type =
+	| 'uv_checker_material_uv_grid_1024x1024'
 	| 'lambert1'
 	| 'lambert10'
 	| 'lambert9_001'

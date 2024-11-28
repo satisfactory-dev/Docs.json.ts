@@ -4111,42 +4111,7 @@
 		},
 		"common-base--FGBuildableManufacturer--constructor": {
 			"type": "object",
-			"$ref": "common.schema.json#/$defs/common-base--FGBuildableManufacturer--base",
-			"required": [
-				"mCurrentRecipeCheck",
-				"mPreviousRecipeCheck",
-				"CurrentPotentialConvert"
-			],
-			"properties": {
-				"ClassName": {
-					"type": "string",
-					"const": "Build_ConstructorMk1_C"
-				},
-				"mCurrentRecipeCheck": {
-					"type": "string",
-					"const": ""
-				},
-				"mPreviousRecipeCheck": {
-					"type": "string",
-					"const": ""
-				},
-				"CurrentPotentialConvert": {
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"minItems": 1,
-						"items": false,
-						"prefixItems": [
-							{
-								"$ref": "common.schema.json#/$defs/integer-string"
-							},
-							{
-								"$ref": "common.schema.json#/$defs/decimal-string"
-							}
-						]
-					}
-				}
-			}
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildableManufacturer--base"
 		},
 		"common-base--FGBuildableManufacturerVariablePower--base": {
 			"type": "object",
@@ -5127,6 +5092,7 @@
 		"common-base--MaterialSlotName": {
 			"type": "string",
 			"enum": [
+				"uv_checker_material_uv_grid_1024x1024",
 				"lambert1",
 				"lambert10",
 				"lambert9_001",

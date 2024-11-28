@@ -1399,6 +1399,13 @@
 			"type": "object",
 			"$ref": "#/$defs/FGEquipmentStunSpear--merged",
 			"unevaluatedProperties": false,
+			"required": [
+				"mSecondSwingMontageList",
+				"mFirstSwingMontageList",
+				"mEquipMontage",
+				"mStingerMontage",
+				"mUnEquipMontage"
+			],
 			"properties": {
 				"mSecondSwingMontageList": {
 					"type": "string",
@@ -1679,6 +1686,305 @@
 									"left": "/Script/AkAudio.AkAudioEvent",
 									"right": {
 										"starts_with": "/Game/WwiseAudio/Events/Equipment/ShockBaton/"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"FGEquipmentStunSpear--candy-cane-basher": {
+			"type": "object",
+			"$ref": "#/$defs/FGEquipmentStunSpear--merged",
+			"unevaluatedProperties": false,
+			"required": [
+				"mSecondSwingMontageList",
+				"mFirstSwingMontageList",
+				"mEquipMontage",
+				"mStingerMontage",
+				"mUnEquipMontage"
+			],
+			"properties": {
+				"mSecondSwingMontageList": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["Montages"],
+						"properties": {
+							"Montages": {
+								"type": "string",
+								"minLength": 1,
+								"typed_string": {
+									"minItems": 1,
+									"maxItems": 1,
+									"items": {
+										"type": "string",
+										"minLength": 1,
+										"typed_string": {
+											"required": [
+												"Montage_1P",
+												"Montage_3P",
+												"Montage_Equipment",
+												"AudioEvent",
+												"CameraAnim"
+											],
+											"properties": {
+												"Montage_1P": {
+													"$ref": "#/$defs/Montage_1P"
+												},
+												"Montage_3P": {
+													"$ref": "#/$defs/Montage_3P"
+												},
+												"Montage_Equipment": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Equipment/StunSpear/Animation/"
+														}
+													}
+												},
+												"AudioEvent": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/AkAudio.AkAudioEvent",
+														"right": {
+															"starts_with": "/Game/WwiseAudio/Events/Buildable/_Shared/Christmas/CandyCane/"
+														}
+													}
+												},
+												"CameraAnim": {
+													"$ref": "#/$defs/CameraAnim"
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"mEquipMontage": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["Montages"],
+						"properties": {
+							"Montages": {
+								"type": "string",
+								"minLength": 1,
+								"typed_string": {
+									"minItems": 3,
+									"maxItems": 3,
+									"items": {
+										"type": "string",
+										"minLength": 1,
+										"typed_string": {
+											"required": [
+												"Montage_1P",
+												"Montage_3P",
+												"Montage_Equipment",
+												"AudioEvent"
+											],
+											"properties": {
+												"Weight": {
+													"$ref": "common.schema.json#/$defs/decimal-string"
+												},
+												"Filter": {
+													"$ref": "common.schema.json#/$defs/boolean"
+												},
+												"Exclusive": {
+													"$ref": "common.schema.json#/$defs/boolean"
+												},
+												"Montage_1P": {
+													"$ref": "#/$defs/Montage_1P"
+												},
+												"Montage_3P": {
+													"$ref": "#/$defs/Montage_3P"
+												},
+												"Montage_Equipment": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Equipment/StunSpear/Animation/"
+														}
+													}
+												},
+												"AudioEvent": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/AkAudio.AkAudioEvent",
+														"right": {
+															"starts_with": "/Game/WwiseAudio/Events/Buildable/_Shared/Christmas/CandyCane/"
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"mStingerMontage": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["Montages"],
+						"properties": {
+							"Montages": {
+								"type": "string",
+								"minLength": 1,
+								"typed_string": {
+									"minItems": 1,
+									"maxItems": 1,
+									"items": {
+										"type": "string",
+										"minLength": 1,
+										"typed_string": {
+											"required": [
+												"Montage_1P",
+												"Montage_3P",
+												"Montage_Equipment",
+												"AudioEvent",
+												"bSeparate3PAudioEvent",
+												"AudioEvent3P",
+												"CameraAnim"
+											],
+											"properties": {
+												"Montage_1P": {
+													"$ref": "#/$defs/Montage_1P"
+												},
+												"Montage_3P": {
+													"$ref": "#/$defs/Montage_3P"
+												},
+												"Montage_Equipment": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Equipment/StunSpear/Animation/"
+														}
+													}
+												},
+												"AudioEvent": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/AkAudio.AkAudioEvent",
+														"right": {
+															"starts_with": "/Game/WwiseAudio/Events/Buildable/_Shared/Christmas/CandyCane/"
+														}
+													}
+												},
+												"bSeparate3PAudioEvent": {
+													"$ref": "common.schema.json#/$defs/boolean"
+												},
+												"AudioEvent3P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/AkAudio.AkAudioEvent",
+														"right": {
+															"starts_with": "/Game/WwiseAudio/Events/Buildable/_Shared/Christmas/CandyCane/"
+														}
+													}
+												},
+												"CameraAnim": {
+													"$ref": "#/$defs/CameraAnim"
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"mUnEquipMontage": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["AudioEvent"],
+						"properties": {
+							"AudioEvent": {
+								"type": "string",
+								"minLength": 1,
+								"UnrealEngineString": {
+									"left": "/Script/AkAudio.AkAudioEvent",
+									"right": {
+										"starts_with": "/Game/WwiseAudio/Events/Buildable/_Shared/Christmas/CandyCane/"
+									}
+								}
+							}
+						}
+					}
+				},
+				"mFirstSwingMontageList": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["Montages"],
+						"properties": {
+							"Montages": {
+								"type": "string",
+								"minLength": 1,
+								"typed_string": {
+									"minItems": 1,
+									"maxItems": 2,
+									"items": {
+										"type": "string",
+										"minLength": 1,
+										"typed_string": {
+											"required": [
+												"Montage_1P",
+												"Montage_3P",
+												"AudioEvent",
+												"CameraAnim"
+											],
+											"properties": {
+												"Weight": {
+													"$ref": "common.schema.json#/$defs/decimal-string"
+												},
+												"Montage_1P": {
+													"$ref": "#/$defs/Montage_1P"
+												},
+												"Montage_3P": {
+													"$ref": "#/$defs/Montage_3P"
+												},
+												"Montage_Equipment": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/Engine.AnimMontage",
+														"right": {
+															"starts_with": "/Game/FactoryGame/Equipment/StunSpear/Animation/"
+														}
+													}
+												},
+												"AudioEvent": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/AkAudio.AkAudioEvent",
+														"right": {
+															"starts_with": "/Game/WwiseAudio/Events/Buildable/_Shared/Christmas/CandyCane/"
+														}
+													}
+												},
+												"CameraAnim": {
+													"$ref": "#/$defs/CameraAnim"
+												}
+											}
+										}
 									}
 								}
 							}
@@ -3660,21 +3966,6 @@
 		"FGBuildableFactory--landing-pad": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableFactory--landing-pad--merged",
-			"unevaluatedProperties": false
-		},
-		"FGBuildableFactory--generic--merged": {
-			"anyOf": [
-				{
-					"$ref": "common.schema.json#/$defs/common-base--FGBuildableFactory--generic"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable--consumes-power-base"
-				}
-			]
-		},
-		"FGBuildableFactory--generic": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildableFactory--generic--merged",
 			"unevaluatedProperties": false
 		},
 		"FGBuildableWalkway--base--merged": {
@@ -6492,6 +6783,44 @@
 			"$ref": "#/$defs/FGBuildableSnowDispenser--merged",
 			"unevaluatedProperties": false
 		},
+		"FGBuildableSnowCannon": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--base",
+			"unevaluatedProperties": false,
+			"required": [
+				"SFXLocation",
+				"mSignificanceRange"
+			],
+			"properties": {
+				"SFXLocation": {
+					"$ref": "common.schema.json#/$defs/xyz"
+				},
+				"mSignificanceRange": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mAngleLimit": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["Min", "Max"],
+						"properties": {
+							"Min": {
+								"$ref": "common.schema.json#/$defs/integer-string--signed"
+							},
+							"Max": {
+								"$ref": "common.schema.json#/$defs/integer-string"
+							}
+						}
+					}
+				},
+				"mAngleOffset": {
+					"$ref": "common.schema.json#/$defs/integer-string--signed"
+				},
+				"mCannonAngle": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				}
+			}
+		},
 		"FGBuildableFactorySimpleProducer--merged": {
 			"allOf": [
 				{
@@ -7285,8 +7614,8 @@
 		}
 	},
 	"items": false,
-	"minItems": 104,
-	"maxItems": 104,
+	"minItems": 105,
+	"maxItems": 105,
 	"prefixItems": [
 		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGItemDescriptor'",
@@ -7783,41 +8112,6 @@
 			}
 		},
 		{
-			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGItemDescriptorBiomass'",
-			"type": "object",
-			"$ref": "common.schema.json#/$defs/NativeClass",
-			"unevaluatedProperties": false,
-			"properties": {
-				"Classes": {
-					"type": "array",
-					"minItems": 1,
-					"items": {
-						"type": "object",
-						"$ref": "#/$defs/FGItemDescriptorBiomass",
-						"unevaluatedProperties": false
-					}
-				}
-			}
-		},
-		{
-			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGGolfCartDispenser'",
-			"type": "object",
-			"$ref": "common.schema.json#/$defs/NativeClass",
-			"unevaluatedProperties": false,
-			"properties": {
-				"Classes": {
-					"type": "array",
-					"minItems": 2,
-					"maxItems": 2,
-					"items": {
-						"type": "object",
-						"$ref": "#/$defs/FGGolfCartDispenser",
-						"unevaluatedProperties": false
-					}
-				}
-			}
-		},
-		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGPortableMinerDispenser'",
 			"type": "object",
 			"$ref": "common.schema.json#/$defs/NativeClass",
@@ -8008,6 +8302,23 @@
 			}
 		},
 		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGItemDescriptorBiomass'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"$ref": "#/$defs/FGItemDescriptorBiomass",
+						"unevaluatedProperties": false
+					}
+				}
+			}
+		},
+		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGEquipmentStunSpear'",
 			"type": "object",
 			"$ref": "common.schema.json#/$defs/NativeClass",
@@ -8031,7 +8342,7 @@
 						},
 						{
 							"type": "object",
-							"$ref": "#/$defs/FGEquipmentStunSpear",
+							"$ref": "#/$defs/FGEquipmentStunSpear--candy-cane-basher",
 							"unevaluatedProperties": false
 						}
 					]
@@ -8063,10 +8374,15 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"minItems": 5,
-					"maxItems": 5,
-					"items": {
-						"oneOf": [
+					"minItems": 3,
+					"maxItems": 3,
+					"items": false,
+					"prefixItems": [
+							{
+								"type": "object",
+								"$ref": "#/$defs/FGBuildableFactory--jump-pad",
+								"unevaluatedProperties": false
+							},
 							{
 								"type": "object",
 								"$ref": "#/$defs/FGBuildableFactory--jump-pad",
@@ -8076,14 +8392,8 @@
 								"type": "object",
 								"$ref": "#/$defs/FGBuildableFactory--landing-pad",
 								"unevaluatedProperties": false
-							},
-							{
-								"type": "object",
-								"$ref": "#/$defs/FGBuildableFactory--generic",
-								"unevaluatedProperties": false
 							}
 						]
-					}
 				}
 			}
 		},
@@ -9182,6 +9492,24 @@
 			}
 		},
 		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableSnowCannon'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"$ref": "#/$defs/FGBuildableSnowCannon",
+						"unevaluatedProperties": false
+					},
+					"minItems": 1,
+					"maxItems": 1
+				}
+			}
+		},
+		{
 			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableFactorySimpleProducer'",
 			"type": "object",
 			"$ref": "common.schema.json#/$defs/NativeClass",
@@ -9214,6 +9542,24 @@
 					},
 					"minItems": 1,
 					"maxItems": 1
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGGolfCartDispenser'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 2,
+					"maxItems": 2,
+					"items": {
+						"type": "object",
+						"$ref": "#/$defs/FGGolfCartDispenser",
+						"unevaluatedProperties": false
+					}
 				}
 			}
 		},
