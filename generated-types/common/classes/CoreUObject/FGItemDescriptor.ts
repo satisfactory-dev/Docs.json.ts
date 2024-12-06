@@ -11,6 +11,7 @@ import {
 	color__type,
 	mForm__type,
 	UnrealEngineString__array__type,
+	empty_object__type,
 	class__type,
 } from '../../common/unassigned';
 
@@ -42,6 +43,10 @@ export type common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescr
 					...{
 						Value: integer_string__type;
 					}[],
+			]
+			| [
+					empty_object__type,
+					...empty_object__type[],
 			];
 		mMenuPriority: decimal_string__type;
 		mFluidColor: color__type;

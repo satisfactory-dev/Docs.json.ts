@@ -447,6 +447,16 @@
 									}
 								}
 							}
+						},
+						{
+							"type": "string",
+							"minLength": 1,
+							"typed_string": {
+								"minItems": 1,
+								"items": {
+									"$ref": "common.schema.json#/$defs/empty-object"
+								}
+							}
 						}
 					]
 				},

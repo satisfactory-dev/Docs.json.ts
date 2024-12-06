@@ -77,7 +77,7 @@
           export const docs = new DocsTsGenerator({
           	ajv,
           	docs_versions: {
-          		version_1_0_1_1: new DocsTsGeneratorVersion({
+          		version_1_0_1_2: new DocsTsGeneratorVersion({
           			docs_path: `${__dirname}/../data/1.0/en-US.json`,
           			cache_path: `${__dirname}/../data/1.0/`,
           			UnrealEngineString_quote_mode: 'double',
