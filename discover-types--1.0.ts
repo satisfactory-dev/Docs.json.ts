@@ -24,8 +24,8 @@ const __dirname = __dirname_from_meta(import.meta);
 
 const perf = setup_PerformanceObserver();
 
-const version = 'version_1_0_1_2';
-const sub_path = versions.version_1_0_1_2;
+const version = 'version_1_0_1_3';
+const sub_path = versions.version_1_0_1_3;
 try {
 	performance.mark('start');
 	const bar = new TypeDefinitionWriter(
