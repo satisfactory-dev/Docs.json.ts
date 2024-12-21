@@ -24,8 +24,8 @@ const __dirname = __dirname_from_meta(import.meta);
 
 setup_PerformanceObserver();
 
-const version = 'version_1_0_1_3';
-const sub_path = versions.version_1_0_1_3;
+const version = 'version_1_0_1_4';
+const sub_path = versions.version_1_0_1_4;
 
 try {
 	await docs.get(version);
