@@ -413,6 +413,48 @@ export class UnrealEngineString {
 						),
 					],
 					[
+						ts.factory.createIfStatement(
+							ts.factory.createBinaryExpression(
+								ts.factory.createCallExpression(
+									create_property_access(
+										ts.factory.createIdentifier('value'),
+										'startsWith',
+									),
+									undefined,
+									[ts.factory.createStringLiteral('"')],
+								),
+								ts.SyntaxKind.AmpersandAmpersandToken,
+								ts.factory.createCallExpression(
+									create_property_access(
+										ts.factory.createIdentifier('value'),
+										'endsWith',
+									),
+									undefined,
+									[ts.factory.createStringLiteral('"')],
+								),
+							),
+							// eslint-disable-next-line max-len
+							ts.factory.createExpressionStatement(ts.factory.createBinaryExpression(
+								ts.factory.createIdentifier('value'),
+								ts.SyntaxKind.EqualsToken,
+								ts.factory.createCallExpression(
+									create_property_access(
+										ts.factory.createIdentifier('value'),
+										'substring',
+									),
+									undefined,
+									[
+										ts.factory.createNumericLiteral(1),
+										ts.factory.createBinaryExpression(
+											// eslint-disable-next-line max-len
+											create_property_access(ts.factory.createIdentifier('value'), 'length'),
+											ts.SyntaxKind.MinusToken,
+											ts.factory.createNumericLiteral(1),
+										),
+									],
+								),
+							)),
+						),
 						create_const_statement(variable(
 							'result',
 							ts.factory.createCallExpression(

@@ -25,6 +25,8 @@ export class UnrealEngineString<
 		left extends string = string,
 		right extends string = string,
 	>(value: string): UnrealEngineString<left, right> {
+		if (value.startsWith('"') && value.endsWith('"'))
+			value = value.substring(1, value.length - 1);
 		const result = /^([^']+)'(?:"([^"]+)"|([^"]+))'$/.exec(value);
 		if (!result) throw new Error(`Not an UnrealEngineString (${value})`);
 		return new UnrealEngineString<left, right>(
