@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (541 of 541)
+100.00% Complete (543 of 543)
 
 ## Basic Types
 
@@ -123,6 +123,7 @@
 -   [x] common-base--FGBuildableRailroadSignal (common type)
 -   [x] common-base--FGBuildableRailroadStation (common type)
 -   [x] common-base--FGBuildableRailroadTrack (common type)
+-   [x] common-base--FGBuildableRailroadTrack--properties
 -   [x] common-base--FGBuildableRamp (common type)
 -   [x] common-base--FGBuildableResourceExtractor--miner (common type)
 -   [x] common-base--FGBuildableResourceExtractor--miner--base (common type)
@@ -147,6 +148,7 @@
 -   [x] common-base--FGBuildableWidgetSign (common type)
 -   [x] common-base--FGBuildableWire (common type)
 -   [x] common-base--FGBuildingDescriptor (common type)
+-   [x] common-base--FGBuildingDescriptor--base
 -   [x] common-base--FGBuildingDescriptor--ClassName (common type)
 -   [x] common-base--FGBuildingDescriptor--mForm (common type)
 -   [x] common-base--FGBuildingDescriptor--mSubCategories (common type)

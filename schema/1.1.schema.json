@@ -1,0 +1,158 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "1.1.schema.json",
+	"type": "array",
+	"$defs": {
+		"FGBuildable--base": {
+			"type": "object",
+			"$ref": "1.0.schema.json#/$defs/FGBuildable--base",
+			"required": [
+				"mOnBuildableReturnedToLightweightPool",
+				"mInteractWidgetSoftClass"
+			],
+			"properties": {
+				"mOnBuildableReturnedToLightweightPool": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mInteractWidgetSoftClass": {
+					"oneOf": [
+						{
+							"type": "string",
+							"const": "None"
+						},
+						{
+							"type": "string",
+							"string_starts_with": "/Game/FactoryGame/Buildable/"
+						}
+					]
+				}
+			}
+		},
+		"FGBuildableRailroadTrack--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableRailroadTrack"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableRailroadTrack": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableRailroadTrack--merged",
+			"unevaluatedProperties": false
+		},
+		"FGBuildableBeam--merged": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableBeamLightweight--merged"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableBeam--base"
+				}
+			]
+		},
+		"FGBuildableBeam--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--base",
+			"required": [
+				"bTiledMesh"
+			],
+			"properties": {
+				"bTiledMesh": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				}
+			}
+		},
+		"FGBuildableBeam": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableBeam--merged",
+			"unevaluatedProperties": false
+		},
+		"FGBuildingDescriptor--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildingDescriptor--base"
+				},
+				{
+					"$ref": "1.0.schema.json#/$defs/FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor"
+				}
+			]
+		},
+		"FGBuildingDescriptor--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildingDescriptor--merged",
+			"required": [
+				"mUsesDistanceForZooping"
+			],
+			"properties": {
+				"mUsesDistanceForZooping": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				}
+			}
+		},
+		"FGBuildingDescriptor": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildingDescriptor--base",
+			"unevaluatedProperties": false
+		}
+	},
+	"items": false,
+	"minItems": 112,
+	"maxItems": 112,
+	"prefixItems": [
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableRailroadTrack'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"$ref": "#/$defs/FGBuildableRailroadTrack",
+						"unevaluatedProperties": false
+					},
+					"minItems": 1,
+					"maxItems": 1
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableBeam'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"$ref": "#/$defs/FGBuildableBeam",
+						"unevaluatedProperties": false
+					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildingDescriptor'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"$ref": "#/$defs/FGBuildingDescriptor",
+						"unevaluatedProperties": false
+					}
+				}
+			}
+		}
+	]
+}

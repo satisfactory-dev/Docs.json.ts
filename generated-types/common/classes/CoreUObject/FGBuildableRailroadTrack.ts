@@ -7,13 +7,17 @@ import {
 	integer_string__type,
 } from '../../common/scalar';
 
-import {empty_object__type} from '../../common/unassigned';
+import {empty_object__type, class__type} from '../../common/unassigned';
 
 import {common_base__FGBuildable__base__type} from './FGBuildable';
 
 export type common_base__FGBuildableRailroadTrack__type =
-	common_base__FGBuildable__base__type & {
-		ClassName?: 'Build_RailroadTrack_C';
+	common_base__FGBuildable__base__type &
+		common_base__FGBuildableRailroadTrack__properties__type;
+
+export type common_base__FGBuildableRailroadTrack__properties__type =
+	class__type & {
+		ClassName: 'Build_RailroadTrack_C';
 		mMeshLength: decimal_string__type;
 		mConnections: [
 			UnrealEngineString<

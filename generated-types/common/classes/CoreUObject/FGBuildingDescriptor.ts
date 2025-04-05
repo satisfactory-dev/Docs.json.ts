@@ -3,8 +3,12 @@ import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
 import {common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type} from './FGItemDescriptor';
 
 export type common_base__FGBuildingDescriptor__type =
-	common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type & {
+	common_base__FGBuildingDescriptor__base__type & {
 		ClassName: common_base__FGBuildingDescriptor__ClassName__type;
+	};
+
+export type common_base__FGBuildingDescriptor__base__type =
+	common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type & {
 		mForm: common_base__FGBuildingDescriptor__mForm__type;
 		mSubCategories: common_base__FGBuildingDescriptor__mSubCategories__type;
 	};

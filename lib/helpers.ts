@@ -35,6 +35,11 @@ export const docs = new DocsTsGenerator({
 			cache_path: `${__dirname}/../data/common/`,
 			UnrealEngineString_quote_mode: 'original',
 		}),
+		version_1_1_0_1: new DocsTsGeneratorVersion({
+			docs_path: `${__dirname}/../data/1.1/en-US.json`,
+			cache_path: `${__dirname}/../data/1.1/`,
+			UnrealEngineString_quote_mode: 'double',
+		}),
 		version_1_0_1_4: new DocsTsGeneratorVersion({
 			docs_path: `${__dirname}/../data/1.0/en-US.json`,
 			cache_path: `${__dirname}/../data/1.0/`,

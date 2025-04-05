@@ -572,19 +572,26 @@
 				}
 			}
 		},
-		"common-base--FGBuildingDescriptor": {
+		"common-base--FGBuildingDescriptor--base": {
 			"type": "object",
 			"$ref": "common.schema.json#/$defs/common-base--FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor",
-			"required": ["mForm", "mSubCategories", "ClassName"],
+			"required": ["mForm", "mSubCategories"],
 			"properties": {
-				"ClassName": {
-					"$ref": "common.schema.json#/$defs/common-base--FGBuildingDescriptor--ClassName"
-				},
 				"mForm": {
 					"$ref": "common.schema.json#/$defs/common-base--FGBuildingDescriptor--mForm"
 				},
 				"mSubCategories": {
 					"$ref": "common.schema.json#/$defs/common-base--FGBuildingDescriptor--mSubCategories"
+				}
+			}
+		},
+		"common-base--FGBuildingDescriptor": {
+			"type": "object",
+			"$ref": "#/$defs/common-base--FGBuildingDescriptor--base",
+			"required": ["ClassName"],
+			"properties": {
+				"ClassName": {
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildingDescriptor--ClassName"
 				}
 			}
 		},
@@ -2025,10 +2032,11 @@
 				}
 			}
 		},
-		"common-base--FGBuildableRailroadTrack": {
+		"common-base--FGBuildableRailroadTrack--properties": {
 			"type": "object",
-			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--base",
+			"$ref": "common.schema.json#/$defs/class",
 			"required": [
+				"ClassName",
 				"mMeshLength",
 				"mConnections",
 				"mIsOwnedByPlatform",
@@ -2083,6 +2091,16 @@
 					"$ref": "common.schema.json#/$defs/integer-string"
 				}
 			}
+		},
+		"common-base--FGBuildableRailroadTrack": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildable--base"
+				},
+				{
+					"$ref": "#/$defs/common-base--FGBuildableRailroadTrack--properties"
+				}
+			]
 		},
 		"common-base--FGBuildableWire": {
 			"type": "object",

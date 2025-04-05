@@ -19,7 +19,7 @@ clean:
 
 generate: lint generate--skip-checks generate--post-build
 
-generate--skip-checks: build generate--skip-checks--common generate--skip-checks--update8 generate--skip-checks--version-1
+generate--skip-checks: build generate--skip-checks--common generate--skip-checks--update8 generate--skip-checks--version-1-0 generate--skip-checks--version-1-1
 
 generate--skip-checks--common:
 	@echo 'running ./generate-common-types.ts'
@@ -29,9 +29,13 @@ generate--skip-checks--update8:
 	@echo 'running ./discover-types.ts'
 	@./node_modules/.bin/ts-node ./discover-types.ts
 
-generate--skip-checks--version-1:
+generate--skip-checks--version-1-0:
 	@echo 'running ./discover-types--1.0.ts'
 	@./node_modules/.bin/ts-node ./discover-types--1.0.ts
+
+generate--skip-checks--version-1-1:
+	@echo 'running ./discover-types--1.1.ts'
+	@./node_modules/.bin/ts-node ./discover-types--1.1.ts
 
 generate--post-build:
 	@NODE_OPTIONS='' ./node_modules/.bin/tsc --project ./tsconfig.generated-types-check.json
