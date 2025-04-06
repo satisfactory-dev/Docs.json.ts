@@ -5522,9 +5522,8 @@
 				}
 			]
 		},
-		"common-base--FGAmmoTypeSpreadshot": {
+		"common-base--FGAmmoTypeSpreadshot--pre-1.1": {
 			"type": "object",
-			"$ref": "common.schema.json#/$defs/common-base--FGAmmoTypeProjectile--base",
 			"required": [
 				"SpreadTrail_Velocity",
 				"mNumShots",
@@ -5553,6 +5552,16 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
+		},
+		"common-base--FGAmmoTypeSpreadshot": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGAmmoTypeProjectile--base"
+				},
+				{
+					"$ref": "#/$defs/common-base--FGAmmoTypeSpreadshot--pre-1.1"
+				}
+			]
 		},
 		"common-base--FGAmmoTypeInstantHit--base": {
 			"type": "object",

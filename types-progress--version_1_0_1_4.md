@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (545 of 545)
+100.00% Complete (547 of 547)
 
 ## Basic Types
 
@@ -22,6 +22,7 @@
 -   [x] integer-string--signed (common type)
 -   [x] mAspect (common type)
 -   [x] mBatteryStatus (common type)
+-   [x] mClassToScanFor
 -   [x] mClearanceData
 -   [x] mDamageTypes (common type)
 -   [x] mDockingRuleSet (common type)
@@ -47,6 +48,7 @@
 -   [x] common-base--FGAmmoTypeProjectile--base--pre-1.1
 -   [x] common-base--FGAmmoTypeProjectile--pre-1.1
 -   [x] common-base--FGAmmoTypeSpreadshot (common type)
+-   [x] common-base--FGAmmoTypeSpreadshot--pre-1.1
 -   [x] common-base--FGBuildable--base (common type)
 -   [x] common-base--FGBuildable--circuits-base (common type)
 -   [x] common-base--FGBuildable--consumes-power-base (common type)

@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (338 of 338)
+100.00% Complete (339 of 339)
 
 ## Basic Types
 
@@ -68,6 +68,7 @@
 -   [x] common-base--FGAmmoTypeProjectile--base--pre-1.1
 -   [x] common-base--FGAmmoTypeProjectile--pre-1.1
 -   [x] common-base--FGAmmoTypeSpreadshot
+-   [x] common-base--FGAmmoTypeSpreadshot--pre-1.1
 -   [x] common-base--FGBuildable--base (common type)
 -   [x] common-base--FGBuildable--circuits-base (common type)
 -   [x] common-base--FGBuildable--consumes-power-base (common type)

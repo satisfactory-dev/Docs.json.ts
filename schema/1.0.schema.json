@@ -7,6 +7,25 @@
 			"type": "string",
 			"enum": ["GT_NORMAL", "GT_ENERGY"]
 		},
+		"mClassToScanFor": {
+			"oneOf": [
+				{
+					"$ref": "common.schema.json#/$defs/None"
+				},
+				{
+					"type": "string",
+					"string_starts_with": "/Game/FactoryGame/Resource/Environment/"
+				},
+				{
+					"type": "string",
+					"string_starts_with": "/Game/FactoryGame/World/Benefit/"
+				},
+				{
+					"type": "string",
+					"string_starts_with": "/Game/FactoryGame/Prototype/WAT/"
+				}
+			]
+		},
 		"FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor": {
 			"type": "object",
 			"$ref": "common.schema.json#/$defs/common-base--FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor",
@@ -21,23 +40,7 @@
 					"$ref": "#/$defs/mGasType"
 				},
 				"mClassToScanFor": {
-					"oneOf": [
-						{
-							"$ref": "common.schema.json#/$defs/None"
-						},
-						{
-							"type": "string",
-							"string_starts_with": "/Game/FactoryGame/Resource/Environment/"
-						},
-						{
-							"type": "string",
-							"string_starts_with": "/Game/FactoryGame/World/Benefit/"
-						},
-						{
-							"type": "string",
-							"string_starts_with": "/Game/FactoryGame/Prototype/WAT/"
-						}
-					]
+					"$ref": "#/$defs/mClassToScanFor"
 				},
 				"mIsAlienItem": {
 					"$ref": "common.schema.json#/$defs/boolean"

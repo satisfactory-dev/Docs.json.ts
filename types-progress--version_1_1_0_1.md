@@ -1,6 +1,6 @@
 # Types Progress
 
-88.57% Complete (31 of 35)
+81.58% Complete (31 of 38)
 
 ## Basic Types
 
@@ -35,6 +35,7 @@
 
 ## FGAmmoType
 
+-   [ ] FGAmmoTypeSpreadshot
 -   [x] FGAmmoTypeProjectile
 -   [ ] FGAmmoTypeProjectile--base
 
@@ -42,6 +43,11 @@
 
 -   [ ] FGAmmoTypeProjectile--base--merged
 -   [ ] FGAmmoTypeProjectile--merged
+
+## FGAmmoTypeSpreadshot
+
+-   [ ] FGAmmoTypeSpreadshot--base
+-   [ ] FGAmmoTypeSpreadshot--merged
 
 ## FGBuildable
 

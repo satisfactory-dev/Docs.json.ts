@@ -457,6 +457,15 @@ export type common_base__FGAmmoTypeProjectile__pre_1_1__type = {
 		];
 };
 
+export type common_base__FGAmmoTypeSpreadshot__pre_1_1__type = {
+	SpreadTrail_Velocity: decimal_string__type;
+	mNumShots: {
+		Min: integer_string__type;
+		Max: integer_string__type;
+	};
+	mSpreadAngleDegrees: decimal_string__type;
+};
+
 export type common_base__FGBuildableResourceExtractor__miner_mk3__type =
 	common_base__FGBuildableResourceExtractor__miner__base__type & {
 		mInternalMiningState_0: 'NewEnumerator0';

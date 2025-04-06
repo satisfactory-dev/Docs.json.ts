@@ -268,6 +268,81 @@
 		"FGAmmoTypeProjectile": {
 			"type": "object",
 			"$ref": "1.1.schema.json#/$defs/FGAmmoTypeProjectile--merged"
+		},
+		"FGAmmoTypeSpreadshot--base": {
+			"type": "object",
+			"required": [
+				"mAmmoDamageFalloff",
+				"mFiringSounds",
+				"mAudioEventsCache",
+				"mGasType",
+				"mIsAlienItem",
+				"mClassToScanFor",
+				"mNeedsPickUpMarker"
+			],
+			"properties": {
+				"mAmmoDamageFalloff": {
+					"$ref": "1.1.schema.json#/$defs/EditorCurveData"
+				},
+				"mFiringSounds": {
+					"oneOf": [
+						{
+							"type": "string",
+							"const": ""
+						},
+						{
+							"type": "string",
+							"minLength": 1,
+							"typed_string": {
+								"minItems": 1,
+								"items": {
+									"type": "string",
+									"enum": [
+										"/Game/WwiseAudio/Events/Equipment/RebarGun/Play_RebarGun_Scatter_Fire.Play_RebarGun_Scatter_Fire"
+									]
+								}
+							}
+						}
+					]
+				},
+				"mAudioEventsCache": {
+					"oneOf": [
+						{
+							"$ref": "common.schema.json#/$defs/empty-object"
+						}
+					]
+				},
+				"mGasType": {
+					"$ref": "1.0.schema.json#/$defs/mGasType"
+				},
+				"mIsAlienItem": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mClassToScanFor": {
+					"$ref": "1.0.schema.json#/$defs/mClassToScanFor"
+				},
+				"mNeedsPickUpMarker": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				}
+			}
+		},
+		"FGAmmoTypeSpreadshot--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGAmmoTypeProjectile--base--pre-1.1"
+				},
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGAmmoTypeSpreadshot--pre-1.1"
+				},
+				{
+					"$ref": "1.1.schema.json#/$defs/FGAmmoTypeSpreadshot--base"
+				}
+			]
+		},
+		"FGAmmoTypeSpreadshot": {
+			"type": "object",
+			"$ref": "1.1.schema.json#/$defs/FGAmmoTypeSpreadshot--merged",
+			"unevaluatedProperties": false
 		}
 	},
 	"items": false,
@@ -357,6 +432,41 @@
 						"$ref": "#/$defs/FGAmmoTypeProjectile",
 						"unevaluatedProperties": false
 					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGEquipmentDescriptor'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"$ref": "1.0.schema.json#/$defs/FGEquipmentDescriptor",
+						"unevaluatedProperties": false
+					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGAmmoTypeSpreadshot'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"$ref": "1.1.schema.json#/$defs/FGAmmoTypeSpreadshot",
+						"unevaluatedProperties": false
+					},
+					"minItems": 1,
+					"maxItems": 1
 				}
 			}
 		}

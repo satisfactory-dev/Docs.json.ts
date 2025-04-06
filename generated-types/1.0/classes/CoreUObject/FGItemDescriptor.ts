@@ -1,13 +1,6 @@
-import {mGasType__type} from '../../common/unassigned';
-
-import {StringStartsWith} from '../../utils/validators';
+import {mGasType__type, mClassToScanFor__type} from '../../common/unassigned';
 
 import {boolean__type} from '../../../common/common/scalar';
-
-import {
-	None__type,
-	NativeClass__type,
-} from '../../../common/common/unassigned';
 
 import {
 	common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type,
@@ -15,14 +8,12 @@ import {
 	common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type,
 } from '../../../common/classes/CoreUObject/FGItemDescriptor';
 
+import {NativeClass__type} from '../../../common/common/unassigned';
+
 export type FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type =
 	common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type & {
 		mGasType: mGasType__type;
-		mClassToScanFor:
-			| None__type
-			| StringStartsWith<'/Game/FactoryGame/Resource/Environment/'>
-			| StringStartsWith<'/Game/FactoryGame/World/Benefit/'>
-			| StringStartsWith<'/Game/FactoryGame/Prototype/WAT/'>;
+		mClassToScanFor: mClassToScanFor__type;
 		mIsAlienItem: boolean__type;
 		mNeedsPickUpMarker: boolean__type;
 	};

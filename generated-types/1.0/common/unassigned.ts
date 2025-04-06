@@ -9,6 +9,7 @@ import {
 	quaternion__type,
 	empty_object__type,
 	common_base__FGBuildableResourceExtractor__miner_mk3__type,
+	None__type,
 } from '../../common/common/unassigned';
 
 import {
@@ -194,6 +195,12 @@ export type FilterMontageTag__charged__type =
 	| 'LowCharged'
 	| 'MediumCharged'
 	| 'FullyCharged';
+
+export type mClassToScanFor__type =
+	| None__type
+	| StringStartsWith<'/Game/FactoryGame/Resource/Environment/'>
+	| StringStartsWith<'/Game/FactoryGame/World/Benefit/'>
+	| StringStartsWith<'/Game/FactoryGame/Prototype/WAT/'>;
 
 export type mClearanceData__type =
 	| ''
