@@ -349,16 +349,112 @@ export type color_decimal__type = {
 };
 
 export type common_base__EditorCurveData__type = {
-	EditorCurveData: {
-		DefaultValue: decimal_string__type;
-		PreInfinityExtrap: InfinityExtrap__type;
-		PostInfinityExtrap: InfinityExtrap__type;
-	};
-	ExternalCurve?: UnrealEngineString<
+	EditorCurveData: common_base__EditorCurveData__EditorCurveData__type;
+	ExternalCurve?: common_base__EditorCurveData__ExternalCurve__type;
+};
+
+export type common_base__EditorCurveData__EditorCurveData__type = {
+	DefaultValue: decimal_string__type;
+	PreInfinityExtrap: InfinityExtrap__type;
+	PostInfinityExtrap: InfinityExtrap__type;
+};
+
+export type common_base__EditorCurveData__ExternalCurve__type =
+	UnrealEngineString<
 		'/Script/Engine.CurveFloat',
 		| '/Game/FactoryGame/Resource/Parts/SpikedRebar/SpikedRebar_Falloff.SpikedRebar_Falloff'
 		| '/Game/FactoryGame/Resource/Parts/CartridgeStandard/LinearDamageFalloff.LinearDamageFalloff'
 	>;
+
+export type common_base__FGAmmoTypeProjectile__base__pre_1_1__type =
+	common_base__FGItemDescriptor__FGResourceDescriptor__type & {
+		AmmoFiredDelegate: empty_object__type;
+		mFiringTransform: transformation__type;
+		mFiringDirection: xyz__type;
+		mMagazineSize: integer_string__type;
+		mMaxAmmoEffectiveRange: decimal_string__type;
+		mReloadTimeMultiplier: decimal_string__type;
+		mFireRate: decimal_string__type;
+		mFiringTransformIgnoresDispersion: boolean__type;
+		mDispersionFireRateMultiplier: decimal_string__type;
+		mDispersionPerShot: decimal_string__type;
+		mRestingDispersion: decimal_string__type;
+		mFiringDispersion: decimal_string__type;
+		mDispersionRecoveryTime: decimal_string__type;
+		mHasBeenInitialized: boolean__type;
+		mWeaponDamageMultiplier: decimal_string__type;
+		mMagazineMeshMaterials: [
+			{
+				MaterialInterface: UnrealEngineString<
+					'/Script/Engine.MaterialInstanceConstant' | '/Script/Engine.Material'
+				>;
+				MaterialSlotName: common_base__MaterialSlotName__type;
+				ImportedMaterialSlotName: common_base__MaterialSlotName__type;
+				UVChannelData: {
+					bInitialized: boolean__type;
+					['LocalUVDensities[0]']: decimal_string__type;
+					['LocalUVDensities[1]']?: decimal_string__type;
+				};
+			},
+			...{
+				MaterialInterface: UnrealEngineString<
+					'/Script/Engine.MaterialInstanceConstant' | '/Script/Engine.Material'
+				>;
+				MaterialSlotName: common_base__MaterialSlotName__type;
+				ImportedMaterialSlotName: common_base__MaterialSlotName__type;
+				UVChannelData: {
+					bInitialized: boolean__type;
+					['LocalUVDensities[0]']: decimal_string__type;
+					['LocalUVDensities[1]']?: decimal_string__type;
+				};
+			}[],
+		];
+		mMagazineMeshMaterials1p: [
+			UnrealEngineString<'/Script/Engine.MaterialInstanceConstant'>,
+			...UnrealEngineString<'/Script/Engine.MaterialInstanceConstant'>[],
+		];
+		mDamageTypesOnImpact: '' | mDamageTypes__type;
+		mMuzzleFlashScale: xyz__type;
+		mFiringSounds1P: '';
+		mAmmoColor: color_decimal__type;
+		mAmmoScale: decimal_string__type;
+		mAmmoTickFunction: {
+			bAllowTickOnDedicatedServer: boolean__type;
+		};
+	};
+
+export type common_base__FGAmmoTypeProjectile__pre_1_1__type = {
+	mInitialProjectileSpeedOverride: decimal_string__signed__type;
+	mProjectileMaxSpeedOverride: decimal_string__signed__type;
+	mProjectileHealthOverride: decimal_string__signed__type;
+	mProjectileLifespan: decimal_string__signed__type;
+	mProjectileStickspan: decimal_string__signed__type;
+	mCanTakeDamageBySameProjectileOrChild: boolean__type;
+	mDamageTypesAtEndOfLife: '' | mDamageTypes__type;
+	mGravityScaleOverLifespan: common_base__EditorCurveData__type;
+	mHomingProjectile: boolean__type;
+	mHomingNeedsValidTarget: boolean__type;
+	mMaxHomingAccelerationMagnitudeOverride: decimal_string__signed__type;
+	mHomingMagnitudeMultiplierOverLifespan: common_base__EditorCurveData__type;
+	mHomingMagnitudeMultiplierOverDistanceToTarget: common_base__EditorCurveData__type;
+	mHomingOverlapSize: decimal_string__type;
+	mHomingAngleLimit: decimal_string__type;
+	mHomingOverrideTargets:
+		| ''
+		| [
+				{
+					ActorClass: UnrealEngineString<
+						'/Script/Engine.BlueprintGeneratedClass',
+						StringStartsWith<'/Game/FactoryGame/Character/Creature/Enemy/'>
+					>;
+				},
+				...{
+					ActorClass: UnrealEngineString<
+						'/Script/Engine.BlueprintGeneratedClass',
+						StringStartsWith<'/Game/FactoryGame/Character/Creature/Enemy/'>
+					>;
+				}[],
+		];
 };
 
 export type common_base__FGBuildableResourceExtractor__miner_mk3__type =

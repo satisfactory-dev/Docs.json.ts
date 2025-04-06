@@ -5133,6 +5133,39 @@
 				"01 - Default"
 			]
 		},
+		"common-base--EditorCurveData--EditorCurveData": {
+			"type": "string",
+			"minLength": 1,
+			"typed_string": {
+				"required": [
+					"DefaultValue",
+					"PreInfinityExtrap",
+					"PostInfinityExtrap"
+				],
+				"properties": {
+					"DefaultValue": {
+						"$ref": "common.schema.json#/$defs/decimal-string"
+					},
+					"PreInfinityExtrap": {
+						"$ref": "common.schema.json#/$defs/InfinityExtrap"
+					},
+					"PostInfinityExtrap": {
+						"$ref": "common.schema.json#/$defs/InfinityExtrap"
+					}
+				}
+			}
+		},
+		"common-base--EditorCurveData--ExternalCurve": {
+			"type": "string",
+			"minLength": 1,
+			"UnrealEngineString": {
+				"left": "/Script/Engine.CurveFloat",
+				"right": [
+					"/Game/FactoryGame/Resource/Parts/SpikedRebar/SpikedRebar_Falloff.SpikedRebar_Falloff",
+					"/Game/FactoryGame/Resource/Parts/CartridgeStandard/LinearDamageFalloff.LinearDamageFalloff"
+				]
+			}
+		},
 		"common-base--EditorCurveData": {
 			"type": "string",
 			"minLength": 1,
@@ -5140,42 +5173,15 @@
 				"required": ["EditorCurveData"],
 				"properties": {
 					"EditorCurveData": {
-						"type": "string",
-						"minLength": 1,
-						"typed_string": {
-							"required": [
-								"DefaultValue",
-								"PreInfinityExtrap",
-								"PostInfinityExtrap"
-							],
-							"properties": {
-								"DefaultValue": {
-									"$ref": "common.schema.json#/$defs/decimal-string"
-								},
-								"PreInfinityExtrap": {
-									"$ref": "common.schema.json#/$defs/InfinityExtrap"
-								},
-								"PostInfinityExtrap": {
-									"$ref": "common.schema.json#/$defs/InfinityExtrap"
-								}
-							}
-						}
+						"$ref": "common.schema.json#/$defs/common-base--EditorCurveData--EditorCurveData"
 					},
 					"ExternalCurve": {
-						"type": "string",
-						"minLength": 1,
-						"UnrealEngineString": {
-							"left": "/Script/Engine.CurveFloat",
-							"right": [
-								"/Game/FactoryGame/Resource/Parts/SpikedRebar/SpikedRebar_Falloff.SpikedRebar_Falloff",
-								"/Game/FactoryGame/Resource/Parts/CartridgeStandard/LinearDamageFalloff.LinearDamageFalloff"
-							]
-						}
+						"$ref": "common.schema.json#/$defs/common-base--EditorCurveData--ExternalCurve"
 					}
 				}
 			}
 		},
-		"common-base--FGAmmoTypeProjectile--base": {
+		"common-base--FGAmmoTypeProjectile--base--pre-1.1": {
 			"type": "object",
 			"$ref": "common.schema.json#/$defs/common-base--FGItemDescriptor--FGResourceDescriptor",
 			"required": [
@@ -5197,9 +5203,7 @@
 				"mMagazineMeshMaterials",
 				"mMagazineMeshMaterials1p",
 				"mDamageTypesOnImpact",
-				"mAmmoDamageFalloff",
 				"mMuzzleFlashScale",
-				"mFiringSounds",
 				"mFiringSounds1P",
 				"mAmmoColor",
 				"mAmmoScale",
@@ -5334,36 +5338,8 @@
 						}
 					]
 				},
-				"mAmmoDamageFalloff": {
-					"$ref": "common.schema.json#/$defs/common-base--EditorCurveData"
-				},
 				"mMuzzleFlashScale": {
 					"$ref": "common.schema.json#/$defs/xyz"
-				},
-				"mFiringSounds": {
-					"oneOf": [
-						{
-							"type": "string",
-							"const": ""
-						},
-						{
-							"type": "string",
-							"minLength": 1,
-							"typed_string": {
-								"minItems": 1,
-								"items": {
-									"type": "string",
-									"minLength": 1,
-									"UnrealEngineString": {
-										"left": "/Script/AkAudio.AkAudioEvent",
-										"right": {
-											"starts_with": "/Game/WwiseAudio/Events/"
-										}
-									}
-								}
-							}
-						}
-					]
 				},
 				"mFiringSounds1P": {
 					"type": "string",
@@ -5389,9 +5365,46 @@
 				}
 			}
 		},
-		"common-base--FGAmmoTypeProjectile": {
+		"common-base--FGAmmoTypeProjectile--base": {
 			"type": "object",
-			"$ref": "common.schema.json#/$defs/common-base--FGAmmoTypeProjectile--base",
+			"$ref": "#/$defs/common-base--FGAmmoTypeProjectile--base--pre-1.1",
+			"required": [
+				"mAmmoDamageFalloff",
+				"mFiringSounds"
+			],
+			"properties": {
+				"mAmmoDamageFalloff": {
+					"$ref": "common.schema.json#/$defs/common-base--EditorCurveData"
+				},
+				"mFiringSounds": {
+					"oneOf": [
+						{
+							"type": "string",
+							"const": ""
+						},
+						{
+							"type": "string",
+							"minLength": 1,
+							"typed_string": {
+								"minItems": 1,
+								"items": {
+									"type": "string",
+									"minLength": 1,
+									"UnrealEngineString": {
+										"left": "/Script/AkAudio.AkAudioEvent",
+										"right": {
+											"starts_with": "/Game/WwiseAudio/Events/"
+										}
+									}
+								}
+							}
+						}
+					]
+				}
+			}
+		},
+		"common-base--FGAmmoTypeProjectile--pre-1.1": {
+			"type": "object",
 			"required": [
 				"mInitialProjectileSpeedOverride",
 				"mProjectileMaxSpeedOverride",
@@ -5498,6 +5511,16 @@
 					]
 				}
 			}
+		},
+		"common-base--FGAmmoTypeProjectile": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGAmmoTypeProjectile--base"
+				},
+				{
+					"$ref": "#/$defs/common-base--FGAmmoTypeProjectile--pre-1.1"
+				}
+			]
 		},
 		"common-base--FGAmmoTypeSpreadshot": {
 			"type": "object",

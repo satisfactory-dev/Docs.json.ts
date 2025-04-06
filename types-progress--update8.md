@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (510 of 510)
+100.00% Complete (512 of 512)
 
 ## Basic Types
 
@@ -38,6 +38,8 @@
 -   [x] common-base--FGAmmoTypeInstantHit--standard (common type)
 -   [x] common-base--FGAmmoTypeProjectile (common type)
 -   [x] common-base--FGAmmoTypeProjectile--base (common type)
+-   [x] common-base--FGAmmoTypeProjectile--base--pre-1.1
+-   [x] common-base--FGAmmoTypeProjectile--pre-1.1
 -   [x] common-base--FGAmmoTypeSpreadshot (common type)
 -   [x] common-base--FGBuildable--base (common type)
 -   [x] common-base--FGBuildable--circuits-base (common type)

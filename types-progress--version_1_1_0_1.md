@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (29 of 29)
+88.57% Complete (31 of 35)
 
 ## Basic Types
 
@@ -11,12 +11,17 @@
 -   [x] color (common type)
 -   [x] decimal-string (common type)
 -   [x] decimal-string--signed (common type)
+-   [x] EditorCurveData
 -   [x] empty-object (common type)
 -   [x] integer-string (common type)
 -   [x] integer-string--signed (common type)
 -   [x] NativeClass (common type)
 -   [x] None (common type)
 -   [x] Texture2D (common type)
+
+## 1.1-base
+
+-   [ ] 1.1-base--FGAmmoTypeProjectile--base
 
 ## common-base
 
@@ -27,6 +32,16 @@
 -   [x] common-base--FGBuildingDescriptor--mForm (common type)
 -   [x] common-base--FGBuildingDescriptor--mSubCategories (common type)
 -   [x] common-base--FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor (common type)
+
+## FGAmmoType
+
+-   [x] FGAmmoTypeProjectile
+-   [ ] FGAmmoTypeProjectile--base
+
+## FGAmmoTypeProjectile
+
+-   [ ] FGAmmoTypeProjectile--base--merged
+-   [ ] FGAmmoTypeProjectile--merged
 
 ## FGBuildable
 

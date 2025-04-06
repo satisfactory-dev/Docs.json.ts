@@ -96,6 +96,178 @@
 			"type": "object",
 			"$ref": "#/$defs/FGBuildingDescriptor--base",
 			"unevaluatedProperties": false
+		},
+		"EditorCurveData": {
+			"type": "string",
+			"minLength": 1,
+			"typed_string": {
+				"required": ["EditorCurveData"],
+				"properties": {
+					"EditorCurveData": {
+						"type": "string",
+						"minLength": 1,
+						"typed_string": {
+							"required": [
+								"DefaultValue",
+								"PreInfinityExtrap",
+								"PostInfinityExtrap"
+							],
+							"properties": {
+								"Keys": {
+									"type": "string",
+									"minLength": 1,
+									"typed_string": {
+										"minItems": 1,
+										"items": {
+											"type": "string",
+											"minLength": 1,
+											"typed_string": {
+												"required": [
+													"InterpMode",
+													"TangentMode",
+													"Time",
+													"Value",
+													"ArriveTangent",
+													"LeaveTangent"
+												],
+												"properties": {
+													"InterpMode": {
+														"type": "string",
+														"const": "RCIM_Cubic"
+													},
+													"TangentMode": {
+														"type": "string",
+														"const": "RCTM_User"
+													},
+													"Time": {
+														"$ref": "common.schema.json#/$defs/decimal-string--signed"
+													},
+													"Value": {
+														"$ref": "common.schema.json#/$defs/decimal-string"
+													},
+													"ArriveTangent": {
+														"$ref": "common.schema.json#/$defs/decimal-string--signed"
+													},
+													"LeaveTangent": {
+														"$ref": "common.schema.json#/$defs/decimal-string--signed"
+													}
+												}
+											}
+										}
+									}
+								},
+								"DefaultValue": {
+									"$ref": "common.schema.json#/$defs/decimal-string"
+								},
+								"PreInfinityExtrap": {
+									"$ref": "common.schema.json#/$defs/InfinityExtrap"
+								},
+								"PostInfinityExtrap": {
+									"$ref": "common.schema.json#/$defs/InfinityExtrap"
+								}
+							}
+						}
+					},
+					"ExternalCurve": {
+						"$ref": "common.schema.json#/$defs/common-base--EditorCurveData--ExternalCurve"
+					}
+				}
+			}
+		},
+		"1.1-base--FGAmmoTypeProjectile--base": {
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/common-base--FGAmmoTypeProjectile--base--pre-1.1",
+			"required": [
+				"mAmmoDamageFalloff",
+				"mFiringSounds",
+				"mAudioEventsCache"
+			],
+			"properties": {
+				"mAmmoDamageFalloff": {
+					"$ref": "1.1.schema.json#/$defs/EditorCurveData"
+				},
+				"mFiringSounds": {
+					"oneOf": [
+						{
+							"type": "string",
+							"const": ""
+						},
+						{
+							"type": "string",
+							"minLength": 1,
+							"typed_string": {
+								"minItems": 1,
+								"items": {
+									"type": "string",
+									"enum": [
+										"/Game/WwiseAudio/Events/Equipment/RebarGun/Play_T_RebarGun_Fire.Play_T_RebarGun_Fire",
+										"/Game/WwiseAudio/Events/Equipment/RebarGun/Play_RebarGun_StunFire.Play_RebarGun_StunFire",
+										"/Game/WwiseAudio/Events/Equipment/Rifle/Play_Rifle_HomingAmmo_Shot.Play_Rifle_HomingAmmo_Shot"
+									]
+								}
+							}
+						}
+					]
+				},
+				"mAudioEventsCache": {
+					"oneOf": [
+						{
+							"$ref": "common.schema.json#/$defs/empty-object"
+						},
+						{
+							"type": "string",
+							"minLength": 1,
+							"typed_string": {
+								"required": ["mSoftAudioEvents"],
+								"properties": {
+									"mSoftAudioEvents": {
+										"type": "string",
+										"minLength": 1,
+										"typed_string": {
+											"minItems": 1,
+											"items": {
+												"type": "string",
+												"const": "/Game/WwiseAudio/Events/Equipment/Rifle/Play_E_Rifle_WorldImpact_Solids.Play_E_Rifle_WorldImpact_Solids"
+											}
+										}
+									}
+								}
+							}
+						}
+					]
+				}
+			}
+		},
+		"FGAmmoTypeProjectile--base--merged": {
+			"allOf": [
+				{
+					"$ref": "1.1.schema.json#/$defs/1.1-base--FGAmmoTypeProjectile--base"
+				},
+				{
+					"$ref": "1.0.schema.json#/$defs/FGItemDescriptor--FGResourceDescriptor"
+				}
+			]
+		},
+		"FGAmmoTypeProjectile--base": {
+			"type": "object",
+			"$ref": "1.1.schema.json#/$defs/FGAmmoTypeProjectile--base--merged"
+		},
+		"FGAmmoTypeProjectile--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGAmmoTypeProjectile--base--pre-1.1"
+				},
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGAmmoTypeProjectile--pre-1.1"
+				},
+				{
+					"$ref": "1.1.schema.json#/$defs/FGAmmoTypeProjectile--base"
+				}
+			]
+		},
+		"FGAmmoTypeProjectile": {
+			"type": "object",
+			"$ref": "1.1.schema.json#/$defs/FGAmmoTypeProjectile--merged"
 		}
 	},
 	"items": false,
@@ -149,6 +321,40 @@
 					"items": {
 						"type": "object",
 						"$ref": "#/$defs/FGBuildingDescriptor",
+						"unevaluatedProperties": false
+					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGItemDescriptor'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"$ref": "1.0.schema.json#/$defs/FGItemDescriptor--FGResourceDescriptor",
+						"unevaluatedProperties": false
+					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGAmmoTypeProjectile'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"$ref": "#/$defs/FGAmmoTypeProjectile",
 						"unevaluatedProperties": false
 					}
 				}

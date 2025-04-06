@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (334 of 334)
+100.00% Complete (338 of 338)
 
 ## Basic Types
 
@@ -58,11 +58,15 @@
 ## common-base
 
 -   [x] common-base--EditorCurveData (common type)
+-   [x] common-base--EditorCurveData--EditorCurveData
+-   [x] common-base--EditorCurveData--ExternalCurve
 -   [x] common-base--FGAmmoTypeInstantHit--base (common type)
 -   [x] common-base--FGAmmoTypeInstantHit--chaos
 -   [x] common-base--FGAmmoTypeInstantHit--standard
 -   [x] common-base--FGAmmoTypeProjectile
 -   [x] common-base--FGAmmoTypeProjectile--base (common type)
+-   [x] common-base--FGAmmoTypeProjectile--base--pre-1.1
+-   [x] common-base--FGAmmoTypeProjectile--pre-1.1
 -   [x] common-base--FGAmmoTypeSpreadshot
 -   [x] common-base--FGBuildable--base (common type)
 -   [x] common-base--FGBuildable--circuits-base (common type)
