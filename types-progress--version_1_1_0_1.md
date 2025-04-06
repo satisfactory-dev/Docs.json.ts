@@ -1,6 +1,6 @@
 # Types Progress
 
-81.58% Complete (31 of 38)
+67.39% Complete (31 of 46)
 
 ## Basic Types
 
@@ -69,3 +69,14 @@
 -   [x] FGBuildingDescriptor
 -   [x] FGBuildingDescriptor--base
 -   [x] FGBuildingDescriptor--merged
+
+## FGWeapon
+
+-   [ ] FGWeapon--base
+-   [ ] FGWeapon--base--merged
+-   [ ] FGWeapon--gun-base
+-   [ ] FGWeapon--gun-base--merged
+-   [ ] FGWeapon--rebar-gun
+-   [ ] FGWeapon--rebar-gun--merged
+-   [ ] FGWeapon--rifle
+-   [ ] FGWeapon--rifle--merged

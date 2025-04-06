@@ -30,7 +30,14 @@ export type FGWeapon__base__type = FGWeapon__base__merged__type;
 export type FGWeapon__base__merged__type =
 	common_base__FGWeapon__base__type & FGEquipment__base__type;
 
-export type FGWeapon__gun_base__type = FGWeapon__gun_base__merged__type & {
+export type FGWeapon__gun_base__type = FGWeapon__gun_base__merged__type;
+
+export type FGWeapon__gun_base__merged__type =
+	common_base__FGWeapon__gun_base__type &
+		FGWeapon__base__type &
+		FGWeapon__gun_base__properties__type;
+
+export type FGWeapon__gun_base__properties__type = {
 	mFireMontage: {
 		Montage_1P: Montage_1P__type;
 		Montage_3P: Montage_3P__type;
@@ -47,10 +54,14 @@ export type FGWeapon__gun_base__type = FGWeapon__gun_base__merged__type & {
 	mSupressDryFireMontage: boolean__type;
 };
 
-export type FGWeapon__gun_base__merged__type =
-	common_base__FGWeapon__gun_base__type & FGWeapon__base__type;
+export type FGWeapon__rebar_gun__type = FGWeapon__rebar_gun__merged__type;
 
-export type FGWeapon__rebar_gun__type = FGWeapon__rebar_gun__merged__type & {
+export type FGWeapon__rebar_gun__merged__type =
+	common_base__FGWeapon__rebar_gun__type &
+		FGWeapon__gun_base__type &
+		FGWeapon__rebar_gun__properties__type;
+
+export type FGWeapon__rebar_gun__properties__type = {
 	mReloadMontageList: {
 		Montages: [
 			{
@@ -138,11 +149,14 @@ export type FGWeapon__rebar_gun__type = FGWeapon__rebar_gun__merged__type & {
 	};
 };
 
-export type FGWeapon__rebar_gun__merged__type =
-	common_base__FGWeapon__rebar_gun__type &
-		FGWeapon__gun_base__type;
+export type FGWeapon__rifle__type = FGWeapon__rifle__merged__type;
 
-export type FGWeapon__rifle__type = FGWeapon__rifle__merged__type & {
+export type FGWeapon__rifle__merged__type =
+	common_base__FGWeapon__rifle__type &
+		FGWeapon__gun_base__type &
+		FGWeapon__rifle__properties__type;
+
+export type FGWeapon__rifle__properties__type = {
 	mReloadMontageList: {
 		Montages: [
 			{
@@ -230,9 +244,6 @@ export type FGWeapon__rifle__type = FGWeapon__rifle__merged__type & {
 	};
 	mUnEquipMontage: empty_object__type;
 };
-
-export type FGWeapon__rifle__merged__type =
-	common_base__FGWeapon__rifle__type & FGWeapon__gun_base__type;
 
 export type FGWeapon__NativeClass = NativeClass__type & {
 	Classes: [FGWeapon__rebar_gun__type, FGWeapon__rifle__type];

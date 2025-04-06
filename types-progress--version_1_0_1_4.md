@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (547 of 547)
+100.00% Complete (551 of 551)
 
 ## Basic Types
 
@@ -199,6 +199,7 @@
 -   [x] common-base--FGVehicleDescriptor--powered-no-inventory (common type)
 -   [x] common-base--FGVehicleDescriptor--with-inventory (common type)
 -   [x] common-base--FGWeapon--base (common type)
+-   [x] common-base--FGWeapon--base--pre-1.1
 -   [x] common-base--FGWeapon--gun-base (common type)
 -   [x] common-base--FGWeapon--rebar-gun (common type)
 -   [x] common-base--FGWeapon--rifle (common type)
@@ -813,10 +814,13 @@
 -   [x] FGWeapon--base--merged
 -   [x] FGWeapon--gun-base
 -   [x] FGWeapon--gun-base--merged
+-   [x] FGWeapon--gun-base--properties
 -   [x] FGWeapon--rebar-gun
 -   [x] FGWeapon--rebar-gun--merged
+-   [x] FGWeapon--rebar-gun--properties
 -   [x] FGWeapon--rifle
 -   [x] FGWeapon--rifle--merged
+-   [x] FGWeapon--rifle--properties
 
 ## FilterMontageTag
 

@@ -5517,12 +5517,14 @@
 				},
 				{
 					"$ref": "#/$defs/FGWeapon--base"
+				},
+				{
+					"$ref": "#/$defs/FGWeapon--gun-base--properties"
 				}
 			]
 		},
-		"FGWeapon--gun-base": {
+		"FGWeapon--gun-base--properties": {
 			"type": "object",
-			"$ref": "#/$defs/FGWeapon--gun-base--merged",
 			"required": [
 				"mFireMontage",
 				"mReloadMontageList",
@@ -5580,6 +5582,10 @@
 				}
 			}
 		},
+		"FGWeapon--gun-base": {
+			"type": "object",
+			"$ref": "#/$defs/FGWeapon--gun-base--merged"
+		},
 		"FGWeapon--rebar-gun--merged": {
 			"allOf": [
 				{
@@ -5587,13 +5593,14 @@
 				},
 				{
 					"$ref": "#/$defs/FGWeapon--gun-base"
+				},
+				{
+					"$ref": "#/$defs/FGWeapon--rebar-gun--properties"
 				}
 			]
 		},
-		"FGWeapon--rebar-gun": {
+		"FGWeapon--rebar-gun--properties": {
 			"type": "object",
-			"$ref": "#/$defs/FGWeapon--rebar-gun--merged",
-			"unevaluatedProperties": false,
 			"required": [
 				"mReloadMontageList",
 				"mAmmoSwapMontageList",
@@ -5893,6 +5900,11 @@
 				}
 			}
 		},
+		"FGWeapon--rebar-gun": {
+			"type": "object",
+			"$ref": "#/$defs/FGWeapon--rebar-gun--merged",
+			"unevaluatedProperties": false
+		},
 		"FGWeapon--rifle--merged": {
 			"allOf": [
 				{
@@ -5900,13 +5912,14 @@
 				},
 				{
 					"$ref": "#/$defs/FGWeapon--gun-base"
+				},
+				{
+					"$ref": "#/$defs/FGWeapon--rifle--properties"
 				}
 			]
 		},
-		"FGWeapon--rifle": {
+		"FGWeapon--rifle--properties": {
 			"type": "object",
-			"$ref": "#/$defs/FGWeapon--rifle--merged",
-			"unevaluatedProperties": false,
 			"required": [
 				"mReloadMontageList",
 				"mAmmoSwapMontageList",
@@ -6211,6 +6224,11 @@
 					"$ref": "common.schema.json#/$defs/empty-object"
 				}
 			}
+		},
+		"FGWeapon--rifle": {
+			"type": "object",
+			"$ref": "#/$defs/FGWeapon--rifle--merged",
+			"unevaluatedProperties": false
 		},
 		"FGChargedWeapon--merged": {
 			"allOf": [

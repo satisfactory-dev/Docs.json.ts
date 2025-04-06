@@ -474,6 +474,30 @@ export type common_base__FGBuildableResourceExtractor__miner_mk3__type =
 		mMaximumDrillTime_0: decimal_string__type;
 	};
 
+export type common_base__FGWeapon__base__pre_1_1__type =
+	common_base__FGEquipment__base__type & {
+		mOnWeaponStateChanged: empty_object__type;
+		mWeaponState: common_base__weaponState__type;
+		mAutomaticallyReload: boolean__type;
+		mAutoReloadDelay: decimal_string__type;
+		mAutoReloadTimerHandle: empty_object__type;
+		mCurrentAmmoCount: integer_string__type;
+		mAllowedAmmoClasses: UnrealEngineString__array__type;
+		mAttachMagazineToPlayer: boolean__type;
+		mMuzzleSocketName: 'muzzleSocket' | 'MuzzleSocket' | 'None';
+		mCurrentMagazineBoneName: 'CurrentMagazine' | 'hand_rSocket';
+		mEjectMagazineBoneName: 'EjectMagazine' | 'hand_rSocket';
+		mDispersionOnNoMagazine: decimal_string__type;
+		mWeaponDamageMultiplier: decimal_string__type;
+		mFiringBlocksDispersionReduction: boolean__type;
+		mCurrentDispersion: decimal_string__type;
+		mReloadTime: decimal_string__type;
+		mAmmoSwitchUsedRadialMenu: boolean__type;
+		mOnAmmoCyclingPressed: empty_object__type;
+		mOnAmmoCyclingReleased: empty_object__type;
+		mBlockSprintWhenFiring: boolean__type;
+	};
+
 export type common_base__MaterialSlotName__type =
 	| 'uv_checker_material_uv_grid_1024x1024'
 	| 'lambert1'

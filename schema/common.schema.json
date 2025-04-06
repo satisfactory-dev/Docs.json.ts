@@ -5604,11 +5604,10 @@
 			"type": "string",
 			"enum": ["EWS_Unequipped"]
 		},
-		"common-base--FGWeapon--base": {
+		"common-base--FGWeapon--base--pre-1.1": {
 			"type": "object",
 			"$ref": "common.schema.json#/$defs/common-base--FGEquipment--base",
 			"required": [
-				"mShowCycleAmmoRadialMenuTimer",
 				"mOnWeaponStateChanged",
 				"mWeaponState",
 				"mAutomaticallyReload",
@@ -5631,9 +5630,6 @@
 				"mBlockSprintWhenFiring"
 			],
 			"properties": {
-				"mShowCycleAmmoRadialMenuTimer": {
-					"$ref": "common.schema.json#/$defs/empty-object"
-				},
 				"mOnWeaponStateChanged": {
 					"$ref": "common.schema.json#/$defs/empty-object"
 				},
@@ -5699,13 +5695,25 @@
 				}
 			}
 		},
+		"common-base--FGWeapon--base": {
+			"type": "object",
+			"$ref": "#/$defs/common-base--FGWeapon--base--pre-1.1",
+			"required": [
+				"mShowCycleAmmoRadialMenuTimer"
+			],
+			"properties": {
+				"mShowCycleAmmoRadialMenuTimer": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				}
+			}
+		},
 		"common-base--FGWeapon--gun-base": {
 			"type": "object",
 			"$ref": "common.schema.json#/$defs/common-base--FGWeapon--base"
 		},
-		"common-base--FGWeapon--rebar-gun": {
+		"common-base--FGWeapon--rebar-gun--properties": {
 			"type": "object",
-			"$ref": "common.schema.json#/$defs/common-base--FGWeapon--gun-base",
+			"required": ["ClassName"],
 			"properties": {
 				"ClassName": {
 					"type": "string",
@@ -5713,9 +5721,18 @@
 				}
 			}
 		},
-		"common-base--FGWeapon--rifle": {
+		"common-base--FGWeapon--rebar-gun": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGWeapon--gun-base"
+				},
+				{
+					"$ref": "#/$defs/common-base--FGWeapon--rebar-gun--properties"
+				}
+			]
+		},
+		"common-base--FGWeapon--rifle--properties": {
 			"type": "object",
-			"$ref": "common.schema.json#/$defs/common-base--FGWeapon--gun-base",
 			"required": ["Fire", "mHasReloadedOnce"],
 			"properties": {
 				"ClassName": {
@@ -5729,6 +5746,16 @@
 					"$ref": "common.schema.json#/$defs/boolean"
 				}
 			}
+		},
+		"common-base--FGWeapon--rifle": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGWeapon--gun-base"
+				},
+				{
+					"$ref": "#/$defs/common-base--FGWeapon--rifle--properties"
+				}
+			]
 		},
 		"common-base--FGChargedWeapon": {
 			"type": "object",

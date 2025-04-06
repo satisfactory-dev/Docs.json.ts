@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (339 of 339)
+100.00% Complete (342 of 342)
 
 ## Basic Types
 
@@ -221,9 +221,12 @@
 -   [x] common-base--FGVehicleDescriptor--powered-no-inventory
 -   [x] common-base--FGVehicleDescriptor--with-inventory (common type)
 -   [x] common-base--FGWeapon--base (common type)
+-   [x] common-base--FGWeapon--base--pre-1.1
 -   [x] common-base--FGWeapon--gun-base (common type)
 -   [x] common-base--FGWeapon--rebar-gun
+-   [x] common-base--FGWeapon--rebar-gun--properties
 -   [x] common-base--FGWeapon--rifle
+-   [x] common-base--FGWeapon--rifle--properties
 -   [x] common-base--MaterialSlotName
 -   [x] common-base--mChainsawState (common type)
 -   [x] common-base--mDisableSnapOn (common type)

@@ -343,6 +343,91 @@
 			"type": "object",
 			"$ref": "1.1.schema.json#/$defs/FGAmmoTypeSpreadshot--merged",
 			"unevaluatedProperties": false
+		},
+		"FGWeapon--base--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGWeapon--base--pre-1.1"
+				},
+				{
+					"$ref": "1.0.schema.json#/$defs/FGEquipment--base"
+				}
+			]
+		},
+		"FGWeapon--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGWeapon--base--merged"
+		},
+		"FGWeapon--gun-base--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGWeapon--base--pre-1.1"
+				},
+				{
+					"$ref": "#/$defs/FGWeapon--base"
+				},
+				{
+					"$ref": "1.0.schema.json#/$defs/FGWeapon--gun-base--properties"
+				}
+			]
+		},
+		"FGWeapon--gun-base": {
+			"type": "object",
+			"$ref": "#/$defs/FGWeapon--gun-base--merged",
+			"required": [
+				"MagnetismStrength",
+				"MagnetismZeroInputStrength"
+			],
+			"properties": {
+				"MagnetismStrength": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"MagnetismZeroInputStrength": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				}
+			}
+		},
+		"FGWeapon--rebar-gun--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGWeapon--base--pre-1.1"
+				},
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGWeapon--rebar-gun--properties"
+				},
+				{
+					"$ref": "#/$defs/FGWeapon--gun-base"
+				},
+				{
+					"$ref": "1.0.schema.json#/$defs/FGWeapon--rebar-gun--properties"
+				}
+			]
+		},
+		"FGWeapon--rifle--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGWeapon--base--pre-1.1"
+				},
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGWeapon--rifle--properties"
+				},
+				{
+					"$ref": "#/$defs/FGWeapon--gun-base"
+				},
+				{
+					"$ref": "1.0.schema.json#/$defs/FGWeapon--rifle--properties"
+				}
+			]
+		},
+		"FGWeapon--rebar-gun": {
+			"type": "object",
+			"$ref": "#/$defs/FGWeapon--rebar-gun--merged",
+			"unevaluatedProperties": false
+		},
+		"FGWeapon--rifle": {
+			"type": "object",
+			"$ref": "#/$defs/FGWeapon--rifle--merged",
+			"unevaluatedProperties": false
 		}
 	},
 	"items": false,
@@ -467,6 +552,32 @@
 					},
 					"minItems": 1,
 					"maxItems": 1
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGWeapon'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 2,
+					"maxItems": 2,
+					"items": false,
+					"prefixItems": [
+						{
+							"type": "object",
+							"$ref": "1.1.schema.json#/$defs/FGWeapon--rebar-gun",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "1.1.schema.json#/$defs/FGWeapon--rifle",
+							"unevaluatedProperties": false
+						}
+					]
 				}
 			}
 		}
