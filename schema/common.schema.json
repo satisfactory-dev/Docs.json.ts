@@ -5204,7 +5204,6 @@
 				"mMagazineMeshMaterials1p",
 				"mDamageTypesOnImpact",
 				"mMuzzleFlashScale",
-				"mFiringSounds1P",
 				"mAmmoColor",
 				"mAmmoScale",
 				"mAmmoTickFunction"
@@ -5341,10 +5340,6 @@
 				"mMuzzleFlashScale": {
 					"$ref": "common.schema.json#/$defs/xyz"
 				},
-				"mFiringSounds1P": {
-					"type": "string",
-					"const": ""
-				},
 				"mAmmoColor": {
 					"$ref": "common.schema.json#/$defs/color-decimal"
 				},
@@ -5370,7 +5365,8 @@
 			"$ref": "#/$defs/common-base--FGAmmoTypeProjectile--base--pre-1.1",
 			"required": [
 				"mAmmoDamageFalloff",
-				"mFiringSounds"
+				"mFiringSounds",
+				"mFiringSounds1P"
 			],
 			"properties": {
 				"mAmmoDamageFalloff": {
@@ -5400,6 +5396,10 @@
 							}
 						}
 					]
+				},
+				"mFiringSounds1P": {
+					"type": "string",
+					"const": ""
 				}
 			}
 		},
@@ -5563,19 +5563,30 @@
 				}
 			]
 		},
-		"common-base--FGAmmoTypeInstantHit--base": {
+		"common-base--FGAmmoTypeInstantHit--base--pre-1.1": {
 			"type": "object",
-			"$ref": "common.schema.json#/$defs/common-base--FGAmmoTypeProjectile--base",
+			"$ref": "#/$defs/common-base--FGAmmoTypeProjectile--base--pre-1.1",
 			"required": ["mPlayFireEffects"],
 			"properties": {
 				"mPlayFireEffects": {
 					"$ref": "common.schema.json#/$defs/boolean"
 				}
 			}
+
 		},
-		"common-base--FGAmmoTypeInstantHit--chaos": {
+		"common-base--FGAmmoTypeInstantHit--base": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGAmmoTypeProjectile--base"
+				},
+				{
+					"$ref": "#/$defs/common-base--FGAmmoTypeInstantHit--base--pre-1.1"
+				}
+			]
+		},
+		"common-base--FGAmmoTypeInstantHit--chaos--pre-1.1": {
 			"type": "object",
-			"$ref": "common.schema.json#/$defs/common-base--FGAmmoTypeInstantHit--base",
+			"$ref": "#/$defs/common-base--FGAmmoTypeInstantHit--base--pre-1.1",
 			"required": ["ClassName", "Location", "Trail_Velocity"],
 			"properties": {
 				"ClassName": {
@@ -5590,15 +5601,35 @@
 				}
 			}
 		},
-		"common-base--FGAmmoTypeInstantHit--standard": {
+		"common-base--FGAmmoTypeInstantHit--chaos": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGAmmoTypeInstantHit--base"
+				},
+				{
+					"$ref": "#/$defs/common-base--FGAmmoTypeInstantHit--chaos--pre-1.1"
+				}
+			]
+		},
+		"common-base--FGAmmoTypeInstantHit--standard--pre-1.1": {
 			"type": "object",
-			"$ref": "common.schema.json#/$defs/common-base--FGAmmoTypeInstantHit--base",
+			"$ref": "common.schema.json#/$defs/common-base--FGAmmoTypeInstantHit--base--pre-1.1",
 			"properties": {
 				"ClassName": {
 					"type": "string",
 					"const": "Desc_CartridgeStandard_C"
 				}
 			}
+		},
+		"common-base--FGAmmoTypeInstantHit--standard": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGAmmoTypeInstantHit--base"
+				},
+				{
+					"$ref": "#/$defs/common-base--FGAmmoTypeInstantHit--standard--pre-1.1"
+				}
+			]
 		},
 		"common-base--weaponState": {
 			"type": "string",

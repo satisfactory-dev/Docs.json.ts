@@ -1,6 +1,6 @@
 # Types Progress
 
-67.39% Complete (31 of 46)
+59.62% Complete (31 of 52)
 
 ## Basic Types
 
@@ -36,8 +36,17 @@
 ## FGAmmoType
 
 -   [ ] FGAmmoTypeSpreadshot
+-   [ ] FGAmmoTypeInstantHit--base
+-   [ ] FGAmmoTypeInstantHit--chaos
+-   [ ] FGAmmoTypeInstantHit--standard
 -   [x] FGAmmoTypeProjectile
 -   [ ] FGAmmoTypeProjectile--base
+
+## FGAmmoTypeInstantHit
+
+-   [ ] FGAmmoTypeInstantHit--base--merged
+-   [ ] FGAmmoTypeInstantHit--chaos--merged
+-   [ ] FGAmmoTypeInstantHit--standard--merged
 
 ## FGAmmoTypeProjectile
 

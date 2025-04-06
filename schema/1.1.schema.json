@@ -202,8 +202,30 @@
 									"enum": [
 										"/Game/WwiseAudio/Events/Equipment/RebarGun/Play_T_RebarGun_Fire.Play_T_RebarGun_Fire",
 										"/Game/WwiseAudio/Events/Equipment/RebarGun/Play_RebarGun_StunFire.Play_RebarGun_StunFire",
-										"/Game/WwiseAudio/Events/Equipment/Rifle/Play_Rifle_HomingAmmo_Shot.Play_Rifle_HomingAmmo_Shot"
+										"/Game/WwiseAudio/Events/Equipment/RebarGun/Play_RebarGun_Scatter_Fire.Play_RebarGun_Scatter_Fire",
+										"/Game/WwiseAudio/Events/Equipment/Rifle/Play_Rifle_HomingAmmo_Shot.Play_Rifle_HomingAmmo_Shot",
+										"/Game/WwiseAudio/Events/Equipment/Rifle/Play_Rifle_ChaosAmmo_Shot.Play_Rifle_ChaosAmmo_Shot",
+										"/Game/WwiseAudio/Events/Equipment/Rifle/Play_E_Rifle_GunShot_3P.Play_E_Rifle_GunShot_3P"
 									]
+								}
+							}
+						}
+					]
+				},
+				"mFiringSounds1P": {
+					"oneOf": [
+						{
+							"type": "string",
+							"const": ""
+						},
+						{
+							"type": "string",
+							"minLength": 1,
+							"typed_string": {
+								"minItems": 1,
+								"items": {
+									"type": "string",
+									"const": "/Game/WwiseAudio/Events/Equipment/Rifle/Play_E_Rifle_GunShot.Play_E_Rifle_GunShot"
 								}
 							}
 						}
@@ -329,7 +351,7 @@
 		"FGAmmoTypeSpreadshot--merged": {
 			"allOf": [
 				{
-					"$ref": "common.schema.json#/$defs/common-base--FGAmmoTypeProjectile--base--pre-1.1"
+					"$ref": "1.1.schema.json#/$defs/1.1-base--FGAmmoTypeProjectile--base"
 				},
 				{
 					"$ref": "common.schema.json#/$defs/common-base--FGAmmoTypeSpreadshot--pre-1.1"
@@ -427,6 +449,50 @@
 		"FGWeapon--rifle": {
 			"type": "object",
 			"$ref": "#/$defs/FGWeapon--rifle--merged",
+			"unevaluatedProperties": false
+		},
+		"FGAmmoTypeInstantHit--base--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGAmmoTypeInstantHit--base--pre-1.1"
+				},
+				{
+					"$ref": "#/$defs/FGAmmoTypeProjectile--base"
+				}
+			]
+		},
+		"FGAmmoTypeInstantHit--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGAmmoTypeInstantHit--base--merged"
+		},
+		"FGAmmoTypeInstantHit--chaos--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGAmmoTypeInstantHit--chaos--pre-1.1"
+				},
+				{
+					"$ref": "#/$defs/FGAmmoTypeInstantHit--base"
+				}
+			]
+		},
+		"FGAmmoTypeInstantHit--chaos": {
+			"type": "object",
+			"$ref": "#/$defs/FGAmmoTypeInstantHit--chaos--merged",
+			"unevaluatedProperties": false
+		},
+		"FGAmmoTypeInstantHit--standard--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGAmmoTypeInstantHit--standard--pre-1.1"
+				},
+				{
+					"$ref": "#/$defs/FGAmmoTypeInstantHit--base"
+				}
+			]
+		},
+		"FGAmmoTypeInstantHit--standard": {
+			"type": "object",
+			"$ref": "#/$defs/FGAmmoTypeInstantHit--standard--merged",
 			"unevaluatedProperties": false
 		}
 	},
@@ -575,6 +641,32 @@
 						{
 							"type": "object",
 							"$ref": "1.1.schema.json#/$defs/FGWeapon--rifle",
+							"unevaluatedProperties": false
+						}
+					]
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGAmmoTypeInstantHit'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 2,
+					"maxItems": 2,
+					"items": false,
+					"prefixItems": [
+						{
+							"type": "object",
+							"$ref": "1.1.schema.json#/$defs/FGAmmoTypeInstantHit--chaos",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "1.1.schema.json#/$defs/FGAmmoTypeInstantHit--standard",
 							"unevaluatedProperties": false
 						}
 					]

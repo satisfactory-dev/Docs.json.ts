@@ -25,4 +25,5 @@ export type common_base__FGAmmoTypeProjectile__base__type =
 						StringStartsWith<'/Game/WwiseAudio/Events/'>
 					>[],
 			];
+		mFiringSounds1P: '';
 	};

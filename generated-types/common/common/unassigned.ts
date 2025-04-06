@@ -366,6 +366,23 @@ export type common_base__EditorCurveData__ExternalCurve__type =
 		| '/Game/FactoryGame/Resource/Parts/CartridgeStandard/LinearDamageFalloff.LinearDamageFalloff'
 	>;
 
+export type common_base__FGAmmoTypeInstantHit__base__pre_1_1__type =
+	common_base__FGAmmoTypeProjectile__base__pre_1_1__type & {
+		mPlayFireEffects: boolean__type;
+	};
+
+export type common_base__FGAmmoTypeInstantHit__chaos__pre_1_1__type =
+	common_base__FGAmmoTypeInstantHit__base__pre_1_1__type & {
+		ClassName: 'Desc_CartridgeChaos_C';
+		Location: xyz__type;
+		Trail_Velocity: decimal_string__type;
+	};
+
+export type common_base__FGAmmoTypeInstantHit__standard__pre_1_1__type =
+	common_base__FGAmmoTypeInstantHit__base__pre_1_1__type & {
+		ClassName: 'Desc_CartridgeStandard_C';
+	};
+
 export type common_base__FGAmmoTypeProjectile__base__pre_1_1__type =
 	common_base__FGItemDescriptor__FGResourceDescriptor__type & {
 		AmmoFiredDelegate: empty_object__type;
@@ -415,7 +432,6 @@ export type common_base__FGAmmoTypeProjectile__base__pre_1_1__type =
 		];
 		mDamageTypesOnImpact: '' | mDamageTypes__type;
 		mMuzzleFlashScale: xyz__type;
-		mFiringSounds1P: '';
 		mAmmoColor: color_decimal__type;
 		mAmmoScale: decimal_string__type;
 		mAmmoTickFunction: {

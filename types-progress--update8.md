@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (513 of 513)
+100.00% Complete (520 of 520)
 
 ## Basic Types
 
@@ -34,8 +34,11 @@
 
 -   [x] common-base--EditorCurveData (common type)
 -   [x] common-base--FGAmmoTypeInstantHit--base (common type)
+-   [x] common-base--FGAmmoTypeInstantHit--base--pre-1.1 (common type)
 -   [x] common-base--FGAmmoTypeInstantHit--chaos (common type)
+-   [x] common-base--FGAmmoTypeInstantHit--chaos--pre-1.1
 -   [x] common-base--FGAmmoTypeInstantHit--standard (common type)
+-   [x] common-base--FGAmmoTypeInstantHit--standard--pre-1.1
 -   [x] common-base--FGAmmoTypeProjectile (common type)
 -   [x] common-base--FGAmmoTypeProjectile--base (common type)
 -   [x] common-base--FGAmmoTypeProjectile--base--pre-1.1
@@ -194,9 +197,12 @@
 -   [x] common-base--FGVehicleDescriptor--powered-no-inventory (common type)
 -   [x] common-base--FGVehicleDescriptor--with-inventory (common type)
 -   [x] common-base--FGWeapon--base (common type)
+-   [x] common-base--FGWeapon--base--pre-1.1
 -   [x] common-base--FGWeapon--gun-base (common type)
 -   [x] common-base--FGWeapon--rebar-gun (common type)
+-   [x] common-base--FGWeapon--rebar-gun--properties
 -   [x] common-base--FGWeapon--rifle (common type)
+-   [x] common-base--FGWeapon--rifle--properties
 -   [x] common-base--mChainsawState (common type)
 -   [x] common-base--mDisableSnapOn (common type)
 -   [x] common-base--mLightControlData (common type)
