@@ -1,6 +1,6 @@
 # Types Progress
 
-59.62% Complete (31 of 52)
+54.39% Complete (31 of 57)
 
 ## Basic Types
 
@@ -62,6 +62,7 @@
 
 -   [x] FGBuildableBeam
 -   [x] FGBuildableRailroadTrack
+-   [ ] FGBuildableWallLightweight
 -   [x] FGBuildable--base
 
 ## FGBuildableBeam
@@ -73,11 +74,21 @@
 
 -   [x] FGBuildableRailroadTrack--merged
 
+## FGBuildableWallLightweight
+
+-   [ ] FGBuildableWallLightweight--merged
+
 ## FGBuildingDescriptor
 
 -   [x] FGBuildingDescriptor
 -   [x] FGBuildingDescriptor--base
 -   [x] FGBuildingDescriptor--merged
+
+## FGSuitBase
+
+-   [ ] FGSuitBase
+-   [ ] FGSuitBase--mEquipMontage
+-   [ ] FGSuitBase--merged
 
 ## FGWeapon
 

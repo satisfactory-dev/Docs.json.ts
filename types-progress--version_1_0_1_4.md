@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (557 of 557)
+100.00% Complete (560 of 560)
 
 ## Basic Types
 
@@ -801,6 +801,9 @@
 ## FGSuitBase
 
 -   [x] FGSuitBase
+-   [x] FGSuitBase--1.0
+-   [x] FGSuitBase--1.0--mEquipMontage--Montages--AudioEvent
+-   [x] FGSuitBase--1.0--pre-1.1
 -   [x] FGSuitBase--merged
 
 ## FGVehicleDescriptor

@@ -2518,17 +2518,16 @@
 		"FGSuitBase--merged": {
 			"allOf": [
 				{
-					"$ref": "common.schema.json#/$defs/common-base--FGSuitBase"
+					"$ref": "#/$defs/FGEquipment--base"
 				},
 				{
-					"$ref": "#/$defs/FGEquipment--base"
+					"$ref": "#/$defs/FGSuitBase--1.0"
 				}
 			]
 		},
-		"FGSuitBase": {
+		"FGSuitBase--1.0--pre-1.1": {
 			"type": "object",
-			"$ref": "#/$defs/FGSuitBase--merged",
-			"unevaluatedProperties": false,
+			"$ref": "common.schema.json#/$defs/common-base--FGSuitBase",
 			"required": ["mSuitMeshMaterials"],
 			"properties": {
 				"mSuitMeshMaterials": {
@@ -2578,42 +2577,6 @@
 						}
 					}
 				},
-				"mEquipMontage": {
-					"type": "string",
-					"minLength": 1,
-					"typed_string": {
-						"required": ["Montages"],
-						"properties": {
-							"Montages": {
-								"type": "string",
-								"minLength": 1,
-								"typed_string": {
-									"minItems": 1,
-									"maxItems": 1,
-									"items": {
-										"type": "string",
-										"minLength": 1,
-										"typed_string": {
-											"required": ["AudioEvent"],
-											"properties": {
-												"AudioEvent": {
-													"type": "string",
-													"minLength": 1,
-													"UnrealEngineString": {
-														"left": "/Script/AkAudio.AkAudioEvent",
-														"right": {
-															"starts_with": "/Game/WwiseAudio/Events/Equipment/HazmatSuit/"
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				},
 				"mStingerMontage": {
 					"$ref": "common.schema.json#/$defs/empty-object"
 				},
@@ -2637,6 +2600,56 @@
 					}
 				}
 			}
+		},
+		"FGSuitBase--1.0--mEquipMontage--Montages--AudioEvent": {
+			"type": "string",
+			"minLength": 1,
+			"UnrealEngineString": {
+				"left": "/Script/AkAudio.AkAudioEvent",
+				"right": {
+					"starts_with": "/Game/WwiseAudio/Events/Equipment/HazmatSuit/"
+				}
+			}
+		},
+		"FGSuitBase--1.0": {
+			"type": "object",
+			"$ref": "#/$defs/FGSuitBase--1.0--pre-1.1",
+			"properties": {
+				"mEquipMontage": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["Montages"],
+						"properties": {
+							"Montages": {
+								"type": "string",
+								"minLength": 1,
+								"typed_string": {
+									"minItems": 1,
+									"maxItems": 1,
+									"items": {
+										"type": "string",
+										"minLength": 1,
+										"typed_string": {
+											"required": ["AudioEvent"],
+											"properties": {
+												"AudioEvent": {
+													"$ref": "#/$defs/FGSuitBase--1.0--mEquipMontage--Montages--AudioEvent"
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"FGSuitBase": {
+			"type": "object",
+			"$ref": "#/$defs/FGSuitBase--merged",
+			"unevaluatedProperties": false
 		},
 		"FGGasMask--mUnEquipMontage": {
 			"type": "string",

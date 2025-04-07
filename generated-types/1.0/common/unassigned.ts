@@ -24,6 +24,8 @@ import {common_base__FGBuildableDroneStation__type} from '../../common/classes/C
 
 import {common_base__FGBuildableTradingPost__type} from '../../common/classes/CoreUObject/FGBuildableTradingPost';
 
+import {common_base__FGSuitBase__type} from '../../common/classes/CoreUObject/FGSuitBase';
+
 export type CameraAnim__type = UnrealEngineString<
 	'/Script/TemplateSequence.CameraAnimationSequence',
 	StringStartsWith<'/Game/FactoryGame/Character/Player/CameraShake/'>
@@ -184,6 +186,57 @@ export type FGBuildableTradingPost__version_1__type =
 		mLadderVisibilityLevel: integer_string__type;
 		mLockerVisibilityLevel: integer_string__type;
 		mMiniGameAndCalendarVisibilityLevel: integer_string__type;
+	};
+
+export type FGSuitBase__1_0__type = FGSuitBase__1_0__pre_1_1__type & {
+	mEquipMontage: {
+		Montages: [
+			{
+				AudioEvent: FGSuitBase__1_0__mEquipMontage__Montages__AudioEvent__type;
+			},
+		];
+	};
+};
+
+export type FGSuitBase__1_0__mEquipMontage__Montages__AudioEvent__type =
+	UnrealEngineString<
+		'/Script/AkAudio.AkAudioEvent',
+		StringStartsWith<'/Game/WwiseAudio/Events/Equipment/HazmatSuit/'>
+	>;
+
+export type FGSuitBase__1_0__pre_1_1__type =
+	common_base__FGSuitBase__type & {
+		mSuitMeshMaterials: [
+			{
+				SlotName: 'Pioneer_torso' | 'Pioneer_Legs';
+				Material: UnrealEngineString<
+					'/Script/Engine.MaterialInstanceConstant',
+					StringStartsWith<'/Game/FactoryGame/Character/Player/Material/'>
+				>;
+				Material3P: UnrealEngineString<
+					'/Script/Engine.MaterialInstanceConstant',
+					StringStartsWith<'/Game/FactoryGame/Character/Player/Material/'>
+				>;
+			},
+			...{
+				SlotName: 'Pioneer_torso' | 'Pioneer_Legs';
+				Material: UnrealEngineString<
+					'/Script/Engine.MaterialInstanceConstant',
+					StringStartsWith<'/Game/FactoryGame/Character/Player/Material/'>
+				>;
+				Material3P: UnrealEngineString<
+					'/Script/Engine.MaterialInstanceConstant',
+					StringStartsWith<'/Game/FactoryGame/Character/Player/Material/'>
+				>;
+			}[],
+		];
+		mStingerMontage?: empty_object__type;
+		mUnEquipMontage?: {
+			AudioEvent: UnrealEngineString<
+				'/Script/AkAudio.AkAudioEvent',
+				StringStartsWith<'/Game/WwiseAudio/Events/Equipment/HazmatSuit/'>
+			>;
+		};
 	};
 
 export type FilterMontageTag__type =

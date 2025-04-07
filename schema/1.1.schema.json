@@ -494,6 +494,80 @@
 			"type": "object",
 			"$ref": "#/$defs/FGAmmoTypeInstantHit--standard--merged",
 			"unevaluatedProperties": false
+		},
+		"FGBuildableWallLightweight--merged": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableWall--base--rectangle"
+				},
+				{
+					"$ref": "1.1.schema.json#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableWallLightweight": {
+			"type": "object",
+			"$ref": "1.1.schema.json#/$defs/FGBuildableWallLightweight--merged",
+			"unevaluatedProperties": false
+		},
+		"FGSuitBase--mEquipMontage": {
+			"type": "object",
+			"$ref": "1.0.schema.json#/$defs/FGSuitBase--1.0--pre-1.1",
+			"properties": {
+				"mEquipMontage": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["Montages"],
+						"properties": {
+							"Montages": {
+								"type": "string",
+								"minLength": 1,
+								"typed_string": {
+									"minItems": 1,
+									"maxItems": 1,
+									"items": {
+										"type": "string",
+										"minLength": 1,
+										"typed_string": {
+											"required": [
+												"AudioEvent",
+												"bSeparate3PAudioEvent"
+											],
+											"properties": {
+												"AudioEvent": {
+													"$ref": "#/$defs/FGSuitBase--1.0--mEquipMontage--Montages--AudioEvent"
+												},
+												"bSeparate3PAudioEvent": {
+													"$ref": "common.schema.json#/$defs/boolean"
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"FGSuitBase--merged": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGEquipment--base"
+				},
+				{
+					"$ref": "1.0.schema.json#/$defs/FGSuitBase--1.0--pre-1.1"
+				},
+				{
+					"$ref": "#/$defs/FGSuitBase--mEquipMontage"
+				}
+			]
+		},
+		"FGSuitBase": {
+			"type": "object",
+			"$ref": "1.1.schema.json#/$defs/FGSuitBase--merged",
+			"unevaluatedProperties": false
 		}
 	},
 	"items": false,
@@ -670,6 +744,41 @@
 							"unevaluatedProperties": false
 						}
 					]
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableWallLightweight'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"$ref": "1.1.schema.json#/$defs/FGBuildableWallLightweight",
+						"unevaluatedProperties": false
+					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGSuitBase'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"$ref": "1.1.schema.json#/$defs/FGSuitBase",
+						"unevaluatedProperties": false
+					},
+					"minItems": 1,
+					"maxItems": 1
 				}
 			}
 		}
