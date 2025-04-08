@@ -1,6 +1,6 @@
 # Types Progress
 
-54.39% Complete (31 of 57)
+55.17% Complete (32 of 58)
 
 ## Basic Types
 
@@ -13,6 +13,7 @@
 -   [x] decimal-string--signed (common type)
 -   [x] EditorCurveData
 -   [x] empty-object (common type)
+-   [x] FGChargedWeapon
 -   [x] integer-string (common type)
 -   [x] integer-string--signed (common type)
 -   [x] NativeClass (common type)

@@ -2,6 +2,36 @@ import {common_base__FGCustomizationRecipe__FGRecipe__type} from '../../../commo
 
 import {NativeClass__type} from '../../../common/common/unassigned';
 
+export type FGCustomizationRecipe__type =
+	FGCustomizationRecipe__FGRecipe__type & {
+		mDisplayName:
+			| 'N/A'
+			| 'Custom Slot'
+			| 'Swatch 1'
+			| 'Swatch 2'
+			| 'Swatch 3'
+			| 'Swatch 4'
+			| 'Swatch 5'
+			| 'Swatch 6'
+			| 'Swatch 7'
+			| 'Swatch 8'
+			| 'Swatch 9'
+			| 'Swatch 10'
+			| 'Swatch 11'
+			| 'Swatch 12'
+			| 'Swatch 13'
+			| 'Swatch 14'
+			| 'Swatch 15'
+			| 'Unpainted metal'
+			| 'Copper Finish'
+			| 'Chrome Finish'
+			| 'Caterium Finish'
+			| 'Carbon Steel Finish';
+		mProducedIn: [
+			'/Game/FactoryGame/Equipment/BuildGun/BP_BuildGun.BP_BuildGun_C',
+		];
+	};
+
 export type FGCustomizationRecipe__FGRecipe__type =
 	common_base__FGCustomizationRecipe__FGRecipe__type & {
 		mProducedIn:
@@ -50,62 +80,5 @@ export type FGCustomizationRecipe__FGRecipe__type =
 
 export type FGCustomizationRecipe__NativeClass =
 	NativeClass__type & {
-		Classes: [
-			FGCustomizationRecipe__FGRecipe__type & {
-				mDisplayName:
-					| 'N/A'
-					| 'Custom Slot'
-					| 'Swatch 1'
-					| 'Swatch 2'
-					| 'Swatch 3'
-					| 'Swatch 4'
-					| 'Swatch 5'
-					| 'Swatch 6'
-					| 'Swatch 7'
-					| 'Swatch 8'
-					| 'Swatch 9'
-					| 'Swatch 10'
-					| 'Swatch 11'
-					| 'Swatch 12'
-					| 'Swatch 13'
-					| 'Swatch 14'
-					| 'Swatch 15'
-					| 'Unpainted metal'
-					| 'Copper Finish'
-					| 'Chrome Finish'
-					| 'Caterium Finish'
-					| 'Carbon Steel Finish';
-				mProducedIn: [
-					'/Game/FactoryGame/Equipment/BuildGun/BP_BuildGun.BP_BuildGun_C',
-				];
-			},
-			...(FGCustomizationRecipe__FGRecipe__type & {
-				mDisplayName:
-					| 'N/A'
-					| 'Custom Slot'
-					| 'Swatch 1'
-					| 'Swatch 2'
-					| 'Swatch 3'
-					| 'Swatch 4'
-					| 'Swatch 5'
-					| 'Swatch 6'
-					| 'Swatch 7'
-					| 'Swatch 8'
-					| 'Swatch 9'
-					| 'Swatch 10'
-					| 'Swatch 11'
-					| 'Swatch 12'
-					| 'Swatch 13'
-					| 'Swatch 14'
-					| 'Swatch 15'
-					| 'Unpainted metal'
-					| 'Copper Finish'
-					| 'Chrome Finish'
-					| 'Caterium Finish'
-					| 'Carbon Steel Finish';
-				mProducedIn: [
-					'/Game/FactoryGame/Equipment/BuildGun/BP_BuildGun.BP_BuildGun_C',
-				];
-			})[],
-		];
+		Classes: [FGCustomizationRecipe__type, ...FGCustomizationRecipe__type[]];
 	};

@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (560 of 560)
+100.00% Complete (562 of 562)
 
 ## Basic Types
 
@@ -646,6 +646,7 @@
 
 -   [x] FGChargedWeapon
 -   [x] FGChargedWeapon--merged
+-   [x] FGChargedWeapon--pre-1.1
 
 ## FGConsumableDescriptor
 
@@ -663,6 +664,7 @@
 
 ## FGCustomizationRecipe
 
+-   [x] FGCustomizationRecipe
 -   [x] FGCustomizationRecipe--FGRecipe
 
 ## FGEquipment

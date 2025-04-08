@@ -568,6 +568,17 @@
 			"type": "object",
 			"$ref": "1.1.schema.json#/$defs/FGSuitBase--merged",
 			"unevaluatedProperties": false
+		},
+		"FGChargedWeapon": {
+			"type": "object",
+			"$ref": "1.0.schema.json#/$defs/FGChargedWeapon--pre-1.1",
+			"unevaluatedProperties": false,
+			"required": ["bHasDispensedProjectiles"],
+			"properties": {
+				"bHasDispensedProjectiles": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				}
+			}
 		}
 	},
 	"items": false,
@@ -779,6 +790,99 @@
 					},
 					"minItems": 1,
 					"maxItems": 1
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGConsumableEquipment'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"maxItems": 2,
+					"items": false,
+					"prefixItems": [
+						{
+							"type": "object",
+							"$ref": "1.0.schema.json#/$defs/FGConsumableEquipment--equipment",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "1.0.schema.json#/$defs/FGConsumableEquipment--medkit",
+							"unevaluatedProperties": false
+						}
+					]
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGChargedWeapon'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"$ref": "#/$defs/FGChargedWeapon",
+						"unevaluatedProperties": false
+					},
+					"minItems": 1,
+					"maxItems": 1
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGResourceDescriptor'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"$ref": "1.0.schema.json#/$defs/FGResourceDescriptor",
+						"unevaluatedProperties": false
+					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGCustomizationRecipe'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "1.0.schema.json#/$defs/FGCustomizationRecipe"
+					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGItemDescriptorBiomass'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"$ref": "1.0.schema.json#/$defs/FGItemDescriptorBiomass",
+						"unevaluatedProperties": false
+					}
 				}
 			}
 		}

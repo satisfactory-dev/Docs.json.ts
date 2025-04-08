@@ -4,6 +4,8 @@ import {FGBuildableBlueprintDesigner__base__type} from '../classes/CoreUObject/F
 
 import {FGBuildableResourceExtractor__miner__base__type} from '../classes/CoreUObject/FGBuildableResourceExtractor';
 
+import {FGChargedWeapon__merged__type} from '../classes/CoreUObject/FGChargedWeapon';
+
 import {
 	xyz__type,
 	quaternion__type,
@@ -187,6 +189,238 @@ export type FGBuildableTradingPost__version_1__type =
 		mLockerVisibilityLevel: integer_string__type;
 		mMiniGameAndCalendarVisibilityLevel: integer_string__type;
 	};
+
+export type FGChargedWeapon__pre_1_1__type = FGChargedWeapon__merged__type & {
+	AmmoTypeToAkEvent: [
+		[
+			(
+				| UnrealEngineString<
+						'/Script/Engine.BlueprintGeneratedClass',
+						StringStartsWith<'/Game/FactoryGame/'>
+				>
+				| UnrealEngineString<
+						'/Script/AkAudio.AkAudioEvent',
+						StringStartsWith<'/Game/WwiseAudio/Events/'>
+				>
+			),
+			(
+				| UnrealEngineString<
+						'/Script/Engine.BlueprintGeneratedClass',
+						StringStartsWith<'/Game/FactoryGame/'>
+				>
+				| UnrealEngineString<
+						'/Script/AkAudio.AkAudioEvent',
+						StringStartsWith<'/Game/WwiseAudio/Events/'>
+				>
+			),
+		],
+		...[
+			(
+				| UnrealEngineString<
+						'/Script/Engine.BlueprintGeneratedClass',
+						StringStartsWith<'/Game/FactoryGame/'>
+				>
+				| UnrealEngineString<
+						'/Script/AkAudio.AkAudioEvent',
+						StringStartsWith<'/Game/WwiseAudio/Events/'>
+				>
+			),
+			(
+				| UnrealEngineString<
+						'/Script/Engine.BlueprintGeneratedClass',
+						StringStartsWith<'/Game/FactoryGame/'>
+				>
+				| UnrealEngineString<
+						'/Script/AkAudio.AkAudioEvent',
+						StringStartsWith<'/Game/WwiseAudio/Events/'>
+				>
+			),
+		][],
+	];
+	mPrimaryFireStartMontageList: {
+		Montages: [
+			{
+				Montage_1P: Montage_1P__type;
+				Montage_3P: Montage_3P__type;
+				Montage_Equipment: UnrealEngineString<
+					'/Script/Engine.AnimMontage',
+					StringStartsWith<'/Game/FactoryGame/Equipment/NobeliskDetonator/Animation/'>
+				>;
+				AudioEvent: UnrealEngineString<
+					'/Script/AkAudio.AkAudioEvent',
+					StringStartsWith<'/Game/WwiseAudio/Events/Equipment/Nobelisk/'>
+				>;
+				bSeparate3PAudioEvent: boolean__type;
+				AudioEvent3P: UnrealEngineString<
+					'/Script/AkAudio.AkAudioEvent',
+					StringStartsWith<'/Game/WwiseAudio/Events/Equipment/Nobelisk/'>
+				>;
+			},
+		];
+	};
+	mReloadMontageList: {
+		Montages: [
+			{
+				Montage_1P: Montage_1P__type;
+				Montage_3P: Montage_3P__type;
+				Montage_Equipment: UnrealEngineString<
+					'/Script/Engine.AnimMontage',
+					StringStartsWith<'/Game/FactoryGame/Equipment/NobeliskDetonator/Animation/'>
+				>;
+				AudioEvent: UnrealEngineString<
+					'/Script/AkAudio.AkAudioEvent',
+					StringStartsWith<'/Game/WwiseAudio/Events/Equipment/Nobelisk/'>
+				>;
+				bSeparate3PAudioEvent: boolean__type;
+				AudioEvent3P: UnrealEngineString<
+					'/Script/AkAudio.AkAudioEvent',
+					StringStartsWith<'/Game/WwiseAudio/Events/Equipment/Nobelisk/'>
+				>;
+			},
+		];
+	};
+	mSecondaryFireMontageList: {
+		Montages: [
+			{
+				Filter: boolean__type;
+				FilterMontageTag: FilterMontageTag__type;
+				InvertFilter?: boolean__type;
+				Exclusive: boolean__type;
+				Montage_1P: Montage_1P__type;
+				Montage_3P: Montage_3P__type;
+				Montage_Equipment: UnrealEngineString<
+					'/Script/Engine.AnimMontage',
+					StringStartsWith<'/Game/FactoryGame/Equipment/NobeliskDetonator/Animation/'>
+				>;
+			},
+			...{
+				Filter: boolean__type;
+				FilterMontageTag: FilterMontageTag__type;
+				InvertFilter?: boolean__type;
+				Exclusive: boolean__type;
+				Montage_1P: Montage_1P__type;
+				Montage_3P: Montage_3P__type;
+				Montage_Equipment: UnrealEngineString<
+					'/Script/Engine.AnimMontage',
+					StringStartsWith<'/Game/FactoryGame/Equipment/NobeliskDetonator/Animation/'>
+				>;
+			}[],
+		];
+	};
+	mPrimaryFireEndMontageList: {
+		Montages: [
+			{
+				Filter: boolean__type;
+				FilterMontageTag: FilterMontageTag__charged__type;
+				Exclusive: boolean__type;
+				Montage_1P: Montage_1P__type;
+				Montage_3P: Montage_3P__type;
+				Montage_Equipment: UnrealEngineString<
+					'/Script/Engine.AnimMontage',
+					StringStartsWith<'/Game/FactoryGame/Equipment/NobeliskDetonator/Animation/'>
+				>;
+				AudioEvent: UnrealEngineString<
+					'/Script/AkAudio.AkAudioEvent',
+					StringStartsWith<'/Game/WwiseAudio/Events/Equipment/Nobelisk/'>
+				>;
+				bSeparate3PAudioEvent: boolean__type;
+				AudioEvent3P: UnrealEngineString<
+					'/Script/AkAudio.AkAudioEvent',
+					StringStartsWith<'/Game/WwiseAudio/Events/Equipment/Nobelisk/'>
+				>;
+				CameraAnim?: CameraAnim__type;
+			},
+			{
+				Filter: boolean__type;
+				FilterMontageTag: FilterMontageTag__charged__type;
+				Exclusive: boolean__type;
+				Montage_1P: Montage_1P__type;
+				Montage_3P: Montage_3P__type;
+				Montage_Equipment: UnrealEngineString<
+					'/Script/Engine.AnimMontage',
+					StringStartsWith<'/Game/FactoryGame/Equipment/NobeliskDetonator/Animation/'>
+				>;
+				AudioEvent: UnrealEngineString<
+					'/Script/AkAudio.AkAudioEvent',
+					StringStartsWith<'/Game/WwiseAudio/Events/Equipment/Nobelisk/'>
+				>;
+				bSeparate3PAudioEvent: boolean__type;
+				AudioEvent3P: UnrealEngineString<
+					'/Script/AkAudio.AkAudioEvent',
+					StringStartsWith<'/Game/WwiseAudio/Events/Equipment/Nobelisk/'>
+				>;
+				CameraAnim?: CameraAnim__type;
+			},
+			{
+				Filter: boolean__type;
+				FilterMontageTag: FilterMontageTag__charged__type;
+				Exclusive: boolean__type;
+				Montage_1P: Montage_1P__type;
+				Montage_3P: Montage_3P__type;
+				Montage_Equipment: UnrealEngineString<
+					'/Script/Engine.AnimMontage',
+					StringStartsWith<'/Game/FactoryGame/Equipment/NobeliskDetonator/Animation/'>
+				>;
+				AudioEvent: UnrealEngineString<
+					'/Script/AkAudio.AkAudioEvent',
+					StringStartsWith<'/Game/WwiseAudio/Events/Equipment/Nobelisk/'>
+				>;
+				bSeparate3PAudioEvent: boolean__type;
+				AudioEvent3P: UnrealEngineString<
+					'/Script/AkAudio.AkAudioEvent',
+					StringStartsWith<'/Game/WwiseAudio/Events/Equipment/Nobelisk/'>
+				>;
+				CameraAnim?: CameraAnim__type;
+			},
+		];
+	};
+	mEquipMontage?: {
+		Montages: [
+			{
+				Filter: boolean__type;
+				FilterMontageTag: FilterMontageTag__type;
+				InvertFilter?: boolean__type;
+				Exclusive: boolean__type;
+				Montage_1P: Montage_1P__type;
+				Montage_3P: Montage_3P__type;
+				Montage_Equipment: UnrealEngineString<
+					'/Script/Engine.AnimMontage',
+					StringStartsWith<'/Game/FactoryGame/Equipment/NobeliskDetonator/Animation/'>
+				>;
+			},
+			{
+				Filter: boolean__type;
+				FilterMontageTag: FilterMontageTag__type;
+				InvertFilter?: boolean__type;
+				Exclusive: boolean__type;
+				Montage_1P: Montage_1P__type;
+				Montage_3P: Montage_3P__type;
+				Montage_Equipment: UnrealEngineString<
+					'/Script/Engine.AnimMontage',
+					StringStartsWith<'/Game/FactoryGame/Equipment/NobeliskDetonator/Animation/'>
+				>;
+			},
+		];
+	};
+	mStingerMontage?: {
+		Montages: [
+			{
+				Montage_1P: Montage_1P__type;
+				Montage_3P: Montage_3P__type;
+				Montage_Equipment: UnrealEngineString<
+					'/Script/Engine.AnimMontage',
+					StringStartsWith<'/Game/FactoryGame/Equipment/NobeliskDetonator/Animation/'>
+				>;
+				AudioEvent: UnrealEngineString<
+					'/Script/AkAudio.AkAudioEvent',
+					StringStartsWith<'/Game/WwiseAudio/Events/Equipment/Nobelisk/'>
+				>;
+			},
+		];
+	};
+	mUnEquipMontage?: empty_object__type;
+	mReleaseCooldown: decimal_string__type;
+};
 
 export type FGSuitBase__1_0__type = FGSuitBase__1_0__pre_1_1__type & {
 	mEquipMontage: {
