@@ -1171,16 +1171,23 @@
 				}
 			}
 		},
-		"common-base--FGBuildable--pole--base--no-static": {
+		"common-base--FGBuildable--pole--base--no-static--pre-1.1": {
 			"type": "object",
 			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--base",
-			"required": ["mCanStack", "mStackHeight"],
+			"required": ["mStackHeight"],
+			"properties": {
+				"mStackHeight": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				}
+			}
+		},
+		"common-base--FGBuildable--pole--base--no-static": {
+			"type": "object",
+			"$ref": "#/$defs/common-base--FGBuildable--pole--base--no-static--pre-1.1",
+			"required": ["mCanStack"],
 			"properties": {
 				"mCanStack": {
 					"$ref": "common.schema.json#/$defs/boolean"
-				},
-				"mStackHeight": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
 		},

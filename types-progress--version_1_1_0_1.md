@@ -1,6 +1,6 @@
 # Types Progress
 
-55.17% Complete (32 of 58)
+55.88% Complete (38 of 68)
 
 ## Basic Types
 
@@ -27,6 +27,8 @@
 ## common-base
 
 -   [x] common-base--FGBuildable--base (common type)
+-   [x] common-base--FGBuildable--occupied (common type)
+-   [x] common-base--FGBuildable--tiered (common type)
 -   [x] common-base--FGBuildableRailroadTrack (common type)
 -   [x] common-base--FGBuildableRailroadTrack--properties
 -   [x] common-base--FGBuildingDescriptor--base (common type)
@@ -63,8 +65,15 @@
 
 -   [x] FGBuildableBeam
 -   [x] FGBuildableRailroadTrack
+-   [ ] FGBuildableTradingPost
 -   [ ] FGBuildableWallLightweight
 -   [x] FGBuildable--base
+-   [x] FGBuildable--occupied--final
+-   [x] FGBuildable--occupied--merged
+-   [ ] FGBuildable--pole--base--no-static
+-   [ ] FGBuildable--pole--base--no-static--merged
+-   [x] FGBuildable--tiered
+-   [x] FGBuildable--tiered--merged
 
 ## FGBuildableBeam
 
@@ -74,6 +83,10 @@
 ## FGBuildableRailroadTrack
 
 -   [x] FGBuildableRailroadTrack--merged
+
+## FGBuildableTradingPost
+
+-   [ ] FGBuildableTradingPost--merged
 
 ## FGBuildableWallLightweight
 

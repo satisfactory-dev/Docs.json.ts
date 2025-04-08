@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (346 of 346)
+100.00% Complete (347 of 347)
 
 ## Basic Types
 
@@ -83,6 +83,7 @@
 -   [x] common-base--FGBuildable--pipeline-accessory--base (common type)
 -   [x] common-base--FGBuildable--pipeline-flow-accessory (common type)
 -   [x] common-base--FGBuildable--pole--base--no-static (common type)
+-   [x] common-base--FGBuildable--pole--base--no-static--pre-1.1
 -   [x] common-base--FGBuildable--pole--base--with-static (common type)
 -   [x] common-base--FGBuildable--power-switch--base (common type)
 -   [x] common-base--FGBuildable--splitter--base (common type)

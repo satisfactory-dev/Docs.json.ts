@@ -482,6 +482,11 @@ export type common_base__FGAmmoTypeSpreadshot__pre_1_1__type = {
 	mSpreadAngleDegrees: decimal_string__type;
 };
 
+export type common_base__FGBuildable__pole__base__no_static__pre_1_1__type =
+	common_base__FGBuildable__base__type & {
+		mStackHeight: decimal_string__type;
+	};
+
 export type common_base__FGBuildableResourceExtractor__miner_mk3__type =
 	common_base__FGBuildableResourceExtractor__miner__base__type & {
 		mInternalMiningState_0: 'NewEnumerator0';

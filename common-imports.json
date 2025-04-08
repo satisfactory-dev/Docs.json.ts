@@ -19,6 +19,7 @@
 	"common_type__common_base__FGAmmoTypeProjectile__base__pre_1_1__type": "common/unassigned",
 	"common_type__common_base__FGAmmoTypeProjectile__pre_1_1__type": "common/unassigned",
 	"common_type__common_base__FGAmmoTypeSpreadshot__pre_1_1__type": "common/unassigned",
+	"common_type__common_base__FGBuildable__pole__base__no_static__pre_1_1__type": "common/unassigned",
 	"common_type__common_base__FGBuildableResourceExtractor__miner_mk3__type": "common/unassigned",
 	"common_type__common_base__FGWeapon__base__pre_1_1__type": "common/unassigned",
 	"common_type__common_base__MaterialSlotName__type": "common/unassigned",

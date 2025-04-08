@@ -579,6 +579,69 @@
 					"$ref": "common.schema.json#/$defs/boolean"
 				}
 			}
+		},
+		"FGBuildableTradingPost--merged": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableTradingPost--version-1"
+				},
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildable--consumes-power-base"
+				},
+				{
+					"$ref": "1.1.schema.json#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableTradingPost": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableTradingPost--merged",
+			"unevaluatedProperties": false
+		},
+		"FGBuildable--occupied--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildable--occupied"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildable--occupied--final": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--occupied--merged",
+			"unevaluatedProperties": false
+		},
+		"FGBuildable--tiered--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildable--tiered"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildable--tiered": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--tiered--merged",
+			"unevaluatedProperties": false
+		},
+		"FGBuildable--pole--base--no-static--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildable--pole--base--no-static--pre-1.1"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildable--pole--base--no-static": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--pole--base--no-static--merged",
+			"unevaluatedProperties": false
 		}
 	},
 	"items": false,
@@ -883,6 +946,130 @@
 						"$ref": "1.0.schema.json#/$defs/FGItemDescriptorBiomass",
 						"unevaluatedProperties": false
 					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableTradingPost'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"$ref": "1.1.schema.json#/$defs/FGBuildableTradingPost",
+						"unevaluatedProperties": false
+					},
+					"minItems": 1,
+					"maxItems": 1
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGRecipe'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"$ref": "1.0.schema.json#/$defs/FGRecipe",
+						"unevaluatedProperties": false
+					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildable'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "#/$defs/FGBuildable--base",
+								"unevaluatedProperties": false
+							},
+							{
+								"type": "object",
+								"$ref": "#/$defs/FGBuildable--occupied--final",
+								"unevaluatedProperties": false
+							},
+							{
+								"type": "object",
+								"$ref": "#/$defs/FGBuildable--tiered",
+								"unevaluatedProperties": false
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGEquipmentStunSpear'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 3,
+					"maxItems": 3,
+					"items": false,
+					"prefixItems": [
+						{
+							"type": "object",
+							"$ref": "1.0.schema.json#/$defs/FGEquipmentStunSpear--xeno-zapper",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "1.0.schema.json#/$defs/FGEquipmentStunSpear",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "1.0.schema.json#/$defs/FGEquipmentStunSpear--candy-cane-basher",
+							"unevaluatedProperties": false
+						}
+					]
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePoleBase'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "1.1.schema.json#/$defs/FGBuildable--base",
+								"unevaluatedProperties": false
+							},
+							{
+								"type": "object",
+								"$ref": "1.1.schema.json#/$defs/FGBuildable--pole--base--no-static",
+								"unevaluatedProperties": false
+							}
+						]
+					},
+					"minItems": 1,
+					"maxItems": 1
 				}
 			}
 		}

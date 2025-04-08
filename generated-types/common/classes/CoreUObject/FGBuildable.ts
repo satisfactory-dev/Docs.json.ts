@@ -1,20 +1,21 @@
 import {StringPassedRegExp} from '../../utils/validators';
 
 import {
-	decimal_string__signed__type,
-	boolean__type,
-	decimal_string__type,
-	integer_string__signed__type,
-	integer_string__type,
-} from '../../common/scalar';
-
-import {
+	common_base__FGBuildable__pole__base__no_static__pre_1_1__type,
 	empty_object__type,
 	xyz__type,
 	UnrealEngineString__array__type,
 	None__type,
 	class__type,
 } from '../../common/unassigned';
+
+import {
+	decimal_string__signed__type,
+	boolean__type,
+	decimal_string__type,
+	integer_string__signed__type,
+	integer_string__type,
+} from '../../common/scalar';
 
 export type common_base__FGBuildable__base__type = class__type & {
 	MaxRenderDistance: decimal_string__signed__type;
@@ -160,9 +161,8 @@ export type common_base__FGBuildable__pipeline_flow_accessory__type =
 	};
 
 export type common_base__FGBuildable__pole__base__no_static__type =
-	common_base__FGBuildable__base__type & {
+	common_base__FGBuildable__pole__base__no_static__pre_1_1__type & {
 		mCanStack: boolean__type;
-		mStackHeight: decimal_string__type;
 	};
 
 export type common_base__FGBuildable__pole__base__with_static__type =
