@@ -716,6 +716,106 @@
 					}
 				}
 			}
+		},
+		"FGBuildableConveyorBelt--merged": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableConveyorBelt--pre-1.1"
+				},
+				{
+					"$ref": "1.1.schema.json#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableConveyorBelt": {
+			"type": "object",
+			"$ref": "1.1.schema.json#/$defs/FGBuildableConveyorBelt--merged",
+			"unevaluatedProperties": false,
+			"required": [
+				"mAttachedThroughputMonitors"
+			],
+			"properties": {
+				"mAttachedThroughputMonitors": {
+					"type": "string",
+					"const": ""
+				}
+			}
+		},
+		"FGBuildableWire": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableWire--merged"
+				},
+				{
+					"$ref": "1.1.schema.json#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildablePowerPole": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildablePowerPole--merged"
+				},
+				{
+					"$ref": "1.1.schema.json#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"mStatisticGameplayTag": {
+			"type": "string",
+			"minLength": 1,
+			"typed_string": {
+				"required": ["TagName"],
+				"properties": {
+					"TagName": {
+						"type": "string",
+						"enum": [
+							"Stats.Gameplay.Schematics.Schematic_Tutorial1",
+							"Stats.Gameplay.Schematics.Schematic_Tutorial1_5",
+							"Stats.Gameplay.Schematics.Schematic_Tutorial2",
+							"Stats.Gameplay.Schematics.Schematic_Tutorial3",
+							"Stats.Gameplay.Schematics.Schematic_Tutorial4",
+							"Stats.Gameplay.Schematics.Schematic_Tutorial5"
+						]
+					}
+				}
+			}
+		},
+		"FGSchematic--base": {
+			"type": "object",
+			"$ref": "1.0.schema.json#/$defs/FGSchematic--base--properties",
+			"required": [
+				"mStatisticGameplayTag"
+			],
+			"properties": {
+				"mStatisticGameplayTag": {
+					"oneOf": [
+						{"$ref": "common.schema.json#/$defs/empty-object"},
+						{"$ref": "1.0.schema.json#/$defs/mStatisticGameplayTag"},
+						{"$ref": "1.1.schema.json#/$defs/mStatisticGameplayTag"}
+					]
+				}
+			}
+		},
+		"FGSchematic": {
+			"type": "object",
+			"$ref": "#/$defs/FGSchematic--base",
+			"unevaluatedProperties": false
+		},
+		"FGSchematic--with-unlocks--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGSchematic--with-unlocks"
+				},
+				{
+					"$ref": "1.1.schema.json#/$defs/FGSchematic--base"
+				}
+			]
+		},
+		"FGSchematic--with-unlocks": {
+			"type": "object",
+			"$ref": "#/$defs/FGSchematic--with-unlocks--merged",
+			"unevaluatedProperties": false
 		}
 	},
 	"items": false,
@@ -1162,6 +1262,84 @@
 					},
 					"minItems": 1,
 					"maxItems": 1
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableConveyorBelt'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"$ref": "1.1.schema.json#/$defs/FGBuildableConveyorBelt",
+						"unevaluatedProperties": false
+					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableWire'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 2,
+					"maxItems": 2,
+					"items": {
+						"type": "object",
+						"$ref": "1.1.schema.json#/$defs/FGBuildableWire",
+						"unevaluatedProperties": false
+					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePowerPole'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"$ref": "1.1.schema.json#/$defs/FGBuildablePowerPole",
+						"unevaluatedProperties": false
+					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGSchematic'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "1.1.schema.json#/$defs/FGSchematic",
+								"unevaluatedProperties": false
+							},
+							{
+								"type": "object",
+								"$ref": "1.1.schema.json#/$defs/FGSchematic--with-unlocks",
+								"unevaluatedProperties": false
+							}
+						]
+					}
 				}
 			}
 		}

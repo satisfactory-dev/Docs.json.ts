@@ -1,5 +1,7 @@
 import {UnrealEngineString, StringStartsWith} from '../utils/validators';
 
+import {FGBuildableConveyorBelt__merged__type} from '../classes/CoreUObject/FGBuildableConveyorBelt';
+
 import {FGBuildableBlueprintDesigner__base__type} from '../classes/CoreUObject/FGBuildableBlueprintDesigner';
 
 import {FGBuildableResourceExtractor__miner__base__type} from '../classes/CoreUObject/FGBuildableResourceExtractor';
@@ -74,6 +76,9 @@ export type FGBuildableBlueprintDesigner__mk3__type =
 		ClassName: 'Build_BlueprintDesigner_Mk3_C';
 		mDisplayName: 'Blueprint Designer Mk.3';
 	};
+
+export type FGBuildableConveyorBelt__pre_1_1__type =
+	FGBuildableConveyorBelt__merged__type;
 
 export type FGBuildableDroneStation__version_1__type =
 	common_base__FGBuildableDroneStation__type & {
@@ -531,3 +536,49 @@ export type Montage_3P__type = UnrealEngineString<
 	'/Script/Engine.AnimMontage',
 	StringStartsWith<'/Game/FactoryGame/Character/Player/Animation/ThirdPerson/'>
 >;
+
+export type mStatisticGameplayTag__type = {
+	TagName:
+		| 'Stats.Gameplay.Schematics.Schematic2-5'
+		| 'Stats.Gameplay.Schematics.Schematic3-1'
+		| 'Stats.Gameplay.Schematics.Schematic9-2'
+		| 'Stats.Gameplay.Schematics.Schematic9-1'
+		| 'Stats.Gameplay.Schematics.Schematic5-1'
+		| 'Stats.Gameplay.Schematics.Schematic3-4'
+		| 'Stats.Gameplay.Schematics.Schematic5-4'
+		| 'Stats.Gameplay.Schematics.Schematic7-1'
+		| 'Stats.Gameplay.Schematics.Schematic4-1'
+		| 'Stats.Gameplay.Schematics.Schematic5-2'
+		| 'Stats.Gameplay.Schematics.Schematic2-1'
+		| 'Stats.Gameplay.Schematics.Schematic8-5'
+		| 'Stats.Gameplay.Schematics.Schematic7-5'
+		| 'Stats.Gameplay.Schematics.Schematic8-1'
+		| 'Stats.Gameplay.Schematics.Schematic8-2'
+		| 'Stats.Gameplay.Schematics.Schematic7-4'
+		| 'Stats.Gameplay.Schematics.Schematic7-2'
+		| 'Stats.Gameplay.Schematics.Schematic8-4'
+		| 'Stats.Gameplay.Schematics.Schematic9-5'
+		| 'Stats.Gameplay.Schematics.Schematic9-4'
+		| 'Stats.Gameplay.Schematics.Schematic9-3'
+		| 'Stats.Gameplay.Schematics.Schematic8-3'
+		| 'Stats.Gameplay.Schematics.Schematic7-3'
+		| 'Stats.Gameplay.Schematics.Schematic6-7'
+		| 'Stats.Gameplay.Schematics.Schematic6-6'
+		| 'Stats.Gameplay.Schematics.Schematic6-5'
+		| 'Stats.Gameplay.Schematics.Schematic6-3'
+		| 'Stats.Gameplay.Schematics.Schematic6-2'
+		| 'Stats.Gameplay.Schematics.Schematic6-1'
+		| 'Stats.Gameplay.Schematics.Schematic5-5'
+		| 'Stats.Gameplay.Schematics.Schematic5-3'
+		| 'Stats.Gameplay.Schematics.Schematic4-5'
+		| 'Stats.Gameplay.Schematics.Schematic4-4'
+		| 'Stats.Gameplay.Schematics.Schematic4-3'
+		| 'Stats.Gameplay.Schematics.Schematic4-2'
+		| 'Stats.Gameplay.Schematics.Schematic3-3'
+		| 'Stats.Gameplay.Schematics.Schematic3-2'
+		| 'Stats.Gameplay.Schematics.Schematic2-3'
+		| 'Stats.Gameplay.Schematics.Schematic2-2'
+		| 'Stats.Gameplay.Schematics.Schematic1-3'
+		| 'Stats.Gameplay.Schematics.Schematic1-2'
+		| 'Stats.Gameplay.Schematics.Schematic1-1';
+};

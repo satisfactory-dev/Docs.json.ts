@@ -1,6 +1,6 @@
 # Types Progress
 
-54.29% Complete (38 of 70)
+49.37% Complete (39 of 79)
 
 ## Basic Types
 
@@ -16,6 +16,7 @@
 -   [x] FGChargedWeapon
 -   [x] integer-string (common type)
 -   [x] integer-string--signed (common type)
+-   [x] mStatisticGameplayTag
 -   [x] NativeClass (common type)
 -   [x] None (common type)
 -   [x] Texture2D (common type)
@@ -64,10 +65,13 @@
 ## FGBuildable
 
 -   [x] FGBuildableBeam
+-   [ ] FGBuildableConveyorBelt
 -   [ ] FGBuildablePoleConveyor
+-   [ ] FGBuildablePowerPole
 -   [x] FGBuildableRailroadTrack
 -   [ ] FGBuildableTradingPost
 -   [ ] FGBuildableWallLightweight
+-   [ ] FGBuildableWire
 -   [x] FGBuildable--base
 -   [x] FGBuildable--occupied--final
 -   [x] FGBuildable--occupied--merged
@@ -80,6 +84,10 @@
 
 -   [x] FGBuildableBeam--base
 -   [x] FGBuildableBeam--merged
+
+## FGBuildableConveyorBelt
+
+-   [ ] FGBuildableConveyorBelt--merged
 
 ## FGBuildablePoleConveyor
 
@@ -102,6 +110,13 @@
 -   [x] FGBuildingDescriptor
 -   [x] FGBuildingDescriptor--base
 -   [x] FGBuildingDescriptor--merged
+
+## FGSchematic
+
+-   [ ] FGSchematic
+-   [ ] FGSchematic--base
+-   [ ] FGSchematic--with-unlocks
+-   [ ] FGSchematic--with-unlocks--merged
 
 ## FGSuitBase
 

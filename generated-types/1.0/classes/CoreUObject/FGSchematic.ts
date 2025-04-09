@@ -1,3 +1,5 @@
+import {mStatisticGameplayTag__type} from '../../common/unassigned';
+
 import {
 	integer_string__type,
 	decimal_string__type,
@@ -21,7 +23,13 @@ import {
 
 export type FGSchematic__type = FGSchematic__base__type;
 
-export type FGSchematic__base__type =
+export type FGSchematic__base__type = FGSchematic__base__properties__type & {
+	mStatisticGameplayTag:
+		| empty_object__type
+		| mStatisticGameplayTag__type;
+};
+
+export type FGSchematic__base__properties__type =
 	common_base__FGSchematic__base__type & {
 		mType:
 			| 'EST_Custom'
@@ -32,53 +40,6 @@ export type FGSchematic__base__type =
 			| 'EST_MAM'
 			| 'EST_HardDrive'
 			| 'EST_Tutorial';
-		mStatisticGameplayTag:
-			| empty_object__type
-			| {
-					TagName:
-						| 'Stats.Gameplay.Schematics.Schematic2-5'
-						| 'Stats.Gameplay.Schematics.Schematic3-1'
-						| 'Stats.Gameplay.Schematics.Schematic9-2'
-						| 'Stats.Gameplay.Schematics.Schematic9-1'
-						| 'Stats.Gameplay.Schematics.Schematic5-1'
-						| 'Stats.Gameplay.Schematics.Schematic3-4'
-						| 'Stats.Gameplay.Schematics.Schematic5-4'
-						| 'Stats.Gameplay.Schematics.Schematic7-1'
-						| 'Stats.Gameplay.Schematics.Schematic4-1'
-						| 'Stats.Gameplay.Schematics.Schematic5-2'
-						| 'Stats.Gameplay.Schematics.Schematic2-1'
-						| 'Stats.Gameplay.Schematics.Schematic8-5'
-						| 'Stats.Gameplay.Schematics.Schematic7-5'
-						| 'Stats.Gameplay.Schematics.Schematic8-1'
-						| 'Stats.Gameplay.Schematics.Schematic8-2'
-						| 'Stats.Gameplay.Schematics.Schematic7-4'
-						| 'Stats.Gameplay.Schematics.Schematic7-2'
-						| 'Stats.Gameplay.Schematics.Schematic8-4'
-						| 'Stats.Gameplay.Schematics.Schematic9-5'
-						| 'Stats.Gameplay.Schematics.Schematic9-4'
-						| 'Stats.Gameplay.Schematics.Schematic9-3'
-						| 'Stats.Gameplay.Schematics.Schematic8-3'
-						| 'Stats.Gameplay.Schematics.Schematic7-3'
-						| 'Stats.Gameplay.Schematics.Schematic6-7'
-						| 'Stats.Gameplay.Schematics.Schematic6-6'
-						| 'Stats.Gameplay.Schematics.Schematic6-5'
-						| 'Stats.Gameplay.Schematics.Schematic6-3'
-						| 'Stats.Gameplay.Schematics.Schematic6-2'
-						| 'Stats.Gameplay.Schematics.Schematic6-1'
-						| 'Stats.Gameplay.Schematics.Schematic5-5'
-						| 'Stats.Gameplay.Schematics.Schematic5-3'
-						| 'Stats.Gameplay.Schematics.Schematic4-5'
-						| 'Stats.Gameplay.Schematics.Schematic4-4'
-						| 'Stats.Gameplay.Schematics.Schematic4-3'
-						| 'Stats.Gameplay.Schematics.Schematic4-2'
-						| 'Stats.Gameplay.Schematics.Schematic3-3'
-						| 'Stats.Gameplay.Schematics.Schematic3-2'
-						| 'Stats.Gameplay.Schematics.Schematic2-3'
-						| 'Stats.Gameplay.Schematics.Schematic2-2'
-						| 'Stats.Gameplay.Schematics.Schematic1-3'
-						| 'Stats.Gameplay.Schematics.Schematic1-2'
-						| 'Stats.Gameplay.Schematics.Schematic1-1';
-			};
 		mSchematicUnlockTag:
 			| empty_object__type
 			| {

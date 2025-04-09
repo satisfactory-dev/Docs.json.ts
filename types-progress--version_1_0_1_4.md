@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (565 of 565)
+100.00% Complete (568 of 568)
 
 ## Basic Types
 
@@ -32,6 +32,7 @@
 -   [x] Montage_1P
 -   [x] Montage_3P
 -   [x] mPlatformDockingStatus (common type)
+-   [x] mStatisticGameplayTag
 -   [x] NativeClass (common type)
 -   [x] None (common type)
 -   [x] Texture2D (common type)
@@ -362,6 +363,7 @@
 -   [x] FGBuildableConveyorBelt--base
 -   [x] FGBuildableConveyorBelt--base--merged
 -   [x] FGBuildableConveyorBelt--merged
+-   [x] FGBuildableConveyorBelt--pre-1.1
 
 ## FGBuildableConveyorLift
 
@@ -786,6 +788,7 @@
 
 -   [x] FGSchematic
 -   [x] FGSchematic--base
+-   [x] FGSchematic--base--properties
 -   [x] FGSchematic--mItemStackLimitIncrease
 -   [x] FGSchematic--mNumSlotsToUnlock
 -   [x] FGSchematic--mUnlocks_Class

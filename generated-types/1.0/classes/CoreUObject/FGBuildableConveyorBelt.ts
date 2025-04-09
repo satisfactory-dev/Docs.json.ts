@@ -1,3 +1,5 @@
+import {FGBuildableConveyorBelt__pre_1_1__type} from '../../common/unassigned';
+
 import {FGBuildable__base__type} from './FGBuildable';
 
 import {integer_string__signed__type} from '../../../common/common/scalar';
@@ -10,7 +12,7 @@ import {
 import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableConveyorBelt__type =
-	FGBuildableConveyorBelt__merged__type;
+	FGBuildableConveyorBelt__pre_1_1__type;
 
 export type FGBuildableConveyorBelt__base__type =
 	FGBuildableConveyorBelt__base__merged__type & {
