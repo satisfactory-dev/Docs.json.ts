@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (568 of 568)
+100.00% Complete (570 of 570)
 
 ## Basic Types
 
@@ -433,8 +433,10 @@
 -   [x] FGBuildableGeneratorFuel--base--merged
 -   [x] FGBuildableGeneratorFuel--biogen
 -   [x] FGBuildableGeneratorFuel--biogen--merged
+-   [x] FGBuildableGeneratorFuel--biogen--properties
 -   [x] FGBuildableGeneratorFuel--liquid
 -   [x] FGBuildableGeneratorFuel--liquid--merged
+-   [x] FGBuildableGeneratorFuel--liquid--properties
 -   [x] FGBuildableGeneratorFuel--solid
 -   [x] FGBuildableGeneratorFuel--solid--merged
 

@@ -19,6 +19,13 @@ export type FGBuildableGeneratorFuel__base__merged__type =
 		FGBuildableGenerator__base__type;
 
 export type FGBuildableGeneratorFuel__biogen__type =
+	FGBuildableGeneratorFuel__biogen__properties__type;
+
+export type FGBuildableGeneratorFuel__biogen__merged__type =
+	common_base__FGBuildableGeneratorFuel__biogen__type &
+		FGBuildableGeneratorFuel__base__type;
+
+export type FGBuildableGeneratorFuel__biogen__properties__type =
 	FGBuildableGeneratorFuel__biogen__merged__type & {
 		mDefaultFuelClasses: [
 			(
@@ -66,11 +73,14 @@ export type FGBuildableGeneratorFuel__biogen__type =
 		];
 	};
 
-export type FGBuildableGeneratorFuel__biogen__merged__type =
-	common_base__FGBuildableGeneratorFuel__biogen__type &
+export type FGBuildableGeneratorFuel__liquid__type =
+	FGBuildableGeneratorFuel__liquid__properties__type;
+
+export type FGBuildableGeneratorFuel__liquid__merged__type =
+	common_base__FGBuildableGeneratorFuel__liquid__type &
 		FGBuildableGeneratorFuel__base__type;
 
-export type FGBuildableGeneratorFuel__liquid__type =
+export type FGBuildableGeneratorFuel__liquid__properties__type =
 	FGBuildableGeneratorFuel__liquid__merged__type & {
 		mDefaultFuelClasses: [
 			(
@@ -113,10 +123,6 @@ export type FGBuildableGeneratorFuel__liquid__type =
 			}[],
 		];
 	};
-
-export type FGBuildableGeneratorFuel__liquid__merged__type =
-	common_base__FGBuildableGeneratorFuel__liquid__type &
-		FGBuildableGeneratorFuel__base__type;
 
 export type FGBuildableGeneratorFuel__solid__type =
 	FGBuildableGeneratorFuel__solid__merged__type;

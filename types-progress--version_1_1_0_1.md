@@ -1,6 +1,6 @@
 # Types Progress
 
-49.37% Complete (39 of 79)
+47.42% Complete (46 of 97)
 
 ## Basic Types
 
@@ -32,6 +32,8 @@
 -   [x] common-base--FGBuildable--tiered (common type)
 -   [x] common-base--FGBuildableRailroadTrack (common type)
 -   [x] common-base--FGBuildableRailroadTrack--properties
+-   [x] common-base--FGBuildableWalkway (common type)
+-   [x] common-base--FGBuildableWalkway--base (common type)
 -   [x] common-base--FGBuildingDescriptor--base (common type)
 -   [x] common-base--FGBuildingDescriptor--mForm (common type)
 -   [x] common-base--FGBuildingDescriptor--mSubCategories (common type)
@@ -66,13 +68,17 @@
 
 -   [x] FGBuildableBeam
 -   [ ] FGBuildableConveyorBelt
+-   [ ] FGBuildablePillarLightweight
 -   [ ] FGBuildablePoleConveyor
 -   [ ] FGBuildablePowerPole
 -   [x] FGBuildableRailroadTrack
 -   [ ] FGBuildableTradingPost
--   [ ] FGBuildableWallLightweight
+-   [x] FGBuildableWalkway
+-   [ ] FGBuildableWalkwayLightweight
+-   [x] FGBuildableWallLightweight
 -   [ ] FGBuildableWire
 -   [x] FGBuildable--base
+-   [ ] FGBuildable--consumes-power-base
 -   [x] FGBuildable--occupied--final
 -   [x] FGBuildable--occupied--merged
 -   [ ] FGBuildable--pole--base--no-static
@@ -89,6 +95,23 @@
 
 -   [ ] FGBuildableConveyorBelt--merged
 
+## FGBuildableFactory
+
+-   [ ] FGBuildableFactory--jump-pad
+-   [ ] FGBuildableFactory--jump-pad--merged
+-   [ ] FGBuildableFactory--landing-pad
+-   [ ] FGBuildableFactory--landing-pad--merged
+
+## FGBuildableGeneratorFuel
+
+-   [ ] FGBuildableGeneratorFuel--biogen
+-   [ ] FGBuildableGeneratorFuel--liquid
+-   [ ] FGBuildableGeneratorFuel--solid
+
+## FGBuildablePillarLightweight
+
+-   [ ] FGBuildablePillarLightweight--merged
+
 ## FGBuildablePoleConveyor
 
 -   [ ] FGBuildablePoleConveyor--merged
@@ -100,6 +123,16 @@
 ## FGBuildableTradingPost
 
 -   [ ] FGBuildableTradingPost--merged
+
+## FGBuildableWalkway
+
+-   [x] FGBuildableWalkway--base
+-   [x] FGBuildableWalkway--base--merged
+-   [x] FGBuildableWalkway--merged
+
+## FGBuildableWalkwayLightweight
+
+-   [ ] FGBuildableWalkwayLightweight--merged
 
 ## FGBuildableWallLightweight
 

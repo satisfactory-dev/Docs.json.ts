@@ -4095,10 +4095,9 @@
 				}
 			]
 		},
-		"FGBuildableGeneratorFuel--liquid": {
+		"FGBuildableGeneratorFuel--liquid--properties": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableGeneratorFuel--liquid--merged",
-			"unevaluatedProperties": false,
 			"required": ["mDefaultFuelClasses", "mFuel"],
 			"properties": {
 				"mDefaultFuelClasses": {
@@ -4157,6 +4156,11 @@
 				}
 			}
 		},
+		"FGBuildableGeneratorFuel--liquid": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableGeneratorFuel--liquid--properties",
+			"unevaluatedProperties": false
+		},
 		"FGBuildableGeneratorFuel--biogen--merged": {
 			"allOf": [
 				{
@@ -4167,10 +4171,9 @@
 				}
 			]
 		},
-		"FGBuildableGeneratorFuel--biogen": {
+		"FGBuildableGeneratorFuel--biogen--properties": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableGeneratorFuel--biogen--merged",
-			"unevaluatedProperties": false,
 			"required": [
 				"mDefaultFuelClasses",
 				"mFuel",
@@ -4234,6 +4237,11 @@
 					}
 				}
 			}
+		},
+		"FGBuildableGeneratorFuel--biogen": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableGeneratorFuel--biogen--properties",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableGeneratorGeoThermal--merged": {
 			"allOf": [

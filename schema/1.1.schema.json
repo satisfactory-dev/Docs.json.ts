@@ -816,6 +816,128 @@
 			"type": "object",
 			"$ref": "#/$defs/FGSchematic--with-unlocks--merged",
 			"unevaluatedProperties": false
+		},
+		"FGBuildablePillarLightweight--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildablePillarLightweight"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildablePillarLightweight": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildablePillarLightweight--merged",
+			"unevaluatedProperties": false
+		},
+		"FGBuildable--consumes-power-base": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildable--consumes-power-base--version-1"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableFactory--jump-pad--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableFactory--jump-pad"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--consumes-power-base"
+				}
+			]
+		},
+		"FGBuildableFactory--jump-pad": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableFactory--jump-pad--merged",
+			"unevaluatedProperties": false
+		},
+		"FGBuildableFactory--landing-pad--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableFactory--landing-pad"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--consumes-power-base"
+				}
+			]
+		},
+		"FGBuildableFactory--landing-pad": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableFactory--landing-pad--merged",
+			"unevaluatedProperties": false
+		},
+		"FGBuildableWalkway--base--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableWalkway--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableWalkway--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableWalkway--base--merged"
+		},
+		"FGBuildableWalkwayLightweight--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableWalkwayLightweight"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableWalkway--base"
+				}
+			]
+		},
+		"FGBuildableWalkwayLightweight": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableWalkwayLightweight--merged",
+			"unevaluatedProperties": false
+		},
+		"FGBuildableWalkway--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableWalkway"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableWalkway--base"
+				}
+			]
+		},
+		"FGBuildableWalkway": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableWalkway--merged",
+			"unevaluatedProperties": false
+		},
+		"FGBuildableGeneratorFuel--solid": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableGeneratorFuel--solid"
+				},
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableGeneratorFuel--base"
+				},
+				{"$ref": "#/$defs/FGBuildable--base"}
+			]
+		},
+		"FGBuildableGeneratorFuel--liquid": {
+			"allOf": [
+				{"$ref": "1.0.schema.json#/$defs/FGBuildableGeneratorFuel--liquid--properties"},
+				{"$ref": "#/$defs/FGBuildable--base"}
+			]
+		},
+		"FGBuildableGeneratorFuel--biogen": {
+			"allOf": [
+				{"$ref": "1.0.schema.json#/$defs/FGBuildableGeneratorFuel--biogen--properties"},
+				{"$ref": "#/$defs/FGBuildable--base"}
+			]
 		}
 	},
 	"items": false,
@@ -1340,6 +1462,137 @@
 							}
 						]
 					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePillarLightweight'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"$ref": "1.1.schema.json#/$defs/FGBuildablePillarLightweight",
+						"unevaluatedProperties": false
+					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableFactory'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 3,
+					"maxItems": 3,
+					"items": false,
+					"prefixItems": [
+						{
+							"type": "object",
+							"$ref": "1.1.schema.json#/$defs/FGBuildableFactory--jump-pad",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "1.1.schema.json#/$defs/FGBuildableFactory--jump-pad",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "1.1.schema.json#/$defs/FGBuildableFactory--landing-pad",
+							"unevaluatedProperties": false
+						}
+					]
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableWalkwayLightweight'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"$ref": "1.1.schema.json#/$defs/FGBuildableWalkwayLightweight",
+						"unevaluatedProperties": false
+					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableWalkway'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"$ref": "#/$defs/FGBuildableWalkway",
+						"unevaluatedProperties": false
+					},
+					"minItems": 1,
+					"maxItems": 1
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableWall'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"$ref": "#/$defs/FGBuildableWallLightweight",
+						"unevaluatedProperties": false
+					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableGeneratorFuel'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": false,
+					"minItems": 3,
+					"maxItems": 3,
+					"prefixItems": [
+						{
+							"type": "object",
+							"$ref": "1.1.schema.json#/$defs/FGBuildableGeneratorFuel--solid",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "1.1.schema.json#/$defs/FGBuildableGeneratorFuel--liquid",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "1.1.schema.json#/$defs/FGBuildableGeneratorFuel--biogen",
+							"unevaluatedProperties": false
+						}
+					]
 				}
 			}
 		}
