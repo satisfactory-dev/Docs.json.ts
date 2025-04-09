@@ -7157,6 +7157,28 @@
 				}
 			}
 		},
+		"ClearanceBox": {
+			"type": "string",
+			"minLength": 1,
+			"typed_string": {
+				"required": [
+					"Min",
+					"Max",
+					"IsValid"
+				],
+				"properties": {
+					"Min": {
+						"$ref": "common.schema.json#/$defs/xyz"
+					},
+					"Max": {
+						"$ref": "common.schema.json#/$defs/xyz"
+					},
+					"IsValid": {
+						"$ref": "common.schema.json#/$defs/boolean"
+					}
+				}
+			}
+		},
 		"mClearanceData": {
 			"oneOf": [
 				{
@@ -7179,26 +7201,7 @@
 										"enum": ["CT_Soft"]
 									},
 									"ClearanceBox": {
-										"type": "string",
-										"minLength": 1,
-										"typed_string": {
-											"required": [
-												"Min",
-												"Max",
-												"IsValid"
-											],
-											"properties": {
-												"Min": {
-													"$ref": "common.schema.json#/$defs/xyz"
-												},
-												"Max": {
-													"$ref": "common.schema.json#/$defs/xyz"
-												},
-												"IsValid": {
-													"$ref": "common.schema.json#/$defs/boolean"
-												}
-											}
-										}
+										"$ref": "#/$defs/ClearanceBox"
 									},
 									"RelativeTransform": {
 										"type": "string",

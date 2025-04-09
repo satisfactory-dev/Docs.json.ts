@@ -33,6 +33,12 @@ export type CameraAnim__type = UnrealEngineString<
 	StringStartsWith<'/Game/FactoryGame/Character/Player/CameraShake/'>
 >;
 
+export type ClearanceBox__type = {
+	Min: xyz__type;
+	Max: xyz__type;
+	IsValid: boolean__type;
+};
+
 export type FGBuildable__consumes_power_base__version_1__type =
 	common_base__FGBuildable__consumes_power_base__type & {
 		mAlienOverClockingParticleEffects: '';
@@ -494,11 +500,7 @@ export type mClearanceData__type =
 	| [
 			{
 				Type?: 'CT_Soft';
-				ClearanceBox: {
-					Min: xyz__type;
-					Max: xyz__type;
-					IsValid: boolean__type;
-				};
+				ClearanceBox: ClearanceBox__type;
 				RelativeTransform?: {
 					Rotation?: quaternion__type;
 					Translation?: xyz__type;
@@ -508,11 +510,7 @@ export type mClearanceData__type =
 			},
 			...{
 				Type?: 'CT_Soft';
-				ClearanceBox: {
-					Min: xyz__type;
-					Max: xyz__type;
-					IsValid: boolean__type;
-				};
+				ClearanceBox: ClearanceBox__type;
 				RelativeTransform?: {
 					Rotation?: quaternion__type;
 					Translation?: xyz__type;

@@ -131,6 +131,7 @@
 	"common_type__common_base__FGBuildablePipelinePump__valve__type": "classes/CoreUObject/FGBuildablePipelinePump",
 	"common_type__common_base__FGBuildablePipeReservoir__type": "classes/CoreUObject/FGBuildablePipeReservoir",
 	"common_type__common_base__FGBuildablePoleLightweight__type": "classes/CoreUObject/FGBuildablePoleLightweight",
+	"common_type__common_base__FGBuildablePoleLightweight__properties__type": "classes/CoreUObject/FGBuildablePoleLightweight",
 	"common_type__common_base__FGBuildablePowerPole__type": "classes/CoreUObject/FGBuildablePowerPole",
 	"common_type__common_base__FGBuildablePowerStorage__type": "classes/CoreUObject/FGBuildablePowerStorage",
 	"common_type__common_base__FGBuildablePriorityPowerSwitch__type": "classes/CoreUObject/FGBuildablePriorityPowerSwitch",

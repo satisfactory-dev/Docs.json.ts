@@ -1201,9 +1201,9 @@
 				}
 			}
 		},
-		"common-base--FGBuildablePoleLightweight": {
+		"common-base--FGBuildablePoleLightweight--properties": {
 			"type": "object",
-			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--pole--base--with-static",
+			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--base",
 			"required": ["mHeight", "mSelectedPoleVersion"],
 			"properties": {
 				"mHeight": {
@@ -1213,6 +1213,16 @@
 					"$ref": "common.schema.json#/$defs/integer-string--signed"
 				}
 			}
+		},
+		"common-base--FGBuildablePoleLightweight": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildable--pole--base--with-static"
+				},
+				{
+					"$ref": "#/$defs/common-base--FGBuildablePoleLightweight--properties"
+				}
+			]
 		},
 		"common-base--FGPoleDescriptor": {
 			"type": "object",

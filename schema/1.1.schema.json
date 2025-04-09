@@ -642,6 +642,80 @@
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--pole--base--no-static--merged",
 			"unevaluatedProperties": false
+		},
+		"FGBuildablePoleConveyor--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildablePoleLightweight--properties"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildablePoleConveyor": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildablePoleConveyor--merged",
+			"unevaluatedProperties": false,
+			"required": ["mLength", "mPoleVariations"],
+			"properties": {
+				"mLength": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mPoleVariations": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"minItems": 1,
+						"items": {
+							"type": "string",
+							"minLength": 1,
+							"typed_string": {
+								"required": [
+									"StaticMesh",
+									"Height",
+									"Clearance"
+								],
+								"properties": {
+									"StaticMesh": {
+										"type": "string",
+										"minLength": 1,
+										"UnrealEngineString": {
+											"left": "/Script/Engine.StaticMesh"
+										}
+									},
+									"Height": {
+										"$ref": "common.schema.json#/$defs/decimal-string"
+									},
+									"Clearance": {
+										"type": "string",
+										"minLength": 1,
+										"typed_string": {
+											"required": [
+												"Type",
+												"ClearanceBox",
+												"ExcludeForSnapping"
+											],
+											"properties": {
+												"Type": {
+													"type": "string",
+													"enum": ["CT_Soft"]
+												},
+												"ClearanceBox": {
+													"$ref": "#/$defs/ClearanceBox"
+												},
+												"ExcludeForSnapping": {
+													"$ref": "common.schema.json#/$defs/boolean"
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
 		}
 	},
 	"items": false,
@@ -1067,6 +1141,24 @@
 								"unevaluatedProperties": false
 							}
 						]
+					},
+					"minItems": 1,
+					"maxItems": 1
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePoleConveyor'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"$ref": "1.1.schema.json#/$defs/FGBuildablePoleConveyor",
+						"unevaluatedProperties": false
 					},
 					"minItems": 1,
 					"maxItems": 1

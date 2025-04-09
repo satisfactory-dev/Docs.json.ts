@@ -1,6 +1,6 @@
 # Types Progress
 
-55.88% Complete (38 of 68)
+54.29% Complete (38 of 70)
 
 ## Basic Types
 
@@ -64,6 +64,7 @@
 ## FGBuildable
 
 -   [x] FGBuildableBeam
+-   [ ] FGBuildablePoleConveyor
 -   [x] FGBuildableRailroadTrack
 -   [ ] FGBuildableTradingPost
 -   [ ] FGBuildableWallLightweight
@@ -79,6 +80,10 @@
 
 -   [x] FGBuildableBeam--base
 -   [x] FGBuildableBeam--merged
+
+## FGBuildablePoleConveyor
+
+-   [ ] FGBuildablePoleConveyor--merged
 
 ## FGBuildableRailroadTrack
 

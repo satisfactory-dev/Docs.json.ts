@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (347 of 347)
+100.00% Complete (348 of 348)
 
 ## Basic Types
 
@@ -145,6 +145,7 @@
 -   [x] common-base--FGBuildablePipelinePump--valve
 -   [x] common-base--FGBuildablePipeReservoir
 -   [x] common-base--FGBuildablePoleLightweight
+-   [x] common-base--FGBuildablePoleLightweight--properties
 -   [x] common-base--FGBuildablePowerPole
 -   [x] common-base--FGBuildablePowerStorage
 -   [x] common-base--FGBuildablePriorityPowerSwitch
