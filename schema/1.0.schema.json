@@ -4332,10 +4332,8 @@
 				}
 			}
 		},
-		"FGBuildablePipelineSupport": {
+		"FGBuildablePipelineSupport--properties": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--pole--base--with-static--merged",
-			"unevaluatedProperties": false,
 			"required": ["mLength", "mVerticalAngle"],
 			"properties": {
 				"mLength": {
@@ -4345,6 +4343,21 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
+		},
+		"FGBuildablePipelineSupport--merged": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--pole--base--with-static--merged"
+				},
+				{
+					"$ref": "#/$defs/FGBuildablePipelineSupport--properties"
+				}
+			]
+		},
+		"FGBuildablePipelineSupport": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildablePipelineSupport--merged",
+			"unevaluatedProperties": false
 		},
 		"FGBuildablePipeline--merged": {
 			"allOf": [

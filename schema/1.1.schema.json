@@ -663,6 +663,11 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},
 				"mPoleVariations": {
+					"$ref": "1.1.schema.json#/$defs/mPoleVariations"
+				}
+			}
+		},
+		"mPoleVariations": {
 					"type": "string",
 					"minLength": 1,
 					"typed_string": {
@@ -714,8 +719,6 @@
 							}
 						}
 					}
-				}
-			}
 		},
 		"FGBuildableConveyorBelt--merged": {
 			"allOf": [
@@ -938,6 +941,133 @@
 				{"$ref": "1.0.schema.json#/$defs/FGBuildableGeneratorFuel--biogen--properties"},
 				{"$ref": "#/$defs/FGBuildable--base"}
 			]
+		},
+		"FGBuildablePolePipe--mergd": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildablePoleLightweight--properties"
+				},
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildablePipelineSupport--properties"
+				},
+				{
+					"$ref": "1.1.schema.json#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildablePolePipe": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildablePolePipe--mergd",
+			"unevaluatedProperties": false,
+			"required": [
+				"mSupportMeshInstanceData",
+				"mPoleVariations"
+			],
+			"properties": {
+				"mSupportMeshInstanceData": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": [
+							"StaticMesh",
+							"RelativeTransform",
+							"bUseBatchedCollision",
+							"PositionOffset",
+							"ScaleOffset",
+							"NumCustomDataFloats",
+							"CollisionProfileName",
+							"bCastShadows",
+							"bCastDistanceFieldShadows",
+							"MaxDrawDistance",
+							"MaxWPODistance",
+							"bAllowLazyInstance",
+							"CollisionMeshSurfaceOverride"
+						],
+						"properties": {
+							"StaticMesh": {
+								"type": "string",
+								"minLength": 1,
+								"UnrealEngineString": {
+									"left": "/Script/Engine.StaticMesh",
+									"right": {
+										"starts_with": "/Game/FactoryGame/Buildable/Factory/"
+									}
+								}
+							},
+							"RelativeTransform": {
+								"type": "string",
+								"minLength": 1,
+								"typed_string": {
+									"required": [
+										"Rotation",
+										"Translation",
+										"Scale3D"
+									],
+									"properties": {
+										"Rotation": {
+											"$ref": "common.schema.json#/$defs/quaternion"
+										},
+										"Translation": {
+											"$ref": "common.schema.json#/$defs/xyz"
+										},
+										"Scale3D": {
+											"$ref": "common.schema.json#/$defs/xyz"
+										}
+									}
+								}
+							},
+							"bUseBatchedCollision": {
+								"$ref": "common.schema.json#/$defs/boolean"
+							},
+							"PositionOffset": {
+								"$ref": "common.schema.json#/$defs/xyz"
+							},
+							"ScaleOffset": {
+								"$ref": "common.schema.json#/$defs/xyz"
+							},
+							"NumCustomDataFloats": {
+								"$ref": "common.schema.json#/$defs/integer-string"
+							},
+							"CollisionProfileName": {
+								"type": "string",
+								"const": "BuildingMeshExceptCamera"
+							},
+							"bCastShadows": {
+								"$ref": "common.schema.json#/$defs/boolean"
+							},
+							"bCastDistanceFieldShadows": {
+								"$ref": "common.schema.json#/$defs/boolean"
+							},
+							"MaxDrawDistance": {
+								"$ref": "common.schema.json#/$defs/decimal-string"
+							},
+							"MaxWPODistance": {
+								"$ref": "common.schema.json#/$defs/decimal-string"
+							},
+							"bAllowLazyInstance": {
+								"$ref": "common.schema.json#/$defs/boolean"
+							},
+							"CollisionMeshSurfaceOverride": {
+								"type": "string",
+								"minLength": 1,
+								"typed_string": {
+									"required": [
+										"OcclusionValue"
+									],
+									"properties": {
+										"OcclusionValue": {
+											"$ref": "common.schema.json#/$defs/decimal-string"
+										}
+									}
+								}
+							}
+						}
+					}
+				},
+				"mPoleVariations": {
+					"$ref": "1.1.schema.json#/$defs/mPoleVariations"
+				}
+			}
 		}
 	},
 	"items": false,
@@ -1593,6 +1723,23 @@
 							"unevaluatedProperties": false
 						}
 					]
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePolePipe'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"$ref": "#/$defs/FGBuildablePolePipe",
+						"unevaluatedProperties": false
+					}
 				}
 			}
 		}

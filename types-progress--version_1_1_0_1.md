@@ -1,6 +1,6 @@
 # Types Progress
 
-47.42% Complete (46 of 97)
+48.51% Complete (49 of 101)
 
 ## Basic Types
 
@@ -16,6 +16,7 @@
 -   [x] FGChargedWeapon
 -   [x] integer-string (common type)
 -   [x] integer-string--signed (common type)
+-   [ ] mPoleVariations
 -   [x] mStatisticGameplayTag
 -   [x] NativeClass (common type)
 -   [x] None (common type)
@@ -30,6 +31,7 @@
 -   [x] common-base--FGBuildable--base (common type)
 -   [x] common-base--FGBuildable--occupied (common type)
 -   [x] common-base--FGBuildable--tiered (common type)
+-   [x] common-base--FGBuildablePoleLightweight--properties (common type)
 -   [x] common-base--FGBuildableRailroadTrack (common type)
 -   [x] common-base--FGBuildableRailroadTrack--properties
 -   [x] common-base--FGBuildableWalkway (common type)
@@ -70,6 +72,7 @@
 -   [ ] FGBuildableConveyorBelt
 -   [ ] FGBuildablePillarLightweight
 -   [ ] FGBuildablePoleConveyor
+-   [x] FGBuildablePolePipe
 -   [ ] FGBuildablePowerPole
 -   [x] FGBuildableRailroadTrack
 -   [ ] FGBuildableTradingPost
@@ -115,6 +118,10 @@
 ## FGBuildablePoleConveyor
 
 -   [ ] FGBuildablePoleConveyor--merged
+
+## FGBuildablePolePipe
+
+-   [x] FGBuildablePolePipe--mergd
 
 ## FGBuildableRailroadTrack
 

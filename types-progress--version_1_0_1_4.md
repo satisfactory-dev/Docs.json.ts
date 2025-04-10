@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (570 of 570)
+100.00% Complete (572 of 572)
 
 ## Basic Types
 
@@ -518,6 +518,11 @@
 -   [x] FGBuildablePipelinePump--merged
 -   [x] FGBuildablePipelinePump--valve
 -   [x] FGBuildablePipelinePump--valve--merged
+
+## FGBuildablePipelineSupport
+
+-   [x] FGBuildablePipelineSupport--merged
+-   [x] FGBuildablePipelineSupport--properties
 
 ## FGBuildablePipeReservoir
 
