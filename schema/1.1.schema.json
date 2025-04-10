@@ -56,9 +56,7 @@
 		"FGBuildableBeam--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--base",
-			"required": [
-				"bTiledMesh"
-			],
+			"required": ["bTiledMesh"],
 			"properties": {
 				"bTiledMesh": {
 					"$ref": "common.schema.json#/$defs/boolean"
@@ -83,9 +81,7 @@
 		"FGBuildingDescriptor--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildingDescriptor--merged",
-			"required": [
-				"mUsesDistanceForZooping"
-			],
+			"required": ["mUsesDistanceForZooping"],
 			"properties": {
 				"mUsesDistanceForZooping": {
 					"$ref": "common.schema.json#/$defs/boolean"
@@ -396,10 +392,7 @@
 		"FGWeapon--gun-base": {
 			"type": "object",
 			"$ref": "#/$defs/FGWeapon--gun-base--merged",
-			"required": [
-				"MagnetismStrength",
-				"MagnetismZeroInputStrength"
-			],
+			"required": ["MagnetismStrength", "MagnetismZeroInputStrength"],
 			"properties": {
 				"MagnetismStrength": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
@@ -676,11 +669,7 @@
 					"type": "string",
 					"minLength": 1,
 					"typed_string": {
-						"required": [
-							"StaticMesh",
-							"Height",
-							"Clearance"
-						],
+						"required": ["StaticMesh", "Height", "Clearance"],
 						"properties": {
 							"StaticMesh": {
 								"type": "string",
@@ -734,9 +723,7 @@
 			"type": "object",
 			"$ref": "1.1.schema.json#/$defs/FGBuildableConveyorBelt--merged",
 			"unevaluatedProperties": false,
-			"required": [
-				"mAttachedThroughputMonitors"
-			],
+			"required": ["mAttachedThroughputMonitors"],
 			"properties": {
 				"mAttachedThroughputMonitors": {
 					"type": "string",
@@ -787,15 +774,17 @@
 		"FGSchematic--base": {
 			"type": "object",
 			"$ref": "1.0.schema.json#/$defs/FGSchematic--base--properties",
-			"required": [
-				"mStatisticGameplayTag"
-			],
+			"required": ["mStatisticGameplayTag"],
 			"properties": {
 				"mStatisticGameplayTag": {
 					"oneOf": [
 						{"$ref": "common.schema.json#/$defs/empty-object"},
-						{"$ref": "1.0.schema.json#/$defs/mStatisticGameplayTag"},
-						{"$ref": "1.1.schema.json#/$defs/mStatisticGameplayTag"}
+						{
+							"$ref": "1.0.schema.json#/$defs/mStatisticGameplayTag"
+						},
+						{
+							"$ref": "1.1.schema.json#/$defs/mStatisticGameplayTag"
+						}
 					]
 				}
 			}
@@ -932,13 +921,17 @@
 		},
 		"FGBuildableGeneratorFuel--liquid": {
 			"allOf": [
-				{"$ref": "1.0.schema.json#/$defs/FGBuildableGeneratorFuel--liquid--properties"},
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableGeneratorFuel--liquid--properties"
+				},
 				{"$ref": "#/$defs/FGBuildable--base"}
 			]
 		},
 		"FGBuildableGeneratorFuel--biogen": {
 			"allOf": [
-				{"$ref": "1.0.schema.json#/$defs/FGBuildableGeneratorFuel--biogen--properties"},
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableGeneratorFuel--biogen--properties"
+				},
 				{"$ref": "#/$defs/FGBuildable--base"}
 			]
 		},
@@ -959,10 +952,7 @@
 			"type": "object",
 			"$ref": "#/$defs/FGBuildablePolePipe--mergd",
 			"unevaluatedProperties": false,
-			"required": [
-				"mSupportMeshInstanceData",
-				"mPoleVariations"
-			],
+			"required": ["mSupportMeshInstanceData", "mPoleVariations"],
 			"properties": {
 				"mSupportMeshInstanceData": {
 					"type": "string",
@@ -1051,9 +1041,7 @@
 								"type": "string",
 								"minLength": 1,
 								"typed_string": {
-									"required": [
-										"OcclusionValue"
-									],
+									"required": ["OcclusionValue"],
 									"properties": {
 										"OcclusionValue": {
 											"$ref": "common.schema.json#/$defs/decimal-string"

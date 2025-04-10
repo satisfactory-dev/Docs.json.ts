@@ -5589,7 +5589,6 @@
 					"$ref": "common.schema.json#/$defs/boolean"
 				}
 			}
-
 		},
 		"common-base--FGAmmoTypeInstantHit--base": {
 			"allOf": [
@@ -5746,9 +5745,7 @@
 		"common-base--FGWeapon--base": {
 			"type": "object",
 			"$ref": "#/$defs/common-base--FGWeapon--base--pre-1.1",
-			"required": [
-				"mShowCycleAmmoRadialMenuTimer"
-			],
+			"required": ["mShowCycleAmmoRadialMenuTimer"],
 			"properties": {
 				"mShowCycleAmmoRadialMenuTimer": {
 					"$ref": "common.schema.json#/$defs/empty-object"

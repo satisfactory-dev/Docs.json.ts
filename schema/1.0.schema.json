@@ -772,9 +772,7 @@
 		"FGSchematic--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGSchematic--base--properties",
-			"required": [
-				"mStatisticGameplayTag"
-			],
+			"required": ["mStatisticGameplayTag"],
 			"properties": {
 				"mStatisticGameplayTag": {
 					"oneOf": [
@@ -7195,11 +7193,7 @@
 			"type": "string",
 			"minLength": 1,
 			"typed_string": {
-				"required": [
-					"Min",
-					"Max",
-					"IsValid"
-				],
+				"required": ["Min", "Max", "IsValid"],
 				"properties": {
 					"Min": {
 						"$ref": "common.schema.json#/$defs/xyz"
