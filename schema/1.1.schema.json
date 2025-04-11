@@ -1056,6 +1056,99 @@
 					"$ref": "1.1.schema.json#/$defs/mPoleVariations"
 				}
 			}
+		},
+		"FGBuildablePipeline--merged": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildablePipeline--pre-1.1"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				},
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildablePipeline--properties"
+				}
+			]
+		},
+		"FGBuildablePipeline": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildablePipeline--merged",
+			"unevaluatedProperties": false
+		},
+		"FGBuildablePipelineJunction--merged": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildablePipelineJunction--merged"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildablePipelineJunction": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildablePipelineJunction--merged",
+			"unevaluatedProperties": false
+		},
+		"FGBuildablePipelinePump--merged": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildablePipelinePump--merged"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildablePipelinePump": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildablePipelinePump--merged",
+			"unevaluatedProperties": false
+		},
+		"FGBuildablePipelinePump--valve--merged": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildablePipelinePump--valve--merged"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildablePipelinePump--valve": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildablePipelinePump--valve--merged",
+			"unevaluatedProperties": false
+		},
+		"FGBuildablePipeReservoir--merged": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildablePipeReservoir--merged"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildablePipeReservoir": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildablePipeReservoir--merged",
+			"unevaluatedProperties": false
+		},
+		"FGBuildableWaterPump--merged": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableWaterPump--merged"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableWaterPump": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableWaterPump--merged",
+			"unevaluatedProperties": false
 		}
 	},
 	"items": false,
@@ -1728,6 +1821,108 @@
 						"$ref": "#/$defs/FGBuildablePolePipe",
 						"unevaluatedProperties": false
 					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePipeline'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"$ref": "1.1.schema.json#/$defs/FGBuildablePipeline",
+						"unevaluatedProperties": false
+					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePipelineJunction'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"$ref": "1.1.schema.json#/$defs/FGBuildablePipelineJunction",
+						"unevaluatedProperties": false
+					},
+					"minItems": 1,
+					"maxItems": 1
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePipelinePump'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 3,
+					"maxItems": 3,
+					"items": false,
+					"prefixItems": [
+						{
+							"type": "object",
+							"$ref": "1.1.schema.json#/$defs/FGBuildablePipelinePump",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "1.1.schema.json#/$defs/FGBuildablePipelinePump--valve",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "1.1.schema.json#/$defs/FGBuildablePipelinePump",
+							"unevaluatedProperties": false
+						}
+					]
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePipeReservoir'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 2,
+					"maxItems": 2,
+					"items": {
+						"type": "object",
+						"$ref": "1.1.schema.json#/$defs/FGBuildablePipeReservoir",
+						"unevaluatedProperties": false
+					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableWaterPump'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"$ref": "1.1.schema.json#/$defs/FGBuildableWaterPump",
+						"unevaluatedProperties": false
+					},
+					"minItems": 1,
+					"maxItems": 1
 				}
 			}
 		}

@@ -24,8 +24,8 @@ export type FGBuildablePipelinePump__valve__merged__type =
 export type FGBuildablePipelinePump__NativeClass =
 	NativeClass__type & {
 		Classes: [
-			FGBuildablePipelinePump__valve__type | FGBuildablePipelinePump__type,
-			FGBuildablePipelinePump__valve__type | FGBuildablePipelinePump__type,
-			FGBuildablePipelinePump__valve__type | FGBuildablePipelinePump__type,
+			FGBuildablePipelinePump__type,
+			FGBuildablePipelinePump__type,
+			FGBuildablePipelinePump__valve__type,
 		];
 	};

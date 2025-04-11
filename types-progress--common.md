@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (348 of 348)
+100.00% Complete (349 of 349)
 
 ## Basic Types
 
@@ -140,6 +140,7 @@
 -   [x] common-base--FGBuildablePillarLightweight
 -   [x] common-base--FGBuildablePipeHyper
 -   [x] common-base--FGBuildablePipeline
+-   [x] common-base--FGBuildablePipeline--pre-1.1
 -   [x] common-base--FGBuildablePipelineJunction
 -   [x] common-base--FGBuildablePipelinePump
 -   [x] common-base--FGBuildablePipelinePump--valve

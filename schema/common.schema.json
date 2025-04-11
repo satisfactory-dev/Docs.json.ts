@@ -3434,7 +3434,7 @@
 				}
 			}
 		},
-		"common-base--FGBuildablePipeline": {
+		"common-base--FGBuildablePipeline--pre-1.1": {
 			"type": "object",
 			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--base",
 			"required": [
@@ -3443,7 +3443,6 @@
 				"mFlowIndicatorMinimumPipeLength",
 				"mPipeConnections",
 				"mFluidBox",
-				"mIndicatorData",
 				"mMaxIndicatorTurnAngle",
 				"mIgnoreActorsForIndicator",
 				"mFluidNames",
@@ -3479,9 +3478,6 @@
 					"const": ""
 				},
 				"mFluidBox": {
-					"$ref": "common.schema.json#/$defs/empty-object"
-				},
-				"mIndicatorData": {
 					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mMaxIndicatorTurnAngle": {
@@ -3536,6 +3532,18 @@
 				},
 				"mSnappedPassthroughs": {
 					"$ref": "common.schema.json#/$defs/common-base--mSnappedPassthroughs"
+				}
+			}
+		},
+		"common-base--FGBuildablePipeline": {
+			"type": "object",
+			"$ref": "#/$defs/common-base--FGBuildablePipeline--pre-1.1",
+			"required": [
+				"mIndicatorData"
+			],
+			"properties": {
+				"mIndicatorData": {
+					"$ref": "common.schema.json#/$defs/empty-object"
 				}
 			}
 		},

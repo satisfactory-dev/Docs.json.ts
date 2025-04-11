@@ -1,6 +1,6 @@
 # Types Progress
 
-48.51% Complete (49 of 101)
+43.36% Complete (49 of 113)
 
 ## Basic Types
 
@@ -71,6 +71,10 @@
 -   [x] FGBuildableBeam
 -   [ ] FGBuildableConveyorBelt
 -   [ ] FGBuildablePillarLightweight
+-   [ ] FGBuildablePipeline
+-   [ ] FGBuildablePipelineJunction
+-   [ ] FGBuildablePipelinePump
+-   [ ] FGBuildablePipeReservoir
 -   [ ] FGBuildablePoleConveyor
 -   [x] FGBuildablePolePipe
 -   [ ] FGBuildablePowerPole
@@ -79,6 +83,7 @@
 -   [x] FGBuildableWalkway
 -   [ ] FGBuildableWalkwayLightweight
 -   [x] FGBuildableWallLightweight
+-   [ ] FGBuildableWaterPump
 -   [ ] FGBuildableWire
 -   [x] FGBuildable--base
 -   [ ] FGBuildable--consumes-power-base
@@ -115,6 +120,24 @@
 
 -   [ ] FGBuildablePillarLightweight--merged
 
+## FGBuildablePipeline
+
+-   [ ] FGBuildablePipeline--merged
+
+## FGBuildablePipelineJunction
+
+-   [ ] FGBuildablePipelineJunction--merged
+
+## FGBuildablePipelinePump
+
+-   [ ] FGBuildablePipelinePump--merged
+-   [ ] FGBuildablePipelinePump--valve
+-   [ ] FGBuildablePipelinePump--valve--merged
+
+## FGBuildablePipeReservoir
+
+-   [ ] FGBuildablePipeReservoir--merged
+
 ## FGBuildablePoleConveyor
 
 -   [ ] FGBuildablePoleConveyor--merged
@@ -144,6 +167,10 @@
 ## FGBuildableWallLightweight
 
 -   [ ] FGBuildableWallLightweight--merged
+
+## FGBuildableWaterPump
+
+-   [ ] FGBuildableWaterPump--merged
 
 ## FGBuildingDescriptor
 

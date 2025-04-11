@@ -4364,13 +4364,14 @@
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildablePipeline--properties"
 				}
 			]
 		},
-		"FGBuildablePipeline": {
+		"FGBuildablePipeline--properties": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildablePipeline--merged",
-			"unevaluatedProperties": false,
 			"required": [
 				"mSoundSplineComponentEmitterInterval",
 				"mLastElapsedTime",
@@ -4391,6 +4392,12 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
+
+		},
+		"FGBuildablePipeline": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildablePipeline--merged",
+			"unevaluatedProperties": false
 		},
 		"FGBuildable--pipeline-accessory--base": {
 			"allOf": [
@@ -7922,20 +7929,24 @@
 					"type": "array",
 					"minItems": 3,
 					"maxItems": 3,
-					"items": {
-						"oneOf": [
-							{
-								"type": "object",
-								"$ref": "#/$defs/FGBuildablePipelinePump--valve",
-								"unevaluatedProperties": false
-							},
-							{
-								"type": "object",
-								"$ref": "#/$defs/FGBuildablePipelinePump",
-								"unevaluatedProperties": false
-							}
-						]
-					}
+					"items": false,
+					"prefixItems": [
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGBuildablePipelinePump",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGBuildablePipelinePump",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGBuildablePipelinePump--valve",
+							"unevaluatedProperties": false
+						}
+					]
 				}
 			}
 		},
