@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (574 of 574)
+100.00% Complete (578 of 578)
 
 ## Basic Types
 
@@ -449,6 +449,7 @@
 
 -   [x] FGBuildableGeneratorNuclear--merged
 -   [x] FGBuildableGeneratorNuclear--mFuel--FicsoniumFuelRod
+-   [x] FGBuildableGeneratorNuclear--properties
 
 ## FGBuildableJumppad
 
@@ -480,6 +481,7 @@
 -   [x] FGBuildableManufacturer--blender--merged
 -   [x] FGBuildableManufacturer--constructor
 -   [x] FGBuildableManufacturer--constructor--merged
+-   [x] FGBuildableManufacturer--constructor--properties
 -   [x] FGBuildableManufacturer--merged
 -   [x] FGBuildableManufacturer--packager
 -   [x] FGBuildableManufacturer--packager--merged
@@ -577,6 +579,7 @@
 -   [x] FGBuildableResourceExtractor--miner--base--merged
 -   [x] FGBuildableResourceExtractor--miner--merged
 -   [x] FGBuildableResourceExtractor--miner-mk1
+-   [x] FGBuildableResourceExtractor--miner-mk1--properties
 -   [x] FGBuildableResourceExtractor--miner-mk3
 -   [x] FGBuildableResourceExtractor--miner-mk3--merged
 -   [x] FGBuildableResourceExtractor--oil-extractor
@@ -585,6 +588,7 @@
 ## FGBuildableResourceSink
 
 -   [x] FGBuildableResourceSink--merged
+-   [x] FGBuildableResourceSink--properties
 
 ## FGBuildableResourceSinkShop
 

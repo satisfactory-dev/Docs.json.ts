@@ -87,6 +87,9 @@ export type FGBuildableDroneStation__version_1__type =
 	};
 
 export type FGBuildableResourceExtractor__miner_mk1__type =
+	FGBuildableResourceExtractor__miner_mk1__properties__type;
+
+export type FGBuildableResourceExtractor__miner_mk1__properties__type =
 	FGBuildableResourceExtractor__miner__base__type & {
 		InternalStartUpTimer: decimal_string__type;
 	};

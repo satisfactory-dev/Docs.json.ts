@@ -1,6 +1,6 @@
 # Types Progress
 
-43.36% Complete (49 of 113)
+32.89% Complete (49 of 149)
 
 ## Basic Types
 
@@ -70,6 +70,11 @@
 
 -   [x] FGBuildableBeam
 -   [ ] FGBuildableConveyorBelt
+-   [ ] FGBuildableDroneStation
+-   [ ] FGBuildableFrackingActivator
+-   [ ] FGBuildableFrackingExtractor
+-   [ ] FGBuildableGeneratorNuclear
+-   [ ] FGBuildableManufacturer
 -   [ ] FGBuildablePillarLightweight
 -   [ ] FGBuildablePipeline
 -   [ ] FGBuildablePipelineJunction
@@ -79,6 +84,8 @@
 -   [x] FGBuildablePolePipe
 -   [ ] FGBuildablePowerPole
 -   [x] FGBuildableRailroadTrack
+-   [ ] FGBuildableResourceSink
+-   [ ] FGBuildableResourceSinkShop
 -   [ ] FGBuildableTradingPost
 -   [x] FGBuildableWalkway
 -   [ ] FGBuildableWalkwayLightweight
@@ -103,6 +110,10 @@
 
 -   [ ] FGBuildableConveyorBelt--merged
 
+## FGBuildableDroneStation
+
+-   [ ] FGBuildableDroneStation--merged
+
 ## FGBuildableFactory
 
 -   [ ] FGBuildableFactory--jump-pad
@@ -110,11 +121,44 @@
 -   [ ] FGBuildableFactory--landing-pad
 -   [ ] FGBuildableFactory--landing-pad--merged
 
+## FGBuildableFrackingActivator
+
+-   [ ] FGBuildableFrackingActivator--merged
+
+## FGBuildableFrackingExtractor
+
+-   [ ] FGBuildableFrackingExtractor--merged
+
 ## FGBuildableGeneratorFuel
 
 -   [ ] FGBuildableGeneratorFuel--biogen
 -   [ ] FGBuildableGeneratorFuel--liquid
 -   [ ] FGBuildableGeneratorFuel--solid
+
+## FGBuildableGeneratorNuclear
+
+-   [ ] FGBuildableGeneratorNuclear--merged
+
+## FGBuildableManufacturer
+
+-   [ ] FGBuildableManufacturer--blender
+-   [ ] FGBuildableManufacturer--blender--merged
+-   [ ] FGBuildableManufacturer--constructor
+-   [ ] FGBuildableManufacturer--constructor--merged
+-   [ ] FGBuildableManufacturer--merged
+-   [ ] FGBuildableManufacturer--packager
+-   [ ] FGBuildableManufacturer--packager--merged
+-   [ ] FGBuildableManufacturer--smelter
+-   [ ] FGBuildableManufacturer--smelter--merged
+
+## FGBuildableManufacturerVariablePower
+
+-   [ ] FGBuildableManufacturerVariablePower--base
+-   [ ] FGBuildableManufacturerVariablePower--base--merged
+-   [ ] FGBuildableManufacturerVariablePower--HadronCollider
+-   [ ] FGBuildableManufacturerVariablePower--HadronCollider--merged
+-   [ ] FGBuildableManufacturerVariablePower--QuantumEncoder
+-   [ ] FGBuildableManufacturerVariablePower--QuantumEncoder--merged
 
 ## FGBuildablePillarLightweight
 
@@ -149,6 +193,25 @@
 ## FGBuildableRailroadTrack
 
 -   [x] FGBuildableRailroadTrack--merged
+
+## FGBuildableResourceExtractor
+
+-   [ ] FGBuildableResourceExtractor--miner
+-   [ ] FGBuildableResourceExtractor--miner--merged
+-   [ ] FGBuildableResourceExtractor--miner-mk1
+-   [ ] FGBuildableResourceExtractor--miner-mk1--merged
+-   [ ] FGBuildableResourceExtractor--miner-mk3
+-   [ ] FGBuildableResourceExtractor--miner-mk3--merged
+-   [ ] FGBuildableResourceExtractor--oil-extractor
+-   [ ] FGBuildableResourceExtractor--oil-extractor--merged
+
+## FGBuildableResourceSink
+
+-   [ ] FGBuildableResourceSink--merged
+
+## FGBuildableResourceSinkShop
+
+-   [ ] FGBuildableResourceSinkShop--merged
 
 ## FGBuildableTradingPost
 

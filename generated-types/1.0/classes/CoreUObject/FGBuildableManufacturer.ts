@@ -31,17 +31,20 @@ export type FGBuildableManufacturer__blender__merged__type =
 		FGBuildableManufacturer__base__type;
 
 export type FGBuildableManufacturer__constructor__type =
-	FGBuildableManufacturer__constructor__merged__type & {
-		mAOAttenuationScalingFactor: decimal_string__type;
-		mAOLayerZOffset: decimal_string__type;
-		RTPC_AO_VolumeDB: decimal_string__type;
-		RTPC_AO_HighpassValue: decimal_string__type;
-		RTPC_AO_Pitch: decimal_string__type;
-	};
+	FGBuildableManufacturer__constructor__merged__type;
 
 export type FGBuildableManufacturer__constructor__merged__type =
 	common_base__FGBuildableManufacturer__constructor__type &
-		FGBuildableManufacturer__base__type;
+		FGBuildableManufacturer__base__type &
+		FGBuildableManufacturer__constructor__properties__type;
+
+export type FGBuildableManufacturer__constructor__properties__type = {
+	mAOAttenuationScalingFactor: decimal_string__type;
+	mAOLayerZOffset: decimal_string__type;
+	RTPC_AO_VolumeDB: decimal_string__type;
+	RTPC_AO_HighpassValue: decimal_string__type;
+	RTPC_AO_Pitch: decimal_string__type;
+};
 
 export type FGBuildableManufacturer__merged__type =
 	common_base__FGBuildableManufacturer__type &

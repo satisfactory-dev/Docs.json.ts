@@ -4283,13 +4283,14 @@
 				},
 				{
 					"$ref": "#/$defs/FGBuildableGeneratorFuel--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableGeneratorNuclear--properties"
 				}
 			]
 		},
-		"FGBuildableGeneratorNuclear": {
+		"FGBuildableGeneratorNuclear--properties": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableGeneratorNuclear--merged",
-			"unevaluatedProperties": false,
 			"required": [
 				"mDefaultFuelClasses",
 				"mFuel",
@@ -4329,6 +4330,11 @@
 					]
 				}
 			}
+		},
+		"FGBuildableGeneratorNuclear": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableGeneratorNuclear--merged",
+			"unevaluatedProperties": false
 		},
 		"FGBuildablePipelineSupport--properties": {
 			"type": "object",
@@ -4549,13 +4555,14 @@
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--consumes-power-base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableResourceSink--properties"
 				}
 			]
 		},
-		"FGBuildableResourceSink": {
+		"FGBuildableResourceSink--properties": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableResourceSink--merged",
-			"unevaluatedProperties": false,
 			"required": [
 				"IsAnimationProducing",
 				"EnableTickGrinder",
@@ -4588,6 +4595,11 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
+		},
+		"FGBuildableResourceSink": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableResourceSink--merged",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableResourceSinkShop--merged": {
 			"allOf": [
@@ -4670,16 +4682,20 @@
 			"$ref": "#/$defs/FGBuildableResourceExtractor--miner--merged",
 			"unevaluatedProperties": false
 		},
-		"FGBuildableResourceExtractor--miner-mk1": {
+		"FGBuildableResourceExtractor--miner-mk1--properties": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableResourceExtractor--miner--base",
-			"unevaluatedProperties": false,
 			"required": ["InternalStartUpTimer"],
 			"properties": {
 				"InternalStartUpTimer": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
+		},
+		"FGBuildableResourceExtractor--miner-mk1": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableResourceExtractor--miner-mk1--properties",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableResourceExtractor--miner-mk3--merged": {
 			"allOf": [
@@ -4777,13 +4793,14 @@
 				},
 				{
 					"$ref": "#/$defs/FGBuildableManufacturer--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableManufacturer--constructor--properties"
 				}
 			]
 		},
-		"FGBuildableManufacturer--constructor": {
+		"FGBuildableManufacturer--constructor--properties": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableManufacturer--constructor--merged",
-			"unevaluatedProperties": false,
 			"required": [
 				"mAOAttenuationScalingFactor",
 				"mAOLayerZOffset",
@@ -4808,6 +4825,11 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
+		},
+		"FGBuildableManufacturer--constructor": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableManufacturer--constructor--merged",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableManufacturerVariablePower--base--merged": {
 			"allOf": [

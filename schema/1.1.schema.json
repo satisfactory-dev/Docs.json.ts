@@ -23,6 +23,10 @@
 						{
 							"type": "string",
 							"string_starts_with": "/Game/FactoryGame/Buildable/"
+						},
+						{
+							"type": "string",
+							"string_starts_with": "/Game/FactoryGame/Interface/UI/"
 						}
 					]
 				}
@@ -1149,6 +1153,276 @@
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableWaterPump--merged",
 			"unevaluatedProperties": false
+		},
+		"FGBuildableResourceSink--merged": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableResourceSink--merged"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableResourceSink": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableResourceSink--merged",
+			"unevaluatedProperties": false
+		},
+		"FGBuildableResourceSinkShop--merged": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableResourceSinkShop--merged"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableResourceSinkShop": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableResourceSinkShop--merged",
+			"unevaluatedProperties": false
+		},
+		"FGBuildableManufacturerVariablePower--QuantumEncoder--merged": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableManufacturerVariablePower--QuantumEncoder"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableManufacturerVariablePower--QuantumEncoder": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableManufacturerVariablePower--QuantumEncoder--merged",
+			"unevaluatedProperties": false
+		},
+		"FGBuildableManufacturerVariablePower--base--merged": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableManufacturerVariablePower--base--merged"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableManufacturerVariablePower--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableManufacturerVariablePower--base--merged",
+			"unevaluatedProperties": false
+		},
+		"FGBuildableManufacturerVariablePower--HadronCollider--merged": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableManufacturerVariablePower--HadronCollider--merged"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableManufacturerVariablePower--HadronCollider": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableManufacturerVariablePower--HadronCollider--merged",
+			"unevaluatedProperties": false
+		},
+		"FGBuildableResourceExtractor--oil-extractor--merged": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableResourceExtractor--oil-extractor--merged"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableResourceExtractor--oil-extractor": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableResourceExtractor--oil-extractor--merged",
+			"unevaluatedProperties": false
+		},
+		"FGBuildableResourceExtractor--miner--merged": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableResourceExtractor--miner--merged"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableResourceExtractor--miner": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableResourceExtractor--miner--merged",
+			"unevaluatedProperties": false
+		},
+		"FGBuildableResourceExtractor--miner-mk1--merged": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableResourceExtractor--miner-mk1--properties"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableResourceExtractor--miner-mk1": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableResourceExtractor--miner-mk1--merged",
+			"unevaluatedProperties": false
+		},
+		"FGBuildableResourceExtractor--miner-mk3--merged": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableResourceExtractor--miner-mk3--merged"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableResourceExtractor--miner-mk3": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableResourceExtractor--miner-mk3--merged",
+			"unevaluatedProperties": false
+		},
+		"FGBuildableManufacturer--merged": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableManufacturer--merged"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableManufacturer": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableManufacturer--merged",
+			"unevaluatedProperties": false
+		},
+		"FGBuildableManufacturer--packager--merged": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableManufacturer--packager--merged"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableManufacturer--packager": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableManufacturer--packager--merged",
+			"unevaluatedProperties": false
+		},
+		"FGBuildableManufacturer--blender--merged": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableManufacturer--blender--merged"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableManufacturer--blender": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableManufacturer--blender--merged",
+			"unevaluatedProperties": false
+		},
+		"FGBuildableManufacturer--smelter--merged": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableManufacturer--smelter--merged"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableManufacturer--smelter": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableManufacturer--smelter--merged",
+			"unevaluatedProperties": false
+		},
+		"FGBuildableManufacturer--constructor--merged": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableManufacturer--constructor--merged"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableManufacturer--constructor": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableManufacturer--constructor--merged",
+			"unevaluatedProperties": false
+		},
+		"FGBuildableGeneratorNuclear--merged": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableGeneratorNuclear--merged"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableGeneratorNuclear": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableGeneratorNuclear--merged",
+			"unevaluatedProperties": false
+		},
+		"FGBuildableFrackingExtractor--merged": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableFrackingExtractor--merged"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableFrackingExtractor": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableFrackingExtractor--merged",
+			"unevaluatedProperties": false
+		},
+		"FGBuildableFrackingActivator--merged": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableFrackingActivator--merged"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableFrackingActivator": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableFrackingActivator--merged",
+			"unevaluatedProperties": false
+		},
+		"FGBuildableDroneStation--merged": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableDroneStation--merged"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableDroneStation": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableDroneStation--merged",
+			"unevaluatedProperties": false
 		}
 	},
 	"items": false,
@@ -1919,6 +2193,309 @@
 					"items": {
 						"type": "object",
 						"$ref": "1.1.schema.json#/$defs/FGBuildableWaterPump",
+						"unevaluatedProperties": false
+					},
+					"minItems": 1,
+					"maxItems": 1
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableResourceSink'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"$ref": "1.1.schema.json#/$defs/FGBuildableResourceSink",
+						"unevaluatedProperties": false
+					},
+					"minItems": 1,
+					"maxItems": 1
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableResourceSinkShop'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"$ref": "1.1.schema.json#/$defs/FGBuildableResourceSinkShop",
+						"unevaluatedProperties": false
+					},
+					"minItems": 1,
+					"maxItems": 1
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGObjectScanner'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"$ref": "1.0.schema.json#/$defs/FGObjectScanner",
+						"unevaluatedProperties": false
+					},
+					"minItems": 1,
+					"maxItems": 1
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableManufacturerVariablePower'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": false,
+					"minItems": 3,
+					"maxItems": 3,
+					"prefixItems": [
+						{
+							"type": "object",
+							"$ref": "1.1.schema.json#/$defs/FGBuildableManufacturerVariablePower--QuantumEncoder",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "1.1.schema.json#/$defs/FGBuildableManufacturerVariablePower--base",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "1.1.schema.json#/$defs/FGBuildableManufacturerVariablePower--HadronCollider",
+							"unevaluatedProperties": false
+						}
+					]
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGPowerShardDescriptor'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 2,
+					"maxItems": 2,
+					"items": {
+						"type": "object",
+						"$ref": "1.0.schema.json#/$defs/FGPowerShardDescriptor",
+						"unevaluatedProperties": false
+					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableResourceExtractor'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 4,
+					"maxItems": 4,
+					"items": false,
+					"prefixItems": [
+						{
+							"type": "object",
+							"$ref": "1.1.schema.json#/$defs/FGBuildableResourceExtractor--oil-extractor",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "1.1.schema.json#/$defs/FGBuildableResourceExtractor--miner",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "1.1.schema.json#/$defs/FGBuildableResourceExtractor--miner-mk1",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "1.1.schema.json#/$defs/FGBuildableResourceExtractor--miner-mk3",
+							"unevaluatedProperties": false
+						}
+					]
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableManufacturer'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 8,
+					"maxItems": 8,
+					"items": false,
+					"prefixItems": [
+						{
+							"type": "object",
+							"$ref": "1.1.schema.json#/$defs/FGBuildableManufacturer",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "1.1.schema.json#/$defs/FGBuildableManufacturer",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "1.1.schema.json#/$defs/FGBuildableManufacturer--packager",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "1.1.schema.json#/$defs/FGBuildableManufacturer",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "1.1.schema.json#/$defs/FGBuildableManufacturer",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "1.1.schema.json#/$defs/FGBuildableManufacturer--blender",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "1.1.schema.json#/$defs/FGBuildableManufacturer--constructor",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "1.1.schema.json#/$defs/FGBuildableManufacturer--smelter",
+							"unevaluatedProperties": false
+						}
+					]
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGPortableMinerDispenser'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"$ref": "1.0.schema.json#/$defs/FGPortableMinerDispenser",
+						"unevaluatedProperties": false
+					},
+					"minItems": 1,
+					"maxItems": 1
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGItemDescriptorNuclearFuel'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 3,
+					"maxItems": 3,
+					"items": {
+						"type": "object",
+						"$ref": "1.0.schema.json#/$defs/FGItemDescriptorNuclearFuel",
+						"unevaluatedProperties": false
+					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableGeneratorNuclear'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"$ref": "1.1.schema.json#/$defs/FGBuildableGeneratorNuclear",
+						"unevaluatedProperties": false
+					},
+					"minItems": 1,
+					"maxItems": 1
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableFrackingExtractor'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"$ref": "1.1.schema.json#/$defs/FGBuildableFrackingExtractor",
+						"unevaluatedProperties": false
+					},
+					"minItems": 1,
+					"maxItems": 1
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableFrackingActivator'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"$ref": "1.1.schema.json#/$defs/FGBuildableFrackingActivator",
+						"unevaluatedProperties": false
+					},
+					"minItems": 1,
+					"maxItems": 1
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableDroneStation'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"$ref": "1.1.schema.json#/$defs/FGBuildableDroneStation",
 						"unevaluatedProperties": false
 					},
 					"minItems": 1,
