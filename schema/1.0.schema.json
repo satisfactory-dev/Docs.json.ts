@@ -1063,13 +1063,14 @@
 				},
 				{
 					"$ref": "#/$defs/FGBuildableConveyorBelt--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableConveyorLift--properties"
 				}
 			]
 		},
-		"FGBuildableConveyorLift": {
+		"FGBuildableConveyorLift--properties": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableConveyorLift--merged",
-			"unevaluatedProperties": false,
 			"required": ["mFlipMeshOnReverse", "mOpposingConnectionClearance"],
 			"properties": {
 				"mFlipMeshOnReverse": {
@@ -1079,6 +1080,11 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
+		},
+		"FGBuildableConveyorLift": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableConveyorLift--merged",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableWire--merged": {
 			"allOf": [

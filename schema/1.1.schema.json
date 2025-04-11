@@ -720,13 +720,14 @@
 				},
 				{
 					"$ref": "1.1.schema.json#/$defs/FGBuildable--base"
+				},
+				{
+					"$ref": "1.1.schema.json#/$defs/has--mAttachedThroughputMonitors"
 				}
 			]
 		},
-		"FGBuildableConveyorBelt": {
+		"has--mAttachedThroughputMonitors": {
 			"type": "object",
-			"$ref": "1.1.schema.json#/$defs/FGBuildableConveyorBelt--merged",
-			"unevaluatedProperties": false,
 			"required": ["mAttachedThroughputMonitors"],
 			"properties": {
 				"mAttachedThroughputMonitors": {
@@ -734,6 +735,11 @@
 					"const": ""
 				}
 			}
+		},
+		"FGBuildableConveyorBelt": {
+			"type": "object",
+			"$ref": "1.1.schema.json#/$defs/FGBuildableConveyorBelt--merged",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableWire": {
 			"allOf": [
@@ -1423,6 +1429,90 @@
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableDroneStation--merged",
 			"unevaluatedProperties": false
+		},
+		"FGBuildableConveyorLift--merged": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableConveyorLift--merged"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableConveyorLift--properties"
+				},
+				{
+					"$ref": "1.1.schema.json#/$defs/has--mAttachedThroughputMonitors"
+				},
+				{
+					"$ref": "1.1.schema.json#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"mInputOutputMeshDisplayMode": {
+			"type": "string",
+			"const": "MDM_Auto"
+		},
+		"FGBuildableConveyorLift--properties": {
+			"type": "object",
+			"required": [
+				"mOutputMeshDisplayMode",
+				"mInputMeshDisplayMode"
+			],
+			"properties": {
+				"mOutputMeshDisplayMode": {
+					"$ref": "#/$defs/mInputOutputMeshDisplayMode"
+				},
+				"mInputMeshDisplayMode": {
+					"$ref": "#/$defs/mInputOutputMeshDisplayMode"
+				}
+			}
+		},
+		"FGBuildableConveyorLift": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableConveyorLift--merged",
+			"unevaluatedProperties": false
+		},
+		"has--mLastEditedBy": {
+			"type": "object",
+			"required": ["mLastEditedBy"],
+			"properties": {
+				"mLastEditedBy": {
+					"type": "string",
+					"const": ""
+				}
+			}
+		},
+		"FGBuildablePortal--merged": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildablePortal"
+				},
+				{
+					"$ref": "1.1.schema.json#/$defs/has--mLastEditedBy"
+				},
+				{
+					"$ref": "1.1.schema.json#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildablePortal": {
+			"type": "object",
+			"$ref": "1.1.schema.json#/$defs/FGBuildablePortal--merged"
+		},
+		"FGBuildablePortalSatellite--merged": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildablePortalSatellite"
+				},
+				{
+					"$ref": "1.1.schema.json#/$defs/has--mLastEditedBy"
+				},
+				{
+					"$ref": "1.1.schema.json#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildablePortalSatellite": {
+			"type": "object",
+			"$ref": "1.1.schema.json#/$defs/FGBuildablePortalSatellite--merged"
 		}
 	},
 	"items": false,
@@ -2500,6 +2590,91 @@
 					},
 					"minItems": 1,
 					"maxItems": 1
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGVehicleDescriptor'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "1.0.schema.json#/$defs/FGVehicleDescriptor--powered-no-inventory",
+								"unevaluatedProperties": false
+							},
+							{
+								"type": "object",
+								"$ref": "1.0.schema.json#/$defs/FGVehicleDescriptor--unfueled-with-inventory",
+								"unevaluatedProperties": false
+							},
+							{
+								"type": "object",
+								"$ref": "1.0.schema.json#/$defs/FGVehicleDescriptor--fueled-with-inventory",
+								"unevaluatedProperties": false
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableConveyorLift'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"maxItems": 6,
+					"items": {
+						"type": "object",
+						"$ref": "1.1.schema.json#/$defs/FGBuildableConveyorLift",
+						"unevaluatedProperties": false
+					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePortal'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"maxItems": 1,
+					"items": {
+						"type": "object",
+						"$ref": "1.1.schema.json#/$defs/FGBuildablePortal",
+						"unevaluatedProperties": false
+					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePortalSatellite'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"maxItems": 1,
+					"items": {
+						"type": "object",
+						"$ref": "1.1.schema.json#/$defs/FGBuildablePortalSatellite",
+						"unevaluatedProperties": false
+					}
 				}
 			}
 		}

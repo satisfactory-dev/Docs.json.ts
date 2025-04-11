@@ -1,6 +1,6 @@
 # Types Progress
 
-32.89% Complete (49 of 149)
+31.45% Complete (50 of 159)
 
 ## Basic Types
 
@@ -16,6 +16,7 @@
 -   [x] FGChargedWeapon
 -   [x] integer-string (common type)
 -   [x] integer-string--signed (common type)
+-   [x] mInputOutputMeshDisplayMode
 -   [ ] mPoleVariations
 -   [x] mStatisticGameplayTag
 -   [x] NativeClass (common type)
@@ -70,6 +71,7 @@
 
 -   [x] FGBuildableBeam
 -   [ ] FGBuildableConveyorBelt
+-   [ ] FGBuildableConveyorLift
 -   [ ] FGBuildableDroneStation
 -   [ ] FGBuildableFrackingActivator
 -   [ ] FGBuildableFrackingExtractor
@@ -82,6 +84,8 @@
 -   [ ] FGBuildablePipeReservoir
 -   [ ] FGBuildablePoleConveyor
 -   [x] FGBuildablePolePipe
+-   [ ] FGBuildablePortal
+-   [ ] FGBuildablePortalSatellite
 -   [ ] FGBuildablePowerPole
 -   [x] FGBuildableRailroadTrack
 -   [ ] FGBuildableResourceSink
@@ -109,6 +113,11 @@
 ## FGBuildableConveyorBelt
 
 -   [ ] FGBuildableConveyorBelt--merged
+
+## FGBuildableConveyorLift
+
+-   [ ] FGBuildableConveyorLift--merged
+-   [ ] FGBuildableConveyorLift--properties
 
 ## FGBuildableDroneStation
 
@@ -190,6 +199,14 @@
 
 -   [x] FGBuildablePolePipe--mergd
 
+## FGBuildablePortal
+
+-   [ ] FGBuildablePortal--merged
+
+## FGBuildablePortalSatellite
+
+-   [ ] FGBuildablePortalSatellite--merged
+
 ## FGBuildableRailroadTrack
 
 -   [x] FGBuildableRailroadTrack--merged
@@ -264,3 +281,8 @@
 -   [ ] FGWeapon--rebar-gun--merged
 -   [ ] FGWeapon--rifle
 -   [ ] FGWeapon--rifle--merged
+
+## has
+
+-   [ ] has--mAttachedThroughputMonitors
+-   [ ] has--mLastEditedBy
