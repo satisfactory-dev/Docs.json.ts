@@ -1,6 +1,6 @@
 # Types Progress
 
-30.56% Complete (55 of 180)
+31.32% Complete (57 of 182)
 
 ## Basic Types
 
@@ -81,6 +81,7 @@
 -   [ ] FGBuildableGeneratorNuclear
 -   [ ] FGBuildableManufacturer
 -   [ ] FGBuildablePillarLightweight
+-   [x] FGBuildablePipeHyperJunction
 -   [ ] FGBuildablePipeline
 -   [ ] FGBuildablePipelineJunction
 -   [ ] FGBuildablePipelinePump
@@ -191,6 +192,10 @@
 ## FGBuildablePillarLightweight
 
 -   [ ] FGBuildablePillarLightweight--merged
+
+## FGBuildablePipeHyperJunction
+
+-   [x] FGBuildablePipeHyperJunction--merged
 
 ## FGBuildablePipeline
 

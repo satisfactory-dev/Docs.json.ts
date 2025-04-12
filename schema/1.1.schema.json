@@ -1673,6 +1673,38 @@
 					"$ref": "#/$defs/FGBuildable--base"
 				}
 			]
+		},
+		"FGBuildablePipeHyperJunction--merged": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildable--consumes-power-base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildablePipeHyperJunction": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildablePipeHyperJunction--merged",
+			"required": [
+				"JunctionPaths",
+				"DefaultPaths",
+				"mBuiltWithPipelineCostMultiplier"
+			],
+			"properties": {
+				"JunctionPaths": {
+					"type": "string",
+					"const": ""
+				},
+				"DefaultPaths": {
+					"type": "string",
+					"const": ""
+				},
+				"mBuiltWithPipelineCostMultiplier": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				}
+			}
 		}
 	},
 	"items": false,
@@ -3039,6 +3071,24 @@
 					},
 					"minItems": 1,
 					"maxItems": 1
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePipeHyperJunction'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"$ref": "#/$defs/FGBuildablePipeHyperJunction",
+						"unevaluatedProperties": false
+					},
+					"minItems": 2,
+					"maxItems": 2
 				}
 			}
 		}
