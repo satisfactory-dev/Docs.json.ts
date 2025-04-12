@@ -849,7 +849,7 @@
 				}
 			]
 		},
-		"FGBuildableDoor--merged": {
+		"FGBuildableDoor": {
 			"allOf": [
 				{
 					"$ref": "common.schema.json#/$defs/common-base--FGBuildableDoor"
@@ -859,12 +859,7 @@
 				}
 			]
 		},
-		"FGBuildableDoor": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildableDoor--merged",
-			"unevaluatedProperties": false
-		},
-		"FGBuildableDoor--automated--merged": {
+		"FGBuildableDoor--automated": {
 			"allOf": [
 				{
 					"$ref": "common.schema.json#/$defs/common-base--FGBuildableDoor--automated"
@@ -873,11 +868,6 @@
 					"$ref": "#/$defs/FGBuildableDoor--base"
 				}
 			]
-		},
-		"FGBuildableDoor--automated": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildableDoor--automated--merged",
-			"unevaluatedProperties": false
 		},
 		"FGResourceDescriptor--merged": {
 			"allOf": [
@@ -2800,7 +2790,6 @@
 		"FGChainsaw": {
 			"type": "object",
 			"$ref": "#/$defs/FGChainsaw--merged",
-			"unevaluatedProperties": false,
 			"required": [
 				"StartUpToIdleID",
 				"mChainsawEngageMontage",
@@ -5276,7 +5265,7 @@
 				}
 			}
 		},
-		"FGBuildableDockingStation--merged": {
+		"FGBuildableDockingStation": {
 			"allOf": [
 				{
 					"$ref": "common.schema.json#/$defs/common-base--FGBuildableDockingStation"
@@ -5286,12 +5275,7 @@
 				}
 			]
 		},
-		"FGBuildableDockingStation": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildableDockingStation--merged",
-			"unevaluatedProperties": false
-		},
-		"FGBuildableJumppad--merged": {
+		"FGBuildableJumppad": {
 			"allOf": [
 				{
 					"$ref": "common.schema.json#/$defs/common-base--FGBuildableJumppad"
@@ -5300,11 +5284,6 @@
 					"$ref": "#/$defs/FGBuildable--consumes-power-base"
 				}
 			]
-		},
-		"FGBuildableJumppad": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildableJumppad--merged",
-			"unevaluatedProperties": false
 		},
 		"FGBuildableMAM--merged": {
 			"allOf": [
@@ -5319,7 +5298,6 @@
 		"FGBuildableMAM": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableMAM--merged",
-			"unevaluatedProperties": false,
 			"required": [
 				"mCurrentResearchState",
 				"mSignificanceRange",
@@ -5353,7 +5331,7 @@
 				}
 			}
 		},
-		"FGBuildableAttachmentMerger--merged": {
+		"FGBuildableAttachmentMerger": {
 			"allOf": [
 				{
 					"$ref": "common.schema.json#/$defs/common-base--FGBuildableAttachmentMerger"
@@ -5365,11 +5343,6 @@
 					"$ref": "#/$defs/FGBuildableAttachmentMergerSplitter--with-inventory-size"
 				}
 			]
-		},
-		"FGBuildableAttachmentMerger": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildableAttachmentMerger--merged",
-			"unevaluatedProperties": false
 		},
 		"FGBuildable--splitter--base--merged": {
 			"allOf": [
@@ -5388,7 +5361,7 @@
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--splitter--base--merged"
 		},
-		"FGBuildableAttachmentSplitter--merged": {
+		"FGBuildableAttachmentSplitter": {
 			"allOf": [
 				{
 					"$ref": "common.schema.json#/$defs/common-base--FGBuildableAttachmentSplitter"
@@ -5397,11 +5370,6 @@
 					"$ref": "#/$defs/FGBuildable--splitter--base"
 				}
 			]
-		},
-		"FGBuildableAttachmentSplitter": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildableAttachmentSplitter--merged",
-			"unevaluatedProperties": false
 		},
 		"FGBuildableSplitterSmart--merged": {
 			"allOf": [
@@ -5432,7 +5400,7 @@
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableFoundation--base--merged"
 		},
-		"FGBuildableFoundation--merged": {
+		"FGBuildableFoundation": {
 			"allOf": [
 				{
 					"$ref": "common.schema.json#/$defs/common-base--FGBuildableFoundation"
@@ -5441,11 +5409,6 @@
 					"$ref": "#/$defs/FGBuildableFoundation--base"
 				}
 			]
-		},
-		"FGBuildableFoundation": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildableFoundation--merged",
-			"unevaluatedProperties": false
 		},
 		"FGBuildableRamp--merged": {
 			"allOf": [
@@ -5460,7 +5423,6 @@
 		"FGBuildableRamp": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableRamp--merged",
-			"unevaluatedProperties": false,
 			"required": ["mIsInverted"],
 			"properties": {
 				"mIsInverted": {

@@ -5,9 +5,6 @@ import {common_base__FGBuildableDockingStation__type} from '../../../common/clas
 import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableDockingStation__type =
-	FGBuildableDockingStation__merged__type;
-
-export type FGBuildableDockingStation__merged__type =
 	common_base__FGBuildableDockingStation__type &
 		FGBuildable__docking_station_base__type;
 

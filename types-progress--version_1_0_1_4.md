@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (577 of 577)
+100.00% Complete (570 of 570)
 
 ## Basic Types
 
@@ -333,17 +333,9 @@
 -   [x] FGBuildable--tiered
 -   [x] FGBuildable--tiered--merged
 
-## FGBuildableAttachmentMerger
-
--   [x] FGBuildableAttachmentMerger--merged
-
 ## FGBuildableAttachmentMergerSplitter
 
 -   [x] FGBuildableAttachmentMergerSplitter--with-inventory-size
-
-## FGBuildableAttachmentSplitter
-
--   [x] FGBuildableAttachmentSplitter--merged
 
 ## FGBuildableBeamLightweight
 
@@ -377,16 +369,10 @@
 
 -   [x] FGBuildableCornerWall--merged
 
-## FGBuildableDockingStation
-
--   [x] FGBuildableDockingStation--merged
-
 ## FGBuildableDoor
 
 -   [x] FGBuildableDoor--automated
--   [x] FGBuildableDoor--automated--merged
 -   [x] FGBuildableDoor--base
--   [x] FGBuildableDoor--merged
 
 ## FGBuildableDroneStation
 
@@ -416,7 +402,6 @@
 
 -   [x] FGBuildableFoundation--base
 -   [x] FGBuildableFoundation--base--merged
--   [x] FGBuildableFoundation--merged
 
 ## FGBuildableFrackingActivator
 
@@ -453,10 +438,6 @@
 -   [x] FGBuildableGeneratorNuclear--merged
 -   [x] FGBuildableGeneratorNuclear--mFuel--FicsoniumFuelRod
 -   [x] FGBuildableGeneratorNuclear--properties
-
-## FGBuildableJumppad
-
--   [x] FGBuildableJumppad--merged
 
 ## FGBuildableLadder
 

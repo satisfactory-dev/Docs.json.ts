@@ -1,6 +1,6 @@
 # Types Progress
 
-32.07% Complete (59 of 184)
+29.50% Complete (59 of 200)
 
 ## Basic Types
 
@@ -13,6 +13,7 @@
 -   [x] decimal-string--signed (common type)
 -   [x] EditorCurveData
 -   [x] empty-object (common type)
+-   [ ] FGChainsaw
 -   [x] FGChargedWeapon
 -   [x] FGPipeHyperStart
 -   [x] integer-string (common type)
@@ -73,13 +74,20 @@
 
 ## FGBuildable
 
+-   [ ] FGBuildableAttachmentMerger
+-   [ ] FGBuildableAttachmentSplitter
 -   [x] FGBuildableBeam
 -   [ ] FGBuildableConveyorBelt
 -   [ ] FGBuildableConveyorLift
+-   [ ] FGBuildableDockingStation
+-   [ ] FGBuildableDoor
 -   [ ] FGBuildableDroneStation
+-   [ ] FGBuildableFoundation
 -   [ ] FGBuildableFrackingActivator
 -   [ ] FGBuildableFrackingExtractor
 -   [ ] FGBuildableGeneratorNuclear
+-   [ ] FGBuildableJumppad
+-   [ ] FGBuildableMAM
 -   [ ] FGBuildableManufacturer
 -   [ ] FGBuildablePillarLightweight
 -   [x] FGBuildablePipeHyper
@@ -94,10 +102,12 @@
 -   [ ] FGBuildablePortal
 -   [ ] FGBuildablePortalSatellite
 -   [ ] FGBuildablePowerPole
+-   [ ] FGBuildablePowerStorage
 -   [ ] FGBuildableRailroadAttachment
 -   [ ] FGBuildableRailroadSignal
 -   [ ] FGBuildableRailroadStation
 -   [x] FGBuildableRailroadTrack
+-   [ ] FGBuildableRamp
 -   [ ] FGBuildableResourceSink
 -   [ ] FGBuildableResourceSinkShop
 -   [x] FGBuildableStorage
@@ -117,6 +127,14 @@
 -   [ ] FGBuildable--pole--base--no-static--merged
 -   [x] FGBuildable--tiered
 -   [x] FGBuildable--tiered--merged
+
+## FGBuildableAttachmentMerger
+
+-   [ ] FGBuildableAttachmentMerger--merged
+
+## FGBuildableAttachmentSplitter
+
+-   [ ] FGBuildableAttachmentSplitter--merged
 
 ## FGBuildableBeam
 
@@ -140,6 +158,11 @@
 
 -   [ ] FGBuildableConveyorLift--merged
 -   [ ] FGBuildableConveyorLift--properties
+
+## FGBuildableDoor
+
+-   [ ] FGBuildableDoor--automated
+-   [ ] FGBuildableDoor--base
 
 ## FGBuildableDroneStation
 
@@ -232,6 +255,10 @@
 ## FGBuildablePortalSatellite
 
 -   [ ] FGBuildablePortalSatellite--merged
+
+## FGBuildablePowerStorage
+
+-   [ ] FGBuildablePowerStorage--merged
 
 ## FGBuildableRailroadSignal
 
@@ -328,3 +355,4 @@
 
 -   [ ] has--mAttachedThroughputMonitors
 -   [ ] has--mLastEditedBy
+-   [ ] has--mSavedDirections

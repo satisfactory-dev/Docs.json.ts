@@ -1715,6 +1715,224 @@
 					"$ref": "#/$defs/FGBuildable--base"
 				}
 			]
+		},
+		"FGBuildablePowerStorage--merged": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildablePowerStorage"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildablePowerStorage":{
+			"type": "object",
+			"$ref": "#/$defs/FGBuildablePowerStorage--merged",
+			"required": [
+				"mNumExtraCustomizationData",
+				"mMaxRealDataDriftTime"
+			],
+			"properties": {
+				"mNumExtraCustomizationData": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				},
+				"mMaxRealDataDriftTime": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				}
+			}
+		},
+		"FGBuildableDockingStation": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableDockingStation"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableJumppad": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableJumppad"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGChainsaw": {
+			"type": "object",
+			"$ref": "1.0.schema.json#/$defs/FGChainsaw",
+			"required": [
+				"CurrentState",
+				"StateChanged"
+			],
+			"properties": {
+				"CurrentState": {
+					"type": "string",
+					"const": "None"
+				},
+				"StateChanged": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				}
+			}
+		},
+		"FGBuildableMAM": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableMAM"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"has--mSavedDirections": {
+			"type": "object",
+			"required": [
+				"mSavedDirections"
+			],
+			"properties": {
+				"mSavedDirections": {
+					"type": "string",
+					"const": ""
+				}
+			}
+		},
+		"FGBuildableAttachmentMerger--merged": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableAttachmentMerger"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				},
+				{
+					"$ref": "#/$defs/has--mSavedDirections"
+				}
+			]
+		},
+		"FGBuildableAttachmentMerger": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableAttachmentMerger--merged",
+			"required": [
+				"mHologramOverrides"
+			],
+			"properties": {
+				"mHologramOverrides": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"minItems": 1,
+						"items": {
+							"type": "string",
+							"minLength": 1,
+							"UnrealEngineString": {
+								"left": "/Script/FactoryGame.FGHologramOverride_ConveyorAttachment_FloorToLift",
+								"right": "/Game/FactoryGame/Buildable/Factory/CA_Merger/Build_ConveyorAttachmentMerger.Default__Build_ConveyorAttachmentMerger_C:FGHologramOverride_ConveyorAttachment_FloorToLift_0"
+							}
+						}
+					}
+				}
+			}
+		},
+		"FGBuildableAttachmentSplitter--merged": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableAttachmentSplitter"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				},
+				{
+					"$ref": "#/$defs/has--mSavedDirections"
+				}
+			]
+		},
+		"FGBuildableAttachmentSplitter": {
+			"type": "object",
+			"$ref": "1.1.schema.json#/$defs/FGBuildableAttachmentSplitter--merged",
+			"required": [
+				"mHologramOverrides"
+			],
+			"properties": {
+				"mHologramOverrides": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"minItems": 1,
+						"items": {
+							"type": "string",
+							"minLength": 1,
+							"UnrealEngineString": {
+								"left": "/Script/FactoryGame.FGHologramOverride_ConveyorAttachment_FloorToLift",
+								"right": "/Game/FactoryGame/Buildable/Factory/CA_Splitter/Build_ConveyorAttachmentSplitter.Default__Build_ConveyorAttachmentSplitter_C:FGHologramOverride_ConveyorAttachment_FloorToLift_0"
+							}
+						}
+					}
+				}
+			}
+		},
+		"FGBuildableFoundation": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableFoundation"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableRamp": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableRamp"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableDoor--base": {
+			"type": "object",
+			"$ref": "1.0.schema.json#/$defs/FGBuildableDoor--base",
+			"properties": {
+				"bigOverlapList_0": {
+					"type": "string",
+					"const": ""
+				},
+				"IsDoorOpen": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				}
+			}
+		},
+		"FGBuildableDoor": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableDoor--base"
+				},
+				{
+					"$ref": "1.1.schema.json#/$defs/FGBuildableDoor--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableDoor--automated": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildableDoor--automated"
+				},
+				{
+					"$ref": "1.1.schema.json#/$defs/FGBuildableDoor--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
 		}
 	},
 	"items": false,
@@ -3117,6 +3335,218 @@
 					},
 					"minItems": 1,
 					"maxItems": 1
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePowerStorage'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"$ref": "1.1.schema.json#/$defs/FGBuildablePowerStorage",
+						"unevaluatedProperties": false
+					},
+					"minItems": 1,
+					"maxItems": 1
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableDockingStation'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"$ref": "1.1.schema.json#/$defs/FGBuildableDockingStation",
+						"unevaluatedProperties": false
+					},
+					"minItems": 1,
+					"maxItems": 1
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableJumppad'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"$ref": "1.1.schema.json#/$defs/FGBuildableJumppad",
+						"unevaluatedProperties": false
+					},
+					"minItems": 1,
+					"maxItems": 1
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGChainsaw'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"$ref": "1.1.schema.json#/$defs/FGChainsaw",
+						"unevaluatedProperties": false
+					},
+					"minItems": 1,
+					"maxItems": 1
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGConsumableDescriptor'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "1.0.schema.json#/$defs/FGConsumableDescriptor",
+								"unevaluatedProperties": false
+							},
+							{
+								"type": "object",
+								"$ref": "1.0.schema.json#/$defs/FGConsumableDescriptor--healing",
+								"unevaluatedProperties": false
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableMAM'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"$ref": "1.1.schema.json#/$defs/FGBuildableMAM",
+						"unevaluatedProperties": false
+					},
+					"minItems": 1,
+					"maxItems": 1
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableAttachmentMerger'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"$ref": "1.1.schema.json#/$defs/FGBuildableAttachmentMerger",
+						"unevaluatedProperties": false
+					},
+					"minItems": 1,
+					"maxItems": 1
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableAttachmentSplitter'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"$ref": "1.1.schema.json#/$defs/FGBuildableAttachmentSplitter",
+						"unevaluatedProperties": false
+					},
+					"minItems": 1,
+					"maxItems": 1
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableFoundationLightweight'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"$ref": "1.1.schema.json#/$defs/FGBuildableFoundation",
+						"unevaluatedProperties": false
+					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableRampLightweight'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"$ref": "1.1.schema.json#/$defs/FGBuildableRamp",
+						"unevaluatedProperties": false
+					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableDoor'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"oneOf": [
+							{
+								"type": "object",
+								"$ref": "1.1.schema.json#/$defs/FGBuildableDoor",
+								"unevaluatedProperties": false
+							},
+							{
+								"type": "object",
+								"$ref": "1.1.schema.json#/$defs/FGBuildableDoor--automated",
+								"unevaluatedProperties": false
+							}
+						]
+					}
 				}
 			}
 		}
