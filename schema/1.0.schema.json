@@ -496,7 +496,6 @@
 		"FGBuildableBlueprintDesigner--mk1": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableBlueprintDesigner--base",
-			"unevaluatedProperties": false,
 			"properties": {
 				"ClassName": {
 					"type": "string",
@@ -511,7 +510,6 @@
 		"FGBuildableBlueprintDesigner--mk2": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableBlueprintDesigner--base",
-			"unevaluatedProperties": false,
 			"properties": {
 				"ClassName": {
 					"type": "string",
@@ -526,7 +524,6 @@
 		"FGBuildableBlueprintDesigner--mk3": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableBlueprintDesigner--base",
-			"unevaluatedProperties": false,
 			"properties": {
 				"ClassName": {
 					"type": "string",

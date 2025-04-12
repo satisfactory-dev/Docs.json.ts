@@ -1513,6 +1513,48 @@
 		"FGBuildablePortalSatellite": {
 			"type": "object",
 			"$ref": "1.1.schema.json#/$defs/FGBuildablePortalSatellite--merged"
+		},
+		"FGBuildableBlueprintDesigner--mk1--merged": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableBlueprintDesigner--mk1"
+				},
+				{
+					"$ref": "1.1.schema.json#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableBlueprintDesigner--mk1": {
+			"type": "object",
+			"$ref": "1.1.schema.json#/$defs/FGBuildableBlueprintDesigner--mk1--merged"
+		},
+		"FGBuildableBlueprintDesigner--mk2--merged": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableBlueprintDesigner--mk2"
+				},
+				{
+					"$ref": "1.1.schema.json#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableBlueprintDesigner--mk2": {
+			"type": "object",
+			"$ref": "1.1.schema.json#/$defs/FGBuildableBlueprintDesigner--mk2--merged"
+		},
+		"FGBuildableBlueprintDesigner--mk3--merged": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableBlueprintDesigner--mk3"
+				},
+				{
+					"$ref": "1.1.schema.json#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableBlueprintDesigner--mk3": {
+			"type": "object",
+			"$ref": "1.1.schema.json#/$defs/FGBuildableBlueprintDesigner--mk3--merged"
 		}
 	},
 	"items": false,
@@ -2675,6 +2717,37 @@
 						"$ref": "1.1.schema.json#/$defs/FGBuildablePortalSatellite",
 						"unevaluatedProperties": false
 					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableBlueprintDesigner'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": false,
+					"minItems": 3,
+					"maxItems": 3,
+					"prefixItems": [
+						{
+							"type": "object",
+							"$ref": "1.1.schema.json#/$defs/FGBuildableBlueprintDesigner--mk3",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "1.1.schema.json#/$defs/FGBuildableBlueprintDesigner--mk2",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "1.1.schema.json#/$defs/FGBuildableBlueprintDesigner--mk1",
+							"unevaluatedProperties": false
+						}
+					]
 				}
 			}
 		}

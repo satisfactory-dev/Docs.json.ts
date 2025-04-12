@@ -1,6 +1,6 @@
 # Types Progress
 
-31.45% Complete (50 of 159)
+30.30% Complete (50 of 165)
 
 ## Basic Types
 
@@ -109,6 +109,15 @@
 
 -   [x] FGBuildableBeam--base
 -   [x] FGBuildableBeam--merged
+
+## FGBuildableBlueprintDesigner
+
+-   [ ] FGBuildableBlueprintDesigner--mk1
+-   [ ] FGBuildableBlueprintDesigner--mk1--merged
+-   [ ] FGBuildableBlueprintDesigner--mk2
+-   [ ] FGBuildableBlueprintDesigner--mk2--merged
+-   [ ] FGBuildableBlueprintDesigner--mk3
+-   [ ] FGBuildableBlueprintDesigner--mk3--merged
 
 ## FGBuildableConveyorBelt
 
