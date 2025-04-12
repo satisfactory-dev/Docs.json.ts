@@ -1705,6 +1705,16 @@
 					"$ref": "common.schema.json#/$defs/integer-string"
 				}
 			}
+		},
+		"FGBuildablePipeHyper": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildablePipeHyper"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
 		}
 	},
 	"items": false,
@@ -3089,6 +3099,24 @@
 					},
 					"minItems": 2,
 					"maxItems": 2
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePipeHyper'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"$ref": "#/$defs/FGBuildablePipeHyper",
+						"unevaluatedProperties": false
+					},
+					"minItems": 1,
+					"maxItems": 1
 				}
 			}
 		}

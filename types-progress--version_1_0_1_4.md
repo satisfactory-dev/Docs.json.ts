@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (578 of 578)
+100.00% Complete (577 of 577)
 
 ## Basic Types
 
@@ -506,10 +506,6 @@
 ## FGBuildablePillarLightweight
 
 -   [x] FGBuildablePillarLightweight--merged
-
-## FGBuildablePipeHyper
-
--   [x] FGBuildablePipeHyper--merged
 
 ## FGBuildablePipeline
 

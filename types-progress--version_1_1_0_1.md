@@ -1,6 +1,6 @@
 # Types Progress
 
-31.32% Complete (57 of 182)
+32.07% Complete (59 of 184)
 
 ## Basic Types
 
@@ -34,6 +34,7 @@
 -   [x] common-base--FGBuildable--consumes-power-base (common type)
 -   [x] common-base--FGBuildable--occupied (common type)
 -   [x] common-base--FGBuildable--tiered (common type)
+-   [x] common-base--FGBuildablePipeHyper (common type)
 -   [x] common-base--FGBuildablePoleLightweight--properties (common type)
 -   [x] common-base--FGBuildableRailroadTrack (common type)
 -   [x] common-base--FGBuildableRailroadTrack--properties
@@ -81,6 +82,7 @@
 -   [ ] FGBuildableGeneratorNuclear
 -   [ ] FGBuildableManufacturer
 -   [ ] FGBuildablePillarLightweight
+-   [x] FGBuildablePipeHyper
 -   [x] FGBuildablePipeHyperJunction
 -   [ ] FGBuildablePipeline
 -   [ ] FGBuildablePipelineJunction

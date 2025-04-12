@@ -4,9 +4,7 @@ import {common_base__FGBuildablePipeHyper__type} from '../../../common/classes/C
 
 import {NativeClass__type} from '../../../common/common/unassigned';
 
-export type FGBuildablePipeHyper__type = FGBuildablePipeHyper__merged__type;
-
-export type FGBuildablePipeHyper__merged__type =
+export type FGBuildablePipeHyper__type =
 	common_base__FGBuildablePipeHyper__type &
 		FGBuildable__base__type;
 

@@ -5236,7 +5236,7 @@
 				}
 			]
 		},
-		"FGBuildablePipeHyper--merged": {
+		"FGBuildablePipeHyper": {
 			"allOf": [
 				{
 					"$ref": "common.schema.json#/$defs/common-base--FGBuildablePipeHyper"
@@ -5245,11 +5245,6 @@
 					"$ref": "#/$defs/FGBuildable--base"
 				}
 			]
-		},
-		"FGBuildablePipeHyper": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildablePipeHyper--merged",
-			"unevaluatedProperties": false
 		},
 		"FGBuildablePowerStorage--merged": {
 			"allOf": [
