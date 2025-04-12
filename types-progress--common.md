@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (349 of 349)
+100.00% Complete (350 of 350)
 
 ## Basic Types
 
@@ -212,6 +212,7 @@
 -   [x] common-base--FGObjectScanner
 -   [x] common-base--FGParachute
 -   [x] common-base--FGPipeHyperStart
+-   [x] common-base--FGPipeHyperStart--pre-1.1
 -   [x] common-base--FGPoleDescriptor
 -   [x] common-base--FGPortableMinerDispenser
 -   [x] common-base--FGRecipe

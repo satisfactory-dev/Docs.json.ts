@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (579 of 579)
+100.00% Complete (578 of 578)
 
 ## Basic Types
 
@@ -18,6 +18,7 @@
 -   [x] empty-object (common type)
 -   [x] FGBuildingDescriptor
 -   [x] FGCentralStorageContainer
+-   [x] FGPipeHyperStart
 -   [x] FGPowerShardDescriptor
 -   [x] integer-string (common type)
 -   [x] integer-string--signed (common type)
@@ -192,6 +193,7 @@
 -   [x] common-base--FGObjectScanner (common type)
 -   [x] common-base--FGParachute (common type)
 -   [x] common-base--FGPipeHyperStart (common type)
+-   [x] common-base--FGPipeHyperStart--pre-1.1
 -   [x] common-base--FGPoleDescriptor (common type)
 -   [x] common-base--FGPortableMinerDispenser (common type)
 -   [x] common-base--FGRecipe (common type)
@@ -608,10 +610,6 @@
 
 -   [x] FGBuildableSplitterSmart--merged
 
-## FGBuildableStorage
-
--   [x] FGBuildableStorage--merged
-
 ## FGBuildableTradingPost
 
 -   [x] FGBuildableTradingPost--merged
@@ -772,11 +770,6 @@
 -   [x] FGParachute--mEquipMontage
 -   [x] FGParachute--merged
 -   [x] FGParachute--mUnEquipMontage
-
-## FGPipeHyperStart
-
--   [x] FGPipeHyperStart
--   [x] FGPipeHyperStart--merged
 
 ## FGPoleDescriptor
 

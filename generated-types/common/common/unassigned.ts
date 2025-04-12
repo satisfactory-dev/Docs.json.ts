@@ -529,6 +529,17 @@ export type common_base__FGBuildableResourceExtractor__miner_mk3__type =
 		mMaximumDrillTime_0: decimal_string__type;
 	};
 
+export type common_base__FGPipeHyperStart__pre_1_1__type =
+	common_base__FGBuildable__consumes_power_base__type & {
+		mWindDirectionFromTurbine: empty_object__type;
+		['mIsWindSoundPlaying?']: boolean__type;
+		mAudioTimerCounter: decimal_string__type;
+		AudioCounterTimer: empty_object__type;
+		IsEnginePlaying: boolean__type;
+		mOpeningOffset: decimal_string__type;
+		mInitialMinSpeedFactor: decimal_string__type;
+	};
+
 export type common_base__FGWeapon__base__pre_1_1__type =
 	common_base__FGEquipment__base__type & {
 		mOnWeaponStateChanged: empty_object__type;

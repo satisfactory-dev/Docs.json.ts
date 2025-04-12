@@ -4,9 +4,7 @@ import {common_base__FGBuildableStorage__type} from '../../../common/classes/Cor
 
 import {NativeClass__type} from '../../../common/common/unassigned';
 
-export type FGBuildableStorage__type = FGBuildableStorage__merged__type;
-
-export type FGBuildableStorage__merged__type =
+export type FGBuildableStorage__type =
 	common_base__FGBuildableStorage__type &
 		FGBuildable__consumes_power_base__type;
 

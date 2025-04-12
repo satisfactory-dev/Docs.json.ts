@@ -1640,6 +1640,39 @@
 					"const": ""
 				}
 			}
+		},
+		"FGBuildablePoleStackable": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildable--pole--base--no-static--pre-1.1"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableStorage": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableStorage"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGPipeHyperStart": {
+			"allOf": [
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGPipeHyperStart--pre-1.1"
+				},
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildable--consumes-power-base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
 		}
 	},
 	"items": false,
@@ -2936,6 +2969,76 @@
 						"$ref": "1.1.schema.json#/$defs/FGBuildableRailroadStation",
 						"unevaluatedProperties": false
 					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGJetPack'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"$ref": "1.0.schema.json#/$defs/FGJetPack",
+						"unevaluatedProperties": false
+					},
+					"minItems": 1,
+					"maxItems": 1
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePoleStackable'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"$ref": "1.1.schema.json#/$defs/FGBuildablePoleStackable",
+						"unevaluatedProperties": false
+					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableStorage'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"$ref": "#/$defs/FGBuildableStorage",
+						"unevaluatedProperties": false
+					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGPipeHyperStart'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"$ref": "#/$defs/FGPipeHyperStart",
+						"unevaluatedProperties": false
+					},
+					"minItems": 1,
+					"maxItems": 1
 				}
 			}
 		}

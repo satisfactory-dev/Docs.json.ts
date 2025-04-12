@@ -4,9 +4,7 @@ import {common_base__FGPipeHyperStart__type} from '../../../common/classes/CoreU
 
 import {NativeClass__type} from '../../../common/common/unassigned';
 
-export type FGPipeHyperStart__type = FGPipeHyperStart__merged__type;
-
-export type FGPipeHyperStart__merged__type =
+export type FGPipeHyperStart__type =
 	common_base__FGPipeHyperStart__type &
 		FGBuildable__consumes_power_base__type;
 

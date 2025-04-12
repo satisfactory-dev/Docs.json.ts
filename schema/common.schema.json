@@ -4699,7 +4699,7 @@
 				}
 			}
 		},
-		"common-base--FGPipeHyperStart": {
+		"common-base--FGPipeHyperStart--pre-1.1": {
 			"type": "object",
 			"$ref": "common.schema.json#/$defs/common-base--FGBuildable--consumes-power-base",
 			"required": [
@@ -4709,11 +4709,7 @@
 				"AudioCounterTimer",
 				"IsEnginePlaying",
 				"mOpeningOffset",
-				"mInitialMinSpeedFactor",
-				"mLength",
-				"mCanStack",
-				"mStackHeight",
-				"mUseStaticHeight"
+				"mInitialMinSpeedFactor"
 			],
 			"properties": {
 				"mWindDirectionFromTurbine": {
@@ -4736,7 +4732,19 @@
 				},
 				"mInitialMinSpeedFactor": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
+				}
+			}
+		},
+		"common-base--FGPipeHyperStart": {
+			"type": "object",
+			"$ref": "#/$defs/common-base--FGPipeHyperStart--pre-1.1",
+			"required": [
+				"mLength",
+				"mStackHeight",
+				"mCanStack",
+				"mUseStaticHeight"
+			],
+			"properties": {
 				"mLength": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				},

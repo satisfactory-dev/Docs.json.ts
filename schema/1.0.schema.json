@@ -5216,7 +5216,7 @@
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableRailroadStation--merged"
 		},
-		"FGBuildableStorage--merged": {
+		"FGBuildableStorage": {
 			"allOf": [
 				{
 					"$ref": "common.schema.json#/$defs/common-base--FGBuildableStorage"
@@ -5226,11 +5226,7 @@
 				}
 			]
 		},
-		"FGBuildableStorage": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildableStorage--merged"
-		},
-		"FGPipeHyperStart--merged": {
+		"FGPipeHyperStart": {
 			"allOf": [
 				{
 					"$ref": "common.schema.json#/$defs/common-base--FGPipeHyperStart"
@@ -5239,11 +5235,6 @@
 					"$ref": "#/$defs/FGBuildable--consumes-power-base"
 				}
 			]
-		},
-		"FGPipeHyperStart": {
-			"type": "object",
-			"$ref": "#/$defs/FGPipeHyperStart--merged",
-			"unevaluatedProperties": false
 		},
 		"FGBuildablePipeHyper--merged": {
 			"allOf": [

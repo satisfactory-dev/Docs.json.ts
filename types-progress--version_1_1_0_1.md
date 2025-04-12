@@ -1,6 +1,6 @@
 # Types Progress
 
-28.74% Complete (50 of 174)
+30.56% Complete (55 of 180)
 
 ## Basic Types
 
@@ -14,6 +14,7 @@
 -   [x] EditorCurveData
 -   [x] empty-object (common type)
 -   [x] FGChargedWeapon
+-   [x] FGPipeHyperStart
 -   [x] integer-string (common type)
 -   [x] integer-string--signed (common type)
 -   [x] mInputOutputMeshDisplayMode
@@ -30,6 +31,7 @@
 ## common-base
 
 -   [x] common-base--FGBuildable--base (common type)
+-   [x] common-base--FGBuildable--consumes-power-base (common type)
 -   [x] common-base--FGBuildable--occupied (common type)
 -   [x] common-base--FGBuildable--tiered (common type)
 -   [x] common-base--FGBuildablePoleLightweight--properties (common type)
@@ -41,6 +43,7 @@
 -   [x] common-base--FGBuildingDescriptor--mForm (common type)
 -   [x] common-base--FGBuildingDescriptor--mSubCategories (common type)
 -   [x] common-base--FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor (common type)
+-   [x] common-base--FGPipeHyperStart--pre-1.1 (common type)
 
 ## FGAmmoType
 
@@ -84,6 +87,7 @@
 -   [ ] FGBuildablePipeReservoir
 -   [ ] FGBuildablePoleConveyor
 -   [x] FGBuildablePolePipe
+-   [ ] FGBuildablePoleStackable
 -   [ ] FGBuildablePortal
 -   [ ] FGBuildablePortalSatellite
 -   [ ] FGBuildablePowerPole
@@ -93,6 +97,7 @@
 -   [x] FGBuildableRailroadTrack
 -   [ ] FGBuildableResourceSink
 -   [ ] FGBuildableResourceSinkShop
+-   [x] FGBuildableStorage
 -   [ ] FGBuildableTradingPost
 -   [ ] FGBuildableTrainPlatformCargo
 -   [ ] FGBuildableTrainPlatformEmpty
