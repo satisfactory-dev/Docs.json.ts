@@ -5,9 +5,6 @@ import {common_base__FGBuildablePriorityPowerSwitch__type} from '../../../common
 import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildablePriorityPowerSwitch__type =
-	FGBuildablePriorityPowerSwitch__merged__type;
-
-export type FGBuildablePriorityPowerSwitch__merged__type =
 	common_base__FGBuildablePriorityPowerSwitch__type &
 		FGBuildable__power_switch__base__type;
 

@@ -2851,7 +2851,7 @@
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--power-switch--base--merged"
 		},
-		"FGBuildablePriorityPowerSwitch--merged": {
+		"FGBuildablePriorityPowerSwitch": {
 			"allOf": [
 				{
 					"$ref": "common.schema.json#/$defs/common-base--FGBuildablePriorityPowerSwitch"
@@ -2861,12 +2861,7 @@
 				}
 			]
 		},
-		"FGBuildablePriorityPowerSwitch": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildablePriorityPowerSwitch--merged",
-			"unevaluatedProperties": false
-		},
-		"FGBuildableCircuitSwitch--merged": {
+		"FGBuildableCircuitSwitch": {
 			"allOf": [
 				{
 					"$ref": "common.schema.json#/$defs/common-base--FGBuildableCircuitSwitch"
@@ -2875,11 +2870,6 @@
 					"$ref": "#/$defs/FGBuildable--power-switch--base"
 				}
 			]
-		},
-		"FGBuildableCircuitSwitch": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildableCircuitSwitch--merged",
-			"unevaluatedProperties": false
 		},
 		"FGBuildableRadarTower--merged": {
 			"allOf": [

@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (565 of 565)
+100.00% Complete (563 of 563)
 
 ## Basic Types
 
@@ -349,10 +349,6 @@
 -   [x] FGBuildableBlueprintDesigner--mk2
 -   [x] FGBuildableBlueprintDesigner--mk3
 
-## FGBuildableCircuitSwitch
-
--   [x] FGBuildableCircuitSwitch--merged
-
 ## FGBuildableConveyorBelt
 
 -   [x] FGBuildableConveyorBelt--base
@@ -518,10 +514,6 @@
 ## FGBuildablePowerStorage
 
 -   [x] FGBuildablePowerStorage--merged
-
-## FGBuildablePriorityPowerSwitch
-
--   [x] FGBuildablePriorityPowerSwitch--merged
 
 ## FGBuildableRadarTower
 

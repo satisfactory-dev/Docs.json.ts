@@ -2008,6 +2008,56 @@
 					}
 				}
 			}
+		},
+		"has--mOnLastEditedByChanged": {
+			"type": "object",
+			"$ref": "#/$defs/has--mLastEditedBy",
+			"required": [
+				"mOnLastEditedByChanged"
+			],
+			"properties": {
+				"mOnLastEditedByChanged": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				}
+			}
+		},
+		"FGBuildablePriorityPowerSwitch": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildablePriorityPowerSwitch"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				},
+				{
+					"$ref": "#/$defs/has--mOnLastEditedByChanged"
+				}
+			]
+		},
+		"FGBuildableCircuitSwitch": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableCircuitSwitch"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				},
+				{
+					"$ref": "#/$defs/has--mOnLastEditedByChanged"
+				},
+				{
+					"type": "object",
+					"required": [
+						"mFGTextRenderers"
+					],
+					"properties": {
+						"mFGTextRenderers": {
+							"type": "string",
+							"const": ""
+						}
+					}
+				}
+			]
 		}
 	},
 	"items": false,
@@ -3726,6 +3776,114 @@
 						"$ref": "#/$defs/FGBuildableSplitterSmart",
 						"unevaluatedProperties": false
 					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePriorityPowerSwitch'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"$ref": "#/$defs/FGBuildablePriorityPowerSwitch",
+						"unevaluatedProperties": false
+					},
+					"minItems": 1,
+					"maxItems": 1
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGJumpingStilts'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"$ref": "1.0.schema.json#/$defs/FGJumpingStilts",
+						"unevaluatedProperties": false
+					},
+					"minItems": 1,
+					"maxItems": 1
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableCircuitSwitch'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"$ref": "#/$defs/FGBuildableCircuitSwitch",
+						"unevaluatedProperties": false
+					},
+					"minItems": 1,
+					"maxItems": 1
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGEquipmentZipline'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"$ref": "1.0.schema.json#/$defs/FGEquipmentZipline",
+						"unevaluatedProperties": false
+					},
+					"minItems": 1,
+					"maxItems": 1
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGGasMask'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"$ref": "1.0.schema.json#/$defs/FGGasMask",
+						"unevaluatedProperties": false
+					},
+					"minItems": 1,
+					"maxItems": 1
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGParachute'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"$ref": "1.0.schema.json#/$defs/FGParachute",
+						"unevaluatedProperties": false
+					},
+					"minItems": 1,
+					"maxItems": 1
 				}
 			}
 		}

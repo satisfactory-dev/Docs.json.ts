@@ -1,6 +1,6 @@
 # Types Progress
 
-31.71% Complete (65 of 205)
+33.17% Complete (69 of 208)
 
 ## Basic Types
 
@@ -78,6 +78,7 @@
 -   [ ] FGBuildableAttachmentMerger
 -   [ ] FGBuildableAttachmentSplitter
 -   [x] FGBuildableBeam
+-   [x] FGBuildableCircuitSwitch
 -   [ ] FGBuildableConveyorBelt
 -   [ ] FGBuildableConveyorLift
 -   [ ] FGBuildableCornerWall
@@ -107,6 +108,7 @@
 -   [x] FGBuildablePowerBooster
 -   [ ] FGBuildablePowerPole
 -   [ ] FGBuildablePowerStorage
+-   [x] FGBuildablePriorityPowerSwitch
 -   [ ] FGBuildableRailroadAttachment
 -   [ ] FGBuildableRailroadSignal
 -   [ ] FGBuildableRailroadStation
@@ -359,5 +361,6 @@
 ## has
 
 -   [ ] has--mAttachedThroughputMonitors
--   [ ] has--mLastEditedBy
+-   [x] has--mLastEditedBy
+-   [x] has--mOnLastEditedByChanged
 -   [x] has--mSavedDirections
