@@ -1555,6 +1555,91 @@
 		"FGBuildableBlueprintDesigner--mk3": {
 			"type": "object",
 			"$ref": "1.1.schema.json#/$defs/FGBuildableBlueprintDesigner--mk3--merged"
+		},
+		"FGBuildableRailroadSignal--merged": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableRailroadSignal"
+				},
+				{
+					"$ref": "1.1.schema.json#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableRailroadSignal": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableRailroadSignal--merged",
+			"required": [
+				"mIsLeftHanded"
+			],
+			"properties": {
+				"mIsLeftHanded": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				}
+			}
+		},
+		"FGBuildableRailroadAttachment": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--base",
+			"required": [
+				"mIsEndStop"
+			],
+			"properties": {
+				"mIsEndStop": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				}
+			}
+		},
+		"FGBuildableTrainPlatformCargo--merged": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableTrainPlatformCargo"
+				},
+				{
+					"$ref": "1.1.schema.json#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableTrainPlatformCargo": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableTrainPlatformCargo--merged"
+		},
+		"FGBuildableTrainPlatformEmpty--merged": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableTrainPlatformEmpty"
+				},
+				{
+					"$ref": "1.1.schema.json#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableTrainPlatformEmpty": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableTrainPlatformEmpty--merged"
+		},
+		"FGBuildableRailroadStation--merged": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableRailroadStation"
+				},
+				{
+					"$ref": "1.1.schema.json#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableRailroadStation": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableRailroadStation--merged",
+			"required": [
+				"mStationName"
+			],
+			"properties": {
+				"mStationName": {
+					"type": "string",
+					"const": ""
+				}
+			}
 		}
 	},
 	"items": false,
@@ -2748,6 +2833,109 @@
 							"unevaluatedProperties": false
 						}
 					]
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGHoverPack'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"$ref": "1.0.schema.json#/$defs/FGHoverPack",
+						"unevaluatedProperties": false
+					},
+					"minItems": 1,
+					"maxItems": 1
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableRailroadSignal'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"$ref": "1.1.schema.json#/$defs/FGBuildableRailroadSignal",
+						"unevaluatedProperties": false
+					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableRailroadAttachment'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"$ref": "1.1.schema.json#/$defs/FGBuildableRailroadAttachment",
+						"unevaluatedProperties": false
+					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableTrainPlatformCargo'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"$ref": "1.1.schema.json#/$defs/FGBuildableTrainPlatformCargo",
+						"unevaluatedProperties": false
+					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableTrainPlatformEmpty'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"$ref": "1.1.schema.json#/$defs/FGBuildableTrainPlatformEmpty",
+						"unevaluatedProperties": false
+					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableRailroadStation'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"$ref": "1.1.schema.json#/$defs/FGBuildableRailroadStation",
+						"unevaluatedProperties": false
+					}
 				}
 			}
 		}

@@ -5154,8 +5154,7 @@
 		},
 		"FGBuildableRailroadSignal": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableRailroadSignal--merged",
-			"unevaluatedProperties": false
+			"$ref": "#/$defs/FGBuildableRailroadSignal--merged"
 		},
 		"FGBuildableTrainPlatform--base--merged": {
 			"allOf": [
@@ -5197,13 +5196,11 @@
 		},
 		"FGBuildableTrainPlatformCargo": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableTrainPlatformCargo--merged",
-			"unevaluatedProperties": false
+			"$ref": "#/$defs/FGBuildableTrainPlatformCargo--merged"
 		},
 		"FGBuildableTrainPlatformEmpty": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableTrainPlatform--base",
-			"unevaluatedProperties": false
+			"$ref": "#/$defs/FGBuildableTrainPlatform--base"
 		},
 		"FGBuildableRailroadStation--merged": {
 			"allOf": [
@@ -5217,8 +5214,7 @@
 		},
 		"FGBuildableRailroadStation": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableRailroadStation--merged",
-			"unevaluatedProperties": false
+			"$ref": "#/$defs/FGBuildableRailroadStation--merged"
 		},
 		"FGBuildableStorage--merged": {
 			"allOf": [

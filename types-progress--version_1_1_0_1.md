@@ -1,6 +1,6 @@
 # Types Progress
 
-30.30% Complete (50 of 165)
+28.74% Complete (50 of 174)
 
 ## Basic Types
 
@@ -87,10 +87,15 @@
 -   [ ] FGBuildablePortal
 -   [ ] FGBuildablePortalSatellite
 -   [ ] FGBuildablePowerPole
+-   [ ] FGBuildableRailroadAttachment
+-   [ ] FGBuildableRailroadSignal
+-   [ ] FGBuildableRailroadStation
 -   [x] FGBuildableRailroadTrack
 -   [ ] FGBuildableResourceSink
 -   [ ] FGBuildableResourceSinkShop
 -   [ ] FGBuildableTradingPost
+-   [ ] FGBuildableTrainPlatformCargo
+-   [ ] FGBuildableTrainPlatformEmpty
 -   [x] FGBuildableWalkway
 -   [ ] FGBuildableWalkwayLightweight
 -   [x] FGBuildableWallLightweight
@@ -216,6 +221,14 @@
 
 -   [ ] FGBuildablePortalSatellite--merged
 
+## FGBuildableRailroadSignal
+
+-   [ ] FGBuildableRailroadSignal--merged
+
+## FGBuildableRailroadStation
+
+-   [ ] FGBuildableRailroadStation--merged
+
 ## FGBuildableRailroadTrack
 
 -   [x] FGBuildableRailroadTrack--merged
@@ -242,6 +255,14 @@
 ## FGBuildableTradingPost
 
 -   [ ] FGBuildableTradingPost--merged
+
+## FGBuildableTrainPlatformCargo
+
+-   [ ] FGBuildableTrainPlatformCargo--merged
+
+## FGBuildableTrainPlatformEmpty
+
+-   [ ] FGBuildableTrainPlatformEmpty--merged
 
 ## FGBuildableWalkway
 
