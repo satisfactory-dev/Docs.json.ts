@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (524 of 524)
+100.00% Complete (522 of 522)
 
 ## Basic Types
 
@@ -353,10 +353,6 @@
 
 -   [x] FGBuildableConveyorLift--merged
 
-## FGBuildableCornerWall
-
--   [x] FGBuildableCornerWall--merged
-
 ## FGBuildableDockingStation
 
 -   [x] FGBuildableDockingStation--merged
@@ -604,7 +600,6 @@
 ## FGBuildableWall
 
 -   [x] FGBuildableWall--base
--   [x] FGBuildableWall--base--rectangle
 
 ## FGBuildableWaterPump
 

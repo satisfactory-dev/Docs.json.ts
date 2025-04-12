@@ -462,7 +462,7 @@
 				}
 			]
 		},
-		"FGBuildableWall--base--rectangle": {
+		"FGBuildableWallLightweight": {
 			"allOf": [
 				{
 					"$ref": "common.schema.json#/$defs/common-base--FGBuildableWall--base--rectangle"
@@ -472,12 +472,7 @@
 				}
 			]
 		},
-		"FGBuildableWallLightweight": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildableWall--base--rectangle",
-			"unevaluatedProperties": false
-		},
-		"FGBuildableCornerWall--merged": {
+		"FGBuildableCornerWall": {
 			"allOf": [
 				{
 					"$ref": "common.schema.json#/$defs/common-base--FGBuildableCornerWall"
@@ -487,18 +482,13 @@
 				}
 			]
 		},
-		"FGBuildableCornerWall": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildableCornerWall--merged",
-			"unevaluatedProperties": false
-		},
 		"FGBuildableDoor--base": {
 			"allOf": [
 				{
 					"$ref": "common.schema.json#/$defs/common-base--FGBuildableDoor--base"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableWall--base--rectangle"
+					"$ref": "#/$defs/FGBuildableWallLightweight"
 				}
 			]
 		},

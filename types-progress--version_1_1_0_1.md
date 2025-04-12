@@ -79,6 +79,7 @@
 -   [x] FGBuildableBeam
 -   [ ] FGBuildableConveyorBelt
 -   [ ] FGBuildableConveyorLift
+-   [ ] FGBuildableCornerWall
 -   [ ] FGBuildableDockingStation
 -   [ ] FGBuildableDoor
 -   [ ] FGBuildableDroneStation
@@ -312,10 +313,6 @@
 ## FGBuildableWalkwayLightweight
 
 -   [ ] FGBuildableWalkwayLightweight--merged
-
-## FGBuildableWallLightweight
-
--   [ ] FGBuildableWallLightweight--merged
 
 ## FGBuildableWaterPump
 

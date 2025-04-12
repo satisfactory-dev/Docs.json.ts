@@ -4,9 +4,7 @@ import {common_base__FGBuildableCornerWall__type} from '../../../common/classes/
 
 import {NativeClass__type} from '../../../common/common/unassigned';
 
-export type FGBuildableCornerWall__type = FGBuildableCornerWall__merged__type;
-
-export type FGBuildableCornerWall__merged__type =
+export type FGBuildableCornerWall__type =
 	common_base__FGBuildableCornerWall__type &
 		FGBuildableWall__base__type;
 

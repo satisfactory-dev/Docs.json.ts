@@ -1,4 +1,4 @@
-import {FGBuildableWall__base__rectangle__type} from './FGBuildableWall';
+import {FGBuildableWallLightweight__type} from './FGBuildableWallLightweight';
 
 import {
 	common_base__FGBuildableDoor__type,
@@ -18,7 +18,7 @@ export type FGBuildableDoor__automated__type =
 
 export type FGBuildableDoor__base__type =
 	common_base__FGBuildableDoor__base__type &
-		FGBuildableWall__base__rectangle__type;
+		FGBuildableWallLightweight__type;
 
 export type FGBuildableDoor__NativeClass = NativeClass__type & {
 	Classes: [
