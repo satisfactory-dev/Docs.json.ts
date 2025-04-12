@@ -5,9 +5,6 @@ import {common_base__FGBuildableGeneratorGeoThermal__type} from '../../../common
 import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableGeneratorGeoThermal__type =
-	FGBuildableGeneratorGeoThermal__merged__type;
-
-export type FGBuildableGeneratorGeoThermal__merged__type =
 	common_base__FGBuildableGeneratorGeoThermal__type &
 		FGBuildableGenerator__base__type;
 

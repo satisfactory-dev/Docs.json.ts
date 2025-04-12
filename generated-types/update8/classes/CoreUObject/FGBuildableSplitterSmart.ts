@@ -5,9 +5,6 @@ import {common_base__FGBuildableSplitterSmart__type} from '../../../common/class
 import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableSplitterSmart__type =
-	FGBuildableSplitterSmart__merged__type;
-
-export type FGBuildableSplitterSmart__merged__type =
 	common_base__FGBuildableSplitterSmart__type &
 		FGBuildable__splitter__base__type;
 

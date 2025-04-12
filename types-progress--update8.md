@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (522 of 522)
+100.00% Complete (519 of 519)
 
 ## Basic Types
 
@@ -407,7 +407,6 @@
 ## FGBuildableGenerator
 
 -   [x] FGBuildableGenerator--base
--   [x] FGBuildableGenerator--base--merged
 
 ## FGBuildableGeneratorFuel
 
@@ -419,10 +418,6 @@
 -   [x] FGBuildableGeneratorFuel--liquid--merged
 -   [x] FGBuildableGeneratorFuel--solid
 -   [x] FGBuildableGeneratorFuel--solid--merged
-
-## FGBuildableGeneratorGeoThermal
-
--   [x] FGBuildableGeneratorGeoThermal--merged
 
 ## FGBuildableGeneratorNuclear
 
@@ -562,10 +557,6 @@
 ## FGBuildableSpaceElevator
 
 -   [x] FGBuildableSpaceElevator--merged
-
-## FGBuildableSplitterSmart
-
--   [x] FGBuildableSplitterSmart--merged
 
 ## FGBuildableStorage
 

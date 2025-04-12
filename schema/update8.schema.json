@@ -1494,7 +1494,7 @@
 			"$ref": "#/$defs/FGBuildableWalkway--merged",
 			"unevaluatedProperties": false
 		},
-		"FGBuildableGenerator--base--merged": {
+		"FGBuildableGenerator--base": {
 			"allOf": [
 				{
 					"$ref": "common.schema.json#/$defs/common-base--FGBuildableGenerator--base"
@@ -1503,10 +1503,6 @@
 					"$ref": "#/$defs/FGBuildable--consumes-power-base"
 				}
 			]
-		},
-		"FGBuildableGenerator--base": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildableGenerator--base--merged"
 		},
 		"FGBuildableGeneratorFuel--base--merged": {
 			"allOf": [
@@ -1692,7 +1688,7 @@
 				}
 			}
 		},
-		"FGBuildableGeneratorGeoThermal--merged": {
+		"FGBuildableGeneratorGeoThermal": {
 			"allOf": [
 				{
 					"$ref": "common.schema.json#/$defs/common-base--FGBuildableGeneratorGeoThermal"
@@ -1701,11 +1697,6 @@
 					"$ref": "#/$defs/FGBuildableGenerator--base"
 				}
 			]
-		},
-		"FGBuildableGeneratorGeoThermal": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildableGeneratorGeoThermal--merged",
-			"unevaluatedProperties": false
 		},
 		"mOutputInventoryHandlerData": {
 			"$ref": "common.schema.json#/$defs/empty-object"
@@ -2583,7 +2574,7 @@
 			"$ref": "#/$defs/FGBuildableAttachmentSplitter--merged",
 			"unevaluatedProperties": false
 		},
-		"FGBuildableSplitterSmart--merged": {
+		"FGBuildableSplitterSmart": {
 			"allOf": [
 				{
 					"$ref": "common.schema.json#/$defs/common-base--FGBuildableSplitterSmart"
@@ -2592,11 +2583,6 @@
 					"$ref": "#/$defs/FGBuildable--splitter--base"
 				}
 			]
-		},
-		"FGBuildableSplitterSmart": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildableSplitterSmart--merged",
-			"unevaluatedProperties": false
 		},
 		"FGBuildableFoundation--base--merged": {
 			"allOf": [

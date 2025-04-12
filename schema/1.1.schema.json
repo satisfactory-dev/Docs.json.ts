@@ -1938,6 +1938,76 @@
 					"$ref": "#/$defs/FGBuildable--base"
 				}
 			]
+		},
+		"FGBuildablePowerBooster": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildablePowerBooster"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGCentralStorageContainer": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGCentralStorageContainer"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableGeneratorGeoThermal": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableGeneratorGeoThermal"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableSplitterSmart--merged": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableSplitterSmart"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				},
+				{
+					"$ref": "#/$defs/has--mSavedDirections"
+				}
+			]
+		},
+		"FGBuildableSplitterSmart": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableSplitterSmart--merged",
+			"required": [
+				"mHologramOverrides"
+			],
+			"properties": {
+				"mHologramOverrides": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"minItems": 1,
+						"items": {
+							"type": "string",
+							"minLength": 1,
+							"UnrealEngineString": {
+								"left": "/Script/FactoryGame.FGHologramOverride_ConveyorAttachment_FloorToLift",
+								"right": [
+									"/Game/FactoryGame/Buildable/Factory/CA_SplitterProgrammable/Build_ConveyorAttachmentSplitterProgrammable.Default__Build_ConveyorAttachmentSplitterProgrammable_C:FGHologramOverride_ConveyorAttachment_FloorToLift_0",
+									"/Game/FactoryGame/Buildable/Factory/CA_SplitterSmart/Build_ConveyorAttachmentSplitterSmart.Default__Build_ConveyorAttachmentSplitterSmart_C:FGHologramOverride_ConveyorAttachment_FloorToLift_0"
+								]
+							}
+						}
+					}
+				}
+			}
 		}
 	},
 	"items": false,
@@ -3567,6 +3637,93 @@
 					"items": {
 						"type": "object",
 						"$ref": "1.1.schema.json#/$defs/FGBuildableCornerWall",
+						"unevaluatedProperties": false
+					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePowerBooster'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"$ref": "#/$defs/FGBuildablePowerBooster",
+						"unevaluatedProperties": false
+					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGCentralStorageContainer'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"$ref": "#/$defs/FGCentralStorageContainer",
+						"unevaluatedProperties": false
+					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGItemDescriptorPowerBoosterFuel'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"maxItems": 1,
+					"items": {
+						"type": "object",
+						"$ref": "1.0.schema.json#/$defs/FGItemDescriptorPowerBoosterFuel",
+						"unevaluatedProperties": false
+					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableGeneratorGeoThermal'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"$ref": "#/$defs/FGBuildableGeneratorGeoThermal",
+						"unevaluatedProperties": false
+					},
+					"minItems": 1,
+					"maxItems": 1
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableSplitterSmart'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"$ref": "#/$defs/FGBuildableSplitterSmart",
 						"unevaluatedProperties": false
 					}
 				}

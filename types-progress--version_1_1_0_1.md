@@ -1,6 +1,6 @@
 # Types Progress
 
-29.50% Complete (59 of 200)
+31.71% Complete (65 of 205)
 
 ## Basic Types
 
@@ -13,6 +13,7 @@
 -   [x] decimal-string--signed (common type)
 -   [x] EditorCurveData
 -   [x] empty-object (common type)
+-   [x] FGCentralStorageContainer
 -   [ ] FGChainsaw
 -   [x] FGChargedWeapon
 -   [x] FGPipeHyperStart
@@ -86,6 +87,7 @@
 -   [ ] FGBuildableFoundation
 -   [ ] FGBuildableFrackingActivator
 -   [ ] FGBuildableFrackingExtractor
+-   [x] FGBuildableGeneratorGeoThermal
 -   [ ] FGBuildableGeneratorNuclear
 -   [ ] FGBuildableJumppad
 -   [ ] FGBuildableMAM
@@ -102,6 +104,7 @@
 -   [ ] FGBuildablePoleStackable
 -   [ ] FGBuildablePortal
 -   [ ] FGBuildablePortalSatellite
+-   [x] FGBuildablePowerBooster
 -   [ ] FGBuildablePowerPole
 -   [ ] FGBuildablePowerStorage
 -   [ ] FGBuildableRailroadAttachment
@@ -111,6 +114,7 @@
 -   [ ] FGBuildableRamp
 -   [ ] FGBuildableResourceSink
 -   [ ] FGBuildableResourceSinkShop
+-   [x] FGBuildableSplitterSmart
 -   [x] FGBuildableStorage
 -   [ ] FGBuildableTradingPost
 -   [ ] FGBuildableTrainPlatformCargo
@@ -292,6 +296,10 @@
 
 -   [ ] FGBuildableResourceSinkShop--merged
 
+## FGBuildableSplitterSmart
+
+-   [x] FGBuildableSplitterSmart--merged
+
 ## FGBuildableTradingPost
 
 -   [ ] FGBuildableTradingPost--merged
@@ -352,4 +360,4 @@
 
 -   [ ] has--mAttachedThroughputMonitors
 -   [ ] has--mLastEditedBy
--   [ ] has--mSavedDirections
+-   [x] has--mSavedDirections
