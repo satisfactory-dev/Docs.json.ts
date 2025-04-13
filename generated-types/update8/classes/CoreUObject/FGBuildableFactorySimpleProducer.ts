@@ -5,9 +5,6 @@ import {common_base__FGBuildableFactorySimpleProducer__type} from '../../../comm
 import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableFactorySimpleProducer__type =
-	FGBuildableFactorySimpleProducer__merged__type;
-
-export type FGBuildableFactorySimpleProducer__merged__type =
 	common_base__FGBuildableFactorySimpleProducer__type &
 		FGBuildable__consumes_power_base__type;
 

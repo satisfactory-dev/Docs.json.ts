@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (563 of 563)
+100.00% Complete (556 of 556)
 
 ## Basic Types
 
@@ -382,14 +382,6 @@
 
 -   [x] FGBuildableFactoryBuilding--merged
 
-## FGBuildableFactorySimpleProducer
-
--   [x] FGBuildableFactorySimpleProducer--merged
-
-## FGBuildableFloodlight
-
--   [x] FGBuildableFloodlight--merged
-
 ## FGBuildableFoundation
 
 -   [x] FGBuildableFoundation--base
@@ -426,10 +418,6 @@
 -   [x] FGBuildableGeneratorNuclear--mFuel--FicsoniumFuelRod
 -   [x] FGBuildableGeneratorNuclear--properties
 
-## FGBuildableLadder
-
--   [x] FGBuildableLadder--merged
-
 ## FGBuildableLightsControlPanel
 
 -   [x] FGBuildableLightsControlPanel--merged
@@ -438,7 +426,6 @@
 
 -   [x] FGBuildableLightSource--base
 -   [x] FGBuildableLightSource--base--merged
--   [x] FGBuildableLightSource--merged
 
 ## FGBuildableMAM
 
@@ -466,10 +453,6 @@
 -   [x] FGBuildableManufacturerVariablePower--HadronCollider
 -   [x] FGBuildableManufacturerVariablePower--HadronCollider--merged
 -   [x] FGBuildableManufacturerVariablePower--QuantumEncoder
-
-## FGBuildablePassthrough
-
--   [x] FGBuildablePassthrough--merged
 
 ## FGBuildablePillarLightweight
 
@@ -515,10 +498,6 @@
 
 -   [x] FGBuildablePowerStorage--merged
 
-## FGBuildableRadarTower
-
--   [x] FGBuildableRadarTower--merged
-
 ## FGBuildableRailroadSignal
 
 -   [x] FGBuildableRailroadSignal--merged
@@ -556,10 +535,6 @@
 ## FGBuildableResourceSinkShop
 
 -   [x] FGBuildableResourceSinkShop--merged
-
-## FGBuildableSnowDispenser
-
--   [x] FGBuildableSnowDispenser--merged
 
 ## FGBuildableSpaceElevator
 

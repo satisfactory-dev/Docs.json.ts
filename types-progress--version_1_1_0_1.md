@@ -1,6 +1,6 @@
 # Types Progress
 
-33.17% Complete (69 of 208)
+36.99% Complete (81 of 219)
 
 ## Basic Types
 
@@ -81,18 +81,24 @@
 -   [x] FGBuildableCircuitSwitch
 -   [ ] FGBuildableConveyorBelt
 -   [ ] FGBuildableConveyorLift
--   [ ] FGBuildableCornerWall
+-   [x] FGBuildableCornerWall
 -   [ ] FGBuildableDockingStation
 -   [ ] FGBuildableDoor
 -   [ ] FGBuildableDroneStation
+-   [x] FGBuildableFactorySimpleProducer
+-   [x] FGBuildableFloodlight
 -   [ ] FGBuildableFoundation
 -   [ ] FGBuildableFrackingActivator
 -   [ ] FGBuildableFrackingExtractor
 -   [x] FGBuildableGeneratorGeoThermal
 -   [ ] FGBuildableGeneratorNuclear
 -   [ ] FGBuildableJumppad
+-   [x] FGBuildableLadder
+-   [x] FGBuildableLightSource
 -   [ ] FGBuildableMAM
 -   [ ] FGBuildableManufacturer
+-   [x] FGBuildableMergerPriority
+-   [x] FGBuildablePassthrough
 -   [ ] FGBuildablePillarLightweight
 -   [x] FGBuildablePipeHyper
 -   [x] FGBuildablePipeHyperJunction
@@ -109,6 +115,7 @@
 -   [ ] FGBuildablePowerPole
 -   [ ] FGBuildablePowerStorage
 -   [x] FGBuildablePriorityPowerSwitch
+-   [x] FGBuildableRadarTower
 -   [ ] FGBuildableRailroadAttachment
 -   [ ] FGBuildableRailroadSignal
 -   [ ] FGBuildableRailroadStation
@@ -116,7 +123,10 @@
 -   [ ] FGBuildableRamp
 -   [ ] FGBuildableResourceSink
 -   [ ] FGBuildableResourceSinkShop
+-   [x] FGBuildableSnowCannon
+-   [x] FGBuildableSnowDispenser
 -   [x] FGBuildableSplitterSmart
+-   [x] FGBuildableStackableShelf
 -   [x] FGBuildableStorage
 -   [ ] FGBuildableTradingPost
 -   [ ] FGBuildableTrainPlatformCargo
@@ -364,3 +374,7 @@
 -   [x] has--mLastEditedBy
 -   [x] has--mOnLastEditedByChanged
 -   [x] has--mSavedDirections
+
+## vectors
+
+-   [x] xyz (common type)

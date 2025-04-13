@@ -4,9 +4,7 @@ import {common_base__FGBuildableLadder__type} from '../../../common/classes/Core
 
 import {NativeClass__type} from '../../../common/common/unassigned';
 
-export type FGBuildableLadder__type = FGBuildableLadder__merged__type;
-
-export type FGBuildableLadder__merged__type =
+export type FGBuildableLadder__type =
 	common_base__FGBuildableLadder__type & FGBuildable__base__type;
 
 export type FGBuildableLadder__NativeClass = NativeClass__type & {

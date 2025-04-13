@@ -6759,7 +6759,7 @@
 				}
 			]
 		},
-		"FGBuildableRadarTower--merged": {
+		"FGBuildableRadarTower": {
 			"allOf": [
 				{
 					"$ref": "common.schema.json#/$defs/common-base--FGBuildableRadarTower"
@@ -6769,12 +6769,7 @@
 				}
 			]
 		},
-		"FGBuildableRadarTower": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildableRadarTower--merged",
-			"unevaluatedProperties": false
-		},
-		"FGBuildableSnowDispenser--merged": {
+		"FGBuildableSnowDispenser": {
 			"allOf": [
 				{
 					"$ref": "common.schema.json#/$defs/common-base--FGBuildableSnowDispenser"
@@ -6784,15 +6779,9 @@
 				}
 			]
 		},
-		"FGBuildableSnowDispenser": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildableSnowDispenser--merged",
-			"unevaluatedProperties": false
-		},
 		"FGBuildableSnowCannon": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--base",
-			"unevaluatedProperties": false,
 			"required": ["SFXLocation", "mSignificanceRange"],
 			"properties": {
 				"SFXLocation": {
@@ -6824,7 +6813,7 @@
 				}
 			}
 		},
-		"FGBuildableFactorySimpleProducer--merged": {
+		"FGBuildableFactorySimpleProducer": {
 			"allOf": [
 				{
 					"$ref": "common.schema.json#/$defs/common-base--FGBuildableFactorySimpleProducer"
@@ -6834,12 +6823,7 @@
 				}
 			]
 		},
-		"FGBuildableFactorySimpleProducer": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildableFactorySimpleProducer--merged",
-			"unevaluatedProperties": false
-		},
-		"FGBuildableLadder--merged": {
+		"FGBuildableLadder": {
 			"allOf": [
 				{
 					"$ref": "common.schema.json#/$defs/common-base--FGBuildableLadder"
@@ -6848,11 +6832,6 @@
 					"$ref": "#/$defs/FGBuildable--base"
 				}
 			]
-		},
-		"FGBuildableLadder": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildableLadder--merged",
-			"unevaluatedProperties": false
 		},
 		"FGGolfCartDispenser--merged": {
 			"allOf": [
@@ -6959,7 +6938,7 @@
 				}
 			}
 		},
-		"FGBuildablePassthrough--merged": {
+		"FGBuildablePassthrough": {
 			"allOf": [
 				{
 					"$ref": "common.schema.json#/$defs/common-base--FGBuildablePassthrough"
@@ -6968,11 +6947,6 @@
 					"$ref": "#/$defs/FGBuildable--base"
 				}
 			]
-		},
-		"FGBuildablePassthrough": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildablePassthrough--merged",
-			"unevaluatedProperties": false
 		},
 		"FGBuildableLightsControlPanel--merged": {
 			"allOf": [
@@ -7003,7 +6977,7 @@
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableLightSource--base--merged"
 		},
-		"FGBuildableLightSource--merged": {
+		"FGBuildableLightSource": {
 			"allOf": [
 				{
 					"$ref": "common.schema.json#/$defs/common-base--FGBuildableLightSource"
@@ -7013,12 +6987,7 @@
 				}
 			]
 		},
-		"FGBuildableLightSource": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildableLightSource--merged",
-			"unevaluatedProperties": false
-		},
-		"FGBuildableFloodlight--merged": {
+		"FGBuildableFloodlight": {
 			"allOf": [
 				{
 					"$ref": "common.schema.json#/$defs/common-base--FGBuildableFloodlight"
@@ -7027,11 +6996,6 @@
 					"$ref": "#/$defs/FGBuildableLightSource--base"
 				}
 			]
-		},
-		"FGBuildableFloodlight": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildableFloodlight--merged",
-			"unevaluatedProperties": false
 		},
 		"FGBuildableWidgetSign--merged": {
 			"allOf": [

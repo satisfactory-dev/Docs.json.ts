@@ -9,9 +9,6 @@ import {common_base__FGBuildableSnowDispenser__type} from '../../../common/class
 import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableSnowDispenser__type =
-	FGBuildableSnowDispenser__merged__type;
-
-export type FGBuildableSnowDispenser__merged__type =
 	common_base__FGBuildableSnowDispenser__type &
 		FGBuildable__base__type;
 

@@ -5,9 +5,6 @@ import {common_base__FGBuildablePassthrough__type} from '../../../common/classes
 import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildablePassthrough__type =
-	FGBuildablePassthrough__merged__type;
-
-export type FGBuildablePassthrough__merged__type =
 	common_base__FGBuildablePassthrough__type &
 		FGBuildable__base__type;
 
