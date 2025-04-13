@@ -6948,7 +6948,7 @@
 				}
 			]
 		},
-		"FGBuildableLightsControlPanel--merged": {
+		"FGBuildableLightsControlPanel": {
 			"allOf": [
 				{
 					"$ref": "common.schema.json#/$defs/common-base--FGBuildableLightsControlPanel"
@@ -6957,11 +6957,6 @@
 					"$ref": "#/$defs/FGBuildable--circuits-base"
 				}
 			]
-		},
-		"FGBuildableLightsControlPanel": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildableLightsControlPanel--merged",
-			"unevaluatedProperties": false
 		},
 		"FGBuildableLightSource--base--merged": {
 			"allOf": [
@@ -7010,7 +7005,6 @@
 		"FGBuildableWidgetSign": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableWidgetSign--merged",
-			"unevaluatedProperties": false,
 			"required": [
 				"mTextElementToLocDataMap",
 				"mSoftActivePrefabLayout",
@@ -7049,7 +7043,7 @@
 			"$ref": "#/$defs/FGBuildableBeamLightweight--merged",
 			"unevaluatedProperties": false
 		},
-		"FGBuildableFactoryBuilding--merged": {
+		"FGBuildableFactoryBuilding": {
 			"allOf": [
 				{
 					"$ref": "common.schema.json#/$defs/common-base--FGBuildableFactoryBuilding"
@@ -7058,11 +7052,6 @@
 					"$ref": "#/$defs/FGBuildable--base"
 				}
 			]
-		},
-		"FGBuildableFactoryBuilding": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildableFactoryBuilding--merged",
-			"unevaluatedProperties": false
 		},
 		"FGBuildableSpaceElevator--mSpaceElevatorState": {
 			"type": "string",
@@ -7081,7 +7070,6 @@
 		"FGBuildableSpaceElevator": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableSpaceElevator--merged",
-			"unevaluatedProperties": false,
 			"required": [
 				"mOnSpaceElevatorStateUpdated",
 				"mSpaceElevatorState"

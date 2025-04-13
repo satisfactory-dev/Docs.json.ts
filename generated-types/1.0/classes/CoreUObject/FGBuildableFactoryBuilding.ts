@@ -9,9 +9,6 @@ import {common_base__FGBuildableFactoryBuilding__type} from '../../../common/cla
 import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableFactoryBuilding__type =
-	FGBuildableFactoryBuilding__merged__type;
-
-export type FGBuildableFactoryBuilding__merged__type =
 	common_base__FGBuildableFactoryBuilding__type &
 		FGBuildable__base__type;
 

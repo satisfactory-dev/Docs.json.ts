@@ -2978,7 +2978,7 @@
 				}
 			]
 		},
-		"FGBuildableLightsControlPanel--merged": {
+		"FGBuildableLightsControlPanel": {
 			"allOf": [
 				{
 					"$ref": "common.schema.json#/$defs/common-base--FGBuildableLightsControlPanel"
@@ -2987,11 +2987,6 @@
 					"$ref": "#/$defs/FGBuildable--circuits-base"
 				}
 			]
-		},
-		"FGBuildableLightsControlPanel": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildableLightsControlPanel--merged",
-			"unevaluatedProperties": false
 		},
 		"FGBuildableLightSource--base--merged": {
 			"allOf": [
@@ -3027,7 +3022,7 @@
 				}
 			]
 		},
-		"FGBuildableWidgetSign--merged": {
+		"FGBuildableWidgetSign": {
 			"allOf": [
 				{
 					"$ref": "common.schema.json#/$defs/common-base--FGBuildableWidgetSign"
@@ -3036,11 +3031,6 @@
 					"$ref": "#/$defs/FGBuildable--base"
 				}
 			]
-		},
-		"FGBuildableWidgetSign": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildableWidgetSign--merged",
-			"unevaluatedProperties": false
 		},
 		"FGBuildableBeamLightweight--merged": {
 			"allOf": [
@@ -3057,7 +3047,7 @@
 			"$ref": "#/$defs/FGBuildableBeamLightweight--merged",
 			"unevaluatedProperties": false
 		},
-		"FGBuildableFactoryBuilding--merged": {
+		"FGBuildableFactoryBuilding": {
 			"allOf": [
 				{
 					"$ref": "common.schema.json#/$defs/common-base--FGBuildableFactoryBuilding"
@@ -3066,11 +3056,6 @@
 					"$ref": "#/$defs/FGBuildable--base"
 				}
 			]
-		},
-		"FGBuildableFactoryBuilding": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildableFactoryBuilding--merged",
-			"unevaluatedProperties": false
 		},
 		"FGBuildableSpaceElevator--merged": {
 			"allOf": [

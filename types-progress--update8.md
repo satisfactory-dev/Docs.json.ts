@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (510 of 510)
+100.00% Complete (507 of 507)
 
 ## Basic Types
 
@@ -374,10 +374,6 @@
 -   [x] FGBuildableFactory--landing-pad
 -   [x] FGBuildableFactory--landing-pad--merged
 
-## FGBuildableFactoryBuilding
-
--   [x] FGBuildableFactoryBuilding--merged
-
 ## FGBuildableFoundation
 
 -   [x] FGBuildableFoundation--base
@@ -414,10 +410,6 @@
 ## FGBuildableJumppad
 
 -   [x] FGBuildableJumppad--merged
-
-## FGBuildableLightsControlPanel
-
--   [x] FGBuildableLightsControlPanel--merged
 
 ## FGBuildableLightSource
 
@@ -562,10 +554,6 @@
 ## FGBuildableWaterPump
 
 -   [x] FGBuildableWaterPump--merged
-
-## FGBuildableWidgetSign
-
--   [x] FGBuildableWidgetSign--merged
 
 ## FGBuildableWire
 

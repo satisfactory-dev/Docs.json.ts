@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (556 of 556)
+100.00% Complete (554 of 554)
 
 ## Basic Types
 
@@ -378,10 +378,6 @@
 -   [x] FGBuildableFactory--landing-pad
 -   [x] FGBuildableFactory--landing-pad--merged
 
-## FGBuildableFactoryBuilding
-
--   [x] FGBuildableFactoryBuilding--merged
-
 ## FGBuildableFoundation
 
 -   [x] FGBuildableFoundation--base
@@ -417,10 +413,6 @@
 -   [x] FGBuildableGeneratorNuclear--merged
 -   [x] FGBuildableGeneratorNuclear--mFuel--FicsoniumFuelRod
 -   [x] FGBuildableGeneratorNuclear--properties
-
-## FGBuildableLightsControlPanel
-
--   [x] FGBuildableLightsControlPanel--merged
 
 ## FGBuildableLightSource
 

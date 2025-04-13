@@ -1,6 +1,6 @@
 # Types Progress
 
-36.99% Complete (81 of 219)
+39.74% Complete (91 of 229)
 
 ## Basic Types
 
@@ -19,6 +19,7 @@
 -   [x] FGPipeHyperStart
 -   [x] integer-string (common type)
 -   [x] integer-string--signed (common type)
+-   [x] mElevatorState
 -   [x] mInputOutputMeshDisplayMode
 -   [ ] mPoleVariations
 -   [x] mStatisticGameplayTag
@@ -36,6 +37,7 @@
 -   [x] common-base--FGBuildable--consumes-power-base (common type)
 -   [x] common-base--FGBuildable--occupied (common type)
 -   [x] common-base--FGBuildable--tiered (common type)
+-   [x] common-base--FGBuildablePillarLightweight (common type)
 -   [x] common-base--FGBuildablePipeHyper (common type)
 -   [x] common-base--FGBuildablePoleLightweight--properties (common type)
 -   [x] common-base--FGBuildableRailroadTrack (common type)
@@ -77,14 +79,19 @@
 
 -   [ ] FGBuildableAttachmentMerger
 -   [ ] FGBuildableAttachmentSplitter
+-   [x] FGBuildableBarrierCorner
 -   [x] FGBuildableBeam
 -   [x] FGBuildableCircuitSwitch
 -   [ ] FGBuildableConveyorBelt
 -   [ ] FGBuildableConveyorLift
+-   [x] FGBuildableConveyorMonitor
 -   [x] FGBuildableCornerWall
 -   [ ] FGBuildableDockingStation
 -   [ ] FGBuildableDoor
 -   [ ] FGBuildableDroneStation
+-   [x] FGBuildableElevator
+-   [x] FGBuildableElevatorFloorStop
+-   [x] FGBuildableFactoryBuilding
 -   [x] FGBuildableFactorySimpleProducer
 -   [x] FGBuildableFloodlight
 -   [ ] FGBuildableFoundation
@@ -94,6 +101,7 @@
 -   [ ] FGBuildableGeneratorNuclear
 -   [ ] FGBuildableJumppad
 -   [x] FGBuildableLadder
+-   [x] FGBuildableLightsControlPanel
 -   [x] FGBuildableLightSource
 -   [ ] FGBuildableMAM
 -   [ ] FGBuildableManufacturer
@@ -125,6 +133,7 @@
 -   [ ] FGBuildableResourceSinkShop
 -   [x] FGBuildableSnowCannon
 -   [x] FGBuildableSnowDispenser
+-   [x] FGBuildableSpaceElevator
 -   [x] FGBuildableSplitterSmart
 -   [x] FGBuildableStackableShelf
 -   [x] FGBuildableStorage
@@ -135,6 +144,7 @@
 -   [ ] FGBuildableWalkwayLightweight
 -   [x] FGBuildableWallLightweight
 -   [ ] FGBuildableWaterPump
+-   [x] FGBuildableWidgetSign
 -   [ ] FGBuildableWire
 -   [x] FGBuildable--base
 -   [ ] FGBuildable--consumes-power-base
