@@ -97,6 +97,18 @@ try {
 
 		console.error(err.message, err.stack);
 	} else {
+		await writeFile(
+			`./discovery-types.${sub_path}.failure.json`,
+			JSON.stringify(
+				{
+					now: performance.now(),
+					errors: err,
+				},
+				null,
+				'\t',
+			),
+		);
+
 		throw err;
 	}
 }

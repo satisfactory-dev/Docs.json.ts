@@ -32,7 +32,7 @@
 				}
 			}
 		},
-		"FGBuildableRailroadTrack--merged": {
+		"FGBuildableRailroadTrack": {
 			"allOf": [
 				{
 					"$ref": "common.schema.json#/$defs/common-base--FGBuildableRailroadTrack"
@@ -42,12 +42,7 @@
 				}
 			]
 		},
-		"FGBuildableRailroadTrack": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildableRailroadTrack--merged",
-			"unevaluatedProperties": false
-		},
-		"FGBuildableBeam--merged": {
+		"FGBuildableBeam": {
 			"allOf": [
 				{
 					"$ref": "1.0.schema.json#/$defs/FGBuildableBeamLightweight--merged"
@@ -66,11 +61,6 @@
 					"$ref": "common.schema.json#/$defs/boolean"
 				}
 			}
-		},
-		"FGBuildableBeam": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildableBeam--merged",
-			"unevaluatedProperties": false
 		},
 		"FGBuildingDescriptor--merged": {
 			"allOf": [
@@ -174,7 +164,7 @@
 				}
 			}
 		},
-		"1.1-base--FGAmmoTypeProjectile--base": {
+		"FGAmmoTypeProjectile--base--from-common": {
 			"type": "object",
 			"$ref": "common.schema.json#/$defs/common-base--FGAmmoTypeProjectile--base--pre-1.1",
 			"required": [
@@ -260,19 +250,15 @@
 				}
 			}
 		},
-		"FGAmmoTypeProjectile--base--merged": {
+		"FGAmmoTypeProjectile--base": {
 			"allOf": [
 				{
-					"$ref": "1.1.schema.json#/$defs/1.1-base--FGAmmoTypeProjectile--base"
+					"$ref": "1.1.schema.json#/$defs/FGAmmoTypeProjectile--base--from-common"
 				},
 				{
 					"$ref": "1.0.schema.json#/$defs/FGItemDescriptor--FGResourceDescriptor"
 				}
 			]
-		},
-		"FGAmmoTypeProjectile--base": {
-			"type": "object",
-			"$ref": "1.1.schema.json#/$defs/FGAmmoTypeProjectile--base--merged"
 		},
 		"FGAmmoTypeProjectile--merged": {
 			"allOf": [
@@ -351,7 +337,7 @@
 		"FGAmmoTypeSpreadshot--merged": {
 			"allOf": [
 				{
-					"$ref": "1.1.schema.json#/$defs/1.1-base--FGAmmoTypeProjectile--base"
+					"$ref": "1.1.schema.json#/$defs/FGAmmoTypeProjectile--base"
 				},
 				{
 					"$ref": "common.schema.json#/$defs/common-base--FGAmmoTypeSpreadshot--pre-1.1"
@@ -528,7 +514,7 @@
 											],
 											"properties": {
 												"AudioEvent": {
-													"$ref": "#/$defs/FGSuitBase--1.0--mEquipMontage--Montages--AudioEvent"
+													"$ref": "1.0.schema.json#/$defs/FGSuitBase--1.0--mEquipMontage--Montages--AudioEvent"
 												},
 												"bSeparate3PAudioEvent": {
 													"$ref": "common.schema.json#/$defs/boolean"
@@ -695,7 +681,7 @@
 											"enum": ["CT_Soft"]
 										},
 										"ClearanceBox": {
-											"$ref": "#/$defs/ClearanceBox"
+											"$ref": "1.0.schema.json#/$defs/ClearanceBox"
 										},
 										"ExcludeForSnapping": {
 											"$ref": "common.schema.json#/$defs/boolean"
@@ -2215,6 +2201,290 @@
 							"$ref": "common.schema.json#/$defs/xyz"
 						}
 					}
+				}
+			]
+		},
+		"mElevatorState": {
+			"type": "string",
+			"const": "EES_NONE"
+		},
+		"FGBuildableElevatorFloorStop": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				},
+				{
+					"type": "object",
+					"required": [
+						"Timeline_Offset_942DA00C47315AC741095991E04356D7",
+						"Timeline__Direction_942DA00C47315AC741095991E04356D7",
+						"DoorStartTime",
+						"mElevatorDataStruct",
+						"bIsSignificant",
+						"mSignificanceRange",
+						"mFloorRelevantElevatorState",
+						"mCachedQueuedStatus",
+						"mCachedFloorStopInfo"
+					],
+					"properties": {
+						"Timeline_Offset_942DA00C47315AC741095991E04356D7": {
+							"$ref": "common.schema.json#/$defs/xyz"
+						},
+						"Timeline__Direction_942DA00C47315AC741095991E04356D7": {
+							"type": "string",
+							"const": "Forward"
+						},
+						"DoorStartTime": {
+							"$ref": "common.schema.json#/$defs/decimal-string"
+						},
+						"mElevatorDataStruct": {
+							"type": "string",
+							"minLength": 1,
+							"typed_string": {
+								"required": [
+									"FloorColor_11_CD9C84CB45D5EE423EB254803463E6C9"
+								],
+								"properties": {
+									"FloorColor_11_CD9C84CB45D5EE423EB254803463E6C9": {
+										"$ref": "common.schema.json#/$defs/color-decimal"
+									}
+								}
+							}
+						},
+						"bIsSignificant": {
+							"$ref": "common.schema.json#/$defs/boolean"
+						},
+						"mSignificanceRange": {
+							"$ref": "common.schema.json#/$defs/decimal-string"
+						},
+						"mFloorRelevantElevatorState": {
+							"$ref": "#/$defs/mElevatorState"
+						},
+						"mCachedQueuedStatus": {
+							"type": "string",
+							"const": "EEFSQS_None"
+						},
+						"mCachedFloorStopInfo": {
+							"type": "string",
+							"minLength": 1,
+							"typed_string": {
+								"required": [
+									"IconId",
+									"IconColor",
+									"Height"
+								],
+								"properties": {
+									"IconId": {
+										"$ref": "common.schema.json#/$defs/integer-string--signed"
+									},
+									"IconColor": {
+										"$ref": "common.schema.json#/$defs/color-decimal"
+									},
+									"Height": {
+										"$ref": "common.schema.json#/$defs/integer-string--signed"
+									}
+								}
+							}
+						}
+					}
+				}
+			]
+		},
+		"FGBuildableElevator": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildable--consumes-power-base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				},
+				{
+					"type": "object",
+					"required": [
+						"mStopAtFloorTimerHandle",
+						"mPowerOutPauseTimerHandle",
+						"mSpeed",
+						"mHeight",
+						"mLockedMovementDirection",
+						"mFloorStopInfos",
+						"mQueuedStops",
+						"mQueuedStopIndexes",
+						"mCharactersInElevator",
+						"mHeightOfCabin",
+						"mSongID",
+						"mDurationToOpenDoors",
+						"mDurationToWaitAtStop",
+						"mDurationToCloseDoors",
+						"mDurationPauseBeforeMove",
+						"mDurationPausePowerOutage",
+						"mDurationPauseBeforeDoorOpen",
+						"mElevatorState"
+					],
+					"properties": {
+						"mStopAtFloorTimerHandle": {
+							"$ref": "common.schema.json#/$defs/empty-object"
+						},
+						"mPowerOutPauseTimerHandle": {
+							"$ref": "common.schema.json#/$defs/empty-object"
+						},
+						"mSpeed": {
+							"$ref": "common.schema.json#/$defs/decimal-string"
+						},
+						"mHeight": {
+							"$ref": "common.schema.json#/$defs/decimal-string"
+						},
+						"mLockedMovementDirection": {
+							"type": "string",
+							"const": "EED_Up"
+						},
+						"mFloorStopInfos": {
+							"type": "string",
+							"const": ""
+						},
+						"mQueuedStops": {
+							"type": "string",
+							"const": ""
+						},
+						"mQueuedStopIndexes": {
+							"type": "string",
+							"const": ""
+						},
+						"mCharactersInElevator": {
+							"type": "string",
+							"const": ""
+						},
+						"mHeightOfCabin": {
+							"$ref": "common.schema.json#/$defs/decimal-string"
+						},
+						"mSongID": {
+							"$ref": "common.schema.json#/$defs/integer-string"
+						},
+						"mDurationToOpenDoors": {
+							"$ref": "common.schema.json#/$defs/decimal-string"
+						},
+						"mDurationToWaitAtStop": {
+							"$ref": "common.schema.json#/$defs/decimal-string"
+						},
+						"mDurationToCloseDoors": {
+							"$ref": "common.schema.json#/$defs/decimal-string"
+						},
+						"mDurationPauseBeforeMove": {
+							"$ref": "common.schema.json#/$defs/decimal-string"
+						},
+						"mDurationPausePowerOutage": {
+							"$ref": "common.schema.json#/$defs/decimal-string"
+						},
+						"mDurationPauseBeforeDoorOpen": {
+							"$ref": "common.schema.json#/$defs/decimal-string"
+						},
+						"mElevatorState": {
+							"$ref": "#/$defs/mElevatorState"
+						}
+					}
+				}
+			]
+		},
+		"FGBuildableLightsControlPanel": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableLightsControlPanel"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableWidgetSign": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableWidgetSign"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				},
+				{
+					"$ref": "1.1.schema.json#/$defs/has--mLastEditedBy"
+				}
+			]
+		},
+		"FGBuildableBarrierCorner": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				},
+				{
+					"$ref": "common.schema.json#/$defs/common-base--FGBuildablePillarLightweight"
+				}
+			]
+		},
+		"FGBuildableConveyorMonitor": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				},
+				{
+					"type": "object",
+					"required": [
+						"WidgetClass",
+						"OnAverageDataUpdatedDelegate",
+						"mIsSignificant",
+						"mOffsetAlongConveyor",
+						"mCalculatedItemsPerMinute",
+						"mTotalItems",
+						"mTotalTime",
+						"mConfidence",
+						"mSignificanceRange"
+					],
+					"properties": {
+						"WidgetClass": {
+							"type": "string",
+							"const": "/Game/FactoryGame/Buildable/Factory/ConveyorMonitor/BPW_ConveyorMonitorDisplay.BPW_ConveyorMonitorDisplay_C"
+						},
+						"OnAverageDataUpdatedDelegate": {
+							"$ref": "common.schema.json#/$defs/empty-object"
+						},
+						"mIsSignificant": {
+							"$ref": "common.schema.json#/$defs/boolean"
+						},
+						"mOffsetAlongConveyor": {
+							"$ref": "common.schema.json#/$defs/decimal-string--signed"
+						},
+						"mCalculatedItemsPerMinute": {
+							"$ref": "common.schema.json#/$defs/integer-string--signed"
+						},
+						"mTotalItems": {
+							"$ref": "common.schema.json#/$defs/integer-string"
+						},
+						"mTotalTime": {
+							"$ref": "common.schema.json#/$defs/decimal-string"
+						},
+						"mConfidence": {
+							"$ref": "common.schema.json#/$defs/decimal-string"
+						},
+						"mSignificanceRange": {
+							"$ref": "common.schema.json#/$defs/decimal-string"
+						}
+					}
+				}
+			]
+		},
+		"FGBuildableFactoryBuilding": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableFactoryBuilding"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableSpaceElevator": {
+			"allOf": [
+				{
+					"$ref": "1.0.schema.json#/$defs/FGBuildableSpaceElevator"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
 				}
 			]
 		}
@@ -4258,6 +4528,164 @@
 						"$ref": "#/$defs/FGBuildableCornerWall",
 						"unevaluatedProperties": false
 					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableElevatorFloorStop'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"$ref": "#/$defs/FGBuildableElevatorFloorStop",
+						"unevaluatedProperties": false
+					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableElevator'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"$ref": "#/$defs/FGBuildableElevator",
+						"unevaluatedProperties": false
+					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableLightsControlPanel'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"$ref": "#/$defs/FGBuildableLightsControlPanel",
+						"unevaluatedProperties": false
+					},
+					"minItems": 1,
+					"maxItems": 1
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableWidgetSign'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"$ref": "#/$defs/FGBuildableWidgetSign",
+						"unevaluatedProperties": false
+					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildablePassthroughPipeHyper'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"$ref": "#/$defs/FGBuildablePassthrough",
+						"unevaluatedProperties": false
+					},
+					"minItems": 1,
+					"maxItems": 1
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableBarrierCorner'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"$ref": "#/$defs/FGBuildableBarrierCorner",
+						"unevaluatedProperties": false
+					},
+					"minItems": 1,
+					"maxItems": 1
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableConveyorMonitor'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"$ref": "#/$defs/FGBuildableConveyorMonitor",
+						"unevaluatedProperties": false
+					},
+					"minItems": 1,
+					"maxItems": 1
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableFactoryBuilding'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"type": "object",
+						"$ref": "#/$defs/FGBuildableFactoryBuilding",
+						"unevaluatedProperties": false
+					}
+				}
+			}
+		},
+		{
+			"$comment": "/Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableSpaceElevator'",
+			"type": "object",
+			"$ref": "common.schema.json#/$defs/NativeClass",
+			"unevaluatedProperties": false,
+			"properties": {
+				"Classes": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"$ref": "#/$defs/FGBuildableSpaceElevator",
+						"unevaluatedProperties": false
+					},
+					"minItems": 1,
+					"maxItems": 1
 				}
 			}
 		}

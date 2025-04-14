@@ -76,6 +76,15 @@ try {
 
 		console.error(err.message, err.stack);
 	} else {
+		await writeFile(
+			`./discovery-types.${sub_path}.failure.json`,
+			JSON.stringify(
+				err,
+				null,
+				'\t',
+			),
+		);
+
 		throw err;
 	}
 }

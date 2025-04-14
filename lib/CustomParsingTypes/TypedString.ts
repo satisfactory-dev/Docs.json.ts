@@ -157,6 +157,19 @@ export function generate_typed_string_$defs(
 				typed_string_enum_schema,
 				typed_string_pattern_general_schema_self_testing,
 				{$ref: '#/$defs/typed_string_parent_type'},
+				/*
+				{
+					type: 'object',
+					required: ['$ref'],
+					additionalProperties: false,
+					properties: {
+						$ref: {
+							type: 'string',
+							pattern: '^(1\\.0)\\.schema\\.json#\\/\\$defs\\/',
+						},
+					},
+				},
+				*/
 			],
 		},
 		typed_string_parent_type: {

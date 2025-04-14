@@ -49,9 +49,6 @@ export type FGSchematic__mUnlocks_Class__type =
 	};
 
 export type FGSchematic__with_unlocks__type =
-	FGSchematic__with_unlocks__merged__type;
-
-export type FGSchematic__with_unlocks__merged__type =
 	common_base__FGSchematic__with_unlocks__type &
 		FGSchematic__base__type;
 

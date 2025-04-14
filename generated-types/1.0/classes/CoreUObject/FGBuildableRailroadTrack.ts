@@ -5,9 +5,6 @@ import {common_base__FGBuildableRailroadTrack__type} from '../../../common/class
 import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableRailroadTrack__type =
-	FGBuildableRailroadTrack__merged__type;
-
-export type FGBuildableRailroadTrack__merged__type =
 	common_base__FGBuildableRailroadTrack__type &
 		FGBuildable__base__type;
 

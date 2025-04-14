@@ -1,6 +1,6 @@
 # Types Progress
 
-36.99% Complete (81 of 219)
+39.38% Complete (89 of 226)
 
 ## Basic Types
 
@@ -11,24 +11,210 @@
 -   [x] color (common type)
 -   [x] decimal-string (common type)
 -   [x] decimal-string--signed (common type)
--   [x] EditorCurveData
 -   [x] empty-object (common type)
--   [x] FGCentralStorageContainer
--   [ ] FGChainsaw
--   [x] FGChargedWeapon
--   [x] FGPipeHyperStart
 -   [x] integer-string (common type)
 -   [x] integer-string--signed (common type)
--   [x] mInputOutputMeshDisplayMode
--   [ ] mPoleVariations
--   [x] mStatisticGameplayTag
 -   [x] NativeClass (common type)
 -   [x] None (common type)
 -   [x] Texture2D (common type)
 
 ## 1.1-base
 
+-   [x] 1.1-base--EditorCurveData
+-   [ ] 1.1-base--FGAmmoTypeInstantHit--base
+-   [ ] 1.1-base--FGAmmoTypeInstantHit--base--merged
+-   [ ] 1.1-base--FGAmmoTypeInstantHit--chaos
+-   [ ] 1.1-base--FGAmmoTypeInstantHit--chaos--merged
+-   [ ] 1.1-base--FGAmmoTypeInstantHit--standard
+-   [ ] 1.1-base--FGAmmoTypeInstantHit--standard--merged
+-   [x] 1.1-base--FGAmmoTypeProjectile
 -   [ ] 1.1-base--FGAmmoTypeProjectile--base
+-   [ ] 1.1-base--FGAmmoTypeProjectile--base--from-common
+-   [ ] 1.1-base--FGAmmoTypeProjectile--merged
+-   [ ] 1.1-base--FGAmmoTypeSpreadshot
+-   [ ] 1.1-base--FGAmmoTypeSpreadshot--base
+-   [ ] 1.1-base--FGAmmoTypeSpreadshot--merged
+-   [x] 1.1-base--FGBuildable--base
+-   [ ] 1.1-base--FGBuildable--consumes-power-base
+-   [x] 1.1-base--FGBuildable--occupied--final
+-   [x] 1.1-base--FGBuildable--occupied--merged
+-   [ ] 1.1-base--FGBuildable--pole--base--no-static
+-   [ ] 1.1-base--FGBuildable--pole--base--no-static--merged
+-   [x] 1.1-base--FGBuildable--tiered
+-   [x] 1.1-base--FGBuildable--tiered--merged
+-   [ ] 1.1-base--FGBuildableAttachmentMerger
+-   [ ] 1.1-base--FGBuildableAttachmentMerger--merged
+-   [ ] 1.1-base--FGBuildableAttachmentSplitter
+-   [ ] 1.1-base--FGBuildableAttachmentSplitter--merged
+-   [x] 1.1-base--FGBuildableBarrierCorner
+-   [x] 1.1-base--FGBuildableBeam
+-   [x] 1.1-base--FGBuildableBeam--base
+-   [ ] 1.1-base--FGBuildableBlueprintDesigner--mk1
+-   [ ] 1.1-base--FGBuildableBlueprintDesigner--mk1--merged
+-   [ ] 1.1-base--FGBuildableBlueprintDesigner--mk2
+-   [ ] 1.1-base--FGBuildableBlueprintDesigner--mk2--merged
+-   [ ] 1.1-base--FGBuildableBlueprintDesigner--mk3
+-   [ ] 1.1-base--FGBuildableBlueprintDesigner--mk3--merged
+-   [x] 1.1-base--FGBuildableCircuitSwitch
+-   [ ] 1.1-base--FGBuildableConveyorBelt
+-   [ ] 1.1-base--FGBuildableConveyorBelt--merged
+-   [ ] 1.1-base--FGBuildableConveyorLift
+-   [ ] 1.1-base--FGBuildableConveyorLift--merged
+-   [ ] 1.1-base--FGBuildableConveyorLift--properties
+-   [x] 1.1-base--FGBuildableConveyorMonitor
+-   [x] 1.1-base--FGBuildableCornerWall
+-   [ ] 1.1-base--FGBuildableDockingStation
+-   [ ] 1.1-base--FGBuildableDoor
+-   [ ] 1.1-base--FGBuildableDoor--automated
+-   [ ] 1.1-base--FGBuildableDoor--base
+-   [ ] 1.1-base--FGBuildableDroneStation
+-   [ ] 1.1-base--FGBuildableDroneStation--merged
+-   [x] 1.1-base--FGBuildableElevator
+-   [x] 1.1-base--FGBuildableElevatorFloorStop
+-   [ ] 1.1-base--FGBuildableFactory--jump-pad
+-   [ ] 1.1-base--FGBuildableFactory--jump-pad--merged
+-   [ ] 1.1-base--FGBuildableFactory--landing-pad
+-   [ ] 1.1-base--FGBuildableFactory--landing-pad--merged
+-   [x] 1.1-base--FGBuildableFactoryBuilding
+-   [x] 1.1-base--FGBuildableFactorySimpleProducer
+-   [x] 1.1-base--FGBuildableFloodlight
+-   [ ] 1.1-base--FGBuildableFoundation
+-   [ ] 1.1-base--FGBuildableFrackingActivator
+-   [ ] 1.1-base--FGBuildableFrackingActivator--merged
+-   [ ] 1.1-base--FGBuildableFrackingExtractor
+-   [ ] 1.1-base--FGBuildableFrackingExtractor--merged
+-   [ ] 1.1-base--FGBuildableGeneratorFuel--biogen
+-   [ ] 1.1-base--FGBuildableGeneratorFuel--liquid
+-   [ ] 1.1-base--FGBuildableGeneratorFuel--solid
+-   [x] 1.1-base--FGBuildableGeneratorGeoThermal
+-   [ ] 1.1-base--FGBuildableGeneratorNuclear
+-   [ ] 1.1-base--FGBuildableGeneratorNuclear--merged
+-   [ ] 1.1-base--FGBuildableJumppad
+-   [x] 1.1-base--FGBuildableLadder
+-   [x] 1.1-base--FGBuildableLightsControlPanel
+-   [x] 1.1-base--FGBuildableLightSource
+-   [ ] 1.1-base--FGBuildableMAM
+-   [ ] 1.1-base--FGBuildableManufacturer
+-   [ ] 1.1-base--FGBuildableManufacturer--blender
+-   [ ] 1.1-base--FGBuildableManufacturer--blender--merged
+-   [ ] 1.1-base--FGBuildableManufacturer--constructor
+-   [ ] 1.1-base--FGBuildableManufacturer--constructor--merged
+-   [ ] 1.1-base--FGBuildableManufacturer--merged
+-   [ ] 1.1-base--FGBuildableManufacturer--packager
+-   [ ] 1.1-base--FGBuildableManufacturer--packager--merged
+-   [ ] 1.1-base--FGBuildableManufacturer--smelter
+-   [ ] 1.1-base--FGBuildableManufacturer--smelter--merged
+-   [ ] 1.1-base--FGBuildableManufacturerVariablePower--base
+-   [ ] 1.1-base--FGBuildableManufacturerVariablePower--base--merged
+-   [ ] 1.1-base--FGBuildableManufacturerVariablePower--HadronCollider
+-   [ ] 1.1-base--FGBuildableManufacturerVariablePower--HadronCollider--merged
+-   [ ] 1.1-base--FGBuildableManufacturerVariablePower--QuantumEncoder
+-   [ ] 1.1-base--FGBuildableManufacturerVariablePower--QuantumEncoder--merged
+-   [x] 1.1-base--FGBuildableMergerPriority
+-   [x] 1.1-base--FGBuildablePassthrough
+-   [ ] 1.1-base--FGBuildablePillarLightweight
+-   [ ] 1.1-base--FGBuildablePillarLightweight--merged
+-   [x] 1.1-base--FGBuildablePipeHyper
+-   [x] 1.1-base--FGBuildablePipeHyperJunction
+-   [x] 1.1-base--FGBuildablePipeHyperJunction--merged
+-   [ ] 1.1-base--FGBuildablePipeline
+-   [ ] 1.1-base--FGBuildablePipeline--merged
+-   [ ] 1.1-base--FGBuildablePipelineJunction
+-   [ ] 1.1-base--FGBuildablePipelineJunction--merged
+-   [ ] 1.1-base--FGBuildablePipelinePump
+-   [ ] 1.1-base--FGBuildablePipelinePump--merged
+-   [ ] 1.1-base--FGBuildablePipelinePump--valve
+-   [ ] 1.1-base--FGBuildablePipelinePump--valve--merged
+-   [ ] 1.1-base--FGBuildablePipeReservoir
+-   [ ] 1.1-base--FGBuildablePipeReservoir--merged
+-   [ ] 1.1-base--FGBuildablePoleConveyor
+-   [ ] 1.1-base--FGBuildablePoleConveyor--merged
+-   [x] 1.1-base--FGBuildablePolePipe
+-   [x] 1.1-base--FGBuildablePolePipe--mergd
+-   [ ] 1.1-base--FGBuildablePoleStackable
+-   [ ] 1.1-base--FGBuildablePortal
+-   [ ] 1.1-base--FGBuildablePortal--merged
+-   [ ] 1.1-base--FGBuildablePortalSatellite
+-   [ ] 1.1-base--FGBuildablePortalSatellite--merged
+-   [x] 1.1-base--FGBuildablePowerBooster
+-   [ ] 1.1-base--FGBuildablePowerPole
+-   [ ] 1.1-base--FGBuildablePowerStorage
+-   [ ] 1.1-base--FGBuildablePowerStorage--merged
+-   [x] 1.1-base--FGBuildablePriorityPowerSwitch
+-   [x] 1.1-base--FGBuildableRadarTower
+-   [ ] 1.1-base--FGBuildableRailroadAttachment
+-   [ ] 1.1-base--FGBuildableRailroadSignal
+-   [ ] 1.1-base--FGBuildableRailroadSignal--merged
+-   [ ] 1.1-base--FGBuildableRailroadStation
+-   [ ] 1.1-base--FGBuildableRailroadStation--merged
+-   [x] 1.1-base--FGBuildableRailroadTrack
+-   [ ] 1.1-base--FGBuildableRamp
+-   [ ] 1.1-base--FGBuildableResourceExtractor--miner
+-   [ ] 1.1-base--FGBuildableResourceExtractor--miner--merged
+-   [ ] 1.1-base--FGBuildableResourceExtractor--miner-mk1
+-   [ ] 1.1-base--FGBuildableResourceExtractor--miner-mk1--merged
+-   [ ] 1.1-base--FGBuildableResourceExtractor--miner-mk3
+-   [ ] 1.1-base--FGBuildableResourceExtractor--miner-mk3--merged
+-   [ ] 1.1-base--FGBuildableResourceExtractor--oil-extractor
+-   [ ] 1.1-base--FGBuildableResourceExtractor--oil-extractor--merged
+-   [ ] 1.1-base--FGBuildableResourceSink
+-   [ ] 1.1-base--FGBuildableResourceSink--merged
+-   [ ] 1.1-base--FGBuildableResourceSinkShop
+-   [ ] 1.1-base--FGBuildableResourceSinkShop--merged
+-   [x] 1.1-base--FGBuildableSnowCannon
+-   [x] 1.1-base--FGBuildableSnowDispenser
+-   [x] 1.1-base--FGBuildableSpaceElevator
+-   [x] 1.1-base--FGBuildableSplitterSmart
+-   [x] 1.1-base--FGBuildableSplitterSmart--merged
+-   [x] 1.1-base--FGBuildableStackableShelf
+-   [x] 1.1-base--FGBuildableStorage
+-   [ ] 1.1-base--FGBuildableTradingPost
+-   [ ] 1.1-base--FGBuildableTradingPost--merged
+-   [ ] 1.1-base--FGBuildableTrainPlatformCargo
+-   [ ] 1.1-base--FGBuildableTrainPlatformCargo--merged
+-   [ ] 1.1-base--FGBuildableTrainPlatformEmpty
+-   [ ] 1.1-base--FGBuildableTrainPlatformEmpty--merged
+-   [x] 1.1-base--FGBuildableWalkway
+-   [x] 1.1-base--FGBuildableWalkway--base
+-   [x] 1.1-base--FGBuildableWalkway--base--merged
+-   [x] 1.1-base--FGBuildableWalkway--merged
+-   [ ] 1.1-base--FGBuildableWalkwayLightweight
+-   [ ] 1.1-base--FGBuildableWalkwayLightweight--merged
+-   [x] 1.1-base--FGBuildableWallLightweight
+-   [ ] 1.1-base--FGBuildableWaterPump
+-   [ ] 1.1-base--FGBuildableWaterPump--merged
+-   [x] 1.1-base--FGBuildableWidgetSign
+-   [ ] 1.1-base--FGBuildableWire
+-   [x] 1.1-base--FGBuildingDescriptor
+-   [x] 1.1-base--FGBuildingDescriptor--base
+-   [x] 1.1-base--FGBuildingDescriptor--merged
+-   [x] 1.1-base--FGCentralStorageContainer
+-   [ ] 1.1-base--FGChainsaw
+-   [x] 1.1-base--FGChargedWeapon
+-   [x] 1.1-base--FGPipeHyperStart
+-   [ ] 1.1-base--FGSchematic
+-   [ ] 1.1-base--FGSchematic--base
+-   [ ] 1.1-base--FGSchematic--with-unlocks
+-   [ ] 1.1-base--FGSchematic--with-unlocks--merged
+-   [ ] 1.1-base--FGSuitBase
+-   [ ] 1.1-base--FGSuitBase--mEquipMontage
+-   [ ] 1.1-base--FGSuitBase--merged
+-   [ ] 1.1-base--FGWeapon--base
+-   [ ] 1.1-base--FGWeapon--base--merged
+-   [ ] 1.1-base--FGWeapon--gun-base
+-   [ ] 1.1-base--FGWeapon--gun-base--merged
+-   [ ] 1.1-base--FGWeapon--rebar-gun
+-   [ ] 1.1-base--FGWeapon--rebar-gun--merged
+-   [ ] 1.1-base--FGWeapon--rifle
+-   [ ] 1.1-base--FGWeapon--rifle--merged
+-   [ ] 1.1-base--has--mAttachedThroughputMonitors
+-   [x] 1.1-base--has--mLastEditedBy
+-   [x] 1.1-base--has--mOnLastEditedByChanged
+-   [x] 1.1-base--has--mSavedDirections
+-   [x] 1.1-base--mElevatorState
+-   [x] 1.1-base--mInputOutputMeshDisplayMode
+-   [ ] 1.1-base--mPoleVariations
+-   [x] 1.1-base--mStatisticGameplayTag
 
 ## common-base
 
@@ -36,6 +222,7 @@
 -   [x] common-base--FGBuildable--consumes-power-base (common type)
 -   [x] common-base--FGBuildable--occupied (common type)
 -   [x] common-base--FGBuildable--tiered (common type)
+-   [x] common-base--FGBuildablePillarLightweight (common type)
 -   [x] common-base--FGBuildablePipeHyper (common type)
 -   [x] common-base--FGBuildablePoleLightweight--properties (common type)
 -   [x] common-base--FGBuildableRailroadTrack (common type)
@@ -47,333 +234,6 @@
 -   [x] common-base--FGBuildingDescriptor--mSubCategories (common type)
 -   [x] common-base--FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor (common type)
 -   [x] common-base--FGPipeHyperStart--pre-1.1 (common type)
-
-## FGAmmoType
-
--   [ ] FGAmmoTypeSpreadshot
--   [ ] FGAmmoTypeInstantHit--base
--   [ ] FGAmmoTypeInstantHit--chaos
--   [ ] FGAmmoTypeInstantHit--standard
--   [x] FGAmmoTypeProjectile
--   [ ] FGAmmoTypeProjectile--base
-
-## FGAmmoTypeInstantHit
-
--   [ ] FGAmmoTypeInstantHit--base--merged
--   [ ] FGAmmoTypeInstantHit--chaos--merged
--   [ ] FGAmmoTypeInstantHit--standard--merged
-
-## FGAmmoTypeProjectile
-
--   [ ] FGAmmoTypeProjectile--base--merged
--   [ ] FGAmmoTypeProjectile--merged
-
-## FGAmmoTypeSpreadshot
-
--   [ ] FGAmmoTypeSpreadshot--base
--   [ ] FGAmmoTypeSpreadshot--merged
-
-## FGBuildable
-
--   [ ] FGBuildableAttachmentMerger
--   [ ] FGBuildableAttachmentSplitter
--   [x] FGBuildableBeam
--   [x] FGBuildableCircuitSwitch
--   [ ] FGBuildableConveyorBelt
--   [ ] FGBuildableConveyorLift
--   [x] FGBuildableCornerWall
--   [ ] FGBuildableDockingStation
--   [ ] FGBuildableDoor
--   [ ] FGBuildableDroneStation
--   [x] FGBuildableFactorySimpleProducer
--   [x] FGBuildableFloodlight
--   [ ] FGBuildableFoundation
--   [ ] FGBuildableFrackingActivator
--   [ ] FGBuildableFrackingExtractor
--   [x] FGBuildableGeneratorGeoThermal
--   [ ] FGBuildableGeneratorNuclear
--   [ ] FGBuildableJumppad
--   [x] FGBuildableLadder
--   [x] FGBuildableLightSource
--   [ ] FGBuildableMAM
--   [ ] FGBuildableManufacturer
--   [x] FGBuildableMergerPriority
--   [x] FGBuildablePassthrough
--   [ ] FGBuildablePillarLightweight
--   [x] FGBuildablePipeHyper
--   [x] FGBuildablePipeHyperJunction
--   [ ] FGBuildablePipeline
--   [ ] FGBuildablePipelineJunction
--   [ ] FGBuildablePipelinePump
--   [ ] FGBuildablePipeReservoir
--   [ ] FGBuildablePoleConveyor
--   [x] FGBuildablePolePipe
--   [ ] FGBuildablePoleStackable
--   [ ] FGBuildablePortal
--   [ ] FGBuildablePortalSatellite
--   [x] FGBuildablePowerBooster
--   [ ] FGBuildablePowerPole
--   [ ] FGBuildablePowerStorage
--   [x] FGBuildablePriorityPowerSwitch
--   [x] FGBuildableRadarTower
--   [ ] FGBuildableRailroadAttachment
--   [ ] FGBuildableRailroadSignal
--   [ ] FGBuildableRailroadStation
--   [x] FGBuildableRailroadTrack
--   [ ] FGBuildableRamp
--   [ ] FGBuildableResourceSink
--   [ ] FGBuildableResourceSinkShop
--   [x] FGBuildableSnowCannon
--   [x] FGBuildableSnowDispenser
--   [x] FGBuildableSplitterSmart
--   [x] FGBuildableStackableShelf
--   [x] FGBuildableStorage
--   [ ] FGBuildableTradingPost
--   [ ] FGBuildableTrainPlatformCargo
--   [ ] FGBuildableTrainPlatformEmpty
--   [x] FGBuildableWalkway
--   [ ] FGBuildableWalkwayLightweight
--   [x] FGBuildableWallLightweight
--   [ ] FGBuildableWaterPump
--   [ ] FGBuildableWire
--   [x] FGBuildable--base
--   [ ] FGBuildable--consumes-power-base
--   [x] FGBuildable--occupied--final
--   [x] FGBuildable--occupied--merged
--   [ ] FGBuildable--pole--base--no-static
--   [ ] FGBuildable--pole--base--no-static--merged
--   [x] FGBuildable--tiered
--   [x] FGBuildable--tiered--merged
-
-## FGBuildableAttachmentMerger
-
--   [ ] FGBuildableAttachmentMerger--merged
-
-## FGBuildableAttachmentSplitter
-
--   [ ] FGBuildableAttachmentSplitter--merged
-
-## FGBuildableBeam
-
--   [x] FGBuildableBeam--base
--   [x] FGBuildableBeam--merged
-
-## FGBuildableBlueprintDesigner
-
--   [ ] FGBuildableBlueprintDesigner--mk1
--   [ ] FGBuildableBlueprintDesigner--mk1--merged
--   [ ] FGBuildableBlueprintDesigner--mk2
--   [ ] FGBuildableBlueprintDesigner--mk2--merged
--   [ ] FGBuildableBlueprintDesigner--mk3
--   [ ] FGBuildableBlueprintDesigner--mk3--merged
-
-## FGBuildableConveyorBelt
-
--   [ ] FGBuildableConveyorBelt--merged
-
-## FGBuildableConveyorLift
-
--   [ ] FGBuildableConveyorLift--merged
--   [ ] FGBuildableConveyorLift--properties
-
-## FGBuildableDoor
-
--   [ ] FGBuildableDoor--automated
--   [ ] FGBuildableDoor--base
-
-## FGBuildableDroneStation
-
--   [ ] FGBuildableDroneStation--merged
-
-## FGBuildableFactory
-
--   [ ] FGBuildableFactory--jump-pad
--   [ ] FGBuildableFactory--jump-pad--merged
--   [ ] FGBuildableFactory--landing-pad
--   [ ] FGBuildableFactory--landing-pad--merged
-
-## FGBuildableFrackingActivator
-
--   [ ] FGBuildableFrackingActivator--merged
-
-## FGBuildableFrackingExtractor
-
--   [ ] FGBuildableFrackingExtractor--merged
-
-## FGBuildableGeneratorFuel
-
--   [ ] FGBuildableGeneratorFuel--biogen
--   [ ] FGBuildableGeneratorFuel--liquid
--   [ ] FGBuildableGeneratorFuel--solid
-
-## FGBuildableGeneratorNuclear
-
--   [ ] FGBuildableGeneratorNuclear--merged
-
-## FGBuildableManufacturer
-
--   [ ] FGBuildableManufacturer--blender
--   [ ] FGBuildableManufacturer--blender--merged
--   [ ] FGBuildableManufacturer--constructor
--   [ ] FGBuildableManufacturer--constructor--merged
--   [ ] FGBuildableManufacturer--merged
--   [ ] FGBuildableManufacturer--packager
--   [ ] FGBuildableManufacturer--packager--merged
--   [ ] FGBuildableManufacturer--smelter
--   [ ] FGBuildableManufacturer--smelter--merged
-
-## FGBuildableManufacturerVariablePower
-
--   [ ] FGBuildableManufacturerVariablePower--base
--   [ ] FGBuildableManufacturerVariablePower--base--merged
--   [ ] FGBuildableManufacturerVariablePower--HadronCollider
--   [ ] FGBuildableManufacturerVariablePower--HadronCollider--merged
--   [ ] FGBuildableManufacturerVariablePower--QuantumEncoder
--   [ ] FGBuildableManufacturerVariablePower--QuantumEncoder--merged
-
-## FGBuildablePillarLightweight
-
--   [ ] FGBuildablePillarLightweight--merged
-
-## FGBuildablePipeHyperJunction
-
--   [x] FGBuildablePipeHyperJunction--merged
-
-## FGBuildablePipeline
-
--   [ ] FGBuildablePipeline--merged
-
-## FGBuildablePipelineJunction
-
--   [ ] FGBuildablePipelineJunction--merged
-
-## FGBuildablePipelinePump
-
--   [ ] FGBuildablePipelinePump--merged
--   [ ] FGBuildablePipelinePump--valve
--   [ ] FGBuildablePipelinePump--valve--merged
-
-## FGBuildablePipeReservoir
-
--   [ ] FGBuildablePipeReservoir--merged
-
-## FGBuildablePoleConveyor
-
--   [ ] FGBuildablePoleConveyor--merged
-
-## FGBuildablePolePipe
-
--   [x] FGBuildablePolePipe--mergd
-
-## FGBuildablePortal
-
--   [ ] FGBuildablePortal--merged
-
-## FGBuildablePortalSatellite
-
--   [ ] FGBuildablePortalSatellite--merged
-
-## FGBuildablePowerStorage
-
--   [ ] FGBuildablePowerStorage--merged
-
-## FGBuildableRailroadSignal
-
--   [ ] FGBuildableRailroadSignal--merged
-
-## FGBuildableRailroadStation
-
--   [ ] FGBuildableRailroadStation--merged
-
-## FGBuildableRailroadTrack
-
--   [x] FGBuildableRailroadTrack--merged
-
-## FGBuildableResourceExtractor
-
--   [ ] FGBuildableResourceExtractor--miner
--   [ ] FGBuildableResourceExtractor--miner--merged
--   [ ] FGBuildableResourceExtractor--miner-mk1
--   [ ] FGBuildableResourceExtractor--miner-mk1--merged
--   [ ] FGBuildableResourceExtractor--miner-mk3
--   [ ] FGBuildableResourceExtractor--miner-mk3--merged
--   [ ] FGBuildableResourceExtractor--oil-extractor
--   [ ] FGBuildableResourceExtractor--oil-extractor--merged
-
-## FGBuildableResourceSink
-
--   [ ] FGBuildableResourceSink--merged
-
-## FGBuildableResourceSinkShop
-
--   [ ] FGBuildableResourceSinkShop--merged
-
-## FGBuildableSplitterSmart
-
--   [x] FGBuildableSplitterSmart--merged
-
-## FGBuildableTradingPost
-
--   [ ] FGBuildableTradingPost--merged
-
-## FGBuildableTrainPlatformCargo
-
--   [ ] FGBuildableTrainPlatformCargo--merged
-
-## FGBuildableTrainPlatformEmpty
-
--   [ ] FGBuildableTrainPlatformEmpty--merged
-
-## FGBuildableWalkway
-
--   [x] FGBuildableWalkway--base
--   [x] FGBuildableWalkway--base--merged
--   [x] FGBuildableWalkway--merged
-
-## FGBuildableWalkwayLightweight
-
--   [ ] FGBuildableWalkwayLightweight--merged
-
-## FGBuildableWaterPump
-
--   [ ] FGBuildableWaterPump--merged
-
-## FGBuildingDescriptor
-
--   [x] FGBuildingDescriptor
--   [x] FGBuildingDescriptor--base
--   [x] FGBuildingDescriptor--merged
-
-## FGSchematic
-
--   [ ] FGSchematic
--   [ ] FGSchematic--base
--   [ ] FGSchematic--with-unlocks
--   [ ] FGSchematic--with-unlocks--merged
-
-## FGSuitBase
-
--   [ ] FGSuitBase
--   [ ] FGSuitBase--mEquipMontage
--   [ ] FGSuitBase--merged
-
-## FGWeapon
-
--   [ ] FGWeapon--base
--   [ ] FGWeapon--base--merged
--   [ ] FGWeapon--gun-base
--   [ ] FGWeapon--gun-base--merged
--   [ ] FGWeapon--rebar-gun
--   [ ] FGWeapon--rebar-gun--merged
--   [ ] FGWeapon--rifle
--   [ ] FGWeapon--rifle--merged
-
-## has
-
--   [ ] has--mAttachedThroughputMonitors
--   [x] has--mLastEditedBy
--   [x] has--mOnLastEditedByChanged
--   [x] has--mSavedDirections
 
 ## vectors
 

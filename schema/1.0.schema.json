@@ -881,7 +881,7 @@
 				}
 			}
 		},
-		"FGBuildableRailroadTrack--merged": {
+		"FGBuildableRailroadTrack": {
 			"allOf": [
 				{
 					"$ref": "common.schema.json#/$defs/common-base--FGBuildableRailroadTrack"
@@ -890,11 +890,6 @@
 					"$ref": "#/$defs/FGBuildable--base"
 				}
 			]
-		},
-		"FGBuildableRailroadTrack": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildableRailroadTrack--merged",
-			"unevaluatedProperties": false
 		},
 		"FGBuildable--occupied--merged": {
 			"allOf": [
@@ -5406,7 +5401,7 @@
 				}
 			}
 		},
-		"FGAmmoTypeProjectile--base--merged": {
+		"FGAmmoTypeProjectile--base": {
 			"allOf": [
 				{
 					"$ref": "common.schema.json#/$defs/common-base--FGAmmoTypeProjectile--base"
@@ -5415,10 +5410,6 @@
 					"$ref": "#/$defs/FGItemDescriptor--FGResourceDescriptor"
 				}
 			]
-		},
-		"FGAmmoTypeProjectile--base": {
-			"type": "object",
-			"$ref": "#/$defs/FGAmmoTypeProjectile--base--merged"
 		},
 		"FGAmmoTypeProjectile--merged": {
 			"allOf": [

@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (510 of 510)
+100.00% Complete (503 of 503)
 
 ## Basic Types
 
@@ -230,7 +230,6 @@
 
 ## FGAmmoTypeProjectile
 
--   [x] FGAmmoTypeProjectile--base--merged
 -   [x] FGAmmoTypeProjectile--merged
 
 ## FGAmmoTypeSpreadshot
@@ -358,11 +357,9 @@
 -   [x] FGBuildableDoor--automated
 -   [x] FGBuildableDoor--automated--merged
 -   [x] FGBuildableDoor--base
--   [x] FGBuildableDoor--merged
 
 ## FGBuildableDroneStation
 
--   [x] FGBuildableDroneStation--merged
 -   [x] FGBuildableDroneStation--update8
 
 ## FGBuildableFactory
@@ -373,10 +370,6 @@
 -   [x] FGBuildableFactory--jump-pad--merged
 -   [x] FGBuildableFactory--landing-pad
 -   [x] FGBuildableFactory--landing-pad--merged
-
-## FGBuildableFactoryBuilding
-
--   [x] FGBuildableFactoryBuilding--merged
 
 ## FGBuildableFoundation
 
@@ -414,10 +407,6 @@
 ## FGBuildableJumppad
 
 -   [x] FGBuildableJumppad--merged
-
-## FGBuildableLightsControlPanel
-
--   [x] FGBuildableLightsControlPanel--merged
 
 ## FGBuildableLightSource
 
@@ -562,10 +551,6 @@
 ## FGBuildableWaterPump
 
 -   [x] FGBuildableWaterPump--merged
-
-## FGBuildableWidgetSign
-
--   [x] FGBuildableWidgetSign--merged
 
 ## FGBuildableWire
 
@@ -712,7 +697,6 @@
 -   [x] FGSchematic--mUnlocks_mTapeUnlocks (common type)
 -   [x] FGSchematic--mUnlocks_resources_to_scan (common type)
 -   [x] FGSchematic--with-unlocks
--   [x] FGSchematic--with-unlocks--merged
 
 ## FGSuitBase
 

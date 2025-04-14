@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (556 of 556)
+100.00% Complete (554 of 554)
 
 ## Basic Types
 
@@ -238,7 +238,6 @@
 
 ## FGAmmoTypeProjectile
 
--   [x] FGAmmoTypeProjectile--base--merged
 -   [x] FGAmmoTypeProjectile--merged
 
 ## FGAmmoTypeSpreadshot
@@ -505,10 +504,6 @@
 ## FGBuildableRailroadStation
 
 -   [x] FGBuildableRailroadStation--merged
-
-## FGBuildableRailroadTrack
-
--   [x] FGBuildableRailroadTrack--merged
 
 ## FGBuildableRamp
 
