@@ -74,6 +74,7 @@ import {
 } from './Exceptions';
 
 import common_schema from '../schema/common.schema.json' with {type: 'json'}
+import update8_schema from '../schema/update8.schema.json' with {type: 'json'}
 
 type SchemaObjectWithDefinitions<Definitions extends {[key: string]: true}> =
 	& SchemaObject
@@ -96,15 +97,31 @@ function is_schema_with_$defs(
 			value_is_non_array_object,
 		)
 		&& Object.keys(schema.$defs).every(
-			maybe => (
-				maybe.startsWith('common.schema.json#/$defs/')
-					? maybe
-					: (
-						maybe.startsWith('#/$defs/')
-							? maybe
-							: `#/$defs/${maybe}`
+			maybe => {
+				const first_pass = ((
+					(
+						maybe.startsWith('common.schema.json#/$defs/')
 					)
-			) in discovered_types,
+						? maybe
+						: (
+							maybe.startsWith('#/$defs/')
+								? maybe
+								: `#/$defs/${maybe}`
+						)
+				) in discovered_types);
+
+				const second_pass = (
+					(
+						maybe.startsWith('update8-base--')
+						&& (
+							`#/$defs/${maybe}` in discovered_types
+							|| `update8.schema.json#/$defs/${maybe}` in discovered_types
+						)
+					)
+				);
+
+				return (first_pass || second_pass);
+			},
 		)
 		&& Object.keys(discovered_types).every(maybe => {
 			if (maybe.startsWith('common.schema.json#/$defs/')) {
@@ -114,6 +131,17 @@ function is_schema_with_$defs(
 				return (
 					object_has_property(
 						common_$defs,
+						ref,
+						value_is_non_array_object,
+					)
+				);
+			} else if (maybe.startsWith('update8.schema.json#/$defs/')) {
+				const ref = maybe.substring(27);
+				const update8_$defs = update8_schema.$defs;
+
+				return (
+					object_has_property(
+						update8_$defs,
 						ref,
 						value_is_non_array_object,
 					)
@@ -190,7 +218,8 @@ export class TypeDefinitionDiscovery
 				await this.types_discovery.discover_types();
 
 			if (discovered_types.missed_types.length > 0) {
-				throw new Error(
+				throw new NoMatchError(
+					discovered_types,
 					`Missing some type $defs:\n${
 						discovered_types.missed_types.join(
 							'\n',
@@ -439,8 +468,14 @@ export class TypeDefinitionDiscovery
 						& string
 						& keyof typeof schema.$defs
 					)
-					: definition.substring(26) as (
-						& keyof typeof common_schema.$defs
+					: (
+						definition.startsWith('update8.schema.json#/$defs/')
+							? definition.substring(27) as (
+								& keyof typeof update8_schema.$defs
+							)
+							: definition.substring(26) as (
+								& keyof typeof common_schema.$defs
+							)
 					)
 			);
 
@@ -451,6 +486,13 @@ export class TypeDefinitionDiscovery
 				&& definition.startsWith('common.schema.json#/$defs/')
 			) {
 				use_definition = definition.substring(18);
+			}
+
+			if (
+				'update8' === this.version
+				&& definition.startsWith('update8.schema.json#/$defs/')
+			) {
+				use_definition = definition.substring(19);
 			}
 
 			const generator = this.candidates.find(
@@ -710,7 +752,38 @@ export class TypeDefinitionDiscovery
 		const schema = await this.docs.schema(this.version);
 
 		if (!is_schema_with_$defs(schema, discovered_types)) {
-			throw new Error('Schema $defs not as expected!');
+			throw new NoMatchError({
+				schema,
+				discovered_types,
+				// eslint-disable-next-line max-len
+				schema_$defs_missing: Object.keys(((schema as {$defs: object}).$defs)).filter(
+					maybe => {
+						const first_pass = ((
+							(
+								maybe.startsWith('common.schema.json#/$defs/')
+							)
+								? maybe
+								: (
+									maybe.startsWith('#/$defs/')
+										? maybe
+										: `#/$defs/${maybe}`
+								)
+						) in discovered_types);
+
+						const second_pass = (
+							(
+								maybe.startsWith('update8-base--')
+								&& (
+									`#/$defs/${maybe}` in discovered_types
+									|| `update8.schema.json#/$defs/${maybe}` in discovered_types
+								)
+							)
+						);
+
+						return !(first_pass || second_pass);
+					},
+				),
+			}, 'Schema $defs not as expected!');
 		}
 
 		return schema;

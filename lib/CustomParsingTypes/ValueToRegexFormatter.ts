@@ -11,8 +11,12 @@ import {
 	annoyingly_have_to_escape_property,
 } from './CustomPairingTypes';
 import {
+	additional_$defs,
 	common_ref,
 	local_ref,
+	one_point_oh_ref,
+	one_point_one_ref,
+	update8_ref,
 } from '../StringStartsWith';
 import {
 	NoMatchError,
@@ -77,16 +81,48 @@ export class ValueToRegexFormatter
 	private UnrealEngineString;
 	private readonly $defs:{[key: string]: SchemaObject};
 	private readonly common_$defs: {[key: string]: SchemaObject};
+	private readonly one_point_oh_$defs: {[key: string]: SchemaObject} = {};
+	private readonly one_point_one_$defs: {[key: string]: SchemaObject} = {};
 	private readonly supported_$ref_object:{[key: local_ref<string>]: string};
 	// eslint-disable-next-line max-len
 	private readonly supported_common_$ref_object: {[key: common_ref<string>]: string};
+	private readonly supported_one_point_oh_$ref_object: {
+		[key: one_point_oh_ref<string>]: string;
+	} = {};
+	private readonly supported_one_point_one_$ref_object: {
+		[key: one_point_one_ref<string>]: string;
+	} = {};
+	private readonly supported_update8_$ref_object: {
+		[key: update8_ref<string>]: string;
+	} = {};
+	private readonly update8_$defs: {[key: string]: SchemaObject} = {};
 
 	constructor(
 		$defs:{[key: string]: SchemaObject},
 		common_$defs: {[key: string]: SchemaObject},
+		additional_$defs: additional_$defs,
 	) {
 		this.$defs = $defs;
 		this.common_$defs = common_$defs;
+
+		const {
+			update8: update8_$defs,
+			['1.0']: one_point_oh_$defs,
+			['1.1']: one_point_one_$defs,
+		} = additional_$defs;
+
+		if (update8_$defs) {
+			this.update8_$defs = update8_$defs;
+		}
+
+		if (one_point_oh_$defs) {
+			this.one_point_oh_$defs = one_point_oh_$defs;
+		}
+
+		if (one_point_one_$defs) {
+			this.one_point_one_$defs = one_point_one_$defs;
+		}
+
 		this.UnrealEngineString = UnrealEngineString.ajv_macro_generator(
 			true,
 		);
@@ -96,6 +132,27 @@ export class ValueToRegexFormatter
 		this.supported_$ref_object = this.prepare_$ref_regex($defs);
 		// eslint-disable-next-line max-len
 		this.supported_common_$ref_object = this.prepare_common_$ref_regex(common_$defs);
+
+		if (update8_$defs) {
+			// eslint-disable-next-line max-len
+			this.supported_update8_$ref_object = this.prepare_update8_$ref_regex(
+				update8_$defs,
+			);
+		}
+
+		if (one_point_oh_$defs) {
+			// eslint-disable-next-line max-len
+			this.supported_one_point_oh_$ref_object = this.prepare_one_point_oh_$ref_regex(
+				one_point_oh_$defs,
+			);
+		}
+
+		if (one_point_one_$defs) {
+			// eslint-disable-next-line max-len
+			this.supported_one_point_one_$ref_object = this.prepare_one_point_one_$ref_regex(
+				one_point_one_$defs,
+			);
+		}
 	}
 
 	pattern_from_value(value:unknown): {pattern: string} {
@@ -166,6 +223,59 @@ export class ValueToRegexFormatter
 		);
 	}
 
+	private is_supported_one_point_oh_$ref_object(
+		maybe:unknown,
+	): maybe is {$ref: one_point_oh_ref<string>} {
+		return (
+			object_only_has_that_property(maybe, '$ref', is_string)
+			&& (
+				object_has_property(
+					this.supported_one_point_oh_$ref_object,
+					maybe.$ref,
+				)
+			)
+		);
+	}
+
+	private is_supported_one_point_one_$ref_object(
+		maybe:unknown,
+	): maybe is {$ref: one_point_one_ref<string>} {
+		return (
+			object_only_has_that_property(maybe, '$ref', is_string)
+			&& object_has_property(
+				this.supported_one_point_one_$ref_object,
+				maybe.$ref,
+			)
+		);
+	}
+
+	private is_supported_update8_$ref_object(
+		maybe:unknown,
+	): maybe is {$ref: update8_ref<string>} {
+		return (
+			object_only_has_that_property(maybe, '$ref', is_string)
+			&& object_has_property(
+				this.supported_update8_$ref_object,
+				maybe.$ref,
+			)
+		);
+	}
+
+	private is_supported_update8_$ref_object_aliased(
+		maybe:unknown,
+	): maybe is {$ref: local_ref<string>} {
+		return (
+			object_only_has_that_property(maybe, '$ref', is_string)
+			&& !this.is_supported_$ref_object(maybe)
+			&& !this.is_supported_update8_$ref_object(maybe)
+			&& maybe.$ref.startsWith('#/$defs/')
+			&& object_has_property(
+				this.supported_update8_$ref_object,
+				`update8.schema.json${maybe.$ref}`,
+			)
+		);
+	}
+
 	private is_Texture2D_basic(
 		maybe: unknown,
 	) : maybe is {
@@ -207,6 +317,54 @@ export class ValueToRegexFormatter
 			}).map(entry => {
 				return [
 					common_ref(entry[0]),
+					this.value_to_regex(entry[1]),
+				];
+			}))
+	}
+
+	private prepare_one_point_oh_$ref_regex(
+		$defs:{[key: string]: SchemaObject},
+	): {[key: one_point_oh_ref<string>]: string} {
+		return Object.fromEntries(Object.entries($defs)
+			.filter(maybe => {
+				const res = this.is_supported_definition(maybe[1]);
+
+				if (!res && maybe[0] === '1.0.schema.json#/$defs/mStatisticGameplayTag') {
+					console.log(maybe[1]);
+				}
+
+				return res;
+			}).map(entry => {
+				return [
+					one_point_oh_ref(entry[0]),
+					this.value_to_regex(entry[1]),
+				];
+			}))
+	}
+
+	private prepare_one_point_one_$ref_regex(
+		$defs:{[key: string]: SchemaObject},
+	): {[key: one_point_one_ref<string>]: string} {
+		return Object.fromEntries(Object.entries($defs)
+			.filter(maybe => {
+				return this.is_supported_definition(maybe[1])
+			}).map(entry => {
+				return [
+					one_point_one_ref(entry[0]),
+					this.value_to_regex(entry[1]),
+				];
+			}))
+	}
+
+	private prepare_update8_$ref_regex(
+		$defs:{[key: string]: SchemaObject},
+	): {[key: update8_ref<string>]: string} {
+		return Object.fromEntries(Object.entries($defs)
+			.filter(maybe => {
+				return this.is_supported_definition(maybe[1])
+			}).map(entry => {
+				return [
+					update8_ref(entry[0]),
 					this.value_to_regex(entry[1]),
 				];
 			}))
@@ -300,8 +458,14 @@ export class ValueToRegexFormatter
 			return this.supported_$ref_object[value.$ref];
 		} else if (this.is_supported_common_$ref_object(value)) {
 			return this.supported_common_$ref_object[value.$ref];
+		} else if (this.is_supported_update8_$ref_object(value)) {
+			return this.supported_update8_$ref_object[value.$ref];
+		} else if (this.is_supported_one_point_oh_$ref_object(value)) {
+			return this.supported_one_point_oh_$ref_object[value.$ref];
 		} else if (this.is_supported_common_$ref_object_aliased(value)) {
 			return this.supported_common_$ref_object[`common.schema.json${value.$ref}`];
+		} else if (this.is_supported_update8_$ref_object_aliased(value)) {
+			return this.supported_update8_$ref_object[`update8.schema.json${value.$ref}`];
 		} else if(this.typed_string_const.is_supported_schema(value)) {
 			return this.typed_string_const.value_regex(value);
 		} else if(this.typed_string_enum.is_supported_schema(value)) {
@@ -353,6 +517,72 @@ export class ValueToRegexFormatter
 		) {
 			const oneOf = this.common_$defs[
 				value.$ref.substring(26)
+			].oneOf as {[key: string]: unknown}[];
+
+			return `(?:${
+				oneOf
+					.map((e:SchemaObject) => this.value_to_regex(e))
+					.join('|')
+			})`;
+		} else if (
+			object_only_has_that_property(value, '$ref', is_string)
+			&& value.$ref.startsWith('update8.schema.json#/$defs/')
+			&& value.$ref.substring(27) in this.update8_$defs
+			&& object_only_has_that_property(
+				this.update8_$defs[value.$ref.substring(27)],
+				'oneOf',
+			)
+			&& is_non_empty_array(
+				this.update8_$defs[value.$ref.substring(27)].oneOf,
+				value_is_non_array_object,
+			)
+		) {
+			const oneOf = this.update8_$defs[
+				value.$ref.substring(27)
+			].oneOf as {[key: string]: unknown}[];
+
+			return `(?:${
+				oneOf
+					.map((e:SchemaObject) => this.value_to_regex(e))
+					.join('|')
+			})`;
+		} else if (
+			object_only_has_that_property(value, '$ref', is_string)
+			&& value.$ref.startsWith('1.0.schema.json#/$defs/')
+			&& value.$ref.substring(23) in this.one_point_oh_$defs
+			&& object_only_has_that_property(
+				this.one_point_oh_$defs[value.$ref.substring(23)],
+				'oneOf',
+			)
+			&& is_non_empty_array(
+				this.one_point_oh_$defs[value.$ref.substring(23)].oneOf,
+				value_is_non_array_object,
+			)
+		) {
+			const oneOf = this.one_point_oh_$defs[
+				value.$ref.substring(23)
+			].oneOf as {[key: string]: unknown}[];
+
+			return `(?:${
+				oneOf
+					.map((e:SchemaObject) => this.value_to_regex(e))
+					.join('|')
+			})`;
+		} else if (
+			object_only_has_that_property(value, '$ref', is_string)
+			&& value.$ref.startsWith('1.1.schema.json#/$defs/')
+			&& value.$ref.substring(23) in this.one_point_one_$defs
+			&& object_only_has_that_property(
+				this.one_point_one_$defs[value.$ref.substring(23)],
+				'oneOf',
+			)
+			&& is_non_empty_array(
+				this.one_point_one_$defs[value.$ref.substring(23)].oneOf,
+				value_is_non_array_object,
+			)
+		) {
+			const oneOf = this.one_point_one_$defs[
+				value.$ref.substring(23)
 			].oneOf as {[key: string]: unknown}[];
 
 			return `(?:${
@@ -419,6 +649,30 @@ export class ValueToRegexFormatter
 				this.common_$defs[value.$ref.substring(8)],
 			);
 		} else if (
+			0 === Object.keys(this.supported_one_point_oh_$ref_object).length
+			&& object_only_has_that_property(value, '$ref', is_string)
+			&& value.$ref.startsWith('1.0.schema.json#/$defs/')
+			&& value.$ref.substring(23) in this.one_point_oh_$defs
+			&& this.is_supported_definition(
+				this.one_point_oh_$defs[value.$ref.substring(23)],
+			)
+		) {
+			return this.value_to_regex(
+				this.one_point_oh_$defs[value.$ref.substring(23)],
+			);
+		} else if (
+			0 === Object.keys(this.supported_one_point_one_$ref_object).length
+			&& object_only_has_that_property(value, '$ref', is_string)
+			&& value.$ref.startsWith('1.1.schema.json#/$defs/')
+			&& value.$ref.substring(23) in this.one_point_one_$defs
+			&& this.is_supported_definition(
+				this.one_point_one_$defs[value.$ref.substring(23)],
+			)
+		) {
+			return this.value_to_regex(
+				this.one_point_one_$defs[value.$ref.substring(23)],
+			);
+		} else if (
 			this.is_Texture2D_basic(value)
 		) {
 			return this.Texture2D_basic_regex();
@@ -437,6 +691,12 @@ export class ValueToRegexFormatter
 					: ''
 			}}\\))`;
 		}
+
+		console.error(
+			Object.keys(this.supported_one_point_oh_$ref_object),
+			Object.keys(this.one_point_oh_$defs),
+			this.one_point_oh_$defs,
+		);
 
 		throw new NoMatchError(value, `Unsupported value! ${JSON.stringify(value)}`);
 	}

@@ -2,6 +2,7 @@ import Ajv, {
 	SchemaObject,
 } from 'ajv/dist/2020';
 import {
+	additional_$defs,
 	common_ref,
 	local_ref,
 } from '../StringStartsWith';
@@ -157,6 +158,18 @@ export function generate_typed_string_$defs(
 				typed_string_enum_schema,
 				typed_string_pattern_general_schema_self_testing,
 				{$ref: '#/$defs/typed_string_parent_type'},
+				{
+					type: 'object',
+					required: ['$ref'],
+					additionalProperties: false,
+					properties: {
+						$ref: {
+							type: 'string',
+							// eslint-disable-next-line max-len
+							pattern: '^(1\\.0|1\\.1)\\.schema\\.json#\\/\\$defs\\/',
+						},
+					},
+				},
 			],
 		},
 		typed_string_parent_type: {
@@ -281,6 +294,7 @@ export class TypedString
 	configure_ajv(
 		$defs:{[key: string]: SchemaObject},
 		common_$defs: {[key: string]: SchemaObject},
+		additional_$defs: additional_$defs,
 		ajv:Ajv,
 	) {
 		if (this.already_configured.has(ajv)) {
@@ -311,6 +325,7 @@ export class TypedString
 		const formatter = new ValueToRegexFormatter(
 			$defs,
 			common_$defs,
+			additional_$defs,
 		);
 
 		ajv.addKeyword({

@@ -54,6 +54,45 @@ import {
 } from './CustomParsingTypes/UnrealEngineString';
 
 import common_schema from '../schema/common.schema.json' with {type: 'json'};
+import update8_schema from '../schema/update8.schema.json' with {type: 'json'};
+// eslint-disable-next-line max-len
+import one_point_oh_schema from '../schema/1.0.schema.json' with {type: 'json'};
+// eslint-disable-next-line max-len
+import one_point_one_schema from '../schema/1.1.schema.json' with {type: 'json'};
+
+import {
+	specific_schema_shorthand,
+} from './StringStartsWith';
+
+function nudge_internal_refs(to: `${specific_schema_shorthand}.schema.json#/$defs/`, schema: SchemaObject): SchemaObject {
+	function nudge_on(object: object) {
+		return Object.fromEntries(Object.entries(object).map(([key, value]) => {
+			if (Array.isArray(value)) {
+				value = value.map((maybe): unknown => {
+					if (value_is_non_array_object(maybe) && '$ref' in maybe) {
+						return nudge_on(maybe);
+					}
+
+					return maybe;
+				});
+			} else if (value_is_non_array_object(value)) {
+				if (
+					'$ref' in value
+					&& is_string(value.$ref)
+					&& value.$ref.startsWith('#/$defs/')
+				) {
+					value.$ref = value.$ref.replace('#/$defs/', to);
+				}
+
+				value = nudge_on(value);
+			}
+
+			return [key, value];
+		}));
+	}
+
+	return nudge_on(schema);
+}
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -463,6 +502,20 @@ export class DocsTsGenerator {
 				TypedString.instance().configure_ajv(
 					$defs,
 					common_$defs,
+					{
+						update8: nudge_internal_refs(
+							'update8.schema.json#/$defs/',
+							update8_schema.$defs,
+						),
+						'1.0': nudge_internal_refs(
+							'1.0.schema.json#/$defs/',
+							one_point_oh_schema.$defs,
+						),
+						'1.1': nudge_internal_refs(
+							'1.1.schema.json#/$defs/',
+							one_point_one_schema.$defs,
+						),
+					},
 					this.ajv,
 				);
 			}

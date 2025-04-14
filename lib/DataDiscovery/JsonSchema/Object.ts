@@ -19,6 +19,7 @@ import {
 import {
 	common_ref,
 	local_ref,
+	update8_ref,
 } from '../../StringStartsWith';
 import {
 	NoMatchError,
@@ -373,15 +374,15 @@ abstract class ObjectConverterMatchesSchema<
 	}
 
 	protected schema_is_allOf_$refs(maybe: unknown): maybe is {allOf: [
-		{$ref: local_ref<string>|common_ref<string>},
-		...{$ref: local_ref<string>|common_ref<string>}[]
+		{$ref: local_ref<string>|common_ref<string>|update8_ref<string>},
+		...{$ref: local_ref<string>|common_ref<string>|update8_ref<string>}[]
 	]} {
 		return object_has_property(
 			maybe,
 			'allOf',
 			(maybe): maybe is [
-				{$ref: local_ref<string>|common_ref<string>},
-				...{$ref: local_ref<string>|common_ref<string>}[]
+				{$ref: local_ref<string>|common_ref<string>|update8_ref<string>},
+				...{$ref: local_ref<string>|common_ref<string>|update8_ref<string>}[]
 			] => {
 				return (
 					Array.isArray(maybe)
@@ -392,6 +393,7 @@ abstract class ObjectConverterMatchesSchema<
 							(maybe_inner): maybe_inner is (
 								| local_ref<string>
 								| common_ref<string>
+								| update8_ref<string>
 							) => {
 								return (
 									is_string(maybe_inner)
@@ -399,6 +401,9 @@ abstract class ObjectConverterMatchesSchema<
 										maybe_inner.startsWith('#/$defs/')
 										|| maybe_inner.startsWith(
 											'common.schema.json#/$defs/',
+										)
+										|| maybe_inner.startsWith(
+											'update8.schema.json#/$defs/',
 										)
 									)
 								)

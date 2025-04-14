@@ -26,6 +26,7 @@ for (const version of object_keys(docs.docs_versions)) {
 		const instance = new ValueToRegexFormatter(
 			(await docs.schema(version)).$defs,
 			common_schema.$defs,
+			{},
 		);
 		void it('does not throw', async () => {
 			const typed_string_types = [

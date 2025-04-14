@@ -17,6 +17,7 @@ import {
 import {
 	$ref,
 	common_$ref,
+	update8_$ref,
 } from './TypesDiscovery/JsonSchema/$ref';
 import {
 	non_array_object_property,
@@ -77,8 +78,13 @@ export class TypesDiscovery
 
 			this.discover_types_from(schema, schema, discovered_types);
 
+			const discovered_types_array = [...discovered_types.values()];
+			const discovered_update8_types = discovered_types_array.filter(
+				(maybe) => maybe.startsWith('update8.schema.json#/$defs/'),
+			).map((ref) => ref.substring(19));
+
 			this.discovery = Promise.resolve({
-				discovered_types: [...discovered_types.values()],
+				discovered_types: discovered_types_array,
 				missed_types: Object.keys(
 					object_has_property(
 						schema,
@@ -88,7 +94,10 @@ export class TypesDiscovery
 						? schema.$defs
 						: {},
 				).map(local_ref).filter(
-					maybe => !discovered_types.has(maybe),
+					maybe => (
+						!discovered_types_array.includes(maybe)
+						&& !discovered_update8_types.includes(maybe)
+					),
 				),
 			});
 		}
@@ -100,9 +109,27 @@ export class TypesDiscovery
 		current:unknown,
 		schema:SchemaObject,
 		discovered_types:Set<string>,
+		debug = false,
 	) {
 		if (!value_is_non_array_object(current)) {
 			return;
+		}
+
+		if (
+			JSON.stringify(current) === JSON.stringify({
+				"allOf": [
+					{
+						// eslint-disable-next-line max-len
+						"$ref": "common.schema.json#/$defs/common-base--FGRecipe",
+					},
+					{
+						// eslint-disable-next-line max-len
+						"$ref": "#/$defs/update8-base--FGCustomizationRecipe--FGRecipe",
+					},
+				],
+			})
+		) {
+			debug = true;
 		}
 
 		for (const discovery of this.candidates_discovery) {
@@ -111,7 +138,7 @@ export class TypesDiscovery
 				discovered_types,
 			);
 			for (const candidate of (candidates || [])) {
-				this.discover_types_from(candidate, schema, discovered_types);
+				this.discover_types_from(candidate, schema, discovered_types, debug);
 			}
 		}
 	}
@@ -167,6 +194,7 @@ export class TypesDiscovery
 			new properties(schema),
 			new $ref(schema),
 			new common_$ref(),
+			new update8_$ref(),
 			new ConstString(schema),
 			new EnumString(schema),
 		];

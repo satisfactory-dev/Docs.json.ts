@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (507 of 507)
+100.00% Complete (509 of 509)
 
 ## Basic Types
 
@@ -14,7 +14,6 @@
 -   [x] decimal-string (common type)
 -   [x] decimal-string--signed (common type)
 -   [x] empty-object (common type)
--   [x] FGBuildingDescriptor
 -   [x] integer-string (common type)
 -   [x] integer-string--signed (common type)
 -   [x] mAspect (common type)
@@ -22,7 +21,6 @@
 -   [x] mDamageTypes (common type)
 -   [x] mDockingRuleSet (common type)
 -   [x] mForm (common type)
--   [x] mOutputInventoryHandlerData
 -   [x] mPlatformDockingStatus (common type)
 -   [x] NativeClass (common type)
 -   [x] None (common type)
@@ -213,483 +211,8 @@
 -   [x] common-base--mSnappedPassthroughs (common type)
 -   [x] common-base--weaponState (common type)
 
-## FGAmmoType
-
--   [x] FGAmmoTypeSpreadshot
--   [x] FGAmmoTypeInstantHit--base
--   [x] FGAmmoTypeInstantHit--chaos
--   [x] FGAmmoTypeInstantHit--standard
--   [x] FGAmmoTypeProjectile
--   [x] FGAmmoTypeProjectile--base
-
-## FGAmmoTypeInstantHit
-
--   [x] FGAmmoTypeInstantHit--base--merged
--   [x] FGAmmoTypeInstantHit--chaos--merged
--   [x] FGAmmoTypeInstantHit--standard--merged
-
-## FGAmmoTypeProjectile
-
--   [x] FGAmmoTypeProjectile--base--merged
--   [x] FGAmmoTypeProjectile--merged
-
-## FGAmmoTypeSpreadshot
-
--   [x] FGAmmoTypeSpreadshot--merged
-
-## FGBuildable
-
--   [x] FGBuildableAttachmentMerger
--   [x] FGBuildableAttachmentSplitter
--   [x] FGBuildableBeamLightweight
--   [x] FGBuildableBlueprintDesigner
--   [x] FGBuildableCircuitSwitch
--   [x] FGBuildableConveyorBelt
--   [x] FGBuildableConveyorLift
--   [x] FGBuildableCornerWall
--   [x] FGBuildableDockingStation
--   [x] FGBuildableDoor
--   [x] FGBuildableDroneStation
--   [x] FGBuildableFactoryBuilding
--   [x] FGBuildableFactorySimpleProducer
--   [x] FGBuildableFloodlight
--   [x] FGBuildableFoundation
--   [x] FGBuildableFoundationLightweight
--   [x] FGBuildableFrackingActivator
--   [x] FGBuildableFrackingExtractor
--   [x] FGBuildableGeneratorGeoThermal
--   [x] FGBuildableGeneratorNuclear
--   [x] FGBuildableJumppad
--   [x] FGBuildableLadder
--   [x] FGBuildableLightsControlPanel
--   [x] FGBuildableLightSource
--   [x] FGBuildableMAM
--   [x] FGBuildableManufacturer
--   [x] FGBuildableManufacturerVariablePower
--   [x] FGBuildablePassthrough
--   [x] FGBuildablePillarLightweight
--   [x] FGBuildablePipeHyper
--   [x] FGBuildablePipeline
--   [x] FGBuildablePipelineJunction
--   [x] FGBuildablePipelinePump
--   [x] FGBuildablePipelineSupport
--   [x] FGBuildablePipeReservoir
--   [x] FGBuildablePoleLightweight
--   [x] FGBuildablePowerPole
--   [x] FGBuildablePowerStorage
--   [x] FGBuildablePriorityPowerSwitch
--   [x] FGBuildableRadarTower
--   [x] FGBuildableRailroadSignal
--   [x] FGBuildableRailroadStation
--   [x] FGBuildableRailroadTrack
--   [x] FGBuildableRamp
--   [x] FGBuildableResourceSink
--   [x] FGBuildableResourceSinkShop
--   [x] FGBuildableSnowDispenser
--   [x] FGBuildableSpaceElevator
--   [x] FGBuildableSplitterSmart
--   [x] FGBuildableStair
--   [x] FGBuildableStorage
--   [x] FGBuildableTradingPost
--   [x] FGBuildableTrainPlatformCargo
--   [x] FGBuildableTrainPlatformEmpty
--   [x] FGBuildableWalkway
--   [x] FGBuildableWalkwayLightweight
--   [x] FGBuildableWallLightweight
--   [x] FGBuildableWaterPump
--   [x] FGBuildableWidgetSign
--   [x] FGBuildableWire
--   [x] FGBuildable--base
--   [x] FGBuildable--circuits-base
--   [x] FGBuildable--circuits-base--merged
--   [x] FGBuildable--consumes-power-base
--   [x] FGBuildable--consumes-power-base--update8
--   [x] FGBuildable--docking-station-base
--   [x] FGBuildable--extractor-base
--   [x] FGBuildable--extractor-base--merged
--   [x] FGBuildable--extractor-base--shared
--   [x] FGBuildable--extractor-base--shared--merged
--   [x] FGBuildable--occupied
--   [x] FGBuildable--occupied--merged
--   [x] FGBuildable--pipeline-accessory
--   [x] FGBuildable--pipeline-accessory--base
--   [x] FGBuildable--pipeline-flow-accessory
--   [x] FGBuildable--pole--base--no-static--merged
--   [x] FGBuildable--pole--base--with-static--merged
--   [x] FGBuildable--power-switch--base
--   [x] FGBuildable--power-switch--base--merged
--   [x] FGBuildable--splitter--base
--   [x] FGBuildable--splitter--base--merged
--   [x] FGBuildable--tiered
--   [x] FGBuildable--tiered--merged
-
-## FGBuildableAttachmentMerger
-
--   [x] FGBuildableAttachmentMerger--merged
-
-## FGBuildableAttachmentSplitter
-
--   [x] FGBuildableAttachmentSplitter--merged
-
-## FGBuildableBeamLightweight
-
--   [x] FGBuildableBeamLightweight--merged
-
-## FGBuildableBlueprintDesigner
-
--   [x] FGBuildableBlueprintDesigner--merged
-
-## FGBuildableConveyorBelt
-
--   [x] FGBuildableConveyorBelt--base
--   [x] FGBuildableConveyorBelt--base--merged
--   [x] FGBuildableConveyorBelt--merged
-
-## FGBuildableConveyorLift
-
--   [x] FGBuildableConveyorLift--merged
-
-## FGBuildableDockingStation
-
--   [x] FGBuildableDockingStation--merged
-
-## FGBuildableDoor
-
--   [x] FGBuildableDoor--automated
--   [x] FGBuildableDoor--automated--merged
--   [x] FGBuildableDoor--base
--   [x] FGBuildableDoor--merged
-
-## FGBuildableDroneStation
-
--   [x] FGBuildableDroneStation--merged
--   [x] FGBuildableDroneStation--update8
-
-## FGBuildableFactory
-
--   [x] FGBuildableFactory--generic
--   [x] FGBuildableFactory--generic--merged
--   [x] FGBuildableFactory--jump-pad
--   [x] FGBuildableFactory--jump-pad--merged
--   [x] FGBuildableFactory--landing-pad
--   [x] FGBuildableFactory--landing-pad--merged
-
-## FGBuildableFoundation
-
--   [x] FGBuildableFoundation--base
--   [x] FGBuildableFoundation--base--merged
--   [x] FGBuildableFoundation--merged
-
-## FGBuildableFrackingActivator
-
--   [x] FGBuildableFrackingActivator--merged
-
-## FGBuildableFrackingExtractor
-
--   [x] FGBuildableFrackingExtractor--merged
-
-## FGBuildableGenerator
-
--   [x] FGBuildableGenerator--base
-
-## FGBuildableGeneratorFuel
-
--   [x] FGBuildableGeneratorFuel--base
--   [x] FGBuildableGeneratorFuel--base--merged
--   [x] FGBuildableGeneratorFuel--biogen
--   [x] FGBuildableGeneratorFuel--biogen--merged
--   [x] FGBuildableGeneratorFuel--liquid
--   [x] FGBuildableGeneratorFuel--liquid--merged
--   [x] FGBuildableGeneratorFuel--solid
--   [x] FGBuildableGeneratorFuel--solid--merged
-
-## FGBuildableGeneratorNuclear
-
--   [x] FGBuildableGeneratorNuclear--merged
-
-## FGBuildableJumppad
-
--   [x] FGBuildableJumppad--merged
-
-## FGBuildableLightSource
-
--   [x] FGBuildableLightSource--base
--   [x] FGBuildableLightSource--base--merged
-
-## FGBuildableMAM
-
--   [x] FGBuildableMAM--merged
-
-## FGBuildableManufacturer
-
--   [x] FGBuildableManufacturer--base
--   [x] FGBuildableManufacturer--base--merged
--   [x] FGBuildableManufacturer--blender
--   [x] FGBuildableManufacturer--blender--merged
--   [x] FGBuildableManufacturer--constructor
--   [x] FGBuildableManufacturer--constructor--merged
--   [x] FGBuildableManufacturer--merged
--   [x] FGBuildableManufacturer--packager
--   [x] FGBuildableManufacturer--packager--merged
--   [x] FGBuildableManufacturer--smelter
--   [x] FGBuildableManufacturer--smelter--merged
-
-## FGBuildableManufacturerVariablePower
-
--   [x] FGBuildableManufacturerVariablePower--base
--   [x] FGBuildableManufacturerVariablePower--base--merged
--   [x] FGBuildableManufacturerVariablePower--HadronCollider--merged
-
-## FGBuildablePillarLightweight
-
--   [x] FGBuildablePillarLightweight--merged
-
-## FGBuildablePipeHyper
-
--   [x] FGBuildablePipeHyper--merged
-
-## FGBuildablePipeline
-
--   [x] FGBuildablePipeline--merged
-
-## FGBuildablePipelineJunction
-
--   [x] FGBuildablePipelineJunction--merged
-
-## FGBuildablePipelinePump
-
--   [x] FGBuildablePipelinePump--merged
--   [x] FGBuildablePipelinePump--valve
--   [x] FGBuildablePipelinePump--valve--merged
-
-## FGBuildablePipeReservoir
-
--   [x] FGBuildablePipeReservoir--merged
-
-## FGBuildablePoleLightweight
-
--   [x] FGBuildablePoleLightweight--merged
-
-## FGBuildablePowerPole
-
--   [x] FGBuildablePowerPole--merged
-
-## FGBuildablePowerStorage
-
--   [x] FGBuildablePowerStorage--merged
-
-## FGBuildableRailroadSignal
-
--   [x] FGBuildableRailroadSignal--merged
-
-## FGBuildableRailroadStation
-
--   [x] FGBuildableRailroadStation--merged
-
-## FGBuildableRailroadTrack
-
--   [x] FGBuildableRailroadTrack--merged
-
-## FGBuildableRamp
-
--   [x] FGBuildableRamp--merged
-
-## FGBuildableResourceExtractor
-
--   [x] FGBuildableResourceExtractor--miner
--   [x] FGBuildableResourceExtractor--miner--base
--   [x] FGBuildableResourceExtractor--miner--base--merged
--   [x] FGBuildableResourceExtractor--miner--merged
--   [x] FGBuildableResourceExtractor--miner-mk3
--   [x] FGBuildableResourceExtractor--miner-mk3--merged
--   [x] FGBuildableResourceExtractor--oil-extractor
--   [x] FGBuildableResourceExtractor--oil-extractor--merged
-
-## FGBuildableResourceSink
-
--   [x] FGBuildableResourceSink--merged
-
-## FGBuildableResourceSinkShop
-
--   [x] FGBuildableResourceSinkShop--merged
-
-## FGBuildableSpaceElevator
-
--   [x] FGBuildableSpaceElevator--merged
-
-## FGBuildableStorage
-
--   [x] FGBuildableStorage--merged
-
-## FGBuildableTradingPost
-
--   [x] FGBuildableTradingPost--merged
--   [x] FGBuildableTradingPost--update8
-
-## FGBuildableTrainPlatform
-
--   [x] FGBuildableTrainPlatform--base
--   [x] FGBuildableTrainPlatform--base--merged
-
-## FGBuildableTrainPlatformCargo
-
--   [x] FGBuildableTrainPlatformCargo--FGBuildableRailroadStation
--   [x] FGBuildableTrainPlatformCargo--FGBuildableRailroadStation--merged
--   [x] FGBuildableTrainPlatformCargo--merged
-
-## FGBuildableWalkway
-
--   [x] FGBuildableWalkway--base
--   [x] FGBuildableWalkway--base--merged
--   [x] FGBuildableWalkway--merged
-
-## FGBuildableWalkwayLightweight
-
--   [x] FGBuildableWalkwayLightweight--merged
-
-## FGBuildableWall
-
--   [x] FGBuildableWall--base
-
-## FGBuildableWaterPump
-
--   [x] FGBuildableWaterPump--merged
-
-## FGBuildableWire
-
--   [x] FGBuildableWire--merged
-
-## FGChainsaw
-
--   [x] FGChainsaw
--   [x] FGChainsaw--merged
-
-## FGChargedWeapon
-
--   [x] FGChargedWeapon
--   [x] FGChargedWeapon--merged
-
-## FGConsumableDescriptor
-
--   [x] FGConsumableDescriptor
--   [x] FGConsumableDescriptor--base
--   [x] FGConsumableDescriptor--base--merged
--   [x] FGConsumableDescriptor--healing
--   [x] FGConsumableDescriptor--healing--base
--   [x] FGConsumableDescriptor--merged
-
-## FGCustomizationRecipe
-
--   [x] FGCustomizationRecipe--FGRecipe
-
-## FGEquipment
-
--   [x] FGEquipmentDescriptor
--   [x] FGEquipmentStunSpear
--   [x] FGEquipmentZipline
--   [x] FGEquipment--base
--   [x] FGEquipment--placeable
--   [x] FGEquipment--placeable--merged
--   [x] FGEquipmentDescriptor--base
-
-## FGEquipmentDescriptor
-
--   [x] FGEquipmentDescriptor--base--merged
--   [x] FGEquipmentDescriptor--merged
-
-## FGEquipmentStunSpear
-
--   [x] FGEquipmentStunSpear--base
--   [x] FGEquipmentStunSpear--base--merged
--   [x] FGEquipmentStunSpear--merged
--   [x] FGEquipmentStunSpear--xeno-zapper
--   [x] FGEquipmentStunSpear--xeno-zapper--merged
-
-## FGEquipmentZipline
-
--   [x] FGEquipmentZipline--merged
-
-## FGGasMask
-
--   [x] FGGasMask
--   [x] FGGasMask--merged
-
-## FGGolfCartDispenser
-
--   [x] FGGolfCartDispenser
--   [x] FGGolfCartDispenser--merged
-
-## FGHoverPack
-
--   [x] FGHoverPack
--   [x] FGHoverPack--merged
-
-## FGItemDescriptor
-
--   [x] FGItemDescriptorBiomass
--   [x] FGItemDescriptorNuclearFuel
--   [x] FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor
--   [x] FGItemDescriptor--FGResourceDescriptor
--   [x] FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor
-
-## FGItemDescriptorBiomass
-
--   [x] FGItemDescriptorBiomass--merged
-
-## FGItemDescriptorNuclearFuel
-
--   [x] FGItemDescriptorNuclearFuel--merged
-
-## FGJetPack
-
--   [x] FGJetPack
--   [x] FGJetPack--merged
-
-## FGJumpingStilts
-
--   [x] FGJumpingStilts
--   [x] FGJumpingStilts--merged
-
-## FGObjectScanner
-
--   [x] FGObjectScanner
--   [x] FGObjectScanner--merged
-
-## FGParachute
-
--   [x] FGParachute
--   [x] FGParachute--merged
-
-## FGPipeHyperStart
-
--   [x] FGPipeHyperStart
--   [x] FGPipeHyperStart--merged
-
-## FGPoleDescriptor
-
--   [x] FGPoleDescriptor
--   [x] FGPoleDescriptor--merged
-
-## FGPortableMinerDispenser
-
--   [x] FGPortableMinerDispenser
--   [x] FGPortableMinerDispenser--merged
-
-## FGRecipe
-
--   [x] FGRecipe
--   [x] FGRecipe--merged
-
-## FGResourceDescriptor
-
--   [x] FGResourceDescriptor
--   [x] FGResourceDescriptor--merged
-
 ## FGSchematic
 
--   [x] FGSchematic
--   [x] FGSchematic--base
--   [x] FGSchematic--mUnlocks_Class
 -   [x] FGSchematic--mUnlocks_equipment_slots (common type)
 -   [x] FGSchematic--mUnlocks_inventory_slots (common type)
 -   [x] FGSchematic--mUnlocks_mEmotes (common type)
@@ -699,34 +222,6 @@
 -   [x] FGSchematic--mUnlocks_mSchematics (common type)
 -   [x] FGSchematic--mUnlocks_mTapeUnlocks (common type)
 -   [x] FGSchematic--mUnlocks_resources_to_scan (common type)
--   [x] FGSchematic--with-unlocks
--   [x] FGSchematic--with-unlocks--merged
-
-## FGSuitBase
-
--   [x] FGSuitBase
--   [x] FGSuitBase--merged
-
-## FGVehicleDescriptor
-
--   [x] FGVehicleDescriptor--fueled-with-inventory
--   [x] FGVehicleDescriptor--fueled-with-inventory--merged
--   [x] FGVehicleDescriptor--powered-no-inventory
--   [x] FGVehicleDescriptor--powered-no-inventory--merged
--   [x] FGVehicleDescriptor--unfueled-with-inventory
--   [x] FGVehicleDescriptor--with-inventory
--   [x] FGVehicleDescriptor--with-inventory--merged
-
-## FGWeapon
-
--   [x] FGWeapon--base
--   [x] FGWeapon--base--merged
--   [x] FGWeapon--gun-base
--   [x] FGWeapon--gun-base--merged
--   [x] FGWeapon--rebar-gun
--   [x] FGWeapon--rebar-gun--merged
--   [x] FGWeapon--rifle
--   [x] FGWeapon--rifle--merged
 
 ## ItemClass
 
@@ -738,9 +233,288 @@
 -   [x] mEventType (common type)
 -   [x] mEventType--optional-csv (common type)
 
+## schema.json#/$defs/update8-base
+
+-   [x] schema.json#/$defs/update8-base--FGAmmoTypeInstantHit--base--merged
+-   [x] schema.json#/$defs/update8-base--FGAmmoTypeInstantHit--chaos--merged
+-   [x] schema.json#/$defs/update8-base--FGAmmoTypeInstantHit--standard--merged
+-   [x] schema.json#/$defs/update8-base--FGAmmoTypeProjectile--merged
+-   [x] schema.json#/$defs/update8-base--FGAmmoTypeSpreadshot--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildable--base
+-   [x] schema.json#/$defs/update8-base--FGBuildable--circuits-base--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildable--extractor-base--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildable--extractor-base--shared--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildable--occupied--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildable--pole--base--with-static--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildable--power-switch--base--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildable--splitter--base--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildable--tiered--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableAttachmentMerger--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableAttachmentSplitter--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableBeamLightweight--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableBlueprintDesigner--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableConveyorBelt--base--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableConveyorBelt--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableConveyorLift--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableDockingStation--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableDoor--automated--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableFactory--generic--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableFactory--jump-pad--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableFactory--landing-pad--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableFoundation--base
+-   [x] schema.json#/$defs/update8-base--FGBuildableFoundation--base--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableFoundation--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableFrackingActivator--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableFrackingExtractor--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableGeneratorFuel--base--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableGeneratorFuel--biogen--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableGeneratorFuel--liquid--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableGeneratorFuel--solid--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableGeneratorNuclear--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableJumppad--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableLightSource--base--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableMAM--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableManufacturer--base--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableManufacturer--blender--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableManufacturer--constructor--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableManufacturer--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableManufacturer--packager--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableManufacturer--smelter--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableManufacturerVariablePower--base--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableManufacturerVariablePower--HadronCollider--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildablePillarLightweight--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildablePipeHyper--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildablePipeline--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildablePipelineJunction--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildablePipelinePump--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildablePipelinePump--valve--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildablePipeReservoir--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildablePoleLightweight--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildablePowerPole--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildablePowerStorage--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableRailroadSignal--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableRailroadStation--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableRailroadTrack--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableRamp--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableResourceExtractor--miner--base--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableResourceExtractor--miner--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableResourceExtractor--miner-mk3--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableResourceExtractor--oil-extractor--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableResourceSink--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableResourceSinkShop--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableSpaceElevator--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableStorage--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableTradingPost--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableTrainPlatform--base
+-   [x] schema.json#/$defs/update8-base--FGBuildableTrainPlatform--base--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableTrainPlatformCargo--FGBuildableRailroadStation--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableTrainPlatformCargo--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableWalkway--base--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableWalkway--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableWalkwayLightweight--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableWaterPump--merged
+-   [x] schema.json#/$defs/update8-base--FGBuildableWire--merged
+-   [x] schema.json#/$defs/update8-base--FGChainsaw--merged
+-   [x] schema.json#/$defs/update8-base--FGChargedWeapon--merged
+-   [x] schema.json#/$defs/update8-base--FGConsumableDescriptor--base--merged
+-   [x] schema.json#/$defs/update8-base--FGConsumableDescriptor--healing--base
+-   [x] schema.json#/$defs/update8-base--FGConsumableDescriptor--merged
+-   [x] schema.json#/$defs/update8-base--FGEquipment--placeable--merged
+-   [x] schema.json#/$defs/update8-base--FGEquipmentDescriptor--base--merged
+-   [x] schema.json#/$defs/update8-base--FGEquipmentDescriptor--merged
+-   [x] schema.json#/$defs/update8-base--FGEquipmentStunSpear--base--merged
+-   [x] schema.json#/$defs/update8-base--FGEquipmentStunSpear--merged
+-   [x] schema.json#/$defs/update8-base--FGEquipmentStunSpear--xeno-zapper--merged
+-   [x] schema.json#/$defs/update8-base--FGEquipmentZipline--merged
+-   [x] schema.json#/$defs/update8-base--FGGasMask--merged
+-   [x] schema.json#/$defs/update8-base--FGGolfCartDispenser--merged
+-   [x] schema.json#/$defs/update8-base--FGHoverPack--merged
+-   [x] schema.json#/$defs/update8-base--FGItemDescriptorBiomass--merged
+-   [x] schema.json#/$defs/update8-base--FGItemDescriptorNuclearFuel--merged
+-   [x] schema.json#/$defs/update8-base--FGJetPack--merged
+-   [x] schema.json#/$defs/update8-base--FGJumpingStilts--merged
+-   [x] schema.json#/$defs/update8-base--FGObjectScanner--merged
+-   [x] schema.json#/$defs/update8-base--FGParachute--merged
+-   [x] schema.json#/$defs/update8-base--FGPipeHyperStart--merged
+-   [x] schema.json#/$defs/update8-base--FGPoleDescriptor--merged
+-   [x] schema.json#/$defs/update8-base--FGPortableMinerDispenser--merged
+-   [x] schema.json#/$defs/update8-base--FGRecipe--merged
+-   [x] schema.json#/$defs/update8-base--FGResourceDescriptor--merged
+-   [x] schema.json#/$defs/update8-base--FGSchematic--base
+-   [x] schema.json#/$defs/update8-base--FGSuitBase--merged
+-   [x] schema.json#/$defs/update8-base--FGVehicleDescriptor--fueled-with-inventory--merged
+-   [x] schema.json#/$defs/update8-base--FGVehicleDescriptor--powered-no-inventory--merged
+-   [x] schema.json#/$defs/update8-base--FGVehicleDescriptor--with-inventory
+-   [x] schema.json#/$defs/update8-base--FGVehicleDescriptor--with-inventory--merged
+-   [x] schema.json#/$defs/update8-base--FGWeapon--base--merged
+-   [x] schema.json#/$defs/update8-base--FGWeapon--gun-base--merged
+-   [x] schema.json#/$defs/update8-base--FGWeapon--rebar-gun--merged
+-   [x] schema.json#/$defs/update8-base--FGWeapon--rifle--merged
+-   [x] schema.json#/$defs/update8-base--mOutputInventoryHandlerData
+
 ## UnrealEngineString
 
 -   [x] UnrealEngineString--array (common type)
+
+## update8-base
+
+-   [x] update8-base--FGAmmoTypeInstantHit--base
+-   [x] update8-base--FGAmmoTypeInstantHit--chaos
+-   [x] update8-base--FGAmmoTypeInstantHit--standard
+-   [x] update8-base--FGAmmoTypeProjectile
+-   [x] update8-base--FGAmmoTypeProjectile--base
+-   [x] update8-base--FGAmmoTypeSpreadshot
+-   [x] update8-base--FGBuildable--base
+-   [x] update8-base--FGBuildable--circuits-base
+-   [x] update8-base--FGBuildable--consumes-power-base
+-   [x] update8-base--FGBuildable--consumes-power-base--update8
+-   [x] update8-base--FGBuildable--docking-station-base
+-   [x] update8-base--FGBuildable--extractor-base
+-   [x] update8-base--FGBuildable--extractor-base--shared
+-   [x] update8-base--FGBuildable--occupied
+-   [x] update8-base--FGBuildable--pipeline-accessory
+-   [x] update8-base--FGBuildable--pipeline-accessory--base
+-   [x] update8-base--FGBuildable--pipeline-flow-accessory
+-   [x] update8-base--FGBuildable--pole--base--no-static--merged
+-   [x] update8-base--FGBuildable--pole--base--with-static--merged
+-   [x] update8-base--FGBuildable--power-switch--base
+-   [x] update8-base--FGBuildable--splitter--base
+-   [x] update8-base--FGBuildable--tiered
+-   [x] update8-base--FGBuildableAttachmentMerger
+-   [x] update8-base--FGBuildableAttachmentSplitter
+-   [x] update8-base--FGBuildableBeamLightweight
+-   [x] update8-base--FGBuildableBlueprintDesigner
+-   [x] update8-base--FGBuildableCircuitSwitch
+-   [x] update8-base--FGBuildableConveyorBelt
+-   [x] update8-base--FGBuildableConveyorBelt--base
+-   [x] update8-base--FGBuildableConveyorLift
+-   [x] update8-base--FGBuildableCornerWall
+-   [x] update8-base--FGBuildableDockingStation
+-   [x] update8-base--FGBuildableDoor
+-   [x] update8-base--FGBuildableDoor--automated
+-   [x] update8-base--FGBuildableDoor--base
+-   [x] update8-base--FGBuildableDroneStation
+-   [x] update8-base--FGBuildableDroneStation--update8
+-   [x] update8-base--FGBuildableFactory--generic
+-   [x] update8-base--FGBuildableFactory--jump-pad
+-   [x] update8-base--FGBuildableFactory--landing-pad
+-   [x] update8-base--FGBuildableFactoryBuilding
+-   [x] update8-base--FGBuildableFactorySimpleProducer
+-   [x] update8-base--FGBuildableFloodlight
+-   [x] update8-base--FGBuildableFoundation
+-   [x] update8-base--FGBuildableFoundation--base
+-   [x] update8-base--FGBuildableFoundationLightweight
+-   [x] update8-base--FGBuildableFrackingActivator
+-   [x] update8-base--FGBuildableFrackingExtractor
+-   [x] update8-base--FGBuildableGenerator--base
+-   [x] update8-base--FGBuildableGeneratorFuel--base
+-   [x] update8-base--FGBuildableGeneratorFuel--biogen
+-   [x] update8-base--FGBuildableGeneratorFuel--liquid
+-   [x] update8-base--FGBuildableGeneratorFuel--solid
+-   [x] update8-base--FGBuildableGeneratorGeoThermal
+-   [x] update8-base--FGBuildableGeneratorNuclear
+-   [x] update8-base--FGBuildableJumppad
+-   [x] update8-base--FGBuildableLadder
+-   [x] update8-base--FGBuildableLightsControlPanel
+-   [x] update8-base--FGBuildableLightSource
+-   [x] update8-base--FGBuildableLightSource--base
+-   [x] update8-base--FGBuildableMAM
+-   [x] update8-base--FGBuildableManufacturer
+-   [x] update8-base--FGBuildableManufacturer--base
+-   [x] update8-base--FGBuildableManufacturer--blender
+-   [x] update8-base--FGBuildableManufacturer--constructor
+-   [x] update8-base--FGBuildableManufacturer--packager
+-   [x] update8-base--FGBuildableManufacturer--smelter
+-   [x] update8-base--FGBuildableManufacturerVariablePower
+-   [x] update8-base--FGBuildableManufacturerVariablePower--base
+-   [x] update8-base--FGBuildablePassthrough
+-   [x] update8-base--FGBuildablePillarLightweight
+-   [x] update8-base--FGBuildablePipeHyper
+-   [x] update8-base--FGBuildablePipeline
+-   [x] update8-base--FGBuildablePipelineJunction
+-   [x] update8-base--FGBuildablePipelinePump
+-   [x] update8-base--FGBuildablePipelinePump--valve
+-   [x] update8-base--FGBuildablePipelineSupport
+-   [x] update8-base--FGBuildablePipeReservoir
+-   [x] update8-base--FGBuildablePoleLightweight
+-   [x] update8-base--FGBuildablePowerPole
+-   [x] update8-base--FGBuildablePowerStorage
+-   [x] update8-base--FGBuildablePriorityPowerSwitch
+-   [x] update8-base--FGBuildableRadarTower
+-   [x] update8-base--FGBuildableRailroadSignal
+-   [x] update8-base--FGBuildableRailroadStation
+-   [x] update8-base--FGBuildableRailroadTrack
+-   [x] update8-base--FGBuildableRamp
+-   [x] update8-base--FGBuildableResourceExtractor--miner
+-   [x] update8-base--FGBuildableResourceExtractor--miner--base
+-   [x] update8-base--FGBuildableResourceExtractor--miner-mk3
+-   [x] update8-base--FGBuildableResourceExtractor--oil-extractor
+-   [x] update8-base--FGBuildableResourceSink
+-   [x] update8-base--FGBuildableResourceSinkShop
+-   [x] update8-base--FGBuildableSnowDispenser
+-   [x] update8-base--FGBuildableSpaceElevator
+-   [x] update8-base--FGBuildableSplitterSmart
+-   [x] update8-base--FGBuildableStair
+-   [x] update8-base--FGBuildableStorage
+-   [x] update8-base--FGBuildableTradingPost
+-   [x] update8-base--FGBuildableTradingPost--update8
+-   [x] update8-base--FGBuildableTrainPlatform--base
+-   [x] update8-base--FGBuildableTrainPlatformCargo
+-   [x] update8-base--FGBuildableTrainPlatformCargo--FGBuildableRailroadStation
+-   [x] update8-base--FGBuildableTrainPlatformEmpty
+-   [x] update8-base--FGBuildableWalkway
+-   [x] update8-base--FGBuildableWalkway--base
+-   [x] update8-base--FGBuildableWalkwayLightweight
+-   [x] update8-base--FGBuildableWall--base
+-   [x] update8-base--FGBuildableWallLightweight
+-   [x] update8-base--FGBuildableWaterPump
+-   [x] update8-base--FGBuildableWidgetSign
+-   [x] update8-base--FGBuildableWire
+-   [x] update8-base--FGBuildingDescriptor
+-   [x] update8-base--FGChainsaw
+-   [x] update8-base--FGChargedWeapon
+-   [x] update8-base--FGConsumableDescriptor
+-   [x] update8-base--FGConsumableDescriptor--base
+-   [x] update8-base--FGConsumableDescriptor--healing
+-   [x] update8-base--FGCustomizationRecipe--FGRecipe
+-   [x] update8-base--FGEquipment--base
+-   [x] update8-base--FGEquipment--placeable
+-   [x] update8-base--FGEquipmentDescriptor
+-   [x] update8-base--FGEquipmentDescriptor--base
+-   [x] update8-base--FGEquipmentStunSpear
+-   [x] update8-base--FGEquipmentStunSpear--base
+-   [x] update8-base--FGEquipmentStunSpear--xeno-zapper
+-   [x] update8-base--FGEquipmentZipline
+-   [x] update8-base--FGGasMask
+-   [x] update8-base--FGGolfCartDispenser
+-   [x] update8-base--FGHoverPack
+-   [x] update8-base--FGItemDescriptor--FGBuildingDescriptor--FGResourceDescriptor
+-   [x] update8-base--FGItemDescriptor--FGResourceDescriptor
+-   [x] update8-base--FGItemDescriptor--FGResourceDescriptor--FGPoleDescriptor
+-   [x] update8-base--FGItemDescriptorBiomass
+-   [x] update8-base--FGItemDescriptorNuclearFuel
+-   [x] update8-base--FGJetPack
+-   [x] update8-base--FGJumpingStilts
+-   [x] update8-base--FGObjectScanner
+-   [x] update8-base--FGParachute
+-   [x] update8-base--FGPipeHyperStart
+-   [x] update8-base--FGPoleDescriptor
+-   [x] update8-base--FGPortableMinerDispenser
+-   [x] update8-base--FGRecipe
+-   [x] update8-base--FGResourceDescriptor
+-   [x] update8-base--FGSchematic
+-   [x] update8-base--FGSchematic--base
+-   [x] update8-base--FGSchematic--mUnlocks_Class
+-   [x] update8-base--FGSchematic--with-unlocks
+-   [x] update8-base--FGSuitBase
+-   [x] update8-base--FGVehicleDescriptor--fueled-with-inventory
+-   [x] update8-base--FGVehicleDescriptor--powered-no-inventory
+-   [x] update8-base--FGVehicleDescriptor--unfueled-with-inventory
+-   [x] update8-base--FGVehicleDescriptor--with-inventory
+-   [x] update8-base--FGWeapon--base
+-   [x] update8-base--FGWeapon--gun-base
+-   [x] update8-base--FGWeapon--rebar-gun
+-   [x] update8-base--FGWeapon--rifle
 
 ## vectors
 
