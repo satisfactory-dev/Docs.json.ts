@@ -5,9 +5,6 @@ import {common_base__FGBuildableWalkwayLightweight__type} from '../../../common/
 import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableWalkwayLightweight__type =
-	FGBuildableWalkwayLightweight__merged__type;
-
-export type FGBuildableWalkwayLightweight__merged__type =
 	common_base__FGBuildableWalkwayLightweight__type &
 		FGBuildableWalkway__base__type;
 

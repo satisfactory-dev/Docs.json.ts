@@ -259,9 +259,11 @@ export class DocsTsGenerator {
 	async schema_version_1_1_0_1(): Promise<DocsSchemaByVersion['version_1_1_0_1']['en_US']['schema']>
 	{
 		const schema = this.schema_data.version_1_1_0_1.en_US.schema;
+		/*
 		const schema_1_0 = await this.schema_version_1_0_1_4();
 		this.ajv.removeSchema('1.0.schema.json');
 		this.ajv.addSchema(schema_1_0);
+		*/
 
 		// eslint-disable-next-line max-len
 		await this.validate_schema<DocsSchemaByVersion['version_1_1_0_1']['en_US']['schema']>(

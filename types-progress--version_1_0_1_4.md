@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (554 of 554)
+100.00% Complete (499 of 499)
 
 ## Basic Types
 
@@ -19,6 +19,7 @@
 -   [x] FGBuildingDescriptor
 -   [x] FGCentralStorageContainer
 -   [x] FGPipeHyperStart
+-   [x] FGPoleDescriptor
 -   [x] FGPowerShardDescriptor
 -   [x] integer-string (common type)
 -   [x] integer-string--signed (common type)
@@ -230,20 +231,6 @@
 -   [x] FGAmmoTypeProjectile
 -   [x] FGAmmoTypeProjectile--base
 
-## FGAmmoTypeInstantHit
-
--   [x] FGAmmoTypeInstantHit--base--merged
--   [x] FGAmmoTypeInstantHit--chaos--merged
--   [x] FGAmmoTypeInstantHit--standard--merged
-
-## FGAmmoTypeProjectile
-
--   [x] FGAmmoTypeProjectile--merged
-
-## FGAmmoTypeSpreadshot
-
--   [x] FGAmmoTypeSpreadshot--merged
-
 ## FGBuildable
 
 -   [x] FGBuildableAttachmentMerger
@@ -317,28 +304,21 @@
 -   [x] FGBuildable--extractor-base--shared
 -   [x] FGBuildable--extractor-base--shared--merged
 -   [x] FGBuildable--occupied--final
--   [x] FGBuildable--occupied--merged
 -   [x] FGBuildable--pipeline-accessory
 -   [x] FGBuildable--pipeline-accessory--base
 -   [x] FGBuildable--pipeline-flow-accessory
 -   [x] FGBuildable--pipeline-flow-accessory--merged
 -   [x] FGBuildable--pole--base--no-static
--   [x] FGBuildable--pole--base--no-static--merged
 -   [x] FGBuildable--pole--base--with-static--merged
 -   [x] FGBuildable--power-switch--base
 -   [x] FGBuildable--power-switch--base--merged
 -   [x] FGBuildable--splitter--base
 -   [x] FGBuildable--splitter--base--merged
 -   [x] FGBuildable--tiered
--   [x] FGBuildable--tiered--merged
 
 ## FGBuildableAttachmentMergerSplitter
 
 -   [x] FGBuildableAttachmentMergerSplitter--with-inventory-size
-
-## FGBuildableBeamLightweight
-
--   [x] FGBuildableBeamLightweight--merged
 
 ## FGBuildableBlueprintDesigner
 
@@ -357,7 +337,6 @@
 
 ## FGBuildableConveyorLift
 
--   [x] FGBuildableConveyorLift--merged
 -   [x] FGBuildableConveyorLift--properties
 
 ## FGBuildableDoor
@@ -367,32 +346,17 @@
 
 ## FGBuildableDroneStation
 
--   [x] FGBuildableDroneStation--merged
 -   [x] FGBuildableDroneStation--version-1
 
 ## FGBuildableFactory
 
 -   [x] FGBuildableFactory--jump-pad
--   [x] FGBuildableFactory--jump-pad--merged
 -   [x] FGBuildableFactory--landing-pad
--   [x] FGBuildableFactory--landing-pad--merged
-
-## FGBuildableFactoryBuilding
-
--   [x] FGBuildableFactoryBuilding--merged
 
 ## FGBuildableFoundation
 
 -   [x] FGBuildableFoundation--base
 -   [x] FGBuildableFoundation--base--merged
-
-## FGBuildableFrackingActivator
-
--   [x] FGBuildableFrackingActivator--merged
-
-## FGBuildableFrackingExtractor
-
--   [x] FGBuildableFrackingExtractor--merged
 
 ## FGBuildableGenerator
 
@@ -404,22 +368,14 @@
 -   [x] FGBuildableGeneratorFuel--base--merged
 -   [x] FGBuildableGeneratorFuel--biogen
 -   [x] FGBuildableGeneratorFuel--biogen--merged
--   [x] FGBuildableGeneratorFuel--biogen--properties
 -   [x] FGBuildableGeneratorFuel--liquid
 -   [x] FGBuildableGeneratorFuel--liquid--merged
--   [x] FGBuildableGeneratorFuel--liquid--properties
 -   [x] FGBuildableGeneratorFuel--solid
--   [x] FGBuildableGeneratorFuel--solid--merged
 
 ## FGBuildableGeneratorNuclear
 
--   [x] FGBuildableGeneratorNuclear--merged
 -   [x] FGBuildableGeneratorNuclear--mFuel--FicsoniumFuelRod
 -   [x] FGBuildableGeneratorNuclear--properties
-
-## FGBuildableLightsControlPanel
-
--   [x] FGBuildableLightsControlPanel--merged
 
 ## FGBuildableLightSource
 
@@ -435,31 +391,20 @@
 -   [x] FGBuildableManufacturer--base
 -   [x] FGBuildableManufacturer--base--merged
 -   [x] FGBuildableManufacturer--blender
--   [x] FGBuildableManufacturer--blender--merged
 -   [x] FGBuildableManufacturer--constructor
--   [x] FGBuildableManufacturer--constructor--merged
 -   [x] FGBuildableManufacturer--constructor--properties
--   [x] FGBuildableManufacturer--merged
 -   [x] FGBuildableManufacturer--packager
--   [x] FGBuildableManufacturer--packager--merged
 -   [x] FGBuildableManufacturer--smelter
--   [x] FGBuildableManufacturer--smelter--merged
 
 ## FGBuildableManufacturerVariablePower
 
 -   [x] FGBuildableManufacturerVariablePower--base
 -   [x] FGBuildableManufacturerVariablePower--base--merged
 -   [x] FGBuildableManufacturerVariablePower--HadronCollider
--   [x] FGBuildableManufacturerVariablePower--HadronCollider--merged
 -   [x] FGBuildableManufacturerVariablePower--QuantumEncoder
-
-## FGBuildablePillarLightweight
-
--   [x] FGBuildablePillarLightweight--merged
 
 ## FGBuildablePipeline
 
--   [x] FGBuildablePipeline--merged
 -   [x] FGBuildablePipeline--properties
 
 ## FGBuildablePipelineJunction
@@ -468,30 +413,15 @@
 
 ## FGBuildablePipelinePump
 
--   [x] FGBuildablePipelinePump--merged
 -   [x] FGBuildablePipelinePump--valve
--   [x] FGBuildablePipelinePump--valve--merged
 
 ## FGBuildablePipelineSupport
 
--   [x] FGBuildablePipelineSupport--merged
 -   [x] FGBuildablePipelineSupport--properties
-
-## FGBuildablePipeReservoir
-
--   [x] FGBuildablePipeReservoir--merged
-
-## FGBuildablePoleLightweight
-
--   [x] FGBuildablePoleLightweight--merged
 
 ## FGBuildablePortal
 
 -   [x] FGBuildablePortal--base
-
-## FGBuildablePowerPole
-
--   [x] FGBuildablePowerPole--merged
 
 ## FGBuildablePowerStorage
 
@@ -514,22 +444,13 @@
 -   [x] FGBuildableResourceExtractor--miner
 -   [x] FGBuildableResourceExtractor--miner--base
 -   [x] FGBuildableResourceExtractor--miner--base--merged
--   [x] FGBuildableResourceExtractor--miner--merged
 -   [x] FGBuildableResourceExtractor--miner-mk1
--   [x] FGBuildableResourceExtractor--miner-mk1--properties
 -   [x] FGBuildableResourceExtractor--miner-mk3
--   [x] FGBuildableResourceExtractor--miner-mk3--merged
 -   [x] FGBuildableResourceExtractor--oil-extractor
--   [x] FGBuildableResourceExtractor--oil-extractor--merged
 
 ## FGBuildableResourceSink
 
--   [x] FGBuildableResourceSink--merged
 -   [x] FGBuildableResourceSink--properties
-
-## FGBuildableResourceSinkShop
-
--   [x] FGBuildableResourceSinkShop--merged
 
 ## FGBuildableSpaceElevator
 
@@ -538,7 +459,6 @@
 
 ## FGBuildableTradingPost
 
--   [x] FGBuildableTradingPost--merged
 -   [x] FGBuildableTradingPost--version-1
 
 ## FGBuildableTrainPlatform
@@ -555,28 +475,14 @@
 ## FGBuildableWalkway
 
 -   [x] FGBuildableWalkway--base
--   [x] FGBuildableWalkway--base--merged
--   [x] FGBuildableWalkway--merged
-
-## FGBuildableWalkwayLightweight
-
--   [x] FGBuildableWalkwayLightweight--merged
 
 ## FGBuildableWall
 
 -   [x] FGBuildableWall--base
 
-## FGBuildableWaterPump
-
--   [x] FGBuildableWaterPump--merged
-
 ## FGBuildableWidgetSign
 
 -   [x] FGBuildableWidgetSign--merged
-
-## FGBuildableWire
-
--   [x] FGBuildableWire--merged
 
 ## FGChainsaw
 
@@ -588,7 +494,6 @@
 
 -   [x] FGChargedWeapon
 -   [x] FGChargedWeapon--merged
--   [x] FGChargedWeapon--pre-1.1
 
 ## FGConsumableDescriptor
 
@@ -696,11 +601,6 @@
 -   [x] FGParachute--merged
 -   [x] FGParachute--mUnEquipMontage
 
-## FGPoleDescriptor
-
--   [x] FGPoleDescriptor
--   [x] FGPoleDescriptor--merged
-
 ## FGPortableMinerDispenser
 
 -   [x] FGPortableMinerDispenser
@@ -719,7 +619,6 @@
 ## FGSchematic
 
 -   [x] FGSchematic
--   [x] FGSchematic--base
 -   [x] FGSchematic--base--properties
 -   [x] FGSchematic--mItemStackLimitIncrease
 -   [x] FGSchematic--mNumSlotsToUnlock
@@ -736,7 +635,6 @@
 -   [x] FGSchematic--mUnlocks_resources_to_scan (common type)
 -   [x] FGSchematic--mUploadSpeedPercentageDecrease
 -   [x] FGSchematic--with-unlocks
--   [x] FGSchematic--with-unlocks--merged
 
 ## FGSuitBase
 
@@ -744,7 +642,6 @@
 -   [x] FGSuitBase--1.0
 -   [x] FGSuitBase--1.0--mEquipMontage--Montages--AudioEvent
 -   [x] FGSuitBase--1.0--pre-1.1
--   [x] FGSuitBase--merged
 
 ## FGVehicleDescriptor
 
@@ -761,13 +658,10 @@
 -   [x] FGWeapon--base
 -   [x] FGWeapon--base--merged
 -   [x] FGWeapon--gun-base
--   [x] FGWeapon--gun-base--merged
 -   [x] FGWeapon--gun-base--properties
 -   [x] FGWeapon--rebar-gun
--   [x] FGWeapon--rebar-gun--merged
 -   [x] FGWeapon--rebar-gun--properties
 -   [x] FGWeapon--rifle
--   [x] FGWeapon--rifle--merged
 -   [x] FGWeapon--rifle--properties
 
 ## FilterMontageTag

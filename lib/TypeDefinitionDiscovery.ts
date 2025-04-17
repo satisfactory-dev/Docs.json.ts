@@ -190,12 +190,12 @@ export class TypeDefinitionDiscovery
 				await this.types_discovery.discover_types();
 
 			if (discovered_types.missed_types.length > 0) {
-				throw new Error(
-					`Missing some type $defs:\n${
-						discovered_types.missed_types.join(
-							'\n',
-						)
-					}`,
+				throw new NoMatchError(
+					{
+						missed_types: discovered_types.missed_types,
+						schema_$defs: discovered_types.schema_$defs,
+					},
+					'Missing some type $defs',
 				);
 			} else if (
 				!is_non_empty_array(

@@ -10,9 +10,6 @@ import {
 import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableGeneratorNuclear__type =
-	FGBuildableGeneratorNuclear__merged__type;
-
-export type FGBuildableGeneratorNuclear__merged__type =
 	common_base__FGBuildableGeneratorNuclear__type &
 		FGBuildableGeneratorFuel__base__type &
 		FGBuildableGeneratorNuclear__properties__type;

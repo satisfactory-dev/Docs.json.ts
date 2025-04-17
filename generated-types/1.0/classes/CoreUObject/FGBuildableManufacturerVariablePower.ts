@@ -17,9 +17,6 @@ export type FGBuildableManufacturerVariablePower__base__merged__type =
 		FGBuildableManufacturer__base__type;
 
 export type FGBuildableManufacturerVariablePower__HadronCollider__type =
-	FGBuildableManufacturerVariablePower__HadronCollider__merged__type;
-
-export type FGBuildableManufacturerVariablePower__HadronCollider__merged__type =
 	common_base__FGBuildableManufacturerVariablePower__HadronCollider__type &
 		FGBuildableManufacturerVariablePower__base__type;
 

@@ -5,9 +5,6 @@ import {common_base__FGBuildableSpaceElevator__type} from '../../../common/class
 import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableSpaceElevator__type =
-	FGBuildableSpaceElevator__merged__type;
-
-export type FGBuildableSpaceElevator__merged__type =
 	common_base__FGBuildableSpaceElevator__type &
 		FGBuildable__consumes_power_base__type;
 

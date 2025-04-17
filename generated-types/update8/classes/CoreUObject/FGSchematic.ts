@@ -9,9 +9,7 @@ import {
 
 import {NativeClass__type} from '../../../common/common/unassigned';
 
-export type FGSchematic__type = FGSchematic__base__type;
-
-export type FGSchematic__base__type =
+export type FGSchematic__type =
 	common_base__FGSchematic__base__type & {
 		mType:
 			| 'EST_Custom'
@@ -50,7 +48,7 @@ export type FGSchematic__mUnlocks_Class__type =
 
 export type FGSchematic__with_unlocks__type =
 	common_base__FGSchematic__with_unlocks__type &
-		FGSchematic__base__type;
+		FGSchematic__type;
 
 export type FGSchematic__NativeClass = NativeClass__type & {
 	Classes: [

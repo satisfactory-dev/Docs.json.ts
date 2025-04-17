@@ -5,9 +5,6 @@ import {common_base__FGBuildablePipeReservoir__type} from '../../../common/class
 import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildablePipeReservoir__type =
-	FGBuildablePipeReservoir__merged__type;
-
-export type FGBuildablePipeReservoir__merged__type =
 	common_base__FGBuildablePipeReservoir__type &
 		FGBuildable__pipeline_accessory__base__type;
 

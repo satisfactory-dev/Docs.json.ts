@@ -5,9 +5,6 @@ import {common_base__FGBuildablePillarLightweight__type} from '../../../common/c
 import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildablePillarLightweight__type =
-	FGBuildablePillarLightweight__merged__type;
-
-export type FGBuildablePillarLightweight__merged__type =
 	common_base__FGBuildablePillarLightweight__type &
 		FGBuildable__base__type;
 

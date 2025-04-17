@@ -4,9 +4,7 @@ import {common_base__FGBuildableWire__type} from '../../../common/classes/CoreUO
 
 import {NativeClass__type} from '../../../common/common/unassigned';
 
-export type FGBuildableWire__type = FGBuildableWire__merged__type;
-
-export type FGBuildableWire__merged__type =
+export type FGBuildableWire__type =
 	common_base__FGBuildableWire__type & FGBuildable__base__type;
 
 export type FGBuildableWire__NativeClass = NativeClass__type & {

@@ -233,9 +233,6 @@ export type FGBuildable__extractor_base__shared__merged__type =
 		FGBuildable__consumes_power_base__type;
 
 export type FGBuildable__occupied__final__type =
-	FGBuildable__occupied__merged__type;
-
-export type FGBuildable__occupied__merged__type =
 	common_base__FGBuildable__occupied__type &
 		FGBuildable__base__type;
 
@@ -257,15 +254,12 @@ export type FGBuildable__pipeline_flow_accessory__merged__type =
 		FGBuildable__pipeline_accessory__type;
 
 export type FGBuildable__pole__base__no_static__type =
-	FGBuildable__pole__base__no_static__merged__type;
-
-export type FGBuildable__pole__base__no_static__merged__type =
 	common_base__FGBuildable__pole__base__no_static__type &
 		FGBuildable__base__type;
 
 export type FGBuildable__pole__base__with_static__merged__type =
 	common_base__FGBuildable__pole__base__with_static__type &
-		FGBuildable__pole__base__no_static__merged__type;
+		FGBuildable__pole__base__no_static__type;
 
 export type FGBuildable__power_switch__base__type =
 	FGBuildable__power_switch__base__merged__type;
@@ -282,9 +276,7 @@ export type FGBuildable__splitter__base__merged__type =
 		FGBuildable__base__type &
 		FGBuildableAttachmentMergerSplitter__with_inventory_size__type;
 
-export type FGBuildable__tiered__type = FGBuildable__tiered__merged__type;
-
-export type FGBuildable__tiered__merged__type =
+export type FGBuildable__tiered__type =
 	common_base__FGBuildable__tiered__type &
 		FGBuildable__base__type;
 

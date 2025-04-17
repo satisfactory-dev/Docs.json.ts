@@ -30,9 +30,7 @@ export type FGWeapon__base__type = FGWeapon__base__merged__type;
 export type FGWeapon__base__merged__type =
 	common_base__FGWeapon__base__type & FGEquipment__base__type;
 
-export type FGWeapon__gun_base__type = FGWeapon__gun_base__merged__type;
-
-export type FGWeapon__gun_base__merged__type =
+export type FGWeapon__gun_base__type =
 	common_base__FGWeapon__gun_base__type &
 		FGWeapon__base__type &
 		FGWeapon__gun_base__properties__type;
@@ -54,9 +52,7 @@ export type FGWeapon__gun_base__properties__type = {
 	mSupressDryFireMontage: boolean__type;
 };
 
-export type FGWeapon__rebar_gun__type = FGWeapon__rebar_gun__merged__type;
-
-export type FGWeapon__rebar_gun__merged__type =
+export type FGWeapon__rebar_gun__type =
 	common_base__FGWeapon__rebar_gun__type &
 		FGWeapon__gun_base__type &
 		FGWeapon__rebar_gun__properties__type;
@@ -149,9 +145,7 @@ export type FGWeapon__rebar_gun__properties__type = {
 	};
 };
 
-export type FGWeapon__rifle__type = FGWeapon__rifle__merged__type;
-
-export type FGWeapon__rifle__merged__type =
+export type FGWeapon__rifle__type =
 	common_base__FGWeapon__rifle__type &
 		FGWeapon__gun_base__type &
 		FGWeapon__rifle__properties__type;

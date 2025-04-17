@@ -10,9 +10,6 @@ import {common_base__FGBuildableConveyorLift__type} from '../../../common/classe
 import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableConveyorLift__type =
-	FGBuildableConveyorLift__merged__type;
-
-export type FGBuildableConveyorLift__merged__type =
 	common_base__FGBuildableConveyorLift__type &
 		FGBuildableConveyorBelt__base__type &
 		FGBuildableConveyorLift__properties__type;

@@ -1,4 +1,4 @@
-import {FGBuildable__occupied__merged__type} from './FGBuildable';
+import {FGBuildable__occupied__final__type} from './FGBuildable';
 
 import {decimal_string__type} from '../../../common/common/scalar';
 
@@ -15,7 +15,7 @@ export type FGBuildableMAM__type = FGBuildableMAM__merged__type & {
 
 export type FGBuildableMAM__merged__type =
 	common_base__FGBuildableMAM__type &
-		FGBuildable__occupied__merged__type;
+		FGBuildable__occupied__final__type;
 
 export type FGBuildableMAM__NativeClass = NativeClass__type & {
 	Classes: [FGBuildableMAM__type];

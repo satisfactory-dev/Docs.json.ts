@@ -9,23 +9,14 @@ import {
 import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGAmmoTypeInstantHit__base__type =
-	FGAmmoTypeInstantHit__base__merged__type;
-
-export type FGAmmoTypeInstantHit__base__merged__type =
 	common_base__FGAmmoTypeInstantHit__base__type &
 		FGAmmoTypeProjectile__base__type;
 
 export type FGAmmoTypeInstantHit__chaos__type =
-	FGAmmoTypeInstantHit__chaos__merged__type;
-
-export type FGAmmoTypeInstantHit__chaos__merged__type =
 	common_base__FGAmmoTypeInstantHit__chaos__type &
 		FGAmmoTypeInstantHit__base__type;
 
 export type FGAmmoTypeInstantHit__standard__type =
-	FGAmmoTypeInstantHit__standard__merged__type;
-
-export type FGAmmoTypeInstantHit__standard__merged__type =
 	common_base__FGAmmoTypeInstantHit__standard__type &
 		FGAmmoTypeInstantHit__base__type;
 

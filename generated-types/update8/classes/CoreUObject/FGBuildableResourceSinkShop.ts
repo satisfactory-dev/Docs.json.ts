@@ -5,9 +5,6 @@ import {common_base__FGBuildableResourceSinkShop__type} from '../../../common/cl
 import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableResourceSinkShop__type =
-	FGBuildableResourceSinkShop__merged__type;
-
-export type FGBuildableResourceSinkShop__merged__type =
 	common_base__FGBuildableResourceSinkShop__type &
 		FGBuildable__consumes_power_base__type;
 

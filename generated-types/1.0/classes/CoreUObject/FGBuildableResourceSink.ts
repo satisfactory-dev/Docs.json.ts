@@ -10,9 +10,6 @@ import {common_base__FGBuildableResourceSink__type} from '../../../common/classe
 import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableResourceSink__type =
-	FGBuildableResourceSink__merged__type;
-
-export type FGBuildableResourceSink__merged__type =
 	common_base__FGBuildableResourceSink__type &
 		FGBuildable__consumes_power_base__type &
 		FGBuildableResourceSink__properties__type;

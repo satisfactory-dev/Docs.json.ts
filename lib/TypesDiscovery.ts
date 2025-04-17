@@ -51,6 +51,7 @@ export class TypesDiscovery
 	private discovery:Promise<{
 		discovered_types: local_ref<string>[],
 		missed_types: string[],
+		schema_$defs: string[],
 	}>|undefined;
 	private readonly candidates_discovery:[
 		CandidatesDiscovery,
@@ -90,6 +91,7 @@ export class TypesDiscovery
 				).map(local_ref).filter(
 					maybe => !discovered_types.has(maybe),
 				),
+				schema_$defs: Object.keys(schema.$defs),
 			});
 		}
 

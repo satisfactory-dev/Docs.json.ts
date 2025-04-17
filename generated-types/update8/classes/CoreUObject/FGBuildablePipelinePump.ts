@@ -8,16 +8,10 @@ import {
 import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildablePipelinePump__type =
-	FGBuildablePipelinePump__merged__type;
-
-export type FGBuildablePipelinePump__merged__type =
 	common_base__FGBuildablePipelinePump__type &
 		FGBuildable__pipeline_flow_accessory__type;
 
 export type FGBuildablePipelinePump__valve__type =
-	FGBuildablePipelinePump__valve__merged__type;
-
-export type FGBuildablePipelinePump__valve__merged__type =
 	common_base__FGBuildablePipelinePump__valve__type &
 		FGBuildable__pipeline_flow_accessory__type;
 

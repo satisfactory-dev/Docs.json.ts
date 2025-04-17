@@ -179,9 +179,7 @@ export type FGBuildable__extractor_base__shared__merged__type =
 	common_base__FGBuildable__extractor_base__shared__type &
 		FGBuildable__consumes_power_base__type;
 
-export type FGBuildable__occupied__type = FGBuildable__occupied__merged__type;
-
-export type FGBuildable__occupied__merged__type =
+export type FGBuildable__occupied__type =
 	common_base__FGBuildable__occupied__type &
 		FGBuildable__base__type;
 
@@ -219,9 +217,7 @@ export type FGBuildable__splitter__base__merged__type =
 	common_base__FGBuildable__splitter__base__type &
 		FGBuildable__base__type;
 
-export type FGBuildable__tiered__type = FGBuildable__tiered__merged__type;
-
-export type FGBuildable__tiered__merged__type =
+export type FGBuildable__tiered__type =
 	common_base__FGBuildable__tiered__type &
 		FGBuildable__base__type;
 
