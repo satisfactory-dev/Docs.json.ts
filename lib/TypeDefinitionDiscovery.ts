@@ -681,6 +681,13 @@ export class TypeDefinitionDiscovery
 					}
 					result.found_classes.push(item);
 				} else {
+					throw new NoMatchError(
+						{
+							errors: native_class.errors,
+							item,
+						},
+						'Item not a native class!',
+					);
 					result.missing_classes.push(item);
 				}
 			}

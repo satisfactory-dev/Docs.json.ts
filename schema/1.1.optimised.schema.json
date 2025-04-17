@@ -2565,7 +2565,9 @@
 					"type": "array",
 					"minItems": 1,
 					"items": {
-						"$ref": "1.0.schema.json#/$defs/FGCustomizationRecipe"
+						"type": "object",
+						"$ref": "1.0.schema.json#/$defs/FGCustomizationRecipe",
+						"unevaluatedProperties": false
 					}
 				}
 			}

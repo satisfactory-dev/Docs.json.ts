@@ -6907,7 +6907,6 @@
 		"1.0-base--FGCustomizationRecipe": {
 			"type": "object",
 			"$ref": "#/$defs/1.0-base--FGCustomizationRecipe--FGRecipe",
-			"unevaluatedProperties": false,
 			"properties": {
 				"mDisplayName": {
 					"type": "string",
@@ -9507,7 +9506,9 @@
 					"type": "array",
 					"minItems": 1,
 					"items": {
-						"$ref": "#/$defs/1.0-base--FGCustomizationRecipe"
+						"type": "object",
+						"$ref": "#/$defs/1.0-base--FGCustomizationRecipe",
+						"unevaluatedProperties": false
 					}
 				}
 			}

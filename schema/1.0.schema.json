@@ -7297,7 +7297,6 @@
 		"FGCustomizationRecipe": {
 			"type": "object",
 			"$ref": "#/$defs/FGCustomizationRecipe--FGRecipe",
-			"unevaluatedProperties": false,
 			"properties": {
 				"mDisplayName": {
 					"type": "string",
