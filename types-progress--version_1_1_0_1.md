@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (599 of 599)
+100.00% Complete (605 of 605)
 
 ## Basic Types
 
@@ -555,10 +555,22 @@
 
 -   [x] FGBuildableConveyorLift--properties
 
+## FGBuildableConveyorMonitor
+
+-   [x] FGBuildableConveyorMonitor--properties
+
 ## FGBuildableDoor
 
 -   [x] FGBuildableDoor--automated
 -   [x] FGBuildableDoor--base
+
+## FGBuildableElevator
+
+-   [x] FGBuildableElevator--properties
+
+## FGBuildableElevatorFloorStop
+
+-   [x] FGBuildableElevatorFloorStop--properties
 
 ## FGBuildableFactory
 
@@ -585,6 +597,10 @@
 -   [x] FGBuildableManufacturerVariablePower--HadronCollider
 -   [x] FGBuildableManufacturerVariablePower--QuantumEncoder
 -   [x] FGBuildableManufacturerVariablePower--QuantumEncoder--merged
+
+## FGBuildableMergerPriority
+
+-   [x] FGBuildableMergerPriority--properties
 
 ## FGBuildablePipeHyperJunction
 
@@ -637,6 +653,10 @@
 
 -   [x] FGBuildableSplitterSmart--merged
 
+## FGBuildableStackableShelf
+
+-   [x] FGBuildableStackableShelf--properties
+
 ## FGBuildableTrainPlatformCargo
 
 -   [x] FGBuildableTrainPlatformCargo--merged
@@ -685,6 +705,7 @@
 ## has
 
 -   [x] has--mAttachedThroughputMonitors
+-   [x] has--mFGTextRenderers
 -   [x] has--mLastEditedBy
 -   [x] has--mOnLastEditedByChanged
 -   [x] has--mSavedDirections

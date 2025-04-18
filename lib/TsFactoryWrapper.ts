@@ -54,6 +54,10 @@ export function adjust_class_name(class_name: string): string {
 		return 'Docs_class';
 	}
 
+	if (class_name.match(/^\d+\.\d+-/)) {
+		class_name = `v${class_name}`;
+	}
+
 	return class_name.replace(/[^A-Za-z_\d ]/g, '_');
 }
 

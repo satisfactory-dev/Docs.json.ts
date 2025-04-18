@@ -8766,6 +8766,11 @@
 					"$ref": "#/$defs/has--mOnLastEditedByChanged"
 				},
 				{
+					"$ref": "#/$defs/has--mFGTextRenderers"
+				}
+			]
+		},
+		"has--mFGTextRenderers": {
 					"type": "object",
 					"required": [
 						"mFGTextRenderers"
@@ -8776,8 +8781,6 @@
 							"const": ""
 						}
 					}
-				}
-			]
 		},
 		"FGBuildableMergerPriority": {
 			"allOf": [
@@ -8791,6 +8794,11 @@
 					"$ref": "#/$defs/has--mSavedDirections"
 				},
 				{
+					"$ref": "#/$defs/FGBuildableMergerPriority--properties"
+				}
+			]
+		},
+		"FGBuildableMergerPriority--properties": {
 					"type": "object",
 					"required": [
 						"mLocalCustomizationData",
@@ -8834,8 +8842,6 @@
 							}
 						}
 					}
-				}
-			]
 		},
 		"FGBuildableRadarTower": {
 			"allOf": [
@@ -8926,6 +8932,11 @@
 					"$ref": "#/$defs/FGBuildable--base"
 				},
 				{
+					"$ref": "#/$defs/FGBuildableStackableShelf--properties"
+				}
+			]
+		},
+		"FGBuildableStackableShelf--properties": {
 					"type": "object",
 					"required": [
 						"mSize"
@@ -8935,8 +8946,6 @@
 							"$ref": "common.schema.json#/$defs/xyz"
 						}
 					}
-				}
-			]
 		},
 		"mElevatorState": {
 			"type": "string",
@@ -8948,6 +8957,11 @@
 					"$ref": "#/$defs/FGBuildable--base"
 				},
 				{
+					"$ref": "#/$defs/FGBuildableElevatorFloorStop--properties"
+				}
+			]
+		},
+		"FGBuildableElevatorFloorStop--properties": {
 					"type": "object",
 					"required": [
 						"Timeline_Offset_942DA00C47315AC741095991E04356D7",
@@ -9021,8 +9035,6 @@
 							}
 						}
 					}
-				}
-			]
 		},
 		"FGBuildableElevator": {
 			"allOf": [
@@ -9033,6 +9045,11 @@
 					"$ref": "#/$defs/FGBuildable--base"
 				},
 				{
+					"$ref": "#/$defs/FGBuildableElevator--properties"
+				}
+			]
+		},
+		"FGBuildableElevator--properties": {
 					"type": "object",
 					"required": [
 						"mStopAtFloorTimerHandle",
@@ -9115,8 +9132,6 @@
 							"$ref": "#/$defs/mElevatorState"
 						}
 					}
-				}
-			]
 		},
 		"FGBuildableLightsControlPanel": {
 			"allOf": [
@@ -9157,6 +9172,11 @@
 					"$ref": "#/$defs/FGBuildable--base"
 				},
 				{
+					"$ref": "#/$defs/FGBuildableConveyorMonitor--properties"
+				}
+			]
+		},
+		"FGBuildableConveyorMonitor--properties": {
 					"type": "object",
 					"required": [
 						"WidgetClass",
@@ -9199,8 +9219,6 @@
 							"$ref": "common.schema.json#/$defs/decimal-string"
 						}
 					}
-				}
-			]
 		},
 		"FGBuildableFactoryBuilding": {
 			"allOf": [
