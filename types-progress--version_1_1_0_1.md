@@ -1,6 +1,6 @@
 # Types Progress
 
-100.00% Complete (605 of 605)
+100.00% Complete (606 of 606)
 
 ## Basic Types
 
@@ -562,7 +562,8 @@
 ## FGBuildableDoor
 
 -   [x] FGBuildableDoor--automated
--   [x] FGBuildableDoor--base
+-   [x] FGBuildableDoor--automated--with--bigOverlapList_0
+-   [x] FGBuildableDoor--properties
 
 ## FGBuildableElevator
 

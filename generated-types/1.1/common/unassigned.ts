@@ -2,6 +2,8 @@ import {UnrealEngineString, StringStartsWith} from '../utils/validators';
 
 import {FGBuildable__base__type} from '../classes/CoreUObject/FGBuildable';
 
+import {FGBuildableDoor__automated__type} from '../classes/CoreUObject/FGBuildableDoor';
+
 import {
 	boolean__type,
 	decimal_string__type,
@@ -3372,6 +3374,11 @@ export type FGBuildableBlueprintDesigner__mk3__type =
 
 export type FGBuildableBlueprintDesigner__mk3__merged__type =
 	v1_0_base__FGBuildableBlueprintDesigner__mk3__type & FGBuildable__base__type;
+
+export type FGBuildableDoor__automated__with__bigOverlapList_0__type =
+	FGBuildableDoor__automated__type & {
+		bigOverlapList_0: '';
+	};
 
 export type FGBuildableResourceExtractor__miner_mk1__type =
 	v1_0_base__FGBuildableResourceExtractor__miner_mk1__type &

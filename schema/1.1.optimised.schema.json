@@ -1669,14 +1669,12 @@
 				}
 			]
 		},
-		"FGBuildableDoor--base": {
+		"FGBuildableDoor--properties": {
 			"type": "object",
-			"$ref": "1.0.schema.json#/$defs/FGBuildableDoor--base",
+			"required": [
+				"IsDoorOpen"
+			],
 			"properties": {
-				"bigOverlapList_0": {
-					"type": "string",
-					"const": ""
-				},
 				"IsDoorOpen": {
 					"$ref": "common.schema.json#/$defs/boolean"
 				}
@@ -1688,7 +1686,10 @@
 					"$ref": "common.schema.json#/$defs/common-base--FGBuildableDoor--base"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableDoor--base"
+					"$ref": "1.0.schema.json#/$defs/FGBuildableDoor--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableDoor--properties"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--base"
@@ -1701,12 +1702,25 @@
 					"$ref": "common.schema.json#/$defs/common-base--FGBuildableDoor--automated"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableDoor--base"
+					"$ref": "1.0.schema.json#/$defs/FGBuildableDoor--base"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--base"
 				}
 			]
+		},
+		"FGBuildableDoor--automated--with--bigOverlapList_0": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableDoor--automated",
+			"required": [
+				"bigOverlapList_0"
+			],
+			"properties": {
+				"bigOverlapList_0": {
+					"type": "string",
+					"const": ""
+				}
+			}
 		},
 		"FGBuildableCornerWall": {
 			"allOf": [
@@ -3881,21 +3895,61 @@
 			"properties": {
 				"Classes": {
 					"type": "array",
-					"minItems": 1,
-					"items": {
-						"oneOf": [
-							{
-								"type": "object",
-								"$ref": "#/$defs/FGBuildableDoor",
-								"unevaluatedProperties": false
-							},
-							{
-								"type": "object",
-								"$ref": "#/$defs/FGBuildableDoor--automated",
-								"unevaluatedProperties": false
-							}
+					"minItems": 10,
+					"maxItems": 10,
+					"items": false,
+					"prefixItems": [
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGBuildableDoor--automated",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGBuildableDoor--automated--with--bigOverlapList_0",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGBuildableDoor--automated--with--bigOverlapList_0",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGBuildableDoor",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGBuildableDoor",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGBuildableDoor",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGBuildableDoor",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGBuildableDoor",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGBuildableDoor",
+							"unevaluatedProperties": false
+						},
+						{
+							"type": "object",
+							"$ref": "#/$defs/FGBuildableDoor--automated",
+							"unevaluatedProperties": false
+						}
 						]
-					}
 				}
 			}
 		},
