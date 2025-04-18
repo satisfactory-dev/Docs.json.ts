@@ -1215,10 +1215,7 @@
 		},
 		"FGBuildableConveyorLift--properties": {
 			"type": "object",
-			"required": [
-				"mOutputMeshDisplayMode",
-				"mInputMeshDisplayMode"
-			],
+			"required": ["mOutputMeshDisplayMode", "mInputMeshDisplayMode"],
 			"properties": {
 				"mOutputMeshDisplayMode": {
 					"$ref": "#/$defs/mInputOutputMeshDisplayMode"
@@ -1343,9 +1340,7 @@
 		"FGBuildableRailroadSignal": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableRailroadSignal--merged",
-			"required": [
-				"mIsLeftHanded"
-			],
+			"required": ["mIsLeftHanded"],
 			"properties": {
 				"mIsLeftHanded": {
 					"$ref": "common.schema.json#/$defs/boolean"
@@ -1355,9 +1350,7 @@
 		"FGBuildableRailroadAttachment": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--base",
-			"required": [
-				"mIsEndStop"
-			],
+			"required": ["mIsEndStop"],
 			"properties": {
 				"mIsEndStop": {
 					"$ref": "common.schema.json#/$defs/boolean"
@@ -1405,9 +1398,7 @@
 		"FGBuildableRailroadStation": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableRailroadStation--merged",
-			"required": [
-				"mStationName"
-			],
+			"required": ["mStationName"],
 			"properties": {
 				"mStationName": {
 					"type": "string",
@@ -1500,7 +1491,7 @@
 				}
 			]
 		},
-		"FGBuildablePowerStorage":{
+		"FGBuildablePowerStorage": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildablePowerStorage--merged",
 			"required": [
@@ -1539,10 +1530,7 @@
 		"FGChainsaw": {
 			"type": "object",
 			"$ref": "1.0.schema.json#/$defs/FGChainsaw",
-			"required": [
-				"CurrentState",
-				"StateChanged"
-			],
+			"required": ["CurrentState", "StateChanged"],
 			"properties": {
 				"CurrentState": {
 					"type": "string",
@@ -1565,9 +1553,7 @@
 		},
 		"has--mSavedDirections": {
 			"type": "object",
-			"required": [
-				"mSavedDirections"
-			],
+			"required": ["mSavedDirections"],
 			"properties": {
 				"mSavedDirections": {
 					"type": "string",
@@ -1591,9 +1577,7 @@
 		"FGBuildableAttachmentMerger": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableAttachmentMerger--merged",
-			"required": [
-				"mHologramOverrides"
-			],
+			"required": ["mHologramOverrides"],
 			"properties": {
 				"mHologramOverrides": {
 					"type": "string",
@@ -1628,9 +1612,7 @@
 		"FGBuildableAttachmentSplitter": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableAttachmentSplitter--merged",
-			"required": [
-				"mHologramOverrides"
-			],
+			"required": ["mHologramOverrides"],
 			"properties": {
 				"mHologramOverrides": {
 					"type": "string",
@@ -1671,9 +1653,7 @@
 		},
 		"FGBuildableDoor--properties": {
 			"type": "object",
-			"required": [
-				"IsDoorOpen"
-			],
+			"required": ["IsDoorOpen"],
 			"properties": {
 				"IsDoorOpen": {
 					"$ref": "common.schema.json#/$defs/boolean"
@@ -1712,9 +1692,7 @@
 		"FGBuildableDoor--automated--with--bigOverlapList_0": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableDoor--automated",
-			"required": [
-				"bigOverlapList_0"
-			],
+			"required": ["bigOverlapList_0"],
 			"properties": {
 				"bigOverlapList_0": {
 					"type": "string",
@@ -1778,9 +1756,7 @@
 		"FGBuildableSplitterSmart": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableSplitterSmart--merged",
-			"required": [
-				"mHologramOverrides"
-			],
+			"required": ["mHologramOverrides"],
 			"properties": {
 				"mHologramOverrides": {
 					"type": "string",
@@ -1805,9 +1781,7 @@
 		"has--mOnLastEditedByChanged": {
 			"type": "object",
 			"$ref": "#/$defs/has--mLastEditedBy",
-			"required": [
-				"mOnLastEditedByChanged"
-			],
+			"required": ["mOnLastEditedByChanged"],
 			"properties": {
 				"mOnLastEditedByChanged": {
 					"$ref": "common.schema.json#/$defs/empty-object"
@@ -1840,9 +1814,7 @@
 				},
 				{
 					"type": "object",
-					"required": [
-						"mFGTextRenderers"
-					],
+					"required": ["mFGTextRenderers"],
 					"properties": {
 						"mFGTextRenderers": {
 							"type": "string",
@@ -2000,9 +1972,7 @@
 				},
 				{
 					"type": "object",
-					"required": [
-						"mSize"
-					],
+					"required": ["mSize"],
 					"properties": {
 						"mSize": {
 							"$ref": "common.schema.json#/$defs/xyz"
@@ -2075,11 +2045,7 @@
 							"type": "string",
 							"minLength": 1,
 							"typed_string": {
-								"required": [
-									"IconId",
-									"IconColor",
-									"Height"
-								],
+								"required": ["IconId", "IconColor", "Height"],
 								"properties": {
 									"IconId": {
 										"$ref": "common.schema.json#/$defs/integer-string--signed"
@@ -3949,7 +3915,7 @@
 							"$ref": "#/$defs/FGBuildableDoor--automated",
 							"unevaluatedProperties": false
 						}
-						]
+					]
 				}
 			}
 		},

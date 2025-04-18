@@ -4234,7 +4234,6 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
-
 		},
 		"FGBuildablePipeline": {
 			"allOf": [

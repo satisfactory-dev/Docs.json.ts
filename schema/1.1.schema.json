@@ -3981,7 +3981,6 @@
 					"$ref": "common.schema.json#/$defs/decimal-string"
 				}
 			}
-
 		},
 		"1.0-base--FGBuildable--pipeline-accessory--base": {
 			"allOf": [
@@ -8156,10 +8155,7 @@
 		},
 		"FGBuildableConveyorLift--properties": {
 			"type": "object",
-			"required": [
-				"mOutputMeshDisplayMode",
-				"mInputMeshDisplayMode"
-			],
+			"required": ["mOutputMeshDisplayMode", "mInputMeshDisplayMode"],
 			"properties": {
 				"mOutputMeshDisplayMode": {
 					"$ref": "#/$defs/mInputOutputMeshDisplayMode"
@@ -8284,9 +8280,7 @@
 		"FGBuildableRailroadSignal": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableRailroadSignal--merged",
-			"required": [
-				"mIsLeftHanded"
-			],
+			"required": ["mIsLeftHanded"],
 			"properties": {
 				"mIsLeftHanded": {
 					"$ref": "common.schema.json#/$defs/boolean"
@@ -8296,9 +8290,7 @@
 		"FGBuildableRailroadAttachment": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--base",
-			"required": [
-				"mIsEndStop"
-			],
+			"required": ["mIsEndStop"],
 			"properties": {
 				"mIsEndStop": {
 					"$ref": "common.schema.json#/$defs/boolean"
@@ -8346,9 +8338,7 @@
 		"FGBuildableRailroadStation": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableRailroadStation--merged",
-			"required": [
-				"mStationName"
-			],
+			"required": ["mStationName"],
 			"properties": {
 				"mStationName": {
 					"type": "string",
@@ -8441,7 +8431,7 @@
 				}
 			]
 		},
-		"FGBuildablePowerStorage":{
+		"FGBuildablePowerStorage": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildablePowerStorage--merged",
 			"required": [
@@ -8480,10 +8470,7 @@
 		"FGChainsaw": {
 			"type": "object",
 			"$ref": "#/$defs/1.0-base--FGChainsaw",
-			"required": [
-				"CurrentState",
-				"StateChanged"
-			],
+			"required": ["CurrentState", "StateChanged"],
 			"properties": {
 				"CurrentState": {
 					"type": "string",
@@ -8506,9 +8493,7 @@
 		},
 		"has--mSavedDirections": {
 			"type": "object",
-			"required": [
-				"mSavedDirections"
-			],
+			"required": ["mSavedDirections"],
 			"properties": {
 				"mSavedDirections": {
 					"type": "string",
@@ -8532,9 +8517,7 @@
 		"FGBuildableAttachmentMerger": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableAttachmentMerger--merged",
-			"required": [
-				"mHologramOverrides"
-			],
+			"required": ["mHologramOverrides"],
 			"properties": {
 				"mHologramOverrides": {
 					"type": "string",
@@ -8569,9 +8552,7 @@
 		"FGBuildableAttachmentSplitter": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableAttachmentSplitter--merged",
-			"required": [
-				"mHologramOverrides"
-			],
+			"required": ["mHologramOverrides"],
 			"properties": {
 				"mHologramOverrides": {
 					"type": "string",
@@ -8612,9 +8593,7 @@
 		},
 		"FGBuildableDoor--properties": {
 			"type": "object",
-			"required": [
-				"IsDoorOpen"
-			],
+			"required": ["IsDoorOpen"],
 			"properties": {
 				"IsDoorOpen": {
 					"$ref": "common.schema.json#/$defs/boolean"
@@ -8653,9 +8632,7 @@
 		"FGBuildableDoor--automated--with--bigOverlapList_0": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableDoor--automated",
-			"required": [
-				"bigOverlapList_0"
-			],
+			"required": ["bigOverlapList_0"],
 			"properties": {
 				"bigOverlapList_0": {
 					"type": "string",
@@ -8719,9 +8696,7 @@
 		"FGBuildableSplitterSmart": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableSplitterSmart--merged",
-			"required": [
-				"mHologramOverrides"
-			],
+			"required": ["mHologramOverrides"],
 			"properties": {
 				"mHologramOverrides": {
 					"type": "string",
@@ -8746,9 +8721,7 @@
 		"has--mOnLastEditedByChanged": {
 			"type": "object",
 			"$ref": "#/$defs/has--mLastEditedBy",
-			"required": [
-				"mOnLastEditedByChanged"
-			],
+			"required": ["mOnLastEditedByChanged"],
 			"properties": {
 				"mOnLastEditedByChanged": {
 					"$ref": "common.schema.json#/$defs/empty-object"
@@ -8785,16 +8758,14 @@
 			]
 		},
 		"has--mFGTextRenderers": {
-					"type": "object",
-					"required": [
-						"mFGTextRenderers"
-					],
-					"properties": {
-						"mFGTextRenderers": {
-							"type": "string",
-							"const": ""
-						}
-					}
+			"type": "object",
+			"required": ["mFGTextRenderers"],
+			"properties": {
+				"mFGTextRenderers": {
+					"type": "string",
+					"const": ""
+				}
+			}
 		},
 		"FGBuildableMergerPriority": {
 			"allOf": [
@@ -8813,49 +8784,49 @@
 			]
 		},
 		"FGBuildableMergerPriority--properties": {
-					"type": "object",
-					"required": [
-						"mLocalCustomizationData",
-						"OnInputPrioritiesChanged",
-						"mInputPriorities",
-						"mCurrentInputIndices",
-						"mCurrentInputPriorityGroupIndex",
-						"mHologramOverrides"
-					],
-					"properties": {
-						"mLocalCustomizationData": {
-							"$ref": "common.schema.json#/$defs/boolean"
-						},
-						"OnInputPrioritiesChanged": {
-							"$ref": "common.schema.json#/$defs/empty-object"
-						},
-						"mInputPriorities": {
-							"type": "string",
-							"const": ""
-						},
-						"mCurrentInputIndices": {
-							"type": "string",
-							"const": ""
-						},
-						"mCurrentInputPriorityGroupIndex": {
-							"$ref": "common.schema.json#/$defs/integer-string"
-						},
-						"mHologramOverrides": {
+			"type": "object",
+			"required": [
+				"mLocalCustomizationData",
+				"OnInputPrioritiesChanged",
+				"mInputPriorities",
+				"mCurrentInputIndices",
+				"mCurrentInputPriorityGroupIndex",
+				"mHologramOverrides"
+			],
+			"properties": {
+				"mLocalCustomizationData": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"OnInputPrioritiesChanged": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mInputPriorities": {
+					"type": "string",
+					"const": ""
+				},
+				"mCurrentInputIndices": {
+					"type": "string",
+					"const": ""
+				},
+				"mCurrentInputPriorityGroupIndex": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				},
+				"mHologramOverrides": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"minItems": 1,
+						"items": {
 							"type": "string",
 							"minLength": 1,
-							"typed_string": {
-								"minItems": 1,
-								"items": {
-									"type": "string",
-									"minLength": 1,
-									"UnrealEngineString": {
-										"left": "/Script/FactoryGame.FGHologramOverride_ConveyorAttachment_FloorToLift",
-										"right": "/Game/FactoryGame/Buildable/Factory/CA_MergerPriority/Build_ConveyorAttachmentMergerPriority.Default__Build_ConveyorAttachmentMergerPriority_C:FGHologramOverride_ConveyorAttachment_FloorToLift_0"
-									}
-								}
+							"UnrealEngineString": {
+								"left": "/Script/FactoryGame.FGHologramOverride_ConveyorAttachment_FloorToLift",
+								"right": "/Game/FactoryGame/Buildable/Factory/CA_MergerPriority/Build_ConveyorAttachmentMergerPriority.Default__Build_ConveyorAttachmentMergerPriority_C:FGHologramOverride_ConveyorAttachment_FloorToLift_0"
 							}
 						}
 					}
+				}
+			}
 		},
 		"FGBuildableRadarTower": {
 			"allOf": [
@@ -8951,15 +8922,13 @@
 			]
 		},
 		"FGBuildableStackableShelf--properties": {
-					"type": "object",
-					"required": [
-						"mSize"
-					],
-					"properties": {
-						"mSize": {
-							"$ref": "common.schema.json#/$defs/xyz"
-						}
-					}
+			"type": "object",
+			"required": ["mSize"],
+			"properties": {
+				"mSize": {
+					"$ref": "common.schema.json#/$defs/xyz"
+				}
+			}
 		},
 		"mElevatorState": {
 			"type": "string",
@@ -8976,79 +8945,75 @@
 			]
 		},
 		"FGBuildableElevatorFloorStop--properties": {
-					"type": "object",
-					"required": [
-						"Timeline_Offset_942DA00C47315AC741095991E04356D7",
-						"Timeline__Direction_942DA00C47315AC741095991E04356D7",
-						"DoorStartTime",
-						"mElevatorDataStruct",
-						"bIsSignificant",
-						"mSignificanceRange",
-						"mFloorRelevantElevatorState",
-						"mCachedQueuedStatus",
-						"mCachedFloorStopInfo"
-					],
-					"properties": {
-						"Timeline_Offset_942DA00C47315AC741095991E04356D7": {
-							"$ref": "common.schema.json#/$defs/xyz"
-						},
-						"Timeline__Direction_942DA00C47315AC741095991E04356D7": {
-							"type": "string",
-							"const": "Forward"
-						},
-						"DoorStartTime": {
-							"$ref": "common.schema.json#/$defs/decimal-string"
-						},
-						"mElevatorDataStruct": {
-							"type": "string",
-							"minLength": 1,
-							"typed_string": {
-								"required": [
-									"FloorColor_11_CD9C84CB45D5EE423EB254803463E6C9"
-								],
-								"properties": {
-									"FloorColor_11_CD9C84CB45D5EE423EB254803463E6C9": {
-										"$ref": "common.schema.json#/$defs/color-decimal"
-									}
-								}
-							}
-						},
-						"bIsSignificant": {
-							"$ref": "common.schema.json#/$defs/boolean"
-						},
-						"mSignificanceRange": {
-							"$ref": "common.schema.json#/$defs/decimal-string"
-						},
-						"mFloorRelevantElevatorState": {
-							"$ref": "#/$defs/mElevatorState"
-						},
-						"mCachedQueuedStatus": {
-							"type": "string",
-							"const": "EEFSQS_None"
-						},
-						"mCachedFloorStopInfo": {
-							"type": "string",
-							"minLength": 1,
-							"typed_string": {
-								"required": [
-									"IconId",
-									"IconColor",
-									"Height"
-								],
-								"properties": {
-									"IconId": {
-										"$ref": "common.schema.json#/$defs/integer-string--signed"
-									},
-									"IconColor": {
-										"$ref": "common.schema.json#/$defs/color-decimal"
-									},
-									"Height": {
-										"$ref": "common.schema.json#/$defs/integer-string--signed"
-									}
-								}
+			"type": "object",
+			"required": [
+				"Timeline_Offset_942DA00C47315AC741095991E04356D7",
+				"Timeline__Direction_942DA00C47315AC741095991E04356D7",
+				"DoorStartTime",
+				"mElevatorDataStruct",
+				"bIsSignificant",
+				"mSignificanceRange",
+				"mFloorRelevantElevatorState",
+				"mCachedQueuedStatus",
+				"mCachedFloorStopInfo"
+			],
+			"properties": {
+				"Timeline_Offset_942DA00C47315AC741095991E04356D7": {
+					"$ref": "common.schema.json#/$defs/xyz"
+				},
+				"Timeline__Direction_942DA00C47315AC741095991E04356D7": {
+					"type": "string",
+					"const": "Forward"
+				},
+				"DoorStartTime": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mElevatorDataStruct": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": [
+							"FloorColor_11_CD9C84CB45D5EE423EB254803463E6C9"
+						],
+						"properties": {
+							"FloorColor_11_CD9C84CB45D5EE423EB254803463E6C9": {
+								"$ref": "common.schema.json#/$defs/color-decimal"
 							}
 						}
 					}
+				},
+				"bIsSignificant": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mSignificanceRange": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mFloorRelevantElevatorState": {
+					"$ref": "#/$defs/mElevatorState"
+				},
+				"mCachedQueuedStatus": {
+					"type": "string",
+					"const": "EEFSQS_None"
+				},
+				"mCachedFloorStopInfo": {
+					"type": "string",
+					"minLength": 1,
+					"typed_string": {
+						"required": ["IconId", "IconColor", "Height"],
+						"properties": {
+							"IconId": {
+								"$ref": "common.schema.json#/$defs/integer-string--signed"
+							},
+							"IconColor": {
+								"$ref": "common.schema.json#/$defs/color-decimal"
+							},
+							"Height": {
+								"$ref": "common.schema.json#/$defs/integer-string--signed"
+							}
+						}
+					}
+				}
+			}
 		},
 		"FGBuildableElevator": {
 			"allOf": [
@@ -9064,88 +9029,88 @@
 			]
 		},
 		"FGBuildableElevator--properties": {
-					"type": "object",
-					"required": [
-						"mStopAtFloorTimerHandle",
-						"mPowerOutPauseTimerHandle",
-						"mSpeed",
-						"mHeight",
-						"mLockedMovementDirection",
-						"mFloorStopInfos",
-						"mQueuedStops",
-						"mQueuedStopIndexes",
-						"mCharactersInElevator",
-						"mHeightOfCabin",
-						"mSongID",
-						"mDurationToOpenDoors",
-						"mDurationToWaitAtStop",
-						"mDurationToCloseDoors",
-						"mDurationPauseBeforeMove",
-						"mDurationPausePowerOutage",
-						"mDurationPauseBeforeDoorOpen",
-						"mElevatorState"
-					],
-					"properties": {
-						"mStopAtFloorTimerHandle": {
-							"$ref": "common.schema.json#/$defs/empty-object"
-						},
-						"mPowerOutPauseTimerHandle": {
-							"$ref": "common.schema.json#/$defs/empty-object"
-						},
-						"mSpeed": {
-							"$ref": "common.schema.json#/$defs/decimal-string"
-						},
-						"mHeight": {
-							"$ref": "common.schema.json#/$defs/decimal-string"
-						},
-						"mLockedMovementDirection": {
-							"type": "string",
-							"const": "EED_Up"
-						},
-						"mFloorStopInfos": {
-							"type": "string",
-							"const": ""
-						},
-						"mQueuedStops": {
-							"type": "string",
-							"const": ""
-						},
-						"mQueuedStopIndexes": {
-							"type": "string",
-							"const": ""
-						},
-						"mCharactersInElevator": {
-							"type": "string",
-							"const": ""
-						},
-						"mHeightOfCabin": {
-							"$ref": "common.schema.json#/$defs/decimal-string"
-						},
-						"mSongID": {
-							"$ref": "common.schema.json#/$defs/integer-string"
-						},
-						"mDurationToOpenDoors": {
-							"$ref": "common.schema.json#/$defs/decimal-string"
-						},
-						"mDurationToWaitAtStop": {
-							"$ref": "common.schema.json#/$defs/decimal-string"
-						},
-						"mDurationToCloseDoors": {
-							"$ref": "common.schema.json#/$defs/decimal-string"
-						},
-						"mDurationPauseBeforeMove": {
-							"$ref": "common.schema.json#/$defs/decimal-string"
-						},
-						"mDurationPausePowerOutage": {
-							"$ref": "common.schema.json#/$defs/decimal-string"
-						},
-						"mDurationPauseBeforeDoorOpen": {
-							"$ref": "common.schema.json#/$defs/decimal-string"
-						},
-						"mElevatorState": {
-							"$ref": "#/$defs/mElevatorState"
-						}
-					}
+			"type": "object",
+			"required": [
+				"mStopAtFloorTimerHandle",
+				"mPowerOutPauseTimerHandle",
+				"mSpeed",
+				"mHeight",
+				"mLockedMovementDirection",
+				"mFloorStopInfos",
+				"mQueuedStops",
+				"mQueuedStopIndexes",
+				"mCharactersInElevator",
+				"mHeightOfCabin",
+				"mSongID",
+				"mDurationToOpenDoors",
+				"mDurationToWaitAtStop",
+				"mDurationToCloseDoors",
+				"mDurationPauseBeforeMove",
+				"mDurationPausePowerOutage",
+				"mDurationPauseBeforeDoorOpen",
+				"mElevatorState"
+			],
+			"properties": {
+				"mStopAtFloorTimerHandle": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mPowerOutPauseTimerHandle": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mSpeed": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mHeight": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mLockedMovementDirection": {
+					"type": "string",
+					"const": "EED_Up"
+				},
+				"mFloorStopInfos": {
+					"type": "string",
+					"const": ""
+				},
+				"mQueuedStops": {
+					"type": "string",
+					"const": ""
+				},
+				"mQueuedStopIndexes": {
+					"type": "string",
+					"const": ""
+				},
+				"mCharactersInElevator": {
+					"type": "string",
+					"const": ""
+				},
+				"mHeightOfCabin": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mSongID": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				},
+				"mDurationToOpenDoors": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mDurationToWaitAtStop": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mDurationToCloseDoors": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mDurationPauseBeforeMove": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mDurationPausePowerOutage": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mDurationPauseBeforeDoorOpen": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mElevatorState": {
+					"$ref": "#/$defs/mElevatorState"
+				}
+			}
 		},
 		"FGBuildableLightsControlPanel": {
 			"allOf": [
@@ -9191,48 +9156,48 @@
 			]
 		},
 		"FGBuildableConveyorMonitor--properties": {
-					"type": "object",
-					"required": [
-						"WidgetClass",
-						"OnAverageDataUpdatedDelegate",
-						"mIsSignificant",
-						"mOffsetAlongConveyor",
-						"mCalculatedItemsPerMinute",
-						"mTotalItems",
-						"mTotalTime",
-						"mConfidence",
-						"mSignificanceRange"
-					],
-					"properties": {
-						"WidgetClass": {
-							"type": "string",
-							"const": "/Game/FactoryGame/Buildable/Factory/ConveyorMonitor/BPW_ConveyorMonitorDisplay.BPW_ConveyorMonitorDisplay_C"
-						},
-						"OnAverageDataUpdatedDelegate": {
-							"$ref": "common.schema.json#/$defs/empty-object"
-						},
-						"mIsSignificant": {
-							"$ref": "common.schema.json#/$defs/boolean"
-						},
-						"mOffsetAlongConveyor": {
-							"$ref": "common.schema.json#/$defs/decimal-string--signed"
-						},
-						"mCalculatedItemsPerMinute": {
-							"$ref": "common.schema.json#/$defs/integer-string--signed"
-						},
-						"mTotalItems": {
-							"$ref": "common.schema.json#/$defs/integer-string"
-						},
-						"mTotalTime": {
-							"$ref": "common.schema.json#/$defs/decimal-string"
-						},
-						"mConfidence": {
-							"$ref": "common.schema.json#/$defs/decimal-string"
-						},
-						"mSignificanceRange": {
-							"$ref": "common.schema.json#/$defs/decimal-string"
-						}
-					}
+			"type": "object",
+			"required": [
+				"WidgetClass",
+				"OnAverageDataUpdatedDelegate",
+				"mIsSignificant",
+				"mOffsetAlongConveyor",
+				"mCalculatedItemsPerMinute",
+				"mTotalItems",
+				"mTotalTime",
+				"mConfidence",
+				"mSignificanceRange"
+			],
+			"properties": {
+				"WidgetClass": {
+					"type": "string",
+					"const": "/Game/FactoryGame/Buildable/Factory/ConveyorMonitor/BPW_ConveyorMonitorDisplay.BPW_ConveyorMonitorDisplay_C"
+				},
+				"OnAverageDataUpdatedDelegate": {
+					"$ref": "common.schema.json#/$defs/empty-object"
+				},
+				"mIsSignificant": {
+					"$ref": "common.schema.json#/$defs/boolean"
+				},
+				"mOffsetAlongConveyor": {
+					"$ref": "common.schema.json#/$defs/decimal-string--signed"
+				},
+				"mCalculatedItemsPerMinute": {
+					"$ref": "common.schema.json#/$defs/integer-string--signed"
+				},
+				"mTotalItems": {
+					"$ref": "common.schema.json#/$defs/integer-string"
+				},
+				"mTotalTime": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mConfidence": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mSignificanceRange": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				}
+			}
 		},
 		"FGBuildableFactoryBuilding": {
 			"allOf": [
@@ -10908,7 +10873,7 @@
 							"$ref": "#/$defs/FGBuildableDoor--automated",
 							"unevaluatedProperties": false
 						}
-						]
+					]
 				}
 			}
 		},

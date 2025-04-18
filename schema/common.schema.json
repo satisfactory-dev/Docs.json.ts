@@ -3538,9 +3538,7 @@
 		"common-base--FGBuildablePipeline": {
 			"type": "object",
 			"$ref": "#/$defs/common-base--FGBuildablePipeline--pre-1.1",
-			"required": [
-				"mIndicatorData"
-			],
+			"required": ["mIndicatorData"],
 			"properties": {
 				"mIndicatorData": {
 					"$ref": "common.schema.json#/$defs/empty-object"
