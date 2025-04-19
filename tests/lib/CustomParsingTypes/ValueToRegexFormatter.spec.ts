@@ -23,12 +23,16 @@ import {
 } from '../../../lib/helpers';
 // eslint-disable-next-line max-len
 import common_schema from '../../../schema/common.schema.json' with {type: 'json'};
+import {
+	docs_versions,
+} from '../../../lib/DocsTsGenerator';
 
-for (const version of object_keys(docs.docs_versions)) {
-	if ('common' === version) {
-		continue;
-	}
+const versions_to_test:(Exclude<keyof docs_versions, 'common'>)[] = [
+	'update8',
+	'version_1_1_0_1',
+];
 
+for (const version of versions_to_test) {
 	void describe(`${version}: ValueToRegexFormatter.pattern_from_value()`, async () => {
 		let schema:undefined|{$defs:{[key: string]: SchemaObject}};
 		await assert.doesNotReject(
