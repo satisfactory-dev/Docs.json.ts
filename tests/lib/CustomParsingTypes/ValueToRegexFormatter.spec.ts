@@ -5,8 +5,15 @@ import {
 import assert from 'node:assert/strict';
 
 import {
+	SchemaObject,
+} from 'ajv/dist/2020';
+
+import {
 	object_keys,
 } from '@satisfactory-dev/predicates.ts';
+import {
+	not_undefined,
+} from '@satisfactory-dev/custom-assert';
 
 import {
 	ValueToRegexFormatter,
@@ -23,8 +30,25 @@ for (const version of object_keys(docs.docs_versions)) {
 	}
 
 	void describe(`${version}: ValueToRegexFormatter.pattern_from_value()`, async () => {
+		let schema:undefined|{$defs:{[key: string]: SchemaObject}};
+		await assert.doesNotReject(
+			() => {
+				return docs.schema(version).then((res) => {
+					schema = res;
+
+					return schema;
+				}).catch((err) => {
+					console.error(err);
+
+					throw err;
+				});
+			},
+			`Failed to obtain schema for ${version}`,
+		);
+		not_undefined(schema, 'schema was undefined but did not throw');
+
 		const instance = new ValueToRegexFormatter(
-			(await docs.schema(version)).$defs,
+			schema.$defs,
 			common_schema.$defs,
 		);
 		void it('does not throw', async () => {
@@ -41,6 +65,7 @@ for (const version of object_keys(docs.docs_versions)) {
 				);
 				assert.doesNotThrow(
 					() => instance.pattern_from_value(definition),
+					`ValueToRegexFormatter.pattern_from_value() threw with ${typed_string_type} against ${version}`,
 				)
 			}
 		});
