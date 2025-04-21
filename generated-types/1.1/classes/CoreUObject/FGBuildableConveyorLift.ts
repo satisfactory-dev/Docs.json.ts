@@ -6,6 +6,8 @@ import {
 
 import {FGBuildable__base__type} from './FGBuildable';
 
+import {boolean__type} from '../../../common/common/scalar';
+
 import {NativeClass__type} from '../../../common/common/unassigned';
 
 export type FGBuildableConveyorLift__type =
@@ -17,6 +19,7 @@ export type FGBuildableConveyorLift__type =
 export type FGBuildableConveyorLift__properties__type = {
 	mOutputMeshDisplayMode: mInputOutputMeshDisplayMode__type;
 	mInputMeshDisplayMode: mInputOutputMeshDisplayMode__type;
+	mIsBeltUsingInputRotation: boolean__type;
 };
 
 export type FGBuildableConveyorLift__NativeClass =

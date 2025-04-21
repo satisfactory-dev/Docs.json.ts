@@ -8155,13 +8155,20 @@
 		},
 		"FGBuildableConveyorLift--properties": {
 			"type": "object",
-			"required": ["mOutputMeshDisplayMode", "mInputMeshDisplayMode"],
+			"required": [
+				"mOutputMeshDisplayMode",
+				"mInputMeshDisplayMode",
+				"mIsBeltUsingInputRotation"
+			],
 			"properties": {
 				"mOutputMeshDisplayMode": {
 					"$ref": "#/$defs/mInputOutputMeshDisplayMode"
 				},
 				"mInputMeshDisplayMode": {
 					"$ref": "#/$defs/mInputOutputMeshDisplayMode"
+				},
+				"mIsBeltUsingInputRotation": {
+					"$ref": "common.schema.json#/$defs/boolean"
 				}
 			}
 		},

@@ -26,7 +26,7 @@ import {
 
 const versions_to_test:(Exclude<keyof docs_versions, 'common'>)[] = [
 	'update8',
-	'version_1_1_0_1',
+	'version_1_1_0_3',
 ];
 
 for (const version of versions_to_test) {
