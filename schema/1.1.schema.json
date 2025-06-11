@@ -1020,7 +1020,10 @@
 				"mStingerMontage",
 				"mUnEquipMontage",
 				"mMontageBlendOutTime",
-				"mEquipmentLookAtDescOverride"
+				"mEquipmentLookAtDescOverride",
+				"mMagnetismStrength",
+				"mMagnetismZeroInputStrength",
+				"bMagnetismActive"
 			],
 			"properties": {
 				"mAttachSocket": {
@@ -1106,6 +1109,15 @@
 				"mEquipmentLookAtDescOverride": {
 					"type": "string",
 					"minLength": 0
+				},
+				"mMagnetismStrength": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mMagnetismZeroInputStrength": {
+					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"bMagnetismActive": {
+					"$ref": "common.schema.json#/$defs/boolean"
 				}
 			}
 		},
@@ -1226,6 +1238,8 @@
 												"Montage_3P",
 												"Montage_Equipment",
 												"AudioEvent",
+												"bSeparate3PAudioEvent",
+												"AudioEvent3P",
 												"CameraAnim"
 											],
 											"properties": {
@@ -1252,6 +1266,19 @@
 														"left": "/Script/AkAudio.AkAudioEvent",
 														"right": {
 															"starts_with": "/Game/WwiseAudio/Events/Equipment/ShockBaton/"
+														}
+													}
+												},
+												"bSeparate3PAudioEvent": {
+													"$ref": "common.schema.json#/$defs/boolean"
+												},
+												"AudioEvent3P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/AkAudio.AkAudioEvent",
+														"right": {
+															"starts_with": "/Game/WwiseAudio/Events/Equipment/Equipment_Weapons/"
 														}
 													}
 												},
@@ -1386,6 +1413,19 @@
 															"starts_with": "/Game/WwiseAudio/Events/Equipment/ShockBaton/"
 														}
 													}
+												},
+												"bSeparate3PAudioEvent": {
+													"$ref": "common.schema.json#/$defs/boolean"
+												},
+												"AudioEvent3P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/AkAudio.AkAudioEvent",
+														"right": {
+															"starts_with": "/Game/WwiseAudio/Events/Equipment/Equipment_Weapons/"
+														}
+													}
 												}
 											}
 										}
@@ -1456,7 +1496,7 @@
 													"UnrealEngineString": {
 														"left": "/Script/AkAudio.AkAudioEvent",
 														"right": {
-															"starts_with": "/Game/WwiseAudio/Events/Equipment/ShockBaton/"
+															"starts_with": "/Game/WwiseAudio/Events/Equipment/Equipment_Weapons/ShockBaton/"
 														}
 													}
 												},
@@ -4957,6 +4997,19 @@
 									}
 								}
 							},
+							"bSeparate3PAudioEvent": {
+								"$ref": "common.schema.json#/$defs/boolean"
+							},
+							"AudioEvent3P": {
+								"type": "string",
+								"minLength": 1,
+								"UnrealEngineString": {
+									"left": "/Script/AkAudio.AkAudioEvent",
+									"right": {
+										"starts_with": "/Game/WwiseAudio/Events/Equipment/"
+									}
+								}
+							},
 							"CameraAnim": {
 								"$ref": "#/$defs/1.0-base--CameraAnim"
 							}
@@ -5021,6 +5074,29 @@
 														}
 													}
 												},
+												"AudioEvent": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/AkAudio.AkAudioEvent",
+														"right": {
+															"starts_with": "/Game/WwiseAudio/Events/Equipment/"
+														}
+													}
+												},
+												"bSeparate3PAudioEvent": {
+													"$ref": "common.schema.json#/$defs/boolean"
+												},
+												"AudioEvent3P": {
+													"type": "string",
+													"minLength": 1,
+													"UnrealEngineString": {
+														"left": "/Script/AkAudio.AkAudioEvent",
+														"right": {
+															"starts_with": "/Game/WwiseAudio/Events/Equipment/"
+														}
+													}
+												},
 												"CameraAnim": {
 													"$ref": "#/$defs/1.0-base--CameraAnim"
 												}
@@ -5070,6 +5146,29 @@
 																"left": "/Script/Engine.AnimMontage",
 																"right": {
 																	"starts_with": "/Game/FactoryGame/Equipment/RebarGun/Animation/"
+																}
+															}
+														},
+														"AudioEvent": {
+															"type": "string",
+															"minLength": 1,
+															"UnrealEngineString": {
+																"left": "/Script/AkAudio.AkAudioEvent",
+																"right": {
+																	"starts_with": "/Game/WwiseAudio/Events/Equipment/"
+																}
+															}
+														},
+														"bSeparate3PAudioEvent": {
+															"$ref": "common.schema.json#/$defs/boolean"
+														},
+														"AudioEvent3P": {
+															"type": "string",
+															"minLength": 1,
+															"UnrealEngineString": {
+																"left": "/Script/AkAudio.AkAudioEvent",
+																"right": {
+																	"starts_with": "/Game/WwiseAudio/Events/Equipment/"
 																}
 															}
 														},
@@ -7135,7 +7234,11 @@
 										"/Game/WwiseAudio/Events/Equipment/RebarGun/Play_RebarGun_Scatter_Fire.Play_RebarGun_Scatter_Fire",
 										"/Game/WwiseAudio/Events/Equipment/Rifle/Play_Rifle_HomingAmmo_Shot.Play_Rifle_HomingAmmo_Shot",
 										"/Game/WwiseAudio/Events/Equipment/Rifle/Play_Rifle_ChaosAmmo_Shot.Play_Rifle_ChaosAmmo_Shot",
-										"/Game/WwiseAudio/Events/Equipment/Rifle/Play_E_Rifle_GunShot_3P.Play_E_Rifle_GunShot_3P"
+										"/Game/WwiseAudio/Events/Equipment/Rifle/Play_E_Rifle_GunShot_3P.Play_E_Rifle_GunShot_3P",
+										"/Game/WwiseAudio/Events/Equipment/Equipment_Weapons/RebarGun/3p/Play_RebarGun_StunFire_3p.Play_RebarGun_StunFire_3p",
+										"/Game/WwiseAudio/Events/Equipment/Equipment_Weapons/Rifle/Play_Rifle_HomingAmmo_Shot_3p.Play_Rifle_HomingAmmo_Shot_3p",
+										"/Game/WwiseAudio/Events/Equipment/Equipment_Weapons/RebarGun/3p/Play_RebarGun_Scatter_Fire_3p.Play_RebarGun_Scatter_Fire_3p",
+										"/Game/WwiseAudio/Events/Equipment/Equipment_Weapons/Rifle/Play_Rifle_ChaosAmmo_Shot_3p.Play_Rifle_ChaosAmmo_Shot_3p"
 									]
 								}
 							}
@@ -7155,7 +7258,14 @@
 								"minItems": 1,
 								"items": {
 									"type": "string",
-									"const": "/Game/WwiseAudio/Events/Equipment/Rifle/Play_E_Rifle_GunShot.Play_E_Rifle_GunShot"
+									"enum": [
+										"/Game/WwiseAudio/Events/Equipment/Rifle/Play_E_Rifle_GunShot.Play_E_Rifle_GunShot",
+										"/Game/WwiseAudio/Events/Equipment/Equipment_Weapons/RebarGun/3p/Play_T_RebarGun_Fire_3p.Play_T_RebarGun_Fire_3p",
+										"/Game/WwiseAudio/Events/Equipment/RebarGun/Play_RebarGun_StunFire.Play_RebarGun_StunFire",
+										"/Game/WwiseAudio/Events/Equipment/Rifle/Play_Rifle_HomingAmmo_Shot.Play_Rifle_HomingAmmo_Shot",
+										"/Game/WwiseAudio/Events/Equipment/RebarGun/Play_RebarGun_Scatter_Fire.Play_RebarGun_Scatter_Fire",
+										"/Game/WwiseAudio/Events/Equipment/Rifle/Play_Rifle_ChaosAmmo_Shot.Play_Rifle_ChaosAmmo_Shot"
+									]
 								}
 							}
 						}
@@ -7242,7 +7352,8 @@
 								"items": {
 									"type": "string",
 									"enum": [
-										"/Game/WwiseAudio/Events/Equipment/RebarGun/Play_RebarGun_Scatter_Fire.Play_RebarGun_Scatter_Fire"
+										"/Game/WwiseAudio/Events/Equipment/RebarGun/Play_RebarGun_Scatter_Fire.Play_RebarGun_Scatter_Fire",
+										"/Game/WwiseAudio/Events/Equipment/Equipment_Weapons/RebarGun/3p/Play_RebarGun_Scatter_Fire_3p.Play_RebarGun_Scatter_Fire_3p"
 									]
 								}
 							}
@@ -7311,17 +7422,11 @@
 			]
 		},
 		"FGWeapon--gun-base": {
-			"type": "object",
-			"$ref": "#/$defs/FGWeapon--gun-base--merged",
-			"required": ["MagnetismStrength", "MagnetismZeroInputStrength"],
-			"properties": {
-				"MagnetismStrength": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
-				},
-				"MagnetismZeroInputStrength": {
-					"$ref": "common.schema.json#/$defs/decimal-string"
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGWeapon--gun-base--merged"
 				}
-			}
+			]
 		},
 		"FGWeapon--rebar-gun": {
 			"allOf": [
@@ -9047,6 +9152,8 @@
 				"mQueuedStops",
 				"mQueuedStopIndexes",
 				"mCharactersInElevator",
+				"mOccupyingCharacters",
+				"mAllPawnsInElevator",
 				"mHeightOfCabin",
 				"mSongID",
 				"mDurationToOpenDoors",
@@ -9087,6 +9194,14 @@
 					"const": ""
 				},
 				"mCharactersInElevator": {
+					"type": "string",
+					"const": ""
+				},
+				"mOccupyingCharacters": {
+					"type": "string",
+					"const": ""
+				},
+				"mAllPawnsInElevator": {
 					"type": "string",
 					"const": ""
 				},
@@ -9173,6 +9288,7 @@
 				"mTotalItems",
 				"mTotalTime",
 				"mConfidence",
+				"mReplicatedCoreData",
 				"mSignificanceRange"
 			],
 			"properties": {
@@ -9200,6 +9316,9 @@
 				},
 				"mConfidence": {
 					"$ref": "common.schema.json#/$defs/decimal-string"
+				},
+				"mReplicatedCoreData": {
+					"$ref": "common.schema.json#/$defs/empty-object"
 				},
 				"mSignificanceRange": {
 					"$ref": "common.schema.json#/$defs/decimal-string"

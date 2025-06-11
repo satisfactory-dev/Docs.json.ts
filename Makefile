@@ -1,13 +1,16 @@
 install:
 	@NODE_OPTIONS='' npm install
 
-validate: lint build validate--skip-checks--update8 validate--skip-checks--version-1
+validate: lint build validate--skip-checks--update8 validate--skip-checks--version-1 validate--skip-checks--version-1-1
 
 validate--skip-checks--update8:
 	@npm run validate
 
 validate--skip-checks--version-1:
 	@npm run validate--version-1
+
+validate--skip-checks--version-1-1:
+	@npm run validate--version-1.1
 
 build:
 	@echo 'building from ./tsconfig.app.json'

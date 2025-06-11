@@ -23,8 +23,14 @@ export type FGAmmoTypeSpreadshot__base__type = {
 	mFiringSounds:
 		| ''
 		| [
-				'/Game/WwiseAudio/Events/Equipment/RebarGun/Play_RebarGun_Scatter_Fire.Play_RebarGun_Scatter_Fire',
-				...'/Game/WwiseAudio/Events/Equipment/RebarGun/Play_RebarGun_Scatter_Fire.Play_RebarGun_Scatter_Fire'[],
+				(
+					| '/Game/WwiseAudio/Events/Equipment/RebarGun/Play_RebarGun_Scatter_Fire.Play_RebarGun_Scatter_Fire'
+					| '/Game/WwiseAudio/Events/Equipment/Equipment_Weapons/RebarGun/3p/Play_RebarGun_Scatter_Fire_3p.Play_RebarGun_Scatter_Fire_3p'
+				),
+				...(
+					| '/Game/WwiseAudio/Events/Equipment/RebarGun/Play_RebarGun_Scatter_Fire.Play_RebarGun_Scatter_Fire'
+					| '/Game/WwiseAudio/Events/Equipment/Equipment_Weapons/RebarGun/3p/Play_RebarGun_Scatter_Fire_3p.Play_RebarGun_Scatter_Fire_3p'
+				)[],
 		];
 	mAudioEventsCache: empty_object__type;
 	mGasType: v1_0_base__mGasType__type;

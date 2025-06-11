@@ -5,8 +5,6 @@ import {
 	v1_0_base__FGWeapon__rifle__properties__type,
 } from '../../common/unassigned';
 
-import {decimal_string__type} from '../../../common/common/scalar';
-
 import {
 	common_base__FGWeapon__base__pre_1_1__type,
 	NativeClass__type,
@@ -23,10 +21,7 @@ export type FGWeapon__base__merged__type =
 	common_base__FGWeapon__base__pre_1_1__type &
 		v1_0_base__FGEquipment__base__type;
 
-export type FGWeapon__gun_base__type = FGWeapon__gun_base__merged__type & {
-	MagnetismStrength: decimal_string__type;
-	MagnetismZeroInputStrength: decimal_string__type;
-};
+export type FGWeapon__gun_base__type = FGWeapon__gun_base__merged__type;
 
 export type FGWeapon__gun_base__merged__type =
 	common_base__FGWeapon__base__pre_1_1__type &

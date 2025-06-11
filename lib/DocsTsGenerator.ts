@@ -121,7 +121,7 @@ export class DocsTsGeneratorVersion
 }
 
 export type docs_versions = {
-	version_1_1_0_3?: DocsTsGeneratorVersion,
+	version_1_1_1_0?: DocsTsGeneratorVersion,
 	version_1_0_1_4?: DocsTsGeneratorVersion,
 	update8?: DocsTsGeneratorVersion,
 	common: DocsTsGeneratorVersion,
@@ -202,8 +202,8 @@ export class DocsTsGenerator {
 	) {
 		if ('update8' === version) {
 			return this.schema_update8();
-		} else if ('version_1_1_0_3' === version) {
-			return this.schema_version_1_1_0_3();
+		} else if ('version_1_1_1_0' === version) {
+			return this.schema_version_1_1_1_0();
 		} else if ('version_1_0_1_4' === version) {
 			return this.schema_version_1_0_1_4();
 		} else if ('common' === version) {
@@ -256,9 +256,9 @@ export class DocsTsGenerator {
 	}
 
 	// eslint-disable-next-line max-len
-	async schema_version_1_1_0_3(): Promise<DocsSchemaByVersion['version_1_1_0_3']['en_US']['schema']>
+	async schema_version_1_1_1_0(): Promise<DocsSchemaByVersion['version_1_1_1_0']['en_US']['schema']>
 	{
-		const schema = this.schema_data.version_1_1_0_3.en_US.schema;
+		const schema = this.schema_data.version_1_1_1_0.en_US.schema;
 		/*
 		const schema_1_0 = await this.schema_version_1_0_1_4();
 		this.ajv.removeSchema('1.0.schema.json');
@@ -266,8 +266,8 @@ export class DocsTsGenerator {
 		*/
 
 		// eslint-disable-next-line max-len
-		await this.validate_schema<DocsSchemaByVersion['version_1_1_0_3']['en_US']['schema']>(
-			'version_1_1_0_3',
+		await this.validate_schema<DocsSchemaByVersion['version_1_1_1_0']['en_US']['schema']>(
+			'version_1_1_1_0',
 			schema,
 		);
 

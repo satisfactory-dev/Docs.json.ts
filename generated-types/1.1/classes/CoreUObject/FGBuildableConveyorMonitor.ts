@@ -25,6 +25,7 @@ export type FGBuildableConveyorMonitor__properties__type = {
 	mTotalItems: integer_string__type;
 	mTotalTime: decimal_string__type;
 	mConfidence: decimal_string__type;
+	mReplicatedCoreData: empty_object__type;
 	mSignificanceRange: decimal_string__type;
 };
 

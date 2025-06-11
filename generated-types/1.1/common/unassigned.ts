@@ -1925,6 +1925,9 @@ export type v1_0_base__FGEquipment__base__type =
 		mHasStingerMontage: boolean__type;
 		mMontageBlendOutTime: decimal_string__type;
 		mEquipmentLookAtDescOverride: string;
+		mMagnetismStrength: decimal_string__type;
+		mMagnetismZeroInputStrength: decimal_string__type;
+		bMagnetismActive: boolean__type;
 	};
 
 export type v1_0_base__FGEquipment__placeable__type =
@@ -1962,6 +1965,11 @@ export type v1_0_base__FGEquipmentStunSpear__type =
 					AudioEvent: UnrealEngineString<
 						'/Script/AkAudio.AkAudioEvent',
 						StringStartsWith<'/Game/WwiseAudio/Events/Equipment/ShockBaton/'>
+					>;
+					bSeparate3PAudioEvent: boolean__type;
+					AudioEvent3P: UnrealEngineString<
+						'/Script/AkAudio.AkAudioEvent',
+						StringStartsWith<'/Game/WwiseAudio/Events/Equipment/Equipment_Weapons/'>
 					>;
 					CameraAnim: v1_0_base__CameraAnim__type;
 				},
@@ -2015,6 +2023,11 @@ export type v1_0_base__FGEquipmentStunSpear__type =
 						'/Script/AkAudio.AkAudioEvent',
 						StringStartsWith<'/Game/WwiseAudio/Events/Equipment/ShockBaton/'>
 					>;
+					bSeparate3PAudioEvent?: boolean__type;
+					AudioEvent3P?: UnrealEngineString<
+						'/Script/AkAudio.AkAudioEvent',
+						StringStartsWith<'/Game/WwiseAudio/Events/Equipment/Equipment_Weapons/'>
+					>;
 				},
 				{
 					Weight?: decimal_string__type;
@@ -2030,6 +2043,11 @@ export type v1_0_base__FGEquipmentStunSpear__type =
 						'/Script/AkAudio.AkAudioEvent',
 						StringStartsWith<'/Game/WwiseAudio/Events/Equipment/ShockBaton/'>
 					>;
+					bSeparate3PAudioEvent?: boolean__type;
+					AudioEvent3P?: UnrealEngineString<
+						'/Script/AkAudio.AkAudioEvent',
+						StringStartsWith<'/Game/WwiseAudio/Events/Equipment/Equipment_Weapons/'>
+					>;
 				},
 				{
 					Weight?: decimal_string__type;
@@ -2044,6 +2062,11 @@ export type v1_0_base__FGEquipmentStunSpear__type =
 					AudioEvent: UnrealEngineString<
 						'/Script/AkAudio.AkAudioEvent',
 						StringStartsWith<'/Game/WwiseAudio/Events/Equipment/ShockBaton/'>
+					>;
+					bSeparate3PAudioEvent?: boolean__type;
+					AudioEvent3P?: UnrealEngineString<
+						'/Script/AkAudio.AkAudioEvent',
+						StringStartsWith<'/Game/WwiseAudio/Events/Equipment/Equipment_Weapons/'>
 					>;
 				},
 			];
@@ -2064,7 +2087,7 @@ export type v1_0_base__FGEquipmentStunSpear__type =
 					bSeparate3PAudioEvent: boolean__type;
 					AudioEvent3P: UnrealEngineString<
 						'/Script/AkAudio.AkAudioEvent',
-						StringStartsWith<'/Game/WwiseAudio/Events/Equipment/ShockBaton/'>
+						StringStartsWith<'/Game/WwiseAudio/Events/Equipment/Equipment_Weapons/ShockBaton/'>
 					>;
 					CameraAnim: v1_0_base__CameraAnim__type;
 				},
@@ -3049,6 +3072,11 @@ export type v1_0_base__FGWeapon__gun_base__properties__type = {
 			'/Script/AkAudio.AkAudioEvent',
 			StringStartsWith<'/Game/WwiseAudio/Events/Equipment/'>
 		>;
+		bSeparate3PAudioEvent?: boolean__type;
+		AudioEvent3P?: UnrealEngineString<
+			'/Script/AkAudio.AkAudioEvent',
+			StringStartsWith<'/Game/WwiseAudio/Events/Equipment/'>
+		>;
 		CameraAnim: v1_0_base__CameraAnim__type;
 	};
 	mSupressDryFireMontage: boolean__type;
@@ -3065,6 +3093,15 @@ export type v1_0_base__FGWeapon__rebar_gun__properties__type = {
 					'/Script/Engine.AnimMontage',
 					StringStartsWith<'/Game/FactoryGame/Equipment/RebarGun/Animation/'>
 				>;
+				AudioEvent?: UnrealEngineString<
+					'/Script/AkAudio.AkAudioEvent',
+					StringStartsWith<'/Game/WwiseAudio/Events/Equipment/'>
+				>;
+				bSeparate3PAudioEvent?: boolean__type;
+				AudioEvent3P?: UnrealEngineString<
+					'/Script/AkAudio.AkAudioEvent',
+					StringStartsWith<'/Game/WwiseAudio/Events/Equipment/'>
+				>;
 				CameraAnim: v1_0_base__CameraAnim__type;
 			},
 			{
@@ -3074,6 +3111,15 @@ export type v1_0_base__FGWeapon__rebar_gun__properties__type = {
 				Montage_Equipment: UnrealEngineString<
 					'/Script/Engine.AnimMontage',
 					StringStartsWith<'/Game/FactoryGame/Equipment/RebarGun/Animation/'>
+				>;
+				AudioEvent?: UnrealEngineString<
+					'/Script/AkAudio.AkAudioEvent',
+					StringStartsWith<'/Game/WwiseAudio/Events/Equipment/'>
+				>;
+				bSeparate3PAudioEvent?: boolean__type;
+				AudioEvent3P?: UnrealEngineString<
+					'/Script/AkAudio.AkAudioEvent',
+					StringStartsWith<'/Game/WwiseAudio/Events/Equipment/'>
 				>;
 				CameraAnim: v1_0_base__CameraAnim__type;
 			},
@@ -3087,6 +3133,15 @@ export type v1_0_base__FGWeapon__rebar_gun__properties__type = {
 				Montage_Equipment: UnrealEngineString<
 					'/Script/Engine.AnimMontage',
 					StringStartsWith<'/Game/FactoryGame/Equipment/RebarGun/Animation/'>
+				>;
+				AudioEvent?: UnrealEngineString<
+					'/Script/AkAudio.AkAudioEvent',
+					StringStartsWith<'/Game/WwiseAudio/Events/Equipment/'>
+				>;
+				bSeparate3PAudioEvent?: boolean__type;
+				AudioEvent3P?: UnrealEngineString<
+					'/Script/AkAudio.AkAudioEvent',
+					StringStartsWith<'/Game/WwiseAudio/Events/Equipment/'>
 				>;
 				CameraAnim: v1_0_base__CameraAnim__type;
 			},

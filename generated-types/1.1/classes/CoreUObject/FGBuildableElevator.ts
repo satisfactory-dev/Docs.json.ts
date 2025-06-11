@@ -30,6 +30,8 @@ export type FGBuildableElevator__properties__type = {
 	mQueuedStops: '';
 	mQueuedStopIndexes: '';
 	mCharactersInElevator: '';
+	mOccupyingCharacters: '';
+	mAllPawnsInElevator: '';
 	mHeightOfCabin: decimal_string__type;
 	mSongID: integer_string__type;
 	mDurationToOpenDoors: decimal_string__type;

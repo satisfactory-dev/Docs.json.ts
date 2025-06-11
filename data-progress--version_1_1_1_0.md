@@ -1,6 +1,6 @@
 # Data Progress
 
-100.00% Complete (2930 of 2930)
+100.00% Complete (2931 of 2931)
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGAmmoTypeInstantHit'
 
@@ -697,13 +697,7 @@
 
 -   [x] Build_Wall_Conveyor_8x4_04_C
 -   [x] Build_Wall_Conveyor_8x4_04_Steel_C
--   [x] Build_Wall_Conveyor_8x4_02_Steel_C
--   [x] Build_Wall_Conveyor_8x4_03_Steel_C
--   [x] Build_Wall_Concrete_8x4_ConveyorHole_03_C
 -   [x] Build_SteelWall_FlipTris_8x8_C
--   [x] Build_Wall_Conveyor_8x4_01_C
--   [x] Build_Wall_Conveyor_8x4_02_C
--   [x] Build_Wall_Conveyor_8x4_03_C
 
 ## /Script/CoreUObject.Class'/Script/FactoryGame.FGBuildableWallLightweight'
 
@@ -717,10 +711,13 @@
 -   [x] Build_Wall_Window_8x4_03_C
 -   [x] Build_Wall_8x4_02_C
 -   [x] Build_Wall_Conveyor_8x4_01_Steel_C
+-   [x] Build_Wall_Conveyor_8x4_02_Steel_C
+-   [x] Build_Wall_Conveyor_8x4_03_Steel_C
 -   [x] Build_Wall_Concrete_8x1_C
 -   [x] Build_Wall_Concrete_8x4_C
 -   [x] Build_Wall_Concrete_8x4_ConveyorHole_01_C
 -   [x] Build_Wall_Concrete_8x4_ConveyorHole_02_C
+-   [x] Build_Wall_Concrete_8x4_ConveyorHole_03_C
 -   [x] Build_Wall_Concrete_8x4_Window_02_C
 -   [x] Build_Wall_Concrete_8x4_Window_03_C
 -   [x] Build_Wall_Concrete_8x4_Window_04_C
@@ -750,6 +747,9 @@
 -   [x] Build_WallSet_Steel_Angular_8x4_C
 -   [x] Build_WallSet_Steel_Angular_8x8_C
 -   [x] Build_Wall_8x4_01_C
+-   [x] Build_Wall_Conveyor_8x4_01_C
+-   [x] Build_Wall_Conveyor_8x4_02_C
+-   [x] Build_Wall_Conveyor_8x4_03_C
 -   [x] Build_Wall_Gate_8x4_01_C
 -   [x] Build_Wall_Orange_8x1_C
 -   [x] Build_Wall_Orange_Angular_8x4_C
@@ -2750,6 +2750,7 @@
 -   [x] Schematic_Trinket_FicsitCoupon_C
 -   [x] Schematic_Trinket_Default_C
 -   [x] Schematic_Trinket_Checkit_C
+-   [x] Schematic_Trinket_Alpaca_C
 -   [x] Schematic_Trinket_AirFreshener_C
 -   [x] Schematic_9-5_C
 -   [x] Schematic_9-4_C
