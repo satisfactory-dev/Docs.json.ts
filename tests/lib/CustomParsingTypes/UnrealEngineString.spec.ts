@@ -34,7 +34,7 @@ const regex_alpha = `${regex_uppercase}a-z`;
 const general_regex =
 	`/(?:[${
 		regex_uppercase
-	}-][A-Za-z0-9_-]+/)+(?:_?[${
+	}3-][A-Za-z0-9_-]+/)+(?:_?[${
 		regex_uppercase
 	}][A-Za-z_0-9-]+\\.[${
 		regex_uppercase
