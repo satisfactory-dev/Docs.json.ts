@@ -1,4 +1,4 @@
-import version_1_1_1_0_schema from '../schema/1.1.schema.json' with {
+import version_1_1_1_1_schema from '../schema/1.1.schema.json' with {
 	type: 'json'
 };
 
@@ -49,8 +49,8 @@ export class DocsSchemaByVersion
 	readonly version_1_0_1_4: DocsSchemaByLanguageCode<
 		typeof version_1_0_1_4_schema
 	>;
-	readonly version_1_1_1_0: DocsSchemaByLanguageCode<
-		typeof version_1_1_1_0_schema
+	readonly version_1_1_1_1: DocsSchemaByLanguageCode<
+		typeof version_1_1_1_1_schema
 	>;
 
 	constructor()
@@ -58,8 +58,8 @@ export class DocsSchemaByVersion
 		this.common = new DocsSchemaByLanguageCode({
 			en_US: common_schema,
 		});
-		this.version_1_1_1_0 = new DocsSchemaByLanguageCode({
-			en_US: version_1_1_1_0_schema,
+		this.version_1_1_1_1 = new DocsSchemaByLanguageCode({
+			en_US: version_1_1_1_1_schema,
 		});
 		this.version_1_0_1_4 = new DocsSchemaByLanguageCode({
 			en_US: version_1_0_1_4_schema,
