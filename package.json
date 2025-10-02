@@ -1,8 +1,12 @@
 {
   "type": "module",
-  "name": "@signpostmarv/nodejs-template",
-  "description": "nodejs template",
+  "name": "@satisfactory-dev/docs.json.ts",
+  "description": "TypeScript mappings for the Docs.json file that ships with Satisfactory",
   "license": "Apache-2.0",
+  "keywords": [
+    "satisfactory",
+    "Docs.json"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SignpostMarv/nodejs-template.git"

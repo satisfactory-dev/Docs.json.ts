@@ -1,5 +1,5 @@
 {
-	"name": "nodejs template",
+	"name": "Docs.json.ts",
 	"dockerComposeFile": "./docker-compose.yml",
 	"service": "devcontainer",
 	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
@@ -22,7 +22,7 @@
 	},
 	"features": {
 		"ghcr.io/devcontainers/features/node:1": {
-			"version": "23"
+			"version": "24"
 		}
 	}
 }
