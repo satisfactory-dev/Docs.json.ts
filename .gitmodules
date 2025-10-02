@@ -1,0 +1,3 @@
+[submodule "JSON-Schema-TypeScript-CodeGen"]
+	path = JSON-Schema-TypeScript-CodeGen
+	url = https://github.com/SignpostMarv/JSON-Schema-TypeScript-CodeGen.git
