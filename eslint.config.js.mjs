@@ -5,7 +5,7 @@ import {
 export default [
 	...config,
 	{
-		files: ['**/*.mjs'],
+		files: ['**/*.mjs', './*.mjs'],
 		ignores: ['**/*.js'],
 	},
 ];

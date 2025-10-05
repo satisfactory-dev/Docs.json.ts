@@ -1,0 +1,73 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "docs.json.ts--0.3.7.7--classes",
+	"$defs": {
+		"FGItemDescriptor": {
+			"type": "object",
+			"minProperties": 1,
+			"required": [
+				"ClassName",
+				"mDisplayName",
+				"mAbbreviatedDisplayName",
+				"mStackSize",
+				"mCanBeDiscarded",
+				"mRememberPickUp",
+				"mEnergyValue",
+				"mRadioactiveDecay",
+				"mForm",
+				"mSmallIcon",
+				"mFluidColor",
+				"mResourceSinkPoints"
+			],
+			"properties": {
+				"ClassName": {
+					"type": "string",
+					"DocsDotJson_Desc_C": null
+				},
+				"mDisplayName": {
+					"type": "string",
+					"minLength": 1
+				},
+				"mAbbreviatedDisplayName": {
+					"type": "string"
+				},
+				"mStackSize": {
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mStackSize"
+				},
+				"mCanBeDiscarded": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mRememberPickUp": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mEnergyValue": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mRadioactiveDecay": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mForm": {
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mForm"
+				},
+				"mSmallIcon": {
+					"type": "string",
+					"DocsDotJson_Texture2D": null
+				},
+				"mPersistentBigIcon": {
+					"type": "string",
+					"DocsDotJson_Texture2D": [
+						null,
+						null,
+						["256", "512"]
+					]
+				},
+				"mFluidColor": {
+					"$ref": "docs.json.ts--common--types#/$defs/BGRA"
+				},
+				"mResourceSinkPoints": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				}
+			}
+		}
+	}
+}

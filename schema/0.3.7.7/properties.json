@@ -1,0 +1,25 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "docs.json.ts--0.3.7.7--properties",
+	"$defs": {
+		"mStackSize": {
+			"type": "string",
+			"enum": [
+				"SS_HUGE",
+				"SS_MEDIUM",
+				"SS_BIG",
+				"SS_SMALL",
+				"SS_ONE",
+				"SS_FLUID"
+			]
+		},
+		"mForm": {
+			"type": "string",
+			"enum": [
+				"RF_SOLID",
+				"RF_LIQUID",
+				"RF_INVALID"
+			]
+		}
+	}
+}

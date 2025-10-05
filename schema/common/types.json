@@ -1,0 +1,22 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "docs.json.ts--common--types",
+	"$defs": {
+		"bool_string": {
+			"type": "string",
+			"enum": ["False", "True"]
+		},
+		"decimal_string": {
+			"type": "string",
+			"pattern": "^\\d+\\.\\d{6}$"
+		},
+		"integer_string": {
+			"type": "string",
+			"pattern": "^\\d+$"
+		},
+		"BGRA": {
+			"type": "string",
+			"pattern": "^\\(B=(\\d+),G=(\\d+),R=(\\d+),A=(\\d+)\\)$"
+		}
+	}
+}

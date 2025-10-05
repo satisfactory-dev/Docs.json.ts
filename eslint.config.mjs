@@ -12,7 +12,7 @@ export default [
 	},
 	...config,
 	{
-		files: ['**/*.ts'],
+		files: ['**/*.ts', './src/**/*.ts'],
 		ignores: ['**/*.d.ts', '**/*.js', '**/*.mjs'],
 	},
 ];
