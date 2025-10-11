@@ -1,0 +1,35 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "docs.json.ts--0.3.7.7--classes--base",
+	"$defs": {
+		"isNamed": {
+			"type": "object",
+			"required": [
+				"ClassName",
+				"mDisplayName"
+			],
+			"properties": {
+				"ClassName": {
+					"type": "string",
+					"DocsDotJson_Desc_C": null
+				},
+				"mDisplayName": {
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mDisplayName"
+				}
+			}
+		},
+		"isDescribed": {
+			"type": "object",
+			"$ref": "#/$defs/isNamed",
+			"required": [
+				"mDescription"
+			],
+			"properties": {
+				"mDescription": {
+					"type": "string",
+					"minLength": 1
+				}
+			}
+		}
+	}
+}

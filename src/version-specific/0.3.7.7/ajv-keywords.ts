@@ -18,6 +18,10 @@ import update3_classes from '../../../schema/0.3.7.7/classes.json' with {
 	type: 'json',
 };
 
+import update3_classes__base from '../../../schema/0.3.7.7/base-classes.json' with {
+	type: 'json',
+};
+
 import update3 from '../../../schema/0.3.7.7/docs.json' with {
 	type: 'json',
 };
@@ -33,6 +37,7 @@ export function configure_ajv(ajv: Ajv) {
 
 	ajv.addSchema(common_types);
 	ajv.addSchema(update3_properties);
+	ajv.addSchema(update3_classes__base);
 	ajv.addSchema(update3_classes);
 	ajv.addSchema(update3);
 

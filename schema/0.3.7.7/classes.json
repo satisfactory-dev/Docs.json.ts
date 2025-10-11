@@ -4,11 +4,9 @@
 	"$defs": {
 		"FGItemDescriptor": {
 			"type": "object",
-			"additionalProperties": false,
+			"unevaluatedProperties": false,
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/isDescribed",
 			"required": [
-				"ClassName",
-				"mDisplayName",
-				"mDescription",
 				"mAbbreviatedDisplayName",
 				"mStackSize",
 				"mCanBeDiscarded",
@@ -21,17 +19,6 @@
 				"mResourceSinkPoints"
 			],
 			"properties": {
-				"ClassName": {
-					"type": "string",
-					"DocsDotJson_Desc_C": null
-				},
-				"mDisplayName": {
-					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mDisplayName"
-				},
-				"mDescription": {
-					"type": "string",
-					"minLength": 1
-				},
 				"mAbbreviatedDisplayName": {
 					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mAbbreviatedDisplayName"
 				},
@@ -69,12 +56,11 @@
 		},
 		"FGSchematic": {
 			"type": "object",
-			"additionalProperties": false,
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/isNamed",
+			"unevaluatedProperties": false,
 			"required": [
-				"ClassName",
 				"FullName",
 				"mType",
-				"mDisplayName",
 				"mSubCategories",
 				"mTechTier",
 				"mCost",
@@ -103,9 +89,6 @@
 				},
 				"mType": {
 					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mType"
-				},
-				"mDisplayName": {
-					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mDisplayName"
 				}
 			}
 		}
