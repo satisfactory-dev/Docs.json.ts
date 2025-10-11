@@ -4,10 +4,11 @@
 	"$defs": {
 		"FGItemDescriptor": {
 			"type": "object",
-			"minProperties": 1,
+			"additionalProperties": false,
 			"required": [
 				"ClassName",
 				"mDisplayName",
+				"mDescription",
 				"mAbbreviatedDisplayName",
 				"mStackSize",
 				"mCanBeDiscarded",
@@ -25,11 +26,14 @@
 					"DocsDotJson_Desc_C": null
 				},
 				"mDisplayName": {
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mDisplayName"
+				},
+				"mDescription": {
 					"type": "string",
 					"minLength": 1
 				},
 				"mAbbreviatedDisplayName": {
-					"type": "string"
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mAbbreviatedDisplayName"
 				},
 				"mStackSize": {
 					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mStackSize"
@@ -50,22 +54,58 @@
 					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mForm"
 				},
 				"mSmallIcon": {
-					"type": "string",
-					"DocsDotJson_Texture2D": null
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mSmallIcon"
 				},
 				"mPersistentBigIcon": {
-					"type": "string",
-					"DocsDotJson_Texture2D": [
-						null,
-						null,
-						["256", "512"]
-					]
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mPersistentBigIcon"
 				},
 				"mFluidColor": {
 					"$ref": "docs.json.ts--common--types#/$defs/BGRA"
 				},
 				"mResourceSinkPoints": {
 					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				}
+			}
+		},
+		"FGSchematic": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": [
+				"ClassName",
+				"FullName",
+				"mType",
+				"mDisplayName",
+				"mSubCategories",
+				"mTechTier",
+				"mCost",
+				"mTimeToComplete",
+				"mUnlocks",
+				"mSchematicDependencies",
+				"mRelevantEvents",
+				"mIncludeInBuilds"
+			],
+			"properties": {
+				"ClassName": {
+					"oneOf": [
+						{
+							"type": "string",
+							"DocsDotJson_ResourceSink_Unlock_C": null
+						},
+						{
+							"type": "string",
+							"DocsDotJson_Schematic_C": null
+						}
+					]
+				},
+				"FullName": {
+					"type": "string",
+					"DocsDotJson_BlueprintGeneratedClass": null
+				},
+				"mType": {
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mType"
+				},
+				"mDisplayName": {
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mDisplayName"
 				}
 			}
 		}

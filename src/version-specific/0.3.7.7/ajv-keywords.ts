@@ -61,6 +61,30 @@ export function configure_ajv(ajv: Ajv) {
 	});
 
 	ajv.addKeyword({
+		keyword: 'DocsDotJson_ResourceSink_Unlock_C',
+		type: 'string',
+		macro: (value: string|null) => ({
+			templated_string: [
+				'ResourceSink_',
+				null === value ? {type: 'string'} : value,
+				'_Unlock_C',
+			],
+		}),
+	});
+
+	ajv.addKeyword({
+		keyword: 'DocsDotJson_Schematic_C',
+		type: 'string',
+		macro: (value: string|null) => ({
+			templated_string: [
+				'Schematic_',
+				null === value ? {type: 'string'} : value,
+				'_C',
+			],
+		}),
+	});
+
+	ajv.addKeyword({
 		keyword: 'DocsDotJson_StringDotString',
 		type: 'string',
 		macro: (value: string) => ({
@@ -68,6 +92,26 @@ export function configure_ajv(ajv: Ajv) {
 				value,
 				'.',
 				value,
+			],
+		}),
+	});
+
+	ajv.addKeyword({
+		keyword: 'DocsDotJson_BlueprintGeneratedClass',
+		type: 'string',
+		macro: (value: string|null) => ({
+			templated_string: [
+				'BlueprintGeneratedClass /Game/FactoryGame/',
+				null === value ? {type: 'string'} : value,
+				{
+					type: 'string',
+					templated_string: [
+						{type: 'string'},
+						'.',
+						{type: 'string'},
+						'_C',
+					],
+				},
 			],
 		}),
 	});
