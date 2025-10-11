@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "@satisfactory-dev/predicates.ts": "^0.2.0",
+    "@signpostmarv/json-schema-typescript-codegen": "./JSON-Schema-TypeScript-CodeGen/",
     "ajv": "^8.17.1"
   }
 }

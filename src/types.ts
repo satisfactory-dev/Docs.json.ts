@@ -1,6 +1,6 @@
 import type {
 	PositiveIntegerOrZero,
-} from '../JSON-Schema-TypeScript-CodeGen/src/types.ts';
+} from '@signpostmarv/json-schema-typescript-codegen';
 
 export type semver_full<
 	Major extends (

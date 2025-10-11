@@ -21,7 +21,7 @@ import type {
 
 import type {
 	PositiveIntegerOrZero,
-} from '../JSON-Schema-TypeScript-CodeGen/src/types.ts';
+} from '@signpostmarv/json-schema-typescript-codegen';
 
 type VersionSpecificBasename<
 	Version extends semver_full,

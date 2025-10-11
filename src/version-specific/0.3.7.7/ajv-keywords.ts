@@ -4,7 +4,7 @@ import type {
 
 import {
 	TemplatedString,
-} from '../../../JSON-Schema-TypeScript-CodeGen/src/Ajv/TemplatedString.ts';
+} from '@signpostmarv/json-schema-typescript-codegen/ajv';
 
 import common_types from '../../../schema/common/types.json' with {
 	type: 'json',
