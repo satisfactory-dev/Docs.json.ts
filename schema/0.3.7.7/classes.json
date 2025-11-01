@@ -5,50 +5,11 @@
 		"FGItemDescriptor": {
 			"type": "object",
 			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/isDescribed",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGDescriptor",
 			"required": [
-				"mAbbreviatedDisplayName",
-				"mStackSize",
-				"mCanBeDiscarded",
-				"mRememberPickUp",
-				"mEnergyValue",
-				"mRadioactiveDecay",
-				"mForm",
-				"mSmallIcon",
-				"mFluidColor",
 				"mResourceSinkPoints"
 			],
 			"properties": {
-				"mAbbreviatedDisplayName": {
-					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mAbbreviatedDisplayName"
-				},
-				"mStackSize": {
-					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mStackSize"
-				},
-				"mCanBeDiscarded": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mRememberPickUp": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mEnergyValue": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mRadioactiveDecay": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mForm": {
-					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mForm"
-				},
-				"mSmallIcon": {
-					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mSmallIcon"
-				},
-				"mPersistentBigIcon": {
-					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mPersistentBigIcon"
-				},
-				"mFluidColor": {
-					"$ref": "docs.json.ts--common--types#/$defs/BGRA"
-				},
 				"mResourceSinkPoints": {
 					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
 				}
@@ -383,21 +344,11 @@
 		},
 		"FGPoleDescriptor": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/isDescribed",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGDescriptor",
 			"unevaluatedProperties": false,
 			"required": [
 				"mSubCategories",
-				"mBuildMenuPriority",
-				"mAbbreviatedDisplayName",
-				"mStackSize",
-				"mCanBeDiscarded",
-				"mRememberPickUp",
-				"mEnergyValue",
-				"mRadioactiveDecay",
-				"mForm",
-				"mSmallIcon",
-				"mPersistentBigIcon",
-				"mFluidColor"
+				"mBuildMenuPriority"
 			],
 			"properties": {
 				"mSubCategories": {
@@ -405,37 +356,6 @@
 				},
 				"mBuildMenuPriority": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mAbbreviatedDisplayName": {
-					"type": "string",
-					"const": ""
-				},
-				"mStackSize": {
-					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mStackSize"
-				},
-				"mCanBeDiscarded": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mRememberPickUp": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mEnergyValue": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mRadioactiveDecay": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mForm": {
-					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mForm"
-				},
-				"mSmallIcon": {
-					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mSmallIcon"
-				},
-				"mPersistentBigIcon": {
-					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mPersistentBigIcon"
-				},
-				"mFluidColor": {
-					"$ref": "docs.json.ts--common--types#/$defs/BGRA"
 				}
 			}
 		},

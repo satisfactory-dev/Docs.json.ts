@@ -36,6 +36,54 @@
 				}
 			}
 		},
+		"FGDescriptor": {
+			"type": "object",
+			"$ref": "#/$defs/isDescribed",
+			"required": [
+				"mAbbreviatedDisplayName",
+				"mStackSize",
+				"mCanBeDiscarded",
+				"mRememberPickUp",
+				"mEnergyValue",
+				"mRadioactiveDecay",
+				"mForm",
+				"mSmallIcon",
+				"mPersistentBigIcon",
+				"mFluidColor"
+			],
+			"properties": {
+				"mAbbreviatedDisplayName": {
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mAbbreviatedDisplayName"
+				},
+				"mStackSize": {
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mStackSize"
+				},
+				"mCanBeDiscarded": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mRememberPickUp": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mEnergyValue": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mRadioactiveDecay": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mForm": {
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mForm"
+				},
+				"mSmallIcon": {
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mSmallIcon"
+				},
+				"mPersistentBigIcon": {
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mPersistentBigIcon"
+				},
+				"mFluidColor": {
+					"$ref": "docs.json.ts--common--types#/$defs/BGRA"
+				}
+			}
+		},
 		"FGBuildable": {
 			"type": "object",
 			"$ref": "#/$defs/isDescribed",
