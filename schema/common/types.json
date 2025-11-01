@@ -10,6 +10,10 @@
 			"type": "string",
 			"pattern": "^\\d+\\.\\d{6}$"
 		},
+		"decimal_string--signed": {
+			"type": "string",
+			"pattern": "^-?\\d+\\.\\d{6}$"
+		},
 		"integer_string": {
 			"type": "string",
 			"pattern": "^\\d+$"
@@ -17,6 +21,14 @@
 		"BGRA": {
 			"type": "string",
 			"pattern": "^\\(B=(\\d+),G=(\\d+),R=(\\d+),A=(\\d+)\\)$"
+		},
+		"XYZ--decimal_string": {
+			"type": "string",
+			"pattern": "^\\(X=(\\d+\\.\\d{6}),Y=(\\d+\\.\\d{6}),Z=(\\d+\\.\\d{6})\\)$"
+		},
+		"empty-object": {
+			"type": "string",
+			"const": "()"
 		}
 	}
 }
