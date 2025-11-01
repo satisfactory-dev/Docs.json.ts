@@ -94,7 +94,7 @@ type TypedString_type<
 			>,
 		},
 		String_enum_list: {
-			enum: [string, ...string[]],
+			enum_list: [string, ...string[]],
 		},
 		BlueprintGeneratedClass_quoted_list: {
 			minItems: PositiveInteger<number>,
@@ -147,10 +147,10 @@ type TypedString_schema_properties_typed_string<
 	},
 	String_enum_list: {
 		type: 'object',
-		required: ['enum'],
+		required: ['enum_list'],
 		additionalProperties: false,
 		properties: {
-			enum: {
+			enum_list: {
 				type: 'array',
 				minItems: 1,
 				uniqueItems: true,
@@ -537,24 +537,23 @@ export class TypedString<
 				'String_enum_list'
 			>['typed_string'];
 
-			const regex = new RegExp(`^\\(${
-				coerced_schema.enum
-					.map((value) => `(?:,?(${RegExp.escape(value)}))`)
-					.join('')
-			}\\)$`);
+			const parts = data
+				.substring(1, data.length - 1)
+				.split(',');
 
-			const match = regex.exec(data);
+			const matches = parts
+				.filter((maybe) => coerced_schema.enum_list.includes(maybe));
 
-			if (null === match) {
-				throw new TypeError('Data does not match regex!');
+			if (parts.length !== matches.length) {
+				throw new TypeError('Data contains unsupported elements!');
 			}
-
-			const [, ...matches] = match;
 
 			const sanity_check: TypedString_DataTo<
 				'String_enum_list'
 			> = factory.createArrayLiteralExpression(
-				matches.map((value) => factory.createStringLiteral(value)),
+				matches
+					.filter((maybe) => undefined !== maybe)
+					.map((value) => factory.createStringLiteral(value)),
 			);
 
 			result = sanity_check as typeof result;
@@ -771,8 +770,8 @@ export class TypedString<
 				);
 			}
 
-			if (coerced_schema.typed_string.enum.length > 1) {
-				const coerced_enum = coerced_schema.typed_string.enum as [
+			if (coerced_schema.typed_string.enum_list.length > 1) {
+				const coerced_enum = coerced_schema.typed_string.enum_list as [
 					string,
 					string,
 					...string[],
@@ -798,7 +797,7 @@ export class TypedString<
 
 				result = sanity_check as typeof result;
 			} else {
-				const coerced_enum = coerced_schema.typed_string.enum as [
+				const coerced_enum = coerced_schema.typed_string.enum_list as [
 					string,
 				];
 
@@ -925,10 +924,17 @@ export class TypedString<
 				'String_enum_list'
 			>['typed_string'];
 
+			const regex = `${
+				coerced.enum_list
+					.map((value) => RegExp.escape(value)).join('|')
+			}`;
+
 			return {
 				pattern: `^\\((${
-					coerced.enum.map((value) => RegExp.escape(value)).join('|')
-				})\\)$`,
+					regex
+				})(?:,(${
+					regex
+				}))*\\)$`,
 			};
 		} else if ('BlueprintGeneratedClass_quoted_list' === mode) {
 			const regex = BlueprintGeneratedClass_quoted
@@ -1025,10 +1031,10 @@ export class TypedString<
 				'String_enum_list'
 			> = {
 				type: 'object',
-				required: ['enum'],
+				required: ['enum_list'],
 				additionalProperties: false,
 				properties: {
-					enum: {
+					enum_list: {
 						type: 'array',
 						minItems: 1,
 						uniqueItems: true,

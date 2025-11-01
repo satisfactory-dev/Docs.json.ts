@@ -113,7 +113,7 @@
 							"typed_string": ""
 						},
 						{
-							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/ItemClass-Amount"
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/ItemClass-Amount--list"
 						}
 					]
 				},
@@ -346,12 +346,7 @@
 							"typed_string": ""
 						},
 						{
-							"type": "string",
-							"typed_string": {
-								"enum": [
-									"EV_Christmas"
-								]
-							}
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mRelevantEvents"
 						}
 					]
 				},
@@ -495,6 +490,78 @@
 				},
 				"mFluidColor": {
 					"$ref": "docs.json.ts--common--types#/$defs/BGRA"
+				}
+			}
+		},
+		"FGRecipe": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/isNamed",
+			"unevaluatedProperties": false,
+			"required": [
+				"FullName",
+				"mIngredients",
+				"mProduct",
+				"mManufactoringDuration",
+				"mManualManufacturingMultiplier",
+				"mProducedIn",
+				"mRelevantEvents"
+			],
+			"properties": {
+				"FullName": {
+					"type": "string",
+					"DocsDotJson_BlueprintGeneratedClass": null
+				},
+				"mIngredients": {
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/ItemClass-Amount--list"
+				},
+				"mProduct": {
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/ItemClass-Amount--list"
+				},
+				"mManufactoringDuration": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mManualManufacturingMultiplier": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mProducedIn": {
+					"oneOf": [
+						{
+							"type": "string",
+							"const": ""
+						},
+						{
+							"type": "string",
+							"typed_string": {
+								"enum_list": [
+									"/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkBenchComponent.BP_WorkBenchComponent_C",
+									"/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkshopComponent.BP_WorkshopComponent_C",
+									"/Game/FactoryGame/Buildable/Factory/AssemblerMk1/Build_AssemblerMk1.Build_AssemblerMk1_C",
+									"/Game/FactoryGame/Buildable/Factory/AutomatedWorkBench/Build_AutomatedWorkBench.Build_AutomatedWorkBench_C",
+									"/Game/FactoryGame/Buildable/Factory/ConstructorMk1/Build_ConstructorMk1.Build_ConstructorMk1_C",
+									"/Game/FactoryGame/Buildable/Factory/Converter/Build_Converter.Build_Converter_C",
+									"/Game/FactoryGame/Buildable/Factory/FoundryMk1/Build_FoundryMk1.Build_FoundryMk1_C",
+									"/Game/FactoryGame/Buildable/Factory/ManufacturerMk1/Build_ManufacturerMk1.Build_ManufacturerMk1_C",
+									"/Game/FactoryGame/Buildable/Factory/OilRefinery/Build_OilRefinery.Build_OilRefinery_C",
+									"/Game/FactoryGame/Buildable/Factory/Packager/Build_Packager.Build_Packager_C",
+									"/Game/FactoryGame/Buildable/Factory/SmelterMk1/Build_SmelterMk1.Build_SmelterMk1_C",
+									"/Game/FactoryGame/Equipment/BuildGun/BP_BuildGun.BP_BuildGun_C",
+									"/Script/FactoryGame.FGBuildGun",
+									"/Script/FactoryGame.FGBuildableAutomatedWorkBench"
+								]
+							}
+						}
+					]
+				},
+				"mRelevantEvents": {
+					"oneOf": [
+						{
+							"type": "string",
+							"typed_string": ""
+						},
+						{
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mRelevantEvents"
+						}
+					]
 				}
 			}
 		}

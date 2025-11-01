@@ -54,7 +54,7 @@
 				}
 			}
 		},
-		"ItemClass-Amount": {
+		"ItemClass-Amount--list": {
 			"type": "string",
 			"typed_string": {
 				"minItems": 1,
@@ -156,8 +156,16 @@
 			"required": ["mItemsToGive"],
 			"properties": {
 				"mItemsToGive": {
-					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/ItemClass-Amount"
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/ItemClass-Amount--list"
 				}
+			}
+		},
+		"mRelevantEvents": {
+			"type": "string",
+			"typed_string": {
+				"enum_list": [
+					"EV_Christmas"
+				]
 			}
 		}
 	}
