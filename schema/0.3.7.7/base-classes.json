@@ -84,6 +84,31 @@
 				}
 			}
 		},
+		"FGInstructive": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/isNamed",
+			"required": [
+				"FullName",
+				"mRelevantEvents"
+			],
+			"properties": {
+				"FullName": {
+					"type": "string",
+					"DocsDotJson_BlueprintGeneratedClass": null
+				},
+				"mRelevantEvents": {
+					"oneOf": [
+						{
+							"type": "string",
+							"typed_string": ""
+						},
+						{
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mRelevantEvents"
+						}
+					]
+				}
+			}
+		},
 		"FGBuildable": {
 			"type": "object",
 			"$ref": "#/$defs/isDescribed",

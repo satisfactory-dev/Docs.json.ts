@@ -17,10 +17,9 @@
 		},
 		"FGSchematic": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/isNamed",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGInstructive",
 			"unevaluatedProperties": false,
 			"required": [
-				"FullName",
 				"mType",
 				"mSubCategories",
 				"mTechTier",
@@ -28,14 +27,9 @@
 				"mTimeToComplete",
 				"mUnlocks",
 				"mSchematicDependencies",
-				"mRelevantEvents",
 				"mIncludeInBuilds"
 			],
 			"properties": {
-				"FullName": {
-					"type": "string",
-					"DocsDotJson_BlueprintGeneratedClass": null
-				},
 				"mType": {
 					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mType"
 				},
@@ -300,17 +294,6 @@
 						}
 					}
 				},
-				"mRelevantEvents": {
-					"oneOf": [
-						{
-							"type": "string",
-							"typed_string": ""
-						},
-						{
-							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mRelevantEvents"
-						}
-					]
-				},
 				"mIncludeInBuilds": {
 					"type": "string",
 					"const": "IIB_PublicBuilds"
@@ -361,22 +344,16 @@
 		},
 		"FGRecipe": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/isNamed",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGInstructive",
 			"unevaluatedProperties": false,
 			"required": [
-				"FullName",
 				"mIngredients",
 				"mProduct",
 				"mManufactoringDuration",
 				"mManualManufacturingMultiplier",
-				"mProducedIn",
-				"mRelevantEvents"
+				"mProducedIn"
 			],
 			"properties": {
-				"FullName": {
-					"type": "string",
-					"DocsDotJson_BlueprintGeneratedClass": null
-				},
 				"mIngredients": {
 					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/ItemClass-Amount--list"
 				},
@@ -415,17 +392,6 @@
 									"/Script/FactoryGame.FGBuildableAutomatedWorkBench"
 								]
 							}
-						}
-					]
-				},
-				"mRelevantEvents": {
-					"oneOf": [
-						{
-							"type": "string",
-							"typed_string": ""
-						},
-						{
-							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mRelevantEvents"
 						}
 					]
 				}
