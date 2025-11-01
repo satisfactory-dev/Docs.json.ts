@@ -20,11 +20,44 @@
 		},
 		"BGRA": {
 			"type": "string",
-			"pattern": "^\\(B=(\\d+),G=(\\d+),R=(\\d+),A=(\\d+)\\)$"
+			"typed_string": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": ["B", "G", "R", "A"],
+				"properties": {
+					"B": {
+						"$ref": "#/$defs/integer_string"
+					},
+					"G": {
+						"$ref": "#/$defs/integer_string"
+					},
+					"R": {
+						"$ref": "#/$defs/integer_string"
+					},
+					"A": {
+						"$ref": "#/$defs/integer_string"
+					}
+				}
+			}
 		},
 		"XYZ--decimal_string": {
 			"type": "string",
-			"pattern": "^\\(X=(\\d+\\.\\d{6}),Y=(\\d+\\.\\d{6}),Z=(\\d+\\.\\d{6})\\)$"
+			"typed_string": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": ["X", "Y", "Z"],
+				"properties": {
+					"X": {
+						"$ref": "#/$defs/decimal_string"
+					},
+					"Y": {
+						"$ref": "#/$defs/decimal_string"
+					},
+					"Z": {
+						"$ref": "#/$defs/decimal_string"
+					}
+				}
+			}
 		},
 		"empty-object": {
 			"type": "string",

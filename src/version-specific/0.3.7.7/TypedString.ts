@@ -59,6 +59,7 @@ import {
 type TypedString_mode = (
 	| 'Empty'
 	| 'None'
+	| 'Object'
 	| 'Object_list'
 	| 'String_enum_list'
 	| 'BlueprintGeneratedClass_quoted_list'
@@ -75,6 +76,13 @@ type TypedString_type<
 		None: {
 			const: '(None)',
 		},
+		Object: object_type<
+			'properties',
+			SchemaObject,
+			[string, ...string[]],
+			ObjectOfSchemas,
+			ObjectOfSchemas
+		>,
 		Object_list: {
 			minItems: PositiveInteger<number>,
 			items: object_type<
@@ -106,6 +114,7 @@ type TypedString_type_OneOf = {
 	oneOf: [
 		TypedString_type<'Empty'>,
 		TypedString_type<'None'>,
+		TypedString_type<'Object'>,
 		TypedString_type<'Object_list'>,
 		TypedString_type<'String_enum_list'>,
 		TypedString_type<'BlueprintGeneratedClass_quoted_list'>,
@@ -123,6 +132,7 @@ type TypedString_schema_properties_typed_string<
 		type: 'string',
 		const: '(None)',
 	},
+	Object: object_schema<'properties'>,
 	Object_list: {
 		type: 'object',
 		required: ['minItems', 'items'],
@@ -182,6 +192,7 @@ type TypedString_schema_OneOf = TypeDefinitionSchema & {
 	oneOf: [
 		TypedString_schema<'Empty'>,
 		TypedString_schema<'None'>,
+		TypedString_schema<'Object'>,
 		TypedString_schema<'Object_list'>,
 		TypedString_schema<'String_enum_list'>,
 		TypedString_schema<'BlueprintGeneratedClass_quoted_list'>,
@@ -193,6 +204,9 @@ type TypedString_SchemaTo<
 > = {
 	Empty: KeywordTypeNode<SyntaxKind.UndefinedKeyword>,
 	None: EmptyTupleTypeNode,
+	Object: object_TypeLiteralNode_possibly_extended<
+		'properties'
+	>,
 	Object_list: RestedTupleTypeNode<object_TypeLiteralNode_possibly_extended<
 		'properties'
 	>>,
@@ -217,6 +231,7 @@ type TypedString_DataTo<
 > = {
 	Empty: Identifier<'undefined'>,
 	None: ArrayLiteralExpression<never, never[], false>,
+	Object: ObjectLiteralExpression,
 	Object_list: ArrayLiteralExpression<
 		ObjectLiteralExpression,
 		[ObjectLiteralExpression, ...ObjectLiteralExpression[]],
@@ -240,6 +255,16 @@ type Type_Generator<
 	None: undefined,
 	Empty: undefined,
 	String_enum_list: undefined,
+	Object: (
+		schema: object_type<
+			'properties',
+			SchemaObject,
+			[string, ...string[]],
+			ObjectOfSchemas,
+			ObjectOfSchemas
+		>,
+		schema_parser: SchemaParser,
+	) => Promise<object_TypeLiteralNode_possibly_extended<'properties'>>,
 	Object_list: (
 		schema: object_type<
 			'properties',
@@ -284,6 +309,13 @@ export class TypedString<
 			>(
 				TypedString
 					.#generate_schema_definition('None')
+					.properties.typed_string,
+			),
+			Object: options.ajv.compile<
+				TypedString_type<'Object'>['typed_string']
+			>(
+				TypedString
+					.#generate_schema_definition('Object')
 					.properties.typed_string,
 			),
 			Object_list: options.ajv.compile<
@@ -361,6 +393,70 @@ export class TypedString<
 			const sanity_check: TypedString_DataTo<
 				'None'
 			> = factory.createArrayLiteralExpression([], false);
+
+			result = sanity_check as typeof result;
+		} else if ('Object' === mode) {
+			const coerced_schema = schema.typed_string as TypedString_type<
+				'Object'
+			>['typed_string'];
+
+			const properties = Object.keys(
+				coerced_schema.properties,
+			);
+
+			const regex = new RegExp(`^\\((?:,?${properties.map(
+				(property): [
+					string,
+					string,
+				] => [property, `(${RegExp.escape(property)})=([^=]+)`],
+			).map(([
+				property,
+				regex,
+			], i) => (
+				(
+					coerced_schema.required || ([] as string[])
+				).includes(property)
+					? `${i > 0 ? ',' : ''}${regex}`
+					: `(?:${i > 0 ? ',' : ''}${regex})?`
+			)).join('')})*\\)$`);
+
+			const match = regex.exec(data);
+
+			if (null === match) {
+				throw new TypeError('Data does not match expected regex!');
+			}
+
+			const [, ...matches] = match;
+
+			const property_assignments: PropertyAssignment[] = [];
+
+			for (let i = 0; i < matches.length; i += 2) {
+				const property_name = matches[i];
+				const property_value = matches[i + 1];
+
+				const property_schema = coerced_schema.properties[
+					property_name
+				];
+
+				const property_assignment = factory
+					.createPropertyAssignment(
+						property_name,
+						schema_parser
+							.parse(
+								property_schema,
+							)
+							.generate_typescript_data(
+								property_value,
+								schema_parser,
+								property_schema,
+							),
+					);
+
+				property_assignments.push(property_assignment);
+			}
+
+			const sanity_check: TypedString_DataTo<'Object'> = factory
+				.createObjectLiteralExpression(property_assignments);
 
 			result = sanity_check as typeof result;
 		} else if ('Object_list' === mode) {
@@ -527,6 +623,54 @@ export class TypedString<
 			const sanity_check: TypedString_SchemaTo<
 				'None'
 			> = factory.createTupleTypeNode([]);
+
+			result = sanity_check as typeof result;
+		} else if ('Object' === mode) {
+			const instance = schema_parser.types
+				.find((maybe): maybe is ObjectUnspecified<
+					{[key: string]: unknown},
+					'properties'
+				> => (
+					maybe instanceof ObjectUnspecified
+					&& 'properties' === maybe.properties_mode
+				));
+
+			if (undefined === instance) {
+				throw new TypeError(`schema_parser not loaded with ${
+					ObjectUnspecified.constructor.name
+				}<{[key: string]: unknown}, 'properties'>`);
+			}
+
+			const type_generator: Type_Generator<
+				'Object'
+			> = (
+				schema: object_type<
+					'properties',
+					SchemaObject,
+					[string, ...string[]],
+					ObjectOfSchemas,
+					ObjectOfSchemas
+				>,
+				schema_parser: SchemaParser,
+			) => {
+				return instance.generate_typescript_type({
+					schema,
+					schema_parser,
+				});
+			};
+
+			const coerced_schema: TypedString_type<
+				'Object'
+			> = schema as TypedString_type<
+				'Object'
+			>;
+
+			const sanity_check: TypedString_SchemaTo<
+				'Object'
+			> = await type_generator(
+				coerced_schema.typed_string,
+				schema_parser,
+			);
 
 			result = sanity_check as typeof result;
 		} else if ('Object_list' === mode) {
@@ -730,6 +874,29 @@ export class TypedString<
 			return {
 				const: '(None)',
 			};
+		} else if ('Object' === mode) {
+			const coerced = schema as TypedString_type<
+				'Object'
+			>['typed_string'];
+
+			const regex = `${
+				Object.keys(coerced.properties)
+					.map((property) => `(?:,?${
+						RegExp.escape(property)
+					}=.+)${
+						(
+							(coerced.required || ([] as string[]))
+								.includes(property)
+						)
+							? ''
+							: '?'
+					}`)
+					.join('')
+			}`;
+
+			return {
+				pattern: `^\\(${regex}(?:,${regex})*\\)$`,
+			};
 		} else if ('Object_list' === mode) {
 			const coerced = schema as TypedString_type<
 				'Object_list'
@@ -787,6 +954,7 @@ export class TypedString<
 			oneOf: [
 				this.#generate_schema_definition('Empty'),
 				this.#generate_schema_definition('None'),
+				this.#generate_schema_definition('Object'),
 				this.#generate_schema_definition('Object_list'),
 				this.#generate_schema_definition('String_enum_list'),
 				this.#generate_schema_definition(
@@ -821,6 +989,15 @@ export class TypedString<
 				type: 'string',
 				const: '(None)',
 			};
+
+			typed_string = sanity_check as typeof typed_string;
+		} else if ('Object' === mode) {
+			const sanity_check: TypedString_schema_properties_typed_string<
+				'Object'
+			> = ObjectUnspecified
+				.generate_schema_definition({
+					properties_mode: 'properties',
+				});
 
 			typed_string = sanity_check as typeof typed_string;
 		} else if ('Object_list' === mode) {
@@ -923,6 +1100,14 @@ export class TypedString<
 			const sanity_check: TypedString_type<'None'>['typed_string'] = {
 				const: '(None)',
 			};
+
+			typed_string = sanity_check as typeof typed_string;
+		} else if ('Object' === mode) {
+			const sanity_check: TypedString_type<
+				'Object'
+			>['typed_string'] = ObjectUnspecified.generate_type_definition({
+				properties_mode: 'properties',
+			});
 
 			typed_string = sanity_check as typeof typed_string;
 		} else if ('Object_list' === mode) {
