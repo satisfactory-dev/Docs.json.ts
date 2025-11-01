@@ -4,7 +4,7 @@
 	"$defs": {
 		"mDisplayName": {
 			"type": "string",
-			"minLength": 1
+			"minLength": 0
 		},
 		"mAbbreviatedDisplayName": {
 			"type": "string"
@@ -43,6 +43,46 @@
 				"EST_Alternate",
 				"EST_ResourceSink"
 			]
+		},
+		"DocsDotJson_BlueprintGeneratedClass_quoted--list": {
+			"type": "string",
+			"typed_string": {
+				"minItems": 1,
+				"items": {
+					"type": "string",
+					"DocsDotJson_BlueprintGeneratedClass_quoted": null
+				}
+			}
+		},
+		"ItemClass-Amount": {
+			"type": "string",
+			"typed_string": {
+				"minItems": 1,
+				"items": {
+					"type": "object",
+					"additionalProperties": false,
+					"required": ["ItemClass", "Amount"],
+					"properties": {
+						"ItemClass": {
+							"type": "string",
+							"DocsDotJson_BlueprintGeneratedClass_quoted": null
+						},
+						"Amount": {
+							"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+						}
+					}
+				}
+			}
+		},
+		"mSubCategories": {
+			"type": "string",
+			"typed_string": {
+				"minItems": 1,
+				"items": {
+					"type": "string",
+					"DocsDotJson_BlueprintGeneratedClass_quoted": null
+				}
+			}
 		}
 	}
 }
