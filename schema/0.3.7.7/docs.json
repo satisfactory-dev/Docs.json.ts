@@ -48,7 +48,7 @@
 			"$ref": "#/$defs/FGItemDescriptor"
 		},
 		{
-			"type": "object"
+			"$ref": "#/$defs/FGSchematic"
 		},
 		{
 			"type": "object"

@@ -71,24 +71,689 @@
 				"mIncludeInBuilds"
 			],
 			"properties": {
-				"ClassName": {
-					"oneOf": [
-						{
-							"type": "string",
-							"DocsDotJson_ResourceSink_Unlock_C": null
-						},
-						{
-							"type": "string",
-							"DocsDotJson_Schematic_C": null
-						}
-					]
-				},
 				"FullName": {
 					"type": "string",
 					"DocsDotJson_BlueprintGeneratedClass": null
 				},
 				"mType": {
 					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mType"
+				},
+				"mSubCategories": {
+					"oneOf": [
+						{
+							"type": "string",
+							"typed_string": ""
+						},
+						{
+							"type": "string",
+							"typed_string": "(None)"
+						},
+						{
+							"type": "string",
+							"typed_string": {
+								"minItems": 1,
+								"items": {
+									"type": "string",
+									"DocsDotJson_BlueprintGeneratedClass_quoted": null
+								}
+							}
+						}
+					]
+				},
+				"mTechTier": {
+					"type": "string",
+					"enum": [
+						"0",
+						"1",
+						"2",
+						"3",
+						"4",
+						"5",
+						"6",
+						"7"
+					]
+				},
+				"mCost": {
+					"oneOf": [
+						{
+							"type": "string",
+							"typed_string": ""
+						},
+						{
+							"type": "string",
+							"typed_string": {
+								"minItems": 1,
+								"items": {
+									"type": "object",
+									"additionalProperties": false,
+									"required": ["ItemClass", "Amount"],
+									"properties": {
+										"ItemClass": {
+											"type": "string",
+											"DocsDotJson_BlueprintGeneratedClass_quoted": null
+										},
+										"Amount": {
+											"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+										}
+									}
+								}
+							}
+						}
+					]
+				},
+				"mTimeToComplete": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mUnlocks": {
+					"oneOf": [
+						{
+							"type": "array",
+							"maxItems": 0,
+							"items": {}
+						},
+						{
+							"type": "array",
+							"items": false,
+							"minItems": 1,
+							"maxItems": 1,
+							"prefixItems": [
+								{
+									"type": "object",
+									"additionalProperties": false,
+									"required": ["Class", "mRecipes"],
+									"properties": {
+										"Class": {
+											"type": "string",
+											"DocsDotJson_BP_C": null
+										},
+										"mRecipes": {
+											"type": "string",
+											"typed_string": {
+												"minItems": 1,
+												"items": {
+													"type": "string",
+													"DocsDotJson_BlueprintGeneratedClass_quoted": null
+												}
+											}
+										}
+									}
+								}
+							]
+						},
+						{
+							"type": "array",
+							"items": false,
+							"minItems": 2,
+							"maxItems": 2,
+							"prefixItems": [
+								{
+									"type": "object",
+									"additionalProperties": false,
+									"required": ["Class", "mRecipes"],
+									"properties": {
+										"Class": {
+											"type": "string",
+											"DocsDotJson_BP_C": null
+										},
+										"mRecipes": {
+											"type": "string",
+											"typed_string": {
+												"minItems": 1,
+												"items": {
+													"type": "string",
+													"DocsDotJson_BlueprintGeneratedClass_quoted": null
+												}
+											}
+										}
+									}
+								},
+								{
+									"type": "object",
+									"additionalProperties": false,
+									"required": ["Class", "mResourcesToAddToScanner"],
+									"properties": {
+										"Class": {
+											"type": "string",
+											"DocsDotJson_BP_C": null
+										},
+										"mResourcesToAddToScanner": {
+											"type": "string",
+											"typed_string": {
+												"minItems": 1,
+												"items": {
+													"type": "string",
+													"DocsDotJson_BlueprintGeneratedClass_quoted": null
+												}
+											}
+										}
+									}
+								}
+							]
+						},
+						{
+							"type": "array",
+							"items": false,
+							"minItems": 2,
+							"maxItems": 2,
+							"prefixItems": [
+								{
+									"type": "object",
+									"additionalProperties": false,
+									"required": ["Class", "mRecipes"],
+									"properties": {
+										"Class": {
+											"type": "string",
+											"DocsDotJson_BP_C": null
+										},
+										"mRecipes": {
+											"type": "string",
+											"typed_string": {
+												"minItems": 1,
+												"items": {
+													"type": "string",
+													"DocsDotJson_BlueprintGeneratedClass_quoted": null
+												}
+											}
+										}
+									}
+								},
+								{
+									"type": "object",
+									"additionalProperties": false,
+									"required": ["Class", "mNumInventorySlotsToUnlock"],
+									"properties": {
+										"Class": {
+											"type": "string",
+											"DocsDotJson_BP_C": null
+										},
+										"mNumInventorySlotsToUnlock": {
+											"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+										}
+									}
+								}
+							]
+						},
+						{
+							"type": "array",
+							"items": false,
+							"minItems": 3,
+							"maxItems": 3,
+							"prefixItems": [
+								{
+									"type": "object",
+									"additionalProperties": false,
+									"required": ["Class", "mRecipes"],
+									"properties": {
+										"Class": {
+											"type": "string",
+											"DocsDotJson_BP_C": null
+										},
+										"mRecipes": {
+											"type": "string",
+											"typed_string": {
+												"minItems": 1,
+												"items": {
+													"type": "string",
+													"DocsDotJson_BlueprintGeneratedClass_quoted": null
+												}
+											}
+										}
+									}
+								},
+								{
+									"type": "object",
+									"additionalProperties": false,
+									"required": ["Class", "mNumInventorySlotsToUnlock"],
+									"properties": {
+										"Class": {
+											"type": "string",
+											"DocsDotJson_BP_C": null
+										},
+										"mNumInventorySlotsToUnlock": {
+											"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+										}
+									}
+								},
+								{
+									"type": "object",
+									"additionalProperties": false,
+									"required": ["Class", "mNumArmEquipmentSlotsToUnlock"],
+									"properties": {
+										"Class": {
+											"type": "string",
+											"DocsDotJson_BP_C": null
+										},
+										"mNumArmEquipmentSlotsToUnlock": {
+											"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+										}
+									}
+								}
+							]
+						},
+						{
+							"type": "array",
+							"items": false,
+							"minItems": 1,
+							"maxItems": 1,
+							"prefixItems": [
+								{
+									"type": "object",
+									"additionalProperties": false,
+									"required": ["Class", "mNumArmEquipmentSlotsToUnlock"],
+									"properties": {
+										"Class": {
+											"type": "string",
+											"DocsDotJson_BP_C": null
+										},
+										"mNumArmEquipmentSlotsToUnlock": {
+											"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+										}
+									}
+								}
+							]
+						},
+						{
+							"type": "array",
+							"items": false,
+							"minItems": 1,
+							"maxItems": 1,
+							"prefixItems": [
+								{
+									"type": "object",
+									"additionalProperties": false,
+									"required": ["Class", "mNumInventorySlotsToUnlock"],
+									"properties": {
+										"Class": {
+											"type": "string",
+											"DocsDotJson_BP_C": null
+										},
+										"mNumInventorySlotsToUnlock": {
+											"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+										}
+									}
+								}
+							]
+						},
+						{
+							"type": "array",
+							"items": false,
+							"minItems": 3,
+							"maxItems": 3,
+							"prefixItems": [
+								{
+									"type": "object",
+									"additionalProperties": false,
+									"required": ["Class", "mRecipes"],
+									"properties": {
+										"Class": {
+											"type": "string",
+											"DocsDotJson_BP_C": null
+										},
+										"mRecipes": {
+											"type": "string",
+											"typed_string": {
+												"minItems": 1,
+												"items": {
+													"type": "string",
+													"DocsDotJson_BlueprintGeneratedClass_quoted": null
+												}
+											}
+										}
+									}
+								},
+								{
+									"type": "object",
+									"additionalProperties": false,
+									"required": ["Class", "mResourcesToAddToScanner"],
+									"properties": {
+										"Class": {
+											"type": "string",
+											"DocsDotJson_BP_C": null
+										},
+										"mResourcesToAddToScanner": {
+											"type": "string",
+											"typed_string": {
+												"minItems": 1,
+												"items": {
+													"type": "string",
+													"DocsDotJson_BlueprintGeneratedClass_quoted": null
+												}
+											}
+										}
+									}
+								},
+								{
+									"type": "object",
+									"additionalProperties": false,
+									"required": ["Class", "mSchematics"],
+									"properties": {
+										"Class": {
+											"type": "string",
+											"DocsDotJson_BP_C": null
+										},
+										"mSchematics": {
+											"type": "string",
+											"typed_string": {
+												"minItems": 1,
+												"items": {
+													"type": "string",
+													"DocsDotJson_BlueprintGeneratedClass_quoted": null
+												}
+											}
+										}
+									}
+								}
+							]
+						},
+						{
+							"type": "array",
+							"items": false,
+							"minItems": 2,
+							"maxItems": 2,
+							"prefixItems": [
+								{
+									"type": "object",
+									"additionalProperties": false,
+									"required": ["Class", "mRecipes"],
+									"properties": {
+										"Class": {
+											"type": "string",
+											"DocsDotJson_BP_C": null
+										},
+										"mRecipes": {
+											"type": "string",
+											"typed_string": {
+												"minItems": 1,
+												"items": {
+													"type": "string",
+													"DocsDotJson_BlueprintGeneratedClass_quoted": null
+												}
+											}
+										}
+									}
+								},
+								{
+									"type": "object",
+									"additionalProperties": false,
+									"required": ["Class", "mSchematics"],
+									"properties": {
+										"Class": {
+											"type": "string",
+											"DocsDotJson_BP_C": null
+										},
+										"mSchematics": {
+											"type": "string",
+											"typed_string": {
+												"minItems": 1,
+												"items": {
+													"type": "string",
+													"DocsDotJson_BlueprintGeneratedClass_quoted": null
+												}
+											}
+										}
+									}
+								}
+							]
+						},
+						{
+							"type": "array",
+							"items": false,
+							"minItems": 2,
+							"maxItems": 2,
+							"prefixItems": [
+								{
+									"type": "object",
+									"additionalProperties": false,
+									"required": ["Class", "mSchematics"],
+									"properties": {
+										"Class": {
+											"type": "string",
+											"DocsDotJson_BP_C": null
+										},
+										"mSchematics": {
+											"type": "string",
+											"typed_string": {
+												"minItems": 1,
+												"items": {
+													"type": "string",
+													"DocsDotJson_BlueprintGeneratedClass_quoted": null
+												}
+											}
+										}
+									}
+								},
+								{
+									"type": "object",
+									"additionalProperties": false,
+									"required": ["Class", "mRecipes"],
+									"properties": {
+										"Class": {
+											"type": "string",
+											"DocsDotJson_BP_C": null
+										},
+										"mRecipes": {
+											"type": "string",
+											"typed_string": {
+												"minItems": 1,
+												"items": {
+													"type": "string",
+													"DocsDotJson_BlueprintGeneratedClass_quoted": null
+												}
+											}
+										}
+									}
+								}
+							]
+						},
+						{
+							"type": "array",
+							"items": false,
+							"minItems": 1,
+							"maxItems": 1,
+							"prefixItems": [
+								{
+									"type": "object",
+									"additionalProperties": false,
+									"required": ["Class", "mSchematics"],
+									"properties": {
+										"Class": {
+											"type": "string",
+											"DocsDotJson_BP_C": null
+										},
+										"mSchematics": {
+											"type": "string",
+											"typed_string": {
+												"minItems": 1,
+												"items": {
+													"type": "string",
+													"DocsDotJson_BlueprintGeneratedClass_quoted": null
+												}
+											}
+										}
+									}
+								}
+							]
+						},
+						{
+							"type": "array",
+							"items": false,
+							"minItems": 1,
+							"maxItems": 1,
+							"prefixItems": [
+								{
+									"type": "object",
+									"additionalProperties": false,
+									"required": ["Class", "mResourcesToAddToScanner"],
+									"properties": {
+										"Class": {
+											"type": "string",
+											"DocsDotJson_BP_C": null
+										},
+										"mResourcesToAddToScanner": {
+											"type": "string",
+											"typed_string": {
+												"minItems": 1,
+												"items": {
+													"type": "string",
+													"DocsDotJson_BlueprintGeneratedClass_quoted": null
+												}
+											}
+										}
+									}
+								}
+							]
+						},
+						{
+							"type": "array",
+							"items": false,
+							"minItems": 2,
+							"maxItems": 2,
+							"prefixItems": [
+								{
+									"type": "object",
+									"additionalProperties": false,
+									"required": ["Class", "mRecipes"],
+									"properties": {
+										"Class": {
+											"type": "string",
+											"DocsDotJson_BP_C": null
+										},
+										"mRecipes": {
+											"type": "string",
+											"typed_string": {
+												"minItems": 1,
+												"items": {
+													"type": "string",
+													"DocsDotJson_BlueprintGeneratedClass_quoted": null
+												}
+											}
+										}
+									}
+								},
+								{
+									"type": "object",
+									"additionalProperties": false,
+									"required": ["Class"],
+									"properties": {
+										"Class": {
+											"type": "string",
+											"DocsDotJson_BP_C": null
+										}
+									}
+								}
+							]
+						},
+						{
+							"type": "array",
+							"items": false,
+							"minItems": 1,
+							"maxItems": 1,
+							"prefixItems": [
+								{
+									"type": "object",
+									"additionalProperties": false,
+									"required": ["Class"],
+									"properties": {
+										"Class": {
+											"type": "string",
+											"DocsDotJson_BP_C": null
+										}
+									}
+								}
+							]
+						},
+						{
+							"type": "array",
+							"items": false,
+							"minItems": 1,
+							"maxItems": 1,
+							"prefixItems": [
+								{
+									"type": "object",
+									"additionalProperties": false,
+									"required": ["Class", "mItemsToGive"],
+									"properties": {
+										"Class": {
+											"type": "string",
+											"DocsDotJson_BP_C": null
+										},
+										"mItemsToGive": {
+											"type": "string",
+											"typed_string": {
+												"minItems": 1,
+												"items": {
+													"type": "object",
+													"additionalProperties": false,
+													"required": ["ItemClass", "Amount"],
+													"properties": {
+														"ItemClass": {
+															"type": "string",
+															"DocsDotJson_BlueprintGeneratedClass_quoted": null
+														},
+														"Amount": {
+															"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							]
+						}
+					]
+				},
+				"mSchematicDependencies": {
+					"type": "array",
+					"minItems": 0,
+					"items": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": [
+							"Class",
+							"mSchematics",
+							"mRequireAllSchematicsToBePurchased"
+						],
+						"properties": {
+							"Class": {
+								"type": "string",
+								"DocsDotJson_BP_C": null
+							},
+							"mSchematics": {
+								"type": "string",
+								"typed_string": {
+									"minItems": 1,
+									"items": {
+										"type": "string",
+										"DocsDotJson_BlueprintGeneratedClass_quoted": null
+									}
+								}
+							},
+							"mRequireAllSchematicsToBePurchased": {
+								"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+							}
+						}
+					}
+				},
+				"mRelevantEvents": {
+					"oneOf": [
+						{
+							"type": "string",
+							"typed_string": ""
+						},
+						{
+							"type": "string",
+							"typed_string": {
+								"enum": [
+									"EV_Christmas"
+								]
+							}
+						}
+					]
+				},
+				"mIncludeInBuilds": {
+					"type": "string",
+					"const": "IIB_PublicBuilds"
 				}
 			}
 		}

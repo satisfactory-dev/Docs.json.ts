@@ -11,7 +11,12 @@
 			"properties": {
 				"ClassName": {
 					"type": "string",
-					"DocsDotJson_Desc_C": null
+					"templated_string": [
+						{"type": "string"},
+						"_",
+						{"type": "string"},
+						"_C"
+					]
 				},
 				"mDisplayName": {
 					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mDisplayName"
