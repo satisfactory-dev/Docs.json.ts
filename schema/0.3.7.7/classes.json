@@ -54,6 +54,36 @@
 				}
 			}
 		},
+		"DocsDotJson_BlueprintGeneratedClass_quoted--list": {
+			"type": "string",
+			"typed_string": {
+				"minItems": 1,
+				"items": {
+					"type": "string",
+					"DocsDotJson_BlueprintGeneratedClass_quoted": null
+				}
+			}
+		},
+		"ItemClass-Amount": {
+			"type": "string",
+			"typed_string": {
+				"minItems": 1,
+				"items": {
+					"type": "object",
+					"additionalProperties": false,
+					"required": ["ItemClass", "Amount"],
+					"properties": {
+						"ItemClass": {
+							"type": "string",
+							"DocsDotJson_BlueprintGeneratedClass_quoted": null
+						},
+						"Amount": {
+							"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+						}
+					}
+				}
+			}
+		},
 		"FGSchematic": {
 			"type": "object",
 			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/isNamed",
@@ -120,24 +150,7 @@
 							"typed_string": ""
 						},
 						{
-							"type": "string",
-							"typed_string": {
-								"minItems": 1,
-								"items": {
-									"type": "object",
-									"additionalProperties": false,
-									"required": ["ItemClass", "Amount"],
-									"properties": {
-										"ItemClass": {
-											"type": "string",
-											"DocsDotJson_BlueprintGeneratedClass_quoted": null
-										},
-										"Amount": {
-											"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-										}
-									}
-								}
-							}
+							"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/ItemClass-Amount"
 						}
 					]
 				},
@@ -167,14 +180,7 @@
 											"DocsDotJson_BP_C": null
 										},
 										"mRecipes": {
-											"type": "string",
-											"typed_string": {
-												"minItems": 1,
-												"items": {
-													"type": "string",
-													"DocsDotJson_BlueprintGeneratedClass_quoted": null
-												}
-											}
+											"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
 										}
 									}
 								}
@@ -196,14 +202,7 @@
 											"DocsDotJson_BP_C": null
 										},
 										"mRecipes": {
-											"type": "string",
-											"typed_string": {
-												"minItems": 1,
-												"items": {
-													"type": "string",
-													"DocsDotJson_BlueprintGeneratedClass_quoted": null
-												}
-											}
+											"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
 										}
 									}
 								},
@@ -217,14 +216,7 @@
 											"DocsDotJson_BP_C": null
 										},
 										"mResourcesToAddToScanner": {
-											"type": "string",
-											"typed_string": {
-												"minItems": 1,
-												"items": {
-													"type": "string",
-													"DocsDotJson_BlueprintGeneratedClass_quoted": null
-												}
-											}
+											"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
 										}
 									}
 								}
@@ -246,14 +238,7 @@
 											"DocsDotJson_BP_C": null
 										},
 										"mRecipes": {
-											"type": "string",
-											"typed_string": {
-												"minItems": 1,
-												"items": {
-													"type": "string",
-													"DocsDotJson_BlueprintGeneratedClass_quoted": null
-												}
-											}
+											"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
 										}
 									}
 								},
@@ -289,14 +274,7 @@
 											"DocsDotJson_BP_C": null
 										},
 										"mRecipes": {
-											"type": "string",
-											"typed_string": {
-												"minItems": 1,
-												"items": {
-													"type": "string",
-													"DocsDotJson_BlueprintGeneratedClass_quoted": null
-												}
-											}
+											"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
 										}
 									}
 								},
@@ -390,14 +368,7 @@
 											"DocsDotJson_BP_C": null
 										},
 										"mRecipes": {
-											"type": "string",
-											"typed_string": {
-												"minItems": 1,
-												"items": {
-													"type": "string",
-													"DocsDotJson_BlueprintGeneratedClass_quoted": null
-												}
-											}
+											"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
 										}
 									}
 								},
@@ -411,14 +382,7 @@
 											"DocsDotJson_BP_C": null
 										},
 										"mResourcesToAddToScanner": {
-											"type": "string",
-											"typed_string": {
-												"minItems": 1,
-												"items": {
-													"type": "string",
-													"DocsDotJson_BlueprintGeneratedClass_quoted": null
-												}
-											}
+											"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
 										}
 									}
 								},
@@ -432,14 +396,7 @@
 											"DocsDotJson_BP_C": null
 										},
 										"mSchematics": {
-											"type": "string",
-											"typed_string": {
-												"minItems": 1,
-												"items": {
-													"type": "string",
-													"DocsDotJson_BlueprintGeneratedClass_quoted": null
-												}
-											}
+											"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
 										}
 									}
 								}
@@ -461,14 +418,7 @@
 											"DocsDotJson_BP_C": null
 										},
 										"mRecipes": {
-											"type": "string",
-											"typed_string": {
-												"minItems": 1,
-												"items": {
-													"type": "string",
-													"DocsDotJson_BlueprintGeneratedClass_quoted": null
-												}
-											}
+											"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
 										}
 									}
 								},
@@ -482,14 +432,7 @@
 											"DocsDotJson_BP_C": null
 										},
 										"mSchematics": {
-											"type": "string",
-											"typed_string": {
-												"minItems": 1,
-												"items": {
-													"type": "string",
-													"DocsDotJson_BlueprintGeneratedClass_quoted": null
-												}
-											}
+											"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
 										}
 									}
 								}
@@ -511,14 +454,7 @@
 											"DocsDotJson_BP_C": null
 										},
 										"mSchematics": {
-											"type": "string",
-											"typed_string": {
-												"minItems": 1,
-												"items": {
-													"type": "string",
-													"DocsDotJson_BlueprintGeneratedClass_quoted": null
-												}
-											}
+											"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
 										}
 									}
 								},
@@ -532,14 +468,7 @@
 											"DocsDotJson_BP_C": null
 										},
 										"mRecipes": {
-											"type": "string",
-											"typed_string": {
-												"minItems": 1,
-												"items": {
-													"type": "string",
-													"DocsDotJson_BlueprintGeneratedClass_quoted": null
-												}
-											}
+											"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
 										}
 									}
 								}
@@ -561,14 +490,7 @@
 											"DocsDotJson_BP_C": null
 										},
 										"mSchematics": {
-											"type": "string",
-											"typed_string": {
-												"minItems": 1,
-												"items": {
-													"type": "string",
-													"DocsDotJson_BlueprintGeneratedClass_quoted": null
-												}
-											}
+											"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
 										}
 									}
 								}
@@ -590,14 +512,7 @@
 											"DocsDotJson_BP_C": null
 										},
 										"mResourcesToAddToScanner": {
-											"type": "string",
-											"typed_string": {
-												"minItems": 1,
-												"items": {
-													"type": "string",
-													"DocsDotJson_BlueprintGeneratedClass_quoted": null
-												}
-											}
+											"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
 										}
 									}
 								}
@@ -619,14 +534,7 @@
 											"DocsDotJson_BP_C": null
 										},
 										"mRecipes": {
-											"type": "string",
-											"typed_string": {
-												"minItems": 1,
-												"items": {
-													"type": "string",
-													"DocsDotJson_BlueprintGeneratedClass_quoted": null
-												}
-											}
+											"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
 										}
 									}
 								},
@@ -678,24 +586,7 @@
 											"DocsDotJson_BP_C": null
 										},
 										"mItemsToGive": {
-											"type": "string",
-											"typed_string": {
-												"minItems": 1,
-												"items": {
-													"type": "object",
-													"additionalProperties": false,
-													"required": ["ItemClass", "Amount"],
-													"properties": {
-														"ItemClass": {
-															"type": "string",
-															"DocsDotJson_BlueprintGeneratedClass_quoted": null
-														},
-														"Amount": {
-															"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-														}
-													}
-												}
-											}
+											"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/ItemClass-Amount"
 										}
 									}
 								}
@@ -720,14 +611,7 @@
 								"DocsDotJson_BP_C": null
 							},
 							"mSchematics": {
-								"type": "string",
-								"typed_string": {
-									"minItems": 1,
-									"items": {
-										"type": "string",
-										"DocsDotJson_BlueprintGeneratedClass_quoted": null
-									}
-								}
+								"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
 							},
 							"mRequireAllSchematicsToBePurchased": {
 								"$ref": "docs.json.ts--common--types#/$defs/bool_string"
