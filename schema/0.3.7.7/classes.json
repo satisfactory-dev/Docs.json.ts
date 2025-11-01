@@ -358,26 +358,13 @@
 		},
 		"FGBuildablePole": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/isDescribed",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable",
 			"unevaluatedProperties": false,
 			"required": [
 				"mHeight",
 				"mUseStaticHeight",
 				"mCanStack",
-				"mStackHeight",
-				"MaxRenderDistance",
-				"mHighlightVector",
-				"mMaterialNameToInstanceManager",
-				"mBlockSharingMaterialInstanceMapping",
-				"mExcludeFromMaterialInstancing",
-				"mSkipBuildEffect",
-				"mBuildEffectSpeed",
-				"mForceNetUpdateOnRegisterPlayer",
-				"mShouldShowHighlight",
-				"mAllowCleranceSeparationEvenIfStackedOn",
-				"mInteractingPlayers",
-				"mIsUseable",
-				"mHideOnBuildEffectStart"
+				"mStackHeight"
 			],
 			"properties": {
 				"mHeight": {
@@ -391,47 +378,6 @@
 				},
 				"mStackHeight": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"MaxRenderDistance": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
-				},
-				"mHighlightVector": {
-					"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
-				},
-				"mMaterialNameToInstanceManager": {
-					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-				},
-				"mBlockSharingMaterialInstanceMapping": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mExcludeFromMaterialInstancing": {
-					"type": "string",
-					"const": ""
-				},
-				"mSkipBuildEffect": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mBuildEffectSpeed": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mForceNetUpdateOnRegisterPlayer": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mShouldShowHighlight": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mAllowCleranceSeparationEvenIfStackedOn": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mInteractingPlayers": {
-					"type": "string",
-					"const": ""
-				},
-				"mIsUseable": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mHideOnBuildEffectStart": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				}
 			}
 		},
@@ -562,6 +508,36 @@
 							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mRelevantEvents"
 						}
 					]
+				}
+			}
+		},
+		"FGBuildableConveyorBelt": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable",
+			"unevaluatedProperties": false,
+			"required": [
+				"mMeshLength",
+				"mItemMeshMap",
+				"mSplineData",
+				"mSpeed",
+				"mItems"
+			],
+			"properties": {
+				"mMeshLength": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mItemMeshMap": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mSplineData": {
+					"type": "string",
+					"const": ""
+				},
+				"mSpeed": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mItems": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
 				}
 			}
 		}

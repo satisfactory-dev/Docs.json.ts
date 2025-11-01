@@ -35,6 +35,68 @@
 					"minLength": 0
 				}
 			}
+		},
+		"FGBuildable": {
+			"type": "object",
+			"$ref": "#/$defs/isDescribed",
+			"required": [
+				"MaxRenderDistance",
+				"mHighlightVector",
+				"mMaterialNameToInstanceManager",
+				"mBlockSharingMaterialInstanceMapping",
+				"mExcludeFromMaterialInstancing",
+				"mSkipBuildEffect",
+				"mBuildEffectSpeed",
+				"mForceNetUpdateOnRegisterPlayer",
+				"mShouldShowHighlight",
+				"mAllowCleranceSeparationEvenIfStackedOn",
+				"mInteractingPlayers",
+				"mIsUseable",
+				"mHideOnBuildEffectStart"
+			],
+			"properties": {
+				"MaxRenderDistance": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
+				},
+				"mHighlightVector": {
+					"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
+				},
+				"mMaterialNameToInstanceManager": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mBlockSharingMaterialInstanceMapping": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mExcludeFromMaterialInstancing": {
+					"type": "string",
+					"const": ""
+				},
+				"mSkipBuildEffect": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mBuildEffectSpeed": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mForceNetUpdateOnRegisterPlayer": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mShouldShowHighlight": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mAllowCleranceSeparationEvenIfStackedOn": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mInteractingPlayers": {
+					"type": "string",
+					"const": ""
+				},
+				"mIsUseable": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mHideOnBuildEffectStart": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
 		}
 	}
 }
