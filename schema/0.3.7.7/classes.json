@@ -134,18 +134,7 @@
 							"maxItems": 1,
 							"prefixItems": [
 								{
-									"type": "object",
-									"additionalProperties": false,
-									"required": ["Class", "mRecipes"],
-									"properties": {
-										"Class": {
-											"type": "string",
-											"DocsDotJson_BP_C": null
-										},
-										"mRecipes": {
-											"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
-										}
-									}
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mRecipes"
 								}
 							]
 						},
@@ -156,32 +145,10 @@
 							"maxItems": 2,
 							"prefixItems": [
 								{
-									"type": "object",
-									"additionalProperties": false,
-									"required": ["Class", "mRecipes"],
-									"properties": {
-										"Class": {
-											"type": "string",
-											"DocsDotJson_BP_C": null
-										},
-										"mRecipes": {
-											"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
-										}
-									}
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mRecipes"
 								},
 								{
-									"type": "object",
-									"additionalProperties": false,
-									"required": ["Class", "mResourcesToAddToScanner"],
-									"properties": {
-										"Class": {
-											"type": "string",
-											"DocsDotJson_BP_C": null
-										},
-										"mResourcesToAddToScanner": {
-											"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
-										}
-									}
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mResourcesToAddToScanner"
 								}
 							]
 						},
@@ -192,32 +159,10 @@
 							"maxItems": 2,
 							"prefixItems": [
 								{
-									"type": "object",
-									"additionalProperties": false,
-									"required": ["Class", "mRecipes"],
-									"properties": {
-										"Class": {
-											"type": "string",
-											"DocsDotJson_BP_C": null
-										},
-										"mRecipes": {
-											"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
-										}
-									}
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mRecipes"
 								},
 								{
-									"type": "object",
-									"additionalProperties": false,
-									"required": ["Class", "mNumInventorySlotsToUnlock"],
-									"properties": {
-										"Class": {
-											"type": "string",
-											"DocsDotJson_BP_C": null
-										},
-										"mNumInventorySlotsToUnlock": {
-											"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-										}
-									}
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mNumInventorySlotsToUnlock"
 								}
 							]
 						},
@@ -228,46 +173,13 @@
 							"maxItems": 3,
 							"prefixItems": [
 								{
-									"type": "object",
-									"additionalProperties": false,
-									"required": ["Class", "mRecipes"],
-									"properties": {
-										"Class": {
-											"type": "string",
-											"DocsDotJson_BP_C": null
-										},
-										"mRecipes": {
-											"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
-										}
-									}
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mRecipes"
 								},
 								{
-									"type": "object",
-									"additionalProperties": false,
-									"required": ["Class", "mNumInventorySlotsToUnlock"],
-									"properties": {
-										"Class": {
-											"type": "string",
-											"DocsDotJson_BP_C": null
-										},
-										"mNumInventorySlotsToUnlock": {
-											"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-										}
-									}
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mNumInventorySlotsToUnlock"
 								},
 								{
-									"type": "object",
-									"additionalProperties": false,
-									"required": ["Class", "mNumArmEquipmentSlotsToUnlock"],
-									"properties": {
-										"Class": {
-											"type": "string",
-											"DocsDotJson_BP_C": null
-										},
-										"mNumArmEquipmentSlotsToUnlock": {
-											"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-										}
-									}
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mNumArmEquipmentSlotsToUnlock"
 								}
 							]
 						},
@@ -278,18 +190,7 @@
 							"maxItems": 1,
 							"prefixItems": [
 								{
-									"type": "object",
-									"additionalProperties": false,
-									"required": ["Class", "mNumArmEquipmentSlotsToUnlock"],
-									"properties": {
-										"Class": {
-											"type": "string",
-											"DocsDotJson_BP_C": null
-										},
-										"mNumArmEquipmentSlotsToUnlock": {
-											"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-										}
-									}
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mNumArmEquipmentSlotsToUnlock"
 								}
 							]
 						},
@@ -300,18 +201,7 @@
 							"maxItems": 1,
 							"prefixItems": [
 								{
-									"type": "object",
-									"additionalProperties": false,
-									"required": ["Class", "mNumInventorySlotsToUnlock"],
-									"properties": {
-										"Class": {
-											"type": "string",
-											"DocsDotJson_BP_C": null
-										},
-										"mNumInventorySlotsToUnlock": {
-											"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-										}
-									}
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mNumInventorySlotsToUnlock"
 								}
 							]
 						},
@@ -322,46 +212,13 @@
 							"maxItems": 3,
 							"prefixItems": [
 								{
-									"type": "object",
-									"additionalProperties": false,
-									"required": ["Class", "mRecipes"],
-									"properties": {
-										"Class": {
-											"type": "string",
-											"DocsDotJson_BP_C": null
-										},
-										"mRecipes": {
-											"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
-										}
-									}
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mRecipes"
 								},
 								{
-									"type": "object",
-									"additionalProperties": false,
-									"required": ["Class", "mResourcesToAddToScanner"],
-									"properties": {
-										"Class": {
-											"type": "string",
-											"DocsDotJson_BP_C": null
-										},
-										"mResourcesToAddToScanner": {
-											"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
-										}
-									}
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mResourcesToAddToScanner"
 								},
 								{
-									"type": "object",
-									"additionalProperties": false,
-									"required": ["Class", "mSchematics"],
-									"properties": {
-										"Class": {
-											"type": "string",
-											"DocsDotJson_BP_C": null
-										},
-										"mSchematics": {
-											"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
-										}
-									}
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mSchematics"
 								}
 							]
 						},
@@ -372,32 +229,10 @@
 							"maxItems": 2,
 							"prefixItems": [
 								{
-									"type": "object",
-									"additionalProperties": false,
-									"required": ["Class", "mRecipes"],
-									"properties": {
-										"Class": {
-											"type": "string",
-											"DocsDotJson_BP_C": null
-										},
-										"mRecipes": {
-											"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
-										}
-									}
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mRecipes"
 								},
 								{
-									"type": "object",
-									"additionalProperties": false,
-									"required": ["Class", "mSchematics"],
-									"properties": {
-										"Class": {
-											"type": "string",
-											"DocsDotJson_BP_C": null
-										},
-										"mSchematics": {
-											"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
-										}
-									}
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mSchematics"
 								}
 							]
 						},
@@ -408,32 +243,10 @@
 							"maxItems": 2,
 							"prefixItems": [
 								{
-									"type": "object",
-									"additionalProperties": false,
-									"required": ["Class", "mSchematics"],
-									"properties": {
-										"Class": {
-											"type": "string",
-											"DocsDotJson_BP_C": null
-										},
-										"mSchematics": {
-											"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
-										}
-									}
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mSchematics"
 								},
 								{
-									"type": "object",
-									"additionalProperties": false,
-									"required": ["Class", "mRecipes"],
-									"properties": {
-										"Class": {
-											"type": "string",
-											"DocsDotJson_BP_C": null
-										},
-										"mRecipes": {
-											"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
-										}
-									}
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mRecipes"
 								}
 							]
 						},
@@ -444,18 +257,7 @@
 							"maxItems": 1,
 							"prefixItems": [
 								{
-									"type": "object",
-									"additionalProperties": false,
-									"required": ["Class", "mSchematics"],
-									"properties": {
-										"Class": {
-											"type": "string",
-											"DocsDotJson_BP_C": null
-										},
-										"mSchematics": {
-											"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
-										}
-									}
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mSchematics"
 								}
 							]
 						},
@@ -466,18 +268,7 @@
 							"maxItems": 1,
 							"prefixItems": [
 								{
-									"type": "object",
-									"additionalProperties": false,
-									"required": ["Class", "mResourcesToAddToScanner"],
-									"properties": {
-										"Class": {
-											"type": "string",
-											"DocsDotJson_BP_C": null
-										},
-										"mResourcesToAddToScanner": {
-											"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
-										}
-									}
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mResourcesToAddToScanner"
 								}
 							]
 						},
@@ -488,29 +279,12 @@
 							"maxItems": 2,
 							"prefixItems": [
 								{
-									"type": "object",
-									"additionalProperties": false,
-									"required": ["Class", "mRecipes"],
-									"properties": {
-										"Class": {
-											"type": "string",
-											"DocsDotJson_BP_C": null
-										},
-										"mRecipes": {
-											"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
-										}
-									}
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mRecipes"
 								},
 								{
 									"type": "object",
-									"additionalProperties": false,
-									"required": ["Class"],
-									"properties": {
-										"Class": {
-											"type": "string",
-											"DocsDotJson_BP_C": null
-										}
-									}
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--base",
+									"unevaluatedProperties": false
 								}
 							]
 						},
@@ -522,14 +296,8 @@
 							"prefixItems": [
 								{
 									"type": "object",
-									"additionalProperties": false,
-									"required": ["Class"],
-									"properties": {
-										"Class": {
-											"type": "string",
-											"DocsDotJson_BP_C": null
-										}
-									}
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--base",
+									"unevaluatedProperties": false
 								}
 							]
 						},
@@ -540,18 +308,7 @@
 							"maxItems": 1,
 							"prefixItems": [
 								{
-									"type": "object",
-									"additionalProperties": false,
-									"required": ["Class", "mItemsToGive"],
-									"properties": {
-										"Class": {
-											"type": "string",
-											"DocsDotJson_BP_C": null
-										},
-										"mItemsToGive": {
-											"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/ItemClass-Amount"
-										}
-									}
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mItemsToGive"
 								}
 							]
 						}
