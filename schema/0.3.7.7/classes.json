@@ -680,6 +680,179 @@
 					"const": "Metal"
 				}
 			}
+		},
+		"FGBuildableGeneratorFuel": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable",
+			"unevaluatedProperties": false,
+			"required": [
+				"mFuelClasses",
+				"mDefaultFuelClasses",
+				"mAvailableFuelClasses",
+				"mFuelResourceForm",
+				"mRequiresSupplementalResource",
+				"mSupplementalLoadAmount",
+				"mSupplementalToPowerRatio",
+				"mCachedInputConnections",
+				"mCachedPipeInputConnections",
+				"mPowerProduction",
+				"mPowerProductionExponent",
+				"mLoadPercentage",
+				"mPowerConsumption",
+				"mPowerConsumptionExponent",
+				"mOnHasPowerChanged",
+				"mOnHasProductionChanged",
+				"mOnHasStandbyChanged",
+				"mMinimumProducingTime",
+				"mMinimumStoppedTime",
+				"mNumCyclesForProductivity",
+				"mCanChangePotential",
+				"mMinPotential",
+				"mMaxPotential",
+				"mMaxPotentialIncreasePerCrystal",
+				"mFluidStackSizeDefault",
+				"mFluidStackSizeMultiplier",
+				"OnReplicationDetailActorCreatedEvent",
+				"mSignificanceBias",
+				"mEffectUpdateInterval",
+				"mAddToSignificanceManager",
+				"mSignificanceRange"
+			],
+			"properties": {
+				"mRTPCInterval": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mCachedLoadPercentage": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mFuelClasses": {
+					"type": "string",
+					"const": ""
+				},
+				"mDefaultFuelClasses": {
+					"oneOf": [
+						{
+							"type": "string",
+							"typed_string": {
+								"enum_list": [
+									"/Game/FactoryGame/Resource/Parts/Fuel/Desc_LiquidFuel.Desc_LiquidFuel_C",
+									"/Game/FactoryGame/Resource/Parts/Turbofuel/Desc_LiquidTurboFuel.Desc_LiquidTurboFuel_C",
+									"/Game/FactoryGame/Resource/Parts/BioFuel/Desc_LiquidBiofuel.Desc_LiquidBiofuel_C"
+								]
+							}
+						},
+						{
+							"type": "string",
+							"typed_string": {
+								"enum_list": [
+									"/Script/FactoryGame.FGItemDescriptorBiomass"
+								]
+							}
+						},
+						{
+							"type": "string",
+							"typed_string": {
+								"enum_list": [
+									"/Game/FactoryGame/Resource/RawResources/Coal/Desc_Coal.Desc_Coal_C",
+									"/Game/FactoryGame/Resource/Parts/CompactedCoal/Desc_CompactedCoal.Desc_CompactedCoal_C",
+									"/Game/FactoryGame/Resource/Parts/PetroleumCoke/Desc_PetroleumCoke.Desc_PetroleumCoke_C"
+								]
+							}
+						}
+					]
+				},
+				"mAvailableFuelClasses": {
+					"type": "string",
+					"const": ""
+				},
+				"mFuelResourceForm": {
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mForm"
+				},
+				"mRequiresSupplementalResource": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mSupplementalLoadAmount": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mSupplementalToPowerRatio": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mCachedInputConnections": {
+					"type": "string",
+					"const": ""
+				},
+				"mCachedPipeInputConnections": {
+					"type": "string",
+					"const": ""
+				},
+				"mPowerProduction": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mPowerProductionExponent": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mLoadPercentage": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mPowerConsumption": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mPowerConsumptionExponent": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mOnHasPowerChanged": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mOnHasProductionChanged": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mOnHasStandbyChanged": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mMinimumProducingTime": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mMinimumStoppedTime": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mNumCyclesForProductivity": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mCanChangePotential": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mMinPotential": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mMaxPotential": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mMaxPotentialIncreasePerCrystal": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mFluidStackSizeDefault": {
+					"type": "string",
+					"const": "SS_FLUID"
+				},
+				"mFluidStackSizeMultiplier": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"OnReplicationDetailActorCreatedEvent": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mSignificanceBias": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mEffectUpdateInterval": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mAddToSignificanceManager": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mSignificanceRange": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
 		}
 	}
 }
