@@ -2,11 +2,10 @@
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "docs.json.ts--0.3.7.7--classes--base",
 	"$defs": {
-		"isNamed": {
+		"hasClassName": {
 			"type": "object",
 			"required": [
-				"ClassName",
-				"mDisplayName"
+				"ClassName"
 			],
 			"properties": {
 				"ClassName": {
@@ -17,7 +16,16 @@
 						{"type": "string"},
 						"_C"
 					]
-				},
+				}
+			}
+		},
+		"isNamed": {
+			"type": "object",
+			"$ref": "#/$defs/hasClassName",
+			"required": [
+				"mDisplayName"
+			],
+			"properties": {
 				"mDisplayName": {
 					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mDisplayName"
 				}

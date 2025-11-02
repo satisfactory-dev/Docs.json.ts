@@ -447,6 +447,92 @@
 					]
 				}
 			}
+		},
+		"FGConsumableEquipment": {
+			"type": "object",
+			"unevaluatedProperties": false,
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/hasClassName",
+			"required": [
+				"mEquipmentSlot",
+				"mAttachSocket",
+				"mCostToUse",
+				"mArmAnimation",
+				"mBackAnimation",
+				"mHasPersistentOwner",
+				"mUseDefaultPrimaryFire"
+			],
+			"properties": {
+				"mRandomAnim": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mCanPress": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mAnimData": {
+					"type": "string",
+					"typed_string": {
+						"minItems": 1,
+						"items": {
+							"type": "object",
+							"additionalProperties": false,
+							"required": [
+								"Montage_7_2E66F6A948A8606E71185682EA2AC4EC",
+								"CameraAnim_8_AA01C2B248FF438D6C2816B2FA94F1BD"
+							],
+							"properties": {
+								"Montage_7_2E66F6A948A8606E71185682EA2AC4EC": {
+									"type": "string",
+									"enum": [
+										"AnimMontage'\"/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_01_Montage.MedkitUse_01_Montage\"'",
+										"AnimMontage'\"/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_02_Montage.MedkitUse_02_Montage\"'",
+										"AnimMontage'\"/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_03_Montage.MedkitUse_03_Montage\"'"
+									]
+								},
+								"CameraAnim_8_AA01C2B248FF438D6C2816B2FA94F1BD": {
+									"type": "string",
+									"enum": [
+										"CameraAnim'\"/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_01_CameraAnim.MedkitUse_01_CameraAnim\"'",
+										"CameraAnim'\"/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_02_CameraAnim.MedkitUse_02_CameraAnim\"'",
+										"CameraAnim'\"/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_03_CameraAnim.MedkitUse_03_CameraAnim\"'"
+									]
+								}
+							}
+						}
+					}
+				},
+				"mCurrentAnimData": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mEquipmentSlot": {
+					"type": "string",
+					"const": "ES_ARMS"
+				},
+				"mAttachSocket": {
+					"type": "string",
+					"const": "hand_rSocket"
+				},
+				"mCostToUse": {
+					"type": "string",
+					"const": ""
+				},
+				"mArmAnimation": {
+					"type": "string",
+					"enum": [
+						"AE_Consumables",
+						"AE_OneHandEquipment"
+					]
+				},
+				"mBackAnimation": {
+					"type": "string",
+					"const": "BE_None"
+				},
+				"mHasPersistentOwner": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mUseDefaultPrimaryFire": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
 		}
 	}
 }
