@@ -74,13 +74,45 @@
 					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mForm"
 				},
 				"mSmallIcon": {
+					"oneOf": [
+						{
 					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mSmallIcon"
+						},
+						{
+							"type": "string",
+							"const": "None"
+						}
+					]
 				},
 				"mPersistentBigIcon": {
+					"oneOf": [
+						{
 					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mPersistentBigIcon"
+						},
+						{
+							"type": "string",
+							"const": "None"
+						}
+					]
 				},
 				"mFluidColor": {
 					"$ref": "docs.json.ts--common--types#/$defs/BGRA"
+				}
+			}
+		},
+		"FGDescriptor--BuildMenu": {
+			"type": "object",
+			"$ref": "#/$defs/FGDescriptor",
+			"required": [
+				"mSubCategories",
+				"mBuildMenuPriority"
+			],
+			"properties": {
+				"mSubCategories": {
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mSubCategories"
+				},
+				"mBuildMenuPriority": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
 			}
 		},

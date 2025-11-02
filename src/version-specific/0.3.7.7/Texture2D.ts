@@ -85,7 +85,9 @@ const Texture2D_schema_properties = {
 								enum: [
 									['64', '256', '512'],
 									['64', '256'],
+									['64', '256', '1b'],
 									['256', '512'],
+									['256', '512', '1b'],
 									['64', '512'],
 								],
 							},
@@ -133,7 +135,9 @@ export class Texture2D extends
 						| '512'
 						| ['64', '256', '512']
 						| ['64', '256']
+						| ['64', '256', '1b']
 						| ['256', '512']
+						| ['256', '512', '1b']
 						| ['64', '512']
 						// eslint-disable-next-line @stylistic/comma-dangle
 						| null
