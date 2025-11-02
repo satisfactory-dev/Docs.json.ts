@@ -579,6 +579,28 @@
 					"const": "AE_ChainSaw"
 				}
 			}
+		},
+		"FGBuildableWire": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable",
+			"unevaluatedProperties": false,
+			"required": [
+				"mMaxLength",
+				"mLengthPerCost",
+				"mConnections"
+			],
+			"properties": {
+				"mMaxLength": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mLengthPerCost": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mConnections": {
+					"type": "string",
+					"const": "None"
+				}
+			}
 		}
 	}
 }
