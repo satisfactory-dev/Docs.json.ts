@@ -451,15 +451,9 @@
 		"FGConsumableEquipment": {
 			"type": "object",
 			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/hasClassName",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment",
 			"required": [
-				"mEquipmentSlot",
-				"mAttachSocket",
-				"mCostToUse",
-				"mArmAnimation",
-				"mBackAnimation",
-				"mHasPersistentOwner",
-				"mUseDefaultPrimaryFire"
+				"mArmAnimation"
 			],
 			"properties": {
 				"mRandomAnim": {
@@ -503,17 +497,9 @@
 				"mCurrentAnimData": {
 					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
 				},
-				"mEquipmentSlot": {
-					"type": "string",
-					"const": "ES_ARMS"
-				},
 				"mAttachSocket": {
 					"type": "string",
 					"const": "hand_rSocket"
-				},
-				"mCostToUse": {
-					"type": "string",
-					"const": ""
 				},
 				"mArmAnimation": {
 					"type": "string",
@@ -521,16 +507,76 @@
 						"AE_Consumables",
 						"AE_OneHandEquipment"
 					]
+				}
+			}
+		},
+		"FGChainsaw": {
+			"type": "object",
+			"unevaluatedProperties": false,
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment",
+			"required": [
+				"mMontageLength",
+				"mInterpSawProgress",
+				"mWasSawing",
+				"mCurrentState",
+				"mPlayingSound",
+				"mCurrentAudioState",
+				"mPreviousAudioState",
+				"mEnergyConsumption",
+				"mSawDownTreeTime",
+				"mCollateralPickupRadius",
+				"mExcludeChainsawableFoliage",
+				"mEnergyStored",
+				"mAttachSocket",
+				"mArmAnimation"
+			],
+			"properties": {
+				"mMontageLength": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
-				"mBackAnimation": {
+				"mInterpSawProgress": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mWasSawing": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mCurrentState": {
 					"type": "string",
-					"const": "BE_None"
+					"const": "NewEnumerator3"
 				},
-				"mHasPersistentOwner": {
+				"mPlayingSound": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				},
-				"mUseDefaultPrimaryFire": {
+				"mCurrentAudioState": {
+					"type": "string",
+					"const": "NewEnumerator3"
+				},
+				"mPreviousAudioState": {
+					"type": "string",
+					"const": "NewEnumerator3"
+				},
+				"mEnergyConsumption": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mSawDownTreeTime": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mCollateralPickupRadius": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mExcludeChainsawableFoliage": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mEnergyStored": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mAttachSocket": {
+					"type": "string",
+					"const": "hand_lSocket"
+				},
+				"mArmAnimation": {
+					"type": "string",
+					"const": "AE_ChainSaw"
 				}
 			}
 		}

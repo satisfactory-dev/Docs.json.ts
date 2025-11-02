@@ -210,6 +210,54 @@
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				}
 			}
+		},
+		"FGEquipment": {
+			"type": "object",
+			"$ref": "#/$defs/hasClassName",
+			"required": [
+				"mEquipmentSlot",
+				"mAttachSocket",
+				"mCostToUse",
+				"mArmAnimation",
+				"mBackAnimation",
+				"mHasPersistentOwner",
+				"mUseDefaultPrimaryFire"
+			],
+			"properties": {
+				"mEquipmentSlot": {
+					"type": "string",
+					"const": "ES_ARMS"
+				},
+				"mAttachSocket": {
+					"type": "string",
+					"enum": [
+						"hand_rSocket",
+						"hand_lSocket"
+					]
+				},
+				"mCostToUse": {
+					"type": "string",
+					"const": ""
+				},
+				"mArmAnimation": {
+					"type": "string",
+					"enum": [
+						"AE_Consumables",
+						"AE_OneHandEquipment",
+						"AE_ChainSaw"
+					]
+				},
+				"mBackAnimation": {
+					"type": "string",
+					"const": "BE_None"
+				},
+				"mHasPersistentOwner": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mUseDefaultPrimaryFire": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
 		}
 	}
 }
