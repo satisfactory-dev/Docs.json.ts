@@ -18,6 +18,28 @@
 			"type": "string",
 			"pattern": "^\\d+$"
 		},
+		"RGBA": {
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": ["R", "G", "B", "A"],
+				"properties": {
+					"R": {
+						"$ref": "#/$defs/integer_string"
+					},
+					"G": {
+						"$ref": "#/$defs/integer_string"
+					},
+					"B": {
+						"$ref": "#/$defs/integer_string"
+					},
+					"A": {
+						"$ref": "#/$defs/integer_string"
+					}
+				}
+			}
+		},
 		"BGRA": {
 			"type": "string",
 			"typed_string": {
