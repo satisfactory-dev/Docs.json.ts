@@ -26,11 +26,11 @@
 		},
 		"mSmallIcon": {
 			"type": "string",
-			"DocsDotJson_Texture2D": [null, null, ["64", "256", "1b"]]
+			"DocsDotJson_Texture2D": [null, null, ["64", "256", "1b", "64_new"]]
 		},
 		"mPersistentBigIcon": {
 			"type": "string",
-			"DocsDotJson_Texture2D": [null, null, ["256", "512", "1b"]]
+			"DocsDotJson_Texture2D": [null, null, ["256", "512", "1b", "256_New"]]
 		},
 		"mType": {
 			"type": "string",

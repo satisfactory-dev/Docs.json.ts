@@ -59,6 +59,25 @@
 				}
 			}
 		},
+		"PitchYawRoll--decimal_string--signed": {
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": ["Pitch", "Yaw", "Roll"],
+				"properties": {
+					"Pitch": {
+						"$ref": "#/$defs/decimal_string--signed"
+					},
+					"Yaw": {
+						"$ref": "#/$defs/decimal_string--signed"
+					},
+					"Roll": {
+						"$ref": "#/$defs/decimal_string--signed"
+					}
+				}
+			}
+		},
 		"empty-object": {
 			"type": "string",
 			"const": "()"

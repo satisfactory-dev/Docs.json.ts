@@ -235,6 +235,24 @@
 					}
 				}
 			}
+		},
+		"FGConsumableDescriptor": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGConsumableDescriptor"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGConsumableDescriptor"
+					}
+				}
+			}
 		}
 	},
 	"type": "array",
@@ -282,7 +300,7 @@
 			"$ref": "#/$defs/FGBuildablePowerPole"
 		},
 		{
-			"type": "object"
+			"$ref": "#/$defs/FGConsumableDescriptor"
 		},
 		{
 			"type": "object"

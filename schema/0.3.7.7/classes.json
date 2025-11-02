@@ -5,13 +5,19 @@
 		"FGItemDescriptor": {
 			"type": "object",
 			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGDescriptor",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGDescriptor--sinkable",
 			"required": [
-				"mResourceSinkPoints"
+				"ClassName"
 			],
 			"properties": {
-				"mResourceSinkPoints": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				"ClassName": {
+					"type": "string",
+					"templated_string": [
+						{"type": "string"},
+						"_",
+						{"type": "string"},
+						"_C"
+					]
 				}
 			}
 		},
@@ -622,6 +628,30 @@
 						"PPT_WALL",
 						"PPT_WALL_DOUBLE"
 					]
+				}
+			}
+		},
+		"FGConsumableDescriptor": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGDescriptor--sinkable",
+			"unevaluatedProperties": false,
+			"required": [
+				"mCustomHandsMeshScale",
+				"mCustomRotation",
+				"mCustomLocation"
+			],
+			"properties": {
+				"mHealthGain": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mCustomHandsMeshScale": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mCustomRotation": {
+					"$ref": "docs.json.ts--common--types#/$defs/PitchYawRoll--decimal_string--signed"
+				},
+				"mCustomLocation": {
+					"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
 				}
 			}
 		}
