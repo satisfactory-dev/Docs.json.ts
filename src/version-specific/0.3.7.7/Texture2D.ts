@@ -112,7 +112,7 @@ export class Texture2D extends
 		`Texture2D'/Game/FactoryGame/${
 			string
 		}${
-			'/IconDesc_'|'/'
+			'/IconDesc_'|'/'|''
 		}${string}.${string}'`,
 		macro_schema,
 		Texture2D_type,
@@ -156,7 +156,7 @@ export class Texture2D extends
 						templated_string: [
 							`Texture2D'/Game/FactoryGame/`,
 							null === value[0] ? {type: 'string'} : value[0],
-							['/IconDesc_', '/'],
+							['/IconDesc_', '/', ''],
 							{
 								type: 'string',
 								templated_string: [
@@ -186,7 +186,7 @@ export class Texture2D extends
 				specified_parts: [
 					`Texture2D'/Game/FactoryGame/`,
 					{type: 'string'},
-					['/IconDesc_', '/'],
+					['/IconDesc_', '/', ''],
 					{
 						type: 'string',
 						templated_string: [
@@ -251,7 +251,7 @@ export class Texture2D extends
 			TemplatedString.generate_typescript_type_from_parts([
 				`Texture2D'/Game/FactoryGame/`,
 				null === value0 ? {type: 'string'} : value0,
-				['/IconDesc_', '/'],
+				['/IconDesc_', '/', ''],
 				null === value1 ? {type: 'string'} : value1,
 				'_',
 				value2,
