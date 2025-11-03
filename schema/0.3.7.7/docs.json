@@ -361,6 +361,24 @@
 					}
 				}
 			}
+		},
+		"FGJumpingStilts": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGJumpingStilts"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGJumpingStilts"
+					}
+				}
+			}
 		}
 	},
 	"type": "array",
@@ -429,7 +447,7 @@
 			"$ref": "#/$defs/FGJetPack"
 		},
 		{
-			"type": "object"
+			"$ref": "#/$defs/FGJumpingStilts"
 		},
 		{
 			"type": "object"

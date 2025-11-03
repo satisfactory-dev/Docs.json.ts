@@ -236,7 +236,8 @@
 					"enum": [
 						"None",
 						"hand_rSocket",
-						"hand_lSocket"
+						"hand_lSocket",
+						"jumpingStilt_lSocket"
 					]
 				},
 				"mCostToUse": {

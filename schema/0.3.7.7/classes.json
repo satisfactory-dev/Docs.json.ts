@@ -1040,6 +1040,28 @@
 					"const": "BE_Jetpack"
 				}
 			}
+		},
+		"FGJumpingStilts": {
+			"type": "object",
+			"unevaluatedProperties": false,
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment",
+			"required": [
+				"mSprintSpeedFactor",
+				"mJumpSpeedFactor",
+				"mAttachSocket"
+			],
+			"properties": {
+				"mSprintSpeedFactor": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mJumpSpeedFactor": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mAttachSocket": {
+					"type": "string",
+					"const": "jumpingStilt_lSocket"
+				}
+			}
 		}
 	}
 }
