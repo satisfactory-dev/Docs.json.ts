@@ -259,7 +259,8 @@
 						"AE_ChainSaw",
 						"AE_Generic2Hand",
 						"AE_None",
-						"AE_RebarGun"
+						"AE_RebarGun",
+						"AE_Rifle"
 					]
 				},
 				"mBackAnimation": {
@@ -371,6 +372,43 @@
 				},
 				"mSignificanceRange": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGWeaponProjectile": {
+			"type": "object",
+			"$ref": "#/$defs/FGEquipment",
+			"required": [
+				"mMagSize",
+				"mCurrentAmmo",
+				"mReloadTime",
+				"mFireRate",
+				"mAttachSocket",
+				"mArmAnimation"
+			],
+			"properties": {
+				"mMagSize": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mCurrentAmmo": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mReloadTime": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mFireRate": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mAttachSocket": {
+					"type": "string",
+					"const": "hand_rSocket"
+				},
+				"mArmAnimation": {
+					"type": "string",
+					"enum": [
+						"AE_RebarGun",
+						"AE_Rifle"
+					]
 				}
 			}
 		}

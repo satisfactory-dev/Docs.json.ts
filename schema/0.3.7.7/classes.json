@@ -1066,13 +1066,14 @@
 		"FGWeaponProjectileFire": {
 			"type": "object",
 			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectile",
 			"required": [
 				"mMuteDryFire",
 				"mRandomReloadAnim",
 				"mRandomStingerAnim",
+				"mProjectileData",
 				"mAttachSocket",
-				"mProjectileData"
+				"mArmAnimation"
 			],
 			"properties": {
 				"mMuteDryFire": {
@@ -1130,18 +1131,6 @@
 						}
 					}
 				},
-				"mMagSize": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-				},
-				"mCurrentAmmo": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-				},
-				"mReloadTime": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mFireRate": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
 				"mAttachSocket": {
 					"type": "string",
 					"const": "hand_rSocket"
@@ -1149,6 +1138,40 @@
 				"mArmAnimation": {
 					"type": "string",
 					"const": "AE_RebarGun"
+				}
+			}
+		},
+		"FGWeaponInstantFire": {
+			"type": "object",
+			"unevaluatedProperties": false,
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectile",
+			"required": [
+				"Fire",
+				"mLockAngle",
+				"mHasReloadedOnce",
+				"mInstantHitDamage",
+				"mWeaponTraceLength",
+				"mArmAnimation"
+			],
+			"properties": {
+				"Fire": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mLockAngle": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mHasReloadedOnce": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mInstantHitDamage": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mWeaponTraceLength": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mArmAnimation": {
+					"type": "string",
+					"const": "AE_Rifle"
 				}
 			}
 		}
