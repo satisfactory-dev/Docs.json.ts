@@ -1217,6 +1217,20 @@
 					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
 				}
 			}
+		},
+		"FGBuildableSpaceElevator": {
+			"type": "object",
+			"unevaluatedProperties": false,
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered",
+			"required": [
+				"mMapText"
+			],
+			"properties": {
+				"mMapText": {
+					"type": "string",
+					"const": "Space Elevator"
+				}
+			}
 		}
 	}
 }
