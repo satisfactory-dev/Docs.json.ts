@@ -1174,6 +1174,49 @@
 					"const": "AE_Rifle"
 				}
 			}
+		},
+		"FGEquipmentStunSpear--xenozapper": {
+			"type": "object",
+			"unevaluatedProperties": false,
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipmentStunSpear--base",
+			"required": [
+				"mPlayingSound",
+				"mRandomStingerAnim"
+			],
+			"properties": {
+				"mPlayingSound": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mRandomStingerAnim": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				}
+			}
+		},
+		"FGEquipmentStunSpear--xenobasher": {
+			"type": "object",
+			"unevaluatedProperties": false,
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipmentStunSpear--base",
+			"required": [
+				"mCurrentMontageSection",
+				"mSecondAttackTimer",
+				"mFirstAttackTimer",
+				"mRandomEquipAnim"
+			],
+			"properties": {
+				"mCurrentMontageSection": {
+					"type": "string",
+					"const": "None"
+				},
+				"mSecondAttackTimer": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mFirstAttackTimer": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mRandomEquipAnim": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				}
+			}
 		}
 	}
 }

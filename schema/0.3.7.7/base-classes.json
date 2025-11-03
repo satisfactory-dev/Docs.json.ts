@@ -260,7 +260,9 @@
 						"AE_Generic2Hand",
 						"AE_None",
 						"AE_RebarGun",
-						"AE_Rifle"
+						"AE_Rifle",
+						"AE_ShockShank",
+						"AE_StunSpear"
 					]
 				},
 				"mBackAnimation": {
@@ -408,6 +410,41 @@
 					"enum": [
 						"AE_RebarGun",
 						"AE_Rifle"
+					]
+				}
+			}
+		},
+		"FGEquipmentStunSpear--base": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment",
+			"required": [
+				"mRandomAttackAnim",
+				"mSecondSwingMaxTime",
+				"mSecondSwingCooldDownTime",
+				"mDamage",
+				"mAttackDistance"
+			],
+			"properties": {
+				"mRandomAttackAnim": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mSecondSwingMaxTime": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mSecondSwingCooldDownTime": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mDamage": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mAttackDistance": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mArmAnimation": {
+					"type": "string",
+					"enum": [
+						"AE_ShockShank",
+						"AE_StunSpear"
 					]
 				}
 			}
