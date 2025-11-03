@@ -262,7 +262,10 @@
 				},
 				"mBackAnimation": {
 					"type": "string",
-					"const": "BE_None"
+					"enum": [
+						"BE_None",
+						"BE_Jetpack"
+					]
 				},
 				"mHasPersistentOwner": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"

@@ -959,6 +959,87 @@
 					"const": "AE_None"
 				}
 			}
+		},
+		"FGJetPack": {
+			"type": "object",
+			"unevaluatedProperties": false,
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment",
+			"required": [
+				"mThrustPower",
+				"mVelocityZExtreme",
+				"mVelocityZExtremesDamper",
+				"mJumpBeforeThrustTime",
+				"mMaxFuel",
+				"mCurrentFuel",
+				"mFuelRegenRate",
+				"mFuelConsumeRate",
+				"mThrustCooldown",
+				"mFuelWorth",
+				"mPaidForFuel",
+				"mThrustAirControl",
+				"mDefaultAirControl",
+				"mRTPCInterval",
+				"mJumpTimeStamp",
+				"mIsThrusting"
+			],
+			"properties": {
+				"mThrustPower": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mVelocityZExtreme": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mVelocityZExtremesDamper": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mJumpBeforeThrustTime": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mMaxFuel": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mCurrentFuel": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mFuelRegenRate": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mFuelConsumeRate": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mThrustCooldown": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mFuelWorth": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mPaidForFuel": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mThrustAirControl": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mDefaultAirControl": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mRTPCInterval": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mJumpTimeStamp": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mIsThrusting": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mArmAnimation": {
+					"type": "string",
+					"const": "AE_None"
+				},
+				"mBackAnimation": {
+					"type": "string",
+					"const": "BE_Jetpack"
+				}
+			}
 		}
 	}
 }
