@@ -258,7 +258,8 @@
 						"AE_OneHandEquipment",
 						"AE_ChainSaw",
 						"AE_Generic2Hand",
-						"AE_None"
+						"AE_None",
+						"AE_RebarGun"
 					]
 				},
 				"mBackAnimation": {

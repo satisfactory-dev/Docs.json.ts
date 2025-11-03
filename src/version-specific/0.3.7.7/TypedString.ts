@@ -180,6 +180,12 @@ type TypedString_schema<
 > = SchemaDefinitionDefinition<
 	['type', 'typed_string'],
 	{
+		$defs: {
+			type: 'object',
+			additionalProperties: {
+				type: 'object',
+			},
+		},
 		type: {
 			type: 'string',
 			const: 'string',
@@ -365,7 +371,6 @@ export class TypedString<
 			},
 			type_definition: {},
 			schema_definition: {},
-			add_to_$defs_excluded: true,
 		});
 
 		this.#mode_by_validator = entries;
@@ -434,9 +439,12 @@ export class TypedString<
 				const property_name = matches[i];
 				const property_value = matches[i + 1];
 
-				const property_schema = coerced_schema.properties[
-					property_name
-				];
+				const property_schema = TypedString.maybe_add_$defs(
+					schema,
+					coerced_schema.properties[
+						property_name
+					],
+				);
 
 				const property_assignment = factory
 					.createPropertyAssignment(
@@ -1072,6 +1080,12 @@ export class TypedString<
 		}
 
 		const properties: TypedString_schema<Mode>['properties'] = {
+			$defs: {
+				type: 'object',
+				additionalProperties: {
+					type: 'object',
+				},
+			},
 			type: {
 				type: 'string',
 				const: 'string',

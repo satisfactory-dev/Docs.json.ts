@@ -1062,6 +1062,95 @@
 					"const": "jumpingStilt_lSocket"
 				}
 			}
+		},
+		"FGWeaponProjectileFire": {
+			"type": "object",
+			"unevaluatedProperties": false,
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment",
+			"required": [
+				"mMuteDryFire",
+				"mRandomReloadAnim",
+				"mRandomStingerAnim",
+				"mAttachSocket",
+				"mProjectileData"
+			],
+			"properties": {
+				"mMuteDryFire": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mRandomReloadAnim": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mRandomStingerAnim": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mProjectileData": {
+					"type": "string",
+					"typed_string": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": [
+							"ProjectileClass",
+							"ProjectileLifeSpan",
+							"ProjectileStickSpan",
+							"ExplosionDamage",
+							"ImpactDamage",
+							"CanTriggerExplodeBySameClass",
+							"DamageType",
+							"DamageTypeExplode"
+						],
+						"properties": {
+							"ProjectileClass": {
+								"type": "string",
+								"DocsDotJson_BlueprintGeneratedClass_quoted": null
+							},
+							"ProjectileLifeSpan": {
+								"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+							},
+							"ProjectileStickSpan": {
+								"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+							},
+							"ExplosionDamage": {
+								"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+							},
+							"ImpactDamage": {
+								"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+							},
+							"CanTriggerExplodeBySameClass": {
+								"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+							},
+							"DamageType": {
+								"type": "string",
+								"DocsDotJson_BlueprintGeneratedClass_quoted": null
+							},
+							"DamageTypeExplode": {
+								"type": "string",
+								"const": "Class'\"/Script/FactoryGame.FGDamageType\"'"
+							}
+						}
+					}
+				},
+				"mMagSize": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mCurrentAmmo": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mReloadTime": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mFireRate": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mAttachSocket": {
+					"type": "string",
+					"const": "hand_rSocket"
+				},
+				"mArmAnimation": {
+					"type": "string",
+					"const": "AE_RebarGun"
+				}
+			}
 		}
 	}
 }
