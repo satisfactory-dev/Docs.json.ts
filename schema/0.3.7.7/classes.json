@@ -1231,6 +1231,53 @@
 					"const": "Space Elevator"
 				}
 			}
+		},
+		"FGGasMask": {
+			"type": "object",
+			"unevaluatedProperties": false,
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment",
+			"required": [
+				"mCountdown",
+				"mFilterDuration",
+				"mIsWorking",
+				"mHasNegatedDamage",
+				"mDamageNegated",
+				"mDisableEffectTimer",
+				"mPostProcessEnabled",
+				"mAttachSocket",
+				"mArmAnimation"
+			],
+			"properties": {
+				"mCountdown": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mFilterDuration": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mIsWorking": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mHasNegatedDamage": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mDamageNegated": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mDisableEffectTimer": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mPostProcessEnabled": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mAttachSocket": {
+					"type": "string",
+					"const": "helmetSocket"
+				},
+				"mArmAnimation": {
+					"type": "string",
+					"const": "AE_None"
+				}
+			}
 		}
 	}
 }

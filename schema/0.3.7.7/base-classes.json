@@ -237,7 +237,8 @@
 						"None",
 						"hand_rSocket",
 						"hand_lSocket",
-						"jumpingStilt_lSocket"
+						"jumpingStilt_lSocket",
+						"helmetSocket"
 					]
 				},
 				"mCostToUse": {
