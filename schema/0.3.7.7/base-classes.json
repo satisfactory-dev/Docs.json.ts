@@ -270,6 +270,91 @@
 					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
 				}
 			}
+		},
+		"FGBuildable--powered": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable",
+			"required": [
+				"mPowerConsumption",
+				"mPowerConsumptionExponent",
+				"mOnHasPowerChanged",
+				"mOnHasProductionChanged",
+				"mOnHasStandbyChanged",
+				"mMinimumProducingTime",
+				"mMinimumStoppedTime",
+				"mNumCyclesForProductivity",
+				"mCanChangePotential",
+				"mMinPotential",
+				"mMaxPotential",
+				"mMaxPotentialIncreasePerCrystal",
+				"mFluidStackSizeDefault",
+				"mFluidStackSizeMultiplier",
+				"OnReplicationDetailActorCreatedEvent",
+				"mSignificanceBias",
+				"mEffectUpdateInterval",
+				"mAddToSignificanceManager",
+				"mSignificanceRange"
+			],
+			"properties": {
+				"mPowerConsumption": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mPowerConsumptionExponent": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mOnHasPowerChanged": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mOnHasProductionChanged": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mOnHasStandbyChanged": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mMinimumProducingTime": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mMinimumStoppedTime": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mNumCyclesForProductivity": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mCanChangePotential": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mMinPotential": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mMaxPotential": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mMaxPotentialIncreasePerCrystal": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mFluidStackSizeDefault": {
+					"type": "string",
+					"const": "SS_FLUID"
+				},
+				"mFluidStackSizeMultiplier": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"OnReplicationDetailActorCreatedEvent": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mSignificanceBias": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mEffectUpdateInterval": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mAddToSignificanceManager": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mSignificanceRange": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
 		}
 	}
 }

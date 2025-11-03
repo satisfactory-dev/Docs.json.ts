@@ -683,7 +683,7 @@
 		},
 		"FGBuildableGeneratorFuel": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered",
 			"unevaluatedProperties": false,
 			"required": [
 				"mFuelClasses",
@@ -697,26 +697,7 @@
 				"mCachedPipeInputConnections",
 				"mPowerProduction",
 				"mPowerProductionExponent",
-				"mLoadPercentage",
-				"mPowerConsumption",
-				"mPowerConsumptionExponent",
-				"mOnHasPowerChanged",
-				"mOnHasProductionChanged",
-				"mOnHasStandbyChanged",
-				"mMinimumProducingTime",
-				"mMinimumStoppedTime",
-				"mNumCyclesForProductivity",
-				"mCanChangePotential",
-				"mMinPotential",
-				"mMaxPotential",
-				"mMaxPotentialIncreasePerCrystal",
-				"mFluidStackSizeDefault",
-				"mFluidStackSizeMultiplier",
-				"OnReplicationDetailActorCreatedEvent",
-				"mSignificanceBias",
-				"mEffectUpdateInterval",
-				"mAddToSignificanceManager",
-				"mSignificanceRange"
+				"mLoadPercentage"
 			],
 			"properties": {
 				"mRTPCInterval": {
@@ -793,64 +774,93 @@
 				},
 				"mLoadPercentage": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mPowerConsumption": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mPowerConsumptionExponent": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mOnHasPowerChanged": {
-					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-				},
-				"mOnHasProductionChanged": {
-					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-				},
-				"mOnHasStandbyChanged": {
-					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-				},
-				"mMinimumProducingTime": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mMinimumStoppedTime": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mNumCyclesForProductivity": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-				},
-				"mCanChangePotential": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mMinPotential": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mMaxPotential": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mMaxPotentialIncreasePerCrystal": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mFluidStackSizeDefault": {
+				}
+			}
+		},
+		"FGBuildableTradingPost": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered",
+			"unevaluatedProperties": false,
+			"required": [
+				"mWorkBenchOccupied",
+				"mWorkBenchFree",
+				"Meshes",
+				"mShipUpgradeLevel",
+				"mStorageText",
+				"mMamFreeText",
+				"mMamOccupiedText",
+				"mMapText",
+				"mGenerators",
+				"mStorageInventorySize",
+				"mStorageVisibilityLevel",
+				"mSpawningGroundZOffset",
+				"mGroundSearchZDistance",
+				"mDefaultResources",
+				"mNeedPlayingBuildEffectNotification"
+			],
+			"properties": {
+				"mWorkBenchOccupied": {
 					"type": "string",
-					"const": "SS_FLUID"
+					"const": "Craft Bench occupied"
 				},
-				"mFluidStackSizeMultiplier": {
+				"mWorkBenchFree": {
+					"type": "string",
+					"const": "Use Craft Bench"
+				},
+				"Meshes": {
+					"type": "string",
+					"typed_string": {
+						"enum_list": [
+							"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1\"'",
+							"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2\"'",
+							"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3\"'",
+							"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4\"'",
+							"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5\"'",
+							"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6\"'"
+						]
+					}
+				},
+				"mShipUpgradeLevel": {
 					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
 				},
-				"OnReplicationDetailActorCreatedEvent": {
-					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				"mStorageText": {
+					"type": "string",
+					"const": "Open Storage"
 				},
-				"mSignificanceBias": {
+				"mMamFreeText": {
+					"type": "string",
+					"const": "Use M.A.M."
+				},
+				"mMamOccupiedText": {
+					"type": "string",
+					"const": "M.A.M. is occupied"
+				},
+				"mMapText": {
+					"type": "string",
+					"const": "The HUB"
+				},
+				"mGenerators": {
+					"type": "string",
+					"const": ""
+				},
+				"mStorageInventorySize": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mStorageVisibilityLevel": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mSpawningGroundZOffset": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
-				"mEffectUpdateInterval": {
+				"mGroundSearchZDistance": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
-				"mAddToSignificanceManager": {
+				"mDefaultResources": {
+					"type": "string",
+					"const": ""
+				},
+				"mNeedPlayingBuildEffectNotification": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mSignificanceRange": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
 			}
 		}
