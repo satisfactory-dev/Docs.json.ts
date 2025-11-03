@@ -226,18 +226,29 @@
 			"properties": {
 				"mEquipmentSlot": {
 					"type": "string",
-					"const": "ES_ARMS"
+					"enum": [
+						"ES_ARMS",
+						"ES_BACK"
+					]
 				},
 				"mAttachSocket": {
 					"type": "string",
 					"enum": [
+						"None",
 						"hand_rSocket",
 						"hand_lSocket"
 					]
 				},
 				"mCostToUse": {
-					"type": "string",
-					"const": ""
+					"oneOf": [
+						{
+							"type": "string",
+							"const": ""
+						},
+						{
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/ItemClass-Amount--list"
+						}
+					]
 				},
 				"mArmAnimation": {
 					"type": "string",
@@ -245,7 +256,8 @@
 						"AE_Consumables",
 						"AE_OneHandEquipment",
 						"AE_ChainSaw",
-						"AE_Generic2Hand"
+						"AE_Generic2Hand",
+						"AE_None"
 					]
 				},
 				"mBackAnimation": {

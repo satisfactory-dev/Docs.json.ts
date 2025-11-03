@@ -325,6 +325,24 @@
 					}
 				}
 			}
+		},
+		"FGSuitBase": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGSuitBase"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGSuitBase"
+					}
+				}
+			}
 		}
 	},
 	"type": "array",
@@ -387,7 +405,7 @@
 			"$ref": "#/$defs/FGGolfCartDispenser"
 		},
 		{
-			"type": "object"
+			"$ref": "#/$defs/FGSuitBase"
 		},
 		{
 			"type": "object"
