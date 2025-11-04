@@ -264,93 +264,68 @@
 				}
 			}
 		},
-		"FGBuildablePipelinePump": {
+		"FGBuildablePipelinePump--pump": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipelinePump--base",
 			"unevaluatedProperties": false,
 			"required": [
-				"mLastFlowUpdate",
-				"mUpdateFlowTime",
-				"mAnimSpeed",
-				"mLastFlowValue",
-				"mTimeScaleOffset",
-				"mMaxPressure",
-				"mDesignPressure",
-				"mDefaultFlowLimit",
-				"mUserFlowLimit",
-				"mMinimumFlowPercentForStandby",
-				"mIndicatorData",
-				"mRadius",
-				"mFluidBoxVolume",
-				"mFluidBox",
-				"mPipeConnections"
+				"mIsPipePumpPlaying",
+				"mIsExceedingHeadLift",
+				"mCurrentAudioHeadLift"
 			],
 			"properties": {
-				"mLastFlowUpdate": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mUpdateFlowTime": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mAnimSpeed": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mLastFlowValue": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mTimeScaleOffset": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mMaxPressure": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mDesignPressure": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mDefaultFlowLimit": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mUserFlowLimit": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mMinimumFlowPercentForStandby": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mIndicatorData": {
+				"mPistonAudioTimer": {
 					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
 				},
-				"mRadius": {
+				"mIsPipePumpPlaying": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mIsExceedingHeadLift": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mCurrentAudioHeadLift": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mFluidBoxVolume": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mFluidBox": {
-					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-				},
-				"mPipeConnections": {
+				}
+			}
+		},
+		"FGBuildablePipelinePump--valve": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipelinePump--base",
+			"unevaluatedProperties": false,
+			"required": ["ClassName"],
+			"properties": {
+				"ClassName": {
 					"type": "string",
-					"const": ""
+					"templated_string": [
+						{"type": "string"},
+						"_",
+						{"type": "string"},
+						"_C"
+					]
+				}
+			}
+		},
+		"FGBuildablePipelineSupport": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--pole",
+			"unevaluatedProperties": false,
+			"required": ["mLength", "mVerticalAngle"],
+			"properties": {
+				"mLength": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mVerticalAngle": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
 			}
 		},
 		"FGBuildablePole": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-height",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--pole",
 			"unevaluatedProperties": false,
-			"required": [
-				"mUseStaticHeight",
-				"mCanStack",
-				"mStackHeight"
-			],
+			"required": ["mHeight"],
 			"properties": {
-				"mUseStaticHeight": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mCanStack": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mStackHeight": {
+				"mHeight": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
 			}
@@ -557,7 +532,7 @@
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
 				"mElevation": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
 				"mDisableSnapOn": {
 					"$ref": "docs.json.ts--common--types#/$defs/empty-object"

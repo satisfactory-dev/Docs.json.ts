@@ -100,6 +100,26 @@
 				}
 			}
 		},
+		"FGBuildable--pole": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable",
+			"required": [
+				"mUseStaticHeight",
+				"mCanStack",
+				"mStackHeight"
+			],
+			"properties": {
+				"mUseStaticHeight": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mCanStack": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mStackHeight": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
 		"FGBuildable--powered": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable",
@@ -194,6 +214,75 @@
 			"properties": {
 				"mHeight": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGBuildablePipelinePump--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--powered",
+			"required": [
+				"mLastFlowUpdate",
+				"mUpdateFlowTime",
+				"mAnimSpeed",
+				"mLastFlowValue",
+				"mTimeScaleOffset",
+				"mMaxPressure",
+				"mDesignPressure",
+				"mDefaultFlowLimit",
+				"mUserFlowLimit",
+				"mMinimumFlowPercentForStandby",
+				"mIndicatorData",
+				"mRadius",
+				"mFluidBoxVolume",
+				"mFluidBox",
+				"mPipeConnections"
+			],
+			"properties": {
+				"mLastFlowUpdate": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mUpdateFlowTime": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mAnimSpeed": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mLastFlowValue": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mTimeScaleOffset": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mMaxPressure": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mDesignPressure": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mDefaultFlowLimit": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mUserFlowLimit": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
+				},
+				"mMinimumFlowPercentForStandby": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mIndicatorData": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mRadius": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mFluidBoxVolume": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mFluidBox": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mPipeConnections": {
+					"type": "string",
+					"const": ""
 				}
 			}
 		},
