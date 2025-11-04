@@ -538,6 +538,20 @@
 				}
 			}
 		},
+		"FGBuildableWall": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable",
+			"unevaluatedProperties": false,
+			"required": ["mWidth", "mHeight"],
+			"properties": {
+				"mWidth": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mHeight": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
 		"FGBuildableWire": {
 			"type": "object",
 			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable",

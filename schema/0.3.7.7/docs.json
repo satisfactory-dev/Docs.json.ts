@@ -202,6 +202,24 @@
 				}
 			}
 		},
+		"FGBuildableWall": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableWall"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGBuildableWall"
+					}
+				}
+			}
+		},
 		"FGBuildableWire": {
 			"type": "object",
 			"additionalProperties": false,
@@ -689,7 +707,7 @@
 			"$ref": "#/$defs/FGBuildable"
 		},
 		{
-			"type": "object"
+			"$ref": "#/$defs/FGBuildableWall"
 		},
 		{
 			"type": "object"
