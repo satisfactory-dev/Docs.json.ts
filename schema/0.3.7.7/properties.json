@@ -2,12 +2,38 @@
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "docs.json.ts--0.3.7.7--properties",
 	"$defs": {
+		"mAbbreviatedDisplayName": {
+			"type": "string"
+		},
 		"mDisplayName": {
 			"type": "string",
 			"minLength": 0
 		},
-		"mAbbreviatedDisplayName": {
-			"type": "string"
+		"mForm": {
+			"type": "string",
+			"enum": ["RF_SOLID", "RF_LIQUID", "RF_INVALID"]
+		},
+		"mPersistentBigIcon": {
+			"type": "string",
+			"DocsDotJson_Texture2D": [
+				null,
+				null,
+				["256", "512", "1b", "256_New"]
+			]
+		},
+		"mRelevantEvents": {
+			"type": "string",
+			"typed_string": {
+				"enum_list": ["EV_Christmas"]
+			}
+		},
+		"mSmallIcon": {
+			"type": "string",
+			"DocsDotJson_Texture2D": [
+				null,
+				null,
+				["64", "256", "1b", "64_new"]
+			]
 		},
 		"mStackSize": {
 			"type": "string",
@@ -20,25 +46,15 @@
 				"SS_FLUID"
 			]
 		},
-		"mForm": {
+		"mSubCategories": {
 			"type": "string",
-			"enum": ["RF_SOLID", "RF_LIQUID", "RF_INVALID"]
-		},
-		"mSmallIcon": {
-			"type": "string",
-			"DocsDotJson_Texture2D": [
-				null,
-				null,
-				["64", "256", "1b", "64_new"]
-			]
-		},
-		"mPersistentBigIcon": {
-			"type": "string",
-			"DocsDotJson_Texture2D": [
-				null,
-				null,
-				["256", "512", "1b", "256_New"]
-			]
+			"typed_string": {
+				"minItems": 1,
+				"items": {
+					"type": "string",
+					"DocsDotJson_BlueprintGeneratedClass_quoted": null
+				}
+			}
 		},
 		"mType": {
 			"type": "string",
@@ -51,6 +67,82 @@
 				"EST_Alternate",
 				"EST_ResourceSink"
 			]
+		},
+		"mUnlocks--item--base": {
+			"type": "object",
+			"required": ["Class"],
+			"properties": {
+				"Class": {
+					"type": "string",
+					"DocsDotJson_BP_C": null
+				}
+			}
+		},
+		"mUnlocks--item--mItemsToGive": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--base",
+			"unevaluatedProperties": false,
+			"required": ["mItemsToGive"],
+			"properties": {
+				"mItemsToGive": {
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/ItemClass-Amount--list"
+				}
+			}
+		},
+		"mUnlocks--item--mNumArmEquipmentSlotsToUnlock": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--base",
+			"unevaluatedProperties": false,
+			"required": ["mNumArmEquipmentSlotsToUnlock"],
+			"properties": {
+				"mNumArmEquipmentSlotsToUnlock": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				}
+			}
+		},
+		"mUnlocks--item--mNumInventorySlotsToUnlock": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--base",
+			"unevaluatedProperties": false,
+			"required": ["mNumInventorySlotsToUnlock"],
+			"properties": {
+				"mNumInventorySlotsToUnlock": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				}
+			}
+		},
+		"mUnlocks--item--mRecipes": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--base",
+			"unevaluatedProperties": false,
+			"required": ["mRecipes"],
+			"properties": {
+				"mRecipes": {
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
+				}
+			}
+		},
+		"mUnlocks--item--mResourcesToAddToScanner": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--base",
+			"unevaluatedProperties": false,
+			"required": ["mResourcesToAddToScanner"],
+			"properties": {
+				"mResourcesToAddToScanner": {
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
+				}
+			}
+		},
+		"mUnlocks--item--mSchematics": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--base",
+			"unevaluatedProperties": false,
+			"required": ["mSchematics"],
+			"properties": {
+				"mSchematics": {
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
+				}
+			}
 		},
 		"DocsDotJson_BlueprintGeneratedClass_quoted--list": {
 			"type": "string",
@@ -80,98 +172,6 @@
 						}
 					}
 				}
-			}
-		},
-		"mSubCategories": {
-			"type": "string",
-			"typed_string": {
-				"minItems": 1,
-				"items": {
-					"type": "string",
-					"DocsDotJson_BlueprintGeneratedClass_quoted": null
-				}
-			}
-		},
-		"mUnlocks--item--base": {
-			"type": "object",
-			"required": ["Class"],
-			"properties": {
-				"Class": {
-					"type": "string",
-					"DocsDotJson_BP_C": null
-				}
-			}
-		},
-		"mUnlocks--item--mRecipes": {
-			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--base",
-			"unevaluatedProperties": false,
-			"required": ["mRecipes"],
-			"properties": {
-				"mRecipes": {
-					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
-				}
-			}
-		},
-		"mUnlocks--item--mResourcesToAddToScanner": {
-			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--base",
-			"unevaluatedProperties": false,
-			"required": ["mResourcesToAddToScanner"],
-			"properties": {
-				"mResourcesToAddToScanner": {
-					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
-				}
-			}
-		},
-		"mUnlocks--item--mNumInventorySlotsToUnlock": {
-			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--base",
-			"unevaluatedProperties": false,
-			"required": ["mNumInventorySlotsToUnlock"],
-			"properties": {
-				"mNumInventorySlotsToUnlock": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-				}
-			}
-		},
-		"mUnlocks--item--mNumArmEquipmentSlotsToUnlock": {
-			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--base",
-			"unevaluatedProperties": false,
-			"required": ["mNumArmEquipmentSlotsToUnlock"],
-			"properties": {
-				"mNumArmEquipmentSlotsToUnlock": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-				}
-			}
-		},
-		"mUnlocks--item--mSchematics": {
-			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--base",
-			"unevaluatedProperties": false,
-			"required": ["mSchematics"],
-			"properties": {
-				"mSchematics": {
-					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
-				}
-			}
-		},
-		"mUnlocks--item--mItemsToGive": {
-			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--base",
-			"unevaluatedProperties": false,
-			"required": ["mItemsToGive"],
-			"properties": {
-				"mItemsToGive": {
-					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/ItemClass-Amount--list"
-				}
-			}
-		},
-		"mRelevantEvents": {
-			"type": "string",
-			"typed_string": {
-				"enum_list": ["EV_Christmas"]
 			}
 		}
 	}

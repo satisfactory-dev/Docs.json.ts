@@ -17,16 +17,6 @@
 				}
 			}
 		},
-		"isNamed": {
-			"type": "object",
-			"$ref": "#/$defs/hasClassName",
-			"required": ["mDisplayName"],
-			"properties": {
-				"mDisplayName": {
-					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mDisplayName"
-				}
-			}
-		},
 		"isDescribed": {
 			"type": "object",
 			"$ref": "#/$defs/isNamed",
@@ -38,102 +28,13 @@
 				}
 			}
 		},
-		"FGDescriptor": {
+		"isNamed": {
 			"type": "object",
-			"$ref": "#/$defs/isDescribed",
-			"required": [
-				"mAbbreviatedDisplayName",
-				"mStackSize",
-				"mCanBeDiscarded",
-				"mRememberPickUp",
-				"mEnergyValue",
-				"mRadioactiveDecay",
-				"mForm",
-				"mSmallIcon",
-				"mPersistentBigIcon",
-				"mFluidColor"
-			],
+			"$ref": "#/$defs/hasClassName",
+			"required": ["mDisplayName"],
 			"properties": {
-				"mAbbreviatedDisplayName": {
-					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mAbbreviatedDisplayName"
-				},
-				"mStackSize": {
-					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mStackSize"
-				},
-				"mCanBeDiscarded": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mRememberPickUp": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mEnergyValue": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mRadioactiveDecay": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mForm": {
-					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mForm"
-				},
-				"mSmallIcon": {
-					"oneOf": [
-						{
-							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mSmallIcon"
-						},
-						{
-							"type": "string",
-							"const": "None"
-						}
-					]
-				},
-				"mPersistentBigIcon": {
-					"oneOf": [
-						{
-							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mPersistentBigIcon"
-						},
-						{
-							"type": "string",
-							"const": "None"
-						}
-					]
-				},
-				"mFluidColor": {
-					"$ref": "docs.json.ts--common--types#/$defs/BGRA"
-				}
-			}
-		},
-		"FGDescriptor--BuildMenu": {
-			"type": "object",
-			"$ref": "#/$defs/FGDescriptor",
-			"required": ["mSubCategories", "mBuildMenuPriority"],
-			"properties": {
-				"mSubCategories": {
-					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mSubCategories"
-				},
-				"mBuildMenuPriority": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				}
-			}
-		},
-		"FGInstructive": {
-			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/isNamed",
-			"required": ["FullName", "mRelevantEvents"],
-			"properties": {
-				"FullName": {
-					"type": "string",
-					"DocsDotJson_BlueprintGeneratedClass": null
-				},
-				"mRelevantEvents": {
-					"oneOf": [
-						{
-							"type": "string",
-							"typed_string": ""
-						},
-						{
-							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mRelevantEvents"
-						}
-					]
+				"mDisplayName": {
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mDisplayName"
 				}
 			}
 		},
@@ -196,80 +97,6 @@
 				},
 				"mHideOnBuildEffectStart": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				}
-			}
-		},
-		"FGEquipment": {
-			"type": "object",
-			"$ref": "#/$defs/hasClassName",
-			"required": [
-				"mEquipmentSlot",
-				"mAttachSocket",
-				"mCostToUse",
-				"mArmAnimation",
-				"mBackAnimation",
-				"mHasPersistentOwner",
-				"mUseDefaultPrimaryFire"
-			],
-			"properties": {
-				"mEquipmentSlot": {
-					"type": "string",
-					"enum": ["ES_ARMS", "ES_BACK"]
-				},
-				"mAttachSocket": {
-					"type": "string",
-					"enum": [
-						"None",
-						"hand_rSocket",
-						"hand_lSocket",
-						"jumpingStilt_lSocket",
-						"helmetSocket"
-					]
-				},
-				"mCostToUse": {
-					"oneOf": [
-						{
-							"type": "string",
-							"const": ""
-						},
-						{
-							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/ItemClass-Amount--list"
-						}
-					]
-				},
-				"mArmAnimation": {
-					"type": "string",
-					"enum": [
-						"AE_Consumables",
-						"AE_OneHandEquipment",
-						"AE_ChainSaw",
-						"AE_Generic2Hand",
-						"AE_None",
-						"AE_RebarGun",
-						"AE_Rifle",
-						"AE_ShockShank",
-						"AE_StunSpear"
-					]
-				},
-				"mBackAnimation": {
-					"type": "string",
-					"enum": ["BE_None", "BE_Jetpack"]
-				},
-				"mHasPersistentOwner": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mUseDefaultPrimaryFire": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				}
-			}
-		},
-		"FGDescriptor--sinkable": {
-			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGDescriptor",
-			"required": ["mResourceSinkPoints"],
-			"properties": {
-				"mResourceSinkPoints": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
 				}
 			}
 		},
@@ -358,37 +185,154 @@
 				}
 			}
 		},
-		"FGWeaponProjectile": {
+		"FGDescriptor": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment",
+			"$ref": "#/$defs/isDescribed",
 			"required": [
-				"mMagSize",
-				"mCurrentAmmo",
-				"mReloadTime",
-				"mFireRate",
-				"mAttachSocket",
-				"mArmAnimation"
+				"mAbbreviatedDisplayName",
+				"mStackSize",
+				"mCanBeDiscarded",
+				"mRememberPickUp",
+				"mEnergyValue",
+				"mRadioactiveDecay",
+				"mForm",
+				"mSmallIcon",
+				"mPersistentBigIcon",
+				"mFluidColor"
 			],
 			"properties": {
-				"mMagSize": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				"mAbbreviatedDisplayName": {
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mAbbreviatedDisplayName"
 				},
-				"mCurrentAmmo": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				"mStackSize": {
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mStackSize"
 				},
-				"mReloadTime": {
+				"mCanBeDiscarded": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mRememberPickUp": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mEnergyValue": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
-				"mFireRate": {
+				"mRadioactiveDecay": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mForm": {
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mForm"
+				},
+				"mSmallIcon": {
+					"oneOf": [
+						{
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mSmallIcon"
+						},
+						{
+							"type": "string",
+							"const": "None"
+						}
+					]
+				},
+				"mPersistentBigIcon": {
+					"oneOf": [
+						{
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mPersistentBigIcon"
+						},
+						{
+							"type": "string",
+							"const": "None"
+						}
+					]
+				},
+				"mFluidColor": {
+					"$ref": "docs.json.ts--common--types#/$defs/BGRA"
+				}
+			}
+		},
+		"FGDescriptor--BuildMenu": {
+			"type": "object",
+			"$ref": "#/$defs/FGDescriptor",
+			"required": ["mSubCategories", "mBuildMenuPriority"],
+			"properties": {
+				"mSubCategories": {
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mSubCategories"
+				},
+				"mBuildMenuPriority": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGDescriptor--sinkable": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGDescriptor",
+			"required": ["mResourceSinkPoints"],
+			"properties": {
+				"mResourceSinkPoints": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				}
+			}
+		},
+		"FGEquipment": {
+			"type": "object",
+			"$ref": "#/$defs/hasClassName",
+			"required": [
+				"mEquipmentSlot",
+				"mAttachSocket",
+				"mCostToUse",
+				"mArmAnimation",
+				"mBackAnimation",
+				"mHasPersistentOwner",
+				"mUseDefaultPrimaryFire"
+			],
+			"properties": {
+				"mEquipmentSlot": {
+					"type": "string",
+					"enum": ["ES_ARMS", "ES_BACK"]
 				},
 				"mAttachSocket": {
 					"type": "string",
-					"const": "hand_rSocket"
+					"enum": [
+						"None",
+						"hand_rSocket",
+						"hand_lSocket",
+						"jumpingStilt_lSocket",
+						"helmetSocket"
+					]
+				},
+				"mCostToUse": {
+					"oneOf": [
+						{
+							"type": "string",
+							"const": ""
+						},
+						{
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/ItemClass-Amount--list"
+						}
+					]
 				},
 				"mArmAnimation": {
 					"type": "string",
-					"enum": ["AE_RebarGun", "AE_Rifle"]
+					"enum": [
+						"AE_Consumables",
+						"AE_OneHandEquipment",
+						"AE_ChainSaw",
+						"AE_Generic2Hand",
+						"AE_None",
+						"AE_RebarGun",
+						"AE_Rifle",
+						"AE_ShockShank",
+						"AE_StunSpear"
+					]
+				},
+				"mBackAnimation": {
+					"type": "string",
+					"enum": ["BE_None", "BE_Jetpack"]
+				},
+				"mHasPersistentOwner": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mUseDefaultPrimaryFire": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				}
 			}
 		},
@@ -421,6 +365,62 @@
 				"mArmAnimation": {
 					"type": "string",
 					"enum": ["AE_ShockShank", "AE_StunSpear"]
+				}
+			}
+		},
+		"FGInstructive": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/isNamed",
+			"required": ["FullName", "mRelevantEvents"],
+			"properties": {
+				"FullName": {
+					"type": "string",
+					"DocsDotJson_BlueprintGeneratedClass": null
+				},
+				"mRelevantEvents": {
+					"oneOf": [
+						{
+							"type": "string",
+							"typed_string": ""
+						},
+						{
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mRelevantEvents"
+						}
+					]
+				}
+			}
+		},
+		"FGWeaponProjectile": {
+			"type": "object",
+			"$ref": "#/$defs/FGEquipment",
+			"required": [
+				"mMagSize",
+				"mCurrentAmmo",
+				"mReloadTime",
+				"mFireRate",
+				"mAttachSocket",
+				"mArmAnimation"
+			],
+			"properties": {
+				"mMagSize": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mCurrentAmmo": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mReloadTime": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mFireRate": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mAttachSocket": {
+					"type": "string",
+					"const": "hand_rSocket"
+				},
+				"mArmAnimation": {
+					"type": "string",
+					"enum": ["AE_RebarGun", "AE_Rifle"]
 				}
 			}
 		}

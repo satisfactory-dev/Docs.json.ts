@@ -14,31 +14,13 @@
 			"type": "string",
 			"pattern": "^-?\\d+\\.\\d{6}$"
 		},
+		"empty-object": {
+			"type": "string",
+			"const": "()"
+		},
 		"integer_string": {
 			"type": "string",
 			"pattern": "^\\d+$"
-		},
-		"RGBA": {
-			"type": "string",
-			"typed_string": {
-				"type": "object",
-				"additionalProperties": false,
-				"required": ["R", "G", "B", "A"],
-				"properties": {
-					"R": {
-						"$ref": "#/$defs/integer_string"
-					},
-					"G": {
-						"$ref": "#/$defs/integer_string"
-					},
-					"B": {
-						"$ref": "#/$defs/integer_string"
-					},
-					"A": {
-						"$ref": "#/$defs/integer_string"
-					}
-				}
-			}
 		},
 		"BGRA": {
 			"type": "string",
@@ -54,6 +36,47 @@
 						"$ref": "#/$defs/integer_string"
 					},
 					"R": {
+						"$ref": "#/$defs/integer_string"
+					},
+					"A": {
+						"$ref": "#/$defs/integer_string"
+					}
+				}
+			}
+		},
+		"PitchYawRoll--decimal_string--signed": {
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": ["Pitch", "Yaw", "Roll"],
+				"properties": {
+					"Pitch": {
+						"$ref": "#/$defs/decimal_string--signed"
+					},
+					"Yaw": {
+						"$ref": "#/$defs/decimal_string--signed"
+					},
+					"Roll": {
+						"$ref": "#/$defs/decimal_string--signed"
+					}
+				}
+			}
+		},
+		"RGBA": {
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": ["R", "G", "B", "A"],
+				"properties": {
+					"R": {
+						"$ref": "#/$defs/integer_string"
+					},
+					"G": {
+						"$ref": "#/$defs/integer_string"
+					},
+					"B": {
 						"$ref": "#/$defs/integer_string"
 					},
 					"A": {
@@ -80,29 +103,6 @@
 					}
 				}
 			}
-		},
-		"PitchYawRoll--decimal_string--signed": {
-			"type": "string",
-			"typed_string": {
-				"type": "object",
-				"additionalProperties": false,
-				"required": ["Pitch", "Yaw", "Roll"],
-				"properties": {
-					"Pitch": {
-						"$ref": "#/$defs/decimal_string--signed"
-					},
-					"Yaw": {
-						"$ref": "#/$defs/decimal_string--signed"
-					},
-					"Roll": {
-						"$ref": "#/$defs/decimal_string--signed"
-					}
-				}
-			}
-		},
-		"empty-object": {
-			"type": "string",
-			"const": "()"
 		}
 	}
 }

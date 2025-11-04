@@ -2,96 +2,6 @@
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "docs.json.ts--0.3.7.7",
 	"$defs": {
-		"FGItemDescriptor": {
-			"type": "object",
-			"additionalProperties": false,
-			"required": ["NativeClass", "Classes"],
-			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"DocsDotJson_NativeClass": "FactoryGame.FGItemDescriptor"
-				},
-				"Classes": {
-					"type": "array",
-					"minItems": 1,
-					"items": {
-						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGItemDescriptor"
-					}
-				}
-			}
-		},
-		"FGSchematic": {
-			"type": "object",
-			"additionalProperties": false,
-			"required": ["NativeClass", "Classes"],
-			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"DocsDotJson_NativeClass": "FactoryGame.FGSchematic"
-				},
-				"Classes": {
-					"type": "array",
-					"minItems": 1,
-					"items": {
-						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGSchematic"
-					}
-				}
-			}
-		},
-		"FGBuildablePole": {
-			"type": "object",
-			"additionalProperties": false,
-			"required": ["NativeClass", "Classes"],
-			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"DocsDotJson_NativeClass": "FactoryGame.FGBuildablePole"
-				},
-				"Classes": {
-					"type": "array",
-					"minItems": 1,
-					"items": {
-						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGBuildablePole"
-					}
-				}
-			}
-		},
-		"FGPoleDescriptor": {
-			"type": "object",
-			"additionalProperties": false,
-			"required": ["NativeClass", "Classes"],
-			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"DocsDotJson_NativeClass": "FactoryGame.FGPoleDescriptor"
-				},
-				"Classes": {
-					"type": "array",
-					"minItems": 1,
-					"items": {
-						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGPoleDescriptor"
-					}
-				}
-			}
-		},
-		"FGRecipe": {
-			"type": "object",
-			"additionalProperties": false,
-			"required": ["NativeClass", "Classes"],
-			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"DocsDotJson_NativeClass": "FactoryGame.FGRecipe"
-				},
-				"Classes": {
-					"type": "array",
-					"minItems": 1,
-					"items": {
-						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGRecipe"
-					}
-				}
-			}
-		},
 		"FGBuildableConveyorBelt": {
 			"type": "object",
 			"additionalProperties": false,
@@ -106,168 +16,6 @@
 					"minItems": 1,
 					"items": {
 						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGBuildableConveyorBelt"
-					}
-				}
-			}
-		},
-		"FGBuildingDescriptor": {
-			"type": "object",
-			"additionalProperties": false,
-			"required": ["NativeClass", "Classes"],
-			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"DocsDotJson_NativeClass": "FactoryGame.FGBuildingDescriptor"
-				},
-				"Classes": {
-					"type": "array",
-					"minItems": 1,
-					"items": {
-						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGBuildingDescriptor"
-					}
-				}
-			}
-		},
-		"FGConsumableEquipment": {
-			"type": "object",
-			"additionalProperties": false,
-			"required": ["NativeClass", "Classes"],
-			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"DocsDotJson_NativeClass": "FactoryGame.FGConsumableEquipment"
-				},
-				"Classes": {
-					"type": "array",
-					"minItems": 1,
-					"items": {
-						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGConsumableEquipment"
-					}
-				}
-			}
-		},
-		"FGItemDescriptorBiomass": {
-			"type": "object",
-			"additionalProperties": false,
-			"required": ["NativeClass", "Classes"],
-			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"DocsDotJson_NativeClass": "FactoryGame.FGItemDescriptorBiomass"
-				},
-				"Classes": {
-					"type": "array",
-					"minItems": 1,
-					"items": {
-						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGItemDescriptor"
-					}
-				}
-			}
-		},
-		"FGChainsaw": {
-			"type": "object",
-			"additionalProperties": false,
-			"required": ["NativeClass", "Classes"],
-			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"DocsDotJson_NativeClass": "FactoryGame.FGChainsaw"
-				},
-				"Classes": {
-					"type": "array",
-					"minItems": 1,
-					"items": {
-						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGChainsaw"
-					}
-				}
-			}
-		},
-		"FGEquipmentDescriptor": {
-			"type": "object",
-			"additionalProperties": false,
-			"required": ["NativeClass", "Classes"],
-			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"DocsDotJson_NativeClass": "FactoryGame.FGEquipmentDescriptor"
-				},
-				"Classes": {
-					"type": "array",
-					"minItems": 1,
-					"items": {
-						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGItemDescriptor"
-					}
-				}
-			}
-		},
-		"FGBuildableWire": {
-			"type": "object",
-			"additionalProperties": false,
-			"required": ["NativeClass", "Classes"],
-			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableWire"
-				},
-				"Classes": {
-					"type": "array",
-					"minItems": 1,
-					"items": {
-						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGBuildableWire"
-					}
-				}
-			}
-		},
-		"FGBuildablePowerPole": {
-			"type": "object",
-			"additionalProperties": false,
-			"required": ["NativeClass", "Classes"],
-			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"DocsDotJson_NativeClass": "FactoryGame.FGBuildablePowerPole"
-				},
-				"Classes": {
-					"type": "array",
-					"minItems": 1,
-					"items": {
-						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGBuildablePowerPole"
-					}
-				}
-			}
-		},
-		"FGConsumableDescriptor": {
-			"type": "object",
-			"additionalProperties": false,
-			"required": ["NativeClass", "Classes"],
-			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"DocsDotJson_NativeClass": "FactoryGame.FGConsumableDescriptor"
-				},
-				"Classes": {
-					"type": "array",
-					"minItems": 1,
-					"items": {
-						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGConsumableDescriptor"
-					}
-				}
-			}
-		},
-		"FGResourceDescriptor": {
-			"type": "object",
-			"additionalProperties": false,
-			"required": ["NativeClass", "Classes"],
-			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"DocsDotJson_NativeClass": "FactoryGame.FGResourceDescriptor"
-				},
-				"Classes": {
-					"type": "array",
-					"minItems": 1,
-					"items": {
-						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGResourceDescriptor"
 					}
 				}
 			}
@@ -290,6 +38,78 @@
 				}
 			}
 		},
+		"FGBuildableManufacturer": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableManufacturer"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGBuildableManufacturer"
+					}
+				}
+			}
+		},
+		"FGBuildablePole": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildablePole"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGBuildablePole"
+					}
+				}
+			}
+		},
+		"FGBuildablePowerPole": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildablePowerPole"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGBuildablePowerPole"
+					}
+				}
+			}
+		},
+		"FGBuildableSpaceElevator": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableSpaceElevator"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGBuildableSpaceElevator"
+					}
+				}
+			}
+		},
 		"FGBuildableTradingPost": {
 			"type": "object",
 			"additionalProperties": false,
@@ -304,6 +124,159 @@
 					"minItems": 1,
 					"items": {
 						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGBuildableTradingPost"
+					}
+				}
+			}
+		},
+		"FGBuildableWire": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableWire"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGBuildableWire"
+					}
+				}
+			}
+		},
+		"FGBuildingDescriptor": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildingDescriptor"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGBuildingDescriptor"
+					}
+				}
+			}
+		},
+		"FGChainsaw": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGChainsaw"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGChainsaw"
+					}
+				}
+			}
+		},
+		"FGConsumableDescriptor": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGConsumableDescriptor"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGConsumableDescriptor"
+					}
+				}
+			}
+		},
+		"FGConsumableEquipment": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGConsumableEquipment"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGConsumableEquipment"
+					}
+				}
+			}
+		},
+		"FGEquipmentDescriptor": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGEquipmentDescriptor"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGItemDescriptor"
+					}
+				}
+			}
+		},
+		"FGEquipmentStunSpear": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGEquipmentStunSpear"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 3,
+					"items": false,
+					"prefixItems": [
+						{
+							"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGEquipmentStunSpear--xenozapper"
+						},
+						{
+							"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGEquipmentStunSpear--xenobasher"
+						},
+						{
+							"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGEquipmentStunSpear--xenobasher"
+						}
+					]
+				}
+			}
+		},
+		"FGGasMask": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGGasMask"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGGasMask"
 					}
 				}
 			}
@@ -326,20 +299,38 @@
 				}
 			}
 		},
-		"FGSuitBase": {
+		"FGItemDescriptor": {
 			"type": "object",
 			"additionalProperties": false,
 			"required": ["NativeClass", "Classes"],
 			"properties": {
 				"NativeClass": {
 					"type": "string",
-					"DocsDotJson_NativeClass": "FactoryGame.FGSuitBase"
+					"DocsDotJson_NativeClass": "FactoryGame.FGItemDescriptor"
 				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
 					"items": {
-						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGSuitBase"
+						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGItemDescriptor"
+					}
+				}
+			}
+		},
+		"FGItemDescriptorBiomass": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGItemDescriptorBiomass"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGItemDescriptor"
 					}
 				}
 			}
@@ -380,20 +371,92 @@
 				}
 			}
 		},
-		"FGWeaponProjectileFire": {
+		"FGPoleDescriptor": {
 			"type": "object",
 			"additionalProperties": false,
 			"required": ["NativeClass", "Classes"],
 			"properties": {
 				"NativeClass": {
 					"type": "string",
-					"DocsDotJson_NativeClass": "FactoryGame.FGWeaponProjectileFire"
+					"DocsDotJson_NativeClass": "FactoryGame.FGPoleDescriptor"
 				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
 					"items": {
-						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGWeaponProjectileFire"
+						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGPoleDescriptor"
+					}
+				}
+			}
+		},
+		"FGRecipe": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGRecipe"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGRecipe"
+					}
+				}
+			}
+		},
+		"FGResourceDescriptor": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGResourceDescriptor"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGResourceDescriptor"
+					}
+				}
+			}
+		},
+		"FGSchematic": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGSchematic"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGSchematic"
+					}
+				}
+			}
+		},
+		"FGSuitBase": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGSuitBase"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGSuitBase"
 					}
 				}
 			}
@@ -416,83 +479,20 @@
 				}
 			}
 		},
-		"FGEquipmentStunSpear": {
+		"FGWeaponProjectileFire": {
 			"type": "object",
 			"additionalProperties": false,
 			"required": ["NativeClass", "Classes"],
 			"properties": {
 				"NativeClass": {
 					"type": "string",
-					"DocsDotJson_NativeClass": "FactoryGame.FGEquipmentStunSpear"
-				},
-				"Classes": {
-					"type": "array",
-					"minItems": 3,
-					"items": false,
-					"prefixItems": [
-						{
-							"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGEquipmentStunSpear--xenozapper"
-						},
-						{
-							"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGEquipmentStunSpear--xenobasher"
-						},
-						{
-							"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGEquipmentStunSpear--xenobasher"
-						}
-					]
-				}
-			}
-		},
-		"FGBuildableSpaceElevator": {
-			"type": "object",
-			"additionalProperties": false,
-			"required": ["NativeClass", "Classes"],
-			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableSpaceElevator"
+					"DocsDotJson_NativeClass": "FactoryGame.FGWeaponProjectileFire"
 				},
 				"Classes": {
 					"type": "array",
 					"minItems": 1,
 					"items": {
-						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGBuildableSpaceElevator"
-					}
-				}
-			}
-		},
-		"FGGasMask": {
-			"type": "object",
-			"additionalProperties": false,
-			"required": ["NativeClass", "Classes"],
-			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"DocsDotJson_NativeClass": "FactoryGame.FGGasMask"
-				},
-				"Classes": {
-					"type": "array",
-					"minItems": 1,
-					"items": {
-						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGGasMask"
-					}
-				}
-			}
-		},
-		"FGBuildableManufacturer": {
-			"type": "object",
-			"additionalProperties": false,
-			"required": ["NativeClass", "Classes"],
-			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableManufacturer"
-				},
-				"Classes": {
-					"type": "array",
-					"minItems": 1,
-					"items": {
-						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGBuildableManufacturer"
+						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGWeaponProjectileFire"
 					}
 				}
 			}
