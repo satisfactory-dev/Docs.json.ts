@@ -321,7 +321,8 @@
 						"AE_RebarGun",
 						"AE_Rifle",
 						"AE_ShockShank",
-						"AE_StunSpear"
+						"AE_StunSpear",
+						"AE_PortableMiner"
 					]
 				},
 				"mBackAnimation": {
@@ -333,6 +334,16 @@
 				},
 				"mUseDefaultPrimaryFire": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
+		},
+		"FGEquipment--dispenser": {
+			"type": "object",
+			"$ref": "#/$defs/FGEquipment",
+			"required": ["mPlaceDistanceMax"],
+			"properties": {
+				"mPlaceDistanceMax": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
 			}
 		},

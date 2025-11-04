@@ -594,12 +594,9 @@
 		"FGGolfCartDispenser": {
 			"type": "object",
 			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment",
-			"required": ["mPlaceDistanceMax", "mArmAnimation"],
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment--dispenser",
+			"required": ["mArmAnimation"],
 			"properties": {
-				"mPlaceDistanceMax": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
 				"mArmAnimation": {
 					"type": "string",
 					"const": "AE_Generic2Hand"
@@ -740,6 +737,24 @@
 						{"type": "string"},
 						"_C"
 					]
+				}
+			}
+		},
+		"FGPortableMinerDispenser": {
+			"type": "object",
+			"unevaluatedProperties": false,
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment--dispenser",
+			"required": ["mAllowedResourceForms", "mArmAnimation"],
+			"properties": {
+				"mAllowedResourceForms": {
+					"type": "string",
+					"typed_string": {
+						"enum_list": ["RF_SOLID"]
+					}
+				},
+				"mArmAnimation": {
+					"type": "string",
+					"const": "AE_PortableMiner"
 				}
 			}
 		},
