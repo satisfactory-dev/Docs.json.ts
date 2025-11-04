@@ -185,6 +185,80 @@
 				}
 			}
 		},
+		"FGBuildableResourceExtractor--base": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered",
+			"required": [
+				"mExtractStartupTime",
+				"mExtractStartupTimer",
+				"mExtractCycleTime",
+				"mItemsPerCycle",
+				"mAllowedResourceForms",
+				"mRequireResourceAtMinimumDepthChecks",
+				"mMinimumDepthForPlacement",
+				"mDepthTraceOriginOffset",
+				"mOnlyAllowCertainResources",
+				"mAllowedResources",
+				"mExtractionOffset",
+				"mExtractorTypeName",
+				"mPipeOutputConnections",
+				"mReplicatedFlowRate"
+			],
+			"properties": {
+				"mExtractStartupTime": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
+				},
+				"mExtractStartupTimer": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mExtractCycleTime": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mItemsPerCycle": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mAllowedResourceForms": {
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mAllowedResourceForms"
+				},
+				"mRequireResourceAtMinimumDepthChecks": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mMinimumDepthForPlacement": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mDepthTraceOriginOffset": {
+					"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
+				},
+				"mOnlyAllowCertainResources": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mAllowedResources": {
+					"oneOf": [
+						{
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
+						},
+						{
+							"type": "string",
+							"const": ""
+						}
+					]
+				},
+				"mExtractionOffset": {
+					"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
+				},
+				"mExtractorTypeName": {
+					"type": "string",
+					"enum": ["None", "Miner"]
+				},
+				"mPipeOutputConnections": {
+					"type": "string",
+					"const": ""
+				},
+				"mReplicatedFlowRate": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
 		"FGDescriptor": {
 			"type": "object",
 			"$ref": "#/$defs/isDescribed",

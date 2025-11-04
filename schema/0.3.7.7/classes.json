@@ -219,6 +219,165 @@
 				}
 			}
 		},
+		"FGBuildableResourceExtractor--miner": {
+			"type": "object",
+			"unevaluatedProperties": false,
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--base",
+			"required": [
+				"mParticleMap",
+				"mExtractorTypeName",
+				"mAllowedResourceForms"
+			],
+			"properties": {
+				"mInternalMiningState_0": {
+					"type": "string",
+					"const": "NewEnumerator0"
+				},
+				"mToggleMiningStateHandle_0": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mMinimumDrillTime_0": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mMaximumDrillTime_0": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mCanPlayAfterStartUpStopped": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mParticleMap": {
+					"type": "string",
+					"typed_string": {
+						"minItems": 1,
+						"items": {
+							"type": "object",
+							"additionalProperties": false,
+							"required": [
+								"ResourceNode_16_2100B5C34EE8DF7958D78A974512F3C3",
+								"ParticleSystem1_9_F0CF81514E1E1C5007AC99B0C59C63CD"
+							],
+							"properties": {
+								"ResourceNode_16_2100B5C34EE8DF7958D78A974512F3C3": {
+									"type": "string",
+									"templated_string": [
+										"/Game/FactoryGame/Resource/RawResources/",
+										{
+											"type": "string"
+										},
+										"/Desc_",
+										{
+											"type": "string"
+										},
+										".Desc_",
+										{
+											"type": "string"
+										},
+										"_C"
+									]
+								},
+								"ParticleSystem1_9_F0CF81514E1E1C5007AC99B0C59C63CD": {
+									"type": "string",
+									"templated_string": [
+										"ParticleSystem'\"/Game/FactoryGame/VFX/Factory/Miner/P_Mining_",
+										{
+											"type": "string"
+										},
+										"_01.P_Mining_",
+										{
+											"type": "string"
+										},
+										"_01\"'"
+									]
+								}
+							}
+						}
+					}
+				},
+				"mExtractorTypeName": {
+					"type": "string",
+					"const": "Miner"
+				},
+				"mAllowedResourceForms": {
+					"type": "string",
+					"typed_string": {
+						"enum_list": ["RF_SOLID"]
+					}
+				}
+			}
+		},
+		"FGBuildableResourceExtractor--oil": {
+			"type": "object",
+			"unevaluatedProperties": false,
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--base",
+			"required": ["mAllowedResourceForms"],
+			"properties": {
+				"mAllowedResourceForms": {
+					"type": "string",
+					"typed_string": {
+						"enum_list": ["RF_LIQUID"]
+					}
+				}
+			}
+		},
+		"FGBuildableResourceExtractor--water": {
+			"type": "object",
+			"unevaluatedProperties": false,
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--base",
+			"required": [
+				"mWaterpumpTimeline_RTPC_B8FA6F944E717E3B7A286E84901F620E",
+				"mWaterpumpTimeline__Direction_B8FA6F944E717E3B7A286E84901F620E",
+				"PlayPitchAndVolumeRTPCTimeline_RTPC_2B435F41466C37D2AD809A88AA21BA89",
+				"PlayPitchAndVolumeRTPCTimeline__Direction_2B435F41466C37D2AD809A88AA21BA89",
+				"mAudioTimerCounter",
+				"mAudioTimerMS",
+				"mAudioTimerReference",
+				"mAudioTimelineCounter",
+				"HasLostSignificance",
+				"mExtractorTypeName",
+				"mAllowedResourceForms"
+			],
+			"properties": {
+				"mWaterpumpTimeline_RTPC_B8FA6F944E717E3B7A286E84901F620E": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mWaterpumpTimeline__Direction_B8FA6F944E717E3B7A286E84901F620E": {
+					"type": "string",
+					"const": "Forward"
+				},
+				"PlayPitchAndVolumeRTPCTimeline_RTPC_2B435F41466C37D2AD809A88AA21BA89": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"PlayPitchAndVolumeRTPCTimeline__Direction_2B435F41466C37D2AD809A88AA21BA89": {
+					"type": "string",
+					"const": "Forward"
+				},
+				"mAudioTimerCounter": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mAudioTimerMS": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mAudioTimerReference": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mAudioTimelineCounter": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"HasLostSignificance": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mExtractorTypeName": {
+					"type": "string",
+					"const": "None"
+				},
+				"mAllowedResourceForms": {
+					"type": "string",
+					"typed_string": {
+						"enum_list": ["RF_LIQUID"]
+					}
+				}
+			}
+		},
 		"FGBuildableSpaceElevator": {
 			"type": "object",
 			"unevaluatedProperties": false,
@@ -747,10 +906,7 @@
 			"required": ["mAllowedResourceForms", "mArmAnimation"],
 			"properties": {
 				"mAllowedResourceForms": {
-					"type": "string",
-					"typed_string": {
-						"enum_list": ["RF_SOLID"]
-					}
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mAllowedResourceForms"
 				},
 				"mArmAnimation": {
 					"type": "string",

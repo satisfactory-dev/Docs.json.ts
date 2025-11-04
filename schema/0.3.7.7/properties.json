@@ -5,6 +5,12 @@
 		"mAbbreviatedDisplayName": {
 			"type": "string"
 		},
+		"mAllowedResourceForms": {
+			"type": "string",
+			"typed_string": {
+				"enum_list": ["RF_SOLID", "RF_LIQUID"]
+			}
+		},
 		"mDisplayName": {
 			"type": "string",
 			"minLength": 0

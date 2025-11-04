@@ -92,6 +92,34 @@
 				}
 			}
 		},
+		"FGBuildableResourceExtractor": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableResourceExtractor"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"oneOf": [
+							{
+								"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGBuildableResourceExtractor--water"
+							},
+							{
+								"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGBuildableResourceExtractor--miner"
+							},
+							{
+								"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGBuildableResourceExtractor--oil"
+							}
+						]
+					}
+				}
+			}
+		},
 		"FGBuildableSpaceElevator": {
 			"type": "object",
 			"additionalProperties": false,
@@ -606,7 +634,7 @@
 			"$ref": "#/$defs/FGPortableMinerDispenser"
 		},
 		{
-			"type": "object"
+			"$ref": "#/$defs/FGBuildableResourceExtractor"
 		},
 		{
 			"type": "object"
