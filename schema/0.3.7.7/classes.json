@@ -1278,6 +1278,56 @@
 					"const": "AE_None"
 				}
 			}
+		},
+		"FGBuildableManufacturer": {
+			"type": "object",
+			"unevaluatedProperties": false,
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered",
+			"required": [
+				"mCurrentRecipeChanged",
+				"mManufacturingSpeed",
+				"mFactoryInputConnections",
+				"mPipeInputConnections",
+				"mFactoryOutputConnections",
+				"mPipeOutputConnections"
+			],
+			"properties": {
+				"IsPowered": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mProductionEffectsRunning": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mCurrentColor_VFX": {
+					"$ref": "docs.json.ts--common--types#/$defs/RGBA"
+				},
+				"CurrentPackagingMode": {
+					"type": "string",
+					"const": ""
+				},
+				"mCurrentRecipeChanged": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mManufacturingSpeed": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mFactoryInputConnections": {
+					"type": "string",
+					"const": ""
+				},
+				"mPipeInputConnections": {
+					"type": "string",
+					"const": ""
+				},
+				"mFactoryOutputConnections": {
+					"type": "string",
+					"const": ""
+				},
+				"mPipeOutputConnections": {
+					"type": "string",
+					"const": ""
+				}
+			}
 		}
 	}
 }
