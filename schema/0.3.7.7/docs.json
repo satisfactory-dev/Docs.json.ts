@@ -2,6 +2,34 @@
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "docs.json.ts--0.3.7.7",
 	"$defs": {
+		"FGBuildable": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildable"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"oneOf": [
+							{
+								"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGBuildable--occupied"
+							},
+							{
+								"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGBuildable--tiered"
+							},
+							{
+								"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGBuildable--base"
+							}
+						]
+					}
+				}
+			}
+		},
 		"FGBuildableConveyorBelt": {
 			"type": "object",
 			"additionalProperties": false,
@@ -658,7 +686,7 @@
 			"$ref": "#/$defs/FGBuildableStorage"
 		},
 		{
-			"type": "object"
+			"$ref": "#/$defs/FGBuildable"
 		},
 		{
 			"type": "object"
