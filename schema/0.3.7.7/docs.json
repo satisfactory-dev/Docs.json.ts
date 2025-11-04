@@ -48,6 +48,34 @@
 				}
 			}
 		},
+		"FGBuildableFactory": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableFactory"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"oneOf": [
+							{
+								"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGBuildableFactory--jump-pad"
+							},
+							{
+								"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGBuildableFactory--landing-pad"
+							},
+							{
+								"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGBuildable--powered-base"
+							}
+						]
+					}
+				}
+			}
+		},
 		"FGBuildableGeneratorFuel": {
 			"type": "object",
 			"additionalProperties": false,
@@ -710,7 +738,7 @@
 			"$ref": "#/$defs/FGBuildableWall"
 		},
 		{
-			"type": "object"
+			"$ref": "#/$defs/FGBuildableFactory"
 		},
 		{
 			"type": "object"

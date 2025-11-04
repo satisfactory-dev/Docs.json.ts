@@ -31,6 +31,23 @@
 				}
 			}
 		},
+		"FGBuildable--powered-base": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered",
+			"unevaluatedProperties": false,
+			"required": ["ClassName"],
+			"properties": {
+				"ClassName": {
+					"type": "string",
+					"templated_string": [
+						{"type": "string"},
+						"_",
+						{"type": "string"},
+						"_C"
+					]
+				}
+			}
+		},
 		"FGBuildable--tiered": {
 			"type": "object",
 			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable",
@@ -69,6 +86,41 @@
 				},
 				"mItems": {
 					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				}
+			}
+		},
+		"FGBuildableFactory--jump-pad": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered",
+			"unevaluatedProperties": false,
+			"required": [
+				"JumpForceCharacter",
+				"JumpForcePhysics"
+			],
+			"properties": {
+				"JumpForceCharacter": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"JumpForcePhysics": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGBuildableFactory--landing-pad": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered",
+			"unevaluatedProperties": false,
+			"required": [
+				"mDampeningFactor",
+				"mPlayerList"
+			],
+			"properties": {
+				"mDampeningFactor": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mPlayerList": {
+					"type": "string",
+					"const": ""
 				}
 			}
 		},
