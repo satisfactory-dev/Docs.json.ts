@@ -26,11 +26,19 @@
 		},
 		"mSmallIcon": {
 			"type": "string",
-			"DocsDotJson_Texture2D": [null, null, ["64", "256", "1b", "64_new"]]
+			"DocsDotJson_Texture2D": [
+				null,
+				null,
+				["64", "256", "1b", "64_new"]
+			]
 		},
 		"mPersistentBigIcon": {
 			"type": "string",
-			"DocsDotJson_Texture2D": [null, null, ["256", "512", "1b", "256_New"]]
+			"DocsDotJson_Texture2D": [
+				null,
+				null,
+				["256", "512", "1b", "256_New"]
+			]
 		},
 		"mType": {
 			"type": "string",
@@ -163,9 +171,7 @@
 		"mRelevantEvents": {
 			"type": "string",
 			"typed_string": {
-				"enum_list": [
-					"EV_Christmas"
-				]
+				"enum_list": ["EV_Christmas"]
 			}
 		}
 	}
