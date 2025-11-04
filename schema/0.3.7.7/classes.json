@@ -264,6 +264,76 @@
 				}
 			}
 		},
+		"FGBuildablePipelinePump": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered",
+			"unevaluatedProperties": false,
+			"required": [
+				"mLastFlowUpdate",
+				"mUpdateFlowTime",
+				"mAnimSpeed",
+				"mLastFlowValue",
+				"mTimeScaleOffset",
+				"mMaxPressure",
+				"mDesignPressure",
+				"mDefaultFlowLimit",
+				"mUserFlowLimit",
+				"mMinimumFlowPercentForStandby",
+				"mIndicatorData",
+				"mRadius",
+				"mFluidBoxVolume",
+				"mFluidBox",
+				"mPipeConnections"
+			],
+			"properties": {
+				"mLastFlowUpdate": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mUpdateFlowTime": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mAnimSpeed": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mLastFlowValue": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mTimeScaleOffset": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mMaxPressure": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mDesignPressure": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mDefaultFlowLimit": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mUserFlowLimit": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mMinimumFlowPercentForStandby": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mIndicatorData": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mRadius": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mFluidBoxVolume": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mFluidBox": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mPipeConnections": {
+					"type": "string",
+					"const": ""
+				}
+			}
+		},
 		"FGBuildablePole": {
 			"type": "object",
 			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-height",
