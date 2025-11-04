@@ -93,10 +93,7 @@
 			"type": "object",
 			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered",
 			"unevaluatedProperties": false,
-			"required": [
-				"JumpForceCharacter",
-				"JumpForcePhysics"
-			],
+			"required": ["JumpForceCharacter", "JumpForcePhysics"],
 			"properties": {
 				"JumpForceCharacter": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
@@ -110,10 +107,7 @@
 			"type": "object",
 			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered",
 			"unevaluatedProperties": false,
-			"required": [
-				"mDampeningFactor",
-				"mPlayerList"
-			],
+			"required": ["mDampeningFactor", "mPlayerList"],
 			"properties": {
 				"mDampeningFactor": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
