@@ -236,17 +236,25 @@
 		},
 		"FGBuildablePipeline--base": {
 			"type": "object",
+			"$ref": "#/$defs/FGBuildablePipeline--base--no-indicator",
+			"required": [
+				"mIndicatorData"
+			],
+			"properties": {
+				"mIndicatorData": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				}
+			}
+		},
+		"FGBuildablePipeline--base--no-indicator": {
+			"type": "object",
 			"$ref": "#/$defs/FGBuildable",
 			"required": [
-				"mIndicatorData",
 				"mRadius",
 				"mFluidBox",
 				"mPipeConnections"
 			],
 			"properties": {
-				"mIndicatorData": {
-					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-				},
 				"mRadius": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
@@ -266,6 +274,16 @@
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--spline"
+				}
+			]
+		},
+		"FGBuildablePipeline--junction": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				},
+				{
+					"$ref": "#/$defs/FGBuildablePipeline--base--no-indicator"
 				}
 			]
 		},
