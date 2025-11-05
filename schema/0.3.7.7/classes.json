@@ -392,6 +392,36 @@
 				}
 			}
 		},
+		"FGBuildablePipeReservoir": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered",
+			"unevaluatedProperties": false,
+			"required": [
+				"mStackingHeight",
+				"mFluidBox",
+				"mStorageCapacity",
+				"mPipeConnections",
+				"mIndicatorData"
+			],
+			"properties": {
+				"mStackingHeight": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mFluidBox": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mStorageCapacity": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mPipeConnections": {
+					"type": "string",
+					"const": ""
+				},
+				"mIndicatorData": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				}
+			}
+		},
 		"FGBuildablePole": {
 			"type": "object",
 			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--pole",
