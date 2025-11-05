@@ -61,25 +61,16 @@
 		},
 		"FGBuildableConveyorBelt": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--spline",
 			"unevaluatedProperties": false,
 			"required": [
-				"mMeshLength",
 				"mItemMeshMap",
-				"mSplineData",
 				"mSpeed",
 				"mItems"
 			],
 			"properties": {
-				"mMeshLength": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
 				"mItemMeshMap": {
 					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-				},
-				"mSplineData": {
-					"type": "string",
-					"const": ""
 				},
 				"mSpeed": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
@@ -261,6 +252,77 @@
 				"mPipeOutputConnections": {
 					"type": "string",
 					"const": ""
+				}
+			}
+		},
+		"FGBuildablePipeline": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipeline--base-spline",
+			"unevaluatedProperties": false,
+			"required": [
+				"mFlowLimit",
+				"mFlowIndicatorMinimumPipeLength",
+				"mMaxIndicatorTurnAngle",
+				"mIgnoreActorsForIndicator",
+				"mFluidNames",
+				"mCurrentFluid",
+				"mQuantiziedContent",
+				"mQuantiziedFlow",
+				"mRattleLimit",
+				"mIsRattling"
+			],
+			"properties": {
+				"mFlowLimit": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mFlowIndicatorMinimumPipeLength": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mMaxIndicatorTurnAngle": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mIgnoreActorsForIndicator": {
+					"type": "string",
+					"const": ""
+				},
+				"mFluidNames": {
+					"type": "string",
+					"typed_string": {
+						"minItems": 1,
+						"items": {
+							"type": "object",
+							"additionalProperties": false,
+							"required": [
+								"WwiseSafeName"
+							],
+							"properties": {
+								"WwiseSafeName": {
+									"type": "string",
+									"pattern": "^[A-Z][A-Za-z_]+[a-z]$"
+								},
+								"ActualName": {
+									"type": "string",
+									"pattern": "^[A-Z][A-Za-z ]+[a-z]$"
+								}
+							}
+						}
+					}
+				},
+				"mCurrentFluid": {
+					"type": "string",
+					"const": ""
+				},
+				"mQuantiziedContent": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mQuantiziedFlow": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mRattleLimit": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mIsRattling": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				}
 			}
 		},

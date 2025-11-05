@@ -205,6 +205,23 @@
 				}
 			}
 		},
+		"FGBuildable--spline": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable",
+			"required": [
+				"mMeshLength",
+				"mSplineData"
+			],
+			"properties": {
+				"mMeshLength": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mSplineData": {
+					"type": "string",
+					"const": ""
+				}
+			}
+		},
 		"FGBuildable--with-height": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable",
@@ -217,7 +234,52 @@
 				}
 			}
 		},
+		"FGBuildablePipeline--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable",
+			"required": [
+				"mIndicatorData",
+				"mRadius",
+				"mFluidBox",
+				"mPipeConnections"
+			],
+			"properties": {
+				"mIndicatorData": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mRadius": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mFluidBox": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mPipeConnections": {
+					"type": "string",
+					"const": ""
+				}
+			}
+		},
+		"FGBuildablePipeline--base-spline": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildablePipeline--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--spline"
+				}
+			]
+		},
 		"FGBuildablePipelinePump--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildablePipeline--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildablePipelinePump--powered-base"
+				}
+			]
+		},
+		"FGBuildablePipelinePump--powered-base": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--powered",
 			"required": [
@@ -231,11 +293,7 @@
 				"mDefaultFlowLimit",
 				"mUserFlowLimit",
 				"mMinimumFlowPercentForStandby",
-				"mIndicatorData",
-				"mRadius",
-				"mFluidBoxVolume",
-				"mFluidBox",
-				"mPipeConnections"
+				"mFluidBoxVolume"
 			],
 			"properties": {
 				"mLastFlowUpdate": {
@@ -268,21 +326,8 @@
 				"mMinimumFlowPercentForStandby": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
-				"mIndicatorData": {
-					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-				},
-				"mRadius": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
 				"mFluidBoxVolume": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mFluidBox": {
-					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-				},
-				"mPipeConnections": {
-					"type": "string",
-					"const": ""
 				}
 			}
 		},
