@@ -251,6 +251,106 @@
 				}
 			]
 		},
+		"FGBuildableGenerator": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered",
+			"required": [
+				"mFuelClasses",
+				"mDefaultFuelClasses",
+				"mAvailableFuelClasses",
+				"mFuelResourceForm",
+				"mRequiresSupplementalResource",
+				"mSupplementalLoadAmount",
+				"mSupplementalToPowerRatio",
+				"mCachedInputConnections",
+				"mCachedPipeInputConnections",
+				"mPowerProduction",
+				"mPowerProductionExponent",
+				"mLoadPercentage"
+			],
+			"properties": {
+				"mCachedLoadPercentage": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mFuelClasses": {
+					"type": "string",
+					"const": ""
+				},
+				"mDefaultFuelClasses": {
+					"oneOf": [
+						{
+							"type": "string",
+							"typed_string": {
+								"enum_list": [
+									"/Game/FactoryGame/Resource/Parts/Fuel/Desc_LiquidFuel.Desc_LiquidFuel_C",
+									"/Game/FactoryGame/Resource/Parts/Turbofuel/Desc_LiquidTurboFuel.Desc_LiquidTurboFuel_C",
+									"/Game/FactoryGame/Resource/Parts/BioFuel/Desc_LiquidBiofuel.Desc_LiquidBiofuel_C"
+								]
+							}
+						},
+						{
+							"type": "string",
+							"typed_string": {
+								"enum_list": [
+									"/Script/FactoryGame.FGItemDescriptorBiomass"
+								]
+							}
+						},
+						{
+							"type": "string",
+							"typed_string": {
+								"enum_list": [
+									"/Game/FactoryGame/Resource/RawResources/Coal/Desc_Coal.Desc_Coal_C",
+									"/Game/FactoryGame/Resource/Parts/CompactedCoal/Desc_CompactedCoal.Desc_CompactedCoal_C",
+									"/Game/FactoryGame/Resource/Parts/PetroleumCoke/Desc_PetroleumCoke.Desc_PetroleumCoke_C"
+								]
+							}
+						},
+						{
+							"type": "string",
+							"typed_string": {
+								"enum_list": [
+									"/Game/FactoryGame/Resource/Parts/NuclearFuelRod/Desc_NuclearFuelRod.Desc_NuclearFuelRod_C"
+								]
+							}
+						}
+					]
+				},
+				"mAvailableFuelClasses": {
+					"type": "string",
+					"const": ""
+				},
+				"mFuelResourceForm": {
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mForm"
+				},
+				"mRequiresSupplementalResource": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mSupplementalLoadAmount": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mSupplementalToPowerRatio": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mCachedInputConnections": {
+					"type": "string",
+					"const": ""
+				},
+				"mCachedPipeInputConnections": {
+					"type": "string",
+					"const": ""
+				},
+				"mPowerProduction": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mPowerProductionExponent": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mLoadPercentage": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
 		"FGBuildablePipeline--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildablePipeline--base--no-indicator",
