@@ -103,11 +103,7 @@
 		"FGBuildable--pole": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable",
-			"required": [
-				"mUseStaticHeight",
-				"mCanStack",
-				"mStackHeight"
-			],
+			"required": ["mUseStaticHeight", "mCanStack", "mStackHeight"],
 			"properties": {
 				"mUseStaticHeight": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
@@ -208,10 +204,7 @@
 		"FGBuildable--spline": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable",
-			"required": [
-				"mMeshLength",
-				"mSplineData"
-			],
+			"required": ["mMeshLength", "mSplineData"],
 			"properties": {
 				"mMeshLength": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
@@ -225,9 +218,7 @@
 		"FGBuildable--with-height": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable",
-			"required": [
-				"mHeight"
-			],
+			"required": ["mHeight"],
 			"properties": {
 				"mHeight": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
@@ -237,11 +228,7 @@
 		"FGBuildableConveyorBelt--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable",
-			"required": [
-				"mItemMeshMap",
-				"mSpeed",
-				"mItems"
-			],
+			"required": ["mItemMeshMap", "mSpeed", "mItems"],
 			"properties": {
 				"mItemMeshMap": {
 					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
@@ -267,9 +254,7 @@
 		"FGBuildablePipeline--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildablePipeline--base--no-indicator",
-			"required": [
-				"mIndicatorData"
-			],
+			"required": ["mIndicatorData"],
 			"properties": {
 				"mIndicatorData": {
 					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
@@ -279,11 +264,7 @@
 		"FGBuildablePipeline--base--no-indicator": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable",
-			"required": [
-				"mRadius",
-				"mFluidBox",
-				"mPipeConnections"
-			],
+			"required": ["mRadius", "mFluidBox", "mPipeConnections"],
 			"properties": {
 				"mRadius": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"

@@ -44,11 +44,7 @@
 			"type": "object",
 			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableConveyorBelt--base",
 			"unevaluatedProperties": false,
-			"required": [
-				"mMeshHeight",
-				"mTopTransform",
-				"mIsReversed"
-			],
+			"required": ["mMeshHeight", "mTopTransform", "mIsReversed"],
 			"properties": {
 				"mMeshHeight": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
@@ -58,11 +54,7 @@
 					"typed_string": {
 						"type": "object",
 						"additionalProperties": false,
-						"required": [
-							"Rotation",
-							"Translation",
-							"Scale3D"
-						],
+						"required": ["Rotation", "Translation", "Scale3D"],
 						"properties": {
 							"Rotation": {
 								"$ref": "docs.json.ts--common--types#/$defs/XYZW--decimal_string"
@@ -293,9 +285,7 @@
 						"items": {
 							"type": "object",
 							"additionalProperties": false,
-							"required": [
-								"WwiseSafeName"
-							],
+							"required": ["WwiseSafeName"],
 							"properties": {
 								"WwiseSafeName": {
 									"type": "string",
