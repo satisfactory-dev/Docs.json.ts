@@ -157,10 +157,10 @@
 					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
 				},
 				"mMinimumProducingTime": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
 				},
 				"mMinimumStoppedTime": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
 				},
 				"mNumCyclesForProductivity": {
 					"$ref": "docs.json.ts--common--types#/$defs/integer_string"

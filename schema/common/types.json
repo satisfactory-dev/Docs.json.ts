@@ -22,6 +22,10 @@
 			"type": "string",
 			"pattern": "^\\d+$"
 		},
+		"integer_string--signed": {
+			"type": "string",
+			"pattern": "^-?\\d+$"
+		},
 		"BGRA": {
 			"type": "string",
 			"typed_string": {
