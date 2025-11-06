@@ -301,6 +301,16 @@
 				}
 			}
 		},
+		"FGBuildableAttachment": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--powered",
+			"required": ["mCurrentInventoryIndex"],
+			"properties": {
+				"mCurrentInventoryIndex": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				}
+			}
+		},
 		"FGBuildableConveyorBelt--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable",
