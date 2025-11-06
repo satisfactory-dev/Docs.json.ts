@@ -2,6 +2,10 @@ import type {
 	SchemaParser,
 } from '@signpostmarv/json-schema-typescript-codegen';
 
+import {
+	TemplatedString,
+} from '@signpostmarv/json-schema-typescript-codegen/ajv';
+
 import common_types from '../../../schema/common/types.json' with {
 	type: 'json',
 };
@@ -51,9 +55,6 @@ import {
 import {
 	BP_C,
 } from './BP_C.ts';
-import {
-	TemplatedString,
-} from '@signpostmarv/json-schema-typescript-codegen/ajv';
 import {
 	NamedList,
 } from './NamedList.ts';
