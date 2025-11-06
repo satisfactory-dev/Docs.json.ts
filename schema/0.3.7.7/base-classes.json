@@ -225,6 +225,82 @@
 				}
 			}
 		},
+		"FGBuildable--with-height-and-elevation": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--with-height",
+			"required": [
+				"mSize",
+				"mElevation",
+				"mDisableSnapOn",
+				"mDisableAttachmentSnapOn"
+			],
+			"properties": {
+				"mSize": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mElevation": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mDisableSnapOn": {
+					"oneOf": [
+						{
+							"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+						},
+						{
+							"type": "string",
+							"typed_string": {
+								"type": "object",
+								"additionalProperties": false,
+								"required": ["Front", "Top"],
+								"properties": {
+									"Front": {
+										"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+									},
+									"Top": {
+										"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+									}
+								}
+							}
+						},
+						{
+							"type": "string",
+							"typed_string": {
+								"type": "object",
+								"additionalProperties": false,
+								"required": ["Top", "Bottom"],
+								"properties": {
+									"Top": {
+										"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+									},
+									"Bottom": {
+										"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+									}
+								}
+							}
+						},
+						{
+							"type": "string",
+							"typed_string": {
+								"type": "object",
+								"additionalProperties": false,
+								"required": ["Front", "Bottom"],
+								"properties": {
+									"Front": {
+										"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+									},
+									"Bottom": {
+										"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+									}
+								}
+							}
+						}
+					]
+				},
+				"mDisableAttachmentSnapOn": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				}
+			}
+		},
 		"FGBuildableConveyorBelt--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable",

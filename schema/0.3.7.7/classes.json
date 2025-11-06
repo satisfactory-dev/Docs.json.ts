@@ -102,6 +102,11 @@
 				}
 			}
 		},
+		"FGBuildableFoundation": {
+			"type": "object",
+			"unevaluatedProperties": false,
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-height-and-elevation"
+		},
 		"FGBuildableGeneratorFuel": {
 			"type": "object",
 			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGenerator",
@@ -531,27 +536,7 @@
 		"FGBuildableStair": {
 			"type": "object",
 			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-height",
-			"required": [
-				"mSize",
-				"mElevation",
-				"mDisableSnapOn",
-				"mDisableAttachmentSnapOn"
-			],
-			"properties": {
-				"mSize": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mElevation": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mDisableSnapOn": {
-					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-				},
-				"mDisableAttachmentSnapOn": {
-					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-				}
-			}
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-height-and-elevation"
 		},
 		"FGBuildableStorage": {
 			"type": "object",
