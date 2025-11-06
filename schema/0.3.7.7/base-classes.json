@@ -757,7 +757,8 @@
 						"AE_Rifle",
 						"AE_ShockShank",
 						"AE_StunSpear",
-						"AE_PortableMiner"
+						"AE_PortableMiner",
+						"AE_ObjectScanner"
 					]
 				},
 				"mBackAnimation": {
@@ -779,6 +780,16 @@
 			"properties": {
 				"mPlaceDistanceMax": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGEquipment--has-sound": {
+			"type": "object",
+			"$ref": "#/$defs/FGEquipment",
+			"required": ["mPlayingSound"],
+			"properties": {
+				"mPlayingSound": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				}
 			}
 		},

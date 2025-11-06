@@ -54,6 +54,9 @@ import {
 import {
 	TemplatedString,
 } from '@signpostmarv/json-schema-typescript-codegen/ajv';
+import {
+	NamedList,
+} from './NamedList.ts';
 
 const already_configured: WeakSet<SchemaParser> = new WeakSet();
 
@@ -82,6 +85,7 @@ export function configure_parser(parser: SchemaParser) {
 		new Texture2D({ajv}),
 		new TypedString({ajv}),
 		new TemplatedString({ajv}),
+		new NamedList({ajv}, 'NSLOCTEXT'),
 		...parser.types,
 	];
 }

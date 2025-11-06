@@ -483,7 +483,12 @@ export class TypedString<
 				(property): [
 					string,
 					string,
-				] => [property, `(${RegExp.escape(property)})=([^=]+)`],
+				] => [
+					property,
+					`(${
+						RegExp.escape(property)
+					})=([^=]+|[A-Z]+\\((?:[^)]+)\\)|\\([^)]+\\))`,
+				],
 			).map(([
 				property,
 				regex,
@@ -501,7 +506,10 @@ export class TypedString<
 				throw new TypeError('Data does not match expected regex!');
 			}
 
-			const [, ...matches] = match;
+			const [, ...matches_unfiltered] = match;
+
+			const matches = matches_unfiltered
+				.filter((e) => 'string' === typeof e);
 
 			const array_values: ObjectLiteralExpression[] = [];
 
@@ -526,7 +534,10 @@ export class TypedString<
 								.generate_typescript_data(
 									property_value,
 									schema_parser,
-									property_schema,
+									TypedString.maybe_add_$defs(
+										schema,
+										property_schema,
+									),
 								),
 						);
 
