@@ -103,6 +103,28 @@
 					}
 				}
 			}
+		},
+		"XYZW--decimal_string": {
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": ["X", "Y", "Z", "W"],
+				"properties": {
+					"X": {
+						"$ref": "#/$defs/decimal_string"
+					},
+					"Y": {
+						"$ref": "#/$defs/decimal_string"
+					},
+					"Z": {
+						"$ref": "#/$defs/decimal_string"
+					},
+					"W": {
+						"$ref": "#/$defs/decimal_string"
+					}
+				}
+			}
 		}
 	}
 }

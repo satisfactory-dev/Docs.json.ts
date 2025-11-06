@@ -234,6 +234,36 @@
 				}
 			}
 		},
+		"FGBuildableConveyorBelt--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable",
+			"required": [
+				"mItemMeshMap",
+				"mSpeed",
+				"mItems"
+			],
+			"properties": {
+				"mItemMeshMap": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mSpeed": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mItems": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				}
+			}
+		},
+		"FGBuildableConveyorBelt--spline": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--spline"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableConveyorBelt--base"
+				}
+			]
+		},
 		"FGBuildablePipeline--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildablePipeline--base--no-indicator",

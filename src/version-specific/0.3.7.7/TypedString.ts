@@ -13,7 +13,7 @@ import {
 
 import type {
 	object_schema,
-	object_type,
+	object_type_base,
 	object_TypeLiteralNode_possibly_extended,
 	ObjectOfSchemas,
 	PositiveInteger,
@@ -76,7 +76,7 @@ type TypedString_type<
 		None: {
 			const: '(None)',
 		},
-		Object: object_type<
+		Object: object_type_base<
 			'properties',
 			SchemaObject,
 			[string, ...string[]],
@@ -85,7 +85,7 @@ type TypedString_type<
 		>,
 		Object_list: {
 			minItems: PositiveInteger<number>,
-			items: object_type<
+			items: object_type_base<
 				'properties',
 				SchemaObject,
 				[string, ...string[]],
@@ -262,7 +262,7 @@ type Type_Generator<
 	Empty: undefined,
 	String_enum_list: undefined,
 	Object: (
-		schema: object_type<
+		schema: object_type_base<
 			'properties',
 			SchemaObject,
 			[string, ...string[]],
@@ -272,7 +272,7 @@ type Type_Generator<
 		schema_parser: SchemaParser,
 	) => Promise<object_TypeLiteralNode_possibly_extended<'properties'>>,
 	Object_list: (
-		schema: object_type<
+		schema: object_type_base<
 			'properties',
 			SchemaObject,
 			[string, ...string[]],
@@ -413,7 +413,10 @@ export class TypedString<
 				(property): [
 					string,
 					string,
-				] => [property, `(${RegExp.escape(property)})=([^=]+)`],
+				] => [
+					property,
+					`(${RegExp.escape(property)})=([^=]+|\\(.+\\)(?=[,\\)]))`,
+				],
 			).map(([
 				property,
 				regex,
@@ -651,7 +654,7 @@ export class TypedString<
 			const type_generator: Type_Generator<
 				'Object'
 			> = (
-				schema: object_type<
+				schema: object_type_base<
 					'properties',
 					SchemaObject,
 					[string, ...string[]],
@@ -699,7 +702,7 @@ export class TypedString<
 			const type_generator: Type_Generator<
 				'Object_list'
 			> = (
-				schema: object_type<
+				schema: object_type_base<
 					'properties',
 					SchemaObject,
 					[string, ...string[]],

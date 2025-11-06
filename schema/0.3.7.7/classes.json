@@ -61,22 +61,47 @@
 		},
 		"FGBuildableConveyorBelt": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--spline",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableConveyorBelt--spline",
+			"unevaluatedProperties": false
+		},
+		"FGBuildableConveyorLift": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableConveyorBelt--base",
 			"unevaluatedProperties": false,
 			"required": [
-				"mItemMeshMap",
-				"mSpeed",
-				"mItems"
+				"mMeshHeight",
+				"mTopTransform",
+				"mIsReversed"
 			],
 			"properties": {
-				"mItemMeshMap": {
-					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-				},
-				"mSpeed": {
+				"mMeshHeight": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
-				"mItems": {
-					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				"mTopTransform": {
+					"type": "string",
+					"typed_string": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": [
+							"Rotation",
+							"Translation",
+							"Scale3D"
+						],
+						"properties": {
+							"Rotation": {
+								"$ref": "docs.json.ts--common--types#/$defs/XYZW--decimal_string"
+							},
+							"Translation": {
+								"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
+							},
+							"Scale3D": {
+								"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
+							}
+						}
+					}
+				},
+				"mIsReversed": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				}
 			}
 		},
