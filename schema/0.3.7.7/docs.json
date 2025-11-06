@@ -606,6 +606,24 @@
 				}
 			}
 		},
+		"FGItemDescriptorNuclearFuel": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGItemDescriptorNuclearFuel"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGItemDescriptorNuclearFuel"
+					}
+				}
+			}
+		},
 		"FGJetPack": {
 			"type": "object",
 			"additionalProperties": false,
@@ -937,7 +955,7 @@
 			"$ref": "#/$defs/FGBuildableGeneratorNuclear"
 		},
 		{
-			"type": "object"
+			"$ref": "#/$defs/FGItemDescriptorNuclearFuel"
 		},
 		{
 			"type": "object"

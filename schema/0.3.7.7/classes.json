@@ -950,6 +950,17 @@
 			"unevaluatedProperties": false,
 			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGDescriptor--sinkable"
 		},
+		"FGItemDescriptorNuclearFuel": {
+			"type": "object",
+			"unevaluatedProperties": false,
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGDescriptor--sinkable",
+			"required": ["mAmountOfWaste"],
+			"properties": {
+				"mAmountOfWaste": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				}
+			}
+		},
 		"FGJetPack": {
 			"type": "object",
 			"unevaluatedProperties": false,
