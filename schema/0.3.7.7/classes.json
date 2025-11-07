@@ -1534,6 +1534,20 @@
 				}
 			}
 		},
+		"FGParachute": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment",
+			"unevaluatedProperties": false,
+			"required": ["mTerminalVelocityZ", "mIsDeployed"],
+			"properties": {
+				"mTerminalVelocityZ": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mIsDeployed": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
+		},
 		"FGPipeHyperStart": {
 			"type": "object",
 			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--pole--with-length-and-power",
