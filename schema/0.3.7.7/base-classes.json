@@ -354,6 +354,20 @@
 				}
 			}
 		},
+		"FGBuildableAttachment--splitter": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableAttachment",
+			"required": ["mCurrentOutputIndex", "mDistributionTable"],
+			"properties": {
+				"mCurrentOutputIndex": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string--signed"
+				},
+				"mDistributionTable": {
+					"type": "string",
+					"const": ""
+				}
+			}
+		},
 		"FGBuildableConveyorBelt--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable",

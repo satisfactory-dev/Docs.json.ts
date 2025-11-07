@@ -48,18 +48,8 @@
 		},
 		"FGBuildableAttachmentSplitter": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableAttachment",
-			"unevaluatedProperties": false,
-			"required": ["mCurrentOutputIndex", "mDistributionTable"],
-			"properties": {
-				"mCurrentOutputIndex": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string--signed"
-				},
-				"mDistributionTable": {
-					"type": "string",
-					"const": ""
-				}
-			}
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableAttachment--splitter",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableConveyorBelt": {
 			"type": "object",
@@ -751,6 +741,45 @@
 				"mMapText": {
 					"type": "string",
 					"const": "Space Elevator"
+				}
+			}
+		},
+		"FGBuildableSplitterSmart": {
+			"type": "object",
+			"unevaluatedProperties": false,
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableAttachment--splitter",
+			"required": [
+				"OnSortRulesChangedDelegate",
+				"mMaxNumSortRules",
+				"mLastItem",
+				"mItemToLastOutputMap",
+				"mLastOutputIndex"
+			],
+			"properties": {
+				"OnSortRulesChangedDelegate": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mMaxNumSortRules": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mLastItem": {
+					"type": "string",
+					"typed_string": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": ["ItemState"],
+						"properties": {
+							"ItemState": {
+								"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+							}
+						}
+					}
+				},
+				"mItemToLastOutputMap": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mLastOutputIndex": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
 				}
 			}
 		},
