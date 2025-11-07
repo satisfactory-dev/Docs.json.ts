@@ -872,7 +872,8 @@
 						"AE_ShockShank",
 						"AE_StunSpear",
 						"AE_PortableMiner",
-						"AE_ObjectScanner"
+						"AE_ObjectScanner",
+						"AE_ColorGun"
 					]
 				},
 				"mBackAnimation": {
@@ -991,7 +992,23 @@
 				},
 				"mArmAnimation": {
 					"type": "string",
-					"enum": ["AE_RebarGun", "AE_Rifle"]
+					"enum": ["AE_RebarGun", "AE_Rifle", "AE_ColorGun"]
+				}
+			}
+		},
+		"FGWeaponProjectile--instant": {
+			"type": "object",
+			"$ref": "#/$defs/FGWeaponProjectile",
+			"required": [
+				"mInstantHitDamage",
+				"mWeaponTraceLength"
+			],
+			"properties": {
+				"mInstantHitDamage": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mWeaponTraceLength": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
 			}
 		}

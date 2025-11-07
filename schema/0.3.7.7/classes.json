@@ -1097,6 +1097,44 @@
 				}
 			}
 		},
+		"FGColorGun": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectile--instant",
+			"unevaluatedProperties": false,
+			"required": [
+				"mPrimaryColor",
+				"mSecondaryColor",
+				"mRedundantTargetCrosshairColor",
+				"mNoTargetCrosshairColor",
+				"mNonColorableTargetCrosshairColor",
+				"mColorSlot",
+				"mArmAnimation"
+			],
+			"properties": {
+				"mPrimaryColor": {
+					"$ref": "docs.json.ts--common--types#/$defs/RGBA"
+				},
+				"mSecondaryColor": {
+					"$ref": "docs.json.ts--common--types#/$defs/RGBA"
+				},
+				"mRedundantTargetCrosshairColor": {
+					"$ref": "docs.json.ts--common--types#/$defs/RGBA"
+				},
+				"mNoTargetCrosshairColor": {
+					"$ref": "docs.json.ts--common--types#/$defs/RGBA"
+				},
+				"mNonColorableTargetCrosshairColor": {
+					"$ref": "docs.json.ts--common--types#/$defs/RGBA"
+				},
+				"mColorSlot": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mArmAnimation": {
+					"type": "string",
+					"const": "AE_ColorGun"
+				}
+			}
+		},
 		"FGConsumableDescriptor": {
 			"type": "object",
 			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGDescriptor--sinkable",
@@ -2001,13 +2039,11 @@
 		"FGWeaponInstantFire": {
 			"type": "object",
 			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectile",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectile--instant",
 			"required": [
 				"Fire",
 				"mLockAngle",
 				"mHasReloadedOnce",
-				"mInstantHitDamage",
-				"mWeaponTraceLength",
 				"mArmAnimation"
 			],
 			"properties": {
@@ -2019,12 +2055,6 @@
 				},
 				"mHasReloadedOnce": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mInstantHitDamage": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mWeaponTraceLength": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
 				"mArmAnimation": {
 					"type": "string",
