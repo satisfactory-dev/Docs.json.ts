@@ -1029,7 +1029,7 @@ export class TypedString<
 				Object.keys(coerced.properties)
 					.map((property) => `(?:,?${
 						RegExp.escape(property)
-					}=.+)${
+					}=(?:\\([^)]+\\)|[^=]+))${
 						(
 							(coerced.required || ([] as string[]))
 								.includes(property)

@@ -100,6 +100,16 @@
 				}
 			}
 		},
+		"FGBuildable--DisableAttachmentSnapOn": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable",
+			"required": ["mDisableAttachmentSnapOn"],
+			"properties": {
+				"mDisableAttachmentSnapOn": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				}
+			}
+		},
 		"FGBuildable--pole": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable",
@@ -259,13 +269,45 @@
 			}
 		},
 		"FGBuildable--with-height-and-elevation": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--with-height"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--with-size-and-elevation"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--DisableAttachmentSnapOn"
+				}
+			]
+		},
+		"FGBuildable--with-height-and-width": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--with-height"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--with-width"
+				}
+			]
+		},
+		"FGBuildable--with-length": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--with-height",
+			"$ref": "#/$defs/FGBuildable",
+			"required": ["mMeshLength"],
+			"properties": {
+				"mMeshLength": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGBuildable--with-size-and-elevation": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable",
 			"required": [
 				"mSize",
 				"mElevation",
-				"mDisableSnapOn",
-				"mDisableAttachmentSnapOn"
+				"mDisableSnapOn"
 			],
 			"properties": {
 				"mSize": {
@@ -326,20 +368,85 @@
 									}
 								}
 							}
+						},
+						{
+							"type": "string",
+							"typed_string": {
+								"type": "object",
+								"additionalProperties": false,
+								"required": ["Right", "Left", "Top", "Bottom"],
+								"properties": {
+									"Right": {
+										"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+									},
+									"Left": {
+										"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+									},
+									"Top": {
+										"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+									},
+									"Bottom": {
+										"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+									}
+								}
+							}
+						},
+						{
+							"type": "string",
+							"typed_string": {
+								"type": "object",
+								"additionalProperties": false,
+								"required": ["Front", "Top", "Bottom"],
+								"properties": {
+									"Front": {
+										"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+									},
+									"Top": {
+										"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+									},
+									"Bottom": {
+										"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+									}
+								}
+							}
+						},
+						{
+							"type": "string",
+							"typed_string": {
+								"type": "object",
+								"additionalProperties": false,
+								"required": [
+									"Front",
+									"Left",
+									"Top",
+									"Bottom"
+								],
+								"properties": {
+									"Front": {
+										"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+									},
+									"Left": {
+										"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+									},
+									"Top": {
+										"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+									},
+									"Bottom": {
+										"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+									}
+								}
+							}
 						}
 					]
-				},
-				"mDisableAttachmentSnapOn": {
-					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
 				}
 			}
 		},
-		"FGBuildable--with-length": {
+		"FGBuildable--with-width": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable",
-			"required": ["mMeshLength"],
+			"required": ["mWidth"],
 			"properties": {
-				"mMeshLength": {
+				"mWidth": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
 			}
@@ -874,7 +981,8 @@
 						"AE_PortableMiner",
 						"AE_ObjectScanner",
 						"AE_ColorGun",
-						"AE_Nobelisk"
+						"AE_Nobelisk",
+						"AE_Generic1Hand"
 					]
 				},
 				"mBackAnimation": {
@@ -1000,7 +1108,105 @@
 						"AE_RebarGun",
 						"AE_Rifle",
 						"AE_ColorGun",
-						"AE_Nobelisk"
+						"AE_Nobelisk",
+						"AE_Generic1Hand"
+					]
+				}
+			}
+		},
+		"FGWeaponProjectile--thrown": {
+			"type": "object",
+			"$ref": "#/$defs/FGWeaponProjectile",
+			"required": [
+				"mExplosiveData",
+				"mDispensedExplosives",
+				"mIsPendingExecuteFire",
+				"mMaxChargeTime",
+				"mMaxThrowForce",
+				"mMinThrowForce",
+				"mDelayBetweenExplosions",
+				"mAttachSocket",
+				"mArmAnimation"
+			],
+			"properties": {
+				"mExplosiveData": {
+					"type": "string",
+					"typed_string": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": [
+							"ProjectileClass",
+							"ProjectileLifeSpan",
+							"ProjectileStickSpan",
+							"ExplosionDamage",
+							"ExplosionRadius",
+							"ImpactDamage",
+							"ExplodeAtEndOfLife",
+							"DamageType",
+							"DamageTypeExplode"
+						],
+						"properties": {
+							"ProjectileClass": {
+								"type": "string",
+								"DocsDotJson_BlueprintGeneratedClass_quoted": null
+							},
+							"ProjectileLifeSpan": {
+								"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
+							},
+							"ProjectileStickSpan": {
+								"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
+							},
+							"ExplosionDamage": {
+								"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+							},
+							"ExplosionRadius": {
+								"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+							},
+							"ImpactDamage": {
+								"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+							},
+							"ExplodeAtEndOfLife": {
+								"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+							},
+							"DamageType": {
+								"type": "string",
+								"DocsDotJson_BlueprintGeneratedClass_quoted": null
+							},
+							"DamageTypeExplode": {
+								"type": "string",
+								"DocsDotJson_BlueprintGeneratedClass_quoted": null
+							}
+						}
+					}
+				},
+				"mDispensedExplosives": {
+					"type": "string",
+					"const": ""
+				},
+				"mIsPendingExecuteFire": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mMaxChargeTime": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mMaxThrowForce": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mMinThrowForce": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mDelayBetweenExplosions": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mAttachSocket": {
+					"type": "string",
+					"const": "hand_lSocket"
+				},
+				"mArmAnimation": {
+					"type": "string",
+					"enum": [
+						"AE_Nobelisk",
+						"AE_Generic1Hand"
 					]
 				}
 			}
