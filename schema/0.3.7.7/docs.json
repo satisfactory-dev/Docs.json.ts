@@ -102,6 +102,24 @@
 				}
 			}
 		},
+		"FGBuildableDockingStation": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableDockingStation"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGBuildableDockingStation"
+					}
+				}
+			}
+		},
 		"FGBuildableFactory": {
 			"type": "object",
 			"additionalProperties": false,
@@ -1126,7 +1144,7 @@
 			"$ref": "#/$defs/FGConveyorPoleStackable"
 		},
 		{
-			"type": "object"
+			"$ref": "#/$defs/FGBuildableDockingStation"
 		},
 		{
 			"type": "object"
