@@ -873,7 +873,8 @@
 						"AE_StunSpear",
 						"AE_PortableMiner",
 						"AE_ObjectScanner",
-						"AE_ColorGun"
+						"AE_ColorGun",
+						"AE_Nobelisk"
 					]
 				},
 				"mBackAnimation": {
@@ -988,11 +989,19 @@
 				},
 				"mAttachSocket": {
 					"type": "string",
-					"const": "hand_rSocket"
+					"enum": [
+						"hand_lSocket",
+						"hand_rSocket"
+					]
 				},
 				"mArmAnimation": {
 					"type": "string",
-					"enum": ["AE_RebarGun", "AE_Rifle", "AE_ColorGun"]
+					"enum": [
+						"AE_RebarGun",
+						"AE_Rifle",
+						"AE_ColorGun",
+						"AE_Nobelisk"
+					]
 				}
 			}
 		},
@@ -1001,7 +1010,8 @@
 			"$ref": "#/$defs/FGWeaponProjectile",
 			"required": [
 				"mInstantHitDamage",
-				"mWeaponTraceLength"
+				"mWeaponTraceLength",
+				"mAttachSocket"
 			],
 			"properties": {
 				"mInstantHitDamage": {
@@ -1009,6 +1019,10 @@
 				},
 				"mWeaponTraceLength": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mAttachSocket": {
+					"type": "string",
+					"const": "hand_rSocket"
 				}
 			}
 		}
