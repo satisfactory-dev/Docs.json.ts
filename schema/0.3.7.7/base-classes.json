@@ -396,7 +396,7 @@
 		},
 		"FGBuildableGenerator": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered",
+			"$ref": "#/$defs/FGBuildableGenerator--no-fuel",
 			"required": [
 				"mFuelClasses",
 				"mDefaultFuelClasses",
@@ -406,10 +406,7 @@
 				"mSupplementalLoadAmount",
 				"mSupplementalToPowerRatio",
 				"mCachedInputConnections",
-				"mCachedPipeInputConnections",
-				"mPowerProduction",
-				"mPowerProductionExponent",
-				"mLoadPercentage"
+				"mCachedPipeInputConnections"
 			],
 			"properties": {
 				"mCachedLoadPercentage": {
@@ -482,7 +479,18 @@
 				"mCachedPipeInputConnections": {
 					"type": "string",
 					"const": ""
-				},
+				}
+			}
+		},
+		"FGBuildableGenerator--no-fuel": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--powered",
+			"required": [
+				"mPowerProduction",
+				"mPowerProductionExponent",
+				"mLoadPercentage"
+			],
+			"properties": {
 				"mPowerProduction": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
