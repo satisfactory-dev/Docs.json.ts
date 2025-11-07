@@ -635,6 +635,45 @@
 				}
 			}
 		},
+		"FGBuildableResourceSink": {
+			"type": "object",
+			"unevaluatedProperties": false,
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered",
+			"required": [
+				"SFXEngineTimeline_EngineAlpha_073E1D2A4BAD246B3958E183E210FAAE",
+				"SFXEngineTimeline__Direction_073E1D2A4BAD246B3958E183E210FAAE",
+				"VFX_SFX_Timeline_EngineAlpha_A2CB706E440839665A39888572D206AA",
+				"VFX_SFX_Timeline__Direction_A2CB706E440839665A39888572D206AA",
+				"HastLostSignificance",
+				"mProcessingTime",
+				"mSavedProducingTimer"
+			],
+			"properties": {
+				"SFXEngineTimeline_EngineAlpha_073E1D2A4BAD246B3958E183E210FAAE": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"SFXEngineTimeline__Direction_073E1D2A4BAD246B3958E183E210FAAE": {
+					"type": "string",
+					"const": "Forward"
+				},
+				"VFX_SFX_Timeline_EngineAlpha_A2CB706E440839665A39888572D206AA": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"VFX_SFX_Timeline__Direction_A2CB706E440839665A39888572D206AA": {
+					"type": "string",
+					"const": "Forward"
+				},
+				"HastLostSignificance": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mProcessingTime": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mSavedProducingTimer": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
 		"FGBuildableSpaceElevator": {
 			"type": "object",
 			"unevaluatedProperties": false,
