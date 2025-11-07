@@ -504,6 +504,22 @@
 				}
 			}
 		},
+		"FGBuildableRailroadStation": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableTrainPlatform",
+			"unevaluatedProperties": false,
+			"required": ["mMapText", "mDockedPlatformList"],
+			"properties": {
+				"mMapText": {
+					"type": "string",
+					"const": "Train Station"
+				},
+				"mDockedPlatformList": {
+					"type": "string",
+					"const": ""
+				}
+			}
+		},
 		"FGBuildableResourceExtractor--miner": {
 			"type": "object",
 			"unevaluatedProperties": false,
