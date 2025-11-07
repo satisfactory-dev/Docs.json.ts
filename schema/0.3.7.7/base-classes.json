@@ -116,6 +116,26 @@
 				}
 			}
 		},
+		"FGBuildable--pole--with-length": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--pole",
+			"required": ["mLength"],
+			"properties": {
+				"mLength": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGBuildable--pole--with-length-and-power": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--pole--with-length"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				}
+			]
+		},
 		"FGBuildable--powered": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable",
