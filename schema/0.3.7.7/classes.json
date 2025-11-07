@@ -520,6 +520,17 @@
 				}
 			}
 		},
+		"FGBuildableRailroadTrack": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-length",
+			"unevaluatedProperties": false,
+			"required": ["mIsOwnedByPlatform"],
+			"properties": {
+				"mIsOwnedByPlatform": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
+		},
 		"FGBuildableResourceExtractor--miner": {
 			"type": "object",
 			"unevaluatedProperties": false,

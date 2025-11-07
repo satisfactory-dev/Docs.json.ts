@@ -239,12 +239,9 @@
 		},
 		"FGBuildable--spline": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable",
-			"required": ["mMeshLength", "mSplineData"],
+			"$ref": "#/$defs/FGBuildable--with-length",
+			"required": ["mSplineData"],
 			"properties": {
-				"mMeshLength": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
 				"mSplineData": {
 					"type": "string",
 					"const": ""
@@ -334,6 +331,16 @@
 				},
 				"mDisableAttachmentSnapOn": {
 					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				}
+			}
+		},
+		"FGBuildable--with-length": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable",
+			"required": ["mMeshLength"],
+			"properties": {
+				"mMeshLength": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
 			}
 		},
