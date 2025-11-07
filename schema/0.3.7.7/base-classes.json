@@ -221,6 +221,22 @@
 				}
 			}
 		},
+		"FGBuildable--powered-storage": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--powered",
+			"required": [
+				"mStorageSizeX",
+				"mStorageSizeY"
+			],
+			"properties": {
+				"mStorageSizeX": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mStorageSizeY": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				}
+			}
+		},
 		"FGBuildable--spline": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable",
@@ -639,6 +655,55 @@
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
 			}
+		},
+		"FGBuildableTrainPlatform": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--powered",
+			"required": [
+				"mPlatformConnections",
+				"mIsOrientationReversed",
+				"mPlatformDockingStatus",
+				"mSavedDockingStatus",
+				"mDockingSequenceTimerHandle"
+			],
+			"properties": {
+				"mPlatformConnections": {
+					"type": "string",
+					"typed_string": {
+						"minItems": 1,
+						"items": {
+							"type": "string",
+							"DocsDotJson_FGTrainPlatformConnection_quoted": null
+						}
+					}
+				},
+				"mIsOrientationReversed": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mPlatformDockingStatus": {
+					"type": "string",
+					"const": "ETPDS_None"
+				},
+				"mSavedDockingStatus": {
+					"type": "string",
+					"const": "ETPDS_None"
+				},
+				"mDockingSequenceTimerHandle": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				}
+			}
+		},
+		"FGBuildableTrainPlatform--with-storage": {
+			"allOf": [
+				{
+					"type": "object",
+					"$ref": "#/$defs/FGBuildable--powered-storage"
+				},
+				{
+					"type": "object",
+					"$ref": "#/$defs/FGBuildableTrainPlatform"
+				}
+			]
 		},
 		"FGDescriptor": {
 			"type": "object",

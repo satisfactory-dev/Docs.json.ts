@@ -56,6 +56,14 @@ import {
 	BlueprintGeneratedClass_quoted,
 } from './BlueprintGeneratedClass.ts';
 
+import type {
+	FGTrainPlatformConnection_quoted_schema,
+	FGTrainPlatformConnection_quoted_type,
+} from './FGTrainPlatformConnection.ts';
+import {
+	FGTrainPlatformConnection,
+} from './FGTrainPlatformConnection.ts';
+
 type TypedString_mode = (
 	| 'Empty'
 	| 'None'
@@ -63,6 +71,7 @@ type TypedString_mode = (
 	| 'Object_list'
 	| 'String_enum_list'
 	| 'BlueprintGeneratedClass_quoted_list'
+	| 'FGTrainPlatformConnection_quoted_list'
 );
 
 type TypedString_type<
@@ -100,6 +109,10 @@ type TypedString_type<
 			minItems: PositiveInteger<number>,
 			items: BlueprintGeneratedClass_quoted_type,
 		},
+		FGTrainPlatformConnection_quoted_list: {
+			minItems: PositiveInteger<number>,
+			items: FGTrainPlatformConnection_quoted_type,
+		},
 	}[Mode],
 };
 
@@ -118,6 +131,7 @@ type TypedString_type_OneOf = {
 		TypedString_type<'Object_list'>,
 		TypedString_type<'String_enum_list'>,
 		TypedString_type<'BlueprintGeneratedClass_quoted_list'>,
+		TypedString_type<'FGTrainPlatformConnection_quoted_list'>,
 	],
 };
 
@@ -173,6 +187,18 @@ type TypedString_schema_properties_typed_string<
 			items: BlueprintGeneratedClass_quoted_schema,
 		},
 	},
+	FGTrainPlatformConnection_quoted_list: {
+		type: 'object',
+		required: ['minItems', 'items'],
+		additionalProperties: false,
+		properties: {
+			minItems: {
+				type: 'integer',
+				minimum: 1,
+			},
+			items: FGTrainPlatformConnection_quoted_schema,
+		},
+	},
 }[Mode];
 
 type TypedString_schema<
@@ -202,6 +228,7 @@ type TypedString_schema_OneOf = TypeDefinitionSchema & {
 		TypedString_schema<'Object_list'>,
 		TypedString_schema<'String_enum_list'>,
 		TypedString_schema<'BlueprintGeneratedClass_quoted_list'>,
+		TypedString_schema<'FGTrainPlatformConnection_quoted_list'>,
 	],
 };
 
@@ -230,6 +257,9 @@ type TypedString_SchemaTo<
 	BlueprintGeneratedClass_quoted_list: RestedTupleTypeNode<
 		TemplateLiteralTypeNode
 	>,
+	FGTrainPlatformConnection_quoted_list: RestedTupleTypeNode<
+		TemplateLiteralTypeNode
+	>,
 }[Mode];
 
 type TypedString_DataTo<
@@ -249,6 +279,11 @@ type TypedString_DataTo<
 		true
 	>,
 	BlueprintGeneratedClass_quoted_list: ArrayLiteralExpression<
+		StringLiteral,
+		[StringLiteral, ...StringLiteral[]],
+		true
+	>,
+	FGTrainPlatformConnection_quoted_list: ArrayLiteralExpression<
 		StringLiteral,
 		[StringLiteral, ...StringLiteral[]],
 		true
@@ -283,6 +318,9 @@ type Type_Generator<
 	) => Promise<object_TypeLiteralNode_possibly_extended<'properties'>>,
 	BlueprintGeneratedClass_quoted_list: (
 		schema: BlueprintGeneratedClass_quoted_type,
+	) => Promise<TemplateLiteralTypeNode>,
+	FGTrainPlatformConnection_quoted_list: (
+		schema: FGTrainPlatformConnection_quoted_type,
 	) => Promise<TemplateLiteralTypeNode>,
 }[Mode];
 
@@ -346,6 +384,17 @@ export class TypedString<
 				TypedString
 					.#generate_schema_definition(
 						'BlueprintGeneratedClass_quoted_list',
+					)
+					.properties.typed_string,
+			),
+			FGTrainPlatformConnection_quoted_list: options.ajv.compile<
+				TypedString_type<
+					'FGTrainPlatformConnection_quoted_list'
+				>['typed_string']
+			>(
+				TypedString
+					.#generate_schema_definition(
+						'FGTrainPlatformConnection_quoted_list',
 					)
 					.properties.typed_string,
 			),
@@ -600,6 +649,40 @@ export class TypedString<
 
 			const sanity_check: TypedString_DataTo<
 				'BlueprintGeneratedClass_quoted_list'
+			> = factory.createArrayLiteralExpression(
+				data_parts
+					.map((value) => schema_parser
+						.parse_by_type(value)
+						.generate_typescript_data(
+							value,
+							schema_parser,
+							coerced,
+						),
+					),
+			);
+
+			result = sanity_check as typeof result;
+		} else if ('FGTrainPlatformConnection_quoted_list' === mode) {
+			const coerced = (
+				schema.typed_string as TypedString_type<
+					'FGTrainPlatformConnection_quoted_list'
+				>['typed_string']
+			).items;
+
+			const regex = FGTrainPlatformConnection.regex_from_value(
+				coerced.DocsDotJson_FGTrainPlatformConnection_quoted,
+			);
+
+			const pattern = new RegExp(`^\\(${regex}(?:,${regex})*\\)$`);
+
+			if (!pattern.test(data)) {
+				throw new TypeError('Data does not match expected pattern!');
+			}
+
+			const data_parts = data.substring(1, data.length - 1).split(',');
+
+			const sanity_check: TypedString_DataTo<
+				'FGTrainPlatformConnection_quoted_list'
 			> = factory.createArrayLiteralExpression(
 				data_parts
 					.map((value) => schema_parser
@@ -874,6 +957,48 @@ export class TypedString<
 			]);
 
 			result = sanity_check as typeof result;
+		} else if ('FGTrainPlatformConnection_quoted_list' === mode) {
+			const instance = schema_parser.types
+				.find((
+					maybe,
+				) => maybe instanceof FGTrainPlatformConnection);
+
+			if (undefined === instance) {
+				throw new TypeError(`schema_parser not loaded with ${
+					FGTrainPlatformConnection.constructor.name
+				}`);
+			}
+
+			const type_generator: Type_Generator<
+				'FGTrainPlatformConnection_quoted_list'
+			> = (
+				schema: FGTrainPlatformConnection_quoted_type,
+			) => {
+				return instance.generate_typescript_type({schema});
+			};
+
+			const coerced_schema: TypedString_type<
+				'FGTrainPlatformConnection_quoted_list'
+			> = schema as TypedString_type<
+				'FGTrainPlatformConnection_quoted_list'
+			>;
+
+			const sanity_check: TypedString_SchemaTo<
+				'FGTrainPlatformConnection_quoted_list'
+			> = factory.createTupleTypeNode([
+				await type_generator(
+					coerced_schema.typed_string.items,
+				),
+				factory.createRestTypeNode(
+					factory.createArrayTypeNode(
+						await type_generator(
+							coerced_schema.typed_string.items,
+						),
+					),
+				),
+			]);
+
+			result = sanity_check as typeof result;
 		} else {
 			throw new TypeError('not implemented!');
 		}
@@ -972,6 +1097,19 @@ export class TypedString<
 			return {
 				pattern: `^\\(${regex}(?:,${regex})*\\)$`,
 			};
+		} else if ('FGTrainPlatformConnection_quoted_list' === mode) {
+			const regex = FGTrainPlatformConnection
+				.regex_from_value(
+					(schema as TypedString_type<
+						'FGTrainPlatformConnection_quoted_list'
+					>[
+						'typed_string'
+					]).items.DocsDotJson_FGTrainPlatformConnection_quoted,
+				);
+
+			return {
+				pattern: `^\\(${regex}(?:,${regex})*\\)$`,
+			};
 		} else {
 			throw new TypeError('Mode not implemented!');
 		}
@@ -987,6 +1125,9 @@ export class TypedString<
 				this.#generate_schema_definition('String_enum_list'),
 				this.#generate_schema_definition(
 					'BlueprintGeneratedClass_quoted_list',
+				),
+				this.#generate_schema_definition(
+					'FGTrainPlatformConnection_quoted_list',
 				),
 			],
 		});
@@ -1089,6 +1230,24 @@ export class TypedString<
 			};
 
 			typed_string = sanity_check as typeof typed_string;
+		} else if ('FGTrainPlatformConnection_quoted_list' === mode) {
+			const sanity_check: TypedString_schema_properties_typed_string<
+				'FGTrainPlatformConnection_quoted_list'
+			> = {
+				type: 'object',
+				required: ['minItems', 'items'],
+				additionalProperties: false,
+				properties: {
+					minItems: {
+						type: 'integer',
+						minimum: 1,
+					},
+					items: FGTrainPlatformConnection
+						.generate_schema_definition(),
+				},
+			};
+
+			typed_string = sanity_check as typeof typed_string;
 		} else {
 			throw new TypeError('not implemented!');
 		}
@@ -1155,7 +1314,7 @@ export class TypedString<
 			};
 
 			typed_string = sanity_check as typeof typed_string;
-		} else {
+		} else if ('BlueprintGeneratedClass_quoted_list' === mode) {
 			const sanity_check: TypedString_type<
 				'BlueprintGeneratedClass_quoted_list'
 			>['typed_string'] = {
@@ -1164,6 +1323,16 @@ export class TypedString<
 					.generate_type_definition({
 						mode: 'quoted',
 					}),
+			};
+
+			typed_string = sanity_check as typeof typed_string;
+		} else {
+			const sanity_check: TypedString_type<
+				'FGTrainPlatformConnection_quoted_list'
+			>['typed_string'] = {
+				minItems: PositiveIntegerGuard(1),
+				items: FGTrainPlatformConnection
+					.generate_type_definition(),
 			};
 
 			typed_string = sanity_check as typeof typed_string;

@@ -101,12 +101,10 @@
 		},
 		"FGBuildableDockingStation": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered-storage",
 			"unevaluatedProperties": false,
 			"required": [
 				"mMapText",
-				"mStorageSizeX",
-				"mStorageSizeY",
 				"mTransferSpeed",
 				"mFuelTransferSpeed",
 				"mStackTransferSize"
@@ -115,12 +113,6 @@
 				"mMapText": {
 					"type": "string",
 					"const": ""
-				},
-				"mStorageSizeX": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-				},
-				"mStorageSizeY": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
 				},
 				"mTransferSpeed": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
@@ -847,6 +839,96 @@
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				}
 			}
+		},
+		"FGBuildableTrainPlatformCargo": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableTrainPlatform--with-storage",
+			"unevaluatedProperties": false,
+			"required": [
+				"mPotentialDockers",
+				"mFreightCargoType",
+				"mCanUnloadAny",
+				"mIsFullUnload",
+				"mCanLoadAny",
+				"mIsFullLoad",
+				"mTimeToCompleteLoad",
+				"mTimeToSwapLoadVisibility",
+				"mTimeToCompleteUnload",
+				"mTimeToSwapUnloadVisibility",
+				"mStorageInputConnections",
+				"mPipeInputConnections",
+				"mPipeOutputConnections",
+				"mShouldExecuteLoadOrUnload",
+				"mSwapCargoVisibilityTimerHandle",
+				"mReplicatedOutflowRate",
+				"mReplicatedInflowRate"
+			],
+			"properties": {
+				"mPotentialDockers": {
+					"type": "string",
+					"const": ""
+				},
+				"mFreightCargoType": {
+					"type": "string",
+					"enum": [
+						"FCT_Standard",
+						"FCT_Liquid"
+					]
+				},
+				"mCanUnloadAny": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mIsFullUnload": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mCanLoadAny": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mIsFullLoad": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mTimeToCompleteLoad": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mTimeToSwapLoadVisibility": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mTimeToCompleteUnload": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mTimeToSwapUnloadVisibility": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mStorageInputConnections": {
+					"type": "string",
+					"const": ""
+				},
+				"mPipeInputConnections": {
+					"type": "string",
+					"const": ""
+				},
+				"mPipeOutputConnections": {
+					"type": "string",
+					"const": ""
+				},
+				"mShouldExecuteLoadOrUnload": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mSwapCargoVisibilityTimerHandle": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mReplicatedOutflowRate": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mReplicatedInflowRate": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGBuildableTrainPlatformEmpty": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableTrainPlatform",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableWall": {
 			"type": "object",
