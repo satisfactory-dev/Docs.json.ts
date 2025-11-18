@@ -26,6 +26,7 @@ import type {
 import {
 	ArrayType,
 	ObjectUnspecified,
+	PositiveIntegerGuard,
 	PositiveIntegerOrZeroGuard,
 } from '@signpostmarv/json-schema-typescript-codegen';
 
@@ -141,7 +142,6 @@ type TypedString_matcher<
 	ValidateFunction<TypedString_type<Mode>['typed_string']>,
 ];
 
-/*
 type TypedString_type_OneOf = {
 	oneOf: [
 		TypedString_type<'Empty'>,
@@ -153,8 +153,6 @@ type TypedString_type_OneOf = {
 		TypedString_type<'FGTrainPlatformConnection_quoted_list'>,
 	],
 };
-*/
-type TypedString_type_OneOf = Record<string, never>;
 
 type TypedString_schema_properties_typed_string<
 	Mode extends TypedString_mode,
@@ -1583,9 +1581,6 @@ export class TypedString<
 	}
 
 	static generate_type_definition(): Readonly<TypedString_type_OneOf> {
-		return Object.freeze({});
-
-		/*
 		return Object.freeze({
 			oneOf: [
 				this.#generate_type_definition('Empty'),
@@ -1601,10 +1596,8 @@ export class TypedString<
 				),
 			],
 		});
-		*/
 	}
 
-	/*
 	static #generate_type_definition<
 		Mode extends TypedString_mode,
 	>(
@@ -1631,6 +1624,7 @@ export class TypedString<
 				'Object'
 			>['typed_string'] = ObjectUnspecified.generate_type_definition({
 				properties_mode: 'properties',
+				properties: {},
 			});
 
 			typed_string = sanity_check as typeof typed_string;
@@ -1643,6 +1637,7 @@ export class TypedString<
 				uniqueItems: true,
 				items: ObjectUnspecified.generate_type_definition({
 					properties_mode: 'properties',
+					properties: {},
 				}),
 			};
 
@@ -1680,7 +1675,6 @@ export class TypedString<
 			typed_string,
 		});
 	}
-	*/
 
 	static mode_from_schema<
 		Mode extends TypedString_mode,
