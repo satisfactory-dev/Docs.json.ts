@@ -34,3 +34,9 @@ npm-prep: tests
 	@echo 'building from ./tsconfig.app-npm.json'
 	@./node_modules/.bin/tsc --project ./tsconfig.app-npm.json
 	@npm publish --dry-run
+
+generate:
+	@echo 'running generator'
+	@node ./generator.ts
+	@echo 'fixing generated types'
+	@./node_modules/.bin/eslint --fix ./generated-types/
