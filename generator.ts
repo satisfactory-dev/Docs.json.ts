@@ -273,5 +273,12 @@ for (const result of results) {
 
 	const directory = dirname(result.filename);
 	await mkdir(directory, {recursive: true});
-	await writeFile(result.filename, result.code);
+	await writeFile(
+		result.filename,
+		`/* eslint-disable @stylistic/max-len */${
+			'\n\n'
+		}${
+			result.code
+		}`,
+	);
 }
