@@ -839,9 +839,7 @@
 			"type": "object",
 			"unevaluatedProperties": false,
 			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered",
-			"required": [
-				"mShopInventoryDefaultSize"
-			],
+			"required": ["mShopInventoryDefaultSize"],
 			"properties": {
 				"mShopInventoryDefaultSize": {
 					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
@@ -969,13 +967,13 @@
 						"items": {
 							"type": "string",
 							"enum": [
-							"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1\"'",
-							"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2\"'",
-							"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3\"'",
-							"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4\"'",
-							"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5\"'",
-							"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6\"'"
-						]
+								"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1\"'",
+								"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2\"'",
+								"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3\"'",
+								"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4\"'",
+								"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5\"'",
+								"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6\"'"
+							]
 						}
 					}
 				},
@@ -1053,10 +1051,7 @@
 				},
 				"mFreightCargoType": {
 					"type": "string",
-					"enum": [
-						"FCT_Standard",
-						"FCT_Liquid"
-					]
+					"enum": ["FCT_Standard", "FCT_Liquid"]
 				},
 				"mCanUnloadAny": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
@@ -1555,9 +1550,7 @@
 			"type": "object",
 			"unevaluatedProperties": false,
 			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectile--thrown",
-			"required": [
-				"mArmAnimation"
-			],
+			"required": ["mArmAnimation"],
 			"properties": {
 				"mArmAnimation": {
 					"type": "string",
@@ -1786,21 +1779,21 @@
 								"items": {
 									"type": "string",
 									"enum": [
-									"/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkBenchComponent.BP_WorkBenchComponent_C",
-									"/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkshopComponent.BP_WorkshopComponent_C",
-									"/Game/FactoryGame/Buildable/Factory/AssemblerMk1/Build_AssemblerMk1.Build_AssemblerMk1_C",
-									"/Game/FactoryGame/Buildable/Factory/AutomatedWorkBench/Build_AutomatedWorkBench.Build_AutomatedWorkBench_C",
-									"/Game/FactoryGame/Buildable/Factory/ConstructorMk1/Build_ConstructorMk1.Build_ConstructorMk1_C",
-									"/Game/FactoryGame/Buildable/Factory/Converter/Build_Converter.Build_Converter_C",
-									"/Game/FactoryGame/Buildable/Factory/FoundryMk1/Build_FoundryMk1.Build_FoundryMk1_C",
-									"/Game/FactoryGame/Buildable/Factory/ManufacturerMk1/Build_ManufacturerMk1.Build_ManufacturerMk1_C",
-									"/Game/FactoryGame/Buildable/Factory/OilRefinery/Build_OilRefinery.Build_OilRefinery_C",
-									"/Game/FactoryGame/Buildable/Factory/Packager/Build_Packager.Build_Packager_C",
-									"/Game/FactoryGame/Buildable/Factory/SmelterMk1/Build_SmelterMk1.Build_SmelterMk1_C",
-									"/Game/FactoryGame/Equipment/BuildGun/BP_BuildGun.BP_BuildGun_C",
-									"/Script/FactoryGame.FGBuildGun",
-									"/Script/FactoryGame.FGBuildableAutomatedWorkBench"
-								]
+										"/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkBenchComponent.BP_WorkBenchComponent_C",
+										"/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkshopComponent.BP_WorkshopComponent_C",
+										"/Game/FactoryGame/Buildable/Factory/AssemblerMk1/Build_AssemblerMk1.Build_AssemblerMk1_C",
+										"/Game/FactoryGame/Buildable/Factory/AutomatedWorkBench/Build_AutomatedWorkBench.Build_AutomatedWorkBench_C",
+										"/Game/FactoryGame/Buildable/Factory/ConstructorMk1/Build_ConstructorMk1.Build_ConstructorMk1_C",
+										"/Game/FactoryGame/Buildable/Factory/Converter/Build_Converter.Build_Converter_C",
+										"/Game/FactoryGame/Buildable/Factory/FoundryMk1/Build_FoundryMk1.Build_FoundryMk1_C",
+										"/Game/FactoryGame/Buildable/Factory/ManufacturerMk1/Build_ManufacturerMk1.Build_ManufacturerMk1_C",
+										"/Game/FactoryGame/Buildable/Factory/OilRefinery/Build_OilRefinery.Build_OilRefinery_C",
+										"/Game/FactoryGame/Buildable/Factory/Packager/Build_Packager.Build_Packager_C",
+										"/Game/FactoryGame/Buildable/Factory/SmelterMk1/Build_SmelterMk1.Build_SmelterMk1_C",
+										"/Game/FactoryGame/Equipment/BuildGun/BP_BuildGun.BP_BuildGun_C",
+										"/Script/FactoryGame.FGBuildGun",
+										"/Script/FactoryGame.FGBuildableAutomatedWorkBench"
+									]
 								}
 							}
 						}
@@ -2113,9 +2106,7 @@
 			"type": "object",
 			"unevaluatedProperties": false,
 			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectile--thrown",
-			"required": [
-				"mArmAnimation"
-			],
+			"required": ["mArmAnimation"],
 			"properties": {
 				"mArmAnimation": {
 					"type": "string",

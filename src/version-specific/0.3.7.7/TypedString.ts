@@ -26,7 +26,6 @@ import type {
 import {
 	ArrayType,
 	ObjectUnspecified,
-	PositiveIntegerGuard,
 	PositiveIntegerOrZeroGuard,
 } from '@signpostmarv/json-schema-typescript-codegen';
 
@@ -723,11 +722,11 @@ export class TypedString<
 				);
 
 				const value = type_for_property
-							.generate_typescript_data(
-								property_value,
-								schema_parser,
-								property_schema,
-							);
+					.generate_typescript_data(
+						property_value,
+						schema_parser,
+						property_schema,
+					);
 
 				const property_assignment = factory
 					.createPropertyAssignment(
