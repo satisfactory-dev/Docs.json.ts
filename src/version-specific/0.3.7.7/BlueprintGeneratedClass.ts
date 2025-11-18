@@ -301,12 +301,13 @@ abstract class BlueprintGeneratedClass<
 		return [
 			{
 				non_quoted: 'BlueprintGeneratedClass /Game/FactoryGame/',
-				quoted: 'BlueprintGeneratedClass\'\\"/Game/FactoryGame/',
+				// eslint-disable-next-line no-useless-escape
+				quoted: `BlueprintGeneratedClass'"/Game/FactoryGame/`,
 			}[mode],
 			null === value ? {type: 'string'} : value,
 			{
 				non_quoted: '',
-				quoted: '\\"',
+				quoted: `"'`,
 			}[mode],
 		];
 	}

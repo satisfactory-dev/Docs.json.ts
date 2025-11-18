@@ -402,7 +402,9 @@
 				"mFluidNames": {
 					"type": "string",
 					"typed_string": {
+						"type": "array",
 						"minItems": 1,
+						"uniqueItems": true,
 						"items": {
 							"type": "object",
 							"additionalProperties": false,
@@ -644,7 +646,9 @@
 				"mParticleMap": {
 					"type": "string",
 					"typed_string": {
+						"type": "array",
 						"minItems": 1,
+						"uniqueItems": true,
 						"items": {
 							"type": "object",
 							"additionalProperties": false,
@@ -696,7 +700,13 @@
 				"mAllowedResourceForms": {
 					"type": "string",
 					"typed_string": {
-						"enum_list": ["RF_SOLID"]
+						"type": "array",
+						"minItems": 1,
+						"uniqueItems": true,
+						"items": {
+							"type": "string",
+							"enum": ["RF_SOLID"]
+						}
 					}
 				}
 			}
@@ -710,7 +720,13 @@
 				"mAllowedResourceForms": {
 					"type": "string",
 					"typed_string": {
-						"enum_list": ["RF_LIQUID"]
+						"type": "array",
+						"minItems": 1,
+						"uniqueItems": true,
+						"items": {
+							"type": "string",
+							"enum": ["RF_LIQUID"]
+						}
 					}
 				}
 			}
@@ -769,7 +785,13 @@
 				"mAllowedResourceForms": {
 					"type": "string",
 					"typed_string": {
-						"enum_list": ["RF_LIQUID"]
+						"type": "array",
+						"minItems": 1,
+						"uniqueItems": true,
+						"items": {
+							"type": "string",
+							"enum": ["RF_LIQUID"]
+						}
 					}
 				}
 			}
@@ -941,7 +963,12 @@
 				"Meshes": {
 					"type": "string",
 					"typed_string": {
-						"enum_list": [
+						"type": "array",
+						"minItems": 1,
+						"uniqueItems": true,
+						"items": {
+							"type": "string",
+							"enum": [
 							"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1\"'",
 							"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2\"'",
 							"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3\"'",
@@ -949,6 +976,7 @@
 							"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5\"'",
 							"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6\"'"
 						]
+						}
 					}
 				},
 				"mShipUpgradeLevel": {
@@ -1261,7 +1289,9 @@
 				"mAnimData": {
 					"type": "string",
 					"typed_string": {
+						"type": "array",
 						"minItems": 1,
+						"uniqueItems": true,
 						"items": {
 							"type": "object",
 							"additionalProperties": false,
@@ -1583,7 +1613,9 @@
 				"mObjectDetails": {
 					"type": "string",
 					"typed_string": {
+						"type": "array",
 						"minItems": 1,
+						"uniqueItems": true,
 						"items": {
 							"type": "object",
 							"additionalProperties": false,
@@ -1748,7 +1780,12 @@
 						{
 							"type": "string",
 							"typed_string": {
-								"enum_list": [
+								"type": "array",
+								"minItems": 1,
+								"uniqueItems": true,
+								"items": {
+									"type": "string",
+									"enum": [
 									"/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkBenchComponent.BP_WorkBenchComponent_C",
 									"/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkshopComponent.BP_WorkshopComponent_C",
 									"/Game/FactoryGame/Buildable/Factory/AssemblerMk1/Build_AssemblerMk1.Build_AssemblerMk1_C",
@@ -1764,6 +1801,7 @@
 									"/Script/FactoryGame.FGBuildGun",
 									"/Script/FactoryGame.FGBuildableAutomatedWorkBench"
 								]
+								}
 							}
 						}
 					]
@@ -2124,7 +2162,9 @@
 				"mSuit1PMeshMaterials": {
 					"type": "string",
 					"typed_string": {
+						"type": "array",
 						"minItems": 1,
+						"uniqueItems": true,
 						"items": {
 							"type": "object",
 							"additionalProperties": false,

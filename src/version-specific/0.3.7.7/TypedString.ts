@@ -3,15 +3,15 @@ import type {
 } from 'ajv/dist/2020.js';
 
 import type {
-	KeywordTypeNode,
+	NullLiteral,
 	PropertyAssignment,
 	TemplateLiteralTypeNode,
 } from 'typescript';
-import {
-	SyntaxKind,
-} from 'typescript';
 
 import type {
+	array_options,
+	array_schema,
+	array_type,
 	object_schema,
 	object_type_base,
 	object_TypeLiteralNode_possibly_extended,
@@ -24,8 +24,10 @@ import type {
 	TypeDefinitionSchema,
 } from '@signpostmarv/json-schema-typescript-codegen';
 import {
+	ArrayType,
 	ObjectUnspecified,
 	PositiveIntegerGuard,
+	PositiveIntegerOrZeroGuard,
 } from '@signpostmarv/json-schema-typescript-codegen';
 
 import {
@@ -80,9 +82,11 @@ type TypedString_type<
 	type: 'string',
 	typed_string: {
 		Empty: {
+			type: 'string',
 			const: '',
 		},
 		None: {
+			type: 'string',
 			const: '(None)',
 		},
 		Object: object_type_base<
@@ -92,27 +96,42 @@ type TypedString_type<
 			ObjectOfSchemas,
 			ObjectOfSchemas
 		>,
-		Object_list: {
-			minItems: PositiveInteger<number>,
-			items: object_type_base<
+		Object_list: array_type<
+			'items',
+			'specified',
+			'yes',
+			'with',
+			object_type_base<
 				'properties',
 				SchemaObject,
 				[string, ...string[]],
 				ObjectOfSchemas,
 				ObjectOfSchemas
-			>,
-		},
+			>
+		>,
 		String_enum_list: {
-			enum_list: [string, ...string[]],
-		},
-		BlueprintGeneratedClass_quoted_list: {
+			type: 'array',
 			minItems: PositiveInteger<number>,
-			items: BlueprintGeneratedClass_quoted_type,
+			uniqueItems: true,
+			items: {
+				type: 'string',
+				enum: [string, ...string[]],
+			},
 		},
-		FGTrainPlatformConnection_quoted_list: {
-			minItems: PositiveInteger<number>,
-			items: FGTrainPlatformConnection_quoted_type,
-		},
+		BlueprintGeneratedClass_quoted_list: array_type<
+			'items',
+			'specified',
+			'yes',
+			'with',
+			BlueprintGeneratedClass_quoted_type
+		>,
+		FGTrainPlatformConnection_quoted_list: array_type<
+			'items',
+			'specified',
+			'yes',
+			'with',
+			FGTrainPlatformConnection_quoted_type
+		>,
 	}[Mode],
 };
 
@@ -123,6 +142,7 @@ type TypedString_matcher<
 	ValidateFunction<TypedString_type<Mode>['typed_string']>,
 ];
 
+/*
 type TypedString_type_OneOf = {
 	oneOf: [
 		TypedString_type<'Empty'>,
@@ -134,6 +154,8 @@ type TypedString_type_OneOf = {
 		TypedString_type<'FGTrainPlatformConnection_quoted_list'>,
 	],
 };
+*/
+type TypedString_type_OneOf = Record<string, never>;
 
 type TypedString_schema_properties_typed_string<
 	Mode extends TypedString_mode,
@@ -147,58 +169,69 @@ type TypedString_schema_properties_typed_string<
 		const: '(None)',
 	},
 	Object: object_schema<'properties'>,
-	Object_list: {
+	Object_list: array_schema<
+		'items',
+		'specified',
+		'yes',
+		'with',
+		object_schema<'properties'>
+	>,
+	String_enum_list: {
 		type: 'object',
-		required: ['minItems', 'items'],
-		additionalProperties: false,
+		required: [
+			'type',
+			'minItems',
+			'uniqueItems',
+			'items',
+		],
 		properties: {
+			type: {
+				type: 'string',
+				const: 'array',
+			},
 			minItems: {
 				type: 'integer',
 				minimum: 1,
 			},
-			items: object_schema<'properties'>,
-		},
-	},
-	String_enum_list: {
-		type: 'object',
-		required: ['enum_list'],
-		additionalProperties: false,
-		properties: {
-			enum_list: {
-				type: 'array',
-				minItems: 1,
-				uniqueItems: true,
-				items: {
-					type: 'string',
-					minLength: 1,
+			uniqueItems: {
+				type: 'boolean',
+				const: true,
+			},
+			items: {
+				type: 'object',
+				required: ['type', 'enum'],
+				properties: {
+					type: {
+						type: 'string',
+						const: 'string',
+					},
+					enum: {
+						type: 'array',
+						minItems: 1,
+						uniqueItems: true,
+						items: {
+							type: 'string',
+							minLength: 1,
+						},
+					},
 				},
 			},
 		},
 	},
-	BlueprintGeneratedClass_quoted_list: {
-		type: 'object',
-		required: ['minItems', 'items'],
-		additionalProperties: false,
-		properties: {
-			minItems: {
-				type: 'integer',
-				minimum: 1,
-			},
-			items: BlueprintGeneratedClass_quoted_schema,
-		},
-	},
-	FGTrainPlatformConnection_quoted_list: {
-		type: 'object',
-		required: ['minItems', 'items'],
-		additionalProperties: false,
-		properties: {
-			minItems: {
-				type: 'integer',
-				minimum: 1,
-			},
-			items: FGTrainPlatformConnection_quoted_schema,
-		},
-	},
+	BlueprintGeneratedClass_quoted_list: array_schema<
+		'items',
+		'specified',
+		'yes',
+		'optional',
+		BlueprintGeneratedClass_quoted_schema
+	>,
+	FGTrainPlatformConnection_quoted_list: array_schema<
+		'items',
+		'specified',
+		'yes',
+		'optional',
+		FGTrainPlatformConnection_quoted_schema
+	>,
 }[Mode];
 
 type TypedString_schema<
@@ -235,7 +268,7 @@ type TypedString_schema_OneOf = TypeDefinitionSchema & {
 type TypedString_SchemaTo<
 	Mode extends TypedString_mode,
 > = {
-	Empty: KeywordTypeNode<SyntaxKind.UndefinedKeyword>,
+	Empty: LiteralTypeNode<NullLiteral>,
 	None: EmptyTupleTypeNode,
 	Object: object_TypeLiteralNode_possibly_extended<
 		'properties'
@@ -265,7 +298,7 @@ type TypedString_SchemaTo<
 type TypedString_DataTo<
 	Mode extends TypedString_mode,
 > = {
-	Empty: Identifier<'undefined'>,
+	Empty: Identifier<'null'>,
 	None: ArrayLiteralExpression<never, never[], false>,
 	Object: ObjectLiteralExpression,
 	Object_list: ArrayLiteralExpression<
@@ -344,59 +377,246 @@ export class TypedString<
 			Empty: options.ajv.compile<
 				TypedString_type<'Empty'>['typed_string']
 			>(
-				TypedString
-					.#generate_schema_definition('Empty')
-					.properties.typed_string,
+				{
+					oneOf: [
+						{
+							type: 'object',
+							additionalProperties: false,
+							required: ['type', 'const'],
+							properties: {
+								type: {
+									type: 'string',
+									const: 'string',
+								},
+								const: {
+									type: 'string',
+									const: '',
+								},
+							},
+						},
+						{
+							type: 'string',
+							const: '',
+						},
+					],
+				},
 			),
 			None: options.ajv.compile<
 				TypedString_type<'None'>['typed_string']
 			>(
-				TypedString
-					.#generate_schema_definition('None')
-					.properties.typed_string,
+				{
+					oneOf: [
+						{
+							type: 'object',
+							additionalProperties: false,
+							required: ['type', 'const'],
+							properties: {
+								type: {
+									type: 'string',
+									const: 'string',
+								},
+								const: {
+									type: 'string',
+									const: '(None)',
+								},
+							},
+						},
+						{
+							type: 'string',
+							const: '(None)',
+						},
+					],
+				},
 			),
 			Object: options.ajv.compile<
 				TypedString_type<'Object'>['typed_string']
 			>(
-				TypedString
-					.#generate_schema_definition('Object')
-					.properties.typed_string,
+				{
+					type: 'object',
+					required: ['type'],
+					properties: {
+						type: {
+							type: 'string',
+							const: 'object',
+						},
+					},
+				},
 			),
 			Object_list: options.ajv.compile<
 				TypedString_type<'Object_list'>['typed_string']
 			>(
-				TypedString
-					.#generate_schema_definition('Object_list')
-					.properties.typed_string,
+				{
+					type: 'object',
+					required: [
+						'type',
+						'minItems',
+						'items',
+					],
+					properties: {
+						type: {
+							type: 'string',
+							const: 'array',
+						},
+						minItems: {
+							type: 'integer',
+							minimum: 0,
+						},
+						items: {
+							type: 'object',
+							required: ['type'],
+							properties: {
+								type: {
+									type: 'string',
+									const: 'object',
+								},
+							},
+						},
+					},
+				},
 			),
 			String_enum_list: options.ajv.compile<
 				TypedString_type<'String_enum_list'>['typed_string']
 			>(
-				TypedString
-					.#generate_schema_definition('String_enum_list')
-					.properties.typed_string,
+				{
+					type: 'object',
+					additionalProperties: false,
+					required: [
+						'type',
+						'minItems',
+						'uniqueItems',
+						'items',
+					],
+					properties: {
+						type: {
+							type: 'string',
+							const: 'array',
+						},
+						minItems: {
+							type: 'integer',
+							minimum: 1,
+						},
+						uniqueItems: {
+							type: 'boolean',
+							const: true,
+						},
+						items: {
+							type: 'object',
+							required: ['type', 'enum'],
+							properties: {
+								type: {
+									type: 'string',
+									const: 'string',
+								},
+								enum: {
+									type: 'array',
+									minItems: 1,
+									items: {
+										type: 'string',
+										minLength: 1,
+									},
+								},
+							},
+						},
+					},
+				},
 			),
 			BlueprintGeneratedClass_quoted_list: options.ajv.compile<
 				TypedString_type<
 					'BlueprintGeneratedClass_quoted_list'
 				>['typed_string']
 			>(
-				TypedString
-					.#generate_schema_definition(
-						'BlueprintGeneratedClass_quoted_list',
-					)
-					.properties.typed_string,
+				{
+					type: 'object',
+					required: [
+						'type',
+						'minItems',
+						'items',
+					],
+					properties: {
+						type: {
+							type: 'string',
+							const: 'array',
+						},
+						minItems: {
+							type: 'integer',
+							minimum: 0,
+						},
+						items: {
+							type: 'object',
+							additionalProperties: false,
+							required: [
+								'type',
+								'DocsDotJson_BlueprintGeneratedClass_quoted',
+							],
+							properties: {
+								type: {
+									type: 'string',
+									const: 'string',
+								},
+								DocsDotJson_BlueprintGeneratedClass_quoted: {
+									oneOf: [
+										{
+											type: 'null',
+										},
+										{
+											type: 'string',
+											minLength: 1,
+										},
+									],
+								},
+							},
+						},
+					},
+				},
 			),
 			FGTrainPlatformConnection_quoted_list: options.ajv.compile<
 				TypedString_type<
 					'FGTrainPlatformConnection_quoted_list'
 				>['typed_string']
 			>(
-				TypedString
-					.#generate_schema_definition(
-						'FGTrainPlatformConnection_quoted_list',
-					)
-					.properties.typed_string,
+				{
+					type: 'object',
+					required: [
+						'type',
+						'minItems',
+						'items',
+					],
+					properties: {
+						type: {
+							type: 'string',
+							const: 'array',
+						},
+						minItems: {
+							type: 'integer',
+							minimum: 0,
+						},
+						items: {
+							type: 'object',
+							additionalProperties: false,
+							required: [
+								'type',
+								'DocsDotJson_FGTrainPlatformConnection_quoted',
+							],
+							properties: {
+								type: {
+									type: 'string',
+									const: 'string',
+								},
+								DocsDotJson_FGTrainPlatformConnection_quoted: {
+									oneOf: [
+										{
+											type: 'null',
+										},
+										{
+											type: 'string',
+											minLength: 1,
+										},
+									],
+								},
+							},
+						},
+					},
+				},
 			),
 		};
 
@@ -440,7 +660,7 @@ export class TypedString<
 		if ('Empty' === mode) {
 			const sanity_check: TypedString_DataTo<
 				'Empty'
-			> = factory.createIdentifier('undefined');
+			> = factory.createIdentifier('null');
 
 			result = sanity_check as typeof result;
 		} else if ('None' === mode) {
@@ -498,25 +718,31 @@ export class TypedString<
 					],
 				);
 
-				const property_assignment = factory
-					.createPropertyAssignment(
-						property_name,
-						schema_parser
-							.parse(
-								property_schema,
-							)
+				const type_for_property = schema_parser.parse(
+					property_schema,
+				);
+
+				const value = type_for_property
 							.generate_typescript_data(
 								property_value,
 								schema_parser,
 								property_schema,
-							),
+							);
+
+				const property_assignment = factory
+					.createPropertyAssignment(
+						property_name,
+						value,
 					);
 
 				property_assignments.push(property_assignment);
 			}
 
 			const sanity_check: TypedString_DataTo<'Object'> = factory
-				.createObjectLiteralExpression(property_assignments);
+				.createObjectLiteralExpression(
+					property_assignments,
+					true,
+				);
 
 			result = sanity_check as typeof result;
 		} else if ('Object_list' === mode) {
@@ -557,17 +783,38 @@ export class TypedString<
 
 			const [, ...matches_unfiltered] = match;
 
-			const matches = matches_unfiltered
-				.filter((e) => 'string' === typeof e);
+			const matches = matches_unfiltered;
 
 			const array_values: ObjectLiteralExpression[] = [];
 
 			for (let i = 0; i < matches.length; i += (properties.length * 2)) {
 				const property_assignments: PropertyAssignment[] = [];
 
-				for (let j = 0; j < properties.length; j += 2) {
-					const property_name = matches[i + j];
-					const property_value = matches[i + j + 1];
+				for (let j = 0; j < properties.length; ++j) {
+					const property_name = matches[i + (j * 2)];
+
+					if (
+						undefined === property_name
+					) {
+						if (coerced_schema.items.required?.includes(
+							properties[j],
+						)) {
+							throw new TypeError(
+								'Required property not found!',
+							);
+						} else {
+							continue;
+						}
+					}
+
+					let property_value = matches[i + (j * 2) + 1];
+
+					if (/^"[^"]+"$/.test(property_value)) {
+						property_value = property_value.substring(
+							1,
+							property_value.length - 1,
+						);
+					}
 
 					const property_schema = coerced_schema.items.properties[
 						property_name
@@ -613,7 +860,7 @@ export class TypedString<
 				.split(',');
 
 			const matches = parts
-				.filter((maybe) => coerced_schema.enum_list.includes(maybe));
+				.filter((maybe) => coerced_schema.items.enum.includes(maybe));
 
 			if (parts.length !== matches.length) {
 				throw new TypeError('Data contains unsupported elements!');
@@ -720,7 +967,9 @@ export class TypedString<
 		if ('Empty' === mode) {
 			const sanity_check: TypedString_SchemaTo<
 				'Empty'
-			> = factory.createKeywordTypeNode(SyntaxKind.UndefinedKeyword);
+			> = factory.createLiteralTypeNode(
+				factory.createNull(),
+			);
 
 			result = sanity_check as typeof result;
 		} else if ('None' === mode) {
@@ -875,8 +1124,10 @@ export class TypedString<
 				);
 			}
 
-			if (coerced_schema.typed_string.enum_list.length > 1) {
-				const coerced_enum = coerced_schema.typed_string.enum_list as [
+			if (coerced_schema.typed_string.items.enum.length > 1) {
+				const coerced_enum = (
+					coerced_schema.typed_string.items.enum
+				) as [
 					string,
 					string,
 					...string[],
@@ -902,7 +1153,9 @@ export class TypedString<
 
 				result = sanity_check as typeof result;
 			} else {
-				const coerced_enum = coerced_schema.typed_string.enum_list as [
+				const coerced_enum = (
+					coerced_schema.typed_string.items.enum
+				) as [
 					string,
 				];
 
@@ -1072,7 +1325,7 @@ export class TypedString<
 			>['typed_string'];
 
 			const regex = `${
-				coerced.enum_list
+				coerced.items.enum
 					.map((value) => RegExp.escape(value)).join('|')
 			}`;
 
@@ -1170,40 +1423,77 @@ export class TypedString<
 
 			typed_string = sanity_check as typeof typed_string;
 		} else if ('Object_list' === mode) {
-			const sanity_check: TypedString_schema_properties_typed_string<
-				'Object_list'
+			const sanity_check_subtype: object_schema<
+				'properties'
+			> = ObjectUnspecified.generate_schema_definition({
+				properties_mode: 'properties',
+			});
+
+			const sanity_check_options: array_options<
+				'items',
+				'specified',
+				'yes',
+				'with',
+				object_schema<'properties'>
+			> = {
+				array_mode: 'items',
+				specified_mode: 'specified',
+				unique_items_mode: 'yes',
+				min_items_mode: 'with',
+				items: sanity_check_subtype,
+				minItems: PositiveIntegerOrZeroGuard(1),
+			};
+
+			const sanity_check: Readonly<
+				TypedString_schema_properties_typed_string<
+					'Object_list'
+				>
+			> = ArrayType.generate_schema_definition(sanity_check_options);
+
+			typed_string = sanity_check as typeof typed_string;
+		} else if ('String_enum_list' === mode) {
+			const sanity_check: Readonly<
+				TypedString_schema_properties_typed_string<
+					'String_enum_list'
+				>
 			> = {
 				type: 'object',
-				required: ['minItems', 'items'],
-				additionalProperties: false,
+				required: [
+					'type',
+					'minItems',
+					'uniqueItems',
+					'items',
+				],
 				properties: {
+					type: {
+						type: 'string',
+						const: 'array',
+					},
 					minItems: {
 						type: 'integer',
 						minimum: 1,
 					},
-					items: ObjectUnspecified
-						.generate_schema_definition({
-							properties_mode: 'properties',
-						}),
-				},
-			};
-
-			typed_string = sanity_check as typeof typed_string;
-		} else if ('String_enum_list' === mode) {
-			const sanity_check: TypedString_schema_properties_typed_string<
-				'String_enum_list'
-			> = {
-				type: 'object',
-				required: ['enum_list'],
-				additionalProperties: false,
-				properties: {
-					enum_list: {
-						type: 'array',
-						minItems: 1,
-						uniqueItems: true,
-						items: {
-							type: 'string',
-							minLength: 1,
+					uniqueItems: {
+						type: 'boolean',
+						const: true,
+					},
+					items: {
+						type: 'object',
+						required: ['type', 'enum'],
+						properties: {
+							type: {
+								type: 'string',
+								const: 'string',
+							},
+							enum: {
+								type: 'array',
+								minItems: 1,
+								uniqueItems: true,
+								items: {
+									type: 'string',
+									minLength: 1,
+								},
+							},
 						},
 					},
 				},
@@ -1211,41 +1501,60 @@ export class TypedString<
 
 			typed_string = sanity_check as typeof typed_string;
 		} else if ('BlueprintGeneratedClass_quoted_list' === mode) {
-			const sanity_check: TypedString_schema_properties_typed_string<
-				'BlueprintGeneratedClass_quoted_list'
+			const sanity_check_subtype: (
+				BlueprintGeneratedClass_quoted_schema
+			) = BlueprintGeneratedClass_quoted
+				.generate_schema_definition({
+					mode: 'quoted',
+				});
+
+			const sanity_check_options: array_options<
+				'items',
+				'specified',
+				'yes',
+				'optional',
+				BlueprintGeneratedClass_quoted_schema
 			> = {
-				type: 'object',
-				required: ['minItems', 'items'],
-				additionalProperties: false,
-				properties: {
-					minItems: {
-						type: 'integer',
-						minimum: 1,
-					},
-					items: BlueprintGeneratedClass_quoted
-						.generate_schema_definition({
-							mode: 'quoted',
-						}),
-				},
+				array_mode: 'items',
+				specified_mode: 'specified',
+				unique_items_mode: 'yes',
+				min_items_mode: 'optional',
+				items: sanity_check_subtype,
+				minItems: PositiveIntegerOrZeroGuard(1),
 			};
+
+			const sanity_check: Readonly<
+				TypedString_schema_properties_typed_string<
+					'BlueprintGeneratedClass_quoted_list'
+				>
+			> = ArrayType.generate_schema_definition(sanity_check_options);
 
 			typed_string = sanity_check as typeof typed_string;
 		} else if ('FGTrainPlatformConnection_quoted_list' === mode) {
-			const sanity_check: TypedString_schema_properties_typed_string<
-				'FGTrainPlatformConnection_quoted_list'
+			const sanity_check_subtype: (
+				FGTrainPlatformConnection_quoted_schema
+			) = FGTrainPlatformConnection.generate_schema_definition();
+
+			const sanity_check_options: array_options<
+				'items',
+				'specified',
+				'yes',
+				'optional',
+				FGTrainPlatformConnection_quoted_schema
 			> = {
-				type: 'object',
-				required: ['minItems', 'items'],
-				additionalProperties: false,
-				properties: {
-					minItems: {
-						type: 'integer',
-						minimum: 1,
-					},
-					items: FGTrainPlatformConnection
-						.generate_schema_definition(),
-				},
+				array_mode: 'items',
+				specified_mode: 'specified',
+				unique_items_mode: 'yes',
+				min_items_mode: 'optional',
+				items: sanity_check_subtype,
+				minItems: PositiveIntegerOrZeroGuard(1),
 			};
+
+			const sanity_check: Readonly<
+				TypedString_schema_properties_typed_string<
+					'FGTrainPlatformConnection_quoted_list'
+				>
+			> = ArrayType.generate_schema_definition(sanity_check_options);
 
 			typed_string = sanity_check as typeof typed_string;
 		} else {
@@ -1274,23 +1583,46 @@ export class TypedString<
 		});
 	}
 
-	static generate_type_definition<
+	static generate_type_definition(): Readonly<TypedString_type_OneOf> {
+		return Object.freeze({});
+
+		/*
+		return Object.freeze({
+			oneOf: [
+				this.#generate_type_definition('Empty'),
+				this.#generate_type_definition('None'),
+				this.#generate_type_definition('Object'),
+				this.#generate_type_definition('Object_list'),
+				this.#generate_type_definition('String_enum_list'),
+				this.#generate_type_definition(
+					'BlueprintGeneratedClass_quoted_list',
+				),
+				this.#generate_type_definition(
+					'FGTrainPlatformConnection_quoted_list',
+				),
+			],
+		});
+		*/
+	}
+
+	/*
+	static #generate_type_definition<
 		Mode extends TypedString_mode,
-	>({
-		mode,
-	}: {
+	>(
 		mode: Mode,
-	}): Readonly<TypedString_type<Mode>> {
+	): Readonly<TypedString_type<Mode>> {
 		let typed_string: TypedString_type<Mode>['typed_string'];
 
 		if ('Empty' === mode) {
 			const sanity_check: TypedString_type<'Empty'>['typed_string'] = {
+				type: 'string',
 				const: '',
 			};
 
 			typed_string = sanity_check as typeof typed_string;
 		} else if ('None' === mode) {
 			const sanity_check: TypedString_type<'None'>['typed_string'] = {
+				type: 'string',
 				const: '(None)',
 			};
 
@@ -1307,7 +1639,9 @@ export class TypedString<
 			const sanity_check: TypedString_type<
 				'Object_list'
 			>['typed_string'] = {
+				type: 'array',
 				minItems: PositiveIntegerGuard(1),
+				uniqueItems: true,
 				items: ObjectUnspecified.generate_type_definition({
 					properties_mode: 'properties',
 				}),
@@ -1318,7 +1652,9 @@ export class TypedString<
 			const sanity_check: TypedString_type<
 				'BlueprintGeneratedClass_quoted_list'
 			>['typed_string'] = {
+				type: 'array',
 				minItems: PositiveIntegerGuard(1),
+				uniqueItems: true,
 				items: BlueprintGeneratedClass_quoted
 					.generate_type_definition({
 						mode: 'quoted',
@@ -1330,7 +1666,9 @@ export class TypedString<
 			const sanity_check: TypedString_type<
 				'FGTrainPlatformConnection_quoted_list'
 			>['typed_string'] = {
+				type: 'array',
 				minItems: PositiveIntegerGuard(1),
+				uniqueItems: true,
 				items: FGTrainPlatformConnection
 					.generate_type_definition(),
 			};
@@ -1343,6 +1681,7 @@ export class TypedString<
 			typed_string,
 		});
 	}
+	*/
 
 	static mode_from_schema<
 		Mode extends TypedString_mode,

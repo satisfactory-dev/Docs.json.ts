@@ -208,9 +208,9 @@ export class FGTrainPlatformConnection<
 		value: string|null,
 	): TemplatedStringParts {
 		return [
-			'FGTrainPlatformConnection\'\\"/Game/FactoryGame/',
+			`FGTrainPlatformConnection'"/Game/FactoryGame/`,
 			null === value ? {type: 'string'} : value,
-			'\\"',
+			`"'`,
 		];
 	}
 

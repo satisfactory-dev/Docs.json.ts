@@ -58,7 +58,9 @@ import {
 import {
 	NamedList,
 } from './NamedList.ts';
-import { FGTrainPlatformConnection } from './FGTrainPlatformConnection.ts';
+import {
+	FGTrainPlatformConnection,
+} from './FGTrainPlatformConnection.ts';
 
 const already_configured: WeakSet<SchemaParser> = new WeakSet();
 
@@ -86,9 +88,9 @@ export function configure_parser(parser: SchemaParser) {
 		new BlueprintGeneratedClass_quoted({ajv}),
 		new FGTrainPlatformConnection({ajv}),
 		new Texture2D({ajv}),
-		new TypedString({ajv}),
-		new TemplatedString({ajv}),
 		new NamedList({ajv}, 'NSLOCTEXT'),
 		...parser.types,
+		new TemplatedString({ajv}),
+		new TypedString({ajv}),
 	];
 }

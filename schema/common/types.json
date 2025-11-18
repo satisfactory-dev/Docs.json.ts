@@ -75,16 +75,16 @@
 				"required": ["R", "G", "B", "A"],
 				"properties": {
 					"R": {
-						"$ref": "#/$defs/integer_string"
+						"$ref": "#/$defs/decimal_string"
 					},
 					"G": {
-						"$ref": "#/$defs/integer_string"
+						"$ref": "#/$defs/decimal_string"
 					},
 					"B": {
-						"$ref": "#/$defs/integer_string"
+						"$ref": "#/$defs/decimal_string"
 					},
 					"A": {
-						"$ref": "#/$defs/integer_string"
+						"$ref": "#/$defs/decimal_string"
 					}
 				}
 			}
@@ -97,13 +97,13 @@
 				"required": ["X", "Y", "Z"],
 				"properties": {
 					"X": {
-						"$ref": "#/$defs/decimal_string"
+						"$ref": "#/$defs/decimal_string--signed"
 					},
 					"Y": {
-						"$ref": "#/$defs/decimal_string"
+						"$ref": "#/$defs/decimal_string--signed"
 					},
 					"Z": {
-						"$ref": "#/$defs/decimal_string"
+						"$ref": "#/$defs/decimal_string--signed"
 					}
 				}
 			}

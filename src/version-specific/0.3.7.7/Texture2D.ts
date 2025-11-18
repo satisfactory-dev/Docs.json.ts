@@ -37,6 +37,12 @@ type Texture2D_type = {
 };
 
 const Texture2D_schema_properties = {
+	$defs: {
+		type: 'object',
+		additionalProperties: {
+			type: 'object',
+		},
+	},
 	type: {
 		type: 'string',
 		const: 'string',
@@ -197,7 +203,14 @@ export class Texture2D extends
 								templated_string: [
 									{type: 'string'},
 									'_',
-									['64', '256', '512'],
+									[
+										'64',
+										'256',
+										'512',
+										'1b',
+										'64_new',
+										'256_New',
+									],
 								],
 							},
 							'.',
@@ -206,7 +219,14 @@ export class Texture2D extends
 								templated_string: [
 									{type: 'string'},
 									'_',
-									['64', '256', '512'],
+									[
+										'64',
+										'256',
+										'512',
+										'1b',
+										'64_new',
+										'256_New',
+									],
 								],
 							},
 						],

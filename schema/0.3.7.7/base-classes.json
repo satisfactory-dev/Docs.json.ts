@@ -528,37 +528,61 @@
 						{
 							"type": "string",
 							"typed_string": {
-								"enum_list": [
+								"type": "array",
+								"minItems": 1,
+								"uniqueItems": true,
+								"items": {
+									"type": "string",
+									"enum": [
 									"/Game/FactoryGame/Resource/Parts/Fuel/Desc_LiquidFuel.Desc_LiquidFuel_C",
 									"/Game/FactoryGame/Resource/Parts/Turbofuel/Desc_LiquidTurboFuel.Desc_LiquidTurboFuel_C",
 									"/Game/FactoryGame/Resource/Parts/BioFuel/Desc_LiquidBiofuel.Desc_LiquidBiofuel_C"
 								]
+								}
 							}
 						},
 						{
 							"type": "string",
 							"typed_string": {
-								"enum_list": [
+								"type": "array",
+								"minItems": 1,
+								"uniqueItems": true,
+								"items": {
+									"type": "string",
+									"enum": [
 									"/Script/FactoryGame.FGItemDescriptorBiomass"
 								]
+								}
 							}
 						},
 						{
 							"type": "string",
 							"typed_string": {
-								"enum_list": [
+								"type": "array",
+								"minItems": 1,
+								"uniqueItems": true,
+								"items": {
+									"type": "string",
+									"enum": [
 									"/Game/FactoryGame/Resource/RawResources/Coal/Desc_Coal.Desc_Coal_C",
 									"/Game/FactoryGame/Resource/Parts/CompactedCoal/Desc_CompactedCoal.Desc_CompactedCoal_C",
 									"/Game/FactoryGame/Resource/Parts/PetroleumCoke/Desc_PetroleumCoke.Desc_PetroleumCoke_C"
 								]
+								}
 							}
 						},
 						{
 							"type": "string",
 							"typed_string": {
-								"enum_list": [
+								"type": "array",
+								"minItems": 1,
+								"uniqueItems": true,
+								"items": {
+									"type": "string",
+									"enum": [
 									"/Game/FactoryGame/Resource/Parts/NuclearFuelRod/Desc_NuclearFuelRod.Desc_NuclearFuelRod_C"
 								]
+								}
 							}
 						}
 					]
@@ -806,7 +830,9 @@
 				"mPlatformConnections": {
 					"type": "string",
 					"typed_string": {
+						"type": "array",
 						"minItems": 1,
+						"uniqueItems": true,
 						"items": {
 							"type": "string",
 							"DocsDotJson_FGTrainPlatformConnection_quoted": null
