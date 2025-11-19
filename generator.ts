@@ -11,18 +11,51 @@ import {
 } from 'ajv/dist/2020.js';
 
 import {
-	configure_parser,
-} from './src/version-specific/0.3.7.7/SchemaParser.ts';
+	object_has_non_empty_array_property,
+} from '@satisfactory-dev/predicates.ts';
 
 import type {
+
+	/*
+	file splitting doesn't quite work yet
+	$ref_type,
+	*/
 	SchemaObjectWith$id,
 } from '@signpostmarv/json-schema-typescript-codegen';
 import {
+	$ref,
 	adjust_name_default,
 	adjust_name_finisher,
 	Printer,
 	SchemaParser,
+
+	/*
+	Type,
+	*/
 } from '@signpostmarv/json-schema-typescript-codegen';
+
+import {
+	configure_parser,
+} from './src/version-specific/0.3.7.7/SchemaParser.ts';
+
+/*
+file splitting doesn't quite work yet
+import type {
+	NativeClass,
+} from './src/version-specific/0.3.7.7/NativeClass.ts';
+*/
+
+import {
+	Utf16leJsonHandler,
+} from './src/Utf16leJsonHandler.ts';
+
+import {
+	semver,
+} from './src/guarded.ts';
+
+import type {
+	semver_full,
+} from './src/types.ts';
 
 import common_types from './schema/common/types.json' with {
 	type: 'json',
@@ -53,6 +86,14 @@ const ajv = new Ajv({strict: true, verbose: true});
 const parser = new SchemaParser({ajv});
 
 configure_parser(parser);
+
+const $ref_instance = parser.types.find(
+	(maybe) => maybe instanceof $ref,
+);
+
+if (undefined === $ref_instance) {
+	throw new TypeError('Could not find $ref instance!');
+}
 
 type filenames_by_$id = {
 	[key: string]: {
@@ -164,20 +205,74 @@ const adjuster = new FilenameAdjuster(
 	'docs.json.ts--common--types',
 );
 
+const validator = ajv.compile<
+	[{[key: string]: unknown}, ...{[key: string]: unknown}[]]
+>({
+	$ref: 'docs.json.ts--0.3.7.7#',
+});
+
+const handler = new Utf16leJsonHandler<
+	semver_full,
+	[{[key: string]: unknown}, ...{[key: string]: unknown}[]]
+>({
+	validator,
+	data_path: `${import.meta.dirname}/data/`,
+	version: semver('0.3.7.7'),
+	file_path: 'Docs/Docs.json',
+});
+
+await handler.read();
+
+function printer_factory(): Printer {
+	const printer = new Printer({
+		data_filename_callback: (
+			name,
+		) => {
+			const result = adjuster.adjust_name_to_data_filename(name);
+
+			/*
+			file splitting doesn't quite work yet
+			if (/^FG[A-Za-z]+(?:_data)?$/.test(name)) {
+				result = result
+					.replace(
+						/\.ts$/,
+						`/${name.replace(/_data$/, '')}.ts`,
+					) as `./${string}.ts`;
+			}
+			*/
+
+			return result;
+		},
+		type_filename_callback: (
+			name,
+		) => {
+			const result = adjuster.adjust_name_to_type_filename(name);
+
+			/*
+			file splitting doesn't quite work yet
+			if (/^FG[A-Za-z]+(?:_type)?$/.test(name)) {
+				result = result
+					.replace(
+						/\.ts$/,
+						`/${name.replace(/_type$/, '')}.ts`,
+					) as `./${string}.ts`;
+			}
+			*/
+
+			return result;
+		},
+	});
+
+	return printer;
+}
+
 async function get_results_from_$defs_only_schema(
 	schema: SchemaObjectWith$id,
 	adjuster: FilenameAdjuster,
 ) {
 	adjuster.current_id = schema.$id;
 
-	const printer = new Printer({
-		data_filename_callback: (
-			name,
-		) => adjuster.adjust_name_to_data_filename(name),
-		type_filename_callback: (
-			name,
-		) => adjuster.adjust_name_to_type_filename(name),
-	});
+	const printer = printer_factory();
 
 	return await printer.parse(
 		{},
@@ -188,20 +283,13 @@ async function get_results_from_$defs_only_schema(
 	);
 }
 
-async function get_results_from_data_schema(
+async function* get_results_from_data_schema(
 	schema: SchemaObjectWith$id,
 	adjuster: FilenameAdjuster,
 ) {
 	adjuster.current_id = schema.$id;
 
-	const printer = new Printer({
-		data_filename_callback: (
-			name,
-		) => adjuster.adjust_name_to_data_filename(name),
-		type_filename_callback: (
-			name,
-		) => adjuster.adjust_name_to_type_filename(name),
-	});
+	const printer = printer_factory();
 
 	let data: unknown = undefined;
 
@@ -213,26 +301,77 @@ async function get_results_from_data_schema(
 
 	if (undefined === data) {
 		throw new TypeError(`No data specified for ${schema.$id}`);
+	} else if (!Array.isArray(data)) {
+		throw new TypeError(
+			`Data was not in expected format for ${schema.$id}`,
+		);
+	} else if (!object_has_non_empty_array_property(schema, 'prefixItems')) {
+		throw new TypeError(
+			`Schema was not in expected format for ${schema.$id}`,
+		);
 	}
 
-	return await printer.parse(
+	yield await printer.parse(
 		data,
 		schema,
 		parser,
-		`${schema.$id}_type`,
-		`${schema.$id}_data`,
 	);
+
+	/*
+	file splitting doesn't quite work yet
+	for (let i = 0; i < data.length; ++i) {
+		const sub_data: {
+			NativeClass: string,
+		} = data[i] as {
+			NativeClass: string,
+		};
+
+		const sub_schema = Type.maybe_add_$defs(
+			schema,
+			(
+				$ref_instance as $ref
+			).resolve_def(
+				schema.prefixItems[i] as $ref_type,
+				schema.$defs || {},
+			),
+		);
+
+		const type_name = /^Class'\/Script\/FactoryGame\.(FG[A-Za-z]+)'$/.exec(
+			sub_data.NativeClass,
+		);
+
+		if (null === type_name) {
+			throw new TypeError('Could not get type name!');
+		}
+
+		const foo = await printer.parse(
+			sub_data,
+			sub_schema,
+			parser,
+			`${type_name[1]}_type`,
+			`${type_name[1]}_data`,
+		);
+
+		yield foo;
+		parser.clear_imports();
+	}
+	*/
 }
 
-function get_results(
+async function* get_results(
 	schema: SchemaObjectWith$id,
 	adjuster: FilenameAdjuster,
 ) {
 	if (!('type' in schema)) {
-		return get_results_from_$defs_only_schema(schema, adjuster);
-	}
+		yield get_results_from_$defs_only_schema(schema, adjuster);
 
-	return get_results_from_data_schema(schema, adjuster);
+		/*
+		file splitting doesn't quite work yet
+		parser.clear_imports();
+		*/
+	} else {
+		yield* get_results_from_data_schema(schema, adjuster);
+	}
 }
 
 const results: Awaited<ReturnType<Printer['parse']>>[0][] = [];
@@ -254,14 +393,13 @@ for (const schema of [
 	update3_classes,
 	update3,
 ]) {
-	const schema_results = await get_results(
+	for await (const schema_results of get_results(
 		schema,
 		adjuster,
-	);
-
-	parser.clear_imports();
-
-	results.push(...schema_results);
+	)) {
+		results.push(...schema_results);
+		parser.clear_imports();
+	}
 }
 
 const files = new Set<string>();
