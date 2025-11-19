@@ -88,8 +88,6 @@ export class Utf16leJsonHandler<
 	async read(): Promise<T> {
 		const maybe: unknown = JSON.parse(await this.#maybe_convert());
 
-		console.log((maybe as unknown[]).length);
-
 		if (!this.#validator(maybe)) {
 			console.error(this.#validator.errors);
 			throw new TypeError('JSON file does not match expected format!');
