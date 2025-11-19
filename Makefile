@@ -37,6 +37,7 @@ npm-prep: tests
 
 generate:
 	@echo 'running generator'
+	@git clean -fxd ./generated-types/
 	@node ./generator.ts
 	@echo 'fixing generated types'
 	@./node_modules/.bin/eslint --fix ./generated-types/
