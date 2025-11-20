@@ -1,0 +1,689 @@
+/* eslint-disable @stylistic/max-len */
+
+import type {
+	FGBuildable as docs_json_ts_0_3_7_7_classes_base_FGBuildable, FGBuildable_pole as docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole, FGBuildable_pole_with_length as docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_with_length, FGBuildable_pole_with_length_and_power as docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_with_length_and_power, FGBuildable_powered as docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered, FGBuildable_powered_storage as docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_storage, FGBuildable_spline as docs_json_ts_0_3_7_7_classes_base_FGBuildable_spline, FGBuildable_with_height_and_elevation as docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_and_elevation, FGBuildable_with_height_and_width as docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_and_width, FGBuildable_with_length as docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_length, FGBuildable_with_size_and_elevation as docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_size_and_elevation, FGBuildable_with_width as docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_width, FGBuildableAttachment as docs_json_ts_0_3_7_7_classes_base_FGBuildableAttachment, FGBuildableAttachment_splitter as docs_json_ts_0_3_7_7_classes_base_FGBuildableAttachment_splitter, FGBuildableConveyorBelt_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableConveyorBelt_base, FGBuildableConveyorBelt_spline as docs_json_ts_0_3_7_7_classes_base_FGBuildableConveyorBelt_spline, FGBuildableGenerator as docs_json_ts_0_3_7_7_classes_base_FGBuildableGenerator, FGBuildableGenerator_no_fuel as docs_json_ts_0_3_7_7_classes_base_FGBuildableGenerator_no_fuel, FGBuildablePipeline_base_spline as docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeline_base_spline, FGBuildablePipeline_junction as docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeline_junction, FGBuildablePipelinePump_base as docs_json_ts_0_3_7_7_classes_base_FGBuildablePipelinePump_base, FGBuildableResourceExtractor_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_base, FGBuildableTrainPlatform as docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatform, FGBuildableTrainPlatform_with_storage as docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatform_with_storage, FGDescriptor_BuildMenu as docs_json_ts_0_3_7_7_classes_base_FGDescriptor_BuildMenu, FGDescriptor_sinkable as docs_json_ts_0_3_7_7_classes_base_FGDescriptor_sinkable, FGEquipment as docs_json_ts_0_3_7_7_classes_base_FGEquipment, FGEquipment_dispenser as docs_json_ts_0_3_7_7_classes_base_FGEquipment_dispenser, FGEquipment_has_sound as docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_sound, FGEquipmentStunSpear_base as docs_json_ts_0_3_7_7_classes_base_FGEquipmentStunSpear_base, FGInstructive as docs_json_ts_0_3_7_7_classes_base_FGInstructive, FGWeaponProjectile as docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile, FGWeaponProjectile_instant as docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_instant, FGWeaponProjectile_thrown as docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_thrown,
+} from './classes/Base.ts';
+
+import type {
+	DocsDotJson_BlueprintGeneratedClass_quoted_list as docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list, ItemClass_Amount_list as docs_json_ts_0_3_7_7_properties_ItemClass_Amount_list, mAllowedResourceForms as docs_json_ts_0_3_7_7_properties_mAllowedResourceForms, mSubCategories as docs_json_ts_0_3_7_7_properties_mSubCategories, mType as docs_json_ts_0_3_7_7_properties_mType, mUnlocks_item_base as docs_json_ts_0_3_7_7_properties_mUnlocks_item_base, mUnlocks_item_mItemsToGive as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mItemsToGive, mUnlocks_item_mNumArmEquipmentSlotsToUnlock as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mNumArmEquipmentSlotsToUnlock, mUnlocks_item_mNumInventorySlotsToUnlock as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mNumInventorySlotsToUnlock, mUnlocks_item_mRecipes as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mRecipes, mUnlocks_item_mResourcesToAddToScanner as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mResourcesToAddToScanner, mUnlocks_item_mSchematics as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mSchematics, Tier as docs_json_ts_0_3_7_7_properties_Tier,
+} from './types/properties.ts';
+
+import type {
+	BGRA as docs_json_ts_common_types_BGRA, bool_string as docs_json_ts_common_types_bool_string, decimal_string as docs_json_ts_common_types_decimal_string, decimal_string_signed as docs_json_ts_common_types_decimal_string_signed, empty_object as docs_json_ts_common_types_empty_object, integer_string as docs_json_ts_common_types_integer_string, integer_string_signed as docs_json_ts_common_types_integer_string_signed, PitchYawRoll_decimal_string_signed as docs_json_ts_common_types_PitchYawRoll_decimal_string_signed, RGBA as docs_json_ts_common_types_RGBA, XYZ_decimal_string as docs_json_ts_common_types_XYZ_decimal_string, XYZW_decimal_string as docs_json_ts_common_types_XYZW_decimal_string,
+} from './../common/types.ts';
+
+import type {
+	StringPassesRegex,
+} from '@signpostmarv/json-schema-typescript-codegen';
+
+type FGBuildable_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable & {
+	[key: string]: unknown,
+};
+
+type FGBuildable_occupied = docs_json_ts_0_3_7_7_classes_base_FGBuildable & {
+	mOccupiedText: Exclude<string, ''>,
+};
+
+type FGBuildable_powered_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered & {
+	[key: string]: unknown,
+};
+
+type FGBuildable_tiered = docs_json_ts_0_3_7_7_classes_base_FGBuildable & {
+	Tier: docs_json_ts_0_3_7_7_properties_Tier,
+};
+
+type FGBuildableAttachmentMerger = docs_json_ts_0_3_7_7_classes_base_FGBuildableAttachment & {
+	mCurrentInputIndex: docs_json_ts_common_types_integer_string_signed,
+};
+
+type FGBuildableAttachmentSplitter = docs_json_ts_0_3_7_7_classes_base_FGBuildableAttachment_splitter & {
+	[key: string]: unknown,
+};
+
+type FGBuildableConveyorBelt = docs_json_ts_0_3_7_7_classes_base_FGBuildableConveyorBelt_spline & {
+	[key: string]: unknown,
+};
+
+type FGBuildableConveyorLift = docs_json_ts_0_3_7_7_classes_base_FGBuildableConveyorBelt_base & {
+	mMeshHeight: docs_json_ts_common_types_decimal_string,
+	mTopTransform: {
+		Rotation: docs_json_ts_common_types_XYZW_decimal_string,
+		Translation: docs_json_ts_common_types_XYZ_decimal_string,
+		Scale3D: docs_json_ts_common_types_XYZ_decimal_string,
+	},
+	mIsReversed: docs_json_ts_common_types_bool_string,
+};
+
+type FGBuildableDockingStation = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_storage & {
+	mMapText: '',
+	mTransferSpeed: docs_json_ts_common_types_decimal_string,
+	mFuelTransferSpeed: docs_json_ts_common_types_decimal_string,
+	mStackTransferSize: docs_json_ts_common_types_decimal_string,
+};
+
+type FGBuildableFactorySimpleProducer = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered & {
+	mTimeToProduceItem: docs_json_ts_common_types_decimal_string,
+	mEventType: 'EV_Christmas',
+};
+
+type FGBuildableFactory_jump_pad = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered & {
+	JumpForceCharacter: docs_json_ts_common_types_decimal_string,
+	JumpForcePhysics: docs_json_ts_common_types_decimal_string,
+};
+
+type FGBuildableFactory_landing_pad = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered & {
+	mDampeningFactor: docs_json_ts_common_types_decimal_string,
+	mPlayerList: '',
+};
+
+type FGBuildableFoundation = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_and_elevation & {
+	[key: string]: unknown,
+};
+
+type FGBuildableGeneratorFuel = docs_json_ts_0_3_7_7_classes_base_FGBuildableGenerator & {
+	mRTPCInterval?: docs_json_ts_common_types_decimal_string,
+};
+
+type FGBuildableGeneratorGeoThermal = docs_json_ts_0_3_7_7_classes_base_FGBuildableGenerator_no_fuel & {
+	mProductionEffectsRunning: docs_json_ts_common_types_bool_string,
+};
+
+type FGBuildableGeneratorNuclear = docs_json_ts_0_3_7_7_classes_base_FGBuildableGenerator & {
+	mWasteLeftFromCurrentFuel: docs_json_ts_common_types_integer_string,
+	mFuelResourceForm: 'RF_SOLID',
+};
+
+type FGBuildableJumppad = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered & {
+	mPowerBankCapacity: docs_json_ts_common_types_decimal_string,
+	mLaunchPowerCost: docs_json_ts_common_types_decimal_string,
+	mChargeRateMultiplier: docs_json_ts_common_types_decimal_string,
+	mCurrentPowerLevel: docs_json_ts_common_types_decimal_string,
+	mLaunchVelocity: docs_json_ts_common_types_decimal_string,
+	mLaunchAngle: docs_json_ts_common_types_decimal_string_signed,
+	mPlayerChainJumpResetTime: docs_json_ts_common_types_decimal_string,
+	mHasPowerForLaunch: docs_json_ts_common_types_bool_string,
+	ComponentsToLaunch: '',
+	CharactersToLaunch: '',
+	VehiclesToLaunch: '',
+	mTrajectoryData: docs_json_ts_common_types_empty_object,
+	mTrajectoryMeshScale: docs_json_ts_common_types_XYZ_decimal_string,
+	mTrajectoryMeshRotation: docs_json_ts_common_types_PitchYawRoll_decimal_string_signed,
+	mDestinationMeshHeightOffset: docs_json_ts_common_types_decimal_string,
+	mNumArrows: docs_json_ts_common_types_integer_string,
+	mKillTimer: docs_json_ts_common_types_empty_object,
+	mTrajectoryGravityMultiplier: docs_json_ts_common_types_decimal_string,
+	mShowTrajectoryCounter: docs_json_ts_common_types_integer_string,
+};
+
+type FGBuildableLadder = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_width & {
+	mMeshHeight: docs_json_ts_common_types_decimal_string,
+	mMaxSegmentCount: docs_json_ts_common_types_integer_string,
+	mNumSegments: docs_json_ts_common_types_integer_string,
+	mLadderMeshes: '',
+};
+
+type FGBuildableManufacturer = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered & {
+	IsPowered?: docs_json_ts_common_types_bool_string,
+	mProductionEffectsRunning?: docs_json_ts_common_types_bool_string,
+	mCurrentColor_VFX?: docs_json_ts_common_types_RGBA,
+	CurrentPackagingMode?: '',
+	mCurrentRecipeChanged: docs_json_ts_common_types_empty_object,
+	mManufacturingSpeed: docs_json_ts_common_types_decimal_string,
+	mFactoryInputConnections: '',
+	mPipeInputConnections: '',
+	mFactoryOutputConnections: '',
+	mPipeOutputConnections: '',
+};
+
+type FGBuildablePipeHyper = docs_json_ts_0_3_7_7_classes_base_FGBuildable_spline & {
+	[key: string]: unknown,
+};
+
+type FGBuildablePipeline = docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeline_base_spline & {
+	mFlowLimit: docs_json_ts_common_types_decimal_string,
+	mFlowIndicatorMinimumPipeLength: docs_json_ts_common_types_decimal_string,
+	mMaxIndicatorTurnAngle: docs_json_ts_common_types_decimal_string,
+	mIgnoreActorsForIndicator: '',
+	mFluidNames: [
+		{
+			WwiseSafeName: StringPassesRegex<'^[A-Z][A-Za-z_]+[a-z]$'>,
+			ActualName?: StringPassesRegex<'^[A-Z][A-Za-z ]+[a-z]$'>,
+		},
+		...{
+			WwiseSafeName: StringPassesRegex<'^[A-Z][A-Za-z_]+[a-z]$'>,
+			ActualName?: StringPassesRegex<'^[A-Z][A-Za-z ]+[a-z]$'>,
+		}[],
+	],
+	mCurrentFluid: '',
+	mQuantiziedContent: docs_json_ts_common_types_decimal_string,
+	mQuantiziedFlow: docs_json_ts_common_types_decimal_string,
+	mRattleLimit: docs_json_ts_common_types_decimal_string,
+	mIsRattling: docs_json_ts_common_types_bool_string,
+};
+
+type FGBuildablePipelineJunction = docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeline_junction & {
+	mFluidBoxVolume: docs_json_ts_common_types_decimal_string,
+};
+
+type FGBuildablePipelinePump_pump = docs_json_ts_0_3_7_7_classes_base_FGBuildablePipelinePump_base & {
+	mPistonAudioTimer?: docs_json_ts_common_types_empty_object,
+	mIsPipePumpPlaying: docs_json_ts_common_types_bool_string,
+	mIsExceedingHeadLift: docs_json_ts_common_types_bool_string,
+	mCurrentAudioHeadLift: docs_json_ts_common_types_decimal_string,
+};
+
+type FGBuildablePipelinePump_valve = docs_json_ts_0_3_7_7_classes_base_FGBuildablePipelinePump_base & {
+	[key: string]: unknown,
+};
+
+type FGBuildablePipelineSupport = docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_with_length & {
+	mVerticalAngle: docs_json_ts_common_types_decimal_string,
+};
+
+type FGBuildablePipeReservoir = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered & {
+	mStackingHeight: docs_json_ts_common_types_decimal_string,
+	mFluidBox: docs_json_ts_common_types_empty_object,
+	mStorageCapacity: docs_json_ts_common_types_decimal_string,
+	mPipeConnections: '',
+	mIndicatorData: docs_json_ts_common_types_empty_object,
+};
+
+type FGBuildablePole = docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole & {
+	mHeight: docs_json_ts_common_types_decimal_string,
+};
+
+type FGBuildablePowerPole = docs_json_ts_0_3_7_7_classes_base_FGBuildable & {
+	mPowerConnections: '',
+	mPowerPoleType: 'PPT_POLE' | 'PPT_WALL' | 'PPT_WALL_DOUBLE',
+};
+
+type FGBuildableRadarTower = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered & {
+	mMapText: 'Radar Tower',
+	OnRadarTowerRadiusUpdated: docs_json_ts_common_types_empty_object,
+	mMinRevealRadius: docs_json_ts_common_types_decimal_string,
+	mMaxRevealRadius: docs_json_ts_common_types_decimal_string,
+	mNumRadarExpansionSteps: docs_json_ts_common_types_integer_string,
+	mRadarExpansionInterval: docs_json_ts_common_types_decimal_string,
+	mCurrentExpansionStep: docs_json_ts_common_types_integer_string,
+	mTimeToNextExpansion: docs_json_ts_common_types_decimal_string,
+};
+
+type FGBuildableRailroadStation = docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatform & {
+	mMapText: 'Train Station',
+	mDockedPlatformList: '',
+};
+
+type FGBuildableRailroadTrack = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_length & {
+	mIsOwnedByPlatform: docs_json_ts_common_types_bool_string,
+};
+
+type FGBuildableResourceExtractor_miner = docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_base & {
+	mInternalMiningState_0?: 'NewEnumerator0',
+	mToggleMiningStateHandle_0?: docs_json_ts_common_types_empty_object,
+	mMinimumDrillTime_0?: docs_json_ts_common_types_decimal_string,
+	mMaximumDrillTime_0?: docs_json_ts_common_types_decimal_string,
+	mCanPlayAfterStartUpStopped?: docs_json_ts_common_types_bool_string,
+	mParticleMap: [
+		{
+			ResourceNode_16_2100B5C34EE8DF7958D78A974512F3C3: `/Game/FactoryGame/Resource/RawResources/${string}${'/Desc_'}${string}${'.Desc_'}${string}${'_C'}`,
+			ParticleSystem1_9_F0CF81514E1E1C5007AC99B0C59C63CD: `ParticleSystem'"/Game/FactoryGame/VFX/Factory/Miner/P_Mining_${string}${'_01.P_Mining_'}${string}${'_01"\''}`,
+		},
+		...{
+			ResourceNode_16_2100B5C34EE8DF7958D78A974512F3C3: `/Game/FactoryGame/Resource/RawResources/${string}${'/Desc_'}${string}${'.Desc_'}${string}${'_C'}`,
+			ParticleSystem1_9_F0CF81514E1E1C5007AC99B0C59C63CD: `ParticleSystem'"/Game/FactoryGame/VFX/Factory/Miner/P_Mining_${string}${'_01.P_Mining_'}${string}${'_01"\''}`,
+		}[],
+	],
+	mExtractorTypeName: 'Miner',
+	mAllowedResourceForms: [
+		'RF_SOLID',
+	],
+};
+
+type FGBuildableResourceExtractor_oil = docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_base & {
+	mAllowedResourceForms: [
+		'RF_LIQUID',
+	],
+};
+
+type FGBuildableResourceExtractor_water = docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_base & {
+	mWaterpumpTimeline_RTPC_B8FA6F944E717E3B7A286E84901F620E: docs_json_ts_common_types_decimal_string,
+	mWaterpumpTimeline__Direction_B8FA6F944E717E3B7A286E84901F620E: 'Forward',
+	PlayPitchAndVolumeRTPCTimeline_RTPC_2B435F41466C37D2AD809A88AA21BA89: docs_json_ts_common_types_decimal_string,
+	PlayPitchAndVolumeRTPCTimeline__Direction_2B435F41466C37D2AD809A88AA21BA89: 'Forward',
+	mAudioTimerCounter: docs_json_ts_common_types_decimal_string,
+	mAudioTimerMS: docs_json_ts_common_types_decimal_string,
+	mAudioTimerReference: docs_json_ts_common_types_empty_object,
+	mAudioTimelineCounter: docs_json_ts_common_types_decimal_string,
+	HasLostSignificance: docs_json_ts_common_types_bool_string,
+	mExtractorTypeName: 'None',
+	mAllowedResourceForms: [
+		'RF_LIQUID',
+	],
+};
+
+type FGBuildableResourceSink = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered & {
+	SFXEngineTimeline_EngineAlpha_073E1D2A4BAD246B3958E183E210FAAE: docs_json_ts_common_types_decimal_string,
+	SFXEngineTimeline__Direction_073E1D2A4BAD246B3958E183E210FAAE: 'Forward',
+	VFX_SFX_Timeline_EngineAlpha_A2CB706E440839665A39888572D206AA: docs_json_ts_common_types_decimal_string,
+	VFX_SFX_Timeline__Direction_A2CB706E440839665A39888572D206AA: 'Forward',
+	HastLostSignificance: docs_json_ts_common_types_bool_string,
+	mProcessingTime: docs_json_ts_common_types_decimal_string,
+	mSavedProducingTimer: docs_json_ts_common_types_decimal_string,
+};
+
+type FGBuildableResourceSinkShop = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered & {
+	mShopInventoryDefaultSize: docs_json_ts_common_types_integer_string,
+};
+
+type FGBuildableSnowDispenser = docs_json_ts_0_3_7_7_classes_base_FGBuildable & {
+	[key: string]: unknown,
+};
+
+type FGBuildableSpaceElevator = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered & {
+	mMapText: 'Space Elevator',
+};
+
+type FGBuildableSplitterSmart = docs_json_ts_0_3_7_7_classes_base_FGBuildableAttachment_splitter & {
+	OnSortRulesChangedDelegate: docs_json_ts_common_types_empty_object,
+	mMaxNumSortRules: docs_json_ts_common_types_integer_string,
+	mLastItem: {
+		ItemState: docs_json_ts_common_types_empty_object,
+	},
+	mItemToLastOutputMap: docs_json_ts_common_types_empty_object,
+	mLastOutputIndex: docs_json_ts_common_types_integer_string,
+};
+
+type FGBuildableStair = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_and_elevation & {
+	[key: string]: unknown,
+};
+
+type FGBuildableStorage = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered & {
+	mStackingHeight: docs_json_ts_common_types_decimal_string,
+	mInventorySizeX: docs_json_ts_common_types_integer_string,
+	mInventorySizeY: docs_json_ts_common_types_integer_string,
+};
+
+type FGBuildableTradingPost = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered & {
+	mWorkBenchOccupied: 'Craft Bench occupied',
+	mWorkBenchFree: 'Use Craft Bench',
+	Meshes: [
+        'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6"\'',
+        ...('StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6"\'')[],
+	],
+	mShipUpgradeLevel: docs_json_ts_common_types_integer_string,
+	mStorageText: 'Open Storage',
+	mMamFreeText: 'Use M.A.M.',
+	mMamOccupiedText: 'M.A.M. is occupied',
+	mMapText: 'The HUB',
+	mGenerators: '',
+	mStorageInventorySize: docs_json_ts_common_types_integer_string,
+	mStorageVisibilityLevel: docs_json_ts_common_types_integer_string,
+	mSpawningGroundZOffset: docs_json_ts_common_types_decimal_string,
+	mGroundSearchZDistance: docs_json_ts_common_types_decimal_string,
+	mDefaultResources: '',
+	mNeedPlayingBuildEffectNotification: docs_json_ts_common_types_bool_string,
+};
+
+type FGBuildableTrainPlatformCargo = docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatform_with_storage & {
+	mPotentialDockers: '',
+	mFreightCargoType: 'FCT_Standard' | 'FCT_Liquid',
+	mCanUnloadAny: docs_json_ts_common_types_bool_string,
+	mIsFullUnload: docs_json_ts_common_types_bool_string,
+	mCanLoadAny: docs_json_ts_common_types_bool_string,
+	mIsFullLoad: docs_json_ts_common_types_bool_string,
+	mTimeToCompleteLoad: docs_json_ts_common_types_decimal_string,
+	mTimeToSwapLoadVisibility: docs_json_ts_common_types_decimal_string,
+	mTimeToCompleteUnload: docs_json_ts_common_types_decimal_string,
+	mTimeToSwapUnloadVisibility: docs_json_ts_common_types_decimal_string,
+	mStorageInputConnections: '',
+	mPipeInputConnections: '',
+	mPipeOutputConnections: '',
+	mShouldExecuteLoadOrUnload: docs_json_ts_common_types_bool_string,
+	mSwapCargoVisibilityTimerHandle: docs_json_ts_common_types_empty_object,
+	mReplicatedOutflowRate: docs_json_ts_common_types_decimal_string,
+	mReplicatedInflowRate: docs_json_ts_common_types_decimal_string,
+};
+
+type FGBuildableTrainPlatformEmpty = docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatform & {
+	[key: string]: unknown,
+};
+
+type FGBuildableWall = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_and_width & {
+	[key: string]: unknown,
+};
+
+type FGBuildableWalkway = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_size_and_elevation & {
+	[key: string]: unknown,
+};
+
+type FGBuildableWire = docs_json_ts_0_3_7_7_classes_base_FGBuildable & {
+	mMaxLength: docs_json_ts_common_types_decimal_string,
+	mLengthPerCost: docs_json_ts_common_types_decimal_string,
+	mConnections: 'None',
+};
+
+type FGBuildingDescriptor = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_BuildMenu & {
+	[key: string]: unknown,
+};
+
+type FGChainsaw = docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_sound & {
+	mMontageLength: docs_json_ts_common_types_decimal_string,
+	mInterpSawProgress: docs_json_ts_common_types_decimal_string,
+	mWasSawing: docs_json_ts_common_types_bool_string,
+	mCurrentState: 'NewEnumerator3',
+	mCurrentAudioState: 'NewEnumerator3',
+	mPreviousAudioState: 'NewEnumerator3',
+	mEnergyConsumption: docs_json_ts_common_types_decimal_string,
+	mSawDownTreeTime: docs_json_ts_common_types_decimal_string,
+	mCollateralPickupRadius: docs_json_ts_common_types_decimal_string,
+	mExcludeChainsawableFoliage: docs_json_ts_common_types_bool_string,
+	mEnergyStored: docs_json_ts_common_types_decimal_string,
+	mAttachSocket: 'hand_lSocket',
+	mArmAnimation: 'AE_ChainSaw',
+};
+
+type FGColorGun = docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_instant & {
+	mPrimaryColor: docs_json_ts_common_types_RGBA,
+	mSecondaryColor: docs_json_ts_common_types_RGBA,
+	mRedundantTargetCrosshairColor: docs_json_ts_common_types_RGBA,
+	mNoTargetCrosshairColor: docs_json_ts_common_types_RGBA,
+	mNonColorableTargetCrosshairColor: docs_json_ts_common_types_RGBA,
+	mColorSlot: docs_json_ts_common_types_integer_string,
+	mArmAnimation: 'AE_ColorGun',
+};
+
+type FGConsumableDescriptor = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_sinkable & {
+	mHealthGain?: docs_json_ts_common_types_decimal_string,
+	mCustomHandsMeshScale: docs_json_ts_common_types_decimal_string,
+	mCustomRotation: docs_json_ts_common_types_PitchYawRoll_decimal_string_signed,
+	mCustomLocation: docs_json_ts_common_types_XYZ_decimal_string,
+};
+
+type FGConsumableEquipment = docs_json_ts_0_3_7_7_classes_base_FGEquipment & {
+	mRandomAnim?: docs_json_ts_common_types_integer_string,
+	mCanPress?: docs_json_ts_common_types_bool_string,
+	mAnimData?: [
+		{
+			Montage_7_2E66F6A948A8606E71185682EA2AC4EC: 'AnimMontage\'"/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_01_Montage.MedkitUse_01_Montage"\'' | 'AnimMontage\'"/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_02_Montage.MedkitUse_02_Montage"\'' | 'AnimMontage\'"/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_03_Montage.MedkitUse_03_Montage"\'',
+			CameraAnim_8_AA01C2B248FF438D6C2816B2FA94F1BD: 'CameraAnim\'"/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_01_CameraAnim.MedkitUse_01_CameraAnim"\'' | 'CameraAnim\'"/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_02_CameraAnim.MedkitUse_02_CameraAnim"\'' | 'CameraAnim\'"/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_03_CameraAnim.MedkitUse_03_CameraAnim"\'',
+		},
+		...{
+			Montage_7_2E66F6A948A8606E71185682EA2AC4EC: 'AnimMontage\'"/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_01_Montage.MedkitUse_01_Montage"\'' | 'AnimMontage\'"/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_02_Montage.MedkitUse_02_Montage"\'' | 'AnimMontage\'"/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_03_Montage.MedkitUse_03_Montage"\'',
+			CameraAnim_8_AA01C2B248FF438D6C2816B2FA94F1BD: 'CameraAnim\'"/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_01_CameraAnim.MedkitUse_01_CameraAnim"\'' | 'CameraAnim\'"/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_02_CameraAnim.MedkitUse_02_CameraAnim"\'' | 'CameraAnim\'"/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_03_CameraAnim.MedkitUse_03_CameraAnim"\'',
+		}[],
+	],
+	mCurrentAnimData?: docs_json_ts_common_types_empty_object,
+	mAttachSocket?: 'hand_rSocket',
+	mArmAnimation: 'AE_Consumables' | 'AE_OneHandEquipment',
+};
+
+type FGEquipmentStunSpear_xenobasher = docs_json_ts_0_3_7_7_classes_base_FGEquipmentStunSpear_base & {
+	mCurrentMontageSection: 'None',
+	mSecondAttackTimer: docs_json_ts_common_types_decimal_string,
+	mFirstAttackTimer: docs_json_ts_common_types_decimal_string,
+	mRandomEquipAnim: docs_json_ts_common_types_integer_string,
+};
+
+type FGEquipmentStunSpear_xenozapper = docs_json_ts_0_3_7_7_classes_base_FGEquipmentStunSpear_base & {
+	mPlayingSound: docs_json_ts_common_types_bool_string,
+	mRandomStingerAnim: docs_json_ts_common_types_integer_string,
+};
+
+type FGGasMask = docs_json_ts_0_3_7_7_classes_base_FGEquipment & {
+	mCountdown: docs_json_ts_common_types_decimal_string,
+	mFilterDuration: docs_json_ts_common_types_decimal_string,
+	mIsWorking: docs_json_ts_common_types_bool_string,
+	mHasNegatedDamage: docs_json_ts_common_types_bool_string,
+	mDamageNegated: docs_json_ts_common_types_decimal_string,
+	mDisableEffectTimer: docs_json_ts_common_types_decimal_string,
+	mPostProcessEnabled: docs_json_ts_common_types_bool_string,
+	mAttachSocket: 'helmetSocket',
+	mArmAnimation: 'AE_None',
+};
+
+type FGGolfCartDispenser = docs_json_ts_0_3_7_7_classes_base_FGEquipment_dispenser & {
+	mArmAnimation: 'AE_Generic2Hand',
+};
+
+type FGItemDescriptor = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_sinkable & {
+	[key: string]: unknown,
+};
+
+type FGItemDescriptorNuclearFuel = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_sinkable & {
+	mAmountOfWaste: docs_json_ts_common_types_integer_string,
+};
+
+type FGJetPack = docs_json_ts_0_3_7_7_classes_base_FGEquipment & {
+	mThrustPower: docs_json_ts_common_types_decimal_string,
+	mVelocityZExtreme: docs_json_ts_common_types_decimal_string,
+	mVelocityZExtremesDamper: docs_json_ts_common_types_decimal_string,
+	mJumpBeforeThrustTime: docs_json_ts_common_types_decimal_string,
+	mMaxFuel: docs_json_ts_common_types_decimal_string,
+	mCurrentFuel: docs_json_ts_common_types_decimal_string,
+	mFuelRegenRate: docs_json_ts_common_types_decimal_string,
+	mFuelConsumeRate: docs_json_ts_common_types_decimal_string,
+	mThrustCooldown: docs_json_ts_common_types_decimal_string,
+	mFuelWorth: docs_json_ts_common_types_decimal_string,
+	mPaidForFuel: docs_json_ts_common_types_decimal_string,
+	mThrustAirControl: docs_json_ts_common_types_decimal_string,
+	mDefaultAirControl: docs_json_ts_common_types_decimal_string,
+	mRTPCInterval: docs_json_ts_common_types_decimal_string,
+	mJumpTimeStamp: docs_json_ts_common_types_decimal_string,
+	mIsThrusting: docs_json_ts_common_types_bool_string,
+	mArmAnimation?: 'AE_None',
+	mBackAnimation?: 'BE_Jetpack',
+};
+
+type FGJumpingStilts = docs_json_ts_0_3_7_7_classes_base_FGEquipment & {
+	mSprintSpeedFactor: docs_json_ts_common_types_decimal_string,
+	mJumpSpeedFactor: docs_json_ts_common_types_decimal_string,
+	mAttachSocket: 'jumpingStilt_lSocket',
+};
+
+type FGNobeliskDetonator = docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_thrown & {
+	mArmAnimation: 'AE_Nobelisk',
+};
+
+type FGObjectScanner = docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_sound & {
+	mScreenUpdateTimer: docs_json_ts_common_types_empty_object,
+	mScanlineLerpT: docs_json_ts_common_types_decimal_string,
+	mScreenUpdateTime: docs_json_ts_common_types_decimal_string,
+	mNormalizedCloesnessToObject: docs_json_ts_common_types_decimal_string,
+	mObjectIsWithinRange: docs_json_ts_common_types_bool_string,
+	mBeepDelayMax: docs_json_ts_common_types_decimal_string,
+	mBeepDelayMin: docs_json_ts_common_types_decimal_string,
+	mDetectionRange: docs_json_ts_common_types_decimal_string,
+	mUpdateClosestObjectTime: docs_json_ts_common_types_decimal_string,
+	mObjectDetails: [
+		{
+			ScannableClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
+			DisplayText: {
+				NSLOCTEXT: [
+					string,
+					...string[],
+				],
+			},
+			ScannerLightColor: docs_json_ts_common_types_BGRA,
+			PreCacheAllOfType?: docs_json_ts_common_types_bool_string,
+			ShouldOverrideDetectionRange?: docs_json_ts_common_types_bool_string,
+			NewDetectionRange?: docs_json_ts_common_types_decimal_string,
+			RequiredSchematic: `/Game/FactoryGame/Schematics/Research/${string}${'/'}${string}${'.'}${string}${'_C'}`,
+		},
+		...{
+			ScannableClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
+			DisplayText: {
+				NSLOCTEXT: [
+					string,
+					...string[],
+				],
+			},
+			ScannerLightColor: docs_json_ts_common_types_BGRA,
+			PreCacheAllOfType?: docs_json_ts_common_types_bool_string,
+			ShouldOverrideDetectionRange?: docs_json_ts_common_types_bool_string,
+			NewDetectionRange?: docs_json_ts_common_types_decimal_string,
+			RequiredSchematic: `/Game/FactoryGame/Schematics/Research/${string}${'/'}${string}${'.'}${string}${'_C'}`,
+		}[],
+	],
+	mShouldBeepEvenIfNoObject: docs_json_ts_common_types_bool_string,
+};
+
+type FGParachute = docs_json_ts_0_3_7_7_classes_base_FGEquipment & {
+	mTerminalVelocityZ: docs_json_ts_common_types_decimal_string,
+	mIsDeployed: docs_json_ts_common_types_bool_string,
+};
+
+type FGPipeHyperStart = docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_with_length_and_power & {
+	InterpolateEngineSound_InterpolateEngineAlpha_064FA8194B7224F6F187999413D1C8A6: docs_json_ts_common_types_decimal_string,
+	InterpolateEngineSound__Direction_064FA8194B7224F6F187999413D1C8A6: 'Forward',
+	mWindDirectionFromTurbine: docs_json_ts_common_types_empty_object,
+	['mIsWindSoundPlaying?']: docs_json_ts_common_types_bool_string,
+	mAudioTimerCounter: docs_json_ts_common_types_decimal_string,
+	AudioCounterTimer: docs_json_ts_common_types_empty_object,
+	IsEnginePlaying: docs_json_ts_common_types_bool_string,
+	mOpeningOffset: docs_json_ts_common_types_decimal_string,
+	mInitialMinSpeedFactor: docs_json_ts_common_types_decimal_string,
+};
+
+type FGPoleDescriptor = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_BuildMenu & {
+	[key: string]: unknown,
+};
+
+type FGPortableMinerDispenser = docs_json_ts_0_3_7_7_classes_base_FGEquipment_dispenser & {
+	mAllowedResourceForms: docs_json_ts_0_3_7_7_properties_mAllowedResourceForms,
+	mArmAnimation: 'AE_PortableMiner',
+};
+
+type FGRecipe = docs_json_ts_0_3_7_7_classes_base_FGInstructive & {
+	mIngredients: docs_json_ts_0_3_7_7_properties_ItemClass_Amount_list,
+	mProduct: docs_json_ts_0_3_7_7_properties_ItemClass_Amount_list,
+	mManufactoringDuration: docs_json_ts_common_types_decimal_string,
+	mManualManufacturingMultiplier: docs_json_ts_common_types_decimal_string,
+	mProducedIn: '' | [
+        '/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkBenchComponent.BP_WorkBenchComponent_C' | '/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkshopComponent.BP_WorkshopComponent_C' | '/Game/FactoryGame/Buildable/Factory/AssemblerMk1/Build_AssemblerMk1.Build_AssemblerMk1_C' | '/Game/FactoryGame/Buildable/Factory/AutomatedWorkBench/Build_AutomatedWorkBench.Build_AutomatedWorkBench_C' | '/Game/FactoryGame/Buildable/Factory/ConstructorMk1/Build_ConstructorMk1.Build_ConstructorMk1_C' | '/Game/FactoryGame/Buildable/Factory/Converter/Build_Converter.Build_Converter_C' | '/Game/FactoryGame/Buildable/Factory/FoundryMk1/Build_FoundryMk1.Build_FoundryMk1_C' | '/Game/FactoryGame/Buildable/Factory/ManufacturerMk1/Build_ManufacturerMk1.Build_ManufacturerMk1_C' | '/Game/FactoryGame/Buildable/Factory/OilRefinery/Build_OilRefinery.Build_OilRefinery_C' | '/Game/FactoryGame/Buildable/Factory/Packager/Build_Packager.Build_Packager_C' | '/Game/FactoryGame/Buildable/Factory/SmelterMk1/Build_SmelterMk1.Build_SmelterMk1_C' | '/Game/FactoryGame/Equipment/BuildGun/BP_BuildGun.BP_BuildGun_C' | '/Script/FactoryGame.FGBuildGun' | '/Script/FactoryGame.FGBuildableAutomatedWorkBench',
+        ...('/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkBenchComponent.BP_WorkBenchComponent_C' | '/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkshopComponent.BP_WorkshopComponent_C' | '/Game/FactoryGame/Buildable/Factory/AssemblerMk1/Build_AssemblerMk1.Build_AssemblerMk1_C' | '/Game/FactoryGame/Buildable/Factory/AutomatedWorkBench/Build_AutomatedWorkBench.Build_AutomatedWorkBench_C' | '/Game/FactoryGame/Buildable/Factory/ConstructorMk1/Build_ConstructorMk1.Build_ConstructorMk1_C' | '/Game/FactoryGame/Buildable/Factory/Converter/Build_Converter.Build_Converter_C' | '/Game/FactoryGame/Buildable/Factory/FoundryMk1/Build_FoundryMk1.Build_FoundryMk1_C' | '/Game/FactoryGame/Buildable/Factory/ManufacturerMk1/Build_ManufacturerMk1.Build_ManufacturerMk1_C' | '/Game/FactoryGame/Buildable/Factory/OilRefinery/Build_OilRefinery.Build_OilRefinery_C' | '/Game/FactoryGame/Buildable/Factory/Packager/Build_Packager.Build_Packager_C' | '/Game/FactoryGame/Buildable/Factory/SmelterMk1/Build_SmelterMk1.Build_SmelterMk1_C' | '/Game/FactoryGame/Equipment/BuildGun/BP_BuildGun.BP_BuildGun_C' | '/Script/FactoryGame.FGBuildGun' | '/Script/FactoryGame.FGBuildableAutomatedWorkBench')[],
+	],
+};
+
+type FGResourceDescriptor = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_sinkable & {
+	mDecalSize: docs_json_ts_common_types_decimal_string,
+	mPingColor: docs_json_ts_common_types_RGBA,
+	mCollectSpeedMultiplier: docs_json_ts_common_types_decimal_string,
+	mManualMiningAudioName: 'Metal',
+};
+
+type FGSchematic = docs_json_ts_0_3_7_7_classes_base_FGInstructive & {
+	mType: docs_json_ts_0_3_7_7_properties_mType,
+	mSubCategories: null | [
+	] | docs_json_ts_0_3_7_7_properties_mSubCategories,
+	mTechTier: docs_json_ts_0_3_7_7_properties_Tier,
+	mCost: null | docs_json_ts_0_3_7_7_properties_ItemClass_Amount_list,
+	mTimeToComplete: docs_json_ts_common_types_decimal_string,
+	mUnlocks: never[] | [
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mRecipes,
+	] | [
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mRecipes,
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mResourcesToAddToScanner,
+	] | [
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mRecipes,
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mNumInventorySlotsToUnlock,
+	] | [
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mRecipes,
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mNumInventorySlotsToUnlock,
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mNumArmEquipmentSlotsToUnlock,
+	] | [
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mNumArmEquipmentSlotsToUnlock,
+	] | [
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mNumInventorySlotsToUnlock,
+	] | [
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mRecipes,
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mResourcesToAddToScanner,
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mSchematics,
+	] | [
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mRecipes,
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mSchematics,
+	] | [
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mSchematics,
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mRecipes,
+	] | [
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mSchematics,
+	] | [
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mResourcesToAddToScanner,
+	] | [
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mRecipes,
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_base & {
+			[key: string]: unknown,
+		},
+	] | [
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_base & {
+			[key: string]: unknown,
+		},
+	] | [
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mItemsToGive,
+	],
+	mSchematicDependencies: [
+		...{
+			Class: `BP_${string}${'_C'}`,
+			mSchematics: docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list,
+			mRequireAllSchematicsToBePurchased: docs_json_ts_common_types_bool_string,
+		}[],
+	],
+	mIncludeInBuilds: 'IIB_PublicBuilds',
+};
+
+type FGSnowballWeapon = docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_thrown & {
+	mArmAnimation: 'AE_Generic1Hand',
+};
+
+type FGSuitBase = docs_json_ts_0_3_7_7_classes_base_FGEquipment & {
+	mImmunity: docs_json_ts_common_types_decimal_string,
+	mIsWorking: docs_json_ts_common_types_bool_string,
+	mHasNegatedDamage: docs_json_ts_common_types_bool_string,
+	mDamageNegated: docs_json_ts_common_types_decimal_string,
+	mFilterDuration: docs_json_ts_common_types_decimal_string,
+	mCountdown: docs_json_ts_common_types_decimal_string,
+	mDisableEffectTimer: docs_json_ts_common_types_decimal_string,
+	mSuit1PMeshMaterials: [
+		{
+			SlotName: 'Body_Details' | 'Body_01' | 'Body_02' | 'Body_Hands' | 'Body_Backpack',
+			Material: 'MaterialInstanceConstant\'"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_Details.MI_Haz_Body_Details"\'' | 'MaterialInstanceConstant\'"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_01.MI_Haz_Body_01"\'' | 'MaterialInstanceConstant\'"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_02.MI_Haz_Body_02"\'' | 'MaterialInstanceConstant\'"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_Hands.MI_Haz_Body_Hands"\'' | 'MaterialInstanceConstant\'"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_Backpack.MI_Haz_Body_Backpack"\'',
+		},
+		...{
+			SlotName: 'Body_Details' | 'Body_01' | 'Body_02' | 'Body_Hands' | 'Body_Backpack',
+			Material: 'MaterialInstanceConstant\'"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_Details.MI_Haz_Body_Details"\'' | 'MaterialInstanceConstant\'"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_01.MI_Haz_Body_01"\'' | 'MaterialInstanceConstant\'"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_02.MI_Haz_Body_02"\'' | 'MaterialInstanceConstant\'"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_Hands.MI_Haz_Body_Hands"\'' | 'MaterialInstanceConstant\'"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_Backpack.MI_Haz_Body_Backpack"\'',
+		}[],
+	],
+	mArmAnimation?: 'AE_None',
+};
+
+type FGVehicleDescriptor = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_BuildMenu & {
+	[key: string]: unknown,
+};
+
+type FGWeaponInstantFire = docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_instant & {
+	Fire: docs_json_ts_common_types_empty_object,
+	mLockAngle: docs_json_ts_common_types_decimal_string,
+	mHasReloadedOnce: docs_json_ts_common_types_bool_string,
+	mArmAnimation: 'AE_Rifle',
+};
+
+type FGWeaponProjectileFire = docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile & {
+	mMuteDryFire: docs_json_ts_common_types_bool_string,
+	mRandomReloadAnim: docs_json_ts_common_types_integer_string,
+	mRandomStingerAnim: docs_json_ts_common_types_integer_string,
+	mProjectileData: {
+		ProjectileClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
+		ProjectileLifeSpan: docs_json_ts_common_types_decimal_string,
+		ProjectileStickSpan: docs_json_ts_common_types_decimal_string,
+		ExplosionDamage: docs_json_ts_common_types_integer_string,
+		ImpactDamage: docs_json_ts_common_types_integer_string,
+		CanTriggerExplodeBySameClass: docs_json_ts_common_types_bool_string,
+		DamageType: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
+		DamageTypeExplode: 'Class\'"/Script/FactoryGame.FGDamageType"\'',
+	},
+	mAttachSocket: 'hand_rSocket',
+	mArmAnimation: 'AE_RebarGun',
+};
+
+export type {
+	FGBuildable_base, FGBuildable_occupied, FGBuildable_powered_base, FGBuildable_tiered, FGBuildableAttachmentMerger, FGBuildableAttachmentSplitter, FGBuildableConveyorBelt, FGBuildableConveyorLift, FGBuildableDockingStation, FGBuildableFactorySimpleProducer, FGBuildableFactory_jump_pad, FGBuildableFactory_landing_pad, FGBuildableFoundation, FGBuildableGeneratorFuel, FGBuildableGeneratorGeoThermal, FGBuildableGeneratorNuclear, FGBuildableJumppad, FGBuildableLadder, FGBuildableManufacturer, FGBuildablePipeHyper, FGBuildablePipeline, FGBuildablePipelineJunction, FGBuildablePipelinePump_pump, FGBuildablePipelinePump_valve, FGBuildablePipelineSupport, FGBuildablePipeReservoir, FGBuildablePole, FGBuildablePowerPole, FGBuildableRadarTower, FGBuildableRailroadStation, FGBuildableRailroadTrack, FGBuildableResourceExtractor_miner, FGBuildableResourceExtractor_oil, FGBuildableResourceExtractor_water, FGBuildableResourceSink, FGBuildableResourceSinkShop, FGBuildableSnowDispenser, FGBuildableSpaceElevator, FGBuildableSplitterSmart, FGBuildableStair, FGBuildableStorage, FGBuildableTradingPost, FGBuildableTrainPlatformCargo, FGBuildableTrainPlatformEmpty, FGBuildableWall, FGBuildableWalkway, FGBuildableWire, FGBuildingDescriptor, FGChainsaw, FGColorGun, FGConsumableDescriptor, FGConsumableEquipment, FGEquipmentStunSpear_xenobasher, FGEquipmentStunSpear_xenozapper, FGGasMask, FGGolfCartDispenser, FGItemDescriptor, FGItemDescriptorNuclearFuel, FGJetPack, FGJumpingStilts, FGNobeliskDetonator, FGObjectScanner, FGParachute, FGPipeHyperStart, FGPoleDescriptor, FGPortableMinerDispenser, FGRecipe, FGResourceDescriptor, FGSchematic, FGSnowballWeapon, FGSuitBase, FGVehicleDescriptor, FGWeaponInstantFire, FGWeaponProjectileFire,
+};

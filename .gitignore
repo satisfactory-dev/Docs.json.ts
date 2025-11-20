@@ -5,4 +5,4 @@
 /.eslintcache
 /coverage/
 /data/
-/generated-types/
+/generated-types/*/data.ts
