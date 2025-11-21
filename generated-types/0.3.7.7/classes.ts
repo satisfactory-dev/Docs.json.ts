@@ -3,7 +3,6 @@
 import type {
 	FGBuildable as docs_json_ts_0_3_7_7_classes_base_FGBuildable,
 	FGBuildable_docking_station as docs_json_ts_0_3_7_7_classes_base_FGBuildable_docking_station,
-	FGBuildable_pole as docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole,
 	FGBuildable_pole_with_length as docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_with_length,
 	FGBuildable_pole_with_length_and_power as docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_with_length_and_power,
 	FGBuildable_powered as docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered,
@@ -29,6 +28,7 @@ import type {
 	FGBuildablePipeline_base_spline as docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeline_base_spline,
 	FGBuildablePipeline_junction as docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeline_junction,
 	FGBuildablePipelinePump_base as docs_json_ts_0_3_7_7_classes_base_FGBuildablePipelinePump_base,
+	FGBuildablePole as docs_json_ts_0_3_7_7_classes_base_FGBuildablePole,
 	FGBuildableResourceExtractor_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_base,
 	FGBuildableTrainPlatform as docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatform,
 	FGBuildableTrainPlatform_with_storage as docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatform_with_storage,
@@ -263,8 +263,8 @@ type FGBuildablePipeReservoir = docs_json_ts_0_3_7_7_classes_base_FGBuildable_po
 	mIndicatorData: docs_json_ts_common_types_empty_object,
 };
 
-type FGBuildablePole = docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole & {
-	mHeight: docs_json_ts_common_types_decimal_string,
+type FGBuildablePole = docs_json_ts_0_3_7_7_classes_base_FGBuildablePole & {
+	[key: string]: unknown,
 };
 
 type FGBuildablePowerPole = docs_json_ts_0_3_7_7_classes_base_FGBuildable & {

@@ -905,6 +905,16 @@
 				}
 			}
 		},
+		"FGBuildablePole": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--pole",
+			"required": ["mHeight"],
+			"properties": {
+				"mHeight": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
 		"FGBuildableResourceExtractor--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--powered",

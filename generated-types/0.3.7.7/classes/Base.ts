@@ -274,6 +274,10 @@ type FGBuildablePipelinePump_powered_base = FGBuildable_powered & {
 	mFluidBoxVolume: docs_json_ts_common_types_decimal_string,
 };
 
+type FGBuildablePole = FGBuildable_pole & {
+	mHeight: docs_json_ts_common_types_decimal_string,
+};
+
 type FGBuildableResourceExtractor_base = FGBuildable_powered & {
 	mExtractStartupTime: docs_json_ts_common_types_decimal_string_signed,
 	mExtractStartupTimer: docs_json_ts_common_types_decimal_string,
@@ -469,6 +473,7 @@ export type {
 	FGBuildablePipeline_junction,
 	FGBuildablePipelinePump_base,
 	FGBuildablePipelinePump_powered_base,
+	FGBuildablePole,
 	FGBuildableResourceExtractor_base,
 	FGBuildableTrainPlatform,
 	FGBuildableTrainPlatform_with_storage,
