@@ -387,6 +387,29 @@ for (const result of results) {
 			'\n\n'
 		}${
 			result.code
+				.replace(
+					/((?:import|export)(?: type)? )(\{)([^}]+)+(\s*\})/g,
+					(
+						substring,
+						opener: string,
+						left_bracket: string,
+						middle: string,
+						right_bracket: string,
+					) => {
+						return `${
+							opener
+						}${
+							left_bracket
+						}\n\t${
+							middle
+								.trim()
+								.split(',')
+								.map((e) => e.trim())
+								.join(',\n\t')
+						}\n${
+							right_bracket
+						}`;
+					})
 		}`,
 	);
 }

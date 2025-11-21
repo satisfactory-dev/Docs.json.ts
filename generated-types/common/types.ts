@@ -1,4 +1,4 @@
-/* eslint-disable @stylistic/max-len */
+
 
 import type {
 	StringPassesRegex,
@@ -55,5 +55,16 @@ type XYZW_decimal_string = {
 };
 
 export type {
-	bool_string, decimal_string, decimal_string_signed, empty_object, integer_string, integer_string_signed, BGRA, PitchYawRoll_decimal_string_signed, RGBA, XY_decimal_string, XYZ_decimal_string, XYZW_decimal_string,
+	bool_string,
+	decimal_string,
+	decimal_string_signed,
+	empty_object,
+	integer_string,
+	integer_string_signed,
+	BGRA,
+	PitchYawRoll_decimal_string_signed,
+	RGBA,
+	XY_decimal_string,
+	XYZ_decimal_string,
+	XYZW_decimal_string,
 };

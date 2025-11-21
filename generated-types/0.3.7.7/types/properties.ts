@@ -1,7 +1,8 @@
 /* eslint-disable @stylistic/max-len */
 
 import type {
-	bool_string as docs_json_ts_common_types_bool_string, integer_string as docs_json_ts_common_types_integer_string,
+	bool_string as docs_json_ts_common_types_bool_string,
+	integer_string as docs_json_ts_common_types_integer_string,
 } from './../../common/types.ts';
 
 type mAbbreviatedDisplayName = string;
@@ -85,5 +86,25 @@ type ItemClass_Amount_list = [
 type Tier = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7';
 
 export type {
-	mAbbreviatedDisplayName, mAllowedResourceForms, mDisplayName, mForm, mPersistentBigIcon, mRelevantEvents, mSchematicDependencies_item, mSmallIcon, mStackSize, mSubCategories, mType, mUnlocks_item_base, mUnlocks_item_mItemsToGive, mUnlocks_item_mNumArmEquipmentSlotsToUnlock, mUnlocks_item_mNumInventorySlotsToUnlock, mUnlocks_item_mRecipes, mUnlocks_item_mResourcesToAddToScanner, mUnlocks_item_mSchematics, DocsDotJson_BlueprintGeneratedClass_quoted_list, ItemClass_Amount_list, Tier,
+	mAbbreviatedDisplayName,
+	mAllowedResourceForms,
+	mDisplayName,
+	mForm,
+	mPersistentBigIcon,
+	mRelevantEvents,
+	mSchematicDependencies_item,
+	mSmallIcon,
+	mStackSize,
+	mSubCategories,
+	mType,
+	mUnlocks_item_base,
+	mUnlocks_item_mItemsToGive,
+	mUnlocks_item_mNumArmEquipmentSlotsToUnlock,
+	mUnlocks_item_mNumInventorySlotsToUnlock,
+	mUnlocks_item_mRecipes,
+	mUnlocks_item_mResourcesToAddToScanner,
+	mUnlocks_item_mSchematics,
+	DocsDotJson_BlueprintGeneratedClass_quoted_list,
+	ItemClass_Amount_list,
+	Tier,
 };
