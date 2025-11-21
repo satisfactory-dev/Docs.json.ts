@@ -45,6 +45,27 @@
 				}
 			}
 		},
+		"mSchematicDependencies--item": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": [
+				"Class",
+				"mSchematics",
+				"mRequireAllSchematicsToBePurchased"
+			],
+			"properties": {
+				"Class": {
+					"type": "string",
+					"DocsDotJson_BP_C": null
+				},
+				"mSchematics": {
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
+				},
+				"mRequireAllSchematicsToBePurchased": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
+		},
 		"mSmallIcon": {
 			"type": "string",
 			"DocsDotJson_Texture2D": [

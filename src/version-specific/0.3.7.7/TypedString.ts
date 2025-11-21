@@ -369,7 +369,16 @@ export class TypedString<
 	> {
 	#mode_by_validator: TypedString_matcher<TypedString_mode>[];
 
-	constructor(options: SchemalessTypeOptions) {
+	constructor(
+		options: SchemalessTypeOptions,
+		{
+			String_enum_list,
+		}: {
+			String_enum_list?: {
+				quoted: boolean,
+			},
+		} = {},
+	) {
 		const mode_from_schema = {
 			Empty: options.ajv.compile<
 				TypedString_type<'Empty'>['typed_string']
@@ -632,7 +641,11 @@ export class TypedString<
 						entries,
 					);
 
-					return TypedString.ajv_macro(mode, schema);
+					return TypedString.ajv_macro(mode, schema, {
+						String_enum_list: String_enum_list || {
+							quoted: false,
+						},
+					});
 				},
 			},
 			type_definition: {},
@@ -1261,6 +1274,13 @@ export class TypedString<
 	>(
 		mode: Mode,
 		schema: TypedString_type<Mode>['typed_string'],
+		{
+			String_enum_list,
+		}: {
+			String_enum_list: {
+				quoted: boolean,
+			},
+		},
 	) {
 		if ('Empty' === mode) {
 			return {
@@ -1279,7 +1299,15 @@ export class TypedString<
 				Object.keys(coerced.properties)
 					.map((property) => `(?:,?${
 						RegExp.escape(property)
-					}=(?:\\([^)]+\\)|[^=]+))${
+					}=(?:${
+						`\\((?:,?[^=]+=(?:\\([^)]+\\)|\\d+))+\\)`
+					}|${
+						`\\([^=]+=\\([^)]+\\)\\)`
+					}|${
+						`\\([^)]+\\)`
+					}|${
+						`[^=]+`
+					}))${
 						(
 							(coerced.required || ([] as string[]))
 								.includes(property)
@@ -1321,8 +1349,14 @@ export class TypedString<
 				'String_enum_list'
 			>['typed_string'];
 
+			const items = [...coerced.items.enum];
+
+			if (String_enum_list.quoted) {
+				items.push(...items.map((value) => `"${value}"`));
+			}
+
 			const regex = `${
-				coerced.items.enum
+				items
 					.map((value) => RegExp.escape(value)).join('|')
 			}`;
 

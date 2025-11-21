@@ -1,7 +1,7 @@
 /* eslint-disable @stylistic/max-len */
 
 import type {
-	integer_string as docs_json_ts_common_types_integer_string,
+	bool_string as docs_json_ts_common_types_bool_string, integer_string as docs_json_ts_common_types_integer_string,
 } from './../../common/types.ts';
 
 type mAbbreviatedDisplayName = string;
@@ -20,6 +20,12 @@ type mPersistentBigIcon = `Texture2D'/Game/FactoryGame/${string}${'/IconDesc_' |
 type mRelevantEvents = [
 	'EV_Christmas',
 ];
+
+type mSchematicDependencies_item = {
+	Class: `BP_${string}${'_C'}`,
+	mSchematics: docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list,
+	mRequireAllSchematicsToBePurchased: docs_json_ts_common_types_bool_string,
+};
 
 type mSmallIcon = `Texture2D'/Game/FactoryGame/${string}${'/IconDesc_' | '/' | ''}${string}${'_'}${'64' | '256' | '1b' | '64_new'}${'.'}${string}${'_'}${'64' | '256' | '1b' | '64_new'}${'\''}`;
 
@@ -79,5 +85,5 @@ type ItemClass_Amount_list = [
 type Tier = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7';
 
 export type {
-	mAbbreviatedDisplayName, mAllowedResourceForms, mDisplayName, mForm, mPersistentBigIcon, mRelevantEvents, mSmallIcon, mStackSize, mSubCategories, mType, mUnlocks_item_base, mUnlocks_item_mItemsToGive, mUnlocks_item_mNumArmEquipmentSlotsToUnlock, mUnlocks_item_mNumInventorySlotsToUnlock, mUnlocks_item_mRecipes, mUnlocks_item_mResourcesToAddToScanner, mUnlocks_item_mSchematics, DocsDotJson_BlueprintGeneratedClass_quoted_list, ItemClass_Amount_list, Tier,
+	mAbbreviatedDisplayName, mAllowedResourceForms, mDisplayName, mForm, mPersistentBigIcon, mRelevantEvents, mSchematicDependencies_item, mSmallIcon, mStackSize, mSubCategories, mType, mUnlocks_item_base, mUnlocks_item_mItemsToGive, mUnlocks_item_mNumArmEquipmentSlotsToUnlock, mUnlocks_item_mNumInventorySlotsToUnlock, mUnlocks_item_mRecipes, mUnlocks_item_mResourcesToAddToScanner, mUnlocks_item_mSchematics, DocsDotJson_BlueprintGeneratedClass_quoted_list, ItemClass_Amount_list, Tier,
 };

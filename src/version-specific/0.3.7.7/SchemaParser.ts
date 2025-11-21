@@ -64,16 +64,20 @@ import {
 
 const already_configured: WeakSet<SchemaParser> = new WeakSet();
 
-export function configure_parser(parser: SchemaParser) {
-	if (already_configured.has(parser)) {
-		return;
-	}
-
+export function add_schemas(parser: SchemaParser) {
 	parser.add_schema(common_types);
 	parser.add_schema(update3_properties);
 	parser.add_schema(update3_classes__base);
 	parser.add_schema(update3_classes);
 	parser.add_schema(update3);
+}
+
+export function configure_parser(parser: SchemaParser) {
+	if (already_configured.has(parser)) {
+		return;
+	}
+
+	add_schemas(parser);
 
 	const ajv = parser.share_ajv((ajv) => ajv);
 

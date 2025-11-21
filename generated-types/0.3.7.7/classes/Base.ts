@@ -1,11 +1,11 @@
 /* eslint-disable @stylistic/max-len */
 
 import type {
-	DocsDotJson_BlueprintGeneratedClass_quoted_list as docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list, ItemClass_Amount_list as docs_json_ts_0_3_7_7_properties_ItemClass_Amount_list, mAbbreviatedDisplayName as docs_json_ts_0_3_7_7_properties_mAbbreviatedDisplayName, mAllowedResourceForms as docs_json_ts_0_3_7_7_properties_mAllowedResourceForms, mDisplayName as docs_json_ts_0_3_7_7_properties_mDisplayName, mForm as docs_json_ts_0_3_7_7_properties_mForm, mPersistentBigIcon as docs_json_ts_0_3_7_7_properties_mPersistentBigIcon, mRelevantEvents as docs_json_ts_0_3_7_7_properties_mRelevantEvents, mSmallIcon as docs_json_ts_0_3_7_7_properties_mSmallIcon, mStackSize as docs_json_ts_0_3_7_7_properties_mStackSize, mSubCategories as docs_json_ts_0_3_7_7_properties_mSubCategories,
+	DocsDotJson_BlueprintGeneratedClass_quoted_list as docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list, ItemClass_Amount_list as docs_json_ts_0_3_7_7_properties_ItemClass_Amount_list, mAbbreviatedDisplayName as docs_json_ts_0_3_7_7_properties_mAbbreviatedDisplayName, mAllowedResourceForms as docs_json_ts_0_3_7_7_properties_mAllowedResourceForms, mDisplayName as docs_json_ts_0_3_7_7_properties_mDisplayName, mForm as docs_json_ts_0_3_7_7_properties_mForm, mPersistentBigIcon as docs_json_ts_0_3_7_7_properties_mPersistentBigIcon, mRelevantEvents as docs_json_ts_0_3_7_7_properties_mRelevantEvents, mSmallIcon as docs_json_ts_0_3_7_7_properties_mSmallIcon, mStackSize as docs_json_ts_0_3_7_7_properties_mStackSize, mSubCategories as docs_json_ts_0_3_7_7_properties_mSubCategories, mType as docs_json_ts_0_3_7_7_properties_mType,
 } from './../types/properties.ts';
 
 import type {
-	BGRA as docs_json_ts_common_types_BGRA, bool_string as docs_json_ts_common_types_bool_string, decimal_string as docs_json_ts_common_types_decimal_string, decimal_string_signed as docs_json_ts_common_types_decimal_string_signed, empty_object as docs_json_ts_common_types_empty_object, integer_string as docs_json_ts_common_types_integer_string, integer_string_signed as docs_json_ts_common_types_integer_string_signed, XYZ_decimal_string as docs_json_ts_common_types_XYZ_decimal_string,
+	BGRA as docs_json_ts_common_types_BGRA, bool_string as docs_json_ts_common_types_bool_string, decimal_string as docs_json_ts_common_types_decimal_string, decimal_string_signed as docs_json_ts_common_types_decimal_string_signed, empty_object as docs_json_ts_common_types_empty_object, integer_string as docs_json_ts_common_types_integer_string, integer_string_signed as docs_json_ts_common_types_integer_string_signed, RGBA as docs_json_ts_common_types_RGBA, XYZ_decimal_string as docs_json_ts_common_types_XYZ_decimal_string,
 } from './../../common/types.ts';
 
 type hasClassName = {
@@ -40,6 +40,12 @@ type FGBuildable_DisableAttachmentSnapOn = FGBuildable & {
 	mDisableAttachmentSnapOn: docs_json_ts_common_types_empty_object,
 };
 
+type FGBuildable_docking_station = FGBuildable_powered_storage & {
+	mMapText: string,
+	mTransferSpeed: docs_json_ts_common_types_decimal_string,
+	mStackTransferSize: docs_json_ts_common_types_decimal_string,
+};
+
 type FGBuildable_pole = FGBuildable & {
 	mUseStaticHeight: docs_json_ts_common_types_bool_string,
 	mCanStack: docs_json_ts_common_types_bool_string,
@@ -52,7 +58,7 @@ type FGBuildable_pole_with_length = FGBuildable_pole & {
 
 type FGBuildable_pole_with_length_and_power = FGBuildable_pole_with_length & FGBuildable_powered;
 
-type FGBuildable_powered = FGBuildable & {
+type FGBuildable_powered_base = FGBuildable & {
 	mPowerConsumption: docs_json_ts_common_types_decimal_string,
 	mPowerConsumptionExponent: docs_json_ts_common_types_decimal_string,
 	mOnHasPowerChanged: docs_json_ts_common_types_empty_object,
@@ -68,16 +74,21 @@ type FGBuildable_powered = FGBuildable & {
 	mFluidStackSizeDefault: 'SS_FLUID',
 	mFluidStackSizeMultiplier: docs_json_ts_common_types_integer_string,
 	OnReplicationDetailActorCreatedEvent: docs_json_ts_common_types_empty_object,
-	mSignificanceBias: docs_json_ts_common_types_decimal_string,
 	mEffectUpdateInterval: docs_json_ts_common_types_decimal_string,
 	mAddToSignificanceManager: docs_json_ts_common_types_bool_string,
 	mSignificanceRange: docs_json_ts_common_types_decimal_string,
 };
 
-type FGBuildable_powered_storage = FGBuildable_powered & {
+type FGBuildable_powered = FGBuildable_powered_base & (FGBuildable & {
+	mSignificanceBias: docs_json_ts_common_types_decimal_string,
+});
+
+type FGBuildable_powered_storage_base = FGBuildable_powered_base & {
 	mStorageSizeX: docs_json_ts_common_types_integer_string,
 	mStorageSizeY: docs_json_ts_common_types_integer_string,
 };
+
+type FGBuildable_powered_storage = FGBuildable_powered_storage_base & FGBuildable_powered;
 
 type FGBuildable_spline = FGBuildable_with_length & {
 	mSplineData: '',
@@ -128,9 +139,11 @@ type FGBuildable_with_width = FGBuildable & {
 	mWidth: docs_json_ts_common_types_decimal_string,
 };
 
-type FGBuildableAttachment = FGBuildable_powered & {
+type FGBuildableAttachment_base = FGBuildable_powered_base & {
 	mCurrentInventoryIndex: docs_json_ts_common_types_integer_string,
 };
+
+type FGBuildableAttachment = FGBuildableAttachment_base & FGBuildable_powered;
 
 type FGBuildableAttachment_splitter = FGBuildableAttachment & {
 	mCurrentOutputIndex: docs_json_ts_common_types_integer_string_signed,
@@ -168,11 +181,28 @@ type FGBuildableGenerator = FGBuildableGenerator_no_fuel & {
 	mCachedPipeInputConnections: '',
 };
 
-type FGBuildableGenerator_no_fuel = FGBuildable_powered & {
+type FGBuildableGenerator_no_fuel_base = FGBuildable_powered_base & {
 	mPowerProduction: docs_json_ts_common_types_decimal_string,
 	mPowerProductionExponent: docs_json_ts_common_types_decimal_string,
 	mLoadPercentage: docs_json_ts_common_types_decimal_string,
 };
+
+type FGBuildableGenerator_no_fuel = FGBuildableGenerator_no_fuel_base & FGBuildable_powered;
+
+type FGBuildableManufacturer_base = FGBuildable_powered_base & {
+	IsPowered?: docs_json_ts_common_types_bool_string,
+	mProductionEffectsRunning?: docs_json_ts_common_types_bool_string,
+	mCurrentColor_VFX?: docs_json_ts_common_types_RGBA,
+	CurrentPackagingMode?: '',
+	mCurrentRecipeChanged: docs_json_ts_common_types_empty_object,
+	mManufacturingSpeed: docs_json_ts_common_types_decimal_string,
+	mFactoryInputConnections: '',
+	mPipeInputConnections: '',
+	mFactoryOutputConnections: '',
+	mPipeOutputConnections: '',
+};
+
+type FGBuildableManufacturer = FGBuildableManufacturer_base & FGBuildable_powered;
 
 type FGBuildablePipeline_base = FGBuildablePipeline_base_no_indicator & {
 	mIndicatorData: docs_json_ts_common_types_empty_object,
@@ -236,6 +266,23 @@ type FGBuildableTrainPlatform_with_storage = (FGBuildable_powered_storage & {
 	[key: string]: unknown,
 }) & (FGBuildableTrainPlatform);
 
+type FGConsumableEquipment = FGEquipment & {
+	mRandomAnim?: docs_json_ts_common_types_integer_string,
+	mCanPress?: docs_json_ts_common_types_bool_string,
+	mAnimData?: [
+		{
+			Montage_7_2E66F6A948A8606E71185682EA2AC4EC: 'AnimMontage\'"/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_01_Montage.MedkitUse_01_Montage"\'' | 'AnimMontage\'"/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_02_Montage.MedkitUse_02_Montage"\'' | 'AnimMontage\'"/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_03_Montage.MedkitUse_03_Montage"\'',
+			CameraAnim_8_AA01C2B248FF438D6C2816B2FA94F1BD: 'CameraAnim\'"/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_01_CameraAnim.MedkitUse_01_CameraAnim"\'' | 'CameraAnim\'"/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_02_CameraAnim.MedkitUse_02_CameraAnim"\'' | 'CameraAnim\'"/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_03_CameraAnim.MedkitUse_03_CameraAnim"\'',
+		},
+		...{
+			Montage_7_2E66F6A948A8606E71185682EA2AC4EC: 'AnimMontage\'"/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_01_Montage.MedkitUse_01_Montage"\'' | 'AnimMontage\'"/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_02_Montage.MedkitUse_02_Montage"\'' | 'AnimMontage\'"/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_03_Montage.MedkitUse_03_Montage"\'',
+			CameraAnim_8_AA01C2B248FF438D6C2816B2FA94F1BD: 'CameraAnim\'"/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_01_CameraAnim.MedkitUse_01_CameraAnim"\'' | 'CameraAnim\'"/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_02_CameraAnim.MedkitUse_02_CameraAnim"\'' | 'CameraAnim\'"/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_03_CameraAnim.MedkitUse_03_CameraAnim"\'',
+		}[],
+	],
+	mCurrentAnimData?: docs_json_ts_common_types_empty_object,
+	mAttachSocket?: 'hand_rSocket',
+};
+
 type FGDescriptor = isDescribed & {
 	mAbbreviatedDisplayName: docs_json_ts_0_3_7_7_properties_mAbbreviatedDisplayName,
 	mStackSize: docs_json_ts_0_3_7_7_properties_mStackSize,
@@ -290,6 +337,15 @@ type FGInstructive = isNamed & {
 	mRelevantEvents: null | docs_json_ts_0_3_7_7_properties_mRelevantEvents,
 };
 
+type FGSchematic = FGInstructive & {
+	mType: docs_json_ts_0_3_7_7_properties_mType,
+	mSubCategories: null | [
+	] | docs_json_ts_0_3_7_7_properties_mSubCategories,
+	mCost: null | docs_json_ts_0_3_7_7_properties_ItemClass_Amount_list,
+	mTimeToComplete: docs_json_ts_common_types_decimal_string,
+	mIncludeInBuilds: 'IIB_PublicBuilds',
+};
+
 type FGWeaponProjectile = FGEquipment & {
 	mMagSize: docs_json_ts_common_types_integer_string,
 	mCurrentAmmo: docs_json_ts_common_types_integer_string,
@@ -328,5 +384,5 @@ type FGWeaponProjectile_instant = FGWeaponProjectile & {
 };
 
 export type {
-	hasClassName, isDescribed, isNamed, FGBuildable, FGBuildable_DisableAttachmentSnapOn, FGBuildable_pole, FGBuildable_pole_with_length, FGBuildable_pole_with_length_and_power, FGBuildable_powered, FGBuildable_powered_storage, FGBuildable_spline, FGBuildable_with_height, FGBuildable_with_height_and_elevation, FGBuildable_with_height_and_width, FGBuildable_with_length, FGBuildable_with_size_and_elevation, FGBuildable_with_width, FGBuildableAttachment, FGBuildableAttachment_splitter, FGBuildableConveyorBelt_base, FGBuildableConveyorBelt_spline, FGBuildableGenerator, FGBuildableGenerator_no_fuel, FGBuildablePipeline_base, FGBuildablePipeline_base_no_indicator, FGBuildablePipeline_base_spline, FGBuildablePipeline_junction, FGBuildablePipelinePump_base, FGBuildablePipelinePump_powered_base, FGBuildableResourceExtractor_base, FGBuildableTrainPlatform, FGBuildableTrainPlatform_with_storage, FGDescriptor, FGDescriptor_BuildMenu, FGDescriptor_sinkable, FGEquipment, FGEquipment_dispenser, FGEquipment_has_sound, FGEquipmentStunSpear_base, FGInstructive, FGWeaponProjectile, FGWeaponProjectile_thrown, FGWeaponProjectile_instant,
+	hasClassName, isDescribed, isNamed, FGBuildable, FGBuildable_DisableAttachmentSnapOn, FGBuildable_docking_station, FGBuildable_pole, FGBuildable_pole_with_length, FGBuildable_pole_with_length_and_power, FGBuildable_powered_base, FGBuildable_powered, FGBuildable_powered_storage_base, FGBuildable_powered_storage, FGBuildable_spline, FGBuildable_with_height, FGBuildable_with_height_and_elevation, FGBuildable_with_height_and_width, FGBuildable_with_length, FGBuildable_with_size_and_elevation, FGBuildable_with_width, FGBuildableAttachment_base, FGBuildableAttachment, FGBuildableAttachment_splitter, FGBuildableConveyorBelt_base, FGBuildableConveyorBelt_spline, FGBuildableGenerator, FGBuildableGenerator_no_fuel_base, FGBuildableGenerator_no_fuel, FGBuildableManufacturer_base, FGBuildableManufacturer, FGBuildablePipeline_base, FGBuildablePipeline_base_no_indicator, FGBuildablePipeline_base_spline, FGBuildablePipeline_junction, FGBuildablePipelinePump_base, FGBuildablePipelinePump_powered_base, FGBuildableResourceExtractor_base, FGBuildableTrainPlatform, FGBuildableTrainPlatform_with_storage, FGConsumableEquipment, FGDescriptor, FGDescriptor_BuildMenu, FGDescriptor_sinkable, FGEquipment, FGEquipment_dispenser, FGEquipment_has_sound, FGEquipmentStunSpear_base, FGInstructive, FGSchematic, FGWeaponProjectile, FGWeaponProjectile_thrown, FGWeaponProjectile_instant,
 };

@@ -91,26 +91,18 @@
 		},
 		"FGBuildableDockingStation": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered-storage",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--docking-station",
 			"unevaluatedProperties": false,
 			"required": [
 				"mMapText",
-				"mTransferSpeed",
-				"mFuelTransferSpeed",
-				"mStackTransferSize"
+				"mFuelTransferSpeed"
 			],
 			"properties": {
 				"mMapText": {
 					"type": "string",
 					"const": ""
 				},
-				"mTransferSpeed": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
 				"mFuelTransferSpeed": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mStackTransferSize": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
 			}
@@ -317,52 +309,7 @@
 		"FGBuildableManufacturer": {
 			"type": "object",
 			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered",
-			"required": [
-				"mCurrentRecipeChanged",
-				"mManufacturingSpeed",
-				"mFactoryInputConnections",
-				"mPipeInputConnections",
-				"mFactoryOutputConnections",
-				"mPipeOutputConnections"
-			],
-			"properties": {
-				"IsPowered": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mProductionEffectsRunning": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mCurrentColor_VFX": {
-					"$ref": "docs.json.ts--common--types#/$defs/RGBA"
-				},
-				"CurrentPackagingMode": {
-					"type": "string",
-					"const": ""
-				},
-				"mCurrentRecipeChanged": {
-					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-				},
-				"mManufacturingSpeed": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mFactoryInputConnections": {
-					"type": "string",
-					"const": ""
-				},
-				"mPipeInputConnections": {
-					"type": "string",
-					"const": ""
-				},
-				"mFactoryOutputConnections": {
-					"type": "string",
-					"const": ""
-				},
-				"mPipeOutputConnections": {
-					"type": "string",
-					"const": ""
-				}
-			}
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer"
 		},
 		"FGBuildablePipeHyper": {
 			"type": "object",
@@ -1272,56 +1219,9 @@
 		"FGConsumableEquipment": {
 			"type": "object",
 			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGConsumableEquipment",
 			"required": ["mArmAnimation"],
 			"properties": {
-				"mRandomAnim": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-				},
-				"mCanPress": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mAnimData": {
-					"type": "string",
-					"typed_string": {
-						"type": "array",
-						"minItems": 1,
-						"uniqueItems": true,
-						"items": {
-							"type": "object",
-							"additionalProperties": false,
-							"required": [
-								"Montage_7_2E66F6A948A8606E71185682EA2AC4EC",
-								"CameraAnim_8_AA01C2B248FF438D6C2816B2FA94F1BD"
-							],
-							"properties": {
-								"Montage_7_2E66F6A948A8606E71185682EA2AC4EC": {
-									"type": "string",
-									"enum": [
-										"AnimMontage'\"/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_01_Montage.MedkitUse_01_Montage\"'",
-										"AnimMontage'\"/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_02_Montage.MedkitUse_02_Montage\"'",
-										"AnimMontage'\"/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_03_Montage.MedkitUse_03_Montage\"'"
-									]
-								},
-								"CameraAnim_8_AA01C2B248FF438D6C2816B2FA94F1BD": {
-									"type": "string",
-									"enum": [
-										"CameraAnim'\"/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_01_CameraAnim.MedkitUse_01_CameraAnim\"'",
-										"CameraAnim'\"/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_02_CameraAnim.MedkitUse_02_CameraAnim\"'",
-										"CameraAnim'\"/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_03_CameraAnim.MedkitUse_03_CameraAnim\"'"
-									]
-								}
-							}
-						}
-					}
-				},
-				"mCurrentAnimData": {
-					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-				},
-				"mAttachSocket": {
-					"type": "string",
-					"const": "hand_rSocket"
-				},
 				"mArmAnimation": {
 					"type": "string",
 					"enum": ["AE_Consumables", "AE_OneHandEquipment"]
@@ -1829,53 +1729,16 @@
 		},
 		"FGSchematic": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGInstructive",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGSchematic",
 			"unevaluatedProperties": false,
 			"required": [
-				"mType",
-				"mSubCategories",
 				"mTechTier",
-				"mCost",
-				"mTimeToComplete",
 				"mUnlocks",
-				"mSchematicDependencies",
-				"mIncludeInBuilds"
+				"mSchematicDependencies"
 			],
 			"properties": {
-				"mType": {
-					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mType"
-				},
-				"mSubCategories": {
-					"oneOf": [
-						{
-							"type": "string",
-							"typed_string": ""
-						},
-						{
-							"type": "string",
-							"typed_string": "(None)"
-						},
-						{
-							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mSubCategories"
-						}
-					]
-				},
 				"mTechTier": {
 					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/Tier"
-				},
-				"mCost": {
-					"oneOf": [
-						{
-							"type": "string",
-							"typed_string": ""
-						},
-						{
-							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/ItemClass-Amount--list"
-						}
-					]
-				},
-				"mTimeToComplete": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
 				"mUnlocks": {
 					"oneOf": [
@@ -2075,30 +1938,8 @@
 					"type": "array",
 					"minItems": 0,
 					"items": {
-						"type": "object",
-						"additionalProperties": false,
-						"required": [
-							"Class",
-							"mSchematics",
-							"mRequireAllSchematicsToBePurchased"
-						],
-						"properties": {
-							"Class": {
-								"type": "string",
-								"DocsDotJson_BP_C": null
-							},
-							"mSchematics": {
-								"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
-							},
-							"mRequireAllSchematicsToBePurchased": {
-								"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-							}
-						}
+						"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mSchematicDependencies--item"
 					}
-				},
-				"mIncludeInBuilds": {
-					"type": "string",
-					"const": "IIB_PublicBuilds"
 				}
 			}
 		},

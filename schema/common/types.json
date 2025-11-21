@@ -89,6 +89,22 @@
 				}
 			}
 		},
+		"XY--decimal_string": {
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": ["X", "Y"],
+				"properties": {
+					"X": {
+						"$ref": "#/$defs/decimal_string--signed"
+					},
+					"Y": {
+						"$ref": "#/$defs/decimal_string--signed"
+					}
+				}
+			}
+		},
 		"XYZ--decimal_string": {
 			"type": "string",
 			"typed_string": {
