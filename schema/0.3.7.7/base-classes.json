@@ -684,19 +684,6 @@
 				"mPipeOutputConnections"
 			],
 			"properties": {
-				"IsPowered": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mProductionEffectsRunning": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mCurrentColor_VFX": {
-					"$ref": "docs.json.ts--common--types#/$defs/RGBA"
-				},
-				"CurrentPackagingMode": {
-					"type": "string",
-					"const": ""
-				},
 				"mCurrentRecipeChanged": {
 					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
 				},
@@ -721,7 +708,89 @@
 				}
 			}
 		},
-		"FGBuildableManufacturer": {
+		"FGBuildableManufacturer--base--IsPowered": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--powered--base",
+			"required": ["IsPowered"],
+			"properties": {
+				"IsPowered": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
+		},
+		"FGBuildableManufacturer--base--mProductionEffectsRunning": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--powered--base",
+			"required": ["mProductionEffectsRunning"],
+			"properties": {
+				"mProductionEffectsRunning": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
+		},
+		"FGBuildableManufacturer--base--packager": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--powered--base",
+			"required": [
+				"mCurrentColor_VFX",
+				"CurrentPackagingMode"
+			],
+			"properties": {
+				"mCurrentColor_VFX": {
+					"$ref": "docs.json.ts--common--types#/$defs/RGBA"
+				},
+				"CurrentPackagingMode": {
+					"type": "string",
+					"const": ""
+				}
+			}
+		},
+		"FGBuildableManufacturer--Build_ConstructorMk1_C": {
+			"allOf": [
+				{"$ref": "#/$defs/FGBuildableManufacturer--base"},
+				{"$ref": "#/$defs/FGBuildableManufacturer--base--IsPowered"},
+				{"$ref": "#/$defs/FGBuildable--powered"}
+			]
+		},
+		"FGBuildableManufacturer--Build_SmelterMk1_C": {
+			"allOf": [
+				{"$ref": "#/$defs/FGBuildableManufacturer--base"},
+				{"$ref": "#/$defs/FGBuildableManufacturer--base--mProductionEffectsRunning"},
+				{"$ref": "#/$defs/FGBuildable--powered"}
+			]
+		},
+		"FGBuildableManufacturer--Build_FoundryMk1_C": {
+			"allOf": [
+				{"$ref": "#/$defs/FGBuildableManufacturer--base"},
+				{"$ref": "#/$defs/FGBuildableManufacturer--base--mProductionEffectsRunning"},
+				{"$ref": "#/$defs/FGBuildable--powered"}
+			]
+		},
+		"FGBuildableManufacturer--Build_OilRefinery_C": {
+			"allOf": [
+				{"$ref": "#/$defs/FGBuildableManufacturer--base"},
+				{"$ref": "#/$defs/FGBuildableManufacturer--base--IsPowered"},
+				{"$ref": "#/$defs/FGBuildableManufacturer--base--mProductionEffectsRunning"},
+				{"$ref": "#/$defs/FGBuildable--powered"}
+			]
+		},
+		"FGBuildableManufacturer--Build_AssemblerMk1_C": {
+			"allOf": [
+				{"$ref": "#/$defs/FGBuildableManufacturer--base"},
+				{"$ref": "#/$defs/FGBuildableManufacturer--base--IsPowered"},
+				{"$ref": "#/$defs/FGBuildable--powered"}
+			]
+		},
+		"FGBuildableManufacturer--Build_Packager_C": {
+			"allOf": [
+				{"$ref": "#/$defs/FGBuildableManufacturer--base"},
+				{"$ref": "#/$defs/FGBuildableManufacturer--base--IsPowered"},
+				{"$ref": "#/$defs/FGBuildableManufacturer--base--mProductionEffectsRunning"},
+				{"$ref": "#/$defs/FGBuildableManufacturer--base--packager"},
+				{"$ref": "#/$defs/FGBuildable--powered"}
+			]
+		},
+		"FGBuildableManufacturer--Build_ManufacturerMk1_C": {
 			"allOf": [
 				{"$ref": "#/$defs/FGBuildableManufacturer--base"},
 				{"$ref": "#/$defs/FGBuildable--powered"}

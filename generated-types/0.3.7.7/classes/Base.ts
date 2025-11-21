@@ -190,10 +190,6 @@ type FGBuildableGenerator_no_fuel_base = FGBuildable_powered_base & {
 type FGBuildableGenerator_no_fuel = FGBuildableGenerator_no_fuel_base & FGBuildable_powered;
 
 type FGBuildableManufacturer_base = FGBuildable_powered_base & {
-	IsPowered?: docs_json_ts_common_types_bool_string,
-	mProductionEffectsRunning?: docs_json_ts_common_types_bool_string,
-	mCurrentColor_VFX?: docs_json_ts_common_types_RGBA,
-	CurrentPackagingMode?: '',
 	mCurrentRecipeChanged: docs_json_ts_common_types_empty_object,
 	mManufacturingSpeed: docs_json_ts_common_types_decimal_string,
 	mFactoryInputConnections: '',
@@ -202,7 +198,32 @@ type FGBuildableManufacturer_base = FGBuildable_powered_base & {
 	mPipeOutputConnections: '',
 };
 
-type FGBuildableManufacturer = FGBuildableManufacturer_base & FGBuildable_powered;
+type FGBuildableManufacturer_base_IsPowered = FGBuildable_powered_base & {
+	IsPowered: docs_json_ts_common_types_bool_string,
+};
+
+type FGBuildableManufacturer_base_mProductionEffectsRunning = FGBuildable_powered_base & {
+	mProductionEffectsRunning: docs_json_ts_common_types_bool_string,
+};
+
+type FGBuildableManufacturer_base_packager = FGBuildable_powered_base & {
+	mCurrentColor_VFX: docs_json_ts_common_types_RGBA,
+	CurrentPackagingMode: '',
+};
+
+type FGBuildableManufacturer_Build_ConstructorMk1_C = FGBuildableManufacturer_base & FGBuildableManufacturer_base_IsPowered & FGBuildable_powered;
+
+type FGBuildableManufacturer_Build_SmelterMk1_C = FGBuildableManufacturer_base & FGBuildableManufacturer_base_mProductionEffectsRunning & FGBuildable_powered;
+
+type FGBuildableManufacturer_Build_FoundryMk1_C = FGBuildableManufacturer_base & FGBuildableManufacturer_base_mProductionEffectsRunning & FGBuildable_powered;
+
+type FGBuildableManufacturer_Build_OilRefinery_C = FGBuildableManufacturer_base & FGBuildableManufacturer_base_IsPowered & FGBuildableManufacturer_base_mProductionEffectsRunning & FGBuildable_powered;
+
+type FGBuildableManufacturer_Build_AssemblerMk1_C = FGBuildableManufacturer_base & FGBuildableManufacturer_base_IsPowered & FGBuildable_powered;
+
+type FGBuildableManufacturer_Build_Packager_C = FGBuildableManufacturer_base & FGBuildableManufacturer_base_IsPowered & FGBuildableManufacturer_base_mProductionEffectsRunning & FGBuildableManufacturer_base_packager & FGBuildable_powered;
+
+type FGBuildableManufacturer_Build_ManufacturerMk1_C = FGBuildableManufacturer_base & FGBuildable_powered;
 
 type FGBuildablePipeline_base = FGBuildablePipeline_base_no_indicator & {
 	mIndicatorData: docs_json_ts_common_types_empty_object,
@@ -384,5 +405,5 @@ type FGWeaponProjectile_instant = FGWeaponProjectile & {
 };
 
 export type {
-	hasClassName, isDescribed, isNamed, FGBuildable, FGBuildable_DisableAttachmentSnapOn, FGBuildable_docking_station, FGBuildable_pole, FGBuildable_pole_with_length, FGBuildable_pole_with_length_and_power, FGBuildable_powered_base, FGBuildable_powered, FGBuildable_powered_storage_base, FGBuildable_powered_storage, FGBuildable_spline, FGBuildable_with_height, FGBuildable_with_height_and_elevation, FGBuildable_with_height_and_width, FGBuildable_with_length, FGBuildable_with_size_and_elevation, FGBuildable_with_width, FGBuildableAttachment_base, FGBuildableAttachment, FGBuildableAttachment_splitter, FGBuildableConveyorBelt_base, FGBuildableConveyorBelt_spline, FGBuildableGenerator, FGBuildableGenerator_no_fuel_base, FGBuildableGenerator_no_fuel, FGBuildableManufacturer_base, FGBuildableManufacturer, FGBuildablePipeline_base, FGBuildablePipeline_base_no_indicator, FGBuildablePipeline_base_spline, FGBuildablePipeline_junction, FGBuildablePipelinePump_base, FGBuildablePipelinePump_powered_base, FGBuildableResourceExtractor_base, FGBuildableTrainPlatform, FGBuildableTrainPlatform_with_storage, FGConsumableEquipment, FGDescriptor, FGDescriptor_BuildMenu, FGDescriptor_sinkable, FGEquipment, FGEquipment_dispenser, FGEquipment_has_sound, FGEquipmentStunSpear_base, FGInstructive, FGSchematic, FGWeaponProjectile, FGWeaponProjectile_thrown, FGWeaponProjectile_instant,
+	hasClassName, isDescribed, isNamed, FGBuildable, FGBuildable_DisableAttachmentSnapOn, FGBuildable_docking_station, FGBuildable_pole, FGBuildable_pole_with_length, FGBuildable_pole_with_length_and_power, FGBuildable_powered_base, FGBuildable_powered, FGBuildable_powered_storage_base, FGBuildable_powered_storage, FGBuildable_spline, FGBuildable_with_height, FGBuildable_with_height_and_elevation, FGBuildable_with_height_and_width, FGBuildable_with_length, FGBuildable_with_size_and_elevation, FGBuildable_with_width, FGBuildableAttachment_base, FGBuildableAttachment, FGBuildableAttachment_splitter, FGBuildableConveyorBelt_base, FGBuildableConveyorBelt_spline, FGBuildableGenerator, FGBuildableGenerator_no_fuel_base, FGBuildableGenerator_no_fuel, FGBuildableManufacturer_base, FGBuildableManufacturer_base_IsPowered, FGBuildableManufacturer_base_mProductionEffectsRunning, FGBuildableManufacturer_base_packager, FGBuildableManufacturer_Build_ConstructorMk1_C, FGBuildableManufacturer_Build_SmelterMk1_C, FGBuildableManufacturer_Build_FoundryMk1_C, FGBuildableManufacturer_Build_OilRefinery_C, FGBuildableManufacturer_Build_AssemblerMk1_C, FGBuildableManufacturer_Build_Packager_C, FGBuildableManufacturer_Build_ManufacturerMk1_C, FGBuildablePipeline_base, FGBuildablePipeline_base_no_indicator, FGBuildablePipeline_base_spline, FGBuildablePipeline_junction, FGBuildablePipelinePump_base, FGBuildablePipelinePump_powered_base, FGBuildableResourceExtractor_base, FGBuildableTrainPlatform, FGBuildableTrainPlatform_with_storage, FGConsumableEquipment, FGDescriptor, FGDescriptor_BuildMenu, FGDescriptor_sinkable, FGEquipment, FGEquipment_dispenser, FGEquipment_has_sound, FGEquipmentStunSpear_base, FGInstructive, FGSchematic, FGWeaponProjectile, FGWeaponProjectile_thrown, FGWeaponProjectile_instant,
 };

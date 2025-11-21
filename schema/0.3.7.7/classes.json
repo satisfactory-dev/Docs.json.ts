@@ -306,10 +306,40 @@
 				}
 			}
 		},
-		"FGBuildableManufacturer": {
+		"FGBuildableManufacturer--Build_ConstructorMk1_C": {
 			"type": "object",
 			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer"
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--Build_ConstructorMk1_C"
+		},
+		"FGBuildableManufacturer--Build_SmelterMk1_C": {
+			"type": "object",
+			"unevaluatedProperties": false,
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--Build_SmelterMk1_C"
+		},
+		"FGBuildableManufacturer--Build_FoundryMk1_C": {
+			"type": "object",
+			"unevaluatedProperties": false,
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--Build_FoundryMk1_C"
+		},
+		"FGBuildableManufacturer--Build_OilRefinery_C": {
+			"type": "object",
+			"unevaluatedProperties": false,
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--Build_OilRefinery_C"
+		},
+		"FGBuildableManufacturer--Build_AssemblerMk1_C": {
+			"type": "object",
+			"unevaluatedProperties": false,
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--Build_AssemblerMk1_C"
+		},
+		"FGBuildableManufacturer--Build_Packager_C": {
+			"type": "object",
+			"unevaluatedProperties": false,
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--Build_Packager_C"
+		},
+		"FGBuildableManufacturer--Build_ManufacturerMk1_C": {
+			"type": "object",
+			"unevaluatedProperties": false,
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--Build_ManufacturerMk1_C"
 		},
 		"FGBuildablePipeHyper": {
 			"type": "object",

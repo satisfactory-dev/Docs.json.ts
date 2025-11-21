@@ -285,10 +285,32 @@
 				},
 				"Classes": {
 					"type": "array",
-					"minItems": 1,
-					"items": {
-						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGBuildableManufacturer"
-					}
+					"minItems": 7,
+					"maxItems": 7,
+					"items": false,
+					"prefixItems": [
+						{
+							"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGBuildableManufacturer--Build_ConstructorMk1_C"
+						},
+						{
+							"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGBuildableManufacturer--Build_SmelterMk1_C"
+						},
+						{
+							"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGBuildableManufacturer--Build_FoundryMk1_C"
+						},
+						{
+							"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGBuildableManufacturer--Build_OilRefinery_C"
+						},
+						{
+							"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGBuildableManufacturer--Build_AssemblerMk1_C"
+						},
+						{
+							"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGBuildableManufacturer--Build_Packager_C"
+						},
+						{
+							"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGBuildableManufacturer--Build_ManufacturerMk1_C"
+						}
+					]
 				}
 			}
 		},
