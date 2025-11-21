@@ -45,18 +45,6 @@ import type {
 } from './src/version-specific/0.3.7.7/NativeClass.ts';
 */
 
-import {
-	Utf16leJsonHandler,
-} from './src/Utf16leJsonHandler.ts';
-
-import {
-	semver,
-} from './src/guarded.ts';
-
-import type {
-	semver_full,
-} from './src/types.ts';
-
 import common_types from './schema/common/types.json' with {
 	type: 'json',
 };
@@ -204,24 +192,6 @@ const adjuster = new FilenameAdjuster(
 	filenames_by_$id,
 	'docs.json.ts--common--types',
 );
-
-const validator = ajv.compile<
-	[{[key: string]: unknown}, ...{[key: string]: unknown}[]]
->({
-	$ref: 'docs.json.ts--0.3.7.7#',
-});
-
-const handler = new Utf16leJsonHandler<
-	semver_full,
-	[{[key: string]: unknown}, ...{[key: string]: unknown}[]]
->({
-	validator,
-	data_path: `${import.meta.dirname}/data/`,
-	version: semver('0.3.7.7'),
-	file_path: 'Docs/Docs.json',
-});
-
-await handler.read();
 
 function printer_factory(): Printer {
 	const printer = new Printer({
