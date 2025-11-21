@@ -35,7 +35,11 @@ npm-prep: tests
 	@./node_modules/.bin/tsc --project ./tsconfig.app-npm.json
 	@npm publish --dry-run
 
-generate:
+prepare:
+	@echo 'prepare 0.3.7.7'
+	@node ./prepare-0.3.7.7.ts
+
+generate: prepare
 	@echo 'running generator'
 	@git clean -fxd ./generated-types/
 	@node ./generator.ts
