@@ -311,9 +311,7 @@ type FGBuildableTrainPlatform = FGBuildable_powered & {
 	mDockingSequenceTimerHandle: docs_json_ts_common_types_empty_object,
 };
 
-type FGBuildableTrainPlatform_with_storage = (FGBuildable_powered_storage & {
-	[key: string]: unknown,
-}) & (FGBuildableTrainPlatform);
+type FGBuildableTrainPlatform_with_storage = FGBuildable_powered_storage & FGBuildableTrainPlatform;
 
 type FGBuildableWire = FGBuildable & {
 	mMaxLength: docs_json_ts_common_types_decimal_string,

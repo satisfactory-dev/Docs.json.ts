@@ -79,17 +79,13 @@ import type {
 	StringPassesRegex,
 } from '@signpostmarv/json-schema-typescript-codegen';
 
-type FGBuildable_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable & {
-	[key: string]: unknown,
-};
+type FGBuildable_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable;
 
 type FGBuildable_occupied = docs_json_ts_0_3_7_7_classes_base_FGBuildable & {
 	mOccupiedText: Exclude<string, ''>,
 };
 
-type FGBuildable_powered_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered & {
-	[key: string]: unknown,
-};
+type FGBuildable_powered_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered;
 
 type FGBuildable_tiered = docs_json_ts_0_3_7_7_classes_base_FGBuildable & {
 	Tier: docs_json_ts_0_3_7_7_properties_Tier,
@@ -99,13 +95,9 @@ type FGBuildableAttachmentMerger = docs_json_ts_0_3_7_7_classes_base_FGBuildable
 	mCurrentInputIndex: docs_json_ts_common_types_integer_string_signed,
 };
 
-type FGBuildableAttachmentSplitter = docs_json_ts_0_3_7_7_classes_base_FGBuildableAttachment_splitter & {
-	[key: string]: unknown,
-};
+type FGBuildableAttachmentSplitter = docs_json_ts_0_3_7_7_classes_base_FGBuildableAttachment_splitter;
 
-type FGBuildableConveyorBelt = docs_json_ts_0_3_7_7_classes_base_FGBuildableConveyorBelt_spline & {
-	[key: string]: unknown,
-};
+type FGBuildableConveyorBelt = docs_json_ts_0_3_7_7_classes_base_FGBuildableConveyorBelt_spline;
 
 type FGBuildableConveyorLift = docs_json_ts_0_3_7_7_classes_base_FGBuildableConveyorBelt_base & {
 	mMeshHeight: docs_json_ts_common_types_decimal_string,
@@ -137,9 +129,7 @@ type FGBuildableFactory_landing_pad = docs_json_ts_0_3_7_7_classes_base_FGBuilda
 	mPlayerList: '',
 };
 
-type FGBuildableFoundation = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_and_elevation & {
-	[key: string]: unknown,
-};
+type FGBuildableFoundation = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_and_elevation;
 
 type FGBuildableGeneratorFuel = docs_json_ts_0_3_7_7_classes_base_FGBuildableGenerator & {
 	mRTPCInterval?: docs_json_ts_common_types_decimal_string,
@@ -183,37 +173,21 @@ type FGBuildableLadder = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_widt
 	mLadderMeshes: '',
 };
 
-type FGBuildableManufacturer_Build_ConstructorMk1_C = docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_Build_ConstructorMk1_C & {
-	[key: string]: unknown,
-};
+type FGBuildableManufacturer_Build_ConstructorMk1_C = docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_Build_ConstructorMk1_C;
 
-type FGBuildableManufacturer_Build_SmelterMk1_C = docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_Build_SmelterMk1_C & {
-	[key: string]: unknown,
-};
+type FGBuildableManufacturer_Build_SmelterMk1_C = docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_Build_SmelterMk1_C;
 
-type FGBuildableManufacturer_Build_FoundryMk1_C = docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_Build_FoundryMk1_C & {
-	[key: string]: unknown,
-};
+type FGBuildableManufacturer_Build_FoundryMk1_C = docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_Build_FoundryMk1_C;
 
-type FGBuildableManufacturer_Build_OilRefinery_C = docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_Build_OilRefinery_C & {
-	[key: string]: unknown,
-};
+type FGBuildableManufacturer_Build_OilRefinery_C = docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_Build_OilRefinery_C;
 
-type FGBuildableManufacturer_Build_AssemblerMk1_C = docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_Build_AssemblerMk1_C & {
-	[key: string]: unknown,
-};
+type FGBuildableManufacturer_Build_AssemblerMk1_C = docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_Build_AssemblerMk1_C;
 
-type FGBuildableManufacturer_Build_Packager_C = docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_Build_Packager_C & {
-	[key: string]: unknown,
-};
+type FGBuildableManufacturer_Build_Packager_C = docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_Build_Packager_C;
 
-type FGBuildableManufacturer_Build_ManufacturerMk1_C = docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_Build_ManufacturerMk1_C & {
-	[key: string]: unknown,
-};
+type FGBuildableManufacturer_Build_ManufacturerMk1_C = docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_Build_ManufacturerMk1_C;
 
-type FGBuildablePipeHyper = docs_json_ts_0_3_7_7_classes_base_FGBuildable_spline & {
-	[key: string]: unknown,
-};
+type FGBuildablePipeHyper = docs_json_ts_0_3_7_7_classes_base_FGBuildable_spline;
 
 type FGBuildablePipeline = docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeline_base_spline & {
 	mFlowLimit: docs_json_ts_common_types_decimal_string,
@@ -248,9 +222,7 @@ type FGBuildablePipelinePump_pump = docs_json_ts_0_3_7_7_classes_base_FGBuildabl
 	mCurrentAudioHeadLift: docs_json_ts_common_types_decimal_string,
 };
 
-type FGBuildablePipelinePump_valve = docs_json_ts_0_3_7_7_classes_base_FGBuildablePipelinePump_base & {
-	[key: string]: unknown,
-};
+type FGBuildablePipelinePump_valve = docs_json_ts_0_3_7_7_classes_base_FGBuildablePipelinePump_base;
 
 type FGBuildablePipelineSupport = docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_with_length & {
 	mVerticalAngle: docs_json_ts_common_types_decimal_string,
@@ -264,13 +236,9 @@ type FGBuildablePipeReservoir = docs_json_ts_0_3_7_7_classes_base_FGBuildable_po
 	mIndicatorData: docs_json_ts_common_types_empty_object,
 };
 
-type FGBuildablePole = docs_json_ts_0_3_7_7_classes_base_FGBuildablePole & {
-	[key: string]: unknown,
-};
+type FGBuildablePole = docs_json_ts_0_3_7_7_classes_base_FGBuildablePole;
 
-type FGBuildablePowerPole = docs_json_ts_0_3_7_7_classes_base_FGBuildablePowerPole & {
-	[key: string]: unknown,
-};
+type FGBuildablePowerPole = docs_json_ts_0_3_7_7_classes_base_FGBuildablePowerPole;
 
 type FGBuildableRadarTower = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered & {
 	mMapText: 'Radar Tower',
@@ -350,9 +318,7 @@ type FGBuildableResourceSinkShop = docs_json_ts_0_3_7_7_classes_base_FGBuildable
 	mShopInventoryDefaultSize: docs_json_ts_common_types_integer_string,
 };
 
-type FGBuildableSnowDispenser = docs_json_ts_0_3_7_7_classes_base_FGBuildable & {
-	[key: string]: unknown,
-};
+type FGBuildableSnowDispenser = docs_json_ts_0_3_7_7_classes_base_FGBuildable;
 
 type FGBuildableSpaceElevator = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered & {
 	mMapText: 'Space Elevator',
@@ -368,9 +334,7 @@ type FGBuildableSplitterSmart = docs_json_ts_0_3_7_7_classes_base_FGBuildableAtt
 	mLastOutputIndex: docs_json_ts_common_types_integer_string,
 };
 
-type FGBuildableStair = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_and_elevation & {
-	[key: string]: unknown,
-};
+type FGBuildableStair = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_and_elevation;
 
 type FGBuildableStorage = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered & {
 	mStackingHeight: docs_json_ts_common_types_decimal_string,
@@ -419,25 +383,15 @@ type FGBuildableTrainPlatformCargo = docs_json_ts_0_3_7_7_classes_base_FGBuildab
 	mReplicatedInflowRate: docs_json_ts_common_types_decimal_string,
 };
 
-type FGBuildableTrainPlatformEmpty = docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatform & {
-	[key: string]: unknown,
-};
+type FGBuildableTrainPlatformEmpty = docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatform;
 
-type FGBuildableWall = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_and_width & {
-	[key: string]: unknown,
-};
+type FGBuildableWall = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_and_width;
 
-type FGBuildableWalkway = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_size_and_elevation & {
-	[key: string]: unknown,
-};
+type FGBuildableWalkway = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_size_and_elevation;
 
-type FGBuildableWire = docs_json_ts_0_3_7_7_classes_base_FGBuildableWire & {
-	[key: string]: unknown,
-};
+type FGBuildableWire = docs_json_ts_0_3_7_7_classes_base_FGBuildableWire;
 
-type FGBuildingDescriptor = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_BuildMenu & {
-	[key: string]: unknown,
-};
+type FGBuildingDescriptor = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_BuildMenu;
 
 type FGChainsaw = docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_sound & {
 	mMontageLength: docs_json_ts_common_types_decimal_string,
@@ -504,9 +458,7 @@ type FGGolfCartDispenser = docs_json_ts_0_3_7_7_classes_base_FGEquipment_dispens
 	mArmAnimation: 'AE_Generic2Hand',
 };
 
-type FGItemDescriptor = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_sinkable & {
-	[key: string]: unknown,
-};
+type FGItemDescriptor = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_sinkable;
 
 type FGItemDescriptorNuclearFuel = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_sinkable & {
 	mAmountOfWaste: docs_json_ts_common_types_integer_string,
@@ -603,18 +555,14 @@ type FGPipeHyperStart = docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_with_
 	mInitialMinSpeedFactor: docs_json_ts_common_types_decimal_string,
 };
 
-type FGPoleDescriptor = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_BuildMenu & {
-	[key: string]: unknown,
-};
+type FGPoleDescriptor = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_BuildMenu;
 
 type FGPortableMinerDispenser = docs_json_ts_0_3_7_7_classes_base_FGEquipment_dispenser & {
 	mAllowedResourceForms: docs_json_ts_0_3_7_7_properties_mAllowedResourceForms,
 	mArmAnimation: 'AE_PortableMiner',
 };
 
-type FGRecipe = docs_json_ts_0_3_7_7_classes_base_FGRecipe & {
-	[key: string]: unknown,
-};
+type FGRecipe = docs_json_ts_0_3_7_7_classes_base_FGRecipe;
 
 type FGResourceDescriptor = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_sinkable & {
 	mDecalSize: docs_json_ts_common_types_decimal_string,
@@ -657,13 +605,9 @@ type FGSchematic = docs_json_ts_0_3_7_7_classes_base_FGSchematic & {
 		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mResourcesToAddToScanner,
 	] | [
 		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mRecipes,
-		docs_json_ts_0_3_7_7_properties_mUnlocks_item_base & {
-			[key: string]: unknown,
-		},
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_base,
 	] | [
-		docs_json_ts_0_3_7_7_properties_mUnlocks_item_base & {
-			[key: string]: unknown,
-		},
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_base,
 	] | [
 		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mItemsToGive,
 	],
@@ -697,9 +641,7 @@ type FGSuitBase = docs_json_ts_0_3_7_7_classes_base_FGEquipment & {
 	mArmAnimation?: 'AE_None',
 };
 
-type FGVehicleDescriptor = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_BuildMenu & {
-	[key: string]: unknown,
-};
+type FGVehicleDescriptor = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_BuildMenu;
 
 type FGWeaponInstantFire = docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_instant & {
 	Fire: docs_json_ts_common_types_empty_object,
