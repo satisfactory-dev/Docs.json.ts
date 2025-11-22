@@ -1666,64 +1666,8 @@
 		},
 		"FGRecipe": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGInstructive",
-			"unevaluatedProperties": false,
-			"required": [
-				"mIngredients",
-				"mProduct",
-				"mManufactoringDuration",
-				"mManualManufacturingMultiplier",
-				"mProducedIn"
-			],
-			"properties": {
-				"mIngredients": {
-					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/ItemClass-Amount--list"
-				},
-				"mProduct": {
-					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/ItemClass-Amount--list"
-				},
-				"mManufactoringDuration": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mManualManufacturingMultiplier": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mProducedIn": {
-					"oneOf": [
-						{
-							"type": "string",
-							"const": ""
-						},
-						{
-							"type": "string",
-							"typed_string": {
-								"type": "array",
-								"minItems": 1,
-								"uniqueItems": true,
-								"items": {
-									"type": "string",
-									"enum": [
-										"/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkBenchComponent.BP_WorkBenchComponent_C",
-										"/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkshopComponent.BP_WorkshopComponent_C",
-										"/Game/FactoryGame/Buildable/Factory/AssemblerMk1/Build_AssemblerMk1.Build_AssemblerMk1_C",
-										"/Game/FactoryGame/Buildable/Factory/AutomatedWorkBench/Build_AutomatedWorkBench.Build_AutomatedWorkBench_C",
-										"/Game/FactoryGame/Buildable/Factory/ConstructorMk1/Build_ConstructorMk1.Build_ConstructorMk1_C",
-										"/Game/FactoryGame/Buildable/Factory/Converter/Build_Converter.Build_Converter_C",
-										"/Game/FactoryGame/Buildable/Factory/FoundryMk1/Build_FoundryMk1.Build_FoundryMk1_C",
-										"/Game/FactoryGame/Buildable/Factory/ManufacturerMk1/Build_ManufacturerMk1.Build_ManufacturerMk1_C",
-										"/Game/FactoryGame/Buildable/Factory/OilRefinery/Build_OilRefinery.Build_OilRefinery_C",
-										"/Game/FactoryGame/Buildable/Factory/Packager/Build_Packager.Build_Packager_C",
-										"/Game/FactoryGame/Buildable/Factory/SmelterMk1/Build_SmelterMk1.Build_SmelterMk1_C",
-										"/Game/FactoryGame/Equipment/BuildGun/BP_BuildGun.BP_BuildGun_C",
-										"/Script/FactoryGame.FGBuildGun",
-										"/Script/FactoryGame.FGBuildableAutomatedWorkBench"
-									]
-								}
-							}
-						}
-					]
-				}
-			}
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGRecipe",
+			"unevaluatedProperties": false
 		},
 		"FGResourceDescriptor": {
 			"type": "object",

@@ -39,7 +39,7 @@ import type {
 	FGEquipment_dispenser as docs_json_ts_0_3_7_7_classes_base_FGEquipment_dispenser,
 	FGEquipment_has_sound as docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_sound,
 	FGEquipmentStunSpear_base as docs_json_ts_0_3_7_7_classes_base_FGEquipmentStunSpear_base,
-	FGInstructive as docs_json_ts_0_3_7_7_classes_base_FGInstructive,
+	FGRecipe as docs_json_ts_0_3_7_7_classes_base_FGRecipe,
 	FGSchematic as docs_json_ts_0_3_7_7_classes_base_FGSchematic,
 	FGWeaponProjectile as docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile,
 	FGWeaponProjectile_instant as docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_instant,
@@ -47,7 +47,6 @@ import type {
 } from './classes/Base.ts';
 
 import type {
-	ItemClass_Amount_list as docs_json_ts_0_3_7_7_properties_ItemClass_Amount_list,
 	mAllowedResourceForms as docs_json_ts_0_3_7_7_properties_mAllowedResourceForms,
 	mSchematicDependencies_item as docs_json_ts_0_3_7_7_properties_mSchematicDependencies_item,
 	mUnlocks_item_base as docs_json_ts_0_3_7_7_properties_mUnlocks_item_base,
@@ -614,15 +613,8 @@ type FGPortableMinerDispenser = docs_json_ts_0_3_7_7_classes_base_FGEquipment_di
 	mArmAnimation: 'AE_PortableMiner',
 };
 
-type FGRecipe = docs_json_ts_0_3_7_7_classes_base_FGInstructive & {
-	mIngredients: docs_json_ts_0_3_7_7_properties_ItemClass_Amount_list,
-	mProduct: docs_json_ts_0_3_7_7_properties_ItemClass_Amount_list,
-	mManufactoringDuration: docs_json_ts_common_types_decimal_string,
-	mManualManufacturingMultiplier: docs_json_ts_common_types_decimal_string,
-	mProducedIn: '' | [
-        '/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkBenchComponent.BP_WorkBenchComponent_C' | '/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkshopComponent.BP_WorkshopComponent_C' | '/Game/FactoryGame/Buildable/Factory/AssemblerMk1/Build_AssemblerMk1.Build_AssemblerMk1_C' | '/Game/FactoryGame/Buildable/Factory/AutomatedWorkBench/Build_AutomatedWorkBench.Build_AutomatedWorkBench_C' | '/Game/FactoryGame/Buildable/Factory/ConstructorMk1/Build_ConstructorMk1.Build_ConstructorMk1_C' | '/Game/FactoryGame/Buildable/Factory/Converter/Build_Converter.Build_Converter_C' | '/Game/FactoryGame/Buildable/Factory/FoundryMk1/Build_FoundryMk1.Build_FoundryMk1_C' | '/Game/FactoryGame/Buildable/Factory/ManufacturerMk1/Build_ManufacturerMk1.Build_ManufacturerMk1_C' | '/Game/FactoryGame/Buildable/Factory/OilRefinery/Build_OilRefinery.Build_OilRefinery_C' | '/Game/FactoryGame/Buildable/Factory/Packager/Build_Packager.Build_Packager_C' | '/Game/FactoryGame/Buildable/Factory/SmelterMk1/Build_SmelterMk1.Build_SmelterMk1_C' | '/Game/FactoryGame/Equipment/BuildGun/BP_BuildGun.BP_BuildGun_C' | '/Script/FactoryGame.FGBuildGun' | '/Script/FactoryGame.FGBuildableAutomatedWorkBench',
-        ...('/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkBenchComponent.BP_WorkBenchComponent_C' | '/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkshopComponent.BP_WorkshopComponent_C' | '/Game/FactoryGame/Buildable/Factory/AssemblerMk1/Build_AssemblerMk1.Build_AssemblerMk1_C' | '/Game/FactoryGame/Buildable/Factory/AutomatedWorkBench/Build_AutomatedWorkBench.Build_AutomatedWorkBench_C' | '/Game/FactoryGame/Buildable/Factory/ConstructorMk1/Build_ConstructorMk1.Build_ConstructorMk1_C' | '/Game/FactoryGame/Buildable/Factory/Converter/Build_Converter.Build_Converter_C' | '/Game/FactoryGame/Buildable/Factory/FoundryMk1/Build_FoundryMk1.Build_FoundryMk1_C' | '/Game/FactoryGame/Buildable/Factory/ManufacturerMk1/Build_ManufacturerMk1.Build_ManufacturerMk1_C' | '/Game/FactoryGame/Buildable/Factory/OilRefinery/Build_OilRefinery.Build_OilRefinery_C' | '/Game/FactoryGame/Buildable/Factory/Packager/Build_Packager.Build_Packager_C' | '/Game/FactoryGame/Buildable/Factory/SmelterMk1/Build_SmelterMk1.Build_SmelterMk1_C' | '/Game/FactoryGame/Equipment/BuildGun/BP_BuildGun.BP_BuildGun_C' | '/Script/FactoryGame.FGBuildGun' | '/Script/FactoryGame.FGBuildableAutomatedWorkBench')[],
-	],
+type FGRecipe = docs_json_ts_0_3_7_7_classes_base_FGRecipe & {
+	[key: string]: unknown,
 };
 
 type FGResourceDescriptor = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_sinkable & {
