@@ -29,6 +29,7 @@ import type {
 	FGBuildablePipeline_junction as docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeline_junction,
 	FGBuildablePipelinePump_base as docs_json_ts_0_3_7_7_classes_base_FGBuildablePipelinePump_base,
 	FGBuildablePole as docs_json_ts_0_3_7_7_classes_base_FGBuildablePole,
+	FGBuildablePowerPole as docs_json_ts_0_3_7_7_classes_base_FGBuildablePowerPole,
 	FGBuildableResourceExtractor_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_base,
 	FGBuildableTrainPlatform as docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatform,
 	FGBuildableTrainPlatform_with_storage as docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatform_with_storage,
@@ -267,9 +268,8 @@ type FGBuildablePole = docs_json_ts_0_3_7_7_classes_base_FGBuildablePole & {
 	[key: string]: unknown,
 };
 
-type FGBuildablePowerPole = docs_json_ts_0_3_7_7_classes_base_FGBuildable & {
-	mPowerConnections: '',
-	mPowerPoleType: 'PPT_POLE' | 'PPT_WALL' | 'PPT_WALL_DOUBLE',
+type FGBuildablePowerPole = docs_json_ts_0_3_7_7_classes_base_FGBuildablePowerPole & {
+	[key: string]: unknown,
 };
 
 type FGBuildableRadarTower = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered & {

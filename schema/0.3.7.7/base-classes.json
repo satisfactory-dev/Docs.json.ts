@@ -915,6 +915,21 @@
 				}
 			}
 		},
+		"FGBuildablePowerPole": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable",
+			"required": ["mPowerConnections", "mPowerPoleType"],
+			"properties": {
+				"mPowerConnections": {
+					"type": "string",
+					"const": ""
+				},
+				"mPowerPoleType": {
+					"type": "string",
+					"enum": ["PPT_POLE", "PPT_WALL", "PPT_WALL_DOUBLE"]
+				}
+			}
+		},
 		"FGBuildableResourceExtractor--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--powered",

@@ -278,6 +278,11 @@ type FGBuildablePole = FGBuildable_pole & {
 	mHeight: docs_json_ts_common_types_decimal_string,
 };
 
+type FGBuildablePowerPole = FGBuildable & {
+	mPowerConnections: '',
+	mPowerPoleType: 'PPT_POLE' | 'PPT_WALL' | 'PPT_WALL_DOUBLE',
+};
+
 type FGBuildableResourceExtractor_base = FGBuildable_powered & {
 	mExtractStartupTime: docs_json_ts_common_types_decimal_string_signed,
 	mExtractStartupTimer: docs_json_ts_common_types_decimal_string,
@@ -496,6 +501,7 @@ export type {
 	FGBuildablePipelinePump_base,
 	FGBuildablePipelinePump_powered_base,
 	FGBuildablePole,
+	FGBuildablePowerPole,
 	FGBuildableResourceExtractor_base,
 	FGBuildableTrainPlatform,
 	FGBuildableTrainPlatform_with_storage,
