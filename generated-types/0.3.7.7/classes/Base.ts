@@ -461,6 +461,13 @@ type FGSchematic = FGInstructive & {
 	mIncludeInBuilds: 'IIB_PublicBuilds',
 };
 
+type FGWeaponInstantFire = FGWeaponProjectile_instant & {
+	Fire: docs_json_ts_common_types_empty_object,
+	mLockAngle: docs_json_ts_common_types_decimal_string,
+	mHasReloadedOnce: docs_json_ts_common_types_bool_string,
+	mArmAnimation: 'AE_Rifle',
+};
+
 type FGWeaponProjectile = FGEquipment & {
 	mMagSize: docs_json_ts_common_types_integer_string,
 	mCurrentAmmo: docs_json_ts_common_types_integer_string,
@@ -496,6 +503,24 @@ type FGWeaponProjectile_thrown = FGWeaponProjectile & {
 	mDelayBetweenExplosions: docs_json_ts_common_types_decimal_string,
 	mAttachSocket: 'hand_lSocket',
 	mArmAnimation: 'AE_Nobelisk' | 'AE_Generic1Hand',
+};
+
+type FGWeaponProjectileFire = FGWeaponProjectile & {
+	mMuteDryFire: docs_json_ts_common_types_bool_string,
+	mRandomReloadAnim: docs_json_ts_common_types_integer_string,
+	mRandomStingerAnim: docs_json_ts_common_types_integer_string,
+	mProjectileData: {
+		ProjectileClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
+		ProjectileLifeSpan: docs_json_ts_common_types_decimal_string,
+		ProjectileStickSpan: docs_json_ts_common_types_decimal_string,
+		ExplosionDamage: docs_json_ts_common_types_integer_string,
+		ImpactDamage: docs_json_ts_common_types_integer_string,
+		CanTriggerExplodeBySameClass: docs_json_ts_common_types_bool_string,
+		DamageType: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
+		DamageTypeExplode: 'Class\'"/Script/FactoryGame.FGDamageType"\'',
+	},
+	mAttachSocket: 'hand_rSocket',
+	mArmAnimation: 'AE_RebarGun',
 };
 
 export type {
@@ -570,7 +595,9 @@ export type {
 	FGResourceDescriptor,
 	FGResourceDescriptor_base,
 	FGSchematic,
+	FGWeaponInstantFire,
 	FGWeaponProjectile,
 	FGWeaponProjectile_instant,
 	FGWeaponProjectile_thrown,
+	FGWeaponProjectileFire,
 };

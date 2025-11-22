@@ -1716,6 +1716,31 @@
 				}
 			}
 		},
+		"FGWeaponInstantFire": {
+			"type": "object",
+			"$ref": "#/$defs/FGWeaponProjectile--instant",
+			"required": [
+				"Fire",
+				"mLockAngle",
+				"mHasReloadedOnce",
+				"mArmAnimation"
+			],
+			"properties": {
+				"Fire": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mLockAngle": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mHasReloadedOnce": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mArmAnimation": {
+					"type": "string",
+					"const": "AE_Rifle"
+				}
+			}
+		},
 		"FGWeaponProjectile": {
 			"type": "object",
 			"$ref": "#/$defs/FGEquipment",
@@ -1868,6 +1893,83 @@
 				"mArmAnimation": {
 					"type": "string",
 					"enum": ["AE_Nobelisk", "AE_Generic1Hand"]
+				}
+			}
+		},
+		"FGWeaponProjectileFire": {
+			"type": "object",
+			"$ref": "#/$defs/FGWeaponProjectile",
+			"required": [
+				"mMuteDryFire",
+				"mRandomReloadAnim",
+				"mRandomStingerAnim",
+				"mProjectileData",
+				"mAttachSocket",
+				"mArmAnimation"
+			],
+			"properties": {
+				"mMuteDryFire": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mRandomReloadAnim": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mRandomStingerAnim": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mProjectileData": {
+					"type": "string",
+					"typed_string": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": [
+							"ProjectileClass",
+							"ProjectileLifeSpan",
+							"ProjectileStickSpan",
+							"ExplosionDamage",
+							"ImpactDamage",
+							"CanTriggerExplodeBySameClass",
+							"DamageType",
+							"DamageTypeExplode"
+						],
+						"properties": {
+							"ProjectileClass": {
+								"type": "string",
+								"DocsDotJson_BlueprintGeneratedClass_quoted": null
+							},
+							"ProjectileLifeSpan": {
+								"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+							},
+							"ProjectileStickSpan": {
+								"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+							},
+							"ExplosionDamage": {
+								"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+							},
+							"ImpactDamage": {
+								"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+							},
+							"CanTriggerExplodeBySameClass": {
+								"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+							},
+							"DamageType": {
+								"type": "string",
+								"DocsDotJson_BlueprintGeneratedClass_quoted": null
+							},
+							"DamageTypeExplode": {
+								"type": "string",
+								"const": "Class'\"/Script/FactoryGame.FGDamageType\"'"
+							}
+						}
+					}
+				},
+				"mAttachSocket": {
+					"type": "string",
+					"const": "hand_rSocket"
+				},
+				"mArmAnimation": {
+					"type": "string",
+					"const": "AE_RebarGun"
 				}
 			}
 		}

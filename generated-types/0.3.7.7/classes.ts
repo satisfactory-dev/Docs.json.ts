@@ -45,9 +45,10 @@ import type {
 	FGEquipmentStunSpear_base as docs_json_ts_0_3_7_7_classes_base_FGEquipmentStunSpear_base,
 	FGRecipe as docs_json_ts_0_3_7_7_classes_base_FGRecipe,
 	FGSchematic as docs_json_ts_0_3_7_7_classes_base_FGSchematic,
-	FGWeaponProjectile as docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile,
+	FGWeaponInstantFire as docs_json_ts_0_3_7_7_classes_base_FGWeaponInstantFire,
 	FGWeaponProjectile_instant as docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_instant,
 	FGWeaponProjectile_thrown as docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_thrown,
+	FGWeaponProjectileFire as docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectileFire,
 } from './classes/Base.ts';
 
 import type {
@@ -624,30 +625,9 @@ type FGSuitBase = docs_json_ts_0_3_7_7_classes_base_FGEquipment & {
 
 type FGVehicleDescriptor = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_BuildMenu;
 
-type FGWeaponInstantFire = docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_instant & {
-	Fire: docs_json_ts_common_types_empty_object,
-	mLockAngle: docs_json_ts_common_types_decimal_string,
-	mHasReloadedOnce: docs_json_ts_common_types_bool_string,
-	mArmAnimation: 'AE_Rifle',
-};
+type FGWeaponInstantFire = docs_json_ts_0_3_7_7_classes_base_FGWeaponInstantFire;
 
-type FGWeaponProjectileFire = docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile & {
-	mMuteDryFire: docs_json_ts_common_types_bool_string,
-	mRandomReloadAnim: docs_json_ts_common_types_integer_string,
-	mRandomStingerAnim: docs_json_ts_common_types_integer_string,
-	mProjectileData: {
-		ProjectileClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
-		ProjectileLifeSpan: docs_json_ts_common_types_decimal_string,
-		ProjectileStickSpan: docs_json_ts_common_types_decimal_string,
-		ExplosionDamage: docs_json_ts_common_types_integer_string,
-		ImpactDamage: docs_json_ts_common_types_integer_string,
-		CanTriggerExplodeBySameClass: docs_json_ts_common_types_bool_string,
-		DamageType: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
-		DamageTypeExplode: 'Class\'"/Script/FactoryGame.FGDamageType"\'',
-	},
-	mAttachSocket: 'hand_rSocket',
-	mArmAnimation: 'AE_RebarGun',
-};
+type FGWeaponProjectileFire = docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectileFire;
 
 export type {
 	FGBuildable_base,
