@@ -22,6 +22,7 @@
     "@types/eslint": "^9.6.1",
     "@types/node": "^24.6.2",
     "@types/regex-escape": "^3.4.1",
+    "@types/regexp.escape": "^2.0.0",
     "c8": "^10.1.3",
     "eslint": "^9.37.0",
     "prettier": "^3.5.3",
@@ -33,7 +34,7 @@
   },
   "dependencies": {
     "@satisfactory-dev/predicates.ts": "^0.2.0",
-    "@signpostmarv/json-schema-typescript-codegen": "^0.2.0",
+    "@signpostmarv/json-schema-typescript-codegen": "^0.2.1",
     "ajv": "^8.17.1"
   }
 }

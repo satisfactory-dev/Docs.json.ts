@@ -21,6 +21,11 @@ import {
 	type StringLiteral,
 } from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
 
+// eslint-disable-next-line @stylistic/max-len
+// eslint-disable-next-line imports/no-unassigned-import, imports/no-empty-named-blocks
+import type {
+} from 'regexp.escape/auto';
+
 type BlueprintGeneratedClass_type = {
 	type: 'string',
 	DocsDotJson_BlueprintGeneratedClass: string|null,

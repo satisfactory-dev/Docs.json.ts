@@ -50,6 +50,11 @@ import {
 	StringTupleToLiteralTypeNodeTuple,
 } from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
 
+// eslint-disable-next-line @stylistic/max-len
+// eslint-disable-next-line imports/no-unassigned-import, imports/no-empty-named-blocks
+import type {
+} from '@signpostmarv/json-schema-typescript-codegen/javascript-overrides';
+
 import type {
 	BlueprintGeneratedClass_quoted_schema,
 	BlueprintGeneratedClass_quoted_type,
