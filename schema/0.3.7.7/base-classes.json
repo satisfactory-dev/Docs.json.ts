@@ -1007,13 +1007,23 @@
 					"$ref": "#/$defs/FGBuildablePipeline--base"
 				},
 				{
-					"$ref": "#/$defs/FGBuildablePipelinePump--powered-base"
+					"$ref": "#/$defs/FGBuildablePipelinePump--powered-base--base"
 				}
 			]
 		},
 		"FGBuildablePipelinePump--powered-base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				},
+				{
+					"$ref": "#/$defs/FGBuildablePipelinePump--powered-base--base"
+				}
+			]
+		},
+		"FGBuildablePipelinePump--powered-base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered",
+			"$ref": "#/$defs/FGBuildable--powered--base",
 			"required": [
 				"mLastFlowUpdate",
 				"mUpdateFlowTime",
@@ -1062,6 +1072,49 @@
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
 			}
+		},
+		"FGBuildablePipelinePump--pump": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildablePipelinePump--pump--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildablePipelinePump--powered-base"
+				}
+			]
+		},
+		"FGBuildablePipelinePump--pump--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildablePipelinePump--base",
+			"required": [
+				"mIsPipePumpPlaying",
+				"mIsExceedingHeadLift",
+				"mCurrentAudioHeadLift"
+			],
+			"properties": {
+				"mPistonAudioTimer": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mIsPipePumpPlaying": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mIsExceedingHeadLift": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mCurrentAudioHeadLift": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGBuildablePipelinePump--valve": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildablePipelinePump--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				}
+			]
 		},
 		"FGBuildablePole": {
 			"type": "object",

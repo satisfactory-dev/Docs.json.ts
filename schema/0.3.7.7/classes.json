@@ -400,31 +400,12 @@
 		},
 		"FGBuildablePipelinePump--pump": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipelinePump--base",
-			"unevaluatedProperties": false,
-			"required": [
-				"mIsPipePumpPlaying",
-				"mIsExceedingHeadLift",
-				"mCurrentAudioHeadLift"
-			],
-			"properties": {
-				"mPistonAudioTimer": {
-					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-				},
-				"mIsPipePumpPlaying": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mIsExceedingHeadLift": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mCurrentAudioHeadLift": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				}
-			}
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipelinePump--pump",
+			"unevaluatedProperties": false
 		},
 		"FGBuildablePipelinePump--valve": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipelinePump--base",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipelinePump--valve",
 			"unevaluatedProperties": false
 		},
 		"FGBuildablePipelineSupport": {

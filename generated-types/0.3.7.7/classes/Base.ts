@@ -292,9 +292,11 @@ type FGBuildablePipeline_base_spline = FGBuildablePipeline_base & FGBuildable_sp
 
 type FGBuildablePipeline_junction = FGBuildable_powered & FGBuildablePipeline_base_no_indicator;
 
-type FGBuildablePipelinePump_base = FGBuildablePipeline_base & FGBuildablePipelinePump_powered_base;
+type FGBuildablePipelinePump_base = FGBuildablePipeline_base & FGBuildablePipelinePump_powered_base_base;
 
-type FGBuildablePipelinePump_powered_base = FGBuildable_powered & {
+type FGBuildablePipelinePump_powered_base = FGBuildable_powered & FGBuildablePipelinePump_powered_base_base;
+
+type FGBuildablePipelinePump_powered_base_base = FGBuildable_powered_base & {
 	mLastFlowUpdate: docs_json_ts_common_types_decimal_string,
 	mUpdateFlowTime: docs_json_ts_common_types_decimal_string,
 	mAnimSpeed: docs_json_ts_common_types_decimal_string,
@@ -307,6 +309,17 @@ type FGBuildablePipelinePump_powered_base = FGBuildable_powered & {
 	mMinimumFlowPercentForStandby: docs_json_ts_common_types_decimal_string,
 	mFluidBoxVolume: docs_json_ts_common_types_decimal_string,
 };
+
+type FGBuildablePipelinePump_pump = FGBuildablePipelinePump_pump_base & FGBuildablePipelinePump_powered_base;
+
+type FGBuildablePipelinePump_pump_base = FGBuildablePipelinePump_base & {
+	mPistonAudioTimer?: docs_json_ts_common_types_empty_object,
+	mIsPipePumpPlaying: docs_json_ts_common_types_bool_string,
+	mIsExceedingHeadLift: docs_json_ts_common_types_bool_string,
+	mCurrentAudioHeadLift: docs_json_ts_common_types_decimal_string,
+};
+
+type FGBuildablePipelinePump_valve = FGBuildablePipelinePump_base & FGBuildable_powered;
 
 type FGBuildablePole = FGBuildable_pole & {
 	mHeight: docs_json_ts_common_types_decimal_string,
@@ -702,6 +715,10 @@ export type {
 	FGBuildablePipeline_junction,
 	FGBuildablePipelinePump_base,
 	FGBuildablePipelinePump_powered_base,
+	FGBuildablePipelinePump_powered_base_base,
+	FGBuildablePipelinePump_pump,
+	FGBuildablePipelinePump_pump_base,
+	FGBuildablePipelinePump_valve,
 	FGBuildablePole,
 	FGBuildablePowerPole,
 	FGBuildableResourceExtractor,
