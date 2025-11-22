@@ -21,8 +21,6 @@ import {
 	type StringLiteral,
 } from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
 
-// eslint-disable-next-line @stylistic/max-len
-// eslint-disable-next-line imports/no-unassigned-import, imports/no-empty-named-blocks
 import type {
 } from 'regexp.escape/auto';
 
@@ -306,7 +304,6 @@ abstract class BlueprintGeneratedClass<
 		return [
 			{
 				non_quoted: 'BlueprintGeneratedClass /Game/FactoryGame/',
-				// eslint-disable-next-line no-useless-escape
 				quoted: `BlueprintGeneratedClass'"/Game/FactoryGame/`,
 			}[mode],
 			null === value ? {type: 'string'} : value,
