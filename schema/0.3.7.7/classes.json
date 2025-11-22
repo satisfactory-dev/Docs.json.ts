@@ -323,14 +323,8 @@
 		},
 		"FGBuildablePipelineJunction": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipeline--junction",
-			"unevaluatedProperties": false,
-			"required": ["mFluidBoxVolume"],
-			"properties": {
-				"mFluidBoxVolume": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				}
-			}
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipelineJunction",
+			"unevaluatedProperties": false
 		},
 		"FGBuildablePipelinePump--pump": {
 			"type": "object",

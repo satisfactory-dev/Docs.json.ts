@@ -316,7 +316,15 @@ type FGBuildablePipeline_base_no_indicator = FGBuildable & {
 
 type FGBuildablePipeline_base_spline = FGBuildablePipeline_base & FGBuildable_spline;
 
-type FGBuildablePipeline_junction = FGBuildable_powered & FGBuildablePipeline_base_no_indicator;
+type FGBuildablePipeline_junction = FGBuildable_powered & FGBuildablePipeline_junction_base;
+
+type FGBuildablePipeline_junction_base = FGBuildable_powered_base & FGBuildablePipeline_base_no_indicator;
+
+type FGBuildablePipelineJunction = FGBuildablePipeline_junction & FGBuildablePipelineJunction_base;
+
+type FGBuildablePipelineJunction_base = FGBuildablePipeline_junction_base & {
+	mFluidBoxVolume: docs_json_ts_common_types_decimal_string,
+};
 
 type FGBuildablePipelinePump_base = FGBuildablePipeline_base & FGBuildablePipelinePump_powered_base_base;
 
@@ -744,6 +752,9 @@ export type {
 	FGBuildablePipeline_base_no_indicator,
 	FGBuildablePipeline_base_spline,
 	FGBuildablePipeline_junction,
+	FGBuildablePipeline_junction_base,
+	FGBuildablePipelineJunction,
+	FGBuildablePipelineJunction_base,
 	FGBuildablePipelinePump_base,
 	FGBuildablePipelinePump_powered_base,
 	FGBuildablePipelinePump_powered_base_base,
