@@ -1097,7 +1097,6 @@
 		},
 		"FGConsumableEquipment": {
 			"type": "object",
-			"unevaluatedProperties": false,
 			"$ref": "#/$defs/FGEquipment",
 			"properties": {
 				"mRandomAnim": {
