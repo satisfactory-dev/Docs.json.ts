@@ -24,7 +24,7 @@ type mRelevantEvents = [
 
 type mSchematicDependencies_item = {
 	Class: `BP_${string}${'_C'}`,
-	mSchematics: docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list,
+	mSchematics: DocsDotJson_BlueprintGeneratedClass_quoted_list,
 	mRequireAllSchematicsToBePurchased: docs_json_ts_common_types_bool_string,
 };
 
