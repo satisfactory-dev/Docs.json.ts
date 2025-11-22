@@ -1040,6 +1040,23 @@
 				}
 			]
 		},
+		"FGBuildableWire": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable",
+			"required": ["mMaxLength", "mLengthPerCost", "mConnections"],
+			"properties": {
+				"mMaxLength": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mLengthPerCost": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mConnections": {
+					"type": "string",
+					"const": "None"
+				}
+			}
+		},
 		"FGConsumableEquipment": {
 			"type": "object",
 			"unevaluatedProperties": false,

@@ -32,6 +32,7 @@ import type {
 	FGBuildableResourceExtractor_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_base,
 	FGBuildableTrainPlatform as docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatform,
 	FGBuildableTrainPlatform_with_storage as docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatform_with_storage,
+	FGBuildableWire as docs_json_ts_0_3_7_7_classes_base_FGBuildableWire,
 	FGConsumableEquipment as docs_json_ts_0_3_7_7_classes_base_FGConsumableEquipment,
 	FGDescriptor_BuildMenu as docs_json_ts_0_3_7_7_classes_base_FGDescriptor_BuildMenu,
 	FGDescriptor_sinkable as docs_json_ts_0_3_7_7_classes_base_FGDescriptor_sinkable,
@@ -430,10 +431,8 @@ type FGBuildableWalkway = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_siz
 	[key: string]: unknown,
 };
 
-type FGBuildableWire = docs_json_ts_0_3_7_7_classes_base_FGBuildable & {
-	mMaxLength: docs_json_ts_common_types_decimal_string,
-	mLengthPerCost: docs_json_ts_common_types_decimal_string,
-	mConnections: 'None',
+type FGBuildableWire = docs_json_ts_0_3_7_7_classes_base_FGBuildableWire & {
+	[key: string]: unknown,
 };
 
 type FGBuildingDescriptor = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_BuildMenu & {

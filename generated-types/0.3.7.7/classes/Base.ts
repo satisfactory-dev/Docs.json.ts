@@ -310,6 +310,12 @@ type FGBuildableTrainPlatform_with_storage = (FGBuildable_powered_storage & {
 	[key: string]: unknown,
 }) & (FGBuildableTrainPlatform);
 
+type FGBuildableWire = FGBuildable & {
+	mMaxLength: docs_json_ts_common_types_decimal_string,
+	mLengthPerCost: docs_json_ts_common_types_decimal_string,
+	mConnections: 'None',
+};
+
 type FGConsumableEquipment = FGEquipment & {
 	mRandomAnim?: docs_json_ts_common_types_integer_string,
 	mCanPress?: docs_json_ts_common_types_bool_string,
@@ -493,6 +499,7 @@ export type {
 	FGBuildableResourceExtractor_base,
 	FGBuildableTrainPlatform,
 	FGBuildableTrainPlatform_with_storage,
+	FGBuildableWire,
 	FGConsumableEquipment,
 	FGDescriptor,
 	FGDescriptor_BuildMenu,
