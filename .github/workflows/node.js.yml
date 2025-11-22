@@ -11,10 +11,10 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
-            - name: Use Node.js 23.x
+            - name: Use Node.js 24.x
               uses: actions/setup-node@v5
               with:
-                  node-version: 23.x
+                  node-version: 24.x
                   cache: 'npm'
             - run: npm ci
             - run: ./node_modules/.bin/tsc --project ./tsconfig.app-check.json
@@ -27,10 +27,10 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
-            - name: Use Node.js 23.x
+            - name: Use Node.js 24.x
               uses: actions/setup-node@v5
               with:
-                  node-version: 23.x
+                  node-version: 24.x
                   cache: 'npm'
             - run: npm ci
             - name: Generate coverage
