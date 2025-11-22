@@ -33,6 +33,7 @@ import type {
 	FGBuildablePipelinePump_pump as docs_json_ts_0_3_7_7_classes_base_FGBuildablePipelinePump_pump,
 	FGBuildablePipelinePump_valve as docs_json_ts_0_3_7_7_classes_base_FGBuildablePipelinePump_valve,
 	FGBuildablePipelineSupport as docs_json_ts_0_3_7_7_classes_base_FGBuildablePipelineSupport,
+	FGBuildablePipeReservoir as docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeReservoir,
 	FGBuildablePole as docs_json_ts_0_3_7_7_classes_base_FGBuildablePole,
 	FGBuildablePowerPole as docs_json_ts_0_3_7_7_classes_base_FGBuildablePowerPole,
 	FGBuildableResourceExtractor_miner_mk1 as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_mk1,
@@ -198,13 +199,7 @@ type FGBuildablePipelinePump_valve = docs_json_ts_0_3_7_7_classes_base_FGBuildab
 
 type FGBuildablePipelineSupport = docs_json_ts_0_3_7_7_classes_base_FGBuildablePipelineSupport;
 
-type FGBuildablePipeReservoir = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered & {
-	mStackingHeight: docs_json_ts_common_types_decimal_string,
-	mFluidBox: docs_json_ts_common_types_empty_object,
-	mStorageCapacity: docs_json_ts_common_types_decimal_string,
-	mPipeConnections: '',
-	mIndicatorData: docs_json_ts_common_types_empty_object,
-};
+type FGBuildablePipeReservoir = docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeReservoir;
 
 type FGBuildablePole = docs_json_ts_0_3_7_7_classes_base_FGBuildablePole;
 

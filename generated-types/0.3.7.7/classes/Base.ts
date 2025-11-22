@@ -355,6 +355,16 @@ type FGBuildablePipelinePump_pump_base = FGBuildablePipelinePump_base & {
 
 type FGBuildablePipelinePump_valve = FGBuildablePipelinePump_base & FGBuildable_powered;
 
+type FGBuildablePipeReservoir = FGBuildable_powered & FGBuildablePipeReservoir_base;
+
+type FGBuildablePipeReservoir_base = FGBuildable_powered_base & {
+	mStackingHeight: docs_json_ts_common_types_decimal_string,
+	mFluidBox: docs_json_ts_common_types_empty_object,
+	mStorageCapacity: docs_json_ts_common_types_decimal_string,
+	mPipeConnections: '',
+	mIndicatorData: docs_json_ts_common_types_empty_object,
+};
+
 type FGBuildablePipelineSupport = FGBuildable_pole_with_length & {
 	mVerticalAngle: docs_json_ts_common_types_decimal_string,
 };
@@ -761,6 +771,8 @@ export type {
 	FGBuildablePipelinePump_pump,
 	FGBuildablePipelinePump_pump_base,
 	FGBuildablePipelinePump_valve,
+	FGBuildablePipeReservoir,
+	FGBuildablePipeReservoir_base,
 	FGBuildablePipelineSupport,
 	FGBuildablePole,
 	FGBuildablePowerPole,

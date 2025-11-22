@@ -1216,6 +1216,45 @@
 				}
 			]
 		},
+		"FGBuildablePipeReservoir": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				},
+				{
+					"$ref": "#/$defs/FGBuildablePipeReservoir--base"
+				}
+			]
+		},
+		"FGBuildablePipeReservoir--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--powered--base",
+			"required": [
+				"mStackingHeight",
+				"mFluidBox",
+				"mStorageCapacity",
+				"mPipeConnections",
+				"mIndicatorData"
+			],
+			"properties": {
+				"mStackingHeight": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mFluidBox": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mStorageCapacity": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mPipeConnections": {
+					"type": "string",
+					"const": ""
+				},
+				"mIndicatorData": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				}
+			}
+		},
 		"FGBuildablePipelineSupport": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--pole--with-length",
