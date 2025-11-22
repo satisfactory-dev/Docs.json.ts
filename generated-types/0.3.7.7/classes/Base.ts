@@ -189,7 +189,9 @@ type FGBuildableConveyorBelt_base = FGBuildable & {
 
 type FGBuildableConveyorBelt_spline = FGBuildable_spline & FGBuildableConveyorBelt_base;
 
-type FGBuildableGenerator = FGBuildableGenerator_no_fuel & {
+type FGBuildableGenerator = FGBuildableGenerator_no_fuel & FGBuildableGenerator_base;
+
+type FGBuildableGenerator_base = FGBuildableGenerator_no_fuel_base & {
 	mCachedLoadPercentage?: docs_json_ts_common_types_decimal_string,
 	mFuelClasses: '',
 	mDefaultFuelClasses: [
@@ -218,6 +220,12 @@ type FGBuildableGenerator_no_fuel_base = FGBuildable_powered_base & {
 	mPowerProduction: docs_json_ts_common_types_decimal_string,
 	mPowerProductionExponent: docs_json_ts_common_types_decimal_string,
 	mLoadPercentage: docs_json_ts_common_types_decimal_string,
+};
+
+type FGBuildableGeneratorFuel = FGBuildableGenerator & FGBuildableGeneratorFuel_base;
+
+type FGBuildableGeneratorFuel_base = FGBuildableGenerator_base & {
+	mRTPCInterval?: docs_json_ts_common_types_decimal_string,
 };
 
 type FGBuildableManufacturer_base = FGBuildable_powered_base & {
@@ -654,8 +662,11 @@ export type {
 	FGBuildableConveyorBelt_base,
 	FGBuildableConveyorBelt_spline,
 	FGBuildableGenerator,
+	FGBuildableGenerator_base,
 	FGBuildableGenerator_no_fuel,
 	FGBuildableGenerator_no_fuel_base,
+	FGBuildableGeneratorFuel,
+	FGBuildableGeneratorFuel_base,
 	FGBuildableManufacturer_base,
 	FGBuildableManufacturer_base_IsPowered,
 	FGBuildableManufacturer_base_mProductionEffectsRunning,

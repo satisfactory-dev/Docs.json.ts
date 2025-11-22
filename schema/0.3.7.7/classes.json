@@ -142,13 +142,8 @@
 		},
 		"FGBuildableGeneratorFuel": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGenerator",
-			"unevaluatedProperties": false,
-			"properties": {
-				"mRTPCInterval": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				}
-			}
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGeneratorFuel",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableGeneratorGeoThermal": {
 			"type": "object",
