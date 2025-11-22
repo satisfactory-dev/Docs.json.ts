@@ -60,7 +60,9 @@ type FGBuildable_DisableAttachmentSnapOn = FGBuildable & {
 	mDisableAttachmentSnapOn: docs_json_ts_common_types_empty_object,
 };
 
-type FGBuildable_docking_station = FGBuildable_powered_storage & {
+type FGBuildable_docking_station = FGBuildable_docking_station_base & FGBuildable_powered_storage;
+
+type FGBuildable_docking_station_base = FGBuildable_powered_storage_base & {
 	mMapText: string,
 	mTransferSpeed: docs_json_ts_common_types_decimal_string,
 	mStackTransferSize: docs_json_ts_common_types_decimal_string,
@@ -536,6 +538,7 @@ export type {
 	FGBuildable,
 	FGBuildable_DisableAttachmentSnapOn,
 	FGBuildable_docking_station,
+	FGBuildable_docking_station_base,
 	FGBuildable_pole,
 	FGBuildable_pole_with_length,
 	FGBuildable_pole_with_length_and_power,

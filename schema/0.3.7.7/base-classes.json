@@ -111,8 +111,18 @@
 			}
 		},
 		"FGBuildable--docking-station": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--docking-station--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered-storage"
+				}
+			]
+		},
+		"FGBuildable--docking-station--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered-storage",
+			"$ref": "#/$defs/FGBuildable--powered-storage--base",
 			"required": ["mMapText", "mTransferSpeed", "mStackTransferSize"],
 			"properties": {
 				"mMapText": {
