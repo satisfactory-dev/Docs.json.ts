@@ -344,14 +344,18 @@ type FGConsumableEquipment = FGEquipment & {
 	mAttachSocket?: 'hand_rSocket',
 };
 
-type FGDescriptor = isDescribed & {
+type FGDescriptor = FGDescriptor_base & {
+	mForm: docs_json_ts_0_3_7_7_properties_mForm,
+};
+
+type FGDescriptor_base = isDescribed & {
 	mAbbreviatedDisplayName: docs_json_ts_0_3_7_7_properties_mAbbreviatedDisplayName,
 	mStackSize: docs_json_ts_0_3_7_7_properties_mStackSize,
 	mCanBeDiscarded: docs_json_ts_common_types_bool_string,
 	mRememberPickUp: docs_json_ts_common_types_bool_string,
 	mEnergyValue: docs_json_ts_common_types_decimal_string,
 	mRadioactiveDecay: docs_json_ts_common_types_decimal_string,
-	mForm: docs_json_ts_0_3_7_7_properties_mForm,
+	mForm: `RF_${string}`,
 	mSmallIcon: docs_json_ts_0_3_7_7_properties_mSmallIcon | 'None',
 	mPersistentBigIcon: docs_json_ts_0_3_7_7_properties_mPersistentBigIcon | 'None',
 	mFluidColor: docs_json_ts_common_types_BGRA,
@@ -362,7 +366,9 @@ type FGDescriptor_BuildMenu = FGDescriptor & {
 	mBuildMenuPriority: docs_json_ts_common_types_decimal_string,
 };
 
-type FGDescriptor_sinkable = FGDescriptor & {
+type FGDescriptor_sinkable = FGDescriptor & FGDescriptor_sinkable_base;
+
+type FGDescriptor_sinkable_base = FGDescriptor_base & {
 	mResourceSinkPoints: docs_json_ts_common_types_integer_string,
 };
 
@@ -412,6 +418,15 @@ type FGRecipe_mProducedIn = FGInstructive & {
         '/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkBenchComponent.BP_WorkBenchComponent_C' | '/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkshopComponent.BP_WorkshopComponent_C' | '/Game/FactoryGame/Buildable/Factory/AssemblerMk1/Build_AssemblerMk1.Build_AssemblerMk1_C' | '/Game/FactoryGame/Buildable/Factory/AutomatedWorkBench/Build_AutomatedWorkBench.Build_AutomatedWorkBench_C' | '/Game/FactoryGame/Buildable/Factory/ConstructorMk1/Build_ConstructorMk1.Build_ConstructorMk1_C' | '/Game/FactoryGame/Buildable/Factory/Converter/Build_Converter.Build_Converter_C' | '/Game/FactoryGame/Buildable/Factory/FoundryMk1/Build_FoundryMk1.Build_FoundryMk1_C' | '/Game/FactoryGame/Buildable/Factory/ManufacturerMk1/Build_ManufacturerMk1.Build_ManufacturerMk1_C' | '/Game/FactoryGame/Buildable/Factory/OilRefinery/Build_OilRefinery.Build_OilRefinery_C' | '/Game/FactoryGame/Buildable/Factory/Packager/Build_Packager.Build_Packager_C' | '/Game/FactoryGame/Buildable/Factory/SmelterMk1/Build_SmelterMk1.Build_SmelterMk1_C' | '/Game/FactoryGame/Equipment/BuildGun/BP_BuildGun.BP_BuildGun_C' | '/Script/FactoryGame.FGBuildGun' | '/Script/FactoryGame.FGBuildableAutomatedWorkBench',
         ...('/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkBenchComponent.BP_WorkBenchComponent_C' | '/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkshopComponent.BP_WorkshopComponent_C' | '/Game/FactoryGame/Buildable/Factory/AssemblerMk1/Build_AssemblerMk1.Build_AssemblerMk1_C' | '/Game/FactoryGame/Buildable/Factory/AutomatedWorkBench/Build_AutomatedWorkBench.Build_AutomatedWorkBench_C' | '/Game/FactoryGame/Buildable/Factory/ConstructorMk1/Build_ConstructorMk1.Build_ConstructorMk1_C' | '/Game/FactoryGame/Buildable/Factory/Converter/Build_Converter.Build_Converter_C' | '/Game/FactoryGame/Buildable/Factory/FoundryMk1/Build_FoundryMk1.Build_FoundryMk1_C' | '/Game/FactoryGame/Buildable/Factory/ManufacturerMk1/Build_ManufacturerMk1.Build_ManufacturerMk1_C' | '/Game/FactoryGame/Buildable/Factory/OilRefinery/Build_OilRefinery.Build_OilRefinery_C' | '/Game/FactoryGame/Buildable/Factory/Packager/Build_Packager.Build_Packager_C' | '/Game/FactoryGame/Buildable/Factory/SmelterMk1/Build_SmelterMk1.Build_SmelterMk1_C' | '/Game/FactoryGame/Equipment/BuildGun/BP_BuildGun.BP_BuildGun_C' | '/Script/FactoryGame.FGBuildGun' | '/Script/FactoryGame.FGBuildableAutomatedWorkBench')[],
 	],
+};
+
+type FGResourceDescriptor = FGDescriptor_sinkable & FGResourceDescriptor_base;
+
+type FGResourceDescriptor_base = FGDescriptor_sinkable_base & {
+	mDecalSize: docs_json_ts_common_types_decimal_string,
+	mPingColor: docs_json_ts_common_types_RGBA,
+	mCollectSpeedMultiplier: docs_json_ts_common_types_decimal_string,
+	mManualMiningAudioName: 'Metal',
 };
 
 type FGSchematic = FGInstructive & {
@@ -515,8 +530,10 @@ export type {
 	FGConsumableDescriptor,
 	FGConsumableEquipment,
 	FGDescriptor,
+	FGDescriptor_base,
 	FGDescriptor_BuildMenu,
 	FGDescriptor_sinkable,
+	FGDescriptor_sinkable_base,
 	FGEquipment,
 	FGEquipment_dispenser,
 	FGEquipment_has_sound,
@@ -525,6 +542,8 @@ export type {
 	FGRecipe,
 	FGRecipe_base,
 	FGRecipe_mProducedIn,
+	FGResourceDescriptor,
+	FGResourceDescriptor_base,
 	FGSchematic,
 	FGWeaponProjectile,
 	FGWeaponProjectile_thrown,

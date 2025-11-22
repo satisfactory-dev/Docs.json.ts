@@ -1150,6 +1150,18 @@
 		},
 		"FGDescriptor": {
 			"type": "object",
+			"$ref": "#/$defs/FGDescriptor--base",
+			"required": [
+				"mForm"
+			],
+			"properties": {
+				"mForm": {
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mForm"
+				}
+			}
+		},
+		"FGDescriptor--base": {
+			"type": "object",
 			"$ref": "#/$defs/isDescribed",
 			"required": [
 				"mAbbreviatedDisplayName",
@@ -1183,7 +1195,11 @@
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
 				"mForm": {
-					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mForm"
+					"type": "string",
+					"templated_string": [
+						"RF_",
+						{"type": "string"}
+					]
 				},
 				"mSmallIcon": {
 					"oneOf": [
@@ -1226,8 +1242,14 @@
 			}
 		},
 		"FGDescriptor--sinkable": {
+			"allOf": [
+				{"$ref": "#/$defs/FGDescriptor"},
+				{"$ref": "#/$defs/FGDescriptor--sinkable--base"}
+			]
+		},
+		"FGDescriptor--sinkable--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGDescriptor",
+			"$ref": "#/$defs/FGDescriptor--base",
 			"required": ["mResourceSinkPoints"],
 			"properties": {
 				"mResourceSinkPoints": {
@@ -1449,6 +1471,37 @@
 							}
 						}
 					]
+				}
+			}
+		},
+		"FGResourceDescriptor": {
+			"allOf": [
+				{"$ref": "#/$defs/FGDescriptor--sinkable"},
+				{"$ref": "#/$defs/FGResourceDescriptor--base"}
+			]
+		},
+		"FGResourceDescriptor--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGDescriptor--sinkable--base",
+			"required": [
+				"mDecalSize",
+				"mPingColor",
+				"mCollectSpeedMultiplier",
+				"mManualMiningAudioName"
+			],
+			"properties": {
+				"mDecalSize": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mPingColor": {
+					"$ref": "docs.json.ts--common--types#/$defs/RGBA"
+				},
+				"mCollectSpeedMultiplier": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mManualMiningAudioName": {
+					"type": "string",
+					"const": "Metal"
 				}
 			}
 		},
