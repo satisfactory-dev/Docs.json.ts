@@ -381,6 +381,14 @@ type FGBuildableSpaceElevator_base = FGBuildable_powered_base & {
 	mMapText: 'Space Elevator',
 };
 
+type FGBuildableStorage = FGBuildableStorage_base & FGBuildable_powered;
+
+type FGBuildableStorage_base = FGBuildable_powered_base & {
+	mStackingHeight: docs_json_ts_common_types_decimal_string,
+	mInventorySizeX: docs_json_ts_common_types_integer_string,
+	mInventorySizeY: docs_json_ts_common_types_integer_string,
+};
+
 type FGBuildableTradingPost = FGBuildableTradingPost_base & FGBuildable_powered;
 
 type FGBuildableTradingPost_base = FGBuildable_powered_base & {
@@ -671,6 +679,8 @@ export type {
 	FGBuildableResourceExtractor_water_base,
 	FGBuildableSpaceElevator,
 	FGBuildableSpaceElevator_base,
+	FGBuildableStorage,
+	FGBuildableStorage_base,
 	FGBuildableTradingPost,
 	FGBuildableTradingPost_base,
 	FGBuildableTrainPlatform,
