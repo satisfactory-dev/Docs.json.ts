@@ -1587,6 +1587,16 @@
 				}
 			}
 		},
+		"FGPortableMinerDispenser": {
+			"type": "object",
+			"$ref": "#/$defs/FGEquipment--dispenser",
+			"required": ["mAllowedResourceForms"],
+			"properties": {
+				"mAllowedResourceForms": {
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mAllowedResourceForms"
+				}
+			}
+		},
 		"FGRecipe": {
 			"allOf": [
 				{

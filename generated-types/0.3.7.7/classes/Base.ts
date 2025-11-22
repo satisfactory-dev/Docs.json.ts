@@ -435,6 +435,10 @@ type FGInstructive = isNamed & {
 	mRelevantEvents: null | docs_json_ts_0_3_7_7_properties_mRelevantEvents,
 };
 
+type FGPortableMinerDispenser = FGEquipment_dispenser & {
+	mAllowedResourceForms: docs_json_ts_0_3_7_7_properties_mAllowedResourceForms,
+};
+
 type FGRecipe = FGRecipe_base & FGRecipe_mProducedIn;
 
 type FGRecipe_base = FGInstructive & {
@@ -600,6 +604,7 @@ export type {
 	FGEquipment_has_sound,
 	FGEquipmentStunSpear_base,
 	FGInstructive,
+	FGPortableMinerDispenser,
 	FGRecipe,
 	FGRecipe_base,
 	FGRecipe_mProducedIn,

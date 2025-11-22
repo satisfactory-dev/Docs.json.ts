@@ -43,6 +43,7 @@ import type {
 	FGEquipment_dispenser as docs_json_ts_0_3_7_7_classes_base_FGEquipment_dispenser,
 	FGEquipment_has_sound as docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_sound,
 	FGEquipmentStunSpear_base as docs_json_ts_0_3_7_7_classes_base_FGEquipmentStunSpear_base,
+	FGPortableMinerDispenser as docs_json_ts_0_3_7_7_classes_base_FGPortableMinerDispenser,
 	FGRecipe as docs_json_ts_0_3_7_7_classes_base_FGRecipe,
 	FGSchematic as docs_json_ts_0_3_7_7_classes_base_FGSchematic,
 	FGWeaponInstantFire as docs_json_ts_0_3_7_7_classes_base_FGWeaponInstantFire,
@@ -52,7 +53,6 @@ import type {
 } from './classes/Base.ts';
 
 import type {
-	mAllowedResourceForms as docs_json_ts_0_3_7_7_properties_mAllowedResourceForms,
 	mSchematicDependencies_item as docs_json_ts_0_3_7_7_properties_mSchematicDependencies_item,
 	mUnlocks_item_base as docs_json_ts_0_3_7_7_properties_mUnlocks_item_base,
 	mUnlocks_item_mItemsToGive as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mItemsToGive,
@@ -539,8 +539,7 @@ type FGPipeHyperStart = docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_with_
 
 type FGPoleDescriptor = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_BuildMenu;
 
-type FGPortableMinerDispenser = docs_json_ts_0_3_7_7_classes_base_FGEquipment_dispenser & {
-	mAllowedResourceForms: docs_json_ts_0_3_7_7_properties_mAllowedResourceForms,
+type FGPortableMinerDispenser = docs_json_ts_0_3_7_7_classes_base_FGPortableMinerDispenser & {
 	mArmAnimation: 'AE_PortableMiner',
 };
 
