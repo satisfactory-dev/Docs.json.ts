@@ -301,6 +301,12 @@ type FGBuildableResourceExtractor_base = FGBuildable_powered & {
 	mReplicatedFlowRate: docs_json_ts_common_types_decimal_string,
 };
 
+type FGBuildableSpaceElevator = FGBuildableSpaceElevator_base & FGBuildable_powered;
+
+type FGBuildableSpaceElevator_base = FGBuildable_powered_base & {
+	mMapText: 'Space Elevator',
+};
+
 type FGBuildableTradingPost = FGBuildableTradingPost_base & FGBuildable_powered;
 
 type FGBuildableTradingPost_base = FGBuildable_powered_base & {
@@ -572,6 +578,8 @@ export type {
 	FGBuildablePole,
 	FGBuildablePowerPole,
 	FGBuildableResourceExtractor_base,
+	FGBuildableSpaceElevator,
+	FGBuildableSpaceElevator_base,
 	FGBuildableTradingPost,
 	FGBuildableTradingPost_base,
 	FGBuildableTrainPlatform,
