@@ -301,6 +301,29 @@ type FGBuildableResourceExtractor_base = FGBuildable_powered & {
 	mReplicatedFlowRate: docs_json_ts_common_types_decimal_string,
 };
 
+type FGBuildableTradingPost = FGBuildableTradingPost_base & FGBuildable_powered;
+
+type FGBuildableTradingPost_base = FGBuildable_powered_base & {
+	mWorkBenchOccupied: 'Craft Bench occupied',
+	mWorkBenchFree: 'Use Craft Bench',
+	Meshes: [
+        'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6"\'',
+        ...('StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6"\'')[],
+	],
+	mShipUpgradeLevel: docs_json_ts_common_types_integer_string,
+	mStorageText: 'Open Storage',
+	mMamFreeText: `Use M${string}`,
+	mMamOccupiedText: `M${string}${' is occupied'}`,
+	mMapText: 'The HUB',
+	mGenerators: '',
+	mStorageInventorySize: docs_json_ts_common_types_integer_string,
+	mStorageVisibilityLevel: docs_json_ts_common_types_integer_string,
+	mSpawningGroundZOffset: docs_json_ts_common_types_decimal_string,
+	mGroundSearchZDistance: docs_json_ts_common_types_decimal_string,
+	mDefaultResources: '',
+	mNeedPlayingBuildEffectNotification: docs_json_ts_common_types_bool_string,
+};
+
 type FGBuildableTrainPlatform = FGBuildable_powered & {
 	mPlatformConnections: [
         `FGTrainPlatformConnection'"/Game/FactoryGame/${string}${'"\''}`,
@@ -524,6 +547,8 @@ export type {
 	FGBuildablePole,
 	FGBuildablePowerPole,
 	FGBuildableResourceExtractor_base,
+	FGBuildableTradingPost,
+	FGBuildableTradingPost_base,
 	FGBuildableTrainPlatform,
 	FGBuildableTrainPlatform_with_storage,
 	FGBuildableWire,

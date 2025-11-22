@@ -31,6 +31,7 @@ import type {
 	FGBuildablePole as docs_json_ts_0_3_7_7_classes_base_FGBuildablePole,
 	FGBuildablePowerPole as docs_json_ts_0_3_7_7_classes_base_FGBuildablePowerPole,
 	FGBuildableResourceExtractor_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_base,
+	FGBuildableTradingPost as docs_json_ts_0_3_7_7_classes_base_FGBuildableTradingPost,
 	FGBuildableTrainPlatform as docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatform,
 	FGBuildableTrainPlatform_with_storage as docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatform_with_storage,
 	FGBuildableWire as docs_json_ts_0_3_7_7_classes_base_FGBuildableWire,
@@ -343,25 +344,9 @@ type FGBuildableStorage = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered 
 	mInventorySizeY: docs_json_ts_common_types_integer_string,
 };
 
-type FGBuildableTradingPost = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered & {
-	mWorkBenchOccupied: 'Craft Bench occupied',
-	mWorkBenchFree: 'Use Craft Bench',
-	Meshes: [
-        'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6"\'',
-        ...('StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6"\'')[],
-	],
-	mShipUpgradeLevel: docs_json_ts_common_types_integer_string,
-	mStorageText: 'Open Storage',
+type FGBuildableTradingPost = docs_json_ts_0_3_7_7_classes_base_FGBuildableTradingPost & {
 	mMamFreeText: 'Use M.A.M.',
 	mMamOccupiedText: 'M.A.M. is occupied',
-	mMapText: 'The HUB',
-	mGenerators: '',
-	mStorageInventorySize: docs_json_ts_common_types_integer_string,
-	mStorageVisibilityLevel: docs_json_ts_common_types_integer_string,
-	mSpawningGroundZOffset: docs_json_ts_common_types_decimal_string,
-	mGroundSearchZDistance: docs_json_ts_common_types_decimal_string,
-	mDefaultResources: '',
-	mNeedPlayingBuildEffectNotification: docs_json_ts_common_types_bool_string,
 };
 
 type FGBuildableTrainPlatformCargo = docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatform_with_storage & {

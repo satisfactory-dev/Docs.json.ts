@@ -890,60 +890,10 @@
 		},
 		"FGBuildableTradingPost": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableTradingPost",
 			"unevaluatedProperties": false,
-			"required": [
-				"mWorkBenchOccupied",
-				"mWorkBenchFree",
-				"Meshes",
-				"mShipUpgradeLevel",
-				"mStorageText",
-				"mMamFreeText",
-				"mMamOccupiedText",
-				"mMapText",
-				"mGenerators",
-				"mStorageInventorySize",
-				"mStorageVisibilityLevel",
-				"mSpawningGroundZOffset",
-				"mGroundSearchZDistance",
-				"mDefaultResources",
-				"mNeedPlayingBuildEffectNotification"
-			],
+			"required": ["mMamFreeText", "mMamOccupiedText"],
 			"properties": {
-				"mWorkBenchOccupied": {
-					"type": "string",
-					"const": "Craft Bench occupied"
-				},
-				"mWorkBenchFree": {
-					"type": "string",
-					"const": "Use Craft Bench"
-				},
-				"Meshes": {
-					"type": "string",
-					"typed_string": {
-						"type": "array",
-						"minItems": 1,
-						"uniqueItems": true,
-						"items": {
-							"type": "string",
-							"enum": [
-								"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1\"'",
-								"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2\"'",
-								"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3\"'",
-								"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4\"'",
-								"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5\"'",
-								"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6\"'"
-							]
-						}
-					}
-				},
-				"mShipUpgradeLevel": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-				},
-				"mStorageText": {
-					"type": "string",
-					"const": "Open Storage"
-				},
 				"mMamFreeText": {
 					"type": "string",
 					"const": "Use M.A.M."
@@ -951,33 +901,6 @@
 				"mMamOccupiedText": {
 					"type": "string",
 					"const": "M.A.M. is occupied"
-				},
-				"mMapText": {
-					"type": "string",
-					"const": "The HUB"
-				},
-				"mGenerators": {
-					"type": "string",
-					"const": ""
-				},
-				"mStorageInventorySize": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-				},
-				"mStorageVisibilityLevel": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-				},
-				"mSpawningGroundZOffset": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mGroundSearchZDistance": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mDefaultResources": {
-					"type": "string",
-					"const": ""
-				},
-				"mNeedPlayingBuildEffectNotification": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				}
 			}
 		},
