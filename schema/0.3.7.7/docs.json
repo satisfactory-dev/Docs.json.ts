@@ -530,20 +530,26 @@
 				},
 				"Classes": {
 					"type": "array",
-					"minItems": 1,
-					"items": {
-						"oneOf": [
+					"minItems": 5,
+					"maxItems": 5,
+					"items": false,
+					"prefixItems": [
 							{
 								"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGBuildableResourceExtractor--water"
 							},
-							{
-								"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGBuildableResourceExtractor--miner"
-							},
-							{
-								"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGBuildableResourceExtractor--oil"
-							}
-						]
-					}
+						{
+							"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGBuildableResourceExtractor--miner--mk1"
+						},
+						{
+							"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGBuildableResourceExtractor--oil"
+						},
+						{
+							"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGBuildableResourceExtractor--miner--mk2"
+						},
+						{
+							"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGBuildableResourceExtractor--miner--mk3"
+						}
+					]
 				}
 			}
 		},

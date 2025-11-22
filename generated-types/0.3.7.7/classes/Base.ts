@@ -286,21 +286,93 @@ type FGBuildablePowerPole = FGBuildable & {
 	mPowerPoleType: 'PPT_POLE' | 'PPT_WALL' | 'PPT_WALL_DOUBLE',
 };
 
-type FGBuildableResourceExtractor_base = FGBuildable_powered & {
+type FGBuildableResourceExtractor = FGBuildableResourceExtractor_base & {
+	mRequireResourceAtMinimumDepthChecks: docs_json_ts_common_types_bool_string,
+	mMinimumDepthForPlacement: docs_json_ts_common_types_decimal_string,
+	mDepthTraceOriginOffset: docs_json_ts_common_types_XYZ_decimal_string,
+	mExtractionOffset: docs_json_ts_common_types_XYZ_decimal_string,
+};
+
+type FGBuildableResourceExtractor_base = FGBuildable_powered_base & {
 	mExtractStartupTime: docs_json_ts_common_types_decimal_string_signed,
 	mExtractStartupTimer: docs_json_ts_common_types_decimal_string,
 	mExtractCycleTime: docs_json_ts_common_types_decimal_string,
 	mItemsPerCycle: docs_json_ts_common_types_integer_string,
 	mAllowedResourceForms: docs_json_ts_0_3_7_7_properties_mAllowedResourceForms,
-	mRequireResourceAtMinimumDepthChecks: docs_json_ts_common_types_bool_string,
-	mMinimumDepthForPlacement: docs_json_ts_common_types_decimal_string,
-	mDepthTraceOriginOffset: docs_json_ts_common_types_XYZ_decimal_string,
 	mOnlyAllowCertainResources: docs_json_ts_common_types_bool_string,
 	mAllowedResources: docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list | '',
-	mExtractionOffset: docs_json_ts_common_types_XYZ_decimal_string,
 	mExtractorTypeName: 'None' | 'Miner',
 	mPipeOutputConnections: '',
 	mReplicatedFlowRate: docs_json_ts_common_types_decimal_string,
+};
+
+type FGBuildableResourceExtractor_miner_base = FGBuildableResourceExtractor_base & {
+	mInternalMiningState_0?: 'NewEnumerator0',
+	mToggleMiningStateHandle_0?: docs_json_ts_common_types_empty_object,
+	mMinimumDrillTime_0?: docs_json_ts_common_types_decimal_string,
+	mMaximumDrillTime_0?: docs_json_ts_common_types_decimal_string,
+	mCanPlayAfterStartUpStopped?: docs_json_ts_common_types_bool_string,
+	mParticleMap: [
+		{
+			ResourceNode_16_2100B5C34EE8DF7958D78A974512F3C3: `/Game/FactoryGame/Resource/RawResources/${string}${'/Desc_'}${string}${'.Desc_'}${string}${'_C'}`,
+			ParticleSystem1_9_F0CF81514E1E1C5007AC99B0C59C63CD: `ParticleSystem'"/Game/FactoryGame/VFX/Factory/Miner/P_Mining_${string}${'_01.P_Mining_'}${string}${'_01"\''}`,
+		},
+		...{
+			ResourceNode_16_2100B5C34EE8DF7958D78A974512F3C3: `/Game/FactoryGame/Resource/RawResources/${string}${'/Desc_'}${string}${'.Desc_'}${string}${'_C'}`,
+			ParticleSystem1_9_F0CF81514E1E1C5007AC99B0C59C63CD: `ParticleSystem'"/Game/FactoryGame/VFX/Factory/Miner/P_Mining_${string}${'_01.P_Mining_'}${string}${'_01"\''}`,
+		}[],
+	],
+	mExtractorTypeName: 'Miner',
+	mAllowedResourceForms: [
+		'RF_SOLID',
+	],
+};
+
+type FGBuildableResourceExtractor_miner_mk1 = FGBuildableResourceExtractor & FGBuildableResourceExtractor_miner_mk1_base & FGBuildable_powered;
+
+type FGBuildableResourceExtractor_miner_mk1_base = FGBuildableResourceExtractor_miner_base & {
+	mDisplayName: 'Miner Mk1',
+};
+
+type FGBuildableResourceExtractor_miner_mk2 = FGBuildableResourceExtractor & FGBuildableResourceExtractor_miner_mk2_base & FGBuildable_powered;
+
+type FGBuildableResourceExtractor_miner_mk2_base = FGBuildableResourceExtractor_miner_base & {
+	mCanPlayAfterStartUpStopped: docs_json_ts_common_types_bool_string,
+	mDisplayName: 'Miner Mk.2',
+};
+
+type FGBuildableResourceExtractor_miner_mk3 = FGBuildableResourceExtractor & FGBuildableResourceExtractor_miner_mk3_base & FGBuildable_powered;
+
+type FGBuildableResourceExtractor_miner_mk3_base = FGBuildableResourceExtractor_miner_base & {
+	mCanPlayAfterStartUpStopped: docs_json_ts_common_types_bool_string,
+	mDisplayName: 'Miner Mk.3',
+};
+
+type FGBuildableResourceExtractor_oil = FGBuildableResourceExtractor & FGBuildableResourceExtractor_oil_base & FGBuildable_powered;
+
+type FGBuildableResourceExtractor_oil_base = FGBuildableResourceExtractor_base & {
+	mAllowedResourceForms: [
+		'RF_LIQUID',
+	],
+};
+
+type FGBuildableResourceExtractor_water = FGBuildableResourceExtractor & FGBuildableResourceExtractor_water_base & (FGBuildable_powered & {
+	mWaterpumpTimeline_RTPC_B8FA6F944E717E3B7A286E84901F620E: docs_json_ts_common_types_decimal_string,
+	mWaterpumpTimeline__Direction_B8FA6F944E717E3B7A286E84901F620E: 'Forward',
+	PlayPitchAndVolumeRTPCTimeline_RTPC_2B435F41466C37D2AD809A88AA21BA89: docs_json_ts_common_types_decimal_string,
+	PlayPitchAndVolumeRTPCTimeline__Direction_2B435F41466C37D2AD809A88AA21BA89: 'Forward',
+	mAudioTimerCounter: docs_json_ts_common_types_decimal_string,
+	mAudioTimerMS: docs_json_ts_common_types_decimal_string,
+	mAudioTimerReference: docs_json_ts_common_types_empty_object,
+	mAudioTimelineCounter: docs_json_ts_common_types_decimal_string,
+	HasLostSignificance: docs_json_ts_common_types_bool_string,
+});
+
+type FGBuildableResourceExtractor_water_base = FGBuildableResourceExtractor_base & {
+	mExtractorTypeName: 'None',
+	mAllowedResourceForms: [
+		'RF_LIQUID',
+	],
 };
 
 type FGBuildableSpaceElevator = FGBuildableSpaceElevator_base & FGBuildable_powered;
@@ -584,7 +656,19 @@ export type {
 	FGBuildablePipelinePump_powered_base,
 	FGBuildablePole,
 	FGBuildablePowerPole,
+	FGBuildableResourceExtractor,
 	FGBuildableResourceExtractor_base,
+	FGBuildableResourceExtractor_miner_base,
+	FGBuildableResourceExtractor_miner_mk1,
+	FGBuildableResourceExtractor_miner_mk1_base,
+	FGBuildableResourceExtractor_miner_mk2,
+	FGBuildableResourceExtractor_miner_mk2_base,
+	FGBuildableResourceExtractor_miner_mk3,
+	FGBuildableResourceExtractor_miner_mk3_base,
+	FGBuildableResourceExtractor_oil,
+	FGBuildableResourceExtractor_oil_base,
+	FGBuildableResourceExtractor_water,
+	FGBuildableResourceExtractor_water_base,
 	FGBuildableSpaceElevator,
 	FGBuildableSpaceElevator_base,
 	FGBuildableTradingPost,

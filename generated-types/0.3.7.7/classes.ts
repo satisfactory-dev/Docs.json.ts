@@ -30,7 +30,11 @@ import type {
 	FGBuildablePipelinePump_base as docs_json_ts_0_3_7_7_classes_base_FGBuildablePipelinePump_base,
 	FGBuildablePole as docs_json_ts_0_3_7_7_classes_base_FGBuildablePole,
 	FGBuildablePowerPole as docs_json_ts_0_3_7_7_classes_base_FGBuildablePowerPole,
-	FGBuildableResourceExtractor_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_base,
+	FGBuildableResourceExtractor_miner_mk1 as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_mk1,
+	FGBuildableResourceExtractor_miner_mk2 as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_mk2,
+	FGBuildableResourceExtractor_miner_mk3 as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_mk3,
+	FGBuildableResourceExtractor_oil as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_oil,
+	FGBuildableResourceExtractor_water as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_water,
 	FGBuildableTradingPost as docs_json_ts_0_3_7_7_classes_base_FGBuildableTradingPost,
 	FGBuildableTrainPlatform as docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatform,
 	FGBuildableTrainPlatform_with_storage as docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatform_with_storage,
@@ -263,49 +267,15 @@ type FGBuildableRailroadTrack = docs_json_ts_0_3_7_7_classes_base_FGBuildable_wi
 	mIsOwnedByPlatform: docs_json_ts_common_types_bool_string,
 };
 
-type FGBuildableResourceExtractor_miner = docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_base & {
-	mInternalMiningState_0?: 'NewEnumerator0',
-	mToggleMiningStateHandle_0?: docs_json_ts_common_types_empty_object,
-	mMinimumDrillTime_0?: docs_json_ts_common_types_decimal_string,
-	mMaximumDrillTime_0?: docs_json_ts_common_types_decimal_string,
-	mCanPlayAfterStartUpStopped?: docs_json_ts_common_types_bool_string,
-	mParticleMap: [
-		{
-			ResourceNode_16_2100B5C34EE8DF7958D78A974512F3C3: `/Game/FactoryGame/Resource/RawResources/${string}${'/Desc_'}${string}${'.Desc_'}${string}${'_C'}`,
-			ParticleSystem1_9_F0CF81514E1E1C5007AC99B0C59C63CD: `ParticleSystem'"/Game/FactoryGame/VFX/Factory/Miner/P_Mining_${string}${'_01.P_Mining_'}${string}${'_01"\''}`,
-		},
-		...{
-			ResourceNode_16_2100B5C34EE8DF7958D78A974512F3C3: `/Game/FactoryGame/Resource/RawResources/${string}${'/Desc_'}${string}${'.Desc_'}${string}${'_C'}`,
-			ParticleSystem1_9_F0CF81514E1E1C5007AC99B0C59C63CD: `ParticleSystem'"/Game/FactoryGame/VFX/Factory/Miner/P_Mining_${string}${'_01.P_Mining_'}${string}${'_01"\''}`,
-		}[],
-	],
-	mExtractorTypeName: 'Miner',
-	mAllowedResourceForms: [
-		'RF_SOLID',
-	],
-};
+type FGBuildableResourceExtractor_miner_mk1 = docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_mk1;
 
-type FGBuildableResourceExtractor_oil = docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_base & {
-	mAllowedResourceForms: [
-		'RF_LIQUID',
-	],
-};
+type FGBuildableResourceExtractor_miner_mk2 = docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_mk2;
 
-type FGBuildableResourceExtractor_water = docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_base & {
-	mWaterpumpTimeline_RTPC_B8FA6F944E717E3B7A286E84901F620E: docs_json_ts_common_types_decimal_string,
-	mWaterpumpTimeline__Direction_B8FA6F944E717E3B7A286E84901F620E: 'Forward',
-	PlayPitchAndVolumeRTPCTimeline_RTPC_2B435F41466C37D2AD809A88AA21BA89: docs_json_ts_common_types_decimal_string,
-	PlayPitchAndVolumeRTPCTimeline__Direction_2B435F41466C37D2AD809A88AA21BA89: 'Forward',
-	mAudioTimerCounter: docs_json_ts_common_types_decimal_string,
-	mAudioTimerMS: docs_json_ts_common_types_decimal_string,
-	mAudioTimerReference: docs_json_ts_common_types_empty_object,
-	mAudioTimelineCounter: docs_json_ts_common_types_decimal_string,
-	HasLostSignificance: docs_json_ts_common_types_bool_string,
-	mExtractorTypeName: 'None',
-	mAllowedResourceForms: [
-		'RF_LIQUID',
-	],
-};
+type FGBuildableResourceExtractor_miner_mk3 = docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_mk3;
+
+type FGBuildableResourceExtractor_oil = docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_oil;
+
+type FGBuildableResourceExtractor_water = docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_water;
 
 type FGBuildableResourceSink = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered & {
 	SFXEngineTimeline_EngineAlpha_073E1D2A4BAD246B3958E183E210FAAE: docs_json_ts_common_types_decimal_string,
@@ -666,7 +636,9 @@ export type {
 	FGBuildableRadarTower,
 	FGBuildableRailroadStation,
 	FGBuildableRailroadTrack,
-	FGBuildableResourceExtractor_miner,
+	FGBuildableResourceExtractor_miner_mk1,
+	FGBuildableResourceExtractor_miner_mk2,
+	FGBuildableResourceExtractor_miner_mk3,
 	FGBuildableResourceExtractor_oil,
 	FGBuildableResourceExtractor_water,
 	FGBuildableResourceSink,

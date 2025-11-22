@@ -38,7 +38,9 @@ import type {
 	FGBuildableRadarTower as docs_json_ts_0_3_7_7_classes_FGBuildableRadarTower,
 	FGBuildableRailroadStation as docs_json_ts_0_3_7_7_classes_FGBuildableRailroadStation,
 	FGBuildableRailroadTrack as docs_json_ts_0_3_7_7_classes_FGBuildableRailroadTrack,
-	FGBuildableResourceExtractor_miner as docs_json_ts_0_3_7_7_classes_FGBuildableResourceExtractor_miner,
+	FGBuildableResourceExtractor_miner_mk1 as docs_json_ts_0_3_7_7_classes_FGBuildableResourceExtractor_miner_mk1,
+	FGBuildableResourceExtractor_miner_mk2 as docs_json_ts_0_3_7_7_classes_FGBuildableResourceExtractor_miner_mk2,
+	FGBuildableResourceExtractor_miner_mk3 as docs_json_ts_0_3_7_7_classes_FGBuildableResourceExtractor_miner_mk3,
 	FGBuildableResourceExtractor_oil as docs_json_ts_0_3_7_7_classes_FGBuildableResourceExtractor_oil,
 	FGBuildableResourceExtractor_water as docs_json_ts_0_3_7_7_classes_FGBuildableResourceExtractor_water,
 	FGBuildableResourceSink as docs_json_ts_0_3_7_7_classes_FGBuildableResourceSink,
@@ -274,7 +276,11 @@ type FGBuildableRailroadTrack = {
 type FGBuildableResourceExtractor = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableResourceExtractor'}${'\''}`,
 	Classes: [
-		...(docs_json_ts_0_3_7_7_classes_FGBuildableResourceExtractor_water | docs_json_ts_0_3_7_7_classes_FGBuildableResourceExtractor_miner | docs_json_ts_0_3_7_7_classes_FGBuildableResourceExtractor_oil)[],
+		docs_json_ts_0_3_7_7_classes_FGBuildableResourceExtractor_water,
+		docs_json_ts_0_3_7_7_classes_FGBuildableResourceExtractor_miner_mk1,
+		docs_json_ts_0_3_7_7_classes_FGBuildableResourceExtractor_oil,
+		docs_json_ts_0_3_7_7_classes_FGBuildableResourceExtractor_miner_mk2,
+		docs_json_ts_0_3_7_7_classes_FGBuildableResourceExtractor_miner_mk3,
 	],
 };
 
