@@ -23,6 +23,7 @@ import type {
 	empty_object as docs_json_ts_common_types_empty_object,
 	integer_string as docs_json_ts_common_types_integer_string,
 	integer_string_signed as docs_json_ts_common_types_integer_string_signed,
+	PitchYawRoll_decimal_string_signed as docs_json_ts_common_types_PitchYawRoll_decimal_string_signed,
 	RGBA as docs_json_ts_common_types_RGBA,
 	XYZ_decimal_string as docs_json_ts_common_types_XYZ_decimal_string,
 } from './../../common/types.ts';
@@ -319,6 +320,13 @@ type FGBuildableWire = FGBuildable & {
 	mConnections: 'None',
 };
 
+type FGConsumableDescriptor = FGDescriptor_sinkable & {
+	mHealthGain?: docs_json_ts_common_types_decimal_string,
+	mCustomHandsMeshScale: docs_json_ts_common_types_decimal_string,
+	mCustomRotation: docs_json_ts_common_types_PitchYawRoll_decimal_string_signed,
+	mCustomLocation: docs_json_ts_common_types_XYZ_decimal_string,
+};
+
 type FGConsumableEquipment = FGEquipment & {
 	mRandomAnim?: docs_json_ts_common_types_integer_string,
 	mCanPress?: docs_json_ts_common_types_bool_string,
@@ -504,6 +512,7 @@ export type {
 	FGBuildableTrainPlatform,
 	FGBuildableTrainPlatform_with_storage,
 	FGBuildableWire,
+	FGConsumableDescriptor,
 	FGConsumableEquipment,
 	FGDescriptor,
 	FGDescriptor_BuildMenu,

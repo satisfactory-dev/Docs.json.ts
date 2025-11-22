@@ -1072,6 +1072,29 @@
 				}
 			}
 		},
+		"FGConsumableDescriptor": {
+			"type": "object",
+			"$ref": "#/$defs/FGDescriptor--sinkable",
+			"required": [
+				"mCustomHandsMeshScale",
+				"mCustomRotation",
+				"mCustomLocation"
+			],
+			"properties": {
+				"mHealthGain": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mCustomHandsMeshScale": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mCustomRotation": {
+					"$ref": "docs.json.ts--common--types#/$defs/PitchYawRoll--decimal_string--signed"
+				},
+				"mCustomLocation": {
+					"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
+				}
+			}
+		},
 		"FGConsumableEquipment": {
 			"type": "object",
 			"unevaluatedProperties": false,

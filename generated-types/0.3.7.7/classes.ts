@@ -34,6 +34,7 @@ import type {
 	FGBuildableTrainPlatform as docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatform,
 	FGBuildableTrainPlatform_with_storage as docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatform_with_storage,
 	FGBuildableWire as docs_json_ts_0_3_7_7_classes_base_FGBuildableWire,
+	FGConsumableDescriptor as docs_json_ts_0_3_7_7_classes_base_FGConsumableDescriptor,
 	FGConsumableEquipment as docs_json_ts_0_3_7_7_classes_base_FGConsumableEquipment,
 	FGDescriptor_BuildMenu as docs_json_ts_0_3_7_7_classes_base_FGDescriptor_BuildMenu,
 	FGDescriptor_sinkable as docs_json_ts_0_3_7_7_classes_base_FGDescriptor_sinkable,
@@ -419,12 +420,7 @@ type FGColorGun = docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_instant &
 	mArmAnimation: 'AE_ColorGun',
 };
 
-type FGConsumableDescriptor = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_sinkable & {
-	mHealthGain?: docs_json_ts_common_types_decimal_string,
-	mCustomHandsMeshScale: docs_json_ts_common_types_decimal_string,
-	mCustomRotation: docs_json_ts_common_types_PitchYawRoll_decimal_string_signed,
-	mCustomLocation: docs_json_ts_common_types_XYZ_decimal_string,
-};
+type FGConsumableDescriptor = docs_json_ts_0_3_7_7_classes_base_FGConsumableDescriptor;
 
 type FGConsumableEquipment = docs_json_ts_0_3_7_7_classes_base_FGConsumableEquipment & {
 	mArmAnimation: 'AE_Consumables' | 'AE_OneHandEquipment',
