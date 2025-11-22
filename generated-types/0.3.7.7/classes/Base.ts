@@ -321,6 +321,10 @@ type FGBuildablePipelinePump_pump_base = FGBuildablePipelinePump_base & {
 
 type FGBuildablePipelinePump_valve = FGBuildablePipelinePump_base & FGBuildable_powered;
 
+type FGBuildablePipelineSupport = FGBuildable_pole_with_length & {
+	mVerticalAngle: docs_json_ts_common_types_decimal_string,
+};
+
 type FGBuildablePole = FGBuildable_pole & {
 	mHeight: docs_json_ts_common_types_decimal_string,
 };
@@ -719,6 +723,7 @@ export type {
 	FGBuildablePipelinePump_pump,
 	FGBuildablePipelinePump_pump_base,
 	FGBuildablePipelinePump_valve,
+	FGBuildablePipelineSupport,
 	FGBuildablePole,
 	FGBuildablePowerPole,
 	FGBuildableResourceExtractor,

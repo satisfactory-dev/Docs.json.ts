@@ -1116,6 +1116,16 @@
 				}
 			]
 		},
+		"FGBuildablePipelineSupport": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--pole--with-length",
+			"required": ["mVerticalAngle"],
+			"properties": {
+				"mVerticalAngle": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
 		"FGBuildablePole": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--pole",

@@ -410,14 +410,8 @@
 		},
 		"FGBuildablePipelineSupport": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--pole--with-length",
-			"unevaluatedProperties": false,
-			"required": ["mVerticalAngle"],
-			"properties": {
-				"mVerticalAngle": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				}
-			}
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipelineSupport",
+			"unevaluatedProperties": false
 		},
 		"FGBuildablePipeReservoir": {
 			"type": "object",
