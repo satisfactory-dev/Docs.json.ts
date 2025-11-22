@@ -116,11 +116,6 @@ type FGBuildableDockingStation = docs_json_ts_0_3_7_7_classes_base_FGBuildable_d
 	mFuelTransferSpeed: docs_json_ts_common_types_decimal_string,
 };
 
-type FGBuildableFactorySimpleProducer = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered & {
-	mTimeToProduceItem: docs_json_ts_common_types_decimal_string,
-	mEventType: 'EV_Christmas',
-};
-
 type FGBuildableFactory_jump_pad = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered & {
 	JumpForceCharacter: docs_json_ts_common_types_decimal_string,
 	JumpForcePhysics: docs_json_ts_common_types_decimal_string,
@@ -129,6 +124,11 @@ type FGBuildableFactory_jump_pad = docs_json_ts_0_3_7_7_classes_base_FGBuildable
 type FGBuildableFactory_landing_pad = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered & {
 	mDampeningFactor: docs_json_ts_common_types_decimal_string,
 	mPlayerList: '',
+};
+
+type FGBuildableFactorySimpleProducer = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered & {
+	mTimeToProduceItem: docs_json_ts_common_types_decimal_string,
+	mEventType: 'EV_Christmas',
 };
 
 type FGBuildableFoundation = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_and_elevation;
@@ -175,19 +175,19 @@ type FGBuildableLadder = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_widt
 	mLadderMeshes: '',
 };
 
-type FGBuildableManufacturer_Build_ConstructorMk1_C = docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_Build_ConstructorMk1_C;
+type FGBuildableManufacturer_Build_AssemblerMk1_C = docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_Build_AssemblerMk1_C;
 
-type FGBuildableManufacturer_Build_SmelterMk1_C = docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_Build_SmelterMk1_C;
+type FGBuildableManufacturer_Build_ConstructorMk1_C = docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_Build_ConstructorMk1_C;
 
 type FGBuildableManufacturer_Build_FoundryMk1_C = docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_Build_FoundryMk1_C;
 
-type FGBuildableManufacturer_Build_OilRefinery_C = docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_Build_OilRefinery_C;
+type FGBuildableManufacturer_Build_ManufacturerMk1_C = docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_Build_ManufacturerMk1_C;
 
-type FGBuildableManufacturer_Build_AssemblerMk1_C = docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_Build_AssemblerMk1_C;
+type FGBuildableManufacturer_Build_OilRefinery_C = docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_Build_OilRefinery_C;
 
 type FGBuildableManufacturer_Build_Packager_C = docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_Build_Packager_C;
 
-type FGBuildableManufacturer_Build_ManufacturerMk1_C = docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_Build_ManufacturerMk1_C;
+type FGBuildableManufacturer_Build_SmelterMk1_C = docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_Build_SmelterMk1_C;
 
 type FGBuildablePipeHyper = docs_json_ts_0_3_7_7_classes_base_FGBuildable_spline;
 
@@ -371,9 +371,9 @@ type FGBuildableTrainPlatformCargo = docs_json_ts_0_3_7_7_classes_base_FGBuildab
 
 type FGBuildableTrainPlatformEmpty = docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatform;
 
-type FGBuildableWall = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_and_width;
-
 type FGBuildableWalkway = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_size_and_elevation;
+
+type FGBuildableWall = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_and_width;
 
 type FGBuildableWire = docs_json_ts_0_3_7_7_classes_base_FGBuildableWire;
 
@@ -659,22 +659,22 @@ export type {
 	FGBuildableConveyorBelt,
 	FGBuildableConveyorLift,
 	FGBuildableDockingStation,
-	FGBuildableFactorySimpleProducer,
 	FGBuildableFactory_jump_pad,
 	FGBuildableFactory_landing_pad,
+	FGBuildableFactorySimpleProducer,
 	FGBuildableFoundation,
 	FGBuildableGeneratorFuel,
 	FGBuildableGeneratorGeoThermal,
 	FGBuildableGeneratorNuclear,
 	FGBuildableJumppad,
 	FGBuildableLadder,
-	FGBuildableManufacturer_Build_ConstructorMk1_C,
-	FGBuildableManufacturer_Build_SmelterMk1_C,
-	FGBuildableManufacturer_Build_FoundryMk1_C,
-	FGBuildableManufacturer_Build_OilRefinery_C,
 	FGBuildableManufacturer_Build_AssemblerMk1_C,
-	FGBuildableManufacturer_Build_Packager_C,
+	FGBuildableManufacturer_Build_ConstructorMk1_C,
+	FGBuildableManufacturer_Build_FoundryMk1_C,
 	FGBuildableManufacturer_Build_ManufacturerMk1_C,
+	FGBuildableManufacturer_Build_OilRefinery_C,
+	FGBuildableManufacturer_Build_Packager_C,
+	FGBuildableManufacturer_Build_SmelterMk1_C,
 	FGBuildablePipeHyper,
 	FGBuildablePipeline,
 	FGBuildablePipelineJunction,
@@ -700,8 +700,8 @@ export type {
 	FGBuildableTradingPost,
 	FGBuildableTrainPlatformCargo,
 	FGBuildableTrainPlatformEmpty,
-	FGBuildableWall,
 	FGBuildableWalkway,
+	FGBuildableWall,
 	FGBuildableWire,
 	FGBuildingDescriptor,
 	FGChainsaw,

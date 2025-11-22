@@ -113,11 +113,7 @@
 		"FGBuildable--docking-station": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--powered-storage",
-			"required": [
-				"mMapText",
-				"mTransferSpeed",
-				"mStackTransferSize"
-			],
+			"required": ["mMapText", "mTransferSpeed", "mStackTransferSize"],
 			"properties": {
 				"mMapText": {
 					"type": "string"
@@ -163,6 +159,23 @@
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--powered"
+				}
+			]
+		},
+		"FGBuildable--powered": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base"
+				},
+				{
+					"type": "object",
+					"$ref": "#/$defs/FGBuildable",
+					"required": ["mSignificanceBias"],
+					"properties": {
+						"mSignificanceBias": {
+							"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+						}
+					}
 				}
 			]
 		},
@@ -247,20 +260,13 @@
 				}
 			}
 		},
-		"FGBuildable--powered": {
+		"FGBuildable--powered-storage": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGBuildable--powered--base"
+					"$ref": "#/$defs/FGBuildable--powered-storage--base"
 				},
 				{
-					"type": "object",
-					"$ref": "#/$defs/FGBuildable",
-					"required": ["mSignificanceBias"],
-					"properties": {
-						"mSignificanceBias": {
-							"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-						}
-					}
+					"$ref": "#/$defs/FGBuildable--powered"
 				}
 			]
 		},
@@ -276,12 +282,6 @@
 					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
 				}
 			}
-		},
-		"FGBuildable--powered-storage": {
-			"allOf": [
-				{"$ref": "#/$defs/FGBuildable--powered-storage--base"},
-				{"$ref": "#/$defs/FGBuildable--powered"}
-			]
 		},
 		"FGBuildable--spline": {
 			"type": "object",
@@ -478,6 +478,16 @@
 				}
 			}
 		},
+		"FGBuildableAttachment": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableAttachment--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				}
+			]
+		},
 		"FGBuildableAttachment--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--powered--base",
@@ -487,12 +497,6 @@
 					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
 				}
 			}
-		},
-		"FGBuildableAttachment": {
-			"allOf": [
-				{"$ref": "#/$defs/FGBuildableAttachment--base"},
-				{"$ref": "#/$defs/FGBuildable--powered"}
-			]
 		},
 		"FGBuildableAttachment--splitter": {
 			"type": "object",
@@ -646,6 +650,16 @@
 				}
 			}
 		},
+		"FGBuildableGenerator--no-fuel": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				}
+			]
+		},
 		"FGBuildableGenerator--no-fuel--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--powered--base",
@@ -665,12 +679,6 @@
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
 			}
-		},
-		"FGBuildableGenerator--no-fuel": {
-			"allOf": [
-				{"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base"},
-				{"$ref": "#/$defs/FGBuildable--powered"}
-			]
 		},
 		"FGBuildableManufacturer--base": {
 			"type": "object",
@@ -731,10 +739,7 @@
 		"FGBuildableManufacturer--base--packager": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--powered--base",
-			"required": [
-				"mCurrentColor_VFX",
-				"CurrentPackagingMode"
-			],
+			"required": ["mCurrentColor_VFX", "CurrentPackagingMode"],
 			"properties": {
 				"mCurrentColor_VFX": {
 					"$ref": "docs.json.ts--common--types#/$defs/RGBA"
@@ -745,55 +750,101 @@
 				}
 			}
 		},
-		"FGBuildableManufacturer--Build_ConstructorMk1_C": {
+		"FGBuildableManufacturer--Build_AssemblerMk1_C": {
 			"allOf": [
-				{"$ref": "#/$defs/FGBuildableManufacturer--base"},
-				{"$ref": "#/$defs/FGBuildableManufacturer--base--IsPowered"},
-				{"$ref": "#/$defs/FGBuildable--powered"}
+				{
+					"$ref": "#/$defs/FGBuildableManufacturer--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableManufacturer--base--IsPowered"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				}
 			]
 		},
-		"FGBuildableManufacturer--Build_SmelterMk1_C": {
+		"FGBuildableManufacturer--Build_ConstructorMk1_C": {
 			"allOf": [
-				{"$ref": "#/$defs/FGBuildableManufacturer--base"},
-				{"$ref": "#/$defs/FGBuildableManufacturer--base--mProductionEffectsRunning"},
-				{"$ref": "#/$defs/FGBuildable--powered"}
+				{
+					"$ref": "#/$defs/FGBuildableManufacturer--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableManufacturer--base--IsPowered"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				}
 			]
 		},
 		"FGBuildableManufacturer--Build_FoundryMk1_C": {
 			"allOf": [
-				{"$ref": "#/$defs/FGBuildableManufacturer--base"},
-				{"$ref": "#/$defs/FGBuildableManufacturer--base--mProductionEffectsRunning"},
-				{"$ref": "#/$defs/FGBuildable--powered"}
-			]
-		},
-		"FGBuildableManufacturer--Build_OilRefinery_C": {
-			"allOf": [
-				{"$ref": "#/$defs/FGBuildableManufacturer--base"},
-				{"$ref": "#/$defs/FGBuildableManufacturer--base--IsPowered"},
-				{"$ref": "#/$defs/FGBuildableManufacturer--base--mProductionEffectsRunning"},
-				{"$ref": "#/$defs/FGBuildable--powered"}
-			]
-		},
-		"FGBuildableManufacturer--Build_AssemblerMk1_C": {
-			"allOf": [
-				{"$ref": "#/$defs/FGBuildableManufacturer--base"},
-				{"$ref": "#/$defs/FGBuildableManufacturer--base--IsPowered"},
-				{"$ref": "#/$defs/FGBuildable--powered"}
-			]
-		},
-		"FGBuildableManufacturer--Build_Packager_C": {
-			"allOf": [
-				{"$ref": "#/$defs/FGBuildableManufacturer--base"},
-				{"$ref": "#/$defs/FGBuildableManufacturer--base--IsPowered"},
-				{"$ref": "#/$defs/FGBuildableManufacturer--base--mProductionEffectsRunning"},
-				{"$ref": "#/$defs/FGBuildableManufacturer--base--packager"},
-				{"$ref": "#/$defs/FGBuildable--powered"}
+				{
+					"$ref": "#/$defs/FGBuildableManufacturer--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableManufacturer--base--mProductionEffectsRunning"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				}
 			]
 		},
 		"FGBuildableManufacturer--Build_ManufacturerMk1_C": {
 			"allOf": [
-				{"$ref": "#/$defs/FGBuildableManufacturer--base"},
-				{"$ref": "#/$defs/FGBuildable--powered"}
+				{
+					"$ref": "#/$defs/FGBuildableManufacturer--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				}
+			]
+		},
+		"FGBuildableManufacturer--Build_OilRefinery_C": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableManufacturer--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableManufacturer--base--IsPowered"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableManufacturer--base--mProductionEffectsRunning"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				}
+			]
+		},
+		"FGBuildableManufacturer--Build_Packager_C": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableManufacturer--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableManufacturer--base--IsPowered"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableManufacturer--base--mProductionEffectsRunning"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableManufacturer--base--packager"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				}
+			]
+		},
+		"FGBuildableManufacturer--Build_SmelterMk1_C": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableManufacturer--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableManufacturer--base--mProductionEffectsRunning"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				}
 			]
 		},
 		"FGBuildablePipeline--base": {
@@ -1006,8 +1057,12 @@
 		},
 		"FGBuildableTradingPost": {
 			"allOf": [
-				{"$ref": "#/$defs/FGBuildableTradingPost--base"},
-				{"$ref": "#/$defs/FGBuildable--powered"}
+				{
+					"$ref": "#/$defs/FGBuildableTradingPost--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				}
 			]
 		},
 		"FGBuildableTradingPost--base": {
@@ -1067,10 +1122,7 @@
 				},
 				"mMamFreeText": {
 					"type": "string",
-					"templated_string": [
-						"Use M",
-						{"type": "string"}
-					]
+					"templated_string": ["Use M", {"type": "string"}]
 				},
 				"mMamOccupiedText": {
 					"type": "string",
@@ -1256,9 +1308,7 @@
 		"FGDescriptor": {
 			"type": "object",
 			"$ref": "#/$defs/FGDescriptor--base",
-			"required": [
-				"mForm"
-			],
+			"required": ["mForm"],
 			"properties": {
 				"mForm": {
 					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mForm"
@@ -1301,10 +1351,7 @@
 				},
 				"mForm": {
 					"type": "string",
-					"templated_string": [
-						"RF_",
-						{"type": "string"}
-					]
+					"templated_string": ["RF_", {"type": "string"}]
 				},
 				"mSmallIcon": {
 					"oneOf": [
@@ -1348,8 +1395,12 @@
 		},
 		"FGDescriptor--sinkable": {
 			"allOf": [
-				{"$ref": "#/$defs/FGDescriptor"},
-				{"$ref": "#/$defs/FGDescriptor--sinkable--base"}
+				{
+					"$ref": "#/$defs/FGDescriptor"
+				},
+				{
+					"$ref": "#/$defs/FGDescriptor--sinkable--base"
+				}
 			]
 		},
 		"FGDescriptor--sinkable--base": {
@@ -1507,8 +1558,12 @@
 		},
 		"FGRecipe": {
 			"allOf": [
-				{"$ref": "#/$defs/FGRecipe--base"},
-				{"$ref": "#/$defs/FGRecipe--mProducedIn"}
+				{
+					"$ref": "#/$defs/FGRecipe--base"
+				},
+				{
+					"$ref": "#/$defs/FGRecipe--mProducedIn"
+				}
 			]
 		},
 		"FGRecipe--base": {
@@ -1538,9 +1593,7 @@
 		"FGRecipe--mProducedIn": {
 			"type": "object",
 			"$ref": "#/$defs/FGInstructive",
-			"required": [
-				"mProducedIn"
-			],
+			"required": ["mProducedIn"],
 			"properties": {
 				"mProducedIn": {
 					"oneOf": [
@@ -1581,8 +1634,12 @@
 		},
 		"FGResourceDescriptor": {
 			"allOf": [
-				{"$ref": "#/$defs/FGDescriptor--sinkable"},
-				{"$ref": "#/$defs/FGResourceDescriptor--base"}
+				{
+					"$ref": "#/$defs/FGDescriptor--sinkable"
+				},
+				{
+					"$ref": "#/$defs/FGResourceDescriptor--base"
+				}
 			]
 		},
 		"FGResourceDescriptor--base": {
@@ -1699,6 +1756,27 @@
 				}
 			}
 		},
+		"FGWeaponProjectile--instant": {
+			"type": "object",
+			"$ref": "#/$defs/FGWeaponProjectile",
+			"required": [
+				"mInstantHitDamage",
+				"mWeaponTraceLength",
+				"mAttachSocket"
+			],
+			"properties": {
+				"mInstantHitDamage": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mWeaponTraceLength": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mAttachSocket": {
+					"type": "string",
+					"const": "hand_rSocket"
+				}
+			}
+		},
 		"FGWeaponProjectile--thrown": {
 			"type": "object",
 			"$ref": "#/$defs/FGWeaponProjectile",
@@ -1790,27 +1868,6 @@
 				"mArmAnimation": {
 					"type": "string",
 					"enum": ["AE_Nobelisk", "AE_Generic1Hand"]
-				}
-			}
-		},
-		"FGWeaponProjectile--instant": {
-			"type": "object",
-			"$ref": "#/$defs/FGWeaponProjectile",
-			"required": [
-				"mInstantHitDamage",
-				"mWeaponTraceLength",
-				"mAttachSocket"
-			],
-			"properties": {
-				"mInstantHitDamage": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mWeaponTraceLength": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mAttachSocket": {
-					"type": "string",
-					"const": "hand_rSocket"
 				}
 			}
 		}

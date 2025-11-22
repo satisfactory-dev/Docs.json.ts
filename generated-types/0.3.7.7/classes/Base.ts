@@ -78,6 +78,10 @@ type FGBuildable_pole_with_length = FGBuildable_pole & {
 
 type FGBuildable_pole_with_length_and_power = FGBuildable_pole_with_length & FGBuildable_powered;
 
+type FGBuildable_powered = FGBuildable_powered_base & (FGBuildable & {
+	mSignificanceBias: docs_json_ts_common_types_decimal_string,
+});
+
 type FGBuildable_powered_base = FGBuildable & {
 	mPowerConsumption: docs_json_ts_common_types_decimal_string,
 	mPowerConsumptionExponent: docs_json_ts_common_types_decimal_string,
@@ -99,16 +103,12 @@ type FGBuildable_powered_base = FGBuildable & {
 	mSignificanceRange: docs_json_ts_common_types_decimal_string,
 };
 
-type FGBuildable_powered = FGBuildable_powered_base & (FGBuildable & {
-	mSignificanceBias: docs_json_ts_common_types_decimal_string,
-});
+type FGBuildable_powered_storage = FGBuildable_powered_storage_base & FGBuildable_powered;
 
 type FGBuildable_powered_storage_base = FGBuildable_powered_base & {
 	mStorageSizeX: docs_json_ts_common_types_integer_string,
 	mStorageSizeY: docs_json_ts_common_types_integer_string,
 };
-
-type FGBuildable_powered_storage = FGBuildable_powered_storage_base & FGBuildable_powered;
 
 type FGBuildable_spline = FGBuildable_with_length & {
 	mSplineData: '',
@@ -159,11 +159,11 @@ type FGBuildable_with_width = FGBuildable & {
 	mWidth: docs_json_ts_common_types_decimal_string,
 };
 
+type FGBuildableAttachment = FGBuildableAttachment_base & FGBuildable_powered;
+
 type FGBuildableAttachment_base = FGBuildable_powered_base & {
 	mCurrentInventoryIndex: docs_json_ts_common_types_integer_string,
 };
-
-type FGBuildableAttachment = FGBuildableAttachment_base & FGBuildable_powered;
 
 type FGBuildableAttachment_splitter = FGBuildableAttachment & {
 	mCurrentOutputIndex: docs_json_ts_common_types_integer_string_signed,
@@ -201,13 +201,13 @@ type FGBuildableGenerator = FGBuildableGenerator_no_fuel & {
 	mCachedPipeInputConnections: '',
 };
 
+type FGBuildableGenerator_no_fuel = FGBuildableGenerator_no_fuel_base & FGBuildable_powered;
+
 type FGBuildableGenerator_no_fuel_base = FGBuildable_powered_base & {
 	mPowerProduction: docs_json_ts_common_types_decimal_string,
 	mPowerProductionExponent: docs_json_ts_common_types_decimal_string,
 	mLoadPercentage: docs_json_ts_common_types_decimal_string,
 };
-
-type FGBuildableGenerator_no_fuel = FGBuildableGenerator_no_fuel_base & FGBuildable_powered;
 
 type FGBuildableManufacturer_base = FGBuildable_powered_base & {
 	mCurrentRecipeChanged: docs_json_ts_common_types_empty_object,
@@ -231,19 +231,19 @@ type FGBuildableManufacturer_base_packager = FGBuildable_powered_base & {
 	CurrentPackagingMode: '',
 };
 
-type FGBuildableManufacturer_Build_ConstructorMk1_C = FGBuildableManufacturer_base & FGBuildableManufacturer_base_IsPowered & FGBuildable_powered;
+type FGBuildableManufacturer_Build_AssemblerMk1_C = FGBuildableManufacturer_base & FGBuildableManufacturer_base_IsPowered & FGBuildable_powered;
 
-type FGBuildableManufacturer_Build_SmelterMk1_C = FGBuildableManufacturer_base & FGBuildableManufacturer_base_mProductionEffectsRunning & FGBuildable_powered;
+type FGBuildableManufacturer_Build_ConstructorMk1_C = FGBuildableManufacturer_base & FGBuildableManufacturer_base_IsPowered & FGBuildable_powered;
 
 type FGBuildableManufacturer_Build_FoundryMk1_C = FGBuildableManufacturer_base & FGBuildableManufacturer_base_mProductionEffectsRunning & FGBuildable_powered;
 
-type FGBuildableManufacturer_Build_OilRefinery_C = FGBuildableManufacturer_base & FGBuildableManufacturer_base_IsPowered & FGBuildableManufacturer_base_mProductionEffectsRunning & FGBuildable_powered;
+type FGBuildableManufacturer_Build_ManufacturerMk1_C = FGBuildableManufacturer_base & FGBuildable_powered;
 
-type FGBuildableManufacturer_Build_AssemblerMk1_C = FGBuildableManufacturer_base & FGBuildableManufacturer_base_IsPowered & FGBuildable_powered;
+type FGBuildableManufacturer_Build_OilRefinery_C = FGBuildableManufacturer_base & FGBuildableManufacturer_base_IsPowered & FGBuildableManufacturer_base_mProductionEffectsRunning & FGBuildable_powered;
 
 type FGBuildableManufacturer_Build_Packager_C = FGBuildableManufacturer_base & FGBuildableManufacturer_base_IsPowered & FGBuildableManufacturer_base_mProductionEffectsRunning & FGBuildableManufacturer_base_packager & FGBuildable_powered;
 
-type FGBuildableManufacturer_Build_ManufacturerMk1_C = FGBuildableManufacturer_base & FGBuildable_powered;
+type FGBuildableManufacturer_Build_SmelterMk1_C = FGBuildableManufacturer_base & FGBuildableManufacturer_base_mProductionEffectsRunning & FGBuildable_powered;
 
 type FGBuildablePipeline_base = FGBuildablePipeline_base_no_indicator & {
 	mIndicatorData: docs_json_ts_common_types_empty_object,
@@ -470,6 +470,12 @@ type FGWeaponProjectile = FGEquipment & {
 	mArmAnimation: 'AE_RebarGun' | 'AE_Rifle' | 'AE_ColorGun' | 'AE_Nobelisk' | 'AE_Generic1Hand',
 };
 
+type FGWeaponProjectile_instant = FGWeaponProjectile & {
+	mInstantHitDamage: docs_json_ts_common_types_decimal_string,
+	mWeaponTraceLength: docs_json_ts_common_types_decimal_string,
+	mAttachSocket: 'hand_rSocket',
+};
+
 type FGWeaponProjectile_thrown = FGWeaponProjectile & {
 	mExplosiveData: {
 		ProjectileClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
@@ -492,12 +498,6 @@ type FGWeaponProjectile_thrown = FGWeaponProjectile & {
 	mArmAnimation: 'AE_Nobelisk' | 'AE_Generic1Hand',
 };
 
-type FGWeaponProjectile_instant = FGWeaponProjectile & {
-	mInstantHitDamage: docs_json_ts_common_types_decimal_string,
-	mWeaponTraceLength: docs_json_ts_common_types_decimal_string,
-	mAttachSocket: 'hand_rSocket',
-};
-
 export type {
 	hasClassName,
 	isDescribed,
@@ -508,10 +508,10 @@ export type {
 	FGBuildable_pole,
 	FGBuildable_pole_with_length,
 	FGBuildable_pole_with_length_and_power,
-	FGBuildable_powered_base,
 	FGBuildable_powered,
-	FGBuildable_powered_storage_base,
+	FGBuildable_powered_base,
 	FGBuildable_powered_storage,
+	FGBuildable_powered_storage_base,
 	FGBuildable_spline,
 	FGBuildable_with_height,
 	FGBuildable_with_height_and_elevation,
@@ -519,25 +519,25 @@ export type {
 	FGBuildable_with_length,
 	FGBuildable_with_size_and_elevation,
 	FGBuildable_with_width,
-	FGBuildableAttachment_base,
 	FGBuildableAttachment,
+	FGBuildableAttachment_base,
 	FGBuildableAttachment_splitter,
 	FGBuildableConveyorBelt_base,
 	FGBuildableConveyorBelt_spline,
 	FGBuildableGenerator,
-	FGBuildableGenerator_no_fuel_base,
 	FGBuildableGenerator_no_fuel,
+	FGBuildableGenerator_no_fuel_base,
 	FGBuildableManufacturer_base,
 	FGBuildableManufacturer_base_IsPowered,
 	FGBuildableManufacturer_base_mProductionEffectsRunning,
 	FGBuildableManufacturer_base_packager,
-	FGBuildableManufacturer_Build_ConstructorMk1_C,
-	FGBuildableManufacturer_Build_SmelterMk1_C,
-	FGBuildableManufacturer_Build_FoundryMk1_C,
-	FGBuildableManufacturer_Build_OilRefinery_C,
 	FGBuildableManufacturer_Build_AssemblerMk1_C,
-	FGBuildableManufacturer_Build_Packager_C,
+	FGBuildableManufacturer_Build_ConstructorMk1_C,
+	FGBuildableManufacturer_Build_FoundryMk1_C,
 	FGBuildableManufacturer_Build_ManufacturerMk1_C,
+	FGBuildableManufacturer_Build_OilRefinery_C,
+	FGBuildableManufacturer_Build_Packager_C,
+	FGBuildableManufacturer_Build_SmelterMk1_C,
 	FGBuildablePipeline_base,
 	FGBuildablePipeline_base_no_indicator,
 	FGBuildablePipeline_base_spline,
@@ -571,6 +571,6 @@ export type {
 	FGResourceDescriptor_base,
 	FGSchematic,
 	FGWeaponProjectile,
-	FGWeaponProjectile_thrown,
 	FGWeaponProjectile_instant,
+	FGWeaponProjectile_thrown,
 };

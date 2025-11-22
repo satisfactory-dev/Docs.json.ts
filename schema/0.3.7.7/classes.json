@@ -93,10 +93,7 @@
 			"type": "object",
 			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--docking-station",
 			"unevaluatedProperties": false,
-			"required": [
-				"mMapText",
-				"mFuelTransferSpeed"
-			],
+			"required": ["mMapText", "mFuelTransferSpeed"],
 			"properties": {
 				"mMapText": {
 					"type": "string",
@@ -104,21 +101,6 @@
 				},
 				"mFuelTransferSpeed": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				}
-			}
-		},
-		"FGBuildableFactorySimpleProducer": {
-			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered",
-			"unevaluatedProperties": false,
-			"required": ["mTimeToProduceItem", "mEventType"],
-			"properties": {
-				"mTimeToProduceItem": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mEventType": {
-					"type": "string",
-					"const": "EV_Christmas"
 				}
 			}
 		},
@@ -148,6 +130,21 @@
 				"mPlayerList": {
 					"type": "string",
 					"const": ""
+				}
+			}
+		},
+		"FGBuildableFactorySimpleProducer": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered",
+			"unevaluatedProperties": false,
+			"required": ["mTimeToProduceItem", "mEventType"],
+			"properties": {
+				"mTimeToProduceItem": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mEventType": {
+					"type": "string",
+					"const": "EV_Christmas"
 				}
 			}
 		},
@@ -306,40 +303,40 @@
 				}
 			}
 		},
+		"FGBuildableManufacturer--Build_AssemblerMk1_C": {
+			"type": "object",
+			"unevaluatedProperties": false,
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--Build_AssemblerMk1_C"
+		},
 		"FGBuildableManufacturer--Build_ConstructorMk1_C": {
 			"type": "object",
 			"unevaluatedProperties": false,
 			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--Build_ConstructorMk1_C"
-		},
-		"FGBuildableManufacturer--Build_SmelterMk1_C": {
-			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--Build_SmelterMk1_C"
 		},
 		"FGBuildableManufacturer--Build_FoundryMk1_C": {
 			"type": "object",
 			"unevaluatedProperties": false,
 			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--Build_FoundryMk1_C"
 		},
+		"FGBuildableManufacturer--Build_ManufacturerMk1_C": {
+			"type": "object",
+			"unevaluatedProperties": false,
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--Build_ManufacturerMk1_C"
+		},
 		"FGBuildableManufacturer--Build_OilRefinery_C": {
 			"type": "object",
 			"unevaluatedProperties": false,
 			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--Build_OilRefinery_C"
-		},
-		"FGBuildableManufacturer--Build_AssemblerMk1_C": {
-			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--Build_AssemblerMk1_C"
 		},
 		"FGBuildableManufacturer--Build_Packager_C": {
 			"type": "object",
 			"unevaluatedProperties": false,
 			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--Build_Packager_C"
 		},
-		"FGBuildableManufacturer--Build_ManufacturerMk1_C": {
+		"FGBuildableManufacturer--Build_SmelterMk1_C": {
 			"type": "object",
 			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--Build_ManufacturerMk1_C"
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--Build_SmelterMk1_C"
 		},
 		"FGBuildablePipeHyper": {
 			"type": "object",
@@ -621,17 +618,11 @@
 									"type": "string",
 									"templated_string": [
 										"/Game/FactoryGame/Resource/RawResources/",
-										{
-											"type": "string"
-										},
+										{"type": "string"},
 										"/Desc_",
-										{
-											"type": "string"
-										},
+										{"type": "string"},
 										".Desc_",
-										{
-											"type": "string"
-										},
+										{"type": "string"},
 										"_C"
 									]
 								},
@@ -639,13 +630,9 @@
 									"type": "string",
 									"templated_string": [
 										"ParticleSystem'\"/Game/FactoryGame/VFX/Factory/Miner/P_Mining_",
-										{
-											"type": "string"
-										},
+										{"type": "string"},
 										"_01.P_Mining_",
-										{
-											"type": "string"
-										},
+										{"type": "string"},
 										"_01\"'"
 									]
 								}
@@ -991,15 +978,15 @@
 			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableTrainPlatform",
 			"unevaluatedProperties": false
 		},
-		"FGBuildableWall": {
-			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-height-and-width",
-			"unevaluatedProperties": false
-		},
 		"FGBuildableWalkway": {
 			"type": "object",
 			"unevaluatedProperties": false,
 			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-size-and-elevation"
+		},
+		"FGBuildableWall": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-height-and-width",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableWire": {
 			"type": "object",
@@ -1579,11 +1566,7 @@
 			"type": "object",
 			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGSchematic",
 			"unevaluatedProperties": false,
-			"required": [
-				"mTechTier",
-				"mUnlocks",
-				"mSchematicDependencies"
-			],
+			"required": ["mTechTier", "mUnlocks", "mSchematicDependencies"],
 			"properties": {
 				"mTechTier": {
 					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/Tier"

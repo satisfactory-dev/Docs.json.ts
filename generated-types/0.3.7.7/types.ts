@@ -348,17 +348,17 @@ type FGBuildableTrainPlatformEmpty = {
 	],
 };
 
-type FGBuildableWall = {
-	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableWall'}${'\''}`,
-	Classes: [
-		...docs_json_ts_0_3_7_7_classes_FGBuildableWall[],
-	],
-};
-
 type FGBuildableWalkway = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableWalkway'}${'\''}`,
 	Classes: [
 		...docs_json_ts_0_3_7_7_classes_FGBuildableWalkway[],
+	],
+};
+
+type FGBuildableWall = {
+	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableWall'}${'\''}`,
+	Classes: [
+		...docs_json_ts_0_3_7_7_classes_FGBuildableWall[],
 	],
 };
 
