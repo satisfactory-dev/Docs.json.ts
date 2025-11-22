@@ -13,6 +13,7 @@ import type {
 	mStackSize as docs_json_ts_0_3_7_7_properties_mStackSize,
 	mSubCategories as docs_json_ts_0_3_7_7_properties_mSubCategories,
 	mType as docs_json_ts_0_3_7_7_properties_mType,
+	Tier as docs_json_ts_0_3_7_7_properties_Tier,
 } from './../types/properties.ts';
 
 import type {
@@ -68,6 +69,10 @@ type FGBuildable_docking_station_base = FGBuildable_powered_storage_base & {
 	mStackTransferSize: docs_json_ts_common_types_decimal_string,
 };
 
+type FGBuildable_occupied = FGBuildable & {
+	mOccupiedText: Exclude<string, ''>,
+};
+
 type FGBuildable_pole = FGBuildable & {
 	mUseStaticHeight: docs_json_ts_common_types_bool_string,
 	mCanStack: docs_json_ts_common_types_bool_string,
@@ -114,6 +119,10 @@ type FGBuildable_powered_storage_base = FGBuildable_powered_base & {
 
 type FGBuildable_spline = FGBuildable_with_length & {
 	mSplineData: '',
+};
+
+type FGBuildable_tiered = FGBuildable & {
+	Tier: docs_json_ts_0_3_7_7_properties_Tier,
 };
 
 type FGBuildable_with_height = FGBuildable & {
@@ -623,6 +632,7 @@ export type {
 	FGBuildable_DisableAttachmentSnapOn,
 	FGBuildable_docking_station,
 	FGBuildable_docking_station_base,
+	FGBuildable_occupied,
 	FGBuildable_pole,
 	FGBuildable_pole_with_length,
 	FGBuildable_pole_with_length_and_power,
@@ -631,6 +641,7 @@ export type {
 	FGBuildable_powered_storage,
 	FGBuildable_powered_storage_base,
 	FGBuildable_spline,
+	FGBuildable_tiered,
 	FGBuildable_with_height,
 	FGBuildable_with_height_and_elevation,
 	FGBuildable_with_height_and_width,

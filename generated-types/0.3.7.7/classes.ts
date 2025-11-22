@@ -3,10 +3,12 @@
 import type {
 	FGBuildable as docs_json_ts_0_3_7_7_classes_base_FGBuildable,
 	FGBuildable_docking_station as docs_json_ts_0_3_7_7_classes_base_FGBuildable_docking_station,
+	FGBuildable_occupied as docs_json_ts_0_3_7_7_classes_base_FGBuildable_occupied,
 	FGBuildable_pole_with_length as docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_with_length,
 	FGBuildable_pole_with_length_and_power as docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_with_length_and_power,
 	FGBuildable_powered as docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered,
 	FGBuildable_spline as docs_json_ts_0_3_7_7_classes_base_FGBuildable_spline,
+	FGBuildable_tiered as docs_json_ts_0_3_7_7_classes_base_FGBuildable_tiered,
 	FGBuildable_with_height_and_elevation as docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_and_elevation,
 	FGBuildable_with_height_and_width as docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_and_width,
 	FGBuildable_with_length as docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_length,
@@ -57,18 +59,6 @@ import type {
 } from './classes/Base.ts';
 
 import type {
-	mSchematicDependencies_item as docs_json_ts_0_3_7_7_properties_mSchematicDependencies_item,
-	mUnlocks_item_base as docs_json_ts_0_3_7_7_properties_mUnlocks_item_base,
-	mUnlocks_item_mItemsToGive as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mItemsToGive,
-	mUnlocks_item_mNumArmEquipmentSlotsToUnlock as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mNumArmEquipmentSlotsToUnlock,
-	mUnlocks_item_mNumInventorySlotsToUnlock as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mNumInventorySlotsToUnlock,
-	mUnlocks_item_mRecipes as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mRecipes,
-	mUnlocks_item_mResourcesToAddToScanner as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mResourcesToAddToScanner,
-	mUnlocks_item_mSchematics as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mSchematics,
-	Tier as docs_json_ts_0_3_7_7_properties_Tier,
-} from './types/properties.ts';
-
-import type {
 	BGRA as docs_json_ts_common_types_BGRA,
 	bool_string as docs_json_ts_common_types_bool_string,
 	decimal_string as docs_json_ts_common_types_decimal_string,
@@ -83,20 +73,28 @@ import type {
 } from './../common/types.ts';
 
 import type {
+	mSchematicDependencies_item as docs_json_ts_0_3_7_7_properties_mSchematicDependencies_item,
+	mUnlocks_item_base as docs_json_ts_0_3_7_7_properties_mUnlocks_item_base,
+	mUnlocks_item_mItemsToGive as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mItemsToGive,
+	mUnlocks_item_mNumArmEquipmentSlotsToUnlock as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mNumArmEquipmentSlotsToUnlock,
+	mUnlocks_item_mNumInventorySlotsToUnlock as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mNumInventorySlotsToUnlock,
+	mUnlocks_item_mRecipes as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mRecipes,
+	mUnlocks_item_mResourcesToAddToScanner as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mResourcesToAddToScanner,
+	mUnlocks_item_mSchematics as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mSchematics,
+	Tier as docs_json_ts_0_3_7_7_properties_Tier,
+} from './types/properties.ts';
+
+import type {
 	StringPassesRegex,
 } from '@signpostmarv/json-schema-typescript-codegen';
 
 type FGBuildable_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable;
 
-type FGBuildable_occupied = docs_json_ts_0_3_7_7_classes_base_FGBuildable & {
-	mOccupiedText: Exclude<string, ''>,
-};
+type FGBuildable_occupied = docs_json_ts_0_3_7_7_classes_base_FGBuildable_occupied;
 
 type FGBuildable_powered_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered;
 
-type FGBuildable_tiered = docs_json_ts_0_3_7_7_classes_base_FGBuildable & {
-	Tier: docs_json_ts_0_3_7_7_properties_Tier,
-};
+type FGBuildable_tiered = docs_json_ts_0_3_7_7_classes_base_FGBuildable_tiered;
 
 type FGBuildableAttachmentMerger = docs_json_ts_0_3_7_7_classes_base_FGBuildableAttachment & {
 	mCurrentInputIndex: docs_json_ts_common_types_integer_string_signed,

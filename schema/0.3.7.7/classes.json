@@ -9,15 +9,8 @@
 		},
 		"FGBuildable--occupied": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable",
-			"unevaluatedProperties": false,
-			"required": ["mOccupiedText"],
-			"properties": {
-				"mOccupiedText": {
-					"type": "string",
-					"minLength": 1
-				}
-			}
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--occupied",
+			"unevaluatedProperties": false
 		},
 		"FGBuildable--powered-base": {
 			"type": "object",
@@ -26,14 +19,8 @@
 		},
 		"FGBuildable--tiered": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable",
-			"unevaluatedProperties": false,
-			"required": ["Tier"],
-			"properties": {
-				"Tier": {
-					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/Tier"
-				}
-			}
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--tiered",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableAttachmentMerger": {
 			"type": "object",
