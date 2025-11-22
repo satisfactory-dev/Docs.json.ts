@@ -18,6 +18,7 @@ import type {
 	FGBuildableAttachment_splitter as docs_json_ts_0_3_7_7_classes_base_FGBuildableAttachment_splitter,
 	FGBuildableConveyorBelt_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableConveyorBelt_base,
 	FGBuildableConveyorBelt_spline as docs_json_ts_0_3_7_7_classes_base_FGBuildableConveyorBelt_spline,
+	FGBuildableFactory_jump_pad as docs_json_ts_0_3_7_7_classes_base_FGBuildableFactory_jump_pad,
 	FGBuildableGenerator as docs_json_ts_0_3_7_7_classes_base_FGBuildableGenerator,
 	FGBuildableGenerator_no_fuel as docs_json_ts_0_3_7_7_classes_base_FGBuildableGenerator_no_fuel,
 	FGBuildableGeneratorFuel as docs_json_ts_0_3_7_7_classes_base_FGBuildableGeneratorFuel,
@@ -120,10 +121,7 @@ type FGBuildableDockingStation = docs_json_ts_0_3_7_7_classes_base_FGBuildable_d
 	mFuelTransferSpeed: docs_json_ts_common_types_decimal_string,
 };
 
-type FGBuildableFactory_jump_pad = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered & {
-	JumpForceCharacter: docs_json_ts_common_types_decimal_string,
-	JumpForcePhysics: docs_json_ts_common_types_decimal_string,
-};
+type FGBuildableFactory_jump_pad = docs_json_ts_0_3_7_7_classes_base_FGBuildableFactory_jump_pad;
 
 type FGBuildableFactory_landing_pad = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered & {
 	mDampeningFactor: docs_json_ts_common_types_decimal_string,

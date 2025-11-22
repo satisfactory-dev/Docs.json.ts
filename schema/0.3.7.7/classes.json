@@ -93,17 +93,8 @@
 		},
 		"FGBuildableFactory--jump-pad": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered",
-			"unevaluatedProperties": false,
-			"required": ["JumpForceCharacter", "JumpForcePhysics"],
-			"properties": {
-				"JumpForceCharacter": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"JumpForcePhysics": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				}
-			}
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableFactory--jump-pad",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableFactory--landing-pad": {
 			"type": "object",

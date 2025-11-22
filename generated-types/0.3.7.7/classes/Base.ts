@@ -189,6 +189,20 @@ type FGBuildableConveyorBelt_base = FGBuildable & {
 
 type FGBuildableConveyorBelt_spline = FGBuildable_spline & FGBuildableConveyorBelt_base;
 
+type FGBuildableFactory_jump_pad = FGBuildable_powered & FGBuildableFactory_jump_pad_base;
+
+type FGBuildableFactory_jump_pad_base = FGBuildable_powered_base & {
+	JumpForceCharacter: docs_json_ts_common_types_decimal_string,
+	JumpForcePhysics: docs_json_ts_common_types_decimal_string,
+};
+
+type FGBuildableFactory_landing_pad = FGBuildable_powered & FGBuildableFactory_landing_pad_base;
+
+type FGBuildableFactory_landing_pad_base = FGBuildable_powered_base & {
+	mDampeningFactor: docs_json_ts_common_types_decimal_string,
+	mPlayerList: '',
+};
+
 type FGBuildableGenerator = FGBuildableGenerator_no_fuel & FGBuildableGenerator_base;
 
 type FGBuildableGenerator_base = FGBuildableGenerator_no_fuel_base & {
@@ -661,6 +675,10 @@ export type {
 	FGBuildableAttachment_splitter,
 	FGBuildableConveyorBelt_base,
 	FGBuildableConveyorBelt_spline,
+	FGBuildableFactory_jump_pad,
+	FGBuildableFactory_jump_pad_base,
+	FGBuildableFactory_landing_pad,
+	FGBuildableFactory_landing_pad_base,
 	FGBuildableGenerator,
 	FGBuildableGenerator_base,
 	FGBuildableGenerator_no_fuel,
