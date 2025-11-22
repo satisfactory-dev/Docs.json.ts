@@ -28,7 +28,7 @@ import type {
 	FGBuildableManufacturer_Build_OilRefinery_C as docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_Build_OilRefinery_C,
 	FGBuildableManufacturer_Build_Packager_C as docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_Build_Packager_C,
 	FGBuildableManufacturer_Build_SmelterMk1_C as docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_Build_SmelterMk1_C,
-	FGBuildablePipeline_base_spline as docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeline_base_spline,
+	FGBuildablePipeline as docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeline,
 	FGBuildablePipeline_junction as docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeline_junction,
 	FGBuildablePipelinePump_pump as docs_json_ts_0_3_7_7_classes_base_FGBuildablePipelinePump_pump,
 	FGBuildablePipelinePump_valve as docs_json_ts_0_3_7_7_classes_base_FGBuildablePipelinePump_valve,
@@ -86,10 +86,6 @@ import type {
 	mUnlocks_item_mSchematics as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mSchematics,
 	Tier as docs_json_ts_0_3_7_7_properties_Tier,
 } from './types/properties.ts';
-
-import type {
-	StringPassesRegex,
-} from '@signpostmarv/json-schema-typescript-codegen';
 
 type FGBuildable_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable;
 
@@ -192,27 +188,7 @@ type FGBuildableManufacturer_Build_SmelterMk1_C = docs_json_ts_0_3_7_7_classes_b
 
 type FGBuildablePipeHyper = docs_json_ts_0_3_7_7_classes_base_FGBuildable_spline;
 
-type FGBuildablePipeline = docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeline_base_spline & {
-	mFlowLimit: docs_json_ts_common_types_decimal_string,
-	mFlowIndicatorMinimumPipeLength: docs_json_ts_common_types_decimal_string,
-	mMaxIndicatorTurnAngle: docs_json_ts_common_types_decimal_string,
-	mIgnoreActorsForIndicator: '',
-	mFluidNames: [
-		{
-			WwiseSafeName: StringPassesRegex<'^[A-Z][A-Za-z_]+[a-z]$'>,
-			ActualName?: StringPassesRegex<'^[A-Z][A-Za-z ]+[a-z]$'>,
-		},
-		...{
-			WwiseSafeName: StringPassesRegex<'^[A-Z][A-Za-z_]+[a-z]$'>,
-			ActualName?: StringPassesRegex<'^[A-Z][A-Za-z ]+[a-z]$'>,
-		}[],
-	],
-	mCurrentFluid: '',
-	mQuantiziedContent: docs_json_ts_common_types_decimal_string,
-	mQuantiziedFlow: docs_json_ts_common_types_decimal_string,
-	mRattleLimit: docs_json_ts_common_types_decimal_string,
-	mIsRattling: docs_json_ts_common_types_bool_string,
-};
+type FGBuildablePipeline = docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeline;
 
 type FGBuildablePipelineJunction = docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeline_junction & {
 	mFluidBoxVolume: docs_json_ts_common_types_decimal_string,

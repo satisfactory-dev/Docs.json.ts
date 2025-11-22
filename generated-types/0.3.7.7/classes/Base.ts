@@ -29,6 +29,10 @@ import type {
 	XYZ_decimal_string as docs_json_ts_common_types_XYZ_decimal_string,
 } from './../../common/types.ts';
 
+import type {
+	StringPassesRegex,
+} from '@signpostmarv/json-schema-typescript-codegen';
+
 type hasClassName = {
 	ClassName: `${string}${'_'}${string}${'_C'}`,
 };
@@ -277,6 +281,28 @@ type FGBuildableManufacturer_Build_OilRefinery_C = FGBuildableManufacturer_base 
 type FGBuildableManufacturer_Build_Packager_C = FGBuildableManufacturer_base & FGBuildableManufacturer_base_IsPowered & FGBuildableManufacturer_base_mProductionEffectsRunning & FGBuildableManufacturer_base_packager & FGBuildable_powered;
 
 type FGBuildableManufacturer_Build_SmelterMk1_C = FGBuildableManufacturer_base & FGBuildableManufacturer_base_mProductionEffectsRunning & FGBuildable_powered;
+
+type FGBuildablePipeline = FGBuildablePipeline_base_spline & {
+	mFlowLimit: docs_json_ts_common_types_decimal_string,
+	mFlowIndicatorMinimumPipeLength: docs_json_ts_common_types_decimal_string,
+	mMaxIndicatorTurnAngle: docs_json_ts_common_types_decimal_string,
+	mIgnoreActorsForIndicator: '',
+	mFluidNames: [
+		{
+			WwiseSafeName: StringPassesRegex<'^[A-Z][A-Za-z_]+[a-z]$'>,
+			ActualName?: StringPassesRegex<'^[A-Z][A-Za-z ]+[a-z]$'>,
+		},
+		...{
+			WwiseSafeName: StringPassesRegex<'^[A-Z][A-Za-z_]+[a-z]$'>,
+			ActualName?: StringPassesRegex<'^[A-Z][A-Za-z ]+[a-z]$'>,
+		}[],
+	],
+	mCurrentFluid: '',
+	mQuantiziedContent: docs_json_ts_common_types_decimal_string,
+	mQuantiziedFlow: docs_json_ts_common_types_decimal_string,
+	mRattleLimit: docs_json_ts_common_types_decimal_string,
+	mIsRattling: docs_json_ts_common_types_bool_string,
+};
 
 type FGBuildablePipeline_base = FGBuildablePipeline_base_no_indicator & {
 	mIndicatorData: docs_json_ts_common_types_empty_object,
@@ -713,6 +739,7 @@ export type {
 	FGBuildableManufacturer_Build_OilRefinery_C,
 	FGBuildableManufacturer_Build_Packager_C,
 	FGBuildableManufacturer_Build_SmelterMk1_C,
+	FGBuildablePipeline,
 	FGBuildablePipeline_base,
 	FGBuildablePipeline_base_no_indicator,
 	FGBuildablePipeline_base_spline,
