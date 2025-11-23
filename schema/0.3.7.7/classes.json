@@ -104,14 +104,8 @@
 		},
 		"FGBuildableGeneratorGeoThermal": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGenerator--no-fuel",
-			"unevaluatedProperties": false,
-			"required": ["mProductionEffectsRunning"],
-			"properties": {
-				"mProductionEffectsRunning": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				}
-			}
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGeneratorGeoThermal",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableGeneratorNuclear": {
 			"type": "object",

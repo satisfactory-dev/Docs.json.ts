@@ -952,6 +952,26 @@
 				}
 			]
 		},
+		"FGBuildableGeneratorGeoThermal": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableGeneratorGeoThermal--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableGenerator--no-fuel"
+				}
+			]
+		},
+		"FGBuildableGeneratorGeoThermal--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base",
+			"required": ["mProductionEffectsRunning"],
+			"properties": {
+				"mProductionEffectsRunning": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
+		},
 		"FGBuildableGeneratorNuclear": {
 			"allOf": [
 				{

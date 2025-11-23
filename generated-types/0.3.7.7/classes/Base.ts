@@ -293,6 +293,12 @@ type FGBuildableGeneratorFuel_fuel_base = FGBuildableGeneratorFuel_base & {
 	],
 };
 
+type FGBuildableGeneratorGeoThermal = FGBuildableGeneratorGeoThermal_base & FGBuildableGenerator_no_fuel;
+
+type FGBuildableGeneratorGeoThermal_base = FGBuildableGenerator_no_fuel_base & {
+	mProductionEffectsRunning: docs_json_ts_common_types_bool_string,
+};
+
 type FGBuildableGeneratorNuclear = FGBuildableGenerator & FGBuildableGeneratorNuclear_base & {
 	mDefaultFuelClasses: [
 		'/Game/FactoryGame/Resource/Parts/NuclearFuelRod/Desc_NuclearFuelRod.Desc_NuclearFuelRod_C',
@@ -933,6 +939,8 @@ export type {
 	FGBuildableGeneratorFuel_coal_base,
 	FGBuildableGeneratorFuel_fuel,
 	FGBuildableGeneratorFuel_fuel_base,
+	FGBuildableGeneratorGeoThermal,
+	FGBuildableGeneratorGeoThermal_base,
 	FGBuildableGeneratorNuclear,
 	FGBuildableGeneratorNuclear_base,
 	FGBuildableJumppad,
