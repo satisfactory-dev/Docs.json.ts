@@ -27,6 +27,24 @@ import update3 from './schema/0.3.7.7/docs.json' with {
 	type: 'json',
 };
 
+// eslint-disable-next-line @stylistic/max-len
+import update4_properties from './schema/0.4.2.11/properties.json' with {
+	type: 'json',
+};
+
+import update4_classes from './schema/0.4.2.11/classes.json' with {
+	type: 'json',
+};
+
+// eslint-disable-next-line @stylistic/max-len
+import update4_classes__base from './schema/0.4.2.11/base-classes.json' with {
+	type: 'json',
+};
+
+import update4 from './schema/0.4.2.11/docs.json' with {
+	type: 'json',
+};
+
 function sort_$defs(schema: SchemaObjectWith$id) {
 	const {$defs} = schema;
 
@@ -73,6 +91,10 @@ for (
 		[update3_classes__base, './schema/0.3.7.7/base-classes.json'],
 		[update3_classes, './schema/0.3.7.7/classes.json'],
 		[update3, './schema/0.3.7.7/docs.json'],
+		[update4_properties, './schema/0.4.2.11/properties.json'],
+		[update4_classes__base, './schema/0.4.2.11/base-classes.json'],
+		[update4_classes, './schema/0.4.2.11/classes.json'],
+		[update4, './schema/0.4.2.11/docs.json'],
 	] as [SchemaObjectWith$id, string][]
 ) {
 	sort_$defs(schema);

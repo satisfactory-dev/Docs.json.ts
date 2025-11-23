@@ -39,6 +39,10 @@ prepare:
 	@echo 'prepare 0.3.7.7'
 	@node ./prepare-0.3.7.7.ts
 
+prepare--update4: prepare
+	@echo 'prepare 0.4.2.11'
+	@node ./prepare-0.4.2.11.ts
+
 generate: prepare
 	@echo 'running generator'
 	@git clean -fxd ./generated-types/
