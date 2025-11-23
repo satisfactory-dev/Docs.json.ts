@@ -15,8 +15,8 @@ import type {
 	FGBuildable_with_width as docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_width,
 	FGBuildableAttachment as docs_json_ts_0_3_7_7_classes_base_FGBuildableAttachment,
 	FGBuildableAttachment_splitter as docs_json_ts_0_3_7_7_classes_base_FGBuildableAttachment_splitter,
-	FGBuildableConveyorBelt_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableConveyorBelt_base,
 	FGBuildableConveyorBelt_spline as docs_json_ts_0_3_7_7_classes_base_FGBuildableConveyorBelt_spline,
+	FGBuildableConveyorLift as docs_json_ts_0_3_7_7_classes_base_FGBuildableConveyorLift,
 	FGBuildableFactory_jump_pad as docs_json_ts_0_3_7_7_classes_base_FGBuildableFactory_jump_pad,
 	FGBuildableGenerator_no_fuel as docs_json_ts_0_3_7_7_classes_base_FGBuildableGenerator_no_fuel,
 	FGBuildableGeneratorFuel_biomass as docs_json_ts_0_3_7_7_classes_base_FGBuildableGeneratorFuel_biomass,
@@ -76,7 +76,6 @@ import type {
 	PitchYawRoll_decimal_string_signed as docs_json_ts_common_types_PitchYawRoll_decimal_string_signed,
 	RGBA as docs_json_ts_common_types_RGBA,
 	XYZ_decimal_string as docs_json_ts_common_types_XYZ_decimal_string,
-	XYZW_decimal_string as docs_json_ts_common_types_XYZW_decimal_string,
 } from './../common/types.ts';
 
 import type {
@@ -107,15 +106,7 @@ type FGBuildableAttachmentSplitter = docs_json_ts_0_3_7_7_classes_base_FGBuildab
 
 type FGBuildableConveyorBelt = docs_json_ts_0_3_7_7_classes_base_FGBuildableConveyorBelt_spline;
 
-type FGBuildableConveyorLift = docs_json_ts_0_3_7_7_classes_base_FGBuildableConveyorBelt_base & {
-	mMeshHeight: docs_json_ts_common_types_decimal_string,
-	mTopTransform: {
-		Rotation: docs_json_ts_common_types_XYZW_decimal_string,
-		Translation: docs_json_ts_common_types_XYZ_decimal_string,
-		Scale3D: docs_json_ts_common_types_XYZ_decimal_string,
-	},
-	mIsReversed: docs_json_ts_common_types_bool_string,
-};
+type FGBuildableConveyorLift = docs_json_ts_0_3_7_7_classes_base_FGBuildableConveyorLift;
 
 type FGBuildableDockingStation = docs_json_ts_0_3_7_7_classes_base_FGBuildable_docking_station & {
 	mMapText: '',

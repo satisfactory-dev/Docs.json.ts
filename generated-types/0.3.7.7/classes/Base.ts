@@ -27,6 +27,7 @@ import type {
 	PitchYawRoll_decimal_string_signed as docs_json_ts_common_types_PitchYawRoll_decimal_string_signed,
 	RGBA as docs_json_ts_common_types_RGBA,
 	XYZ_decimal_string as docs_json_ts_common_types_XYZ_decimal_string,
+	XYZW_decimal_string as docs_json_ts_common_types_XYZW_decimal_string,
 } from './../../common/types.ts';
 
 import type {
@@ -198,6 +199,16 @@ type FGBuildableConveyorBelt_base = FGBuildable & {
 };
 
 type FGBuildableConveyorBelt_spline = FGBuildable_spline & FGBuildableConveyorBelt_base;
+
+type FGBuildableConveyorLift = FGBuildableConveyorBelt_base & {
+	mMeshHeight: docs_json_ts_common_types_decimal_string,
+	mTopTransform: {
+		Rotation: docs_json_ts_common_types_XYZW_decimal_string,
+		Translation: docs_json_ts_common_types_XYZ_decimal_string,
+		Scale3D: docs_json_ts_common_types_XYZ_decimal_string,
+	},
+	mIsReversed: docs_json_ts_common_types_bool_string,
+};
 
 type FGBuildableFactory_jump_pad = FGBuildable_powered & FGBuildableFactory_jump_pad_base;
 
@@ -772,6 +783,7 @@ export type {
 	FGBuildableAttachment_splitter,
 	FGBuildableConveyorBelt_base,
 	FGBuildableConveyorBelt_spline,
+	FGBuildableConveyorLift,
 	FGBuildableFactory_jump_pad,
 	FGBuildableFactory_jump_pad_base,
 	FGBuildableFactory_landing_pad,

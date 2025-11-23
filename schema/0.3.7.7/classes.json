@@ -45,36 +45,8 @@
 		},
 		"FGBuildableConveyorLift": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableConveyorBelt--base",
-			"unevaluatedProperties": false,
-			"required": ["mMeshHeight", "mTopTransform", "mIsReversed"],
-			"properties": {
-				"mMeshHeight": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mTopTransform": {
-					"type": "string",
-					"typed_string": {
-						"type": "object",
-						"additionalProperties": false,
-						"required": ["Rotation", "Translation", "Scale3D"],
-						"properties": {
-							"Rotation": {
-								"$ref": "docs.json.ts--common--types#/$defs/XYZW--decimal_string"
-							},
-							"Translation": {
-								"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
-							},
-							"Scale3D": {
-								"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
-							}
-						}
-					}
-				},
-				"mIsReversed": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				}
-			}
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableConveyorLift",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableDockingStation": {
 			"type": "object",
