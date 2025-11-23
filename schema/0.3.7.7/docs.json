@@ -544,9 +544,9 @@
 					"maxItems": 5,
 					"items": false,
 					"prefixItems": [
-							{
-								"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGBuildableResourceExtractor--water"
-							},
+						{
+							"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGBuildableResourceExtractor--water"
+						},
 						{
 							"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGBuildableResourceExtractor--miner--mk1"
 						},

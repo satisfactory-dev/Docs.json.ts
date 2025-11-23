@@ -1542,6 +1542,16 @@
 				}
 			]
 		},
+		"FGBuildablePipelineSupport": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--pole--with-length",
+			"required": ["mVerticalAngle"],
+			"properties": {
+				"mVerticalAngle": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
 		"FGBuildablePipeReservoir": {
 			"allOf": [
 				{
@@ -1578,16 +1588,6 @@
 				},
 				"mIndicatorData": {
 					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-				}
-			}
-		},
-		"FGBuildablePipelineSupport": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildable--pole--with-length",
-			"required": ["mVerticalAngle"],
-			"properties": {
-				"mVerticalAngle": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
 			}
 		},
@@ -1893,9 +1893,7 @@
 		"FGBuildableResourceExtractor--miner--mk1--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableResourceExtractor--miner--base",
-			"required": [
-				"mDisplayName"
-			],
+			"required": ["mDisplayName"],
 			"properties": {
 				"mDisplayName": {
 					"type": "string",
@@ -1919,10 +1917,7 @@
 		"FGBuildableResourceExtractor--miner--mk2--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableResourceExtractor--miner--base",
-			"required": [
-				"mCanPlayAfterStartUpStopped",
-				"mDisplayName"
-			],
+			"required": ["mCanPlayAfterStartUpStopped", "mDisplayName"],
 			"properties": {
 				"mCanPlayAfterStartUpStopped": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
@@ -1949,10 +1944,7 @@
 		"FGBuildableResourceExtractor--miner--mk3--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableResourceExtractor--miner--base",
-			"required": [
-				"mCanPlayAfterStartUpStopped",
-				"mDisplayName"
-			],
+			"required": ["mCanPlayAfterStartUpStopped", "mDisplayName"],
 			"properties": {
 				"mCanPlayAfterStartUpStopped": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
@@ -2119,6 +2111,16 @@
 				}
 			]
 		},
+		"FGBuildableResourceSink--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--powered--base",
+			"required": ["mProcessingTime"],
+			"properties": {
+				"mProcessingTime": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
 		"FGBuildableResourceSinkShop": {
 			"allOf": [
 				{
@@ -2136,18 +2138,6 @@
 			"properties": {
 				"mShopInventoryDefaultSize": {
 					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-				}
-			}
-		},
-		"FGBuildableResourceSink--base": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--base",
-			"required": [
-				"mProcessingTime"
-			],
-			"properties": {
-				"mProcessingTime": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
 			}
 		},
@@ -2178,7 +2168,7 @@
 					"$ref": "#/$defs/FGBuildableSplitterSmart--base"
 				},
 				{
-			"$ref": "#/$defs/FGBuildableAttachment--splitter"
+					"$ref": "#/$defs/FGBuildableAttachment--splitter"
 				}
 			]
 		},
@@ -2317,7 +2307,10 @@
 				},
 				"mMamFreeText": {
 					"type": "string",
-					"templated_string": ["Use M", {"type": "string"}]
+					"templated_string": [
+						"Use M",
+						{"type": "string"}
+					]
 				},
 				"mMamOccupiedText": {
 					"type": "string",
@@ -2695,7 +2688,10 @@
 				},
 				"mForm": {
 					"type": "string",
-					"templated_string": ["RF_", {"type": "string"}]
+					"templated_string": [
+						"RF_",
+						{"type": "string"}
+					]
 				},
 				"mSmallIcon": {
 					"oneOf": [
