@@ -124,6 +124,30 @@
 				}
 			}
 		},
+		"XYZ--decimal_string--list": {
+			"type": "string",
+			"typed_string": {
+				"type": "array",
+				"minItems": 1,
+				"uniqueItems": true,
+				"items": {
+					"type": "object",
+					"additionalProperties": false,
+					"required": ["X", "Y", "Z"],
+					"properties": {
+						"X": {
+							"$ref": "#/$defs/decimal_string--signed"
+						},
+						"Y": {
+							"$ref": "#/$defs/decimal_string--signed"
+						},
+						"Z": {
+							"$ref": "#/$defs/decimal_string--signed"
+						}
+					}
+				}
+			}
+		},
 		"XYZW--decimal_string": {
 			"type": "string",
 			"typed_string": {
