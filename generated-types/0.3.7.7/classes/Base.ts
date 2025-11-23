@@ -460,6 +460,17 @@ type FGBuildablePowerPole = FGBuildable & {
 	mPowerPoleType: 'PPT_POLE' | 'PPT_WALL' | 'PPT_WALL_DOUBLE',
 };
 
+type FGBuildableRailroadStation = FGBuildableTrainPlatform & FGBuildableRailroadStation_base;
+
+type FGBuildableRailroadStation_base = FGBuildableTrainPlatform_base & {
+	mMapText: 'Train Station',
+	mDockedPlatformList: '',
+};
+
+type FGBuildableRailroadTrack = FGBuildable_with_length & {
+	mIsOwnedByPlatform: docs_json_ts_common_types_bool_string,
+};
+
 type FGBuildableResourceExtractor = FGBuildableResourceExtractor_base_with_resources & {
 	mRequireResourceAtMinimumDepthChecks: docs_json_ts_common_types_bool_string,
 	mMinimumDepthForPlacement: docs_json_ts_common_types_decimal_string,
@@ -619,7 +630,9 @@ type FGBuildableTradingPost_base = FGBuildable_powered_base & {
 	mNeedPlayingBuildEffectNotification: docs_json_ts_common_types_bool_string,
 };
 
-type FGBuildableTrainPlatform = FGBuildable_powered & {
+type FGBuildableTrainPlatform = FGBuildableTrainPlatform_base & FGBuildable_powered;
+
+type FGBuildableTrainPlatform_base = FGBuildable_powered_base & {
 	mPlatformConnections: [
         `FGTrainPlatformConnection'"/Game/FactoryGame/${string}${'"\''}`,
         ...`FGTrainPlatformConnection'"/Game/FactoryGame/${string}${'"\''}`[],
@@ -630,7 +643,31 @@ type FGBuildableTrainPlatform = FGBuildable_powered & {
 	mDockingSequenceTimerHandle: docs_json_ts_common_types_empty_object,
 };
 
-type FGBuildableTrainPlatform_with_storage = FGBuildable_powered_storage & FGBuildableTrainPlatform;
+type FGBuildableTrainPlatform_with_storage = FGBuildable_powered_storage & FGBuildableTrainPlatform_with_storage_base & FGBuildableTrainPlatform;
+
+type FGBuildableTrainPlatform_with_storage_base = FGBuildable_powered_storage_base & FGBuildableTrainPlatform_base;
+
+type FGBuildableTrainPlatformCargo = FGBuildableTrainPlatformCargo_base & FGBuildableTrainPlatform_with_storage;
+
+type FGBuildableTrainPlatformCargo_base = FGBuildableTrainPlatform_with_storage_base & {
+	mPotentialDockers: '',
+	mFreightCargoType: 'FCT_Standard' | 'FCT_Liquid',
+	mCanUnloadAny: docs_json_ts_common_types_bool_string,
+	mIsFullUnload: docs_json_ts_common_types_bool_string,
+	mCanLoadAny: docs_json_ts_common_types_bool_string,
+	mIsFullLoad: docs_json_ts_common_types_bool_string,
+	mTimeToCompleteLoad: docs_json_ts_common_types_decimal_string,
+	mTimeToSwapLoadVisibility: docs_json_ts_common_types_decimal_string,
+	mTimeToCompleteUnload: docs_json_ts_common_types_decimal_string,
+	mTimeToSwapUnloadVisibility: docs_json_ts_common_types_decimal_string,
+	mStorageInputConnections: '',
+	mPipeInputConnections: '',
+	mPipeOutputConnections: '',
+	mShouldExecuteLoadOrUnload: docs_json_ts_common_types_bool_string,
+	mSwapCargoVisibilityTimerHandle: docs_json_ts_common_types_empty_object,
+	mReplicatedOutflowRate: docs_json_ts_common_types_decimal_string,
+	mReplicatedInflowRate: docs_json_ts_common_types_decimal_string,
+};
 
 type FGBuildableWire = FGBuildable & {
 	mMaxLength: docs_json_ts_common_types_decimal_string,
@@ -926,6 +963,9 @@ export type {
 	FGBuildablePipelineSupport,
 	FGBuildablePole,
 	FGBuildablePowerPole,
+	FGBuildableRailroadStation,
+	FGBuildableRailroadStation_base,
+	FGBuildableRailroadTrack,
 	FGBuildableResourceExtractor,
 	FGBuildableResourceExtractor_base,
 	FGBuildableResourceExtractor_base_with_resources,
@@ -953,7 +993,11 @@ export type {
 	FGBuildableTradingPost,
 	FGBuildableTradingPost_base,
 	FGBuildableTrainPlatform,
+	FGBuildableTrainPlatform_base,
 	FGBuildableTrainPlatform_with_storage,
+	FGBuildableTrainPlatform_with_storage_base,
+	FGBuildableTrainPlatformCargo,
+	FGBuildableTrainPlatformCargo_base,
 	FGBuildableWire,
 	FGConsumableDescriptor,
 	FGConsumableEquipment,

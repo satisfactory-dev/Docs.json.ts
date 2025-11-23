@@ -8,7 +8,6 @@ import type {
 	FGBuildable_tiered as docs_json_ts_0_3_7_7_classes_base_FGBuildable_tiered,
 	FGBuildable_with_height_and_elevation as docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_and_elevation,
 	FGBuildable_with_height_and_width as docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_and_width,
-	FGBuildable_with_length as docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_length,
 	FGBuildable_with_size_and_elevation as docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_size_and_elevation,
 	FGBuildable_with_width as docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_width,
 	FGBuildableAttachment_splitter as docs_json_ts_0_3_7_7_classes_base_FGBuildableAttachment_splitter,
@@ -38,6 +37,8 @@ import type {
 	FGBuildablePipeReservoir as docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeReservoir,
 	FGBuildablePole as docs_json_ts_0_3_7_7_classes_base_FGBuildablePole,
 	FGBuildablePowerPole as docs_json_ts_0_3_7_7_classes_base_FGBuildablePowerPole,
+	FGBuildableRailroadStation as docs_json_ts_0_3_7_7_classes_base_FGBuildableRailroadStation,
+	FGBuildableRailroadTrack as docs_json_ts_0_3_7_7_classes_base_FGBuildableRailroadTrack,
 	FGBuildableResourceExtractor_miner_mk1 as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_mk1,
 	FGBuildableResourceExtractor_miner_mk2 as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_mk2,
 	FGBuildableResourceExtractor_miner_mk3 as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_mk3,
@@ -48,7 +49,7 @@ import type {
 	FGBuildableSplitterSmart as docs_json_ts_0_3_7_7_classes_base_FGBuildableSplitterSmart,
 	FGBuildableTradingPost as docs_json_ts_0_3_7_7_classes_base_FGBuildableTradingPost,
 	FGBuildableTrainPlatform as docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatform,
-	FGBuildableTrainPlatform_with_storage as docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatform_with_storage,
+	FGBuildableTrainPlatformCargo as docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatformCargo,
 	FGBuildableWire as docs_json_ts_0_3_7_7_classes_base_FGBuildableWire,
 	FGConsumableDescriptor as docs_json_ts_0_3_7_7_classes_base_FGConsumableDescriptor,
 	FGConsumableEquipment as docs_json_ts_0_3_7_7_classes_base_FGConsumableEquipment,
@@ -186,14 +187,9 @@ type FGBuildableRadarTower = docs_json_ts_0_3_7_7_classes_base_FGBuildable_power
 	mTimeToNextExpansion: docs_json_ts_common_types_decimal_string,
 };
 
-type FGBuildableRailroadStation = docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatform & {
-	mMapText: 'Train Station',
-	mDockedPlatformList: '',
-};
+type FGBuildableRailroadStation = docs_json_ts_0_3_7_7_classes_base_FGBuildableRailroadStation;
 
-type FGBuildableRailroadTrack = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_length & {
-	mIsOwnedByPlatform: docs_json_ts_common_types_bool_string,
-};
+type FGBuildableRailroadTrack = docs_json_ts_0_3_7_7_classes_base_FGBuildableRailroadTrack;
 
 type FGBuildableResourceExtractor_miner_mk1 = docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_mk1;
 
@@ -230,25 +226,7 @@ type FGBuildableTradingPost = docs_json_ts_0_3_7_7_classes_base_FGBuildableTradi
 	mMamOccupiedText: 'M.A.M. is occupied',
 };
 
-type FGBuildableTrainPlatformCargo = docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatform_with_storage & {
-	mPotentialDockers: '',
-	mFreightCargoType: 'FCT_Standard' | 'FCT_Liquid',
-	mCanUnloadAny: docs_json_ts_common_types_bool_string,
-	mIsFullUnload: docs_json_ts_common_types_bool_string,
-	mCanLoadAny: docs_json_ts_common_types_bool_string,
-	mIsFullLoad: docs_json_ts_common_types_bool_string,
-	mTimeToCompleteLoad: docs_json_ts_common_types_decimal_string,
-	mTimeToSwapLoadVisibility: docs_json_ts_common_types_decimal_string,
-	mTimeToCompleteUnload: docs_json_ts_common_types_decimal_string,
-	mTimeToSwapUnloadVisibility: docs_json_ts_common_types_decimal_string,
-	mStorageInputConnections: '',
-	mPipeInputConnections: '',
-	mPipeOutputConnections: '',
-	mShouldExecuteLoadOrUnload: docs_json_ts_common_types_bool_string,
-	mSwapCargoVisibilityTimerHandle: docs_json_ts_common_types_empty_object,
-	mReplicatedOutflowRate: docs_json_ts_common_types_decimal_string,
-	mReplicatedInflowRate: docs_json_ts_common_types_decimal_string,
-};
+type FGBuildableTrainPlatformCargo = docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatformCargo;
 
 type FGBuildableTrainPlatformEmpty = docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatform;
 

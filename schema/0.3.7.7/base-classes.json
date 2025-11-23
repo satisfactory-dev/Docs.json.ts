@@ -1596,6 +1596,41 @@
 				}
 			}
 		},
+		"FGBuildableRailroadStation": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableTrainPlatform"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableRailroadStation--base"
+				}
+			]
+		},
+		"FGBuildableRailroadStation--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableTrainPlatform--base",
+			"required": ["mMapText", "mDockedPlatformList"],
+			"properties": {
+				"mMapText": {
+					"type": "string",
+					"const": "Train Station"
+				},
+				"mDockedPlatformList": {
+					"type": "string",
+					"const": ""
+				}
+			}
+		},
+		"FGBuildableRailroadTrack": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--with-length",
+			"required": ["mIsOwnedByPlatform"],
+			"properties": {
+				"mIsOwnedByPlatform": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
+		},
 		"FGBuildableResourceExtractor": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableResourceExtractor--base--with-resources",
@@ -2251,8 +2286,18 @@
 			}
 		},
 		"FGBuildableTrainPlatform": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableTrainPlatform--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				}
+			]
+		},
+		"FGBuildableTrainPlatform--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered",
+			"$ref": "#/$defs/FGBuildable--powered--base",
 			"required": [
 				"mPlatformConnections",
 				"mIsOrientationReversed",
@@ -2292,14 +2337,116 @@
 		"FGBuildableTrainPlatform--with-storage": {
 			"allOf": [
 				{
-					"type": "object",
 					"$ref": "#/$defs/FGBuildable--powered-storage"
 				},
 				{
-					"type": "object",
+					"$ref": "#/$defs/FGBuildableTrainPlatform--with-storage--base"
+				},
+				{
 					"$ref": "#/$defs/FGBuildableTrainPlatform"
 				}
 			]
+		},
+		"FGBuildableTrainPlatform--with-storage--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--powered-storage--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableTrainPlatform--base"
+				}
+			]
+		},
+		"FGBuildableTrainPlatformCargo": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableTrainPlatformCargo--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableTrainPlatform--with-storage"
+				}
+			]
+		},
+		"FGBuildableTrainPlatformCargo--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableTrainPlatform--with-storage--base",
+			"required": [
+				"mPotentialDockers",
+				"mFreightCargoType",
+				"mCanUnloadAny",
+				"mIsFullUnload",
+				"mCanLoadAny",
+				"mIsFullLoad",
+				"mTimeToCompleteLoad",
+				"mTimeToSwapLoadVisibility",
+				"mTimeToCompleteUnload",
+				"mTimeToSwapUnloadVisibility",
+				"mStorageInputConnections",
+				"mPipeInputConnections",
+				"mPipeOutputConnections",
+				"mShouldExecuteLoadOrUnload",
+				"mSwapCargoVisibilityTimerHandle",
+				"mReplicatedOutflowRate",
+				"mReplicatedInflowRate"
+			],
+			"properties": {
+				"mPotentialDockers": {
+					"type": "string",
+					"const": ""
+				},
+				"mFreightCargoType": {
+					"type": "string",
+					"enum": ["FCT_Standard", "FCT_Liquid"]
+				},
+				"mCanUnloadAny": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mIsFullUnload": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mCanLoadAny": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mIsFullLoad": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mTimeToCompleteLoad": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mTimeToSwapLoadVisibility": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mTimeToCompleteUnload": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mTimeToSwapUnloadVisibility": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mStorageInputConnections": {
+					"type": "string",
+					"const": ""
+				},
+				"mPipeInputConnections": {
+					"type": "string",
+					"const": ""
+				},
+				"mPipeOutputConnections": {
+					"type": "string",
+					"const": ""
+				},
+				"mShouldExecuteLoadOrUnload": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mSwapCargoVisibilityTimerHandle": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mReplicatedOutflowRate": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mReplicatedInflowRate": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
 		},
 		"FGBuildableWire": {
 			"type": "object",
