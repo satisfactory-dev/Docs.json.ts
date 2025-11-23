@@ -176,10 +176,20 @@
 		"FGBuildable--pole--with-length-and-power": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGBuildable--pole--with-length"
+					"$ref": "#/$defs/FGBuildable--pole--with-length-and-power--base"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--powered"
+				}
+			]
+		},
+		"FGBuildable--pole--with-length-and-power--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--pole--with-length"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base"
 				}
 			]
 		},
@@ -2642,6 +2652,61 @@
 			"properties": {
 				"mAmountOfWaste": {
 					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				}
+			}
+		},
+		"FGPipeHyperStart": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGPipeHyperStart--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--pole--with-length-and-power"
+				}
+			]
+		},
+		"FGPipeHyperStart--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--pole--with-length-and-power--base",
+			"required": [
+				"InterpolateEngineSound_InterpolateEngineAlpha_064FA8194B7224F6F187999413D1C8A6",
+				"InterpolateEngineSound__Direction_064FA8194B7224F6F187999413D1C8A6",
+				"mWindDirectionFromTurbine",
+				"mIsWindSoundPlaying?",
+				"mAudioTimerCounter",
+				"AudioCounterTimer",
+				"IsEnginePlaying",
+				"mOpeningOffset",
+				"mInitialMinSpeedFactor"
+			],
+			"properties": {
+				"InterpolateEngineSound_InterpolateEngineAlpha_064FA8194B7224F6F187999413D1C8A6": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"InterpolateEngineSound__Direction_064FA8194B7224F6F187999413D1C8A6": {
+					"type": "string",
+					"const": "Forward"
+				},
+				"mWindDirectionFromTurbine": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mIsWindSoundPlaying?": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mAudioTimerCounter": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"AudioCounterTimer": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"IsEnginePlaying": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mOpeningOffset": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mInitialMinSpeedFactor": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
 			}
 		},

@@ -88,7 +88,9 @@ type FGBuildable_pole_with_length = FGBuildable_pole & {
 	mLength: docs_json_ts_common_types_decimal_string,
 };
 
-type FGBuildable_pole_with_length_and_power = FGBuildable_pole_with_length & FGBuildable_powered;
+type FGBuildable_pole_with_length_and_power = FGBuildable_pole_with_length_and_power_base & FGBuildable_powered;
+
+type FGBuildable_pole_with_length_and_power_base = FGBuildable_pole_with_length & FGBuildable_powered_base;
 
 type FGBuildable_powered = FGBuildable_powered_base & (FGBuildable & {
 	mSignificanceBias: docs_json_ts_common_types_decimal_string,
@@ -724,6 +726,20 @@ type FGItemDescriptorNuclearFuel = FGDescriptor_sinkable & {
 	mAmountOfWaste: docs_json_ts_common_types_integer_string,
 };
 
+type FGPipeHyperStart = FGPipeHyperStart_base & FGBuildable_pole_with_length_and_power;
+
+type FGPipeHyperStart_base = FGBuildable_pole_with_length_and_power_base & {
+	InterpolateEngineSound_InterpolateEngineAlpha_064FA8194B7224F6F187999413D1C8A6: docs_json_ts_common_types_decimal_string,
+	InterpolateEngineSound__Direction_064FA8194B7224F6F187999413D1C8A6: 'Forward',
+	mWindDirectionFromTurbine: docs_json_ts_common_types_empty_object,
+	['mIsWindSoundPlaying?']: docs_json_ts_common_types_bool_string,
+	mAudioTimerCounter: docs_json_ts_common_types_decimal_string,
+	AudioCounterTimer: docs_json_ts_common_types_empty_object,
+	IsEnginePlaying: docs_json_ts_common_types_bool_string,
+	mOpeningOffset: docs_json_ts_common_types_decimal_string,
+	mInitialMinSpeedFactor: docs_json_ts_common_types_decimal_string,
+};
+
 type FGPortableMinerDispenser = FGEquipment_dispenser & {
 	mAllowedResourceForms: docs_json_ts_0_3_7_7_properties_mAllowedResourceForms,
 };
@@ -836,6 +852,7 @@ export type {
 	FGBuildable_pole,
 	FGBuildable_pole_with_length,
 	FGBuildable_pole_with_length_and_power,
+	FGBuildable_pole_with_length_and_power_base,
 	FGBuildable_powered,
 	FGBuildable_powered_base,
 	FGBuildable_powered_base_resources,
@@ -951,6 +968,8 @@ export type {
 	FGEquipmentStunSpear_base,
 	FGInstructive,
 	FGItemDescriptorNuclearFuel,
+	FGPipeHyperStart,
+	FGPipeHyperStart_base,
 	FGPortableMinerDispenser,
 	FGRecipe,
 	FGRecipe_base,

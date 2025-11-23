@@ -3,7 +3,6 @@
 import type {
 	FGBuildable as docs_json_ts_0_3_7_7_classes_base_FGBuildable,
 	FGBuildable_occupied as docs_json_ts_0_3_7_7_classes_base_FGBuildable_occupied,
-	FGBuildable_pole_with_length_and_power as docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_with_length_and_power,
 	FGBuildable_powered as docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered,
 	FGBuildable_spline as docs_json_ts_0_3_7_7_classes_base_FGBuildable_spline,
 	FGBuildable_tiered as docs_json_ts_0_3_7_7_classes_base_FGBuildable_tiered,
@@ -60,6 +59,7 @@ import type {
 	FGEquipment_has_sound as docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_sound,
 	FGEquipmentStunSpear_base as docs_json_ts_0_3_7_7_classes_base_FGEquipmentStunSpear_base,
 	FGItemDescriptorNuclearFuel as docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel,
+	FGPipeHyperStart as docs_json_ts_0_3_7_7_classes_base_FGPipeHyperStart,
 	FGPortableMinerDispenser as docs_json_ts_0_3_7_7_classes_base_FGPortableMinerDispenser,
 	FGRecipe as docs_json_ts_0_3_7_7_classes_base_FGRecipe,
 	FGSchematic as docs_json_ts_0_3_7_7_classes_base_FGSchematic,
@@ -403,17 +403,7 @@ type FGParachute = docs_json_ts_0_3_7_7_classes_base_FGEquipment & {
 	mIsDeployed: docs_json_ts_common_types_bool_string,
 };
 
-type FGPipeHyperStart = docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_with_length_and_power & {
-	InterpolateEngineSound_InterpolateEngineAlpha_064FA8194B7224F6F187999413D1C8A6: docs_json_ts_common_types_decimal_string,
-	InterpolateEngineSound__Direction_064FA8194B7224F6F187999413D1C8A6: 'Forward',
-	mWindDirectionFromTurbine: docs_json_ts_common_types_empty_object,
-	['mIsWindSoundPlaying?']: docs_json_ts_common_types_bool_string,
-	mAudioTimerCounter: docs_json_ts_common_types_decimal_string,
-	AudioCounterTimer: docs_json_ts_common_types_empty_object,
-	IsEnginePlaying: docs_json_ts_common_types_bool_string,
-	mOpeningOffset: docs_json_ts_common_types_decimal_string,
-	mInitialMinSpeedFactor: docs_json_ts_common_types_decimal_string,
-};
+type FGPipeHyperStart = docs_json_ts_0_3_7_7_classes_base_FGPipeHyperStart;
 
 type FGPoleDescriptor = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_BuildMenu;
 
