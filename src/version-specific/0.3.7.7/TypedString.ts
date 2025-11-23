@@ -1679,6 +1679,20 @@ export class TypedString<
 			};
 
 			typed_string = sanity_check as typeof typed_string;
+		} else if ('String_enum_list' === mode) {
+			const sanity_check: TypedString_type<
+				'String_enum_list'
+			>['typed_string'] = {
+				type: 'array',
+				minItems: PositiveIntegerGuard(1),
+				uniqueItems: true,
+				items: {
+					type: 'string',
+					enum: [' '],
+				},
+			};
+
+			typed_string = sanity_check as typeof typed_string;
 		} else if ('BlueprintGeneratedClass_quoted_list' === mode) {
 			const sanity_check: TypedString_type<
 				'BlueprintGeneratedClass_quoted_list'
@@ -1693,7 +1707,7 @@ export class TypedString<
 			};
 
 			typed_string = sanity_check as typeof typed_string;
-		} else {
+		} else if ('FGTrainPlatformConnection_quoted_list' === mode) {
 			const sanity_check: TypedString_type<
 				'FGTrainPlatformConnection_quoted_list'
 			>['typed_string'] = {
@@ -1705,6 +1719,8 @@ export class TypedString<
 			};
 
 			typed_string = sanity_check as typeof typed_string;
+		} else {
+			throw new TypeError('Not Implemented!');
 		}
 
 		return Object.freeze({
