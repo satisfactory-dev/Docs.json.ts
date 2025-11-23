@@ -13,8 +13,8 @@ import type {
 	FGBuildable_with_length as docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_length,
 	FGBuildable_with_size_and_elevation as docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_size_and_elevation,
 	FGBuildable_with_width as docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_width,
-	FGBuildableAttachment as docs_json_ts_0_3_7_7_classes_base_FGBuildableAttachment,
 	FGBuildableAttachment_splitter as docs_json_ts_0_3_7_7_classes_base_FGBuildableAttachment_splitter,
+	FGBuildableAttachmentMerger as docs_json_ts_0_3_7_7_classes_base_FGBuildableAttachmentMerger,
 	FGBuildableConveyorBelt_spline as docs_json_ts_0_3_7_7_classes_base_FGBuildableConveyorBelt_spline,
 	FGBuildableConveyorLift as docs_json_ts_0_3_7_7_classes_base_FGBuildableConveyorLift,
 	FGBuildableFactory_jump_pad as docs_json_ts_0_3_7_7_classes_base_FGBuildableFactory_jump_pad,
@@ -43,6 +43,7 @@ import type {
 	FGBuildableResourceExtractor_miner_mk3 as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_mk3,
 	FGBuildableResourceExtractor_oil as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_oil,
 	FGBuildableResourceExtractor_water as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_water,
+	FGBuildableSplitterSmart as docs_json_ts_0_3_7_7_classes_base_FGBuildableSplitterSmart,
 	FGBuildableTradingPost as docs_json_ts_0_3_7_7_classes_base_FGBuildableTradingPost,
 	FGBuildableTrainPlatform as docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatform,
 	FGBuildableTrainPlatform_with_storage as docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatform_with_storage,
@@ -72,7 +73,6 @@ import type {
 	decimal_string_signed as docs_json_ts_common_types_decimal_string_signed,
 	empty_object as docs_json_ts_common_types_empty_object,
 	integer_string as docs_json_ts_common_types_integer_string,
-	integer_string_signed as docs_json_ts_common_types_integer_string_signed,
 	PitchYawRoll_decimal_string_signed as docs_json_ts_common_types_PitchYawRoll_decimal_string_signed,
 	RGBA as docs_json_ts_common_types_RGBA,
 	XYZ_decimal_string as docs_json_ts_common_types_XYZ_decimal_string,
@@ -98,9 +98,7 @@ type FGBuildable_powered_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_po
 
 type FGBuildable_tiered = docs_json_ts_0_3_7_7_classes_base_FGBuildable_tiered;
 
-type FGBuildableAttachmentMerger = docs_json_ts_0_3_7_7_classes_base_FGBuildableAttachment & {
-	mCurrentInputIndex: docs_json_ts_common_types_integer_string_signed,
-};
+type FGBuildableAttachmentMerger = docs_json_ts_0_3_7_7_classes_base_FGBuildableAttachmentMerger;
 
 type FGBuildableAttachmentSplitter = docs_json_ts_0_3_7_7_classes_base_FGBuildableAttachment_splitter;
 
@@ -250,15 +248,7 @@ type FGBuildableSpaceElevator = docs_json_ts_0_3_7_7_classes_base_FGBuildable_po
 	mMapText: 'Space Elevator',
 };
 
-type FGBuildableSplitterSmart = docs_json_ts_0_3_7_7_classes_base_FGBuildableAttachment_splitter & {
-	OnSortRulesChangedDelegate: docs_json_ts_common_types_empty_object,
-	mMaxNumSortRules: docs_json_ts_common_types_integer_string,
-	mLastItem: {
-		ItemState: docs_json_ts_common_types_empty_object,
-	},
-	mItemToLastOutputMap: docs_json_ts_common_types_empty_object,
-	mLastOutputIndex: docs_json_ts_common_types_integer_string,
-};
+type FGBuildableSplitterSmart = docs_json_ts_0_3_7_7_classes_base_FGBuildableSplitterSmart;
 
 type FGBuildableStair = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_and_elevation;
 
