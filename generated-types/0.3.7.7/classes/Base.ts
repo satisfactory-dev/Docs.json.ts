@@ -541,6 +541,20 @@ type FGBuildableResourceExtractor_water_base = FGBuildableResourceExtractor_base
 	],
 };
 
+type FGBuildableResourceSink = FGBuildable_powered & FGBuildableResourceSink_base & {
+	SFXEngineTimeline_EngineAlpha_073E1D2A4BAD246B3958E183E210FAAE: docs_json_ts_common_types_decimal_string,
+	SFXEngineTimeline__Direction_073E1D2A4BAD246B3958E183E210FAAE: 'Forward',
+	VFX_SFX_Timeline_EngineAlpha_A2CB706E440839665A39888572D206AA: docs_json_ts_common_types_decimal_string,
+	VFX_SFX_Timeline__Direction_A2CB706E440839665A39888572D206AA: 'Forward',
+	HastLostSignificance: docs_json_ts_common_types_bool_string,
+	mProcessingTime: docs_json_ts_common_types_decimal_string,
+	mSavedProducingTimer: docs_json_ts_common_types_decimal_string,
+};
+
+type FGBuildableResourceSink_base = FGBuildable_powered_base & {
+	mProcessingTime: docs_json_ts_common_types_decimal_string,
+};
+
 type FGBuildableSpaceElevator = FGBuildableSpaceElevator_base & FGBuildable_powered;
 
 type FGBuildableSpaceElevator_base = FGBuildable_powered_base & {
@@ -894,6 +908,8 @@ export type {
 	FGBuildableResourceExtractor_oil_base,
 	FGBuildableResourceExtractor_water,
 	FGBuildableResourceExtractor_water_base,
+	FGBuildableResourceSink,
+	FGBuildableResourceSink_base,
 	FGBuildableSpaceElevator,
 	FGBuildableSpaceElevator_base,
 	FGBuildableSplitterSmart,
