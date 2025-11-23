@@ -37,6 +37,7 @@ import type {
 	FGBuildablePipeReservoir as docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeReservoir,
 	FGBuildablePole as docs_json_ts_0_3_7_7_classes_base_FGBuildablePole,
 	FGBuildablePowerPole as docs_json_ts_0_3_7_7_classes_base_FGBuildablePowerPole,
+	FGBuildableRadarTower as docs_json_ts_0_3_7_7_classes_base_FGBuildableRadarTower,
 	FGBuildableRailroadStation as docs_json_ts_0_3_7_7_classes_base_FGBuildableRailroadStation,
 	FGBuildableRailroadTrack as docs_json_ts_0_3_7_7_classes_base_FGBuildableRailroadTrack,
 	FGBuildableResourceExtractor_miner_mk1 as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_mk1,
@@ -175,16 +176,7 @@ type FGBuildablePole = docs_json_ts_0_3_7_7_classes_base_FGBuildablePole;
 
 type FGBuildablePowerPole = docs_json_ts_0_3_7_7_classes_base_FGBuildablePowerPole;
 
-type FGBuildableRadarTower = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered & {
-	mMapText: 'Radar Tower',
-	OnRadarTowerRadiusUpdated: docs_json_ts_common_types_empty_object,
-	mMinRevealRadius: docs_json_ts_common_types_decimal_string,
-	mMaxRevealRadius: docs_json_ts_common_types_decimal_string,
-	mNumRadarExpansionSteps: docs_json_ts_common_types_integer_string,
-	mRadarExpansionInterval: docs_json_ts_common_types_decimal_string,
-	mCurrentExpansionStep: docs_json_ts_common_types_integer_string,
-	mTimeToNextExpansion: docs_json_ts_common_types_decimal_string,
-};
+type FGBuildableRadarTower = docs_json_ts_0_3_7_7_classes_base_FGBuildableRadarTower;
 
 type FGBuildableRailroadStation = docs_json_ts_0_3_7_7_classes_base_FGBuildableRailroadStation;
 

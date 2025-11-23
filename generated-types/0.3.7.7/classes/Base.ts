@@ -466,6 +466,19 @@ type FGBuildablePowerPole = FGBuildable & {
 	mPowerPoleType: 'PPT_POLE' | 'PPT_WALL' | 'PPT_WALL_DOUBLE',
 };
 
+type FGBuildableRadarTower = FGBuildable_powered & FGBuildableRadarTower_base;
+
+type FGBuildableRadarTower_base = FGBuildable_powered_base & {
+	mMapText: 'Radar Tower',
+	OnRadarTowerRadiusUpdated: docs_json_ts_common_types_empty_object,
+	mMinRevealRadius: docs_json_ts_common_types_decimal_string,
+	mMaxRevealRadius: docs_json_ts_common_types_decimal_string,
+	mNumRadarExpansionSteps: docs_json_ts_common_types_integer_string,
+	mRadarExpansionInterval: docs_json_ts_common_types_decimal_string,
+	mCurrentExpansionStep: docs_json_ts_common_types_integer_string,
+	mTimeToNextExpansion: docs_json_ts_common_types_decimal_string,
+};
+
 type FGBuildableRailroadStation = FGBuildableTrainPlatform & FGBuildableRailroadStation_base;
 
 type FGBuildableRailroadStation_base = FGBuildableTrainPlatform_base & {
@@ -992,6 +1005,8 @@ export type {
 	FGBuildablePipelineSupport,
 	FGBuildablePole,
 	FGBuildablePowerPole,
+	FGBuildableRadarTower,
+	FGBuildableRadarTower_base,
 	FGBuildableRailroadStation,
 	FGBuildableRailroadStation_base,
 	FGBuildableRailroadTrack,

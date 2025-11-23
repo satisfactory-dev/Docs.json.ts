@@ -1616,6 +1616,57 @@
 				}
 			}
 		},
+		"FGBuildableRadarTower": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableRadarTower--base"
+				}
+			]
+		},
+		"FGBuildableRadarTower--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--powered--base",
+			"required": [
+				"mMapText",
+				"OnRadarTowerRadiusUpdated",
+				"mMinRevealRadius",
+				"mMaxRevealRadius",
+				"mNumRadarExpansionSteps",
+				"mRadarExpansionInterval",
+				"mCurrentExpansionStep",
+				"mTimeToNextExpansion"
+			],
+			"properties": {
+				"mMapText": {
+					"type": "string",
+					"const": "Radar Tower"
+				},
+				"OnRadarTowerRadiusUpdated": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mMinRevealRadius": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mMaxRevealRadius": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mNumRadarExpansionSteps": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mRadarExpansionInterval": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mCurrentExpansionStep": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mTimeToNextExpansion": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
 		"FGBuildableRailroadStation": {
 			"allOf": [
 				{
