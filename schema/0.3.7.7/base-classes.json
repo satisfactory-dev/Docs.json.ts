@@ -2307,10 +2307,7 @@
 				},
 				"mMamFreeText": {
 					"type": "string",
-					"templated_string": [
-						"Use M",
-						{"type": "string"}
-					]
+					"templated_string": ["Use M", {"type": "string"}]
 				},
 				"mMamOccupiedText": {
 					"type": "string",
@@ -2688,10 +2685,7 @@
 				},
 				"mForm": {
 					"type": "string",
-					"templated_string": [
-						"RF_",
-						{"type": "string"}
-					]
+					"templated_string": ["RF_", {"type": "string"}]
 				},
 				"mSmallIcon": {
 					"oneOf": [
