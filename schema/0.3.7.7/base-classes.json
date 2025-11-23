@@ -741,6 +741,30 @@
 				}
 			}
 		},
+		"FGBuildableFactorySimpleProducer": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableFactorySimpleProducer--base"
+				}
+			]
+		},
+		"FGBuildableFactorySimpleProducer--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--powered--base",
+			"required": ["mTimeToProduceItem", "mEventType"],
+			"properties": {
+				"mTimeToProduceItem": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mEventType": {
+					"type": "string",
+					"const": "EV_Christmas"
+				}
+			}
+		},
 		"FGBuildableGenerator": {
 			"allOf": [
 				{
@@ -1110,6 +1134,31 @@
 				},
 				"mShowTrajectoryCounter": {
 					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				}
+			}
+		},
+		"FGBuildableLadder": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--with-width",
+			"required": [
+				"mMeshHeight",
+				"mMaxSegmentCount",
+				"mNumSegments",
+				"mLadderMeshes"
+			],
+			"properties": {
+				"mMeshHeight": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mMaxSegmentCount": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mNumSegments": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mLadderMeshes": {
+					"type": "string",
+					"const": ""
 				}
 			}
 		},

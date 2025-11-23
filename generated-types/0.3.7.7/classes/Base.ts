@@ -241,6 +241,13 @@ type FGBuildableFactory_landing_pad_base = FGBuildable_powered_base & {
 	mPlayerList: '',
 };
 
+type FGBuildableFactorySimpleProducer = FGBuildable_powered & FGBuildableFactorySimpleProducer_base;
+
+type FGBuildableFactorySimpleProducer_base = FGBuildable_powered_base & {
+	mTimeToProduceItem: docs_json_ts_common_types_decimal_string,
+	mEventType: 'EV_Christmas',
+};
+
 type FGBuildableGenerator = FGBuildableGenerator_no_fuel & FGBuildableGenerator_base;
 
 type FGBuildableGenerator_base = FGBuildableGenerator_no_fuel_base & {
@@ -332,6 +339,13 @@ type FGBuildableJumppad_base = FGBuildable_powered_base & {
 	mKillTimer: docs_json_ts_common_types_empty_object,
 	mTrajectoryGravityMultiplier: docs_json_ts_common_types_decimal_string,
 	mShowTrajectoryCounter: docs_json_ts_common_types_integer_string,
+};
+
+type FGBuildableLadder = FGBuildable_with_width & {
+	mMeshHeight: docs_json_ts_common_types_decimal_string,
+	mMaxSegmentCount: docs_json_ts_common_types_integer_string,
+	mNumSegments: docs_json_ts_common_types_integer_string,
+	mLadderMeshes: '',
 };
 
 type FGBuildableManufacturer_base = FGBuildable_powered_base & {
@@ -966,6 +980,8 @@ export type {
 	FGBuildableFactory_jump_pad_base,
 	FGBuildableFactory_landing_pad,
 	FGBuildableFactory_landing_pad_base,
+	FGBuildableFactorySimpleProducer,
+	FGBuildableFactorySimpleProducer_base,
 	FGBuildableGenerator,
 	FGBuildableGenerator_base,
 	FGBuildableGenerator_no_fuel,
@@ -983,6 +999,7 @@ export type {
 	FGBuildableGeneratorNuclear_base,
 	FGBuildableJumppad,
 	FGBuildableJumppad_base,
+	FGBuildableLadder,
 	FGBuildableManufacturer_base,
 	FGBuildableManufacturer_base_IsPowered,
 	FGBuildableManufacturer_base_mProductionEffectsRunning,
