@@ -614,6 +614,10 @@ type FGInstructive = isNamed & {
 	mRelevantEvents: null | docs_json_ts_0_3_7_7_properties_mRelevantEvents,
 };
 
+type FGItemDescriptorNuclearFuel = FGDescriptor_sinkable & {
+	mAmountOfWaste: docs_json_ts_common_types_integer_string,
+};
+
 type FGPortableMinerDispenser = FGEquipment_dispenser & {
 	mAllowedResourceForms: docs_json_ts_0_3_7_7_properties_mAllowedResourceForms,
 };
@@ -819,6 +823,7 @@ export type {
 	FGEquipment_has_sound,
 	FGEquipmentStunSpear_base,
 	FGInstructive,
+	FGItemDescriptorNuclearFuel,
 	FGPortableMinerDispenser,
 	FGRecipe,
 	FGRecipe_base,

@@ -53,6 +53,7 @@ import type {
 	FGEquipment_dispenser as docs_json_ts_0_3_7_7_classes_base_FGEquipment_dispenser,
 	FGEquipment_has_sound as docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_sound,
 	FGEquipmentStunSpear_base as docs_json_ts_0_3_7_7_classes_base_FGEquipmentStunSpear_base,
+	FGItemDescriptorNuclearFuel as docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel,
 	FGPortableMinerDispenser as docs_json_ts_0_3_7_7_classes_base_FGPortableMinerDispenser,
 	FGRecipe as docs_json_ts_0_3_7_7_classes_base_FGRecipe,
 	FGSchematic as docs_json_ts_0_3_7_7_classes_base_FGSchematic,
@@ -370,9 +371,7 @@ type FGGolfCartDispenser = docs_json_ts_0_3_7_7_classes_base_FGEquipment_dispens
 
 type FGItemDescriptor = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_sinkable;
 
-type FGItemDescriptorNuclearFuel = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_sinkable & {
-	mAmountOfWaste: docs_json_ts_common_types_integer_string,
-};
+type FGItemDescriptorNuclearFuel = docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel;
 
 type FGJetPack = docs_json_ts_0_3_7_7_classes_base_FGEquipment & {
 	mThrustPower: docs_json_ts_common_types_decimal_string,

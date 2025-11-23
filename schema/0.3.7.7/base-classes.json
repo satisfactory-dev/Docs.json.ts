@@ -2241,6 +2241,16 @@
 				}
 			}
 		},
+		"FGItemDescriptorNuclearFuel": {
+			"type": "object",
+			"$ref": "#/$defs/FGDescriptor--sinkable",
+			"required": ["mAmountOfWaste"],
+			"properties": {
+				"mAmountOfWaste": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				}
+			}
+		},
 		"FGPortableMinerDispenser": {
 			"type": "object",
 			"$ref": "#/$defs/FGEquipment--dispenser",
