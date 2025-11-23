@@ -727,9 +727,13 @@ type FGDescriptor_sinkable_base = FGDescriptor_base & {
 	mResourceSinkPoints: docs_json_ts_common_types_integer_string,
 };
 
-type FGEquipment = hasClassName & {
-	mEquipmentSlot: 'ES_ARMS' | 'ES_BACK',
+type FGEquipment = FGEquipment_base & {
 	mAttachSocket: 'None' | 'hand_rSocket' | 'hand_lSocket' | 'jumpingStilt_lSocket' | 'helmetSocket',
+};
+
+type FGEquipment_base = hasClassName & {
+	mEquipmentSlot: 'ES_ARMS' | 'ES_BACK',
+	mAttachSocket: Exclude<string, ''>,
 	mCostToUse: '' | docs_json_ts_0_3_7_7_properties_ItemClass_Amount_list,
 	mArmAnimation: 'AE_Consumables' | 'AE_OneHandEquipment' | 'AE_ChainSaw' | 'AE_Generic2Hand' | 'AE_None' | 'AE_RebarGun' | 'AE_Rifle' | 'AE_ShockShank' | 'AE_StunSpear' | 'AE_PortableMiner' | 'AE_ObjectScanner' | 'AE_ColorGun' | 'AE_Nobelisk' | 'AE_Generic1Hand',
 	mBackAnimation: 'BE_None' | 'BE_Jetpack',
@@ -1007,6 +1011,7 @@ export type {
 	FGDescriptor_sinkable,
 	FGDescriptor_sinkable_base,
 	FGEquipment,
+	FGEquipment_base,
 	FGEquipment_dispenser,
 	FGEquipment_has_sound,
 	FGEquipmentStunSpear_base,

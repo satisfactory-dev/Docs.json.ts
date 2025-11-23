@@ -2651,6 +2651,23 @@
 		},
 		"FGEquipment": {
 			"type": "object",
+			"$ref": "#/$defs/FGEquipment--base",
+			"required": ["mAttachSocket"],
+			"properties": {
+				"mAttachSocket": {
+					"type": "string",
+					"enum": [
+						"None",
+						"hand_rSocket",
+						"hand_lSocket",
+						"jumpingStilt_lSocket",
+						"helmetSocket"
+					]
+				}
+			}
+		},
+		"FGEquipment--base": {
+			"type": "object",
 			"$ref": "#/$defs/hasClassName",
 			"required": [
 				"mEquipmentSlot",
@@ -2668,13 +2685,7 @@
 				},
 				"mAttachSocket": {
 					"type": "string",
-					"enum": [
-						"None",
-						"hand_rSocket",
-						"hand_lSocket",
-						"jumpingStilt_lSocket",
-						"helmetSocket"
-					]
+					"minLength": 1
 				},
 				"mCostToUse": {
 					"oneOf": [
