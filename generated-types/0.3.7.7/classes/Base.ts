@@ -681,6 +681,16 @@ type FGBuildableWire = FGBuildable & {
 	mConnections: 'None',
 };
 
+type FGColorGun = FGWeaponProjectile_instant & {
+	mPrimaryColor: docs_json_ts_common_types_RGBA,
+	mSecondaryColor: docs_json_ts_common_types_RGBA,
+	mRedundantTargetCrosshairColor: docs_json_ts_common_types_RGBA,
+	mNoTargetCrosshairColor: docs_json_ts_common_types_RGBA,
+	mNonColorableTargetCrosshairColor: docs_json_ts_common_types_RGBA,
+	mColorSlot: docs_json_ts_common_types_integer_string,
+	mArmAnimation: 'AE_ColorGun',
+};
+
 type FGConsumableDescriptor = FGDescriptor_sinkable & {
 	mHealthGain?: docs_json_ts_common_types_decimal_string,
 	mCustomHandsMeshScale: docs_json_ts_common_types_decimal_string,
@@ -771,6 +781,13 @@ type FGInstructive = isNamed & {
 
 type FGItemDescriptorNuclearFuel = FGDescriptor_sinkable & {
 	mAmountOfWaste: docs_json_ts_common_types_integer_string,
+};
+
+type FGParachute = FGEquipment & FGParachute_base;
+
+type FGParachute_base = FGEquipment_base & {
+	mTerminalVelocityZ: docs_json_ts_common_types_decimal_string,
+	mIsDeployed: docs_json_ts_common_types_bool_string,
 };
 
 type FGPipeHyperStart = FGPipeHyperStart_base & FGBuildable_pole_with_length_and_power;
@@ -1011,6 +1028,7 @@ export type {
 	FGBuildableTrainPlatformCargo,
 	FGBuildableTrainPlatformCargo_base,
 	FGBuildableWire,
+	FGColorGun,
 	FGConsumableDescriptor,
 	FGConsumableEquipment,
 	FGDescriptor,
@@ -1025,6 +1043,8 @@ export type {
 	FGEquipmentStunSpear_base,
 	FGInstructive,
 	FGItemDescriptorNuclearFuel,
+	FGParachute,
+	FGParachute_base,
 	FGPipeHyperStart,
 	FGPipeHyperStart_base,
 	FGPortableMinerDispenser,

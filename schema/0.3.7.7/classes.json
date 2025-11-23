@@ -472,41 +472,8 @@
 		},
 		"FGColorGun": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectile--instant",
-			"unevaluatedProperties": false,
-			"required": [
-				"mPrimaryColor",
-				"mSecondaryColor",
-				"mRedundantTargetCrosshairColor",
-				"mNoTargetCrosshairColor",
-				"mNonColorableTargetCrosshairColor",
-				"mColorSlot",
-				"mArmAnimation"
-			],
-			"properties": {
-				"mPrimaryColor": {
-					"$ref": "docs.json.ts--common--types#/$defs/RGBA"
-				},
-				"mSecondaryColor": {
-					"$ref": "docs.json.ts--common--types#/$defs/RGBA"
-				},
-				"mRedundantTargetCrosshairColor": {
-					"$ref": "docs.json.ts--common--types#/$defs/RGBA"
-				},
-				"mNoTargetCrosshairColor": {
-					"$ref": "docs.json.ts--common--types#/$defs/RGBA"
-				},
-				"mNonColorableTargetCrosshairColor": {
-					"$ref": "docs.json.ts--common--types#/$defs/RGBA"
-				},
-				"mColorSlot": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-				},
-				"mArmAnimation": {
-					"type": "string",
-					"const": "AE_ColorGun"
-				}
-			}
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGColorGun",
+			"unevaluatedProperties": false
 		},
 		"FGConsumableDescriptor": {
 			"type": "object",
@@ -853,17 +820,8 @@
 		},
 		"FGParachute": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment",
-			"unevaluatedProperties": false,
-			"required": ["mTerminalVelocityZ", "mIsDeployed"],
-			"properties": {
-				"mTerminalVelocityZ": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mIsDeployed": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				}
-			}
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGParachute",
+			"unevaluatedProperties": false
 		},
 		"FGPipeHyperStart": {
 			"type": "object",

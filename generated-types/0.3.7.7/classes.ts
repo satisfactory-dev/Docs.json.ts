@@ -51,6 +51,7 @@ import type {
 	FGBuildableTrainPlatform as docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatform,
 	FGBuildableTrainPlatformCargo as docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatformCargo,
 	FGBuildableWire as docs_json_ts_0_3_7_7_classes_base_FGBuildableWire,
+	FGColorGun as docs_json_ts_0_3_7_7_classes_base_FGColorGun,
 	FGConsumableDescriptor as docs_json_ts_0_3_7_7_classes_base_FGConsumableDescriptor,
 	FGConsumableEquipment as docs_json_ts_0_3_7_7_classes_base_FGConsumableEquipment,
 	FGDescriptor_BuildMenu as docs_json_ts_0_3_7_7_classes_base_FGDescriptor_BuildMenu,
@@ -60,12 +61,12 @@ import type {
 	FGEquipment_has_sound as docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_sound,
 	FGEquipmentStunSpear_base as docs_json_ts_0_3_7_7_classes_base_FGEquipmentStunSpear_base,
 	FGItemDescriptorNuclearFuel as docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel,
+	FGParachute as docs_json_ts_0_3_7_7_classes_base_FGParachute,
 	FGPipeHyperStart as docs_json_ts_0_3_7_7_classes_base_FGPipeHyperStart,
 	FGPortableMinerDispenser as docs_json_ts_0_3_7_7_classes_base_FGPortableMinerDispenser,
 	FGRecipe as docs_json_ts_0_3_7_7_classes_base_FGRecipe,
 	FGSchematic as docs_json_ts_0_3_7_7_classes_base_FGSchematic,
 	FGWeaponInstantFire as docs_json_ts_0_3_7_7_classes_base_FGWeaponInstantFire,
-	FGWeaponProjectile_instant as docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_instant,
 	FGWeaponProjectile_thrown as docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_thrown,
 	FGWeaponProjectileFire as docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectileFire,
 } from './classes/Base.ts';
@@ -252,15 +253,7 @@ type FGChainsaw = docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_sound & {
 	mArmAnimation: 'AE_ChainSaw',
 };
 
-type FGColorGun = docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_instant & {
-	mPrimaryColor: docs_json_ts_common_types_RGBA,
-	mSecondaryColor: docs_json_ts_common_types_RGBA,
-	mRedundantTargetCrosshairColor: docs_json_ts_common_types_RGBA,
-	mNoTargetCrosshairColor: docs_json_ts_common_types_RGBA,
-	mNonColorableTargetCrosshairColor: docs_json_ts_common_types_RGBA,
-	mColorSlot: docs_json_ts_common_types_integer_string,
-	mArmAnimation: 'AE_ColorGun',
-};
+type FGColorGun = docs_json_ts_0_3_7_7_classes_base_FGColorGun;
 
 type FGConsumableDescriptor = docs_json_ts_0_3_7_7_classes_base_FGConsumableDescriptor;
 
@@ -374,10 +367,7 @@ type FGObjectScanner = docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_sound &
 	mShouldBeepEvenIfNoObject: docs_json_ts_common_types_bool_string,
 };
 
-type FGParachute = docs_json_ts_0_3_7_7_classes_base_FGEquipment & {
-	mTerminalVelocityZ: docs_json_ts_common_types_decimal_string,
-	mIsDeployed: docs_json_ts_common_types_bool_string,
-};
+type FGParachute = docs_json_ts_0_3_7_7_classes_base_FGParachute;
 
 type FGPipeHyperStart = docs_json_ts_0_3_7_7_classes_base_FGPipeHyperStart;
 
