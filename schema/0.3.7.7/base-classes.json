@@ -1979,6 +1979,26 @@
 				}
 			]
 		},
+		"FGBuildableResourceSinkShop": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableResourceSinkShop--base"
+				}
+			]
+		},
+		"FGBuildableResourceSinkShop--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--powered--base",
+			"required": ["mShopInventoryDefaultSize"],
+			"properties": {
+				"mShopInventoryDefaultSize": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				}
+			}
+		},
 		"FGBuildableResourceSink--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--powered--base",

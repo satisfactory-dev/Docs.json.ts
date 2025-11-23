@@ -551,6 +551,12 @@ type FGBuildableResourceSink = FGBuildable_powered & FGBuildableResourceSink_bas
 	mSavedProducingTimer: docs_json_ts_common_types_decimal_string,
 };
 
+type FGBuildableResourceSinkShop = FGBuildable_powered & FGBuildableResourceSinkShop_base;
+
+type FGBuildableResourceSinkShop_base = FGBuildable_powered_base & {
+	mShopInventoryDefaultSize: docs_json_ts_common_types_integer_string,
+};
+
 type FGBuildableResourceSink_base = FGBuildable_powered_base & {
 	mProcessingTime: docs_json_ts_common_types_decimal_string,
 };
@@ -909,6 +915,8 @@ export type {
 	FGBuildableResourceExtractor_water,
 	FGBuildableResourceExtractor_water_base,
 	FGBuildableResourceSink,
+	FGBuildableResourceSinkShop,
+	FGBuildableResourceSinkShop_base,
 	FGBuildableResourceSink_base,
 	FGBuildableSpaceElevator,
 	FGBuildableSpaceElevator_base,
