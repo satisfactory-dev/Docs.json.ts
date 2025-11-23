@@ -2911,6 +2911,17 @@
 				}
 			}
 		},
+		"FGNobeliskDetonator": {
+			"type": "object",
+			"$ref": "#/$defs/FGWeaponProjectile--thrown",
+			"required": ["mArmAnimation"],
+			"properties": {
+				"mArmAnimation": {
+					"type": "string",
+					"const": "AE_Nobelisk"
+				}
+			}
+		},
 		"FGParachute": {
 			"allOf": [
 				{
@@ -3156,6 +3167,17 @@
 				"mIncludeInBuilds": {
 					"type": "string",
 					"const": "IIB_PublicBuilds"
+				}
+			}
+		},
+		"FGSnowballWeapon": {
+			"type": "object",
+			"$ref": "#/$defs/FGWeaponProjectile--thrown",
+			"required": ["mArmAnimation"],
+			"properties": {
+				"mArmAnimation": {
+					"type": "string",
+					"const": "AE_Generic1Hand"
 				}
 			}
 		},

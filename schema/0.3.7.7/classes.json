@@ -670,14 +670,7 @@
 		"FGNobeliskDetonator": {
 			"type": "object",
 			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectile--thrown",
-			"required": ["mArmAnimation"],
-			"properties": {
-				"mArmAnimation": {
-					"type": "string",
-					"const": "AE_Nobelisk"
-				}
-			}
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGNobeliskDetonator"
 		},
 		"FGObjectScanner": {
 			"type": "object",
@@ -1054,14 +1047,7 @@
 		"FGSnowballWeapon": {
 			"type": "object",
 			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectile--thrown",
-			"required": ["mArmAnimation"],
-			"properties": {
-				"mArmAnimation": {
-					"type": "string",
-					"const": "AE_Generic1Hand"
-				}
-			}
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGSnowballWeapon"
 		},
 		"FGSuitBase": {
 			"type": "object",

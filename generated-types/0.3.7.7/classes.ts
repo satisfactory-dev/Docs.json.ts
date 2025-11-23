@@ -62,13 +62,14 @@ import type {
 	FGEquipment_has_sound as docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_sound,
 	FGEquipmentStunSpear_base as docs_json_ts_0_3_7_7_classes_base_FGEquipmentStunSpear_base,
 	FGItemDescriptorNuclearFuel as docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel,
+	FGNobeliskDetonator as docs_json_ts_0_3_7_7_classes_base_FGNobeliskDetonator,
 	FGParachute as docs_json_ts_0_3_7_7_classes_base_FGParachute,
 	FGPipeHyperStart as docs_json_ts_0_3_7_7_classes_base_FGPipeHyperStart,
 	FGPortableMinerDispenser as docs_json_ts_0_3_7_7_classes_base_FGPortableMinerDispenser,
 	FGRecipe as docs_json_ts_0_3_7_7_classes_base_FGRecipe,
 	FGSchematic as docs_json_ts_0_3_7_7_classes_base_FGSchematic,
+	FGSnowballWeapon as docs_json_ts_0_3_7_7_classes_base_FGSnowballWeapon,
 	FGWeaponInstantFire as docs_json_ts_0_3_7_7_classes_base_FGWeaponInstantFire,
-	FGWeaponProjectile_thrown as docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_thrown,
 	FGWeaponProjectileFire as docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectileFire,
 } from './classes/Base.ts';
 
@@ -312,9 +313,7 @@ type FGJumpingStilts = docs_json_ts_0_3_7_7_classes_base_FGEquipment & {
 	mAttachSocket: 'jumpingStilt_lSocket',
 };
 
-type FGNobeliskDetonator = docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_thrown & {
-	mArmAnimation: 'AE_Nobelisk',
-};
+type FGNobeliskDetonator = docs_json_ts_0_3_7_7_classes_base_FGNobeliskDetonator;
 
 type FGObjectScanner = docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_sound & {
 	mScreenUpdateTimer: docs_json_ts_common_types_empty_object,
@@ -423,9 +422,7 @@ type FGSchematic = docs_json_ts_0_3_7_7_classes_base_FGSchematic & {
 	],
 };
 
-type FGSnowballWeapon = docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_thrown & {
-	mArmAnimation: 'AE_Generic1Hand',
-};
+type FGSnowballWeapon = docs_json_ts_0_3_7_7_classes_base_FGSnowballWeapon;
 
 type FGSuitBase = docs_json_ts_0_3_7_7_classes_base_FGEquipment & {
 	mImmunity: docs_json_ts_common_types_decimal_string,

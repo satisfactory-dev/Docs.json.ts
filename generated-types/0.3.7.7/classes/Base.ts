@@ -443,6 +443,10 @@ type FGBuildablePipelinePump_pump_base = FGBuildablePipelinePump_base & {
 
 type FGBuildablePipelinePump_valve = FGBuildablePipelinePump_base & FGBuildable_powered;
 
+type FGBuildablePipelineSupport = FGBuildable_pole_with_length & {
+	mVerticalAngle: docs_json_ts_common_types_decimal_string,
+};
+
 type FGBuildablePipeReservoir = FGBuildable_powered & FGBuildablePipeReservoir_base;
 
 type FGBuildablePipeReservoir_base = FGBuildable_powered_base & {
@@ -451,10 +455,6 @@ type FGBuildablePipeReservoir_base = FGBuildable_powered_base & {
 	mStorageCapacity: docs_json_ts_common_types_decimal_string,
 	mPipeConnections: '',
 	mIndicatorData: docs_json_ts_common_types_empty_object,
-};
-
-type FGBuildablePipelineSupport = FGBuildable_pole_with_length & {
-	mVerticalAngle: docs_json_ts_common_types_decimal_string,
 };
 
 type FGBuildablePole = FGBuildable_pole & {
@@ -590,14 +590,14 @@ type FGBuildableResourceSink = FGBuildable_powered & FGBuildableResourceSink_bas
 	mSavedProducingTimer: docs_json_ts_common_types_decimal_string,
 };
 
+type FGBuildableResourceSink_base = FGBuildable_powered_base & {
+	mProcessingTime: docs_json_ts_common_types_decimal_string,
+};
+
 type FGBuildableResourceSinkShop = FGBuildable_powered & FGBuildableResourceSinkShop_base;
 
 type FGBuildableResourceSinkShop_base = FGBuildable_powered_base & {
 	mShopInventoryDefaultSize: docs_json_ts_common_types_integer_string,
-};
-
-type FGBuildableResourceSink_base = FGBuildable_powered_base & {
-	mProcessingTime: docs_json_ts_common_types_decimal_string,
 };
 
 type FGBuildableSpaceElevator = FGBuildableSpaceElevator_base & FGBuildable_powered;
@@ -796,6 +796,10 @@ type FGItemDescriptorNuclearFuel = FGDescriptor_sinkable & {
 	mAmountOfWaste: docs_json_ts_common_types_integer_string,
 };
 
+type FGNobeliskDetonator = FGWeaponProjectile_thrown & {
+	mArmAnimation: 'AE_Nobelisk',
+};
+
 type FGParachute = FGEquipment & FGParachute_base;
 
 type FGParachute_base = FGEquipment_base & {
@@ -853,6 +857,10 @@ type FGSchematic = FGInstructive & {
 	mCost: null | docs_json_ts_0_3_7_7_properties_ItemClass_Amount_list,
 	mTimeToComplete: docs_json_ts_common_types_decimal_string,
 	mIncludeInBuilds: 'IIB_PublicBuilds',
+};
+
+type FGSnowballWeapon = FGWeaponProjectile_thrown & {
+	mArmAnimation: 'AE_Generic1Hand',
 };
 
 type FGWeaponInstantFire = FGWeaponProjectile_instant & {
@@ -1000,9 +1008,9 @@ export type {
 	FGBuildablePipelinePump_pump,
 	FGBuildablePipelinePump_pump_base,
 	FGBuildablePipelinePump_valve,
+	FGBuildablePipelineSupport,
 	FGBuildablePipeReservoir,
 	FGBuildablePipeReservoir_base,
-	FGBuildablePipelineSupport,
 	FGBuildablePole,
 	FGBuildablePowerPole,
 	FGBuildableRadarTower,
@@ -1025,9 +1033,9 @@ export type {
 	FGBuildableResourceExtractor_water,
 	FGBuildableResourceExtractor_water_base,
 	FGBuildableResourceSink,
+	FGBuildableResourceSink_base,
 	FGBuildableResourceSinkShop,
 	FGBuildableResourceSinkShop_base,
-	FGBuildableResourceSink_base,
 	FGBuildableSpaceElevator,
 	FGBuildableSpaceElevator_base,
 	FGBuildableSplitterSmart,
@@ -1058,6 +1066,7 @@ export type {
 	FGEquipmentStunSpear_base,
 	FGInstructive,
 	FGItemDescriptorNuclearFuel,
+	FGNobeliskDetonator,
 	FGParachute,
 	FGParachute_base,
 	FGPipeHyperStart,
@@ -1069,6 +1078,7 @@ export type {
 	FGResourceDescriptor,
 	FGResourceDescriptor_base,
 	FGSchematic,
+	FGSnowballWeapon,
 	FGWeaponInstantFire,
 	FGWeaponProjectile,
 	FGWeaponProjectile_instant,
