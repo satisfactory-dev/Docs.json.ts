@@ -2,7 +2,6 @@
 
 import type {
 	FGBuildable as docs_json_ts_0_3_7_7_classes_base_FGBuildable,
-	FGBuildable_docking_station as docs_json_ts_0_3_7_7_classes_base_FGBuildable_docking_station,
 	FGBuildable_occupied as docs_json_ts_0_3_7_7_classes_base_FGBuildable_occupied,
 	FGBuildable_pole_with_length_and_power as docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_with_length_and_power,
 	FGBuildable_powered as docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered,
@@ -17,6 +16,7 @@ import type {
 	FGBuildableAttachmentMerger as docs_json_ts_0_3_7_7_classes_base_FGBuildableAttachmentMerger,
 	FGBuildableConveyorBelt_spline as docs_json_ts_0_3_7_7_classes_base_FGBuildableConveyorBelt_spline,
 	FGBuildableConveyorLift as docs_json_ts_0_3_7_7_classes_base_FGBuildableConveyorLift,
+	FGBuildableDockingStation as docs_json_ts_0_3_7_7_classes_base_FGBuildableDockingStation,
 	FGBuildableFactory_jump_pad as docs_json_ts_0_3_7_7_classes_base_FGBuildableFactory_jump_pad,
 	FGBuildableGenerator_no_fuel as docs_json_ts_0_3_7_7_classes_base_FGBuildableGenerator_no_fuel,
 	FGBuildableGeneratorFuel_biomass as docs_json_ts_0_3_7_7_classes_base_FGBuildableGeneratorFuel_biomass,
@@ -106,10 +106,7 @@ type FGBuildableConveyorBelt = docs_json_ts_0_3_7_7_classes_base_FGBuildableConv
 
 type FGBuildableConveyorLift = docs_json_ts_0_3_7_7_classes_base_FGBuildableConveyorLift;
 
-type FGBuildableDockingStation = docs_json_ts_0_3_7_7_classes_base_FGBuildable_docking_station & {
-	mMapText: '',
-	mFuelTransferSpeed: docs_json_ts_common_types_decimal_string,
-};
+type FGBuildableDockingStation = docs_json_ts_0_3_7_7_classes_base_FGBuildableDockingStation;
 
 type FGBuildableFactory_jump_pad = docs_json_ts_0_3_7_7_classes_base_FGBuildableFactory_jump_pad;
 

@@ -660,6 +660,30 @@
 				}
 			}
 		},
+		"FGBuildableDockingStation": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--docking-station"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableDockingStation--base"
+				}
+			]
+		},
+		"FGBuildableDockingStation--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--docking-station--base",
+			"required": ["mMapText", "mFuelTransferSpeed"],
+			"properties": {
+				"mMapText": {
+					"type": "string",
+					"const": ""
+				},
+				"mFuelTransferSpeed": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
 		"FGBuildableFactory--jump-pad": {
 			"allOf": [
 				{

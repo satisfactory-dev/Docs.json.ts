@@ -218,6 +218,13 @@ type FGBuildableConveyorLift = FGBuildableConveyorBelt_base & {
 	mIsReversed: docs_json_ts_common_types_bool_string,
 };
 
+type FGBuildableDockingStation = FGBuildable_docking_station & FGBuildableDockingStation_base;
+
+type FGBuildableDockingStation_base = FGBuildable_docking_station_base & {
+	mMapText: '',
+	mFuelTransferSpeed: docs_json_ts_common_types_decimal_string,
+};
+
 type FGBuildableFactory_jump_pad = FGBuildable_powered & FGBuildableFactory_jump_pad_base;
 
 type FGBuildableFactory_jump_pad_base = FGBuildable_powered_base & {
@@ -851,6 +858,8 @@ export type {
 	FGBuildableConveyorBelt_base,
 	FGBuildableConveyorBelt_spline,
 	FGBuildableConveyorLift,
+	FGBuildableDockingStation,
+	FGBuildableDockingStation_base,
 	FGBuildableFactory_jump_pad,
 	FGBuildableFactory_jump_pad_base,
 	FGBuildableFactory_landing_pad,

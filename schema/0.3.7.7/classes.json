@@ -44,18 +44,8 @@
 		},
 		"FGBuildableDockingStation": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--docking-station",
-			"unevaluatedProperties": false,
-			"required": ["mMapText", "mFuelTransferSpeed"],
-			"properties": {
-				"mMapText": {
-					"type": "string",
-					"const": ""
-				},
-				"mFuelTransferSpeed": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				}
-			}
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableDockingStation",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableFactory--jump-pad": {
 			"type": "object",
