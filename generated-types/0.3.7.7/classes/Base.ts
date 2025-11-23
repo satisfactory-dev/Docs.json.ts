@@ -114,6 +114,12 @@ type FGBuildable_powered_base = FGBuildable & {
 	mSignificanceRange: docs_json_ts_common_types_decimal_string,
 };
 
+type FGBuildable_powered_base_resources = FGBuildable_powered_base & {
+	mOnlyAllowCertainResources: docs_json_ts_common_types_bool_string,
+	mAllowedResources: docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list | '',
+	mExtractorTypeName: 'None' | 'Miner',
+};
+
 type FGBuildable_powered_storage = FGBuildable_powered_storage_base & FGBuildable_powered;
 
 type FGBuildable_powered_storage_base = FGBuildable_powered_base & {
@@ -378,11 +384,12 @@ type FGBuildablePowerPole = FGBuildable & {
 	mPowerPoleType: 'PPT_POLE' | 'PPT_WALL' | 'PPT_WALL_DOUBLE',
 };
 
-type FGBuildableResourceExtractor = FGBuildableResourceExtractor_base & {
+type FGBuildableResourceExtractor = FGBuildableResourceExtractor_base_with_resources & {
 	mRequireResourceAtMinimumDepthChecks: docs_json_ts_common_types_bool_string,
 	mMinimumDepthForPlacement: docs_json_ts_common_types_decimal_string,
 	mDepthTraceOriginOffset: docs_json_ts_common_types_XYZ_decimal_string,
 	mExtractionOffset: docs_json_ts_common_types_XYZ_decimal_string,
+	mAllowedResourceForms: docs_json_ts_0_3_7_7_properties_mAllowedResourceForms,
 };
 
 type FGBuildableResourceExtractor_base = FGBuildable_powered_base & {
@@ -390,7 +397,6 @@ type FGBuildableResourceExtractor_base = FGBuildable_powered_base & {
 	mExtractStartupTimer: docs_json_ts_common_types_decimal_string,
 	mExtractCycleTime: docs_json_ts_common_types_decimal_string,
 	mItemsPerCycle: docs_json_ts_common_types_integer_string,
-	mAllowedResourceForms: docs_json_ts_0_3_7_7_properties_mAllowedResourceForms,
 	mOnlyAllowCertainResources: docs_json_ts_common_types_bool_string,
 	mAllowedResources: docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list | '',
 	mExtractorTypeName: 'None' | 'Miner',
@@ -398,7 +404,9 @@ type FGBuildableResourceExtractor_base = FGBuildable_powered_base & {
 	mReplicatedFlowRate: docs_json_ts_common_types_decimal_string,
 };
 
-type FGBuildableResourceExtractor_miner_base = FGBuildableResourceExtractor_base & {
+type FGBuildableResourceExtractor_base_with_resources = FGBuildableResourceExtractor_base & FGBuildable_powered_base_resources;
+
+type FGBuildableResourceExtractor_miner_base = FGBuildableResourceExtractor_base_with_resources & {
 	mInternalMiningState_0?: 'NewEnumerator0',
 	mToggleMiningStateHandle_0?: docs_json_ts_common_types_empty_object,
 	mMinimumDrillTime_0?: docs_json_ts_common_types_decimal_string,
@@ -442,7 +450,7 @@ type FGBuildableResourceExtractor_miner_mk3_base = FGBuildableResourceExtractor_
 
 type FGBuildableResourceExtractor_oil = FGBuildableResourceExtractor & FGBuildableResourceExtractor_oil_base & FGBuildable_powered;
 
-type FGBuildableResourceExtractor_oil_base = FGBuildableResourceExtractor_base & {
+type FGBuildableResourceExtractor_oil_base = FGBuildableResourceExtractor_base_with_resources & {
 	mAllowedResourceForms: [
 		'RF_LIQUID',
 	],
@@ -450,7 +458,7 @@ type FGBuildableResourceExtractor_oil_base = FGBuildableResourceExtractor_base &
 
 type FGBuildableResourceExtractor_water = FGBuildableResourceExtractor & FGBuildableResourceExtractor_water_base & FGBuildable_powered;
 
-type FGBuildableResourceExtractor_water_base = FGBuildableResourceExtractor_base & {
+type FGBuildableResourceExtractor_water_base = FGBuildableResourceExtractor_base_with_resources & {
 	mWaterpumpTimeline_RTPC_B8FA6F944E717E3B7A286E84901F620E: docs_json_ts_common_types_decimal_string,
 	mWaterpumpTimeline__Direction_B8FA6F944E717E3B7A286E84901F620E: 'Forward',
 	PlayPitchAndVolumeRTPCTimeline_RTPC_2B435F41466C37D2AD809A88AA21BA89: docs_json_ts_common_types_decimal_string,
@@ -720,6 +728,7 @@ export type {
 	FGBuildable_pole_with_length_and_power,
 	FGBuildable_powered,
 	FGBuildable_powered_base,
+	FGBuildable_powered_base_resources,
 	FGBuildable_powered_storage,
 	FGBuildable_powered_storage_base,
 	FGBuildable_spline,
@@ -777,6 +786,7 @@ export type {
 	FGBuildablePowerPole,
 	FGBuildableResourceExtractor,
 	FGBuildableResourceExtractor_base,
+	FGBuildableResourceExtractor_base_with_resources,
 	FGBuildableResourceExtractor_miner_base,
 	FGBuildableResourceExtractor_miner_mk1,
 	FGBuildableResourceExtractor_miner_mk1_base,

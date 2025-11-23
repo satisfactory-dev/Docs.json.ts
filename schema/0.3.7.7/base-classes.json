@@ -281,6 +281,35 @@
 				}
 			}
 		},
+		"FGBuildable--powered--base--resources": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--powered--base",
+			"required": [
+				"mOnlyAllowCertainResources",
+				"mAllowedResources",
+				"mExtractorTypeName"
+			],
+			"properties": {
+				"mOnlyAllowCertainResources": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mAllowedResources": {
+					"oneOf": [
+						{
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
+						},
+						{
+							"type": "string",
+							"const": ""
+						}
+					]
+				},
+				"mExtractorTypeName": {
+					"type": "string",
+					"enum": ["None", "Miner"]
+				}
+			}
+		},
 		"FGBuildable--powered-storage": {
 			"allOf": [
 				{
@@ -1292,12 +1321,13 @@
 		},
 		"FGBuildableResourceExtractor": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableResourceExtractor--base",
+			"$ref": "#/$defs/FGBuildableResourceExtractor--base--with-resources",
 			"required": [
 				"mRequireResourceAtMinimumDepthChecks",
 				"mMinimumDepthForPlacement",
 				"mDepthTraceOriginOffset",
-				"mExtractionOffset"
+				"mExtractionOffset",
+				"mAllowedResourceForms"
 			],
 			"properties": {
 				"mRequireResourceAtMinimumDepthChecks": {
@@ -1311,6 +1341,9 @@
 				},
 				"mExtractionOffset": {
 					"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
+				},
+				"mAllowedResourceForms": {
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mAllowedResourceForms"
 				}
 			}
 		},
@@ -1322,7 +1355,6 @@
 				"mExtractStartupTimer",
 				"mExtractCycleTime",
 				"mItemsPerCycle",
-				"mAllowedResourceForms",
 				"mOnlyAllowCertainResources",
 				"mAllowedResources",
 				"mExtractorTypeName",
@@ -1341,9 +1373,6 @@
 				},
 				"mItemsPerCycle": {
 					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-				},
-				"mAllowedResourceForms": {
-					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mAllowedResourceForms"
 				},
 				"mOnlyAllowCertainResources": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
@@ -1372,9 +1401,19 @@
 				}
 			}
 		},
+		"FGBuildableResourceExtractor--base--with-resources": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base--resources"
+				}
+			]
+		},
 		"FGBuildableResourceExtractor--miner--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableResourceExtractor--base",
+			"$ref": "#/$defs/FGBuildableResourceExtractor--base--with-resources",
 			"required": [
 				"mParticleMap",
 				"mExtractorTypeName",
@@ -1556,7 +1595,7 @@
 		},
 		"FGBuildableResourceExtractor--oil--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableResourceExtractor--base",
+			"$ref": "#/$defs/FGBuildableResourceExtractor--base--with-resources",
 			"required": ["mAllowedResourceForms"],
 			"properties": {
 				"mAllowedResourceForms": {
@@ -1588,7 +1627,7 @@
 		},
 		"FGBuildableResourceExtractor--water--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableResourceExtractor--base",
+			"$ref": "#/$defs/FGBuildableResourceExtractor--base--with-resources",
 			"required": [
 				"mWaterpumpTimeline_RTPC_B8FA6F944E717E3B7A286E84901F620E",
 				"mWaterpumpTimeline__Direction_B8FA6F944E717E3B7A286E84901F620E",
