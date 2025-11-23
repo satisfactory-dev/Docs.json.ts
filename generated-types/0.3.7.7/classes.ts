@@ -23,6 +23,7 @@ import type {
 	FGBuildableGeneratorFuel_coal as docs_json_ts_0_3_7_7_classes_base_FGBuildableGeneratorFuel_coal,
 	FGBuildableGeneratorFuel_fuel as docs_json_ts_0_3_7_7_classes_base_FGBuildableGeneratorFuel_fuel,
 	FGBuildableGeneratorNuclear as docs_json_ts_0_3_7_7_classes_base_FGBuildableGeneratorNuclear,
+	FGBuildableJumppad as docs_json_ts_0_3_7_7_classes_base_FGBuildableJumppad,
 	FGBuildableManufacturer_Build_AssemblerMk1_C as docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_Build_AssemblerMk1_C,
 	FGBuildableManufacturer_Build_ConstructorMk1_C as docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_Build_ConstructorMk1_C,
 	FGBuildableManufacturer_Build_FoundryMk1_C as docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_Build_FoundryMk1_C,
@@ -70,12 +71,9 @@ import type {
 	BGRA as docs_json_ts_common_types_BGRA,
 	bool_string as docs_json_ts_common_types_bool_string,
 	decimal_string as docs_json_ts_common_types_decimal_string,
-	decimal_string_signed as docs_json_ts_common_types_decimal_string_signed,
 	empty_object as docs_json_ts_common_types_empty_object,
 	integer_string as docs_json_ts_common_types_integer_string,
-	PitchYawRoll_decimal_string_signed as docs_json_ts_common_types_PitchYawRoll_decimal_string_signed,
 	RGBA as docs_json_ts_common_types_RGBA,
-	XYZ_decimal_string as docs_json_ts_common_types_XYZ_decimal_string,
 } from './../common/types.ts';
 
 import type {
@@ -137,27 +135,7 @@ type FGBuildableGeneratorGeoThermal = docs_json_ts_0_3_7_7_classes_base_FGBuilda
 
 type FGBuildableGeneratorNuclear = docs_json_ts_0_3_7_7_classes_base_FGBuildableGeneratorNuclear;
 
-type FGBuildableJumppad = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered & {
-	mPowerBankCapacity: docs_json_ts_common_types_decimal_string,
-	mLaunchPowerCost: docs_json_ts_common_types_decimal_string,
-	mChargeRateMultiplier: docs_json_ts_common_types_decimal_string,
-	mCurrentPowerLevel: docs_json_ts_common_types_decimal_string,
-	mLaunchVelocity: docs_json_ts_common_types_decimal_string,
-	mLaunchAngle: docs_json_ts_common_types_decimal_string_signed,
-	mPlayerChainJumpResetTime: docs_json_ts_common_types_decimal_string,
-	mHasPowerForLaunch: docs_json_ts_common_types_bool_string,
-	ComponentsToLaunch: '',
-	CharactersToLaunch: '',
-	VehiclesToLaunch: '',
-	mTrajectoryData: docs_json_ts_common_types_empty_object,
-	mTrajectoryMeshScale: docs_json_ts_common_types_XYZ_decimal_string,
-	mTrajectoryMeshRotation: docs_json_ts_common_types_PitchYawRoll_decimal_string_signed,
-	mDestinationMeshHeightOffset: docs_json_ts_common_types_decimal_string,
-	mNumArrows: docs_json_ts_common_types_integer_string,
-	mKillTimer: docs_json_ts_common_types_empty_object,
-	mTrajectoryGravityMultiplier: docs_json_ts_common_types_decimal_string,
-	mShowTrajectoryCounter: docs_json_ts_common_types_integer_string,
-};
+type FGBuildableJumppad = docs_json_ts_0_3_7_7_classes_base_FGBuildableJumppad;
 
 type FGBuildableLadder = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_width & {
 	mMeshHeight: docs_json_ts_common_types_decimal_string,

@@ -295,6 +295,30 @@ type FGBuildableGeneratorNuclear_base = FGBuildableGenerator_base & {
 	mFuelResourceForm: 'RF_SOLID',
 };
 
+type FGBuildableJumppad = FGBuildableJumppad_base & FGBuildable_powered;
+
+type FGBuildableJumppad_base = FGBuildable_powered_base & {
+	mPowerBankCapacity: docs_json_ts_common_types_decimal_string,
+	mLaunchPowerCost: docs_json_ts_common_types_decimal_string,
+	mChargeRateMultiplier: docs_json_ts_common_types_decimal_string,
+	mCurrentPowerLevel: docs_json_ts_common_types_decimal_string,
+	mLaunchVelocity: docs_json_ts_common_types_decimal_string,
+	mLaunchAngle: docs_json_ts_common_types_decimal_string_signed,
+	mPlayerChainJumpResetTime: docs_json_ts_common_types_decimal_string,
+	mHasPowerForLaunch: docs_json_ts_common_types_bool_string,
+	ComponentsToLaunch: '',
+	CharactersToLaunch: '',
+	VehiclesToLaunch: '',
+	mTrajectoryData: docs_json_ts_common_types_empty_object,
+	mTrajectoryMeshScale: docs_json_ts_common_types_XYZ_decimal_string,
+	mTrajectoryMeshRotation: docs_json_ts_common_types_PitchYawRoll_decimal_string_signed,
+	mDestinationMeshHeightOffset: docs_json_ts_common_types_decimal_string,
+	mNumArrows: docs_json_ts_common_types_integer_string,
+	mKillTimer: docs_json_ts_common_types_empty_object,
+	mTrajectoryGravityMultiplier: docs_json_ts_common_types_decimal_string,
+	mShowTrajectoryCounter: docs_json_ts_common_types_integer_string,
+};
+
 type FGBuildableManufacturer_base = FGBuildable_powered_base & {
 	mCurrentRecipeChanged: docs_json_ts_common_types_empty_object,
 	mManufacturingSpeed: docs_json_ts_common_types_decimal_string,
@@ -824,6 +848,8 @@ export type {
 	FGBuildableGeneratorFuel_fuel_base,
 	FGBuildableGeneratorNuclear,
 	FGBuildableGeneratorNuclear_base,
+	FGBuildableJumppad,
+	FGBuildableJumppad_base,
 	FGBuildableManufacturer_base,
 	FGBuildableManufacturer_base_IsPowered,
 	FGBuildableManufacturer_base_mProductionEffectsRunning,

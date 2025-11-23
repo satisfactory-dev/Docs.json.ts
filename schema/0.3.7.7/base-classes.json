@@ -962,6 +962,103 @@
 				}
 			}
 		},
+		"FGBuildableJumppad": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableJumppad--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				}
+			]
+		},
+		"FGBuildableJumppad--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--powered--base",
+			"required": [
+				"mPowerBankCapacity",
+				"mLaunchPowerCost",
+				"mChargeRateMultiplier",
+				"mCurrentPowerLevel",
+				"mLaunchVelocity",
+				"mLaunchAngle",
+				"mPlayerChainJumpResetTime",
+				"mHasPowerForLaunch",
+				"ComponentsToLaunch",
+				"CharactersToLaunch",
+				"VehiclesToLaunch",
+				"mTrajectoryData",
+				"mTrajectoryMeshScale",
+				"mTrajectoryMeshRotation",
+				"mDestinationMeshHeightOffset",
+				"mNumArrows",
+				"mKillTimer",
+				"mTrajectoryGravityMultiplier",
+				"mShowTrajectoryCounter"
+			],
+			"properties": {
+				"mPowerBankCapacity": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mLaunchPowerCost": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mChargeRateMultiplier": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mCurrentPowerLevel": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mLaunchVelocity": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mLaunchAngle": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
+				},
+				"mPlayerChainJumpResetTime": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mHasPowerForLaunch": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"ComponentsToLaunch": {
+					"type": "string",
+					"const": ""
+				},
+				"CharactersToLaunch": {
+					"type": "string",
+					"const": ""
+				},
+				"VehiclesToLaunch": {
+					"type": "string",
+					"const": ""
+				},
+				"mTrajectoryData": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mTrajectoryMeshScale": {
+					"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
+				},
+				"mTrajectoryMeshRotation": {
+					"$ref": "docs.json.ts--common--types#/$defs/PitchYawRoll--decimal_string--signed"
+				},
+				"mDestinationMeshHeightOffset": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mNumArrows": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mKillTimer": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mTrajectoryGravityMultiplier": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mShowTrajectoryCounter": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				}
+			}
+		},
 		"FGBuildableManufacturer--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--powered--base",
