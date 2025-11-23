@@ -448,7 +448,9 @@ type FGBuildableResourceExtractor_oil_base = FGBuildableResourceExtractor_base &
 	],
 };
 
-type FGBuildableResourceExtractor_water = FGBuildableResourceExtractor & FGBuildableResourceExtractor_water_base & (FGBuildable_powered & {
+type FGBuildableResourceExtractor_water = FGBuildableResourceExtractor & FGBuildableResourceExtractor_water_base & FGBuildable_powered;
+
+type FGBuildableResourceExtractor_water_base = FGBuildableResourceExtractor_base & {
 	mWaterpumpTimeline_RTPC_B8FA6F944E717E3B7A286E84901F620E: docs_json_ts_common_types_decimal_string,
 	mWaterpumpTimeline__Direction_B8FA6F944E717E3B7A286E84901F620E: 'Forward',
 	PlayPitchAndVolumeRTPCTimeline_RTPC_2B435F41466C37D2AD809A88AA21BA89: docs_json_ts_common_types_decimal_string,
@@ -458,9 +460,6 @@ type FGBuildableResourceExtractor_water = FGBuildableResourceExtractor & FGBuild
 	mAudioTimerReference: docs_json_ts_common_types_empty_object,
 	mAudioTimelineCounter: docs_json_ts_common_types_decimal_string,
 	HasLostSignificance: docs_json_ts_common_types_bool_string,
-});
-
-type FGBuildableResourceExtractor_water_base = FGBuildableResourceExtractor_base & {
 	mExtractorTypeName: 'None',
 	mAllowedResourceForms: [
 		'RF_LIQUID',

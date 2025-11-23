@@ -1582,50 +1582,7 @@
 					"$ref": "#/$defs/FGBuildableResourceExtractor--water--base"
 				},
 				{
-					"type": "object",
-					"$ref": "#/$defs/FGBuildable--powered",
-					"required": [
-						"mWaterpumpTimeline_RTPC_B8FA6F944E717E3B7A286E84901F620E",
-						"mWaterpumpTimeline__Direction_B8FA6F944E717E3B7A286E84901F620E",
-						"PlayPitchAndVolumeRTPCTimeline_RTPC_2B435F41466C37D2AD809A88AA21BA89",
-						"PlayPitchAndVolumeRTPCTimeline__Direction_2B435F41466C37D2AD809A88AA21BA89",
-						"mAudioTimerCounter",
-						"mAudioTimerMS",
-						"mAudioTimerReference",
-						"mAudioTimelineCounter",
-						"HasLostSignificance"
-					],
-					"properties": {
-						"mWaterpumpTimeline_RTPC_B8FA6F944E717E3B7A286E84901F620E": {
-							"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-						},
-						"mWaterpumpTimeline__Direction_B8FA6F944E717E3B7A286E84901F620E": {
-							"type": "string",
-							"const": "Forward"
-						},
-						"PlayPitchAndVolumeRTPCTimeline_RTPC_2B435F41466C37D2AD809A88AA21BA89": {
-							"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-						},
-						"PlayPitchAndVolumeRTPCTimeline__Direction_2B435F41466C37D2AD809A88AA21BA89": {
-							"type": "string",
-							"const": "Forward"
-						},
-						"mAudioTimerCounter": {
-							"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-						},
-						"mAudioTimerMS": {
-							"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-						},
-						"mAudioTimerReference": {
-							"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-						},
-						"mAudioTimelineCounter": {
-							"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-						},
-						"HasLostSignificance": {
-							"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-						}
-					}
+					"$ref": "#/$defs/FGBuildable--powered"
 				}
 			]
 		},
@@ -1633,10 +1590,48 @@
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableResourceExtractor--base",
 			"required": [
+				"mWaterpumpTimeline_RTPC_B8FA6F944E717E3B7A286E84901F620E",
+				"mWaterpumpTimeline__Direction_B8FA6F944E717E3B7A286E84901F620E",
+				"PlayPitchAndVolumeRTPCTimeline_RTPC_2B435F41466C37D2AD809A88AA21BA89",
+				"PlayPitchAndVolumeRTPCTimeline__Direction_2B435F41466C37D2AD809A88AA21BA89",
+				"mAudioTimerCounter",
+				"mAudioTimerMS",
+				"mAudioTimerReference",
+				"mAudioTimelineCounter",
+				"HasLostSignificance",
 				"mExtractorTypeName",
 				"mAllowedResourceForms"
 			],
 			"properties": {
+				"mWaterpumpTimeline_RTPC_B8FA6F944E717E3B7A286E84901F620E": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mWaterpumpTimeline__Direction_B8FA6F944E717E3B7A286E84901F620E": {
+					"type": "string",
+					"const": "Forward"
+				},
+				"PlayPitchAndVolumeRTPCTimeline_RTPC_2B435F41466C37D2AD809A88AA21BA89": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"PlayPitchAndVolumeRTPCTimeline__Direction_2B435F41466C37D2AD809A88AA21BA89": {
+					"type": "string",
+					"const": "Forward"
+				},
+				"mAudioTimerCounter": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mAudioTimerMS": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mAudioTimerReference": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mAudioTimelineCounter": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"HasLostSignificance": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
 				"mExtractorTypeName": {
 					"type": "string",
 					"const": "None"
