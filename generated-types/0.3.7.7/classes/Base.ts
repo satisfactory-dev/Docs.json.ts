@@ -218,17 +218,6 @@ type FGBuildableGenerator = FGBuildableGenerator_no_fuel & FGBuildableGenerator_
 type FGBuildableGenerator_base = FGBuildableGenerator_no_fuel_base & {
 	mCachedLoadPercentage?: docs_json_ts_common_types_decimal_string,
 	mFuelClasses: '',
-	mDefaultFuelClasses: [
-        '/Game/FactoryGame/Resource/Parts/Fuel/Desc_LiquidFuel.Desc_LiquidFuel_C' | '/Game/FactoryGame/Resource/Parts/Turbofuel/Desc_LiquidTurboFuel.Desc_LiquidTurboFuel_C' | '/Game/FactoryGame/Resource/Parts/BioFuel/Desc_LiquidBiofuel.Desc_LiquidBiofuel_C',
-        ...('/Game/FactoryGame/Resource/Parts/Fuel/Desc_LiquidFuel.Desc_LiquidFuel_C' | '/Game/FactoryGame/Resource/Parts/Turbofuel/Desc_LiquidTurboFuel.Desc_LiquidTurboFuel_C' | '/Game/FactoryGame/Resource/Parts/BioFuel/Desc_LiquidBiofuel.Desc_LiquidBiofuel_C')[],
-	] | [
-		'/Script/FactoryGame.FGItemDescriptorBiomass',
-	] | [
-        '/Game/FactoryGame/Resource/RawResources/Coal/Desc_Coal.Desc_Coal_C' | '/Game/FactoryGame/Resource/Parts/CompactedCoal/Desc_CompactedCoal.Desc_CompactedCoal_C' | '/Game/FactoryGame/Resource/Parts/PetroleumCoke/Desc_PetroleumCoke.Desc_PetroleumCoke_C',
-        ...('/Game/FactoryGame/Resource/RawResources/Coal/Desc_Coal.Desc_Coal_C' | '/Game/FactoryGame/Resource/Parts/CompactedCoal/Desc_CompactedCoal.Desc_CompactedCoal_C' | '/Game/FactoryGame/Resource/Parts/PetroleumCoke/Desc_PetroleumCoke.Desc_PetroleumCoke_C')[],
-	] | [
-		'/Game/FactoryGame/Resource/Parts/NuclearFuelRod/Desc_NuclearFuelRod.Desc_NuclearFuelRod_C',
-	],
 	mAvailableFuelClasses: '',
 	mFuelResourceForm: docs_json_ts_0_3_7_7_properties_mForm,
 	mRequiresSupplementalResource: docs_json_ts_common_types_bool_string,
@@ -246,10 +235,45 @@ type FGBuildableGenerator_no_fuel_base = FGBuildable_powered_base & {
 	mLoadPercentage: docs_json_ts_common_types_decimal_string,
 };
 
-type FGBuildableGeneratorFuel = FGBuildableGenerator & FGBuildableGeneratorFuel_base;
-
 type FGBuildableGeneratorFuel_base = FGBuildableGenerator_base & {
 	mRTPCInterval?: docs_json_ts_common_types_decimal_string,
+};
+
+type FGBuildableGeneratorFuel_biomass = FGBuildableGenerator & FGBuildableGeneratorFuel_biomass_base;
+
+type FGBuildableGeneratorFuel_biomass_base = FGBuildableGeneratorFuel_base & {
+	mDefaultFuelClasses: [
+		'/Script/FactoryGame.FGItemDescriptorBiomass',
+	],
+};
+
+type FGBuildableGeneratorFuel_coal = FGBuildableGenerator & FGBuildableGeneratorFuel_coal_base;
+
+type FGBuildableGeneratorFuel_coal_base = FGBuildableGeneratorFuel_base & {
+	mDefaultFuelClasses: [
+        '/Game/FactoryGame/Resource/RawResources/Coal/Desc_Coal.Desc_Coal_C' | '/Game/FactoryGame/Resource/Parts/CompactedCoal/Desc_CompactedCoal.Desc_CompactedCoal_C' | '/Game/FactoryGame/Resource/Parts/PetroleumCoke/Desc_PetroleumCoke.Desc_PetroleumCoke_C',
+        ...('/Game/FactoryGame/Resource/RawResources/Coal/Desc_Coal.Desc_Coal_C' | '/Game/FactoryGame/Resource/Parts/CompactedCoal/Desc_CompactedCoal.Desc_CompactedCoal_C' | '/Game/FactoryGame/Resource/Parts/PetroleumCoke/Desc_PetroleumCoke.Desc_PetroleumCoke_C')[],
+	],
+};
+
+type FGBuildableGeneratorFuel_fuel = FGBuildableGenerator & FGBuildableGeneratorFuel_fuel_base;
+
+type FGBuildableGeneratorFuel_fuel_base = FGBuildableGeneratorFuel_base & {
+	mDefaultFuelClasses: [
+        '/Game/FactoryGame/Resource/Parts/Fuel/Desc_LiquidFuel.Desc_LiquidFuel_C' | '/Game/FactoryGame/Resource/Parts/Turbofuel/Desc_LiquidTurboFuel.Desc_LiquidTurboFuel_C' | '/Game/FactoryGame/Resource/Parts/BioFuel/Desc_LiquidBiofuel.Desc_LiquidBiofuel_C',
+        ...('/Game/FactoryGame/Resource/Parts/Fuel/Desc_LiquidFuel.Desc_LiquidFuel_C' | '/Game/FactoryGame/Resource/Parts/Turbofuel/Desc_LiquidTurboFuel.Desc_LiquidTurboFuel_C' | '/Game/FactoryGame/Resource/Parts/BioFuel/Desc_LiquidBiofuel.Desc_LiquidBiofuel_C')[],
+	],
+};
+
+type FGBuildableGeneratorNuclear = FGBuildableGenerator & FGBuildableGeneratorNuclear_base & {
+	mDefaultFuelClasses: [
+		'/Game/FactoryGame/Resource/Parts/NuclearFuelRod/Desc_NuclearFuelRod.Desc_NuclearFuelRod_C',
+	],
+};
+
+type FGBuildableGeneratorNuclear_base = FGBuildableGenerator_base & {
+	mWasteLeftFromCurrentFuel: docs_json_ts_common_types_integer_string,
+	mFuelResourceForm: 'RF_SOLID',
 };
 
 type FGBuildableManufacturer_base = FGBuildable_powered_base & {
@@ -756,8 +780,15 @@ export type {
 	FGBuildableGenerator_base,
 	FGBuildableGenerator_no_fuel,
 	FGBuildableGenerator_no_fuel_base,
-	FGBuildableGeneratorFuel,
 	FGBuildableGeneratorFuel_base,
+	FGBuildableGeneratorFuel_biomass,
+	FGBuildableGeneratorFuel_biomass_base,
+	FGBuildableGeneratorFuel_coal,
+	FGBuildableGeneratorFuel_coal_base,
+	FGBuildableGeneratorFuel_fuel,
+	FGBuildableGeneratorFuel_fuel_base,
+	FGBuildableGeneratorNuclear,
+	FGBuildableGeneratorNuclear_base,
 	FGBuildableManufacturer_base,
 	FGBuildableManufacturer_base_IsPowered,
 	FGBuildableManufacturer_base_mProductionEffectsRunning,

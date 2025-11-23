@@ -131,9 +131,19 @@
 			"unevaluatedProperties": false,
 			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-height-and-elevation"
 		},
-		"FGBuildableGeneratorFuel": {
+		"FGBuildableGeneratorFuel--biomass": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGeneratorFuel",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGeneratorFuel--biomass",
+			"unevaluatedProperties": false
+		},
+		"FGBuildableGeneratorFuel--coal": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGeneratorFuel--coal",
+			"unevaluatedProperties": false
+		},
+		"FGBuildableGeneratorFuel--fuel": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGeneratorFuel--fuel",
 			"unevaluatedProperties": false
 		},
 		"FGBuildableGeneratorGeoThermal": {
@@ -149,18 +159,8 @@
 		},
 		"FGBuildableGeneratorNuclear": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGenerator",
-			"unevaluatedProperties": false,
-			"required": ["mWasteLeftFromCurrentFuel", "mFuelResourceForm"],
-			"properties": {
-				"mWasteLeftFromCurrentFuel": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-				},
-				"mFuelResourceForm": {
-					"type": "string",
-					"const": "RF_SOLID"
-				}
-			}
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGeneratorNuclear",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableJumppad": {
 			"type": "object",

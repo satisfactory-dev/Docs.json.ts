@@ -660,7 +660,6 @@
 			"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base",
 			"required": [
 				"mFuelClasses",
-				"mDefaultFuelClasses",
 				"mAvailableFuelClasses",
 				"mFuelResourceForm",
 				"mRequiresSupplementalResource",
@@ -676,70 +675,6 @@
 				"mFuelClasses": {
 					"type": "string",
 					"const": ""
-				},
-				"mDefaultFuelClasses": {
-					"oneOf": [
-						{
-							"type": "string",
-							"typed_string": {
-								"type": "array",
-								"minItems": 1,
-								"uniqueItems": true,
-								"items": {
-									"type": "string",
-									"enum": [
-										"/Game/FactoryGame/Resource/Parts/Fuel/Desc_LiquidFuel.Desc_LiquidFuel_C",
-										"/Game/FactoryGame/Resource/Parts/Turbofuel/Desc_LiquidTurboFuel.Desc_LiquidTurboFuel_C",
-										"/Game/FactoryGame/Resource/Parts/BioFuel/Desc_LiquidBiofuel.Desc_LiquidBiofuel_C"
-									]
-								}
-							}
-						},
-						{
-							"type": "string",
-							"typed_string": {
-								"type": "array",
-								"minItems": 1,
-								"uniqueItems": true,
-								"items": {
-									"type": "string",
-									"enum": [
-										"/Script/FactoryGame.FGItemDescriptorBiomass"
-									]
-								}
-							}
-						},
-						{
-							"type": "string",
-							"typed_string": {
-								"type": "array",
-								"minItems": 1,
-								"uniqueItems": true,
-								"items": {
-									"type": "string",
-									"enum": [
-										"/Game/FactoryGame/Resource/RawResources/Coal/Desc_Coal.Desc_Coal_C",
-										"/Game/FactoryGame/Resource/Parts/CompactedCoal/Desc_CompactedCoal.Desc_CompactedCoal_C",
-										"/Game/FactoryGame/Resource/Parts/PetroleumCoke/Desc_PetroleumCoke.Desc_PetroleumCoke_C"
-									]
-								}
-							}
-						},
-						{
-							"type": "string",
-							"typed_string": {
-								"type": "array",
-								"minItems": 1,
-								"uniqueItems": true,
-								"items": {
-									"type": "string",
-									"enum": [
-										"/Game/FactoryGame/Resource/Parts/NuclearFuelRod/Desc_NuclearFuelRod.Desc_NuclearFuelRod_C"
-									]
-								}
-							}
-						}
-					]
 				},
 				"mAvailableFuelClasses": {
 					"type": "string",
@@ -797,22 +732,171 @@
 				}
 			}
 		},
-		"FGBuildableGeneratorFuel": {
-			"allOf": [
-				{
-					"$ref": "#/$defs/FGBuildableGenerator"
-				},
-				{
-					"$ref": "#/$defs/FGBuildableGeneratorFuel--base"
-				}
-			]
-		},
 		"FGBuildableGeneratorFuel--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableGenerator--base",
 			"properties": {
 				"mRTPCInterval": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGBuildableGeneratorFuel--biomass": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableGenerator"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableGeneratorFuel--biomass--base"
+				}
+			]
+		},
+		"FGBuildableGeneratorFuel--biomass--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableGeneratorFuel--base"
+				},
+				{
+					"type": "object",
+					"required": ["mDefaultFuelClasses"],
+					"properties": {
+						"mDefaultFuelClasses": {
+							"type": "string",
+							"typed_string": {
+								"type": "array",
+								"minItems": 1,
+								"uniqueItems": true,
+								"items": {
+									"type": "string",
+									"enum": [
+										"/Script/FactoryGame.FGItemDescriptorBiomass"
+									]
+								}
+							}
+						}
+					}
+				}
+			]
+		},
+		"FGBuildableGeneratorFuel--coal": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableGenerator"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableGeneratorFuel--coal--base"
+				}
+			]
+		},
+		"FGBuildableGeneratorFuel--coal--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableGeneratorFuel--base"
+				},
+				{
+					"type": "object",
+					"required": ["mDefaultFuelClasses"],
+					"properties": {
+						"mDefaultFuelClasses": {
+							"type": "string",
+							"typed_string": {
+								"type": "array",
+								"minItems": 1,
+								"uniqueItems": true,
+								"items": {
+									"type": "string",
+									"enum": [
+										"/Game/FactoryGame/Resource/RawResources/Coal/Desc_Coal.Desc_Coal_C",
+										"/Game/FactoryGame/Resource/Parts/CompactedCoal/Desc_CompactedCoal.Desc_CompactedCoal_C",
+										"/Game/FactoryGame/Resource/Parts/PetroleumCoke/Desc_PetroleumCoke.Desc_PetroleumCoke_C"
+									]
+								}
+							}
+						}
+					}
+				}
+			]
+		},
+		"FGBuildableGeneratorFuel--fuel": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableGenerator"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableGeneratorFuel--fuel--base"
+				}
+			]
+		},
+		"FGBuildableGeneratorFuel--fuel--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableGeneratorFuel--base"
+				},
+				{
+					"type": "object",
+					"required": ["mDefaultFuelClasses"],
+					"properties": {
+						"mDefaultFuelClasses": {
+							"type": "string",
+							"typed_string": {
+								"type": "array",
+								"minItems": 1,
+								"uniqueItems": true,
+								"items": {
+									"type": "string",
+									"enum": [
+										"/Game/FactoryGame/Resource/Parts/Fuel/Desc_LiquidFuel.Desc_LiquidFuel_C",
+										"/Game/FactoryGame/Resource/Parts/Turbofuel/Desc_LiquidTurboFuel.Desc_LiquidTurboFuel_C",
+										"/Game/FactoryGame/Resource/Parts/BioFuel/Desc_LiquidBiofuel.Desc_LiquidBiofuel_C"
+									]
+								}
+							}
+						}
+					}
+				}
+			]
+		},
+		"FGBuildableGeneratorNuclear": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableGenerator"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableGeneratorNuclear--base"
+				},
+				{
+					"type": "object",
+					"required": ["mDefaultFuelClasses"],
+					"properties": {
+						"mDefaultFuelClasses": {
+							"type": "string",
+							"typed_string": {
+								"type": "array",
+								"minItems": 1,
+								"uniqueItems": true,
+								"items": {
+									"type": "string",
+									"enum": [
+										"/Game/FactoryGame/Resource/Parts/NuclearFuelRod/Desc_NuclearFuelRod.Desc_NuclearFuelRod_C"
+									]
+								}
+							}
+						}
+					}
+				}
+			]
+		},
+		"FGBuildableGeneratorNuclear--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableGenerator--base",
+			"required": ["mWasteLeftFromCurrentFuel", "mFuelResourceForm"],
+			"properties": {
+				"mWasteLeftFromCurrentFuel": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mFuelResourceForm": {
+					"type": "string",
+					"const": "RF_SOLID"
 				}
 			}
 		},

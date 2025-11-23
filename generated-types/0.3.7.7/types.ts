@@ -14,7 +14,9 @@ import type {
 	FGBuildableFactory_landing_pad as docs_json_ts_0_3_7_7_classes_FGBuildableFactory_landing_pad,
 	FGBuildableFactorySimpleProducer as docs_json_ts_0_3_7_7_classes_FGBuildableFactorySimpleProducer,
 	FGBuildableFoundation as docs_json_ts_0_3_7_7_classes_FGBuildableFoundation,
-	FGBuildableGeneratorFuel as docs_json_ts_0_3_7_7_classes_FGBuildableGeneratorFuel,
+	FGBuildableGeneratorFuel_biomass as docs_json_ts_0_3_7_7_classes_FGBuildableGeneratorFuel_biomass,
+	FGBuildableGeneratorFuel_coal as docs_json_ts_0_3_7_7_classes_FGBuildableGeneratorFuel_coal,
+	FGBuildableGeneratorFuel_fuel as docs_json_ts_0_3_7_7_classes_FGBuildableGeneratorFuel_fuel,
 	FGBuildableGeneratorGeoThermal as docs_json_ts_0_3_7_7_classes_FGBuildableGeneratorGeoThermal,
 	FGBuildableGeneratorNuclear as docs_json_ts_0_3_7_7_classes_FGBuildableGeneratorNuclear,
 	FGBuildableJumppad as docs_json_ts_0_3_7_7_classes_FGBuildableJumppad,
@@ -151,7 +153,9 @@ type FGBuildableFoundation = {
 type FGBuildableGeneratorFuel = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableGeneratorFuel'}${'\''}`,
 	Classes: [
-		...docs_json_ts_0_3_7_7_classes_FGBuildableGeneratorFuel[],
+		docs_json_ts_0_3_7_7_classes_FGBuildableGeneratorFuel_fuel,
+		docs_json_ts_0_3_7_7_classes_FGBuildableGeneratorFuel_biomass,
+		docs_json_ts_0_3_7_7_classes_FGBuildableGeneratorFuel_coal,
 	],
 };
 
