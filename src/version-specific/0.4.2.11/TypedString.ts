@@ -966,6 +966,11 @@ export class TypedString<
 				.split(',');
 
 			const matches = parts
+				.map((e) => (
+					/^"[^"]+"/.test(e)
+						? e.substring(1, e.length - 1)
+						: e
+				))
 				.filter((maybe) => coerced_schema.items.enum.includes(maybe));
 
 			if (parts.length !== matches.length) {
