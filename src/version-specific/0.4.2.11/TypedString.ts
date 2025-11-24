@@ -860,26 +860,67 @@ export class TypedString<
 				coerced_schema.items.properties,
 			);
 
-			const regex = new RegExp(`^\\(\\((?:,?${properties.map(
-				(property): [
-					string,
-					string,
-				] => [
+			const regex = new RegExp(`^\\((?:,?\\(${properties.map(
+				(
 					property,
-					`(${
-						RegExp.escape(property)
-					})=([^=]+|[A-Z]+\\((?:[^)]+)\\)|\\([^)]+\\))`,
-				],
+					i,
+				): [
+					string,
+					string,
+				] => {
+					const next_required = (
+						i >= 0
+						&& i < (properties.length - 1)
+						&& (
+							coerced_schema.items.required || ([] as string[])
+						).includes(properties[i + 1])
+					);
+
+					const current_required = (
+						coerced_schema.items.required || ([] as string[])
+					).includes(property);
+
+					return [
+						property,
+						`(${
+							RegExp.escape(property)
+						})=(\\([^)]+\\)|[^=]+|[A-Z]+\\((?:[^)]+)\\)${
+							!current_required
+							&& next_required
+								? ',?'
+								: ''
+						})`,
+					];
+				},
 			).map(([
 				property,
 				regex,
-			], i) => (
-				(
+			], i) => {
+				const previous_optional = (
+					i > 0
+					&& !(
+						coerced_schema.items.required || ([] as string[])
+					).includes(properties[i - 1])
+				);
+
+				const current_required = (
 					coerced_schema.items.required || ([] as string[])
-				).includes(property)
-					? `${i > 0 ? ',' : ''}${regex}`
-					: `(?:${i > 0 ? ',' : ''}${regex})?`
-			)).join('')})*\\)\\)$`);
+				).includes(property);
+
+				return (
+					current_required
+						? `${
+							i > 0
+								? (
+									previous_optional
+										? ',?'
+										: ','
+								)
+								: ''
+						}${regex}`
+						: `(?:${i > 0 ? ',' : ''}${regex})?`
+				);
+			}).join('')}\\))*\\)$`);
 
 			const match = regex.exec(data);
 
