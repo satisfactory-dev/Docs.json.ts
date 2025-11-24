@@ -1049,6 +1049,40 @@ export class TypedString<
 			);
 
 			result = sanity_check as typeof result;
+		} else if ('FGRailroadTrackConnectionComponent_quoted_list' === mode) {
+			const coerced = (
+				schema.typed_string as TypedString_type<
+					'FGRailroadTrackConnectionComponent_quoted_list'
+				>['typed_string']
+			).items;
+
+			const regex = FGRailroadTrackConnectionComponent.regex_from_value(
+				coerced.DocsDotJson_FGRailroadTrackConnectionComponent_quoted,
+			);
+
+			const pattern = new RegExp(`^\\(${regex}(?:,${regex})*\\)$`);
+
+			if (!pattern.test(data)) {
+				throw new TypeError('Data does not match expected pattern!');
+			}
+
+			const data_parts = data.substring(1, data.length - 1).split(',');
+
+			const sanity_check: TypedString_DataTo<
+				'FGRailroadTrackConnectionComponent_quoted_list'
+			> = factory.createArrayLiteralExpression(
+				data_parts
+					.map((value) => schema_parser
+						.parse_by_type(value)
+						.generate_typescript_data(
+							value,
+							schema_parser,
+							coerced,
+						),
+					),
+			);
+
+			result = sanity_check as typeof result;
 		} else {
 			throw new TypeError('Not implemented!');
 		}
@@ -1344,6 +1378,48 @@ export class TypedString<
 
 			const sanity_check: TypedString_SchemaTo<
 				'FGTrainPlatformConnection_quoted_list'
+			> = factory.createTupleTypeNode([
+				await type_generator(
+					coerced_schema.typed_string.items,
+				),
+				factory.createRestTypeNode(
+					factory.createArrayTypeNode(
+						await type_generator(
+							coerced_schema.typed_string.items,
+						),
+					),
+				),
+			]);
+
+			result = sanity_check as typeof result;
+		} else if ('FGRailroadTrackConnectionComponent_quoted_list' === mode) {
+			const instance = schema_parser.types
+				.find((
+					maybe,
+				) => maybe instanceof FGRailroadTrackConnectionComponent);
+
+			if (undefined === instance) {
+				throw new TypeError(`schema_parser not loaded with ${
+					FGRailroadTrackConnectionComponent.constructor.name
+				}`);
+			}
+
+			const type_generator: Type_Generator<
+				'FGRailroadTrackConnectionComponent_quoted_list'
+			> = (
+				schema: FGRailroadTrackConnectionComponent_quoted_type,
+			) => {
+				return instance.generate_typescript_type({schema});
+			};
+
+			const coerced_schema: TypedString_type<
+				'FGRailroadTrackConnectionComponent_quoted_list'
+			> = schema as TypedString_type<
+				'FGRailroadTrackConnectionComponent_quoted_list'
+			>;
+
+			const sanity_check: TypedString_SchemaTo<
+				'FGRailroadTrackConnectionComponent_quoted_list'
 			> = factory.createTupleTypeNode([
 				await type_generator(
 					coerced_schema.typed_string.items,
