@@ -810,6 +810,13 @@ export class TypedString<
 				const property_name = matches[i];
 				const property_value = matches[i + 1];
 
+				if (
+					undefined === property_name
+					&& undefined === property_value
+				) {
+					continue;
+				}
+
 				const property_schema = TypedString.maybe_add_$defs(
 					schema,
 					coerced_schema.properties[
