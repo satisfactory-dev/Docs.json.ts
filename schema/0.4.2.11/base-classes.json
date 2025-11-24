@@ -1432,20 +1432,47 @@
 		"FGConsumableDescriptor": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGConsumableDescriptor"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGConsumableDescriptor--base"
 				},
 				{
-					"$ref": "#/$defs/FGDescriptor"
+					"$ref": "#/$defs/FGDescriptor--sinkable"
 				}
 			]
 		},
 		"FGDescriptor": {
 			"type": "object",
 			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGDescriptor--base",
-			"required": ["mForm", "mGasColor"],
+			"required": [
+				"mForm",
+				"mSmallIcon",
+				"mPersistentBigIcon",
+				"mGasColor"
+			],
 			"properties": {
 				"mForm": {
 					"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/mForm"
+				},
+				"mPersistentBigIcon": {
+					"oneOf": [
+						{
+							"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/mPersistentBigIcon"
+						},
+						{
+							"type": "string",
+							"const": "None"
+						}
+					]
+				},
+				"mSmallIcon": {
+					"oneOf": [
+						{
+							"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/mSmallIcon"
+						},
+						{
+							"type": "string",
+							"const": "None"
+						}
+					]
 				},
 				"mGasColor": {
 					"$ref": "docs.json.ts--common--types#/$defs/BGRA"
@@ -1455,10 +1482,10 @@
 		"FGDescriptor--BuildMenu": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGDescriptor--BuildMenu"
+					"$ref": "#/$defs/FGDescriptor"
 				},
 				{
-					"$ref": "#/$defs/FGDescriptor"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGDescriptor--BuildMenu--base"
 				}
 			]
 		},
@@ -1711,7 +1738,7 @@
 		"FGItemDescriptorNuclearFuel": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGItemDescriptorNuclearFuel"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGItemDescriptorNuclearFuel--base"
 				},
 				{
 					"$ref": "#/$defs/FGDescriptor"
@@ -1905,7 +1932,7 @@
 									"required": ["SpecifiedColor"],
 									"properties": {
 										"SpecifiedColor": {
-											"$ref": "docs.json.ts--common--types#/$defs/BGRA"
+											"$ref": "docs.json.ts--common--types#/$defs/RGBA"
 										}
 									}
 								}
@@ -1915,7 +1942,24 @@
 								"DocsDotJson_Texture2D": [
 									null,
 									null,
-									["64", "64_new", "256", "512"]
+									[
+										"1",
+										"2",
+										"3",
+										"4",
+										"5",
+										"Factory",
+										"MAM",
+										"Logistics",
+										"Vehicle",
+										"Structure",
+										"Equipment",
+										"Icon",
+										"64",
+										"64_new",
+										"256",
+										"512"
+									]
 								]
 							},
 							"UVRegion": {

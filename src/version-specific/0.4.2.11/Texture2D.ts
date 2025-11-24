@@ -26,6 +26,12 @@ type macro_schema = ([
 		| ['256', '512']
 		| ['256', '512', '1b', '256_New']
 		| ['64', '512']
+		| [
+			'1', '2', '3', '4', '5',
+			'Factory', 'MAM', 'Logistics',
+			'Vehicle', 'Structure', 'Equipment', 'Icon',
+			'64', '64_new', '256', '512',
+		]
 		// eslint-disable-next-line @stylistic/comma-dangle
 		| null
 	),
@@ -97,6 +103,24 @@ const Texture2D_schema_properties = {
 									['256', '512'],
 									['256', '512', '1b', '256_New'],
 									['64', '512'],
+									[
+										'1',
+										'2',
+										'3',
+										'4',
+										'5',
+										'Factory',
+										'MAM',
+										'Logistics',
+										'Vehicle',
+										'Structure',
+										'Equipment',
+										'Icon',
+										'64',
+										'64_new',
+										'256',
+										'512',
+									],
 								],
 							},
 							{
@@ -117,11 +141,11 @@ type Texture2D_schema = SchemaDefinitionDefinition<
 
 export class Texture2D extends
 	MacroToTemplatedString<
-		`Texture2D${' '|`'`}/Game/FactoryGame/${
+		`Texture2D${' '|`'`|`'"`}/Game/FactoryGame/${
 			string
 		}${
 			'/IconDesc_'|'/'|''
-		}${string}.${string}${`'`|''}`,
+		}${string}.${string}${`"'`|`'`|''}`,
 		macro_schema,
 		Texture2D_type,
 		Record<string, never>,
@@ -147,6 +171,12 @@ export class Texture2D extends
 						| ['256', '512']
 						| ['256', '512', '1b', '256_New']
 						| ['64', '512']
+						| [
+							'1', '2', '3', '4', '5',
+							'Factory', 'MAM', 'Logistics',
+							'Vehicle', 'Structure', 'Equipment', 'Icon',
+							'64', '64_new', '256', '512',
+						]
 						// eslint-disable-next-line @stylistic/comma-dangle
 						| null
 					),
@@ -165,6 +195,7 @@ export class Texture2D extends
 							[
 								`Texture2D /Game/FactoryGame/`,
 								`Texture2D'/Game/FactoryGame/`,
+								`Texture2D'"/Game/FactoryGame/`,
 							],
 							null === value[0] ? {type: 'string'} : value[0],
 							['/IconDesc_', '/', ''],
@@ -190,7 +221,7 @@ export class Texture2D extends
 									},
 								],
 							},
-							[`'`, ''],
+							[`"'`, `'`, ''],
 						],
 					};
 				},
@@ -198,6 +229,7 @@ export class Texture2D extends
 					[
 						`Texture2D /Game/FactoryGame/`,
 						`Texture2D'/Game/FactoryGame/`,
+						`Texture2D'"/Game/FactoryGame/`,
 					],
 					{type: 'string'},
 					['/IconDesc_', '/', ''],
@@ -210,6 +242,18 @@ export class Texture2D extends
 									{type: 'string'},
 									'_',
 									[
+										'1',
+										'2',
+										'3',
+										'4',
+										'5',
+										'Factory',
+										'MAM',
+										'Logistics',
+										'Vehicle',
+										'Structure',
+										'Equipment',
+										'Icon',
 										'64',
 										'256',
 										'512',
@@ -226,6 +270,18 @@ export class Texture2D extends
 									{type: 'string'},
 									'_',
 									[
+										'1',
+										'2',
+										'3',
+										'4',
+										'5',
+										'Factory',
+										'MAM',
+										'Logistics',
+										'Vehicle',
+										'Structure',
+										'Equipment',
+										'Icon',
 										'64',
 										'256',
 										'512',
@@ -237,7 +293,7 @@ export class Texture2D extends
 							},
 						],
 					},
-					[`'`, ''],
+					[`"'`, `'`, ''],
 				],
 			},
 			{
@@ -273,6 +329,12 @@ export class Texture2D extends
 			| ['256', '512']
 			| ['256', '512', '1b', '256_New']
 			| ['64', '512']
+			| [
+				'1', '2', '3', '4', '5',
+				'Factory', 'MAM', 'Logistics',
+				'Vehicle', 'Structure', 'Equipment', 'Icon',
+				'64', '64_new', '256', '512',
+			]
 		) = null === third
 			? ['64', '256']
 			: (Array.isArray(third) ? third : third);
@@ -282,6 +344,7 @@ export class Texture2D extends
 				[
 					`Texture2D /Game/FactoryGame/`,
 					`Texture2D'/Game/FactoryGame/`,
+					`Texture2D'"/Game/FactoryGame/`,
 				],
 				null === value0 ? {type: 'string'} : value0,
 				['/IconDesc_', '/', ''],
@@ -292,7 +355,7 @@ export class Texture2D extends
 				null === value1 ? {type: 'string'} : value1,
 				'_',
 				value2,
-				[`'`, ''],
+				[`"'`, `'`, ''],
 			]),
 		);
 	}

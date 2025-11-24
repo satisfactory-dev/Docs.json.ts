@@ -27,7 +27,6 @@ import update3 from './schema/0.3.7.7/docs.json' with {
 	type: 'json',
 };
 
-// eslint-disable-next-line @stylistic/max-len
 import update4_properties from './schema/0.4.2.11/properties.json' with {
 	type: 'json',
 };
@@ -36,7 +35,6 @@ import update4_classes from './schema/0.4.2.11/classes.json' with {
 	type: 'json',
 };
 
-// eslint-disable-next-line @stylistic/max-len
 import update4_classes__base from './schema/0.4.2.11/base-classes.json' with {
 	type: 'json',
 };

@@ -718,7 +718,9 @@ type FGColorGun = FGWeaponProjectile_instant & {
 	mArmAnimation: 'AE_ColorGun',
 };
 
-type FGConsumableDescriptor = FGDescriptor_sinkable & {
+type FGConsumableDescriptor = FGDescriptor_sinkable & FGConsumableDescriptor_base;
+
+type FGConsumableDescriptor_base = FGDescriptor_sinkable_base & {
 	mHealthGain?: docs_json_ts_common_types_decimal_string,
 	mCustomHandsMeshScale: docs_json_ts_common_types_decimal_string,
 	mCustomRotation: docs_json_ts_common_types_PitchYawRoll_decimal_string_signed,
@@ -744,6 +746,8 @@ type FGConsumableEquipment = FGEquipment & {
 
 type FGDescriptor = FGDescriptor_base & {
 	mForm: docs_json_ts_0_3_7_7_properties_mForm,
+	mPersistentBigIcon: docs_json_ts_0_3_7_7_properties_mPersistentBigIcon | 'None',
+	mSmallIcon: docs_json_ts_0_3_7_7_properties_mSmallIcon | 'None',
 };
 
 type FGDescriptor_base = isDescribed & {
@@ -754,17 +758,19 @@ type FGDescriptor_base = isDescribed & {
 	mEnergyValue: docs_json_ts_common_types_decimal_string,
 	mRadioactiveDecay: docs_json_ts_common_types_decimal_string,
 	mForm: `RF_${string}`,
-	mSmallIcon: docs_json_ts_0_3_7_7_properties_mSmallIcon | 'None',
-	mPersistentBigIcon: docs_json_ts_0_3_7_7_properties_mPersistentBigIcon | 'None',
+	mSmallIcon: `Texture2D${string}` | 'None',
+	mPersistentBigIcon: `Texture2D${string}` | 'None',
 	mFluidColor: docs_json_ts_common_types_BGRA,
 };
 
-type FGDescriptor_BuildMenu = FGDescriptor & {
+type FGDescriptor_BuildMenu = FGDescriptor & FGDescriptor_BuildMenu_base;
+
+type FGDescriptor_BuildMenu_base = FGDescriptor_base & {
 	mSubCategories: docs_json_ts_0_3_7_7_properties_mSubCategories,
 	mBuildMenuPriority: docs_json_ts_common_types_decimal_string,
 };
 
-type FGDescriptor_sinkable = FGDescriptor & FGDescriptor_sinkable_base;
+type FGDescriptor_sinkable = FGDescriptor_sinkable_base & FGDescriptor;
 
 type FGDescriptor_sinkable_base = FGDescriptor_base & {
 	mResourceSinkPoints: docs_json_ts_common_types_integer_string,
@@ -806,7 +812,9 @@ type FGInstructive = isNamed & {
 	mRelevantEvents: null | docs_json_ts_0_3_7_7_properties_mRelevantEvents,
 };
 
-type FGItemDescriptorNuclearFuel = FGDescriptor_sinkable & {
+type FGItemDescriptorNuclearFuel = FGDescriptor_sinkable & FGItemDescriptorNuclearFuel_base;
+
+type FGItemDescriptorNuclearFuel_base = FGDescriptor_sinkable_base & {
 	mAmountOfWaste: docs_json_ts_common_types_integer_string,
 };
 
@@ -1070,10 +1078,12 @@ export type {
 	FGBuildableWire,
 	FGColorGun,
 	FGConsumableDescriptor,
+	FGConsumableDescriptor_base,
 	FGConsumableEquipment,
 	FGDescriptor,
 	FGDescriptor_base,
 	FGDescriptor_BuildMenu,
+	FGDescriptor_BuildMenu_base,
 	FGDescriptor_sinkable,
 	FGDescriptor_sinkable_base,
 	FGEquipment,
@@ -1083,6 +1093,7 @@ export type {
 	FGEquipmentStunSpear_base,
 	FGInstructive,
 	FGItemDescriptorNuclearFuel,
+	FGItemDescriptorNuclearFuel_base,
 	FGNobeliskDetonator,
 	FGParachute,
 	FGParachute_base,

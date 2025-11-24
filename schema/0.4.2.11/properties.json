@@ -34,6 +34,9 @@
 						},
 						"Translation": {
 							"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
+						},
+						"Scale3D": {
+							"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
 						}
 					}
 				}
@@ -97,7 +100,6 @@
 					"DocsDotJson_Desc_C": null
 				},
 				"mByproductAmount": {
-					"type": "string",
 					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
 				}
 			}
@@ -117,6 +119,14 @@
 				}
 			}
 		},
+		"mPersistentBigIcon": {
+			"type": "string",
+			"DocsDotJson_Texture2D": [
+				null,
+				null,
+				["256", "512", "1b", "256_New"]
+			]
+		},
 		"mSchematicDependencies--item": {
 			"type": "object",
 			"additionalProperties": false,
@@ -131,6 +141,14 @@
 					"const": "EGP_FoodCourt"
 				}
 			}
+		},
+		"mSmallIcon": {
+			"type": "string",
+			"DocsDotJson_Texture2D": [
+				null,
+				null,
+				["64", "256", "1b", "64_new"]
+			]
 		},
 		"mUnlocks--item": {
 			"oneOf": [
@@ -204,6 +222,10 @@
 								"ResourceDescriptor": {
 									"type": "string",
 									"DocsDotJson_BlueprintGeneratedClass_quoted": null
+								},
+								"ResourceNodeType": {
+									"type": "string",
+									"enum": ["Geyser", "FrackingCore"]
 								}
 							}
 						}

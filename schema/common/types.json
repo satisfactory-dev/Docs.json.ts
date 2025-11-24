@@ -156,13 +156,13 @@
 				"required": ["X", "Y", "Z", "W"],
 				"properties": {
 					"X": {
-						"$ref": "#/$defs/decimal_string"
+						"$ref": "#/$defs/decimal_string--signed"
 					},
 					"Y": {
-						"$ref": "#/$defs/decimal_string"
+						"$ref": "#/$defs/decimal_string--signed"
 					},
 					"Z": {
-						"$ref": "#/$defs/decimal_string"
+						"$ref": "#/$defs/decimal_string--signed"
 					},
 					"W": {
 						"$ref": "#/$defs/decimal_string"

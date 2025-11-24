@@ -2356,7 +2356,10 @@
 				},
 				"mMamFreeText": {
 					"type": "string",
-					"templated_string": ["Use M", {"type": "string"}]
+					"templated_string": [
+						"Use M",
+						{"type": "string"}
+					]
 				},
 				"mMamOccupiedText": {
 					"type": "string",
@@ -2613,8 +2616,18 @@
 			}
 		},
 		"FGConsumableDescriptor": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGDescriptor--sinkable"
+				},
+				{
+					"$ref": "#/$defs/FGConsumableDescriptor--base"
+				}
+			]
+		},
+		"FGConsumableDescriptor--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGDescriptor--sinkable",
+			"$ref": "#/$defs/FGDescriptor--sinkable--base",
 			"required": [
 				"mCustomHandsMeshScale",
 				"mCustomRotation",
@@ -2691,10 +2704,32 @@
 		"FGDescriptor": {
 			"type": "object",
 			"$ref": "#/$defs/FGDescriptor--base",
-			"required": ["mForm"],
+			"required": ["mForm", "mPersistentBigIcon", "mSmallIcon"],
 			"properties": {
 				"mForm": {
 					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mForm"
+				},
+				"mPersistentBigIcon": {
+					"oneOf": [
+						{
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mPersistentBigIcon"
+						},
+						{
+							"type": "string",
+							"const": "None"
+						}
+					]
+				},
+				"mSmallIcon": {
+					"oneOf": [
+						{
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mSmallIcon"
+						},
+						{
+							"type": "string",
+							"const": "None"
+						}
+					]
 				}
 			}
 		},
@@ -2734,12 +2769,19 @@
 				},
 				"mForm": {
 					"type": "string",
-					"templated_string": ["RF_", {"type": "string"}]
+					"templated_string": [
+						"RF_",
+						{"type": "string"}
+					]
 				},
 				"mSmallIcon": {
 					"oneOf": [
 						{
-							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mSmallIcon"
+							"type": "string",
+							"templated_string": [
+								"Texture2D",
+								{"type": "string"}
+							]
 						},
 						{
 							"type": "string",
@@ -2750,7 +2792,11 @@
 				"mPersistentBigIcon": {
 					"oneOf": [
 						{
-							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mPersistentBigIcon"
+							"type": "string",
+							"templated_string": [
+								"Texture2D",
+								{"type": "string"}
+							]
 						},
 						{
 							"type": "string",
@@ -2764,8 +2810,18 @@
 			}
 		},
 		"FGDescriptor--BuildMenu": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGDescriptor"
+				},
+				{
+					"$ref": "#/$defs/FGDescriptor--BuildMenu--base"
+				}
+			]
+		},
+		"FGDescriptor--BuildMenu--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGDescriptor",
+			"$ref": "#/$defs/FGDescriptor--base",
 			"required": ["mSubCategories", "mBuildMenuPriority"],
 			"properties": {
 				"mSubCategories": {
@@ -2779,10 +2835,10 @@
 		"FGDescriptor--sinkable": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGDescriptor"
+					"$ref": "#/$defs/FGDescriptor--sinkable--base"
 				},
 				{
-					"$ref": "#/$defs/FGDescriptor--sinkable--base"
+					"$ref": "#/$defs/FGDescriptor"
 				}
 			]
 		},
@@ -2951,8 +3007,18 @@
 			}
 		},
 		"FGItemDescriptorNuclearFuel": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGDescriptor--sinkable"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptorNuclearFuel--base"
+				}
+			]
+		},
+		"FGItemDescriptorNuclearFuel--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGDescriptor--sinkable",
+			"$ref": "#/$defs/FGDescriptor--sinkable--base",
 			"required": ["mAmountOfWaste"],
 			"properties": {
 				"mAmountOfWaste": {

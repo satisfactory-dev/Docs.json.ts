@@ -35,17 +35,30 @@ npm-prep: tests
 	@./node_modules/.bin/tsc --project ./tsconfig.app-npm.json
 	@npm publish --dry-run
 
-prepare:
+prepare: prepare--update4
+
+prepare--update3:
 	@echo 'prepare 0.3.7.7'
 	@node ./prepare-0.3.7.7.ts
 
-prepare--update4: prepare
+prepare--update4: prepare--update3
 	@echo 'prepare 0.4.2.11'
 	@node ./prepare-0.4.2.11.ts
 
-generate: prepare
-	@echo 'running generator'
+generate--clean:
+	@echo 'cleaning ./generated-types/'
 	@git clean -fxd ./generated-types/
-	@node ./generator.ts
+
+generate--wrap-up:
 	@echo 'fixing generated types'
 	@./node_modules/.bin/eslint --fix ./generated-types/
+
+generate: generate--clean generate--update3 generate--update4 generate--wrap-up
+
+generate--update3: prepare--update3
+	@echo 'running generator'
+	@node ./generate-update3.ts
+
+generate--update4: prepare--update4
+	@echo 'running generator'
+	@node ./generate-update4.ts
