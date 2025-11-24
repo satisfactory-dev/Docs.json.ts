@@ -3,6 +3,6 @@
 	"compilerOptions": {
 		"noEmit": true
 	},
-	"include": ["./src/*.ts", "./tests/src/*.ts", "./*.ts"],
+	"include": ["./src/*.ts", "./tests/src/*.ts", "./*.ts", "./generated-types/**/*.ts"],
 	"exclude": ["./generate-update*.ts"]
 }
