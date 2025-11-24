@@ -4,5 +4,5 @@
 		"noEmit": true
 	},
 	"include": ["./src/*.ts", "./tests/src/*.ts", "./*.ts"],
-	"exclude": ["./generator.ts"]
+	"exclude": ["./generate-update*.ts"]
 }
