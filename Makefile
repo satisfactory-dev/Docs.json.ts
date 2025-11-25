@@ -35,6 +35,12 @@ npm-prep: tests
 	@./node_modules/.bin/tsc --project ./tsconfig.app-npm.json
 	@npm publish --dry-run
 
+ci--basic-checks:
+	./node_modules/.bin/tsc --project ./tsconfig.app-check.json
+	./node_modules/.bin/prettier . --check
+	./node_modules/.bin/eslint --config eslint.config.js.mjs './**/*.mjs'
+	./node_modules/.bin/eslint --cache './**/*.ts'
+
 prepare: prepare--update4
 
 prepare--update3:
