@@ -85,6 +85,7 @@ import type {
 	FGSnowballWeapon as docs_json_ts_0_3_7_7_classes_base_FGSnowballWeapon,
 	FGWeaponInstantFire as docs_json_ts_0_3_7_7_classes_base_FGWeaponInstantFire,
 	FGWeaponProjectile as docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile,
+	FGWeaponProjectile_base as docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_base,
 	FGWeaponProjectileFire as docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectileFire,
 	isDescribed as docs_json_ts_0_3_7_7_classes_base_isDescribed,
 } from './../../0.3.7.7/classes/Base.ts';
@@ -609,13 +610,17 @@ type FGVehicleDescriptor_with_inventory = FGDescriptor_BuildMenu & {
 
 type FGWeaponInstantFire = docs_json_ts_0_3_7_7_classes_base_FGWeaponInstantFire & FGWeaponProjectile;
 
-type FGWeaponProjectile = docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile & {
+type FGWeaponProjectile = docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile & FGWeaponProjectile_base;
+
+type FGWeaponProjectile_base = docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_base & {
 	mBlockSprintWhenFiring: docs_json_ts_common_types_bool_string,
 };
 
-type FGWeaponProjectileFire = docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectileFire & (FGWeaponProjectile & {
+type FGWeaponProjectileFire = docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectileFire & FGWeaponProjectile & FGWeaponProjectileFire_base;
+
+type FGWeaponProjectileFire_base = docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_base & {
 	mMuteDryFire: docs_json_ts_common_types_bool_string,
-});
+};
 
 export type {
 	FGBuildable,
@@ -738,5 +743,7 @@ export type {
 	FGVehicleDescriptor_with_inventory,
 	FGWeaponInstantFire,
 	FGWeaponProjectile,
+	FGWeaponProjectile_base,
 	FGWeaponProjectileFire,
+	FGWeaponProjectileFire_base,
 };

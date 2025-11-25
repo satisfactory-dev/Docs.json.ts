@@ -905,26 +905,38 @@ type FGSnowballWeapon = FGWeaponProjectile_thrown & {
 	mArmAnimation: 'AE_Generic1Hand',
 };
 
-type FGWeaponInstantFire = FGWeaponProjectile_instant & {
+type FGWeaponInstantFire = FGWeaponProjectile_instant & FGWeaponInstantFire_base;
+
+type FGWeaponInstantFire_base = FGWeaponProjectile_instant_base & {
 	Fire: docs_json_ts_common_types_empty_object,
 	mLockAngle: docs_json_ts_common_types_decimal_string,
 	mHasReloadedOnce: docs_json_ts_common_types_bool_string,
 	mArmAnimation: 'AE_Rifle',
 };
 
-type FGWeaponProjectile = FGEquipment & {
-	mMagSize: docs_json_ts_common_types_integer_string,
-	mCurrentAmmo: docs_json_ts_common_types_integer_string,
+type FGWeaponProjectile = FGWeaponProjectile_base & FGWeaponProjectile_base_version_specific;
+
+type FGWeaponProjectile_base = FGEquipment_base & {
 	mReloadTime: docs_json_ts_common_types_decimal_string,
 	mFireRate: docs_json_ts_common_types_decimal_string,
 	mAttachSocket: 'hand_lSocket' | 'hand_rSocket',
 	mArmAnimation: 'AE_RebarGun' | 'AE_Rifle' | 'AE_ColorGun' | 'AE_Nobelisk' | 'AE_Generic1Hand',
 };
 
-type FGWeaponProjectile_instant = FGWeaponProjectile & {
+type FGWeaponProjectile_base_version_specific = FGEquipment & {
+	mMagSize: docs_json_ts_common_types_integer_string,
+	mCurrentAmmo: docs_json_ts_common_types_integer_string,
+};
+
+type FGWeaponProjectile_instant = FGWeaponProjectile & FGWeaponProjectile_instant_base & FGWeaponProjectile_instant_base_version_specific;
+
+type FGWeaponProjectile_instant_base = FGWeaponProjectile_base & {
+	mAttachSocket: 'hand_rSocket',
+};
+
+type FGWeaponProjectile_instant_base_version_specific = FGWeaponProjectile_base & {
 	mInstantHitDamage: docs_json_ts_common_types_decimal_string,
 	mWeaponTraceLength: docs_json_ts_common_types_decimal_string,
-	mAttachSocket: 'hand_rSocket',
 };
 
 type FGWeaponProjectile_thrown = FGWeaponProjectile & {
@@ -949,10 +961,19 @@ type FGWeaponProjectile_thrown = FGWeaponProjectile & {
 	mArmAnimation: 'AE_Nobelisk' | 'AE_Generic1Hand',
 };
 
-type FGWeaponProjectileFire = FGWeaponProjectile & {
-	mMuteDryFire: docs_json_ts_common_types_bool_string,
+type FGWeaponProjectileFire = FGWeaponProjectile & FGWeaponProjectileFire_base & FGWeaponProjectileFire_base_random & FGWeaponProjectileFire_base_version_specific;
+
+type FGWeaponProjectileFire_base = FGWeaponProjectile_base & {
+	mAttachSocket: 'hand_rSocket',
+};
+
+type FGWeaponProjectileFire_base_random = FGWeaponProjectile_base & {
 	mRandomReloadAnim: docs_json_ts_common_types_integer_string,
 	mRandomStingerAnim: docs_json_ts_common_types_integer_string,
+};
+
+type FGWeaponProjectileFire_base_version_specific = FGWeaponProjectile_base & {
+	mMuteDryFire: docs_json_ts_common_types_bool_string,
 	mProjectileData: {
 		ProjectileClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
 		ProjectileLifeSpan: docs_json_ts_common_types_decimal_string,
@@ -963,7 +984,6 @@ type FGWeaponProjectileFire = FGWeaponProjectile & {
 		DamageType: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
 		DamageTypeExplode: 'Class\'"/Script/FactoryGame.FGDamageType"\'',
 	},
-	mAttachSocket: 'hand_rSocket',
 	mArmAnimation: 'AE_RebarGun',
 };
 
@@ -1137,8 +1157,16 @@ export type {
 	FGSchematic,
 	FGSnowballWeapon,
 	FGWeaponInstantFire,
+	FGWeaponInstantFire_base,
 	FGWeaponProjectile,
+	FGWeaponProjectile_base,
+	FGWeaponProjectile_base_version_specific,
 	FGWeaponProjectile_instant,
+	FGWeaponProjectile_instant_base,
+	FGWeaponProjectile_instant_base_version_specific,
 	FGWeaponProjectile_thrown,
 	FGWeaponProjectileFire,
+	FGWeaponProjectileFire_base,
+	FGWeaponProjectileFire_base_random,
+	FGWeaponProjectileFire_base_version_specific,
 };

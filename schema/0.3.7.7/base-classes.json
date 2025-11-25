@@ -3353,8 +3353,18 @@
 			}
 		},
 		"FGWeaponInstantFire": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGWeaponProjectile--instant"
+				},
+				{
+					"$ref": "#/$defs/FGWeaponInstantFire--base"
+				}
+			]
+		},
+		"FGWeaponInstantFire--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGWeaponProjectile--instant",
+			"$ref": "#/$defs/FGWeaponProjectile--instant--base",
 			"required": [
 				"Fire",
 				"mLockAngle",
@@ -3378,23 +3388,25 @@
 			}
 		},
 		"FGWeaponProjectile": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGWeaponProjectile--base"
+				},
+				{
+					"$ref": "#/$defs/FGWeaponProjectile--base--version-specific"
+				}
+			]
+		},
+		"FGWeaponProjectile--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment",
+			"$ref": "#/$defs/FGEquipment--base",
 			"required": [
-				"mMagSize",
-				"mCurrentAmmo",
 				"mReloadTime",
 				"mFireRate",
 				"mAttachSocket",
 				"mArmAnimation"
 			],
 			"properties": {
-				"mMagSize": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-				},
-				"mCurrentAmmo": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-				},
 				"mReloadTime": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
@@ -3417,13 +3429,51 @@
 				}
 			}
 		},
-		"FGWeaponProjectile--instant": {
+		"FGWeaponProjectile--base--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGWeaponProjectile",
+			"$ref": "#/$defs/FGEquipment",
+			"required": ["mMagSize", "mCurrentAmmo"],
+			"properties": {
+				"mMagSize": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mCurrentAmmo": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				}
+			}
+		},
+		"FGWeaponProjectile--instant": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGWeaponProjectile"
+				},
+				{
+					"$ref": "#/$defs/FGWeaponProjectile--instant--base"
+				},
+				{
+					"$ref": "#/$defs/FGWeaponProjectile--instant--base--version-specific"
+				}
+			]
+		},
+		"FGWeaponProjectile--instant--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGWeaponProjectile--base",
+			"required": [
+				"mAttachSocket"
+			],
+			"properties": {
+				"mAttachSocket": {
+					"type": "string",
+					"const": "hand_rSocket"
+				}
+			}
+		},
+		"FGWeaponProjectile--instant--base--version-specific": {
+			"type": "object",
+			"$ref": "#/$defs/FGWeaponProjectile--base",
 			"required": [
 				"mInstantHitDamage",
-				"mWeaponTraceLength",
-				"mAttachSocket"
+				"mWeaponTraceLength"
 			],
 			"properties": {
 				"mInstantHitDamage": {
@@ -3431,10 +3481,6 @@
 				},
 				"mWeaponTraceLength": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mAttachSocket": {
-					"type": "string",
-					"const": "hand_rSocket"
 				}
 			}
 		},
@@ -3533,25 +3579,55 @@
 			}
 		},
 		"FGWeaponProjectileFire": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGWeaponProjectile"
+				},
+				{
+					"$ref": "#/$defs/FGWeaponProjectileFire--base"
+				},
+				{
+					"$ref": "#/$defs/FGWeaponProjectileFire--base--random"
+				},
+				{
+					"$ref": "#/$defs/FGWeaponProjectileFire--base--version-specific"
+				}
+			]
+		},
+		"FGWeaponProjectileFire--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGWeaponProjectile",
+			"$ref": "#/$defs/FGWeaponProjectile--base",
+			"required": ["mAttachSocket"],
+			"properties": {
+				"mAttachSocket": {
+					"type": "string",
+					"const": "hand_rSocket"
+				}
+			}
+		},
+		"FGWeaponProjectileFire--base--random": {
+			"type": "object",
+			"$ref": "#/$defs/FGWeaponProjectile--base",
 			"required": [
-				"mMuteDryFire",
 				"mRandomReloadAnim",
-				"mRandomStingerAnim",
-				"mProjectileData",
-				"mAttachSocket",
-				"mArmAnimation"
+				"mRandomStingerAnim"
 			],
 			"properties": {
-				"mMuteDryFire": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
 				"mRandomReloadAnim": {
 					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
 				},
 				"mRandomStingerAnim": {
 					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				}
+			}
+		},
+		"FGWeaponProjectileFire--base--version-specific": {
+			"type": "object",
+			"$ref": "#/$defs/FGWeaponProjectile--base",
+			"required": ["mMuteDryFire", "mProjectileData", "mArmAnimation"],
+			"properties": {
+				"mMuteDryFire": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				},
 				"mProjectileData": {
 					"type": "string",
@@ -3598,10 +3674,6 @@
 							}
 						}
 					}
-				},
-				"mAttachSocket": {
-					"type": "string",
-					"const": "hand_rSocket"
 				},
 				"mArmAnimation": {
 					"type": "string",

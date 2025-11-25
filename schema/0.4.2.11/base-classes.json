@@ -2202,8 +2202,18 @@
 			]
 		},
 		"FGWeaponProjectile": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectile"
+				},
+				{
+					"$ref": "#/$defs/FGWeaponProjectile--base"
+				}
+			]
+		},
+		"FGWeaponProjectile--base": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectile",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectile--base",
 			"required": ["mBlockSprintWhenFiring"],
 			"properties": {
 				"mBlockSprintWhenFiring": {
@@ -2217,16 +2227,22 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectileFire"
 				},
 				{
+					"$ref": "#/$defs/FGWeaponProjectile"
+				},
+				{
+					"$ref": "#/$defs/FGWeaponProjectileFire--base"
+				}
+			]
+		},
+		"FGWeaponProjectileFire--base": {
 					"type": "object",
-					"$ref": "#/$defs/FGWeaponProjectile",
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectile--base",
 					"required": ["mMuteDryFire"],
 					"properties": {
 						"mMuteDryFire": {
 							"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 						}
 					}
-				}
-			]
 		}
 	}
 }
