@@ -96,5 +96,10 @@ for (
 	] as [SchemaObjectWith$id, string][]
 ) {
 	sort_$defs(schema);
-	await writeFile(filepath, JSON.stringify(schema, null, '\t'));
+	let result = JSON.stringify(schema, null, '\t');
+	result = result.replace(
+		/\{\s+"type": "string"\s+\}/g,
+		'{"type": "string"}',
+	);
+	await writeFile(filepath, result);
 }

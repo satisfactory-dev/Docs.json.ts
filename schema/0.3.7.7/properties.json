@@ -2,9 +2,7 @@
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "docs.json.ts--0.3.7.7--properties",
 	"$defs": {
-		"mAbbreviatedDisplayName": {
-			"type": "string"
-		},
+		"mAbbreviatedDisplayName": {"type": "string"},
 		"mAllowedResourceForms": {
 			"type": "string",
 			"typed_string": {
