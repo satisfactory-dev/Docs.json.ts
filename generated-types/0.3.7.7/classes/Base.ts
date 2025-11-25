@@ -14,6 +14,7 @@ import type {
 	mSubCategories as docs_json_ts_0_3_7_7_properties_mSubCategories,
 	mType as docs_json_ts_0_3_7_7_properties_mType,
 	Tier as docs_json_ts_0_3_7_7_properties_Tier,
+	transform_Rotation_Translation_Scale3D as docs_json_ts_0_3_7_7_properties_transform_Rotation_Translation_Scale3D,
 } from './../types/properties.ts';
 
 import type {
@@ -27,7 +28,6 @@ import type {
 	PitchYawRoll_decimal_string_signed as docs_json_ts_common_types_PitchYawRoll_decimal_string_signed,
 	RGBA as docs_json_ts_common_types_RGBA,
 	XYZ_decimal_string as docs_json_ts_common_types_XYZ_decimal_string,
-	XYZW_decimal_string as docs_json_ts_common_types_XYZW_decimal_string,
 } from './../../common/types.ts';
 
 import type {
@@ -229,11 +229,7 @@ type FGBuildableConveyorBelt_spline = FGBuildable_spline & FGBuildableConveyorBe
 
 type FGBuildableConveyorLift = FGBuildableConveyorBelt_base & {
 	mMeshHeight: docs_json_ts_common_types_decimal_string,
-	mTopTransform: {
-		Rotation: docs_json_ts_common_types_XYZW_decimal_string,
-		Translation: docs_json_ts_common_types_XYZ_decimal_string,
-		Scale3D: docs_json_ts_common_types_XYZ_decimal_string,
-	},
+	mTopTransform: docs_json_ts_0_3_7_7_properties_transform_Rotation_Translation_Scale3D,
 	mIsReversed: docs_json_ts_common_types_bool_string,
 };
 

@@ -3,6 +3,8 @@
 import type {
 	bool_string as docs_json_ts_common_types_bool_string,
 	integer_string as docs_json_ts_common_types_integer_string,
+	XYZ_decimal_string as docs_json_ts_common_types_XYZ_decimal_string,
+	XYZW_decimal_string as docs_json_ts_common_types_XYZW_decimal_string,
 } from './../../common/types.ts';
 
 type mAbbreviatedDisplayName = string;
@@ -85,6 +87,12 @@ type ItemClass_Amount_list = [
 
 type Tier = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7';
 
+type transform_Rotation_Translation_Scale3D = {
+	Rotation: docs_json_ts_common_types_XYZW_decimal_string,
+	Translation: docs_json_ts_common_types_XYZ_decimal_string,
+	Scale3D: docs_json_ts_common_types_XYZ_decimal_string,
+};
+
 export type {
 	mAbbreviatedDisplayName,
 	mAllowedResourceForms,
@@ -107,4 +115,5 @@ export type {
 	DocsDotJson_BlueprintGeneratedClass_quoted_list,
 	ItemClass_Amount_list,
 	Tier,
+	transform_Rotation_Translation_Scale3D,
 };

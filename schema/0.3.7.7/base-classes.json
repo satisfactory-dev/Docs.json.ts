@@ -709,23 +709,7 @@
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
 				"mTopTransform": {
-					"type": "string",
-					"typed_string": {
-						"type": "object",
-						"additionalProperties": false,
-						"required": ["Rotation", "Translation", "Scale3D"],
-						"properties": {
-							"Rotation": {
-								"$ref": "docs.json.ts--common--types#/$defs/XYZW--decimal_string"
-							},
-							"Translation": {
-								"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
-							},
-							"Scale3D": {
-								"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
-							}
-						}
-					}
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/transform--Rotation--Translation--Scale3D"
 				},
 				"mIsReversed": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
