@@ -1,33 +1,9 @@
 /* eslint-disable @stylistic/max-len */
 
 import type {
-	DocsDotJson_FGRailroadTrackConnectionComponent_quoted_list as docs_json_ts_0_4_2_11_properties_DocsDotJson_FGRailroadTrackConnectionComponent_quoted_list,
-	mAllowedResourceForms as docs_json_ts_0_4_2_11_properties_mAllowedResourceForms,
-	mFogPlaneTransforms_empty as docs_json_ts_0_4_2_11_properties_mFogPlaneTransforms_empty,
-	mFogPlaneTransforms_list as docs_json_ts_0_4_2_11_properties_mFogPlaneTransforms_list,
-	mForm as docs_json_ts_0_4_2_11_properties_mForm,
-	mFuel as docs_json_ts_0_4_2_11_properties_mFuel,
-	mPersistentBigIcon as docs_json_ts_0_4_2_11_properties_mPersistentBigIcon,
-	mSchematicDependencies_item as docs_json_ts_0_4_2_11_properties_mSchematicDependencies_item,
-	mSmallIcon as docs_json_ts_0_4_2_11_properties_mSmallIcon,
-	mUnlocks_item as docs_json_ts_0_4_2_11_properties_mUnlocks_item,
-	Tier as docs_json_ts_0_4_2_11_properties_Tier,
-} from './../types/properties.ts';
-
-import type {
-	BGRA as docs_json_ts_common_types_BGRA,
-	bool_string as docs_json_ts_common_types_bool_string,
-	decimal_string as docs_json_ts_common_types_decimal_string,
-	empty_object as docs_json_ts_common_types_empty_object,
-	integer_string as docs_json_ts_common_types_integer_string,
-	RGBA as docs_json_ts_common_types_RGBA,
-	XY_decimal_string as docs_json_ts_common_types_XY_decimal_string,
-	XYZ_decimal_string as docs_json_ts_common_types_XYZ_decimal_string,
-	XYZ_decimal_string_list as docs_json_ts_common_types_XYZ_decimal_string_list,
-} from './../../common/types.ts';
-
-import type {
 	FGBuildable as docs_json_ts_0_3_7_7_classes_base_FGBuildable,
+	FGBuildable_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_base,
+	FGBuildable_base_version_specific as docs_json_ts_0_3_7_7_classes_base_FGBuildable_base_version_specific,
 	FGBuildable_DisableAttachmentSnapOn as docs_json_ts_0_3_7_7_classes_base_FGBuildable_DisableAttachmentSnapOn,
 	FGBuildable_docking_station_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_docking_station_base,
 	FGBuildable_occupied as docs_json_ts_0_3_7_7_classes_base_FGBuildable_occupied,
@@ -38,8 +14,8 @@ import type {
 	FGBuildable_spline as docs_json_ts_0_3_7_7_classes_base_FGBuildable_spline,
 	FGBuildable_tiered as docs_json_ts_0_3_7_7_classes_base_FGBuildable_tiered,
 	FGBuildable_with_height as docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height,
+	FGBuildable_with_height_and_width_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_and_width_base,
 	FGBuildable_with_size_and_elevation as docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_size_and_elevation,
-	FGBuildable_with_width as docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_width,
 	FGBuildableAttachment_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableAttachment_base,
 	FGBuildableAttachment_splitter_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableAttachment_splitter_base,
 	FGBuildableAttachmentMerger_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableAttachmentMerger_base,
@@ -113,11 +89,45 @@ import type {
 } from './../../0.3.7.7/classes/Base.ts';
 
 import type {
+	BGRA as docs_json_ts_common_types_BGRA,
+	bool_string as docs_json_ts_common_types_bool_string,
+	decimal_string as docs_json_ts_common_types_decimal_string,
+	empty_object as docs_json_ts_common_types_empty_object,
+	integer_string as docs_json_ts_common_types_integer_string,
+	RGBA as docs_json_ts_common_types_RGBA,
+	XY_decimal_string as docs_json_ts_common_types_XY_decimal_string,
+	XYZ_decimal_string as docs_json_ts_common_types_XYZ_decimal_string,
+	XYZ_decimal_string_list as docs_json_ts_common_types_XYZ_decimal_string_list,
+} from './../../common/types.ts';
+
+import type {
+	DocsDotJson_FGRailroadTrackConnectionComponent_quoted_list as docs_json_ts_0_4_2_11_properties_DocsDotJson_FGRailroadTrackConnectionComponent_quoted_list,
+	mAllowedResourceForms as docs_json_ts_0_4_2_11_properties_mAllowedResourceForms,
+	mFogPlaneTransforms_empty as docs_json_ts_0_4_2_11_properties_mFogPlaneTransforms_empty,
+	mFogPlaneTransforms_list as docs_json_ts_0_4_2_11_properties_mFogPlaneTransforms_list,
+	mForm as docs_json_ts_0_4_2_11_properties_mForm,
+	mFuel as docs_json_ts_0_4_2_11_properties_mFuel,
+	mPersistentBigIcon as docs_json_ts_0_4_2_11_properties_mPersistentBigIcon,
+	mSchematicDependencies_item as docs_json_ts_0_4_2_11_properties_mSchematicDependencies_item,
+	mSmallIcon as docs_json_ts_0_4_2_11_properties_mSmallIcon,
+	mUnlocks_item as docs_json_ts_0_4_2_11_properties_mUnlocks_item,
+	Tier as docs_json_ts_0_4_2_11_properties_Tier,
+} from './../types/properties.ts';
+
+import type {
 	DocsDotJson_BlueprintGeneratedClass_quoted_list as docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list,
 	mSchematicDependencies_item as docs_json_ts_0_3_7_7_properties_mSchematicDependencies_item,
+	mUnlocks_item_base as docs_json_ts_0_3_7_7_properties_mUnlocks_item_base,
 } from './../../0.3.7.7/types/properties.ts';
 
-type FGBuildable = docs_json_ts_0_3_7_7_classes_base_FGBuildable & {
+type FGBuildable = docs_json_ts_0_3_7_7_classes_base_FGBuildable_base_version_specific & FGBuildable_base_version_specific & FGBuildable_base;
+
+type FGBuildable_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_base & {
+	mToggleDormancyOnInteraction: docs_json_ts_common_types_bool_string,
+	mShouldModifyWorldGrid: docs_json_ts_common_types_bool_string,
+};
+
+type FGBuildable_base_version_specific = docs_json_ts_0_3_7_7_classes_base_FGBuildable_base & {
 	mFogPlaneTransforms: docs_json_ts_0_4_2_11_properties_mFogPlaneTransforms_empty | docs_json_ts_0_4_2_11_properties_mFogPlaneTransforms_list,
 	mToggleDormancyOnInteraction: docs_json_ts_common_types_bool_string,
 	mShouldModifyWorldGrid: docs_json_ts_common_types_bool_string,
@@ -165,7 +175,9 @@ type FGBuildable_tiered = docs_json_ts_0_3_7_7_classes_base_FGBuildable_tiered &
 
 type FGBuildable_with_height_and_elevation = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height & docs_json_ts_0_3_7_7_classes_base_FGBuildable_DisableAttachmentSnapOn & FGBuildable_with_size_and_elevation;
 
-type FGBuildable_with_height_and_width = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height & docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_width & FGBuildable;
+type FGBuildable_with_height_and_width = FGBuildable_with_height_and_width_base & FGBuildable;
+
+type FGBuildable_with_height_and_width_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_and_width_base & FGBuildable_base;
 
 type FGBuildable_with_size_and_elevation = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_size_and_elevation & FGBuildable;
 
@@ -531,8 +543,15 @@ type FGRecipe = docs_json_ts_0_3_7_7_classes_base_FGRecipe_base & {
 type FGResourceDescriptor = docs_json_ts_0_3_7_7_classes_base_FGResourceDescriptor_base & FGDescriptor_sinkable;
 
 type FGSchematic = FGSchematic_base & {
-	mMenuPriority: docs_json_ts_common_types_decimal_string,
+	mUnlocks: [
+		...docs_json_ts_0_4_2_11_properties_mUnlocks_item[],
+	],
+	mSmallSchematicIcon: 'None' | `${'Texture2D /Game/FactoryGame/' | 'Texture2D\'/Game/FactoryGame/' | 'Texture2D\'"/Game/FactoryGame/'}${string}${'/IconDesc_' | '/' | ''}${string}${'_'}${'64' | '256'}${'.'}${string}${'_'}${'64' | '256'}${'"\'' | '\'' | ''}`,
 	mRelevantShopSchematics: docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list | '',
+};
+
+type FGSchematic_base = FGSchematic_base_base & {
+	mMenuPriority: docs_json_ts_common_types_decimal_string,
 	mSchematicDependencies: [
 		...(docs_json_ts_0_3_7_7_properties_mSchematicDependencies_item | docs_json_ts_0_4_2_11_properties_mSchematicDependencies_item)[],
 	],
@@ -550,14 +569,14 @@ type FGSchematic = FGSchematic_base & {
 		},
 		DrawAs: 'Image',
 	},
-	mSmallSchematicIcon: 'None' | `${'Texture2D /Game/FactoryGame/' | 'Texture2D\'/Game/FactoryGame/' | 'Texture2D\'"/Game/FactoryGame/'}${string}${'/IconDesc_' | '/' | ''}${string}${'_'}${'64' | '256'}${'.'}${string}${'_'}${'64' | '256'}${'"\'' | '\'' | ''}`,
+	mSmallSchematicIcon: 'None' | `Texture2D ${string}`,
 	mTechTier: docs_json_ts_0_4_2_11_properties_Tier,
 	mUnlocks: [
-		...docs_json_ts_0_4_2_11_properties_mUnlocks_item[],
+		...docs_json_ts_0_3_7_7_properties_mUnlocks_item_base[],
 	],
 };
 
-type FGSchematic_base = docs_json_ts_0_3_7_7_classes_base_FGSchematic & docs_json_ts_0_3_7_7_classes_base_isDescribed;
+type FGSchematic_base_base = docs_json_ts_0_3_7_7_classes_base_FGSchematic & docs_json_ts_0_3_7_7_classes_base_isDescribed;
 
 type FGSnowballWeapon = FGWeaponProjectile & docs_json_ts_0_3_7_7_classes_base_FGSnowballWeapon;
 
@@ -590,6 +609,8 @@ type FGWeaponProjectileFire = docs_json_ts_0_3_7_7_classes_base_FGWeaponProjecti
 
 export type {
 	FGBuildable,
+	FGBuildable_base,
+	FGBuildable_base_version_specific,
 	FGBuildable_docking_station,
 	FGBuildable_light_related_thing,
 	FGBuildable_mHasPower,
@@ -604,6 +625,7 @@ export type {
 	FGBuildable_tiered,
 	FGBuildable_with_height_and_elevation,
 	FGBuildable_with_height_and_width,
+	FGBuildable_with_height_and_width_base,
 	FGBuildable_with_size_and_elevation,
 	FGBuildableAttachment,
 	FGBuildableAttachment_splitter,
@@ -694,6 +716,7 @@ export type {
 	FGResourceDescriptor,
 	FGSchematic,
 	FGSchematic_base,
+	FGSchematic_base_base,
 	FGSnowballWeapon,
 	FGVehicleDescriptor_fueled,
 	FGVehicleDescriptor_fueled_with_inventory,

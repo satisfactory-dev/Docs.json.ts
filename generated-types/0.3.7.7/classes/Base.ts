@@ -46,20 +46,25 @@ type isNamed = hasClassName & {
 	mDisplayName: docs_json_ts_0_3_7_7_properties_mDisplayName,
 };
 
-type FGBuildable = isDescribed & {
+type FGBuildable = FGBuildable_base & FGBuildable_base_version_specific;
+
+type FGBuildable_base = isDescribed & {
 	MaxRenderDistance: docs_json_ts_common_types_decimal_string_signed,
 	mHighlightVector: docs_json_ts_common_types_XYZ_decimal_string,
-	mMaterialNameToInstanceManager: docs_json_ts_common_types_empty_object,
-	mBlockSharingMaterialInstanceMapping: docs_json_ts_common_types_bool_string,
-	mExcludeFromMaterialInstancing: '',
 	mSkipBuildEffect: docs_json_ts_common_types_bool_string,
 	mBuildEffectSpeed: docs_json_ts_common_types_decimal_string,
 	mForceNetUpdateOnRegisterPlayer: docs_json_ts_common_types_bool_string,
 	mShouldShowHighlight: docs_json_ts_common_types_bool_string,
-	mAllowCleranceSeparationEvenIfStackedOn: docs_json_ts_common_types_bool_string,
 	mInteractingPlayers: '',
 	mIsUseable: docs_json_ts_common_types_bool_string,
 	mHideOnBuildEffectStart: docs_json_ts_common_types_bool_string,
+};
+
+type FGBuildable_base_version_specific = isDescribed & {
+	mMaterialNameToInstanceManager: docs_json_ts_common_types_empty_object,
+	mBlockSharingMaterialInstanceMapping: docs_json_ts_common_types_bool_string,
+	mExcludeFromMaterialInstancing: '',
+	mAllowCleranceSeparationEvenIfStackedOn: docs_json_ts_common_types_bool_string,
 };
 
 type FGBuildable_DisableAttachmentSnapOn = FGBuildable & {
@@ -138,13 +143,17 @@ type FGBuildable_tiered = FGBuildable & {
 	Tier: docs_json_ts_0_3_7_7_properties_Tier,
 };
 
-type FGBuildable_with_height = FGBuildable & {
+type FGBuildable_with_height = FGBuildable_with_height_base & FGBuildable;
+
+type FGBuildable_with_height_base = FGBuildable_base & {
 	mHeight: docs_json_ts_common_types_decimal_string,
 };
 
 type FGBuildable_with_height_and_elevation = FGBuildable_with_height & FGBuildable_with_size_and_elevation & FGBuildable_DisableAttachmentSnapOn;
 
-type FGBuildable_with_height_and_width = FGBuildable_with_height & FGBuildable_with_width;
+type FGBuildable_with_height_and_width = FGBuildable_with_height_and_width_base & FGBuildable;
+
+type FGBuildable_with_height_and_width_base = FGBuildable_with_height_base & FGBuildable_with_width_base;
 
 type FGBuildable_with_length = FGBuildable & {
 	mMeshLength: docs_json_ts_common_types_decimal_string,
@@ -179,7 +188,9 @@ type FGBuildable_with_size_and_elevation = FGBuildable & {
 	},
 };
 
-type FGBuildable_with_width = FGBuildable & {
+type FGBuildable_with_width = FGBuildable_with_width_base & FGBuildable;
+
+type FGBuildable_with_width_base = FGBuildable_base & {
 	mWidth: docs_json_ts_common_types_decimal_string,
 };
 
@@ -952,6 +963,8 @@ export type {
 	isDescribed,
 	isNamed,
 	FGBuildable,
+	FGBuildable_base,
+	FGBuildable_base_version_specific,
 	FGBuildable_DisableAttachmentSnapOn,
 	FGBuildable_docking_station,
 	FGBuildable_docking_station_base,
@@ -968,11 +981,14 @@ export type {
 	FGBuildable_spline,
 	FGBuildable_tiered,
 	FGBuildable_with_height,
+	FGBuildable_with_height_base,
 	FGBuildable_with_height_and_elevation,
 	FGBuildable_with_height_and_width,
+	FGBuildable_with_height_and_width_base,
 	FGBuildable_with_length,
 	FGBuildable_with_size_and_elevation,
 	FGBuildable_with_width,
+	FGBuildable_with_width_base,
 	FGBuildableAttachment,
 	FGBuildableAttachment_base,
 	FGBuildableAttachment_splitter,

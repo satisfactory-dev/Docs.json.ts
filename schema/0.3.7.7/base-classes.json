@@ -39,19 +39,25 @@
 			}
 		},
 		"FGBuildable": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base--version-specific"
+				}
+			]
+		},
+		"FGBuildable--base": {
 			"type": "object",
 			"$ref": "#/$defs/isDescribed",
 			"required": [
 				"MaxRenderDistance",
 				"mHighlightVector",
-				"mMaterialNameToInstanceManager",
-				"mBlockSharingMaterialInstanceMapping",
-				"mExcludeFromMaterialInstancing",
 				"mSkipBuildEffect",
 				"mBuildEffectSpeed",
 				"mForceNetUpdateOnRegisterPlayer",
 				"mShouldShowHighlight",
-				"mAllowCleranceSeparationEvenIfStackedOn",
 				"mInteractingPlayers",
 				"mIsUseable",
 				"mHideOnBuildEffectStart"
@@ -62,16 +68,6 @@
 				},
 				"mHighlightVector": {
 					"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
-				},
-				"mMaterialNameToInstanceManager": {
-					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-				},
-				"mBlockSharingMaterialInstanceMapping": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mExcludeFromMaterialInstancing": {
-					"type": "string",
-					"const": ""
 				},
 				"mSkipBuildEffect": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
@@ -85,9 +81,6 @@
 				"mShouldShowHighlight": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				},
-				"mAllowCleranceSeparationEvenIfStackedOn": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
 				"mInteractingPlayers": {
 					"type": "string",
 					"const": ""
@@ -96,6 +89,31 @@
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				},
 				"mHideOnBuildEffectStart": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
+		},
+		"FGBuildable--base--version-specific": {
+			"type": "object",
+			"$ref": "#/$defs/isDescribed",
+			"required": [
+				"mMaterialNameToInstanceManager",
+				"mBlockSharingMaterialInstanceMapping",
+				"mExcludeFromMaterialInstancing",
+				"mAllowCleranceSeparationEvenIfStackedOn"
+			],
+			"properties": {
+				"mMaterialNameToInstanceManager": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mBlockSharingMaterialInstanceMapping": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mExcludeFromMaterialInstancing": {
+					"type": "string",
+					"const": ""
+				},
+				"mAllowCleranceSeparationEvenIfStackedOn": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				}
 			}
@@ -365,8 +383,18 @@
 			}
 		},
 		"FGBuildable--with-height": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--with-height--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable"
+				}
+			]
+		},
+		"FGBuildable--with-height--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable",
+			"$ref": "#/$defs/FGBuildable--base",
 			"required": ["mHeight"],
 			"properties": {
 				"mHeight": {
@@ -390,10 +418,20 @@
 		"FGBuildable--with-height-and-width": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGBuildable--with-height"
+					"$ref": "#/$defs/FGBuildable--with-height-and-width--base"
 				},
 				{
-					"$ref": "#/$defs/FGBuildable--with-width"
+					"$ref": "#/$defs/FGBuildable"
+				}
+			]
+		},
+		"FGBuildable--with-height-and-width--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--with-height--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--with-width--base"
 				}
 			]
 		},
@@ -539,8 +577,18 @@
 			}
 		},
 		"FGBuildable--with-width": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--with-width--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable"
+				}
+			]
+		},
+		"FGBuildable--with-width--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable",
+			"$ref": "#/$defs/FGBuildable--base",
 			"required": ["mWidth"],
 			"properties": {
 				"mWidth": {

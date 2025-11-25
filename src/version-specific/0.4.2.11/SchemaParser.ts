@@ -71,7 +71,7 @@ import {
 } from '../0.3.7.7/FGTrainPlatformConnection.ts';
 
 import {
-	add_schemas,
+	add_schemas as add_schemas_update3,
 } from '../0.3.7.7/SchemaParser.ts';
 
 import {
@@ -84,17 +84,21 @@ import {
 
 const already_configured: WeakSet<SchemaParser> = new WeakSet();
 
+export function add_schemas(parser: SchemaParser) {
+	add_schemas_update3(parser);
+
+	parser.add_schema(update4_properties);
+	parser.add_schema(update4_classes__base as SchemaObjectWith$id);
+	parser.add_schema(update4_classes);
+	parser.add_schema(update4);
+}
+
 export function configure_parser(parser: SchemaParser) {
 	if (already_configured.has(parser)) {
 		return;
 	}
 
 	add_schemas(parser);
-
-	parser.add_schema(update4_properties);
-	parser.add_schema(update4_classes__base as SchemaObjectWith$id);
-	parser.add_schema(update4_classes);
-	parser.add_schema(update4);
 
 	const ajv = parser.share_ajv((ajv) => ajv);
 
