@@ -59,9 +59,9 @@ import type {
 	FGDescriptor_BuildMenu as docs_json_ts_0_3_7_7_classes_base_FGDescriptor_BuildMenu,
 	FGDescriptor_sinkable as docs_json_ts_0_3_7_7_classes_base_FGDescriptor_sinkable,
 	FGEquipment as docs_json_ts_0_3_7_7_classes_base_FGEquipment,
-	FGEquipment_dispenser as docs_json_ts_0_3_7_7_classes_base_FGEquipment_dispenser,
 	FGEquipment_has_sound as docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_sound,
 	FGEquipmentStunSpear_base as docs_json_ts_0_3_7_7_classes_base_FGEquipmentStunSpear_base,
+	FGGolfCartDispenser as docs_json_ts_0_3_7_7_classes_base_FGGolfCartDispenser,
 	FGItemDescriptorNuclearFuel as docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel,
 	FGNobeliskDetonator as docs_json_ts_0_3_7_7_classes_base_FGNobeliskDetonator,
 	FGParachute as docs_json_ts_0_3_7_7_classes_base_FGParachute,
@@ -271,9 +271,7 @@ type FGGasMask = docs_json_ts_0_3_7_7_classes_base_FGEquipment & {
 	mArmAnimation: 'AE_None',
 };
 
-type FGGolfCartDispenser = docs_json_ts_0_3_7_7_classes_base_FGEquipment_dispenser & {
-	mArmAnimation: 'AE_Generic2Hand',
-};
+type FGGolfCartDispenser = docs_json_ts_0_3_7_7_classes_base_FGGolfCartDispenser;
 
 type FGItemDescriptor = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_sinkable;
 

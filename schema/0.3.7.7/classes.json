@@ -514,14 +514,7 @@
 		"FGGolfCartDispenser": {
 			"type": "object",
 			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment--dispenser",
-			"required": ["mArmAnimation"],
-			"properties": {
-				"mArmAnimation": {
-					"type": "string",
-					"const": "AE_Generic2Hand"
-				}
-			}
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGGolfCartDispenser"
 		},
 		"FGItemDescriptor": {
 			"type": "object",

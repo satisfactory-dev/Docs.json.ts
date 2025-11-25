@@ -824,6 +824,10 @@ type FGEquipmentStunSpear_base = FGEquipment & {
 	mArmAnimation?: 'AE_ShockShank' | 'AE_StunSpear',
 };
 
+type FGGolfCartDispenser = FGEquipment_dispenser & {
+	mArmAnimation: 'AE_Generic2Hand',
+};
+
 type FGInstructive = isNamed & {
 	FullName: `BlueprintGeneratedClass /Game/FactoryGame/${string}${''}`,
 	mRelevantEvents: null | docs_json_ts_0_3_7_7_properties_mRelevantEvents,
@@ -1118,6 +1122,7 @@ export type {
 	FGEquipment_dispenser,
 	FGEquipment_has_sound,
 	FGEquipmentStunSpear_base,
+	FGGolfCartDispenser,
 	FGInstructive,
 	FGItemDescriptorNuclearFuel,
 	FGItemDescriptorNuclearFuel_base,
