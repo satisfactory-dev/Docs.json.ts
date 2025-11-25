@@ -3170,7 +3170,7 @@
 		"FGRecipe": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGRecipe--base"
+					"$ref": "#/$defs/FGRecipe--base--version-specific"
 				},
 				{
 					"$ref": "#/$defs/FGRecipe--mProducedIn"
@@ -3181,23 +3181,28 @@
 			"type": "object",
 			"$ref": "#/$defs/FGInstructive",
 			"required": [
-				"mIngredients",
-				"mProduct",
 				"mManufactoringDuration",
 				"mManualManufacturingMultiplier"
 			],
+			"properties": {
+				"mManufactoringDuration": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mManualManufacturingMultiplier": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGRecipe--base--version-specific": {
+			"type": "object",
+			"$ref": "#/$defs/FGRecipe--base",
+			"required": ["mIngredients","mProduct"],
 			"properties": {
 				"mIngredients": {
 					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/ItemClass-Amount--list"
 				},
 				"mProduct": {
 					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/ItemClass-Amount--list"
-				},
-				"mManufactoringDuration": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mManualManufacturingMultiplier": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
 			}
 		},

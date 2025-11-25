@@ -79,6 +79,7 @@ import type {
 	FGPipeHyperStart_base as docs_json_ts_0_3_7_7_classes_base_FGPipeHyperStart_base,
 	FGPortableMinerDispenser as docs_json_ts_0_3_7_7_classes_base_FGPortableMinerDispenser,
 	FGRecipe_base as docs_json_ts_0_3_7_7_classes_base_FGRecipe_base,
+	FGRecipe_base_version_specific as docs_json_ts_0_3_7_7_classes_base_FGRecipe_base_version_specific,
 	FGResourceDescriptor_base as docs_json_ts_0_3_7_7_classes_base_FGResourceDescriptor_base,
 	FGSchematic as docs_json_ts_0_3_7_7_classes_base_FGSchematic,
 	FGSnowballWeapon as docs_json_ts_0_3_7_7_classes_base_FGSnowballWeapon,
@@ -530,7 +531,9 @@ type FGPortableMinerDispenser = docs_json_ts_0_3_7_7_classes_base_FGPortableMine
 	mArmAnimation: 'AE_Generic2Hand',
 };
 
-type FGRecipe = docs_json_ts_0_3_7_7_classes_base_FGRecipe_base & {
+type FGRecipe = FGRecipe_base & docs_json_ts_0_3_7_7_classes_base_FGRecipe_base_version_specific;
+
+type FGRecipe_base = docs_json_ts_0_3_7_7_classes_base_FGRecipe_base & {
 	mProducedIn: '' | [
         '/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkBenchComponent.BP_WorkBenchComponent_C' | '/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkshopComponent.BP_WorkshopComponent_C' | '/Game/FactoryGame/Buildable/Factory/AssemblerMk1/Build_AssemblerMk1.Build_AssemblerMk1_C' | '/Game/FactoryGame/Buildable/Factory/AutomatedWorkBench/Build_AutomatedWorkBench.Build_AutomatedWorkBench_C' | '/Game/FactoryGame/Buildable/Factory/ConstructorMk1/Build_ConstructorMk1.Build_ConstructorMk1_C' | '/Game/FactoryGame/Buildable/Factory/Converter/Build_Converter.Build_Converter_C' | '/Game/FactoryGame/Buildable/Factory/FoundryMk1/Build_FoundryMk1.Build_FoundryMk1_C' | '/Game/FactoryGame/Buildable/Factory/ManufacturerMk1/Build_ManufacturerMk1.Build_ManufacturerMk1_C' | '/Game/FactoryGame/Buildable/Factory/OilRefinery/Build_OilRefinery.Build_OilRefinery_C' | '/Game/FactoryGame/Buildable/Factory/Packager/Build_Packager.Build_Packager_C' | '/Game/FactoryGame/Buildable/Factory/SmelterMk1/Build_SmelterMk1.Build_SmelterMk1_C' | '/Game/FactoryGame/Equipment/BuildGun/BP_BuildGun.BP_BuildGun_C' | '/Script/FactoryGame.FGBuildGun' | '/Script/FactoryGame.FGBuildableAutomatedWorkBench' | '/Game/FactoryGame/Buildable/Factory/Blender/Build_Blender.Build_Blender_C' | '/Game/FactoryGame/Buildable/Factory/HadronCollider/Build_HadronCollider.Build_HadronCollider_C',
         ...('/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkBenchComponent.BP_WorkBenchComponent_C' | '/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkshopComponent.BP_WorkshopComponent_C' | '/Game/FactoryGame/Buildable/Factory/AssemblerMk1/Build_AssemblerMk1.Build_AssemblerMk1_C' | '/Game/FactoryGame/Buildable/Factory/AutomatedWorkBench/Build_AutomatedWorkBench.Build_AutomatedWorkBench_C' | '/Game/FactoryGame/Buildable/Factory/ConstructorMk1/Build_ConstructorMk1.Build_ConstructorMk1_C' | '/Game/FactoryGame/Buildable/Factory/Converter/Build_Converter.Build_Converter_C' | '/Game/FactoryGame/Buildable/Factory/FoundryMk1/Build_FoundryMk1.Build_FoundryMk1_C' | '/Game/FactoryGame/Buildable/Factory/ManufacturerMk1/Build_ManufacturerMk1.Build_ManufacturerMk1_C' | '/Game/FactoryGame/Buildable/Factory/OilRefinery/Build_OilRefinery.Build_OilRefinery_C' | '/Game/FactoryGame/Buildable/Factory/Packager/Build_Packager.Build_Packager_C' | '/Game/FactoryGame/Buildable/Factory/SmelterMk1/Build_SmelterMk1.Build_SmelterMk1_C' | '/Game/FactoryGame/Equipment/BuildGun/BP_BuildGun.BP_BuildGun_C' | '/Script/FactoryGame.FGBuildGun' | '/Script/FactoryGame.FGBuildableAutomatedWorkBench' | '/Game/FactoryGame/Buildable/Factory/Blender/Build_Blender.Build_Blender_C' | '/Game/FactoryGame/Buildable/Factory/HadronCollider/Build_HadronCollider.Build_HadronCollider_C')[],
@@ -713,6 +716,7 @@ export type {
 	FGPipeHyperStart,
 	FGPortableMinerDispenser,
 	FGRecipe,
+	FGRecipe_base,
 	FGResourceDescriptor,
 	FGSchematic,
 	FGSchematic_base,

@@ -1833,6 +1833,16 @@
 			}
 		},
 		"FGRecipe": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGRecipe--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGRecipe--base--version-specific"
+				}
+			]
+		},
+		"FGRecipe--base": {
 			"type": "object",
 			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGRecipe--base",
 			"required": [
