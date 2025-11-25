@@ -3194,7 +3194,7 @@
 		"FGRecipe--base--version-specific": {
 			"type": "object",
 			"$ref": "#/$defs/FGRecipe--base",
-			"required": ["mIngredients","mProduct"],
+			"required": ["mIngredients", "mProduct"],
 			"properties": {
 				"mIngredients": {
 					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/ItemClass-Amount--list"
