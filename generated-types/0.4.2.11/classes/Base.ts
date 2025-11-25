@@ -448,16 +448,23 @@ type FGColorGun = FGWeaponProjectile & docs_json_ts_0_3_7_7_classes_base_FGColor
 
 type FGConsumableDescriptor = docs_json_ts_0_3_7_7_classes_base_FGConsumableDescriptor_base & FGDescriptor_sinkable;
 
-type FGDescriptor = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_base & {
-	mForm: docs_json_ts_0_4_2_11_properties_mForm,
+type FGDescriptor = FGDescriptor_base & {
 	mPersistentBigIcon: docs_json_ts_0_4_2_11_properties_mPersistentBigIcon | 'None',
 	mSmallIcon: docs_json_ts_0_4_2_11_properties_mSmallIcon | 'None',
+};
+
+type FGDescriptor_base = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_base & {
+	mForm: docs_json_ts_0_4_2_11_properties_mForm,
 	mGasColor: docs_json_ts_common_types_BGRA,
 };
 
-type FGDescriptor_BuildMenu = FGDescriptor & docs_json_ts_0_3_7_7_classes_base_FGDescriptor_BuildMenu_base;
+type FGDescriptor_BuildMenu = FGDescriptor & FGDescriptor_BuildMenu_base;
 
-type FGDescriptor_sinkable = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_sinkable_base & FGDescriptor;
+type FGDescriptor_BuildMenu_base = FGDescriptor_base & docs_json_ts_0_3_7_7_classes_base_FGDescriptor_BuildMenu_base;
+
+type FGDescriptor_sinkable = FGDescriptor_sinkable_base & FGDescriptor;
+
+type FGDescriptor_sinkable_base = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_sinkable_base & FGDescriptor;
 
 type FGEquipment = docs_json_ts_0_3_7_7_classes_base_FGEquipment_base & {
 	mAttachSocket: 'None' | 'hand_rSocket' | 'hand_lSocket' | 'jumpingStilt_lSocket' | 'helmetSocket' | 'root',
@@ -705,8 +712,11 @@ export type {
 	FGColorGun,
 	FGConsumableDescriptor,
 	FGDescriptor,
+	FGDescriptor_base,
 	FGDescriptor_BuildMenu,
+	FGDescriptor_BuildMenu_base,
 	FGDescriptor_sinkable,
+	FGDescriptor_sinkable_base,
 	FGEquipment,
 	FGEquipmentZipline,
 	FGHoverPack,

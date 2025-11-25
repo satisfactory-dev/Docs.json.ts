@@ -1477,17 +1477,12 @@
 		},
 		"FGDescriptor": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGDescriptor--base",
+			"$ref": "#/$defs/FGDescriptor--base",
 			"required": [
-				"mForm",
 				"mSmallIcon",
-				"mPersistentBigIcon",
-				"mGasColor"
+				"mPersistentBigIcon"
 			],
 			"properties": {
-				"mForm": {
-					"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/mForm"
-				},
 				"mPersistentBigIcon": {
 					"oneOf": [
 						{
@@ -1509,6 +1504,19 @@
 							"const": "None"
 						}
 					]
+				}
+			}
+		},
+		"FGDescriptor--base": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGDescriptor--base",
+			"required": [
+				"mForm",
+				"mGasColor"
+			],
+			"properties": {
+				"mForm": {
+					"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/mForm"
 				},
 				"mGasColor": {
 					"$ref": "docs.json.ts--common--types#/$defs/BGRA"
@@ -1521,11 +1529,31 @@
 					"$ref": "#/$defs/FGDescriptor"
 				},
 				{
+					"$ref": "#/$defs/FGDescriptor--BuildMenu--base"
+				}
+			]
+		},
+		"FGDescriptor--BuildMenu--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGDescriptor--base"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGDescriptor--BuildMenu--base"
 				}
 			]
 		},
 		"FGDescriptor--sinkable": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGDescriptor--sinkable--base"
+				},
+				{
+					"$ref": "#/$defs/FGDescriptor"
+				}
+			]
+		},
+		"FGDescriptor--sinkable--base": {
 			"allOf": [
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGDescriptor--sinkable--base"
