@@ -443,9 +443,25 @@
 				}
 			}
 		},
+		"FGBuildable--with-size": {
+			"allOf": [
+				{"$ref": "#/$defs/FGBuildable--with-size--base"},
+				{"$ref": "#/$defs/FGBuildable"}
+			]
+		},
+		"FGBuildable--with-size--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--base",
+			"required": ["mSize"],
+			"properties": {
+				"mSize": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
 		"FGBuildable--with-size-and-elevation": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable",
+			"$ref": "#/$defs/FGBuildable--with-size",
 			"required": ["mSize", "mElevation", "mDisableSnapOn"],
 			"properties": {
 				"mSize": {

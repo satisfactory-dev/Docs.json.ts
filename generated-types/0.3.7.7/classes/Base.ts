@@ -159,7 +159,13 @@ type FGBuildable_with_length = FGBuildable & {
 	mMeshLength: docs_json_ts_common_types_decimal_string,
 };
 
-type FGBuildable_with_size_and_elevation = FGBuildable & {
+type FGBuildable_with_size = FGBuildable_with_size_base & FGBuildable;
+
+type FGBuildable_with_size_base = FGBuildable_base & {
+	mSize: docs_json_ts_common_types_decimal_string,
+};
+
+type FGBuildable_with_size_and_elevation = FGBuildable_with_size & {
 	mSize: docs_json_ts_common_types_decimal_string,
 	mElevation: docs_json_ts_common_types_decimal_string,
 	mDisableSnapOn: docs_json_ts_common_types_empty_object | {
@@ -989,6 +995,8 @@ export type {
 	FGBuildable_with_height_and_width,
 	FGBuildable_with_height_and_width_base,
 	FGBuildable_with_length,
+	FGBuildable_with_size,
+	FGBuildable_with_size_base,
 	FGBuildable_with_size_and_elevation,
 	FGBuildable_with_width,
 	FGBuildable_with_width_base,
