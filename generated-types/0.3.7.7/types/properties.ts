@@ -69,6 +69,12 @@ type mUnlocks_item_mSchematics = mUnlocks_item_base & {
 	mSchematics: DocsDotJson_BlueprintGeneratedClass_quoted_list,
 };
 
+type transform_Rotation_Translation_Scale3D = {
+	Rotation: docs_json_ts_common_types_XYZW_decimal_string,
+	Translation: docs_json_ts_common_types_XYZ_decimal_string,
+	Scale3D: docs_json_ts_common_types_XYZ_decimal_string,
+};
+
 type DocsDotJson_BlueprintGeneratedClass_quoted_list = [
     `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
     ...`BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`[],
@@ -86,12 +92,6 @@ type ItemClass_Amount_list = [
 ];
 
 type Tier = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7';
-
-type transform_Rotation_Translation_Scale3D = {
-	Rotation: docs_json_ts_common_types_XYZW_decimal_string,
-	Translation: docs_json_ts_common_types_XYZ_decimal_string,
-	Scale3D: docs_json_ts_common_types_XYZ_decimal_string,
-};
 
 export type {
 	mAbbreviatedDisplayName,
@@ -112,8 +112,8 @@ export type {
 	mUnlocks_item_mRecipes,
 	mUnlocks_item_mResourcesToAddToScanner,
 	mUnlocks_item_mSchematics,
+	transform_Rotation_Translation_Scale3D,
 	DocsDotJson_BlueprintGeneratedClass_quoted_list,
 	ItemClass_Amount_list,
 	Tier,
-	transform_Rotation_Translation_Scale3D,
 };

@@ -164,8 +164,18 @@
 			}
 		},
 		"FGBuildable--pole": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--pole--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable"
+				}
+			]
+		},
+		"FGBuildable--pole--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable",
+			"$ref": "#/$defs/FGBuildable--base",
 			"required": ["mUseStaticHeight", "mCanStack", "mStackHeight"],
 			"properties": {
 				"mUseStaticHeight": {
@@ -1691,8 +1701,18 @@
 			}
 		},
 		"FGBuildablePole": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--pole"
+				},
+				{
+					"$ref": "#/$defs/FGBuildablePole--base"
+				}
+			]
+		},
+		"FGBuildablePole--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--pole",
+			"$ref": "#/$defs/FGBuildable--pole--base",
 			"required": ["mHeight"],
 			"properties": {
 				"mHeight": {

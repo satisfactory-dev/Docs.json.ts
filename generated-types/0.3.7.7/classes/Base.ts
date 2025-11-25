@@ -83,7 +83,9 @@ type FGBuildable_occupied = FGBuildable & {
 	mOccupiedText: Exclude<string, ''>,
 };
 
-type FGBuildable_pole = FGBuildable & {
+type FGBuildable_pole = FGBuildable_pole_base & FGBuildable;
+
+type FGBuildable_pole_base = FGBuildable_base & {
 	mUseStaticHeight: docs_json_ts_common_types_bool_string,
 	mCanStack: docs_json_ts_common_types_bool_string,
 	mStackHeight: docs_json_ts_common_types_decimal_string,
@@ -484,7 +486,9 @@ type FGBuildablePipeReservoir_base = FGBuildable_powered_base & {
 	mIndicatorData: docs_json_ts_common_types_empty_object,
 };
 
-type FGBuildablePole = FGBuildable_pole & {
+type FGBuildablePole = FGBuildable_pole & FGBuildablePole_base;
+
+type FGBuildablePole_base = FGBuildable_pole_base & {
 	mHeight: docs_json_ts_common_types_decimal_string,
 };
 
@@ -999,6 +1003,7 @@ export type {
 	FGBuildable_docking_station_base,
 	FGBuildable_occupied,
 	FGBuildable_pole,
+	FGBuildable_pole_base,
 	FGBuildable_pole_with_length,
 	FGBuildable_pole_with_length_and_power,
 	FGBuildable_pole_with_length_and_power_base,
@@ -1084,6 +1089,7 @@ export type {
 	FGBuildablePipeReservoir,
 	FGBuildablePipeReservoir_base,
 	FGBuildablePole,
+	FGBuildablePole_base,
 	FGBuildablePowerPole,
 	FGBuildableRadarTower,
 	FGBuildableRadarTower_base,
