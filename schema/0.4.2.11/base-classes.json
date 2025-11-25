@@ -2235,14 +2235,14 @@
 			]
 		},
 		"FGWeaponProjectileFire--base": {
-					"type": "object",
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectile--base",
-					"required": ["mMuteDryFire"],
-					"properties": {
-						"mMuteDryFire": {
-							"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-						}
-					}
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectile--base",
+			"required": ["mMuteDryFire"],
+			"properties": {
+				"mMuteDryFire": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
 		}
 	}
 }

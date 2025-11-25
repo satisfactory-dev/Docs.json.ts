@@ -445,8 +445,12 @@
 		},
 		"FGBuildable--with-size": {
 			"allOf": [
-				{"$ref": "#/$defs/FGBuildable--with-size--base"},
-				{"$ref": "#/$defs/FGBuildable"}
+				{
+					"$ref": "#/$defs/FGBuildable--with-size--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable"
+				}
 			]
 		},
 		"FGBuildable--with-size--base": {
@@ -3458,9 +3462,7 @@
 		"FGWeaponProjectile--instant--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGWeaponProjectile--base",
-			"required": [
-				"mAttachSocket"
-			],
+			"required": ["mAttachSocket"],
 			"properties": {
 				"mAttachSocket": {
 					"type": "string",
@@ -3471,10 +3473,7 @@
 		"FGWeaponProjectile--instant--base--version-specific": {
 			"type": "object",
 			"$ref": "#/$defs/FGWeaponProjectile--base",
-			"required": [
-				"mInstantHitDamage",
-				"mWeaponTraceLength"
-			],
+			"required": ["mInstantHitDamage", "mWeaponTraceLength"],
 			"properties": {
 				"mInstantHitDamage": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
@@ -3608,10 +3607,7 @@
 		"FGWeaponProjectileFire--base--random": {
 			"type": "object",
 			"$ref": "#/$defs/FGWeaponProjectile--base",
-			"required": [
-				"mRandomReloadAnim",
-				"mRandomStingerAnim"
-			],
+			"required": ["mRandomReloadAnim", "mRandomStingerAnim"],
 			"properties": {
 				"mRandomReloadAnim": {
 					"$ref": "docs.json.ts--common--types#/$defs/integer_string"

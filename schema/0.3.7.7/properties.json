@@ -183,6 +183,25 @@
 				}
 			}
 		},
+		"transform--Rotation--Translation--Scale3D": {
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": ["Rotation", "Translation", "Scale3D"],
+				"properties": {
+					"Rotation": {
+						"$ref": "docs.json.ts--common--types#/$defs/XYZW--decimal_string"
+					},
+					"Translation": {
+						"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
+					},
+					"Scale3D": {
+						"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
+					}
+				}
+			}
+		},
 		"DocsDotJson_BlueprintGeneratedClass_quoted--list": {
 			"type": "string",
 			"typed_string": {
@@ -220,25 +239,6 @@
 		"Tier": {
 			"type": "string",
 			"enum": ["0", "1", "2", "3", "4", "5", "6", "7"]
-		},
-		"transform--Rotation--Translation--Scale3D": {
-			"type": "string",
-			"typed_string": {
-				"type": "object",
-				"additionalProperties": false,
-				"required": ["Rotation", "Translation", "Scale3D"],
-				"properties": {
-					"Rotation": {
-						"$ref": "docs.json.ts--common--types#/$defs/XYZW--decimal_string"
-					},
-					"Translation": {
-						"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
-					},
-					"Scale3D": {
-						"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
-					}
-				}
-			}
 		}
 	}
 }
