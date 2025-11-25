@@ -137,7 +137,9 @@ type FGBuildable_powered_storage_base = FGBuildable_powered_base & {
 	mStorageSizeY: docs_json_ts_common_types_integer_string,
 };
 
-type FGBuildable_spline = FGBuildable_with_length & {
+type FGBuildable_spline = FGBuildable_spline_base & FGBuildable_with_length;
+
+type FGBuildable_spline_base = FGBuildable_with_length_base & {
 	mSplineData: '',
 };
 
@@ -157,7 +159,9 @@ type FGBuildable_with_height_and_width = FGBuildable_with_height_and_width_base 
 
 type FGBuildable_with_height_and_width_base = FGBuildable_with_height_base & FGBuildable_with_width_base;
 
-type FGBuildable_with_length = FGBuildable & {
+type FGBuildable_with_length = FGBuildable_with_length_base & FGBuildable;
+
+type FGBuildable_with_length_base = FGBuildable_base & {
 	mMeshLength: docs_json_ts_common_types_decimal_string,
 };
 
@@ -221,13 +225,17 @@ type FGBuildableAttachmentMerger_base = FGBuildableAttachment_base & {
 	mCurrentInputIndex: docs_json_ts_common_types_integer_string_signed,
 };
 
-type FGBuildableConveyorBelt_base = FGBuildable & {
+type FGBuildableConveyorBelt_base = FGBuildableConveyorBelt_base_base & FGBuildable;
+
+type FGBuildableConveyorBelt_base_base = FGBuildable_base & {
 	mItemMeshMap: docs_json_ts_common_types_empty_object,
 	mSpeed: docs_json_ts_common_types_decimal_string,
 	mItems: docs_json_ts_common_types_empty_object,
 };
 
-type FGBuildableConveyorBelt_spline = FGBuildable_spline & FGBuildableConveyorBelt_base;
+type FGBuildableConveyorBelt_spline = FGBuildableConveyorBelt_spline_base & FGBuildable_spline & FGBuildableConveyorBelt_base;
+
+type FGBuildableConveyorBelt_spline_base = FGBuildable_spline_base & FGBuildableConveyorBelt_base_base;
 
 type FGBuildableConveyorLift = FGBuildableConveyorBelt_base & {
 	mMeshHeight: docs_json_ts_common_types_decimal_string,
@@ -1013,6 +1021,7 @@ export type {
 	FGBuildable_powered_storage,
 	FGBuildable_powered_storage_base,
 	FGBuildable_spline,
+	FGBuildable_spline_base,
 	FGBuildable_tiered,
 	FGBuildable_with_height,
 	FGBuildable_with_height_base,
@@ -1020,6 +1029,7 @@ export type {
 	FGBuildable_with_height_and_width,
 	FGBuildable_with_height_and_width_base,
 	FGBuildable_with_length,
+	FGBuildable_with_length_base,
 	FGBuildable_with_size,
 	FGBuildable_with_size_base,
 	FGBuildable_with_size_and_elevation,
@@ -1032,7 +1042,9 @@ export type {
 	FGBuildableAttachmentMerger,
 	FGBuildableAttachmentMerger_base,
 	FGBuildableConveyorBelt_base,
+	FGBuildableConveyorBelt_base_base,
 	FGBuildableConveyorBelt_spline,
+	FGBuildableConveyorBelt_spline_base,
 	FGBuildableConveyorLift,
 	FGBuildableDockingStation,
 	FGBuildableDockingStation_base,
