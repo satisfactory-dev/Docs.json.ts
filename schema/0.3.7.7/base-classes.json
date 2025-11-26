@@ -2740,11 +2740,7 @@
 		"FGColorGun--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGColorGun--base--base",
-			"required": [
-				"mPrimaryColor",
-				"mSecondaryColor",
-				"mArmAnimation"
-			],
+			"required": ["mPrimaryColor", "mSecondaryColor", "mArmAnimation"],
 			"properties": {
 				"mPrimaryColor": {
 					"$ref": "docs.json.ts--common--types#/$defs/RGBA"
