@@ -729,7 +729,9 @@ type FGBuildableTrainPlatformCargo_base = FGBuildableTrainPlatform_with_storage_
 	mReplicatedInflowRate: docs_json_ts_common_types_decimal_string,
 };
 
-type FGBuildableWire = FGBuildable & {
+type FGBuildableWire = FGBuildableWire_base & FGBuildable;
+
+type FGBuildableWire_base = FGBuildable_base & {
 	mMaxLength: docs_json_ts_common_types_decimal_string,
 	mLengthPerCost: docs_json_ts_common_types_decimal_string,
 	mConnections: 'None',
@@ -1144,6 +1146,7 @@ export type {
 	FGBuildableTrainPlatformCargo,
 	FGBuildableTrainPlatformCargo_base,
 	FGBuildableWire,
+	FGBuildableWire_base,
 	FGColorGun,
 	FGConsumableDescriptor,
 	FGConsumableDescriptor_base,

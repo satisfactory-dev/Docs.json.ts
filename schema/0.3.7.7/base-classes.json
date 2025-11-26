@@ -2682,8 +2682,18 @@
 			}
 		},
 		"FGBuildableWire": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableWire--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable"
+				}
+			]
+		},
+		"FGBuildableWire--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable",
+			"$ref": "#/$defs/FGBuildable--base",
 			"required": ["mMaxLength", "mLengthPerCost", "mConnections"],
 			"properties": {
 				"mMaxLength": {
