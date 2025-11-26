@@ -63,6 +63,7 @@ import type {
 	FGBuildableSplitterSmart_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableSplitterSmart_base,
 	FGBuildableStorage_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableStorage_base,
 	FGBuildableTradingPost_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableTradingPost_base,
+	FGBuildableTradingPost_base_version_specific as docs_json_ts_0_3_7_7_classes_base_FGBuildableTradingPost_base_version_specific,
 	FGBuildableTrainPlatform_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatform_base,
 	FGBuildableTrainPlatform_with_storage_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatform_with_storage_base,
 	FGBuildableTrainPlatformCargo_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatformCargo_base,
@@ -160,10 +161,15 @@ type FGBuildable_occupied = docs_json_ts_0_3_7_7_classes_base_FGBuildable_occupi
 
 type FGBuildable_pole_with_length_and_power = docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_with_length_and_power_base & FGBuildable_powered;
 
-type FGBuildable_powered = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base & (FGBuildable & {
+type FGBuildable_powered = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base & FGBuildable_powered_base & FGBuildable;
+
+type FGBuildable_powered_base = FGBuildable_powered_base_base & {
 	mOnProductionStatusChanged: docs_json_ts_common_types_empty_object,
+};
+
+type FGBuildable_powered_base_base = FGBuildable_base & {
 	mCachedSkeletalMeshes: '',
-});
+};
 
 type FGBuildable_powered_has_mAllowedResourceForms = FGBuildable_powered & {
 	mAllowedResourceForms: docs_json_ts_0_4_2_11_properties_mAllowedResourceForms,
@@ -426,7 +432,9 @@ type FGBuildableSplitterSmart = docs_json_ts_0_3_7_7_classes_base_FGBuildableSpl
 
 type FGBuildableStorage = docs_json_ts_0_3_7_7_classes_base_FGBuildableStorage_base & FGBuildable_powered;
 
-type FGBuildableTradingPost = FGBuildableTradingPost_base & {
+type FGBuildableTradingPost = docs_json_ts_0_3_7_7_classes_base_FGBuildableTradingPost_base_version_specific & docs_json_ts_0_3_7_7_classes_base_FGBuildableTradingPost_base & FGBuildableTradingPost_base & FGBuildable_powered;
+
+type FGBuildableTradingPost_base = FGBuildable_powered_base_base & {
 	mMamFreeText: 'Use MAM',
 	mMamOccupiedText: 'MAM is occupied',
 	mMeshes: [
@@ -436,8 +444,6 @@ type FGBuildableTradingPost = FGBuildableTradingPost_base & {
 	ABClass: '/Game/FactoryGame/Buildable/Factory/TradingPost/BPA_Tradingpost.BPA_Tradingpost_C',
 	mSkeletalMeshSoftPtr: '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/SK_Tradingpost.SK_Tradingpost',
 };
-
-type FGBuildableTradingPost_base = docs_json_ts_0_3_7_7_classes_base_FGBuildableTradingPost_base & FGBuildable_powered;
 
 type FGBuildableTrainPlatform = docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatform_base & FGBuildable_powered;
 
@@ -636,6 +642,8 @@ export type {
 	FGBuildable_occupied,
 	FGBuildable_pole_with_length_and_power,
 	FGBuildable_powered,
+	FGBuildable_powered_base,
+	FGBuildable_powered_base_base,
 	FGBuildable_powered_has_mAllowedResourceForms,
 	FGBuildable_powered_has_mAllowedResourceForms_with_resources,
 	FGBuildable_powered_storage,

@@ -159,23 +159,37 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--base"
 				},
 				{
+					"$ref": "#/$defs/FGBuildable--powered--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable"
+				}
+			]
+		},
+		"FGBuildable--powered--base": {
 					"type": "object",
-					"$ref": "#/$defs/FGBuildable",
+					"$ref": "#/$defs/FGBuildable--powered--base--base",
 					"required": [
-						"mOnProductionStatusChanged",
-						"mCachedSkeletalMeshes"
+						"mOnProductionStatusChanged"
 					],
 					"properties": {
 						"mOnProductionStatusChanged": {
 							"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-						},
+						}
+					}
+		},
+		"FGBuildable--powered--base--base": {
+					"type": "object",
+					"$ref": "#/$defs/FGBuildable--base",
+					"required": [
+						"mCachedSkeletalMeshes"
+					],
+					"properties": {
 						"mCachedSkeletalMeshes": {
 							"type": "string",
 							"const": ""
 						}
 					}
-				}
-			]
 		},
 		"FGBuildable--powered--has-mAllowedResourceForms": {
 			"type": "object",
@@ -1366,8 +1380,24 @@
 			]
 		},
 		"FGBuildableTradingPost": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableTradingPost--base--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableTradingPost--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableTradingPost--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				}
+			]
+		},
+		"FGBuildableTradingPost--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableTradingPost--base",
+			"$ref": "#/$defs/FGBuildable--powered--base--base",
 			"required": [
 				"mMamFreeText",
 				"mMamOccupiedText",
@@ -1412,16 +1442,6 @@
 					"const": "/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/SK_Tradingpost.SK_Tradingpost"
 				}
 			}
-		},
-		"FGBuildableTradingPost--base": {
-			"allOf": [
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableTradingPost--base"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable--powered"
-				}
-			]
 		},
 		"FGBuildableTrainPlatform": {
 			"allOf": [

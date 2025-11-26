@@ -237,8 +237,18 @@
 			]
 		},
 		"FGBuildable--powered--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable"
+				}
+			]
+		},
+		"FGBuildable--powered--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable",
+			"$ref": "#/$defs/FGBuildable--base",
 			"required": [
 				"mPowerConsumption",
 				"mPowerConsumptionExponent",
@@ -2415,6 +2425,9 @@
 		"FGBuildableTradingPost": {
 			"allOf": [
 				{
+					"$ref": "#/$defs/FGBuildableTradingPost--base--version-specific"
+				},
+				{
 					"$ref": "#/$defs/FGBuildableTradingPost--base"
 				},
 				{
@@ -2424,7 +2437,7 @@
 		},
 		"FGBuildableTradingPost--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--base",
+			"$ref": "#/$defs/FGBuildable--powered--base--base",
 			"required": [
 				"mWorkBenchOccupied",
 				"mWorkBenchFree",
@@ -2433,7 +2446,6 @@
 				"mStorageText",
 				"mMamFreeText",
 				"mMamOccupiedText",
-				"mMapText",
 				"mGenerators",
 				"mStorageInventorySize",
 				"mStorageVisibilityLevel",
@@ -2489,10 +2501,6 @@
 						" is occupied"
 					]
 				},
-				"mMapText": {
-					"type": "string",
-					"const": "The HUB"
-				},
 				"mGenerators": {
 					"type": "string",
 					"const": ""
@@ -2515,6 +2523,19 @@
 				},
 				"mNeedPlayingBuildEffectNotification": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
+		},
+		"FGBuildableTradingPost--base--version-specific": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--powered--base--base",
+			"required": [
+				"mMapText"
+			],
+			"properties": {
+				"mMapText": {
+					"type": "string",
+					"const": "The HUB"
 				}
 			}
 		},

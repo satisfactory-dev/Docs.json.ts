@@ -103,7 +103,9 @@ type FGBuildable_powered = FGBuildable_powered_base & (FGBuildable & {
 	mSignificanceBias: docs_json_ts_common_types_decimal_string,
 });
 
-type FGBuildable_powered_base = FGBuildable & {
+type FGBuildable_powered_base = FGBuildable_powered_base_base & FGBuildable;
+
+type FGBuildable_powered_base_base = FGBuildable_base & {
 	mPowerConsumption: docs_json_ts_common_types_decimal_string,
 	mPowerConsumptionExponent: docs_json_ts_common_types_decimal_string,
 	mOnHasPowerChanged: docs_json_ts_common_types_empty_object,
@@ -667,9 +669,9 @@ type FGBuildableStorage_base = FGBuildable_powered_base & {
 	mInventorySizeY: docs_json_ts_common_types_integer_string,
 };
 
-type FGBuildableTradingPost = FGBuildableTradingPost_base & FGBuildable_powered;
+type FGBuildableTradingPost = FGBuildableTradingPost_base_version_specific & FGBuildableTradingPost_base & FGBuildable_powered;
 
-type FGBuildableTradingPost_base = FGBuildable_powered_base & {
+type FGBuildableTradingPost_base = FGBuildable_powered_base_base & {
 	mWorkBenchOccupied: 'Craft Bench occupied',
 	mWorkBenchFree: 'Use Craft Bench',
 	Meshes: [
@@ -680,7 +682,6 @@ type FGBuildableTradingPost_base = FGBuildable_powered_base & {
 	mStorageText: 'Open Storage',
 	mMamFreeText: `Use M${string}`,
 	mMamOccupiedText: `M${string}${' is occupied'}`,
-	mMapText: 'The HUB',
 	mGenerators: '',
 	mStorageInventorySize: docs_json_ts_common_types_integer_string,
 	mStorageVisibilityLevel: docs_json_ts_common_types_integer_string,
@@ -688,6 +689,10 @@ type FGBuildableTradingPost_base = FGBuildable_powered_base & {
 	mGroundSearchZDistance: docs_json_ts_common_types_decimal_string,
 	mDefaultResources: '',
 	mNeedPlayingBuildEffectNotification: docs_json_ts_common_types_bool_string,
+};
+
+type FGBuildableTradingPost_base_version_specific = FGBuildable_powered_base_base & {
+	mMapText: 'The HUB',
 };
 
 type FGBuildableTrainPlatform = FGBuildableTrainPlatform_base & FGBuildable_powered;
@@ -1021,6 +1026,7 @@ export type {
 	FGBuildable_pole_with_length_and_power_base,
 	FGBuildable_powered,
 	FGBuildable_powered_base,
+	FGBuildable_powered_base_base,
 	FGBuildable_powered_base_resources,
 	FGBuildable_powered_storage,
 	FGBuildable_powered_storage_base,
@@ -1139,6 +1145,7 @@ export type {
 	FGBuildableStorage_base,
 	FGBuildableTradingPost,
 	FGBuildableTradingPost_base,
+	FGBuildableTradingPost_base_version_specific,
 	FGBuildableTrainPlatform,
 	FGBuildableTrainPlatform_base,
 	FGBuildableTrainPlatform_with_storage,
