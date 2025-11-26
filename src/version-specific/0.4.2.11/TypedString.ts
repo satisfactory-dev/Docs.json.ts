@@ -129,13 +129,13 @@ type TypedString_type_OneOf = {
 type TypedString_schema_properties = (
 	& TypedString_schema_properties__update3
 	& {
-	FGRailroadTrackConnectionComponent_quoted_list: array_schema<
-		'items',
-		'specified',
-		'yes',
-		'optional',
-		FGRailroadTrackConnectionComponent_quoted_schema
-	>,
+		FGRailroadTrackConnectionComponent_quoted_list: array_schema<
+			'items',
+			'specified',
+			'yes',
+			'optional',
+			FGRailroadTrackConnectionComponent_quoted_schema
+		>,
 	}
 );
 
@@ -172,9 +172,9 @@ type TypedString_schema_OneOf = TypeDefinitionSchema & {
 type TypedString_SchemaTo__by_mode = (
 	& TypedString_SchemaTo__by_mode__update3
 	& {
-	FGRailroadTrackConnectionComponent_quoted_list: RestedTupleTypeNode<
-		TemplateLiteralTypeNode
-	>,
+		FGRailroadTrackConnectionComponent_quoted_list: RestedTupleTypeNode<
+			TemplateLiteralTypeNode
+		>,
 	}
 );
 
