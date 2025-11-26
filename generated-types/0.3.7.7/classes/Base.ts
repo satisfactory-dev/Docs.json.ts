@@ -500,7 +500,9 @@ type FGBuildablePole_base = FGBuildable_pole_base & {
 	mHeight: docs_json_ts_common_types_decimal_string,
 };
 
-type FGBuildablePowerPole = FGBuildable & {
+type FGBuildablePowerPole = FGBuildablePowerPole_base & FGBuildable;
+
+type FGBuildablePowerPole_base = FGBuildable_base & {
 	mPowerConnections: '',
 	mPowerPoleType: 'PPT_POLE' | 'PPT_WALL' | 'PPT_WALL_DOUBLE',
 };
@@ -1103,6 +1105,7 @@ export type {
 	FGBuildablePole,
 	FGBuildablePole_base,
 	FGBuildablePowerPole,
+	FGBuildablePowerPole_base,
 	FGBuildableRadarTower,
 	FGBuildableRadarTower_base,
 	FGBuildableRailroadStation,

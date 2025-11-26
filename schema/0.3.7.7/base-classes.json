@@ -1764,8 +1764,18 @@
 			}
 		},
 		"FGBuildablePowerPole": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildablePowerPole--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable"
+				}
+			]
+		},
+		"FGBuildablePowerPole--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable",
+			"$ref": "#/$defs/FGBuildable--base",
 			"required": ["mPowerConnections", "mPowerPoleType"],
 			"properties": {
 				"mPowerConnections": {

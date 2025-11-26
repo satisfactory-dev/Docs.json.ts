@@ -144,7 +144,9 @@ type FGBuildable_light_related_thing = FGBuildable & {
 	},
 };
 
-type FGBuildable_mHasPower = FGBuildable & {
+type FGBuildable_mHasPower = FGBuildable_mHasPower_base & FGBuildable;
+
+type FGBuildable_mHasPower_base = FGBuildable_base & {
 	mHasPower: docs_json_ts_common_types_bool_string,
 };
 
@@ -629,6 +631,7 @@ export type {
 	FGBuildable_docking_station,
 	FGBuildable_light_related_thing,
 	FGBuildable_mHasPower,
+	FGBuildable_mHasPower_base,
 	FGBuildable_mStopped_audio_stuff,
 	FGBuildable_occupied,
 	FGBuildable_pole_with_length_and_power,

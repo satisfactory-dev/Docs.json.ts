@@ -92,8 +92,18 @@
 			}
 		},
 		"FGBuildable--mHasPower": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--mHasPower--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable"
+				}
+			]
+		},
+		"FGBuildable--mHasPower--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable",
+			"$ref": "#/$defs/FGBuildable--base",
 			"required": ["mHasPower"],
 			"properties": {
 				"mHasPower": {
