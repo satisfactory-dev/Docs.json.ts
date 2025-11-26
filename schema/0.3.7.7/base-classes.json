@@ -1276,8 +1276,18 @@
 			}
 		},
 		"FGBuildableManufacturer--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableManufacturer--base--base"
+				}
+			]
+		},
+		"FGBuildableManufacturer--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--base",
+			"$ref": "#/$defs/FGBuildable--powered--base--base",
 			"required": [
 				"mCurrentRecipeChanged",
 				"mManufacturingSpeed",
@@ -1312,8 +1322,18 @@
 			}
 		},
 		"FGBuildableManufacturer--base--IsPowered": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableManufacturer--base--IsPowered--base"
+				}
+			]
+		},
+		"FGBuildableManufacturer--base--IsPowered--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--base",
+			"$ref": "#/$defs/FGBuildable--powered--base--base",
 			"required": ["IsPowered"],
 			"properties": {
 				"IsPowered": {
@@ -1322,8 +1342,18 @@
 			}
 		},
 		"FGBuildableManufacturer--base--mProductionEffectsRunning": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableManufacturer--base--mProductionEffectsRunning--base"
+				}
+			]
+		},
+		"FGBuildableManufacturer--base--mProductionEffectsRunning--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--base",
+			"$ref": "#/$defs/FGBuildable--powered--base--base",
 			"required": ["mProductionEffectsRunning"],
 			"properties": {
 				"mProductionEffectsRunning": {
@@ -1332,8 +1362,18 @@
 			}
 		},
 		"FGBuildableManufacturer--base--packager": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableManufacturer--base--packager--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base"
+				}
+			]
+		},
+		"FGBuildableManufacturer--base--packager--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--base",
+			"$ref": "#/$defs/FGBuildable--powered--base--base",
 			"required": ["mCurrentColor_VFX", "CurrentPackagingMode"],
 			"properties": {
 				"mCurrentColor_VFX": {
@@ -1435,10 +1475,26 @@
 					"$ref": "#/$defs/FGBuildableManufacturer--base"
 				},
 				{
+					"$ref": "#/$defs/FGBuildableManufacturer--Build_SmelterMk1_C--base"
+				},
+				{
 					"$ref": "#/$defs/FGBuildableManufacturer--base--mProductionEffectsRunning"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--powered"
+				}
+			]
+		},
+		"FGBuildableManufacturer--Build_SmelterMk1_C--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableManufacturer--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableManufacturer--base--mProductionEffectsRunning--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base--base"
 				}
 			]
 		},

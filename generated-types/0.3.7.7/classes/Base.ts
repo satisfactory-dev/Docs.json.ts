@@ -373,7 +373,9 @@ type FGBuildableLadder = FGBuildable_with_width & {
 	mLadderMeshes: '',
 };
 
-type FGBuildableManufacturer_base = FGBuildable_powered_base & {
+type FGBuildableManufacturer_base = FGBuildable_powered_base & FGBuildableManufacturer_base_base;
+
+type FGBuildableManufacturer_base_base = FGBuildable_powered_base_base & {
 	mCurrentRecipeChanged: docs_json_ts_common_types_empty_object,
 	mManufacturingSpeed: docs_json_ts_common_types_decimal_string,
 	mFactoryInputConnections: '',
@@ -382,15 +384,21 @@ type FGBuildableManufacturer_base = FGBuildable_powered_base & {
 	mPipeOutputConnections: '',
 };
 
-type FGBuildableManufacturer_base_IsPowered = FGBuildable_powered_base & {
+type FGBuildableManufacturer_base_IsPowered = FGBuildable_powered_base & FGBuildableManufacturer_base_IsPowered_base;
+
+type FGBuildableManufacturer_base_IsPowered_base = FGBuildable_powered_base_base & {
 	IsPowered: docs_json_ts_common_types_bool_string,
 };
 
-type FGBuildableManufacturer_base_mProductionEffectsRunning = FGBuildable_powered_base & {
+type FGBuildableManufacturer_base_mProductionEffectsRunning = FGBuildable_powered_base & FGBuildableManufacturer_base_mProductionEffectsRunning_base;
+
+type FGBuildableManufacturer_base_mProductionEffectsRunning_base = FGBuildable_powered_base_base & {
 	mProductionEffectsRunning: docs_json_ts_common_types_bool_string,
 };
 
-type FGBuildableManufacturer_base_packager = FGBuildable_powered_base & {
+type FGBuildableManufacturer_base_packager = FGBuildableManufacturer_base_packager_base & FGBuildable_powered_base;
+
+type FGBuildableManufacturer_base_packager_base = FGBuildable_powered_base_base & {
 	mCurrentColor_VFX: docs_json_ts_common_types_RGBA,
 	CurrentPackagingMode: '',
 };
@@ -407,7 +415,9 @@ type FGBuildableManufacturer_Build_OilRefinery_C = FGBuildableManufacturer_base 
 
 type FGBuildableManufacturer_Build_Packager_C = FGBuildableManufacturer_base & FGBuildableManufacturer_base_IsPowered & FGBuildableManufacturer_base_mProductionEffectsRunning & FGBuildableManufacturer_base_packager & FGBuildable_powered;
 
-type FGBuildableManufacturer_Build_SmelterMk1_C = FGBuildableManufacturer_base & FGBuildableManufacturer_base_mProductionEffectsRunning & FGBuildable_powered;
+type FGBuildableManufacturer_Build_SmelterMk1_C = FGBuildableManufacturer_base & FGBuildableManufacturer_Build_SmelterMk1_C_base & FGBuildableManufacturer_base_mProductionEffectsRunning & FGBuildable_powered;
+
+type FGBuildableManufacturer_Build_SmelterMk1_C_base = FGBuildableManufacturer_base_base & FGBuildableManufacturer_base_mProductionEffectsRunning_base & FGBuildable_powered_base_base;
 
 type FGBuildablePipeline = FGBuildablePipeline_base_spline & {
 	mFlowLimit: docs_json_ts_common_types_decimal_string,
@@ -1088,9 +1098,13 @@ export type {
 	FGBuildableJumppad_base,
 	FGBuildableLadder,
 	FGBuildableManufacturer_base,
+	FGBuildableManufacturer_base_base,
 	FGBuildableManufacturer_base_IsPowered,
+	FGBuildableManufacturer_base_IsPowered_base,
 	FGBuildableManufacturer_base_mProductionEffectsRunning,
+	FGBuildableManufacturer_base_mProductionEffectsRunning_base,
 	FGBuildableManufacturer_base_packager,
+	FGBuildableManufacturer_base_packager_base,
 	FGBuildableManufacturer_Build_AssemblerMk1_C,
 	FGBuildableManufacturer_Build_ConstructorMk1_C,
 	FGBuildableManufacturer_Build_FoundryMk1_C,
@@ -1098,6 +1112,7 @@ export type {
 	FGBuildableManufacturer_Build_OilRefinery_C,
 	FGBuildableManufacturer_Build_Packager_C,
 	FGBuildableManufacturer_Build_SmelterMk1_C,
+	FGBuildableManufacturer_Build_SmelterMk1_C_base,
 	FGBuildablePipeline,
 	FGBuildablePipeline_base,
 	FGBuildablePipeline_base_no_indicator,

@@ -36,6 +36,7 @@ import type {
 	FGBuildableJumppad_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableJumppad_base,
 	FGBuildableLadder as docs_json_ts_0_3_7_7_classes_base_FGBuildableLadder,
 	FGBuildableManufacturer_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_base,
+	FGBuildableManufacturer_base_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_base_base,
 	FGBuildableManufacturer_base_IsPowered as docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_base_IsPowered,
 	FGBuildableManufacturer_base_mProductionEffectsRunning as docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_base_mProductionEffectsRunning,
 	FGBuildableManufacturer_base_packager as docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_base_packager,
@@ -151,7 +152,9 @@ type FGBuildable_mHasPower_base = FGBuildable_base & {
 	mHasPower: docs_json_ts_common_types_bool_string,
 };
 
-type FGBuildable_mStopped_audio_stuff = FGBuildable & {
+type FGBuildable_mStopped_audio_stuff = FGBuildable_mStopped_audio_stuff_base & FGBuildable;
+
+type FGBuildable_mStopped_audio_stuff_base = FGBuildable_base & {
 	mStoppedProducingAnimationSounds: docs_json_ts_common_types_bool_string,
 	mStoppedAkComponents: '',
 	mSocketStoppedAkComponents: '',
@@ -301,7 +304,9 @@ type FGBuildableMAM_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable & {
 	mCurrentResearchState: 'ERS_NotResearching',
 };
 
-type FGBuildableManufacturer_base_blender = docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_base & {
+type FGBuildableManufacturer_base_blender = FGBuildableManufacturer_base_blender_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_base;
+
+type FGBuildableManufacturer_base_blender_base = docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_base_base & {
 	mColor: '',
 	mIsRadioActive: docs_json_ts_common_types_bool_string,
 	mCurrentColorVFX: docs_json_ts_common_types_RGBA,
@@ -311,7 +316,9 @@ type FGBuildableManufacturer_base_blender = docs_json_ts_0_3_7_7_classes_base_FG
 	],
 };
 
-type FGBuildableManufacturer_base_constructor = docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_base & {
+type FGBuildableManufacturer_base_constructor = docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_base & FGBuildableManufacturer_base_constructor_base;
+
+type FGBuildableManufacturer_base_constructor_base = docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_base_base & {
 	mCurrentRecipeCheck: '',
 	mPreviousRecipeCheck: '',
 };
@@ -639,6 +646,7 @@ export type {
 	FGBuildable_mHasPower,
 	FGBuildable_mHasPower_base,
 	FGBuildable_mStopped_audio_stuff,
+	FGBuildable_mStopped_audio_stuff_base,
 	FGBuildable_occupied,
 	FGBuildable_pole_with_length_and_power,
 	FGBuildable_powered,
@@ -680,7 +688,9 @@ export type {
 	FGBuildableMAM,
 	FGBuildableMAM_base,
 	FGBuildableManufacturer_base_blender,
+	FGBuildableManufacturer_base_blender_base,
 	FGBuildableManufacturer_base_constructor,
+	FGBuildableManufacturer_base_constructor_base,
 	FGBuildableManufacturer_Build_AssemblerMk1_C,
 	FGBuildableManufacturer_Build_Blender_C,
 	FGBuildableManufacturer_Build_ConstructorMk1_C,

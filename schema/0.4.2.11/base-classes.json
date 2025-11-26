@@ -112,8 +112,18 @@
 			}
 		},
 		"FGBuildable--mStopped-audio-stuff": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--mStopped-audio-stuff--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable"
+				}
+			]
+		},
+		"FGBuildable--mStopped-audio-stuff--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable",
+			"$ref": "#/$defs/FGBuildable--base",
 			"required": [
 				"mStoppedProducingAnimationSounds",
 				"mStoppedAkComponents",
@@ -758,8 +768,18 @@
 			}
 		},
 		"FGBuildableManufacturer--base--blender": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableManufacturer--base--blender--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base"
+				}
+			]
+		},
+		"FGBuildableManufacturer--base--blender--base": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--base",
 			"required": [
 				"mColor",
 				"mIsRadioActive",
@@ -792,8 +812,18 @@
 			}
 		},
 		"FGBuildableManufacturer--base--constructor": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableManufacturer--base--constructor--base"
+				}
+			]
+		},
+		"FGBuildableManufacturer--base--constructor--base": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--base",
 			"required": ["mCurrentRecipeCheck", "mPreviousRecipeCheck"],
 			"properties": {
 				"mCurrentRecipeCheck": {
