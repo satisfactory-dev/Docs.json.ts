@@ -8,6 +8,11 @@ export type Empty_type = {
 	const: '',
 };
 
+export type Empty_properties = {
+	type: 'string',
+	const: '',
+};
+
 export function Empty_compile_vaildator(
 	ajv: Ajv,
 ): ValidateFunction<Empty_type> {

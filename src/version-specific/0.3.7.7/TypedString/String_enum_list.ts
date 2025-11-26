@@ -17,6 +17,49 @@ export type String_enum_list_type = {
 	},
 };
 
+export type String_enum_list_properties = {
+	type: 'object',
+	required: [
+		'type',
+		'minItems',
+		'uniqueItems',
+		'items',
+	],
+	properties: {
+		type: {
+			type: 'string',
+			const: 'array',
+		},
+		minItems: {
+			type: 'integer',
+			minimum: 1,
+		},
+		uniqueItems: {
+			type: 'boolean',
+			const: true,
+		},
+		items: {
+			type: 'object',
+			required: ['type', 'enum'],
+			properties: {
+				type: {
+					type: 'string',
+					const: 'string',
+				},
+				enum: {
+					type: 'array',
+					minItems: 1,
+					uniqueItems: true,
+					items: {
+						type: 'string',
+						minLength: 1,
+					},
+				},
+			},
+		},
+	},
+};
+
 export function String_enum_list_compile_validator(
 	ajv: Ajv,
 ): ValidateFunction<String_enum_list_type> {

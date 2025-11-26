@@ -4,10 +4,12 @@ import type {
 } from 'ajv/dist/2020.js';
 
 import type {
+	array_schema,
 	array_type,
 } from '@signpostmarv/json-schema-typescript-codegen';
 
 import type {
+	BlueprintGeneratedClass_quoted_schema,
 	BlueprintGeneratedClass_quoted_type,
 } from '../BlueprintGeneratedClass.ts';
 
@@ -17,6 +19,14 @@ export type BlueprintGeneratedClass_quoted_list_type = array_type<
 	'yes',
 	'with',
 	BlueprintGeneratedClass_quoted_type
+>;
+
+export type BlueprintGeneratedClass_quoted_list_properties = array_schema<
+	'items',
+	'specified',
+	'yes',
+	'optional',
+	BlueprintGeneratedClass_quoted_schema
 >;
 
 export function BlueprintGeneratedClass_quoted_list_compile_validator(

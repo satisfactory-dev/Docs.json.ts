@@ -11,7 +11,6 @@ import type {
 
 import type {
 	array_options,
-	array_schema,
 	object_schema,
 	object_type_base,
 	object_TypeLiteralNode_possibly_extended,
@@ -69,6 +68,7 @@ import {
 } from './FGTrainPlatformConnection.ts';
 
 import type {
+	Empty_properties,
 	Empty_type,
 } from './TypedString/Empty.ts';
 import {
@@ -76,6 +76,7 @@ import {
 } from './TypedString/Empty.ts';
 
 import type {
+	None_properties,
 	None_type,
 } from './TypedString/None.ts';
 import {
@@ -83,6 +84,7 @@ import {
 } from './TypedString/None.ts';
 
 import type {
+	Object_properties,
 	Object_type,
 } from './TypedString/Object.ts';
 import {
@@ -90,6 +92,7 @@ import {
 } from './TypedString/Object.ts';
 
 import type {
+	Object_list_properties,
 	Object_list_type,
 } from './TypedString/Object_list.ts';
 import {
@@ -97,6 +100,7 @@ import {
 } from './TypedString/Object_list.ts';
 
 import type {
+	String_enum_list_properties,
 	String_enum_list_type,
 } from './TypedString/String_enum_list.ts';
 import {
@@ -104,6 +108,7 @@ import {
 } from './TypedString/String_enum_list.ts';
 
 import type {
+	BlueprintGeneratedClass_quoted_list_properties,
 	BlueprintGeneratedClass_quoted_list_type,
 } from './TypedString/BlueprintGeneratedClass_quoted_list.ts';
 import {
@@ -111,6 +116,7 @@ import {
 } from './TypedString/BlueprintGeneratedClass_quoted_list.ts';
 
 import type {
+	FGTrainPlatformConnection_quoted_list_properties,
 	FGTrainPlatformConnection_quoted_list_type,
 } from './TypedString/FGTrainPlatformConnection_quoted_list.ts';
 import {
@@ -127,23 +133,25 @@ export type TypedString_mode = (
 	| 'FGTrainPlatformConnection_quoted_list'
 );
 
+export type TypedString_type__by_mode = {
+	Empty: Empty_type,
+	None: None_type,
+	Object: Object_type,
+	Object_list: Object_list_type,
+	String_enum_list: String_enum_list_type,
+	BlueprintGeneratedClass_quoted_list: (
+		BlueprintGeneratedClass_quoted_list_type
+	),
+	FGTrainPlatformConnection_quoted_list: (
+		FGTrainPlatformConnection_quoted_list_type
+	),
+};
+
 export type TypedString_type<
 	Mode extends TypedString_mode,
 > = {
 	type: 'string',
-	typed_string: {
-		Empty: Empty_type,
-		None: None_type,
-		Object: Object_type,
-		Object_list: Object_list_type,
-		String_enum_list: String_enum_list_type,
-		BlueprintGeneratedClass_quoted_list: (
-			BlueprintGeneratedClass_quoted_list_type
-		),
-		FGTrainPlatformConnection_quoted_list: (
-			FGTrainPlatformConnection_quoted_list_type
-		),
-	}[Mode],
+	typed_string: TypedString_type__by_mode[Mode],
 };
 
 type TypedString_matcher<
@@ -165,82 +173,23 @@ export type TypedString_type_OneOf = {
 	],
 };
 
-export type TypedString_schema_properties_typed_string<
+export type TypedString_schema_properties = {
+	Empty: Empty_properties,
+	None: None_properties,
+	Object: Object_properties,
+	Object_list: Object_list_properties,
+	String_enum_list: String_enum_list_properties,
+	BlueprintGeneratedClass_quoted_list: (
+		BlueprintGeneratedClass_quoted_list_properties
+	),
+	FGTrainPlatformConnection_quoted_list: (
+		FGTrainPlatformConnection_quoted_list_properties
+	),
+};
+
+type TypedString_schema_properties_typed_string<
 	Mode extends TypedString_mode,
-> = {
-	Empty: {
-		type: 'string',
-		const: '',
-	},
-	None: {
-		type: 'string',
-		const: '(None)',
-	},
-	Object: object_schema<'properties'>,
-	Object_list: array_schema<
-		'items',
-		'specified',
-		'yes',
-		'with',
-		object_schema<'properties'>
-	>,
-	String_enum_list: {
-		type: 'object',
-		required: [
-			'type',
-			'minItems',
-			'uniqueItems',
-			'items',
-		],
-		properties: {
-			type: {
-				type: 'string',
-				const: 'array',
-			},
-			minItems: {
-				type: 'integer',
-				minimum: 1,
-			},
-			uniqueItems: {
-				type: 'boolean',
-				const: true,
-			},
-			items: {
-				type: 'object',
-				required: ['type', 'enum'],
-				properties: {
-					type: {
-						type: 'string',
-						const: 'string',
-					},
-					enum: {
-						type: 'array',
-						minItems: 1,
-						uniqueItems: true,
-						items: {
-							type: 'string',
-							minLength: 1,
-						},
-					},
-				},
-			},
-		},
-	},
-	BlueprintGeneratedClass_quoted_list: array_schema<
-		'items',
-		'specified',
-		'yes',
-		'optional',
-		BlueprintGeneratedClass_quoted_schema
-	>,
-	FGTrainPlatformConnection_quoted_list: array_schema<
-		'items',
-		'specified',
-		'yes',
-		'optional',
-		FGTrainPlatformConnection_quoted_schema
-	>,
-}[Mode];
+> = TypedString_schema_properties[Mode];
 
 type TypedString_schema<
 	Mode extends TypedString_mode,
@@ -273,9 +222,7 @@ export type TypedString_schema_OneOf = TypeDefinitionSchema & {
 	],
 };
 
-export type TypedString_SchemaTo<
-	Mode extends TypedString_mode,
-> = {
+export type TypedString_SchemaTo__by_mode = {
 	Empty: LiteralTypeNode<NullLiteral>,
 	None: EmptyTupleTypeNode,
 	Object: object_TypeLiteralNode_possibly_extended<
@@ -301,7 +248,11 @@ export type TypedString_SchemaTo<
 	FGTrainPlatformConnection_quoted_list: RestedTupleTypeNode<
 		TemplateLiteralTypeNode
 	>,
-}[Mode];
+};
+
+type TypedString_SchemaTo<
+	Mode extends TypedString_mode,
+> = TypedString_SchemaTo__by_mode[Mode];
 
 export type TypedString_DataTo<
 	Mode extends TypedString_mode,

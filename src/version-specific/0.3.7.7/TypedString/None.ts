@@ -8,6 +8,11 @@ export type None_type = {
 	const: '(None)',
 };
 
+export type None_properties = {
+	type: 'string',
+	const: '(None)',
+};
+
 export function None_compile_validator(ajv: Ajv): ValidateFunction<None_type> {
 	return ajv.compile<
 		None_type

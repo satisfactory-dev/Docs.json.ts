@@ -4,6 +4,7 @@ import type {
 } from 'ajv/dist/2020.js';
 
 import type {
+	object_schema,
 	object_type_base,
 	ObjectOfSchemas,
 	SchemaObject,
@@ -16,6 +17,8 @@ export type Object_type = object_type_base<
 	ObjectOfSchemas,
 	ObjectOfSchemas
 >;
+
+export type Object_properties = object_schema<'properties'>;
 
 export const Object_type_schema = Object.freeze({
 	type: 'object',

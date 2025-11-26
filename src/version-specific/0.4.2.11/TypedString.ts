@@ -77,10 +77,9 @@ import type {
 	TypedString_DataTo as TypedString_DataTo__update3,
 	TypedString_mode as TypedString_mode__update3,
 	TypedString_schema_OneOf as TypedString_schema_OneOf__update3,
-	// eslint-disable-next-line @stylistic/max-len
-	TypedString_schema_properties_typed_string as TypedString_schema_properties_typed_string__update3,
-	TypedString_SchemaTo as TypedString_SchemaTo__update3,
-	TypedString_type as TypedString_type__update3,
+	TypedString_schema_properties as TypedString_schema_properties__update3,
+	TypedString_SchemaTo__by_mode as TypedString_SchemaTo__by_mode__update3,
+	TypedString_type__by_mode as TypedString_type__by_mode__update3,
 	TypedString_type_OneOf as TypedString_type_OneOf__update3,
 } from '../0.3.7.7/TypedString.ts';
 
@@ -93,24 +92,9 @@ type TypedString_mode = (
 	| 'FGRailroadTrackConnectionComponent_quoted_list'
 );
 
-type TypedString_type<
-	Mode extends TypedString_mode,
-> = {
-	type: 'string',
-	typed_string: {
-		Empty: TypedString_type__update3<'Empty'>['typed_string'],
-		None: TypedString_type__update3<'None'>['typed_string'],
-		Object: TypedString_type__update3<'Object'>['typed_string'],
-		Object_list: TypedString_type__update3<'Object_list'>['typed_string'],
-		String_enum_list: TypedString_type__update3<
-			'String_enum_list'
-		>['typed_string'],
-		BlueprintGeneratedClass_quoted_list: TypedString_type__update3<
-			'BlueprintGeneratedClass_quoted_list'
-		>['typed_string'],
-		FGTrainPlatformConnection_quoted_list: TypedString_type__update3<
-			'FGTrainPlatformConnection_quoted_list'
-		>['typed_string'],
+type TypedString_type__by_mode = (
+	& TypedString_type__by_mode__update3
+	& {
 		FGRailroadTrackConnectionComponent_quoted_list: array_type<
 			'items',
 			'specified',
@@ -118,7 +102,14 @@ type TypedString_type<
 			'with',
 			FGRailroadTrackConnectionComponent_quoted_type
 		>,
-	}[Mode],
+	}
+);
+
+type TypedString_type<
+	Mode extends TypedString_mode,
+> = {
+	type: 'string',
+	typed_string: TypedString_type__by_mode[Mode],
 };
 
 type TypedString_matcher<
@@ -135,28 +126,9 @@ type TypedString_type_OneOf = {
 	],
 };
 
-type TypedString_schema_properties_typed_string<
-	Mode extends TypedString_mode,
-> = {
-	Empty: TypedString_schema_properties_typed_string__update3<'Empty'>,
-	None: TypedString_schema_properties_typed_string__update3<'None'>,
-	Object: TypedString_schema_properties_typed_string__update3<'Object'>,
-	Object_list: TypedString_schema_properties_typed_string__update3<
-		'Object_list'
-	>,
-	String_enum_list: TypedString_schema_properties_typed_string__update3<
-		'String_enum_list'
-	>,
-	BlueprintGeneratedClass_quoted_list: (
-		TypedString_schema_properties_typed_string__update3<
-			'BlueprintGeneratedClass_quoted_list'
-		>
-	),
-	FGTrainPlatformConnection_quoted_list: (
-		TypedString_schema_properties_typed_string__update3<
-			'FGTrainPlatformConnection_quoted_list'
-		>
-	),
+type TypedString_schema_properties = (
+	& TypedString_schema_properties__update3
+	& {
 	FGRailroadTrackConnectionComponent_quoted_list: array_schema<
 		'items',
 		'specified',
@@ -164,7 +136,12 @@ type TypedString_schema_properties_typed_string<
 		'optional',
 		FGRailroadTrackConnectionComponent_quoted_schema
 	>,
-}[Mode];
+	}
+);
+
+type TypedString_schema_properties_typed_string<
+	Mode extends TypedString_mode,
+> = TypedString_schema_properties[Mode];
 
 type TypedString_schema<
 	Mode extends TypedString_mode,
@@ -192,24 +169,18 @@ type TypedString_schema_OneOf = TypeDefinitionSchema & {
 	],
 };
 
-type TypedString_SchemaTo<
-	Mode extends TypedString_mode,
-> = {
-	Empty: TypedString_SchemaTo__update3<'Empty'>,
-	None: TypedString_SchemaTo__update3<'None'>,
-	Object: TypedString_SchemaTo__update3<'Object'>,
-	Object_list: TypedString_SchemaTo__update3<'Object_list'>,
-	String_enum_list: TypedString_SchemaTo__update3<'String_enum_list'>,
-	BlueprintGeneratedClass_quoted_list: TypedString_SchemaTo__update3<
-		'BlueprintGeneratedClass_quoted_list'
-	>,
-	FGTrainPlatformConnection_quoted_list: TypedString_SchemaTo__update3<
-		'FGTrainPlatformConnection_quoted_list'
-	>,
+type TypedString_SchemaTo__by_mode = (
+	& TypedString_SchemaTo__by_mode__update3
+	& {
 	FGRailroadTrackConnectionComponent_quoted_list: RestedTupleTypeNode<
 		TemplateLiteralTypeNode
 	>,
-}[Mode];
+	}
+);
+
+type TypedString_SchemaTo<
+	Mode extends TypedString_mode,
+> = TypedString_SchemaTo__by_mode[Mode];
 
 type TypedString_DataTo<
 	Mode extends TypedString_mode,
