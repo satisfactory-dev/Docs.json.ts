@@ -185,11 +185,11 @@ type TypedString_SchemaTo<
 type TypedString_DataTo__by_mode = (
 	& TypedString_DataTo__by_mode__update3
 	& {
-	FGRailroadTrackConnectionComponent_quoted_list: ArrayLiteralExpression<
-		StringLiteral,
-		[StringLiteral, ...StringLiteral[]],
-		true
-	>,
+		FGRailroadTrackConnectionComponent_quoted_list: ArrayLiteralExpression<
+			StringLiteral,
+			[StringLiteral, ...StringLiteral[]],
+			true
+		>,
 	}
 );
 
@@ -200,9 +200,9 @@ type TypedString_DataTo<
 type Type_Generator__by_mode = (
 	& Type_Generator__by_mode__update3
 	& {
-	FGRailroadTrackConnectionComponent_quoted_list: (
-		schema: FGRailroadTrackConnectionComponent_quoted_type,
-	) => Promise<TemplateLiteralTypeNode>,
+		FGRailroadTrackConnectionComponent_quoted_list: (
+			schema: FGRailroadTrackConnectionComponent_quoted_type,
+		) => Promise<TemplateLiteralTypeNode>,
 	}
 );
 
