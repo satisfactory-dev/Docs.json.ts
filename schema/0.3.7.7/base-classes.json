@@ -2728,15 +2728,21 @@
 			}
 		},
 		"FGColorGun": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGColorGun--base"
+				},
+				{
+					"$ref": "#/$defs/FGWeaponProjectile--instant"
+				}
+			]
+		},
+		"FGColorGun--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGWeaponProjectile--instant",
+			"$ref": "#/$defs/FGColorGun--base--base",
 			"required": [
 				"mPrimaryColor",
 				"mSecondaryColor",
-				"mRedundantTargetCrosshairColor",
-				"mNoTargetCrosshairColor",
-				"mNonColorableTargetCrosshairColor",
-				"mColorSlot",
 				"mArmAnimation"
 			],
 			"properties": {
@@ -2746,6 +2752,22 @@
 				"mSecondaryColor": {
 					"$ref": "docs.json.ts--common--types#/$defs/RGBA"
 				},
+				"mArmAnimation": {
+					"type": "string",
+					"const": "AE_ColorGun"
+				}
+			}
+		},
+		"FGColorGun--base--base": {
+			"type": "object",
+			"$ref": "#/$defs/hasClassName",
+			"required": [
+				"mRedundantTargetCrosshairColor",
+				"mNoTargetCrosshairColor",
+				"mNonColorableTargetCrosshairColor",
+				"mColorSlot"
+			],
+			"properties": {
 				"mRedundantTargetCrosshairColor": {
 					"$ref": "docs.json.ts--common--types#/$defs/RGBA"
 				},
@@ -2757,10 +2779,6 @@
 				},
 				"mColorSlot": {
 					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-				},
-				"mArmAnimation": {
-					"type": "string",
-					"const": "AE_ColorGun"
 				}
 			}
 		},

@@ -742,14 +742,19 @@ type FGBuildableWire_base = FGBuildable_base & {
 	mConnections: 'None',
 };
 
-type FGColorGun = FGWeaponProjectile_instant & {
+type FGColorGun = FGColorGun_base & FGWeaponProjectile_instant;
+
+type FGColorGun_base = FGColorGun_base_base & {
 	mPrimaryColor: docs_json_ts_common_types_RGBA,
 	mSecondaryColor: docs_json_ts_common_types_RGBA,
+	mArmAnimation: 'AE_ColorGun',
+};
+
+type FGColorGun_base_base = hasClassName & {
 	mRedundantTargetCrosshairColor: docs_json_ts_common_types_RGBA,
 	mNoTargetCrosshairColor: docs_json_ts_common_types_RGBA,
 	mNonColorableTargetCrosshairColor: docs_json_ts_common_types_RGBA,
 	mColorSlot: docs_json_ts_common_types_integer_string,
-	mArmAnimation: 'AE_ColorGun',
 };
 
 type FGConsumableDescriptor = FGDescriptor_sinkable & FGConsumableDescriptor_base;
@@ -1155,6 +1160,8 @@ export type {
 	FGBuildableWire,
 	FGBuildableWire_base,
 	FGColorGun,
+	FGColorGun_base,
+	FGColorGun_base_base,
 	FGConsumableDescriptor,
 	FGConsumableDescriptor_base,
 	FGConsumableEquipment,
