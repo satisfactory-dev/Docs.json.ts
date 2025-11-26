@@ -1,0 +1,72 @@
+import type {
+	Ajv2020 as Ajv,
+	ValidateFunction,
+} from 'ajv/dist/2020.js';
+
+import type {
+	array_type,
+} from '@signpostmarv/json-schema-typescript-codegen';
+
+import type {
+	FGTrainPlatformConnection_quoted_type,
+} from '../FGTrainPlatformConnection.ts';
+
+export type FGTrainPlatformConnection_quoted_list_type = array_type<
+	'items',
+	'specified',
+	'yes',
+	'with',
+	FGTrainPlatformConnection_quoted_type
+>;
+
+export function FGTrainPlatformConnection_quoted_list_compile_validator(
+	ajv: Ajv,
+): ValidateFunction<FGTrainPlatformConnection_quoted_list_type> {
+	return ajv.compile<
+		FGTrainPlatformConnection_quoted_list_type
+	>(
+		{
+			type: 'object',
+			required: [
+				'type',
+				'minItems',
+				'items',
+			],
+			properties: {
+				type: {
+					type: 'string',
+					const: 'array',
+				},
+				minItems: {
+					type: 'integer',
+					minimum: 0,
+				},
+				items: {
+					type: 'object',
+					additionalProperties: false,
+					required: [
+						'type',
+						'DocsDotJson_FGTrainPlatformConnection_quoted',
+					],
+					properties: {
+						type: {
+							type: 'string',
+							const: 'string',
+						},
+						DocsDotJson_FGTrainPlatformConnection_quoted: {
+							oneOf: [
+								{
+									type: 'null',
+								},
+								{
+									type: 'string',
+									minLength: 1,
+								},
+							],
+						},
+					},
+				},
+			},
+		},
+	);
+}

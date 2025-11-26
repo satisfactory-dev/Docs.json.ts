@@ -3,7 +3,6 @@ import type {
 } from 'ajv/dist/2020.js';
 
 import type {
-	NullLiteral,
 	PropertyAssignment,
 	TemplateLiteralTypeNode,
 } from 'typescript';
@@ -14,9 +13,7 @@ import type {
 	array_type,
 	object_schema,
 	object_type_base,
-	object_TypeLiteralNode_possibly_extended,
 	ObjectOfSchemas,
-	PositiveInteger,
 	SchemaDefinitionDefinition,
 	SchemalessTypeOptions,
 	SchemaObject,
@@ -36,8 +33,6 @@ import {
 
 import type {
 	ArrayLiteralExpression,
-	EmptyTupleTypeNode,
-	Identifier,
 	LiteralTypeNode,
 	ObjectLiteralExpression,
 	RestedTupleTypeNode,
@@ -69,20 +64,32 @@ import {
 	FGTrainPlatformConnection,
 } from '../0.3.7.7/FGTrainPlatformConnection.ts';
 
+import type {
+	FGRailroadTrackConnectionComponent_quoted_schema,
+	FGRailroadTrackConnectionComponent_quoted_type,
+} from './FGRailroadTrackConnectionComponent.ts';
 import {
 	FGRailroadTrackConnectionComponent,
-	type FGRailroadTrackConnectionComponent_quoted_schema,
-	type FGRailroadTrackConnectionComponent_quoted_type,
 } from './FGRailroadTrackConnectionComponent.ts';
 
+import type {
+	Type_Generator as Type_Generator__update3,
+	TypedString_DataTo as TypedString_DataTo__update3,
+	TypedString_mode as TypedString_mode__update3,
+	TypedString_schema_OneOf as TypedString_schema_OneOf__update3,
+	// eslint-disable-next-line @stylistic/max-len
+	TypedString_schema_properties_typed_string as TypedString_schema_properties_typed_string__update3,
+	TypedString_SchemaTo as TypedString_SchemaTo__update3,
+	TypedString_type as TypedString_type__update3,
+	TypedString_type_OneOf as TypedString_type_OneOf__update3,
+} from '../0.3.7.7/TypedString.ts';
+
+import {
+	compile_validators as compile_validators__update3,
+} from '../0.3.7.7/TypedString.ts';
+
 type TypedString_mode = (
-	| 'Empty'
-	| 'None'
-	| 'Object'
-	| 'Object_list'
-	| 'String_enum_list'
-	| 'BlueprintGeneratedClass_quoted_list'
-	| 'FGTrainPlatformConnection_quoted_list'
+	| TypedString_mode__update3
 	| 'FGRailroadTrackConnectionComponent_quoted_list'
 );
 
@@ -91,57 +98,19 @@ type TypedString_type<
 > = {
 	type: 'string',
 	typed_string: {
-		Empty: {
-			type: 'string',
-			const: '',
-		},
-		None: {
-			type: 'string',
-			const: '(None)',
-		},
-		Object: object_type_base<
-			'properties',
-			SchemaObject,
-			[string, ...string[]],
-			ObjectOfSchemas,
-			ObjectOfSchemas
-		>,
-		Object_list: array_type<
-			'items',
-			'specified',
-			'yes',
-			'with',
-			object_type_base<
-				'properties',
-				SchemaObject,
-				[string, ...string[]],
-				ObjectOfSchemas,
-				ObjectOfSchemas
-			>
-		>,
-		String_enum_list: {
-			type: 'array',
-			minItems: PositiveInteger<number>,
-			uniqueItems: true,
-			items: {
-				type: 'string',
-				enum: [string, ...string[]],
-			},
-		},
-		BlueprintGeneratedClass_quoted_list: array_type<
-			'items',
-			'specified',
-			'yes',
-			'with',
-			BlueprintGeneratedClass_quoted_type
-		>,
-		FGTrainPlatformConnection_quoted_list: array_type<
-			'items',
-			'specified',
-			'yes',
-			'with',
-			FGTrainPlatformConnection_quoted_type
-		>,
+		Empty: TypedString_type__update3<'Empty'>['typed_string'],
+		None: TypedString_type__update3<'None'>['typed_string'],
+		Object: TypedString_type__update3<'Object'>['typed_string'],
+		Object_list: TypedString_type__update3<'Object_list'>['typed_string'],
+		String_enum_list: TypedString_type__update3<
+			'String_enum_list'
+		>['typed_string'],
+		BlueprintGeneratedClass_quoted_list: TypedString_type__update3<
+			'BlueprintGeneratedClass_quoted_list'
+		>['typed_string'],
+		FGTrainPlatformConnection_quoted_list: TypedString_type__update3<
+			'FGTrainPlatformConnection_quoted_list'
+		>['typed_string'],
 		FGRailroadTrackConnectionComponent_quoted_list: array_type<
 			'items',
 			'specified',
@@ -161,13 +130,7 @@ type TypedString_matcher<
 
 type TypedString_type_OneOf = {
 	oneOf: [
-		TypedString_type<'Empty'>,
-		TypedString_type<'None'>,
-		TypedString_type<'Object'>,
-		TypedString_type<'Object_list'>,
-		TypedString_type<'String_enum_list'>,
-		TypedString_type<'BlueprintGeneratedClass_quoted_list'>,
-		TypedString_type<'FGTrainPlatformConnection_quoted_list'>,
+		...TypedString_type_OneOf__update3['oneOf'],
 		TypedString_type<'FGRailroadTrackConnectionComponent_quoted_list'>,
 	],
 };
@@ -175,78 +138,25 @@ type TypedString_type_OneOf = {
 type TypedString_schema_properties_typed_string<
 	Mode extends TypedString_mode,
 > = {
-	Empty: {
-		type: 'string',
-		const: '',
-	},
-	None: {
-		type: 'string',
-		const: '(None)',
-	},
-	Object: object_schema<'properties'>,
-	Object_list: array_schema<
-		'items',
-		'specified',
-		'yes',
-		'with',
-		object_schema<'properties'>
+	Empty: TypedString_schema_properties_typed_string__update3<'Empty'>,
+	None: TypedString_schema_properties_typed_string__update3<'None'>,
+	Object: TypedString_schema_properties_typed_string__update3<'Object'>,
+	Object_list: TypedString_schema_properties_typed_string__update3<
+		'Object_list'
 	>,
-	String_enum_list: {
-		type: 'object',
-		required: [
-			'type',
-			'minItems',
-			'uniqueItems',
-			'items',
-		],
-		properties: {
-			type: {
-				type: 'string',
-				const: 'array',
-			},
-			minItems: {
-				type: 'integer',
-				minimum: 1,
-			},
-			uniqueItems: {
-				type: 'boolean',
-				const: true,
-			},
-			items: {
-				type: 'object',
-				required: ['type', 'enum'],
-				properties: {
-					type: {
-						type: 'string',
-						const: 'string',
-					},
-					enum: {
-						type: 'array',
-						minItems: 1,
-						uniqueItems: true,
-						items: {
-							type: 'string',
-							minLength: 1,
-						},
-					},
-				},
-			},
-		},
-	},
-	BlueprintGeneratedClass_quoted_list: array_schema<
-		'items',
-		'specified',
-		'yes',
-		'optional',
-		BlueprintGeneratedClass_quoted_schema
+	String_enum_list: TypedString_schema_properties_typed_string__update3<
+		'String_enum_list'
 	>,
-	FGTrainPlatformConnection_quoted_list: array_schema<
-		'items',
-		'specified',
-		'yes',
-		'optional',
-		FGTrainPlatformConnection_quoted_schema
-	>,
+	BlueprintGeneratedClass_quoted_list: (
+		TypedString_schema_properties_typed_string__update3<
+			'BlueprintGeneratedClass_quoted_list'
+		>
+	),
+	FGTrainPlatformConnection_quoted_list: (
+		TypedString_schema_properties_typed_string__update3<
+			'FGTrainPlatformConnection_quoted_list'
+		>
+	),
 	FGRailroadTrackConnectionComponent_quoted_list: array_schema<
 		'items',
 		'specified',
@@ -277,13 +187,7 @@ type TypedString_schema<
 
 type TypedString_schema_OneOf = TypeDefinitionSchema & {
 	oneOf: [
-		TypedString_schema<'Empty'>,
-		TypedString_schema<'None'>,
-		TypedString_schema<'Object'>,
-		TypedString_schema<'Object_list'>,
-		TypedString_schema<'String_enum_list'>,
-		TypedString_schema<'BlueprintGeneratedClass_quoted_list'>,
-		TypedString_schema<'FGTrainPlatformConnection_quoted_list'>,
+		...TypedString_schema_OneOf__update3['oneOf'],
 		TypedString_schema<'FGRailroadTrackConnectionComponent_quoted_list'>,
 	],
 };
@@ -291,30 +195,16 @@ type TypedString_schema_OneOf = TypeDefinitionSchema & {
 type TypedString_SchemaTo<
 	Mode extends TypedString_mode,
 > = {
-	Empty: LiteralTypeNode<NullLiteral>,
-	None: EmptyTupleTypeNode,
-	Object: object_TypeLiteralNode_possibly_extended<
-		'properties'
+	Empty: TypedString_SchemaTo__update3<'Empty'>,
+	None: TypedString_SchemaTo__update3<'None'>,
+	Object: TypedString_SchemaTo__update3<'Object'>,
+	Object_list: TypedString_SchemaTo__update3<'Object_list'>,
+	String_enum_list: TypedString_SchemaTo__update3<'String_enum_list'>,
+	BlueprintGeneratedClass_quoted_list: TypedString_SchemaTo__update3<
+		'BlueprintGeneratedClass_quoted_list'
 	>,
-	Object_list: RestedTupleTypeNode<object_TypeLiteralNode_possibly_extended<
-		'properties'
-	>>,
-	String_enum_list: (
-		| RestedTupleTypeNode<UnionTypeNode<[
-			LiteralTypeNode<StringLiteral>,
-			LiteralTypeNode<StringLiteral>,
-			...LiteralTypeNode<StringLiteral>[],
-		]>>
-		| TupleTypeNode<
-			LiteralTypeNode<StringLiteral>,
-			[LiteralTypeNode<StringLiteral>]
-		>
-	),
-	BlueprintGeneratedClass_quoted_list: RestedTupleTypeNode<
-		TemplateLiteralTypeNode
-	>,
-	FGTrainPlatformConnection_quoted_list: RestedTupleTypeNode<
-		TemplateLiteralTypeNode
+	FGTrainPlatformConnection_quoted_list: TypedString_SchemaTo__update3<
+		'FGTrainPlatformConnection_quoted_list'
 	>,
 	FGRailroadTrackConnectionComponent_quoted_list: RestedTupleTypeNode<
 		TemplateLiteralTypeNode
@@ -324,28 +214,16 @@ type TypedString_SchemaTo<
 type TypedString_DataTo<
 	Mode extends TypedString_mode,
 > = {
-	Empty: Identifier<'null'>,
-	None: ArrayLiteralExpression<never, never[], false>,
-	Object: ObjectLiteralExpression,
-	Object_list: ArrayLiteralExpression<
-		ObjectLiteralExpression,
-		[ObjectLiteralExpression, ...ObjectLiteralExpression[]],
-		true
+	Empty: TypedString_DataTo__update3<'Empty'>,
+	None: TypedString_DataTo__update3<'None'>,
+	Object: TypedString_DataTo__update3<'Object'>,
+	Object_list: TypedString_DataTo__update3<'Object_list'>,
+	String_enum_list: TypedString_DataTo__update3<'String_enum_list'>,
+	BlueprintGeneratedClass_quoted_list: TypedString_DataTo__update3<
+		'BlueprintGeneratedClass_quoted_list'
 	>,
-	String_enum_list: ArrayLiteralExpression<
-		StringLiteral,
-		[StringLiteral, ...StringLiteral[]],
-		true
-	>,
-	BlueprintGeneratedClass_quoted_list: ArrayLiteralExpression<
-		StringLiteral,
-		[StringLiteral, ...StringLiteral[]],
-		true
-	>,
-	FGTrainPlatformConnection_quoted_list: ArrayLiteralExpression<
-		StringLiteral,
-		[StringLiteral, ...StringLiteral[]],
-		true
+	FGTrainPlatformConnection_quoted_list: TypedString_DataTo__update3<
+		'FGTrainPlatformConnection_quoted_list'
 	>,
 	FGRailroadTrackConnectionComponent_quoted_list: ArrayLiteralExpression<
 		StringLiteral,
@@ -357,35 +235,17 @@ type TypedString_DataTo<
 type Type_Generator<
 	Mode extends TypedString_mode,
 > = {
-	None: undefined,
-	Empty: undefined,
-	String_enum_list: undefined,
-	Object: (
-		schema: object_type_base<
-			'properties',
-			SchemaObject,
-			[string, ...string[]],
-			ObjectOfSchemas,
-			ObjectOfSchemas
-		>,
-		schema_parser: SchemaParser,
-	) => Promise<object_TypeLiteralNode_possibly_extended<'properties'>>,
-	Object_list: (
-		schema: object_type_base<
-			'properties',
-			SchemaObject,
-			[string, ...string[]],
-			ObjectOfSchemas,
-			ObjectOfSchemas
-		>,
-		schema_parser: SchemaParser,
-	) => Promise<object_TypeLiteralNode_possibly_extended<'properties'>>,
-	BlueprintGeneratedClass_quoted_list: (
-		schema: BlueprintGeneratedClass_quoted_type,
-	) => Promise<TemplateLiteralTypeNode>,
-	FGTrainPlatformConnection_quoted_list: (
-		schema: FGTrainPlatformConnection_quoted_type,
-	) => Promise<TemplateLiteralTypeNode>,
+	None: Type_Generator__update3<'None'>,
+	Empty: Type_Generator__update3<'Empty'>,
+	String_enum_list: Type_Generator__update3<'String_enum_list'>,
+	Object: Type_Generator__update3<'Object'>,
+	Object_list: Type_Generator__update3<'Object_list'>,
+	BlueprintGeneratedClass_quoted_list: Type_Generator__update3<
+		'BlueprintGeneratedClass_quoted_list'
+	>,
+	FGTrainPlatformConnection_quoted_list: Type_Generator__update3<
+		'FGTrainPlatformConnection_quoted_list'
+	>,
 	FGRailroadTrackConnectionComponent_quoted_list: (
 		schema: FGRailroadTrackConnectionComponent_quoted_type,
 	) => Promise<TemplateLiteralTypeNode>,
@@ -416,251 +276,12 @@ export class TypedString<
 			},
 		} = {},
 	) {
-		const mode_from_schema = {
-			Empty: options.ajv.compile<
-				TypedString_type<'Empty'>['typed_string']
-			>(
-				{
-					oneOf: [
-						{
-							type: 'object',
-							additionalProperties: false,
-							required: ['type', 'const'],
-							properties: {
-								type: {
-									type: 'string',
-									const: 'string',
-								},
-								const: {
-									type: 'string',
-									const: '',
-								},
-							},
-						},
-						{
-							type: 'string',
-							const: '',
-						},
-					],
-				},
-			),
-			None: options.ajv.compile<
-				TypedString_type<'None'>['typed_string']
-			>(
-				{
-					oneOf: [
-						{
-							type: 'object',
-							additionalProperties: false,
-							required: ['type', 'const'],
-							properties: {
-								type: {
-									type: 'string',
-									const: 'string',
-								},
-								const: {
-									type: 'string',
-									const: '(None)',
-								},
-							},
-						},
-						{
-							type: 'string',
-							const: '(None)',
-						},
-					],
-				},
-			),
-			Object: options.ajv.compile<
-				TypedString_type<'Object'>['typed_string']
-			>(
-				{
-					type: 'object',
-					required: ['type'],
-					properties: {
-						type: {
-							type: 'string',
-							const: 'object',
-						},
-					},
-				},
-			),
-			Object_list: options.ajv.compile<
-				TypedString_type<'Object_list'>['typed_string']
-			>(
-				{
-					type: 'object',
-					required: [
-						'type',
-						'minItems',
-						'items',
-					],
-					properties: {
-						type: {
-							type: 'string',
-							const: 'array',
-						},
-						minItems: {
-							type: 'integer',
-							minimum: 0,
-						},
-						items: {
-							type: 'object',
-							required: ['type'],
-							properties: {
-								type: {
-									type: 'string',
-									const: 'object',
-								},
-							},
-						},
-					},
-				},
-			),
-			String_enum_list: options.ajv.compile<
-				TypedString_type<'String_enum_list'>['typed_string']
-			>(
-				{
-					type: 'object',
-					additionalProperties: false,
-					required: [
-						'type',
-						'minItems',
-						'uniqueItems',
-						'items',
-					],
-					properties: {
-						type: {
-							type: 'string',
-							const: 'array',
-						},
-						minItems: {
-							type: 'integer',
-							minimum: 1,
-						},
-						uniqueItems: {
-							type: 'boolean',
-							const: true,
-						},
-						items: {
-							type: 'object',
-							required: ['type', 'enum'],
-							properties: {
-								type: {
-									type: 'string',
-									const: 'string',
-								},
-								enum: {
-									type: 'array',
-									minItems: 1,
-									items: {
-										type: 'string',
-										minLength: 1,
-									},
-								},
-							},
-						},
-					},
-				},
-			),
-			BlueprintGeneratedClass_quoted_list: options.ajv.compile<
-				TypedString_type<
-					'BlueprintGeneratedClass_quoted_list'
-				>['typed_string']
-			>(
-				{
-					type: 'object',
-					required: [
-						'type',
-						'minItems',
-						'items',
-					],
-					properties: {
-						type: {
-							type: 'string',
-							const: 'array',
-						},
-						minItems: {
-							type: 'integer',
-							minimum: 0,
-						},
-						items: {
-							type: 'object',
-							additionalProperties: false,
-							required: [
-								'type',
-								'DocsDotJson_BlueprintGeneratedClass_quoted',
-							],
-							properties: {
-								type: {
-									type: 'string',
-									const: 'string',
-								},
-								DocsDotJson_BlueprintGeneratedClass_quoted: {
-									oneOf: [
-										{
-											type: 'null',
-										},
-										{
-											type: 'string',
-											minLength: 1,
-										},
-									],
-								},
-							},
-						},
-					},
-				},
-			),
-			FGTrainPlatformConnection_quoted_list: options.ajv.compile<
-				TypedString_type<
-					'FGTrainPlatformConnection_quoted_list'
-				>['typed_string']
-			>(
-				{
-					type: 'object',
-					required: [
-						'type',
-						'minItems',
-						'items',
-					],
-					properties: {
-						type: {
-							type: 'string',
-							const: 'array',
-						},
-						minItems: {
-							type: 'integer',
-							minimum: 0,
-						},
-						items: {
-							type: 'object',
-							additionalProperties: false,
-							required: [
-								'type',
-								'DocsDotJson_FGTrainPlatformConnection_quoted',
-							],
-							properties: {
-								type: {
-									type: 'string',
-									const: 'string',
-								},
-								DocsDotJson_FGTrainPlatformConnection_quoted: {
-									oneOf: [
-										{
-											type: 'null',
-										},
-										{
-											type: 'string',
-											minLength: 1,
-										},
-									],
-								},
-							},
-						},
-					},
-				},
-			),
+		const mode_from_schema: {
+			[key in TypedString_mode]: ValidateFunction<
+				TypedString_type<key>['typed_string']
+			>
+		} = {
+			...compile_validators__update3(options.ajv),
 			// eslint-disable-next-line @stylistic/max-len
 			FGRailroadTrackConnectionComponent_quoted_list: options.ajv.compile<
 				TypedString_type<

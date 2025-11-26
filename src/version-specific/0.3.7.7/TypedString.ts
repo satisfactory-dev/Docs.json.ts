@@ -1,4 +1,5 @@
 import type {
+	Ajv2020 as Ajv,
 	ValidateFunction,
 } from 'ajv/dist/2020.js';
 
@@ -11,12 +12,10 @@ import type {
 import type {
 	array_options,
 	array_schema,
-	array_type,
 	object_schema,
 	object_type_base,
 	object_TypeLiteralNode_possibly_extended,
 	ObjectOfSchemas,
-	PositiveInteger,
 	SchemaDefinitionDefinition,
 	SchemalessTypeOptions,
 	SchemaObject,
@@ -69,7 +68,56 @@ import {
 	FGTrainPlatformConnection,
 } from './FGTrainPlatformConnection.ts';
 
-type TypedString_mode = (
+import type {
+	Empty_type,
+} from './TypedString/Empty.ts';
+import {
+	Empty_compile_vaildator,
+} from './TypedString/Empty.ts';
+
+import type {
+	None_type,
+} from './TypedString/None.ts';
+import {
+	None_compile_validator,
+} from './TypedString/None.ts';
+
+import type {
+	Object_type,
+} from './TypedString/Object.ts';
+import {
+	Object_compile_validator,
+} from './TypedString/Object.ts';
+
+import type {
+	Object_list_type,
+} from './TypedString/Object_list.ts';
+import {
+	Object_list_compile_validator,
+} from './TypedString/Object_list.ts';
+
+import type {
+	String_enum_list_type,
+} from './TypedString/String_enum_list.ts';
+import {
+	String_enum_list_compile_validator,
+} from './TypedString/String_enum_list.ts';
+
+import type {
+	BlueprintGeneratedClass_quoted_list_type,
+} from './TypedString/BlueprintGeneratedClass_quoted_list.ts';
+import {
+	BlueprintGeneratedClass_quoted_list_compile_validator,
+} from './TypedString/BlueprintGeneratedClass_quoted_list.ts';
+
+import type {
+	FGTrainPlatformConnection_quoted_list_type,
+} from './TypedString/FGTrainPlatformConnection_quoted_list.ts';
+import {
+	FGTrainPlatformConnection_quoted_list_compile_validator,
+} from './TypedString/FGTrainPlatformConnection_quoted_list.ts';
+
+export type TypedString_mode = (
 	| 'Empty'
 	| 'None'
 	| 'Object'
@@ -79,62 +127,22 @@ type TypedString_mode = (
 	| 'FGTrainPlatformConnection_quoted_list'
 );
 
-type TypedString_type<
+export type TypedString_type<
 	Mode extends TypedString_mode,
 > = {
 	type: 'string',
 	typed_string: {
-		Empty: {
-			type: 'string',
-			const: '',
-		},
-		None: {
-			type: 'string',
-			const: '(None)',
-		},
-		Object: object_type_base<
-			'properties',
-			SchemaObject,
-			[string, ...string[]],
-			ObjectOfSchemas,
-			ObjectOfSchemas
-		>,
-		Object_list: array_type<
-			'items',
-			'specified',
-			'yes',
-			'with',
-			object_type_base<
-				'properties',
-				SchemaObject,
-				[string, ...string[]],
-				ObjectOfSchemas,
-				ObjectOfSchemas
-			>
-		>,
-		String_enum_list: {
-			type: 'array',
-			minItems: PositiveInteger<number>,
-			uniqueItems: true,
-			items: {
-				type: 'string',
-				enum: [string, ...string[]],
-			},
-		},
-		BlueprintGeneratedClass_quoted_list: array_type<
-			'items',
-			'specified',
-			'yes',
-			'with',
-			BlueprintGeneratedClass_quoted_type
-		>,
-		FGTrainPlatformConnection_quoted_list: array_type<
-			'items',
-			'specified',
-			'yes',
-			'with',
-			FGTrainPlatformConnection_quoted_type
-		>,
+		Empty: Empty_type,
+		None: None_type,
+		Object: Object_type,
+		Object_list: Object_list_type,
+		String_enum_list: String_enum_list_type,
+		BlueprintGeneratedClass_quoted_list: (
+			BlueprintGeneratedClass_quoted_list_type
+		),
+		FGTrainPlatformConnection_quoted_list: (
+			FGTrainPlatformConnection_quoted_list_type
+		),
 	}[Mode],
 };
 
@@ -145,7 +153,7 @@ type TypedString_matcher<
 	ValidateFunction<TypedString_type<Mode>['typed_string']>,
 ];
 
-type TypedString_type_OneOf = {
+export type TypedString_type_OneOf = {
 	oneOf: [
 		TypedString_type<'Empty'>,
 		TypedString_type<'None'>,
@@ -157,7 +165,7 @@ type TypedString_type_OneOf = {
 	],
 };
 
-type TypedString_schema_properties_typed_string<
+export type TypedString_schema_properties_typed_string<
 	Mode extends TypedString_mode,
 > = {
 	Empty: {
@@ -253,7 +261,7 @@ type TypedString_schema<
 	}
 >;
 
-type TypedString_schema_OneOf = TypeDefinitionSchema & {
+export type TypedString_schema_OneOf = TypeDefinitionSchema & {
 	oneOf: [
 		TypedString_schema<'Empty'>,
 		TypedString_schema<'None'>,
@@ -265,7 +273,7 @@ type TypedString_schema_OneOf = TypeDefinitionSchema & {
 	],
 };
 
-type TypedString_SchemaTo<
+export type TypedString_SchemaTo<
 	Mode extends TypedString_mode,
 > = {
 	Empty: LiteralTypeNode<NullLiteral>,
@@ -295,7 +303,7 @@ type TypedString_SchemaTo<
 	>,
 }[Mode];
 
-type TypedString_DataTo<
+export type TypedString_DataTo<
 	Mode extends TypedString_mode,
 > = {
 	Empty: Identifier<'null'>,
@@ -323,7 +331,7 @@ type TypedString_DataTo<
 	>,
 }[Mode];
 
-type Type_Generator<
+export type Type_Generator<
 	Mode extends TypedString_mode,
 > = {
 	None: undefined,
@@ -357,6 +365,30 @@ type Type_Generator<
 	) => Promise<TemplateLiteralTypeNode>,
 }[Mode];
 
+export function compile_validators(ajv: Ajv): {
+	[key in TypedString_mode]: ValidateFunction<
+		TypedString_type<key>['typed_string']
+	>
+} {
+	return {
+		Empty: Empty_compile_vaildator(ajv),
+		None: None_compile_validator(ajv),
+		Object: Object_compile_validator(ajv),
+		Object_list: Object_list_compile_validator(ajv),
+		String_enum_list: String_enum_list_compile_validator(ajv),
+		BlueprintGeneratedClass_quoted_list: (
+			BlueprintGeneratedClass_quoted_list_compile_validator(
+				ajv,
+			)
+		),
+		FGTrainPlatformConnection_quoted_list: (
+			FGTrainPlatformConnection_quoted_list_compile_validator(
+				ajv,
+			)
+		),
+	};
+}
+
 export class TypedString<
 	Mode extends TypedString_mode,
 > extends
@@ -382,252 +414,7 @@ export class TypedString<
 			},
 		} = {},
 	) {
-		const mode_from_schema = {
-			Empty: options.ajv.compile<
-				TypedString_type<'Empty'>['typed_string']
-			>(
-				{
-					oneOf: [
-						{
-							type: 'object',
-							additionalProperties: false,
-							required: ['type', 'const'],
-							properties: {
-								type: {
-									type: 'string',
-									const: 'string',
-								},
-								const: {
-									type: 'string',
-									const: '',
-								},
-							},
-						},
-						{
-							type: 'string',
-							const: '',
-						},
-					],
-				},
-			),
-			None: options.ajv.compile<
-				TypedString_type<'None'>['typed_string']
-			>(
-				{
-					oneOf: [
-						{
-							type: 'object',
-							additionalProperties: false,
-							required: ['type', 'const'],
-							properties: {
-								type: {
-									type: 'string',
-									const: 'string',
-								},
-								const: {
-									type: 'string',
-									const: '(None)',
-								},
-							},
-						},
-						{
-							type: 'string',
-							const: '(None)',
-						},
-					],
-				},
-			),
-			Object: options.ajv.compile<
-				TypedString_type<'Object'>['typed_string']
-			>(
-				{
-					type: 'object',
-					required: ['type'],
-					properties: {
-						type: {
-							type: 'string',
-							const: 'object',
-						},
-					},
-				},
-			),
-			Object_list: options.ajv.compile<
-				TypedString_type<'Object_list'>['typed_string']
-			>(
-				{
-					type: 'object',
-					required: [
-						'type',
-						'minItems',
-						'items',
-					],
-					properties: {
-						type: {
-							type: 'string',
-							const: 'array',
-						},
-						minItems: {
-							type: 'integer',
-							minimum: 0,
-						},
-						items: {
-							type: 'object',
-							required: ['type'],
-							properties: {
-								type: {
-									type: 'string',
-									const: 'object',
-								},
-							},
-						},
-					},
-				},
-			),
-			String_enum_list: options.ajv.compile<
-				TypedString_type<'String_enum_list'>['typed_string']
-			>(
-				{
-					type: 'object',
-					additionalProperties: false,
-					required: [
-						'type',
-						'minItems',
-						'uniqueItems',
-						'items',
-					],
-					properties: {
-						type: {
-							type: 'string',
-							const: 'array',
-						},
-						minItems: {
-							type: 'integer',
-							minimum: 1,
-						},
-						uniqueItems: {
-							type: 'boolean',
-							const: true,
-						},
-						items: {
-							type: 'object',
-							required: ['type', 'enum'],
-							properties: {
-								type: {
-									type: 'string',
-									const: 'string',
-								},
-								enum: {
-									type: 'array',
-									minItems: 1,
-									items: {
-										type: 'string',
-										minLength: 1,
-									},
-								},
-							},
-						},
-					},
-				},
-			),
-			BlueprintGeneratedClass_quoted_list: options.ajv.compile<
-				TypedString_type<
-					'BlueprintGeneratedClass_quoted_list'
-				>['typed_string']
-			>(
-				{
-					type: 'object',
-					required: [
-						'type',
-						'minItems',
-						'items',
-					],
-					properties: {
-						type: {
-							type: 'string',
-							const: 'array',
-						},
-						minItems: {
-							type: 'integer',
-							minimum: 0,
-						},
-						items: {
-							type: 'object',
-							additionalProperties: false,
-							required: [
-								'type',
-								'DocsDotJson_BlueprintGeneratedClass_quoted',
-							],
-							properties: {
-								type: {
-									type: 'string',
-									const: 'string',
-								},
-								DocsDotJson_BlueprintGeneratedClass_quoted: {
-									oneOf: [
-										{
-											type: 'null',
-										},
-										{
-											type: 'string',
-											minLength: 1,
-										},
-									],
-								},
-							},
-						},
-					},
-				},
-			),
-			FGTrainPlatformConnection_quoted_list: options.ajv.compile<
-				TypedString_type<
-					'FGTrainPlatformConnection_quoted_list'
-				>['typed_string']
-			>(
-				{
-					type: 'object',
-					required: [
-						'type',
-						'minItems',
-						'items',
-					],
-					properties: {
-						type: {
-							type: 'string',
-							const: 'array',
-						},
-						minItems: {
-							type: 'integer',
-							minimum: 0,
-						},
-						items: {
-							type: 'object',
-							additionalProperties: false,
-							required: [
-								'type',
-								'DocsDotJson_FGTrainPlatformConnection_quoted',
-							],
-							properties: {
-								type: {
-									type: 'string',
-									const: 'string',
-								},
-								DocsDotJson_FGTrainPlatformConnection_quoted: {
-									oneOf: [
-										{
-											type: 'null',
-										},
-										{
-											type: 'string',
-											minLength: 1,
-										},
-									],
-								},
-							},
-						},
-					},
-				},
-			),
-		};
+		const mode_from_schema = compile_validators(options.ajv);
 
 		const entries = Object.entries(mode_from_schema);
 
