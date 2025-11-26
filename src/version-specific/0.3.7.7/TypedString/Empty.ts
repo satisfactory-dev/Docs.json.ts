@@ -3,6 +3,10 @@ import type {
 	ValidateFunction,
 } from 'ajv/dist/2020.js';
 
+import type {
+	Identifier,
+} from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
+
 export type Empty_type = {
 	type: 'string',
 	const: '',
@@ -12,6 +16,10 @@ export type Empty_properties = {
 	type: 'string',
 	const: '',
 };
+
+export type Empty_DataTo = Identifier<'null'>;
+
+export type Empty_TypeGenerator = undefined;
 
 export function Empty_compile_vaildator(
 	ajv: Ajv,

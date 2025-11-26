@@ -33,9 +33,7 @@ import {
 } from '@signpostmarv/json-schema-typescript-codegen/ajv';
 
 import type {
-	ArrayLiteralExpression,
 	EmptyTupleTypeNode,
-	Identifier,
 	LiteralTypeNode,
 	ObjectLiteralExpression,
 	RestedTupleTypeNode,
@@ -68,56 +66,70 @@ import {
 } from './FGTrainPlatformConnection.ts';
 
 import type {
+	Empty_DataTo,
 	Empty_properties,
 	Empty_type,
+	Empty_TypeGenerator,
 } from './TypedString/Empty.ts';
 import {
 	Empty_compile_vaildator,
 } from './TypedString/Empty.ts';
 
 import type {
+	None_DataTo,
 	None_properties,
 	None_type,
+	None_TypeGenerator,
 } from './TypedString/None.ts';
 import {
 	None_compile_validator,
 } from './TypedString/None.ts';
 
 import type {
+	Object_DataTo,
 	Object_properties,
 	Object_type,
+	Object_TypeGenerator,
 } from './TypedString/Object.ts';
 import {
 	Object_compile_validator,
 } from './TypedString/Object.ts';
 
 import type {
+	Object_list_DataTo,
 	Object_list_properties,
 	Object_list_type,
+	Object_list_TypeGenerator,
 } from './TypedString/Object_list.ts';
 import {
 	Object_list_compile_validator,
 } from './TypedString/Object_list.ts';
 
 import type {
+	String_enum_list_DataTo,
 	String_enum_list_properties,
 	String_enum_list_type,
+	String_enum_list_TypeGenerator,
 } from './TypedString/String_enum_list.ts';
 import {
 	String_enum_list_compile_validator,
 } from './TypedString/String_enum_list.ts';
 
 import type {
+	BlueprintGeneratedClass_quoted_list_DataTo,
 	BlueprintGeneratedClass_quoted_list_properties,
 	BlueprintGeneratedClass_quoted_list_type,
+	BlueprintGeneratedClass_quoted_list_TypeGenerator,
 } from './TypedString/BlueprintGeneratedClass_quoted_list.ts';
 import {
 	BlueprintGeneratedClass_quoted_list_compile_validator,
 } from './TypedString/BlueprintGeneratedClass_quoted_list.ts';
 
 import type {
+	FGTrainPlatformConnection_quoted_list_DataTo,
 	FGTrainPlatformConnection_quoted_list_properties,
 	FGTrainPlatformConnection_quoted_list_type,
+	FGTrainPlatformConnection_quoted_list_TypeGenerator,
 } from './TypedString/FGTrainPlatformConnection_quoted_list.ts';
 import {
 	FGTrainPlatformConnection_quoted_list_compile_validator,
@@ -254,67 +266,41 @@ type TypedString_SchemaTo<
 	Mode extends TypedString_mode,
 > = TypedString_SchemaTo__by_mode[Mode];
 
-export type TypedString_DataTo<
-	Mode extends TypedString_mode,
-> = {
-	Empty: Identifier<'null'>,
-	None: ArrayLiteralExpression<never, never[], false>,
-	Object: ObjectLiteralExpression,
-	Object_list: ArrayLiteralExpression<
-		ObjectLiteralExpression,
-		[ObjectLiteralExpression, ...ObjectLiteralExpression[]],
-		true
-	>,
-	String_enum_list: ArrayLiteralExpression<
-		StringLiteral,
-		[StringLiteral, ...StringLiteral[]],
-		true
-	>,
-	BlueprintGeneratedClass_quoted_list: ArrayLiteralExpression<
-		StringLiteral,
-		[StringLiteral, ...StringLiteral[]],
-		true
-	>,
-	FGTrainPlatformConnection_quoted_list: ArrayLiteralExpression<
-		StringLiteral,
-		[StringLiteral, ...StringLiteral[]],
-		true
-	>,
-}[Mode];
-
-export type Type_Generator<
-	Mode extends TypedString_mode,
-> = {
-	None: undefined,
-	Empty: undefined,
-	String_enum_list: undefined,
-	Object: (
-		schema: object_type_base<
-			'properties',
-			SchemaObject,
-			[string, ...string[]],
-			ObjectOfSchemas,
-			ObjectOfSchemas
-		>,
-		schema_parser: SchemaParser,
-	) => Promise<object_TypeLiteralNode_possibly_extended<'properties'>>,
-	Object_list: (
-		schema: object_type_base<
-			'properties',
-			SchemaObject,
-			[string, ...string[]],
-			ObjectOfSchemas,
-			ObjectOfSchemas
-		>,
-		schema_parser: SchemaParser,
-	) => Promise<object_TypeLiteralNode_possibly_extended<'properties'>>,
+export type TypedString_DataTo__by_mode = {
+	Empty: Empty_DataTo,
+	None: None_DataTo,
+	Object: Object_DataTo,
+	Object_list: Object_list_DataTo,
+	String_enum_list: String_enum_list_DataTo,
 	BlueprintGeneratedClass_quoted_list: (
-		schema: BlueprintGeneratedClass_quoted_type,
-	) => Promise<TemplateLiteralTypeNode>,
+		BlueprintGeneratedClass_quoted_list_DataTo
+	),
 	FGTrainPlatformConnection_quoted_list: (
-		schema: FGTrainPlatformConnection_quoted_type,
-	) => Promise<TemplateLiteralTypeNode>,
-}[Mode];
+		FGTrainPlatformConnection_quoted_list_DataTo
+	),
+};
+
+type TypedString_DataTo<
+	Mode extends TypedString_mode,
+> = TypedString_DataTo__by_mode[Mode];
+
+export type Type_Generator__by_mode = {
+	None: None_TypeGenerator,
+	Empty: Empty_TypeGenerator,
+	String_enum_list: String_enum_list_TypeGenerator,
+	Object: Object_TypeGenerator,
+	Object_list: Object_list_TypeGenerator,
+	BlueprintGeneratedClass_quoted_list: (
+		BlueprintGeneratedClass_quoted_list_TypeGenerator
+	),
+	FGTrainPlatformConnection_quoted_list: (
+		FGTrainPlatformConnection_quoted_list_TypeGenerator
+	),
+};
+
+type Type_Generator<
+	Mode extends TypedString_mode,
+> = Type_Generator__by_mode[Mode];
 
 export function compile_validators(ajv: Ajv): {
 	[key in TypedString_mode]: ValidateFunction<

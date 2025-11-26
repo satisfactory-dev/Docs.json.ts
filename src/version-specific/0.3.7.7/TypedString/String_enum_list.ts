@@ -7,6 +7,11 @@ import type {
 	PositiveInteger,
 } from '@signpostmarv/json-schema-typescript-codegen';
 
+import type {
+	ArrayLiteralExpression,
+	StringLiteral,
+} from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
+
 export type String_enum_list_type = {
 	type: 'array',
 	minItems: PositiveInteger<number>,
@@ -59,6 +64,14 @@ export type String_enum_list_properties = {
 		},
 	},
 };
+
+export type String_enum_list_DataTo = ArrayLiteralExpression<
+	StringLiteral,
+	[StringLiteral, ...StringLiteral[]],
+	true
+>;
+
+export type String_enum_list_TypeGenerator = undefined;
 
 export function String_enum_list_compile_validator(
 	ajv: Ajv,

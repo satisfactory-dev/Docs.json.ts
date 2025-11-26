@@ -73,8 +73,8 @@ import {
 } from './FGRailroadTrackConnectionComponent.ts';
 
 import type {
-	Type_Generator as Type_Generator__update3,
-	TypedString_DataTo as TypedString_DataTo__update3,
+	Type_Generator__by_mode as Type_Generator__by_mode__update3,
+	TypedString_DataTo__by_mode as TypedString_DataTo__by_mode__update3,
 	TypedString_mode as TypedString_mode__update3,
 	TypedString_schema_OneOf as TypedString_schema_OneOf__update3,
 	TypedString_schema_properties as TypedString_schema_properties__update3,
@@ -182,45 +182,33 @@ type TypedString_SchemaTo<
 	Mode extends TypedString_mode,
 > = TypedString_SchemaTo__by_mode[Mode];
 
-type TypedString_DataTo<
-	Mode extends TypedString_mode,
-> = {
-	Empty: TypedString_DataTo__update3<'Empty'>,
-	None: TypedString_DataTo__update3<'None'>,
-	Object: TypedString_DataTo__update3<'Object'>,
-	Object_list: TypedString_DataTo__update3<'Object_list'>,
-	String_enum_list: TypedString_DataTo__update3<'String_enum_list'>,
-	BlueprintGeneratedClass_quoted_list: TypedString_DataTo__update3<
-		'BlueprintGeneratedClass_quoted_list'
-	>,
-	FGTrainPlatformConnection_quoted_list: TypedString_DataTo__update3<
-		'FGTrainPlatformConnection_quoted_list'
-	>,
+type TypedString_DataTo__by_mode = (
+	& TypedString_DataTo__by_mode__update3
+	& {
 	FGRailroadTrackConnectionComponent_quoted_list: ArrayLiteralExpression<
 		StringLiteral,
 		[StringLiteral, ...StringLiteral[]],
 		true
 	>,
-}[Mode];
+	}
+);
 
-type Type_Generator<
+type TypedString_DataTo<
 	Mode extends TypedString_mode,
-> = {
-	None: Type_Generator__update3<'None'>,
-	Empty: Type_Generator__update3<'Empty'>,
-	String_enum_list: Type_Generator__update3<'String_enum_list'>,
-	Object: Type_Generator__update3<'Object'>,
-	Object_list: Type_Generator__update3<'Object_list'>,
-	BlueprintGeneratedClass_quoted_list: Type_Generator__update3<
-		'BlueprintGeneratedClass_quoted_list'
-	>,
-	FGTrainPlatformConnection_quoted_list: Type_Generator__update3<
-		'FGTrainPlatformConnection_quoted_list'
-	>,
+> = TypedString_DataTo__by_mode[Mode];
+
+type Type_Generator__by_mode = (
+	& Type_Generator__by_mode__update3
+	& {
 	FGRailroadTrackConnectionComponent_quoted_list: (
 		schema: FGRailroadTrackConnectionComponent_quoted_type,
 	) => Promise<TemplateLiteralTypeNode>,
-}[Mode];
+	}
+);
+
+type Type_Generator<
+	Mode extends TypedString_mode,
+> = Type_Generator__by_mode[Mode];
 
 export class TypedString<
 	Mode extends TypedString_mode,
