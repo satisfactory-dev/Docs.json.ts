@@ -167,29 +167,25 @@
 			]
 		},
 		"FGBuildable--powered--base": {
-					"type": "object",
-					"$ref": "#/$defs/FGBuildable--powered--base--base",
-					"required": [
-						"mOnProductionStatusChanged"
-					],
-					"properties": {
-						"mOnProductionStatusChanged": {
-							"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-						}
-					}
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--powered--base--base",
+			"required": ["mOnProductionStatusChanged"],
+			"properties": {
+				"mOnProductionStatusChanged": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				}
+			}
 		},
 		"FGBuildable--powered--base--base": {
-					"type": "object",
-					"$ref": "#/$defs/FGBuildable--base",
-					"required": [
-						"mCachedSkeletalMeshes"
-					],
-					"properties": {
-						"mCachedSkeletalMeshes": {
-							"type": "string",
-							"const": ""
-						}
-					}
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--base",
+			"required": ["mCachedSkeletalMeshes"],
+			"properties": {
+				"mCachedSkeletalMeshes": {
+					"type": "string",
+					"const": ""
+				}
+			}
 		},
 		"FGBuildable--powered--has-mAllowedResourceForms": {
 			"type": "object",
