@@ -70,3 +70,10 @@ export function None_ajv_macro() {
 		const: '(None)',
 	});
 }
+
+export function None_generate_schema_definition(): Readonly<None_properties> {
+	return Object.freeze({
+		type: 'string',
+		const: '(None)',
+	});
+}

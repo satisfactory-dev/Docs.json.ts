@@ -8,8 +8,10 @@ import type {
 } from 'typescript';
 
 import type {
+	array_options,
 	array_schema,
 	array_type,
+	object_schema,
 	object_type_base,
 	object_TypeLiteralNode_possibly_extended,
 	ObjectOfSchemas,
@@ -17,7 +19,9 @@ import type {
 	SchemaParser,
 } from '@signpostmarv/json-schema-typescript-codegen';
 import {
+	ArrayType,
 	ObjectUnspecified,
+	PositiveIntegerOrZeroGuard,
 	Type,
 } from '@signpostmarv/json-schema-typescript-codegen';
 
@@ -37,6 +41,7 @@ import type {
 	Object_type,
 } from './Object.ts';
 import {
+	Object_generate_schema_definition,
 	Object_type_schema,
 } from './Object.ts';
 
@@ -326,4 +331,28 @@ export function Object_list_ajv_macro(
 	return Object.freeze({
 		pattern: `^\\(${regex}(?:,${regex})*\\)$`,
 	});
+}
+
+export function Object_list_generate_schema_definition(
+): Readonly<Object_list_properties> {
+	const sanity_check_options: array_options<
+		'items',
+		'specified',
+		'yes',
+		'with',
+		object_schema<'properties'>
+	> = {
+		array_mode: 'items',
+		specified_mode: 'specified',
+		unique_items_mode: 'yes',
+		min_items_mode: 'with',
+		items: Object_generate_schema_definition(),
+		minItems: PositiveIntegerOrZeroGuard(1),
+	};
+
+	return Object.freeze(
+		ArrayType.generate_schema_definition(
+			sanity_check_options,
+		),
+	);
 }

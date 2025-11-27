@@ -32,7 +32,7 @@ export type String_enum_list_type = {
 
 export type String_enum_list_properties = {
 	type: 'object',
-	required: [
+	required: readonly [
 		'type',
 		'minItems',
 		'uniqueItems',
@@ -53,7 +53,7 @@ export type String_enum_list_properties = {
 		},
 		items: {
 			type: 'object',
-			required: ['type', 'enum'],
+			required: readonly ['type', 'enum'],
 			properties: {
 				type: {
 					type: 'string',
@@ -279,4 +279,50 @@ export function String_enum_list_ajv_macro(
 			regex
 		}))*\\)$`,
 	});
+}
+
+export function String_enum_list_generate_schema_definition(
+): Readonly<String_enum_list_properties> {
+	return Object.freeze({
+		type: 'object',
+		required: [
+			'type',
+			'minItems',
+			'uniqueItems',
+			'items',
+		],
+		properties: {
+			type: {
+				type: 'string',
+				const: 'array',
+			},
+			minItems: {
+				type: 'integer',
+				minimum: 1,
+			},
+			uniqueItems: {
+				type: 'boolean',
+				const: true,
+			},
+			items: {
+				type: 'object',
+				required: ['type', 'enum'],
+				properties: {
+					type: {
+						type: 'string',
+						const: 'string',
+					},
+					enum: {
+						type: 'array',
+						minItems: 1,
+						uniqueItems: true,
+						items: {
+							type: 'string',
+							minLength: 1,
+						},
+					},
+				},
+			},
+		},
+	} as const);
 }

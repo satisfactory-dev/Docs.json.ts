@@ -4,25 +4,19 @@ import type {
 } from 'ajv/dist/2020.js';
 
 import type {
-	array_options,
 	SchemaDefinitionDefinition,
 	SchemalessTypeOptions,
 	SchemaParser,
 	TypeDefinitionSchema,
 } from '@signpostmarv/json-schema-typescript-codegen';
 import {
-	ArrayType,
 	PositiveIntegerGuard,
-	PositiveIntegerOrZeroGuard,
 } from '@signpostmarv/json-schema-typescript-codegen';
 
 import {
 	KeywordType,
 } from '@signpostmarv/json-schema-typescript-codegen/ajv';
 
-import type {
-	FGRailroadTrackConnectionComponent_quoted_schema,
-} from './FGRailroadTrackConnectionComponent.ts';
 import {
 	FGRailroadTrackConnectionComponent,
 } from './FGRailroadTrackConnectionComponent.ts';
@@ -57,6 +51,7 @@ import type {
 import {
 	FGRailroadTrackConnectionComponent_quoted_list_ajv_macro,
 	FGRailroadTrackConnectionComponent_quoted_list_compile_validator,
+	FGRailroadTrackConnectionComponent_quoted_list_generate_schema_definition,
 	FGRailroadTrackConnectionComponent_quoted_list_generate_typescript_data,
 	FGRailroadTrackConnectionComponent_quoted_list_generate_typescript_type,
 } from './TypedString/FGRailroadTrackConnectionComponent_quoted_list.ts';
@@ -407,33 +402,9 @@ export class TypedString<
 		>;
 
 		if ('FGRailroadTrackConnectionComponent_quoted_list' === mode) {
-			const sanity_check_subtype: (
-				FGRailroadTrackConnectionComponent_quoted_schema
-			) = FGRailroadTrackConnectionComponent
-				.generate_schema_definition();
-
-			const sanity_check_options: array_options<
-				'items',
-				'specified',
-				'yes',
-				'optional',
-				FGRailroadTrackConnectionComponent_quoted_schema
-			> = {
-				array_mode: 'items',
-				specified_mode: 'specified',
-				unique_items_mode: 'yes',
-				min_items_mode: 'optional',
-				items: sanity_check_subtype,
-				minItems: PositiveIntegerOrZeroGuard(1),
-			};
-
-			const sanity_check: Readonly<
-				TypedString_schema_properties_typed_string<
-					'FGRailroadTrackConnectionComponent_quoted_list'
-				>
-			> = ArrayType.generate_schema_definition(sanity_check_options);
-
-			typed_string = sanity_check as typeof typed_string;
+			// eslint-disable-next-line @stylistic/max-len
+			typed_string = FGRailroadTrackConnectionComponent_quoted_list_generate_schema_definition(
+			) as typeof typed_string;
 		} else {
 			throw new TypeError('not implemented!');
 		}

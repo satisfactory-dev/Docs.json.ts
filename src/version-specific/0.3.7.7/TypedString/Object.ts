@@ -214,3 +214,11 @@ export function Object_ajv_macro(
 		pattern: `^\\(${regex}(?:,${regex})*\\)$`,
 	});
 }
+
+export function Object_generate_schema_definition(
+): Readonly<Object_properties> {
+	return ObjectUnspecified
+		.generate_schema_definition({
+			properties_mode: 'properties',
+		});
+}

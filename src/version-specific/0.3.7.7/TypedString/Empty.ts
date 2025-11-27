@@ -78,3 +78,11 @@ export function Empty_ajv_macro() {
 		const: '',
 	});
 }
+
+export function Empty_generate_schema_definition(
+): Readonly<Empty_properties> {
+	return Object.freeze({
+		type: 'string',
+		const: '',
+	});
+}

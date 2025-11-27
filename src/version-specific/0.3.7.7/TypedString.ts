@@ -4,34 +4,24 @@ import type {
 } from 'ajv/dist/2020.js';
 
 import type {
-	array_options,
-	object_schema,
 	SchemaDefinitionDefinition,
 	SchemalessTypeOptions,
 	SchemaParser,
 	TypeDefinitionSchema,
 } from '@signpostmarv/json-schema-typescript-codegen';
 import {
-	ArrayType,
 	ObjectUnspecified,
 	PositiveIntegerGuard,
-	PositiveIntegerOrZeroGuard,
 } from '@signpostmarv/json-schema-typescript-codegen';
 
 import {
 	KeywordType,
 } from '@signpostmarv/json-schema-typescript-codegen/ajv';
 
-import type {
-	BlueprintGeneratedClass_quoted_schema,
-} from './BlueprintGeneratedClass.ts';
 import {
 	BlueprintGeneratedClass_quoted,
 } from './BlueprintGeneratedClass.ts';
 
-import type {
-	FGTrainPlatformConnection_quoted_schema,
-} from './FGTrainPlatformConnection.ts';
 import {
 	FGTrainPlatformConnection,
 } from './FGTrainPlatformConnection.ts';
@@ -46,6 +36,7 @@ import type {
 import {
 	Empty_ajv_macro,
 	Empty_compile_vaildator,
+	Empty_generate_schema_definition,
 	Empty_generate_typescript_data,
 	Empty_generate_typescript_type,
 } from './TypedString/Empty.ts';
@@ -60,6 +51,7 @@ import type {
 import {
 	None_ajv_macro,
 	None_compile_validator,
+	None_generate_schema_definition,
 	None_generate_typescript_data,
 	None_generate_typescript_type,
 } from './TypedString/None.ts';
@@ -74,6 +66,7 @@ import type {
 import {
 	Object_ajv_macro,
 	Object_compile_validator,
+	Object_generate_schema_definition,
 	Object_generate_typescript_data,
 	Object_generate_typescript_type,
 } from './TypedString/Object.ts';
@@ -88,6 +81,7 @@ import type {
 import {
 	Object_list_ajv_macro,
 	Object_list_compile_validator,
+	Object_list_generate_schema_definition,
 	Object_list_generate_typescript_data,
 	Object_list_generate_typescript_type,
 } from './TypedString/Object_list.ts';
@@ -102,6 +96,7 @@ import type {
 import {
 	String_enum_list_ajv_macro,
 	String_enum_list_compile_validator,
+	String_enum_list_generate_schema_definition,
 	String_enum_list_generate_typescript_data,
 	String_enum_list_generate_typescript_type,
 } from './TypedString/String_enum_list.ts';
@@ -116,6 +111,7 @@ import type {
 import {
 	BlueprintGeneratedClass_quoted_list_ajv_macro,
 	BlueprintGeneratedClass_quoted_list_compile_validator,
+	BlueprintGeneratedClass_quoted_list_generate_schema_definition,
 	BlueprintGeneratedClass_quoted_list_generate_typescript_data,
 	BlueprintGeneratedClass_quoted_list_generate_typescript_type,
 } from './TypedString/BlueprintGeneratedClass_quoted_list.ts';
@@ -128,6 +124,7 @@ import type {
 	FGTrainPlatformConnection_quoted_list_TypeGenerator,
 } from './TypedString/FGTrainPlatformConnection_quoted_list.ts';
 import {
+	FGRailroadTrackConnectionComponent_quoted_list_generate_schema_definition,
 	FGTrainPlatformConnection_quoted_list_ajv_macro,
 	FGTrainPlatformConnection_quoted_list_compile_validator,
 	FGTrainPlatformConnection_quoted_list_generate_typescript_data,
@@ -699,167 +696,28 @@ export class TypedString<
 		>;
 
 		if ('Empty' === mode) {
-			const sanity_check: TypedString_schema_properties_typed_string<
-				'Empty'
-			> = {
-				type: 'string',
-				const: '',
-			};
-
-			typed_string = sanity_check as typeof typed_string;
+			typed_string = Empty_generate_schema_definition(
+			) as typeof typed_string;
 		} else if ('None' === mode) {
-			const sanity_check: TypedString_schema_properties_typed_string<
-				'None'
-			> = {
-				type: 'string',
-				const: '(None)',
-			};
-
-			typed_string = sanity_check as typeof typed_string;
+			typed_string = None_generate_schema_definition(
+			) as typeof typed_string;
 		} else if ('Object' === mode) {
-			const sanity_check: TypedString_schema_properties_typed_string<
-				'Object'
-			> = ObjectUnspecified
-				.generate_schema_definition({
-					properties_mode: 'properties',
-				});
-
-			typed_string = sanity_check as typeof typed_string;
+			typed_string = Object_generate_schema_definition(
+			) as typeof typed_string;
 		} else if ('Object_list' === mode) {
-			const sanity_check_subtype: object_schema<
-				'properties'
-			> = ObjectUnspecified.generate_schema_definition({
-				properties_mode: 'properties',
-			});
-
-			const sanity_check_options: array_options<
-				'items',
-				'specified',
-				'yes',
-				'with',
-				object_schema<'properties'>
-			> = {
-				array_mode: 'items',
-				specified_mode: 'specified',
-				unique_items_mode: 'yes',
-				min_items_mode: 'with',
-				items: sanity_check_subtype,
-				minItems: PositiveIntegerOrZeroGuard(1),
-			};
-
-			const sanity_check: Readonly<
-				TypedString_schema_properties_typed_string<
-					'Object_list'
-				>
-			> = ArrayType.generate_schema_definition(sanity_check_options);
-
-			typed_string = sanity_check as typeof typed_string;
+			typed_string = Object_list_generate_schema_definition(
+			) as typeof typed_string;
 		} else if ('String_enum_list' === mode) {
-			const sanity_check: Readonly<
-				TypedString_schema_properties_typed_string<
-					'String_enum_list'
-				>
-			> = {
-				type: 'object',
-				required: [
-					'type',
-					'minItems',
-					'uniqueItems',
-					'items',
-				],
-				properties: {
-					type: {
-						type: 'string',
-						const: 'array',
-					},
-					minItems: {
-						type: 'integer',
-						minimum: 1,
-					},
-					uniqueItems: {
-						type: 'boolean',
-						const: true,
-					},
-					items: {
-						type: 'object',
-						required: ['type', 'enum'],
-						properties: {
-							type: {
-								type: 'string',
-								const: 'string',
-							},
-							enum: {
-								type: 'array',
-								minItems: 1,
-								uniqueItems: true,
-								items: {
-									type: 'string',
-									minLength: 1,
-								},
-							},
-						},
-					},
-				},
-			};
-
-			typed_string = sanity_check as typeof typed_string;
+			typed_string = String_enum_list_generate_schema_definition(
+			) as typeof typed_string;
 		} else if ('BlueprintGeneratedClass_quoted_list' === mode) {
-			const sanity_check_subtype: (
-				BlueprintGeneratedClass_quoted_schema
-			) = BlueprintGeneratedClass_quoted
-				.generate_schema_definition({
-					mode: 'quoted',
-				});
-
-			const sanity_check_options: array_options<
-				'items',
-				'specified',
-				'yes',
-				'optional',
-				BlueprintGeneratedClass_quoted_schema
-			> = {
-				array_mode: 'items',
-				specified_mode: 'specified',
-				unique_items_mode: 'yes',
-				min_items_mode: 'optional',
-				items: sanity_check_subtype,
-				minItems: PositiveIntegerOrZeroGuard(1),
-			};
-
-			const sanity_check: Readonly<
-				TypedString_schema_properties_typed_string<
-					'BlueprintGeneratedClass_quoted_list'
-				>
-			> = ArrayType.generate_schema_definition(sanity_check_options);
-
-			typed_string = sanity_check as typeof typed_string;
+			// eslint-disable-next-line @stylistic/max-len
+			typed_string = BlueprintGeneratedClass_quoted_list_generate_schema_definition(
+			) as typeof typed_string;
 		} else if ('FGTrainPlatformConnection_quoted_list' === mode) {
-			const sanity_check_subtype: (
-				FGTrainPlatformConnection_quoted_schema
-			) = FGTrainPlatformConnection.generate_schema_definition();
-
-			const sanity_check_options: array_options<
-				'items',
-				'specified',
-				'yes',
-				'optional',
-				FGTrainPlatformConnection_quoted_schema
-			> = {
-				array_mode: 'items',
-				specified_mode: 'specified',
-				unique_items_mode: 'yes',
-				min_items_mode: 'optional',
-				items: sanity_check_subtype,
-				minItems: PositiveIntegerOrZeroGuard(1),
-			};
-
-			const sanity_check: Readonly<
-				TypedString_schema_properties_typed_string<
-					'FGTrainPlatformConnection_quoted_list'
-				>
-			> = ArrayType.generate_schema_definition(sanity_check_options);
-
-			typed_string = sanity_check as typeof typed_string;
+			// eslint-disable-next-line @stylistic/max-len
+			typed_string = FGRailroadTrackConnectionComponent_quoted_list_generate_schema_definition(
+			) as typeof typed_string;
 		} else {
 			throw new TypeError('not implemented!');
 		}

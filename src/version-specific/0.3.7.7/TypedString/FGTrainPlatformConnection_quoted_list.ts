@@ -8,9 +8,14 @@ import type {
 } from 'typescript';
 
 import type {
+	array_options,
 	array_schema,
 	array_type,
 	SchemaParser,
+} from '@signpostmarv/json-schema-typescript-codegen';
+import {
+	ArrayType,
+	PositiveIntegerOrZeroGuard,
 } from '@signpostmarv/json-schema-typescript-codegen';
 
 import type {
@@ -201,4 +206,33 @@ export function FGTrainPlatformConnection_quoted_list_ajv_macro(
 	return Object.freeze({
 		pattern: `^\\(${regex}(?:,${regex})*\\)$`,
 	});
+}
+
+// eslint-disable-next-line @stylistic/max-len
+export function FGRailroadTrackConnectionComponent_quoted_list_generate_schema_definition(
+): Readonly<FGTrainPlatformConnection_quoted_list_properties> {
+	const sanity_check_subtype: (
+		FGTrainPlatformConnection_quoted_schema
+	) = FGTrainPlatformConnection.generate_schema_definition();
+
+	const sanity_check_options: array_options<
+		'items',
+		'specified',
+		'yes',
+		'optional',
+		FGTrainPlatformConnection_quoted_schema
+	> = {
+		array_mode: 'items',
+		specified_mode: 'specified',
+		unique_items_mode: 'yes',
+		min_items_mode: 'optional',
+		items: sanity_check_subtype,
+		minItems: PositiveIntegerOrZeroGuard(1),
+	};
+
+	const sanity_check: Readonly<
+		FGTrainPlatformConnection_quoted_list_properties
+	> = ArrayType.generate_schema_definition(sanity_check_options);
+
+	return sanity_check;
 }
