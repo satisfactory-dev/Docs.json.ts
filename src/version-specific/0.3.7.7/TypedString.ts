@@ -124,9 +124,9 @@ import type {
 	FGTrainPlatformConnection_quoted_list_TypeGenerator,
 } from './TypedString/FGTrainPlatformConnection_quoted_list.ts';
 import {
-	FGRailroadTrackConnectionComponent_quoted_list_generate_schema_definition,
 	FGTrainPlatformConnection_quoted_list_ajv_macro,
 	FGTrainPlatformConnection_quoted_list_compile_validator,
+	FGTrainPlatformConnection_quoted_list_generate_schema_definition,
 	FGTrainPlatformConnection_quoted_list_generate_typescript_data,
 	FGTrainPlatformConnection_quoted_list_generate_typescript_type,
 } from './TypedString/FGTrainPlatformConnection_quoted_list.ts';
@@ -716,7 +716,7 @@ export class TypedString<
 			) as typeof typed_string;
 		} else if ('FGTrainPlatformConnection_quoted_list' === mode) {
 			// eslint-disable-next-line @stylistic/max-len
-			typed_string = FGRailroadTrackConnectionComponent_quoted_list_generate_schema_definition(
+			typed_string = FGTrainPlatformConnection_quoted_list_generate_schema_definition(
 			) as typeof typed_string;
 		} else {
 			throw new TypeError('not implemented!');

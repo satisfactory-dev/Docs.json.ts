@@ -209,7 +209,7 @@ export function FGTrainPlatformConnection_quoted_list_ajv_macro(
 }
 
 // eslint-disable-next-line @stylistic/max-len
-export function FGRailroadTrackConnectionComponent_quoted_list_generate_schema_definition(
+export function FGTrainPlatformConnection_quoted_list_generate_schema_definition(
 ): Readonly<FGTrainPlatformConnection_quoted_list_properties> {
 	const sanity_check_subtype: (
 		FGTrainPlatformConnection_quoted_schema
