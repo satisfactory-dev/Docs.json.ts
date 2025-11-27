@@ -64,3 +64,9 @@ export function None_generate_typescript_data(): None_DataTo {
 export function None_generate_typescript_type(): None_SchemaTo {
 	return factory.createTupleTypeNode([]);
 }
+
+export function None_ajv_macro() {
+	return Object.freeze({
+		const: '(None)',
+	});
+}

@@ -304,3 +304,26 @@ export async function Object_list_generate_typescript_type(
 
 	return sanity_check;
 }
+
+export function Object_list_ajv_macro(
+	schema: Object_list_type,
+) {
+	const regex = `\\(${
+		Object.keys(schema.items.properties)
+			.map((property) => `(?:,?${
+				RegExp.escape(property)
+			}=.+)${
+				(
+					(schema.items.required || ([] as string[]))
+						.includes(property)
+				)
+					? ''
+					: '?'
+			}`)
+			.join('')
+	}\\)`;
+
+	return Object.freeze({
+		pattern: `^\\(${regex}(?:,${regex})*\\)$`,
+	});
+}

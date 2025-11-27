@@ -189,3 +189,16 @@ export async function FGTrainPlatformConnection_quoted_list_generate_typescript_
 
 	return sanity_check;
 }
+
+export function FGTrainPlatformConnection_quoted_list_ajv_macro(
+	schema: FGTrainPlatformConnection_quoted_list_type,
+) {
+	const regex = FGTrainPlatformConnection
+		.regex_from_value(
+			schema.items.DocsDotJson_FGTrainPlatformConnection_quoted,
+		);
+
+	return Object.freeze({
+		pattern: `^\\(${regex}(?:,${regex})*\\)$`,
+	});
+}

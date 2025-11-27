@@ -256,3 +256,27 @@ export function String_enum_list_generate_typescript_type(
 
 	return sanity_check;
 }
+
+export function String_enum_list_ajv_macro(
+	schema: String_enum_list_type,
+	quoted: boolean,
+) {
+	const items = [...schema.items.enum];
+
+	if (quoted) {
+		items.push(...items.map((value) => `"${value}"`));
+	}
+
+	const regex = `${
+		items
+			.map((value) => RegExp.escape(value)).join('|')
+	}`;
+
+	return Object.freeze({
+		pattern: `^\\((${
+			regex
+		})(?:,(${
+			regex
+		}))*\\)$`,
+	});
+}

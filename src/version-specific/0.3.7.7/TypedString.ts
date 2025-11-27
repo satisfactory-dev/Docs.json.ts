@@ -44,6 +44,7 @@ import type {
 	Empty_TypeGenerator,
 } from './TypedString/Empty.ts';
 import {
+	Empty_ajv_macro,
 	Empty_compile_vaildator,
 	Empty_generate_typescript_data,
 	Empty_generate_typescript_type,
@@ -57,6 +58,7 @@ import type {
 	None_TypeGenerator,
 } from './TypedString/None.ts';
 import {
+	None_ajv_macro,
 	None_compile_validator,
 	None_generate_typescript_data,
 	None_generate_typescript_type,
@@ -70,6 +72,7 @@ import type {
 	Object_TypeGenerator,
 } from './TypedString/Object.ts';
 import {
+	Object_ajv_macro,
 	Object_compile_validator,
 	Object_generate_typescript_data,
 	Object_generate_typescript_type,
@@ -83,6 +86,7 @@ import type {
 	Object_list_TypeGenerator,
 } from './TypedString/Object_list.ts';
 import {
+	Object_list_ajv_macro,
 	Object_list_compile_validator,
 	Object_list_generate_typescript_data,
 	Object_list_generate_typescript_type,
@@ -96,6 +100,7 @@ import type {
 	String_enum_list_TypeGenerator,
 } from './TypedString/String_enum_list.ts';
 import {
+	String_enum_list_ajv_macro,
 	String_enum_list_compile_validator,
 	String_enum_list_generate_typescript_data,
 	String_enum_list_generate_typescript_type,
@@ -109,6 +114,7 @@ import type {
 	BlueprintGeneratedClass_quoted_list_TypeGenerator,
 } from './TypedString/BlueprintGeneratedClass_quoted_list.ts';
 import {
+	BlueprintGeneratedClass_quoted_list_ajv_macro,
 	BlueprintGeneratedClass_quoted_list_compile_validator,
 	BlueprintGeneratedClass_quoted_list_generate_typescript_data,
 	BlueprintGeneratedClass_quoted_list_generate_typescript_type,
@@ -122,6 +128,7 @@ import type {
 	FGTrainPlatformConnection_quoted_list_TypeGenerator,
 } from './TypedString/FGTrainPlatformConnection_quoted_list.ts';
 import {
+	FGTrainPlatformConnection_quoted_list_ajv_macro,
 	FGTrainPlatformConnection_quoted_list_compile_validator,
 	FGTrainPlatformConnection_quoted_list_generate_typescript_data,
 	FGTrainPlatformConnection_quoted_list_generate_typescript_type,
@@ -615,117 +622,50 @@ export class TypedString<
 		},
 	) {
 		if ('Empty' === mode) {
-			return {
-				const: '',
-			};
+			return Empty_ajv_macro();
 		} else if ('None' === mode) {
-			return {
-				const: '(None)',
-			};
+			return None_ajv_macro();
 		} else if ('Object' === mode) {
 			const coerced = schema as TypedString_type<
 				'Object'
 			>['typed_string'];
 
-			const regex = `${
-				Object.keys(coerced.properties)
-					.map((property) => `(?:,?${
-						RegExp.escape(property)
-					}=(?:${
-						`\\((?:,?[^=]+=(?:\\([^)]+\\)|\\d+))+\\)`
-					}|${
-						`\\([^=]+=\\([^)]+\\)\\)`
-					}|${
-						`\\([^)]+\\)`
-					}|${
-						`[^=]+`
-					}))${
-						(
-							(coerced.required || ([] as string[]))
-								.includes(property)
-						)
-							? ''
-							: '?'
-					}`)
-					.join('')
-			}`;
-
-			return {
-				pattern: `^\\(${regex}(?:,${regex})*\\)$`,
-			};
+			return Object_ajv_macro(coerced);
 		} else if ('Object_list' === mode) {
 			const coerced = schema as TypedString_type<
 				'Object_list'
 			>['typed_string'];
 
-			const regex = `\\(${
-				Object.keys(coerced.items.properties)
-					.map((property) => `(?:,?${
-						RegExp.escape(property)
-					}=.+)${
-						(
-							(coerced.items.required || ([] as string[]))
-								.includes(property)
-						)
-							? ''
-							: '?'
-					}`)
-					.join('')
-			}\\)`;
-
-			return {
-				pattern: `^\\(${regex}(?:,${regex})*\\)$`,
-			};
+			return Object_list_ajv_macro(coerced);
 		} else if ('String_enum_list' === mode) {
 			const coerced = schema as TypedString_type<
 				'String_enum_list'
 			>['typed_string'];
 
-			const items = [...coerced.items.enum];
-
-			if (String_enum_list.quoted) {
-				items.push(...items.map((value) => `"${value}"`));
-			}
-
-			const regex = `${
-				items
-					.map((value) => RegExp.escape(value)).join('|')
-			}`;
-
-			return {
-				pattern: `^\\((${
-					regex
-				})(?:,(${
-					regex
-				}))*\\)$`,
-			};
+			return String_enum_list_ajv_macro(
+				coerced,
+				String_enum_list.quoted,
+			);
 		} else if ('BlueprintGeneratedClass_quoted_list' === mode) {
-			const regex = BlueprintGeneratedClass_quoted
-				.regex_from_value_and_mode(
-					(schema as TypedString_type<
-						'BlueprintGeneratedClass_quoted_list'
-					>[
-						'typed_string'
-					]).items.DocsDotJson_BlueprintGeneratedClass_quoted,
-					'quoted',
-				);
+			const coerced = (schema as TypedString_type<
+				'BlueprintGeneratedClass_quoted_list'
+			>[
+				'typed_string'
+			]);
 
-			return {
-				pattern: `^\\(${regex}(?:,${regex})*\\)$`,
-			};
+			return BlueprintGeneratedClass_quoted_list_ajv_macro(
+				coerced,
+			);
 		} else if ('FGTrainPlatformConnection_quoted_list' === mode) {
-			const regex = FGTrainPlatformConnection
-				.regex_from_value(
-					(schema as TypedString_type<
-						'FGTrainPlatformConnection_quoted_list'
-					>[
-						'typed_string'
-					]).items.DocsDotJson_FGTrainPlatformConnection_quoted,
-				);
+			const coerced = (schema as TypedString_type<
+				'FGTrainPlatformConnection_quoted_list'
+			>[
+				'typed_string'
+			]);
 
-			return {
-				pattern: `^\\(${regex}(?:,${regex})*\\)$`,
-			};
+			return FGTrainPlatformConnection_quoted_list_ajv_macro(
+				coerced,
+			);
 		} else {
 			throw new TypeError('Mode not implemented!');
 		}

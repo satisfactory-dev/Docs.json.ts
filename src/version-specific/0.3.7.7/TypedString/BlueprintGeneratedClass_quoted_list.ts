@@ -185,3 +185,17 @@ export async function BlueprintGeneratedClass_quoted_list_generate_typescript_ty
 
 	return sanity_check;
 }
+
+export function BlueprintGeneratedClass_quoted_list_ajv_macro(
+	schema: BlueprintGeneratedClass_quoted_list_type,
+) {
+	const regex = BlueprintGeneratedClass_quoted
+		.regex_from_value_and_mode(
+			schema.items.DocsDotJson_BlueprintGeneratedClass_quoted,
+			'quoted',
+		);
+
+	return Object.freeze({
+		pattern: `^\\(${regex}(?:,${regex})*\\)$`,
+	});
+}

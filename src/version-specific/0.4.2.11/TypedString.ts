@@ -64,6 +64,7 @@ import type {
 	FGRailroadTrackConnectionComponent_quoted_list_type,
 } from './TypedString/FGRailroadTrackConnectionComponent_quoted_list.ts';
 import {
+	FGRailroadTrackConnectionComponent_quoted_list_ajv_macro,
 	FGRailroadTrackConnectionComponent_quoted_list_compile_validator,
 	FGRailroadTrackConnectionComponent_quoted_list_generate_typescript_data,
 	FGRailroadTrackConnectionComponent_quoted_list_generate_typescript_type,
@@ -367,143 +368,33 @@ export class TypedString<
 	>(
 		mode: Mode,
 		schema: TypedString_type<Mode>['typed_string'],
-		{
-			String_enum_list,
-		}: {
+		options: {
 			String_enum_list: {
 				quoted: boolean,
 			},
 		},
 	) {
-		if ('Empty' === mode) {
-			return {
-				const: '',
-			};
-		} else if ('None' === mode) {
-			return {
-				const: '(None)',
-			};
-		} else if ('Object' === mode) {
-			const coerced = schema as TypedString_type<
-				'Object'
-			>['typed_string'];
+		if ('FGRailroadTrackConnectionComponent_quoted_list' === mode) {
+			const coereced = (schema as TypedString_type<
+				'FGRailroadTrackConnectionComponent_quoted_list'
+			>[
+				'typed_string'
+			]);
 
-			const regex = `${
-				Object.keys(coerced.properties)
-					.map((property) => `(?:,?${
-						RegExp.escape(property)
-					}=(?:${
-						`\\((?:,?[^=]+=(?:\\([^)]+\\)|\\d+))+\\)`
-					}|${
-						`\\([^=]+=\\([^)]+\\)\\)`
-					}|${
-						`\\([^)]+\\)`
-					}|${
-						`[^=]+`
-					}))${
-						(
-							(coerced.required || ([] as string[]))
-								.includes(property)
-						)
-							? ''
-							: '?'
-					}`)
-					.join('')
-			}`;
-
-			return {
-				pattern: `^\\(${regex}(?:,${regex})*\\)$`,
-			};
-		} else if ('Object_list' === mode) {
-			const coerced = schema as TypedString_type<
-				'Object_list'
-			>['typed_string'];
-
-			const regex = `\\(${
-				Object.keys(coerced.items.properties)
-					.map((property) => `(?:,?${
-						RegExp.escape(property)
-					}=.+)${
-						(
-							(coerced.items.required || ([] as string[]))
-								.includes(property)
-						)
-							? ''
-							: '?'
-					}`)
-					.join('')
-			}\\)`;
-
-			return {
-				pattern: `^\\(${regex}(?:,${regex})*\\)$`,
-			};
-		} else if ('String_enum_list' === mode) {
-			const coerced = schema as TypedString_type<
-				'String_enum_list'
-			>['typed_string'];
-
-			const items = [...coerced.items.enum];
-
-			if (String_enum_list.quoted) {
-				items.push(...items.map((value) => `"${value}"`));
-			}
-
-			const regex = `${
-				items
-					.map((value) => RegExp.escape(value)).join('|')
-			}`;
-
-			return {
-				pattern: `^\\((${
-					regex
-				})(?:,(${
-					regex
-				}))*\\)$`,
-			};
-		} else if ('BlueprintGeneratedClass_quoted_list' === mode) {
-			const regex = BlueprintGeneratedClass_quoted
-				.regex_from_value_and_mode(
-					(schema as TypedString_type<
-						'BlueprintGeneratedClass_quoted_list'
-					>[
-						'typed_string'
-					]).items.DocsDotJson_BlueprintGeneratedClass_quoted,
-					'quoted',
-				);
-
-			return {
-				pattern: `^\\(${regex}(?:,${regex})*\\)$`,
-			};
-		} else if ('FGTrainPlatformConnection_quoted_list' === mode) {
-			const regex = FGTrainPlatformConnection
-				.regex_from_value(
-					(schema as TypedString_type<
-						'FGTrainPlatformConnection_quoted_list'
-					>[
-						'typed_string'
-					]).items.DocsDotJson_FGTrainPlatformConnection_quoted,
-				);
-
-			return {
-				pattern: `^\\(${regex}(?:,${regex})*\\)$`,
-			};
-		} else if ('FGRailroadTrackConnectionComponent_quoted_list' === mode) {
-			const regex = FGRailroadTrackConnectionComponent
-				.regex_from_value(
-					(schema as TypedString_type<
-						'FGRailroadTrackConnectionComponent_quoted_list'
-					>[
-						'typed_string'
-					]).items
-						.DocsDotJson_FGRailroadTrackConnectionComponent_quoted,
-				);
-
-			return {
-				pattern: `^\\(${regex}(?:,${regex})*\\)$`,
-			};
-		} else {
-			throw new TypeError('Mode not implemented!');
+			return FGRailroadTrackConnectionComponent_quoted_list_ajv_macro(
+				coereced,
+			);
 		}
+
+		const coerced = schema as TypedString_type<
+			Exclude<Mode, 'FGRailroadTrackConnectionComponent_quoted_list'>
+		>['typed_string'];
+
+		return TypedString__update3.ajv_macro(
+			mode,
+			coerced,
+			options,
+		);
 	}
 
 	static generate_schema_definition(): Readonly<TypedString_schema_OneOf> {

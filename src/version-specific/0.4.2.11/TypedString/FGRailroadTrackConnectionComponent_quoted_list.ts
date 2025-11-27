@@ -195,3 +195,17 @@ export async function FGRailroadTrackConnectionComponent_quoted_list_generate_ty
 
 	return sanity_check;
 }
+
+export function FGRailroadTrackConnectionComponent_quoted_list_ajv_macro(
+	schema: FGRailroadTrackConnectionComponent_quoted_list_type,
+) {
+	const regex = FGRailroadTrackConnectionComponent
+		.regex_from_value(
+			schema.items
+				.DocsDotJson_FGRailroadTrackConnectionComponent_quoted,
+		);
+
+	return Object.freeze({
+		pattern: `^\\(${regex}(?:,${regex})*\\)$`,
+	});
+}

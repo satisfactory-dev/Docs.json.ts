@@ -72,3 +72,9 @@ export function Empty_generate_typescript_type(): Empty_SchemaTo {
 		factory.createNull(),
 	);
 }
+
+export function Empty_ajv_macro() {
+	return Object.freeze({
+		const: '',
+	});
+}

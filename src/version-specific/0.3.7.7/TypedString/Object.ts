@@ -183,3 +183,34 @@ export function Object_generate_typescript_type(
 		schema_parser,
 	});
 }
+
+export function Object_ajv_macro(
+	schema: Object_type,
+) {
+	const regex = `${
+		Object.keys(schema.properties)
+			.map((property) => `(?:,?${
+				RegExp.escape(property)
+			}=(?:${
+				`\\((?:,?[^=]+=(?:\\([^)]+\\)|\\d+))+\\)`
+			}|${
+				`\\([^=]+=\\([^)]+\\)\\)`
+			}|${
+				`\\([^)]+\\)`
+			}|${
+				`[^=]+`
+			}))${
+				(
+					(schema.required || ([] as string[]))
+						.includes(property)
+				)
+					? ''
+					: '?'
+			}`)
+			.join('')
+	}`;
+
+	return Object.freeze({
+		pattern: `^\\(${regex}(?:,${regex})*\\)$`,
+	});
+}
