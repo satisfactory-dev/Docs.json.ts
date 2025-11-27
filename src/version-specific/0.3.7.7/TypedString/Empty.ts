@@ -4,7 +4,12 @@ import type {
 } from 'ajv/dist/2020.js';
 
 import type {
+	NullLiteral,
+} from 'typescript';
+
+import type {
 	Identifier,
+	LiteralTypeNode,
 } from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
 import {
 	factory,
@@ -21,6 +26,8 @@ export type Empty_properties = {
 };
 
 export type Empty_DataTo = Identifier<'null'>;
+
+export type Empty_SchemaTo = LiteralTypeNode<NullLiteral>;
 
 export type Empty_TypeGenerator = undefined;
 
@@ -58,4 +65,10 @@ export function Empty_compile_vaildator(
 
 export function Empty_generate_typescript_data(): Empty_DataTo {
 	return factory.createIdentifier('null');
+}
+
+export function Empty_generate_typescript_type(): Empty_SchemaTo {
+	return factory.createLiteralTypeNode(
+		factory.createNull(),
+	);
 }

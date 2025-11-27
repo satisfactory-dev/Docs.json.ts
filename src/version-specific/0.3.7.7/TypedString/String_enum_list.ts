@@ -9,10 +9,15 @@ import type {
 
 import type {
 	ArrayLiteralExpression,
+	LiteralTypeNode,
+	RestedTupleTypeNode,
 	StringLiteral,
+	TupleTypeNode,
+	UnionTypeNode,
 } from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
 import {
 	factory,
+	StringTupleToLiteralTypeNodeTuple,
 } from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
 
 export type String_enum_list_type = {
@@ -73,6 +78,18 @@ export type String_enum_list_DataTo = ArrayLiteralExpression<
 	[StringLiteral, ...StringLiteral[]],
 	true
 >;
+
+export type String_enum_list_SchemaTo = (
+	| RestedTupleTypeNode<UnionTypeNode<[
+		LiteralTypeNode<StringLiteral>,
+		LiteralTypeNode<StringLiteral>,
+		...LiteralTypeNode<StringLiteral>[],
+	]>>
+	| TupleTypeNode<
+		LiteralTypeNode<StringLiteral>,
+		[LiteralTypeNode<StringLiteral>]
+	>
+);
 
 export type String_enum_list_TypeGenerator = undefined;
 
@@ -154,6 +171,88 @@ export function String_enum_list_generate_typescript_data(
 			.filter((maybe) => undefined !== maybe)
 			.map((value) => factory.createStringLiteral(value)),
 	);
+
+	return sanity_check;
+}
+
+export function String_enum_list_generate_typescript_type(
+	schema: String_enum_list_type,
+): String_enum_list_SchemaTo {
+	function enum_generator(
+		value: [string, string, ...string[]],
+	): UnionTypeNode<[
+		LiteralTypeNode<StringLiteral>,
+		LiteralTypeNode<StringLiteral>,
+		...LiteralTypeNode<StringLiteral>[],
+	]>;
+	function enum_generator(
+		value: [string],
+	): LiteralTypeNode<StringLiteral>;
+	function enum_generator(
+		value: [string, ...string[]],
+	): (
+		| UnionTypeNode<[
+			LiteralTypeNode<StringLiteral>,
+			LiteralTypeNode<StringLiteral>,
+			...LiteralTypeNode<StringLiteral>[],
+		]>
+		| LiteralTypeNode<StringLiteral>
+	) {
+		if (1 === value.length) {
+			return factory.createLiteralTypeNode(
+				factory.createStringLiteral(value[0]),
+			);
+		}
+
+		return factory.createUnionTypeNode(
+			StringTupleToLiteralTypeNodeTuple(
+				value as [string, string, ...string[]],
+			),
+		);
+	}
+
+	if (schema.items.enum.length > 1) {
+		const coerced_enum = (
+			schema.items.enum
+		) as [
+			string,
+			string,
+			...string[],
+		];
+
+		const a = enum_generator(coerced_enum);
+		const b = factory.createRestTypeNode(
+			factory.createArrayTypeNode(
+				enum_generator(coerced_enum),
+			),
+		);
+
+		const sanity_check: RestedTupleTypeNode<
+			UnionTypeNode<[
+				LiteralTypeNode<StringLiteral>,
+				LiteralTypeNode<StringLiteral>,
+				...LiteralTypeNode<StringLiteral>[],
+			]>
+		> = factory.createTupleTypeNode([
+			a,
+			b,
+		]);
+
+		return sanity_check;
+	}
+
+	const coerced_enum = (
+		schema.items.enum
+	) as [
+		string,
+	];
+
+	const sanity_check: TupleTypeNode<
+		LiteralTypeNode<StringLiteral>,
+		[LiteralTypeNode<StringLiteral>]
+	> = factory.createTupleTypeNode([
+		enum_generator(coerced_enum),
+	]);
 
 	return sanity_check;
 }

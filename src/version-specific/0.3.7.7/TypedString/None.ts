@@ -5,6 +5,7 @@ import type {
 
 import type {
 	ArrayLiteralExpression,
+	EmptyTupleTypeNode,
 } from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
 import {
 	factory,
@@ -21,6 +22,8 @@ export type None_properties = {
 };
 
 export type None_DataTo = ArrayLiteralExpression<never, never[], false>;
+
+export type None_SchemaTo = EmptyTupleTypeNode;
 
 export type None_TypeGenerator = undefined;
 
@@ -56,4 +59,8 @@ export function None_compile_validator(ajv: Ajv): ValidateFunction<None_type> {
 
 export function None_generate_typescript_data(): None_DataTo {
 	return factory.createArrayLiteralExpression([], false);
+}
+
+export function None_generate_typescript_type(): None_SchemaTo {
+	return factory.createTupleTypeNode([]);
 }

@@ -4,19 +4,10 @@ import type {
 } from 'ajv/dist/2020.js';
 
 import type {
-	NullLiteral,
-	TemplateLiteralTypeNode,
-} from 'typescript';
-
-import type {
 	array_options,
 	object_schema,
-	object_type_base,
-	object_TypeLiteralNode_possibly_extended,
-	ObjectOfSchemas,
 	SchemaDefinitionDefinition,
 	SchemalessTypeOptions,
-	SchemaObject,
 	SchemaParser,
 	TypeDefinitionSchema,
 } from '@signpostmarv/json-schema-typescript-codegen';
@@ -32,24 +23,7 @@ import {
 } from '@signpostmarv/json-schema-typescript-codegen/ajv';
 
 import type {
-	EmptyTupleTypeNode,
-	LiteralTypeNode,
-	RestedTupleTypeNode,
-	StringLiteral,
-	TupleTypeNode,
-	UnionTypeNode,
-} from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
-import {
-	factory,
-	StringTupleToLiteralTypeNodeTuple,
-} from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
-
-import type {
-} from '@signpostmarv/json-schema-typescript-codegen/javascript-overrides';
-
-import type {
 	BlueprintGeneratedClass_quoted_schema,
-	BlueprintGeneratedClass_quoted_type,
 } from './BlueprintGeneratedClass.ts';
 import {
 	BlueprintGeneratedClass_quoted,
@@ -57,7 +31,6 @@ import {
 
 import type {
 	FGTrainPlatformConnection_quoted_schema,
-	FGTrainPlatformConnection_quoted_type,
 } from './FGTrainPlatformConnection.ts';
 import {
 	FGTrainPlatformConnection,
@@ -66,78 +39,92 @@ import {
 import type {
 	Empty_DataTo,
 	Empty_properties,
+	Empty_SchemaTo,
 	Empty_type,
 	Empty_TypeGenerator,
 } from './TypedString/Empty.ts';
 import {
 	Empty_compile_vaildator,
 	Empty_generate_typescript_data,
+	Empty_generate_typescript_type,
 } from './TypedString/Empty.ts';
 
 import type {
 	None_DataTo,
 	None_properties,
+	None_SchemaTo,
 	None_type,
 	None_TypeGenerator,
 } from './TypedString/None.ts';
 import {
 	None_compile_validator,
 	None_generate_typescript_data,
+	None_generate_typescript_type,
 } from './TypedString/None.ts';
 
 import type {
 	Object_DataTo,
 	Object_properties,
+	Object_SchemaTo,
 	Object_type,
 	Object_TypeGenerator,
 } from './TypedString/Object.ts';
 import {
 	Object_compile_validator,
 	Object_generate_typescript_data,
+	Object_generate_typescript_type,
 } from './TypedString/Object.ts';
 
 import type {
 	Object_list_DataTo,
 	Object_list_properties,
+	Object_list_SchemaTo,
 	Object_list_type,
 	Object_list_TypeGenerator,
 } from './TypedString/Object_list.ts';
 import {
 	Object_list_compile_validator,
 	Object_list_generate_typescript_data,
+	Object_list_generate_typescript_type,
 } from './TypedString/Object_list.ts';
 
 import type {
 	String_enum_list_DataTo,
 	String_enum_list_properties,
+	String_enum_list_SchemaTo,
 	String_enum_list_type,
 	String_enum_list_TypeGenerator,
 } from './TypedString/String_enum_list.ts';
 import {
 	String_enum_list_compile_validator,
 	String_enum_list_generate_typescript_data,
+	String_enum_list_generate_typescript_type,
 } from './TypedString/String_enum_list.ts';
 
 import type {
 	BlueprintGeneratedClass_quoted_list_DataTo,
 	BlueprintGeneratedClass_quoted_list_properties,
+	BlueprintGeneratedClass_quoted_list_SchemaTo,
 	BlueprintGeneratedClass_quoted_list_type,
 	BlueprintGeneratedClass_quoted_list_TypeGenerator,
 } from './TypedString/BlueprintGeneratedClass_quoted_list.ts';
 import {
 	BlueprintGeneratedClass_quoted_list_compile_validator,
 	BlueprintGeneratedClass_quoted_list_generate_typescript_data,
+	BlueprintGeneratedClass_quoted_list_generate_typescript_type,
 } from './TypedString/BlueprintGeneratedClass_quoted_list.ts';
 
 import type {
 	FGTrainPlatformConnection_quoted_list_DataTo,
 	FGTrainPlatformConnection_quoted_list_properties,
+	FGTrainPlatformConnection_quoted_list_SchemaTo,
 	FGTrainPlatformConnection_quoted_list_type,
 	FGTrainPlatformConnection_quoted_list_TypeGenerator,
 } from './TypedString/FGTrainPlatformConnection_quoted_list.ts';
 import {
 	FGTrainPlatformConnection_quoted_list_compile_validator,
 	FGTrainPlatformConnection_quoted_list_generate_typescript_data,
+	FGTrainPlatformConnection_quoted_list_generate_typescript_type,
 } from './TypedString/FGTrainPlatformConnection_quoted_list.ts';
 
 export type TypedString_mode = (
@@ -240,31 +227,17 @@ export type TypedString_schema_OneOf = TypeDefinitionSchema & {
 };
 
 export type TypedString_SchemaTo__by_mode = {
-	Empty: LiteralTypeNode<NullLiteral>,
-	None: EmptyTupleTypeNode,
-	Object: object_TypeLiteralNode_possibly_extended<
-		'properties'
-	>,
-	Object_list: RestedTupleTypeNode<object_TypeLiteralNode_possibly_extended<
-		'properties'
-	>>,
-	String_enum_list: (
-		| RestedTupleTypeNode<UnionTypeNode<[
-			LiteralTypeNode<StringLiteral>,
-			LiteralTypeNode<StringLiteral>,
-			...LiteralTypeNode<StringLiteral>[],
-		]>>
-		| TupleTypeNode<
-			LiteralTypeNode<StringLiteral>,
-			[LiteralTypeNode<StringLiteral>]
-		>
+	Empty: Empty_SchemaTo,
+	None: None_SchemaTo,
+	Object: Object_SchemaTo,
+	Object_list: Object_list_SchemaTo,
+	String_enum_list: String_enum_list_SchemaTo,
+	BlueprintGeneratedClass_quoted_list: (
+		BlueprintGeneratedClass_quoted_list_SchemaTo
 	),
-	BlueprintGeneratedClass_quoted_list: RestedTupleTypeNode<
-		TemplateLiteralTypeNode
-	>,
-	FGTrainPlatformConnection_quoted_list: RestedTupleTypeNode<
-		TemplateLiteralTypeNode
-	>,
+	FGTrainPlatformConnection_quoted_list: (
+		FGTrainPlatformConnection_quoted_list_SchemaTo
+	),
 };
 
 type TypedString_SchemaTo<
@@ -302,10 +275,6 @@ export type Type_Generator__by_mode = {
 		FGTrainPlatformConnection_quoted_list_TypeGenerator
 	),
 };
-
-type Type_Generator<
-	Mode extends TypedString_mode,
-> = Type_Generator__by_mode[Mode];
 
 export function compile_validators(ajv: Ajv): {
 	[key in TypedString_mode]: ValidateFunction<
@@ -435,6 +404,108 @@ function generate_typescript_data<
 	);
 }
 
+export function generate_typescript_type__by_mode<
+	Mode extends TypedString_mode,
+>(
+	schema: TypedString_type<Mode>,
+	schema_parser: SchemaParser,
+	mode: Mode,
+): Promise<
+	TypedString_SchemaTo<Mode>
+>|undefined {
+	let result: Promise<
+		TypedString_SchemaTo<Mode>
+	>;
+
+	if ('Empty' === mode) {
+		result = Promise.resolve(
+			Empty_generate_typescript_type(),
+		) as typeof result;
+	} else if ('None' === mode) {
+		result = Promise.resolve(
+			None_generate_typescript_type(),
+		) as typeof result;
+	} else if ('Object' === mode) {
+		const coerced_schema: (
+			Object_type
+		) = schema.typed_string as Object_type;
+
+		result = Object_generate_typescript_type(
+			coerced_schema,
+			schema_parser,
+		) as typeof result;
+	} else if ('Object_list' === mode) {
+		const coerced_schema: TypedString_type<
+			'Object_list'
+		> = schema as TypedString_type<
+			'Object_list'
+		>;
+
+		result = Object_list_generate_typescript_type(
+			coerced_schema.typed_string,
+			schema_parser,
+		) as typeof result;
+	} else if ('String_enum_list' === mode) {
+		const coerced_schema: TypedString_type<
+			'String_enum_list'
+		> = schema as TypedString_type<
+			'String_enum_list'
+		>;
+
+		result = Promise.resolve(String_enum_list_generate_typescript_type(
+			coerced_schema.typed_string,
+		)) as typeof result;
+	} else if ('BlueprintGeneratedClass_quoted_list' === mode) {
+		const coerced_schema: TypedString_type<
+			'BlueprintGeneratedClass_quoted_list'
+		> = schema as TypedString_type<
+			'BlueprintGeneratedClass_quoted_list'
+		>;
+
+		result = BlueprintGeneratedClass_quoted_list_generate_typescript_type(
+			coerced_schema.typed_string,
+			schema_parser,
+		) as typeof result;
+	} else if ('FGTrainPlatformConnection_quoted_list' === mode) {
+		const coerced_schema: TypedString_type<
+			'FGTrainPlatformConnection_quoted_list'
+		> = schema as TypedString_type<
+			'FGTrainPlatformConnection_quoted_list'
+		>;
+
+		// eslint-disable-next-line @stylistic/max-len
+		result = FGTrainPlatformConnection_quoted_list_generate_typescript_type(
+			coerced_schema.typed_string,
+			schema_parser,
+		) as typeof result;
+	} else {
+		return undefined;
+	}
+
+	return result;
+}
+
+function generate_typescript_type<
+	Mode extends TypedString_mode,
+>(
+	schema: TypedString_type<Mode>,
+	schema_parser: SchemaParser,
+	mode_by_validator: TypedString_matcher<TypedString_mode>[],
+): Promise<
+	TypedString_SchemaTo<Mode>
+>|undefined {
+	const mode = TypedString.mode_from_schema(
+		schema.typed_string,
+		mode_by_validator,
+	);
+
+	return generate_typescript_type__by_mode(
+		schema,
+		schema_parser,
+		mode,
+	);
+}
+
 export class TypedString<
 	Mode extends TypedString_mode,
 > extends
@@ -510,309 +581,20 @@ export class TypedString<
 		return result;
 	}
 
-	async generate_typescript_type({
+	generate_typescript_type({
 		schema,
 		schema_parser,
 	}: {
 		schema: TypedString_type<Mode>,
 		schema_parser: SchemaParser,
 	}): Promise<TypedString_SchemaTo<Mode>> {
-		let result: TypedString_SchemaTo<Mode>;
-
-		const mode = TypedString.mode_from_schema(
-			schema.typed_string,
+		const result = generate_typescript_type(
+			schema,
+			schema_parser,
 			this.#mode_by_validator,
 		);
 
-		if ('Empty' === mode) {
-			const sanity_check: TypedString_SchemaTo<
-				'Empty'
-			> = factory.createLiteralTypeNode(
-				factory.createNull(),
-			);
-
-			result = sanity_check as typeof result;
-		} else if ('None' === mode) {
-			const sanity_check: TypedString_SchemaTo<
-				'None'
-			> = factory.createTupleTypeNode([]);
-
-			result = sanity_check as typeof result;
-		} else if ('Object' === mode) {
-			const instance = schema_parser.types
-				.find((maybe): maybe is ObjectUnspecified<
-					{[key: string]: unknown},
-					'properties'
-				> => (
-					maybe instanceof ObjectUnspecified
-					&& 'properties' === maybe.properties_mode
-				));
-
-			if (undefined === instance) {
-				throw new TypeError(`schema_parser not loaded with ${
-					ObjectUnspecified.constructor.name
-				}<{[key: string]: unknown}, 'properties'>`);
-			}
-
-			const type_generator: Type_Generator<
-				'Object'
-			> = (
-				schema: object_type_base<
-					'properties',
-					SchemaObject,
-					[string, ...string[]],
-					ObjectOfSchemas,
-					ObjectOfSchemas
-				>,
-				schema_parser: SchemaParser,
-			) => {
-				return instance.generate_typescript_type({
-					schema,
-					schema_parser,
-				});
-			};
-
-			const coerced_schema: TypedString_type<
-				'Object'
-			> = schema as TypedString_type<
-				'Object'
-			>;
-
-			const sanity_check: TypedString_SchemaTo<
-				'Object'
-			> = await type_generator(
-				coerced_schema.typed_string,
-				schema_parser,
-			);
-
-			result = sanity_check as typeof result;
-		} else if ('Object_list' === mode) {
-			const instance = schema_parser.types
-				.find((maybe): maybe is ObjectUnspecified<
-					{[key: string]: unknown},
-					'properties'
-				> => (
-					maybe instanceof ObjectUnspecified
-					&& 'properties' === maybe.properties_mode
-				));
-
-			if (undefined === instance) {
-				throw new TypeError(`schema_parser not loaded with ${
-					ObjectUnspecified.constructor.name
-				}<{[key: string]: unknown}, 'properties'>`);
-			}
-
-			const type_generator: Type_Generator<
-				'Object_list'
-			> = (
-				schema: object_type_base<
-					'properties',
-					SchemaObject,
-					[string, ...string[]],
-					ObjectOfSchemas,
-					ObjectOfSchemas
-				>,
-				schema_parser: SchemaParser,
-			) => {
-				return instance.generate_typescript_type({
-					schema,
-					schema_parser,
-				});
-			};
-
-			const coerced_schema: TypedString_type<
-				'Object_list'
-			> = schema as TypedString_type<
-				'Object_list'
-			>;
-
-			const sanity_check: TypedString_SchemaTo<
-				'Object_list'
-			> = factory.createTupleTypeNode([
-				await type_generator(
-					coerced_schema.typed_string.items,
-					schema_parser,
-				),
-				factory.createRestTypeNode(
-					factory.createArrayTypeNode(
-						await type_generator(
-							coerced_schema.typed_string.items,
-							schema_parser,
-						),
-					),
-				),
-			]);
-
-			result = sanity_check as typeof result;
-		} else if ('String_enum_list' === mode) {
-			const coerced_schema: TypedString_type<
-				'String_enum_list'
-			> = schema as TypedString_type<
-				'String_enum_list'
-			>;
-
-			function enum_generator(
-				value: [string, string, ...string[]],
-			): UnionTypeNode<[
-				LiteralTypeNode<StringLiteral>,
-				LiteralTypeNode<StringLiteral>,
-				...LiteralTypeNode<StringLiteral>[],
-			]>;
-			function enum_generator(
-				value: [string],
-			): LiteralTypeNode<StringLiteral>;
-			function enum_generator(
-				value: [string, ...string[]],
-			): (
-				| UnionTypeNode<[
-					LiteralTypeNode<StringLiteral>,
-					LiteralTypeNode<StringLiteral>,
-					...LiteralTypeNode<StringLiteral>[],
-				]>
-				| LiteralTypeNode<StringLiteral>
-			) {
-				if (1 === value.length) {
-					return factory.createLiteralTypeNode(
-						factory.createStringLiteral(value[0]),
-					);
-				}
-
-				return factory.createUnionTypeNode(
-					StringTupleToLiteralTypeNodeTuple(
-						value as [string, string, ...string[]],
-					),
-				);
-			}
-
-			if (coerced_schema.typed_string.items.enum.length > 1) {
-				const coerced_enum = (
-					coerced_schema.typed_string.items.enum
-				) as [
-					string,
-					string,
-					...string[],
-				];
-
-				const a = enum_generator(coerced_enum);
-				const b = factory.createRestTypeNode(
-					factory.createArrayTypeNode(
-						enum_generator(coerced_enum),
-					),
-				);
-
-				const sanity_check: RestedTupleTypeNode<
-					UnionTypeNode<[
-						LiteralTypeNode<StringLiteral>,
-						LiteralTypeNode<StringLiteral>,
-						...LiteralTypeNode<StringLiteral>[],
-					]>
-				> = factory.createTupleTypeNode([
-					a,
-					b,
-				]);
-
-				result = sanity_check as typeof result;
-			} else {
-				const coerced_enum = (
-					coerced_schema.typed_string.items.enum
-				) as [
-					string,
-				];
-
-				const sanity_check: TupleTypeNode<
-					LiteralTypeNode<StringLiteral>,
-					[LiteralTypeNode<StringLiteral>]
-				> = factory.createTupleTypeNode([
-					enum_generator(coerced_enum),
-				]);
-
-				result = sanity_check as typeof result;
-			}
-		} else if ('BlueprintGeneratedClass_quoted_list' === mode) {
-			const instance = schema_parser.types
-				.find((
-					maybe,
-				) => maybe instanceof BlueprintGeneratedClass_quoted);
-
-			if (undefined === instance) {
-				throw new TypeError(`schema_parser not loaded with ${
-					BlueprintGeneratedClass_quoted.constructor.name
-				}`);
-			}
-
-			const type_generator: Type_Generator<
-				'BlueprintGeneratedClass_quoted_list'
-			> = (
-				schema: BlueprintGeneratedClass_quoted_type,
-			) => {
-				return instance.generate_typescript_type({schema});
-			};
-
-			const coerced_schema: TypedString_type<
-				'BlueprintGeneratedClass_quoted_list'
-			> = schema as TypedString_type<
-				'BlueprintGeneratedClass_quoted_list'
-			>;
-
-			const sanity_check: TypedString_SchemaTo<
-				'BlueprintGeneratedClass_quoted_list'
-			> = factory.createTupleTypeNode([
-				await type_generator(
-					coerced_schema.typed_string.items,
-				),
-				factory.createRestTypeNode(
-					factory.createArrayTypeNode(
-						await type_generator(
-							coerced_schema.typed_string.items,
-						),
-					),
-				),
-			]);
-
-			result = sanity_check as typeof result;
-		} else if ('FGTrainPlatformConnection_quoted_list' === mode) {
-			const instance = schema_parser.types
-				.find((
-					maybe,
-				) => maybe instanceof FGTrainPlatformConnection);
-
-			if (undefined === instance) {
-				throw new TypeError(`schema_parser not loaded with ${
-					FGTrainPlatformConnection.constructor.name
-				}`);
-			}
-
-			const type_generator: Type_Generator<
-				'FGTrainPlatformConnection_quoted_list'
-			> = (
-				schema: FGTrainPlatformConnection_quoted_type,
-			) => {
-				return instance.generate_typescript_type({schema});
-			};
-
-			const coerced_schema: TypedString_type<
-				'FGTrainPlatformConnection_quoted_list'
-			> = schema as TypedString_type<
-				'FGTrainPlatformConnection_quoted_list'
-			>;
-
-			const sanity_check: TypedString_SchemaTo<
-				'FGTrainPlatformConnection_quoted_list'
-			> = factory.createTupleTypeNode([
-				await type_generator(
-					coerced_schema.typed_string.items,
-				),
-				factory.createRestTypeNode(
-					factory.createArrayTypeNode(
-						await type_generator(
-							coerced_schema.typed_string.items,
-						),
-					),
-				),
-			]);
-
-			result = sanity_check as typeof result;
-		} else {
+		if (undefined === result) {
 			throw new TypeError('not implemented!');
 		}
 

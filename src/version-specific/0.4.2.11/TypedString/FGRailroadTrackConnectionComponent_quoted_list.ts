@@ -153,3 +153,45 @@ export function FGRailroadTrackConnectionComponent_quoted_list_generate_typescri
 
 	return sanity_check;
 }
+
+// eslint-disable-next-line @stylistic/max-len
+export async function FGRailroadTrackConnectionComponent_quoted_list_generate_typescript_type(
+	schema: FGRailroadTrackConnectionComponent_quoted_list_type,
+	schema_parser: SchemaParser,
+): Promise<FGRailroadTrackConnectionComponent_quoted_list_SchemaTo> {
+	const instance = schema_parser.types
+		.find((
+			maybe,
+		) => maybe instanceof FGRailroadTrackConnectionComponent);
+
+	if (undefined === instance) {
+		throw new TypeError(`schema_parser not loaded with ${
+			FGRailroadTrackConnectionComponent.constructor.name
+		}`);
+	}
+
+	const type_generator: (
+		FGRailroadTrackConnectionComponent_quoted_list_Type_Generator
+	) = (
+		schema: FGRailroadTrackConnectionComponent_quoted_type,
+	) => {
+		return instance.generate_typescript_type({schema});
+	};
+
+	const sanity_check: (
+		FGRailroadTrackConnectionComponent_quoted_list_SchemaTo
+	) = factory.createTupleTypeNode([
+		await type_generator(
+			schema.items,
+		),
+		factory.createRestTypeNode(
+			factory.createArrayTypeNode(
+				await type_generator(
+					schema.items,
+				),
+			),
+		),
+	]);
+
+	return sanity_check;
+}

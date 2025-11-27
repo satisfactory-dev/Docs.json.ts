@@ -15,6 +15,7 @@ import type {
 
 import type {
 	ArrayLiteralExpression,
+	RestedTupleTypeNode,
 	StringLiteral,
 } from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
 import {
@@ -48,6 +49,12 @@ export type FGTrainPlatformConnection_quoted_list_DataTo = (
 		StringLiteral,
 		[StringLiteral, ...StringLiteral[]],
 		true
+	>
+);
+
+export type FGTrainPlatformConnection_quoted_list_SchemaTo = (
+	RestedTupleTypeNode<
+		TemplateLiteralTypeNode
 	>
 );
 
@@ -137,6 +144,48 @@ export function FGTrainPlatformConnection_quoted_list_generate_typescript_data(
 				),
 			),
 	);
+
+	return sanity_check;
+}
+
+// eslint-disable-next-line @stylistic/max-len
+export async function FGTrainPlatformConnection_quoted_list_generate_typescript_type(
+	schema: FGTrainPlatformConnection_quoted_list_type,
+	schema_parser: SchemaParser,
+): Promise<FGTrainPlatformConnection_quoted_list_SchemaTo> {
+	const instance = schema_parser.types
+		.find((
+			maybe,
+		) => maybe instanceof FGTrainPlatformConnection);
+
+	if (undefined === instance) {
+		throw new TypeError(`schema_parser not loaded with ${
+			FGTrainPlatformConnection.constructor.name
+		}`);
+	}
+
+	const type_generator: (
+		FGTrainPlatformConnection_quoted_list_TypeGenerator
+	) = (
+		schema: FGTrainPlatformConnection_quoted_type,
+	) => {
+		return instance.generate_typescript_type({schema});
+	};
+
+	const sanity_check: (
+		FGTrainPlatformConnection_quoted_list_SchemaTo
+	) = factory.createTupleTypeNode([
+		await type_generator(
+			schema.items,
+		),
+		factory.createRestTypeNode(
+			factory.createArrayTypeNode(
+				await type_generator(
+					schema.items,
+				),
+			),
+		),
+	]);
 
 	return sanity_check;
 }

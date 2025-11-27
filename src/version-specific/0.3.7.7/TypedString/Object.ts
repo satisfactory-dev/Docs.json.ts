@@ -16,6 +16,7 @@ import type {
 	SchemaParser,
 } from '@signpostmarv/json-schema-typescript-codegen';
 import {
+	ObjectUnspecified,
 	Type,
 } from '@signpostmarv/json-schema-typescript-codegen';
 
@@ -35,6 +36,10 @@ export type Object_type = object_type_base<
 export type Object_properties = object_schema<'properties'>;
 
 export type Object_DataTo = ObjectLiteralExpression;
+
+export type Object_SchemaTo = object_TypeLiteralNode_possibly_extended<
+	'properties'
+>;
 
 export type Object_TypeGenerator = (
 	schema: object_type_base<
@@ -152,4 +157,29 @@ export function Object_generate_typescript_data(
 		);
 
 	return sanity_check;
+}
+
+export function Object_generate_typescript_type(
+	schema: Object_type,
+	schema_parser: SchemaParser,
+): Promise<Object_SchemaTo> {
+	const instance = schema_parser.types
+		.find((maybe): maybe is ObjectUnspecified<
+			{[key: string]: unknown},
+			'properties'
+		> => (
+			maybe instanceof ObjectUnspecified
+			&& 'properties' === maybe.properties_mode
+		));
+
+	if (undefined === instance) {
+		throw new TypeError(`schema_parser not loaded with ${
+			ObjectUnspecified.constructor.name
+		}<{[key: string]: unknown}, 'properties'>`);
+	}
+
+	return instance.generate_typescript_type({
+		schema,
+		schema_parser,
+	});
 }

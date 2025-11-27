@@ -15,6 +15,7 @@ import type {
 
 import type {
 	ArrayLiteralExpression,
+	RestedTupleTypeNode,
 	StringLiteral,
 } from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
 import {
@@ -50,6 +51,10 @@ export type BlueprintGeneratedClass_quoted_list_DataTo = (
 		true
 	>
 );
+
+export type BlueprintGeneratedClass_quoted_list_SchemaTo = RestedTupleTypeNode<
+	TemplateLiteralTypeNode
+>;
 
 export type BlueprintGeneratedClass_quoted_list_TypeGenerator = (
 	schema: BlueprintGeneratedClass_quoted_type,
@@ -137,6 +142,46 @@ export function BlueprintGeneratedClass_quoted_list_generate_typescript_data(
 				),
 			),
 	);
+
+	return sanity_check;
+}
+
+// eslint-disable-next-line @stylistic/max-len
+export async function BlueprintGeneratedClass_quoted_list_generate_typescript_type(
+	schema: BlueprintGeneratedClass_quoted_list_type,
+	schema_parser: SchemaParser,
+): Promise<BlueprintGeneratedClass_quoted_list_SchemaTo> {
+	const instance = schema_parser.types
+		.find((
+			maybe,
+		) => maybe instanceof BlueprintGeneratedClass_quoted);
+
+	if (undefined === instance) {
+		throw new TypeError(`schema_parser not loaded with ${
+			BlueprintGeneratedClass_quoted.constructor.name
+		}`);
+	}
+
+	const type_generator: BlueprintGeneratedClass_quoted_list_TypeGenerator = (
+		schema: BlueprintGeneratedClass_quoted_type,
+	) => {
+		return instance.generate_typescript_type({schema});
+	};
+
+	const sanity_check: (
+		BlueprintGeneratedClass_quoted_list_SchemaTo
+	) = factory.createTupleTypeNode([
+		await type_generator(
+			schema.items,
+		),
+		factory.createRestTypeNode(
+			factory.createArrayTypeNode(
+				await type_generator(
+					schema.items,
+				),
+			),
+		),
+	]);
 
 	return sanity_check;
 }

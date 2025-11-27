@@ -17,12 +17,14 @@ import type {
 	SchemaParser,
 } from '@signpostmarv/json-schema-typescript-codegen';
 import {
+	ObjectUnspecified,
 	Type,
 } from '@signpostmarv/json-schema-typescript-codegen';
 
 import type {
 	ArrayLiteralExpression,
 	ObjectLiteralExpression,
+	RestedTupleTypeNode,
 } from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
 import {
 	factory,
@@ -31,6 +33,7 @@ import {
 import type {
 	Object_DataTo,
 	Object_properties,
+	Object_SchemaTo,
 	Object_type,
 } from './Object.ts';
 import {
@@ -58,6 +61,8 @@ export type Object_list_DataTo = ArrayLiteralExpression<
 	[Object_DataTo, ...Object_DataTo[]],
 	true
 >;
+
+export type Object_list_SchemaTo = RestedTupleTypeNode<Object_SchemaTo>;
 
 export type Object_list_TypeGenerator = (
 	schema: object_type_base<
@@ -243,6 +248,59 @@ export function Object_list_generate_typescript_data(
 
 	const sanity_check: Object_list_DataTo = factory
 		.createArrayLiteralExpression(array_values);
+
+	return sanity_check;
+}
+
+export async function Object_list_generate_typescript_type(
+	schema: Object_list_type,
+	schema_parser: SchemaParser,
+): Promise<Object_list_SchemaTo> {
+	const instance = schema_parser.types
+		.find((maybe): maybe is ObjectUnspecified<
+			{[key: string]: unknown},
+			'properties'
+		> => (
+			maybe instanceof ObjectUnspecified
+			&& 'properties' === maybe.properties_mode
+		));
+
+	if (undefined === instance) {
+		throw new TypeError(`schema_parser not loaded with ${
+			ObjectUnspecified.constructor.name
+		}<{[key: string]: unknown}, 'properties'>`);
+	}
+
+	const type_generator: Object_list_TypeGenerator = (
+		schema: object_type_base<
+			'properties',
+			SchemaObject,
+			[string, ...string[]],
+			ObjectOfSchemas,
+			ObjectOfSchemas
+		>,
+		schema_parser: SchemaParser,
+	) => {
+		return instance.generate_typescript_type({
+			schema,
+			schema_parser,
+		});
+	};
+
+	const sanity_check: Object_list_SchemaTo = factory.createTupleTypeNode([
+		await type_generator(
+			schema.items,
+			schema_parser,
+		),
+		factory.createRestTypeNode(
+			factory.createArrayTypeNode(
+				await type_generator(
+					schema.items,
+					schema_parser,
+				),
+			),
+		),
+	]);
 
 	return sanity_check;
 }
