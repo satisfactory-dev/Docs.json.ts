@@ -50,12 +50,12 @@ import {
 	FGRailroadTrackConnectionComponent_quoted_list_generate_typescript_type,
 } from './TypedString/FGRailroadTrackConnectionComponent_quoted_list.ts';
 
-type TypedString_mode = (
+export type TypedString_mode = (
 	| TypedString_mode__update3
 	| 'FGRailroadTrackConnectionComponent_quoted_list'
 );
 
-type TypedString_type__by_mode = (
+export type TypedString_type__by_mode = (
 	& TypedString_type__by_mode__update3
 	& {
 		FGRailroadTrackConnectionComponent_quoted_list: (
@@ -78,14 +78,14 @@ type TypedString_matcher<
 	ValidateFunction<TypedString_type<Mode>['typed_string']>,
 ];
 
-type TypedString_type_OneOf = {
+export type TypedString_type_OneOf = {
 	oneOf: [
 		...TypedString_type_OneOf__update3['oneOf'],
 		TypedString_type<'FGRailroadTrackConnectionComponent_quoted_list'>,
 	],
 };
 
-type TypedString_schema_properties = (
+export type TypedString_schema_properties = (
 	& TypedString_schema_properties__update3
 	& {
 		FGRailroadTrackConnectionComponent_quoted_list: (
@@ -117,14 +117,14 @@ type TypedString_schema<
 	}
 >;
 
-type TypedString_schema_OneOf = TypeDefinitionSchema & {
+export type TypedString_schema_OneOf = TypeDefinitionSchema & {
 	oneOf: [
 		...TypedString_schema_OneOf__update3['oneOf'],
 		TypedString_schema<'FGRailroadTrackConnectionComponent_quoted_list'>,
 	],
 };
 
-type TypedString_SchemaTo__by_mode = (
+export type TypedString_SchemaTo__by_mode = (
 	& TypedString_SchemaTo__by_mode__update3
 	& {
 		FGRailroadTrackConnectionComponent_quoted_list: (
@@ -137,7 +137,7 @@ type TypedString_SchemaTo<
 	Mode extends TypedString_mode,
 > = TypedString_SchemaTo__by_mode[Mode];
 
-type TypedString_DataTo__by_mode = (
+export type TypedString_DataTo__by_mode = (
 	& TypedString_DataTo__by_mode__update3
 	& {
 		FGRailroadTrackConnectionComponent_quoted_list: (
@@ -150,7 +150,7 @@ type TypedString_DataTo<
 	Mode extends TypedString_mode,
 > = TypedString_DataTo__by_mode[Mode];
 
-function compile_validators(ajv: Ajv): {
+export function compile_validators(ajv: Ajv): {
 	[key in TypedString_mode]: ValidateFunction<
 		TypedString_type<key>['typed_string']
 	>
@@ -165,7 +165,7 @@ function compile_validators(ajv: Ajv): {
 	};
 }
 
-export function generate_typescript_data<
+function generate_typescript_data<
 	Mode extends TypedString_mode,
 >(
 	data: string,
@@ -178,6 +178,22 @@ export function generate_typescript_data<
 		mode_by_validator,
 	);
 
+	return generate_typescript_data__by_mode(
+		data,
+		schema_parser,
+		schema,
+		mode,
+	);
+}
+
+export function generate_typescript_data__by_mode<
+	Mode extends TypedString_mode,
+>(
+	data: string,
+	schema_parser: SchemaParser,
+	schema: TypedString_type<Mode>,
+	mode: Mode,
+): TypedString_DataTo<Mode>|undefined {
 	if ('FGRailroadTrackConnectionComponent_quoted_list' === mode) {
 		const coerced = (
 			schema.typed_string as TypedString_type<
@@ -221,6 +237,22 @@ function generate_typescript_type<
 		mode_by_validator,
 	);
 
+	return generate_typescript_type__by_mode(
+		schema,
+		schema_parser,
+		mode,
+	);
+}
+
+export function generate_typescript_type__by_mode<
+	Mode extends TypedString_mode,
+>(
+	schema: TypedString_type<Mode>,
+	schema_parser: SchemaParser,
+	mode: Mode,
+): Promise<
+	TypedString_SchemaTo<Mode>
+>|undefined {
 	if ('FGRailroadTrackConnectionComponent_quoted_list' === mode) {
 		const coerced = (
 			schema.typed_string as TypedString_type<

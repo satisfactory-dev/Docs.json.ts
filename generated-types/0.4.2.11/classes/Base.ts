@@ -54,6 +54,7 @@ import type {
 	FGBuildableRailroadTrack as docs_json_ts_0_3_7_7_classes_base_FGBuildableRailroadTrack,
 	FGBuildableResourceExtractor_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_base,
 	FGBuildableResourceExtractor_miner_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_base,
+	FGBuildableResourceExtractor_miner_base_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_base_base,
 	FGBuildableResourceExtractor_miner_mk2_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_mk2_base,
 	FGBuildableResourceExtractor_miner_mk3_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_mk3_base,
 	FGBuildableResourceExtractor_oil_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_oil_base,
@@ -174,7 +175,9 @@ type FGBuildable_powered_base_base = FGBuildable_base & {
 	mCachedSkeletalMeshes: '',
 };
 
-type FGBuildable_powered_has_mAllowedResourceForms = FGBuildable_powered & {
+type FGBuildable_powered_has_mAllowedResourceForms = FGBuildable_powered_has_mAllowedResourceForms_base & FGBuildable_powered;
+
+type FGBuildable_powered_has_mAllowedResourceForms_base = FGBuildable_powered_base_base & {
 	mAllowedResourceForms: docs_json_ts_0_4_2_11_properties_mAllowedResourceForms,
 };
 
@@ -406,7 +409,9 @@ type FGBuildableResourceExtractor_base = docs_json_ts_0_3_7_7_classes_base_FGBui
 
 type FGBuildableResourceExtractor_miner_mk1 = FGBuildableResourceExtractor_miner_mk1_base & FGBuildableResourceExtractor_base;
 
-type FGBuildableResourceExtractor_miner_mk1_base = docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_base & {
+type FGBuildableResourceExtractor_miner_mk1_base = FGBuildableResourceExtractor_miner_mk1_base_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_base;
+
+type FGBuildableResourceExtractor_miner_mk1_base_base = docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_base_base & {
 	CanPlayAfterStartUpStopped: docs_json_ts_common_types_bool_string,
 	mDisplayName: 'Miner Mk.1',
 };
@@ -653,6 +658,7 @@ export type {
 	FGBuildable_powered_base,
 	FGBuildable_powered_base_base,
 	FGBuildable_powered_has_mAllowedResourceForms,
+	FGBuildable_powered_has_mAllowedResourceForms_base,
 	FGBuildable_powered_has_mAllowedResourceForms_with_resources,
 	FGBuildable_powered_storage,
 	FGBuildable_spline,
@@ -720,6 +726,7 @@ export type {
 	FGBuildableResourceExtractor_base,
 	FGBuildableResourceExtractor_miner_mk1,
 	FGBuildableResourceExtractor_miner_mk1_base,
+	FGBuildableResourceExtractor_miner_mk1_base_base,
 	FGBuildableResourceExtractor_miner_mk2,
 	FGBuildableResourceExtractor_miner_mk3,
 	FGBuildableResourceExtractor_oil,
