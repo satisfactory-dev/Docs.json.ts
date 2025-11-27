@@ -5,7 +5,6 @@ import type {
 
 import type {
 	NullLiteral,
-	PropertyAssignment,
 	TemplateLiteralTypeNode,
 } from 'typescript';
 
@@ -35,7 +34,6 @@ import {
 import type {
 	EmptyTupleTypeNode,
 	LiteralTypeNode,
-	ObjectLiteralExpression,
 	RestedTupleTypeNode,
 	StringLiteral,
 	TupleTypeNode,
@@ -106,6 +104,7 @@ import type {
 } from './TypedString/Object_list.ts';
 import {
 	Object_list_compile_validator,
+	Object_list_generate_typescript_data,
 } from './TypedString/Object_list.ts';
 
 import type {
@@ -172,7 +171,7 @@ export type TypedString_type<
 	typed_string: TypedString_type__by_mode[Mode],
 };
 
-type TypedString_matcher<
+export type TypedString_matcher<
 	Mode extends TypedString_mode,
 > = [
 	Mode,
@@ -332,6 +331,110 @@ export function compile_validators(ajv: Ajv): {
 	};
 }
 
+
+export function generate_typescript_data__by_mode<
+	Mode extends TypedString_mode,
+>(
+	data: string,
+	schema_parser: SchemaParser,
+	schema: TypedString_type<Mode>,
+	mode: TypedString_mode,
+): TypedString_DataTo<Mode>|undefined {
+	let result: TypedString_DataTo<Mode>;
+
+	if ('Empty' === mode) {
+		result = Empty_generate_typescript_data() as typeof result;
+	} else if ('None' === mode) {
+		result = None_generate_typescript_data() as typeof result;
+	} else if ('Object' === mode) {
+		const coerced_schema = schema.typed_string as TypedString_type<
+			'Object'
+		>['typed_string'];
+
+		result = Object_generate_typescript_data(
+			data,
+			schema_parser,
+			coerced_schema,
+			schema,
+		) as typeof result;
+	} else if ('Object_list' === mode) {
+		const coerced_schema = schema.typed_string as TypedString_type<
+			'Object_list'
+		>['typed_string'];
+
+		result = (
+			Object_list_generate_typescript_data(
+				data,
+				schema_parser,
+				coerced_schema,
+				schema,
+			)
+		) as typeof result;
+	} else if ('String_enum_list' === mode) {
+		const coerced_schema = schema.typed_string as TypedString_type<
+			'String_enum_list'
+		>['typed_string'];
+
+		result = String_enum_list_generate_typescript_data(
+			data,
+			coerced_schema,
+		) as typeof result;
+	} else if ('BlueprintGeneratedClass_quoted_list' === mode) {
+		const coerced = (
+			schema.typed_string as TypedString_type<
+				'BlueprintGeneratedClass_quoted_list'
+			>['typed_string']
+		).items;
+
+		result = (
+			BlueprintGeneratedClass_quoted_list_generate_typescript_data(
+				data,
+				schema_parser,
+				coerced,
+			) as typeof result
+		);
+	} else if ('FGTrainPlatformConnection_quoted_list' === mode) {
+		const coerced = (
+			schema.typed_string as TypedString_type<
+				'FGTrainPlatformConnection_quoted_list'
+			>['typed_string']
+		).items;
+
+		result = (
+			FGTrainPlatformConnection_quoted_list_generate_typescript_data(
+				data,
+				schema_parser,
+				coerced,
+			) as typeof result
+		);
+	} else {
+		return undefined;
+	}
+
+	return result;
+}
+
+function generate_typescript_data<
+	Mode extends TypedString_mode,
+>(
+	data: string,
+	schema_parser: SchemaParser,
+	schema: TypedString_type<Mode>,
+	mode_by_validator: TypedString_matcher<TypedString_mode>[],
+): TypedString_DataTo<Mode>|undefined {
+	const mode = TypedString.mode_from_schema(
+		schema.typed_string,
+		mode_by_validator,
+	);
+
+	return generate_typescript_data__by_mode(
+		data,
+		schema_parser,
+		schema,
+		mode,
+	);
+}
+
 export class TypedString<
 	Mode extends TypedString_mode,
 > extends
@@ -393,171 +496,14 @@ export class TypedString<
 		schema_parser: SchemaParser,
 		schema: TypedString_type<Mode>,
 	): TypedString_DataTo<Mode> {
-		let result: TypedString_DataTo<Mode>;
-
-		const mode = TypedString.mode_from_schema(
-			schema.typed_string,
+		const result = generate_typescript_data(
+			data,
+			schema_parser,
+			schema,
 			this.#mode_by_validator,
 		);
 
-		if ('Empty' === mode) {
-			result = Empty_generate_typescript_data() as typeof result;
-		} else if ('None' === mode) {
-			result = None_generate_typescript_data() as typeof result;
-		} else if ('Object' === mode) {
-			const coerced_schema = schema.typed_string as TypedString_type<
-				'Object'
-			>['typed_string'];
-
-			result = Object_generate_typescript_data(
-				data,
-				schema_parser,
-				coerced_schema,
-				schema,
-			) as typeof result;
-		} else if ('Object_list' === mode) {
-			const coerced_schema = schema.typed_string as TypedString_type<
-				'Object_list'
-			>['typed_string'];
-
-			const properties = Object.keys(
-				coerced_schema.items.properties,
-			);
-
-			const regex = new RegExp(`^\\(\\((?:,?${properties.map(
-				(property): [
-					string,
-					string,
-				] => [
-					property,
-					`(${
-						RegExp.escape(property)
-					})=([^=]+|[A-Z]+\\((?:[^)]+)\\)|\\([^)]+\\))`,
-				],
-			).map(([
-				property,
-				regex,
-			], i) => (
-				(
-					coerced_schema.items.required || ([] as string[])
-				).includes(property)
-					? `${i > 0 ? ',' : ''}${regex}`
-					: `(?:${i > 0 ? ',' : ''}${regex})?`
-			)).join('')})*\\)\\)$`);
-
-			const match = regex.exec(data);
-
-			if (null === match) {
-				throw new TypeError('Data does not match expected regex!');
-			}
-
-			const [, ...matches_unfiltered] = match;
-
-			const matches = matches_unfiltered;
-
-			const array_values: ObjectLiteralExpression[] = [];
-
-			for (let i = 0; i < matches.length; i += (properties.length * 2)) {
-				const property_assignments: PropertyAssignment[] = [];
-
-				for (let j = 0; j < properties.length; ++j) {
-					const property_name = matches[i + (j * 2)];
-
-					if (
-						undefined === property_name
-					) {
-						if (coerced_schema.items.required?.includes(
-							properties[j],
-						)) {
-							throw new TypeError(
-								'Required property not found!',
-							);
-						} else {
-							continue;
-						}
-					}
-
-					let property_value = matches[i + (j * 2) + 1];
-
-					if (/^"[^"]+"$/.test(property_value)) {
-						property_value = property_value.substring(
-							1,
-							property_value.length - 1,
-						);
-					}
-
-					const property_schema = coerced_schema.items.properties[
-						property_name
-					];
-
-					const property_assignment = factory
-						.createPropertyAssignment(
-							property_name,
-							schema_parser
-								.parse(
-									property_schema,
-								)
-								.generate_typescript_data(
-									property_value,
-									schema_parser,
-									TypedString.maybe_add_$defs(
-										schema,
-										property_schema,
-									),
-								),
-						);
-
-					property_assignments.push(property_assignment);
-				}
-
-				array_values.push(factory.createObjectLiteralExpression(
-					property_assignments,
-					true,
-				));
-			}
-
-			const sanity_check: TypedString_DataTo<'Object_list'> = factory
-				.createArrayLiteralExpression(array_values);
-
-			result = sanity_check as typeof result;
-		} else if ('String_enum_list' === mode) {
-			const coerced_schema = schema.typed_string as TypedString_type<
-				'String_enum_list'
-			>['typed_string'];
-
-			result = String_enum_list_generate_typescript_data(
-				data,
-				coerced_schema,
-			) as typeof result;
-		} else if ('BlueprintGeneratedClass_quoted_list' === mode) {
-			const coerced = (
-				schema.typed_string as TypedString_type<
-					'BlueprintGeneratedClass_quoted_list'
-				>['typed_string']
-			).items;
-
-			result = (
-				BlueprintGeneratedClass_quoted_list_generate_typescript_data(
-					data,
-					schema_parser,
-					coerced,
-				) as typeof result
-			);
-		} else if ('FGTrainPlatformConnection_quoted_list' === mode) {
-			const coerced = (
-				schema.typed_string as TypedString_type<
-					'FGTrainPlatformConnection_quoted_list'
-				>['typed_string']
-			).items;
-
-			result = (
-				FGTrainPlatformConnection_quoted_list_generate_typescript_data(
-					data,
-					schema_parser,
-					coerced,
-				) as typeof result
-			);
-		} else {
+		if (!result) {
 			throw new TypeError('Not implemented!');
 		}
 

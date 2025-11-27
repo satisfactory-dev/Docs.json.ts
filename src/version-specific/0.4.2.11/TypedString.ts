@@ -1,15 +1,10 @@
 import type {
+	Ajv2020 as Ajv,
 	ValidateFunction,
 } from 'ajv/dist/2020.js';
 
 import type {
-	TemplateLiteralTypeNode,
-} from 'typescript';
-
-import type {
 	array_options,
-	array_schema,
-	array_type,
 	object_schema,
 	object_type_base,
 	ObjectOfSchemas,
@@ -31,7 +26,6 @@ import {
 } from '@signpostmarv/json-schema-typescript-codegen/ajv';
 
 import type {
-	ArrayLiteralExpression,
 	LiteralTypeNode,
 	RestedTupleTypeNode,
 	StringLiteral,
@@ -80,38 +74,26 @@ import type {
 	TypedString_type__by_mode as TypedString_type__by_mode__update3,
 	TypedString_type_OneOf as TypedString_type_OneOf__update3,
 } from '../0.3.7.7/TypedString.ts';
+import {
+	// eslint-disable-next-line @stylistic/max-len
+	generate_typescript_data__by_mode as generate_typescript_data__by_mode__update3,
+} from '../0.3.7.7/TypedString.ts';
 
 import {
 	compile_validators as compile_validators__update3,
 } from '../0.3.7.7/TypedString.ts';
 
+import type {
+	FGRailroadTrackConnectionComponent_quoted_list_DataTo,
+	FGRailroadTrackConnectionComponent_quoted_list_properties,
+	FGRailroadTrackConnectionComponent_quoted_list_SchemaTo,
+	FGRailroadTrackConnectionComponent_quoted_list_type,
+	FGRailroadTrackConnectionComponent_quoted_list_Type_Generator,
+} from './TypedString/FGRailroadTrackConnectionComponent_quoted_list.ts';
 import {
-	Empty_generate_typescript_data,
-} from '../0.3.7.7/TypedString/Empty.ts';
-
-import {
-	None_generate_typescript_data,
-} from '../0.3.7.7/TypedString/None.ts';
-
-import {
-	Object_generate_typescript_data,
-} from '../0.3.7.7/TypedString/Object.ts';
-
-import {
-	BlueprintGeneratedClass_quoted_list_generate_typescript_data,
-} from '../0.3.7.7/TypedString/BlueprintGeneratedClass_quoted_list.ts';
-
-import {
-	FGTrainPlatformConnection_quoted_list_generate_typescript_data,
-} from '../0.3.7.7/TypedString/FGTrainPlatformConnection_quoted_list.ts';
-
-import {
-	String_enum_list_generate_typescript_data,
-} from '../0.3.7.7/TypedString/String_enum_list.ts';
-
-import {
-	Object_list_generate_typescript_data,
-} from '../0.3.7.7/TypedString/Object_list.ts';
+	FGRailroadTrackConnectionComponent_quoted_list_compile_validator,
+	FGRailroadTrackConnectionComponent_quoted_list_generate_typescript_data,
+} from './TypedString/FGRailroadTrackConnectionComponent_quoted_list.ts';
 
 type TypedString_mode = (
 	| TypedString_mode__update3
@@ -121,13 +103,9 @@ type TypedString_mode = (
 type TypedString_type__by_mode = (
 	& TypedString_type__by_mode__update3
 	& {
-		FGRailroadTrackConnectionComponent_quoted_list: array_type<
-			'items',
-			'specified',
-			'yes',
-			'with',
-			FGRailroadTrackConnectionComponent_quoted_type
-		>,
+		FGRailroadTrackConnectionComponent_quoted_list: (
+			FGRailroadTrackConnectionComponent_quoted_list_type
+		),
 	}
 );
 
@@ -155,13 +133,9 @@ type TypedString_type_OneOf = {
 type TypedString_schema_properties = (
 	& TypedString_schema_properties__update3
 	& {
-		FGRailroadTrackConnectionComponent_quoted_list: array_schema<
-			'items',
-			'specified',
-			'yes',
-			'optional',
-			FGRailroadTrackConnectionComponent_quoted_schema
-		>,
+		FGRailroadTrackConnectionComponent_quoted_list: (
+			FGRailroadTrackConnectionComponent_quoted_list_properties
+		),
 	}
 );
 
@@ -198,9 +172,9 @@ type TypedString_schema_OneOf = TypeDefinitionSchema & {
 type TypedString_SchemaTo__by_mode = (
 	& TypedString_SchemaTo__by_mode__update3
 	& {
-		FGRailroadTrackConnectionComponent_quoted_list: RestedTupleTypeNode<
-			TemplateLiteralTypeNode
-		>,
+		FGRailroadTrackConnectionComponent_quoted_list: (
+			FGRailroadTrackConnectionComponent_quoted_list_SchemaTo
+		),
 	}
 );
 
@@ -211,11 +185,9 @@ type TypedString_SchemaTo<
 type TypedString_DataTo__by_mode = (
 	& TypedString_DataTo__by_mode__update3
 	& {
-		FGRailroadTrackConnectionComponent_quoted_list: ArrayLiteralExpression<
-			StringLiteral,
-			[StringLiteral, ...StringLiteral[]],
-			true
-		>,
+		FGRailroadTrackConnectionComponent_quoted_list: (
+			FGRailroadTrackConnectionComponent_quoted_list_DataTo
+		),
 	}
 );
 
@@ -227,14 +199,71 @@ type Type_Generator__by_mode = (
 	& Type_Generator__by_mode__update3
 	& {
 		FGRailroadTrackConnectionComponent_quoted_list: (
-			schema: FGRailroadTrackConnectionComponent_quoted_type,
-		) => Promise<TemplateLiteralTypeNode>,
+			FGRailroadTrackConnectionComponent_quoted_list_Type_Generator
+		),
 	}
 );
 
 type Type_Generator<
 	Mode extends TypedString_mode,
 > = Type_Generator__by_mode[Mode];
+
+function compile_validators(ajv: Ajv): {
+	[key in TypedString_mode]: ValidateFunction<
+		TypedString_type<key>['typed_string']
+	>
+} {
+	return {
+		...compile_validators__update3(ajv),
+		FGRailroadTrackConnectionComponent_quoted_list: (
+			FGRailroadTrackConnectionComponent_quoted_list_compile_validator(
+				ajv,
+			)
+		),
+	};
+}
+
+export function generate_typescript_data<
+	Mode extends TypedString_mode,
+>(
+	data: string,
+	schema_parser: SchemaParser,
+	schema: TypedString_type<Mode>,
+	mode_by_validator: TypedString_matcher<TypedString_mode>[],
+): TypedString_DataTo<Mode>|undefined {
+	const mode = TypedString.mode_from_schema(
+		schema.typed_string,
+		mode_by_validator,
+	);
+
+	if ('FGRailroadTrackConnectionComponent_quoted_list' === mode) {
+		const coerced = (
+			schema.typed_string as TypedString_type<
+				'FGRailroadTrackConnectionComponent_quoted_list'
+			>['typed_string']
+		).items;
+
+		return (
+			// eslint-disable-next-line @stylistic/max-len
+			FGRailroadTrackConnectionComponent_quoted_list_generate_typescript_data(
+				data,
+				schema_parser,
+				coerced,
+			) as TypedString_DataTo<Mode>
+		);
+	}
+
+	const coerced = schema as TypedString_type<
+		Exclude<Mode, 'FGRailroadTrackConnectionComponent_quoted_list'>
+	>;
+
+	return generate_typescript_data__by_mode__update3(
+		data,
+		schema_parser,
+		coerced,
+		mode,
+	) as TypedString_DataTo<Mode>|undefined;
+}
 
 export class TypedString<
 	Mode extends TypedString_mode,
@@ -261,65 +290,7 @@ export class TypedString<
 			},
 		} = {},
 	) {
-		const mode_from_schema: {
-			[key in TypedString_mode]: ValidateFunction<
-				TypedString_type<key>['typed_string']
-			>
-		} = {
-			...compile_validators__update3(options.ajv),
-			// eslint-disable-next-line @stylistic/max-len
-			FGRailroadTrackConnectionComponent_quoted_list: options.ajv.compile<
-				TypedString_type<
-					'FGRailroadTrackConnectionComponent_quoted_list'
-				>['typed_string']
-			>(
-				{
-					type: 'object',
-					required: [
-						'type',
-						'minItems',
-						'items',
-					],
-					properties: {
-						type: {
-							type: 'string',
-							const: 'array',
-						},
-						minItems: {
-							type: 'integer',
-							minimum: 0,
-						},
-						items: {
-							type: 'object',
-							additionalProperties: false,
-							required: [
-								'type',
-								// eslint-disable-next-line @stylistic/max-len
-								'DocsDotJson_FGRailroadTrackConnectionComponent_quoted',
-							],
-							properties: {
-								type: {
-									type: 'string',
-									const: 'string',
-								},
-								// eslint-disable-next-line @stylistic/max-len
-								DocsDotJson_FGRailroadTrackConnectionComponent_quoted: {
-									oneOf: [
-										{
-											type: 'null',
-										},
-										{
-											type: 'string',
-											minLength: 1,
-										},
-									],
-								},
-							},
-						},
-					},
-				},
-			),
-		};
+		const mode_from_schema = compile_validators(options.ajv);
 
 		const entries = Object.entries(mode_from_schema);
 
@@ -355,111 +326,14 @@ export class TypedString<
 		schema_parser: SchemaParser,
 		schema: TypedString_type<Mode>,
 	): TypedString_DataTo<Mode> {
-		let result: TypedString_DataTo<Mode>;
-
-		const mode = TypedString.mode_from_schema(
-			schema.typed_string,
+		const result = generate_typescript_data(
+			data,
+			schema_parser,
+			schema,
 			this.#mode_by_validator,
 		);
 
-		if ('Empty' === mode) {
-			result = Empty_generate_typescript_data() as typeof result;
-		} else if ('None' === mode) {
-			result = None_generate_typescript_data() as typeof result;
-		} else if ('Object' === mode) {
-			const coerced_schema = schema.typed_string as TypedString_type<
-				'Object'
-			>['typed_string'];
-
-			result = Object_generate_typescript_data(
-				data,
-				schema_parser,
-				coerced_schema,
-				schema,
-			) as typeof result;
-		} else if ('Object_list' === mode) {
-			const coerced_schema = schema.typed_string as TypedString_type<
-				'Object_list'
-			>['typed_string'];
-
-			result = Object_list_generate_typescript_data(
-				data,
-				schema_parser,
-				coerced_schema,
-				schema,
-			) as typeof result;
-		} else if ('String_enum_list' === mode) {
-			const coerced_schema = schema.typed_string as TypedString_type<
-				'String_enum_list'
-			>['typed_string'];
-
-			result = String_enum_list_generate_typescript_data(
-				data,
-				coerced_schema,
-			) as typeof result;
-		} else if ('BlueprintGeneratedClass_quoted_list' === mode) {
-			const coerced = (
-				schema.typed_string as TypedString_type<
-					'BlueprintGeneratedClass_quoted_list'
-				>['typed_string']
-			).items;
-
-			result = (
-				BlueprintGeneratedClass_quoted_list_generate_typescript_data(
-					data,
-					schema_parser,
-					coerced,
-				) as typeof result
-			);
-		} else if ('FGTrainPlatformConnection_quoted_list' === mode) {
-			const coerced = (
-				schema.typed_string as TypedString_type<
-					'FGTrainPlatformConnection_quoted_list'
-				>['typed_string']
-			).items;
-
-			result = (
-				FGTrainPlatformConnection_quoted_list_generate_typescript_data(
-					data,
-					schema_parser,
-					coerced,
-				) as typeof result
-			);
-		} else if ('FGRailroadTrackConnectionComponent_quoted_list' === mode) {
-			const coerced = (
-				schema.typed_string as TypedString_type<
-					'FGRailroadTrackConnectionComponent_quoted_list'
-				>['typed_string']
-			).items;
-
-			const regex = FGRailroadTrackConnectionComponent.regex_from_value(
-				coerced.DocsDotJson_FGRailroadTrackConnectionComponent_quoted,
-			);
-
-			const pattern = new RegExp(`^\\(${regex}(?:,${regex})*\\)$`);
-
-			if (!pattern.test(data)) {
-				throw new TypeError('Data does not match expected pattern!');
-			}
-
-			const data_parts = data.substring(1, data.length - 1).split(',');
-
-			const sanity_check: TypedString_DataTo<
-				'FGRailroadTrackConnectionComponent_quoted_list'
-			> = factory.createArrayLiteralExpression(
-				data_parts
-					.map((value) => schema_parser
-						.parse_by_type(value)
-						.generate_typescript_data(
-							value,
-							schema_parser,
-							coerced,
-						),
-					),
-			);
-
-			result = sanity_check as typeof result;
-		} else {
+		if (!result) {
 			throw new TypeError('Not implemented!');
 		}
 
