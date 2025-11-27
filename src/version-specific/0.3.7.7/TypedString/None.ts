@@ -77,3 +77,10 @@ export function None_generate_schema_definition(): Readonly<None_properties> {
 		const: '(None)',
 	});
 }
+
+export function None_generate_type_definition(): Readonly<None_type> {
+	return Object.freeze({
+		type: 'string',
+		const: '(None)',
+	});
+}

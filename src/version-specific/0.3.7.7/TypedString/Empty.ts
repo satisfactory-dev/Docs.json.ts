@@ -86,3 +86,11 @@ export function Empty_generate_schema_definition(
 		const: '',
 	});
 }
+
+export function Empty_generate_type_definition(
+): Readonly<Empty_type> {
+	return Object.freeze({
+		type: 'string',
+		const: '',
+	});
+}

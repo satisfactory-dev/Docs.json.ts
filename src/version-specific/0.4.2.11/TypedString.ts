@@ -9,17 +9,10 @@ import type {
 	SchemaParser,
 	TypeDefinitionSchema,
 } from '@signpostmarv/json-schema-typescript-codegen';
-import {
-	PositiveIntegerGuard,
-} from '@signpostmarv/json-schema-typescript-codegen';
 
 import {
 	KeywordType,
 } from '@signpostmarv/json-schema-typescript-codegen/ajv';
-
-import {
-	FGRailroadTrackConnectionComponent,
-} from './FGRailroadTrackConnectionComponent.ts';
 
 import type {
 	TypedString_DataTo__by_mode as TypedString_DataTo__by_mode__update3,
@@ -52,6 +45,7 @@ import {
 	FGRailroadTrackConnectionComponent_quoted_list_ajv_macro,
 	FGRailroadTrackConnectionComponent_quoted_list_compile_validator,
 	FGRailroadTrackConnectionComponent_quoted_list_generate_schema_definition,
+	FGRailroadTrackConnectionComponent_quoted_list_generate_type_definition,
 	FGRailroadTrackConnectionComponent_quoted_list_generate_typescript_data,
 	FGRailroadTrackConnectionComponent_quoted_list_generate_typescript_type,
 } from './TypedString/FGRailroadTrackConnectionComponent_quoted_list.ts';
@@ -450,17 +444,9 @@ export class TypedString<
 		let typed_string: TypedString_type<Mode>['typed_string'];
 
 		if ('FGRailroadTrackConnectionComponent_quoted_list' === mode) {
-			const sanity_check: TypedString_type<
-				'FGRailroadTrackConnectionComponent_quoted_list'
-			>['typed_string'] = {
-				type: 'array',
-				minItems: PositiveIntegerGuard(1),
-				uniqueItems: true,
-				items: FGRailroadTrackConnectionComponent
-					.generate_type_definition(),
-			};
-
-			typed_string = sanity_check as typeof typed_string;
+			// eslint-disable-next-line @stylistic/max-len
+			typed_string = FGRailroadTrackConnectionComponent_quoted_list_generate_type_definition(
+			) as typeof typed_string;
 		} else {
 			throw new TypeError('Not Implemented!');
 		}

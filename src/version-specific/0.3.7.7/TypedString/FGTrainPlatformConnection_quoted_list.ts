@@ -15,6 +15,7 @@ import type {
 } from '@signpostmarv/json-schema-typescript-codegen';
 import {
 	ArrayType,
+	PositiveIntegerGuard,
 	PositiveIntegerOrZeroGuard,
 } from '@signpostmarv/json-schema-typescript-codegen';
 
@@ -235,4 +236,15 @@ export function FGTrainPlatformConnection_quoted_list_generate_schema_definition
 	> = ArrayType.generate_schema_definition(sanity_check_options);
 
 	return sanity_check;
+}
+
+export function FGTrainPlatformConnection_quoted_list_generate_type_definition(
+): Readonly<FGTrainPlatformConnection_quoted_list_type> {
+	return Object.freeze({
+		type: 'array',
+		minItems: PositiveIntegerGuard(1),
+		uniqueItems: true,
+		items: FGTrainPlatformConnection
+			.generate_type_definition(),
+	});
 }

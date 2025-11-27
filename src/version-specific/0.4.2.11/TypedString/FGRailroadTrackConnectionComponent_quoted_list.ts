@@ -15,6 +15,7 @@ import type {
 } from '@signpostmarv/json-schema-typescript-codegen';
 import {
 	ArrayType,
+	PositiveIntegerGuard,
 	PositiveIntegerOrZeroGuard,
 } from '@signpostmarv/json-schema-typescript-codegen';
 
@@ -243,4 +244,16 @@ export function FGRailroadTrackConnectionComponent_quoted_list_generate_schema_d
 	> = ArrayType.generate_schema_definition(sanity_check_options);
 
 	return sanity_check;
+}
+
+// eslint-disable-next-line @stylistic/max-len
+export function FGRailroadTrackConnectionComponent_quoted_list_generate_type_definition(
+): Readonly<FGRailroadTrackConnectionComponent_quoted_list_type> {
+	return Object.freeze({
+		type: 'array',
+		minItems: PositiveIntegerGuard(1),
+		uniqueItems: true,
+		items: FGRailroadTrackConnectionComponent
+			.generate_type_definition(),
+	});
 }

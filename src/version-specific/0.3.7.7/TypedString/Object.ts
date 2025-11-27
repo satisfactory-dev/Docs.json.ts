@@ -222,3 +222,12 @@ export function Object_generate_schema_definition(
 			properties_mode: 'properties',
 		});
 }
+
+export function Object_generate_type_definition(
+): Readonly<Object_type> {
+	return ObjectUnspecified
+		.generate_type_definition({
+			properties_mode: 'properties',
+			properties: {},
+		});
+}

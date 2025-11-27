@@ -6,6 +6,9 @@ import type {
 import type {
 	PositiveInteger,
 } from '@signpostmarv/json-schema-typescript-codegen';
+import {
+	PositiveIntegerGuard,
+} from '@signpostmarv/json-schema-typescript-codegen';
 
 import type {
 	ArrayLiteralExpression,
@@ -26,7 +29,7 @@ export type String_enum_list_type = {
 	uniqueItems: true,
 	items: {
 		type: 'string',
-		enum: [string, ...string[]],
+		enum: readonly [string, ...string[]],
 	},
 };
 
@@ -323,6 +326,19 @@ export function String_enum_list_generate_schema_definition(
 					},
 				},
 			},
+		},
+	} as const);
+}
+
+export function String_enum_list_generate_type_definition(
+): Readonly<String_enum_list_type> {
+	return Object.freeze({
+		type: 'array',
+		minItems: PositiveIntegerGuard(1),
+		uniqueItems: true,
+		items: {
+			type: 'string',
+			enum: [' '],
 		},
 	} as const);
 }

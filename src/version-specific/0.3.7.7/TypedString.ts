@@ -9,22 +9,10 @@ import type {
 	SchemaParser,
 	TypeDefinitionSchema,
 } from '@signpostmarv/json-schema-typescript-codegen';
-import {
-	ObjectUnspecified,
-	PositiveIntegerGuard,
-} from '@signpostmarv/json-schema-typescript-codegen';
 
 import {
 	KeywordType,
 } from '@signpostmarv/json-schema-typescript-codegen/ajv';
-
-import {
-	BlueprintGeneratedClass_quoted,
-} from './BlueprintGeneratedClass.ts';
-
-import {
-	FGTrainPlatformConnection,
-} from './FGTrainPlatformConnection.ts';
 
 import type {
 	Empty_DataTo,
@@ -37,6 +25,7 @@ import {
 	Empty_ajv_macro,
 	Empty_compile_vaildator,
 	Empty_generate_schema_definition,
+	Empty_generate_type_definition,
 	Empty_generate_typescript_data,
 	Empty_generate_typescript_type,
 } from './TypedString/Empty.ts';
@@ -52,6 +41,7 @@ import {
 	None_ajv_macro,
 	None_compile_validator,
 	None_generate_schema_definition,
+	None_generate_type_definition,
 	None_generate_typescript_data,
 	None_generate_typescript_type,
 } from './TypedString/None.ts';
@@ -67,6 +57,7 @@ import {
 	Object_ajv_macro,
 	Object_compile_validator,
 	Object_generate_schema_definition,
+	Object_generate_type_definition,
 	Object_generate_typescript_data,
 	Object_generate_typescript_type,
 } from './TypedString/Object.ts';
@@ -82,6 +73,7 @@ import {
 	Object_list_ajv_macro,
 	Object_list_compile_validator,
 	Object_list_generate_schema_definition,
+	Object_list_generate_type_definition,
 	Object_list_generate_typescript_data,
 	Object_list_generate_typescript_type,
 } from './TypedString/Object_list.ts';
@@ -97,6 +89,7 @@ import {
 	String_enum_list_ajv_macro,
 	String_enum_list_compile_validator,
 	String_enum_list_generate_schema_definition,
+	String_enum_list_generate_type_definition,
 	String_enum_list_generate_typescript_data,
 	String_enum_list_generate_typescript_type,
 } from './TypedString/String_enum_list.ts';
@@ -112,6 +105,7 @@ import {
 	BlueprintGeneratedClass_quoted_list_ajv_macro,
 	BlueprintGeneratedClass_quoted_list_compile_validator,
 	BlueprintGeneratedClass_quoted_list_generate_schema_definition,
+	BlueprintGeneratedClass_quoted_list_generate_type_definition,
 	BlueprintGeneratedClass_quoted_list_generate_typescript_data,
 	BlueprintGeneratedClass_quoted_list_generate_typescript_type,
 } from './TypedString/BlueprintGeneratedClass_quoted_list.ts';
@@ -127,6 +121,7 @@ import {
 	FGTrainPlatformConnection_quoted_list_ajv_macro,
 	FGTrainPlatformConnection_quoted_list_compile_validator,
 	FGTrainPlatformConnection_quoted_list_generate_schema_definition,
+	FGTrainPlatformConnection_quoted_list_generate_type_definition,
 	FGTrainPlatformConnection_quoted_list_generate_typescript_data,
 	FGTrainPlatformConnection_quoted_list_generate_typescript_type,
 } from './TypedString/FGTrainPlatformConnection_quoted_list.ts';
@@ -770,82 +765,28 @@ export class TypedString<
 		let typed_string: TypedString_type<Mode>['typed_string'];
 
 		if ('Empty' === mode) {
-			const sanity_check: TypedString_type<'Empty'>['typed_string'] = {
-				type: 'string',
-				const: '',
-			};
-
-			typed_string = sanity_check as typeof typed_string;
+			typed_string = Empty_generate_type_definition(
+			) as typeof typed_string;
 		} else if ('None' === mode) {
-			const sanity_check: TypedString_type<'None'>['typed_string'] = {
-				type: 'string',
-				const: '(None)',
-			};
-
-			typed_string = sanity_check as typeof typed_string;
+			typed_string = None_generate_type_definition(
+			) as typeof typed_string;
 		} else if ('Object' === mode) {
-			const sanity_check: TypedString_type<
-				'Object'
-			>['typed_string'] = ObjectUnspecified.generate_type_definition({
-				properties_mode: 'properties',
-				properties: {},
-			});
-
-			typed_string = sanity_check as typeof typed_string;
+			typed_string = Object_generate_type_definition(
+			) as typeof typed_string;
 		} else if ('Object_list' === mode) {
-			const sanity_check: TypedString_type<
-				'Object_list'
-			>['typed_string'] = {
-				type: 'array',
-				minItems: PositiveIntegerGuard(1),
-				uniqueItems: true,
-				items: ObjectUnspecified.generate_type_definition({
-					properties_mode: 'properties',
-					properties: {},
-				}),
-			};
-
-			typed_string = sanity_check as typeof typed_string;
+			typed_string = Object_list_generate_type_definition(
+			) as typeof typed_string;
 		} else if ('String_enum_list' === mode) {
-			const sanity_check: TypedString_type<
-				'String_enum_list'
-			>['typed_string'] = {
-				type: 'array',
-				minItems: PositiveIntegerGuard(1),
-				uniqueItems: true,
-				items: {
-					type: 'string',
-					enum: [' '],
-				},
-			};
-
-			typed_string = sanity_check as typeof typed_string;
+			typed_string = String_enum_list_generate_type_definition(
+			) as typeof typed_string;
 		} else if ('BlueprintGeneratedClass_quoted_list' === mode) {
-			const sanity_check: TypedString_type<
-				'BlueprintGeneratedClass_quoted_list'
-			>['typed_string'] = {
-				type: 'array',
-				minItems: PositiveIntegerGuard(1),
-				uniqueItems: true,
-				items: BlueprintGeneratedClass_quoted
-					.generate_type_definition({
-						mode: 'quoted',
-					}),
-			};
-
-			typed_string = sanity_check as typeof typed_string;
+			// eslint-disable-next-line @stylistic/max-len
+			typed_string = BlueprintGeneratedClass_quoted_list_generate_type_definition(
+			) as typeof typed_string;
 		} else if ('FGTrainPlatformConnection_quoted_list' === mode) {
-			const sanity_check: TypedString_type<
-				'FGTrainPlatformConnection_quoted_list'
-			>['typed_string'] = {
-				type: 'array',
-				minItems: PositiveIntegerGuard(1),
-				uniqueItems: true,
-				items: FGTrainPlatformConnection
-					.generate_type_definition(),
-			};
-
-			typed_string = sanity_check as typeof typed_string;
+			// eslint-disable-next-line @stylistic/max-len
+			typed_string = FGTrainPlatformConnection_quoted_list_generate_type_definition(
+			) as typeof typed_string;
 		} else {
 			throw new TypeError('Not Implemented!');
 		}

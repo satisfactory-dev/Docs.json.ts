@@ -21,6 +21,7 @@ import type {
 import {
 	ArrayType,
 	ObjectUnspecified,
+	PositiveIntegerGuard,
 	PositiveIntegerOrZeroGuard,
 	Type,
 } from '@signpostmarv/json-schema-typescript-codegen';
@@ -42,6 +43,7 @@ import type {
 } from './Object.ts';
 import {
 	Object_generate_schema_definition,
+	Object_generate_type_definition,
 	Object_type_schema,
 } from './Object.ts';
 
@@ -355,4 +357,14 @@ export function Object_list_generate_schema_definition(
 			sanity_check_options,
 		),
 	);
+}
+
+export function Object_list_generate_type_definition(
+): Readonly<Object_list_type> {
+	return Object.freeze({
+		type: 'array',
+		minItems: PositiveIntegerGuard(1),
+		uniqueItems: true,
+		items: Object_generate_type_definition(),
+	});
 }
