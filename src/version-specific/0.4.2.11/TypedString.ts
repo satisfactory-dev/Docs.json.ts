@@ -12,7 +12,6 @@ import type {
 } from '@signpostmarv/json-schema-typescript-codegen';
 import {
 	ArrayType,
-	ObjectUnspecified,
 	PositiveIntegerGuard,
 	PositiveIntegerOrZeroGuard,
 } from '@signpostmarv/json-schema-typescript-codegen';
@@ -20,14 +19,6 @@ import {
 import {
 	KeywordType,
 } from '@signpostmarv/json-schema-typescript-codegen/ajv';
-
-import {
-	BlueprintGeneratedClass_quoted,
-} from '../0.3.7.7/BlueprintGeneratedClass.ts';
-
-import {
-	FGTrainPlatformConnection,
-} from '../0.3.7.7/FGTrainPlatformConnection.ts';
 
 import type {
 	FGRailroadTrackConnectionComponent_quoted_schema,
@@ -472,17 +463,7 @@ export class TypedString<
 	static generate_type_definition(): Readonly<TypedString_type_OneOf> {
 		return Object.freeze({
 			oneOf: [
-				this.#generate_type_definition('Empty'),
-				this.#generate_type_definition('None'),
-				this.#generate_type_definition('Object'),
-				this.#generate_type_definition('Object_list'),
-				this.#generate_type_definition('String_enum_list'),
-				this.#generate_type_definition(
-					'BlueprintGeneratedClass_quoted_list',
-				),
-				this.#generate_type_definition(
-					'FGTrainPlatformConnection_quoted_list',
-				),
+				...TypedString__update3.generate_type_definition().oneOf,
 				this.#generate_type_definition(
 					'FGRailroadTrackConnectionComponent_quoted_list',
 				),
@@ -497,84 +478,7 @@ export class TypedString<
 	): Readonly<TypedString_type<Mode>> {
 		let typed_string: TypedString_type<Mode>['typed_string'];
 
-		if ('Empty' === mode) {
-			const sanity_check: TypedString_type<'Empty'>['typed_string'] = {
-				type: 'string',
-				const: '',
-			};
-
-			typed_string = sanity_check as typeof typed_string;
-		} else if ('None' === mode) {
-			const sanity_check: TypedString_type<'None'>['typed_string'] = {
-				type: 'string',
-				const: '(None)',
-			};
-
-			typed_string = sanity_check as typeof typed_string;
-		} else if ('Object' === mode) {
-			const sanity_check: TypedString_type<
-				'Object'
-			>['typed_string'] = ObjectUnspecified.generate_type_definition({
-				properties_mode: 'properties',
-				properties: {},
-			});
-
-			typed_string = sanity_check as typeof typed_string;
-		} else if ('Object_list' === mode) {
-			const sanity_check: TypedString_type<
-				'Object_list'
-			>['typed_string'] = {
-				type: 'array',
-				minItems: PositiveIntegerGuard(1),
-				uniqueItems: true,
-				items: ObjectUnspecified.generate_type_definition({
-					properties_mode: 'properties',
-					properties: {},
-				}),
-			};
-
-			typed_string = sanity_check as typeof typed_string;
-		} else if ('String_enum_list' === mode) {
-			const sanity_check: TypedString_type<
-				'String_enum_list'
-			>['typed_string'] = {
-				type: 'array',
-				minItems: PositiveIntegerGuard(1),
-				uniqueItems: true,
-				items: {
-					type: 'string',
-					enum: [' '],
-				},
-			};
-
-			typed_string = sanity_check as typeof typed_string;
-		} else if ('BlueprintGeneratedClass_quoted_list' === mode) {
-			const sanity_check: TypedString_type<
-				'BlueprintGeneratedClass_quoted_list'
-			>['typed_string'] = {
-				type: 'array',
-				minItems: PositiveIntegerGuard(1),
-				uniqueItems: true,
-				items: BlueprintGeneratedClass_quoted
-					.generate_type_definition({
-						mode: 'quoted',
-					}),
-			};
-
-			typed_string = sanity_check as typeof typed_string;
-		} else if ('FGTrainPlatformConnection_quoted_list' === mode) {
-			const sanity_check: TypedString_type<
-				'FGTrainPlatformConnection_quoted_list'
-			>['typed_string'] = {
-				type: 'array',
-				minItems: PositiveIntegerGuard(1),
-				uniqueItems: true,
-				items: FGTrainPlatformConnection
-					.generate_type_definition(),
-			};
-
-			typed_string = sanity_check as typeof typed_string;
-		} else if ('FGRailroadTrackConnectionComponent_quoted_list' === mode) {
+		if ('FGRailroadTrackConnectionComponent_quoted_list' === mode) {
 			const sanity_check: TypedString_type<
 				'FGRailroadTrackConnectionComponent_quoted_list'
 			>['typed_string'] = {
