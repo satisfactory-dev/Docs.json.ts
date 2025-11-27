@@ -4,6 +4,10 @@ import type {
 } from 'ajv/dist/2020.js';
 
 import type {
+	PropertyAssignment,
+} from 'typescript';
+
+import type {
 	array_schema,
 	array_type,
 	object_type_base,
@@ -12,9 +16,16 @@ import type {
 	SchemaObject,
 	SchemaParser,
 } from '@signpostmarv/json-schema-typescript-codegen';
+import {
+	Type,
+} from '@signpostmarv/json-schema-typescript-codegen';
 
 import type {
 	ArrayLiteralExpression,
+	ObjectLiteralExpression,
+} from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
+import {
+	factory,
 } from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
 
 import type {
@@ -85,4 +96,153 @@ export function Object_list_compile_validator(
 			},
 		},
 	);
+}
+
+export function Object_list_generate_typescript_data(
+	data: string,
+	schema_parser: SchemaParser,
+	coerced_schema: Object_list_type,
+	schema: SchemaObject,
+): Object_list_DataTo {
+	const properties = Object.keys(
+		coerced_schema.items.properties,
+	);
+
+	const regex = new RegExp(`^\\((?:,?\\(${properties.map(
+		(
+			property,
+			i,
+		): [
+			string,
+			string,
+		] => {
+			const next_required = (
+				i >= 0
+				&& i < (properties.length - 1)
+				&& (
+					coerced_schema.items.required || ([] as string[])
+				).includes(properties[i + 1])
+			);
+
+			const current_required = (
+				coerced_schema.items.required || ([] as string[])
+			).includes(property);
+
+			return [
+				property,
+				`(${
+					RegExp.escape(property)
+				})=(\\([^)]+\\)|[^=]+|[A-Z]+\\((?:[^)]+)\\)${
+					!current_required
+					&& next_required
+						? ',?'
+						: ''
+				})`,
+			];
+		},
+	).map(([
+		property,
+		regex,
+	], i) => {
+		const previous_optional = (
+			i > 0
+			&& !(
+				coerced_schema.items.required || ([] as string[])
+			).includes(properties[i - 1])
+		);
+
+		const current_required = (
+			coerced_schema.items.required || ([] as string[])
+		).includes(property);
+
+		return (
+			current_required
+				? `${
+					i > 0
+						? (
+							previous_optional
+								? ',?'
+								: ','
+						)
+						: ''
+				}${regex}`
+				: `(?:${i > 0 ? ',' : ''}${regex})?`
+		);
+	}).join('')}\\))*\\)$`);
+
+	const match = regex.exec(data);
+
+	if (null === match) {
+		throw new TypeError('Data does not match expected regex!');
+	}
+
+	const [, ...matches_unfiltered] = match;
+
+	const matches = matches_unfiltered;
+
+	const array_values: ObjectLiteralExpression[] = [];
+
+	for (let i = 0; i < matches.length; i += (properties.length * 2)) {
+		const property_assignments: PropertyAssignment[] = [];
+
+		for (let j = 0; j < properties.length; ++j) {
+			const property_name = matches[i + (j * 2)];
+
+			if (
+				undefined === property_name
+			) {
+				if (coerced_schema.items.required?.includes(
+					properties[j],
+				)) {
+					throw new TypeError(
+						'Required property not found!',
+					);
+				} else {
+					continue;
+				}
+			}
+
+			let property_value = matches[i + (j * 2) + 1];
+
+			if (/^"[^"]+"$/.test(property_value)) {
+				property_value = property_value.substring(
+					1,
+					property_value.length - 1,
+				);
+			}
+
+			const property_schema = coerced_schema.items.properties[
+				property_name
+			];
+
+			const property_assignment = factory
+				.createPropertyAssignment(
+					property_name,
+					schema_parser
+						.parse(
+							property_schema,
+						)
+						.generate_typescript_data(
+							property_value,
+							schema_parser,
+							Type.maybe_add_$defs(
+								schema,
+								property_schema,
+							),
+						),
+				);
+
+			property_assignments.push(property_assignment);
+		}
+
+		array_values.push(factory.createObjectLiteralExpression(
+			property_assignments,
+			true,
+		));
+	}
+
+	const sanity_check: Object_list_DataTo = factory
+		.createArrayLiteralExpression(array_values);
+
+	return sanity_check;
 }

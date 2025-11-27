@@ -73,6 +73,7 @@ import type {
 } from './TypedString/Empty.ts';
 import {
 	Empty_compile_vaildator,
+	Empty_generate_typescript_data,
 } from './TypedString/Empty.ts';
 
 import type {
@@ -83,6 +84,7 @@ import type {
 } from './TypedString/None.ts';
 import {
 	None_compile_validator,
+	None_generate_typescript_data,
 } from './TypedString/None.ts';
 
 import type {
@@ -93,6 +95,7 @@ import type {
 } from './TypedString/Object.ts';
 import {
 	Object_compile_validator,
+	Object_generate_typescript_data,
 } from './TypedString/Object.ts';
 
 import type {
@@ -113,6 +116,7 @@ import type {
 } from './TypedString/String_enum_list.ts';
 import {
 	String_enum_list_compile_validator,
+	String_enum_list_generate_typescript_data,
 } from './TypedString/String_enum_list.ts';
 
 import type {
@@ -123,6 +127,7 @@ import type {
 } from './TypedString/BlueprintGeneratedClass_quoted_list.ts';
 import {
 	BlueprintGeneratedClass_quoted_list_compile_validator,
+	BlueprintGeneratedClass_quoted_list_generate_typescript_data,
 } from './TypedString/BlueprintGeneratedClass_quoted_list.ts';
 
 import type {
@@ -133,6 +138,7 @@ import type {
 } from './TypedString/FGTrainPlatformConnection_quoted_list.ts';
 import {
 	FGTrainPlatformConnection_quoted_list_compile_validator,
+	FGTrainPlatformConnection_quoted_list_generate_typescript_data,
 } from './TypedString/FGTrainPlatformConnection_quoted_list.ts';
 
 export type TypedString_mode = (
@@ -395,93 +401,20 @@ export class TypedString<
 		);
 
 		if ('Empty' === mode) {
-			const sanity_check: TypedString_DataTo<
-				'Empty'
-			> = factory.createIdentifier('null');
-
-			result = sanity_check as typeof result;
+			result = Empty_generate_typescript_data() as typeof result;
 		} else if ('None' === mode) {
-			const sanity_check: TypedString_DataTo<
-				'None'
-			> = factory.createArrayLiteralExpression([], false);
-
-			result = sanity_check as typeof result;
+			result = None_generate_typescript_data() as typeof result;
 		} else if ('Object' === mode) {
 			const coerced_schema = schema.typed_string as TypedString_type<
 				'Object'
 			>['typed_string'];
 
-			const properties = Object.keys(
-				coerced_schema.properties,
-			);
-
-			const regex = new RegExp(`^\\((?:,?${properties.map(
-				(property): [
-					string,
-					string,
-				] => [
-					property,
-					`(${RegExp.escape(property)})=([^=]+|\\(.+\\)(?=[,\\)]))`,
-				],
-			).map(([
-				property,
-				regex,
-			], i) => (
-				(
-					coerced_schema.required || ([] as string[])
-				).includes(property)
-					? `${i > 0 ? ',' : ''}${regex}`
-					: `(?:${i > 0 ? ',' : ''}${regex})?`
-			)).join('')})*\\)$`);
-
-			const match = regex.exec(data);
-
-			if (null === match) {
-				throw new TypeError('Data does not match expected regex!');
-			}
-
-			const [, ...matches] = match;
-
-			const property_assignments: PropertyAssignment[] = [];
-
-			for (let i = 0; i < matches.length; i += 2) {
-				const property_name = matches[i];
-				const property_value = matches[i + 1];
-
-				const property_schema = TypedString.maybe_add_$defs(
-					schema,
-					coerced_schema.properties[
-						property_name
-					],
-				);
-
-				const type_for_property = schema_parser.parse(
-					property_schema,
-				);
-
-				const value = type_for_property
-					.generate_typescript_data(
-						property_value,
-						schema_parser,
-						property_schema,
-					);
-
-				const property_assignment = factory
-					.createPropertyAssignment(
-						property_name,
-						value,
-					);
-
-				property_assignments.push(property_assignment);
-			}
-
-			const sanity_check: TypedString_DataTo<'Object'> = factory
-				.createObjectLiteralExpression(
-					property_assignments,
-					true,
-				);
-
-			result = sanity_check as typeof result;
+			result = Object_generate_typescript_data(
+				data,
+				schema_parser,
+				coerced_schema,
+				schema,
+			) as typeof result;
 		} else if ('Object_list' === mode) {
 			const coerced_schema = schema.typed_string as TypedString_type<
 				'Object_list'
@@ -592,26 +525,10 @@ export class TypedString<
 				'String_enum_list'
 			>['typed_string'];
 
-			const parts = data
-				.substring(1, data.length - 1)
-				.split(',');
-
-			const matches = parts
-				.filter((maybe) => coerced_schema.items.enum.includes(maybe));
-
-			if (parts.length !== matches.length) {
-				throw new TypeError('Data contains unsupported elements!');
-			}
-
-			const sanity_check: TypedString_DataTo<
-				'String_enum_list'
-			> = factory.createArrayLiteralExpression(
-				matches
-					.filter((maybe) => undefined !== maybe)
-					.map((value) => factory.createStringLiteral(value)),
-			);
-
-			result = sanity_check as typeof result;
+			result = String_enum_list_generate_typescript_data(
+				data,
+				coerced_schema,
+			) as typeof result;
 		} else if ('BlueprintGeneratedClass_quoted_list' === mode) {
 			const coerced = (
 				schema.typed_string as TypedString_type<
@@ -619,33 +536,13 @@ export class TypedString<
 				>['typed_string']
 			).items;
 
-			const regex = BlueprintGeneratedClass_quoted.regex_from_value(
-				coerced.DocsDotJson_BlueprintGeneratedClass_quoted,
+			result = (
+				BlueprintGeneratedClass_quoted_list_generate_typescript_data(
+					data,
+					schema_parser,
+					coerced,
+				) as typeof result
 			);
-
-			const pattern = new RegExp(`^\\(${regex}(?:,${regex})*\\)$`);
-
-			if (!pattern.test(data)) {
-				throw new TypeError('Data does not match expected pattern!');
-			}
-
-			const data_parts = data.substring(1, data.length - 1).split(',');
-
-			const sanity_check: TypedString_DataTo<
-				'BlueprintGeneratedClass_quoted_list'
-			> = factory.createArrayLiteralExpression(
-				data_parts
-					.map((value) => schema_parser
-						.parse_by_type(value)
-						.generate_typescript_data(
-							value,
-							schema_parser,
-							coerced,
-						),
-					),
-			);
-
-			result = sanity_check as typeof result;
 		} else if ('FGTrainPlatformConnection_quoted_list' === mode) {
 			const coerced = (
 				schema.typed_string as TypedString_type<
@@ -653,33 +550,13 @@ export class TypedString<
 				>['typed_string']
 			).items;
 
-			const regex = FGTrainPlatformConnection.regex_from_value(
-				coerced.DocsDotJson_FGTrainPlatformConnection_quoted,
+			result = (
+				FGTrainPlatformConnection_quoted_list_generate_typescript_data(
+					data,
+					schema_parser,
+					coerced,
+				) as typeof result
 			);
-
-			const pattern = new RegExp(`^\\(${regex}(?:,${regex})*\\)$`);
-
-			if (!pattern.test(data)) {
-				throw new TypeError('Data does not match expected pattern!');
-			}
-
-			const data_parts = data.substring(1, data.length - 1).split(',');
-
-			const sanity_check: TypedString_DataTo<
-				'FGTrainPlatformConnection_quoted_list'
-			> = factory.createArrayLiteralExpression(
-				data_parts
-					.map((value) => schema_parser
-						.parse_by_type(value)
-						.generate_typescript_data(
-							value,
-							schema_parser,
-							coerced,
-						),
-					),
-			);
-
-			result = sanity_check as typeof result;
 		} else {
 			throw new TypeError('Not implemented!');
 		}

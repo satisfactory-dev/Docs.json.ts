@@ -4,6 +4,10 @@ import type {
 } from 'ajv/dist/2020.js';
 
 import type {
+	PropertyAssignment,
+} from 'typescript';
+
+import type {
 	object_schema,
 	object_type_base,
 	object_TypeLiteralNode_possibly_extended,
@@ -11,9 +15,13 @@ import type {
 	SchemaObject,
 	SchemaParser,
 } from '@signpostmarv/json-schema-typescript-codegen';
+import {
+	Type,
+} from '@signpostmarv/json-schema-typescript-codegen';
 
-import type {
-	ObjectLiteralExpression,
+import {
+	factory,
+	type ObjectLiteralExpression,
 } from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
 
 export type Object_type = object_type_base<
@@ -58,4 +66,90 @@ export function Object_compile_validator(
 	>(
 		Object_type_schema,
 	);
+}
+
+export function Object_generate_typescript_data(
+	data: string,
+	schema_parser: SchemaParser,
+	coerced_schema: Object_type,
+	schema: SchemaObject,
+): Object_DataTo {
+	const properties = Object.keys(
+		coerced_schema.properties,
+	);
+
+	const regex = new RegExp(`^\\((?:,?${properties.map(
+		(property): [
+			string,
+			string,
+		] => [
+			property,
+			`(${RegExp.escape(property)})=([^=]+|\\(.+\\)(?=[,\\)]))`,
+		],
+	).map(([
+		property,
+		regex,
+	], i) => (
+		(
+			coerced_schema.required || ([] as string[])
+		).includes(property)
+			? `${i > 0 ? ',' : ''}${regex}`
+			: `(?:${i > 0 ? ',' : ''}${regex})?`
+	)).join('')})*\\)$`);
+
+	const match = regex.exec(data);
+
+	if (null === match) {
+		throw new TypeError('Data does not match expected regex!');
+	}
+
+	const [, ...matches] = match;
+
+	const property_assignments: PropertyAssignment[] = [];
+
+	for (let i = 0; i < matches.length; i += 2) {
+		const property_name = matches[i];
+		const property_value = matches[i + 1];
+
+		if (
+			undefined === property_name
+			&& undefined === property_value
+		) {
+			continue;
+		}
+
+		const property_schema = Type.maybe_add_$defs(
+			schema,
+			coerced_schema.properties[
+				property_name
+			],
+		);
+
+		const type_for_property = schema_parser.parse(
+			property_schema,
+		);
+
+		const value = type_for_property
+			.generate_typescript_data(
+				property_value,
+				schema_parser,
+				property_schema,
+			);
+
+		const property_assignment = factory
+			.createPropertyAssignment(
+				property_name,
+				value,
+			);
+
+		property_assignments.push(property_assignment);
+	}
+
+	const sanity_check: Object_DataTo = factory
+		.createObjectLiteralExpression(
+			property_assignments,
+			true,
+		);
+
+	return sanity_check;
 }

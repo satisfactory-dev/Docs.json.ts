@@ -6,6 +6,9 @@ import type {
 import type {
 	Identifier,
 } from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
+import {
+	factory,
+} from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
 
 export type Empty_type = {
 	type: 'string',
@@ -51,4 +54,8 @@ export function Empty_compile_vaildator(
 			],
 		},
 	);
+}
+
+export function Empty_generate_typescript_data(): Empty_DataTo {
+	return factory.createIdentifier('null');
 }

@@ -6,6 +6,9 @@ import type {
 import type {
 	ArrayLiteralExpression,
 } from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
+import {
+	factory,
+} from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
 
 export type None_type = {
 	type: 'string',
@@ -49,4 +52,8 @@ export function None_compile_validator(ajv: Ajv): ValidateFunction<None_type> {
 			],
 		},
 	);
+}
+
+export function None_generate_typescript_data(): None_DataTo {
+	return factory.createArrayLiteralExpression([], false);
 }

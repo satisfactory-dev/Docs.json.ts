@@ -11,6 +11,9 @@ import type {
 	ArrayLiteralExpression,
 	StringLiteral,
 } from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
+import {
+	factory,
+} from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
 
 export type String_enum_list_type = {
 	type: 'array',
@@ -122,4 +125,35 @@ export function String_enum_list_compile_validator(
 			},
 		},
 	);
+}
+
+export function String_enum_list_generate_typescript_data(
+	data: string,
+	coerced_schema: String_enum_list_type,
+): String_enum_list_DataTo {
+	const parts = data
+		.substring(1, data.length - 1)
+		.split(',');
+
+	const matches = parts
+		.map((e) => (
+			/^"[^"]+"/.test(e)
+				? e.substring(1, e.length - 1)
+				: e
+		))
+		.filter((maybe) => coerced_schema.items.enum.includes(maybe));
+
+	if (parts.length !== matches.length) {
+		throw new TypeError('Data contains unsupported elements!');
+	}
+
+	const sanity_check: (
+		String_enum_list_DataTo
+	) = factory.createArrayLiteralExpression(
+		matches
+			.filter((maybe) => undefined !== maybe)
+			.map((value) => factory.createStringLiteral(value)),
+	);
+
+	return sanity_check;
 }

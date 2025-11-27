@@ -10,16 +10,21 @@ import type {
 import type {
 	array_schema,
 	array_type,
+	SchemaParser,
 } from '@signpostmarv/json-schema-typescript-codegen';
 
 import type {
 	ArrayLiteralExpression,
 	StringLiteral,
 } from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
+import {
+	factory,
+} from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
 
-import type {
-	FGTrainPlatformConnection_quoted_schema,
-	FGTrainPlatformConnection_quoted_type,
+import {
+	FGTrainPlatformConnection,
+	type FGTrainPlatformConnection_quoted_schema,
+	type FGTrainPlatformConnection_quoted_type,
 } from '../FGTrainPlatformConnection.ts';
 
 export type FGTrainPlatformConnection_quoted_list_type = array_type<
@@ -100,4 +105,38 @@ export function FGTrainPlatformConnection_quoted_list_compile_validator(
 			},
 		},
 	);
+}
+
+export function FGTrainPlatformConnection_quoted_list_generate_typescript_data(
+	data: string,
+	schema_parser: SchemaParser,
+	coerced: FGTrainPlatformConnection_quoted_list_type['items'],
+): FGTrainPlatformConnection_quoted_list_DataTo {
+	const regex = FGTrainPlatformConnection.regex_from_value(
+		coerced.DocsDotJson_FGTrainPlatformConnection_quoted,
+	);
+
+	const pattern = new RegExp(`^\\(${regex}(?:,${regex})*\\)$`);
+
+	if (!pattern.test(data)) {
+		throw new TypeError('Data does not match expected pattern!');
+	}
+
+	const data_parts = data.substring(1, data.length - 1).split(',');
+
+	const sanity_check: (
+		FGTrainPlatformConnection_quoted_list_DataTo
+	) = factory.createArrayLiteralExpression(
+		data_parts
+			.map((value) => schema_parser
+				.parse_by_type(value)
+				.generate_typescript_data(
+					value,
+					schema_parser,
+					coerced,
+				),
+			),
+	);
+
+	return sanity_check;
 }

@@ -10,16 +10,21 @@ import type {
 import type {
 	array_schema,
 	array_type,
+	SchemaParser,
 } from '@signpostmarv/json-schema-typescript-codegen';
 
 import type {
 	ArrayLiteralExpression,
 	StringLiteral,
 } from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
+import {
+	factory,
+} from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
 
-import type {
-	BlueprintGeneratedClass_quoted_schema,
-	BlueprintGeneratedClass_quoted_type,
+import {
+	BlueprintGeneratedClass_quoted,
+	type BlueprintGeneratedClass_quoted_schema,
+	type BlueprintGeneratedClass_quoted_type,
 } from '../BlueprintGeneratedClass.ts';
 
 export type BlueprintGeneratedClass_quoted_list_type = array_type<
@@ -100,4 +105,38 @@ export function BlueprintGeneratedClass_quoted_list_compile_validator(
 			},
 		},
 	);
+}
+
+export function BlueprintGeneratedClass_quoted_list_generate_typescript_data(
+	data: string,
+	schema_parser: SchemaParser,
+	coerced: BlueprintGeneratedClass_quoted_list_type['items'],
+): BlueprintGeneratedClass_quoted_list_DataTo {
+	const regex = BlueprintGeneratedClass_quoted.regex_from_value(
+		coerced.DocsDotJson_BlueprintGeneratedClass_quoted,
+	);
+
+	const pattern = new RegExp(`^\\(${regex}(?:,${regex})*\\)$`);
+
+	if (!pattern.test(data)) {
+		throw new TypeError('Data does not match expected pattern!');
+	}
+
+	const data_parts = data.substring(1, data.length - 1).split(',');
+
+	const sanity_check: (
+		BlueprintGeneratedClass_quoted_list_DataTo
+	) = factory.createArrayLiteralExpression(
+		data_parts
+			.map((value) => schema_parser
+				.parse_by_type(value)
+				.generate_typescript_data(
+					value,
+					schema_parser,
+					coerced,
+				),
+			),
+	);
+
+	return sanity_check;
 }
