@@ -1888,6 +1888,11 @@
 					"$ref": "#/$defs/FGDescriptor"
 				},
 				{
+					"$ref": "#/$defs/FGItemDescriptorNuclearFuel--base"
+				}
+			]
+		},
+		"FGItemDescriptorNuclearFuel--base": {
 					"type": "object",
 					"required": ["mSpentFuelClass"],
 					"properties": {
@@ -1896,8 +1901,7 @@
 							"DocsDotJson_BlueprintGeneratedClass_single_quoted": null
 						}
 					}
-				}
-			]
+
 		},
 		"FGNobeliskDetonator": {
 			"allOf": [

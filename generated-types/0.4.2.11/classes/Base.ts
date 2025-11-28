@@ -548,7 +548,9 @@ type FGHoverPack = FGEquipment & {
 	mBackAnimation: 'BE_Jetpack',
 };
 
-type FGItemDescriptorNuclearFuel = docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_base & FGDescriptor & {
+type FGItemDescriptorNuclearFuel = docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_base & FGDescriptor & FGItemDescriptorNuclearFuel_base;
+
+type FGItemDescriptorNuclearFuel_base = {
 	mSpentFuelClass: `BlueprintGeneratedClass'/Game/FactoryGame/${string}${'\''}`,
 };
 
@@ -758,6 +760,7 @@ export type {
 	FGEquipmentZipline,
 	FGHoverPack,
 	FGItemDescriptorNuclearFuel,
+	FGItemDescriptorNuclearFuel_base,
 	FGNobeliskDetonator,
 	FGParachute,
 	FGPipeHyperStart,
