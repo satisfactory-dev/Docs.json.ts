@@ -685,7 +685,9 @@ type FGBuildableResourceSinkShop_base = FGBuildable_powered_base & {
 
 type FGBuildableSpaceElevator = FGBuildableSpaceElevator_base & FGBuildable_powered;
 
-type FGBuildableSpaceElevator_base = FGBuildable_powered_base & {
+type FGBuildableSpaceElevator_base = FGBuildableSpaceElevator_base_base & FGBuildable_powered_base;
+
+type FGBuildableSpaceElevator_base_base = FGBuildable_powered_base_base & {
 	mMapText: 'Space Elevator',
 };
 
@@ -1206,6 +1208,7 @@ export type {
 	FGBuildableResourceSinkShop_base,
 	FGBuildableSpaceElevator,
 	FGBuildableSpaceElevator_base,
+	FGBuildableSpaceElevator_base_base,
 	FGBuildableSplitterSmart,
 	FGBuildableSplitterSmart_base,
 	FGBuildableStorage,
