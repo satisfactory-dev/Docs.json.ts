@@ -1376,19 +1376,19 @@
 			]
 		},
 		"FGBuildableResourceExtractor--water--base": {
-					"type": "object",
-					"required": [
-						"mMinimumDepthForPlacement",
-						"mDepthTraceOriginOffset"
-					],
-					"properties": {
-						"mMinimumDepthForPlacement": {
-							"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-						},
-						"mDepthTraceOriginOffset": {
-							"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
-						}
-					}
+			"type": "object",
+			"required": [
+				"mMinimumDepthForPlacement",
+				"mDepthTraceOriginOffset"
+			],
+			"properties": {
+				"mMinimumDepthForPlacement": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mDepthTraceOriginOffset": {
+					"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
+				}
+			}
 		},
 		"FGBuildableResourceSink": {
 			"allOf": [
