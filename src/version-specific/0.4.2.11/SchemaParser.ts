@@ -98,6 +98,8 @@ export function configure_parser(parser: SchemaParser) {
 		return;
 	}
 
+	already_configured.add(parser);
+
 	add_schemas(parser);
 
 	const ajv = parser.share_ajv((ajv) => ajv);
