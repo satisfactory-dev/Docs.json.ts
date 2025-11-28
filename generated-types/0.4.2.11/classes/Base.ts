@@ -9,6 +9,7 @@ import type {
 	FGBuildable_occupied as docs_json_ts_0_3_7_7_classes_base_FGBuildable_occupied,
 	FGBuildable_pole_with_length_and_power_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_with_length_and_power_base,
 	FGBuildable_powered_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base,
+	FGBuildable_powered_base_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base_base,
 	FGBuildable_powered_base_resources as docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base_resources,
 	FGBuildable_powered_storage_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_storage_base,
 	FGBuildable_spline as docs_json_ts_0_3_7_7_classes_base_FGBuildable_spline,
@@ -43,6 +44,7 @@ import type {
 	FGBuildableManufacturer_base_packager as docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_base_packager,
 	FGBuildablePipeline as docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeline,
 	FGBuildablePipeline_base_no_indicator as docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeline_base_no_indicator,
+	FGBuildablePipeline_base_no_indicator_base as docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeline_base_no_indicator_base,
 	FGBuildablePipelinePump_base as docs_json_ts_0_3_7_7_classes_base_FGBuildablePipelinePump_base,
 	FGBuildablePipelinePump_powered_base_base as docs_json_ts_0_3_7_7_classes_base_FGBuildablePipelinePump_powered_base_base,
 	FGBuildablePipelinePump_pump_base as docs_json_ts_0_3_7_7_classes_base_FGBuildablePipelinePump_pump_base,
@@ -366,11 +368,15 @@ type FGBuildablePipeline = docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeline
 
 type FGBuildablePipeline_junction = FGBuildable_powered & FGBuildablePipeline_junction_base;
 
-type FGBuildablePipeline_junction_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base & docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeline_base_no_indicator;
+type FGBuildablePipeline_junction_base = FGBuildablePipeline_junction_base_base & docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base & docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeline_base_no_indicator;
+
+type FGBuildablePipeline_junction_base_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base_base & docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeline_base_no_indicator_base;
 
 type FGBuildablePipelineJunction = FGBuildablePipeline_junction & FGBuildablePipelineJunction_base;
 
-type FGBuildablePipelineJunction_base = FGBuildablePipeline_junction_base & {
+type FGBuildablePipelineJunction_base = FGBuildablePipelineJunction_base_base & FGBuildablePipeline_junction_base;
+
+type FGBuildablePipelineJunction_base_base = FGBuildablePipeline_junction_base_base & {
 	mFluidBoxVolume: docs_json_ts_common_types_decimal_string,
 };
 
@@ -427,7 +433,9 @@ type FGBuildableResourceExtractor_miner_mk3 = docs_json_ts_0_3_7_7_classes_base_
 
 type FGBuildableResourceExtractor_oil = docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_oil_base & FGBuildable_powered;
 
-type FGBuildableResourceExtractor_water = docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_water_base & FGBuildable_powered & {
+type FGBuildableResourceExtractor_water = docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_water_base & FGBuildable_powered & FGBuildableResourceExtractor_water_base;
+
+type FGBuildableResourceExtractor_water_base = {
 	mMinimumDepthForPlacement: docs_json_ts_common_types_decimal_string,
 	mDepthTraceOriginOffset: docs_json_ts_common_types_XYZ_decimal_string,
 };
@@ -718,8 +726,10 @@ export type {
 	FGBuildablePipeline,
 	FGBuildablePipeline_junction,
 	FGBuildablePipeline_junction_base,
+	FGBuildablePipeline_junction_base_base,
 	FGBuildablePipelineJunction,
 	FGBuildablePipelineJunction_base,
+	FGBuildablePipelineJunction_base_base,
 	FGBuildablePipelinePump_powered_base,
 	FGBuildablePipelinePump_pump,
 	FGBuildablePipelinePump_valve,
@@ -740,6 +750,7 @@ export type {
 	FGBuildableResourceExtractor_miner_mk3,
 	FGBuildableResourceExtractor_oil,
 	FGBuildableResourceExtractor_water,
+	FGBuildableResourceExtractor_water_base,
 	FGBuildableResourceSink,
 	FGBuildableResourceSinkShop,
 	FGBuildableSpaceElevator,

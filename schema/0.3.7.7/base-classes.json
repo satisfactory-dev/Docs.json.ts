@@ -200,8 +200,18 @@
 			}
 		},
 		"FGBuildable--pole--with-length": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--pole--with-length--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--pole"
+				}
+			]
+		},
+		"FGBuildable--pole--with-length--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--pole",
+			"$ref": "#/$defs/FGBuildable--pole--base",
 			"required": ["mLength"],
 			"properties": {
 				"mLength": {
@@ -1598,8 +1608,28 @@
 			]
 		},
 		"FGBuildablePipeline": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildablePipeline--base-root"
+				},
+				{
+					"$ref": "#/$defs/FGBuildablePipeline--base-spline"
+				}
+			]
+		},
+		"FGBuildablePipeline--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildablePipeline--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildablePipeline--base--no-indicator"
+				}
+			]
+		},
+		"FGBuildablePipeline--base-root": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildablePipeline--base-spline",
+			"$ref": "#/$defs/FGBuildablePipeline--base-spline--base",
 			"required": [
 				"mFlowLimit",
 				"mFlowIndicatorMinimumPipeLength",
@@ -1667,9 +1697,9 @@
 				}
 			}
 		},
-		"FGBuildablePipeline--base": {
+		"FGBuildablePipeline--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildablePipeline--base--no-indicator",
+			"$ref": "#/$defs/FGBuildablePipeline--base--no-indicator--base",
 			"required": ["mIndicatorData"],
 			"properties": {
 				"mIndicatorData": {
@@ -1678,8 +1708,18 @@
 			}
 		},
 		"FGBuildablePipeline--base--no-indicator": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildablePipeline--base--no-indicator--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable"
+				}
+			]
+		},
+		"FGBuildablePipeline--base--no-indicator--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable",
+			"$ref": "#/$defs/FGBuildable--base",
 			"required": ["mRadius", "mFluidBox", "mPipeConnections"],
 			"properties": {
 				"mRadius": {
@@ -1697,10 +1737,23 @@
 		"FGBuildablePipeline--base-spline": {
 			"allOf": [
 				{
+					"$ref": "#/$defs/FGBuildablePipeline--base-spline--base"
+				},
+				{
 					"$ref": "#/$defs/FGBuildablePipeline--base"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--spline"
+				}
+			]
+		},
+		"FGBuildablePipeline--base-spline--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildablePipeline--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--spline--base"
 				}
 			]
 		},
@@ -1747,10 +1800,23 @@
 		"FGBuildablePipelinePump--base": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGBuildablePipeline--base"
+					"$ref": "#/$defs/FGBuildablePipelinePump--base--base"
 				},
 				{
 					"$ref": "#/$defs/FGBuildablePipelinePump--powered-base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildablePipeline--base"
+				}
+			]
+		},
+		"FGBuildablePipelinePump--base--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildablePipeline--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildablePipelinePump--powered-base--base--base"
 				}
 			]
 		},
@@ -1765,8 +1831,18 @@
 			]
 		},
 		"FGBuildablePipelinePump--powered-base--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildablePipelinePump--powered-base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base"
+				}
+			]
+		},
+		"FGBuildablePipelinePump--powered-base--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--base",
+			"$ref": "#/$defs/FGBuildable--powered--base--base",
 			"required": [
 				"mLastFlowUpdate",
 				"mUpdateFlowTime",
@@ -1827,8 +1903,18 @@
 			]
 		},
 		"FGBuildablePipelinePump--pump--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildablePipelinePump--pump--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildablePipelinePump--base"
+				}
+			]
+		},
+		"FGBuildablePipelinePump--pump--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildablePipelinePump--base",
+			"$ref": "#/$defs/FGBuildablePipelinePump--base--base",
 			"required": [
 				"mIsPipePumpPlaying",
 				"mIsExceedingHeadLift",
@@ -1860,8 +1946,18 @@
 			]
 		},
 		"FGBuildablePipelineSupport": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildablePipelineSupport--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--pole--with-length"
+				}
+			]
+		},
+		"FGBuildablePipelineSupport--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--pole--with-length",
+			"$ref": "#/$defs/FGBuildable--pole--with-length--base",
 			"required": ["mVerticalAngle"],
 			"properties": {
 				"mVerticalAngle": {
@@ -1880,8 +1976,18 @@
 			]
 		},
 		"FGBuildablePipeReservoir--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildablePipeReservoir--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base"
+				}
+			]
+		},
+		"FGBuildablePipeReservoir--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--base",
+			"$ref": "#/$defs/FGBuildable--powered--base--base",
 			"required": [
 				"mStackingHeight",
 				"mFluidBox",
@@ -2401,17 +2507,24 @@
 			]
 		},
 		"FGBuildableResourceExtractor--water--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--water--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--water--base--base--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--base--with-resources"
+				}
+			]
+		},
+		"FGBuildableResourceExtractor--water--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableResourceExtractor--base--with-resources",
+			"$ref": "#/$defs/FGBuildableResourceExtractor--base--with-resources--base",
 			"required": [
 				"mWaterpumpTimeline_RTPC_B8FA6F944E717E3B7A286E84901F620E",
 				"mWaterpumpTimeline__Direction_B8FA6F944E717E3B7A286E84901F620E",
-				"PlayPitchAndVolumeRTPCTimeline_RTPC_2B435F41466C37D2AD809A88AA21BA89",
-				"PlayPitchAndVolumeRTPCTimeline__Direction_2B435F41466C37D2AD809A88AA21BA89",
-				"mAudioTimerCounter",
-				"mAudioTimerMS",
-				"mAudioTimerReference",
-				"mAudioTimelineCounter",
 				"HasLostSignificance",
 				"mExtractorTypeName",
 				"mAllowedResourceForms"
@@ -2423,25 +2536,6 @@
 				"mWaterpumpTimeline__Direction_B8FA6F944E717E3B7A286E84901F620E": {
 					"type": "string",
 					"const": "Forward"
-				},
-				"PlayPitchAndVolumeRTPCTimeline_RTPC_2B435F41466C37D2AD809A88AA21BA89": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"PlayPitchAndVolumeRTPCTimeline__Direction_2B435F41466C37D2AD809A88AA21BA89": {
-					"type": "string",
-					"const": "Forward"
-				},
-				"mAudioTimerCounter": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mAudioTimerMS": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mAudioTimerReference": {
-					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-				},
-				"mAudioTimelineCounter": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
 				"HasLostSignificance": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
@@ -2461,6 +2555,39 @@
 							"enum": ["RF_LIQUID"]
 						}
 					}
+				}
+			}
+		},
+		"FGBuildableResourceExtractor--water--base--base--version-specific": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableResourceExtractor--base--with-resources--base",
+			"required": [
+				"PlayPitchAndVolumeRTPCTimeline_RTPC_2B435F41466C37D2AD809A88AA21BA89",
+				"PlayPitchAndVolumeRTPCTimeline__Direction_2B435F41466C37D2AD809A88AA21BA89",
+				"mAudioTimerCounter",
+				"mAudioTimerMS",
+				"mAudioTimerReference",
+				"mAudioTimelineCounter"
+			],
+			"properties": {
+				"PlayPitchAndVolumeRTPCTimeline_RTPC_2B435F41466C37D2AD809A88AA21BA89": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"PlayPitchAndVolumeRTPCTimeline__Direction_2B435F41466C37D2AD809A88AA21BA89": {
+					"type": "string",
+					"const": "Forward"
+				},
+				"mAudioTimerCounter": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mAudioTimerMS": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mAudioTimerReference": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mAudioTimelineCounter": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
 			}
 		},

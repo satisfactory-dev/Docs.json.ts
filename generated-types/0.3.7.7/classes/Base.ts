@@ -93,7 +93,9 @@ type FGBuildable_pole_base = FGBuildable_base & {
 	mStackHeight: docs_json_ts_common_types_decimal_string,
 };
 
-type FGBuildable_pole_with_length = FGBuildable_pole & {
+type FGBuildable_pole_with_length = FGBuildable_pole_with_length_base & FGBuildable_pole;
+
+type FGBuildable_pole_with_length_base = FGBuildable_pole_base & {
 	mLength: docs_json_ts_common_types_decimal_string,
 };
 
@@ -443,7 +445,11 @@ type FGBuildableManufacturer_Build_SmelterMk1_C = FGBuildableManufacturer_base &
 
 type FGBuildableManufacturer_Build_SmelterMk1_C_base = FGBuildableManufacturer_base_base & FGBuildableManufacturer_base_mProductionEffectsRunning_base & FGBuildable_powered_base_base;
 
-type FGBuildablePipeline = FGBuildablePipeline_base_spline & {
+type FGBuildablePipeline = FGBuildablePipeline_base_root & FGBuildablePipeline_base_spline;
+
+type FGBuildablePipeline_base = FGBuildablePipeline_base_base & FGBuildablePipeline_base_no_indicator;
+
+type FGBuildablePipeline_base_root = FGBuildablePipeline_base_spline_base & {
 	mFlowLimit: docs_json_ts_common_types_decimal_string,
 	mFlowIndicatorMinimumPipeLength: docs_json_ts_common_types_decimal_string,
 	mMaxIndicatorTurnAngle: docs_json_ts_common_types_decimal_string,
@@ -465,17 +471,21 @@ type FGBuildablePipeline = FGBuildablePipeline_base_spline & {
 	mIsRattling: docs_json_ts_common_types_bool_string,
 };
 
-type FGBuildablePipeline_base = FGBuildablePipeline_base_no_indicator & {
+type FGBuildablePipeline_base_base = FGBuildablePipeline_base_no_indicator_base & {
 	mIndicatorData: docs_json_ts_common_types_empty_object,
 };
 
-type FGBuildablePipeline_base_no_indicator = FGBuildable & {
+type FGBuildablePipeline_base_no_indicator = FGBuildablePipeline_base_no_indicator_base & FGBuildable;
+
+type FGBuildablePipeline_base_no_indicator_base = FGBuildable_base & {
 	mRadius: docs_json_ts_common_types_decimal_string,
 	mFluidBox: docs_json_ts_common_types_empty_object,
 	mPipeConnections: '',
 };
 
-type FGBuildablePipeline_base_spline = FGBuildablePipeline_base & FGBuildable_spline;
+type FGBuildablePipeline_base_spline = FGBuildablePipeline_base_spline_base & FGBuildablePipeline_base & FGBuildable_spline;
+
+type FGBuildablePipeline_base_spline_base = FGBuildablePipeline_base_base & FGBuildable_spline_base;
 
 type FGBuildablePipeline_junction = FGBuildable_powered & FGBuildablePipeline_junction_base;
 
@@ -487,11 +497,15 @@ type FGBuildablePipelineJunction_base = FGBuildablePipeline_junction_base & {
 	mFluidBoxVolume: docs_json_ts_common_types_decimal_string,
 };
 
-type FGBuildablePipelinePump_base = FGBuildablePipeline_base & FGBuildablePipelinePump_powered_base_base;
+type FGBuildablePipelinePump_base = FGBuildablePipelinePump_base_base & FGBuildablePipelinePump_powered_base_base & FGBuildablePipeline_base;
+
+type FGBuildablePipelinePump_base_base = FGBuildablePipeline_base_base & FGBuildablePipelinePump_powered_base_base_base;
 
 type FGBuildablePipelinePump_powered_base = FGBuildable_powered & FGBuildablePipelinePump_powered_base_base;
 
-type FGBuildablePipelinePump_powered_base_base = FGBuildable_powered_base & {
+type FGBuildablePipelinePump_powered_base_base = FGBuildablePipelinePump_powered_base_base_base & FGBuildable_powered_base;
+
+type FGBuildablePipelinePump_powered_base_base_base = FGBuildable_powered_base_base & {
 	mLastFlowUpdate: docs_json_ts_common_types_decimal_string,
 	mUpdateFlowTime: docs_json_ts_common_types_decimal_string,
 	mAnimSpeed: docs_json_ts_common_types_decimal_string,
@@ -507,7 +521,9 @@ type FGBuildablePipelinePump_powered_base_base = FGBuildable_powered_base & {
 
 type FGBuildablePipelinePump_pump = FGBuildablePipelinePump_pump_base & FGBuildablePipelinePump_powered_base;
 
-type FGBuildablePipelinePump_pump_base = FGBuildablePipelinePump_base & {
+type FGBuildablePipelinePump_pump_base = FGBuildablePipelinePump_pump_base_base & FGBuildablePipelinePump_base;
+
+type FGBuildablePipelinePump_pump_base_base = FGBuildablePipelinePump_base_base & {
 	mPistonAudioTimer?: docs_json_ts_common_types_empty_object,
 	mIsPipePumpPlaying: docs_json_ts_common_types_bool_string,
 	mIsExceedingHeadLift: docs_json_ts_common_types_bool_string,
@@ -516,13 +532,17 @@ type FGBuildablePipelinePump_pump_base = FGBuildablePipelinePump_base & {
 
 type FGBuildablePipelinePump_valve = FGBuildablePipelinePump_base & FGBuildable_powered;
 
-type FGBuildablePipelineSupport = FGBuildable_pole_with_length & {
+type FGBuildablePipelineSupport = FGBuildablePipelineSupport_base & FGBuildable_pole_with_length;
+
+type FGBuildablePipelineSupport_base = FGBuildable_pole_with_length_base & {
 	mVerticalAngle: docs_json_ts_common_types_decimal_string,
 };
 
 type FGBuildablePipeReservoir = FGBuildable_powered & FGBuildablePipeReservoir_base;
 
-type FGBuildablePipeReservoir_base = FGBuildable_powered_base & {
+type FGBuildablePipeReservoir_base = FGBuildablePipeReservoir_base_base & FGBuildable_powered_base;
+
+type FGBuildablePipeReservoir_base_base = FGBuildable_powered_base_base & {
 	mStackingHeight: docs_json_ts_common_types_decimal_string,
 	mFluidBox: docs_json_ts_common_types_empty_object,
 	mStorageCapacity: docs_json_ts_common_types_decimal_string,
@@ -653,20 +673,25 @@ type FGBuildableResourceExtractor_oil_base_base = FGBuildableResourceExtractor_b
 
 type FGBuildableResourceExtractor_water = FGBuildableResourceExtractor & FGBuildableResourceExtractor_water_base & FGBuildable_powered;
 
-type FGBuildableResourceExtractor_water_base = FGBuildableResourceExtractor_base_with_resources & {
+type FGBuildableResourceExtractor_water_base = FGBuildableResourceExtractor_water_base_base & FGBuildableResourceExtractor_water_base_base_version_specific & FGBuildableResourceExtractor_base_with_resources;
+
+type FGBuildableResourceExtractor_water_base_base = FGBuildableResourceExtractor_base_with_resources_base & {
 	mWaterpumpTimeline_RTPC_B8FA6F944E717E3B7A286E84901F620E: docs_json_ts_common_types_decimal_string,
 	mWaterpumpTimeline__Direction_B8FA6F944E717E3B7A286E84901F620E: 'Forward',
+	HasLostSignificance: docs_json_ts_common_types_bool_string,
+	mExtractorTypeName: 'None',
+	mAllowedResourceForms: [
+		'RF_LIQUID',
+	],
+};
+
+type FGBuildableResourceExtractor_water_base_base_version_specific = FGBuildableResourceExtractor_base_with_resources_base & {
 	PlayPitchAndVolumeRTPCTimeline_RTPC_2B435F41466C37D2AD809A88AA21BA89: docs_json_ts_common_types_decimal_string,
 	PlayPitchAndVolumeRTPCTimeline__Direction_2B435F41466C37D2AD809A88AA21BA89: 'Forward',
 	mAudioTimerCounter: docs_json_ts_common_types_decimal_string,
 	mAudioTimerMS: docs_json_ts_common_types_decimal_string,
 	mAudioTimerReference: docs_json_ts_common_types_empty_object,
 	mAudioTimelineCounter: docs_json_ts_common_types_decimal_string,
-	HasLostSignificance: docs_json_ts_common_types_bool_string,
-	mExtractorTypeName: 'None',
-	mAllowedResourceForms: [
-		'RF_LIQUID',
-	],
 };
 
 type FGBuildableResourceSink = FGBuildable_powered & FGBuildableResourceSink_base & {
@@ -1078,6 +1103,7 @@ export type {
 	FGBuildable_pole,
 	FGBuildable_pole_base,
 	FGBuildable_pole_with_length,
+	FGBuildable_pole_with_length_base,
 	FGBuildable_pole_with_length_and_power,
 	FGBuildable_pole_with_length_and_power_base,
 	FGBuildable_powered,
@@ -1167,21 +1193,30 @@ export type {
 	FGBuildableManufacturer_Build_SmelterMk1_C_base,
 	FGBuildablePipeline,
 	FGBuildablePipeline_base,
+	FGBuildablePipeline_base_root,
+	FGBuildablePipeline_base_base,
 	FGBuildablePipeline_base_no_indicator,
+	FGBuildablePipeline_base_no_indicator_base,
 	FGBuildablePipeline_base_spline,
+	FGBuildablePipeline_base_spline_base,
 	FGBuildablePipeline_junction,
 	FGBuildablePipeline_junction_base,
 	FGBuildablePipelineJunction,
 	FGBuildablePipelineJunction_base,
 	FGBuildablePipelinePump_base,
+	FGBuildablePipelinePump_base_base,
 	FGBuildablePipelinePump_powered_base,
 	FGBuildablePipelinePump_powered_base_base,
+	FGBuildablePipelinePump_powered_base_base_base,
 	FGBuildablePipelinePump_pump,
 	FGBuildablePipelinePump_pump_base,
+	FGBuildablePipelinePump_pump_base_base,
 	FGBuildablePipelinePump_valve,
 	FGBuildablePipelineSupport,
+	FGBuildablePipelineSupport_base,
 	FGBuildablePipeReservoir,
 	FGBuildablePipeReservoir_base,
+	FGBuildablePipeReservoir_base_base,
 	FGBuildablePole,
 	FGBuildablePole_base,
 	FGBuildablePowerPole,
@@ -1211,6 +1246,8 @@ export type {
 	FGBuildableResourceExtractor_oil_base_base,
 	FGBuildableResourceExtractor_water,
 	FGBuildableResourceExtractor_water_base,
+	FGBuildableResourceExtractor_water_base_base,
+	FGBuildableResourceExtractor_water_base_base_version_specific,
 	FGBuildableResourceSink,
 	FGBuildableResourceSink_base,
 	FGBuildableResourceSinkShop,

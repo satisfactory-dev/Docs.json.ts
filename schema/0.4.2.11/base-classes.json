@@ -1076,10 +1076,23 @@
 		"FGBuildablePipeline--junction--base": {
 			"allOf": [
 				{
+					"$ref": "#/$defs/FGBuildablePipeline--junction--base--base"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--base"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipeline--base--no-indicator"
+				}
+			]
+		},
+		"FGBuildablePipeline--junction--base--base": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipeline--base--no-indicator--base"
 				}
 			]
 		},
@@ -1094,8 +1107,18 @@
 			]
 		},
 		"FGBuildablePipelineJunction--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildablePipelineJunction--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildablePipeline--junction--base"
+				}
+			]
+		},
+		"FGBuildablePipelineJunction--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildablePipeline--junction--base",
+			"$ref": "#/$defs/FGBuildablePipeline--junction--base--base",
 			"required": ["mFluidBoxVolume"],
 			"properties": {
 				"mFluidBoxVolume": {
@@ -1348,6 +1371,11 @@
 					"$ref": "#/$defs/FGBuildable--powered"
 				},
 				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--water--base"
+				}
+			]
+		},
+		"FGBuildableResourceExtractor--water--base": {
 					"type": "object",
 					"required": [
 						"mMinimumDepthForPlacement",
@@ -1361,8 +1389,6 @@
 							"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
 						}
 					}
-				}
-			]
 		},
 		"FGBuildableResourceSink": {
 			"allOf": [
