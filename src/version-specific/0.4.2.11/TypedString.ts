@@ -14,6 +14,10 @@ import {
 	KeywordType,
 } from '@signpostmarv/json-schema-typescript-codegen/ajv';
 
+// required for type hinting on github actions checks
+import type {
+} from '@signpostmarv/json-schema-typescript-codegen/javascript-overrides';
+
 import type {
 	TypedString_DataTo__by_mode as TypedString_DataTo__by_mode__update3,
 	TypedString_mode as TypedString_mode__update3,
