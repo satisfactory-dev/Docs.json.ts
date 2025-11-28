@@ -153,8 +153,18 @@
 			}
 		},
 		"FGBuildable--occupied": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--occupied--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable"
+				}
+			]
+		},
+		"FGBuildable--occupied--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable",
+			"$ref": "#/$defs/FGBuildable--base",
 			"required": ["mOccupiedText"],
 			"properties": {
 				"mOccupiedText": {
@@ -411,8 +421,18 @@
 			}
 		},
 		"FGBuildable--tiered": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--tiered--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable"
+				}
+			]
+		},
+		"FGBuildable--tiered--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable",
+			"$ref": "#/$defs/FGBuildable--base",
 			"required": ["Tier"],
 			"properties": {
 				"Tier": {
@@ -899,8 +919,18 @@
 			]
 		},
 		"FGBuildableGenerator--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableGenerator--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base"
+				}
+			]
+		},
+		"FGBuildableGenerator--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base",
+			"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base--base",
 			"required": [
 				"mFuelClasses",
 				"mAvailableFuelClasses",
@@ -956,8 +986,18 @@
 			]
 		},
 		"FGBuildableGenerator--no-fuel--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base"
+				}
+			]
+		},
+		"FGBuildableGenerator--no-fuel--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--base",
+			"$ref": "#/$defs/FGBuildable--powered--base--base",
 			"required": [
 				"mPowerProduction",
 				"mPowerProductionExponent",
@@ -976,8 +1016,18 @@
 			}
 		},
 		"FGBuildableGeneratorFuel--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableGeneratorFuel--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableGenerator--base"
+				}
+			]
+		},
+		"FGBuildableGeneratorFuel--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableGenerator--base",
+			"$ref": "#/$defs/FGBuildableGenerator--base--base",
 			"properties": {
 				"mRTPCInterval": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
@@ -1000,6 +1050,11 @@
 					"$ref": "#/$defs/FGBuildableGeneratorFuel--base"
 				},
 				{
+					"$ref": "#/$defs/FGBuildableGeneratorFuel--biomass--base--base"
+				}
+			]
+		},
+		"FGBuildableGeneratorFuel--biomass--base--base": {
 					"type": "object",
 					"required": ["mDefaultFuelClasses"],
 					"properties": {
@@ -1018,8 +1073,7 @@
 							}
 						}
 					}
-				}
-			]
+
 		},
 		"FGBuildableGeneratorFuel--coal": {
 			"allOf": [
@@ -1037,6 +1091,11 @@
 					"$ref": "#/$defs/FGBuildableGeneratorFuel--base"
 				},
 				{
+					"$ref": "#/$defs/FGBuildableGeneratorFuel--coal--base--base"
+				}
+			]
+		},
+		"FGBuildableGeneratorFuel--coal--base--base": {
 					"type": "object",
 					"required": ["mDefaultFuelClasses"],
 					"properties": {
@@ -1057,8 +1116,7 @@
 							}
 						}
 					}
-				}
-			]
+
 		},
 		"FGBuildableGeneratorFuel--fuel": {
 			"allOf": [
@@ -1076,6 +1134,11 @@
 					"$ref": "#/$defs/FGBuildableGeneratorFuel--base"
 				},
 				{
+					"$ref": "#/$defs/FGBuildableGeneratorFuel--fuel--base--base"
+				}
+			]
+		},
+		"FGBuildableGeneratorFuel--fuel--base--base": {
 					"type": "object",
 					"required": ["mDefaultFuelClasses"],
 					"properties": {
@@ -1096,8 +1159,7 @@
 							}
 						}
 					}
-				}
-			]
+
 		},
 		"FGBuildableGeneratorGeoThermal": {
 			"allOf": [
@@ -2532,8 +2594,18 @@
 			]
 		},
 		"FGBuildableStorage--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableStorage--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base"
+				}
+			]
+		},
+		"FGBuildableStorage--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--base",
+			"$ref": "#/$defs/FGBuildable--powered--base--base",
 			"required": [
 				"mStackingHeight",
 				"mInventorySizeX",

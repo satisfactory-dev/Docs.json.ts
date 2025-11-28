@@ -28,6 +28,7 @@ import type {
 	FGBuildableGenerator_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableGenerator_base,
 	FGBuildableGenerator_no_fuel_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableGenerator_no_fuel_base,
 	FGBuildableGeneratorFuel_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableGeneratorFuel_base,
+	FGBuildableGeneratorFuel_base_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableGeneratorFuel_base_base,
 	FGBuildableGeneratorFuel_biomass_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableGeneratorFuel_biomass_base,
 	FGBuildableGeneratorFuel_coal_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableGeneratorFuel_coal_base,
 	FGBuildableGeneratorFuel_fuel_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableGeneratorFuel_fuel_base,
@@ -247,7 +248,9 @@ type FGBuildableGenerator = FGBuildableGenerator_no_fuel & docs_json_ts_0_3_7_7_
 
 type FGBuildableGenerator_no_fuel = docs_json_ts_0_3_7_7_classes_base_FGBuildableGenerator_no_fuel_base & FGBuildable_powered;
 
-type FGBuildableGeneratorFuel_base = docs_json_ts_0_3_7_7_classes_base_FGBuildableGeneratorFuel_base & {
+type FGBuildableGeneratorFuel_base = FGBuildableGeneratorFuel_base_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableGeneratorFuel_base;
+
+type FGBuildableGeneratorFuel_base_base = docs_json_ts_0_3_7_7_classes_base_FGBuildableGeneratorFuel_base_base & {
 	mFuel: docs_json_ts_0_4_2_11_properties_mFuel,
 	mFuelLoadAmount: docs_json_ts_common_types_integer_string,
 	mIsFullBlast: docs_json_ts_common_types_bool_string,
@@ -682,6 +685,7 @@ export type {
 	FGBuildableGenerator,
 	FGBuildableGenerator_no_fuel,
 	FGBuildableGeneratorFuel_base,
+	FGBuildableGeneratorFuel_base_base,
 	FGBuildableGeneratorFuel_biomass,
 	FGBuildableGeneratorFuel_coal,
 	FGBuildableGeneratorFuel_fuel,

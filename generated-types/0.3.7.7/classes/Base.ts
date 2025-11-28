@@ -79,7 +79,9 @@ type FGBuildable_docking_station_base = FGBuildable_powered_storage_base & {
 	mStackTransferSize: docs_json_ts_common_types_decimal_string,
 };
 
-type FGBuildable_occupied = FGBuildable & {
+type FGBuildable_occupied = FGBuildable_occupied_base & FGBuildable;
+
+type FGBuildable_occupied_base = FGBuildable_base & {
 	mOccupiedText: Exclude<string, ''>,
 };
 
@@ -147,7 +149,9 @@ type FGBuildable_spline_base = FGBuildable_with_length_base & {
 	mSplineData: '',
 };
 
-type FGBuildable_tiered = FGBuildable & {
+type FGBuildable_tiered = FGBuildable_tiered_base & FGBuildable;
+
+type FGBuildable_tiered_base = FGBuildable_base & {
 	Tier: docs_json_ts_0_3_7_7_properties_Tier,
 };
 
@@ -277,7 +281,9 @@ type FGBuildableFactorySimpleProducer_base = FGBuildable_powered_base & {
 
 type FGBuildableGenerator = FGBuildableGenerator_no_fuel & FGBuildableGenerator_base;
 
-type FGBuildableGenerator_base = FGBuildableGenerator_no_fuel_base & {
+type FGBuildableGenerator_base = FGBuildableGenerator_base_base & FGBuildableGenerator_no_fuel_base;
+
+type FGBuildableGenerator_base_base = FGBuildableGenerator_no_fuel_base_base & {
 	mCachedLoadPercentage?: docs_json_ts_common_types_decimal_string,
 	mFuelClasses: '',
 	mAvailableFuelClasses: '',
@@ -291,19 +297,25 @@ type FGBuildableGenerator_base = FGBuildableGenerator_no_fuel_base & {
 
 type FGBuildableGenerator_no_fuel = FGBuildableGenerator_no_fuel_base & FGBuildable_powered;
 
-type FGBuildableGenerator_no_fuel_base = FGBuildable_powered_base & {
+type FGBuildableGenerator_no_fuel_base = FGBuildableGenerator_no_fuel_base_base & FGBuildable_powered_base;
+
+type FGBuildableGenerator_no_fuel_base_base = FGBuildable_powered_base_base & {
 	mPowerProduction: docs_json_ts_common_types_decimal_string,
 	mPowerProductionExponent: docs_json_ts_common_types_decimal_string,
 	mLoadPercentage: docs_json_ts_common_types_decimal_string,
 };
 
-type FGBuildableGeneratorFuel_base = FGBuildableGenerator_base & {
+type FGBuildableGeneratorFuel_base = FGBuildableGeneratorFuel_base_base & FGBuildableGenerator_base;
+
+type FGBuildableGeneratorFuel_base_base = FGBuildableGenerator_base_base & {
 	mRTPCInterval?: docs_json_ts_common_types_decimal_string,
 };
 
 type FGBuildableGeneratorFuel_biomass = FGBuildableGenerator & FGBuildableGeneratorFuel_biomass_base;
 
-type FGBuildableGeneratorFuel_biomass_base = FGBuildableGeneratorFuel_base & {
+type FGBuildableGeneratorFuel_biomass_base = FGBuildableGeneratorFuel_base & FGBuildableGeneratorFuel_biomass_base_base;
+
+type FGBuildableGeneratorFuel_biomass_base_base = {
 	mDefaultFuelClasses: [
 		'/Script/FactoryGame.FGItemDescriptorBiomass',
 	],
@@ -311,7 +323,9 @@ type FGBuildableGeneratorFuel_biomass_base = FGBuildableGeneratorFuel_base & {
 
 type FGBuildableGeneratorFuel_coal = FGBuildableGenerator & FGBuildableGeneratorFuel_coal_base;
 
-type FGBuildableGeneratorFuel_coal_base = FGBuildableGeneratorFuel_base & {
+type FGBuildableGeneratorFuel_coal_base = FGBuildableGeneratorFuel_base & FGBuildableGeneratorFuel_coal_base_base;
+
+type FGBuildableGeneratorFuel_coal_base_base = {
 	mDefaultFuelClasses: [
         '/Game/FactoryGame/Resource/RawResources/Coal/Desc_Coal.Desc_Coal_C' | '/Game/FactoryGame/Resource/Parts/CompactedCoal/Desc_CompactedCoal.Desc_CompactedCoal_C' | '/Game/FactoryGame/Resource/Parts/PetroleumCoke/Desc_PetroleumCoke.Desc_PetroleumCoke_C',
         ...('/Game/FactoryGame/Resource/RawResources/Coal/Desc_Coal.Desc_Coal_C' | '/Game/FactoryGame/Resource/Parts/CompactedCoal/Desc_CompactedCoal.Desc_CompactedCoal_C' | '/Game/FactoryGame/Resource/Parts/PetroleumCoke/Desc_PetroleumCoke.Desc_PetroleumCoke_C')[],
@@ -320,7 +334,9 @@ type FGBuildableGeneratorFuel_coal_base = FGBuildableGeneratorFuel_base & {
 
 type FGBuildableGeneratorFuel_fuel = FGBuildableGenerator & FGBuildableGeneratorFuel_fuel_base;
 
-type FGBuildableGeneratorFuel_fuel_base = FGBuildableGeneratorFuel_base & {
+type FGBuildableGeneratorFuel_fuel_base = FGBuildableGeneratorFuel_base & FGBuildableGeneratorFuel_fuel_base_base;
+
+type FGBuildableGeneratorFuel_fuel_base_base = {
 	mDefaultFuelClasses: [
         '/Game/FactoryGame/Resource/Parts/Fuel/Desc_LiquidFuel.Desc_LiquidFuel_C' | '/Game/FactoryGame/Resource/Parts/Turbofuel/Desc_LiquidTurboFuel.Desc_LiquidTurboFuel_C' | '/Game/FactoryGame/Resource/Parts/BioFuel/Desc_LiquidBiofuel.Desc_LiquidBiofuel_C',
         ...('/Game/FactoryGame/Resource/Parts/Fuel/Desc_LiquidFuel.Desc_LiquidFuel_C' | '/Game/FactoryGame/Resource/Parts/Turbofuel/Desc_LiquidTurboFuel.Desc_LiquidTurboFuel_C' | '/Game/FactoryGame/Resource/Parts/BioFuel/Desc_LiquidBiofuel.Desc_LiquidBiofuel_C')[],
@@ -687,7 +703,9 @@ type FGBuildableSplitterSmart_base = FGBuildableAttachment_splitter_base & {
 
 type FGBuildableStorage = FGBuildableStorage_base & FGBuildable_powered;
 
-type FGBuildableStorage_base = FGBuildable_powered_base & {
+type FGBuildableStorage_base = FGBuildableStorage_base_base & FGBuildable_powered_base;
+
+type FGBuildableStorage_base_base = FGBuildable_powered_base_base & {
 	mStackingHeight: docs_json_ts_common_types_decimal_string,
 	mInventorySizeX: docs_json_ts_common_types_integer_string,
 	mInventorySizeY: docs_json_ts_common_types_integer_string,
@@ -1048,6 +1066,7 @@ export type {
 	FGBuildable_docking_station,
 	FGBuildable_docking_station_base,
 	FGBuildable_occupied,
+	FGBuildable_occupied_base,
 	FGBuildable_pole,
 	FGBuildable_pole_base,
 	FGBuildable_pole_with_length,
@@ -1063,6 +1082,7 @@ export type {
 	FGBuildable_spline,
 	FGBuildable_spline_base,
 	FGBuildable_tiered,
+	FGBuildable_tiered_base,
 	FGBuildable_with_height,
 	FGBuildable_with_height_base,
 	FGBuildable_with_height_and_elevation,
@@ -1096,15 +1116,21 @@ export type {
 	FGBuildableFactorySimpleProducer_base,
 	FGBuildableGenerator,
 	FGBuildableGenerator_base,
+	FGBuildableGenerator_base_base,
 	FGBuildableGenerator_no_fuel,
 	FGBuildableGenerator_no_fuel_base,
+	FGBuildableGenerator_no_fuel_base_base,
 	FGBuildableGeneratorFuel_base,
+	FGBuildableGeneratorFuel_base_base,
 	FGBuildableGeneratorFuel_biomass,
 	FGBuildableGeneratorFuel_biomass_base,
+	FGBuildableGeneratorFuel_biomass_base_base,
 	FGBuildableGeneratorFuel_coal,
 	FGBuildableGeneratorFuel_coal_base,
+	FGBuildableGeneratorFuel_coal_base_base,
 	FGBuildableGeneratorFuel_fuel,
 	FGBuildableGeneratorFuel_fuel_base,
+	FGBuildableGeneratorFuel_fuel_base_base,
 	FGBuildableGeneratorGeoThermal,
 	FGBuildableGeneratorGeoThermal_base,
 	FGBuildableGeneratorNuclear,
@@ -1184,6 +1210,7 @@ export type {
 	FGBuildableSplitterSmart_base,
 	FGBuildableStorage,
 	FGBuildableStorage_base,
+	FGBuildableStorage_base_base,
 	FGBuildableTradingPost,
 	FGBuildableTradingPost_base,
 	FGBuildableTradingPost_base_version_specific,
