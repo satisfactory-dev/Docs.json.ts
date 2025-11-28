@@ -774,8 +774,18 @@
 			]
 		},
 		"FGBuildableMAM--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableMAM--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable"
+				}
+			]
+		},
+		"FGBuildableMAM--base--base": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--base",
 			"required": ["mSignificanceRange", "mCurrentResearchState"],
 			"properties": {
 				"mSignificanceRange": {

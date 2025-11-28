@@ -848,8 +848,18 @@
 			]
 		},
 		"FGBuildableFactory--jump-pad--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableFactory--jump-pad--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base"
+				}
+			]
+		},
+		"FGBuildableFactory--jump-pad--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--base",
+			"$ref": "#/$defs/FGBuildable--powered--base--base",
 			"required": ["JumpForceCharacter", "JumpForcePhysics"],
 			"properties": {
 				"JumpForceCharacter": {
@@ -871,8 +881,18 @@
 			]
 		},
 		"FGBuildableFactory--landing-pad--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableFactory--landing-pad--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base"
+				}
+			]
+		},
+		"FGBuildableFactory--landing-pad--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--base",
+			"$ref": "#/$defs/FGBuildable--powered--base--base",
 			"required": ["mDampeningFactor", "mPlayerList"],
 			"properties": {
 				"mDampeningFactor": {

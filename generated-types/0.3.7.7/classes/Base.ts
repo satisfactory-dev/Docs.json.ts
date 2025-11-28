@@ -260,14 +260,18 @@ type FGBuildableDockingStation_base = FGBuildable_docking_station_base & {
 
 type FGBuildableFactory_jump_pad = FGBuildable_powered & FGBuildableFactory_jump_pad_base;
 
-type FGBuildableFactory_jump_pad_base = FGBuildable_powered_base & {
+type FGBuildableFactory_jump_pad_base = FGBuildableFactory_jump_pad_base_base & FGBuildable_powered_base;
+
+type FGBuildableFactory_jump_pad_base_base = FGBuildable_powered_base_base & {
 	JumpForceCharacter: docs_json_ts_common_types_decimal_string,
 	JumpForcePhysics: docs_json_ts_common_types_decimal_string,
 };
 
 type FGBuildableFactory_landing_pad = FGBuildable_powered & FGBuildableFactory_landing_pad_base;
 
-type FGBuildableFactory_landing_pad_base = FGBuildable_powered_base & {
+type FGBuildableFactory_landing_pad_base = FGBuildableFactory_landing_pad_base_base & FGBuildable_powered_base;
+
+type FGBuildableFactory_landing_pad_base_base = FGBuildable_powered_base_base & {
 	mDampeningFactor: docs_json_ts_common_types_decimal_string,
 	mPlayerList: '',
 };
@@ -1112,8 +1116,10 @@ export type {
 	FGBuildableDockingStation_base,
 	FGBuildableFactory_jump_pad,
 	FGBuildableFactory_jump_pad_base,
+	FGBuildableFactory_jump_pad_base_base,
 	FGBuildableFactory_landing_pad,
 	FGBuildableFactory_landing_pad_base,
+	FGBuildableFactory_landing_pad_base_base,
 	FGBuildableFactorySimpleProducer,
 	FGBuildableFactorySimpleProducer_base,
 	FGBuildableGenerator,
