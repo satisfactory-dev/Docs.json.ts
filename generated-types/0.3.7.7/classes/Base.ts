@@ -73,7 +73,7 @@ type FGBuildable_DisableAttachmentSnapOn = FGBuildable & {
 
 type FGBuildable_docking_station = FGBuildable_docking_station_base & FGBuildable_powered_storage;
 
-type FGBuildable_docking_station_base = FGBuildable_powered_storage_base & {
+type FGBuildable_docking_station_base = FGBuildable_powered_storage_base_base & {
 	mMapText: string,
 	mTransferSpeed: docs_json_ts_common_types_decimal_string,
 	mStackTransferSize: docs_json_ts_common_types_decimal_string,
@@ -140,7 +140,9 @@ type FGBuildable_powered_base_resources_base = FGBuildable_powered_base_base & {
 
 type FGBuildable_powered_storage = FGBuildable_powered_storage_base & FGBuildable_powered;
 
-type FGBuildable_powered_storage_base = FGBuildable_powered_base & {
+type FGBuildable_powered_storage_base = FGBuildable_powered_storage_base_base & FGBuildable_powered_base;
+
+type FGBuildable_powered_storage_base_base = FGBuildable_powered_base_base & {
 	mStorageSizeX: docs_json_ts_common_types_integer_string,
 	mStorageSizeY: docs_json_ts_common_types_integer_string,
 };
@@ -1117,6 +1119,7 @@ export type {
 	FGBuildable_powered_base_resources_base,
 	FGBuildable_powered_storage,
 	FGBuildable_powered_storage_base,
+	FGBuildable_powered_storage_base_base,
 	FGBuildable_spline,
 	FGBuildable_spline_base,
 	FGBuildable_tiered,

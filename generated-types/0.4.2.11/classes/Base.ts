@@ -11,7 +11,7 @@ import type {
 	FGBuildable_powered_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base,
 	FGBuildable_powered_base_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base_base,
 	FGBuildable_powered_base_resources as docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base_resources,
-	FGBuildable_powered_storage_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_storage_base,
+	FGBuildable_powered_storage_base_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_storage_base_base,
 	FGBuildable_spline as docs_json_ts_0_3_7_7_classes_base_FGBuildable_spline,
 	FGBuildable_tiered as docs_json_ts_0_3_7_7_classes_base_FGBuildable_tiered,
 	FGBuildable_with_height as docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height,
@@ -142,7 +142,9 @@ type FGBuildable_base_version_specific = docs_json_ts_0_3_7_7_classes_base_FGBui
 	mShouldModifyWorldGrid: docs_json_ts_common_types_bool_string,
 };
 
-type FGBuildable_docking_station = docs_json_ts_0_3_7_7_classes_base_FGBuildable_docking_station_base & FGBuildable_powered_storage;
+type FGBuildable_docking_station = FGBuildable_docking_station_base & FGBuildable_powered_storage;
+
+type FGBuildable_docking_station_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_docking_station_base & FGBuildable_powered_storage_base;
 
 type FGBuildable_light_related_thing = FGBuildable & {
 	mIsEnabled: docs_json_ts_common_types_bool_string,
@@ -187,7 +189,9 @@ type FGBuildable_powered_has_mAllowedResourceForms_base = FGBuildable_powered_ba
 
 type FGBuildable_powered_has_mAllowedResourceForms_with_resources = FGBuildable_powered_has_mAllowedResourceForms & docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base_resources;
 
-type FGBuildable_powered_storage = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_storage_base & FGBuildable_powered;
+type FGBuildable_powered_storage = FGBuildable_powered_storage_base & FGBuildable_powered;
+
+type FGBuildable_powered_storage_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_storage_base_base & FGBuildable_powered_base_base;
 
 type FGBuildable_spline = docs_json_ts_0_3_7_7_classes_base_FGBuildable_spline & FGBuildable;
 
@@ -225,6 +229,37 @@ type FGBuildableConveyorBelt_spline = docs_json_ts_0_3_7_7_classes_base_FGBuilda
 type FGBuildableConveyorLift = docs_json_ts_0_3_7_7_classes_base_FGBuildableConveyorLift & FGBuildable;
 
 type FGBuildableDockingStation = FGBuildable_docking_station & docs_json_ts_0_3_7_7_classes_base_FGBuildableDockingStation_base;
+
+type FGBuildableDroneStation = FGBuildableDroneStation_base & FGBuildable_docking_station;
+
+type FGBuildableDroneStation_base = FGBuildableDroneStation_base_base & FGBuildableDroneStation_base_version_specific;
+
+type FGBuildableDroneStation_base_base = FGBuildable_docking_station_base & {
+	mStoppedProducingAnimationSounds: docs_json_ts_common_types_bool_string,
+	mStoppedAkComponents: '',
+	mSocketStoppedAkComponents: '',
+	m_DockingStates: 'DS_UNDOCKED',
+	m_OffsetTime: docs_json_ts_common_types_decimal_string,
+	mDroneDockingStartLocationLocal: docs_json_ts_common_types_XYZ_decimal_string,
+	mDroneDockingLocationLocal: docs_json_ts_common_types_XYZ_decimal_string,
+	mBatteryClasses: docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list,
+	mDroneDockingQueue: '',
+	mStationHasDronesInQueue: docs_json_ts_common_types_bool_string,
+	mItemTransferringStage: 'ITS_NONE',
+	mTransferProgress: docs_json_ts_common_types_decimal_string,
+	mDroneQueueRadius: docs_json_ts_common_types_decimal_string,
+	mDroneQueueSeparationRadius: docs_json_ts_common_types_decimal_string,
+	mDroneQueueVerticalSeparation: docs_json_ts_common_types_decimal_string,
+	mTripPowerCost: docs_json_ts_common_types_decimal_string,
+	mTripPowerPerMeterCost: docs_json_ts_common_types_decimal_string,
+	mTripInformationSampleCount: docs_json_ts_common_types_integer_string,
+	mBatteryStorageSizeX: docs_json_ts_common_types_integer_string,
+	mBatteryStorageSizeY: docs_json_ts_common_types_integer_string,
+};
+
+type FGBuildableDroneStation_base_version_specific = FGBuildable_docking_station_base & {
+	mMapText: 'Drone Port',
+};
 
 type FGBuildableFactory_jump_pad = FGBuildable_powered & docs_json_ts_0_3_7_7_classes_base_FGBuildableFactory_jump_pad_base;
 
@@ -665,6 +700,7 @@ export type {
 	FGBuildable_base,
 	FGBuildable_base_version_specific,
 	FGBuildable_docking_station,
+	FGBuildable_docking_station_base,
 	FGBuildable_light_related_thing,
 	FGBuildable_mHasPower,
 	FGBuildable_mHasPower_base,
@@ -679,6 +715,7 @@ export type {
 	FGBuildable_powered_has_mAllowedResourceForms_base,
 	FGBuildable_powered_has_mAllowedResourceForms_with_resources,
 	FGBuildable_powered_storage,
+	FGBuildable_powered_storage_base,
 	FGBuildable_spline,
 	FGBuildable_tiered,
 	FGBuildable_with_height_and_elevation,
@@ -692,6 +729,10 @@ export type {
 	FGBuildableConveyorBelt_spline,
 	FGBuildableConveyorLift,
 	FGBuildableDockingStation,
+	FGBuildableDroneStation,
+	FGBuildableDroneStation_base,
+	FGBuildableDroneStation_base_base,
+	FGBuildableDroneStation_base_version_specific,
 	FGBuildableFactory_jump_pad,
 	FGBuildableFactory_landing_pad,
 	FGBuildableFactorySimpleProducer,

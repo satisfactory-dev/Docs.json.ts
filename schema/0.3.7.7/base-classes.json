@@ -140,7 +140,7 @@
 		},
 		"FGBuildable--docking-station--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered-storage--base",
+			"$ref": "#/$defs/FGBuildable--powered-storage--base--base",
 			"required": ["mMapText", "mTransferSpeed", "mStackTransferSize"],
 			"properties": {
 				"mMapText": {"type": "string"},
@@ -397,8 +397,18 @@
 			]
 		},
 		"FGBuildable--powered-storage--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--powered-storage--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base"
+				}
+			]
+		},
+		"FGBuildable--powered-storage--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--base",
+			"$ref": "#/$defs/FGBuildable--powered--base--base",
 			"required": ["mStorageSizeX", "mStorageSizeY"],
 			"properties": {
 				"mStorageSizeX": {

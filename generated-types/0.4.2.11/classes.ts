@@ -2,7 +2,6 @@
 
 import type {
 	FGBuildable as docs_json_ts_0_4_2_11_classes_base_FGBuildable,
-	FGBuildable_docking_station as docs_json_ts_0_4_2_11_classes_base_FGBuildable_docking_station,
 	FGBuildable_occupied as docs_json_ts_0_4_2_11_classes_base_FGBuildable_occupied,
 	FGBuildable_powered as docs_json_ts_0_4_2_11_classes_base_FGBuildable_powered,
 	FGBuildable_spline as docs_json_ts_0_4_2_11_classes_base_FGBuildable_spline,
@@ -16,6 +15,7 @@ import type {
 	FGBuildableConveyorBelt_spline as docs_json_ts_0_4_2_11_classes_base_FGBuildableConveyorBelt_spline,
 	FGBuildableConveyorLift as docs_json_ts_0_4_2_11_classes_base_FGBuildableConveyorLift,
 	FGBuildableDockingStation as docs_json_ts_0_4_2_11_classes_base_FGBuildableDockingStation,
+	FGBuildableDroneStation as docs_json_ts_0_4_2_11_classes_base_FGBuildableDroneStation,
 	FGBuildableFactory_jump_pad as docs_json_ts_0_4_2_11_classes_base_FGBuildableFactory_jump_pad,
 	FGBuildableFactory_landing_pad as docs_json_ts_0_4_2_11_classes_base_FGBuildableFactory_landing_pad,
 	FGBuildableFactorySimpleProducer as docs_json_ts_0_4_2_11_classes_base_FGBuildableFactorySimpleProducer,
@@ -90,17 +90,6 @@ import type {
 } from './classes/Base.ts';
 
 import type {
-	bool_string as docs_json_ts_common_types_bool_string,
-	decimal_string as docs_json_ts_common_types_decimal_string,
-	integer_string as docs_json_ts_common_types_integer_string,
-	XYZ_decimal_string as docs_json_ts_common_types_XYZ_decimal_string,
-} from './../common/types.ts';
-
-import type {
-	DocsDotJson_BlueprintGeneratedClass_quoted_list as docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list,
-} from './../0.3.7.7/types/properties.ts';
-
-import type {
 	FGConsumableEquipment as docs_json_ts_0_3_7_7_classes_base_FGConsumableEquipment,
 } from './../0.3.7.7/classes/Base.ts';
 
@@ -124,29 +113,7 @@ type FGBuildableConveyorLift = docs_json_ts_0_4_2_11_classes_base_FGBuildableCon
 
 type FGBuildableDockingStation = docs_json_ts_0_4_2_11_classes_base_FGBuildableDockingStation;
 
-type FGBuildableDroneStation = docs_json_ts_0_4_2_11_classes_base_FGBuildable_docking_station & {
-	mStoppedProducingAnimationSounds: docs_json_ts_common_types_bool_string,
-	mStoppedAkComponents: '',
-	mSocketStoppedAkComponents: '',
-	m_DockingStates: 'DS_UNDOCKED',
-	m_OffsetTime: docs_json_ts_common_types_decimal_string,
-	mMapText: 'Drone Port',
-	mDroneDockingStartLocationLocal: docs_json_ts_common_types_XYZ_decimal_string,
-	mDroneDockingLocationLocal: docs_json_ts_common_types_XYZ_decimal_string,
-	mBatteryClasses: docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list,
-	mDroneDockingQueue: '',
-	mStationHasDronesInQueue: docs_json_ts_common_types_bool_string,
-	mItemTransferringStage: 'ITS_NONE',
-	mTransferProgress: docs_json_ts_common_types_decimal_string,
-	mDroneQueueRadius: docs_json_ts_common_types_decimal_string,
-	mDroneQueueSeparationRadius: docs_json_ts_common_types_decimal_string,
-	mDroneQueueVerticalSeparation: docs_json_ts_common_types_decimal_string,
-	mTripPowerCost: docs_json_ts_common_types_decimal_string,
-	mTripPowerPerMeterCost: docs_json_ts_common_types_decimal_string,
-	mTripInformationSampleCount: docs_json_ts_common_types_integer_string,
-	mBatteryStorageSizeX: docs_json_ts_common_types_integer_string,
-	mBatteryStorageSizeY: docs_json_ts_common_types_integer_string,
-};
+type FGBuildableDroneStation = docs_json_ts_0_4_2_11_classes_base_FGBuildableDroneStation;
 
 type FGBuildableFactory_jump_pad = docs_json_ts_0_4_2_11_classes_base_FGBuildableFactory_jump_pad;
 
