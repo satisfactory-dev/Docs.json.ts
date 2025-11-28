@@ -547,9 +547,7 @@
 		"FGBuildableDroneStation--base--version-specific": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--docking-station--base",
-			"required": [
-				"mMapText"
-			],
+			"required": ["mMapText"],
 			"properties": {
 				"mMapText": {
 					"type": "string",
