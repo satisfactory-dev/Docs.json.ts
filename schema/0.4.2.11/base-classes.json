@@ -1404,36 +1404,36 @@
 			]
 		},
 		"FGBuildableResourceSink--base": {
-					"type": "object",
+			"type": "object",
 			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceSink--base--base",
-					"required": [
-						"IsAnimationProducing",
-						"EnableTickGrinder",
-						"EnableTickEngine",
-						"mGrinderInterpDuration",
-						"mEngineInterpDuration",
-						"mProducingTimer"
-					],
-					"properties": {
-						"IsAnimationProducing": {
-							"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-						},
-						"EnableTickGrinder": {
-							"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-						},
-						"EnableTickEngine": {
-							"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-						},
-						"mGrinderInterpDuration": {
-							"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-						},
-						"mEngineInterpDuration": {
-							"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-						},
-						"mProducingTimer": {
-							"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-						}
-					}
+			"required": [
+				"IsAnimationProducing",
+				"EnableTickGrinder",
+				"EnableTickEngine",
+				"mGrinderInterpDuration",
+				"mEngineInterpDuration",
+				"mProducingTimer"
+			],
+			"properties": {
+				"IsAnimationProducing": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"EnableTickGrinder": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"EnableTickEngine": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mGrinderInterpDuration": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mEngineInterpDuration": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mProducingTimer": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
 		},
 		"FGBuildableResourceSinkShop": {
 			"allOf": [
