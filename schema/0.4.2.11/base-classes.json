@@ -1893,15 +1893,14 @@
 			]
 		},
 		"FGItemDescriptorNuclearFuel--base": {
-					"type": "object",
-					"required": ["mSpentFuelClass"],
-					"properties": {
-						"mSpentFuelClass": {
-							"type": "string",
-							"DocsDotJson_BlueprintGeneratedClass_single_quoted": null
-						}
-					}
-
+			"type": "object",
+			"required": ["mSpentFuelClass"],
+			"properties": {
+				"mSpentFuelClass": {
+					"type": "string",
+					"DocsDotJson_BlueprintGeneratedClass_single_quoted": null
+				}
+			}
 		},
 		"FGNobeliskDetonator": {
 			"allOf": [
