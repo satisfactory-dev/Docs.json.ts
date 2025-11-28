@@ -534,8 +534,18 @@
 			}
 		},
 		"FGBuildable--with-size-and-elevation": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--with-size-and-elevation--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--with-size"
+				}
+			]
+		},
+		"FGBuildable--with-size-and-elevation--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--with-size",
+			"$ref": "#/$defs/FGBuildable--with-size--base",
 			"required": ["mSize", "mElevation", "mDisableSnapOn"],
 			"properties": {
 				"mSize": {
