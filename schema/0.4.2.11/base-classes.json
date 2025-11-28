@@ -1399,7 +1399,13 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceSink--base"
 				},
 				{
+					"$ref": "#/$defs/FGBuildableResourceSink--base"
+				}
+			]
+		},
+		"FGBuildableResourceSink--base": {
 					"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceSink--base--base",
 					"required": [
 						"IsAnimationProducing",
 						"EnableTickGrinder",
@@ -1428,8 +1434,6 @@
 							"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 						}
 					}
-				}
-			]
 		},
 		"FGBuildableResourceSinkShop": {
 			"allOf": [

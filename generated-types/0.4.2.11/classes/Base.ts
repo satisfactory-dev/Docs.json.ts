@@ -63,6 +63,7 @@ import type {
 	FGBuildableResourceExtractor_oil_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_oil_base,
 	FGBuildableResourceExtractor_water_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_water_base,
 	FGBuildableResourceSink_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceSink_base,
+	FGBuildableResourceSink_base_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceSink_base_base,
 	FGBuildableResourceSinkShop_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceSinkShop_base,
 	FGBuildableSpaceElevator_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableSpaceElevator_base,
 	FGBuildableSplitterSmart_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableSplitterSmart_base,
@@ -440,7 +441,9 @@ type FGBuildableResourceExtractor_water_base = {
 	mDepthTraceOriginOffset: docs_json_ts_common_types_XYZ_decimal_string,
 };
 
-type FGBuildableResourceSink = FGBuildable_powered & docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceSink_base & {
+type FGBuildableResourceSink = FGBuildable_powered & docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceSink_base & FGBuildableResourceSink_base;
+
+type FGBuildableResourceSink_base = docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceSink_base_base & {
 	IsAnimationProducing: docs_json_ts_common_types_bool_string,
 	EnableTickGrinder: docs_json_ts_common_types_bool_string,
 	EnableTickEngine: docs_json_ts_common_types_bool_string,
@@ -752,6 +755,7 @@ export type {
 	FGBuildableResourceExtractor_water,
 	FGBuildableResourceExtractor_water_base,
 	FGBuildableResourceSink,
+	FGBuildableResourceSink_base,
 	FGBuildableResourceSinkShop,
 	FGBuildableSpaceElevator,
 	FGBuildableSplitterSmart,

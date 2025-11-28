@@ -704,13 +704,17 @@ type FGBuildableResourceSink = FGBuildable_powered & FGBuildableResourceSink_bas
 	mSavedProducingTimer: docs_json_ts_common_types_decimal_string,
 };
 
-type FGBuildableResourceSink_base = FGBuildable_powered_base & {
+type FGBuildableResourceSink_base = FGBuildableResourceSink_base_base & FGBuildable_powered_base;
+
+type FGBuildableResourceSink_base_base = FGBuildable_powered_base_base & {
 	mProcessingTime: docs_json_ts_common_types_decimal_string,
 };
 
 type FGBuildableResourceSinkShop = FGBuildable_powered & FGBuildableResourceSinkShop_base;
 
-type FGBuildableResourceSinkShop_base = FGBuildable_powered_base & {
+type FGBuildableResourceSinkShop_base = FGBuildableResourceSinkShop_base_base & FGBuildable_powered_base;
+
+type FGBuildableResourceSinkShop_base_base = FGBuildable_powered_base_base & {
 	mShopInventoryDefaultSize: docs_json_ts_common_types_integer_string,
 };
 
@@ -1250,8 +1254,10 @@ export type {
 	FGBuildableResourceExtractor_water_base_base_version_specific,
 	FGBuildableResourceSink,
 	FGBuildableResourceSink_base,
+	FGBuildableResourceSink_base_base,
 	FGBuildableResourceSinkShop,
 	FGBuildableResourceSinkShop_base,
+	FGBuildableResourceSinkShop_base_base,
 	FGBuildableSpaceElevator,
 	FGBuildableSpaceElevator_base,
 	FGBuildableSpaceElevator_base_base,
