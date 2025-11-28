@@ -1055,25 +1055,24 @@
 			]
 		},
 		"FGBuildableGeneratorFuel--biomass--base--base": {
-					"type": "object",
-					"required": ["mDefaultFuelClasses"],
-					"properties": {
-						"mDefaultFuelClasses": {
+			"type": "object",
+			"required": ["mDefaultFuelClasses"],
+			"properties": {
+				"mDefaultFuelClasses": {
+					"type": "string",
+					"typed_string": {
+						"type": "array",
+						"minItems": 1,
+						"uniqueItems": true,
+						"items": {
 							"type": "string",
-							"typed_string": {
-								"type": "array",
-								"minItems": 1,
-								"uniqueItems": true,
-								"items": {
-									"type": "string",
-									"enum": [
-										"/Script/FactoryGame.FGItemDescriptorBiomass"
-									]
-								}
-							}
+							"enum": [
+								"/Script/FactoryGame.FGItemDescriptorBiomass"
+							]
 						}
 					}
-
+				}
+			}
 		},
 		"FGBuildableGeneratorFuel--coal": {
 			"allOf": [
@@ -1096,27 +1095,26 @@
 			]
 		},
 		"FGBuildableGeneratorFuel--coal--base--base": {
-					"type": "object",
-					"required": ["mDefaultFuelClasses"],
-					"properties": {
-						"mDefaultFuelClasses": {
+			"type": "object",
+			"required": ["mDefaultFuelClasses"],
+			"properties": {
+				"mDefaultFuelClasses": {
+					"type": "string",
+					"typed_string": {
+						"type": "array",
+						"minItems": 1,
+						"uniqueItems": true,
+						"items": {
 							"type": "string",
-							"typed_string": {
-								"type": "array",
-								"minItems": 1,
-								"uniqueItems": true,
-								"items": {
-									"type": "string",
-									"enum": [
-										"/Game/FactoryGame/Resource/RawResources/Coal/Desc_Coal.Desc_Coal_C",
-										"/Game/FactoryGame/Resource/Parts/CompactedCoal/Desc_CompactedCoal.Desc_CompactedCoal_C",
-										"/Game/FactoryGame/Resource/Parts/PetroleumCoke/Desc_PetroleumCoke.Desc_PetroleumCoke_C"
-									]
-								}
-							}
+							"enum": [
+								"/Game/FactoryGame/Resource/RawResources/Coal/Desc_Coal.Desc_Coal_C",
+								"/Game/FactoryGame/Resource/Parts/CompactedCoal/Desc_CompactedCoal.Desc_CompactedCoal_C",
+								"/Game/FactoryGame/Resource/Parts/PetroleumCoke/Desc_PetroleumCoke.Desc_PetroleumCoke_C"
+							]
 						}
 					}
-
+				}
+			}
 		},
 		"FGBuildableGeneratorFuel--fuel": {
 			"allOf": [
@@ -1139,27 +1137,26 @@
 			]
 		},
 		"FGBuildableGeneratorFuel--fuel--base--base": {
-					"type": "object",
-					"required": ["mDefaultFuelClasses"],
-					"properties": {
-						"mDefaultFuelClasses": {
+			"type": "object",
+			"required": ["mDefaultFuelClasses"],
+			"properties": {
+				"mDefaultFuelClasses": {
+					"type": "string",
+					"typed_string": {
+						"type": "array",
+						"minItems": 1,
+						"uniqueItems": true,
+						"items": {
 							"type": "string",
-							"typed_string": {
-								"type": "array",
-								"minItems": 1,
-								"uniqueItems": true,
-								"items": {
-									"type": "string",
-									"enum": [
-										"/Game/FactoryGame/Resource/Parts/Fuel/Desc_LiquidFuel.Desc_LiquidFuel_C",
-										"/Game/FactoryGame/Resource/Parts/Turbofuel/Desc_LiquidTurboFuel.Desc_LiquidTurboFuel_C",
-										"/Game/FactoryGame/Resource/Parts/BioFuel/Desc_LiquidBiofuel.Desc_LiquidBiofuel_C"
-									]
-								}
-							}
+							"enum": [
+								"/Game/FactoryGame/Resource/Parts/Fuel/Desc_LiquidFuel.Desc_LiquidFuel_C",
+								"/Game/FactoryGame/Resource/Parts/Turbofuel/Desc_LiquidTurboFuel.Desc_LiquidTurboFuel_C",
+								"/Game/FactoryGame/Resource/Parts/BioFuel/Desc_LiquidBiofuel.Desc_LiquidBiofuel_C"
+							]
 						}
 					}
-
+				}
+			}
 		},
 		"FGBuildableGeneratorGeoThermal": {
 			"allOf": [
