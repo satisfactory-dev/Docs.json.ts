@@ -439,7 +439,9 @@ type FGBuildablePole = docs_json_ts_0_3_7_7_classes_base_FGBuildablePole & FGBui
 
 type FGBuildablePowerPole = docs_json_ts_0_3_7_7_classes_base_FGBuildablePowerPole & FGBuildable_mHasPower;
 
-type FGBuildablePowerStorage = FGBuildable_powered & {
+type FGBuildablePowerStorage = FGBuildable_powered & FGBuildablePowerStorage_base;
+
+type FGBuildablePowerStorage_base = FGBuildable_powered_base_base & {
 	m_PreviousBatteryStatus: 'BS_Idle',
 	mCurrentGameTimeSinceStateChange: docs_json_ts_common_types_decimal_string,
 	mActivationEventID: docs_json_ts_common_types_integer_string,
@@ -795,6 +797,7 @@ export type {
 	FGBuildablePole,
 	FGBuildablePowerPole,
 	FGBuildablePowerStorage,
+	FGBuildablePowerStorage_base,
 	FGBuildableRadarTower,
 	FGBuildableRailroadStation,
 	FGBuildableRailroadTrack,
