@@ -253,8 +253,11 @@ type FGBuildableConveyorLift_base = FGBuildableConveyorBelt_base_base & {
 
 type FGBuildableDockingStation = FGBuildable_docking_station & FGBuildableDockingStation_base;
 
-type FGBuildableDockingStation_base = FGBuildable_docking_station_base & {
+type FGBuildableDockingStation_base = FGBuildableDockingStation_base_base & {
 	mMapText: '',
+};
+
+type FGBuildableDockingStation_base_base = FGBuildable_docking_station_base & {
 	mFuelTransferSpeed: docs_json_ts_common_types_decimal_string,
 };
 
@@ -368,7 +371,9 @@ type FGBuildableGeneratorNuclear_base_base = FGBuildableGenerator_no_fuel_base_b
 
 type FGBuildableJumppad = FGBuildableJumppad_base & FGBuildable_powered;
 
-type FGBuildableJumppad_base = FGBuildable_powered_base & {
+type FGBuildableJumppad_base = FGBuildableJumppad_base_base & FGBuildable_powered_base;
+
+type FGBuildableJumppad_base_base = FGBuildable_powered_base_base & {
 	mPowerBankCapacity: docs_json_ts_common_types_decimal_string,
 	mLaunchPowerCost: docs_json_ts_common_types_decimal_string,
 	mChargeRateMultiplier: docs_json_ts_common_types_decimal_string,
@@ -1153,6 +1158,7 @@ export type {
 	FGBuildableConveyorLift_base,
 	FGBuildableDockingStation,
 	FGBuildableDockingStation_base,
+	FGBuildableDockingStation_base_base,
 	FGBuildableFactory_jump_pad,
 	FGBuildableFactory_jump_pad_base,
 	FGBuildableFactory_jump_pad_base_base,
@@ -1185,6 +1191,7 @@ export type {
 	FGBuildableGeneratorNuclear_base_base,
 	FGBuildableJumppad,
 	FGBuildableJumppad_base,
+	FGBuildableJumppad_base_base,
 	FGBuildableLadder,
 	FGBuildableManufacturer_base,
 	FGBuildableManufacturer_base_base,

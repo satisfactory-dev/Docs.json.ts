@@ -809,13 +809,20 @@
 		},
 		"FGBuildableDockingStation--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--docking-station--base",
-			"required": ["mMapText", "mFuelTransferSpeed"],
+			"$ref": "#/$defs/FGBuildableDockingStation--base--base",
+			"required": ["mMapText"],
 			"properties": {
 				"mMapText": {
 					"type": "string",
 					"const": ""
-				},
+				}
+			}
+		},
+		"FGBuildableDockingStation--base--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--docking-station--base",
+			"required": ["mFuelTransferSpeed"],
+			"properties": {
 				"mFuelTransferSpeed": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
@@ -1247,8 +1254,18 @@
 			]
 		},
 		"FGBuildableJumppad--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableJumppad--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base"
+				}
+			]
+		},
+		"FGBuildableJumppad--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--base",
+			"$ref": "#/$defs/FGBuildable--powered--base--base",
 			"required": [
 				"mPowerBankCapacity",
 				"mLaunchPowerCost",
