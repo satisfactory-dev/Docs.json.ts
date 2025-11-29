@@ -1259,8 +1259,18 @@
 			]
 		},
 		"FGBuildableGeneratorNuclear--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableGeneratorNuclear--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableGenerator--base"
+				}
+			]
+		},
+		"FGBuildableGeneratorNuclear--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableGenerator--base",
+			"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base--base",
 			"required": ["mWasteLeftFromCurrentFuel", "mFuelResourceForm"],
 			"properties": {
 				"mWasteLeftFromCurrentFuel": {

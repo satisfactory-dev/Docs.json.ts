@@ -365,7 +365,9 @@ type FGBuildableGeneratorNuclear = FGBuildableGenerator & FGBuildableGeneratorNu
 	],
 };
 
-type FGBuildableGeneratorNuclear_base = FGBuildableGenerator_base & {
+type FGBuildableGeneratorNuclear_base = FGBuildableGeneratorNuclear_base_base & FGBuildableGenerator_base;
+
+type FGBuildableGeneratorNuclear_base_base = FGBuildableGenerator_no_fuel_base_base & {
 	mWasteLeftFromCurrentFuel: docs_json_ts_common_types_integer_string,
 	mFuelResourceForm: 'RF_SOLID',
 };
@@ -1179,6 +1181,7 @@ export type {
 	FGBuildableGeneratorGeoThermal_base,
 	FGBuildableGeneratorNuclear,
 	FGBuildableGeneratorNuclear_base,
+	FGBuildableGeneratorNuclear_base_base,
 	FGBuildableJumppad,
 	FGBuildableJumppad_base,
 	FGBuildableLadder,

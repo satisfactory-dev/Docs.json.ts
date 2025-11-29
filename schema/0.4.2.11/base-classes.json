@@ -833,6 +833,11 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGeneratorNuclear--base"
 				},
 				{
+					"$ref": "#/$defs/FGBuildableGeneratorNuclear--base"
+				}
+			]
+		},
+		"FGBuildableGeneratorNuclear--base": {
 					"type": "object",
 					"required": [
 						"mCurrentGeneratorNuclearWarning",
@@ -859,8 +864,6 @@
 							}
 						}
 					}
-				}
-			]
 		},
 		"FGBuildableJumppad": {
 			"allOf": [

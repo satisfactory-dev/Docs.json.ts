@@ -322,7 +322,9 @@ type FGBuildableGeneratorGeoThermal = docs_json_ts_0_3_7_7_classes_base_FGBuilda
 	mVariablePowerProductionCycleOffset: docs_json_ts_common_types_decimal_string,
 };
 
-type FGBuildableGeneratorNuclear = FGBuildableGenerator & FGBuildableGeneratorFuel_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableGeneratorNuclear_base & {
+type FGBuildableGeneratorNuclear = FGBuildableGenerator & FGBuildableGeneratorFuel_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableGeneratorNuclear_base & FGBuildableGeneratorNuclear_base;
+
+type FGBuildableGeneratorNuclear_base = {
 	mCurrentGeneratorNuclearWarning: 'GNW_None',
 	mDefaultFuelClasses: [
         '/Game/FactoryGame/Resource/Parts/NuclearFuelRod/Desc_NuclearFuelRod.Desc_NuclearFuelRod_C' | '/Game/FactoryGame/Resource/Parts/PlutoniumFuelRods/Desc_PlutoniumFuelRod.Desc_PlutoniumFuelRod_C',
@@ -756,6 +758,7 @@ export type {
 	FGBuildableGeneratorFuel_fuel,
 	FGBuildableGeneratorGeoThermal,
 	FGBuildableGeneratorNuclear,
+	FGBuildableGeneratorNuclear_base,
 	FGBuildableJumppad,
 	FGBuildableLadder,
 	FGBuildableLightsControlPanel,
