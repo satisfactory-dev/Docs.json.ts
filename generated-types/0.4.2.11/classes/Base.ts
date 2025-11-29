@@ -11,6 +11,7 @@ import type {
 	FGBuildable_powered_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base,
 	FGBuildable_powered_base_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base_base,
 	FGBuildable_powered_base_resources as docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base_resources,
+	FGBuildable_powered_base_resources_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base_resources_base,
 	FGBuildable_powered_storage_base_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_storage_base_base,
 	FGBuildable_spline as docs_json_ts_0_3_7_7_classes_base_FGBuildable_spline,
 	FGBuildable_tiered as docs_json_ts_0_3_7_7_classes_base_FGBuildable_tiered,
@@ -187,7 +188,9 @@ type FGBuildable_powered_has_mAllowedResourceForms_base = FGBuildable_powered_ba
 	mAllowedResourceForms: docs_json_ts_0_4_2_11_properties_mAllowedResourceForms,
 };
 
-type FGBuildable_powered_has_mAllowedResourceForms_with_resources = FGBuildable_powered_has_mAllowedResourceForms & docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base_resources;
+type FGBuildable_powered_has_mAllowedResourceForms_with_resources = FGBuildable_powered_has_mAllowedResourceForms_with_resources_base & FGBuildable_powered_has_mAllowedResourceForms & docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base_resources;
+
+type FGBuildable_powered_has_mAllowedResourceForms_with_resources_base = FGBuildable_powered_has_mAllowedResourceForms_base & docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base_resources_base;
 
 type FGBuildable_powered_storage = FGBuildable_powered_storage_base & FGBuildable_powered;
 
@@ -271,7 +274,9 @@ type FGBuildableFloodlight = FGBuildableLightSource & {
 	mFixtureAngle: docs_json_ts_common_types_integer_string,
 };
 
-type FGBuildableFrackingActivator = FGBuildable_powered_has_mAllowedResourceForms_with_resources & {
+type FGBuildableFrackingActivator = FGBuildableFrackingActivator_base & FGBuildable_powered_has_mAllowedResourceForms_with_resources;
+
+type FGBuildableFrackingActivator_base = FGBuildable_powered_has_mAllowedResourceForms_with_resources_base & {
 	CurrentPotentialChangedDelegate: docs_json_ts_common_types_empty_object,
 	ConnectedExtractorCountChangedDelegate: docs_json_ts_common_types_empty_object,
 	mActivationStartupTime: docs_json_ts_common_types_decimal_string,
@@ -714,6 +719,7 @@ export type {
 	FGBuildable_powered_has_mAllowedResourceForms,
 	FGBuildable_powered_has_mAllowedResourceForms_base,
 	FGBuildable_powered_has_mAllowedResourceForms_with_resources,
+	FGBuildable_powered_has_mAllowedResourceForms_with_resources_base,
 	FGBuildable_powered_storage,
 	FGBuildable_powered_storage_base,
 	FGBuildable_spline,
@@ -738,6 +744,7 @@ export type {
 	FGBuildableFactorySimpleProducer,
 	FGBuildableFloodlight,
 	FGBuildableFrackingActivator,
+	FGBuildableFrackingActivator_base,
 	FGBuildableGenerator,
 	FGBuildableGenerator_no_fuel,
 	FGBuildableGeneratorFuel_base,

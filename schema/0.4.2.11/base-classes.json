@@ -230,10 +230,23 @@
 		"FGBuildable--powered--has-mAllowedResourceForms--with-resources": {
 			"allOf": [
 				{
+					"$ref": "#/$defs/FGBuildable--powered--has-mAllowedResourceForms--with-resources--base"
+				},
+				{
 					"$ref": "#/$defs/FGBuildable--powered--has-mAllowedResourceForms"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--base--resources"
+				}
+			]
+		},
+		"FGBuildable--powered--has-mAllowedResourceForms--with-resources--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--powered--has-mAllowedResourceForms--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--base--resources--base"
 				}
 			]
 		},
@@ -596,8 +609,18 @@
 			}
 		},
 		"FGBuildableFrackingActivator": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableFrackingActivator--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered--has-mAllowedResourceForms--with-resources"
+				}
+			]
+		},
+		"FGBuildableFrackingActivator--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--has-mAllowedResourceForms--with-resources",
+			"$ref": "#/$defs/FGBuildable--powered--has-mAllowedResourceForms--with-resources--base",
 			"required": [
 				"CurrentPotentialChangedDelegate",
 				"ConnectedExtractorCountChangedDelegate",
