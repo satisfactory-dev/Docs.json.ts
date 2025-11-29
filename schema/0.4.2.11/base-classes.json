@@ -1108,59 +1108,59 @@
 			]
 		},
 		"FGBuildableManufacturer--Build_HadronCollider_C--base": {
-					"type": "object",
-					"required": [
-						"mSequenceDuration",
-						"mLightningTimer",
-						"mGameTimeAtProducing",
-						"mCurrentProducingSeekTime",
-						"mStartVector_VFX_Small_Start",
-						"mStartVector_VFX_Small_End",
-						"mStartVector_VFX_Medium_Start",
-						"mStartVector_VFX_Medium_End",
-						"mStartVector_VFX_Large_Start",
-						"mStartVector_VFX_Large_End",
-						"mEstimatedMininumPowerConsumption",
-						"mEstimatedMaximumPowerConsumption"
-					],
-					"properties": {
-						"mSequenceDuration": {
-							"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-						},
-						"mLightningTimer": {
-							"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-						},
-						"mGameTimeAtProducing": {
-							"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-						},
-						"mCurrentProducingSeekTime": {
-							"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-						},
-						"mStartVector_VFX_Small_Start": {
-							"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string--list"
-						},
-						"mStartVector_VFX_Small_End": {
-							"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string--list"
-						},
-						"mStartVector_VFX_Medium_Start": {
-							"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string--list"
-						},
-						"mStartVector_VFX_Medium_End": {
-							"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string--list"
-						},
-						"mStartVector_VFX_Large_Start": {
-							"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string--list"
-						},
-						"mStartVector_VFX_Large_End": {
-							"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string--list"
-						},
-						"mEstimatedMininumPowerConsumption": {
-							"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-						},
-						"mEstimatedMaximumPowerConsumption": {
-							"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-						}
-					}
+			"type": "object",
+			"required": [
+				"mSequenceDuration",
+				"mLightningTimer",
+				"mGameTimeAtProducing",
+				"mCurrentProducingSeekTime",
+				"mStartVector_VFX_Small_Start",
+				"mStartVector_VFX_Small_End",
+				"mStartVector_VFX_Medium_Start",
+				"mStartVector_VFX_Medium_End",
+				"mStartVector_VFX_Large_Start",
+				"mStartVector_VFX_Large_End",
+				"mEstimatedMininumPowerConsumption",
+				"mEstimatedMaximumPowerConsumption"
+			],
+			"properties": {
+				"mSequenceDuration": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mLightningTimer": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mGameTimeAtProducing": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mCurrentProducingSeekTime": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mStartVector_VFX_Small_Start": {
+					"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string--list"
+				},
+				"mStartVector_VFX_Small_End": {
+					"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string--list"
+				},
+				"mStartVector_VFX_Medium_Start": {
+					"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string--list"
+				},
+				"mStartVector_VFX_Medium_End": {
+					"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string--list"
+				},
+				"mStartVector_VFX_Large_Start": {
+					"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string--list"
+				},
+				"mStartVector_VFX_Large_End": {
+					"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string--list"
+				},
+				"mEstimatedMininumPowerConsumption": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mEstimatedMaximumPowerConsumption": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
 		},
 		"FGBuildableManufacturer--Build_ManufacturerMk1_C": {
 			"allOf": [
