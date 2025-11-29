@@ -1601,6 +1601,43 @@
 				}
 			]
 		},
+		"FGBuildablePipeline--base--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildablePipeline--base--no-indicator--base",
+			"required": ["mIndicatorData"],
+			"properties": {
+				"mIndicatorData": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				}
+			}
+		},
+		"FGBuildablePipeline--base--no-indicator": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildablePipeline--base--no-indicator--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable"
+				}
+			]
+		},
+		"FGBuildablePipeline--base--no-indicator--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--base",
+			"required": ["mRadius", "mFluidBox", "mPipeConnections"],
+			"properties": {
+				"mRadius": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mFluidBox": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mPipeConnections": {
+					"type": "string",
+					"const": ""
+				}
+			}
+		},
 		"FGBuildablePipeline--base-root": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildablePipeline--base-spline--base",
@@ -1668,43 +1705,6 @@
 				},
 				"mIsRattling": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				}
-			}
-		},
-		"FGBuildablePipeline--base--base": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildablePipeline--base--no-indicator--base",
-			"required": ["mIndicatorData"],
-			"properties": {
-				"mIndicatorData": {
-					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-				}
-			}
-		},
-		"FGBuildablePipeline--base--no-indicator": {
-			"allOf": [
-				{
-					"$ref": "#/$defs/FGBuildablePipeline--base--no-indicator--base"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable"
-				}
-			]
-		},
-		"FGBuildablePipeline--base--no-indicator--base": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
-			"required": ["mRadius", "mFluidBox", "mPipeConnections"],
-			"properties": {
-				"mRadius": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mFluidBox": {
-					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-				},
-				"mPipeConnections": {
-					"type": "string",
-					"const": ""
 				}
 			}
 		},

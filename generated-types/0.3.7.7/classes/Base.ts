@@ -447,6 +447,18 @@ type FGBuildablePipeline = FGBuildablePipeline_base_root & FGBuildablePipeline_b
 
 type FGBuildablePipeline_base = FGBuildablePipeline_base_base & FGBuildablePipeline_base_no_indicator;
 
+type FGBuildablePipeline_base_base = FGBuildablePipeline_base_no_indicator_base & {
+	mIndicatorData: docs_json_ts_common_types_empty_object,
+};
+
+type FGBuildablePipeline_base_no_indicator = FGBuildablePipeline_base_no_indicator_base & FGBuildable;
+
+type FGBuildablePipeline_base_no_indicator_base = FGBuildable_base & {
+	mRadius: docs_json_ts_common_types_decimal_string,
+	mFluidBox: docs_json_ts_common_types_empty_object,
+	mPipeConnections: '',
+};
+
 type FGBuildablePipeline_base_root = FGBuildablePipeline_base_spline_base & {
 	mFlowLimit: docs_json_ts_common_types_decimal_string,
 	mFlowIndicatorMinimumPipeLength: docs_json_ts_common_types_decimal_string,
@@ -467,18 +479,6 @@ type FGBuildablePipeline_base_root = FGBuildablePipeline_base_spline_base & {
 	mQuantiziedFlow: docs_json_ts_common_types_decimal_string,
 	mRattleLimit: docs_json_ts_common_types_decimal_string,
 	mIsRattling: docs_json_ts_common_types_bool_string,
-};
-
-type FGBuildablePipeline_base_base = FGBuildablePipeline_base_no_indicator_base & {
-	mIndicatorData: docs_json_ts_common_types_empty_object,
-};
-
-type FGBuildablePipeline_base_no_indicator = FGBuildablePipeline_base_no_indicator_base & FGBuildable;
-
-type FGBuildablePipeline_base_no_indicator_base = FGBuildable_base & {
-	mRadius: docs_json_ts_common_types_decimal_string,
-	mFluidBox: docs_json_ts_common_types_empty_object,
-	mPipeConnections: '',
 };
 
 type FGBuildablePipeline_base_spline = FGBuildablePipeline_base_spline_base & FGBuildablePipeline_base & FGBuildable_spline;
@@ -1204,10 +1204,10 @@ export type {
 	FGBuildableManufacturer_Build_SmelterMk1_C_base,
 	FGBuildablePipeline,
 	FGBuildablePipeline_base,
-	FGBuildablePipeline_base_root,
 	FGBuildablePipeline_base_base,
 	FGBuildablePipeline_base_no_indicator,
 	FGBuildablePipeline_base_no_indicator_base,
+	FGBuildablePipeline_base_root,
 	FGBuildablePipeline_base_spline,
 	FGBuildablePipeline_base_spline_base,
 	FGBuildablePipeline_junction,
