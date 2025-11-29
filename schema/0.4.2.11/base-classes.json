@@ -804,35 +804,35 @@
 			]
 		},
 		"FGBuildableGeneratorGeoThermal--base": {
-					"type": "object",
-					"required": [
-						"mVariablePowerProductionConstant",
-						"mVariablePowerProductionFactor",
-						"mVariablePowerProductionCycleLength",
-						"mMinPowerProduction",
-						"mMaxPowerProduction",
-						"mVariablePowerProductionCycleOffset"
-					],
-					"properties": {
-						"mVariablePowerProductionConstant": {
-							"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-						},
-						"mVariablePowerProductionFactor": {
-							"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-						},
-						"mVariablePowerProductionCycleLength": {
-							"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-						},
-						"mMinPowerProduction": {
-							"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-						},
-						"mMaxPowerProduction": {
-							"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-						},
-						"mVariablePowerProductionCycleOffset": {
-							"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-						}
-					}
+			"type": "object",
+			"required": [
+				"mVariablePowerProductionConstant",
+				"mVariablePowerProductionFactor",
+				"mVariablePowerProductionCycleLength",
+				"mMinPowerProduction",
+				"mMaxPowerProduction",
+				"mVariablePowerProductionCycleOffset"
+			],
+			"properties": {
+				"mVariablePowerProductionConstant": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mVariablePowerProductionFactor": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mVariablePowerProductionCycleLength": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mMinPowerProduction": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mMaxPowerProduction": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mVariablePowerProductionCycleOffset": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
 		},
 		"FGBuildableGeneratorNuclear": {
 			"allOf": [
