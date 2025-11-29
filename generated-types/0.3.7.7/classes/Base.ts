@@ -208,20 +208,26 @@ type FGBuildable_with_width_base = FGBuildable_base & {
 
 type FGBuildableAttachment = FGBuildableAttachment_base & FGBuildable_powered;
 
-type FGBuildableAttachment_base = FGBuildable_powered_base & {
+type FGBuildableAttachment_base = FGBuildableAttachment_base_base & FGBuildable_powered_base;
+
+type FGBuildableAttachment_base_base = FGBuildable_powered_base_base & {
 	mCurrentInventoryIndex: docs_json_ts_common_types_integer_string,
 };
 
 type FGBuildableAttachment_splitter = FGBuildableAttachment_splitter_base & FGBuildableAttachment;
 
-type FGBuildableAttachment_splitter_base = FGBuildableAttachment_base & {
+type FGBuildableAttachment_splitter_base = FGBuildableAttachment_splitter_base_base & FGBuildableAttachment_base;
+
+type FGBuildableAttachment_splitter_base_base = FGBuildableAttachment_base_base & {
 	mCurrentOutputIndex: docs_json_ts_common_types_integer_string_signed,
 	mDistributionTable: '',
 };
 
 type FGBuildableAttachmentMerger = FGBuildableAttachment & FGBuildableAttachmentMerger_base;
 
-type FGBuildableAttachmentMerger_base = FGBuildableAttachment_base & {
+type FGBuildableAttachmentMerger_base = FGBuildableAttachmentMerger_base_base & FGBuildableAttachment_base;
+
+type FGBuildableAttachmentMerger_base_base = FGBuildableAttachment_base_base & {
 	mCurrentInputIndex: docs_json_ts_common_types_integer_string_signed,
 };
 
@@ -720,7 +726,9 @@ type FGBuildableSpaceElevator_base_base = FGBuildable_powered_base_base & {
 
 type FGBuildableSplitterSmart = FGBuildableSplitterSmart_base & FGBuildableAttachment_splitter;
 
-type FGBuildableSplitterSmart_base = FGBuildableAttachment_splitter_base & {
+type FGBuildableSplitterSmart_base = FGBuildableSplitterSmart_base_base & FGBuildableAttachment_splitter_base;
+
+type FGBuildableSplitterSmart_base_base = FGBuildableAttachment_splitter_base_base & {
 	OnSortRulesChangedDelegate: docs_json_ts_common_types_empty_object,
 	mMaxNumSortRules: docs_json_ts_common_types_integer_string,
 	mLastItem: {
@@ -1130,10 +1138,13 @@ export type {
 	FGBuildable_with_width_base,
 	FGBuildableAttachment,
 	FGBuildableAttachment_base,
+	FGBuildableAttachment_base_base,
 	FGBuildableAttachment_splitter,
 	FGBuildableAttachment_splitter_base,
+	FGBuildableAttachment_splitter_base_base,
 	FGBuildableAttachmentMerger,
 	FGBuildableAttachmentMerger_base,
+	FGBuildableAttachmentMerger_base_base,
 	FGBuildableConveyorBelt_base,
 	FGBuildableConveyorBelt_base_base,
 	FGBuildableConveyorBelt_spline,
@@ -1259,6 +1270,7 @@ export type {
 	FGBuildableSpaceElevator_base_base,
 	FGBuildableSplitterSmart,
 	FGBuildableSplitterSmart_base,
+	FGBuildableSplitterSmart_base_base,
 	FGBuildableStorage,
 	FGBuildableStorage_base,
 	FGBuildableStorage_base_base,

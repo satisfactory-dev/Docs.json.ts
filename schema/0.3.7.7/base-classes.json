@@ -639,8 +639,18 @@
 			]
 		},
 		"FGBuildableAttachment--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableAttachment--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base"
+				}
+			]
+		},
+		"FGBuildableAttachment--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--base",
+			"$ref": "#/$defs/FGBuildable--powered--base--base",
 			"required": ["mCurrentInventoryIndex"],
 			"properties": {
 				"mCurrentInventoryIndex": {
@@ -659,8 +669,18 @@
 			]
 		},
 		"FGBuildableAttachment--splitter--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableAttachment--splitter--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableAttachment--base"
+				}
+			]
+		},
+		"FGBuildableAttachment--splitter--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableAttachment--base",
+			"$ref": "#/$defs/FGBuildableAttachment--base--base",
 			"required": ["mCurrentOutputIndex", "mDistributionTable"],
 			"properties": {
 				"mCurrentOutputIndex": {
@@ -683,8 +703,18 @@
 			]
 		},
 		"FGBuildableAttachmentMerger--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableAttachmentMerger--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableAttachment--base"
+				}
+			]
+		},
+		"FGBuildableAttachmentMerger--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableAttachment--base",
+			"$ref": "#/$defs/FGBuildableAttachment--base--base",
 			"required": ["mCurrentInputIndex"],
 			"properties": {
 				"mCurrentInputIndex": {
@@ -2674,8 +2704,18 @@
 			]
 		},
 		"FGBuildableSplitterSmart--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableSplitterSmart--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableAttachment--splitter--base"
+				}
+			]
+		},
+		"FGBuildableSplitterSmart--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableAttachment--splitter--base",
+			"$ref": "#/$defs/FGBuildableAttachment--splitter--base--base",
 			"required": [
 				"OnSortRulesChangedDelegate",
 				"mMaxNumSortRules",
