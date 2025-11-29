@@ -1103,6 +1103,11 @@
 					"$ref": "#/$defs/FGBuildable--powered"
 				},
 				{
+					"$ref": "#/$defs/FGBuildableManufacturer--Build_HadronCollider_C--base"
+				}
+			]
+		},
+		"FGBuildableManufacturer--Build_HadronCollider_C--base": {
 					"type": "object",
 					"required": [
 						"mSequenceDuration",
@@ -1156,8 +1161,6 @@
 							"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 						}
 					}
-				}
-			]
 		},
 		"FGBuildableManufacturer--Build_ManufacturerMk1_C": {
 			"allOf": [
