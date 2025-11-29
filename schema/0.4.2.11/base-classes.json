@@ -838,32 +838,32 @@
 			]
 		},
 		"FGBuildableGeneratorNuclear--base": {
-					"type": "object",
-					"required": [
-						"mCurrentGeneratorNuclearWarning",
-						"mDefaultFuelClasses"
-					],
-					"properties": {
-						"mCurrentGeneratorNuclearWarning": {
+			"type": "object",
+			"required": [
+				"mCurrentGeneratorNuclearWarning",
+				"mDefaultFuelClasses"
+			],
+			"properties": {
+				"mCurrentGeneratorNuclearWarning": {
+					"type": "string",
+					"const": "GNW_None"
+				},
+				"mDefaultFuelClasses": {
+					"type": "string",
+					"typed_string": {
+						"type": "array",
+						"minItems": 1,
+						"uniqueItems": true,
+						"items": {
 							"type": "string",
-							"const": "GNW_None"
-						},
-						"mDefaultFuelClasses": {
-							"type": "string",
-							"typed_string": {
-								"type": "array",
-								"minItems": 1,
-								"uniqueItems": true,
-								"items": {
-									"type": "string",
-									"enum": [
-										"/Game/FactoryGame/Resource/Parts/NuclearFuelRod/Desc_NuclearFuelRod.Desc_NuclearFuelRod_C",
-										"/Game/FactoryGame/Resource/Parts/PlutoniumFuelRods/Desc_PlutoniumFuelRod.Desc_PlutoniumFuelRod_C"
-									]
-								}
-							}
+							"enum": [
+								"/Game/FactoryGame/Resource/Parts/NuclearFuelRod/Desc_NuclearFuelRod.Desc_NuclearFuelRod_C",
+								"/Game/FactoryGame/Resource/Parts/PlutoniumFuelRods/Desc_PlutoniumFuelRod.Desc_PlutoniumFuelRod_C"
+							]
 						}
 					}
+				}
+			}
 		},
 		"FGBuildableJumppad": {
 			"allOf": [
