@@ -1456,8 +1456,18 @@
 			]
 		},
 		"FGBuildableRailroadTrack--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableRailroadTrack--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableRailroadTrack"
+				}
+			]
+		},
+		"FGBuildableRailroadTrack--base--base": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableRailroadTrack",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableRailroadTrack--base",
 			"required": ["mConnections"],
 			"properties": {
 				"mConnections": {

@@ -56,6 +56,7 @@ import type {
 	FGBuildableRadarTower_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableRadarTower_base,
 	FGBuildableRailroadStation_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableRailroadStation_base,
 	FGBuildableRailroadTrack as docs_json_ts_0_3_7_7_classes_base_FGBuildableRailroadTrack,
+	FGBuildableRailroadTrack_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableRailroadTrack_base,
 	FGBuildableResourceExtractor_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_base,
 	FGBuildableResourceExtractor_miner_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_base,
 	FGBuildableResourceExtractor_miner_base_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_base_base,
@@ -459,7 +460,9 @@ type FGBuildableRailroadStation = FGBuildableTrainPlatform & docs_json_ts_0_3_7_
 
 type FGBuildableRailroadTrack = FGBuildableRailroadTrack_base & FGBuildable;
 
-type FGBuildableRailroadTrack_base = docs_json_ts_0_3_7_7_classes_base_FGBuildableRailroadTrack & {
+type FGBuildableRailroadTrack_base = FGBuildableRailroadTrack_base_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableRailroadTrack;
+
+type FGBuildableRailroadTrack_base_base = docs_json_ts_0_3_7_7_classes_base_FGBuildableRailroadTrack_base & {
 	mConnections: docs_json_ts_0_4_2_11_properties_DocsDotJson_FGRailroadTrackConnectionComponent_quoted_list,
 };
 
@@ -802,6 +805,7 @@ export type {
 	FGBuildableRailroadStation,
 	FGBuildableRailroadTrack,
 	FGBuildableRailroadTrack_base,
+	FGBuildableRailroadTrack_base_base,
 	FGBuildableResourceExtractor_base,
 	FGBuildableResourceExtractor_miner_mk1,
 	FGBuildableResourceExtractor_miner_mk1_base,

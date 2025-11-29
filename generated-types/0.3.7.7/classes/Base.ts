@@ -583,12 +583,16 @@ type FGBuildableRadarTower_base = FGBuildable_powered_base & {
 
 type FGBuildableRailroadStation = FGBuildableTrainPlatform & FGBuildableRailroadStation_base;
 
-type FGBuildableRailroadStation_base = FGBuildableTrainPlatform_base & {
+type FGBuildableRailroadStation_base = FGBuildableRailroadStation_base_base & FGBuildableTrainPlatform_base;
+
+type FGBuildableRailroadStation_base_base = FGBuildableTrainPlatform_base_base & {
 	mMapText: 'Train Station',
 	mDockedPlatformList: '',
 };
 
-type FGBuildableRailroadTrack = FGBuildable_with_length & {
+type FGBuildableRailroadTrack = FGBuildableRailroadTrack_base & FGBuildable_with_length;
+
+type FGBuildableRailroadTrack_base = FGBuildable_with_length_base & {
 	mIsOwnedByPlatform: docs_json_ts_common_types_bool_string,
 };
 
@@ -783,7 +787,9 @@ type FGBuildableTradingPost_base_version_specific = FGBuildable_powered_base_bas
 
 type FGBuildableTrainPlatform = FGBuildableTrainPlatform_base & FGBuildable_powered;
 
-type FGBuildableTrainPlatform_base = FGBuildable_powered_base & {
+type FGBuildableTrainPlatform_base = FGBuildableTrainPlatform_base_base & FGBuildable_powered_base;
+
+type FGBuildableTrainPlatform_base_base = FGBuildable_powered_base_base & {
 	mPlatformConnections: [
         `FGTrainPlatformConnection'"/Game/FactoryGame/${string}${'"\''}`,
         ...`FGTrainPlatformConnection'"/Game/FactoryGame/${string}${'"\''}`[],
@@ -796,11 +802,15 @@ type FGBuildableTrainPlatform_base = FGBuildable_powered_base & {
 
 type FGBuildableTrainPlatform_with_storage = FGBuildable_powered_storage & FGBuildableTrainPlatform_with_storage_base & FGBuildableTrainPlatform;
 
-type FGBuildableTrainPlatform_with_storage_base = FGBuildable_powered_storage_base & FGBuildableTrainPlatform_base;
+type FGBuildableTrainPlatform_with_storage_base = FGBuildableTrainPlatform_with_storage_base_base & FGBuildable_powered_storage_base & FGBuildableTrainPlatform_base;
+
+type FGBuildableTrainPlatform_with_storage_base_base = FGBuildable_powered_storage_base_base & FGBuildableTrainPlatform_base_base;
 
 type FGBuildableTrainPlatformCargo = FGBuildableTrainPlatformCargo_base & FGBuildableTrainPlatform_with_storage;
 
-type FGBuildableTrainPlatformCargo_base = FGBuildableTrainPlatform_with_storage_base & {
+type FGBuildableTrainPlatformCargo_base = FGBuildableTrainPlatformCargo_base_base & FGBuildableTrainPlatform_with_storage_base;
+
+type FGBuildableTrainPlatformCargo_base_base = FGBuildableTrainPlatform_with_storage_base_base & {
 	mPotentialDockers: '',
 	mFreightCargoType: 'FCT_Standard' | 'FCT_Liquid',
 	mCanUnloadAny: docs_json_ts_common_types_bool_string,
@@ -1248,7 +1258,9 @@ export type {
 	FGBuildableRadarTower_base,
 	FGBuildableRailroadStation,
 	FGBuildableRailroadStation_base,
+	FGBuildableRailroadStation_base_base,
 	FGBuildableRailroadTrack,
+	FGBuildableRailroadTrack_base,
 	FGBuildableResourceExtractor,
 	FGBuildableResourceExtractor_base,
 	FGBuildableResourceExtractor_base_base,
@@ -1291,10 +1303,13 @@ export type {
 	FGBuildableTradingPost_base_version_specific,
 	FGBuildableTrainPlatform,
 	FGBuildableTrainPlatform_base,
+	FGBuildableTrainPlatform_base_base,
 	FGBuildableTrainPlatform_with_storage,
 	FGBuildableTrainPlatform_with_storage_base,
+	FGBuildableTrainPlatform_with_storage_base_base,
 	FGBuildableTrainPlatformCargo,
 	FGBuildableTrainPlatformCargo_base,
+	FGBuildableTrainPlatformCargo_base_base,
 	FGBuildableWire,
 	FGBuildableWire_base,
 	FGColorGun,

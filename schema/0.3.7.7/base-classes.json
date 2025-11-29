@@ -2125,8 +2125,18 @@
 			]
 		},
 		"FGBuildableRailroadStation--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableRailroadStation--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableTrainPlatform--base"
+				}
+			]
+		},
+		"FGBuildableRailroadStation--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableTrainPlatform--base",
+			"$ref": "#/$defs/FGBuildableTrainPlatform--base--base",
 			"required": ["mMapText", "mDockedPlatformList"],
 			"properties": {
 				"mMapText": {
@@ -2140,8 +2150,18 @@
 			}
 		},
 		"FGBuildableRailroadTrack": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableRailroadTrack--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--with-length"
+				}
+			]
+		},
+		"FGBuildableRailroadTrack--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--with-length",
+			"$ref": "#/$defs/FGBuildable--with-length--base",
 			"required": ["mIsOwnedByPlatform"],
 			"properties": {
 				"mIsOwnedByPlatform": {
@@ -2947,8 +2967,18 @@
 			]
 		},
 		"FGBuildableTrainPlatform--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableTrainPlatform--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base"
+				}
+			]
+		},
+		"FGBuildableTrainPlatform--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--base",
+			"$ref": "#/$defs/FGBuildable--powered--base--base",
 			"required": [
 				"mPlatformConnections",
 				"mIsOrientationReversed",
@@ -3001,10 +3031,23 @@
 		"FGBuildableTrainPlatform--with-storage--base": {
 			"allOf": [
 				{
+					"$ref": "#/$defs/FGBuildableTrainPlatform--with-storage--base--base"
+				},
+				{
 					"$ref": "#/$defs/FGBuildable--powered-storage--base"
 				},
 				{
 					"$ref": "#/$defs/FGBuildableTrainPlatform--base"
+				}
+			]
+		},
+		"FGBuildableTrainPlatform--with-storage--base--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--powered-storage--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableTrainPlatform--base--base"
 				}
 			]
 		},
@@ -3019,8 +3062,18 @@
 			]
 		},
 		"FGBuildableTrainPlatformCargo--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableTrainPlatformCargo--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableTrainPlatform--with-storage--base"
+				}
+			]
+		},
+		"FGBuildableTrainPlatformCargo--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableTrainPlatform--with-storage--base",
+			"$ref": "#/$defs/FGBuildableTrainPlatform--with-storage--base--base",
 			"required": [
 				"mPotentialDockers",
 				"mFreightCargoType",
