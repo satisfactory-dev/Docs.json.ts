@@ -828,8 +828,18 @@
 			]
 		},
 		"FGBuildableConveyorLift": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableConveyorLift--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableConveyorBelt--base"
+				}
+			]
+		},
+		"FGBuildableConveyorLift--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableConveyorBelt--base",
+			"$ref": "#/$defs/FGBuildableConveyorBelt--base--base",
 			"required": ["mMeshHeight", "mTopTransform", "mIsReversed"],
 			"properties": {
 				"mMeshHeight": {

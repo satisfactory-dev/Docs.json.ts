@@ -251,7 +251,9 @@ type FGBuildableConveyorBelt_spline = FGBuildableConveyorBelt_spline_base & FGBu
 
 type FGBuildableConveyorBelt_spline_base = FGBuildable_spline_base & FGBuildableConveyorBelt_base_base;
 
-type FGBuildableConveyorLift = FGBuildableConveyorBelt_base & {
+type FGBuildableConveyorLift = FGBuildableConveyorLift_base & FGBuildableConveyorBelt_base;
+
+type FGBuildableConveyorLift_base = FGBuildableConveyorBelt_base_base & {
 	mMeshHeight: docs_json_ts_common_types_decimal_string,
 	mTopTransform: docs_json_ts_0_3_7_7_properties_transform_Rotation_Translation_Scale3D,
 	mIsReversed: docs_json_ts_common_types_bool_string,
@@ -1150,6 +1152,7 @@ export type {
 	FGBuildableConveyorBelt_spline,
 	FGBuildableConveyorBelt_spline_base,
 	FGBuildableConveyorLift,
+	FGBuildableConveyorLift_base,
 	FGBuildableDockingStation,
 	FGBuildableDockingStation_base,
 	FGBuildableFactory_jump_pad,
