@@ -1380,50 +1380,50 @@
 			]
 		},
 		"FGBuildablePowerStorage--base": {
-					"type": "object",
+			"type": "object",
 			"$ref": "#/$defs/FGBuildable--powered--base--base",
-					"required": [
-						"m_PreviousBatteryStatus",
-						"mCurrentGameTimeSinceStateChange",
-						"mActivationEventID",
-						"mBatteryStatus",
-						"mPowerStore",
-						"mPowerStoreCapacity",
-						"mPowerInputCapacity",
-						"mIndicatorLevelMax",
-						"mIndicatorLevel"
-					],
-					"properties": {
-						"m_PreviousBatteryStatus": {
-							"type": "string",
-							"const": "BS_Idle"
-						},
-						"mCurrentGameTimeSinceStateChange": {
-							"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-						},
-						"mActivationEventID": {
-							"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-						},
-						"mBatteryStatus": {
-							"type": "string",
-							"const": "BS_Idle"
-						},
-						"mPowerStore": {
-							"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-						},
-						"mPowerStoreCapacity": {
-							"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-						},
-						"mPowerInputCapacity": {
-							"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-						},
-						"mIndicatorLevelMax": {
-							"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-						},
-						"mIndicatorLevel": {
-							"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-						}
-					}
+			"required": [
+				"m_PreviousBatteryStatus",
+				"mCurrentGameTimeSinceStateChange",
+				"mActivationEventID",
+				"mBatteryStatus",
+				"mPowerStore",
+				"mPowerStoreCapacity",
+				"mPowerInputCapacity",
+				"mIndicatorLevelMax",
+				"mIndicatorLevel"
+			],
+			"properties": {
+				"m_PreviousBatteryStatus": {
+					"type": "string",
+					"const": "BS_Idle"
+				},
+				"mCurrentGameTimeSinceStateChange": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mActivationEventID": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mBatteryStatus": {
+					"type": "string",
+					"const": "BS_Idle"
+				},
+				"mPowerStore": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mPowerStoreCapacity": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mPowerInputCapacity": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mIndicatorLevelMax": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mIndicatorLevel": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				}
+			}
 		},
 		"FGBuildableRadarTower": {
 			"allOf": [
