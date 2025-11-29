@@ -232,10 +232,23 @@
 		"FGBuildable--pole--with-length-and-power--base": {
 			"allOf": [
 				{
+					"$ref": "#/$defs/FGBuildable--pole--with-length-and-power--base--base"
+				},
+				{
 					"$ref": "#/$defs/FGBuildable--pole--with-length"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--powered--base"
+				}
+			]
+		},
+		"FGBuildable--pole--with-length-and-power--base--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--pole--with-length--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base--base"
 				}
 			]
 		},
@@ -3628,8 +3641,18 @@
 			]
 		},
 		"FGPipeHyperStart--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGPipeHyperStart--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--pole--with-length-and-power--base"
+				}
+			]
+		},
+		"FGPipeHyperStart--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--pole--with-length-and-power--base",
+			"$ref": "#/$defs/FGBuildable--pole--with-length-and-power--base--base",
 			"required": [
 				"InterpolateEngineSound_InterpolateEngineAlpha_064FA8194B7224F6F187999413D1C8A6",
 				"InterpolateEngineSound__Direction_064FA8194B7224F6F187999413D1C8A6",

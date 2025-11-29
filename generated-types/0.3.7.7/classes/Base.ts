@@ -107,7 +107,9 @@ type FGBuildable_pole_with_length_base = FGBuildable_pole_base & {
 
 type FGBuildable_pole_with_length_and_power = FGBuildable_pole_with_length_and_power_base & FGBuildable_powered;
 
-type FGBuildable_pole_with_length_and_power_base = FGBuildable_pole_with_length & FGBuildable_powered_base;
+type FGBuildable_pole_with_length_and_power_base = FGBuildable_pole_with_length_and_power_base_base & FGBuildable_pole_with_length & FGBuildable_powered_base;
+
+type FGBuildable_pole_with_length_and_power_base_base = FGBuildable_pole_with_length_base & FGBuildable_powered_base_base;
 
 type FGBuildable_powered = FGBuildable_powered_base & (FGBuildable & {
 	mSignificanceBias: docs_json_ts_common_types_decimal_string,
@@ -958,7 +960,9 @@ type FGParachute_base = FGEquipment_base & {
 
 type FGPipeHyperStart = FGPipeHyperStart_base & FGBuildable_pole_with_length_and_power;
 
-type FGPipeHyperStart_base = FGBuildable_pole_with_length_and_power_base & {
+type FGPipeHyperStart_base = FGPipeHyperStart_base_base & FGBuildable_pole_with_length_and_power_base;
+
+type FGPipeHyperStart_base_base = FGBuildable_pole_with_length_and_power_base_base & {
 	InterpolateEngineSound_InterpolateEngineAlpha_064FA8194B7224F6F187999413D1C8A6: docs_json_ts_common_types_decimal_string,
 	InterpolateEngineSound__Direction_064FA8194B7224F6F187999413D1C8A6: 'Forward',
 	mWindDirectionFromTurbine: docs_json_ts_common_types_empty_object,
@@ -1115,6 +1119,7 @@ export type {
 	FGBuildable_pole_with_length_base,
 	FGBuildable_pole_with_length_and_power,
 	FGBuildable_pole_with_length_and_power_base,
+	FGBuildable_pole_with_length_and_power_base_base,
 	FGBuildable_powered,
 	FGBuildable_powered_base,
 	FGBuildable_powered_base_base,
@@ -1318,6 +1323,7 @@ export type {
 	FGParachute_base,
 	FGPipeHyperStart,
 	FGPipeHyperStart_base,
+	FGPipeHyperStart_base_base,
 	FGPortableMinerDispenser,
 	FGRecipe,
 	FGRecipe_base,
