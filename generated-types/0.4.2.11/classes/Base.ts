@@ -215,7 +215,9 @@ type FGBuildableAttachment_splitter = docs_json_ts_0_3_7_7_classes_base_FGBuilda
 
 type FGBuildableAttachmentMerger = FGBuildableAttachment & docs_json_ts_0_3_7_7_classes_base_FGBuildableAttachmentMerger_base;
 
-type FGBuildableCircuitSwitch = FGBuildable & {
+type FGBuildableCircuitSwitch = FGBuildableCircuitSwitch_base & FGBuildable;
+
+type FGBuildableCircuitSwitch_base = FGBuildable_base & {
 	mTextRenderers: '',
 	bIsSignificant: docs_json_ts_common_types_bool_string,
 	mMaxCharacters: docs_json_ts_common_types_integer_string,
@@ -314,7 +316,9 @@ type FGBuildableGeneratorFuel_coal = FGBuildableGenerator & FGBuildableGenerator
 
 type FGBuildableGeneratorFuel_fuel = FGBuildableGenerator & FGBuildableGeneratorFuel_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableGeneratorFuel_fuel_base;
 
-type FGBuildableGeneratorGeoThermal = docs_json_ts_0_3_7_7_classes_base_FGBuildableGeneratorGeoThermal_base & FGBuildableGenerator_no_fuel & {
+type FGBuildableGeneratorGeoThermal = docs_json_ts_0_3_7_7_classes_base_FGBuildableGeneratorGeoThermal_base & FGBuildableGenerator_no_fuel & FGBuildableGeneratorGeoThermal_base;
+
+type FGBuildableGeneratorGeoThermal_base = {
 	mVariablePowerProductionConstant: docs_json_ts_common_types_decimal_string,
 	mVariablePowerProductionFactor: docs_json_ts_common_types_decimal_string,
 	mVariablePowerProductionCycleLength: docs_json_ts_common_types_decimal_string,
@@ -741,6 +745,7 @@ export type {
 	FGBuildableAttachment_splitter,
 	FGBuildableAttachmentMerger,
 	FGBuildableCircuitSwitch,
+	FGBuildableCircuitSwitch_base,
 	FGBuildableConveyorBelt_spline,
 	FGBuildableConveyorLift,
 	FGBuildableDockingStation,
@@ -762,6 +767,7 @@ export type {
 	FGBuildableGeneratorFuel_coal,
 	FGBuildableGeneratorFuel_fuel,
 	FGBuildableGeneratorGeoThermal,
+	FGBuildableGeneratorGeoThermal_base,
 	FGBuildableGeneratorNuclear,
 	FGBuildableGeneratorNuclear_base,
 	FGBuildableJumppad,

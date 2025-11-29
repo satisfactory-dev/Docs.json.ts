@@ -364,8 +364,18 @@
 			]
 		},
 		"FGBuildableCircuitSwitch": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableCircuitSwitch--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable"
+				}
+			]
+		},
+		"FGBuildableCircuitSwitch--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable",
+			"$ref": "#/$defs/FGBuildable--base",
 			"required": [
 				"mTextRenderers",
 				"bIsSignificant",
@@ -789,6 +799,11 @@
 					"$ref": "#/$defs/FGBuildableGenerator--no-fuel"
 				},
 				{
+					"$ref": "#/$defs/FGBuildableGeneratorGeoThermal--base"
+				}
+			]
+		},
+		"FGBuildableGeneratorGeoThermal--base": {
 					"type": "object",
 					"required": [
 						"mVariablePowerProductionConstant",
@@ -818,8 +833,6 @@
 							"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 						}
 					}
-				}
-			]
 		},
 		"FGBuildableGeneratorNuclear": {
 			"allOf": [

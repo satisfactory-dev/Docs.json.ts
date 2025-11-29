@@ -354,7 +354,9 @@ type FGBuildableGeneratorFuel_fuel_base_base = {
 
 type FGBuildableGeneratorGeoThermal = FGBuildableGeneratorGeoThermal_base & FGBuildableGenerator_no_fuel;
 
-type FGBuildableGeneratorGeoThermal_base = FGBuildableGenerator_no_fuel_base & {
+type FGBuildableGeneratorGeoThermal_base = FGBuildableGeneratorGeoThermal_base_base & FGBuildableGenerator_no_fuel_base;
+
+type FGBuildableGeneratorGeoThermal_base_base = FGBuildableGenerator_no_fuel_base_base & {
 	mProductionEffectsRunning: docs_json_ts_common_types_bool_string,
 };
 
@@ -1201,6 +1203,7 @@ export type {
 	FGBuildableGeneratorFuel_fuel_base_base,
 	FGBuildableGeneratorGeoThermal,
 	FGBuildableGeneratorGeoThermal_base,
+	FGBuildableGeneratorGeoThermal_base_base,
 	FGBuildableGeneratorNuclear,
 	FGBuildableGeneratorNuclear_base,
 	FGBuildableGeneratorNuclear_base_base,

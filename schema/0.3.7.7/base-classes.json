@@ -1193,8 +1193,18 @@
 			]
 		},
 		"FGBuildableGeneratorGeoThermal--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableGeneratorGeoThermal--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base"
+				}
+			]
+		},
+		"FGBuildableGeneratorGeoThermal--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base",
+			"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base--base",
 			"required": ["mProductionEffectsRunning"],
 			"properties": {
 				"mProductionEffectsRunning": {
