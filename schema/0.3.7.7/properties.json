@@ -15,6 +15,117 @@
 				}
 			}
 		},
+		"mDisableSnapOn--front--bottom": {
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": ["Front", "Bottom"],
+				"properties": {
+					"Front": {
+						"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+					},
+					"Bottom": {
+						"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+					}
+				}
+			}
+		},
+		"mDisableSnapOn--front--left--top--bottom": {
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": ["Front", "Left", "Top", "Bottom"],
+				"properties": {
+					"Front": {
+						"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+					},
+					"Left": {
+						"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+					},
+					"Top": {
+						"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+					},
+					"Bottom": {
+						"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+					}
+				}
+			}
+		},
+		"mDisableSnapOn--front--top": {
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": ["Front", "Top"],
+				"properties": {
+					"Front": {
+						"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+					},
+					"Top": {
+						"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+					}
+				}
+			}
+		},
+		"mDisableSnapOn--front--top--bottom": {
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": ["Front", "Top", "Bottom"],
+				"properties": {
+					"Front": {
+						"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+					},
+					"Top": {
+						"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+					},
+					"Bottom": {
+						"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+					}
+				}
+			}
+		},
+		"mDisableSnapOn--right--left--top--bottom": {
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": ["Right", "Left", "Top", "Bottom"],
+				"properties": {
+					"Right": {
+						"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+					},
+					"Left": {
+						"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+					},
+					"Top": {
+						"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+					},
+					"Bottom": {
+						"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+					}
+				}
+			}
+		},
+		"mDisableSnapOn--top--bottom": {
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": ["Top", "Bottom"],
+				"properties": {
+					"Top": {
+						"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+					},
+					"Bottom": {
+						"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+					}
+				}
+			}
+		},
 		"mDisplayName": {
 			"type": "string",
 			"minLength": 0

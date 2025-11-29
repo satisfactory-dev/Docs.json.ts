@@ -5,6 +5,12 @@ import type {
 	ItemClass_Amount_list as docs_json_ts_0_3_7_7_properties_ItemClass_Amount_list,
 	mAbbreviatedDisplayName as docs_json_ts_0_3_7_7_properties_mAbbreviatedDisplayName,
 	mAllowedResourceForms as docs_json_ts_0_3_7_7_properties_mAllowedResourceForms,
+	mDisableSnapOn_front_bottom as docs_json_ts_0_3_7_7_properties_mDisableSnapOn_front_bottom,
+	mDisableSnapOn_front_left_top_bottom as docs_json_ts_0_3_7_7_properties_mDisableSnapOn_front_left_top_bottom,
+	mDisableSnapOn_front_top as docs_json_ts_0_3_7_7_properties_mDisableSnapOn_front_top,
+	mDisableSnapOn_front_top_bottom as docs_json_ts_0_3_7_7_properties_mDisableSnapOn_front_top_bottom,
+	mDisableSnapOn_right_left_top_bottom as docs_json_ts_0_3_7_7_properties_mDisableSnapOn_right_left_top_bottom,
+	mDisableSnapOn_top_bottom as docs_json_ts_0_3_7_7_properties_mDisableSnapOn_top_bottom,
 	mDisplayName as docs_json_ts_0_3_7_7_properties_mDisplayName,
 	mForm as docs_json_ts_0_3_7_7_properties_mForm,
 	mPersistentBigIcon as docs_json_ts_0_3_7_7_properties_mPersistentBigIcon,
@@ -185,33 +191,13 @@ type FGBuildable_with_size_base = FGBuildable_base & {
 
 type FGBuildable_with_size_and_elevation = FGBuildable_with_size_and_elevation_base & FGBuildable_with_size;
 
-type FGBuildable_with_size_and_elevation_base = FGBuildable_with_size_base & {
+type FGBuildable_with_size_and_elevation_base = FGBuildable_with_size_and_elevation_base_base & {
+	mDisableSnapOn: docs_json_ts_common_types_empty_object | docs_json_ts_0_3_7_7_properties_mDisableSnapOn_front_top | docs_json_ts_0_3_7_7_properties_mDisableSnapOn_top_bottom | docs_json_ts_0_3_7_7_properties_mDisableSnapOn_front_bottom | docs_json_ts_0_3_7_7_properties_mDisableSnapOn_right_left_top_bottom | docs_json_ts_0_3_7_7_properties_mDisableSnapOn_front_top_bottom | docs_json_ts_0_3_7_7_properties_mDisableSnapOn_front_left_top_bottom,
+};
+
+type FGBuildable_with_size_and_elevation_base_base = FGBuildable_with_size_base & {
 	mSize: docs_json_ts_common_types_decimal_string,
 	mElevation: docs_json_ts_common_types_decimal_string,
-	mDisableSnapOn: docs_json_ts_common_types_empty_object | {
-		Front: docs_json_ts_common_types_bool_string,
-		Top: docs_json_ts_common_types_bool_string,
-	} | {
-		Top: docs_json_ts_common_types_bool_string,
-		Bottom: docs_json_ts_common_types_bool_string,
-	} | {
-		Front: docs_json_ts_common_types_bool_string,
-		Bottom: docs_json_ts_common_types_bool_string,
-	} | {
-		Right: docs_json_ts_common_types_bool_string,
-		Left: docs_json_ts_common_types_bool_string,
-		Top: docs_json_ts_common_types_bool_string,
-		Bottom: docs_json_ts_common_types_bool_string,
-	} | {
-		Front: docs_json_ts_common_types_bool_string,
-		Top: docs_json_ts_common_types_bool_string,
-		Bottom: docs_json_ts_common_types_bool_string,
-	} | {
-		Front: docs_json_ts_common_types_bool_string,
-		Left: docs_json_ts_common_types_bool_string,
-		Top: docs_json_ts_common_types_bool_string,
-		Bottom: docs_json_ts_common_types_bool_string,
-	},
 };
 
 type FGBuildable_with_width = FGBuildable_with_width_base & FGBuildable;
@@ -1139,6 +1125,7 @@ export type {
 	FGBuildable_with_size_base,
 	FGBuildable_with_size_and_elevation,
 	FGBuildable_with_size_and_elevation_base,
+	FGBuildable_with_size_and_elevation_base_base,
 	FGBuildable_with_width,
 	FGBuildable_with_width_base,
 	FGBuildableAttachment,

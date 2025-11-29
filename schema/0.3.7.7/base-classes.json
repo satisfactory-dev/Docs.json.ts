@@ -565,132 +565,46 @@
 		},
 		"FGBuildable--with-size-and-elevation--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--with-size--base",
-			"required": ["mSize", "mElevation", "mDisableSnapOn"],
+			"$ref": "#/$defs/FGBuildable--with-size-and-elevation--base--base",
+			"required": ["mDisableSnapOn"],
 			"properties": {
-				"mSize": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mElevation": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
 				"mDisableSnapOn": {
 					"oneOf": [
 						{
 							"$ref": "docs.json.ts--common--types#/$defs/empty-object"
 						},
 						{
-							"type": "string",
-							"typed_string": {
-								"type": "object",
-								"additionalProperties": false,
-								"required": ["Front", "Top"],
-								"properties": {
-									"Front": {
-										"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-									},
-									"Top": {
-										"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-									}
-								}
-							}
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mDisableSnapOn--front--top"
 						},
 						{
-							"type": "string",
-							"typed_string": {
-								"type": "object",
-								"additionalProperties": false,
-								"required": ["Top", "Bottom"],
-								"properties": {
-									"Top": {
-										"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-									},
-									"Bottom": {
-										"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-									}
-								}
-							}
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mDisableSnapOn--top--bottom"
 						},
 						{
-							"type": "string",
-							"typed_string": {
-								"type": "object",
-								"additionalProperties": false,
-								"required": ["Front", "Bottom"],
-								"properties": {
-									"Front": {
-										"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-									},
-									"Bottom": {
-										"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-									}
-								}
-							}
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mDisableSnapOn--front--bottom"
 						},
 						{
-							"type": "string",
-							"typed_string": {
-								"type": "object",
-								"additionalProperties": false,
-								"required": ["Right", "Left", "Top", "Bottom"],
-								"properties": {
-									"Right": {
-										"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-									},
-									"Left": {
-										"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-									},
-									"Top": {
-										"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-									},
-									"Bottom": {
-										"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-									}
-								}
-							}
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mDisableSnapOn--right--left--top--bottom"
 						},
 						{
-							"type": "string",
-							"typed_string": {
-								"type": "object",
-								"additionalProperties": false,
-								"required": ["Front", "Top", "Bottom"],
-								"properties": {
-									"Front": {
-										"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-									},
-									"Top": {
-										"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-									},
-									"Bottom": {
-										"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-									}
-								}
-							}
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mDisableSnapOn--front--top--bottom"
 						},
 						{
-							"type": "string",
-							"typed_string": {
-								"type": "object",
-								"additionalProperties": false,
-								"required": ["Front", "Left", "Top", "Bottom"],
-								"properties": {
-									"Front": {
-										"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-									},
-									"Left": {
-										"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-									},
-									"Top": {
-										"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-									},
-									"Bottom": {
-										"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-									}
-								}
-							}
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mDisableSnapOn--front--left--top--bottom"
 						}
 					]
+				}
+			}
+		},
+		"FGBuildable--with-size-and-elevation--base--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--with-size--base",
+			"required": ["mSize", "mElevation"],
+			"properties": {
+				"mSize": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mElevation": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
 			}
 		},

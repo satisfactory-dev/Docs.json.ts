@@ -14,6 +14,41 @@ type mAllowedResourceForms = [
     ...('RF_SOLID' | 'RF_LIQUID')[],
 ];
 
+type mDisableSnapOn_front_bottom = {
+	Front: docs_json_ts_common_types_bool_string,
+	Bottom: docs_json_ts_common_types_bool_string,
+};
+
+type mDisableSnapOn_front_left_top_bottom = {
+	Front: docs_json_ts_common_types_bool_string,
+	Left: docs_json_ts_common_types_bool_string,
+	Top: docs_json_ts_common_types_bool_string,
+	Bottom: docs_json_ts_common_types_bool_string,
+};
+
+type mDisableSnapOn_front_top = {
+	Front: docs_json_ts_common_types_bool_string,
+	Top: docs_json_ts_common_types_bool_string,
+};
+
+type mDisableSnapOn_front_top_bottom = {
+	Front: docs_json_ts_common_types_bool_string,
+	Top: docs_json_ts_common_types_bool_string,
+	Bottom: docs_json_ts_common_types_bool_string,
+};
+
+type mDisableSnapOn_right_left_top_bottom = {
+	Right: docs_json_ts_common_types_bool_string,
+	Left: docs_json_ts_common_types_bool_string,
+	Top: docs_json_ts_common_types_bool_string,
+	Bottom: docs_json_ts_common_types_bool_string,
+};
+
+type mDisableSnapOn_top_bottom = {
+	Top: docs_json_ts_common_types_bool_string,
+	Bottom: docs_json_ts_common_types_bool_string,
+};
+
 type mDisplayName = string;
 
 type mForm = 'RF_SOLID' | 'RF_LIQUID' | 'RF_INVALID';
@@ -96,6 +131,12 @@ type Tier = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7';
 export type {
 	mAbbreviatedDisplayName,
 	mAllowedResourceForms,
+	mDisableSnapOn_front_bottom,
+	mDisableSnapOn_front_left_top_bottom,
+	mDisableSnapOn_front_top,
+	mDisableSnapOn_front_top_bottom,
+	mDisableSnapOn_right_left_top_bottom,
+	mDisableSnapOn_top_bottom,
 	mDisplayName,
 	mForm,
 	mPersistentBigIcon,
