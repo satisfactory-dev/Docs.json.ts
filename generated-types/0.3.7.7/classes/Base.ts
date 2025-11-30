@@ -198,7 +198,6 @@ type FGBuildable_with_size_and_elevation_base = FGBuildable_with_size_and_elevat
 };
 
 type FGBuildable_with_size_and_elevation_base_base = FGBuildable_with_size_base & {
-	mSize: docs_json_ts_common_types_decimal_string,
 	mElevation: docs_json_ts_common_types_decimal_string,
 };
 
@@ -401,7 +400,9 @@ type FGBuildableJumppad_base_base = FGBuildable_powered_base_base & {
 	mShowTrajectoryCounter: docs_json_ts_common_types_integer_string,
 };
 
-type FGBuildableLadder = FGBuildable_with_width & {
+type FGBuildableLadder = FGBuildableLadder_base & FGBuildable_with_width;
+
+type FGBuildableLadder_base = FGBuildable_with_width_base & {
 	mMeshHeight: docs_json_ts_common_types_decimal_string,
 	mMaxSegmentCount: docs_json_ts_common_types_integer_string,
 	mNumSegments: docs_json_ts_common_types_integer_string,
@@ -1223,6 +1224,7 @@ export type {
 	FGBuildableJumppad_base,
 	FGBuildableJumppad_base_base,
 	FGBuildableLadder,
+	FGBuildableLadder_base,
 	FGBuildableManufacturer_base,
 	FGBuildableManufacturer_base_base,
 	FGBuildableManufacturer_base_IsPowered,

@@ -619,8 +619,18 @@
 			]
 		},
 		"FGBuildableFloodlight": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableFloodlight--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableLightSource"
+				}
+			]
+		},
+		"FGBuildableFloodlight--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableLightSource",
+			"$ref": "#/$defs/FGBuildableLightSource--base",
 			"required": ["mFixtureAngle"],
 			"properties": {
 				"mFixtureAngle": {
@@ -909,8 +919,18 @@
 			]
 		},
 		"FGBuildableLightsControlPanel": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableLightsControlPanel--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--light-related-thing"
+				}
+			]
+		},
+		"FGBuildableLightsControlPanel--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--light-related-thing",
+			"$ref": "#/$defs/FGBuildable--light-related-thing--base",
 			"required": [
 				"mOnControlledBuildablesChanged",
 				"mControlledBuildables",

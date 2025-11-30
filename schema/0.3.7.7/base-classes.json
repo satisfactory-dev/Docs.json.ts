@@ -611,11 +611,8 @@
 		"FGBuildable--with-size-and-elevation--base--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--with-size--base",
-			"required": ["mSize", "mElevation"],
+			"required": ["mElevation"],
 			"properties": {
-				"mSize": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
 				"mElevation": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
@@ -1384,8 +1381,18 @@
 			}
 		},
 		"FGBuildableLadder": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableLadder--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--with-width"
+				}
+			]
+		},
+		"FGBuildableLadder--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--with-width",
+			"$ref": "#/$defs/FGBuildable--with-width--base",
 			"required": [
 				"mMeshHeight",
 				"mMaxSegmentCount",

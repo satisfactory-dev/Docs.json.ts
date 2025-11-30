@@ -275,7 +275,9 @@ type FGBuildableFactory_landing_pad = FGBuildable_powered & docs_json_ts_0_3_7_7
 
 type FGBuildableFactorySimpleProducer = FGBuildable_powered & docs_json_ts_0_3_7_7_classes_base_FGBuildableFactorySimpleProducer_base;
 
-type FGBuildableFloodlight = FGBuildableLightSource & {
+type FGBuildableFloodlight = FGBuildableFloodlight_base & FGBuildableLightSource;
+
+type FGBuildableFloodlight_base = FGBuildableLightSource_base & {
 	mFixtureAngle: docs_json_ts_common_types_integer_string,
 };
 
@@ -343,7 +345,9 @@ type FGBuildableJumppad = docs_json_ts_0_3_7_7_classes_base_FGBuildableJumppad_b
 
 type FGBuildableLadder = FGBuildable & docs_json_ts_0_3_7_7_classes_base_FGBuildableLadder;
 
-type FGBuildableLightsControlPanel = FGBuildable_light_related_thing & {
+type FGBuildableLightsControlPanel = FGBuildableLightsControlPanel_base & FGBuildable_light_related_thing;
+
+type FGBuildableLightsControlPanel_base = FGBuildable_light_related_thing_base & {
 	mOnControlledBuildablesChanged: docs_json_ts_common_types_empty_object,
 	mControlledBuildables: '',
 	mIsBridgeConnected: docs_json_ts_common_types_bool_string,
@@ -762,6 +766,7 @@ export type {
 	FGBuildableFactory_landing_pad,
 	FGBuildableFactorySimpleProducer,
 	FGBuildableFloodlight,
+	FGBuildableFloodlight_base,
 	FGBuildableFrackingActivator,
 	FGBuildableFrackingActivator_base,
 	FGBuildableGenerator,
@@ -778,6 +783,7 @@ export type {
 	FGBuildableJumppad,
 	FGBuildableLadder,
 	FGBuildableLightsControlPanel,
+	FGBuildableLightsControlPanel_base,
 	FGBuildableLightSource,
 	FGBuildableLightSource_base,
 	FGBuildableMAM,
