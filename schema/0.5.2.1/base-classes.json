@@ -849,7 +849,10 @@
 								"typed_string": {
 									"type": "object",
 									"additionalProperties": false,
-									"required": ["PrimaryColor", "SecondaryColor"],
+									"required": [
+										"PrimaryColor",
+										"SecondaryColor"
+									],
 									"properties": {
 										"PrimaryColor": {
 											"$ref": "docs.json.ts--common--types#/$defs/RGBA"
