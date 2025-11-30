@@ -1,0 +1,61 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "docs.json.ts--0.5.2.1--properties",
+	"$defs": {
+		"mDisableSnapOn--bottom": {
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": ["Bottom"],
+				"properties": {
+					"Bottom": {
+						"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+					}
+				}
+			}
+		},
+		"mDisableSnapOn--top": {
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": ["Top"],
+				"properties": {
+					"Top": {
+						"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+					}
+				}
+			}
+		},
+		"mDockingRuleSet": {
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": ["DockForDuration"],
+				"properties": {
+					"DockForDuration": {
+						"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+					}
+				}
+			}
+		},
+		"mPersistentBigIcon": {
+			"type": "string",
+			"DocsDotJson_Texture2D": [
+				null,
+				null,
+				["256", "512", "256_New", "White"]
+			]
+		},
+		"mSmallIcon": {
+			"type": "string",
+			"DocsDotJson_Texture2D": [
+				null,
+				null,
+				["64", "256", "64_new", "512"]
+			]
+		}
+	}
+}

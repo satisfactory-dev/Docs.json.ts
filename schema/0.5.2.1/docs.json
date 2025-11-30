@@ -1,0 +1,1879 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "docs.json.ts--0.5.2.1",
+	"$defs": {
+		"FGBuildable": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildable"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"oneOf": [
+							{
+								"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildable--occupied"
+							},
+							{
+								"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildable--tiered"
+							},
+							{
+								"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildable--base"
+							}
+						]
+					}
+				}
+			}
+		},
+		"FGBuildableAttachmentMerger": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableAttachmentMerger"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableAttachmentMerger"
+					}
+				}
+			}
+		},
+		"FGBuildableAttachmentSplitter": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableAttachmentSplitter"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableAttachmentSplitter"
+					}
+				}
+			}
+		},
+		"FGBuildableBeam": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableBeam"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableBeam"
+					}
+				}
+			}
+		},
+		"FGBuildableCircuitSwitch": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableCircuitSwitch"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableCircuitSwitch"
+					}
+				}
+			}
+		},
+		"FGBuildableConveyorBelt": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableConveyorBelt"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableConveyorBelt"
+					}
+				}
+			}
+		},
+		"FGBuildableConveyorLift": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableConveyorLift"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableConveyorLift"
+					}
+				}
+			}
+		},
+		"FGBuildableCornerWall": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableCornerWall"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableCornerWall"
+					}
+				}
+			}
+		},
+		"FGBuildableDockingStation": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableDockingStation"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableDockingStation"
+					}
+				}
+			}
+		},
+		"FGBuildableDoor": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableDoor"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableDoor"
+					}
+				}
+			}
+		},
+		"FGBuildableDroneStation": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableDroneStation"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableDroneStation"
+					}
+				}
+			}
+		},
+		"FGBuildableFactory": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableFactory"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"oneOf": [
+							{
+								"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableFactory--jump-pad"
+							},
+							{
+								"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableFactory--landing-pad"
+							},
+							{
+								"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildable--powered"
+							}
+						]
+					}
+				}
+			}
+		},
+		"FGBuildableFactoryBuilding": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableFactoryBuilding"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableFactoryBuilding"
+					}
+				}
+			}
+		},
+		"FGBuildableFactorySimpleProducer": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableFactorySimpleProducer"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableFactorySimpleProducer"
+					}
+				}
+			}
+		},
+		"FGBuildableFloodlight": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableFloodlight"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableFloodlight"
+					}
+				}
+			}
+		},
+		"FGBuildableFoundation": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableFoundation"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableFoundation"
+					}
+				}
+			}
+		},
+		"FGBuildableFrackingActivator": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableFrackingActivator"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableFrackingActivator"
+					}
+				}
+			}
+		},
+		"FGBuildableFrackingExtractor": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableFrackingExtractor"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableFrackingExtractor"
+					}
+				}
+			}
+		},
+		"FGBuildableGeneratorFuel": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableGeneratorFuel"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 3,
+					"maxItems": 3,
+					"items": false,
+					"prefixItems": [
+						{
+							"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableGeneratorFuel--biomass"
+						},
+						{
+							"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableGeneratorFuel--coal"
+						},
+						{
+							"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableGeneratorFuel--fuel"
+						}
+					]
+				}
+			}
+		},
+		"FGBuildableGeneratorGeoThermal": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableGeneratorGeoThermal"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableGeneratorGeoThermal"
+					}
+				}
+			}
+		},
+		"FGBuildableGeneratorNuclear": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableGeneratorNuclear"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableGeneratorNuclear"
+					}
+				}
+			}
+		},
+		"FGBuildableJumppad": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableJumppad"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableJumppad"
+					}
+				}
+			}
+		},
+		"FGBuildableLadder": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableLadder"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableLadder"
+					}
+				}
+			}
+		},
+		"FGBuildableLightsControlPanel": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableLightsControlPanel"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableLightsControlPanel"
+					}
+				}
+			}
+		},
+		"FGBuildableLightSource": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableLightSource"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 2,
+					"maxItems": 2,
+					"items": false,
+					"prefixItems": [
+						{
+							"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableLightSource--Build_CeilingLight_C"
+						},
+						{
+							"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableLightSource--Build_StreetLight_C"
+						}
+					]
+				}
+			}
+		},
+		"FGBuildableMAM": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableMAM"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableMAM"
+					}
+				}
+			}
+		},
+		"FGBuildableManufacturer": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableManufacturer"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 8,
+					"maxItems": 8,
+					"items": false,
+					"prefixItems": [
+						{
+							"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableManufacturer--Build_ConstructorMk1_C"
+						},
+						{
+							"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableManufacturer--Build_SmelterMk1_C"
+						},
+						{
+							"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableManufacturer--Build_FoundryMk1_C"
+						},
+						{
+							"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableManufacturer--Build_OilRefinery_C"
+						},
+						{
+							"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableManufacturer--Build_AssemblerMk1_C"
+						},
+						{
+							"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableManufacturer--Build_Packager_C"
+						},
+						{
+							"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableManufacturer--Build_Blender_C"
+						},
+						{
+							"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableManufacturer--Build_ManufacturerMk1_C"
+						}
+					]
+				}
+			}
+		},
+		"FGBuildableManufacturerVariablePower": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableManufacturerVariablePower"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableManufacturer--Build_HadronCollider_C"
+					}
+				}
+			}
+		},
+		"FGBuildablePassthrough": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildablePassthrough"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildablePassthrough"
+					}
+				}
+			}
+		},
+		"FGBuildablePillar": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildablePillar"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildablePillar"
+					}
+				}
+			}
+		},
+		"FGBuildablePipeHyper": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildablePipeHyper"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildablePipeHyper"
+					}
+				}
+			}
+		},
+		"FGBuildablePipeline": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildablePipeline"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildablePipeline"
+					}
+				}
+			}
+		},
+		"FGBuildablePipelineJunction": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildablePipelineJunction"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildablePipelineJunction"
+					}
+				}
+			}
+		},
+		"FGBuildablePipelinePump": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildablePipelinePump"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"oneOf": [
+							{
+								"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildablePipelinePump--valve"
+							},
+							{
+								"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildablePipelinePump--pump"
+							}
+						]
+					}
+				}
+			}
+		},
+		"FGBuildablePipelineSupport": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildablePipelineSupport"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildablePipelineSupport"
+					}
+				}
+			}
+		},
+		"FGBuildablePipeReservoir": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildablePipeReservoir"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildablePipeReservoir"
+					}
+				}
+			}
+		},
+		"FGBuildablePole": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildablePole"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildablePole"
+					}
+				}
+			}
+		},
+		"FGBuildablePowerPole": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildablePowerPole"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildablePowerPole"
+					}
+				}
+			}
+		},
+		"FGBuildablePowerStorage": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildablePowerStorage"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildablePowerStorage"
+					}
+				}
+			}
+		},
+		"FGBuildableRadarTower": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableRadarTower"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableRadarTower"
+					}
+				}
+			}
+		},
+		"FGBuildableRailroadSignal": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableRailroadSignal"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 2,
+					"maxItems": 2,
+					"items": false,
+					"prefixItems": [
+						{
+							"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableRailroadSignal--block"
+						},
+						{
+							"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableRailroadSignal--path"
+						}
+					]
+				}
+			}
+		},
+		"FGBuildableRailroadStation": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableRailroadStation"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableRailroadStation"
+					}
+				}
+			}
+		},
+		"FGBuildableRailroadTrack": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableRailroadTrack"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableRailroadTrack"
+					}
+				}
+			}
+		},
+		"FGBuildableRamp": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableRamp"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableRamp"
+					}
+				}
+			}
+		},
+		"FGBuildableResourceExtractor": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableResourceExtractor"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 4,
+					"maxItems": 4,
+					"items": false,
+					"prefixItems": [
+						{
+							"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableResourceExtractor--miner--mk1"
+						},
+						{
+							"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableResourceExtractor--oil"
+						},
+						{
+							"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableResourceExtractor--miner--mk2"
+						},
+						{
+							"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableResourceExtractor--miner--mk3"
+						}
+					]
+				}
+			}
+		},
+		"FGBuildableResourceSink": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableResourceSink"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableResourceSink"
+					}
+				}
+			}
+		},
+		"FGBuildableResourceSinkShop": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableResourceSinkShop"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableResourceSinkShop"
+					}
+				}
+			}
+		},
+		"FGBuildableSnowDispenser": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableSnowDispenser"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableSnowDispenser"
+					}
+				}
+			}
+		},
+		"FGBuildableSpaceElevator": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableSpaceElevator"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableSpaceElevator"
+					}
+				}
+			}
+		},
+		"FGBuildableSplitterSmart": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableSplitterSmart"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableSplitterSmart"
+					}
+				}
+			}
+		},
+		"FGBuildableStair": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableStair"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableStair"
+					}
+				}
+			}
+		},
+		"FGBuildableStorage": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableStorage"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableStorage"
+					}
+				}
+			}
+		},
+		"FGBuildableTradingPost": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableTradingPost"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableTradingPost"
+					}
+				}
+			}
+		},
+		"FGBuildableTrainPlatformCargo": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableTrainPlatformCargo"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableTrainPlatformCargo"
+					}
+				}
+			}
+		},
+		"FGBuildableTrainPlatformEmpty": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableTrainPlatformEmpty"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableTrainPlatformEmpty"
+					}
+				}
+			}
+		},
+		"FGBuildableWalkway": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableWalkway"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableWalkway"
+					}
+				}
+			}
+		},
+		"FGBuildableWall": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableWall"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableWall"
+					}
+				}
+			}
+		},
+		"FGBuildableWaterPump": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableWaterPump"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableWaterPump"
+					}
+				}
+			}
+		},
+		"FGBuildableWidgetSign": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableWidgetSign"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableWidgetSign"
+					}
+				}
+			}
+		},
+		"FGBuildableWire": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildableWire"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableWire"
+					}
+				}
+			}
+		},
+		"FGBuildingDescriptor": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGBuildingDescriptor"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildingDescriptor"
+					}
+				}
+			}
+		},
+		"FGChargedWeapon": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGChargedWeapon"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGChargedWeapon"
+					}
+				}
+			}
+		},
+		"FGConsumableDescriptor": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGConsumableDescriptor"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGConsumableDescriptor"
+					}
+				}
+			}
+		},
+		"FGConveyorPoleStackable": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGConveyorPoleStackable"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildablePole"
+					}
+				}
+			}
+		},
+		"FGCustomizationRecipe": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGCustomizationRecipe"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGCustomizationRecipe"
+					}
+				}
+			}
+		},
+		"FGEquipmentDescriptor": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGEquipmentDescriptor"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"oneOf": [
+							{
+								"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGItemDescriptor"
+							},
+							{
+								"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGEquipmentDescriptor--Desc_GolfCartGold_C"
+							}
+						]
+					}
+				}
+			}
+		},
+		"FGGolfCartDispenser": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGGolfCartDispenser"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGGolfCartDispenser"
+					}
+				}
+			}
+		},
+		"FGItemDescAmmoTypeColorCartridge": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGItemDescAmmoTypeColorCartridge"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGItemDescAmmoTypeColorCartridge"
+					}
+				}
+			}
+		},
+		"FGItemDescAmmoTypeInstantHit": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGItemDescAmmoTypeInstantHit"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGItemDescAmmoTypeInstantHit"
+					}
+				}
+			}
+		},
+		"FGItemDescAmmoTypeProjectile": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGItemDescAmmoTypeProjectile"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 6,
+					"maxItems": 6,
+					"prefixItems": [
+						{
+							"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGItemDescAmmoTypeProjectile--Desc_SpikedRebar_C"
+						},
+						{
+							"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGItemDescAmmoTypeProjectile--explosive--can-trigger-explode"
+						},
+						{
+							"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGItemDescAmmoTypeProjectile--explosive--can-trigger-explode"
+						},
+						{
+							"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGItemDescAmmoTypeProjectile--explosive--can-trigger-explode"
+						},
+						{
+							"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGItemDescAmmoTypeProjectile--Desc_SnowballProjectile_C"
+						},
+						{
+							"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGItemDescAmmoTypeProjectile--Desc_NobeliskExplosive_C"
+						}
+					]
+				}
+			}
+		},
+		"FGItemDescriptor": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGItemDescriptor"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGItemDescriptor"
+					}
+				}
+			}
+		},
+		"FGItemDescriptorBiomass": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGItemDescriptorBiomass"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGItemDescriptor"
+					}
+				}
+			}
+		},
+		"FGItemDescriptorNuclearFuel": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGItemDescriptorNuclearFuel"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGItemDescriptorNuclearFuel"
+					}
+				}
+			}
+		},
+		"FGPipeHyperStart": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGPipeHyperStart"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGPipeHyperStart"
+					}
+				}
+			}
+		},
+		"FGPoleDescriptor": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGPoleDescriptor"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGPoleDescriptor"
+					}
+				}
+			}
+		},
+		"FGRecipe": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGRecipe"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGRecipe"
+					}
+				}
+			}
+		},
+		"FGResourceDescriptor": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGResourceDescriptor"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGResourceDescriptor"
+					}
+				}
+			}
+		},
+		"FGSchematic": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGSchematic"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 1,
+					"items": {
+						"oneOf": [
+							{
+								"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGSchematic--base"
+							},
+							{
+								"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGSchematic--with-unlocks"
+							}
+						]
+					}
+				}
+			}
+		},
+		"FGVehicleDescriptor": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGVehicleDescriptor"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 7,
+					"maxItems": 7,
+					"items": false,
+					"prefixItems": [
+						{
+							"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGVehicleDescriptor--Desc_Truck_C"
+						},
+						{
+							"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGVehicleDescriptor--Desc_DroneTransport_C"
+						},
+						{
+							"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGVehicleDescriptor--Desc_Tractor_C"
+						},
+						{
+							"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGVehicleDescriptor--Desc_FreightWagon_C"
+						},
+						{
+							"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGVehicleDescriptor--Desc_Locomotive_C"
+						},
+						{
+							"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGVehicleDescriptor--Desc_Explorer_C"
+						},
+						{
+							"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGVehicleDescriptor--Desc_CyberWagon_C"
+						}
+					]
+				}
+			}
+		},
+		"FGWeapon": {
+			"type": "object",
+			"additionalProperties": false,
+			"required": ["NativeClass", "Classes"],
+			"properties": {
+				"NativeClass": {
+					"type": "string",
+					"DocsDotJson_NativeClass": "FactoryGame.FGWeapon"
+				},
+				"Classes": {
+					"type": "array",
+					"minItems": 2,
+					"maxItems": 2,
+					"uniqueItems": true,
+					"items": false,
+					"prefixItems": [
+						{
+							"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGWeapon--Equip_RebarGun_Projectile_C"
+						},
+						{
+							"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGWeapon--Equip_Rifle_C"
+						}
+					]
+				}
+			}
+		}
+	},
+	"type": "array",
+	"items": false,
+	"minItems": 92,
+	"maxItems": 92,
+	"prefixItems": [
+		{
+			"$ref": "#/$defs/FGItemDescriptor"
+		},
+		{
+			"$ref": "docs.json.ts--0.4.2.11#/$defs/FGConsumableEquipment"
+		},
+		{
+			"$ref": "#/$defs/FGSchematic"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableWall"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableDoor"
+		},
+		{
+			"$ref": "#/$defs/FGRecipe"
+		},
+		{
+			"$ref": "#/$defs/FGCustomizationRecipe"
+		},
+		{
+			"$ref": "#/$defs/FGBuildingDescriptor"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableCornerWall"
+		},
+		{
+			"$ref": "#/$defs/FGItemDescriptorBiomass"
+		},
+		{
+			"$ref": "docs.json.ts--0.3.7.7#/$defs/FGChainsaw"
+		},
+		{
+			"$ref": "#/$defs/FGEquipmentDescriptor"
+		},
+		{
+			"$ref": "#/$defs/FGGolfCartDispenser"
+		},
+		{
+			"$ref": "docs.json.ts--0.3.7.7#/$defs/FGSuitBase"
+		},
+		{
+			"$ref": "docs.json.ts--0.3.7.7#/$defs/FGJetPack"
+		},
+		{
+			"$ref": "docs.json.ts--0.3.7.7#/$defs/FGJumpingStilts"
+		},
+		{
+			"$ref": "docs.json.ts--0.5.2.1#/$defs/FGItemDescAmmoTypeProjectile"
+		},
+		{
+			"$ref": "#/$defs/FGWeapon"
+		},
+		{
+			"$ref": "#/$defs/FGItemDescAmmoTypeInstantHit"
+		},
+		{
+			"$ref": "docs.json.ts--0.3.7.7#/$defs/FGEquipmentStunSpear"
+		},
+		{
+			"$ref": "#/$defs/FGBuildablePole"
+		},
+		{
+			"$ref": "#/$defs/FGPoleDescriptor"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableConveyorBelt"
+		},
+		{
+			"$ref": "#/$defs/FGBuildablePowerPole"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableWire"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableTradingPost"
+		},
+		{
+			"$ref": "#/$defs/FGResourceDescriptor"
+		},
+		{
+			"$ref": "#/$defs/FGItemDescAmmoTypeColorCartridge"
+		},
+		{
+			"$ref": "docs.json.ts--0.3.7.7#/$defs/FGGasMask"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableManufacturer"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableResourceExtractor"
+		},
+		{
+			"$ref": "docs.json.ts--0.4.2.11#/$defs/FGPortableMinerDispenser"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableStorage"
+		},
+		{
+			"$ref": "#/$defs/FGBuildable"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableGeneratorFuel"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableSpaceElevator"
+		},
+		{
+			"$ref": "#/$defs/FGConsumableDescriptor"
+		},
+		{
+			"$ref": "#/$defs/FGItemDescriptorNuclearFuel"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableMAM"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableBeam"
+		},
+		{
+			"$ref": "#/$defs/FGBuildablePillar"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableFactory"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableWalkway"
+		},
+		{
+			"$ref": "#/$defs/FGBuildablePipelinePump"
+		},
+		{
+			"$ref": "#/$defs/FGBuildablePipelineSupport"
+		},
+		{
+			"$ref": "#/$defs/FGBuildablePipeline"
+		},
+		{
+			"$ref": "#/$defs/FGBuildablePipelineJunction"
+		},
+		{
+			"$ref": "#/$defs/FGBuildablePipeReservoir"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableWaterPump"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableResourceSink"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableResourceSinkShop"
+		},
+		{
+			"$ref": "#/$defs/FGVehicleDescriptor"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableDroneStation"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableFrackingExtractor"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableFrackingActivator"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableManufacturerVariablePower"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableGeneratorNuclear"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableConveyorLift"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableFoundation"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableRamp"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableSplitterSmart"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableAttachmentMerger"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableAttachmentSplitter"
+		},
+		{
+			"$ref": "docs.json.ts--0.3.7.7#/$defs/FGObjectScanner"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableJumppad"
+		},
+		{
+			"$ref": "#/$defs/FGConveyorPoleStackable"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableDockingStation"
+		},
+		{
+			"$ref": "#/$defs/FGPipeHyperStart"
+		},
+		{
+			"$ref": "#/$defs/FGBuildablePipeHyper"
+		},
+		{
+			"$ref": "#/$defs/FGBuildablePowerStorage"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableRailroadSignal"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableTrainPlatformCargo"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableTrainPlatformEmpty"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableRailroadStation"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableRailroadTrack"
+		},
+		{
+			"$ref": "docs.json.ts--0.4.2.11#/$defs/FGHoverPack"
+		},
+		{
+			"$ref": "docs.json.ts--0.4.2.11#/$defs/FGEquipmentZipline"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableCircuitSwitch"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableGeneratorGeoThermal"
+		},
+		{
+			"$ref": "docs.json.ts--0.4.2.11#/$defs/FGParachute"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableRadarTower"
+		},
+		{
+			"$ref": "#/$defs/FGChargedWeapon"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableFactorySimpleProducer"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableSnowDispenser"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableFactoryBuilding"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableWidgetSign"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableLightSource"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableLadder"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableStair"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableFloodlight"
+		},
+		{
+			"$ref": "#/$defs/FGBuildableLightsControlPanel"
+		},
+		{
+			"$ref": "#/$defs/FGBuildablePassthrough"
+		}
+	]
+}
