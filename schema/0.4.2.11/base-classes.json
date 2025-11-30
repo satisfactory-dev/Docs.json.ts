@@ -79,8 +79,18 @@
 			]
 		},
 		"FGBuildable--light-related-thing": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--light-related-thing--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable"
+				}
+			]
+		},
+		"FGBuildable--light-related-thing--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable",
+			"$ref": "#/$defs/FGBuildable--base",
 			"required": ["mIsEnabled", "mLightControlData"],
 			"properties": {
 				"mIsEnabled": {
@@ -933,6 +943,11 @@
 					"$ref": "#/$defs/FGBuildable--light-related-thing"
 				},
 				{
+					"$ref": "#/$defs/FGBuildableLightSource--base"
+				}
+			]
+		},
+		"FGBuildableLightSource--base": {
 					"type": "object",
 					"required": ["mIsDay", "mPowerConsumption"],
 					"properties": {
@@ -943,8 +958,6 @@
 							"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 						}
 					}
-				}
-			]
 		},
 		"FGBuildableMAM": {
 			"allOf": [

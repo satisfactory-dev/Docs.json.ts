@@ -148,7 +148,9 @@ type FGBuildable_docking_station = FGBuildable_docking_station_base & FGBuildabl
 
 type FGBuildable_docking_station_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_docking_station_base & FGBuildable_powered_storage_base;
 
-type FGBuildable_light_related_thing = FGBuildable & {
+type FGBuildable_light_related_thing = FGBuildable_light_related_thing_base & FGBuildable;
+
+type FGBuildable_light_related_thing_base = FGBuildable_base & {
 	mIsEnabled: docs_json_ts_common_types_bool_string,
 	mLightControlData: {
 		Intensity: docs_json_ts_common_types_decimal_string,
@@ -348,7 +350,9 @@ type FGBuildableLightsControlPanel = FGBuildable_light_related_thing & {
 	mConnections: '',
 };
 
-type FGBuildableLightSource = FGBuildable_mHasPower & FGBuildable_light_related_thing & {
+type FGBuildableLightSource = FGBuildable_mHasPower & FGBuildable_light_related_thing & FGBuildableLightSource_base;
+
+type FGBuildableLightSource_base = {
 	mIsDay: docs_json_ts_common_types_bool_string,
 	mPowerConsumption: docs_json_ts_common_types_decimal_string,
 };
@@ -720,6 +724,7 @@ export type {
 	FGBuildable_docking_station,
 	FGBuildable_docking_station_base,
 	FGBuildable_light_related_thing,
+	FGBuildable_light_related_thing_base,
 	FGBuildable_mHasPower,
 	FGBuildable_mHasPower_base,
 	FGBuildable_mStopped_audio_stuff,
@@ -774,6 +779,7 @@ export type {
 	FGBuildableLadder,
 	FGBuildableLightsControlPanel,
 	FGBuildableLightSource,
+	FGBuildableLightSource_base,
 	FGBuildableMAM,
 	FGBuildableMAM_base,
 	FGBuildableMAM_base_base,

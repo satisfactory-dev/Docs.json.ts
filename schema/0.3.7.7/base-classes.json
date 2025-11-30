@@ -919,8 +919,18 @@
 			]
 		},
 		"FGBuildableFactorySimpleProducer--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableFactorySimpleProducer--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base"
+				}
+			]
+		},
+		"FGBuildableFactorySimpleProducer--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--base",
+			"$ref": "#/$defs/FGBuildable--powered--base--base",
 			"required": ["mTimeToProduceItem", "mEventType"],
 			"properties": {
 				"mTimeToProduceItem": {

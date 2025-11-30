@@ -283,7 +283,9 @@ type FGBuildableFactory_landing_pad_base_base = FGBuildable_powered_base_base & 
 
 type FGBuildableFactorySimpleProducer = FGBuildable_powered & FGBuildableFactorySimpleProducer_base;
 
-type FGBuildableFactorySimpleProducer_base = FGBuildable_powered_base & {
+type FGBuildableFactorySimpleProducer_base = FGBuildableFactorySimpleProducer_base_base & FGBuildable_powered_base;
+
+type FGBuildableFactorySimpleProducer_base_base = FGBuildable_powered_base_base & {
 	mTimeToProduceItem: docs_json_ts_common_types_decimal_string,
 	mEventType: 'EV_Christmas',
 };
@@ -1193,6 +1195,7 @@ export type {
 	FGBuildableFactory_landing_pad_base_base,
 	FGBuildableFactorySimpleProducer,
 	FGBuildableFactorySimpleProducer_base,
+	FGBuildableFactorySimpleProducer_base_base,
 	FGBuildableGenerator,
 	FGBuildableGenerator_base,
 	FGBuildableGenerator_base_base,
