@@ -572,7 +572,9 @@ type FGBuildablePowerPole_base = FGBuildable_base & {
 
 type FGBuildableRadarTower = FGBuildable_powered & FGBuildableRadarTower_base;
 
-type FGBuildableRadarTower_base = FGBuildable_powered_base & {
+type FGBuildableRadarTower_base = FGBuildableRadarTower_base_base & FGBuildable_powered_base;
+
+type FGBuildableRadarTower_base_base = FGBuildable_powered_base_base & {
 	mMapText: 'Radar Tower',
 	OnRadarTowerRadiusUpdated: docs_json_ts_common_types_empty_object,
 	mMinRevealRadius: docs_json_ts_common_types_decimal_string,
@@ -1259,6 +1261,7 @@ export type {
 	FGBuildablePowerPole_base,
 	FGBuildableRadarTower,
 	FGBuildableRadarTower_base,
+	FGBuildableRadarTower_base_base,
 	FGBuildableRailroadStation,
 	FGBuildableRailroadStation_base,
 	FGBuildableRailroadStation_base_base,

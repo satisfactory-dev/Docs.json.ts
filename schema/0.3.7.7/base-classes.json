@@ -2084,8 +2084,18 @@
 			]
 		},
 		"FGBuildableRadarTower--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableRadarTower--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base"
+				}
+			]
+		},
+		"FGBuildableRadarTower--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--base",
+			"$ref": "#/$defs/FGBuildable--powered--base--base",
 			"required": [
 				"mMapText",
 				"OnRadarTowerRadiusUpdated",
