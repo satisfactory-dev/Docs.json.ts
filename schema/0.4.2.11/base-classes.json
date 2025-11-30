@@ -948,16 +948,16 @@
 			]
 		},
 		"FGBuildableLightSource--base": {
-					"type": "object",
-					"required": ["mIsDay", "mPowerConsumption"],
-					"properties": {
-						"mIsDay": {
-							"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-						},
-						"mPowerConsumption": {
-							"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-						}
-					}
+			"type": "object",
+			"required": ["mIsDay", "mPowerConsumption"],
+			"properties": {
+				"mIsDay": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mPowerConsumption": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
 		},
 		"FGBuildableMAM": {
 			"allOf": [
