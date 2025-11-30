@@ -961,7 +961,9 @@ type FGItemDescriptorNuclearFuel_base = FGDescriptor_sinkable_base & {
 	mAmountOfWaste: docs_json_ts_common_types_integer_string,
 };
 
-type FGNobeliskDetonator = FGWeaponProjectile_thrown & {
+type FGNobeliskDetonator = FGNobeliskDetonator_base & FGWeaponProjectile_thrown;
+
+type FGNobeliskDetonator_base = FGWeaponProjectile_thrown_base_base & {
 	mArmAnimation: 'AE_Nobelisk',
 };
 
@@ -1345,6 +1347,7 @@ export type {
 	FGItemDescriptorNuclearFuel,
 	FGItemDescriptorNuclearFuel_base,
 	FGNobeliskDetonator,
+	FGNobeliskDetonator_base,
 	FGParachute,
 	FGParachute_base,
 	FGPipeHyperStart,

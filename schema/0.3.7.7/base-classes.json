@@ -3670,8 +3670,18 @@
 			}
 		},
 		"FGNobeliskDetonator": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGNobeliskDetonator--base"
+				},
+				{
+					"$ref": "#/$defs/FGWeaponProjectile--thrown"
+				}
+			]
+		},
+		"FGNobeliskDetonator--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGWeaponProjectile--thrown",
+			"$ref": "#/$defs/FGWeaponProjectile--thrown--base--base",
 			"required": ["mArmAnimation"],
 			"properties": {
 				"mArmAnimation": {
