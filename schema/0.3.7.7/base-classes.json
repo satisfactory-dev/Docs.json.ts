@@ -4082,15 +4082,21 @@
 			}
 		},
 		"FGWeaponProjectile--thrown": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGWeaponProjectile--thrown--base"
+				},
+				{
+					"$ref": "#/$defs/FGWeaponProjectile"
+				}
+			]
+		},
+		"FGWeaponProjectile--thrown--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGWeaponProjectile",
+			"$ref": "#/$defs/FGWeaponProjectile--thrown--base--base",
 			"required": [
 				"mExplosiveData",
 				"mDispensedExplosives",
-				"mIsPendingExecuteFire",
-				"mMaxChargeTime",
-				"mMaxThrowForce",
-				"mMinThrowForce",
 				"mDelayBetweenExplosions",
 				"mAttachSocket",
 				"mArmAnimation"
@@ -4150,6 +4156,28 @@
 					"type": "string",
 					"const": ""
 				},
+				"mDelayBetweenExplosions": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mAttachSocket": {
+					"type": "string",
+					"const": "hand_lSocket"
+				},
+				"mArmAnimation": {
+					"type": "string",
+					"enum": ["AE_Nobelisk", "AE_Generic1Hand"]
+				}
+			}
+		},
+		"FGWeaponProjectile--thrown--base--base": {
+			"type": "object",
+			"required": [
+				"mIsPendingExecuteFire",
+				"mMaxChargeTime",
+				"mMaxThrowForce",
+				"mMinThrowForce"
+			],
+			"properties": {
 				"mIsPendingExecuteFire": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				},
@@ -4161,17 +4189,6 @@
 				},
 				"mMinThrowForce": {
 					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-				},
-				"mDelayBetweenExplosions": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mAttachSocket": {
-					"type": "string",
-					"const": "hand_lSocket"
-				},
-				"mArmAnimation": {
-					"type": "string",
-					"enum": ["AE_Nobelisk", "AE_Generic1Hand"]
 				}
 			}
 		},

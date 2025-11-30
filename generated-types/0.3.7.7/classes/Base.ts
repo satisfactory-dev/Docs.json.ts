@@ -1067,7 +1067,9 @@ type FGWeaponProjectile_instant_base_version_specific = FGWeaponProjectile_base 
 	mWeaponTraceLength: docs_json_ts_common_types_decimal_string,
 };
 
-type FGWeaponProjectile_thrown = FGWeaponProjectile & {
+type FGWeaponProjectile_thrown = FGWeaponProjectile_thrown_base & FGWeaponProjectile;
+
+type FGWeaponProjectile_thrown_base = FGWeaponProjectile_thrown_base_base & {
 	mExplosiveData: {
 		ProjectileClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
 		ProjectileLifeSpan: docs_json_ts_common_types_decimal_string_signed,
@@ -1080,13 +1082,16 @@ type FGWeaponProjectile_thrown = FGWeaponProjectile & {
 		DamageTypeExplode: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
 	},
 	mDispensedExplosives: '',
+	mDelayBetweenExplosions: docs_json_ts_common_types_decimal_string,
+	mAttachSocket: 'hand_lSocket',
+	mArmAnimation: 'AE_Nobelisk' | 'AE_Generic1Hand',
+};
+
+type FGWeaponProjectile_thrown_base_base = {
 	mIsPendingExecuteFire: docs_json_ts_common_types_bool_string,
 	mMaxChargeTime: docs_json_ts_common_types_decimal_string,
 	mMaxThrowForce: docs_json_ts_common_types_integer_string,
 	mMinThrowForce: docs_json_ts_common_types_integer_string,
-	mDelayBetweenExplosions: docs_json_ts_common_types_decimal_string,
-	mAttachSocket: 'hand_lSocket',
-	mArmAnimation: 'AE_Nobelisk' | 'AE_Generic1Hand',
 };
 
 type FGWeaponProjectileFire = FGWeaponProjectile & FGWeaponProjectileFire_base & FGWeaponProjectileFire_base_random & FGWeaponProjectileFire_base_version_specific;
@@ -1363,6 +1368,8 @@ export type {
 	FGWeaponProjectile_instant_base,
 	FGWeaponProjectile_instant_base_version_specific,
 	FGWeaponProjectile_thrown,
+	FGWeaponProjectile_thrown_base,
+	FGWeaponProjectile_thrown_base_base,
 	FGWeaponProjectileFire,
 	FGWeaponProjectileFire_base,
 	FGWeaponProjectileFire_base_random,
