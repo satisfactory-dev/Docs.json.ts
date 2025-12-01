@@ -828,10 +828,6 @@
 				}
 			}
 		},
-		"FGBuildableLightSource--Build_CeilingLight_C": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildableLightSource"
-		},
 		"FGBuildableLightSource--Build_StreetLight_C": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableLightSource",
@@ -1317,10 +1313,6 @@
 					"const": "RSA_None"
 				}
 			}
-		},
-		"FGBuildableRailroadSignal--path": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildableRailroadSignal--base"
 		},
 		"FGBuildableRailroadStation": {
 			"type": "object",
@@ -1860,10 +1852,6 @@
 				}
 			]
 		},
-		"FGEquipmentDescriptor--Desc_GolfCartGold_C": {
-			"type": "object",
-			"$ref": "#/$defs/FGItemDescriptor--base"
-		},
 		"FGGolfCartDispenser": {
 			"type": "object",
 			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGGolfCartDispenser",
@@ -2135,7 +2123,7 @@
 		"FGItemDescAmmoTypeProjectile--Desc_NobeliskExplosive_C--base": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--explosive"
+					"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--base"
 				},
 				{
 					"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--base--sinkable"
@@ -2242,17 +2230,7 @@
 		"FGItemDescAmmoTypeProjectile--Desc_SnowballProjectile_C--base": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--explosive"
-				},
-				{
-					"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--base--sinkable"
-				}
-			]
-		},
-		"FGItemDescAmmoTypeProjectile--Desc_SpikedRebar_C": {
-			"allOf": [
-				{
-					"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--Desc_SpikedRebar_C--base"
+					"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--base"
 				},
 				{
 					"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--base--sinkable"
@@ -2260,8 +2238,18 @@
 			]
 		},
 		"FGItemDescAmmoTypeProjectile--Desc_SpikedRebar_C--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--base"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--base--sinkable"
+				}
+			]
+		},
+		"FGItemDescAmmoTypeProjectile--Desc_SpikedRebar_C": {
 			"type": "object",
-			"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--base",
+			"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--Desc_SpikedRebar_C--base",
 			"required": ["mProjectileData"],
 			"properties": {
 				"mProjectileData": {
@@ -2295,103 +2283,6 @@
 								"$ref": "docs.json.ts--common--types#/$defs/integer_string"
 							},
 							"CanTriggerExplodeBySameClass": {
-								"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-							},
-							"DamageType": {
-								"type": "string",
-								"DocsDotJson_BlueprintGeneratedClass_quoted": null
-							},
-							"DamageTypeExplode": {
-								"type": "string",
-								"const": "Class'\"/Script/FactoryGame.FGDamageType\"'"
-							},
-							"DamageFalloffCurve": {
-								"type": "string",
-								"typed_string": {
-									"type": "object",
-									"additionalProperties": false,
-									"required": ["EditorCurveData"],
-									"properties": {
-										"EditorCurveData": {
-											"type": "string",
-											"typed_string": {
-												"type": "object",
-												"additionalProperties": false,
-												"required": [
-													"DefaultValue",
-													"PreInfinityExtrap",
-													"PostInfinityExtrap"
-												],
-												"properties": {
-													"DefaultValue": {
-														"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-													},
-													"PreInfinityExtrap": {
-														"type": "string",
-														"const": "RCCE_Constant"
-													},
-													"PostInfinityExtrap": {
-														"type": "string",
-														"const": "RCCE_Constant"
-													}
-												}
-											}
-										}
-									}
-								}
-							},
-							"WeaponDamageMultiplier": {
-								"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-							}
-						}
-					}
-				}
-			}
-		},
-		"FGItemDescAmmoTypeProjectile--explosive": {
-			"type": "object",
-			"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--base",
-			"required": ["mProjectileData"],
-			"properties": {
-				"mProjectileData": {
-					"type": "string",
-					"typed_string": {
-						"type": "object",
-						"additionalProperties": false,
-						"required": [
-							"ProjectileClass",
-							"ProjectileLifeSpan",
-							"ProjectileStickSpan",
-							"ExplosionDamage",
-							"ExplosionRadius",
-							"ImpactDamage",
-							"ExplodeAtEndOfLife",
-							"DamageType",
-							"DamageTypeExplode",
-							"DamageFalloffCurve",
-							"WeaponDamageMultiplier"
-						],
-						"properties": {
-							"ProjectileClass": {
-								"type": "string",
-								"DocsDotJson_BlueprintGeneratedClass_quoted": null
-							},
-							"ProjectileLifeSpan": {
-								"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
-							},
-							"ProjectileStickSpan": {
-								"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
-							},
-							"ExplosionDamage": {
-								"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-							},
-							"ExplosionRadius": {
-								"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-							},
-							"ImpactDamage": {
-								"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-							},
-							"ExplodeAtEndOfLife": {
 								"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 							},
 							"DamageType": {

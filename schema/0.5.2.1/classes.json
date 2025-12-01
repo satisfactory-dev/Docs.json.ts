@@ -154,7 +154,7 @@
 		},
 		"FGBuildableLightSource--Build_CeilingLight_C": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableLightSource--Build_CeilingLight_C",
+			"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableLightSource",
 			"unevaluatedProperties": false
 		},
 		"FGBuildableLightSource--Build_StreetLight_C": {
@@ -284,7 +284,7 @@
 		},
 		"FGBuildableRailroadSignal--path": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableRailroadSignal--path",
+			"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableRailroadSignal--base",
 			"unevaluatedProperties": false
 		},
 		"FGBuildableRailroadStation": {
@@ -419,7 +419,7 @@
 		},
 		"FGEquipmentDescriptor--Desc_GolfCartGold_C": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGEquipmentDescriptor--Desc_GolfCartGold_C",
+			"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGItemDescriptor--base",
 			"unevaluatedProperties": false
 		},
 		"FGGolfCartDispenser": {
@@ -450,11 +450,6 @@
 		"FGItemDescAmmoTypeProjectile--Desc_SpikedRebar_C": {
 			"type": "object",
 			"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGItemDescAmmoTypeProjectile--Desc_SpikedRebar_C",
-			"unevaluatedProperties": false
-		},
-		"FGItemDescAmmoTypeProjectile--explosive": {
-			"type": "object",
-			"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGItemDescAmmoTypeProjectile--explosive",
 			"unevaluatedProperties": false
 		},
 		"FGItemDescAmmoTypeProjectile--explosive--firework": {

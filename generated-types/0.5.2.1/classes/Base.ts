@@ -326,8 +326,6 @@ type FGBuildableLightSource_base = {
 	OnBuildableLightSourceStateChanged: docs_json_ts_common_types_empty_object,
 };
 
-type FGBuildableLightSource_Build_CeilingLight_C = FGBuildableLightSource;
-
 type FGBuildableLightSource_Build_StreetLight_C = FGBuildableLightSource & {
 	newCustomizationData: {
 		OverrideColorData: {
@@ -433,8 +431,6 @@ type FGBuildableRailroadSignal_base = FGBuildable_base & {
 type FGBuildableRailroadSignal_block = FGBuildableRailroadSignal_base & {
 	mPreviousAspect: 'RSA_None',
 };
-
-type FGBuildableRailroadSignal_path = FGBuildableRailroadSignal_base;
 
 type FGBuildableRailroadStation = FGBuildableRailroadStation_base & {
 	mShouldTeleportHere: docs_json_ts_common_types_bool_string,
@@ -561,8 +557,6 @@ type FGDescriptor_BuildMenu_base = docs_json_ts_0_4_2_11_classes_base_FGDescript
 
 type FGDescriptor_sinkable = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_sinkable_base & FGDescriptor;
 
-type FGEquipmentDescriptor_Desc_GolfCartGold_C = FGItemDescriptor_base;
-
 type FGGolfCartDispenser = docs_json_ts_0_3_7_7_classes_base_FGGolfCartDispenser & {
 	mMaxSpawnDistance: docs_json_ts_common_types_decimal_string,
 	mSpawningClearance: docs_json_ts_common_types_decimal_string,
@@ -631,7 +625,7 @@ type FGItemDescAmmoTypeProjectile_Desc_NobeliskExplosive_C = FGItemDescAmmoTypeP
 	},
 };
 
-type FGItemDescAmmoTypeProjectile_Desc_NobeliskExplosive_C_base = FGItemDescAmmoTypeProjectile_explosive & FGItemDescAmmoTypeProjectile_base_sinkable;
+type FGItemDescAmmoTypeProjectile_Desc_NobeliskExplosive_C_base = FGItemDescAmmoTypeProjectile_base & FGItemDescAmmoTypeProjectile_base_sinkable;
 
 type FGItemDescAmmoTypeProjectile_Desc_SnowballProjectile_C = FGItemDescAmmoTypeProjectile_Desc_SnowballProjectile_C_base & {
 	mProjectileData: {
@@ -655,39 +649,17 @@ type FGItemDescAmmoTypeProjectile_Desc_SnowballProjectile_C = FGItemDescAmmoType
 	},
 };
 
-type FGItemDescAmmoTypeProjectile_Desc_SnowballProjectile_C_base = FGItemDescAmmoTypeProjectile_explosive & FGItemDescAmmoTypeProjectile_base_sinkable;
+type FGItemDescAmmoTypeProjectile_Desc_SnowballProjectile_C_base = FGItemDescAmmoTypeProjectile_base & FGItemDescAmmoTypeProjectile_base_sinkable;
 
-type FGItemDescAmmoTypeProjectile_Desc_SpikedRebar_C = FGItemDescAmmoTypeProjectile_Desc_SpikedRebar_C_base & FGItemDescAmmoTypeProjectile_base_sinkable;
+type FGItemDescAmmoTypeProjectile_Desc_SpikedRebar_C_base = FGItemDescAmmoTypeProjectile_base & FGItemDescAmmoTypeProjectile_base_sinkable;
 
-type FGItemDescAmmoTypeProjectile_Desc_SpikedRebar_C_base = FGItemDescAmmoTypeProjectile_base & {
+type FGItemDescAmmoTypeProjectile_Desc_SpikedRebar_C = FGItemDescAmmoTypeProjectile_Desc_SpikedRebar_C_base & {
 	mProjectileData: {
 		ProjectileClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
 		ProjectileLifeSpan: docs_json_ts_common_types_decimal_string_signed,
 		ProjectileStickSpan: docs_json_ts_common_types_decimal_string_signed,
 		ImpactDamage: docs_json_ts_common_types_integer_string,
 		CanTriggerExplodeBySameClass: docs_json_ts_common_types_bool_string,
-		DamageType: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
-		DamageTypeExplode: 'Class\'"/Script/FactoryGame.FGDamageType"\'',
-		DamageFalloffCurve: {
-			EditorCurveData: {
-				DefaultValue: docs_json_ts_common_types_decimal_string,
-				PreInfinityExtrap: 'RCCE_Constant',
-				PostInfinityExtrap: 'RCCE_Constant',
-			},
-		},
-		WeaponDamageMultiplier: docs_json_ts_common_types_decimal_string,
-	},
-};
-
-type FGItemDescAmmoTypeProjectile_explosive = FGItemDescAmmoTypeProjectile_base & {
-	mProjectileData: {
-		ProjectileClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
-		ProjectileLifeSpan: docs_json_ts_common_types_decimal_string_signed,
-		ProjectileStickSpan: docs_json_ts_common_types_decimal_string_signed,
-		ExplosionDamage: docs_json_ts_common_types_integer_string,
-		ExplosionRadius: docs_json_ts_common_types_decimal_string,
-		ImpactDamage: docs_json_ts_common_types_integer_string,
-		ExplodeAtEndOfLife: docs_json_ts_common_types_bool_string,
 		DamageType: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
 		DamageTypeExplode: 'Class\'"/Script/FactoryGame.FGDamageType"\'',
 		DamageFalloffCurve: {
@@ -756,7 +728,7 @@ type FGSchematic_base = docs_json_ts_0_4_2_11_classes_base_FGSchematic_base & {
 		...docs_json_ts_0_5_2_1_properties_mUnlocks_item[],
 	],
 	mDependenciesBlocksSchematicAccess: docs_json_ts_common_types_bool_string,
-	mSmallSchematicIcon: 'None' | `${'Texture2D /Game/FactoryGame/' | 'Texture2D\'/Game/FactoryGame/' | 'Texture2D\'"/Game/FactoryGame/'}${string}${'/IconDesc_' | '/' | ''}${string}${'_'}${'64' | '256' | 'Map'}${'.'}${string}${'_'}${'64' | '256' | 'Map'}${'"\'' | '\'' | ''}`,
+	mSmallSchematicIcon: 'None' | `${'Texture2D /Game/FactoryGame/' | 'Texture2D\'"/Game/FactoryGame/'}${string}${string}${'_'}${'64' | '256' | 'Map'}${'.'}${string}${'_'}${'64' | '256' | 'Map'}${'"\'' | '\'' | ''}`,
 	mRelevantShopSchematics: '' | [
 		...(`BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}` | 'None')[],
 	],
@@ -870,7 +842,6 @@ export type {
 	FGBuildableLightsControlPanel_base,
 	FGBuildableLightSource,
 	FGBuildableLightSource_base,
-	FGBuildableLightSource_Build_CeilingLight_C,
 	FGBuildableLightSource_Build_StreetLight_C,
 	FGBuildableMAM,
 	FGBuildableManufacturer_Build_AssemblerMk1_C,
@@ -901,7 +872,6 @@ export type {
 	FGBuildableRadarTower,
 	FGBuildableRailroadSignal_base,
 	FGBuildableRailroadSignal_block,
-	FGBuildableRailroadSignal_path,
 	FGBuildableRailroadStation,
 	FGBuildableRailroadStation_base,
 	FGBuildableRailroadTrack,
@@ -936,7 +906,6 @@ export type {
 	FGDescriptor_BuildMenu,
 	FGDescriptor_BuildMenu_base,
 	FGDescriptor_sinkable,
-	FGEquipmentDescriptor_Desc_GolfCartGold_C,
 	FGGolfCartDispenser,
 	FGItemDescAmmoTypeColorCartridge,
 	FGItemDescAmmoTypeColorCartridge_base,
@@ -948,9 +917,8 @@ export type {
 	FGItemDescAmmoTypeProjectile_Desc_NobeliskExplosive_C_base,
 	FGItemDescAmmoTypeProjectile_Desc_SnowballProjectile_C,
 	FGItemDescAmmoTypeProjectile_Desc_SnowballProjectile_C_base,
-	FGItemDescAmmoTypeProjectile_Desc_SpikedRebar_C,
 	FGItemDescAmmoTypeProjectile_Desc_SpikedRebar_C_base,
-	FGItemDescAmmoTypeProjectile_explosive,
+	FGItemDescAmmoTypeProjectile_Desc_SpikedRebar_C,
 	FGItemDescAmmoTypeProjectile_explosive_firework,
 	FGItemDescriptor,
 	FGItemDescriptor_base,
