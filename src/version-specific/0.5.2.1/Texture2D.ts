@@ -8,6 +8,9 @@ import type {
 	SchemalessTypeOptions,
 } from '@signpostmarv/json-schema-typescript-codegen';
 
+import type {
+	TemplatedStringParts,
+} from '@signpostmarv/json-schema-typescript-codegen/ajv';
 import {
 	MacroToTemplatedString,
 	TemplatedString,
@@ -34,6 +37,7 @@ type macro_schema = ([
 		]
 		| ['256', '512', '256_New', 'White']
 		| ['64', '256', '64_new', '512']
+		| ['64', '256', 'Map']
 		// eslint-disable-next-line @stylistic/comma-dangle
 		| null
 	),
@@ -125,6 +129,7 @@ const Texture2D_schema_properties = {
 									],
 									['256', '512', '256_New', 'White'],
 									['64', '256', '64_new', '512'],
+									['64', '256', 'Map'],
 								],
 							},
 							{
@@ -137,6 +142,18 @@ const Texture2D_schema_properties = {
 		],
 	},
 } as const;
+
+const suffix_options = [...(
+	new Set(
+		Texture2D_schema_properties
+			.DocsDotJson_Texture2D
+			.oneOf[1]
+			.prefixItems[2]
+			.oneOf[1]
+			.enum
+			.flatMap((e) => e),
+	)
+).values()] as TemplatedStringParts[0];
 
 type Texture2D_schema = SchemaDefinitionDefinition<
 	['type', 'DocsDotJson_Texture2D'],
@@ -183,6 +200,7 @@ export class Texture2D extends
 						]
 						| ['256', '512', '256_New', 'White']
 						| ['64', '256', '64_new', '512']
+						| ['64', '256', 'Map']
 						// eslint-disable-next-line @stylistic/comma-dangle
 						| null
 					),
@@ -245,56 +263,18 @@ export class Texture2D extends
 							{
 								type: 'string',
 								templated_string: [
-									{type: 'string'},
+									{ type: 'string' },
 									'_',
-									[
-										'1',
-										'2',
-										'3',
-										'4',
-										'5',
-										'Factory',
-										'MAM',
-										'Logistics',
-										'Vehicle',
-										'Structure',
-										'Equipment',
-										'Icon',
-										'64',
-										'256',
-										'512',
-										'1b',
-										'64_new',
-										'256_New',
-									],
+									suffix_options,
 								],
 							},
 							'.',
 							{
 								type: 'string',
 								templated_string: [
-									{type: 'string'},
+									{ type: 'string' },
 									'_',
-									[
-										'1',
-										'2',
-										'3',
-										'4',
-										'5',
-										'Factory',
-										'MAM',
-										'Logistics',
-										'Vehicle',
-										'Structure',
-										'Equipment',
-										'Icon',
-										'64',
-										'256',
-										'512',
-										'1b',
-										'64_new',
-										'256_New',
-									],
+									suffix_options,
 								],
 							},
 						],
@@ -343,6 +323,7 @@ export class Texture2D extends
 			]
 			| ['256', '512', '256_New', 'White']
 			| ['64', '256', '64_new', '512']
+			| ['64', '256', 'Map']
 		) = null === third
 			? ['64', '256']
 			: (Array.isArray(third) ? third : third);

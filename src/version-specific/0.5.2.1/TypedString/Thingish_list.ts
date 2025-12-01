@@ -1,6 +1,9 @@
 import type {
 	Expression,
 } from 'typescript';
+import {
+	factory,
+} from 'typescript';
 
 import type {
 	Ajv2020 as Ajv,
@@ -12,6 +15,7 @@ import type {
 	array_schema,
 	array_type,
 	SchemaObject,
+	SchemaParser,
 } from '@signpostmarv/json-schema-typescript-codegen';
 import {
 	$ref,
@@ -237,6 +241,10 @@ function Thingish_list_schema_to_pattern__prefixItems(
 				case 'docs.json.ts--common--types#/$defs/decimal_string':
 					regex.push('\\d+\\.\\d{6}');
 					break;
+				case '#/$defs/this-is-here-for-spec-reasons':
+					break;
+				default:
+					throw new TypeError('Unsupported $ref found!');
 			}
 		} else {
 			throw new TypeError('Not yet implemented!');
@@ -303,9 +311,177 @@ export function Thingish_list_generate_type_definition_prefixItems(
 			items: false,
 			prefixItems: [
 				{
-					$ref: '#/$defs/foo',
+					$ref: '#/$defs/this-is-here-for-spec-reasons',
 				},
 			],
 		},
 	});
+}
+
+export function Thingish_list_generate_typescript_type(
+	schema: Thingish_list_type<SchemaObject>,
+	schema_parser: SchemaParser,
+): Promise<Thingish_list_SchemaTo> {
+	if ('typed_string' in schema) {
+		throw new TypeError('Not implemented!');
+	}
+
+	const coerced = schema as unknown as Thingish_list_outter<
+		Thingish_list_outter<
+			array_type<
+				'items',
+				'specified',
+				'yes',
+				'with',
+				Thingish_list_prefixItems
+			>
+		>
+	>['typed_string'];
+
+	const inner = coerced.items.typed_string;
+
+	const instance = schema_parser.parse(schema);
+
+	if (!(instance instanceof ArrayType)) {
+		throw new TypeError('Matched instance not of expected type!');
+	}
+
+	const inner_instance = schema_parser.parse(inner);
+
+	if (!(inner_instance instanceof ArrayType)) {
+		throw new TypeError('Matched instance not of expected type!');
+	}
+
+	const modified = {
+		...coerced,
+		items: {
+			...inner,
+		},
+	};
+
+	return instance.generate_typescript_type({
+		data: undefined,
+		schema: modified,
+		schema_parser,
+	});
+}
+
+export function Thingish_list_generate_typescript_data(
+	data: string,
+	schema_parser: SchemaParser,
+	schema: Thingish_list_type<SchemaObject>,
+): Thingish_list_DataTo {
+	const full_regex = new RegExp(`^${
+		Thingish_list_schema_to_pattern__str(schema)
+	}$`);
+
+	if (!full_regex.test(data)) {
+		throw new TypeError('Data does not match expected regex!');
+	}
+
+	return Thingish_list_generate_typescript_data_validated(
+		data,
+		schema_parser,
+		schema,
+	) as Thingish_list_DataTo;
+}
+
+function Thingish_list_generate_typescript_data_validated(
+	data: string,
+	schema_parser: SchemaParser,
+	schema: Thingish_list_type<SchemaObject>,
+) {
+	const result: Expression[] = [];
+
+	if (is_inner(schema)) {
+		const regex = new RegExp(Thingish_list_schema_to_pattern__str(
+			schema.items,
+		), 'g');
+
+		const items: string[] = [];
+
+		data.replace(regex, (match) => {
+			items.push(match);
+
+			return match;
+		});
+
+		if (items.length < schema.minItems || items.length > schema.maxItems) {
+			throw new RangeError(`Matched items expected to be between ${
+				schema.minItems
+			} and ${
+				schema.maxItems
+			}, found ${
+				items.length
+			}`);
+		}
+
+		if ('typed_string' in schema.items) {
+			result.push(...items.map((item) => {
+				return Thingish_list_generate_typescript_data_validated(
+					item,
+					schema_parser,
+					schema.items,
+				);
+			}));
+		} else {
+			throw new TypeError('Unsupported schema found!');
+		}
+
+		return factory.createArrayLiteralExpression(
+			result,
+			true,
+		);
+	} else if (is_prefixItems(schema)) {
+		return Thingish_list_generate_typescript_data_validated__prefixItems(
+			data,
+			schema_parser,
+			schema,
+		);
+	} else if (is_outter(schema)) {
+		return Thingish_list_generate_typescript_data_validated(
+			data,
+			schema_parser,
+			schema.typed_string as unknown as Thingish_list_type<SchemaObject>,
+		);
+	}
+
+	throw new TypeError('Unsupported schema found!');
+}
+
+function Thingish_list_generate_typescript_data_validated__prefixItems(
+	data: string,
+	schema_parser: SchemaParser,
+	schema: Thingish_list_prefixItems,
+) {
+	const regex_parts: string[] = [];
+
+	for (const sub_schema of schema.prefixItems) {
+		if ($ref.is_supported_$ref(sub_schema)) {
+			switch (sub_schema.$ref) {
+				case 'docs.json.ts--common--types#/$defs/integer_string':
+					regex_parts.push('(\\d+)');
+					break;
+				case 'docs.json.ts--common--types#/$defs/decimal_string':
+					regex_parts.push('(\\d+\\.\\d{6})');
+					break;
+				default:
+					throw new TypeError('Unsupported $ref found!');
+			}
+		} else {
+			throw new TypeError('Not yet implemented!');
+		}
+	}
+
+	const regex = new RegExp(`^\\(${regex_parts.join(', ')}\\)$`);
+
+	const [, ...matches] = regex.exec(data) as RegExpExecArray;
+
+	const instance = schema_parser.parse(schema);
+
+	return instance.generate_typescript_data(
+		matches,
+		schema_parser,
+		schema,
+	);
 }

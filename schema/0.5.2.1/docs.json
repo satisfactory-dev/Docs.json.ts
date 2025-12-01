@@ -1353,18 +1353,19 @@
 					"type": "array",
 					"minItems": 6,
 					"maxItems": 6,
+					"items": false,
 					"prefixItems": [
 						{
 							"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGItemDescAmmoTypeProjectile--Desc_SpikedRebar_C"
 						},
 						{
-							"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGItemDescAmmoTypeProjectile--explosive--can-trigger-explode"
+							"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGItemDescAmmoTypeProjectile--explosive--firework"
 						},
 						{
-							"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGItemDescAmmoTypeProjectile--explosive--can-trigger-explode"
+							"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGItemDescAmmoTypeProjectile--explosive--firework"
 						},
 						{
-							"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGItemDescAmmoTypeProjectile--explosive--can-trigger-explode"
+							"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGItemDescAmmoTypeProjectile--explosive--firework"
 						},
 						{
 							"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGItemDescAmmoTypeProjectile--Desc_SnowballProjectile_C"
@@ -1520,7 +1521,7 @@
 								"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGSchematic--base"
 							},
 							{
-								"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGSchematic--with-unlocks"
+								"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGSchematic--with-described-unlocks"
 							}
 						]
 					}
@@ -1648,7 +1649,7 @@
 			"$ref": "docs.json.ts--0.3.7.7#/$defs/FGJumpingStilts"
 		},
 		{
-			"$ref": "docs.json.ts--0.5.2.1#/$defs/FGItemDescAmmoTypeProjectile"
+			"$ref": "#/$defs/FGItemDescAmmoTypeProjectile"
 		},
 		{
 			"$ref": "#/$defs/FGWeapon"

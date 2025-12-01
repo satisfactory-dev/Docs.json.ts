@@ -2036,6 +2036,103 @@
 			}
 		},
 		"FGItemDescAmmoTypeProjectile--Desc_NobeliskExplosive_C": {
+			"type": "object",
+			"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--Desc_NobeliskExplosive_C--base",
+			"required": ["mProjectileData"],
+			"properties": {
+				"mProjectileData": {
+					"type": "string",
+					"typed_string": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": [
+							"ProjectileClass",
+							"ProjectileLifeSpan",
+							"ProjectileStickSpan",
+							"ExplosionDamage",
+							"ExplosionRadius",
+							"ImpactDamage",
+							"ExplodeAtEndOfLife",
+							"DamageType",
+							"DamageTypeExplode",
+							"DamageFalloffCurve",
+							"WeaponDamageMultiplier"
+						],
+						"properties": {
+							"ProjectileClass": {
+								"type": "string",
+								"DocsDotJson_BlueprintGeneratedClass_quoted": null
+							},
+							"ProjectileLifeSpan": {
+								"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
+							},
+							"ProjectileStickSpan": {
+								"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
+							},
+							"ExplosionDamage": {
+								"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+							},
+							"ExplosionRadius": {
+								"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+							},
+							"ImpactDamage": {
+								"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+							},
+							"ExplodeAtEndOfLife": {
+								"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+							},
+							"DamageType": {
+								"type": "string",
+								"DocsDotJson_BlueprintGeneratedClass_quoted": null
+							},
+							"DamageTypeExplode": {
+								"type": "string",
+								"DocsDotJson_BlueprintGeneratedClass_quoted": null
+							},
+							"DamageFalloffCurve": {
+								"type": "string",
+								"typed_string": {
+									"type": "object",
+									"additionalProperties": false,
+									"required": ["EditorCurveData"],
+									"properties": {
+										"EditorCurveData": {
+											"type": "string",
+											"typed_string": {
+												"type": "object",
+												"additionalProperties": false,
+												"required": [
+													"DefaultValue",
+													"PreInfinityExtrap",
+													"PostInfinityExtrap"
+												],
+												"properties": {
+													"DefaultValue": {
+														"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+													},
+													"PreInfinityExtrap": {
+														"type": "string",
+														"const": "RCCE_Constant"
+													},
+													"PostInfinityExtrap": {
+														"type": "string",
+														"const": "RCCE_Constant"
+													}
+												}
+											}
+										}
+									}
+								}
+							},
+							"WeaponDamageMultiplier": {
+								"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+							}
+						}
+					}
+				}
+			}
+		},
+		"FGItemDescAmmoTypeProjectile--Desc_NobeliskExplosive_C--base": {
 			"allOf": [
 				{
 					"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--explosive"
@@ -2046,6 +2143,103 @@
 			]
 		},
 		"FGItemDescAmmoTypeProjectile--Desc_SnowballProjectile_C": {
+			"type": "object",
+			"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--Desc_SnowballProjectile_C--base",
+			"required": ["mProjectileData"],
+			"properties": {
+				"mProjectileData": {
+					"type": "string",
+					"typed_string": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": [
+							"ProjectileClass",
+							"ProjectileLifeSpan",
+							"ProjectileStickSpan",
+							"ExplosionDamage",
+							"ExplosionRadius",
+							"ImpactDamage",
+							"ExplodeAtEndOfLife",
+							"DamageType",
+							"DamageTypeExplode",
+							"DamageFalloffCurve",
+							"WeaponDamageMultiplier"
+						],
+						"properties": {
+							"ProjectileClass": {
+								"type": "string",
+								"DocsDotJson_BlueprintGeneratedClass_quoted": null
+							},
+							"ProjectileLifeSpan": {
+								"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
+							},
+							"ProjectileStickSpan": {
+								"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
+							},
+							"ExplosionDamage": {
+								"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+							},
+							"ExplosionRadius": {
+								"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+							},
+							"ImpactDamage": {
+								"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+							},
+							"ExplodeAtEndOfLife": {
+								"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+							},
+							"DamageType": {
+								"type": "string",
+								"DocsDotJson_BlueprintGeneratedClass_quoted": null
+							},
+							"DamageTypeExplode": {
+								"type": "string",
+								"DocsDotJson_BlueprintGeneratedClass_quoted": null
+							},
+							"DamageFalloffCurve": {
+								"type": "string",
+								"typed_string": {
+									"type": "object",
+									"additionalProperties": false,
+									"required": ["EditorCurveData"],
+									"properties": {
+										"EditorCurveData": {
+											"type": "string",
+											"typed_string": {
+												"type": "object",
+												"additionalProperties": false,
+												"required": [
+													"DefaultValue",
+													"PreInfinityExtrap",
+													"PostInfinityExtrap"
+												],
+												"properties": {
+													"DefaultValue": {
+														"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+													},
+													"PreInfinityExtrap": {
+														"type": "string",
+														"const": "RCCE_Constant"
+													},
+													"PostInfinityExtrap": {
+														"type": "string",
+														"const": "RCCE_Constant"
+													}
+												}
+											}
+										}
+									}
+								}
+							},
+							"WeaponDamageMultiplier": {
+								"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+							}
+						}
+					}
+				}
+			}
+		},
+		"FGItemDescAmmoTypeProjectile--Desc_SnowballProjectile_C--base": {
 			"allOf": [
 				{
 					"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--explosive"
@@ -2092,10 +2286,10 @@
 								"DocsDotJson_BlueprintGeneratedClass_quoted": null
 							},
 							"ProjectileLifeSpan": {
-								"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+								"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
 							},
 							"ProjectileStickSpan": {
-								"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+								"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
 							},
 							"ImpactDamage": {
 								"$ref": "docs.json.ts--common--types#/$defs/integer_string"
@@ -2183,10 +2377,10 @@
 								"DocsDotJson_BlueprintGeneratedClass_quoted": null
 							},
 							"ProjectileLifeSpan": {
-								"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+								"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
 							},
 							"ProjectileStickSpan": {
-								"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+								"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
 							},
 							"ExplosionDamage": {
 								"$ref": "docs.json.ts--common--types#/$defs/integer_string"
@@ -2251,7 +2445,7 @@
 				}
 			}
 		},
-		"FGItemDescAmmoTypeProjectile--explosive--can-trigger-explode": {
+		"FGItemDescAmmoTypeProjectile--explosive--firework": {
 			"type": "object",
 			"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--base",
 			"required": ["mProjectileData"],
@@ -2281,10 +2475,10 @@
 								"DocsDotJson_BlueprintGeneratedClass_quoted": null
 							},
 							"ProjectileLifeSpan": {
-								"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+								"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
 							},
 							"ProjectileStickSpan": {
-								"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+								"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
 							},
 							"ExplosionDamage": {
 								"$ref": "docs.json.ts--common--types#/$defs/integer_string"
@@ -2307,7 +2501,7 @@
 							},
 							"DamageTypeExplode": {
 								"type": "string",
-								"const": "Class'\"/Script/FactoryGame.FGDamageType\"'"
+								"DocsDotJson_BlueprintGeneratedClass_quoted": null
 							},
 							"DamageFalloffCurve": {
 								"type": "string",
@@ -2489,11 +2683,20 @@
 			"type": "object",
 			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGSchematic--base",
 			"required": [
+				"mUnlocks",
 				"mDependenciesBlocksSchematicAccess",
 				"mSmallSchematicIcon",
 				"mRelevantShopSchematics"
 			],
 			"properties": {
+				"mUnlocks": {
+					"type": "array",
+					"minItems": 0,
+					"maxItems": 6,
+					"items": {
+						"$ref": "docs.json.ts--0.5.2.1--properties#/$defs/mUnlocks--item"
+					}
+				},
 				"mDependenciesBlocksSchematicAccess": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				},
@@ -2543,7 +2746,7 @@
 				}
 			}
 		},
-		"FGSchematic--with-unlocks": {
+		"FGSchematic--with-described-unlocks": {
 			"type": "object",
 			"$ref": "#/$defs/FGSchematic--base",
 			"required": [

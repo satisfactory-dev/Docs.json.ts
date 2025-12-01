@@ -12,6 +12,7 @@ import type {
 	array_schema,
 	array_type,
 	SchemaDefinitionDefinition,
+	SchemaParser,
 } from '@signpostmarv/json-schema-typescript-codegen';
 import {
 	ArrayType,
@@ -26,11 +27,16 @@ import type {
 	StringLiteral,
 	UnionTypeNode,
 } from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
+import {
+	factory,
+} from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
 
+import type {
+	BlueprintGeneratedClass_quoted_schema,
+	BlueprintGeneratedClass_quoted_type,
+} from '../../0.3.7.7/BlueprintGeneratedClass.ts';
 import {
 	BlueprintGeneratedClass_quoted,
-	type BlueprintGeneratedClass_quoted_schema,
-	type BlueprintGeneratedClass_quoted_type,
 } from '../../0.3.7.7/BlueprintGeneratedClass.ts';
 
 export type Thing_list_type = array_type<
@@ -279,4 +285,57 @@ export function Thing_list_generate_type_definition(
 			] as const,
 		},
 	});
+}
+
+export function Thing_list_generate_typescript_type(
+	schema: Thing_list_type,
+	schema_parser: SchemaParser,
+): Promise<Thing_list_SchemaTo> {
+	const instance = schema_parser.parse(schema);
+
+	if (!(instance instanceof ArrayType)) {
+		throw new TypeError('Matched instance not of expected type!');
+	}
+
+	return instance.generate_typescript_type({
+		data: undefined,
+		schema,
+		schema_parser,
+	});
+}
+
+export function Thing_list_generate_typescript_data(
+	data: string,
+	schema_parser: SchemaParser,
+	schema: Thing_list_type,
+): Thing_list_DataTo {
+	const dynamic_regex = BlueprintGeneratedClass_quoted.regex_from_value(
+		schema.items.oneOf[0].DocsDotJson_BlueprintGeneratedClass_quoted,
+	);
+
+	const regex = `(?:${dynamic_regex}|None)`;
+
+	const pattern = new RegExp(`^\\((?:${regex}|None)(?:,${regex})*\\)$`);
+
+	if (!pattern.test(data)) {
+		throw new TypeError('Data does not match expected pattern!');
+	}
+
+	const data_parts = data.substring(1, data.length - 1).split(',');
+
+	const sanity_check: (
+		Thing_list_DataTo
+	) = factory.createArrayLiteralExpression(
+		data_parts
+			.map((value) => schema_parser
+				.parse_by_type(value)
+				.generate_typescript_data(
+					value,
+					schema_parser,
+					schema.items,
+				),
+			),
+	);
+
+	return sanity_check;
 }

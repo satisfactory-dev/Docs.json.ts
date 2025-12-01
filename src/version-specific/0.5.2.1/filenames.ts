@@ -21,7 +21,7 @@ import update5 from '../../../schema/0.5.2.1/docs.json' with {
 
 import {
 	filenames_by_$id as previous,
-} from '../0.3.7.7/filenames.ts';
+} from '../0.4.2.11/filenames.ts';
 
 export const filenames_by_$id: guard = {
 	...previous,

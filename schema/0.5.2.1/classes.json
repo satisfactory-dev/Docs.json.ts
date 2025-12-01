@@ -457,9 +457,9 @@
 			"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGItemDescAmmoTypeProjectile--explosive",
 			"unevaluatedProperties": false
 		},
-		"FGItemDescAmmoTypeProjectile--explosive--can-trigger-explode": {
+		"FGItemDescAmmoTypeProjectile--explosive--firework": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGItemDescAmmoTypeProjectile--explosive--can-trigger-explode",
+			"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGItemDescAmmoTypeProjectile--explosive--firework",
 			"unevaluatedProperties": false
 		},
 		"FGItemDescriptor": {
@@ -497,9 +497,9 @@
 			"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGSchematic--base",
 			"unevaluatedProperties": false
 		},
-		"FGSchematic--with-unlocks": {
+		"FGSchematic--with-described-unlocks": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGSchematic--with-unlocks",
+			"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGSchematic--with-described-unlocks",
 			"unevaluatedProperties": false
 		},
 		"FGVehicleDescriptor--Desc_CyberWagon_C": {
