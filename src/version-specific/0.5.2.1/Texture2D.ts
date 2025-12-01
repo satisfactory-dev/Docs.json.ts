@@ -274,21 +274,13 @@ export class Texture2D extends
 			: (Array.isArray(third) ? third : third);
 
 		return Promise.resolve(
-			TemplatedString.generate_typescript_type_from_parts([
-				[
-					`Texture2D /Game/FactoryGame/`,
-					`Texture2D'"/Game/FactoryGame/`,
-				],
-				null === value0 ? {type: 'string'} : value0,
-				null === value1 ? {type: 'string'} : value1,
-				'_',
-				value2,
-				'.',
-				null === value1 ? {type: 'string'} : value1,
-				'_',
-				value2,
-				[`"'`, `'`, ''],
-			]),
+			TemplatedString.generate_typescript_type_from_parts(
+				Texture2D.reduce_parts(
+					null === value0 ? {type: 'string'} : value0,
+					null === value1 ? {type: 'string'} : value1,
+					value2,
+				).templated_string,
+			),
 		);
 	}
 

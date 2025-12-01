@@ -31,9 +31,9 @@ type mDockingRuleSet = {
 	DockForDuration: docs_json_ts_common_types_decimal_string,
 };
 
-type mPersistentBigIcon = `${'Texture2D /Game/FactoryGame/' | 'Texture2D\'"/Game/FactoryGame/'}${string}${string}${'_'}${'256' | '512' | '256_New' | 'White'}${'.'}${string}${'_'}${'256' | '512' | '256_New' | 'White'}${'"\'' | '\'' | ''}`;
+type mPersistentBigIcon = `${'Texture2D /Game/FactoryGame/' | 'Texture2D\'"/Game/FactoryGame/'}${string}${`${`${string}${'_'}${'256'}`}${'.'}${`${string}${'_'}${'256'}`}` | `${`${string}${'_'}${'512'}`}${'.'}${`${string}${'_'}${'512'}`}` | `${`${string}${'_'}${'256_New'}`}${'.'}${`${string}${'_'}${'256_New'}`}` | `${`${string}${'_'}${'White'}`}${'.'}${`${string}${'_'}${'White'}`}`}${'"\'' | '\'' | ''}`;
 
-type mSmallIcon = `${'Texture2D /Game/FactoryGame/' | 'Texture2D\'"/Game/FactoryGame/'}${string}${string}${'_'}${'64' | '256' | '64_new' | '512'}${'.'}${string}${'_'}${'64' | '256' | '64_new' | '512'}${'"\'' | '\'' | ''}`;
+type mSmallIcon = `${'Texture2D /Game/FactoryGame/' | 'Texture2D\'"/Game/FactoryGame/'}${string}${`${`${string}${'_'}${'64'}`}${'.'}${`${string}${'_'}${'64'}`}` | `${`${string}${'_'}${'256'}`}${'.'}${`${string}${'_'}${'256'}`}` | `${`${string}${'_'}${'64_new'}`}${'.'}${`${string}${'_'}${'64_new'}`}` | `${`${string}${'_'}${'512'}`}${'.'}${`${string}${'_'}${'512'}`}`}${'"\'' | '\'' | ''}`;
 
 type mUnlocks_item = docs_json_ts_0_3_7_7_properties_mUnlocks_item_base | docs_json_ts_0_3_7_7_properties_mUnlocks_item_mRecipes | docs_json_ts_0_4_2_11_properties_mUnlocks_item_mResourcePairsToAddToScanner | docs_json_ts_0_3_7_7_properties_mUnlocks_item_mNumInventorySlotsToUnlock | docs_json_ts_0_3_7_7_properties_mUnlocks_item_mSchematics | docs_json_ts_0_4_2_11_properties_mUnlocks_item_mNumArmEquipmentSlotsToUnlock | docs_json_ts_0_3_7_7_properties_mUnlocks_item_mItemsToGive | mUnlocks_item_mEmotes;
 

@@ -728,7 +728,7 @@ type FGSchematic_base = docs_json_ts_0_4_2_11_classes_base_FGSchematic_base & {
 		...docs_json_ts_0_5_2_1_properties_mUnlocks_item[],
 	],
 	mDependenciesBlocksSchematicAccess: docs_json_ts_common_types_bool_string,
-	mSmallSchematicIcon: 'None' | `${'Texture2D /Game/FactoryGame/' | 'Texture2D\'"/Game/FactoryGame/'}${string}${string}${'_'}${'64' | '256' | 'Map'}${'.'}${string}${'_'}${'64' | '256' | 'Map'}${'"\'' | '\'' | ''}`,
+	mSmallSchematicIcon: 'None' | `${'Texture2D /Game/FactoryGame/' | 'Texture2D\'"/Game/FactoryGame/'}${string}${`${`${string}${'_'}${'64'}`}${'.'}${`${string}${'_'}${'64'}`}` | `${`${string}${'_'}${'256'}`}${'.'}${`${string}${'_'}${'256'}`}` | `${`${string}${'_'}${'Map'}`}${'.'}${`${string}${'_'}${'Map'}`}`}${'"\'' | '\'' | ''}`,
 	mRelevantShopSchematics: '' | [
 		...(`BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}` | 'None')[],
 	],
