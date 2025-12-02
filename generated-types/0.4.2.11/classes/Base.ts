@@ -78,10 +78,13 @@ import type {
 	FGBuildableWire as docs_json_ts_0_3_7_7_classes_base_FGBuildableWire,
 	FGColorGun as docs_json_ts_0_3_7_7_classes_base_FGColorGun,
 	FGConsumableDescriptor_base as docs_json_ts_0_3_7_7_classes_base_FGConsumableDescriptor_base,
+	FGConsumableEquipment as docs_json_ts_0_3_7_7_classes_base_FGConsumableEquipment,
+	FGConsumableEquipment_base as docs_json_ts_0_3_7_7_classes_base_FGConsumableEquipment_base,
 	FGDescriptor_base as docs_json_ts_0_3_7_7_classes_base_FGDescriptor_base,
 	FGDescriptor_BuildMenu_base as docs_json_ts_0_3_7_7_classes_base_FGDescriptor_BuildMenu_base,
 	FGDescriptor_sinkable_base as docs_json_ts_0_3_7_7_classes_base_FGDescriptor_sinkable_base,
 	FGEquipment_base as docs_json_ts_0_3_7_7_classes_base_FGEquipment_base,
+	FGEquipment_base_base as docs_json_ts_0_3_7_7_classes_base_FGEquipment_base_base,
 	FGItemDescriptorNuclearFuel_base as docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_base,
 	FGNobeliskDetonator as docs_json_ts_0_3_7_7_classes_base_FGNobeliskDetonator,
 	FGParachute_base as docs_json_ts_0_3_7_7_classes_base_FGParachute_base,
@@ -546,6 +549,12 @@ type FGColorGun = FGWeaponProjectile & docs_json_ts_0_3_7_7_classes_base_FGColor
 
 type FGConsumableDescriptor = docs_json_ts_0_3_7_7_classes_base_FGConsumableDescriptor_base & FGDescriptor_sinkable;
 
+type FGConsumableEquipment = FGConsumableEquipment_base & docs_json_ts_0_3_7_7_classes_base_FGConsumableEquipment;
+
+type FGConsumableEquipment_base = docs_json_ts_0_3_7_7_classes_base_FGConsumableEquipment_base & {
+	mArmAnimation: 'AE_Consumables' | 'AE_OneHandEquipment' | 'AE_Generic1Hand',
+};
+
 type FGDescriptor = FGDescriptor_base & {
 	mPersistentBigIcon: docs_json_ts_0_4_2_11_properties_mPersistentBigIcon | 'None',
 	mSmallIcon: docs_json_ts_0_4_2_11_properties_mSmallIcon | 'None',
@@ -564,7 +573,9 @@ type FGDescriptor_sinkable = FGDescriptor_sinkable_base & FGDescriptor;
 
 type FGDescriptor_sinkable_base = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_sinkable_base & FGDescriptor;
 
-type FGEquipment = docs_json_ts_0_3_7_7_classes_base_FGEquipment_base & {
+type FGEquipment = FGEquipment_base & docs_json_ts_0_3_7_7_classes_base_FGEquipment_base;
+
+type FGEquipment_base = docs_json_ts_0_3_7_7_classes_base_FGEquipment_base_base & {
 	mAttachSocket: 'None' | 'hand_rSocket' | 'hand_lSocket' | 'jumpingStilt_lSocket' | 'helmetSocket' | 'root',
 };
 
@@ -847,6 +858,8 @@ export type {
 	FGBuildableWire,
 	FGColorGun,
 	FGConsumableDescriptor,
+	FGConsumableEquipment,
+	FGConsumableEquipment_base,
 	FGDescriptor,
 	FGDescriptor_base,
 	FGDescriptor_BuildMenu,
@@ -854,6 +867,7 @@ export type {
 	FGDescriptor_sinkable,
 	FGDescriptor_sinkable_base,
 	FGEquipment,
+	FGEquipment_base,
 	FGEquipmentZipline,
 	FGHoverPack,
 	FGItemDescriptorNuclearFuel,

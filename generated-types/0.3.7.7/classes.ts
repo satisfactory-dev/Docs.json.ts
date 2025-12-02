@@ -61,8 +61,10 @@ import type {
 	FGEquipment as docs_json_ts_0_3_7_7_classes_base_FGEquipment,
 	FGEquipment_has_sound as docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_sound,
 	FGEquipmentStunSpear_base as docs_json_ts_0_3_7_7_classes_base_FGEquipmentStunSpear_base,
+	FGGasMask as docs_json_ts_0_3_7_7_classes_base_FGGasMask,
 	FGGolfCartDispenser as docs_json_ts_0_3_7_7_classes_base_FGGolfCartDispenser,
 	FGItemDescriptorNuclearFuel as docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel,
+	FGJetPack as docs_json_ts_0_3_7_7_classes_base_FGJetPack,
 	FGNobeliskDetonator as docs_json_ts_0_3_7_7_classes_base_FGNobeliskDetonator,
 	FGParachute as docs_json_ts_0_3_7_7_classes_base_FGParachute,
 	FGPipeHyperStart as docs_json_ts_0_3_7_7_classes_base_FGPipeHyperStart,
@@ -259,17 +261,7 @@ type FGEquipmentStunSpear_xenozapper = docs_json_ts_0_3_7_7_classes_base_FGEquip
 	mRandomStingerAnim: docs_json_ts_common_types_integer_string,
 };
 
-type FGGasMask = docs_json_ts_0_3_7_7_classes_base_FGEquipment & {
-	mCountdown: docs_json_ts_common_types_decimal_string,
-	mFilterDuration: docs_json_ts_common_types_decimal_string,
-	mIsWorking: docs_json_ts_common_types_bool_string,
-	mHasNegatedDamage: docs_json_ts_common_types_bool_string,
-	mDamageNegated: docs_json_ts_common_types_decimal_string,
-	mDisableEffectTimer: docs_json_ts_common_types_decimal_string,
-	mPostProcessEnabled: docs_json_ts_common_types_bool_string,
-	mAttachSocket: 'helmetSocket',
-	mArmAnimation: 'AE_None',
-};
+type FGGasMask = docs_json_ts_0_3_7_7_classes_base_FGGasMask;
 
 type FGGolfCartDispenser = docs_json_ts_0_3_7_7_classes_base_FGGolfCartDispenser;
 
@@ -277,26 +269,7 @@ type FGItemDescriptor = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_sinkable;
 
 type FGItemDescriptorNuclearFuel = docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel;
 
-type FGJetPack = docs_json_ts_0_3_7_7_classes_base_FGEquipment & {
-	mThrustPower: docs_json_ts_common_types_decimal_string,
-	mVelocityZExtreme: docs_json_ts_common_types_decimal_string,
-	mVelocityZExtremesDamper: docs_json_ts_common_types_decimal_string,
-	mJumpBeforeThrustTime: docs_json_ts_common_types_decimal_string,
-	mMaxFuel: docs_json_ts_common_types_decimal_string,
-	mCurrentFuel: docs_json_ts_common_types_decimal_string,
-	mFuelRegenRate: docs_json_ts_common_types_decimal_string,
-	mFuelConsumeRate: docs_json_ts_common_types_decimal_string,
-	mThrustCooldown: docs_json_ts_common_types_decimal_string,
-	mFuelWorth: docs_json_ts_common_types_decimal_string,
-	mPaidForFuel: docs_json_ts_common_types_decimal_string,
-	mThrustAirControl: docs_json_ts_common_types_decimal_string,
-	mDefaultAirControl: docs_json_ts_common_types_decimal_string,
-	mRTPCInterval: docs_json_ts_common_types_decimal_string,
-	mJumpTimeStamp: docs_json_ts_common_types_decimal_string,
-	mIsThrusting: docs_json_ts_common_types_bool_string,
-	mArmAnimation?: 'AE_None',
-	mBackAnimation?: 'BE_Jetpack',
-};
+type FGJetPack = docs_json_ts_0_3_7_7_classes_base_FGJetPack;
 
 type FGJumpingStilts = docs_json_ts_0_3_7_7_classes_base_FGEquipment & {
 	mSprintSpeedFactor: docs_json_ts_common_types_decimal_string,

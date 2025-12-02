@@ -869,7 +869,9 @@ type FGConsumableDescriptor_base = FGDescriptor_sinkable_base & {
 	mCustomLocation: docs_json_ts_common_types_XYZ_decimal_string,
 };
 
-type FGConsumableEquipment = FGEquipment & {
+type FGConsumableEquipment = FGConsumableEquipment_base & FGEquipment;
+
+type FGConsumableEquipment_base = FGEquipment_base & {
 	mRandomAnim?: docs_json_ts_common_types_integer_string,
 	mCanPress?: docs_json_ts_common_types_bool_string,
 	mAnimData?: [
@@ -922,8 +924,12 @@ type FGEquipment = FGEquipment_base & {
 	mAttachSocket: 'None' | 'hand_rSocket' | 'hand_lSocket' | 'jumpingStilt_lSocket' | 'helmetSocket',
 };
 
-type FGEquipment_base = hasClassName & {
+type FGEquipment_base = FGEquipment_base_base & {
 	mEquipmentSlot: 'ES_ARMS' | 'ES_BACK',
+};
+
+type FGEquipment_base_base = hasClassName & {
+	mEquipmentSlot: `ES_${string}`,
 	mAttachSocket: Exclude<string, ''>,
 	mCostToUse: '' | docs_json_ts_0_3_7_7_properties_ItemClass_Amount_list,
 	mArmAnimation: 'AE_Consumables' | 'AE_OneHandEquipment' | 'AE_ChainSaw' | 'AE_Generic2Hand' | 'AE_None' | 'AE_RebarGun' | 'AE_Rifle' | 'AE_ShockShank' | 'AE_StunSpear' | 'AE_PortableMiner' | 'AE_ObjectScanner' | 'AE_ColorGun' | 'AE_Nobelisk' | 'AE_Generic1Hand',
@@ -949,6 +955,20 @@ type FGEquipmentStunSpear_base = FGEquipment & {
 	mArmAnimation?: 'AE_ShockShank' | 'AE_StunSpear',
 };
 
+type FGGasMask = FGGasMask_base & FGEquipment;
+
+type FGGasMask_base = FGEquipment_base_base & {
+	mCountdown: docs_json_ts_common_types_decimal_string,
+	mFilterDuration: docs_json_ts_common_types_decimal_string,
+	mIsWorking: docs_json_ts_common_types_bool_string,
+	mHasNegatedDamage: docs_json_ts_common_types_bool_string,
+	mDamageNegated: docs_json_ts_common_types_decimal_string,
+	mDisableEffectTimer: docs_json_ts_common_types_decimal_string,
+	mPostProcessEnabled: docs_json_ts_common_types_bool_string,
+	mAttachSocket: 'helmetSocket',
+	mArmAnimation: 'AE_None',
+};
+
 type FGGolfCartDispenser = FGEquipment_dispenser & {
 	mArmAnimation: 'AE_Generic2Hand',
 };
@@ -962,6 +982,33 @@ type FGItemDescriptorNuclearFuel = FGDescriptor_sinkable & FGItemDescriptorNucle
 
 type FGItemDescriptorNuclearFuel_base = FGDescriptor_sinkable_base & {
 	mAmountOfWaste: docs_json_ts_common_types_integer_string,
+};
+
+type FGJetPack = FGJetPack_base & FGEquipment;
+
+type FGJetPack_base = FGJetPack_base_base & {
+	mJumpTimeStamp: docs_json_ts_common_types_decimal_string,
+};
+
+type FGJetPack_base_base = FGEquipment_base & {
+	mThrustPower: docs_json_ts_common_types_decimal_string,
+	mVelocityZExtreme: docs_json_ts_common_types_decimal_string,
+	mVelocityZExtremesDamper: docs_json_ts_common_types_decimal_string,
+	mJumpBeforeThrustTime: docs_json_ts_common_types_decimal_string,
+	mMaxFuel: docs_json_ts_common_types_decimal_string,
+	mCurrentFuel: docs_json_ts_common_types_decimal_string,
+	mFuelRegenRate: docs_json_ts_common_types_decimal_string,
+	mFuelConsumeRate: docs_json_ts_common_types_decimal_string,
+	mThrustCooldown: docs_json_ts_common_types_decimal_string,
+	mFuelWorth: docs_json_ts_common_types_decimal_string,
+	mPaidForFuel: docs_json_ts_common_types_decimal_string,
+	mThrustAirControl: docs_json_ts_common_types_decimal_string,
+	mDefaultAirControl: docs_json_ts_common_types_decimal_string,
+	mRTPCInterval: docs_json_ts_common_types_decimal_string,
+	mJumpTimeStamp: Exclude<string, ''>,
+	mIsThrusting: docs_json_ts_common_types_bool_string,
+	mArmAnimation?: 'AE_None',
+	mBackAnimation?: 'BE_Jetpack',
 };
 
 type FGNobeliskDetonator = FGNobeliskDetonator_base & FGWeaponProjectile_thrown;
@@ -1336,6 +1383,7 @@ export type {
 	FGConsumableDescriptor,
 	FGConsumableDescriptor_base,
 	FGConsumableEquipment,
+	FGConsumableEquipment_base,
 	FGDescriptor,
 	FGDescriptor_base,
 	FGDescriptor_BuildMenu,
@@ -1344,13 +1392,19 @@ export type {
 	FGDescriptor_sinkable_base,
 	FGEquipment,
 	FGEquipment_base,
+	FGEquipment_base_base,
 	FGEquipment_dispenser,
 	FGEquipment_has_sound,
 	FGEquipmentStunSpear_base,
+	FGGasMask,
+	FGGasMask_base,
 	FGGolfCartDispenser,
 	FGInstructive,
 	FGItemDescriptorNuclearFuel,
 	FGItemDescriptorNuclearFuel_base,
+	FGJetPack,
+	FGJetPack_base,
+	FGJetPack_base_base,
 	FGNobeliskDetonator,
 	FGNobeliskDetonator_base,
 	FGParachute,

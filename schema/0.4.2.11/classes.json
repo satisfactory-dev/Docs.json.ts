@@ -364,19 +364,8 @@
 		},
 		"FGConsumableEquipment": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGConsumableEquipment",
-			"unevaluatedProperties": false,
-			"required": ["mArmAnimation"],
-			"properties": {
-				"mArmAnimation": {
-					"type": "string",
-					"enum": [
-						"AE_Consumables",
-						"AE_OneHandEquipment",
-						"AE_Generic1Hand"
-					]
-				}
-			}
+			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGConsumableEquipment",
+			"unevaluatedProperties": false
 		},
 		"FGEquipmentZipline": {
 			"type": "object",

@@ -698,10 +698,13 @@ type FGItemDescAmmoTypeProjectile_explosive_firework = FGItemDescAmmoTypeProject
 
 type FGItemDescriptor = docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable_base & FGItemDescriptor_base;
 
-type FGItemDescriptor_base = FGDescriptor & {
-	mSubCategories: null,
-	mMenuPriority: docs_json_ts_common_types_decimal_string,
+type FGItemDescriptor_base = FGItemDescriptor_base_base & {
 	mBuildMenuPriority: docs_json_ts_common_types_decimal_string,
+};
+
+type FGItemDescriptor_base_base = FGDescriptor & {
+	mMenuPriority: docs_json_ts_common_types_decimal_string,
+	mSubCategories: null,
 };
 
 type FGItemDescriptorNuclearFuel = docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_base & FGItemDescriptor_base & docs_json_ts_0_4_2_11_classes_base_FGItemDescriptorNuclearFuel_base;
@@ -922,6 +925,7 @@ export type {
 	FGItemDescAmmoTypeProjectile_explosive_firework,
 	FGItemDescriptor,
 	FGItemDescriptor_base,
+	FGItemDescriptor_base_base,
 	FGItemDescriptorNuclearFuel,
 	FGNobeliskDetonator,
 	FGNobeliskDetonator_base,

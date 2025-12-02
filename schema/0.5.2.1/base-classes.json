@@ -2449,22 +2449,30 @@
 		},
 		"FGItemDescriptor--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGDescriptor",
+			"$ref": "#/$defs/FGItemDescriptor--base--base",
 			"required": [
-				"mSubCategories",
-				"mMenuPriority",
 				"mBuildMenuPriority"
 			],
 			"properties": {
-				"mSubCategories": {
-					"type": "string",
-					"typed_string": ""
-				},
+				"mBuildMenuPriority": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGItemDescriptor--base--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGDescriptor",
+			"required": [
+				"mMenuPriority",
+				"mSubCategories"
+			],
+			"properties": {
 				"mMenuPriority": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
-				"mBuildMenuPriority": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				"mSubCategories": {
+					"type": "string",
+					"typed_string": ""
 				}
 			}
 		},

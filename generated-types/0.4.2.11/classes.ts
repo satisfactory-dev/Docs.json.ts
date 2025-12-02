@@ -69,6 +69,7 @@ import type {
 	FGBuildableWire as docs_json_ts_0_4_2_11_classes_base_FGBuildableWire,
 	FGColorGun as docs_json_ts_0_4_2_11_classes_base_FGColorGun,
 	FGConsumableDescriptor as docs_json_ts_0_4_2_11_classes_base_FGConsumableDescriptor,
+	FGConsumableEquipment as docs_json_ts_0_4_2_11_classes_base_FGConsumableEquipment,
 	FGDescriptor_BuildMenu as docs_json_ts_0_4_2_11_classes_base_FGDescriptor_BuildMenu,
 	FGDescriptor_sinkable as docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable,
 	FGEquipmentZipline as docs_json_ts_0_4_2_11_classes_base_FGEquipmentZipline,
@@ -88,10 +89,6 @@ import type {
 	FGWeaponInstantFire as docs_json_ts_0_4_2_11_classes_base_FGWeaponInstantFire,
 	FGWeaponProjectileFire as docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectileFire,
 } from './classes/Base.ts';
-
-import type {
-	FGConsumableEquipment as docs_json_ts_0_3_7_7_classes_base_FGConsumableEquipment,
-} from './../0.3.7.7/classes/Base.ts';
 
 type FGBuildable_base = docs_json_ts_0_4_2_11_classes_base_FGBuildable;
 
@@ -237,9 +234,7 @@ type FGColorGun = docs_json_ts_0_4_2_11_classes_base_FGColorGun;
 
 type FGConsumableDescriptor = docs_json_ts_0_4_2_11_classes_base_FGConsumableDescriptor;
 
-type FGConsumableEquipment = docs_json_ts_0_3_7_7_classes_base_FGConsumableEquipment & {
-	mArmAnimation: 'AE_Consumables' | 'AE_OneHandEquipment' | 'AE_Generic1Hand',
-};
+type FGConsumableEquipment = docs_json_ts_0_4_2_11_classes_base_FGConsumableEquipment;
 
 type FGEquipmentZipline = docs_json_ts_0_4_2_11_classes_base_FGEquipmentZipline;
 

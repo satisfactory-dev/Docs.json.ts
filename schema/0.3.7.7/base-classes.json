@@ -3301,8 +3301,18 @@
 			}
 		},
 		"FGConsumableEquipment": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGConsumableEquipment--base"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment"
+				}
+			]
+		},
+		"FGConsumableEquipment--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment",
+			"$ref": "#/$defs/FGEquipment--base",
 			"properties": {
 				"mRandomAnim": {
 					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
@@ -3520,6 +3530,17 @@
 		},
 		"FGEquipment--base": {
 			"type": "object",
+			"$ref": "#/$defs/FGEquipment--base--base",
+			"required": ["mEquipmentSlot"],
+			"properties": {
+				"mEquipmentSlot": {
+					"type": "string",
+					"enum": ["ES_ARMS", "ES_BACK"]
+				}
+			}
+		},
+		"FGEquipment--base--base": {
+			"type": "object",
 			"$ref": "#/$defs/hasClassName",
 			"required": [
 				"mEquipmentSlot",
@@ -3533,7 +3554,10 @@
 			"properties": {
 				"mEquipmentSlot": {
 					"type": "string",
-					"enum": ["ES_ARMS", "ES_BACK"]
+					"templated_string": [
+						"ES_",
+						{"type": "string"}
+					]
 				},
 				"mAttachSocket": {
 					"type": "string",
@@ -3633,6 +3657,62 @@
 				}
 			}
 		},
+		"FGGasMask": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGGasMask--base"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment"
+				}
+			]
+		},
+		"FGGasMask--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGEquipment--base--base",
+			"required": [
+				"mCountdown",
+				"mFilterDuration",
+				"mIsWorking",
+				"mHasNegatedDamage",
+				"mDamageNegated",
+				"mDisableEffectTimer",
+				"mPostProcessEnabled",
+				"mAttachSocket",
+				"mArmAnimation"
+			],
+			"properties": {
+				"mCountdown": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mFilterDuration": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mIsWorking": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mHasNegatedDamage": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mDamageNegated": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mDisableEffectTimer": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mPostProcessEnabled": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mAttachSocket": {
+					"type": "string",
+					"const": "helmetSocket"
+				},
+				"mArmAnimation": {
+					"type": "string",
+					"const": "AE_None"
+				}
+			}
+		},
 		"FGGolfCartDispenser": {
 			"type": "object",
 			"$ref": "#/$defs/FGEquipment--dispenser",
@@ -3683,6 +3763,107 @@
 			"properties": {
 				"mAmountOfWaste": {
 					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				}
+			}
+		},
+		"FGJetPack": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGJetPack--base"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment"
+				}
+			]
+		},
+		"FGJetPack--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGJetPack--base--base",
+			"required": ["mJumpTimeStamp"],
+			"properties": {
+				"mJumpTimeStamp": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGJetPack--base--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGEquipment--base",
+			"required": [
+				"mThrustPower",
+				"mVelocityZExtreme",
+				"mVelocityZExtremesDamper",
+				"mJumpBeforeThrustTime",
+				"mMaxFuel",
+				"mCurrentFuel",
+				"mFuelRegenRate",
+				"mFuelConsumeRate",
+				"mThrustCooldown",
+				"mFuelWorth",
+				"mPaidForFuel",
+				"mThrustAirControl",
+				"mDefaultAirControl",
+				"mRTPCInterval",
+				"mJumpTimeStamp",
+				"mIsThrusting"
+			],
+			"properties": {
+				"mThrustPower": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mVelocityZExtreme": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mVelocityZExtremesDamper": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mJumpBeforeThrustTime": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mMaxFuel": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mCurrentFuel": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mFuelRegenRate": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mFuelConsumeRate": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mThrustCooldown": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mFuelWorth": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mPaidForFuel": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mThrustAirControl": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mDefaultAirControl": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mRTPCInterval": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mJumpTimeStamp": {
+					"type": "string",
+					"minLength": 1
+				},
+				"mIsThrusting": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mArmAnimation": {
+					"type": "string",
+					"const": "AE_None"
+				},
+				"mBackAnimation": {
+					"type": "string",
+					"const": "BE_Jetpack"
 				}
 			}
 		},

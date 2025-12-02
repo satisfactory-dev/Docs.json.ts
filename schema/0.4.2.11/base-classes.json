@@ -1834,6 +1834,31 @@
 				}
 			]
 		},
+		"FGConsumableEquipment": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGConsumableEquipment--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGConsumableEquipment"
+				}
+			]
+		},
+		"FGConsumableEquipment--base": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGConsumableEquipment--base",
+			"required": ["mArmAnimation"],
+			"properties": {
+				"mArmAnimation": {
+					"type": "string",
+					"enum": [
+						"AE_Consumables",
+						"AE_OneHandEquipment",
+						"AE_Generic1Hand"
+					]
+				}
+			}
+		},
 		"FGDescriptor": {
 			"type": "object",
 			"$ref": "#/$defs/FGDescriptor--base",
@@ -1917,8 +1942,18 @@
 			]
 		},
 		"FGEquipment": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGEquipment--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment--base"
+				}
+			]
+		},
+		"FGEquipment--base": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment--base",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment--base--base",
 			"required": ["mAttachSocket"],
 			"properties": {
 				"mAttachSocket": {
