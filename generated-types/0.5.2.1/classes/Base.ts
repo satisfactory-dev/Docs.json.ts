@@ -51,6 +51,8 @@ import type {
 	FGItemDescriptorNuclearFuel_base as docs_json_ts_0_4_2_11_classes_base_FGItemDescriptorNuclearFuel_base,
 	FGRecipe_base as docs_json_ts_0_4_2_11_classes_base_FGRecipe_base,
 	FGSchematic_base as docs_json_ts_0_4_2_11_classes_base_FGSchematic_base,
+	FGSchematic_base_base_base_base as docs_json_ts_0_4_2_11_classes_base_FGSchematic_base_base_base_base,
+	FGSchematic_base_base_props as docs_json_ts_0_4_2_11_classes_base_FGSchematic_base_base_props,
 	FGVehicleDescriptor_fueled_with_inventory as docs_json_ts_0_4_2_11_classes_base_FGVehicleDescriptor_fueled_with_inventory,
 	FGVehicleDescriptor_powered as docs_json_ts_0_4_2_11_classes_base_FGVehicleDescriptor_powered,
 	FGVehicleDescriptor_with_inventory as docs_json_ts_0_4_2_11_classes_base_FGVehicleDescriptor_with_inventory,
@@ -651,8 +653,6 @@ type FGItemDescAmmoTypeProjectile_Desc_SnowballProjectile_C = FGItemDescAmmoType
 
 type FGItemDescAmmoTypeProjectile_Desc_SnowballProjectile_C_base = FGItemDescAmmoTypeProjectile_base & FGItemDescAmmoTypeProjectile_base_sinkable;
 
-type FGItemDescAmmoTypeProjectile_Desc_SpikedRebar_C_base = FGItemDescAmmoTypeProjectile_base & FGItemDescAmmoTypeProjectile_base_sinkable;
-
 type FGItemDescAmmoTypeProjectile_Desc_SpikedRebar_C = FGItemDescAmmoTypeProjectile_Desc_SpikedRebar_C_base & {
 	mProjectileData: {
 		ProjectileClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
@@ -672,6 +672,8 @@ type FGItemDescAmmoTypeProjectile_Desc_SpikedRebar_C = FGItemDescAmmoTypeProject
 		WeaponDamageMultiplier: docs_json_ts_common_types_decimal_string,
 	},
 };
+
+type FGItemDescAmmoTypeProjectile_Desc_SpikedRebar_C_base = FGItemDescAmmoTypeProjectile_base & FGItemDescAmmoTypeProjectile_base_sinkable;
 
 type FGItemDescAmmoTypeProjectile_explosive_firework = FGItemDescAmmoTypeProjectile_base & {
 	mProjectileData: {
@@ -726,10 +728,17 @@ type FGRecipe = docs_json_ts_0_4_2_11_classes_base_FGRecipe_base & {
 
 type FGResourceDescriptor = docs_json_ts_0_3_7_7_classes_base_FGResourceDescriptor_base & docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable & FGItemDescriptor_base;
 
-type FGSchematic_base = docs_json_ts_0_4_2_11_classes_base_FGSchematic_base & {
+type FGSchematic_base = FGSchematic_base_version_specific & {
 	mUnlocks: [
 		...docs_json_ts_0_5_2_1_properties_mUnlocks_item[],
 	],
+};
+
+type FGSchematic_base_version_specific = FGSchematic_base_base & docs_json_ts_0_4_2_11_classes_base_FGSchematic_base;
+
+type FGSchematic_base_base = docs_json_ts_0_4_2_11_classes_base_FGSchematic_base_base_props & FGSchematic_base_base_base & docs_json_ts_0_4_2_11_classes_base_FGSchematic_base_base_base_base;
+
+type FGSchematic_base_base_base = docs_json_ts_0_4_2_11_classes_base_FGSchematic_base_base_base_base & {
 	mDependenciesBlocksSchematicAccess: docs_json_ts_common_types_bool_string,
 	mSmallSchematicIcon: 'None' | `${'Texture2D /Game/FactoryGame/' | 'Texture2D\'"/Game/FactoryGame/'}${string}${`${`${string}${'_'}${'64'}`}${'.'}${`${string}${'_'}${'64'}`}` | `${`${string}${'_'}${'256'}`}${'.'}${`${string}${'_'}${'256'}`}` | `${`${string}${'_'}${'Map'}`}${'.'}${`${string}${'_'}${'Map'}`}`}${'"\'' | '\'' | ''}`,
 	mRelevantShopSchematics: '' | [
@@ -737,9 +746,15 @@ type FGSchematic_base = docs_json_ts_0_4_2_11_classes_base_FGSchematic_base & {
 	],
 };
 
-type FGSchematic_with_described_unlocks = FGSchematic_base & {
-	mUnlockName: Exclude<string, ''>,
+type FGSchematic_with_described_unlocks = FGSchematic_with_described_unlocks_base & FGSchematic_base;
+
+type FGSchematic_with_described_unlocks_base = FGSchematic_with_described_unlocks_base_base & {
 	mUnlockDescription: Exclude<string, ''>,
+};
+
+type FGSchematic_with_described_unlocks_base_base = FGSchematic_base_base & {
+	mUnlockName: Exclude<string, ''>,
+	mUnlockDescription: string,
 	mUnlockIconBig: 'Unsupported texture. Contact developer for support',
 	mUnlockIconSmall: 'Unsupported texture. Contact developer for support',
 	mUnlockIconCategory: 'Unsupported texture. Contact developer for support',
@@ -920,8 +935,8 @@ export type {
 	FGItemDescAmmoTypeProjectile_Desc_NobeliskExplosive_C_base,
 	FGItemDescAmmoTypeProjectile_Desc_SnowballProjectile_C,
 	FGItemDescAmmoTypeProjectile_Desc_SnowballProjectile_C_base,
-	FGItemDescAmmoTypeProjectile_Desc_SpikedRebar_C_base,
 	FGItemDescAmmoTypeProjectile_Desc_SpikedRebar_C,
+	FGItemDescAmmoTypeProjectile_Desc_SpikedRebar_C_base,
 	FGItemDescAmmoTypeProjectile_explosive_firework,
 	FGItemDescriptor,
 	FGItemDescriptor_base,
@@ -933,7 +948,12 @@ export type {
 	FGRecipe,
 	FGResourceDescriptor,
 	FGSchematic_base,
+	FGSchematic_base_version_specific,
+	FGSchematic_base_base,
+	FGSchematic_base_base_base,
 	FGSchematic_with_described_unlocks,
+	FGSchematic_with_described_unlocks_base,
+	FGSchematic_with_described_unlocks_base_base,
 	FGVehicleDescriptor_fueled_with_inventory,
 	FGVehicleDescriptor_powered,
 	FGVehicleDescriptor_with_inventory,

@@ -7,6 +7,10 @@ import type {
 	PropertyAssignment,
 } from 'typescript';
 
+import {
+	object_has_property,
+} from '@satisfactory-dev/predicates.ts';
+
 import type {
 	array_options,
 	array_schema,
@@ -19,6 +23,7 @@ import type {
 	SchemaParser,
 } from '@signpostmarv/json-schema-typescript-codegen';
 import {
+	$ref,
 	ArrayType,
 	ObjectUnspecified,
 	PositiveIntegerGuard,
@@ -46,6 +51,10 @@ import {
 	Object_generate_type_definition,
 	Object_type_schema,
 } from './Object.ts';
+
+import {
+	BlueprintGeneratedClass_quoted,
+} from '../BlueprintGeneratedClass.ts';
 
 export type Object_list_type = array_type<
 	'items',
@@ -312,6 +321,33 @@ export async function Object_list_generate_typescript_type(
 	return sanity_check;
 }
 
+function ajv_macro_value_regex(value: SchemaObject) {
+	if ($ref.is_supported_$ref(value)) {
+		if (
+			'docs.json.ts--common--types#/$defs/integer_string' === value.$ref
+		) {
+			return '\\d+';
+		}
+	} else if (
+		object_has_property(
+			value,
+			'DocsDotJson_BlueprintGeneratedClass_quoted',
+		)
+		&& (
+			'string' === typeof (
+				value.DocsDotJson_BlueprintGeneratedClass_quoted
+			)
+			|| null === value.DocsDotJson_BlueprintGeneratedClass_quoted
+		)
+	) {
+		return BlueprintGeneratedClass_quoted.regex_from_value(
+			value.DocsDotJson_BlueprintGeneratedClass_quoted,
+		);
+	}
+
+	return '.+';
+}
+
 export function Object_list_ajv_macro(
 	schema: Object_list_type,
 ) {
@@ -319,7 +355,7 @@ export function Object_list_ajv_macro(
 		Object.keys(schema.items.properties)
 			.map((property) => `(?:,?${
 				RegExp.escape(property)
-			}=.+)${
+			}=${ajv_macro_value_regex(schema.items.properties[property])})${
 				(
 					(schema.items.required || ([] as string[]))
 						.includes(property)

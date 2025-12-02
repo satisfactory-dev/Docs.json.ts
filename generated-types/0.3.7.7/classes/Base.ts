@@ -1072,11 +1072,14 @@ type FGResourceDescriptor_base = FGDescriptor_sinkable_base & {
 	mManualMiningAudioName: 'Metal',
 };
 
-type FGSchematic = FGInstructive & {
+type FGSchematic = FGSchematic_base & {
+	mCost: null | docs_json_ts_0_3_7_7_properties_ItemClass_Amount_list,
+};
+
+type FGSchematic_base = FGInstructive & {
 	mType: docs_json_ts_0_3_7_7_properties_mType,
 	mSubCategories: null | [
 	] | docs_json_ts_0_3_7_7_properties_mSubCategories,
-	mCost: null | docs_json_ts_0_3_7_7_properties_ItemClass_Amount_list,
 	mTimeToComplete: docs_json_ts_common_types_decimal_string,
 	mIncludeInBuilds: 'IIB_PublicBuilds',
 };
@@ -1420,6 +1423,7 @@ export type {
 	FGResourceDescriptor,
 	FGResourceDescriptor_base,
 	FGSchematic,
+	FGSchematic_base,
 	FGSnowballWeapon,
 	FGWeaponInstantFire,
 	FGWeaponInstantFire_base,

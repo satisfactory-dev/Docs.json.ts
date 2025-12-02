@@ -2377,14 +2377,37 @@
 		},
 		"FGSchematic--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGSchematic--base-base",
+			"$ref": "#/$defs/FGSchematic--base--base",
+			"required": ["mUnlocks"],
+			"properties": {
+				"mUnlocks": {
+					"type": "array",
+					"minItems": 0,
+					"items": {
+						"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--base"
+					}
+				}
+			}
+		},
+		"FGSchematic--base--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGSchematic--base--base--props"
+				},
+				{
+					"$ref": "#/$defs/FGSchematic--base--base--base"
+				}
+			]
+		},
+		"FGSchematic--base--base--props": {
+			"type": "object",
+			"$ref": "#/$defs/FGSchematic--base--base--base--base",
 			"required": [
 				"mMenuPriority",
 				"mSchematicDependencies",
 				"mSchematicIcon",
 				"mSmallSchematicIcon",
-				"mTechTier",
-				"mUnlocks"
+				"mTechTier"
 			],
 			"properties": {
 				"mMenuPriority": {
@@ -2505,20 +2528,23 @@
 				},
 				"mTechTier": {
 					"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/Tier"
-				},
-				"mUnlocks": {
-					"type": "array",
-					"minItems": 0,
-					"items": {
-						"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--base"
-					}
 				}
 			}
 		},
-		"FGSchematic--base-base": {
+		"FGSchematic--base--base--base": {
 			"allOf": [
 				{
+					"$ref": "#/$defs/FGSchematic--base--base--base--base"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGSchematic"
+				}
+			]
+		},
+		"FGSchematic--base--base--base--base": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGSchematic--base"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/isDescribed"

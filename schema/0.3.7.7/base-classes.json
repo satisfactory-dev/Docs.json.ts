@@ -4101,11 +4101,28 @@
 		},
 		"FGSchematic": {
 			"type": "object",
+			"$ref": "#/$defs/FGSchematic--base",
+			"required": ["mCost"],
+			"properties": {
+				"mCost": {
+					"oneOf": [
+						{
+							"type": "string",
+							"typed_string": ""
+						},
+						{
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/ItemClass-Amount--list"
+						}
+					]
+				}
+			}
+		},
+		"FGSchematic--base": {
+			"type": "object",
 			"$ref": "#/$defs/FGInstructive",
 			"required": [
 				"mType",
 				"mSubCategories",
-				"mCost",
 				"mTimeToComplete",
 				"mIncludeInBuilds"
 			],
@@ -4125,17 +4142,6 @@
 						},
 						{
 							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mSubCategories"
-						}
-					]
-				},
-				"mCost": {
-					"oneOf": [
-						{
-							"type": "string",
-							"typed_string": ""
-						},
-						{
-							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/ItemClass-Amount--list"
 						}
 					]
 				},
