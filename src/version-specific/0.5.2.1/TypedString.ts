@@ -65,7 +65,7 @@ import {
 	Thing_list_generate_typescript_type,
 } from './TypedString/Thing_list.ts';
 
-type TypedString_mode = (
+export type TypedString_mode = (
 	| TypedString_mode__update4
 	| 'Thing_list'
 	| 'Thingish_list'
@@ -95,7 +95,7 @@ type TypedString_matcher<
 	ValidateFunction<TypedString_type<Mode>['typed_string']>,
 ];
 
-type TypedString_type_OneOf = {
+export type TypedString_type_OneOf = {
 	oneOf: [
 		...TypedString_type_OneOf__update4['oneOf'],
 		TypedString_type<'Thing_list'>,
@@ -103,7 +103,7 @@ type TypedString_type_OneOf = {
 	],
 };
 
-type TypedString_schema_properties = (
+export type TypedString_schema_properties = (
 	& TypedString_schema_properties__update4
 	& {
 		Thing_list: Thing_list_schema_properties,
@@ -134,7 +134,7 @@ type TypedString_schema<
 	}
 >;
 
-type TypedString_schema_OneOf = TypeDefinitionSchema & {
+export type TypedString_schema_OneOf = TypeDefinitionSchema & {
 	oneOf: [
 		...TypedString_schema_OneOf__update4['oneOf'],
 		TypedString_schema<'Thing_list'>,
@@ -142,7 +142,7 @@ type TypedString_schema_OneOf = TypeDefinitionSchema & {
 	],
 };
 
-type TypedString_SchemaTo__by_mode = (
+export type TypedString_SchemaTo__by_mode = (
 	& TypedString_SchemaTo__by_mode__update4
 	& {
 		Thing_list: Thing_list_SchemaTo,
@@ -154,7 +154,7 @@ type TypedString_SchemaTo<
 	Mode extends TypedString_mode,
 > = TypedString_SchemaTo__by_mode[Mode];
 
-type TypedString_DataTo__by_mode = (
+export type TypedString_DataTo__by_mode = (
 	& TypedString_DataTo__by_mode__update4
 	& {
 		Thing_list: Thing_list_DataTo,
@@ -166,7 +166,7 @@ type TypedString_DataTo<
 	Mode extends TypedString_mode,
 > = TypedString_DataTo__by_mode[Mode];
 
-function compile_validators(ajv: Ajv): {
+export function compile_validators(ajv: Ajv): {
 	[key in TypedString_mode]: ValidateFunction<
 		TypedString_type<key>['typed_string']
 	>
@@ -191,6 +191,22 @@ export function generate_typescript_data<
 		mode_by_validator,
 	);
 
+	return generate_typescript_data__by_mode(
+		data,
+		schema_parser,
+		schema,
+		mode,
+	);
+}
+
+export function generate_typescript_data__by_mode<
+	Mode extends TypedString_mode,
+>(
+	data: string,
+	schema_parser: SchemaParser,
+	schema: TypedString_type<Mode>,
+	mode: Mode,
+) {
 	if ('Thing_list' === mode) {
 		const coerced = (
 			schema as TypedString_type<

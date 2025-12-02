@@ -339,68 +339,7 @@
 		"FGChainsaw": {
 			"type": "object",
 			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment--has-sound",
-			"required": [
-				"mMontageLength",
-				"mInterpSawProgress",
-				"mWasSawing",
-				"mCurrentState",
-				"mCurrentAudioState",
-				"mPreviousAudioState",
-				"mEnergyConsumption",
-				"mSawDownTreeTime",
-				"mCollateralPickupRadius",
-				"mExcludeChainsawableFoliage",
-				"mEnergyStored",
-				"mAttachSocket",
-				"mArmAnimation"
-			],
-			"properties": {
-				"mMontageLength": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mInterpSawProgress": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mWasSawing": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mCurrentState": {
-					"type": "string",
-					"const": "NewEnumerator3"
-				},
-				"mCurrentAudioState": {
-					"type": "string",
-					"const": "NewEnumerator3"
-				},
-				"mPreviousAudioState": {
-					"type": "string",
-					"const": "NewEnumerator3"
-				},
-				"mEnergyConsumption": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mSawDownTreeTime": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mCollateralPickupRadius": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mExcludeChainsawableFoliage": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mEnergyStored": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mAttachSocket": {
-					"type": "string",
-					"const": "hand_lSocket"
-				},
-				"mArmAnimation": {
-					"type": "string",
-					"const": "AE_ChainSaw"
-				}
-			}
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGChainsaw"
 		},
 		"FGColorGun": {
 			"type": "object",

@@ -845,6 +845,22 @@ type FGBuildableWire_base = FGBuildable_base & {
 	mConnections: 'None',
 };
 
+type FGChainsaw = FGEquipment_has_sound & {
+	mMontageLength: docs_json_ts_common_types_decimal_string,
+	mInterpSawProgress: docs_json_ts_common_types_decimal_string,
+	mWasSawing: docs_json_ts_common_types_bool_string,
+	mCurrentState: 'NewEnumerator3',
+	mCurrentAudioState: 'NewEnumerator3',
+	mPreviousAudioState: 'NewEnumerator3',
+	mEnergyConsumption: docs_json_ts_common_types_decimal_string,
+	mSawDownTreeTime: docs_json_ts_common_types_decimal_string,
+	mCollateralPickupRadius: docs_json_ts_common_types_decimal_string,
+	mExcludeChainsawableFoliage: docs_json_ts_common_types_bool_string,
+	mEnergyStored: docs_json_ts_common_types_decimal_string,
+	mAttachSocket: 'hand_lSocket',
+	mArmAnimation: 'AE_ChainSaw',
+};
+
 type FGColorGun = FGColorGun_base & FGWeaponProjectile_instant;
 
 type FGColorGun_base = FGColorGun_base_base & {
@@ -1380,6 +1396,7 @@ export type {
 	FGBuildableTrainPlatformCargo_base_base,
 	FGBuildableWire,
 	FGBuildableWire_base,
+	FGChainsaw,
 	FGColorGun,
 	FGColorGun_base,
 	FGColorGun_base_base,

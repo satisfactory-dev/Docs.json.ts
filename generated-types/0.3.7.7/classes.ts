@@ -53,6 +53,7 @@ import type {
 	FGBuildableTrainPlatform as docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatform,
 	FGBuildableTrainPlatformCargo as docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatformCargo,
 	FGBuildableWire as docs_json_ts_0_3_7_7_classes_base_FGBuildableWire,
+	FGChainsaw as docs_json_ts_0_3_7_7_classes_base_FGChainsaw,
 	FGColorGun as docs_json_ts_0_3_7_7_classes_base_FGColorGun,
 	FGConsumableDescriptor as docs_json_ts_0_3_7_7_classes_base_FGConsumableDescriptor,
 	FGConsumableEquipment as docs_json_ts_0_3_7_7_classes_base_FGConsumableEquipment,
@@ -225,21 +226,7 @@ type FGBuildableWire = docs_json_ts_0_3_7_7_classes_base_FGBuildableWire;
 
 type FGBuildingDescriptor = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_BuildMenu;
 
-type FGChainsaw = docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_sound & {
-	mMontageLength: docs_json_ts_common_types_decimal_string,
-	mInterpSawProgress: docs_json_ts_common_types_decimal_string,
-	mWasSawing: docs_json_ts_common_types_bool_string,
-	mCurrentState: 'NewEnumerator3',
-	mCurrentAudioState: 'NewEnumerator3',
-	mPreviousAudioState: 'NewEnumerator3',
-	mEnergyConsumption: docs_json_ts_common_types_decimal_string,
-	mSawDownTreeTime: docs_json_ts_common_types_decimal_string,
-	mCollateralPickupRadius: docs_json_ts_common_types_decimal_string,
-	mExcludeChainsawableFoliage: docs_json_ts_common_types_bool_string,
-	mEnergyStored: docs_json_ts_common_types_decimal_string,
-	mAttachSocket: 'hand_lSocket',
-	mArmAnimation: 'AE_ChainSaw',
-};
+type FGChainsaw = docs_json_ts_0_3_7_7_classes_base_FGChainsaw;
 
 type FGColorGun = docs_json_ts_0_3_7_7_classes_base_FGColorGun;
 
