@@ -1027,6 +1027,14 @@ type FGJetPack_base_base = FGEquipment_base & {
 	mBackAnimation?: 'BE_Jetpack',
 };
 
+type FGJumpingStilts = FGJumpingStilts_base & FGEquipment;
+
+type FGJumpingStilts_base = FGEquipment_base_base & {
+	mSprintSpeedFactor: docs_json_ts_common_types_decimal_string,
+	mJumpSpeedFactor: docs_json_ts_common_types_decimal_string,
+	mAttachSocket: 'jumpingStilt_lSocket',
+};
+
 type FGNobeliskDetonator = FGNobeliskDetonator_base & FGWeaponProjectile_thrown;
 
 type FGNobeliskDetonator_base = FGWeaponProjectile_thrown_base_base & {
@@ -1102,6 +1110,29 @@ type FGSchematic_base = FGInstructive & {
 
 type FGSnowballWeapon = FGWeaponProjectile_thrown & {
 	mArmAnimation: 'AE_Generic1Hand',
+};
+
+type FGSuitBase = FGSuitBase_base & FGEquipment;
+
+type FGSuitBase_base = FGEquipment_base_base & {
+	mImmunity: docs_json_ts_common_types_decimal_string,
+	mIsWorking: docs_json_ts_common_types_bool_string,
+	mHasNegatedDamage: docs_json_ts_common_types_bool_string,
+	mDamageNegated: docs_json_ts_common_types_decimal_string,
+	mFilterDuration: docs_json_ts_common_types_decimal_string,
+	mCountdown: docs_json_ts_common_types_decimal_string,
+	mDisableEffectTimer: docs_json_ts_common_types_decimal_string,
+	mSuit1PMeshMaterials: [
+		{
+			SlotName: 'Body_Details' | 'Body_01' | 'Body_02' | 'Body_Hands' | 'Body_Backpack',
+			Material: 'MaterialInstanceConstant\'"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_Details.MI_Haz_Body_Details"\'' | 'MaterialInstanceConstant\'"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_01.MI_Haz_Body_01"\'' | 'MaterialInstanceConstant\'"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_02.MI_Haz_Body_02"\'' | 'MaterialInstanceConstant\'"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_Hands.MI_Haz_Body_Hands"\'' | 'MaterialInstanceConstant\'"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_Backpack.MI_Haz_Body_Backpack"\'',
+		},
+		...{
+			SlotName: 'Body_Details' | 'Body_01' | 'Body_02' | 'Body_Hands' | 'Body_Backpack',
+			Material: 'MaterialInstanceConstant\'"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_Details.MI_Haz_Body_Details"\'' | 'MaterialInstanceConstant\'"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_01.MI_Haz_Body_01"\'' | 'MaterialInstanceConstant\'"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_02.MI_Haz_Body_02"\'' | 'MaterialInstanceConstant\'"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_Hands.MI_Haz_Body_Hands"\'' | 'MaterialInstanceConstant\'"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_Backpack.MI_Haz_Body_Backpack"\'',
+		}[],
+	],
+	mArmAnimation?: 'AE_None',
 };
 
 type FGWeaponInstantFire = FGWeaponProjectile_instant & FGWeaponInstantFire_base;
@@ -1425,6 +1456,8 @@ export type {
 	FGJetPack,
 	FGJetPack_base,
 	FGJetPack_base_base,
+	FGJumpingStilts,
+	FGJumpingStilts_base,
 	FGNobeliskDetonator,
 	FGNobeliskDetonator_base,
 	FGParachute,
@@ -1442,6 +1475,8 @@ export type {
 	FGSchematic,
 	FGSchematic_base,
 	FGSnowballWeapon,
+	FGSuitBase,
+	FGSuitBase_base,
 	FGWeaponInstantFire,
 	FGWeaponInstantFire_base,
 	FGWeaponProjectile,

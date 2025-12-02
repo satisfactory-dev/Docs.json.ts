@@ -680,6 +680,10 @@ type FGSchematic_base = FGSchematic_base_base & {
 
 type FGSchematic_base_base = FGSchematic_base_base_props & FGSchematic_base_base_base;
 
+type FGSchematic_base_base_base = FGSchematic_base_base_base_base & docs_json_ts_0_3_7_7_classes_base_FGSchematic;
+
+type FGSchematic_base_base_base_base = docs_json_ts_0_3_7_7_classes_base_FGSchematic_base & docs_json_ts_0_3_7_7_classes_base_isDescribed;
+
 type FGSchematic_base_base_props = FGSchematic_base_base_base_base & {
 	mMenuPriority: docs_json_ts_common_types_decimal_string,
 	mSchematicDependencies: [
@@ -702,10 +706,6 @@ type FGSchematic_base_base_props = FGSchematic_base_base_base_base & {
 	mSmallSchematicIcon: 'None' | `Texture2D ${string}`,
 	mTechTier: docs_json_ts_0_4_2_11_properties_Tier,
 };
-
-type FGSchematic_base_base_base = FGSchematic_base_base_base_base & docs_json_ts_0_3_7_7_classes_base_FGSchematic;
-
-type FGSchematic_base_base_base_base = docs_json_ts_0_3_7_7_classes_base_FGSchematic_base & docs_json_ts_0_3_7_7_classes_base_isDescribed;
 
 type FGSnowballWeapon = FGWeaponProjectile & docs_json_ts_0_3_7_7_classes_base_FGSnowballWeapon;
 
@@ -890,9 +890,9 @@ export type {
 	FGSchematic,
 	FGSchematic_base,
 	FGSchematic_base_base,
-	FGSchematic_base_base_props,
 	FGSchematic_base_base_base,
 	FGSchematic_base_base_base_base,
+	FGSchematic_base_base_props,
 	FGSnowballWeapon,
 	FGVehicleDescriptor_fueled,
 	FGVehicleDescriptor_fueled_with_inventory,

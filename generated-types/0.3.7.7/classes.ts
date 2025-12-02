@@ -59,13 +59,13 @@ import type {
 	FGConsumableEquipment as docs_json_ts_0_3_7_7_classes_base_FGConsumableEquipment,
 	FGDescriptor_BuildMenu as docs_json_ts_0_3_7_7_classes_base_FGDescriptor_BuildMenu,
 	FGDescriptor_sinkable as docs_json_ts_0_3_7_7_classes_base_FGDescriptor_sinkable,
-	FGEquipment as docs_json_ts_0_3_7_7_classes_base_FGEquipment,
 	FGEquipment_has_sound as docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_sound,
 	FGEquipmentStunSpear_base as docs_json_ts_0_3_7_7_classes_base_FGEquipmentStunSpear_base,
 	FGGasMask as docs_json_ts_0_3_7_7_classes_base_FGGasMask,
 	FGGolfCartDispenser as docs_json_ts_0_3_7_7_classes_base_FGGolfCartDispenser,
 	FGItemDescriptorNuclearFuel as docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel,
 	FGJetPack as docs_json_ts_0_3_7_7_classes_base_FGJetPack,
+	FGJumpingStilts as docs_json_ts_0_3_7_7_classes_base_FGJumpingStilts,
 	FGNobeliskDetonator as docs_json_ts_0_3_7_7_classes_base_FGNobeliskDetonator,
 	FGParachute as docs_json_ts_0_3_7_7_classes_base_FGParachute,
 	FGPipeHyperStart as docs_json_ts_0_3_7_7_classes_base_FGPipeHyperStart,
@@ -73,6 +73,7 @@ import type {
 	FGRecipe as docs_json_ts_0_3_7_7_classes_base_FGRecipe,
 	FGSchematic as docs_json_ts_0_3_7_7_classes_base_FGSchematic,
 	FGSnowballWeapon as docs_json_ts_0_3_7_7_classes_base_FGSnowballWeapon,
+	FGSuitBase as docs_json_ts_0_3_7_7_classes_base_FGSuitBase,
 	FGWeaponInstantFire as docs_json_ts_0_3_7_7_classes_base_FGWeaponInstantFire,
 	FGWeaponProjectileFire as docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectileFire,
 } from './classes/Base.ts';
@@ -258,11 +259,7 @@ type FGItemDescriptorNuclearFuel = docs_json_ts_0_3_7_7_classes_base_FGItemDescr
 
 type FGJetPack = docs_json_ts_0_3_7_7_classes_base_FGJetPack;
 
-type FGJumpingStilts = docs_json_ts_0_3_7_7_classes_base_FGEquipment & {
-	mSprintSpeedFactor: docs_json_ts_common_types_decimal_string,
-	mJumpSpeedFactor: docs_json_ts_common_types_decimal_string,
-	mAttachSocket: 'jumpingStilt_lSocket',
-};
+type FGJumpingStilts = docs_json_ts_0_3_7_7_classes_base_FGJumpingStilts;
 
 type FGNobeliskDetonator = docs_json_ts_0_3_7_7_classes_base_FGNobeliskDetonator;
 
@@ -375,26 +372,7 @@ type FGSchematic = docs_json_ts_0_3_7_7_classes_base_FGSchematic & {
 
 type FGSnowballWeapon = docs_json_ts_0_3_7_7_classes_base_FGSnowballWeapon;
 
-type FGSuitBase = docs_json_ts_0_3_7_7_classes_base_FGEquipment & {
-	mImmunity: docs_json_ts_common_types_decimal_string,
-	mIsWorking: docs_json_ts_common_types_bool_string,
-	mHasNegatedDamage: docs_json_ts_common_types_bool_string,
-	mDamageNegated: docs_json_ts_common_types_decimal_string,
-	mFilterDuration: docs_json_ts_common_types_decimal_string,
-	mCountdown: docs_json_ts_common_types_decimal_string,
-	mDisableEffectTimer: docs_json_ts_common_types_decimal_string,
-	mSuit1PMeshMaterials: [
-		{
-			SlotName: 'Body_Details' | 'Body_01' | 'Body_02' | 'Body_Hands' | 'Body_Backpack',
-			Material: 'MaterialInstanceConstant\'"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_Details.MI_Haz_Body_Details"\'' | 'MaterialInstanceConstant\'"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_01.MI_Haz_Body_01"\'' | 'MaterialInstanceConstant\'"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_02.MI_Haz_Body_02"\'' | 'MaterialInstanceConstant\'"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_Hands.MI_Haz_Body_Hands"\'' | 'MaterialInstanceConstant\'"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_Backpack.MI_Haz_Body_Backpack"\'',
-		},
-		...{
-			SlotName: 'Body_Details' | 'Body_01' | 'Body_02' | 'Body_Hands' | 'Body_Backpack',
-			Material: 'MaterialInstanceConstant\'"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_Details.MI_Haz_Body_Details"\'' | 'MaterialInstanceConstant\'"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_01.MI_Haz_Body_01"\'' | 'MaterialInstanceConstant\'"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_02.MI_Haz_Body_02"\'' | 'MaterialInstanceConstant\'"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_Hands.MI_Haz_Body_Hands"\'' | 'MaterialInstanceConstant\'"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_Backpack.MI_Haz_Body_Backpack"\'',
-		}[],
-	],
-	mArmAnimation?: 'AE_None',
-};
+type FGSuitBase = docs_json_ts_0_3_7_7_classes_base_FGSuitBase;
 
 type FGVehicleDescriptor = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_BuildMenu;
 

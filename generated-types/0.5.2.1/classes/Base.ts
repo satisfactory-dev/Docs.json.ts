@@ -734,8 +734,6 @@ type FGSchematic_base = FGSchematic_base_version_specific & {
 	],
 };
 
-type FGSchematic_base_version_specific = FGSchematic_base_base & docs_json_ts_0_4_2_11_classes_base_FGSchematic_base;
-
 type FGSchematic_base_base = docs_json_ts_0_4_2_11_classes_base_FGSchematic_base_base_props & FGSchematic_base_base_base & docs_json_ts_0_4_2_11_classes_base_FGSchematic_base_base_base_base;
 
 type FGSchematic_base_base_base = docs_json_ts_0_4_2_11_classes_base_FGSchematic_base_base_base_base & {
@@ -745,6 +743,8 @@ type FGSchematic_base_base_base = docs_json_ts_0_4_2_11_classes_base_FGSchematic
 		...(`BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}` | 'None')[],
 	],
 };
+
+type FGSchematic_base_version_specific = FGSchematic_base_base & docs_json_ts_0_4_2_11_classes_base_FGSchematic_base;
 
 type FGSchematic_with_described_unlocks = FGSchematic_with_described_unlocks_base & FGSchematic_base;
 
@@ -948,9 +948,9 @@ export type {
 	FGRecipe,
 	FGResourceDescriptor,
 	FGSchematic_base,
-	FGSchematic_base_version_specific,
 	FGSchematic_base_base,
 	FGSchematic_base_base_base,
+	FGSchematic_base_version_specific,
 	FGSchematic_with_described_unlocks,
 	FGSchematic_with_described_unlocks_base,
 	FGSchematic_with_described_unlocks_base_base,

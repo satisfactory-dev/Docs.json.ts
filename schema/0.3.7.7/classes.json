@@ -431,24 +431,7 @@
 		"FGJumpingStilts": {
 			"type": "object",
 			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment",
-			"required": [
-				"mSprintSpeedFactor",
-				"mJumpSpeedFactor",
-				"mAttachSocket"
-			],
-			"properties": {
-				"mSprintSpeedFactor": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mJumpSpeedFactor": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mAttachSocket": {
-					"type": "string",
-					"const": "jumpingStilt_lSocket"
-				}
-			}
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGJumpingStilts"
 		},
 		"FGNobeliskDetonator": {
 			"type": "object",
@@ -835,79 +818,7 @@
 		"FGSuitBase": {
 			"type": "object",
 			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment",
-			"required": [
-				"mImmunity",
-				"mIsWorking",
-				"mHasNegatedDamage",
-				"mDamageNegated",
-				"mFilterDuration",
-				"mCountdown",
-				"mDisableEffectTimer",
-				"mSuit1PMeshMaterials"
-			],
-			"properties": {
-				"mImmunity": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mIsWorking": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mHasNegatedDamage": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mDamageNegated": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mFilterDuration": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mCountdown": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mDisableEffectTimer": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mSuit1PMeshMaterials": {
-					"type": "string",
-					"typed_string": {
-						"type": "array",
-						"minItems": 1,
-						"uniqueItems": true,
-						"items": {
-							"type": "object",
-							"additionalProperties": false,
-							"required": ["SlotName", "Material"],
-							"properties": {
-								"SlotName": {
-									"type": "string",
-									"enum": [
-										"Body_Details",
-										"Body_01",
-										"Body_02",
-										"Body_Hands",
-										"Body_Backpack"
-									]
-								},
-								"Material": {
-									"type": "string",
-									"enum": [
-										"MaterialInstanceConstant'\"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_Details.MI_Haz_Body_Details\"'",
-										"MaterialInstanceConstant'\"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_01.MI_Haz_Body_01\"'",
-										"MaterialInstanceConstant'\"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_02.MI_Haz_Body_02\"'",
-										"MaterialInstanceConstant'\"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_Hands.MI_Haz_Body_Hands\"'",
-										"MaterialInstanceConstant'\"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_Backpack.MI_Haz_Body_Backpack\"'"
-									]
-								}
-							}
-						}
-					}
-				},
-				"mArmAnimation": {
-					"type": "string",
-					"const": "AE_None"
-				}
-			}
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGSuitBase"
 		},
 		"FGVehicleDescriptor": {
 			"type": "object",
