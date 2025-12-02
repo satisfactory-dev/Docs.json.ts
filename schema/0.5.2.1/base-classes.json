@@ -2588,16 +2588,6 @@
 				}
 			}
 		},
-		"FGSchematic--base--version-specific": {
-			"allOf": [
-				{
-					"$ref": "#/$defs/FGSchematic--base--base"
-				},
-				{
-					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGSchematic--base"
-				}
-			]
-		},
 		"FGSchematic--base--base": {
 			"allOf": [
 				{
@@ -2669,6 +2659,16 @@
 				}
 			}
 		},
+		"FGSchematic--base--version-specific": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGSchematic--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGSchematic--base"
+				}
+			]
+		},
 		"FGSchematic--with-described-unlocks": {
 			"allOf": [
 				{
@@ -2705,9 +2705,7 @@
 					"type": "string",
 					"minLength": 1
 				},
-				"mUnlockDescription": {
-					"type": "string"
-				},
+				"mUnlockDescription": {"type": "string"},
 				"mUnlockIconBig": {
 					"type": "string",
 					"const": "Unsupported texture. Contact developer for support"
