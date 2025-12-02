@@ -2237,16 +2237,6 @@
 				}
 			]
 		},
-		"FGItemDescAmmoTypeProjectile--Desc_SpikedRebar_C--base": {
-			"allOf": [
-				{
-					"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--base"
-				},
-				{
-					"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--base--sinkable"
-				}
-			]
-		},
 		"FGItemDescAmmoTypeProjectile--Desc_SpikedRebar_C": {
 			"type": "object",
 			"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--Desc_SpikedRebar_C--base",
@@ -2335,6 +2325,16 @@
 					}
 				}
 			}
+		},
+		"FGItemDescAmmoTypeProjectile--Desc_SpikedRebar_C--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--base"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--base--sinkable"
+				}
+			]
 		},
 		"FGItemDescAmmoTypeProjectile--explosive--firework": {
 			"type": "object",
@@ -2450,9 +2450,7 @@
 		"FGItemDescriptor--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGItemDescriptor--base--base",
-			"required": [
-				"mBuildMenuPriority"
-			],
+			"required": ["mBuildMenuPriority"],
 			"properties": {
 				"mBuildMenuPriority": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
@@ -2462,10 +2460,7 @@
 		"FGItemDescriptor--base--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGDescriptor",
-			"required": [
-				"mMenuPriority",
-				"mSubCategories"
-			],
+			"required": ["mMenuPriority", "mSubCategories"],
 			"properties": {
 				"mMenuPriority": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"

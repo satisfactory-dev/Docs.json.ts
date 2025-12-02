@@ -3554,10 +3554,7 @@
 			"properties": {
 				"mEquipmentSlot": {
 					"type": "string",
-					"templated_string": [
-						"ES_",
-						{"type": "string"}
-					]
+					"templated_string": ["ES_", {"type": "string"}]
 				},
 				"mAttachSocket": {
 					"type": "string",
