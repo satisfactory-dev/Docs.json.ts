@@ -61,6 +61,8 @@ import type {
 } from './../../0.4.2.11/classes/Base.ts';
 
 import type {
+	FalloffCurve_EditorCurveData_only as docs_json_ts_0_5_2_1_properties_FalloffCurve_EditorCurveData_only,
+	FalloffCurve_EditorCurveData_with_ExternalCurve as docs_json_ts_0_5_2_1_properties_FalloffCurve_EditorCurveData_with_ExternalCurve,
 	mDisableSnapOn_bottom as docs_json_ts_0_5_2_1_properties_mDisableSnapOn_bottom,
 	mDisableSnapOn_top as docs_json_ts_0_5_2_1_properties_mDisableSnapOn_top,
 	mDockingRuleSet as docs_json_ts_0_5_2_1_properties_mDockingRuleSet,
@@ -578,27 +580,25 @@ type FGItemDescAmmoTypeInstantHit_base = FGItemDescAmmoTypeProjectile_base & {
 	mHitDamage: docs_json_ts_common_types_decimal_string,
 };
 
-type FGItemDescAmmoTypeProjectile_base = FGItemDescriptor_base & {
+type FGItemDescAmmoTypeProjectile_base = FGItemDescAmmoTypeProjectile_base_base & FGItemDescAmmoTypeProjectile_base_version_specific & FGItemDescriptor_base;
+
+type FGItemDescAmmoTypeProjectile_base_base = FGItemDescriptor_base_base & {
 	AmmoFiredDelegate: docs_json_ts_common_types_empty_object,
 	mFiringTransform: docs_json_ts_0_3_7_7_properties_transform_Rotation_Translation_Scale3D,
 	mHasBeenInitialized: docs_json_ts_common_types_bool_string,
 	mWeaponDamageMultiplier: docs_json_ts_common_types_decimal_string,
 	mMagazineSize: docs_json_ts_common_types_integer_string,
 	mMaxAmmoEffectiveRange: docs_json_ts_common_types_decimal_string,
-	mAmmoDamageFalloff: {
-		EditorCurveData: {
-			DefaultValue: docs_json_ts_common_types_decimal_string,
-			PreInfinityExtrap: 'RCCE_Constant',
-			PostInfinityExtrap: 'RCCE_Constant',
-		},
-		ExternalCurve: `CurveFloat'"/Game/FactoryGame/${string}${'"\''}`,
-	},
+};
+
+type FGItemDescAmmoTypeProjectile_base_version_specific = FGItemDescriptor_base_base & {
 	mReloadTimeModifier: docs_json_ts_common_types_decimal_string,
 	mFireRateModifier: docs_json_ts_common_types_decimal_string,
 	mDispersionPerShotChangeModifier: docs_json_ts_common_types_decimal_string,
 	mMinWeaponDispersionModifier: docs_json_ts_common_types_decimal_string,
 	mMaxWeaponDispersionModifier: docs_json_ts_common_types_decimal_string,
 	mWeaponAimTimeModifier: docs_json_ts_common_types_decimal_string,
+	mAmmoDamageFalloff: docs_json_ts_0_5_2_1_properties_FalloffCurve_EditorCurveData_with_ExternalCurve,
 };
 
 type FGItemDescAmmoTypeProjectile_base_sinkable = FGItemDescAmmoTypeProjectile_base & {
@@ -616,13 +616,7 @@ type FGItemDescAmmoTypeProjectile_Desc_NobeliskExplosive_C = FGItemDescAmmoTypeP
 		ExplodeAtEndOfLife: docs_json_ts_common_types_bool_string,
 		DamageType: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
 		DamageTypeExplode: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
-		DamageFalloffCurve: {
-			EditorCurveData: {
-				DefaultValue: docs_json_ts_common_types_decimal_string,
-				PreInfinityExtrap: 'RCCE_Constant',
-				PostInfinityExtrap: 'RCCE_Constant',
-			},
-		},
+		DamageFalloffCurve: docs_json_ts_0_5_2_1_properties_FalloffCurve_EditorCurveData_only,
 		WeaponDamageMultiplier: docs_json_ts_common_types_decimal_string,
 	},
 };
@@ -640,13 +634,7 @@ type FGItemDescAmmoTypeProjectile_Desc_SnowballProjectile_C = FGItemDescAmmoType
 		ExplodeAtEndOfLife: docs_json_ts_common_types_bool_string,
 		DamageType: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
 		DamageTypeExplode: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
-		DamageFalloffCurve: {
-			EditorCurveData: {
-				DefaultValue: docs_json_ts_common_types_decimal_string,
-				PreInfinityExtrap: 'RCCE_Constant',
-				PostInfinityExtrap: 'RCCE_Constant',
-			},
-		},
+		DamageFalloffCurve: docs_json_ts_0_5_2_1_properties_FalloffCurve_EditorCurveData_only,
 		WeaponDamageMultiplier: docs_json_ts_common_types_decimal_string,
 	},
 };
@@ -662,13 +650,7 @@ type FGItemDescAmmoTypeProjectile_Desc_SpikedRebar_C = FGItemDescAmmoTypeProject
 		CanTriggerExplodeBySameClass: docs_json_ts_common_types_bool_string,
 		DamageType: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
 		DamageTypeExplode: 'Class\'"/Script/FactoryGame.FGDamageType"\'',
-		DamageFalloffCurve: {
-			EditorCurveData: {
-				DefaultValue: docs_json_ts_common_types_decimal_string,
-				PreInfinityExtrap: 'RCCE_Constant',
-				PostInfinityExtrap: 'RCCE_Constant',
-			},
-		},
+		DamageFalloffCurve: docs_json_ts_0_5_2_1_properties_FalloffCurve_EditorCurveData_only,
 		WeaponDamageMultiplier: docs_json_ts_common_types_decimal_string,
 	},
 };
@@ -687,13 +669,7 @@ type FGItemDescAmmoTypeProjectile_explosive_firework = FGItemDescAmmoTypeProject
 		ExplodeAtEndOfLife: docs_json_ts_common_types_bool_string,
 		DamageType: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
 		DamageTypeExplode: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
-		DamageFalloffCurve: {
-			EditorCurveData: {
-				DefaultValue: docs_json_ts_common_types_decimal_string,
-				PreInfinityExtrap: 'RCCE_Constant',
-				PostInfinityExtrap: 'RCCE_Constant',
-			},
-		},
+		DamageFalloffCurve: docs_json_ts_0_5_2_1_properties_FalloffCurve_EditorCurveData_only,
 		WeaponDamageMultiplier: docs_json_ts_common_types_decimal_string,
 	},
 };
@@ -930,6 +906,8 @@ export type {
 	FGItemDescAmmoTypeInstantHit,
 	FGItemDescAmmoTypeInstantHit_base,
 	FGItemDescAmmoTypeProjectile_base,
+	FGItemDescAmmoTypeProjectile_base_base,
+	FGItemDescAmmoTypeProjectile_base_version_specific,
 	FGItemDescAmmoTypeProjectile_base_sinkable,
 	FGItemDescAmmoTypeProjectile_Desc_NobeliskExplosive_C,
 	FGItemDescAmmoTypeProjectile_Desc_NobeliskExplosive_C_base,

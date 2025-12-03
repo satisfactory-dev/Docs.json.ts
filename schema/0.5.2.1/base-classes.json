@@ -1918,22 +1918,28 @@
 			}
 		},
 		"FGItemDescAmmoTypeProjectile--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--base--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--base"
+				}
+			]
+		},
+		"FGItemDescAmmoTypeProjectile--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGItemDescriptor--base",
+			"$ref": "#/$defs/FGItemDescriptor--base--base",
 			"required": [
 				"AmmoFiredDelegate",
 				"mFiringTransform",
 				"mHasBeenInitialized",
 				"mWeaponDamageMultiplier",
 				"mMagazineSize",
-				"mMaxAmmoEffectiveRange",
-				"mAmmoDamageFalloff",
-				"mReloadTimeModifier",
-				"mFireRateModifier",
-				"mDispersionPerShotChangeModifier",
-				"mMinWeaponDispersionModifier",
-				"mMaxWeaponDispersionModifier",
-				"mWeaponAimTimeModifier"
+				"mMaxAmmoEffectiveRange"
 			],
 			"properties": {
 				"AmmoFiredDelegate": {
@@ -1953,46 +1959,22 @@
 				},
 				"mMaxAmmoEffectiveRange": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mAmmoDamageFalloff": {
-					"type": "string",
-					"typed_string": {
-						"type": "object",
-						"additionalProperties": false,
-						"required": ["EditorCurveData", "ExternalCurve"],
-						"properties": {
-							"EditorCurveData": {
-								"type": "string",
-								"typed_string": {
-									"type": "object",
-									"additionalProperties": false,
-									"required": [
-										"DefaultValue",
-										"PreInfinityExtrap",
-										"PostInfinityExtrap"
-									],
-									"properties": {
-										"DefaultValue": {
-											"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-										},
-										"PreInfinityExtrap": {
-											"type": "string",
-											"const": "RCCE_Constant"
-										},
-										"PostInfinityExtrap": {
-											"type": "string",
-											"const": "RCCE_Constant"
-										}
-									}
-								}
-							},
-							"ExternalCurve": {
-								"type": "string",
-								"DocsDotJson_CurveFloat_quoted": null
-							}
-						}
-					}
-				},
+				}
+			}
+		},
+		"FGItemDescAmmoTypeProjectile--base--version-specific": {
+			"type": "object",
+			"$ref": "#/$defs/FGItemDescriptor--base--base",
+			"required": [
+				"mReloadTimeModifier",
+				"mFireRateModifier",
+				"mDispersionPerShotChangeModifier",
+				"mMinWeaponDispersionModifier",
+				"mMaxWeaponDispersionModifier",
+				"mWeaponAimTimeModifier",
+				"mAmmoDamageFalloff"
+			],
+			"properties": {
 				"mReloadTimeModifier": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
@@ -2010,6 +1992,9 @@
 				},
 				"mWeaponAimTimeModifier": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mAmmoDamageFalloff": {
+					"$ref": "docs.json.ts--0.5.2.1--properties#/$defs/FalloffCurve--EditorCurveData--with-ExternalCurve"
 				}
 			}
 		},
@@ -2078,39 +2063,7 @@
 								"DocsDotJson_BlueprintGeneratedClass_quoted": null
 							},
 							"DamageFalloffCurve": {
-								"type": "string",
-								"typed_string": {
-									"type": "object",
-									"additionalProperties": false,
-									"required": ["EditorCurveData"],
-									"properties": {
-										"EditorCurveData": {
-											"type": "string",
-											"typed_string": {
-												"type": "object",
-												"additionalProperties": false,
-												"required": [
-													"DefaultValue",
-													"PreInfinityExtrap",
-													"PostInfinityExtrap"
-												],
-												"properties": {
-													"DefaultValue": {
-														"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-													},
-													"PreInfinityExtrap": {
-														"type": "string",
-														"const": "RCCE_Constant"
-													},
-													"PostInfinityExtrap": {
-														"type": "string",
-														"const": "RCCE_Constant"
-													}
-												}
-											}
-										}
-									}
-								}
+								"$ref": "docs.json.ts--0.5.2.1--properties#/$defs/FalloffCurve--EditorCurveData--only"
 							},
 							"WeaponDamageMultiplier": {
 								"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
@@ -2185,39 +2138,7 @@
 								"DocsDotJson_BlueprintGeneratedClass_quoted": null
 							},
 							"DamageFalloffCurve": {
-								"type": "string",
-								"typed_string": {
-									"type": "object",
-									"additionalProperties": false,
-									"required": ["EditorCurveData"],
-									"properties": {
-										"EditorCurveData": {
-											"type": "string",
-											"typed_string": {
-												"type": "object",
-												"additionalProperties": false,
-												"required": [
-													"DefaultValue",
-													"PreInfinityExtrap",
-													"PostInfinityExtrap"
-												],
-												"properties": {
-													"DefaultValue": {
-														"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-													},
-													"PreInfinityExtrap": {
-														"type": "string",
-														"const": "RCCE_Constant"
-													},
-													"PostInfinityExtrap": {
-														"type": "string",
-														"const": "RCCE_Constant"
-													}
-												}
-											}
-										}
-									}
-								}
+								"$ref": "docs.json.ts--0.5.2.1--properties#/$defs/FalloffCurve--EditorCurveData--only"
 							},
 							"WeaponDamageMultiplier": {
 								"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
@@ -2284,39 +2205,7 @@
 								"const": "Class'\"/Script/FactoryGame.FGDamageType\"'"
 							},
 							"DamageFalloffCurve": {
-								"type": "string",
-								"typed_string": {
-									"type": "object",
-									"additionalProperties": false,
-									"required": ["EditorCurveData"],
-									"properties": {
-										"EditorCurveData": {
-											"type": "string",
-											"typed_string": {
-												"type": "object",
-												"additionalProperties": false,
-												"required": [
-													"DefaultValue",
-													"PreInfinityExtrap",
-													"PostInfinityExtrap"
-												],
-												"properties": {
-													"DefaultValue": {
-														"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-													},
-													"PreInfinityExtrap": {
-														"type": "string",
-														"const": "RCCE_Constant"
-													},
-													"PostInfinityExtrap": {
-														"type": "string",
-														"const": "RCCE_Constant"
-													}
-												}
-											}
-										}
-									}
-								}
+								"$ref": "docs.json.ts--0.5.2.1--properties#/$defs/FalloffCurve--EditorCurveData--only"
 							},
 							"WeaponDamageMultiplier": {
 								"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
@@ -2395,39 +2284,7 @@
 								"DocsDotJson_BlueprintGeneratedClass_quoted": null
 							},
 							"DamageFalloffCurve": {
-								"type": "string",
-								"typed_string": {
-									"type": "object",
-									"additionalProperties": false,
-									"required": ["EditorCurveData"],
-									"properties": {
-										"EditorCurveData": {
-											"type": "string",
-											"typed_string": {
-												"type": "object",
-												"additionalProperties": false,
-												"required": [
-													"DefaultValue",
-													"PreInfinityExtrap",
-													"PostInfinityExtrap"
-												],
-												"properties": {
-													"DefaultValue": {
-														"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-													},
-													"PreInfinityExtrap": {
-														"type": "string",
-														"const": "RCCE_Constant"
-													},
-													"PostInfinityExtrap": {
-														"type": "string",
-														"const": "RCCE_Constant"
-													}
-												}
-											}
-										}
-									}
-								}
+								"$ref": "docs.json.ts--0.5.2.1--properties#/$defs/FalloffCurve--EditorCurveData--only"
 							},
 							"WeaponDamageMultiplier": {
 								"$ref": "docs.json.ts--common--types#/$defs/decimal_string"

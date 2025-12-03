@@ -31,8 +31,20 @@ import type {
 	UnionTypeNode,
 } from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
 
+import type {
+	templated_string_type,
+	TemplatedStringParts,
+} from '@signpostmarv/json-schema-typescript-codegen/ajv';
+import {
+	TemplatedString,
+} from '@signpostmarv/json-schema-typescript-codegen/ajv';
+
 type Thingish_list_prefixItems_item = (
 	| $ref_type
+);
+
+type Thingish_list_items_item = (
+	| templated_string_type
 );
 
 type Thingish_list_outter<
@@ -70,14 +82,23 @@ type Thingish_list_prefixItems = (
 	}
 );
 
+type Thingish_list_items = array_type<
+	'items',
+	'specified',
+	'yes',
+	'with',
+	Thingish_list_items_item
+>;
+
 export type Thingish_list_type<
 	SelfReference extends SchemaObject,
 > = (
 	| Thingish_list_outter<SelfReference>
 	| Thingish_list_prefixItems
+	| Thingish_list_items
 );
 
-const unspecified = ArrayType.generate_schema_definition({
+const unspecified__prefixItems = ArrayType.generate_schema_definition({
 	array_mode: 'prefixItems',
 	specified_mode: 'unspecified',
 	unique_items_mode: 'no',
@@ -85,7 +106,7 @@ const unspecified = ArrayType.generate_schema_definition({
 	minItems: PositiveIntegerOrZeroGuard(1),
 });
 
-const non_self_reference = {
+const non_self_reference__prefixItems = {
 	type: 'object',
 	additionalProperties: false,
 	required: ['type', 'typed_string'],
@@ -95,11 +116,11 @@ const non_self_reference = {
 			const: 'string',
 		},
 		typed_string: {
-			...unspecified,
+			...unspecified__prefixItems,
 			properties: {
-				...unspecified.properties,
+				...unspecified__prefixItems.properties,
 				prefixItems: {
-					...unspecified.properties.prefixItems,
+					...unspecified__prefixItems.properties.prefixItems,
 					items: {
 						oneOf: [
 							$ref.generate_type_definition(),
@@ -109,6 +130,12 @@ const non_self_reference = {
 			},
 		},
 	},
+} as const;
+
+const non_self_reference__items = {
+	oneOf: [
+		TemplatedString.generate_schema_definition(),
+	],
 } as const;
 
 export type Thingish_list_schema_properties = {
@@ -123,7 +150,8 @@ export type Thingish_list_schema_properties = {
 				$ref: 'DocsDotJson_thingish_list_schema',
 			}
 		>,
-		typeof non_self_reference,
+		typeof non_self_reference__prefixItems,
+		typeof non_self_reference__items,
 	],
 };
 
@@ -167,7 +195,8 @@ export function Thingish_list_compile_validator<
 		$id: 'DocsDotJson_thingish_list_schema',
 		oneOf: [
 			self_reference,
-			non_self_reference,
+			non_self_reference__prefixItems,
+			non_self_reference__items,
 		],
 	};
 
@@ -178,6 +207,14 @@ function is_prefixItems(
 	schema: SchemaObject,
 ): schema is Thingish_list_prefixItems {
 	return 'prefixItems' in schema;
+}
+
+function is_items(
+	schema: SchemaObject,
+): schema is Thingish_list_items {
+	return 'items' in schema && false !== schema.items && (
+		'templated_string' in schema.items
+	);
 }
 
 function is_outter<
@@ -214,6 +251,8 @@ function Thingish_list_schema_to_pattern__str(
 ): string {
 	if (is_prefixItems(schema)) {
 		return Thingish_list_schema_to_pattern__prefixItems(schema);
+	} else if (is_items(schema)) {
+		return Thingish_list_schema_to_pattern__items();
 	} else if (is_outter(schema)) {
 		return Thingish_list_schema_to_pattern__str(schema.typed_string);
 	} else if (is_inner(schema)) {
@@ -252,6 +291,20 @@ function Thingish_list_schema_to_pattern__prefixItems(
 	}
 
 	return `(?:\\(${regex.join(', ')}\\))`;
+}
+
+function Thingish_list_schema_to_pattern__items(
+): string {
+	const regex: string[] = [];
+
+	regex.push(
+		TemplatedString.to_regex_string_inner(
+			[{} as TemplatedStringParts[0]],
+			false,
+		),
+	);
+
+	return `(?:\\(,?${regex.join('|')}\\))`;
 }
 
 function Thingish_list_schema_to_pattern__inner<
@@ -295,7 +348,8 @@ export function Thingish_list_generate_schema_definition(
 		$id: 'DocsDotJson_thingish_list_schema',
 		oneOf: [
 			sanity_check_self_reference,
-			non_self_reference,
+			non_self_reference__prefixItems,
+			non_self_reference__items,
 		],
 	};
 
