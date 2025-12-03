@@ -2,80 +2,6 @@
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "docs.json.ts--0.5.2.1--properties",
 	"$defs": {
-		"FalloffCurve--EditorCurveData--only": {
-			"type": "string",
-			"typed_string": {
-				"type": "object",
-				"additionalProperties": false,
-				"required": ["EditorCurveData"],
-				"properties": {
-					"EditorCurveData": {
-						"type": "string",
-						"typed_string": {
-							"type": "object",
-							"additionalProperties": false,
-							"required": [
-								"DefaultValue",
-								"PreInfinityExtrap",
-								"PostInfinityExtrap"
-							],
-							"properties": {
-								"DefaultValue": {
-									"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-								},
-								"PreInfinityExtrap": {
-									"type": "string",
-									"const": "RCCE_Constant"
-								},
-								"PostInfinityExtrap": {
-									"type": "string",
-									"const": "RCCE_Constant"
-								}
-							}
-						}
-					}
-				}
-			}
-		},
-		"FalloffCurve--EditorCurveData--with-ExternalCurve": {
-			"type": "string",
-			"typed_string": {
-				"type": "object",
-				"additionalProperties": false,
-				"required": ["EditorCurveData", "ExternalCurve"],
-				"properties": {
-					"EditorCurveData": {
-						"type": "string",
-						"typed_string": {
-							"type": "object",
-							"additionalProperties": false,
-							"required": [
-								"DefaultValue",
-								"PreInfinityExtrap",
-								"PostInfinityExtrap"
-							],
-							"properties": {
-								"DefaultValue": {
-									"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-								},
-								"PreInfinityExtrap": {
-									"type": "string",
-									"const": "RCCE_Constant"
-								},
-								"PostInfinityExtrap": {
-									"type": "string",
-									"const": "RCCE_Constant"
-								}
-							}
-						}
-					},
-					"ExternalCurve": {
-						"type": "string",
-						"DocsDotJson_CurveFloat_quoted": null
-					}
-				}
-			}
-		},
 		"mDisableSnapOn--bottom": {
 			"type": "string",
 			"typed_string": {
@@ -169,6 +95,80 @@
 			"properties": {
 				"mEmotes": {
 					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
+				}
+			}
+		},
+		"FalloffCurve--EditorCurveData--only": {
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": ["EditorCurveData"],
+				"properties": {
+					"EditorCurveData": {
+						"type": "string",
+						"typed_string": {
+							"type": "object",
+							"additionalProperties": false,
+							"required": [
+								"DefaultValue",
+								"PreInfinityExtrap",
+								"PostInfinityExtrap"
+							],
+							"properties": {
+								"DefaultValue": {
+									"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+								},
+								"PreInfinityExtrap": {
+									"type": "string",
+									"const": "RCCE_Constant"
+								},
+								"PostInfinityExtrap": {
+									"type": "string",
+									"const": "RCCE_Constant"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"FalloffCurve--EditorCurveData--with-ExternalCurve": {
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": ["EditorCurveData", "ExternalCurve"],
+				"properties": {
+					"EditorCurveData": {
+						"type": "string",
+						"typed_string": {
+							"type": "object",
+							"additionalProperties": false,
+							"required": [
+								"DefaultValue",
+								"PreInfinityExtrap",
+								"PostInfinityExtrap"
+							],
+							"properties": {
+								"DefaultValue": {
+									"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+								},
+								"PreInfinityExtrap": {
+									"type": "string",
+									"const": "RCCE_Constant"
+								},
+								"PostInfinityExtrap": {
+									"type": "string",
+									"const": "RCCE_Constant"
+								}
+							}
+						}
+					},
+					"ExternalCurve": {
+						"type": "string",
+						"DocsDotJson_CurveFloat_quoted": null
+					}
 				}
 			}
 		}

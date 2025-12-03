@@ -4370,9 +4370,7 @@
 		"FGWeaponInstantFire--base--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGWeaponInstantFire--base--base--base",
-			"required": [
-				"mLockAngle"
-			],
+			"required": ["mLockAngle"],
 			"properties": {
 				"mLockAngle": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
@@ -4382,11 +4380,7 @@
 		"FGWeaponInstantFire--base--base--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGWeaponProjectile--instant--base--base",
-			"required": [
-				"Fire",
-				"mHasReloadedOnce",
-				"mArmAnimation"
-			],
+			"required": ["Fire", "mHasReloadedOnce", "mArmAnimation"],
 			"properties": {
 				"Fire": {
 					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
