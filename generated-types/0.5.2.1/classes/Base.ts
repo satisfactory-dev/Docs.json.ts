@@ -591,6 +591,10 @@ type FGItemDescAmmoTypeProjectile_base_base = FGItemDescriptor_base_base & {
 	mMaxAmmoEffectiveRange: docs_json_ts_common_types_decimal_string,
 };
 
+type FGItemDescAmmoTypeProjectile_base_sinkable = FGItemDescAmmoTypeProjectile_base & {
+	mResourceSinkPoints: docs_json_ts_common_types_integer_string,
+};
+
 type FGItemDescAmmoTypeProjectile_base_version_specific = FGItemDescriptor_base_base & {
 	mReloadTimeModifier: docs_json_ts_common_types_decimal_string,
 	mFireRateModifier: docs_json_ts_common_types_decimal_string,
@@ -599,10 +603,6 @@ type FGItemDescAmmoTypeProjectile_base_version_specific = FGItemDescriptor_base_
 	mMaxWeaponDispersionModifier: docs_json_ts_common_types_decimal_string,
 	mWeaponAimTimeModifier: docs_json_ts_common_types_decimal_string,
 	mAmmoDamageFalloff: docs_json_ts_0_5_2_1_properties_FalloffCurve_EditorCurveData_with_ExternalCurve,
-};
-
-type FGItemDescAmmoTypeProjectile_base_sinkable = FGItemDescAmmoTypeProjectile_base & {
-	mResourceSinkPoints: docs_json_ts_common_types_integer_string,
 };
 
 type FGItemDescAmmoTypeProjectile_Desc_NobeliskExplosive_C = FGItemDescAmmoTypeProjectile_Desc_NobeliskExplosive_C_base & {
@@ -912,8 +912,8 @@ export type {
 	FGItemDescAmmoTypeInstantHit_base,
 	FGItemDescAmmoTypeProjectile_base,
 	FGItemDescAmmoTypeProjectile_base_base,
-	FGItemDescAmmoTypeProjectile_base_version_specific,
 	FGItemDescAmmoTypeProjectile_base_sinkable,
+	FGItemDescAmmoTypeProjectile_base_version_specific,
 	FGItemDescAmmoTypeProjectile_Desc_NobeliskExplosive_C,
 	FGItemDescAmmoTypeProjectile_Desc_NobeliskExplosive_C_base,
 	FGItemDescAmmoTypeProjectile_Desc_SnowballProjectile_C,

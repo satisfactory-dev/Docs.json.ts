@@ -962,13 +962,32 @@ type FGEquipment_has_sound = FGEquipment & {
 	mPlayingSound: docs_json_ts_common_types_bool_string,
 };
 
-type FGEquipmentStunSpear_base = FGEquipment & {
+type FGEquipmentStunSpear_base = FGEquipmentStunSpear_base_base & {
+	mDamage: docs_json_ts_common_types_integer_string,
+};
+
+type FGEquipmentStunSpear_base_base = FGEquipment & {
 	mRandomAttackAnim: docs_json_ts_common_types_integer_string,
 	mSecondSwingMaxTime: docs_json_ts_common_types_decimal_string,
 	mSecondSwingCooldDownTime: docs_json_ts_common_types_decimal_string,
-	mDamage: docs_json_ts_common_types_integer_string,
 	mAttackDistance: docs_json_ts_common_types_decimal_string,
 	mArmAnimation?: 'AE_ShockShank' | 'AE_StunSpear',
+};
+
+type FGEquipmentStunSpear_xenobasher = FGEquipmentStunSpear_xenobasher_base & FGEquipmentStunSpear_base;
+
+type FGEquipmentStunSpear_xenobasher_base = FGEquipmentStunSpear_base_base & {
+	mCurrentMontageSection: 'None',
+	mSecondAttackTimer: docs_json_ts_common_types_decimal_string,
+	mFirstAttackTimer: docs_json_ts_common_types_decimal_string,
+	mRandomEquipAnim: docs_json_ts_common_types_integer_string,
+};
+
+type FGEquipmentStunSpear_xenozapper = FGEquipmentStunSpear_xenozapper_base & FGEquipmentStunSpear_base;
+
+type FGEquipmentStunSpear_xenozapper_base = FGEquipmentStunSpear_base_base & {
+	mPlayingSound: docs_json_ts_common_types_bool_string,
+	mRandomStingerAnim: docs_json_ts_common_types_integer_string,
 };
 
 type FGGasMask = FGGasMask_base & FGEquipment;
@@ -1460,6 +1479,11 @@ export type {
 	FGEquipment_dispenser,
 	FGEquipment_has_sound,
 	FGEquipmentStunSpear_base,
+	FGEquipmentStunSpear_base_base,
+	FGEquipmentStunSpear_xenobasher,
+	FGEquipmentStunSpear_xenobasher_base,
+	FGEquipmentStunSpear_xenozapper,
+	FGEquipmentStunSpear_xenozapper_base,
 	FGGasMask,
 	FGGasMask_base,
 	FGGolfCartDispenser,

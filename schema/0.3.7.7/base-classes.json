@@ -3689,12 +3689,21 @@
 		},
 		"FGEquipmentStunSpear--base": {
 			"type": "object",
+			"$ref": "#/$defs/FGEquipmentStunSpear--base--base",
+			"required": ["mDamage"],
+			"properties": {
+				"mDamage": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				}
+			}
+		},
+		"FGEquipmentStunSpear--base--base": {
+			"type": "object",
 			"$ref": "#/$defs/FGEquipment",
 			"required": [
 				"mRandomAttackAnim",
 				"mSecondSwingMaxTime",
 				"mSecondSwingCooldDownTime",
-				"mDamage",
 				"mAttackDistance"
 			],
 			"properties": {
@@ -3707,15 +3716,70 @@
 				"mSecondSwingCooldDownTime": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
-				"mDamage": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-				},
 				"mAttackDistance": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
 				"mArmAnimation": {
 					"type": "string",
 					"enum": ["AE_ShockShank", "AE_StunSpear"]
+				}
+			}
+		},
+		"FGEquipmentStunSpear--xenobasher": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGEquipmentStunSpear--xenobasher--base"
+				},
+				{
+					"$ref": "#/$defs/FGEquipmentStunSpear--base"
+				}
+			]
+		},
+		"FGEquipmentStunSpear--xenobasher--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGEquipmentStunSpear--base--base",
+			"required": [
+				"mCurrentMontageSection",
+				"mSecondAttackTimer",
+				"mFirstAttackTimer",
+				"mRandomEquipAnim"
+			],
+			"properties": {
+				"mCurrentMontageSection": {
+					"type": "string",
+					"const": "None"
+				},
+				"mSecondAttackTimer": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mFirstAttackTimer": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mRandomEquipAnim": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				}
+			}
+		},
+		"FGEquipmentStunSpear--xenozapper": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGEquipmentStunSpear--xenozapper--base"
+				},
+				{
+					"$ref": "#/$defs/FGEquipmentStunSpear--base"
+				}
+			]
+		},
+		"FGEquipmentStunSpear--xenozapper--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGEquipmentStunSpear--base--base",
+			"required": ["mPlayingSound", "mRandomStingerAnim"],
+			"properties": {
+				"mPlayingSound": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mRandomStingerAnim": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
 				}
 			}
 		},

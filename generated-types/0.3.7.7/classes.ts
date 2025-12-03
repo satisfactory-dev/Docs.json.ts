@@ -60,7 +60,8 @@ import type {
 	FGDescriptor_BuildMenu as docs_json_ts_0_3_7_7_classes_base_FGDescriptor_BuildMenu,
 	FGDescriptor_sinkable as docs_json_ts_0_3_7_7_classes_base_FGDescriptor_sinkable,
 	FGEquipment_has_sound as docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_sound,
-	FGEquipmentStunSpear_base as docs_json_ts_0_3_7_7_classes_base_FGEquipmentStunSpear_base,
+	FGEquipmentStunSpear_xenobasher as docs_json_ts_0_3_7_7_classes_base_FGEquipmentStunSpear_xenobasher,
+	FGEquipmentStunSpear_xenozapper as docs_json_ts_0_3_7_7_classes_base_FGEquipmentStunSpear_xenozapper,
 	FGGasMask as docs_json_ts_0_3_7_7_classes_base_FGGasMask,
 	FGGolfCartDispenser as docs_json_ts_0_3_7_7_classes_base_FGGolfCartDispenser,
 	FGItemDescriptorNuclearFuel as docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel,
@@ -237,17 +238,9 @@ type FGConsumableEquipment = docs_json_ts_0_3_7_7_classes_base_FGConsumableEquip
 	mArmAnimation: 'AE_Consumables' | 'AE_OneHandEquipment',
 };
 
-type FGEquipmentStunSpear_xenobasher = docs_json_ts_0_3_7_7_classes_base_FGEquipmentStunSpear_base & {
-	mCurrentMontageSection: 'None',
-	mSecondAttackTimer: docs_json_ts_common_types_decimal_string,
-	mFirstAttackTimer: docs_json_ts_common_types_decimal_string,
-	mRandomEquipAnim: docs_json_ts_common_types_integer_string,
-};
+type FGEquipmentStunSpear_xenobasher = docs_json_ts_0_3_7_7_classes_base_FGEquipmentStunSpear_xenobasher;
 
-type FGEquipmentStunSpear_xenozapper = docs_json_ts_0_3_7_7_classes_base_FGEquipmentStunSpear_base & {
-	mPlayingSound: docs_json_ts_common_types_bool_string,
-	mRandomStingerAnim: docs_json_ts_common_types_integer_string,
-};
+type FGEquipmentStunSpear_xenozapper = docs_json_ts_0_3_7_7_classes_base_FGEquipmentStunSpear_xenozapper;
 
 type FGGasMask = docs_json_ts_0_3_7_7_classes_base_FGGasMask;
 

@@ -19,23 +19,6 @@ import type {
 	mUnlocks_item_mResourcePairsToAddToScanner as docs_json_ts_0_4_2_11_properties_mUnlocks_item_mResourcePairsToAddToScanner,
 } from './../../0.4.2.11/types/properties.ts';
 
-type FalloffCurve_EditorCurveData_only = {
-	EditorCurveData: {
-		DefaultValue: docs_json_ts_common_types_decimal_string,
-		PreInfinityExtrap: 'RCCE_Constant',
-		PostInfinityExtrap: 'RCCE_Constant',
-	},
-};
-
-type FalloffCurve_EditorCurveData_with_ExternalCurve = {
-	EditorCurveData: {
-		DefaultValue: docs_json_ts_common_types_decimal_string,
-		PreInfinityExtrap: 'RCCE_Constant',
-		PostInfinityExtrap: 'RCCE_Constant',
-	},
-	ExternalCurve: `CurveFloat'"/Game/FactoryGame/${string}${'"\''}`,
-};
-
 type mDisableSnapOn_bottom = {
 	Bottom: docs_json_ts_common_types_bool_string,
 };
@@ -58,9 +41,24 @@ type mUnlocks_item_mEmotes = docs_json_ts_0_3_7_7_properties_mUnlocks_item_base 
 	mEmotes: docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list,
 };
 
+type FalloffCurve_EditorCurveData_only = {
+	EditorCurveData: {
+		DefaultValue: docs_json_ts_common_types_decimal_string,
+		PreInfinityExtrap: 'RCCE_Constant',
+		PostInfinityExtrap: 'RCCE_Constant',
+	},
+};
+
+type FalloffCurve_EditorCurveData_with_ExternalCurve = {
+	EditorCurveData: {
+		DefaultValue: docs_json_ts_common_types_decimal_string,
+		PreInfinityExtrap: 'RCCE_Constant',
+		PostInfinityExtrap: 'RCCE_Constant',
+	},
+	ExternalCurve: `CurveFloat'"/Game/FactoryGame/${string}${'"\''}`,
+};
+
 export type {
-	FalloffCurve_EditorCurveData_only,
-	FalloffCurve_EditorCurveData_with_ExternalCurve,
 	mDisableSnapOn_bottom,
 	mDisableSnapOn_top,
 	mDockingRuleSet,
@@ -68,4 +66,6 @@ export type {
 	mSmallIcon,
 	mUnlocks_item,
 	mUnlocks_item_mEmotes,
+	FalloffCurve_EditorCurveData_only,
+	FalloffCurve_EditorCurveData_with_ExternalCurve,
 };
