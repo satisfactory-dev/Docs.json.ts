@@ -2342,8 +2342,17 @@
 			]
 		},
 		"FGNobeliskDetonator": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGNobeliskDetonator--base"
+				},
+				{
+					"$ref": "#/$defs/FGNobeliskDetonator--base--base"
+				}
+			]
+		},
+		"FGNobeliskDetonator--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGNobeliskDetonator--base",
 			"required": [
 				"mRadialMenuShowUpTime",
 				"mDispensedProjectiles",
@@ -2362,7 +2371,7 @@
 				}
 			}
 		},
-		"FGNobeliskDetonator--base": {
+		"FGNobeliskDetonator--base--base": {
 			"allOf": [
 				{
 					"$ref": "#/$defs/FGWeapon--base"

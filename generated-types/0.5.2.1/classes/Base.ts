@@ -687,13 +687,15 @@ type FGItemDescriptor_base_base = FGDescriptor & {
 
 type FGItemDescriptorNuclearFuel = docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_base & FGItemDescriptor_base & docs_json_ts_0_4_2_11_classes_base_FGItemDescriptorNuclearFuel_base;
 
-type FGNobeliskDetonator = FGNobeliskDetonator_base & {
+type FGNobeliskDetonator = FGNobeliskDetonator_base & FGNobeliskDetonator_base_base;
+
+type FGNobeliskDetonator_base = {
 	mRadialMenuShowUpTime: docs_json_ts_common_types_decimal_string,
 	mDispensedProjectiles: '',
 	mDelayBetweenSecondaryTriggers: docs_json_ts_common_types_decimal_string,
 };
 
-type FGNobeliskDetonator_base = FGWeapon_base & docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectile_base & docs_json_ts_0_3_7_7_classes_base_FGEquipment_base & docs_json_ts_0_3_7_7_classes_base_FGNobeliskDetonator_base;
+type FGNobeliskDetonator_base_base = FGWeapon_base & docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectile_base & docs_json_ts_0_3_7_7_classes_base_FGEquipment_base & docs_json_ts_0_3_7_7_classes_base_FGNobeliskDetonator_base;
 
 type FGPipeHyperStart = docs_json_ts_0_3_7_7_classes_base_FGPipeHyperStart_base_base & FGBuildable_pole_with_length_and_power;
 
@@ -927,6 +929,7 @@ export type {
 	FGItemDescriptorNuclearFuel,
 	FGNobeliskDetonator,
 	FGNobeliskDetonator_base,
+	FGNobeliskDetonator_base_base,
 	FGPipeHyperStart,
 	FGRecipe,
 	FGResourceDescriptor,
