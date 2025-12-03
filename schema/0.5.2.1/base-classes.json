@@ -2609,17 +2609,9 @@
 		},
 		"FGWeapon--base": {
 			"type": "object",
+			"$ref": "#/$defs/FGWeapon--base--base",
 			"required": [
-				"mShowCycleAmmoRadialMenuTimer",
-				"mWeaponState",
 				"mOldState",
-				"mAutomaticallyReload",
-				"mAutoReloadDelay",
-				"mAutoReloadTimerHandle",
-				"mCurrentAmmoCount",
-				"mAllowedAmmoClasses",
-				"mWeaponDamageMultiplier",
-				"mFiringBlocksDispersionReduction",
 				"mBaseRestingDispersion",
 				"mBaseFiringDispersion",
 				"mBaseAimTime",
@@ -2627,21 +2619,9 @@
 				"mFiringDispersion",
 				"mDispersionChangePerShot",
 				"mAimTime",
-				"mCurrentDispersion",
-				"mAmmoCycleMode",
-				"mAmmoSwitchUsedRadialMenu",
-				"mOnAmmoCyclingPressed",
-				"mOnAmmoCyclingReleased",
-				"mOnWeaponStateChanged"
+				"mAmmoCycleMode"
 			],
 			"properties": {
-				"mShowCycleAmmoRadialMenuTimer": {
-					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-				},
-				"mWeaponState": {
-					"type": "string",
-					"const": "EWS_Unequipped"
-				},
 				"mOldState": {
 					"type": "string",
 					"typed_string": {
@@ -2653,27 +2633,6 @@
 							"enum": ["EWS_Unequipped"]
 						}
 					}
-				},
-				"mAutomaticallyReload": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mAutoReloadDelay": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mAutoReloadTimerHandle": {
-					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-				},
-				"mCurrentAmmoCount": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-				},
-				"mAllowedAmmoClasses": {
-					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
-				},
-				"mWeaponDamageMultiplier": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mFiringBlocksDispersionReduction": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				},
 				"mBaseRestingDispersion": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
@@ -2696,12 +2655,61 @@
 				"mAimTime": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
-				"mCurrentDispersion": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
 				"mAmmoCycleMode": {
 					"type": "string",
 					"const": "IE_Released"
+				}
+			}
+		},
+		"FGWeapon--base--base": {
+			"type": "object",
+			"required": [
+				"mShowCycleAmmoRadialMenuTimer",
+				"mWeaponState",
+				"mAutomaticallyReload",
+				"mAutoReloadDelay",
+				"mAutoReloadTimerHandle",
+				"mCurrentAmmoCount",
+				"mAllowedAmmoClasses",
+				"mWeaponDamageMultiplier",
+				"mFiringBlocksDispersionReduction",
+				"mCurrentDispersion",
+				"mAmmoSwitchUsedRadialMenu",
+				"mOnAmmoCyclingPressed",
+				"mOnAmmoCyclingReleased",
+				"mOnWeaponStateChanged"
+			],
+			"properties": {
+				"mShowCycleAmmoRadialMenuTimer": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mWeaponState": {
+					"type": "string",
+					"const": "EWS_Unequipped"
+				},
+				"mAutomaticallyReload": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mAutoReloadDelay": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mAutoReloadTimerHandle": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mCurrentAmmoCount": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mAllowedAmmoClasses": {
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
+				},
+				"mWeaponDamageMultiplier": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mFiringBlocksDispersionReduction": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mCurrentDispersion": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
 				"mAmmoSwitchUsedRadialMenu": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
@@ -2751,6 +2759,11 @@
 					"$ref": "#/$defs/FGWeapon--base"
 				},
 				{
+					"$ref": "#/$defs/FGWeapon--Equip_Rifle_C--base"
+				}
+			]
+		},
+		"FGWeapon--Equip_Rifle_C--base": {
 					"type": "object",
 					"required": ["mArmAnimation"],
 					"properties": {
@@ -2759,8 +2772,6 @@
 							"const": "AE_Rifle"
 						}
 					}
-				}
-			]
 		}
 	}
 }

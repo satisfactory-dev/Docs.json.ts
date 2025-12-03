@@ -1137,16 +1137,23 @@ type FGSuitBase_base = FGEquipment_base_base & {
 
 type FGWeaponInstantFire = FGWeaponProjectile_instant & FGWeaponInstantFire_base;
 
-type FGWeaponInstantFire_base = FGWeaponProjectile_instant_base & {
-	Fire: docs_json_ts_common_types_empty_object,
+type FGWeaponInstantFire_base = FGWeaponInstantFire_base_base & FGWeaponProjectile_instant_base;
+
+type FGWeaponInstantFire_base_base = FGWeaponInstantFire_base_base_base & {
 	mLockAngle: docs_json_ts_common_types_decimal_string,
+};
+
+type FGWeaponInstantFire_base_base_base = FGWeaponProjectile_instant_base_base & {
+	Fire: docs_json_ts_common_types_empty_object,
 	mHasReloadedOnce: docs_json_ts_common_types_bool_string,
 	mArmAnimation: 'AE_Rifle',
 };
 
 type FGWeaponProjectile = FGWeaponProjectile_base & FGWeaponProjectile_base_version_specific;
 
-type FGWeaponProjectile_base = FGEquipment_base & {
+type FGWeaponProjectile_base = FGWeaponProjectile_base_base & FGEquipment_base;
+
+type FGWeaponProjectile_base_base = FGEquipment_base_base & {
 	mReloadTime: docs_json_ts_common_types_decimal_string,
 	mFireRate: docs_json_ts_common_types_decimal_string,
 	mAttachSocket: 'hand_lSocket' | 'hand_rSocket',
@@ -1160,7 +1167,9 @@ type FGWeaponProjectile_base_version_specific = FGEquipment & {
 
 type FGWeaponProjectile_instant = FGWeaponProjectile & FGWeaponProjectile_instant_base & FGWeaponProjectile_instant_base_version_specific;
 
-type FGWeaponProjectile_instant_base = FGWeaponProjectile_base & {
+type FGWeaponProjectile_instant_base = FGWeaponProjectile_instant_base_base & FGWeaponProjectile_base;
+
+type FGWeaponProjectile_instant_base_base = FGEquipment_base_base & {
 	mAttachSocket: 'hand_rSocket',
 };
 
@@ -1198,11 +1207,15 @@ type FGWeaponProjectile_thrown_base_base = {
 
 type FGWeaponProjectileFire = FGWeaponProjectile & FGWeaponProjectileFire_base & FGWeaponProjectileFire_base_random & FGWeaponProjectileFire_base_version_specific;
 
-type FGWeaponProjectileFire_base = FGWeaponProjectile_base & {
+type FGWeaponProjectileFire_base = FGWeaponProjectileFire_base_base & FGWeaponProjectile_base;
+
+type FGWeaponProjectileFire_base_base = FGEquipment_base & {
 	mAttachSocket: 'hand_rSocket',
 };
 
-type FGWeaponProjectileFire_base_random = FGWeaponProjectile_base & {
+type FGWeaponProjectileFire_base_random = FGWeaponProjectileFire_base_random_base & FGWeaponProjectile_base;
+
+type FGWeaponProjectileFire_base_random_base = FGEquipment_base & {
 	mRandomReloadAnim: docs_json_ts_common_types_integer_string,
 	mRandomStingerAnim: docs_json_ts_common_types_integer_string,
 };
@@ -1479,17 +1492,23 @@ export type {
 	FGSuitBase_base,
 	FGWeaponInstantFire,
 	FGWeaponInstantFire_base,
+	FGWeaponInstantFire_base_base,
+	FGWeaponInstantFire_base_base_base,
 	FGWeaponProjectile,
 	FGWeaponProjectile_base,
+	FGWeaponProjectile_base_base,
 	FGWeaponProjectile_base_version_specific,
 	FGWeaponProjectile_instant,
 	FGWeaponProjectile_instant_base,
+	FGWeaponProjectile_instant_base_base,
 	FGWeaponProjectile_instant_base_version_specific,
 	FGWeaponProjectile_thrown,
 	FGWeaponProjectile_thrown_base,
 	FGWeaponProjectile_thrown_base_base,
 	FGWeaponProjectileFire,
 	FGWeaponProjectileFire_base,
+	FGWeaponProjectileFire_base_base,
 	FGWeaponProjectileFire_base_random,
+	FGWeaponProjectileFire_base_random_base,
 	FGWeaponProjectileFire_base_version_specific,
 };

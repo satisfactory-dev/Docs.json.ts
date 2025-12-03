@@ -742,19 +742,10 @@ type FGVehicleDescriptor_powered = docs_json_ts_0_4_2_11_classes_base_FGVehicleD
 
 type FGVehicleDescriptor_with_inventory = docs_json_ts_0_4_2_11_classes_base_FGVehicleDescriptor_with_inventory & FGDescriptor_BuildMenu_base;
 
-type FGWeapon_base = {
-	mShowCycleAmmoRadialMenuTimer: docs_json_ts_common_types_empty_object,
-	mWeaponState: 'EWS_Unequipped',
+type FGWeapon_base = FGWeapon_base_base & {
 	mOldState: [
 		'EWS_Unequipped',
 	],
-	mAutomaticallyReload: docs_json_ts_common_types_bool_string,
-	mAutoReloadDelay: docs_json_ts_common_types_decimal_string,
-	mAutoReloadTimerHandle: docs_json_ts_common_types_empty_object,
-	mCurrentAmmoCount: docs_json_ts_common_types_integer_string,
-	mAllowedAmmoClasses: docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list,
-	mWeaponDamageMultiplier: docs_json_ts_common_types_decimal_string,
-	mFiringBlocksDispersionReduction: docs_json_ts_common_types_bool_string,
 	mBaseRestingDispersion: docs_json_ts_common_types_decimal_string,
 	mBaseFiringDispersion: docs_json_ts_common_types_decimal_string,
 	mBaseAimTime: docs_json_ts_common_types_decimal_string,
@@ -762,8 +753,20 @@ type FGWeapon_base = {
 	mFiringDispersion: docs_json_ts_common_types_decimal_string,
 	mDispersionChangePerShot: docs_json_ts_common_types_decimal_string,
 	mAimTime: docs_json_ts_common_types_decimal_string,
-	mCurrentDispersion: docs_json_ts_common_types_decimal_string,
 	mAmmoCycleMode: 'IE_Released',
+};
+
+type FGWeapon_base_base = {
+	mShowCycleAmmoRadialMenuTimer: docs_json_ts_common_types_empty_object,
+	mWeaponState: 'EWS_Unequipped',
+	mAutomaticallyReload: docs_json_ts_common_types_bool_string,
+	mAutoReloadDelay: docs_json_ts_common_types_decimal_string,
+	mAutoReloadTimerHandle: docs_json_ts_common_types_empty_object,
+	mCurrentAmmoCount: docs_json_ts_common_types_integer_string,
+	mAllowedAmmoClasses: docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list,
+	mWeaponDamageMultiplier: docs_json_ts_common_types_decimal_string,
+	mFiringBlocksDispersionReduction: docs_json_ts_common_types_bool_string,
+	mCurrentDispersion: docs_json_ts_common_types_decimal_string,
 	mAmmoSwitchUsedRadialMenu: docs_json_ts_common_types_bool_string,
 	mOnAmmoCyclingPressed: docs_json_ts_common_types_empty_object,
 	mOnAmmoCyclingReleased: docs_json_ts_common_types_empty_object,
@@ -772,7 +775,9 @@ type FGWeapon_base = {
 
 type FGWeapon_Equip_RebarGun_Projectile_C = docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectileFire_base & docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectileFire_base_random & docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectile_base & docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectileFire_base & FGWeapon_base;
 
-type FGWeapon_Equip_Rifle_C = docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectileFire_base & docs_json_ts_0_3_7_7_classes_base_FGWeaponInstantFire_base & docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectile_base & FGWeapon_base & {
+type FGWeapon_Equip_Rifle_C = docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectileFire_base & docs_json_ts_0_3_7_7_classes_base_FGWeaponInstantFire_base & docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectile_base & FGWeapon_base & FGWeapon_Equip_Rifle_C_base;
+
+type FGWeapon_Equip_Rifle_C_base = {
 	mArmAnimation: 'AE_Rifle',
 };
 
@@ -936,6 +941,8 @@ export type {
 	FGVehicleDescriptor_powered,
 	FGVehicleDescriptor_with_inventory,
 	FGWeapon_base,
+	FGWeapon_base_base,
 	FGWeapon_Equip_RebarGun_Projectile_C,
 	FGWeapon_Equip_Rifle_C,
+	FGWeapon_Equip_Rifle_C_base,
 };
