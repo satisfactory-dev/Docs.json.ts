@@ -79,8 +79,11 @@ type FGBuildable_DisableAttachmentSnapOn = FGBuildable & {
 
 type FGBuildable_docking_station = FGBuildable_docking_station_base & FGBuildable_powered_storage;
 
-type FGBuildable_docking_station_base = FGBuildable_powered_storage_base_base & {
+type FGBuildable_docking_station_base = FGBuildable_docking_station_base_base & {
 	mMapText: string,
+};
+
+type FGBuildable_docking_station_base_base = FGBuildable_powered_storage_base_base & {
 	mTransferSpeed: docs_json_ts_common_types_decimal_string,
 	mStackTransferSize: docs_json_ts_common_types_decimal_string,
 };
@@ -258,7 +261,9 @@ type FGBuildableDockingStation_base = FGBuildableDockingStation_base_base & {
 	mMapText: '',
 };
 
-type FGBuildableDockingStation_base_base = FGBuildable_docking_station_base & {
+type FGBuildableDockingStation_base_base = FGBuildableDockingStation_with_mFuelTransferSpeed & FGBuildable_docking_station_base;
+
+type FGBuildableDockingStation_with_mFuelTransferSpeed = FGBuildable_docking_station_base_base & {
 	mFuelTransferSpeed: docs_json_ts_common_types_decimal_string,
 };
 
@@ -608,23 +613,6 @@ type FGBuildableRailroadTrack_base = FGBuildable_with_length_base & {
 
 type FGBuildableResourceExtractor = FGBuildableResourceExtractor_with_mRequireResourceAtMinimumDepthChecks & FGBuildableResourceExtractor_with_placement & FGBuildableResourceExtractor_with_mExtractionOffset & FGBuildableResourceExtractor_with_mAllowedResourceForms;
 
-type FGBuildableResourceExtractor_with_mRequireResourceAtMinimumDepthChecks = FGBuildableResourceExtractor_base_with_resources & {
-	mRequireResourceAtMinimumDepthChecks: docs_json_ts_common_types_bool_string,
-};
-
-type FGBuildableResourceExtractor_with_placement = FGBuildableResourceExtractor_base_with_resources & {
-	mMinimumDepthForPlacement: docs_json_ts_common_types_decimal_string,
-	mDepthTraceOriginOffset: docs_json_ts_common_types_XYZ_decimal_string,
-};
-
-type FGBuildableResourceExtractor_with_mExtractionOffset = FGBuildableResourceExtractor_base_with_resources & {
-	mExtractionOffset: docs_json_ts_common_types_XYZ_decimal_string,
-};
-
-type FGBuildableResourceExtractor_with_mAllowedResourceForms = FGBuildableResourceExtractor_base_with_resources_base & {
-	mAllowedResourceForms: docs_json_ts_0_3_7_7_properties_mAllowedResourceForms,
-};
-
 type FGBuildableResourceExtractor_base = FGBuildableResourceExtractor_base_base & FGBuildable_powered_base;
 
 type FGBuildableResourceExtractor_base_base = FGBuildableResourceExtractor_base_base_timed & FGBuildableResourceExtractor_base_base_base;
@@ -733,6 +721,23 @@ type FGBuildableResourceExtractor_water_base_base_version_specific = FGBuildable
 	mAudioTimerMS: docs_json_ts_common_types_decimal_string,
 	mAudioTimerReference: docs_json_ts_common_types_empty_object,
 	mAudioTimelineCounter: docs_json_ts_common_types_decimal_string,
+};
+
+type FGBuildableResourceExtractor_with_mAllowedResourceForms = FGBuildableResourceExtractor_base_with_resources_base & {
+	mAllowedResourceForms: docs_json_ts_0_3_7_7_properties_mAllowedResourceForms,
+};
+
+type FGBuildableResourceExtractor_with_mExtractionOffset = FGBuildableResourceExtractor_base_with_resources & {
+	mExtractionOffset: docs_json_ts_common_types_XYZ_decimal_string,
+};
+
+type FGBuildableResourceExtractor_with_mRequireResourceAtMinimumDepthChecks = FGBuildableResourceExtractor_base_with_resources & {
+	mRequireResourceAtMinimumDepthChecks: docs_json_ts_common_types_bool_string,
+};
+
+type FGBuildableResourceExtractor_with_placement = FGBuildableResourceExtractor_base_with_resources & {
+	mMinimumDepthForPlacement: docs_json_ts_common_types_decimal_string,
+	mDepthTraceOriginOffset: docs_json_ts_common_types_XYZ_decimal_string,
 };
 
 type FGBuildableResourceSink = FGBuildable_powered & FGBuildableResourceSink_base & {
@@ -1332,6 +1337,7 @@ export type {
 	FGBuildable_DisableAttachmentSnapOn,
 	FGBuildable_docking_station,
 	FGBuildable_docking_station_base,
+	FGBuildable_docking_station_base_base,
 	FGBuildable_occupied,
 	FGBuildable_occupied_base,
 	FGBuildable_pole,
@@ -1385,6 +1391,7 @@ export type {
 	FGBuildableDockingStation,
 	FGBuildableDockingStation_base,
 	FGBuildableDockingStation_base_base,
+	FGBuildableDockingStation_with_mFuelTransferSpeed,
 	FGBuildableFactory_jump_pad,
 	FGBuildableFactory_jump_pad_base,
 	FGBuildableFactory_jump_pad_base_base,
@@ -1478,10 +1485,6 @@ export type {
 	FGBuildableRailroadTrack,
 	FGBuildableRailroadTrack_base,
 	FGBuildableResourceExtractor,
-	FGBuildableResourceExtractor_with_mRequireResourceAtMinimumDepthChecks,
-	FGBuildableResourceExtractor_with_placement,
-	FGBuildableResourceExtractor_with_mExtractionOffset,
-	FGBuildableResourceExtractor_with_mAllowedResourceForms,
 	FGBuildableResourceExtractor_base,
 	FGBuildableResourceExtractor_base_base,
 	FGBuildableResourceExtractor_base_base_base,
@@ -1507,6 +1510,10 @@ export type {
 	FGBuildableResourceExtractor_water_base,
 	FGBuildableResourceExtractor_water_base_base,
 	FGBuildableResourceExtractor_water_base_base_version_specific,
+	FGBuildableResourceExtractor_with_mAllowedResourceForms,
+	FGBuildableResourceExtractor_with_mExtractionOffset,
+	FGBuildableResourceExtractor_with_mRequireResourceAtMinimumDepthChecks,
+	FGBuildableResourceExtractor_with_placement,
 	FGBuildableResourceSink,
 	FGBuildableResourceSink_base,
 	FGBuildableResourceSink_base_base,

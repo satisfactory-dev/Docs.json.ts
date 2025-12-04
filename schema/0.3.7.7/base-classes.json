@@ -140,10 +140,17 @@
 		},
 		"FGBuildable--docking-station--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered-storage--base--base",
-			"required": ["mMapText", "mTransferSpeed", "mStackTransferSize"],
+			"$ref": "#/$defs/FGBuildable--docking-station--base--base",
+			"required": ["mMapText"],
 			"properties": {
-				"mMapText": {"type": "string"},
+				"mMapText": {"type": "string"}
+			}
+		},
+		"FGBuildable--docking-station--base--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--powered-storage--base--base",
+			"required": ["mTransferSpeed", "mStackTransferSize"],
+			"properties": {
 				"mTransferSpeed": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
@@ -829,8 +836,18 @@
 			}
 		},
 		"FGBuildableDockingStation--base--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableDockingStation--with--mFuelTransferSpeed"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--docking-station--base"
+				}
+			]
+		},
+		"FGBuildableDockingStation--with--mFuelTransferSpeed": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--docking-station--base",
+			"$ref": "#/$defs/FGBuildable--docking-station--base--base",
 			"required": ["mFuelTransferSpeed"],
 			"properties": {
 				"mFuelTransferSpeed": {

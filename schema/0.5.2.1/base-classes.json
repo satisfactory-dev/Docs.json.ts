@@ -435,8 +435,18 @@
 			]
 		},
 		"FGBuildableDockingStation": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableDockingStation--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableDockingStation--base--base"
+				}
+			]
+		},
+		"FGBuildableDockingStation--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableDockingStation--base",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--docking-station--base--base",
 			"required": [
 				"VehicleFuelConsumptionRateChangedDelegate",
 				"ItemTransferRateChangedDelegate",
@@ -490,7 +500,7 @@
 				}
 			}
 		},
-		"FGBuildableDockingStation--base": {
+		"FGBuildableDockingStation--base--base": {
 			"allOf": [
 				{
 					"$ref": "#/$defs/FGBuildable--docking-station"

@@ -711,13 +711,13 @@ type FGSnowballWeapon = FGWeaponProjectile & docs_json_ts_0_3_7_7_classes_base_F
 
 type FGVehicleDescriptor_fueled = FGVehicleDescriptor_fueled_base & FGDescriptor_BuildMenu;
 
-type FGVehicleDescriptor_fueled_base = FGDescriptor & {
-	mFuelConsumption: docs_json_ts_common_types_decimal_string,
-};
-
 type FGVehicleDescriptor_fueled_with_inventory = FGVehicleDescriptor_fueled & FGVehicleDescriptor_with_inventory;
 
 type FGVehicleDescriptor_fueled_with_inventory_base = FGVehicleDescriptor_fueled_base & FGVehicleDescriptor_with_inventory_base;
+
+type FGVehicleDescriptor_fueled_base = FGDescriptor & {
+	mFuelConsumption: docs_json_ts_common_types_decimal_string,
+};
 
 type FGVehicleDescriptor_powered = FGVehicleDescriptor_powered_base & FGDescriptor_BuildMenu;
 
@@ -907,9 +907,9 @@ export type {
 	FGSchematic_base_base_props,
 	FGSnowballWeapon,
 	FGVehicleDescriptor_fueled,
-	FGVehicleDescriptor_fueled_base,
 	FGVehicleDescriptor_fueled_with_inventory,
 	FGVehicleDescriptor_fueled_with_inventory_base,
+	FGVehicleDescriptor_fueled_base,
 	FGVehicleDescriptor_powered,
 	FGVehicleDescriptor_powered_base,
 	FGVehicleDescriptor_with_inventory,

@@ -80,6 +80,7 @@ import type {
 } from './../../0.3.7.7/types/properties.ts';
 
 import type {
+	FGBuildable_docking_station_base_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_docking_station_base_base,
 	FGBuildable_occupied_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_occupied_base,
 	FGBuildable_pole_with_length_and_power_base_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_with_length_and_power_base_base,
 	FGBuildable_powered_base_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base_base,
@@ -246,7 +247,9 @@ type FGBuildableConveyorLift = docs_json_ts_0_3_7_7_classes_base_FGBuildableConv
 
 type FGBuildableCornerWall = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_size_base & FGBuildable_with_height;
 
-type FGBuildableDockingStation = FGBuildableDockingStation_base & {
+type FGBuildableDockingStation = FGBuildableDockingStation_base & FGBuildableDockingStation_base_base;
+
+type FGBuildableDockingStation_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_docking_station_base_base & {
 	VehicleFuelConsumptionRateChangedDelegate: docs_json_ts_common_types_empty_object,
 	ItemTransferRateChangedDelegate: docs_json_ts_common_types_empty_object,
 	MaximumStackTransferRateChangedDelegate: docs_json_ts_common_types_empty_object,
@@ -261,7 +264,7 @@ type FGBuildableDockingStation = FGBuildableDockingStation_base & {
 	mDockingVehicleStatistics: docs_json_ts_common_types_empty_object,
 };
 
-type FGBuildableDockingStation_base = FGBuildable_docking_station & docs_json_ts_0_3_7_7_classes_base_FGBuildableDockingStation_base_base;
+type FGBuildableDockingStation_base_base = FGBuildable_docking_station & docs_json_ts_0_3_7_7_classes_base_FGBuildableDockingStation_base_base;
 
 type FGBuildableDoor = FGBuildableDoor_manual | FGBuildableDoor_automated;
 
@@ -822,6 +825,7 @@ export type {
 	FGBuildableCornerWall,
 	FGBuildableDockingStation,
 	FGBuildableDockingStation_base,
+	FGBuildableDockingStation_base_base,
 	FGBuildableDoor,
 	FGBuildableDoor_automated,
 	FGBuildableDoor_base,
