@@ -1760,10 +1760,7 @@
 		"FGBuildablePipeline--base-root--quantized": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildablePipeline--base-root",
-			"required": [
-				"mQuantiziedContent",
-				"mQuantiziedFlow"
-			],
+			"required": ["mQuantiziedContent", "mQuantiziedFlow"],
 			"properties": {
 				"mQuantiziedContent": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
