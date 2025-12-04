@@ -1641,7 +1641,7 @@
 		"FGBuildablePipeline": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGBuildablePipeline--base-root"
+					"$ref": "#/$defs/FGBuildablePipeline--base-root--quantized"
 				},
 				{
 					"$ref": "#/$defs/FGBuildablePipeline--base-spline"
@@ -1705,8 +1705,6 @@
 				"mIgnoreActorsForIndicator",
 				"mFluidNames",
 				"mCurrentFluid",
-				"mQuantiziedContent",
-				"mQuantiziedFlow",
 				"mRattleLimit",
 				"mIsRattling"
 			],
@@ -1751,17 +1749,27 @@
 					"type": "string",
 					"const": ""
 				},
-				"mQuantiziedContent": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mQuantiziedFlow": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
 				"mRattleLimit": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
 				"mIsRattling": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
+		},
+		"FGBuildablePipeline--base-root--quantized": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildablePipeline--base-root",
+			"required": [
+				"mQuantiziedContent",
+				"mQuantiziedFlow"
+			],
+			"properties": {
+				"mQuantiziedContent": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mQuantiziedFlow": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
 			}
 		},

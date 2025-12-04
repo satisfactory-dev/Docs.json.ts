@@ -1138,7 +1138,7 @@
 		"FGBuildablePipeline": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipeline--base-root"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipeline--base-root--quantized"
 				},
 				{
 					"$ref": "#/$defs/FGBuildablePipeline--base-spline"

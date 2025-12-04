@@ -455,7 +455,7 @@ type FGBuildableManufacturer_Build_SmelterMk1_C = FGBuildableManufacturer_base &
 
 type FGBuildableManufacturer_Build_SmelterMk1_C_base = FGBuildableManufacturer_base_base & FGBuildableManufacturer_base_mProductionEffectsRunning_base & FGBuildable_powered_base_base;
 
-type FGBuildablePipeline = FGBuildablePipeline_base_root & FGBuildablePipeline_base_spline;
+type FGBuildablePipeline = FGBuildablePipeline_base_root_quantized & FGBuildablePipeline_base_spline;
 
 type FGBuildablePipeline_base = FGBuildablePipeline_base_base & FGBuildablePipeline_base_no_indicator;
 
@@ -487,10 +487,13 @@ type FGBuildablePipeline_base_root = FGBuildablePipeline_base_spline_base & {
 		}[],
 	],
 	mCurrentFluid: '',
-	mQuantiziedContent: docs_json_ts_common_types_decimal_string,
-	mQuantiziedFlow: docs_json_ts_common_types_decimal_string,
 	mRattleLimit: docs_json_ts_common_types_decimal_string,
 	mIsRattling: docs_json_ts_common_types_bool_string,
+};
+
+type FGBuildablePipeline_base_root_quantized = FGBuildablePipeline_base_root & {
+	mQuantiziedContent: docs_json_ts_common_types_decimal_string,
+	mQuantiziedFlow: docs_json_ts_common_types_decimal_string,
 };
 
 type FGBuildablePipeline_base_spline = FGBuildablePipeline_base_spline_base & FGBuildablePipeline_base & FGBuildable_spline;
@@ -940,49 +943,6 @@ type FGEquipment = FGEquipment_base & {
 	mAttachSocket: 'None' | 'hand_rSocket' | 'hand_lSocket' | 'jumpingStilt_lSocket' | 'helmetSocket',
 };
 
-type FGObjectScanner = FGEquipment_has_sound & {
-	mScreenUpdateTimer: docs_json_ts_common_types_empty_object,
-	mScanlineLerpT: docs_json_ts_common_types_decimal_string,
-	mScreenUpdateTime: docs_json_ts_common_types_decimal_string,
-	mNormalizedCloesnessToObject: docs_json_ts_common_types_decimal_string,
-	mObjectIsWithinRange: docs_json_ts_common_types_bool_string,
-	mBeepDelayMax: docs_json_ts_common_types_decimal_string,
-	mBeepDelayMin: docs_json_ts_common_types_decimal_string,
-	mDetectionRange: docs_json_ts_common_types_decimal_string,
-	mUpdateClosestObjectTime: docs_json_ts_common_types_decimal_string,
-	mObjectDetails: [
-		{
-			ScannableClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
-			DisplayText: {
-				NSLOCTEXT: [
-					string,
-					...string[],
-				],
-			},
-			ScannerLightColor: docs_json_ts_common_types_BGRA,
-			PreCacheAllOfType?: docs_json_ts_common_types_bool_string,
-			ShouldOverrideDetectionRange?: docs_json_ts_common_types_bool_string,
-			NewDetectionRange?: docs_json_ts_common_types_decimal_string,
-			RequiredSchematic: `/Game/FactoryGame/Schematics/Research/${string}${'/'}${string}${'.'}${string}${'_C'}`,
-		},
-		...{
-			ScannableClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
-			DisplayText: {
-				NSLOCTEXT: [
-					string,
-					...string[],
-				],
-			},
-			ScannerLightColor: docs_json_ts_common_types_BGRA,
-			PreCacheAllOfType?: docs_json_ts_common_types_bool_string,
-			ShouldOverrideDetectionRange?: docs_json_ts_common_types_bool_string,
-			NewDetectionRange?: docs_json_ts_common_types_decimal_string,
-			RequiredSchematic: `/Game/FactoryGame/Schematics/Research/${string}${'/'}${string}${'.'}${string}${'_C'}`,
-		}[],
-	],
-	mShouldBeepEvenIfNoObject: docs_json_ts_common_types_bool_string,
-};
-
 type FGEquipment_base = FGEquipment_base_base & {
 	mEquipmentSlot: 'ES_ARMS' | 'ES_BACK',
 };
@@ -1101,6 +1061,49 @@ type FGNobeliskDetonator = FGNobeliskDetonator_base & FGWeaponProjectile_thrown;
 
 type FGNobeliskDetonator_base = FGWeaponProjectile_thrown_base_base & {
 	mArmAnimation: 'AE_Nobelisk',
+};
+
+type FGObjectScanner = FGEquipment_has_sound & {
+	mScreenUpdateTimer: docs_json_ts_common_types_empty_object,
+	mScanlineLerpT: docs_json_ts_common_types_decimal_string,
+	mScreenUpdateTime: docs_json_ts_common_types_decimal_string,
+	mNormalizedCloesnessToObject: docs_json_ts_common_types_decimal_string,
+	mObjectIsWithinRange: docs_json_ts_common_types_bool_string,
+	mBeepDelayMax: docs_json_ts_common_types_decimal_string,
+	mBeepDelayMin: docs_json_ts_common_types_decimal_string,
+	mDetectionRange: docs_json_ts_common_types_decimal_string,
+	mUpdateClosestObjectTime: docs_json_ts_common_types_decimal_string,
+	mObjectDetails: [
+		{
+			ScannableClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
+			DisplayText: {
+				NSLOCTEXT: [
+					string,
+					...string[],
+				],
+			},
+			ScannerLightColor: docs_json_ts_common_types_BGRA,
+			PreCacheAllOfType?: docs_json_ts_common_types_bool_string,
+			ShouldOverrideDetectionRange?: docs_json_ts_common_types_bool_string,
+			NewDetectionRange?: docs_json_ts_common_types_decimal_string,
+			RequiredSchematic: `/Game/FactoryGame/Schematics/Research/${string}${'/'}${string}${'.'}${string}${'_C'}`,
+		},
+		...{
+			ScannableClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
+			DisplayText: {
+				NSLOCTEXT: [
+					string,
+					...string[],
+				],
+			},
+			ScannerLightColor: docs_json_ts_common_types_BGRA,
+			PreCacheAllOfType?: docs_json_ts_common_types_bool_string,
+			ShouldOverrideDetectionRange?: docs_json_ts_common_types_bool_string,
+			NewDetectionRange?: docs_json_ts_common_types_decimal_string,
+			RequiredSchematic: `/Game/FactoryGame/Schematics/Research/${string}${'/'}${string}${'.'}${string}${'_C'}`,
+		}[],
+	],
+	mShouldBeepEvenIfNoObject: docs_json_ts_common_types_bool_string,
 };
 
 type FGParachute = FGEquipment & FGParachute_base;
@@ -1419,6 +1422,7 @@ export type {
 	FGBuildablePipeline_base_no_indicator,
 	FGBuildablePipeline_base_no_indicator_base,
 	FGBuildablePipeline_base_root,
+	FGBuildablePipeline_base_root_quantized,
 	FGBuildablePipeline_base_spline,
 	FGBuildablePipeline_base_spline_base,
 	FGBuildablePipeline_junction,
@@ -1517,7 +1521,6 @@ export type {
 	FGDescriptor_sinkable,
 	FGDescriptor_sinkable_base,
 	FGEquipment,
-	FGObjectScanner,
 	FGEquipment_base,
 	FGEquipment_base_base,
 	FGEquipment_dispenser,
@@ -1541,6 +1544,7 @@ export type {
 	FGJumpingStilts_base,
 	FGNobeliskDetonator,
 	FGNobeliskDetonator_base,
+	FGObjectScanner,
 	FGParachute,
 	FGParachute_base,
 	FGPipeHyperStart,
