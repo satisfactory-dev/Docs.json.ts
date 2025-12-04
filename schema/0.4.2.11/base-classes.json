@@ -2571,16 +2571,6 @@
 				}
 			]
 		},
-		"FGVehicleDescriptor--fueled--base": {
-			"type": "object",
-			"$ref": "#/$defs/FGDescriptor",
-			"required": ["mFuelConsumption"],
-			"properties": {
-				"mFuelConsumption": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				}
-			}
-		},
 		"FGVehicleDescriptor--fueled---with-inventory": {
 			"allOf": [
 				{
@@ -2600,6 +2590,16 @@
 					"$ref": "#/$defs/FGVehicleDescriptor--with-inventory--base"
 				}
 			]
+		},
+		"FGVehicleDescriptor--fueled--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGDescriptor",
+			"required": ["mFuelConsumption"],
+			"properties": {
+				"mFuelConsumption": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
 		},
 		"FGVehicleDescriptor--powered": {
 			"allOf": [
