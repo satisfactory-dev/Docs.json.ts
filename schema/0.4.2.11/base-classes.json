@@ -2031,6 +2031,19 @@
 		},
 		"FGHoverPack": {
 			"type": "object",
+			"$ref": "#/$defs/FGHoverPack--base",
+			"required": ["mRailRoadSurfSpeed", "mRailroadSurfSensitivity"],
+			"properties": {
+				"mRailRoadSurfSpeed": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mRailroadSurfSensitivity": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGHoverPack--base": {
+			"type": "object",
 			"$ref": "#/$defs/FGEquipment",
 			"required": [
 				"mHoverPackActiveTimer",
@@ -2046,8 +2059,6 @@
 				"mHoverSpeed",
 				"mHoverAccelerationSpeed",
 				"mHoverSprintMultiplier",
-				"mRailRoadSurfSpeed",
-				"mRailroadSurfSensitivity",
 				"mHoverFriction",
 				"mJumpKeyHoldActivationTime",
 				"mFallSpeedLimitWhenPowered",
@@ -2109,12 +2120,6 @@
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
 				"mHoverSprintMultiplier": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mRailRoadSurfSpeed": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mRailroadSurfSensitivity": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
 				"mHoverFriction": {

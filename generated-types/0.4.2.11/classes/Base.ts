@@ -595,7 +595,12 @@ type FGEquipmentZipline = FGEquipment & {
 	mBackAnimation: 'BE_None',
 };
 
-type FGHoverPack = FGEquipment & {
+type FGHoverPack = FGHoverPack_base & {
+	mRailRoadSurfSpeed: docs_json_ts_common_types_decimal_string,
+	mRailroadSurfSensitivity: docs_json_ts_common_types_decimal_string,
+};
+
+type FGHoverPack_base = FGEquipment & {
 	mHoverPackActiveTimer: docs_json_ts_common_types_empty_object,
 	mCurrentPlayerVelocity: docs_json_ts_common_types_decimal_string,
 	mCurrentMouseDelta: docs_json_ts_common_types_decimal_string,
@@ -609,8 +614,6 @@ type FGHoverPack = FGEquipment & {
 	mHoverSpeed: docs_json_ts_common_types_decimal_string,
 	mHoverAccelerationSpeed: docs_json_ts_common_types_decimal_string,
 	mHoverSprintMultiplier: docs_json_ts_common_types_decimal_string,
-	mRailRoadSurfSpeed: docs_json_ts_common_types_decimal_string,
-	mRailroadSurfSensitivity: docs_json_ts_common_types_decimal_string,
 	mHoverFriction: docs_json_ts_common_types_decimal_string,
 	mJumpKeyHoldActivationTime: docs_json_ts_common_types_decimal_string,
 	mFallSpeedLimitWhenPowered: docs_json_ts_common_types_decimal_string,
@@ -890,6 +893,7 @@ export type {
 	FGEquipment_base,
 	FGEquipmentZipline,
 	FGHoverPack,
+	FGHoverPack_base,
 	FGItemDescriptorNuclearFuel,
 	FGItemDescriptorNuclearFuel_base,
 	FGNobeliskDetonator,
