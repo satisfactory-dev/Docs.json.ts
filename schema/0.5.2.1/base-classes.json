@@ -615,8 +615,18 @@
 			]
 		},
 		"FGBuildableFoundation": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableFoundation--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--with-size-and-elevation--base"
+				}
+			]
+		},
+		"FGBuildableFoundation--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableFoundation--base",
+			"$ref": "#/$defs/FGBuildableFoundation--base--base",
 			"required": ["mDisableSnapOn"],
 			"properties": {
 				"mDisableSnapOn": {
@@ -637,16 +647,13 @@
 				}
 			}
 		},
-		"FGBuildableFoundation--base": {
+		"FGBuildableFoundation--base--base": {
 			"allOf": [
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-height--base"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--foundation--DisableAttachmentSnapOn"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable--with-size-and-elevation--base"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--isFrame"
@@ -1376,8 +1383,17 @@
 			]
 		},
 		"FGBuildableRamp": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableRamp--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableRamp--base--base"
+				}
+			]
+		},
+		"FGBuildableRamp--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableRamp--base",
 			"required": ["mIsDoubleRamp", "mIsRoof"],
 			"properties": {
 				"mIsDoubleRamp": {
@@ -1388,7 +1404,7 @@
 				}
 			}
 		},
-		"FGBuildableRamp--base": {
+		"FGBuildableRamp--base--base": {
 			"allOf": [
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-size-and-elevation--base--base"

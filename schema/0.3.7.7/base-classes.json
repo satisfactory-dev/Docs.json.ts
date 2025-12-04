@@ -2212,28 +2212,68 @@
 			}
 		},
 		"FGBuildableResourceExtractor": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--with--mRequireResourceAtMinimumDepthChecks"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--with--placement"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--with--mExtractionOffset"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--with--mAllowedResourceForms"
+				}
+			]
+		},
+		"FGBuildableResourceExtractor--with--mRequireResourceAtMinimumDepthChecks": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildableResourceExtractor--base--with-resources",
 			"required": [
-				"mRequireResourceAtMinimumDepthChecks",
-				"mMinimumDepthForPlacement",
-				"mDepthTraceOriginOffset",
-				"mExtractionOffset",
-				"mAllowedResourceForms"
+				"mRequireResourceAtMinimumDepthChecks"
 			],
 			"properties": {
 				"mRequireResourceAtMinimumDepthChecks": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
+				}
+			}
+		},
+		"FGBuildableResourceExtractor--with--placement": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableResourceExtractor--base--with-resources",
+			"required": [
+				"mMinimumDepthForPlacement",
+				"mDepthTraceOriginOffset"
+			],
+			"properties": {
 				"mMinimumDepthForPlacement": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
 				"mDepthTraceOriginOffset": {
 					"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
-				},
+				}
+			}
+		},
+		"FGBuildableResourceExtractor--with--mExtractionOffset": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableResourceExtractor--base--with-resources",
+			"required": [
+				"mExtractionOffset"
+			],
+			"properties": {
 				"mExtractionOffset": {
 					"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
-				},
+				}
+			}
+		},
+		"FGBuildableResourceExtractor--with--mAllowedResourceForms": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildableResourceExtractor--base--with-resources--base",
+			"required": [
+				"mAllowedResourceForms"
+			],
+			"properties": {
 				"mAllowedResourceForms": {
 					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mAllowedResourceForms"
 				}
@@ -2250,32 +2290,34 @@
 			]
 		},
 		"FGBuildableResourceExtractor--base--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--base--base--timed"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--base--base--base"
+				}
+			]
+		},
+		"FGBuildableResourceExtractor--base--base--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--base--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--base--base--base--piped"
+				}
+			]
+		},
+		"FGBuildableResourceExtractor--base--base--base--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--powered--base--base",
 			"required": [
-				"mExtractStartupTime",
-				"mExtractStartupTimer",
-				"mExtractCycleTime",
-				"mItemsPerCycle",
 				"mOnlyAllowCertainResources",
 				"mAllowedResources",
-				"mExtractorTypeName",
-				"mPipeOutputConnections",
-				"mReplicatedFlowRate"
+				"mExtractorTypeName"
 			],
 			"properties": {
-				"mExtractStartupTime": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
-				},
-				"mExtractStartupTimer": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mExtractCycleTime": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mItemsPerCycle": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-				},
 				"mOnlyAllowCertainResources": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				},
@@ -2293,13 +2335,50 @@
 				"mExtractorTypeName": {
 					"type": "string",
 					"enum": ["None", "Miner"]
-				},
+				}
+			}
+		},
+		"FGBuildableResourceExtractor--base--base--base--piped": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--powered--base--base",
+			"required": [
+				"mPipeOutputConnections",
+				"mReplicatedFlowRate"
+			],
+			"properties": {
 				"mPipeOutputConnections": {
 					"type": "string",
 					"const": ""
 				},
 				"mReplicatedFlowRate": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGBuildableResourceExtractor--base--base--timed": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--powered--base--base",
+			"required": [
+				"mExtractStartupTime",
+				"mExtractStartupTimer",
+				"mExtractCycleTime",
+				"mItemsPerCycle"
+			],
+			"properties": {
+				"mExtractStartupTime": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
+				},
+				"mExtractStartupTimer": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mExtractCycleTime": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mItemsPerCycle": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mOnlyAllowCertainResources": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				}
 			}
 		},

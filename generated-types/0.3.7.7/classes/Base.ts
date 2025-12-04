@@ -606,26 +606,48 @@ type FGBuildableRailroadTrack_base = FGBuildable_with_length_base & {
 	mIsOwnedByPlatform: docs_json_ts_common_types_bool_string,
 };
 
-type FGBuildableResourceExtractor = FGBuildableResourceExtractor_base_with_resources & {
+type FGBuildableResourceExtractor = FGBuildableResourceExtractor_with_mRequireResourceAtMinimumDepthChecks & FGBuildableResourceExtractor_with_placement & FGBuildableResourceExtractor_with_mExtractionOffset & FGBuildableResourceExtractor_with_mAllowedResourceForms;
+
+type FGBuildableResourceExtractor_with_mRequireResourceAtMinimumDepthChecks = FGBuildableResourceExtractor_base_with_resources & {
 	mRequireResourceAtMinimumDepthChecks: docs_json_ts_common_types_bool_string,
+};
+
+type FGBuildableResourceExtractor_with_placement = FGBuildableResourceExtractor_base_with_resources & {
 	mMinimumDepthForPlacement: docs_json_ts_common_types_decimal_string,
 	mDepthTraceOriginOffset: docs_json_ts_common_types_XYZ_decimal_string,
+};
+
+type FGBuildableResourceExtractor_with_mExtractionOffset = FGBuildableResourceExtractor_base_with_resources & {
 	mExtractionOffset: docs_json_ts_common_types_XYZ_decimal_string,
+};
+
+type FGBuildableResourceExtractor_with_mAllowedResourceForms = FGBuildableResourceExtractor_base_with_resources_base & {
 	mAllowedResourceForms: docs_json_ts_0_3_7_7_properties_mAllowedResourceForms,
 };
 
 type FGBuildableResourceExtractor_base = FGBuildableResourceExtractor_base_base & FGBuildable_powered_base;
 
-type FGBuildableResourceExtractor_base_base = FGBuildable_powered_base_base & {
+type FGBuildableResourceExtractor_base_base = FGBuildableResourceExtractor_base_base_timed & FGBuildableResourceExtractor_base_base_base;
+
+type FGBuildableResourceExtractor_base_base_base = FGBuildableResourceExtractor_base_base_base_base & FGBuildableResourceExtractor_base_base_base_piped;
+
+type FGBuildableResourceExtractor_base_base_base_base = FGBuildable_powered_base_base & {
+	mOnlyAllowCertainResources: docs_json_ts_common_types_bool_string,
+	mAllowedResources: docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list | '',
+	mExtractorTypeName: 'None' | 'Miner',
+};
+
+type FGBuildableResourceExtractor_base_base_base_piped = FGBuildable_powered_base_base & {
+	mPipeOutputConnections: '',
+	mReplicatedFlowRate: docs_json_ts_common_types_decimal_string,
+};
+
+type FGBuildableResourceExtractor_base_base_timed = FGBuildable_powered_base_base & {
 	mExtractStartupTime: docs_json_ts_common_types_decimal_string_signed,
 	mExtractStartupTimer: docs_json_ts_common_types_decimal_string,
 	mExtractCycleTime: docs_json_ts_common_types_decimal_string,
 	mItemsPerCycle: docs_json_ts_common_types_integer_string,
-	mOnlyAllowCertainResources: docs_json_ts_common_types_bool_string,
-	mAllowedResources: docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list | '',
-	mExtractorTypeName: 'None' | 'Miner',
-	mPipeOutputConnections: '',
-	mReplicatedFlowRate: docs_json_ts_common_types_decimal_string,
+	mOnlyAllowCertainResources?: docs_json_ts_common_types_bool_string,
 };
 
 type FGBuildableResourceExtractor_base_with_resources = FGBuildableResourceExtractor_base_with_resources_base & FGBuildableResourceExtractor_base & FGBuildable_powered_base_resources;
@@ -1456,8 +1478,16 @@ export type {
 	FGBuildableRailroadTrack,
 	FGBuildableRailroadTrack_base,
 	FGBuildableResourceExtractor,
+	FGBuildableResourceExtractor_with_mRequireResourceAtMinimumDepthChecks,
+	FGBuildableResourceExtractor_with_placement,
+	FGBuildableResourceExtractor_with_mExtractionOffset,
+	FGBuildableResourceExtractor_with_mAllowedResourceForms,
 	FGBuildableResourceExtractor_base,
 	FGBuildableResourceExtractor_base_base,
+	FGBuildableResourceExtractor_base_base_base,
+	FGBuildableResourceExtractor_base_base_base_base,
+	FGBuildableResourceExtractor_base_base_base_piped,
+	FGBuildableResourceExtractor_base_base_timed,
 	FGBuildableResourceExtractor_base_with_resources,
 	FGBuildableResourceExtractor_base_with_resources_base,
 	FGBuildableResourceExtractor_miner_base,

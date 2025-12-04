@@ -2562,8 +2562,18 @@
 			]
 		},
 		"FGVehicleDescriptor--fueled": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGVehicleDescriptor--fueled--base"
+				},
+				{
+					"$ref": "#/$defs/FGDescriptor--BuildMenu"
+				}
+			]
+		},
+		"FGVehicleDescriptor--fueled--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGDescriptor--BuildMenu",
+			"$ref": "#/$defs/FGDescriptor",
 			"required": ["mFuelConsumption"],
 			"properties": {
 				"mFuelConsumption": {
@@ -2581,9 +2591,29 @@
 				}
 			]
 		},
+		"FGVehicleDescriptor--fueled---with-inventory--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGVehicleDescriptor--fueled--base"
+				},
+				{
+					"$ref": "#/$defs/FGVehicleDescriptor--with-inventory--base"
+				}
+			]
+		},
 		"FGVehicleDescriptor--powered": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGVehicleDescriptor--powered--base"
+				},
+				{
+					"$ref": "#/$defs/FGDescriptor--BuildMenu"
+				}
+			]
+		},
+		"FGVehicleDescriptor--powered--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGDescriptor--BuildMenu",
+			"$ref": "#/$defs/FGDescriptor",
 			"required": ["mPowerConsumption"],
 			"properties": {
 				"mPowerConsumption": {
@@ -2605,8 +2635,18 @@
 			}
 		},
 		"FGVehicleDescriptor--with-inventory": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGVehicleDescriptor--with-inventory--base"
+				},
+				{
+					"$ref": "#/$defs/FGDescriptor--BuildMenu"
+				}
+			]
+		},
+		"FGVehicleDescriptor--with-inventory--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGDescriptor--BuildMenu",
+			"$ref": "#/$defs/FGDescriptor",
 			"required": ["mInventorySize"],
 			"properties": {
 				"mInventorySize": {

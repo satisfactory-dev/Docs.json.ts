@@ -292,11 +292,13 @@ type FGBuildableFactorySimpleProducer = FGBuildable_powered & docs_json_ts_0_3_7
 
 type FGBuildableFloodlight = docs_json_ts_0_4_2_11_classes_base_FGBuildableFloodlight_base & FGBuildableLightSource;
 
-type FGBuildableFoundation = FGBuildableFoundation_base & {
+type FGBuildableFoundation = FGBuildableFoundation_base & FGBuildable_with_size_and_elevation_base;
+
+type FGBuildableFoundation_base = FGBuildableFoundation_base_base & {
 	mDisableSnapOn: docs_json_ts_common_types_empty_object | docs_json_ts_0_3_7_7_properties_mDisableSnapOn_front_bottom | docs_json_ts_0_5_2_1_properties_mDisableSnapOn_top | docs_json_ts_0_5_2_1_properties_mDisableSnapOn_bottom,
 };
 
-type FGBuildableFoundation_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_base & FGBuildable_foundation_DisableAttachmentSnapOn & FGBuildable_with_size_and_elevation_base & FGBuildable_isFrame & FGBuildable_foundation_mDisableSnapOn;
+type FGBuildableFoundation_base_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_base & FGBuildable_foundation_DisableAttachmentSnapOn & FGBuildable_isFrame & FGBuildable_foundation_mDisableSnapOn;
 
 type FGBuildableFrackingActivator = docs_json_ts_0_4_2_11_classes_base_FGBuildableFrackingActivator_base & docs_json_ts_0_4_2_11_classes_base_FGBuildable_powered_has_mAllowedResourceForms_with_resources_base & FGBuildable_powered_base & FGBuildable_base;
 
@@ -452,12 +454,14 @@ type FGBuildableRailroadTrack = FGBuildableRailroadTrack_base & {
 
 type FGBuildableRailroadTrack_base = docs_json_ts_0_4_2_11_classes_base_FGBuildableRailroadTrack_base_base & FGBuildable_base;
 
-type FGBuildableRamp = FGBuildableRamp_base & {
+type FGBuildableRamp = FGBuildableRamp_base & FGBuildableRamp_base_base;
+
+type FGBuildableRamp_base = {
 	mIsDoubleRamp: docs_json_ts_common_types_bool_string,
 	mIsRoof: docs_json_ts_common_types_bool_string,
 };
 
-type FGBuildableRamp_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_size_and_elevation_base_base & docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_base & FGBuildable_isFrame & FGBuildable_ramp_mDisableSnapOn & FGBuildable_ramp_DisableAttachmentSnapOn;
+type FGBuildableRamp_base_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_size_and_elevation_base_base & docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_base & FGBuildable_isFrame & FGBuildable_ramp_mDisableSnapOn & FGBuildable_ramp_DisableAttachmentSnapOn;
 
 type FGBuildableResourceExtractor_base = docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_base_base & docs_json_ts_0_4_2_11_classes_base_FGBuildable_powered_has_mAllowedResourceForms_base & FGBuildable_powered_base & FGBuildable_base;
 
@@ -829,6 +833,7 @@ export type {
 	FGBuildableFloodlight,
 	FGBuildableFoundation,
 	FGBuildableFoundation_base,
+	FGBuildableFoundation_base_base,
 	FGBuildableFrackingActivator,
 	FGBuildableGenerator,
 	FGBuildableGenerator_no_fuel,
@@ -879,6 +884,7 @@ export type {
 	FGBuildableRailroadTrack_base,
 	FGBuildableRamp,
 	FGBuildableRamp_base,
+	FGBuildableRamp_base_base,
 	FGBuildableResourceExtractor_base,
 	FGBuildableResourceExtractor_miner_mk1,
 	FGBuildableResourceExtractor_miner_mk2,
