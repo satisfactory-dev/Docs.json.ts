@@ -74,8 +74,8 @@
 		},
 		"FGBuildableFoundation": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-height-and-elevation"
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-height-and-elevation",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableGeneratorFuel--biomass": {
 			"type": "object",
@@ -114,43 +114,43 @@
 		},
 		"FGBuildableManufacturer--Build_AssemblerMk1_C": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--Build_AssemblerMk1_C"
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--Build_AssemblerMk1_C",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableManufacturer--Build_ConstructorMk1_C": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--Build_ConstructorMk1_C"
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--Build_ConstructorMk1_C",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableManufacturer--Build_FoundryMk1_C": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--Build_FoundryMk1_C"
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--Build_FoundryMk1_C",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableManufacturer--Build_ManufacturerMk1_C": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--Build_ManufacturerMk1_C"
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--Build_ManufacturerMk1_C",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableManufacturer--Build_OilRefinery_C": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--Build_OilRefinery_C"
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--Build_OilRefinery_C",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableManufacturer--Build_Packager_C": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--Build_Packager_C"
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--Build_Packager_C",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableManufacturer--Build_SmelterMk1_C": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--Build_SmelterMk1_C"
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--Build_SmelterMk1_C",
+			"unevaluatedProperties": false
 		},
 		"FGBuildablePipeHyper": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--spline"
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--spline",
+			"unevaluatedProperties": false
 		},
 		"FGBuildablePipeline": {
 			"type": "object",
@@ -209,43 +209,43 @@
 		},
 		"FGBuildableResourceExtractor--miner--mk1": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--miner--mk1"
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--miner--mk1",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableResourceExtractor--miner--mk2": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--miner--mk2"
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--miner--mk2",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableResourceExtractor--miner--mk3": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--miner--mk3"
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--miner--mk3",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableResourceExtractor--oil": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--oil"
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--oil",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableResourceExtractor--water": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--water"
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--water",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableResourceSink": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceSink"
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceSink",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableResourceSinkShop": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceSinkShop"
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceSinkShop",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableSnowDispenser": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable"
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableSpaceElevator": {
 			"type": "object",
@@ -261,13 +261,13 @@
 		},
 		"FGBuildableSplitterSmart": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableSplitterSmart"
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableSplitterSmart",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableStair": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-height-and-elevation"
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-height-and-elevation",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableStorage": {
 			"type": "object",
@@ -318,8 +318,8 @@
 		},
 		"FGBuildableWalkway": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-size-and-elevation"
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-size-and-elevation",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableWall": {
 			"type": "object",
@@ -338,8 +338,8 @@
 		},
 		"FGChainsaw": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGChainsaw"
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGChainsaw",
+			"unevaluatedProperties": false
 		},
 		"FGColorGun": {
 			"type": "object",
@@ -365,48 +365,48 @@
 		},
 		"FGEquipmentStunSpear--xenobasher": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipmentStunSpear--xenobasher"
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipmentStunSpear--xenobasher",
+			"unevaluatedProperties": false
 		},
 		"FGEquipmentStunSpear--xenozapper": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipmentStunSpear--xenozapper"
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipmentStunSpear--xenozapper",
+			"unevaluatedProperties": false
 		},
 		"FGGasMask": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGGasMask"
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGGasMask",
+			"unevaluatedProperties": false
 		},
 		"FGGolfCartDispenser": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGGolfCartDispenser"
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGGolfCartDispenser",
+			"unevaluatedProperties": false
 		},
 		"FGItemDescriptor": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGDescriptor--sinkable"
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGDescriptor--sinkable",
+			"unevaluatedProperties": false
 		},
 		"FGItemDescriptorNuclearFuel": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGItemDescriptorNuclearFuel"
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGItemDescriptorNuclearFuel",
+			"unevaluatedProperties": false
 		},
 		"FGJetPack": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGJetPack"
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGJetPack",
+			"unevaluatedProperties": false
 		},
 		"FGJumpingStilts": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGJumpingStilts"
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGJumpingStilts",
+			"unevaluatedProperties": false
 		},
 		"FGNobeliskDetonator": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGNobeliskDetonator"
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGNobeliskDetonator",
+			"unevaluatedProperties": false
 		},
 		"FGObjectScanner": {
 			"type": "object",
@@ -782,28 +782,28 @@
 		},
 		"FGSnowballWeapon": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGSnowballWeapon"
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGSnowballWeapon",
+			"unevaluatedProperties": false
 		},
 		"FGSuitBase": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGSuitBase"
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGSuitBase",
+			"unevaluatedProperties": false
 		},
 		"FGVehicleDescriptor": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGDescriptor--BuildMenu"
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGDescriptor--BuildMenu",
+			"unevaluatedProperties": false
 		},
 		"FGWeaponInstantFire": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponInstantFire"
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponInstantFire",
+			"unevaluatedProperties": false
 		},
 		"FGWeaponProjectileFire": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectileFire"
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectileFire",
+			"unevaluatedProperties": false
 		}
 	}
 }

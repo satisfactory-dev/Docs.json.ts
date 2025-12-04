@@ -4,6 +4,7 @@ import {
 
 import type {
 	ObjectOfSchemas,
+	SchemaObject,
 	SchemaObjectWith$id,
 } from '@signpostmarv/json-schema-typescript-codegen';
 
@@ -73,6 +74,32 @@ function sort_$defs(schema: SchemaObjectWith$id) {
 	const sorted_$defs: ObjectOfSchemas = Object.fromEntries(
 		Object
 			.entries($defs)
+			.map((
+				[key, value]: [string, SchemaObject],
+			): [string, SchemaObject] => {
+				const keys = Object.keys(value);
+
+				if (
+					3 === keys.length
+					&& keys.includes('type')
+					&& keys.includes('$ref')
+					&& keys.includes('unevaluatedProperties')
+				) {
+					const {
+						type,
+						$ref,
+						unevaluatedProperties,
+					} = value;
+
+					value = {
+						type,
+						$ref,
+						unevaluatedProperties,
+					};
+				}
+
+				return [key, value];
+			})
 			.sort(([a], [b]) => {
 				const a_is_lower = isLowercase(a[0]);
 				const b_is_lower = isLowercase(b[0]);

@@ -79,8 +79,8 @@
 		},
 		"FGBuildableFoundation": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--with-height-and-elevation"
+			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--with-height-and-elevation",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableFrackingActivator": {
 			"type": "object",
@@ -144,8 +144,8 @@
 		},
 		"FGBuildableManufacturer--Build_AssemblerMk1_C": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableManufacturer--Build_AssemblerMk1_C"
+			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableManufacturer--Build_AssemblerMk1_C",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableManufacturer--Build_Blender_C": {
 			"type": "object",
@@ -154,33 +154,33 @@
 		},
 		"FGBuildableManufacturer--Build_ConstructorMk1_C": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableManufacturer--Build_ConstructorMk1_C"
+			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableManufacturer--Build_ConstructorMk1_C",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableManufacturer--Build_FoundryMk1_C": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableManufacturer--Build_FoundryMk1_C"
+			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableManufacturer--Build_FoundryMk1_C",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableManufacturer--Build_ManufacturerMk1_C": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableManufacturer--Build_ManufacturerMk1_C"
+			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableManufacturer--Build_ManufacturerMk1_C",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableManufacturer--Build_OilRefinery_C": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableManufacturer--Build_OilRefinery_C"
+			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableManufacturer--Build_OilRefinery_C",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableManufacturer--Build_Packager_C": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableManufacturer--Build_Packager_C"
+			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableManufacturer--Build_Packager_C",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableManufacturer--Build_SmelterMk1_C": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableManufacturer--Build_SmelterMk1_C"
+			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableManufacturer--Build_SmelterMk1_C",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableManufacturerVariablePower": {
 			"type": "object",
@@ -189,8 +189,8 @@
 		},
 		"FGBuildablePipeHyper": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--spline"
+			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--spline",
+			"unevaluatedProperties": false
 		},
 		"FGBuildablePipeline": {
 			"type": "object",
@@ -254,18 +254,18 @@
 		},
 		"FGBuildableResourceExtractor--miner--mk1": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableResourceExtractor--miner--mk1"
+			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableResourceExtractor--miner--mk1",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableResourceExtractor--miner--mk2": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableResourceExtractor--miner--mk2"
+			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableResourceExtractor--miner--mk2",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableResourceExtractor--miner--mk3": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableResourceExtractor--miner--mk3"
+			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableResourceExtractor--miner--mk3",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableResourceExtractor--oil": {
 			"type": "object",
@@ -279,18 +279,18 @@
 		},
 		"FGBuildableResourceSink": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableResourceSink"
+			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableResourceSink",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableResourceSinkShop": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableResourceSinkShop"
+			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableResourceSinkShop",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableSnowDispenser": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable"
+			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableSpaceElevator": {
 			"type": "object",
@@ -299,13 +299,13 @@
 		},
 		"FGBuildableSplitterSmart": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableSplitterSmart"
+			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableSplitterSmart",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableStair": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--with-height-and-elevation"
+			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--with-height-and-elevation",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableStorage": {
 			"type": "object",
@@ -329,8 +329,8 @@
 		},
 		"FGBuildableWalkway": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--with-size-and-elevation"
+			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--with-size-and-elevation",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableWall": {
 			"type": "object",
@@ -384,13 +384,13 @@
 		},
 		"FGItemDescriptorNuclearFuel": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGItemDescriptorNuclearFuel"
+			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGItemDescriptorNuclearFuel",
+			"unevaluatedProperties": false
 		},
 		"FGNobeliskDetonator": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGNobeliskDetonator"
+			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGNobeliskDetonator",
+			"unevaluatedProperties": false
 		},
 		"FGParachute": {
 			"type": "object",
@@ -429,53 +429,53 @@
 		},
 		"FGSnowballWeapon": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGSnowballWeapon"
+			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGSnowballWeapon",
+			"unevaluatedProperties": false
 		},
 		"FGVehicleDescriptor--Desc_CyberWagon_C": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGVehicleDescriptor--fueled---with-inventory"
+			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGVehicleDescriptor--fueled---with-inventory",
+			"unevaluatedProperties": false
 		},
 		"FGVehicleDescriptor--Desc_DroneTransport_C": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGVehicleDescriptor--with-inventory"
+			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGVehicleDescriptor--with-inventory",
+			"unevaluatedProperties": false
 		},
 		"FGVehicleDescriptor--Desc_Explorer_C": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGVehicleDescriptor--fueled---with-inventory"
+			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGVehicleDescriptor--fueled---with-inventory",
+			"unevaluatedProperties": false
 		},
 		"FGVehicleDescriptor--Desc_FreightWagon_C": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGVehicleDescriptor--with-inventory"
+			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGVehicleDescriptor--with-inventory",
+			"unevaluatedProperties": false
 		},
 		"FGVehicleDescriptor--Desc_Locomotive_C": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGVehicleDescriptor--powered"
+			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGVehicleDescriptor--powered",
+			"unevaluatedProperties": false
 		},
 		"FGVehicleDescriptor--Desc_Tractor_C": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGVehicleDescriptor--fueled---with-inventory"
+			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGVehicleDescriptor--fueled---with-inventory",
+			"unevaluatedProperties": false
 		},
 		"FGVehicleDescriptor--Desc_Truck_C": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGVehicleDescriptor--fueled---with-inventory"
+			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGVehicleDescriptor--fueled---with-inventory",
+			"unevaluatedProperties": false
 		},
 		"FGWeaponInstantFire": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGWeaponInstantFire"
+			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGWeaponInstantFire",
+			"unevaluatedProperties": false
 		},
 		"FGWeaponProjectileFire": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGWeaponProjectileFire"
+			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGWeaponProjectileFire",
+			"unevaluatedProperties": false
 		}
 	}
 }
