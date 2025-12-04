@@ -940,6 +940,49 @@ type FGEquipment = FGEquipment_base & {
 	mAttachSocket: 'None' | 'hand_rSocket' | 'hand_lSocket' | 'jumpingStilt_lSocket' | 'helmetSocket',
 };
 
+type FGObjectScanner = FGEquipment_has_sound & {
+	mScreenUpdateTimer: docs_json_ts_common_types_empty_object,
+	mScanlineLerpT: docs_json_ts_common_types_decimal_string,
+	mScreenUpdateTime: docs_json_ts_common_types_decimal_string,
+	mNormalizedCloesnessToObject: docs_json_ts_common_types_decimal_string,
+	mObjectIsWithinRange: docs_json_ts_common_types_bool_string,
+	mBeepDelayMax: docs_json_ts_common_types_decimal_string,
+	mBeepDelayMin: docs_json_ts_common_types_decimal_string,
+	mDetectionRange: docs_json_ts_common_types_decimal_string,
+	mUpdateClosestObjectTime: docs_json_ts_common_types_decimal_string,
+	mObjectDetails: [
+		{
+			ScannableClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
+			DisplayText: {
+				NSLOCTEXT: [
+					string,
+					...string[],
+				],
+			},
+			ScannerLightColor: docs_json_ts_common_types_BGRA,
+			PreCacheAllOfType?: docs_json_ts_common_types_bool_string,
+			ShouldOverrideDetectionRange?: docs_json_ts_common_types_bool_string,
+			NewDetectionRange?: docs_json_ts_common_types_decimal_string,
+			RequiredSchematic: `/Game/FactoryGame/Schematics/Research/${string}${'/'}${string}${'.'}${string}${'_C'}`,
+		},
+		...{
+			ScannableClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
+			DisplayText: {
+				NSLOCTEXT: [
+					string,
+					...string[],
+				],
+			},
+			ScannerLightColor: docs_json_ts_common_types_BGRA,
+			PreCacheAllOfType?: docs_json_ts_common_types_bool_string,
+			ShouldOverrideDetectionRange?: docs_json_ts_common_types_bool_string,
+			NewDetectionRange?: docs_json_ts_common_types_decimal_string,
+			RequiredSchematic: `/Game/FactoryGame/Schematics/Research/${string}${'/'}${string}${'.'}${string}${'_C'}`,
+		}[],
+	],
+	mShouldBeepEvenIfNoObject: docs_json_ts_common_types_bool_string,
+};
+
 type FGEquipment_base = FGEquipment_base_base & {
 	mEquipmentSlot: 'ES_ARMS' | 'ES_BACK',
 };
@@ -1474,6 +1517,7 @@ export type {
 	FGDescriptor_sinkable,
 	FGDescriptor_sinkable_base,
 	FGEquipment,
+	FGObjectScanner,
 	FGEquipment_base,
 	FGEquipment_base_base,
 	FGEquipment_dispenser,

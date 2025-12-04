@@ -59,7 +59,6 @@ import type {
 	FGConsumableEquipment as docs_json_ts_0_3_7_7_classes_base_FGConsumableEquipment,
 	FGDescriptor_BuildMenu as docs_json_ts_0_3_7_7_classes_base_FGDescriptor_BuildMenu,
 	FGDescriptor_sinkable as docs_json_ts_0_3_7_7_classes_base_FGDescriptor_sinkable,
-	FGEquipment_has_sound as docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_sound,
 	FGEquipmentStunSpear_xenobasher as docs_json_ts_0_3_7_7_classes_base_FGEquipmentStunSpear_xenobasher,
 	FGEquipmentStunSpear_xenozapper as docs_json_ts_0_3_7_7_classes_base_FGEquipmentStunSpear_xenozapper,
 	FGGasMask as docs_json_ts_0_3_7_7_classes_base_FGGasMask,
@@ -68,6 +67,7 @@ import type {
 	FGJetPack as docs_json_ts_0_3_7_7_classes_base_FGJetPack,
 	FGJumpingStilts as docs_json_ts_0_3_7_7_classes_base_FGJumpingStilts,
 	FGNobeliskDetonator as docs_json_ts_0_3_7_7_classes_base_FGNobeliskDetonator,
+	FGObjectScanner as docs_json_ts_0_3_7_7_classes_base_FGObjectScanner,
 	FGParachute as docs_json_ts_0_3_7_7_classes_base_FGParachute,
 	FGPipeHyperStart as docs_json_ts_0_3_7_7_classes_base_FGPipeHyperStart,
 	FGPortableMinerDispenser as docs_json_ts_0_3_7_7_classes_base_FGPortableMinerDispenser,
@@ -80,10 +80,7 @@ import type {
 } from './classes/Base.ts';
 
 import type {
-	BGRA as docs_json_ts_common_types_BGRA,
-	bool_string as docs_json_ts_common_types_bool_string,
 	decimal_string as docs_json_ts_common_types_decimal_string,
-	empty_object as docs_json_ts_common_types_empty_object,
 	integer_string as docs_json_ts_common_types_integer_string,
 	RGBA as docs_json_ts_common_types_RGBA,
 } from './../common/types.ts';
@@ -256,48 +253,7 @@ type FGJumpingStilts = docs_json_ts_0_3_7_7_classes_base_FGJumpingStilts;
 
 type FGNobeliskDetonator = docs_json_ts_0_3_7_7_classes_base_FGNobeliskDetonator;
 
-type FGObjectScanner = docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_sound & {
-	mScreenUpdateTimer: docs_json_ts_common_types_empty_object,
-	mScanlineLerpT: docs_json_ts_common_types_decimal_string,
-	mScreenUpdateTime: docs_json_ts_common_types_decimal_string,
-	mNormalizedCloesnessToObject: docs_json_ts_common_types_decimal_string,
-	mObjectIsWithinRange: docs_json_ts_common_types_bool_string,
-	mBeepDelayMax: docs_json_ts_common_types_decimal_string,
-	mBeepDelayMin: docs_json_ts_common_types_decimal_string,
-	mDetectionRange: docs_json_ts_common_types_decimal_string,
-	mUpdateClosestObjectTime: docs_json_ts_common_types_decimal_string,
-	mObjectDetails: [
-		{
-			ScannableClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
-			DisplayText: {
-				NSLOCTEXT: [
-					string,
-					...string[],
-				],
-			},
-			ScannerLightColor: docs_json_ts_common_types_BGRA,
-			PreCacheAllOfType?: docs_json_ts_common_types_bool_string,
-			ShouldOverrideDetectionRange?: docs_json_ts_common_types_bool_string,
-			NewDetectionRange?: docs_json_ts_common_types_decimal_string,
-			RequiredSchematic: `/Game/FactoryGame/Schematics/Research/${string}${'/'}${string}${'.'}${string}${'_C'}`,
-		},
-		...{
-			ScannableClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
-			DisplayText: {
-				NSLOCTEXT: [
-					string,
-					...string[],
-				],
-			},
-			ScannerLightColor: docs_json_ts_common_types_BGRA,
-			PreCacheAllOfType?: docs_json_ts_common_types_bool_string,
-			ShouldOverrideDetectionRange?: docs_json_ts_common_types_bool_string,
-			NewDetectionRange?: docs_json_ts_common_types_decimal_string,
-			RequiredSchematic: `/Game/FactoryGame/Schematics/Research/${string}${'/'}${string}${'.'}${string}${'_C'}`,
-		}[],
-	],
-	mShouldBeepEvenIfNoObject: docs_json_ts_common_types_bool_string,
-};
+type FGObjectScanner = docs_json_ts_0_3_7_7_classes_base_FGObjectScanner;
 
 type FGParachute = docs_json_ts_0_3_7_7_classes_base_FGParachute;
 
