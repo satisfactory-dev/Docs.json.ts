@@ -246,7 +246,9 @@ type FGBuildableDroneStation = FGBuildableDroneStation_base & FGBuildable_dockin
 
 type FGBuildableDroneStation_base = FGBuildableDroneStation_base_base & FGBuildableDroneStation_base_version_specific;
 
-type FGBuildableDroneStation_base_base = FGBuildable_docking_station_base & {
+type FGBuildableDroneStation_base_base = FGBuildableDroneStation_base_base_base & FGBuildable_docking_station_base;
+
+type FGBuildableDroneStation_base_base_base = {
 	mStoppedProducingAnimationSounds: docs_json_ts_common_types_bool_string,
 	mStoppedAkComponents: '',
 	mSocketStoppedAkComponents: '',
@@ -800,6 +802,7 @@ export type {
 	FGBuildableDroneStation,
 	FGBuildableDroneStation_base,
 	FGBuildableDroneStation_base_base,
+	FGBuildableDroneStation_base_base_base,
 	FGBuildableDroneStation_base_version_specific,
 	FGBuildableFactory_jump_pad,
 	FGBuildableFactory_landing_pad,

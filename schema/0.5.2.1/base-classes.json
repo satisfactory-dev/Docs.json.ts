@@ -176,8 +176,17 @@
 			]
 		},
 		"FGBuildable--powered--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--powered--base--base"
+				}
+			]
+		},
+		"FGBuildable--powered--base--base": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--powered--base--base",
 			"required": ["mDoesHaveShutdownAnimation"],
 			"properties": {
 				"mDoesHaveShutdownAnimation": {

@@ -485,8 +485,17 @@
 			]
 		},
 		"FGBuildableDroneStation--base--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableDroneStation--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--docking-station--base"
+				}
+			]
+		},
+		"FGBuildableDroneStation--base--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--docking-station--base",
 			"required": [
 				"mStoppedProducingAnimationSounds",
 				"mStoppedAkComponents",

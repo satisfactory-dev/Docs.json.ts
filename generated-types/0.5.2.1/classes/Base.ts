@@ -191,7 +191,9 @@ type FGBuildable_pole_with_length_and_power = docs_json_ts_0_3_7_7_classes_base_
 
 type FGBuildable_powered = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base_base & FGBuildable_powered_base & FGBuildable_base;
 
-type FGBuildable_powered_base = docs_json_ts_0_4_2_11_classes_base_FGBuildable_powered_base_base & {
+type FGBuildable_powered_base = FGBuildable_powered_base_base & docs_json_ts_0_4_2_11_classes_base_FGBuildable_powered_base_base;
+
+type FGBuildable_powered_base_base = {
 	mDoesHaveShutdownAnimation: docs_json_ts_common_types_bool_string,
 };
 
@@ -805,6 +807,7 @@ export type {
 	FGBuildable_pole_with_length_and_power,
 	FGBuildable_powered,
 	FGBuildable_powered_base,
+	FGBuildable_powered_base_base,
 	FGBuildable_powered_storage,
 	FGBuildable_ramp_DisableAttachmentSnapOn,
 	FGBuildable_ramp_mDisableSnapOn,

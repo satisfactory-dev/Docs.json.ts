@@ -78,11 +78,15 @@ type FGBuildable_DisableAttachmentSnapOn = FGBuildable & {
 
 type FGBuildable_docking_station = FGBuildable_docking_station_base & FGBuildable_powered_storage;
 
-type FGBuildable_docking_station_base = FGBuildable_docking_station_base_base & {
+type FGBuildable_docking_station_base = FGBuildable_docking_station_base_with_mMapText & FGBuildable_docking_station_base_base;
+
+type FGBuildable_docking_station_base_with_mMapText = FGBuildable_docking_station_base_base_base & {
 	mMapText: string,
 };
 
-type FGBuildable_docking_station_base_base = FGBuildable_powered_storage_base_base & {
+type FGBuildable_docking_station_base_base = FGBuildable_docking_station_base_base_base & FGBuildable_powered_storage_base_base;
+
+type FGBuildable_docking_station_base_base_base = FGBuildable_powered_storage_base_base_base & {
 	mTransferSpeed: docs_json_ts_common_types_decimal_string,
 	mStackTransferSize: docs_json_ts_common_types_decimal_string,
 };
@@ -119,7 +123,9 @@ type FGBuildable_powered = FGBuildable_powered_base & (FGBuildable & {
 
 type FGBuildable_powered_base = FGBuildable_powered_base_base & FGBuildable;
 
-type FGBuildable_powered_base_base = FGBuildable_base & {
+type FGBuildable_powered_base_base = FGBuildable_powered_base_base_base & FGBuildable_powered_base_base_with_mNumCyclesForProductivity;
+
+type FGBuildable_powered_base_base_base = FGBuildable_base & {
 	mPowerConsumption: docs_json_ts_common_types_decimal_string,
 	mPowerConsumptionExponent: docs_json_ts_common_types_decimal_string,
 	mOnHasPowerChanged: docs_json_ts_common_types_empty_object,
@@ -127,7 +133,6 @@ type FGBuildable_powered_base_base = FGBuildable_base & {
 	mOnHasStandbyChanged: docs_json_ts_common_types_empty_object,
 	mMinimumProducingTime: docs_json_ts_common_types_decimal_string_signed,
 	mMinimumStoppedTime: docs_json_ts_common_types_decimal_string_signed,
-	mNumCyclesForProductivity: docs_json_ts_common_types_integer_string,
 	mCanChangePotential: docs_json_ts_common_types_bool_string,
 	mMinPotential: docs_json_ts_common_types_decimal_string,
 	mMaxPotential: docs_json_ts_common_types_decimal_string,
@@ -138,6 +143,10 @@ type FGBuildable_powered_base_base = FGBuildable_base & {
 	mEffectUpdateInterval: docs_json_ts_common_types_decimal_string,
 	mAddToSignificanceManager: docs_json_ts_common_types_bool_string,
 	mSignificanceRange: docs_json_ts_common_types_decimal_string,
+};
+
+type FGBuildable_powered_base_base_with_mNumCyclesForProductivity = FGBuildable_base & {
+	mNumCyclesForProductivity: docs_json_ts_common_types_integer_string,
 };
 
 type FGBuildable_powered_base_resources = FGBuildable_powered_base_resources_base & FGBuildable_powered_base;
@@ -152,7 +161,9 @@ type FGBuildable_powered_storage = FGBuildable_powered_storage_base & FGBuildabl
 
 type FGBuildable_powered_storage_base = FGBuildable_powered_storage_base_base & FGBuildable_powered_base;
 
-type FGBuildable_powered_storage_base_base = FGBuildable_powered_base_base & {
+type FGBuildable_powered_storage_base_base = FGBuildable_powered_storage_base_base_base & FGBuildable_powered_base_base;
+
+type FGBuildable_powered_storage_base_base_base = FGBuildable_powered_base_base_base & {
 	mStorageSizeX: docs_json_ts_common_types_integer_string,
 	mStorageSizeY: docs_json_ts_common_types_integer_string,
 };
@@ -1339,7 +1350,9 @@ export type {
 	FGBuildable_DisableAttachmentSnapOn,
 	FGBuildable_docking_station,
 	FGBuildable_docking_station_base,
+	FGBuildable_docking_station_base_with_mMapText,
 	FGBuildable_docking_station_base_base,
+	FGBuildable_docking_station_base_base_base,
 	FGBuildable_occupied,
 	FGBuildable_occupied_base,
 	FGBuildable_pole,
@@ -1352,11 +1365,14 @@ export type {
 	FGBuildable_powered,
 	FGBuildable_powered_base,
 	FGBuildable_powered_base_base,
+	FGBuildable_powered_base_base_base,
+	FGBuildable_powered_base_base_with_mNumCyclesForProductivity,
 	FGBuildable_powered_base_resources,
 	FGBuildable_powered_base_resources_base,
 	FGBuildable_powered_storage,
 	FGBuildable_powered_storage_base,
 	FGBuildable_powered_storage_base_base,
+	FGBuildable_powered_storage_base_base_base,
 	FGBuildable_spline,
 	FGBuildable_spline_base,
 	FGBuildable_tiered,

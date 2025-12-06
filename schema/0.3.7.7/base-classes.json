@@ -139,16 +139,36 @@
 			]
 		},
 		"FGBuildable--docking-station--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--docking-station--base--with-mMapText"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--docking-station--base--base"
+				}
+			]
+		},
+		"FGBuildable--docking-station--base--with-mMapText": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--docking-station--base--base",
+			"$ref": "#/$defs/FGBuildable--docking-station--base--base--base",
 			"required": ["mMapText"],
 			"properties": {
 				"mMapText": {"type": "string"}
 			}
 		},
 		"FGBuildable--docking-station--base--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--docking-station--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered-storage--base--base"
+				}
+			]
+		},
+		"FGBuildable--docking-station--base--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered-storage--base--base",
+			"$ref": "#/$defs/FGBuildable--powered-storage--base--base--base",
 			"required": ["mTransferSpeed", "mStackTransferSize"],
 			"properties": {
 				"mTransferSpeed": {
@@ -287,6 +307,16 @@
 			]
 		},
 		"FGBuildable--powered--base--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base--base--with-mNumCyclesForProductivity"
+				}
+			]
+		},
+		"FGBuildable--powered--base--base--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--base",
 			"required": [
@@ -297,7 +327,6 @@
 				"mOnHasStandbyChanged",
 				"mMinimumProducingTime",
 				"mMinimumStoppedTime",
-				"mNumCyclesForProductivity",
 				"mCanChangePotential",
 				"mMinPotential",
 				"mMaxPotential",
@@ -331,9 +360,6 @@
 				"mMinimumStoppedTime": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
 				},
-				"mNumCyclesForProductivity": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-				},
 				"mCanChangePotential": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				},
@@ -364,6 +390,18 @@
 				},
 				"mSignificanceRange": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGBuildable--powered--base--base--with-mNumCyclesForProductivity": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--base",
+			"required": [
+				"mNumCyclesForProductivity"
+			],
+			"properties": {
+				"mNumCyclesForProductivity": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
 				}
 			}
 		},
@@ -427,8 +465,18 @@
 			]
 		},
 		"FGBuildable--powered-storage--base--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--powered-storage--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base--base"
+				}
+			]
+		},
+		"FGBuildable--powered-storage--base--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--base--base",
+			"$ref": "#/$defs/FGBuildable--powered--base--base--base",
 			"required": ["mStorageSizeX", "mStorageSizeY"],
 			"properties": {
 				"mStorageSizeX": {
