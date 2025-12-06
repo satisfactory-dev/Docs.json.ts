@@ -326,9 +326,14 @@ type FGBuildableGenerator_no_fuel = FGBuildableGenerator_no_fuel_base & FGBuilda
 
 type FGBuildableGenerator_no_fuel_base = FGBuildableGenerator_no_fuel_base_base & FGBuildable_powered_base;
 
-type FGBuildableGenerator_no_fuel_base_base = FGBuildable_powered_base_base & {
-	mPowerProduction: docs_json_ts_common_types_decimal_string,
+type FGBuildableGenerator_no_fuel_base_base = FGBuildableGenerator_no_fuel_base_base_base & FGBuildable_powered_base_base;
+
+type FGBuildableGenerator_no_fuel_base_base_base = FGBuildableGenerator_no_fuel_base_base_base_base & {
 	mPowerProductionExponent: docs_json_ts_common_types_decimal_string,
+};
+
+type FGBuildableGenerator_no_fuel_base_base_base_base = FGBuildable_powered_base_base_base & {
+	mPowerProduction: docs_json_ts_common_types_decimal_string,
 	mLoadPercentage: docs_json_ts_common_types_decimal_string,
 };
 
@@ -374,7 +379,9 @@ type FGBuildableGeneratorGeoThermal = FGBuildableGeneratorGeoThermal_base & FGBu
 
 type FGBuildableGeneratorGeoThermal_base = FGBuildableGeneratorGeoThermal_base_base & FGBuildableGenerator_no_fuel_base;
 
-type FGBuildableGeneratorGeoThermal_base_base = FGBuildableGenerator_no_fuel_base_base & {
+type FGBuildableGeneratorGeoThermal_base_base = FGBuildableGeneratorGeoThermal_base_base_base & FGBuildableGenerator_no_fuel_base_base;
+
+type FGBuildableGeneratorGeoThermal_base_base_base = FGBuildableGenerator_no_fuel_base_base_base_base & {
 	mProductionEffectsRunning: docs_json_ts_common_types_bool_string,
 };
 
@@ -1434,6 +1441,8 @@ export type {
 	FGBuildableGenerator_no_fuel,
 	FGBuildableGenerator_no_fuel_base,
 	FGBuildableGenerator_no_fuel_base_base,
+	FGBuildableGenerator_no_fuel_base_base_base,
+	FGBuildableGenerator_no_fuel_base_base_base_base,
 	FGBuildableGeneratorFuel_base,
 	FGBuildableGeneratorFuel_base_base,
 	FGBuildableGeneratorFuel_biomass,
@@ -1448,6 +1457,7 @@ export type {
 	FGBuildableGeneratorGeoThermal,
 	FGBuildableGeneratorGeoThermal_base,
 	FGBuildableGeneratorGeoThermal_base_base,
+	FGBuildableGeneratorGeoThermal_base_base_base,
 	FGBuildableGeneratorNuclear,
 	FGBuildableGeneratorNuclear_base,
 	FGBuildableGeneratorNuclear_base_base,

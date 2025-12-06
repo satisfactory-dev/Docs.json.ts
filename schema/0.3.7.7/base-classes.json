@@ -1100,18 +1100,34 @@
 			]
 		},
 		"FGBuildableGenerator--no-fuel--base--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base--base"
+				}
+			]
+		},
+		"FGBuildableGenerator--no-fuel--base--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--base--base",
+			"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base--base--base--base",
+			"required": ["mPowerProductionExponent"],
+			"properties": {
+				"mPowerProductionExponent": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGBuildableGenerator--no-fuel--base--base--base--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--powered--base--base--base",
 			"required": [
 				"mPowerProduction",
-				"mPowerProductionExponent",
 				"mLoadPercentage"
 			],
 			"properties": {
 				"mPowerProduction": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mPowerProductionExponent": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
 				"mLoadPercentage": {
@@ -1283,8 +1299,18 @@
 			]
 		},
 		"FGBuildableGeneratorGeoThermal--base--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableGeneratorGeoThermal--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base--base"
+				}
+			]
+		},
+		"FGBuildableGeneratorGeoThermal--base--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base--base",
+			"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base--base--base--base",
 			"required": ["mProductionEffectsRunning"],
 			"properties": {
 				"mProductionEffectsRunning": {
