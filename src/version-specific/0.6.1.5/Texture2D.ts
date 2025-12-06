@@ -36,9 +36,20 @@ type macro_schema = ([
 			'Vehicle', 'Structure', 'Equipment', 'Icon',
 			'64', '64_new', '256', '512',
 		]
-		| ['256', '512', '256_New', 'White']
-		| ['64', '256', '64_new', '512', 'White']
+		| ['256', '512', '256_New', 'White', '512_']
+		| ['64', '256', '64_new', '512', 'White', '256_']
 		| ['64', '256', 'Map']
+		| [
+			'AbsFics',
+			'DRG',
+			'Goat',
+			'Huntdown',
+			'Joel',
+			'LeMichael',
+			'Sanctum',
+			'Sanctum2',
+			'SoQ',
+		]
 		// eslint-disable-next-line @stylistic/comma-dangle
 		| null
 	),
@@ -128,9 +139,27 @@ const Texture2D_schema_properties = {
 										'256',
 										'512',
 									],
-									['256', '512', '256_New', 'White'],
-									['64', '256', '64_new', '512', 'White'],
+									['256', '512', '256_New', 'White', '512_'],
+									[
+										'64',
+										'256',
+										'64_new',
+										'512',
+										'White',
+										'256_',
+									],
 									['64', '256', 'Map'],
+									[
+										'AbsFics',
+										'DRG',
+										'Goat',
+										'Huntdown',
+										'Joel',
+										'LeMichael',
+										'Sanctum',
+										'Sanctum2',
+										'SoQ',
+									],
 								],
 							},
 							{
@@ -199,9 +228,20 @@ export class Texture2D extends
 							'Vehicle', 'Structure', 'Equipment', 'Icon',
 							'64', '64_new', '256', '512',
 						]
-						| ['256', '512', '256_New', 'White']
-						| ['64', '256', '64_new', '512', 'White']
+						| ['256', '512', '256_New', 'White', '512_']
+						| ['64', '256', '64_new', '512', 'White', '256_']
 						| ['64', '256', 'Map']
+						| [
+							'AbsFics',
+							'DRG',
+							'Goat',
+							'Huntdown',
+							'Joel',
+							'LeMichael',
+							'Sanctum',
+							'Sanctum2',
+							'SoQ',
+						]
 						// eslint-disable-next-line @stylistic/comma-dangle
 						| null
 					),
@@ -266,9 +306,20 @@ export class Texture2D extends
 				'Vehicle', 'Structure', 'Equipment', 'Icon',
 				'64', '64_new', '256', '512',
 			]
-			| ['256', '512', '256_New', 'White']
-			| ['64', '256', '64_new', '512', 'White']
+			| ['256', '512', '256_New', 'White', '512_']
+			| ['64', '256', '64_new', '512', 'White', '256_']
 			| ['64', '256', 'Map']
+			| [
+				'AbsFics',
+				'DRG',
+				'Goat',
+				'Huntdown',
+				'Joel',
+				'LeMichael',
+				'Sanctum',
+				'Sanctum2',
+				'SoQ',
+			]
 		) = null === third
 			? ['64', '256']
 			: (Array.isArray(third) ? third : third);

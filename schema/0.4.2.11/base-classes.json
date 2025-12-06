@@ -2425,12 +2425,21 @@
 			]
 		},
 		"FGSchematic--base--base--props": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGSchematic--base--base--props--sans-mSchematicIcon"
+				},
+				{
+					"$ref": "#/$defs/FGSchematic--base--base--props--with-mSchematicIcon"
+				}
+			]
+		},
+		"FGSchematic--base--base--props--sans-mSchematicIcon": {
 			"type": "object",
 			"$ref": "#/$defs/FGSchematic--base--base--base--base",
 			"required": [
 				"mMenuPriority",
 				"mSchematicDependencies",
-				"mSchematicIcon",
 				"mSmallSchematicIcon",
 				"mTechTier"
 			],
@@ -2452,6 +2461,31 @@
 						]
 					}
 				},
+				"mSmallSchematicIcon": {
+					"oneOf": [
+						{
+							"type": "string",
+							"const": "None"
+						},
+						{
+							"type": "string",
+							"templated_string": [
+								"Texture2D ",
+								{"type": "string"}
+							]
+						}
+					]
+				},
+				"mTechTier": {
+					"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/Tier"
+				}
+			}
+		},
+		"FGSchematic--base--base--props--with-mSchematicIcon": {
+			"type": "object",
+			"$ref": "#/$defs/FGSchematic--base--base--base--base",
+			"required": ["mSchematicIcon"],
+			"properties": {
 				"mSchematicIcon": {
 					"type": "string",
 					"typed_string": {
@@ -2535,24 +2569,6 @@
 							}
 						}
 					}
-				},
-				"mSmallSchematicIcon": {
-					"oneOf": [
-						{
-							"type": "string",
-							"const": "None"
-						},
-						{
-							"type": "string",
-							"templated_string": [
-								"Texture2D ",
-								{"type": "string"}
-							]
-						}
-					]
-				},
-				"mTechTier": {
-					"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/Tier"
 				}
 			}
 		},

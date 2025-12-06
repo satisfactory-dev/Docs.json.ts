@@ -4,6 +4,7 @@ import type {
 } from 'ajv/dist/2020.js';
 
 import type {
+	ComputedPropertyName,
 	PropertyAssignment,
 } from 'typescript';
 
@@ -71,6 +72,16 @@ export function Object_compile_validator(
 	>(
 		Object_type_schema,
 	);
+}
+
+export function computedProperty_or_string(
+	property: string,
+): ComputedPropertyName|string {
+	return /[?[\] ]/.test(property)
+		? factory.createComputedPropertyName(
+			factory.createStringLiteral(property),
+		)
+		: property;
 }
 
 export function Object_generate_typescript_data(
@@ -143,7 +154,7 @@ export function Object_generate_typescript_data(
 
 		const property_assignment = factory
 			.createPropertyAssignment(
-				property_name,
+				computedProperty_or_string(property_name),
 				value,
 			);
 

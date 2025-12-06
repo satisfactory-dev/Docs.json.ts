@@ -74,8 +74,8 @@ export class NamedList<
 					},
 					macro: (value: Name) => {
 						const pattern = `^${
-							RegExp.escape(value)
-						}\\(.+\\)`;
+							NamedList.regex(value)
+						}$`;
 
 						return {
 							pattern,
@@ -169,5 +169,15 @@ export class NamedList<
 		};
 
 		return Object.freeze(result);
+	}
+
+	static regex<
+		Name extends string,
+	>(
+		value: Name,
+	) {
+		return `${
+			RegExp.escape(value)
+		}\\([^)]+\\)`;
 	}
 }

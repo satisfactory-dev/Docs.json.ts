@@ -252,7 +252,7 @@ function Thingish_list_schema_to_pattern__str(
 	if (is_prefixItems(schema)) {
 		return Thingish_list_schema_to_pattern__prefixItems(schema);
 	} else if (is_items(schema)) {
-		return Thingish_list_schema_to_pattern__items();
+		return Thingish_list_schema_to_pattern__items(schema);
 	} else if (is_outter(schema)) {
 		return Thingish_list_schema_to_pattern__str(schema.typed_string);
 	} else if (is_inner(schema)) {
@@ -294,12 +294,17 @@ function Thingish_list_schema_to_pattern__prefixItems(
 }
 
 function Thingish_list_schema_to_pattern__items(
+	schema?: Thingish_list_items,
 ): string {
 	const regex: string[] = [];
 
 	regex.push(
 		TemplatedString.to_regex_string_inner(
-			[{} as TemplatedStringParts[0]],
+			(
+				undefined === schema
+					? [{} as TemplatedStringParts[0]]
+					: schema.items.templated_string
+			),
 			false,
 		),
 	);
@@ -387,14 +392,70 @@ export function Thingish_list_generate_typescript_type(
 				'specified',
 				'yes',
 				'with',
-				Thingish_list_prefixItems
+				(
+					| Thingish_list_prefixItems
+					| Thingish_list_items
+				)
 			>
 		>
 	>['typed_string'];
 
+	if ('typed_string' in coerced.items) {
+		return Thingish_list_generate_typescript_type__prefixItems(
+			coerced as Thingish_list_outter<
+				Thingish_list_outter<
+					array_type<
+						'items',
+						'specified',
+						'yes',
+						'with',
+						(
+							| Thingish_list_prefixItems
+						)
+					>
+				>
+			>['typed_string'],
+			schema_parser,
+		);
+	}
+
+	return Thingish_list_generate_typescript_type__items(
+		coerced as Thingish_list_outter<
+			Thingish_list_outter<
+				array_type<
+					'items',
+					'specified',
+					'yes',
+					'with',
+					(
+						| Thingish_list_items
+					)
+				>
+			>
+		>['typed_string'],
+		schema_parser,
+	);
+}
+
+function Thingish_list_generate_typescript_type__prefixItems(
+	coerced: Thingish_list_outter<
+		Thingish_list_outter<
+			array_type<
+				'items',
+				'specified',
+				'yes',
+				'with',
+				(
+					| Thingish_list_prefixItems
+				)
+			>
+		>
+	>['typed_string'],
+	schema_parser: SchemaParser,
+) {
 	const inner = coerced.items.typed_string;
 
-	const instance = schema_parser.parse(schema);
+	const instance = schema_parser.parse(coerced);
 
 	if (!(instance instanceof ArrayType)) {
 		throw new TypeError('Matched instance not of expected type!');
@@ -403,6 +464,50 @@ export function Thingish_list_generate_typescript_type(
 	const inner_instance = schema_parser.parse(inner);
 
 	if (!(inner_instance instanceof ArrayType)) {
+		throw new TypeError('Matched instance not of expected type!');
+	}
+
+	const modified = {
+		...coerced,
+		items: {
+			...inner,
+		},
+	};
+
+	return instance.generate_typescript_type({
+		data: undefined,
+		schema: modified,
+		schema_parser,
+	});
+}
+
+function Thingish_list_generate_typescript_type__items(
+	coerced: Thingish_list_outter<
+		Thingish_list_outter<
+			array_type<
+				'items',
+				'specified',
+				'yes',
+				'with',
+				(
+					| Thingish_list_items
+				)
+			>
+		>
+	>['typed_string'],
+	schema_parser: SchemaParser,
+) {
+	const inner = coerced.items;
+
+	const instance = schema_parser.parse(coerced);
+
+	if (!(instance instanceof ArrayType)) {
+		throw new TypeError('Matched instance not of expected type!');
+	}
+
+	const inner_instance = schema_parser.parse(inner);
+
+	if (!(inner_instance instanceof TemplatedString)) {
 		throw new TypeError('Matched instance not of expected type!');
 	}
 
@@ -448,7 +553,12 @@ function Thingish_list_generate_typescript_data_validated(
 	const result: Expression[] = [];
 
 	if (is_inner(schema)) {
-		const regex = new RegExp(Thingish_list_schema_to_pattern__str(
+		const regex = ('templated_string' in schema.items)
+			? new RegExp(TemplatedString.to_regex_string_inner(
+				schema.items.templated_string,
+				false,
+			), 'g')
+			: new RegExp(Thingish_list_schema_to_pattern__str(
 			schema.items,
 		), 'g');
 
@@ -477,6 +587,10 @@ function Thingish_list_generate_typescript_data_validated(
 					schema_parser,
 					schema.items,
 				);
+			}));
+		} else if ('templated_string' in schema.items) {
+			result.push(...items.map((item) => {
+				return factory.createStringLiteral(item);
 			}));
 		} else {
 			throw new TypeError('Unsupported schema found!');

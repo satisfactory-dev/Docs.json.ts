@@ -8,7 +8,9 @@ import type {
 } from 'typescript';
 
 import {
+	is_non_empty_array,
 	object_has_property,
+	object_only_has_that_property,
 } from '@satisfactory-dev/predicates.ts';
 
 import type {
@@ -32,6 +34,13 @@ import {
 } from '@signpostmarv/json-schema-typescript-codegen';
 
 import type {
+	TemplatedStringParts,
+} from '@signpostmarv/json-schema-typescript-codegen/ajv';
+import {
+	TemplatedString,
+} from '@signpostmarv/json-schema-typescript-codegen/ajv';
+
+import type {
 	ArrayLiteralExpression,
 	ObjectLiteralExpression,
 	RestedTupleTypeNode,
@@ -47,6 +56,7 @@ import type {
 	Object_type,
 } from './Object.ts';
 import {
+	computedProperty_or_string,
 	Object_generate_schema_definition,
 	Object_generate_type_definition,
 	Object_type_schema,
@@ -55,6 +65,10 @@ import {
 import {
 	BlueprintGeneratedClass_quoted,
 } from '../BlueprintGeneratedClass.ts';
+
+import {
+	NamedList,
+} from '../NamedList.ts';
 
 export type Object_list_type = array_type<
 	'items',
@@ -225,20 +239,46 @@ export function Object_list_generate_typescript_data(
 
 			let property_value = matches[i + (j * 2) + 1];
 
+			let quote_stripped_from_value = false;
+
 			if (/^"[^"]+"$/.test(property_value)) {
+				quote_stripped_from_value = true;
 				property_value = property_value.substring(
 					1,
 					property_value.length - 1,
 				);
 			}
 
-			const property_schema = coerced_schema.items.properties[
+			let property_schema = coerced_schema.items.properties[
 				property_name
 			];
 
+			if (
+				quote_stripped_from_value
+				&& 'type' in property_schema
+				&& 'enum' in property_schema
+				&& 'string' === property_schema.type
+				&& Array.isArray(property_schema.enum)
+				&& property_schema.enum.length > 0
+				&& property_schema.enum.every(
+					(value) => 'string' === typeof value,
+				)
+			) {
+				property_schema = {
+					...property_schema,
+					enum: property_schema.enum.map((value) => {
+						if (/^"[^"]+"$/.test(value)) {
+							return value.substring(1, value.length - 1);
+						}
+
+						return value;
+					}),
+				};
+			}
+
 			const property_assignment = factory
 				.createPropertyAssignment(
-					property_name,
+					computedProperty_or_string(property_name),
 					schema_parser
 						.parse(
 							property_schema,
@@ -327,6 +367,14 @@ function ajv_macro_value_regex(value: SchemaObject) {
 			'docs.json.ts--common--types#/$defs/integer_string' === value.$ref
 		) {
 			return '\\d+';
+		} else if (
+			'docs.json.ts--common--types#/$defs/BGRA' === value.$ref
+		) {
+			return '\\(B=\\d+,G=\\d+,R=\\d+,A=\\d+\\)';
+		} else if (
+			'docs.json.ts--common--types#/$defs/bool_string' === value.$ref
+		) {
+			return '(?:True|False)';
 		}
 	} else if (
 		object_has_property(
@@ -342,6 +390,42 @@ function ajv_macro_value_regex(value: SchemaObject) {
 	) {
 		return BlueprintGeneratedClass_quoted.regex_from_value(
 			value.DocsDotJson_BlueprintGeneratedClass_quoted,
+		);
+	} else if (
+		object_has_property(
+			value,
+			'DocsDotJson_named_list',
+		)
+		&& 'string' === typeof value.DocsDotJson_named_list
+	) {
+		return NamedList.regex(value.DocsDotJson_named_list);
+	} else if (
+		object_has_property(
+			value,
+			'templated_string',
+		)
+		&& Array.isArray(value.templated_string)
+		&& value.templated_string.every(
+			(maybe): maybe is TemplatedStringParts[0] => {
+				return (
+					'string' === typeof maybe
+					|| (
+						object_only_has_that_property(
+							maybe,
+							'type',
+						)
+						&& 'string' === maybe.type
+					)
+				);
+			},
+		)
+		&& is_non_empty_array<
+			TemplatedStringParts[0]
+		>(value.templated_string)
+	) {
+		return TemplatedString.to_regex_string_inner(
+			value.templated_string,
+			false,
 		);
 	}
 

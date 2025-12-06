@@ -1090,16 +1090,7 @@ type FGNobeliskDetonator_base = FGWeaponProjectile_thrown_base_base & {
 	mArmAnimation: 'AE_Nobelisk',
 };
 
-type FGObjectScanner = FGEquipment_has_sound & {
-	mScreenUpdateTimer: docs_json_ts_common_types_empty_object,
-	mScanlineLerpT: docs_json_ts_common_types_decimal_string,
-	mScreenUpdateTime: docs_json_ts_common_types_decimal_string,
-	mNormalizedCloesnessToObject: docs_json_ts_common_types_decimal_string,
-	mObjectIsWithinRange: docs_json_ts_common_types_bool_string,
-	mBeepDelayMax: docs_json_ts_common_types_decimal_string,
-	mBeepDelayMin: docs_json_ts_common_types_decimal_string,
-	mDetectionRange: docs_json_ts_common_types_decimal_string,
-	mUpdateClosestObjectTime: docs_json_ts_common_types_decimal_string,
+type FGObjectScanner = FGObjectScanner_base & {
 	mObjectDetails: [
 		{
 			ScannableClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
@@ -1130,6 +1121,18 @@ type FGObjectScanner = FGEquipment_has_sound & {
 			RequiredSchematic: `/Game/FactoryGame/Schematics/Research/${string}${'/'}${string}${'.'}${string}${'_C'}`,
 		}[],
 	],
+};
+
+type FGObjectScanner_base = FGEquipment_has_sound & {
+	mScreenUpdateTimer: docs_json_ts_common_types_empty_object,
+	mScanlineLerpT: docs_json_ts_common_types_decimal_string,
+	mScreenUpdateTime: docs_json_ts_common_types_decimal_string,
+	mNormalizedCloesnessToObject: docs_json_ts_common_types_decimal_string,
+	mObjectIsWithinRange: docs_json_ts_common_types_bool_string,
+	mBeepDelayMax: docs_json_ts_common_types_decimal_string,
+	mBeepDelayMin: docs_json_ts_common_types_decimal_string,
+	mDetectionRange: docs_json_ts_common_types_decimal_string,
+	mUpdateClosestObjectTime: docs_json_ts_common_types_decimal_string,
 	mShouldBeepEvenIfNoObject: docs_json_ts_common_types_bool_string,
 };
 
@@ -1582,6 +1585,7 @@ export type {
 	FGNobeliskDetonator,
 	FGNobeliskDetonator_base,
 	FGObjectScanner,
+	FGObjectScanner_base,
 	FGParachute,
 	FGParachute_base,
 	FGPipeHyperStart,

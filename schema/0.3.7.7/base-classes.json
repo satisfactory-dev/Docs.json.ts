@@ -4139,48 +4139,9 @@
 		},
 		"FGObjectScanner": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment--has-sound",
-			"required": [
-				"mScreenUpdateTimer",
-				"mScanlineLerpT",
-				"mScreenUpdateTime",
-				"mNormalizedCloesnessToObject",
-				"mObjectIsWithinRange",
-				"mBeepDelayMax",
-				"mBeepDelayMin",
-				"mDetectionRange",
-				"mUpdateClosestObjectTime",
-				"mObjectDetails",
-				"mShouldBeepEvenIfNoObject"
-			],
+			"$ref": "#/$defs/FGObjectScanner--base",
+			"required": ["mObjectDetails"],
 			"properties": {
-				"mScreenUpdateTimer": {
-					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-				},
-				"mScanlineLerpT": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mScreenUpdateTime": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mNormalizedCloesnessToObject": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mObjectIsWithinRange": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mBeepDelayMax": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mBeepDelayMin": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mDetectionRange": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mUpdateClosestObjectTime": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
 				"mObjectDetails": {
 					"type": "string",
 					"typed_string": {
@@ -4232,6 +4193,51 @@
 							}
 						}
 					}
+				}
+			}
+		},
+		"FGObjectScanner--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGEquipment--has-sound",
+			"required": [
+				"mScreenUpdateTimer",
+				"mScanlineLerpT",
+				"mScreenUpdateTime",
+				"mNormalizedCloesnessToObject",
+				"mObjectIsWithinRange",
+				"mBeepDelayMax",
+				"mBeepDelayMin",
+				"mDetectionRange",
+				"mUpdateClosestObjectTime",
+				"mShouldBeepEvenIfNoObject"
+			],
+			"properties": {
+				"mScreenUpdateTimer": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mScanlineLerpT": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mScreenUpdateTime": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mNormalizedCloesnessToObject": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mObjectIsWithinRange": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mBeepDelayMax": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mBeepDelayMin": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mDetectionRange": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mUpdateClosestObjectTime": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
 				"mShouldBeepEvenIfNoObject": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
