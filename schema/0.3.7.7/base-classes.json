@@ -1122,10 +1122,7 @@
 		"FGBuildableGenerator--no-fuel--base--base--base--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--powered--base--base--base",
-			"required": [
-				"mPowerProduction",
-				"mLoadPercentage"
-			],
+			"required": ["mPowerProduction", "mLoadPercentage"],
 			"properties": {
 				"mPowerProduction": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
