@@ -66,8 +66,6 @@ import type {
 	mDisableSnapOn_bottom as docs_json_ts_0_5_2_1_properties_mDisableSnapOn_bottom,
 	mDisableSnapOn_top as docs_json_ts_0_5_2_1_properties_mDisableSnapOn_top,
 	mDockingRuleSet as docs_json_ts_0_5_2_1_properties_mDockingRuleSet,
-	mPersistentBigIcon as docs_json_ts_0_5_2_1_properties_mPersistentBigIcon,
-	mSmallIcon as docs_json_ts_0_5_2_1_properties_mSmallIcon,
 	mUnlocks_item as docs_json_ts_0_5_2_1_properties_mUnlocks_item,
 } from './../types/properties.ts';
 
@@ -149,6 +147,10 @@ import type {
 	FGWeaponProjectileFire_base as docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectileFire_base,
 	FGWeaponProjectileFire_base_random as docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectileFire_base_random,
 } from './../../0.3.7.7/classes/Base.ts';
+
+import type {
+	Texture2D as docs_json_ts_0_4_2_11_properties_Texture2D,
+} from './../../0.4.2.11/types/properties.ts';
 
 type FGBuildable_base = docs_json_ts_0_4_2_11_classes_base_FGBuildable_base & {
 	mAllowColoring: docs_json_ts_common_types_bool_string,
@@ -555,8 +557,8 @@ type FGBuildableWire = docs_json_ts_0_3_7_7_classes_base_FGBuildableWire_base & 
 type FGConsumableDescriptor = docs_json_ts_0_3_7_7_classes_base_FGConsumableDescriptor_base & FGDescriptor_sinkable & FGItemDescriptor_base;
 
 type FGDescriptor = docs_json_ts_0_4_2_11_classes_base_FGDescriptor_base & {
-	mPersistentBigIcon: docs_json_ts_0_5_2_1_properties_mPersistentBigIcon | 'None',
-	mSmallIcon: docs_json_ts_0_5_2_1_properties_mSmallIcon | 'None',
+	mPersistentBigIcon: docs_json_ts_0_4_2_11_properties_Texture2D | 'None',
+	mSmallIcon: docs_json_ts_0_4_2_11_properties_Texture2D | 'None',
 };
 
 type FGDescriptor_BuildMenu = FGDescriptor_BuildMenu_base & FGDescriptor;
@@ -723,7 +725,7 @@ type FGSchematic_base_base = docs_json_ts_0_4_2_11_classes_base_FGSchematic_base
 
 type FGSchematic_base_base_base = docs_json_ts_0_4_2_11_classes_base_FGSchematic_base_base_base_base & {
 	mDependenciesBlocksSchematicAccess: docs_json_ts_common_types_bool_string,
-	mSmallSchematicIcon: 'None' | `${'Texture2D /Game/FactoryGame/' | 'Texture2D\'"/Game/FactoryGame/'}${string}${`${`${string}${'_'}${'64'}`}${'.'}${`${string}${'_'}${'64'}`}` | `${`${string}${'_'}${'256'}`}${'.'}${`${string}${'_'}${'256'}`}` | `${`${string}${'_'}${'Map'}`}${'.'}${`${string}${'_'}${'Map'}`}`}${'"\'' | '\'' | ''}`,
+	mSmallSchematicIcon: 'None' | docs_json_ts_0_4_2_11_properties_Texture2D,
 	mRelevantShopSchematics: '' | [
 		...(`BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}` | 'None')[],
 	],

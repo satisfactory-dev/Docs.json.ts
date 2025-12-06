@@ -32,10 +32,6 @@ type mDisableSnapOn_front_right = {
 	Right: docs_json_ts_common_types_bool_string,
 };
 
-type mPersistentBigIcon = `Texture2D /Game/FactoryGame/${Exclude<string, ''>}`;
-
-type mSmallIcon = `Texture2D /Game/FactoryGame/${Exclude<string, ''>}`;
-
 type mUnlocks_item = mUnlocks_item_mTapeUnlocks | mUnlocks_item_mScannableObjects | docs_json_ts_0_3_7_7_properties_mUnlocks_item_mRecipes | docs_json_ts_0_3_7_7_properties_mUnlocks_item_mNumInventorySlotsToUnlock | docs_json_ts_0_4_2_11_properties_mUnlocks_item_mResourcePairsToAddToScanner | docs_json_ts_0_5_2_1_properties_mUnlocks_item_mEmotes | docs_json_ts_0_3_7_7_properties_mUnlocks_item_mSchematics | docs_json_ts_0_3_7_7_properties_mUnlocks_item_base | docs_json_ts_0_4_2_11_properties_mUnlocks_item_mNumArmEquipmentSlotsToUnlock | docs_json_ts_0_3_7_7_properties_mUnlocks_item_mItemsToGive;
 
 type mUnlocks_item_mScannableObjects = docs_json_ts_0_3_7_7_properties_mUnlocks_item_base & {
@@ -81,8 +77,6 @@ type ItemClass_list = [
 export type {
 	mAllowedResourceForms,
 	mDisableSnapOn_front_right,
-	mPersistentBigIcon,
-	mSmallIcon,
 	mUnlocks_item,
 	mUnlocks_item_mScannableObjects,
 	mUnlocks_item_mTapeUnlocks,

@@ -46,10 +46,6 @@ import {
 } from '../0.3.7.7/StringDotString.ts';
 
 import {
-	Texture2D,
-} from './Texture2D.ts';
-
-import {
 	BlueprintGeneratedClass_non_quoted,
 	BlueprintGeneratedClass_quoted,
 } from '../0.3.7.7/BlueprintGeneratedClass.ts';
@@ -116,7 +112,6 @@ export function configure_parser(parser: SchemaParser) {
 		new BlueprintGeneratedClassSingleQuoted({ajv}),
 		new FGTrainPlatformConnection({ajv}),
 		new FGRailroadTrackConnectionComponent({ajv}),
-		new Texture2D({ajv}),
 		new NamedList({ajv}, 'NSLOCTEXT'),
 		...parser.types,
 		new TemplatedString({ajv}),

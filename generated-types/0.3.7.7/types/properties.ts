@@ -53,8 +53,6 @@ type mDisplayName = string;
 
 type mForm = 'RF_SOLID' | 'RF_LIQUID' | 'RF_INVALID';
 
-type mPersistentBigIcon = `Texture2D'/Game/FactoryGame/${string}${'/IconDesc_' | '/' | ''}${string}${'_'}${'256' | '512' | '1b' | '256_New'}${'.'}${string}${'_'}${'256' | '512' | '1b' | '256_New'}${'\''}`;
-
 type mRelevantEvents = [
 	'EV_Christmas',
 ];
@@ -64,8 +62,6 @@ type mSchematicDependencies_item = {
 	mSchematics: DocsDotJson_BlueprintGeneratedClass_quoted_list,
 	mRequireAllSchematicsToBePurchased: docs_json_ts_common_types_bool_string,
 };
-
-type mSmallIcon = `Texture2D'/Game/FactoryGame/${string}${'/IconDesc_' | '/' | ''}${string}${'_'}${'64' | '256' | '1b' | '64_new'}${'.'}${string}${'_'}${'64' | '256' | '1b' | '64_new'}${'\''}`;
 
 type mStackSize = 'SS_HUGE' | 'SS_MEDIUM' | 'SS_BIG' | 'SS_SMALL' | 'SS_ONE' | 'SS_FLUID';
 
@@ -126,6 +122,8 @@ type ItemClass_Amount_list = [
 	}[],
 ];
 
+type Texture2D = `Texture2D'/Game/FactoryGame/${Exclude<string, ''>}${'\''}`;
+
 type Tier = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7';
 
 export type {
@@ -139,10 +137,8 @@ export type {
 	mDisableSnapOn_top_bottom,
 	mDisplayName,
 	mForm,
-	mPersistentBigIcon,
 	mRelevantEvents,
 	mSchematicDependencies_item,
-	mSmallIcon,
 	mStackSize,
 	mSubCategories,
 	mType,
@@ -156,5 +152,6 @@ export type {
 	transform_Rotation_Translation_Scale3D,
 	DocsDotJson_BlueprintGeneratedClass_quoted_list,
 	ItemClass_Amount_list,
+	Texture2D,
 	Tier,
 };

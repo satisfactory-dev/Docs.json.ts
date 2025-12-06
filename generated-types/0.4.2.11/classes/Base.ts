@@ -122,10 +122,10 @@ import type {
 	mFogPlaneTransforms_list as docs_json_ts_0_4_2_11_properties_mFogPlaneTransforms_list,
 	mForm as docs_json_ts_0_4_2_11_properties_mForm,
 	mFuel as docs_json_ts_0_4_2_11_properties_mFuel,
-	mPersistentBigIcon as docs_json_ts_0_4_2_11_properties_mPersistentBigIcon,
 	mSchematicDependencies_item as docs_json_ts_0_4_2_11_properties_mSchematicDependencies_item,
-	mSmallIcon as docs_json_ts_0_4_2_11_properties_mSmallIcon,
 	mUnlocks_item as docs_json_ts_0_4_2_11_properties_mUnlocks_item,
+	Texture2D as docs_json_ts_0_4_2_11_properties_Texture2D,
+	Texture2D_quoted as docs_json_ts_0_4_2_11_properties_Texture2D_quoted,
 	Tier as docs_json_ts_0_4_2_11_properties_Tier,
 } from './../types/properties.ts';
 
@@ -557,8 +557,8 @@ type FGConsumableEquipment_base = docs_json_ts_0_3_7_7_classes_base_FGConsumable
 };
 
 type FGDescriptor = FGDescriptor_base & {
-	mPersistentBigIcon: docs_json_ts_0_4_2_11_properties_mPersistentBigIcon | 'None',
-	mSmallIcon: docs_json_ts_0_4_2_11_properties_mSmallIcon | 'None',
+	mPersistentBigIcon: docs_json_ts_0_4_2_11_properties_Texture2D | 'None',
+	mSmallIcon: docs_json_ts_0_4_2_11_properties_Texture2D | 'None',
 };
 
 type FGDescriptor_base = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_base & {
@@ -671,7 +671,7 @@ type FGSchematic = FGSchematic_base & {
 	mUnlocks: [
 		...docs_json_ts_0_4_2_11_properties_mUnlocks_item[],
 	],
-	mSmallSchematicIcon: 'None' | `${'Texture2D /Game/FactoryGame/' | 'Texture2D\'/Game/FactoryGame/' | 'Texture2D\'"/Game/FactoryGame/'}${string}${'/IconDesc_' | '/' | ''}${string}${'_'}${'64' | '256'}${'.'}${string}${'_'}${'64' | '256'}${'"\'' | '\'' | ''}`,
+	mSmallSchematicIcon: 'None' | docs_json_ts_0_4_2_11_properties_Texture2D,
 	mRelevantShopSchematics: docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list | '',
 };
 
@@ -705,7 +705,7 @@ type FGSchematic_base_base_props_with_mSchematicIcon = FGSchematic_base_base_bas
 		TintColor: {
 			SpecifiedColor: docs_json_ts_common_types_RGBA,
 		},
-		ResourceObject?: `${'Texture2D /Game/FactoryGame/' | 'Texture2D\'/Game/FactoryGame/' | 'Texture2D\'"/Game/FactoryGame/'}${string}${'/IconDesc_' | '/' | ''}${string}${'_'}${'1' | '2' | '3' | '4' | '5' | 'Factory' | 'MAM' | 'Logistics' | 'Vehicle' | 'Structure' | 'Equipment' | 'Icon' | '64' | '64_new' | '256' | '512'}${'.'}${string}${'_'}${'1' | '2' | '3' | '4' | '5' | 'Factory' | 'MAM' | 'Logistics' | 'Vehicle' | 'Structure' | 'Equipment' | 'Icon' | '64' | '64_new' | '256' | '512'}${'"\'' | '\'' | ''}`,
+		ResourceObject?: docs_json_ts_0_4_2_11_properties_Texture2D_quoted,
 		UVRegion: {
 			Min: docs_json_ts_common_types_XY_decimal_string,
 			Max: docs_json_ts_common_types_XY_decimal_string,

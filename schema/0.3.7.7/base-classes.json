@@ -3531,7 +3531,7 @@
 				"mPersistentBigIcon": {
 					"oneOf": [
 						{
-							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mPersistentBigIcon"
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/Texture2D"
 						},
 						{
 							"type": "string",
@@ -3542,7 +3542,7 @@
 				"mSmallIcon": {
 					"oneOf": [
 						{
-							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mSmallIcon"
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/Texture2D"
 						},
 						{
 							"type": "string",

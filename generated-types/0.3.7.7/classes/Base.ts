@@ -13,12 +13,11 @@ import type {
 	mDisableSnapOn_top_bottom as docs_json_ts_0_3_7_7_properties_mDisableSnapOn_top_bottom,
 	mDisplayName as docs_json_ts_0_3_7_7_properties_mDisplayName,
 	mForm as docs_json_ts_0_3_7_7_properties_mForm,
-	mPersistentBigIcon as docs_json_ts_0_3_7_7_properties_mPersistentBigIcon,
 	mRelevantEvents as docs_json_ts_0_3_7_7_properties_mRelevantEvents,
-	mSmallIcon as docs_json_ts_0_3_7_7_properties_mSmallIcon,
 	mStackSize as docs_json_ts_0_3_7_7_properties_mStackSize,
 	mSubCategories as docs_json_ts_0_3_7_7_properties_mSubCategories,
 	mType as docs_json_ts_0_3_7_7_properties_mType,
+	Texture2D as docs_json_ts_0_3_7_7_properties_Texture2D,
 	Tier as docs_json_ts_0_3_7_7_properties_Tier,
 	transform_Rotation_Translation_Scale3D as docs_json_ts_0_3_7_7_properties_transform_Rotation_Translation_Scale3D,
 } from './../types/properties.ts';
@@ -936,8 +935,8 @@ type FGConsumableEquipment_base = FGEquipment_base & {
 
 type FGDescriptor = FGDescriptor_base & {
 	mForm: docs_json_ts_0_3_7_7_properties_mForm,
-	mPersistentBigIcon: docs_json_ts_0_3_7_7_properties_mPersistentBigIcon | 'None',
-	mSmallIcon: docs_json_ts_0_3_7_7_properties_mSmallIcon | 'None',
+	mPersistentBigIcon: docs_json_ts_0_3_7_7_properties_Texture2D | 'None',
+	mSmallIcon: docs_json_ts_0_3_7_7_properties_Texture2D | 'None',
 };
 
 type FGDescriptor_base = isDescribed & {

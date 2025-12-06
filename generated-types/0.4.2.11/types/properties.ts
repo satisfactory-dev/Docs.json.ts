@@ -56,14 +56,10 @@ type mFuel_item_no_byproduct = mFuel_item_base & {
 	mByproductAmount: '',
 };
 
-type mPersistentBigIcon = `${'Texture2D /Game/FactoryGame/' | 'Texture2D\'/Game/FactoryGame/' | 'Texture2D\'"/Game/FactoryGame/'}${string}${'/IconDesc_' | '/' | ''}${string}${'_'}${'256' | '512' | '1b' | '256_New'}${'.'}${string}${'_'}${'256' | '512' | '1b' | '256_New'}${'"\'' | '\'' | ''}`;
-
 type mSchematicDependencies_item = {
 	Class: `BP_${string}${'_C'}`,
 	mGamePhase: 'EGP_FoodCourt',
 };
-
-type mSmallIcon = `${'Texture2D /Game/FactoryGame/' | 'Texture2D\'/Game/FactoryGame/' | 'Texture2D\'"/Game/FactoryGame/'}${string}${'/IconDesc_' | '/' | ''}${string}${'_'}${'64' | '256' | '1b' | '64_new'}${'.'}${string}${'_'}${'64' | '256' | '1b' | '64_new'}${'"\'' | '\'' | ''}`;
 
 type mUnlocks_item = docs_json_ts_0_3_7_7_properties_mUnlocks_item_base | docs_json_ts_0_3_7_7_properties_mUnlocks_item_mRecipes | mUnlocks_item_mResourcePairsToAddToScanner | docs_json_ts_0_3_7_7_properties_mUnlocks_item_mNumInventorySlotsToUnlock | docs_json_ts_0_3_7_7_properties_mUnlocks_item_mSchematics | mUnlocks_item_mNumArmEquipmentSlotsToUnlock | docs_json_ts_0_3_7_7_properties_mUnlocks_item_mItemsToGive;
 
@@ -90,6 +86,10 @@ type DocsDotJson_FGRailroadTrackConnectionComponent_quoted_list = [
     ...`FGRailroadTrackConnectionComponent'"/Game/FactoryGame/${string}${'"\''}`[],
 ];
 
+type Texture2D = `Texture2D /Game/FactoryGame/${Exclude<string, ''>}`;
+
+type Texture2D_quoted = `Texture2D'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
+
 type Tier = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8';
 
 export type {
@@ -101,12 +101,12 @@ export type {
 	mFuel_item_base,
 	mFuel_item_has_byproduct,
 	mFuel_item_no_byproduct,
-	mPersistentBigIcon,
 	mSchematicDependencies_item,
-	mSmallIcon,
 	mUnlocks_item,
 	mUnlocks_item_mNumArmEquipmentSlotsToUnlock,
 	mUnlocks_item_mResourcePairsToAddToScanner,
 	DocsDotJson_FGRailroadTrackConnectionComponent_quoted_list,
+	Texture2D,
+	Texture2D_quoted,
 	Tier,
 };

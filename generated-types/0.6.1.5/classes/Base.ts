@@ -18,8 +18,6 @@ import type {
 	ItemClass_list as docs_json_ts_0_6_1_5_properties_ItemClass_list,
 	mAllowedResourceForms as docs_json_ts_0_6_1_5_properties_mAllowedResourceForms,
 	mDisableSnapOn_front_right as docs_json_ts_0_6_1_5_properties_mDisableSnapOn_front_right,
-	mPersistentBigIcon as docs_json_ts_0_6_1_5_properties_mPersistentBigIcon,
-	mSmallIcon as docs_json_ts_0_6_1_5_properties_mSmallIcon,
 	mUnlocks_item as docs_json_ts_0_6_1_5_properties_mUnlocks_item,
 } from './../types/properties.ts';
 
@@ -172,6 +170,10 @@ import type {
 	FGWeaponProjectileFire_base_random_base as docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectileFire_base_random_base,
 	isDescribed as docs_json_ts_0_3_7_7_classes_base_isDescribed,
 } from './../../0.3.7.7/classes/Base.ts';
+
+import type {
+	Texture2D as docs_json_ts_0_4_2_11_properties_Texture2D,
+} from './../../0.4.2.11/types/properties.ts';
 
 type FGAmmoType_base = FGAmmoType_base_base & {
 	mFiringDirection: docs_json_ts_common_types_XYZ_decimal_string,
@@ -520,8 +522,8 @@ type FGConsumableDescriptor = docs_json_ts_0_3_7_7_classes_base_FGConsumableDesc
 type FGConsumableEquipment = docs_json_ts_0_4_2_11_classes_base_FGConsumableEquipment_base & FGEquipment;
 
 type FGDescriptor = docs_json_ts_0_4_2_11_classes_base_FGDescriptor_base & {
-	mPersistentBigIcon: docs_json_ts_0_6_1_5_properties_mPersistentBigIcon | 'None',
-	mSmallIcon: docs_json_ts_0_6_1_5_properties_mSmallIcon | 'None',
+	mPersistentBigIcon: docs_json_ts_0_4_2_11_properties_Texture2D | 'None',
+	mSmallIcon: docs_json_ts_0_4_2_11_properties_Texture2D | 'None',
 };
 
 type FGEquipment = docs_json_ts_0_4_2_11_classes_base_FGEquipment_base & {

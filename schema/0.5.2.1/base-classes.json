@@ -1824,7 +1824,7 @@
 				"mPersistentBigIcon": {
 					"oneOf": [
 						{
-							"$ref": "docs.json.ts--0.5.2.1--properties#/$defs/mPersistentBigIcon"
+							"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/Texture2D"
 						},
 						{
 							"type": "string",
@@ -1835,7 +1835,7 @@
 				"mSmallIcon": {
 					"oneOf": [
 						{
-							"$ref": "docs.json.ts--0.5.2.1--properties#/$defs/mSmallIcon"
+							"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/Texture2D"
 						},
 						{
 							"type": "string",
@@ -2512,12 +2512,7 @@
 							"const": "None"
 						},
 						{
-							"type": "string",
-							"DocsDotJson_Texture2D": [
-								null,
-								null,
-								["64", "256", "Map"]
-							]
+							"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/Texture2D"
 						}
 					]
 				},
