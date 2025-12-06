@@ -2476,6 +2476,25 @@
 				}
 			]
 		},
+		"FGBuildableResourceExtractor--base--with-resources--base--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--base--base--timed--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--base--base--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--base--base--base--piped--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base--resources--base--base"
+				}
+			]
+		},
 		"FGBuildableResourceExtractor--miner--base": {
 			"allOf": [
 				{
@@ -2487,8 +2506,18 @@
 			]
 		},
 		"FGBuildableResourceExtractor--miner--base--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--miner--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--base--with-resources--base"
+				}
+			]
+		},
+		"FGBuildableResourceExtractor--miner--base--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableResourceExtractor--base--with-resources--base",
+			"$ref": "#/$defs/FGBuildableResourceExtractor--base--with-resources--base--base",
 			"required": [
 				"mParticleMap",
 				"mExtractorTypeName",
@@ -2617,8 +2646,18 @@
 			]
 		},
 		"FGBuildableResourceExtractor--miner--mk2--base--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--miner--mk2--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--miner--base--base"
+				}
+			]
+		},
+		"FGBuildableResourceExtractor--miner--mk2--base--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableResourceExtractor--miner--base--base",
+			"$ref": "#/$defs/FGBuildableResourceExtractor--miner--base--base--base",
 			"required": ["mCanPlayAfterStartUpStopped", "mDisplayName"],
 			"properties": {
 				"mCanPlayAfterStartUpStopped": {
@@ -2654,8 +2693,18 @@
 			]
 		},
 		"FGBuildableResourceExtractor--miner--mk3--base--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--miner--mk3--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--miner--base--base"
+				}
+			]
+		},
+		"FGBuildableResourceExtractor--miner--mk3--base--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableResourceExtractor--miner--base--base",
+			"$ref": "#/$defs/FGBuildableResourceExtractor--miner--base--base--base",
 			"required": ["mCanPlayAfterStartUpStopped", "mDisplayName"],
 			"properties": {
 				"mCanPlayAfterStartUpStopped": {
@@ -2691,8 +2740,18 @@
 			]
 		},
 		"FGBuildableResourceExtractor--oil--base--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--oil--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--base--with-resources--base"
+				}
+			]
+		},
+		"FGBuildableResourceExtractor--oil--base--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableResourceExtractor--base--with-resources--base",
+			"$ref": "#/$defs/FGBuildableResourceExtractor--base--with-resources--base--base",
 			"required": ["mAllowedResourceForms"],
 			"properties": {
 				"mAllowedResourceForms": {

@@ -667,9 +667,13 @@ type FGBuildableResourceExtractor_base_with_resources = FGBuildableResourceExtra
 
 type FGBuildableResourceExtractor_base_with_resources_base = FGBuildableResourceExtractor_base_base & FGBuildable_powered_base_resources_base;
 
+type FGBuildableResourceExtractor_base_with_resources_base_base = FGBuildableResourceExtractor_base_base_timed_base & FGBuildable_powered_base_base_base & FGBuildableResourceExtractor_base_base_base_base_base & FGBuildableResourceExtractor_base_base_base_piped_base & FGBuildable_powered_base_resources_base_base;
+
 type FGBuildableResourceExtractor_miner_base = FGBuildableResourceExtractor_miner_base_base & FGBuildableResourceExtractor_base_with_resources;
 
-type FGBuildableResourceExtractor_miner_base_base = FGBuildableResourceExtractor_base_with_resources_base & {
+type FGBuildableResourceExtractor_miner_base_base = FGBuildableResourceExtractor_miner_base_base_base & FGBuildableResourceExtractor_base_with_resources_base;
+
+type FGBuildableResourceExtractor_miner_base_base_base = FGBuildableResourceExtractor_base_with_resources_base_base & {
 	mInternalMiningState_0?: 'NewEnumerator0',
 	mToggleMiningStateHandle_0?: docs_json_ts_common_types_empty_object,
 	mMinimumDrillTime_0?: docs_json_ts_common_types_decimal_string,
@@ -701,7 +705,9 @@ type FGBuildableResourceExtractor_miner_mk2 = FGBuildableResourceExtractor & FGB
 
 type FGBuildableResourceExtractor_miner_mk2_base = FGBuildableResourceExtractor_miner_mk2_base_base & FGBuildableResourceExtractor_miner_base;
 
-type FGBuildableResourceExtractor_miner_mk2_base_base = FGBuildableResourceExtractor_miner_base_base & {
+type FGBuildableResourceExtractor_miner_mk2_base_base = FGBuildableResourceExtractor_miner_mk2_base_base_base & FGBuildableResourceExtractor_miner_base_base;
+
+type FGBuildableResourceExtractor_miner_mk2_base_base_base = FGBuildableResourceExtractor_miner_base_base_base & {
 	mCanPlayAfterStartUpStopped: docs_json_ts_common_types_bool_string,
 	mDisplayName: 'Miner Mk.2',
 };
@@ -710,7 +716,9 @@ type FGBuildableResourceExtractor_miner_mk3 = FGBuildableResourceExtractor & FGB
 
 type FGBuildableResourceExtractor_miner_mk3_base = FGBuildableResourceExtractor_miner_mk3_base_base & FGBuildableResourceExtractor_miner_base;
 
-type FGBuildableResourceExtractor_miner_mk3_base_base = FGBuildableResourceExtractor_miner_base_base & {
+type FGBuildableResourceExtractor_miner_mk3_base_base = FGBuildableResourceExtractor_miner_mk3_base_base_base & FGBuildableResourceExtractor_miner_base_base;
+
+type FGBuildableResourceExtractor_miner_mk3_base_base_base = FGBuildableResourceExtractor_miner_base_base_base & {
 	mCanPlayAfterStartUpStopped: docs_json_ts_common_types_bool_string,
 	mDisplayName: 'Miner Mk.3',
 };
@@ -719,7 +727,9 @@ type FGBuildableResourceExtractor_oil = FGBuildableResourceExtractor & FGBuildab
 
 type FGBuildableResourceExtractor_oil_base = FGBuildableResourceExtractor_oil_base_base & FGBuildableResourceExtractor_base_with_resources;
 
-type FGBuildableResourceExtractor_oil_base_base = FGBuildableResourceExtractor_base_with_resources_base & {
+type FGBuildableResourceExtractor_oil_base_base = FGBuildableResourceExtractor_oil_base_base_base & FGBuildableResourceExtractor_base_with_resources_base;
+
+type FGBuildableResourceExtractor_oil_base_base_base = FGBuildableResourceExtractor_base_with_resources_base_base & {
 	mAllowedResourceForms: [
 		'RF_LIQUID',
 	],
@@ -1533,19 +1543,24 @@ export type {
 	FGBuildableResourceExtractor_base_base_timed_base,
 	FGBuildableResourceExtractor_base_with_resources,
 	FGBuildableResourceExtractor_base_with_resources_base,
+	FGBuildableResourceExtractor_base_with_resources_base_base,
 	FGBuildableResourceExtractor_miner_base,
 	FGBuildableResourceExtractor_miner_base_base,
+	FGBuildableResourceExtractor_miner_base_base_base,
 	FGBuildableResourceExtractor_miner_mk1,
 	FGBuildableResourceExtractor_miner_mk1_base,
 	FGBuildableResourceExtractor_miner_mk2,
 	FGBuildableResourceExtractor_miner_mk2_base,
 	FGBuildableResourceExtractor_miner_mk2_base_base,
+	FGBuildableResourceExtractor_miner_mk2_base_base_base,
 	FGBuildableResourceExtractor_miner_mk3,
 	FGBuildableResourceExtractor_miner_mk3_base,
 	FGBuildableResourceExtractor_miner_mk3_base_base,
+	FGBuildableResourceExtractor_miner_mk3_base_base_base,
 	FGBuildableResourceExtractor_oil,
 	FGBuildableResourceExtractor_oil_base,
 	FGBuildableResourceExtractor_oil_base_base,
+	FGBuildableResourceExtractor_oil_base_base_base,
 	FGBuildableResourceExtractor_water,
 	FGBuildableResourceExtractor_water_base,
 	FGBuildableResourceExtractor_water_base_base,

@@ -1581,8 +1581,18 @@
 			]
 		},
 		"FGBuildableResourceExtractor--miner--mk1--base--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--miner--mk1--base--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--miner--base--base"
+				}
+			]
+		},
+		"FGBuildableResourceExtractor--miner--mk1--base--base--base": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--miner--base--base",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--miner--base--base--base",
 			"required": ["CanPlayAfterStartUpStopped", "mDisplayName"],
 			"properties": {
 				"CanPlayAfterStartUpStopped": {
