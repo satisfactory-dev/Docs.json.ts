@@ -559,8 +559,8 @@ function Thingish_list_generate_typescript_data_validated(
 				false,
 			), 'g')
 			: new RegExp(Thingish_list_schema_to_pattern__str(
-			schema.items,
-		), 'g');
+				schema.items,
+			), 'g');
 
 		const items: string[] = [];
 
