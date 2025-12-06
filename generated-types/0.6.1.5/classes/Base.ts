@@ -33,6 +33,7 @@ import type {
 	FGBuildable_isFrame as docs_json_ts_0_5_2_1_classes_base_FGBuildable_isFrame,
 	FGBuildable_occupied as docs_json_ts_0_5_2_1_classes_base_FGBuildable_occupied,
 	FGBuildable_powered as docs_json_ts_0_5_2_1_classes_base_FGBuildable_powered,
+	FGBuildable_powered_base_base as docs_json_ts_0_5_2_1_classes_base_FGBuildable_powered_base_base,
 	FGBuildable_tiered as docs_json_ts_0_5_2_1_classes_base_FGBuildable_tiered,
 	FGBuildable_with_elevation as docs_json_ts_0_5_2_1_classes_base_FGBuildable_with_elevation,
 	FGBuildable_with_size_and_elevation as docs_json_ts_0_5_2_1_classes_base_FGBuildable_with_size_and_elevation,
@@ -113,6 +114,7 @@ import type {
 } from './../../0.5.2.1/classes/Base.ts';
 
 import type {
+	FGBuildable_powered_base_base as docs_json_ts_0_4_2_11_classes_base_FGBuildable_powered_base_base,
 	FGBuildableFrackingActivator_base as docs_json_ts_0_4_2_11_classes_base_FGBuildableFrackingActivator_base,
 	FGBuildableResourceExtractor_miner_mk1_base_base as docs_json_ts_0_4_2_11_classes_base_FGBuildableResourceExtractor_miner_mk1_base_base,
 	FGConsumableEquipment_base as docs_json_ts_0_4_2_11_classes_base_FGConsumableEquipment_base,
@@ -151,6 +153,7 @@ import type {
 	FGBuildablePole_base as docs_json_ts_0_3_7_7_classes_base_FGBuildablePole_base,
 	FGBuildableResourceExtractor_base_base_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_base_base_base,
 	FGBuildableResourceExtractor_base_base_base_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_base_base_base_base,
+	FGBuildableResourceExtractor_base_base_base_base_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_base_base_base_base_base,
 	FGBuildableResourceExtractor_base_base_base_piped as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_base_base_base_piped,
 	FGBuildableResourceExtractor_base_base_timed as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_base_base_timed,
 	FGChainsaw as docs_json_ts_0_3_7_7_classes_base_FGChainsaw,
@@ -308,6 +311,8 @@ type FGBuildable_occupied = docs_json_ts_0_5_2_1_classes_base_FGBuildable_occupi
 
 type FGBuildable_powered = docs_json_ts_0_5_2_1_classes_base_FGBuildable_powered & FGBuildable_base;
 
+type FGBuildable_powered_base = docs_json_ts_0_5_2_1_classes_base_FGBuildable_powered_base_base & docs_json_ts_0_4_2_11_classes_base_FGBuildable_powered_base_base & FGBuildable_base;
+
 type FGBuildable_tiered = docs_json_ts_0_5_2_1_classes_base_FGBuildable_tiered & FGBuildable_base;
 
 type FGBuildable_with_depth = FGBuildable_base & {
@@ -462,7 +467,11 @@ type FGBuildableResourceExtractor_base_base = docs_json_ts_0_3_7_7_classes_base_
 
 type FGBuildableResourceExtractor_base_untimed = docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_base_base_base_base & FGBuildable_powered;
 
-type FGBuildableResourceExtractor_base_version_specific = FGBuildableResourceExtractor_base_untimed & {
+type FGBuildableResourceExtractor_base_untimed_base = docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_base_base_base_base_base & FGBuildable_powered_base;
+
+type FGBuildableResourceExtractor_base_version_specific = FGBuildableResourceExtractor_base_version_specific_base & FGBuildableResourceExtractor_base_untimed;
+
+type FGBuildableResourceExtractor_base_version_specific_base = FGBuildableResourceExtractor_base_untimed_base & {
 	mTryFindMissingResource: docs_json_ts_common_types_bool_string,
 	mAllowedResourceForms: docs_json_ts_0_6_1_5_properties_mAllowedResourceForms,
 };
@@ -729,6 +738,7 @@ export type {
 	FGBuildable_foundation_mDisableSnapOn,
 	FGBuildable_occupied,
 	FGBuildable_powered,
+	FGBuildable_powered_base,
 	FGBuildable_tiered,
 	FGBuildable_with_depth,
 	FGBuildableAttachmentMerger,
@@ -797,7 +807,9 @@ export type {
 	FGBuildableResourceExtractor_base,
 	FGBuildableResourceExtractor_base_base,
 	FGBuildableResourceExtractor_base_untimed,
+	FGBuildableResourceExtractor_base_untimed_base,
 	FGBuildableResourceExtractor_base_version_specific,
+	FGBuildableResourceExtractor_base_version_specific_base,
 	FGBuildableResourceExtractor_miner_mk1,
 	FGBuildableResourceExtractor_miner_mk2,
 	FGBuildableResourceExtractor_miner_mk3,

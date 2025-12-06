@@ -124,6 +124,25 @@
 				}
 			}
 		},
+		"XYZ--integer_string": {
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": ["X", "Y", "Z"],
+				"properties": {
+					"X": {
+						"$ref": "#/$defs/integer_string"
+					},
+					"Y": {
+						"$ref": "#/$defs/integer_string"
+					},
+					"Z": {
+						"$ref": "#/$defs/integer_string"
+					}
+				}
+			}
+		},
 		"XYZ--decimal_string--list": {
 			"type": "string",
 			"typed_string": {

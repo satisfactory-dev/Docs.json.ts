@@ -414,8 +414,18 @@
 			]
 		},
 		"FGBuildable--powered--base--resources--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base--resources--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base--base"
+				}
+			]
+		},
+		"FGBuildable--powered--base--resources--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--base--base",
+			"$ref": "#/$defs/FGBuildable--powered--base--base--base",
 			"required": [
 				"mOnlyAllowCertainResources",
 				"mAllowedResources",
@@ -2321,8 +2331,18 @@
 			]
 		},
 		"FGBuildableResourceExtractor--base--base--base--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--base--base--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base--base"
+				}
+			]
+		},
+		"FGBuildableResourceExtractor--base--base--base--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--base--base",
+			"$ref": "#/$defs/FGBuildable--powered--base--base--base",
 			"required": [
 				"mOnlyAllowCertainResources",
 				"mAllowedResources",
@@ -2350,8 +2370,18 @@
 			}
 		},
 		"FGBuildableResourceExtractor--base--base--base--piped": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--base--base--base--piped--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base--base"
+				}
+			]
+		},
+		"FGBuildableResourceExtractor--base--base--base--piped--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--base--base",
+			"$ref": "#/$defs/FGBuildable--powered--base--base--base",
 			"required": ["mPipeOutputConnections", "mReplicatedFlowRate"],
 			"properties": {
 				"mPipeOutputConnections": {
@@ -2364,8 +2394,18 @@
 			}
 		},
 		"FGBuildableResourceExtractor--base--base--timed": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--base--base--timed--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base--base"
+				}
+			]
+		},
+		"FGBuildableResourceExtractor--base--base--timed--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--base--base",
+			"$ref": "#/$defs/FGBuildable--powered--base--base--base",
 			"required": [
 				"mExtractStartupTime",
 				"mExtractStartupTimer",

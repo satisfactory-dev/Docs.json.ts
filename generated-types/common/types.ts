@@ -47,6 +47,12 @@ type XYZ_decimal_string = {
 	Z: decimal_string_signed,
 };
 
+type XYZ_integer_string = {
+	X: integer_string,
+	Y: integer_string,
+	Z: integer_string,
+};
+
 type XYZ_decimal_string_list = [
 	{
 		X: decimal_string_signed,
@@ -79,6 +85,7 @@ export type {
 	RGBA,
 	XY_decimal_string,
 	XYZ_decimal_string,
+	XYZ_integer_string,
 	XYZ_decimal_string_list,
 	XYZW_decimal_string,
 };

@@ -80,15 +80,15 @@ type FGBuildable_docking_station = FGBuildable_docking_station_base & FGBuildabl
 
 type FGBuildable_docking_station_base = FGBuildable_docking_station_base_with_mMapText & FGBuildable_docking_station_base_base;
 
-type FGBuildable_docking_station_base_with_mMapText = FGBuildable_docking_station_base_base_base & {
-	mMapText: string,
-};
-
 type FGBuildable_docking_station_base_base = FGBuildable_docking_station_base_base_base & FGBuildable_powered_storage_base_base;
 
 type FGBuildable_docking_station_base_base_base = FGBuildable_powered_storage_base_base_base & {
 	mTransferSpeed: docs_json_ts_common_types_decimal_string,
 	mStackTransferSize: docs_json_ts_common_types_decimal_string,
+};
+
+type FGBuildable_docking_station_base_with_mMapText = FGBuildable_docking_station_base_base_base & {
+	mMapText: string,
 };
 
 type FGBuildable_occupied = FGBuildable_occupied_base & FGBuildable;
@@ -151,7 +151,9 @@ type FGBuildable_powered_base_base_with_mNumCyclesForProductivity = FGBuildable_
 
 type FGBuildable_powered_base_resources = FGBuildable_powered_base_resources_base & FGBuildable_powered_base;
 
-type FGBuildable_powered_base_resources_base = FGBuildable_powered_base_base & {
+type FGBuildable_powered_base_resources_base = FGBuildable_powered_base_resources_base_base & FGBuildable_powered_base_base;
+
+type FGBuildable_powered_base_resources_base_base = FGBuildable_powered_base_base_base & {
 	mOnlyAllowCertainResources: docs_json_ts_common_types_bool_string,
 	mAllowedResources: docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list | '',
 	mExtractorTypeName: 'None' | 'Miner',
@@ -629,18 +631,24 @@ type FGBuildableResourceExtractor_base_base = FGBuildableResourceExtractor_base_
 
 type FGBuildableResourceExtractor_base_base_base = FGBuildableResourceExtractor_base_base_base_base & FGBuildableResourceExtractor_base_base_base_piped;
 
-type FGBuildableResourceExtractor_base_base_base_base = FGBuildable_powered_base_base & {
+type FGBuildableResourceExtractor_base_base_base_base = FGBuildableResourceExtractor_base_base_base_base_base & FGBuildable_powered_base_base;
+
+type FGBuildableResourceExtractor_base_base_base_base_base = FGBuildable_powered_base_base_base & {
 	mOnlyAllowCertainResources: docs_json_ts_common_types_bool_string,
 	mAllowedResources: docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list | '',
 	mExtractorTypeName: 'None' | 'Miner',
 };
 
-type FGBuildableResourceExtractor_base_base_base_piped = FGBuildable_powered_base_base & {
+type FGBuildableResourceExtractor_base_base_base_piped = FGBuildableResourceExtractor_base_base_base_piped_base & FGBuildable_powered_base_base;
+
+type FGBuildableResourceExtractor_base_base_base_piped_base = FGBuildable_powered_base_base_base & {
 	mPipeOutputConnections: '',
 	mReplicatedFlowRate: docs_json_ts_common_types_decimal_string,
 };
 
-type FGBuildableResourceExtractor_base_base_timed = FGBuildable_powered_base_base & {
+type FGBuildableResourceExtractor_base_base_timed = FGBuildableResourceExtractor_base_base_timed_base & FGBuildable_powered_base_base;
+
+type FGBuildableResourceExtractor_base_base_timed_base = FGBuildable_powered_base_base_base & {
 	mExtractStartupTime: docs_json_ts_common_types_decimal_string_signed,
 	mExtractStartupTimer: docs_json_ts_common_types_decimal_string,
 	mExtractCycleTime: docs_json_ts_common_types_decimal_string,
@@ -1350,9 +1358,9 @@ export type {
 	FGBuildable_DisableAttachmentSnapOn,
 	FGBuildable_docking_station,
 	FGBuildable_docking_station_base,
-	FGBuildable_docking_station_base_with_mMapText,
 	FGBuildable_docking_station_base_base,
 	FGBuildable_docking_station_base_base_base,
+	FGBuildable_docking_station_base_with_mMapText,
 	FGBuildable_occupied,
 	FGBuildable_occupied_base,
 	FGBuildable_pole,
@@ -1369,6 +1377,7 @@ export type {
 	FGBuildable_powered_base_base_with_mNumCyclesForProductivity,
 	FGBuildable_powered_base_resources,
 	FGBuildable_powered_base_resources_base,
+	FGBuildable_powered_base_resources_base_base,
 	FGBuildable_powered_storage,
 	FGBuildable_powered_storage_base,
 	FGBuildable_powered_storage_base_base,
@@ -1507,8 +1516,11 @@ export type {
 	FGBuildableResourceExtractor_base_base,
 	FGBuildableResourceExtractor_base_base_base,
 	FGBuildableResourceExtractor_base_base_base_base,
+	FGBuildableResourceExtractor_base_base_base_base_base,
 	FGBuildableResourceExtractor_base_base_base_piped,
+	FGBuildableResourceExtractor_base_base_base_piped_base,
 	FGBuildableResourceExtractor_base_base_timed,
+	FGBuildableResourceExtractor_base_base_timed_base,
 	FGBuildableResourceExtractor_base_with_resources,
 	FGBuildableResourceExtractor_base_with_resources_base,
 	FGBuildableResourceExtractor_miner_base,
