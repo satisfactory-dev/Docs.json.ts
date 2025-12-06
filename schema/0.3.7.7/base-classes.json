@@ -148,14 +148,6 @@
 				}
 			]
 		},
-		"FGBuildable--docking-station--base--with-mMapText": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildable--docking-station--base--base--base",
-			"required": ["mMapText"],
-			"properties": {
-				"mMapText": {"type": "string"}
-			}
-		},
 		"FGBuildable--docking-station--base--base": {
 			"allOf": [
 				{
@@ -177,6 +169,14 @@
 				"mStackTransferSize": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
+			}
+		},
+		"FGBuildable--docking-station--base--with-mMapText": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--docking-station--base--base--base",
+			"required": ["mMapText"],
+			"properties": {
+				"mMapText": {"type": "string"}
 			}
 		},
 		"FGBuildable--occupied": {
@@ -396,9 +396,7 @@
 		"FGBuildable--powered--base--base--with-mNumCyclesForProductivity": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--base",
-			"required": [
-				"mNumCyclesForProductivity"
-			],
+			"required": ["mNumCyclesForProductivity"],
 			"properties": {
 				"mNumCyclesForProductivity": {
 					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
