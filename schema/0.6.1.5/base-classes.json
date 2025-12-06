@@ -79,11 +79,22 @@
 													"type": "string",
 													"templated_string": [
 														"MaterialInstanceConstant'\"/Game/FactoryGame/Equipment/",
-														["RebarGun", "Rifle", "Holiday/SnowballWeapon", "NobeliskDetonator"],
+														[
+															"RebarGun",
+															"Rifle",
+															"Holiday/SnowballWeapon",
+															"NobeliskDetonator"
+														],
 														"/Material/",
-														{"type": "string", "minLength": 1},
+														{
+															"type": "string",
+															"minLength": 1
+														},
 														".",
-														{"type": "string", "minLength": 1},
+														{
+															"type": "string",
+															"minLength": 1
+														},
 														"\"'"
 													]
 												},
@@ -91,11 +102,20 @@
 													"type": "string",
 													"templated_string": [
 														"MaterialInstanceConstant'\"/Game/FactoryGame/Events/",
-														{"type": "string", "minLength": 1},
+														{
+															"type": "string",
+															"minLength": 1
+														},
 														"/Materials/",
-														{"type": "string", "minLength": 1},
+														{
+															"type": "string",
+															"minLength": 1
+														},
 														".",
-														{"type": "string", "minLength": 1},
+														{
+															"type": "string",
+															"minLength": 1
+														},
 														"\"'"
 													]
 												},
@@ -103,9 +123,15 @@
 													"type": "string",
 													"templated_string": [
 														"Material'\"/Game/FactoryGame/MasterMaterials/",
-														{"type": "string", "minLength": 1},
+														{
+															"type": "string",
+															"minLength": 1
+														},
 														".",
-														{"type": "string", "minLength": 1},
+														{
+															"type": "string",
+															"minLength": 1
+														},
 														"\"'"
 													]
 												}
@@ -1243,11 +1269,7 @@
 		"FGBuildableRadarTower": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--powered",
-			"required": [
-				"mMapText",
-				"mRevealRadius",
-				"mScannableDescriptors"
-			],
+			"required": ["mMapText", "mRevealRadius", "mScannableDescriptors"],
 			"properties": {
 				"mMapText": {
 					"type": "string",
@@ -1636,6 +1658,35 @@
 				}
 			]
 		},
+		"FGDescriptor": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGDescriptor--base",
+			"required": ["mPersistentBigIcon", "mSmallIcon"],
+			"properties": {
+				"mPersistentBigIcon": {
+					"oneOf": [
+						{
+							"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/mPersistentBigIcon"
+						},
+						{
+							"type": "string",
+							"const": "None"
+						}
+					]
+				},
+				"mSmallIcon": {
+					"oneOf": [
+						{
+							"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/mSmallIcon"
+						},
+						{
+							"type": "string",
+							"const": "None"
+						}
+					]
+				}
+			}
+		},
 		"FGEquipment": {
 			"type": "object",
 			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGEquipment--base",
@@ -1767,35 +1818,6 @@
 				}
 			]
 		},
-		"FGDescriptor": {
-			"type": "object",
-			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGDescriptor--base",
-			"required": ["mPersistentBigIcon", "mSmallIcon"],
-			"properties": {
-				"mPersistentBigIcon": {
-					"oneOf": [
-						{
-							"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/mPersistentBigIcon"
-						},
-						{
-							"type": "string",
-							"const": "None"
-						}
-					]
-				},
-				"mSmallIcon": {
-					"oneOf": [
-						{
-							"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/mSmallIcon"
-						},
-						{
-							"type": "string",
-							"const": "None"
-						}
-					]
-				}
-			}
-		},
 		"FGItemDescriptor--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGDescriptor",
@@ -1877,10 +1899,7 @@
 									"properties": {
 										"CompatibleItemType": {
 											"type": "string",
-											"enum": [
-												"CIT_AMMO",
-												"CIT_WEAPON"
-											]
+											"enum": ["CIT_AMMO", "CIT_WEAPON"]
 										},
 										"CompatibleItemDescriptors": {
 											"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
@@ -2242,7 +2261,10 @@
 								"type": "string",
 								"templated_string": [
 									"Texture2D'\"/Game/FactoryGame/",
-									{"type": "string", "minLength": 1},
+									{
+										"type": "string",
+										"minLength": 1
+									},
 									"\"'"
 								]
 							},

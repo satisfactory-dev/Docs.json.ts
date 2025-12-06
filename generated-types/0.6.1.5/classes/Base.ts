@@ -519,6 +519,11 @@ type FGConsumableDescriptor = docs_json_ts_0_3_7_7_classes_base_FGConsumableDesc
 
 type FGConsumableEquipment = docs_json_ts_0_4_2_11_classes_base_FGConsumableEquipment_base & FGEquipment;
 
+type FGDescriptor = docs_json_ts_0_4_2_11_classes_base_FGDescriptor_base & {
+	mPersistentBigIcon: docs_json_ts_0_6_1_5_properties_mPersistentBigIcon | 'None',
+	mSmallIcon: docs_json_ts_0_6_1_5_properties_mSmallIcon | 'None',
+};
+
 type FGEquipment = docs_json_ts_0_4_2_11_classes_base_FGEquipment_base & {
 	mOnlyVisibleToOwner: docs_json_ts_common_types_bool_string,
 	mReceivedDamageModifiers: '',
@@ -551,11 +556,6 @@ type FGGolfCartDispenser = docs_json_ts_0_5_2_1_classes_base_FGGolfCartDispenser
 type FGHoverPack = docs_json_ts_0_4_2_11_classes_base_FGHoverPack_base & FGEquipment_noisy;
 
 type FGItemDescriptor = docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable_base & FGItemDescriptor_base;
-
-type FGDescriptor = docs_json_ts_0_4_2_11_classes_base_FGDescriptor_base & {
-	mPersistentBigIcon: docs_json_ts_0_6_1_5_properties_mPersistentBigIcon | 'None',
-	mSmallIcon: docs_json_ts_0_6_1_5_properties_mSmallIcon | 'None',
-};
 
 type FGItemDescriptor_base = FGDescriptor & {
 	mCrosshairMaterial: 'None' | `/Game/FactoryGame/Interface/UI/Material/Crosshairs/MI_UI_Crosshair_${string}${'.MI_UI_Crosshair_'}${string}`,
@@ -819,6 +819,7 @@ export type {
 	FGChainsaw_base,
 	FGConsumableDescriptor,
 	FGConsumableEquipment,
+	FGDescriptor,
 	FGEquipment,
 	FGEquipment_noisy,
 	FGEquipmentStunSpear_base,
@@ -830,7 +831,6 @@ export type {
 	FGGolfCartDispenser,
 	FGHoverPack,
 	FGItemDescriptor,
-	FGDescriptor,
 	FGItemDescriptor_base,
 	FGItemDescriptorNuclearFuel,
 	FGJetPack,

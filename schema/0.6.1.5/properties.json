@@ -30,6 +30,26 @@
 				}
 			}
 		},
+		"mPersistentBigIcon": {
+			"type": "string",
+			"templated_string": [
+				"Texture2D /Game/FactoryGame/",
+				{
+					"type": "string",
+					"minLength": 1
+				}
+			]
+		},
+		"mSmallIcon": {
+			"type": "string",
+			"templated_string": [
+				"Texture2D /Game/FactoryGame/",
+				{
+					"type": "string",
+					"minLength": 1
+				}
+			]
+		},
 		"mUnlocks--item": {
 			"oneOf": [
 				{
@@ -179,20 +199,6 @@
 					}
 				}
 			}
-		},
-		"mPersistentBigIcon": {
-			"type": "string",
-			"templated_string": [
-				"Texture2D /Game/FactoryGame/",
-				{"type": "string", "minLength": 1}
-			]
-		},
-		"mSmallIcon": {
-			"type": "string",
-			"templated_string": [
-				"Texture2D /Game/FactoryGame/",
-				{"type": "string", "minLength": 1}
-			]
 		}
 	}
 }
