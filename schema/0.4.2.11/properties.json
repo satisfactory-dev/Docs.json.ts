@@ -233,14 +233,20 @@
 			"type": "string",
 			"templated_string": [
 				"Texture2D /Game/FactoryGame/",
-				{"type": "string", "minLength": 1}
+				{
+					"type": "string",
+					"minLength": 1
+				}
 			]
 		},
 		"Texture2D--quoted": {
 			"type": "string",
 			"templated_string": [
 				"Texture2D'\"/Game/FactoryGame/",
-				{"type": "string", "minLength": 1},
+				{
+					"type": "string",
+					"minLength": 1
+				},
 				"\"'"
 			]
 		},
