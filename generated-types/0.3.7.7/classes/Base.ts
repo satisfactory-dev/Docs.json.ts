@@ -833,7 +833,9 @@ type FGBuildableStorage_base_base = FGBuildable_powered_base_base & {
 
 type FGBuildableTradingPost = FGBuildableTradingPost_base_version_specific & FGBuildableTradingPost_base & FGBuildable_powered;
 
-type FGBuildableTradingPost_base = FGBuildable_powered_base_base & {
+type FGBuildableTradingPost_base = FGBuildableTradingPost_base_base & FGBuildable_powered_base_base;
+
+type FGBuildableTradingPost_base_base = FGBuildable_powered_base_base_base & {
 	mWorkBenchOccupied: 'Craft Bench occupied',
 	mWorkBenchFree: 'Use Craft Bench',
 	Meshes: [
@@ -1586,6 +1588,7 @@ export type {
 	FGBuildableStorage_base_base,
 	FGBuildableTradingPost,
 	FGBuildableTradingPost_base,
+	FGBuildableTradingPost_base_base,
 	FGBuildableTradingPost_base_version_specific,
 	FGBuildableTrainPlatform,
 	FGBuildableTrainPlatform_base,
