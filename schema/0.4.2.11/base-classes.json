@@ -1726,8 +1726,18 @@
 			]
 		},
 		"FGBuildableResourceSink--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableResourceSink--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceSink--base--base"
+				}
+			]
+		},
+		"FGBuildableResourceSink--base--base": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceSink--base--base",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceSink--base--base--base",
 			"required": [
 				"IsAnimationProducing",
 				"EnableTickGrinder",

@@ -3100,8 +3100,18 @@
 			]
 		},
 		"FGBuildableResourceSink--base--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableResourceSink--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base--base"
+				}
+			]
+		},
+		"FGBuildableResourceSink--base--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--base--base",
+			"$ref": "#/$defs/FGBuildable--powered--base--base--base",
 			"required": ["mProcessingTime"],
 			"properties": {
 				"mProcessingTime": {
@@ -3130,8 +3140,18 @@
 			]
 		},
 		"FGBuildableResourceSinkShop--base--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableResourceSinkShop--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base--base"
+				}
+			]
+		},
+		"FGBuildableResourceSinkShop--base--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--base--base",
+			"$ref": "#/$defs/FGBuildable--powered--base--base--base",
 			"required": ["mShopInventoryDefaultSize"],
 			"properties": {
 				"mShopInventoryDefaultSize": {
