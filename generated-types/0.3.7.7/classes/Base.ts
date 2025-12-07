@@ -115,7 +115,7 @@ type FGBuildable_pole_with_length_and_power = FGBuildable_pole_with_length_and_p
 
 type FGBuildable_pole_with_length_and_power_base = FGBuildable_pole_with_length_and_power_base_base & FGBuildable_pole_with_length & FGBuildable_powered_base;
 
-type FGBuildable_pole_with_length_and_power_base_base = FGBuildable_pole_with_length_base & FGBuildable_powered_base_base;
+type FGBuildable_pole_with_length_and_power_base_base = FGBuildable_pole_with_length_base & FGBuildable_powered_base_base_base;
 
 type FGBuildable_powered = FGBuildable_powered_base & (FGBuildable & {
 	mSignificanceBias: docs_json_ts_common_types_decimal_string,

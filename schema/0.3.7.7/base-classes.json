@@ -275,7 +275,7 @@
 					"$ref": "#/$defs/FGBuildable--pole--with-length--base"
 				},
 				{
-					"$ref": "#/$defs/FGBuildable--powered--base--base"
+					"$ref": "#/$defs/FGBuildable--powered--base--base--base"
 				}
 			]
 		},
