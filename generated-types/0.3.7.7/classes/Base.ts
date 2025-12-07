@@ -1092,25 +1092,28 @@ type FGJetPack_base = FGJetPack_base_base & {
 	mJumpTimeStamp: docs_json_ts_common_types_decimal_string,
 };
 
-type FGJetPack_base_base = FGEquipment_base & {
+type FGJetPack_base_base = FGJetPack_base_base_base & {
 	mThrustPower: docs_json_ts_common_types_decimal_string,
 	mVelocityZExtreme: docs_json_ts_common_types_decimal_string,
 	mVelocityZExtremesDamper: docs_json_ts_common_types_decimal_string,
 	mJumpBeforeThrustTime: docs_json_ts_common_types_decimal_string,
 	mMaxFuel: docs_json_ts_common_types_decimal_string,
-	mCurrentFuel: docs_json_ts_common_types_decimal_string,
 	mFuelRegenRate: docs_json_ts_common_types_decimal_string,
 	mFuelConsumeRate: docs_json_ts_common_types_decimal_string,
-	mThrustCooldown: docs_json_ts_common_types_decimal_string,
 	mFuelWorth: docs_json_ts_common_types_decimal_string,
 	mPaidForFuel: docs_json_ts_common_types_decimal_string,
 	mThrustAirControl: docs_json_ts_common_types_decimal_string,
+	mJumpTimeStamp: Exclude<string, ''>,
+};
+
+type FGJetPack_base_base_base = FGEquipment_base & {
+	mCurrentFuel: docs_json_ts_common_types_decimal_string,
+	mThrustCooldown: docs_json_ts_common_types_decimal_string,
 	mDefaultAirControl: docs_json_ts_common_types_decimal_string,
 	mRTPCInterval: docs_json_ts_common_types_decimal_string,
-	mJumpTimeStamp: Exclude<string, ''>,
 	mIsThrusting: docs_json_ts_common_types_bool_string,
-	mArmAnimation?: 'AE_None',
-	mBackAnimation?: 'BE_Jetpack',
+	mArmAnimation: 'AE_None',
+	mBackAnimation: 'BE_Jetpack',
 };
 
 type FGJumpingStilts = FGJumpingStilts_base & FGEquipment;
@@ -1635,6 +1638,7 @@ export type {
 	FGJetPack,
 	FGJetPack_base,
 	FGJetPack_base_base,
+	FGJetPack_base_base_base,
 	FGJumpingStilts,
 	FGJumpingStilts_base,
 	FGNobeliskDetonator,

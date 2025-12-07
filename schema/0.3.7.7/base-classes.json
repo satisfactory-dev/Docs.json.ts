@@ -4184,24 +4184,19 @@
 		},
 		"FGJetPack--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment--base",
+			"$ref": "#/$defs/FGJetPack--base--base--base",
 			"required": [
 				"mThrustPower",
 				"mVelocityZExtreme",
 				"mVelocityZExtremesDamper",
 				"mJumpBeforeThrustTime",
 				"mMaxFuel",
-				"mCurrentFuel",
 				"mFuelRegenRate",
 				"mFuelConsumeRate",
-				"mThrustCooldown",
 				"mFuelWorth",
 				"mPaidForFuel",
 				"mThrustAirControl",
-				"mDefaultAirControl",
-				"mRTPCInterval",
-				"mJumpTimeStamp",
-				"mIsThrusting"
+				"mJumpTimeStamp"
 			],
 			"properties": {
 				"mThrustPower": {
@@ -4219,16 +4214,10 @@
 				"mMaxFuel": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
-				"mCurrentFuel": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
 				"mFuelRegenRate": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
 				"mFuelConsumeRate": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mThrustCooldown": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
 				"mFuelWorth": {
@@ -4240,15 +4229,36 @@
 				"mThrustAirControl": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
+				"mJumpTimeStamp": {
+					"type": "string",
+					"minLength": 1
+				}
+			}
+		},
+		"FGJetPack--base--base--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGEquipment--base",
+			"required": [
+				"mCurrentFuel",
+				"mThrustCooldown",
+				"mDefaultAirControl",
+				"mRTPCInterval",
+				"mIsThrusting",
+				"mArmAnimation",
+				"mBackAnimation"
+			],
+			"properties": {
+				"mCurrentFuel": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mThrustCooldown": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
 				"mDefaultAirControl": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
 				"mRTPCInterval": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mJumpTimeStamp": {
-					"type": "string",
-					"minLength": 1
 				},
 				"mIsThrusting": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
