@@ -828,16 +828,6 @@
 				}
 			]
 		},
-		"FGBuildableFactoryBuilding": {
-			"allOf": [
-				{
-					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildable--base"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable--base"
-				}
-			]
-		},
 		"FGBuildableFactorySimpleProducer": {
 			"allOf": [
 				{

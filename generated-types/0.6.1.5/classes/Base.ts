@@ -352,8 +352,6 @@ type FGBuildableFactory_jump_pad = docs_json_ts_0_5_2_1_classes_base_FGBuildable
 
 type FGBuildableFactory_landing_pad = docs_json_ts_0_5_2_1_classes_base_FGBuildableFactory_landing_pad & FGBuildable_base;
 
-type FGBuildableFactoryBuilding = docs_json_ts_0_5_2_1_classes_base_FGBuildable_base & FGBuildable_base;
-
 type FGBuildableFactorySimpleProducer = docs_json_ts_0_5_2_1_classes_base_FGBuildableFactorySimpleProducer & FGBuildable_base;
 
 type FGBuildableFloodlight = docs_json_ts_0_5_2_1_classes_base_FGBuildableFloodlight & FGBuildable_base;
@@ -757,7 +755,6 @@ export type {
 	FGBuildableDroneStation,
 	FGBuildableFactory_jump_pad,
 	FGBuildableFactory_landing_pad,
-	FGBuildableFactoryBuilding,
 	FGBuildableFactorySimpleProducer,
 	FGBuildableFloodlight,
 	FGBuildableFoundation,
