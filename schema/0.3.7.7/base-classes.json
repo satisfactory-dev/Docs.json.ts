@@ -2795,8 +2795,18 @@
 			]
 		},
 		"FGBuildableResourceExtractor--water--base--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--water--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--base--with-resources--base"
+				}
+			]
+		},
+		"FGBuildableResourceExtractor--water--base--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableResourceExtractor--base--with-resources--base",
+			"$ref": "#/$defs/FGBuildableResourceExtractor--base--with-resources--base--base",
 			"required": [
 				"mWaterpumpTimeline_RTPC_B8FA6F944E717E3B7A286E84901F620E",
 				"mWaterpumpTimeline__Direction_B8FA6F944E717E3B7A286E84901F620E",
