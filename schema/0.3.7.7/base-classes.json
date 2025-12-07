@@ -1033,8 +1033,18 @@
 			]
 		},
 		"FGBuildableGenerator--base--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableGenerator--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base--base"
+				}
+			]
+		},
+		"FGBuildableGenerator--base--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base--base",
+			"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base--base--base--base",
 			"required": [
 				"mFuelClasses",
 				"mAvailableFuelClasses",
@@ -1143,8 +1153,18 @@
 			]
 		},
 		"FGBuildableGeneratorFuel--base--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableGeneratorFuel--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableGenerator--base--base"
+				}
+			]
+		},
+		"FGBuildableGeneratorFuel--base--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableGenerator--base--base",
+			"$ref": "#/$defs/FGBuildableGenerator--base--base--base",
 			"properties": {
 				"mRTPCInterval": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"

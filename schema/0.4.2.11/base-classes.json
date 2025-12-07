@@ -748,8 +748,18 @@
 			]
 		},
 		"FGBuildableGeneratorFuel--base--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableGeneratorFuel--base--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGeneratorFuel--base--base"
+				}
+			]
+		},
+		"FGBuildableGeneratorFuel--base--base--base": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGeneratorFuel--base--base",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGenerator--base--base--base",
 			"required": ["mFuel", "mFuelLoadAmount", "mIsFullBlast"],
 			"properties": {
 				"mFuel": {

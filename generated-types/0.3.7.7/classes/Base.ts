@@ -310,7 +310,9 @@ type FGBuildableGenerator = FGBuildableGenerator_no_fuel & FGBuildableGenerator_
 
 type FGBuildableGenerator_base = FGBuildableGenerator_base_base & FGBuildableGenerator_no_fuel_base;
 
-type FGBuildableGenerator_base_base = FGBuildableGenerator_no_fuel_base_base & {
+type FGBuildableGenerator_base_base = FGBuildableGenerator_base_base_base & FGBuildableGenerator_no_fuel_base_base;
+
+type FGBuildableGenerator_base_base_base = FGBuildableGenerator_no_fuel_base_base_base_base & {
 	mCachedLoadPercentage?: docs_json_ts_common_types_decimal_string,
 	mFuelClasses: '',
 	mAvailableFuelClasses: '',
@@ -339,7 +341,9 @@ type FGBuildableGenerator_no_fuel_base_base_base_base = FGBuildable_powered_base
 
 type FGBuildableGeneratorFuel_base = FGBuildableGeneratorFuel_base_base & FGBuildableGenerator_base;
 
-type FGBuildableGeneratorFuel_base_base = FGBuildableGenerator_base_base & {
+type FGBuildableGeneratorFuel_base_base = FGBuildableGeneratorFuel_base_base_base & FGBuildableGenerator_base_base;
+
+type FGBuildableGeneratorFuel_base_base_base = FGBuildableGenerator_base_base_base & {
 	mRTPCInterval?: docs_json_ts_common_types_decimal_string,
 };
 
@@ -1465,6 +1469,7 @@ export type {
 	FGBuildableGenerator,
 	FGBuildableGenerator_base,
 	FGBuildableGenerator_base_base,
+	FGBuildableGenerator_base_base_base,
 	FGBuildableGenerator_no_fuel,
 	FGBuildableGenerator_no_fuel_base,
 	FGBuildableGenerator_no_fuel_base_base,
@@ -1472,6 +1477,7 @@ export type {
 	FGBuildableGenerator_no_fuel_base_base_base_base,
 	FGBuildableGeneratorFuel_base,
 	FGBuildableGeneratorFuel_base_base,
+	FGBuildableGeneratorFuel_base_base_base,
 	FGBuildableGeneratorFuel_biomass,
 	FGBuildableGeneratorFuel_biomass_base,
 	FGBuildableGeneratorFuel_biomass_base_base,
