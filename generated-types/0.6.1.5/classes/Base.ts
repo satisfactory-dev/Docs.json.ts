@@ -493,8 +493,6 @@ type FGBuildableResourceSink = docs_json_ts_0_5_2_1_classes_base_FGBuildableReso
 
 type FGBuildableResourceSinkShop = docs_json_ts_0_5_2_1_classes_base_FGBuildableResourceSinkShop & FGBuildable_base;
 
-type FGBuildableSnowDispenser = docs_json_ts_0_5_2_1_classes_base_FGBuildable_base & FGBuildable_base;
-
 type FGBuildableSplitterSmart = docs_json_ts_0_5_2_1_classes_base_FGBuildableSplitterSmart & FGBuildable_base;
 
 type FGBuildableStair = docs_json_ts_0_5_2_1_classes_base_FGBuildableStair & FGBuildable_base;
@@ -821,7 +819,6 @@ export type {
 	FGBuildableResourceExtractor_water,
 	FGBuildableResourceSink,
 	FGBuildableResourceSinkShop,
-	FGBuildableSnowDispenser,
 	FGBuildableSplitterSmart,
 	FGBuildableStair,
 	FGBuildableStorage,

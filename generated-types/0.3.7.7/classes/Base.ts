@@ -320,7 +320,7 @@ type FGBuildableFactorySimpleProducer = FGBuildable_powered & FGBuildableFactory
 
 type FGBuildableFactorySimpleProducer_base = FGBuildableFactorySimpleProducer_base_base & FGBuildable_powered_base;
 
-type FGBuildableFactorySimpleProducer_base_base = FGBuildable_powered_base_base & {
+type FGBuildableFactorySimpleProducer_base_base = FGBuildable_powered_base_base_base & {
 	mTimeToProduceItem: docs_json_ts_common_types_decimal_string,
 	mEventType: 'EV_Christmas',
 };
