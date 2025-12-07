@@ -2,20 +2,20 @@ import type {
 	filenames_by_$id as guard,
 } from '../../FilenameAdjuster.ts';
 
-import update5_properties from '../../../schema/0.6.1.5/properties.json' with {
+import update6_properties from '../../../schema/0.6.1.5/properties.json' with {
 	type: 'json',
 };
 
 // eslint-disable-next-line @stylistic/max-len
-import update5_classes__base from '../../../schema/0.6.1.5/base-classes.json' with {
+import update6_classes__base from '../../../schema/0.6.1.5/base-classes.json' with {
 	type: 'json',
 };
 
-import update5_classes from '../../../schema/0.6.1.5/classes.json' with {
+import update6_classes from '../../../schema/0.6.1.5/classes.json' with {
 	type: 'json',
 };
 
-import update5 from '../../../schema/0.6.1.5/docs.json' with {
+import update6 from '../../../schema/0.6.1.5/docs.json' with {
 	type: 'json',
 };
 
@@ -25,19 +25,19 @@ import {
 
 export const filenames_by_$id: guard = {
 	...previous,
-	[update5_properties.$id]: {
+	[update6_properties.$id]: {
 		types: './generated-types/0.6.1.5/types/properties.ts',
 		data: './generated-types/0.6.1.5/data/properties.ts',
 	},
-	[update5_classes__base.$id]: {
+	[update6_classes__base.$id]: {
 		types: './generated-types/0.6.1.5/classes/Base.ts',
 		data: './generated-types/0.6.1.5/classes/Base.data.ts',
 	},
-	[update5_classes.$id]: {
+	[update6_classes.$id]: {
 		types: './generated-types/0.6.1.5/classes.ts',
 		data: './generated-types/0.6.1.5/classes.data.ts',
 	},
-	[update5.$id]: {
+	[update6.$id]: {
 		types: './generated-types/0.6.1.5/types.ts',
 		data: './generated-types/0.6.1.5/data.ts',
 	},
