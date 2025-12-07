@@ -76,6 +76,18 @@ import update6 from './schema/0.6.1.5/docs.json' with {
 	type: 'json',
 };
 
+import update7_classes from './schema/0.7.1.1/classes.json' with {
+	type: 'json',
+};
+
+import update7_classes__base from './schema/0.7.1.1/base-classes.json' with {
+	type: 'json',
+};
+
+import update7 from './schema/0.7.1.1/docs.json' with {
+	type: 'json',
+};
+
 function sort_$defs(schema: SchemaObjectWith$id) {
 	const {$defs} = schema;
 
@@ -160,6 +172,9 @@ for (
 		[update6_classes__base, './schema/0.6.1.5/base-classes.json'],
 		[update6_classes, './schema/0.6.1.5/classes.json'],
 		[update6, './schema/0.6.1.5/docs.json'],
+		[update7_classes__base, './schema/0.7.1.1/base-classes.json'],
+		[update7_classes, './schema/0.7.1.1/classes.json'],
+		[update7, './schema/0.7.1.1/docs.json'],
 	] as [SchemaObjectWith$id, string][]
 ) {
 	sort_$defs(schema);

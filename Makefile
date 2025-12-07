@@ -41,7 +41,7 @@ ci--basic-checks:
 	./node_modules/.bin/eslint --config eslint.config.js.mjs './**/*.mjs'
 	./node_modules/.bin/eslint --cache './**/*.ts'
 
-prepare: prepare--update6
+prepare: prepare--update7
 
 prepare--update3:
 	@echo 'prepare 0.3.7.7'
@@ -59,6 +59,10 @@ prepare--update6: prepare--update5
 	@echo 'prepare 0.6.1.5'
 	@node ./prepare-0.6.1.5.ts
 
+prepare--update7: prepare--update6
+	@echo 'prepare 0.7.1.1'
+	@node ./prepare-0.7.1.1.ts
+
 generate--clean:
 	@echo 'cleaning ./generated-types/'
 	@git clean -fxd ./generated-types/
@@ -67,7 +71,7 @@ generate--wrap-up:
 	@echo 'fixing generated types'
 	@./node_modules/.bin/eslint --fix ./generated-types/
 
-generate: generate--clean generate--update3 generate--update4 generate--update5 generate--update6 generate--wrap-up
+generate: generate--clean generate--update3 generate--update4 generate--update5 generate--update6 generate--update7 generate--wrap-up
 
 generate--update3: prepare--update3
 	@echo 'running generator'
@@ -84,3 +88,7 @@ generate--update5: prepare--update5
 generate--update6: prepare--update6
 	@echo 'running generator'
 	@node ./generate-update6.ts
+
+generate--update7: prepare--update7
+	@echo 'running generator'
+	@node ./generate-update7.ts
