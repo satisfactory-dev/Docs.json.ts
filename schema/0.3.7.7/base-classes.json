@@ -3169,8 +3169,18 @@
 			]
 		},
 		"FGBuildableStorage--base--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableStorage--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base--base"
+				}
+			]
+		},
+		"FGBuildableStorage--base--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--base--base",
+			"$ref": "#/$defs/FGBuildable--powered--base--base--base",
 			"required": [
 				"mStackingHeight",
 				"mInventorySizeX",

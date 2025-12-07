@@ -835,7 +835,9 @@ type FGBuildableStorage = FGBuildableStorage_base & FGBuildable_powered;
 
 type FGBuildableStorage_base = FGBuildableStorage_base_base & FGBuildable_powered_base;
 
-type FGBuildableStorage_base_base = FGBuildable_powered_base_base & {
+type FGBuildableStorage_base_base = FGBuildableStorage_base_base_base & FGBuildable_powered_base_base;
+
+type FGBuildableStorage_base_base_base = FGBuildable_powered_base_base_base & {
 	mStackingHeight: docs_json_ts_common_types_decimal_string,
 	mInventorySizeX: docs_json_ts_common_types_integer_string,
 	mInventorySizeY: docs_json_ts_common_types_integer_string,
@@ -1604,6 +1606,7 @@ export type {
 	FGBuildableStorage,
 	FGBuildableStorage_base,
 	FGBuildableStorage_base_base,
+	FGBuildableStorage_base_base_base,
 	FGBuildableTradingPost,
 	FGBuildableTradingPost_base,
 	FGBuildableTradingPost_base_base,
