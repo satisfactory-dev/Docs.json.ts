@@ -1341,20 +1341,10 @@
 			}
 		},
 		"FGBuildableRailroadStation": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildableRailroadStation--base",
-			"required": ["mShouldTeleportHere", "mCurrentDockedWithRuleSet"],
-			"properties": {
-				"mShouldTeleportHere": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mCurrentDockedWithRuleSet": {
-					"$ref": "docs.json.ts--0.5.2.1--properties#/$defs/mDockingRuleSet"
-				}
-			}
-		},
-		"FGBuildableRailroadStation--base": {
 			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableRailroadStation--base"
+				},
 				{
 					"$ref": "#/$defs/FGBuildableTrainPlatform"
 				},
@@ -1365,6 +1355,19 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableRailroadStation--base--base"
 				}
 			]
+		},
+		"FGBuildableRailroadStation--base": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--base",
+			"required": ["mShouldTeleportHere", "mCurrentDockedWithRuleSet"],
+			"properties": {
+				"mShouldTeleportHere": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mCurrentDockedWithRuleSet": {
+					"$ref": "docs.json.ts--0.5.2.1--properties#/$defs/mDockingRuleSet"
+				}
+			}
 		},
 		"FGBuildableRailroadTrack": {
 			"type": "object",
@@ -1643,8 +1646,21 @@
 			]
 		},
 		"FGBuildableTrainPlatformCargo": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableTrainPlatformCargo--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableTrainPlatform--with-storage"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableTrainPlatformCargo--base"
+				}
+			]
+		},
+		"FGBuildableTrainPlatformCargo--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableTrainPlatformCargo--base",
+			"$ref": "#/$defs/FGBuildable--base",
 			"required": [
 				"mOnTransferRateUpdated",
 				"mWaitForConditionUpdatePeriod",
@@ -1703,16 +1719,6 @@
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
 			}
-		},
-		"FGBuildableTrainPlatformCargo--base": {
-			"allOf": [
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableTrainPlatformCargo--base--base"
-				},
-				{
-					"$ref": "#/$defs/FGBuildableTrainPlatform--with-storage"
-				}
-			]
 		},
 		"FGBuildableWall": {
 			"allOf": [

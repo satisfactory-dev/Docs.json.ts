@@ -916,7 +916,7 @@ type FGBuildableTrainPlatform = FGBuildableTrainPlatform_base & FGBuildable_powe
 
 type FGBuildableTrainPlatform_base = FGBuildableTrainPlatform_base_base & FGBuildable_powered_base;
 
-type FGBuildableTrainPlatform_base_base = FGBuildable_powered_base_base & {
+type FGBuildableTrainPlatform_base_base = FGBuildable_powered_base_base_base & {
 	mPlatformConnections: [
         `FGTrainPlatformConnection'"/Game/FactoryGame/${string}${'"\''}`,
         ...`FGTrainPlatformConnection'"/Game/FactoryGame/${string}${'"\''}`[],
@@ -933,11 +933,13 @@ type FGBuildableTrainPlatform_with_storage_base = FGBuildableTrainPlatform_with_
 
 type FGBuildableTrainPlatform_with_storage_base_base = FGBuildable_powered_storage_base_base & FGBuildableTrainPlatform_base_base;
 
+type FGBuildableTrainPlatform_with_storage_base_base_base = FGBuildable_powered_storage_base_base_base & FGBuildableTrainPlatform_base_base;
+
 type FGBuildableTrainPlatformCargo = FGBuildableTrainPlatformCargo_base & FGBuildableTrainPlatform_with_storage;
 
 type FGBuildableTrainPlatformCargo_base = FGBuildableTrainPlatformCargo_base_base & FGBuildableTrainPlatform_with_storage_base;
 
-type FGBuildableTrainPlatformCargo_base_base = FGBuildableTrainPlatform_with_storage_base_base & {
+type FGBuildableTrainPlatformCargo_base_base = FGBuildableTrainPlatform_with_storage_base_base_base & {
 	mPotentialDockers: '',
 	mFreightCargoType: 'FCT_Standard' | 'FCT_Liquid',
 	mCanUnloadAny: docs_json_ts_common_types_bool_string,
@@ -1678,6 +1680,7 @@ export type {
 	FGBuildableTrainPlatform_with_storage,
 	FGBuildableTrainPlatform_with_storage_base,
 	FGBuildableTrainPlatform_with_storage_base_base,
+	FGBuildableTrainPlatform_with_storage_base_base_base,
 	FGBuildableTrainPlatformCargo,
 	FGBuildableTrainPlatformCargo_base,
 	FGBuildableTrainPlatformCargo_base_base,

@@ -445,12 +445,12 @@ type FGBuildableRailroadSignal_block = FGBuildableRailroadSignal_base & {
 	mPreviousAspect: 'RSA_None',
 };
 
-type FGBuildableRailroadStation = FGBuildableRailroadStation_base & {
+type FGBuildableRailroadStation = FGBuildableRailroadStation_base & FGBuildableTrainPlatform & FGBuildableTrainPlatform_non_empty & docs_json_ts_0_3_7_7_classes_base_FGBuildableRailroadStation_base_base;
+
+type FGBuildableRailroadStation_base = FGBuildable_base & {
 	mShouldTeleportHere: docs_json_ts_common_types_bool_string,
 	mCurrentDockedWithRuleSet: docs_json_ts_0_5_2_1_properties_mDockingRuleSet,
 };
-
-type FGBuildableRailroadStation_base = FGBuildableTrainPlatform & FGBuildableTrainPlatform_non_empty & docs_json_ts_0_3_7_7_classes_base_FGBuildableRailroadStation_base_base;
 
 type FGBuildableRailroadTrack = FGBuildableRailroadTrack_base & {
 	mTrackGraphID: docs_json_ts_common_types_integer_string_signed,
@@ -515,7 +515,9 @@ type FGBuildableTrainPlatform_non_empty = FGBuildableTrainPlatform_base & {
 
 type FGBuildableTrainPlatform_with_storage = FGBuildable_powered_storage & FGBuildableTrainPlatform_non_empty;
 
-type FGBuildableTrainPlatformCargo = FGBuildableTrainPlatformCargo_base & {
+type FGBuildableTrainPlatformCargo = docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatformCargo_base_base & FGBuildableTrainPlatform_with_storage & FGBuildableTrainPlatformCargo_base;
+
+type FGBuildableTrainPlatformCargo_base = FGBuildable_base & {
 	mOnTransferRateUpdated: docs_json_ts_common_types_empty_object,
 	mWaitForConditionUpdatePeriod: docs_json_ts_common_types_decimal_string,
 	mDockingRuleSet: docs_json_ts_0_5_2_1_properties_mDockingRuleSet,
@@ -530,8 +532,6 @@ type FGBuildableTrainPlatformCargo = FGBuildableTrainPlatformCargo_base & {
 	mSmoothedLoadRate: docs_json_ts_common_types_decimal_string,
 	mSmoothedUnloadRate: docs_json_ts_common_types_decimal_string,
 };
-
-type FGBuildableTrainPlatformCargo_base = docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatformCargo_base_base & FGBuildableTrainPlatform_with_storage;
 
 type FGBuildableWall = FGBuildable_with_height_and_width & FGBuildable_with_elevation & FGBuildable_is_wallish;
 

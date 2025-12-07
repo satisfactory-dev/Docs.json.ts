@@ -1572,8 +1572,18 @@
 			]
 		},
 		"FGBuildableTrainPlatformCargo": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableTrainPlatformCargo"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableTrainPlatformCargo--base"
+				}
+			]
+		},
+		"FGBuildableTrainPlatformCargo--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableTrainPlatformCargo--base",
+			"$ref": "#/$defs/FGBuildable--base",
 			"required": [
 				"mHasAnyRelevantStacksToMove",
 				"mAllowDepartureNoValidItemsToTransfer"
@@ -1586,16 +1596,6 @@
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				}
 			}
-		},
-		"FGBuildableTrainPlatformCargo--base": {
-			"allOf": [
-				{
-					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableTrainPlatformCargo"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable--base"
-				}
-			]
 		},
 		"FGBuildableWalkway": {
 			"allOf": [

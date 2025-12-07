@@ -503,12 +503,12 @@ type FGBuildableTradingPost = docs_json_ts_0_5_2_1_classes_base_FGBuildableTradi
 
 type FGBuildableTrainPlatform = docs_json_ts_0_5_2_1_classes_base_FGBuildableTrainPlatform & FGBuildable_base;
 
-type FGBuildableTrainPlatformCargo = FGBuildableTrainPlatformCargo_base & {
+type FGBuildableTrainPlatformCargo = docs_json_ts_0_5_2_1_classes_base_FGBuildableTrainPlatformCargo & FGBuildableTrainPlatformCargo_base;
+
+type FGBuildableTrainPlatformCargo_base = FGBuildable_base & {
 	mHasAnyRelevantStacksToMove: docs_json_ts_common_types_bool_string,
 	mAllowDepartureNoValidItemsToTransfer: docs_json_ts_common_types_bool_string,
 };
-
-type FGBuildableTrainPlatformCargo_base = docs_json_ts_0_5_2_1_classes_base_FGBuildableTrainPlatformCargo & FGBuildable_base;
 
 type FGBuildableWalkway = docs_json_ts_0_5_2_1_classes_base_FGBuildable_with_size_and_elevation & FGBuildable_base;
 
