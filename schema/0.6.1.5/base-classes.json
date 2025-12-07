@@ -1283,8 +1283,18 @@
 			]
 		},
 		"FGBuildableRadarTower": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableRadarTower--base"
+				}
+			]
+		},
+		"FGBuildableRadarTower--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered",
+			"$ref": "#/$defs/FGBuildable--base",
 			"required": ["mMapText", "mRevealRadius", "mScannableDescriptors"],
 			"properties": {
 				"mMapText": {

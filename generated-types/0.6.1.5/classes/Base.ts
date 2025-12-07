@@ -442,7 +442,9 @@ type FGBuildablePowerPole = docs_json_ts_0_5_2_1_classes_base_FGBuildablePowerPo
 
 type FGBuildablePowerStorage = docs_json_ts_0_5_2_1_classes_base_FGBuildablePowerStorage & FGBuildable_base;
 
-type FGBuildableRadarTower = FGBuildable_powered & {
+type FGBuildableRadarTower = FGBuildable_powered & FGBuildableRadarTower_base;
+
+type FGBuildableRadarTower_base = FGBuildable_base & {
 	mMapText: 'Radar Tower',
 	mRevealRadius: docs_json_ts_common_types_decimal_string,
 	mScannableDescriptors: docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list,
@@ -799,6 +801,7 @@ export type {
 	FGBuildablePowerPole,
 	FGBuildablePowerStorage,
 	FGBuildableRadarTower,
+	FGBuildableRadarTower_base,
 	FGBuildableRailroadSignal_base,
 	FGBuildableRailroadSignal_block,
 	FGBuildableRailroadStation,
