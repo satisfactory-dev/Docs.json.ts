@@ -1117,17 +1117,10 @@
 			]
 		},
 		"FGBuildableManufacturer--Build_SmelterMk1_C": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildableManufacturer--Build_SmelterMk1_C--base",
-			"required": ["mCachedCurrentPotential"],
-			"properties": {
-				"mCachedCurrentPotential": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-				}
-			}
-		},
-		"FGBuildableManufacturer--Build_SmelterMk1_C--base": {
 			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableManufacturer--Build_SmelterMk1_C--base"
+				},
 				{
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableManufacturer--Build_SmelterMk1_C"
 				},
@@ -1135,6 +1128,16 @@
 					"$ref": "#/$defs/FGBuildable--base"
 				}
 			]
+		},
+		"FGBuildableManufacturer--Build_SmelterMk1_C--base": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableManufacturer--Build_SmelterMk1_C--base",
+			"required": ["mCachedCurrentPotential"],
+			"properties": {
+				"mCachedCurrentPotential": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				}
+			}
 		},
 		"FGBuildablePassthrough": {
 			"allOf": [

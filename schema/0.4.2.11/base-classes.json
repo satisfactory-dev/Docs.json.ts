@@ -1053,8 +1053,18 @@
 			]
 		},
 		"FGBuildableManufacturer--base--blender--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableManufacturer--base--blender--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--base"
+				}
+			]
+		},
+		"FGBuildableManufacturer--base--blender--base--base": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--base",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--base--base",
 			"required": [
 				"mColor",
 				"mIsRadioActive",
@@ -1097,8 +1107,18 @@
 			]
 		},
 		"FGBuildableManufacturer--base--constructor--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableManufacturer--base--constructor--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--base"
+				}
+			]
+		},
+		"FGBuildableManufacturer--base--constructor--base--base": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--base",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--base--base",
 			"required": ["mCurrentRecipeCheck", "mPreviousRecipeCheck"],
 			"properties": {
 				"mCurrentRecipeCheck": {

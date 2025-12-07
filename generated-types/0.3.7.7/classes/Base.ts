@@ -435,7 +435,9 @@ type FGBuildableLadder_base = FGBuildable_with_width_base & {
 
 type FGBuildableManufacturer_base = FGBuildable_powered_base & FGBuildableManufacturer_base_base;
 
-type FGBuildableManufacturer_base_base = FGBuildable_powered_base_base & {
+type FGBuildableManufacturer_base_base = FGBuildableManufacturer_base_base_base & FGBuildable_powered_base_base;
+
+type FGBuildableManufacturer_base_base_base = FGBuildable_powered_base_base_base & {
 	mCurrentRecipeChanged: docs_json_ts_common_types_empty_object,
 	mManufacturingSpeed: docs_json_ts_common_types_decimal_string,
 	mFactoryInputConnections: '',
@@ -446,19 +448,25 @@ type FGBuildableManufacturer_base_base = FGBuildable_powered_base_base & {
 
 type FGBuildableManufacturer_base_IsPowered = FGBuildable_powered_base & FGBuildableManufacturer_base_IsPowered_base;
 
-type FGBuildableManufacturer_base_IsPowered_base = FGBuildable_powered_base_base & {
+type FGBuildableManufacturer_base_IsPowered_base = FGBuildableManufacturer_base_IsPowered_base_base & FGBuildable_powered_base_base;
+
+type FGBuildableManufacturer_base_IsPowered_base_base = FGBuildable_powered_base_base_base & {
 	IsPowered: docs_json_ts_common_types_bool_string,
 };
 
 type FGBuildableManufacturer_base_mProductionEffectsRunning = FGBuildable_powered_base & FGBuildableManufacturer_base_mProductionEffectsRunning_base;
 
-type FGBuildableManufacturer_base_mProductionEffectsRunning_base = FGBuildable_powered_base_base & {
+type FGBuildableManufacturer_base_mProductionEffectsRunning_base = FGBuildableManufacturer_base_mProductionEffectsRunning_base_base & FGBuildable_powered_base_base;
+
+type FGBuildableManufacturer_base_mProductionEffectsRunning_base_base = FGBuildable_powered_base_base_base & {
 	mProductionEffectsRunning: docs_json_ts_common_types_bool_string,
 };
 
 type FGBuildableManufacturer_base_packager = FGBuildableManufacturer_base_packager_base & FGBuildable_powered_base;
 
-type FGBuildableManufacturer_base_packager_base = FGBuildable_powered_base_base & {
+type FGBuildableManufacturer_base_packager_base = FGBuildableManufacturer_base_packager_base_base & FGBuildable_powered_base_base;
+
+type FGBuildableManufacturer_base_packager_base_base = FGBuildable_powered_base_base_base & {
 	mCurrentColor_VFX: docs_json_ts_common_types_RGBA,
 	CurrentPackagingMode: '',
 };
@@ -1485,12 +1493,16 @@ export type {
 	FGBuildableLadder_base,
 	FGBuildableManufacturer_base,
 	FGBuildableManufacturer_base_base,
+	FGBuildableManufacturer_base_base_base,
 	FGBuildableManufacturer_base_IsPowered,
 	FGBuildableManufacturer_base_IsPowered_base,
+	FGBuildableManufacturer_base_IsPowered_base_base,
 	FGBuildableManufacturer_base_mProductionEffectsRunning,
 	FGBuildableManufacturer_base_mProductionEffectsRunning_base,
+	FGBuildableManufacturer_base_mProductionEffectsRunning_base_base,
 	FGBuildableManufacturer_base_packager,
 	FGBuildableManufacturer_base_packager_base,
+	FGBuildableManufacturer_base_packager_base_base,
 	FGBuildableManufacturer_Build_AssemblerMk1_C,
 	FGBuildableManufacturer_Build_ConstructorMk1_C,
 	FGBuildableManufacturer_Build_FoundryMk1_C,

@@ -1522,8 +1522,18 @@
 			]
 		},
 		"FGBuildableManufacturer--base--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableManufacturer--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base--base"
+				}
+			]
+		},
+		"FGBuildableManufacturer--base--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--base--base",
+			"$ref": "#/$defs/FGBuildable--powered--base--base--base",
 			"required": [
 				"mCurrentRecipeChanged",
 				"mManufacturingSpeed",
@@ -1568,8 +1578,18 @@
 			]
 		},
 		"FGBuildableManufacturer--base--IsPowered--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableManufacturer--base--IsPowered--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base--base"
+				}
+			]
+		},
+		"FGBuildableManufacturer--base--IsPowered--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--base--base",
+			"$ref": "#/$defs/FGBuildable--powered--base--base--base",
 			"required": ["IsPowered"],
 			"properties": {
 				"IsPowered": {
@@ -1588,8 +1608,18 @@
 			]
 		},
 		"FGBuildableManufacturer--base--mProductionEffectsRunning--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableManufacturer--base--mProductionEffectsRunning--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base--base"
+				}
+			]
+		},
+		"FGBuildableManufacturer--base--mProductionEffectsRunning--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--base--base",
+			"$ref": "#/$defs/FGBuildable--powered--base--base--base",
 			"required": ["mProductionEffectsRunning"],
 			"properties": {
 				"mProductionEffectsRunning": {
@@ -1608,8 +1638,18 @@
 			]
 		},
 		"FGBuildableManufacturer--base--packager--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableManufacturer--base--packager--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base--base"
+				}
+			]
+		},
+		"FGBuildableManufacturer--base--packager--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--base--base",
+			"$ref": "#/$defs/FGBuildable--powered--base--base--base",
 			"required": ["mCurrentColor_VFX", "CurrentPackagingMode"],
 			"properties": {
 				"mCurrentColor_VFX": {
