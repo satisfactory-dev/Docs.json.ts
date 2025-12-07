@@ -2025,10 +2025,20 @@
 		"FGBuildablePipelinePump--base--base": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGBuildablePipeline--base--base"
+					"$ref": "#/$defs/FGBuildablePipelinePump--base--base--base"
 				},
 				{
 					"$ref": "#/$defs/FGBuildablePipelinePump--powered-base--base--base"
+				}
+			]
+		},
+		"FGBuildablePipelinePump--base--base--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildablePipeline--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildablePipelinePump--powered-base--base--base--base"
 				}
 			]
 		},
@@ -2053,8 +2063,18 @@
 			]
 		},
 		"FGBuildablePipelinePump--powered-base--base--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildablePipelinePump--powered-base--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base--base"
+				}
+			]
+		},
+		"FGBuildablePipelinePump--powered-base--base--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--base--base",
+			"$ref": "#/$defs/FGBuildable--powered--base--base--base",
 			"required": [
 				"mLastFlowUpdate",
 				"mUpdateFlowTime",
@@ -2125,8 +2145,18 @@
 			]
 		},
 		"FGBuildablePipelinePump--pump--base--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildablePipelinePump--pump--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildablePipelinePump--base--base"
+				}
+			]
+		},
+		"FGBuildablePipelinePump--pump--base--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildablePipelinePump--base--base",
+			"$ref": "#/$defs/FGBuildablePipelinePump--base--base--base",
 			"required": [
 				"mIsPipePumpPlaying",
 				"mIsExceedingHeadLift",
@@ -2198,8 +2228,18 @@
 			]
 		},
 		"FGBuildablePipeReservoir--base--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildablePipeReservoir--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base--base"
+				}
+			]
+		},
+		"FGBuildablePipeReservoir--base--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--base--base",
+			"$ref": "#/$defs/FGBuildable--powered--base--base--base",
 			"required": [
 				"mStackingHeight",
 				"mFluidBox",

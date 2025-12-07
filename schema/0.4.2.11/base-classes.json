@@ -1370,6 +1370,16 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--base--base"
 				},
 				{
+					"$ref": "#/$defs/FGBuildablePipeline--junction--base--base--base"
+				}
+			]
+		},
+		"FGBuildablePipeline--junction--base--base--base": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--base--base--base"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipeline--base--no-indicator--base"
 				}
 			]
@@ -1395,8 +1405,18 @@
 			]
 		},
 		"FGBuildablePipelineJunction--base--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildablePipelineJunction--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildablePipeline--junction--base--base"
+				}
+			]
+		},
+		"FGBuildablePipelineJunction--base--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildablePipeline--junction--base--base",
+			"$ref": "#/$defs/FGBuildablePipeline--junction--base--base--base",
 			"required": ["mFluidBoxVolume"],
 			"properties": {
 				"mFluidBoxVolume": {

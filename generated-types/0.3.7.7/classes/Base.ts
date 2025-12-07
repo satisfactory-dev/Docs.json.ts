@@ -552,13 +552,17 @@ type FGBuildablePipelineJunction_base = FGBuildablePipeline_junction_base & {
 
 type FGBuildablePipelinePump_base = FGBuildablePipelinePump_base_base & FGBuildablePipelinePump_powered_base_base & FGBuildablePipeline_base;
 
-type FGBuildablePipelinePump_base_base = FGBuildablePipeline_base_base & FGBuildablePipelinePump_powered_base_base_base;
+type FGBuildablePipelinePump_base_base = FGBuildablePipelinePump_base_base_base & FGBuildablePipelinePump_powered_base_base_base;
+
+type FGBuildablePipelinePump_base_base_base = FGBuildablePipeline_base_base & FGBuildablePipelinePump_powered_base_base_base_base;
 
 type FGBuildablePipelinePump_powered_base = FGBuildable_powered & FGBuildablePipelinePump_powered_base_base;
 
 type FGBuildablePipelinePump_powered_base_base = FGBuildablePipelinePump_powered_base_base_base & FGBuildable_powered_base;
 
-type FGBuildablePipelinePump_powered_base_base_base = FGBuildable_powered_base_base & {
+type FGBuildablePipelinePump_powered_base_base_base = FGBuildablePipelinePump_powered_base_base_base_base & FGBuildable_powered_base_base;
+
+type FGBuildablePipelinePump_powered_base_base_base_base = FGBuildable_powered_base_base_base & {
 	mLastFlowUpdate: docs_json_ts_common_types_decimal_string,
 	mUpdateFlowTime: docs_json_ts_common_types_decimal_string,
 	mAnimSpeed: docs_json_ts_common_types_decimal_string,
@@ -576,7 +580,9 @@ type FGBuildablePipelinePump_pump = FGBuildablePipelinePump_pump_base & FGBuilda
 
 type FGBuildablePipelinePump_pump_base = FGBuildablePipelinePump_pump_base_base & FGBuildablePipelinePump_base;
 
-type FGBuildablePipelinePump_pump_base_base = FGBuildablePipelinePump_base_base & {
+type FGBuildablePipelinePump_pump_base_base = FGBuildablePipelinePump_pump_base_base_base & FGBuildablePipelinePump_base_base;
+
+type FGBuildablePipelinePump_pump_base_base_base = FGBuildablePipelinePump_base_base_base & {
 	mPistonAudioTimer?: docs_json_ts_common_types_empty_object,
 	mIsPipePumpPlaying: docs_json_ts_common_types_bool_string,
 	mIsExceedingHeadLift: docs_json_ts_common_types_bool_string,
@@ -595,7 +601,9 @@ type FGBuildablePipeReservoir = FGBuildable_powered & FGBuildablePipeReservoir_b
 
 type FGBuildablePipeReservoir_base = FGBuildablePipeReservoir_base_base & FGBuildable_powered_base;
 
-type FGBuildablePipeReservoir_base_base = FGBuildable_powered_base_base & {
+type FGBuildablePipeReservoir_base_base = FGBuildablePipeReservoir_base_base_base & FGBuildable_powered_base_base;
+
+type FGBuildablePipeReservoir_base_base_base = FGBuildable_powered_base_base_base & {
 	mStackingHeight: docs_json_ts_common_types_decimal_string,
 	mFluidBox: docs_json_ts_common_types_empty_object,
 	mStorageCapacity: docs_json_ts_common_types_decimal_string,
@@ -1540,18 +1548,22 @@ export type {
 	FGBuildablePipelineJunction_base,
 	FGBuildablePipelinePump_base,
 	FGBuildablePipelinePump_base_base,
+	FGBuildablePipelinePump_base_base_base,
 	FGBuildablePipelinePump_powered_base,
 	FGBuildablePipelinePump_powered_base_base,
 	FGBuildablePipelinePump_powered_base_base_base,
+	FGBuildablePipelinePump_powered_base_base_base_base,
 	FGBuildablePipelinePump_pump,
 	FGBuildablePipelinePump_pump_base,
 	FGBuildablePipelinePump_pump_base_base,
+	FGBuildablePipelinePump_pump_base_base_base,
 	FGBuildablePipelinePump_valve,
 	FGBuildablePipelineSupport,
 	FGBuildablePipelineSupport_base,
 	FGBuildablePipeReservoir,
 	FGBuildablePipeReservoir_base,
 	FGBuildablePipeReservoir_base_base,
+	FGBuildablePipeReservoir_base_base_base,
 	FGBuildablePole,
 	FGBuildablePole_base,
 	FGBuildablePowerPole,
