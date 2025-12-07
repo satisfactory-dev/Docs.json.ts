@@ -425,7 +425,9 @@ type FGBuildableJumppad = FGBuildableJumppad_base & FGBuildable_powered;
 
 type FGBuildableJumppad_base = FGBuildableJumppad_base_base & FGBuildable_powered_base;
 
-type FGBuildableJumppad_base_base = FGBuildable_powered_base_base & {
+type FGBuildableJumppad_base_base = FGBuildableJumppad_base_base_base & FGBuildable_powered_base_base;
+
+type FGBuildableJumppad_base_base_base = FGBuildable_powered_base_base_base & {
 	mPowerBankCapacity: docs_json_ts_common_types_decimal_string,
 	mLaunchPowerCost: docs_json_ts_common_types_decimal_string,
 	mChargeRateMultiplier: docs_json_ts_common_types_decimal_string,
@@ -1539,6 +1541,7 @@ export type {
 	FGBuildableJumppad,
 	FGBuildableJumppad_base,
 	FGBuildableJumppad_base_base,
+	FGBuildableJumppad_base_base_base,
 	FGBuildableLadder,
 	FGBuildableLadder_base,
 	FGBuildableManufacturer_base,
