@@ -288,7 +288,9 @@ type FGBuildableDockingStation_base = FGBuildableDockingStation_base_base & {
 
 type FGBuildableDockingStation_base_base = FGBuildableDockingStation_with_mFuelTransferSpeed & FGBuildable_docking_station_base;
 
-type FGBuildableDockingStation_with_mFuelTransferSpeed = FGBuildable_docking_station_base_base & {
+type FGBuildableDockingStation_with_mFuelTransferSpeed = FGBuildableDockingStation_with_mFuelTransferSpeed_base & FGBuildable_docking_station_base_base;
+
+type FGBuildableDockingStation_with_mFuelTransferSpeed_base = FGBuildable_docking_station_base_base_base & {
 	mFuelTransferSpeed: docs_json_ts_common_types_decimal_string,
 };
 
@@ -1498,6 +1500,7 @@ export type {
 	FGBuildableDockingStation_base,
 	FGBuildableDockingStation_base_base,
 	FGBuildableDockingStation_with_mFuelTransferSpeed,
+	FGBuildableDockingStation_with_mFuelTransferSpeed_base,
 	FGBuildableFactory_jump_pad,
 	FGBuildableFactory_jump_pad_base,
 	FGBuildableFactory_jump_pad_base_base,

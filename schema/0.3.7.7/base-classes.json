@@ -962,8 +962,18 @@
 			]
 		},
 		"FGBuildableDockingStation--with--mFuelTransferSpeed": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableDockingStation--with--mFuelTransferSpeed--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--docking-station--base--base"
+				}
+			]
+		},
+		"FGBuildableDockingStation--with--mFuelTransferSpeed--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--docking-station--base--base",
+			"$ref": "#/$defs/FGBuildable--docking-station--base--base--base",
 			"required": ["mFuelTransferSpeed"],
 			"properties": {
 				"mFuelTransferSpeed": {

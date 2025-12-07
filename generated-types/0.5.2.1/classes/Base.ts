@@ -78,7 +78,7 @@ import type {
 } from './../../0.3.7.7/types/properties.ts';
 
 import type {
-	FGBuildable_docking_station_base_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_docking_station_base_base,
+	FGBuildable_docking_station_base_base_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_docking_station_base_base_base,
 	FGBuildable_occupied_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_occupied_base,
 	FGBuildable_pole_with_length_and_power_base_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_with_length_and_power_base_base,
 	FGBuildable_powered_base_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base_base,
@@ -253,7 +253,7 @@ type FGBuildableCornerWall = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_
 
 type FGBuildableDockingStation = FGBuildableDockingStation_base & FGBuildableDockingStation_base_base;
 
-type FGBuildableDockingStation_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_docking_station_base_base & {
+type FGBuildableDockingStation_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_docking_station_base_base_base & {
 	VehicleFuelConsumptionRateChangedDelegate: docs_json_ts_common_types_empty_object,
 	ItemTransferRateChangedDelegate: docs_json_ts_common_types_empty_object,
 	MaximumStackTransferRateChangedDelegate: docs_json_ts_common_types_empty_object,
