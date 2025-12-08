@@ -143,7 +143,9 @@ import type {
 
 type FGBuildable = docs_json_ts_0_3_7_7_classes_base_FGBuildable_base_version_specific & FGBuildable_base_version_specific & FGBuildable_base;
 
-type FGBuildable_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_base & {
+type FGBuildable_base = FGBuildable_base_pre_update8 & docs_json_ts_0_3_7_7_classes_base_FGBuildable_base;
+
+type FGBuildable_base_pre_update8 = {
 	mToggleDormancyOnInteraction: docs_json_ts_common_types_bool_string,
 	mShouldModifyWorldGrid: docs_json_ts_common_types_bool_string,
 };
@@ -191,7 +193,7 @@ type FGBuildable_powered_base = FGBuildable_powered_base_base & {
 	mOnProductionStatusChanged: docs_json_ts_common_types_empty_object,
 };
 
-type FGBuildable_powered_base_base = FGBuildable_base & {
+type FGBuildable_powered_base_base = docs_json_ts_0_3_7_7_classes_base_isDescribed & {
 	mCachedSkeletalMeshes: '',
 };
 
@@ -789,6 +791,7 @@ type FGWeaponProjectileFire_base_base = docs_json_ts_0_3_7_7_classes_base_FGEqui
 export type {
 	FGBuildable,
 	FGBuildable_base,
+	FGBuildable_base_pre_update8,
 	FGBuildable_base_version_specific,
 	FGBuildable_docking_station,
 	FGBuildable_docking_station_base,

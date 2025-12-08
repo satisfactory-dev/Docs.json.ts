@@ -274,7 +274,9 @@ type FGAmmoTypeSpreadshot = FGAmmoType_base & {
 	mSpreadAngleDegrees: docs_json_ts_common_types_decimal_string,
 };
 
-type FGBuildable_base = docs_json_ts_0_5_2_1_classes_base_FGBuildable_base & {
+type FGBuildable_base = FGBuildable_base_pre_update8 & docs_json_ts_0_5_2_1_classes_base_FGBuildable_base;
+
+type FGBuildable_base_pre_update8 = {
 	mAlternativeMaterialRecipes: null | [
 		{
 			mMaterial: `/Game/FactoryGame/Buildable/-Shared/Customization/Materials/MaterialDesc_Foundation_${string}${'.MaterialDesc_Foundation_'}${string}`,
@@ -734,6 +736,7 @@ export type {
 	FGAmmoTypeProjectile,
 	FGAmmoTypeSpreadshot,
 	FGBuildable_base,
+	FGBuildable_base_pre_update8,
 	FGBuildable_foundation_mDisableSnapOn,
 	FGBuildable_occupied,
 	FGBuildable_powered,

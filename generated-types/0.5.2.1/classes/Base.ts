@@ -1,19 +1,6 @@
 /* eslint-disable @stylistic/max-len */
 
 import type {
-	bool_string as docs_json_ts_common_types_bool_string,
-	decimal_string as docs_json_ts_common_types_decimal_string,
-	decimal_string_signed as docs_json_ts_common_types_decimal_string_signed,
-	empty_object as docs_json_ts_common_types_empty_object,
-	integer_string as docs_json_ts_common_types_integer_string,
-	integer_string_signed as docs_json_ts_common_types_integer_string_signed,
-	PitchYawRoll_decimal_string_signed as docs_json_ts_common_types_PitchYawRoll_decimal_string_signed,
-	RGBA as docs_json_ts_common_types_RGBA,
-	XY_decimal_string as docs_json_ts_common_types_XY_decimal_string,
-	XYZ_decimal_string as docs_json_ts_common_types_XYZ_decimal_string,
-} from './../../common/types.ts';
-
-import type {
 	FGBuildable_base as docs_json_ts_0_4_2_11_classes_base_FGBuildable_base,
 	FGBuildable_docking_station_base as docs_json_ts_0_4_2_11_classes_base_FGBuildable_docking_station_base,
 	FGBuildable_light_related_thing_base as docs_json_ts_0_4_2_11_classes_base_FGBuildable_light_related_thing_base,
@@ -59,6 +46,19 @@ import type {
 	FGWeaponProjectile_base as docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectile_base,
 	FGWeaponProjectileFire_base as docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectileFire_base,
 } from './../../0.4.2.11/classes/Base.ts';
+
+import type {
+	bool_string as docs_json_ts_common_types_bool_string,
+	decimal_string as docs_json_ts_common_types_decimal_string,
+	decimal_string_signed as docs_json_ts_common_types_decimal_string_signed,
+	empty_object as docs_json_ts_common_types_empty_object,
+	integer_string as docs_json_ts_common_types_integer_string,
+	integer_string_signed as docs_json_ts_common_types_integer_string_signed,
+	PitchYawRoll_decimal_string_signed as docs_json_ts_common_types_PitchYawRoll_decimal_string_signed,
+	RGBA as docs_json_ts_common_types_RGBA,
+	XY_decimal_string as docs_json_ts_common_types_XY_decimal_string,
+	XYZ_decimal_string as docs_json_ts_common_types_XYZ_decimal_string,
+} from './../../common/types.ts';
 
 import type {
 	FalloffCurve_EditorCurveData_only as docs_json_ts_0_5_2_1_properties_FalloffCurve_EditorCurveData_only,
@@ -152,7 +152,9 @@ import type {
 	Texture2D as docs_json_ts_0_4_2_11_properties_Texture2D,
 } from './../../0.4.2.11/types/properties.ts';
 
-type FGBuildable_base = docs_json_ts_0_4_2_11_classes_base_FGBuildable_base & {
+type FGBuildable_base = FGBuildable_base_pre_update8 & docs_json_ts_0_4_2_11_classes_base_FGBuildable_base;
+
+type FGBuildable_base_pre_update8 = {
 	mAllowColoring: docs_json_ts_common_types_bool_string,
 	mShouldShowAttachmentPointVisuals: docs_json_ts_common_types_bool_string,
 	mCreateClearanceMeshRepresentation: docs_json_ts_common_types_bool_string,
@@ -796,6 +798,7 @@ type FGWeapon_Equip_Rifle_C_base = {
 
 export type {
 	FGBuildable_base,
+	FGBuildable_base_pre_update8,
 	FGBuildable_docking_station,
 	FGBuildable_foundation_DisableAttachmentSnapOn,
 	FGBuildable_foundation_mDisableSnapOn,

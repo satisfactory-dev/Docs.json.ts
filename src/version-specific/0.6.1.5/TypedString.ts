@@ -50,7 +50,7 @@ import {
 	AkAudioEvent_quoted_list_generate_typescript_type,
 } from './TypedString/AkAudioEvent_quoted_list.ts';
 
-type TypedString_mode = (
+export type TypedString_mode = (
 	| TypedString_mode__update5
 	| 'AkAudioEvent_list'
 );
@@ -76,14 +76,14 @@ type TypedString_matcher<
 	ValidateFunction<TypedString_type<Mode>['typed_string']>,
 ];
 
-type TypedString_type_OneOf = {
+export type TypedString_type_OneOf = {
 	oneOf: [
 		...TypedString_type_OneOf__update5['oneOf'],
 		TypedString_type<'AkAudioEvent_list'>,
 	],
 };
 
-type TypedString_schema_properties = (
+export type TypedString_schema_properties = (
 	& TypedString_schema_properties__update5
 	& {
 		AkAudioEvent_list: AkAudioEvent_quoted_list_properties,
@@ -113,21 +113,21 @@ type TypedString_schema<
 	}
 >;
 
-type TypedString_schema_OneOf = TypeDefinitionSchema & {
+export type TypedString_schema_OneOf = TypeDefinitionSchema & {
 	oneOf: [
 		...TypedString_schema_OneOf__update5['oneOf'],
 		TypedString_schema<'AkAudioEvent_list'>,
 	],
 };
 
-type TypedString_SchemaTo__by_mode = (
+export type TypedString_SchemaTo__by_mode = (
 	& TypedString_SchemaTo__by_mode__update5
 	& {
 		AkAudioEvent_list: AkAudioEvent_quoted_list_SchemaTo,
 	}
 );
 
-type TypedString_DataTo__by_mode = (
+export type TypedString_DataTo__by_mode = (
 	& TypedString_DataTo__by_mode__update5
 	& {
 		AkAudioEvent_list: AkAudioEvent_quoted_list_DataTo,
@@ -142,7 +142,7 @@ type TypedString_SchemaTo<
 	Mode extends TypedString_mode,
 > = TypedString_SchemaTo__by_mode[Mode];
 
-function compile_validators(ajv: Ajv): {
+export function compile_validators(ajv: Ajv): {
 	[key in TypedString_mode]: ValidateFunction<
 		TypedString_type<key>['typed_string']
 	>

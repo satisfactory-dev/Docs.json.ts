@@ -53,13 +53,16 @@ type isNamed = hasClassName & {
 
 type FGBuildable = FGBuildable_base & FGBuildable_base_version_specific;
 
-type FGBuildable_base = isDescribed & {
-	MaxRenderDistance: docs_json_ts_common_types_decimal_string_signed,
+type FGBuildable_base = FGBuildable_base_pre_update8 & {
 	mHighlightVector: docs_json_ts_common_types_XYZ_decimal_string,
+	mShouldShowHighlight: docs_json_ts_common_types_bool_string,
+};
+
+type FGBuildable_base_pre_update8 = isDescribed & {
+	MaxRenderDistance: docs_json_ts_common_types_decimal_string_signed,
 	mSkipBuildEffect: docs_json_ts_common_types_bool_string,
 	mBuildEffectSpeed: docs_json_ts_common_types_decimal_string,
 	mForceNetUpdateOnRegisterPlayer: docs_json_ts_common_types_bool_string,
-	mShouldShowHighlight: docs_json_ts_common_types_bool_string,
 	mInteractingPlayers: '',
 	mIsUseable: docs_json_ts_common_types_bool_string,
 	mHideOnBuildEffectStart: docs_json_ts_common_types_bool_string,
@@ -125,7 +128,7 @@ type FGBuildable_powered_base = FGBuildable_powered_base_base & FGBuildable;
 
 type FGBuildable_powered_base_base = FGBuildable_powered_base_base_base & FGBuildable_powered_base_base_with_mNumCyclesForProductivity;
 
-type FGBuildable_powered_base_base_base = FGBuildable_base & {
+type FGBuildable_powered_base_base_base = isDescribed & {
 	mPowerConsumption: docs_json_ts_common_types_decimal_string,
 	mPowerConsumptionExponent: docs_json_ts_common_types_decimal_string,
 	mOnHasPowerChanged: docs_json_ts_common_types_empty_object,
@@ -1431,6 +1434,7 @@ export type {
 	isNamed,
 	FGBuildable,
 	FGBuildable_base,
+	FGBuildable_base_pre_update8,
 	FGBuildable_base_version_specific,
 	FGBuildable_DisableAttachmentSnapOn,
 	FGBuildable_docking_station,

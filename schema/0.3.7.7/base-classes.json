@@ -50,14 +50,28 @@
 		},
 		"FGBuildable--base": {
 			"type": "object",
+			"$ref": "#/$defs/FGBuildable--base--pre-update8",
+			"required": [
+				"mHighlightVector",
+				"mShouldShowHighlight"
+			],
+			"properties": {
+				"mHighlightVector": {
+					"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
+				},
+				"mShouldShowHighlight": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
+		},
+		"FGBuildable--base--pre-update8": {
+			"type": "object",
 			"$ref": "#/$defs/isDescribed",
 			"required": [
 				"MaxRenderDistance",
-				"mHighlightVector",
 				"mSkipBuildEffect",
 				"mBuildEffectSpeed",
 				"mForceNetUpdateOnRegisterPlayer",
-				"mShouldShowHighlight",
 				"mInteractingPlayers",
 				"mIsUseable",
 				"mHideOnBuildEffectStart"
@@ -66,9 +80,6 @@
 				"MaxRenderDistance": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
 				},
-				"mHighlightVector": {
-					"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
-				},
 				"mSkipBuildEffect": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				},
@@ -76,9 +87,6 @@
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
 				"mForceNetUpdateOnRegisterPlayer": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mShouldShowHighlight": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				},
 				"mInteractingPlayers": {
@@ -318,7 +326,7 @@
 		},
 		"FGBuildable--powered--base--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
+			"$ref": "#/$defs/isDescribed",
 			"required": [
 				"mPowerConsumption",
 				"mPowerConsumptionExponent",

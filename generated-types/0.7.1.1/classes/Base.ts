@@ -1,17 +1,6 @@
 /* eslint-disable @stylistic/max-len */
 
 import type {
-	bool_string as docs_json_ts_common_types_bool_string,
-	decimal_string as docs_json_ts_common_types_decimal_string,
-	empty_object as docs_json_ts_common_types_empty_object,
-	integer_string as docs_json_ts_common_types_integer_string,
-	integer_string_signed as docs_json_ts_common_types_integer_string_signed,
-	RGBA as docs_json_ts_common_types_RGBA,
-	XYZ_decimal_string as docs_json_ts_common_types_XYZ_decimal_string,
-	XYZ_integer_string as docs_json_ts_common_types_XYZ_integer_string,
-} from './../../common/types.ts';
-
-import type {
 	FGBuildable_base as docs_json_ts_0_6_1_5_classes_base_FGBuildable_base,
 	FGBuildableBeam as docs_json_ts_0_6_1_5_classes_base_FGBuildableBeam,
 	FGBuildableCornerWall as docs_json_ts_0_6_1_5_classes_base_FGBuildableCornerWall,
@@ -29,6 +18,17 @@ import type {
 	FGBuildableWall as docs_json_ts_0_6_1_5_classes_base_FGBuildableWall,
 	FGEquipment as docs_json_ts_0_6_1_5_classes_base_FGEquipment,
 } from './../../0.6.1.5/classes/Base.ts';
+
+import type {
+	bool_string as docs_json_ts_common_types_bool_string,
+	decimal_string as docs_json_ts_common_types_decimal_string,
+	empty_object as docs_json_ts_common_types_empty_object,
+	integer_string as docs_json_ts_common_types_integer_string,
+	integer_string_signed as docs_json_ts_common_types_integer_string_signed,
+	RGBA as docs_json_ts_common_types_RGBA,
+	XYZ_decimal_string as docs_json_ts_common_types_XYZ_decimal_string,
+	XYZ_integer_string as docs_json_ts_common_types_XYZ_integer_string,
+} from './../../common/types.ts';
 
 import type {
 	FGBuildable_docking_station_base_base_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_docking_station_base_base_base,
@@ -133,7 +133,9 @@ import type {
 	DocsDotJson_BlueprintGeneratedClass_quoted_list as docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list,
 } from './../../0.3.7.7/types/properties.ts';
 
-type FGBuildable_base = docs_json_ts_0_6_1_5_classes_base_FGBuildable_base & {
+type FGBuildable_base = FGBuildable_base_pre_update8 & docs_json_ts_0_6_1_5_classes_base_FGBuildable_base;
+
+type FGBuildable_base_pre_update8 = {
 	mContainsComponents: docs_json_ts_common_types_bool_string,
 	mIsMultiSpawnedBuildable: docs_json_ts_common_types_bool_string,
 	mCanContainLightweightInstances: docs_json_ts_common_types_bool_string,
@@ -144,7 +146,9 @@ type FGBuildable_docking_station = docs_json_ts_0_3_7_7_classes_base_FGBuildable
 
 type FGBuildable_occupied = docs_json_ts_0_5_2_1_classes_base_FGBuildable_occupied & FGBuildable_base;
 
-type FGBuildable_powered = FGBuildable_powered_base & {
+type FGBuildable_powered = FGBuildable_powered_pre_update8 & FGBuildable_powered_base;
+
+type FGBuildable_powered_pre_update8 = {
 	mCanEverMonitorProductivity: docs_json_ts_common_types_bool_string,
 	mDefaultProductivityMeasurementDuration: docs_json_ts_common_types_decimal_string,
 	mLastProductivityMeasurementProduceDuration: docs_json_ts_common_types_decimal_string,
@@ -349,9 +353,11 @@ type FGPipeHyperStart = docs_json_ts_0_3_7_7_classes_base_FGPipeHyperStart_base_
 
 export type {
 	FGBuildable_base,
+	FGBuildable_base_pre_update8,
 	FGBuildable_docking_station,
 	FGBuildable_occupied,
 	FGBuildable_powered,
+	FGBuildable_powered_pre_update8,
 	FGBuildable_powered_base,
 	FGBuildable_powered_storage,
 	FGBuildable_tiered,

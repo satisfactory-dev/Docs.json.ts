@@ -361,7 +361,7 @@ export async function Object_list_generate_typescript_type(
 	return sanity_check;
 }
 
-function ajv_macro_value_regex(value: SchemaObject) {
+export function ajv_macro_value_regex(value: SchemaObject) {
 	if ($ref.is_supported_$ref(value)) {
 		if (
 			'docs.json.ts--common--types#/$defs/integer_string' === value.$ref
