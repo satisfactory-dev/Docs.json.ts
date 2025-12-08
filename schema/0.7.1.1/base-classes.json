@@ -65,6 +65,22 @@
 				}
 			]
 		},
+		"FGBuildable--powered--base": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--base--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildable--powered--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--powered--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
 		"FGBuildable--powered--pre-update8": {
 			"type": "object",
 			"required": [
@@ -99,22 +115,6 @@
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				}
 			}
-		},
-		"FGBuildable--powered--base": {
-			"allOf": [
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--base--base--base"
-				},
-				{
-					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildable--powered--base--base"
-				},
-				{
-					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--powered--base--base"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable--base"
-				}
-			]
 		},
 		"FGBuildable--powered-storage": {
 			"allOf": [
