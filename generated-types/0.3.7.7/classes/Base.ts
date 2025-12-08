@@ -187,7 +187,7 @@ type FGBuildable_tiered_base = FGBuildable_base & {
 
 type FGBuildable_with_height = FGBuildable_with_height_base & FGBuildable;
 
-type FGBuildable_with_height_base = FGBuildable_base & {
+type FGBuildable_with_height_base = FGBuildable_base_pre_update8 & {
 	mHeight: docs_json_ts_common_types_decimal_string,
 };
 
@@ -221,7 +221,7 @@ type FGBuildable_with_size_and_elevation_base_base = FGBuildable_with_size_base 
 
 type FGBuildable_with_width = FGBuildable_with_width_base & FGBuildable;
 
-type FGBuildable_with_width_base = FGBuildable_base & {
+type FGBuildable_with_width_base = FGBuildable_base_pre_update8 & {
 	mWidth: docs_json_ts_common_types_decimal_string,
 };
 

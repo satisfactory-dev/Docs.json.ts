@@ -91,7 +91,6 @@
 		},
 		"FGBuildable--is-wallish": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
 			"required": ["mAngularDepth", "mWallType", "mAngledVariants"],
 			"properties": {
 				"mAngularDepth": {
@@ -284,7 +283,6 @@
 		},
 		"FGBuildable--with-elevation": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
 			"required": ["mElevation"],
 			"properties": {
 				"mElevation": {
@@ -539,8 +537,20 @@
 			]
 		},
 		"FGBuildableDoor--automated": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableDoor--automated--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableDoor--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableWall"
+				}
+			]
+		},
+		"FGBuildableDoor--automated--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableDoor--base",
 			"required": ["bigOverlapList"],
 			"properties": {
 				"bigOverlapList": {
@@ -551,7 +561,6 @@
 		},
 		"FGBuildableDoor--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableWall",
 			"required": [
 				"mCanBeLocked",
 				"mAnimationRate",
@@ -583,8 +592,20 @@
 			}
 		},
 		"FGBuildableDoor--manual": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableDoor--manual--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableDoor--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableWall"
+				}
+			]
+		},
+		"FGBuildableDoor--manual--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableDoor--base",
 			"required": ["IsDoorOpen"],
 			"properties": {
 				"IsDoorOpen": {

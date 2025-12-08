@@ -553,7 +553,7 @@
 		},
 		"FGBuildable--with-height--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
+			"$ref": "#/$defs/FGBuildable--base--pre-update8",
 			"required": ["mHeight"],
 			"properties": {
 				"mHeight": {
@@ -698,7 +698,7 @@
 		},
 		"FGBuildable--with-width--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
+			"$ref": "#/$defs/FGBuildable--base--pre-update8",
 			"required": ["mWidth"],
 			"properties": {
 				"mWidth": {

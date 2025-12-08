@@ -171,7 +171,7 @@ type FGBuildable_foundation_mDisableSnapOn = FGBuildable_base & {
 	mDisableSnapOn: docs_json_ts_common_types_empty_object | docs_json_ts_0_3_7_7_properties_mDisableSnapOn_front_bottom | docs_json_ts_0_5_2_1_properties_mDisableSnapOn_top | docs_json_ts_0_5_2_1_properties_mDisableSnapOn_bottom,
 };
 
-type FGBuildable_is_wallish = FGBuildable_base & {
+type FGBuildable_is_wallish = {
 	mAngularDepth: docs_json_ts_common_types_decimal_string,
 	mWallType: 'BWT_Normal' | 'BWT_Glass' | 'BWT_DiagonalDown' | 'BWT_DiagonalUp' | 'BWT_Frame',
 	mAngledVariants: null | docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list,
@@ -213,7 +213,7 @@ type FGBuildable_spline = docs_json_ts_0_3_7_7_classes_base_FGBuildable_spline_b
 
 type FGBuildable_tiered = docs_json_ts_0_3_7_7_classes_base_FGBuildable_tiered_base & FGBuildable_base;
 
-type FGBuildable_with_elevation = FGBuildable_base & {
+type FGBuildable_with_elevation = {
 	mElevation: docs_json_ts_common_types_decimal_string,
 };
 
@@ -274,11 +274,13 @@ type FGBuildableDockingStation_base_base = FGBuildable_docking_station & docs_js
 
 type FGBuildableDoor = FGBuildableDoor_manual | FGBuildableDoor_automated;
 
-type FGBuildableDoor_automated = FGBuildableDoor_base & {
+type FGBuildableDoor_automated = FGBuildableDoor_automated_version_specific & FGBuildableDoor_base & FGBuildableWall;
+
+type FGBuildableDoor_automated_version_specific = {
 	bigOverlapList: '',
 };
 
-type FGBuildableDoor_base = FGBuildableWall & {
+type FGBuildableDoor_base = {
 	mCanBeLocked: docs_json_ts_common_types_bool_string,
 	mAnimationRate: docs_json_ts_common_types_decimal_string,
 	mMovementRate: docs_json_ts_common_types_decimal_string,
@@ -287,7 +289,9 @@ type FGBuildableDoor_base = FGBuildableWall & {
 	Steps: docs_json_ts_common_types_integer_string,
 };
 
-type FGBuildableDoor_manual = FGBuildableDoor_base & {
+type FGBuildableDoor_manual = FGBuildableDoor_manual_version_specific & FGBuildableDoor_base & FGBuildableWall;
+
+type FGBuildableDoor_manual_version_specific = {
 	IsDoorOpen: docs_json_ts_common_types_bool_string,
 };
 
@@ -836,8 +840,10 @@ export type {
 	FGBuildableDockingStation_base_base,
 	FGBuildableDoor,
 	FGBuildableDoor_automated,
+	FGBuildableDoor_automated_version_specific,
 	FGBuildableDoor_base,
 	FGBuildableDoor_manual,
+	FGBuildableDoor_manual_version_specific,
 	FGBuildableDroneStation,
 	FGBuildableFactory_jump_pad,
 	FGBuildableFactory_landing_pad,
