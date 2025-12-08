@@ -148,6 +148,8 @@ type FGBuildable_occupied = docs_json_ts_0_5_2_1_classes_base_FGBuildable_occupi
 
 type FGBuildable_powered = FGBuildable_powered_pre_update8 & FGBuildable_powered_base;
 
+type FGBuildable_powered_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base_base_base & docs_json_ts_0_5_2_1_classes_base_FGBuildable_powered_base_base & docs_json_ts_0_4_2_11_classes_base_FGBuildable_powered_base_base & FGBuildable_base;
+
 type FGBuildable_powered_pre_update8 = {
 	mCanEverMonitorProductivity: docs_json_ts_common_types_bool_string,
 	mDefaultProductivityMeasurementDuration: docs_json_ts_common_types_decimal_string,
@@ -157,8 +159,6 @@ type FGBuildable_powered_pre_update8 = {
 	mCurrentProductivityMeasurementDuration: docs_json_ts_common_types_decimal_string,
 	mProductivityMonitorEnabled: docs_json_ts_common_types_bool_string,
 };
-
-type FGBuildable_powered_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base_base_base & docs_json_ts_0_5_2_1_classes_base_FGBuildable_powered_base_base & docs_json_ts_0_4_2_11_classes_base_FGBuildable_powered_base_base & FGBuildable_base;
 
 type FGBuildable_powered_storage = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_storage_base_base_base & docs_json_ts_0_4_2_11_classes_base_FGBuildable_powered_base_base & FGBuildable_powered;
 
@@ -170,7 +170,9 @@ type FGBuildableAttachmentSplitter = docs_json_ts_0_3_7_7_classes_base_FGBuildab
 
 type FGBuildableBeamLightweight = docs_json_ts_0_6_1_5_classes_base_FGBuildableBeam & FGBuildable_base;
 
-type FGBuildableBlueprintDesigner = FGBuildable_base & {
+type FGBuildableBlueprintDesigner = FGBuildableBlueprintDesigner_pre_update8 & FGBuildable_base;
+
+type FGBuildableBlueprintDesigner_pre_update8 = {
 	mTerminalDistanceFromEdge: docs_json_ts_common_types_decimal_string,
 	mTerminalHalfDepth: docs_json_ts_common_types_decimal_string,
 	mDimensions: docs_json_ts_common_types_XYZ_integer_string,
@@ -357,14 +359,15 @@ export type {
 	FGBuildable_docking_station,
 	FGBuildable_occupied,
 	FGBuildable_powered,
-	FGBuildable_powered_pre_update8,
 	FGBuildable_powered_base,
+	FGBuildable_powered_pre_update8,
 	FGBuildable_powered_storage,
 	FGBuildable_tiered,
 	FGBuildableAttachmentMerger,
 	FGBuildableAttachmentSplitter,
 	FGBuildableBeamLightweight,
 	FGBuildableBlueprintDesigner,
+	FGBuildableBlueprintDesigner_pre_update8,
 	FGBuildableCircuitSwitch,
 	FGBuildableCircuitSwitch_base,
 	FGBuildableConveyorBelt,

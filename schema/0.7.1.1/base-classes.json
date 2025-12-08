@@ -170,8 +170,17 @@
 			]
 		},
 		"FGBuildableBlueprintDesigner": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableBlueprintDesigner--pre-update8"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableBlueprintDesigner--pre-update8": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
 			"required": [
 				"mTerminalDistanceFromEdge",
 				"mTerminalHalfDepth",
