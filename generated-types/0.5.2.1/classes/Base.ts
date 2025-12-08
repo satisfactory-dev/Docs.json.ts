@@ -743,7 +743,7 @@ type FGSchematic_with_described_unlocks_base = FGSchematic_with_described_unlock
 	mUnlockDescription: Exclude<string, ''>,
 };
 
-type FGSchematic_with_described_unlocks_base_base = FGSchematic_base_base & {
+type FGSchematic_with_described_unlocks_base_base = {
 	mUnlockName: Exclude<string, ''>,
 	mUnlockDescription: string,
 	mUnlockIconBig: 'Unsupported texture. Contact developer for support',

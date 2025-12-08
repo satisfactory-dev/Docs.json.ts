@@ -128,7 +128,6 @@ import type {
 	FGItemDescriptorNuclearFuel_base as docs_json_ts_0_4_2_11_classes_base_FGItemDescriptorNuclearFuel_base,
 	FGParachute as docs_json_ts_0_4_2_11_classes_base_FGParachute,
 	FGPortableMinerDispenser as docs_json_ts_0_4_2_11_classes_base_FGPortableMinerDispenser,
-	FGSchematic_base_base_base_base as docs_json_ts_0_4_2_11_classes_base_FGSchematic_base_base_base_base,
 	FGSchematic_base_base_props_sans_mSchematicIcon as docs_json_ts_0_4_2_11_classes_base_FGSchematic_base_base_props_sans_mSchematicIcon,
 	FGVehicleDescriptor_fueled_with_inventory_base as docs_json_ts_0_4_2_11_classes_base_FGVehicleDescriptor_fueled_with_inventory_base,
 	FGVehicleDescriptor_powered_base as docs_json_ts_0_4_2_11_classes_base_FGVehicleDescriptor_powered_base,
@@ -177,6 +176,7 @@ import type {
 
 import type {
 	Texture2D as docs_json_ts_0_4_2_11_properties_Texture2D,
+	TintColor as docs_json_ts_0_4_2_11_properties_TintColor,
 } from './../../0.4.2.11/types/properties.ts';
 
 type FGAmmoType_base = FGAmmoType_base_base & {
@@ -660,7 +660,9 @@ type FGPortableMinerDispenser = docs_json_ts_0_4_2_11_classes_base_FGPortableMin
 
 type FGResourceDescriptor = docs_json_ts_0_3_7_7_classes_base_FGResourceDescriptor_base & docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable & FGItemDescriptor_base;
 
-type FGSchematic_base = FGSchematic_base_base & {
+type FGSchematic_base = FGSchematic_base_base & FGSchematic_version_specific;
+
+type FGSchematic_version_specific = {
 	mHiddenUntilDependenciesMet: docs_json_ts_common_types_bool_string,
 	mUnlocks: [
 		...docs_json_ts_0_6_1_5_properties_mUnlocks_item[],
@@ -670,13 +672,11 @@ type FGSchematic_base = FGSchematic_base_base & {
 
 type FGSchematic_base_base = docs_json_ts_0_4_2_11_classes_base_FGSchematic_base_base_props_sans_mSchematicIcon & docs_json_ts_0_5_2_1_classes_base_FGSchematic_base_base_base & FGSchematic_base_base_props_with_mSchematicIcon;
 
-type FGSchematic_base_base_props_with_mSchematicIcon = docs_json_ts_0_4_2_11_classes_base_FGSchematic_base_base_base_base & {
+type FGSchematic_base_base_props_with_mSchematicIcon = {
 	mSchematicIcon: {
 		ImageSize: docs_json_ts_common_types_XY_decimal_string,
 		Margin: docs_json_ts_common_types_empty_object,
-		TintColor: {
-			SpecifiedColor: docs_json_ts_common_types_RGBA,
-		},
+		TintColor: docs_json_ts_0_4_2_11_properties_TintColor,
 		ResourceObject?: `Texture2D'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
 		UVRegion: {
 			Min: docs_json_ts_common_types_XY_decimal_string,
@@ -860,6 +860,7 @@ export type {
 	FGPortableMinerDispenser,
 	FGResourceDescriptor,
 	FGSchematic_base,
+	FGSchematic_version_specific,
 	FGSchematic_base_base,
 	FGSchematic_base_base_props_with_mSchematicIcon,
 	FGSchematic_with_described_unlocks,

@@ -2,6 +2,7 @@
 
 import type {
 	integer_string as docs_json_ts_common_types_integer_string,
+	RGBA as docs_json_ts_common_types_RGBA,
 	XYZ_decimal_string as docs_json_ts_common_types_XYZ_decimal_string,
 	XYZW_decimal_string as docs_json_ts_common_types_XYZW_decimal_string,
 } from './../../common/types.ts';
@@ -14,6 +15,10 @@ import type {
 	mUnlocks_item_mRecipes as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mRecipes,
 	mUnlocks_item_mSchematics as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mSchematics,
 } from './../../0.3.7.7/types/properties.ts';
+
+type TintColor = {
+	SpecifiedColor: docs_json_ts_common_types_RGBA,
+};
 
 type mAllowedResourceForms = [
     'RF_SOLID' | 'RF_LIQUID' | 'RF_GAS' | 'RF_HEAT',
@@ -93,6 +98,7 @@ type Texture2D_quoted = `Texture2D'"/Game/FactoryGame/${Exclude<string, ''>}${'"
 type Tier = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8';
 
 export type {
+	TintColor,
 	mAllowedResourceForms,
 	mFogPlaneTransforms_empty,
 	mFogPlaneTransforms_list,

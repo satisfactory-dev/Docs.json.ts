@@ -2,6 +2,19 @@
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "docs.json.ts--0.4.2.11--properties",
 	"$defs": {
+		"TintColor": {
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": ["SpecifiedColor"],
+				"properties": {
+					"SpecifiedColor": {
+						"$ref": "docs.json.ts--common--types#/$defs/RGBA"
+					}
+				}
+			}
+		},
 		"mAllowedResourceForms": {
 			"type": "string",
 			"typed_string": {

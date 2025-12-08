@@ -133,6 +133,7 @@ import type {
 	Texture2D as docs_json_ts_0_4_2_11_properties_Texture2D,
 	Texture2D_quoted as docs_json_ts_0_4_2_11_properties_Texture2D_quoted,
 	Tier as docs_json_ts_0_4_2_11_properties_Tier,
+	TintColor as docs_json_ts_0_4_2_11_properties_TintColor,
 } from './../types/properties.ts';
 
 import type {
@@ -717,8 +718,11 @@ type FGSchematic_base_base_base_base = docs_json_ts_0_3_7_7_classes_base_FGSchem
 
 type FGSchematic_base_base_props = FGSchematic_base_base_props_sans_mSchematicIcon & FGSchematic_base_base_props_with_mSchematicIcon;
 
-type FGSchematic_base_base_props_sans_mSchematicIcon = FGSchematic_base_base_base_base & {
+type FGSchematic_base_base_props_sans_mSchematicIcon = FGSchematic_base_base_props_sans_mSchematicIcon_mMenuPriority & {
 	mMenuPriority: docs_json_ts_common_types_decimal_string,
+};
+
+type FGSchematic_base_base_props_sans_mSchematicIcon_mMenuPriority = FGSchematic_base_base_base_base & {
 	mSchematicDependencies: [
 		...(docs_json_ts_0_3_7_7_properties_mSchematicDependencies_item | docs_json_ts_0_4_2_11_properties_mSchematicDependencies_item)[],
 	],
@@ -730,9 +734,7 @@ type FGSchematic_base_base_props_with_mSchematicIcon = FGSchematic_base_base_bas
 	mSchematicIcon: {
 		ImageSize: docs_json_ts_common_types_XY_decimal_string,
 		Margin: docs_json_ts_common_types_empty_object,
-		TintColor: {
-			SpecifiedColor: docs_json_ts_common_types_RGBA,
-		},
+		TintColor: docs_json_ts_0_4_2_11_properties_TintColor,
 		ResourceObject?: docs_json_ts_0_4_2_11_properties_Texture2D_quoted,
 		UVRegion: {
 			Min: docs_json_ts_common_types_XY_decimal_string,
@@ -954,6 +956,7 @@ export type {
 	FGSchematic_base_base_base_base,
 	FGSchematic_base_base_props,
 	FGSchematic_base_base_props_sans_mSchematicIcon,
+	FGSchematic_base_base_props_sans_mSchematicIcon_mMenuPriority,
 	FGSchematic_base_base_props_with_mSchematicIcon,
 	FGSnowballWeapon,
 	FGVehicleDescriptor_fueled,

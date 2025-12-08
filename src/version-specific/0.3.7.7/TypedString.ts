@@ -56,6 +56,7 @@ import type {
 	Object_SchemaTo,
 	Object_type,
 	Object_TypeGenerator,
+	PropertySchemaToRegex,
 } from './TypedString/Object.ts';
 import {
 	Object_ajv_macro,
@@ -528,9 +529,13 @@ export class TypedString<
 		options: SchemalessTypeOptions,
 		{
 			String_enum_list,
+			Object: Object_options,
 		}: {
 			String_enum_list?: {
 				quoted: boolean,
+			},
+			Object?: {
+				matchers: PropertySchemaToRegex<unknown>[],
 			},
 		} = {},
 	) {
@@ -554,6 +559,9 @@ export class TypedString<
 					return TypedString.ajv_macro(mode, schema, {
 						String_enum_list: String_enum_list || {
 							quoted: false,
+						},
+						Object: Object_options || {
+							matchers: [],
 						},
 					});
 				},
@@ -611,9 +619,13 @@ export class TypedString<
 		schema: TypedString_type<Mode>['typed_string'],
 		{
 			String_enum_list,
+			Object,
 		}: {
 			String_enum_list: {
 				quoted: boolean,
+			},
+			Object: {
+				matchers: PropertySchemaToRegex<unknown>[],
 			},
 		},
 	) {
@@ -626,13 +638,16 @@ export class TypedString<
 				'Object'
 			>['typed_string'];
 
-			return Object_ajv_macro(coerced);
+			return Object_ajv_macro(coerced, Object.matchers);
 		} else if ('Object_list' === mode) {
 			const coerced = schema as TypedString_type<
 				'Object_list'
 			>['typed_string'];
 
-			return Object_list_ajv_macro(coerced);
+			return Object_list_ajv_macro(
+				coerced,
+				Object.matchers,
+			);
 		} else if ('String_enum_list' === mode) {
 			const coerced = schema as TypedString_type<
 				'String_enum_list'

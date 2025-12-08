@@ -70,7 +70,7 @@ type XYZW_decimal_string = {
 	X: decimal_string_signed,
 	Y: decimal_string_signed,
 	Z: decimal_string_signed,
-	W: decimal_string,
+	W: decimal_string_signed,
 };
 
 export type {

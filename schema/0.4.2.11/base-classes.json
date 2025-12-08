@@ -2539,17 +2539,23 @@
 		},
 		"FGSchematic--base--base--props--sans-mSchematicIcon": {
 			"type": "object",
+			"$ref": "#/$defs/FGSchematic--base--base--props--sans--mSchematicIcon--mMenuPriority",
+			"required": ["mMenuPriority"],
+			"properties": {
+				"mMenuPriority": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGSchematic--base--base--props--sans--mSchematicIcon--mMenuPriority": {
+			"type": "object",
 			"$ref": "#/$defs/FGSchematic--base--base--base--base",
 			"required": [
-				"mMenuPriority",
 				"mSchematicDependencies",
 				"mSmallSchematicIcon",
 				"mTechTier"
 			],
 			"properties": {
-				"mMenuPriority": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
 				"mSchematicDependencies": {
 					"type": "array",
 					"minItems": 0,
@@ -2609,17 +2615,7 @@
 								"$ref": "docs.json.ts--common--types#/$defs/empty-object"
 							},
 							"TintColor": {
-								"type": "string",
-								"typed_string": {
-									"type": "object",
-									"additionalProperties": false,
-									"required": ["SpecifiedColor"],
-									"properties": {
-										"SpecifiedColor": {
-											"$ref": "docs.json.ts--common--types#/$defs/RGBA"
-										}
-									}
-								}
+								"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/TintColor"
 							},
 							"ResourceObject": {
 								"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/Texture2D--quoted"

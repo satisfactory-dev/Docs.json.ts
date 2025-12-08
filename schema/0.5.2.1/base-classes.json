@@ -2603,7 +2603,6 @@
 		},
 		"FGSchematic--with-described-unlocks--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGSchematic--base--base",
 			"required": [
 				"mUnlockName",
 				"mUnlockDescription",

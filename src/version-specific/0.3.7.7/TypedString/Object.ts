@@ -195,34 +195,76 @@ export function Object_generate_typescript_type(
 	});
 }
 
-export function Object_ajv_macro(
+export class PropertySchemaToRegex<
+	T,
+> {
+	#matcher: ValidateFunction<T>;
+
+	#value_to_regex: (value: T) => string;
+
+	constructor(
+		matcher: ValidateFunction<T>,
+		value_to_regex: (value: T) => string,
+	) {
+		this.#matcher = matcher;
+		this.#value_to_regex = value_to_regex;
+	}
+
+	matches(value: unknown): value is T {
+		return this.#matcher(value);
+	}
+
+	to_regex(value: T): string {
+		return this.#value_to_regex(value);
+	}
+}
+
+export function Object_type_to_regex(
 	schema: Object_type,
+	property_schema_to_regex: PropertySchemaToRegex<unknown>[],
 ) {
 	const regex = `${
 		Object.keys(schema.properties)
-			.map((property) => `(?:,?${
-				RegExp.escape(property)
-			}=(?:${
-				`\\((?:,?[^=]+=(?:\\([^)]+\\)|\\d+))+\\)`
-			}|${
-				`\\([^=]+=\\([^)]+\\)\\)`
-			}|${
-				`\\([^)]+\\)`
-			}|${
-				`[^=]+`
-			}))${
+			.map((property) => {
+				let value_regex = `(?:[^=]+)`;
+
+				const converter = property_schema_to_regex.find((maybe) => {
+					return maybe.matches(schema.properties[property]);
+				});
+
+				if (converter) {
+					value_regex = `${
+						converter.to_regex(schema.properties[property])
+					}`;
+				}
+
+				return `(?:,?${
+					RegExp.escape(property)
+				}=${
+					value_regex
+				})${
 				(
 					(schema.required || ([] as string[]))
 						.includes(property)
 				)
 					? ''
 					: '?'
-			}`)
+				}`;
+			})
 			.join('')
 	}`;
 
+	return `\\(${regex}\\)`;
+}
+
+export function Object_ajv_macro(
+	schema: Object_type,
+	property_schema_to_regex: PropertySchemaToRegex<unknown>[],
+) {
 	return Object.freeze({
-		pattern: `^\\(${regex}(?:,${regex})*\\)$`,
+		pattern: `^${
+			Object_type_to_regex(schema, property_schema_to_regex)
+		}$`,
 	});
 }
 

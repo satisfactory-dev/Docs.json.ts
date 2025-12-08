@@ -54,12 +54,14 @@ import type {
 	Object_properties,
 	Object_SchemaTo,
 	Object_type,
+	PropertySchemaToRegex,
 } from './Object.ts';
 import {
 	computedProperty_or_string,
 	Object_generate_schema_definition,
 	Object_generate_type_definition,
 	Object_type_schema,
+	Object_type_to_regex,
 } from './Object.ts';
 
 import {
@@ -368,6 +370,16 @@ export function ajv_macro_value_regex(value: SchemaObject) {
 		) {
 			return '\\d+';
 		} else if (
+			'docs.json.ts--common--types#/$defs/decimal_string' === value.$ref
+		) {
+			return '\\d+\\.\\d{6}';
+		} else if (
+			// eslint-disable-next-line @stylistic/max-len
+			'docs.json.ts--common--types#/$defs/decimal_string--signed' === value.$ref
+			|| '#/$defs/decimal_string--signed' === value.$ref
+		) {
+			return '-?\\d+\\.\\d{6}';
+		} else if (
 			'docs.json.ts--common--types#/$defs/BGRA' === value.$ref
 		) {
 			return '\\(B=\\d+,G=\\d+,R=\\d+,A=\\d+\\)';
@@ -375,6 +387,18 @@ export function ajv_macro_value_regex(value: SchemaObject) {
 			'docs.json.ts--common--types#/$defs/bool_string' === value.$ref
 		) {
 			return '(?:True|False)';
+		} else if (
+			// eslint-disable-next-line @stylistic/max-len
+			'docs.json.ts--common--types#/$defs/XYZW--decimal_string' === value.$ref
+		) {
+			// eslint-disable-next-line @stylistic/max-len
+			return '\\(X=-?\\d+\\.\\d{6},Y=-?\\d+\\.\\d{6},Z=-?\\d+\\.\\d{6},W=-?\\d+\\.\\d{6}\\)';
+		} else if (
+			// eslint-disable-next-line @stylistic/max-len
+			'docs.json.ts--common--types#/$defs/XYZ--decimal_string' === value.$ref
+		) {
+			// eslint-disable-next-line @stylistic/max-len
+			return '\\(X=-?\\d+\\.\\d{6},Y=-?\\d+\\.\\d{6},Z=-?\\d+\\.\\d{6}\\)';
 		}
 	} else if (
 		object_has_property(
@@ -427,6 +451,55 @@ export function ajv_macro_value_regex(value: SchemaObject) {
 			value.templated_string,
 			false,
 		);
+	} else if (
+		object_has_property(value, 'type')
+		&& object_has_property(value, 'enum')
+		&& 2 === Object.keys(value).length
+		&& 'string' === value.type
+		&& Array.isArray(value.enum)
+		&& value.enum.every(
+			(maybe): maybe is string => 'string' === typeof maybe,
+		)
+		&& is_non_empty_array<string>(value.enum)
+	) {
+		return `(?:${
+			value.enum.flatMap(
+				(sub_value) => [
+					RegExp.escape(sub_value),
+					RegExp.escape(`"${sub_value}"`),
+				],
+			).join('|')
+		})`;
+	} else if (
+		object_has_property(value, 'type')
+		&& object_has_property(value, 'const')
+		&& 2 === Object.keys(value).length
+		&& 'string' === value.type
+		&& 'string' === typeof value.const
+	) {
+		return `(?:${
+			RegExp.escape(value.const)
+		}|${
+			RegExp.escape(`"${value.const}"`)
+		})`;
+	} else if (
+		object_has_property(value, 'type')
+		&& object_has_property(value, 'pattern')
+		&& 2 === Object.keys(value).length
+		&& 'string' === value.type
+		&& 'string' === typeof value.pattern
+		&& value.pattern.startsWith('^')
+		&& value.pattern.endsWith('$')
+	) {
+		return `(?:${
+			value.pattern.substring(1, value.pattern.length - 1)
+		}|${
+			RegExp.escape('"')
+		}${
+			value.pattern.substring(1, value.pattern.length - 1)
+		}${
+			RegExp.escape('"')
+		})`;
 	}
 
 	return '.+';
@@ -434,8 +507,17 @@ export function ajv_macro_value_regex(value: SchemaObject) {
 
 export function Object_list_ajv_macro(
 	schema: Object_list_type,
+	property_schema_to_regex: PropertySchemaToRegex<unknown>[],
 ) {
-	const regex = `\\(${
+	let regex: string;
+
+	if ('object' === schema.items.type) {
+		regex = Object_type_to_regex(
+			schema.items,
+			property_schema_to_regex,
+		);
+	} else {
+		regex = `\\(${
 		Object.keys(schema.items.properties)
 			.map((property) => `(?:,?${
 				RegExp.escape(property)
@@ -449,6 +531,7 @@ export function Object_list_ajv_macro(
 			}`)
 			.join('')
 	}\\)`;
+	}
 
 	return Object.freeze({
 		pattern: `^\\(${regex}(?:,${regex})*\\)$`,

@@ -184,7 +184,7 @@
 						"$ref": "#/$defs/decimal_string--signed"
 					},
 					"W": {
-						"$ref": "#/$defs/decimal_string"
+						"$ref": "#/$defs/decimal_string--signed"
 					}
 				}
 			}

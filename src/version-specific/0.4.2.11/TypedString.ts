@@ -54,6 +54,10 @@ import {
 	FGRailroadTrackConnectionComponent_quoted_list_generate_typescript_type,
 } from './TypedString/FGRailroadTrackConnectionComponent_quoted_list.ts';
 
+import type {
+	PropertySchemaToRegex,
+} from '../0.3.7.7/TypedString/Object.ts';
+
 export type TypedString_mode = (
 	| TypedString_mode__update3
 	| 'FGRailroadTrackConnectionComponent_quoted_list'
@@ -303,9 +307,13 @@ export class TypedString<
 		options: SchemalessTypeOptions,
 		{
 			String_enum_list,
+			Object: Object_options,
 		}: {
 			String_enum_list?: {
 				quoted: boolean,
+			},
+			Object?: {
+				matchers: PropertySchemaToRegex<unknown>[],
 			},
 		} = {},
 	) {
@@ -329,6 +337,9 @@ export class TypedString<
 					return TypedString.ajv_macro(mode, schema, {
 						String_enum_list: String_enum_list || {
 							quoted: false,
+						},
+						Object: Object_options || {
+							matchers: [],
 						},
 					});
 				},
@@ -387,6 +398,9 @@ export class TypedString<
 		options: {
 			String_enum_list: {
 				quoted: boolean,
+			},
+			Object: {
+				matchers: PropertySchemaToRegex<unknown>[],
 			},
 		},
 	) {

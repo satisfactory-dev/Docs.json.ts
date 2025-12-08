@@ -60,6 +60,46 @@ import {
 	FGTrainPlatformConnection,
 } from './FGTrainPlatformConnection.ts';
 
+import {
+	Object as Object_matcher,
+} from './TypedString/PropertySchemaToRegex/Object.ts';
+
+import type {
+	PropertySchemaToRegex,
+} from './TypedString/Object.ts';
+
+import {
+	ConstString,
+} from './TypedString/PropertySchemaToRegex/ConstString.ts';
+
+import {
+	EmptyObject,
+} from './TypedString/PropertySchemaToRegex/EmptyObject.ts';
+
+import {
+	integer_string,
+} from './TypedString/PropertySchemaToRegex/integer_string.ts';
+
+import {
+	integer_string_signed,
+} from './TypedString/PropertySchemaToRegex/integer_string_signed.ts';
+
+import {
+	decimal_string,
+} from './TypedString/PropertySchemaToRegex/decimal_string.ts';
+
+import {
+	decimal_string_signed,
+} from './TypedString/PropertySchemaToRegex/decimal_string_signed.ts';
+
+import {
+	bool_string,
+} from './TypedString/PropertySchemaToRegex/bool_string.ts';
+
+import {
+	common_type_objects,
+} from './TypedString/PropertySchemaToRegex/common_type_objects.ts';
+
 const already_configured: WeakSet<SchemaParser> = new WeakSet();
 
 export function add_schemas(parser: SchemaParser) {
@@ -81,6 +121,25 @@ export function configure_parser(parser: SchemaParser) {
 
 	const ajv = parser.share_ajv((ajv) => ajv);
 
+	const matchers: PropertySchemaToRegex<unknown>[] = [];
+
+	const Object_matcher_instance = Object_matcher(ajv, matchers);
+
+	matchers.push(...[
+		ConstString(ajv) as PropertySchemaToRegex<unknown>,
+		EmptyObject(ajv) as PropertySchemaToRegex<unknown>,
+		integer_string(ajv) as PropertySchemaToRegex<unknown>,
+		integer_string_signed(ajv) as PropertySchemaToRegex<unknown>,
+		decimal_string(ajv) as PropertySchemaToRegex<unknown>,
+		decimal_string_signed(ajv) as PropertySchemaToRegex<unknown>,
+		bool_string(ajv) as PropertySchemaToRegex<unknown>,
+		common_type_objects(
+			ajv,
+			Object_matcher_instance,
+		) as PropertySchemaToRegex<unknown>,
+		Object_matcher_instance as PropertySchemaToRegex<unknown>,
+	]);
+
 	parser.types = [
 		new NativeClass({ajv}),
 		new BP_C({ajv}),
@@ -94,6 +153,10 @@ export function configure_parser(parser: SchemaParser) {
 		new NamedList({ajv}, 'NSLOCTEXT'),
 		...parser.types,
 		new TemplatedString({ajv}),
-		new TypedString({ajv}),
+		new TypedString({ajv}, {
+			Object: {
+				matchers,
+			},
+		}),
 	];
 }
