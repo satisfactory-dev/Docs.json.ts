@@ -96,13 +96,13 @@ type FGBuildable_docking_station_base_with_mMapText = FGBuildable_docking_statio
 
 type FGBuildable_occupied = FGBuildable_occupied_base & FGBuildable;
 
-type FGBuildable_occupied_base = FGBuildable_base & {
+type FGBuildable_occupied_base = {
 	mOccupiedText: Exclude<string, ''>,
 };
 
 type FGBuildable_pole = FGBuildable_pole_base & FGBuildable;
 
-type FGBuildable_pole_base = FGBuildable_base & {
+type FGBuildable_pole_base = FGBuildable_base_pre_update8 & {
 	mUseStaticHeight: docs_json_ts_common_types_bool_string,
 	mCanStack: docs_json_ts_common_types_bool_string,
 	mStackHeight: docs_json_ts_common_types_decimal_string,
@@ -181,7 +181,7 @@ type FGBuildable_spline_base = FGBuildable_with_length_base & {
 
 type FGBuildable_tiered = FGBuildable_tiered_base & FGBuildable;
 
-type FGBuildable_tiered_base = FGBuildable_base & {
+type FGBuildable_tiered_base = {
 	Tier: docs_json_ts_0_3_7_7_properties_Tier,
 };
 
@@ -199,13 +199,13 @@ type FGBuildable_with_height_and_width_base = FGBuildable_with_height_base & FGB
 
 type FGBuildable_with_length = FGBuildable_with_length_base & FGBuildable;
 
-type FGBuildable_with_length_base = FGBuildable_base & {
+type FGBuildable_with_length_base = FGBuildable_base_pre_update8 & {
 	mMeshLength: docs_json_ts_common_types_decimal_string,
 };
 
 type FGBuildable_with_size = FGBuildable_with_size_base & FGBuildable;
 
-type FGBuildable_with_size_base = FGBuildable_base & {
+type FGBuildable_with_size_base = {
 	mSize: docs_json_ts_common_types_decimal_string,
 };
 
@@ -265,7 +265,7 @@ type FGBuildableAttachmentMerger_base_base_base_base = FGBuildable_base & {
 
 type FGBuildableConveyorBelt_base = FGBuildableConveyorBelt_base_base & FGBuildable;
 
-type FGBuildableConveyorBelt_base_base = FGBuildable_base & {
+type FGBuildableConveyorBelt_base_base = FGBuildable_base_pre_update8 & {
 	mItemMeshMap: docs_json_ts_common_types_empty_object,
 	mSpeed: docs_json_ts_common_types_decimal_string,
 	mItems: docs_json_ts_common_types_empty_object,

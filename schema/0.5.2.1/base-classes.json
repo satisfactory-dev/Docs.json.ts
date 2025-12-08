@@ -396,6 +396,16 @@
 				}
 			]
 		},
+		"FGBuildableConveyorBelt": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableConveyorBelt--spline"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
 		"FGBuildableConveyorBelt--spline": {
 			"allOf": [
 				{
@@ -408,7 +418,7 @@
 		},
 		"FGBuildableConveyorBelt--spline--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
+			"$ref": "#/$defs/FGBuildable--base--pre-update8",
 			"required": ["mCustomSkins"],
 			"properties": {
 				"mCustomSkins": {
@@ -1400,8 +1410,20 @@
 			}
 		},
 		"FGBuildableRailroadTrack": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableRailroadTrack--base--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableRailroadTrack--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableRailroadTrack--base--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableRailroadTrack--base",
 			"required": [
 				"mTrackGraphID",
 				"mOverlappingTracks",
@@ -1430,7 +1452,7 @@
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableRailroadTrack--base--base"
 				},
 				{
-					"$ref": "#/$defs/FGBuildable--base"
+					"$ref": "#/$defs/FGBuildable--base--pre-update8"
 				}
 			]
 		},

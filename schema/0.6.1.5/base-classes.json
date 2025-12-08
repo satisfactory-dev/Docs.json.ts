@@ -742,8 +742,17 @@
 			]
 		},
 		"FGBuildableCornerWall": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableCornerWall--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableCornerWall--base"
+				}
+			]
+		},
+		"FGBuildableCornerWall--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableCornerWall--base",
 			"required": ["mIsInverted"],
 			"properties": {
 				"mIsInverted": {

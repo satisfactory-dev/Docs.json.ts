@@ -241,9 +241,11 @@ type FGBuildableBeam_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_s
 
 type FGBuildableCircuitSwitch = docs_json_ts_0_4_2_11_classes_base_FGBuildableCircuitSwitch_base & FGBuildable_base;
 
+type FGBuildableConveyorBelt = FGBuildableConveyorBelt_spline & FGBuildable_base;
+
 type FGBuildableConveyorBelt_spline = docs_json_ts_0_3_7_7_classes_base_FGBuildableConveyorBelt_spline_base & FGBuildableConveyorBelt_spline_base;
 
-type FGBuildableConveyorBelt_spline_base = FGBuildable_base & {
+type FGBuildableConveyorBelt_spline_base = FGBuildable_base_pre_update8 & {
 	mCustomSkins: [
 		'/Game/FactoryGame/Buildable/-Shared/Customization/Skins/SkinDesc_Test1.SkinDesc_Test1_C',
 	],
@@ -458,14 +460,16 @@ type FGBuildableRailroadStation_base = FGBuildable_base & {
 	mCurrentDockedWithRuleSet: docs_json_ts_0_5_2_1_properties_mDockingRuleSet,
 };
 
-type FGBuildableRailroadTrack = FGBuildableRailroadTrack_base & {
+type FGBuildableRailroadTrack = FGBuildableRailroadTrack_base_version_specific & FGBuildableRailroadTrack_base & FGBuildable_base;
+
+type FGBuildableRailroadTrack_base_version_specific = {
 	mTrackGraphID: docs_json_ts_common_types_integer_string_signed,
 	mOverlappingTracks: '',
 	mVehicles: docs_json_ts_common_types_empty_object,
 	mSignalBlockID: docs_json_ts_common_types_integer_string,
 };
 
-type FGBuildableRailroadTrack_base = docs_json_ts_0_4_2_11_classes_base_FGBuildableRailroadTrack_base_base & FGBuildable_base;
+type FGBuildableRailroadTrack_base = docs_json_ts_0_4_2_11_classes_base_FGBuildableRailroadTrack_base_base & FGBuildable_base_pre_update8;
 
 type FGBuildableRamp = FGBuildableRamp_base & FGBuildableRamp_base_base;
 
@@ -831,6 +835,7 @@ export type {
 	FGBuildableBeam,
 	FGBuildableBeam_base,
 	FGBuildableCircuitSwitch,
+	FGBuildableConveyorBelt,
 	FGBuildableConveyorBelt_spline,
 	FGBuildableConveyorBelt_spline_base,
 	FGBuildableConveyorLift,
@@ -899,6 +904,7 @@ export type {
 	FGBuildableRailroadStation,
 	FGBuildableRailroadStation_base,
 	FGBuildableRailroadTrack,
+	FGBuildableRailroadTrack_base_version_specific,
 	FGBuildableRailroadTrack_base,
 	FGBuildableRamp,
 	FGBuildableRamp_base,

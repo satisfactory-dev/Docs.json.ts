@@ -196,7 +196,6 @@
 		},
 		"FGBuildable--occupied--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
 			"required": ["mOccupiedText"],
 			"properties": {
 				"mOccupiedText": {
@@ -217,7 +216,7 @@
 		},
 		"FGBuildable--pole--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
+			"$ref": "#/$defs/FGBuildable--base--pre-update8",
 			"required": ["mUseStaticHeight", "mCanStack", "mStackHeight"],
 			"properties": {
 				"mUseStaticHeight": {
@@ -533,7 +532,6 @@
 		},
 		"FGBuildable--tiered--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
 			"required": ["Tier"],
 			"properties": {
 				"Tier": {
@@ -606,7 +604,7 @@
 		},
 		"FGBuildable--with-length--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
+			"$ref": "#/$defs/FGBuildable--base--pre-update8",
 			"required": ["mMeshLength"],
 			"properties": {
 				"mMeshLength": {
@@ -626,7 +624,6 @@
 		},
 		"FGBuildable--with-size--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
 			"required": ["mSize"],
 			"properties": {
 				"mSize": {
@@ -872,7 +869,7 @@
 		},
 		"FGBuildableConveyorBelt--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
+			"$ref": "#/$defs/FGBuildable--base--pre-update8",
 			"required": ["mItemMeshMap", "mSpeed", "mItems"],
 			"properties": {
 				"mItemMeshMap": {

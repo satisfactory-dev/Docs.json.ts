@@ -281,7 +281,9 @@ type FGBuildablePipelineSupport = docs_json_ts_0_5_2_1_classes_base_FGBuildableP
 
 type FGBuildablePipeReservoir = FGBuildable_powered & docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeReservoir_base_base_base;
 
-type FGBuildablePole = FGBuildablePole_base & {
+type FGBuildablePole = FGBuildablePole_version_specific & FGBuildablePole_base;
+
+type FGBuildablePole_version_specific = {
 	mSelectedPoleVersion: docs_json_ts_common_types_integer_string_signed,
 };
 
@@ -415,6 +417,7 @@ export type {
 	FGBuildablePipelineSupport,
 	FGBuildablePipeReservoir,
 	FGBuildablePole,
+	FGBuildablePole_version_specific,
 	FGBuildablePole_base,
 	FGBuildablePowerPole,
 	FGBuildablePowerStorage,

@@ -334,7 +334,9 @@ type FGBuildableConveyorBelt = docs_json_ts_0_5_2_1_classes_base_FGBuildableConv
 
 type FGBuildableConveyorLift = docs_json_ts_0_5_2_1_classes_base_FGBuildableConveyorLift & FGBuildable_base;
 
-type FGBuildableCornerWall = FGBuildableCornerWall_base & {
+type FGBuildableCornerWall = FGBuildableCornerWall_version_specific & FGBuildableCornerWall_base;
+
+type FGBuildableCornerWall_version_specific = {
 	mIsInverted: docs_json_ts_common_types_bool_string,
 };
 
@@ -750,6 +752,7 @@ export type {
 	FGBuildableConveyorBelt,
 	FGBuildableConveyorLift,
 	FGBuildableCornerWall,
+	FGBuildableCornerWall_version_specific,
 	FGBuildableCornerWall_base,
 	FGBuildableDockingStation,
 	FGBuildableDoor,

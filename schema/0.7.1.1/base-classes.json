@@ -795,8 +795,17 @@
 			]
 		},
 		"FGBuildablePole": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildablePole--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildablePole--base"
+				}
+			]
+		},
+		"FGBuildablePole--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildablePole--base",
 			"required": ["mSelectedPoleVersion"],
 			"properties": {
 				"mSelectedPoleVersion": {

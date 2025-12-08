@@ -44,7 +44,7 @@
 		},
 		"FGBuildableConveyorBelt": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableConveyorBelt--spline",
+			"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableConveyorBelt",
 			"unevaluatedProperties": false
 		},
 		"FGBuildableConveyorLift": {
