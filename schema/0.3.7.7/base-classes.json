@@ -51,10 +51,7 @@
 		"FGBuildable--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--base--pre-update8",
-			"required": [
-				"mHighlightVector",
-				"mShouldShowHighlight"
-			],
+			"required": ["mHighlightVector", "mShouldShowHighlight"],
 			"properties": {
 				"mHighlightVector": {
 					"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
