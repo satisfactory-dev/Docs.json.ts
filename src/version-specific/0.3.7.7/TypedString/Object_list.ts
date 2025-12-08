@@ -518,19 +518,21 @@ export function Object_list_ajv_macro(
 		);
 	} else {
 		regex = `\\(${
-		Object.keys(schema.items.properties)
-			.map((property) => `(?:,?${
-				RegExp.escape(property)
-			}=${ajv_macro_value_regex(schema.items.properties[property])})${
-				(
-					(schema.items.required || ([] as string[]))
-						.includes(property)
-				)
-					? ''
-					: '?'
-			}`)
-			.join('')
-	}\\)`;
+			Object.keys(schema.items.properties)
+				.map((property) => `(?:,?${
+					RegExp.escape(property)
+				}=${ajv_macro_value_regex(
+					schema.items.properties[property],
+				)})${
+					(
+						(schema.items.required || ([] as string[]))
+							.includes(property)
+					)
+						? ''
+						: '?'
+				}`)
+				.join('')
+		}\\)`;
 	}
 
 	return Object.freeze({

@@ -243,12 +243,12 @@ export function Object_type_to_regex(
 				}=${
 					value_regex
 				})${
-				(
-					(schema.required || ([] as string[]))
-						.includes(property)
-				)
-					? ''
-					: '?'
+					(
+						(schema.required || ([] as string[]))
+							.includes(property)
+					)
+						? ''
+						: '?'
 				}`;
 			})
 			.join('')
