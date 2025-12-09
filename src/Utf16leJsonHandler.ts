@@ -95,7 +95,7 @@ export class Utf16leJsonHandler<
 
 		if (!this.#validator(maybe)) {
 			if (!on_failure) {
-			console.error(this.#validator.errors);
+				console.error(this.#validator.errors);
 			} else {
 				on_failure(maybe, this.#validator.errors);
 			}
