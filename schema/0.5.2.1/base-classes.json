@@ -1434,6 +1434,16 @@
 				}
 			]
 		},
+		"FGBuildableRailroadTrack--base": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableRailroadTrack--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base--pre-update8"
+				}
+			]
+		},
 		"FGBuildableRailroadTrack--base--version-specific": {
 			"type": "object",
 			"required": [
@@ -1457,16 +1467,6 @@
 					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
 				}
 			}
-		},
-		"FGBuildableRailroadTrack--base": {
-			"allOf": [
-				{
-					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableRailroadTrack--base--base"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable--base--pre-update8"
-				}
-			]
 		},
 		"FGBuildableRamp": {
 			"allOf": [

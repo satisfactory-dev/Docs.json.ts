@@ -806,15 +806,6 @@
 				}
 			]
 		},
-		"FGBuildablePole--version-specific": {
-			"type": "object",
-			"required": ["mSelectedPoleVersion"],
-			"properties": {
-				"mSelectedPoleVersion": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string--signed"
-				}
-			}
-		},
 		"FGBuildablePole--base": {
 			"allOf": [
 				{
@@ -824,6 +815,15 @@
 					"$ref": "#/$defs/FGBuildable--base"
 				}
 			]
+		},
+		"FGBuildablePole--version-specific": {
+			"type": "object",
+			"required": ["mSelectedPoleVersion"],
+			"properties": {
+				"mSelectedPoleVersion": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string--signed"
+				}
+			}
 		},
 		"FGBuildablePowerPole": {
 			"allOf": [
@@ -1124,15 +1124,6 @@
 				}
 			]
 		},
-		"FGBuildableWire--version-specific": {
-			"type": "object",
-			"required": ["mCachedRelativeLocations"],
-			"properties": {
-				"mCachedRelativeLocations": {
-					"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
-				}
-			}
-		},
 		"FGBuildableWire--base": {
 			"allOf": [
 				{
@@ -1142,6 +1133,15 @@
 					"$ref": "#/$defs/FGBuildable--base"
 				}
 			]
+		},
+		"FGBuildableWire--version-specific": {
+			"type": "object",
+			"required": ["mCachedRelativeLocations"],
+			"properties": {
+				"mCachedRelativeLocations": {
+					"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
+				}
+			}
 		},
 		"FGJetPack": {
 			"type": "object",

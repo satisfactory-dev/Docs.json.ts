@@ -573,9 +573,7 @@
 		},
 		"FGBuildable--base--version-specific": {
 			"type": "object",
-			"required": [
-				"mOcclusionBoxInfo"
-			],
+			"required": ["mOcclusionBoxInfo"],
 			"properties": {
 				"mOcclusionBoxInfo": {
 					"oneOf": [
@@ -761,15 +759,6 @@
 				}
 			]
 		},
-		"FGBuildableCornerWall--version-specific": {
-			"type": "object",
-			"required": ["mIsInverted"],
-			"properties": {
-				"mIsInverted": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				}
-			}
-		},
 		"FGBuildableCornerWall--base": {
 			"allOf": [
 				{
@@ -779,6 +768,15 @@
 					"$ref": "#/$defs/FGBuildable--base"
 				}
 			]
+		},
+		"FGBuildableCornerWall--version-specific": {
+			"type": "object",
+			"required": ["mIsInverted"],
+			"properties": {
+				"mIsInverted": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
 		},
 		"FGBuildableDockingStation": {
 			"allOf": [
@@ -1197,6 +1195,19 @@
 				}
 			]
 		},
+		"FGBuildablePipeline--base": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipeline--base-root"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildablePipeline--base-spline"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
 		"FGBuildablePipeline--version-specific": {
 			"type": "object",
 			"required": [
@@ -1215,19 +1226,6 @@
 					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
 				}
 			}
-		},
-		"FGBuildablePipeline--base": {
-			"allOf": [
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipeline--base-root"
-				},
-				{
-					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildablePipeline--base-spline"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable--base"
-				}
-			]
 		},
 		"FGBuildablePipelineJunction": {
 			"allOf": [
@@ -1760,6 +1758,16 @@
 				}
 			]
 		},
+		"FGEquipment--noisy": {
+			"type": "object",
+			"$ref": "#/$defs/FGEquipment",
+			"required": ["mActiveNoiseFrequency"],
+			"properties": {
+				"mActiveNoiseFrequency": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
 		"FGEquipment--version-specific": {
 			"type": "object",
 			"required": [
@@ -1784,16 +1792,6 @@
 						"ES_BODY",
 						"ES_LEGS"
 					]
-				}
-			}
-		},
-		"FGEquipment--noisy": {
-			"type": "object",
-			"$ref": "#/$defs/FGEquipment",
-			"required": ["mActiveNoiseFrequency"],
-			"properties": {
-				"mActiveNoiseFrequency": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
 			}
 		},
@@ -2275,37 +2273,6 @@
 				}
 			]
 		},
-		"FGSchematic--version-specific": {
-			"type": "object",
-			"required": ["mHiddenUntilDependenciesMet", "mUnlocks", "mCost"],
-			"properties": {
-				"mHiddenUntilDependenciesMet": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mUnlocks": {
-					"type": "array",
-					"minItems": 0,
-					"maxItems": 6,
-					"items": {
-						"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/mUnlocks--item"
-					}
-				},
-				"mCost": {
-					"oneOf": [
-						{
-							"type": "string",
-							"typed_string": ""
-						},
-						{
-							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/ItemClass-Amount--list"
-						},
-						{
-							"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/ItemClass--list"
-						}
-					]
-				}
-			}
-		},
 		"FGSchematic--base--base": {
 			"allOf": [
 				{
@@ -2382,6 +2349,37 @@
 							}
 						}
 					}
+				}
+			}
+		},
+		"FGSchematic--version-specific": {
+			"type": "object",
+			"required": ["mHiddenUntilDependenciesMet", "mUnlocks", "mCost"],
+			"properties": {
+				"mHiddenUntilDependenciesMet": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mUnlocks": {
+					"type": "array",
+					"minItems": 0,
+					"maxItems": 6,
+					"items": {
+						"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/mUnlocks--item"
+					}
+				},
+				"mCost": {
+					"oneOf": [
+						{
+							"type": "string",
+							"typed_string": ""
+						},
+						{
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/ItemClass-Amount--list"
+						},
+						{
+							"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/ItemClass--list"
+						}
+					]
 				}
 			}
 		},

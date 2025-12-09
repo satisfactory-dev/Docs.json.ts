@@ -2546,16 +2546,6 @@
 				}
 			]
 		},
-		"FGSchematic--base--base--props--sans-mSchematicIcon": {
-			"type": "object",
-			"$ref": "#/$defs/FGSchematic--base--base--props--sans--mSchematicIcon--mMenuPriority",
-			"required": ["mMenuPriority"],
-			"properties": {
-				"mMenuPriority": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				}
-			}
-		},
 		"FGSchematic--base--base--props--sans--mSchematicIcon--mMenuPriority": {
 			"type": "object",
 			"$ref": "#/$defs/FGSchematic--base--base--base--base",
@@ -2596,6 +2586,16 @@
 				},
 				"mTechTier": {
 					"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/Tier"
+				}
+			}
+		},
+		"FGSchematic--base--base--props--sans-mSchematicIcon": {
+			"type": "object",
+			"$ref": "#/$defs/FGSchematic--base--base--props--sans--mSchematicIcon--mMenuPriority",
+			"required": ["mMenuPriority"],
+			"properties": {
+				"mMenuPriority": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
 			}
 		},

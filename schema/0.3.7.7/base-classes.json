@@ -4234,9 +4234,7 @@
 		"FGEquipment--base--base--version-specific": {
 			"type": "object",
 			"$ref": "#/$defs/hasClassName",
-			"required": [
-				"mUseDefaultPrimaryFire"
-			],
+			"required": ["mUseDefaultPrimaryFire"],
 			"properties": {
 				"mUseDefaultPrimaryFire": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
@@ -4250,6 +4248,15 @@
 			"properties": {
 				"mPlaceDistanceMax": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGEquipment--has-mRandomStingerAnim": {
+			"type": "object",
+			"required": ["mRandomStingerAnim"],
+			"properties": {
+				"mRandomStingerAnim": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
 				}
 			}
 		},
@@ -4286,9 +4293,7 @@
 		"FGEquipmentStunSpear--base--base--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGEquipmentStunSpear--base--version-specific",
-			"required": [
-				"mRandomAttackAnim"
-			],
+			"required": ["mRandomAttackAnim"],
 			"properties": {
 				"mRandomAttackAnim": {
 					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
@@ -4363,9 +4368,7 @@
 		},
 		"FGEquipmentStunSpear--xenobasher--version-specific": {
 			"type": "object",
-			"required": [
-				"mRandomEquipAnim"
-			],
+			"required": ["mRandomEquipAnim"],
 			"properties": {
 				"mRandomEquipAnim": {
 					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
@@ -4394,15 +4397,6 @@
 					"$ref": "#/$defs/FGEquipment--has-mRandomStingerAnim"
 				}
 			]
-		},
-		"FGEquipment--has-mRandomStingerAnim": {
-			"type": "object",
-			"required": ["mRandomStingerAnim"],
-			"properties": {
-				"mRandomStingerAnim": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-				}
-			}
 		},
 		"FGGasMask": {
 			"allOf": [
