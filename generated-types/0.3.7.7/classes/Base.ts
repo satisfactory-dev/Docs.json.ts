@@ -173,9 +173,7 @@ type FGBuildable_powered_storage_base_base_base = FGBuildable_powered_base_base_
 	mStorageSizeY: docs_json_ts_common_types_integer_string,
 };
 
-type FGBuildable_spline = FGBuildable_spline_base & FGBuildable_with_length;
-
-type FGBuildable_spline_base = FGBuildable_with_length_base & {
+type FGBuildable_spline = FGBuildable_with_length & {
 	mSplineData: '',
 };
 
@@ -197,9 +195,7 @@ type FGBuildable_with_height_and_width = FGBuildable_with_height_and_width_base 
 
 type FGBuildable_with_height_and_width_base = FGBuildable_with_height_base & FGBuildable_with_width_base;
 
-type FGBuildable_with_length = FGBuildable_with_length_base & FGBuildable;
-
-type FGBuildable_with_length_base = FGBuildable_base_pre_update8 & {
+type FGBuildable_with_length = FGBuildable_base_pre_update8 & {
 	mMeshLength: docs_json_ts_common_types_decimal_string,
 };
 
@@ -273,7 +269,7 @@ type FGBuildableConveyorBelt_base_base = FGBuildable_base_pre_update8 & {
 
 type FGBuildableConveyorBelt_spline = FGBuildableConveyorBelt_spline_base & FGBuildable_spline & FGBuildableConveyorBelt_base;
 
-type FGBuildableConveyorBelt_spline_base = FGBuildable_spline_base & FGBuildableConveyorBelt_base_base;
+type FGBuildableConveyorBelt_spline_base = FGBuildable_spline & FGBuildableConveyorBelt_base_base;
 
 type FGBuildableConveyorLift = FGBuildableConveyorLift_base & FGBuildableConveyorBelt_base;
 
@@ -517,17 +513,17 @@ type FGBuildableManufacturer_Build_SmelterMk1_C = FGBuildableManufacturer_base &
 
 type FGBuildableManufacturer_Build_SmelterMk1_C_base = FGBuildableManufacturer_base_base & FGBuildableManufacturer_base_mProductionEffectsRunning_base & FGBuildable_powered_base_base;
 
-type FGBuildablePipeline = FGBuildablePipeline_base_root_quantized & FGBuildablePipeline_base_spline;
+type FGBuildablePipeHyper = FGBuildable_spline & FGBuildable;
 
-type FGBuildablePipeline_base = FGBuildablePipeline_base_base & FGBuildablePipeline_base_no_indicator;
+type FGBuildablePipeline = FGBuildablePipeline_base_root_quantized & FGBuildablePipeline_base_spline & FGBuildable;
+
+type FGBuildablePipeline_base = FGBuildablePipeline_base_base & FGBuildablePipeline_base_no_indicator_base;
 
 type FGBuildablePipeline_base_base = FGBuildablePipeline_base_no_indicator_base & {
 	mIndicatorData: docs_json_ts_common_types_empty_object,
 };
 
-type FGBuildablePipeline_base_no_indicator = FGBuildablePipeline_base_no_indicator_base & FGBuildable;
-
-type FGBuildablePipeline_base_no_indicator_base = FGBuildable_base & {
+type FGBuildablePipeline_base_no_indicator_base = FGBuildable_base_pre_update8 & {
 	mRadius: docs_json_ts_common_types_decimal_string,
 	mFluidBox: docs_json_ts_common_types_empty_object,
 	mPipeConnections: '',
@@ -560,11 +556,11 @@ type FGBuildablePipeline_base_root_quantized = FGBuildablePipeline_base_root & {
 
 type FGBuildablePipeline_base_spline = FGBuildablePipeline_base_spline_base & FGBuildablePipeline_base & FGBuildable_spline;
 
-type FGBuildablePipeline_base_spline_base = FGBuildablePipeline_base_base & FGBuildable_spline_base;
+type FGBuildablePipeline_base_spline_base = FGBuildablePipeline_base_base & FGBuildable_spline;
 
 type FGBuildablePipeline_junction = FGBuildable_powered & FGBuildablePipeline_junction_base;
 
-type FGBuildablePipeline_junction_base = FGBuildable_powered_base & FGBuildablePipeline_base_no_indicator;
+type FGBuildablePipeline_junction_base = FGBuildable_powered_base & FGBuildablePipeline_base_no_indicator_base;
 
 type FGBuildablePipelineJunction = FGBuildablePipeline_junction & FGBuildablePipelineJunction_base;
 
@@ -670,9 +666,9 @@ type FGBuildableRailroadStation_base_base = FGBuildableTrainPlatform_base_base &
 	mDockedPlatformList: '',
 };
 
-type FGBuildableRailroadTrack = FGBuildableRailroadTrack_base & FGBuildable_with_length;
+type FGBuildableRailroadTrack = FGBuildableRailroadTrack_base & FGBuildable;
 
-type FGBuildableRailroadTrack_base = FGBuildable_with_length_base & {
+type FGBuildableRailroadTrack_base = FGBuildable_with_length & {
 	mIsOwnedByPlatform: docs_json_ts_common_types_bool_string,
 };
 
@@ -1093,6 +1089,10 @@ type FGEquipment_dispenser = FGEquipment & {
 	mPlaceDistanceMax: docs_json_ts_common_types_decimal_string,
 };
 
+type FGEquipment_has_mRandomStingerAnim = {
+	mRandomStingerAnim: docs_json_ts_common_types_integer_string,
+};
+
 type FGEquipment_has_sound = FGEquipment & {
 	mPlayingSound: docs_json_ts_common_types_bool_string,
 };
@@ -1131,10 +1131,6 @@ type FGEquipmentStunSpear_xenobasher_version_specific = {
 type FGEquipmentStunSpear_xenozapper = FGEquipmentStunSpear_xenozapper_base & FGEquipmentStunSpear_base;
 
 type FGEquipmentStunSpear_xenozapper_base = FGEquipmentStunSpear_base_base & FGEquipment_has_sound & FGEquipment_has_mRandomStingerAnim;
-
-type FGEquipment_has_mRandomStingerAnim = {
-	mRandomStingerAnim: docs_json_ts_common_types_integer_string,
-};
 
 type FGGasMask = FGGasMask_base & FGEquipment;
 
@@ -1486,7 +1482,6 @@ export type {
 	FGBuildable_powered_storage_base_base,
 	FGBuildable_powered_storage_base_base_base,
 	FGBuildable_spline,
-	FGBuildable_spline_base,
 	FGBuildable_tiered,
 	FGBuildable_tiered_base,
 	FGBuildable_with_height,
@@ -1495,7 +1490,6 @@ export type {
 	FGBuildable_with_height_and_width,
 	FGBuildable_with_height_and_width_base,
 	FGBuildable_with_length,
-	FGBuildable_with_length_base,
 	FGBuildable_with_size,
 	FGBuildable_with_size_base,
 	FGBuildable_with_size_and_elevation,
@@ -1595,10 +1589,10 @@ export type {
 	FGBuildableManufacturer_Build_Packager_C,
 	FGBuildableManufacturer_Build_SmelterMk1_C,
 	FGBuildableManufacturer_Build_SmelterMk1_C_base,
+	FGBuildablePipeHyper,
 	FGBuildablePipeline,
 	FGBuildablePipeline_base,
 	FGBuildablePipeline_base_base,
-	FGBuildablePipeline_base_no_indicator,
 	FGBuildablePipeline_base_no_indicator_base,
 	FGBuildablePipeline_base_root,
 	FGBuildablePipeline_base_root_quantized,
@@ -1734,6 +1728,7 @@ export type {
 	FGEquipment_base_base_base,
 	FGEquipment_base_base_version_specific,
 	FGEquipment_dispenser,
+	FGEquipment_has_mRandomStingerAnim,
 	FGEquipment_has_sound,
 	FGEquipmentStunSpear_base,
 	FGEquipmentStunSpear_base_base,
@@ -1745,7 +1740,6 @@ export type {
 	FGEquipmentStunSpear_xenobasher_version_specific,
 	FGEquipmentStunSpear_xenozapper,
 	FGEquipmentStunSpear_xenozapper_base,
-	FGEquipment_has_mRandomStingerAnim,
 	FGGasMask,
 	FGGasMask_base,
 	FGGolfCartDispenser,

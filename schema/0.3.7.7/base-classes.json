@@ -500,18 +500,8 @@
 			}
 		},
 		"FGBuildable--spline": {
-			"allOf": [
-				{
-					"$ref": "#/$defs/FGBuildable--spline--base"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable--with-length"
-				}
-			]
-		},
-		"FGBuildable--spline--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--with-length--base",
+			"$ref": "#/$defs/FGBuildable--with-length",
 			"required": ["mSplineData"],
 			"properties": {
 				"mSplineData": {
@@ -593,16 +583,6 @@
 			]
 		},
 		"FGBuildable--with-length": {
-			"allOf": [
-				{
-					"$ref": "#/$defs/FGBuildable--with-length--base"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable"
-				}
-			]
-		},
-		"FGBuildable--with-length--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--base--pre-update8",
 			"required": ["mMeshLength"],
@@ -899,7 +879,7 @@
 		"FGBuildableConveyorBelt--spline--base": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGBuildable--spline--base"
+					"$ref": "#/$defs/FGBuildable--spline"
 				},
 				{
 					"$ref": "#/$defs/FGBuildableConveyorBelt--base--base"
@@ -1906,6 +1886,16 @@
 				}
 			]
 		},
+		"FGBuildablePipeHyper": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--spline"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable"
+				}
+			]
+		},
 		"FGBuildablePipeline": {
 			"allOf": [
 				{
@@ -1913,6 +1903,9 @@
 				},
 				{
 					"$ref": "#/$defs/FGBuildablePipeline--base-spline"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable"
 				}
 			]
 		},
@@ -1922,7 +1915,7 @@
 					"$ref": "#/$defs/FGBuildablePipeline--base--base"
 				},
 				{
-					"$ref": "#/$defs/FGBuildablePipeline--base--no-indicator"
+					"$ref": "#/$defs/FGBuildablePipeline--base--no-indicator--base"
 				}
 			]
 		},
@@ -1936,19 +1929,9 @@
 				}
 			}
 		},
-		"FGBuildablePipeline--base--no-indicator": {
-			"allOf": [
-				{
-					"$ref": "#/$defs/FGBuildablePipeline--base--no-indicator--base"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable"
-				}
-			]
-		},
 		"FGBuildablePipeline--base--no-indicator--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
+			"$ref": "#/$defs/FGBuildable--base--pre-update8",
 			"required": ["mRadius", "mFluidBox", "mPipeConnections"],
 			"properties": {
 				"mRadius": {
@@ -2057,7 +2040,7 @@
 					"$ref": "#/$defs/FGBuildablePipeline--base--base"
 				},
 				{
-					"$ref": "#/$defs/FGBuildable--spline--base"
+					"$ref": "#/$defs/FGBuildable--spline"
 				}
 			]
 		},
@@ -2077,7 +2060,7 @@
 					"$ref": "#/$defs/FGBuildable--powered--base"
 				},
 				{
-					"$ref": "#/$defs/FGBuildablePipeline--base--no-indicator"
+					"$ref": "#/$defs/FGBuildablePipeline--base--no-indicator--base"
 				}
 			]
 		},
@@ -2505,13 +2488,13 @@
 					"$ref": "#/$defs/FGBuildableRailroadTrack--base"
 				},
 				{
-					"$ref": "#/$defs/FGBuildable--with-length"
+					"$ref": "#/$defs/FGBuildable"
 				}
 			]
 		},
 		"FGBuildableRailroadTrack--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--with-length--base",
+			"$ref": "#/$defs/FGBuildable--with-length",
 			"required": ["mIsOwnedByPlatform"],
 			"properties": {
 				"mIsOwnedByPlatform": {

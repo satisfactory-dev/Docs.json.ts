@@ -48,7 +48,6 @@ import type {
 	FGBuildableManufacturer_base_mProductionEffectsRunning as docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_base_mProductionEffectsRunning,
 	FGBuildableManufacturer_base_packager as docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_base_packager,
 	FGBuildablePipeline as docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeline,
-	FGBuildablePipeline_base_no_indicator as docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeline_base_no_indicator,
 	FGBuildablePipeline_base_no_indicator_base as docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeline_base_no_indicator_base,
 	FGBuildablePipelinePump_base as docs_json_ts_0_3_7_7_classes_base_FGBuildablePipelinePump_base,
 	FGBuildablePipelinePump_powered_base_base as docs_json_ts_0_3_7_7_classes_base_FGBuildablePipelinePump_powered_base_base,
@@ -451,7 +450,7 @@ type FGBuildablePipeline = docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeline
 
 type FGBuildablePipeline_junction = FGBuildable_powered & FGBuildablePipeline_junction_base;
 
-type FGBuildablePipeline_junction_base = FGBuildablePipeline_junction_base_base & docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base & docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeline_base_no_indicator;
+type FGBuildablePipeline_junction_base = FGBuildablePipeline_junction_base_base & docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base & docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeline_base_no_indicator_base;
 
 type FGBuildablePipeline_junction_base_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base_base & FGBuildablePipeline_junction_base_base_base;
 
@@ -720,16 +719,16 @@ type FGSchematic_base_base_base_base = docs_json_ts_0_3_7_7_classes_base_FGSchem
 
 type FGSchematic_base_base_props = FGSchematic_base_base_props_sans_mSchematicIcon & FGSchematic_base_base_props_with_mSchematicIcon;
 
-type FGSchematic_base_base_props_sans_mSchematicIcon = FGSchematic_base_base_props_sans_mSchematicIcon_mMenuPriority & {
-	mMenuPriority: docs_json_ts_common_types_decimal_string,
-};
-
 type FGSchematic_base_base_props_sans_mSchematicIcon_mMenuPriority = FGSchematic_base_base_base_base & {
 	mSchematicDependencies: [
 		...(docs_json_ts_0_3_7_7_properties_mSchematicDependencies_item | docs_json_ts_0_4_2_11_properties_mSchematicDependencies_item)[],
 	],
 	mSmallSchematicIcon: 'None' | `Texture2D ${string}`,
 	mTechTier: docs_json_ts_0_4_2_11_properties_Tier,
+};
+
+type FGSchematic_base_base_props_sans_mSchematicIcon = FGSchematic_base_base_props_sans_mSchematicIcon_mMenuPriority & {
+	mMenuPriority: docs_json_ts_common_types_decimal_string,
 };
 
 type FGSchematic_base_base_props_with_mSchematicIcon = FGSchematic_base_base_base_base & {
@@ -958,8 +957,8 @@ export type {
 	FGSchematic_base_base_base,
 	FGSchematic_base_base_base_base,
 	FGSchematic_base_base_props,
-	FGSchematic_base_base_props_sans_mSchematicIcon,
 	FGSchematic_base_base_props_sans_mSchematicIcon_mMenuPriority,
+	FGSchematic_base_base_props_sans_mSchematicIcon,
 	FGSchematic_base_base_props_with_mSchematicIcon,
 	FGSnowballWeapon,
 	FGVehicleDescriptor_fueled,

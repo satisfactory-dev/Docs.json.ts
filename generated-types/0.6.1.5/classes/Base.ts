@@ -339,11 +339,11 @@ type FGBuildableConveyorLift = docs_json_ts_0_5_2_1_classes_base_FGBuildableConv
 
 type FGBuildableCornerWall = FGBuildableCornerWall_version_specific & FGBuildableCornerWall_base;
 
+type FGBuildableCornerWall_base = docs_json_ts_0_5_2_1_classes_base_FGBuildableCornerWall & FGBuildable_base;
+
 type FGBuildableCornerWall_version_specific = {
 	mIsInverted: docs_json_ts_common_types_bool_string,
 };
-
-type FGBuildableCornerWall_base = docs_json_ts_0_5_2_1_classes_base_FGBuildableCornerWall & FGBuildable_base;
 
 type FGBuildableDockingStation = docs_json_ts_0_5_2_1_classes_base_FGBuildableDockingStation_base & docs_json_ts_0_3_7_7_classes_base_FGBuildable_docking_station_base_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableDockingStation_with_mFuelTransferSpeed & FGBuildable_powered;
 
@@ -425,13 +425,13 @@ type FGBuildablePipeHyper = docs_json_ts_0_5_2_1_classes_base_FGBuildablePipeHyp
 
 type FGBuildablePipeline = FGBuildablePipeline_version_specific & FGBuildablePipeline_base;
 
+type FGBuildablePipeline_base = docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeline_base_root & docs_json_ts_0_5_2_1_classes_base_FGBuildablePipeline_base_spline & FGBuildable_base;
+
 type FGBuildablePipeline_version_specific = {
 	mLastContentForSound: docs_json_ts_common_types_decimal_string,
 	mLastFlowForSound: docs_json_ts_common_types_decimal_string,
 	mUpdateSoundsHandle: docs_json_ts_common_types_empty_object,
 };
-
-type FGBuildablePipeline_base = docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeline_base_root & docs_json_ts_0_5_2_1_classes_base_FGBuildablePipeline_base_spline & FGBuildable_base;
 
 type FGBuildablePipelineJunction = docs_json_ts_0_5_2_1_classes_base_FGBuildablePipelineJunction & FGBuildable_base;
 
@@ -545,14 +545,14 @@ type FGDescriptor = docs_json_ts_0_4_2_11_classes_base_FGDescriptor_base & {
 
 type FGEquipment = docs_json_ts_0_4_2_11_classes_base_FGEquipment_base & FGEquipment_version_specific;
 
+type FGEquipment_noisy = FGEquipment & {
+	mActiveNoiseFrequency: docs_json_ts_common_types_decimal_string,
+};
+
 type FGEquipment_version_specific = {
 	mOnlyVisibleToOwner: docs_json_ts_common_types_bool_string,
 	mReceivedDamageModifiers: '',
 	mEquipmentSlot: 'ES_ARMS' | 'ES_HEAD' | 'ES_BACK' | 'ES_BODY' | 'ES_LEGS',
-};
-
-type FGEquipment_noisy = FGEquipment & {
-	mActiveNoiseFrequency: docs_json_ts_common_types_decimal_string,
 };
 
 type FGEquipmentStunSpear_base = FGEquipment & FGEquipmentStunSpear_base_mDamageTypes & FGEquipmentStunSpear_base_version_specific;
@@ -676,14 +676,6 @@ type FGResourceDescriptor = docs_json_ts_0_3_7_7_classes_base_FGResourceDescript
 
 type FGSchematic_base = FGSchematic_base_base & FGSchematic_version_specific;
 
-type FGSchematic_version_specific = {
-	mHiddenUntilDependenciesMet: docs_json_ts_common_types_bool_string,
-	mUnlocks: [
-		...docs_json_ts_0_6_1_5_properties_mUnlocks_item[],
-	],
-	mCost: null | docs_json_ts_0_3_7_7_properties_ItemClass_Amount_list | docs_json_ts_0_6_1_5_properties_ItemClass_list,
-};
-
 type FGSchematic_base_base = docs_json_ts_0_4_2_11_classes_base_FGSchematic_base_base_props_sans_mSchematicIcon & docs_json_ts_0_5_2_1_classes_base_FGSchematic_base_base_base & FGSchematic_base_base_props_with_mSchematicIcon;
 
 type FGSchematic_base_base_props_with_mSchematicIcon = {
@@ -699,6 +691,14 @@ type FGSchematic_base_base_props_with_mSchematicIcon = {
 		},
 		DrawAs: 'Image',
 	},
+};
+
+type FGSchematic_version_specific = {
+	mHiddenUntilDependenciesMet: docs_json_ts_common_types_bool_string,
+	mUnlocks: [
+		...docs_json_ts_0_6_1_5_properties_mUnlocks_item[],
+	],
+	mCost: null | docs_json_ts_0_3_7_7_properties_ItemClass_Amount_list | docs_json_ts_0_6_1_5_properties_ItemClass_list,
 };
 
 type FGSchematic_with_described_unlocks = docs_json_ts_0_5_2_1_classes_base_FGSchematic_with_described_unlocks_base_base & FGSchematic_base;
@@ -765,8 +765,8 @@ export type {
 	FGBuildableConveyorBelt,
 	FGBuildableConveyorLift,
 	FGBuildableCornerWall,
-	FGBuildableCornerWall_version_specific,
 	FGBuildableCornerWall_base,
+	FGBuildableCornerWall_version_specific,
 	FGBuildableDockingStation,
 	FGBuildableDoor,
 	FGBuildableDoor_automated,
@@ -805,8 +805,8 @@ export type {
 	FGBuildablePillar,
 	FGBuildablePipeHyper,
 	FGBuildablePipeline,
-	FGBuildablePipeline_version_specific,
 	FGBuildablePipeline_base,
+	FGBuildablePipeline_version_specific,
 	FGBuildablePipelineJunction,
 	FGBuildablePipelinePump_pump,
 	FGBuildablePipelinePump_valve,
@@ -853,8 +853,8 @@ export type {
 	FGConsumableEquipment,
 	FGDescriptor,
 	FGEquipment,
-	FGEquipment_version_specific,
 	FGEquipment_noisy,
+	FGEquipment_version_specific,
 	FGEquipmentStunSpear_base,
 	FGEquipmentStunSpear_base_mDamageTypes,
 	FGEquipmentStunSpear_base_version_specific,
@@ -880,9 +880,9 @@ export type {
 	FGPortableMinerDispenser,
 	FGResourceDescriptor,
 	FGSchematic_base,
-	FGSchematic_version_specific,
 	FGSchematic_base_base,
 	FGSchematic_base_base_props_with_mSchematicIcon,
+	FGSchematic_version_specific,
 	FGSchematic_with_described_unlocks,
 	FGSuitBase,
 	FGSuitBase_base,

@@ -283,11 +283,11 @@ type FGBuildablePipeReservoir = FGBuildable_powered & docs_json_ts_0_3_7_7_class
 
 type FGBuildablePole = FGBuildablePole_version_specific & FGBuildablePole_base;
 
+type FGBuildablePole_base = docs_json_ts_0_6_1_5_classes_base_FGBuildablePole & FGBuildable_base;
+
 type FGBuildablePole_version_specific = {
 	mSelectedPoleVersion: docs_json_ts_common_types_integer_string_signed,
 };
-
-type FGBuildablePole_base = docs_json_ts_0_6_1_5_classes_base_FGBuildablePole & FGBuildable_base;
 
 type FGBuildablePowerPole = docs_json_ts_0_5_2_1_classes_base_FGBuildablePowerPole & FGBuildable_base;
 
@@ -341,11 +341,11 @@ type FGBuildableWidgetSign = docs_json_ts_0_5_2_1_classes_base_FGBuildableWidget
 
 type FGBuildableWire = FGBuildableWire_version_specific & FGBuildableWire_base;
 
+type FGBuildableWire_base = docs_json_ts_0_5_2_1_classes_base_FGBuildableWire & FGBuildable_base;
+
 type FGBuildableWire_version_specific = {
 	mCachedRelativeLocations: docs_json_ts_common_types_XYZ_decimal_string,
 };
-
-type FGBuildableWire_base = docs_json_ts_0_5_2_1_classes_base_FGBuildableWire & FGBuildable_base;
 
 type FGJetPack = FGJetPack_base & {
 	mFuelTypes: docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list,
@@ -419,8 +419,8 @@ export type {
 	FGBuildablePipelineSupport,
 	FGBuildablePipeReservoir,
 	FGBuildablePole,
-	FGBuildablePole_version_specific,
 	FGBuildablePole_base,
+	FGBuildablePole_version_specific,
 	FGBuildablePowerPole,
 	FGBuildablePowerStorage,
 	FGBuildableRadarTower,
@@ -447,8 +447,8 @@ export type {
 	FGBuildableWall,
 	FGBuildableWidgetSign,
 	FGBuildableWire,
-	FGBuildableWire_version_specific,
 	FGBuildableWire_base,
+	FGBuildableWire_version_specific,
 	FGJetPack,
 	FGJetPack_base,
 	FGPipeHyperStart,

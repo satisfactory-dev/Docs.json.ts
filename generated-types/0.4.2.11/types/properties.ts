@@ -16,10 +16,6 @@ import type {
 	mUnlocks_item_mSchematics as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mSchematics,
 } from './../../0.3.7.7/types/properties.ts';
 
-type TintColor = {
-	SpecifiedColor: docs_json_ts_common_types_RGBA,
-};
-
 type mAllowedResourceForms = [
     'RF_SOLID' | 'RF_LIQUID' | 'RF_GAS' | 'RF_HEAT',
     ...('RF_SOLID' | 'RF_LIQUID' | 'RF_GAS' | 'RF_HEAT')[],
@@ -97,8 +93,11 @@ type Texture2D_quoted = `Texture2D'"/Game/FactoryGame/${Exclude<string, ''>}${'"
 
 type Tier = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8';
 
+type TintColor = {
+	SpecifiedColor: docs_json_ts_common_types_RGBA,
+};
+
 export type {
-	TintColor,
 	mAllowedResourceForms,
 	mFogPlaneTransforms_empty,
 	mFogPlaneTransforms_list,
@@ -115,4 +114,5 @@ export type {
 	Texture2D,
 	Texture2D_quoted,
 	Tier,
+	TintColor,
 };

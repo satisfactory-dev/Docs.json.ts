@@ -82,7 +82,7 @@ import type {
 	FGBuildable_occupied_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_occupied_base,
 	FGBuildable_pole_with_length_and_power_base_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_with_length_and_power_base_base,
 	FGBuildable_powered_base_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base_base,
-	FGBuildable_spline_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_spline_base,
+	FGBuildable_spline as docs_json_ts_0_3_7_7_classes_base_FGBuildable_spline,
 	FGBuildable_tiered_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_tiered_base,
 	FGBuildable_with_height_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_base,
 	FGBuildable_with_size_and_elevation_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_size_and_elevation_base,
@@ -183,7 +183,7 @@ type FGBuildable_isFrame = FGBuildable_base & {
 
 type FGBuildable_mHasPower = docs_json_ts_0_4_2_11_classes_base_FGBuildable_mHasPower_base & FGBuildable_base_pre_update8;
 
-type FGBuildable_mSnappedPassthroughs = FGBuildable_base & {
+type FGBuildable_mSnappedPassthroughs = FGBuildable_base_pre_update8 & {
 	mSnappedPassthroughs: '',
 };
 
@@ -209,7 +209,7 @@ type FGBuildable_ramp_mDisableSnapOn = FGBuildable_base & {
 	mDisableSnapOn: docs_json_ts_0_3_7_7_properties_mDisableSnapOn_top_bottom | docs_json_ts_0_3_7_7_properties_mDisableSnapOn_front_bottom | docs_json_ts_0_5_2_1_properties_mDisableSnapOn_top | docs_json_ts_0_5_2_1_properties_mDisableSnapOn_bottom,
 };
 
-type FGBuildable_spline = docs_json_ts_0_3_7_7_classes_base_FGBuildable_spline_base & FGBuildable_base & FGBuildable_mSnappedPassthroughs;
+type FGBuildable_spline = docs_json_ts_0_3_7_7_classes_base_FGBuildable_spline & FGBuildable_base & FGBuildable_mSnappedPassthroughs;
 
 type FGBuildable_tiered = docs_json_ts_0_3_7_7_classes_base_FGBuildable_tiered_base & FGBuildable_base;
 
@@ -464,14 +464,14 @@ type FGBuildableRailroadStation_base = FGBuildable_base & {
 
 type FGBuildableRailroadTrack = FGBuildableRailroadTrack_base_version_specific & FGBuildableRailroadTrack_base & FGBuildable_base;
 
+type FGBuildableRailroadTrack_base = docs_json_ts_0_4_2_11_classes_base_FGBuildableRailroadTrack_base_base & FGBuildable_base_pre_update8;
+
 type FGBuildableRailroadTrack_base_version_specific = {
 	mTrackGraphID: docs_json_ts_common_types_integer_string_signed,
 	mOverlappingTracks: '',
 	mVehicles: docs_json_ts_common_types_empty_object,
 	mSignalBlockID: docs_json_ts_common_types_integer_string,
 };
-
-type FGBuildableRailroadTrack_base = docs_json_ts_0_4_2_11_classes_base_FGBuildableRailroadTrack_base_base & FGBuildable_base_pre_update8;
 
 type FGBuildableRamp = FGBuildableRamp_base & FGBuildableRamp_base_base;
 
@@ -907,8 +907,8 @@ export type {
 	FGBuildableRailroadStation,
 	FGBuildableRailroadStation_base,
 	FGBuildableRailroadTrack,
-	FGBuildableRailroadTrack_base_version_specific,
 	FGBuildableRailroadTrack_base,
+	FGBuildableRailroadTrack_base_version_specific,
 	FGBuildableRamp,
 	FGBuildableRamp_base,
 	FGBuildableRamp_base_base,
