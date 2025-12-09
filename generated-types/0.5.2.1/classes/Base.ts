@@ -181,7 +181,7 @@ type FGBuildable_isFrame = FGBuildable_base & {
 	mIsFrame: docs_json_ts_common_types_bool_string,
 };
 
-type FGBuildable_mHasPower = docs_json_ts_0_4_2_11_classes_base_FGBuildable_mHasPower_base & FGBuildable_base;
+type FGBuildable_mHasPower = docs_json_ts_0_4_2_11_classes_base_FGBuildable_mHasPower_base & FGBuildable_base_pre_update8;
 
 type FGBuildable_mSnappedPassthroughs = FGBuildable_base & {
 	mSnappedPassthroughs: '',
@@ -405,7 +405,9 @@ type FGBuildablePassthrough = FGBuildable_base & {
 	mUseSoftClearance: docs_json_ts_common_types_bool_string,
 };
 
-type FGBuildablePillar = FGBuildable_base & {
+type FGBuildablePillar = FGBuildablePillar_base & FGBuildable_base;
+
+type FGBuildablePillar_base = {
 	mSize: docs_json_ts_common_types_XYZ_decimal_string,
 	mIsSupport: docs_json_ts_common_types_bool_string,
 };
@@ -430,7 +432,7 @@ type FGBuildablePipeReservoir = FGBuildable_powered & docs_json_ts_0_3_7_7_class
 
 type FGBuildablePole = docs_json_ts_0_3_7_7_classes_base_FGBuildablePole_base & FGBuildable_base;
 
-type FGBuildablePowerPole = docs_json_ts_0_3_7_7_classes_base_FGBuildablePowerPole_base & FGBuildable_mHasPower;
+type FGBuildablePowerPole = docs_json_ts_0_3_7_7_classes_base_FGBuildablePowerPole_base & FGBuildable_mHasPower & FGBuildable_base;
 
 type FGBuildablePowerStorage = FGBuildable_powered & docs_json_ts_0_4_2_11_classes_base_FGBuildablePowerStorage_base;
 
@@ -887,6 +889,7 @@ export type {
 	FGBuildableManufacturer_Build_SmelterMk1_C_base,
 	FGBuildablePassthrough,
 	FGBuildablePillar,
+	FGBuildablePillar_base,
 	FGBuildablePipeHyper,
 	FGBuildablePipeline,
 	FGBuildablePipeline_base_spline,

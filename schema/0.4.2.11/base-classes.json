@@ -132,7 +132,7 @@
 		},
 		"FGBuildable--mHasPower--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
+			"$ref": "#/$defs/FGBuildable--base--pre-update8",
 			"required": ["mHasPower"],
 			"properties": {
 				"mHasPower": {
@@ -2060,8 +2060,17 @@
 			]
 		},
 		"FGEquipment--base": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--version-specific"
+				}
+			]
+		},
+		"FGEquipment--version-specific": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment--base--base",
 			"required": ["mAttachSocket"],
 			"properties": {
 				"mAttachSocket": {

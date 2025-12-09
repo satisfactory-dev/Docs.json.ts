@@ -187,9 +187,9 @@ type FGBuildableBlueprintDesigner_pre_update8 = {
 	},
 };
 
-type FGBuildableCircuitSwitch = docs_json_ts_0_5_2_1_classes_base_FGBuildableCircuitSwitch & FGBuildableCircuitSwitch_base;
+type FGBuildableCircuitSwitch = docs_json_ts_0_5_2_1_classes_base_FGBuildableCircuitSwitch & FGBuildableCircuitSwitch_version_specific & FGBuildable_base;
 
-type FGBuildableCircuitSwitch_base = FGBuildable_base & {
+type FGBuildableCircuitSwitch_version_specific = {
 	mOnBuildingTagChanged: docs_json_ts_common_types_empty_object,
 };
 
@@ -339,7 +339,9 @@ type FGBuildableWall = docs_json_ts_0_6_1_5_classes_base_FGBuildableWall & FGBui
 
 type FGBuildableWidgetSign = docs_json_ts_0_5_2_1_classes_base_FGBuildableWidgetSign & FGBuildable_base;
 
-type FGBuildableWire = FGBuildableWire_base & {
+type FGBuildableWire = FGBuildableWire_version_specific & FGBuildableWire_base;
+
+type FGBuildableWire_version_specific = {
 	mCachedRelativeLocations: docs_json_ts_common_types_XYZ_decimal_string,
 };
 
@@ -371,7 +373,7 @@ export type {
 	FGBuildableBlueprintDesigner,
 	FGBuildableBlueprintDesigner_pre_update8,
 	FGBuildableCircuitSwitch,
-	FGBuildableCircuitSwitch_base,
+	FGBuildableCircuitSwitch_version_specific,
 	FGBuildableConveyorBelt,
 	FGBuildableConveyorLift,
 	FGBuildableCornerWall,
@@ -445,6 +447,7 @@ export type {
 	FGBuildableWall,
 	FGBuildableWidgetSign,
 	FGBuildableWire,
+	FGBuildableWire_version_specific,
 	FGBuildableWire_base,
 	FGJetPack,
 	FGJetPack_base,

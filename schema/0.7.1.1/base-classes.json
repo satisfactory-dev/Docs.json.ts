@@ -244,13 +244,15 @@
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableCircuitSwitch"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableCircuitSwitch--base"
+					"$ref": "#/$defs/FGBuildableCircuitSwitch--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
 				}
 			]
 		},
-		"FGBuildableCircuitSwitch--base": {
+		"FGBuildableCircuitSwitch--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
 			"required": ["mOnBuildingTagChanged"],
 			"properties": {
 				"mOnBuildingTagChanged": {
@@ -1113,8 +1115,17 @@
 			]
 		},
 		"FGBuildableWire": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableWire--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableWire--base"
+				}
+			]
+		},
+		"FGBuildableWire--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableWire--base",
 			"required": ["mCachedRelativeLocations"],
 			"properties": {
 				"mCachedRelativeLocations": {

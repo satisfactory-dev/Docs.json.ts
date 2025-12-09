@@ -274,7 +274,7 @@ type FGAmmoTypeSpreadshot = FGAmmoType_base & {
 	mSpreadAngleDegrees: docs_json_ts_common_types_decimal_string,
 };
 
-type FGBuildable_base = FGBuildable_base_pre_update8 & docs_json_ts_0_5_2_1_classes_base_FGBuildable_base;
+type FGBuildable_base = FGBuildable_base_pre_update8 & FGBuildable_base_version_specific & docs_json_ts_0_5_2_1_classes_base_FGBuildable_base;
 
 type FGBuildable_base_pre_update8 = {
 	mAlternativeMaterialRecipes: null | [
@@ -292,6 +292,9 @@ type FGBuildable_base_pre_update8 = {
 	mOcclusionShape: 'ROCS_Box' | 'ROCS_Ramp' | 'ROCS_Box_Special' | 'ROCS_CornerRamp',
 	mScaleCustomOffset: docs_json_ts_common_types_decimal_string,
 	mCustomScaleType: 'ROCSS_Center' | 'ROCSS_Top' | 'ROCSS_Bot',
+};
+
+type FGBuildable_base_version_specific = {
 	mOcclusionBoxInfo: null | [
 		{
 			Min: docs_json_ts_common_types_XYZ_decimal_string,
@@ -420,7 +423,9 @@ type FGBuildablePillar = docs_json_ts_0_5_2_1_classes_base_FGBuildablePillar & F
 
 type FGBuildablePipeHyper = docs_json_ts_0_5_2_1_classes_base_FGBuildablePipeHyper & FGBuildable_base;
 
-type FGBuildablePipeline = FGBuildablePipeline_base & {
+type FGBuildablePipeline = FGBuildablePipeline_version_specific & FGBuildablePipeline_base;
+
+type FGBuildablePipeline_version_specific = {
 	mLastContentForSound: docs_json_ts_common_types_decimal_string,
 	mLastFlowForSound: docs_json_ts_common_types_decimal_string,
 	mUpdateSoundsHandle: docs_json_ts_common_types_empty_object,
@@ -538,7 +543,9 @@ type FGDescriptor = docs_json_ts_0_4_2_11_classes_base_FGDescriptor_base & {
 	mSmallIcon: docs_json_ts_0_4_2_11_properties_Texture2D | 'None',
 };
 
-type FGEquipment = docs_json_ts_0_4_2_11_classes_base_FGEquipment_base & {
+type FGEquipment = docs_json_ts_0_4_2_11_classes_base_FGEquipment_base & FGEquipment_version_specific;
+
+type FGEquipment_version_specific = {
 	mOnlyVisibleToOwner: docs_json_ts_common_types_bool_string,
 	mReceivedDamageModifiers: '',
 	mEquipmentSlot: 'ES_ARMS' | 'ES_HEAD' | 'ES_BACK' | 'ES_BODY' | 'ES_LEGS',
@@ -548,8 +555,13 @@ type FGEquipment_noisy = FGEquipment & {
 	mActiveNoiseFrequency: docs_json_ts_common_types_decimal_string,
 };
 
-type FGEquipmentStunSpear_base = FGEquipment & {
+type FGEquipmentStunSpear_base = FGEquipment & FGEquipmentStunSpear_base_mDamageTypes & FGEquipmentStunSpear_base_version_specific;
+
+type FGEquipmentStunSpear_base_mDamageTypes = {
 	mDamageTypes: docs_json_ts_0_6_1_5_properties_DamageTypes,
+};
+
+type FGEquipmentStunSpear_base_version_specific = {
 	mAttackSweepRadius: docs_json_ts_common_types_decimal_string,
 };
 
@@ -739,6 +751,7 @@ export type {
 	FGAmmoTypeSpreadshot,
 	FGBuildable_base,
 	FGBuildable_base_pre_update8,
+	FGBuildable_base_version_specific,
 	FGBuildable_foundation_mDisableSnapOn,
 	FGBuildable_occupied,
 	FGBuildable_powered,
@@ -792,6 +805,7 @@ export type {
 	FGBuildablePillar,
 	FGBuildablePipeHyper,
 	FGBuildablePipeline,
+	FGBuildablePipeline_version_specific,
 	FGBuildablePipeline_base,
 	FGBuildablePipelineJunction,
 	FGBuildablePipelinePump_pump,
@@ -839,8 +853,11 @@ export type {
 	FGConsumableEquipment,
 	FGDescriptor,
 	FGEquipment,
+	FGEquipment_version_specific,
 	FGEquipment_noisy,
 	FGEquipmentStunSpear_base,
+	FGEquipmentStunSpear_base_mDamageTypes,
+	FGEquipmentStunSpear_base_version_specific,
 	FGEquipmentStunSpear_xenobasher,
 	FGEquipmentStunSpear_xenozapper,
 	FGEquipmentZipline,

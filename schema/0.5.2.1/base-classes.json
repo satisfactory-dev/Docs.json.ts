@@ -135,7 +135,7 @@
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--mHasPower--base"
 				},
 				{
-					"$ref": "#/$defs/FGBuildable--base"
+					"$ref": "#/$defs/FGBuildable--base--pre-update8"
 				}
 			]
 		},
@@ -1179,8 +1179,17 @@
 			}
 		},
 		"FGBuildablePillar": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildablePillar--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildablePillar--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
 			"required": ["mSize", "mIsSupport"],
 			"properties": {
 				"mSize": {
@@ -1294,6 +1303,9 @@
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--mHasPower"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
 				}
 			]
 		},

@@ -85,11 +85,21 @@ export class Utf16leJsonHandler<
 		}.json`;
 	}
 
-	async read(): Promise<T> {
+	async read(
+		on_failure?: (
+			data: unknown,
+			errors: ValidateFunction['errors'],
+		) => void,
+	): Promise<T> {
 		const maybe: unknown = JSON.parse(await this.#maybe_convert());
 
 		if (!this.#validator(maybe)) {
+			if (!on_failure) {
 			console.error(this.#validator.errors);
+			} else {
+				on_failure(maybe, this.#validator.errors);
+			}
+
 			throw new TypeError('JSON file does not match expected format!');
 		}
 

@@ -2390,7 +2390,7 @@
 		},
 		"FGBuildablePowerPole--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
+			"$ref": "#/$defs/FGBuildable--base--pre-update8",
 			"required": ["mPowerConnections", "mPowerPoleType"],
 			"properties": {
 				"mPowerConnections": {
@@ -3424,12 +3424,21 @@
 			]
 		},
 		"FGBuildableTradingPost--base--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableTradingPost--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableTradingPost--base--base--version-specific"
+				}
+			]
+		},
+		"FGBuildableTradingPost--base--base--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--powered--base--base--base",
 			"required": [
 				"mWorkBenchOccupied",
 				"mWorkBenchFree",
-				"Meshes",
 				"mShipUpgradeLevel",
 				"mStorageText",
 				"mMamFreeText",
@@ -3450,25 +3459,6 @@
 				"mWorkBenchFree": {
 					"type": "string",
 					"const": "Use Craft Bench"
-				},
-				"Meshes": {
-					"type": "string",
-					"typed_string": {
-						"type": "array",
-						"minItems": 1,
-						"uniqueItems": true,
-						"items": {
-							"type": "string",
-							"enum": [
-								"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1\"'",
-								"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2\"'",
-								"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3\"'",
-								"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4\"'",
-								"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5\"'",
-								"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6\"'"
-							]
-						}
-					}
 				},
 				"mShipUpgradeLevel": {
 					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
@@ -3511,6 +3501,32 @@
 				},
 				"mNeedPlayingBuildEffectNotification": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
+		},
+		"FGBuildableTradingPost--base--base--version-specific": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--powered--base--base--base",
+			"required": ["Meshes"],
+			"properties": {
+				"Meshes": {
+					"type": "string",
+					"typed_string": {
+						"type": "array",
+						"minItems": 1,
+						"uniqueItems": true,
+						"items": {
+							"type": "string",
+							"enum": [
+								"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1\"'",
+								"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2\"'",
+								"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3\"'",
+								"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4\"'",
+								"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5\"'",
+								"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6\"'"
+							]
+						}
+					}
 				}
 			}
 		},
@@ -3743,7 +3759,7 @@
 		},
 		"FGBuildableWire--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
+			"$ref": "#/$defs/FGBuildable--base--pre-update8",
 			"required": ["mMaxLength", "mLengthPerCost", "mConnections"],
 			"properties": {
 				"mMaxLength": {
@@ -4147,6 +4163,16 @@
 			}
 		},
 		"FGEquipment--base--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGEquipment--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--base--base--version-specific"
+				}
+			]
+		},
+		"FGEquipment--base--base--base": {
 			"type": "object",
 			"$ref": "#/$defs/hasClassName",
 			"required": [
@@ -4155,8 +4181,7 @@
 				"mCostToUse",
 				"mArmAnimation",
 				"mBackAnimation",
-				"mHasPersistentOwner",
-				"mUseDefaultPrimaryFire"
+				"mHasPersistentOwner"
 			],
 			"properties": {
 				"mEquipmentSlot": {
@@ -4203,7 +4228,16 @@
 				},
 				"mHasPersistentOwner": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
+				}
+			}
+		},
+		"FGEquipment--base--base--version-specific": {
+			"type": "object",
+			"$ref": "#/$defs/hasClassName",
+			"required": [
+				"mUseDefaultPrimaryFire"
+			],
+			"properties": {
 				"mUseDefaultPrimaryFire": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				}
@@ -4240,18 +4274,35 @@
 			}
 		},
 		"FGEquipmentStunSpear--base--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGEquipment"
+				},
+				{
+					"$ref": "#/$defs/FGEquipmentStunSpear--base--base--base"
+				}
+			]
+		},
+		"FGEquipmentStunSpear--base--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment",
+			"$ref": "#/$defs/FGEquipmentStunSpear--base--version-specific",
 			"required": [
-				"mRandomAttackAnim",
+				"mRandomAttackAnim"
+			],
+			"properties": {
+				"mRandomAttackAnim": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				}
+			}
+		},
+		"FGEquipmentStunSpear--base--version-specific": {
+			"type": "object",
+			"required": [
 				"mSecondSwingMaxTime",
 				"mSecondSwingCooldDownTime",
 				"mAttackDistance"
 			],
 			"properties": {
-				"mRandomAttackAnim": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-				},
 				"mSecondSwingMaxTime": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
@@ -4278,13 +4329,24 @@
 			]
 		},
 		"FGEquipmentStunSpear--xenobasher--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGEquipmentStunSpear--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGEquipmentStunSpear--xenobasher--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGEquipmentStunSpear--xenobasher--version-specific"
+				}
+			]
+		},
+		"FGEquipmentStunSpear--xenobasher--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipmentStunSpear--base--base",
 			"required": [
 				"mCurrentMontageSection",
 				"mSecondAttackTimer",
-				"mFirstAttackTimer",
-				"mRandomEquipAnim"
+				"mFirstAttackTimer"
 			],
 			"properties": {
 				"mCurrentMontageSection": {
@@ -4296,7 +4358,15 @@
 				},
 				"mFirstAttackTimer": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
+				}
+			}
+		},
+		"FGEquipmentStunSpear--xenobasher--version-specific": {
+			"type": "object",
+			"required": [
+				"mRandomEquipAnim"
+			],
+			"properties": {
 				"mRandomEquipAnim": {
 					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
 				}
@@ -4313,13 +4383,22 @@
 			]
 		},
 		"FGEquipmentStunSpear--xenozapper--base": {
-			"type": "object",
-			"$ref": "#/$defs/FGEquipmentStunSpear--base--base",
-			"required": ["mPlayingSound", "mRandomStingerAnim"],
-			"properties": {
-				"mPlayingSound": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGEquipmentStunSpear--base--base"
 				},
+				{
+					"$ref": "#/$defs/FGEquipment--has-sound"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--has-mRandomStingerAnim"
+				}
+			]
+		},
+		"FGEquipment--has-mRandomStingerAnim": {
+			"type": "object",
+			"required": ["mRandomStingerAnim"],
+			"properties": {
 				"mRandomStingerAnim": {
 					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
 				}
@@ -5388,14 +5467,21 @@
 			]
 		},
 		"FGWeaponProjectileFire--base--random--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGWeaponProjectileFire--base--random--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--has-mRandomStingerAnim"
+				}
+			]
+		},
+		"FGWeaponProjectileFire--base--random--base--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGEquipment--base",
-			"required": ["mRandomReloadAnim", "mRandomStingerAnim"],
+			"required": ["mRandomReloadAnim"],
 			"properties": {
 				"mRandomReloadAnim": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-				},
-				"mRandomStingerAnim": {
 					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
 				}
 			}

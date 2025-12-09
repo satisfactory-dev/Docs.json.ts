@@ -172,7 +172,7 @@ type FGBuildable_light_related_thing_base = FGBuildable_base & {
 
 type FGBuildable_mHasPower = FGBuildable_mHasPower_base & FGBuildable;
 
-type FGBuildable_mHasPower_base = FGBuildable_base & {
+type FGBuildable_mHasPower_base = FGBuildable_base_pre_update8 & {
 	mHasPower: docs_json_ts_common_types_bool_string,
 };
 
@@ -605,7 +605,9 @@ type FGDescriptor_sinkable_base = docs_json_ts_0_3_7_7_classes_base_FGDescriptor
 
 type FGEquipment = FGEquipment_base & docs_json_ts_0_3_7_7_classes_base_FGEquipment_base;
 
-type FGEquipment_base = docs_json_ts_0_3_7_7_classes_base_FGEquipment_base_base & {
+type FGEquipment_base = docs_json_ts_0_3_7_7_classes_base_FGEquipment_base_base & FGEquipment_version_specific;
+
+type FGEquipment_version_specific = {
 	mAttachSocket: 'None' | 'hand_rSocket' | 'hand_lSocket' | 'jumpingStilt_lSocket' | 'helmetSocket' | 'root',
 };
 
@@ -937,6 +939,7 @@ export type {
 	FGDescriptor_sinkable_base,
 	FGEquipment,
 	FGEquipment_base,
+	FGEquipment_version_specific,
 	FGEquipmentZipline,
 	FGHoverPack,
 	FGHoverPack_base,

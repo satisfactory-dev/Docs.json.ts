@@ -485,6 +485,9 @@
 					"$ref": "#/$defs/FGBuildable--base--pre-update8"
 				},
 				{
+					"$ref": "#/$defs/FGBuildable--base--version-specific"
+				},
+				{
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildable--base"
 				}
 			]
@@ -497,8 +500,7 @@
 				"mAffectsOcclusion",
 				"mOcclusionShape",
 				"mScaleCustomOffset",
-				"mCustomScaleType",
-				"mOcclusionBoxInfo"
+				"mCustomScaleType"
 			],
 			"properties": {
 				"mAlternativeMaterialRecipes": {
@@ -566,7 +568,15 @@
 				"mCustomScaleType": {
 					"type": "string",
 					"enum": ["ROCSS_Center", "ROCSS_Top", "ROCSS_Bot"]
-				},
+				}
+			}
+		},
+		"FGBuildable--base--version-specific": {
+			"type": "object",
+			"required": [
+				"mOcclusionBoxInfo"
+			],
+			"properties": {
 				"mOcclusionBoxInfo": {
 					"oneOf": [
 						{
@@ -1178,8 +1188,17 @@
 			]
 		},
 		"FGBuildablePipeline": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildablePipeline--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildablePipeline--base"
+				}
+			]
+		},
+		"FGBuildablePipeline--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildablePipeline--base",
 			"required": [
 				"mLastContentForSound",
 				"mLastFlowForSound",
@@ -1732,8 +1751,17 @@
 			}
 		},
 		"FGEquipment": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGEquipment--base"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--version-specific"
+				}
+			]
+		},
+		"FGEquipment--version-specific": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGEquipment--base",
 			"required": [
 				"mOnlyVisibleToOwner",
 				"mReceivedDamageModifiers",
@@ -1770,13 +1798,31 @@
 			}
 		},
 		"FGEquipmentStunSpear--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGEquipment"
+				},
+				{
+					"$ref": "#/$defs/FGEquipmentStunSpear--base--mDamageTypes"
+				},
+				{
+					"$ref": "#/$defs/FGEquipmentStunSpear--base--version-specific"
+				}
+			]
+		},
+		"FGEquipmentStunSpear--base--mDamageTypes": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment",
-			"required": ["mDamageTypes", "mAttackSweepRadius"],
+			"required": ["mDamageTypes"],
 			"properties": {
 				"mDamageTypes": {
 					"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/DamageTypes"
-				},
+				}
+			}
+		},
+		"FGEquipmentStunSpear--base--version-specific": {
+			"type": "object",
+			"required": ["mAttackSweepRadius"],
+			"properties": {
 				"mAttackSweepRadius": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}

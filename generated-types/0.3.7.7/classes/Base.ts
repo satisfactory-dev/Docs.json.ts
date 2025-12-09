@@ -641,7 +641,7 @@ type FGBuildablePole_base = FGBuildable_pole_base & {
 
 type FGBuildablePowerPole = FGBuildablePowerPole_base & FGBuildable;
 
-type FGBuildablePowerPole_base = FGBuildable_base & {
+type FGBuildablePowerPole_base = FGBuildable_base_pre_update8 & {
 	mPowerConnections: '',
 	mPowerPoleType: 'PPT_POLE' | 'PPT_WALL' | 'PPT_WALL_DOUBLE',
 };
@@ -891,13 +891,11 @@ type FGBuildableTradingPost = FGBuildableTradingPost_base_version_specific & FGB
 
 type FGBuildableTradingPost_base = FGBuildableTradingPost_base_base & FGBuildable_powered_base_base;
 
-type FGBuildableTradingPost_base_base = FGBuildable_powered_base_base_base & {
+type FGBuildableTradingPost_base_base = FGBuildableTradingPost_base_base_base & FGBuildableTradingPost_base_base_version_specific;
+
+type FGBuildableTradingPost_base_base_base = FGBuildable_powered_base_base_base & {
 	mWorkBenchOccupied: 'Craft Bench occupied',
 	mWorkBenchFree: 'Use Craft Bench',
-	Meshes: [
-        'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6"\'',
-        ...('StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6"\'')[],
-	],
 	mShipUpgradeLevel: docs_json_ts_common_types_integer_string,
 	mStorageText: 'Open Storage',
 	mMamFreeText: `Use M${string}`,
@@ -909,6 +907,13 @@ type FGBuildableTradingPost_base_base = FGBuildable_powered_base_base_base & {
 	mGroundSearchZDistance: docs_json_ts_common_types_decimal_string,
 	mDefaultResources: '',
 	mNeedPlayingBuildEffectNotification: docs_json_ts_common_types_bool_string,
+};
+
+type FGBuildableTradingPost_base_base_version_specific = FGBuildable_powered_base_base_base & {
+	Meshes: [
+        'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6"\'',
+        ...('StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6"\'')[],
+	],
 };
 
 type FGBuildableTradingPost_base_version_specific = FGBuildable_powered_base_base & {
@@ -964,7 +969,7 @@ type FGBuildableTrainPlatformCargo_base_base = FGBuildableTrainPlatform_with_sto
 
 type FGBuildableWire = FGBuildableWire_base & FGBuildable;
 
-type FGBuildableWire_base = FGBuildable_base & {
+type FGBuildableWire_base = FGBuildable_base_pre_update8 & {
 	mMaxLength: docs_json_ts_common_types_decimal_string,
 	mLengthPerCost: docs_json_ts_common_types_decimal_string,
 	mConnections: 'None',
@@ -1069,13 +1074,18 @@ type FGEquipment_base = FGEquipment_base_base & {
 	mEquipmentSlot: 'ES_ARMS' | 'ES_BACK',
 };
 
-type FGEquipment_base_base = hasClassName & {
+type FGEquipment_base_base = FGEquipment_base_base_base & FGEquipment_base_base_version_specific;
+
+type FGEquipment_base_base_base = hasClassName & {
 	mEquipmentSlot: `ES_${string}`,
 	mAttachSocket: Exclude<string, ''>,
 	mCostToUse: '' | docs_json_ts_0_3_7_7_properties_ItemClass_Amount_list,
 	mArmAnimation: 'AE_Consumables' | 'AE_OneHandEquipment' | 'AE_ChainSaw' | 'AE_Generic2Hand' | 'AE_None' | 'AE_RebarGun' | 'AE_Rifle' | 'AE_ShockShank' | 'AE_StunSpear' | 'AE_PortableMiner' | 'AE_ObjectScanner' | 'AE_ColorGun' | 'AE_Nobelisk' | 'AE_Generic1Hand',
 	mBackAnimation: 'BE_None' | 'BE_Jetpack',
 	mHasPersistentOwner: docs_json_ts_common_types_bool_string,
+};
+
+type FGEquipment_base_base_version_specific = hasClassName & {
 	mUseDefaultPrimaryFire: docs_json_ts_common_types_bool_string,
 };
 
@@ -1091,8 +1101,13 @@ type FGEquipmentStunSpear_base = FGEquipmentStunSpear_base_base & {
 	mDamage: docs_json_ts_common_types_integer_string,
 };
 
-type FGEquipmentStunSpear_base_base = FGEquipment & {
+type FGEquipmentStunSpear_base_base = FGEquipment & FGEquipmentStunSpear_base_base_base;
+
+type FGEquipmentStunSpear_base_base_base = FGEquipmentStunSpear_base_version_specific & {
 	mRandomAttackAnim: docs_json_ts_common_types_integer_string,
+};
+
+type FGEquipmentStunSpear_base_version_specific = {
 	mSecondSwingMaxTime: docs_json_ts_common_types_decimal_string,
 	mSecondSwingCooldDownTime: docs_json_ts_common_types_decimal_string,
 	mAttackDistance: docs_json_ts_common_types_decimal_string,
@@ -1101,17 +1116,23 @@ type FGEquipmentStunSpear_base_base = FGEquipment & {
 
 type FGEquipmentStunSpear_xenobasher = FGEquipmentStunSpear_xenobasher_base & FGEquipmentStunSpear_base;
 
-type FGEquipmentStunSpear_xenobasher_base = FGEquipmentStunSpear_base_base & {
+type FGEquipmentStunSpear_xenobasher_base = FGEquipmentStunSpear_base_base & FGEquipmentStunSpear_xenobasher_base_base & FGEquipmentStunSpear_xenobasher_version_specific;
+
+type FGEquipmentStunSpear_xenobasher_base_base = {
 	mCurrentMontageSection: 'None',
 	mSecondAttackTimer: docs_json_ts_common_types_decimal_string,
 	mFirstAttackTimer: docs_json_ts_common_types_decimal_string,
+};
+
+type FGEquipmentStunSpear_xenobasher_version_specific = {
 	mRandomEquipAnim: docs_json_ts_common_types_integer_string,
 };
 
 type FGEquipmentStunSpear_xenozapper = FGEquipmentStunSpear_xenozapper_base & FGEquipmentStunSpear_base;
 
-type FGEquipmentStunSpear_xenozapper_base = FGEquipmentStunSpear_base_base & {
-	mPlayingSound: docs_json_ts_common_types_bool_string,
+type FGEquipmentStunSpear_xenozapper_base = FGEquipmentStunSpear_base_base & FGEquipment_has_sound & FGEquipment_has_mRandomStingerAnim;
+
+type FGEquipment_has_mRandomStingerAnim = {
 	mRandomStingerAnim: docs_json_ts_common_types_integer_string,
 };
 
@@ -1408,9 +1429,10 @@ type FGWeaponProjectileFire_base_base = FGEquipment_base & {
 
 type FGWeaponProjectileFire_base_random = FGWeaponProjectileFire_base_random_base & FGWeaponProjectile_base;
 
-type FGWeaponProjectileFire_base_random_base = FGEquipment_base & {
+type FGWeaponProjectileFire_base_random_base = FGWeaponProjectileFire_base_random_base_base & FGEquipment_has_mRandomStingerAnim;
+
+type FGWeaponProjectileFire_base_random_base_base = FGEquipment_base & {
 	mRandomReloadAnim: docs_json_ts_common_types_integer_string,
-	mRandomStingerAnim: docs_json_ts_common_types_integer_string,
 };
 
 type FGWeaponProjectileFire_base_version_specific = FGWeaponProjectile_base & {
@@ -1677,6 +1699,8 @@ export type {
 	FGBuildableTradingPost,
 	FGBuildableTradingPost_base,
 	FGBuildableTradingPost_base_base,
+	FGBuildableTradingPost_base_base_base,
+	FGBuildableTradingPost_base_base_version_specific,
 	FGBuildableTradingPost_base_version_specific,
 	FGBuildableTrainPlatform,
 	FGBuildableTrainPlatform_base,
@@ -1707,14 +1731,21 @@ export type {
 	FGEquipment,
 	FGEquipment_base,
 	FGEquipment_base_base,
+	FGEquipment_base_base_base,
+	FGEquipment_base_base_version_specific,
 	FGEquipment_dispenser,
 	FGEquipment_has_sound,
 	FGEquipmentStunSpear_base,
 	FGEquipmentStunSpear_base_base,
+	FGEquipmentStunSpear_base_base_base,
+	FGEquipmentStunSpear_base_version_specific,
 	FGEquipmentStunSpear_xenobasher,
 	FGEquipmentStunSpear_xenobasher_base,
+	FGEquipmentStunSpear_xenobasher_base_base,
+	FGEquipmentStunSpear_xenobasher_version_specific,
 	FGEquipmentStunSpear_xenozapper,
 	FGEquipmentStunSpear_xenozapper_base,
+	FGEquipment_has_mRandomStingerAnim,
 	FGGasMask,
 	FGGasMask_base,
 	FGGolfCartDispenser,
@@ -1768,5 +1799,6 @@ export type {
 	FGWeaponProjectileFire_base_base,
 	FGWeaponProjectileFire_base_random,
 	FGWeaponProjectileFire_base_random_base,
+	FGWeaponProjectileFire_base_random_base_base,
 	FGWeaponProjectileFire_base_version_specific,
 };
