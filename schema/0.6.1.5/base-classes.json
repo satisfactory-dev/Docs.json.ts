@@ -1443,16 +1443,6 @@
 				}
 			]
 		},
-		"FGBuildableResourceExtractor--base--untimed--base": {
-			"allOf": [
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--base--base--base--base--base"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable--powered--base"
-				}
-			]
-		},
 		"FGBuildableResourceExtractor--base--version-specific": {
 			"allOf": [
 				{
@@ -1465,7 +1455,7 @@
 		},
 		"FGBuildableResourceExtractor--base--version-specific--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableResourceExtractor--base--untimed--base",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--base--base--base--base--base",
 			"required": ["mTryFindMissingResource", "mAllowedResourceForms"],
 			"properties": {
 				"mTryFindMissingResource": {
