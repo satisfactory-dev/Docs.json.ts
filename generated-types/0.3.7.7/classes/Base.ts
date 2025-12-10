@@ -1017,13 +1017,6 @@ type FGConsumableEquipment_base = FGEquipment_base & FGConsumableEquipment_versi
 
 type FGConsumableEquipment_version_specific = FGConsumableEquipment_version_specific_pre_update8 & FGConsumableEquipment_version_specific_mAnimData;
 
-type FGConsumableEquipment_version_specific_pre_update8 = {
-	mRandomAnim?: docs_json_ts_common_types_integer_string,
-	mCanPress?: docs_json_ts_common_types_bool_string,
-	mCurrentAnimData?: docs_json_ts_common_types_empty_object,
-	mAttachSocket?: 'hand_rSocket',
-};
-
 type FGConsumableEquipment_version_specific_mAnimData = {
 	mAnimData?: [
 		{
@@ -1035,6 +1028,13 @@ type FGConsumableEquipment_version_specific_mAnimData = {
 			CameraAnim_8_AA01C2B248FF438D6C2816B2FA94F1BD: `CameraAnim'"/Game/FactoryGame/${string}${'"\''}`,
 		}[],
 	],
+};
+
+type FGConsumableEquipment_version_specific_pre_update8 = {
+	mRandomAnim?: docs_json_ts_common_types_integer_string,
+	mCanPress?: docs_json_ts_common_types_bool_string,
+	mCurrentAnimData?: docs_json_ts_common_types_empty_object,
+	mAttachSocket?: 'hand_rSocket',
 };
 
 type FGDescriptor = FGDescriptor_base & {
@@ -1075,10 +1075,6 @@ type FGEquipment = FGEquipment_base & {
 
 type FGEquipment_base = FGEquipment_base_base & FGEquipment_base_version_specific;
 
-type FGEquipment_base_version_specific = {
-	mEquipmentSlot: 'ES_ARMS' | 'ES_BACK',
-};
-
 type FGEquipment_base_base = FGEquipment_base_base_base & FGEquipment_base_base_version_specific;
 
 type FGEquipment_base_base_base = hasClassName & {
@@ -1092,6 +1088,10 @@ type FGEquipment_base_base_base = hasClassName & {
 
 type FGEquipment_base_base_version_specific = hasClassName & {
 	mUseDefaultPrimaryFire: docs_json_ts_common_types_bool_string,
+};
+
+type FGEquipment_base_version_specific = {
+	mEquipmentSlot: 'ES_ARMS' | 'ES_BACK',
 };
 
 type FGEquipment_dispenser = FGEquipment_dispenser_version_specific & FGEquipment;
@@ -1730,8 +1730,8 @@ export type {
 	FGConsumableEquipment,
 	FGConsumableEquipment_base,
 	FGConsumableEquipment_version_specific,
-	FGConsumableEquipment_version_specific_pre_update8,
 	FGConsumableEquipment_version_specific_mAnimData,
+	FGConsumableEquipment_version_specific_pre_update8,
 	FGDescriptor,
 	FGDescriptor_base,
 	FGDescriptor_BuildMenu,
@@ -1740,10 +1740,10 @@ export type {
 	FGDescriptor_sinkable_base,
 	FGEquipment,
 	FGEquipment_base,
-	FGEquipment_base_version_specific,
 	FGEquipment_base_base,
 	FGEquipment_base_base_base,
 	FGEquipment_base_base_version_specific,
+	FGEquipment_base_version_specific,
 	FGEquipment_dispenser,
 	FGEquipment_dispenser_version_specific,
 	FGEquipment_has_mRandomStingerAnim,

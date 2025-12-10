@@ -3936,24 +3936,6 @@
 				}
 			]
 		},
-		"FGConsumableEquipment--version-specific--pre-update8": {
-			"type": "object",
-			"properties": {
-				"mRandomAnim": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-				},
-				"mCanPress": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mCurrentAnimData": {
-					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-				},
-				"mAttachSocket": {
-					"type": "string",
-					"const": "hand_rSocket"
-				}
-			}
-		},
 		"FGConsumableEquipment--version-specific--mAnimData": {
 			"type": "object",
 			"properties": {
@@ -3990,6 +3972,24 @@
 							}
 						}
 					}
+				}
+			}
+		},
+		"FGConsumableEquipment--version-specific--pre-update8": {
+			"type": "object",
+			"properties": {
+				"mRandomAnim": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mCanPress": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mCurrentAnimData": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mAttachSocket": {
+					"type": "string",
+					"const": "hand_rSocket"
 				}
 			}
 		},
@@ -4168,16 +4168,6 @@
 				}
 			]
 		},
-		"FGEquipment--base--version-specific": {
-			"type": "object",
-			"required": ["mEquipmentSlot"],
-			"properties": {
-				"mEquipmentSlot": {
-					"type": "string",
-					"enum": ["ES_ARMS", "ES_BACK"]
-				}
-			}
-		},
 		"FGEquipment--base--base": {
 			"allOf": [
 				{
@@ -4254,6 +4244,16 @@
 			"properties": {
 				"mUseDefaultPrimaryFire": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
+		},
+		"FGEquipment--base--version-specific": {
+			"type": "object",
+			"required": ["mEquipmentSlot"],
+			"properties": {
+				"mEquipmentSlot": {
+					"type": "string",
+					"enum": ["ES_ARMS", "ES_BACK"]
 				}
 			}
 		},
