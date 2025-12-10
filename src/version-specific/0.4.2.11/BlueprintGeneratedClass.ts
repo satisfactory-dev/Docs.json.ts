@@ -29,7 +29,7 @@ type BlueprintGeneratedClass_single_quoted_type = {
 	DocsDotJson_BlueprintGeneratedClass_single_quoted: string|null,
 };
 
-const BlueprintGeneratedClass_single_quoted_schema_properties = {
+export const BlueprintGeneratedClass_single_quoted_schema_properties = {
 	type: {
 		type: 'string',
 		const: 'string',
@@ -197,7 +197,7 @@ export class BlueprintGeneratedClassSingleQuoted<
 	): TemplatedStringParts {
 		return [
 			`BlueprintGeneratedClass'/Game/FactoryGame/`,
-			null === value ? {type: 'string'} : value,
+			null === value ? {type: 'string', minLength: 1} : value,
 			`'`,
 		];
 	}

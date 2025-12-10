@@ -3917,8 +3917,27 @@
 			]
 		},
 		"FGConsumableEquipment--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGEquipment--base"
+				},
+				{
+					"$ref": "#/$defs/FGConsumableEquipment--version-specific"
+				}
+			]
+		},
+		"FGConsumableEquipment--version-specific": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGConsumableEquipment--version-specific--pre-update8"
+				},
+				{
+					"$ref": "#/$defs/FGConsumableEquipment--version-specific--mAnimData"
+				}
+			]
+		},
+		"FGConsumableEquipment--version-specific--pre-update8": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment--base",
 			"properties": {
 				"mRandomAnim": {
 					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
@@ -3926,6 +3945,18 @@
 				"mCanPress": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				},
+				"mCurrentAnimData": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mAttachSocket": {
+					"type": "string",
+					"const": "hand_rSocket"
+				}
+			}
+		},
+		"FGConsumableEquipment--version-specific--mAnimData": {
+			"type": "object",
+			"properties": {
 				"mAnimData": {
 					"type": "string",
 					"typed_string": {
@@ -3942,30 +3973,23 @@
 							"properties": {
 								"Montage_7_2E66F6A948A8606E71185682EA2AC4EC": {
 									"type": "string",
-									"enum": [
-										"AnimMontage'\"/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_01_Montage.MedkitUse_01_Montage\"'",
-										"AnimMontage'\"/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_02_Montage.MedkitUse_02_Montage\"'",
-										"AnimMontage'\"/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_03_Montage.MedkitUse_03_Montage\"'"
-									]
+									"DocsDotJson_PrefixedString": {
+										"prefix": "AnimMontage",
+										"mode": "quoted",
+										"value": null
+									}
 								},
 								"CameraAnim_8_AA01C2B248FF438D6C2816B2FA94F1BD": {
 									"type": "string",
-									"enum": [
-										"CameraAnim'\"/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_01_CameraAnim.MedkitUse_01_CameraAnim\"'",
-										"CameraAnim'\"/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_02_CameraAnim.MedkitUse_02_CameraAnim\"'",
-										"CameraAnim'\"/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_03_CameraAnim.MedkitUse_03_CameraAnim\"'"
-									]
+									"DocsDotJson_PrefixedString": {
+										"prefix": "CameraAnim",
+										"mode": "quoted",
+										"value": null
+									}
 								}
 							}
 						}
 					}
-				},
-				"mCurrentAnimData": {
-					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-				},
-				"mAttachSocket": {
-					"type": "string",
-					"const": "hand_rSocket"
 				}
 			}
 		},
@@ -4135,8 +4159,17 @@
 			}
 		},
 		"FGEquipment--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGEquipment--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--base--version-specific"
+				}
+			]
+		},
+		"FGEquipment--base--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment--base--base",
 			"required": ["mEquipmentSlot"],
 			"properties": {
 				"mEquipmentSlot": {
@@ -4225,8 +4258,17 @@
 			}
 		},
 		"FGEquipment--dispenser": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGEquipment--dispenser--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment"
+				}
+			]
+		},
+		"FGEquipment--dispenser--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment",
 			"required": ["mPlaceDistanceMax"],
 			"properties": {
 				"mPlaceDistanceMax": {
@@ -4849,8 +4891,17 @@
 			}
 		},
 		"FGPortableMinerDispenser": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGPortableMinerDispenser--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--dispenser"
+				}
+			]
+		},
+		"FGPortableMinerDispenser--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment--dispenser",
 			"required": ["mAllowedResourceForms"],
 			"properties": {
 				"mAllowedResourceForms": {

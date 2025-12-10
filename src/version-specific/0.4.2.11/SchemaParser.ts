@@ -122,6 +122,14 @@ import {
 	TintColor,
 } from './TypedString/PropertySchemaToRegex/TintColor.ts';
 
+import {
+	PrefixedString as PrefixedStringMatcher,
+} from '../0.3.7.7/TypedString/PropertySchemaToRegex/PrefixedString.ts';
+
+import {
+	PrefixedString,
+} from '../0.3.7.7/PrefixedString.ts';
+
 const already_configured: WeakSet<SchemaParser> = new WeakSet();
 
 export function add_schemas(parser: SchemaParser) {
@@ -164,6 +172,7 @@ export function configure_parser(parser: SchemaParser) {
 			ajv,
 			Object_matcher_instance,
 		) as PropertySchemaToRegex<unknown>,
+		PrefixedStringMatcher(ajv) as PropertySchemaToRegex<unknown>,
 		Object_matcher_instance as PropertySchemaToRegex<unknown>,
 	]);
 
@@ -190,5 +199,7 @@ export function configure_parser(parser: SchemaParser) {
 				matchers,
 			},
 		}),
+		new PrefixedString({ajv}, 'quoted'),
+		new PrefixedString({ajv}, 'non_quoted'),
 	];
 }

@@ -1013,21 +1013,28 @@ type FGConsumableDescriptor_base = FGDescriptor_sinkable_base & {
 
 type FGConsumableEquipment = FGConsumableEquipment_base & FGEquipment;
 
-type FGConsumableEquipment_base = FGEquipment_base & {
+type FGConsumableEquipment_base = FGEquipment_base & FGConsumableEquipment_version_specific;
+
+type FGConsumableEquipment_version_specific = FGConsumableEquipment_version_specific_pre_update8 & FGConsumableEquipment_version_specific_mAnimData;
+
+type FGConsumableEquipment_version_specific_pre_update8 = {
 	mRandomAnim?: docs_json_ts_common_types_integer_string,
 	mCanPress?: docs_json_ts_common_types_bool_string,
-	mAnimData?: [
-		{
-			Montage_7_2E66F6A948A8606E71185682EA2AC4EC: 'AnimMontage\'"/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_01_Montage.MedkitUse_01_Montage"\'' | 'AnimMontage\'"/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_02_Montage.MedkitUse_02_Montage"\'' | 'AnimMontage\'"/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_03_Montage.MedkitUse_03_Montage"\'',
-			CameraAnim_8_AA01C2B248FF438D6C2816B2FA94F1BD: 'CameraAnim\'"/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_01_CameraAnim.MedkitUse_01_CameraAnim"\'' | 'CameraAnim\'"/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_02_CameraAnim.MedkitUse_02_CameraAnim"\'' | 'CameraAnim\'"/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_03_CameraAnim.MedkitUse_03_CameraAnim"\'',
-		},
-		...{
-			Montage_7_2E66F6A948A8606E71185682EA2AC4EC: 'AnimMontage\'"/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_01_Montage.MedkitUse_01_Montage"\'' | 'AnimMontage\'"/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_02_Montage.MedkitUse_02_Montage"\'' | 'AnimMontage\'"/Game/FactoryGame/Character/Player/Animation/FirstPerson/MedkitUse_03_Montage.MedkitUse_03_Montage"\'',
-			CameraAnim_8_AA01C2B248FF438D6C2816B2FA94F1BD: 'CameraAnim\'"/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_01_CameraAnim.MedkitUse_01_CameraAnim"\'' | 'CameraAnim\'"/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_02_CameraAnim.MedkitUse_02_CameraAnim"\'' | 'CameraAnim\'"/Game/FactoryGame/Character/Player/CameraShake/MedkitUse_03_CameraAnim.MedkitUse_03_CameraAnim"\'',
-		}[],
-	],
 	mCurrentAnimData?: docs_json_ts_common_types_empty_object,
 	mAttachSocket?: 'hand_rSocket',
+};
+
+type FGConsumableEquipment_version_specific_mAnimData = {
+	mAnimData?: [
+		{
+			Montage_7_2E66F6A948A8606E71185682EA2AC4EC: `AnimMontage'"/Game/FactoryGame/${string}${'"\''}`,
+			CameraAnim_8_AA01C2B248FF438D6C2816B2FA94F1BD: `CameraAnim'"/Game/FactoryGame/${string}${'"\''}`,
+		},
+		...{
+			Montage_7_2E66F6A948A8606E71185682EA2AC4EC: `AnimMontage'"/Game/FactoryGame/${string}${'"\''}`,
+			CameraAnim_8_AA01C2B248FF438D6C2816B2FA94F1BD: `CameraAnim'"/Game/FactoryGame/${string}${'"\''}`,
+		}[],
+	],
 };
 
 type FGDescriptor = FGDescriptor_base & {
@@ -1066,7 +1073,9 @@ type FGEquipment = FGEquipment_base & {
 	mAttachSocket: 'None' | 'hand_rSocket' | 'hand_lSocket' | 'jumpingStilt_lSocket' | 'helmetSocket',
 };
 
-type FGEquipment_base = FGEquipment_base_base & {
+type FGEquipment_base = FGEquipment_base_base & FGEquipment_base_version_specific;
+
+type FGEquipment_base_version_specific = {
 	mEquipmentSlot: 'ES_ARMS' | 'ES_BACK',
 };
 
@@ -1085,7 +1094,9 @@ type FGEquipment_base_base_version_specific = hasClassName & {
 	mUseDefaultPrimaryFire: docs_json_ts_common_types_bool_string,
 };
 
-type FGEquipment_dispenser = FGEquipment & {
+type FGEquipment_dispenser = FGEquipment_dispenser_version_specific & FGEquipment;
+
+type FGEquipment_dispenser_version_specific = {
 	mPlaceDistanceMax: docs_json_ts_common_types_decimal_string,
 };
 
@@ -1274,7 +1285,9 @@ type FGPipeHyperStart_base_base = FGBuildable_pole_with_length_and_power_base_ba
 	mInitialMinSpeedFactor: docs_json_ts_common_types_decimal_string,
 };
 
-type FGPortableMinerDispenser = FGEquipment_dispenser & {
+type FGPortableMinerDispenser = FGPortableMinerDispenser_version_specific & FGEquipment_dispenser;
+
+type FGPortableMinerDispenser_version_specific = {
 	mAllowedResourceForms: docs_json_ts_0_3_7_7_properties_mAllowedResourceForms,
 };
 
@@ -1716,6 +1729,9 @@ export type {
 	FGConsumableDescriptor_base,
 	FGConsumableEquipment,
 	FGConsumableEquipment_base,
+	FGConsumableEquipment_version_specific,
+	FGConsumableEquipment_version_specific_pre_update8,
+	FGConsumableEquipment_version_specific_mAnimData,
 	FGDescriptor,
 	FGDescriptor_base,
 	FGDescriptor_BuildMenu,
@@ -1724,10 +1740,12 @@ export type {
 	FGDescriptor_sinkable_base,
 	FGEquipment,
 	FGEquipment_base,
+	FGEquipment_base_version_specific,
 	FGEquipment_base_base,
 	FGEquipment_base_base_base,
 	FGEquipment_base_base_version_specific,
 	FGEquipment_dispenser,
+	FGEquipment_dispenser_version_specific,
 	FGEquipment_has_mRandomStingerAnim,
 	FGEquipment_has_sound,
 	FGEquipmentStunSpear_base,
@@ -1762,6 +1780,7 @@ export type {
 	FGPipeHyperStart_base,
 	FGPipeHyperStart_base_base,
 	FGPortableMinerDispenser,
+	FGPortableMinerDispenser_version_specific,
 	FGRecipe,
 	FGRecipe_base,
 	FGRecipe_base_version_specific,

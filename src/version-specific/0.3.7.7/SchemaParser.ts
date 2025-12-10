@@ -100,6 +100,14 @@ import {
 	common_type_objects,
 } from './TypedString/PropertySchemaToRegex/common_type_objects.ts';
 
+import {
+	PrefixedString as PrefixedStringMatcher,
+} from './TypedString/PropertySchemaToRegex/PrefixedString.ts';
+
+import {
+	PrefixedString,
+} from './PrefixedString.ts';
+
 const already_configured: WeakSet<SchemaParser> = new WeakSet();
 
 export function add_schemas(parser: SchemaParser) {
@@ -137,6 +145,7 @@ export function configure_parser(parser: SchemaParser) {
 			ajv,
 			Object_matcher_instance,
 		) as PropertySchemaToRegex<unknown>,
+		PrefixedStringMatcher(ajv) as PropertySchemaToRegex<unknown>,
 		Object_matcher_instance as PropertySchemaToRegex<unknown>,
 	]);
 
@@ -158,5 +167,7 @@ export function configure_parser(parser: SchemaParser) {
 				matchers,
 			},
 		}),
+		new PrefixedString({ajv}, 'quoted'),
+		new PrefixedString({ajv}, 'non_quoted'),
 	];
 }

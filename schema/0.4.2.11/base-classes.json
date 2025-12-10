@@ -152,7 +152,7 @@
 		},
 		"FGBuildable--mStopped-audio-stuff--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
+			"$ref": "#/$defs/FGBuildable--base--pre-update8",
 			"required": [
 				"mStoppedProducingAnimationSounds",
 				"mStoppedAkComponents",
@@ -1953,8 +1953,17 @@
 			]
 		},
 		"FGConsumableEquipment--base": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGConsumableEquipment--base"
+				},
+				{
+					"$ref": "#/$defs/FGConsumableEquipment--version-specific"
+				}
+			]
+		},
+		"FGConsumableEquipment--version-specific": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGConsumableEquipment--base",
 			"required": ["mArmAnimation"],
 			"properties": {
 				"mArmAnimation": {
@@ -2363,8 +2372,17 @@
 			]
 		},
 		"FGPortableMinerDispenser": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGPortableMinerDispenser--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGPortableMinerDispenser"
+				}
+			]
+		},
+		"FGPortableMinerDispenser--version-specific": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGPortableMinerDispenser",
 			"required": ["mArmAnimation"],
 			"properties": {
 				"mArmAnimation": {

@@ -177,7 +177,7 @@ type FGBuildable_mHasPower_base = FGBuildable_base_pre_update8 & {
 
 type FGBuildable_mStopped_audio_stuff = FGBuildable_mStopped_audio_stuff_base & FGBuildable;
 
-type FGBuildable_mStopped_audio_stuff_base = FGBuildable_base & {
+type FGBuildable_mStopped_audio_stuff_base = FGBuildable_base_pre_update8 & {
 	mStoppedProducingAnimationSounds: docs_json_ts_common_types_bool_string,
 	mStoppedAkComponents: '',
 	mSocketStoppedAkComponents: '',
@@ -580,7 +580,9 @@ type FGConsumableDescriptor = docs_json_ts_0_3_7_7_classes_base_FGConsumableDesc
 
 type FGConsumableEquipment = FGConsumableEquipment_base & docs_json_ts_0_3_7_7_classes_base_FGConsumableEquipment;
 
-type FGConsumableEquipment_base = docs_json_ts_0_3_7_7_classes_base_FGConsumableEquipment_base & {
+type FGConsumableEquipment_base = docs_json_ts_0_3_7_7_classes_base_FGConsumableEquipment_base & FGConsumableEquipment_version_specific;
+
+type FGConsumableEquipment_version_specific = {
 	mArmAnimation: 'AE_Consumables' | 'AE_OneHandEquipment' | 'AE_Generic1Hand',
 };
 
@@ -670,7 +672,7 @@ type FGHoverPack_base = FGEquipment & {
 type FGItemDescriptorNuclearFuel = docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_base & FGDescriptor & FGItemDescriptorNuclearFuel_base;
 
 type FGItemDescriptorNuclearFuel_base = {
-	mSpentFuelClass: `BlueprintGeneratedClass'/Game/FactoryGame/${string}${'\''}`,
+	mSpentFuelClass: `BlueprintGeneratedClass'/Game/FactoryGame/${Exclude<string, ''>}${'\''}`,
 };
 
 type FGNobeliskDetonator = FGWeaponProjectile & docs_json_ts_0_3_7_7_classes_base_FGNobeliskDetonator;
@@ -679,7 +681,9 @@ type FGParachute = FGEquipment & docs_json_ts_0_3_7_7_classes_base_FGParachute_b
 
 type FGPipeHyperStart = docs_json_ts_0_3_7_7_classes_base_FGPipeHyperStart_base & FGBuildable_pole_with_length_and_power;
 
-type FGPortableMinerDispenser = docs_json_ts_0_3_7_7_classes_base_FGPortableMinerDispenser & {
+type FGPortableMinerDispenser = FGPortableMinerDispenser_version_specific & docs_json_ts_0_3_7_7_classes_base_FGPortableMinerDispenser;
+
+type FGPortableMinerDispenser_version_specific = {
 	mArmAnimation: 'AE_Generic2Hand',
 };
 
@@ -930,6 +934,7 @@ export type {
 	FGConsumableDescriptor,
 	FGConsumableEquipment,
 	FGConsumableEquipment_base,
+	FGConsumableEquipment_version_specific,
 	FGDescriptor,
 	FGDescriptor_base,
 	FGDescriptor_BuildMenu,
@@ -948,6 +953,7 @@ export type {
 	FGParachute,
 	FGPipeHyperStart,
 	FGPortableMinerDispenser,
+	FGPortableMinerDispenser_version_specific,
 	FGRecipe,
 	FGRecipe_base,
 	FGResourceDescriptor,
