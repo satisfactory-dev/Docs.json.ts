@@ -158,6 +158,9 @@ import type {
 	FGBuildableResourceExtractor_base_base_timed as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_base_base_timed,
 	FGChainsaw as docs_json_ts_0_3_7_7_classes_base_FGChainsaw,
 	FGConsumableDescriptor_base as docs_json_ts_0_3_7_7_classes_base_FGConsumableDescriptor_base,
+	FGEquipment_filtered as docs_json_ts_0_3_7_7_classes_base_FGEquipment_filtered,
+	FGEquipment_has_effect_timer as docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_effect_timer,
+	FGEquipment_negates_damage as docs_json_ts_0_3_7_7_classes_base_FGEquipment_negates_damage,
 	FGEquipmentStunSpear_xenobasher_base as docs_json_ts_0_3_7_7_classes_base_FGEquipmentStunSpear_xenobasher_base,
 	FGEquipmentStunSpear_xenozapper_base as docs_json_ts_0_3_7_7_classes_base_FGEquipmentStunSpear_xenozapper_base,
 	FGGasMask_base as docs_json_ts_0_3_7_7_classes_base_FGGasMask_base,
@@ -543,7 +546,9 @@ type FGDescriptor = docs_json_ts_0_4_2_11_classes_base_FGDescriptor_base & {
 
 type FGEquipment = docs_json_ts_0_4_2_11_classes_base_FGEquipment_base & FGEquipment_version_specific;
 
-type FGEquipment_noisy = FGEquipment & {
+type FGEquipment_noisy = FGEquipment & FGEquipment_noisy_version_specific;
+
+type FGEquipment_noisy_version_specific = {
 	mActiveNoiseFrequency: docs_json_ts_common_types_decimal_string,
 };
 
@@ -569,11 +574,11 @@ type FGEquipmentStunSpear_xenozapper = docs_json_ts_0_3_7_7_classes_base_FGEquip
 
 type FGEquipmentZipline = docs_json_ts_0_4_2_11_classes_base_FGEquipmentZipline & FGEquipment_noisy;
 
-type FGGasMask = FGGasMask_base & {
+type FGGasMask = docs_json_ts_0_3_7_7_classes_base_FGGasMask_base & docs_json_ts_0_3_7_7_classes_base_FGEquipment_filtered & docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_effect_timer & docs_json_ts_0_3_7_7_classes_base_FGEquipment_negates_damage & FGEquipment & FGGasMask_version_specific;
+
+type FGGasMask_version_specific = {
 	mIsInPoisonArea: docs_json_ts_common_types_bool_string,
 };
-
-type FGGasMask_base = docs_json_ts_0_3_7_7_classes_base_FGGasMask_base & FGEquipment;
 
 type FGGolfCartDispenser = docs_json_ts_0_5_2_1_classes_base_FGGolfCartDispenser & FGEquipment;
 
@@ -701,7 +706,9 @@ type FGSchematic_version_specific = {
 
 type FGSchematic_with_described_unlocks = docs_json_ts_0_5_2_1_classes_base_FGSchematic_with_described_unlocks_base_base & FGSchematic_base;
 
-type FGSuitBase = FGSuitBase_base & {
+type FGSuitBase = docs_json_ts_0_3_7_7_classes_base_FGEquipment_filtered & docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_effect_timer & docs_json_ts_0_3_7_7_classes_base_FGEquipment_negates_damage & FGSuitBase_base & FGSuitBase_version_specific;
+
+type FGSuitBase_version_specific = {
 	mEquipmentSlot: 'ES_BODY',
 	mIsBurningFuel: docs_json_ts_common_types_bool_string,
 };
@@ -851,6 +858,7 @@ export type {
 	FGDescriptor,
 	FGEquipment,
 	FGEquipment_noisy,
+	FGEquipment_noisy_version_specific,
 	FGEquipment_version_specific,
 	FGEquipmentStunSpear_base,
 	FGEquipmentStunSpear_base_mDamageTypes,
@@ -859,7 +867,7 @@ export type {
 	FGEquipmentStunSpear_xenozapper,
 	FGEquipmentZipline,
 	FGGasMask,
-	FGGasMask_base,
+	FGGasMask_version_specific,
 	FGGolfCartDispenser,
 	FGHoverPack,
 	FGItemDescriptor,
@@ -882,6 +890,7 @@ export type {
 	FGSchematic_version_specific,
 	FGSchematic_with_described_unlocks,
 	FGSuitBase,
+	FGSuitBase_version_specific,
 	FGSuitBase_base,
 	FGVehicleDescriptor_Desc_CyberWagon_C,
 	FGVehicleDescriptor_Desc_DroneTransport_C,

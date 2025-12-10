@@ -1100,6 +1100,21 @@ type FGEquipment_dispenser_version_specific = {
 	mPlaceDistanceMax: docs_json_ts_common_types_decimal_string,
 };
 
+type FGEquipment_filtered = {
+	mFilterDuration: docs_json_ts_common_types_decimal_string,
+};
+
+type FGEquipment_negates_damage = {
+	mHasNegatedDamage: docs_json_ts_common_types_bool_string,
+	mDamageNegated: docs_json_ts_common_types_decimal_string,
+};
+
+type FGEquipment_has_effect_timer = {
+	mCountdown: docs_json_ts_common_types_decimal_string,
+	mIsWorking: docs_json_ts_common_types_bool_string,
+	mDisableEffectTimer: docs_json_ts_common_types_decimal_string,
+};
+
 type FGEquipment_has_mRandomStingerAnim = {
 	mRandomStingerAnim: docs_json_ts_common_types_integer_string,
 };
@@ -1143,15 +1158,9 @@ type FGEquipmentStunSpear_xenozapper = FGEquipmentStunSpear_xenozapper_base & FG
 
 type FGEquipmentStunSpear_xenozapper_base = FGEquipmentStunSpear_base_base & FGEquipment_has_sound & FGEquipment_has_mRandomStingerAnim;
 
-type FGGasMask = FGGasMask_base & FGEquipment;
+type FGGasMask = FGGasMask_base & FGEquipment_filtered & FGEquipment_has_effect_timer & FGEquipment_negates_damage & FGEquipment;
 
-type FGGasMask_base = FGEquipment_base_base & {
-	mCountdown: docs_json_ts_common_types_decimal_string,
-	mFilterDuration: docs_json_ts_common_types_decimal_string,
-	mIsWorking: docs_json_ts_common_types_bool_string,
-	mHasNegatedDamage: docs_json_ts_common_types_bool_string,
-	mDamageNegated: docs_json_ts_common_types_decimal_string,
-	mDisableEffectTimer: docs_json_ts_common_types_decimal_string,
+type FGGasMask_base = {
 	mPostProcessEnabled: docs_json_ts_common_types_bool_string,
 	mAttachSocket: 'helmetSocket',
 	mArmAnimation: 'AE_None',
@@ -1335,16 +1344,10 @@ type FGSnowballWeapon = FGWeaponProjectile_thrown & {
 	mArmAnimation: 'AE_Generic1Hand',
 };
 
-type FGSuitBase = FGSuitBase_base & FGEquipment;
+type FGSuitBase = FGSuitBase_base & FGEquipment_filtered & FGEquipment_has_effect_timer & FGEquipment_negates_damage & FGEquipment;
 
-type FGSuitBase_base = FGEquipment_base_base & {
+type FGSuitBase_base = {
 	mImmunity: docs_json_ts_common_types_decimal_string,
-	mIsWorking: docs_json_ts_common_types_bool_string,
-	mHasNegatedDamage: docs_json_ts_common_types_bool_string,
-	mDamageNegated: docs_json_ts_common_types_decimal_string,
-	mFilterDuration: docs_json_ts_common_types_decimal_string,
-	mCountdown: docs_json_ts_common_types_decimal_string,
-	mDisableEffectTimer: docs_json_ts_common_types_decimal_string,
 	mSuit1PMeshMaterials: [
 		{
 			SlotName: 'Body_Details' | 'Body_01' | 'Body_02' | 'Body_Hands' | 'Body_Backpack',
@@ -1746,6 +1749,9 @@ export type {
 	FGEquipment_base_version_specific,
 	FGEquipment_dispenser,
 	FGEquipment_dispenser_version_specific,
+	FGEquipment_filtered,
+	FGEquipment_negates_damage,
+	FGEquipment_has_effect_timer,
 	FGEquipment_has_mRandomStingerAnim,
 	FGEquipment_has_sound,
 	FGEquipmentStunSpear_base,

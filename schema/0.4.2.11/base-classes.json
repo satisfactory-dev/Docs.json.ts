@@ -2169,8 +2169,17 @@
 			}
 		},
 		"FGHoverPack--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGEquipment"
+				},
+				{
+					"$ref": "#/$defs/FGHoverPack--version-specific"
+				}
+			]
+		},
+		"FGHoverPack--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment",
 			"required": [
 				"mHoverPackActiveTimer",
 				"mCurrentPlayerVelocity",

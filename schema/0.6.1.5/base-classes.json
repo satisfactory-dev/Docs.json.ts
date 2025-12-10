@@ -1749,8 +1749,17 @@
 			]
 		},
 		"FGEquipment--noisy": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGEquipment"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--noisy--version-specific"
+				}
+			]
+		},
+		"FGEquipment--noisy--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment",
 			"required": ["mActiveNoiseFrequency"],
 			"properties": {
 				"mActiveNoiseFrequency": {
@@ -1847,24 +1856,35 @@
 			]
 		},
 		"FGGasMask": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGGasMask--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment--filtered"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment--has-effect-timer"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment--negates-damage"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment"
+				},
+				{
+					"$ref": "#/$defs/FGGasMask--version-specific"
+				}
+			]
+		},
+		"FGGasMask--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGGasMask--base",
 			"required": ["mIsInPoisonArea"],
 			"properties": {
 				"mIsInPoisonArea": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				}
 			}
-		},
-		"FGGasMask--base": {
-			"allOf": [
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGGasMask--base"
-				},
-				{
-					"$ref": "#/$defs/FGEquipment"
-				}
-			]
 		},
 		"FGGolfCartDispenser": {
 			"allOf": [
@@ -2384,8 +2404,26 @@
 			]
 		},
 		"FGSuitBase": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment--filtered"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment--has-effect-timer"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment--negates-damage"
+				},
+				{
+					"$ref": "#/$defs/FGSuitBase--base"
+				},
+				{
+					"$ref": "#/$defs/FGSuitBase--version-specific"
+				}
+			]
+		},
+		"FGSuitBase--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGSuitBase--base",
 			"required": ["mEquipmentSlot", "mIsBurningFuel"],
 			"properties": {
 				"mEquipmentSlot": {

@@ -632,7 +632,9 @@ type FGHoverPack = FGHoverPack_base & {
 	mRailroadSurfSensitivity: docs_json_ts_common_types_decimal_string,
 };
 
-type FGHoverPack_base = FGEquipment & {
+type FGHoverPack_base = FGEquipment & FGHoverPack_version_specific;
+
+type FGHoverPack_version_specific = {
 	mHoverPackActiveTimer: docs_json_ts_common_types_empty_object,
 	mCurrentPlayerVelocity: docs_json_ts_common_types_decimal_string,
 	mCurrentMouseDelta: docs_json_ts_common_types_decimal_string,
@@ -947,6 +949,7 @@ export type {
 	FGEquipmentZipline,
 	FGHoverPack,
 	FGHoverPack_base,
+	FGHoverPack_version_specific,
 	FGItemDescriptorNuclearFuel,
 	FGItemDescriptorNuclearFuel_base,
 	FGNobeliskDetonator,
