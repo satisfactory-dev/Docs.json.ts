@@ -2422,6 +2422,16 @@
 				}
 			]
 		},
+		"FGSuitBase--base": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGSuitBase--base"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment"
+				}
+			]
+		},
 		"FGSuitBase--version-specific": {
 			"type": "object",
 			"required": ["mEquipmentSlot", "mIsBurningFuel"],
@@ -2434,16 +2444,6 @@
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				}
 			}
-		},
-		"FGSuitBase--base": {
-			"allOf": [
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGSuitBase--base"
-				},
-				{
-					"$ref": "#/$defs/FGEquipment"
-				}
-			]
 		},
 		"FGVehicleDescriptor--Desc_CyberWagon_C": {
 			"allOf": [

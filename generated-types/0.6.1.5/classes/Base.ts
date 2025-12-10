@@ -708,12 +708,12 @@ type FGSchematic_with_described_unlocks = docs_json_ts_0_5_2_1_classes_base_FGSc
 
 type FGSuitBase = docs_json_ts_0_3_7_7_classes_base_FGEquipment_filtered & docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_effect_timer & docs_json_ts_0_3_7_7_classes_base_FGEquipment_negates_damage & FGSuitBase_base & FGSuitBase_version_specific;
 
+type FGSuitBase_base = docs_json_ts_0_3_7_7_classes_base_FGSuitBase_base & FGEquipment;
+
 type FGSuitBase_version_specific = {
 	mEquipmentSlot: 'ES_BODY',
 	mIsBurningFuel: docs_json_ts_common_types_bool_string,
 };
-
-type FGSuitBase_base = docs_json_ts_0_3_7_7_classes_base_FGSuitBase_base & FGEquipment;
 
 type FGVehicleDescriptor_Desc_CyberWagon_C = docs_json_ts_0_4_2_11_classes_base_FGVehicleDescriptor_fueled_with_inventory_base & docs_json_ts_0_3_7_7_classes_base_isDescribed & FGItemDescriptor_base;
 
@@ -890,8 +890,8 @@ export type {
 	FGSchematic_version_specific,
 	FGSchematic_with_described_unlocks,
 	FGSuitBase,
-	FGSuitBase_version_specific,
 	FGSuitBase_base,
+	FGSuitBase_version_specific,
 	FGVehicleDescriptor_Desc_CyberWagon_C,
 	FGVehicleDescriptor_Desc_DroneTransport_C,
 	FGVehicleDescriptor_Desc_Explorer_C,

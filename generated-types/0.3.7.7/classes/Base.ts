@@ -1104,11 +1104,6 @@ type FGEquipment_filtered = {
 	mFilterDuration: docs_json_ts_common_types_decimal_string,
 };
 
-type FGEquipment_negates_damage = {
-	mHasNegatedDamage: docs_json_ts_common_types_bool_string,
-	mDamageNegated: docs_json_ts_common_types_decimal_string,
-};
-
 type FGEquipment_has_effect_timer = {
 	mCountdown: docs_json_ts_common_types_decimal_string,
 	mIsWorking: docs_json_ts_common_types_bool_string,
@@ -1121,6 +1116,11 @@ type FGEquipment_has_mRandomStingerAnim = {
 
 type FGEquipment_has_sound = FGEquipment & {
 	mPlayingSound: docs_json_ts_common_types_bool_string,
+};
+
+type FGEquipment_negates_damage = {
+	mHasNegatedDamage: docs_json_ts_common_types_bool_string,
+	mDamageNegated: docs_json_ts_common_types_decimal_string,
 };
 
 type FGEquipmentStunSpear_base = FGEquipmentStunSpear_base_base & {
@@ -1750,10 +1750,10 @@ export type {
 	FGEquipment_dispenser,
 	FGEquipment_dispenser_version_specific,
 	FGEquipment_filtered,
-	FGEquipment_negates_damage,
 	FGEquipment_has_effect_timer,
 	FGEquipment_has_mRandomStingerAnim,
 	FGEquipment_has_sound,
+	FGEquipment_negates_damage,
 	FGEquipmentStunSpear_base,
 	FGEquipmentStunSpear_base_base,
 	FGEquipmentStunSpear_base_base_base,

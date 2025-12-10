@@ -4278,37 +4278,16 @@
 		},
 		"FGEquipment--filtered": {
 			"type": "object",
-			"required": [
-				"mFilterDuration"
-			],
+			"required": ["mFilterDuration"],
 			"properties": {
 				"mFilterDuration": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
 			}
 		},
-		"FGEquipment--negates-damage": {
-			"type": "object",
-			"required": [
-				"mHasNegatedDamage",
-				"mDamageNegated"
-			],
-			"properties": {
-				"mHasNegatedDamage": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mDamageNegated": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				}
-			}
-		},
 		"FGEquipment--has-effect-timer": {
 			"type": "object",
-			"required": [
-				"mCountdown",
-				"mIsWorking",
-				"mDisableEffectTimer"
-			],
+			"required": ["mCountdown", "mIsWorking", "mDisableEffectTimer"],
 			"properties": {
 				"mCountdown": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
@@ -4337,6 +4316,18 @@
 			"properties": {
 				"mPlayingSound": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
+		},
+		"FGEquipment--negates-damage": {
+			"type": "object",
+			"required": ["mHasNegatedDamage", "mDamageNegated"],
+			"properties": {
+				"mHasNegatedDamage": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mDamageNegated": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
 			}
 		},
@@ -5141,10 +5132,7 @@
 		},
 		"FGSuitBase--base": {
 			"type": "object",
-			"required": [
-				"mImmunity",
-				"mSuit1PMeshMaterials"
-			],
+			"required": ["mImmunity", "mSuit1PMeshMaterials"],
 			"properties": {
 				"mImmunity": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
