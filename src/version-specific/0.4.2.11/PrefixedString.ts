@@ -1,10 +1,5 @@
 import type {
-	TemplateLiteralTypeNode,
-} from 'typescript';
-
-import type {
 	SchemalessTypeOptions,
-	SchemaParser,
 } from '@signpostmarv/json-schema-typescript-codegen';
 import {
 	$defs_schema,
@@ -13,23 +8,14 @@ import {
 import type {
 	TemplatedStringParts,
 } from '@signpostmarv/json-schema-typescript-codegen/ajv';
-import {
-	KeywordType,
-	RegexpFailureError,
-	TemplatedString,
-} from '@signpostmarv/json-schema-typescript-codegen/ajv';
-
-import type {
-	StringLiteral,
-} from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
-import {
-	factory,
-} from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
 
 import type {
 	mode as base__mode,
 	PrefixedString_base_schema,
 	PrefixedString_base_type,
+} from '../0.3.7.7/PrefixedString.ts';
+import {
+	PrefixedString_base,
 } from '../0.3.7.7/PrefixedString.ts';
 
 export type mode = base__mode | 'single_quoted';
@@ -45,120 +31,62 @@ type PrefixedString_schema<
 export class PrefixedString<
 	Mode extends mode,
 	Prefix extends Exclude<string, ''>,
-	T extends {
-		quoted: `${Prefix}'"/Game/FactoryGame/${
-			string
-		}"'`,
-		single_quoted: `${Prefix}'/Game/FactoryGame/${
-			string
-		}'`,
-		non_quoted: `${Prefix} /Game/FactoryGame/${
-			string
-		}`,
-	}[Mode] = {
-		quoted: `${Prefix}'"/Game/FactoryGame/${
-			string
-		}"'`,
-		single_quoted: `${Prefix}'/Game/FactoryGame/${
-			string
-		}'`,
-		non_quoted: `${Prefix} /Game/FactoryGame/${
-			string
-		}`,
-	}[Mode],
-> extends KeywordType<
-		T,
+> extends PrefixedString_base<
+		Mode,
+		{
+			quoted: `${Prefix}'"/Game/FactoryGame/${
+				string
+			}"'`,
+			single_quoted: `${Prefix}'/Game/FactoryGame/${
+				string
+			}'`,
+			non_quoted: `${Prefix} /Game/FactoryGame/${
+				string
+			}`,
+		},
+		{mode: Mode},
 		PrefixedString_type<Mode>,
-		{mode: Mode},
-		PrefixedString_schema<Mode>,
-		{mode: Mode},
-		TemplateLiteralTypeNode,
-		StringLiteral
+		PrefixedString_schema<Mode>
 	> {
 	constructor(
 		options: SchemalessTypeOptions,
 		mode: Mode,
 	) {
 		super(
-			{
-				...options,
-				ajv_keyword: {
-					keyword: 'DocsDotJson_PrefixedString',
-					type: 'string',
-					macro: (
-						{
-							prefix,
-							mode,
-							value,
-						}: PrefixedString_type<
-							Mode
-						>['DocsDotJson_PrefixedString'],
-					) => {
-						let pattern = PrefixedString
-							.#regex_from_prefix_value_and_mode(
-								prefix,
-								value,
-								mode,
-							).toString();
-
-						if (pattern.startsWith('/') && pattern.endsWith('/')) {
-							pattern = pattern.substring(1, pattern.length - 1);
-						}
-
-						return {
-							pattern,
-						};
-					},
-				},
-				type_definition: {mode},
-				schema_definition: {mode},
-				add_to_$defs_excluded: true,
-			},
-		);
-	}
-
-	generate_typescript_data(
-		data: T,
-		schema_parser: SchemaParser,
-		{
-			DocsDotJson_PrefixedString: {
+			options,
+			{mode},
+			({
 				prefix,
-				mode,
 				value,
-			},
-		}: PrefixedString_type<Mode>,
-	): StringLiteral {
-		const regex = PrefixedString.#regex_from_prefix_value_and_mode(
-			prefix,
-			value,
-			mode,
-		);
-
-		if (!regex.test(data)) {
-			throw new RegexpFailureError(
-				'Value does not match expected regex!',
-				regex,
-				data,
-			);
-		}
-
-		return factory.createStringLiteral(data);
-	}
-
-	generate_typescript_type({
-		schema,
-	}: {
-		schema: PrefixedString_type<Mode>,
-	}): Promise<TemplateLiteralTypeNode> {
-		return Promise.resolve(
-			TemplatedString.generate_typescript_type_from_parts(
-				PrefixedString.TemplatedStringParts_by_value(
-					schema.DocsDotJson_PrefixedString.prefix,
-					schema.DocsDotJson_PrefixedString.mode,
-					schema.DocsDotJson_PrefixedString.value,
-				),
+				mode,
+			}) => PrefixedString.#regex_from_prefix_value_and_mode(
+				prefix,
+				value,
+				mode,
 			),
 		);
+	}
+
+	protected TemplatedStringParts_by_value({
+		prefix,
+		mode,
+		value,
+	}: PrefixedString_type<
+		Mode
+	>['DocsDotJson_PrefixedString']): TemplatedStringParts {
+		return [
+			{
+				non_quoted: `${prefix} /Game/FactoryGame/`,
+				quoted: `${prefix}'"/Game/FactoryGame/`,
+				single_quoted: `${prefix}'/Game/FactoryGame/`,
+			}[mode],
+			null === value ? {type: 'string'} : value,
+			{
+				non_quoted: '',
+				quoted: `"'`,
+				single_quoted: `'`,
+			}[mode],
+		];
 	}
 
 	static generate_schema_definition<
@@ -267,38 +195,6 @@ export class PrefixedString<
 		}
 
 		return `${start}${prefix}(?:[^\\/_]+\\/)*[^.]+\\.[^.]+${suffix}`;
-	}
-
-	static TemplatedStringParts(
-		{
-			DocsDotJson_PrefixedString: {
-				prefix,
-				mode,
-				value,
-			},
-		}: PrefixedString_type,
-	): TemplatedStringParts {
-		return this.TemplatedStringParts_by_value(prefix, mode, value);
-	}
-
-	static TemplatedStringParts_by_value(
-		prefix: Exclude<string, ''>,
-		mode: mode,
-		value: Exclude<string, ''>|null,
-	): TemplatedStringParts {
-		return [
-			{
-				non_quoted: `${prefix} /Game/FactoryGame/`,
-				quoted: `${prefix}'"/Game/FactoryGame/`,
-				single_quoted: `${prefix}'/Game/FactoryGame/`,
-			}[mode],
-			null === value ? {type: 'string'} : value,
-			{
-				non_quoted: '',
-				quoted: `"'`,
-				single_quoted: `'`,
-			}[mode],
-		];
 	}
 
 	static #regex_from_prefix_value_and_mode(
