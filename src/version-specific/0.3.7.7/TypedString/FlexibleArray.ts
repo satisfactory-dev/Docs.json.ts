@@ -18,6 +18,7 @@ import type {
 import {
 	ArrayType,
 	PositiveIntegerGuard,
+	Type,
 } from '@signpostmarv/json-schema-typescript-codegen';
 
 import type {
@@ -116,7 +117,11 @@ export function FlexibleArray_regex__items(
 ): string {
 	return `(?:\\((?:,?${
 		FlexibleArray_regex__items__inner(
-			schema.items,
+			(
+				0 === Object.keys(schema.items).length
+					? {}
+					: Type.maybe_add_$defs(schema, schema.items)
+			),
 			property_schema_to_regex,
 			false,
 		)
@@ -303,7 +308,11 @@ function FlexibleArray_generate_data__items(
 	property_schema_to_regex: PropertySchemaToRegex<unknown>[],
 ): FlexibleArray_DataTo {
 	const regex = FlexibleArray_regex__items__inner(
-		schema.items,
+		(
+			0 === Object.keys(schema.items).length
+				? {}
+				: Type.maybe_add_$defs(schema, schema.items)
+		),
 		property_schema_to_regex,
 		true,
 	);

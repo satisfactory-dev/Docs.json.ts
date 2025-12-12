@@ -47,11 +47,6 @@ import {
 } from '../0.3.7.7/StringDotString.ts';
 
 import {
-	BlueprintGeneratedClass_non_quoted,
-	BlueprintGeneratedClass_quoted,
-} from '../0.3.7.7/BlueprintGeneratedClass.ts';
-
-import {
 	PropertySchemaToRegex__matchers,
 	TypedString,
 } from './TypedString.ts';
@@ -69,14 +64,6 @@ import {
 } from '../0.3.7.7/SchemaParser.ts';
 
 import {
-	BlueprintGeneratedClassSingleQuoted,
-} from './BlueprintGeneratedClass.ts';
-
-import {
-	FGRailroadTrackConnectionComponent,
-} from './FGRailroadTrackConnectionComponent.ts';
-
-import {
 	Object as Object_matcher,
 } from '../0.3.7.7/TypedString/PropertySchemaToRegex/Object.ts';
 
@@ -86,7 +73,7 @@ import type {
 
 import {
 	PrefixedString,
-} from '../0.3.7.7/PrefixedString.ts';
+} from '../0.4.2.11/PrefixedString.ts';
 
 const already_configured: WeakSet<SchemaParser> = new WeakSet();
 
@@ -140,10 +127,6 @@ export function configure_parser(parser: SchemaParser) {
 		new ResourceSink_Unlock_C({ajv}),
 		new Schematic_C({ajv}),
 		new StringDotString({ajv}),
-		new BlueprintGeneratedClass_non_quoted({ajv}),
-		new BlueprintGeneratedClass_quoted({ajv}),
-		new BlueprintGeneratedClassSingleQuoted({ajv}),
-		new FGRailroadTrackConnectionComponent({ajv}),
 		new NamedList({ajv}, 'NSLOCTEXT'),
 		...parser.types,
 		new TemplatedString({ajv}),
@@ -154,6 +137,7 @@ export function configure_parser(parser: SchemaParser) {
 			},
 		}),
 		new PrefixedString({ajv}, 'quoted'),
+		new PrefixedString({ajv}, 'single_quoted'),
 		new PrefixedString({ajv}, 'non_quoted'),
 	];
 }

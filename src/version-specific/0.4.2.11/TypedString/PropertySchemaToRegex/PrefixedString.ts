@@ -8,9 +8,6 @@ import {
 
 import type {
 	mode,
-} from '../../../0.4.2.11/PrefixedString.ts';
-
-import type {
 	PrefixedString_type,
 } from '../../PrefixedString.ts';
 import {
@@ -30,14 +27,12 @@ export function PrefixedString<
 				prefix,
 				mode,
 				value,
-				first_path,
 			},
 		}) => {
 			return PrefixedStringType.regex_from_prefix_value_and_mode(
 				prefix,
 				value,
 				mode,
-				first_path,
 			);
 		},
 	);

@@ -6,8 +6,12 @@ import type {
 import type {
 	$ref,
 	SchemalessTypeOptions,
+	SchemaObject,
 	SchemaParser,
 	TypeDefinitionSchema,
+} from '@signpostmarv/json-schema-typescript-codegen';
+import {
+	Type,
 } from '@signpostmarv/json-schema-typescript-codegen';
 
 import {
@@ -117,11 +121,16 @@ export function compile_validators(ajv: Ajv): {
 		...compile_validators__update5(ajv),
 	};
 }
+
 export function PropertySchemaToRegex__matchers_as_object(
 ): PropertySchemaToRegex__matchers_object {
 	return {
 		...PropertySchemaToRegex__matchers_as_object__update5(),
-		PrefixedStringMatcher: ({ajv}) => [PrefixedStringMatcher(ajv)],
+		PrefixedStringMatcher: ({ajv}) => [
+			PrefixedStringMatcher(ajv, 'quoted'),
+			PrefixedStringMatcher(ajv, 'single_quoted'),
+			PrefixedStringMatcher(ajv, 'non_quoted'),
+		],
 	} as PropertySchemaToRegex__matchers_object;
 }
 
@@ -266,11 +275,38 @@ export class TypedString<
 				type: 'string',
 				macro: (
 					schema: TypedString_type<Mode>['typed_string'],
+					parent_schema,
+					it,
 				) => {
 					const mode = TypedString.mode_from_schema(
 						schema,
 						entries,
 					);
+
+					let root_schema: SchemaObject = {$defs: {}};
+
+					if (
+						object_has_property(it.self.schemas, it.baseId)
+						&& object_has_property(
+							it.self.schemas[it.baseId],
+							'schema',
+						)
+						&& object_has_property(
+							it.self.schemas[it.baseId]?.schema,
+							'$defs',
+						)
+					) {
+						root_schema = it.self.schemas[
+							it.baseId
+						]?.schema as SchemaObject;
+					}
+
+					if (Object.keys(root_schema.$defs || {}).length > 0) {
+						schema = Type.maybe_add_$defs(
+							root_schema,
+							schema,
+						);
+					}
 
 					return TypedString.ajv_macro(mode, schema, {
 						$ref_instance,

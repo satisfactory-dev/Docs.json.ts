@@ -683,7 +683,7 @@ type FGHoverPack_version_specific = {
 type FGItemDescriptorNuclearFuel = docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_base & FGDescriptor & FGItemDescriptorNuclearFuel_base;
 
 type FGItemDescriptorNuclearFuel_base = {
-	mSpentFuelClass: `BlueprintGeneratedClass'/Game/FactoryGame/${Exclude<string, ''>}${'\''}`,
+	mSpentFuelClass: `BlueprintGeneratedClass'/Game/FactoryGame/${string}${'\''}`,
 };
 
 type FGNobeliskDetonator = FGWeaponProjectile & docs_json_ts_0_3_7_7_classes_base_FGNobeliskDetonator;

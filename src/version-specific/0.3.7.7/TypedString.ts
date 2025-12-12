@@ -7,8 +7,12 @@ import type {
 	$ref,
 	SchemaDefinitionDefinition,
 	SchemalessTypeOptions,
+	SchemaObject,
 	SchemaParser,
 	TypeDefinitionSchema,
+} from '@signpostmarv/json-schema-typescript-codegen';
+import {
+	Type,
 } from '@signpostmarv/json-schema-typescript-codegen';
 
 // required for type hinting on github actions checks
@@ -38,22 +42,6 @@ import {
 	Empty_generate_typescript_data,
 	Empty_generate_typescript_type,
 } from './TypedString/Empty.ts';
-
-import type {
-	None_DataTo,
-	None_properties,
-	None_SchemaTo,
-	None_type,
-	None_TypeGenerator,
-} from './TypedString/None.ts';
-import {
-	None_ajv_macro,
-	None_compile_validator,
-	None_generate_schema_definition,
-	None_generate_type_definition,
-	None_generate_typescript_data,
-	None_generate_typescript_type,
-} from './TypedString/None.ts';
 
 import type {
 	Object_DataTo,
@@ -95,34 +83,6 @@ import {
 } from './TypedString/PropertySchemaToRegex/ConstString.ts';
 
 import {
-	EmptyObject,
-} from './TypedString/PropertySchemaToRegex/EmptyObject.ts';
-
-import {
-	integer_string,
-} from './TypedString/PropertySchemaToRegex/integer_string.ts';
-
-import {
-	integer_string_signed,
-} from './TypedString/PropertySchemaToRegex/integer_string_signed.ts';
-
-import {
-	decimal_string,
-} from './TypedString/PropertySchemaToRegex/decimal_string.ts';
-
-import {
-	decimal_string_signed,
-} from './TypedString/PropertySchemaToRegex/decimal_string_signed.ts';
-
-import {
-	bool_string,
-} from './TypedString/PropertySchemaToRegex/bool_string.ts';
-
-import {
-	common_type_objects,
-} from './TypedString/PropertySchemaToRegex/common_type_objects.ts';
-
-import {
 	PrefixedString as PrefixedStringMatcher,
 } from './TypedString/PropertySchemaToRegex/PrefixedString.ts';
 
@@ -153,7 +113,6 @@ import {
 
 export type TypedString_mode = (
 	| 'Empty'
-	| 'None'
 	| 'Object'
 	| 'FlexibleArray__items'
 	| 'FlexibleArray__prefixItems'
@@ -161,7 +120,6 @@ export type TypedString_mode = (
 
 export type TypedString_type__by_mode = {
 	Empty: Empty_type,
-	None: None_type,
 	Object: Object_type,
 	FlexibleArray__items: FlexibleArray_type<'items'>,
 	FlexibleArray__prefixItems: FlexibleArray_type<'prefixItems'>,
@@ -184,7 +142,6 @@ export type TypedString_matcher<
 export type TypedString_type_OneOf = {
 	oneOf: [
 		TypedString_type<'Empty'>,
-		TypedString_type<'None'>,
 		TypedString_type<'Object'>,
 		TypedString_type<'FlexibleArray__items'>,
 		TypedString_type<'FlexibleArray__prefixItems'>,
@@ -193,7 +150,6 @@ export type TypedString_type_OneOf = {
 
 export type TypedString_schema_properties = {
 	Empty: Empty_properties,
-	None: None_properties,
 	Object: Object_properties,
 	FlexibleArray__items: FlexibleArray_schema_properties<'items'>,
 	FlexibleArray__prefixItems: FlexibleArray_schema_properties<'prefixItems'>,
@@ -225,7 +181,6 @@ type TypedString_schema<
 export type TypedString_schema_OneOf = TypeDefinitionSchema & {
 	oneOf: [
 		TypedString_schema<'Empty'>,
-		TypedString_schema<'None'>,
 		TypedString_schema<'Object'>,
 		TypedString_schema<'FlexibleArray__items'>,
 		TypedString_schema<'FlexibleArray__prefixItems'>,
@@ -234,7 +189,6 @@ export type TypedString_schema_OneOf = TypeDefinitionSchema & {
 
 export type TypedString_SchemaTo__by_mode = {
 	Empty: Empty_SchemaTo,
-	None: None_SchemaTo,
 	Object: Object_SchemaTo,
 	FlexibleArray__items: FlexibleArray_SchemaTo<'items'>,
 	FlexibleArray__prefixItems: FlexibleArray_SchemaTo<'prefixItems'>,
@@ -246,7 +200,6 @@ type TypedString_SchemaTo<
 
 export type TypedString_DataTo__by_mode = {
 	Empty: Empty_DataTo,
-	None: None_DataTo,
 	Object: Object_DataTo,
 	FlexibleArray__items: FlexibleArray_DataTo,
 	FlexibleArray__prefixItems: FlexibleArray_DataTo,
@@ -257,7 +210,6 @@ type TypedString_DataTo<
 > = TypedString_DataTo__by_mode[Mode];
 
 export type Type_Generator__by_mode = {
-	None: None_TypeGenerator,
 	Empty: Empty_TypeGenerator,
 	Object: Object_TypeGenerator,
 };
@@ -269,7 +221,6 @@ export function compile_validators(ajv: Ajv): {
 } {
 	return {
 		Empty: Empty_compile_vaildator(ajv),
-		None: None_compile_validator(ajv),
 		Object: Object_compile_validator(ajv),
 		FlexibleArray__items: FlexibleArray_compile_validator(ajv, 'items'),
 		FlexibleArray__prefixItems: FlexibleArray_compile_validator(
@@ -299,21 +250,6 @@ export function PropertySchemaToRegex__matchers_as_object(
 		ConstString: ({ajv}) => [ConstString(ajv)],
 		EnumString: ({ajv}) => [EnumString(ajv)],
 		PatternString: ({ajv}) => [PatternString(ajv)],
-		EmptyObject: ({ajv}) => [EmptyObject(ajv)],
-		integer_string: ({ajv}) => [integer_string(ajv)],
-		integer_string_signed: ({ajv}) => [integer_string_signed(ajv)],
-		decimal_string: ({ajv}) => [decimal_string(ajv)],
-		decimal_string_signed: ({ajv}) => [decimal_string_signed(ajv)],
-		bool_string: ({ajv}) => [bool_string(ajv)],
-		common_type_objects: ({
-			ajv,
-			Object_matcher_instance,
-		}) => [
-			common_type_objects(
-				ajv,
-				Object_matcher_instance,
-			),
-		],
 		PrefixedStringMatcher: ({ajv}) => [
 			PrefixedStringMatcher(ajv, 'quoted'),
 			PrefixedStringMatcher(ajv, 'non_quoted'),
@@ -370,12 +306,12 @@ export function generate_typescript_data__by_mode<
 
 	if ('Empty' === mode) {
 		result = Empty_generate_typescript_data() as typeof result;
-	} else if ('None' === mode) {
-		result = None_generate_typescript_data() as typeof result;
 	} else if ('Object' === mode) {
-		const coerced_schema = schema.typed_string as TypedString_type<
+		let coerced_schema = schema.typed_string as TypedString_type<
 			'Object'
 		>['typed_string'];
+
+		coerced_schema = Type.maybe_add_$defs(schema, coerced_schema);
 
 		result = Object_generate_typescript_data(
 			data,
@@ -466,10 +402,6 @@ export function generate_typescript_type__by_mode<
 	if ('Empty' === mode) {
 		result = Promise.resolve(
 			Empty_generate_typescript_type(),
-		) as typeof result;
-	} else if ('None' === mode) {
-		result = Promise.resolve(
-			None_generate_typescript_type(),
 		) as typeof result;
 	} else if ('Object' === mode) {
 		const coerced_schema: (
@@ -576,11 +508,38 @@ export class TypedString<
 				type: 'string',
 				macro: (
 					schema: TypedString_type<Mode>['typed_string'],
+					parent_schema,
+					it,
 				) => {
 					const mode = TypedString.mode_from_schema(
 						schema,
 						entries,
 					);
+
+					let root_schema: SchemaObject = {$defs: {}};
+
+					if (
+						object_has_property(it.self.schemas, it.baseId)
+						&& object_has_property(
+							it.self.schemas[it.baseId],
+							'schema',
+						)
+						&& object_has_property(
+							it.self.schemas[it.baseId]?.schema,
+							'$defs',
+						)
+					) {
+						root_schema = it.self.schemas[
+							it.baseId
+						]?.schema as SchemaObject;
+					}
+
+					if (Object.keys(root_schema.$defs || {}).length > 0) {
+						schema = Type.maybe_add_$defs(
+							root_schema,
+							schema,
+						);
+					}
 
 					return TypedString.ajv_macro(mode, schema, {
 						$ref_instance,
@@ -657,8 +616,6 @@ export class TypedString<
 	) {
 		if ('Empty' === mode) {
 			return Empty_ajv_macro();
-		} else if ('None' === mode) {
-			return None_ajv_macro();
 		} else if ('Object' === mode) {
 			const coerced = schema as TypedString_type<
 				'Object'
@@ -703,7 +660,6 @@ export class TypedString<
 		return Object.freeze({
 			oneOf: [
 				this.#generate_schema_definition('Empty'),
-				this.#generate_schema_definition('None'),
 				this.#generate_schema_definition('Object'),
 				this.#generate_schema_definition('FlexibleArray__items'),
 				this.#generate_schema_definition('FlexibleArray__prefixItems'),
@@ -722,9 +678,6 @@ export class TypedString<
 
 		if ('Empty' === mode) {
 			typed_string = Empty_generate_schema_definition(
-			) as typeof typed_string;
-		} else if ('None' === mode) {
-			typed_string = None_generate_schema_definition(
 			) as typeof typed_string;
 		} else if ('Object' === mode) {
 			typed_string = Object_generate_schema_definition(
@@ -766,7 +719,6 @@ export class TypedString<
 		return Object.freeze({
 			oneOf: [
 				this.#generate_type_definition('Empty'),
-				this.#generate_type_definition('None'),
 				this.#generate_type_definition('Object'),
 				this.#generate_type_definition('FlexibleArray__items'),
 				this.#generate_type_definition('FlexibleArray__prefixItems'),
@@ -783,9 +735,6 @@ export class TypedString<
 
 		if ('Empty' === mode) {
 			typed_string = Empty_generate_type_definition(
-			) as typeof typed_string;
-		} else if ('None' === mode) {
-			typed_string = None_generate_type_definition(
 			) as typeof typed_string;
 		} else if ('Object' === mode) {
 			typed_string = Object_generate_type_definition(

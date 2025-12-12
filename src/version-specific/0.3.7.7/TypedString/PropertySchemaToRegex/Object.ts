@@ -2,6 +2,11 @@ import type {
 	Ajv2020 as Ajv,
 } from 'ajv/dist/2020.js';
 
+import {
+	$defs_schema,
+	Type,
+} from '@signpostmarv/json-schema-typescript-codegen';
+
 import type {
 	Object_type,
 } from '../Object.ts';
@@ -24,6 +29,7 @@ export function Object(
 			additionalProperties: false,
 			required: ['type', 'typed_string'],
 			properties: {
+				$defs: $defs_schema.properties.$defs,
 				type: {
 					type: 'string',
 					const: 'string',
@@ -33,7 +39,7 @@ export function Object(
 		}),
 		(value) => {
 			return Object_type_to_regex(
-				value.typed_string,
+				Type.maybe_add_$defs(value, value.typed_string),
 				matchers,
 			);
 		},

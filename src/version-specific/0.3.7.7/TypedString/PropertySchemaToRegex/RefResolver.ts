@@ -28,10 +28,9 @@ export function RefResolver(
 	return new PropertySchemaToRegex<$ref_type>(
 		ajv.compile($ref.generate_type_definition()),
 		(value) => {
-			let resolved = $ref_instance.resolve_def(
-				value,
-				value.$defs || {},
-			);
+			const local_$defs: SchemaObject = value.$defs || {};
+
+			let resolved = $ref_instance.resolve_def(value, local_$defs);
 
 			let converter = matchers.find((maybe) => {
 				return maybe.matches(resolved);

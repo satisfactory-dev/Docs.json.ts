@@ -1341,6 +1341,7 @@ type FGSchematic = FGSchematic_base & {
 type FGSchematic_base = FGInstructive & {
 	mType: docs_json_ts_0_3_7_7_properties_mType,
 	mSubCategories: null | [
+		'None',
 	] | docs_json_ts_0_3_7_7_properties_mSubCategories,
 	mTimeToComplete: docs_json_ts_common_types_decimal_string,
 	mIncludeInBuilds: 'IIB_PublicBuilds',

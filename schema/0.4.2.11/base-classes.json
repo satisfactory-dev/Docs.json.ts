@@ -2366,7 +2366,11 @@
 			"properties": {
 				"mSpentFuelClass": {
 					"type": "string",
-					"DocsDotJson_BlueprintGeneratedClass_single_quoted": null
+					"DocsDotJson_PrefixedString": {
+						"prefix": "BlueprintGeneratedClass",
+						"mode": "single_quoted",
+						"value": null
+					}
 				}
 			}
 		},

@@ -110,7 +110,10 @@ export function Object_generate_typescript_data(
 			string,
 		] => {
 			const regex = FlexibleArray_regex__items__inner(
-				coerced_schema.properties[property],
+				Type.maybe_add_$defs(
+					coerced_schema,
+					coerced_schema.properties[property],
+				),
 				property_schema_to_regex,
 				true,
 			);
@@ -286,7 +289,10 @@ export function Object_type_to_regex(
 			.map((property) => {
 				let value_regex = `(?:[^=)]+)`;
 
-				let resolved = schema.properties[property];
+				let resolved = Type.maybe_add_$defs(
+					schema,
+					schema.properties[property],
+				);
 
 				let converter = property_schema_to_regex.find((maybe) => {
 					return maybe.matches(resolved);

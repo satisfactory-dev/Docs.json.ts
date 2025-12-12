@@ -4539,7 +4539,11 @@
 			"properties": {
 				"FullName": {
 					"type": "string",
-					"DocsDotJson_BlueprintGeneratedClass": null
+					"DocsDotJson_PrefixedString": {
+						"prefix": "BlueprintGeneratedClass",
+						"mode": "non_quoted",
+						"value": null
+					}
 				},
 				"mRelevantEvents": {
 					"oneOf": [
@@ -5081,7 +5085,18 @@
 						},
 						{
 							"type": "string",
-							"typed_string": "(None)"
+							"typed_string": {
+								"type": "array",
+								"minItems": 1,
+								"maxItems": 1,
+								"items": false,
+								"prefixItems": [
+									{
+										"type": "string",
+										"const": "None"
+									}
+								]
+							}
 						},
 						{
 							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mSubCategories"

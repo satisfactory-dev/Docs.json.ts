@@ -30,8 +30,8 @@ import type {
 
 export type mode = 'quoted'|'non_quoted';
 
-type PrefixedString_type<
-	Mode extends mode = mode,
+export type PrefixedString_base_type<
+	Mode extends string = string,
 > = {
 	type: 'string',
 	DocsDotJson_PrefixedString: {
@@ -41,8 +41,12 @@ type PrefixedString_type<
 	},
 };
 
-type PrefixedString_schema<
-	Mode extends mode,
+export type PrefixedString_type<
+	Mode extends mode = mode,
+> = PrefixedString_base_type<Mode>;
+
+export type PrefixedString_base_schema<
+	Mode extends string,
 > = SchemaDefinitionDefinition<
 	['type', 'DocsDotJson_PrefixedString'],
 	{
@@ -80,10 +84,9 @@ type PrefixedString_schema<
 	}
 >;
 
-export type {
-	PrefixedString_schema,
-	PrefixedString_type,
-};
+type PrefixedString_schema<
+	Mode extends mode,
+> = PrefixedString_base_schema<Mode>;
 
 export class PrefixedString<
 	Mode extends mode,
@@ -123,14 +126,16 @@ export class PrefixedString<
 					keyword: 'DocsDotJson_PrefixedString',
 					type: 'string',
 					macro: (
-						{
-							prefix,
-							mode,
-							value,
-						}: PrefixedString_type<
+						schema: PrefixedString_type<
 							Mode
 						>['DocsDotJson_PrefixedString'],
 					) => {
+						const {
+							prefix,
+							mode,
+							value,
+						} = schema;
+
 						let pattern = PrefixedString
 							.#regex_from_prefix_value_and_mode(
 								prefix,

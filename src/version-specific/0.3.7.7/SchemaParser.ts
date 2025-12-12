@@ -32,22 +32,23 @@ import update3 from '../../../schema/0.3.7.7/docs.json' with {
 import {
 	NativeClass,
 } from './NativeClass.ts';
+
 import {
 	Desc_C,
 } from './Desc_C.ts';
+
 import {
 	ResourceSink_Unlock_C,
 } from './ResourceSink_Unlock_C.ts';
+
 import {
 	Schematic_C,
 } from './Schematic_C.ts';
+
 import {
 	StringDotString,
 } from './StringDotString.ts';
-import {
-	BlueprintGeneratedClass_non_quoted,
-	BlueprintGeneratedClass_quoted,
-} from './BlueprintGeneratedClass.ts';
+
 import {
 	PropertySchemaToRegex__matchers,
 	TypedString,
@@ -126,8 +127,6 @@ export function configure_parser(parser: SchemaParser) {
 		new ResourceSink_Unlock_C({ajv}),
 		new Schematic_C({ajv}),
 		new StringDotString({ajv}),
-		new BlueprintGeneratedClass_non_quoted({ajv}),
-		new BlueprintGeneratedClass_quoted({ajv}),
 		new NamedList({ajv}, 'NSLOCTEXT'),
 		...parser.types,
 		new TemplatedString({ajv}),

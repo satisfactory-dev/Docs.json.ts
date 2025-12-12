@@ -46,11 +46,6 @@ import {
 } from '../0.3.7.7/StringDotString.ts';
 
 import {
-	BlueprintGeneratedClass_non_quoted,
-	BlueprintGeneratedClass_quoted,
-} from '../0.3.7.7/BlueprintGeneratedClass.ts';
-
-import {
 	PropertySchemaToRegex__matchers,
 	TypedString,
 } from './TypedString.ts';
@@ -66,10 +61,6 @@ import {
 import {
 	add_schemas as add_schemas_update5,
 } from '../0.5.2.1/SchemaParser.ts';
-
-import {
-	BlueprintGeneratedClassSingleQuoted,
-} from '../0.4.2.11/BlueprintGeneratedClass.ts';
 
 import {
 	Object as Object_matcher,
@@ -135,9 +126,6 @@ export function configure_parser(parser: SchemaParser) {
 		new ResourceSink_Unlock_C({ajv}),
 		new Schematic_C({ajv}),
 		new StringDotString({ajv}),
-		new BlueprintGeneratedClass_non_quoted({ajv}),
-		new BlueprintGeneratedClass_quoted({ajv}),
-		new BlueprintGeneratedClassSingleQuoted({ajv}),
 		new NamedList({ajv}, 'NSLOCTEXT'),
 		...parser.types,
 		new TemplatedString({ajv}),
@@ -148,6 +136,7 @@ export function configure_parser(parser: SchemaParser) {
 			},
 		}),
 		new PrefixedString({ajv}, 'quoted'),
+		new PrefixedString({ajv}, 'single_quoted'),
 		new PrefixedString({ajv}, 'non_quoted'),
 	];
 }

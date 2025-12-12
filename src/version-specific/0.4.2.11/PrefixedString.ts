@@ -27,70 +27,16 @@ import {
 } from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
 
 import type {
-	PrefixedString_base_schema as PrefixedString_base_schema__update3,
-	PrefixedString_base_type as PrefixedString_base_type__update3,
+	mode as base__mode,
+	PrefixedString_base_schema,
+	PrefixedString_base_type,
 } from '../0.3.7.7/PrefixedString.ts';
 
-import type {
-	mode,
-} from '../0.4.2.11/PrefixedString.ts';
-
-export type PrefixedString_base_type<
-	Mode extends string = string,
-> = (
-	& PrefixedString_base_type__update3<Mode>
-	& {
-		DocsDotJson_PrefixedString: (
-			& PrefixedString_base_type__update3<
-				Mode
-			>['DocsDotJson_PrefixedString']
-			& {
-				first_path?: Exclude<string, ''>,
-			}
-		),
-	}
-);
+export type mode = base__mode | 'single_quoted';
 
 export type PrefixedString_type<
 	Mode extends mode = mode,
 > = PrefixedString_base_type<Mode>;
-
-export type PrefixedString_base_schema<
-	Mode extends string,
-> = (
-	& PrefixedString_base_schema__update3<Mode>
-	& {
-		properties: (
-			& PrefixedString_base_schema__update3<Mode>['properties']
-			& {
-				DocsDotJson_PrefixedString: (
-					& PrefixedString_base_schema__update3<
-						Mode
-					>['properties']['DocsDotJson_PrefixedString']
-					& {
-						properties: (
-							& PrefixedString_base_schema__update3<
-								Mode
-							>[
-								'properties'
-							][
-								'DocsDotJson_PrefixedString'
-							][
-								'properties'
-							]
-							& {
-								first_path: {
-									type: 'string',
-									minLength: 1,
-								},
-							}
-						),
-					}
-				),
-			}
-		),
-	}
-);
 
 type PrefixedString_schema<
 	Mode extends mode,
@@ -99,25 +45,24 @@ type PrefixedString_schema<
 export class PrefixedString<
 	Mode extends mode,
 	Prefix extends Exclude<string, ''>,
-	FirstPath extends Exclude<string, ''> = 'FactoryGame',
 	T extends {
-		quoted: `${Prefix}'"/Game/${FirstPath}/${
+		quoted: `${Prefix}'"/Game/FactoryGame/${
 			string
 		}"'`,
-		single_quoted: `${Prefix}'/Game/${FirstPath}/${
+		single_quoted: `${Prefix}'/Game/FactoryGame/${
 			string
 		}'`,
-		non_quoted: `${Prefix} /Game/${FirstPath}/${
+		non_quoted: `${Prefix} /Game/FactoryGame/${
 			string
 		}`,
 	}[Mode] = {
-		quoted: `${Prefix}'"/Game/${FirstPath}/${
+		quoted: `${Prefix}'"/Game/FactoryGame/${
 			string
 		}"'`,
-		single_quoted: `${Prefix}'/Game/${FirstPath}/${
+		single_quoted: `${Prefix}'/Game/FactoryGame/${
 			string
 		}'`,
-		non_quoted: `${Prefix} /Game/${FirstPath}/${
+		non_quoted: `${Prefix} /Game/FactoryGame/${
 			string
 		}`,
 	}[Mode],
@@ -145,7 +90,6 @@ export class PrefixedString<
 							prefix,
 							mode,
 							value,
-							first_path,
 						}: PrefixedString_type<
 							Mode
 						>['DocsDotJson_PrefixedString'],
@@ -155,7 +99,6 @@ export class PrefixedString<
 								prefix,
 								value,
 								mode,
-								first_path,
 							).toString();
 
 						if (pattern.startsWith('/') && pattern.endsWith('/')) {
@@ -182,7 +125,6 @@ export class PrefixedString<
 				prefix,
 				mode,
 				value,
-				first_path,
 			},
 		}: PrefixedString_type<Mode>,
 	): StringLiteral {
@@ -190,7 +132,6 @@ export class PrefixedString<
 			prefix,
 			value,
 			mode,
-			first_path,
 		);
 
 		if (!regex.test(data)) {
@@ -205,24 +146,16 @@ export class PrefixedString<
 	}
 
 	generate_typescript_type({
-		schema: {
-			DocsDotJson_PrefixedString: {
-				prefix,
-				mode,
-				value,
-				first_path,
-			},
-		},
+		schema,
 	}: {
 		schema: PrefixedString_type<Mode>,
 	}): Promise<TemplateLiteralTypeNode> {
 		return Promise.resolve(
 			TemplatedString.generate_typescript_type_from_parts(
 				PrefixedString.TemplatedStringParts_by_value(
-					prefix,
-					mode,
-					value,
-					first_path,
+					schema.DocsDotJson_PrefixedString.prefix,
+					schema.DocsDotJson_PrefixedString.mode,
+					schema.DocsDotJson_PrefixedString.value,
 				),
 			),
 		);
@@ -272,10 +205,6 @@ export class PrefixedString<
 								},
 							],
 						},
-						first_path: {
-							type: 'string',
-							minLength: 1,
-						},
 					},
 				},
 			},
@@ -309,7 +238,6 @@ export class PrefixedString<
 		prefix_string: Exclude<string, ''>,
 		value: Exclude<string, ''>|null,
 		mode: mode,
-		first_path?: Exclude<string, ''>,
 	): string {
 		const start = RegExp.escape({
 			quoted: `${prefix_string}'"`,
@@ -327,7 +255,7 @@ export class PrefixedString<
 			return `${start}${escaped}`;
 		}
 
-		const prefix = RegExp.escape(`/Game/${first_path || 'FactoryGame'}/`);
+		const prefix = RegExp.escape('/Game/FactoryGame/');
 		const suffix = RegExp.escape({
 			quoted: `"'`,
 			single_quoted: `'`,
@@ -347,34 +275,22 @@ export class PrefixedString<
 				prefix,
 				mode,
 				value,
-				first_path,
 			},
 		}: PrefixedString_type,
 	): TemplatedStringParts {
-		return this.TemplatedStringParts_by_value(
-			prefix,
-			mode,
-			value,
-			first_path,
-		);
+		return this.TemplatedStringParts_by_value(prefix, mode, value);
 	}
 
 	static TemplatedStringParts_by_value(
 		prefix: Exclude<string, ''>,
 		mode: mode,
 		value: Exclude<string, ''>|null,
-		first_path?: Exclude<string, ''>,
 	): TemplatedStringParts {
 		return [
 			{
-				non_quoted: `${prefix} /Game/${first_path || 'FactoryGame'}/`,
-				quoted: `${prefix}'"/Game/${first_path || 'FactoryGame'}/`,
-				single_quoted: `${
-					prefix
-				}'/Game/${
-					first_path
-					|| 'FactoryGame'
-				}/`,
+				non_quoted: `${prefix} /Game/FactoryGame/`,
+				quoted: `${prefix}'"/Game/FactoryGame/`,
+				single_quoted: `${prefix}'/Game/FactoryGame/`,
 			}[mode],
 			null === value ? {type: 'string'} : value,
 			{
@@ -389,15 +305,9 @@ export class PrefixedString<
 		prefix: Exclude<string, ''>,
 		value: Exclude<string, ''>|null,
 		mode: mode,
-		first_path?: Exclude<string, ''>,
 	): RegExp {
 		return new RegExp(`^${
-			this.regex_from_prefix_value_and_mode(
-				prefix,
-				value,
-				mode,
-				first_path,
-			)
+			this.regex_from_prefix_value_and_mode(prefix, value, mode)
 		}$`);
 	}
 }
