@@ -64,6 +64,8 @@
 								"minItems": 1,
 								"uniqueItems": true,
 								"items": {
+									"type": "string",
+									"typed_string": {
 									"type": "object",
 									"additionalProperties": false,
 									"required": [
@@ -77,63 +79,19 @@
 											"oneOf": [
 												{
 													"type": "string",
-													"templated_string": [
-														"MaterialInstanceConstant'\"/Game/FactoryGame/Equipment/",
-														[
-															"RebarGun",
-															"Rifle",
-															"Holiday/SnowballWeapon",
-															"NobeliskDetonator"
-														],
-														"/Material/",
-														{
-															"type": "string",
-															"minLength": 1
-														},
-														".",
-														{
-															"type": "string",
-															"minLength": 1
-														},
-														"\"'"
-													]
+													"DocsDotJson_PrefixedString": {
+														"prefix": "MaterialInstanceConstant",
+														"mode": "quoted",
+														"value": null
+													}
 												},
 												{
 													"type": "string",
-													"templated_string": [
-														"MaterialInstanceConstant'\"/Game/FactoryGame/Events/",
-														{
-															"type": "string",
-															"minLength": 1
-														},
-														"/Materials/",
-														{
-															"type": "string",
-															"minLength": 1
-														},
-														".",
-														{
-															"type": "string",
-															"minLength": 1
-														},
-														"\"'"
-													]
-												},
-												{
-													"type": "string",
-													"templated_string": [
-														"Material'\"/Game/FactoryGame/MasterMaterials/",
-														{
-															"type": "string",
-															"minLength": 1
-														},
-														".",
-														{
-															"type": "string",
-															"minLength": 1
-														},
-														"\"'"
-													]
+													"DocsDotJson_PrefixedString": {
+														"prefix": "Material",
+														"mode": "quoted",
+														"value": null
+													}
 												}
 											]
 										},
@@ -168,6 +126,8 @@
 											]
 										},
 										"UVChannelData": {
+												"oneOf": [
+													{
 											"type": "string",
 											"typed_string": {
 												"type": "object",
@@ -175,18 +135,41 @@
 												"required": [
 													"bInitialized",
 													"LocalUVDensities[0]"
-												],
-												"properties": {
-													"bInitialized": {
-														"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-													},
-													"LocalUVDensities[0]": {
-														"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-													},
-													"LocalUVDensities[1]": {
-														"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+														],
+														"properties": {
+															"bInitialized": {
+																"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+															},
+															"LocalUVDensities[0]": {
+																"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+															}
+														}
 													}
-												}
+												},
+													{
+														"type": "string",
+														"typed_string": {
+															"type": "object",
+															"additionalProperties": false,
+															"required": [
+																"bInitialized",
+																"LocalUVDensities[0]",
+																"LocalUVDensities[1]"
+															],
+															"properties": {
+																"bInitialized": {
+																	"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+																},
+																"LocalUVDensities[0]": {
+																	"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+																},
+																"LocalUVDensities[1]": {
+																	"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+																}
+															}
+														}
+													}
+												]
 											}
 										}
 									}
@@ -351,19 +334,11 @@
 								"uniqueItems": true,
 								"items": {
 									"type": "string",
-									"templated_string": [
-										"BP_RadialDamageType_Explosive_C'\"/Game/FactoryGame/",
-										["Equipment", "Resource"],
-										"/",
-										{"type": "string"},
-										"/Desc_",
-										{"type": "string"},
-										".Default__Desc_",
-										{"type": "string"},
-										"_C:BP_RadialDamageType_Explosive_C_",
-										["0", "1"],
-										"\"'"
-									]
+									"DocsDotJson_PrefixedString": {
+										"prefix": "BP_RadialDamageType_Explosive_C",
+										"mode": "quoted",
+										"value": null
+									}
 								}
 							}
 						},
@@ -375,19 +350,11 @@
 								"uniqueItems": true,
 								"items": {
 									"type": "string",
-									"templated_string": [
-										"BP_RadialDamageType_Gas_C'\"/Game/FactoryGame/",
-										["Equipment", "Resource"],
-										"/",
-										{"type": "string"},
-										"/Desc_",
-										{"type": "string"},
-										".Default__Desc_",
-										{"type": "string"},
-										"_C:BP_RadialDamageType_Gas_C_",
-										["0", "1"],
-										"\"'"
-									]
+									"DocsDotJson_PrefixedString": {
+										"prefix": "BP_RadialDamageType_Gas_C",
+										"mode": "quoted",
+										"value": null
+									}
 								}
 							}
 						}
@@ -430,13 +397,20 @@
 								"minItems": 1,
 								"uniqueItems": true,
 								"items": {
+									"type": "string",
+									"typed_string": {
 									"type": "object",
 									"additionalProperties": false,
 									"required": ["ActorClass"],
 									"properties": {
 										"ActorClass": {
 											"type": "string",
-											"DocsDotJson_BlueprintGeneratedClass_quoted": null
+												"DocsDotJson_PrefixedString": {
+													"prefix": "BlueprintGeneratedClass",
+													"mode": "quoted",
+													"value": null
+												}
+										}
 										}
 									}
 								}
@@ -516,6 +490,8 @@
 								"minItems": 1,
 								"uniqueItems": true,
 								"items": {
+									"type": "string",
+									"typed_string": {
 									"type": "object",
 									"additionalProperties": false,
 									"required": ["mMaterial"],
@@ -540,6 +516,7 @@
 												{"type": "string"},
 												"_C"
 											]
+										}
 										}
 									}
 								}
@@ -588,6 +565,8 @@
 								"minItems": 1,
 								"uniqueItems": true,
 								"items": {
+									"type": "string",
+									"typed_string": {
 									"type": "object",
 									"additionalProperties": false,
 									"required": ["Min", "Max", "bIsValid"],
@@ -601,6 +580,7 @@
 										"IsValid": {
 											"type": "string",
 											"const": "0"
+										}
 										}
 									}
 								}
@@ -1592,13 +1572,15 @@
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableTrainPlatformCargo"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableTrainPlatformCargo--base"
+					"$ref": "#/$defs/FGBuildableTrainPlatformCargo--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
 				}
 			]
 		},
-		"FGBuildableTrainPlatformCargo--base": {
+		"FGBuildableTrainPlatformCargo--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
 			"required": [
 				"mHasAnyRelevantStacksToMove",
 				"mAllowDepartureNoValidItemsToTransfer"
@@ -1962,12 +1944,15 @@
 								"minItems": 1,
 								"uniqueItems": true,
 								"items": {
+									"type": "string",
+									"typed_string": {
 									"type": "object",
 									"additionalProperties": false,
 									"required": ["Value"],
 									"properties": {
 										"Value": {
 											"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+										}
 										}
 									}
 								}
@@ -1988,6 +1973,8 @@
 								"minItems": 1,
 								"uniqueItems": true,
 								"items": {
+									"type": "string",
+									"typed_string": {
 									"type": "object",
 									"additionalProperties": false,
 									"required": [
@@ -2001,6 +1988,7 @@
 										},
 										"CompatibleItemDescriptors": {
 											"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
+										}
 										}
 									}
 								}
@@ -2147,6 +2135,8 @@
 						"minItems": 1,
 						"uniqueItems": true,
 						"items": {
+							"type": "string",
+							"typed_string": {
 							"type": "object",
 							"additionalProperties": false,
 							"required": [
@@ -2159,7 +2149,11 @@
 							"properties": {
 								"ScannableClass": {
 									"type": "string",
-									"DocsDotJson_BlueprintGeneratedClass_quoted": null
+										"DocsDotJson_PrefixedString": {
+											"prefix": "BlueprintGeneratedClass",
+											"mode": "quoted",
+											"value": null
+										}
 								},
 								"DisplayText": {
 									"type": "string",
@@ -2214,6 +2208,7 @@
 								"NewDetectionRange": {
 									"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 								}
+								}
 							}
 						}
 					}
@@ -2259,6 +2254,33 @@
 					"$ref": "#/$defs/FGEquipment"
 				}
 			]
+		},
+		"FGRecipe": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGRecipe--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGRecipe--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGRecipe--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGRecipe--version-specific"
+				}
+			]
+		},
+		"FGRecipe--version-specific": {
+			"type": "object",
+			"required": [
+				"mProducedIn"
+			],
+			"properties": {
+				"mProducedIn": {
+					"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/mProducedIn"
+				}
+			}
 		},
 		"FGResourceDescriptor": {
 			"allOf": [
@@ -2324,14 +2346,11 @@
 							},
 							"ResourceObject": {
 								"type": "string",
-								"templated_string": [
-									"Texture2D'\"/Game/FactoryGame/",
-									{
-										"type": "string",
-										"minLength": 1
-									},
-									"\"'"
-								]
+								"DocsDotJson_PrefixedString": {
+									"prefix": "Texture2D",
+									"mode": "quoted",
+									"value": null
+								}
 							},
 							"UVRegion": {
 								"type": "string",

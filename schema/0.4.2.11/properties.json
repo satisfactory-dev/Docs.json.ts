@@ -25,6 +25,8 @@
 				"minItems": 1,
 				"uniqueItems": true,
 				"items": {
+					"type": "string",
+					"typed_string": {
 					"type": "object",
 					"additionalProperties": false,
 					"required": ["Translation"],
@@ -37,6 +39,7 @@
 						},
 						"Scale3D": {
 							"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
+						}
 						}
 					}
 				}
@@ -119,6 +122,57 @@
 				}
 			}
 		},
+		"mProducedIn": {
+			"oneOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mProducedIn"
+				},
+				{
+					"$ref": "#/$defs/mProducedIn--version-specific"
+				}
+			]
+		},
+		"mProducedIn--version-specific": {
+			"oneOf": [
+				{
+					"type": "string",
+					"typed_string": {
+						"type": "array",
+						"minItems": 1,
+						"maxItems": 1,
+						"items": false,
+						"prefixItems": [
+							{
+								"type": "string",
+								"enum": [
+									"/Game/FactoryGame/Buildable/Factory/Blender/Build_Blender.Build_Blender_C",
+									"/Game/FactoryGame/Buildable/Factory/HadronCollider/Build_HadronCollider.Build_HadronCollider_C"
+								]
+							}
+						]
+					}
+				},
+				{
+					"type": "string",
+					"typed_string": {
+						"type": "array",
+						"minItems": 2,
+						"maxItems": 2,
+						"items": false,
+						"prefixItems": [
+							{
+								"type": "string",
+								"const": "/Game/FactoryGame/Buildable/Factory/ConstructorMk1/Build_ConstructorMk1.Build_ConstructorMk1_C"
+							},
+							{
+								"type": "string",
+								"const": "/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkBenchComponent.BP_WorkBenchComponent_C"
+							}
+						]
+					}
+				}
+			]
+		},
 		"mSchematicDependencies--item": {
 			"type": "object",
 			"additionalProperties": false,
@@ -199,33 +253,28 @@
 						"minItems": 1,
 						"uniqueItems": true,
 						"items": {
+							"type": "string",
+							"typed_string": {
 							"type": "object",
 							"additionalProperties": false,
 							"required": ["ResourceDescriptor"],
 							"properties": {
 								"ResourceDescriptor": {
 									"type": "string",
-									"DocsDotJson_BlueprintGeneratedClass_quoted": null
+										"DocsDotJson_PrefixedString": {
+											"prefix": "BlueprintGeneratedClass",
+											"mode": "quoted",
+											"value": null
+										}
 								},
 								"ResourceNodeType": {
 									"type": "string",
 									"enum": ["Geyser", "FrackingCore"]
 								}
+								}
 							}
 						}
 					}
-				}
-			}
-		},
-		"DocsDotJson_FGRailroadTrackConnectionComponent_quoted--list": {
-			"type": "string",
-			"typed_string": {
-				"type": "array",
-				"minItems": 1,
-				"uniqueItems": true,
-				"items": {
-					"type": "string",
-					"DocsDotJson_FGRailroadTrackConnectionComponent_quoted": null
 				}
 			}
 		},
@@ -237,17 +286,6 @@
 					"type": "string",
 					"minLength": 1
 				}
-			]
-		},
-		"Texture2D--quoted": {
-			"type": "string",
-			"templated_string": [
-				"Texture2D'\"/Game/FactoryGame/",
-				{
-					"type": "string",
-					"minLength": 1
-				},
-				"\"'"
 			]
 		},
 		"Tier": {

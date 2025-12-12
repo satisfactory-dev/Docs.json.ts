@@ -1272,13 +1272,13 @@
 					"typed_string": {
 						"type": "array",
 						"minItems": 1,
-						"uniqueItems": true,
-						"items": {
+						"maxItems": 1,
+						"items": false,
+						"prefixItems": [{
 							"type": "string",
-							"enum": [
-								"/Script/FactoryGame.FGItemDescriptorBiomass"
-							]
-						}
+								"const": "/Script/FactoryGame.FGItemDescriptorBiomass"
+							}
+						]
 					}
 				}
 			}
@@ -1424,13 +1424,13 @@
 							"typed_string": {
 								"type": "array",
 								"minItems": 1,
-								"uniqueItems": true,
-								"items": {
+								"maxItems": 1,
+								"items": false,
+								"prefixItems": [{
 									"type": "string",
-									"enum": [
-										"/Game/FactoryGame/Resource/Parts/NuclearFuelRod/Desc_NuclearFuelRod.Desc_NuclearFuelRod_C"
-									]
-								}
+										"const": "/Game/FactoryGame/Resource/Parts/NuclearFuelRod/Desc_NuclearFuelRod.Desc_NuclearFuelRod_C"
+									}
+								]
 							}
 						}
 					}
@@ -1980,6 +1980,8 @@
 						"minItems": 1,
 						"uniqueItems": true,
 						"items": {
+							"type": "string",
+							"typed_string": {
 							"type": "object",
 							"additionalProperties": false,
 							"required": ["WwiseSafeName"],
@@ -1991,6 +1993,7 @@
 								"ActualName": {
 									"type": "string",
 									"pattern": "^[A-Z][A-Za-z ]+[a-z]$"
+								}
 								}
 							}
 						}
@@ -2742,6 +2745,8 @@
 						"minItems": 1,
 						"uniqueItems": true,
 						"items": {
+							"type": "string",
+							"typed_string": {
 							"type": "object",
 							"additionalProperties": false,
 							"required": [
@@ -2763,13 +2768,12 @@
 								},
 								"ParticleSystem1_9_F0CF81514E1E1C5007AC99B0C59C63CD": {
 									"type": "string",
-									"templated_string": [
-										"ParticleSystem'\"/Game/FactoryGame/VFX/Factory/Miner/P_Mining_",
-										{"type": "string"},
-										"_01.P_Mining_",
-										{"type": "string"},
-										"_01\"'"
-									]
+										"DocsDotJson_PrefixedString": {
+											"prefix": "ParticleSystem",
+											"mode": "quoted",
+											"value": null
+										}
+									}
 								}
 							}
 						}
@@ -2784,11 +2788,13 @@
 					"typed_string": {
 						"type": "array",
 						"minItems": 1,
-						"uniqueItems": true,
-						"items": {
+						"maxItems": 1,
+						"items": false,
+						"prefixItems": [{
 							"type": "string",
-							"enum": ["RF_SOLID"]
+								"const": "RF_SOLID"
 						}
+						]
 					}
 				}
 			}
@@ -2954,11 +2960,13 @@
 					"typed_string": {
 						"type": "array",
 						"minItems": 1,
-						"uniqueItems": true,
-						"items": {
+						"maxItems": 1,
+						"items": false,
+						"prefixItems": [{
 							"type": "string",
-							"enum": ["RF_LIQUID"]
+								"const": "RF_LIQUID"
 						}
+						]
 					}
 				}
 			}
@@ -3029,11 +3037,13 @@
 					"typed_string": {
 						"type": "array",
 						"minItems": 1,
-						"uniqueItems": true,
-						"items": {
+						"maxItems": 1,
+						"items": false,
+						"prefixItems": [{
 							"type": "string",
-							"enum": ["RF_LIQUID"]
+								"const": "RF_LIQUID"
 						}
+						]
 					}
 				}
 			}
@@ -3563,7 +3573,11 @@
 						"uniqueItems": true,
 						"items": {
 							"type": "string",
-							"DocsDotJson_FGTrainPlatformConnection_quoted": null
+							"DocsDotJson_PrefixedString": {
+								"prefix": "FGTrainPlatformConnection",
+								"mode": "quoted",
+								"value": null
+							}
 						}
 					}
 				},
@@ -3946,6 +3960,8 @@
 						"minItems": 1,
 						"uniqueItems": true,
 						"items": {
+							"type": "string",
+							"typed_string": {
 							"type": "object",
 							"additionalProperties": false,
 							"required": [
@@ -3967,6 +3983,7 @@
 										"prefix": "CameraAnim",
 										"mode": "quoted",
 										"value": null
+									}
 									}
 								}
 							}
@@ -4727,6 +4744,8 @@
 						"minItems": 1,
 						"uniqueItems": true,
 						"items": {
+							"type": "string",
+							"typed_string": {
 							"type": "object",
 							"additionalProperties": false,
 							"required": [
@@ -4738,7 +4757,11 @@
 							"properties": {
 								"ScannableClass": {
 									"type": "string",
-									"DocsDotJson_BlueprintGeneratedClass_quoted": null
+										"DocsDotJson_PrefixedString": {
+											"prefix": "BlueprintGeneratedClass",
+											"mode": "quoted",
+											"value": null
+										}
 								},
 								"DisplayText": {
 									"type": "string",
@@ -4767,6 +4790,7 @@
 										{"type": "string"},
 										"_C"
 									]
+								}
 								}
 							}
 						}
@@ -4974,39 +4998,7 @@
 			"required": ["mProducedIn"],
 			"properties": {
 				"mProducedIn": {
-					"oneOf": [
-						{
-							"type": "string",
-							"const": ""
-						},
-						{
-							"type": "string",
-							"typed_string": {
-								"type": "array",
-								"minItems": 1,
-								"uniqueItems": true,
-								"items": {
-									"type": "string",
-									"enum": [
-										"/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkBenchComponent.BP_WorkBenchComponent_C",
-										"/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkshopComponent.BP_WorkshopComponent_C",
-										"/Game/FactoryGame/Buildable/Factory/AssemblerMk1/Build_AssemblerMk1.Build_AssemblerMk1_C",
-										"/Game/FactoryGame/Buildable/Factory/AutomatedWorkBench/Build_AutomatedWorkBench.Build_AutomatedWorkBench_C",
-										"/Game/FactoryGame/Buildable/Factory/ConstructorMk1/Build_ConstructorMk1.Build_ConstructorMk1_C",
-										"/Game/FactoryGame/Buildable/Factory/Converter/Build_Converter.Build_Converter_C",
-										"/Game/FactoryGame/Buildable/Factory/FoundryMk1/Build_FoundryMk1.Build_FoundryMk1_C",
-										"/Game/FactoryGame/Buildable/Factory/ManufacturerMk1/Build_ManufacturerMk1.Build_ManufacturerMk1_C",
-										"/Game/FactoryGame/Buildable/Factory/OilRefinery/Build_OilRefinery.Build_OilRefinery_C",
-										"/Game/FactoryGame/Buildable/Factory/Packager/Build_Packager.Build_Packager_C",
-										"/Game/FactoryGame/Buildable/Factory/SmelterMk1/Build_SmelterMk1.Build_SmelterMk1_C",
-										"/Game/FactoryGame/Equipment/BuildGun/BP_BuildGun.BP_BuildGun_C",
-										"/Script/FactoryGame.FGBuildGun",
-										"/Script/FactoryGame.FGBuildableAutomatedWorkBench"
-									]
-								}
-							}
-						}
-					]
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mProducedIn"
 				}
 			}
 		},
@@ -5100,6 +5092,217 @@
 				}
 			}
 		},
+		"FGSchematic--version-specific": {
+			"type": "object",
+			"$ref": "#/$defs/FGSchematic",
+			"required": ["mTechTier", "mUnlocks", "mSchematicDependencies"],
+			"properties": {
+				"mTechTier": {
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/Tier"
+				},
+				"mUnlocks": {
+					"oneOf": [
+						{
+							"type": "array",
+							"maxItems": 0,
+							"items": {}
+						},
+						{
+							"type": "array",
+							"items": false,
+							"minItems": 1,
+							"maxItems": 1,
+							"prefixItems": [
+								{
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mRecipes"
+								}
+							]
+						},
+						{
+							"type": "array",
+							"items": false,
+							"minItems": 2,
+							"maxItems": 2,
+							"prefixItems": [
+								{
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mRecipes"
+								},
+								{
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mResourcesToAddToScanner"
+								}
+							]
+						},
+						{
+							"type": "array",
+							"items": false,
+							"minItems": 2,
+							"maxItems": 2,
+							"prefixItems": [
+								{
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mRecipes"
+								},
+								{
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mNumInventorySlotsToUnlock"
+								}
+							]
+						},
+						{
+							"type": "array",
+							"items": false,
+							"minItems": 3,
+							"maxItems": 3,
+							"prefixItems": [
+								{
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mRecipes"
+								},
+								{
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mNumInventorySlotsToUnlock"
+								},
+								{
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mNumArmEquipmentSlotsToUnlock"
+								}
+							]
+						},
+						{
+							"type": "array",
+							"items": false,
+							"minItems": 1,
+							"maxItems": 1,
+							"prefixItems": [
+								{
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mNumArmEquipmentSlotsToUnlock"
+								}
+							]
+						},
+						{
+							"type": "array",
+							"items": false,
+							"minItems": 1,
+							"maxItems": 1,
+							"prefixItems": [
+								{
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mNumInventorySlotsToUnlock"
+								}
+							]
+						},
+						{
+							"type": "array",
+							"items": false,
+							"minItems": 3,
+							"maxItems": 3,
+							"prefixItems": [
+								{
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mRecipes"
+								},
+								{
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mResourcesToAddToScanner"
+								},
+								{
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mSchematics"
+								}
+							]
+						},
+						{
+							"type": "array",
+							"items": false,
+							"minItems": 2,
+							"maxItems": 2,
+							"prefixItems": [
+								{
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mRecipes"
+								},
+								{
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mSchematics"
+								}
+							]
+						},
+						{
+							"type": "array",
+							"items": false,
+							"minItems": 2,
+							"maxItems": 2,
+							"prefixItems": [
+								{
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mSchematics"
+								},
+								{
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mRecipes"
+								}
+							]
+						},
+						{
+							"type": "array",
+							"items": false,
+							"minItems": 1,
+							"maxItems": 1,
+							"prefixItems": [
+								{
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mSchematics"
+								}
+							]
+						},
+						{
+							"type": "array",
+							"items": false,
+							"minItems": 1,
+							"maxItems": 1,
+							"prefixItems": [
+								{
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mResourcesToAddToScanner"
+								}
+							]
+						},
+						{
+							"type": "array",
+							"items": false,
+							"minItems": 2,
+							"maxItems": 2,
+							"prefixItems": [
+								{
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mRecipes"
+								},
+								{
+									"type": "object",
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--base",
+									"unevaluatedProperties": false
+								}
+							]
+						},
+						{
+							"type": "array",
+							"items": false,
+							"minItems": 1,
+							"maxItems": 1,
+							"prefixItems": [
+								{
+									"type": "object",
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--base",
+									"unevaluatedProperties": false
+								}
+							]
+						},
+						{
+							"type": "array",
+							"items": false,
+							"minItems": 1,
+							"maxItems": 1,
+							"prefixItems": [
+								{
+									"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mItemsToGive"
+								}
+							]
+						}
+					]
+				},
+				"mSchematicDependencies": {
+					"type": "array",
+					"minItems": 0,
+					"items": {
+						"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mSchematicDependencies--item"
+					}
+				}
+			}
+		},
 		"FGSnowballWeapon": {
 			"type": "object",
 			"$ref": "#/$defs/FGWeaponProjectile--thrown",
@@ -5144,6 +5347,8 @@
 						"minItems": 1,
 						"uniqueItems": true,
 						"items": {
+							"type": "string",
+							"typed_string": {
 							"type": "object",
 							"additionalProperties": false,
 							"required": ["SlotName", "Material"],
@@ -5167,6 +5372,7 @@
 										"MaterialInstanceConstant'\"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_Hands.MI_Haz_Body_Hands\"'",
 										"MaterialInstanceConstant'\"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_Backpack.MI_Haz_Body_Backpack\"'"
 									]
+								}
 								}
 							}
 						}
@@ -5377,7 +5583,11 @@
 						"properties": {
 							"ProjectileClass": {
 								"type": "string",
-								"DocsDotJson_BlueprintGeneratedClass_quoted": null
+								"DocsDotJson_PrefixedString": {
+									"prefix": "BlueprintGeneratedClass",
+									"mode": "quoted",
+									"value": null
+								}
 							},
 							"ProjectileLifeSpan": {
 								"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
@@ -5399,11 +5609,19 @@
 							},
 							"DamageType": {
 								"type": "string",
-								"DocsDotJson_BlueprintGeneratedClass_quoted": null
+								"DocsDotJson_PrefixedString": {
+									"prefix": "BlueprintGeneratedClass",
+									"mode": "quoted",
+									"value": null
+								}
 							},
 							"DamageTypeExplode": {
 								"type": "string",
-								"DocsDotJson_BlueprintGeneratedClass_quoted": null
+								"DocsDotJson_PrefixedString": {
+									"prefix": "BlueprintGeneratedClass",
+									"mode": "quoted",
+									"value": null
+								}
 							}
 						}
 					}
@@ -5541,7 +5759,11 @@
 						"properties": {
 							"ProjectileClass": {
 								"type": "string",
-								"DocsDotJson_BlueprintGeneratedClass_quoted": null
+								"DocsDotJson_PrefixedString": {
+									"prefix": "BlueprintGeneratedClass",
+									"mode": "quoted",
+									"value": null
+								}
 							},
 							"ProjectileLifeSpan": {
 								"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
@@ -5560,7 +5782,11 @@
 							},
 							"DamageType": {
 								"type": "string",
-								"DocsDotJson_BlueprintGeneratedClass_quoted": null
+								"DocsDotJson_PrefixedString": {
+									"prefix": "BlueprintGeneratedClass",
+									"mode": "quoted",
+									"value": null
+								}
 							},
 							"DamageTypeExplode": {
 								"type": "string",

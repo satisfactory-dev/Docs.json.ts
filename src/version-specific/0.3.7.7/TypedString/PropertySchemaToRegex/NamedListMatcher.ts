@@ -6,30 +6,31 @@ import {
 	PropertySchemaToRegex,
 } from '../Object.ts';
 
-export function ConstString(
+import {
+	NamedList,
+	type NamedList_type,
+} from '../../NamedList.ts';
+
+export function NamedListMatcher(
 	ajv: Ajv,
 ) {
-	return new PropertySchemaToRegex<{type: 'string', const: string}>(
+	return new PropertySchemaToRegex<NamedList_type>(
 		ajv.compile({
 			type: 'object',
 			additionalProperties: false,
-			required: ['type', 'const'],
+			required: ['type', 'DocsDotJson_named_list'],
 			properties: {
 				type: {
 					type: 'string',
 					const: 'string',
 				},
-				const: {
+				DocsDotJson_named_list: {
 					type: 'string',
 				},
 			},
 		}),
 		(value) => {
-			return `(?:${
-				RegExp.escape(value.const)
-			}|${
-				RegExp.escape(`"${value.const}"`)
-			})`;
+			return NamedList.regex(value.DocsDotJson_named_list);
 		},
 	);
 }

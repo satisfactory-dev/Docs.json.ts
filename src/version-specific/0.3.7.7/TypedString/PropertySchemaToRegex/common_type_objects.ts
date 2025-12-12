@@ -53,7 +53,7 @@ export function common_type_objects(
 						'XYZ--decimal_string',
 						'XYZ--integer_string',
 						'XYZW--decimal_string',
-					].join('|')})`,
+					].join('|')})$`,
 				},
 			},
 		}),

@@ -522,6 +522,11 @@
 			"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGPortableMinerDispenser",
 			"unevaluatedProperties": false
 		},
+		"FGRecipe": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGRecipe",
+			"unevaluatedProperties": false
+		},
 		"FGResourceDescriptor": {
 			"type": "object",
 			"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGResourceDescriptor",

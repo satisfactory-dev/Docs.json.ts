@@ -32,7 +32,10 @@ export function Object(
 			},
 		}),
 		(value) => {
-			return Object_type_to_regex(value.typed_string, matchers);
+			return Object_type_to_regex(
+				value.typed_string,
+				matchers,
+			);
 		},
 	);
 }

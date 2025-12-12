@@ -100,6 +100,7 @@ import type {
 	FGParachute as docs_json_ts_0_6_1_5_classes_base_FGParachute,
 	FGPipeHyperStart as docs_json_ts_0_6_1_5_classes_base_FGPipeHyperStart,
 	FGPortableMinerDispenser as docs_json_ts_0_6_1_5_classes_base_FGPortableMinerDispenser,
+	FGRecipe as docs_json_ts_0_6_1_5_classes_base_FGRecipe,
 	FGResourceDescriptor as docs_json_ts_0_6_1_5_classes_base_FGResourceDescriptor,
 	FGSchematic_base as docs_json_ts_0_6_1_5_classes_base_FGSchematic_base,
 	FGSchematic_with_described_unlocks as docs_json_ts_0_6_1_5_classes_base_FGSchematic_with_described_unlocks,
@@ -323,6 +324,8 @@ type FGPoleDescriptor = docs_json_ts_0_6_1_5_classes_base_FGItemDescriptor_base;
 
 type FGPortableMinerDispenser = docs_json_ts_0_6_1_5_classes_base_FGPortableMinerDispenser;
 
+type FGRecipe = docs_json_ts_0_6_1_5_classes_base_FGRecipe;
+
 type FGResourceDescriptor = docs_json_ts_0_6_1_5_classes_base_FGResourceDescriptor;
 
 type FGSchematic_base = docs_json_ts_0_6_1_5_classes_base_FGSchematic_base;
@@ -454,6 +457,7 @@ export type {
 	FGPipeHyperStart,
 	FGPoleDescriptor,
 	FGPortableMinerDispenser,
+	FGRecipe,
 	FGResourceDescriptor,
 	FGSchematic_base,
 	FGSchematic_with_described_unlocks,

@@ -1,6 +1,7 @@
-import type {
-	SchemaObjectWith$id,
-	SchemaParser,
+import {
+	$ref,
+	type SchemaObjectWith$id,
+	type SchemaParser,
 } from '@signpostmarv/json-schema-typescript-codegen';
 
 import {
@@ -50,6 +51,7 @@ import {
 } from '../0.3.7.7/BlueprintGeneratedClass.ts';
 
 import {
+	PropertySchemaToRegex__matchers,
 	TypedString,
 } from './TypedString.ts';
 
@@ -62,28 +64,12 @@ import {
 } from '../0.3.7.7/NamedList.ts';
 
 import {
-	FGTrainPlatformConnection,
-} from '../0.3.7.7/FGTrainPlatformConnection.ts';
-
-import {
 	add_schemas as add_schemas_update5,
 } from '../0.5.2.1/SchemaParser.ts';
 
 import {
 	BlueprintGeneratedClassSingleQuoted,
 } from '../0.4.2.11/BlueprintGeneratedClass.ts';
-
-import {
-	FGRailroadTrackConnectionComponent,
-} from '../0.4.2.11/FGRailroadTrackConnectionComponent.ts';
-
-import {
-	CurveFloat,
-} from '../0.5.2.1/CurveFloat.ts';
-
-import {
-	AkAudioEvent,
-} from './AkAudioEvent.ts';
 
 import {
 	Object as Object_matcher,
@@ -94,52 +80,8 @@ import type {
 } from '../0.3.7.7/TypedString/Object.ts';
 
 import {
-	ConstString,
-} from '../0.3.7.7/TypedString/PropertySchemaToRegex/ConstString.ts';
-
-import {
-	EmptyObject,
-} from '../0.3.7.7/TypedString/PropertySchemaToRegex/EmptyObject.ts';
-
-import {
-	integer_string,
-} from '../0.3.7.7/TypedString/PropertySchemaToRegex/integer_string.ts';
-
-import {
-	integer_string_signed,
-} from '../0.3.7.7/TypedString/PropertySchemaToRegex/integer_string_signed.ts';
-
-import {
-	decimal_string,
-} from '../0.3.7.7/TypedString/PropertySchemaToRegex/decimal_string.ts';
-
-import {
-	decimal_string_signed,
-} from '../0.3.7.7/TypedString/PropertySchemaToRegex/decimal_string_signed.ts';
-
-import {
-	bool_string,
-} from '../0.3.7.7/TypedString/PropertySchemaToRegex/bool_string.ts';
-
-import {
-	common_type_objects,
-} from '../0.3.7.7/TypedString/PropertySchemaToRegex/common_type_objects.ts';
-
-import {
-	TintColor,
-} from '../0.4.2.11/TypedString/PropertySchemaToRegex/TintColor.ts';
-
-import {
-	properties_objects,
-} from '../0.5.2.1/TypedString/PropertySchemaToRegex/properties_objects.ts';
-
-import {
-	PrefixedString as PrefixedStringMatcher,
-} from '../0.3.7.7/TypedString/PropertySchemaToRegex/PrefixedString.ts';
-
-import {
 	PrefixedString,
-} from '../0.3.7.7/PrefixedString.ts';
+} from './PrefixedString.ts';
 
 const already_configured: WeakSet<SchemaParser> = new WeakSet();
 
@@ -165,29 +107,24 @@ export function configure_parser(parser: SchemaParser) {
 
 	const matchers: PropertySchemaToRegex<unknown>[] = [];
 
-	const Object_matcher_instance = Object_matcher(ajv, matchers);
+	const $ref_instance = parser.types.find((maybe) => maybe instanceof $ref);
+
+	if (undefined === $ref_instance) {
+		throw new TypeError('Could not find $ref instance!');
+	}
+
+	const Object_matcher_instance = Object_matcher(
+		ajv,
+		matchers,
+	);
 
 	matchers.push(...[
-		ConstString(ajv) as PropertySchemaToRegex<unknown>,
-		EmptyObject(ajv) as PropertySchemaToRegex<unknown>,
-		integer_string(ajv) as PropertySchemaToRegex<unknown>,
-		integer_string_signed(ajv) as PropertySchemaToRegex<unknown>,
-		decimal_string(ajv) as PropertySchemaToRegex<unknown>,
-		decimal_string_signed(ajv) as PropertySchemaToRegex<unknown>,
-		bool_string(ajv) as PropertySchemaToRegex<unknown>,
-		common_type_objects(
+		...PropertySchemaToRegex__matchers(
 			ajv,
+			matchers,
 			Object_matcher_instance,
-		) as PropertySchemaToRegex<unknown>,
-		properties_objects(
-			ajv,
-			Object_matcher_instance,
-		) as PropertySchemaToRegex<unknown>,
-		TintColor(
-			ajv,
-			Object_matcher_instance,
-		) as PropertySchemaToRegex<unknown>,
-		PrefixedStringMatcher(ajv) as PropertySchemaToRegex<unknown>,
+			$ref_instance,
+		),
 		Object_matcher_instance as PropertySchemaToRegex<unknown>,
 	]);
 
@@ -201,21 +138,15 @@ export function configure_parser(parser: SchemaParser) {
 		new BlueprintGeneratedClass_non_quoted({ajv}),
 		new BlueprintGeneratedClass_quoted({ajv}),
 		new BlueprintGeneratedClassSingleQuoted({ajv}),
-		new FGTrainPlatformConnection({ajv}),
-		new FGRailroadTrackConnectionComponent({ajv}),
-		new CurveFloat({ajv}),
 		new NamedList({ajv}, 'NSLOCTEXT'),
 		...parser.types,
 		new TemplatedString({ajv}),
 		new TypedString({ajv}, {
-			String_enum_list: {
-				quoted: true,
-			},
+			$ref_instance,
 			Object: {
 				matchers,
 			},
 		}),
-		new AkAudioEvent({ajv}),
 		new PrefixedString({ajv}, 'quoted'),
 		new PrefixedString({ajv}, 'non_quoted'),
 	];

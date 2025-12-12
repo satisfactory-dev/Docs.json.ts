@@ -30,6 +30,42 @@
 				}
 			}
 		},
+		"mProducedIn": {
+			"oneOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mProducedIn--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/mProducedIn--version-specific"
+				},
+				{
+					"$ref": "#/$defs/mProducedIn--version-specific"
+				}
+			]
+		},
+		"mProducedIn--version-specific": {
+			"type": "string",
+			"typed_string": {
+				"type": "array",
+				"minItems": 2,
+				"maxItems": 2,
+				"items": false,
+				"prefixItems": [
+					{
+						"type": "string",
+						"enum": [
+							"/Game/FactoryGame/Buildable/Factory/ConstructorMk1/Build_ConstructorMk1.Build_ConstructorMk1_C",
+							"/Game/FactoryGame/Buildable/Factory/AssemblerMk1/Build_AssemblerMk1.Build_AssemblerMk1_C",
+							"/Game/FactoryGame/Buildable/Factory/ManufacturerMk1/Build_ManufacturerMk1.Build_ManufacturerMk1_C"
+						]
+					},
+					{
+						"type": "string",
+						"const": "/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkshopComponent.BP_WorkshopComponent_C"
+					}
+				]
+			}
+		},
 		"mUnlocks--item": {
 			"oneOf": [
 				{
@@ -79,6 +115,8 @@
 						"minItems": 1,
 						"uniqueItems": true,
 						"items": {
+							"type": "string",
+							"typed_string": {
 							"type": "object",
 							"required": [
 								"ItemDescriptor",
@@ -87,7 +125,11 @@
 							"properties": {
 								"ItemDescriptor": {
 									"type": "string",
-									"DocsDotJson_BlueprintGeneratedClass_quoted": null
+										"DocsDotJson_PrefixedString": {
+											"prefix": "BlueprintGeneratedClass",
+											"mode": "quoted",
+											"value": null
+										}
 								},
 								"ActorsAllowedToScan": {
 									"type": "string",
@@ -102,6 +144,7 @@
 												{"type": "string"},
 												"\"'"
 											]
+											}
 										}
 									}
 								}
@@ -157,7 +200,12 @@
 				"uniqueItems": true,
 				"items": {
 					"type": "string",
-					"DocsDotJson_AkAudioEvent_quoted": null
+					"DocsDotJson_PrefixedString": {
+						"prefix": "AkAudioEvent",
+						"first_path": "WwiseAudio",
+						"mode": "quoted",
+						"value": null
+					}
 				}
 			}
 		},
@@ -168,13 +216,20 @@
 				"minItems": 1,
 				"uniqueItems": true,
 				"items": {
-					"type": "object",
-					"additionalProperties": false,
-					"required": ["ItemClass"],
-					"properties": {
-						"ItemClass": {
-							"type": "string",
-							"DocsDotJson_BlueprintGeneratedClass_quoted": null
+					"type": "string",
+					"typed_string": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": ["ItemClass"],
+						"properties": {
+							"ItemClass": {
+								"type": "string",
+								"DocsDotJson_PrefixedString": {
+									"prefix": "BlueprintGeneratedClass",
+									"mode": "quoted",
+									"value": null
+								}
+							}
 						}
 					}
 				}

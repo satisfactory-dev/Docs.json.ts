@@ -24,7 +24,7 @@ import {
 	factory,
 } from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
 
-type NamedList_type<
+export type NamedList_type<
 	Name extends string = string,
 > = {
 	type: 'string',

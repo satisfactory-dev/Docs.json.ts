@@ -121,16 +121,15 @@ import type {
 } from './../../common/types.ts';
 
 import type {
-	DocsDotJson_FGRailroadTrackConnectionComponent_quoted_list as docs_json_ts_0_4_2_11_properties_DocsDotJson_FGRailroadTrackConnectionComponent_quoted_list,
 	mAllowedResourceForms as docs_json_ts_0_4_2_11_properties_mAllowedResourceForms,
 	mFogPlaneTransforms_empty as docs_json_ts_0_4_2_11_properties_mFogPlaneTransforms_empty,
 	mFogPlaneTransforms_list as docs_json_ts_0_4_2_11_properties_mFogPlaneTransforms_list,
 	mForm as docs_json_ts_0_4_2_11_properties_mForm,
 	mFuel as docs_json_ts_0_4_2_11_properties_mFuel,
+	mProducedIn as docs_json_ts_0_4_2_11_properties_mProducedIn,
 	mSchematicDependencies_item as docs_json_ts_0_4_2_11_properties_mSchematicDependencies_item,
 	mUnlocks_item as docs_json_ts_0_4_2_11_properties_mUnlocks_item,
 	Texture2D as docs_json_ts_0_4_2_11_properties_Texture2D,
-	Texture2D_quoted as docs_json_ts_0_4_2_11_properties_Texture2D_quoted,
 	Tier as docs_json_ts_0_4_2_11_properties_Tier,
 	TintColor as docs_json_ts_0_4_2_11_properties_TintColor,
 } from './../types/properties.ts';
@@ -326,8 +325,10 @@ type FGBuildableGeneratorFuel_base_base_base = docs_json_ts_0_3_7_7_classes_base
 	mIsFullBlast: docs_json_ts_common_types_bool_string,
 	m_SFXSockets?: [
         'AudioSocketTurbine' | 'CoalGeneratorPotential',
+        'AudioSocketTurbine' | 'CoalGeneratorPotential',
         ...('AudioSocketTurbine' | 'CoalGeneratorPotential')[],
 	] | [
+        'AudioSocket_Exhaust' | 'AudioSocket_Root',
         'AudioSocket_Exhaust' | 'AudioSocket_Root',
         ...('AudioSocket_Exhaust' | 'AudioSocket_Root')[],
 	],
@@ -399,8 +400,8 @@ type FGBuildableManufacturer_base_blender_base_base = docs_json_ts_0_3_7_7_class
 	mIsRadioActive: docs_json_ts_common_types_bool_string,
 	mCurrentColorVFX: docs_json_ts_common_types_RGBA,
 	m_NotifyNameREferences: [
-        'Arm_04_ClawBase' | 'Arm_02_SFXSocket',
-        ...('Arm_04_ClawBase' | 'Arm_02_SFXSocket')[],
+		'Arm_04_ClawBase',
+		'Arm_02_SFXSocket',
 	],
 };
 
@@ -503,7 +504,10 @@ type FGBuildableRailroadTrack = FGBuildableRailroadTrack_base & FGBuildable;
 type FGBuildableRailroadTrack_base = FGBuildableRailroadTrack_base_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableRailroadTrack;
 
 type FGBuildableRailroadTrack_base_base = docs_json_ts_0_3_7_7_classes_base_FGBuildableRailroadTrack_base & {
-	mConnections: docs_json_ts_0_4_2_11_properties_DocsDotJson_FGRailroadTrackConnectionComponent_quoted_list,
+	mConnections: [
+        `FGRailroadTrackConnectionComponent'"/Game/FactoryGame/${string}${'"\''}`,
+        ...`FGRailroadTrackConnectionComponent'"/Game/FactoryGame/${string}${'"\''}`[],
+	],
 };
 
 type FGBuildableResourceExtractor_base = docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_base & FGBuildable_powered_has_mAllowedResourceForms;
@@ -559,6 +563,11 @@ type FGBuildableTradingPost_base = FGBuildable_powered_base_base & {
 	mMamFreeText: 'Use MAM',
 	mMamOccupiedText: 'MAM is occupied',
 	mMeshes: [
+        '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6',
+        '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6',
+        '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6',
+        '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6',
+        '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6',
         '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6',
         ...('/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6')[],
 	],
@@ -691,14 +700,16 @@ type FGPortableMinerDispenser_version_specific = {
 
 type FGRecipe = FGRecipe_base & docs_json_ts_0_3_7_7_classes_base_FGRecipe_base_version_specific;
 
-type FGRecipe_base = docs_json_ts_0_3_7_7_classes_base_FGRecipe_base & {
-	mProducedIn: '' | [
-        '/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkBenchComponent.BP_WorkBenchComponent_C' | '/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkshopComponent.BP_WorkshopComponent_C' | '/Game/FactoryGame/Buildable/Factory/AssemblerMk1/Build_AssemblerMk1.Build_AssemblerMk1_C' | '/Game/FactoryGame/Buildable/Factory/AutomatedWorkBench/Build_AutomatedWorkBench.Build_AutomatedWorkBench_C' | '/Game/FactoryGame/Buildable/Factory/ConstructorMk1/Build_ConstructorMk1.Build_ConstructorMk1_C' | '/Game/FactoryGame/Buildable/Factory/Converter/Build_Converter.Build_Converter_C' | '/Game/FactoryGame/Buildable/Factory/FoundryMk1/Build_FoundryMk1.Build_FoundryMk1_C' | '/Game/FactoryGame/Buildable/Factory/ManufacturerMk1/Build_ManufacturerMk1.Build_ManufacturerMk1_C' | '/Game/FactoryGame/Buildable/Factory/OilRefinery/Build_OilRefinery.Build_OilRefinery_C' | '/Game/FactoryGame/Buildable/Factory/Packager/Build_Packager.Build_Packager_C' | '/Game/FactoryGame/Buildable/Factory/SmelterMk1/Build_SmelterMk1.Build_SmelterMk1_C' | '/Game/FactoryGame/Equipment/BuildGun/BP_BuildGun.BP_BuildGun_C' | '/Script/FactoryGame.FGBuildGun' | '/Script/FactoryGame.FGBuildableAutomatedWorkBench' | '/Game/FactoryGame/Buildable/Factory/Blender/Build_Blender.Build_Blender_C' | '/Game/FactoryGame/Buildable/Factory/HadronCollider/Build_HadronCollider.Build_HadronCollider_C',
-        ...('/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkBenchComponent.BP_WorkBenchComponent_C' | '/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkshopComponent.BP_WorkshopComponent_C' | '/Game/FactoryGame/Buildable/Factory/AssemblerMk1/Build_AssemblerMk1.Build_AssemblerMk1_C' | '/Game/FactoryGame/Buildable/Factory/AutomatedWorkBench/Build_AutomatedWorkBench.Build_AutomatedWorkBench_C' | '/Game/FactoryGame/Buildable/Factory/ConstructorMk1/Build_ConstructorMk1.Build_ConstructorMk1_C' | '/Game/FactoryGame/Buildable/Factory/Converter/Build_Converter.Build_Converter_C' | '/Game/FactoryGame/Buildable/Factory/FoundryMk1/Build_FoundryMk1.Build_FoundryMk1_C' | '/Game/FactoryGame/Buildable/Factory/ManufacturerMk1/Build_ManufacturerMk1.Build_ManufacturerMk1_C' | '/Game/FactoryGame/Buildable/Factory/OilRefinery/Build_OilRefinery.Build_OilRefinery_C' | '/Game/FactoryGame/Buildable/Factory/Packager/Build_Packager.Build_Packager_C' | '/Game/FactoryGame/Buildable/Factory/SmelterMk1/Build_SmelterMk1.Build_SmelterMk1_C' | '/Game/FactoryGame/Equipment/BuildGun/BP_BuildGun.BP_BuildGun_C' | '/Script/FactoryGame.FGBuildGun' | '/Script/FactoryGame.FGBuildableAutomatedWorkBench' | '/Game/FactoryGame/Buildable/Factory/Blender/Build_Blender.Build_Blender_C' | '/Game/FactoryGame/Buildable/Factory/HadronCollider/Build_HadronCollider.Build_HadronCollider_C')[],
-	],
+type FGRecipe_base = docs_json_ts_0_3_7_7_classes_base_FGRecipe_base & FGRecipe_base_base & FGRecipe_version_specific;
+
+type FGRecipe_base_base = {
 	mManufacturingMenuPriority: docs_json_ts_common_types_decimal_string,
 	mVariablePowerConsumptionConstant: docs_json_ts_common_types_decimal_string,
 	mVariablePowerConsumptionFactor: docs_json_ts_common_types_decimal_string,
+};
+
+type FGRecipe_version_specific = {
+	mProducedIn: docs_json_ts_0_4_2_11_properties_mProducedIn,
 };
 
 type FGResourceDescriptor = docs_json_ts_0_3_7_7_classes_base_FGResourceDescriptor_base & FGDescriptor_sinkable;
@@ -742,7 +753,7 @@ type FGSchematic_base_base_props_with_mSchematicIcon = FGSchematic_base_base_bas
 		ImageSize: docs_json_ts_common_types_XY_decimal_string,
 		Margin: docs_json_ts_common_types_empty_object,
 		TintColor: docs_json_ts_0_4_2_11_properties_TintColor,
-		ResourceObject?: docs_json_ts_0_4_2_11_properties_Texture2D_quoted,
+		ResourceObject?: `Texture2D'"/Game/FactoryGame/${string}${'"\''}`,
 		UVRegion: {
 			Min: docs_json_ts_common_types_XY_decimal_string,
 			Max: docs_json_ts_common_types_XY_decimal_string,
@@ -959,6 +970,8 @@ export type {
 	FGPortableMinerDispenser_version_specific,
 	FGRecipe,
 	FGRecipe_base,
+	FGRecipe_base_base,
+	FGRecipe_version_specific,
 	FGResourceDescriptor,
 	FGSchematic,
 	FGSchematic_base,

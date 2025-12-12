@@ -4,6 +4,7 @@ import type {
 } from 'ajv/dist/2020.js';
 
 import type {
+	$ref,
 	SchemaDefinitionDefinition,
 	SchemalessTypeOptions,
 	SchemaParser,
@@ -17,6 +18,10 @@ import type {
 import {
 	KeywordType,
 } from '@signpostmarv/json-schema-typescript-codegen/ajv';
+
+import {
+	object_has_property,
+} from '@satisfactory-dev/predicates.ts';
 
 import type {
 	Empty_DataTo,
@@ -68,91 +73,98 @@ import {
 } from './TypedString/Object.ts';
 
 import type {
-	Object_list_DataTo,
-	Object_list_properties,
-	Object_list_SchemaTo,
-	Object_list_type,
-	Object_list_TypeGenerator,
-} from './TypedString/Object_list.ts';
+	FlexibleArray_DataTo,
+	FlexibleArray_schema_properties,
+	FlexibleArray_SchemaTo,
+	FlexibleArray_type,
+} from './TypedString/FlexibleArray.ts';
 import {
-	Object_list_ajv_macro,
-	Object_list_compile_validator,
-	Object_list_generate_schema_definition,
-	Object_list_generate_type_definition,
-	Object_list_generate_typescript_data,
-	Object_list_generate_typescript_type,
-} from './TypedString/Object_list.ts';
+	FlexibleArray_ajv_macro__items,
+	FlexibleArray_ajv_macro__prefixItems,
+	FlexibleArray_compile_validator,
+	FlexibleArray_generate_data,
+	FlexibleArray_generate_schema_definition__items,
+	FlexibleArray_generate_schema_definition__prefixItems,
+	FlexibleArray_generate_type,
+	FlexibleArray_generate_type_definition__items,
+	FlexibleArray_generate_type_definition__prefixItems,
+} from './TypedString/FlexibleArray.ts';
 
-import type {
-	String_enum_list_DataTo,
-	String_enum_list_properties,
-	String_enum_list_SchemaTo,
-	String_enum_list_type,
-	String_enum_list_TypeGenerator,
-} from './TypedString/String_enum_list.ts';
 import {
-	String_enum_list_ajv_macro,
-	String_enum_list_compile_validator,
-	String_enum_list_generate_schema_definition,
-	String_enum_list_generate_type_definition,
-	String_enum_list_generate_typescript_data,
-	String_enum_list_generate_typescript_type,
-} from './TypedString/String_enum_list.ts';
+	ConstString,
+} from './TypedString/PropertySchemaToRegex/ConstString.ts';
 
-import type {
-	BlueprintGeneratedClass_quoted_list_DataTo,
-	BlueprintGeneratedClass_quoted_list_properties,
-	BlueprintGeneratedClass_quoted_list_SchemaTo,
-	BlueprintGeneratedClass_quoted_list_type,
-	BlueprintGeneratedClass_quoted_list_TypeGenerator,
-} from './TypedString/BlueprintGeneratedClass_quoted_list.ts';
 import {
-	BlueprintGeneratedClass_quoted_list_ajv_macro,
-	BlueprintGeneratedClass_quoted_list_compile_validator,
-	BlueprintGeneratedClass_quoted_list_generate_schema_definition,
-	BlueprintGeneratedClass_quoted_list_generate_type_definition,
-	BlueprintGeneratedClass_quoted_list_generate_typescript_data,
-	BlueprintGeneratedClass_quoted_list_generate_typescript_type,
-} from './TypedString/BlueprintGeneratedClass_quoted_list.ts';
+	EmptyObject,
+} from './TypedString/PropertySchemaToRegex/EmptyObject.ts';
 
-import type {
-	FGTrainPlatformConnection_quoted_list_DataTo,
-	FGTrainPlatformConnection_quoted_list_properties,
-	FGTrainPlatformConnection_quoted_list_SchemaTo,
-	FGTrainPlatformConnection_quoted_list_type,
-	FGTrainPlatformConnection_quoted_list_TypeGenerator,
-} from './TypedString/FGTrainPlatformConnection_quoted_list.ts';
 import {
-	FGTrainPlatformConnection_quoted_list_ajv_macro,
-	FGTrainPlatformConnection_quoted_list_compile_validator,
-	FGTrainPlatformConnection_quoted_list_generate_schema_definition,
-	FGTrainPlatformConnection_quoted_list_generate_type_definition,
-	FGTrainPlatformConnection_quoted_list_generate_typescript_data,
-	FGTrainPlatformConnection_quoted_list_generate_typescript_type,
-} from './TypedString/FGTrainPlatformConnection_quoted_list.ts';
+	integer_string,
+} from './TypedString/PropertySchemaToRegex/integer_string.ts';
+
+import {
+	integer_string_signed,
+} from './TypedString/PropertySchemaToRegex/integer_string_signed.ts';
+
+import {
+	decimal_string,
+} from './TypedString/PropertySchemaToRegex/decimal_string.ts';
+
+import {
+	decimal_string_signed,
+} from './TypedString/PropertySchemaToRegex/decimal_string_signed.ts';
+
+import {
+	bool_string,
+} from './TypedString/PropertySchemaToRegex/bool_string.ts';
+
+import {
+	common_type_objects,
+} from './TypedString/PropertySchemaToRegex/common_type_objects.ts';
+
+import {
+	PrefixedString as PrefixedStringMatcher,
+} from './TypedString/PropertySchemaToRegex/PrefixedString.ts';
+
+import {
+	NamedListMatcher,
+} from './TypedString/PropertySchemaToRegex/NamedListMatcher.ts';
+
+import {
+	TemplatedStringMatcher,
+} from './TypedString/PropertySchemaToRegex/TemplatedStringMatcher.ts';
+
+import {
+	FlexibleArrayMatcher__items,
+	FlexibleArrayMatcher__prefixItems,
+} from './TypedString/PropertySchemaToRegex/FlexibleArrayMatcher.ts';
+
+import {
+	EnumString,
+} from './TypedString/PropertySchemaToRegex/EnumString.ts';
+
+import {
+	PatternString,
+} from './TypedString/PropertySchemaToRegex/PatternString.ts';
+
+import {
+	RefResolver,
+} from './TypedString/PropertySchemaToRegex/RefResolver.ts';
 
 export type TypedString_mode = (
 	| 'Empty'
 	| 'None'
 	| 'Object'
-	| 'Object_list'
-	| 'String_enum_list'
-	| 'BlueprintGeneratedClass_quoted_list'
-	| 'FGTrainPlatformConnection_quoted_list'
+	| 'FlexibleArray__items'
+	| 'FlexibleArray__prefixItems'
 );
 
 export type TypedString_type__by_mode = {
 	Empty: Empty_type,
 	None: None_type,
 	Object: Object_type,
-	Object_list: Object_list_type,
-	String_enum_list: String_enum_list_type,
-	BlueprintGeneratedClass_quoted_list: (
-		BlueprintGeneratedClass_quoted_list_type
-	),
-	FGTrainPlatformConnection_quoted_list: (
-		FGTrainPlatformConnection_quoted_list_type
-	),
+	FlexibleArray__items: FlexibleArray_type<'items'>,
+	FlexibleArray__prefixItems: FlexibleArray_type<'prefixItems'>,
 };
 
 export type TypedString_type<
@@ -174,10 +186,8 @@ export type TypedString_type_OneOf = {
 		TypedString_type<'Empty'>,
 		TypedString_type<'None'>,
 		TypedString_type<'Object'>,
-		TypedString_type<'Object_list'>,
-		TypedString_type<'String_enum_list'>,
-		TypedString_type<'BlueprintGeneratedClass_quoted_list'>,
-		TypedString_type<'FGTrainPlatformConnection_quoted_list'>,
+		TypedString_type<'FlexibleArray__items'>,
+		TypedString_type<'FlexibleArray__prefixItems'>,
 	],
 };
 
@@ -185,14 +195,8 @@ export type TypedString_schema_properties = {
 	Empty: Empty_properties,
 	None: None_properties,
 	Object: Object_properties,
-	Object_list: Object_list_properties,
-	String_enum_list: String_enum_list_properties,
-	BlueprintGeneratedClass_quoted_list: (
-		BlueprintGeneratedClass_quoted_list_properties
-	),
-	FGTrainPlatformConnection_quoted_list: (
-		FGTrainPlatformConnection_quoted_list_properties
-	),
+	FlexibleArray__items: FlexibleArray_schema_properties<'items'>,
+	FlexibleArray__prefixItems: FlexibleArray_schema_properties<'prefixItems'>,
 };
 
 type TypedString_schema_properties_typed_string<
@@ -223,10 +227,8 @@ export type TypedString_schema_OneOf = TypeDefinitionSchema & {
 		TypedString_schema<'Empty'>,
 		TypedString_schema<'None'>,
 		TypedString_schema<'Object'>,
-		TypedString_schema<'Object_list'>,
-		TypedString_schema<'String_enum_list'>,
-		TypedString_schema<'BlueprintGeneratedClass_quoted_list'>,
-		TypedString_schema<'FGTrainPlatformConnection_quoted_list'>,
+		TypedString_schema<'FlexibleArray__items'>,
+		TypedString_schema<'FlexibleArray__prefixItems'>,
 	],
 };
 
@@ -234,14 +236,8 @@ export type TypedString_SchemaTo__by_mode = {
 	Empty: Empty_SchemaTo,
 	None: None_SchemaTo,
 	Object: Object_SchemaTo,
-	Object_list: Object_list_SchemaTo,
-	String_enum_list: String_enum_list_SchemaTo,
-	BlueprintGeneratedClass_quoted_list: (
-		BlueprintGeneratedClass_quoted_list_SchemaTo
-	),
-	FGTrainPlatformConnection_quoted_list: (
-		FGTrainPlatformConnection_quoted_list_SchemaTo
-	),
+	FlexibleArray__items: FlexibleArray_SchemaTo<'items'>,
+	FlexibleArray__prefixItems: FlexibleArray_SchemaTo<'prefixItems'>,
 };
 
 type TypedString_SchemaTo<
@@ -252,14 +248,8 @@ export type TypedString_DataTo__by_mode = {
 	Empty: Empty_DataTo,
 	None: None_DataTo,
 	Object: Object_DataTo,
-	Object_list: Object_list_DataTo,
-	String_enum_list: String_enum_list_DataTo,
-	BlueprintGeneratedClass_quoted_list: (
-		BlueprintGeneratedClass_quoted_list_DataTo
-	),
-	FGTrainPlatformConnection_quoted_list: (
-		FGTrainPlatformConnection_quoted_list_DataTo
-	),
+	FlexibleArray__items: FlexibleArray_DataTo,
+	FlexibleArray__prefixItems: FlexibleArray_DataTo,
 };
 
 type TypedString_DataTo<
@@ -269,15 +259,7 @@ type TypedString_DataTo<
 export type Type_Generator__by_mode = {
 	None: None_TypeGenerator,
 	Empty: Empty_TypeGenerator,
-	String_enum_list: String_enum_list_TypeGenerator,
 	Object: Object_TypeGenerator,
-	Object_list: Object_list_TypeGenerator,
-	BlueprintGeneratedClass_quoted_list: (
-		BlueprintGeneratedClass_quoted_list_TypeGenerator
-	),
-	FGTrainPlatformConnection_quoted_list: (
-		FGTrainPlatformConnection_quoted_list_TypeGenerator
-	),
 };
 
 export function compile_validators(ajv: Ajv): {
@@ -289,21 +271,91 @@ export function compile_validators(ajv: Ajv): {
 		Empty: Empty_compile_vaildator(ajv),
 		None: None_compile_validator(ajv),
 		Object: Object_compile_validator(ajv),
-		Object_list: Object_list_compile_validator(ajv),
-		String_enum_list: String_enum_list_compile_validator(ajv),
-		BlueprintGeneratedClass_quoted_list: (
-			BlueprintGeneratedClass_quoted_list_compile_validator(
-				ajv,
-			)
-		),
-		FGTrainPlatformConnection_quoted_list: (
-			FGTrainPlatformConnection_quoted_list_compile_validator(
-				ajv,
-			)
+		FlexibleArray__items: FlexibleArray_compile_validator(ajv, 'items'),
+		FlexibleArray__prefixItems: FlexibleArray_compile_validator(
+			ajv,
+			'prefixItems',
 		),
 	};
 }
 
+export type PropertySchemaToRegex__matchers_object = {
+	[key: string]: (
+		options: {
+			ajv: Ajv,
+			existing: PropertySchemaToRegex<unknown>[],
+			Object_matcher_instance: PropertySchemaToRegex<{
+				type: 'string',
+				typed_string: Object_type,
+			}>,
+			$ref_instance: $ref,
+		},
+	) => PropertySchemaToRegex<unknown>[],
+};
+
+export function PropertySchemaToRegex__matchers_as_object(
+): PropertySchemaToRegex__matchers_object {
+	return {
+		ConstString: ({ajv}) => [ConstString(ajv)],
+		EnumString: ({ajv}) => [EnumString(ajv)],
+		PatternString: ({ajv}) => [PatternString(ajv)],
+		EmptyObject: ({ajv}) => [EmptyObject(ajv)],
+		integer_string: ({ajv}) => [integer_string(ajv)],
+		integer_string_signed: ({ajv}) => [integer_string_signed(ajv)],
+		decimal_string: ({ajv}) => [decimal_string(ajv)],
+		decimal_string_signed: ({ajv}) => [decimal_string_signed(ajv)],
+		bool_string: ({ajv}) => [bool_string(ajv)],
+		common_type_objects: ({
+			ajv,
+			Object_matcher_instance,
+		}) => [
+			common_type_objects(
+				ajv,
+				Object_matcher_instance,
+			),
+		],
+		PrefixedStringMatcher: ({ajv}) => [
+			PrefixedStringMatcher(ajv, 'quoted'),
+			PrefixedStringMatcher(ajv, 'non_quoted'),
+		],
+		NamedListMatcher: ({ajv}) => [NamedListMatcher(ajv)],
+		TemplatedStringMatcher: ({ajv}) => [TemplatedStringMatcher(ajv)],
+		FlexibleArrayMatcher: ({ajv, existing}) => [
+			FlexibleArrayMatcher__items(
+				ajv,
+				existing,
+			),
+			FlexibleArrayMatcher__prefixItems(
+				ajv,
+				existing,
+			),
+		],
+		$ref: ({ajv, existing, $ref_instance}) => [RefResolver(
+			ajv,
+			existing,
+			$ref_instance,
+		)],
+	} as PropertySchemaToRegex__matchers_object;
+}
+
+export function PropertySchemaToRegex__matchers(
+	ajv: Ajv,
+	existing: PropertySchemaToRegex<unknown>[],
+	Object_matcher_instance: PropertySchemaToRegex<{
+		type: 'string',
+		typed_string: Object_type,
+	}>,
+	$ref_instance: $ref,
+) {
+	return Object.values(
+		PropertySchemaToRegex__matchers_as_object(),
+	).flatMap((cb) => cb({
+		ajv,
+		existing,
+		Object_matcher_instance,
+		$ref_instance,
+	}));
+}
 
 export function generate_typescript_data__by_mode<
 	Mode extends TypedString_mode,
@@ -312,6 +364,7 @@ export function generate_typescript_data__by_mode<
 	schema_parser: SchemaParser,
 	schema: TypedString_type<Mode>,
 	mode: TypedString_mode,
+	property_schema_to_regex: PropertySchemaToRegex<unknown>[],
 ): TypedString_DataTo<Mode>|undefined {
 	let result: TypedString_DataTo<Mode>;
 
@@ -329,57 +382,43 @@ export function generate_typescript_data__by_mode<
 			schema_parser,
 			coerced_schema,
 			schema,
+			property_schema_to_regex,
 		) as typeof result;
-	} else if ('Object_list' === mode) {
-		const coerced_schema = schema.typed_string as TypedString_type<
-			'Object_list'
-		>['typed_string'];
+	} else if (
+		'FlexibleArray__items' === mode
+	) {
+		let coerced = (
+			schema as TypedString_type<'FlexibleArray__items'>
+		).typed_string;
 
-		result = (
-			Object_list_generate_typescript_data(
-				data,
-				schema_parser,
-				coerced_schema,
-				schema,
-			)
-		) as typeof result;
-	} else if ('String_enum_list' === mode) {
-		const coerced_schema = schema.typed_string as TypedString_type<
-			'String_enum_list'
-		>['typed_string'];
+		if ('$defs' in schema && !('$defs' in coerced)) {
+			coerced = {
+				$defs: schema.$defs,
+				...coerced,
+			} as TypedString_type<'FlexibleArray__items'>['typed_string'];
+		}
 
-		result = String_enum_list_generate_typescript_data(
+		return FlexibleArray_generate_data<'items'>(
+			'items',
 			data,
-			coerced_schema,
-		) as typeof result;
-	} else if ('BlueprintGeneratedClass_quoted_list' === mode) {
+			coerced,
+			schema_parser,
+			property_schema_to_regex,
+		) as TypedString_DataTo<Mode>;
+	} else if (
+		'FlexibleArray__prefixItems' === mode
+	) {
 		const coerced = (
-			schema.typed_string as TypedString_type<
-				'BlueprintGeneratedClass_quoted_list'
-			>['typed_string']
-		).items;
+			schema as TypedString_type<'FlexibleArray__prefixItems'>
+		).typed_string;
 
-		result = (
-			BlueprintGeneratedClass_quoted_list_generate_typescript_data(
-				data,
-				schema_parser,
-				coerced,
-			) as typeof result
-		);
-	} else if ('FGTrainPlatformConnection_quoted_list' === mode) {
-		const coerced = (
-			schema.typed_string as TypedString_type<
-				'FGTrainPlatformConnection_quoted_list'
-			>['typed_string']
-		).items;
-
-		result = (
-			FGTrainPlatformConnection_quoted_list_generate_typescript_data(
-				data,
-				schema_parser,
-				coerced,
-			) as typeof result
-		);
+		return FlexibleArray_generate_data<'prefixItems'>(
+			'prefixItems',
+			data,
+			coerced,
+			schema_parser,
+			property_schema_to_regex,
+		) as TypedString_DataTo<Mode>;
 	} else {
 		return undefined;
 	}
@@ -394,6 +433,7 @@ function generate_typescript_data<
 	schema_parser: SchemaParser,
 	schema: TypedString_type<Mode>,
 	mode_by_validator: TypedString_matcher<TypedString_mode>[],
+	property_schema_to_regex: PropertySchemaToRegex<unknown>[],
 ): TypedString_DataTo<Mode>|undefined {
 	const mode = TypedString.mode_from_schema(
 		schema.typed_string,
@@ -405,12 +445,14 @@ function generate_typescript_data<
 		schema_parser,
 		schema,
 		mode,
+		property_schema_to_regex,
 	);
 }
 
 export function generate_typescript_type__by_mode<
 	Mode extends TypedString_mode,
 >(
+	data: unknown,
 	schema: TypedString_type<Mode>,
 	schema_parser: SchemaParser,
 	mode: Mode,
@@ -438,50 +480,32 @@ export function generate_typescript_type__by_mode<
 			coerced_schema,
 			schema_parser,
 		) as typeof result;
-	} else if ('Object_list' === mode) {
-		const coerced_schema: TypedString_type<
-			'Object_list'
-		> = schema as TypedString_type<
-			'Object_list'
-		>;
+	} else if (
+		'FlexibleArray__items' === mode
+	) {
+		const coerced = (
+			schema as TypedString_type<'FlexibleArray__items'>
+		).typed_string;
 
-		result = Object_list_generate_typescript_type(
-			coerced_schema.typed_string,
+		return FlexibleArray_generate_type(
+			'items',
+			data,
+			coerced,
 			schema_parser,
-		) as typeof result;
-	} else if ('String_enum_list' === mode) {
-		const coerced_schema: TypedString_type<
-			'String_enum_list'
-		> = schema as TypedString_type<
-			'String_enum_list'
-		>;
+		) as Promise<TypedString_SchemaTo<Mode>>;
+	} else if (
+		'FlexibleArray__prefixItems' === mode
+	) {
+		const coerced = (
+			schema as TypedString_type<'FlexibleArray__prefixItems'>
+		).typed_string;
 
-		result = Promise.resolve(String_enum_list_generate_typescript_type(
-			coerced_schema.typed_string,
-		)) as typeof result;
-	} else if ('BlueprintGeneratedClass_quoted_list' === mode) {
-		const coerced_schema: TypedString_type<
-			'BlueprintGeneratedClass_quoted_list'
-		> = schema as TypedString_type<
-			'BlueprintGeneratedClass_quoted_list'
-		>;
-
-		result = BlueprintGeneratedClass_quoted_list_generate_typescript_type(
-			coerced_schema.typed_string,
+		return FlexibleArray_generate_type(
+			'prefixItems',
+			data,
+			coerced,
 			schema_parser,
-		) as typeof result;
-	} else if ('FGTrainPlatformConnection_quoted_list' === mode) {
-		const coerced_schema: TypedString_type<
-			'FGTrainPlatformConnection_quoted_list'
-		> = schema as TypedString_type<
-			'FGTrainPlatformConnection_quoted_list'
-		>;
-
-		// eslint-disable-next-line @stylistic/max-len
-		result = FGTrainPlatformConnection_quoted_list_generate_typescript_type(
-			coerced_schema.typed_string,
-			schema_parser,
-		) as typeof result;
+		) as Promise<TypedString_SchemaTo<Mode>>;
 	} else {
 		return undefined;
 	}
@@ -492,6 +516,7 @@ export function generate_typescript_type__by_mode<
 function generate_typescript_type<
 	Mode extends TypedString_mode,
 >(
+	data: unknown,
 	schema: TypedString_type<Mode>,
 	schema_parser: SchemaParser,
 	mode_by_validator: TypedString_matcher<TypedString_mode>[],
@@ -504,6 +529,7 @@ function generate_typescript_type<
 	);
 
 	return generate_typescript_type__by_mode(
+		data,
 		schema,
 		schema_parser,
 		mode,
@@ -525,19 +551,19 @@ export class TypedString<
 	> {
 	#mode_by_validator: TypedString_matcher<TypedString_mode>[];
 
+	#property_schema_to_regex: PropertySchemaToRegex<unknown>[];
+
 	constructor(
 		options: SchemalessTypeOptions,
 		{
-			String_enum_list,
+			$ref_instance,
 			Object: Object_options,
 		}: {
-			String_enum_list?: {
-				quoted: boolean,
-			},
+			$ref_instance: $ref,
 			Object?: {
 				matchers: PropertySchemaToRegex<unknown>[],
 			},
-		} = {},
+		},
 	) {
 		const mode_from_schema = compile_validators(options.ajv);
 
@@ -557,9 +583,7 @@ export class TypedString<
 					);
 
 					return TypedString.ajv_macro(mode, schema, {
-						String_enum_list: String_enum_list || {
-							quoted: false,
-						},
+						$ref_instance,
 						Object: Object_options || {
 							matchers: [],
 						},
@@ -571,6 +595,7 @@ export class TypedString<
 		});
 
 		this.#mode_by_validator = entries;
+		this.#property_schema_to_regex = Object_options?.matchers || [];
 	}
 
 	generate_typescript_data(
@@ -583,6 +608,7 @@ export class TypedString<
 			schema_parser,
 			schema,
 			this.#mode_by_validator,
+			this.#property_schema_to_regex,
 		);
 
 		if (!result) {
@@ -593,13 +619,16 @@ export class TypedString<
 	}
 
 	generate_typescript_type({
+		data,
 		schema,
 		schema_parser,
 	}: {
+		data: unknown,
 		schema: TypedString_type<Mode>,
 		schema_parser: SchemaParser,
 	}): Promise<TypedString_SchemaTo<Mode>> {
 		const result = generate_typescript_type(
+			data,
 			schema,
 			schema_parser,
 			this.#mode_by_validator,
@@ -618,12 +647,9 @@ export class TypedString<
 		mode: Mode,
 		schema: TypedString_type<Mode>['typed_string'],
 		{
-			String_enum_list,
 			Object,
 		}: {
-			String_enum_list: {
-				quoted: boolean,
-			},
+			$ref_instance: $ref,
 			Object: {
 				matchers: PropertySchemaToRegex<unknown>[],
 			},
@@ -638,44 +664,35 @@ export class TypedString<
 				'Object'
 			>['typed_string'];
 
-			return Object_ajv_macro(coerced, Object.matchers);
-		} else if ('Object_list' === mode) {
-			const coerced = schema as TypedString_type<
-				'Object_list'
-			>['typed_string'];
-
-			return Object_list_ajv_macro(
+			return Object_ajv_macro(
 				coerced,
 				Object.matchers,
 			);
-		} else if ('String_enum_list' === mode) {
-			const coerced = schema as TypedString_type<
-				'String_enum_list'
-			>['typed_string'];
-
-			return String_enum_list_ajv_macro(
-				coerced,
-				String_enum_list.quoted,
+		} else if (
+			'FlexibleArray__items' === mode
+		) {
+			const coerced = (
+				schema as TypedString_type<
+					'FlexibleArray__items'
+				>['typed_string']
 			);
-		} else if ('BlueprintGeneratedClass_quoted_list' === mode) {
-			const coerced = (schema as TypedString_type<
-				'BlueprintGeneratedClass_quoted_list'
-			>[
-				'typed_string'
-			]);
 
-			return BlueprintGeneratedClass_quoted_list_ajv_macro(
+			return FlexibleArray_ajv_macro__items(
 				coerced,
+				Object.matchers,
 			);
-		} else if ('FGTrainPlatformConnection_quoted_list' === mode) {
-			const coerced = (schema as TypedString_type<
-				'FGTrainPlatformConnection_quoted_list'
-			>[
-				'typed_string'
-			]);
+		} else if (
+			'FlexibleArray__prefixItems' === mode
+		) {
+			const coerced = (
+				schema as TypedString_type<
+					'FlexibleArray__prefixItems'
+				>['typed_string']
+			);
 
-			return FGTrainPlatformConnection_quoted_list_ajv_macro(
+			return FlexibleArray_ajv_macro__prefixItems(
 				coerced,
+				Object.matchers,
 			);
 		} else {
 			throw new TypeError('Mode not implemented!');
@@ -688,14 +705,8 @@ export class TypedString<
 				this.#generate_schema_definition('Empty'),
 				this.#generate_schema_definition('None'),
 				this.#generate_schema_definition('Object'),
-				this.#generate_schema_definition('Object_list'),
-				this.#generate_schema_definition('String_enum_list'),
-				this.#generate_schema_definition(
-					'BlueprintGeneratedClass_quoted_list',
-				),
-				this.#generate_schema_definition(
-					'FGTrainPlatformConnection_quoted_list',
-				),
+				this.#generate_schema_definition('FlexibleArray__items'),
+				this.#generate_schema_definition('FlexibleArray__prefixItems'),
 			],
 		});
 	}
@@ -718,19 +729,12 @@ export class TypedString<
 		} else if ('Object' === mode) {
 			typed_string = Object_generate_schema_definition(
 			) as typeof typed_string;
-		} else if ('Object_list' === mode) {
-			typed_string = Object_list_generate_schema_definition(
+		} else if ('FlexibleArray__items' === mode) {
+			typed_string = FlexibleArray_generate_schema_definition__items(
 			) as typeof typed_string;
-		} else if ('String_enum_list' === mode) {
-			typed_string = String_enum_list_generate_schema_definition(
-			) as typeof typed_string;
-		} else if ('BlueprintGeneratedClass_quoted_list' === mode) {
+		} else if ('FlexibleArray__prefixItems' === mode) {
 			// eslint-disable-next-line @stylistic/max-len
-			typed_string = BlueprintGeneratedClass_quoted_list_generate_schema_definition(
-			) as typeof typed_string;
-		} else if ('FGTrainPlatformConnection_quoted_list' === mode) {
-			// eslint-disable-next-line @stylistic/max-len
-			typed_string = FGTrainPlatformConnection_quoted_list_generate_schema_definition(
+			typed_string = FlexibleArray_generate_schema_definition__prefixItems(
 			) as typeof typed_string;
 		} else {
 			throw new TypeError('not implemented!');
@@ -764,14 +768,8 @@ export class TypedString<
 				this.#generate_type_definition('Empty'),
 				this.#generate_type_definition('None'),
 				this.#generate_type_definition('Object'),
-				this.#generate_type_definition('Object_list'),
-				this.#generate_type_definition('String_enum_list'),
-				this.#generate_type_definition(
-					'BlueprintGeneratedClass_quoted_list',
-				),
-				this.#generate_type_definition(
-					'FGTrainPlatformConnection_quoted_list',
-				),
+				this.#generate_type_definition('FlexibleArray__items'),
+				this.#generate_type_definition('FlexibleArray__prefixItems'),
 			],
 		});
 	}
@@ -792,19 +790,11 @@ export class TypedString<
 		} else if ('Object' === mode) {
 			typed_string = Object_generate_type_definition(
 			) as typeof typed_string;
-		} else if ('Object_list' === mode) {
-			typed_string = Object_list_generate_type_definition(
+		} else if ('FlexibleArray__items' === mode) {
+			typed_string = FlexibleArray_generate_type_definition__items(
 			) as typeof typed_string;
-		} else if ('String_enum_list' === mode) {
-			typed_string = String_enum_list_generate_type_definition(
-			) as typeof typed_string;
-		} else if ('BlueprintGeneratedClass_quoted_list' === mode) {
-			// eslint-disable-next-line @stylistic/max-len
-			typed_string = BlueprintGeneratedClass_quoted_list_generate_type_definition(
-			) as typeof typed_string;
-		} else if ('FGTrainPlatformConnection_quoted_list' === mode) {
-			// eslint-disable-next-line @stylistic/max-len
-			typed_string = FGTrainPlatformConnection_quoted_list_generate_type_definition(
+		} else if ('FlexibleArray__prefixItems' === mode) {
+			typed_string = FlexibleArray_generate_type_definition__prefixItems(
 			) as typeof typed_string;
 		} else {
 			throw new TypeError('Not Implemented!');
@@ -826,7 +816,19 @@ export class TypedString<
 		schema: unknown,
 		matchers: TypedString_matcher<TypedString_mode>[],
 	): TypedString_mode {
-		const match = matchers.find(([, maybe]) => maybe(schema));
+		let match = matchers.find(([, maybe]) => maybe(schema));
+
+		if (undefined === match) {
+			if (
+				object_has_property(schema, 'uniqueItems')
+				&& false === schema.uniqueItems
+			) {
+				match = matchers.find(([, maybe]) => maybe({
+					...schema,
+					uniqueItems: true,
+				}));
+			}
+		}
 
 		if (undefined === match) {
 			console.error(schema);

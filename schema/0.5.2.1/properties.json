@@ -151,7 +151,11 @@
 					},
 					"ExternalCurve": {
 						"type": "string",
-						"DocsDotJson_CurveFloat_quoted": null
+						"DocsDotJson_PrefixedString": {
+							"prefix": "CurveFloat",
+							"mode": "quoted",
+							"value": null
+						}
 					}
 				}
 			}

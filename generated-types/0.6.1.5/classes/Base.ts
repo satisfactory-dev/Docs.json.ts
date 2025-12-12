@@ -18,6 +18,7 @@ import type {
 	ItemClass_list as docs_json_ts_0_6_1_5_properties_ItemClass_list,
 	mAllowedResourceForms as docs_json_ts_0_6_1_5_properties_mAllowedResourceForms,
 	mDisableSnapOn_front_right as docs_json_ts_0_6_1_5_properties_mDisableSnapOn_front_right,
+	mProducedIn as docs_json_ts_0_6_1_5_properties_mProducedIn,
 	mUnlocks_item as docs_json_ts_0_6_1_5_properties_mUnlocks_item,
 } from './../types/properties.ts';
 
@@ -108,6 +109,7 @@ import type {
 	FGItemDescAmmoTypeProjectile_base_base as docs_json_ts_0_5_2_1_classes_base_FGItemDescAmmoTypeProjectile_base_base,
 	FGNobeliskDetonator_base as docs_json_ts_0_5_2_1_classes_base_FGNobeliskDetonator_base,
 	FGPipeHyperStart as docs_json_ts_0_5_2_1_classes_base_FGPipeHyperStart,
+	FGRecipe_version_specific as docs_json_ts_0_5_2_1_classes_base_FGRecipe_version_specific,
 	FGSchematic_base_base_base as docs_json_ts_0_5_2_1_classes_base_FGSchematic_base_base_base,
 	FGSchematic_with_described_unlocks_base_base as docs_json_ts_0_5_2_1_classes_base_FGSchematic_with_described_unlocks_base_base,
 	FGWeapon_base_base as docs_json_ts_0_5_2_1_classes_base_FGWeapon_base_base,
@@ -128,6 +130,7 @@ import type {
 	FGItemDescriptorNuclearFuel_base as docs_json_ts_0_4_2_11_classes_base_FGItemDescriptorNuclearFuel_base,
 	FGParachute as docs_json_ts_0_4_2_11_classes_base_FGParachute,
 	FGPortableMinerDispenser as docs_json_ts_0_4_2_11_classes_base_FGPortableMinerDispenser,
+	FGRecipe_base_base as docs_json_ts_0_4_2_11_classes_base_FGRecipe_base_base,
 	FGSchematic_base_base_props_sans_mSchematicIcon as docs_json_ts_0_4_2_11_classes_base_FGSchematic_base_base_props_sans_mSchematicIcon,
 	FGVehicleDescriptor_fueled_with_inventory_base as docs_json_ts_0_4_2_11_classes_base_FGVehicleDescriptor_fueled_with_inventory_base,
 	FGVehicleDescriptor_powered_base as docs_json_ts_0_4_2_11_classes_base_FGVehicleDescriptor_powered_base,
@@ -169,6 +172,7 @@ import type {
 	FGJumpingStilts_base as docs_json_ts_0_3_7_7_classes_base_FGJumpingStilts_base,
 	FGNobeliskDetonator_base as docs_json_ts_0_3_7_7_classes_base_FGNobeliskDetonator_base,
 	FGObjectScanner_base as docs_json_ts_0_3_7_7_classes_base_FGObjectScanner_base,
+	FGRecipe_base as docs_json_ts_0_3_7_7_classes_base_FGRecipe_base,
 	FGResourceDescriptor_base as docs_json_ts_0_3_7_7_classes_base_FGResourceDescriptor_base,
 	FGSuitBase_base as docs_json_ts_0_3_7_7_classes_base_FGSuitBase_base,
 	FGWeaponInstantFire_base_base_base as docs_json_ts_0_3_7_7_classes_base_FGWeaponInstantFire_base_base_base,
@@ -194,23 +198,29 @@ type FGAmmoType_base = FGAmmoType_base_base & {
 	mDispersionRecoveryTime?: docs_json_ts_common_types_decimal_string,
 	mMagazineMeshMaterials: null | [
 		{
-			MaterialInterface: `MaterialInstanceConstant'"/Game/FactoryGame/Equipment/${'RebarGun' | 'Rifle' | 'Holiday/SnowballWeapon' | 'NobeliskDetonator'}${'/Material/'}${Exclude<string, ''>}${'.'}${Exclude<string, ''>}${'"\''}` | `MaterialInstanceConstant'"/Game/FactoryGame/Events/${Exclude<string, ''>}${'/Materials/'}${Exclude<string, ''>}${'.'}${Exclude<string, ''>}${'"\''}` | `Material'"/Game/FactoryGame/MasterMaterials/${Exclude<string, ''>}${'.'}${Exclude<string, ''>}${'"\''}`,
+			MaterialInterface: `MaterialInstanceConstant'"/Game/FactoryGame/${string}${'"\''}` | `Material'"/Game/FactoryGame/${string}${'"\''}`,
 			MaterialSlotName: 'lambert1' | 'Rifle' | 'lambert9_001' | 'lambert10' | 'lambert2' | 'Material_003' | 'Material_002' | 'Rocket1' | 'Rocket2' | '01 - Default',
 			ImportedMaterialSlotName: 'lambert1' | 'Rifle' | 'lambert9_001' | 'lambert10' | 'lambert2' | 'Material_003' | 'Material_002' | 'Rocket1' | 'Rocket2' | '01 - Default',
 			UVChannelData: {
 				bInitialized: docs_json_ts_common_types_bool_string,
 				['LocalUVDensities[0]']: docs_json_ts_common_types_decimal_string,
-				['LocalUVDensities[1]']?: docs_json_ts_common_types_decimal_string,
+			} | {
+				bInitialized: docs_json_ts_common_types_bool_string,
+				['LocalUVDensities[0]']: docs_json_ts_common_types_decimal_string,
+				['LocalUVDensities[1]']: docs_json_ts_common_types_decimal_string,
 			},
 		},
 		...{
-			MaterialInterface: `MaterialInstanceConstant'"/Game/FactoryGame/Equipment/${'RebarGun' | 'Rifle' | 'Holiday/SnowballWeapon' | 'NobeliskDetonator'}${'/Material/'}${Exclude<string, ''>}${'.'}${Exclude<string, ''>}${'"\''}` | `MaterialInstanceConstant'"/Game/FactoryGame/Events/${Exclude<string, ''>}${'/Materials/'}${Exclude<string, ''>}${'.'}${Exclude<string, ''>}${'"\''}` | `Material'"/Game/FactoryGame/MasterMaterials/${Exclude<string, ''>}${'.'}${Exclude<string, ''>}${'"\''}`,
+			MaterialInterface: `MaterialInstanceConstant'"/Game/FactoryGame/${string}${'"\''}` | `Material'"/Game/FactoryGame/${string}${'"\''}`,
 			MaterialSlotName: 'lambert1' | 'Rifle' | 'lambert9_001' | 'lambert10' | 'lambert2' | 'Material_003' | 'Material_002' | 'Rocket1' | 'Rocket2' | '01 - Default',
 			ImportedMaterialSlotName: 'lambert1' | 'Rifle' | 'lambert9_001' | 'lambert10' | 'lambert2' | 'Material_003' | 'Material_002' | 'Rocket1' | 'Rocket2' | '01 - Default',
 			UVChannelData: {
 				bInitialized: docs_json_ts_common_types_bool_string,
 				['LocalUVDensities[0]']: docs_json_ts_common_types_decimal_string,
-				['LocalUVDensities[1]']?: docs_json_ts_common_types_decimal_string,
+			} | {
+				bInitialized: docs_json_ts_common_types_bool_string,
+				['LocalUVDensities[0]']: docs_json_ts_common_types_decimal_string,
+				['LocalUVDensities[1]']: docs_json_ts_common_types_decimal_string,
 			},
 		}[],
 	],
@@ -246,9 +256,11 @@ type FGAmmoTypeProjectile = FGAmmoType_base & {
 	mProjectileStickspan: docs_json_ts_common_types_decimal_string_signed,
 	mCanTakeDamageBySameProjectileOrChild: docs_json_ts_common_types_bool_string,
 	mDamageTypesAtEndOfLife: null | [
-		...`BP_RadialDamageType_Explosive_C'"/Game/FactoryGame/${'Equipment' | 'Resource'}${'/'}${string}${'/Desc_'}${string}${'.Default__Desc_'}${string}${'_C:BP_RadialDamageType_Explosive_C_'}${'0' | '1'}${'"\''}`[],
+        `BP_RadialDamageType_Explosive_C'"/Game/FactoryGame/${string}${'"\''}`,
+        ...`BP_RadialDamageType_Explosive_C'"/Game/FactoryGame/${string}${'"\''}`[],
 	] | [
-		...`BP_RadialDamageType_Gas_C'"/Game/FactoryGame/${'Equipment' | 'Resource'}${'/'}${string}${'/Desc_'}${string}${'.Default__Desc_'}${string}${'_C:BP_RadialDamageType_Gas_C_'}${'0' | '1'}${'"\''}`[],
+        `BP_RadialDamageType_Gas_C'"/Game/FactoryGame/${string}${'"\''}`,
+        ...`BP_RadialDamageType_Gas_C'"/Game/FactoryGame/${string}${'"\''}`[],
 	],
 	mGravityScaleOverLifespan: docs_json_ts_0_5_2_1_properties_FalloffCurve_EditorCurveData_only,
 	mHomingProjectile: docs_json_ts_common_types_bool_string,
@@ -511,9 +523,9 @@ type FGBuildableTradingPost = docs_json_ts_0_5_2_1_classes_base_FGBuildableTradi
 
 type FGBuildableTrainPlatform = docs_json_ts_0_5_2_1_classes_base_FGBuildableTrainPlatform & FGBuildable_base;
 
-type FGBuildableTrainPlatformCargo = docs_json_ts_0_5_2_1_classes_base_FGBuildableTrainPlatformCargo & FGBuildableTrainPlatformCargo_base;
+type FGBuildableTrainPlatformCargo = docs_json_ts_0_5_2_1_classes_base_FGBuildableTrainPlatformCargo & FGBuildableTrainPlatformCargo_version_specific & FGBuildable_base;
 
-type FGBuildableTrainPlatformCargo_base = FGBuildable_base & {
+type FGBuildableTrainPlatformCargo_version_specific = {
 	mHasAnyRelevantStacksToMove: docs_json_ts_common_types_bool_string,
 	mAllowDepartureNoValidItemsToTransfer: docs_json_ts_common_types_bool_string,
 };
@@ -675,6 +687,12 @@ type FGPipeHyperStart = docs_json_ts_0_5_2_1_classes_base_FGPipeHyperStart & FGB
 
 type FGPortableMinerDispenser = docs_json_ts_0_4_2_11_classes_base_FGPortableMinerDispenser & FGEquipment;
 
+type FGRecipe = docs_json_ts_0_3_7_7_classes_base_FGRecipe_base & docs_json_ts_0_4_2_11_classes_base_FGRecipe_base_base & docs_json_ts_0_5_2_1_classes_base_FGRecipe_version_specific & FGRecipe_version_specific;
+
+type FGRecipe_version_specific = {
+	mProducedIn: docs_json_ts_0_6_1_5_properties_mProducedIn,
+};
+
 type FGResourceDescriptor = docs_json_ts_0_3_7_7_classes_base_FGResourceDescriptor_base & docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable & FGItemDescriptor_base;
 
 type FGSchematic_base = FGSchematic_base_base & FGSchematic_version_specific;
@@ -686,7 +704,7 @@ type FGSchematic_base_base_props_with_mSchematicIcon = {
 		ImageSize: docs_json_ts_common_types_XY_decimal_string,
 		Margin: docs_json_ts_common_types_empty_object,
 		TintColor: docs_json_ts_0_4_2_11_properties_TintColor,
-		ResourceObject?: `Texture2D'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
+		ResourceObject?: `Texture2D'"/Game/FactoryGame/${string}${'"\''}`,
 		UVRegion: {
 			Min: docs_json_ts_common_types_XY_decimal_string,
 			Max: docs_json_ts_common_types_XY_decimal_string,
@@ -846,7 +864,7 @@ export type {
 	FGBuildableTradingPost,
 	FGBuildableTrainPlatform,
 	FGBuildableTrainPlatformCargo,
-	FGBuildableTrainPlatformCargo_base,
+	FGBuildableTrainPlatformCargo_version_specific,
 	FGBuildableWalkway,
 	FGBuildableWall,
 	FGBuildableWidgetSign,
@@ -883,6 +901,8 @@ export type {
 	FGParachute,
 	FGPipeHyperStart,
 	FGPortableMinerDispenser,
+	FGRecipe,
+	FGRecipe_version_specific,
 	FGResourceDescriptor,
 	FGSchematic_base,
 	FGSchematic_base_base,

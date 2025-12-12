@@ -1058,10 +1058,10 @@
 		"FGBuildableTrainPlatformCargo": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildableTrainPlatformCargo--base"
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildableTrainPlatformCargo--version-specific"
 				},
 				{
-					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableTrainPlatformCargo--base"
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableTrainPlatformCargo--version-specific"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--powered-storage"

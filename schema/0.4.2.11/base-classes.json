@@ -1105,12 +1105,18 @@
 					"type": "string",
 					"typed_string": {
 						"type": "array",
-						"minItems": 1,
-						"uniqueItems": true,
-						"items": {
+						"minItems": 2,
+						"maxItems": 2,
+						"items": false,
+						"prefixItems": [{
 							"type": "string",
-							"enum": ["Arm_04_ClawBase", "Arm_02_SFXSocket"]
+								"const": "Arm_04_ClawBase"
+							},
+							{
+								"type": "string",
+								"const": "Arm_02_SFXSocket"
 						}
+						]
 					}
 				}
 			}
@@ -1605,7 +1611,20 @@
 			"required": ["mConnections"],
 			"properties": {
 				"mConnections": {
-					"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/DocsDotJson_FGRailroadTrackConnectionComponent_quoted--list"
+					"type": "string",
+					"typed_string": {
+						"type": "array",
+						"minItems": 1,
+						"uniqueItems": true,
+						"items": {
+							"type": "string",
+							"DocsDotJson_PrefixedString": {
+								"prefix": "FGRailroadTrackConnectionComponent",
+								"mode": "quoted",
+								"value": null
+							}
+						}
+					}
 				}
 			}
 		},
@@ -2411,52 +2430,26 @@
 			]
 		},
 		"FGRecipe--base": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGRecipe--base"
+				},
+				{
+					"$ref": "#/$defs/FGRecipe--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGRecipe--version-specific"
+				}
+			]
+		},
+		"FGRecipe--base--base": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGRecipe--base",
 			"required": [
-				"mProducedIn",
 				"mManufacturingMenuPriority",
 				"mVariablePowerConsumptionConstant",
 				"mVariablePowerConsumptionFactor"
 			],
 			"properties": {
-				"mProducedIn": {
-					"oneOf": [
-						{
-							"type": "string",
-							"const": ""
-						},
-						{
-							"type": "string",
-							"typed_string": {
-								"type": "array",
-								"minItems": 1,
-								"uniqueItems": true,
-								"items": {
-									"type": "string",
-									"enum": [
-										"/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkBenchComponent.BP_WorkBenchComponent_C",
-										"/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkshopComponent.BP_WorkshopComponent_C",
-										"/Game/FactoryGame/Buildable/Factory/AssemblerMk1/Build_AssemblerMk1.Build_AssemblerMk1_C",
-										"/Game/FactoryGame/Buildable/Factory/AutomatedWorkBench/Build_AutomatedWorkBench.Build_AutomatedWorkBench_C",
-										"/Game/FactoryGame/Buildable/Factory/ConstructorMk1/Build_ConstructorMk1.Build_ConstructorMk1_C",
-										"/Game/FactoryGame/Buildable/Factory/Converter/Build_Converter.Build_Converter_C",
-										"/Game/FactoryGame/Buildable/Factory/FoundryMk1/Build_FoundryMk1.Build_FoundryMk1_C",
-										"/Game/FactoryGame/Buildable/Factory/ManufacturerMk1/Build_ManufacturerMk1.Build_ManufacturerMk1_C",
-										"/Game/FactoryGame/Buildable/Factory/OilRefinery/Build_OilRefinery.Build_OilRefinery_C",
-										"/Game/FactoryGame/Buildable/Factory/Packager/Build_Packager.Build_Packager_C",
-										"/Game/FactoryGame/Buildable/Factory/SmelterMk1/Build_SmelterMk1.Build_SmelterMk1_C",
-										"/Game/FactoryGame/Equipment/BuildGun/BP_BuildGun.BP_BuildGun_C",
-										"/Script/FactoryGame.FGBuildGun",
-										"/Script/FactoryGame.FGBuildableAutomatedWorkBench",
-										"/Game/FactoryGame/Buildable/Factory/Blender/Build_Blender.Build_Blender_C",
-										"/Game/FactoryGame/Buildable/Factory/HadronCollider/Build_HadronCollider.Build_HadronCollider_C"
-									]
-								}
-							}
-						}
-					]
-				},
 				"mManufacturingMenuPriority": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
@@ -2465,6 +2458,17 @@
 				},
 				"mVariablePowerConsumptionFactor": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGRecipe--version-specific": {
+			"type": "object",
+			"required": [
+				"mProducedIn"
+			],
+			"properties": {
+				"mProducedIn": {
+					"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/mProducedIn"
 				}
 			}
 		},
@@ -2654,7 +2658,12 @@
 								"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/TintColor"
 							},
 							"ResourceObject": {
-								"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/Texture2D--quoted"
+								"type": "string",
+								"DocsDotJson_PrefixedString": {
+									"prefix": "Texture2D",
+									"mode": "quoted",
+									"value": null
+								}
 							},
 							"UVRegion": {
 								"type": "string",

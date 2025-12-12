@@ -426,13 +426,14 @@
 					"typed_string": {
 						"type": "array",
 						"minItems": 1,
-						"uniqueItems": true,
-						"items": {
+						"maxItems": 1,
+						"items": false,
+						"prefixItems": [
+							{
 							"type": "string",
-							"enum": [
-								"/Game/FactoryGame/Buildable/-Shared/Customization/Skins/SkinDesc_Test1.SkinDesc_Test1_C"
-							]
+								"const": "/Game/FactoryGame/Buildable/-Shared/Customization/Skins/SkinDesc_Test1.SkinDesc_Test1_C"
 						}
+						]
 					}
 				}
 			}
@@ -1330,8 +1331,17 @@
 			]
 		},
 		"FGBuildableRailroadSignal--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableRailroadSignal--base--version-specific"
+				}
+			]
+		},
+		"FGBuildableRailroadSignal--base--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
 			"required": [
 				"mOnAspectChangedDelegate",
 				"mOnBlockValidationChangedDelegate",
@@ -1382,8 +1392,17 @@
 			}
 		},
 		"FGBuildableRailroadSignal--block": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableRailroadSignal--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableRailroadSignal--block--version-specific"
+				}
+			]
+		},
+		"FGBuildableRailroadSignal--block--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableRailroadSignal--base",
 			"required": ["mPreviousAspect"],
 			"properties": {
 				"mPreviousAspect": {
@@ -1718,13 +1737,15 @@
 					"$ref": "#/$defs/FGBuildableTrainPlatform--with-storage"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableTrainPlatformCargo--base"
+					"$ref": "#/$defs/FGBuildable--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableTrainPlatformCargo--version-specific"
 				}
 			]
 		},
-		"FGBuildableTrainPlatformCargo--base": {
+		"FGBuildableTrainPlatformCargo--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
 			"required": [
 				"mOnTransferRateUpdated",
 				"mWaitForConditionUpdatePeriod",
@@ -2139,7 +2160,11 @@
 						"properties": {
 							"ProjectileClass": {
 								"type": "string",
-								"DocsDotJson_BlueprintGeneratedClass_quoted": null
+								"DocsDotJson_PrefixedString": {
+									"prefix": "BlueprintGeneratedClass",
+									"mode": "quoted",
+									"value": null
+								}
 							},
 							"ProjectileLifeSpan": {
 								"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
@@ -2161,11 +2186,19 @@
 							},
 							"DamageType": {
 								"type": "string",
-								"DocsDotJson_BlueprintGeneratedClass_quoted": null
+								"DocsDotJson_PrefixedString": {
+									"prefix": "BlueprintGeneratedClass",
+									"mode": "quoted",
+									"value": null
+								}
 							},
 							"DamageTypeExplode": {
 								"type": "string",
-								"DocsDotJson_BlueprintGeneratedClass_quoted": null
+								"DocsDotJson_PrefixedString": {
+									"prefix": "BlueprintGeneratedClass",
+									"mode": "quoted",
+									"value": null
+								}
 							},
 							"DamageFalloffCurve": {
 								"$ref": "docs.json.ts--0.5.2.1--properties#/$defs/FalloffCurve--EditorCurveData--only"
@@ -2214,7 +2247,11 @@
 						"properties": {
 							"ProjectileClass": {
 								"type": "string",
-								"DocsDotJson_BlueprintGeneratedClass_quoted": null
+								"DocsDotJson_PrefixedString": {
+									"prefix": "BlueprintGeneratedClass",
+									"mode": "quoted",
+									"value": null
+								}
 							},
 							"ProjectileLifeSpan": {
 								"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
@@ -2236,11 +2273,19 @@
 							},
 							"DamageType": {
 								"type": "string",
-								"DocsDotJson_BlueprintGeneratedClass_quoted": null
+								"DocsDotJson_PrefixedString": {
+									"prefix": "BlueprintGeneratedClass",
+									"mode": "quoted",
+									"value": null
+								}
 							},
 							"DamageTypeExplode": {
 								"type": "string",
-								"DocsDotJson_BlueprintGeneratedClass_quoted": null
+								"DocsDotJson_PrefixedString": {
+									"prefix": "BlueprintGeneratedClass",
+									"mode": "quoted",
+									"value": null
+								}
 							},
 							"DamageFalloffCurve": {
 								"$ref": "docs.json.ts--0.5.2.1--properties#/$defs/FalloffCurve--EditorCurveData--only"
@@ -2287,7 +2332,11 @@
 						"properties": {
 							"ProjectileClass": {
 								"type": "string",
-								"DocsDotJson_BlueprintGeneratedClass_quoted": null
+								"DocsDotJson_PrefixedString": {
+									"prefix": "BlueprintGeneratedClass",
+									"mode": "quoted",
+									"value": null
+								}
 							},
 							"ProjectileLifeSpan": {
 								"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
@@ -2303,7 +2352,11 @@
 							},
 							"DamageType": {
 								"type": "string",
-								"DocsDotJson_BlueprintGeneratedClass_quoted": null
+								"DocsDotJson_PrefixedString": {
+									"prefix": "BlueprintGeneratedClass",
+									"mode": "quoted",
+									"value": null
+								}
 							},
 							"DamageTypeExplode": {
 								"type": "string",
@@ -2357,7 +2410,11 @@
 						"properties": {
 							"ProjectileClass": {
 								"type": "string",
-								"DocsDotJson_BlueprintGeneratedClass_quoted": null
+								"DocsDotJson_PrefixedString": {
+									"prefix": "BlueprintGeneratedClass",
+									"mode": "quoted",
+									"value": null
+								}
 							},
 							"ProjectileLifeSpan": {
 								"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
@@ -2382,11 +2439,19 @@
 							},
 							"DamageType": {
 								"type": "string",
-								"DocsDotJson_BlueprintGeneratedClass_quoted": null
+								"DocsDotJson_PrefixedString": {
+									"prefix": "BlueprintGeneratedClass",
+									"mode": "quoted",
+									"value": null
+								}
 							},
 							"DamageTypeExplode": {
 								"type": "string",
-								"DocsDotJson_BlueprintGeneratedClass_quoted": null
+								"DocsDotJson_PrefixedString": {
+									"prefix": "BlueprintGeneratedClass",
+									"mode": "quoted",
+									"value": null
+								}
 							},
 							"DamageFalloffCurve": {
 								"$ref": "docs.json.ts--0.5.2.1--properties#/$defs/FalloffCurve--EditorCurveData--only"
@@ -2503,8 +2568,17 @@
 			]
 		},
 		"FGRecipe": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGRecipe--base"
+				},
+				{
+					"$ref": "#/$defs/FGRecipe--version-specific"
+				}
+			]
+		},
+		"FGRecipe--version-specific": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGRecipe--base",
 			"required": ["mIngredients", "mProduct"],
 			"properties": {
 				"mIngredients": {
@@ -2611,7 +2685,11 @@
 									"oneOf": [
 										{
 											"type": "string",
-											"DocsDotJson_BlueprintGeneratedClass_quoted": null
+											"DocsDotJson_PrefixedString": {
+												"prefix": "BlueprintGeneratedClass",
+												"mode": "quoted",
+												"value": null
+											}
 										},
 										{
 											"type": "string",
@@ -2735,11 +2813,14 @@
 					"typed_string": {
 						"type": "array",
 						"minItems": 1,
-						"uniqueItems": true,
-						"items": {
+						"maxItems": 1,
+						"items": false,
+						"prefixItems": [
+							{
 							"type": "string",
-							"enum": ["EWS_Unequipped"]
+								"const": "EWS_Unequipped"
 						}
+						]
 					}
 				},
 				"mBaseRestingDispersion": {

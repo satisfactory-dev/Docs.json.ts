@@ -132,13 +132,15 @@ import type {
 type FGBuildable = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildable'}${'\''}`,
 	Classes: [
-		...(docs_json_ts_0_5_2_1_classes_FGBuildable_occupied | docs_json_ts_0_5_2_1_classes_FGBuildable_tiered | docs_json_ts_0_5_2_1_classes_FGBuildable_base)[],
+        docs_json_ts_0_5_2_1_classes_FGBuildable_occupied | docs_json_ts_0_5_2_1_classes_FGBuildable_tiered | docs_json_ts_0_5_2_1_classes_FGBuildable_base,
+        ...(docs_json_ts_0_5_2_1_classes_FGBuildable_occupied | docs_json_ts_0_5_2_1_classes_FGBuildable_tiered | docs_json_ts_0_5_2_1_classes_FGBuildable_base)[],
 	],
 };
 
 type FGBuildableAttachmentMerger = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableAttachmentMerger'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildableAttachmentMerger,
 		...docs_json_ts_0_5_2_1_classes_FGBuildableAttachmentMerger[],
 	],
 };
@@ -146,6 +148,7 @@ type FGBuildableAttachmentMerger = {
 type FGBuildableAttachmentSplitter = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableAttachmentSplitter'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildableAttachmentSplitter,
 		...docs_json_ts_0_5_2_1_classes_FGBuildableAttachmentSplitter[],
 	],
 };
@@ -153,6 +156,7 @@ type FGBuildableAttachmentSplitter = {
 type FGBuildableBeam = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableBeam'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildableBeam,
 		...docs_json_ts_0_5_2_1_classes_FGBuildableBeam[],
 	],
 };
@@ -160,6 +164,7 @@ type FGBuildableBeam = {
 type FGBuildableCircuitSwitch = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableCircuitSwitch'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildableCircuitSwitch,
 		...docs_json_ts_0_5_2_1_classes_FGBuildableCircuitSwitch[],
 	],
 };
@@ -167,6 +172,7 @@ type FGBuildableCircuitSwitch = {
 type FGBuildableConveyorBelt = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableConveyorBelt'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildableConveyorBelt,
 		...docs_json_ts_0_5_2_1_classes_FGBuildableConveyorBelt[],
 	],
 };
@@ -174,6 +180,7 @@ type FGBuildableConveyorBelt = {
 type FGBuildableConveyorLift = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableConveyorLift'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildableConveyorLift,
 		...docs_json_ts_0_5_2_1_classes_FGBuildableConveyorLift[],
 	],
 };
@@ -181,6 +188,7 @@ type FGBuildableConveyorLift = {
 type FGBuildableCornerWall = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableCornerWall'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildableCornerWall,
 		...docs_json_ts_0_5_2_1_classes_FGBuildableCornerWall[],
 	],
 };
@@ -188,6 +196,7 @@ type FGBuildableCornerWall = {
 type FGBuildableDockingStation = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableDockingStation'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildableDockingStation,
 		...docs_json_ts_0_5_2_1_classes_FGBuildableDockingStation[],
 	],
 };
@@ -195,6 +204,7 @@ type FGBuildableDockingStation = {
 type FGBuildableDoor = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableDoor'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildableDoor,
 		...docs_json_ts_0_5_2_1_classes_FGBuildableDoor[],
 	],
 };
@@ -202,6 +212,7 @@ type FGBuildableDoor = {
 type FGBuildableDroneStation = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableDroneStation'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildableDroneStation,
 		...docs_json_ts_0_5_2_1_classes_FGBuildableDroneStation[],
 	],
 };
@@ -209,13 +220,15 @@ type FGBuildableDroneStation = {
 type FGBuildableFactory = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableFactory'}${'\''}`,
 	Classes: [
-		...(docs_json_ts_0_5_2_1_classes_FGBuildableFactory_jump_pad | docs_json_ts_0_5_2_1_classes_FGBuildableFactory_landing_pad | docs_json_ts_0_5_2_1_classes_FGBuildable_powered)[],
+        docs_json_ts_0_5_2_1_classes_FGBuildableFactory_jump_pad | docs_json_ts_0_5_2_1_classes_FGBuildableFactory_landing_pad | docs_json_ts_0_5_2_1_classes_FGBuildable_powered,
+        ...(docs_json_ts_0_5_2_1_classes_FGBuildableFactory_jump_pad | docs_json_ts_0_5_2_1_classes_FGBuildableFactory_landing_pad | docs_json_ts_0_5_2_1_classes_FGBuildable_powered)[],
 	],
 };
 
 type FGBuildableFactoryBuilding = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableFactoryBuilding'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildableFactoryBuilding,
 		...docs_json_ts_0_5_2_1_classes_FGBuildableFactoryBuilding[],
 	],
 };
@@ -223,6 +236,7 @@ type FGBuildableFactoryBuilding = {
 type FGBuildableFactorySimpleProducer = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableFactorySimpleProducer'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildableFactorySimpleProducer,
 		...docs_json_ts_0_5_2_1_classes_FGBuildableFactorySimpleProducer[],
 	],
 };
@@ -230,6 +244,7 @@ type FGBuildableFactorySimpleProducer = {
 type FGBuildableFloodlight = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableFloodlight'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildableFloodlight,
 		...docs_json_ts_0_5_2_1_classes_FGBuildableFloodlight[],
 	],
 };
@@ -237,6 +252,7 @@ type FGBuildableFloodlight = {
 type FGBuildableFoundation = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableFoundation'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildableFoundation,
 		...docs_json_ts_0_5_2_1_classes_FGBuildableFoundation[],
 	],
 };
@@ -244,6 +260,7 @@ type FGBuildableFoundation = {
 type FGBuildableFrackingActivator = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableFrackingActivator'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildableFrackingActivator,
 		...docs_json_ts_0_5_2_1_classes_FGBuildableFrackingActivator[],
 	],
 };
@@ -251,6 +268,7 @@ type FGBuildableFrackingActivator = {
 type FGBuildableFrackingExtractor = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableFrackingExtractor'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildableFrackingExtractor,
 		...docs_json_ts_0_5_2_1_classes_FGBuildableFrackingExtractor[],
 	],
 };
@@ -267,6 +285,7 @@ type FGBuildableGeneratorFuel = {
 type FGBuildableGeneratorGeoThermal = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableGeneratorGeoThermal'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildableGeneratorGeoThermal,
 		...docs_json_ts_0_5_2_1_classes_FGBuildableGeneratorGeoThermal[],
 	],
 };
@@ -274,6 +293,7 @@ type FGBuildableGeneratorGeoThermal = {
 type FGBuildableGeneratorNuclear = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableGeneratorNuclear'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildableGeneratorNuclear,
 		...docs_json_ts_0_5_2_1_classes_FGBuildableGeneratorNuclear[],
 	],
 };
@@ -281,6 +301,7 @@ type FGBuildableGeneratorNuclear = {
 type FGBuildableJumppad = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableJumppad'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildableJumppad,
 		...docs_json_ts_0_5_2_1_classes_FGBuildableJumppad[],
 	],
 };
@@ -288,6 +309,7 @@ type FGBuildableJumppad = {
 type FGBuildableLadder = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableLadder'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildableLadder,
 		...docs_json_ts_0_5_2_1_classes_FGBuildableLadder[],
 	],
 };
@@ -295,6 +317,7 @@ type FGBuildableLadder = {
 type FGBuildableLightsControlPanel = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableLightsControlPanel'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildableLightsControlPanel,
 		...docs_json_ts_0_5_2_1_classes_FGBuildableLightsControlPanel[],
 	],
 };
@@ -310,6 +333,7 @@ type FGBuildableLightSource = {
 type FGBuildableMAM = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableMAM'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildableMAM,
 		...docs_json_ts_0_5_2_1_classes_FGBuildableMAM[],
 	],
 };
@@ -331,6 +355,7 @@ type FGBuildableManufacturer = {
 type FGBuildableManufacturerVariablePower = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableManufacturerVariablePower'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildableManufacturer_Build_HadronCollider_C,
 		...docs_json_ts_0_5_2_1_classes_FGBuildableManufacturer_Build_HadronCollider_C[],
 	],
 };
@@ -338,6 +363,7 @@ type FGBuildableManufacturerVariablePower = {
 type FGBuildablePassthrough = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildablePassthrough'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildablePassthrough,
 		...docs_json_ts_0_5_2_1_classes_FGBuildablePassthrough[],
 	],
 };
@@ -345,6 +371,7 @@ type FGBuildablePassthrough = {
 type FGBuildablePillar = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildablePillar'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildablePillar,
 		...docs_json_ts_0_5_2_1_classes_FGBuildablePillar[],
 	],
 };
@@ -352,6 +379,7 @@ type FGBuildablePillar = {
 type FGBuildablePipeHyper = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildablePipeHyper'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildablePipeHyper,
 		...docs_json_ts_0_5_2_1_classes_FGBuildablePipeHyper[],
 	],
 };
@@ -359,6 +387,7 @@ type FGBuildablePipeHyper = {
 type FGBuildablePipeline = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildablePipeline'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildablePipeline,
 		...docs_json_ts_0_5_2_1_classes_FGBuildablePipeline[],
 	],
 };
@@ -366,6 +395,7 @@ type FGBuildablePipeline = {
 type FGBuildablePipelineJunction = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildablePipelineJunction'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildablePipelineJunction,
 		...docs_json_ts_0_5_2_1_classes_FGBuildablePipelineJunction[],
 	],
 };
@@ -373,13 +403,15 @@ type FGBuildablePipelineJunction = {
 type FGBuildablePipelinePump = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildablePipelinePump'}${'\''}`,
 	Classes: [
-		...(docs_json_ts_0_5_2_1_classes_FGBuildablePipelinePump_valve | docs_json_ts_0_5_2_1_classes_FGBuildablePipelinePump_pump)[],
+        docs_json_ts_0_5_2_1_classes_FGBuildablePipelinePump_valve | docs_json_ts_0_5_2_1_classes_FGBuildablePipelinePump_pump,
+        ...(docs_json_ts_0_5_2_1_classes_FGBuildablePipelinePump_valve | docs_json_ts_0_5_2_1_classes_FGBuildablePipelinePump_pump)[],
 	],
 };
 
 type FGBuildablePipelineSupport = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildablePipelineSupport'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildablePipelineSupport,
 		...docs_json_ts_0_5_2_1_classes_FGBuildablePipelineSupport[],
 	],
 };
@@ -387,6 +419,7 @@ type FGBuildablePipelineSupport = {
 type FGBuildablePipeReservoir = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildablePipeReservoir'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildablePipeReservoir,
 		...docs_json_ts_0_5_2_1_classes_FGBuildablePipeReservoir[],
 	],
 };
@@ -394,6 +427,7 @@ type FGBuildablePipeReservoir = {
 type FGBuildablePole = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildablePole'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildablePole,
 		...docs_json_ts_0_5_2_1_classes_FGBuildablePole[],
 	],
 };
@@ -401,6 +435,7 @@ type FGBuildablePole = {
 type FGBuildablePowerPole = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildablePowerPole'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildablePowerPole,
 		...docs_json_ts_0_5_2_1_classes_FGBuildablePowerPole[],
 	],
 };
@@ -408,6 +443,7 @@ type FGBuildablePowerPole = {
 type FGBuildablePowerStorage = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildablePowerStorage'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildablePowerStorage,
 		...docs_json_ts_0_5_2_1_classes_FGBuildablePowerStorage[],
 	],
 };
@@ -415,6 +451,7 @@ type FGBuildablePowerStorage = {
 type FGBuildableRadarTower = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableRadarTower'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildableRadarTower,
 		...docs_json_ts_0_5_2_1_classes_FGBuildableRadarTower[],
 	],
 };
@@ -430,6 +467,7 @@ type FGBuildableRailroadSignal = {
 type FGBuildableRailroadStation = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableRailroadStation'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildableRailroadStation,
 		...docs_json_ts_0_5_2_1_classes_FGBuildableRailroadStation[],
 	],
 };
@@ -437,6 +475,7 @@ type FGBuildableRailroadStation = {
 type FGBuildableRailroadTrack = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableRailroadTrack'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildableRailroadTrack,
 		...docs_json_ts_0_5_2_1_classes_FGBuildableRailroadTrack[],
 	],
 };
@@ -444,6 +483,7 @@ type FGBuildableRailroadTrack = {
 type FGBuildableRamp = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableRamp'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildableRamp,
 		...docs_json_ts_0_5_2_1_classes_FGBuildableRamp[],
 	],
 };
@@ -461,6 +501,7 @@ type FGBuildableResourceExtractor = {
 type FGBuildableResourceSink = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableResourceSink'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildableResourceSink,
 		...docs_json_ts_0_5_2_1_classes_FGBuildableResourceSink[],
 	],
 };
@@ -468,6 +509,7 @@ type FGBuildableResourceSink = {
 type FGBuildableResourceSinkShop = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableResourceSinkShop'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildableResourceSinkShop,
 		...docs_json_ts_0_5_2_1_classes_FGBuildableResourceSinkShop[],
 	],
 };
@@ -475,6 +517,7 @@ type FGBuildableResourceSinkShop = {
 type FGBuildableSnowDispenser = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableSnowDispenser'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildableSnowDispenser,
 		...docs_json_ts_0_5_2_1_classes_FGBuildableSnowDispenser[],
 	],
 };
@@ -482,6 +525,7 @@ type FGBuildableSnowDispenser = {
 type FGBuildableSpaceElevator = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableSpaceElevator'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildableSpaceElevator,
 		...docs_json_ts_0_5_2_1_classes_FGBuildableSpaceElevator[],
 	],
 };
@@ -489,6 +533,7 @@ type FGBuildableSpaceElevator = {
 type FGBuildableSplitterSmart = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableSplitterSmart'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildableSplitterSmart,
 		...docs_json_ts_0_5_2_1_classes_FGBuildableSplitterSmart[],
 	],
 };
@@ -496,6 +541,7 @@ type FGBuildableSplitterSmart = {
 type FGBuildableStair = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableStair'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildableStair,
 		...docs_json_ts_0_5_2_1_classes_FGBuildableStair[],
 	],
 };
@@ -503,6 +549,7 @@ type FGBuildableStair = {
 type FGBuildableStorage = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableStorage'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildableStorage,
 		...docs_json_ts_0_5_2_1_classes_FGBuildableStorage[],
 	],
 };
@@ -510,6 +557,7 @@ type FGBuildableStorage = {
 type FGBuildableTradingPost = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableTradingPost'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildableTradingPost,
 		...docs_json_ts_0_5_2_1_classes_FGBuildableTradingPost[],
 	],
 };
@@ -517,6 +565,7 @@ type FGBuildableTradingPost = {
 type FGBuildableTrainPlatformCargo = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableTrainPlatformCargo'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildableTrainPlatformCargo,
 		...docs_json_ts_0_5_2_1_classes_FGBuildableTrainPlatformCargo[],
 	],
 };
@@ -524,6 +573,7 @@ type FGBuildableTrainPlatformCargo = {
 type FGBuildableTrainPlatformEmpty = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableTrainPlatformEmpty'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildableTrainPlatformEmpty,
 		...docs_json_ts_0_5_2_1_classes_FGBuildableTrainPlatformEmpty[],
 	],
 };
@@ -531,6 +581,7 @@ type FGBuildableTrainPlatformEmpty = {
 type FGBuildableWalkway = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableWalkway'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildableWalkway,
 		...docs_json_ts_0_5_2_1_classes_FGBuildableWalkway[],
 	],
 };
@@ -538,6 +589,7 @@ type FGBuildableWalkway = {
 type FGBuildableWall = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableWall'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildableWall,
 		...docs_json_ts_0_5_2_1_classes_FGBuildableWall[],
 	],
 };
@@ -545,6 +597,7 @@ type FGBuildableWall = {
 type FGBuildableWaterPump = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableWaterPump'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildableWaterPump,
 		...docs_json_ts_0_5_2_1_classes_FGBuildableWaterPump[],
 	],
 };
@@ -552,6 +605,7 @@ type FGBuildableWaterPump = {
 type FGBuildableWidgetSign = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableWidgetSign'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildableWidgetSign,
 		...docs_json_ts_0_5_2_1_classes_FGBuildableWidgetSign[],
 	],
 };
@@ -559,6 +613,7 @@ type FGBuildableWidgetSign = {
 type FGBuildableWire = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableWire'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildableWire,
 		...docs_json_ts_0_5_2_1_classes_FGBuildableWire[],
 	],
 };
@@ -566,6 +621,7 @@ type FGBuildableWire = {
 type FGBuildingDescriptor = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildingDescriptor'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildingDescriptor,
 		...docs_json_ts_0_5_2_1_classes_FGBuildingDescriptor[],
 	],
 };
@@ -573,6 +629,7 @@ type FGBuildingDescriptor = {
 type FGChargedWeapon = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGChargedWeapon'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGChargedWeapon,
 		...docs_json_ts_0_5_2_1_classes_FGChargedWeapon[],
 	],
 };
@@ -580,6 +637,7 @@ type FGChargedWeapon = {
 type FGConsumableDescriptor = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGConsumableDescriptor'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGConsumableDescriptor,
 		...docs_json_ts_0_5_2_1_classes_FGConsumableDescriptor[],
 	],
 };
@@ -587,6 +645,7 @@ type FGConsumableDescriptor = {
 type FGConveyorPoleStackable = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGConveyorPoleStackable'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGBuildablePole,
 		...docs_json_ts_0_5_2_1_classes_FGBuildablePole[],
 	],
 };
@@ -594,6 +653,7 @@ type FGConveyorPoleStackable = {
 type FGCustomizationRecipe = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGCustomizationRecipe'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGCustomizationRecipe,
 		...docs_json_ts_0_5_2_1_classes_FGCustomizationRecipe[],
 	],
 };
@@ -601,13 +661,15 @@ type FGCustomizationRecipe = {
 type FGEquipmentDescriptor = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGEquipmentDescriptor'}${'\''}`,
 	Classes: [
-		...(docs_json_ts_0_5_2_1_classes_FGItemDescriptor | docs_json_ts_0_5_2_1_classes_FGEquipmentDescriptor_Desc_GolfCartGold_C)[],
+        docs_json_ts_0_5_2_1_classes_FGItemDescriptor | docs_json_ts_0_5_2_1_classes_FGEquipmentDescriptor_Desc_GolfCartGold_C,
+        ...(docs_json_ts_0_5_2_1_classes_FGItemDescriptor | docs_json_ts_0_5_2_1_classes_FGEquipmentDescriptor_Desc_GolfCartGold_C)[],
 	],
 };
 
 type FGGolfCartDispenser = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGGolfCartDispenser'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGGolfCartDispenser,
 		...docs_json_ts_0_5_2_1_classes_FGGolfCartDispenser[],
 	],
 };
@@ -615,6 +677,7 @@ type FGGolfCartDispenser = {
 type FGItemDescAmmoTypeColorCartridge = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGItemDescAmmoTypeColorCartridge'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGItemDescAmmoTypeColorCartridge,
 		...docs_json_ts_0_5_2_1_classes_FGItemDescAmmoTypeColorCartridge[],
 	],
 };
@@ -622,6 +685,7 @@ type FGItemDescAmmoTypeColorCartridge = {
 type FGItemDescAmmoTypeInstantHit = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGItemDescAmmoTypeInstantHit'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGItemDescAmmoTypeInstantHit,
 		...docs_json_ts_0_5_2_1_classes_FGItemDescAmmoTypeInstantHit[],
 	],
 };
@@ -641,6 +705,7 @@ type FGItemDescAmmoTypeProjectile = {
 type FGItemDescriptor = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGItemDescriptor'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGItemDescriptor,
 		...docs_json_ts_0_5_2_1_classes_FGItemDescriptor[],
 	],
 };
@@ -648,6 +713,7 @@ type FGItemDescriptor = {
 type FGItemDescriptorBiomass = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGItemDescriptorBiomass'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGItemDescriptor,
 		...docs_json_ts_0_5_2_1_classes_FGItemDescriptor[],
 	],
 };
@@ -655,6 +721,7 @@ type FGItemDescriptorBiomass = {
 type FGItemDescriptorNuclearFuel = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGItemDescriptorNuclearFuel'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGItemDescriptorNuclearFuel,
 		...docs_json_ts_0_5_2_1_classes_FGItemDescriptorNuclearFuel[],
 	],
 };
@@ -662,6 +729,7 @@ type FGItemDescriptorNuclearFuel = {
 type FGPipeHyperStart = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGPipeHyperStart'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGPipeHyperStart,
 		...docs_json_ts_0_5_2_1_classes_FGPipeHyperStart[],
 	],
 };
@@ -669,6 +737,7 @@ type FGPipeHyperStart = {
 type FGPoleDescriptor = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGPoleDescriptor'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGPoleDescriptor,
 		...docs_json_ts_0_5_2_1_classes_FGPoleDescriptor[],
 	],
 };
@@ -676,6 +745,7 @@ type FGPoleDescriptor = {
 type FGRecipe = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGRecipe'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGRecipe,
 		...docs_json_ts_0_5_2_1_classes_FGRecipe[],
 	],
 };
@@ -683,6 +753,7 @@ type FGRecipe = {
 type FGResourceDescriptor = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGResourceDescriptor'}${'\''}`,
 	Classes: [
+		docs_json_ts_0_5_2_1_classes_FGResourceDescriptor,
 		...docs_json_ts_0_5_2_1_classes_FGResourceDescriptor[],
 	],
 };
@@ -690,7 +761,8 @@ type FGResourceDescriptor = {
 type FGSchematic = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGSchematic'}${'\''}`,
 	Classes: [
-		...(docs_json_ts_0_5_2_1_classes_FGSchematic_base | docs_json_ts_0_5_2_1_classes_FGSchematic_with_described_unlocks)[],
+        docs_json_ts_0_5_2_1_classes_FGSchematic_base | docs_json_ts_0_5_2_1_classes_FGSchematic_with_described_unlocks,
+        ...(docs_json_ts_0_5_2_1_classes_FGSchematic_base | docs_json_ts_0_5_2_1_classes_FGSchematic_with_described_unlocks)[],
 	],
 };
 

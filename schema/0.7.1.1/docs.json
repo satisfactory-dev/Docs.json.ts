@@ -1334,7 +1334,7 @@
 			"$ref": "#/$defs/FGBuildableDoor"
 		},
 		{
-			"$ref": "docs.json.ts--0.5.2.1#/$defs/FGRecipe"
+			"$ref": "docs.json.ts--0.6.1.5#/$defs/FGRecipe"
 		},
 		{
 			"$ref": "docs.json.ts--0.5.2.1#/$defs/FGCustomizationRecipe"

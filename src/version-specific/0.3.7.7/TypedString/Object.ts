@@ -26,6 +26,15 @@ import {
 	type ObjectLiteralExpression,
 } from '@signpostmarv/json-schema-typescript-codegen/typescript-overrides';
 
+import {
+	object_has_property,
+	object_has_property_that_equals,
+} from '@satisfactory-dev/predicates.ts';
+
+import {
+	FlexibleArray_regex__items__inner,
+} from './FlexibleArray.ts';
+
 export type Object_type = object_type_base<
 	'properties',
 	SchemaObject,
@@ -89,6 +98,7 @@ export function Object_generate_typescript_data(
 	schema_parser: SchemaParser,
 	coerced_schema: Object_type,
 	schema: SchemaObject,
+	property_schema_to_regex: PropertySchemaToRegex<unknown>[],
 ): Object_DataTo {
 	const properties = Object.keys(
 		coerced_schema.properties,
@@ -98,20 +108,47 @@ export function Object_generate_typescript_data(
 		(property): [
 			string,
 			string,
-		] => [
-			property,
-			`(${RegExp.escape(property)})=([^=]+|\\(.+\\)(?=[,\\)]))`,
-		],
+		] => {
+			const regex = FlexibleArray_regex__items__inner(
+				coerced_schema.properties[property],
+				property_schema_to_regex,
+				true,
+			);
+
+			return [
+				property,
+				`(${RegExp.escape(property)})=${regex}`,
+			];
+		},
 	).map(([
 		property,
 		regex,
-	], i) => (
-		(
+	], i) => {
+		const previous_optional = (
+			i > 0
+			&& !(
+				coerced_schema.required || ([] as string[])
+			).includes(properties[i - 1])
+		);
+
+		const current_required = (
 			coerced_schema.required || ([] as string[])
-		).includes(property)
-			? `${i > 0 ? ',' : ''}${regex}`
-			: `(?:${i > 0 ? ',' : ''}${regex})?`
-	)).join('')})*\\)$`);
+		).includes(property);
+
+		return (
+			current_required
+				? `${
+					i > 0
+						? (
+							previous_optional
+								? ',?'
+								: ','
+						)
+						: ''
+				}${regex}`
+				: `(?:${i > 0 ? ',' : ''}${regex})?`
+		);
+	}).join('')})*\\)$`);
 
 	const match = regex.exec(data);
 
@@ -125,7 +162,7 @@ export function Object_generate_typescript_data(
 
 	for (let i = 0; i < matches.length; i += 2) {
 		const property_name = matches[i];
-		const property_value = matches[i + 1];
+		let property_value = matches[i + 1];
 
 		if (
 			undefined === property_name
@@ -134,16 +171,37 @@ export function Object_generate_typescript_data(
 			continue;
 		}
 
-		const property_schema = Type.maybe_add_$defs(
+		let property_schema = coerced_schema.properties[
+			property_name
+		];
+
+		if (!object_has_property_that_equals(
+			property_schema,
+			'type',
+			'string',
+		)) {
+			property_schema = Type.maybe_add_$defs(
 			schema,
-			coerced_schema.properties[
-				property_name
-			],
+				property_schema,
 		);
+		}
 
 		const type_for_property = schema_parser.parse(
 			property_schema,
 		);
+
+		if (
+			object_has_property(property_schema, 'type')
+			&& 'string' === property_schema.type
+			&& 'string' === typeof property_value
+			&& property_value.startsWith('"')
+			&& property_value.endsWith('"')
+		) {
+			property_value = property_value.substring(
+				1,
+				property_value.length - 1,
+			);
+		}
 
 		const value = type_for_property
 			.generate_typescript_data(
@@ -226,23 +284,33 @@ export function Object_type_to_regex(
 	const regex = `${
 		Object.keys(schema.properties)
 			.map((property) => {
-				let value_regex = `(?:[^=]+)`;
+				let value_regex = `(?:[^=)]+)`;
 
-				const converter = property_schema_to_regex.find((maybe) => {
-					return maybe.matches(schema.properties[property]);
+				let resolved = schema.properties[property];
+
+				let converter = property_schema_to_regex.find((maybe) => {
+					return maybe.matches(resolved);
 				});
+
+				if (!converter && 'typed_string' in resolved) {
+					resolved = resolved.typed_string as SchemaObject;
+
+					converter = property_schema_to_regex.find((maybe) => {
+						return maybe.matches(resolved);
+					});
+				}
 
 				if (converter) {
 					value_regex = `${
-						converter.to_regex(schema.properties[property])
+						converter.to_regex(resolved)
 					}`;
 				}
 
 				return `(?:,?${
 					RegExp.escape(property)
-				}=${
+				}=(?:${
 					value_regex
-				})${
+				}))${
 					(
 						(schema.required || ([] as string[]))
 							.includes(property)

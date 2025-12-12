@@ -366,6 +366,18 @@ type FGBuildableManufacturer_Build_ConstructorMk1_C = docs_json_ts_0_4_2_11_clas
 
 type FGBuildableManufacturer_Build_ConstructorMk1_C_base = {
 	CurrentPotentialConvert: [
+		[
+			docs_json_ts_common_types_integer_string,
+			docs_json_ts_common_types_decimal_string,
+		],
+		[
+			docs_json_ts_common_types_integer_string,
+			docs_json_ts_common_types_decimal_string,
+		],
+		[
+			docs_json_ts_common_types_integer_string,
+			docs_json_ts_common_types_decimal_string,
+		],
 		...[
 			docs_json_ts_common_types_integer_string,
 			docs_json_ts_common_types_decimal_string,
@@ -438,7 +450,9 @@ type FGBuildablePowerStorage = FGBuildable_powered & docs_json_ts_0_4_2_11_class
 
 type FGBuildableRadarTower = FGBuildable_powered & docs_json_ts_0_3_7_7_classes_base_FGBuildableRadarTower_base_base;
 
-type FGBuildableRailroadSignal_base = FGBuildable_base & {
+type FGBuildableRailroadSignal_base = FGBuildable_base & FGBuildableRailroadSignal_base_version_specific;
+
+type FGBuildableRailroadSignal_base_version_specific = {
 	mOnAspectChangedDelegate: docs_json_ts_common_types_empty_object,
 	mOnBlockValidationChangedDelegate: docs_json_ts_common_types_empty_object,
 	mGuardedConnections: '',
@@ -451,7 +465,9 @@ type FGBuildableRailroadSignal_base = FGBuildable_base & {
 	mSignificanceRange: docs_json_ts_common_types_decimal_string,
 };
 
-type FGBuildableRailroadSignal_block = FGBuildableRailroadSignal_base & {
+type FGBuildableRailroadSignal_block = FGBuildableRailroadSignal_base & FGBuildableRailroadSignal_block_version_specific;
+
+type FGBuildableRailroadSignal_block_version_specific = {
 	mPreviousAspect: 'RSA_None',
 };
 
@@ -527,9 +543,9 @@ type FGBuildableTrainPlatform_non_empty = FGBuildableTrainPlatform_base & {
 
 type FGBuildableTrainPlatform_with_storage = FGBuildable_powered_storage & FGBuildableTrainPlatform_non_empty;
 
-type FGBuildableTrainPlatformCargo = docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatformCargo_base_base & FGBuildableTrainPlatform_with_storage & FGBuildableTrainPlatformCargo_base;
+type FGBuildableTrainPlatformCargo = docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatformCargo_base_base & FGBuildableTrainPlatform_with_storage & FGBuildable_base & FGBuildableTrainPlatformCargo_version_specific;
 
-type FGBuildableTrainPlatformCargo_base = FGBuildable_base & {
+type FGBuildableTrainPlatformCargo_version_specific = {
 	mOnTransferRateUpdated: docs_json_ts_common_types_empty_object,
 	mWaitForConditionUpdatePeriod: docs_json_ts_common_types_decimal_string,
 	mDockingRuleSet: docs_json_ts_0_5_2_1_properties_mDockingRuleSet,
@@ -722,7 +738,9 @@ type FGNobeliskDetonator_base_base = FGWeapon_base & docs_json_ts_0_4_2_11_class
 
 type FGPipeHyperStart = docs_json_ts_0_3_7_7_classes_base_FGPipeHyperStart_base_base & FGBuildable_pole_with_length_and_power;
 
-type FGRecipe = docs_json_ts_0_4_2_11_classes_base_FGRecipe_base & {
+type FGRecipe = docs_json_ts_0_4_2_11_classes_base_FGRecipe_base & FGRecipe_version_specific;
+
+type FGRecipe_version_specific = {
 	mIngredients: docs_json_ts_0_3_7_7_properties_ItemClass_Amount_list | null,
 	mProduct: docs_json_ts_0_3_7_7_properties_ItemClass_Amount_list | null,
 };
@@ -741,7 +759,8 @@ type FGSchematic_base_base_base = docs_json_ts_0_4_2_11_classes_base_FGSchematic
 	mDependenciesBlocksSchematicAccess: docs_json_ts_common_types_bool_string,
 	mSmallSchematicIcon: 'None' | docs_json_ts_0_4_2_11_properties_Texture2D,
 	mRelevantShopSchematics: '' | [
-		...(`BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}` | 'None')[],
+        `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}` | 'None',
+        ...(`BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}` | 'None')[],
 	],
 };
 
@@ -903,7 +922,9 @@ export type {
 	FGBuildablePowerStorage,
 	FGBuildableRadarTower,
 	FGBuildableRailroadSignal_base,
+	FGBuildableRailroadSignal_base_version_specific,
 	FGBuildableRailroadSignal_block,
+	FGBuildableRailroadSignal_block_version_specific,
 	FGBuildableRailroadStation,
 	FGBuildableRailroadStation_base,
 	FGBuildableRailroadTrack,
@@ -931,7 +952,7 @@ export type {
 	FGBuildableTrainPlatform_non_empty,
 	FGBuildableTrainPlatform_with_storage,
 	FGBuildableTrainPlatformCargo,
-	FGBuildableTrainPlatformCargo_base,
+	FGBuildableTrainPlatformCargo_version_specific,
 	FGBuildableWall,
 	FGBuildableWidgetSign,
 	FGBuildableWire,
@@ -965,6 +986,7 @@ export type {
 	FGNobeliskDetonator_base_base,
 	FGPipeHyperStart,
 	FGRecipe,
+	FGRecipe_version_specific,
 	FGResourceDescriptor,
 	FGSchematic_base,
 	FGSchematic_base_base,

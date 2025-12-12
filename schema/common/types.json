@@ -131,6 +131,8 @@
 				"minItems": 1,
 				"uniqueItems": true,
 				"items": {
+					"type": "string",
+					"typed_string": {
 					"type": "object",
 					"additionalProperties": false,
 					"required": ["X", "Y", "Z"],
@@ -143,6 +145,7 @@
 						},
 						"Z": {
 							"$ref": "#/$defs/decimal_string--signed"
+						}
 						}
 					}
 				}

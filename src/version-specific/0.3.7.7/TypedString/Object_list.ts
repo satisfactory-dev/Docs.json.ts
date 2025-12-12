@@ -65,10 +65,6 @@ import {
 } from './Object.ts';
 
 import {
-	BlueprintGeneratedClass_quoted,
-} from '../BlueprintGeneratedClass.ts';
-
-import {
 	NamedList,
 } from '../NamedList.ts';
 
@@ -400,21 +396,6 @@ export function ajv_macro_value_regex(value: SchemaObject) {
 			// eslint-disable-next-line @stylistic/max-len
 			return '\\(X=-?\\d+\\.\\d{6},Y=-?\\d+\\.\\d{6},Z=-?\\d+\\.\\d{6}\\)';
 		}
-	} else if (
-		object_has_property(
-			value,
-			'DocsDotJson_BlueprintGeneratedClass_quoted',
-		)
-		&& (
-			'string' === typeof (
-				value.DocsDotJson_BlueprintGeneratedClass_quoted
-			)
-			|| null === value.DocsDotJson_BlueprintGeneratedClass_quoted
-		)
-	) {
-		return BlueprintGeneratedClass_quoted.regex_from_value(
-			value.DocsDotJson_BlueprintGeneratedClass_quoted,
-		);
 	} else if (
 		object_has_property(
 			value,

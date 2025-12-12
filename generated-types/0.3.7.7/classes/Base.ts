@@ -13,10 +13,19 @@ import type {
 	mDisableSnapOn_top_bottom as docs_json_ts_0_3_7_7_properties_mDisableSnapOn_top_bottom,
 	mDisplayName as docs_json_ts_0_3_7_7_properties_mDisplayName,
 	mForm as docs_json_ts_0_3_7_7_properties_mForm,
+	mProducedIn as docs_json_ts_0_3_7_7_properties_mProducedIn,
 	mRelevantEvents as docs_json_ts_0_3_7_7_properties_mRelevantEvents,
+	mSchematicDependencies_item as docs_json_ts_0_3_7_7_properties_mSchematicDependencies_item,
 	mStackSize as docs_json_ts_0_3_7_7_properties_mStackSize,
 	mSubCategories as docs_json_ts_0_3_7_7_properties_mSubCategories,
 	mType as docs_json_ts_0_3_7_7_properties_mType,
+	mUnlocks_item_base as docs_json_ts_0_3_7_7_properties_mUnlocks_item_base,
+	mUnlocks_item_mItemsToGive as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mItemsToGive,
+	mUnlocks_item_mNumArmEquipmentSlotsToUnlock as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mNumArmEquipmentSlotsToUnlock,
+	mUnlocks_item_mNumInventorySlotsToUnlock as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mNumInventorySlotsToUnlock,
+	mUnlocks_item_mRecipes as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mRecipes,
+	mUnlocks_item_mResourcesToAddToScanner as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mResourcesToAddToScanner,
+	mUnlocks_item_mSchematics as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mSchematics,
 	Texture2D as docs_json_ts_0_3_7_7_properties_Texture2D,
 	Tier as docs_json_ts_0_3_7_7_properties_Tier,
 	transform_Rotation_Translation_Scale3D as docs_json_ts_0_3_7_7_properties_transform_Rotation_Translation_Scale3D,
@@ -724,11 +733,11 @@ type FGBuildableResourceExtractor_miner_base_base_base = FGBuildableResourceExtr
 	mParticleMap: [
 		{
 			ResourceNode_16_2100B5C34EE8DF7958D78A974512F3C3: `/Game/FactoryGame/Resource/RawResources/${string}${'/Desc_'}${string}${'.Desc_'}${string}${'_C'}`,
-			ParticleSystem1_9_F0CF81514E1E1C5007AC99B0C59C63CD: `ParticleSystem'"/Game/FactoryGame/VFX/Factory/Miner/P_Mining_${string}${'_01.P_Mining_'}${string}${'_01"\''}`,
+			ParticleSystem1_9_F0CF81514E1E1C5007AC99B0C59C63CD: `ParticleSystem'"/Game/FactoryGame/${string}${'"\''}`,
 		},
 		...{
 			ResourceNode_16_2100B5C34EE8DF7958D78A974512F3C3: `/Game/FactoryGame/Resource/RawResources/${string}${'/Desc_'}${string}${'.Desc_'}${string}${'_C'}`,
-			ParticleSystem1_9_F0CF81514E1E1C5007AC99B0C59C63CD: `ParticleSystem'"/Game/FactoryGame/VFX/Factory/Miner/P_Mining_${string}${'_01.P_Mining_'}${string}${'_01"\''}`,
+			ParticleSystem1_9_F0CF81514E1E1C5007AC99B0C59C63CD: `ParticleSystem'"/Game/FactoryGame/${string}${'"\''}`,
 		}[],
 	],
 	mExtractorTypeName: 'Miner',
@@ -1313,10 +1322,7 @@ type FGRecipe_base_version_specific = FGRecipe_base & {
 };
 
 type FGRecipe_mProducedIn = FGInstructive & {
-	mProducedIn: '' | [
-        '/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkBenchComponent.BP_WorkBenchComponent_C' | '/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkshopComponent.BP_WorkshopComponent_C' | '/Game/FactoryGame/Buildable/Factory/AssemblerMk1/Build_AssemblerMk1.Build_AssemblerMk1_C' | '/Game/FactoryGame/Buildable/Factory/AutomatedWorkBench/Build_AutomatedWorkBench.Build_AutomatedWorkBench_C' | '/Game/FactoryGame/Buildable/Factory/ConstructorMk1/Build_ConstructorMk1.Build_ConstructorMk1_C' | '/Game/FactoryGame/Buildable/Factory/Converter/Build_Converter.Build_Converter_C' | '/Game/FactoryGame/Buildable/Factory/FoundryMk1/Build_FoundryMk1.Build_FoundryMk1_C' | '/Game/FactoryGame/Buildable/Factory/ManufacturerMk1/Build_ManufacturerMk1.Build_ManufacturerMk1_C' | '/Game/FactoryGame/Buildable/Factory/OilRefinery/Build_OilRefinery.Build_OilRefinery_C' | '/Game/FactoryGame/Buildable/Factory/Packager/Build_Packager.Build_Packager_C' | '/Game/FactoryGame/Buildable/Factory/SmelterMk1/Build_SmelterMk1.Build_SmelterMk1_C' | '/Game/FactoryGame/Equipment/BuildGun/BP_BuildGun.BP_BuildGun_C' | '/Script/FactoryGame.FGBuildGun' | '/Script/FactoryGame.FGBuildableAutomatedWorkBench',
-        ...('/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkBenchComponent.BP_WorkBenchComponent_C' | '/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkshopComponent.BP_WorkshopComponent_C' | '/Game/FactoryGame/Buildable/Factory/AssemblerMk1/Build_AssemblerMk1.Build_AssemblerMk1_C' | '/Game/FactoryGame/Buildable/Factory/AutomatedWorkBench/Build_AutomatedWorkBench.Build_AutomatedWorkBench_C' | '/Game/FactoryGame/Buildable/Factory/ConstructorMk1/Build_ConstructorMk1.Build_ConstructorMk1_C' | '/Game/FactoryGame/Buildable/Factory/Converter/Build_Converter.Build_Converter_C' | '/Game/FactoryGame/Buildable/Factory/FoundryMk1/Build_FoundryMk1.Build_FoundryMk1_C' | '/Game/FactoryGame/Buildable/Factory/ManufacturerMk1/Build_ManufacturerMk1.Build_ManufacturerMk1_C' | '/Game/FactoryGame/Buildable/Factory/OilRefinery/Build_OilRefinery.Build_OilRefinery_C' | '/Game/FactoryGame/Buildable/Factory/Packager/Build_Packager.Build_Packager_C' | '/Game/FactoryGame/Buildable/Factory/SmelterMk1/Build_SmelterMk1.Build_SmelterMk1_C' | '/Game/FactoryGame/Equipment/BuildGun/BP_BuildGun.BP_BuildGun_C' | '/Script/FactoryGame.FGBuildGun' | '/Script/FactoryGame.FGBuildableAutomatedWorkBench')[],
-	],
+	mProducedIn: docs_json_ts_0_3_7_7_properties_mProducedIn,
 };
 
 type FGResourceDescriptor = FGDescriptor_sinkable & FGResourceDescriptor_base;
@@ -1338,6 +1344,51 @@ type FGSchematic_base = FGInstructive & {
 	] | docs_json_ts_0_3_7_7_properties_mSubCategories,
 	mTimeToComplete: docs_json_ts_common_types_decimal_string,
 	mIncludeInBuilds: 'IIB_PublicBuilds',
+};
+
+type FGSchematic_version_specific = FGSchematic & {
+	mTechTier: docs_json_ts_0_3_7_7_properties_Tier,
+	mUnlocks: never[] | [
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mRecipes,
+	] | [
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mRecipes,
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mResourcesToAddToScanner,
+	] | [
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mRecipes,
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mNumInventorySlotsToUnlock,
+	] | [
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mRecipes,
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mNumInventorySlotsToUnlock,
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mNumArmEquipmentSlotsToUnlock,
+	] | [
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mNumArmEquipmentSlotsToUnlock,
+	] | [
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mNumInventorySlotsToUnlock,
+	] | [
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mRecipes,
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mResourcesToAddToScanner,
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mSchematics,
+	] | [
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mRecipes,
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mSchematics,
+	] | [
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mSchematics,
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mRecipes,
+	] | [
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mSchematics,
+	] | [
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mResourcesToAddToScanner,
+	] | [
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mRecipes,
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_base,
+	] | [
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_base,
+	] | [
+		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mItemsToGive,
+	],
+	mSchematicDependencies: [
+		...docs_json_ts_0_3_7_7_properties_mSchematicDependencies_item[],
+	],
 };
 
 type FGSnowballWeapon = FGWeaponProjectile_thrown & {
@@ -1795,6 +1846,7 @@ export type {
 	FGResourceDescriptor_base,
 	FGSchematic,
 	FGSchematic_base,
+	FGSchematic_version_specific,
 	FGSnowballWeapon,
 	FGSuitBase,
 	FGSuitBase_base,

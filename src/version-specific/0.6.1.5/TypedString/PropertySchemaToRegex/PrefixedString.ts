@@ -4,35 +4,33 @@ import type {
 
 import {
 	PropertySchemaToRegex,
-} from '../Object.ts';
+} from '../../../0.3.7.7/TypedString/Object.ts';
 
 import type {
-	mode,
 	PrefixedString_type,
 } from '../../PrefixedString.ts';
 import {
 	PrefixedString as PrefixedStringType,
 } from '../../PrefixedString.ts';
 
-export function PrefixedString<
-	Mode extends mode,
->(
+export function PrefixedString(
 	ajv: Ajv,
-	mode: Mode,
 ) {
-	return new PropertySchemaToRegex<PrefixedString_type<Mode>>(
-		ajv.compile(PrefixedStringType.generate_schema_definition({mode})),
+	return new PropertySchemaToRegex<PrefixedString_type>(
+		ajv.compile(PrefixedStringType.generate_schema_definition()),
 		({
 			DocsDotJson_PrefixedString: {
 				prefix,
 				mode,
 				value,
+				first_path,
 			},
 		}) => {
 			return PrefixedStringType.regex_from_prefix_value_and_mode(
 				prefix,
 				value,
 				mode,
+				first_path,
 			);
 		},
 	);

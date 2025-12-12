@@ -72,7 +72,7 @@ import type {
 	FGPipeHyperStart as docs_json_ts_0_3_7_7_classes_base_FGPipeHyperStart,
 	FGPortableMinerDispenser as docs_json_ts_0_3_7_7_classes_base_FGPortableMinerDispenser,
 	FGRecipe as docs_json_ts_0_3_7_7_classes_base_FGRecipe,
-	FGSchematic as docs_json_ts_0_3_7_7_classes_base_FGSchematic,
+	FGSchematic_version_specific as docs_json_ts_0_3_7_7_classes_base_FGSchematic_version_specific,
 	FGSnowballWeapon as docs_json_ts_0_3_7_7_classes_base_FGSnowballWeapon,
 	FGSuitBase as docs_json_ts_0_3_7_7_classes_base_FGSuitBase,
 	FGWeaponInstantFire as docs_json_ts_0_3_7_7_classes_base_FGWeaponInstantFire,
@@ -84,18 +84,6 @@ import type {
 	integer_string as docs_json_ts_common_types_integer_string,
 	RGBA as docs_json_ts_common_types_RGBA,
 } from './../common/types.ts';
-
-import type {
-	mSchematicDependencies_item as docs_json_ts_0_3_7_7_properties_mSchematicDependencies_item,
-	mUnlocks_item_base as docs_json_ts_0_3_7_7_properties_mUnlocks_item_base,
-	mUnlocks_item_mItemsToGive as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mItemsToGive,
-	mUnlocks_item_mNumArmEquipmentSlotsToUnlock as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mNumArmEquipmentSlotsToUnlock,
-	mUnlocks_item_mNumInventorySlotsToUnlock as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mNumInventorySlotsToUnlock,
-	mUnlocks_item_mRecipes as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mRecipes,
-	mUnlocks_item_mResourcesToAddToScanner as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mResourcesToAddToScanner,
-	mUnlocks_item_mSchematics as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mSchematics,
-	Tier as docs_json_ts_0_3_7_7_properties_Tier,
-} from './types/properties.ts';
 
 type FGBuildable_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable;
 
@@ -274,50 +262,7 @@ type FGResourceDescriptor = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_sinka
 	mManualMiningAudioName: 'Metal',
 };
 
-type FGSchematic = docs_json_ts_0_3_7_7_classes_base_FGSchematic & {
-	mTechTier: docs_json_ts_0_3_7_7_properties_Tier,
-	mUnlocks: never[] | [
-		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mRecipes,
-	] | [
-		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mRecipes,
-		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mResourcesToAddToScanner,
-	] | [
-		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mRecipes,
-		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mNumInventorySlotsToUnlock,
-	] | [
-		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mRecipes,
-		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mNumInventorySlotsToUnlock,
-		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mNumArmEquipmentSlotsToUnlock,
-	] | [
-		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mNumArmEquipmentSlotsToUnlock,
-	] | [
-		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mNumInventorySlotsToUnlock,
-	] | [
-		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mRecipes,
-		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mResourcesToAddToScanner,
-		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mSchematics,
-	] | [
-		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mRecipes,
-		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mSchematics,
-	] | [
-		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mSchematics,
-		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mRecipes,
-	] | [
-		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mSchematics,
-	] | [
-		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mResourcesToAddToScanner,
-	] | [
-		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mRecipes,
-		docs_json_ts_0_3_7_7_properties_mUnlocks_item_base,
-	] | [
-		docs_json_ts_0_3_7_7_properties_mUnlocks_item_base,
-	] | [
-		docs_json_ts_0_3_7_7_properties_mUnlocks_item_mItemsToGive,
-	],
-	mSchematicDependencies: [
-		...docs_json_ts_0_3_7_7_properties_mSchematicDependencies_item[],
-	],
-};
+type FGSchematic = docs_json_ts_0_3_7_7_classes_base_FGSchematic_version_specific;
 
 type FGSnowballWeapon = docs_json_ts_0_3_7_7_classes_base_FGSnowballWeapon;
 

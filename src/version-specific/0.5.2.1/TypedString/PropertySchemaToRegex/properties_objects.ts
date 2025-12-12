@@ -48,7 +48,7 @@ export function properties_objects(
 						'mDockingRuleSet',
 						'FalloffCurve--EditorCurveData--only',
 						'FalloffCurve--EditorCurveData--with-ExternalCurve',
-					].join('|')})`,
+					].join('|')})$`,
 				},
 			},
 		}),
@@ -59,14 +59,14 @@ export function properties_objects(
 				throw new TypeError('$ref not present!');
 			}
 
-			return Object_matcher.to_regex(
+			return `(?:${Object_matcher.to_regex(
 				properties.$defs[
 					$ref as keyof typeof properties['$defs']
 				] as unknown as {
 					type: 'string',
 					typed_string: Object_type,
 				},
-			);
+			)})`;
 		},
 	);
 }

@@ -6,30 +6,35 @@ import {
 	PropertySchemaToRegex,
 } from '../Object.ts';
 
-export function ConstString(
+export function PatternString(
 	ajv: Ajv,
 ) {
-	return new PropertySchemaToRegex<{type: 'string', const: string}>(
+	return new PropertySchemaToRegex<{
+		type: 'string',
+		pattern: string,
+	}>(
 		ajv.compile({
 			type: 'object',
 			additionalProperties: false,
-			required: ['type', 'const'],
+			required: ['type', 'pattern'],
 			properties: {
 				type: {
 					type: 'string',
 					const: 'string',
 				},
-				const: {
+				pattern: {
 					type: 'string',
+					pattern: '^\\^.+\\$$',
 				},
 			},
 		}),
 		(value) => {
-			return `(?:${
-				RegExp.escape(value.const)
-			}|${
-				RegExp.escape(`"${value.const}"`)
-			})`;
+			const regex = value.pattern.substring(
+				1,
+				value.pattern.length - 1,
+			);
+
+			return `(?:${regex}|"${regex}")`;
 		},
 	);
 }
