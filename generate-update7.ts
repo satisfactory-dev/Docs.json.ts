@@ -51,7 +51,7 @@ import {
 	filenames_by_$id,
 } from './src/version-specific/0.7.1.1/filenames.ts';
 
-console.log('Generating Update 6');
+console.log('Generating Update 7');
 
 const ajv = new Ajv({strict: true, verbose: true});
 
