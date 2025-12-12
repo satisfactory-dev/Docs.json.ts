@@ -430,9 +430,9 @@
 						"items": false,
 						"prefixItems": [
 							{
-							"type": "string",
+								"type": "string",
 								"const": "/Game/FactoryGame/Buildable/-Shared/Customization/Skins/SkinDesc_Test1.SkinDesc_Test1_C"
-						}
+							}
 						]
 					}
 				}
@@ -2817,9 +2817,9 @@
 						"items": false,
 						"prefixItems": [
 							{
-							"type": "string",
+								"type": "string",
 								"const": "EWS_Unequipped"
-						}
+							}
 						]
 					}
 				},

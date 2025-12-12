@@ -27,19 +27,19 @@
 				"items": {
 					"type": "string",
 					"typed_string": {
-					"type": "object",
-					"additionalProperties": false,
-					"required": ["Translation"],
-					"properties": {
-						"Rotation": {
-							"$ref": "docs.json.ts--common--types#/$defs/XYZW--decimal_string"
-						},
-						"Translation": {
-							"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
-						},
-						"Scale3D": {
-							"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
-						}
+						"type": "object",
+						"additionalProperties": false,
+						"required": ["Translation"],
+						"properties": {
+							"Rotation": {
+								"$ref": "docs.json.ts--common--types#/$defs/XYZW--decimal_string"
+							},
+							"Translation": {
+								"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
+							},
+							"Scale3D": {
+								"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
+							}
 						}
 					}
 				}
@@ -255,22 +255,22 @@
 						"items": {
 							"type": "string",
 							"typed_string": {
-							"type": "object",
-							"additionalProperties": false,
-							"required": ["ResourceDescriptor"],
-							"properties": {
-								"ResourceDescriptor": {
-									"type": "string",
+								"type": "object",
+								"additionalProperties": false,
+								"required": ["ResourceDescriptor"],
+								"properties": {
+									"ResourceDescriptor": {
+										"type": "string",
 										"DocsDotJson_PrefixedString": {
 											"prefix": "BlueprintGeneratedClass",
 											"mode": "quoted",
 											"value": null
 										}
-								},
-								"ResourceNodeType": {
-									"type": "string",
-									"enum": ["Geyser", "FrackingCore"]
-								}
+									},
+									"ResourceNodeType": {
+										"type": "string",
+										"enum": ["Geyser", "FrackingCore"]
+									}
 								}
 							}
 						}

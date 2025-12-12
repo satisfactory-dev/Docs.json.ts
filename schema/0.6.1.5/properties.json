@@ -117,33 +117,33 @@
 						"items": {
 							"type": "string",
 							"typed_string": {
-							"type": "object",
-							"required": [
-								"ItemDescriptor",
-								"ActorsAllowedToScan"
-							],
-							"properties": {
-								"ItemDescriptor": {
-									"type": "string",
+								"type": "object",
+								"required": [
+									"ItemDescriptor",
+									"ActorsAllowedToScan"
+								],
+								"properties": {
+									"ItemDescriptor": {
+										"type": "string",
 										"DocsDotJson_PrefixedString": {
 											"prefix": "BlueprintGeneratedClass",
 											"mode": "quoted",
 											"value": null
 										}
-								},
-								"ActorsAllowedToScan": {
-									"type": "string",
-									"typed_string": {
-										"type": "array",
-										"minItems": 1,
-										"uniqueItems": true,
-										"items": {
-											"type": "string",
-											"templated_string": [
-												"Class'\"/Script/FactoryGame.",
-												{"type": "string"},
-												"\"'"
-											]
+									},
+									"ActorsAllowedToScan": {
+										"type": "string",
+										"typed_string": {
+											"type": "array",
+											"minItems": 1,
+											"uniqueItems": true,
+											"items": {
+												"type": "string",
+												"templated_string": [
+													"Class'\"/Script/FactoryGame.",
+													{"type": "string"},
+													"\"'"
+												]
 											}
 										}
 									}

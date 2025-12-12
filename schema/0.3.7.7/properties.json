@@ -518,21 +518,21 @@
 				"items": {
 					"type": "string",
 					"typed_string": {
-					"type": "object",
-					"additionalProperties": false,
-					"required": ["ItemClass", "Amount"],
-					"properties": {
-						"ItemClass": {
-							"type": "string",
-							"DocsDotJson_PrefixedString": {
-								"prefix": "BlueprintGeneratedClass",
-								"mode": "quoted",
-								"value": null
+						"type": "object",
+						"additionalProperties": false,
+						"required": ["ItemClass", "Amount"],
+						"properties": {
+							"ItemClass": {
+								"type": "string",
+								"DocsDotJson_PrefixedString": {
+									"prefix": "BlueprintGeneratedClass",
+									"mode": "quoted",
+									"value": null
+								}
+							},
+							"Amount": {
+								"$ref": "docs.json.ts--common--types#/$defs/integer_string"
 							}
-						},
-						"Amount": {
-							"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-						}
 						}
 					}
 				}

@@ -66,86 +66,86 @@
 								"items": {
 									"type": "string",
 									"typed_string": {
-									"type": "object",
-									"additionalProperties": false,
-									"required": [
-										"MaterialInterface",
-										"MaterialSlotName",
-										"ImportedMaterialSlotName",
-										"UVChannelData"
-									],
-									"properties": {
-										"MaterialInterface": {
-											"oneOf": [
-												{
-													"type": "string",
-													"DocsDotJson_PrefixedString": {
-														"prefix": "MaterialInstanceConstant",
-														"mode": "quoted",
-														"value": null
-													}
-												},
-												{
-													"type": "string",
-													"DocsDotJson_PrefixedString": {
-														"prefix": "Material",
-														"mode": "quoted",
-														"value": null
-													}
-												}
-											]
-										},
-										"MaterialSlotName": {
-											"type": "string",
-											"enum": [
-												"lambert1",
-												"Rifle",
-												"lambert9_001",
-												"lambert10",
-												"lambert2",
-												"Material_003",
-												"Material_002",
-												"Rocket1",
-												"Rocket2",
-												"01 - Default"
-											]
-										},
-										"ImportedMaterialSlotName": {
-											"type": "string",
-											"enum": [
-												"lambert1",
-												"Rifle",
-												"lambert9_001",
-												"lambert10",
-												"lambert2",
-												"Material_003",
-												"Material_002",
-												"Rocket1",
-												"Rocket2",
-												"01 - Default"
-											]
-										},
-										"UVChannelData": {
+										"type": "object",
+										"additionalProperties": false,
+										"required": [
+											"MaterialInterface",
+											"MaterialSlotName",
+											"ImportedMaterialSlotName",
+											"UVChannelData"
+										],
+										"properties": {
+											"MaterialInterface": {
 												"oneOf": [
 													{
-											"type": "string",
-											"typed_string": {
-												"type": "object",
-												"additionalProperties": false,
-												"required": [
-													"bInitialized",
-													"LocalUVDensities[0]"
-														],
-														"properties": {
-															"bInitialized": {
-																"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-															},
-															"LocalUVDensities[0]": {
-																"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-															}
+														"type": "string",
+														"DocsDotJson_PrefixedString": {
+															"prefix": "MaterialInstanceConstant",
+															"mode": "quoted",
+															"value": null
+														}
+													},
+													{
+														"type": "string",
+														"DocsDotJson_PrefixedString": {
+															"prefix": "Material",
+															"mode": "quoted",
+															"value": null
 														}
 													}
-												},
+												]
+											},
+											"MaterialSlotName": {
+												"type": "string",
+												"enum": [
+													"lambert1",
+													"Rifle",
+													"lambert9_001",
+													"lambert10",
+													"lambert2",
+													"Material_003",
+													"Material_002",
+													"Rocket1",
+													"Rocket2",
+													"01 - Default"
+												]
+											},
+											"ImportedMaterialSlotName": {
+												"type": "string",
+												"enum": [
+													"lambert1",
+													"Rifle",
+													"lambert9_001",
+													"lambert10",
+													"lambert2",
+													"Material_003",
+													"Material_002",
+													"Rocket1",
+													"Rocket2",
+													"01 - Default"
+												]
+											},
+											"UVChannelData": {
+												"oneOf": [
+													{
+														"type": "string",
+														"typed_string": {
+															"type": "object",
+															"additionalProperties": false,
+															"required": [
+																"bInitialized",
+																"LocalUVDensities[0]"
+															],
+															"properties": {
+																"bInitialized": {
+																	"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+																},
+																"LocalUVDensities[0]": {
+																	"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+																}
+															}
+														}
+													},
 													{
 														"type": "string",
 														"typed_string": {
@@ -399,18 +399,18 @@
 								"items": {
 									"type": "string",
 									"typed_string": {
-									"type": "object",
-									"additionalProperties": false,
-									"required": ["ActorClass"],
-									"properties": {
-										"ActorClass": {
-											"type": "string",
+										"type": "object",
+										"additionalProperties": false,
+										"required": ["ActorClass"],
+										"properties": {
+											"ActorClass": {
+												"type": "string",
 												"DocsDotJson_PrefixedString": {
 													"prefix": "BlueprintGeneratedClass",
 													"mode": "quoted",
 													"value": null
 												}
-										}
+											}
 										}
 									}
 								}
@@ -492,31 +492,31 @@
 								"items": {
 									"type": "string",
 									"typed_string": {
-									"type": "object",
-									"additionalProperties": false,
-									"required": ["mMaterial"],
-									"properties": {
-										"mMaterial": {
-											"type": "string",
-											"templated_string": [
-												"/Game/FactoryGame/Buildable/-Shared/Customization/Materials/MaterialDesc_Foundation_",
-												{"type": "string"},
-												".MaterialDesc_Foundation_",
-												{"type": "string"}
-											]
-										},
-										"mRecipe": {
-											"type": "string",
-											"templated_string": [
-												"/Game/FactoryGame/Buildable/Building/Foundation/",
-												{"type": "string"},
-												"/Recipe_",
-												{"type": "string"},
-												".Recipe_",
-												{"type": "string"},
-												"_C"
-											]
-										}
+										"type": "object",
+										"additionalProperties": false,
+										"required": ["mMaterial"],
+										"properties": {
+											"mMaterial": {
+												"type": "string",
+												"templated_string": [
+													"/Game/FactoryGame/Buildable/-Shared/Customization/Materials/MaterialDesc_Foundation_",
+													{"type": "string"},
+													".MaterialDesc_Foundation_",
+													{"type": "string"}
+												]
+											},
+											"mRecipe": {
+												"type": "string",
+												"templated_string": [
+													"/Game/FactoryGame/Buildable/Building/Foundation/",
+													{"type": "string"},
+													"/Recipe_",
+													{"type": "string"},
+													".Recipe_",
+													{"type": "string"},
+													"_C"
+												]
+											}
 										}
 									}
 								}
@@ -567,20 +567,20 @@
 								"items": {
 									"type": "string",
 									"typed_string": {
-									"type": "object",
-									"additionalProperties": false,
-									"required": ["Min", "Max", "bIsValid"],
-									"properties": {
-										"Min": {
-											"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
-										},
-										"Max": {
-											"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
-										},
-										"IsValid": {
-											"type": "string",
-											"const": "0"
-										}
+										"type": "object",
+										"additionalProperties": false,
+										"required": ["Min", "Max", "bIsValid"],
+										"properties": {
+											"Min": {
+												"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
+											},
+											"Max": {
+												"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
+											},
+											"IsValid": {
+												"type": "string",
+												"const": "0"
+											}
 										}
 									}
 								}
@@ -1946,13 +1946,13 @@
 								"items": {
 									"type": "string",
 									"typed_string": {
-									"type": "object",
-									"additionalProperties": false,
-									"required": ["Value"],
-									"properties": {
-										"Value": {
-											"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-										}
+										"type": "object",
+										"additionalProperties": false,
+										"required": ["Value"],
+										"properties": {
+											"Value": {
+												"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+											}
 										}
 									}
 								}
@@ -1975,20 +1975,23 @@
 								"items": {
 									"type": "string",
 									"typed_string": {
-									"type": "object",
-									"additionalProperties": false,
-									"required": [
-										"CompatibleItemType",
-										"CompatibleItemDescriptors"
-									],
-									"properties": {
-										"CompatibleItemType": {
-											"type": "string",
-											"enum": ["CIT_AMMO", "CIT_WEAPON"]
-										},
-										"CompatibleItemDescriptors": {
-											"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
-										}
+										"type": "object",
+										"additionalProperties": false,
+										"required": [
+											"CompatibleItemType",
+											"CompatibleItemDescriptors"
+										],
+										"properties": {
+											"CompatibleItemType": {
+												"type": "string",
+												"enum": [
+													"CIT_AMMO",
+													"CIT_WEAPON"
+												]
+											},
+											"CompatibleItemDescriptors": {
+												"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
+											}
 										}
 									}
 								}
@@ -2137,77 +2140,77 @@
 						"items": {
 							"type": "string",
 							"typed_string": {
-							"type": "object",
-							"additionalProperties": false,
-							"required": [
-								"ScannableClass",
-								"DisplayText",
-								"ScannerLightColor",
-								"Icon",
-								"RequiredSchematic"
-							],
-							"properties": {
-								"ScannableClass": {
-									"type": "string",
+								"type": "object",
+								"additionalProperties": false,
+								"required": [
+									"ScannableClass",
+									"DisplayText",
+									"ScannerLightColor",
+									"Icon",
+									"RequiredSchematic"
+								],
+								"properties": {
+									"ScannableClass": {
+										"type": "string",
 										"DocsDotJson_PrefixedString": {
 											"prefix": "BlueprintGeneratedClass",
 											"mode": "quoted",
 											"value": null
 										}
-								},
-								"DisplayText": {
-									"type": "string",
-									"DocsDotJson_named_list": "NSLOCTEXT"
-								},
-								"ScannerLightColor": {
-									"$ref": "docs.json.ts--common--types#/$defs/BGRA"
-								},
-								"Icon": {
-									"oneOf": [
-										{
-											"type": "string",
-											"templated_string": [
-												"/Game/FactoryGame/",
-												["Resource", "Equipment"],
-												{"type": "string"},
-												"/",
-												{"type": "string"},
-												".",
-												{"type": "string"},
-												"_",
-												["64", "64_new"]
-											]
-										},
-										{
-											"type": "string",
-											"enum": [
-												"/Game/FactoryGame/Prototype/WAT/UI/T_WAT1.T_WAT1",
-												"/Game/FactoryGame/Prototype/WAT/UI/T_WAT2.T_WAT2"
-											]
-										}
-									]
-								},
-								"RequiredSchematic": {
-									"type": "string",
-									"templated_string": [
-										"/Game/FactoryGame/Schematics/Research/",
-										{"type": "string"},
-										"/",
-										{"type": "string"},
-										".",
-										{"type": "string"},
-										"_C"
-									]
-								},
-								"PreCacheAllOfType": {
-									"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-								},
-								"ShouldOverrideDetectionRange": {
-									"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-								},
-								"NewDetectionRange": {
-									"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-								}
+									},
+									"DisplayText": {
+										"type": "string",
+										"DocsDotJson_named_list": "NSLOCTEXT"
+									},
+									"ScannerLightColor": {
+										"$ref": "docs.json.ts--common--types#/$defs/BGRA"
+									},
+									"Icon": {
+										"oneOf": [
+											{
+												"type": "string",
+												"templated_string": [
+													"/Game/FactoryGame/",
+													["Resource", "Equipment"],
+													{"type": "string"},
+													"/",
+													{"type": "string"},
+													".",
+													{"type": "string"},
+													"_",
+													["64", "64_new"]
+												]
+											},
+											{
+												"type": "string",
+												"enum": [
+													"/Game/FactoryGame/Prototype/WAT/UI/T_WAT1.T_WAT1",
+													"/Game/FactoryGame/Prototype/WAT/UI/T_WAT2.T_WAT2"
+												]
+											}
+										]
+									},
+									"RequiredSchematic": {
+										"type": "string",
+										"templated_string": [
+											"/Game/FactoryGame/Schematics/Research/",
+											{"type": "string"},
+											"/",
+											{"type": "string"},
+											".",
+											{"type": "string"},
+											"_C"
+										]
+									},
+									"PreCacheAllOfType": {
+										"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+									},
+									"ShouldOverrideDetectionRange": {
+										"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+									},
+									"NewDetectionRange": {
+										"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+									}
 								}
 							}
 						}
@@ -2273,9 +2276,7 @@
 		},
 		"FGRecipe--version-specific": {
 			"type": "object",
-			"required": [
-				"mProducedIn"
-			],
+			"required": ["mProducedIn"],
 			"properties": {
 				"mProducedIn": {
 					"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/mProducedIn"

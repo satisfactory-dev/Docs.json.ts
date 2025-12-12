@@ -1274,8 +1274,9 @@
 						"minItems": 1,
 						"maxItems": 1,
 						"items": false,
-						"prefixItems": [{
-							"type": "string",
+						"prefixItems": [
+							{
+								"type": "string",
 								"const": "/Script/FactoryGame.FGItemDescriptorBiomass"
 							}
 						]
@@ -1426,8 +1427,9 @@
 								"minItems": 1,
 								"maxItems": 1,
 								"items": false,
-								"prefixItems": [{
-									"type": "string",
+								"prefixItems": [
+									{
+										"type": "string",
 										"const": "/Game/FactoryGame/Resource/Parts/NuclearFuelRod/Desc_NuclearFuelRod.Desc_NuclearFuelRod_C"
 									}
 								]
@@ -1982,18 +1984,18 @@
 						"items": {
 							"type": "string",
 							"typed_string": {
-							"type": "object",
-							"additionalProperties": false,
-							"required": ["WwiseSafeName"],
-							"properties": {
-								"WwiseSafeName": {
-									"type": "string",
-									"pattern": "^[A-Z][A-Za-z_]+[a-z]$"
-								},
-								"ActualName": {
-									"type": "string",
-									"pattern": "^[A-Z][A-Za-z ]+[a-z]$"
-								}
+								"type": "object",
+								"additionalProperties": false,
+								"required": ["WwiseSafeName"],
+								"properties": {
+									"WwiseSafeName": {
+										"type": "string",
+										"pattern": "^[A-Z][A-Za-z_]+[a-z]$"
+									},
+									"ActualName": {
+										"type": "string",
+										"pattern": "^[A-Z][A-Za-z ]+[a-z]$"
+									}
 								}
 							}
 						}
@@ -2747,27 +2749,27 @@
 						"items": {
 							"type": "string",
 							"typed_string": {
-							"type": "object",
-							"additionalProperties": false,
-							"required": [
-								"ResourceNode_16_2100B5C34EE8DF7958D78A974512F3C3",
-								"ParticleSystem1_9_F0CF81514E1E1C5007AC99B0C59C63CD"
-							],
-							"properties": {
-								"ResourceNode_16_2100B5C34EE8DF7958D78A974512F3C3": {
-									"type": "string",
-									"templated_string": [
-										"/Game/FactoryGame/Resource/RawResources/",
-										{"type": "string"},
-										"/Desc_",
-										{"type": "string"},
-										".Desc_",
-										{"type": "string"},
-										"_C"
-									]
-								},
-								"ParticleSystem1_9_F0CF81514E1E1C5007AC99B0C59C63CD": {
-									"type": "string",
+								"type": "object",
+								"additionalProperties": false,
+								"required": [
+									"ResourceNode_16_2100B5C34EE8DF7958D78A974512F3C3",
+									"ParticleSystem1_9_F0CF81514E1E1C5007AC99B0C59C63CD"
+								],
+								"properties": {
+									"ResourceNode_16_2100B5C34EE8DF7958D78A974512F3C3": {
+										"type": "string",
+										"templated_string": [
+											"/Game/FactoryGame/Resource/RawResources/",
+											{"type": "string"},
+											"/Desc_",
+											{"type": "string"},
+											".Desc_",
+											{"type": "string"},
+											"_C"
+										]
+									},
+									"ParticleSystem1_9_F0CF81514E1E1C5007AC99B0C59C63CD": {
+										"type": "string",
 										"DocsDotJson_PrefixedString": {
 											"prefix": "ParticleSystem",
 											"mode": "quoted",
@@ -2790,10 +2792,11 @@
 						"minItems": 1,
 						"maxItems": 1,
 						"items": false,
-						"prefixItems": [{
-							"type": "string",
+						"prefixItems": [
+							{
+								"type": "string",
 								"const": "RF_SOLID"
-						}
+							}
 						]
 					}
 				}
@@ -2962,10 +2965,11 @@
 						"minItems": 1,
 						"maxItems": 1,
 						"items": false,
-						"prefixItems": [{
-							"type": "string",
+						"prefixItems": [
+							{
+								"type": "string",
 								"const": "RF_LIQUID"
-						}
+							}
 						]
 					}
 				}
@@ -3039,10 +3043,11 @@
 						"minItems": 1,
 						"maxItems": 1,
 						"items": false,
-						"prefixItems": [{
-							"type": "string",
+						"prefixItems": [
+							{
+								"type": "string",
 								"const": "RF_LIQUID"
-						}
+							}
 						]
 					}
 				}
@@ -3962,28 +3967,28 @@
 						"items": {
 							"type": "string",
 							"typed_string": {
-							"type": "object",
-							"additionalProperties": false,
-							"required": [
-								"Montage_7_2E66F6A948A8606E71185682EA2AC4EC",
-								"CameraAnim_8_AA01C2B248FF438D6C2816B2FA94F1BD"
-							],
-							"properties": {
-								"Montage_7_2E66F6A948A8606E71185682EA2AC4EC": {
-									"type": "string",
-									"DocsDotJson_PrefixedString": {
-										"prefix": "AnimMontage",
-										"mode": "quoted",
-										"value": null
-									}
-								},
-								"CameraAnim_8_AA01C2B248FF438D6C2816B2FA94F1BD": {
-									"type": "string",
-									"DocsDotJson_PrefixedString": {
-										"prefix": "CameraAnim",
-										"mode": "quoted",
-										"value": null
-									}
+								"type": "object",
+								"additionalProperties": false,
+								"required": [
+									"Montage_7_2E66F6A948A8606E71185682EA2AC4EC",
+									"CameraAnim_8_AA01C2B248FF438D6C2816B2FA94F1BD"
+								],
+								"properties": {
+									"Montage_7_2E66F6A948A8606E71185682EA2AC4EC": {
+										"type": "string",
+										"DocsDotJson_PrefixedString": {
+											"prefix": "AnimMontage",
+											"mode": "quoted",
+											"value": null
+										}
+									},
+									"CameraAnim_8_AA01C2B248FF438D6C2816B2FA94F1BD": {
+										"type": "string",
+										"DocsDotJson_PrefixedString": {
+											"prefix": "CameraAnim",
+											"mode": "quoted",
+											"value": null
+										}
 									}
 								}
 							}
@@ -4746,51 +4751,51 @@
 						"items": {
 							"type": "string",
 							"typed_string": {
-							"type": "object",
-							"additionalProperties": false,
-							"required": [
-								"ScannableClass",
-								"DisplayText",
-								"ScannerLightColor",
-								"RequiredSchematic"
-							],
-							"properties": {
-								"ScannableClass": {
-									"type": "string",
+								"type": "object",
+								"additionalProperties": false,
+								"required": [
+									"ScannableClass",
+									"DisplayText",
+									"ScannerLightColor",
+									"RequiredSchematic"
+								],
+								"properties": {
+									"ScannableClass": {
+										"type": "string",
 										"DocsDotJson_PrefixedString": {
 											"prefix": "BlueprintGeneratedClass",
 											"mode": "quoted",
 											"value": null
 										}
-								},
-								"DisplayText": {
-									"type": "string",
-									"DocsDotJson_named_list": "NSLOCTEXT"
-								},
-								"ScannerLightColor": {
-									"$ref": "docs.json.ts--common--types#/$defs/BGRA"
-								},
-								"PreCacheAllOfType": {
-									"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-								},
-								"ShouldOverrideDetectionRange": {
-									"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-								},
-								"NewDetectionRange": {
-									"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-								},
-								"RequiredSchematic": {
-									"type": "string",
-									"templated_string": [
-										"/Game/FactoryGame/Schematics/Research/",
-										{"type": "string"},
-										"/",
-										{"type": "string"},
-										".",
-										{"type": "string"},
-										"_C"
-									]
-								}
+									},
+									"DisplayText": {
+										"type": "string",
+										"DocsDotJson_named_list": "NSLOCTEXT"
+									},
+									"ScannerLightColor": {
+										"$ref": "docs.json.ts--common--types#/$defs/BGRA"
+									},
+									"PreCacheAllOfType": {
+										"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+									},
+									"ShouldOverrideDetectionRange": {
+										"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+									},
+									"NewDetectionRange": {
+										"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+									},
+									"RequiredSchematic": {
+										"type": "string",
+										"templated_string": [
+											"/Game/FactoryGame/Schematics/Research/",
+											{"type": "string"},
+											"/",
+											{"type": "string"},
+											".",
+											{"type": "string"},
+											"_C"
+										]
+									}
 								}
 							}
 						}
@@ -5349,30 +5354,30 @@
 						"items": {
 							"type": "string",
 							"typed_string": {
-							"type": "object",
-							"additionalProperties": false,
-							"required": ["SlotName", "Material"],
-							"properties": {
-								"SlotName": {
-									"type": "string",
-									"enum": [
-										"Body_Details",
-										"Body_01",
-										"Body_02",
-										"Body_Hands",
-										"Body_Backpack"
-									]
-								},
-								"Material": {
-									"type": "string",
-									"enum": [
-										"MaterialInstanceConstant'\"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_Details.MI_Haz_Body_Details\"'",
-										"MaterialInstanceConstant'\"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_01.MI_Haz_Body_01\"'",
-										"MaterialInstanceConstant'\"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_02.MI_Haz_Body_02\"'",
-										"MaterialInstanceConstant'\"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_Hands.MI_Haz_Body_Hands\"'",
-										"MaterialInstanceConstant'\"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_Backpack.MI_Haz_Body_Backpack\"'"
-									]
-								}
+								"type": "object",
+								"additionalProperties": false,
+								"required": ["SlotName", "Material"],
+								"properties": {
+									"SlotName": {
+										"type": "string",
+										"enum": [
+											"Body_Details",
+											"Body_01",
+											"Body_02",
+											"Body_Hands",
+											"Body_Backpack"
+										]
+									},
+									"Material": {
+										"type": "string",
+										"enum": [
+											"MaterialInstanceConstant'\"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_Details.MI_Haz_Body_Details\"'",
+											"MaterialInstanceConstant'\"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_01.MI_Haz_Body_01\"'",
+											"MaterialInstanceConstant'\"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_02.MI_Haz_Body_02\"'",
+											"MaterialInstanceConstant'\"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_Hands.MI_Haz_Body_Hands\"'",
+											"MaterialInstanceConstant'\"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_Backpack.MI_Haz_Body_Backpack\"'"
+										]
+									}
 								}
 							}
 						}

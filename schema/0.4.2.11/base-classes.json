@@ -1108,14 +1108,15 @@
 						"minItems": 2,
 						"maxItems": 2,
 						"items": false,
-						"prefixItems": [{
-							"type": "string",
+						"prefixItems": [
+							{
+								"type": "string",
 								"const": "Arm_04_ClawBase"
 							},
 							{
 								"type": "string",
 								"const": "Arm_02_SFXSocket"
-						}
+							}
 						]
 					}
 				}
@@ -2463,9 +2464,7 @@
 		},
 		"FGRecipe--version-specific": {
 			"type": "object",
-			"required": [
-				"mProducedIn"
-			],
+			"required": ["mProducedIn"],
 			"properties": {
 				"mProducedIn": {
 					"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/mProducedIn"
