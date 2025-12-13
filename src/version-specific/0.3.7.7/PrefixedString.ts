@@ -322,11 +322,11 @@ export class PrefixedString<
 		let start: string;
 
 		if (prefix_string) {
-		start = RegExp.escape({
-			quoted: `${prefix_string}'"`,
+			start = RegExp.escape({
+				quoted: `${prefix_string}'"`,
 				single_quoted: `${prefix_string}'`,
-			non_quoted: `${prefix_string} `,
-		}[mode]);
+				non_quoted: `${prefix_string} `,
+			}[mode]);
 		} else {
 			start = {
 				quoted: `[^'"]+'"`,

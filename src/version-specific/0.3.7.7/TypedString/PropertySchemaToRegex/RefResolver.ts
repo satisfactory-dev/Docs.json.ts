@@ -4,7 +4,6 @@ import type {
 
 import {
 	object_has_property,
-	object_has_property_that_equals,
 } from '@satisfactory-dev/predicates.ts';
 
 import type {

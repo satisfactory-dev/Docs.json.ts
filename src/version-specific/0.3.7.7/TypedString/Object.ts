@@ -184,9 +184,9 @@ export function Object_generate_typescript_data(
 			'string',
 		)) {
 			property_schema = Type.maybe_add_$defs(
-			schema,
+				schema,
 				property_schema,
-		);
+			);
 		}
 
 		const type_for_property = schema_parser.parse(
