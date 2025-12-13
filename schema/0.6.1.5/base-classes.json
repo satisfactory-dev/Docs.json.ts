@@ -78,7 +78,7 @@
 											"MaterialInterface": {
 												"oneOf": [
 													{
-														"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/MaterialInstanceConstant--quoted"
+														"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/MaterialInstanceConstant--quoted"
 													},
 													{
 														"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/Material--quoted"

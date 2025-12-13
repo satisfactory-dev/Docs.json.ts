@@ -312,14 +312,6 @@
 				"mode": "quoted",
 				"value": null
 			}
-		},
-		"MaterialInstanceConstant--quoted": {
-			"type": "string",
-			"DocsDotJson_PrefixedString": {
-				"prefix": "MaterialInstanceConstant",
-				"mode": "quoted",
-				"value": null
-			}
 		}
 	}
 }

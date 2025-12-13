@@ -13,6 +13,16 @@ import type {
 } from './../../common/types.ts';
 
 import type {
+	BlueprintGeneratedClass_quoted as docs_json_ts_0_3_7_7_properties_BlueprintGeneratedClass_quoted,
+	DocsDotJson_BlueprintGeneratedClass_quoted_list as docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list,
+	ItemClass_Amount_list as docs_json_ts_0_3_7_7_properties_ItemClass_Amount_list,
+	MaterialInstanceConstant_quoted as docs_json_ts_0_3_7_7_properties_MaterialInstanceConstant_quoted,
+	mDisableSnapOn_front_bottom as docs_json_ts_0_3_7_7_properties_mDisableSnapOn_front_bottom,
+	mDisableSnapOn_top_bottom as docs_json_ts_0_3_7_7_properties_mDisableSnapOn_top_bottom,
+	RequiredSchematic as docs_json_ts_0_3_7_7_properties_RequiredSchematic,
+} from './../../0.3.7.7/types/properties.ts';
+
+import type {
 	BP_RadialDamageType_Explosive_C_quoted as docs_json_ts_0_6_1_5_properties_BP_RadialDamageType_Explosive_C_quoted,
 	BP_RadialDamageType_Gas_C_quoted as docs_json_ts_0_6_1_5_properties_BP_RadialDamageType_Gas_C_quoted,
 	DamageTypes as docs_json_ts_0_6_1_5_properties_DamageTypes,
@@ -22,7 +32,6 @@ import type {
 	mAlternativeMaterialRecipes_mMaterial as docs_json_ts_0_6_1_5_properties_mAlternativeMaterialRecipes_mMaterial,
 	mAlternativeMaterialRecipes_mRecipe as docs_json_ts_0_6_1_5_properties_mAlternativeMaterialRecipes_mRecipe,
 	Material_quoted as docs_json_ts_0_6_1_5_properties_Material_quoted,
-	MaterialInstanceConstant_quoted as docs_json_ts_0_6_1_5_properties_MaterialInstanceConstant_quoted,
 	mDisableSnapOn_front_right as docs_json_ts_0_6_1_5_properties_mDisableSnapOn_front_right,
 	mObjectDetails_Icon as docs_json_ts_0_6_1_5_properties_mObjectDetails_Icon,
 	mProducedIn as docs_json_ts_0_6_1_5_properties_mProducedIn,
@@ -147,15 +156,6 @@ import type {
 } from './../../0.4.2.11/classes/Base.ts';
 
 import type {
-	BlueprintGeneratedClass_quoted as docs_json_ts_0_3_7_7_properties_BlueprintGeneratedClass_quoted,
-	DocsDotJson_BlueprintGeneratedClass_quoted_list as docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list,
-	ItemClass_Amount_list as docs_json_ts_0_3_7_7_properties_ItemClass_Amount_list,
-	mDisableSnapOn_front_bottom as docs_json_ts_0_3_7_7_properties_mDisableSnapOn_front_bottom,
-	mDisableSnapOn_top_bottom as docs_json_ts_0_3_7_7_properties_mDisableSnapOn_top_bottom,
-	RequiredSchematic as docs_json_ts_0_3_7_7_properties_RequiredSchematic,
-} from './../../0.3.7.7/types/properties.ts';
-
-import type {
 	FGBuildable_docking_station_base_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_docking_station_base_base,
 	FGBuildable_powered_base_resources_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base_resources_base,
 	FGBuildable_with_height_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_base,
@@ -208,7 +208,7 @@ type FGAmmoType_base = FGAmmoType_base_base & {
 	mDispersionRecoveryTime?: docs_json_ts_common_types_decimal_string,
 	mMagazineMeshMaterials: null | [
 		{
-			MaterialInterface: docs_json_ts_0_6_1_5_properties_MaterialInstanceConstant_quoted | docs_json_ts_0_6_1_5_properties_Material_quoted,
+			MaterialInterface: docs_json_ts_0_3_7_7_properties_MaterialInstanceConstant_quoted | docs_json_ts_0_6_1_5_properties_Material_quoted,
 			MaterialSlotName: 'lambert1' | 'Rifle' | 'lambert9_001' | 'lambert10' | 'lambert2' | 'Material_003' | 'Material_002' | 'Rocket1' | 'Rocket2' | '01 - Default',
 			ImportedMaterialSlotName: 'lambert1' | 'Rifle' | 'lambert9_001' | 'lambert10' | 'lambert2' | 'Material_003' | 'Material_002' | 'Rocket1' | 'Rocket2' | '01 - Default',
 			UVChannelData: {
@@ -221,7 +221,7 @@ type FGAmmoType_base = FGAmmoType_base_base & {
 			},
 		},
 		...{
-			MaterialInterface: docs_json_ts_0_6_1_5_properties_MaterialInstanceConstant_quoted | docs_json_ts_0_6_1_5_properties_Material_quoted,
+			MaterialInterface: docs_json_ts_0_3_7_7_properties_MaterialInstanceConstant_quoted | docs_json_ts_0_6_1_5_properties_Material_quoted,
 			MaterialSlotName: 'lambert1' | 'Rifle' | 'lambert9_001' | 'lambert10' | 'lambert2' | 'Material_003' | 'Material_002' | 'Rocket1' | 'Rocket2' | '01 - Default',
 			ImportedMaterialSlotName: 'lambert1' | 'Rifle' | 'lambert9_001' | 'lambert10' | 'lambert2' | 'Material_003' | 'Material_002' | 'Rocket1' | 'Rocket2' | '01 - Default',
 			UVChannelData: {

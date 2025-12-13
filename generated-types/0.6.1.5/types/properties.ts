@@ -100,8 +100,6 @@ type ItemClass_list = [
 
 type Material_quoted = `Material'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
 
-type MaterialInstanceConstant_quoted = `MaterialInstanceConstant'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
-
 export type {
 	mAllowedResourceForms,
 	mAlternativeMaterialRecipes_mMaterial,
@@ -119,5 +117,4 @@ export type {
 	DocsDotJson_AkAudioEvent_quoted_list,
 	ItemClass_list,
 	Material_quoted,
-	MaterialInstanceConstant_quoted,
 };

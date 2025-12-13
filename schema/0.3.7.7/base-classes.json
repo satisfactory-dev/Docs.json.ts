@@ -2479,8 +2479,17 @@
 			]
 		},
 		"FGBuildableRailroadStation--base--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableTrainPlatform--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableRailroadStation--version-specific"
+				}
+			]
+		},
+		"FGBuildableRailroadStation--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableTrainPlatform--base--base",
 			"required": ["mMapText", "mDockedPlatformList"],
 			"properties": {
 				"mMapText": {
@@ -3561,27 +3570,27 @@
 			]
 		},
 		"FGBuildableTrainPlatform--base--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--powered--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableTrainPlatform--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableTrainPlatform--version-specific"
+				}
+			]
+		},
+		"FGBuildableTrainPlatform--base--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--base--base--base",
 			"required": [
-				"mPlatformConnections",
 				"mIsOrientationReversed",
 				"mPlatformDockingStatus",
 				"mSavedDockingStatus",
 				"mDockingSequenceTimerHandle"
 			],
 			"properties": {
-				"mPlatformConnections": {
-					"type": "string",
-					"typed_string": {
-						"type": "array",
-						"minItems": 1,
-						"uniqueItems": true,
-						"items": {
-							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/FGTrainPlatformConnection--quoted"
-						}
-					}
-				},
 				"mIsOrientationReversed": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				},
@@ -3595,6 +3604,25 @@
 				},
 				"mDockingSequenceTimerHandle": {
 					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				}
+			}
+		},
+		"FGBuildableTrainPlatform--version-specific": {
+			"type": "object",
+			"required": [
+				"mPlatformConnections"
+			],
+			"properties": {
+				"mPlatformConnections": {
+					"type": "string",
+					"typed_string": {
+						"type": "array",
+						"minItems": 1,
+						"uniqueItems": true,
+						"items": {
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/FGTrainPlatformConnection--quoted"
+						}
+					}
 				}
 			}
 		},
@@ -3665,10 +3693,21 @@
 			]
 		},
 		"FGBuildableTrainPlatformCargo--base--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableTrainPlatform--with-storage--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableTrainPlatformCargo--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableTrainPlatformCargo--pre-update8"
+				}
+			]
+		},
+		"FGBuildableTrainPlatformCargo--pre-update8": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableTrainPlatform--with-storage--base--base--base",
 			"required": [
-				"mPotentialDockers",
 				"mFreightCargoType",
 				"mCanUnloadAny",
 				"mIsFullUnload",
@@ -3687,10 +3726,6 @@
 				"mReplicatedInflowRate"
 			],
 			"properties": {
-				"mPotentialDockers": {
-					"type": "string",
-					"const": ""
-				},
 				"mFreightCargoType": {
 					"type": "string",
 					"enum": ["FCT_Standard", "FCT_Liquid"]
@@ -3742,6 +3777,16 @@
 				},
 				"mReplicatedInflowRate": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGBuildableTrainPlatformCargo--version-specific": {
+			"type": "object",
+			"required": ["mPotentialDockers"],
+			"properties": {
+				"mPotentialDockers": {
+					"type": "string",
+					"const": ""
 				}
 			}
 		},

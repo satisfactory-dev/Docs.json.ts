@@ -475,7 +475,7 @@ type FGBuildableRailroadSignal_block_version_specific = {
 
 type FGBuildableRailroadStation = FGBuildableRailroadStation_base & FGBuildableTrainPlatform & FGBuildableTrainPlatform_non_empty & docs_json_ts_0_3_7_7_classes_base_FGBuildableRailroadStation_base_base;
 
-type FGBuildableRailroadStation_base = FGBuildable_base & {
+type FGBuildableRailroadStation_base = {
 	mShouldTeleportHere: docs_json_ts_common_types_bool_string,
 	mCurrentDockedWithRuleSet: docs_json_ts_0_5_2_1_properties_mDockingRuleSet,
 };
@@ -534,12 +534,16 @@ type FGBuildableTradingPost_base = docs_json_ts_0_4_2_11_classes_base_FGBuildabl
 
 type FGBuildableTrainPlatform = FGBuildableTrainPlatform_base & FGBuildable_powered;
 
-type FGBuildableTrainPlatform_base = docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatform_base_base & {
+type FGBuildableTrainPlatform_base = docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatform_base_base & FGBuildableTrainPlatform_base_version_specific;
+
+type FGBuildableTrainPlatform_base_version_specific = {
 	mIdleUpdateTimerHandle: docs_json_ts_common_types_empty_object,
 	mDockWasCancelled: docs_json_ts_common_types_bool_string,
 };
 
-type FGBuildableTrainPlatform_non_empty = FGBuildableTrainPlatform_base & {
+type FGBuildableTrainPlatform_non_empty = FGBuildableTrainPlatform_base & FGBuildableTrainPlatform_non_empty_version_specific;
+
+type FGBuildableTrainPlatform_non_empty_version_specific = {
 	mCurrentDockForDuration: docs_json_ts_common_types_decimal_string,
 };
 
@@ -951,7 +955,9 @@ export type {
 	FGBuildableTradingPost_base,
 	FGBuildableTrainPlatform,
 	FGBuildableTrainPlatform_base,
+	FGBuildableTrainPlatform_base_version_specific,
 	FGBuildableTrainPlatform_non_empty,
+	FGBuildableTrainPlatform_non_empty_version_specific,
 	FGBuildableTrainPlatform_with_storage,
 	FGBuildableTrainPlatformCargo,
 	FGBuildableTrainPlatformCargo_version_specific,

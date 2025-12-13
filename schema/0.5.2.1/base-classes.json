@@ -1429,7 +1429,6 @@
 		},
 		"FGBuildableRailroadStation--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
 			"required": ["mShouldTeleportHere", "mCurrentDockedWithRuleSet"],
 			"properties": {
 				"mShouldTeleportHere": {
@@ -1696,8 +1695,17 @@
 			]
 		},
 		"FGBuildableTrainPlatform--base": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableTrainPlatform--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableTrainPlatform--base--version-specific"
+				}
+			]
+		},
+		"FGBuildableTrainPlatform--base--version-specific": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableTrainPlatform--base--base",
 			"required": ["mIdleUpdateTimerHandle", "mDockWasCancelled"],
 			"properties": {
 				"mIdleUpdateTimerHandle": {
@@ -1709,8 +1717,17 @@
 			}
 		},
 		"FGBuildableTrainPlatform--non-empty": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableTrainPlatform--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableTrainPlatform--non-empty--version-specific"
+				}
+			]
+		},
+		"FGBuildableTrainPlatform--non-empty--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableTrainPlatform--base",
 			"required": ["mCurrentDockForDuration"],
 			"properties": {
 				"mCurrentDockForDuration": {
