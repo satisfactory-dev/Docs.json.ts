@@ -11,6 +11,7 @@ import type {
 	ItemClass_Amount_list as docs_json_ts_0_3_7_7_properties_ItemClass_Amount_list,
 	mAbbreviatedDisplayName as docs_json_ts_0_3_7_7_properties_mAbbreviatedDisplayName,
 	mAllowedResourceForms as docs_json_ts_0_3_7_7_properties_mAllowedResourceForms,
+	MaterialInstanceConstant_quoted as docs_json_ts_0_3_7_7_properties_MaterialInstanceConstant_quoted,
 	mDisableSnapOn_front_bottom as docs_json_ts_0_3_7_7_properties_mDisableSnapOn_front_bottom,
 	mDisableSnapOn_front_left_top_bottom as docs_json_ts_0_3_7_7_properties_mDisableSnapOn_front_left_top_bottom,
 	mDisableSnapOn_front_top as docs_json_ts_0_3_7_7_properties_mDisableSnapOn_front_top,
@@ -1413,11 +1414,11 @@ type FGSuitBase_base = {
 	mSuit1PMeshMaterials: [
 		{
 			SlotName: 'Body_Details' | 'Body_01' | 'Body_02' | 'Body_Hands' | 'Body_Backpack',
-			Material: 'MaterialInstanceConstant\'"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_Details.MI_Haz_Body_Details"\'' | 'MaterialInstanceConstant\'"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_01.MI_Haz_Body_01"\'' | 'MaterialInstanceConstant\'"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_02.MI_Haz_Body_02"\'' | 'MaterialInstanceConstant\'"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_Hands.MI_Haz_Body_Hands"\'' | 'MaterialInstanceConstant\'"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_Backpack.MI_Haz_Body_Backpack"\'',
+			Material: docs_json_ts_0_3_7_7_properties_MaterialInstanceConstant_quoted,
 		},
 		...{
 			SlotName: 'Body_Details' | 'Body_01' | 'Body_02' | 'Body_Hands' | 'Body_Backpack',
-			Material: 'MaterialInstanceConstant\'"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_Details.MI_Haz_Body_Details"\'' | 'MaterialInstanceConstant\'"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_01.MI_Haz_Body_01"\'' | 'MaterialInstanceConstant\'"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_02.MI_Haz_Body_02"\'' | 'MaterialInstanceConstant\'"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_Hands.MI_Haz_Body_Hands"\'' | 'MaterialInstanceConstant\'"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_Backpack.MI_Haz_Body_Backpack"\'',
+			Material: docs_json_ts_0_3_7_7_properties_MaterialInstanceConstant_quoted,
 		}[],
 	],
 	mArmAnimation?: 'AE_None',

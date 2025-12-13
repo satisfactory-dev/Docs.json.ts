@@ -574,6 +574,14 @@
 				}
 			}
 		},
+		"MaterialInstanceConstant--quoted": {
+			"type": "string",
+			"DocsDotJson_PrefixedString": {
+				"prefix": "MaterialInstanceConstant",
+				"mode": "quoted",
+				"value": null
+			}
+		},
 		"ParticleSystem--quoted": {
 			"type": "string",
 			"DocsDotJson_PrefixedString": {

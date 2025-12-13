@@ -88,6 +88,11 @@ export function FlexibleArray_regex__items__inner(
 		converter = property_schema_to_regex.find((maybe) => {
 			return maybe.matches(coerced);
 		});
+
+		coerced = Type.maybe_add_$defs(
+			items,
+			coerced,
+		);
 	}
 
 	if (undefined === converter) {

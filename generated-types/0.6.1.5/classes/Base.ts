@@ -324,12 +324,12 @@ type FGBuildable_base_version_specific = {
 		{
 			Min: docs_json_ts_common_types_XYZ_decimal_string,
 			Max: docs_json_ts_common_types_XYZ_decimal_string,
-			IsValid?: '0',
+			IsValid: '0',
 		},
 		...{
 			Min: docs_json_ts_common_types_XYZ_decimal_string,
 			Max: docs_json_ts_common_types_XYZ_decimal_string,
-			IsValid?: '0',
+			IsValid: '0',
 		}[],
 	],
 };
@@ -608,7 +608,9 @@ type FGHoverPack = docs_json_ts_0_4_2_11_classes_base_FGHoverPack_base & FGEquip
 
 type FGItemDescriptor = docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable_base & FGItemDescriptor_base;
 
-type FGItemDescriptor_base = FGDescriptor & {
+type FGItemDescriptor_base = FGDescriptor & FGItemDescriptor_version_specific;
+
+type FGItemDescriptor_version_specific = {
 	mCrosshairMaterial: 'None' | `/Game/FactoryGame/Interface/UI/Material/Crosshairs/MI_UI_Crosshair_${Exclude<string, ''>}${'.MI_UI_Crosshair_'}${Exclude<string, ''>}`,
 	mDescriptorStatBars: null | [
 		{
@@ -724,12 +726,17 @@ type FGSchematic_base_base_props_with_mSchematicIcon = {
 	},
 };
 
-type FGSchematic_version_specific = {
+type FGSchematic_version_specific = FGSchematic_version_specific_base & FGSchematic_version_specific_mUnlocks;
+
+type FGSchematic_version_specific_base = {
 	mHiddenUntilDependenciesMet: docs_json_ts_common_types_bool_string,
+	mCost: null | docs_json_ts_0_3_7_7_properties_ItemClass_Amount_list | docs_json_ts_0_6_1_5_properties_ItemClass_list,
+};
+
+type FGSchematic_version_specific_mUnlocks = {
 	mUnlocks: [
 		...docs_json_ts_0_6_1_5_properties_mUnlocks_item[],
 	],
-	mCost: null | docs_json_ts_0_3_7_7_properties_ItemClass_Amount_list | docs_json_ts_0_6_1_5_properties_ItemClass_list,
 };
 
 type FGSchematic_with_described_unlocks = docs_json_ts_0_5_2_1_classes_base_FGSchematic_with_described_unlocks_base_base & FGSchematic_base;
@@ -900,6 +907,7 @@ export type {
 	FGHoverPack,
 	FGItemDescriptor,
 	FGItemDescriptor_base,
+	FGItemDescriptor_version_specific,
 	FGItemDescriptorNuclearFuel,
 	FGJetPack,
 	FGJetPack_base,
@@ -918,6 +926,8 @@ export type {
 	FGSchematic_base_base,
 	FGSchematic_base_base_props_with_mSchematicIcon,
 	FGSchematic_version_specific,
+	FGSchematic_version_specific_base,
+	FGSchematic_version_specific_mUnlocks,
 	FGSchematic_with_described_unlocks,
 	FGSuitBase,
 	FGSuitBase_base,

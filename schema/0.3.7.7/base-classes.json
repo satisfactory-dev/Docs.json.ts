@@ -5355,14 +5355,7 @@
 										]
 									},
 									"Material": {
-										"type": "string",
-										"enum": [
-											"MaterialInstanceConstant'\"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_Details.MI_Haz_Body_Details\"'",
-											"MaterialInstanceConstant'\"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_01.MI_Haz_Body_01\"'",
-											"MaterialInstanceConstant'\"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_02.MI_Haz_Body_02\"'",
-											"MaterialInstanceConstant'\"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_Hands.MI_Haz_Body_Hands\"'",
-											"MaterialInstanceConstant'\"/Game/FactoryGame/Character/Player/Material/MI_Haz_Body_Backpack.MI_Haz_Body_Backpack\"'"
-										]
+										"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/MaterialInstanceConstant--quoted"
 									}
 								}
 							}

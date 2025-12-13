@@ -529,7 +529,7 @@
 									"typed_string": {
 										"type": "object",
 										"additionalProperties": false,
-										"required": ["Min", "Max", "bIsValid"],
+										"required": ["Min", "Max", "IsValid"],
 										"properties": {
 											"Min": {
 												"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
@@ -1859,8 +1859,17 @@
 			]
 		},
 		"FGItemDescriptor--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGDescriptor"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--version-specific"
+				}
+			]
+		},
+		"FGItemDescriptor--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGDescriptor",
 			"required": [
 				"mCrosshairMaterial",
 				"mDescriptorStatBars",
@@ -2314,19 +2323,21 @@
 			}
 		},
 		"FGSchematic--version-specific": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGSchematic--version-specific--base"
+				},
+				{
+					"$ref": "#/$defs/FGSchematic--version-specific--mUnlocks"
+				}
+			]
+		},
+		"FGSchematic--version-specific--base": {
 			"type": "object",
-			"required": ["mHiddenUntilDependenciesMet", "mUnlocks", "mCost"],
+			"required": ["mHiddenUntilDependenciesMet", "mCost"],
 			"properties": {
 				"mHiddenUntilDependenciesMet": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mUnlocks": {
-					"type": "array",
-					"minItems": 0,
-					"maxItems": 6,
-					"items": {
-						"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/mUnlocks--item"
-					}
 				},
 				"mCost": {
 					"oneOf": [
@@ -2341,6 +2352,20 @@
 							"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/ItemClass--list"
 						}
 					]
+				}
+			}
+		},
+		"FGSchematic--version-specific--mUnlocks": {
+			"type": "object",
+			"required": ["mUnlocks"],
+			"properties": {
+				"mUnlocks": {
+					"type": "array",
+					"minItems": 0,
+					"maxItems": 6,
+					"items": {
+						"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/mUnlocks--item"
+					}
 				}
 			}
 		},

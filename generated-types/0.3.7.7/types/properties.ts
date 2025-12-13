@@ -161,6 +161,8 @@ type ItemClass_Amount_list = [
 	}[],
 ];
 
+type MaterialInstanceConstant_quoted = `MaterialInstanceConstant'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
+
 type ParticleSystem_quoted = `ParticleSystem'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
 
 type RawResources = `/Game/FactoryGame/Resource/RawResources/${string}${'/Desc_'}${Exclude<string, ''>}${'.Desc_'}${Exclude<string, ''>}${'_C'}`;
@@ -208,6 +210,7 @@ export type {
 	DocsDotJson_BlueprintGeneratedClass_quoted_list,
 	FGTrainPlatformConnection_quoted,
 	ItemClass_Amount_list,
+	MaterialInstanceConstant_quoted,
 	ParticleSystem_quoted,
 	RawResources,
 	RequiredSchematic,
