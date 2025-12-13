@@ -3609,9 +3609,7 @@
 		},
 		"FGBuildableTrainPlatform--version-specific": {
 			"type": "object",
-			"required": [
-				"mPlatformConnections"
-			],
+			"required": ["mPlatformConnections"],
 			"properties": {
 				"mPlatformConnections": {
 					"type": "string",
