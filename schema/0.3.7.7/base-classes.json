@@ -9,9 +9,9 @@
 				"ClassName": {
 					"type": "string",
 					"templated_string": [
-						{"type": "string"},
+						{"type": "string", "minLength": 1},
 						"_",
-						{"type": "string"},
+						{"type": "string", "minLength": 1},
 						"_C"
 					]
 				}
@@ -2762,19 +2762,14 @@
 											"/Game/FactoryGame/Resource/RawResources/",
 											{"type": "string"},
 											"/Desc_",
-											{"type": "string"},
+											{"type": "string", "minLength": 1},
 											".Desc_",
-											{"type": "string"},
+											{"type": "string", "minLength": 1},
 											"_C"
 										]
 									},
 									"ParticleSystem1_9_F0CF81514E1E1C5007AC99B0C59C63CD": {
-										"type": "string",
-										"DocsDotJson_PrefixedString": {
-											"prefix": "ParticleSystem",
-											"mode": "quoted",
-											"value": null
-										}
+										"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/ParticleSystem--quoted"
 									}
 								}
 							}
@@ -3467,13 +3462,13 @@
 				},
 				"mMamFreeText": {
 					"type": "string",
-					"templated_string": ["Use M", {"type": "string"}]
+					"templated_string": ["Use M", {"type": "string", "minLength": 1}]
 				},
 				"mMamOccupiedText": {
 					"type": "string",
 					"templated_string": [
 						"M",
-						{"type": "string"},
+						{"type": "string", "minLength": 1},
 						" is occupied"
 					]
 				},
@@ -3577,12 +3572,7 @@
 						"minItems": 1,
 						"uniqueItems": true,
 						"items": {
-							"type": "string",
-							"DocsDotJson_PrefixedString": {
-								"prefix": "FGTrainPlatformConnection",
-								"mode": "quoted",
-								"value": null
-							}
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/FGTrainPlatformConnection--quoted"
 						}
 					}
 				},
@@ -3975,20 +3965,10 @@
 								],
 								"properties": {
 									"Montage_7_2E66F6A948A8606E71185682EA2AC4EC": {
-										"type": "string",
-										"DocsDotJson_PrefixedString": {
-											"prefix": "AnimMontage",
-											"mode": "quoted",
-											"value": null
-										}
+										"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/AnimMontage--quoted"
 									},
 									"CameraAnim_8_AA01C2B248FF438D6C2816B2FA94F1BD": {
-										"type": "string",
-										"DocsDotJson_PrefixedString": {
-											"prefix": "CameraAnim",
-											"mode": "quoted",
-											"value": null
-										}
+										"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/CameraAnim--quoted"
 									}
 								}
 							}
@@ -4083,7 +4063,7 @@
 				},
 				"mForm": {
 					"type": "string",
-					"templated_string": ["RF_", {"type": "string"}]
+					"templated_string": ["RF_", {"type": "string", "minLength": 1}]
 				},
 				"mSmallIcon": {
 					"oneOf": [
@@ -4091,7 +4071,7 @@
 							"type": "string",
 							"templated_string": [
 								"Texture2D",
-								{"type": "string"}
+								{"type": "string", "minLength": 1}
 							]
 						},
 						{
@@ -4106,7 +4086,7 @@
 							"type": "string",
 							"templated_string": [
 								"Texture2D",
-								{"type": "string"}
+								{"type": "string", "minLength": 1}
 							]
 						},
 						{
@@ -4214,7 +4194,7 @@
 			"properties": {
 				"mEquipmentSlot": {
 					"type": "string",
-					"templated_string": ["ES_", {"type": "string"}]
+					"templated_string": ["ES_", {"type": "string", "minLength": 1}]
 				},
 				"mAttachSocket": {
 					"type": "string",
@@ -4538,12 +4518,7 @@
 			"required": ["FullName", "mRelevantEvents"],
 			"properties": {
 				"FullName": {
-					"type": "string",
-					"DocsDotJson_PrefixedString": {
-						"prefix": "BlueprintGeneratedClass",
-						"mode": "non_quoted",
-						"value": null
-					}
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/BlueprintGeneratedClass--non-quoted"
 				},
 				"mRelevantEvents": {
 					"oneOf": [
@@ -4765,12 +4740,7 @@
 								],
 								"properties": {
 									"ScannableClass": {
-										"type": "string",
-										"DocsDotJson_PrefixedString": {
-											"prefix": "BlueprintGeneratedClass",
-											"mode": "quoted",
-											"value": null
-										}
+										"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/BlueprintGeneratedClass--quoted"
 									},
 									"DisplayText": {
 										"type": "string",
@@ -4794,9 +4764,9 @@
 											"/Game/FactoryGame/Schematics/Research/",
 											{"type": "string"},
 											"/",
-											{"type": "string"},
+											{"type": "string", "minLength": 1},
 											".",
-											{"type": "string"},
+											{"type": "string", "minLength": 1},
 											"_C"
 										]
 									}
@@ -5602,12 +5572,7 @@
 						],
 						"properties": {
 							"ProjectileClass": {
-								"type": "string",
-								"DocsDotJson_PrefixedString": {
-									"prefix": "BlueprintGeneratedClass",
-									"mode": "quoted",
-									"value": null
-								}
+								"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/BlueprintGeneratedClass--quoted"
 							},
 							"ProjectileLifeSpan": {
 								"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
@@ -5628,20 +5593,10 @@
 								"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 							},
 							"DamageType": {
-								"type": "string",
-								"DocsDotJson_PrefixedString": {
-									"prefix": "BlueprintGeneratedClass",
-									"mode": "quoted",
-									"value": null
-								}
+								"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/BlueprintGeneratedClass--quoted"
 							},
 							"DamageTypeExplode": {
-								"type": "string",
-								"DocsDotJson_PrefixedString": {
-									"prefix": "BlueprintGeneratedClass",
-									"mode": "quoted",
-									"value": null
-								}
+								"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/BlueprintGeneratedClass--quoted"
 							}
 						}
 					}
@@ -5778,12 +5733,7 @@
 						],
 						"properties": {
 							"ProjectileClass": {
-								"type": "string",
-								"DocsDotJson_PrefixedString": {
-									"prefix": "BlueprintGeneratedClass",
-									"mode": "quoted",
-									"value": null
-								}
+								"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/BlueprintGeneratedClass--quoted"
 							},
 							"ProjectileLifeSpan": {
 								"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
@@ -5801,16 +5751,10 @@
 								"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 							},
 							"DamageType": {
-								"type": "string",
-								"DocsDotJson_PrefixedString": {
-									"prefix": "BlueprintGeneratedClass",
-									"mode": "quoted",
-									"value": null
-								}
+								"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/BlueprintGeneratedClass--quoted"
 							},
 							"DamageTypeExplode": {
-								"type": "string",
-								"const": "Class'\"/Script/FactoryGame.FGDamageType\"'"
+								"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/Class--quoted"
 							}
 						}
 					}

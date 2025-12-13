@@ -37,36 +37,13 @@ export function RefResolver(
 			});
 
 			if (
-				undefined === converter
-				&& object_has_property_that_equals(
-					resolved,
-					'type',
-					'string',
-				)
-				&& object_has_property(
-					resolved,
-					'$defs',
-				)
-			) {
-				const {
-					// eslint-disable-next-line @stylistic/max-len
-					// eslint-disable-next-line @typescript-eslint/no-unused-vars
-					$defs,
-					...remaining
-				} = resolved;
-
-				resolved = remaining;
-
-				converter = matchers.find((maybe) => {
-					return maybe.matches(resolved);
-				});
-			}
-
-			if (
 				!converter
 				&& object_has_property(resolved, 'typed_string')
 			) {
-				resolved = resolved.typed_string as SchemaObject;
+				resolved = $ref.maybe_add_$defs(
+					resolved,
+					resolved.typed_string as SchemaObject,
+				);
 				converter = matchers.find(
 					(maybe) => {
 						return maybe.matches(

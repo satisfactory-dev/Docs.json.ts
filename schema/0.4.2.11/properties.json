@@ -2,6 +2,30 @@
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "docs.json.ts--0.4.2.11--properties",
 	"$defs": {
+		"BlueprintGeneratedClass--single-quoted": {
+			"type": "string",
+			"DocsDotJson_PrefixedString": {
+				"prefix": "BlueprintGeneratedClass",
+				"mode": "single_quoted",
+				"value": null
+			}
+		},
+		"FGRailroadTrackConnectionComponent--quoted": {
+			"type": "string",
+			"DocsDotJson_PrefixedString": {
+				"prefix": "FGRailroadTrackConnectionComponent",
+				"mode": "quoted",
+				"value": null
+			}
+		},
+		"Texture2D--quoted": {
+			"type": "string",
+			"DocsDotJson_PrefixedString": {
+				"prefix": "Texture2D",
+				"mode": "quoted",
+				"value": null
+			}
+		},
 		"mAllowedResourceForms": {
 			"type": "string",
 			"typed_string": {
@@ -260,12 +284,7 @@
 								"required": ["ResourceDescriptor"],
 								"properties": {
 									"ResourceDescriptor": {
-										"type": "string",
-										"DocsDotJson_PrefixedString": {
-											"prefix": "BlueprintGeneratedClass",
-											"mode": "quoted",
-											"value": null
-										}
+										"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/BlueprintGeneratedClass--quoted"
 									},
 									"ResourceNodeType": {
 										"type": "string",

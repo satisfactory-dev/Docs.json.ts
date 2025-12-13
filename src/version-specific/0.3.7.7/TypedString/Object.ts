@@ -299,7 +299,10 @@ export function Object_type_to_regex(
 				});
 
 				if (!converter && 'typed_string' in resolved) {
-					resolved = resolved.typed_string as SchemaObject;
+					resolved = Type.maybe_add_$defs(
+						resolved,
+						resolved.typed_string as SchemaObject,
+					);
 
 					converter = property_schema_to_regex.find((maybe) => {
 						return maybe.matches(resolved);

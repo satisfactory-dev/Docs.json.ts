@@ -121,6 +121,8 @@ import type {
 } from './../../common/types.ts';
 
 import type {
+	BlueprintGeneratedClass_single_quoted as docs_json_ts_0_4_2_11_properties_BlueprintGeneratedClass_single_quoted,
+	FGRailroadTrackConnectionComponent_quoted as docs_json_ts_0_4_2_11_properties_FGRailroadTrackConnectionComponent_quoted,
 	mAllowedResourceForms as docs_json_ts_0_4_2_11_properties_mAllowedResourceForms,
 	mFogPlaneTransforms_empty as docs_json_ts_0_4_2_11_properties_mFogPlaneTransforms_empty,
 	mFogPlaneTransforms_list as docs_json_ts_0_4_2_11_properties_mFogPlaneTransforms_list,
@@ -130,6 +132,7 @@ import type {
 	mSchematicDependencies_item as docs_json_ts_0_4_2_11_properties_mSchematicDependencies_item,
 	mUnlocks_item as docs_json_ts_0_4_2_11_properties_mUnlocks_item,
 	Texture2D as docs_json_ts_0_4_2_11_properties_Texture2D,
+	Texture2D_quoted as docs_json_ts_0_4_2_11_properties_Texture2D_quoted,
 	Tier as docs_json_ts_0_4_2_11_properties_Tier,
 	TintColor as docs_json_ts_0_4_2_11_properties_TintColor,
 } from './../types/properties.ts';
@@ -505,8 +508,8 @@ type FGBuildableRailroadTrack_base = FGBuildableRailroadTrack_base_base & docs_j
 
 type FGBuildableRailroadTrack_base_base = docs_json_ts_0_3_7_7_classes_base_FGBuildableRailroadTrack_base & {
 	mConnections: [
-        `FGRailroadTrackConnectionComponent'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
-        ...`FGRailroadTrackConnectionComponent'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`[],
+		docs_json_ts_0_4_2_11_properties_FGRailroadTrackConnectionComponent_quoted,
+		...docs_json_ts_0_4_2_11_properties_FGRailroadTrackConnectionComponent_quoted[],
 	],
 };
 
@@ -683,7 +686,7 @@ type FGHoverPack_version_specific = {
 type FGItemDescriptorNuclearFuel = docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_base & FGDescriptor & FGItemDescriptorNuclearFuel_base;
 
 type FGItemDescriptorNuclearFuel_base = {
-	mSpentFuelClass: `BlueprintGeneratedClass'/Game/FactoryGame/${Exclude<string, ''>}${'\''}`,
+	mSpentFuelClass: docs_json_ts_0_4_2_11_properties_BlueprintGeneratedClass_single_quoted,
 };
 
 type FGNobeliskDetonator = FGWeaponProjectile & docs_json_ts_0_3_7_7_classes_base_FGNobeliskDetonator;
@@ -740,7 +743,7 @@ type FGSchematic_base_base_props_sans_mSchematicIcon_mMenuPriority = FGSchematic
 	mSchematicDependencies: [
 		...(docs_json_ts_0_3_7_7_properties_mSchematicDependencies_item | docs_json_ts_0_4_2_11_properties_mSchematicDependencies_item)[],
 	],
-	mSmallSchematicIcon: 'None' | `Texture2D ${string}`,
+	mSmallSchematicIcon: 'None' | `Texture2D ${Exclude<string, ''>}`,
 	mTechTier: docs_json_ts_0_4_2_11_properties_Tier,
 };
 
@@ -753,7 +756,7 @@ type FGSchematic_base_base_props_with_mSchematicIcon = FGSchematic_base_base_bas
 		ImageSize: docs_json_ts_common_types_XY_decimal_string,
 		Margin: docs_json_ts_common_types_empty_object,
 		TintColor: docs_json_ts_0_4_2_11_properties_TintColor,
-		ResourceObject?: `Texture2D'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
+		ResourceObject?: docs_json_ts_0_4_2_11_properties_Texture2D_quoted,
 		UVRegion: {
 			Min: docs_json_ts_common_types_XY_decimal_string,
 			Max: docs_json_ts_common_types_XY_decimal_string,

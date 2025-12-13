@@ -2,6 +2,38 @@
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "docs.json.ts--0.6.1.5--properties",
 	"$defs": {
+		"BP_RadialDamageType_Explosive_C--quoted": {
+			"type": "string",
+			"DocsDotJson_PrefixedString": {
+				"prefix": "BP_RadialDamageType_Explosive_C",
+				"mode": "quoted",
+				"value": null
+			}
+		},
+		"BP_RadialDamageType_Gas_C--quoted": {
+			"type": "string",
+			"DocsDotJson_PrefixedString": {
+				"prefix": "BP_RadialDamageType_Gas_C",
+				"mode": "quoted",
+				"value": null
+			}
+		},
+		"Material--quoted": {
+			"type": "string",
+			"DocsDotJson_PrefixedString": {
+				"prefix": "Material",
+				"mode": "quoted",
+				"value": null
+			}
+		},
+		"MaterialInstanceConstant--quoted": {
+			"type": "string",
+			"DocsDotJson_PrefixedString": {
+				"prefix": "MaterialInstanceConstant",
+				"mode": "quoted",
+				"value": null
+			}
+		},
 		"mAllowedResourceForms": {
 			"type": "string",
 			"typed_string": {
@@ -124,12 +156,7 @@
 								],
 								"properties": {
 									"ItemDescriptor": {
-										"type": "string",
-										"DocsDotJson_PrefixedString": {
-											"prefix": "BlueprintGeneratedClass",
-											"mode": "quoted",
-											"value": null
-										}
+										"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/BlueprintGeneratedClass--quoted"
 									},
 									"ActorsAllowedToScan": {
 										"type": "string",
@@ -138,12 +165,7 @@
 											"minItems": 1,
 											"uniqueItems": true,
 											"items": {
-												"type": "string",
-												"templated_string": [
-													"Class'\"/Script/FactoryGame.",
-													{"type": "string"},
-													"\"'"
-												]
+												"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/Class--quoted"
 											}
 										}
 									}

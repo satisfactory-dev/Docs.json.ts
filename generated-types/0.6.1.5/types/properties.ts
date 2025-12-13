@@ -5,6 +5,8 @@ import type {
 } from './../../common/types.ts';
 
 import type {
+	BlueprintGeneratedClass_quoted as docs_json_ts_0_3_7_7_properties_BlueprintGeneratedClass_quoted,
+	Class_quoted as docs_json_ts_0_3_7_7_properties_Class_quoted,
 	DocsDotJson_BlueprintGeneratedClass_quoted_list as docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list,
 	mProducedIn_base as docs_json_ts_0_3_7_7_properties_mProducedIn_base,
 	mUnlocks_item_base as docs_json_ts_0_3_7_7_properties_mUnlocks_item_base,
@@ -23,6 +25,14 @@ import type {
 import type {
 	mUnlocks_item_mEmotes as docs_json_ts_0_5_2_1_properties_mUnlocks_item_mEmotes,
 } from './../../0.5.2.1/types/properties.ts';
+
+type BP_RadialDamageType_Explosive_C_quoted = `BP_RadialDamageType_Explosive_C'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
+
+type BP_RadialDamageType_Gas_C_quoted = `BP_RadialDamageType_Gas_C'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
+
+type Material_quoted = `Material'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
+
+type MaterialInstanceConstant_quoted = `MaterialInstanceConstant'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
 
 type mAllowedResourceForms = [
     'RF_SOLID' | 'RF_LIQUID' | 'RF_GAS' | 'RF_HEAT',
@@ -46,17 +56,17 @@ type mUnlocks_item = mUnlocks_item_mTapeUnlocks | mUnlocks_item_mScannableObject
 type mUnlocks_item_mScannableObjects = docs_json_ts_0_3_7_7_properties_mUnlocks_item_base & {
 	mScannableObjects: [
 		{
-			ItemDescriptor: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
+			ItemDescriptor: docs_json_ts_0_3_7_7_properties_BlueprintGeneratedClass_quoted,
 			ActorsAllowedToScan: [
-                `Class'"/Script/FactoryGame.${string}${'"\''}`,
-                ...`Class'"/Script/FactoryGame.${string}${'"\''}`[],
+				docs_json_ts_0_3_7_7_properties_Class_quoted,
+				...docs_json_ts_0_3_7_7_properties_Class_quoted[],
 			],
 		},
 		...{
-			ItemDescriptor: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
+			ItemDescriptor: docs_json_ts_0_3_7_7_properties_BlueprintGeneratedClass_quoted,
 			ActorsAllowedToScan: [
-                `Class'"/Script/FactoryGame.${string}${'"\''}`,
-                ...`Class'"/Script/FactoryGame.${string}${'"\''}`[],
+				docs_json_ts_0_3_7_7_properties_Class_quoted,
+				...docs_json_ts_0_3_7_7_properties_Class_quoted[],
 			],
 		}[],
 	],
@@ -87,6 +97,10 @@ type ItemClass_list = [
 ];
 
 export type {
+	BP_RadialDamageType_Explosive_C_quoted,
+	BP_RadialDamageType_Gas_C_quoted,
+	Material_quoted,
+	MaterialInstanceConstant_quoted,
 	mAllowedResourceForms,
 	mDisableSnapOn_front_right,
 	mProducedIn,

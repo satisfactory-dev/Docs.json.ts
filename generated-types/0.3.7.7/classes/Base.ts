@@ -1,7 +1,13 @@
 /* eslint-disable @stylistic/max-len */
 
 import type {
+	AnimMontage_quoted as docs_json_ts_0_3_7_7_properties_AnimMontage_quoted,
+	BlueprintGeneratedClass_non_quoted as docs_json_ts_0_3_7_7_properties_BlueprintGeneratedClass_non_quoted,
+	BlueprintGeneratedClass_quoted as docs_json_ts_0_3_7_7_properties_BlueprintGeneratedClass_quoted,
+	CameraAnim_quoted as docs_json_ts_0_3_7_7_properties_CameraAnim_quoted,
+	Class_quoted as docs_json_ts_0_3_7_7_properties_Class_quoted,
 	DocsDotJson_BlueprintGeneratedClass_quoted_list as docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list,
+	FGTrainPlatformConnection_quoted as docs_json_ts_0_3_7_7_properties_FGTrainPlatformConnection_quoted,
 	ItemClass_Amount_list as docs_json_ts_0_3_7_7_properties_ItemClass_Amount_list,
 	mAbbreviatedDisplayName as docs_json_ts_0_3_7_7_properties_mAbbreviatedDisplayName,
 	mAllowedResourceForms as docs_json_ts_0_3_7_7_properties_mAllowedResourceForms,
@@ -26,6 +32,7 @@ import type {
 	mUnlocks_item_mRecipes as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mRecipes,
 	mUnlocks_item_mResourcesToAddToScanner as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mResourcesToAddToScanner,
 	mUnlocks_item_mSchematics as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mSchematics,
+	ParticleSystem_quoted as docs_json_ts_0_3_7_7_properties_ParticleSystem_quoted,
 	Texture2D as docs_json_ts_0_3_7_7_properties_Texture2D,
 	Tier as docs_json_ts_0_3_7_7_properties_Tier,
 	transform_Rotation_Translation_Scale3D as docs_json_ts_0_3_7_7_properties_transform_Rotation_Translation_Scale3D,
@@ -49,7 +56,7 @@ import type {
 } from '@signpostmarv/json-schema-typescript-codegen';
 
 type hasClassName = {
-	ClassName: `${string}${'_'}${string}${'_C'}`,
+	ClassName: `${Exclude<string, ''>}${'_'}${Exclude<string, ''>}${'_C'}`,
 };
 
 type isDescribed = isNamed & {
@@ -732,12 +739,12 @@ type FGBuildableResourceExtractor_miner_base_base_base = FGBuildableResourceExtr
 	mCanPlayAfterStartUpStopped?: docs_json_ts_common_types_bool_string,
 	mParticleMap: [
 		{
-			ResourceNode_16_2100B5C34EE8DF7958D78A974512F3C3: `/Game/FactoryGame/Resource/RawResources/${string}${'/Desc_'}${string}${'.Desc_'}${string}${'_C'}`,
-			ParticleSystem1_9_F0CF81514E1E1C5007AC99B0C59C63CD: `ParticleSystem'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
+			ResourceNode_16_2100B5C34EE8DF7958D78A974512F3C3: `/Game/FactoryGame/Resource/RawResources/${string}${'/Desc_'}${Exclude<string, ''>}${'.Desc_'}${Exclude<string, ''>}${'_C'}`,
+			ParticleSystem1_9_F0CF81514E1E1C5007AC99B0C59C63CD: docs_json_ts_0_3_7_7_properties_ParticleSystem_quoted,
 		},
 		...{
-			ResourceNode_16_2100B5C34EE8DF7958D78A974512F3C3: `/Game/FactoryGame/Resource/RawResources/${string}${'/Desc_'}${string}${'.Desc_'}${string}${'_C'}`,
-			ParticleSystem1_9_F0CF81514E1E1C5007AC99B0C59C63CD: `ParticleSystem'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
+			ResourceNode_16_2100B5C34EE8DF7958D78A974512F3C3: `/Game/FactoryGame/Resource/RawResources/${string}${'/Desc_'}${Exclude<string, ''>}${'.Desc_'}${Exclude<string, ''>}${'_C'}`,
+			ParticleSystem1_9_F0CF81514E1E1C5007AC99B0C59C63CD: docs_json_ts_0_3_7_7_properties_ParticleSystem_quoted,
 		}[],
 	],
 	mExtractorTypeName: 'Miner',
@@ -903,8 +910,8 @@ type FGBuildableTradingPost_base_base_base = FGBuildable_powered_base_base_base 
 	mWorkBenchFree: 'Use Craft Bench',
 	mShipUpgradeLevel: docs_json_ts_common_types_integer_string,
 	mStorageText: 'Open Storage',
-	mMamFreeText: `Use M${string}`,
-	mMamOccupiedText: `M${string}${' is occupied'}`,
+	mMamFreeText: `Use M${Exclude<string, ''>}`,
+	mMamOccupiedText: `M${Exclude<string, ''>}${' is occupied'}`,
 	mGenerators: '',
 	mStorageInventorySize: docs_json_ts_common_types_integer_string,
 	mStorageVisibilityLevel: docs_json_ts_common_types_integer_string,
@@ -931,8 +938,8 @@ type FGBuildableTrainPlatform_base = FGBuildableTrainPlatform_base_base & FGBuil
 
 type FGBuildableTrainPlatform_base_base = FGBuildable_powered_base_base_base & {
 	mPlatformConnections: [
-        `FGTrainPlatformConnection'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
-        ...`FGTrainPlatformConnection'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`[],
+		docs_json_ts_0_3_7_7_properties_FGTrainPlatformConnection_quoted,
+		...docs_json_ts_0_3_7_7_properties_FGTrainPlatformConnection_quoted[],
 	],
 	mIsOrientationReversed: docs_json_ts_common_types_bool_string,
 	mPlatformDockingStatus: 'ETPDS_None',
@@ -1029,12 +1036,12 @@ type FGConsumableEquipment_version_specific = FGConsumableEquipment_version_spec
 type FGConsumableEquipment_version_specific_mAnimData = {
 	mAnimData?: [
 		{
-			Montage_7_2E66F6A948A8606E71185682EA2AC4EC: `AnimMontage'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
-			CameraAnim_8_AA01C2B248FF438D6C2816B2FA94F1BD: `CameraAnim'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
+			Montage_7_2E66F6A948A8606E71185682EA2AC4EC: docs_json_ts_0_3_7_7_properties_AnimMontage_quoted,
+			CameraAnim_8_AA01C2B248FF438D6C2816B2FA94F1BD: docs_json_ts_0_3_7_7_properties_CameraAnim_quoted,
 		},
 		...{
-			Montage_7_2E66F6A948A8606E71185682EA2AC4EC: `AnimMontage'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
-			CameraAnim_8_AA01C2B248FF438D6C2816B2FA94F1BD: `CameraAnim'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
+			Montage_7_2E66F6A948A8606E71185682EA2AC4EC: docs_json_ts_0_3_7_7_properties_AnimMontage_quoted,
+			CameraAnim_8_AA01C2B248FF438D6C2816B2FA94F1BD: docs_json_ts_0_3_7_7_properties_CameraAnim_quoted,
 		}[],
 	],
 };
@@ -1059,9 +1066,9 @@ type FGDescriptor_base = isDescribed & {
 	mRememberPickUp: docs_json_ts_common_types_bool_string,
 	mEnergyValue: docs_json_ts_common_types_decimal_string,
 	mRadioactiveDecay: docs_json_ts_common_types_decimal_string,
-	mForm: `RF_${string}`,
-	mSmallIcon: `Texture2D${string}` | 'None',
-	mPersistentBigIcon: `Texture2D${string}` | 'None',
+	mForm: `RF_${Exclude<string, ''>}`,
+	mSmallIcon: `Texture2D${Exclude<string, ''>}` | 'None',
+	mPersistentBigIcon: `Texture2D${Exclude<string, ''>}` | 'None',
 	mFluidColor: docs_json_ts_common_types_BGRA,
 };
 
@@ -1087,7 +1094,7 @@ type FGEquipment_base = FGEquipment_base_base & FGEquipment_base_version_specifi
 type FGEquipment_base_base = FGEquipment_base_base_base & FGEquipment_base_base_version_specific;
 
 type FGEquipment_base_base_base = hasClassName & {
-	mEquipmentSlot: `ES_${string}`,
+	mEquipmentSlot: `ES_${Exclude<string, ''>}`,
 	mAttachSocket: Exclude<string, ''>,
 	mCostToUse: '' | docs_json_ts_0_3_7_7_properties_ItemClass_Amount_list,
 	mArmAnimation: 'AE_Consumables' | 'AE_OneHandEquipment' | 'AE_ChainSaw' | 'AE_Generic2Hand' | 'AE_None' | 'AE_RebarGun' | 'AE_Rifle' | 'AE_ShockShank' | 'AE_StunSpear' | 'AE_PortableMiner' | 'AE_ObjectScanner' | 'AE_ColorGun' | 'AE_Nobelisk' | 'AE_Generic1Hand',
@@ -1180,7 +1187,7 @@ type FGGolfCartDispenser = FGEquipment_dispenser & {
 };
 
 type FGInstructive = isNamed & {
-	FullName: `BlueprintGeneratedClass /Game/FactoryGame/${Exclude<string, ''>}${''}`,
+	FullName: docs_json_ts_0_3_7_7_properties_BlueprintGeneratedClass_non_quoted,
 	mRelevantEvents: null | docs_json_ts_0_3_7_7_properties_mRelevantEvents,
 };
 
@@ -1237,7 +1244,7 @@ type FGNobeliskDetonator_base = FGWeaponProjectile_thrown_base_base & {
 type FGObjectScanner = FGObjectScanner_base & {
 	mObjectDetails: [
 		{
-			ScannableClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
+			ScannableClass: docs_json_ts_0_3_7_7_properties_BlueprintGeneratedClass_quoted,
 			DisplayText: {
 				NSLOCTEXT: [
 					string,
@@ -1248,10 +1255,10 @@ type FGObjectScanner = FGObjectScanner_base & {
 			PreCacheAllOfType?: docs_json_ts_common_types_bool_string,
 			ShouldOverrideDetectionRange?: docs_json_ts_common_types_bool_string,
 			NewDetectionRange?: docs_json_ts_common_types_decimal_string,
-			RequiredSchematic: `/Game/FactoryGame/Schematics/Research/${string}${'/'}${string}${'.'}${string}${'_C'}`,
+			RequiredSchematic: `/Game/FactoryGame/Schematics/Research/${string}${'/'}${Exclude<string, ''>}${'.'}${Exclude<string, ''>}${'_C'}`,
 		},
 		...{
-			ScannableClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
+			ScannableClass: docs_json_ts_0_3_7_7_properties_BlueprintGeneratedClass_quoted,
 			DisplayText: {
 				NSLOCTEXT: [
 					string,
@@ -1262,7 +1269,7 @@ type FGObjectScanner = FGObjectScanner_base & {
 			PreCacheAllOfType?: docs_json_ts_common_types_bool_string,
 			ShouldOverrideDetectionRange?: docs_json_ts_common_types_bool_string,
 			NewDetectionRange?: docs_json_ts_common_types_decimal_string,
-			RequiredSchematic: `/Game/FactoryGame/Schematics/Research/${string}${'/'}${string}${'.'}${string}${'_C'}`,
+			RequiredSchematic: `/Game/FactoryGame/Schematics/Research/${string}${'/'}${Exclude<string, ''>}${'.'}${Exclude<string, ''>}${'_C'}`,
 		}[],
 	],
 };
@@ -1460,15 +1467,15 @@ type FGWeaponProjectile_thrown = FGWeaponProjectile_thrown_base & FGWeaponProjec
 
 type FGWeaponProjectile_thrown_base = FGWeaponProjectile_thrown_base_base & {
 	mExplosiveData: {
-		ProjectileClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
+		ProjectileClass: docs_json_ts_0_3_7_7_properties_BlueprintGeneratedClass_quoted,
 		ProjectileLifeSpan: docs_json_ts_common_types_decimal_string_signed,
 		ProjectileStickSpan: docs_json_ts_common_types_decimal_string_signed,
 		ExplosionDamage: docs_json_ts_common_types_integer_string,
 		ExplosionRadius: docs_json_ts_common_types_decimal_string,
 		ImpactDamage: docs_json_ts_common_types_integer_string,
 		ExplodeAtEndOfLife: docs_json_ts_common_types_bool_string,
-		DamageType: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
-		DamageTypeExplode: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
+		DamageType: docs_json_ts_0_3_7_7_properties_BlueprintGeneratedClass_quoted,
+		DamageTypeExplode: docs_json_ts_0_3_7_7_properties_BlueprintGeneratedClass_quoted,
 	},
 	mDispensedExplosives: '',
 	mDelayBetweenExplosions: docs_json_ts_common_types_decimal_string,
@@ -1502,14 +1509,14 @@ type FGWeaponProjectileFire_base_random_base_base = FGEquipment_base & {
 type FGWeaponProjectileFire_base_version_specific = FGWeaponProjectile_base & {
 	mMuteDryFire: docs_json_ts_common_types_bool_string,
 	mProjectileData: {
-		ProjectileClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
+		ProjectileClass: docs_json_ts_0_3_7_7_properties_BlueprintGeneratedClass_quoted,
 		ProjectileLifeSpan: docs_json_ts_common_types_decimal_string,
 		ProjectileStickSpan: docs_json_ts_common_types_decimal_string,
 		ExplosionDamage: docs_json_ts_common_types_integer_string,
 		ImpactDamage: docs_json_ts_common_types_integer_string,
 		CanTriggerExplodeBySameClass: docs_json_ts_common_types_bool_string,
-		DamageType: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
-		DamageTypeExplode: 'Class\'"/Script/FactoryGame.FGDamageType"\'',
+		DamageType: docs_json_ts_0_3_7_7_properties_BlueprintGeneratedClass_quoted,
+		DamageTypeExplode: docs_json_ts_0_3_7_7_properties_Class_quoted,
 	},
 	mArmAnimation: 'AE_RebarGun',
 };

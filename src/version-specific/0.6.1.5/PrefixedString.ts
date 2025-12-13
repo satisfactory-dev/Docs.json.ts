@@ -17,7 +17,7 @@ import {
 
 import type {
 	mode,
-} from '../0.4.2.11/PrefixedString.ts';
+} from '../0.3.7.7/PrefixedString.ts';
 
 export type PrefixedString_base_type<
 	Mode extends string = string,

@@ -8,6 +8,7 @@ import type {
 } from './../../common/types.ts';
 
 import type {
+	BlueprintGeneratedClass_quoted as docs_json_ts_0_3_7_7_properties_BlueprintGeneratedClass_quoted,
 	DocsDotJson_BlueprintGeneratedClass_quoted_list as docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list,
 	mProducedIn as docs_json_ts_0_3_7_7_properties_mProducedIn,
 	mUnlocks_item_base as docs_json_ts_0_3_7_7_properties_mUnlocks_item_base,
@@ -16,6 +17,12 @@ import type {
 	mUnlocks_item_mRecipes as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mRecipes,
 	mUnlocks_item_mSchematics as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mSchematics,
 } from './../../0.3.7.7/types/properties.ts';
+
+type BlueprintGeneratedClass_single_quoted = `BlueprintGeneratedClass'/Game/FactoryGame/${Exclude<string, ''>}${'\''}`;
+
+type FGRailroadTrackConnectionComponent_quoted = `FGRailroadTrackConnectionComponent'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
+
+type Texture2D_quoted = `Texture2D'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
 
 type mAllowedResourceForms = [
     'RF_SOLID' | 'RF_LIQUID' | 'RF_GAS' | 'RF_HEAT',
@@ -83,11 +90,11 @@ type mUnlocks_item_mResourcePairsToAddToScanner = docs_json_ts_0_3_7_7_propertie
 	mResourcesToAddToScanner: '' | docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list,
 	mResourcePairsToAddToScanner: [
 		{
-			ResourceDescriptor: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
+			ResourceDescriptor: docs_json_ts_0_3_7_7_properties_BlueprintGeneratedClass_quoted,
 			ResourceNodeType?: 'Geyser' | 'FrackingCore',
 		},
 		...{
-			ResourceDescriptor: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
+			ResourceDescriptor: docs_json_ts_0_3_7_7_properties_BlueprintGeneratedClass_quoted,
 			ResourceNodeType?: 'Geyser' | 'FrackingCore',
 		}[],
 	],
@@ -102,6 +109,9 @@ type TintColor = {
 };
 
 export type {
+	BlueprintGeneratedClass_single_quoted,
+	FGRailroadTrackConnectionComponent_quoted,
+	Texture2D_quoted,
 	mAllowedResourceForms,
 	mFogPlaneTransforms_empty,
 	mFogPlaneTransforms_list,

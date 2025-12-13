@@ -56,10 +56,6 @@ import type {
 } from '../0.3.7.7/TypedString/Object.ts';
 
 import {
-	PrefixedString as PrefixedStringMatcher,
-} from './TypedString/PropertySchemaToRegex/PrefixedString.ts';
-
-import {
 	TintColor,
 } from './TypedString/PropertySchemaToRegex/TintColor.ts';
 
@@ -131,11 +127,6 @@ export function PropertySchemaToRegex__matchers_as_object(
 ): PropertySchemaToRegex__matchers_object {
 	return {
 		...PropertySchemaToRegex__matchers_as_object__update3(),
-		PrefixedStringMatcher: ({ajv}) => [
-			PrefixedStringMatcher(ajv, 'quoted'),
-			PrefixedStringMatcher(ajv, 'single_quoted'),
-			PrefixedStringMatcher(ajv, 'non_quoted'),
-		],
 		TintColor: ({
 			ajv,
 			Object_matcher_instance,
@@ -308,6 +299,16 @@ export class TypedString<
 						root_schema = it.self.schemas[
 							it.baseId
 						]?.schema as SchemaObject;
+					} else if (
+						'#' === it.baseId
+						&& object_has_property(
+							it.schemaEnv.root.schema,
+							'$defs',
+						)
+					) {
+						root_schema = (
+							it.schemaEnv.root.schema as SchemaObject
+						);
 					}
 
 					if (Object.keys(root_schema.$defs || {}).length > 0) {

@@ -28,7 +28,7 @@ import {
 import type {
 } from 'regexp.escape/auto';
 
-export type mode = 'quoted'|'non_quoted';
+export type mode = 'quoted'|'non_quoted'|'single_quoted';
 
 export type PrefixedString_base_type<
 	Mode extends string = string,
@@ -230,11 +230,13 @@ export class PrefixedString<
 			{
 				non_quoted: `${prefix} /Game/FactoryGame/`,
 				quoted: `${prefix}'"/Game/FactoryGame/`,
+				single_quoted: `${prefix}'/Game/FactoryGame/`,
 			}[mode],
 			null === value ? {type: 'string', minLength: 1} : value,
 			{
 				non_quoted: '',
 				quoted: `"'`,
+				single_quoted: `'`,
 			}[mode],
 		];
 	}
@@ -313,14 +315,25 @@ export class PrefixedString<
 	}
 
 	static regex_from_prefix_value_and_mode(
-		prefix_string: Exclude<string, ''>,
+		prefix_string: Exclude<string, ''>|undefined,
 		value: Exclude<string, ''>|null,
 		mode: mode,
 	): string {
-		const start = RegExp.escape({
+		let start: string;
+
+		if (prefix_string) {
+		start = RegExp.escape({
 			quoted: `${prefix_string}'"`,
+				single_quoted: `${prefix_string}'`,
 			non_quoted: `${prefix_string} `,
 		}[mode]);
+		} else {
+			start = {
+				quoted: `[^'"]+'"`,
+				single_quoted: `[^']+'`,
+				non_quoted: '[^ ]+ ',
+			}[mode];
+		}
 
 
 		if (null !== value) {
@@ -335,6 +348,7 @@ export class PrefixedString<
 		const prefix = RegExp.escape('/Game/FactoryGame/');
 		const suffix = RegExp.escape({
 			quoted: `"'`,
+			single_quoted: `'`,
 			non_quoted: '',
 		}[mode]);
 
@@ -354,11 +368,13 @@ export class PrefixedString<
 			{
 				non_quoted: `${prefix} /Game/FactoryGame/`,
 				quoted: `${prefix}'"/Game/FactoryGame/`,
+				single_quoted: `${prefix}'/Game/FactoryGame/`,
 			}[mode],
 			null === value ? {type: 'string'} : value,
 			{
 				non_quoted: '',
 				quoted: `"'`,
+				single_quoted: `'`,
 			}[mode],
 		];
 	}

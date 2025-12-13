@@ -1618,12 +1618,7 @@
 						"minItems": 1,
 						"uniqueItems": true,
 						"items": {
-							"type": "string",
-							"DocsDotJson_PrefixedString": {
-								"prefix": "FGRailroadTrackConnectionComponent",
-								"mode": "quoted",
-								"value": null
-							}
+							"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/FGRailroadTrackConnectionComponent--quoted"
 						}
 					}
 				}
@@ -2365,12 +2360,7 @@
 			"required": ["mSpentFuelClass"],
 			"properties": {
 				"mSpentFuelClass": {
-					"type": "string",
-					"DocsDotJson_PrefixedString": {
-						"prefix": "BlueprintGeneratedClass",
-						"mode": "single_quoted",
-						"value": null
-					}
+					"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/BlueprintGeneratedClass--single-quoted"
 				}
 			}
 		},
@@ -2613,7 +2603,7 @@
 							"type": "string",
 							"templated_string": [
 								"Texture2D ",
-								{"type": "string"}
+								{"type": "string", "minLength": 1}
 							]
 						}
 					]
@@ -2661,12 +2651,7 @@
 								"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/TintColor"
 							},
 							"ResourceObject": {
-								"type": "string",
-								"DocsDotJson_PrefixedString": {
-									"prefix": "Texture2D",
-									"mode": "quoted",
-									"value": null
-								}
+								"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/Texture2D--quoted"
 							},
 							"UVRegion": {
 								"type": "string",

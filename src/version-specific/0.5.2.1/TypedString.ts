@@ -304,6 +304,16 @@ export class TypedString<
 						root_schema = it.self.schemas[
 							it.baseId
 						]?.schema as SchemaObject;
+					} else if (
+						'#' === it.baseId
+						&& object_has_property(
+							it.schemaEnv.root.schema,
+							'$defs',
+						)
+					) {
+						root_schema = (
+							it.schemaEnv.root.schema as SchemaObject
+						);
 					}
 
 					if (Object.keys(root_schema.$defs || {}).length > 0) {

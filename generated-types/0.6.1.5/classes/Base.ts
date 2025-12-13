@@ -13,10 +13,14 @@ import type {
 } from './../../common/types.ts';
 
 import type {
+	BP_RadialDamageType_Explosive_C_quoted as docs_json_ts_0_6_1_5_properties_BP_RadialDamageType_Explosive_C_quoted,
+	BP_RadialDamageType_Gas_C_quoted as docs_json_ts_0_6_1_5_properties_BP_RadialDamageType_Gas_C_quoted,
 	DamageTypes as docs_json_ts_0_6_1_5_properties_DamageTypes,
 	DocsDotJson_AkAudioEvent_quoted_list as docs_json_ts_0_6_1_5_properties_DocsDotJson_AkAudioEvent_quoted_list,
 	ItemClass_list as docs_json_ts_0_6_1_5_properties_ItemClass_list,
 	mAllowedResourceForms as docs_json_ts_0_6_1_5_properties_mAllowedResourceForms,
+	Material_quoted as docs_json_ts_0_6_1_5_properties_Material_quoted,
+	MaterialInstanceConstant_quoted as docs_json_ts_0_6_1_5_properties_MaterialInstanceConstant_quoted,
 	mDisableSnapOn_front_right as docs_json_ts_0_6_1_5_properties_mDisableSnapOn_front_right,
 	mProducedIn as docs_json_ts_0_6_1_5_properties_mProducedIn,
 	mUnlocks_item as docs_json_ts_0_6_1_5_properties_mUnlocks_item,
@@ -140,6 +144,7 @@ import type {
 } from './../../0.4.2.11/classes/Base.ts';
 
 import type {
+	BlueprintGeneratedClass_quoted as docs_json_ts_0_3_7_7_properties_BlueprintGeneratedClass_quoted,
 	DocsDotJson_BlueprintGeneratedClass_quoted_list as docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list,
 	ItemClass_Amount_list as docs_json_ts_0_3_7_7_properties_ItemClass_Amount_list,
 	mDisableSnapOn_front_bottom as docs_json_ts_0_3_7_7_properties_mDisableSnapOn_front_bottom,
@@ -183,6 +188,7 @@ import type {
 
 import type {
 	Texture2D as docs_json_ts_0_4_2_11_properties_Texture2D,
+	Texture2D_quoted as docs_json_ts_0_4_2_11_properties_Texture2D_quoted,
 	TintColor as docs_json_ts_0_4_2_11_properties_TintColor,
 } from './../../0.4.2.11/types/properties.ts';
 
@@ -198,7 +204,7 @@ type FGAmmoType_base = FGAmmoType_base_base & {
 	mDispersionRecoveryTime?: docs_json_ts_common_types_decimal_string,
 	mMagazineMeshMaterials: null | [
 		{
-			MaterialInterface: `MaterialInstanceConstant'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}` | `Material'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
+			MaterialInterface: docs_json_ts_0_6_1_5_properties_MaterialInstanceConstant_quoted | docs_json_ts_0_6_1_5_properties_Material_quoted,
 			MaterialSlotName: 'lambert1' | 'Rifle' | 'lambert9_001' | 'lambert10' | 'lambert2' | 'Material_003' | 'Material_002' | 'Rocket1' | 'Rocket2' | '01 - Default',
 			ImportedMaterialSlotName: 'lambert1' | 'Rifle' | 'lambert9_001' | 'lambert10' | 'lambert2' | 'Material_003' | 'Material_002' | 'Rocket1' | 'Rocket2' | '01 - Default',
 			UVChannelData: {
@@ -211,7 +217,7 @@ type FGAmmoType_base = FGAmmoType_base_base & {
 			},
 		},
 		...{
-			MaterialInterface: `MaterialInstanceConstant'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}` | `Material'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
+			MaterialInterface: docs_json_ts_0_6_1_5_properties_MaterialInstanceConstant_quoted | docs_json_ts_0_6_1_5_properties_Material_quoted,
 			MaterialSlotName: 'lambert1' | 'Rifle' | 'lambert9_001' | 'lambert10' | 'lambert2' | 'Material_003' | 'Material_002' | 'Rocket1' | 'Rocket2' | '01 - Default',
 			ImportedMaterialSlotName: 'lambert1' | 'Rifle' | 'lambert9_001' | 'lambert10' | 'lambert2' | 'Material_003' | 'Material_002' | 'Rocket1' | 'Rocket2' | '01 - Default',
 			UVChannelData: {
@@ -256,11 +262,11 @@ type FGAmmoTypeProjectile = FGAmmoType_base & {
 	mProjectileStickspan: docs_json_ts_common_types_decimal_string_signed,
 	mCanTakeDamageBySameProjectileOrChild: docs_json_ts_common_types_bool_string,
 	mDamageTypesAtEndOfLife: null | [
-        `BP_RadialDamageType_Explosive_C'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
-        ...`BP_RadialDamageType_Explosive_C'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`[],
+		docs_json_ts_0_6_1_5_properties_BP_RadialDamageType_Explosive_C_quoted,
+		...docs_json_ts_0_6_1_5_properties_BP_RadialDamageType_Explosive_C_quoted[],
 	] | [
-        `BP_RadialDamageType_Gas_C'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
-        ...`BP_RadialDamageType_Gas_C'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`[],
+		docs_json_ts_0_6_1_5_properties_BP_RadialDamageType_Gas_C_quoted,
+		...docs_json_ts_0_6_1_5_properties_BP_RadialDamageType_Gas_C_quoted[],
 	],
 	mGravityScaleOverLifespan: docs_json_ts_0_5_2_1_properties_FalloffCurve_EditorCurveData_only,
 	mHomingProjectile: docs_json_ts_common_types_bool_string,
@@ -272,10 +278,10 @@ type FGAmmoTypeProjectile = FGAmmoType_base & {
 	mHomingAngleLimit: docs_json_ts_common_types_decimal_string,
 	mHomingOverrideTargets: null | [
 		{
-			ActorClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
+			ActorClass: docs_json_ts_0_3_7_7_properties_BlueprintGeneratedClass_quoted,
 		},
 		...{
-			ActorClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
+			ActorClass: docs_json_ts_0_3_7_7_properties_BlueprintGeneratedClass_quoted,
 		}[],
 	],
 };
@@ -294,12 +300,12 @@ type FGBuildable_base = FGBuildable_base_pre_update8 & FGBuildable_base_version_
 type FGBuildable_base_pre_update8 = {
 	mAlternativeMaterialRecipes: null | [
 		{
-			mMaterial: `/Game/FactoryGame/Buildable/-Shared/Customization/Materials/MaterialDesc_Foundation_${string}${'.MaterialDesc_Foundation_'}${string}`,
-			mRecipe?: `/Game/FactoryGame/Buildable/Building/Foundation/${string}${'/Recipe_'}${string}${'.Recipe_'}${string}${'_C'}`,
+			mMaterial: `/Game/FactoryGame/Buildable/-Shared/Customization/Materials/MaterialDesc_Foundation_${Exclude<string, ''>}${'.MaterialDesc_Foundation_'}${Exclude<string, ''>}`,
+			mRecipe?: `/Game/FactoryGame/Buildable/Building/Foundation/${string}${'/Recipe_'}${Exclude<string, ''>}${'.Recipe_'}${Exclude<string, ''>}${'_C'}`,
 		},
 		...{
-			mMaterial: `/Game/FactoryGame/Buildable/-Shared/Customization/Materials/MaterialDesc_Foundation_${string}${'.MaterialDesc_Foundation_'}${string}`,
-			mRecipe?: `/Game/FactoryGame/Buildable/Building/Foundation/${string}${'/Recipe_'}${string}${'.Recipe_'}${string}${'_C'}`,
+			mMaterial: `/Game/FactoryGame/Buildable/-Shared/Customization/Materials/MaterialDesc_Foundation_${Exclude<string, ''>}${'.MaterialDesc_Foundation_'}${Exclude<string, ''>}`,
+			mRecipe?: `/Game/FactoryGame/Buildable/Building/Foundation/${string}${'/Recipe_'}${Exclude<string, ''>}${'.Recipe_'}${Exclude<string, ''>}${'_C'}`,
 		}[],
 	],
 	mAllowPatterning: docs_json_ts_common_types_bool_string,
@@ -599,7 +605,7 @@ type FGHoverPack = docs_json_ts_0_4_2_11_classes_base_FGHoverPack_base & FGEquip
 type FGItemDescriptor = docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable_base & FGItemDescriptor_base;
 
 type FGItemDescriptor_base = FGDescriptor & {
-	mCrosshairMaterial: 'None' | `/Game/FactoryGame/Interface/UI/Material/Crosshairs/MI_UI_Crosshair_${string}${'.MI_UI_Crosshair_'}${string}`,
+	mCrosshairMaterial: 'None' | `/Game/FactoryGame/Interface/UI/Material/Crosshairs/MI_UI_Crosshair_${Exclude<string, ''>}${'.MI_UI_Crosshair_'}${Exclude<string, ''>}`,
 	mDescriptorStatBars: null | [
 		{
 			Value: docs_json_ts_common_types_integer_string,
@@ -618,7 +624,7 @@ type FGItemDescriptor_base = FGDescriptor & {
 			CompatibleItemDescriptors: docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list,
 		}[],
 	],
-	mClassToScanFor: 'None' | `/Game/FactoryGame/${'Resource/Environment/' | 'World/Benefit/'}${string}${'/BP_'}${string}${'.BP_'}${string}`,
+	mClassToScanFor: 'None' | `/Game/FactoryGame/${'Resource/Environment/' | 'World/Benefit/'}${string}${'/BP_'}${Exclude<string, ''>}${'.BP_'}${Exclude<string, ''>}`,
 	mScannableType: 'RTWOT_Default' | 'RTWOT_WeakSignal' | 'RTWOT_Flora',
 	mShouldOverrideScannerDisplayText: docs_json_ts_common_types_bool_string,
 	mScannerDisplayText: string,
@@ -647,7 +653,7 @@ type FGObjectScanner = FGObjectScanner_base & {
 	mScannableDescriptors: docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list,
 	mObjectDetails: [
 		{
-			ScannableClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
+			ScannableClass: docs_json_ts_0_3_7_7_properties_BlueprintGeneratedClass_quoted,
 			DisplayText: {
 				NSLOCTEXT: [
 					string,
@@ -655,14 +661,14 @@ type FGObjectScanner = FGObjectScanner_base & {
 				],
 			},
 			ScannerLightColor: docs_json_ts_common_types_BGRA,
-			Icon: `/Game/FactoryGame/${'Resource' | 'Equipment'}${string}${'/'}${string}${'.'}${string}${'_'}${'64' | '64_new'}` | ('/Game/FactoryGame/Prototype/WAT/UI/T_WAT1.T_WAT1' | '/Game/FactoryGame/Prototype/WAT/UI/T_WAT2.T_WAT2'),
-			RequiredSchematic: `/Game/FactoryGame/Schematics/Research/${string}${'/'}${string}${'.'}${string}${'_C'}`,
+			Icon: `/Game/FactoryGame/${'Resource' | 'Equipment'}${string}${'/'}${Exclude<string, ''>}${'.'}${Exclude<string, ''>}${'_'}${'64' | '64_new'}` | ('/Game/FactoryGame/Prototype/WAT/UI/T_WAT1.T_WAT1' | '/Game/FactoryGame/Prototype/WAT/UI/T_WAT2.T_WAT2'),
+			RequiredSchematic: `/Game/FactoryGame/Schematics/Research/${Exclude<string, ''>}${'/'}${Exclude<string, ''>}${'.'}${Exclude<string, ''>}${'_C'}`,
 			PreCacheAllOfType?: docs_json_ts_common_types_bool_string,
 			ShouldOverrideDetectionRange?: docs_json_ts_common_types_bool_string,
 			NewDetectionRange?: docs_json_ts_common_types_decimal_string,
 		},
 		...{
-			ScannableClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
+			ScannableClass: docs_json_ts_0_3_7_7_properties_BlueprintGeneratedClass_quoted,
 			DisplayText: {
 				NSLOCTEXT: [
 					string,
@@ -670,8 +676,8 @@ type FGObjectScanner = FGObjectScanner_base & {
 				],
 			},
 			ScannerLightColor: docs_json_ts_common_types_BGRA,
-			Icon: `/Game/FactoryGame/${'Resource' | 'Equipment'}${string}${'/'}${string}${'.'}${string}${'_'}${'64' | '64_new'}` | ('/Game/FactoryGame/Prototype/WAT/UI/T_WAT1.T_WAT1' | '/Game/FactoryGame/Prototype/WAT/UI/T_WAT2.T_WAT2'),
-			RequiredSchematic: `/Game/FactoryGame/Schematics/Research/${string}${'/'}${string}${'.'}${string}${'_C'}`,
+			Icon: `/Game/FactoryGame/${'Resource' | 'Equipment'}${string}${'/'}${Exclude<string, ''>}${'.'}${Exclude<string, ''>}${'_'}${'64' | '64_new'}` | ('/Game/FactoryGame/Prototype/WAT/UI/T_WAT1.T_WAT1' | '/Game/FactoryGame/Prototype/WAT/UI/T_WAT2.T_WAT2'),
+			RequiredSchematic: `/Game/FactoryGame/Schematics/Research/${Exclude<string, ''>}${'/'}${Exclude<string, ''>}${'.'}${Exclude<string, ''>}${'_C'}`,
 			PreCacheAllOfType?: docs_json_ts_common_types_bool_string,
 			ShouldOverrideDetectionRange?: docs_json_ts_common_types_bool_string,
 			NewDetectionRange?: docs_json_ts_common_types_decimal_string,
@@ -704,7 +710,7 @@ type FGSchematic_base_base_props_with_mSchematicIcon = {
 		ImageSize: docs_json_ts_common_types_XY_decimal_string,
 		Margin: docs_json_ts_common_types_empty_object,
 		TintColor: docs_json_ts_0_4_2_11_properties_TintColor,
-		ResourceObject?: `Texture2D'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
+		ResourceObject?: docs_json_ts_0_4_2_11_properties_Texture2D_quoted,
 		UVRegion: {
 			Min: docs_json_ts_common_types_XY_decimal_string,
 			Max: docs_json_ts_common_types_XY_decimal_string,

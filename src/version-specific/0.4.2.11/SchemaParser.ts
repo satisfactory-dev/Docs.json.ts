@@ -73,7 +73,7 @@ import type {
 
 import {
 	PrefixedString,
-} from '../0.4.2.11/PrefixedString.ts';
+} from '../0.3.7.7/PrefixedString.ts';
 
 const already_configured: WeakSet<SchemaParser> = new WeakSet();
 

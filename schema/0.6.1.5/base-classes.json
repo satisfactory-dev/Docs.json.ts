@@ -78,20 +78,10 @@
 											"MaterialInterface": {
 												"oneOf": [
 													{
-														"type": "string",
-														"DocsDotJson_PrefixedString": {
-															"prefix": "MaterialInstanceConstant",
-															"mode": "quoted",
-															"value": null
-														}
+														"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/MaterialInstanceConstant--quoted"
 													},
 													{
-														"type": "string",
-														"DocsDotJson_PrefixedString": {
-															"prefix": "Material",
-															"mode": "quoted",
-															"value": null
-														}
+														"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/Material--quoted"
 													}
 												]
 											},
@@ -333,12 +323,7 @@
 								"minItems": 1,
 								"uniqueItems": true,
 								"items": {
-									"type": "string",
-									"DocsDotJson_PrefixedString": {
-										"prefix": "BP_RadialDamageType_Explosive_C",
-										"mode": "quoted",
-										"value": null
-									}
+									"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/BP_RadialDamageType_Explosive_C--quoted"
 								}
 							}
 						},
@@ -349,12 +334,7 @@
 								"minItems": 1,
 								"uniqueItems": true,
 								"items": {
-									"type": "string",
-									"DocsDotJson_PrefixedString": {
-										"prefix": "BP_RadialDamageType_Gas_C",
-										"mode": "quoted",
-										"value": null
-									}
+									"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/BP_RadialDamageType_Gas_C--quoted"
 								}
 							}
 						}
@@ -404,12 +384,7 @@
 										"required": ["ActorClass"],
 										"properties": {
 											"ActorClass": {
-												"type": "string",
-												"DocsDotJson_PrefixedString": {
-													"prefix": "BlueprintGeneratedClass",
-													"mode": "quoted",
-													"value": null
-												}
+												"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/BlueprintGeneratedClass--quoted"
 											}
 										}
 									}
@@ -500,9 +475,9 @@
 												"type": "string",
 												"templated_string": [
 													"/Game/FactoryGame/Buildable/-Shared/Customization/Materials/MaterialDesc_Foundation_",
-													{"type": "string"},
+													{"type": "string", "minLength": 1},
 													".MaterialDesc_Foundation_",
-													{"type": "string"}
+													{"type": "string", "minLength": 1}
 												]
 											},
 											"mRecipe": {
@@ -511,9 +486,9 @@
 													"/Game/FactoryGame/Buildable/Building/Foundation/",
 													{"type": "string"},
 													"/Recipe_",
-													{"type": "string"},
+													{"type": "string", "minLength": 1},
 													".Recipe_",
-													{"type": "string"},
+													{"type": "string", "minLength": 1},
 													"_C"
 												]
 											}
@@ -1924,9 +1899,9 @@
 							"type": "string",
 							"templated_string": [
 								"/Game/FactoryGame/Interface/UI/Material/Crosshairs/MI_UI_Crosshair_",
-								{"type": "string"},
+								{"type": "string", "minLength": 1},
 								".MI_UI_Crosshair_",
-								{"type": "string"}
+								{"type": "string", "minLength": 1}
 							]
 						}
 					]
@@ -2012,9 +1987,9 @@
 								["Resource/Environment/", "World/Benefit/"],
 								{"type": "string"},
 								"/BP_",
-								{"type": "string"},
+								{"type": "string", "minLength": 1},
 								".BP_",
-								{"type": "string"}
+								{"type": "string", "minLength": 1}
 							]
 						}
 					]
@@ -2151,12 +2126,7 @@
 								],
 								"properties": {
 									"ScannableClass": {
-										"type": "string",
-										"DocsDotJson_PrefixedString": {
-											"prefix": "BlueprintGeneratedClass",
-											"mode": "quoted",
-											"value": null
-										}
+										"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/BlueprintGeneratedClass--quoted"
 									},
 									"DisplayText": {
 										"type": "string",
@@ -2174,9 +2144,9 @@
 													["Resource", "Equipment"],
 													{"type": "string"},
 													"/",
-													{"type": "string"},
+													{"type": "string", "minLength": 1},
 													".",
-													{"type": "string"},
+													{"type": "string", "minLength": 1},
 													"_",
 													["64", "64_new"]
 												]
@@ -2194,11 +2164,11 @@
 										"type": "string",
 										"templated_string": [
 											"/Game/FactoryGame/Schematics/Research/",
-											{"type": "string"},
+											{"type": "string", "minLength": 1},
 											"/",
-											{"type": "string"},
+											{"type": "string", "minLength": 1},
 											".",
-											{"type": "string"},
+											{"type": "string", "minLength": 1},
 											"_C"
 										]
 									},
@@ -2346,12 +2316,7 @@
 								"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/TintColor"
 							},
 							"ResourceObject": {
-								"type": "string",
-								"DocsDotJson_PrefixedString": {
-									"prefix": "Texture2D",
-									"mode": "quoted",
-									"value": null
-								}
+								"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/Texture2D--quoted"
 							},
 							"UVRegion": {
 								"type": "string",

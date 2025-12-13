@@ -2159,12 +2159,7 @@
 						],
 						"properties": {
 							"ProjectileClass": {
-								"type": "string",
-								"DocsDotJson_PrefixedString": {
-									"prefix": "BlueprintGeneratedClass",
-									"mode": "quoted",
-									"value": null
-								}
+								"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/BlueprintGeneratedClass--quoted"
 							},
 							"ProjectileLifeSpan": {
 								"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
@@ -2185,20 +2180,10 @@
 								"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 							},
 							"DamageType": {
-								"type": "string",
-								"DocsDotJson_PrefixedString": {
-									"prefix": "BlueprintGeneratedClass",
-									"mode": "quoted",
-									"value": null
-								}
+								"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/BlueprintGeneratedClass--quoted"
 							},
 							"DamageTypeExplode": {
-								"type": "string",
-								"DocsDotJson_PrefixedString": {
-									"prefix": "BlueprintGeneratedClass",
-									"mode": "quoted",
-									"value": null
-								}
+								"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/BlueprintGeneratedClass--quoted"
 							},
 							"DamageFalloffCurve": {
 								"$ref": "docs.json.ts--0.5.2.1--properties#/$defs/FalloffCurve--EditorCurveData--only"
@@ -2246,12 +2231,7 @@
 						],
 						"properties": {
 							"ProjectileClass": {
-								"type": "string",
-								"DocsDotJson_PrefixedString": {
-									"prefix": "BlueprintGeneratedClass",
-									"mode": "quoted",
-									"value": null
-								}
+								"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/BlueprintGeneratedClass--quoted"
 							},
 							"ProjectileLifeSpan": {
 								"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
@@ -2272,20 +2252,10 @@
 								"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 							},
 							"DamageType": {
-								"type": "string",
-								"DocsDotJson_PrefixedString": {
-									"prefix": "BlueprintGeneratedClass",
-									"mode": "quoted",
-									"value": null
-								}
+								"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/BlueprintGeneratedClass--quoted"
 							},
 							"DamageTypeExplode": {
-								"type": "string",
-								"DocsDotJson_PrefixedString": {
-									"prefix": "BlueprintGeneratedClass",
-									"mode": "quoted",
-									"value": null
-								}
+								"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/BlueprintGeneratedClass--quoted"
 							},
 							"DamageFalloffCurve": {
 								"$ref": "docs.json.ts--0.5.2.1--properties#/$defs/FalloffCurve--EditorCurveData--only"
@@ -2331,12 +2301,7 @@
 						],
 						"properties": {
 							"ProjectileClass": {
-								"type": "string",
-								"DocsDotJson_PrefixedString": {
-									"prefix": "BlueprintGeneratedClass",
-									"mode": "quoted",
-									"value": null
-								}
+								"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/BlueprintGeneratedClass--quoted"
 							},
 							"ProjectileLifeSpan": {
 								"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
@@ -2351,16 +2316,10 @@
 								"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 							},
 							"DamageType": {
-								"type": "string",
-								"DocsDotJson_PrefixedString": {
-									"prefix": "BlueprintGeneratedClass",
-									"mode": "quoted",
-									"value": null
-								}
+								"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/BlueprintGeneratedClass--quoted"
 							},
 							"DamageTypeExplode": {
-								"type": "string",
-								"const": "Class'\"/Script/FactoryGame.FGDamageType\"'"
+								"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/Class--quoted"
 							},
 							"DamageFalloffCurve": {
 								"$ref": "docs.json.ts--0.5.2.1--properties#/$defs/FalloffCurve--EditorCurveData--only"
@@ -2409,12 +2368,7 @@
 						],
 						"properties": {
 							"ProjectileClass": {
-								"type": "string",
-								"DocsDotJson_PrefixedString": {
-									"prefix": "BlueprintGeneratedClass",
-									"mode": "quoted",
-									"value": null
-								}
+								"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/BlueprintGeneratedClass--quoted"
 							},
 							"ProjectileLifeSpan": {
 								"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
@@ -2438,20 +2392,10 @@
 								"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 							},
 							"DamageType": {
-								"type": "string",
-								"DocsDotJson_PrefixedString": {
-									"prefix": "BlueprintGeneratedClass",
-									"mode": "quoted",
-									"value": null
-								}
+								"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/BlueprintGeneratedClass--quoted"
 							},
 							"DamageTypeExplode": {
-								"type": "string",
-								"DocsDotJson_PrefixedString": {
-									"prefix": "BlueprintGeneratedClass",
-									"mode": "quoted",
-									"value": null
-								}
+								"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/BlueprintGeneratedClass--quoted"
 							},
 							"DamageFalloffCurve": {
 								"$ref": "docs.json.ts--0.5.2.1--properties#/$defs/FalloffCurve--EditorCurveData--only"
@@ -2684,12 +2628,7 @@
 								"items": {
 									"oneOf": [
 										{
-											"type": "string",
-											"DocsDotJson_PrefixedString": {
-												"prefix": "BlueprintGeneratedClass",
-												"mode": "quoted",
-												"value": null
-											}
+											"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/BlueprintGeneratedClass--quoted"
 										},
 										{
 											"type": "string",
