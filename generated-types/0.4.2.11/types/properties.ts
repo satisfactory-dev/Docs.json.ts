@@ -18,12 +18,6 @@ import type {
 	mUnlocks_item_mSchematics as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mSchematics,
 } from './../../0.3.7.7/types/properties.ts';
 
-type BlueprintGeneratedClass_single_quoted = `BlueprintGeneratedClass'/Game/FactoryGame/${Exclude<string, ''>}${'\''}`;
-
-type FGRailroadTrackConnectionComponent_quoted = `FGRailroadTrackConnectionComponent'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
-
-type Texture2D_quoted = `Texture2D'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
-
 type mAllowedResourceForms = [
     'RF_SOLID' | 'RF_LIQUID' | 'RF_GAS' | 'RF_HEAT',
     ...('RF_SOLID' | 'RF_LIQUID' | 'RF_GAS' | 'RF_HEAT')[],
@@ -100,7 +94,13 @@ type mUnlocks_item_mResourcePairsToAddToScanner = docs_json_ts_0_3_7_7_propertie
 	],
 };
 
+type BlueprintGeneratedClass_single_quoted = `BlueprintGeneratedClass'/Game/FactoryGame/${Exclude<string, ''>}${'\''}`;
+
+type FGRailroadTrackConnectionComponent_quoted = `FGRailroadTrackConnectionComponent'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
+
 type Texture2D = `Texture2D /Game/FactoryGame/${Exclude<string, ''>}`;
+
+type Texture2D_quoted = `Texture2D'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
 
 type Tier = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8';
 
@@ -109,9 +109,6 @@ type TintColor = {
 };
 
 export type {
-	BlueprintGeneratedClass_single_quoted,
-	FGRailroadTrackConnectionComponent_quoted,
-	Texture2D_quoted,
 	mAllowedResourceForms,
 	mFogPlaneTransforms_empty,
 	mFogPlaneTransforms_list,
@@ -126,7 +123,10 @@ export type {
 	mUnlocks_item,
 	mUnlocks_item_mNumArmEquipmentSlotsToUnlock,
 	mUnlocks_item_mResourcePairsToAddToScanner,
+	BlueprintGeneratedClass_single_quoted,
+	FGRailroadTrackConnectionComponent_quoted,
 	Texture2D,
+	Texture2D_quoted,
 	Tier,
 	TintColor,
 };

@@ -9,9 +9,15 @@
 				"ClassName": {
 					"type": "string",
 					"templated_string": [
-						{"type": "string", "minLength": 1},
+						{
+							"type": "string",
+							"minLength": 1
+						},
 						"_",
-						{"type": "string", "minLength": 1},
+						{
+							"type": "string",
+							"minLength": 1
+						},
 						"_C"
 					]
 				}
@@ -2762,9 +2768,15 @@
 											"/Game/FactoryGame/Resource/RawResources/",
 											{"type": "string"},
 											"/Desc_",
-											{"type": "string", "minLength": 1},
+											{
+												"type": "string",
+												"minLength": 1
+											},
 											".Desc_",
-											{"type": "string", "minLength": 1},
+											{
+												"type": "string",
+												"minLength": 1
+											},
 											"_C"
 										]
 									},
@@ -3462,13 +3474,22 @@
 				},
 				"mMamFreeText": {
 					"type": "string",
-					"templated_string": ["Use M", {"type": "string", "minLength": 1}]
+					"templated_string": [
+						"Use M",
+						{
+							"type": "string",
+							"minLength": 1
+						}
+					]
 				},
 				"mMamOccupiedText": {
 					"type": "string",
 					"templated_string": [
 						"M",
-						{"type": "string", "minLength": 1},
+						{
+							"type": "string",
+							"minLength": 1
+						},
 						" is occupied"
 					]
 				},
@@ -4063,7 +4084,13 @@
 				},
 				"mForm": {
 					"type": "string",
-					"templated_string": ["RF_", {"type": "string", "minLength": 1}]
+					"templated_string": [
+						"RF_",
+						{
+							"type": "string",
+							"minLength": 1
+						}
+					]
 				},
 				"mSmallIcon": {
 					"oneOf": [
@@ -4071,7 +4098,10 @@
 							"type": "string",
 							"templated_string": [
 								"Texture2D",
-								{"type": "string", "minLength": 1}
+								{
+									"type": "string",
+									"minLength": 1
+								}
 							]
 						},
 						{
@@ -4086,7 +4116,10 @@
 							"type": "string",
 							"templated_string": [
 								"Texture2D",
-								{"type": "string", "minLength": 1}
+								{
+									"type": "string",
+									"minLength": 1
+								}
 							]
 						},
 						{
@@ -4194,7 +4227,13 @@
 			"properties": {
 				"mEquipmentSlot": {
 					"type": "string",
-					"templated_string": ["ES_", {"type": "string", "minLength": 1}]
+					"templated_string": [
+						"ES_",
+						{
+							"type": "string",
+							"minLength": 1
+						}
+					]
 				},
 				"mAttachSocket": {
 					"type": "string",
@@ -4764,9 +4803,15 @@
 											"/Game/FactoryGame/Schematics/Research/",
 											{"type": "string"},
 											"/",
-											{"type": "string", "minLength": 1},
+											{
+												"type": "string",
+												"minLength": 1
+											},
 											".",
-											{"type": "string", "minLength": 1},
+											{
+												"type": "string",
+												"minLength": 1
+											},
 											"_C"
 										]
 									}

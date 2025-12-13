@@ -2603,7 +2603,10 @@
 							"type": "string",
 							"templated_string": [
 								"Texture2D ",
-								{"type": "string", "minLength": 1}
+								{
+									"type": "string",
+									"minLength": 1
+								}
 							]
 						}
 					]

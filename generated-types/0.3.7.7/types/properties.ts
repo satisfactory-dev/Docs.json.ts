@@ -7,20 +7,6 @@ import type {
 	XYZW_decimal_string as docs_json_ts_common_types_XYZW_decimal_string,
 } from './../../common/types.ts';
 
-type AnimMontage_quoted = `AnimMontage'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
-
-type BlueprintGeneratedClass_non_quoted = `BlueprintGeneratedClass /Game/FactoryGame/${Exclude<string, ''>}${''}`;
-
-type BlueprintGeneratedClass_quoted = `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
-
-type CameraAnim_quoted = `CameraAnim'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
-
-type Class_quoted = `Class'"/Script/FactoryGame.${Exclude<string, ''>}${'"\''}`;
-
-type FGTrainPlatformConnection_quoted = `FGTrainPlatformConnection'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
-
-type ParticleSystem_quoted = `ParticleSystem'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
-
 type mAbbreviatedDisplayName = string;
 
 type mAllowedResourceForms = [
@@ -147,10 +133,22 @@ type transform_Rotation_Translation_Scale3D = {
 	Scale3D: docs_json_ts_common_types_XYZ_decimal_string,
 };
 
+type AnimMontage_quoted = `AnimMontage'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
+
+type BlueprintGeneratedClass_non_quoted = `BlueprintGeneratedClass /Game/FactoryGame/${Exclude<string, ''>}${''}`;
+
+type BlueprintGeneratedClass_quoted = `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
+
+type CameraAnim_quoted = `CameraAnim'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
+
+type Class_quoted = `Class'"/Script/FactoryGame.${Exclude<string, ''>}${'"\''}`;
+
 type DocsDotJson_BlueprintGeneratedClass_quoted_list = [
 	BlueprintGeneratedClass_quoted,
 	...BlueprintGeneratedClass_quoted[],
 ];
+
+type FGTrainPlatformConnection_quoted = `FGTrainPlatformConnection'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
 
 type ItemClass_Amount_list = [
 	{
@@ -163,18 +161,13 @@ type ItemClass_Amount_list = [
 	}[],
 ];
 
+type ParticleSystem_quoted = `ParticleSystem'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
+
 type Texture2D = `Texture2D'/Game/FactoryGame/${Exclude<string, ''>}${'\''}`;
 
 type Tier = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7';
 
 export type {
-	AnimMontage_quoted,
-	BlueprintGeneratedClass_non_quoted,
-	BlueprintGeneratedClass_quoted,
-	CameraAnim_quoted,
-	Class_quoted,
-	FGTrainPlatformConnection_quoted,
-	ParticleSystem_quoted,
 	mAbbreviatedDisplayName,
 	mAllowedResourceForms,
 	mDisableSnapOn_front_bottom,
@@ -201,8 +194,15 @@ export type {
 	mUnlocks_item_mResourcesToAddToScanner,
 	mUnlocks_item_mSchematics,
 	transform_Rotation_Translation_Scale3D,
+	AnimMontage_quoted,
+	BlueprintGeneratedClass_non_quoted,
+	BlueprintGeneratedClass_quoted,
+	CameraAnim_quoted,
+	Class_quoted,
 	DocsDotJson_BlueprintGeneratedClass_quoted_list,
+	FGTrainPlatformConnection_quoted,
 	ItemClass_Amount_list,
+	ParticleSystem_quoted,
 	Texture2D,
 	Tier,
 };

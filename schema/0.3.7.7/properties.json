@@ -2,62 +2,6 @@
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "docs.json.ts--0.3.7.7--properties",
 	"$defs": {
-		"AnimMontage--quoted": {
-			"type": "string",
-			"DocsDotJson_PrefixedString": {
-				"prefix": "AnimMontage",
-				"mode": "quoted",
-				"value": null
-			}
-		},
-		"BlueprintGeneratedClass--non-quoted": {
-			"type": "string",
-			"DocsDotJson_PrefixedString": {
-				"prefix": "BlueprintGeneratedClass",
-				"mode": "non_quoted",
-				"value": null
-			}
-		},
-		"BlueprintGeneratedClass--quoted": {
-			"type": "string",
-			"DocsDotJson_PrefixedString": {
-				"prefix": "BlueprintGeneratedClass",
-				"mode": "quoted",
-				"value": null
-			}
-		},
-		"CameraAnim--quoted": {
-			"type": "string",
-			"DocsDotJson_PrefixedString": {
-				"prefix": "CameraAnim",
-				"mode": "quoted",
-				"value": null
-			}
-		},
-		"Class--quoted": {
-			"type": "string",
-			"templated_string": [
-				"Class'\"/Script/FactoryGame.",
-				{"type": "string", "minLength": 1},
-				"\"'"
-			]
-		},
-		"FGTrainPlatformConnection--quoted": {
-			"type": "string",
-			"DocsDotJson_PrefixedString": {
-				"prefix": "FGTrainPlatformConnection",
-				"mode": "quoted",
-				"value": null
-			}
-		},
-		"ParticleSystem--quoted": {
-			"type": "string",
-			"DocsDotJson_PrefixedString": {
-				"prefix": "ParticleSystem",
-				"mode": "quoted",
-				"value": null
-			}
-		},
 		"mAbbreviatedDisplayName": {"type": "string"},
 		"mAllowedResourceForms": {
 			"oneOf": [
@@ -544,6 +488,49 @@
 				}
 			}
 		},
+		"AnimMontage--quoted": {
+			"type": "string",
+			"DocsDotJson_PrefixedString": {
+				"prefix": "AnimMontage",
+				"mode": "quoted",
+				"value": null
+			}
+		},
+		"BlueprintGeneratedClass--non-quoted": {
+			"type": "string",
+			"DocsDotJson_PrefixedString": {
+				"prefix": "BlueprintGeneratedClass",
+				"mode": "non_quoted",
+				"value": null
+			}
+		},
+		"BlueprintGeneratedClass--quoted": {
+			"type": "string",
+			"DocsDotJson_PrefixedString": {
+				"prefix": "BlueprintGeneratedClass",
+				"mode": "quoted",
+				"value": null
+			}
+		},
+		"CameraAnim--quoted": {
+			"type": "string",
+			"DocsDotJson_PrefixedString": {
+				"prefix": "CameraAnim",
+				"mode": "quoted",
+				"value": null
+			}
+		},
+		"Class--quoted": {
+			"type": "string",
+			"templated_string": [
+				"Class'\"/Script/FactoryGame.",
+				{
+					"type": "string",
+					"minLength": 1
+				},
+				"\"'"
+			]
+		},
 		"DocsDotJson_BlueprintGeneratedClass_quoted--list": {
 			"type": "string",
 			"typed_string": {
@@ -553,6 +540,14 @@
 				"items": {
 					"$ref": "#/$defs/BlueprintGeneratedClass--quoted"
 				}
+			}
+		},
+		"FGTrainPlatformConnection--quoted": {
+			"type": "string",
+			"DocsDotJson_PrefixedString": {
+				"prefix": "FGTrainPlatformConnection",
+				"mode": "quoted",
+				"value": null
 			}
 		},
 		"ItemClass-Amount--list": {
@@ -577,6 +572,14 @@
 						}
 					}
 				}
+			}
+		},
+		"ParticleSystem--quoted": {
+			"type": "string",
+			"DocsDotJson_PrefixedString": {
+				"prefix": "ParticleSystem",
+				"mode": "quoted",
+				"value": null
 			}
 		},
 		"Texture2D": {

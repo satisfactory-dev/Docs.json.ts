@@ -475,9 +475,15 @@
 												"type": "string",
 												"templated_string": [
 													"/Game/FactoryGame/Buildable/-Shared/Customization/Materials/MaterialDesc_Foundation_",
-													{"type": "string", "minLength": 1},
+													{
+														"type": "string",
+														"minLength": 1
+													},
 													".MaterialDesc_Foundation_",
-													{"type": "string", "minLength": 1}
+													{
+														"type": "string",
+														"minLength": 1
+													}
 												]
 											},
 											"mRecipe": {
@@ -486,9 +492,15 @@
 													"/Game/FactoryGame/Buildable/Building/Foundation/",
 													{"type": "string"},
 													"/Recipe_",
-													{"type": "string", "minLength": 1},
+													{
+														"type": "string",
+														"minLength": 1
+													},
 													".Recipe_",
-													{"type": "string", "minLength": 1},
+													{
+														"type": "string",
+														"minLength": 1
+													},
 													"_C"
 												]
 											}
@@ -1899,9 +1911,15 @@
 							"type": "string",
 							"templated_string": [
 								"/Game/FactoryGame/Interface/UI/Material/Crosshairs/MI_UI_Crosshair_",
-								{"type": "string", "minLength": 1},
+								{
+									"type": "string",
+									"minLength": 1
+								},
 								".MI_UI_Crosshair_",
-								{"type": "string", "minLength": 1}
+								{
+									"type": "string",
+									"minLength": 1
+								}
 							]
 						}
 					]
@@ -1987,9 +2005,15 @@
 								["Resource/Environment/", "World/Benefit/"],
 								{"type": "string"},
 								"/BP_",
-								{"type": "string", "minLength": 1},
+								{
+									"type": "string",
+									"minLength": 1
+								},
 								".BP_",
-								{"type": "string", "minLength": 1}
+								{
+									"type": "string",
+									"minLength": 1
+								}
 							]
 						}
 					]
@@ -2144,9 +2168,15 @@
 													["Resource", "Equipment"],
 													{"type": "string"},
 													"/",
-													{"type": "string", "minLength": 1},
+													{
+														"type": "string",
+														"minLength": 1
+													},
 													".",
-													{"type": "string", "minLength": 1},
+													{
+														"type": "string",
+														"minLength": 1
+													},
 													"_",
 													["64", "64_new"]
 												]
@@ -2164,11 +2194,20 @@
 										"type": "string",
 										"templated_string": [
 											"/Game/FactoryGame/Schematics/Research/",
-											{"type": "string", "minLength": 1},
+											{
+												"type": "string",
+												"minLength": 1
+											},
 											"/",
-											{"type": "string", "minLength": 1},
+											{
+												"type": "string",
+												"minLength": 1
+											},
 											".",
-											{"type": "string", "minLength": 1},
+											{
+												"type": "string",
+												"minLength": 1
+											},
 											"_C"
 										]
 									},

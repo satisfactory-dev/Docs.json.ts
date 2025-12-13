@@ -2,30 +2,6 @@
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "docs.json.ts--0.4.2.11--properties",
 	"$defs": {
-		"BlueprintGeneratedClass--single-quoted": {
-			"type": "string",
-			"DocsDotJson_PrefixedString": {
-				"prefix": "BlueprintGeneratedClass",
-				"mode": "single_quoted",
-				"value": null
-			}
-		},
-		"FGRailroadTrackConnectionComponent--quoted": {
-			"type": "string",
-			"DocsDotJson_PrefixedString": {
-				"prefix": "FGRailroadTrackConnectionComponent",
-				"mode": "quoted",
-				"value": null
-			}
-		},
-		"Texture2D--quoted": {
-			"type": "string",
-			"DocsDotJson_PrefixedString": {
-				"prefix": "Texture2D",
-				"mode": "quoted",
-				"value": null
-			}
-		},
 		"mAllowedResourceForms": {
 			"type": "string",
 			"typed_string": {
@@ -297,6 +273,22 @@
 				}
 			}
 		},
+		"BlueprintGeneratedClass--single-quoted": {
+			"type": "string",
+			"DocsDotJson_PrefixedString": {
+				"prefix": "BlueprintGeneratedClass",
+				"mode": "single_quoted",
+				"value": null
+			}
+		},
+		"FGRailroadTrackConnectionComponent--quoted": {
+			"type": "string",
+			"DocsDotJson_PrefixedString": {
+				"prefix": "FGRailroadTrackConnectionComponent",
+				"mode": "quoted",
+				"value": null
+			}
+		},
 		"Texture2D": {
 			"type": "string",
 			"templated_string": [
@@ -306,6 +298,14 @@
 					"minLength": 1
 				}
 			]
+		},
+		"Texture2D--quoted": {
+			"type": "string",
+			"DocsDotJson_PrefixedString": {
+				"prefix": "Texture2D",
+				"mode": "quoted",
+				"value": null
+			}
 		},
 		"Tier": {
 			"type": "string",

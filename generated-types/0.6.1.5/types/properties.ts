@@ -26,14 +26,6 @@ import type {
 	mUnlocks_item_mEmotes as docs_json_ts_0_5_2_1_properties_mUnlocks_item_mEmotes,
 } from './../../0.5.2.1/types/properties.ts';
 
-type BP_RadialDamageType_Explosive_C_quoted = `BP_RadialDamageType_Explosive_C'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
-
-type BP_RadialDamageType_Gas_C_quoted = `BP_RadialDamageType_Gas_C'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
-
-type Material_quoted = `Material'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
-
-type MaterialInstanceConstant_quoted = `MaterialInstanceConstant'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
-
 type mAllowedResourceForms = [
     'RF_SOLID' | 'RF_LIQUID' | 'RF_GAS' | 'RF_HEAT',
     ...('RF_SOLID' | 'RF_LIQUID' | 'RF_GAS' | 'RF_HEAT')[],
@@ -77,6 +69,10 @@ type mUnlocks_item_mTapeUnlocks = {
 	mTapeUnlocks: docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list,
 };
 
+type BP_RadialDamageType_Explosive_C_quoted = `BP_RadialDamageType_Explosive_C'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
+
+type BP_RadialDamageType_Gas_C_quoted = `BP_RadialDamageType_Gas_C'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
+
 type DamageTypes = [
     `BP_PointDamageType_${string}${'_C\'"/Game/FactoryGame/'}${'Equipment' | 'Resource'}${'/'}${string}${'/Desc_' | '/Equip_'}${string}${'_C:BP_PointDamageType_'}${string}${'_C_0"\''}`,
     ...`BP_PointDamageType_${string}${'_C\'"/Game/FactoryGame/'}${'Equipment' | 'Resource'}${'/'}${string}${'/Desc_' | '/Equip_'}${string}${'_C:BP_PointDamageType_'}${string}${'_C_0"\''}`[],
@@ -96,11 +92,11 @@ type ItemClass_list = [
 	}[],
 ];
 
+type Material_quoted = `Material'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
+
+type MaterialInstanceConstant_quoted = `MaterialInstanceConstant'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
+
 export type {
-	BP_RadialDamageType_Explosive_C_quoted,
-	BP_RadialDamageType_Gas_C_quoted,
-	Material_quoted,
-	MaterialInstanceConstant_quoted,
 	mAllowedResourceForms,
 	mDisableSnapOn_front_right,
 	mProducedIn,
@@ -108,7 +104,11 @@ export type {
 	mUnlocks_item,
 	mUnlocks_item_mScannableObjects,
 	mUnlocks_item_mTapeUnlocks,
+	BP_RadialDamageType_Explosive_C_quoted,
+	BP_RadialDamageType_Gas_C_quoted,
 	DamageTypes,
 	DocsDotJson_AkAudioEvent_quoted_list,
 	ItemClass_list,
+	Material_quoted,
+	MaterialInstanceConstant_quoted,
 };

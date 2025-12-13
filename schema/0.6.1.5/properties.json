@@ -2,38 +2,6 @@
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "docs.json.ts--0.6.1.5--properties",
 	"$defs": {
-		"BP_RadialDamageType_Explosive_C--quoted": {
-			"type": "string",
-			"DocsDotJson_PrefixedString": {
-				"prefix": "BP_RadialDamageType_Explosive_C",
-				"mode": "quoted",
-				"value": null
-			}
-		},
-		"BP_RadialDamageType_Gas_C--quoted": {
-			"type": "string",
-			"DocsDotJson_PrefixedString": {
-				"prefix": "BP_RadialDamageType_Gas_C",
-				"mode": "quoted",
-				"value": null
-			}
-		},
-		"Material--quoted": {
-			"type": "string",
-			"DocsDotJson_PrefixedString": {
-				"prefix": "Material",
-				"mode": "quoted",
-				"value": null
-			}
-		},
-		"MaterialInstanceConstant--quoted": {
-			"type": "string",
-			"DocsDotJson_PrefixedString": {
-				"prefix": "MaterialInstanceConstant",
-				"mode": "quoted",
-				"value": null
-			}
-		},
 		"mAllowedResourceForms": {
 			"type": "string",
 			"typed_string": {
@@ -190,6 +158,22 @@
 				}
 			}
 		},
+		"BP_RadialDamageType_Explosive_C--quoted": {
+			"type": "string",
+			"DocsDotJson_PrefixedString": {
+				"prefix": "BP_RadialDamageType_Explosive_C",
+				"mode": "quoted",
+				"value": null
+			}
+		},
+		"BP_RadialDamageType_Gas_C--quoted": {
+			"type": "string",
+			"DocsDotJson_PrefixedString": {
+				"prefix": "BP_RadialDamageType_Gas_C",
+				"mode": "quoted",
+				"value": null
+			}
+		},
 		"DamageTypes": {
 			"type": "string",
 			"typed_string": {
@@ -255,6 +239,22 @@
 						}
 					}
 				}
+			}
+		},
+		"Material--quoted": {
+			"type": "string",
+			"DocsDotJson_PrefixedString": {
+				"prefix": "Material",
+				"mode": "quoted",
+				"value": null
+			}
+		},
+		"MaterialInstanceConstant--quoted": {
+			"type": "string",
+			"DocsDotJson_PrefixedString": {
+				"prefix": "MaterialInstanceConstant",
+				"mode": "quoted",
+				"value": null
 			}
 		}
 	}
