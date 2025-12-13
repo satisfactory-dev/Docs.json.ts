@@ -347,13 +347,13 @@ type FGBuildableWire_version_specific = {
 	mCachedRelativeLocations: docs_json_ts_common_types_XYZ_decimal_string,
 };
 
-type FGJetPack = FGJetPack_base & {
+type FGJetPack = docs_json_ts_0_3_7_7_classes_base_FGJetPack_base_base_base & docs_json_ts_0_6_1_5_classes_base_FGEquipment & FGJetPack_version_specific;
+
+type FGJetPack_version_specific = {
 	mFuelTypes: docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list,
 	mSelectedFuelType: docs_json_ts_common_types_integer_string,
 	mCurrentFuelType: docs_json_ts_common_types_integer_string,
 };
-
-type FGJetPack_base = docs_json_ts_0_3_7_7_classes_base_FGJetPack_base_base_base & docs_json_ts_0_6_1_5_classes_base_FGEquipment;
 
 type FGPipeHyperStart = docs_json_ts_0_3_7_7_classes_base_FGPipeHyperStart_base_base & docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_with_length_and_power_base_base & FGBuildable_powered;
 
@@ -450,6 +450,6 @@ export type {
 	FGBuildableWire_base,
 	FGBuildableWire_version_specific,
 	FGJetPack,
-	FGJetPack_base,
+	FGJetPack_version_specific,
 	FGPipeHyperStart,
 };

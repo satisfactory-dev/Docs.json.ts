@@ -1144,8 +1144,20 @@
 			}
 		},
 		"FGJetPack": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGJetPack--base--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGEquipment"
+				},
+				{
+					"$ref": "#/$defs/FGJetPack--version-specific"
+				}
+			]
+		},
+		"FGJetPack--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGJetPack--base",
 			"required": [
 				"mFuelTypes",
 				"mSelectedFuelType",
@@ -1162,16 +1174,6 @@
 					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
 				}
 			}
-		},
-		"FGJetPack--base": {
-			"allOf": [
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGJetPack--base--base--base"
-				},
-				{
-					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGEquipment"
-				}
-			]
 		},
 		"FGPipeHyperStart": {
 			"allOf": [

@@ -4680,8 +4680,17 @@
 			}
 		},
 		"FGJetPack--base--base--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGEquipment--base"
+				},
+				{
+					"$ref": "#/$defs/FGJetPack--version-specific"
+				}
+			]
+		},
+		"FGJetPack--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment--base",
 			"required": [
 				"mCurrentFuel",
 				"mThrustCooldown",

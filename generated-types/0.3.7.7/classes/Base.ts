@@ -1233,7 +1233,9 @@ type FGJetPack_base_base = FGJetPack_base_base_base & {
 	mJumpTimeStamp: Exclude<string, ''>,
 };
 
-type FGJetPack_base_base_base = FGEquipment_base & {
+type FGJetPack_base_base_base = FGEquipment_base & FGJetPack_version_specific;
+
+type FGJetPack_version_specific = {
 	mCurrentFuel: docs_json_ts_common_types_decimal_string,
 	mThrustCooldown: docs_json_ts_common_types_decimal_string,
 	mDefaultAirControl: docs_json_ts_common_types_decimal_string,
@@ -1854,6 +1856,7 @@ export type {
 	FGJetPack_base,
 	FGJetPack_base_base,
 	FGJetPack_base_base_base,
+	FGJetPack_version_specific,
 	FGJumpingStilts,
 	FGJumpingStilts_base,
 	FGNobeliskDetonator,
