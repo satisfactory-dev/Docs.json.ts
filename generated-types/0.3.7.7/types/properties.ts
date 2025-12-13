@@ -93,8 +93,8 @@ type mSchematicDependencies_item = {
 type mStackSize = 'SS_HUGE' | 'SS_MEDIUM' | 'SS_BIG' | 'SS_SMALL' | 'SS_ONE' | 'SS_FLUID';
 
 type mSubCategories = [
-    `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
-    ...`BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`[],
+    `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
+    ...`BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`[],
 ];
 
 type mType = 'EST_Custom' | 'EST_Tutorial' | 'EST_MAM' | 'EST_HardDrive' | 'EST_Milestone' | 'EST_Alternate' | 'EST_ResourceSink';
@@ -134,17 +134,17 @@ type transform_Rotation_Translation_Scale3D = {
 };
 
 type DocsDotJson_BlueprintGeneratedClass_quoted_list = [
-    `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
-    ...`BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`[],
+    `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
+    ...`BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`[],
 ];
 
 type ItemClass_Amount_list = [
 	{
-		ItemClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
+		ItemClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
 		Amount: docs_json_ts_common_types_integer_string,
 	},
 	...{
-		ItemClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
+		ItemClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
 		Amount: docs_json_ts_common_types_integer_string,
 	}[],
 ];

@@ -46,14 +46,14 @@ type mUnlocks_item = mUnlocks_item_mTapeUnlocks | mUnlocks_item_mScannableObject
 type mUnlocks_item_mScannableObjects = docs_json_ts_0_3_7_7_properties_mUnlocks_item_base & {
 	mScannableObjects: [
 		{
-			ItemDescriptor: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
+			ItemDescriptor: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
 			ActorsAllowedToScan: [
                 `Class'"/Script/FactoryGame.${string}${'"\''}`,
                 ...`Class'"/Script/FactoryGame.${string}${'"\''}`[],
 			],
 		},
 		...{
-			ItemDescriptor: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
+			ItemDescriptor: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
 			ActorsAllowedToScan: [
                 `Class'"/Script/FactoryGame.${string}${'"\''}`,
                 ...`Class'"/Script/FactoryGame.${string}${'"\''}`[],
@@ -73,16 +73,16 @@ type DamageTypes = [
 ];
 
 type DocsDotJson_AkAudioEvent_quoted_list = [
-    `AkAudioEvent'"/Game/WwiseAudio/${string}${'"\''}`,
-    ...`AkAudioEvent'"/Game/WwiseAudio/${string}${'"\''}`[],
+    `AkAudioEvent'"/Game/WwiseAudio/${Exclude<string, ''>}${'"\''}`,
+    ...`AkAudioEvent'"/Game/WwiseAudio/${Exclude<string, ''>}${'"\''}`[],
 ];
 
 type ItemClass_list = [
 	{
-		ItemClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
+		ItemClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
 	},
 	...{
-		ItemClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
+		ItemClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
 	}[],
 ];
 

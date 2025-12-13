@@ -80,7 +80,7 @@ export class PrefixedString<
 				quoted: `${prefix}'"/Game/FactoryGame/`,
 				single_quoted: `${prefix}'/Game/FactoryGame/`,
 			}[mode],
-			null === value ? {type: 'string'} : value,
+			null === value ? {type: 'string', minLength: 1} : value,
 			{
 				non_quoted: '',
 				quoted: `"'`,

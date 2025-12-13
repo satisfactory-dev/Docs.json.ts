@@ -646,15 +646,15 @@ type FGItemDescAmmoTypeProjectile_base_version_specific = FGItemDescriptor_base_
 
 type FGItemDescAmmoTypeProjectile_Desc_NobeliskExplosive_C = FGItemDescAmmoTypeProjectile_Desc_NobeliskExplosive_C_base & {
 	mProjectileData: {
-		ProjectileClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
+		ProjectileClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
 		ProjectileLifeSpan: docs_json_ts_common_types_decimal_string_signed,
 		ProjectileStickSpan: docs_json_ts_common_types_decimal_string_signed,
 		ExplosionDamage: docs_json_ts_common_types_integer_string,
 		ExplosionRadius: docs_json_ts_common_types_decimal_string,
 		ImpactDamage: docs_json_ts_common_types_integer_string,
 		ExplodeAtEndOfLife: docs_json_ts_common_types_bool_string,
-		DamageType: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
-		DamageTypeExplode: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
+		DamageType: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
+		DamageTypeExplode: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
 		DamageFalloffCurve: docs_json_ts_0_5_2_1_properties_FalloffCurve_EditorCurveData_only,
 		WeaponDamageMultiplier: docs_json_ts_common_types_decimal_string,
 	},
@@ -664,15 +664,15 @@ type FGItemDescAmmoTypeProjectile_Desc_NobeliskExplosive_C_base = FGItemDescAmmo
 
 type FGItemDescAmmoTypeProjectile_Desc_SnowballProjectile_C = FGItemDescAmmoTypeProjectile_Desc_SnowballProjectile_C_base & {
 	mProjectileData: {
-		ProjectileClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
+		ProjectileClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
 		ProjectileLifeSpan: docs_json_ts_common_types_decimal_string_signed,
 		ProjectileStickSpan: docs_json_ts_common_types_decimal_string_signed,
 		ExplosionDamage: docs_json_ts_common_types_integer_string,
 		ExplosionRadius: docs_json_ts_common_types_decimal_string,
 		ImpactDamage: docs_json_ts_common_types_integer_string,
 		ExplodeAtEndOfLife: docs_json_ts_common_types_bool_string,
-		DamageType: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
-		DamageTypeExplode: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
+		DamageType: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
+		DamageTypeExplode: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
 		DamageFalloffCurve: docs_json_ts_0_5_2_1_properties_FalloffCurve_EditorCurveData_only,
 		WeaponDamageMultiplier: docs_json_ts_common_types_decimal_string,
 	},
@@ -682,12 +682,12 @@ type FGItemDescAmmoTypeProjectile_Desc_SnowballProjectile_C_base = FGItemDescAmm
 
 type FGItemDescAmmoTypeProjectile_Desc_SpikedRebar_C = FGItemDescAmmoTypeProjectile_Desc_SpikedRebar_C_base & {
 	mProjectileData: {
-		ProjectileClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
+		ProjectileClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
 		ProjectileLifeSpan: docs_json_ts_common_types_decimal_string_signed,
 		ProjectileStickSpan: docs_json_ts_common_types_decimal_string_signed,
 		ImpactDamage: docs_json_ts_common_types_integer_string,
 		CanTriggerExplodeBySameClass: docs_json_ts_common_types_bool_string,
-		DamageType: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
+		DamageType: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
 		DamageTypeExplode: 'Class\'"/Script/FactoryGame.FGDamageType"\'',
 		DamageFalloffCurve: docs_json_ts_0_5_2_1_properties_FalloffCurve_EditorCurveData_only,
 		WeaponDamageMultiplier: docs_json_ts_common_types_decimal_string,
@@ -698,7 +698,7 @@ type FGItemDescAmmoTypeProjectile_Desc_SpikedRebar_C_base = FGItemDescAmmoTypePr
 
 type FGItemDescAmmoTypeProjectile_explosive_firework = FGItemDescAmmoTypeProjectile_base & {
 	mProjectileData: {
-		ProjectileClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
+		ProjectileClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
 		ProjectileLifeSpan: docs_json_ts_common_types_decimal_string_signed,
 		ProjectileStickSpan: docs_json_ts_common_types_decimal_string_signed,
 		ExplosionDamage: docs_json_ts_common_types_integer_string,
@@ -706,8 +706,8 @@ type FGItemDescAmmoTypeProjectile_explosive_firework = FGItemDescAmmoTypeProject
 		ImpactDamage: docs_json_ts_common_types_integer_string,
 		CanTriggerExplodeBySameClass: docs_json_ts_common_types_bool_string,
 		ExplodeAtEndOfLife: docs_json_ts_common_types_bool_string,
-		DamageType: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
-		DamageTypeExplode: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
+		DamageType: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
+		DamageTypeExplode: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
 		DamageFalloffCurve: docs_json_ts_0_5_2_1_properties_FalloffCurve_EditorCurveData_only,
 		WeaponDamageMultiplier: docs_json_ts_common_types_decimal_string,
 	},
@@ -759,8 +759,8 @@ type FGSchematic_base_base_base = docs_json_ts_0_4_2_11_classes_base_FGSchematic
 	mDependenciesBlocksSchematicAccess: docs_json_ts_common_types_bool_string,
 	mSmallSchematicIcon: 'None' | docs_json_ts_0_4_2_11_properties_Texture2D,
 	mRelevantShopSchematics: '' | [
-        `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}` | 'None',
-        ...(`BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}` | 'None')[],
+        `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}` | 'None',
+        ...(`BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}` | 'None')[],
 	],
 };
 

@@ -198,7 +198,7 @@ type FGAmmoType_base = FGAmmoType_base_base & {
 	mDispersionRecoveryTime?: docs_json_ts_common_types_decimal_string,
 	mMagazineMeshMaterials: null | [
 		{
-			MaterialInterface: `MaterialInstanceConstant'"/Game/FactoryGame/${string}${'"\''}` | `Material'"/Game/FactoryGame/${string}${'"\''}`,
+			MaterialInterface: `MaterialInstanceConstant'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}` | `Material'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
 			MaterialSlotName: 'lambert1' | 'Rifle' | 'lambert9_001' | 'lambert10' | 'lambert2' | 'Material_003' | 'Material_002' | 'Rocket1' | 'Rocket2' | '01 - Default',
 			ImportedMaterialSlotName: 'lambert1' | 'Rifle' | 'lambert9_001' | 'lambert10' | 'lambert2' | 'Material_003' | 'Material_002' | 'Rocket1' | 'Rocket2' | '01 - Default',
 			UVChannelData: {
@@ -211,7 +211,7 @@ type FGAmmoType_base = FGAmmoType_base_base & {
 			},
 		},
 		...{
-			MaterialInterface: `MaterialInstanceConstant'"/Game/FactoryGame/${string}${'"\''}` | `Material'"/Game/FactoryGame/${string}${'"\''}`,
+			MaterialInterface: `MaterialInstanceConstant'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}` | `Material'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
 			MaterialSlotName: 'lambert1' | 'Rifle' | 'lambert9_001' | 'lambert10' | 'lambert2' | 'Material_003' | 'Material_002' | 'Rocket1' | 'Rocket2' | '01 - Default',
 			ImportedMaterialSlotName: 'lambert1' | 'Rifle' | 'lambert9_001' | 'lambert10' | 'lambert2' | 'Material_003' | 'Material_002' | 'Rocket1' | 'Rocket2' | '01 - Default',
 			UVChannelData: {
@@ -256,11 +256,11 @@ type FGAmmoTypeProjectile = FGAmmoType_base & {
 	mProjectileStickspan: docs_json_ts_common_types_decimal_string_signed,
 	mCanTakeDamageBySameProjectileOrChild: docs_json_ts_common_types_bool_string,
 	mDamageTypesAtEndOfLife: null | [
-        `BP_RadialDamageType_Explosive_C'"/Game/FactoryGame/${string}${'"\''}`,
-        ...`BP_RadialDamageType_Explosive_C'"/Game/FactoryGame/${string}${'"\''}`[],
+        `BP_RadialDamageType_Explosive_C'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
+        ...`BP_RadialDamageType_Explosive_C'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`[],
 	] | [
-        `BP_RadialDamageType_Gas_C'"/Game/FactoryGame/${string}${'"\''}`,
-        ...`BP_RadialDamageType_Gas_C'"/Game/FactoryGame/${string}${'"\''}`[],
+        `BP_RadialDamageType_Gas_C'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
+        ...`BP_RadialDamageType_Gas_C'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`[],
 	],
 	mGravityScaleOverLifespan: docs_json_ts_0_5_2_1_properties_FalloffCurve_EditorCurveData_only,
 	mHomingProjectile: docs_json_ts_common_types_bool_string,
@@ -272,10 +272,10 @@ type FGAmmoTypeProjectile = FGAmmoType_base & {
 	mHomingAngleLimit: docs_json_ts_common_types_decimal_string,
 	mHomingOverrideTargets: null | [
 		{
-			ActorClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
+			ActorClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
 		},
 		...{
-			ActorClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
+			ActorClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
 		}[],
 	],
 };
@@ -647,7 +647,7 @@ type FGObjectScanner = FGObjectScanner_base & {
 	mScannableDescriptors: docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list,
 	mObjectDetails: [
 		{
-			ScannableClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
+			ScannableClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
 			DisplayText: {
 				NSLOCTEXT: [
 					string,
@@ -662,7 +662,7 @@ type FGObjectScanner = FGObjectScanner_base & {
 			NewDetectionRange?: docs_json_ts_common_types_decimal_string,
 		},
 		...{
-			ScannableClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
+			ScannableClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
 			DisplayText: {
 				NSLOCTEXT: [
 					string,
@@ -704,7 +704,7 @@ type FGSchematic_base_base_props_with_mSchematicIcon = {
 		ImageSize: docs_json_ts_common_types_XY_decimal_string,
 		Margin: docs_json_ts_common_types_empty_object,
 		TintColor: docs_json_ts_0_4_2_11_properties_TintColor,
-		ResourceObject?: `Texture2D'"/Game/FactoryGame/${string}${'"\''}`,
+		ResourceObject?: `Texture2D'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
 		UVRegion: {
 			Min: docs_json_ts_common_types_XY_decimal_string,
 			Max: docs_json_ts_common_types_XY_decimal_string,

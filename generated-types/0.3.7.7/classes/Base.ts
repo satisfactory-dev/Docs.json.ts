@@ -733,11 +733,11 @@ type FGBuildableResourceExtractor_miner_base_base_base = FGBuildableResourceExtr
 	mParticleMap: [
 		{
 			ResourceNode_16_2100B5C34EE8DF7958D78A974512F3C3: `/Game/FactoryGame/Resource/RawResources/${string}${'/Desc_'}${string}${'.Desc_'}${string}${'_C'}`,
-			ParticleSystem1_9_F0CF81514E1E1C5007AC99B0C59C63CD: `ParticleSystem'"/Game/FactoryGame/${string}${'"\''}`,
+			ParticleSystem1_9_F0CF81514E1E1C5007AC99B0C59C63CD: `ParticleSystem'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
 		},
 		...{
 			ResourceNode_16_2100B5C34EE8DF7958D78A974512F3C3: `/Game/FactoryGame/Resource/RawResources/${string}${'/Desc_'}${string}${'.Desc_'}${string}${'_C'}`,
-			ParticleSystem1_9_F0CF81514E1E1C5007AC99B0C59C63CD: `ParticleSystem'"/Game/FactoryGame/${string}${'"\''}`,
+			ParticleSystem1_9_F0CF81514E1E1C5007AC99B0C59C63CD: `ParticleSystem'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
 		}[],
 	],
 	mExtractorTypeName: 'Miner',
@@ -931,8 +931,8 @@ type FGBuildableTrainPlatform_base = FGBuildableTrainPlatform_base_base & FGBuil
 
 type FGBuildableTrainPlatform_base_base = FGBuildable_powered_base_base_base & {
 	mPlatformConnections: [
-        `FGTrainPlatformConnection'"/Game/FactoryGame/${string}${'"\''}`,
-        ...`FGTrainPlatformConnection'"/Game/FactoryGame/${string}${'"\''}`[],
+        `FGTrainPlatformConnection'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
+        ...`FGTrainPlatformConnection'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`[],
 	],
 	mIsOrientationReversed: docs_json_ts_common_types_bool_string,
 	mPlatformDockingStatus: 'ETPDS_None',
@@ -1029,12 +1029,12 @@ type FGConsumableEquipment_version_specific = FGConsumableEquipment_version_spec
 type FGConsumableEquipment_version_specific_mAnimData = {
 	mAnimData?: [
 		{
-			Montage_7_2E66F6A948A8606E71185682EA2AC4EC: `AnimMontage'"/Game/FactoryGame/${string}${'"\''}`,
-			CameraAnim_8_AA01C2B248FF438D6C2816B2FA94F1BD: `CameraAnim'"/Game/FactoryGame/${string}${'"\''}`,
+			Montage_7_2E66F6A948A8606E71185682EA2AC4EC: `AnimMontage'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
+			CameraAnim_8_AA01C2B248FF438D6C2816B2FA94F1BD: `CameraAnim'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
 		},
 		...{
-			Montage_7_2E66F6A948A8606E71185682EA2AC4EC: `AnimMontage'"/Game/FactoryGame/${string}${'"\''}`,
-			CameraAnim_8_AA01C2B248FF438D6C2816B2FA94F1BD: `CameraAnim'"/Game/FactoryGame/${string}${'"\''}`,
+			Montage_7_2E66F6A948A8606E71185682EA2AC4EC: `AnimMontage'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
+			CameraAnim_8_AA01C2B248FF438D6C2816B2FA94F1BD: `CameraAnim'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
 		}[],
 	],
 };
@@ -1180,7 +1180,7 @@ type FGGolfCartDispenser = FGEquipment_dispenser & {
 };
 
 type FGInstructive = isNamed & {
-	FullName: `BlueprintGeneratedClass /Game/FactoryGame/${string}${''}`,
+	FullName: `BlueprintGeneratedClass /Game/FactoryGame/${Exclude<string, ''>}${''}`,
 	mRelevantEvents: null | docs_json_ts_0_3_7_7_properties_mRelevantEvents,
 };
 
@@ -1237,7 +1237,7 @@ type FGNobeliskDetonator_base = FGWeaponProjectile_thrown_base_base & {
 type FGObjectScanner = FGObjectScanner_base & {
 	mObjectDetails: [
 		{
-			ScannableClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
+			ScannableClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
 			DisplayText: {
 				NSLOCTEXT: [
 					string,
@@ -1251,7 +1251,7 @@ type FGObjectScanner = FGObjectScanner_base & {
 			RequiredSchematic: `/Game/FactoryGame/Schematics/Research/${string}${'/'}${string}${'.'}${string}${'_C'}`,
 		},
 		...{
-			ScannableClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
+			ScannableClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
 			DisplayText: {
 				NSLOCTEXT: [
 					string,
@@ -1460,15 +1460,15 @@ type FGWeaponProjectile_thrown = FGWeaponProjectile_thrown_base & FGWeaponProjec
 
 type FGWeaponProjectile_thrown_base = FGWeaponProjectile_thrown_base_base & {
 	mExplosiveData: {
-		ProjectileClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
+		ProjectileClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
 		ProjectileLifeSpan: docs_json_ts_common_types_decimal_string_signed,
 		ProjectileStickSpan: docs_json_ts_common_types_decimal_string_signed,
 		ExplosionDamage: docs_json_ts_common_types_integer_string,
 		ExplosionRadius: docs_json_ts_common_types_decimal_string,
 		ImpactDamage: docs_json_ts_common_types_integer_string,
 		ExplodeAtEndOfLife: docs_json_ts_common_types_bool_string,
-		DamageType: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
-		DamageTypeExplode: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
+		DamageType: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
+		DamageTypeExplode: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
 	},
 	mDispensedExplosives: '',
 	mDelayBetweenExplosions: docs_json_ts_common_types_decimal_string,
@@ -1502,13 +1502,13 @@ type FGWeaponProjectileFire_base_random_base_base = FGEquipment_base & {
 type FGWeaponProjectileFire_base_version_specific = FGWeaponProjectile_base & {
 	mMuteDryFire: docs_json_ts_common_types_bool_string,
 	mProjectileData: {
-		ProjectileClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
+		ProjectileClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
 		ProjectileLifeSpan: docs_json_ts_common_types_decimal_string,
 		ProjectileStickSpan: docs_json_ts_common_types_decimal_string,
 		ExplosionDamage: docs_json_ts_common_types_integer_string,
 		ImpactDamage: docs_json_ts_common_types_integer_string,
 		CanTriggerExplodeBySameClass: docs_json_ts_common_types_bool_string,
-		DamageType: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
+		DamageType: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
 		DamageTypeExplode: 'Class\'"/Script/FactoryGame.FGDamageType"\'',
 	},
 	mArmAnimation: 'AE_RebarGun',

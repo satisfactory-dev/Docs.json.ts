@@ -83,11 +83,11 @@ type mUnlocks_item_mResourcePairsToAddToScanner = docs_json_ts_0_3_7_7_propertie
 	mResourcesToAddToScanner: '' | docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list,
 	mResourcePairsToAddToScanner: [
 		{
-			ResourceDescriptor: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
+			ResourceDescriptor: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
 			ResourceNodeType?: 'Geyser' | 'FrackingCore',
 		},
 		...{
-			ResourceDescriptor: `BlueprintGeneratedClass'"/Game/FactoryGame/${string}${'"\''}`,
+			ResourceDescriptor: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
 			ResourceNodeType?: 'Geyser' | 'FrackingCore',
 		}[],
 	],

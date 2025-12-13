@@ -141,7 +141,7 @@ export class PrefixedString<
 					|| 'FactoryGame'
 				}/`,
 			}[mode],
-			null === value ? {type: 'string'} : value,
+			null === value ? {type: 'string', minLength: 1} : value,
 			{
 				non_quoted: '',
 				quoted: `"'`,
