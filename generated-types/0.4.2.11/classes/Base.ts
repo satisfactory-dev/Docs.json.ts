@@ -141,6 +141,7 @@ import type {
 	DocsDotJson_BlueprintGeneratedClass_quoted_list as docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list,
 	mSchematicDependencies_item as docs_json_ts_0_3_7_7_properties_mSchematicDependencies_item,
 	mUnlocks_item_base as docs_json_ts_0_3_7_7_properties_mUnlocks_item_base,
+	Texture2D_base as docs_json_ts_0_3_7_7_properties_Texture2D_base,
 } from './../../0.3.7.7/types/properties.ts';
 
 type FGBuildable = docs_json_ts_0_3_7_7_classes_base_FGBuildable_base_version_specific & FGBuildable_base_version_specific & FGBuildable_base;
@@ -743,7 +744,7 @@ type FGSchematic_base_base_props_sans_mSchematicIcon_mMenuPriority = FGSchematic
 	mSchematicDependencies: [
 		...(docs_json_ts_0_3_7_7_properties_mSchematicDependencies_item | docs_json_ts_0_4_2_11_properties_mSchematicDependencies_item)[],
 	],
-	mSmallSchematicIcon: 'None' | `Texture2D ${Exclude<string, ''>}`,
+	mSmallSchematicIcon: 'None' | docs_json_ts_0_3_7_7_properties_Texture2D_base,
 	mTechTier: docs_json_ts_0_4_2_11_properties_Tier,
 };
 

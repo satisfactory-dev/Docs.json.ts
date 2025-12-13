@@ -291,13 +291,11 @@
 		},
 		"Texture2D": {
 			"type": "string",
-			"templated_string": [
-				"Texture2D /Game/FactoryGame/",
-				{
-					"type": "string",
-					"minLength": 1
-				}
-			]
+			"DocsDotJson_PrefixedString": {
+				"prefix": "Texture2D",
+				"mode": "non_quoted",
+				"value": null
+			}
 		},
 		"Texture2D--quoted": {
 			"type": "string",

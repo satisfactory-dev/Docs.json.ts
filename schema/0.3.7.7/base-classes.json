@@ -2763,22 +2763,7 @@
 								],
 								"properties": {
 									"ResourceNode_16_2100B5C34EE8DF7958D78A974512F3C3": {
-										"type": "string",
-										"templated_string": [
-											"/Game/FactoryGame/Resource/RawResources/",
-											{"type": "string"},
-											"/Desc_",
-											{
-												"type": "string",
-												"minLength": 1
-											},
-											".Desc_",
-											{
-												"type": "string",
-												"minLength": 1
-											},
-											"_C"
-										]
+										"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/RawResources"
 									},
 									"ParticleSystem1_9_F0CF81514E1E1C5007AC99B0C59C63CD": {
 										"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/ParticleSystem--quoted"
@@ -4095,14 +4080,7 @@
 				"mSmallIcon": {
 					"oneOf": [
 						{
-							"type": "string",
-							"templated_string": [
-								"Texture2D",
-								{
-									"type": "string",
-									"minLength": 1
-								}
-							]
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/Texture2D--base"
 						},
 						{
 							"type": "string",
@@ -4113,14 +4091,7 @@
 				"mPersistentBigIcon": {
 					"oneOf": [
 						{
-							"type": "string",
-							"templated_string": [
-								"Texture2D",
-								{
-									"type": "string",
-									"minLength": 1
-								}
-							]
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/Texture2D--base"
 						},
 						{
 							"type": "string",
@@ -4798,22 +4769,7 @@
 										"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 									},
 									"RequiredSchematic": {
-										"type": "string",
-										"templated_string": [
-											"/Game/FactoryGame/Schematics/Research/",
-											{"type": "string"},
-											"/",
-											{
-												"type": "string",
-												"minLength": 1
-											},
-											".",
-											{
-												"type": "string",
-												"minLength": 1
-											},
-											"_C"
-										]
+										"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/RequiredSchematic"
 									}
 								}
 							}

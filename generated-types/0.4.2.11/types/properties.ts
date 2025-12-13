@@ -98,7 +98,7 @@ type BlueprintGeneratedClass_single_quoted = `BlueprintGeneratedClass'/Game/Fact
 
 type FGRailroadTrackConnectionComponent_quoted = `FGRailroadTrackConnectionComponent'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
 
-type Texture2D = `Texture2D /Game/FactoryGame/${Exclude<string, ''>}`;
+type Texture2D = `Texture2D /Game/FactoryGame/${Exclude<string, ''>}${''}`;
 
 type Texture2D_quoted = `Texture2D'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
 

@@ -14,6 +14,39 @@
 				}
 			}
 		},
+		"mAlternativeMaterialRecipes--mMaterial": {
+			"type": "string",
+			"templated_string": [
+				"/Game/FactoryGame/Buildable/-Shared/Customization/Materials/MaterialDesc_Foundation_",
+				{
+					"type": "string",
+					"minLength": 1
+				},
+				".MaterialDesc_Foundation_",
+				{
+					"type": "string",
+					"minLength": 1
+				}
+			]
+		},
+		"mAlternativeMaterialRecipes--mRecipe": {
+			"type": "string",
+			"templated_string": [
+				"/Game/FactoryGame/Buildable/Building/Foundation/",
+				{"type": "string"},
+				"/Recipe_",
+				{
+					"type": "string",
+					"minLength": 1
+				},
+				".Recipe_",
+				{
+					"type": "string",
+					"minLength": 1
+				},
+				"_C"
+			]
+		},
 		"mDisableSnapOn--front--right": {
 			"type": "string",
 			"typed_string": {
@@ -29,6 +62,37 @@
 					}
 				}
 			}
+		},
+		"mObjectDetails--Icon": {
+			"oneOf": [
+				{
+					"type": "string",
+					"templated_string": [
+						"/Game/FactoryGame/",
+						["Resource", "Equipment"],
+						{"type": "string"},
+						"/",
+						{
+							"type": "string",
+							"minLength": 1
+						},
+						".",
+						{
+							"type": "string",
+							"minLength": 1
+						},
+						"_",
+						["64", "64_new"]
+					]
+				},
+				{
+					"type": "string",
+					"templated_string": [
+						"/Game/FactoryGame/Prototype/WAT/UI/T_WAT",
+						["1.T_WAT1", "2.T_WAT2"]
+					]
+				}
+			]
 		},
 		"mProducedIn": {
 			"oneOf": [

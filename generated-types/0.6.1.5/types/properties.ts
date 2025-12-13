@@ -31,10 +31,16 @@ type mAllowedResourceForms = [
     ...('RF_SOLID' | 'RF_LIQUID' | 'RF_GAS' | 'RF_HEAT')[],
 ];
 
+type mAlternativeMaterialRecipes_mMaterial = `/Game/FactoryGame/Buildable/-Shared/Customization/Materials/MaterialDesc_Foundation_${Exclude<string, ''>}${'.MaterialDesc_Foundation_'}${Exclude<string, ''>}`;
+
+type mAlternativeMaterialRecipes_mRecipe = `/Game/FactoryGame/Buildable/Building/Foundation/${string}${'/Recipe_'}${Exclude<string, ''>}${'.Recipe_'}${Exclude<string, ''>}${'_C'}`;
+
 type mDisableSnapOn_front_right = {
 	Front: docs_json_ts_common_types_bool_string,
 	Right: docs_json_ts_common_types_bool_string,
 };
+
+type mObjectDetails_Icon = `/Game/FactoryGame/${'Resource' | 'Equipment'}${string}${'/'}${Exclude<string, ''>}${'.'}${Exclude<string, ''>}${'_'}${'64' | '64_new'}` | `/Game/FactoryGame/Prototype/WAT/UI/T_WAT${'1.T_WAT1' | '2.T_WAT2'}`;
 
 type mProducedIn = docs_json_ts_0_3_7_7_properties_mProducedIn_base | docs_json_ts_0_4_2_11_properties_mProducedIn_version_specific | mProducedIn_version_specific;
 
@@ -98,7 +104,10 @@ type MaterialInstanceConstant_quoted = `MaterialInstanceConstant'"/Game/FactoryG
 
 export type {
 	mAllowedResourceForms,
+	mAlternativeMaterialRecipes_mMaterial,
+	mAlternativeMaterialRecipes_mRecipe,
 	mDisableSnapOn_front_right,
+	mObjectDetails_Icon,
 	mProducedIn,
 	mProducedIn_version_specific,
 	mUnlocks_item,

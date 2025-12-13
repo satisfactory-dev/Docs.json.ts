@@ -19,9 +19,12 @@ import type {
 	DocsDotJson_AkAudioEvent_quoted_list as docs_json_ts_0_6_1_5_properties_DocsDotJson_AkAudioEvent_quoted_list,
 	ItemClass_list as docs_json_ts_0_6_1_5_properties_ItemClass_list,
 	mAllowedResourceForms as docs_json_ts_0_6_1_5_properties_mAllowedResourceForms,
+	mAlternativeMaterialRecipes_mMaterial as docs_json_ts_0_6_1_5_properties_mAlternativeMaterialRecipes_mMaterial,
+	mAlternativeMaterialRecipes_mRecipe as docs_json_ts_0_6_1_5_properties_mAlternativeMaterialRecipes_mRecipe,
 	Material_quoted as docs_json_ts_0_6_1_5_properties_Material_quoted,
 	MaterialInstanceConstant_quoted as docs_json_ts_0_6_1_5_properties_MaterialInstanceConstant_quoted,
 	mDisableSnapOn_front_right as docs_json_ts_0_6_1_5_properties_mDisableSnapOn_front_right,
+	mObjectDetails_Icon as docs_json_ts_0_6_1_5_properties_mObjectDetails_Icon,
 	mProducedIn as docs_json_ts_0_6_1_5_properties_mProducedIn,
 	mUnlocks_item as docs_json_ts_0_6_1_5_properties_mUnlocks_item,
 } from './../types/properties.ts';
@@ -149,6 +152,7 @@ import type {
 	ItemClass_Amount_list as docs_json_ts_0_3_7_7_properties_ItemClass_Amount_list,
 	mDisableSnapOn_front_bottom as docs_json_ts_0_3_7_7_properties_mDisableSnapOn_front_bottom,
 	mDisableSnapOn_top_bottom as docs_json_ts_0_3_7_7_properties_mDisableSnapOn_top_bottom,
+	RequiredSchematic as docs_json_ts_0_3_7_7_properties_RequiredSchematic,
 } from './../../0.3.7.7/types/properties.ts';
 
 import type {
@@ -300,12 +304,12 @@ type FGBuildable_base = FGBuildable_base_pre_update8 & FGBuildable_base_version_
 type FGBuildable_base_pre_update8 = {
 	mAlternativeMaterialRecipes: null | [
 		{
-			mMaterial: `/Game/FactoryGame/Buildable/-Shared/Customization/Materials/MaterialDesc_Foundation_${Exclude<string, ''>}${'.MaterialDesc_Foundation_'}${Exclude<string, ''>}`,
-			mRecipe?: `/Game/FactoryGame/Buildable/Building/Foundation/${string}${'/Recipe_'}${Exclude<string, ''>}${'.Recipe_'}${Exclude<string, ''>}${'_C'}`,
+			mMaterial: docs_json_ts_0_6_1_5_properties_mAlternativeMaterialRecipes_mMaterial,
+			mRecipe?: docs_json_ts_0_6_1_5_properties_mAlternativeMaterialRecipes_mRecipe,
 		},
 		...{
-			mMaterial: `/Game/FactoryGame/Buildable/-Shared/Customization/Materials/MaterialDesc_Foundation_${Exclude<string, ''>}${'.MaterialDesc_Foundation_'}${Exclude<string, ''>}`,
-			mRecipe?: `/Game/FactoryGame/Buildable/Building/Foundation/${string}${'/Recipe_'}${Exclude<string, ''>}${'.Recipe_'}${Exclude<string, ''>}${'_C'}`,
+			mMaterial: docs_json_ts_0_6_1_5_properties_mAlternativeMaterialRecipes_mMaterial,
+			mRecipe?: docs_json_ts_0_6_1_5_properties_mAlternativeMaterialRecipes_mRecipe,
 		}[],
 	],
 	mAllowPatterning: docs_json_ts_common_types_bool_string,
@@ -661,8 +665,8 @@ type FGObjectScanner = FGObjectScanner_base & {
 				],
 			},
 			ScannerLightColor: docs_json_ts_common_types_BGRA,
-			Icon: `/Game/FactoryGame/${'Resource' | 'Equipment'}${string}${'/'}${Exclude<string, ''>}${'.'}${Exclude<string, ''>}${'_'}${'64' | '64_new'}` | ('/Game/FactoryGame/Prototype/WAT/UI/T_WAT1.T_WAT1' | '/Game/FactoryGame/Prototype/WAT/UI/T_WAT2.T_WAT2'),
-			RequiredSchematic: `/Game/FactoryGame/Schematics/Research/${Exclude<string, ''>}${'/'}${Exclude<string, ''>}${'.'}${Exclude<string, ''>}${'_C'}`,
+			Icon: docs_json_ts_0_6_1_5_properties_mObjectDetails_Icon,
+			RequiredSchematic: docs_json_ts_0_3_7_7_properties_RequiredSchematic,
 			PreCacheAllOfType?: docs_json_ts_common_types_bool_string,
 			ShouldOverrideDetectionRange?: docs_json_ts_common_types_bool_string,
 			NewDetectionRange?: docs_json_ts_common_types_decimal_string,
@@ -676,8 +680,8 @@ type FGObjectScanner = FGObjectScanner_base & {
 				],
 			},
 			ScannerLightColor: docs_json_ts_common_types_BGRA,
-			Icon: `/Game/FactoryGame/${'Resource' | 'Equipment'}${string}${'/'}${Exclude<string, ''>}${'.'}${Exclude<string, ''>}${'_'}${'64' | '64_new'}` | ('/Game/FactoryGame/Prototype/WAT/UI/T_WAT1.T_WAT1' | '/Game/FactoryGame/Prototype/WAT/UI/T_WAT2.T_WAT2'),
-			RequiredSchematic: `/Game/FactoryGame/Schematics/Research/${Exclude<string, ''>}${'/'}${Exclude<string, ''>}${'.'}${Exclude<string, ''>}${'_C'}`,
+			Icon: docs_json_ts_0_6_1_5_properties_mObjectDetails_Icon,
+			RequiredSchematic: docs_json_ts_0_3_7_7_properties_RequiredSchematic,
 			PreCacheAllOfType?: docs_json_ts_common_types_bool_string,
 			ShouldOverrideDetectionRange?: docs_json_ts_common_types_bool_string,
 			NewDetectionRange?: docs_json_ts_common_types_decimal_string,

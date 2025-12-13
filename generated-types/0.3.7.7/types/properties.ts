@@ -163,7 +163,13 @@ type ItemClass_Amount_list = [
 
 type ParticleSystem_quoted = `ParticleSystem'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
 
+type RawResources = `/Game/FactoryGame/Resource/RawResources/${string}${'/Desc_'}${Exclude<string, ''>}${'.Desc_'}${Exclude<string, ''>}${'_C'}`;
+
+type RequiredSchematic = `/Game/FactoryGame/Schematics/Research/${Exclude<string, ''>}${'/'}${Exclude<string, ''>}${'.'}${Exclude<string, ''>}${'_C'}`;
+
 type Texture2D = `Texture2D'/Game/FactoryGame/${Exclude<string, ''>}${'\''}`;
+
+type Texture2D_base = `Texture2D${Exclude<string, ''>}`;
 
 type Tier = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7';
 
@@ -203,6 +209,9 @@ export type {
 	FGTrainPlatformConnection_quoted,
 	ItemClass_Amount_list,
 	ParticleSystem_quoted,
+	RawResources,
+	RequiredSchematic,
 	Texture2D,
+	Texture2D_base,
 	Tier,
 };

@@ -33,7 +33,10 @@ import type {
 	mUnlocks_item_mResourcesToAddToScanner as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mResourcesToAddToScanner,
 	mUnlocks_item_mSchematics as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mSchematics,
 	ParticleSystem_quoted as docs_json_ts_0_3_7_7_properties_ParticleSystem_quoted,
+	RawResources as docs_json_ts_0_3_7_7_properties_RawResources,
+	RequiredSchematic as docs_json_ts_0_3_7_7_properties_RequiredSchematic,
 	Texture2D as docs_json_ts_0_3_7_7_properties_Texture2D,
+	Texture2D_base as docs_json_ts_0_3_7_7_properties_Texture2D_base,
 	Tier as docs_json_ts_0_3_7_7_properties_Tier,
 	transform_Rotation_Translation_Scale3D as docs_json_ts_0_3_7_7_properties_transform_Rotation_Translation_Scale3D,
 } from './../types/properties.ts';
@@ -739,11 +742,11 @@ type FGBuildableResourceExtractor_miner_base_base_base = FGBuildableResourceExtr
 	mCanPlayAfterStartUpStopped?: docs_json_ts_common_types_bool_string,
 	mParticleMap: [
 		{
-			ResourceNode_16_2100B5C34EE8DF7958D78A974512F3C3: `/Game/FactoryGame/Resource/RawResources/${string}${'/Desc_'}${Exclude<string, ''>}${'.Desc_'}${Exclude<string, ''>}${'_C'}`,
+			ResourceNode_16_2100B5C34EE8DF7958D78A974512F3C3: docs_json_ts_0_3_7_7_properties_RawResources,
 			ParticleSystem1_9_F0CF81514E1E1C5007AC99B0C59C63CD: docs_json_ts_0_3_7_7_properties_ParticleSystem_quoted,
 		},
 		...{
-			ResourceNode_16_2100B5C34EE8DF7958D78A974512F3C3: `/Game/FactoryGame/Resource/RawResources/${string}${'/Desc_'}${Exclude<string, ''>}${'.Desc_'}${Exclude<string, ''>}${'_C'}`,
+			ResourceNode_16_2100B5C34EE8DF7958D78A974512F3C3: docs_json_ts_0_3_7_7_properties_RawResources,
 			ParticleSystem1_9_F0CF81514E1E1C5007AC99B0C59C63CD: docs_json_ts_0_3_7_7_properties_ParticleSystem_quoted,
 		}[],
 	],
@@ -1067,8 +1070,8 @@ type FGDescriptor_base = isDescribed & {
 	mEnergyValue: docs_json_ts_common_types_decimal_string,
 	mRadioactiveDecay: docs_json_ts_common_types_decimal_string,
 	mForm: `RF_${Exclude<string, ''>}`,
-	mSmallIcon: `Texture2D${Exclude<string, ''>}` | 'None',
-	mPersistentBigIcon: `Texture2D${Exclude<string, ''>}` | 'None',
+	mSmallIcon: docs_json_ts_0_3_7_7_properties_Texture2D_base | 'None',
+	mPersistentBigIcon: docs_json_ts_0_3_7_7_properties_Texture2D_base | 'None',
 	mFluidColor: docs_json_ts_common_types_BGRA,
 };
 
@@ -1255,7 +1258,7 @@ type FGObjectScanner = FGObjectScanner_base & {
 			PreCacheAllOfType?: docs_json_ts_common_types_bool_string,
 			ShouldOverrideDetectionRange?: docs_json_ts_common_types_bool_string,
 			NewDetectionRange?: docs_json_ts_common_types_decimal_string,
-			RequiredSchematic: `/Game/FactoryGame/Schematics/Research/${string}${'/'}${Exclude<string, ''>}${'.'}${Exclude<string, ''>}${'_C'}`,
+			RequiredSchematic: docs_json_ts_0_3_7_7_properties_RequiredSchematic,
 		},
 		...{
 			ScannableClass: docs_json_ts_0_3_7_7_properties_BlueprintGeneratedClass_quoted,
@@ -1269,7 +1272,7 @@ type FGObjectScanner = FGObjectScanner_base & {
 			PreCacheAllOfType?: docs_json_ts_common_types_bool_string,
 			ShouldOverrideDetectionRange?: docs_json_ts_common_types_bool_string,
 			NewDetectionRange?: docs_json_ts_common_types_decimal_string,
-			RequiredSchematic: `/Game/FactoryGame/Schematics/Research/${string}${'/'}${Exclude<string, ''>}${'.'}${Exclude<string, ''>}${'_C'}`,
+			RequiredSchematic: docs_json_ts_0_3_7_7_properties_RequiredSchematic,
 		}[],
 	],
 };

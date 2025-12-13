@@ -472,37 +472,10 @@
 										"required": ["mMaterial"],
 										"properties": {
 											"mMaterial": {
-												"type": "string",
-												"templated_string": [
-													"/Game/FactoryGame/Buildable/-Shared/Customization/Materials/MaterialDesc_Foundation_",
-													{
-														"type": "string",
-														"minLength": 1
-													},
-													".MaterialDesc_Foundation_",
-													{
-														"type": "string",
-														"minLength": 1
-													}
-												]
+												"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/mAlternativeMaterialRecipes--mMaterial"
 											},
 											"mRecipe": {
-												"type": "string",
-												"templated_string": [
-													"/Game/FactoryGame/Buildable/Building/Foundation/",
-													{"type": "string"},
-													"/Recipe_",
-													{
-														"type": "string",
-														"minLength": 1
-													},
-													".Recipe_",
-													{
-														"type": "string",
-														"minLength": 1
-													},
-													"_C"
-												]
+												"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/mAlternativeMaterialRecipes--mRecipe"
 											}
 										}
 									}
@@ -2160,56 +2133,10 @@
 										"$ref": "docs.json.ts--common--types#/$defs/BGRA"
 									},
 									"Icon": {
-										"oneOf": [
-											{
-												"type": "string",
-												"templated_string": [
-													"/Game/FactoryGame/",
-													["Resource", "Equipment"],
-													{"type": "string"},
-													"/",
-													{
-														"type": "string",
-														"minLength": 1
-													},
-													".",
-													{
-														"type": "string",
-														"minLength": 1
-													},
-													"_",
-													["64", "64_new"]
-												]
-											},
-											{
-												"type": "string",
-												"enum": [
-													"/Game/FactoryGame/Prototype/WAT/UI/T_WAT1.T_WAT1",
-													"/Game/FactoryGame/Prototype/WAT/UI/T_WAT2.T_WAT2"
-												]
-											}
-										]
+										"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/mObjectDetails--Icon"
 									},
 									"RequiredSchematic": {
-										"type": "string",
-										"templated_string": [
-											"/Game/FactoryGame/Schematics/Research/",
-											{
-												"type": "string",
-												"minLength": 1
-											},
-											"/",
-											{
-												"type": "string",
-												"minLength": 1
-											},
-											".",
-											{
-												"type": "string",
-												"minLength": 1
-											},
-											"_C"
-										]
+										"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/RequiredSchematic"
 									},
 									"PreCacheAllOfType": {
 										"$ref": "docs.json.ts--common--types#/$defs/bool_string"

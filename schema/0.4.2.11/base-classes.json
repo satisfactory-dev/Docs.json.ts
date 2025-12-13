@@ -2600,14 +2600,7 @@
 							"const": "None"
 						},
 						{
-							"type": "string",
-							"templated_string": [
-								"Texture2D ",
-								{
-									"type": "string",
-									"minLength": 1
-								}
-							]
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/Texture2D--base"
 						}
 					]
 				},

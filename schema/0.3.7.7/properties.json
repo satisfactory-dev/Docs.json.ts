@@ -582,6 +582,45 @@
 				"value": null
 			}
 		},
+		"RawResources": {
+			"type": "string",
+			"templated_string": [
+				"/Game/FactoryGame/Resource/RawResources/",
+				{"type": "string"},
+				"/Desc_",
+				{
+					"type": "string",
+					"minLength": 1
+				},
+				".Desc_",
+				{
+					"type": "string",
+					"minLength": 1
+				},
+				"_C"
+			]
+		},
+		"RequiredSchematic": {
+			"type": "string",
+			"templated_string": [
+				"/Game/FactoryGame/Schematics/Research/",
+				{
+					"type": "string",
+					"minLength": 1
+				},
+				"/",
+				{
+					"type": "string",
+					"minLength": 1
+				},
+				".",
+				{
+					"type": "string",
+					"minLength": 1
+				},
+				"_C"
+			]
+		},
 		"Texture2D": {
 			"type": "string",
 			"DocsDotJson_PrefixedString": {
@@ -589,6 +628,16 @@
 				"mode": "single_quoted",
 				"value": null
 			}
+		},
+		"Texture2D--base": {
+			"type": "string",
+			"templated_string": [
+				"Texture2D",
+				{
+					"type": "string",
+					"minLength": 1
+				}
+			]
 		},
 		"Tier": {
 			"type": "string",
