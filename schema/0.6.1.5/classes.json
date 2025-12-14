@@ -9,7 +9,7 @@
 		},
 		"FGAmmoTypeInstantHit--Desc_CartridgeStandard_C": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGAmmoTypeInstantHit--base",
+			"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGAmmoTypeInstantHit--Desc_CartridgeStandard_C",
 			"unevaluatedProperties": false
 		},
 		"FGAmmoTypeProjectile": {

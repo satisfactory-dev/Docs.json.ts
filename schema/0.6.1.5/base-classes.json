@@ -3,8 +3,78 @@
 	"$id": "docs.json.ts--0.6.1.5--classes--base",
 	"$defs": {
 		"FGAmmoType--base": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGItemDescAmmoTypeProjectile--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGDescriptor--sinkable"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--base"
+				},
+				{
+					"$ref": "#/$defs/FGAmmoType--version-specific"
+				}
+			]
+		},
+		"FGAmmoType--pre-update8": {
 			"type": "object",
-			"$ref": "#/$defs/FGAmmoType--base--base",
+			"required": [
+				"mDamageTypesOnImpact",
+				"mFiringSounds",
+				"mAmmoTickFunction"
+			],
+			"properties": {
+				"mDamageTypesOnImpact": {
+					"oneOf": [
+						{
+							"type": "string",
+							"typed_string": ""
+						},
+						{
+							"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/DamageTypes"
+						}
+					]
+				},
+				"mFiringSounds": {
+					"oneOf": [
+						{
+							"type": "string",
+							"typed_string": ""
+						},
+						{
+							"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/DocsDotJson_AkAudioEvent_quoted--list"
+						}
+					]
+				},
+				"mAmmoTickFunction": {
+					"type": "string",
+					"typed_string": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": [
+							"bCanEverTick",
+							"bStartWithTickEnabled",
+							"bAllowTickOnDedicatedServer"
+						],
+						"properties": {
+							"bCanEverTick": {
+								"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+							},
+							"bStartWithTickEnabled": {
+								"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+							},
+							"bAllowTickOnDedicatedServer": {
+								"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+							}
+						}
+					}
+				}
+			}
+		},
+		"FGAmmoType--version-specific": {
+			"type": "object",
 			"required": [
 				"mFiringDirection",
 				"mReloadTimeMultiplier",
@@ -15,12 +85,9 @@
 				"mRestingDispersion",
 				"mFiringDispersion",
 				"mMagazineMeshMaterials",
-				"mDamageTypesOnImpact",
 				"mMuzzleFlashScale",
-				"mFiringSounds",
 				"mAmmoColor",
 				"mAmmoScale",
-				"mAmmoTickFunction",
 				"mAmmoDamageFalloff"
 			],
 			"properties": {
@@ -168,59 +235,14 @@
 						}
 					]
 				},
-				"mDamageTypesOnImpact": {
-					"oneOf": [
-						{
-							"type": "string",
-							"typed_string": ""
-						},
-						{
-							"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/DamageTypes"
-						}
-					]
-				},
 				"mMuzzleFlashScale": {
 					"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
-				},
-				"mFiringSounds": {
-					"oneOf": [
-						{
-							"type": "string",
-							"typed_string": ""
-						},
-						{
-							"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/DocsDotJson_AkAudioEvent_quoted--list"
-						}
-					]
 				},
 				"mAmmoColor": {
 					"$ref": "docs.json.ts--common--types#/$defs/RGBA"
 				},
 				"mAmmoScale": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mAmmoTickFunction": {
-					"type": "string",
-					"typed_string": {
-						"type": "object",
-						"additionalProperties": false,
-						"required": [
-							"bCanEverTick",
-							"bStartWithTickEnabled",
-							"bAllowTickOnDedicatedServer"
-						],
-						"properties": {
-							"bCanEverTick": {
-								"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-							},
-							"bStartWithTickEnabled": {
-								"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-							},
-							"bAllowTickOnDedicatedServer": {
-								"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-							}
-						}
-					}
 				},
 				"mAmmoDamageFalloff": {
 					"oneOf": [
@@ -234,32 +256,27 @@
 				}
 			}
 		},
-		"FGAmmoType--base--base": {
+		"FGAmmoTypeInstantHit--Desc_CartridgeChaos_C": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGItemDescAmmoTypeProjectile--base--base"
+					"$ref": "#/$defs/FGAmmoType--base"
 				},
 				{
-					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGDescriptor--sinkable"
+					"$ref": "#/$defs/FGAmmoType--version-specific"
 				},
 				{
-					"$ref": "#/$defs/FGItemDescriptor--base"
+					"$ref": "#/$defs/FGAmmoTypeInstantHit--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGAmmoType--pre-update8"
+				},
+				{
+					"$ref": "#/$defs/FGAmmoTypeInstantHit--Desc_CartridgeChaos_C--version-specific"
 				}
 			]
 		},
-		"FGAmmoTypeInstantHit--base": {
+		"FGAmmoTypeInstantHit--Desc_CartridgeChaos_C--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGAmmoType--base",
-			"required": ["mPlayFireEffects"],
-			"properties": {
-				"mPlayFireEffects": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				}
-			}
-		},
-		"FGAmmoTypeInstantHit--Desc_CartridgeChaos_C": {
-			"type": "object",
-			"$ref": "#/$defs/FGAmmoTypeInstantHit--base",
 			"required": ["Location", "Trail_Velocity"],
 			"properties": {
 				"Location": {
@@ -270,46 +287,51 @@
 				}
 			}
 		},
-		"FGAmmoTypeProjectile": {
+		"FGAmmoTypeInstantHit--Desc_CartridgeStandard_C": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGAmmoType--base"
+				},
+				{
+					"$ref": "#/$defs/FGAmmoType--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGAmmoTypeInstantHit--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGAmmoType--pre-update8"
+				}
+			]
+		},
+		"FGAmmoTypeInstantHit--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGAmmoType--base",
-			"required": [
-				"mInitialProjectileSpeedOverride",
-				"mProjectileMaxSpeedOverride",
-				"mProjectileHealthOverride",
-				"mProjectileLifespan",
-				"mProjectileStickspan",
-				"mCanTakeDamageBySameProjectileOrChild",
-				"mDamageTypesAtEndOfLife",
-				"mGravityScaleOverLifespan",
-				"mHomingProjectile",
-				"mHomingNeedsValidTarget",
-				"mMaxHomingAccelerationMagnitudeOverride",
-				"mHomingMagnitudeMultiplierOverLifespan",
-				"mHomingMagnitudeMultiplierOverDistanceToTarget",
-				"mHomingOverlapSize",
-				"mHomingAngleLimit",
-				"mHomingOverrideTargets"
-			],
+			"required": ["mPlayFireEffects"],
 			"properties": {
-				"mInitialProjectileSpeedOverride": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
-				},
-				"mProjectileMaxSpeedOverride": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
-				},
-				"mProjectileHealthOverride": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
-				},
-				"mProjectileLifespan": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
-				},
-				"mProjectileStickspan": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
-				},
-				"mCanTakeDamageBySameProjectileOrChild": {
+				"mPlayFireEffects": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
+		},
+		"FGAmmoTypeProjectile": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGAmmoType--base"
 				},
+				{
+					"$ref": "#/$defs/FGAmmoType--pre-update8"
+				},
+				{
+					"$ref": "#/$defs/FGAmmoTypeProjectile--pre-update8"
+				},
+				{
+					"$ref": "#/$defs/FGAmmoTypeProjectile--version-specific"
+				}
+			]
+		},
+		"FGAmmoTypeProjectile--pre-update8": {
+			"type": "object",
+			"required": ["mDamageTypesAtEndOfLife"],
+			"properties": {
 				"mDamageTypesAtEndOfLife": {
 					"oneOf": [
 						{
@@ -339,6 +361,46 @@
 							}
 						}
 					]
+				}
+			}
+		},
+		"FGAmmoTypeProjectile--version-specific": {
+			"type": "object",
+			"required": [
+				"mInitialProjectileSpeedOverride",
+				"mProjectileMaxSpeedOverride",
+				"mProjectileHealthOverride",
+				"mProjectileLifespan",
+				"mProjectileStickspan",
+				"mCanTakeDamageBySameProjectileOrChild",
+				"mGravityScaleOverLifespan",
+				"mHomingProjectile",
+				"mHomingNeedsValidTarget",
+				"mMaxHomingAccelerationMagnitudeOverride",
+				"mHomingMagnitudeMultiplierOverLifespan",
+				"mHomingMagnitudeMultiplierOverDistanceToTarget",
+				"mHomingOverlapSize",
+				"mHomingAngleLimit",
+				"mHomingOverrideTargets"
+			],
+			"properties": {
+				"mInitialProjectileSpeedOverride": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
+				},
+				"mProjectileMaxSpeedOverride": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
+				},
+				"mProjectileHealthOverride": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
+				},
+				"mProjectileLifespan": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
+				},
+				"mProjectileStickspan": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
+				},
+				"mCanTakeDamageBySameProjectileOrChild": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				},
 				"mGravityScaleOverLifespan": {
 					"$ref": "docs.json.ts--0.5.2.1--properties#/$defs/FalloffCurve--EditorCurveData--only"
@@ -396,8 +458,20 @@
 			}
 		},
 		"FGAmmoTypeSpreadshot": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGAmmoType--pre-update8"
+				},
+				{
+					"$ref": "#/$defs/FGAmmoType--base"
+				},
+				{
+					"$ref": "#/$defs/FGAmmoTypeSpreadshot--version-specific"
+				}
+			]
+		},
+		"FGAmmoTypeSpreadshot--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGAmmoType--base",
 			"required": [
 				"SpreadTrail_Velocity",
 				"mNumShots",

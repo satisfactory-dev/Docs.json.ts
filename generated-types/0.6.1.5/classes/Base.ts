@@ -1,51 +1,6 @@
 /* eslint-disable @stylistic/max-len */
 
 import type {
-	BGRA as docs_json_ts_common_types_BGRA,
-	bool_string as docs_json_ts_common_types_bool_string,
-	decimal_string as docs_json_ts_common_types_decimal_string,
-	decimal_string_signed as docs_json_ts_common_types_decimal_string_signed,
-	empty_object as docs_json_ts_common_types_empty_object,
-	integer_string as docs_json_ts_common_types_integer_string,
-	RGBA as docs_json_ts_common_types_RGBA,
-	XY_decimal_string as docs_json_ts_common_types_XY_decimal_string,
-	XYZ_decimal_string as docs_json_ts_common_types_XYZ_decimal_string,
-} from './../../common/types.ts';
-
-import type {
-	BlueprintGeneratedClass_quoted as docs_json_ts_0_3_7_7_properties_BlueprintGeneratedClass_quoted,
-	DocsDotJson_BlueprintGeneratedClass_quoted_list as docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list,
-	ItemClass_Amount_list as docs_json_ts_0_3_7_7_properties_ItemClass_Amount_list,
-	MaterialInstanceConstant_quoted as docs_json_ts_0_3_7_7_properties_MaterialInstanceConstant_quoted,
-	mDisableSnapOn_front_bottom as docs_json_ts_0_3_7_7_properties_mDisableSnapOn_front_bottom,
-	mDisableSnapOn_top_bottom as docs_json_ts_0_3_7_7_properties_mDisableSnapOn_top_bottom,
-	RequiredSchematic as docs_json_ts_0_3_7_7_properties_RequiredSchematic,
-} from './../../0.3.7.7/types/properties.ts';
-
-import type {
-	BP_RadialDamageType_Explosive_C_quoted as docs_json_ts_0_6_1_5_properties_BP_RadialDamageType_Explosive_C_quoted,
-	BP_RadialDamageType_Gas_C_quoted as docs_json_ts_0_6_1_5_properties_BP_RadialDamageType_Gas_C_quoted,
-	DamageTypes as docs_json_ts_0_6_1_5_properties_DamageTypes,
-	DocsDotJson_AkAudioEvent_quoted_list as docs_json_ts_0_6_1_5_properties_DocsDotJson_AkAudioEvent_quoted_list,
-	ItemClass_list as docs_json_ts_0_6_1_5_properties_ItemClass_list,
-	mAllowedResourceForms as docs_json_ts_0_6_1_5_properties_mAllowedResourceForms,
-	mAlternativeMaterialRecipes_mMaterial as docs_json_ts_0_6_1_5_properties_mAlternativeMaterialRecipes_mMaterial,
-	mAlternativeMaterialRecipes_mRecipe as docs_json_ts_0_6_1_5_properties_mAlternativeMaterialRecipes_mRecipe,
-	Material_quoted as docs_json_ts_0_6_1_5_properties_Material_quoted,
-	mDisableSnapOn_front_right as docs_json_ts_0_6_1_5_properties_mDisableSnapOn_front_right,
-	mObjectDetails_Icon as docs_json_ts_0_6_1_5_properties_mObjectDetails_Icon,
-	mProducedIn as docs_json_ts_0_6_1_5_properties_mProducedIn,
-	mUnlocks_item as docs_json_ts_0_6_1_5_properties_mUnlocks_item,
-} from './../types/properties.ts';
-
-import type {
-	FalloffCurve_EditorCurveData_only as docs_json_ts_0_5_2_1_properties_FalloffCurve_EditorCurveData_only,
-	FalloffCurve_EditorCurveData_with_ExternalCurve as docs_json_ts_0_5_2_1_properties_FalloffCurve_EditorCurveData_with_ExternalCurve,
-	mDisableSnapOn_bottom as docs_json_ts_0_5_2_1_properties_mDisableSnapOn_bottom,
-	mDisableSnapOn_top as docs_json_ts_0_5_2_1_properties_mDisableSnapOn_top,
-} from './../../0.5.2.1/types/properties.ts';
-
-import type {
 	FGBuildable_base as docs_json_ts_0_5_2_1_classes_base_FGBuildable_base,
 	FGBuildable_isFrame as docs_json_ts_0_5_2_1_classes_base_FGBuildable_isFrame,
 	FGBuildable_occupied as docs_json_ts_0_5_2_1_classes_base_FGBuildable_occupied,
@@ -156,6 +111,51 @@ import type {
 } from './../../0.4.2.11/classes/Base.ts';
 
 import type {
+	BP_RadialDamageType_Explosive_C_quoted as docs_json_ts_0_6_1_5_properties_BP_RadialDamageType_Explosive_C_quoted,
+	BP_RadialDamageType_Gas_C_quoted as docs_json_ts_0_6_1_5_properties_BP_RadialDamageType_Gas_C_quoted,
+	DamageTypes as docs_json_ts_0_6_1_5_properties_DamageTypes,
+	DocsDotJson_AkAudioEvent_quoted_list as docs_json_ts_0_6_1_5_properties_DocsDotJson_AkAudioEvent_quoted_list,
+	ItemClass_list as docs_json_ts_0_6_1_5_properties_ItemClass_list,
+	mAllowedResourceForms as docs_json_ts_0_6_1_5_properties_mAllowedResourceForms,
+	mAlternativeMaterialRecipes_mMaterial as docs_json_ts_0_6_1_5_properties_mAlternativeMaterialRecipes_mMaterial,
+	mAlternativeMaterialRecipes_mRecipe as docs_json_ts_0_6_1_5_properties_mAlternativeMaterialRecipes_mRecipe,
+	Material_quoted as docs_json_ts_0_6_1_5_properties_Material_quoted,
+	mDisableSnapOn_front_right as docs_json_ts_0_6_1_5_properties_mDisableSnapOn_front_right,
+	mObjectDetails_Icon as docs_json_ts_0_6_1_5_properties_mObjectDetails_Icon,
+	mProducedIn as docs_json_ts_0_6_1_5_properties_mProducedIn,
+	mUnlocks_item as docs_json_ts_0_6_1_5_properties_mUnlocks_item,
+} from './../types/properties.ts';
+
+import type {
+	BGRA as docs_json_ts_common_types_BGRA,
+	bool_string as docs_json_ts_common_types_bool_string,
+	decimal_string as docs_json_ts_common_types_decimal_string,
+	decimal_string_signed as docs_json_ts_common_types_decimal_string_signed,
+	empty_object as docs_json_ts_common_types_empty_object,
+	integer_string as docs_json_ts_common_types_integer_string,
+	RGBA as docs_json_ts_common_types_RGBA,
+	XY_decimal_string as docs_json_ts_common_types_XY_decimal_string,
+	XYZ_decimal_string as docs_json_ts_common_types_XYZ_decimal_string,
+} from './../../common/types.ts';
+
+import type {
+	BlueprintGeneratedClass_quoted as docs_json_ts_0_3_7_7_properties_BlueprintGeneratedClass_quoted,
+	DocsDotJson_BlueprintGeneratedClass_quoted_list as docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list,
+	ItemClass_Amount_list as docs_json_ts_0_3_7_7_properties_ItemClass_Amount_list,
+	MaterialInstanceConstant_quoted as docs_json_ts_0_3_7_7_properties_MaterialInstanceConstant_quoted,
+	mDisableSnapOn_front_bottom as docs_json_ts_0_3_7_7_properties_mDisableSnapOn_front_bottom,
+	mDisableSnapOn_top_bottom as docs_json_ts_0_3_7_7_properties_mDisableSnapOn_top_bottom,
+	RequiredSchematic as docs_json_ts_0_3_7_7_properties_RequiredSchematic,
+} from './../../0.3.7.7/types/properties.ts';
+
+import type {
+	FalloffCurve_EditorCurveData_only as docs_json_ts_0_5_2_1_properties_FalloffCurve_EditorCurveData_only,
+	FalloffCurve_EditorCurveData_with_ExternalCurve as docs_json_ts_0_5_2_1_properties_FalloffCurve_EditorCurveData_with_ExternalCurve,
+	mDisableSnapOn_bottom as docs_json_ts_0_5_2_1_properties_mDisableSnapOn_bottom,
+	mDisableSnapOn_top as docs_json_ts_0_5_2_1_properties_mDisableSnapOn_top,
+} from './../../0.5.2.1/types/properties.ts';
+
+import type {
 	FGBuildable_docking_station_base_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_docking_station_base_base,
 	FGBuildable_powered_base_resources_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base_resources_base,
 	FGBuildable_with_height_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_base,
@@ -198,7 +198,19 @@ import type {
 	TintColor as docs_json_ts_0_4_2_11_properties_TintColor,
 } from './../../0.4.2.11/types/properties.ts';
 
-type FGAmmoType_base = FGAmmoType_base_base & {
+type FGAmmoType_base = docs_json_ts_0_5_2_1_classes_base_FGItemDescAmmoTypeProjectile_base_base & docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable & FGItemDescriptor_base & FGAmmoType_version_specific;
+
+type FGAmmoType_pre_update8 = {
+	mDamageTypesOnImpact: null | docs_json_ts_0_6_1_5_properties_DamageTypes,
+	mFiringSounds: null | docs_json_ts_0_6_1_5_properties_DocsDotJson_AkAudioEvent_quoted_list,
+	mAmmoTickFunction: {
+		bCanEverTick: docs_json_ts_common_types_bool_string,
+		bStartWithTickEnabled: docs_json_ts_common_types_bool_string,
+		bAllowTickOnDedicatedServer: docs_json_ts_common_types_bool_string,
+	},
+};
+
+type FGAmmoType_version_specific = {
 	mFiringDirection: docs_json_ts_common_types_XYZ_decimal_string,
 	mReloadTimeMultiplier: docs_json_ts_common_types_decimal_string,
 	mFireRate: docs_json_ts_common_types_decimal_string,
@@ -236,37 +248,28 @@ type FGAmmoType_base = FGAmmoType_base_base & {
 			},
 		}[],
 	],
-	mDamageTypesOnImpact: null | docs_json_ts_0_6_1_5_properties_DamageTypes,
 	mMuzzleFlashScale: docs_json_ts_common_types_XYZ_decimal_string,
-	mFiringSounds: null | docs_json_ts_0_6_1_5_properties_DocsDotJson_AkAudioEvent_quoted_list,
 	mAmmoColor: docs_json_ts_common_types_RGBA,
 	mAmmoScale: docs_json_ts_common_types_decimal_string,
-	mAmmoTickFunction: {
-		bCanEverTick: docs_json_ts_common_types_bool_string,
-		bStartWithTickEnabled: docs_json_ts_common_types_bool_string,
-		bAllowTickOnDedicatedServer: docs_json_ts_common_types_bool_string,
-	},
 	mAmmoDamageFalloff: docs_json_ts_0_5_2_1_properties_FalloffCurve_EditorCurveData_only | docs_json_ts_0_5_2_1_properties_FalloffCurve_EditorCurveData_with_ExternalCurve,
 };
 
-type FGAmmoType_base_base = docs_json_ts_0_5_2_1_classes_base_FGItemDescAmmoTypeProjectile_base_base & docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable & FGItemDescriptor_base;
+type FGAmmoTypeInstantHit_Desc_CartridgeChaos_C = FGAmmoType_base & FGAmmoType_version_specific & FGAmmoTypeInstantHit_version_specific & FGAmmoType_pre_update8 & FGAmmoTypeInstantHit_Desc_CartridgeChaos_C_version_specific;
 
-type FGAmmoTypeInstantHit_base = FGAmmoType_base & {
-	mPlayFireEffects: docs_json_ts_common_types_bool_string,
-};
-
-type FGAmmoTypeInstantHit_Desc_CartridgeChaos_C = FGAmmoTypeInstantHit_base & {
+type FGAmmoTypeInstantHit_Desc_CartridgeChaos_C_version_specific = {
 	Location: docs_json_ts_common_types_XYZ_decimal_string,
 	Trail_Velocity: docs_json_ts_common_types_decimal_string,
 };
 
-type FGAmmoTypeProjectile = FGAmmoType_base & {
-	mInitialProjectileSpeedOverride: docs_json_ts_common_types_decimal_string_signed,
-	mProjectileMaxSpeedOverride: docs_json_ts_common_types_decimal_string_signed,
-	mProjectileHealthOverride: docs_json_ts_common_types_decimal_string_signed,
-	mProjectileLifespan: docs_json_ts_common_types_decimal_string_signed,
-	mProjectileStickspan: docs_json_ts_common_types_decimal_string_signed,
-	mCanTakeDamageBySameProjectileOrChild: docs_json_ts_common_types_bool_string,
+type FGAmmoTypeInstantHit_Desc_CartridgeStandard_C = FGAmmoType_base & FGAmmoType_version_specific & FGAmmoTypeInstantHit_version_specific & FGAmmoType_pre_update8;
+
+type FGAmmoTypeInstantHit_version_specific = {
+	mPlayFireEffects: docs_json_ts_common_types_bool_string,
+};
+
+type FGAmmoTypeProjectile = FGAmmoType_base & FGAmmoType_pre_update8 & FGAmmoTypeProjectile_pre_update8 & FGAmmoTypeProjectile_version_specific;
+
+type FGAmmoTypeProjectile_pre_update8 = {
 	mDamageTypesAtEndOfLife: null | [
 		docs_json_ts_0_6_1_5_properties_BP_RadialDamageType_Explosive_C_quoted,
 		...docs_json_ts_0_6_1_5_properties_BP_RadialDamageType_Explosive_C_quoted[],
@@ -274,6 +277,15 @@ type FGAmmoTypeProjectile = FGAmmoType_base & {
 		docs_json_ts_0_6_1_5_properties_BP_RadialDamageType_Gas_C_quoted,
 		...docs_json_ts_0_6_1_5_properties_BP_RadialDamageType_Gas_C_quoted[],
 	],
+};
+
+type FGAmmoTypeProjectile_version_specific = {
+	mInitialProjectileSpeedOverride: docs_json_ts_common_types_decimal_string_signed,
+	mProjectileMaxSpeedOverride: docs_json_ts_common_types_decimal_string_signed,
+	mProjectileHealthOverride: docs_json_ts_common_types_decimal_string_signed,
+	mProjectileLifespan: docs_json_ts_common_types_decimal_string_signed,
+	mProjectileStickspan: docs_json_ts_common_types_decimal_string_signed,
+	mCanTakeDamageBySameProjectileOrChild: docs_json_ts_common_types_bool_string,
 	mGravityScaleOverLifespan: docs_json_ts_0_5_2_1_properties_FalloffCurve_EditorCurveData_only,
 	mHomingProjectile: docs_json_ts_common_types_bool_string,
 	mHomingNeedsValidTarget: docs_json_ts_common_types_bool_string,
@@ -292,7 +304,9 @@ type FGAmmoTypeProjectile = FGAmmoType_base & {
 	],
 };
 
-type FGAmmoTypeSpreadshot = FGAmmoType_base & {
+type FGAmmoTypeSpreadshot = FGAmmoType_pre_update8 & FGAmmoType_base & FGAmmoTypeSpreadshot_version_specific;
+
+type FGAmmoTypeSpreadshot_version_specific = {
 	SpreadTrail_Velocity: docs_json_ts_common_types_decimal_string,
 	mNumShots: {
 		Min: docs_json_ts_common_types_integer_string,
@@ -789,11 +803,17 @@ type FGWeapon_Equip_Rifle_C = docs_json_ts_0_3_7_7_classes_base_FGWeaponProjecti
 
 export type {
 	FGAmmoType_base,
-	FGAmmoType_base_base,
-	FGAmmoTypeInstantHit_base,
+	FGAmmoType_pre_update8,
+	FGAmmoType_version_specific,
 	FGAmmoTypeInstantHit_Desc_CartridgeChaos_C,
+	FGAmmoTypeInstantHit_Desc_CartridgeChaos_C_version_specific,
+	FGAmmoTypeInstantHit_Desc_CartridgeStandard_C,
+	FGAmmoTypeInstantHit_version_specific,
 	FGAmmoTypeProjectile,
+	FGAmmoTypeProjectile_pre_update8,
+	FGAmmoTypeProjectile_version_specific,
 	FGAmmoTypeSpreadshot,
+	FGAmmoTypeSpreadshot_version_specific,
 	FGBuildable_base,
 	FGBuildable_base_pre_update8,
 	FGBuildable_base_version_specific,

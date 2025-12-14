@@ -248,15 +248,15 @@
 					"type": "string",
 					"templated_string": [
 						"BP_PointDamageType_",
-						{"type": "string"},
+						{"type": "string", "minLength": 1},
 						"_C'\"/Game/FactoryGame/",
 						["Equipment", "Resource"],
 						"/",
-						{"type": "string"},
+						{"type": "string", "minLength": 1},
 						["/Desc_", "/Equip_"],
-						{"type": "string"},
+						{"type": "string", "minLength": 1},
 						"_C:BP_PointDamageType_",
-						{"type": "string"},
+						{"type": "string", "minLength": 1},
 						"_C_0\"'"
 					]
 				}
@@ -269,6 +269,11 @@
 				"minItems": 1,
 				"uniqueItems": true,
 				"items": {
+					"$ref": "#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
+				}
+			}
+		},
+		"DocsDotJson_AkAudioEvent_quoted--list--item": {
 					"type": "string",
 					"DocsDotJson_PrefixedString": {
 						"prefix": "AkAudioEvent",
@@ -276,8 +281,6 @@
 						"mode": "quoted",
 						"value": null
 					}
-				}
-			}
 		},
 		"ItemClass--list": {
 			"type": "string",

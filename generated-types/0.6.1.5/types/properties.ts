@@ -80,14 +80,16 @@ type BP_RadialDamageType_Explosive_C_quoted = `BP_RadialDamageType_Explosive_C'"
 type BP_RadialDamageType_Gas_C_quoted = `BP_RadialDamageType_Gas_C'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
 
 type DamageTypes = [
-    `BP_PointDamageType_${string}${'_C\'"/Game/FactoryGame/'}${'Equipment' | 'Resource'}${'/'}${string}${'/Desc_' | '/Equip_'}${string}${'_C:BP_PointDamageType_'}${string}${'_C_0"\''}`,
-    ...`BP_PointDamageType_${string}${'_C\'"/Game/FactoryGame/'}${'Equipment' | 'Resource'}${'/'}${string}${'/Desc_' | '/Equip_'}${string}${'_C:BP_PointDamageType_'}${string}${'_C_0"\''}`[],
+    `BP_PointDamageType_${Exclude<string, ''>}${'_C\'"/Game/FactoryGame/'}${'Equipment' | 'Resource'}${'/'}${Exclude<string, ''>}${'/Desc_' | '/Equip_'}${Exclude<string, ''>}${'_C:BP_PointDamageType_'}${Exclude<string, ''>}${'_C_0"\''}`,
+    ...`BP_PointDamageType_${Exclude<string, ''>}${'_C\'"/Game/FactoryGame/'}${'Equipment' | 'Resource'}${'/'}${Exclude<string, ''>}${'/Desc_' | '/Equip_'}${Exclude<string, ''>}${'_C:BP_PointDamageType_'}${Exclude<string, ''>}${'_C_0"\''}`[],
 ];
 
 type DocsDotJson_AkAudioEvent_quoted_list = [
-    `AkAudioEvent'"/Game/WwiseAudio/${Exclude<string, ''>}${'"\''}`,
-    ...`AkAudioEvent'"/Game/WwiseAudio/${Exclude<string, ''>}${'"\''}`[],
+	DocsDotJson_AkAudioEvent_quoted_list_item,
+	...DocsDotJson_AkAudioEvent_quoted_list_item[],
 ];
+
+type DocsDotJson_AkAudioEvent_quoted_list_item = `AkAudioEvent'"/Game/WwiseAudio/${Exclude<string, ''>}${'"\''}`;
 
 type ItemClass_list = [
 	{
@@ -115,6 +117,7 @@ export type {
 	BP_RadialDamageType_Gas_C_quoted,
 	DamageTypes,
 	DocsDotJson_AkAudioEvent_quoted_list,
+	DocsDotJson_AkAudioEvent_quoted_list_item,
 	ItemClass_list,
 	Material_quoted,
 };

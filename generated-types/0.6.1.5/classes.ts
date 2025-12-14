@@ -1,8 +1,8 @@
 /* eslint-disable @stylistic/max-len */
 
 import type {
-	FGAmmoTypeInstantHit_base as docs_json_ts_0_6_1_5_classes_base_FGAmmoTypeInstantHit_base,
 	FGAmmoTypeInstantHit_Desc_CartridgeChaos_C as docs_json_ts_0_6_1_5_classes_base_FGAmmoTypeInstantHit_Desc_CartridgeChaos_C,
+	FGAmmoTypeInstantHit_Desc_CartridgeStandard_C as docs_json_ts_0_6_1_5_classes_base_FGAmmoTypeInstantHit_Desc_CartridgeStandard_C,
 	FGAmmoTypeProjectile as docs_json_ts_0_6_1_5_classes_base_FGAmmoTypeProjectile,
 	FGAmmoTypeSpreadshot as docs_json_ts_0_6_1_5_classes_base_FGAmmoTypeSpreadshot,
 	FGBuildable_base as docs_json_ts_0_6_1_5_classes_base_FGBuildable_base,
@@ -118,7 +118,7 @@ import type {
 
 type FGAmmoTypeInstantHit_Desc_CartridgeChaos_C = docs_json_ts_0_6_1_5_classes_base_FGAmmoTypeInstantHit_Desc_CartridgeChaos_C;
 
-type FGAmmoTypeInstantHit_Desc_CartridgeStandard_C = docs_json_ts_0_6_1_5_classes_base_FGAmmoTypeInstantHit_base;
+type FGAmmoTypeInstantHit_Desc_CartridgeStandard_C = docs_json_ts_0_6_1_5_classes_base_FGAmmoTypeInstantHit_Desc_CartridgeStandard_C;
 
 type FGAmmoTypeProjectile = docs_json_ts_0_6_1_5_classes_base_FGAmmoTypeProjectile;
 
