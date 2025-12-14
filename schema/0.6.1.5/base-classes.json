@@ -1612,10 +1612,7 @@
 		},
 		"FGChainsaw--pre-update8": {
 			"type": "object",
-			"required": [
-				"mAkEventsArray",
-				"mEventIndexSFX"
-			],
+			"required": ["mAkEventsArray", "mEventIndexSFX"],
 			"properties": {
 				"mAkEventsArray": {
 					"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/DocsDotJson_AkAudioEvent_quoted--list"
@@ -1627,10 +1624,7 @@
 		},
 		"FGChainsaw--version-specific": {
 			"type": "object",
-			"required": [
-				"mCurrentOutputDataSFX",
-				"mCurrentAkID"
-			],
+			"required": ["mCurrentOutputDataSFX", "mCurrentAkID"],
 			"properties": {
 				"mCurrentOutputDataSFX": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"

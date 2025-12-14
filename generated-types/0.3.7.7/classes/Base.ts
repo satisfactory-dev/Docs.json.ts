@@ -128,10 +128,6 @@ type FGBuildable_pole_base = FGBuildable_base_pre_update8 & {
 	mStackHeight: docs_json_ts_common_types_decimal_string,
 };
 
-type FGBuildable_with_mLength = FGBuildable_base_pre_update8 & {
-	mLength: docs_json_ts_common_types_decimal_string,
-};
-
 type FGBuildable_pole_with_length_and_power = FGBuildable_pole_with_length_and_power_base & FGBuildable_powered;
 
 type FGBuildable_pole_with_length_and_power_base = FGBuildable_pole_with_length_and_power_base_base & FGBuildable_with_mLength & FGBuildable_powered_base;
@@ -201,6 +197,14 @@ type FGBuildable_tiered_base = {
 	Tier: docs_json_ts_0_3_7_7_properties_Tier,
 };
 
+type FGBuildable_with_mLength = FGBuildable_base_pre_update8 & {
+	mLength: docs_json_ts_common_types_decimal_string,
+};
+
+type FGBuildable_with_mMeshLength = FGBuildable_base_pre_update8 & {
+	mMeshLength: docs_json_ts_common_types_decimal_string,
+};
+
 type FGBuildable_with_height = FGBuildable_with_height_base & FGBuildable;
 
 type FGBuildable_with_height_base = FGBuildable_base_pre_update8 & {
@@ -212,10 +216,6 @@ type FGBuildable_with_height_and_elevation = FGBuildable_with_height & FGBuildab
 type FGBuildable_with_height_and_width = FGBuildable_with_height_and_width_base & FGBuildable;
 
 type FGBuildable_with_height_and_width_base = FGBuildable_with_height_base & FGBuildable_with_width_base;
-
-type FGBuildable_with_mMeshLength = FGBuildable_base_pre_update8 & {
-	mMeshLength: docs_json_ts_common_types_decimal_string,
-};
 
 type FGBuildable_with_size = FGBuildable_with_size_base & FGBuildable;
 
@@ -1139,6 +1139,10 @@ type FGEquipment_filtered = {
 	mFilterDuration: docs_json_ts_common_types_decimal_string,
 };
 
+type FGEquipment_has_mPlayingSound = {
+	mPlayingSound: docs_json_ts_common_types_bool_string,
+};
+
 type FGEquipment_has_effect_timer = {
 	mCountdown: docs_json_ts_common_types_decimal_string,
 	mIsWorking: docs_json_ts_common_types_bool_string,
@@ -1147,10 +1151,6 @@ type FGEquipment_has_effect_timer = {
 
 type FGEquipment_has_mRandomStingerAnim = {
 	mRandomStingerAnim: docs_json_ts_common_types_integer_string,
-};
-
-type FGEquipment_has_mPlayingSound = {
-	mPlayingSound: docs_json_ts_common_types_bool_string,
 };
 
 type FGEquipment_negates_damage = {
@@ -1570,7 +1570,6 @@ export type {
 	FGBuildable_occupied_base,
 	FGBuildable_pole,
 	FGBuildable_pole_base,
-	FGBuildable_with_mLength,
 	FGBuildable_pole_with_length_and_power,
 	FGBuildable_pole_with_length_and_power_base,
 	FGBuildable_pole_with_length_and_power_base_base,
@@ -1589,12 +1588,13 @@ export type {
 	FGBuildable_spline,
 	FGBuildable_tiered,
 	FGBuildable_tiered_base,
+	FGBuildable_with_mLength,
+	FGBuildable_with_mMeshLength,
 	FGBuildable_with_height,
 	FGBuildable_with_height_base,
 	FGBuildable_with_height_and_elevation,
 	FGBuildable_with_height_and_width,
 	FGBuildable_with_height_and_width_base,
-	FGBuildable_with_mMeshLength,
 	FGBuildable_with_size,
 	FGBuildable_with_size_base,
 	FGBuildable_with_size_and_elevation,
@@ -1846,9 +1846,9 @@ export type {
 	FGEquipment_dispenser,
 	FGEquipment_dispenser_version_specific,
 	FGEquipment_filtered,
+	FGEquipment_has_mPlayingSound,
 	FGEquipment_has_effect_timer,
 	FGEquipment_has_mRandomStingerAnim,
-	FGEquipment_has_mPlayingSound,
 	FGEquipment_negates_damage,
 	FGEquipmentStunSpear_base,
 	FGEquipmentStunSpear_base_base,

@@ -236,16 +236,6 @@
 				}
 			}
 		},
-		"FGBuildable--with--mLength": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base--pre-update8",
-			"required": ["mLength"],
-			"properties": {
-				"mLength": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				}
-			}
-		},
 		"FGBuildable--pole--with-length-and-power": {
 			"allOf": [
 				{
@@ -528,6 +518,26 @@
 				}
 			}
 		},
+		"FGBuildable--with--mLength": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--base--pre-update8",
+			"required": ["mLength"],
+			"properties": {
+				"mLength": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGBuildable--with--mMeshLength": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--base--pre-update8",
+			"required": ["mMeshLength"],
+			"properties": {
+				"mMeshLength": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
 		"FGBuildable--with-height": {
 			"allOf": [
 				{
@@ -580,16 +590,6 @@
 					"$ref": "#/$defs/FGBuildable--with-width--base"
 				}
 			]
-		},
-		"FGBuildable--with--mMeshLength": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base--pre-update8",
-			"required": ["mMeshLength"],
-			"properties": {
-				"mMeshLength": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				}
-			}
 		},
 		"FGBuildable--with-size": {
 			"allOf": [
@@ -4361,6 +4361,15 @@
 				}
 			}
 		},
+		"FGEquipment--has--mPlayingSound": {
+			"type": "object",
+			"required": ["mPlayingSound"],
+			"properties": {
+				"mPlayingSound": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
+		},
 		"FGEquipment--has-effect-timer": {
 			"type": "object",
 			"required": ["mCountdown", "mIsWorking", "mDisableEffectTimer"],
@@ -4382,15 +4391,6 @@
 			"properties": {
 				"mRandomStingerAnim": {
 					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-				}
-			}
-		},
-		"FGEquipment--has--mPlayingSound": {
-			"type": "object",
-			"required": ["mPlayingSound"],
-			"properties": {
-				"mPlayingSound": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				}
 			}
 		},
