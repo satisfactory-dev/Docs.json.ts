@@ -1595,38 +1595,50 @@
 			]
 		},
 		"FGChainsaw": {
-			"type": "object",
-			"$ref": "#/$defs/FGChainsaw--base",
-			"required": [
-				"mCurrentOutputDataSFX",
-				"mAkEventsArray",
-				"mEventIndexSFX",
-				"mCurrentAkID"
-			],
-			"properties": {
-				"mCurrentOutputDataSFX": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mAkEventsArray": {
-					"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/DocsDotJson_AkAudioEvent_quoted--list"
-				},
-				"mEventIndexSFX": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-				},
-				"mCurrentAkID": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-				}
-			}
-		},
-		"FGChainsaw--base": {
 			"allOf": [
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGChainsaw"
 				},
 				{
 					"$ref": "#/$defs/FGEquipment"
+				},
+				{
+					"$ref": "#/$defs/FGChainsaw--pre-update8"
+				},
+				{
+					"$ref": "#/$defs/FGChainsaw--version-specific"
 				}
 			]
+		},
+		"FGChainsaw--pre-update8": {
+			"type": "object",
+			"required": [
+				"mAkEventsArray",
+				"mEventIndexSFX"
+			],
+			"properties": {
+				"mAkEventsArray": {
+					"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/DocsDotJson_AkAudioEvent_quoted--list"
+				},
+				"mEventIndexSFX": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				}
+			}
+		},
+		"FGChainsaw--version-specific": {
+			"type": "object",
+			"required": [
+				"mCurrentOutputDataSFX",
+				"mCurrentAkID"
+			],
+			"properties": {
+				"mCurrentOutputDataSFX": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mCurrentAkID": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				}
+			}
 		},
 		"FGConsumableDescriptor": {
 			"allOf": [
@@ -2105,8 +2117,26 @@
 			]
 		},
 		"FGObjectScanner": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment--has--mPlayingSound"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGObjectScanner--pre-update8"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGObjectScanner--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGObjectScanner--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment"
+				}
+			]
+		},
+		"FGObjectScanner--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGObjectScanner--base",
 			"required": ["mScannableDescriptors", "mObjectDetails"],
 			"properties": {
 				"mScannableDescriptors": {
@@ -2162,16 +2192,6 @@
 					}
 				}
 			}
-		},
-		"FGObjectScanner--base": {
-			"allOf": [
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGObjectScanner--base"
-				},
-				{
-					"$ref": "#/$defs/FGEquipment"
-				}
-			]
 		},
 		"FGParachute": {
 			"allOf": [

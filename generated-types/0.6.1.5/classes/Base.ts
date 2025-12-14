@@ -172,6 +172,7 @@ import type {
 	FGConsumableDescriptor_base as docs_json_ts_0_3_7_7_classes_base_FGConsumableDescriptor_base,
 	FGEquipment_filtered as docs_json_ts_0_3_7_7_classes_base_FGEquipment_filtered,
 	FGEquipment_has_effect_timer as docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_effect_timer,
+	FGEquipment_has_mPlayingSound as docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_mPlayingSound,
 	FGEquipment_negates_damage as docs_json_ts_0_3_7_7_classes_base_FGEquipment_negates_damage,
 	FGEquipmentStunSpear_xenobasher_base as docs_json_ts_0_3_7_7_classes_base_FGEquipmentStunSpear_xenobasher_base,
 	FGEquipmentStunSpear_xenozapper_base as docs_json_ts_0_3_7_7_classes_base_FGEquipmentStunSpear_xenozapper_base,
@@ -180,7 +181,8 @@ import type {
 	FGJetPack_base_base as docs_json_ts_0_3_7_7_classes_base_FGJetPack_base_base,
 	FGJumpingStilts_base as docs_json_ts_0_3_7_7_classes_base_FGJumpingStilts_base,
 	FGNobeliskDetonator_base as docs_json_ts_0_3_7_7_classes_base_FGNobeliskDetonator_base,
-	FGObjectScanner_base as docs_json_ts_0_3_7_7_classes_base_FGObjectScanner_base,
+	FGObjectScanner_pre_update8 as docs_json_ts_0_3_7_7_classes_base_FGObjectScanner_pre_update8,
+	FGObjectScanner_version_specific as docs_json_ts_0_3_7_7_classes_base_FGObjectScanner_version_specific,
 	FGRecipe_base as docs_json_ts_0_3_7_7_classes_base_FGRecipe_base,
 	FGResourceDescriptor_base as docs_json_ts_0_3_7_7_classes_base_FGResourceDescriptor_base,
 	FGSuitBase_base as docs_json_ts_0_3_7_7_classes_base_FGSuitBase_base,
@@ -548,14 +550,17 @@ type FGBuildableWidgetSign = docs_json_ts_0_5_2_1_classes_base_FGBuildableWidget
 
 type FGBuildableWire = docs_json_ts_0_5_2_1_classes_base_FGBuildableWire & FGBuildable_base;
 
-type FGChainsaw = FGChainsaw_base & {
-	mCurrentOutputDataSFX: docs_json_ts_common_types_decimal_string,
+type FGChainsaw = docs_json_ts_0_3_7_7_classes_base_FGChainsaw & FGEquipment & FGChainsaw_pre_update8 & FGChainsaw_version_specific;
+
+type FGChainsaw_pre_update8 = {
 	mAkEventsArray: docs_json_ts_0_6_1_5_properties_DocsDotJson_AkAudioEvent_quoted_list,
 	mEventIndexSFX: docs_json_ts_common_types_integer_string,
-	mCurrentAkID: docs_json_ts_common_types_integer_string,
 };
 
-type FGChainsaw_base = docs_json_ts_0_3_7_7_classes_base_FGChainsaw & FGEquipment;
+type FGChainsaw_version_specific = {
+	mCurrentOutputDataSFX: docs_json_ts_common_types_decimal_string,
+	mCurrentAkID: docs_json_ts_common_types_integer_string,
+};
 
 type FGConsumableDescriptor = docs_json_ts_0_3_7_7_classes_base_FGConsumableDescriptor_base & docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable_base & FGItemDescriptor_base;
 
@@ -655,7 +660,9 @@ type FGJumpingStilts_base = docs_json_ts_0_3_7_7_classes_base_FGJumpingStilts_ba
 
 type FGNobeliskDetonator = docs_json_ts_0_5_2_1_classes_base_FGNobeliskDetonator_base & docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectile_base_base & docs_json_ts_0_3_7_7_classes_base_FGNobeliskDetonator_base & FGWeapon_base & FGEquipment;
 
-type FGObjectScanner = FGObjectScanner_base & {
+type FGObjectScanner = docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_mPlayingSound & docs_json_ts_0_3_7_7_classes_base_FGObjectScanner_pre_update8 & docs_json_ts_0_3_7_7_classes_base_FGObjectScanner_version_specific & FGObjectScanner_version_specific & FGEquipment;
+
+type FGObjectScanner_version_specific = {
 	mScannableDescriptors: docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list,
 	mObjectDetails: [
 		{
@@ -690,8 +697,6 @@ type FGObjectScanner = FGObjectScanner_base & {
 		}[],
 	],
 };
-
-type FGObjectScanner_base = docs_json_ts_0_3_7_7_classes_base_FGObjectScanner_base & FGEquipment;
 
 type FGParachute = docs_json_ts_0_4_2_11_classes_base_FGParachute & FGEquipment;
 
@@ -887,7 +892,8 @@ export type {
 	FGBuildableWidgetSign,
 	FGBuildableWire,
 	FGChainsaw,
-	FGChainsaw_base,
+	FGChainsaw_pre_update8,
+	FGChainsaw_version_specific,
 	FGConsumableDescriptor,
 	FGConsumableEquipment,
 	FGDescriptor,
@@ -915,7 +921,7 @@ export type {
 	FGJumpingStilts_base,
 	FGNobeliskDetonator,
 	FGObjectScanner,
-	FGObjectScanner_base,
+	FGObjectScanner_version_specific,
 	FGParachute,
 	FGPipeHyperStart,
 	FGPortableMinerDispenser,

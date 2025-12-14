@@ -3815,28 +3815,32 @@
 			}
 		},
 		"FGChainsaw": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGEquipment--has--mPlayingSound"
+				},
+				{
+					"$ref": "#/$defs/FGChainsaw--pre-update8"
+				},
+				{
+					"$ref": "#/$defs/FGChainsaw--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment"
+				}
+			]
+		},
+		"FGChainsaw--pre-update8": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment--has-sound",
 			"required": [
 				"mMontageLength",
-				"mInterpSawProgress",
 				"mWasSawing",
 				"mCurrentState",
 				"mCurrentAudioState",
-				"mPreviousAudioState",
-				"mEnergyConsumption",
-				"mSawDownTreeTime",
-				"mCollateralPickupRadius",
-				"mExcludeChainsawableFoliage",
-				"mEnergyStored",
-				"mAttachSocket",
-				"mArmAnimation"
+				"mPreviousAudioState"
 			],
 			"properties": {
 				"mMontageLength": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mInterpSawProgress": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
 				"mWasSawing": {
@@ -3853,6 +3857,24 @@
 				"mPreviousAudioState": {
 					"type": "string",
 					"const": "NewEnumerator3"
+				}
+			}
+		},
+		"FGChainsaw--version-specific": {
+			"type": "object",
+			"required": [
+				"mInterpSawProgress",
+				"mEnergyConsumption",
+				"mSawDownTreeTime",
+				"mCollateralPickupRadius",
+				"mExcludeChainsawableFoliage",
+				"mEnergyStored",
+				"mAttachSocket",
+				"mArmAnimation"
+			],
+			"properties": {
+				"mInterpSawProgress": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
 				"mEnergyConsumption": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
@@ -4363,9 +4385,8 @@
 				}
 			}
 		},
-		"FGEquipment--has-sound": {
+		"FGEquipment--has--mPlayingSound": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment",
 			"required": ["mPlayingSound"],
 			"properties": {
 				"mPlayingSound": {
@@ -4506,7 +4527,7 @@
 					"$ref": "#/$defs/FGEquipmentStunSpear--base--base"
 				},
 				{
-					"$ref": "#/$defs/FGEquipment--has-sound"
+					"$ref": "#/$defs/FGEquipment--has--mPlayingSound"
 				},
 				{
 					"$ref": "#/$defs/FGEquipment--has-mRandomStingerAnim"
@@ -4778,8 +4799,26 @@
 			}
 		},
 		"FGObjectScanner": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGEquipment--has--mPlayingSound"
+				},
+				{
+					"$ref": "#/$defs/FGObjectScanner--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGObjectScanner--has--mObjectDetails"
+				},
+				{
+					"$ref": "#/$defs/FGObjectScanner--pre-update8"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment"
+				}
+			]
+		},
+		"FGObjectScanner--has--mObjectDetails": {
 			"type": "object",
-			"$ref": "#/$defs/FGObjectScanner--base",
 			"required": ["mObjectDetails"],
 			"properties": {
 				"mObjectDetails": {
@@ -4829,9 +4868,17 @@
 				}
 			}
 		},
-		"FGObjectScanner--base": {
+		"FGObjectScanner--pre-update8": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment--has-sound",
+			"required": ["mShouldBeepEvenIfNoObject"],
+			"properties": {
+				"mShouldBeepEvenIfNoObject": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
+		},
+		"FGObjectScanner--version-specific": {
+			"type": "object",
 			"required": [
 				"mScreenUpdateTimer",
 				"mScanlineLerpT",
@@ -4841,8 +4888,7 @@
 				"mBeepDelayMax",
 				"mBeepDelayMin",
 				"mDetectionRange",
-				"mUpdateClosestObjectTime",
-				"mShouldBeepEvenIfNoObject"
+				"mUpdateClosestObjectTime"
 			],
 			"properties": {
 				"mScreenUpdateTimer": {
@@ -4871,9 +4917,6 @@
 				},
 				"mUpdateClosestObjectTime": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mShouldBeepEvenIfNoObject": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				}
 			}
 		},

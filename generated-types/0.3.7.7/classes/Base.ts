@@ -1001,13 +1001,18 @@ type FGBuildableWire_base = FGBuildable_base_pre_update8 & {
 	mConnections: 'None',
 };
 
-type FGChainsaw = FGEquipment_has_sound & {
+type FGChainsaw = FGEquipment_has_mPlayingSound & FGChainsaw_pre_update8 & FGChainsaw_version_specific & FGEquipment;
+
+type FGChainsaw_pre_update8 = {
 	mMontageLength: docs_json_ts_common_types_decimal_string,
-	mInterpSawProgress: docs_json_ts_common_types_decimal_string,
 	mWasSawing: docs_json_ts_common_types_bool_string,
 	mCurrentState: 'NewEnumerator3',
 	mCurrentAudioState: 'NewEnumerator3',
 	mPreviousAudioState: 'NewEnumerator3',
+};
+
+type FGChainsaw_version_specific = {
+	mInterpSawProgress: docs_json_ts_common_types_decimal_string,
 	mEnergyConsumption: docs_json_ts_common_types_decimal_string,
 	mSawDownTreeTime: docs_json_ts_common_types_decimal_string,
 	mCollateralPickupRadius: docs_json_ts_common_types_decimal_string,
@@ -1144,7 +1149,7 @@ type FGEquipment_has_mRandomStingerAnim = {
 	mRandomStingerAnim: docs_json_ts_common_types_integer_string,
 };
 
-type FGEquipment_has_sound = FGEquipment & {
+type FGEquipment_has_mPlayingSound = {
 	mPlayingSound: docs_json_ts_common_types_bool_string,
 };
 
@@ -1186,7 +1191,7 @@ type FGEquipmentStunSpear_xenobasher_version_specific = {
 
 type FGEquipmentStunSpear_xenozapper = FGEquipmentStunSpear_xenozapper_base & FGEquipmentStunSpear_base;
 
-type FGEquipmentStunSpear_xenozapper_base = FGEquipmentStunSpear_base_base & FGEquipment_has_sound & FGEquipment_has_mRandomStingerAnim;
+type FGEquipmentStunSpear_xenozapper_base = FGEquipmentStunSpear_base_base & FGEquipment_has_mPlayingSound & FGEquipment_has_mRandomStingerAnim;
 
 type FGGasMask = FGGasMask_base & FGEquipment_filtered & FGEquipment_has_effect_timer & FGEquipment_negates_damage & FGEquipment;
 
@@ -1257,7 +1262,9 @@ type FGNobeliskDetonator_base = FGWeaponProjectile_thrown_base_base & {
 	mArmAnimation: 'AE_Nobelisk',
 };
 
-type FGObjectScanner = FGObjectScanner_base & {
+type FGObjectScanner = FGEquipment_has_mPlayingSound & FGObjectScanner_version_specific & FGObjectScanner_has_mObjectDetails & FGObjectScanner_pre_update8 & FGEquipment;
+
+type FGObjectScanner_has_mObjectDetails = {
 	mObjectDetails: [
 		{
 			ScannableClass: docs_json_ts_0_3_7_7_properties_BlueprintGeneratedClass_quoted,
@@ -1290,7 +1297,11 @@ type FGObjectScanner = FGObjectScanner_base & {
 	],
 };
 
-type FGObjectScanner_base = FGEquipment_has_sound & {
+type FGObjectScanner_pre_update8 = {
+	mShouldBeepEvenIfNoObject: docs_json_ts_common_types_bool_string,
+};
+
+type FGObjectScanner_version_specific = {
 	mScreenUpdateTimer: docs_json_ts_common_types_empty_object,
 	mScanlineLerpT: docs_json_ts_common_types_decimal_string,
 	mScreenUpdateTime: docs_json_ts_common_types_decimal_string,
@@ -1300,7 +1311,6 @@ type FGObjectScanner_base = FGEquipment_has_sound & {
 	mBeepDelayMin: docs_json_ts_common_types_decimal_string,
 	mDetectionRange: docs_json_ts_common_types_decimal_string,
 	mUpdateClosestObjectTime: docs_json_ts_common_types_decimal_string,
-	mShouldBeepEvenIfNoObject: docs_json_ts_common_types_bool_string,
 };
 
 type FGParachute = FGEquipment & FGParachute_base;
@@ -1809,6 +1819,8 @@ export type {
 	FGBuildableWire,
 	FGBuildableWire_base,
 	FGChainsaw,
+	FGChainsaw_pre_update8,
+	FGChainsaw_version_specific,
 	FGColorGun,
 	FGColorGun_base,
 	FGColorGun_base_base,
@@ -1836,7 +1848,7 @@ export type {
 	FGEquipment_filtered,
 	FGEquipment_has_effect_timer,
 	FGEquipment_has_mRandomStingerAnim,
-	FGEquipment_has_sound,
+	FGEquipment_has_mPlayingSound,
 	FGEquipment_negates_damage,
 	FGEquipmentStunSpear_base,
 	FGEquipmentStunSpear_base_base,
@@ -1864,7 +1876,9 @@ export type {
 	FGNobeliskDetonator,
 	FGNobeliskDetonator_base,
 	FGObjectScanner,
-	FGObjectScanner_base,
+	FGObjectScanner_has_mObjectDetails,
+	FGObjectScanner_pre_update8,
+	FGObjectScanner_version_specific,
 	FGParachute,
 	FGParachute_base,
 	FGPipeHyperStart,
