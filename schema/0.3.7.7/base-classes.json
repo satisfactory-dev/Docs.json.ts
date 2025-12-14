@@ -236,19 +236,9 @@
 				}
 			}
 		},
-		"FGBuildable--pole--with-length": {
-			"allOf": [
-				{
-					"$ref": "#/$defs/FGBuildable--pole--with-length--base"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable--pole"
-				}
-			]
-		},
-		"FGBuildable--pole--with-length--base": {
+		"FGBuildable--with--mLength": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--pole--base",
+			"$ref": "#/$defs/FGBuildable--base--pre-update8",
 			"required": ["mLength"],
 			"properties": {
 				"mLength": {
@@ -272,7 +262,7 @@
 					"$ref": "#/$defs/FGBuildable--pole--with-length-and-power--base--base"
 				},
 				{
-					"$ref": "#/$defs/FGBuildable--pole--with-length"
+					"$ref": "#/$defs/FGBuildable--with--mLength"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--powered--base"
@@ -282,7 +272,10 @@
 		"FGBuildable--pole--with-length-and-power--base--base": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGBuildable--pole--with-length--base"
+					"$ref": "#/$defs/FGBuildable--pole--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--with--mLength"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--powered--base--base--base"
@@ -507,7 +500,7 @@
 		},
 		"FGBuildable--spline": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--with-length",
+			"$ref": "#/$defs/FGBuildable--with--mMeshLength",
 			"required": ["mSplineData"],
 			"properties": {
 				"mSplineData": {
@@ -588,7 +581,7 @@
 				}
 			]
 		},
-		"FGBuildable--with-length": {
+		"FGBuildable--with--mMeshLength": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--base--pre-update8",
 			"required": ["mMeshLength"],
@@ -2279,13 +2272,19 @@
 					"$ref": "#/$defs/FGBuildablePipelineSupport--base"
 				},
 				{
-					"$ref": "#/$defs/FGBuildable--pole--with-length"
+					"$ref": "#/$defs/FGBuildable--with--mLength"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base--version-specific"
 				}
 			]
 		},
 		"FGBuildablePipelineSupport--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--pole--with-length--base",
+			"$ref": "#/$defs/FGBuildable--pole--base",
 			"required": ["mVerticalAngle"],
 			"properties": {
 				"mVerticalAngle": {
@@ -2514,7 +2513,7 @@
 		},
 		"FGBuildableRailroadTrack--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--with-length",
+			"$ref": "#/$defs/FGBuildable--with--mMeshLength",
 			"required": ["mIsOwnedByPlatform"],
 			"properties": {
 				"mIsOwnedByPlatform": {
@@ -4922,11 +4921,21 @@
 			]
 		},
 		"FGPipeHyperStart--base--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--pole--with-length-and-power--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGPipeHyperStart--pre-update8"
+				},
+				{
+					"$ref": "#/$defs/FGPipeHyperStart--base--base--base"
+				}
+			]
+		},
+		"FGPipeHyperStart--base--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--pole--with-length-and-power--base--base",
 			"required": [
-				"InterpolateEngineSound_InterpolateEngineAlpha_064FA8194B7224F6F187999413D1C8A6",
-				"InterpolateEngineSound__Direction_064FA8194B7224F6F187999413D1C8A6",
 				"mWindDirectionFromTurbine",
 				"mIsWindSoundPlaying?",
 				"mAudioTimerCounter",
@@ -4936,13 +4945,6 @@
 				"mInitialMinSpeedFactor"
 			],
 			"properties": {
-				"InterpolateEngineSound_InterpolateEngineAlpha_064FA8194B7224F6F187999413D1C8A6": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"InterpolateEngineSound__Direction_064FA8194B7224F6F187999413D1C8A6": {
-					"type": "string",
-					"const": "Forward"
-				},
 				"mWindDirectionFromTurbine": {
 					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
 				},
@@ -4963,6 +4965,22 @@
 				},
 				"mInitialMinSpeedFactor": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGPipeHyperStart--pre-update8": {
+			"type": "object",
+			"required": [
+				"InterpolateEngineSound_InterpolateEngineAlpha_064FA8194B7224F6F187999413D1C8A6",
+				"InterpolateEngineSound__Direction_064FA8194B7224F6F187999413D1C8A6"
+			],
+			"properties": {
+				"InterpolateEngineSound_InterpolateEngineAlpha_064FA8194B7224F6F187999413D1C8A6": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"InterpolateEngineSound__Direction_064FA8194B7224F6F187999413D1C8A6": {
+					"type": "string",
+					"const": "Forward"
 				}
 			}
 		},

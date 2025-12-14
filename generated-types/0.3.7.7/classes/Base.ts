@@ -128,17 +128,15 @@ type FGBuildable_pole_base = FGBuildable_base_pre_update8 & {
 	mStackHeight: docs_json_ts_common_types_decimal_string,
 };
 
-type FGBuildable_pole_with_length = FGBuildable_pole_with_length_base & FGBuildable_pole;
-
-type FGBuildable_pole_with_length_base = FGBuildable_pole_base & {
+type FGBuildable_with_mLength = FGBuildable_base_pre_update8 & {
 	mLength: docs_json_ts_common_types_decimal_string,
 };
 
 type FGBuildable_pole_with_length_and_power = FGBuildable_pole_with_length_and_power_base & FGBuildable_powered;
 
-type FGBuildable_pole_with_length_and_power_base = FGBuildable_pole_with_length_and_power_base_base & FGBuildable_pole_with_length & FGBuildable_powered_base;
+type FGBuildable_pole_with_length_and_power_base = FGBuildable_pole_with_length_and_power_base_base & FGBuildable_with_mLength & FGBuildable_powered_base;
 
-type FGBuildable_pole_with_length_and_power_base_base = FGBuildable_pole_with_length_base & FGBuildable_powered_base_base_base;
+type FGBuildable_pole_with_length_and_power_base_base = FGBuildable_pole_base & FGBuildable_with_mLength & FGBuildable_powered_base_base_base;
 
 type FGBuildable_powered = FGBuildable_powered_base & (FGBuildable & {
 	mSignificanceBias: docs_json_ts_common_types_decimal_string,
@@ -193,7 +191,7 @@ type FGBuildable_powered_storage_base_base_base = FGBuildable_powered_base_base_
 	mStorageSizeY: docs_json_ts_common_types_integer_string,
 };
 
-type FGBuildable_spline = FGBuildable_with_length & {
+type FGBuildable_spline = FGBuildable_with_mMeshLength & {
 	mSplineData: '',
 };
 
@@ -215,7 +213,7 @@ type FGBuildable_with_height_and_width = FGBuildable_with_height_and_width_base 
 
 type FGBuildable_with_height_and_width_base = FGBuildable_with_height_base & FGBuildable_with_width_base;
 
-type FGBuildable_with_length = FGBuildable_base_pre_update8 & {
+type FGBuildable_with_mMeshLength = FGBuildable_base_pre_update8 & {
 	mMeshLength: docs_json_ts_common_types_decimal_string,
 };
 
@@ -629,9 +627,9 @@ type FGBuildablePipelinePump_pump_base_base_base = FGBuildablePipelinePump_base_
 
 type FGBuildablePipelinePump_valve = FGBuildablePipelinePump_base & FGBuildable_powered;
 
-type FGBuildablePipelineSupport = FGBuildablePipelineSupport_base & FGBuildable_pole_with_length;
+type FGBuildablePipelineSupport = FGBuildablePipelineSupport_base & FGBuildable_with_mLength & FGBuildable_base & FGBuildable_base_version_specific;
 
-type FGBuildablePipelineSupport_base = FGBuildable_pole_with_length_base & {
+type FGBuildablePipelineSupport_base = FGBuildable_pole_base & {
 	mVerticalAngle: docs_json_ts_common_types_decimal_string,
 };
 
@@ -690,7 +688,7 @@ type FGBuildableRailroadStation_version_specific = {
 
 type FGBuildableRailroadTrack = FGBuildableRailroadTrack_base & FGBuildable;
 
-type FGBuildableRailroadTrack_base = FGBuildable_with_length & {
+type FGBuildableRailroadTrack_base = FGBuildable_with_mMeshLength & {
 	mIsOwnedByPlatform: docs_json_ts_common_types_bool_string,
 };
 
@@ -1316,9 +1314,9 @@ type FGPipeHyperStart = FGPipeHyperStart_base & FGBuildable_pole_with_length_and
 
 type FGPipeHyperStart_base = FGPipeHyperStart_base_base & FGBuildable_pole_with_length_and_power_base;
 
-type FGPipeHyperStart_base_base = FGBuildable_pole_with_length_and_power_base_base & {
-	InterpolateEngineSound_InterpolateEngineAlpha_064FA8194B7224F6F187999413D1C8A6: docs_json_ts_common_types_decimal_string,
-	InterpolateEngineSound__Direction_064FA8194B7224F6F187999413D1C8A6: 'Forward',
+type FGPipeHyperStart_base_base = FGBuildable_pole_with_length_and_power_base_base & FGPipeHyperStart_pre_update8 & FGPipeHyperStart_base_base_base;
+
+type FGPipeHyperStart_base_base_base = {
 	mWindDirectionFromTurbine: docs_json_ts_common_types_empty_object,
 	['mIsWindSoundPlaying?']: docs_json_ts_common_types_bool_string,
 	mAudioTimerCounter: docs_json_ts_common_types_decimal_string,
@@ -1326,6 +1324,11 @@ type FGPipeHyperStart_base_base = FGBuildable_pole_with_length_and_power_base_ba
 	IsEnginePlaying: docs_json_ts_common_types_bool_string,
 	mOpeningOffset: docs_json_ts_common_types_decimal_string,
 	mInitialMinSpeedFactor: docs_json_ts_common_types_decimal_string,
+};
+
+type FGPipeHyperStart_pre_update8 = {
+	InterpolateEngineSound_InterpolateEngineAlpha_064FA8194B7224F6F187999413D1C8A6: docs_json_ts_common_types_decimal_string,
+	InterpolateEngineSound__Direction_064FA8194B7224F6F187999413D1C8A6: 'Forward',
 };
 
 type FGPortableMinerDispenser = FGPortableMinerDispenser_version_specific & FGEquipment_dispenser;
@@ -1557,8 +1560,7 @@ export type {
 	FGBuildable_occupied_base,
 	FGBuildable_pole,
 	FGBuildable_pole_base,
-	FGBuildable_pole_with_length,
-	FGBuildable_pole_with_length_base,
+	FGBuildable_with_mLength,
 	FGBuildable_pole_with_length_and_power,
 	FGBuildable_pole_with_length_and_power_base,
 	FGBuildable_pole_with_length_and_power_base_base,
@@ -1582,7 +1584,7 @@ export type {
 	FGBuildable_with_height_and_elevation,
 	FGBuildable_with_height_and_width,
 	FGBuildable_with_height_and_width_base,
-	FGBuildable_with_length,
+	FGBuildable_with_mMeshLength,
 	FGBuildable_with_size,
 	FGBuildable_with_size_base,
 	FGBuildable_with_size_and_elevation,
@@ -1868,6 +1870,8 @@ export type {
 	FGPipeHyperStart,
 	FGPipeHyperStart_base,
 	FGPipeHyperStart_base_base,
+	FGPipeHyperStart_base_base_base,
+	FGPipeHyperStart_pre_update8,
 	FGPortableMinerDispenser,
 	FGPortableMinerDispenser_version_specific,
 	FGRecipe,

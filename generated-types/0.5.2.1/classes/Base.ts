@@ -87,6 +87,7 @@ import type {
 	FGBuildable_spline as docs_json_ts_0_3_7_7_classes_base_FGBuildable_spline,
 	FGBuildable_tiered_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_tiered_base,
 	FGBuildable_with_height_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_base,
+	FGBuildable_with_mLength as docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_mLength,
 	FGBuildable_with_size_and_elevation_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_size_and_elevation_base,
 	FGBuildable_with_size_and_elevation_base_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_size_and_elevation_base_base,
 	FGBuildable_with_size_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_size_base,
@@ -426,7 +427,9 @@ type FGBuildablePillar_base = {
 	mIsSupport: docs_json_ts_common_types_bool_string,
 };
 
-type FGBuildablePipeHyper = FGBuildable_spline & {
+type FGBuildablePipeHyper = FGBuildable_spline & FGBuildablePipeHyper_version_specific;
+
+type FGBuildablePipeHyper_version_specific = {
 	mExitOffset: docs_json_ts_common_types_XYZ_decimal_string,
 };
 
@@ -440,7 +443,7 @@ type FGBuildablePipelinePump_pump = docs_json_ts_0_3_7_7_classes_base_FGBuildabl
 
 type FGBuildablePipelinePump_valve = docs_json_ts_0_3_7_7_classes_base_FGBuildablePipelinePump_base_base & FGBuildable_powered;
 
-type FGBuildablePipelineSupport = docs_json_ts_0_3_7_7_classes_base_FGBuildablePipelineSupport_base & FGBuildable_base;
+type FGBuildablePipelineSupport = docs_json_ts_0_3_7_7_classes_base_FGBuildablePipelineSupport_base & docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_mLength & FGBuildable_base;
 
 type FGBuildablePipeReservoir = FGBuildable_powered & docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeReservoir_base_base;
 
@@ -916,6 +919,7 @@ export type {
 	FGBuildablePillar,
 	FGBuildablePillar_base,
 	FGBuildablePipeHyper,
+	FGBuildablePipeHyper_version_specific,
 	FGBuildablePipeline,
 	FGBuildablePipeline_base_spline,
 	FGBuildablePipelineJunction,

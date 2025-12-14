@@ -1202,8 +1202,17 @@
 			}
 		},
 		"FGBuildablePipeHyper": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--spline"
+				},
+				{
+					"$ref": "#/$defs/FGBuildablePipeHyper--version-specific"
+				}
+			]
+		},
+		"FGBuildablePipeHyper--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--spline",
 			"required": ["mExitOffset"],
 			"properties": {
 				"mExitOffset": {
@@ -1271,6 +1280,9 @@
 			"allOf": [
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipelineSupport--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with--mLength"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--base"
