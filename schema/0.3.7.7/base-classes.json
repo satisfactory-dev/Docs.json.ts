@@ -705,16 +705,18 @@
 		"FGBuildableAttachment--base--base": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGBuildableAttachment--base--base--base"
+					"$ref": "#/$defs/FGBuildableAttachment--has--mCurrentInventoryIndex"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--powered--base--base"
 				}
 			]
 		},
-		"FGBuildableAttachment--base--base--base": {
+		"FGBuildableAttachment--has--mCurrentInventoryIndex": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
 			"required": ["mCurrentInventoryIndex"],
 			"properties": {
 				"mCurrentInventoryIndex": {
@@ -735,39 +737,31 @@
 		"FGBuildableAttachment--splitter--base": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGBuildableAttachment--splitter--base--base"
+					"$ref": "#/$defs/FGBuildableAttachment--splitter--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableAttachment--base--base"
 				},
 				{
 					"$ref": "#/$defs/FGBuildableAttachment--base"
 				}
 			]
 		},
-		"FGBuildableAttachment--splitter--base--base": {
-			"allOf": [
-				{
-					"$ref": "#/$defs/FGBuildableAttachment--splitter--base--base--base"
-				},
-				{
-					"$ref": "#/$defs/FGBuildableAttachment--base--base"
-				}
-			]
-		},
 		"FGBuildableAttachment--splitter--base--base--base": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGBuildableAttachment--splitter--pre-update7"
+					"$ref": "#/$defs/FGBuildableAttachment--has--mCurrentOutputIndex"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableAttachment--splitter--base--base--base--with-mDistributionTable"
+					"$ref": "#/$defs/FGBuildableAttachment--has--mDistributionTable"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableAttachment--base--base--base"
+					"$ref": "#/$defs/FGBuildableAttachment--has--mCurrentInventoryIndex"
 				}
 			]
 		},
-		"FGBuildableAttachment--splitter--base--base--base--with-mDistributionTable": {
+		"FGBuildableAttachment--has--mDistributionTable": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
 			"required": ["mDistributionTable"],
 			"properties": {
 				"mDistributionTable": {
@@ -776,7 +770,7 @@
 				}
 			}
 		},
-		"FGBuildableAttachment--splitter--pre-update7": {
+		"FGBuildableAttachment--has--mCurrentOutputIndex": {
 			"type": "object",
 			"required": ["mCurrentOutputIndex"],
 			"properties": {
@@ -821,7 +815,10 @@
 					"$ref": "#/$defs/FGBuildableAttachmentMerger--pre-update7"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableAttachment--base--base--base"
+					"$ref": "#/$defs/FGBuildableAttachment--has--mCurrentInventoryIndex"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
 				}
 			]
 		},
@@ -3301,16 +3298,18 @@
 		"FGBuildableSplitterSmart--base--base": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGBuildableSplitterSmart--base--base--base"
+					"$ref": "#/$defs/FGBuildableSplitterSmart--version-specific"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableAttachment--splitter--base--base"
+					"$ref": "#/$defs/FGBuildableAttachment--splitter--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableAttachment--base--base"
 				}
 			]
 		},
-		"FGBuildableSplitterSmart--base--base--base": {
+		"FGBuildableSplitterSmart--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableAttachment--splitter--base--base--base",
 			"required": [
 				"OnSortRulesChangedDelegate",
 				"mMaxNumSortRules",

@@ -243,25 +243,23 @@ type FGBuildableAttachment = FGBuildableAttachment_base & FGBuildable_powered;
 
 type FGBuildableAttachment_base = FGBuildableAttachment_base_base & FGBuildable_powered_base;
 
-type FGBuildableAttachment_base_base = FGBuildableAttachment_base_base_base & FGBuildable_powered_base_base;
+type FGBuildableAttachment_base_base = FGBuildableAttachment_has_mCurrentInventoryIndex & FGBuildable_base & FGBuildable_powered_base_base;
 
-type FGBuildableAttachment_base_base_base = FGBuildable_base & {
+type FGBuildableAttachment_has_mCurrentInventoryIndex = {
 	mCurrentInventoryIndex: docs_json_ts_common_types_integer_string,
 };
 
 type FGBuildableAttachment_splitter = FGBuildableAttachment_splitter_base & FGBuildableAttachment;
 
-type FGBuildableAttachment_splitter_base = FGBuildableAttachment_splitter_base_base & FGBuildableAttachment_base;
+type FGBuildableAttachment_splitter_base = FGBuildableAttachment_splitter_base_base_base & FGBuildableAttachment_base_base & FGBuildableAttachment_base;
 
-type FGBuildableAttachment_splitter_base_base = FGBuildableAttachment_splitter_base_base_base & FGBuildableAttachment_base_base;
+type FGBuildableAttachment_splitter_base_base_base = FGBuildableAttachment_has_mCurrentOutputIndex & FGBuildableAttachment_has_mDistributionTable & FGBuildableAttachment_has_mCurrentInventoryIndex;
 
-type FGBuildableAttachment_splitter_base_base_base = FGBuildableAttachment_splitter_pre_update7 & FGBuildableAttachment_splitter_base_base_base_with_mDistributionTable & FGBuildableAttachment_base_base_base;
-
-type FGBuildableAttachment_splitter_base_base_base_with_mDistributionTable = FGBuildable_base & {
+type FGBuildableAttachment_has_mDistributionTable = {
 	mDistributionTable: '',
 };
 
-type FGBuildableAttachment_splitter_pre_update7 = {
+type FGBuildableAttachment_has_mCurrentOutputIndex = {
 	mCurrentOutputIndex: docs_json_ts_common_types_integer_string_signed,
 };
 
@@ -271,7 +269,7 @@ type FGBuildableAttachmentMerger_base = FGBuildableAttachmentMerger_base_base & 
 
 type FGBuildableAttachmentMerger_base_base = FGBuildableAttachmentMerger_base_base_base & FGBuildableAttachment_base_base;
 
-type FGBuildableAttachmentMerger_base_base_base = FGBuildableAttachmentMerger_pre_update7 & FGBuildableAttachment_base_base_base;
+type FGBuildableAttachmentMerger_base_base_base = FGBuildableAttachmentMerger_pre_update7 & FGBuildableAttachment_has_mCurrentInventoryIndex & FGBuildable_base;
 
 type FGBuildableAttachmentMerger_pre_update7 = {
 	mCurrentInputIndex: docs_json_ts_common_types_integer_string_signed,
@@ -879,9 +877,9 @@ type FGBuildableSplitterSmart = FGBuildableSplitterSmart_base & FGBuildableAttac
 
 type FGBuildableSplitterSmart_base = FGBuildableSplitterSmart_base_base & FGBuildableAttachment_splitter_base;
 
-type FGBuildableSplitterSmart_base_base = FGBuildableSplitterSmart_base_base_base & FGBuildableAttachment_splitter_base_base;
+type FGBuildableSplitterSmart_base_base = FGBuildableSplitterSmart_version_specific & FGBuildableAttachment_splitter_base_base_base & FGBuildableAttachment_base_base;
 
-type FGBuildableSplitterSmart_base_base_base = FGBuildableAttachment_splitter_base_base_base & {
+type FGBuildableSplitterSmart_version_specific = {
 	OnSortRulesChangedDelegate: docs_json_ts_common_types_empty_object,
 	mMaxNumSortRules: docs_json_ts_common_types_integer_string,
 	mLastItem: {
@@ -1597,13 +1595,12 @@ export type {
 	FGBuildableAttachment,
 	FGBuildableAttachment_base,
 	FGBuildableAttachment_base_base,
-	FGBuildableAttachment_base_base_base,
+	FGBuildableAttachment_has_mCurrentInventoryIndex,
 	FGBuildableAttachment_splitter,
 	FGBuildableAttachment_splitter_base,
-	FGBuildableAttachment_splitter_base_base,
 	FGBuildableAttachment_splitter_base_base_base,
-	FGBuildableAttachment_splitter_base_base_base_with_mDistributionTable,
-	FGBuildableAttachment_splitter_pre_update7,
+	FGBuildableAttachment_has_mDistributionTable,
+	FGBuildableAttachment_has_mCurrentOutputIndex,
 	FGBuildableAttachmentMerger,
 	FGBuildableAttachmentMerger_base,
 	FGBuildableAttachmentMerger_base_base,
@@ -1783,7 +1780,7 @@ export type {
 	FGBuildableSplitterSmart,
 	FGBuildableSplitterSmart_base,
 	FGBuildableSplitterSmart_base_base,
-	FGBuildableSplitterSmart_base_base_base,
+	FGBuildableSplitterSmart_version_specific,
 	FGBuildableStorage,
 	FGBuildableStorage_base,
 	FGBuildableStorage_base_base,
