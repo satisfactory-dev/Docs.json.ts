@@ -765,15 +765,6 @@
 				}
 			]
 		},
-		"FGBuildableAttachment--splitter--pre-update7": {
-			"type": "object",
-			"required": ["mCurrentOutputIndex"],
-			"properties": {
-				"mCurrentOutputIndex": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string--signed"
-				}
-			}
-		},
 		"FGBuildableAttachment--splitter--base--base--base--with-mDistributionTable": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--base",
@@ -782,6 +773,15 @@
 				"mDistributionTable": {
 					"type": "string",
 					"const": ""
+				}
+			}
+		},
+		"FGBuildableAttachment--splitter--pre-update7": {
+			"type": "object",
+			"required": ["mCurrentOutputIndex"],
+			"properties": {
+				"mCurrentOutputIndex": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string--signed"
 				}
 			}
 		},

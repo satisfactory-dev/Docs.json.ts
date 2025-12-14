@@ -257,12 +257,12 @@ type FGBuildableAttachment_splitter_base_base = FGBuildableAttachment_splitter_b
 
 type FGBuildableAttachment_splitter_base_base_base = FGBuildableAttachment_splitter_pre_update7 & FGBuildableAttachment_splitter_base_base_base_with_mDistributionTable & FGBuildableAttachment_base_base_base;
 
-type FGBuildableAttachment_splitter_pre_update7 = {
-	mCurrentOutputIndex: docs_json_ts_common_types_integer_string_signed,
-};
-
 type FGBuildableAttachment_splitter_base_base_base_with_mDistributionTable = FGBuildable_base & {
 	mDistributionTable: '',
+};
+
+type FGBuildableAttachment_splitter_pre_update7 = {
+	mCurrentOutputIndex: docs_json_ts_common_types_integer_string_signed,
 };
 
 type FGBuildableAttachmentMerger = FGBuildableAttachment & FGBuildableAttachmentMerger_base;
@@ -1610,8 +1610,8 @@ export type {
 	FGBuildableAttachment_splitter_base,
 	FGBuildableAttachment_splitter_base_base,
 	FGBuildableAttachment_splitter_base_base_base,
-	FGBuildableAttachment_splitter_pre_update7,
 	FGBuildableAttachment_splitter_base_base_base_with_mDistributionTable,
+	FGBuildableAttachment_splitter_pre_update7,
 	FGBuildableAttachmentMerger,
 	FGBuildableAttachmentMerger_base,
 	FGBuildableAttachmentMerger_base_base,
