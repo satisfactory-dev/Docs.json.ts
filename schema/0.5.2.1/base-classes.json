@@ -2887,7 +2887,10 @@
 		"FGWeapon--Equip_RebarGun_Projectile_C": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectileFire--base"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectile--has--mAttachSocket"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectile--base"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectileFire--base--random"
@@ -2896,7 +2899,10 @@
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGWeaponProjectile--base"
 				},
 				{
-					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGWeaponProjectileFire--base"
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGWeaponProjectileFire--has--mMuteDryFire"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectile--base"
 				},
 				{
 					"$ref": "#/$defs/FGWeapon--base"
@@ -2906,7 +2912,10 @@
 		"FGWeapon--Equip_Rifle_C": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectileFire--base"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectile--has--mAttachSocket"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectile--base"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponInstantFire--base"

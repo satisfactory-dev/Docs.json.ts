@@ -2179,10 +2179,16 @@
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGNobeliskDetonator--base"
 				},
 				{
-					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGWeaponProjectile--base--base"
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGWeaponProjectile--has--mBlockSprintWhenFiring"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment--base"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGNobeliskDetonator--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGWeapon--base--base"
 				},
 				{
 					"$ref": "#/$defs/FGWeapon--base"
@@ -2610,7 +2616,6 @@
 		},
 		"FGWeapon--base": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGWeapon--base--base",
 			"required": [
 				"mAttachMagazineToPlayer",
 				"mMuzzleSocketName",
@@ -2644,8 +2649,41 @@
 			}
 		},
 		"FGWeapon--Equip_RebarGun_Projectile_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectile--has--mAttachSocket"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectileFire--has--mRandomReloadAnim"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment--has-mRandomStingerAnim"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGWeaponProjectile--has--mBlockSprintWhenFiring"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGWeaponProjectileFire--has--mMuteDryFire"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGWeapon--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGWeapon--base"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment"
+				},
+				{
+					"$ref": "#/$defs/FGWeapon--Equip_RebarGun_Projectile_C--version-specific"
+				}
+			]
+		},
+		"FGWeapon--Equip_RebarGun_Projectile_C--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGWeapon--Equip_RebarGun_Projectile_C--base",
 			"required": ["mRebarGunStingerID", "mRebarGunEquipID"],
 			"properties": {
 				"mRebarGunStingerID": {
@@ -2656,41 +2694,28 @@
 				}
 			}
 		},
-		"FGWeapon--Equip_RebarGun_Projectile_C--base": {
-			"allOf": [
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectileFire--base--base"
-				},
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectileFire--base--random--base"
-				},
-				{
-					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGWeaponProjectile--base--base"
-				},
-				{
-					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGWeaponProjectileFire--base--base"
-				},
-				{
-					"$ref": "#/$defs/FGWeapon--base"
-				},
-				{
-					"$ref": "#/$defs/FGEquipment"
-				}
-			]
-		},
 		"FGWeapon--Equip_Rifle_C": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectileFire--base--base"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectile--has--mAttachSocket"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectile--has--mAttachSocket"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponInstantFire--base--base--base"
 				},
 				{
-					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGWeaponProjectile--base--base"
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGWeaponProjectile--has--mBlockSprintWhenFiring"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment--base"
 				},
 				{
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGWeapon--Equip_Rifle_C--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGWeapon--base--base"
 				},
 				{
 					"$ref": "#/$defs/FGWeapon--base"

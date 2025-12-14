@@ -2796,16 +2796,18 @@
 		"FGWeaponProjectile--base": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGWeaponProjectile--base--base"
+					"$ref": "#/$defs/FGWeaponProjectile--has--mBlockSprintWhenFiring"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment--base"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectile--base"
 				}
 			]
 		},
-		"FGWeaponProjectile--base--base": {
+		"FGWeaponProjectile--has--mBlockSprintWhenFiring": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment--base",
 			"required": ["mBlockSprintWhenFiring"],
 			"properties": {
 				"mBlockSprintWhenFiring": {
@@ -2822,23 +2824,15 @@
 					"$ref": "#/$defs/FGWeaponProjectile"
 				},
 				{
-					"$ref": "#/$defs/FGWeaponProjectileFire--base"
-				}
-			]
-		},
-		"FGWeaponProjectileFire--base": {
-			"allOf": [
-				{
-					"$ref": "#/$defs/FGWeaponProjectileFire--base--base"
+					"$ref": "#/$defs/FGWeaponProjectileFire--has--mMuteDryFire"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectile--base"
 				}
 			]
 		},
-		"FGWeaponProjectileFire--base--base": {
+		"FGWeaponProjectileFire--has--mMuteDryFire": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment--base",
 			"required": ["mMuteDryFire"],
 			"properties": {
 				"mMuteDryFire": {

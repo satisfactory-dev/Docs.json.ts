@@ -44,7 +44,7 @@ import type {
 	FGVehicleDescriptor_powered as docs_json_ts_0_4_2_11_classes_base_FGVehicleDescriptor_powered,
 	FGVehicleDescriptor_with_inventory as docs_json_ts_0_4_2_11_classes_base_FGVehicleDescriptor_with_inventory,
 	FGWeaponProjectile_base as docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectile_base,
-	FGWeaponProjectileFire_base as docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectileFire_base,
+	FGWeaponProjectileFire_has_mMuteDryFire as docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectileFire_has_mMuteDryFire,
 } from './../../0.4.2.11/classes/Base.ts';
 
 import type {
@@ -147,7 +147,8 @@ import type {
 	FGPipeHyperStart_base_base as docs_json_ts_0_3_7_7_classes_base_FGPipeHyperStart_base_base,
 	FGResourceDescriptor_base as docs_json_ts_0_3_7_7_classes_base_FGResourceDescriptor_base,
 	FGWeaponInstantFire_base as docs_json_ts_0_3_7_7_classes_base_FGWeaponInstantFire_base,
-	FGWeaponProjectileFire_base as docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectileFire_base,
+	FGWeaponProjectile_base as docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_base,
+	FGWeaponProjectile_has_mAttachSocket as docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_has_mAttachSocket,
 	FGWeaponProjectileFire_base_random as docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectileFire_base_random,
 } from './../../0.3.7.7/classes/Base.ts';
 
@@ -826,9 +827,9 @@ type FGWeapon_base_base = {
 	mOnWeaponStateChanged: docs_json_ts_common_types_empty_object,
 };
 
-type FGWeapon_Equip_RebarGun_Projectile_C = docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectileFire_base & docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectileFire_base_random & docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectile_base & docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectileFire_base & FGWeapon_base;
+type FGWeapon_Equip_RebarGun_Projectile_C = docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_has_mAttachSocket & docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_base & docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectileFire_base_random & docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectile_base & docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectileFire_has_mMuteDryFire & FGWeapon_base;
 
-type FGWeapon_Equip_Rifle_C = docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectileFire_base & docs_json_ts_0_3_7_7_classes_base_FGWeaponInstantFire_base & docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectile_base & FGWeapon_base & FGWeapon_Equip_Rifle_C_base;
+type FGWeapon_Equip_Rifle_C = docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_has_mAttachSocket & docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_base & docs_json_ts_0_3_7_7_classes_base_FGWeaponInstantFire_base & docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectile_base & FGWeapon_base & FGWeapon_Equip_Rifle_C_base;
 
 type FGWeapon_Equip_Rifle_C_base = {
 	mArmAnimation: 'AE_Rifle',

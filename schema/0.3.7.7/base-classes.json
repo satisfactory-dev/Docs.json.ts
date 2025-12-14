@@ -4232,7 +4232,7 @@
 					"$ref": "#/$defs/FGEquipment--base--base"
 				},
 				{
-					"$ref": "#/$defs/FGEquipment--base--version-specific"
+					"$ref": "#/$defs/FGEquipment--has--mEquipmentSlot"
 				}
 			]
 		},
@@ -4321,7 +4321,7 @@
 				}
 			}
 		},
-		"FGEquipment--base--version-specific": {
+		"FGEquipment--has--mEquipmentSlot": {
 			"type": "object",
 			"required": ["mEquipmentSlot"],
 			"properties": {
@@ -5492,16 +5492,21 @@
 		"FGWeaponInstantFire--base": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGWeaponInstantFire--base--base"
+					"$ref": "#/$defs/FGWeaponProjectile--has--mAttachSocket"
+				},
+				{
+					"$ref": "#/$defs/FGWeaponInstantFire--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGWeaponInstantFire--has--mLockAngle"
 				},
 				{
 					"$ref": "#/$defs/FGWeaponProjectile--instant--base"
 				}
 			]
 		},
-		"FGWeaponInstantFire--base--base": {
+		"FGWeaponInstantFire--has--mLockAngle": {
 			"type": "object",
-			"$ref": "#/$defs/FGWeaponInstantFire--base--base--base",
 			"required": ["mLockAngle"],
 			"properties": {
 				"mLockAngle": {
@@ -5511,7 +5516,7 @@
 		},
 		"FGWeaponInstantFire--base--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGWeaponProjectile--instant--base--base",
+			"$ref": "#/$defs/FGWeaponProjectile--has--mAttachSocket",
 			"required": ["Fire", "mHasReloadedOnce", "mArmAnimation"],
 			"properties": {
 				"Fire": {
@@ -5539,16 +5544,18 @@
 		"FGWeaponProjectile--base": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGWeaponProjectile--base--base"
+					"$ref": "#/$defs/FGWeaponProjectile--base--base--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--base--base"
 				},
 				{
 					"$ref": "#/$defs/FGEquipment--base"
 				}
 			]
 		},
-		"FGWeaponProjectile--base--base": {
+		"FGWeaponProjectile--base--base--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment--base--base",
 			"required": [
 				"mReloadTime",
 				"mFireRate",
@@ -5607,16 +5614,15 @@
 		"FGWeaponProjectile--instant--base": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGWeaponProjectile--instant--base--base"
+					"$ref": "#/$defs/FGWeaponProjectile--has--mAttachSocket"
 				},
 				{
 					"$ref": "#/$defs/FGWeaponProjectile--base"
 				}
 			]
 		},
-		"FGWeaponProjectile--instant--base--base": {
+		"FGWeaponProjectile--has--mAttachSocket": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment--base--base",
 			"required": ["mAttachSocket"],
 			"properties": {
 				"mAttachSocket": {
@@ -5752,7 +5758,10 @@
 					"$ref": "#/$defs/FGWeaponProjectile"
 				},
 				{
-					"$ref": "#/$defs/FGWeaponProjectileFire--base"
+					"$ref": "#/$defs/FGWeaponProjectile--has--mAttachSocket"
+				},
+				{
+					"$ref": "#/$defs/FGWeaponProjectile--base"
 				},
 				{
 					"$ref": "#/$defs/FGWeaponProjectileFire--base--random"
@@ -5762,50 +5771,21 @@
 				}
 			]
 		},
-		"FGWeaponProjectileFire--base": {
-			"allOf": [
-				{
-					"$ref": "#/$defs/FGWeaponProjectileFire--base--base"
-				},
-				{
-					"$ref": "#/$defs/FGWeaponProjectile--base"
-				}
-			]
-		},
-		"FGWeaponProjectileFire--base--base": {
-			"type": "object",
-			"$ref": "#/$defs/FGEquipment--base",
-			"required": ["mAttachSocket"],
-			"properties": {
-				"mAttachSocket": {
-					"type": "string",
-					"const": "hand_rSocket"
-				}
-			}
-		},
 		"FGWeaponProjectileFire--base--random": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGWeaponProjectileFire--base--random--base"
+					"$ref": "#/$defs/FGWeaponProjectileFire--has--mRandomReloadAnim"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--has-mRandomStingerAnim"
 				},
 				{
 					"$ref": "#/$defs/FGWeaponProjectile--base"
 				}
 			]
 		},
-		"FGWeaponProjectileFire--base--random--base": {
-			"allOf": [
-				{
-					"$ref": "#/$defs/FGWeaponProjectileFire--base--random--base--base"
-				},
-				{
-					"$ref": "#/$defs/FGEquipment--has-mRandomStingerAnim"
-				}
-			]
-		},
-		"FGWeaponProjectileFire--base--random--base--base": {
+		"FGWeaponProjectileFire--has--mRandomReloadAnim": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment--base",
 			"required": ["mRandomReloadAnim"],
 			"properties": {
 				"mRandomReloadAnim": {
@@ -5815,7 +5795,6 @@
 		},
 		"FGWeaponProjectileFire--base--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGWeaponProjectile--base",
 			"required": ["mMuteDryFire", "mProjectileData", "mArmAnimation"],
 			"properties": {
 				"mMuteDryFire": {
