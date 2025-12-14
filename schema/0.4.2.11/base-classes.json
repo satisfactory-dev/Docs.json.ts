@@ -1033,23 +1033,15 @@
 					"$ref": "#/$defs/FGBuildable--occupied"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableMAM--base"
-				}
-			]
-		},
-		"FGBuildableMAM--base": {
-			"allOf": [
-				{
-					"$ref": "#/$defs/FGBuildableMAM--base--base"
+					"$ref": "#/$defs/FGBuildableMAM--version-specific"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable"
 				}
 			]
 		},
-		"FGBuildableMAM--base--base": {
+		"FGBuildableMAM--version-specific": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--base",
 			"required": ["mSignificanceRange", "mCurrentResearchState"],
 			"properties": {
 				"mSignificanceRange": {

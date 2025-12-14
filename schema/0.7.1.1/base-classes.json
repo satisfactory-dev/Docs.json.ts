@@ -142,7 +142,7 @@
 		"FGBuildableAttachmentMerger": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableAttachmentMerger--base--base--base--base"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableAttachmentMerger--pre-update7"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--base"
@@ -152,7 +152,7 @@
 		"FGBuildableAttachmentSplitter": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableAttachment--splitter--base--base--base--with-mCurrentOutputIndex"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableAttachment--splitter--pre-update7"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--base"

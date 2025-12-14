@@ -121,7 +121,6 @@
 		},
 		"FGBuildable--isFrame": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
 			"required": ["mIsFrame"],
 			"properties": {
 				"mIsFrame": {
@@ -716,6 +715,9 @@
 					"$ref": "#/$defs/FGBuildable--foundation--DisableAttachmentSnapOn"
 				},
 				{
+					"$ref": "#/$defs/FGBuildable--base"
+				},
+				{
 					"$ref": "#/$defs/FGBuildable--isFrame"
 				},
 				{
@@ -937,7 +939,7 @@
 					"$ref": "#/$defs/FGBuildable--occupied"
 				},
 				{
-					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableMAM--base--base"
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableMAM--version-specific"
 				}
 			]
 		},

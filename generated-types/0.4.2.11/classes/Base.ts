@@ -386,11 +386,9 @@ type FGBuildableLightSource_base = {
 	mPowerConsumption: docs_json_ts_common_types_decimal_string,
 };
 
-type FGBuildableMAM = FGBuildable_occupied & FGBuildableMAM_base;
+type FGBuildableMAM = FGBuildable_occupied & FGBuildableMAM_version_specific & docs_json_ts_0_3_7_7_classes_base_FGBuildable;
 
-type FGBuildableMAM_base = FGBuildableMAM_base_base & docs_json_ts_0_3_7_7_classes_base_FGBuildable;
-
-type FGBuildableMAM_base_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_base & {
+type FGBuildableMAM_version_specific = {
 	mSignificanceRange: docs_json_ts_common_types_decimal_string,
 	mCurrentResearchState: 'ERS_NotResearching',
 };
@@ -883,8 +881,7 @@ export type {
 	FGBuildableLightSource,
 	FGBuildableLightSource_base,
 	FGBuildableMAM,
-	FGBuildableMAM_base,
-	FGBuildableMAM_base_base,
+	FGBuildableMAM_version_specific,
 	FGBuildableManufacturer_base_blender,
 	FGBuildableManufacturer_base_blender_base,
 	FGBuildableManufacturer_base_blender_base_base,

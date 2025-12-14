@@ -20,7 +20,7 @@ import type {
 	FGBuildableGeneratorNuclear_base as docs_json_ts_0_4_2_11_classes_base_FGBuildableGeneratorNuclear_base,
 	FGBuildableLightsControlPanel_base as docs_json_ts_0_4_2_11_classes_base_FGBuildableLightsControlPanel_base,
 	FGBuildableLightSource_base as docs_json_ts_0_4_2_11_classes_base_FGBuildableLightSource_base,
-	FGBuildableMAM_base_base as docs_json_ts_0_4_2_11_classes_base_FGBuildableMAM_base_base,
+	FGBuildableMAM_version_specific as docs_json_ts_0_4_2_11_classes_base_FGBuildableMAM_version_specific,
 	FGBuildableManufacturer_base_blender_base as docs_json_ts_0_4_2_11_classes_base_FGBuildableManufacturer_base_blender_base,
 	FGBuildableManufacturer_base_constructor_base as docs_json_ts_0_4_2_11_classes_base_FGBuildableManufacturer_base_constructor_base,
 	FGBuildableManufacturer_Build_HadronCollider_C_base as docs_json_ts_0_4_2_11_classes_base_FGBuildableManufacturer_Build_HadronCollider_C_base,
@@ -180,7 +180,7 @@ type FGBuildable_is_wallish = {
 	mAngledVariants: null | docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list,
 };
 
-type FGBuildable_isFrame = FGBuildable_base & {
+type FGBuildable_isFrame = {
 	mIsFrame: docs_json_ts_common_types_bool_string,
 };
 
@@ -316,7 +316,7 @@ type FGBuildableFoundation_base = FGBuildableFoundation_base_base & {
 	mDisableSnapOn: docs_json_ts_common_types_empty_object | docs_json_ts_0_3_7_7_properties_mDisableSnapOn_front_bottom | docs_json_ts_0_5_2_1_properties_mDisableSnapOn_top | docs_json_ts_0_5_2_1_properties_mDisableSnapOn_bottom,
 };
 
-type FGBuildableFoundation_base_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_base & FGBuildable_foundation_DisableAttachmentSnapOn & FGBuildable_isFrame & FGBuildable_foundation_mDisableSnapOn;
+type FGBuildableFoundation_base_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_base & FGBuildable_foundation_DisableAttachmentSnapOn & FGBuildable_base & FGBuildable_isFrame & FGBuildable_foundation_mDisableSnapOn;
 
 type FGBuildableFrackingActivator = docs_json_ts_0_4_2_11_classes_base_FGBuildableFrackingActivator_base & docs_json_ts_0_4_2_11_classes_base_FGBuildable_powered_has_mAllowedResourceForms_with_resources_base & FGBuildable_powered_base & FGBuildable_base;
 
@@ -359,7 +359,7 @@ type FGBuildableLightSource_Build_StreetLight_C = FGBuildableLightSource & {
 	},
 };
 
-type FGBuildableMAM = FGBuildable_occupied & docs_json_ts_0_4_2_11_classes_base_FGBuildableMAM_base_base;
+type FGBuildableMAM = FGBuildable_occupied & docs_json_ts_0_4_2_11_classes_base_FGBuildableMAM_version_specific;
 
 type FGBuildableManufacturer_Build_AssemblerMk1_C = docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_base_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_base_IsPowered_base & FGBuildable_powered;
 

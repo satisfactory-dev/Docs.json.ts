@@ -336,7 +336,7 @@ type FGBuildable_base_version_specific = {
 	],
 };
 
-type FGBuildable_foundation_mDisableSnapOn = FGBuildable_base & {
+type FGBuildable_foundation_mDisableSnapOn = {
 	mDisableSnapOn: docs_json_ts_common_types_empty_object | docs_json_ts_0_3_7_7_properties_mDisableSnapOn_front_bottom | docs_json_ts_0_5_2_1_properties_mDisableSnapOn_top | docs_json_ts_0_5_2_1_properties_mDisableSnapOn_bottom | docs_json_ts_0_3_7_7_properties_mDisableSnapOn_top_bottom,
 };
 
@@ -348,7 +348,7 @@ type FGBuildable_powered_base = docs_json_ts_0_5_2_1_classes_base_FGBuildable_po
 
 type FGBuildable_tiered = docs_json_ts_0_5_2_1_classes_base_FGBuildable_tiered & FGBuildable_base;
 
-type FGBuildable_with_depth = FGBuildable_base & {
+type FGBuildable_with_depth = {
 	mDepth: docs_json_ts_common_types_decimal_string,
 };
 
@@ -390,11 +390,11 @@ type FGBuildableFactorySimpleProducer = docs_json_ts_0_5_2_1_classes_base_FGBuil
 
 type FGBuildableFloodlight = docs_json_ts_0_5_2_1_classes_base_FGBuildableFloodlight & FGBuildable_base;
 
-type FGBuildableFoundation = FGBuildableFoundation_base & {
-	mDisableAttachmentSnapOn: docs_json_ts_common_types_empty_object | docs_json_ts_0_6_1_5_properties_mDisableSnapOn_front_right | docs_json_ts_0_5_2_1_properties_mDisableSnapOn_top | docs_json_ts_0_5_2_1_properties_mDisableSnapOn_bottom,
-};
+type FGBuildableFoundation = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_base & docs_json_ts_0_5_2_1_classes_base_FGBuildable_isFrame & FGBuildable_foundation_mDisableSnapOn & docs_json_ts_0_5_2_1_classes_base_FGBuildable_with_elevation & docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_width_base & FGBuildable_with_depth & FGBuildableFoundation_version_specific & FGBuildable_base_pre_update8 & FGBuildable_base_version_specific & FGBuildable_base;
 
-type FGBuildableFoundation_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_base & docs_json_ts_0_5_2_1_classes_base_FGBuildable_isFrame & FGBuildable_foundation_mDisableSnapOn & docs_json_ts_0_5_2_1_classes_base_FGBuildable_with_elevation & docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_width_base & FGBuildable_with_depth;
+type FGBuildableFoundation_version_specific = {
+	mDisableAttachmentSnapOn: docs_json_ts_common_types_empty_object | docs_json_ts_0_3_7_7_properties_mDisableSnapOn_top_bottom | docs_json_ts_0_6_1_5_properties_mDisableSnapOn_front_right | docs_json_ts_0_5_2_1_properties_mDisableSnapOn_top | docs_json_ts_0_5_2_1_properties_mDisableSnapOn_bottom,
+};
 
 type FGBuildableFrackingActivator = docs_json_ts_0_4_2_11_classes_base_FGBuildableFrackingActivator_base & FGBuildableResourceExtractor_base_version_specific;
 
@@ -492,11 +492,11 @@ type FGBuildableRailroadStation = docs_json_ts_0_5_2_1_classes_base_FGBuildableR
 
 type FGBuildableRailroadTrack = docs_json_ts_0_5_2_1_classes_base_FGBuildableRailroadTrack & FGBuildable_base;
 
-type FGBuildableRamp = FGBuildableRamp_base & {
+type FGBuildableRamp = FGBuildableFoundation & docs_json_ts_0_5_2_1_classes_base_FGBuildableRamp_base;
+
+type FGBuildableRamp_version_specific = {
 	mDisableAttachmentSnapOn: docs_json_ts_common_types_empty_object | docs_json_ts_0_5_2_1_properties_mDisableSnapOn_top | docs_json_ts_0_3_7_7_properties_mDisableSnapOn_top_bottom | docs_json_ts_0_5_2_1_properties_mDisableSnapOn_bottom,
 };
-
-type FGBuildableRamp_base = FGBuildableFoundation_base & docs_json_ts_0_5_2_1_classes_base_FGBuildableRamp_base & FGBuildable_base;
 
 type FGBuildableResourceExtractor_base = FGBuildableResourceExtractor_base_version_specific & FGBuildableResourceExtractor_base_base;
 
@@ -822,7 +822,7 @@ export type {
 	FGBuildableFactorySimpleProducer,
 	FGBuildableFloodlight,
 	FGBuildableFoundation,
-	FGBuildableFoundation_base,
+	FGBuildableFoundation_version_specific,
 	FGBuildableFrackingActivator,
 	FGBuildableFrackingExtractor,
 	FGBuildableGeneratorFuel_biomass,
@@ -867,7 +867,7 @@ export type {
 	FGBuildableRailroadStation,
 	FGBuildableRailroadTrack,
 	FGBuildableRamp,
-	FGBuildableRamp_base,
+	FGBuildableRamp_version_specific,
 	FGBuildableResourceExtractor_base,
 	FGBuildableResourceExtractor_base_base,
 	FGBuildableResourceExtractor_base_untimed,

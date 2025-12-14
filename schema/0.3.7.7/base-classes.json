@@ -755,7 +755,7 @@
 		"FGBuildableAttachment--splitter--base--base--base": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGBuildableAttachment--splitter--base--base--base--with-mCurrentOutputIndex"
+					"$ref": "#/$defs/FGBuildableAttachment--splitter--pre-update7"
 				},
 				{
 					"$ref": "#/$defs/FGBuildableAttachment--splitter--base--base--base--with-mDistributionTable"
@@ -765,9 +765,8 @@
 				}
 			]
 		},
-		"FGBuildableAttachment--splitter--base--base--base--with-mCurrentOutputIndex": {
+		"FGBuildableAttachment--splitter--pre-update7": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
 			"required": ["mCurrentOutputIndex"],
 			"properties": {
 				"mCurrentOutputIndex": {
@@ -819,16 +818,15 @@
 		"FGBuildableAttachmentMerger--base--base--base": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGBuildableAttachmentMerger--base--base--base--base"
+					"$ref": "#/$defs/FGBuildableAttachmentMerger--pre-update7"
 				},
 				{
 					"$ref": "#/$defs/FGBuildableAttachment--base--base--base"
 				}
 			]
 		},
-		"FGBuildableAttachmentMerger--base--base--base--base": {
+		"FGBuildableAttachmentMerger--pre-update7": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
 			"required": ["mCurrentInputIndex"],
 			"properties": {
 				"mCurrentInputIndex": {

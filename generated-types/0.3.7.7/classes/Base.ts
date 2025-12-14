@@ -255,9 +255,9 @@ type FGBuildableAttachment_splitter_base = FGBuildableAttachment_splitter_base_b
 
 type FGBuildableAttachment_splitter_base_base = FGBuildableAttachment_splitter_base_base_base & FGBuildableAttachment_base_base;
 
-type FGBuildableAttachment_splitter_base_base_base = FGBuildableAttachment_splitter_base_base_base_with_mCurrentOutputIndex & FGBuildableAttachment_splitter_base_base_base_with_mDistributionTable & FGBuildableAttachment_base_base_base;
+type FGBuildableAttachment_splitter_base_base_base = FGBuildableAttachment_splitter_pre_update7 & FGBuildableAttachment_splitter_base_base_base_with_mDistributionTable & FGBuildableAttachment_base_base_base;
 
-type FGBuildableAttachment_splitter_base_base_base_with_mCurrentOutputIndex = FGBuildable_base & {
+type FGBuildableAttachment_splitter_pre_update7 = {
 	mCurrentOutputIndex: docs_json_ts_common_types_integer_string_signed,
 };
 
@@ -271,9 +271,9 @@ type FGBuildableAttachmentMerger_base = FGBuildableAttachmentMerger_base_base & 
 
 type FGBuildableAttachmentMerger_base_base = FGBuildableAttachmentMerger_base_base_base & FGBuildableAttachment_base_base;
 
-type FGBuildableAttachmentMerger_base_base_base = FGBuildableAttachmentMerger_base_base_base_base & FGBuildableAttachment_base_base_base;
+type FGBuildableAttachmentMerger_base_base_base = FGBuildableAttachmentMerger_pre_update7 & FGBuildableAttachment_base_base_base;
 
-type FGBuildableAttachmentMerger_base_base_base_base = FGBuildable_base & {
+type FGBuildableAttachmentMerger_pre_update7 = {
 	mCurrentInputIndex: docs_json_ts_common_types_integer_string_signed,
 };
 
@@ -1610,13 +1610,13 @@ export type {
 	FGBuildableAttachment_splitter_base,
 	FGBuildableAttachment_splitter_base_base,
 	FGBuildableAttachment_splitter_base_base_base,
-	FGBuildableAttachment_splitter_base_base_base_with_mCurrentOutputIndex,
+	FGBuildableAttachment_splitter_pre_update7,
 	FGBuildableAttachment_splitter_base_base_base_with_mDistributionTable,
 	FGBuildableAttachmentMerger,
 	FGBuildableAttachmentMerger_base,
 	FGBuildableAttachmentMerger_base_base,
 	FGBuildableAttachmentMerger_base_base_base,
-	FGBuildableAttachmentMerger_base_base_base_base,
+	FGBuildableAttachmentMerger_pre_update7,
 	FGBuildableConveyorBelt_base,
 	FGBuildableConveyorBelt_base_base,
 	FGBuildableConveyorBelt_spline,

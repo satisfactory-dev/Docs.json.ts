@@ -552,7 +552,6 @@
 		},
 		"FGBuildable--foundation--mDisableSnapOn": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
 			"required": ["mDisableSnapOn"],
 			"properties": {
 				"mDisableSnapOn": {
@@ -621,7 +620,6 @@
 		},
 		"FGBuildable--with-depth": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
 			"required": ["mDepth"],
 			"properties": {
 				"mDepth": {
@@ -815,29 +813,6 @@
 			]
 		},
 		"FGBuildableFoundation": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildableFoundation--base",
-			"required": ["mDisableAttachmentSnapOn"],
-			"properties": {
-				"mDisableAttachmentSnapOn": {
-					"oneOf": [
-						{
-							"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-						},
-						{
-							"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/mDisableSnapOn--front--right"
-						},
-						{
-							"$ref": "docs.json.ts--0.5.2.1--properties#/$defs/mDisableSnapOn--top"
-						},
-						{
-							"$ref": "docs.json.ts--0.5.2.1--properties#/$defs/mDisableSnapOn--bottom"
-						}
-					]
-				}
-			}
-		},
-		"FGBuildableFoundation--base": {
 			"allOf": [
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-height--base"
@@ -856,8 +831,45 @@
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--with-depth"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableFoundation--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base--pre-update8"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
 				}
 			]
+		},
+		"FGBuildableFoundation--version-specific": {
+			"type": "object",
+			"required": ["mDisableAttachmentSnapOn"],
+			"properties": {
+				"mDisableAttachmentSnapOn": {
+					"oneOf": [
+						{
+							"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+						},
+						{
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mDisableSnapOn--top--bottom"
+						},
+						{
+							"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/mDisableSnapOn--front--right"
+						},
+						{
+							"$ref": "docs.json.ts--0.5.2.1--properties#/$defs/mDisableSnapOn--top"
+						},
+						{
+							"$ref": "docs.json.ts--0.5.2.1--properties#/$defs/mDisableSnapOn--bottom"
+						}
+					]
+				}
+			}
 		},
 		"FGBuildableFrackingActivator": {
 			"allOf": [
@@ -1315,8 +1327,17 @@
 			]
 		},
 		"FGBuildableRamp": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableFoundation"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableRamp--base"
+				}
+			]
+		},
+		"FGBuildableRamp--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableRamp--base",
 			"required": ["mDisableAttachmentSnapOn"],
 			"properties": {
 				"mDisableAttachmentSnapOn": {
@@ -1336,19 +1357,6 @@
 					]
 				}
 			}
-		},
-		"FGBuildableRamp--base": {
-			"allOf": [
-				{
-					"$ref": "#/$defs/FGBuildableFoundation--base"
-				},
-				{
-					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableRamp--base"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable--base"
-				}
-			]
 		},
 		"FGBuildableResourceExtractor--base": {
 			"allOf": [
