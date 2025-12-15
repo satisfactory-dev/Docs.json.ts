@@ -63,6 +63,10 @@ prepare--update7: prepare--update6
 	@echo 'prepare 0.7.1.1'
 	@node ./prepare-0.7.1.1.ts
 
+prepare--update8: prepare--update7
+	@echo 'prepare 0.8.3.3'
+	@node ./prepare-0.8.3.3.ts
+
 generate--clean:
 	@echo 'cleaning ./generated-types/'
 	@git clean -fxd ./generated-types/
@@ -71,7 +75,9 @@ generate--wrap-up:
 	@echo 'fixing generated types'
 	@./node_modules/.bin/eslint --fix ./generated-types/
 
-generate: generate--clean generate--update3 generate--update4 generate--update5 generate--update6 generate--update7 generate--wrap-up
+generate--early-access: generate--update3 generate--update4 generate--update5 generate--update6 generate--update7 generate--update8
+
+generate: generate--clean generate--early-access generate--wrap-up
 
 generate--update3: prepare--update3
 	@echo 'running generator'
@@ -92,3 +98,7 @@ generate--update6: prepare--update6
 generate--update7: prepare--update7
 	@echo 'running generator'
 	@node ./generate-update7.ts
+
+generate--update8: prepare--update8
+	@echo 'running generator'
+	@node ./generate-update8.ts

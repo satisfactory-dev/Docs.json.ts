@@ -178,11 +178,14 @@ export function Object_generate_typescript_data(
 			property_name
 		];
 
-		if (!object_has_property_that_equals(
-			property_schema,
-			'type',
-			'string',
-		)) {
+		if (
+			!object_has_property_that_equals(
+				property_schema,
+				'type',
+				'string',
+			)
+			|| object_has_property(property_schema, 'typed_string')
+		) {
 			property_schema = Type.maybe_add_$defs(
 				schema,
 				property_schema,

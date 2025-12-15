@@ -1,0 +1,230 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "docs.json.ts--0.8.3.3--properties",
+	"$defs": {
+		"mComponentNameToFirstPersonMaterials--item": {
+			"type": "string",
+			"typed_string": {
+				"type": "array",
+				"minItems": 2,
+				"maxItems": 2,
+				"items": false,
+				"prefixItems": [
+					{
+						"type": "string",
+						"minLength": 1
+					},
+					{
+						"type": "string",
+						"typed_string": {
+							"type": "object",
+							"additionalProperties": false,
+							"required": ["FirstPersonMaterials"],
+							"properties": {
+								"FirstPersonMaterials": {
+									"type": "string",
+									"typed_string": {
+										"type": "array",
+										"minItems": 1,
+										"uniqueItems": true,
+										"items": {
+											"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/MaterialInstanceConstant--quoted"
+										}
+									}
+								}
+							}
+						}
+					}
+				]
+			}
+		},
+		"mDamageTypes": {
+			"type": "string",
+			"typed_string": {
+				"type": "array",
+				"minItems": 1,
+				"uniqueItems": true,
+				"items": {
+					"$ref": "#/$defs/mDamageTypes--item"
+				}
+			}
+		},
+		"mDamageTypes--item": {
+			"type": "string",
+			"templated_string": [
+				"/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_",
+				{
+					"type": "string",
+					"minLength": 1
+				},
+				"DamageType_",
+				{
+					"type": "string",
+					"minLength": 1
+				},
+				"_C'\"/Game/FactoryGame/",
+				["Equipment", "Resource"],
+				"/",
+				{
+					"type": "string",
+					"minLength": 1
+				},
+				["/Desc_", "/Equip_"],
+				{
+					"type": "string",
+					"minLength": 1
+				},
+				"_C:BP_",
+				{
+					"type": "string",
+					"minLength": 1
+				},
+				"DamageType_",
+				{
+					"type": "string",
+					"minLength": 1
+				},
+				"_C_",
+				["0", "1"],
+				"\"'"
+			]
+		},
+		"mUnlocks--item": {
+			"oneOf": [
+				{
+					"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/mUnlocks--item--mTapeUnlocks"
+				},
+				{
+					"$ref": "#/$defs/mUnlocks--item--mScannableObjects"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mRecipes"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mNumInventorySlotsToUnlock"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/mUnlocks--item--mResourcePairsToAddToScanner"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--properties#/$defs/mUnlocks--item--mEmotes"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mSchematics"
+				},
+				{
+					"type": "object",
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--base",
+					"unevaluatedProperties": false
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/mUnlocks--item--mNumArmEquipmentSlotsToUnlock"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mItemsToGive"
+				}
+			]
+		},
+		"mUnlocks--item--mScannableObjects": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--base",
+			"unevaluatedProperties": false,
+			"required": ["mScannableObjects"],
+			"properties": {
+				"mScannableObjects": {
+					"type": "string",
+					"typed_string": {
+						"type": "array",
+						"minItems": 1,
+						"uniqueItems": true,
+						"items": {
+							"type": "string",
+							"typed_string": {
+								"type": "object",
+								"required": [
+									"ItemDescriptor",
+									"ActorsAllowedToScan"
+								],
+								"properties": {
+									"ItemDescriptor": {
+										"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/BlueprintGeneratedClass--quoted"
+									},
+									"ActorsAllowedToScan": {
+										"type": "string",
+										"typed_string": {
+											"type": "array",
+											"minItems": 1,
+											"uniqueItems": true,
+											"items": {
+												"$ref": "#/$defs/Class--quoted"
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"CameraAnimationSequence--quoted": {
+			"type": "string",
+			"DocsDotJson_PrefixedString": {
+				"prefix": "CameraAnimationSequence",
+				"mode": "quoted",
+				"system_prefix": "TemplateSequence",
+				"value": null
+			}
+		},
+		"Class--quoted": {
+			"type": "string",
+			"templated_string": [
+				"/Script/CoreUObject.Class'\"/Script/FactoryGame.",
+				{
+					"type": "string",
+					"minLength": 1
+				},
+				"\"'"
+			]
+		},
+		"DocsDotJson_AkAudioEvent_quoted--list": {
+			"type": "string",
+			"typed_string": {
+				"type": "array",
+				"minItems": 1,
+				"uniqueItems": true,
+				"items": {
+					"$ref": "#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
+				}
+			}
+		},
+		"DocsDotJson_AkAudioEvent_quoted--list--item": {
+			"type": "string",
+			"DocsDotJson_PrefixedString": {
+				"prefix": "AkAudioEvent",
+				"first_path": "WwiseAudio",
+				"mode": "quoted",
+				"system_prefix": "AkAudio",
+				"value": null
+			}
+		},
+		"FGRailroadTrackConnectionComponent--quoted": {
+			"type": "string",
+			"DocsDotJson_PrefixedString": {
+				"prefix": "FGRailroadTrackConnectionComponent",
+				"mode": "quoted",
+				"system_prefix": "FactoryGame",
+				"value": null
+			}
+		},
+		"FGTrainPlatformConnection--quoted": {
+			"type": "string",
+			"DocsDotJson_PrefixedString": {
+				"prefix": "FGTrainPlatformConnection",
+				"mode": "quoted",
+				"system_prefix": "FactoryGame",
+				"value": null
+			}
+		}
+	}
+}
