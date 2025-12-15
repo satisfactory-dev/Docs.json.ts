@@ -1345,7 +1345,6 @@
 		},
 		"FGBuildableRadarTower--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
 			"required": ["mMapText", "mRevealRadius", "mScannableDescriptors"],
 			"properties": {
 				"mMapText": {
@@ -2153,8 +2152,20 @@
 			]
 		},
 		"FGJumpingStilts": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGJumpingStilts--base"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment"
+				},
+				{
+					"$ref": "#/$defs/FGJumpingStilts--version-specific"
+				}
+			]
+		},
+		"FGJumpingStilts--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGJumpingStilts--base",
 			"required": ["mEquipmentSlot"],
 			"properties": {
 				"mEquipmentSlot": {
@@ -2162,16 +2173,6 @@
 					"const": "ES_LEGS"
 				}
 			}
-		},
-		"FGJumpingStilts--base": {
-			"allOf": [
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGJumpingStilts--base"
-				},
-				{
-					"$ref": "#/$defs/FGEquipment"
-				}
-			]
 		},
 		"FGNobeliskDetonator": {
 			"allOf": [

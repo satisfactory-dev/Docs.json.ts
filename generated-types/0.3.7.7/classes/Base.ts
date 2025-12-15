@@ -1199,7 +1199,9 @@ type FGGasMask_base = {
 	mArmAnimation: 'AE_None',
 };
 
-type FGGolfCartDispenser = FGEquipment_dispenser & {
+type FGGolfCartDispenser = FGEquipment_dispenser & FGGolfCartDispenser_has_mArmAnimation;
+
+type FGGolfCartDispenser_has_mArmAnimation = {
 	mArmAnimation: 'AE_Generic2Hand',
 };
 
@@ -1248,7 +1250,7 @@ type FGJetPack_version_specific = {
 
 type FGJumpingStilts = FGJumpingStilts_base & FGEquipment;
 
-type FGJumpingStilts_base = FGEquipment_base_base & {
+type FGJumpingStilts_base = {
 	mSprintSpeedFactor: docs_json_ts_common_types_decimal_string,
 	mJumpSpeedFactor: docs_json_ts_common_types_decimal_string,
 	mAttachSocket: 'jumpingStilt_lSocket',
@@ -1311,11 +1313,14 @@ type FGObjectScanner_version_specific = {
 	mUpdateClosestObjectTime: docs_json_ts_common_types_decimal_string,
 };
 
-type FGParachute = FGEquipment & FGParachute_base;
+type FGParachute = FGEquipment & FGParachute_has_mIsDeployed & FGParachute_has_mTerminalVelocityZ;
 
-type FGParachute_base = FGEquipment_base & {
-	mTerminalVelocityZ: docs_json_ts_common_types_decimal_string,
+type FGParachute_has_mIsDeployed = {
 	mIsDeployed: docs_json_ts_common_types_bool_string,
+};
+
+type FGParachute_has_mTerminalVelocityZ = {
+	mTerminalVelocityZ: docs_json_ts_common_types_decimal_string,
 };
 
 type FGPipeHyperStart = FGPipeHyperStart_base & FGBuildable_pole_with_length_and_power;
@@ -1852,6 +1857,7 @@ export type {
 	FGGasMask,
 	FGGasMask_base,
 	FGGolfCartDispenser,
+	FGGolfCartDispenser_has_mArmAnimation,
 	FGInstructive,
 	FGItemDescriptorNuclearFuel,
 	FGItemDescriptorNuclearFuel_base,
@@ -1869,7 +1875,8 @@ export type {
 	FGObjectScanner_pre_update8,
 	FGObjectScanner_version_specific,
 	FGParachute,
-	FGParachute_base,
+	FGParachute_has_mIsDeployed,
+	FGParachute_has_mTerminalVelocityZ,
 	FGPipeHyperStart,
 	FGPipeHyperStart_base,
 	FGPipeHyperStart_base_base,

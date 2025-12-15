@@ -494,7 +494,7 @@ type FGBuildablePowerStorage = docs_json_ts_0_5_2_1_classes_base_FGBuildablePowe
 
 type FGBuildableRadarTower = FGBuildable_powered & FGBuildableRadarTower_base;
 
-type FGBuildableRadarTower_base = FGBuildable_base & {
+type FGBuildableRadarTower_base = {
 	mMapText: 'Radar Tower',
 	mRevealRadius: docs_json_ts_common_types_decimal_string,
 	mScannableDescriptors: docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list,
@@ -668,11 +668,11 @@ type FGJetPack = FGJetPack_base & {
 
 type FGJetPack_base = docs_json_ts_0_3_7_7_classes_base_FGJetPack_base_base & FGEquipment_noisy;
 
-type FGJumpingStilts = FGJumpingStilts_base & {
+type FGJumpingStilts = docs_json_ts_0_3_7_7_classes_base_FGJumpingStilts_base & FGEquipment & FGJumpingStilts_version_specific;
+
+type FGJumpingStilts_version_specific = {
 	mEquipmentSlot: 'ES_LEGS',
 };
-
-type FGJumpingStilts_base = docs_json_ts_0_3_7_7_classes_base_FGJumpingStilts_base & FGEquipment;
 
 type FGNobeliskDetonator = docs_json_ts_0_5_2_1_classes_base_FGNobeliskDetonator_base & docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectile_has_mBlockSprintWhenFiring & docs_json_ts_0_3_7_7_classes_base_FGEquipment_base & docs_json_ts_0_3_7_7_classes_base_FGNobeliskDetonator_base & docs_json_ts_0_5_2_1_classes_base_FGWeapon_base_base & FGWeapon_base & FGEquipment;
 
@@ -940,7 +940,7 @@ export type {
 	FGJetPack,
 	FGJetPack_base,
 	FGJumpingStilts,
-	FGJumpingStilts_base,
+	FGJumpingStilts_version_specific,
 	FGNobeliskDetonator,
 	FGObjectScanner,
 	FGObjectScanner_version_specific,

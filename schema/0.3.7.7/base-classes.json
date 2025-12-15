@@ -4572,8 +4572,17 @@
 			}
 		},
 		"FGGolfCartDispenser": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGEquipment--dispenser"
+				},
+				{
+					"$ref": "#/$defs/FGGolfCartDispenser--has--mArmAnimation"
+				}
+			]
+		},
+		"FGGolfCartDispenser--has--mArmAnimation": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment--dispenser",
 			"required": ["mArmAnimation"],
 			"properties": {
 				"mArmAnimation": {
@@ -4755,7 +4764,6 @@
 		},
 		"FGJumpingStilts--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment--base--base",
 			"required": [
 				"mSprintSpeedFactor",
 				"mJumpSpeedFactor",
@@ -4923,20 +4931,28 @@
 					"$ref": "#/$defs/FGEquipment"
 				},
 				{
-					"$ref": "#/$defs/FGParachute--base"
+					"$ref": "#/$defs/FGParachute--has--mIsDeployed"
+				},
+				{
+					"$ref": "#/$defs/FGParachute--has--mTerminalVelocityZ"
 				}
 			]
 		},
-		"FGParachute--base": {
+		"FGParachute--has--mIsDeployed": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment--base",
-			"required": ["mTerminalVelocityZ", "mIsDeployed"],
+			"required": ["mIsDeployed"],
+			"properties": {
+				"mIsDeployed": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
+		},
+		"FGParachute--has--mTerminalVelocityZ": {
+			"type": "object",
+			"required": ["mTerminalVelocityZ"],
 			"properties": {
 				"mTerminalVelocityZ": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mIsDeployed": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				}
 			}
 		},

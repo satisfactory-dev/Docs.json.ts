@@ -852,9 +852,8 @@
 				}
 			]
 		},
-		"FGBuildableLightsControlPanel": {
+		"FGBuildableLightsControlPanel--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableLightsControlPanel--base",
 			"required": ["OnLightControlPanelStateChanged"],
 			"properties": {
 				"OnLightControlPanelStateChanged": {
@@ -862,7 +861,7 @@
 				}
 			}
 		},
-		"FGBuildableLightsControlPanel--base": {
+		"FGBuildableLightsControlPanel": {
 			"allOf": [
 				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableLightsControlPanel--base"
@@ -872,6 +871,9 @@
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableLightsControlPanel--version-specific"
 				}
 			]
 		},
@@ -888,6 +890,9 @@
 				},
 				{
 					"$ref": "#/$defs/FGBuildableLightSource--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
 				}
 			]
 		},
@@ -901,8 +906,17 @@
 			}
 		},
 		"FGBuildableLightSource--Build_StreetLight_C": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildableLightSource"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableLightSource--Build_StreetLight_C--version-specific"
+				}
+			]
+		},
+		"FGBuildableLightSource--Build_StreetLight_C--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableLightSource",
 			"required": ["newCustomizationData"],
 			"properties": {
 				"newCustomizationData": {
@@ -1141,8 +1155,20 @@
 			}
 		},
 		"FGBuildablePassthrough": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildablePassthrough--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildablePassthrough--pre-update8"
+				}
+			]
+		},
+		"FGBuildablePassthrough--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
 			"required": [
 				"mSnappedBuildingThickness",
 				"mMidMeshLength",
@@ -1151,8 +1177,7 @@
 				"mMidMeshRotation",
 				"mEndCapTranslation",
 				"mClearanceHeightMin",
-				"mClearanceThickness",
-				"mUseSoftClearance"
+				"mClearanceThickness"
 			],
 			"properties": {
 				"mSnappedBuildingThickness": {
@@ -1178,7 +1203,13 @@
 				},
 				"mClearanceThickness": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
+				}
+			}
+		},
+		"FGBuildablePassthrough--pre-update8": {
+			"type": "object",
+			"required": ["mUseSoftClearance"],
+			"properties": {
 				"mUseSoftClearance": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				}
@@ -1644,17 +1675,6 @@
 			]
 		},
 		"FGBuildableStair": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildableStair--base",
-			"required": ["mStairDirection"],
-			"properties": {
-				"mStairDirection": {
-					"type": "string",
-					"enum": ["EBSD_Left", "EBSD_Right"]
-				}
-			}
-		},
-		"FGBuildableStair--base": {
 			"allOf": [
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-size--base"
@@ -1664,8 +1684,21 @@
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableStair--has--mStairDirection"
 				}
 			]
+		},
+		"FGBuildableStair--has--mStairDirection": {
+			"type": "object",
+			"required": ["mStairDirection"],
+			"properties": {
+				"mStairDirection": {
+					"type": "string",
+					"enum": ["EBSD_Left", "EBSD_Right"]
+				}
+			}
 		},
 		"FGBuildableStorage": {
 			"allOf": [
@@ -1853,8 +1886,17 @@
 			]
 		},
 		"FGBuildableWidgetSign": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableWidgetSign--base"
+				}
+			]
+		},
+		"FGBuildableWidgetSign--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
 			"required": [
 				"mGainSignificanceDistance",
 				"mTextElementToDataMap",
@@ -2013,8 +2055,17 @@
 			]
 		},
 		"FGGolfCartDispenser": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGGolfCartDispenser"
+				},
+				{
+					"$ref": "#/$defs/FGGolfCartDispenser--version-specific"
+				}
+			]
+		},
+		"FGGolfCartDispenser--version-specific": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGGolfCartDispenser",
 			"required": [
 				"mMaxSpawnDistance",
 				"mSpawningClearance",

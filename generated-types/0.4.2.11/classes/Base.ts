@@ -92,7 +92,8 @@ import type {
 	FGEquipment_base_base as docs_json_ts_0_3_7_7_classes_base_FGEquipment_base_base,
 	FGItemDescriptorNuclearFuel_base as docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_base,
 	FGNobeliskDetonator as docs_json_ts_0_3_7_7_classes_base_FGNobeliskDetonator,
-	FGParachute_base as docs_json_ts_0_3_7_7_classes_base_FGParachute_base,
+	FGParachute_has_mIsDeployed as docs_json_ts_0_3_7_7_classes_base_FGParachute_has_mIsDeployed,
+	FGParachute_has_mTerminalVelocityZ as docs_json_ts_0_3_7_7_classes_base_FGParachute_has_mTerminalVelocityZ,
 	FGPipeHyperStart_base as docs_json_ts_0_3_7_7_classes_base_FGPipeHyperStart_base,
 	FGPortableMinerDispenser as docs_json_ts_0_3_7_7_classes_base_FGPortableMinerDispenser,
 	FGRecipe_base as docs_json_ts_0_3_7_7_classes_base_FGRecipe_base,
@@ -165,7 +166,7 @@ type FGBuildable_docking_station_base = docs_json_ts_0_3_7_7_classes_base_FGBuil
 
 type FGBuildable_light_related_thing = FGBuildable_light_related_thing_base & FGBuildable;
 
-type FGBuildable_light_related_thing_base = FGBuildable_base & {
+type FGBuildable_light_related_thing_base = {
 	mIsEnabled: docs_json_ts_common_types_bool_string,
 	mLightControlData: {
 		Intensity: docs_json_ts_common_types_decimal_string,
@@ -236,7 +237,7 @@ type FGBuildableAttachmentMerger = FGBuildableAttachment & docs_json_ts_0_3_7_7_
 
 type FGBuildableCircuitSwitch = FGBuildableCircuitSwitch_base & FGBuildable;
 
-type FGBuildableCircuitSwitch_base = FGBuildable_base & {
+type FGBuildableCircuitSwitch_base = {
 	mTextRenderers: '',
 	bIsSignificant: docs_json_ts_common_types_bool_string,
 	mMaxCharacters: docs_json_ts_common_types_integer_string,
@@ -372,7 +373,7 @@ type FGBuildableLadder = FGBuildable & docs_json_ts_0_3_7_7_classes_base_FGBuild
 
 type FGBuildableLightsControlPanel = FGBuildableLightsControlPanel_base & FGBuildable_light_related_thing;
 
-type FGBuildableLightsControlPanel_base = FGBuildable_light_related_thing_base & {
+type FGBuildableLightsControlPanel_base = {
 	mOnControlledBuildablesChanged: docs_json_ts_common_types_empty_object,
 	mControlledBuildables: '',
 	mIsBridgeConnected: docs_json_ts_common_types_bool_string,
@@ -623,7 +624,9 @@ type FGEquipment_version_specific = {
 	mAttachSocket: 'None' | 'hand_rSocket' | 'hand_lSocket' | 'jumpingStilt_lSocket' | 'helmetSocket' | 'root',
 };
 
-type FGEquipmentZipline = FGEquipment & {
+type FGEquipmentZipline = FGEquipment & FGEquipmentZipline_base;
+
+type FGEquipmentZipline_base = {
 	mShouldPlayDeactivateSound: docs_json_ts_common_types_bool_string,
 	mZiplineJumpLaunchVelocity: docs_json_ts_common_types_decimal_string,
 	mMaxZiplineAngle: docs_json_ts_common_types_decimal_string,
@@ -690,7 +693,7 @@ type FGItemDescriptorNuclearFuel_base = {
 
 type FGNobeliskDetonator = FGWeaponProjectile & docs_json_ts_0_3_7_7_classes_base_FGNobeliskDetonator;
 
-type FGParachute = FGEquipment & docs_json_ts_0_3_7_7_classes_base_FGParachute_base;
+type FGParachute = FGEquipment & docs_json_ts_0_3_7_7_classes_base_FGParachute_has_mIsDeployed & docs_json_ts_0_3_7_7_classes_base_FGParachute_has_mTerminalVelocityZ;
 
 type FGPipeHyperStart = docs_json_ts_0_3_7_7_classes_base_FGPipeHyperStart_base & FGBuildable_pole_with_length_and_power;
 
@@ -957,6 +960,7 @@ export type {
 	FGEquipment_base,
 	FGEquipment_version_specific,
 	FGEquipmentZipline,
+	FGEquipmentZipline_base,
 	FGHoverPack,
 	FGHoverPack_base,
 	FGHoverPack_version_specific,

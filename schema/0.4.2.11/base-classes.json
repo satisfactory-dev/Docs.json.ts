@@ -99,7 +99,6 @@
 		},
 		"FGBuildable--light-related-thing--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
 			"required": ["mIsEnabled", "mLightControlData"],
 			"properties": {
 				"mIsEnabled": {
@@ -404,7 +403,6 @@
 		},
 		"FGBuildableCircuitSwitch--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base",
 			"required": [
 				"mTextRenderers",
 				"bIsSignificant",
@@ -978,7 +976,6 @@
 		},
 		"FGBuildableLightsControlPanel--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--light-related-thing--base",
 			"required": [
 				"mOnControlledBuildablesChanged",
 				"mControlledBuildables",
@@ -2103,8 +2100,17 @@
 			}
 		},
 		"FGEquipmentZipline": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGEquipment"
+				},
+				{
+					"$ref": "#/$defs/FGEquipmentZipline--base"
+				}
+			]
+		},
+		"FGEquipmentZipline--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGEquipment",
 			"required": [
 				"mShouldPlayDeactivateSound",
 				"mZiplineJumpLaunchVelocity",
@@ -2372,7 +2378,10 @@
 					"$ref": "#/$defs/FGEquipment"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGParachute--base"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGParachute--has--mIsDeployed"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGParachute--has--mTerminalVelocityZ"
 				}
 			]
 		},

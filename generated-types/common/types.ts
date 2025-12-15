@@ -41,6 +41,11 @@ type XY_decimal_string = {
 	Y: decimal_string_signed,
 };
 
+type XY_integer_string = {
+	X: integer_string,
+	Y: integer_string,
+};
+
 type XYZ_decimal_string = {
 	X: decimal_string_signed,
 	Y: decimal_string_signed,
@@ -84,6 +89,7 @@ export type {
 	PitchYawRoll_decimal_string_signed,
 	RGBA,
 	XY_decimal_string,
+	XY_integer_string,
 	XYZ_decimal_string,
 	XYZ_decimal_string_list,
 	XYZ_integer_string,

@@ -339,19 +339,21 @@ type FGBuildableJumppad = docs_json_ts_0_3_7_7_classes_base_FGBuildableJumppad_b
 
 type FGBuildableLadder = FGBuildable_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableLadder_base;
 
-type FGBuildableLightsControlPanel = FGBuildableLightsControlPanel_base & {
+type FGBuildableLightsControlPanel_version_specific = {
 	OnLightControlPanelStateChanged: docs_json_ts_common_types_empty_object,
 };
 
-type FGBuildableLightsControlPanel_base = docs_json_ts_0_4_2_11_classes_base_FGBuildableLightsControlPanel_base & docs_json_ts_0_4_2_11_classes_base_FGBuildable_light_related_thing_base & FGBuildable_base;
+type FGBuildableLightsControlPanel = docs_json_ts_0_4_2_11_classes_base_FGBuildableLightsControlPanel_base & docs_json_ts_0_4_2_11_classes_base_FGBuildable_light_related_thing_base & FGBuildable_base & FGBuildableLightsControlPanel_version_specific;
 
-type FGBuildableLightSource = FGBuildable_mHasPower & docs_json_ts_0_4_2_11_classes_base_FGBuildable_light_related_thing_base & docs_json_ts_0_4_2_11_classes_base_FGBuildableLightSource_base & FGBuildableLightSource_base;
+type FGBuildableLightSource = FGBuildable_mHasPower & docs_json_ts_0_4_2_11_classes_base_FGBuildable_light_related_thing_base & docs_json_ts_0_4_2_11_classes_base_FGBuildableLightSource_base & FGBuildableLightSource_base & FGBuildable_base;
 
 type FGBuildableLightSource_base = {
 	OnBuildableLightSourceStateChanged: docs_json_ts_common_types_empty_object,
 };
 
-type FGBuildableLightSource_Build_StreetLight_C = FGBuildableLightSource & {
+type FGBuildableLightSource_Build_StreetLight_C = FGBuildableLightSource & FGBuildableLightSource_Build_StreetLight_C_version_specific;
+
+type FGBuildableLightSource_Build_StreetLight_C_version_specific = {
 	newCustomizationData: {
 		OverrideColorData: {
 			PrimaryColor: docs_json_ts_common_types_RGBA,
@@ -409,7 +411,9 @@ type FGBuildableManufacturer_Build_SmelterMk1_C_base = {
 	mIsPendingToKillVFX: docs_json_ts_common_types_bool_string,
 };
 
-type FGBuildablePassthrough = FGBuildable_base & {
+type FGBuildablePassthrough = FGBuildable_base & FGBuildablePassthrough_base & FGBuildablePassthrough_pre_update8;
+
+type FGBuildablePassthrough_base = {
 	mSnappedBuildingThickness: docs_json_ts_common_types_decimal_string,
 	mMidMeshLength: docs_json_ts_common_types_decimal_string,
 	mGenerateTunnelCollision: docs_json_ts_common_types_bool_string,
@@ -418,6 +422,9 @@ type FGBuildablePassthrough = FGBuildable_base & {
 	mEndCapTranslation: docs_json_ts_common_types_XYZ_decimal_string,
 	mClearanceHeightMin: docs_json_ts_common_types_decimal_string,
 	mClearanceThickness: docs_json_ts_common_types_decimal_string,
+};
+
+type FGBuildablePassthrough_pre_update8 = {
 	mUseSoftClearance: docs_json_ts_common_types_bool_string,
 };
 
@@ -522,11 +529,11 @@ type FGBuildableResourceSinkShop = FGBuildable_powered & docs_json_ts_0_3_7_7_cl
 
 type FGBuildableSplitterSmart = docs_json_ts_0_3_7_7_classes_base_FGBuildableSplitterSmart_base_base & FGBuildable_powered;
 
-type FGBuildableStair = FGBuildableStair_base & {
+type FGBuildableStair = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_size_base & docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_base & FGBuildable_base & FGBuildableStair_has_mStairDirection;
+
+type FGBuildableStair_has_mStairDirection = {
 	mStairDirection: 'EBSD_Left' | 'EBSD_Right',
 };
-
-type FGBuildableStair_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_size_base & docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_base & FGBuildable_base;
 
 type FGBuildableStorage = docs_json_ts_0_3_7_7_classes_base_FGBuildableStorage_base_base & FGBuildable_powered;
 
@@ -573,7 +580,9 @@ type FGBuildableTrainPlatformCargo_version_specific = {
 
 type FGBuildableWall = FGBuildable_with_height_and_width & FGBuildable_with_elevation & FGBuildable_is_wallish;
 
-type FGBuildableWidgetSign = FGBuildable_base & {
+type FGBuildableWidgetSign = FGBuildable_base & FGBuildableWidgetSign_base;
+
+type FGBuildableWidgetSign_base = {
 	mGainSignificanceDistance: docs_json_ts_common_types_decimal_string,
 	mTextElementToDataMap: docs_json_ts_common_types_empty_object,
 	mIconElementToDataMap: docs_json_ts_common_types_empty_object,
@@ -610,7 +619,9 @@ type FGDescriptor_BuildMenu_base = docs_json_ts_0_4_2_11_classes_base_FGDescript
 
 type FGDescriptor_sinkable = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_sinkable_base & FGDescriptor;
 
-type FGGolfCartDispenser = docs_json_ts_0_3_7_7_classes_base_FGGolfCartDispenser & {
+type FGGolfCartDispenser = docs_json_ts_0_3_7_7_classes_base_FGGolfCartDispenser & FGGolfCartDispenser_version_specific;
+
+type FGGolfCartDispenser_version_specific = {
 	mMaxSpawnDistance: docs_json_ts_common_types_decimal_string,
 	mSpawningClearance: docs_json_ts_common_types_decimal_string,
 	mBuildDisqualifierText: 'Vehicles cannot be built or deployed on top of existing vehicles.',
@@ -898,11 +909,12 @@ export type {
 	FGBuildableGeneratorNuclear,
 	FGBuildableJumppad,
 	FGBuildableLadder,
+	FGBuildableLightsControlPanel_version_specific,
 	FGBuildableLightsControlPanel,
-	FGBuildableLightsControlPanel_base,
 	FGBuildableLightSource,
 	FGBuildableLightSource_base,
 	FGBuildableLightSource_Build_StreetLight_C,
+	FGBuildableLightSource_Build_StreetLight_C_version_specific,
 	FGBuildableMAM,
 	FGBuildableManufacturer_Build_AssemblerMk1_C,
 	FGBuildableManufacturer_Build_Blender_C,
@@ -917,6 +929,8 @@ export type {
 	FGBuildableManufacturer_Build_SmelterMk1_C,
 	FGBuildableManufacturer_Build_SmelterMk1_C_base,
 	FGBuildablePassthrough,
+	FGBuildablePassthrough_base,
+	FGBuildablePassthrough_pre_update8,
 	FGBuildablePillar,
 	FGBuildablePillar_base,
 	FGBuildablePipeHyper,
@@ -954,7 +968,7 @@ export type {
 	FGBuildableResourceSinkShop,
 	FGBuildableSplitterSmart,
 	FGBuildableStair,
-	FGBuildableStair_base,
+	FGBuildableStair_has_mStairDirection,
 	FGBuildableStorage,
 	FGBuildableTradingPost,
 	FGBuildableTradingPost_base,
@@ -968,6 +982,7 @@ export type {
 	FGBuildableTrainPlatformCargo_version_specific,
 	FGBuildableWall,
 	FGBuildableWidgetSign,
+	FGBuildableWidgetSign_base,
 	FGBuildableWire,
 	FGConsumableDescriptor,
 	FGDescriptor,
@@ -975,6 +990,7 @@ export type {
 	FGDescriptor_BuildMenu_base,
 	FGDescriptor_sinkable,
 	FGGolfCartDispenser,
+	FGGolfCartDispenser_version_specific,
 	FGItemDescAmmoTypeColorCartridge,
 	FGItemDescAmmoTypeColorCartridge_base,
 	FGItemDescAmmoTypeInstantHit,
