@@ -339,11 +339,11 @@ type FGBuildableJumppad = docs_json_ts_0_3_7_7_classes_base_FGBuildableJumppad_b
 
 type FGBuildableLadder = FGBuildable_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableLadder_base;
 
+type FGBuildableLightsControlPanel = docs_json_ts_0_4_2_11_classes_base_FGBuildableLightsControlPanel_base & docs_json_ts_0_4_2_11_classes_base_FGBuildable_light_related_thing_base & FGBuildable_base & FGBuildableLightsControlPanel_version_specific;
+
 type FGBuildableLightsControlPanel_version_specific = {
 	OnLightControlPanelStateChanged: docs_json_ts_common_types_empty_object,
 };
-
-type FGBuildableLightsControlPanel = docs_json_ts_0_4_2_11_classes_base_FGBuildableLightsControlPanel_base & docs_json_ts_0_4_2_11_classes_base_FGBuildable_light_related_thing_base & FGBuildable_base & FGBuildableLightsControlPanel_version_specific;
 
 type FGBuildableLightSource = FGBuildable_mHasPower & docs_json_ts_0_4_2_11_classes_base_FGBuildable_light_related_thing_base & docs_json_ts_0_4_2_11_classes_base_FGBuildableLightSource_base & FGBuildableLightSource_base & FGBuildable_base;
 
@@ -909,8 +909,8 @@ export type {
 	FGBuildableGeneratorNuclear,
 	FGBuildableJumppad,
 	FGBuildableLadder,
-	FGBuildableLightsControlPanel_version_specific,
 	FGBuildableLightsControlPanel,
+	FGBuildableLightsControlPanel_version_specific,
 	FGBuildableLightSource,
 	FGBuildableLightSource_base,
 	FGBuildableLightSource_Build_StreetLight_C,

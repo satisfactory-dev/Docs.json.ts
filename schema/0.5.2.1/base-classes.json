@@ -852,15 +852,6 @@
 				}
 			]
 		},
-		"FGBuildableLightsControlPanel--version-specific": {
-			"type": "object",
-			"required": ["OnLightControlPanelStateChanged"],
-			"properties": {
-				"OnLightControlPanelStateChanged": {
-					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-				}
-			}
-		},
 		"FGBuildableLightsControlPanel": {
 			"allOf": [
 				{
@@ -876,6 +867,15 @@
 					"$ref": "#/$defs/FGBuildableLightsControlPanel--version-specific"
 				}
 			]
+		},
+		"FGBuildableLightsControlPanel--version-specific": {
+			"type": "object",
+			"required": ["OnLightControlPanelStateChanged"],
+			"properties": {
+				"OnLightControlPanelStateChanged": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				}
+			}
 		},
 		"FGBuildableLightSource": {
 			"allOf": [

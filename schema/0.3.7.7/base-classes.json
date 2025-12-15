@@ -724,6 +724,25 @@
 				}
 			}
 		},
+		"FGBuildableAttachment--has--mCurrentOutputIndex": {
+			"type": "object",
+			"required": ["mCurrentOutputIndex"],
+			"properties": {
+				"mCurrentOutputIndex": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string--signed"
+				}
+			}
+		},
+		"FGBuildableAttachment--has--mDistributionTable": {
+			"type": "object",
+			"required": ["mDistributionTable"],
+			"properties": {
+				"mDistributionTable": {
+					"type": "string",
+					"const": ""
+				}
+			}
+		},
 		"FGBuildableAttachment--splitter": {
 			"allOf": [
 				{
@@ -759,25 +778,6 @@
 					"$ref": "#/$defs/FGBuildableAttachment--has--mCurrentInventoryIndex"
 				}
 			]
-		},
-		"FGBuildableAttachment--has--mDistributionTable": {
-			"type": "object",
-			"required": ["mDistributionTable"],
-			"properties": {
-				"mDistributionTable": {
-					"type": "string",
-					"const": ""
-				}
-			}
-		},
-		"FGBuildableAttachment--has--mCurrentOutputIndex": {
-			"type": "object",
-			"required": ["mCurrentOutputIndex"],
-			"properties": {
-				"mCurrentOutputIndex": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string--signed"
-				}
-			}
 		},
 		"FGBuildableAttachmentMerger": {
 			"allOf": [
@@ -4320,16 +4320,6 @@
 				}
 			}
 		},
-		"FGEquipment--has--mEquipmentSlot": {
-			"type": "object",
-			"required": ["mEquipmentSlot"],
-			"properties": {
-				"mEquipmentSlot": {
-					"type": "string",
-					"enum": ["ES_ARMS", "ES_BACK"]
-				}
-			}
-		},
 		"FGEquipment--dispenser": {
 			"allOf": [
 				{
@@ -4355,6 +4345,16 @@
 			"properties": {
 				"mFilterDuration": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGEquipment--has--mEquipmentSlot": {
+			"type": "object",
+			"required": ["mEquipmentSlot"],
+			"properties": {
+				"mEquipmentSlot": {
+					"type": "string",
+					"enum": ["ES_ARMS", "ES_BACK"]
 				}
 			}
 		},
@@ -5520,15 +5520,6 @@
 				}
 			]
 		},
-		"FGWeaponInstantFire--has--mLockAngle": {
-			"type": "object",
-			"required": ["mLockAngle"],
-			"properties": {
-				"mLockAngle": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				}
-			}
-		},
 		"FGWeaponInstantFire--base--base--base": {
 			"type": "object",
 			"$ref": "#/$defs/FGWeaponProjectile--has--mAttachSocket",
@@ -5543,6 +5534,15 @@
 				"mArmAnimation": {
 					"type": "string",
 					"const": "AE_Rifle"
+				}
+			}
+		},
+		"FGWeaponInstantFire--has--mLockAngle": {
+			"type": "object",
+			"required": ["mLockAngle"],
+			"properties": {
+				"mLockAngle": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
 			}
 		},
@@ -5613,6 +5613,16 @@
 				}
 			}
 		},
+		"FGWeaponProjectile--has--mAttachSocket": {
+			"type": "object",
+			"required": ["mAttachSocket"],
+			"properties": {
+				"mAttachSocket": {
+					"type": "string",
+					"const": "hand_rSocket"
+				}
+			}
+		},
 		"FGWeaponProjectile--instant": {
 			"allOf": [
 				{
@@ -5635,16 +5645,6 @@
 					"$ref": "#/$defs/FGWeaponProjectile--base"
 				}
 			]
-		},
-		"FGWeaponProjectile--has--mAttachSocket": {
-			"type": "object",
-			"required": ["mAttachSocket"],
-			"properties": {
-				"mAttachSocket": {
-					"type": "string",
-					"const": "hand_rSocket"
-				}
-			}
 		},
 		"FGWeaponProjectile--instant--base--version-specific": {
 			"type": "object",
@@ -5799,15 +5799,6 @@
 				}
 			]
 		},
-		"FGWeaponProjectileFire--has--mRandomReloadAnim": {
-			"type": "object",
-			"required": ["mRandomReloadAnim"],
-			"properties": {
-				"mRandomReloadAnim": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-				}
-			}
-		},
 		"FGWeaponProjectileFire--base--version-specific": {
 			"type": "object",
 			"required": ["mMuteDryFire", "mProjectileData", "mArmAnimation"],
@@ -5861,6 +5852,15 @@
 				"mArmAnimation": {
 					"type": "string",
 					"const": "AE_RebarGun"
+				}
+			}
+		},
+		"FGWeaponProjectileFire--has--mRandomReloadAnim": {
+			"type": "object",
+			"required": ["mRandomReloadAnim"],
+			"properties": {
+				"mRandomReloadAnim": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
 				}
 			}
 		}

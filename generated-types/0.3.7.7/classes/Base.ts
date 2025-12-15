@@ -249,19 +249,19 @@ type FGBuildableAttachment_has_mCurrentInventoryIndex = {
 	mCurrentInventoryIndex: docs_json_ts_common_types_integer_string,
 };
 
-type FGBuildableAttachment_splitter = FGBuildableAttachment_splitter_base & FGBuildableAttachment;
-
-type FGBuildableAttachment_splitter_base = FGBuildableAttachment_splitter_base_base_base & FGBuildableAttachment_base_base & FGBuildableAttachment_base;
-
-type FGBuildableAttachment_splitter_base_base_base = FGBuildableAttachment_has_mCurrentOutputIndex & FGBuildableAttachment_has_mDistributionTable & FGBuildableAttachment_has_mCurrentInventoryIndex;
+type FGBuildableAttachment_has_mCurrentOutputIndex = {
+	mCurrentOutputIndex: docs_json_ts_common_types_integer_string_signed,
+};
 
 type FGBuildableAttachment_has_mDistributionTable = {
 	mDistributionTable: '',
 };
 
-type FGBuildableAttachment_has_mCurrentOutputIndex = {
-	mCurrentOutputIndex: docs_json_ts_common_types_integer_string_signed,
-};
+type FGBuildableAttachment_splitter = FGBuildableAttachment_splitter_base & FGBuildableAttachment;
+
+type FGBuildableAttachment_splitter_base = FGBuildableAttachment_splitter_base_base_base & FGBuildableAttachment_base_base & FGBuildableAttachment_base;
+
+type FGBuildableAttachment_splitter_base_base_base = FGBuildableAttachment_has_mCurrentOutputIndex & FGBuildableAttachment_has_mDistributionTable & FGBuildableAttachment_has_mCurrentInventoryIndex;
 
 type FGBuildableAttachmentMerger = FGBuildableAttachment & FGBuildableAttachmentMerger_base;
 
@@ -1123,10 +1123,6 @@ type FGEquipment_base_base_version_specific = hasClassName & {
 	mUseDefaultPrimaryFire: docs_json_ts_common_types_bool_string,
 };
 
-type FGEquipment_has_mEquipmentSlot = {
-	mEquipmentSlot: 'ES_ARMS' | 'ES_BACK',
-};
-
 type FGEquipment_dispenser = FGEquipment_dispenser_version_specific & FGEquipment;
 
 type FGEquipment_dispenser_version_specific = {
@@ -1135,6 +1131,10 @@ type FGEquipment_dispenser_version_specific = {
 
 type FGEquipment_filtered = {
 	mFilterDuration: docs_json_ts_common_types_decimal_string,
+};
+
+type FGEquipment_has_mEquipmentSlot = {
+	mEquipmentSlot: 'ES_ARMS' | 'ES_BACK',
 };
 
 type FGEquipment_has_mPlayingSound = {
@@ -1458,14 +1458,14 @@ type FGWeaponInstantFire = FGWeaponProjectile_instant & FGWeaponInstantFire_base
 
 type FGWeaponInstantFire_base = FGWeaponProjectile_has_mAttachSocket & FGWeaponInstantFire_base_base_base & FGWeaponInstantFire_has_mLockAngle & FGWeaponProjectile_instant_base;
 
-type FGWeaponInstantFire_has_mLockAngle = {
-	mLockAngle: docs_json_ts_common_types_decimal_string,
-};
-
 type FGWeaponInstantFire_base_base_base = FGWeaponProjectile_has_mAttachSocket & {
 	Fire: docs_json_ts_common_types_empty_object,
 	mHasReloadedOnce: docs_json_ts_common_types_bool_string,
 	mArmAnimation: 'AE_Rifle',
+};
+
+type FGWeaponInstantFire_has_mLockAngle = {
+	mLockAngle: docs_json_ts_common_types_decimal_string,
 };
 
 type FGWeaponProjectile = FGWeaponProjectile_base & FGWeaponProjectile_base_version_specific;
@@ -1484,13 +1484,13 @@ type FGWeaponProjectile_base_version_specific = FGEquipment & {
 	mCurrentAmmo: docs_json_ts_common_types_integer_string,
 };
 
-type FGWeaponProjectile_instant = FGWeaponProjectile & FGWeaponProjectile_instant_base & FGWeaponProjectile_instant_base_version_specific;
-
-type FGWeaponProjectile_instant_base = FGWeaponProjectile_has_mAttachSocket & FGWeaponProjectile_base;
-
 type FGWeaponProjectile_has_mAttachSocket = {
 	mAttachSocket: 'hand_rSocket',
 };
+
+type FGWeaponProjectile_instant = FGWeaponProjectile & FGWeaponProjectile_instant_base & FGWeaponProjectile_instant_base_version_specific;
+
+type FGWeaponProjectile_instant_base = FGWeaponProjectile_has_mAttachSocket & FGWeaponProjectile_base;
 
 type FGWeaponProjectile_instant_base_version_specific = FGWeaponProjectile_base & {
 	mInstantHitDamage: docs_json_ts_common_types_decimal_string,
@@ -1528,10 +1528,6 @@ type FGWeaponProjectileFire = FGWeaponProjectile & FGWeaponProjectile_has_mAttac
 
 type FGWeaponProjectileFire_base_random = FGWeaponProjectileFire_has_mRandomReloadAnim & FGEquipment_has_mRandomStingerAnim & FGWeaponProjectile_base;
 
-type FGWeaponProjectileFire_has_mRandomReloadAnim = {
-	mRandomReloadAnim: docs_json_ts_common_types_integer_string,
-};
-
 type FGWeaponProjectileFire_base_version_specific = {
 	mMuteDryFire: docs_json_ts_common_types_bool_string,
 	mProjectileData: {
@@ -1545,6 +1541,10 @@ type FGWeaponProjectileFire_base_version_specific = {
 		DamageTypeExplode: docs_json_ts_0_3_7_7_properties_Class_quoted,
 	},
 	mArmAnimation: 'AE_RebarGun',
+};
+
+type FGWeaponProjectileFire_has_mRandomReloadAnim = {
+	mRandomReloadAnim: docs_json_ts_common_types_integer_string,
 };
 
 export type {
@@ -1601,11 +1601,11 @@ export type {
 	FGBuildableAttachment_base,
 	FGBuildableAttachment_base_base,
 	FGBuildableAttachment_has_mCurrentInventoryIndex,
+	FGBuildableAttachment_has_mCurrentOutputIndex,
+	FGBuildableAttachment_has_mDistributionTable,
 	FGBuildableAttachment_splitter,
 	FGBuildableAttachment_splitter_base,
 	FGBuildableAttachment_splitter_base_base_base,
-	FGBuildableAttachment_has_mDistributionTable,
-	FGBuildableAttachment_has_mCurrentOutputIndex,
 	FGBuildableAttachmentMerger,
 	FGBuildableAttachmentMerger_base,
 	FGBuildableAttachmentMerger_base_base,
@@ -1836,10 +1836,10 @@ export type {
 	FGEquipment_base_base,
 	FGEquipment_base_base_base,
 	FGEquipment_base_base_version_specific,
-	FGEquipment_has_mEquipmentSlot,
 	FGEquipment_dispenser,
 	FGEquipment_dispenser_version_specific,
 	FGEquipment_filtered,
+	FGEquipment_has_mEquipmentSlot,
 	FGEquipment_has_mPlayingSound,
 	FGEquipment_has_effect_timer,
 	FGEquipment_has_mRandomStingerAnim,
@@ -1898,21 +1898,21 @@ export type {
 	FGSuitBase_base,
 	FGWeaponInstantFire,
 	FGWeaponInstantFire_base,
-	FGWeaponInstantFire_has_mLockAngle,
 	FGWeaponInstantFire_base_base_base,
+	FGWeaponInstantFire_has_mLockAngle,
 	FGWeaponProjectile,
 	FGWeaponProjectile_base,
 	FGWeaponProjectile_base_base_version_specific,
 	FGWeaponProjectile_base_version_specific,
+	FGWeaponProjectile_has_mAttachSocket,
 	FGWeaponProjectile_instant,
 	FGWeaponProjectile_instant_base,
-	FGWeaponProjectile_has_mAttachSocket,
 	FGWeaponProjectile_instant_base_version_specific,
 	FGWeaponProjectile_thrown,
 	FGWeaponProjectile_thrown_base,
 	FGWeaponProjectile_thrown_base_base,
 	FGWeaponProjectileFire,
 	FGWeaponProjectileFire_base_random,
-	FGWeaponProjectileFire_has_mRandomReloadAnim,
 	FGWeaponProjectileFire_base_version_specific,
+	FGWeaponProjectileFire_has_mRandomReloadAnim,
 };
