@@ -10,6 +10,10 @@ import type {
 	SchemaObjectWith$id,
 } from '@signpostmarv/json-schema-typescript-codegen';
 
+import {
+	object_has_property,
+} from '@satisfactory-dev/predicates.ts';
+
 function sort_$defs(schema: SchemaObjectWith$id) {
 	const {$defs} = schema;
 
@@ -46,6 +50,59 @@ function sort_$defs(schema: SchemaObjectWith$id) {
 						$ref,
 						unevaluatedProperties,
 					};
+				} else if (
+					1 === keys.length
+					&& keys.includes('allOf')
+					&& Array.isArray(value.allOf)
+					&& value.allOf.every(
+						(maybe): maybe is {$ref: string} => (
+							object_has_property(maybe, '$ref')
+							&& 'string' === typeof maybe.$ref
+						),
+					)
+				) {
+					value.allOf.sort(
+						({$ref: a}, {$ref: b}) => {
+							const a_hash = a.startsWith('#');
+							const b_hash = b.startsWith('#');
+
+							if (a_hash && !b_hash) {
+								return 1;
+							} else if (!a_hash && b_hash) {
+								return -1;
+							} else if (a_hash && b_hash) {
+								return a.localeCompare(b);
+							}
+
+							const [a_schema, a_path] = a.split('#');
+							const [b_schema, b_path] = b.split('#');
+
+							const a_override = a_schema.endsWith(
+								'.overridable',
+							);
+							const b_override = b_schema.endsWith(
+								'.overridable',
+							);
+
+							const a_schema_no_override = a_override
+								? a_schema.replace(/\.overridable$/, '')
+								: a_schema;
+							const b_schema_no_override = b_override
+								? b_schema.replace(/\.overridable$/, '')
+								: b_schema;
+
+							// eslint-disable-next-line @stylistic/max-len
+							if (a_schema_no_override === b_schema_no_override) {
+								return a_path.localeCompare(b_path);
+							} else if (a_override && !b_override) {
+								return -1;
+							} else if (!a_override && b_override) {
+								return 1;
+							}
+
+							return a_schema.localeCompare(b_schema);
+						},
+					);
 				}
 
 				return [key, value];

@@ -59,7 +59,7 @@ import type {
 	FGRecipe_version_specific as docs_json_ts_0_5_2_1_classes_base_overridable_FGRecipe_version_specific,
 } from './../../0.5.2.1/classes/Base.overridable.ts';
 
-type FGAmmoType_base = FGItemDescriptor_base & FGAmmoType_version_specific;
+type FGAmmoType_base = FGAmmoType_version_specific & FGItemDescriptor_base;
 
 type FGAmmoType_version_specific = {
 	mMagazineMeshMaterials: null | [
@@ -89,7 +89,7 @@ type FGBuildableRadarTower_version_specific = {
 
 type FGConsumableDescriptor = docs_json_ts_0_3_7_7_classes_base_FGConsumableDescriptor_base & docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable_base & FGItemDescriptor_base;
 
-type FGItemDescriptor_base = docs_json_ts_0_6_1_5_classes_base_FGDescriptor & FGItemDescriptor_version_specific & docs_json_ts_0_6_1_5_overridable_has_mSubCategories;
+type FGItemDescriptor_base = docs_json_ts_0_6_1_5_classes_base_FGDescriptor & docs_json_ts_0_6_1_5_overridable_has_mSubCategories & FGItemDescriptor_version_specific;
 
 type FGItemDescriptor_version_specific = {
 	mCrosshairMaterial: 'None' | `/Game/FactoryGame/Interface/UI/Material/Crosshairs/MI_UI_Crosshair_${Exclude<string, ''>}${'.MI_UI_Crosshair_'}${Exclude<string, ''>}`,
@@ -113,13 +113,13 @@ type FGItemDescriptor_version_specific = {
 	mMenuPriority: docs_json_ts_common_types_decimal_string,
 };
 
-type FGItemDescriptorNuclearFuel = docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_base & FGItemDescriptor_base & docs_json_ts_0_4_2_11_classes_base_overridable_FGItemDescriptorNuclearFuel_base;
+type FGItemDescriptorNuclearFuel = docs_json_ts_0_4_2_11_classes_base_overridable_FGItemDescriptorNuclearFuel_base & docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_base & FGItemDescriptor_base;
 
 type FGObjectScanner_version_specific = {
 	mScannableDescriptors: docs_json_ts_0_3_7_7_overridable_DocsDotJson_BlueprintGeneratedClass_quoted_list,
 };
 
-type FGRecipe = docs_json_ts_0_3_7_7_classes_base_FGRecipe_base & docs_json_ts_0_4_2_11_classes_base_FGRecipe_base_base & docs_json_ts_0_5_2_1_classes_base_overridable_FGRecipe_version_specific & docs_json_ts_0_6_1_5_classes_base_FGRecipe_version_specific;
+type FGRecipe = docs_json_ts_0_5_2_1_classes_base_overridable_FGRecipe_version_specific & docs_json_ts_0_3_7_7_classes_base_FGRecipe_base & docs_json_ts_0_4_2_11_classes_base_FGRecipe_base_base & docs_json_ts_0_6_1_5_classes_base_FGRecipe_version_specific;
 
 type FGSchematic_version_specific_mUnlocks = {
 	mUnlocks: [

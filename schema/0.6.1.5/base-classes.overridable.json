@@ -5,10 +5,10 @@
 		"FGAmmoType--base": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGItemDescriptor--base"
+					"$ref": "#/$defs/FGAmmoType--version-specific"
 				},
 				{
-					"$ref": "#/$defs/FGAmmoType--version-specific"
+					"$ref": "#/$defs/FGItemDescriptor--base"
 				}
 			]
 		},
@@ -125,10 +125,10 @@
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGDescriptor"
 				},
 				{
-					"$ref": "#/$defs/FGItemDescriptor--version-specific"
+					"$ref": "docs.json.ts--0.6.1.5--overridable#/$defs/has--mSubCategories"
 				},
 				{
-					"$ref": "docs.json.ts--0.6.1.5--overridable#/$defs/has--mSubCategories"
+					"$ref": "#/$defs/FGItemDescriptor--version-specific"
 				}
 			]
 		},
@@ -266,13 +266,13 @@
 		"FGItemDescriptorNuclearFuel": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base.overridable#/$defs/FGItemDescriptorNuclearFuel--base"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGItemDescriptorNuclearFuel--base"
 				},
 				{
 					"$ref": "#/$defs/FGItemDescriptor--base"
-				},
-				{
-					"$ref": "docs.json.ts--0.4.2.11--classes--base.overridable#/$defs/FGItemDescriptorNuclearFuel--base"
 				}
 			]
 		},
@@ -288,13 +288,13 @@
 		"FGRecipe": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base.overridable#/$defs/FGRecipe--version-specific"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGRecipe--base"
 				},
 				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGRecipe--base--base"
-				},
-				{
-					"$ref": "docs.json.ts--0.5.2.1--classes--base.overridable#/$defs/FGRecipe--version-specific"
 				},
 				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGRecipe--version-specific"
