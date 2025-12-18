@@ -4,11 +4,7 @@
 	"$defs": {
 		"FGBuildable--is-wallish": {
 			"type": "object",
-			"required": [
-				"mAngularDepth",
-				"mWallType",
-				"mAngledVariants"
-			],
+			"required": ["mAngularDepth", "mWallType", "mAngledVariants"],
 			"properties": {
 				"mAngularDepth": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
@@ -61,10 +57,7 @@
 		},
 		"FGRecipe--version-specific": {
 			"type": "object",
-			"required": [
-				"mIngredients",
-				"mProduct"
-			],
+			"required": ["mIngredients", "mProduct"],
 			"properties": {
 				"mIngredients": {
 					"oneOf": [
@@ -119,9 +112,7 @@
 		},
 		"FGWeapon--version-specific": {
 			"type": "object",
-			"required": [
-				"mAllowedAmmoClasses"
-			],
+			"required": ["mAllowedAmmoClasses"],
 			"properties": {
 				"mAllowedAmmoClasses": {
 					"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"

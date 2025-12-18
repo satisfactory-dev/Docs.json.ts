@@ -63,9 +63,7 @@
 			"type": "object",
 			"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--base",
 			"unevaluatedProperties": false,
-			"required": [
-				"mEmotes"
-			],
+			"required": ["mEmotes"],
 			"properties": {
 				"mEmotes": {
 					"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
@@ -77,10 +75,7 @@
 			"typed_string": {
 				"type": "object",
 				"additionalProperties": false,
-				"required": [
-					"EditorCurveData",
-					"ExternalCurve"
-				],
+				"required": ["EditorCurveData", "ExternalCurve"],
 				"properties": {
 					"EditorCurveData": {
 						"type": "string",

@@ -31,21 +31,6 @@
 				}
 			]
 		},
-		"FGBuildable--base--pre-update8": {
-			"type": "object",
-			"required": [
-				"mToggleDormancyOnInteraction",
-				"mShouldModifyWorldGrid"
-			],
-			"properties": {
-				"mToggleDormancyOnInteraction": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mShouldModifyWorldGrid": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				}
-			}
-		},
 		"FGBuildable--base--pre-update5": {
 			"type": "object",
 			"required": ["mFogPlaneTransforms"],
@@ -59,6 +44,21 @@
 							"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/mFogPlaneTransforms--list"
 						}
 					]
+				}
+			}
+		},
+		"FGBuildable--base--pre-update8": {
+			"type": "object",
+			"required": [
+				"mToggleDormancyOnInteraction",
+				"mShouldModifyWorldGrid"
+			],
+			"properties": {
+				"mToggleDormancyOnInteraction": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mShouldModifyWorldGrid": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				}
 			}
 		},
@@ -96,6 +96,16 @@
 					"$ref": "#/$defs/FGBuildable--powered-storage--base"
 				}
 			]
+		},
+		"FGBuildable--has--mCachedSkeletalMeshes": {
+			"type": "object",
+			"required": ["mCachedSkeletalMeshes"],
+			"properties": {
+				"mCachedSkeletalMeshes": {
+					"type": "string",
+					"const": ""
+				}
+			}
 		},
 		"FGBuildable--light-related-thing": {
 			"allOf": [
@@ -223,16 +233,6 @@
 			"properties": {
 				"mOnProductionStatusChanged": {
 					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-				}
-			}
-		},
-		"FGBuildable--has--mCachedSkeletalMeshes": {
-			"type": "object",
-			"required": ["mCachedSkeletalMeshes"],
-			"properties": {
-				"mCachedSkeletalMeshes": {
-					"type": "string",
-					"const": ""
 				}
 			}
 		},
@@ -2490,19 +2490,6 @@
 				}
 			]
 		},
-		"FGSchematic--has--mUnlocks": {
-			"type": "object",
-			"required": ["mUnlocks"],
-			"properties": {
-				"mUnlocks": {
-					"type": "array",
-					"minItems": 0,
-					"items": {
-						"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--base"
-					}
-				}
-			}
-		},
 		"FGSchematic--base": {
 			"allOf": [
 				{
@@ -2521,36 +2508,6 @@
 					"$ref": "#/$defs/FGSchematic--has--mMenuPriority"
 				}
 			]
-		},
-		"FGSchematic--has--mSmallSchematicIcon": {
-			"type": "object",
-			"required": [
-				"mSmallSchematicIcon"
-			],
-			"properties": {
-				"mSmallSchematicIcon": {
-					"oneOf": [
-						{
-							"type": "string",
-							"const": "None"
-						},
-						{
-							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/Texture2D--base"
-						}
-					]
-				}
-			}
-		},
-		"FGSchematic--has--mTechTier": {
-			"type": "object",
-			"required": [
-				"mTechTier"
-			],
-			"properties": {
-				"mTechTier": {
-					"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/Tier"
-				}
-			}
 		},
 		"FGSchematic--has--mMenuPriority": {
 			"type": "object",
@@ -2615,6 +2572,45 @@
 								"const": "Image"
 							}
 						}
+					}
+				}
+			}
+		},
+		"FGSchematic--has--mSmallSchematicIcon": {
+			"type": "object",
+			"required": ["mSmallSchematicIcon"],
+			"properties": {
+				"mSmallSchematicIcon": {
+					"oneOf": [
+						{
+							"type": "string",
+							"const": "None"
+						},
+						{
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/Texture2D--base"
+						}
+					]
+				}
+			}
+		},
+		"FGSchematic--has--mTechTier": {
+			"type": "object",
+			"required": ["mTechTier"],
+			"properties": {
+				"mTechTier": {
+					"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/Tier"
+				}
+			}
+		},
+		"FGSchematic--has--mUnlocks": {
+			"type": "object",
+			"required": ["mUnlocks"],
+			"properties": {
+				"mUnlocks": {
+					"type": "array",
+					"minItems": 0,
+					"items": {
+						"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--base"
 					}
 				}
 			}

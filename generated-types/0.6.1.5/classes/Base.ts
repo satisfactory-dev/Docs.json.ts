@@ -683,11 +683,11 @@ type FGSchematic_pre_update8 = {
 	mCost: null | docs_json_ts_0_3_7_7_overridable_ItemClass_Amount_list | docs_json_ts_0_6_1_5_overridable_ItemClass_list,
 };
 
-type FGSchematic_with_described_unlocks = docs_json_ts_0_5_2_1_classes_base_FGSchematic_with_described_unlocks_base_base & FGSchematic_base;
-
 type FGSchematic_version_specific = {
 	mHiddenUntilDependenciesMet: docs_json_ts_common_types_bool_string,
 };
+
+type FGSchematic_with_described_unlocks = docs_json_ts_0_5_2_1_classes_base_FGSchematic_with_described_unlocks_base_base & FGSchematic_base;
 
 type FGSuitBase = docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_mFilterDuration & docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_effect_timer & docs_json_ts_0_3_7_7_classes_base_FGEquipment_negates_damage & docs_json_ts_0_3_7_7_classes_base_overridable_FGSuitBase_base & FGEquipment & FGSuitBase_version_specific;
 
@@ -873,8 +873,8 @@ export type {
 	FGSchematic_base,
 	FGSchematic_has_mSchematicIcon,
 	FGSchematic_pre_update8,
-	FGSchematic_with_described_unlocks,
 	FGSchematic_version_specific,
+	FGSchematic_with_described_unlocks,
 	FGSuitBase,
 	FGSuitBase_version_specific,
 	FGVehicleDescriptor_Desc_CyberWagon_C,

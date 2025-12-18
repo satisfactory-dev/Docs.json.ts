@@ -2559,26 +2559,6 @@
 				}
 			]
 		},
-		"FGNobeliskDetonator--version-specific": {
-			"type": "object",
-			"required": [
-				"mRadialMenuShowUpTime",
-				"mDispensedProjectiles",
-				"mDelayBetweenSecondaryTriggers"
-			],
-			"properties": {
-				"mRadialMenuShowUpTime": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mDispensedProjectiles": {
-					"type": "string",
-					"const": ""
-				},
-				"mDelayBetweenSecondaryTriggers": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				}
-			}
-		},
 		"FGNobeliskDetonator--pre-update6": {
 			"allOf": [
 				{
@@ -2600,6 +2580,26 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGNobeliskDetonator--base"
 				}
 			]
+		},
+		"FGNobeliskDetonator--version-specific": {
+			"type": "object",
+			"required": [
+				"mRadialMenuShowUpTime",
+				"mDispensedProjectiles",
+				"mDelayBetweenSecondaryTriggers"
+			],
+			"properties": {
+				"mRadialMenuShowUpTime": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mDispensedProjectiles": {
+					"type": "string",
+					"const": ""
+				},
+				"mDelayBetweenSecondaryTriggers": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
 		},
 		"FGPipeHyperStart": {
 			"allOf": [
@@ -2743,6 +2743,75 @@
 				}
 			]
 		},
+		"FGWeapon--Equip_RebarGun_Projectile_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectile--has--mAttachSocket"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectile--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectileFire--base--random"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGWeaponProjectile--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGWeaponProjectileFire--has--mMuteDryFire"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectile--base"
+				},
+				{
+					"$ref": "#/$defs/FGWeapon--pre-update6"
+				},
+				{
+					"$ref": "#/$defs/FGWeapon--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base.overridable#/$defs/FGWeapon--version-specific"
+				}
+			]
+		},
+		"FGWeapon--Equip_Rifle_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectile--has--mAttachSocket"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectile--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponInstantFire--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGWeaponProjectile--base"
+				},
+				{
+					"$ref": "#/$defs/FGWeapon--pre-update6"
+				},
+				{
+					"$ref": "#/$defs/FGWeapon--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base.overridable#/$defs/FGWeapon--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGWeapon--Equip_Rifle_C--base"
+				}
+			]
+		},
+		"FGWeapon--Equip_Rifle_C--base": {
+			"type": "object",
+			"required": ["mArmAnimation"],
+			"properties": {
+				"mArmAnimation": {
+					"type": "string",
+					"const": "AE_Rifle"
+				}
+			}
+		},
 		"FGWeapon--pre-update6": {
 			"type": "object",
 			"required": [
@@ -2856,75 +2925,6 @@
 				},
 				"mOnWeaponStateChanged": {
 					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-				}
-			}
-		},
-		"FGWeapon--Equip_RebarGun_Projectile_C": {
-			"allOf": [
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectile--has--mAttachSocket"
-				},
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectile--base"
-				},
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectileFire--base--random"
-				},
-				{
-					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGWeaponProjectile--base"
-				},
-				{
-					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGWeaponProjectileFire--has--mMuteDryFire"
-				},
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectile--base"
-				},
-				{
-					"$ref": "#/$defs/FGWeapon--pre-update6"
-				},
-				{
-					"$ref": "#/$defs/FGWeapon--version-specific"
-				},
-				{
-					"$ref": "docs.json.ts--0.5.2.1--classes--base.overridable#/$defs/FGWeapon--version-specific"
-				}
-			]
-		},
-		"FGWeapon--Equip_Rifle_C": {
-			"allOf": [
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectile--has--mAttachSocket"
-				},
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectile--base"
-				},
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponInstantFire--base"
-				},
-				{
-					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGWeaponProjectile--base"
-				},
-				{
-					"$ref": "#/$defs/FGWeapon--pre-update6"
-				},
-				{
-					"$ref": "#/$defs/FGWeapon--version-specific"
-				},
-				{
-					"$ref": "docs.json.ts--0.5.2.1--classes--base.overridable#/$defs/FGWeapon--version-specific"
-				},
-				{
-					"$ref": "#/$defs/FGWeapon--Equip_Rifle_C--base"
-				}
-			]
-		},
-		"FGWeapon--Equip_Rifle_C--base": {
-			"type": "object",
-			"required": ["mArmAnimation"],
-			"properties": {
-				"mArmAnimation": {
-					"type": "string",
-					"const": "AE_Rifle"
 				}
 			}
 		}

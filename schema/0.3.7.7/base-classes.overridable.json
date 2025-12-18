@@ -4,9 +4,7 @@
 	"$defs": {
 		"FGBuildableResourceExtractor--miner--base": {
 			"type": "object",
-			"required": [
-				"mParticleMap"
-			],
+			"required": ["mParticleMap"],
 			"properties": {
 				"mParticleMap": {
 					"type": "string",
@@ -24,9 +22,7 @@
 		"FGBuildableResourceExtractor--only-allow-certain-resources": {
 			"type": "object",
 			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--only-allow-certain-resources",
-			"required": [
-				"mAllowedResources"
-			],
+			"required": ["mAllowedResources"],
 			"properties": {
 				"mAllowedResources": {
 					"oneOf": [
@@ -98,10 +94,7 @@
 				},
 				"mBackAnimation": {
 					"type": "string",
-					"enum": [
-						"BE_None",
-						"BE_Jetpack"
-					]
+					"enum": ["BE_None", "BE_Jetpack"]
 				},
 				"mHasPersistentOwner": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
@@ -157,11 +150,7 @@
 		},
 		"FGSuitBase--base": {
 			"type": "object",
-			"required": [
-				"mImmunity",
-				"mSuit1PMeshMaterials",
-				"mArmAnimation"
-			],
+			"required": ["mImmunity", "mSuit1PMeshMaterials", "mArmAnimation"],
 			"properties": {
 				"mImmunity": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"

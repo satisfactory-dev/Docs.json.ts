@@ -17,9 +17,7 @@
 		},
 		"FGItemDescriptorNuclearFuel--base": {
 			"type": "object",
-			"required": [
-				"mSpentFuelClass"
-			],
+			"required": ["mSpentFuelClass"],
 			"properties": {
 				"mSpentFuelClass": {
 					"$ref": "docs.json.ts--0.4.2.11--overridable#/$defs/BlueprintGeneratedClass--single-quoted"
@@ -91,9 +89,7 @@
 		},
 		"FGSchematic--has--mSchematicDependencies": {
 			"type": "object",
-			"required": [
-				"mSchematicDependencies"
-			],
+			"required": ["mSchematicDependencies"],
 			"properties": {
 				"mSchematicDependencies": {
 					"type": "array",

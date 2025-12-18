@@ -23,6 +23,27 @@
 				}
 			}
 		},
+		"instructive": {
+			"type": "object",
+			"$ref": "#/$defs/isNamed",
+			"required": ["FullName", "mRelevantEvents"],
+			"properties": {
+				"FullName": {
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/BlueprintGeneratedClass--non-quoted"
+				},
+				"mRelevantEvents": {
+					"oneOf": [
+						{
+							"type": "string",
+							"typed_string": ""
+						},
+						{
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mRelevantEvents"
+						}
+					]
+				}
+			}
+		},
 		"isDescribed": {
 			"type": "object",
 			"$ref": "#/$defs/isNamed",
@@ -69,6 +90,30 @@
 				}
 			}
 		},
+		"FGBuildable--base--pre-update5": {
+			"type": "object",
+			"required": [
+				"mMaterialNameToInstanceManager",
+				"mBlockSharingMaterialInstanceMapping",
+				"mExcludeFromMaterialInstancing",
+				"mAllowCleranceSeparationEvenIfStackedOn"
+			],
+			"properties": {
+				"mMaterialNameToInstanceManager": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mBlockSharingMaterialInstanceMapping": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mExcludeFromMaterialInstancing": {
+					"type": "string",
+					"const": ""
+				},
+				"mAllowCleranceSeparationEvenIfStackedOn": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
+		},
 		"FGBuildable--base--version-specific": {
 			"type": "object",
 			"$ref": "#/$defs/isDescribed",
@@ -102,30 +147,6 @@
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				},
 				"mHideOnBuildEffectStart": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				}
-			}
-		},
-		"FGBuildable--base--pre-update5": {
-			"type": "object",
-			"required": [
-				"mMaterialNameToInstanceManager",
-				"mBlockSharingMaterialInstanceMapping",
-				"mExcludeFromMaterialInstancing",
-				"mAllowCleranceSeparationEvenIfStackedOn"
-			],
-			"properties": {
-				"mMaterialNameToInstanceManager": {
-					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-				},
-				"mBlockSharingMaterialInstanceMapping": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mExcludeFromMaterialInstancing": {
-					"type": "string",
-					"const": ""
-				},
-				"mAllowCleranceSeparationEvenIfStackedOn": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				}
 			}
@@ -2518,45 +2539,6 @@
 				}
 			]
 		},
-		"FGBuildableResourceExtractor--piped": {
-			"type": "object",
-			"required": ["mPipeOutputConnections", "mReplicatedFlowRate"],
-			"properties": {
-				"mPipeOutputConnections": {
-					"type": "string",
-					"const": ""
-				},
-				"mReplicatedFlowRate": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				}
-			}
-		},
-		"FGBuildableResourceExtractor--timed": {
-			"type": "object",
-			"required": [
-				"mExtractStartupTime",
-				"mExtractStartupTimer",
-				"mExtractCycleTime",
-				"mItemsPerCycle"
-			],
-			"properties": {
-				"mExtractStartupTime": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
-				},
-				"mExtractStartupTimer": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mExtractCycleTime": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mItemsPerCycle": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-				},
-				"mOnlyAllowCertainResources": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				}
-			}
-		},
 		"FGBuildableResourceExtractor--miner": {
 			"allOf": [
 				{
@@ -2596,10 +2578,7 @@
 		},
 		"FGBuildableResourceExtractor--miner--base": {
 			"type": "object",
-			"required": [
-				"mExtractorTypeName",
-				"mAllowedResourceForms"
-			],
+			"required": ["mExtractorTypeName", "mAllowedResourceForms"],
 			"properties": {
 				"mInternalMiningState_0": {
 					"type": "string",
@@ -2859,20 +2838,53 @@
 		},
 		"FGBuildableResourceExtractor--only-allow-certain-resources": {
 			"type": "object",
-			"required": [
-				"mOnlyAllowCertainResources",
-				"mExtractorTypeName"
-			],
+			"required": ["mOnlyAllowCertainResources", "mExtractorTypeName"],
 			"properties": {
 				"mOnlyAllowCertainResources": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				},
 				"mExtractorTypeName": {
 					"type": "string",
-					"enum": [
-						"None",
-						"Miner"
-					]
+					"enum": ["None", "Miner"]
+				}
+			}
+		},
+		"FGBuildableResourceExtractor--piped": {
+			"type": "object",
+			"required": ["mPipeOutputConnections", "mReplicatedFlowRate"],
+			"properties": {
+				"mPipeOutputConnections": {
+					"type": "string",
+					"const": ""
+				},
+				"mReplicatedFlowRate": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGBuildableResourceExtractor--timed": {
+			"type": "object",
+			"required": [
+				"mExtractStartupTime",
+				"mExtractStartupTimer",
+				"mExtractCycleTime",
+				"mItemsPerCycle"
+			],
+			"properties": {
+				"mExtractStartupTime": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
+				},
+				"mExtractStartupTimer": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mExtractCycleTime": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mItemsPerCycle": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mOnlyAllowCertainResources": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				}
 			}
 		},
@@ -3617,6 +3629,16 @@
 				}
 			]
 		},
+		"FGBuildableTrainPlatformCargo--pre-update8": {
+			"type": "object",
+			"required": ["mPotentialDockers"],
+			"properties": {
+				"mPotentialDockers": {
+					"type": "string",
+					"const": ""
+				}
+			}
+		},
 		"FGBuildableTrainPlatformCargo--version-specific": {
 			"type": "object",
 			"required": [
@@ -3689,16 +3711,6 @@
 				},
 				"mReplicatedInflowRate": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				}
-			}
-		},
-		"FGBuildableTrainPlatformCargo--pre-update8": {
-			"type": "object",
-			"required": ["mPotentialDockers"],
-			"properties": {
-				"mPotentialDockers": {
-					"type": "string",
-					"const": ""
 				}
 			}
 		},
@@ -4154,15 +4166,6 @@
 				}
 			]
 		},
-		"FGEquipment--has--mUseDefaultPrimaryFire": {
-			"type": "object",
-			"required": ["mUseDefaultPrimaryFire"],
-			"properties": {
-				"mUseDefaultPrimaryFire": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				}
-			}
-		},
 		"FGEquipment--dispenser": {
 			"allOf": [
 				{
@@ -4173,12 +4176,13 @@
 				}
 			]
 		},
-		"FGEquipment--has--mPlaceDistanceMax": {
+		"FGEquipment--has--mEquipmentSlot": {
 			"type": "object",
-			"required": ["mPlaceDistanceMax"],
+			"required": ["mEquipmentSlot"],
 			"properties": {
-				"mPlaceDistanceMax": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				"mEquipmentSlot": {
+					"type": "string",
+					"enum": ["ES_ARMS", "ES_BACK"]
 				}
 			}
 		},
@@ -4191,13 +4195,12 @@
 				}
 			}
 		},
-		"FGEquipment--has--mEquipmentSlot": {
+		"FGEquipment--has--mPlaceDistanceMax": {
 			"type": "object",
-			"required": ["mEquipmentSlot"],
+			"required": ["mPlaceDistanceMax"],
 			"properties": {
-				"mEquipmentSlot": {
-					"type": "string",
-					"enum": ["ES_ARMS", "ES_BACK"]
+				"mPlaceDistanceMax": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
 			}
 		},
@@ -4206,6 +4209,15 @@
 			"required": ["mPlayingSound"],
 			"properties": {
 				"mPlayingSound": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
+		},
+		"FGEquipment--has--mUseDefaultPrimaryFire": {
+			"type": "object",
+			"required": ["mUseDefaultPrimaryFire"],
+			"properties": {
+				"mUseDefaultPrimaryFire": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				}
 			}
@@ -4431,27 +4443,6 @@
 				"mArmAnimation": {
 					"type": "string",
 					"const": "AE_Generic2Hand"
-				}
-			}
-		},
-		"instructive": {
-			"type": "object",
-			"$ref": "#/$defs/isNamed",
-			"required": ["FullName", "mRelevantEvents"],
-			"properties": {
-				"FullName": {
-					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/BlueprintGeneratedClass--non-quoted"
-				},
-				"mRelevantEvents": {
-					"oneOf": [
-						{
-							"type": "string",
-							"typed_string": ""
-						},
-						{
-							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mRelevantEvents"
-						}
-					]
 				}
 			}
 		},
@@ -5004,11 +4995,7 @@
 		},
 		"FGSchematic--pre-update4": {
 			"type": "object",
-			"required": [
-				"mTechTier",
-				"mUnlocks",
-				"mSchematicDependencies"
-			],
+			"required": ["mTechTier", "mUnlocks", "mSchematicDependencies"],
 			"properties": {
 				"mTechTier": {
 					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/Tier"

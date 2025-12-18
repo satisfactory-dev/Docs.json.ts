@@ -69,6 +69,11 @@ type hasClassName = {
 	ClassName: `${Exclude<string, ''>}${'_'}${Exclude<string, ''>}${'_C'}`,
 };
 
+type instructive = isNamed & {
+	FullName: docs_json_ts_0_3_7_7_properties_BlueprintGeneratedClass_non_quoted,
+	mRelevantEvents: null | docs_json_ts_0_3_7_7_properties_mRelevantEvents,
+};
+
 type isDescribed = isNamed & {
 	mDescription: string,
 };
@@ -84,6 +89,13 @@ type FGBuildable_base = {
 	mShouldShowHighlight: docs_json_ts_common_types_bool_string,
 };
 
+type FGBuildable_base_pre_update5 = {
+	mMaterialNameToInstanceManager: docs_json_ts_common_types_empty_object,
+	mBlockSharingMaterialInstanceMapping: docs_json_ts_common_types_bool_string,
+	mExcludeFromMaterialInstancing: '',
+	mAllowCleranceSeparationEvenIfStackedOn: docs_json_ts_common_types_bool_string,
+};
+
 type FGBuildable_base_version_specific = isDescribed & {
 	MaxRenderDistance: docs_json_ts_common_types_decimal_string_signed,
 	mSkipBuildEffect: docs_json_ts_common_types_bool_string,
@@ -92,13 +104,6 @@ type FGBuildable_base_version_specific = isDescribed & {
 	mInteractingPlayers: '',
 	mIsUseable: docs_json_ts_common_types_bool_string,
 	mHideOnBuildEffectStart: docs_json_ts_common_types_bool_string,
-};
-
-type FGBuildable_base_pre_update5 = {
-	mMaterialNameToInstanceManager: docs_json_ts_common_types_empty_object,
-	mBlockSharingMaterialInstanceMapping: docs_json_ts_common_types_bool_string,
-	mExcludeFromMaterialInstancing: '',
-	mAllowCleranceSeparationEvenIfStackedOn: docs_json_ts_common_types_bool_string,
 };
 
 type FGBuildable_DisableAttachmentSnapOn = FGBuildable & {
@@ -690,19 +695,6 @@ type FGBuildableResourceExtractor = FGBuildableResourceExtractor_with_mRequireRe
 
 type FGBuildableResourceExtractor_base = FGBuildableResourceExtractor_timed & docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_only_allow_certain_resources & FGBuildableResourceExtractor_piped & FGBuildable_powered_base;
 
-type FGBuildableResourceExtractor_piped = {
-	mPipeOutputConnections: '',
-	mReplicatedFlowRate: docs_json_ts_common_types_decimal_string,
-};
-
-type FGBuildableResourceExtractor_timed = {
-	mExtractStartupTime: docs_json_ts_common_types_decimal_string_signed,
-	mExtractStartupTimer: docs_json_ts_common_types_decimal_string,
-	mExtractCycleTime: docs_json_ts_common_types_decimal_string,
-	mItemsPerCycle: docs_json_ts_common_types_integer_string,
-	mOnlyAllowCertainResources?: docs_json_ts_common_types_bool_string,
-};
-
 type FGBuildableResourceExtractor_miner = docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_miner_base & FGBuildableResourceExtractor_miner_base & FGBuildableResourceExtractor_timed & docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_only_allow_certain_resources & FGBuildableResourceExtractor_piped & FGBuildable_powered_base_resources_base & FGBuildableResourceExtractor_base & FGBuildable_powered_base_resources;
 
 type FGBuildableResourceExtractor_miner_base = {
@@ -756,6 +748,19 @@ type FGBuildableResourceExtractor_oil_base_base_base = {
 type FGBuildableResourceExtractor_only_allow_certain_resources = {
 	mOnlyAllowCertainResources: docs_json_ts_common_types_bool_string,
 	mExtractorTypeName: 'None' | 'Miner',
+};
+
+type FGBuildableResourceExtractor_piped = {
+	mPipeOutputConnections: '',
+	mReplicatedFlowRate: docs_json_ts_common_types_decimal_string,
+};
+
+type FGBuildableResourceExtractor_timed = {
+	mExtractStartupTime: docs_json_ts_common_types_decimal_string_signed,
+	mExtractStartupTimer: docs_json_ts_common_types_decimal_string,
+	mExtractCycleTime: docs_json_ts_common_types_decimal_string,
+	mItemsPerCycle: docs_json_ts_common_types_integer_string,
+	mOnlyAllowCertainResources?: docs_json_ts_common_types_bool_string,
 };
 
 type FGBuildableResourceExtractor_water = FGBuildableResourceExtractor & FGBuildableResourceExtractor_water_base & FGBuildable_powered;
@@ -929,6 +934,10 @@ type FGBuildableTrainPlatformCargo = FGBuildableTrainPlatformCargo_base & FGBuil
 
 type FGBuildableTrainPlatformCargo_base = FGBuildableTrainPlatform_with_storage_base_base_base & FGBuildableTrainPlatformCargo_pre_update8 & FGBuildableTrainPlatformCargo_version_specific & FGBuildableTrainPlatform_with_storage_base;
 
+type FGBuildableTrainPlatformCargo_pre_update8 = {
+	mPotentialDockers: '',
+};
+
 type FGBuildableTrainPlatformCargo_version_specific = {
 	mFreightCargoType: 'FCT_Standard' | 'FCT_Liquid',
 	mCanUnloadAny: docs_json_ts_common_types_bool_string,
@@ -946,10 +955,6 @@ type FGBuildableTrainPlatformCargo_version_specific = {
 	mSwapCargoVisibilityTimerHandle: docs_json_ts_common_types_empty_object,
 	mReplicatedOutflowRate: docs_json_ts_common_types_decimal_string,
 	mReplicatedInflowRate: docs_json_ts_common_types_decimal_string,
-};
-
-type FGBuildableTrainPlatformCargo_pre_update8 = {
-	mPotentialDockers: '',
 };
 
 type FGBuildableWire = FGBuildableWire_base & FGBuildable_base_version_specific & FGBuildable;
@@ -1067,26 +1072,26 @@ type FGEquipment = FGEquipment_base & {
 
 type FGEquipment_base = hasClassName & docs_json_ts_0_3_7_7_classes_base_overridable_FGEquipment_version_specific & FGEquipment_has_mUseDefaultPrimaryFire & FGEquipment_has_mEquipmentSlot;
 
-type FGEquipment_has_mUseDefaultPrimaryFire = {
-	mUseDefaultPrimaryFire: docs_json_ts_common_types_bool_string,
-};
-
 type FGEquipment_dispenser = FGEquipment_has_mPlaceDistanceMax & FGEquipment;
 
-type FGEquipment_has_mPlaceDistanceMax = {
-	mPlaceDistanceMax: docs_json_ts_common_types_decimal_string,
+type FGEquipment_has_mEquipmentSlot = {
+	mEquipmentSlot: 'ES_ARMS' | 'ES_BACK',
 };
 
 type FGEquipment_has_mFilterDuration = {
 	mFilterDuration: docs_json_ts_common_types_decimal_string,
 };
 
-type FGEquipment_has_mEquipmentSlot = {
-	mEquipmentSlot: 'ES_ARMS' | 'ES_BACK',
+type FGEquipment_has_mPlaceDistanceMax = {
+	mPlaceDistanceMax: docs_json_ts_common_types_decimal_string,
 };
 
 type FGEquipment_has_mPlayingSound = {
 	mPlayingSound: docs_json_ts_common_types_bool_string,
+};
+
+type FGEquipment_has_mUseDefaultPrimaryFire = {
+	mUseDefaultPrimaryFire: docs_json_ts_common_types_bool_string,
 };
 
 type FGEquipment_has_effect_timer = {
@@ -1151,11 +1156,6 @@ type FGGolfCartDispenser = FGEquipment_dispenser & FGGolfCartDispenser_has_mArmA
 
 type FGGolfCartDispenser_has_mArmAnimation = {
 	mArmAnimation: 'AE_Generic2Hand',
-};
-
-type instructive = isNamed & {
-	FullName: docs_json_ts_0_3_7_7_properties_BlueprintGeneratedClass_non_quoted,
-	mRelevantEvents: null | docs_json_ts_0_3_7_7_properties_mRelevantEvents,
 };
 
 type FGItemDescriptorNuclearFuel = FGDescriptor_sinkable & FGItemDescriptorNuclearFuel_base;
@@ -1475,12 +1475,13 @@ type FGWeaponProjectileFire_has_mRandomReloadAnim = {
 
 export type {
 	hasClassName,
+	instructive,
 	isDescribed,
 	isNamed,
 	FGBuildable,
 	FGBuildable_base,
-	FGBuildable_base_version_specific,
 	FGBuildable_base_pre_update5,
+	FGBuildable_base_version_specific,
 	FGBuildable_DisableAttachmentSnapOn,
 	FGBuildable_docking_station,
 	FGBuildable_docking_station_base,
@@ -1657,8 +1658,6 @@ export type {
 	FGBuildableRailroadTrack_base,
 	FGBuildableResourceExtractor,
 	FGBuildableResourceExtractor_base,
-	FGBuildableResourceExtractor_piped,
-	FGBuildableResourceExtractor_timed,
 	FGBuildableResourceExtractor_miner,
 	FGBuildableResourceExtractor_miner_base,
 	FGBuildableResourceExtractor_miner_mk1,
@@ -1674,6 +1673,8 @@ export type {
 	FGBuildableResourceExtractor_oil_base_base,
 	FGBuildableResourceExtractor_oil_base_base_base,
 	FGBuildableResourceExtractor_only_allow_certain_resources,
+	FGBuildableResourceExtractor_piped,
+	FGBuildableResourceExtractor_timed,
 	FGBuildableResourceExtractor_water,
 	FGBuildableResourceExtractor_water_base,
 	FGBuildableResourceExtractor_water_base_base,
@@ -1719,8 +1720,8 @@ export type {
 	FGBuildableTrainPlatform_with_storage_base_base_base,
 	FGBuildableTrainPlatformCargo,
 	FGBuildableTrainPlatformCargo_base,
-	FGBuildableTrainPlatformCargo_version_specific,
 	FGBuildableTrainPlatformCargo_pre_update8,
+	FGBuildableTrainPlatformCargo_version_specific,
 	FGBuildableWire,
 	FGBuildableWire_base,
 	FGChainsaw,
@@ -1743,12 +1744,12 @@ export type {
 	FGDescriptor_sinkable_base,
 	FGEquipment,
 	FGEquipment_base,
-	FGEquipment_has_mUseDefaultPrimaryFire,
 	FGEquipment_dispenser,
-	FGEquipment_has_mPlaceDistanceMax,
-	FGEquipment_has_mFilterDuration,
 	FGEquipment_has_mEquipmentSlot,
+	FGEquipment_has_mFilterDuration,
+	FGEquipment_has_mPlaceDistanceMax,
 	FGEquipment_has_mPlayingSound,
+	FGEquipment_has_mUseDefaultPrimaryFire,
 	FGEquipment_has_effect_timer,
 	FGEquipment_has_mRandomStingerAnim,
 	FGEquipment_negates_damage,
@@ -1766,7 +1767,6 @@ export type {
 	FGGasMask_base,
 	FGGolfCartDispenser,
 	FGGolfCartDispenser_has_mArmAnimation,
-	instructive,
 	FGItemDescriptorNuclearFuel,
 	FGItemDescriptorNuclearFuel_base,
 	FGJetPack,

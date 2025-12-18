@@ -58,10 +58,7 @@
 			"typed_string": {
 				"type": "object",
 				"additionalProperties": false,
-				"required": [
-					"SlotName",
-					"Material"
-				],
+				"required": ["SlotName", "Material"],
 				"properties": {
 					"SlotName": {
 						"type": "string",
@@ -83,9 +80,7 @@
 			"type": "object",
 			"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--base",
 			"unevaluatedProperties": false,
-			"required": [
-				"mItemsToGive"
-			],
+			"required": ["mItemsToGive"],
 			"properties": {
 				"mItemsToGive": {
 					"$ref": "#/$defs/ItemClass-Amount--list"
@@ -96,9 +91,7 @@
 			"type": "object",
 			"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--base",
 			"unevaluatedProperties": false,
-			"required": [
-				"mRecipes"
-			],
+			"required": ["mRecipes"],
 			"properties": {
 				"mRecipes": {
 					"$ref": "#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
@@ -109,9 +102,7 @@
 			"type": "object",
 			"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--base",
 			"unevaluatedProperties": false,
-			"required": [
-				"mResourcesToAddToScanner"
-			],
+			"required": ["mResourcesToAddToScanner"],
 			"properties": {
 				"mResourcesToAddToScanner": {
 					"$ref": "#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
@@ -122,9 +113,7 @@
 			"type": "object",
 			"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--base",
 			"unevaluatedProperties": false,
-			"required": [
-				"mSchematics"
-			],
+			"required": ["mSchematics"],
 			"properties": {
 				"mSchematics": {
 					"$ref": "#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
@@ -169,10 +158,7 @@
 					"typed_string": {
 						"type": "object",
 						"additionalProperties": false,
-						"required": [
-							"ItemClass",
-							"Amount"
-						],
+						"required": ["ItemClass", "Amount"],
 						"properties": {
 							"ItemClass": {
 								"$ref": "#/$defs/BlueprintGeneratedClass--quoted"

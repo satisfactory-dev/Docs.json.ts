@@ -4,9 +4,7 @@
 	"$defs": {
 		"has--mSubCategories": {
 			"type": "object",
-			"required": [
-				"mSubCategories"
-			],
+			"required": ["mSubCategories"],
 			"properties": {
 				"mSubCategories": {
 					"oneOf": [
@@ -26,9 +24,7 @@
 			"typed_string": {
 				"type": "object",
 				"additionalProperties": false,
-				"required": [
-					"mMaterial"
-				],
+				"required": ["mMaterial"],
 				"properties": {
 					"mMaterial": {
 						"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/mAlternativeMaterialRecipes--mMaterial"
@@ -51,10 +47,7 @@
 				"properties": {
 					"CompatibleItemType": {
 						"type": "string",
-						"enum": [
-							"CIT_AMMO",
-							"CIT_WEAPON"
-						]
+						"enum": ["CIT_AMMO", "CIT_WEAPON"]
 					},
 					"CompatibleItemDescriptors": {
 						"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
@@ -67,9 +60,7 @@
 			"typed_string": {
 				"type": "object",
 				"additionalProperties": false,
-				"required": [
-					"ActorClass"
-				],
+				"required": ["ActorClass"],
 				"properties": {
 					"ActorClass": {
 						"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/BlueprintGeneratedClass--quoted"
@@ -217,10 +208,7 @@
 		"mUnlocks--item--mTapeUnlocks": {
 			"type": "object",
 			"additionalProperties": false,
-			"required": [
-				"Class",
-				"mTapeUnlocks"
-			],
+			"required": ["Class", "mTapeUnlocks"],
 			"properties": {
 				"Class": {
 					"type": "string",
@@ -247,9 +235,7 @@
 			"typed_string": {
 				"type": "object",
 				"additionalProperties": false,
-				"required": [
-					"ItemClass"
-				],
+				"required": ["ItemClass"],
 				"properties": {
 					"ItemClass": {
 						"type": "string",

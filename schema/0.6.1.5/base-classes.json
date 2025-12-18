@@ -2084,6 +2084,15 @@
 				}
 			}
 		},
+		"FGSchematic--version-specific": {
+			"type": "object",
+			"required": ["mHiddenUntilDependenciesMet"],
+			"properties": {
+				"mHiddenUntilDependenciesMet": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
+		},
 		"FGSchematic--with-described-unlocks": {
 			"allOf": [
 				{
@@ -2093,17 +2102,6 @@
 					"$ref": "#/$defs/FGSchematic--base"
 				}
 			]
-		},
-		"FGSchematic--version-specific": {
-			"type": "object",
-			"required": [
-				"mHiddenUntilDependenciesMet"
-			],
-			"properties": {
-				"mHiddenUntilDependenciesMet": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				}
-			}
 		},
 		"FGSuitBase": {
 			"allOf": [

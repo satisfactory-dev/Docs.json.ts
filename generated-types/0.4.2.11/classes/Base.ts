@@ -108,18 +108,6 @@ import type {
 } from './../../0.3.7.7/classes/Base.ts';
 
 import type {
-	BGRA as docs_json_ts_common_types_BGRA,
-	bool_string as docs_json_ts_common_types_bool_string,
-	decimal_string as docs_json_ts_common_types_decimal_string,
-	empty_object as docs_json_ts_common_types_empty_object,
-	integer_string as docs_json_ts_common_types_integer_string,
-	RGBA as docs_json_ts_common_types_RGBA,
-	XY_decimal_string as docs_json_ts_common_types_XY_decimal_string,
-	XYZ_decimal_string as docs_json_ts_common_types_XYZ_decimal_string,
-	XYZ_decimal_string_list as docs_json_ts_common_types_XYZ_decimal_string_list,
-} from './../../common/types.ts';
-
-import type {
 	FGRailroadTrackConnectionComponent_quoted as docs_json_ts_0_4_2_11_properties_FGRailroadTrackConnectionComponent_quoted,
 	mAllowedResourceForms as docs_json_ts_0_4_2_11_properties_mAllowedResourceForms,
 	mFogPlaneTransforms_empty as docs_json_ts_0_4_2_11_properties_mFogPlaneTransforms_empty,
@@ -131,6 +119,18 @@ import type {
 	Tier as docs_json_ts_0_4_2_11_properties_Tier,
 	TintColor as docs_json_ts_0_4_2_11_properties_TintColor,
 } from './../types/properties.ts';
+
+import type {
+	BGRA as docs_json_ts_common_types_BGRA,
+	bool_string as docs_json_ts_common_types_bool_string,
+	decimal_string as docs_json_ts_common_types_decimal_string,
+	empty_object as docs_json_ts_common_types_empty_object,
+	integer_string as docs_json_ts_common_types_integer_string,
+	RGBA as docs_json_ts_common_types_RGBA,
+	XY_decimal_string as docs_json_ts_common_types_XY_decimal_string,
+	XYZ_decimal_string as docs_json_ts_common_types_XYZ_decimal_string,
+	XYZ_decimal_string_list as docs_json_ts_common_types_XYZ_decimal_string_list,
+} from './../../common/types.ts';
 
 import type {
 	FGBuildableResourceExtractor_miner_base as docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_miner_base,
@@ -152,13 +152,13 @@ type FGBuildable = docs_json_ts_0_3_7_7_classes_base_FGBuildable_base_pre_update
 
 type FGBuildable_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_base_version_specific & docs_json_ts_0_3_7_7_classes_base_FGBuildable_base & FGBuildable_base_pre_update8;
 
+type FGBuildable_base_pre_update5 = {
+	mFogPlaneTransforms: docs_json_ts_0_4_2_11_properties_mFogPlaneTransforms_empty | docs_json_ts_0_4_2_11_properties_mFogPlaneTransforms_list,
+};
+
 type FGBuildable_base_pre_update8 = {
 	mToggleDormancyOnInteraction: docs_json_ts_common_types_bool_string,
 	mShouldModifyWorldGrid: docs_json_ts_common_types_bool_string,
-};
-
-type FGBuildable_base_pre_update5 = {
-	mFogPlaneTransforms: docs_json_ts_0_4_2_11_properties_mFogPlaneTransforms_empty | docs_json_ts_0_4_2_11_properties_mFogPlaneTransforms_list,
 };
 
 type FGBuildable_base_version_specific = {
@@ -169,6 +169,10 @@ type FGBuildable_base_version_specific = {
 type FGBuildable_docking_station = FGBuildable_docking_station_base & FGBuildable_powered_storage;
 
 type FGBuildable_docking_station_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_docking_station_base & FGBuildable_powered_storage_base;
+
+type FGBuildable_has_mCachedSkeletalMeshes = {
+	mCachedSkeletalMeshes: '',
+};
 
 type FGBuildable_light_related_thing = FGBuildable_light_related_thing_base & FGBuildable;
 
@@ -201,10 +205,6 @@ type FGBuildable_powered = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered
 
 type FGBuildable_powered_base = {
 	mOnProductionStatusChanged: docs_json_ts_common_types_empty_object,
-};
-
-type FGBuildable_has_mCachedSkeletalMeshes = {
-	mCachedSkeletalMeshes: '',
 };
 
 type FGBuildable_powered_has_mAllowedResourceForms = FGBuildable_powered_has_mAllowedResourceForms_base & FGBuildable_powered;
@@ -714,21 +714,7 @@ type FGRecipe_version_specific = {
 
 type FGResourceDescriptor = docs_json_ts_0_3_7_7_classes_base_FGResourceDescriptor_base & FGDescriptor_sinkable;
 
-type FGSchematic_has_mUnlocks = {
-	mUnlocks: [
-		...docs_json_ts_0_3_7_7_properties_mUnlocks_item_base[],
-	],
-};
-
 type FGSchematic_base = FGSchematic_has_mSmallSchematicIcon & FGSchematic_has_mTechTier & FGSchematic_has_mSchematicIcon & FGSchematic_has_mUnlocks & FGSchematic_has_mMenuPriority;
-
-type FGSchematic_has_mSmallSchematicIcon = {
-	mSmallSchematicIcon: 'None' | docs_json_ts_0_3_7_7_properties_Texture2D_base,
-};
-
-type FGSchematic_has_mTechTier = {
-	mTechTier: docs_json_ts_0_4_2_11_properties_Tier,
-};
 
 type FGSchematic_has_mMenuPriority = {
 	mMenuPriority: docs_json_ts_common_types_decimal_string,
@@ -747,6 +733,20 @@ type FGSchematic_has_mSchematicIcon = {
 		},
 		DrawAs: 'Image',
 	},
+};
+
+type FGSchematic_has_mSmallSchematicIcon = {
+	mSmallSchematicIcon: 'None' | docs_json_ts_0_3_7_7_properties_Texture2D_base,
+};
+
+type FGSchematic_has_mTechTier = {
+	mTechTier: docs_json_ts_0_4_2_11_properties_Tier,
+};
+
+type FGSchematic_has_mUnlocks = {
+	mUnlocks: [
+		...docs_json_ts_0_3_7_7_properties_mUnlocks_item_base[],
+	],
 };
 
 type FGSnowballWeapon = FGWeaponProjectile & docs_json_ts_0_3_7_7_classes_base_FGSnowballWeapon;
@@ -795,11 +795,12 @@ type FGWeaponProjectileFire_has_mMuteDryFire = {
 export type {
 	FGBuildable,
 	FGBuildable_base,
-	FGBuildable_base_pre_update8,
 	FGBuildable_base_pre_update5,
+	FGBuildable_base_pre_update8,
 	FGBuildable_base_version_specific,
 	FGBuildable_docking_station,
 	FGBuildable_docking_station_base,
+	FGBuildable_has_mCachedSkeletalMeshes,
 	FGBuildable_light_related_thing,
 	FGBuildable_light_related_thing_base,
 	FGBuildable_mHasPower,
@@ -810,7 +811,6 @@ export type {
 	FGBuildable_pole_with_length_and_power,
 	FGBuildable_powered,
 	FGBuildable_powered_base,
-	FGBuildable_has_mCachedSkeletalMeshes,
 	FGBuildable_powered_has_mAllowedResourceForms,
 	FGBuildable_powered_has_mAllowedResourceForms_base,
 	FGBuildable_powered_has_mAllowedResourceForms_with_resources,
@@ -954,12 +954,12 @@ export type {
 	FGRecipe_base_base,
 	FGRecipe_version_specific,
 	FGResourceDescriptor,
-	FGSchematic_has_mUnlocks,
 	FGSchematic_base,
-	FGSchematic_has_mSmallSchematicIcon,
-	FGSchematic_has_mTechTier,
 	FGSchematic_has_mMenuPriority,
 	FGSchematic_has_mSchematicIcon,
+	FGSchematic_has_mSmallSchematicIcon,
+	FGSchematic_has_mTechTier,
+	FGSchematic_has_mUnlocks,
 	FGSnowballWeapon,
 	FGVehicleDescriptor_fueled,
 	FGVehicleDescriptor_fueled_with_inventory,

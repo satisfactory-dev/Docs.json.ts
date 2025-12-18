@@ -4,9 +4,7 @@
 	"$defs": {
 		"has--mBatteryClasses": {
 			"type": "object",
-			"required": [
-				"mBatteryClasses"
-			],
+			"required": ["mBatteryClasses"],
 			"properties": {
 				"mBatteryClasses": {
 					"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
@@ -71,19 +69,14 @@
 							"typed_string": {
 								"type": "object",
 								"additionalProperties": false,
-								"required": [
-									"ResourceDescriptor"
-								],
+								"required": ["ResourceDescriptor"],
 								"properties": {
 									"ResourceDescriptor": {
 										"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/BlueprintGeneratedClass--quoted"
 									},
 									"ResourceNodeType": {
 										"type": "string",
-										"enum": [
-											"Geyser",
-											"FrackingCore"
-										]
+										"enum": ["Geyser", "FrackingCore"]
 									}
 								}
 							}
