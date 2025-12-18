@@ -12,6 +12,11 @@ import common_types from '../../../schema/common/types.json' with {
 	type: 'json',
 };
 
+// eslint-disable-next-line @stylistic/max-len
+import update3_overridable from '../../../schema/0.3.7.7/overridable.json' with {
+	type: 'json',
+};
+
 import update3_properties from '../../../schema/0.3.7.7/properties.json' with {
 	type: 'json',
 };
@@ -22,6 +27,11 @@ import update3_classes from '../../../schema/0.3.7.7/classes.json' with {
 
 // eslint-disable-next-line @stylistic/max-len
 import update3_classes__base from '../../../schema/0.3.7.7/base-classes.json' with {
+	type: 'json',
+};
+
+// eslint-disable-next-line @stylistic/max-len
+import update3_classes__base__overridable from '../../../schema/0.3.7.7/base-classes.overridable.json' with {
 	type: 'json',
 };
 
@@ -76,7 +86,9 @@ const already_configured: WeakSet<SchemaParser> = new WeakSet();
 
 export function add_schemas(parser: SchemaParser) {
 	parser.add_schema(common_types);
+	parser.add_schema(update3_overridable);
 	parser.add_schema(update3_properties);
+	parser.add_schema(update3_classes__base__overridable);
 	parser.add_schema(update3_classes__base as SchemaObjectWith$id);
 	parser.add_schema(update3_classes);
 	parser.add_schema(update3);

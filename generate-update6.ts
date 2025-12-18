@@ -18,7 +18,16 @@ import {
 	configure_parser,
 } from './src/version-specific/0.6.1.5/SchemaParser.ts';
 
+import update6_overridable from './schema/0.6.1.5/overridable.json' with {
+	type: 'json',
+};
+
 import update6_properties from './schema/0.6.1.5/properties.json' with {
+	type: 'json',
+};
+
+// eslint-disable-next-line @stylistic/max-len
+import update6_classes__base__overridable from './schema/0.6.1.5/base-classes.overridable.json' with {
 	type: 'json',
 };
 
@@ -27,6 +36,11 @@ import update6_classes__base from './schema/0.6.1.5/base-classes.json' with {
 };
 
 import update6_classes from './schema/0.6.1.5/classes.json' with {
+	type: 'json',
+};
+
+// eslint-disable-next-line @stylistic/max-len
+import update6_classes__overridable from './schema/0.6.1.5/classes.overridable.json' with {
 	type: 'json',
 };
 
@@ -114,9 +128,12 @@ async function* get_results_from_data_schema(
 const results: processed_results = [];
 
 for (const schema of [
+	update6_overridable,
 	update6_properties,
 	update6_classes__base,
+	update6_classes__base__overridable,
 	update6_classes,
+	update6_classes__overridable,
 	update6,
 ]) {
 	console.log(`getting results for ${schema.$id}`);

@@ -106,6 +106,10 @@ import type {
 	FGWeapon_Equip_Rifle_C as docs_json_ts_0_8_3_3_classes_base_FGWeapon_Equip_Rifle_C,
 } from './classes/Base.ts';
 
+import type {
+	FGItemDescriptorNuclearFuel as docs_json_ts_0_6_1_5_classes_base_overridable_FGItemDescriptorNuclearFuel,
+} from './../0.6.1.5/classes/Base.0.8.3.3.ts';
+
 type FGAmmoTypeInstantHit_Desc_CartridgeChaos_C = docs_json_ts_0_8_3_3_classes_base_FGAmmoTypeInstantHit_Desc_CartridgeChaos_C;
 
 type FGAmmoTypeInstantHit_Desc_CartridgeStandard_C = docs_json_ts_0_8_3_3_classes_base_FGAmmoTypeInstantHit_Desc_CartridgeStandard_C;
@@ -298,6 +302,8 @@ type FGGolfCartDispenser = docs_json_ts_0_8_3_3_classes_base_FGGolfCartDispenser
 
 type FGHoverPack = docs_json_ts_0_8_3_3_classes_base_FGHoverPack;
 
+type FGItemDescriptorNuclearFuel = docs_json_ts_0_6_1_5_classes_base_overridable_FGItemDescriptorNuclearFuel;
+
 type FGJetPack = docs_json_ts_0_8_3_3_classes_base_FGJetPack;
 
 type FGJumpingStilts = docs_json_ts_0_8_3_3_classes_base_FGJumpingStilts;
@@ -417,6 +423,7 @@ export type {
 	FGGasMask,
 	FGGolfCartDispenser,
 	FGHoverPack,
+	FGItemDescriptorNuclearFuel,
 	FGJetPack,
 	FGJumpingStilts,
 	FGObjectScanner,

@@ -11,9 +11,6 @@
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGDescriptor--sinkable"
 				},
 				{
-					"$ref": "#/$defs/FGItemDescriptor--base"
-				},
-				{
 					"$ref": "#/$defs/FGAmmoType--version-specific"
 				}
 			]
@@ -84,11 +81,9 @@
 				"mDispersionPerShot",
 				"mRestingDispersion",
 				"mFiringDispersion",
-				"mMagazineMeshMaterials",
 				"mMuzzleFlashScale",
 				"mAmmoColor",
-				"mAmmoScale",
-				"mAmmoDamageFalloff"
+				"mAmmoScale"
 			],
 			"properties": {
 				"mFiringDirection": {
@@ -118,123 +113,6 @@
 				"mDispersionRecoveryTime": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
-				"mMagazineMeshMaterials": {
-					"oneOf": [
-						{
-							"type": "string",
-							"typed_string": ""
-						},
-						{
-							"type": "string",
-							"typed_string": {
-								"type": "array",
-								"minItems": 1,
-								"uniqueItems": true,
-								"items": {
-									"type": "string",
-									"typed_string": {
-										"type": "object",
-										"additionalProperties": false,
-										"required": [
-											"MaterialInterface",
-											"MaterialSlotName",
-											"ImportedMaterialSlotName",
-											"UVChannelData"
-										],
-										"properties": {
-											"MaterialInterface": {
-												"oneOf": [
-													{
-														"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/MaterialInstanceConstant--quoted"
-													},
-													{
-														"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/Material--quoted"
-													}
-												]
-											},
-											"MaterialSlotName": {
-												"type": "string",
-												"enum": [
-													"lambert1",
-													"Rifle",
-													"lambert9_001",
-													"lambert10",
-													"lambert2",
-													"Material_003",
-													"Material_002",
-													"Rocket1",
-													"Rocket2",
-													"01 - Default"
-												]
-											},
-											"ImportedMaterialSlotName": {
-												"type": "string",
-												"enum": [
-													"lambert1",
-													"Rifle",
-													"lambert9_001",
-													"lambert10",
-													"lambert2",
-													"Material_003",
-													"Material_002",
-													"Rocket1",
-													"Rocket2",
-													"01 - Default"
-												]
-											},
-											"UVChannelData": {
-												"oneOf": [
-													{
-														"type": "string",
-														"typed_string": {
-															"type": "object",
-															"additionalProperties": false,
-															"required": [
-																"bInitialized",
-																"LocalUVDensities[0]"
-															],
-															"properties": {
-																"bInitialized": {
-																	"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-																},
-																"LocalUVDensities[0]": {
-																	"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-																}
-															}
-														}
-													},
-													{
-														"type": "string",
-														"typed_string": {
-															"type": "object",
-															"additionalProperties": false,
-															"required": [
-																"bInitialized",
-																"LocalUVDensities[0]",
-																"LocalUVDensities[1]"
-															],
-															"properties": {
-																"bInitialized": {
-																	"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-																},
-																"LocalUVDensities[0]": {
-																	"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-																},
-																"LocalUVDensities[1]": {
-																	"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-																}
-															}
-														}
-													}
-												]
-											}
-										}
-									}
-								}
-							}
-						}
-					]
-				},
 				"mMuzzleFlashScale": {
 					"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
 				},
@@ -243,16 +121,6 @@
 				},
 				"mAmmoScale": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mAmmoDamageFalloff": {
-					"oneOf": [
-						{
-							"$ref": "docs.json.ts--0.5.2.1--properties#/$defs/FalloffCurve--EditorCurveData--only"
-						},
-						{
-							"$ref": "docs.json.ts--0.5.2.1--properties#/$defs/FalloffCurve--EditorCurveData--with-ExternalCurve"
-						}
-					]
 				}
 			}
 		},
@@ -262,7 +130,13 @@
 					"$ref": "#/$defs/FGAmmoType--base"
 				},
 				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGAmmoType--base"
+				},
+				{
 					"$ref": "#/$defs/FGAmmoType--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGAmmoType--version-specific"
 				},
 				{
 					"$ref": "#/$defs/FGAmmoTypeInstantHit--version-specific"
@@ -293,7 +167,13 @@
 					"$ref": "#/$defs/FGAmmoType--base"
 				},
 				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGAmmoType--base"
+				},
+				{
 					"$ref": "#/$defs/FGAmmoType--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGAmmoType--version-specific"
 				},
 				{
 					"$ref": "#/$defs/FGAmmoTypeInstantHit--version-specific"
@@ -318,6 +198,9 @@
 					"$ref": "#/$defs/FGAmmoType--base"
 				},
 				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGAmmoType--base"
+				},
+				{
 					"$ref": "#/$defs/FGAmmoType--pre-update8"
 				},
 				{
@@ -325,6 +208,9 @@
 				},
 				{
 					"$ref": "#/$defs/FGAmmoTypeProjectile--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGAmmoTypeProjectile--version-specific"
 				}
 			]
 		},
@@ -380,8 +266,7 @@
 				"mHomingMagnitudeMultiplierOverLifespan",
 				"mHomingMagnitudeMultiplierOverDistanceToTarget",
 				"mHomingOverlapSize",
-				"mHomingAngleLimit",
-				"mHomingOverrideTargets"
+				"mHomingAngleLimit"
 			],
 			"properties": {
 				"mInitialProjectileSpeedOverride": {
@@ -425,35 +310,6 @@
 				},
 				"mHomingAngleLimit": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mHomingOverrideTargets": {
-					"oneOf": [
-						{
-							"type": "string",
-							"typed_string": ""
-						},
-						{
-							"type": "string",
-							"typed_string": {
-								"type": "array",
-								"minItems": 1,
-								"uniqueItems": true,
-								"items": {
-									"type": "string",
-									"typed_string": {
-										"type": "object",
-										"additionalProperties": false,
-										"required": ["ActorClass"],
-										"properties": {
-											"ActorClass": {
-												"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/BlueprintGeneratedClass--quoted"
-											}
-										}
-									}
-								}
-							}
-						}
-					]
 				}
 			}
 		},
@@ -464,6 +320,9 @@
 				},
 				{
 					"$ref": "#/$defs/FGAmmoType--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGAmmoType--base"
 				},
 				{
 					"$ref": "#/$defs/FGAmmoTypeSpreadshot--version-specific"
@@ -505,6 +364,9 @@
 		"FGBuildable--base": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGBuildable--base--version-specific"
+				},
+				{
 					"$ref": "#/$defs/FGBuildable--base--pre-update8"
 				},
 				{
@@ -516,73 +378,6 @@
 			]
 		},
 		"FGBuildable--base--pre-update8": {
-			"type": "object",
-			"required": [
-				"mAlternativeMaterialRecipes",
-				"mAllowPatterning",
-				"mAffectsOcclusion",
-				"mOcclusionShape",
-				"mScaleCustomOffset",
-				"mCustomScaleType"
-			],
-			"properties": {
-				"mAlternativeMaterialRecipes": {
-					"oneOf": [
-						{
-							"type": "string",
-							"typed_string": ""
-						},
-						{
-							"type": "string",
-							"typed_string": {
-								"type": "array",
-								"minItems": 1,
-								"uniqueItems": true,
-								"items": {
-									"type": "string",
-									"typed_string": {
-										"type": "object",
-										"additionalProperties": false,
-										"required": ["mMaterial"],
-										"properties": {
-											"mMaterial": {
-												"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/mAlternativeMaterialRecipes--mMaterial"
-											},
-											"mRecipe": {
-												"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/mAlternativeMaterialRecipes--mRecipe"
-											}
-										}
-									}
-								}
-							}
-						}
-					]
-				},
-				"mAllowPatterning": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mAffectsOcclusion": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mOcclusionShape": {
-					"type": "string",
-					"enum": [
-						"ROCS_Box",
-						"ROCS_Ramp",
-						"ROCS_Box_Special",
-						"ROCS_CornerRamp"
-					]
-				},
-				"mScaleCustomOffset": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mCustomScaleType": {
-					"type": "string",
-					"enum": ["ROCSS_Center", "ROCSS_Top", "ROCSS_Bot"]
-				}
-			}
-		},
-		"FGBuildable--base--version-specific": {
 			"type": "object",
 			"required": ["mOcclusionBoxInfo"],
 			"properties": {
@@ -621,6 +416,40 @@
 							}
 						}
 					]
+				}
+			}
+		},
+		"FGBuildable--base--version-specific": {
+			"type": "object",
+			"required": [
+				"mAllowPatterning",
+				"mAffectsOcclusion",
+				"mOcclusionShape",
+				"mScaleCustomOffset",
+				"mCustomScaleType"
+			],
+			"properties": {
+				"mAllowPatterning": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mAffectsOcclusion": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mOcclusionShape": {
+					"type": "string",
+					"enum": [
+						"ROCS_Box",
+						"ROCS_Ramp",
+						"ROCS_Box_Special",
+						"ROCS_CornerRamp"
+					]
+				},
+				"mScaleCustomOffset": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mCustomScaleType": {
+					"type": "string",
+					"enum": ["ROCSS_Center", "ROCSS_Top", "ROCSS_Bot"]
 				}
 			}
 		},
@@ -675,7 +504,7 @@
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildable--powered--base--base"
 				},
 				{
-					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--powered--base--base"
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--has--mCachedSkeletalMeshes"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--base"
@@ -796,7 +625,10 @@
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableDockingStation--base"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--docking-station--base--base"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--docking-station--base--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered-storage--base--base"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableDockingStation--with--mFuelTransferSpeed"
@@ -910,6 +742,9 @@
 					"$ref": "#/$defs/FGBuildableFoundation--version-specific"
 				},
 				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGBuildable--base--version-specific"
+				},
+				{
 					"$ref": "#/$defs/FGBuildable--base--pre-update8"
 				},
 				{
@@ -958,10 +793,10 @@
 		"FGBuildableFrackingExtractor": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--base--base--timed"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--timed"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--base--base--base--piped"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--piped"
 				},
 				{
 					"$ref": "#/$defs/FGBuildableResourceExtractor--base--version-specific"
@@ -1339,13 +1174,16 @@
 					"$ref": "#/$defs/FGBuildable--powered"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableRadarTower--base"
+					"$ref": "#/$defs/FGBuildableRadarTower--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGBuildableRadarTower--version-specific"
 				}
 			]
 		},
-		"FGBuildableRadarTower--base": {
+		"FGBuildableRadarTower--version-specific": {
 			"type": "object",
-			"required": ["mMapText", "mRevealRadius", "mScannableDescriptors"],
+			"required": ["mMapText", "mRevealRadius"],
 			"properties": {
 				"mMapText": {
 					"type": "string",
@@ -1353,9 +1191,6 @@
 				},
 				"mRevealRadius": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mScannableDescriptors": {
-					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
 				}
 			}
 		},
@@ -1444,7 +1279,10 @@
 		"FGBuildableResourceExtractor--base--base": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--base--base--base"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGBuildableResourceExtractor--only-allow-certain-resources"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--piped"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--base--resources--base"
@@ -1457,7 +1295,7 @@
 		"FGBuildableResourceExtractor--base--untimed": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--base--base--base--base"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGBuildableResourceExtractor--only-allow-certain-resources"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--powered"
@@ -1476,7 +1314,6 @@
 		},
 		"FGBuildableResourceExtractor--base--version-specific--base": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--base--base--base--base--base",
 			"required": ["mTryFindMissingResource", "mAllowedResourceForms"],
 			"properties": {
 				"mTryFindMissingResource": {
@@ -1715,19 +1552,6 @@
 				}
 			}
 		},
-		"FGConsumableDescriptor": {
-			"allOf": [
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGConsumableDescriptor--base"
-				},
-				{
-					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGDescriptor--sinkable--base"
-				},
-				{
-					"$ref": "#/$defs/FGItemDescriptor--base"
-				}
-			]
-		},
 		"FGConsumableEquipment": {
 			"allOf": [
 				{
@@ -1890,7 +1714,7 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGGasMask--base"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment--filtered"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment--has--mFilterDuration"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment--has-effect-timer"
@@ -1941,193 +1765,7 @@
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGDescriptor--sinkable--base"
 				},
 				{
-					"$ref": "#/$defs/FGItemDescriptor--base"
-				}
-			]
-		},
-		"FGItemDescriptor--base": {
-			"allOf": [
-				{
-					"$ref": "#/$defs/FGDescriptor"
-				},
-				{
-					"$ref": "#/$defs/FGItemDescriptor--version-specific"
-				}
-			]
-		},
-		"FGItemDescriptor--version-specific": {
-			"type": "object",
-			"required": [
-				"mCrosshairMaterial",
-				"mDescriptorStatBars",
-				"mCompatibleItemDescriptors",
-				"mClassToScanFor",
-				"mScannableType",
-				"mShouldOverrideScannerDisplayText",
-				"mScannerDisplayText",
-				"mScannerLightColor",
-				"mMenuPriority",
-				"mSubCategories"
-			],
-			"properties": {
-				"mCrosshairMaterial": {
-					"oneOf": [
-						{
-							"type": "string",
-							"const": "None"
-						},
-						{
-							"type": "string",
-							"templated_string": [
-								"/Game/FactoryGame/Interface/UI/Material/Crosshairs/MI_UI_Crosshair_",
-								{
-									"type": "string",
-									"minLength": 1
-								},
-								".MI_UI_Crosshair_",
-								{
-									"type": "string",
-									"minLength": 1
-								}
-							]
-						}
-					]
-				},
-				"mDescriptorStatBars": {
-					"oneOf": [
-						{
-							"type": "string",
-							"typed_string": ""
-						},
-						{
-							"type": "string",
-							"typed_string": {
-								"type": "array",
-								"minItems": 1,
-								"uniqueItems": true,
-								"items": {
-									"type": "string",
-									"typed_string": {
-										"type": "object",
-										"additionalProperties": false,
-										"required": ["Value"],
-										"properties": {
-											"Value": {
-												"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-											}
-										}
-									}
-								}
-							}
-						}
-					]
-				},
-				"mCompatibleItemDescriptors": {
-					"oneOf": [
-						{
-							"type": "string",
-							"typed_string": ""
-						},
-						{
-							"type": "string",
-							"typed_string": {
-								"type": "array",
-								"minItems": 1,
-								"uniqueItems": true,
-								"items": {
-									"type": "string",
-									"typed_string": {
-										"type": "object",
-										"additionalProperties": false,
-										"required": [
-											"CompatibleItemType",
-											"CompatibleItemDescriptors"
-										],
-										"properties": {
-											"CompatibleItemType": {
-												"type": "string",
-												"enum": [
-													"CIT_AMMO",
-													"CIT_WEAPON"
-												]
-											},
-											"CompatibleItemDescriptors": {
-												"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
-											}
-										}
-									}
-								}
-							}
-						}
-					]
-				},
-				"mClassToScanFor": {
-					"oneOf": [
-						{
-							"type": "string",
-							"const": "None"
-						},
-						{
-							"type": "string",
-							"templated_string": [
-								"/Game/FactoryGame/",
-								["Resource/Environment/", "World/Benefit/"],
-								{"type": "string"},
-								"/BP_",
-								{
-									"type": "string",
-									"minLength": 1
-								},
-								".BP_",
-								{
-									"type": "string",
-									"minLength": 1
-								}
-							]
-						}
-					]
-				},
-				"mScannableType": {
-					"type": "string",
-					"enum": [
-						"RTWOT_Default",
-						"RTWOT_WeakSignal",
-						"RTWOT_Flora"
-					]
-				},
-				"mShouldOverrideScannerDisplayText": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mScannerDisplayText": {"type": "string"},
-				"mScannerLightColor": {
-					"$ref": "docs.json.ts--common--types#/$defs/BGRA"
-				},
-				"mMenuPriority": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mSubCategories": {
-					"oneOf": [
-						{
-							"type": "string",
-							"typed_string": ""
-						},
-						{
-							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
-						}
-					]
-				}
-			}
-		},
-		"FGItemDescriptorNuclearFuel": {
-			"allOf": [
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGItemDescriptorNuclearFuel--base"
-				},
-				{
-					"$ref": "#/$defs/FGItemDescriptor--base"
-				},
-				{
-					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGItemDescriptorNuclearFuel--base"
+					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGItemDescriptor--base"
 				}
 			]
 		},
@@ -2177,7 +1815,7 @@
 		"FGNobeliskDetonator": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGNobeliskDetonator--base"
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGNobeliskDetonator--version-specific"
 				},
 				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGWeaponProjectile--has--mBlockSprintWhenFiring"
@@ -2189,7 +1827,10 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGNobeliskDetonator--base"
 				},
 				{
-					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGWeapon--base--base"
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGWeapon--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base.overridable#/$defs/FGWeapon--version-specific"
 				},
 				{
 					"$ref": "#/$defs/FGWeapon--base"
@@ -2214,17 +1855,17 @@
 					"$ref": "#/$defs/FGObjectScanner--version-specific"
 				},
 				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGObjectScanner--version-specific"
+				},
+				{
 					"$ref": "#/$defs/FGEquipment"
 				}
 			]
 		},
 		"FGObjectScanner--version-specific": {
 			"type": "object",
-			"required": ["mScannableDescriptors", "mObjectDetails"],
+			"required": ["mObjectDetails"],
 			"properties": {
-				"mScannableDescriptors": {
-					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
-				},
 				"mObjectDetails": {
 					"type": "string",
 					"typed_string": {
@@ -2245,7 +1886,7 @@
 								],
 								"properties": {
 									"ScannableClass": {
-										"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/BlueprintGeneratedClass--quoted"
+										"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/BlueprintGeneratedClass--quoted"
 									},
 									"DisplayText": {
 										"type": "string",
@@ -2306,22 +1947,6 @@
 				}
 			]
 		},
-		"FGRecipe": {
-			"allOf": [
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGRecipe--base"
-				},
-				{
-					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGRecipe--base--base"
-				},
-				{
-					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGRecipe--version-specific"
-				},
-				{
-					"$ref": "#/$defs/FGRecipe--version-specific"
-				}
-			]
-		},
 		"FGRecipe--version-specific": {
 			"type": "object",
 			"required": ["mProducedIn"],
@@ -2340,34 +1965,48 @@
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGDescriptor--sinkable"
 				},
 				{
-					"$ref": "#/$defs/FGItemDescriptor--base"
+					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGItemDescriptor--base"
 				}
 			]
 		},
 		"FGSchematic--base": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGSchematic--base--base"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/instructive"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGSchematic--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGSchematic--has--mMenuPriority"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGSchematic--has--mTechTier"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base.overridable#/$defs/FGSchematic--has--mSchematicDependencies"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base.overridable#/$defs/FGSchematic--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGSchematic--has--mSchematicIcon"
+				},
+				{
+					"$ref": "#/$defs/FGSchematic--pre-update8"
 				},
 				{
 					"$ref": "#/$defs/FGSchematic--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGSchematic--version-specific--mUnlocks"
 				}
 			]
 		},
-		"FGSchematic--base--base": {
-			"allOf": [
-				{
-					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGSchematic--base--base--props--sans-mSchematicIcon"
-				},
-				{
-					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGSchematic--base--base--base"
-				},
-				{
-					"$ref": "#/$defs/FGSchematic--base--base--props--with-mSchematicIcon"
-				}
-			]
-		},
-		"FGSchematic--base--base--props--with-mSchematicIcon": {
+		"FGSchematic--has--mSchematicIcon": {
 			"type": "object",
 			"required": ["mSchematicIcon"],
 			"properties": {
@@ -2394,7 +2033,7 @@
 								"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/TintColor"
 							},
 							"ResourceObject": {
-								"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/Texture2D--quoted"
+								"$ref": "docs.json.ts--0.4.2.11--overridable#/$defs/Texture2D--quoted"
 							},
 							"UVRegion": {
 								"type": "string",
@@ -2425,23 +2064,10 @@
 				}
 			}
 		},
-		"FGSchematic--version-specific": {
-			"allOf": [
-				{
-					"$ref": "#/$defs/FGSchematic--version-specific--base"
-				},
-				{
-					"$ref": "#/$defs/FGSchematic--version-specific--mUnlocks"
-				}
-			]
-		},
-		"FGSchematic--version-specific--base": {
+		"FGSchematic--pre-update8": {
 			"type": "object",
-			"required": ["mHiddenUntilDependenciesMet", "mCost"],
+			"required": ["mCost"],
 			"properties": {
-				"mHiddenUntilDependenciesMet": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
 				"mCost": {
 					"oneOf": [
 						{
@@ -2449,26 +2075,12 @@
 							"typed_string": ""
 						},
 						{
-							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/ItemClass-Amount--list"
+							"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/ItemClass-Amount--list"
 						},
 						{
-							"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/ItemClass--list"
+							"$ref": "docs.json.ts--0.6.1.5--overridable#/$defs/ItemClass--list"
 						}
 					]
-				}
-			}
-		},
-		"FGSchematic--version-specific--mUnlocks": {
-			"type": "object",
-			"required": ["mUnlocks"],
-			"properties": {
-				"mUnlocks": {
-					"type": "array",
-					"minItems": 0,
-					"maxItems": 6,
-					"items": {
-						"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/mUnlocks--item"
-					}
 				}
 			}
 		},
@@ -2482,10 +2094,21 @@
 				}
 			]
 		},
+		"FGSchematic--version-specific": {
+			"type": "object",
+			"required": [
+				"mHiddenUntilDependenciesMet"
+			],
+			"properties": {
+				"mHiddenUntilDependenciesMet": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
+		},
 		"FGSuitBase": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment--filtered"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment--has--mFilterDuration"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment--has-effect-timer"
@@ -2494,20 +2117,13 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment--negates-damage"
 				},
 				{
-					"$ref": "#/$defs/FGSuitBase--base"
-				},
-				{
-					"$ref": "#/$defs/FGSuitBase--version-specific"
-				}
-			]
-		},
-		"FGSuitBase--base": {
-			"allOf": [
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGSuitBase--base"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGSuitBase--base"
 				},
 				{
 					"$ref": "#/$defs/FGEquipment"
+				},
+				{
+					"$ref": "#/$defs/FGSuitBase--version-specific"
 				}
 			]
 		},
@@ -2531,9 +2147,6 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/isDescribed"
-				},
-				{
-					"$ref": "#/$defs/FGItemDescriptor--base"
 				}
 			]
 		},
@@ -2544,9 +2157,6 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/isDescribed"
-				},
-				{
-					"$ref": "#/$defs/FGItemDescriptor--base"
 				}
 			]
 		},
@@ -2557,9 +2167,6 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/isDescribed"
-				},
-				{
-					"$ref": "#/$defs/FGItemDescriptor--base"
 				}
 			]
 		},
@@ -2570,9 +2177,6 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/isDescribed"
-				},
-				{
-					"$ref": "#/$defs/FGItemDescriptor--base"
 				}
 			]
 		},
@@ -2583,9 +2187,6 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/isDescribed"
-				},
-				{
-					"$ref": "#/$defs/FGItemDescriptor--base"
 				}
 			]
 		},
@@ -2596,9 +2197,6 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/isDescribed"
-				},
-				{
-					"$ref": "#/$defs/FGItemDescriptor--base"
 				}
 			]
 		},
@@ -2609,9 +2207,6 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/isDescribed"
-				},
-				{
-					"$ref": "#/$defs/FGItemDescriptor--base"
 				}
 			]
 		},
@@ -2670,7 +2265,10 @@
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGWeaponProjectileFire--has--mMuteDryFire"
 				},
 				{
-					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGWeapon--base--base"
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGWeapon--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base.overridable#/$defs/FGWeapon--version-specific"
 				},
 				{
 					"$ref": "#/$defs/FGWeapon--base"
@@ -2716,7 +2314,10 @@
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGWeapon--Equip_Rifle_C--base"
 				},
 				{
-					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGWeapon--base--base"
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGWeapon--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base.overridable#/$defs/FGWeapon--version-specific"
 				},
 				{
 					"$ref": "#/$defs/FGWeapon--base"

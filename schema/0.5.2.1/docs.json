@@ -1256,7 +1256,7 @@
 					"type": "array",
 					"minItems": 1,
 					"items": {
-						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGCustomizationRecipe"
+						"$ref": "docs.json.ts--0.5.2.1--classes.overridable#/$defs/FGCustomizationRecipe"
 					}
 				}
 			}
@@ -1480,7 +1480,7 @@
 					"type": "array",
 					"minItems": 1,
 					"items": {
-						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGRecipe"
+						"$ref": "docs.json.ts--0.5.2.1--classes.overridable#/$defs/FGRecipe"
 					}
 				}
 			}

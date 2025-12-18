@@ -1,0 +1,122 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "docs.json.ts--0.5.2.1--overridable",
+	"$defs": {
+		"mRelevantShopSchematics": {
+			"oneOf": [
+				{
+					"type": "string",
+					"const": ""
+				},
+				{
+					"type": "string",
+					"typed_string": {
+						"type": "array",
+						"minItems": 1,
+						"uniqueItems": true,
+						"items": {
+							"oneOf": [
+								{
+									"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/BlueprintGeneratedClass--quoted"
+								},
+								{
+									"type": "string",
+									"const": "None"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		"mUnlocks--item": {
+			"oneOf": [
+				{
+					"type": "object",
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--base",
+					"unevaluatedProperties": false
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/mUnlocks--item--mRecipes"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mNumInventorySlotsToUnlock"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/mUnlocks--item--mSchematics"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/mUnlocks--item--mItemsToGive"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--overridable#/$defs/mUnlocks--item--mResourcePairsToAddToScanner"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/mUnlocks--item--mNumArmEquipmentSlotsToUnlock"
+				},
+				{
+					"$ref": "#/$defs/mUnlocks--item--mEmotes"
+				}
+			]
+		},
+		"mUnlocks--item--mEmotes": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--base",
+			"unevaluatedProperties": false,
+			"required": [
+				"mEmotes"
+			],
+			"properties": {
+				"mEmotes": {
+					"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
+				}
+			}
+		},
+		"FalloffCurve--EditorCurveData--with-ExternalCurve": {
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": [
+					"EditorCurveData",
+					"ExternalCurve"
+				],
+				"properties": {
+					"EditorCurveData": {
+						"type": "string",
+						"typed_string": {
+							"type": "object",
+							"additionalProperties": false,
+							"required": [
+								"DefaultValue",
+								"PreInfinityExtrap",
+								"PostInfinityExtrap"
+							],
+							"properties": {
+								"DefaultValue": {
+									"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+								},
+								"PreInfinityExtrap": {
+									"type": "string",
+									"const": "RCCE_Constant"
+								},
+								"PostInfinityExtrap": {
+									"type": "string",
+									"const": "RCCE_Constant"
+								}
+							}
+						}
+					},
+					"ExternalCurve": {
+						"type": "string",
+						"DocsDotJson_PrefixedString": {
+							"prefix": "CurveFloat",
+							"mode": "quoted",
+							"value": null
+						}
+					}
+				}
+			}
+		}
+	}
+}

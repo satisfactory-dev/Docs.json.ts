@@ -2,6 +2,11 @@ import type {
 	filenames_by_$id as guard,
 } from '../../FilenameAdjuster.ts';
 
+// eslint-disable-next-line @stylistic/max-len
+import update6_overridable from '../../../schema/0.6.1.5/overridable.json' with {
+	type: 'json',
+};
+
 import update6_properties from '../../../schema/0.6.1.5/properties.json' with {
 	type: 'json',
 };
@@ -11,7 +16,17 @@ import update6_classes__base from '../../../schema/0.6.1.5/base-classes.json' wi
 	type: 'json',
 };
 
+// eslint-disable-next-line @stylistic/max-len
+import update6_classes__base__overridable from '../../../schema/0.6.1.5/base-classes.overridable.json' with {
+	type: 'json',
+};
+
 import update6_classes from '../../../schema/0.6.1.5/classes.json' with {
+	type: 'json',
+};
+
+// eslint-disable-next-line @stylistic/max-len
+import update6_classes__overridable from '../../../schema/0.6.1.5/classes.overridable.json' with {
 	type: 'json',
 };
 
@@ -25,6 +40,18 @@ import {
 
 export const filenames_by_$id: guard = {
 	...previous,
+	[update6_overridable.$id]: {
+		types: './generated-types/0.6.1.5/types/overridable.ts',
+		data: './generated-types/0.6.1.5/data/overridable.ts',
+	},
+	[update6_classes__base__overridable.$id]: {
+		types: './generated-types/0.6.1.5/classes/Base.overridable.ts',
+		data: './generated-types/0.6.1.5/classes/Base.overridable.data.ts',
+	},
+	[update6_classes__overridable.$id]: {
+		types: './generated-types/0.6.1.5/classes/overridable.ts',
+		data: './generated-types/0.6.1.5/classes/overridable.data.ts',
+	},
 	[update6_properties.$id]: {
 		types: './generated-types/0.6.1.5/types/properties.ts',
 		data: './generated-types/0.6.1.5/data/properties.ts',

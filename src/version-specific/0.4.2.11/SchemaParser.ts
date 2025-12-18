@@ -9,6 +9,11 @@ import {
 } from '@signpostmarv/json-schema-typescript-codegen/ajv';
 
 // eslint-disable-next-line @stylistic/max-len
+import update4_overridable from '../../../schema/0.4.2.11/overridable.json' with {
+	type: 'json',
+};
+
+// eslint-disable-next-line @stylistic/max-len
 import update4_properties from '../../../schema/0.4.2.11/properties.json' with {
 	type: 'json',
 };
@@ -19,6 +24,11 @@ import update4_classes from '../../../schema/0.4.2.11/classes.json' with {
 
 // eslint-disable-next-line @stylistic/max-len
 import update4_classes__base from '../../../schema/0.4.2.11/base-classes.json' with {
+	type: 'json',
+};
+
+// eslint-disable-next-line @stylistic/max-len
+import update4_classes__base__overridable from '../../../schema/0.4.2.11/base-classes.overridable.json' with {
 	type: 'json',
 };
 
@@ -80,7 +90,9 @@ const already_configured: WeakSet<SchemaParser> = new WeakSet();
 export function add_schemas(parser: SchemaParser) {
 	add_schemas_update3(parser);
 
+	parser.add_schema(update4_overridable);
 	parser.add_schema(update4_properties);
+	parser.add_schema(update4_classes__base__overridable);
 	parser.add_schema(update4_classes__base as SchemaObjectWith$id);
 	parser.add_schema(update4_classes);
 	parser.add_schema(update4);

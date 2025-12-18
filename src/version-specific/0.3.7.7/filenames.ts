@@ -6,12 +6,22 @@ import common_types from '../../../schema/common/types.json' with {
 	type: 'json',
 };
 
+// eslint-disable-next-line @stylistic/max-len
+import update3_overridable from '../../../schema/0.3.7.7/overridable.json' with {
+	type: 'json',
+};
+
 import update3_properties from '../../../schema/0.3.7.7/properties.json' with {
 	type: 'json',
 };
 
 // eslint-disable-next-line @stylistic/max-len
 import update3_classes__base from '../../../schema/0.3.7.7/base-classes.json' with {
+	type: 'json',
+};
+
+// eslint-disable-next-line @stylistic/max-len
+import update3_classes__base__overridable from '../../../schema/0.3.7.7/base-classes.overridable.json' with {
 	type: 'json',
 };
 
@@ -28,9 +38,17 @@ export const filenames_by_$id: guard = {
 		types: './generated-types/common/types.ts',
 		data: './generated-types/common/data.ts',
 	},
+	[update3_overridable.$id]: {
+		types: './generated-types/0.3.7.7/types/overridable.ts',
+		data: './generated-types/0.3.7.7/data/overridable.ts',
+	},
 	[update3_properties.$id]: {
 		types: './generated-types/0.3.7.7/types/properties.ts',
 		data: './generated-types/0.3.7.7/data/properties.ts',
+	},
+	[update3_classes__base__overridable.$id]: {
+		types: './generated-types/0.3.7.7/classes/Base.overridable.ts',
+		data: './generated-types/0.3.7.7/classes/Base.data.overridable.ts',
 	},
 	[update3_classes__base.$id]: {
 		types: './generated-types/0.3.7.7/classes/Base.ts',

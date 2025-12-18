@@ -22,6 +22,11 @@ import update7_classes__base from './schema/0.7.1.1/base-classes.json' with {
 	type: 'json',
 };
 
+// eslint-disable-next-line @stylistic/max-len
+import update7_classes__base__overridable from './schema/0.7.1.1/base-classes.overridable.json' with {
+	type: 'json',
+};
+
 import update7_classes from './schema/0.7.1.1/classes.json' with {
 	type: 'json',
 };
@@ -110,6 +115,7 @@ async function* get_results_from_data_schema(
 const results: processed_results = [];
 
 for (const schema of [
+	update7_classes__base__overridable,
 	update7_classes__base,
 	update7_classes,
 	update7,

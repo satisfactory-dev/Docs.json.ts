@@ -1,0 +1,16 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "docs.json.ts--0.5.2.1--classes.overridable",
+	"$defs": {
+		"FGCustomizationRecipe": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.5.2.1--classes--base.overridable#/$defs/FGRecipe",
+			"unevaluatedProperties": false
+		},
+		"FGRecipe": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.5.2.1--classes--base.overridable#/$defs/FGRecipe",
+			"unevaluatedProperties": false
+		}
+	}
+}

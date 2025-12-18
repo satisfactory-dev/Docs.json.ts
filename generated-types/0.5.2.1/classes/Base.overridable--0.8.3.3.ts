@@ -1,0 +1,69 @@
+/* eslint-disable @stylistic/max-len */
+
+import type {
+	bool_string as docs_json_ts_common_types_bool_string,
+	decimal_string as docs_json_ts_common_types_decimal_string,
+} from './../../common/types.ts';
+
+import type {
+	DocsDotJson_BlueprintGeneratedClass_quoted_list as docs_json_ts_0_3_7_7_overridable_DocsDotJson_BlueprintGeneratedClass_quoted_list,
+	ItemClass_Amount_list as docs_json_ts_0_3_7_7_overridable_ItemClass_Amount_list,
+} from './../../0.3.7.7/types/overridable--0.8.3.3.ts';
+
+import type {
+	FGItemDescriptorNuclearFuel_base as docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_base,
+} from './../../0.3.7.7/classes/Base.ts';
+
+import type {
+	FGItemDescriptor_base as docs_json_ts_0_5_2_1_classes_base_FGItemDescriptor_base,
+} from './Base.ts';
+
+import type {
+	FGItemDescriptorNuclearFuel_base as docs_json_ts_0_4_2_11_classes_base_overridable_FGItemDescriptorNuclearFuel_base,
+} from './../../0.4.2.11/classes/Base.overridable--0.8.3.3.ts';
+
+import type {
+	FGRecipe_base as docs_json_ts_0_4_2_11_classes_base_FGRecipe_base,
+} from './../../0.4.2.11/classes/Base.ts';
+
+import type {
+	Texture2D as docs_json_ts_0_4_2_11_properties_Texture2D,
+} from './../../0.4.2.11/types/properties.ts';
+
+import type {
+	mRelevantShopSchematics as docs_json_ts_0_5_2_1_overridable_mRelevantShopSchematics,
+} from './../types/overridable--0.8.3.3.ts';
+
+type FGBuildable_is_wallish = {
+	mAngularDepth: docs_json_ts_common_types_decimal_string,
+	mWallType: 'BWT_Normal' | 'BWT_Glass' | 'BWT_DiagonalDown' | 'BWT_DiagonalUp' | 'BWT_Frame',
+	mAngledVariants: null | docs_json_ts_0_3_7_7_overridable_DocsDotJson_BlueprintGeneratedClass_quoted_list,
+};
+
+type FGItemDescriptorNuclearFuel = docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_base & docs_json_ts_0_5_2_1_classes_base_FGItemDescriptor_base & docs_json_ts_0_4_2_11_classes_base_overridable_FGItemDescriptorNuclearFuel_base;
+
+type FGRecipe = docs_json_ts_0_4_2_11_classes_base_FGRecipe_base & FGRecipe_version_specific;
+
+type FGRecipe_version_specific = {
+	mIngredients: docs_json_ts_0_3_7_7_overridable_ItemClass_Amount_list | null,
+	mProduct: docs_json_ts_0_3_7_7_overridable_ItemClass_Amount_list | null,
+};
+
+type FGSchematic_version_specific = {
+	mDependenciesBlocksSchematicAccess: docs_json_ts_common_types_bool_string,
+	mSmallSchematicIcon: 'None' | docs_json_ts_0_4_2_11_properties_Texture2D,
+	mRelevantShopSchematics: docs_json_ts_0_5_2_1_overridable_mRelevantShopSchematics,
+};
+
+type FGWeapon_version_specific = {
+	mAllowedAmmoClasses: docs_json_ts_0_3_7_7_overridable_DocsDotJson_BlueprintGeneratedClass_quoted_list,
+};
+
+export type {
+	FGBuildable_is_wallish,
+	FGItemDescriptorNuclearFuel,
+	FGRecipe,
+	FGRecipe_version_specific,
+	FGSchematic_version_specific,
+	FGWeapon_version_specific,
+};

@@ -18,6 +18,57 @@ import {
 	configure_parser,
 } from './src/version-specific/0.8.3.3/SchemaParser.ts';
 
+import update3_overridable from './schema/0.3.7.7/overridable.json' with {
+	type: 'json',
+};
+
+// eslint-disable-next-line @stylistic/max-len
+import update3_classes__base__overridable from './schema/0.3.7.7/base-classes.overridable.json' with {
+	type: 'json',
+};
+
+import update4_overridable from './schema/0.4.2.11/overridable.json' with {
+	type: 'json',
+};
+
+// eslint-disable-next-line @stylistic/max-len
+import update4_classes__base__overridable from './schema/0.4.2.11/base-classes.overridable.json' with {
+	type: 'json',
+};
+
+import update5_overridable from './schema/0.5.2.1/overridable.json' with {
+	type: 'json',
+};
+
+// eslint-disable-next-line @stylistic/max-len
+import update5_classes__base__overridable from './schema/0.5.2.1/base-classes.overridable.json' with {
+	type: 'json',
+};
+
+// eslint-disable-next-line @stylistic/max-len
+import update5_classes__overridable from './schema/0.5.2.1/classes.overridable.json' with {
+	type: 'json',
+};
+
+import update6_overridable from './schema/0.6.1.5/overridable.json' with {
+	type: 'json',
+};
+
+// eslint-disable-next-line @stylistic/max-len
+import update6_classes__base__overridable from './schema/0.6.1.5/base-classes.overridable.json' with {
+	type: 'json',
+};
+
+// eslint-disable-next-line @stylistic/max-len
+import update6_classes__overridable from './schema/0.6.1.5/classes.overridable.json' with {
+	type: 'json',
+};
+
+// eslint-disable-next-line @stylistic/max-len
+import update7_classes__base__overridable from './schema/0.7.1.1/base-classes.overridable.json' with {
+	type: 'json',
+};
+
 import update8_properties from './schema/0.8.3.3/properties.json' with {
 	type: 'json',
 };
@@ -114,6 +165,17 @@ async function* get_results_from_data_schema(
 const results: processed_results = [];
 
 for (const schema of [
+	update3_overridable,
+	update3_classes__base__overridable,
+	update4_overridable,
+	update4_classes__base__overridable,
+	update5_overridable,
+	update5_classes__base__overridable,
+	update5_classes__overridable,
+	update6_overridable,
+	update6_classes__base__overridable,
+	update6_classes__overridable,
+	update7_classes__base__overridable,
 	update8_properties,
 	update8_classes__base,
 	update8_classes,

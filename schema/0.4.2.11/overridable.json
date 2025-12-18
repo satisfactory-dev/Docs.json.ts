@@ -1,0 +1,112 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "docs.json.ts--0.4.2.11--overridable",
+	"$defs": {
+		"has--mBatteryClasses": {
+			"type": "object",
+			"required": [
+				"mBatteryClasses"
+			],
+			"properties": {
+				"mBatteryClasses": {
+					"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
+				}
+			}
+		},
+		"mUnlocks--item": {
+			"oneOf": [
+				{
+					"type": "object",
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--base",
+					"unevaluatedProperties": false
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/mUnlocks--item--mRecipes"
+				},
+				{
+					"$ref": "#/$defs/mUnlocks--item--mResourcePairsToAddToScanner"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mNumInventorySlotsToUnlock"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/mUnlocks--item--mSchematics"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/mUnlocks--item--mNumArmEquipmentSlotsToUnlock"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/mUnlocks--item--mItemsToGive"
+				}
+			]
+		},
+		"mUnlocks--item--mResourcePairsToAddToScanner": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--base",
+			"unevaluatedProperties": false,
+			"required": [
+				"mResourcesToAddToScanner",
+				"mResourcePairsToAddToScanner"
+			],
+			"properties": {
+				"mResourcesToAddToScanner": {
+					"oneOf": [
+						{
+							"type": "string",
+							"const": ""
+						},
+						{
+							"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
+						}
+					]
+				},
+				"mResourcePairsToAddToScanner": {
+					"type": "string",
+					"typed_string": {
+						"type": "array",
+						"minItems": 1,
+						"uniqueItems": true,
+						"items": {
+							"type": "string",
+							"typed_string": {
+								"type": "object",
+								"additionalProperties": false,
+								"required": [
+									"ResourceDescriptor"
+								],
+								"properties": {
+									"ResourceDescriptor": {
+										"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/BlueprintGeneratedClass--quoted"
+									},
+									"ResourceNodeType": {
+										"type": "string",
+										"enum": [
+											"Geyser",
+											"FrackingCore"
+										]
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"BlueprintGeneratedClass--single-quoted": {
+			"type": "string",
+			"DocsDotJson_PrefixedString": {
+				"prefix": "BlueprintGeneratedClass",
+				"mode": "single_quoted",
+				"value": null
+			}
+		},
+		"Texture2D--quoted": {
+			"type": "string",
+			"DocsDotJson_PrefixedString": {
+				"prefix": "Texture2D",
+				"mode": "quoted",
+				"value": null
+			}
+		}
+	}
+}

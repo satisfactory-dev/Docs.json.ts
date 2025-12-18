@@ -1,0 +1,115 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "docs.json.ts--0.4.2.11--classes--base.overridable",
+	"$defs": {
+		"FGItemDescriptorNuclearFuel": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGItemDescriptorNuclearFuel--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGDescriptor"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptorNuclearFuel--base"
+				}
+			]
+		},
+		"FGItemDescriptorNuclearFuel--base": {
+			"type": "object",
+			"required": [
+				"mSpentFuelClass"
+			],
+			"properties": {
+				"mSpentFuelClass": {
+					"$ref": "docs.json.ts--0.4.2.11--overridable#/$defs/BlueprintGeneratedClass--single-quoted"
+				}
+			}
+		},
+		"FGSchematic": {
+			"type": "object",
+			"$ref": "#/$defs/FGSchematic--base",
+			"required": [
+				"mUnlocks",
+				"mSmallSchematicIcon",
+				"mRelevantShopSchematics"
+			],
+			"properties": {
+				"mUnlocks": {
+					"type": "array",
+					"minItems": 0,
+					"maxItems": 6,
+					"items": {
+						"$ref": "docs.json.ts--0.4.2.11--overridable#/$defs/mUnlocks--item"
+					}
+				},
+				"mSmallSchematicIcon": {
+					"oneOf": [
+						{
+							"type": "string",
+							"const": "None"
+						},
+						{
+							"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/Texture2D"
+						}
+					]
+				},
+				"mRelevantShopSchematics": {
+					"oneOf": [
+						{
+							"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
+						},
+						{
+							"type": "string",
+							"const": ""
+						}
+					]
+				}
+			}
+		},
+		"FGSchematic--base": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/instructive"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGSchematic--pre-update6"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGSchematic--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGSchematic--has--mSchematicDependencies"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGSchematic--base"
+				}
+			]
+		},
+		"FGSchematic--has--mSchematicDependencies": {
+			"type": "object",
+			"required": [
+				"mSchematicDependencies"
+			],
+			"properties": {
+				"mSchematicDependencies": {
+					"type": "array",
+					"minItems": 0,
+					"items": {
+						"oneOf": [
+							{
+								"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/mSchematicDependencies--item"
+							},
+							{
+								"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/mSchematicDependencies--item"
+							}
+						]
+					}
+				}
+			}
+		}
+	}
+}

@@ -74,14 +74,12 @@ import type {
 	FGDescriptor_sinkable as docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable,
 	FGEquipmentZipline as docs_json_ts_0_4_2_11_classes_base_FGEquipmentZipline,
 	FGHoverPack as docs_json_ts_0_4_2_11_classes_base_FGHoverPack,
-	FGItemDescriptorNuclearFuel as docs_json_ts_0_4_2_11_classes_base_FGItemDescriptorNuclearFuel,
 	FGNobeliskDetonator as docs_json_ts_0_4_2_11_classes_base_FGNobeliskDetonator,
 	FGParachute as docs_json_ts_0_4_2_11_classes_base_FGParachute,
 	FGPipeHyperStart as docs_json_ts_0_4_2_11_classes_base_FGPipeHyperStart,
 	FGPortableMinerDispenser as docs_json_ts_0_4_2_11_classes_base_FGPortableMinerDispenser,
 	FGRecipe as docs_json_ts_0_4_2_11_classes_base_FGRecipe,
 	FGResourceDescriptor as docs_json_ts_0_4_2_11_classes_base_FGResourceDescriptor,
-	FGSchematic as docs_json_ts_0_4_2_11_classes_base_FGSchematic,
 	FGSnowballWeapon as docs_json_ts_0_4_2_11_classes_base_FGSnowballWeapon,
 	FGVehicleDescriptor_fueled_with_inventory as docs_json_ts_0_4_2_11_classes_base_FGVehicleDescriptor_fueled_with_inventory,
 	FGVehicleDescriptor_powered as docs_json_ts_0_4_2_11_classes_base_FGVehicleDescriptor_powered,
@@ -89,6 +87,11 @@ import type {
 	FGWeaponInstantFire as docs_json_ts_0_4_2_11_classes_base_FGWeaponInstantFire,
 	FGWeaponProjectileFire as docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectileFire,
 } from './classes/Base.ts';
+
+import type {
+	FGItemDescriptorNuclearFuel as docs_json_ts_0_4_2_11_classes_base_overridable_FGItemDescriptorNuclearFuel,
+	FGSchematic as docs_json_ts_0_4_2_11_classes_base_overridable_FGSchematic,
+} from './classes/Base.overridable.ts';
 
 type FGBuildable_base = docs_json_ts_0_4_2_11_classes_base_FGBuildable;
 
@@ -242,7 +245,7 @@ type FGHoverPack = docs_json_ts_0_4_2_11_classes_base_FGHoverPack;
 
 type FGItemDescriptor = docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable;
 
-type FGItemDescriptorNuclearFuel = docs_json_ts_0_4_2_11_classes_base_FGItemDescriptorNuclearFuel;
+type FGItemDescriptorNuclearFuel = docs_json_ts_0_4_2_11_classes_base_overridable_FGItemDescriptorNuclearFuel;
 
 type FGNobeliskDetonator = docs_json_ts_0_4_2_11_classes_base_FGNobeliskDetonator;
 
@@ -258,7 +261,7 @@ type FGRecipe = docs_json_ts_0_4_2_11_classes_base_FGRecipe;
 
 type FGResourceDescriptor = docs_json_ts_0_4_2_11_classes_base_FGResourceDescriptor;
 
-type FGSchematic = docs_json_ts_0_4_2_11_classes_base_FGSchematic;
+type FGSchematic = docs_json_ts_0_4_2_11_classes_base_overridable_FGSchematic;
 
 type FGSnowballWeapon = docs_json_ts_0_4_2_11_classes_base_FGSnowballWeapon;
 

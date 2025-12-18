@@ -2,9 +2,12 @@ import type {
 	Ajv2020 as Ajv,
 } from 'ajv/dist/2020.js';
 
+import type {
+	SchemaObject,
+} from '@signpostmarv/json-schema-typescript-codegen';
 import {
 	OneOf,
-	type SchemaObject,
+	Type,
 } from '@signpostmarv/json-schema-typescript-codegen';
 
 import {
@@ -28,6 +31,7 @@ export function OneOfMatcher(
 		})),
 		(value) => {
 			const regex_parts = value.oneOf.map((sub_schema, i) => {
+				sub_schema = Type.maybe_add_$defs(value, sub_schema);
 				const matcher = matchers.find(
 					(maybe) => maybe.matches(sub_schema),
 				);

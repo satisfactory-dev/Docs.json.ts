@@ -22,11 +22,25 @@ import update5_properties from './schema/0.5.2.1/properties.json' with {
 	type: 'json',
 };
 
+import update5_overridable from './schema/0.5.2.1/overridable.json' with {
+	type: 'json',
+};
+
 import update5_classes__base from './schema/0.5.2.1/base-classes.json' with {
 	type: 'json',
 };
 
+// eslint-disable-next-line @stylistic/max-len
+import update5_classes__base__overridable from './schema/0.5.2.1/base-classes.overridable.json' with {
+	type: 'json',
+};
+
 import update5_classes from './schema/0.5.2.1/classes.json' with {
+	type: 'json',
+};
+
+// eslint-disable-next-line @stylistic/max-len
+import update5_classes__overridable from './schema/0.5.2.1/classes.overridable.json' with {
 	type: 'json',
 };
 
@@ -124,9 +138,12 @@ console.log(
 );
 
 for (const schema of [
+	update5_overridable,
 	update5_properties,
 	update5_classes__base,
+	update5_classes__base__overridable,
 	update5_classes,
+	update5_classes__overridable,
 	update5,
 ]) {
 	console.log(`getting results for ${schema.$id}`);

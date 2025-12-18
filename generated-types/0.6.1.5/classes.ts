@@ -82,7 +82,6 @@ import type {
 	FGBuildableWidgetSign as docs_json_ts_0_6_1_5_classes_base_FGBuildableWidgetSign,
 	FGBuildableWire as docs_json_ts_0_6_1_5_classes_base_FGBuildableWire,
 	FGChainsaw as docs_json_ts_0_6_1_5_classes_base_FGChainsaw,
-	FGConsumableDescriptor as docs_json_ts_0_6_1_5_classes_base_FGConsumableDescriptor,
 	FGConsumableEquipment as docs_json_ts_0_6_1_5_classes_base_FGConsumableEquipment,
 	FGEquipmentStunSpear_xenobasher as docs_json_ts_0_6_1_5_classes_base_FGEquipmentStunSpear_xenobasher,
 	FGEquipmentStunSpear_xenozapper as docs_json_ts_0_6_1_5_classes_base_FGEquipmentStunSpear_xenozapper,
@@ -91,8 +90,6 @@ import type {
 	FGGolfCartDispenser as docs_json_ts_0_6_1_5_classes_base_FGGolfCartDispenser,
 	FGHoverPack as docs_json_ts_0_6_1_5_classes_base_FGHoverPack,
 	FGItemDescriptor as docs_json_ts_0_6_1_5_classes_base_FGItemDescriptor,
-	FGItemDescriptor_base as docs_json_ts_0_6_1_5_classes_base_FGItemDescriptor_base,
-	FGItemDescriptorNuclearFuel as docs_json_ts_0_6_1_5_classes_base_FGItemDescriptorNuclearFuel,
 	FGJetPack as docs_json_ts_0_6_1_5_classes_base_FGJetPack,
 	FGJumpingStilts as docs_json_ts_0_6_1_5_classes_base_FGJumpingStilts,
 	FGNobeliskDetonator as docs_json_ts_0_6_1_5_classes_base_FGNobeliskDetonator,
@@ -100,21 +97,17 @@ import type {
 	FGParachute as docs_json_ts_0_6_1_5_classes_base_FGParachute,
 	FGPipeHyperStart as docs_json_ts_0_6_1_5_classes_base_FGPipeHyperStart,
 	FGPortableMinerDispenser as docs_json_ts_0_6_1_5_classes_base_FGPortableMinerDispenser,
-	FGRecipe as docs_json_ts_0_6_1_5_classes_base_FGRecipe,
 	FGResourceDescriptor as docs_json_ts_0_6_1_5_classes_base_FGResourceDescriptor,
 	FGSchematic_base as docs_json_ts_0_6_1_5_classes_base_FGSchematic_base,
 	FGSchematic_with_described_unlocks as docs_json_ts_0_6_1_5_classes_base_FGSchematic_with_described_unlocks,
 	FGSuitBase as docs_json_ts_0_6_1_5_classes_base_FGSuitBase,
-	FGVehicleDescriptor_Desc_CyberWagon_C as docs_json_ts_0_6_1_5_classes_base_FGVehicleDescriptor_Desc_CyberWagon_C,
-	FGVehicleDescriptor_Desc_DroneTransport_C as docs_json_ts_0_6_1_5_classes_base_FGVehicleDescriptor_Desc_DroneTransport_C,
-	FGVehicleDescriptor_Desc_Explorer_C as docs_json_ts_0_6_1_5_classes_base_FGVehicleDescriptor_Desc_Explorer_C,
-	FGVehicleDescriptor_Desc_FreightWagon_C as docs_json_ts_0_6_1_5_classes_base_FGVehicleDescriptor_Desc_FreightWagon_C,
-	FGVehicleDescriptor_Desc_Locomotive_C as docs_json_ts_0_6_1_5_classes_base_FGVehicleDescriptor_Desc_Locomotive_C,
-	FGVehicleDescriptor_Desc_Tractor_C as docs_json_ts_0_6_1_5_classes_base_FGVehicleDescriptor_Desc_Tractor_C,
-	FGVehicleDescriptor_Desc_Truck_C as docs_json_ts_0_6_1_5_classes_base_FGVehicleDescriptor_Desc_Truck_C,
 	FGWeapon_Equip_RebarGun_Projectile_C as docs_json_ts_0_6_1_5_classes_base_FGWeapon_Equip_RebarGun_Projectile_C,
 	FGWeapon_Equip_Rifle_C as docs_json_ts_0_6_1_5_classes_base_FGWeapon_Equip_Rifle_C,
 } from './classes/Base.ts';
+
+import type {
+	FGItemDescriptorNuclearFuel as docs_json_ts_0_6_1_5_classes_base_overridable_FGItemDescriptorNuclearFuel,
+} from './classes/Base.overridable.ts';
 
 type FGAmmoTypeInstantHit_Desc_CartridgeChaos_C = docs_json_ts_0_6_1_5_classes_base_FGAmmoTypeInstantHit_Desc_CartridgeChaos_C;
 
@@ -282,17 +275,11 @@ type FGBuildableWidgetSign = docs_json_ts_0_6_1_5_classes_base_FGBuildableWidget
 
 type FGBuildableWire = docs_json_ts_0_6_1_5_classes_base_FGBuildableWire;
 
-type FGBuildingDescriptor = docs_json_ts_0_6_1_5_classes_base_FGItemDescriptor_base;
-
 type FGChainsaw = docs_json_ts_0_6_1_5_classes_base_FGChainsaw;
 
 type FGChargedWeapon = docs_json_ts_0_6_1_5_classes_base_FGNobeliskDetonator;
 
-type FGConsumableDescriptor = docs_json_ts_0_6_1_5_classes_base_FGConsumableDescriptor;
-
 type FGConsumableEquipment = docs_json_ts_0_6_1_5_classes_base_FGConsumableEquipment;
-
-type FGEquipmentDescriptor_Desc_GolfCartGold_C = docs_json_ts_0_6_1_5_classes_base_FGItemDescriptor_base;
 
 type FGEquipmentStunSpear_xenobasher = docs_json_ts_0_6_1_5_classes_base_FGEquipmentStunSpear_xenobasher;
 
@@ -308,7 +295,7 @@ type FGHoverPack = docs_json_ts_0_6_1_5_classes_base_FGHoverPack;
 
 type FGItemDescriptor = docs_json_ts_0_6_1_5_classes_base_FGItemDescriptor;
 
-type FGItemDescriptorNuclearFuel = docs_json_ts_0_6_1_5_classes_base_FGItemDescriptorNuclearFuel;
+type FGItemDescriptorNuclearFuel = docs_json_ts_0_6_1_5_classes_base_overridable_FGItemDescriptorNuclearFuel;
 
 type FGJetPack = docs_json_ts_0_6_1_5_classes_base_FGJetPack;
 
@@ -320,11 +307,7 @@ type FGParachute = docs_json_ts_0_6_1_5_classes_base_FGParachute;
 
 type FGPipeHyperStart = docs_json_ts_0_6_1_5_classes_base_FGPipeHyperStart;
 
-type FGPoleDescriptor = docs_json_ts_0_6_1_5_classes_base_FGItemDescriptor_base;
-
 type FGPortableMinerDispenser = docs_json_ts_0_6_1_5_classes_base_FGPortableMinerDispenser;
-
-type FGRecipe = docs_json_ts_0_6_1_5_classes_base_FGRecipe;
 
 type FGResourceDescriptor = docs_json_ts_0_6_1_5_classes_base_FGResourceDescriptor;
 
@@ -333,20 +316,6 @@ type FGSchematic_base = docs_json_ts_0_6_1_5_classes_base_FGSchematic_base;
 type FGSchematic_with_described_unlocks = docs_json_ts_0_6_1_5_classes_base_FGSchematic_with_described_unlocks;
 
 type FGSuitBase = docs_json_ts_0_6_1_5_classes_base_FGSuitBase;
-
-type FGVehicleDescriptor_Desc_CyberWagon_C = docs_json_ts_0_6_1_5_classes_base_FGVehicleDescriptor_Desc_CyberWagon_C;
-
-type FGVehicleDescriptor_Desc_DroneTransport_C = docs_json_ts_0_6_1_5_classes_base_FGVehicleDescriptor_Desc_DroneTransport_C;
-
-type FGVehicleDescriptor_Desc_Explorer_C = docs_json_ts_0_6_1_5_classes_base_FGVehicleDescriptor_Desc_Explorer_C;
-
-type FGVehicleDescriptor_Desc_FreightWagon_C = docs_json_ts_0_6_1_5_classes_base_FGVehicleDescriptor_Desc_FreightWagon_C;
-
-type FGVehicleDescriptor_Desc_Locomotive_C = docs_json_ts_0_6_1_5_classes_base_FGVehicleDescriptor_Desc_Locomotive_C;
-
-type FGVehicleDescriptor_Desc_Tractor_C = docs_json_ts_0_6_1_5_classes_base_FGVehicleDescriptor_Desc_Tractor_C;
-
-type FGVehicleDescriptor_Desc_Truck_C = docs_json_ts_0_6_1_5_classes_base_FGVehicleDescriptor_Desc_Truck_C;
 
 type FGWeapon_Equip_RebarGun_Projectile_C = docs_json_ts_0_6_1_5_classes_base_FGWeapon_Equip_RebarGun_Projectile_C;
 
@@ -436,12 +405,9 @@ export type {
 	FGBuildableWaterPump,
 	FGBuildableWidgetSign,
 	FGBuildableWire,
-	FGBuildingDescriptor,
 	FGChainsaw,
 	FGChargedWeapon,
-	FGConsumableDescriptor,
 	FGConsumableEquipment,
-	FGEquipmentDescriptor_Desc_GolfCartGold_C,
 	FGEquipmentStunSpear_xenobasher,
 	FGEquipmentStunSpear_xenozapper,
 	FGEquipmentZipline,
@@ -455,20 +421,11 @@ export type {
 	FGObjectScanner,
 	FGParachute,
 	FGPipeHyperStart,
-	FGPoleDescriptor,
 	FGPortableMinerDispenser,
-	FGRecipe,
 	FGResourceDescriptor,
 	FGSchematic_base,
 	FGSchematic_with_described_unlocks,
 	FGSuitBase,
-	FGVehicleDescriptor_Desc_CyberWagon_C,
-	FGVehicleDescriptor_Desc_DroneTransport_C,
-	FGVehicleDescriptor_Desc_Explorer_C,
-	FGVehicleDescriptor_Desc_FreightWagon_C,
-	FGVehicleDescriptor_Desc_Locomotive_C,
-	FGVehicleDescriptor_Desc_Tractor_C,
-	FGVehicleDescriptor_Desc_Truck_C,
 	FGWeapon_Equip_RebarGun_Projectile_C,
 	FGWeapon_Equip_Rifle_C,
 };

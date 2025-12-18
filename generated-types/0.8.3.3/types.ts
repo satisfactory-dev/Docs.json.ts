@@ -97,6 +97,7 @@ import type {
 	FGGasMask as docs_json_ts_0_8_3_3_classes_FGGasMask,
 	FGGolfCartDispenser as docs_json_ts_0_8_3_3_classes_FGGolfCartDispenser,
 	FGHoverPack as docs_json_ts_0_8_3_3_classes_FGHoverPack,
+	FGItemDescriptorNuclearFuel as docs_json_ts_0_8_3_3_classes_FGItemDescriptorNuclearFuel,
 	FGJetPack as docs_json_ts_0_8_3_3_classes_FGJetPack,
 	FGJumpingStilts as docs_json_ts_0_8_3_3_classes_FGJumpingStilts,
 	FGObjectScanner as docs_json_ts_0_8_3_3_classes_FGObjectScanner,
@@ -111,26 +112,28 @@ import type {
 } from './classes.ts';
 
 import type {
-	FGBuildingDescriptor as docs_json_ts_0_6_1_5_classes_FGBuildingDescriptor,
-	FGConsumableDescriptor as docs_json_ts_0_6_1_5_classes_FGConsumableDescriptor,
-	FGEquipmentDescriptor_Desc_GolfCartGold_C as docs_json_ts_0_6_1_5_classes_FGEquipmentDescriptor_Desc_GolfCartGold_C,
-	FGItemDescriptor as docs_json_ts_0_6_1_5_classes_FGItemDescriptor,
-	FGItemDescriptorNuclearFuel as docs_json_ts_0_6_1_5_classes_FGItemDescriptorNuclearFuel,
-	FGPoleDescriptor as docs_json_ts_0_6_1_5_classes_FGPoleDescriptor,
-	FGRecipe as docs_json_ts_0_6_1_5_classes_FGRecipe,
-	FGResourceDescriptor as docs_json_ts_0_6_1_5_classes_FGResourceDescriptor,
-	FGVehicleDescriptor_Desc_CyberWagon_C as docs_json_ts_0_6_1_5_classes_FGVehicleDescriptor_Desc_CyberWagon_C,
-	FGVehicleDescriptor_Desc_DroneTransport_C as docs_json_ts_0_6_1_5_classes_FGVehicleDescriptor_Desc_DroneTransport_C,
-	FGVehicleDescriptor_Desc_Explorer_C as docs_json_ts_0_6_1_5_classes_FGVehicleDescriptor_Desc_Explorer_C,
-	FGVehicleDescriptor_Desc_FreightWagon_C as docs_json_ts_0_6_1_5_classes_FGVehicleDescriptor_Desc_FreightWagon_C,
-	FGVehicleDescriptor_Desc_Locomotive_C as docs_json_ts_0_6_1_5_classes_FGVehicleDescriptor_Desc_Locomotive_C,
-	FGVehicleDescriptor_Desc_Tractor_C as docs_json_ts_0_6_1_5_classes_FGVehicleDescriptor_Desc_Tractor_C,
-	FGVehicleDescriptor_Desc_Truck_C as docs_json_ts_0_6_1_5_classes_FGVehicleDescriptor_Desc_Truck_C,
-} from './../0.6.1.5/classes.ts';
+	FGBuildingDescriptor as docs_json_ts_0_6_1_5_classes_overridable_FGBuildingDescriptor,
+	FGConsumableDescriptor as docs_json_ts_0_6_1_5_classes_overridable_FGConsumableDescriptor,
+	FGEquipmentDescriptor_Desc_GolfCartGold_C as docs_json_ts_0_6_1_5_classes_overridable_FGEquipmentDescriptor_Desc_GolfCartGold_C,
+	FGPoleDescriptor as docs_json_ts_0_6_1_5_classes_overridable_FGPoleDescriptor,
+	FGRecipe as docs_json_ts_0_6_1_5_classes_overridable_FGRecipe,
+	FGVehicleDescriptor_Desc_CyberWagon_C as docs_json_ts_0_6_1_5_classes_overridable_FGVehicleDescriptor_Desc_CyberWagon_C,
+	FGVehicleDescriptor_Desc_DroneTransport_C as docs_json_ts_0_6_1_5_classes_overridable_FGVehicleDescriptor_Desc_DroneTransport_C,
+	FGVehicleDescriptor_Desc_Explorer_C as docs_json_ts_0_6_1_5_classes_overridable_FGVehicleDescriptor_Desc_Explorer_C,
+	FGVehicleDescriptor_Desc_FreightWagon_C as docs_json_ts_0_6_1_5_classes_overridable_FGVehicleDescriptor_Desc_FreightWagon_C,
+	FGVehicleDescriptor_Desc_Locomotive_C as docs_json_ts_0_6_1_5_classes_overridable_FGVehicleDescriptor_Desc_Locomotive_C,
+	FGVehicleDescriptor_Desc_Tractor_C as docs_json_ts_0_6_1_5_classes_overridable_FGVehicleDescriptor_Desc_Tractor_C,
+	FGVehicleDescriptor_Desc_Truck_C as docs_json_ts_0_6_1_5_classes_overridable_FGVehicleDescriptor_Desc_Truck_C,
+} from './../0.6.1.5/classes/overridable--0.8.3.3.ts';
 
 import type {
-	FGCustomizationRecipe as docs_json_ts_0_5_2_1_classes_FGCustomizationRecipe,
-} from './../0.5.2.1/classes.ts';
+	FGCustomizationRecipe as docs_json_ts_0_5_2_1_classes_overridable_FGCustomizationRecipe,
+} from './../0.5.2.1/classes/overridable--0.8.3.3.ts';
+
+import type {
+	FGItemDescriptor as docs_json_ts_0_6_1_5_classes_FGItemDescriptor,
+	FGResourceDescriptor as docs_json_ts_0_6_1_5_classes_FGResourceDescriptor,
+} from './../0.6.1.5/classes.ts';
 
 type FGAmmoTypeInstantHit = {
 	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGAmmoTypeInstantHit'}${'\''}`,
@@ -708,8 +711,8 @@ type FGBuildableWire = {
 type FGBuildingDescriptor = {
 	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGBuildingDescriptor'}${'\''}`,
 	Classes: [
-		docs_json_ts_0_6_1_5_classes_FGBuildingDescriptor,
-		...docs_json_ts_0_6_1_5_classes_FGBuildingDescriptor[],
+		docs_json_ts_0_6_1_5_classes_overridable_FGBuildingDescriptor,
+		...docs_json_ts_0_6_1_5_classes_overridable_FGBuildingDescriptor[],
 	],
 };
 
@@ -732,8 +735,8 @@ type FGChargedWeapon = {
 type FGConsumableDescriptor = {
 	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGConsumableDescriptor'}${'\''}`,
 	Classes: [
-		docs_json_ts_0_6_1_5_classes_FGConsumableDescriptor,
-		...docs_json_ts_0_6_1_5_classes_FGConsumableDescriptor[],
+		docs_json_ts_0_6_1_5_classes_overridable_FGConsumableDescriptor,
+		...docs_json_ts_0_6_1_5_classes_overridable_FGConsumableDescriptor[],
 	],
 };
 
@@ -756,16 +759,16 @@ type FGConveyorPoleStackable = {
 type FGCustomizationRecipe = {
 	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGCustomizationRecipe'}${'\''}`,
 	Classes: [
-		docs_json_ts_0_5_2_1_classes_FGCustomizationRecipe,
-		...docs_json_ts_0_5_2_1_classes_FGCustomizationRecipe[],
+		docs_json_ts_0_5_2_1_classes_overridable_FGCustomizationRecipe,
+		...docs_json_ts_0_5_2_1_classes_overridable_FGCustomizationRecipe[],
 	],
 };
 
 type FGEquipmentDescriptor = {
 	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGEquipmentDescriptor'}${'\''}`,
 	Classes: [
-        docs_json_ts_0_6_1_5_classes_FGItemDescriptor | docs_json_ts_0_6_1_5_classes_FGEquipmentDescriptor_Desc_GolfCartGold_C,
-        ...(docs_json_ts_0_6_1_5_classes_FGItemDescriptor | docs_json_ts_0_6_1_5_classes_FGEquipmentDescriptor_Desc_GolfCartGold_C)[],
+        docs_json_ts_0_6_1_5_classes_FGItemDescriptor | docs_json_ts_0_6_1_5_classes_overridable_FGEquipmentDescriptor_Desc_GolfCartGold_C,
+        ...(docs_json_ts_0_6_1_5_classes_FGItemDescriptor | docs_json_ts_0_6_1_5_classes_overridable_FGEquipmentDescriptor_Desc_GolfCartGold_C)[],
 	],
 };
 
@@ -829,8 +832,8 @@ type FGItemDescriptorBiomass = {
 type FGItemDescriptorNuclearFuel = {
 	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGItemDescriptorNuclearFuel'}${'\''}`,
 	Classes: [
-		docs_json_ts_0_6_1_5_classes_FGItemDescriptorNuclearFuel,
-		...docs_json_ts_0_6_1_5_classes_FGItemDescriptorNuclearFuel[],
+		docs_json_ts_0_8_3_3_classes_FGItemDescriptorNuclearFuel,
+		...docs_json_ts_0_8_3_3_classes_FGItemDescriptorNuclearFuel[],
 	],
 };
 
@@ -877,8 +880,8 @@ type FGPipeHyperStart = {
 type FGPoleDescriptor = {
 	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGPoleDescriptor'}${'\''}`,
 	Classes: [
-		docs_json_ts_0_6_1_5_classes_FGPoleDescriptor,
-		...docs_json_ts_0_6_1_5_classes_FGPoleDescriptor[],
+		docs_json_ts_0_6_1_5_classes_overridable_FGPoleDescriptor,
+		...docs_json_ts_0_6_1_5_classes_overridable_FGPoleDescriptor[],
 	],
 };
 
@@ -893,8 +896,8 @@ type FGPortableMinerDispenser = {
 type FGRecipe = {
 	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGRecipe'}${'\''}`,
 	Classes: [
-		docs_json_ts_0_6_1_5_classes_FGRecipe,
-		...docs_json_ts_0_6_1_5_classes_FGRecipe[],
+		docs_json_ts_0_6_1_5_classes_overridable_FGRecipe,
+		...docs_json_ts_0_6_1_5_classes_overridable_FGRecipe[],
 	],
 };
 
@@ -925,13 +928,13 @@ type FGSuitBase = {
 type FGVehicleDescriptor = {
 	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGVehicleDescriptor'}${'\''}`,
 	Classes: [
-		docs_json_ts_0_6_1_5_classes_FGVehicleDescriptor_Desc_Truck_C,
-		docs_json_ts_0_6_1_5_classes_FGVehicleDescriptor_Desc_DroneTransport_C,
-		docs_json_ts_0_6_1_5_classes_FGVehicleDescriptor_Desc_FreightWagon_C,
-		docs_json_ts_0_6_1_5_classes_FGVehicleDescriptor_Desc_Locomotive_C,
-		docs_json_ts_0_6_1_5_classes_FGVehicleDescriptor_Desc_Tractor_C,
-		docs_json_ts_0_6_1_5_classes_FGVehicleDescriptor_Desc_Explorer_C,
-		docs_json_ts_0_6_1_5_classes_FGVehicleDescriptor_Desc_CyberWagon_C,
+		docs_json_ts_0_6_1_5_classes_overridable_FGVehicleDescriptor_Desc_Truck_C,
+		docs_json_ts_0_6_1_5_classes_overridable_FGVehicleDescriptor_Desc_DroneTransport_C,
+		docs_json_ts_0_6_1_5_classes_overridable_FGVehicleDescriptor_Desc_FreightWagon_C,
+		docs_json_ts_0_6_1_5_classes_overridable_FGVehicleDescriptor_Desc_Locomotive_C,
+		docs_json_ts_0_6_1_5_classes_overridable_FGVehicleDescriptor_Desc_Tractor_C,
+		docs_json_ts_0_6_1_5_classes_overridable_FGVehicleDescriptor_Desc_Explorer_C,
+		docs_json_ts_0_6_1_5_classes_overridable_FGVehicleDescriptor_Desc_CyberWagon_C,
 	],
 };
 

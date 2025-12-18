@@ -417,11 +417,6 @@
 			"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildableWire",
 			"unevaluatedProperties": false
 		},
-		"FGBuildingDescriptor": {
-			"type": "object",
-			"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGItemDescriptor--base",
-			"unevaluatedProperties": false
-		},
 		"FGChainsaw": {
 			"type": "object",
 			"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGChainsaw",
@@ -432,19 +427,9 @@
 			"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGNobeliskDetonator",
 			"unevaluatedProperties": false
 		},
-		"FGConsumableDescriptor": {
-			"type": "object",
-			"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGConsumableDescriptor",
-			"unevaluatedProperties": false
-		},
 		"FGConsumableEquipment": {
 			"type": "object",
 			"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGConsumableEquipment",
-			"unevaluatedProperties": false
-		},
-		"FGEquipmentDescriptor--Desc_GolfCartGold_C": {
-			"type": "object",
-			"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGItemDescriptor--base",
 			"unevaluatedProperties": false
 		},
 		"FGEquipmentStunSpear--xenobasher": {
@@ -484,7 +469,7 @@
 		},
 		"FGItemDescriptorNuclearFuel": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGItemDescriptorNuclearFuel",
+			"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGItemDescriptorNuclearFuel",
 			"unevaluatedProperties": false
 		},
 		"FGJetPack": {
@@ -512,19 +497,9 @@
 			"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGPipeHyperStart",
 			"unevaluatedProperties": false
 		},
-		"FGPoleDescriptor": {
-			"type": "object",
-			"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGItemDescriptor--base",
-			"unevaluatedProperties": false
-		},
 		"FGPortableMinerDispenser": {
 			"type": "object",
 			"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGPortableMinerDispenser",
-			"unevaluatedProperties": false
-		},
-		"FGRecipe": {
-			"type": "object",
-			"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGRecipe",
 			"unevaluatedProperties": false
 		},
 		"FGResourceDescriptor": {
@@ -545,41 +520,6 @@
 		"FGSuitBase": {
 			"type": "object",
 			"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGSuitBase",
-			"unevaluatedProperties": false
-		},
-		"FGVehicleDescriptor--Desc_CyberWagon_C": {
-			"type": "object",
-			"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGVehicleDescriptor--Desc_CyberWagon_C",
-			"unevaluatedProperties": false
-		},
-		"FGVehicleDescriptor--Desc_DroneTransport_C": {
-			"type": "object",
-			"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGVehicleDescriptor--Desc_DroneTransport_C",
-			"unevaluatedProperties": false
-		},
-		"FGVehicleDescriptor--Desc_Explorer_C": {
-			"type": "object",
-			"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGVehicleDescriptor--Desc_Explorer_C",
-			"unevaluatedProperties": false
-		},
-		"FGVehicleDescriptor--Desc_FreightWagon_C": {
-			"type": "object",
-			"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGVehicleDescriptor--Desc_FreightWagon_C",
-			"unevaluatedProperties": false
-		},
-		"FGVehicleDescriptor--Desc_Locomotive_C": {
-			"type": "object",
-			"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGVehicleDescriptor--Desc_Locomotive_C",
-			"unevaluatedProperties": false
-		},
-		"FGVehicleDescriptor--Desc_Tractor_C": {
-			"type": "object",
-			"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGVehicleDescriptor--Desc_Tractor_C",
-			"unevaluatedProperties": false
-		},
-		"FGVehicleDescriptor--Desc_Truck_C": {
-			"type": "object",
-			"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGVehicleDescriptor--Desc_Truck_C",
 			"unevaluatedProperties": false
 		},
 		"FGWeapon--Equip_RebarGun_Projectile_C": {

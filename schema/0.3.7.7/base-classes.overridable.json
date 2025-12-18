@@ -1,0 +1,187 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "docs.json.ts--0.3.7.7--classes--base.overridable",
+	"$defs": {
+		"FGBuildableResourceExtractor--miner--base": {
+			"type": "object",
+			"required": [
+				"mParticleMap"
+			],
+			"properties": {
+				"mParticleMap": {
+					"type": "string",
+					"typed_string": {
+						"type": "array",
+						"minItems": 1,
+						"uniqueItems": true,
+						"items": {
+							"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/mParticleMap--item"
+						}
+					}
+				}
+			}
+		},
+		"FGBuildableResourceExtractor--only-allow-certain-resources": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--only-allow-certain-resources",
+			"required": [
+				"mAllowedResources"
+			],
+			"properties": {
+				"mAllowedResources": {
+					"oneOf": [
+						{
+							"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
+						},
+						{
+							"type": "string",
+							"const": ""
+						}
+					]
+				}
+			}
+		},
+		"FGEquipment--version-specific": {
+			"type": "object",
+			"required": [
+				"mEquipmentSlot",
+				"mAttachSocket",
+				"mCostToUse",
+				"mArmAnimation",
+				"mBackAnimation",
+				"mHasPersistentOwner"
+			],
+			"properties": {
+				"mEquipmentSlot": {
+					"type": "string",
+					"templated_string": [
+						"ES_",
+						{
+							"type": "string",
+							"minLength": 1
+						}
+					]
+				},
+				"mAttachSocket": {
+					"type": "string",
+					"minLength": 1
+				},
+				"mCostToUse": {
+					"oneOf": [
+						{
+							"type": "string",
+							"const": ""
+						},
+						{
+							"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/ItemClass-Amount--list"
+						}
+					]
+				},
+				"mArmAnimation": {
+					"type": "string",
+					"enum": [
+						"AE_Consumables",
+						"AE_OneHandEquipment",
+						"AE_ChainSaw",
+						"AE_Generic2Hand",
+						"AE_None",
+						"AE_RebarGun",
+						"AE_Rifle",
+						"AE_ShockShank",
+						"AE_StunSpear",
+						"AE_PortableMiner",
+						"AE_ObjectScanner",
+						"AE_ColorGun",
+						"AE_Nobelisk",
+						"AE_Generic1Hand"
+					]
+				},
+				"mBackAnimation": {
+					"type": "string",
+					"enum": [
+						"BE_None",
+						"BE_Jetpack"
+					]
+				},
+				"mHasPersistentOwner": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
+		},
+		"FGSchematic--version-specific": {
+			"type": "object",
+			"required": [
+				"mType",
+				"mSubCategories",
+				"mTimeToComplete",
+				"mIncludeInBuilds"
+			],
+			"properties": {
+				"mType": {
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mType"
+				},
+				"mSubCategories": {
+					"oneOf": [
+						{
+							"type": "string",
+							"typed_string": ""
+						},
+						{
+							"type": "string",
+							"typed_string": {
+								"type": "array",
+								"minItems": 1,
+								"maxItems": 1,
+								"items": false,
+								"prefixItems": [
+									{
+										"type": "string",
+										"const": "None"
+									}
+								]
+							}
+						},
+						{
+							"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/mSubCategories"
+						}
+					]
+				},
+				"mTimeToComplete": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mIncludeInBuilds": {
+					"type": "string",
+					"const": "IIB_PublicBuilds"
+				}
+			}
+		},
+		"FGSuitBase--base": {
+			"type": "object",
+			"required": [
+				"mImmunity",
+				"mSuit1PMeshMaterials",
+				"mArmAnimation"
+			],
+			"properties": {
+				"mImmunity": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mSuit1PMeshMaterials": {
+					"type": "string",
+					"typed_string": {
+						"type": "array",
+						"minItems": 1,
+						"uniqueItems": true,
+						"items": {
+							"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/mSuit1PMeshMaterials--item"
+						}
+					}
+				},
+				"mArmAnimation": {
+					"type": "string",
+					"const": "AE_None"
+				}
+			}
+		}
+	}
+}

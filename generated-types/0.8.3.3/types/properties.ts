@@ -1,34 +1,40 @@
 /* eslint-disable @stylistic/max-len */
 
 import type {
-	BlueprintGeneratedClass_quoted as docs_json_ts_0_3_7_7_properties_BlueprintGeneratedClass_quoted,
-	MaterialInstanceConstant_quoted as docs_json_ts_0_3_7_7_properties_MaterialInstanceConstant_quoted,
+	BlueprintGeneratedClass_quoted as docs_json_ts_0_3_7_7_overridable_BlueprintGeneratedClass_quoted,
+	MaterialInstanceConstant_quoted as docs_json_ts_0_3_7_7_overridable_MaterialInstanceConstant_quoted,
+	mUnlocks_item_mItemsToGive as docs_json_ts_0_3_7_7_overridable_mUnlocks_item_mItemsToGive,
+	mUnlocks_item_mRecipes as docs_json_ts_0_3_7_7_overridable_mUnlocks_item_mRecipes,
+	mUnlocks_item_mSchematics as docs_json_ts_0_3_7_7_overridable_mUnlocks_item_mSchematics,
+} from './../../0.3.7.7/types/overridable--0.8.3.3.ts';
+
+import type {
 	mUnlocks_item_base as docs_json_ts_0_3_7_7_properties_mUnlocks_item_base,
-	mUnlocks_item_mItemsToGive as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mItemsToGive,
 	mUnlocks_item_mNumInventorySlotsToUnlock as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mNumInventorySlotsToUnlock,
-	mUnlocks_item_mRecipes as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mRecipes,
-	mUnlocks_item_mSchematics as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mSchematics,
 } from './../../0.3.7.7/types/properties.ts';
 
 import type {
-	mUnlocks_item_mTapeUnlocks as docs_json_ts_0_6_1_5_properties_mUnlocks_item_mTapeUnlocks,
-} from './../../0.6.1.5/types/properties.ts';
+	mUnlocks_item_mResourcePairsToAddToScanner as docs_json_ts_0_4_2_11_overridable_mUnlocks_item_mResourcePairsToAddToScanner,
+} from './../../0.4.2.11/types/overridable--0.8.3.3.ts';
 
 import type {
 	mUnlocks_item_mNumArmEquipmentSlotsToUnlock as docs_json_ts_0_4_2_11_properties_mUnlocks_item_mNumArmEquipmentSlotsToUnlock,
-	mUnlocks_item_mResourcePairsToAddToScanner as docs_json_ts_0_4_2_11_properties_mUnlocks_item_mResourcePairsToAddToScanner,
 } from './../../0.4.2.11/types/properties.ts';
 
 import type {
-	mUnlocks_item_mEmotes as docs_json_ts_0_5_2_1_properties_mUnlocks_item_mEmotes,
-} from './../../0.5.2.1/types/properties.ts';
+	mUnlocks_item_mEmotes as docs_json_ts_0_5_2_1_overridable_mUnlocks_item_mEmotes,
+} from './../../0.5.2.1/types/overridable--0.8.3.3.ts';
+
+import type {
+	mUnlocks_item_mTapeUnlocks as docs_json_ts_0_6_1_5_overridable_mUnlocks_item_mTapeUnlocks,
+} from './../../0.6.1.5/types/overridable--0.8.3.3.ts';
 
 type mComponentNameToFirstPersonMaterials_item = [
 	Exclude<string, ''>,
 	{
 		FirstPersonMaterials: [
-			docs_json_ts_0_3_7_7_properties_MaterialInstanceConstant_quoted,
-			...docs_json_ts_0_3_7_7_properties_MaterialInstanceConstant_quoted[],
+			docs_json_ts_0_3_7_7_overridable_MaterialInstanceConstant_quoted,
+			...docs_json_ts_0_3_7_7_overridable_MaterialInstanceConstant_quoted[],
 		],
 	},
 ];
@@ -40,19 +46,19 @@ type mDamageTypes = [
 
 type mDamageTypes_item = `/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_${Exclude<string, ''>}${'DamageType_'}${Exclude<string, ''>}${'_C\'"/Game/FactoryGame/'}${'Equipment' | 'Resource'}${'/'}${Exclude<string, ''>}${'/Desc_' | '/Equip_'}${Exclude<string, ''>}${'_C:BP_'}${Exclude<string, ''>}${'DamageType_'}${Exclude<string, ''>}${'_C_'}${'0' | '1'}${'"\''}`;
 
-type mUnlocks_item = docs_json_ts_0_6_1_5_properties_mUnlocks_item_mTapeUnlocks | mUnlocks_item_mScannableObjects | docs_json_ts_0_3_7_7_properties_mUnlocks_item_mRecipes | docs_json_ts_0_3_7_7_properties_mUnlocks_item_mNumInventorySlotsToUnlock | docs_json_ts_0_4_2_11_properties_mUnlocks_item_mResourcePairsToAddToScanner | docs_json_ts_0_5_2_1_properties_mUnlocks_item_mEmotes | docs_json_ts_0_3_7_7_properties_mUnlocks_item_mSchematics | docs_json_ts_0_3_7_7_properties_mUnlocks_item_base | docs_json_ts_0_4_2_11_properties_mUnlocks_item_mNumArmEquipmentSlotsToUnlock | docs_json_ts_0_3_7_7_properties_mUnlocks_item_mItemsToGive;
+type mUnlocks_item = docs_json_ts_0_3_7_7_overridable_mUnlocks_item_mRecipes | docs_json_ts_0_3_7_7_properties_mUnlocks_item_mNumInventorySlotsToUnlock | docs_json_ts_0_3_7_7_overridable_mUnlocks_item_mItemsToGive | docs_json_ts_0_3_7_7_overridable_mUnlocks_item_mSchematics | docs_json_ts_0_3_7_7_properties_mUnlocks_item_base | docs_json_ts_0_4_2_11_overridable_mUnlocks_item_mResourcePairsToAddToScanner | docs_json_ts_0_4_2_11_properties_mUnlocks_item_mNumArmEquipmentSlotsToUnlock | docs_json_ts_0_5_2_1_overridable_mUnlocks_item_mEmotes | docs_json_ts_0_6_1_5_overridable_mUnlocks_item_mTapeUnlocks | mUnlocks_item_mScannableObjects;
 
 type mUnlocks_item_mScannableObjects = docs_json_ts_0_3_7_7_properties_mUnlocks_item_base & {
 	mScannableObjects: [
 		{
-			ItemDescriptor: docs_json_ts_0_3_7_7_properties_BlueprintGeneratedClass_quoted,
+			ItemDescriptor: docs_json_ts_0_3_7_7_overridable_BlueprintGeneratedClass_quoted,
 			ActorsAllowedToScan: [
 				Class_quoted,
 				...Class_quoted[],
 			],
 		},
 		...{
-			ItemDescriptor: docs_json_ts_0_3_7_7_properties_BlueprintGeneratedClass_quoted,
+			ItemDescriptor: docs_json_ts_0_3_7_7_overridable_BlueprintGeneratedClass_quoted,
 			ActorsAllowedToScan: [
 				Class_quoted,
 				...Class_quoted[],

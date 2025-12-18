@@ -1,0 +1,407 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "docs.json.ts--0.6.1.5--classes--base.overridable",
+	"$defs": {
+		"FGAmmoType--base": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGItemDescriptor--base"
+				},
+				{
+					"$ref": "#/$defs/FGAmmoType--version-specific"
+				}
+			]
+		},
+		"FGAmmoType--version-specific": {
+			"type": "object",
+			"required": [
+				"mMagazineMeshMaterials",
+				"mAmmoDamageFalloff"
+			],
+			"properties": {
+				"mMagazineMeshMaterials": {
+					"oneOf": [
+						{
+							"type": "string",
+							"typed_string": ""
+						},
+						{
+							"type": "string",
+							"typed_string": {
+								"type": "array",
+								"minItems": 1,
+								"uniqueItems": true,
+								"items": {
+									"$ref": "docs.json.ts--0.6.1.5--overridable#/$defs/mMagazineMeshMaterials--item"
+								}
+							}
+						}
+					]
+				},
+				"mAmmoDamageFalloff": {
+					"oneOf": [
+						{
+							"$ref": "docs.json.ts--0.5.2.1--properties#/$defs/FalloffCurve--EditorCurveData--only"
+						},
+						{
+							"$ref": "docs.json.ts--0.5.2.1--overridable#/$defs/FalloffCurve--EditorCurveData--with-ExternalCurve"
+						}
+					]
+				}
+			}
+		},
+		"FGAmmoTypeProjectile--version-specific": {
+			"type": "object",
+			"required": [
+				"mHomingOverrideTargets"
+			],
+			"properties": {
+				"mHomingOverrideTargets": {
+					"oneOf": [
+						{
+							"type": "string",
+							"typed_string": ""
+						},
+						{
+							"type": "string",
+							"typed_string": {
+								"type": "array",
+								"minItems": 1,
+								"uniqueItems": true,
+								"items": {
+									"$ref": "docs.json.ts--0.6.1.5--overridable#/$defs/mHomingOverrideTargets--item"
+								}
+							}
+						}
+					]
+				}
+			}
+		},
+		"FGBuildable--base--version-specific": {
+			"type": "object",
+			"required": [
+				"mAlternativeMaterialRecipes"
+			],
+			"properties": {
+				"mAlternativeMaterialRecipes": {
+					"oneOf": [
+						{
+							"type": "string",
+							"typed_string": ""
+						},
+						{
+							"type": "string",
+							"typed_string": {
+								"type": "array",
+								"minItems": 1,
+								"uniqueItems": true,
+								"items": {
+									"$ref": "docs.json.ts--0.6.1.5--overridable#/$defs/mAlternativeMaterialRecipes--item"
+								}
+							}
+						}
+					]
+				}
+			}
+		},
+		"FGBuildableRadarTower--version-specific": {
+			"type": "object",
+			"required": [
+				"mScannableDescriptors"
+			],
+			"properties": {
+				"mScannableDescriptors": {
+					"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
+				}
+			}
+		},
+		"FGConsumableDescriptor": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGConsumableDescriptor--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGDescriptor--sinkable--base"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--base"
+				}
+			]
+		},
+		"FGItemDescriptor--base": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGDescriptor"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--overridable#/$defs/has--mSubCategories"
+				}
+			]
+		},
+		"FGItemDescriptor--version-specific": {
+			"type": "object",
+			"required": [
+				"mCrosshairMaterial",
+				"mDescriptorStatBars",
+				"mCompatibleItemDescriptors",
+				"mClassToScanFor",
+				"mScannableType",
+				"mShouldOverrideScannerDisplayText",
+				"mScannerDisplayText",
+				"mScannerLightColor",
+				"mMenuPriority"
+			],
+			"properties": {
+				"mCrosshairMaterial": {
+					"oneOf": [
+						{
+							"type": "string",
+							"const": "None"
+						},
+						{
+							"type": "string",
+							"templated_string": [
+								"/Game/FactoryGame/Interface/UI/Material/Crosshairs/MI_UI_Crosshair_",
+								{
+									"type": "string",
+									"minLength": 1
+								},
+								".MI_UI_Crosshair_",
+								{
+									"type": "string",
+									"minLength": 1
+								}
+							]
+						}
+					]
+				},
+				"mDescriptorStatBars": {
+					"oneOf": [
+						{
+							"type": "string",
+							"typed_string": ""
+						},
+						{
+							"type": "string",
+							"typed_string": {
+								"type": "array",
+								"minItems": 1,
+								"uniqueItems": true,
+								"items": {
+									"type": "string",
+									"typed_string": {
+										"type": "object",
+										"additionalProperties": false,
+										"required": [
+											"Value"
+										],
+										"properties": {
+											"Value": {
+												"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+											}
+										}
+									}
+								}
+							}
+						}
+					]
+				},
+				"mCompatibleItemDescriptors": {
+					"oneOf": [
+						{
+							"type": "string",
+							"typed_string": ""
+						},
+						{
+							"type": "string",
+							"typed_string": {
+								"type": "array",
+								"minItems": 1,
+								"uniqueItems": true,
+								"items": {
+									"$ref": "docs.json.ts--0.6.1.5--overridable#/$defs/mCompatibleItemDescriptors--item"
+								}
+							}
+						}
+					]
+				},
+				"mClassToScanFor": {
+					"oneOf": [
+						{
+							"type": "string",
+							"const": "None"
+						},
+						{
+							"type": "string",
+							"templated_string": [
+								"/Game/FactoryGame/",
+								[
+									"Resource/Environment/",
+									"World/Benefit/"
+								],
+								{"type": "string"},
+								"/BP_",
+								{
+									"type": "string",
+									"minLength": 1
+								},
+								".BP_",
+								{
+									"type": "string",
+									"minLength": 1
+								}
+							]
+						}
+					]
+				},
+				"mScannableType": {
+					"type": "string",
+					"enum": [
+						"RTWOT_Default",
+						"RTWOT_WeakSignal",
+						"RTWOT_Flora"
+					]
+				},
+				"mShouldOverrideScannerDisplayText": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mScannerDisplayText": {"type": "string"},
+				"mScannerLightColor": {
+					"$ref": "docs.json.ts--common--types#/$defs/BGRA"
+				},
+				"mMenuPriority": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGItemDescriptorNuclearFuel": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGItemDescriptorNuclearFuel--base"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base.overridable#/$defs/FGItemDescriptorNuclearFuel--base"
+				}
+			]
+		},
+		"FGObjectScanner--version-specific": {
+			"type": "object",
+			"required": [
+				"mScannableDescriptors"
+			],
+			"properties": {
+				"mScannableDescriptors": {
+					"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
+				}
+			}
+		},
+		"FGRecipe": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGRecipe--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGRecipe--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base.overridable#/$defs/FGRecipe--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGRecipe--version-specific"
+				}
+			]
+		},
+		"FGSchematic--version-specific--mUnlocks": {
+			"type": "object",
+			"required": [
+				"mUnlocks"
+			],
+			"properties": {
+				"mUnlocks": {
+					"type": "array",
+					"minItems": 0,
+					"maxItems": 6,
+					"items": {
+						"$ref": "docs.json.ts--0.6.1.5--overridable#/$defs/mUnlocks--item"
+					}
+				}
+			}
+		},
+		"FGVehicleDescriptor--Desc_CyberWagon_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGVehicleDescriptor--Desc_CyberWagon_C"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--base"
+				}
+			]
+		},
+		"FGVehicleDescriptor--Desc_DroneTransport_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGVehicleDescriptor--Desc_DroneTransport_C"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--base"
+				}
+			]
+		},
+		"FGVehicleDescriptor--Desc_Explorer_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGVehicleDescriptor--Desc_Explorer_C"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--base"
+				}
+			]
+		},
+		"FGVehicleDescriptor--Desc_FreightWagon_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGVehicleDescriptor--Desc_FreightWagon_C"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--base"
+				}
+			]
+		},
+		"FGVehicleDescriptor--Desc_Locomotive_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGVehicleDescriptor--Desc_Locomotive_C"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--base"
+				}
+			]
+		},
+		"FGVehicleDescriptor--Desc_Tractor_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGVehicleDescriptor--Desc_Tractor_C"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--base"
+				}
+			]
+		},
+		"FGVehicleDescriptor--Desc_Truck_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGVehicleDescriptor--Desc_Truck_C"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--base"
+				}
+			]
+		}
+	}
+}

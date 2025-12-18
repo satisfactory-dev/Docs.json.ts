@@ -8,6 +8,11 @@ import {
 	TemplatedString,
 } from '@signpostmarv/json-schema-typescript-codegen/ajv';
 
+// eslint-disable-next-line @stylistic/max-len
+import update6_overridable from '../../../schema/0.6.1.5/overridable.json' with {
+	type: 'json',
+};
+
 import update6_properties from '../../../schema/0.6.1.5/properties.json' with {
 	type: 'json',
 };
@@ -17,7 +22,17 @@ import update6_classes from '../../../schema/0.6.1.5/classes.json' with {
 };
 
 // eslint-disable-next-line @stylistic/max-len
+import update6_classes__overridable from '../../../schema/0.6.1.5/classes.overridable.json' with {
+	type: 'json',
+};
+
+// eslint-disable-next-line @stylistic/max-len
 import update6_classes__base from '../../../schema/0.6.1.5/base-classes.json' with {
+	type: 'json',
+};
+
+// eslint-disable-next-line @stylistic/max-len
+import update6_classes__base__overridable from '../../../schema/0.6.1.5/base-classes.overridable.json' with {
 	type: 'json',
 };
 
@@ -79,9 +94,12 @@ const already_configured: WeakSet<SchemaParser> = new WeakSet();
 export function add_schemas(parser: SchemaParser) {
 	add_schemas_update5(parser);
 
+	parser.add_schema(update6_overridable as SchemaObjectWith$id);
 	parser.add_schema(update6_properties as SchemaObjectWith$id);
 	parser.add_schema(update6_classes__base as SchemaObjectWith$id);
+	parser.add_schema(update6_classes__base__overridable);
 	parser.add_schema(update6_classes as SchemaObjectWith$id);
+	parser.add_schema(update6_classes__overridable as SchemaObjectWith$id);
 	parser.add_schema(update6 as SchemaObjectWith$id);
 }
 

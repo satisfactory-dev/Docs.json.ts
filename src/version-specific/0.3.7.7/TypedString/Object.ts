@@ -197,9 +197,7 @@ export function Object_generate_typescript_data(
 		);
 
 		if (
-			object_has_property(property_schema, 'type')
-			&& 'string' === property_schema.type
-			&& 'string' === typeof property_value
+			'string' === typeof property_value
 			&& property_value.startsWith('"')
 			&& property_value.endsWith('"')
 		) {

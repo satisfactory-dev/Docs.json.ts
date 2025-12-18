@@ -12,12 +12,27 @@ import update5_properties from '../../../schema/0.5.2.1/properties.json' with {
 	type: 'json',
 };
 
+// eslint-disable-next-line @stylistic/max-len
+import update5_overridable from '../../../schema/0.5.2.1/overridable.json' with {
+	type: 'json',
+};
+
 import update5_classes from '../../../schema/0.5.2.1/classes.json' with {
 	type: 'json',
 };
 
 // eslint-disable-next-line @stylistic/max-len
+import update5_classes__overridable from '../../../schema/0.5.2.1/classes.overridable.json' with {
+	type: 'json',
+};
+
+// eslint-disable-next-line @stylistic/max-len
 import update5_classes__base from '../../../schema/0.5.2.1/base-classes.json' with {
+	type: 'json',
+};
+
+// eslint-disable-next-line @stylistic/max-len
+import update5_classes__base__overridable from '../../../schema/0.5.2.1/base-classes.overridable.json' with {
 	type: 'json',
 };
 
@@ -79,6 +94,9 @@ const already_configured: WeakSet<SchemaParser> = new WeakSet();
 export function add_schemas(parser: SchemaParser) {
 	add_schemas_update4(parser);
 
+	parser.add_schema(update5_overridable);
+	parser.add_schema(update5_classes__overridable);
+	parser.add_schema(update5_classes__base__overridable);
 	parser.add_schema(update5_properties as SchemaObjectWith$id);
 	parser.add_schema(update5_classes__base as SchemaObjectWith$id);
 	parser.add_schema(update5_classes as SchemaObjectWith$id);

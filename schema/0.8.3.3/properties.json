@@ -28,7 +28,7 @@
 										"minItems": 1,
 										"uniqueItems": true,
 										"items": {
-											"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/MaterialInstanceConstant--quoted"
+											"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/MaterialInstanceConstant--quoted"
 										}
 									}
 								}
@@ -92,25 +92,16 @@
 		"mUnlocks--item": {
 			"oneOf": [
 				{
-					"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/mUnlocks--item--mTapeUnlocks"
-				},
-				{
-					"$ref": "#/$defs/mUnlocks--item--mScannableObjects"
-				},
-				{
-					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mRecipes"
+					"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/mUnlocks--item--mRecipes"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mNumInventorySlotsToUnlock"
 				},
 				{
-					"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/mUnlocks--item--mResourcePairsToAddToScanner"
+					"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/mUnlocks--item--mItemsToGive"
 				},
 				{
-					"$ref": "docs.json.ts--0.5.2.1--properties#/$defs/mUnlocks--item--mEmotes"
-				},
-				{
-					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mSchematics"
+					"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/mUnlocks--item--mSchematics"
 				},
 				{
 					"type": "object",
@@ -118,10 +109,19 @@
 					"unevaluatedProperties": false
 				},
 				{
+					"$ref": "docs.json.ts--0.4.2.11--overridable#/$defs/mUnlocks--item--mResourcePairsToAddToScanner"
+				},
+				{
 					"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/mUnlocks--item--mNumArmEquipmentSlotsToUnlock"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mItemsToGive"
+					"$ref": "docs.json.ts--0.5.2.1--overridable#/$defs/mUnlocks--item--mEmotes"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--overridable#/$defs/mUnlocks--item--mTapeUnlocks"
+				},
+				{
+					"$ref": "#/$defs/mUnlocks--item--mScannableObjects"
 				}
 			]
 		},
@@ -147,7 +147,7 @@
 								],
 								"properties": {
 									"ItemDescriptor": {
-										"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/BlueprintGeneratedClass--quoted"
+										"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/BlueprintGeneratedClass--quoted"
 									},
 									"ActorsAllowedToScan": {
 										"type": "string",

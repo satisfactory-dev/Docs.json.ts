@@ -473,7 +473,7 @@
 		},
 		"FGSchematic": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGSchematic--version-specific",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGSchematic",
 			"unevaluatedProperties": false
 		},
 		"FGSnowballWeapon": {

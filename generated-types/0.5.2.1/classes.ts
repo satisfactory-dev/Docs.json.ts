@@ -22,6 +22,7 @@ import type {
 	FGBuildableFloodlight as docs_json_ts_0_5_2_1_classes_base_FGBuildableFloodlight,
 	FGBuildableFoundation as docs_json_ts_0_5_2_1_classes_base_FGBuildableFoundation,
 	FGBuildableFrackingActivator as docs_json_ts_0_5_2_1_classes_base_FGBuildableFrackingActivator,
+	FGBuildableFrackingExtractor as docs_json_ts_0_5_2_1_classes_base_FGBuildableFrackingExtractor,
 	FGBuildableGeneratorFuel_biomass as docs_json_ts_0_5_2_1_classes_base_FGBuildableGeneratorFuel_biomass,
 	FGBuildableGeneratorFuel_coal as docs_json_ts_0_5_2_1_classes_base_FGBuildableGeneratorFuel_coal,
 	FGBuildableGeneratorFuel_fuel as docs_json_ts_0_5_2_1_classes_base_FGBuildableGeneratorFuel_fuel,
@@ -60,7 +61,6 @@ import type {
 	FGBuildableRailroadStation as docs_json_ts_0_5_2_1_classes_base_FGBuildableRailroadStation,
 	FGBuildableRailroadTrack as docs_json_ts_0_5_2_1_classes_base_FGBuildableRailroadTrack,
 	FGBuildableRamp as docs_json_ts_0_5_2_1_classes_base_FGBuildableRamp,
-	FGBuildableResourceExtractor_base as docs_json_ts_0_5_2_1_classes_base_FGBuildableResourceExtractor_base,
 	FGBuildableResourceExtractor_miner_mk1 as docs_json_ts_0_5_2_1_classes_base_FGBuildableResourceExtractor_miner_mk1,
 	FGBuildableResourceExtractor_miner_mk2 as docs_json_ts_0_5_2_1_classes_base_FGBuildableResourceExtractor_miner_mk2,
 	FGBuildableResourceExtractor_miner_mk3 as docs_json_ts_0_5_2_1_classes_base_FGBuildableResourceExtractor_miner_mk3,
@@ -88,10 +88,8 @@ import type {
 	FGItemDescAmmoTypeProjectile_explosive_firework as docs_json_ts_0_5_2_1_classes_base_FGItemDescAmmoTypeProjectile_explosive_firework,
 	FGItemDescriptor as docs_json_ts_0_5_2_1_classes_base_FGItemDescriptor,
 	FGItemDescriptor_base as docs_json_ts_0_5_2_1_classes_base_FGItemDescriptor_base,
-	FGItemDescriptorNuclearFuel as docs_json_ts_0_5_2_1_classes_base_FGItemDescriptorNuclearFuel,
 	FGNobeliskDetonator as docs_json_ts_0_5_2_1_classes_base_FGNobeliskDetonator,
 	FGPipeHyperStart as docs_json_ts_0_5_2_1_classes_base_FGPipeHyperStart,
-	FGRecipe as docs_json_ts_0_5_2_1_classes_base_FGRecipe,
 	FGResourceDescriptor as docs_json_ts_0_5_2_1_classes_base_FGResourceDescriptor,
 	FGSchematic_base as docs_json_ts_0_5_2_1_classes_base_FGSchematic_base,
 	FGSchematic_with_described_unlocks as docs_json_ts_0_5_2_1_classes_base_FGSchematic_with_described_unlocks,
@@ -101,6 +99,10 @@ import type {
 	FGWeapon_Equip_RebarGun_Projectile_C as docs_json_ts_0_5_2_1_classes_base_FGWeapon_Equip_RebarGun_Projectile_C,
 	FGWeapon_Equip_Rifle_C as docs_json_ts_0_5_2_1_classes_base_FGWeapon_Equip_Rifle_C,
 } from './classes/Base.ts';
+
+import type {
+	FGItemDescriptorNuclearFuel as docs_json_ts_0_5_2_1_classes_base_overridable_FGItemDescriptorNuclearFuel,
+} from './classes/Base.overridable.ts';
 
 type FGBuildable_base = docs_json_ts_0_5_2_1_classes_base_FGBuildable_base;
 
@@ -144,7 +146,7 @@ type FGBuildableFoundation = docs_json_ts_0_5_2_1_classes_base_FGBuildableFounda
 
 type FGBuildableFrackingActivator = docs_json_ts_0_5_2_1_classes_base_FGBuildableFrackingActivator;
 
-type FGBuildableFrackingExtractor = docs_json_ts_0_5_2_1_classes_base_FGBuildableResourceExtractor_base;
+type FGBuildableFrackingExtractor = docs_json_ts_0_5_2_1_classes_base_FGBuildableFrackingExtractor;
 
 type FGBuildableGeneratorFuel_biomass = docs_json_ts_0_5_2_1_classes_base_FGBuildableGeneratorFuel_biomass;
 
@@ -266,8 +268,6 @@ type FGChargedWeapon = docs_json_ts_0_5_2_1_classes_base_FGNobeliskDetonator;
 
 type FGConsumableDescriptor = docs_json_ts_0_5_2_1_classes_base_FGConsumableDescriptor;
 
-type FGCustomizationRecipe = docs_json_ts_0_5_2_1_classes_base_FGRecipe;
-
 type FGEquipmentDescriptor_Desc_GolfCartGold_C = docs_json_ts_0_5_2_1_classes_base_FGItemDescriptor_base;
 
 type FGGolfCartDispenser = docs_json_ts_0_5_2_1_classes_base_FGGolfCartDispenser;
@@ -286,13 +286,11 @@ type FGItemDescAmmoTypeProjectile_explosive_firework = docs_json_ts_0_5_2_1_clas
 
 type FGItemDescriptor = docs_json_ts_0_5_2_1_classes_base_FGItemDescriptor;
 
-type FGItemDescriptorNuclearFuel = docs_json_ts_0_5_2_1_classes_base_FGItemDescriptorNuclearFuel;
+type FGItemDescriptorNuclearFuel = docs_json_ts_0_5_2_1_classes_base_overridable_FGItemDescriptorNuclearFuel;
 
 type FGPipeHyperStart = docs_json_ts_0_5_2_1_classes_base_FGPipeHyperStart;
 
 type FGPoleDescriptor = docs_json_ts_0_5_2_1_classes_base_FGDescriptor_BuildMenu;
-
-type FGRecipe = docs_json_ts_0_5_2_1_classes_base_FGRecipe;
 
 type FGResourceDescriptor = docs_json_ts_0_5_2_1_classes_base_FGResourceDescriptor;
 
@@ -401,7 +399,6 @@ export type {
 	FGBuildingDescriptor,
 	FGChargedWeapon,
 	FGConsumableDescriptor,
-	FGCustomizationRecipe,
 	FGEquipmentDescriptor_Desc_GolfCartGold_C,
 	FGGolfCartDispenser,
 	FGItemDescAmmoTypeColorCartridge,
@@ -414,7 +411,6 @@ export type {
 	FGItemDescriptorNuclearFuel,
 	FGPipeHyperStart,
 	FGPoleDescriptor,
-	FGRecipe,
 	FGResourceDescriptor,
 	FGSchematic_base,
 	FGSchematic_with_described_unlocks,

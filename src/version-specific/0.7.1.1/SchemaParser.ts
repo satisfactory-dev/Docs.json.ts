@@ -19,6 +19,11 @@ import update7_classes__base from '../../../schema/0.7.1.1/base-classes.json' wi
 	type: 'json',
 };
 
+// eslint-disable-next-line @stylistic/max-len
+import update7_classes__base__overridable from '../../../schema/0.7.1.1/base-classes.overridable.json' with {
+	type: 'json',
+};
+
 import update7 from '../../../schema/0.7.1.1/docs.json' with {
 	type: 'json',
 };
@@ -77,6 +82,7 @@ const already_configured: WeakSet<SchemaParser> = new WeakSet();
 export function add_schemas(parser: SchemaParser) {
 	add_schemas_update6(parser);
 
+	parser.add_schema(update7_classes__base__overridable);
 	parser.add_schema(update7_classes__base as SchemaObjectWith$id);
 	parser.add_schema(update7_classes as SchemaObjectWith$id);
 	parser.add_schema(update7 as SchemaObjectWith$id);

@@ -1246,7 +1246,7 @@
 					"type": "array",
 					"minItems": 1,
 					"items": {
-						"$ref": "docs.json.ts--0.6.1.5--classes#/$defs/FGBuildingDescriptor"
+						"$ref": "docs.json.ts--0.6.1.5--classes.overridable#/$defs/FGBuildingDescriptor"
 					}
 				}
 			}
@@ -1300,7 +1300,7 @@
 					"type": "array",
 					"minItems": 1,
 					"items": {
-						"$ref": "docs.json.ts--0.6.1.5--classes#/$defs/FGConsumableDescriptor"
+						"$ref": "docs.json.ts--0.6.1.5--classes.overridable#/$defs/FGConsumableDescriptor"
 					}
 				}
 			}
@@ -1359,7 +1359,7 @@
 								"$ref": "docs.json.ts--0.6.1.5--classes#/$defs/FGItemDescriptor"
 							},
 							{
-								"$ref": "docs.json.ts--0.6.1.5--classes#/$defs/FGEquipmentDescriptor--Desc_GolfCartGold_C"
+								"$ref": "docs.json.ts--0.6.1.5--classes.overridable#/$defs/FGEquipmentDescriptor--Desc_GolfCartGold_C"
 							}
 						]
 					}
@@ -1622,7 +1622,7 @@
 					"type": "array",
 					"minItems": 1,
 					"items": {
-						"$ref": "docs.json.ts--0.6.1.5--classes#/$defs/FGPoleDescriptor"
+						"$ref": "docs.json.ts--0.6.1.5--classes.overridable#/$defs/FGPoleDescriptor"
 					}
 				}
 			}
@@ -1658,7 +1658,7 @@
 					"type": "array",
 					"minItems": 1,
 					"items": {
-						"$ref": "docs.json.ts--0.6.1.5--classes#/$defs/FGRecipe"
+						"$ref": "docs.json.ts--0.6.1.5--classes.overridable#/$defs/FGRecipe"
 					}
 				}
 			}
@@ -1740,25 +1740,25 @@
 					"items": false,
 					"prefixItems": [
 						{
-							"$ref": "docs.json.ts--0.6.1.5--classes#/$defs/FGVehicleDescriptor--Desc_Truck_C"
+							"$ref": "docs.json.ts--0.6.1.5--classes.overridable#/$defs/FGVehicleDescriptor--Desc_Truck_C"
 						},
 						{
-							"$ref": "docs.json.ts--0.6.1.5--classes#/$defs/FGVehicleDescriptor--Desc_DroneTransport_C"
+							"$ref": "docs.json.ts--0.6.1.5--classes.overridable#/$defs/FGVehicleDescriptor--Desc_DroneTransport_C"
 						},
 						{
-							"$ref": "docs.json.ts--0.6.1.5--classes#/$defs/FGVehicleDescriptor--Desc_Tractor_C"
+							"$ref": "docs.json.ts--0.6.1.5--classes.overridable#/$defs/FGVehicleDescriptor--Desc_Tractor_C"
 						},
 						{
-							"$ref": "docs.json.ts--0.6.1.5--classes#/$defs/FGVehicleDescriptor--Desc_FreightWagon_C"
+							"$ref": "docs.json.ts--0.6.1.5--classes.overridable#/$defs/FGVehicleDescriptor--Desc_FreightWagon_C"
 						},
 						{
-							"$ref": "docs.json.ts--0.6.1.5--classes#/$defs/FGVehicleDescriptor--Desc_Locomotive_C"
+							"$ref": "docs.json.ts--0.6.1.5--classes.overridable#/$defs/FGVehicleDescriptor--Desc_Locomotive_C"
 						},
 						{
-							"$ref": "docs.json.ts--0.6.1.5--classes#/$defs/FGVehicleDescriptor--Desc_Explorer_C"
+							"$ref": "docs.json.ts--0.6.1.5--classes.overridable#/$defs/FGVehicleDescriptor--Desc_Explorer_C"
 						},
 						{
-							"$ref": "docs.json.ts--0.6.1.5--classes#/$defs/FGVehicleDescriptor--Desc_CyberWagon_C"
+							"$ref": "docs.json.ts--0.6.1.5--classes.overridable#/$defs/FGVehicleDescriptor--Desc_CyberWagon_C"
 						}
 					]
 				}

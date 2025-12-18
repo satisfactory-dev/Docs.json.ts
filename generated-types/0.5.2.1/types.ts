@@ -101,7 +101,6 @@ import type {
 	FGBuildingDescriptor as docs_json_ts_0_5_2_1_classes_FGBuildingDescriptor,
 	FGChargedWeapon as docs_json_ts_0_5_2_1_classes_FGChargedWeapon,
 	FGConsumableDescriptor as docs_json_ts_0_5_2_1_classes_FGConsumableDescriptor,
-	FGCustomizationRecipe as docs_json_ts_0_5_2_1_classes_FGCustomizationRecipe,
 	FGEquipmentDescriptor_Desc_GolfCartGold_C as docs_json_ts_0_5_2_1_classes_FGEquipmentDescriptor_Desc_GolfCartGold_C,
 	FGGolfCartDispenser as docs_json_ts_0_5_2_1_classes_FGGolfCartDispenser,
 	FGItemDescAmmoTypeColorCartridge as docs_json_ts_0_5_2_1_classes_FGItemDescAmmoTypeColorCartridge,
@@ -114,7 +113,6 @@ import type {
 	FGItemDescriptorNuclearFuel as docs_json_ts_0_5_2_1_classes_FGItemDescriptorNuclearFuel,
 	FGPipeHyperStart as docs_json_ts_0_5_2_1_classes_FGPipeHyperStart,
 	FGPoleDescriptor as docs_json_ts_0_5_2_1_classes_FGPoleDescriptor,
-	FGRecipe as docs_json_ts_0_5_2_1_classes_FGRecipe,
 	FGResourceDescriptor as docs_json_ts_0_5_2_1_classes_FGResourceDescriptor,
 	FGSchematic_base as docs_json_ts_0_5_2_1_classes_FGSchematic_base,
 	FGSchematic_with_described_unlocks as docs_json_ts_0_5_2_1_classes_FGSchematic_with_described_unlocks,
@@ -128,6 +126,11 @@ import type {
 	FGWeapon_Equip_RebarGun_Projectile_C as docs_json_ts_0_5_2_1_classes_FGWeapon_Equip_RebarGun_Projectile_C,
 	FGWeapon_Equip_Rifle_C as docs_json_ts_0_5_2_1_classes_FGWeapon_Equip_Rifle_C,
 } from './classes.ts';
+
+import type {
+	FGCustomizationRecipe as docs_json_ts_0_5_2_1_classes_overridable_FGCustomizationRecipe,
+	FGRecipe as docs_json_ts_0_5_2_1_classes_overridable_FGRecipe,
+} from './classes/overridable.ts';
 
 type FGBuildable = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildable'}${'\''}`,
@@ -653,8 +656,8 @@ type FGConveyorPoleStackable = {
 type FGCustomizationRecipe = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGCustomizationRecipe'}${'\''}`,
 	Classes: [
-		docs_json_ts_0_5_2_1_classes_FGCustomizationRecipe,
-		...docs_json_ts_0_5_2_1_classes_FGCustomizationRecipe[],
+		docs_json_ts_0_5_2_1_classes_overridable_FGCustomizationRecipe,
+		...docs_json_ts_0_5_2_1_classes_overridable_FGCustomizationRecipe[],
 	],
 };
 
@@ -745,8 +748,8 @@ type FGPoleDescriptor = {
 type FGRecipe = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGRecipe'}${'\''}`,
 	Classes: [
-		docs_json_ts_0_5_2_1_classes_FGRecipe,
-		...docs_json_ts_0_5_2_1_classes_FGRecipe[],
+		docs_json_ts_0_5_2_1_classes_overridable_FGRecipe,
+		...docs_json_ts_0_5_2_1_classes_overridable_FGRecipe[],
 	],
 };
 

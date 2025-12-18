@@ -5,33 +5,25 @@ import type {
 } from './../../common/types.ts';
 
 import type {
-	BlueprintGeneratedClass_quoted as docs_json_ts_0_3_7_7_properties_BlueprintGeneratedClass_quoted,
 	Class_quoted as docs_json_ts_0_3_7_7_properties_Class_quoted,
-	DocsDotJson_BlueprintGeneratedClass_quoted_list as docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list,
 	mProducedIn_base as docs_json_ts_0_3_7_7_properties_mProducedIn_base,
 	mUnlocks_item_base as docs_json_ts_0_3_7_7_properties_mUnlocks_item_base,
-	mUnlocks_item_mItemsToGive as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mItemsToGive,
-	mUnlocks_item_mNumInventorySlotsToUnlock as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mNumInventorySlotsToUnlock,
-	mUnlocks_item_mRecipes as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mRecipes,
-	mUnlocks_item_mSchematics as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mSchematics,
 } from './../../0.3.7.7/types/properties.ts';
 
 import type {
 	mProducedIn_version_specific as docs_json_ts_0_4_2_11_properties_mProducedIn_version_specific,
-	mUnlocks_item_mNumArmEquipmentSlotsToUnlock as docs_json_ts_0_4_2_11_properties_mUnlocks_item_mNumArmEquipmentSlotsToUnlock,
-	mUnlocks_item_mResourcePairsToAddToScanner as docs_json_ts_0_4_2_11_properties_mUnlocks_item_mResourcePairsToAddToScanner,
 } from './../../0.4.2.11/types/properties.ts';
 
 import type {
-	mUnlocks_item_mEmotes as docs_json_ts_0_5_2_1_properties_mUnlocks_item_mEmotes,
-} from './../../0.5.2.1/types/properties.ts';
+	BlueprintGeneratedClass_quoted as docs_json_ts_0_3_7_7_overridable_BlueprintGeneratedClass_quoted,
+} from './../../0.3.7.7/types/overridable.ts';
 
 type mAllowedResourceForms = [
     'RF_SOLID' | 'RF_LIQUID' | 'RF_GAS' | 'RF_HEAT',
     ...('RF_SOLID' | 'RF_LIQUID' | 'RF_GAS' | 'RF_HEAT')[],
 ];
 
-type mAlternativeMaterialRecipes_mMaterial = `/Game/FactoryGame/Buildable/-Shared/Customization/Materials/MaterialDesc_Foundation_${Exclude<string, ''>}${'.MaterialDesc_Foundation_'}${Exclude<string, ''>}`;
+type mAlternativeMaterialRecipes_mMaterial = `/Game/FactoryGame/Buildable/-Shared/Customization/Materials/MaterialDesc_Foundation_${Exclude<string, ''>}${'.MaterialDesc_Foundation_'}${Exclude<string, ''>}${'_C'}`;
 
 type mAlternativeMaterialRecipes_mRecipe = `/Game/FactoryGame/Buildable/Building/Foundation/${string}${'/Recipe_'}${Exclude<string, ''>}${'.Recipe_'}${Exclude<string, ''>}${'_C'}`;
 
@@ -49,30 +41,23 @@ type mProducedIn_version_specific = [
     '/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkshopComponent.BP_WorkshopComponent_C',
 ];
 
-type mUnlocks_item = mUnlocks_item_mTapeUnlocks | mUnlocks_item_mScannableObjects | docs_json_ts_0_3_7_7_properties_mUnlocks_item_mRecipes | docs_json_ts_0_3_7_7_properties_mUnlocks_item_mNumInventorySlotsToUnlock | docs_json_ts_0_4_2_11_properties_mUnlocks_item_mResourcePairsToAddToScanner | docs_json_ts_0_5_2_1_properties_mUnlocks_item_mEmotes | docs_json_ts_0_3_7_7_properties_mUnlocks_item_mSchematics | docs_json_ts_0_3_7_7_properties_mUnlocks_item_base | docs_json_ts_0_4_2_11_properties_mUnlocks_item_mNumArmEquipmentSlotsToUnlock | docs_json_ts_0_3_7_7_properties_mUnlocks_item_mItemsToGive;
-
 type mUnlocks_item_mScannableObjects = docs_json_ts_0_3_7_7_properties_mUnlocks_item_base & {
 	mScannableObjects: [
 		{
-			ItemDescriptor: docs_json_ts_0_3_7_7_properties_BlueprintGeneratedClass_quoted,
+			ItemDescriptor: docs_json_ts_0_3_7_7_overridable_BlueprintGeneratedClass_quoted,
 			ActorsAllowedToScan: [
 				docs_json_ts_0_3_7_7_properties_Class_quoted,
 				...docs_json_ts_0_3_7_7_properties_Class_quoted[],
 			],
 		},
 		...{
-			ItemDescriptor: docs_json_ts_0_3_7_7_properties_BlueprintGeneratedClass_quoted,
+			ItemDescriptor: docs_json_ts_0_3_7_7_overridable_BlueprintGeneratedClass_quoted,
 			ActorsAllowedToScan: [
 				docs_json_ts_0_3_7_7_properties_Class_quoted,
 				...docs_json_ts_0_3_7_7_properties_Class_quoted[],
 			],
 		}[],
 	],
-};
-
-type mUnlocks_item_mTapeUnlocks = {
-	Class: 'FGUnlockTape',
-	mTapeUnlocks: docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list,
 };
 
 type BP_RadialDamageType_Explosive_C_quoted = `BP_RadialDamageType_Explosive_C'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
@@ -91,17 +76,6 @@ type DocsDotJson_AkAudioEvent_quoted_list = [
 
 type DocsDotJson_AkAudioEvent_quoted_list_item = `AkAudioEvent'"/Game/WwiseAudio/${Exclude<string, ''>}${'"\''}`;
 
-type ItemClass_list = [
-	{
-		ItemClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
-	},
-	...{
-		ItemClass: `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
-	}[],
-];
-
-type Material_quoted = `Material'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
-
 export type {
 	mAllowedResourceForms,
 	mAlternativeMaterialRecipes_mMaterial,
@@ -110,14 +84,10 @@ export type {
 	mObjectDetails_Icon,
 	mProducedIn,
 	mProducedIn_version_specific,
-	mUnlocks_item,
 	mUnlocks_item_mScannableObjects,
-	mUnlocks_item_mTapeUnlocks,
 	BP_RadialDamageType_Explosive_C_quoted,
 	BP_RadialDamageType_Gas_C_quoted,
 	DamageTypes,
 	DocsDotJson_AkAudioEvent_quoted_list,
 	DocsDotJson_AkAudioEvent_quoted_list_item,
-	ItemClass_list,
-	Material_quoted,
 };

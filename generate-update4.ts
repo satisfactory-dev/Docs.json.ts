@@ -18,11 +18,20 @@ import {
 	configure_parser,
 } from './src/version-specific/0.4.2.11/SchemaParser.ts';
 
+import update4_overridable from './schema/0.4.2.11/overridable.json' with {
+	type: 'json',
+};
+
 import update4_properties from './schema/0.4.2.11/properties.json' with {
 	type: 'json',
 };
 
 import update4_classes__base from './schema/0.4.2.11/base-classes.json' with {
+	type: 'json',
+};
+
+// eslint-disable-next-line @stylistic/max-len
+import update4_classes__base__overridable from './schema/0.4.2.11/base-classes.overridable.json' with {
 	type: 'json',
 };
 
@@ -122,7 +131,9 @@ console.log(
 );
 
 for (const schema of [
+	update4_overridable,
 	update4_properties,
+	update4_classes__base__overridable,
 	update4_classes__base,
 	update4_classes,
 	update4,

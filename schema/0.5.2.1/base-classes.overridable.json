@@ -1,0 +1,132 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "docs.json.ts--0.5.2.1--classes--base.overridable",
+	"$defs": {
+		"FGBuildable--is-wallish": {
+			"type": "object",
+			"required": [
+				"mAngularDepth",
+				"mWallType",
+				"mAngledVariants"
+			],
+			"properties": {
+				"mAngularDepth": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mWallType": {
+					"type": "string",
+					"enum": [
+						"BWT_Normal",
+						"BWT_Glass",
+						"BWT_DiagonalDown",
+						"BWT_DiagonalUp",
+						"BWT_Frame"
+					]
+				},
+				"mAngledVariants": {
+					"oneOf": [
+						{
+							"type": "string",
+							"typed_string": ""
+						},
+						{
+							"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
+						}
+					]
+				}
+			}
+		},
+		"FGItemDescriptorNuclearFuel": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGItemDescriptorNuclearFuel--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGItemDescriptor--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base.overridable#/$defs/FGItemDescriptorNuclearFuel--base"
+				}
+			]
+		},
+		"FGRecipe": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGRecipe--base"
+				},
+				{
+					"$ref": "#/$defs/FGRecipe--version-specific"
+				}
+			]
+		},
+		"FGRecipe--version-specific": {
+			"type": "object",
+			"required": [
+				"mIngredients",
+				"mProduct"
+			],
+			"properties": {
+				"mIngredients": {
+					"oneOf": [
+						{
+							"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/ItemClass-Amount--list"
+						},
+						{
+							"type": "string",
+							"typed_string": ""
+						}
+					]
+				},
+				"mProduct": {
+					"oneOf": [
+						{
+							"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/ItemClass-Amount--list"
+						},
+						{
+							"type": "string",
+							"typed_string": ""
+						}
+					]
+				}
+			}
+		},
+		"FGSchematic--version-specific": {
+			"type": "object",
+			"required": [
+				"mDependenciesBlocksSchematicAccess",
+				"mSmallSchematicIcon",
+				"mRelevantShopSchematics"
+			],
+			"properties": {
+				"mDependenciesBlocksSchematicAccess": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mSmallSchematicIcon": {
+					"oneOf": [
+						{
+							"type": "string",
+							"const": "None"
+						},
+						{
+							"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/Texture2D"
+						}
+					]
+				},
+				"mRelevantShopSchematics": {
+					"$ref": "docs.json.ts--0.5.2.1--overridable#/$defs/mRelevantShopSchematics"
+				}
+			}
+		},
+		"FGWeapon--version-specific": {
+			"type": "object",
+			"required": [
+				"mAllowedAmmoClasses"
+			],
+			"properties": {
+				"mAllowedAmmoClasses": {
+					"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
+				}
+			}
+		}
+	}
+}

@@ -84,27 +84,12 @@ type mRelevantEvents = [
 	'EV_Christmas',
 ];
 
-type mSchematicDependencies_item = {
-	Class: `BP_${string}${'_C'}`,
-	mSchematics: DocsDotJson_BlueprintGeneratedClass_quoted_list,
-	mRequireAllSchematicsToBePurchased: docs_json_ts_common_types_bool_string,
-};
-
 type mStackSize = 'SS_HUGE' | 'SS_MEDIUM' | 'SS_BIG' | 'SS_SMALL' | 'SS_ONE' | 'SS_FLUID';
-
-type mSubCategories = [
-	BlueprintGeneratedClass_quoted,
-	...BlueprintGeneratedClass_quoted[],
-];
 
 type mType = 'EST_Custom' | 'EST_Tutorial' | 'EST_MAM' | 'EST_HardDrive' | 'EST_Milestone' | 'EST_Alternate' | 'EST_ResourceSink';
 
 type mUnlocks_item_base = {
 	Class: `BP_${string}${'_C'}`,
-};
-
-type mUnlocks_item_mItemsToGive = mUnlocks_item_base & {
-	mItemsToGive: ItemClass_Amount_list,
 };
 
 type mUnlocks_item_mNumArmEquipmentSlotsToUnlock = mUnlocks_item_base & {
@@ -115,57 +100,21 @@ type mUnlocks_item_mNumInventorySlotsToUnlock = mUnlocks_item_base & {
 	mNumInventorySlotsToUnlock: docs_json_ts_common_types_integer_string,
 };
 
-type mUnlocks_item_mRecipes = mUnlocks_item_base & {
-	mRecipes: DocsDotJson_BlueprintGeneratedClass_quoted_list,
-};
-
-type mUnlocks_item_mResourcesToAddToScanner = mUnlocks_item_base & {
-	mResourcesToAddToScanner: DocsDotJson_BlueprintGeneratedClass_quoted_list,
-};
-
-type mUnlocks_item_mSchematics = mUnlocks_item_base & {
-	mSchematics: DocsDotJson_BlueprintGeneratedClass_quoted_list,
-};
-
 type transform_Rotation_Translation_Scale3D = {
 	Rotation: docs_json_ts_common_types_XYZW_decimal_string,
 	Translation: docs_json_ts_common_types_XYZ_decimal_string,
 	Scale3D: docs_json_ts_common_types_XYZ_decimal_string,
 };
 
-type AnimMontage_quoted = `AnimMontage'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
-
 type BlueprintGeneratedClass_non_quoted = `BlueprintGeneratedClass /Game/FactoryGame/${Exclude<string, ''>}${''}`;
-
-type BlueprintGeneratedClass_quoted = `BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
 
 type CameraAnim_quoted = `CameraAnim'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
 
 type Class_quoted = `Class'"/Script/FactoryGame.${Exclude<string, ''>}${'"\''}`;
 
-type DocsDotJson_BlueprintGeneratedClass_quoted_list = [
-	BlueprintGeneratedClass_quoted,
-	...BlueprintGeneratedClass_quoted[],
-];
-
 type FGTrainPlatformConnection_quoted = `FGTrainPlatformConnection'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
 
-type ItemClass_Amount_list = [
-	{
-		ItemClass: BlueprintGeneratedClass_quoted,
-		Amount: docs_json_ts_common_types_integer_string,
-	},
-	...{
-		ItemClass: BlueprintGeneratedClass_quoted,
-		Amount: docs_json_ts_common_types_integer_string,
-	}[],
-];
-
-type MaterialInstanceConstant_quoted = `MaterialInstanceConstant'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
-
-type ParticleSystem_quoted = `ParticleSystem'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
-
-type RawResources = `/Game/FactoryGame/Resource/RawResources/${string}${'/Desc_'}${Exclude<string, ''>}${'.Desc_'}${Exclude<string, ''>}${'_C'}`;
+type RawResources = `/Game/FactoryGame/Resource/RawResources/${'Coal/Desc_Coal.Desc_Coal' | 'Stone/Desc_Stone.Desc_Stone' | 'OreIron/Desc_OreIron.Desc_OreIron' | 'OreBauxite/Desc_OreBauxite.Desc_OreBauxite' | 'OreCopper/Desc_OreCopper.Desc_OreCopper' | 'CrudeOil/Desc_LiquidOil.Desc_LiquidOil' | 'OreGold/Desc_OreGold.Desc_OreGold' | 'RawQuartz/Desc_RawQuartz.Desc_RawQuartz' | 'Sulfur/Desc_Sulfur.Desc_Sulfur' | 'OreUranium/Desc_OreUranium.Desc_OreUranium'}${'_C'}`;
 
 type RequiredSchematic = `/Game/FactoryGame/Schematics/Research/${Exclude<string, ''>}${'/'}${Exclude<string, ''>}${'.'}${Exclude<string, ''>}${'_C'}`;
 
@@ -190,28 +139,16 @@ export type {
 	mProducedIn_base,
 	mProducedIn_pre_update6,
 	mRelevantEvents,
-	mSchematicDependencies_item,
 	mStackSize,
-	mSubCategories,
 	mType,
 	mUnlocks_item_base,
-	mUnlocks_item_mItemsToGive,
 	mUnlocks_item_mNumArmEquipmentSlotsToUnlock,
 	mUnlocks_item_mNumInventorySlotsToUnlock,
-	mUnlocks_item_mRecipes,
-	mUnlocks_item_mResourcesToAddToScanner,
-	mUnlocks_item_mSchematics,
 	transform_Rotation_Translation_Scale3D,
-	AnimMontage_quoted,
 	BlueprintGeneratedClass_non_quoted,
-	BlueprintGeneratedClass_quoted,
 	CameraAnim_quoted,
 	Class_quoted,
-	DocsDotJson_BlueprintGeneratedClass_quoted_list,
 	FGTrainPlatformConnection_quoted,
-	ItemClass_Amount_list,
-	MaterialInstanceConstant_quoted,
-	ParticleSystem_quoted,
 	RawResources,
 	RequiredSchematic,
 	Texture2D,

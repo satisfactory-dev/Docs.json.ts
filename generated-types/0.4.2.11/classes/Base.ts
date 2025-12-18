@@ -3,6 +3,7 @@
 import type {
 	FGBuildable as docs_json_ts_0_3_7_7_classes_base_FGBuildable,
 	FGBuildable_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_base,
+	FGBuildable_base_pre_update5 as docs_json_ts_0_3_7_7_classes_base_FGBuildable_base_pre_update5,
 	FGBuildable_base_version_specific as docs_json_ts_0_3_7_7_classes_base_FGBuildable_base_version_specific,
 	FGBuildable_DisableAttachmentSnapOn as docs_json_ts_0_3_7_7_classes_base_FGBuildable_DisableAttachmentSnapOn,
 	FGBuildable_docking_station_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_docking_station_base,
@@ -13,7 +14,6 @@ import type {
 	FGBuildable_powered_base_base_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base_base_base,
 	FGBuildable_powered_base_resources as docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base_resources,
 	FGBuildable_powered_base_resources_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base_resources_base,
-	FGBuildable_powered_base_resources_base_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base_resources_base_base,
 	FGBuildable_powered_storage_base_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_storage_base_base,
 	FGBuildable_spline as docs_json_ts_0_3_7_7_classes_base_FGBuildable_spline,
 	FGBuildable_tiered as docs_json_ts_0_3_7_7_classes_base_FGBuildable_tiered,
@@ -61,12 +61,13 @@ import type {
 	FGBuildableRailroadTrack as docs_json_ts_0_3_7_7_classes_base_FGBuildableRailroadTrack,
 	FGBuildableRailroadTrack_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableRailroadTrack_base,
 	FGBuildableResourceExtractor_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_base,
+	FGBuildableResourceExtractor_miner as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner,
 	FGBuildableResourceExtractor_miner_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_base,
-	FGBuildableResourceExtractor_miner_base_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_base_base,
-	FGBuildableResourceExtractor_miner_base_base_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_base_base_base,
 	FGBuildableResourceExtractor_miner_mk2_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_mk2_base,
-	FGBuildableResourceExtractor_miner_mk3_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_mk3_base,
+	FGBuildableResourceExtractor_miner_mk3_version_specific as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_mk3_version_specific,
 	FGBuildableResourceExtractor_oil_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_oil_base,
+	FGBuildableResourceExtractor_piped as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_piped,
+	FGBuildableResourceExtractor_timed as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_timed,
 	FGBuildableResourceExtractor_water_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_water_base,
 	FGBuildableResourceSink_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceSink_base,
 	FGBuildableResourceSink_base_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceSink_base_base,
@@ -89,8 +90,7 @@ import type {
 	FGDescriptor_BuildMenu_base as docs_json_ts_0_3_7_7_classes_base_FGDescriptor_BuildMenu_base,
 	FGDescriptor_sinkable_base as docs_json_ts_0_3_7_7_classes_base_FGDescriptor_sinkable_base,
 	FGEquipment_base as docs_json_ts_0_3_7_7_classes_base_FGEquipment_base,
-	FGEquipment_base_base as docs_json_ts_0_3_7_7_classes_base_FGEquipment_base_base,
-	FGItemDescriptorNuclearFuel_base as docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_base,
+	FGEquipment_has_mUseDefaultPrimaryFire as docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_mUseDefaultPrimaryFire,
 	FGNobeliskDetonator as docs_json_ts_0_3_7_7_classes_base_FGNobeliskDetonator,
 	FGParachute_has_mIsDeployed as docs_json_ts_0_3_7_7_classes_base_FGParachute_has_mIsDeployed,
 	FGParachute_has_mTerminalVelocityZ as docs_json_ts_0_3_7_7_classes_base_FGParachute_has_mTerminalVelocityZ,
@@ -99,14 +99,12 @@ import type {
 	FGRecipe_base as docs_json_ts_0_3_7_7_classes_base_FGRecipe_base,
 	FGRecipe_base_version_specific as docs_json_ts_0_3_7_7_classes_base_FGRecipe_base_version_specific,
 	FGResourceDescriptor_base as docs_json_ts_0_3_7_7_classes_base_FGResourceDescriptor_base,
-	FGSchematic as docs_json_ts_0_3_7_7_classes_base_FGSchematic,
-	FGSchematic_base as docs_json_ts_0_3_7_7_classes_base_FGSchematic_base,
 	FGSnowballWeapon as docs_json_ts_0_3_7_7_classes_base_FGSnowballWeapon,
 	FGWeaponInstantFire as docs_json_ts_0_3_7_7_classes_base_FGWeaponInstantFire,
 	FGWeaponProjectile as docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile,
 	FGWeaponProjectile_base as docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_base,
 	FGWeaponProjectileFire as docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectileFire,
-	isDescribed as docs_json_ts_0_3_7_7_classes_base_isDescribed,
+	hasClassName as docs_json_ts_0_3_7_7_classes_base_hasClassName,
 } from './../../0.3.7.7/classes/Base.ts';
 
 import type {
@@ -122,7 +120,6 @@ import type {
 } from './../../common/types.ts';
 
 import type {
-	BlueprintGeneratedClass_single_quoted as docs_json_ts_0_4_2_11_properties_BlueprintGeneratedClass_single_quoted,
 	FGRailroadTrackConnectionComponent_quoted as docs_json_ts_0_4_2_11_properties_FGRailroadTrackConnectionComponent_quoted,
 	mAllowedResourceForms as docs_json_ts_0_4_2_11_properties_mAllowedResourceForms,
 	mFogPlaneTransforms_empty as docs_json_ts_0_4_2_11_properties_mFogPlaneTransforms_empty,
@@ -130,32 +127,41 @@ import type {
 	mForm as docs_json_ts_0_4_2_11_properties_mForm,
 	mFuel as docs_json_ts_0_4_2_11_properties_mFuel,
 	mProducedIn as docs_json_ts_0_4_2_11_properties_mProducedIn,
-	mSchematicDependencies_item as docs_json_ts_0_4_2_11_properties_mSchematicDependencies_item,
-	mUnlocks_item as docs_json_ts_0_4_2_11_properties_mUnlocks_item,
 	Texture2D as docs_json_ts_0_4_2_11_properties_Texture2D,
-	Texture2D_quoted as docs_json_ts_0_4_2_11_properties_Texture2D_quoted,
 	Tier as docs_json_ts_0_4_2_11_properties_Tier,
 	TintColor as docs_json_ts_0_4_2_11_properties_TintColor,
 } from './../types/properties.ts';
 
 import type {
-	DocsDotJson_BlueprintGeneratedClass_quoted_list as docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list,
-	mSchematicDependencies_item as docs_json_ts_0_3_7_7_properties_mSchematicDependencies_item,
+	FGBuildableResourceExtractor_miner_base as docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_miner_base,
+	FGBuildableResourceExtractor_only_allow_certain_resources as docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_only_allow_certain_resources,
+	FGEquipment_version_specific as docs_json_ts_0_3_7_7_classes_base_overridable_FGEquipment_version_specific,
+} from './../../0.3.7.7/classes/Base.overridable.ts';
+
+import type {
+	has_mBatteryClasses as docs_json_ts_0_4_2_11_overridable_has_mBatteryClasses,
+	Texture2D_quoted as docs_json_ts_0_4_2_11_overridable_Texture2D_quoted,
+} from './../types/overridable.ts';
+
+import type {
 	mUnlocks_item_base as docs_json_ts_0_3_7_7_properties_mUnlocks_item_base,
 	Texture2D_base as docs_json_ts_0_3_7_7_properties_Texture2D_base,
 } from './../../0.3.7.7/types/properties.ts';
 
-type FGBuildable = docs_json_ts_0_3_7_7_classes_base_FGBuildable_base_version_specific & FGBuildable_base_version_specific & FGBuildable_base;
+type FGBuildable = docs_json_ts_0_3_7_7_classes_base_FGBuildable_base_pre_update5 & FGBuildable_base_pre_update5 & FGBuildable_base_version_specific & FGBuildable_base;
 
-type FGBuildable_base = FGBuildable_base_pre_update8 & docs_json_ts_0_3_7_7_classes_base_FGBuildable_base;
+type FGBuildable_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_base_version_specific & docs_json_ts_0_3_7_7_classes_base_FGBuildable_base & FGBuildable_base_pre_update8;
 
 type FGBuildable_base_pre_update8 = {
 	mToggleDormancyOnInteraction: docs_json_ts_common_types_bool_string,
 	mShouldModifyWorldGrid: docs_json_ts_common_types_bool_string,
 };
 
-type FGBuildable_base_version_specific = docs_json_ts_0_3_7_7_classes_base_FGBuildable_base & {
+type FGBuildable_base_pre_update5 = {
 	mFogPlaneTransforms: docs_json_ts_0_4_2_11_properties_mFogPlaneTransforms_empty | docs_json_ts_0_4_2_11_properties_mFogPlaneTransforms_list,
+};
+
+type FGBuildable_base_version_specific = {
 	mToggleDormancyOnInteraction: docs_json_ts_common_types_bool_string,
 	mShouldModifyWorldGrid: docs_json_ts_common_types_bool_string,
 };
@@ -191,19 +197,19 @@ type FGBuildable_occupied = docs_json_ts_0_3_7_7_classes_base_FGBuildable_occupi
 
 type FGBuildable_pole_with_length_and_power = docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_with_length_and_power_base & FGBuildable_powered;
 
-type FGBuildable_powered = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base & FGBuildable_powered_base & FGBuildable;
+type FGBuildable_powered = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base & FGBuildable_powered_base & FGBuildable_has_mCachedSkeletalMeshes & FGBuildable;
 
-type FGBuildable_powered_base = FGBuildable_powered_base_base & {
+type FGBuildable_powered_base = {
 	mOnProductionStatusChanged: docs_json_ts_common_types_empty_object,
 };
 
-type FGBuildable_powered_base_base = docs_json_ts_0_3_7_7_classes_base_isDescribed & {
+type FGBuildable_has_mCachedSkeletalMeshes = {
 	mCachedSkeletalMeshes: '',
 };
 
 type FGBuildable_powered_has_mAllowedResourceForms = FGBuildable_powered_has_mAllowedResourceForms_base & FGBuildable_powered;
 
-type FGBuildable_powered_has_mAllowedResourceForms_base = FGBuildable_powered_base_base & {
+type FGBuildable_powered_has_mAllowedResourceForms_base = {
 	mAllowedResourceForms: docs_json_ts_0_4_2_11_properties_mAllowedResourceForms,
 };
 
@@ -211,11 +217,11 @@ type FGBuildable_powered_has_mAllowedResourceForms_with_resources = FGBuildable_
 
 type FGBuildable_powered_has_mAllowedResourceForms_with_resources_base = FGBuildable_powered_has_mAllowedResourceForms_with_resources_base_base & docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base_resources_base;
 
-type FGBuildable_powered_has_mAllowedResourceForms_with_resources_base_base = FGBuildable_powered_has_mAllowedResourceForms_base & docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base_resources_base_base;
+type FGBuildable_powered_has_mAllowedResourceForms_with_resources_base_base = FGBuildable_powered_has_mAllowedResourceForms_base & docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_only_allow_certain_resources;
 
 type FGBuildable_powered_storage = FGBuildable_powered_storage_base & FGBuildable_powered;
 
-type FGBuildable_powered_storage_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_storage_base_base & FGBuildable_powered_base_base;
+type FGBuildable_powered_storage_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_storage_base_base & FGBuildable_has_mCachedSkeletalMeshes;
 
 type FGBuildable_spline = docs_json_ts_0_3_7_7_classes_base_FGBuildable_spline & FGBuildable;
 
@@ -256,13 +262,9 @@ type FGBuildableConveyorLift = docs_json_ts_0_3_7_7_classes_base_FGBuildableConv
 
 type FGBuildableDockingStation = FGBuildable_docking_station & docs_json_ts_0_3_7_7_classes_base_FGBuildableDockingStation_base;
 
-type FGBuildableDroneStation = FGBuildableDroneStation_base & FGBuildable_docking_station;
+type FGBuildableDroneStation = FGBuildableDroneStation_base & docs_json_ts_0_4_2_11_overridable_has_mBatteryClasses & FGBuildable_docking_station_base & FGBuildableDroneStation_version_specific & FGBuildable_docking_station;
 
-type FGBuildableDroneStation_base = FGBuildableDroneStation_base_base & FGBuildableDroneStation_base_version_specific;
-
-type FGBuildableDroneStation_base_base = FGBuildableDroneStation_base_base_base & FGBuildable_docking_station_base;
-
-type FGBuildableDroneStation_base_base_base = {
+type FGBuildableDroneStation_base = {
 	mStoppedProducingAnimationSounds: docs_json_ts_common_types_bool_string,
 	mStoppedAkComponents: '',
 	mSocketStoppedAkComponents: '',
@@ -270,7 +272,6 @@ type FGBuildableDroneStation_base_base_base = {
 	m_OffsetTime: docs_json_ts_common_types_decimal_string,
 	mDroneDockingStartLocationLocal: docs_json_ts_common_types_XYZ_decimal_string,
 	mDroneDockingLocationLocal: docs_json_ts_common_types_XYZ_decimal_string,
-	mBatteryClasses: docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list,
 	mDroneDockingQueue: '',
 	mStationHasDronesInQueue: docs_json_ts_common_types_bool_string,
 	mItemTransferringStage: 'ITS_NONE',
@@ -285,7 +286,7 @@ type FGBuildableDroneStation_base_base_base = {
 	mBatteryStorageSizeY: docs_json_ts_common_types_integer_string,
 };
 
-type FGBuildableDroneStation_base_version_specific = FGBuildable_docking_station_base & {
+type FGBuildableDroneStation_version_specific = FGBuildable_docking_station_base & {
 	mMapText: 'Drone Port',
 };
 
@@ -303,9 +304,9 @@ type FGBuildableFloodlight_base = FGBuildableLightSource_base & {
 
 type FGBuildableFrackingActivator = FGBuildableFrackingActivator_base & FGBuildable_powered_has_mAllowedResourceForms_with_resources;
 
-type FGBuildableFrackingActivator_base = FGBuildableFrackingActivator_base_base & FGBuildable_powered_has_mAllowedResourceForms_with_resources_base;
+type FGBuildableFrackingActivator_base = FGBuildableFrackingActivator_version_specific & FGBuildable_powered_has_mAllowedResourceForms_with_resources_base;
 
-type FGBuildableFrackingActivator_base_base = FGBuildable_powered_has_mAllowedResourceForms_with_resources_base_base & {
+type FGBuildableFrackingActivator_version_specific = {
 	CurrentPotentialChangedDelegate: docs_json_ts_common_types_empty_object,
 	ConnectedExtractorCountChangedDelegate: docs_json_ts_common_types_empty_object,
 	mActivationStartupTime: docs_json_ts_common_types_decimal_string,
@@ -486,7 +487,7 @@ type FGBuildablePowerPole = docs_json_ts_0_3_7_7_classes_base_FGBuildablePowerPo
 
 type FGBuildablePowerStorage = FGBuildable_powered & FGBuildablePowerStorage_base;
 
-type FGBuildablePowerStorage_base = FGBuildable_powered_base_base & {
+type FGBuildablePowerStorage_base = {
 	m_PreviousBatteryStatus: 'BS_Idle',
 	mCurrentGameTimeSinceStateChange: docs_json_ts_common_types_decimal_string,
 	mActivationEventID: docs_json_ts_common_types_integer_string,
@@ -517,18 +518,18 @@ type FGBuildableResourceExtractor_base = docs_json_ts_0_3_7_7_classes_base_FGBui
 
 type FGBuildableResourceExtractor_miner_mk1 = FGBuildableResourceExtractor_miner_mk1_base & FGBuildableResourceExtractor_base;
 
-type FGBuildableResourceExtractor_miner_mk1_base = FGBuildableResourceExtractor_miner_mk1_base_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_base;
+type FGBuildableResourceExtractor_miner_mk1_base = FGBuildableResourceExtractor_miner_mk1_base_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner;
 
-type FGBuildableResourceExtractor_miner_mk1_base_base = FGBuildableResourceExtractor_miner_mk1_base_base_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_base_base;
+type FGBuildableResourceExtractor_miner_mk1_base_base = FGBuildableResourceExtractor_miner_mk1_version_specific & docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_miner_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_timed & docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_only_allow_certain_resources & docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_piped & docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base_resources_base;
 
-type FGBuildableResourceExtractor_miner_mk1_base_base_base = docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_base_base_base & {
+type FGBuildableResourceExtractor_miner_mk1_version_specific = {
 	CanPlayAfterStartUpStopped: docs_json_ts_common_types_bool_string,
 	mDisplayName: 'Miner Mk.1',
 };
 
 type FGBuildableResourceExtractor_miner_mk2 = docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_mk2_base & FGBuildable_powered;
 
-type FGBuildableResourceExtractor_miner_mk3 = docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_mk3_base & FGBuildable_powered;
+type FGBuildableResourceExtractor_miner_mk3 = docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_mk3_version_specific & docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_miner_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_timed & docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base_base & docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_only_allow_certain_resources & docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_piped & docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base_resources_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner & FGBuildable_powered;
 
 type FGBuildableResourceExtractor_oil = docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_oil_base & FGBuildable_powered;
 
@@ -562,7 +563,7 @@ type FGBuildableStorage = docs_json_ts_0_3_7_7_classes_base_FGBuildableStorage_b
 
 type FGBuildableTradingPost = docs_json_ts_0_3_7_7_classes_base_FGBuildableTradingPost_base_version_specific & docs_json_ts_0_3_7_7_classes_base_FGBuildableTradingPost_base & FGBuildableTradingPost_base & FGBuildable_powered;
 
-type FGBuildableTradingPost_base = FGBuildable_powered_base_base & {
+type FGBuildableTradingPost_base = {
 	mMamFreeText: 'Use MAM',
 	mMamOccupiedText: 'MAM is occupied',
 	mMeshes: [
@@ -618,7 +619,7 @@ type FGDescriptor_sinkable_base = docs_json_ts_0_3_7_7_classes_base_FGDescriptor
 
 type FGEquipment = FGEquipment_base & docs_json_ts_0_3_7_7_classes_base_FGEquipment_base;
 
-type FGEquipment_base = docs_json_ts_0_3_7_7_classes_base_FGEquipment_base_base & FGEquipment_version_specific;
+type FGEquipment_base = docs_json_ts_0_3_7_7_classes_base_hasClassName & docs_json_ts_0_3_7_7_classes_base_overridable_FGEquipment_version_specific & docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_mUseDefaultPrimaryFire & FGEquipment_version_specific;
 
 type FGEquipment_version_specific = {
 	mAttachSocket: 'None' | 'hand_rSocket' | 'hand_lSocket' | 'jumpingStilt_lSocket' | 'helmetSocket' | 'root',
@@ -685,12 +686,6 @@ type FGHoverPack_version_specific = {
 	mBackAnimation: 'BE_Jetpack',
 };
 
-type FGItemDescriptorNuclearFuel = docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_base & FGDescriptor & FGItemDescriptorNuclearFuel_base;
-
-type FGItemDescriptorNuclearFuel_base = {
-	mSpentFuelClass: docs_json_ts_0_4_2_11_properties_BlueprintGeneratedClass_single_quoted,
-};
-
 type FGNobeliskDetonator = FGWeaponProjectile & docs_json_ts_0_3_7_7_classes_base_FGNobeliskDetonator;
 
 type FGParachute = FGEquipment & docs_json_ts_0_3_7_7_classes_base_FGParachute_has_mIsDeployed & docs_json_ts_0_3_7_7_classes_base_FGParachute_has_mTerminalVelocityZ;
@@ -719,46 +714,32 @@ type FGRecipe_version_specific = {
 
 type FGResourceDescriptor = docs_json_ts_0_3_7_7_classes_base_FGResourceDescriptor_base & FGDescriptor_sinkable;
 
-type FGSchematic = FGSchematic_base & {
-	mUnlocks: [
-		...docs_json_ts_0_4_2_11_properties_mUnlocks_item[],
-	],
-	mSmallSchematicIcon: 'None' | docs_json_ts_0_4_2_11_properties_Texture2D,
-	mRelevantShopSchematics: docs_json_ts_0_3_7_7_properties_DocsDotJson_BlueprintGeneratedClass_quoted_list | '',
-};
-
-type FGSchematic_base = FGSchematic_base_base & {
+type FGSchematic_has_mUnlocks = {
 	mUnlocks: [
 		...docs_json_ts_0_3_7_7_properties_mUnlocks_item_base[],
 	],
 };
 
-type FGSchematic_base_base = FGSchematic_base_base_props & FGSchematic_base_base_base;
+type FGSchematic_base = FGSchematic_has_mSmallSchematicIcon & FGSchematic_has_mTechTier & FGSchematic_has_mSchematicIcon & FGSchematic_has_mUnlocks & FGSchematic_has_mMenuPriority;
 
-type FGSchematic_base_base_base = FGSchematic_base_base_base_base & docs_json_ts_0_3_7_7_classes_base_FGSchematic;
-
-type FGSchematic_base_base_base_base = docs_json_ts_0_3_7_7_classes_base_FGSchematic_base & docs_json_ts_0_3_7_7_classes_base_isDescribed;
-
-type FGSchematic_base_base_props = FGSchematic_base_base_props_sans_mSchematicIcon & FGSchematic_base_base_props_with_mSchematicIcon;
-
-type FGSchematic_base_base_props_sans_mSchematicIcon_mMenuPriority = FGSchematic_base_base_base_base & {
-	mSchematicDependencies: [
-		...(docs_json_ts_0_3_7_7_properties_mSchematicDependencies_item | docs_json_ts_0_4_2_11_properties_mSchematicDependencies_item)[],
-	],
+type FGSchematic_has_mSmallSchematicIcon = {
 	mSmallSchematicIcon: 'None' | docs_json_ts_0_3_7_7_properties_Texture2D_base,
+};
+
+type FGSchematic_has_mTechTier = {
 	mTechTier: docs_json_ts_0_4_2_11_properties_Tier,
 };
 
-type FGSchematic_base_base_props_sans_mSchematicIcon = FGSchematic_base_base_props_sans_mSchematicIcon_mMenuPriority & {
+type FGSchematic_has_mMenuPriority = {
 	mMenuPriority: docs_json_ts_common_types_decimal_string,
 };
 
-type FGSchematic_base_base_props_with_mSchematicIcon = FGSchematic_base_base_base_base & {
+type FGSchematic_has_mSchematicIcon = {
 	mSchematicIcon: {
 		ImageSize: docs_json_ts_common_types_XY_decimal_string,
 		Margin: docs_json_ts_common_types_empty_object,
 		TintColor: docs_json_ts_0_4_2_11_properties_TintColor,
-		ResourceObject?: docs_json_ts_0_4_2_11_properties_Texture2D_quoted,
+		ResourceObject?: docs_json_ts_0_4_2_11_overridable_Texture2D_quoted,
 		UVRegion: {
 			Min: docs_json_ts_common_types_XY_decimal_string,
 			Max: docs_json_ts_common_types_XY_decimal_string,
@@ -815,6 +796,7 @@ export type {
 	FGBuildable,
 	FGBuildable_base,
 	FGBuildable_base_pre_update8,
+	FGBuildable_base_pre_update5,
 	FGBuildable_base_version_specific,
 	FGBuildable_docking_station,
 	FGBuildable_docking_station_base,
@@ -828,7 +810,7 @@ export type {
 	FGBuildable_pole_with_length_and_power,
 	FGBuildable_powered,
 	FGBuildable_powered_base,
-	FGBuildable_powered_base_base,
+	FGBuildable_has_mCachedSkeletalMeshes,
 	FGBuildable_powered_has_mAllowedResourceForms,
 	FGBuildable_powered_has_mAllowedResourceForms_base,
 	FGBuildable_powered_has_mAllowedResourceForms_with_resources,
@@ -852,9 +834,7 @@ export type {
 	FGBuildableDockingStation,
 	FGBuildableDroneStation,
 	FGBuildableDroneStation_base,
-	FGBuildableDroneStation_base_base,
-	FGBuildableDroneStation_base_base_base,
-	FGBuildableDroneStation_base_version_specific,
+	FGBuildableDroneStation_version_specific,
 	FGBuildableFactory_jump_pad,
 	FGBuildableFactory_landing_pad,
 	FGBuildableFactorySimpleProducer,
@@ -862,7 +842,7 @@ export type {
 	FGBuildableFloodlight_base,
 	FGBuildableFrackingActivator,
 	FGBuildableFrackingActivator_base,
-	FGBuildableFrackingActivator_base_base,
+	FGBuildableFrackingActivator_version_specific,
 	FGBuildableGenerator,
 	FGBuildableGenerator_no_fuel,
 	FGBuildableGeneratorFuel_base,
@@ -926,7 +906,7 @@ export type {
 	FGBuildableResourceExtractor_miner_mk1,
 	FGBuildableResourceExtractor_miner_mk1_base,
 	FGBuildableResourceExtractor_miner_mk1_base_base,
-	FGBuildableResourceExtractor_miner_mk1_base_base_base,
+	FGBuildableResourceExtractor_miner_mk1_version_specific,
 	FGBuildableResourceExtractor_miner_mk2,
 	FGBuildableResourceExtractor_miner_mk3,
 	FGBuildableResourceExtractor_oil,
@@ -964,8 +944,6 @@ export type {
 	FGHoverPack,
 	FGHoverPack_base,
 	FGHoverPack_version_specific,
-	FGItemDescriptorNuclearFuel,
-	FGItemDescriptorNuclearFuel_base,
 	FGNobeliskDetonator,
 	FGParachute,
 	FGPipeHyperStart,
@@ -976,15 +954,12 @@ export type {
 	FGRecipe_base_base,
 	FGRecipe_version_specific,
 	FGResourceDescriptor,
-	FGSchematic,
+	FGSchematic_has_mUnlocks,
 	FGSchematic_base,
-	FGSchematic_base_base,
-	FGSchematic_base_base_base,
-	FGSchematic_base_base_base_base,
-	FGSchematic_base_base_props,
-	FGSchematic_base_base_props_sans_mSchematicIcon_mMenuPriority,
-	FGSchematic_base_base_props_sans_mSchematicIcon,
-	FGSchematic_base_base_props_with_mSchematicIcon,
+	FGSchematic_has_mSmallSchematicIcon,
+	FGSchematic_has_mTechTier,
+	FGSchematic_has_mMenuPriority,
+	FGSchematic_has_mSchematicIcon,
 	FGSnowballWeapon,
 	FGVehicleDescriptor_fueled,
 	FGVehicleDescriptor_fueled_with_inventory,

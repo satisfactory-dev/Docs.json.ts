@@ -72,7 +72,7 @@ import type {
 	FGPipeHyperStart as docs_json_ts_0_3_7_7_classes_base_FGPipeHyperStart,
 	FGPortableMinerDispenser as docs_json_ts_0_3_7_7_classes_base_FGPortableMinerDispenser,
 	FGRecipe as docs_json_ts_0_3_7_7_classes_base_FGRecipe,
-	FGSchematic_version_specific as docs_json_ts_0_3_7_7_classes_base_FGSchematic_version_specific,
+	FGSchematic as docs_json_ts_0_3_7_7_classes_base_FGSchematic,
 	FGSnowballWeapon as docs_json_ts_0_3_7_7_classes_base_FGSnowballWeapon,
 	FGSuitBase as docs_json_ts_0_3_7_7_classes_base_FGSuitBase,
 	FGWeaponInstantFire as docs_json_ts_0_3_7_7_classes_base_FGWeaponInstantFire,
@@ -262,7 +262,7 @@ type FGResourceDescriptor = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_sinka
 	mManualMiningAudioName: 'Metal',
 };
 
-type FGSchematic = docs_json_ts_0_3_7_7_classes_base_FGSchematic_version_specific;
+type FGSchematic = docs_json_ts_0_3_7_7_classes_base_FGSchematic;
 
 type FGSnowballWeapon = docs_json_ts_0_3_7_7_classes_base_FGSnowballWeapon;
 
