@@ -83,17 +83,17 @@
 			}
 		},
 		"FGBuildable--Classes--item": {
-						"oneOf": [
-							{
-								"$ref": "docs.json.ts--0.8.3.3--classes#/$defs/FGBuildable--occupied"
-							},
-							{
-								"$ref": "docs.json.ts--0.8.3.3--classes#/$defs/FGBuildable--tiered"
-							},
-							{
-								"$ref": "docs.json.ts--0.8.3.3--classes#/$defs/FGBuildable--base"
-							}
-						]
+			"oneOf": [
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes#/$defs/FGBuildable--occupied"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes#/$defs/FGBuildable--tiered"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes#/$defs/FGBuildable--base"
+				}
+			]
 		},
 		"FGBuildableAttachmentMerger": {
 			"type": "object",
@@ -312,17 +312,17 @@
 			}
 		},
 		"FGBuildableFactory--Classes--item": {
-						"oneOf": [
-							{
-								"$ref": "docs.json.ts--0.8.3.3--classes#/$defs/FGBuildableFactory--jump-pad"
-							},
-							{
-								"$ref": "docs.json.ts--0.8.3.3--classes#/$defs/FGBuildableFactory--landing-pad"
-							},
-							{
-								"$ref": "docs.json.ts--0.8.3.3--classes#/$defs/FGBuildable--powered"
-							}
-						]
+			"oneOf": [
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes#/$defs/FGBuildableFactory--jump-pad"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes#/$defs/FGBuildableFactory--landing-pad"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes#/$defs/FGBuildable--powered"
+				}
+			]
 		},
 		"FGBuildableFactoryBuilding": {
 			"type": "object",
@@ -799,14 +799,14 @@
 			}
 		},
 		"FGBuildablePipelinePump--Classes--item": {
-						"oneOf": [
-							{
-								"$ref": "docs.json.ts--0.8.3.3--classes#/$defs/FGBuildablePipelinePump--valve"
-							},
-							{
-								"$ref": "docs.json.ts--0.8.3.3--classes#/$defs/FGBuildablePipelinePump--pump"
-							}
-						]
+			"oneOf": [
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes#/$defs/FGBuildablePipelinePump--valve"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes#/$defs/FGBuildablePipelinePump--pump"
+				}
+			]
 		},
 		"FGBuildablePipelineSupport": {
 			"type": "object",
@@ -1495,14 +1495,14 @@
 			}
 		},
 		"FGEquipmentDescriptor--Classes--item": {
-						"oneOf": [
-							{
-								"$ref": "docs.json.ts--0.6.1.5--classes#/$defs/FGItemDescriptor"
-							},
-							{
-								"$ref": "docs.json.ts--0.6.1.5--classes.overridable#/$defs/FGEquipmentDescriptor--Desc_GolfCartGold_C"
-							}
-						]
+			"oneOf": [
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes#/$defs/FGItemDescriptor"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes.overridable#/$defs/FGEquipmentDescriptor--Desc_GolfCartGold_C"
+				}
+			]
 		},
 		"FGEquipmentStunSpear": {
 			"type": "object",
@@ -1838,14 +1838,14 @@
 			}
 		},
 		"FGSchematic--Classes--item": {
-						"oneOf": [
-							{
-								"$ref": "docs.json.ts--0.8.3.3--classes#/$defs/FGSchematic--base"
-							},
-							{
-								"$ref": "docs.json.ts--0.8.3.3--classes#/$defs/FGSchematic--with-described-unlocks"
-							}
-						]
+			"oneOf": [
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes#/$defs/FGSchematic--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes#/$defs/FGSchematic--with-described-unlocks"
+				}
+			]
 		},
 		"FGSuitBase": {
 			"type": "object",

@@ -152,23 +152,23 @@
 			}
 		},
 		"XYZ--decimal_string--list--item": {
-					"type": "string",
-					"typed_string": {
-						"type": "object",
-						"additionalProperties": false,
-						"required": ["X", "Y", "Z"],
-						"properties": {
-							"X": {
-								"$ref": "#/$defs/decimal_string--signed"
-							},
-							"Y": {
-								"$ref": "#/$defs/decimal_string--signed"
-							},
-							"Z": {
-								"$ref": "#/$defs/decimal_string--signed"
-							}
-						}
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": ["X", "Y", "Z"],
+				"properties": {
+					"X": {
+						"$ref": "#/$defs/decimal_string--signed"
+					},
+					"Y": {
+						"$ref": "#/$defs/decimal_string--signed"
+					},
+					"Z": {
+						"$ref": "#/$defs/decimal_string--signed"
 					}
+				}
+			}
 		},
 		"XYZ--integer_string": {
 			"type": "string",

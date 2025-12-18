@@ -147,6 +147,22 @@
 				}
 			}
 		},
+		"ItemClass--Amount--list--item": {
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": ["ItemClass", "Amount"],
+				"properties": {
+					"ItemClass": {
+						"$ref": "#/$defs/BlueprintGeneratedClass--quoted"
+					},
+					"Amount": {
+						"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+					}
+				}
+			}
+		},
 		"ItemClass-Amount--list": {
 			"type": "string",
 			"typed_string": {
@@ -157,22 +173,6 @@
 					"$ref": "#/$defs/ItemClass--Amount--list--item"
 				}
 			}
-		},
-		"ItemClass--Amount--list--item": {
-					"type": "string",
-					"typed_string": {
-						"type": "object",
-						"additionalProperties": false,
-						"required": ["ItemClass", "Amount"],
-						"properties": {
-							"ItemClass": {
-								"$ref": "#/$defs/BlueprintGeneratedClass--quoted"
-							},
-							"Amount": {
-								"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-							}
-						}
-					}
 		},
 		"MaterialInstanceConstant--quoted": {
 			"type": "string",

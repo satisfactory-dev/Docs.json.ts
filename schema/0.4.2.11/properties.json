@@ -4,17 +4,11 @@
 	"$defs": {
 		"m_SFXSockets--item--exhaust": {
 			"type": "string",
-			"enum": [
-				"AudioSocket_Exhaust",
-				"AudioSocket_Root"
-			]
+			"enum": ["AudioSocket_Exhaust", "AudioSocket_Root"]
 		},
 		"m_SFXSockets--item--turbine": {
 			"type": "string",
-			"enum": [
-				"AudioSocketTurbine",
-				"CoalGeneratorPotential"
-			]
+			"enum": ["AudioSocketTurbine", "CoalGeneratorPotential"]
 		},
 		"mAllowedResourceForms": {
 			"type": "string",
@@ -28,8 +22,8 @@
 			}
 		},
 		"mAllowedResourceForms--item": {
-					"type": "string",
-					"enum": ["RF_SOLID", "RF_LIQUID", "RF_GAS", "RF_HEAT"]
+			"type": "string",
+			"enum": ["RF_SOLID", "RF_LIQUID", "RF_GAS", "RF_HEAT"]
 		},
 		"mDefaultFuelClasses--item--nuclear": {
 			"type": "string",
@@ -54,23 +48,23 @@
 			}
 		},
 		"mFogPlaneTransforms--list--item": {
-					"type": "string",
-					"typed_string": {
-						"type": "object",
-						"additionalProperties": false,
-						"required": ["Translation"],
-						"properties": {
-							"Rotation": {
-								"$ref": "docs.json.ts--common--types#/$defs/XYZW--decimal_string"
-							},
-							"Translation": {
-								"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
-							},
-							"Scale3D": {
-								"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
-							}
-						}
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": ["Translation"],
+				"properties": {
+					"Rotation": {
+						"$ref": "docs.json.ts--common--types#/$defs/XYZW--decimal_string"
+					},
+					"Translation": {
+						"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
+					},
+					"Scale3D": {
+						"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
 					}
+				}
+			}
 		},
 		"mForm": {
 			"type": "string",
@@ -84,14 +78,14 @@
 			}
 		},
 		"mFuel--item": {
-				"oneOf": [
-					{
-						"$ref": "#/$defs/mFuel--item--no-byproduct"
-					},
-					{
-						"$ref": "#/$defs/mFuel--item--has-byproduct"
-					}
-				]
+			"oneOf": [
+				{
+					"$ref": "#/$defs/mFuel--item--no-byproduct"
+				},
+				{
+					"$ref": "#/$defs/mFuel--item--has-byproduct"
+				}
+			]
 		},
 		"mFuel--item--base": {
 			"type": "object",

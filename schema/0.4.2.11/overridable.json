@@ -82,21 +82,21 @@
 			}
 		},
 		"mUnlocks--item--mResourcePairsToAddToScanner--item": {
-							"type": "string",
-							"typed_string": {
-								"type": "object",
-								"additionalProperties": false,
-								"required": ["ResourceDescriptor"],
-								"properties": {
-									"ResourceDescriptor": {
-										"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/BlueprintGeneratedClass--quoted"
-									},
-									"ResourceNodeType": {
-										"type": "string",
-										"enum": ["Geyser", "FrackingCore"]
-									}
-								}
-							}
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": ["ResourceDescriptor"],
+				"properties": {
+					"ResourceDescriptor": {
+						"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/BlueprintGeneratedClass--quoted"
+					},
+					"ResourceNodeType": {
+						"type": "string",
+						"enum": ["Geyser", "FrackingCore"]
+					}
+				}
+			}
 		},
 		"BlueprintGeneratedClass--single-quoted": {
 			"type": "string",

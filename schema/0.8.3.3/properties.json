@@ -164,30 +164,27 @@
 			}
 		},
 		"mUnlocks--item--mScannableObjects--item": {
-							"type": "string",
-							"typed_string": {
-								"type": "object",
-								"required": [
-									"ItemDescriptor",
-									"ActorsAllowedToScan"
-								],
-								"properties": {
-									"ItemDescriptor": {
-										"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/BlueprintGeneratedClass--quoted"
-									},
-									"ActorsAllowedToScan": {
-										"type": "string",
-										"typed_string": {
-											"type": "array",
-											"minItems": 1,
-											"uniqueItems": true,
-											"items": {
-												"$ref": "#/$defs/Class--quoted"
-											}
-										}
-									}
-								}
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"required": ["ItemDescriptor", "ActorsAllowedToScan"],
+				"properties": {
+					"ItemDescriptor": {
+						"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/BlueprintGeneratedClass--quoted"
+					},
+					"ActorsAllowedToScan": {
+						"type": "string",
+						"typed_string": {
+							"type": "array",
+							"minItems": 1,
+							"uniqueItems": true,
+							"items": {
+								"$ref": "#/$defs/Class--quoted"
 							}
+						}
+					}
+				}
+			}
 		},
 		"CameraAnimationSequence--quoted": {
 			"type": "string",

@@ -22,15 +22,15 @@
 			]
 		},
 		"mRelevantShopSchematics--item": {
-							"oneOf": [
-								{
-									"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/BlueprintGeneratedClass--quoted"
-								},
-								{
-									"type": "string",
-									"const": "None"
-								}
-							]
+			"oneOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/BlueprintGeneratedClass--quoted"
+				},
+				{
+					"type": "string",
+					"const": "None"
+				}
+			]
 		},
 		"mUnlocks--item": {
 			"oneOf": [
