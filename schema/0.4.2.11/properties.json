@@ -2,6 +2,20 @@
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "docs.json.ts--0.4.2.11--properties",
 	"$defs": {
+		"m_SFXSockets--item--exhaust": {
+			"type": "string",
+			"enum": [
+				"AudioSocket_Exhaust",
+				"AudioSocket_Root"
+			]
+		},
+		"m_SFXSockets--item--turbine": {
+			"type": "string",
+			"enum": [
+				"AudioSocketTurbine",
+				"CoalGeneratorPotential"
+			]
+		},
 		"mAllowedResourceForms": {
 			"type": "string",
 			"typed_string": {
@@ -9,10 +23,20 @@
 				"minItems": 1,
 				"uniqueItems": true,
 				"items": {
-					"type": "string",
-					"enum": ["RF_SOLID", "RF_LIQUID", "RF_GAS", "RF_HEAT"]
+					"$ref": "#/$defs/mAllowedResourceForms--item"
 				}
 			}
+		},
+		"mAllowedResourceForms--item": {
+					"type": "string",
+					"enum": ["RF_SOLID", "RF_LIQUID", "RF_GAS", "RF_HEAT"]
+		},
+		"mDefaultFuelClasses--item--nuclear": {
+			"type": "string",
+			"enum": [
+				"/Game/FactoryGame/Resource/Parts/NuclearFuelRod/Desc_NuclearFuelRod.Desc_NuclearFuelRod_C",
+				"/Game/FactoryGame/Resource/Parts/PlutoniumFuelRods/Desc_PlutoniumFuelRod.Desc_PlutoniumFuelRod_C"
+			]
 		},
 		"mFogPlaneTransforms--empty": {
 			"type": "string",
@@ -25,6 +49,11 @@
 				"minItems": 1,
 				"uniqueItems": true,
 				"items": {
+					"$ref": "#/$defs/mFogPlaneTransforms--list--item"
+				}
+			}
+		},
+		"mFogPlaneTransforms--list--item": {
 					"type": "string",
 					"typed_string": {
 						"type": "object",
@@ -42,8 +71,6 @@
 							}
 						}
 					}
-				}
-			}
 		},
 		"mForm": {
 			"type": "string",
@@ -53,6 +80,10 @@
 			"type": "array",
 			"minItems": 1,
 			"items": {
+				"$ref": "#/$defs/mFuel--item"
+			}
+		},
+		"mFuel--item": {
 				"oneOf": [
 					{
 						"$ref": "#/$defs/mFuel--item--no-byproduct"
@@ -61,7 +92,6 @@
 						"$ref": "#/$defs/mFuel--item--has-byproduct"
 					}
 				]
-			}
 		},
 		"mFuel--item--base": {
 			"type": "object",
@@ -121,6 +151,17 @@
 					"const": ""
 				}
 			}
+		},
+		"mMeshes--item": {
+			"type": "string",
+			"enum": [
+				"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1",
+				"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2",
+				"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3",
+				"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4",
+				"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5",
+				"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6"
+			]
 		},
 		"mProducedIn": {
 			"oneOf": [

@@ -2,6 +2,25 @@
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "docs.json.ts--0.8.3.3--properties",
 	"$defs": {
+		"mAnimData--item": {
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": [
+					"Montage_7_2E66F6A948A8606E71185682EA2AC4EC",
+					"CameraAnimationSequence_11_920C446448786C507704569A05006500"
+				],
+				"properties": {
+					"Montage_7_2E66F6A948A8606E71185682EA2AC4EC": {
+						"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
+					},
+					"CameraAnimationSequence_11_920C446448786C507704569A05006500": {
+						"$ref": "#/$defs/CameraAnimationSequence--quoted"
+					}
+				}
+			}
+		},
 		"mComponentNameToFirstPersonMaterials--item": {
 			"type": "string",
 			"typed_string": {
@@ -138,6 +157,13 @@
 						"minItems": 1,
 						"uniqueItems": true,
 						"items": {
+							"$ref": "#/$defs/mUnlocks--item--mScannableObjects--item"
+						}
+					}
+				}
+			}
+		},
+		"mUnlocks--item--mScannableObjects--item": {
 							"type": "string",
 							"typed_string": {
 								"type": "object",
@@ -162,10 +188,6 @@
 									}
 								}
 							}
-						}
-					}
-				}
-			}
 		},
 		"CameraAnimationSequence--quoted": {
 			"type": "string",
@@ -208,6 +230,25 @@
 				"value": null
 			}
 		},
+		"FGBuildable--mOcclusionBoxInfo--item": {
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": ["Min", "Max", "IsValid"],
+				"properties": {
+					"Min": {
+						"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
+					},
+					"Max": {
+						"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
+					},
+					"IsValid": {
+						"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+					}
+				}
+			}
+		},
 		"FGRailroadTrackConnectionComponent--quoted": {
 			"type": "string",
 			"DocsDotJson_PrefixedString": {
@@ -225,6 +266,17 @@
 				"system_prefix": "FactoryGame",
 				"value": null
 			}
+		},
+		"Meshes--item": {
+			"type": "string",
+			"enum": [
+				"/Script/Engine.StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1\"'",
+				"/Script/Engine.StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2\"'",
+				"/Script/Engine.StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3\"'",
+				"/Script/Engine.StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4\"'",
+				"/Script/Engine.StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5\"'",
+				"/Script/Engine.StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6\"'"
+			]
 		}
 	}
 }

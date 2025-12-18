@@ -1,8 +1,9 @@
-
+/* eslint-disable @stylistic/max-len */
 
 import type {
 	bool_string as docs_json_ts_common_types_bool_string,
 	decimal_string as docs_json_ts_common_types_decimal_string,
+	integer_string as docs_json_ts_common_types_integer_string,
 } from './../../common/types.ts';
 
 type mDisableSnapOn_bottom = {
@@ -25,9 +26,29 @@ type FalloffCurve_EditorCurveData_only = {
 	},
 };
 
+type FGBuildableManufacturer_Build_ConstructorMk1_C_CurrentPotentialConvert_item = [
+	[
+		docs_json_ts_common_types_integer_string,
+		docs_json_ts_common_types_decimal_string,
+	],
+	[
+		docs_json_ts_common_types_integer_string,
+		docs_json_ts_common_types_decimal_string,
+	],
+	[
+		docs_json_ts_common_types_integer_string,
+		docs_json_ts_common_types_decimal_string,
+	],
+	...[
+		docs_json_ts_common_types_integer_string,
+		docs_json_ts_common_types_decimal_string,
+	][],
+];
+
 export type {
 	mDisableSnapOn_bottom,
 	mDisableSnapOn_top,
 	mDockingRuleSet,
 	FalloffCurve_EditorCurveData_only,
+	FGBuildableManufacturer_Build_ConstructorMk1_C_CurrentPotentialConvert_item,
 };

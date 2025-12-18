@@ -1,13 +1,18 @@
 /* eslint-disable @stylistic/max-len */
 
 import type {
+	BGRA as docs_json_ts_common_types_BGRA,
 	bool_string as docs_json_ts_common_types_bool_string,
+	decimal_string as docs_json_ts_common_types_decimal_string,
+	integer_string as docs_json_ts_common_types_integer_string,
+	XYZ_decimal_string as docs_json_ts_common_types_XYZ_decimal_string,
 } from './../../common/types.ts';
 
 import type {
 	Class_quoted as docs_json_ts_0_3_7_7_properties_Class_quoted,
 	mProducedIn_base as docs_json_ts_0_3_7_7_properties_mProducedIn_base,
 	mUnlocks_item_base as docs_json_ts_0_3_7_7_properties_mUnlocks_item_base,
+	RequiredSchematic as docs_json_ts_0_3_7_7_properties_RequiredSchematic,
 } from './../../0.3.7.7/types/properties.ts';
 
 import type {
@@ -19,9 +24,11 @@ import type {
 } from './../../0.3.7.7/types/overridable.ts';
 
 type mAllowedResourceForms = [
-    'RF_SOLID' | 'RF_LIQUID' | 'RF_GAS' | 'RF_HEAT',
-    ...('RF_SOLID' | 'RF_LIQUID' | 'RF_GAS' | 'RF_HEAT')[],
+	mAllowedResourceForms_item,
+	...mAllowedResourceForms_item[],
 ];
+
+type mAllowedResourceForms_item = 'RF_SOLID' | 'RF_LIQUID' | 'RF_GAS' | 'RF_HEAT';
 
 type mAlternativeMaterialRecipes_mMaterial = `/Game/FactoryGame/Buildable/-Shared/Customization/Materials/MaterialDesc_Foundation_${Exclude<string, ''>}${'.MaterialDesc_Foundation_'}${Exclude<string, ''>}${'_C'}`;
 
@@ -43,20 +50,16 @@ type mProducedIn_version_specific = [
 
 type mUnlocks_item_mScannableObjects = docs_json_ts_0_3_7_7_properties_mUnlocks_item_base & {
 	mScannableObjects: [
-		{
-			ItemDescriptor: docs_json_ts_0_3_7_7_overridable_BlueprintGeneratedClass_quoted,
-			ActorsAllowedToScan: [
-				docs_json_ts_0_3_7_7_properties_Class_quoted,
-				...docs_json_ts_0_3_7_7_properties_Class_quoted[],
-			],
-		},
-		...{
-			ItemDescriptor: docs_json_ts_0_3_7_7_overridable_BlueprintGeneratedClass_quoted,
-			ActorsAllowedToScan: [
-				docs_json_ts_0_3_7_7_properties_Class_quoted,
-				...docs_json_ts_0_3_7_7_properties_Class_quoted[],
-			],
-		}[],
+		mUnlocks_item_mScannableObjects_item,
+		...mUnlocks_item_mScannableObjects_item[],
+	],
+};
+
+type mUnlocks_item_mScannableObjects_item = {
+	ItemDescriptor: docs_json_ts_0_3_7_7_overridable_BlueprintGeneratedClass_quoted,
+	ActorsAllowedToScan: [
+		docs_json_ts_0_3_7_7_properties_Class_quoted,
+		...docs_json_ts_0_3_7_7_properties_Class_quoted[],
 	],
 };
 
@@ -65,9 +68,11 @@ type BP_RadialDamageType_Explosive_C_quoted = `BP_RadialDamageType_Explosive_C'"
 type BP_RadialDamageType_Gas_C_quoted = `BP_RadialDamageType_Gas_C'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
 
 type DamageTypes = [
-    `BP_PointDamageType_${Exclude<string, ''>}${'_C\'"/Game/FactoryGame/'}${'Equipment' | 'Resource'}${'/'}${Exclude<string, ''>}${'/Desc_' | '/Equip_'}${Exclude<string, ''>}${'_C:BP_PointDamageType_'}${Exclude<string, ''>}${'_C_0"\''}`,
-    ...`BP_PointDamageType_${Exclude<string, ''>}${'_C\'"/Game/FactoryGame/'}${'Equipment' | 'Resource'}${'/'}${Exclude<string, ''>}${'/Desc_' | '/Equip_'}${Exclude<string, ''>}${'_C:BP_PointDamageType_'}${Exclude<string, ''>}${'_C_0"\''}`[],
+	DamageTypes_item,
+	...DamageTypes_item[],
 ];
+
+type DamageTypes_item = `BP_PointDamageType_${Exclude<string, ''>}${'_C\'"/Game/FactoryGame/'}${'Equipment' | 'Resource'}${'/'}${Exclude<string, ''>}${'/Desc_' | '/Equip_'}${Exclude<string, ''>}${'_C:BP_PointDamageType_'}${Exclude<string, ''>}${'_C_0"\''}`;
 
 type DocsDotJson_AkAudioEvent_quoted_list = [
 	DocsDotJson_AkAudioEvent_quoted_list_item,
@@ -76,8 +81,35 @@ type DocsDotJson_AkAudioEvent_quoted_list = [
 
 type DocsDotJson_AkAudioEvent_quoted_list_item = `AkAudioEvent'"/Game/WwiseAudio/${Exclude<string, ''>}${'"\''}`;
 
+type FGBuildable_mOcclusionBoxInfo_item = {
+	Min: docs_json_ts_common_types_XYZ_decimal_string,
+	Max: docs_json_ts_common_types_XYZ_decimal_string,
+	IsValid: '0',
+};
+
+type FGItemDescriptor_version_specific_mDescriptorStatBars_item = {
+	Value: docs_json_ts_common_types_integer_string,
+};
+
+type FGObjectScanner_mObjectDetails_item = {
+	ScannableClass: docs_json_ts_0_3_7_7_overridable_BlueprintGeneratedClass_quoted,
+	DisplayText: {
+		NSLOCTEXT: [
+			string,
+			...string[],
+		],
+	},
+	ScannerLightColor: docs_json_ts_common_types_BGRA,
+	Icon: mObjectDetails_Icon,
+	RequiredSchematic: docs_json_ts_0_3_7_7_properties_RequiredSchematic,
+	PreCacheAllOfType?: docs_json_ts_common_types_bool_string,
+	ShouldOverrideDetectionRange?: docs_json_ts_common_types_bool_string,
+	NewDetectionRange?: docs_json_ts_common_types_decimal_string,
+};
+
 export type {
 	mAllowedResourceForms,
+	mAllowedResourceForms_item,
 	mAlternativeMaterialRecipes_mMaterial,
 	mAlternativeMaterialRecipes_mRecipe,
 	mDisableSnapOn_front_right,
@@ -85,9 +117,14 @@ export type {
 	mProducedIn,
 	mProducedIn_version_specific,
 	mUnlocks_item_mScannableObjects,
+	mUnlocks_item_mScannableObjects_item,
 	BP_RadialDamageType_Explosive_C_quoted,
 	BP_RadialDamageType_Gas_C_quoted,
 	DamageTypes,
+	DamageTypes_item,
 	DocsDotJson_AkAudioEvent_quoted_list,
 	DocsDotJson_AkAudioEvent_quoted_list_item,
+	FGBuildable_mOcclusionBoxInfo_item,
+	FGItemDescriptor_version_specific_mDescriptorStatBars_item,
+	FGObjectScanner_mObjectDetails_item,
 };

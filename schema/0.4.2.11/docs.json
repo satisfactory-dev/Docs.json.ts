@@ -15,6 +15,12 @@
 					"type": "array",
 					"minItems": 1,
 					"items": {
+						"$ref": "#/$defs/FGBuildable--Classes--item"
+					}
+				}
+			}
+		},
+		"FGBuildable--Classes--item": {
 						"oneOf": [
 							{
 								"$ref": "docs.json.ts--0.4.2.11--classes#/$defs/FGBuildable--occupied"
@@ -26,9 +32,6 @@
 								"$ref": "docs.json.ts--0.4.2.11--classes#/$defs/FGBuildable--base"
 							}
 						]
-					}
-				}
-			}
 		},
 		"FGBuildableAttachmentMerger": {
 			"type": "object",
@@ -169,6 +172,12 @@
 					"type": "array",
 					"minItems": 1,
 					"items": {
+						"$ref": "#/$defs/FGBuildableFactory--Classes--item"
+					}
+				}
+			}
+		},
+		"FGBuildableFactory--Classes--item": {
 						"oneOf": [
 							{
 								"$ref": "docs.json.ts--0.4.2.11--classes#/$defs/FGBuildableFactory--jump-pad"
@@ -180,9 +189,7 @@
 								"$ref": "docs.json.ts--0.4.2.11--classes#/$defs/FGBuildable--powered-base"
 							}
 						]
-					}
-				}
-			}
+
 		},
 		"FGBuildableFactorySimpleProducer": {
 			"type": "object",
@@ -556,6 +563,12 @@
 					"type": "array",
 					"minItems": 1,
 					"items": {
+						"$ref": "#/$defs/FGBuildablePipelinePump--Classes--item"
+					}
+				}
+			}
+		},
+		"FGBuildablePipelinePump--Classes--item": {
 						"oneOf": [
 							{
 								"$ref": "docs.json.ts--0.4.2.11--classes#/$defs/FGBuildablePipelinePump--valve"
@@ -564,9 +577,6 @@
 								"$ref": "docs.json.ts--0.4.2.11--classes#/$defs/FGBuildablePipelinePump--pump"
 							}
 						]
-					}
-				}
-			}
 		},
 		"FGBuildablePipelineSupport": {
 			"type": "object",

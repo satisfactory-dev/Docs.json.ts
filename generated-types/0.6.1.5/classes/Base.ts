@@ -112,14 +112,14 @@ import type {
 	BP_RadialDamageType_Gas_C_quoted as docs_json_ts_0_6_1_5_properties_BP_RadialDamageType_Gas_C_quoted,
 	DamageTypes as docs_json_ts_0_6_1_5_properties_DamageTypes,
 	DocsDotJson_AkAudioEvent_quoted_list as docs_json_ts_0_6_1_5_properties_DocsDotJson_AkAudioEvent_quoted_list,
+	FGBuildable_mOcclusionBoxInfo_item as docs_json_ts_0_6_1_5_properties_FGBuildable_mOcclusionBoxInfo_item,
+	FGObjectScanner_mObjectDetails_item as docs_json_ts_0_6_1_5_properties_FGObjectScanner_mObjectDetails_item,
 	mAllowedResourceForms as docs_json_ts_0_6_1_5_properties_mAllowedResourceForms,
 	mDisableSnapOn_front_right as docs_json_ts_0_6_1_5_properties_mDisableSnapOn_front_right,
-	mObjectDetails_Icon as docs_json_ts_0_6_1_5_properties_mObjectDetails_Icon,
 	mProducedIn as docs_json_ts_0_6_1_5_properties_mProducedIn,
 } from './../types/properties.ts';
 
 import type {
-	BGRA as docs_json_ts_common_types_BGRA,
 	bool_string as docs_json_ts_common_types_bool_string,
 	decimal_string as docs_json_ts_common_types_decimal_string,
 	decimal_string_signed as docs_json_ts_common_types_decimal_string_signed,
@@ -150,7 +150,6 @@ import type {
 import type {
 	mDisableSnapOn_front_bottom as docs_json_ts_0_3_7_7_properties_mDisableSnapOn_front_bottom,
 	mDisableSnapOn_top_bottom as docs_json_ts_0_3_7_7_properties_mDisableSnapOn_top_bottom,
-	RequiredSchematic as docs_json_ts_0_3_7_7_properties_RequiredSchematic,
 } from './../../0.3.7.7/types/properties.ts';
 
 import type {
@@ -204,17 +203,16 @@ import type {
 } from './../../0.5.2.1/classes/Base.overridable.ts';
 
 import type {
-	BlueprintGeneratedClass_quoted as docs_json_ts_0_3_7_7_overridable_BlueprintGeneratedClass_quoted,
-	ItemClass_Amount_list as docs_json_ts_0_3_7_7_overridable_ItemClass_Amount_list,
-} from './../../0.3.7.7/types/overridable.ts';
-
-import type {
 	FGSchematic_has_mSchematicDependencies as docs_json_ts_0_4_2_11_classes_base_overridable_FGSchematic_has_mSchematicDependencies,
 } from './../../0.4.2.11/classes/Base.overridable.ts';
 
 import type {
 	Texture2D_quoted as docs_json_ts_0_4_2_11_overridable_Texture2D_quoted,
 } from './../../0.4.2.11/types/overridable.ts';
+
+import type {
+	ItemClass_Amount_list as docs_json_ts_0_3_7_7_overridable_ItemClass_Amount_list,
+} from './../../0.3.7.7/types/overridable.ts';
 
 import type {
 	ItemClass_list as docs_json_ts_0_6_1_5_overridable_ItemClass_list,
@@ -304,16 +302,8 @@ type FGBuildable_base = docs_json_ts_0_6_1_5_classes_base_overridable_FGBuildabl
 
 type FGBuildable_base_pre_update8 = {
 	mOcclusionBoxInfo: null | [
-		{
-			Min: docs_json_ts_common_types_XYZ_decimal_string,
-			Max: docs_json_ts_common_types_XYZ_decimal_string,
-			IsValid: '0',
-		},
-		...{
-			Min: docs_json_ts_common_types_XYZ_decimal_string,
-			Max: docs_json_ts_common_types_XYZ_decimal_string,
-			IsValid: '0',
-		}[],
+		docs_json_ts_0_6_1_5_properties_FGBuildable_mOcclusionBoxInfo_item,
+		...docs_json_ts_0_6_1_5_properties_FGBuildable_mOcclusionBoxInfo_item[],
 	],
 };
 
@@ -617,36 +607,8 @@ type FGObjectScanner = docs_json_ts_0_6_1_5_classes_base_overridable_FGObjectSca
 
 type FGObjectScanner_version_specific = {
 	mObjectDetails: [
-		{
-			ScannableClass: docs_json_ts_0_3_7_7_overridable_BlueprintGeneratedClass_quoted,
-			DisplayText: {
-				NSLOCTEXT: [
-					string,
-					...string[],
-				],
-			},
-			ScannerLightColor: docs_json_ts_common_types_BGRA,
-			Icon: docs_json_ts_0_6_1_5_properties_mObjectDetails_Icon,
-			RequiredSchematic: docs_json_ts_0_3_7_7_properties_RequiredSchematic,
-			PreCacheAllOfType?: docs_json_ts_common_types_bool_string,
-			ShouldOverrideDetectionRange?: docs_json_ts_common_types_bool_string,
-			NewDetectionRange?: docs_json_ts_common_types_decimal_string,
-		},
-		...{
-			ScannableClass: docs_json_ts_0_3_7_7_overridable_BlueprintGeneratedClass_quoted,
-			DisplayText: {
-				NSLOCTEXT: [
-					string,
-					...string[],
-				],
-			},
-			ScannerLightColor: docs_json_ts_common_types_BGRA,
-			Icon: docs_json_ts_0_6_1_5_properties_mObjectDetails_Icon,
-			RequiredSchematic: docs_json_ts_0_3_7_7_properties_RequiredSchematic,
-			PreCacheAllOfType?: docs_json_ts_common_types_bool_string,
-			ShouldOverrideDetectionRange?: docs_json_ts_common_types_bool_string,
-			NewDetectionRange?: docs_json_ts_common_types_decimal_string,
-		}[],
+		docs_json_ts_0_6_1_5_properties_FGObjectScanner_mObjectDetails_item,
+		...docs_json_ts_0_6_1_5_properties_FGObjectScanner_mObjectDetails_item[],
 	],
 };
 

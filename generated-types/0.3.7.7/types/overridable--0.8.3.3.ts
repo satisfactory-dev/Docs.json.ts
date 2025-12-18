@@ -57,15 +57,14 @@ type DocsDotJson_BlueprintGeneratedClass_quoted_list = [
 ];
 
 type ItemClass_Amount_list = [
-	{
-		ItemClass: BlueprintGeneratedClass_quoted,
-		Amount: docs_json_ts_common_types_integer_string,
-	},
-	...{
-		ItemClass: BlueprintGeneratedClass_quoted,
-		Amount: docs_json_ts_common_types_integer_string,
-	}[],
+	ItemClass_Amount_list_item,
+	...ItemClass_Amount_list_item[],
 ];
+
+type ItemClass_Amount_list_item = {
+	ItemClass: BlueprintGeneratedClass_quoted,
+	Amount: docs_json_ts_common_types_integer_string,
+};
 
 type MaterialInstanceConstant_quoted = `/Script/Engine.MaterialInstanceConstant'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
 
@@ -84,6 +83,7 @@ export type {
 	BlueprintGeneratedClass_quoted,
 	DocsDotJson_BlueprintGeneratedClass_quoted_list,
 	ItemClass_Amount_list,
+	ItemClass_Amount_list_item,
 	MaterialInstanceConstant_quoted,
 	ParticleSystem_quoted,
 };

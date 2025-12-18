@@ -308,23 +308,7 @@
 								"minItems": 1,
 								"uniqueItems": true,
 								"items": {
-									"type": "string",
-									"typed_string": {
-										"type": "object",
-										"additionalProperties": false,
-										"required": ["Min", "Max", "IsValid"],
-										"properties": {
-											"Min": {
-												"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
-											},
-											"Max": {
-												"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
-											},
-											"IsValid": {
-												"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-											}
-										}
-									}
+									"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/FGBuildable--mOcclusionBoxInfo--item"
 								}
 							}
 						}
@@ -1647,15 +1631,7 @@
 						"minItems": 1,
 						"uniqueItems": true,
 						"items": {
-							"type": "string",
-							"enum": [
-								"/Script/Engine.StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1\"'",
-								"/Script/Engine.StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2\"'",
-								"/Script/Engine.StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3\"'",
-								"/Script/Engine.StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4\"'",
-								"/Script/Engine.StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5\"'",
-								"/Script/Engine.StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6\"'"
-							]
+							"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/Meshes--item"
 						}
 					}
 				}
@@ -1897,23 +1873,7 @@
 						"minItems": 1,
 						"uniqueItems": true,
 						"items": {
-							"type": "string",
-							"typed_string": {
-								"type": "object",
-								"additionalProperties": false,
-								"required": [
-									"Montage_7_2E66F6A948A8606E71185682EA2AC4EC",
-									"CameraAnimationSequence_11_920C446448786C507704569A05006500"
-								],
-								"properties": {
-									"Montage_7_2E66F6A948A8606E71185682EA2AC4EC": {
-										"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
-									},
-									"CameraAnimationSequence_11_920C446448786C507704569A05006500": {
-										"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/CameraAnimationSequence--quoted"
-									}
-								}
-							}
+							"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/mAnimData--item"
 						}
 					}
 				}

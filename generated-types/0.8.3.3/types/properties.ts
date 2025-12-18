@@ -1,6 +1,7 @@
 /* eslint-disable @stylistic/max-len */
 
 import type {
+	AnimMontage_quoted as docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
 	BlueprintGeneratedClass_quoted as docs_json_ts_0_3_7_7_overridable_BlueprintGeneratedClass_quoted,
 	MaterialInstanceConstant_quoted as docs_json_ts_0_3_7_7_overridable_MaterialInstanceConstant_quoted,
 	mUnlocks_item_mItemsToGive as docs_json_ts_0_3_7_7_overridable_mUnlocks_item_mItemsToGive,
@@ -29,6 +30,16 @@ import type {
 	mUnlocks_item_mTapeUnlocks as docs_json_ts_0_6_1_5_overridable_mUnlocks_item_mTapeUnlocks,
 } from './../../0.6.1.5/types/overridable--0.8.3.3.ts';
 
+import type {
+	bool_string as docs_json_ts_common_types_bool_string,
+	XYZ_decimal_string as docs_json_ts_common_types_XYZ_decimal_string,
+} from './../../common/types.ts';
+
+type mAnimData_item = {
+	Montage_7_2E66F6A948A8606E71185682EA2AC4EC: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	CameraAnimationSequence_11_920C446448786C507704569A05006500: CameraAnimationSequence_quoted,
+};
+
 type mComponentNameToFirstPersonMaterials_item = [
 	Exclude<string, ''>,
 	{
@@ -50,20 +61,16 @@ type mUnlocks_item = docs_json_ts_0_3_7_7_overridable_mUnlocks_item_mRecipes | d
 
 type mUnlocks_item_mScannableObjects = docs_json_ts_0_3_7_7_properties_mUnlocks_item_base & {
 	mScannableObjects: [
-		{
-			ItemDescriptor: docs_json_ts_0_3_7_7_overridable_BlueprintGeneratedClass_quoted,
-			ActorsAllowedToScan: [
-				Class_quoted,
-				...Class_quoted[],
-			],
-		},
-		...{
-			ItemDescriptor: docs_json_ts_0_3_7_7_overridable_BlueprintGeneratedClass_quoted,
-			ActorsAllowedToScan: [
-				Class_quoted,
-				...Class_quoted[],
-			],
-		}[],
+		mUnlocks_item_mScannableObjects_item,
+		...mUnlocks_item_mScannableObjects_item[],
+	],
+};
+
+type mUnlocks_item_mScannableObjects_item = {
+	ItemDescriptor: docs_json_ts_0_3_7_7_overridable_BlueprintGeneratedClass_quoted,
+	ActorsAllowedToScan: [
+		Class_quoted,
+		...Class_quoted[],
 	],
 };
 
@@ -78,20 +85,32 @@ type DocsDotJson_AkAudioEvent_quoted_list = [
 
 type DocsDotJson_AkAudioEvent_quoted_list_item = `/Script/AkAudio.AkAudioEvent'"/Game/WwiseAudio/${Exclude<string, ''>}${'"\''}`;
 
+type FGBuildable_mOcclusionBoxInfo_item = {
+	Min: docs_json_ts_common_types_XYZ_decimal_string,
+	Max: docs_json_ts_common_types_XYZ_decimal_string,
+	IsValid: docs_json_ts_common_types_bool_string,
+};
+
 type FGRailroadTrackConnectionComponent_quoted = `/Script/FactoryGame.FGRailroadTrackConnectionComponent'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
 
 type FGTrainPlatformConnection_quoted = `/Script/FactoryGame.FGTrainPlatformConnection'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
 
+type Meshes_item = '/Script/Engine.StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1"\'' | '/Script/Engine.StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2"\'' | '/Script/Engine.StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3"\'' | '/Script/Engine.StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4"\'' | '/Script/Engine.StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5"\'' | '/Script/Engine.StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6"\'';
+
 export type {
+	mAnimData_item,
 	mComponentNameToFirstPersonMaterials_item,
 	mDamageTypes,
 	mDamageTypes_item,
 	mUnlocks_item,
 	mUnlocks_item_mScannableObjects,
+	mUnlocks_item_mScannableObjects_item,
 	CameraAnimationSequence_quoted,
 	Class_quoted,
 	DocsDotJson_AkAudioEvent_quoted_list,
 	DocsDotJson_AkAudioEvent_quoted_list_item,
+	FGBuildable_mOcclusionBoxInfo_item,
 	FGRailroadTrackConnectionComponent_quoted,
 	FGTrainPlatformConnection_quoted,
+	Meshes_item,
 };

@@ -37,6 +37,41 @@
 				}
 			]
 		},
+		"mAnimData--item": {
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": [
+					"Montage_7_2E66F6A948A8606E71185682EA2AC4EC",
+					"CameraAnim_8_AA01C2B248FF438D6C2816B2FA94F1BD"
+				],
+				"properties": {
+					"Montage_7_2E66F6A948A8606E71185682EA2AC4EC": {
+						"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
+					},
+					"CameraAnim_8_AA01C2B248FF438D6C2816B2FA94F1BD": {
+						"$ref": "#/$defs/CameraAnim--quoted"
+					}
+				}
+			}
+		},
+		"mDefaultFuelClasses--item--coal": {
+			"type": "string",
+			"enum": [
+				"/Game/FactoryGame/Resource/RawResources/Coal/Desc_Coal.Desc_Coal_C",
+				"/Game/FactoryGame/Resource/Parts/CompactedCoal/Desc_CompactedCoal.Desc_CompactedCoal_C",
+				"/Game/FactoryGame/Resource/Parts/PetroleumCoke/Desc_PetroleumCoke.Desc_PetroleumCoke_C"
+			]
+		},
+		"mDefaultFuelClasses--item--fuel": {
+			"type": "string",
+			"enum": [
+				"/Game/FactoryGame/Resource/Parts/Fuel/Desc_LiquidFuel.Desc_LiquidFuel_C",
+				"/Game/FactoryGame/Resource/Parts/Turbofuel/Desc_LiquidTurboFuel.Desc_LiquidTurboFuel_C",
+				"/Game/FactoryGame/Resource/Parts/BioFuel/Desc_LiquidBiofuel.Desc_LiquidBiofuel_C"
+			]
+		},
 		"mDisableSnapOn--front--bottom": {
 			"type": "string",
 			"typed_string": {
@@ -152,9 +187,64 @@
 			"type": "string",
 			"minLength": 0
 		},
+		"mFluidNames--item": {
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": ["WwiseSafeName"],
+				"properties": {
+					"WwiseSafeName": {
+						"type": "string",
+						"pattern": "^[A-Z][A-Za-z_]+[a-z]$"
+					},
+					"ActualName": {
+						"type": "string",
+						"pattern": "^[A-Z][A-Za-z ]+[a-z]$"
+					}
+				}
+			}
+		},
 		"mForm": {
 			"type": "string",
 			"enum": ["RF_SOLID", "RF_LIQUID", "RF_INVALID"]
+		},
+		"mObjectDetails--item": {
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": [
+					"ScannableClass",
+					"DisplayText",
+					"ScannerLightColor",
+					"RequiredSchematic"
+				],
+				"properties": {
+					"ScannableClass": {
+						"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/BlueprintGeneratedClass--quoted"
+					},
+					"DisplayText": {
+						"type": "string",
+						"DocsDotJson_named_list": "NSLOCTEXT"
+					},
+					"ScannerLightColor": {
+						"$ref": "docs.json.ts--common--types#/$defs/BGRA"
+					},
+					"PreCacheAllOfType": {
+						"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+					},
+					"ShouldOverrideDetectionRange": {
+						"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+					},
+					"NewDetectionRange": {
+						"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+					},
+					"RequiredSchematic": {
+						"$ref": "#/$defs/RequiredSchematic"
+					}
+				}
+			}
 		},
 		"mProducedIn": {
 			"oneOf": [
@@ -446,6 +536,17 @@
 				"mode": "quoted",
 				"value": null
 			}
+		},
+		"Meshes--item": {
+			"type": "string",
+			"enum": [
+				"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1\"'",
+				"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2\"'",
+				"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3\"'",
+				"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4\"'",
+				"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5\"'",
+				"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6\"'"
+			]
 		},
 		"RawResources": {
 			"type": "string",

@@ -333,9 +333,7 @@ function FlexibleArray_generate_data__items(
 
 	const items_as_data = items.map((item) => {
 		if (
-			object_has_property(schema.items, 'type')
-			&& 'string' === schema.items.type
-			&& item.startsWith('"')
+			item.startsWith('"')
 			&& item.endsWith('"')
 		) {
 			item = item.substring(

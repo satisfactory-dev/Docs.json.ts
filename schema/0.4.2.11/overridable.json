@@ -11,6 +11,16 @@
 				}
 			}
 		},
+		"mSchematicDependencies--item": {
+			"oneOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/mSchematicDependencies--item"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/mSchematicDependencies--item"
+				}
+			]
+		},
 		"mUnlocks--item": {
 			"oneOf": [
 				{
@@ -65,6 +75,13 @@
 						"minItems": 1,
 						"uniqueItems": true,
 						"items": {
+							"$ref": "#/$defs/mUnlocks--item--mResourcePairsToAddToScanner--item"
+						}
+					}
+				}
+			}
+		},
+		"mUnlocks--item--mResourcePairsToAddToScanner--item": {
 							"type": "string",
 							"typed_string": {
 								"type": "object",
@@ -80,10 +97,6 @@
 									}
 								}
 							}
-						}
-					}
-				}
-			}
 		},
 		"BlueprintGeneratedClass--single-quoted": {
 			"type": "string",

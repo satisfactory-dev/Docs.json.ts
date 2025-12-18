@@ -2,11 +2,13 @@
 
 import type {
 	BlueprintGeneratedClass_non_quoted as docs_json_ts_0_3_7_7_properties_BlueprintGeneratedClass_non_quoted,
-	CameraAnim_quoted as docs_json_ts_0_3_7_7_properties_CameraAnim_quoted,
 	Class_quoted as docs_json_ts_0_3_7_7_properties_Class_quoted,
 	FGTrainPlatformConnection_quoted as docs_json_ts_0_3_7_7_properties_FGTrainPlatformConnection_quoted,
 	mAbbreviatedDisplayName as docs_json_ts_0_3_7_7_properties_mAbbreviatedDisplayName,
 	mAllowedResourceForms as docs_json_ts_0_3_7_7_properties_mAllowedResourceForms,
+	mAnimData_item as docs_json_ts_0_3_7_7_properties_mAnimData_item,
+	mDefaultFuelClasses_item_coal as docs_json_ts_0_3_7_7_properties_mDefaultFuelClasses_item_coal,
+	mDefaultFuelClasses_item_fuel as docs_json_ts_0_3_7_7_properties_mDefaultFuelClasses_item_fuel,
 	mDisableSnapOn_front_bottom as docs_json_ts_0_3_7_7_properties_mDisableSnapOn_front_bottom,
 	mDisableSnapOn_front_left_top_bottom as docs_json_ts_0_3_7_7_properties_mDisableSnapOn_front_left_top_bottom,
 	mDisableSnapOn_front_top as docs_json_ts_0_3_7_7_properties_mDisableSnapOn_front_top,
@@ -14,14 +16,16 @@ import type {
 	mDisableSnapOn_right_left_top_bottom as docs_json_ts_0_3_7_7_properties_mDisableSnapOn_right_left_top_bottom,
 	mDisableSnapOn_top_bottom as docs_json_ts_0_3_7_7_properties_mDisableSnapOn_top_bottom,
 	mDisplayName as docs_json_ts_0_3_7_7_properties_mDisplayName,
+	Meshes_item as docs_json_ts_0_3_7_7_properties_Meshes_item,
+	mFluidNames_item as docs_json_ts_0_3_7_7_properties_mFluidNames_item,
 	mForm as docs_json_ts_0_3_7_7_properties_mForm,
+	mObjectDetails_item as docs_json_ts_0_3_7_7_properties_mObjectDetails_item,
 	mProducedIn as docs_json_ts_0_3_7_7_properties_mProducedIn,
 	mRelevantEvents as docs_json_ts_0_3_7_7_properties_mRelevantEvents,
 	mStackSize as docs_json_ts_0_3_7_7_properties_mStackSize,
 	mUnlocks_item_base as docs_json_ts_0_3_7_7_properties_mUnlocks_item_base,
 	mUnlocks_item_mNumArmEquipmentSlotsToUnlock as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mNumArmEquipmentSlotsToUnlock,
 	mUnlocks_item_mNumInventorySlotsToUnlock as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mNumInventorySlotsToUnlock,
-	RequiredSchematic as docs_json_ts_0_3_7_7_properties_RequiredSchematic,
 	Texture2D as docs_json_ts_0_3_7_7_properties_Texture2D,
 	Texture2D_base as docs_json_ts_0_3_7_7_properties_Texture2D_base,
 	Tier as docs_json_ts_0_3_7_7_properties_Tier,
@@ -50,7 +54,6 @@ import type {
 } from './Base.overridable.ts';
 
 import type {
-	AnimMontage_quoted as docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
 	BlueprintGeneratedClass_quoted as docs_json_ts_0_3_7_7_overridable_BlueprintGeneratedClass_quoted,
 	ItemClass_Amount_list as docs_json_ts_0_3_7_7_overridable_ItemClass_Amount_list,
 	mSchematicDependencies_item as docs_json_ts_0_3_7_7_overridable_mSchematicDependencies_item,
@@ -60,10 +63,6 @@ import type {
 	mUnlocks_item_mResourcesToAddToScanner as docs_json_ts_0_3_7_7_overridable_mUnlocks_item_mResourcesToAddToScanner,
 	mUnlocks_item_mSchematics as docs_json_ts_0_3_7_7_overridable_mUnlocks_item_mSchematics,
 } from './../types/overridable.ts';
-
-import type {
-	StringPassesRegex,
-} from '@signpostmarv/json-schema-typescript-codegen';
 
 type hasClassName = {
 	ClassName: `${Exclude<string, ''>}${'_'}${Exclude<string, ''>}${'_C'}`,
@@ -398,8 +397,8 @@ type FGBuildableGeneratorFuel_coal_base = FGBuildableGeneratorFuel_base & FGBuil
 
 type FGBuildableGeneratorFuel_coal_base_base = {
 	mDefaultFuelClasses: [
-        '/Game/FactoryGame/Resource/RawResources/Coal/Desc_Coal.Desc_Coal_C' | '/Game/FactoryGame/Resource/Parts/CompactedCoal/Desc_CompactedCoal.Desc_CompactedCoal_C' | '/Game/FactoryGame/Resource/Parts/PetroleumCoke/Desc_PetroleumCoke.Desc_PetroleumCoke_C',
-        ...('/Game/FactoryGame/Resource/RawResources/Coal/Desc_Coal.Desc_Coal_C' | '/Game/FactoryGame/Resource/Parts/CompactedCoal/Desc_CompactedCoal.Desc_CompactedCoal_C' | '/Game/FactoryGame/Resource/Parts/PetroleumCoke/Desc_PetroleumCoke.Desc_PetroleumCoke_C')[],
+		docs_json_ts_0_3_7_7_properties_mDefaultFuelClasses_item_coal,
+		...docs_json_ts_0_3_7_7_properties_mDefaultFuelClasses_item_coal[],
 	],
 };
 
@@ -409,8 +408,8 @@ type FGBuildableGeneratorFuel_fuel_base = FGBuildableGeneratorFuel_base & FGBuil
 
 type FGBuildableGeneratorFuel_fuel_base_base = {
 	mDefaultFuelClasses: [
-        '/Game/FactoryGame/Resource/Parts/Fuel/Desc_LiquidFuel.Desc_LiquidFuel_C' | '/Game/FactoryGame/Resource/Parts/Turbofuel/Desc_LiquidTurboFuel.Desc_LiquidTurboFuel_C' | '/Game/FactoryGame/Resource/Parts/BioFuel/Desc_LiquidBiofuel.Desc_LiquidBiofuel_C',
-        ...('/Game/FactoryGame/Resource/Parts/Fuel/Desc_LiquidFuel.Desc_LiquidFuel_C' | '/Game/FactoryGame/Resource/Parts/Turbofuel/Desc_LiquidTurboFuel.Desc_LiquidTurboFuel_C' | '/Game/FactoryGame/Resource/Parts/BioFuel/Desc_LiquidBiofuel.Desc_LiquidBiofuel_C')[],
+		docs_json_ts_0_3_7_7_properties_mDefaultFuelClasses_item_fuel,
+		...docs_json_ts_0_3_7_7_properties_mDefaultFuelClasses_item_fuel[],
 	],
 };
 
@@ -552,14 +551,8 @@ type FGBuildablePipeline_base_root = FGBuildablePipeline_base_spline_base & {
 	mMaxIndicatorTurnAngle: docs_json_ts_common_types_decimal_string,
 	mIgnoreActorsForIndicator: '',
 	mFluidNames: [
-		{
-			WwiseSafeName: StringPassesRegex<'^[A-Z][A-Za-z_]+[a-z]$'>,
-			ActualName?: StringPassesRegex<'^[A-Z][A-Za-z ]+[a-z]$'>,
-		},
-		...{
-			WwiseSafeName: StringPassesRegex<'^[A-Z][A-Za-z_]+[a-z]$'>,
-			ActualName?: StringPassesRegex<'^[A-Z][A-Za-z ]+[a-z]$'>,
-		}[],
+		docs_json_ts_0_3_7_7_properties_mFluidNames_item,
+		...docs_json_ts_0_3_7_7_properties_mFluidNames_item[],
 	],
 	mCurrentFluid: '',
 	mRattleLimit: docs_json_ts_common_types_decimal_string,
@@ -893,8 +886,8 @@ type FGBuildableTradingPost_base_base_base = FGBuildable_powered_base_base_base 
 
 type FGBuildableTradingPost_base_base_version_specific = FGBuildable_powered_base_base_base & {
 	Meshes: [
-        'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6"\'',
-        ...('StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5"\'' | 'StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6"\'')[],
+		docs_json_ts_0_3_7_7_properties_Meshes_item,
+		...docs_json_ts_0_3_7_7_properties_Meshes_item[],
 	],
 };
 
@@ -1016,14 +1009,8 @@ type FGConsumableEquipment_base = FGConsumableEquipment_pre_update8 & FGConsumab
 
 type FGConsumableEquipment_pre_update8 = {
 	mAnimData?: [
-		{
-			Montage_7_2E66F6A948A8606E71185682EA2AC4EC: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
-			CameraAnim_8_AA01C2B248FF438D6C2816B2FA94F1BD: docs_json_ts_0_3_7_7_properties_CameraAnim_quoted,
-		},
-		...{
-			Montage_7_2E66F6A948A8606E71185682EA2AC4EC: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
-			CameraAnim_8_AA01C2B248FF438D6C2816B2FA94F1BD: docs_json_ts_0_3_7_7_properties_CameraAnim_quoted,
-		}[],
+		docs_json_ts_0_3_7_7_properties_mAnimData_item,
+		...docs_json_ts_0_3_7_7_properties_mAnimData_item[],
 	],
 };
 
@@ -1214,34 +1201,8 @@ type FGObjectScanner = FGEquipment & FGEquipment_has_mPlayingSound & FGObjectSca
 
 type FGObjectScanner_has_mObjectDetails = {
 	mObjectDetails: [
-		{
-			ScannableClass: docs_json_ts_0_3_7_7_overridable_BlueprintGeneratedClass_quoted,
-			DisplayText: {
-				NSLOCTEXT: [
-					string,
-					...string[],
-				],
-			},
-			ScannerLightColor: docs_json_ts_common_types_BGRA,
-			PreCacheAllOfType?: docs_json_ts_common_types_bool_string,
-			ShouldOverrideDetectionRange?: docs_json_ts_common_types_bool_string,
-			NewDetectionRange?: docs_json_ts_common_types_decimal_string,
-			RequiredSchematic: docs_json_ts_0_3_7_7_properties_RequiredSchematic,
-		},
-		...{
-			ScannableClass: docs_json_ts_0_3_7_7_overridable_BlueprintGeneratedClass_quoted,
-			DisplayText: {
-				NSLOCTEXT: [
-					string,
-					...string[],
-				],
-			},
-			ScannerLightColor: docs_json_ts_common_types_BGRA,
-			PreCacheAllOfType?: docs_json_ts_common_types_bool_string,
-			ShouldOverrideDetectionRange?: docs_json_ts_common_types_bool_string,
-			NewDetectionRange?: docs_json_ts_common_types_decimal_string,
-			RequiredSchematic: docs_json_ts_0_3_7_7_properties_RequiredSchematic,
-		}[],
+		docs_json_ts_0_3_7_7_properties_mObjectDetails_item,
+		...docs_json_ts_0_3_7_7_properties_mObjectDetails_item[],
 	],
 };
 

@@ -1297,12 +1297,7 @@
 						"minItems": 1,
 						"uniqueItems": true,
 						"items": {
-							"type": "string",
-							"enum": [
-								"/Game/FactoryGame/Resource/RawResources/Coal/Desc_Coal.Desc_Coal_C",
-								"/Game/FactoryGame/Resource/Parts/CompactedCoal/Desc_CompactedCoal.Desc_CompactedCoal_C",
-								"/Game/FactoryGame/Resource/Parts/PetroleumCoke/Desc_PetroleumCoke.Desc_PetroleumCoke_C"
-							]
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mDefaultFuelClasses--item--coal"
 						}
 					}
 				}
@@ -1339,12 +1334,7 @@
 						"minItems": 1,
 						"uniqueItems": true,
 						"items": {
-							"type": "string",
-							"enum": [
-								"/Game/FactoryGame/Resource/Parts/Fuel/Desc_LiquidFuel.Desc_LiquidFuel_C",
-								"/Game/FactoryGame/Resource/Parts/Turbofuel/Desc_LiquidTurboFuel.Desc_LiquidTurboFuel_C",
-								"/Game/FactoryGame/Resource/Parts/BioFuel/Desc_LiquidBiofuel.Desc_LiquidBiofuel_C"
-							]
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mDefaultFuelClasses--item--fuel"
 						}
 					}
 				}
@@ -1966,22 +1956,7 @@
 						"minItems": 1,
 						"uniqueItems": true,
 						"items": {
-							"type": "string",
-							"typed_string": {
-								"type": "object",
-								"additionalProperties": false,
-								"required": ["WwiseSafeName"],
-								"properties": {
-									"WwiseSafeName": {
-										"type": "string",
-										"pattern": "^[A-Z][A-Za-z_]+[a-z]$"
-									},
-									"ActualName": {
-										"type": "string",
-										"pattern": "^[A-Z][A-Za-z ]+[a-z]$"
-									}
-								}
-							}
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mFluidNames--item"
 						}
 					}
 				},
@@ -3458,15 +3433,7 @@
 						"minItems": 1,
 						"uniqueItems": true,
 						"items": {
-							"type": "string",
-							"enum": [
-								"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1\"'",
-								"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2\"'",
-								"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3\"'",
-								"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4\"'",
-								"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5\"'",
-								"StaticMesh'\"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6\"'"
-							]
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/Meshes--item"
 						}
 					}
 				}
@@ -3947,23 +3914,7 @@
 						"minItems": 1,
 						"uniqueItems": true,
 						"items": {
-							"type": "string",
-							"typed_string": {
-								"type": "object",
-								"additionalProperties": false,
-								"required": [
-									"Montage_7_2E66F6A948A8606E71185682EA2AC4EC",
-									"CameraAnim_8_AA01C2B248FF438D6C2816B2FA94F1BD"
-								],
-								"properties": {
-									"Montage_7_2E66F6A948A8606E71185682EA2AC4EC": {
-										"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
-									},
-									"CameraAnim_8_AA01C2B248FF438D6C2816B2FA94F1BD": {
-										"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/CameraAnim--quoted"
-									}
-								}
-							}
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mAnimData--item"
 						}
 					}
 				}
@@ -4667,41 +4618,7 @@
 						"minItems": 1,
 						"uniqueItems": true,
 						"items": {
-							"type": "string",
-							"typed_string": {
-								"type": "object",
-								"additionalProperties": false,
-								"required": [
-									"ScannableClass",
-									"DisplayText",
-									"ScannerLightColor",
-									"RequiredSchematic"
-								],
-								"properties": {
-									"ScannableClass": {
-										"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/BlueprintGeneratedClass--quoted"
-									},
-									"DisplayText": {
-										"type": "string",
-										"DocsDotJson_named_list": "NSLOCTEXT"
-									},
-									"ScannerLightColor": {
-										"$ref": "docs.json.ts--common--types#/$defs/BGRA"
-									},
-									"PreCacheAllOfType": {
-										"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-									},
-									"ShouldOverrideDetectionRange": {
-										"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-									},
-									"NewDetectionRange": {
-										"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-									},
-									"RequiredSchematic": {
-										"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/RequiredSchematic"
-									}
-								}
-							}
+							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mObjectDetails--item"
 						}
 					}
 				}

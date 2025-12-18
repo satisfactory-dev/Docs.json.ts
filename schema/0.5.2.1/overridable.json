@@ -15,6 +15,13 @@
 						"minItems": 1,
 						"uniqueItems": true,
 						"items": {
+							"$ref": "#/$defs/mRelevantShopSchematics--item"
+						}
+					}
+				}
+			]
+		},
+		"mRelevantShopSchematics--item": {
 							"oneOf": [
 								{
 									"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/BlueprintGeneratedClass--quoted"
@@ -24,10 +31,6 @@
 									"const": "None"
 								}
 							]
-						}
-					}
-				}
-			]
 		},
 		"mUnlocks--item": {
 			"oneOf": [

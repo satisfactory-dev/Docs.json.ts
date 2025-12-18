@@ -14,17 +14,18 @@ import type {
 } from './../../common/types.ts';
 
 import type {
-	CameraAnimationSequence_quoted as docs_json_ts_0_8_3_3_properties_CameraAnimationSequence_quoted,
 	DocsDotJson_AkAudioEvent_quoted_list as docs_json_ts_0_8_3_3_properties_DocsDotJson_AkAudioEvent_quoted_list,
+	FGBuildable_mOcclusionBoxInfo_item as docs_json_ts_0_8_3_3_properties_FGBuildable_mOcclusionBoxInfo_item,
 	FGRailroadTrackConnectionComponent_quoted as docs_json_ts_0_8_3_3_properties_FGRailroadTrackConnectionComponent_quoted,
 	FGTrainPlatformConnection_quoted as docs_json_ts_0_8_3_3_properties_FGTrainPlatformConnection_quoted,
+	mAnimData_item as docs_json_ts_0_8_3_3_properties_mAnimData_item,
 	mComponentNameToFirstPersonMaterials_item as docs_json_ts_0_8_3_3_properties_mComponentNameToFirstPersonMaterials_item,
 	mDamageTypes as docs_json_ts_0_8_3_3_properties_mDamageTypes,
+	Meshes_item as docs_json_ts_0_8_3_3_properties_Meshes_item,
 	mUnlocks_item as docs_json_ts_0_8_3_3_properties_mUnlocks_item,
 } from './../types/properties.ts';
 
 import type {
-	AnimMontage_quoted as docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
 	ItemClass_Amount_list as docs_json_ts_0_3_7_7_overridable_ItemClass_Amount_list,
 	MaterialInstanceConstant_quoted as docs_json_ts_0_3_7_7_overridable_MaterialInstanceConstant_quoted,
 } from './../../0.3.7.7/types/overridable--0.8.3.3.ts';
@@ -335,16 +336,8 @@ type FGBuildable_tiered = docs_json_ts_0_3_7_7_classes_base_FGBuildable_tiered_b
 type FGBuildable_version_specific = {
 	mIsConsideredForBaseWeightValue: docs_json_ts_common_types_decimal_string,
 	mOcclusionBoxInfo: null | [
-		{
-			Min: docs_json_ts_common_types_XYZ_decimal_string,
-			Max: docs_json_ts_common_types_XYZ_decimal_string,
-			IsValid: docs_json_ts_common_types_bool_string,
-		},
-		...{
-			Min: docs_json_ts_common_types_XYZ_decimal_string,
-			Max: docs_json_ts_common_types_XYZ_decimal_string,
-			IsValid: docs_json_ts_common_types_bool_string,
-		}[],
+		docs_json_ts_0_8_3_3_properties_FGBuildable_mOcclusionBoxInfo_item,
+		...docs_json_ts_0_8_3_3_properties_FGBuildable_mOcclusionBoxInfo_item[],
 	],
 };
 
@@ -570,8 +563,8 @@ type FGBuildableTradingPost = docs_json_ts_0_3_7_7_classes_base_FGBuildableTradi
 
 type FGBuildableTradingPost_version_specific = {
 	Meshes: [
-        '/Script/Engine.StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1"\'' | '/Script/Engine.StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2"\'' | '/Script/Engine.StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3"\'' | '/Script/Engine.StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4"\'' | '/Script/Engine.StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5"\'' | '/Script/Engine.StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6"\'',
-        ...('/Script/Engine.StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1"\'' | '/Script/Engine.StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2"\'' | '/Script/Engine.StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3"\'' | '/Script/Engine.StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4"\'' | '/Script/Engine.StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5"\'' | '/Script/Engine.StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6"\'')[],
+		docs_json_ts_0_8_3_3_properties_Meshes_item,
+		...docs_json_ts_0_8_3_3_properties_Meshes_item[],
 	],
 };
 
@@ -621,14 +614,8 @@ type FGConsumableEquipment = docs_json_ts_0_3_7_7_classes_base_FGConsumableEquip
 
 type FGConsumableEquipment_version_specific = {
 	mAnimData?: [
-		{
-			Montage_7_2E66F6A948A8606E71185682EA2AC4EC: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
-			CameraAnimationSequence_11_920C446448786C507704569A05006500: docs_json_ts_0_8_3_3_properties_CameraAnimationSequence_quoted,
-		},
-		...{
-			Montage_7_2E66F6A948A8606E71185682EA2AC4EC: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
-			CameraAnimationSequence_11_920C446448786C507704569A05006500: docs_json_ts_0_8_3_3_properties_CameraAnimationSequence_quoted,
-		}[],
+		docs_json_ts_0_8_3_3_properties_mAnimData_item,
+		...docs_json_ts_0_8_3_3_properties_mAnimData_item[],
 	],
 };
 

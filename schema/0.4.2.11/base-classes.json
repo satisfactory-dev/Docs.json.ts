@@ -781,11 +781,7 @@
 								"minItems": 2,
 								"uniqueItems": true,
 								"items": {
-									"type": "string",
-									"enum": [
-										"AudioSocketTurbine",
-										"CoalGeneratorPotential"
-									]
+									"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/m_SFXSockets--item--turbine"
 								}
 							}
 						},
@@ -796,11 +792,7 @@
 								"minItems": 2,
 								"uniqueItems": true,
 								"items": {
-									"type": "string",
-									"enum": [
-										"AudioSocket_Exhaust",
-										"AudioSocket_Root"
-									]
+									"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/m_SFXSockets--item--exhaust"
 								}
 							}
 						}
@@ -928,11 +920,7 @@
 						"minItems": 1,
 						"uniqueItems": true,
 						"items": {
-							"type": "string",
-							"enum": [
-								"/Game/FactoryGame/Resource/Parts/NuclearFuelRod/Desc_NuclearFuelRod.Desc_NuclearFuelRod_C",
-								"/Game/FactoryGame/Resource/Parts/PlutoniumFuelRods/Desc_PlutoniumFuelRod.Desc_PlutoniumFuelRod_C"
-							]
+							"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/mDefaultFuelClasses--item--nuclear"
 						}
 					}
 				}
@@ -1892,15 +1880,7 @@
 						"minItems": 6,
 						"uniqueItems": true,
 						"items": {
-							"type": "string",
-							"enum": [
-								"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1",
-								"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2",
-								"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3",
-								"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4",
-								"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5",
-								"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6"
-							]
+							"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/mMeshes--item"
 						}
 					}
 				},

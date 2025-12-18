@@ -109,11 +109,15 @@ import type {
 
 import type {
 	FGRailroadTrackConnectionComponent_quoted as docs_json_ts_0_4_2_11_properties_FGRailroadTrackConnectionComponent_quoted,
+	m_SFXSockets_item_exhaust as docs_json_ts_0_4_2_11_properties_m_SFXSockets_item_exhaust,
+	m_SFXSockets_item_turbine as docs_json_ts_0_4_2_11_properties_m_SFXSockets_item_turbine,
 	mAllowedResourceForms as docs_json_ts_0_4_2_11_properties_mAllowedResourceForms,
+	mDefaultFuelClasses_item_nuclear as docs_json_ts_0_4_2_11_properties_mDefaultFuelClasses_item_nuclear,
 	mFogPlaneTransforms_empty as docs_json_ts_0_4_2_11_properties_mFogPlaneTransforms_empty,
 	mFogPlaneTransforms_list as docs_json_ts_0_4_2_11_properties_mFogPlaneTransforms_list,
 	mForm as docs_json_ts_0_4_2_11_properties_mForm,
 	mFuel as docs_json_ts_0_4_2_11_properties_mFuel,
+	mMeshes_item as docs_json_ts_0_4_2_11_properties_mMeshes_item,
 	mProducedIn as docs_json_ts_0_4_2_11_properties_mProducedIn,
 	Texture2D as docs_json_ts_0_4_2_11_properties_Texture2D,
 	Tier as docs_json_ts_0_4_2_11_properties_Tier,
@@ -330,13 +334,13 @@ type FGBuildableGeneratorFuel_base_base_base = docs_json_ts_0_3_7_7_classes_base
 	mFuelLoadAmount: docs_json_ts_common_types_integer_string,
 	mIsFullBlast: docs_json_ts_common_types_bool_string,
 	m_SFXSockets?: [
-        'AudioSocketTurbine' | 'CoalGeneratorPotential',
-        'AudioSocketTurbine' | 'CoalGeneratorPotential',
-        ...('AudioSocketTurbine' | 'CoalGeneratorPotential')[],
+		docs_json_ts_0_4_2_11_properties_m_SFXSockets_item_turbine,
+		docs_json_ts_0_4_2_11_properties_m_SFXSockets_item_turbine,
+		...docs_json_ts_0_4_2_11_properties_m_SFXSockets_item_turbine[],
 	] | [
-        'AudioSocket_Exhaust' | 'AudioSocket_Root',
-        'AudioSocket_Exhaust' | 'AudioSocket_Root',
-        ...('AudioSocket_Exhaust' | 'AudioSocket_Root')[],
+		docs_json_ts_0_4_2_11_properties_m_SFXSockets_item_exhaust,
+		docs_json_ts_0_4_2_11_properties_m_SFXSockets_item_exhaust,
+		...docs_json_ts_0_4_2_11_properties_m_SFXSockets_item_exhaust[],
 	],
 	m_CurrentPotential?: docs_json_ts_common_types_integer_string,
 };
@@ -363,8 +367,8 @@ type FGBuildableGeneratorNuclear = docs_json_ts_0_3_7_7_classes_base_FGBuildable
 type FGBuildableGeneratorNuclear_base = {
 	mCurrentGeneratorNuclearWarning: 'GNW_None',
 	mDefaultFuelClasses: [
-        '/Game/FactoryGame/Resource/Parts/NuclearFuelRod/Desc_NuclearFuelRod.Desc_NuclearFuelRod_C' | '/Game/FactoryGame/Resource/Parts/PlutoniumFuelRods/Desc_PlutoniumFuelRod.Desc_PlutoniumFuelRod_C',
-        ...('/Game/FactoryGame/Resource/Parts/NuclearFuelRod/Desc_NuclearFuelRod.Desc_NuclearFuelRod_C' | '/Game/FactoryGame/Resource/Parts/PlutoniumFuelRods/Desc_PlutoniumFuelRod.Desc_PlutoniumFuelRod_C')[],
+		docs_json_ts_0_4_2_11_properties_mDefaultFuelClasses_item_nuclear,
+		...docs_json_ts_0_4_2_11_properties_mDefaultFuelClasses_item_nuclear[],
 	],
 };
 
@@ -567,13 +571,13 @@ type FGBuildableTradingPost_base = {
 	mMamFreeText: 'Use MAM',
 	mMamOccupiedText: 'MAM is occupied',
 	mMeshes: [
-        '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6',
-        '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6',
-        '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6',
-        '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6',
-        '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6',
-        '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6',
-        ...('/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5' | '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6')[],
+		docs_json_ts_0_4_2_11_properties_mMeshes_item,
+		docs_json_ts_0_4_2_11_properties_mMeshes_item,
+		docs_json_ts_0_4_2_11_properties_mMeshes_item,
+		docs_json_ts_0_4_2_11_properties_mMeshes_item,
+		docs_json_ts_0_4_2_11_properties_mMeshes_item,
+		docs_json_ts_0_4_2_11_properties_mMeshes_item,
+		...docs_json_ts_0_4_2_11_properties_mMeshes_item[],
 	],
 	ABClass: '/Game/FactoryGame/Buildable/Factory/TradingPost/BPA_Tradingpost.BPA_Tradingpost_C',
 	mSkeletalMeshSoftPtr: '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/SK_Tradingpost.SK_Tradingpost',

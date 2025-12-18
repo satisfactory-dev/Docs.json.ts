@@ -182,17 +182,7 @@
 								"minItems": 1,
 								"uniqueItems": true,
 								"items": {
-									"type": "string",
-									"typed_string": {
-										"type": "object",
-										"additionalProperties": false,
-										"required": ["Value"],
-										"properties": {
-											"Value": {
-												"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-											}
-										}
-									}
+									"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/FGItemDescriptor--version-specific--mDescriptorStatBars--item"
 								}
 							}
 						}

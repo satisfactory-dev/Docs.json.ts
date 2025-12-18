@@ -58,6 +58,7 @@ import type {
 
 import type {
 	FalloffCurve_EditorCurveData_only as docs_json_ts_0_5_2_1_properties_FalloffCurve_EditorCurveData_only,
+	FGBuildableManufacturer_Build_ConstructorMk1_C_CurrentPotentialConvert_item as docs_json_ts_0_5_2_1_properties_FGBuildableManufacturer_Build_ConstructorMk1_C_CurrentPotentialConvert_item,
 	mDisableSnapOn_bottom as docs_json_ts_0_5_2_1_properties_mDisableSnapOn_bottom,
 	mDisableSnapOn_top as docs_json_ts_0_5_2_1_properties_mDisableSnapOn_top,
 	mDockingRuleSet as docs_json_ts_0_5_2_1_properties_mDockingRuleSet,
@@ -393,24 +394,7 @@ type FGBuildableManufacturer_Build_Blender_C = docs_json_ts_0_3_7_7_classes_base
 type FGBuildableManufacturer_Build_ConstructorMk1_C = docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_base_IsPowered_base & docs_json_ts_0_4_2_11_classes_base_FGBuildableManufacturer_base_constructor_base & FGBuildable_powered & FGBuildableManufacturer_Build_ConstructorMk1_C_base;
 
 type FGBuildableManufacturer_Build_ConstructorMk1_C_base = {
-	CurrentPotentialConvert: [
-		[
-			docs_json_ts_common_types_integer_string,
-			docs_json_ts_common_types_decimal_string,
-		],
-		[
-			docs_json_ts_common_types_integer_string,
-			docs_json_ts_common_types_decimal_string,
-		],
-		[
-			docs_json_ts_common_types_integer_string,
-			docs_json_ts_common_types_decimal_string,
-		],
-		...[
-			docs_json_ts_common_types_integer_string,
-			docs_json_ts_common_types_decimal_string,
-		][],
-	],
+	CurrentPotentialConvert: docs_json_ts_0_5_2_1_properties_FGBuildableManufacturer_Build_ConstructorMk1_C_CurrentPotentialConvert_item,
 };
 
 type FGBuildableManufacturer_Build_FoundryMk1_C = docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_base_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_base_mProductionEffectsRunning_base & FGBuildable_powered & FGBuildableManufacturer_Build_FoundryMk1_C_base;

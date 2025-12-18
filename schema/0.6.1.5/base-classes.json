@@ -394,24 +394,7 @@
 								"minItems": 1,
 								"uniqueItems": true,
 								"items": {
-									"type": "string",
-									"typed_string": {
-										"type": "object",
-										"additionalProperties": false,
-										"required": ["Min", "Max", "IsValid"],
-										"properties": {
-											"Min": {
-												"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
-											},
-											"Max": {
-												"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
-											},
-											"IsValid": {
-												"type": "string",
-												"const": "0"
-											}
-										}
-									}
+									"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/FGBuildable--mOcclusionBoxInfo--item"
 								}
 							}
 						}
@@ -1873,45 +1856,7 @@
 						"minItems": 1,
 						"uniqueItems": true,
 						"items": {
-							"type": "string",
-							"typed_string": {
-								"type": "object",
-								"additionalProperties": false,
-								"required": [
-									"ScannableClass",
-									"DisplayText",
-									"ScannerLightColor",
-									"Icon",
-									"RequiredSchematic"
-								],
-								"properties": {
-									"ScannableClass": {
-										"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/BlueprintGeneratedClass--quoted"
-									},
-									"DisplayText": {
-										"type": "string",
-										"DocsDotJson_named_list": "NSLOCTEXT"
-									},
-									"ScannerLightColor": {
-										"$ref": "docs.json.ts--common--types#/$defs/BGRA"
-									},
-									"Icon": {
-										"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/mObjectDetails--Icon"
-									},
-									"RequiredSchematic": {
-										"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/RequiredSchematic"
-									},
-									"PreCacheAllOfType": {
-										"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-									},
-									"ShouldOverrideDetectionRange": {
-										"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-									},
-									"NewDetectionRange": {
-										"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-									}
-								}
-							}
+							"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/FGObjectScanner--mObjectDetails--item"
 						}
 					}
 				}

@@ -147,6 +147,11 @@
 				"minItems": 1,
 				"uniqueItems": true,
 				"items": {
+					"$ref": "#/$defs/XYZ--decimal_string--list--item"
+				}
+			}
+		},
+		"XYZ--decimal_string--list--item": {
 					"type": "string",
 					"typed_string": {
 						"type": "object",
@@ -164,8 +169,6 @@
 							}
 						}
 					}
-				}
-			}
 		},
 		"XYZ--integer_string": {
 			"type": "string",

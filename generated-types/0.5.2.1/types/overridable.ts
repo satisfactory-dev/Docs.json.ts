@@ -26,9 +26,11 @@ import type {
 } from './../../common/types.ts';
 
 type mRelevantShopSchematics = '' | [
-    docs_json_ts_0_3_7_7_overridable_BlueprintGeneratedClass_quoted | 'None',
-    ...(docs_json_ts_0_3_7_7_overridable_BlueprintGeneratedClass_quoted | 'None')[],
+	mRelevantShopSchematics_item,
+	...mRelevantShopSchematics_item[],
 ];
+
+type mRelevantShopSchematics_item = docs_json_ts_0_3_7_7_overridable_BlueprintGeneratedClass_quoted | 'None';
 
 type mUnlocks_item = docs_json_ts_0_3_7_7_properties_mUnlocks_item_base | docs_json_ts_0_3_7_7_overridable_mUnlocks_item_mRecipes | docs_json_ts_0_3_7_7_properties_mUnlocks_item_mNumInventorySlotsToUnlock | docs_json_ts_0_3_7_7_overridable_mUnlocks_item_mSchematics | docs_json_ts_0_3_7_7_overridable_mUnlocks_item_mItemsToGive | docs_json_ts_0_4_2_11_overridable_mUnlocks_item_mResourcePairsToAddToScanner | docs_json_ts_0_4_2_11_properties_mUnlocks_item_mNumArmEquipmentSlotsToUnlock | mUnlocks_item_mEmotes;
 
@@ -47,6 +49,7 @@ type FalloffCurve_EditorCurveData_with_ExternalCurve = {
 
 export type {
 	mRelevantShopSchematics,
+	mRelevantShopSchematics_item,
 	mUnlocks_item,
 	mUnlocks_item_mEmotes,
 	FalloffCurve_EditorCurveData_with_ExternalCurve,

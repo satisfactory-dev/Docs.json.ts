@@ -9,10 +9,13 @@
 				"minItems": 1,
 				"uniqueItems": true,
 				"items": {
-					"type": "string",
-					"enum": ["RF_SOLID", "RF_LIQUID", "RF_GAS", "RF_HEAT"]
+					"$ref": "#/$defs/mAllowedResourceForms--item"
 				}
 			}
+		},
+		"mAllowedResourceForms--item": {
+					"type": "string",
+					"enum": ["RF_SOLID", "RF_LIQUID", "RF_GAS", "RF_HEAT"]
 		},
 		"mAlternativeMaterialRecipes--mMaterial": {
 			"type": "string",
@@ -144,6 +147,13 @@
 						"minItems": 1,
 						"uniqueItems": true,
 						"items": {
+							"$ref": "#/$defs/mUnlocks--item--mScannableObjects--item"
+						}
+					}
+				}
+			}
+		},
+		"mUnlocks--item--mScannableObjects--item": {
 							"type": "string",
 							"typed_string": {
 								"type": "object",
@@ -168,10 +178,6 @@
 									}
 								}
 							}
-						}
-					}
-				}
-			}
 		},
 		"BP_RadialDamageType_Explosive_C--quoted": {
 			"type": "string",
@@ -196,6 +202,11 @@
 				"minItems": 1,
 				"uniqueItems": true,
 				"items": {
+					"$ref": "#/$defs/DamageTypes--item"
+				}
+			}
+		},
+		"DamageTypes--item": {
 					"type": "string",
 					"templated_string": [
 						"BP_PointDamageType_",
@@ -222,8 +233,6 @@
 						},
 						"_C_0\"'"
 					]
-				}
-			}
 		},
 		"DocsDotJson_AkAudioEvent_quoted--list": {
 			"type": "string",
@@ -243,6 +252,80 @@
 				"first_path": "WwiseAudio",
 				"mode": "quoted",
 				"value": null
+			}
+		},
+		"FGBuildable--mOcclusionBoxInfo--item": {
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": ["Min", "Max", "IsValid"],
+				"properties": {
+					"Min": {
+						"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
+					},
+					"Max": {
+						"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
+					},
+					"IsValid": {
+						"type": "string",
+						"const": "0"
+					}
+				}
+			}
+		},
+		"FGItemDescriptor--version-specific--mDescriptorStatBars--item": {
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": ["Value"],
+				"properties": {
+					"Value": {
+						"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+					}
+				}
+			}
+		},
+		"FGObjectScanner--mObjectDetails--item": {
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": [
+					"ScannableClass",
+					"DisplayText",
+					"ScannerLightColor",
+					"Icon",
+					"RequiredSchematic"
+				],
+				"properties": {
+					"ScannableClass": {
+						"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/BlueprintGeneratedClass--quoted"
+					},
+					"DisplayText": {
+						"type": "string",
+						"DocsDotJson_named_list": "NSLOCTEXT"
+					},
+					"ScannerLightColor": {
+						"$ref": "docs.json.ts--common--types#/$defs/BGRA"
+					},
+					"Icon": {
+						"$ref": "#/$defs/mObjectDetails--Icon"
+					},
+					"RequiredSchematic": {
+						"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/RequiredSchematic"
+					},
+					"PreCacheAllOfType": {
+						"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+					},
+					"ShouldOverrideDetectionRange": {
+						"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+					},
+					"NewDetectionRange": {
+						"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+					}
+				}
 			}
 		}
 	}

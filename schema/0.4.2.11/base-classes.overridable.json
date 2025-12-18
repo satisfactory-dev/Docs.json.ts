@@ -95,14 +95,7 @@
 					"type": "array",
 					"minItems": 0,
 					"items": {
-						"oneOf": [
-							{
-								"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/mSchematicDependencies--item"
-							},
-							{
-								"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/mSchematicDependencies--item"
-							}
-						]
+						"$ref": "docs.json.ts--0.4.2.11--overridable#/$defs/mSchematicDependencies--item"
 					}
 				}
 			}

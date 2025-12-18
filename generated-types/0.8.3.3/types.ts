@@ -174,10 +174,12 @@ type FGAmmoTypeSpreadshot = {
 type FGBuildable = {
 	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGBuildable'}${'\''}`,
 	Classes: [
-        docs_json_ts_0_8_3_3_classes_FGBuildable_occupied | docs_json_ts_0_8_3_3_classes_FGBuildable_tiered | docs_json_ts_0_8_3_3_classes_FGBuildable_base,
-        ...(docs_json_ts_0_8_3_3_classes_FGBuildable_occupied | docs_json_ts_0_8_3_3_classes_FGBuildable_tiered | docs_json_ts_0_8_3_3_classes_FGBuildable_base)[],
+		FGBuildable_Classes_item,
+		...FGBuildable_Classes_item[],
 	],
 };
+
+type FGBuildable_Classes_item = docs_json_ts_0_8_3_3_classes_FGBuildable_occupied | docs_json_ts_0_8_3_3_classes_FGBuildable_tiered | docs_json_ts_0_8_3_3_classes_FGBuildable_base;
 
 type FGBuildableAttachmentMerger = {
 	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGBuildableAttachmentMerger'}${'\''}`,
@@ -270,10 +272,12 @@ type FGBuildableDroneStation = {
 type FGBuildableFactory = {
 	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGBuildableFactory'}${'\''}`,
 	Classes: [
-        docs_json_ts_0_8_3_3_classes_FGBuildableFactory_jump_pad | docs_json_ts_0_8_3_3_classes_FGBuildableFactory_landing_pad | docs_json_ts_0_8_3_3_classes_FGBuildable_powered,
-        ...(docs_json_ts_0_8_3_3_classes_FGBuildableFactory_jump_pad | docs_json_ts_0_8_3_3_classes_FGBuildableFactory_landing_pad | docs_json_ts_0_8_3_3_classes_FGBuildable_powered)[],
+		FGBuildableFactory_Classes_item,
+		...FGBuildableFactory_Classes_item[],
 	],
 };
+
+type FGBuildableFactory_Classes_item = docs_json_ts_0_8_3_3_classes_FGBuildableFactory_jump_pad | docs_json_ts_0_8_3_3_classes_FGBuildableFactory_landing_pad | docs_json_ts_0_8_3_3_classes_FGBuildable_powered;
 
 type FGBuildableFactoryBuilding = {
 	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGBuildableFactoryBuilding'}${'\''}`,
@@ -469,10 +473,12 @@ type FGBuildablePipelineJunction = {
 type FGBuildablePipelinePump = {
 	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGBuildablePipelinePump'}${'\''}`,
 	Classes: [
-        docs_json_ts_0_8_3_3_classes_FGBuildablePipelinePump_valve | docs_json_ts_0_8_3_3_classes_FGBuildablePipelinePump_pump,
-        ...(docs_json_ts_0_8_3_3_classes_FGBuildablePipelinePump_valve | docs_json_ts_0_8_3_3_classes_FGBuildablePipelinePump_pump)[],
+		FGBuildablePipelinePump_Classes_item,
+		...FGBuildablePipelinePump_Classes_item[],
 	],
 };
+
+type FGBuildablePipelinePump_Classes_item = docs_json_ts_0_8_3_3_classes_FGBuildablePipelinePump_valve | docs_json_ts_0_8_3_3_classes_FGBuildablePipelinePump_pump;
 
 type FGBuildablePipelineSupport = {
 	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGBuildablePipelineSupport'}${'\''}`,
@@ -767,10 +773,12 @@ type FGCustomizationRecipe = {
 type FGEquipmentDescriptor = {
 	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGEquipmentDescriptor'}${'\''}`,
 	Classes: [
-        docs_json_ts_0_6_1_5_classes_FGItemDescriptor | docs_json_ts_0_6_1_5_classes_overridable_FGEquipmentDescriptor_Desc_GolfCartGold_C,
-        ...(docs_json_ts_0_6_1_5_classes_FGItemDescriptor | docs_json_ts_0_6_1_5_classes_overridable_FGEquipmentDescriptor_Desc_GolfCartGold_C)[],
+		FGEquipmentDescriptor_Classes_item,
+		...FGEquipmentDescriptor_Classes_item[],
 	],
 };
+
+type FGEquipmentDescriptor_Classes_item = docs_json_ts_0_6_1_5_classes_FGItemDescriptor | docs_json_ts_0_6_1_5_classes_overridable_FGEquipmentDescriptor_Desc_GolfCartGold_C;
 
 type FGEquipmentStunSpear = {
 	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGEquipmentStunSpear'}${'\''}`,
@@ -912,10 +920,12 @@ type FGResourceDescriptor = {
 type FGSchematic = {
 	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGSchematic'}${'\''}`,
 	Classes: [
-        docs_json_ts_0_8_3_3_classes_FGSchematic_base | docs_json_ts_0_8_3_3_classes_FGSchematic_with_described_unlocks,
-        ...(docs_json_ts_0_8_3_3_classes_FGSchematic_base | docs_json_ts_0_8_3_3_classes_FGSchematic_with_described_unlocks)[],
+		FGSchematic_Classes_item,
+		...FGSchematic_Classes_item[],
 	],
 };
+
+type FGSchematic_Classes_item = docs_json_ts_0_8_3_3_classes_FGSchematic_base | docs_json_ts_0_8_3_3_classes_FGSchematic_with_described_unlocks;
 
 type FGSuitBase = {
 	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGSuitBase'}${'\''}`,
@@ -1052,6 +1062,7 @@ export type {
 	FGAmmoTypeProjectile,
 	FGAmmoTypeSpreadshot,
 	FGBuildable,
+	FGBuildable_Classes_item,
 	FGBuildableAttachmentMerger,
 	FGBuildableAttachmentSplitter,
 	FGBuildableBeamLightweight,
@@ -1064,6 +1075,7 @@ export type {
 	FGBuildableDoor,
 	FGBuildableDroneStation,
 	FGBuildableFactory,
+	FGBuildableFactory_Classes_item,
 	FGBuildableFactoryBuilding,
 	FGBuildableFactorySimpleProducer,
 	FGBuildableFloodlight,
@@ -1088,6 +1100,7 @@ export type {
 	FGBuildablePipeline,
 	FGBuildablePipelineJunction,
 	FGBuildablePipelinePump,
+	FGBuildablePipelinePump_Classes_item,
 	FGBuildablePipelineSupport,
 	FGBuildablePipeReservoir,
 	FGBuildablePoleLightweight,
@@ -1125,6 +1138,7 @@ export type {
 	FGConveyorPoleStackable,
 	FGCustomizationRecipe,
 	FGEquipmentDescriptor,
+	FGEquipmentDescriptor_Classes_item,
 	FGEquipmentStunSpear,
 	FGEquipmentZipline,
 	FGGasMask,
@@ -1143,6 +1157,7 @@ export type {
 	FGRecipe,
 	FGResourceDescriptor,
 	FGSchematic,
+	FGSchematic_Classes_item,
 	FGSuitBase,
 	FGVehicleDescriptor,
 	FGWeapon,

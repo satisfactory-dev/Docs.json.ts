@@ -14,17 +14,16 @@ import type {
 
 import type {
 	BlueprintGeneratedClass_single_quoted as docs_json_ts_0_4_2_11_overridable_BlueprintGeneratedClass_single_quoted,
+	mSchematicDependencies_item as docs_json_ts_0_4_2_11_overridable_mSchematicDependencies_item,
 	mUnlocks_item as docs_json_ts_0_4_2_11_overridable_mUnlocks_item,
 } from './../types/overridable.ts';
 
 import type {
-	mSchematicDependencies_item as docs_json_ts_0_4_2_11_properties_mSchematicDependencies_item,
 	Texture2D as docs_json_ts_0_4_2_11_properties_Texture2D,
 } from './../types/properties.ts';
 
 import type {
 	DocsDotJson_BlueprintGeneratedClass_quoted_list as docs_json_ts_0_3_7_7_overridable_DocsDotJson_BlueprintGeneratedClass_quoted_list,
-	mSchematicDependencies_item as docs_json_ts_0_3_7_7_overridable_mSchematicDependencies_item,
 } from './../../0.3.7.7/types/overridable.ts';
 
 import type {
@@ -49,7 +48,7 @@ type FGSchematic_base = docs_json_ts_0_3_7_7_classes_base_FGSchematic_pre_update
 
 type FGSchematic_has_mSchematicDependencies = {
 	mSchematicDependencies: [
-		...(docs_json_ts_0_3_7_7_overridable_mSchematicDependencies_item | docs_json_ts_0_4_2_11_properties_mSchematicDependencies_item)[],
+		...docs_json_ts_0_4_2_11_overridable_mSchematicDependencies_item[],
 	],
 };
 

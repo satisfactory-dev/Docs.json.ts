@@ -45,10 +45,13 @@ import type {
 } from './Base.ts';
 
 import type {
+	FGItemDescriptor_version_specific_mDescriptorStatBars_item as docs_json_ts_0_6_1_5_properties_FGItemDescriptor_version_specific_mDescriptorStatBars_item,
+} from './../types/properties.ts';
+
+import type {
 	BGRA as docs_json_ts_common_types_BGRA,
 	bool_string as docs_json_ts_common_types_bool_string,
 	decimal_string as docs_json_ts_common_types_decimal_string,
-	integer_string as docs_json_ts_common_types_integer_string,
 } from './../../common/types.ts';
 
 import type {
@@ -94,12 +97,8 @@ type FGItemDescriptor_base = docs_json_ts_0_6_1_5_classes_base_FGDescriptor & do
 type FGItemDescriptor_version_specific = {
 	mCrosshairMaterial: 'None' | `/Game/FactoryGame/Interface/UI/Material/Crosshairs/MI_UI_Crosshair_${Exclude<string, ''>}${'.MI_UI_Crosshair_'}${Exclude<string, ''>}`,
 	mDescriptorStatBars: null | [
-		{
-			Value: docs_json_ts_common_types_integer_string,
-		},
-		...{
-			Value: docs_json_ts_common_types_integer_string,
-		}[],
+		docs_json_ts_0_6_1_5_properties_FGItemDescriptor_version_specific_mDescriptorStatBars_item,
+		...docs_json_ts_0_6_1_5_properties_FGItemDescriptor_version_specific_mDescriptorStatBars_item[],
 	],
 	mCompatibleItemDescriptors: null | [
 		docs_json_ts_0_6_1_5_overridable_mCompatibleItemDescriptors_item,

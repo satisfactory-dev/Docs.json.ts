@@ -75,6 +75,32 @@
 					}
 				}
 			}
+		},
+		"FGBuildableManufacturer--Build_ConstructorMk1_C--CurrentPotentialConvert--item": {
+			"type": "string",
+			"typed_string": {
+				"type": "array",
+				"minItems": 3,
+				"maxItems": 3,
+				"uniqueItems": true,
+				"items": {
+					"type": "string",
+					"typed_string": {
+						"type": "array",
+						"minItems": 2,
+						"maxItems": 2,
+						"items": false,
+						"prefixItems": [
+							{
+								"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+							},
+							{
+								"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+							}
+						]
+					}
+				}
+			}
 		}
 	}
 }

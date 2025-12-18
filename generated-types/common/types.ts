@@ -53,17 +53,15 @@ type XYZ_decimal_string = {
 };
 
 type XYZ_decimal_string_list = [
-	{
-		X: decimal_string_signed,
-		Y: decimal_string_signed,
-		Z: decimal_string_signed,
-	},
-	...{
-		X: decimal_string_signed,
-		Y: decimal_string_signed,
-		Z: decimal_string_signed,
-	}[],
+	XYZ_decimal_string_list_item,
+	...XYZ_decimal_string_list_item[],
 ];
+
+type XYZ_decimal_string_list_item = {
+	X: decimal_string_signed,
+	Y: decimal_string_signed,
+	Z: decimal_string_signed,
+};
 
 type XYZ_integer_string = {
 	X: integer_string,
@@ -92,6 +90,7 @@ export type {
 	XY_integer_string,
 	XYZ_decimal_string,
 	XYZ_decimal_string_list,
+	XYZ_decimal_string_list_item,
 	XYZ_integer_string,
 	XYZW_decimal_string,
 };

@@ -124,10 +124,12 @@ import type {
 type FGBuildable = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildable'}${'\''}`,
 	Classes: [
-        docs_json_ts_0_7_1_1_classes_FGBuildable_occupied | docs_json_ts_0_7_1_1_classes_FGBuildable_tiered | docs_json_ts_0_7_1_1_classes_FGBuildable_base,
-        ...(docs_json_ts_0_7_1_1_classes_FGBuildable_occupied | docs_json_ts_0_7_1_1_classes_FGBuildable_tiered | docs_json_ts_0_7_1_1_classes_FGBuildable_base)[],
+		FGBuildable_Classes_item,
+		...FGBuildable_Classes_item[],
 	],
 };
+
+type FGBuildable_Classes_item = docs_json_ts_0_7_1_1_classes_FGBuildable_occupied | docs_json_ts_0_7_1_1_classes_FGBuildable_tiered | docs_json_ts_0_7_1_1_classes_FGBuildable_base;
 
 type FGBuildableAttachmentMerger = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableAttachmentMerger'}${'\''}`,
@@ -220,10 +222,12 @@ type FGBuildableDroneStation = {
 type FGBuildableFactory = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableFactory'}${'\''}`,
 	Classes: [
-        docs_json_ts_0_7_1_1_classes_FGBuildableFactory_jump_pad | docs_json_ts_0_7_1_1_classes_FGBuildableFactory_landing_pad | docs_json_ts_0_7_1_1_classes_FGBuildable_powered,
-        ...(docs_json_ts_0_7_1_1_classes_FGBuildableFactory_jump_pad | docs_json_ts_0_7_1_1_classes_FGBuildableFactory_landing_pad | docs_json_ts_0_7_1_1_classes_FGBuildable_powered)[],
+		FGBuildableFactory_Classes_item,
+		...FGBuildableFactory_Classes_item[],
 	],
 };
+
+type FGBuildableFactory_Classes_item = docs_json_ts_0_7_1_1_classes_FGBuildableFactory_jump_pad | docs_json_ts_0_7_1_1_classes_FGBuildableFactory_landing_pad | docs_json_ts_0_7_1_1_classes_FGBuildable_powered;
 
 type FGBuildableFactoryBuilding = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableFactoryBuilding'}${'\''}`,
@@ -411,10 +415,12 @@ type FGBuildablePipelineJunction = {
 type FGBuildablePipelinePump = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildablePipelinePump'}${'\''}`,
 	Classes: [
-        docs_json_ts_0_7_1_1_classes_FGBuildablePipelinePump_valve | docs_json_ts_0_7_1_1_classes_FGBuildablePipelinePump_pump,
-        ...(docs_json_ts_0_7_1_1_classes_FGBuildablePipelinePump_valve | docs_json_ts_0_7_1_1_classes_FGBuildablePipelinePump_pump)[],
+		FGBuildablePipelinePump_Classes_item,
+		...FGBuildablePipelinePump_Classes_item[],
 	],
 };
+
+type FGBuildablePipelinePump_Classes_item = docs_json_ts_0_7_1_1_classes_FGBuildablePipelinePump_valve | docs_json_ts_0_7_1_1_classes_FGBuildablePipelinePump_pump;
 
 type FGBuildablePipelineSupport = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildablePipelineSupport'}${'\''}`,
@@ -767,6 +773,7 @@ export type foo = [
 
 export type {
 	FGBuildable,
+	FGBuildable_Classes_item,
 	FGBuildableAttachmentMerger,
 	FGBuildableAttachmentSplitter,
 	FGBuildableBeamLightweight,
@@ -779,6 +786,7 @@ export type {
 	FGBuildableDoor,
 	FGBuildableDroneStation,
 	FGBuildableFactory,
+	FGBuildableFactory_Classes_item,
 	FGBuildableFactoryBuilding,
 	FGBuildableFactorySimpleProducer,
 	FGBuildableFloodlight,
@@ -802,6 +810,7 @@ export type {
 	FGBuildablePipeline,
 	FGBuildablePipelineJunction,
 	FGBuildablePipelinePump,
+	FGBuildablePipelinePump_Classes_item,
 	FGBuildablePipelineSupport,
 	FGBuildablePipeReservoir,
 	FGBuildablePoleLightweight,

@@ -154,6 +154,11 @@
 				"minItems": 1,
 				"uniqueItems": true,
 				"items": {
+					"$ref": "#/$defs/ItemClass--Amount--list--item"
+				}
+			}
+		},
+		"ItemClass--Amount--list--item": {
 					"type": "string",
 					"typed_string": {
 						"type": "object",
@@ -168,8 +173,6 @@
 							}
 						}
 					}
-				}
-			}
 		},
 		"MaterialInstanceConstant--quoted": {
 			"type": "string",
