@@ -93,7 +93,7 @@ type FGBuildableRadarTower_version_specific = {
 
 type FGConsumableDescriptor = docs_json_ts_0_3_7_7_classes_base_FGConsumableDescriptor_base & docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable_base & FGItemDescriptor_base;
 
-type FGItemDescriptor_base = docs_json_ts_0_6_1_5_classes_base_FGDescriptor & docs_json_ts_0_6_1_5_overridable_has_mSubCategories & docs_json_ts_0_6_1_5_classes_base_FGItemDescriptor_pre_1_0 & FGItemDescriptor_version_specific;
+type FGItemDescriptor_base = docs_json_ts_0_6_1_5_classes_base_FGDescriptor & docs_json_ts_0_6_1_5_classes_base_FGItemDescriptor_pre_1_0 & docs_json_ts_0_6_1_5_overridable_has_mSubCategories & FGItemDescriptor_version_specific;
 
 type FGItemDescriptor_version_specific = {
 	mCrosshairMaterial: 'None' | `/Game/FactoryGame/Interface/UI/Material/Crosshairs/MI_UI_Crosshair_${Exclude<string, ''>}${'.MI_UI_Crosshair_'}${Exclude<string, ''>}`,

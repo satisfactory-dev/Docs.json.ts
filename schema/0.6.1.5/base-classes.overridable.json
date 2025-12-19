@@ -125,10 +125,10 @@
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGDescriptor"
 				},
 				{
-					"$ref": "docs.json.ts--0.6.1.5--overridable#/$defs/has--mSubCategories"
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGItemDescriptor--pre-1.0"
 				},
 				{
-					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGItemDescriptor--pre-1.0"
+					"$ref": "docs.json.ts--0.6.1.5--overridable#/$defs/has--mSubCategories"
 				},
 				{
 					"$ref": "#/$defs/FGItemDescriptor--version-specific"

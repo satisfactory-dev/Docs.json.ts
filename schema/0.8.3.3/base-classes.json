@@ -2294,16 +2294,16 @@
 		"FGSchematic--base": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGSchematic--version-specific"
+					"$ref": "docs.json.ts--0.4.2.11--classes--base.overridable#/$defs/FGSchematic--has--mSchematicDependencies"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base.overridable#/$defs/FGSchematic--version-specific"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGSchematic--pre-1.0"
 				},
 				{
-					"$ref": "docs.json.ts--0.4.2.11--classes--base.overridable#/$defs/FGSchematic--has--mSchematicDependencies"
-				},
-				{
-					"$ref": "docs.json.ts--0.5.2.1--classes--base.overridable#/$defs/FGSchematic--version-specific"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGSchematic--version-specific"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/instructive"
@@ -2412,9 +2412,7 @@
 		},
 		"FGSchematic--pre-1.0": {
 			"type": "object",
-			"required": [
-				"mUnlocks"
-			],
+			"required": ["mUnlocks"],
 			"properties": {
 				"mUnlocks": {
 					"type": "array",
@@ -2428,11 +2426,7 @@
 		},
 		"FGSchematic--version-specific": {
 			"type": "object",
-			"required": [
-				"mCost",
-				"mIsPlayerSpecific",
-				"mMenuPriority"
-			],
+			"required": ["mCost", "mIsPlayerSpecific", "mMenuPriority"],
 			"properties": {
 				"mCost": {
 					"oneOf": [
