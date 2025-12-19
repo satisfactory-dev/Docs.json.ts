@@ -148,8 +148,9 @@ export function configure_parser(parser: SchemaParser) {
 				matchers,
 			},
 		}),
-		new PrefixedString({ajv}, 'quoted'),
-		new PrefixedString({ajv}, 'single_quoted'),
-		new PrefixedString({ajv}, 'non_quoted'),
+		new PrefixedString({ajv}, 'quoted', 'quoted'),
+		new PrefixedString({ajv}, 'single_quoted', 'quoted'),
+		new PrefixedString({ajv}, 'non_quoted', 'quoted'),
+		new PrefixedString({ajv}, 'version_specific_default', 'quoted'),
 	];
 }

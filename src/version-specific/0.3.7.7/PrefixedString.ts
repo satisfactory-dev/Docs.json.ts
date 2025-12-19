@@ -28,7 +28,12 @@ import {
 import type {
 } from 'regexp.escape/auto';
 
-export type mode = 'quoted'|'non_quoted'|'single_quoted';
+export type mode = (
+	| 'quoted'
+	| 'non_quoted'
+	| 'single_quoted'
+	| 'version_specific_default'
+);
 
 export type PrefixedString_base_type<
 	Mode extends string = string,
@@ -94,6 +99,10 @@ export abstract class PrefixedString_base<
 	SpecificOptions extends {mode: Mode},
 	Type extends PrefixedString_base_type<Mode>,
 	Schema extends PrefixedString_base_schema<Mode>,
+	VersionSpecificDefaultMode extends Exclude<
+		string,
+		'version_specific_default'
+	>,
 > extends KeywordType<
 		T_by_mode[Mode],
 		Type,
@@ -105,9 +114,12 @@ export abstract class PrefixedString_base<
 		instance: Type['DocsDotJson_PrefixedString'],
 	) => RegExp;
 
+	protected version_specific_default: VersionSpecificDefaultMode;
+
 	constructor(
 		options: SchemalessTypeOptions,
 		specific_options: SpecificOptions,
+		version_specific_default: VersionSpecificDefaultMode,
 		regex_from_instance: (
 			instance: Type['DocsDotJson_PrefixedString'],
 		) => RegExp,
@@ -139,6 +151,7 @@ export abstract class PrefixedString_base<
 		);
 
 		this.#regex_from_instance = regex_from_instance;
+		this.version_specific_default = version_specific_default;
 	}
 
 	generate_typescript_data(
@@ -180,33 +193,51 @@ export abstract class PrefixedString_base<
 	): TemplatedStringParts;
 }
 
+export type PrefixedString_value_type<
+	Prefix extends Exclude<string, ''>,
+> = {
+	quoted: `${Prefix}'"/Game/FactoryGame/${
+		string
+	}"'`,
+	single_quoted: `${Prefix}'/Game/FactoryGame/${
+		string
+	}'`,
+	non_quoted: `${Prefix} /Game/FactoryGame/${
+		string
+	}`,
+};
+
 export class PrefixedString<
 	Mode extends mode,
 	Prefix extends Exclude<string, ''>,
+	VersionSpecificDefaultMode extends Exclude<
+		mode,
+		'version_specific_default'
+	>,
 > extends PrefixedString_base<
 		Mode,
-		{
-			quoted: `${Prefix}'"/Game/FactoryGame/${
-				string
-			}"'`,
-			single_quoted: `${Prefix}'/Game/FactoryGame/${
-				string
-			}'`,
-			non_quoted: `${Prefix} /Game/FactoryGame/${
-				string
-			}`,
-		},
+		(
+			& PrefixedString_value_type<Prefix>
+			& {
+				version_specific_default: PrefixedString_value_type<
+					Prefix
+				>[VersionSpecificDefaultMode],
+			}
+		),
 		{mode: Mode},
 		PrefixedString_type<Mode>,
-		PrefixedString_schema<Mode>
+		PrefixedString_schema<Mode>,
+		VersionSpecificDefaultMode
 	> {
 	constructor(
 		options: SchemalessTypeOptions,
 		mode: Mode,
+		version_specific_default: VersionSpecificDefaultMode,
 	) {
 		super(
 			options,
 			{mode},
+			version_specific_default,
 			({
 				prefix,
 				value,
@@ -215,8 +246,11 @@ export class PrefixedString<
 				prefix,
 				value,
 				mode,
+				version_specific_default,
 			),
 		);
+
+		this.version_specific_default = version_specific_default;
 	}
 
 	protected TemplatedStringParts_by_value({
@@ -226,18 +260,35 @@ export class PrefixedString<
 	}: PrefixedString_type<
 		Mode
 	>['DocsDotJson_PrefixedString']): TemplatedStringParts {
-		return [
-			{
+		const head = {
 				non_quoted: `${prefix} /Game/FactoryGame/`,
 				quoted: `${prefix}'"/Game/FactoryGame/`,
 				single_quoted: `${prefix}'/Game/FactoryGame/`,
-			}[mode],
-			null === value ? {type: 'string', minLength: 1} : value,
-			{
+			version_specific_default: '',
+		};
+
+		const tail = {
 				non_quoted: '',
 				quoted: `"'`,
 				single_quoted: `'`,
-			}[mode],
+				version_specific_default: '',
+		};
+
+		head[
+			'version_specific_default'
+		] = head[
+			this.version_specific_default
+		];
+		tail[
+			'version_specific_default'
+		] = tail[
+			this.version_specific_default
+		];
+
+		return [
+			head[mode],
+			null === value ? {type: 'string', minLength: 1} : value,
+			tail[mode],
 		];
 	}
 
@@ -318,6 +369,7 @@ export class PrefixedString<
 		prefix_string: Exclude<string, ''>|undefined,
 		value: Exclude<string, ''>|null,
 		mode: mode,
+		version_specific_default: Exclude<mode, 'version_specific_default'>,
 	): string {
 		let start: string;
 
@@ -326,13 +378,21 @@ export class PrefixedString<
 				quoted: `${prefix_string}'"`,
 				single_quoted: `${prefix_string}'`,
 				non_quoted: `${prefix_string} `,
-			}[mode]);
+			}[
+				mode === 'version_specific_default'
+					? version_specific_default
+					: mode
+			]);
 		} else {
 			start = {
 				quoted: `[^'"]+'"`,
 				single_quoted: `[^']+'`,
 				non_quoted: '[^ ]+ ',
-			}[mode];
+			}[
+				mode === 'version_specific_default'
+					? version_specific_default
+					: mode
+			];
 		}
 
 
@@ -350,7 +410,11 @@ export class PrefixedString<
 			quoted: `"'`,
 			single_quoted: `'`,
 			non_quoted: '',
-		}[mode]);
+		}[
+			mode === 'version_specific_default'
+				? version_specific_default
+				: mode
+		]);
 
 		if ('quoted' === mode) {
 			return `${start}${prefix}(?:[^\\/_]+\\/)*[^."]+\\.[^."]+${suffix}`;
@@ -362,6 +426,7 @@ export class PrefixedString<
 	static TemplatedStringParts_by_value(
 		prefix: Exclude<string, ''>,
 		mode: mode,
+		version_specific_default: Exclude<mode, 'version_specific_default'>,
 		value: Exclude<string, ''>|null,
 	): TemplatedStringParts {
 		return [
@@ -369,13 +434,21 @@ export class PrefixedString<
 				non_quoted: `${prefix} /Game/FactoryGame/`,
 				quoted: `${prefix}'"/Game/FactoryGame/`,
 				single_quoted: `${prefix}'/Game/FactoryGame/`,
-			}[mode],
+			}[
+				mode === 'version_specific_default'
+					? version_specific_default
+					: mode
+			],
 			null === value ? {type: 'string'} : value,
 			{
 				non_quoted: '',
 				quoted: `"'`,
 				single_quoted: `'`,
-			}[mode],
+			}[
+				mode === 'version_specific_default'
+					? version_specific_default
+					: mode
+			],
 		];
 	}
 
@@ -383,9 +456,15 @@ export class PrefixedString<
 		prefix: Exclude<string, ''>,
 		value: Exclude<string, ''>|null,
 		mode: mode,
+		version_specific_default: Exclude<mode, 'version_specific_default'>,
 	): RegExp {
 		return new RegExp(`^${
-			this.regex_from_prefix_value_and_mode(prefix, value, mode)
+			this.regex_from_prefix_value_and_mode(
+				prefix,
+				value,
+				mode,
+				version_specific_default,
+			)
 		}$`);
 	}
 }

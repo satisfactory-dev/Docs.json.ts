@@ -126,7 +126,6 @@ import type {
 	empty_object as docs_json_ts_common_types_empty_object,
 	integer_string as docs_json_ts_common_types_integer_string,
 	RGBA as docs_json_ts_common_types_RGBA,
-	XY_decimal_string as docs_json_ts_common_types_XY_decimal_string,
 	XYZ_decimal_string as docs_json_ts_common_types_XYZ_decimal_string,
 } from './../../common/types.ts';
 
@@ -179,6 +178,7 @@ import type {
 	FGObjectScanner_pre_update8 as docs_json_ts_0_3_7_7_classes_base_FGObjectScanner_pre_update8,
 	FGObjectScanner_version_specific as docs_json_ts_0_3_7_7_classes_base_FGObjectScanner_version_specific,
 	FGResourceDescriptor_base as docs_json_ts_0_3_7_7_classes_base_FGResourceDescriptor_base,
+	FGSchematic_pre_1_0 as docs_json_ts_0_3_7_7_classes_base_FGSchematic_pre_1_0,
 	FGWeaponInstantFire_base_base_base as docs_json_ts_0_3_7_7_classes_base_FGWeaponInstantFire_base_base_base,
 	FGWeaponProjectile_has_mAttachSocket as docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_has_mAttachSocket,
 	FGWeaponProjectileFire_has_mRandomReloadAnim as docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectileFire_has_mRandomReloadAnim,
@@ -194,7 +194,6 @@ import type {
 
 import type {
 	Texture2D as docs_json_ts_0_4_2_11_properties_Texture2D,
-	TintColor as docs_json_ts_0_4_2_11_properties_TintColor,
 } from './../../0.4.2.11/types/properties.ts';
 
 import type {
@@ -204,11 +203,8 @@ import type {
 
 import type {
 	FGSchematic_has_mSchematicDependencies as docs_json_ts_0_4_2_11_classes_base_overridable_FGSchematic_has_mSchematicDependencies,
+	FGSchematic_has_mSchematicIcon as docs_json_ts_0_4_2_11_classes_base_overridable_FGSchematic_has_mSchematicIcon,
 } from './../../0.4.2.11/classes/Base.overridable.ts';
-
-import type {
-	Texture2D_quoted as docs_json_ts_0_4_2_11_overridable_Texture2D_quoted,
-} from './../../0.4.2.11/types/overridable.ts';
 
 import type {
 	ItemClass_Amount_list as docs_json_ts_0_3_7_7_overridable_ItemClass_Amount_list,
@@ -589,6 +585,10 @@ type FGHoverPack = docs_json_ts_0_4_2_11_classes_base_FGHoverPack_base & FGEquip
 
 type FGItemDescriptor = docs_json_ts_0_6_1_5_classes_base_overridable_FGItemDescriptor_base & docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable_base;
 
+type FGItemDescriptor_pre_1_0 = {
+	mClassToScanFor: 'None' | `/Game/FactoryGame/${'Resource/Environment/' | 'World/Benefit/'}${string}${'/BP_'}${Exclude<string, ''>}${'.BP_'}${Exclude<string, ''>}`,
+};
+
 type FGJetPack = FGJetPack_base & {
 	mJumpTimeStamp: docs_json_ts_common_types_decimal_string_signed,
 };
@@ -624,22 +624,7 @@ type FGRecipe_version_specific = {
 
 type FGResourceDescriptor = docs_json_ts_0_6_1_5_classes_base_overridable_FGItemDescriptor_base & docs_json_ts_0_3_7_7_classes_base_FGResourceDescriptor_base & docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable;
 
-type FGSchematic_base = docs_json_ts_0_3_7_7_classes_base_overridable_FGSchematic_version_specific & docs_json_ts_0_4_2_11_classes_base_overridable_FGSchematic_has_mSchematicDependencies & docs_json_ts_0_5_2_1_classes_base_overridable_FGSchematic_version_specific & docs_json_ts_0_6_1_5_classes_base_overridable_FGSchematic_version_specific_mUnlocks & docs_json_ts_0_3_7_7_classes_base_instructive & docs_json_ts_0_3_7_7_classes_base_isDescribed & docs_json_ts_0_4_2_11_classes_base_FGSchematic_has_mMenuPriority & docs_json_ts_0_4_2_11_classes_base_FGSchematic_has_mTechTier & FGSchematic_has_mSchematicIcon & FGSchematic_pre_update8 & FGSchematic_version_specific;
-
-type FGSchematic_has_mSchematicIcon = {
-	mSchematicIcon: {
-		ImageSize: docs_json_ts_common_types_XY_decimal_string,
-		Margin: docs_json_ts_common_types_empty_object,
-		TintColor: docs_json_ts_0_4_2_11_properties_TintColor,
-		ResourceObject?: docs_json_ts_0_4_2_11_overridable_Texture2D_quoted,
-		UVRegion: {
-			Min: docs_json_ts_common_types_XY_decimal_string,
-			Max: docs_json_ts_common_types_XY_decimal_string,
-			bIsValid: '0',
-		},
-		DrawAs: 'Image',
-	},
-};
+type FGSchematic_base = docs_json_ts_0_3_7_7_classes_base_overridable_FGSchematic_version_specific & docs_json_ts_0_3_7_7_classes_base_FGSchematic_pre_1_0 & docs_json_ts_0_4_2_11_classes_base_overridable_FGSchematic_has_mSchematicDependencies & docs_json_ts_0_5_2_1_classes_base_overridable_FGSchematic_version_specific & docs_json_ts_0_6_1_5_classes_base_overridable_FGSchematic_version_specific_mUnlocks & docs_json_ts_0_3_7_7_classes_base_instructive & docs_json_ts_0_3_7_7_classes_base_isDescribed & docs_json_ts_0_4_2_11_classes_base_FGSchematic_has_mMenuPriority & docs_json_ts_0_4_2_11_classes_base_FGSchematic_has_mTechTier & docs_json_ts_0_4_2_11_classes_base_overridable_FGSchematic_has_mSchematicIcon & FGSchematic_pre_update8 & FGSchematic_version_specific;
 
 type FGSchematic_pre_update8 = {
 	mCost: null | docs_json_ts_0_3_7_7_overridable_ItemClass_Amount_list | docs_json_ts_0_6_1_5_overridable_ItemClass_list,
@@ -820,6 +805,7 @@ export type {
 	FGGolfCartDispenser,
 	FGHoverPack,
 	FGItemDescriptor,
+	FGItemDescriptor_pre_1_0,
 	FGJetPack,
 	FGJetPack_base,
 	FGJumpingStilts,
@@ -833,7 +819,6 @@ export type {
 	FGRecipe_version_specific,
 	FGResourceDescriptor,
 	FGSchematic_base,
-	FGSchematic_has_mSchematicIcon,
 	FGSchematic_pre_update8,
 	FGSchematic_version_specific,
 	FGSchematic_with_described_unlocks,

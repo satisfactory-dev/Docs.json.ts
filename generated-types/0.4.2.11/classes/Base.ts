@@ -121,7 +121,6 @@ import type {
 	mProducedIn as docs_json_ts_0_4_2_11_properties_mProducedIn,
 	Texture2D as docs_json_ts_0_4_2_11_properties_Texture2D,
 	Tier as docs_json_ts_0_4_2_11_properties_Tier,
-	TintColor as docs_json_ts_0_4_2_11_properties_TintColor,
 } from './../types/properties.ts';
 
 import type {
@@ -131,7 +130,6 @@ import type {
 	empty_object as docs_json_ts_common_types_empty_object,
 	integer_string as docs_json_ts_common_types_integer_string,
 	RGBA as docs_json_ts_common_types_RGBA,
-	XY_decimal_string as docs_json_ts_common_types_XY_decimal_string,
 	XYZ_decimal_string as docs_json_ts_common_types_XYZ_decimal_string,
 	XYZ_decimal_string_list as docs_json_ts_common_types_XYZ_decimal_string_list,
 } from './../../common/types.ts';
@@ -144,7 +142,6 @@ import type {
 
 import type {
 	has_mBatteryClasses as docs_json_ts_0_4_2_11_overridable_has_mBatteryClasses,
-	Texture2D_quoted as docs_json_ts_0_4_2_11_overridable_Texture2D_quoted,
 } from './../types/overridable.ts';
 
 import type {
@@ -718,25 +715,10 @@ type FGRecipe_version_specific = {
 
 type FGResourceDescriptor = docs_json_ts_0_3_7_7_classes_base_FGResourceDescriptor_base & FGDescriptor_sinkable;
 
-type FGSchematic_base = FGSchematic_has_mMenuPriority & FGSchematic_has_mSchematicIcon & FGSchematic_has_mSmallSchematicIcon & FGSchematic_has_mTechTier & FGSchematic_has_mUnlocks;
+type FGSchematic_base = FGSchematic_has_mMenuPriority & FGSchematic_has_mSmallSchematicIcon & FGSchematic_has_mTechTier & FGSchematic_has_mUnlocks;
 
 type FGSchematic_has_mMenuPriority = {
 	mMenuPriority: docs_json_ts_common_types_decimal_string,
-};
-
-type FGSchematic_has_mSchematicIcon = {
-	mSchematicIcon: {
-		ImageSize: docs_json_ts_common_types_XY_decimal_string,
-		Margin: docs_json_ts_common_types_empty_object,
-		TintColor: docs_json_ts_0_4_2_11_properties_TintColor,
-		ResourceObject?: docs_json_ts_0_4_2_11_overridable_Texture2D_quoted,
-		UVRegion: {
-			Min: docs_json_ts_common_types_XY_decimal_string,
-			Max: docs_json_ts_common_types_XY_decimal_string,
-			bIsValid: '0',
-		},
-		DrawAs: 'Image',
-	},
 };
 
 type FGSchematic_has_mSmallSchematicIcon = {
@@ -960,7 +942,6 @@ export type {
 	FGResourceDescriptor,
 	FGSchematic_base,
 	FGSchematic_has_mMenuPriority,
-	FGSchematic_has_mSchematicIcon,
 	FGSchematic_has_mSmallSchematicIcon,
 	FGSchematic_has_mTechTier,
 	FGSchematic_has_mUnlocks,

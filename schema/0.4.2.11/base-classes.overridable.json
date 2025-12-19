@@ -74,10 +74,16 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGSchematic--version-specific"
 				},
 				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGSchematic--pre-1.0"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/instructive"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "#/$defs/FGSchematic--has--mSchematicIcon"
 				},
 				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGSchematic--base"
@@ -96,6 +102,64 @@
 					"minItems": 0,
 					"items": {
 						"$ref": "docs.json.ts--0.4.2.11--overridable#/$defs/mSchematicDependencies--item"
+					}
+				}
+			}
+		},
+		"FGSchematic--has--mSchematicIcon": {
+			"type": "object",
+			"required": ["mSchematicIcon"],
+			"properties": {
+				"mSchematicIcon": {
+					"type": "string",
+					"typed_string": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": [
+							"ImageSize",
+							"Margin",
+							"TintColor",
+							"UVRegion",
+							"DrawAs"
+						],
+						"properties": {
+							"ImageSize": {
+								"$ref": "docs.json.ts--common--types#/$defs/XY--decimal_string"
+							},
+							"Margin": {
+								"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+							},
+							"TintColor": {
+								"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/TintColor"
+							},
+							"ResourceObject": {
+								"$ref": "docs.json.ts--0.4.2.11--overridable#/$defs/Texture2D--quoted"
+							},
+							"UVRegion": {
+								"type": "string",
+								"typed_string": {
+									"type": "object",
+									"additionalProperties": false,
+									"required": ["Min", "Max", "bIsValid"],
+									"properties": {
+										"Min": {
+											"$ref": "docs.json.ts--common--types#/$defs/XY--decimal_string"
+										},
+										"Max": {
+											"$ref": "docs.json.ts--common--types#/$defs/XY--decimal_string"
+										},
+										"bIsValid": {
+											"type": "string",
+											"const": "0"
+										}
+									}
+								}
+							},
+							"DrawAs": {
+								"type": "string",
+								"const": "Image"
+							}
+						}
 					}
 				}
 			}

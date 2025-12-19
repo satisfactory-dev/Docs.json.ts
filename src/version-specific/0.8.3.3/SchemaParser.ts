@@ -139,11 +139,13 @@ export function configure_parser(parser: SchemaParser) {
 			'quoted',
 			'single_quoted',
 			'non_quoted',
+			'version_specific_default',
 		] as const).flatMap((mode) => [
-			new PrefixedString({ajv}, mode, 'Engine'),
-			new PrefixedString({ajv}, mode, 'TemplateSequence'),
-			new PrefixedString({ajv}, mode, 'FactoryGame'),
-			new PrefixedString({ajv}, mode, 'AkAudio'),
+			new PrefixedString({ajv}, mode, 'Engine', 'quoted'),
+			new PrefixedString({ajv}, mode, 'TemplateSequence', 'quoted'),
+			new PrefixedString({ajv}, mode, 'FactoryGame', 'quoted'),
+			new PrefixedString({ajv}, mode, 'AkAudio', 'quoted'),
+			new PrefixedString({ajv}, mode, 'CoreUObject', 'quoted'),
 		]),
 	];
 }

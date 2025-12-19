@@ -30,6 +30,7 @@ export type system_prefix = (
 	| 'TemplateSequence'
 	| 'FactoryGame'
 	| 'AkAudio'
+	| 'CoreUObject'
 );
 
 type version_specific_prefix<
@@ -51,6 +52,7 @@ export type PrefixedString_base_type<
 					| Exclude<SystemPrefix, 'Engine'>
 					| false
 				),
+				root_path?: Exclude<string, ''>,
 			}
 		),
 	}
@@ -98,6 +100,10 @@ export type PrefixedString_base_schema<
 										},
 									],
 								},
+								root_path: {
+									type: 'string',
+									minLength: 1,
+								},
 							}
 						),
 					}
@@ -112,52 +118,83 @@ type PrefixedString_schema<
 	SystemPrefix extends system_prefix = system_prefix,
 > = PrefixedString_base_schema<Mode, SystemPrefix>;
 
-export class PrefixedString<
-	Mode extends mode,
+export type PrefixedString_value_type<
 	Prefix extends Exclude<string, ''>,
 	SystemPrefix extends system_prefix,
-	FirstPath extends Exclude<string, ''> = 'FactoryGame',
-> extends PrefixedString_base<
-		Mode,
-		{
+	FirstPath extends Exclude<string, ''>,
+	RootPath extends Exclude<string, ''>,
+> = {
 			quoted: `${
 				version_specific_prefix<SystemPrefix>
 			}${
 				Prefix
-			}'"/Game/${FirstPath}/${
+	}'"/${RootPath}/${FirstPath}/${
 				string
 			}"'`,
 			single_quoted: `${
 				version_specific_prefix<SystemPrefix>
-			}${Prefix}'/Game/${FirstPath}/${
+	}${Prefix}'/${RootPath}/${FirstPath}/${
 				string
 			}'`,
 			non_quoted: `${
 				version_specific_prefix<SystemPrefix>
-			}${Prefix} /Game/${FirstPath}/${
+	}${Prefix} /${RootPath}/${FirstPath}/${
 				string
 			}`,
-		},
+};
+
+export class PrefixedString<
+	Mode extends mode,
+	Prefix extends Exclude<string, ''>,
+	SystemPrefix extends system_prefix,
+	VersionSpecificDefaultMode extends Exclude<
+		mode,
+		'version_specific_default'
+	>,
+	FirstPath extends Exclude<string, ''> = 'FactoryGame',
+	RootPath extends Exclude<string, ''> = 'Game',
+> extends PrefixedString_base<
+		Mode,
+		(
+			& PrefixedString_value_type<
+				Prefix,
+				SystemPrefix,
+				FirstPath,
+				RootPath
+			>
+			& {
+				version_specific_default: PrefixedString_value_type<
+					Prefix,
+					SystemPrefix,
+					FirstPath,
+					RootPath
+				>[VersionSpecificDefaultMode],
+			}
+		),
 		{
 			mode: Mode,
 			system_prefix: SystemPrefix,
 		},
 		PrefixedString_type<Mode>,
-		PrefixedString_schema<Mode>
+		PrefixedString_schema<Mode>,
+		VersionSpecificDefaultMode
 	> {
 	constructor(
 		options: SchemalessTypeOptions,
 		mode: Mode,
 		system_prefix: SystemPrefix,
+		version_specific_default: VersionSpecificDefaultMode,
 	) {
 		super(
 			options,
 			{mode, system_prefix},
+			version_specific_default,
 			({
 				prefix,
 				value,
 				mode,
 				first_path,
+				root_path,
 				system_prefix,
 			}) => {
 				if (undefined === system_prefix && 'non_quoted' === mode) {
@@ -169,9 +206,11 @@ export class PrefixedString<
 					value,
 					mode,
 					first_path,
+					root_path,
 					false === system_prefix
 						? system_prefix
 						: (system_prefix || 'Engine'),
+					version_specific_default,
 				);
 			},
 		);
@@ -182,6 +221,7 @@ export class PrefixedString<
 		mode,
 		value,
 		first_path,
+		root_path,
 		system_prefix,
 	}: PrefixedString_type<
 		Mode
@@ -198,33 +238,52 @@ export class PrefixedString<
 			version_specific_prefix = '';
 		}
 
-		return [
-			{
+		const head = {
 				non_quoted: `${
 					version_specific_prefix
-				}${prefix} /Game/${
+			}${prefix} /${
+					root_path || 'Game'
+			}/${
 					first_path
 					|| 'FactoryGame'
 				}/`,
 				quoted: `${
 					version_specific_prefix
-				}${prefix}'"/Game/${
+			}${prefix}'"/${
+				root_path || 'Game'
+			}/${
 					first_path
 					|| 'FactoryGame'
 				}/`,
 				single_quoted: `${
 					version_specific_prefix
-				}${prefix}'/Game/${
+			}${prefix}'/${
+				root_path || 'Game'
+			}/${
 					first_path
 					|| 'FactoryGame'
 				}/`,
-			}[mode],
-			null === value ? {type: 'string', minLength: 1} : value,
-			{
+			version_specific_default: '',
+		};
+
+		const tail = {
 				non_quoted: '',
 				quoted: `"'`,
 				single_quoted: `'`,
-			}[mode],
+			version_specific_default: '',
+		};
+
+		head[
+			'version_specific_default'
+		] = head[this.version_specific_default];
+		tail[
+			'version_specific_default'
+		] = tail[this.version_specific_default];
+
+		return [
+			head[mode],
+			null === value ? {type: 'string', minLength: 1} : value,
+			tail[mode],
 		];
 	}
 
@@ -279,6 +338,10 @@ export class PrefixedString<
 							type: 'string',
 							minLength: 1,
 						},
+						root_path: {
+							type: 'string',
+							minLength: 1,
+						},
 						system_prefix: {
 							oneOf: [
 								{
@@ -325,17 +388,23 @@ export class PrefixedString<
 		value: Exclude<string, ''>|null,
 		mode: mode,
 		first_path: Exclude<string, ''>|undefined,
+		root_path: Exclude<string, ''>|undefined,
 		version_specific_prefix: (
 			| version_specific_prefix
 			| false
 		),
+		version_specific_default: Exclude<mode, 'version_specific_default'>,
 	): string {
+		const use_mode = mode === 'version_specific_default'
+			? version_specific_default
+			: mode;
+
 		let start_parts = [
 			RegExp.escape({
 				quoted: `${prefix_string}'"`,
 				single_quoted: `${prefix_string}'`,
 				non_quoted: `${prefix_string} `,
-			}[mode]),
+			}[use_mode]),
 		];
 
 		if (false !== version_specific_prefix) {
@@ -356,18 +425,22 @@ export class PrefixedString<
 			return `${start}${escaped}`;
 		}
 
-		const prefix = RegExp.escape(`/Game/${first_path || 'FactoryGame'}/`);
+		const prefix = RegExp.escape(`/${
+			root_path || 'Game'
+		}/${
+			first_path || 'FactoryGame'
+		}`);
 		const suffix = RegExp.escape({
 			quoted: `"'`,
 			single_quoted: `'`,
 			non_quoted: '',
-		}[mode]);
+		}[use_mode]);
 
 		if ('quoted' === mode) {
-			return `${start}${prefix}(?:[^\\/_]+\\/)*[^."]+\\.[^."]+${suffix}`;
+			return `${start}${prefix}(?:[^\\/_]+\\/)*[^."]*\\.[^."]+${suffix}`;
 		}
 
-		return `${start}${prefix}(?:[^\\/_]+\\/)*[^.]+\\.[^.]+${suffix}`;
+		return `${start}${prefix}(?:[^\\/_]+\\/)*[^.]*\\.[^.]+${suffix}`;
 	}
 
 	static #regex_from_prefix_value_and_mode(
@@ -375,10 +448,12 @@ export class PrefixedString<
 		value: Exclude<string, ''>|null,
 		mode: mode,
 		first_path: Exclude<string, ''>|undefined,
+		root_path: Exclude<string, ''>|undefined,
 		system_prefix: (
 			| system_prefix
 			| false
 		),
+		version_specific_default: Exclude<mode, 'version_specific_default'>,
 	): RegExp {
 		return new RegExp(`^${
 			this.regex_from_prefix_value_and_mode(
@@ -386,9 +461,11 @@ export class PrefixedString<
 				value,
 				mode,
 				first_path,
+				root_path,
 				false === system_prefix
 					? system_prefix
 					: `/Script/${system_prefix}.`,
+				version_specific_default,
 			)
 		}$`);
 	}

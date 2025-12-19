@@ -12,7 +12,6 @@ import update3_classes__base__overridable from '../../../schema/0.3.7.7/base-cla
 	type: 'json',
 };
 
-
 // eslint-disable-next-line @stylistic/max-len
 import update4_overridable from '../../../schema/0.4.2.11/overridable.json' with {
 	type: 'json',

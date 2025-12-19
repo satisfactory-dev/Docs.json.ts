@@ -153,6 +153,7 @@ import type {
 	FGParachute_has_mIsDeployed as docs_json_ts_0_3_7_7_classes_base_FGParachute_has_mIsDeployed,
 	FGPipeHyperStart_base_base_base as docs_json_ts_0_3_7_7_classes_base_FGPipeHyperStart_base_base_base,
 	FGPortableMinerDispenser_version_specific as docs_json_ts_0_3_7_7_classes_base_FGPortableMinerDispenser_version_specific,
+	FGSchematic_pre_1_0 as docs_json_ts_0_3_7_7_classes_base_FGSchematic_pre_1_0,
 	FGWeaponInstantFire_base_base_base as docs_json_ts_0_3_7_7_classes_base_FGWeaponInstantFire_base_base_base,
 	FGWeaponProjectile_has_mAttachSocket as docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_has_mAttachSocket,
 	FGWeaponProjectileFire_has_mRandomReloadAnim as docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectileFire_has_mRandomReloadAnim,
@@ -703,7 +704,7 @@ type FGPipeHyperStart = docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_with_
 
 type FGPortableMinerDispenser = docs_json_ts_0_3_7_7_classes_base_FGPortableMinerDispenser_version_specific & docs_json_ts_0_4_2_11_classes_base_FGPortableMinerDispenser_version_specific & FGEquipment_dispenser;
 
-type FGSchematic_base = docs_json_ts_0_3_7_7_classes_base_overridable_FGSchematic_version_specific & docs_json_ts_0_4_2_11_classes_base_overridable_FGSchematic_has_mSchematicDependencies & docs_json_ts_0_5_2_1_classes_base_overridable_FGSchematic_version_specific & docs_json_ts_0_3_7_7_classes_base_instructive & docs_json_ts_0_3_7_7_classes_base_isDescribed & docs_json_ts_0_4_2_11_classes_base_FGSchematic_has_mTechTier & docs_json_ts_0_6_1_5_classes_base_FGSchematic_version_specific & FGSchematic_has_mSchematicIcon & FGSchematic_version_specific;
+type FGSchematic_base = docs_json_ts_0_3_7_7_classes_base_overridable_FGSchematic_version_specific & docs_json_ts_0_3_7_7_classes_base_FGSchematic_pre_1_0 & docs_json_ts_0_4_2_11_classes_base_overridable_FGSchematic_has_mSchematicDependencies & docs_json_ts_0_5_2_1_classes_base_overridable_FGSchematic_version_specific & docs_json_ts_0_3_7_7_classes_base_instructive & docs_json_ts_0_3_7_7_classes_base_isDescribed & docs_json_ts_0_4_2_11_classes_base_FGSchematic_has_mTechTier & docs_json_ts_0_6_1_5_classes_base_FGSchematic_version_specific & FGSchematic_has_mSchematicIcon & FGSchematic_pre_1_0 & FGSchematic_version_specific;
 
 type FGSchematic_has_mSchematicIcon = {
 	mSchematicIcon: {
@@ -725,13 +726,16 @@ type FGSchematic_has_mSchematicIcon = {
 	},
 };
 
+type FGSchematic_pre_1_0 = {
+	mUnlocks: [
+		...docs_json_ts_0_8_3_3_properties_mUnlocks_item[],
+	],
+};
+
 type FGSchematic_version_specific = {
 	mCost: null | docs_json_ts_0_3_7_7_overridable_ItemClass_Amount_list | docs_json_ts_0_6_1_5_overridable_ItemClass_list,
 	mIsPlayerSpecific: docs_json_ts_common_types_bool_string,
 	mMenuPriority: docs_json_ts_common_types_decimal_string_signed,
-	mUnlocks: [
-		...docs_json_ts_0_8_3_3_properties_mUnlocks_item[],
-	],
 };
 
 type FGSchematic_with_described_unlocks = docs_json_ts_0_3_7_7_classes_base_hasClassName & docs_json_ts_0_5_2_1_classes_base_FGSchematic_with_described_unlocks_base_base & FGSchematic_base;
@@ -887,6 +891,7 @@ export type {
 	FGPortableMinerDispenser,
 	FGSchematic_base,
 	FGSchematic_has_mSchematicIcon,
+	FGSchematic_pre_1_0,
 	FGSchematic_version_specific,
 	FGSchematic_with_described_unlocks,
 	FGSuitBase,

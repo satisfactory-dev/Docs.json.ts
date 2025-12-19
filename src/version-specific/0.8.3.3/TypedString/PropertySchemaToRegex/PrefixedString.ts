@@ -21,10 +21,12 @@ import type {
 export function PrefixedString<
 	Mode extends mode,
 	SystemPrefix extends system_prefix,
+	VersionSpecificDefault extends Exclude<mode, 'version_specific_default'>,
 >(
 	ajv: Ajv,
 	mode: Mode,
 	system_prefix: SystemPrefix,
+	version_specific_default: VersionSpecificDefault,
 ) {
 	return new PropertySchemaToRegex<PrefixedString_type>(
 		ajv.compile(PrefixedStringType.generate_schema_definition({
@@ -37,6 +39,7 @@ export function PrefixedString<
 				mode,
 				value,
 				first_path,
+				root_path,
 				system_prefix,
 			},
 		}) => {
@@ -45,9 +48,11 @@ export function PrefixedString<
 				value,
 				mode,
 				first_path,
+				root_path,
 				false === system_prefix
 					? system_prefix
 					: `/Script/${system_prefix || 'Engine'}.`,
+				version_specific_default,
 			);
 		},
 	);

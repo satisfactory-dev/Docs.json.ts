@@ -110,7 +110,7 @@
 			"type": "string",
 			"DocsDotJson_PrefixedString": {
 				"prefix": "Texture2D",
-				"mode": "quoted",
+				"mode": "version_specific_default",
 				"value": null
 			}
 		}

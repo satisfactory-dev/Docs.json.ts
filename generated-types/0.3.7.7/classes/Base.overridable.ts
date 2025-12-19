@@ -17,10 +17,6 @@ import type {
 	decimal_string as docs_json_ts_common_types_decimal_string,
 } from './../../common/types.ts';
 
-import type {
-	mType as docs_json_ts_0_3_7_7_properties_mType,
-} from './../types/properties.ts';
-
 type FGBuildableResourceExtractor_miner_base = {
 	mParticleMap: [
 		docs_json_ts_0_3_7_7_overridable_mParticleMap_item,
@@ -42,7 +38,6 @@ type FGEquipment_version_specific = {
 };
 
 type FGSchematic_version_specific = {
-	mType: docs_json_ts_0_3_7_7_properties_mType,
 	mSubCategories: null | [
 		'None',
 	] | docs_json_ts_0_3_7_7_overridable_mSubCategories,

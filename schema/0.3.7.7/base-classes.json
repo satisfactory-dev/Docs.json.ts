@@ -4900,6 +4900,9 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGSchematic--version-specific"
 				},
 				{
+					"$ref": "#/$defs/FGSchematic--pre-1.0"
+				},
+				{
 					"$ref": "#/$defs/FGSchematic--pre-update4"
 				},
 				{
@@ -4909,6 +4912,17 @@
 					"$ref": "#/$defs/instructive"
 				}
 			]
+		},
+		"FGSchematic--pre-1.0": {
+			"type": "object",
+			"required": [
+				"mType"
+			],
+			"properties": {
+				"mType": {
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mType"
+				}
+			}
 		},
 		"FGSchematic--pre-update4": {
 			"type": "object",

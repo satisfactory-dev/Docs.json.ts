@@ -76,7 +76,7 @@ type mUnlocks_item_mScannableObjects_item = {
 
 type CameraAnimationSequence_quoted = `/Script/TemplateSequence.CameraAnimationSequence'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
 
-type Class_quoted = `/Script/CoreUObject.Class'"/Script/FactoryGame.${Exclude<string, ''>}${'"\''}`;
+type Class_quoted = `/Script/CoreUObject.Class'"/Script/FactoryGame/${Exclude<string, ''>}${'"\''}`;
 
 type DocsDotJson_AkAudioEvent_quoted_list = [
 	DocsDotJson_AkAudioEvent_quoted_list_item,

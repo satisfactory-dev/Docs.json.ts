@@ -80,34 +80,54 @@ type PrefixedString_schema<
 	Mode extends mode,
 > = PrefixedString_base_schema<Mode>;
 
+export type PrefixedString_value_type<
+	Prefix extends Exclude<string, ''>,
+	FirstPath extends Exclude<string, ''>,
+> = {
+	quoted: `${Prefix}'"/Game/${FirstPath}/${
+		string
+	}"'`,
+	single_quoted: `${Prefix}'/Game/${FirstPath}/${
+		string
+	}'`,
+	non_quoted: `${Prefix} /Game/${FirstPath}/${
+		string
+	}`,
+};
+
 export class PrefixedString<
 	Mode extends mode,
 	Prefix extends Exclude<string, ''>,
+	VersionSpecificDefaultMode extends Exclude<
+		mode,
+		'version_specific_default'
+	>,
 	FirstPath extends Exclude<string, ''> = 'FactoryGame',
 > extends PrefixedString_base<
 		Mode,
-		{
-			quoted: `${Prefix}'"/Game/${FirstPath}/${
-				string
-			}"'`,
-			single_quoted: `${Prefix}'/Game/${FirstPath}/${
-				string
-			}'`,
-			non_quoted: `${Prefix} /Game/${FirstPath}/${
-				string
-			}`,
-		},
+		(
+			& PrefixedString_value_type<Prefix, FirstPath>
+			& {
+				version_specific_default: PrefixedString_value_type<
+					Prefix,
+					FirstPath
+				>[VersionSpecificDefaultMode],
+			}
+		),
 		{mode: Mode},
 		PrefixedString_type<Mode>,
-		PrefixedString_schema<Mode>
+		PrefixedString_schema<Mode>,
+		VersionSpecificDefaultMode
 	> {
 	constructor(
 		options: SchemalessTypeOptions,
 		mode: Mode,
+		version_specific_default: VersionSpecificDefaultMode,
 	) {
 		super(
 			options,
 			{mode},
+			version_specific_default,
 			({
 				prefix,
 				value,
@@ -117,6 +137,7 @@ export class PrefixedString<
 				prefix,
 				value,
 				mode,
+				version_specific_default,
 				first_path,
 			),
 		);
@@ -130,8 +151,7 @@ export class PrefixedString<
 	}: PrefixedString_type<
 		Mode
 	>['DocsDotJson_PrefixedString']): TemplatedStringParts {
-		return [
-			{
+		const head = {
 				non_quoted: `${prefix} /Game/${first_path || 'FactoryGame'}/`,
 				quoted: `${prefix}'"/Game/${first_path || 'FactoryGame'}/`,
 				single_quoted: `${
@@ -140,13 +160,27 @@ export class PrefixedString<
 					first_path
 					|| 'FactoryGame'
 				}/`,
-			}[mode],
-			null === value ? {type: 'string', minLength: 1} : value,
-			{
+			version_specific_default: '',
+		};
+
+		const tail = {
 				non_quoted: '',
 				quoted: `"'`,
 				single_quoted: `'`,
-			}[mode],
+			version_specific_default: '',
+		};
+
+		head[
+			'version_specific_default'
+		] = head[this.version_specific_default];
+		tail[
+			'version_specific_default'
+		] = tail[this.version_specific_default];
+
+		return [
+			head[mode],
+			null === value ? {type: 'string', minLength: 1} : value,
+			tail[mode],
 		];
 	}
 
@@ -231,13 +265,18 @@ export class PrefixedString<
 		prefix_string: Exclude<string, ''>,
 		value: Exclude<string, ''>|null,
 		mode: mode,
+		version_specific_default: Exclude<mode, 'version_specific_default'>,
 		first_path?: Exclude<string, ''>,
 	): string {
 		const start = RegExp.escape({
 			quoted: `${prefix_string}'"`,
 			single_quoted: `${prefix_string}'`,
 			non_quoted: `${prefix_string} `,
-		}[mode]);
+		}[
+			mode === 'version_specific_default'
+				? version_specific_default
+				: mode
+		]);
 
 
 		if (null !== value) {
@@ -254,7 +293,11 @@ export class PrefixedString<
 			quoted: `"'`,
 			single_quoted: `'`,
 			non_quoted: '',
-		}[mode]);
+		}[
+			mode === 'version_specific_default'
+				? version_specific_default
+				: mode
+		]);
 
 		if ('quoted' === mode) {
 			return `${start}${prefix}(?:[^\\/_]+\\/)*[^."]+\\.[^."]+${suffix}`;
@@ -267,6 +310,7 @@ export class PrefixedString<
 		prefix: Exclude<string, ''>,
 		value: Exclude<string, ''>|null,
 		mode: mode,
+		version_specific_default: Exclude<mode, 'version_specific_default'>,
 		first_path?: Exclude<string, ''>,
 	): RegExp {
 		return new RegExp(`^${
@@ -274,6 +318,7 @@ export class PrefixedString<
 				prefix,
 				value,
 				mode,
+				version_specific_default,
 				first_path,
 			)
 		}$`);

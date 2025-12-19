@@ -128,6 +128,9 @@
 					"$ref": "docs.json.ts--0.6.1.5--overridable#/$defs/has--mSubCategories"
 				},
 				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGItemDescriptor--pre-1.0"
+				},
+				{
 					"$ref": "#/$defs/FGItemDescriptor--version-specific"
 				}
 			]
@@ -138,7 +141,6 @@
 				"mCrosshairMaterial",
 				"mDescriptorStatBars",
 				"mCompatibleItemDescriptors",
-				"mClassToScanFor",
 				"mScannableType",
 				"mShouldOverrideScannerDisplayText",
 				"mScannerDisplayText",
@@ -204,32 +206,6 @@
 									"$ref": "docs.json.ts--0.6.1.5--overridable#/$defs/mCompatibleItemDescriptors--item"
 								}
 							}
-						}
-					]
-				},
-				"mClassToScanFor": {
-					"oneOf": [
-						{
-							"type": "string",
-							"const": "None"
-						},
-						{
-							"type": "string",
-							"templated_string": [
-								"/Game/FactoryGame/",
-								["Resource/Environment/", "World/Benefit/"],
-								{"type": "string"},
-								"/BP_",
-								{
-									"type": "string",
-									"minLength": 1
-								},
-								".BP_",
-								{
-									"type": "string",
-									"minLength": 1
-								}
-							]
 						}
 					]
 				},

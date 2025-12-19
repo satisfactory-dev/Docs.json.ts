@@ -19,6 +19,7 @@ export function PrefixedString<
 >(
 	ajv: Ajv,
 	mode: Mode,
+	version_specific_default: Exclude<mode, 'version_specific_default'>,
 ) {
 	return new PropertySchemaToRegex<PrefixedString_type<Mode>>(
 		ajv.compile(PrefixedStringType.generate_schema_definition({mode})),
@@ -33,6 +34,7 @@ export function PrefixedString<
 				prefix,
 				value,
 				mode,
+				version_specific_default,
 			);
 		},
 	);

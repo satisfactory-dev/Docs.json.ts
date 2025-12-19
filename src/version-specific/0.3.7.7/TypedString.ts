@@ -251,9 +251,10 @@ export function PropertySchemaToRegex__matchers_as_object(
 		EnumString: ({ajv}) => [EnumString(ajv)],
 		PatternString: ({ajv}) => [PatternString(ajv)],
 		PrefixedStringMatcher: ({ajv}) => [
-			PrefixedStringMatcher(ajv, 'quoted'),
-			PrefixedStringMatcher(ajv, 'single_quoted'),
-			PrefixedStringMatcher(ajv, 'non_quoted'),
+			PrefixedStringMatcher(ajv, 'quoted', 'quoted'),
+			PrefixedStringMatcher(ajv, 'single_quoted', 'quoted'),
+			PrefixedStringMatcher(ajv, 'non_quoted', 'quoted'),
+			PrefixedStringMatcher(ajv, 'version_specific_default', 'quoted'),
 		],
 		NamedListMatcher: ({ajv}) => [NamedListMatcher(ajv)],
 		TemplatedStringMatcher: ({ajv}) => [TemplatedStringMatcher(ajv)],

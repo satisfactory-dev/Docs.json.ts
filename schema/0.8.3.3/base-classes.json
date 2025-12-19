@@ -2297,6 +2297,9 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGSchematic--version-specific"
 				},
 				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGSchematic--pre-1.0"
+				},
+				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base.overridable#/$defs/FGSchematic--has--mSchematicDependencies"
 				},
 				{
@@ -2316,6 +2319,9 @@
 				},
 				{
 					"$ref": "#/$defs/FGSchematic--has--mSchematicIcon"
+				},
+				{
+					"$ref": "#/$defs/FGSchematic--pre-1.0"
 				},
 				{
 					"$ref": "#/$defs/FGSchematic--version-specific"
@@ -2404,13 +2410,28 @@
 				}
 			}
 		},
+		"FGSchematic--pre-1.0": {
+			"type": "object",
+			"required": [
+				"mUnlocks"
+			],
+			"properties": {
+				"mUnlocks": {
+					"type": "array",
+					"minItems": 0,
+					"maxItems": 6,
+					"items": {
+						"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/mUnlocks--item"
+					}
+				}
+			}
+		},
 		"FGSchematic--version-specific": {
 			"type": "object",
 			"required": [
 				"mCost",
 				"mIsPlayerSpecific",
-				"mMenuPriority",
-				"mUnlocks"
+				"mMenuPriority"
 			],
 			"properties": {
 				"mCost": {
@@ -2432,14 +2453,6 @@
 				},
 				"mMenuPriority": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
-				},
-				"mUnlocks": {
-					"type": "array",
-					"minItems": 0,
-					"maxItems": 6,
-					"items": {
-						"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/mUnlocks--item"
-					}
 				}
 			}
 		},

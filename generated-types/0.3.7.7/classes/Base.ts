@@ -23,6 +23,7 @@ import type {
 	mProducedIn as docs_json_ts_0_3_7_7_properties_mProducedIn,
 	mRelevantEvents as docs_json_ts_0_3_7_7_properties_mRelevantEvents,
 	mStackSize as docs_json_ts_0_3_7_7_properties_mStackSize,
+	mType as docs_json_ts_0_3_7_7_properties_mType,
 	mUnlocks_item_base as docs_json_ts_0_3_7_7_properties_mUnlocks_item_base,
 	mUnlocks_item_mNumArmEquipmentSlotsToUnlock as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mNumArmEquipmentSlotsToUnlock,
 	mUnlocks_item_mNumInventorySlotsToUnlock as docs_json_ts_0_3_7_7_properties_mUnlocks_item_mNumInventorySlotsToUnlock,
@@ -1284,7 +1285,11 @@ type FGResourceDescriptor_base = FGDescriptor_sinkable_base & {
 	mManualMiningAudioName: 'Metal',
 };
 
-type FGSchematic = docs_json_ts_0_3_7_7_classes_base_overridable_FGSchematic_version_specific & FGSchematic_pre_update4 & FGSchematic_pre_update6 & instructive;
+type FGSchematic = docs_json_ts_0_3_7_7_classes_base_overridable_FGSchematic_version_specific & FGSchematic_pre_1_0 & FGSchematic_pre_update4 & FGSchematic_pre_update6 & instructive;
+
+type FGSchematic_pre_1_0 = {
+	mType: docs_json_ts_0_3_7_7_properties_mType,
+};
 
 type FGSchematic_pre_update4 = {
 	mTechTier: docs_json_ts_0_3_7_7_properties_Tier,
@@ -1760,6 +1765,7 @@ export type {
 	FGResourceDescriptor,
 	FGResourceDescriptor_base,
 	FGSchematic,
+	FGSchematic_pre_1_0,
 	FGSchematic_pre_update4,
 	FGSchematic_pre_update6,
 	FGSnowballWeapon,

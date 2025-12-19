@@ -130,6 +130,7 @@ export function PropertySchemaToRegex__matchers_as_object(
 			PrefixedStringMatcher(ajv, 'quoted'),
 			PrefixedStringMatcher(ajv, 'single_quoted'),
 			PrefixedStringMatcher(ajv, 'non_quoted'),
+			PrefixedStringMatcher(ajv, 'version_specific_default'),
 		],
 	} as PropertySchemaToRegex__matchers_object;
 }

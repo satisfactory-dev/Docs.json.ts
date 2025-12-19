@@ -104,15 +104,11 @@
 		"FGSchematic--version-specific": {
 			"type": "object",
 			"required": [
-				"mType",
 				"mSubCategories",
 				"mTimeToComplete",
 				"mIncludeInBuilds"
 			],
 			"properties": {
-				"mType": {
-					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mType"
-				},
 				"mSubCategories": {
 					"oneOf": [
 						{

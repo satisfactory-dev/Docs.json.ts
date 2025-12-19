@@ -2476,9 +2476,6 @@
 					"$ref": "#/$defs/FGSchematic--has--mMenuPriority"
 				},
 				{
-					"$ref": "#/$defs/FGSchematic--has--mSchematicIcon"
-				},
-				{
 					"$ref": "#/$defs/FGSchematic--has--mSmallSchematicIcon"
 				},
 				{
@@ -2495,64 +2492,6 @@
 			"properties": {
 				"mMenuPriority": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				}
-			}
-		},
-		"FGSchematic--has--mSchematicIcon": {
-			"type": "object",
-			"required": ["mSchematicIcon"],
-			"properties": {
-				"mSchematicIcon": {
-					"type": "string",
-					"typed_string": {
-						"type": "object",
-						"additionalProperties": false,
-						"required": [
-							"ImageSize",
-							"Margin",
-							"TintColor",
-							"UVRegion",
-							"DrawAs"
-						],
-						"properties": {
-							"ImageSize": {
-								"$ref": "docs.json.ts--common--types#/$defs/XY--decimal_string"
-							},
-							"Margin": {
-								"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-							},
-							"TintColor": {
-								"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/TintColor"
-							},
-							"ResourceObject": {
-								"$ref": "docs.json.ts--0.4.2.11--overridable#/$defs/Texture2D--quoted"
-							},
-							"UVRegion": {
-								"type": "string",
-								"typed_string": {
-									"type": "object",
-									"additionalProperties": false,
-									"required": ["Min", "Max", "bIsValid"],
-									"properties": {
-										"Min": {
-											"$ref": "docs.json.ts--common--types#/$defs/XY--decimal_string"
-										},
-										"Max": {
-											"$ref": "docs.json.ts--common--types#/$defs/XY--decimal_string"
-										},
-										"bIsValid": {
-											"type": "string",
-											"const": "0"
-										}
-									}
-								}
-							},
-							"DrawAs": {
-								"type": "string",
-								"const": "Image"
-							}
-						}
-					}
 				}
 			}
 		},

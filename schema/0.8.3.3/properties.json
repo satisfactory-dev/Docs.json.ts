@@ -197,14 +197,13 @@
 		},
 		"Class--quoted": {
 			"type": "string",
-			"templated_string": [
-				"/Script/CoreUObject.Class'\"/Script/FactoryGame.",
-				{
-					"type": "string",
-					"minLength": 1
-				},
-				"\"'"
-			]
+			"DocsDotJson_PrefixedString": {
+				"prefix": "Class",
+				"mode": "version_specific_default",
+				"system_prefix": "CoreUObject",
+				"root_path": "Script",
+				"value": null
+			}
 		},
 		"DocsDotJson_AkAudioEvent_quoted--list": {
 			"type": "string",

@@ -37,6 +37,7 @@ export function PrefixedString<
 				prefix,
 				value,
 				mode,
+				'quoted',
 				first_path,
 			);
 		},
