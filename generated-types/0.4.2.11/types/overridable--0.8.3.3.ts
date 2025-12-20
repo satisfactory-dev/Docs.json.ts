@@ -40,9 +40,9 @@ type mUnlocks_item_mResourcePairsToAddToScanner_item = {
 	ResourceNodeType?: 'Geyser' | 'FrackingCore',
 };
 
-type BlueprintGeneratedClass_single_quoted = `/Script/Engine.BlueprintGeneratedClass'/Game/FactoryGame/${Exclude<string, ''>}${'\''}`;
+type BlueprintGeneratedClass_single_quoted = `/Script/Engine.BlueprintGeneratedClass'/Game/FactoryGame${Exclude<string, ''>}${'\''}`;
 
-type Texture2D_quoted = `/Script/Engine.Texture2D'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
+type Texture2D_quoted = `/Script/Engine.Texture2D'"/Game/FactoryGame${Exclude<string, ''>}${'"\''}`;
 
 export type {
 	has_mBatteryClasses,

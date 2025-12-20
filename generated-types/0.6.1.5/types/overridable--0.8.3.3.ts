@@ -82,10 +82,10 @@ type ItemClass_list = [
 ];
 
 type ItemClass_list_item = {
-	ItemClass: `/Script/Engine.BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
+	ItemClass: `/Script/Engine.BlueprintGeneratedClass'"/Game/FactoryGame${Exclude<string, ''>}${'"\''}`,
 };
 
-type Material_quoted = `/Script/Engine.Material'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
+type Material_quoted = `/Script/Engine.Material'"/Game/FactoryGame${Exclude<string, ''>}${'"\''}`;
 
 export type {
 	has_mSubCategories,

@@ -44,7 +44,7 @@ type FalloffCurve_EditorCurveData_with_ExternalCurve = {
 		PreInfinityExtrap: 'RCCE_Constant',
 		PostInfinityExtrap: 'RCCE_Constant',
 	},
-	ExternalCurve: `/Script/Engine.CurveFloat'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`,
+	ExternalCurve: `/Script/Engine.CurveFloat'"/Game/FactoryGame${Exclude<string, ''>}${'"\''}`,
 };
 
 export type {

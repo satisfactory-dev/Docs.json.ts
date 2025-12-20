@@ -47,9 +47,9 @@ type mUnlocks_item_mSchematics = docs_json_ts_0_3_7_7_properties_mUnlocks_item_b
 	mSchematics: DocsDotJson_BlueprintGeneratedClass_quoted_list,
 };
 
-type AnimMontage_quoted = `/Script/Engine.AnimMontage'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
+type AnimMontage_quoted = `/Script/Engine.AnimMontage'"/Game/FactoryGame${Exclude<string, ''>}${'"\''}`;
 
-type BlueprintGeneratedClass_quoted = `/Script/Engine.BlueprintGeneratedClass'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
+type BlueprintGeneratedClass_quoted = `/Script/Engine.BlueprintGeneratedClass'"/Game/FactoryGame${Exclude<string, ''>}${'"\''}`;
 
 type DocsDotJson_BlueprintGeneratedClass_quoted_list = [
 	BlueprintGeneratedClass_quoted,
@@ -66,9 +66,9 @@ type ItemClass_Amount_list = [
 	...ItemClass_Amount_list_item[],
 ];
 
-type MaterialInstanceConstant_quoted = `/Script/Engine.MaterialInstanceConstant'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
+type MaterialInstanceConstant_quoted = `/Script/Engine.MaterialInstanceConstant'"/Game/FactoryGame${Exclude<string, ''>}${'"\''}`;
 
-type ParticleSystem_quoted = `/Script/Engine.ParticleSystem'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
+type ParticleSystem_quoted = `/Script/Engine.ParticleSystem'"/Game/FactoryGame${Exclude<string, ''>}${'"\''}`;
 
 export type {
 	mParticleMap_item,

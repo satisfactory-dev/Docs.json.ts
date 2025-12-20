@@ -74,16 +74,16 @@ type mUnlocks_item_mScannableObjects_item = {
 	],
 };
 
-type CameraAnimationSequence_quoted = `/Script/TemplateSequence.CameraAnimationSequence'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
+type CameraAnimationSequence_quoted = `/Script/TemplateSequence.CameraAnimationSequence'"/Game/FactoryGame${Exclude<string, ''>}${'"\''}`;
 
-type Class_quoted = `/Script/CoreUObject.Class'"/Script/FactoryGame/${Exclude<string, ''>}${'"\''}`;
+type Class_quoted = `/Script/CoreUObject.Class'"/Script/FactoryGame${Exclude<string, ''>}${'"\''}`;
 
 type DocsDotJson_AkAudioEvent_quoted_list = [
 	DocsDotJson_AkAudioEvent_quoted_list_item,
 	...DocsDotJson_AkAudioEvent_quoted_list_item[],
 ];
 
-type DocsDotJson_AkAudioEvent_quoted_list_item = `/Script/AkAudio.AkAudioEvent'"/Game/WwiseAudio/${Exclude<string, ''>}${'"\''}`;
+type DocsDotJson_AkAudioEvent_quoted_list_item = `/Script/AkAudio.AkAudioEvent'"/Game/WwiseAudio${Exclude<string, ''>}${'"\''}`;
 
 type FGBuildable_mOcclusionBoxInfo_item = {
 	Min: docs_json_ts_common_types_XYZ_decimal_string,
@@ -91,9 +91,9 @@ type FGBuildable_mOcclusionBoxInfo_item = {
 	IsValid: docs_json_ts_common_types_bool_string,
 };
 
-type FGRailroadTrackConnectionComponent_quoted = `/Script/FactoryGame.FGRailroadTrackConnectionComponent'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
+type FGRailroadTrackConnectionComponent_quoted = `/Script/FactoryGame.FGRailroadTrackConnectionComponent'"/Game/FactoryGame${Exclude<string, ''>}${'"\''}`;
 
-type FGTrainPlatformConnection_quoted = `/Script/FactoryGame.FGTrainPlatformConnection'"/Game/FactoryGame/${Exclude<string, ''>}${'"\''}`;
+type FGTrainPlatformConnection_quoted = `/Script/FactoryGame.FGTrainPlatformConnection'"/Game/FactoryGame${Exclude<string, ''>}${'"\''}`;
 
 type Meshes_item = '/Script/Engine.StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1"\'' | '/Script/Engine.StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_2.Tradingpost_Stage_2"\'' | '/Script/Engine.StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_3.Tradingpost_Stage_3"\'' | '/Script/Engine.StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_4.Tradingpost_Stage_4"\'' | '/Script/Engine.StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5"\'' | '/Script/Engine.StaticMesh\'"/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6"\'';
 

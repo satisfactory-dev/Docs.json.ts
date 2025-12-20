@@ -246,7 +246,7 @@ export class PrefixedString<
 			}/${
 					first_path
 					|| 'FactoryGame'
-				}/`,
+				}`,
 				quoted: `${
 					version_specific_prefix
 			}${prefix}'"/${
@@ -254,7 +254,7 @@ export class PrefixedString<
 			}/${
 					first_path
 					|| 'FactoryGame'
-				}/`,
+				}`,
 				single_quoted: `${
 					version_specific_prefix
 			}${prefix}'/${
@@ -262,7 +262,7 @@ export class PrefixedString<
 			}/${
 					first_path
 					|| 'FactoryGame'
-				}/`,
+				}`,
 			version_specific_default: '',
 		};
 
@@ -437,10 +437,22 @@ export class PrefixedString<
 		}[use_mode]);
 
 		if ('quoted' === mode) {
-			return `${start}${prefix}(?:[^\\/_]+\\/)*[^."]*\\.[^."]+${suffix}`;
+			return `${
+				start
+			}${
+				prefix
+			}(?:[^\\/_,]+\\/)*[^.",]*\\.[^.",]+${
+				suffix
+			}`;
 		}
 
-		return `${start}${prefix}(?:[^\\/_]+\\/)*[^.]*\\.[^.]+${suffix}`;
+		return `${
+			start
+		}${
+			prefix
+		}(?:[^\\/_,]+\\/)*[^.,]*\\.[^.,]+${
+			suffix
+		}`;
 	}
 
 	static #regex_from_prefix_value_and_mode(
