@@ -249,7 +249,7 @@
 			"type": "string",
 			"DocsDotJson_PrefixedString": {
 				"prefix": "FGRailroadTrackConnectionComponent",
-				"mode": "quoted",
+				"mode": "version_specific_default",
 				"system_prefix": "FactoryGame",
 				"value": null
 			}

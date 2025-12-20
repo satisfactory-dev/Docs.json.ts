@@ -184,12 +184,15 @@ import type {
 	FGSchematic_has_mSchematicIcon as docs_json_ts_0_4_2_11_classes_base_overridable_FGSchematic_has_mSchematicIcon,
 } from './../../0.4.2.11/classes/Base.overridable.ts';
 
-type FGBuildable_base = docs_json_ts_0_4_2_11_classes_base_FGBuildable_base & FGBuildable_base_version_specific;
+type FGBuildable_base = docs_json_ts_0_4_2_11_classes_base_FGBuildable_base & FGBuildable_base_pre_1_0 & FGBuildable_base_version_specific;
+
+type FGBuildable_base_pre_1_0 = {
+	mCreateClearanceMeshRepresentation: docs_json_ts_common_types_bool_string,
+};
 
 type FGBuildable_base_version_specific = {
 	mAllowColoring: docs_json_ts_common_types_bool_string,
 	mShouldShowAttachmentPointVisuals: docs_json_ts_common_types_bool_string,
-	mCreateClearanceMeshRepresentation: docs_json_ts_common_types_bool_string,
 	mAttachmentPoints: '',
 };
 
@@ -207,9 +210,9 @@ type FGBuildable_isFrame = {
 	mIsFrame: docs_json_ts_common_types_bool_string,
 };
 
-type FGBuildable_mHasPower = docs_json_ts_0_4_2_11_classes_base_FGBuildable_mHasPower_base & FGBuildable_base_version_specific;
+type FGBuildable_mHasPower = docs_json_ts_0_4_2_11_classes_base_FGBuildable_mHasPower_base & FGBuildable_base_pre_1_0 & FGBuildable_base_version_specific;
 
-type FGBuildable_mSnappedPassthroughs = FGBuildable_base_version_specific & {
+type FGBuildable_mSnappedPassthroughs = {
 	mSnappedPassthroughs: '',
 };
 
@@ -271,7 +274,7 @@ type FGBuildableConveyorBelt = FGBuildable_base & FGBuildableConveyorBelt_spline
 
 type FGBuildableConveyorBelt_spline = docs_json_ts_0_3_7_7_classes_base_FGBuildableConveyorBelt_spline_base & FGBuildableConveyorBelt_spline_base;
 
-type FGBuildableConveyorBelt_spline_base = FGBuildable_base_version_specific & {
+type FGBuildableConveyorBelt_spline_base = {
 	mCustomSkins: [
 		'/Game/FactoryGame/Buildable/-Shared/Customization/Skins/SkinDesc_Test1.SkinDesc_Test1_C',
 	],
@@ -500,7 +503,7 @@ type FGBuildableRailroadStation_base = {
 
 type FGBuildableRailroadTrack = FGBuildable_base & FGBuildableRailroadTrack_base & FGBuildableRailroadTrack_base_version_specific;
 
-type FGBuildableRailroadTrack_base = docs_json_ts_0_4_2_11_classes_base_FGBuildableRailroadTrack_base_base & FGBuildable_base_version_specific;
+type FGBuildableRailroadTrack_base = docs_json_ts_0_4_2_11_classes_base_FGBuildableRailroadTrack_base_base & FGBuildable_base_pre_1_0 & FGBuildable_base_version_specific;
 
 type FGBuildableRailroadTrack_base_version_specific = {
 	mTrackGraphID: docs_json_ts_common_types_integer_string_signed,
@@ -834,6 +837,7 @@ type FGWeapon_version_specific = {
 
 export type {
 	FGBuildable_base,
+	FGBuildable_base_pre_1_0,
 	FGBuildable_base_version_specific,
 	FGBuildable_docking_station,
 	FGBuildable_foundation_DisableAttachmentSnapOn,

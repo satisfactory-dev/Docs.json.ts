@@ -8,16 +8,29 @@
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--base"
 				},
 				{
+					"$ref": "#/$defs/FGBuildable--base--pre-1.0"
+				},
+				{
 					"$ref": "#/$defs/FGBuildable--base--version-specific"
 				}
 			]
+		},
+		"FGBuildable--base--pre-1.0": {
+			"type": "object",
+			"required": [
+				"mCreateClearanceMeshRepresentation"
+			],
+			"properties": {
+				"mCreateClearanceMeshRepresentation": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
 		},
 		"FGBuildable--base--version-specific": {
 			"type": "object",
 			"required": [
 				"mAllowColoring",
 				"mShouldShowAttachmentPointVisuals",
-				"mCreateClearanceMeshRepresentation",
 				"mAttachmentPoints"
 			],
 			"properties": {
@@ -25,9 +38,6 @@
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				},
 				"mShouldShowAttachmentPointVisuals": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mCreateClearanceMeshRepresentation": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				},
 				"mAttachmentPoints": {
@@ -104,13 +114,15 @@
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--mHasPower--base"
 				},
 				{
+					"$ref": "#/$defs/FGBuildable--base--pre-1.0"
+				},
+				{
 					"$ref": "#/$defs/FGBuildable--base--version-specific"
 				}
 			]
 		},
 		"FGBuildable--mSnappedPassthroughs": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base--version-specific",
 			"required": ["mSnappedPassthroughs"],
 			"properties": {
 				"mSnappedPassthroughs": {
@@ -390,7 +402,6 @@
 		},
 		"FGBuildableConveyorBelt--spline--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base--version-specific",
 			"required": ["mCustomSkins"],
 			"properties": {
 				"mCustomSkins": {
@@ -1467,6 +1478,9 @@
 			"allOf": [
 				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableRailroadTrack--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base--pre-1.0"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--base--version-specific"

@@ -196,6 +196,9 @@
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--base--version-specific"
 				},
 				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildable--base--pre-1.0"
+				},
+				{
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildable--base--version-specific"
 				},
 				{
@@ -1354,19 +1357,20 @@
 					"$ref": "#/$defs/FGBuildable--base"
 				},
 				{
+					"$ref": "#/$defs/FGBuildableRailroadTrack--pre-1.0"
+				},
+				{
 					"$ref": "#/$defs/FGBuildableRailroadTrack--version-specific"
 				}
 			]
 		},
-		"FGBuildableRailroadTrack--version-specific": {
+		"FGBuildableRailroadTrack--pre-1.0": {
 			"type": "object",
 			"required": [
 				"mBlockVisualizationMeshLength",
 				"mBlockVisualizationNumPrimitiveDataFloats",
 				"mBlockVisualizationNumPerInstancePrimitiveDataCountOffset",
-				"mBlockVisualizationSplineDataSettings",
-				"mBlockVisualizationColorDataStartIndex",
-				"mConnections"
+				"mBlockVisualizationSplineDataSettings"
 			],
 			"properties": {
 				"mBlockVisualizationMeshLength": {
@@ -1404,7 +1408,16 @@
 							}
 						}
 					}
-				},
+				}
+			}
+		},
+		"FGBuildableRailroadTrack--version-specific": {
+			"type": "object",
+			"required": [
+				"mBlockVisualizationColorDataStartIndex",
+				"mConnections"
+			],
+			"properties": {
 				"mBlockVisualizationColorDataStartIndex": {
 					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
 				},
