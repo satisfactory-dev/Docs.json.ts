@@ -152,21 +152,21 @@ export class PrefixedString<
 		Mode
 	>['DocsDotJson_PrefixedString']): TemplatedStringParts {
 		const head = {
-				non_quoted: `${prefix} /Game/${first_path || 'FactoryGame'}/`,
-				quoted: `${prefix}'"/Game/${first_path || 'FactoryGame'}/`,
-				single_quoted: `${
-					prefix
-				}'/Game/${
-					first_path
-					|| 'FactoryGame'
-				}/`,
+			non_quoted: `${prefix} /Game/${first_path || 'FactoryGame'}/`,
+			quoted: `${prefix}'"/Game/${first_path || 'FactoryGame'}/`,
+			single_quoted: `${
+				prefix
+			}'/Game/${
+				first_path
+				|| 'FactoryGame'
+			}/`,
 			version_specific_default: '',
 		};
 
 		const tail = {
-				non_quoted: '',
-				quoted: `"'`,
-				single_quoted: `'`,
+			non_quoted: '',
+			quoted: `"'`,
+			single_quoted: `'`,
 			version_specific_default: '',
 		};
 
