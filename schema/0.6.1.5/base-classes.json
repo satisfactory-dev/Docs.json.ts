@@ -1617,10 +1617,7 @@
 		},
 		"FGEquipment--version-specific": {
 			"type": "object",
-			"required": [
-				"mReceivedDamageModifiers",
-				"mEquipmentSlot"
-			],
+			"required": ["mReceivedDamageModifiers", "mEquipmentSlot"],
 			"properties": {
 				"mReceivedDamageModifiers": {
 					"type": "string",
