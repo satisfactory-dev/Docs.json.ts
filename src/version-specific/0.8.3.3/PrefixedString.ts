@@ -124,23 +124,23 @@ export type PrefixedString_value_type<
 	FirstPath extends Exclude<string, ''>,
 	RootPath extends Exclude<string, ''>,
 > = {
-			quoted: `${
-				version_specific_prefix<SystemPrefix>
-			}${
-				Prefix
+	quoted: `${
+		version_specific_prefix<SystemPrefix>
+	}${
+		Prefix
 	}'"/${RootPath}/${FirstPath}/${
-				string
-			}"'`,
-			single_quoted: `${
-				version_specific_prefix<SystemPrefix>
+		string
+	}"'`,
+	single_quoted: `${
+		version_specific_prefix<SystemPrefix>
 	}${Prefix}'/${RootPath}/${FirstPath}/${
-				string
-			}'`,
-			non_quoted: `${
-				version_specific_prefix<SystemPrefix>
+		string
+	}'`,
+	non_quoted: `${
+		version_specific_prefix<SystemPrefix>
 	}${Prefix} /${RootPath}/${FirstPath}/${
-				string
-			}`,
+		string
+	}`,
 };
 
 export class PrefixedString<
@@ -239,37 +239,30 @@ export class PrefixedString<
 		}
 
 		const head = {
-				non_quoted: `${
-					version_specific_prefix
+			non_quoted: `${
+				version_specific_prefix
 			}${prefix} /${
-					root_path || 'Game'
+				root_path || 'Game'
 			}/${
-					first_path
-					|| 'FactoryGame'
-				}`,
-				quoted: `${
-					version_specific_prefix
+				first_path || 'FactoryGame'
+			}`,
+			quoted: `${
+				version_specific_prefix
 			}${prefix}'"/${
 				root_path || 'Game'
-			}/${
-					first_path
-					|| 'FactoryGame'
-				}`,
-				single_quoted: `${
-					version_specific_prefix
+			}/${first_path || 'FactoryGame'}`,
+			single_quoted: `${
+				version_specific_prefix
 			}${prefix}'/${
 				root_path || 'Game'
-			}/${
-					first_path
-					|| 'FactoryGame'
-				}`,
+			}/${first_path || 'FactoryGame'}`,
 			version_specific_default: '',
 		};
 
 		const tail = {
-				non_quoted: '',
-				quoted: `"'`,
-				single_quoted: `'`,
+			non_quoted: '',
+			quoted: `"'`,
+			single_quoted: `'`,
 			version_specific_default: '',
 		};
 
