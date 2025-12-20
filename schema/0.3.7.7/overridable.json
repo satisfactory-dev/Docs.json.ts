@@ -124,7 +124,7 @@
 			"type": "string",
 			"DocsDotJson_PrefixedString": {
 				"prefix": "AnimMontage",
-				"mode": "quoted",
+				"mode": "version_specific_default",
 				"value": null
 			}
 		},
@@ -178,7 +178,7 @@
 			"type": "string",
 			"DocsDotJson_PrefixedString": {
 				"prefix": "MaterialInstanceConstant",
-				"mode": "quoted",
+				"mode": "version_specific_default",
 				"value": null
 			}
 		},

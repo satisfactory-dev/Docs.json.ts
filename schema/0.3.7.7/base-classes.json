@@ -4424,6 +4424,9 @@
 					"$ref": "#/$defs/FGEquipment--has--mUseDefaultPrimaryFire"
 				},
 				{
+					"$ref": "#/$defs/FGEquipment--pre-1.0"
+				},
+				{
 					"$ref": "#/$defs/hasClassName"
 				}
 			]
@@ -4517,6 +4520,15 @@
 				},
 				"mDamageNegated": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGEquipment--pre-1.0": {
+			"type": "object",
+			"required": ["mHasPersistentOwner"],
+			"properties": {
+				"mHasPersistentOwner": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				}
 			}
 		},
@@ -5554,9 +5566,6 @@
 		},
 		"FGWeaponProjectile--base": {
 			"allOf": [
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGEquipment--version-specific"
-				},
 				{
 					"$ref": "#/$defs/FGEquipment--base"
 				},

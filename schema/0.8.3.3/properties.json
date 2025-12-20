@@ -190,7 +190,7 @@
 			"type": "string",
 			"DocsDotJson_PrefixedString": {
 				"prefix": "CameraAnimationSequence",
-				"mode": "quoted",
+				"mode": "version_specific_default",
 				"system_prefix": "TemplateSequence",
 				"value": null
 			}
@@ -221,7 +221,7 @@
 			"DocsDotJson_PrefixedString": {
 				"prefix": "AkAudioEvent",
 				"first_path": "WwiseAudio",
-				"mode": "quoted",
+				"mode": "version_specific_default",
 				"system_prefix": "AkAudio",
 				"value": null
 			}

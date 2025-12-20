@@ -13,7 +13,6 @@ import type {
 } from './Base.ts';
 
 import type {
-	bool_string as docs_json_ts_common_types_bool_string,
 	decimal_string as docs_json_ts_common_types_decimal_string,
 } from './../../common/types.ts';
 
@@ -34,7 +33,6 @@ type FGEquipment_version_specific = {
 	mCostToUse: '' | docs_json_ts_0_3_7_7_overridable_ItemClass_Amount_list,
 	mArmAnimation: 'AE_Consumables' | 'AE_OneHandEquipment' | 'AE_ChainSaw' | 'AE_Generic2Hand' | 'AE_None' | 'AE_RebarGun' | 'AE_Rifle' | 'AE_ShockShank' | 'AE_StunSpear' | 'AE_PortableMiner' | 'AE_ObjectScanner' | 'AE_ColorGun' | 'AE_Nobelisk' | 'AE_Generic1Hand',
 	mBackAnimation: 'BE_None' | 'BE_Jetpack',
-	mHasPersistentOwner: docs_json_ts_common_types_bool_string,
 };
 
 type FGSchematic_version_specific = {

@@ -543,7 +543,7 @@ type FGDescriptor = docs_json_ts_0_4_2_11_classes_base_FGDescriptor_base & {
 	mSmallIcon: docs_json_ts_0_4_2_11_properties_Texture2D | 'None',
 };
 
-type FGEquipment = docs_json_ts_0_4_2_11_classes_base_FGEquipment_base & FGEquipment_version_specific;
+type FGEquipment = docs_json_ts_0_4_2_11_classes_base_FGEquipment_base & FGEquipment_pre_1_0 & FGEquipment_version_specific;
 
 type FGEquipment_noisy = FGEquipment & FGEquipment_noisy_version_specific;
 
@@ -551,8 +551,11 @@ type FGEquipment_noisy_version_specific = {
 	mActiveNoiseFrequency: docs_json_ts_common_types_decimal_string,
 };
 
-type FGEquipment_version_specific = {
+type FGEquipment_pre_1_0 = {
 	mOnlyVisibleToOwner: docs_json_ts_common_types_bool_string,
+};
+
+type FGEquipment_version_specific = {
 	mReceivedDamageModifiers: '',
 	mEquipmentSlot: 'ES_ARMS' | 'ES_HEAD' | 'ES_BACK' | 'ES_BODY' | 'ES_LEGS',
 };
@@ -793,6 +796,7 @@ export type {
 	FGEquipment,
 	FGEquipment_noisy,
 	FGEquipment_noisy_version_specific,
+	FGEquipment_pre_1_0,
 	FGEquipment_version_specific,
 	FGEquipmentStunSpear_base,
 	FGEquipmentStunSpear_base_mDamageTypes,

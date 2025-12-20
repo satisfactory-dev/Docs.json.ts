@@ -44,8 +44,7 @@
 				"mAttachSocket",
 				"mCostToUse",
 				"mArmAnimation",
-				"mBackAnimation",
-				"mHasPersistentOwner"
+				"mBackAnimation"
 			],
 			"properties": {
 				"mEquipmentSlot": {
@@ -95,9 +94,6 @@
 				"mBackAnimation": {
 					"type": "string",
 					"enum": ["BE_None", "BE_Jetpack"]
-				},
-				"mHasPersistentOwner": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				}
 			}
 		},

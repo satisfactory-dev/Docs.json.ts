@@ -1043,7 +1043,7 @@ type FGEquipment = FGEquipment_base & {
 	mAttachSocket: 'None' | 'hand_rSocket' | 'hand_lSocket' | 'jumpingStilt_lSocket' | 'helmetSocket',
 };
 
-type FGEquipment_base = docs_json_ts_0_3_7_7_classes_base_overridable_FGEquipment_version_specific & FGEquipment_has_mEquipmentSlot & FGEquipment_has_mUseDefaultPrimaryFire & hasClassName;
+type FGEquipment_base = docs_json_ts_0_3_7_7_classes_base_overridable_FGEquipment_version_specific & FGEquipment_has_mEquipmentSlot & FGEquipment_has_mUseDefaultPrimaryFire & FGEquipment_pre_1_0 & hasClassName;
 
 type FGEquipment_dispenser = FGEquipment & FGEquipment_has_mPlaceDistanceMax;
 
@@ -1080,6 +1080,10 @@ type FGEquipment_has_mRandomStingerAnim = {
 type FGEquipment_negates_damage = {
 	mHasNegatedDamage: docs_json_ts_common_types_bool_string,
 	mDamageNegated: docs_json_ts_common_types_decimal_string,
+};
+
+type FGEquipment_pre_1_0 = {
+	mHasPersistentOwner: docs_json_ts_common_types_bool_string,
 };
 
 type FGEquipmentStunSpear_base = FGEquipmentStunSpear_base_base & {
@@ -1347,7 +1351,7 @@ type FGWeaponInstantFire_has_mLockAngle = {
 
 type FGWeaponProjectile = FGWeaponProjectile_base & FGWeaponProjectile_base_version_specific;
 
-type FGWeaponProjectile_base = docs_json_ts_0_3_7_7_classes_base_overridable_FGEquipment_version_specific & FGEquipment_base & FGEquipment_has_mUseDefaultPrimaryFire & FGWeaponProjectile_base_base_version_specific;
+type FGWeaponProjectile_base = FGEquipment_base & FGEquipment_has_mUseDefaultPrimaryFire & FGWeaponProjectile_base_base_version_specific;
 
 type FGWeaponProjectile_base_base_version_specific = {
 	mReloadTime: docs_json_ts_common_types_decimal_string,
@@ -1696,6 +1700,7 @@ export type {
 	FGEquipment_has_effect_timer,
 	FGEquipment_has_mRandomStingerAnim,
 	FGEquipment_negates_damage,
+	FGEquipment_pre_1_0,
 	FGEquipmentStunSpear_base,
 	FGEquipmentStunSpear_base_base,
 	FGEquipmentStunSpear_base_base_base,

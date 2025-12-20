@@ -95,6 +95,7 @@ import type {
 	FGDescriptor_sinkable_base as docs_json_ts_0_3_7_7_classes_base_FGDescriptor_sinkable_base,
 	FGEquipment_base as docs_json_ts_0_3_7_7_classes_base_FGEquipment_base,
 	FGEquipment_has_mUseDefaultPrimaryFire as docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_mUseDefaultPrimaryFire,
+	FGEquipment_pre_1_0 as docs_json_ts_0_3_7_7_classes_base_FGEquipment_pre_1_0,
 	FGNobeliskDetonator as docs_json_ts_0_3_7_7_classes_base_FGNobeliskDetonator,
 	FGParachute_has_mIsDeployed as docs_json_ts_0_3_7_7_classes_base_FGParachute_has_mIsDeployed,
 	FGParachute_has_mTerminalVelocityZ as docs_json_ts_0_3_7_7_classes_base_FGParachute_has_mTerminalVelocityZ,
@@ -624,7 +625,7 @@ type FGDescriptor_sinkable_base = docs_json_ts_0_3_7_7_classes_base_FGDescriptor
 
 type FGEquipment = docs_json_ts_0_3_7_7_classes_base_FGEquipment_base & FGEquipment_base;
 
-type FGEquipment_base = docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_mUseDefaultPrimaryFire & docs_json_ts_0_3_7_7_classes_base_overridable_FGEquipment_version_specific & docs_json_ts_0_3_7_7_classes_base_hasClassName & FGEquipment_version_specific;
+type FGEquipment_base = docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_mUseDefaultPrimaryFire & docs_json_ts_0_3_7_7_classes_base_overridable_FGEquipment_version_specific & docs_json_ts_0_3_7_7_classes_base_FGEquipment_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_hasClassName & FGEquipment_version_specific;
 
 type FGEquipment_version_specific = {
 	mAttachSocket: 'None' | 'hand_rSocket' | 'hand_lSocket' | 'jumpingStilt_lSocket' | 'helmetSocket' | 'root',

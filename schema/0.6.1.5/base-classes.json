@@ -1580,6 +1580,9 @@
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGEquipment--base"
 				},
 				{
+					"$ref": "#/$defs/FGEquipment--pre-1.0"
+				},
+				{
 					"$ref": "#/$defs/FGEquipment--version-specific"
 				}
 			]
@@ -1603,17 +1606,22 @@
 				}
 			}
 		},
+		"FGEquipment--pre-1.0": {
+			"type": "object",
+			"required": ["mOnlyVisibleToOwner"],
+			"properties": {
+				"mOnlyVisibleToOwner": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
+		},
 		"FGEquipment--version-specific": {
 			"type": "object",
 			"required": [
-				"mOnlyVisibleToOwner",
 				"mReceivedDamageModifiers",
 				"mEquipmentSlot"
 			],
 			"properties": {
-				"mOnlyVisibleToOwner": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
 				"mReceivedDamageModifiers": {
 					"type": "string",
 					"const": ""
