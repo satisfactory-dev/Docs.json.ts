@@ -139,19 +139,20 @@ type FGBuildable_pole_base = FGBuildable_base_version_specific & {
 
 type FGBuildable_pole_with_length_and_power = FGBuildable_pole_with_length_and_power_base & FGBuildable_powered;
 
-type FGBuildable_pole_with_length_and_power_base = FGBuildable_pole_with_length_and_power_base_base & FGBuildable_powered_base & FGBuildable_with_mLength;
+type FGBuildable_pole_with_length_and_power_base = FGBuildable_pole_with_length_and_power_base_base & FGBuildable & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildable_with_mLength;
 
-type FGBuildable_pole_with_length_and_power_base_base = FGBuildable_pole_base & FGBuildable_powered_base_base_base & FGBuildable_with_mLength;
+type FGBuildable_pole_with_length_and_power_base_base = FGBuildable_pole_base & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_with_mLength;
 
 type FGBuildable_powered = (FGBuildable & {
 	mSignificanceBias: docs_json_ts_common_types_decimal_string,
-}) & FGBuildable_powered_base;
+}) & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity;
 
-type FGBuildable_powered_base = FGBuildable & FGBuildable_powered_base_base;
+type FGBuildable_powered_pre_1_0 = isDescribed & {
+	mMaxPotentialIncreasePerCrystal: docs_json_ts_common_types_decimal_string,
+	OnReplicationDetailActorCreatedEvent: docs_json_ts_common_types_empty_object,
+};
 
-type FGBuildable_powered_base_base = FGBuildable_powered_base_base_base & FGBuildable_powered_base_base_with_mNumCyclesForProductivity;
-
-type FGBuildable_powered_base_base_base = isDescribed & {
+type FGBuildable_powered_version_specific = isDescribed & {
 	mPowerConsumption: docs_json_ts_common_types_decimal_string,
 	mPowerConsumptionExponent: docs_json_ts_common_types_decimal_string,
 	mOnHasPowerChanged: docs_json_ts_common_types_empty_object,
@@ -162,10 +163,8 @@ type FGBuildable_powered_base_base_base = isDescribed & {
 	mCanChangePotential: docs_json_ts_common_types_bool_string,
 	mMinPotential: docs_json_ts_common_types_decimal_string,
 	mMaxPotential: docs_json_ts_common_types_decimal_string,
-	mMaxPotentialIncreasePerCrystal: docs_json_ts_common_types_decimal_string,
 	mFluidStackSizeDefault: 'SS_FLUID',
 	mFluidStackSizeMultiplier: docs_json_ts_common_types_integer_string,
-	OnReplicationDetailActorCreatedEvent: docs_json_ts_common_types_empty_object,
 	mEffectUpdateInterval: docs_json_ts_common_types_decimal_string,
 	mAddToSignificanceManager: docs_json_ts_common_types_bool_string,
 	mSignificanceRange: docs_json_ts_common_types_decimal_string,
@@ -175,17 +174,17 @@ type FGBuildable_powered_base_base_with_mNumCyclesForProductivity = FGBuildable_
 	mNumCyclesForProductivity: docs_json_ts_common_types_integer_string,
 };
 
-type FGBuildable_powered_base_resources = FGBuildable_powered_base & FGBuildable_powered_base_resources_base;
+type FGBuildable_powered_base_resources = FGBuildable & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildable_powered_base_resources_base;
 
-type FGBuildable_powered_base_resources_base = docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_only_allow_certain_resources & FGBuildable_powered_base_base;
+type FGBuildable_powered_base_resources_base = docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_only_allow_certain_resources & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity;
 
 type FGBuildable_powered_storage = FGBuildable_powered & FGBuildable_powered_storage_base;
 
-type FGBuildable_powered_storage_base = FGBuildable_powered_base & FGBuildable_powered_storage_base_base;
+type FGBuildable_powered_storage_base = FGBuildable & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildable_powered_storage_base_base;
 
-type FGBuildable_powered_storage_base_base = FGBuildable_powered_base_base & FGBuildable_powered_storage_base_base_base;
+type FGBuildable_powered_storage_base_base = FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildable_powered_storage_base_base_base;
 
-type FGBuildable_powered_storage_base_base_base = FGBuildable_powered_base_base_base & {
+type FGBuildable_powered_storage_base_base_base = FGBuildable_powered_version_specific & {
 	mStorageSizeX: docs_json_ts_common_types_integer_string,
 	mStorageSizeY: docs_json_ts_common_types_integer_string,
 };
@@ -244,9 +243,9 @@ type FGBuildable_with_width_base = {
 
 type FGBuildableAttachment = FGBuildable_powered & FGBuildableAttachment_base;
 
-type FGBuildableAttachment_base = FGBuildable_powered_base & FGBuildableAttachment_base_base;
+type FGBuildableAttachment_base = FGBuildable & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildableAttachment_base_base;
 
-type FGBuildableAttachment_base_base = FGBuildable_base & FGBuildable_powered_base_base & FGBuildableAttachment_has_mCurrentInventoryIndex;
+type FGBuildableAttachment_base_base = FGBuildable_base & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildableAttachment_has_mCurrentInventoryIndex;
 
 type FGBuildableAttachment_has_mCurrentInventoryIndex = {
 	mCurrentInventoryIndex: docs_json_ts_common_types_integer_string,
@@ -312,31 +311,31 @@ type FGBuildableDockingStation_with_mFuelTransferSpeed_base = FGBuildable_dockin
 
 type FGBuildableFactory_jump_pad = FGBuildable_powered & FGBuildableFactory_jump_pad_base;
 
-type FGBuildableFactory_jump_pad_base = FGBuildable_powered_base & FGBuildableFactory_jump_pad_base_base;
+type FGBuildableFactory_jump_pad_base = FGBuildable & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildableFactory_jump_pad_base_base;
 
-type FGBuildableFactory_jump_pad_base_base = FGBuildable_powered_base_base & FGBuildableFactory_jump_pad_base_base_base;
+type FGBuildableFactory_jump_pad_base_base = FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildableFactory_jump_pad_base_base_base;
 
-type FGBuildableFactory_jump_pad_base_base_base = FGBuildable_powered_base_base_base & {
+type FGBuildableFactory_jump_pad_base_base_base = FGBuildable_powered_version_specific & {
 	JumpForceCharacter: docs_json_ts_common_types_decimal_string,
 	JumpForcePhysics: docs_json_ts_common_types_decimal_string,
 };
 
 type FGBuildableFactory_landing_pad = FGBuildable_powered & FGBuildableFactory_landing_pad_base;
 
-type FGBuildableFactory_landing_pad_base = FGBuildable_powered_base & FGBuildableFactory_landing_pad_base_base;
+type FGBuildableFactory_landing_pad_base = FGBuildable & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildableFactory_landing_pad_base_base;
 
-type FGBuildableFactory_landing_pad_base_base = FGBuildable_powered_base_base & FGBuildableFactory_landing_pad_base_base_base;
+type FGBuildableFactory_landing_pad_base_base = FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildableFactory_landing_pad_base_base_base;
 
-type FGBuildableFactory_landing_pad_base_base_base = FGBuildable_powered_base_base_base & {
+type FGBuildableFactory_landing_pad_base_base_base = FGBuildable_powered_version_specific & {
 	mDampeningFactor: docs_json_ts_common_types_decimal_string,
 	mPlayerList: '',
 };
 
 type FGBuildableFactorySimpleProducer = FGBuildable_powered & FGBuildableFactorySimpleProducer_base;
 
-type FGBuildableFactorySimpleProducer_base = FGBuildable_powered_base & FGBuildableFactorySimpleProducer_base_base;
+type FGBuildableFactorySimpleProducer_base = FGBuildable & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildableFactorySimpleProducer_base_base;
 
-type FGBuildableFactorySimpleProducer_base_base = FGBuildable_powered_base_base_base & {
+type FGBuildableFactorySimpleProducer_base_base = FGBuildable_powered_version_specific & {
 	mTimeToProduceItem: docs_json_ts_common_types_decimal_string,
 	mEventType: 'EV_Christmas',
 };
@@ -361,15 +360,15 @@ type FGBuildableGenerator_base_base_base = FGBuildableGenerator_no_fuel_base_bas
 
 type FGBuildableGenerator_no_fuel = FGBuildable_powered & FGBuildableGenerator_no_fuel_base;
 
-type FGBuildableGenerator_no_fuel_base = FGBuildable_powered_base & FGBuildableGenerator_no_fuel_base_base;
+type FGBuildableGenerator_no_fuel_base = FGBuildable & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildableGenerator_no_fuel_base_base;
 
-type FGBuildableGenerator_no_fuel_base_base = FGBuildable_powered_base_base & FGBuildableGenerator_no_fuel_base_base_base;
+type FGBuildableGenerator_no_fuel_base_base = FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildableGenerator_no_fuel_base_base_base;
 
 type FGBuildableGenerator_no_fuel_base_base_base = FGBuildableGenerator_no_fuel_base_base_base_base & {
 	mPowerProductionExponent: docs_json_ts_common_types_decimal_string,
 };
 
-type FGBuildableGenerator_no_fuel_base_base_base_base = FGBuildable_powered_base_base_base & {
+type FGBuildableGenerator_no_fuel_base_base_base_base = FGBuildable_powered_version_specific & {
 	mPowerProduction: docs_json_ts_common_types_decimal_string,
 	mLoadPercentage: docs_json_ts_common_types_decimal_string,
 };
@@ -441,11 +440,11 @@ type FGBuildableGeneratorNuclear_base_base_base = FGBuildableGenerator_no_fuel_b
 
 type FGBuildableJumppad = FGBuildable_powered & FGBuildableJumppad_base;
 
-type FGBuildableJumppad_base = FGBuildable_powered_base & FGBuildableJumppad_base_base;
+type FGBuildableJumppad_base = FGBuildable & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildableJumppad_base_base;
 
-type FGBuildableJumppad_base_base = FGBuildable_powered_base_base & FGBuildableJumppad_base_base_base;
+type FGBuildableJumppad_base_base = FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildableJumppad_base_base_base;
 
-type FGBuildableJumppad_base_base_base = FGBuildable_powered_base_base_base & {
+type FGBuildableJumppad_base_base_base = FGBuildable_powered_version_specific & {
 	mPowerBankCapacity: docs_json_ts_common_types_decimal_string,
 	mLaunchPowerCost: docs_json_ts_common_types_decimal_string,
 	mChargeRateMultiplier: docs_json_ts_common_types_decimal_string,
@@ -476,11 +475,11 @@ type FGBuildableLadder_base = FGBuildable_with_width_base & {
 	mLadderMeshes: '',
 };
 
-type FGBuildableManufacturer_base = FGBuildable_powered_base & FGBuildableManufacturer_base_base;
+type FGBuildableManufacturer_base = FGBuildable & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildableManufacturer_base_base;
 
-type FGBuildableManufacturer_base_base = FGBuildable_powered_base_base & FGBuildableManufacturer_base_base_base;
+type FGBuildableManufacturer_base_base = FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildableManufacturer_base_base_base;
 
-type FGBuildableManufacturer_base_base_base = FGBuildable_powered_base_base_base & {
+type FGBuildableManufacturer_base_base_base = FGBuildable_powered_version_specific & {
 	mCurrentRecipeChanged: docs_json_ts_common_types_empty_object,
 	mManufacturingSpeed: docs_json_ts_common_types_decimal_string,
 	mFactoryInputConnections: '',
@@ -489,27 +488,27 @@ type FGBuildableManufacturer_base_base_base = FGBuildable_powered_base_base_base
 	mPipeOutputConnections: '',
 };
 
-type FGBuildableManufacturer_base_IsPowered = FGBuildable_powered_base & FGBuildableManufacturer_base_IsPowered_base;
+type FGBuildableManufacturer_base_IsPowered = FGBuildable & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildableManufacturer_base_IsPowered_base;
 
-type FGBuildableManufacturer_base_IsPowered_base = FGBuildable_powered_base_base & FGBuildableManufacturer_base_IsPowered_base_base;
+type FGBuildableManufacturer_base_IsPowered_base = FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildableManufacturer_base_IsPowered_base_base;
 
-type FGBuildableManufacturer_base_IsPowered_base_base = FGBuildable_powered_base_base_base & {
+type FGBuildableManufacturer_base_IsPowered_base_base = FGBuildable_powered_version_specific & {
 	IsPowered: docs_json_ts_common_types_bool_string,
 };
 
-type FGBuildableManufacturer_base_mProductionEffectsRunning = FGBuildable_powered_base & FGBuildableManufacturer_base_mProductionEffectsRunning_base;
+type FGBuildableManufacturer_base_mProductionEffectsRunning = FGBuildable & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildableManufacturer_base_mProductionEffectsRunning_base;
 
-type FGBuildableManufacturer_base_mProductionEffectsRunning_base = FGBuildable_powered_base_base & FGBuildableManufacturer_base_mProductionEffectsRunning_base_base;
+type FGBuildableManufacturer_base_mProductionEffectsRunning_base = FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildableManufacturer_base_mProductionEffectsRunning_base_base;
 
-type FGBuildableManufacturer_base_mProductionEffectsRunning_base_base = FGBuildable_powered_base_base_base & {
+type FGBuildableManufacturer_base_mProductionEffectsRunning_base_base = FGBuildable_powered_version_specific & {
 	mProductionEffectsRunning: docs_json_ts_common_types_bool_string,
 };
 
-type FGBuildableManufacturer_base_packager = FGBuildable_powered_base & FGBuildableManufacturer_base_packager_base;
+type FGBuildableManufacturer_base_packager = FGBuildable & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildableManufacturer_base_packager_base;
 
-type FGBuildableManufacturer_base_packager_base = FGBuildable_powered_base_base & FGBuildableManufacturer_base_packager_base_base;
+type FGBuildableManufacturer_base_packager_base = FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildableManufacturer_base_packager_base_base;
 
-type FGBuildableManufacturer_base_packager_base_base = FGBuildable_powered_base_base_base & {
+type FGBuildableManufacturer_base_packager_base_base = FGBuildable_powered_version_specific & {
 	mCurrentColor_VFX: docs_json_ts_common_types_RGBA,
 	CurrentPackagingMode: '',
 };
@@ -528,7 +527,7 @@ type FGBuildableManufacturer_Build_Packager_C = FGBuildable_powered & FGBuildabl
 
 type FGBuildableManufacturer_Build_SmelterMk1_C = FGBuildable_powered & FGBuildableManufacturer_base & FGBuildableManufacturer_base_mProductionEffectsRunning & FGBuildableManufacturer_Build_SmelterMk1_C_base;
 
-type FGBuildableManufacturer_Build_SmelterMk1_C_base = FGBuildable_powered_base_base & FGBuildableManufacturer_base_base & FGBuildableManufacturer_base_mProductionEffectsRunning_base;
+type FGBuildableManufacturer_Build_SmelterMk1_C_base = FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildableManufacturer_base_base & FGBuildableManufacturer_base_mProductionEffectsRunning_base;
 
 type FGBuildablePipeHyper = FGBuildable & FGBuildable_spline;
 
@@ -571,7 +570,7 @@ type FGBuildablePipeline_base_spline_base = FGBuildable_spline & FGBuildablePipe
 
 type FGBuildablePipeline_junction = FGBuildable_powered & FGBuildablePipeline_junction_base;
 
-type FGBuildablePipeline_junction_base = FGBuildable_powered_base & FGBuildablePipeline_base_no_indicator_base;
+type FGBuildablePipeline_junction_base = FGBuildable & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildablePipeline_base_no_indicator_base;
 
 type FGBuildablePipelineJunction = FGBuildablePipeline_junction & FGBuildablePipelineJunction_base;
 
@@ -579,19 +578,13 @@ type FGBuildablePipelineJunction_base = FGBuildablePipeline_junction_base & {
 	mFluidBoxVolume: docs_json_ts_common_types_decimal_string,
 };
 
-type FGBuildablePipelinePump_base = FGBuildablePipeline_base & FGBuildablePipelinePump_base_base & FGBuildablePipelinePump_powered_base_base;
-
-type FGBuildablePipelinePump_base_base = FGBuildablePipelinePump_base_base_base & FGBuildablePipelinePump_powered_base_base_base;
-
-type FGBuildablePipelinePump_base_base_base = FGBuildablePipeline_base_base & FGBuildablePipelinePump_powered_base_base_base_base;
+type FGBuildablePipelinePump_base_base = FGBuildablePipeline_base_base & FGBuildablePipelinePump_powered_version_specific & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity;
 
 type FGBuildablePipelinePump_powered_base = FGBuildable_powered & FGBuildablePipelinePump_powered_base_base;
 
-type FGBuildablePipelinePump_powered_base_base = FGBuildable_powered_base & FGBuildablePipelinePump_powered_base_base_base;
+type FGBuildablePipelinePump_powered_base_base = FGBuildable & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildablePipelinePump_powered_version_specific;
 
-type FGBuildablePipelinePump_powered_base_base_base = FGBuildable_powered_base_base & FGBuildablePipelinePump_powered_base_base_base_base;
-
-type FGBuildablePipelinePump_powered_base_base_base_base = FGBuildable_powered_base_base_base & {
+type FGBuildablePipelinePump_powered_version_specific = {
 	mLastFlowUpdate: docs_json_ts_common_types_decimal_string,
 	mUpdateFlowTime: docs_json_ts_common_types_decimal_string,
 	mAnimSpeed: docs_json_ts_common_types_decimal_string,
@@ -605,20 +598,16 @@ type FGBuildablePipelinePump_powered_base_base_base_base = FGBuildable_powered_b
 	mFluidBoxVolume: docs_json_ts_common_types_decimal_string,
 };
 
-type FGBuildablePipelinePump_pump = FGBuildablePipelinePump_powered_base & FGBuildablePipelinePump_pump_base;
+type FGBuildablePipelinePump_pump = FGBuildablePipelinePump_powered_base & FGBuildablePipeline_base & FGBuildablePipelinePump_base_base & FGBuildablePipelinePump_powered_base_base & FGBuildablePipeline_base_base & FGBuildablePipelinePump_powered_version_specific & FGBuildablePipelinePump_pump_version_specific;
 
-type FGBuildablePipelinePump_pump_base = FGBuildablePipelinePump_base & FGBuildablePipelinePump_pump_base_base;
-
-type FGBuildablePipelinePump_pump_base_base = FGBuildablePipelinePump_base_base & FGBuildablePipelinePump_pump_base_base_base;
-
-type FGBuildablePipelinePump_pump_base_base_base = FGBuildablePipelinePump_base_base_base & {
+type FGBuildablePipelinePump_pump_version_specific = {
 	mPistonAudioTimer?: docs_json_ts_common_types_empty_object,
 	mIsPipePumpPlaying: docs_json_ts_common_types_bool_string,
 	mIsExceedingHeadLift: docs_json_ts_common_types_bool_string,
 	mCurrentAudioHeadLift: docs_json_ts_common_types_decimal_string,
 };
 
-type FGBuildablePipelinePump_valve = FGBuildable_powered & FGBuildablePipelinePump_base;
+type FGBuildablePipelinePump_valve = FGBuildable_powered & FGBuildablePipeline_base & FGBuildablePipelinePump_base_base & FGBuildablePipelinePump_powered_base_base;
 
 type FGBuildablePipelineSupport = FGBuildable_base & FGBuildable_base_pre_update5 & FGBuildable_with_mLength & FGBuildablePipelineSupport_base;
 
@@ -628,11 +617,11 @@ type FGBuildablePipelineSupport_base = FGBuildable_pole_base & {
 
 type FGBuildablePipeReservoir = FGBuildable_powered & FGBuildablePipeReservoir_base;
 
-type FGBuildablePipeReservoir_base = FGBuildable_powered_base & FGBuildablePipeReservoir_base_base;
+type FGBuildablePipeReservoir_base = FGBuildable & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildablePipeReservoir_base_base;
 
-type FGBuildablePipeReservoir_base_base = FGBuildable_powered_base_base & FGBuildablePipeReservoir_base_base_base;
+type FGBuildablePipeReservoir_base_base = FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildablePipeReservoir_base_base_base;
 
-type FGBuildablePipeReservoir_base_base_base = FGBuildable_powered_base_base_base & {
+type FGBuildablePipeReservoir_base_base_base = FGBuildable_powered_version_specific & {
 	mStackingHeight: docs_json_ts_common_types_decimal_string,
 	mFluidBox: docs_json_ts_common_types_empty_object,
 	mStorageCapacity: docs_json_ts_common_types_decimal_string,
@@ -655,7 +644,7 @@ type FGBuildablePowerPole_base = {
 
 type FGBuildableRadarTower = FGBuildable_powered & FGBuildableRadarTower_base;
 
-type FGBuildableRadarTower_base = FGBuildable_powered_base & FGBuildableRadarTower_base_base;
+type FGBuildableRadarTower_base = FGBuildable & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildableRadarTower_base_base;
 
 type FGBuildableRadarTower_base_base = {
 	mMapText: 'Radar Tower',
@@ -687,7 +676,7 @@ type FGBuildableRailroadTrack_base = FGBuildable_with_mMeshLength & {
 
 type FGBuildableResourceExtractor = FGBuildableResourceExtractor_with_mAllowedResourceForms & FGBuildableResourceExtractor_with_mExtractionOffset & FGBuildableResourceExtractor_with_mRequireResourceAtMinimumDepthChecks & FGBuildableResourceExtractor_with_placement;
 
-type FGBuildableResourceExtractor_base = docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_only_allow_certain_resources & FGBuildable_powered_base & FGBuildableResourceExtractor_piped & FGBuildableResourceExtractor_timed;
+type FGBuildableResourceExtractor_base = docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_only_allow_certain_resources & FGBuildable & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildableResourceExtractor_piped & FGBuildableResourceExtractor_timed;
 
 type FGBuildableResourceExtractor_miner = docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_miner_base & docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_only_allow_certain_resources & FGBuildable_powered_base_resources & FGBuildable_powered_base_resources_base & FGBuildableResourceExtractor_base & FGBuildableResourceExtractor_miner_base & FGBuildableResourceExtractor_piped & FGBuildableResourceExtractor_timed;
 
@@ -713,14 +702,14 @@ type FGBuildableResourceExtractor_miner_mk2 = FGBuildable_powered & FGBuildableR
 
 type FGBuildableResourceExtractor_miner_mk2_base = FGBuildableResourceExtractor_miner & FGBuildableResourceExtractor_miner_mk2_base_base;
 
-type FGBuildableResourceExtractor_miner_mk2_base_base = docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_miner_base & docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_only_allow_certain_resources & FGBuildable_powered_base_base & FGBuildable_powered_base_resources_base & FGBuildableResourceExtractor_miner_base & FGBuildableResourceExtractor_miner_mk2_base_base_base & FGBuildableResourceExtractor_piped & FGBuildableResourceExtractor_timed;
+type FGBuildableResourceExtractor_miner_mk2_base_base = docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_miner_base & docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_only_allow_certain_resources & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildable_powered_base_resources_base & FGBuildableResourceExtractor_miner_base & FGBuildableResourceExtractor_miner_mk2_base_base_base & FGBuildableResourceExtractor_piped & FGBuildableResourceExtractor_timed;
 
 type FGBuildableResourceExtractor_miner_mk2_base_base_base = {
 	mCanPlayAfterStartUpStopped: docs_json_ts_common_types_bool_string,
 	mDisplayName: 'Miner Mk.2',
 };
 
-type FGBuildableResourceExtractor_miner_mk3 = docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_miner_base & docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_only_allow_certain_resources & FGBuildable_powered & FGBuildable_powered_base_base & FGBuildable_powered_base_resources_base & FGBuildableResourceExtractor & FGBuildableResourceExtractor_miner & FGBuildableResourceExtractor_miner_base & FGBuildableResourceExtractor_miner_mk3_version_specific & FGBuildableResourceExtractor_piped & FGBuildableResourceExtractor_timed;
+type FGBuildableResourceExtractor_miner_mk3 = docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_miner_base & docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_only_allow_certain_resources & FGBuildable_powered & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildable_powered_base_resources_base & FGBuildableResourceExtractor & FGBuildableResourceExtractor_miner & FGBuildableResourceExtractor_miner_base & FGBuildableResourceExtractor_miner_mk3_version_specific & FGBuildableResourceExtractor_piped & FGBuildableResourceExtractor_timed;
 
 type FGBuildableResourceExtractor_miner_mk3_version_specific = {
 	mCanPlayAfterStartUpStopped: docs_json_ts_common_types_bool_string,
@@ -731,7 +720,7 @@ type FGBuildableResourceExtractor_oil = FGBuildable_powered & FGBuildableResourc
 
 type FGBuildableResourceExtractor_oil_base = docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_only_allow_certain_resources & FGBuildable_powered_base_resources & FGBuildable_powered_base_resources_base & FGBuildableResourceExtractor_base & FGBuildableResourceExtractor_oil_base_base & FGBuildableResourceExtractor_piped & FGBuildableResourceExtractor_timed;
 
-type FGBuildableResourceExtractor_oil_base_base = docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_only_allow_certain_resources & FGBuildable_powered_base_base & FGBuildable_powered_base_resources_base & FGBuildableResourceExtractor_oil_base_base_base & FGBuildableResourceExtractor_piped & FGBuildableResourceExtractor_timed;
+type FGBuildableResourceExtractor_oil_base_base = docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_only_allow_certain_resources & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildable_powered_base_resources_base & FGBuildableResourceExtractor_oil_base_base_base & FGBuildableResourceExtractor_piped & FGBuildableResourceExtractor_timed;
 
 type FGBuildableResourceExtractor_oil_base_base_base = {
 	mAllowedResourceForms: [
@@ -761,7 +750,7 @@ type FGBuildableResourceExtractor_water = FGBuildable_powered & FGBuildableResou
 
 type FGBuildableResourceExtractor_water_base = docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_only_allow_certain_resources & FGBuildable_powered_base_resources & FGBuildable_powered_base_resources_base & FGBuildableResourceExtractor_base & FGBuildableResourceExtractor_piped & FGBuildableResourceExtractor_timed & FGBuildableResourceExtractor_water_base_base & FGBuildableResourceExtractor_water_base_base_version_specific;
 
-type FGBuildableResourceExtractor_water_base_base = docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_only_allow_certain_resources & FGBuildable_powered_base_base & FGBuildable_powered_base_resources_base & FGBuildableResourceExtractor_piped & FGBuildableResourceExtractor_timed & FGBuildableResourceExtractor_water_base_base_base;
+type FGBuildableResourceExtractor_water_base_base = docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_only_allow_certain_resources & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildable_powered_base_resources_base & FGBuildableResourceExtractor_piped & FGBuildableResourceExtractor_timed & FGBuildableResourceExtractor_water_base_base_base;
 
 type FGBuildableResourceExtractor_water_base_base_base = {
 	mWaterpumpTimeline_RTPC_B8FA6F944E717E3B7A286E84901F620E: docs_json_ts_common_types_decimal_string,
@@ -809,27 +798,27 @@ type FGBuildableResourceSink = FGBuildable_powered & FGBuildableResourceSink_bas
 	mSavedProducingTimer: docs_json_ts_common_types_decimal_string,
 };
 
-type FGBuildableResourceSink_base = FGBuildable_powered_base & FGBuildableResourceSink_base_base;
+type FGBuildableResourceSink_base = FGBuildable & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildableResourceSink_base_base;
 
-type FGBuildableResourceSink_base_base = FGBuildable_powered_base_base & FGBuildableResourceSink_base_base_base;
+type FGBuildableResourceSink_base_base = FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildableResourceSink_base_base_base;
 
-type FGBuildableResourceSink_base_base_base = FGBuildable_powered_base_base_base & {
+type FGBuildableResourceSink_base_base_base = FGBuildable_powered_version_specific & {
 	mProcessingTime: docs_json_ts_common_types_decimal_string,
 };
 
 type FGBuildableResourceSinkShop = FGBuildable_powered & FGBuildableResourceSinkShop_base;
 
-type FGBuildableResourceSinkShop_base = FGBuildable_powered_base & FGBuildableResourceSinkShop_base_base;
+type FGBuildableResourceSinkShop_base = FGBuildable & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildableResourceSinkShop_base_base;
 
-type FGBuildableResourceSinkShop_base_base = FGBuildable_powered_base_base & FGBuildableResourceSinkShop_base_base_base;
+type FGBuildableResourceSinkShop_base_base = FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildableResourceSinkShop_base_base_base;
 
-type FGBuildableResourceSinkShop_base_base_base = FGBuildable_powered_base_base_base & {
+type FGBuildableResourceSinkShop_base_base_base = FGBuildable_powered_version_specific & {
 	mShopInventoryDefaultSize: docs_json_ts_common_types_integer_string,
 };
 
 type FGBuildableSpaceElevator = FGBuildable_powered & FGBuildableSpaceElevator_base;
 
-type FGBuildableSpaceElevator_base = FGBuildable_powered_base & FGBuildableSpaceElevator_base_base;
+type FGBuildableSpaceElevator_base = FGBuildable & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildableSpaceElevator_base_base;
 
 type FGBuildableSpaceElevator_base_base = {
 	mMapText: 'Space Elevator',
@@ -853,23 +842,19 @@ type FGBuildableSplitterSmart_version_specific = {
 
 type FGBuildableStorage = FGBuildable_powered & FGBuildableStorage_base;
 
-type FGBuildableStorage_base = FGBuildable_powered_base & FGBuildableStorage_base_base;
+type FGBuildableStorage_base = FGBuildable & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildableStorage_base_base;
 
-type FGBuildableStorage_base_base = FGBuildable_powered_base_base & FGBuildableStorage_base_base_base;
+type FGBuildableStorage_base_base = FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildableStorage_base_base_base;
 
-type FGBuildableStorage_base_base_base = FGBuildable_powered_base_base_base & {
+type FGBuildableStorage_base_base_base = FGBuildable_powered_version_specific & {
 	mStackingHeight: docs_json_ts_common_types_decimal_string,
 	mInventorySizeX: docs_json_ts_common_types_integer_string,
 	mInventorySizeY: docs_json_ts_common_types_integer_string,
 };
 
-type FGBuildableTradingPost = FGBuildable_powered & FGBuildableTradingPost_base & FGBuildableTradingPost_base_version_specific;
+type FGBuildableTradingPost = FGBuildable_powered & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildableTradingPost_version_specific & FGBuildableTradingPost_pre_update8 & FGBuildableTradingPost_pre_update5;
 
-type FGBuildableTradingPost_base = FGBuildable_powered_base_base & FGBuildableTradingPost_base_base;
-
-type FGBuildableTradingPost_base_base = FGBuildableTradingPost_base_base_base & FGBuildableTradingPost_base_base_version_specific;
-
-type FGBuildableTradingPost_base_base_base = FGBuildable_powered_base_base_base & {
+type FGBuildableTradingPost_version_specific = {
 	mWorkBenchOccupied: 'Craft Bench occupied',
 	mWorkBenchFree: 'Use Craft Bench',
 	mShipUpgradeLevel: docs_json_ts_common_types_integer_string,
@@ -885,22 +870,22 @@ type FGBuildableTradingPost_base_base_base = FGBuildable_powered_base_base_base 
 	mNeedPlayingBuildEffectNotification: docs_json_ts_common_types_bool_string,
 };
 
-type FGBuildableTradingPost_base_base_version_specific = FGBuildable_powered_base_base_base & {
+type FGBuildableTradingPost_pre_update8 = FGBuildable_powered_version_specific & {
 	Meshes: [
 		docs_json_ts_0_3_7_7_properties_Meshes_item,
 		...docs_json_ts_0_3_7_7_properties_Meshes_item[],
 	],
 };
 
-type FGBuildableTradingPost_base_version_specific = {
+type FGBuildableTradingPost_pre_update5 = {
 	mMapText: 'The HUB',
 };
 
 type FGBuildableTrainPlatform = FGBuildable_powered & FGBuildableTrainPlatform_base;
 
-type FGBuildableTrainPlatform_base = FGBuildable_powered_base & FGBuildableTrainPlatform_base_base;
+type FGBuildableTrainPlatform_base = FGBuildable & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildableTrainPlatform_base_base;
 
-type FGBuildableTrainPlatform_base_base = FGBuildable_powered_base_base_base & FGBuildableTrainPlatform_base_base_base & FGBuildableTrainPlatform_version_specific;
+type FGBuildableTrainPlatform_base_base = FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildableTrainPlatform_base_base_base & FGBuildableTrainPlatform_version_specific;
 
 type FGBuildableTrainPlatform_base_base_base = {
 	mIsOrientationReversed: docs_json_ts_common_types_bool_string,
@@ -1461,9 +1446,8 @@ export type {
 	FGBuildable_pole_with_length_and_power_base,
 	FGBuildable_pole_with_length_and_power_base_base,
 	FGBuildable_powered,
-	FGBuildable_powered_base,
-	FGBuildable_powered_base_base,
-	FGBuildable_powered_base_base_base,
+	FGBuildable_powered_pre_1_0,
+	FGBuildable_powered_version_specific,
 	FGBuildable_powered_base_base_with_mNumCyclesForProductivity,
 	FGBuildable_powered_base_resources,
 	FGBuildable_powered_base_resources_base,
@@ -1591,17 +1575,12 @@ export type {
 	FGBuildablePipeline_junction_base,
 	FGBuildablePipelineJunction,
 	FGBuildablePipelineJunction_base,
-	FGBuildablePipelinePump_base,
 	FGBuildablePipelinePump_base_base,
-	FGBuildablePipelinePump_base_base_base,
 	FGBuildablePipelinePump_powered_base,
 	FGBuildablePipelinePump_powered_base_base,
-	FGBuildablePipelinePump_powered_base_base_base,
-	FGBuildablePipelinePump_powered_base_base_base_base,
+	FGBuildablePipelinePump_powered_version_specific,
 	FGBuildablePipelinePump_pump,
-	FGBuildablePipelinePump_pump_base,
-	FGBuildablePipelinePump_pump_base_base,
-	FGBuildablePipelinePump_pump_base_base_base,
+	FGBuildablePipelinePump_pump_version_specific,
 	FGBuildablePipelinePump_valve,
 	FGBuildablePipelineSupport,
 	FGBuildablePipelineSupport_base,
@@ -1670,11 +1649,9 @@ export type {
 	FGBuildableStorage_base_base,
 	FGBuildableStorage_base_base_base,
 	FGBuildableTradingPost,
-	FGBuildableTradingPost_base,
-	FGBuildableTradingPost_base_base,
-	FGBuildableTradingPost_base_base_base,
-	FGBuildableTradingPost_base_base_version_specific,
-	FGBuildableTradingPost_base_version_specific,
+	FGBuildableTradingPost_version_specific,
+	FGBuildableTradingPost_pre_update8,
+	FGBuildableTradingPost_pre_update5,
 	FGBuildableTrainPlatform,
 	FGBuildableTrainPlatform_base,
 	FGBuildableTrainPlatform_base_base,

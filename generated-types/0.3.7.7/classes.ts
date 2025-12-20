@@ -49,6 +49,7 @@ import type {
 	FGBuildableResourceSink as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceSink,
 	FGBuildableResourceSinkShop as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceSinkShop,
 	FGBuildableSplitterSmart as docs_json_ts_0_3_7_7_classes_base_FGBuildableSplitterSmart,
+	FGBuildableStorage as docs_json_ts_0_3_7_7_classes_base_FGBuildableStorage,
 	FGBuildableTradingPost as docs_json_ts_0_3_7_7_classes_base_FGBuildableTradingPost,
 	FGBuildableTrainPlatform as docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatform,
 	FGBuildableTrainPlatformCargo as docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatformCargo,
@@ -81,7 +82,6 @@ import type {
 
 import type {
 	decimal_string as docs_json_ts_common_types_decimal_string,
-	integer_string as docs_json_ts_common_types_integer_string,
 	RGBA as docs_json_ts_common_types_RGBA,
 } from './../common/types.ts';
 
@@ -190,11 +190,7 @@ type FGBuildableSplitterSmart = docs_json_ts_0_3_7_7_classes_base_FGBuildableSpl
 
 type FGBuildableStair = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_and_elevation;
 
-type FGBuildableStorage = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered & {
-	mStackingHeight: docs_json_ts_common_types_decimal_string,
-	mInventorySizeX: docs_json_ts_common_types_integer_string,
-	mInventorySizeY: docs_json_ts_common_types_integer_string,
-};
+type FGBuildableStorage = docs_json_ts_0_3_7_7_classes_base_FGBuildableStorage;
 
 type FGBuildableTradingPost = docs_json_ts_0_3_7_7_classes_base_FGBuildableTradingPost & {
 	mMamFreeText: 'Use M.A.M.',
