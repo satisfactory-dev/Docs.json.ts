@@ -271,8 +271,8 @@
 		},
 		"FGBuildableStorage": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableStorage"
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableStorage",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableTradingPost": {
 			"type": "object",

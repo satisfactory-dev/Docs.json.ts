@@ -764,10 +764,10 @@
 		"FGBuildablePipelinePump--pump": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipelinePump--powered--version-specific"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipeline--base--base"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipeline--base--base"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipelinePump--powered--version-specific"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipelinePump--powered--version-specific"
@@ -1095,10 +1095,10 @@
 		"FGBuildableTradingPost": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableTradingPost--version-specific"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableTradingPost--pre-update8"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableTradingPost--pre-update8"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableTradingPost--version-specific"
 				},
 				{
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableTradingPost--base"

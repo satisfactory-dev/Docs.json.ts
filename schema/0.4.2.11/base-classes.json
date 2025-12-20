@@ -214,13 +214,13 @@
 		"FGBuildable--powered": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--base--base--with-mNumCyclesForProductivity"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--pre-1.0"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--version-specific"
-				},
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--base--base--with-mNumCyclesForProductivity"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable"
@@ -1350,13 +1350,13 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable"
 				},
 				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--base--base--with-mNumCyclesForProductivity"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--pre-1.0"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--version-specific"
-				},
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--base--base--with-mNumCyclesForProductivity"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipeline--base--no-indicator--base"
@@ -1369,13 +1369,13 @@
 		"FGBuildablePipeline--junction--base--base": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--base--base--with-mNumCyclesForProductivity"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--pre-1.0"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--version-specific"
-				},
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--base--base--with-mNumCyclesForProductivity"
 				},
 				{
 					"$ref": "#/$defs/FGBuildablePipeline--junction--base--base--base"
@@ -1451,19 +1451,19 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipeline--base"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipelinePump--base--base"
-				},
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipelinePump--powered-base--base"
-				},
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipelinePump--base--base"
-				},
-				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipeline--base--base"
 				},
 				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipelinePump--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipelinePump--base--base"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipelinePump--powered--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipelinePump--powered-base--base"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipelinePump--pump--version-specific"
@@ -1723,16 +1723,16 @@
 		"FGBuildableResourceExtractor--miner--mk3": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--pre-1.0"
-				},
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--version-specific"
-				},
-				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--base--base--with-mNumCyclesForProductivity"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--base--resources--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--pre-1.0"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--version-specific"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--miner"
@@ -1896,22 +1896,22 @@
 		"FGBuildableTradingPost": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--base--base--with-mNumCyclesForProductivity"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--pre-1.0"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--version-specific"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--base--base--with-mNumCyclesForProductivity"
-				},
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableTradingPost--version-specific"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableTradingPost--pre-update5"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableTradingPost--pre-update8"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableTradingPost--pre-update5"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableTradingPost--version-specific"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--powered"

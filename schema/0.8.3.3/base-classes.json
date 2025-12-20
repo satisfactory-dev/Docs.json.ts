@@ -1149,10 +1149,10 @@
 		"FGBuildablePipelinePump--pump": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipelinePump--powered--version-specific"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipeline--base--base"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipeline--base--base"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipelinePump--powered--version-specific"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipelinePump--powered--version-specific"
