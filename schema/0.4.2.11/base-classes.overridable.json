@@ -5,17 +5,17 @@
 		"FGItemDescriptorNuclearFuel": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGItemDescriptorNuclearFuel--base"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGItemDescriptorNuclearFuel--version-specific"
 				},
 				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGDescriptor"
 				},
 				{
-					"$ref": "#/$defs/FGItemDescriptorNuclearFuel--base"
+					"$ref": "#/$defs/FGItemDescriptorNuclearFuel--pre-1.0"
 				}
 			]
 		},
-		"FGItemDescriptorNuclearFuel--base": {
+		"FGItemDescriptorNuclearFuel--pre-1.0": {
 			"type": "object",
 			"required": ["mSpentFuelClass"],
 			"properties": {

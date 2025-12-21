@@ -11,11 +11,11 @@ import type {
 } from './../../0.3.7.7/types/overridable.ts';
 
 import type {
-	FGItemDescriptorNuclearFuel_base as docs_json_ts_0_4_2_11_classes_base_overridable_FGItemDescriptorNuclearFuel_base,
+	FGItemDescriptorNuclearFuel_pre_1_0 as docs_json_ts_0_4_2_11_classes_base_overridable_FGItemDescriptorNuclearFuel_pre_1_0,
 } from './../../0.4.2.11/classes/Base.overridable.ts';
 
 import type {
-	FGItemDescriptorNuclearFuel_base as docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_base,
+	FGItemDescriptorNuclearFuel_version_specific as docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_version_specific,
 } from './../../0.3.7.7/classes/Base.ts';
 
 import type {
@@ -40,7 +40,7 @@ type FGBuildable_is_wallish = {
 	mAngledVariants: null | docs_json_ts_0_3_7_7_overridable_DocsDotJson_BlueprintGeneratedClass_quoted_list,
 };
 
-type FGItemDescriptorNuclearFuel = docs_json_ts_0_4_2_11_classes_base_overridable_FGItemDescriptorNuclearFuel_base & docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_base & docs_json_ts_0_5_2_1_classes_base_FGItemDescriptor_base;
+type FGItemDescriptorNuclearFuel = docs_json_ts_0_4_2_11_classes_base_overridable_FGItemDescriptorNuclearFuel_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_version_specific & docs_json_ts_0_5_2_1_classes_base_FGItemDescriptor_base;
 
 type FGRecipe = docs_json_ts_0_4_2_11_classes_base_FGRecipe_base & FGRecipe_version_specific;
 

@@ -23,7 +23,7 @@ import type {
 
 import type {
 	FGConsumableDescriptor_base as docs_json_ts_0_3_7_7_classes_base_FGConsumableDescriptor_base,
-	FGItemDescriptorNuclearFuel_base as docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_base,
+	FGItemDescriptorNuclearFuel_version_specific as docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_version_specific,
 	FGRecipe_base as docs_json_ts_0_3_7_7_classes_base_FGRecipe_base,
 } from './../../0.3.7.7/classes/Base.ts';
 
@@ -56,7 +56,7 @@ import type {
 } from './../../common/types.ts';
 
 import type {
-	FGItemDescriptorNuclearFuel_base as docs_json_ts_0_4_2_11_classes_base_overridable_FGItemDescriptorNuclearFuel_base,
+	FGItemDescriptorNuclearFuel_pre_1_0 as docs_json_ts_0_4_2_11_classes_base_overridable_FGItemDescriptorNuclearFuel_pre_1_0,
 } from './../../0.4.2.11/classes/Base.overridable--0.8.3.3.ts';
 
 import type {
@@ -112,7 +112,7 @@ type FGItemDescriptor_version_specific = {
 	mMenuPriority: docs_json_ts_common_types_decimal_string,
 };
 
-type FGItemDescriptorNuclearFuel = docs_json_ts_0_4_2_11_classes_base_overridable_FGItemDescriptorNuclearFuel_base & docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_base & FGItemDescriptor_base;
+type FGItemDescriptorNuclearFuel = docs_json_ts_0_4_2_11_classes_base_overridable_FGItemDescriptorNuclearFuel_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_version_specific & FGItemDescriptor_base;
 
 type FGObjectScanner_version_specific = {
 	mScannableDescriptors: docs_json_ts_0_3_7_7_overridable_DocsDotJson_BlueprintGeneratedClass_quoted_list,

@@ -1,7 +1,7 @@
 /* eslint-disable @stylistic/max-len */
 
 import type {
-	FGItemDescriptorNuclearFuel_base as docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_base,
+	FGItemDescriptorNuclearFuel_version_specific as docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_version_specific,
 	FGSchematic_pre_1_0 as docs_json_ts_0_3_7_7_classes_base_FGSchematic_pre_1_0,
 	FGSchematic_pre_update6 as docs_json_ts_0_3_7_7_classes_base_FGSchematic_pre_update6,
 	instructive as docs_json_ts_0_3_7_7_classes_base_instructive,
@@ -38,9 +38,9 @@ import type {
 	XY_decimal_string as docs_json_ts_common_types_XY_decimal_string,
 } from './../../common/types.ts';
 
-type FGItemDescriptorNuclearFuel = docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_base & docs_json_ts_0_4_2_11_classes_base_FGDescriptor & FGItemDescriptorNuclearFuel_base;
+type FGItemDescriptorNuclearFuel = docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_version_specific & docs_json_ts_0_4_2_11_classes_base_FGDescriptor & FGItemDescriptorNuclearFuel_pre_1_0;
 
-type FGItemDescriptorNuclearFuel_base = {
+type FGItemDescriptorNuclearFuel_pre_1_0 = {
 	mSpentFuelClass: docs_json_ts_0_4_2_11_overridable_BlueprintGeneratedClass_single_quoted,
 };
 
@@ -77,7 +77,7 @@ type FGSchematic_has_mSchematicIcon = {
 
 export type {
 	FGItemDescriptorNuclearFuel,
-	FGItemDescriptorNuclearFuel_base,
+	FGItemDescriptorNuclearFuel_pre_1_0,
 	FGSchematic,
 	FGSchematic_base,
 	FGSchematic_has_mSchematicDependencies,

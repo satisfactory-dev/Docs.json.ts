@@ -1135,9 +1135,9 @@ type FGGolfCartDispenser_has_mArmAnimation = {
 	mArmAnimation: 'AE_Generic2Hand',
 };
 
-type FGItemDescriptorNuclearFuel = FGDescriptor_sinkable & FGItemDescriptorNuclearFuel_base;
+type FGItemDescriptorNuclearFuel = FGDescriptor_sinkable & FGItemDescriptorNuclearFuel_version_specific;
 
-type FGItemDescriptorNuclearFuel_base = FGDescriptor_sinkable_base & {
+type FGItemDescriptorNuclearFuel_version_specific = FGDescriptor_sinkable_base & {
 	mAmountOfWaste: docs_json_ts_common_types_integer_string,
 };
 
@@ -1716,7 +1716,7 @@ export type {
 	FGGolfCartDispenser,
 	FGGolfCartDispenser_has_mArmAnimation,
 	FGItemDescriptorNuclearFuel,
-	FGItemDescriptorNuclearFuel_base,
+	FGItemDescriptorNuclearFuel_version_specific,
 	FGJetPack,
 	FGJetPack_base,
 	FGJetPack_base_base,

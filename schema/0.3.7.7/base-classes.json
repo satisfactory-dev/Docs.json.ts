@@ -4726,11 +4726,11 @@
 					"$ref": "#/$defs/FGDescriptor--sinkable"
 				},
 				{
-					"$ref": "#/$defs/FGItemDescriptorNuclearFuel--base"
+					"$ref": "#/$defs/FGItemDescriptorNuclearFuel--version-specific"
 				}
 			]
 		},
-		"FGItemDescriptorNuclearFuel--base": {
+		"FGItemDescriptorNuclearFuel--version-specific": {
 			"type": "object",
 			"$ref": "#/$defs/FGDescriptor--sinkable--base",
 			"required": ["mAmountOfWaste"],
