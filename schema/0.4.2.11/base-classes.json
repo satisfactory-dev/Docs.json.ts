@@ -509,14 +509,32 @@
 					"$ref": "#/$defs/FGBuildable--docking-station--base"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableDroneStation--base"
+					"$ref": "#/$defs/FGBuildableDroneStation--version-specific"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableDroneStation--version-specific"
+					"$ref": "#/$defs/FGBuildableDroneStation--pre-1.0"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableDroneStation--pre-update5"
 				}
 			]
 		},
-		"FGBuildableDroneStation--base": {
+		"FGBuildableDroneStation--pre-1.0": {
+			"type": "object",
+			"required": [
+				"mBatteryStorageSizeX",
+				"mBatteryStorageSizeY"
+			],
+			"properties": {
+				"mBatteryStorageSizeX": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mBatteryStorageSizeY": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				}
+			}
+		},
+		"FGBuildableDroneStation--version-specific": {
 			"type": "object",
 			"required": [
 				"mStoppedProducingAnimationSounds",
@@ -535,9 +553,7 @@
 				"mDroneQueueVerticalSeparation",
 				"mTripPowerCost",
 				"mTripPowerPerMeterCost",
-				"mTripInformationSampleCount",
-				"mBatteryStorageSizeX",
-				"mBatteryStorageSizeY"
+				"mTripInformationSampleCount"
 			],
 			"properties": {
 				"mStoppedProducingAnimationSounds": {
@@ -595,16 +611,10 @@
 				},
 				"mTripInformationSampleCount": {
 					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-				},
-				"mBatteryStorageSizeX": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-				},
-				"mBatteryStorageSizeY": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
 				}
 			}
 		},
-		"FGBuildableDroneStation--version-specific": {
+		"FGBuildableDroneStation--pre-update5": {
 			"type": "object",
 			"$ref": "#/$defs/FGBuildable--docking-station--base",
 			"required": ["mMapText"],
