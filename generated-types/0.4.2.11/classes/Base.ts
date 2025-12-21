@@ -268,11 +268,15 @@ type FGBuildableConveyorLift = docs_json_ts_0_3_7_7_classes_base_FGBuildableConv
 
 type FGBuildableDockingStation = docs_json_ts_0_3_7_7_classes_base_FGBuildableDockingStation_base & FGBuildable_docking_station;
 
-type FGBuildableDroneStation = docs_json_ts_0_4_2_11_overridable_has_mBatteryClasses & FGBuildable_docking_station & FGBuildable_docking_station_base & FGBuildableDroneStation_version_specific & FGBuildableDroneStation_pre_1_0 & FGBuildableDroneStation_pre_update5;
+type FGBuildableDroneStation = docs_json_ts_0_4_2_11_overridable_has_mBatteryClasses & FGBuildable_docking_station & FGBuildable_docking_station_base & FGBuildableDroneStation_pre_1_0 & FGBuildableDroneStation_pre_update5 & FGBuildableDroneStation_version_specific;
 
 type FGBuildableDroneStation_pre_1_0 = {
 	mBatteryStorageSizeX: docs_json_ts_common_types_integer_string,
 	mBatteryStorageSizeY: docs_json_ts_common_types_integer_string,
+};
+
+type FGBuildableDroneStation_pre_update5 = FGBuildable_docking_station_base & {
+	mMapText: 'Drone Port',
 };
 
 type FGBuildableDroneStation_version_specific = {
@@ -293,10 +297,6 @@ type FGBuildableDroneStation_version_specific = {
 	mTripPowerCost: docs_json_ts_common_types_decimal_string,
 	mTripPowerPerMeterCost: docs_json_ts_common_types_decimal_string,
 	mTripInformationSampleCount: docs_json_ts_common_types_integer_string,
-};
-
-type FGBuildableDroneStation_pre_update5 = FGBuildable_docking_station_base & {
-	mMapText: 'Drone Port',
 };
 
 type FGBuildableFactory_jump_pad = docs_json_ts_0_3_7_7_classes_base_FGBuildableFactory_jump_pad_base & FGBuildable_powered;
@@ -828,8 +828,8 @@ export type {
 	FGBuildableDockingStation,
 	FGBuildableDroneStation,
 	FGBuildableDroneStation_pre_1_0,
-	FGBuildableDroneStation_version_specific,
 	FGBuildableDroneStation_pre_update5,
+	FGBuildableDroneStation_version_specific,
 	FGBuildableFactory_jump_pad,
 	FGBuildableFactory_landing_pad,
 	FGBuildableFactorySimpleProducer,

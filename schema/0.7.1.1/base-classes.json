@@ -315,10 +315,10 @@
 		"FGBuildableDroneStation": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableDroneStation--version-specific"
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableDroneStation--pre-1.0"
 				},
 				{
-					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableDroneStation--pre-1.0"
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableDroneStation--version-specific"
 				},
 				{
 					"$ref": "docs.json.ts--0.4.2.11--overridable#/$defs/has--mBatteryClasses"

@@ -509,28 +509,36 @@
 					"$ref": "#/$defs/FGBuildable--docking-station--base"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableDroneStation--version-specific"
-				},
-				{
 					"$ref": "#/$defs/FGBuildableDroneStation--pre-1.0"
 				},
 				{
 					"$ref": "#/$defs/FGBuildableDroneStation--pre-update5"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableDroneStation--version-specific"
 				}
 			]
 		},
 		"FGBuildableDroneStation--pre-1.0": {
 			"type": "object",
-			"required": [
-				"mBatteryStorageSizeX",
-				"mBatteryStorageSizeY"
-			],
+			"required": ["mBatteryStorageSizeX", "mBatteryStorageSizeY"],
 			"properties": {
 				"mBatteryStorageSizeX": {
 					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
 				},
 				"mBatteryStorageSizeY": {
 					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				}
+			}
+		},
+		"FGBuildableDroneStation--pre-update5": {
+			"type": "object",
+			"$ref": "#/$defs/FGBuildable--docking-station--base",
+			"required": ["mMapText"],
+			"properties": {
+				"mMapText": {
+					"type": "string",
+					"const": "Drone Port"
 				}
 			}
 		},
@@ -611,17 +619,6 @@
 				},
 				"mTripInformationSampleCount": {
 					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-				}
-			}
-		},
-		"FGBuildableDroneStation--pre-update5": {
-			"type": "object",
-			"$ref": "#/$defs/FGBuildable--docking-station--base",
-			"required": ["mMapText"],
-			"properties": {
-				"mMapText": {
-					"type": "string",
-					"const": "Drone Port"
 				}
 			}
 		},
