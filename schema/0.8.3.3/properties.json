@@ -82,7 +82,10 @@
 					"minLength": 1
 				},
 				"_C'",
-				{"type": "string", "minLength": 1},
+				{
+					"type": "string",
+					"minLength": 1
+				},
 				"'"
 			]
 		},
