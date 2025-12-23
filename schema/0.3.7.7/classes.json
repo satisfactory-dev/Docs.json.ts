@@ -431,29 +431,8 @@
 		},
 		"FGResourceDescriptor": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGDescriptor--sinkable",
-			"unevaluatedProperties": false,
-			"required": [
-				"mDecalSize",
-				"mPingColor",
-				"mCollectSpeedMultiplier",
-				"mManualMiningAudioName"
-			],
-			"properties": {
-				"mDecalSize": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mPingColor": {
-					"$ref": "docs.json.ts--common--types#/$defs/RGBA"
-				},
-				"mCollectSpeedMultiplier": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mManualMiningAudioName": {
-					"type": "string",
-					"const": "Metal"
-				}
-			}
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGResourceDescriptor",
+			"unevaluatedProperties": false
 		},
 		"FGSchematic": {
 			"type": "object",

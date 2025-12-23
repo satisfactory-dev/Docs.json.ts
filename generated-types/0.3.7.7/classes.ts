@@ -73,6 +73,7 @@ import type {
 	FGPipeHyperStart as docs_json_ts_0_3_7_7_classes_base_FGPipeHyperStart,
 	FGPortableMinerDispenser as docs_json_ts_0_3_7_7_classes_base_FGPortableMinerDispenser,
 	FGRecipe as docs_json_ts_0_3_7_7_classes_base_FGRecipe,
+	FGResourceDescriptor as docs_json_ts_0_3_7_7_classes_base_FGResourceDescriptor,
 	FGSchematic as docs_json_ts_0_3_7_7_classes_base_FGSchematic,
 	FGSnowballWeapon as docs_json_ts_0_3_7_7_classes_base_FGSnowballWeapon,
 	FGSuitBase as docs_json_ts_0_3_7_7_classes_base_FGSuitBase,
@@ -82,7 +83,6 @@ import type {
 
 import type {
 	decimal_string as docs_json_ts_common_types_decimal_string,
-	RGBA as docs_json_ts_common_types_RGBA,
 } from './../common/types.ts';
 
 type FGBuildable_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable;
@@ -251,12 +251,7 @@ type FGPortableMinerDispenser = docs_json_ts_0_3_7_7_classes_base_FGPortableMine
 
 type FGRecipe = docs_json_ts_0_3_7_7_classes_base_FGRecipe;
 
-type FGResourceDescriptor = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_sinkable & {
-	mDecalSize: docs_json_ts_common_types_decimal_string,
-	mPingColor: docs_json_ts_common_types_RGBA,
-	mCollectSpeedMultiplier: docs_json_ts_common_types_decimal_string,
-	mManualMiningAudioName: 'Metal',
-};
+type FGResourceDescriptor = docs_json_ts_0_3_7_7_classes_base_FGResourceDescriptor;
 
 type FGSchematic = docs_json_ts_0_3_7_7_classes_base_FGSchematic;
 

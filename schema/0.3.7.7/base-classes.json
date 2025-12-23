@@ -5189,12 +5189,14 @@
 				},
 				{
 					"$ref": "#/$defs/FGResourceDescriptor--base"
+				},
+				{
+					"$ref": "#/$defs/FGResourceDescriptor--pre-1.0"
 				}
 			]
 		},
 		"FGResourceDescriptor--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGDescriptor--sinkable--base",
 			"required": [
 				"mDecalSize",
 				"mPingColor",
@@ -5211,6 +5213,16 @@
 				"mCollectSpeedMultiplier": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
+				"mManualMiningAudioName": {
+					"type": "string",
+					"minLength": 1
+				}
+			}
+		},
+		"FGResourceDescriptor--pre-1.0": {
+			"type": "object",
+			"required": ["mManualMiningAudioName"],
+			"properties": {
 				"mManualMiningAudioName": {
 					"type": "string",
 					"const": "Metal"

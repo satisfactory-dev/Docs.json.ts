@@ -1265,12 +1265,16 @@ type FGRecipe_mProducedIn = instructive & {
 	mProducedIn: docs_json_ts_0_3_7_7_properties_mProducedIn,
 };
 
-type FGResourceDescriptor = FGDescriptor_sinkable & FGResourceDescriptor_base;
+type FGResourceDescriptor = FGDescriptor_sinkable & FGResourceDescriptor_base & FGResourceDescriptor_pre_1_0;
 
-type FGResourceDescriptor_base = FGDescriptor_sinkable_base & {
+type FGResourceDescriptor_base = {
 	mDecalSize: docs_json_ts_common_types_decimal_string,
 	mPingColor: docs_json_ts_common_types_RGBA,
 	mCollectSpeedMultiplier: docs_json_ts_common_types_decimal_string,
+	mManualMiningAudioName: Exclude<string, ''>,
+};
+
+type FGResourceDescriptor_pre_1_0 = {
 	mManualMiningAudioName: 'Metal',
 };
 
@@ -1746,6 +1750,7 @@ export type {
 	FGRecipe_mProducedIn,
 	FGResourceDescriptor,
 	FGResourceDescriptor_base,
+	FGResourceDescriptor_pre_1_0,
 	FGSchematic,
 	FGSchematic_pre_1_0,
 	FGSchematic_pre_update4,
