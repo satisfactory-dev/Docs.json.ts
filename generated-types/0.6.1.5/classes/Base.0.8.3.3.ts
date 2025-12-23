@@ -35,6 +35,7 @@ import type {
 import type {
 	FGDescriptor as docs_json_ts_0_6_1_5_classes_base_FGDescriptor,
 	FGItemDescriptor_pre_1_0 as docs_json_ts_0_6_1_5_classes_base_FGItemDescriptor_pre_1_0,
+	FGItemDescriptor_version_specific as docs_json_ts_0_6_1_5_classes_base_FGItemDescriptor_version_specific,
 	FGRecipe_version_specific as docs_json_ts_0_6_1_5_classes_base_FGRecipe_version_specific,
 	FGVehicleDescriptor_Desc_CyberWagon_C as docs_json_ts_0_6_1_5_classes_base_FGVehicleDescriptor_Desc_CyberWagon_C,
 	FGVehicleDescriptor_Desc_DroneTransport_C as docs_json_ts_0_6_1_5_classes_base_FGVehicleDescriptor_Desc_DroneTransport_C,
@@ -46,16 +47,6 @@ import type {
 } from './Base.ts';
 
 import type {
-	FGItemDescriptor_version_specific_mDescriptorStatBars_item as docs_json_ts_0_6_1_5_properties_FGItemDescriptor_version_specific_mDescriptorStatBars_item,
-} from './../types/properties.ts';
-
-import type {
-	BGRA as docs_json_ts_common_types_BGRA,
-	bool_string as docs_json_ts_common_types_bool_string,
-	decimal_string as docs_json_ts_common_types_decimal_string,
-} from './../../common/types.ts';
-
-import type {
 	FGItemDescriptorNuclearFuel_pre_1_0 as docs_json_ts_0_4_2_11_classes_base_overridable_FGItemDescriptorNuclearFuel_pre_1_0,
 } from './../../0.4.2.11/classes/Base.overridable--0.8.3.3.ts';
 
@@ -63,13 +54,16 @@ import type {
 	FGRecipe_version_specific as docs_json_ts_0_5_2_1_classes_base_overridable_FGRecipe_version_specific,
 } from './../../0.5.2.1/classes/Base.overridable--0.8.3.3.ts';
 
-type FGAmmoType_base = FGAmmoType_version_specific & FGItemDescriptor_base;
+type FGAmmoType_base = FGAmmoType_pre_1_0 & FGAmmoType_version_specific & FGItemDescriptor_base;
 
-type FGAmmoType_version_specific = {
+type FGAmmoType_pre_1_0 = {
 	mMagazineMeshMaterials: null | [
 		docs_json_ts_0_6_1_5_overridable_mMagazineMeshMaterials_item,
 		...docs_json_ts_0_6_1_5_overridable_mMagazineMeshMaterials_item[],
 	],
+};
+
+type FGAmmoType_version_specific = {
 	mAmmoDamageFalloff: docs_json_ts_0_5_2_1_properties_FalloffCurve_EditorCurveData_only | docs_json_ts_0_5_2_1_overridable_FalloffCurve_EditorCurveData_with_ExternalCurve,
 };
 
@@ -93,23 +87,13 @@ type FGBuildableRadarTower_version_specific = {
 
 type FGConsumableDescriptor = docs_json_ts_0_3_7_7_classes_base_FGConsumableDescriptor_base & docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable_base & FGItemDescriptor_base;
 
-type FGItemDescriptor_base = docs_json_ts_0_6_1_5_classes_base_FGDescriptor & docs_json_ts_0_6_1_5_classes_base_FGItemDescriptor_pre_1_0 & docs_json_ts_0_6_1_5_overridable_has_mSubCategories & FGItemDescriptor_version_specific;
+type FGItemDescriptor_base = docs_json_ts_0_6_1_5_classes_base_FGDescriptor & docs_json_ts_0_6_1_5_classes_base_FGItemDescriptor_pre_1_0 & docs_json_ts_0_6_1_5_classes_base_FGItemDescriptor_version_specific & docs_json_ts_0_6_1_5_overridable_has_mSubCategories & FGItemDescriptor_version_specific;
 
 type FGItemDescriptor_version_specific = {
-	mCrosshairMaterial: 'None' | `/Game/FactoryGame/Interface/UI/Material/Crosshairs/MI_UI_Crosshair_${Exclude<string, ''>}${'.MI_UI_Crosshair_'}${Exclude<string, ''>}`,
-	mDescriptorStatBars: null | [
-		docs_json_ts_0_6_1_5_properties_FGItemDescriptor_version_specific_mDescriptorStatBars_item,
-		...docs_json_ts_0_6_1_5_properties_FGItemDescriptor_version_specific_mDescriptorStatBars_item[],
-	],
 	mCompatibleItemDescriptors: null | [
 		docs_json_ts_0_6_1_5_overridable_mCompatibleItemDescriptors_item,
 		...docs_json_ts_0_6_1_5_overridable_mCompatibleItemDescriptors_item[],
 	],
-	mScannableType: 'RTWOT_Default' | 'RTWOT_WeakSignal' | 'RTWOT_Flora',
-	mShouldOverrideScannerDisplayText: docs_json_ts_common_types_bool_string,
-	mScannerDisplayText: string,
-	mScannerLightColor: docs_json_ts_common_types_BGRA,
-	mMenuPriority: docs_json_ts_common_types_decimal_string,
 };
 
 type FGItemDescriptorNuclearFuel = docs_json_ts_0_4_2_11_classes_base_overridable_FGItemDescriptorNuclearFuel_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_version_specific & FGItemDescriptor_base;
@@ -142,6 +126,7 @@ type FGVehicleDescriptor_Desc_Truck_C = docs_json_ts_0_6_1_5_classes_base_FGVehi
 
 export type {
 	FGAmmoType_base,
+	FGAmmoType_pre_1_0,
 	FGAmmoType_version_specific,
 	FGAmmoTypeProjectile_version_specific,
 	FGBuildable_base_version_specific,

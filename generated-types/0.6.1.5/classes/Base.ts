@@ -113,6 +113,7 @@ import type {
 	DamageTypes as docs_json_ts_0_6_1_5_properties_DamageTypes,
 	DocsDotJson_AkAudioEvent_quoted_list as docs_json_ts_0_6_1_5_properties_DocsDotJson_AkAudioEvent_quoted_list,
 	FGBuildable_mOcclusionBoxInfo_item as docs_json_ts_0_6_1_5_properties_FGBuildable_mOcclusionBoxInfo_item,
+	FGItemDescriptor_version_specific_mDescriptorStatBars_item as docs_json_ts_0_6_1_5_properties_FGItemDescriptor_version_specific_mDescriptorStatBars_item,
 	FGObjectScanner_mObjectDetails_item as docs_json_ts_0_6_1_5_properties_FGObjectScanner_mObjectDetails_item,
 	mAllowedResourceForms as docs_json_ts_0_6_1_5_properties_mAllowedResourceForms,
 	mDisableSnapOn_front_right as docs_json_ts_0_6_1_5_properties_mDisableSnapOn_front_right,
@@ -120,6 +121,7 @@ import type {
 } from './../types/properties.ts';
 
 import type {
+	BGRA as docs_json_ts_common_types_BGRA,
 	bool_string as docs_json_ts_common_types_bool_string,
 	decimal_string as docs_json_ts_common_types_decimal_string,
 	decimal_string_signed as docs_json_ts_common_types_decimal_string_signed,
@@ -590,6 +592,19 @@ type FGItemDescriptor = docs_json_ts_0_6_1_5_classes_base_overridable_FGItemDesc
 
 type FGItemDescriptor_pre_1_0 = {
 	mClassToScanFor: 'None' | `/Game/FactoryGame/${'Resource/Environment/' | 'World/Benefit/'}${string}${'/BP_'}${Exclude<string, ''>}${'.BP_'}${Exclude<string, ''>}`,
+	mDescriptorStatBars: null | [
+		docs_json_ts_0_6_1_5_properties_FGItemDescriptor_version_specific_mDescriptorStatBars_item,
+		...docs_json_ts_0_6_1_5_properties_FGItemDescriptor_version_specific_mDescriptorStatBars_item[],
+	],
+};
+
+type FGItemDescriptor_version_specific = {
+	mCrosshairMaterial: 'None' | `/Game/FactoryGame/Interface/UI/Material/Crosshairs/MI_UI_Crosshair_${Exclude<string, ''>}${'.MI_UI_Crosshair_'}${Exclude<string, ''>}`,
+	mScannableType: 'RTWOT_Default' | 'RTWOT_WeakSignal' | 'RTWOT_Flora',
+	mShouldOverrideScannerDisplayText: docs_json_ts_common_types_bool_string,
+	mScannerDisplayText: string,
+	mScannerLightColor: docs_json_ts_common_types_BGRA,
+	mMenuPriority: docs_json_ts_common_types_decimal_string,
 };
 
 type FGJetPack = FGJetPack_base & {
@@ -810,6 +825,7 @@ export type {
 	FGHoverPack,
 	FGItemDescriptor,
 	FGItemDescriptor_pre_1_0,
+	FGItemDescriptor_version_specific,
 	FGJetPack,
 	FGJetPack_base,
 	FGJumpingStilts,

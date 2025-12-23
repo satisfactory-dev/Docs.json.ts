@@ -81,31 +81,9 @@
 					"type": "string",
 					"minLength": 1
 				},
-				"_C'\"/Game/FactoryGame/",
-				["Equipment", "Resource"],
-				"/",
-				{
-					"type": "string",
-					"minLength": 1
-				},
-				["/Desc_", "/Equip_"],
-				{
-					"type": "string",
-					"minLength": 1
-				},
-				"_C:BP_",
-				{
-					"type": "string",
-					"minLength": 1
-				},
-				"DamageType_",
-				{
-					"type": "string",
-					"minLength": 1
-				},
-				"_C_",
-				["0", "1"],
-				"\"'"
+				"_C'",
+				{"type": "string", "minLength": 1},
+				"'"
 			]
 		},
 		"mUnlocks--item": {

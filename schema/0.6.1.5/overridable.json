@@ -252,7 +252,7 @@
 			"type": "string",
 			"DocsDotJson_PrefixedString": {
 				"prefix": "Material",
-				"mode": "quoted",
+				"mode": "version_specific_default",
 				"value": null
 			}
 		}

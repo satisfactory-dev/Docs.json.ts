@@ -109,7 +109,7 @@
 						"type": "string",
 						"DocsDotJson_PrefixedString": {
 							"prefix": "CurveFloat",
-							"mode": "quoted",
+							"mode": "version_specific_default",
 							"value": null
 						}
 					}

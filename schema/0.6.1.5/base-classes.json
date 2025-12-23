@@ -1759,7 +1759,7 @@
 		},
 		"FGItemDescriptor--pre-1.0": {
 			"type": "object",
-			"required": ["mClassToScanFor"],
+			"required": ["mClassToScanFor", "mDescriptorStatBars"],
 			"properties": {
 				"mClassToScanFor": {
 					"oneOf": [
@@ -1786,6 +1786,79 @@
 							]
 						}
 					]
+				},
+				"mDescriptorStatBars": {
+					"oneOf": [
+						{
+							"type": "string",
+							"typed_string": ""
+						},
+						{
+							"type": "string",
+							"typed_string": {
+								"type": "array",
+								"minItems": 1,
+								"uniqueItems": true,
+								"items": {
+									"$ref": "docs.json.ts--0.6.1.5--properties#/$defs/FGItemDescriptor--version-specific--mDescriptorStatBars--item"
+								}
+							}
+						}
+					]
+				}
+			}
+		},
+		"FGItemDescriptor--version-specific": {
+			"type": "object",
+			"required": [
+				"mCrosshairMaterial",
+				"mScannableType",
+				"mShouldOverrideScannerDisplayText",
+				"mScannerDisplayText",
+				"mScannerLightColor",
+				"mMenuPriority"
+			],
+			"properties": {
+				"mCrosshairMaterial": {
+					"oneOf": [
+						{
+							"type": "string",
+							"const": "None"
+						},
+						{
+							"type": "string",
+							"templated_string": [
+								"/Game/FactoryGame/Interface/UI/Material/Crosshairs/MI_UI_Crosshair_",
+								{
+									"type": "string",
+									"minLength": 1
+								},
+								".MI_UI_Crosshair_",
+								{
+									"type": "string",
+									"minLength": 1
+								}
+							]
+						}
+					]
+				},
+				"mScannableType": {
+					"type": "string",
+					"enum": [
+						"RTWOT_Default",
+						"RTWOT_WeakSignal",
+						"RTWOT_Flora"
+					]
+				},
+				"mShouldOverrideScannerDisplayText": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mScannerDisplayText": {"type": "string"},
+				"mScannerLightColor": {
+					"$ref": "docs.json.ts--common--types#/$defs/BGRA"
+				},
+				"mMenuPriority": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
 			}
 		},

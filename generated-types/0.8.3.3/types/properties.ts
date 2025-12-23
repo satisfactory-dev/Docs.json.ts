@@ -55,7 +55,7 @@ type mDamageTypes = [
 	...mDamageTypes_item[],
 ];
 
-type mDamageTypes_item = `/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_${Exclude<string, ''>}${'DamageType_'}${Exclude<string, ''>}${'_C\'"/Game/FactoryGame/'}${'Equipment' | 'Resource'}${'/'}${Exclude<string, ''>}${'/Desc_' | '/Equip_'}${Exclude<string, ''>}${'_C:BP_'}${Exclude<string, ''>}${'DamageType_'}${Exclude<string, ''>}${'_C_'}${'0' | '1'}${'"\''}`;
+type mDamageTypes_item = `/Game/FactoryGame/-Shared/Blueprint/DamageTypes/BP_${Exclude<string, ''>}${'DamageType_'}${Exclude<string, ''>}${'_C\''}${Exclude<string, ''>}${'\''}`;
 
 type mUnlocks_item = docs_json_ts_0_3_7_7_overridable_mUnlocks_item_mRecipes | docs_json_ts_0_3_7_7_properties_mUnlocks_item_mNumInventorySlotsToUnlock | docs_json_ts_0_3_7_7_overridable_mUnlocks_item_mItemsToGive | docs_json_ts_0_3_7_7_overridable_mUnlocks_item_mSchematics | docs_json_ts_0_3_7_7_properties_mUnlocks_item_base | docs_json_ts_0_4_2_11_overridable_mUnlocks_item_mResourcePairsToAddToScanner | docs_json_ts_0_4_2_11_properties_mUnlocks_item_mNumArmEquipmentSlotsToUnlock | docs_json_ts_0_5_2_1_overridable_mUnlocks_item_mEmotes | docs_json_ts_0_6_1_5_overridable_mUnlocks_item_mTapeUnlocks | mUnlocks_item_mScannableObjects;
 
