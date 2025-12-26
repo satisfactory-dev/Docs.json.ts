@@ -181,6 +181,7 @@ import type {
 	FGObjectScanner_version_specific as docs_json_ts_0_3_7_7_classes_base_FGObjectScanner_version_specific,
 	FGResourceDescriptor_base as docs_json_ts_0_3_7_7_classes_base_FGResourceDescriptor_base,
 	FGSchematic_pre_1_0 as docs_json_ts_0_3_7_7_classes_base_FGSchematic_pre_1_0,
+	FGSuitBase_base as docs_json_ts_0_3_7_7_classes_base_FGSuitBase_base,
 	FGWeaponInstantFire_base_base_base as docs_json_ts_0_3_7_7_classes_base_FGWeaponInstantFire_base_base_base,
 	FGWeaponProjectile_has_mAttachSocket as docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_has_mAttachSocket,
 	FGWeaponProjectileFire_has_mRandomReloadAnim as docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectileFire_has_mRandomReloadAnim,
@@ -191,7 +192,7 @@ import type {
 import type {
 	FGBuildableResourceExtractor_only_allow_certain_resources as docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_only_allow_certain_resources,
 	FGSchematic_version_specific as docs_json_ts_0_3_7_7_classes_base_overridable_FGSchematic_version_specific,
-	FGSuitBase_base as docs_json_ts_0_3_7_7_classes_base_overridable_FGSuitBase_base,
+	FGSuitBase_pre_1_0 as docs_json_ts_0_3_7_7_classes_base_overridable_FGSuitBase_pre_1_0,
 } from './../../0.3.7.7/classes/Base.overridable.ts';
 
 import type {
@@ -654,7 +655,7 @@ type FGSchematic_version_specific = {
 
 type FGSchematic_with_described_unlocks = docs_json_ts_0_5_2_1_classes_base_FGSchematic_with_described_unlocks_base_base & FGSchematic_base;
 
-type FGSuitBase = docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_mFilterDuration & docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_effect_timer & docs_json_ts_0_3_7_7_classes_base_FGEquipment_negates_damage & docs_json_ts_0_3_7_7_classes_base_overridable_FGSuitBase_base & FGEquipment & FGSuitBase_version_specific;
+type FGSuitBase = docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_mFilterDuration & docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_effect_timer & docs_json_ts_0_3_7_7_classes_base_FGEquipment_negates_damage & docs_json_ts_0_3_7_7_classes_base_overridable_FGSuitBase_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGSuitBase_base & FGEquipment & FGSuitBase_version_specific;
 
 type FGSuitBase_version_specific = {
 	mEquipmentSlot: 'ES_BODY',

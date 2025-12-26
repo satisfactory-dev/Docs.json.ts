@@ -51,7 +51,7 @@ import type {
 	FGBuildableResourceExtractor_only_allow_certain_resources as docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_only_allow_certain_resources,
 	FGEquipment_version_specific as docs_json_ts_0_3_7_7_classes_base_overridable_FGEquipment_version_specific,
 	FGSchematic_version_specific as docs_json_ts_0_3_7_7_classes_base_overridable_FGSchematic_version_specific,
-	FGSuitBase_base as docs_json_ts_0_3_7_7_classes_base_overridable_FGSuitBase_base,
+	FGSuitBase_pre_1_0 as docs_json_ts_0_3_7_7_classes_base_overridable_FGSuitBase_pre_1_0,
 } from './Base.overridable.ts';
 
 import type {
@@ -1337,7 +1337,12 @@ type FGSnowballWeapon = FGWeaponProjectile_thrown & {
 	mArmAnimation: 'AE_Generic1Hand',
 };
 
-type FGSuitBase = docs_json_ts_0_3_7_7_classes_base_overridable_FGSuitBase_base & FGEquipment & FGEquipment_has_mFilterDuration & FGEquipment_has_effect_timer & FGEquipment_negates_damage;
+type FGSuitBase = docs_json_ts_0_3_7_7_classes_base_overridable_FGSuitBase_pre_1_0 & FGSuitBase_base & FGEquipment & FGEquipment_has_mFilterDuration & FGEquipment_has_effect_timer & FGEquipment_negates_damage;
+
+type FGSuitBase_base = {
+	mImmunity: docs_json_ts_common_types_decimal_string,
+	mArmAnimation: 'AE_None',
+};
 
 type FGWeaponInstantFire = FGWeaponInstantFire_base & FGWeaponProjectile_instant;
 
@@ -1757,6 +1762,7 @@ export type {
 	FGSchematic_pre_update6,
 	FGSnowballWeapon,
 	FGSuitBase,
+	FGSuitBase_base,
 	FGWeaponInstantFire,
 	FGWeaponInstantFire_base,
 	FGWeaponInstantFire_base_base_base,

@@ -43,13 +43,11 @@ type FGSchematic_version_specific = {
 	mIncludeInBuilds: 'IIB_PublicBuilds',
 };
 
-type FGSuitBase_base = {
-	mImmunity: docs_json_ts_common_types_decimal_string,
+type FGSuitBase_pre_1_0 = {
 	mSuit1PMeshMaterials: [
 		docs_json_ts_0_3_7_7_overridable_mSuit1PMeshMaterials_item,
 		...docs_json_ts_0_3_7_7_overridable_mSuit1PMeshMaterials_item[],
 	],
-	mArmAnimation: 'AE_None',
 };
 
 export type {
@@ -57,5 +55,5 @@ export type {
 	FGBuildableResourceExtractor_only_allow_certain_resources,
 	FGEquipment_version_specific,
 	FGSchematic_version_specific,
-	FGSuitBase_base,
+	FGSuitBase_pre_1_0,
 };

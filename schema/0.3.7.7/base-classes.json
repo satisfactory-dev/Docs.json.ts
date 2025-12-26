@@ -5498,7 +5498,10 @@
 		"FGSuitBase": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGSuitBase--base"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGSuitBase--pre-1.0"
+				},
+				{
+					"$ref": "#/$defs/FGSuitBase--base"
 				},
 				{
 					"$ref": "#/$defs/FGEquipment"
@@ -5513,6 +5516,19 @@
 					"$ref": "#/$defs/FGEquipment--negates-damage"
 				}
 			]
+		},
+		"FGSuitBase--base": {
+			"type": "object",
+			"required": ["mImmunity", "mArmAnimation"],
+			"properties": {
+				"mImmunity": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mArmAnimation": {
+					"type": "string",
+					"const": "AE_None"
+				}
+			}
 		},
 		"FGWeaponInstantFire": {
 			"allOf": [

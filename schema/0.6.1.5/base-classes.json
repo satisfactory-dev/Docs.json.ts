@@ -2115,7 +2115,10 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment--negates-damage"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGSuitBase--base"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGSuitBase--pre-1.0"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGSuitBase--base"
 				},
 				{
 					"$ref": "#/$defs/FGEquipment"

@@ -140,13 +140,10 @@
 				}
 			}
 		},
-		"FGSuitBase--base": {
+		"FGSuitBase--pre-1.0": {
 			"type": "object",
-			"required": ["mImmunity", "mSuit1PMeshMaterials", "mArmAnimation"],
+			"required": ["mSuit1PMeshMaterials"],
 			"properties": {
-				"mImmunity": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
 				"mSuit1PMeshMaterials": {
 					"type": "string",
 					"typed_string": {
@@ -157,10 +154,6 @@
 							"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/mSuit1PMeshMaterials--item"
 						}
 					}
-				},
-				"mArmAnimation": {
-					"type": "string",
-					"const": "AE_None"
 				}
 			}
 		}
