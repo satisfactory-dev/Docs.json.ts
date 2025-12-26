@@ -1337,7 +1337,7 @@ type FGSnowballWeapon = FGWeaponProjectile_thrown & {
 	mArmAnimation: 'AE_Generic1Hand',
 };
 
-type FGSuitBase = docs_json_ts_0_3_7_7_classes_base_overridable_FGSuitBase_pre_1_0 & FGSuitBase_base & FGEquipment & FGEquipment_has_mFilterDuration & FGEquipment_has_effect_timer & FGEquipment_negates_damage;
+type FGSuitBase = docs_json_ts_0_3_7_7_classes_base_overridable_FGSuitBase_pre_1_0 & FGEquipment & FGEquipment_has_mFilterDuration & FGEquipment_has_effect_timer & FGEquipment_negates_damage & FGSuitBase_base;
 
 type FGSuitBase_base = {
 	mImmunity: docs_json_ts_common_types_decimal_string,

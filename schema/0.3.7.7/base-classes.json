@@ -5501,9 +5501,6 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGSuitBase--pre-1.0"
 				},
 				{
-					"$ref": "#/$defs/FGSuitBase--base"
-				},
-				{
 					"$ref": "#/$defs/FGEquipment"
 				},
 				{
@@ -5514,6 +5511,9 @@
 				},
 				{
 					"$ref": "#/$defs/FGEquipment--negates-damage"
+				},
+				{
+					"$ref": "#/$defs/FGSuitBase--base"
 				}
 			]
 		},
