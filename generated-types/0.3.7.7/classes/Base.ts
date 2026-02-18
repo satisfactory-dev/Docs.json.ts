@@ -131,8 +131,11 @@ type FGBuildable_occupied_base = {
 
 type FGBuildable_pole = FGBuildable & FGBuildable_pole_base;
 
-type FGBuildable_pole_base = FGBuildable_base_version_specific & {
+type FGBuildable_pole_base = FGBuildable_pole_base_can_stack & {
 	mUseStaticHeight: docs_json_ts_common_types_bool_string,
+};
+
+type FGBuildable_pole_base_can_stack = FGBuildable_base_version_specific & {
 	mCanStack: docs_json_ts_common_types_bool_string,
 	mStackHeight: docs_json_ts_common_types_decimal_string,
 };
@@ -277,10 +280,13 @@ type FGBuildableAttachmentMerger_version_specific = {
 
 type FGBuildableConveyorBelt_base = FGBuildable & FGBuildable_base_version_specific & FGBuildableConveyorBelt_base_base;
 
-type FGBuildableConveyorBelt_base_base = {
+type FGBuildableConveyorBelt_base_base = FGBuildableConveyorBelt_base_base_pre_1_0 & {
+	mItems: docs_json_ts_common_types_empty_object,
+};
+
+type FGBuildableConveyorBelt_base_base_pre_1_0 = {
 	mItemMeshMap: docs_json_ts_common_types_empty_object,
 	mSpeed: docs_json_ts_common_types_decimal_string,
-	mItems: docs_json_ts_common_types_empty_object,
 };
 
 type FGBuildableConveyorBelt_spline = FGBuildable_spline & FGBuildableConveyorBelt_base & FGBuildableConveyorBelt_spline_base;
@@ -315,7 +321,7 @@ type FGBuildableFactory_jump_pad_base = FGBuildable & FGBuildable_powered_base_b
 
 type FGBuildableFactory_jump_pad_base_base = FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildableFactory_jump_pad_base_base_base;
 
-type FGBuildableFactory_jump_pad_base_base_base = FGBuildable_powered_version_specific & {
+type FGBuildableFactory_jump_pad_base_base_base = {
 	JumpForceCharacter: docs_json_ts_common_types_decimal_string,
 	JumpForcePhysics: docs_json_ts_common_types_decimal_string,
 };
@@ -326,7 +332,7 @@ type FGBuildableFactory_landing_pad_base = FGBuildable & FGBuildable_powered_bas
 
 type FGBuildableFactory_landing_pad_base_base = FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildableFactory_landing_pad_base_base_base;
 
-type FGBuildableFactory_landing_pad_base_base_base = FGBuildable_powered_version_specific & {
+type FGBuildableFactory_landing_pad_base_base_base = {
 	mDampeningFactor: docs_json_ts_common_types_decimal_string,
 	mPlayerList: '',
 };
@@ -342,15 +348,12 @@ type FGBuildableFactorySimpleProducer_base_base = FGBuildable_powered_version_sp
 
 type FGBuildableGenerator = FGBuildableGenerator_base & FGBuildableGenerator_no_fuel;
 
-type FGBuildableGenerator_base = FGBuildableGenerator_base_base & FGBuildableGenerator_no_fuel_base;
+type FGBuildableGenerator_base = FGBuildableGenerator_no_fuel_base_base_base_base & FGBuildableGenerator_base_base_base & FGBuildableGenerator_base_base_pre_1_0 & FGBuildableGenerator_no_fuel_base_base & FGBuildable & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific;
 
-type FGBuildableGenerator_base_base = FGBuildableGenerator_base_base_base & FGBuildableGenerator_no_fuel_base_base;
-
-type FGBuildableGenerator_base_base_base = FGBuildableGenerator_no_fuel_base_base_base_base & {
+type FGBuildableGenerator_base_base_base = {
 	mCachedLoadPercentage?: docs_json_ts_common_types_decimal_string,
 	mFuelClasses: '',
 	mAvailableFuelClasses: '',
-	mFuelResourceForm: docs_json_ts_0_3_7_7_properties_mForm,
 	mRequiresSupplementalResource: docs_json_ts_common_types_bool_string,
 	mSupplementalLoadAmount: docs_json_ts_common_types_integer_string,
 	mSupplementalToPowerRatio: docs_json_ts_common_types_decimal_string,
@@ -358,9 +361,11 @@ type FGBuildableGenerator_base_base_base = FGBuildableGenerator_no_fuel_base_bas
 	mCachedPipeInputConnections: '',
 };
 
-type FGBuildableGenerator_no_fuel = FGBuildable_powered & FGBuildableGenerator_no_fuel_base;
+type FGBuildableGenerator_base_base_pre_1_0 = {
+	mFuelResourceForm: docs_json_ts_0_3_7_7_properties_mForm,
+};
 
-type FGBuildableGenerator_no_fuel_base = FGBuildable & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildableGenerator_no_fuel_base_base;
+type FGBuildableGenerator_no_fuel = FGBuildable_powered & FGBuildable & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildableGenerator_no_fuel_base_base;
 
 type FGBuildableGenerator_no_fuel_base_base = FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildableGenerator_no_fuel_base_base_base;
 
@@ -373,9 +378,7 @@ type FGBuildableGenerator_no_fuel_base_base_base_base = FGBuildable_powered_vers
 	mLoadPercentage: docs_json_ts_common_types_decimal_string,
 };
 
-type FGBuildableGeneratorFuel_base = FGBuildableGenerator_base & FGBuildableGeneratorFuel_base_base;
-
-type FGBuildableGeneratorFuel_base_base = FGBuildableGenerator_base_base & FGBuildableGeneratorFuel_base_base_base;
+type FGBuildableGeneratorFuel_base = FGBuildableGenerator_base & FGBuildableGenerator_no_fuel_base_base_base_base & FGBuildableGenerator_base_base_base & FGBuildableGenerator_base_base_pre_1_0 & FGBuildableGenerator_no_fuel_base_base & FGBuildableGeneratorFuel_base_base_base;
 
 type FGBuildableGeneratorFuel_base_base_base = FGBuildableGenerator_base_base_base & {
 	mRTPCInterval?: docs_json_ts_common_types_decimal_string,
@@ -415,7 +418,7 @@ type FGBuildableGeneratorFuel_fuel_base_base = {
 
 type FGBuildableGeneratorGeoThermal = FGBuildableGenerator_no_fuel & FGBuildableGeneratorGeoThermal_base;
 
-type FGBuildableGeneratorGeoThermal_base = FGBuildableGenerator_no_fuel_base & FGBuildableGeneratorGeoThermal_base_base;
+type FGBuildableGeneratorGeoThermal_base = FGBuildable & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildableGenerator_no_fuel_base_base & FGBuildableGeneratorGeoThermal_base_base;
 
 type FGBuildableGeneratorGeoThermal_base_base = FGBuildableGenerator_no_fuel_base_base & FGBuildableGeneratorGeoThermal_base_base_base;
 
@@ -852,7 +855,7 @@ type FGBuildableStorage_base_base_base = FGBuildable_powered_version_specific & 
 	mInventorySizeY: docs_json_ts_common_types_integer_string,
 };
 
-type FGBuildableTradingPost = FGBuildable_powered & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildableTradingPost_pre_update5 & FGBuildableTradingPost_pre_update8 & FGBuildableTradingPost_version_specific;
+type FGBuildableTradingPost = FGBuildable_powered & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildableTradingPost_pre_update5 & FGBuildableTradingPost_pre_update8 & FGBuildableTradingPost_pre_1_0 & FGBuildableTradingPost_version_specific;
 
 type FGBuildableTradingPost_pre_update5 = {
 	mMapText: 'The HUB',
@@ -865,20 +868,23 @@ type FGBuildableTradingPost_pre_update8 = FGBuildable_powered_version_specific &
 	],
 };
 
-type FGBuildableTradingPost_version_specific = {
+type FGBuildableTradingPost_pre_1_0 = {
 	mWorkBenchOccupied: 'Craft Bench occupied',
 	mWorkBenchFree: 'Use Craft Bench',
+	mNeedPlayingBuildEffectNotification: docs_json_ts_common_types_bool_string,
+};
+
+type FGBuildableTradingPost_version_specific = {
 	mShipUpgradeLevel: docs_json_ts_common_types_integer_string,
 	mStorageText: 'Open Storage',
-	mMamFreeText: `Use M${Exclude<string, ''>}`,
-	mMamOccupiedText: `M${Exclude<string, ''>}${' is occupied'}`,
+	mMamFreeText: `Use ${Exclude<string, ''>}`,
+	mMamOccupiedText: `${Exclude<string, ''>}${' is occupied'}`,
 	mGenerators: '',
 	mStorageInventorySize: docs_json_ts_common_types_integer_string,
 	mStorageVisibilityLevel: docs_json_ts_common_types_integer_string,
 	mSpawningGroundZOffset: docs_json_ts_common_types_decimal_string,
 	mGroundSearchZDistance: docs_json_ts_common_types_decimal_string,
 	mDefaultResources: '',
-	mNeedPlayingBuildEffectNotification: docs_json_ts_common_types_bool_string,
 };
 
 type FGBuildableTrainPlatform = FGBuildable_powered & FGBuildableTrainPlatform_base;
@@ -1090,22 +1096,25 @@ type FGEquipmentStunSpear_base = FGEquipmentStunSpear_base_base & {
 	mDamage: docs_json_ts_common_types_integer_string,
 };
 
-type FGEquipmentStunSpear_base_base = FGEquipment & FGEquipmentStunSpear_base_base_base;
+type FGEquipmentStunSpear_base_base = FGEquipment & FGEquipmentStunSpear_base_version_specific;
 
-type FGEquipmentStunSpear_base_base_base = FGEquipmentStunSpear_base_version_specific & {
+type FGEquipmentStunSpear_base_pre_1_0 = {
+	mSecondSwingMaxTime: docs_json_ts_common_types_decimal_string,
+	mSecondSwingCooldDownTime: docs_json_ts_common_types_decimal_string,
+};
+
+type FGEquipmentStunSpear_base_pre_update8 = {
 	mRandomAttackAnim: docs_json_ts_common_types_integer_string,
 };
 
 type FGEquipmentStunSpear_base_version_specific = {
-	mSecondSwingMaxTime: docs_json_ts_common_types_decimal_string,
-	mSecondSwingCooldDownTime: docs_json_ts_common_types_decimal_string,
 	mAttackDistance: docs_json_ts_common_types_decimal_string,
 	mArmAnimation?: 'AE_ShockShank' | 'AE_StunSpear',
 };
 
 type FGEquipmentStunSpear_xenobasher = FGEquipmentStunSpear_base & FGEquipmentStunSpear_xenobasher_base;
 
-type FGEquipmentStunSpear_xenobasher_base = FGEquipmentStunSpear_base_base & FGEquipmentStunSpear_xenobasher_base_base & FGEquipmentStunSpear_xenobasher_version_specific;
+type FGEquipmentStunSpear_xenobasher_base = FGEquipment & FGEquipmentStunSpear_base_version_specific & FGEquipmentStunSpear_base_pre_update8 & FGEquipmentStunSpear_base_pre_1_0 & FGEquipmentStunSpear_xenobasher_base_base & FGEquipmentStunSpear_xenobasher_version_specific;
 
 type FGEquipmentStunSpear_xenobasher_base_base = {
 	mCurrentMontageSection: 'None',
@@ -1119,7 +1128,7 @@ type FGEquipmentStunSpear_xenobasher_version_specific = {
 
 type FGEquipmentStunSpear_xenozapper = FGEquipmentStunSpear_base & FGEquipmentStunSpear_xenozapper_base;
 
-type FGEquipmentStunSpear_xenozapper_base = FGEquipment_has_mPlayingSound & FGEquipment_has_mRandomStingerAnim & FGEquipmentStunSpear_base_base;
+type FGEquipmentStunSpear_xenozapper_base = FGEquipment_has_mPlayingSound & FGEquipment_has_mRandomStingerAnim & FGEquipment & FGEquipmentStunSpear_base_pre_update8 & FGEquipmentStunSpear_base_pre_1_0 & FGEquipmentStunSpear_base_version_specific;
 
 type FGGasMask = FGEquipment & FGEquipment_has_mFilterDuration & FGEquipment_has_effect_timer & FGEquipment_negates_damage & FGGasMask_base;
 
@@ -1183,7 +1192,7 @@ type FGJumpingStilts_base = {
 
 type FGNobeliskDetonator = FGNobeliskDetonator_base & FGWeaponProjectile_thrown;
 
-type FGNobeliskDetonator_base = FGWeaponProjectile_thrown_base_base & {
+type FGNobeliskDetonator_base = {
 	mArmAnimation: 'AE_Nobelisk',
 };
 
@@ -1407,8 +1416,11 @@ type FGWeaponProjectile_thrown_base = FGWeaponProjectile_thrown_base_base & {
 	mArmAnimation: 'AE_Nobelisk' | 'AE_Generic1Hand',
 };
 
-type FGWeaponProjectile_thrown_base_base = {
+type FGWeaponProjectile_thrown_base_base = FGWeaponProjectile_thrown_base_pre_1_0 & {
 	mIsPendingExecuteFire: docs_json_ts_common_types_bool_string,
+};
+
+type FGWeaponProjectile_thrown_base_pre_1_0 = {
 	mMaxChargeTime: docs_json_ts_common_types_decimal_string,
 	mMaxThrowForce: docs_json_ts_common_types_integer_string,
 	mMinThrowForce: docs_json_ts_common_types_integer_string,
@@ -1455,6 +1467,7 @@ export type {
 	FGBuildable_occupied_base,
 	FGBuildable_pole,
 	FGBuildable_pole_base,
+	FGBuildable_pole_base_can_stack,
 	FGBuildable_pole_with_length_and_power,
 	FGBuildable_pole_with_length_and_power_base,
 	FGBuildable_pole_with_length_and_power_base_base,
@@ -1500,6 +1513,7 @@ export type {
 	FGBuildableAttachmentMerger_version_specific,
 	FGBuildableConveyorBelt_base,
 	FGBuildableConveyorBelt_base_base,
+	FGBuildableConveyorBelt_base_base_pre_1_0,
 	FGBuildableConveyorBelt_spline,
 	FGBuildableConveyorBelt_spline_base,
 	FGBuildableConveyorLift,
@@ -1522,15 +1536,13 @@ export type {
 	FGBuildableFactorySimpleProducer_base_base,
 	FGBuildableGenerator,
 	FGBuildableGenerator_base,
-	FGBuildableGenerator_base_base,
 	FGBuildableGenerator_base_base_base,
+	FGBuildableGenerator_base_base_pre_1_0,
 	FGBuildableGenerator_no_fuel,
-	FGBuildableGenerator_no_fuel_base,
 	FGBuildableGenerator_no_fuel_base_base,
 	FGBuildableGenerator_no_fuel_base_base_base,
 	FGBuildableGenerator_no_fuel_base_base_base_base,
 	FGBuildableGeneratorFuel_base,
-	FGBuildableGeneratorFuel_base_base,
 	FGBuildableGeneratorFuel_base_base_base,
 	FGBuildableGeneratorFuel_biomass,
 	FGBuildableGeneratorFuel_biomass_base,
@@ -1664,6 +1676,7 @@ export type {
 	FGBuildableTradingPost,
 	FGBuildableTradingPost_pre_update5,
 	FGBuildableTradingPost_pre_update8,
+	FGBuildableTradingPost_pre_1_0,
 	FGBuildableTradingPost_version_specific,
 	FGBuildableTrainPlatform,
 	FGBuildableTrainPlatform_base,
@@ -1712,7 +1725,8 @@ export type {
 	FGEquipment_pre_1_0,
 	FGEquipmentStunSpear_base,
 	FGEquipmentStunSpear_base_base,
-	FGEquipmentStunSpear_base_base_base,
+	FGEquipmentStunSpear_base_pre_1_0,
+	FGEquipmentStunSpear_base_pre_update8,
 	FGEquipmentStunSpear_base_version_specific,
 	FGEquipmentStunSpear_xenobasher,
 	FGEquipmentStunSpear_xenobasher_base,
@@ -1778,6 +1792,7 @@ export type {
 	FGWeaponProjectile_thrown,
 	FGWeaponProjectile_thrown_base,
 	FGWeaponProjectile_thrown_base_base,
+	FGWeaponProjectile_thrown_base_pre_1_0,
 	FGWeaponProjectileFire,
 	FGWeaponProjectileFire_base_random,
 	FGWeaponProjectileFire_base_version_specific,

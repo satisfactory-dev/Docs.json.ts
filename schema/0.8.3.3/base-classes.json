@@ -674,7 +674,13 @@
 		"FGBuildableGenerator": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGenerator--no-fuel--base--base--base--base"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGenerator--base--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGenerator--base--base--pre-1.0"
 				},
 				{
 					"$ref": "#/$defs/FGBuildableGenerator--no-fuel"
@@ -1642,7 +1648,16 @@
 		"FGBuildableTradingPost": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableTradingPost--pre-1.0"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableTradingPost--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableTradingPost--base--pre-1.0"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableTradingPost--base--version-specific"
 				},
 				{
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableTradingPost--base"
@@ -1997,22 +2012,6 @@
 				}
 			}
 		},
-		"FGEquipmentStunSpear--base": {
-			"allOf": [
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipmentStunSpear--base--version-specific"
-				},
-				{
-					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGEquipmentStunSpear--base--version-specific"
-				},
-				{
-					"$ref": "#/$defs/FGEquipment"
-				},
-				{
-					"$ref": "#/$defs/FGEquipmentStunSpear--base--version-specific"
-				}
-			]
-		},
 		"FGEquipmentStunSpear--base--version-specific": {
 			"type": "object",
 			"required": ["mDamageTypes"],
@@ -2025,20 +2024,44 @@
 		"FGEquipmentStunSpear--xenobasher": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipmentStunSpear--base--base--base"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipmentStunSpear--base--pre-update8"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipmentStunSpear--base--pre-1.0"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipmentStunSpear--base--version-specific"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipmentStunSpear--xenobasher--version-specific"
 				},
 				{
-					"$ref": "#/$defs/FGEquipmentStunSpear--base"
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGEquipmentStunSpear--base--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment"
+				},
+				{
+					"$ref": "#/$defs/FGEquipmentStunSpear--base--version-specific"
 				}
 			]
 		},
 		"FGEquipmentStunSpear--xenozapper": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGEquipmentStunSpear--base"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipmentStunSpear--base--pre-1.0"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipmentStunSpear--base--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGEquipmentStunSpear--base--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment"
+				},
+				{
+					"$ref": "#/$defs/FGEquipmentStunSpear--base--version-specific"
 				},
 				{
 					"$ref": "#/$defs/FGEquipmentStunSpear--xenozapper--version-specific"
@@ -2183,6 +2206,9 @@
 		},
 		"FGNobeliskDetonator": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectile--thrown--base--base"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGNobeliskDetonator--base"
 				},

@@ -744,7 +744,19 @@
 		"FGBuildableGenerator--no-fuel": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGenerator--no-fuel--base"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--base--base--with-mNumCyclesForProductivity"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--pre-1.0"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGenerator--no-fuel--base--base"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--powered"
@@ -764,7 +776,22 @@
 		"FGBuildableGeneratorFuel--base--base": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGeneratorFuel--base--base"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGenerator--no-fuel--base--base--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGenerator--no-fuel--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGeneratorFuel--base--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGenerator--no-fuel--base--base--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGenerator--base--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGenerator--base--base--pre-1.0"
 				},
 				{
 					"$ref": "#/$defs/FGBuildableGeneratorFuel--base--base--base"
@@ -773,7 +800,6 @@
 		},
 		"FGBuildableGeneratorFuel--base--base--base": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGenerator--base--base--base",
 			"required": ["mFuel", "mFuelLoadAmount", "mIsFullBlast"],
 			"properties": {
 				"mFuel": {
@@ -1918,6 +1944,9 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableTradingPost--pre-update8"
 				},
 				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableTradingPost--pre-1.0"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableTradingPost--version-specific"
 				},
 				{
@@ -1925,6 +1954,12 @@
 				},
 				{
 					"$ref": "#/$defs/FGBuildableTradingPost--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableTradingPost--base--pre-1.0"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableTradingPost--base--version-specific"
 				}
 			]
 		},
@@ -1932,10 +1967,7 @@
 			"type": "object",
 			"required": [
 				"mMamFreeText",
-				"mMamOccupiedText",
-				"mMeshes",
-				"ABClass",
-				"mSkeletalMeshSoftPtr"
+				"mMamOccupiedText"
 			],
 			"properties": {
 				"mMamFreeText": {
@@ -1945,7 +1977,15 @@
 				"mMamOccupiedText": {
 					"type": "string",
 					"const": "MAM is occupied"
-				},
+				}
+			}
+		},
+		"FGBuildableTradingPost--base--pre-1.0": {
+			"type": "object",
+			"required": [
+				"mMeshes"
+			],
+			"properties": {
 				"mMeshes": {
 					"type": "string",
 					"typed_string": {
@@ -1956,7 +1996,16 @@
 							"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/mMeshes--item"
 						}
 					}
-				},
+				}
+			}
+		},
+		"FGBuildableTradingPost--base--version-specific": {
+			"type": "object",
+			"required": [
+				"ABClass",
+				"mSkeletalMeshSoftPtr"
+			],
+			"properties": {
 				"ABClass": {
 					"type": "string",
 					"const": "/Game/FactoryGame/Buildable/Factory/TradingPost/BPA_Tradingpost.BPA_Tradingpost_C"
