@@ -655,16 +655,18 @@
 		"FGBuildableFloodlight": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGBuildableFloodlight--base"
+					"$ref": "#/$defs/FGBuildableLightSource--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableFloodlight--version-specific"
 				},
 				{
 					"$ref": "#/$defs/FGBuildableLightSource"
 				}
 			]
 		},
-		"FGBuildableFloodlight--base": {
+		"FGBuildableFloodlight--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableLightSource--base",
 			"required": ["mFixtureAngle"],
 			"properties": {
 				"mFixtureAngle": {
@@ -928,7 +930,16 @@
 		"FGBuildableGeneratorNuclear": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGeneratorNuclear--base"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGenerator--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGenerator--no-fuel--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGenerator--no-fuel--base--base--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGeneratorNuclear--version-specific"
 				},
 				{
 					"$ref": "#/$defs/FGBuildableGenerator"
@@ -937,21 +948,27 @@
 					"$ref": "#/$defs/FGBuildableGeneratorFuel--base"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableGeneratorNuclear--base"
+					"$ref": "#/$defs/FGBuildableGeneratorNuclear--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableGeneratorNuclear--pre-1.0"
 				}
 			]
 		},
-		"FGBuildableGeneratorNuclear--base": {
+		"FGBuildableGeneratorNuclear--version-specific": {
 			"type": "object",
-			"required": [
-				"mCurrentGeneratorNuclearWarning",
-				"mDefaultFuelClasses"
-			],
+			"required": ["mCurrentGeneratorNuclearWarning"],
 			"properties": {
 				"mCurrentGeneratorNuclearWarning": {
 					"type": "string",
 					"const": "GNW_None"
-				},
+				}
+			}
+		},
+		"FGBuildableGeneratorNuclear--pre-1.0": {
+			"type": "object",
+			"required": ["mDefaultFuelClasses"],
+			"properties": {
 				"mDefaultFuelClasses": {
 					"type": "string",
 					"typed_string": {
@@ -1029,19 +1046,19 @@
 					"$ref": "#/$defs/FGBuildable--mHasPower"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableLightSource--base"
+					"$ref": "#/$defs/FGBuildableLightSource--version-specific"
+				},
+				{
+					"$ref": "#/$defs/has--mPowerConsumption"
 				}
 			]
 		},
-		"FGBuildableLightSource--base": {
+		"FGBuildableLightSource--version-specific": {
 			"type": "object",
-			"required": ["mIsDay", "mPowerConsumption"],
+			"required": ["mIsDay"],
 			"properties": {
 				"mIsDay": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mPowerConsumption": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
 			}
 		},
@@ -1238,6 +1255,9 @@
 				},
 				{
 					"$ref": "#/$defs/FGBuildableManufacturer--Build_HadronCollider_C--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableManufacturerVariablePower"
 				}
 			]
 		},
@@ -1253,9 +1273,7 @@
 				"mStartVector_VFX_Medium_Start",
 				"mStartVector_VFX_Medium_End",
 				"mStartVector_VFX_Large_Start",
-				"mStartVector_VFX_Large_End",
-				"mEstimatedMininumPowerConsumption",
-				"mEstimatedMaximumPowerConsumption"
+				"mStartVector_VFX_Large_End"
 			],
 			"properties": {
 				"mSequenceDuration": {
@@ -1287,12 +1305,6 @@
 				},
 				"mStartVector_VFX_Large_End": {
 					"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string--list"
-				},
-				"mEstimatedMininumPowerConsumption": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mEstimatedMaximumPowerConsumption": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
 			}
 		},
@@ -1357,6 +1369,21 @@
 				}
 			]
 		},
+		"FGBuildableManufacturerVariablePower": {
+			"type": "object",
+			"required": [
+				"mEstimatedMininumPowerConsumption",
+				"mEstimatedMaximumPowerConsumption"
+			],
+			"properties": {
+				"mEstimatedMininumPowerConsumption": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mEstimatedMaximumPowerConsumption": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
 		"FGBuildablePipeline": {
 			"allOf": [
 				{
@@ -1411,13 +1438,6 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--version-specific"
 				},
 				{
-					"$ref": "#/$defs/FGBuildablePipeline--junction--base--base--base"
-				}
-			]
-		},
-		"FGBuildablePipeline--junction--base--base--base": {
-			"allOf": [
-				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--pre-1.0"
 				},
 				{
@@ -1454,13 +1474,21 @@
 					"$ref": "#/$defs/FGBuildablePipeline--junction--base--base"
 				},
 				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--pre-1.0"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipeline--base--no-indicator--base"
+				},
+				{
 					"$ref": "#/$defs/FGBuildablePipelineJunction--base--base--base"
 				}
 			]
 		},
 		"FGBuildablePipelineJunction--base--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildablePipeline--junction--base--base--base",
 			"required": ["mFluidBoxVolume"],
 			"properties": {
 				"mFluidBoxVolume": {
@@ -1723,6 +1751,9 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--piped"
 				},
 				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--piped--pre-1.0"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--timed"
 				},
 				{
@@ -1784,6 +1815,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--piped"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--piped--pre-1.0"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--timed"
@@ -2238,14 +2272,25 @@
 					"$ref": "#/$defs/FGEquipment"
 				},
 				{
-					"$ref": "#/$defs/FGEquipmentZipline--base"
+					"$ref": "#/$defs/FGEquipmentZipline--pre-1.0"
+				},
+				{
+					"$ref": "#/$defs/FGEquipmentZipline--version-specific"
 				}
 			]
 		},
-		"FGEquipmentZipline--base": {
+		"FGEquipmentZipline--pre-1.0": {
+			"type": "object",
+			"required": ["mShouldPlayDeactivateSound"],
+			"properties": {
+				"mShouldPlayDeactivateSound": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
+		},
+		"FGEquipmentZipline--version-specific": {
 			"type": "object",
 			"required": [
-				"mShouldPlayDeactivateSound",
 				"mZiplineJumpLaunchVelocity",
 				"mMaxZiplineAngle",
 				"mTraceDistance",
@@ -2259,9 +2304,6 @@
 				"mBackAnimation"
 			],
 			"properties": {
-				"mShouldPlayDeactivateSound": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
 				"mZiplineJumpLaunchVelocity": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
@@ -2320,11 +2362,14 @@
 					"$ref": "#/$defs/FGEquipment"
 				},
 				{
+					"$ref": "#/$defs/FGHoverPack--pre-1.0"
+				},
+				{
 					"$ref": "#/$defs/FGHoverPack--version-specific"
 				}
 			]
 		},
-		"FGHoverPack--version-specific": {
+		"FGHoverPack--pre-1.0": {
 			"type": "object",
 			"required": [
 				"mHoverPackActiveTimer",
@@ -2332,7 +2377,33 @@
 				"mCurrentMouseDelta",
 				"mHoverpackJoystickTimer",
 				"mCurrentBatteryPowerLevel",
-				"m_PreviousHoverMode",
+				"m_PreviousHoverMode"
+			],
+			"properties": {
+				"mHoverPackActiveTimer": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mCurrentPlayerVelocity": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mCurrentMouseDelta": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mHoverpackJoystickTimer": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mCurrentBatteryPowerLevel": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"m_PreviousHoverMode": {
+					"type": "string",
+					"const": "HPM_Inactive"
+				}
+			}
+		},
+		"FGHoverPack--version-specific": {
+			"type": "object",
+			"required": [
 				"ConnectionLocationUpdatedDelegate",
 				"ConnectionStatusUpdatedDelegate",
 				"HoverModeChangedDelegate",
@@ -2363,25 +2434,6 @@
 				"mBackAnimation"
 			],
 			"properties": {
-				"mHoverPackActiveTimer": {
-					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-				},
-				"mCurrentPlayerVelocity": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mCurrentMouseDelta": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mHoverpackJoystickTimer": {
-					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-				},
-				"mCurrentBatteryPowerLevel": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"m_PreviousHoverMode": {
-					"type": "string",
-					"const": "HPM_Inactive"
-				},
 				"ConnectionLocationUpdatedDelegate": {
 					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
 				},
@@ -2687,7 +2739,7 @@
 					"$ref": "#/$defs/FGVehicleDescriptor--fueled--base"
 				},
 				{
-					"$ref": "#/$defs/FGVehicleDescriptor--with-inventory--base"
+					"$ref": "#/$defs/has--mInventorySize"
 				}
 			]
 		},
@@ -2740,19 +2792,9 @@
 					"$ref": "#/$defs/FGDescriptor--BuildMenu"
 				},
 				{
-					"$ref": "#/$defs/FGVehicleDescriptor--with-inventory--base"
+					"$ref": "#/$defs/has--mInventorySize"
 				}
 			]
-		},
-		"FGVehicleDescriptor--with-inventory--base": {
-			"type": "object",
-			"$ref": "#/$defs/FGDescriptor",
-			"required": ["mInventorySize"],
-			"properties": {
-				"mInventorySize": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-				}
-			}
 		},
 		"FGWeaponInstantFire": {
 			"allOf": [
@@ -2818,6 +2860,24 @@
 			"properties": {
 				"mMuteDryFire": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
+		},
+		"has--mInventorySize": {
+			"type": "object",
+			"required": ["mInventorySize"],
+			"properties": {
+				"mInventorySize": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				}
+			}
+		},
+		"has--mPowerConsumption": {
+			"type": "object",
+			"required": ["mPowerConsumption"],
+			"properties": {
+				"mPowerConsumption": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
 			}
 		}

@@ -5,6 +5,7 @@ import type {
 	FGBuildableFrackingActivator_base as docs_json_ts_0_4_2_11_classes_base_FGBuildableFrackingActivator_base,
 	FGBuildableResourceExtractor_miner_mk1_base_base as docs_json_ts_0_4_2_11_classes_base_FGBuildableResourceExtractor_miner_mk1_base_base,
 	FGConsumableEquipment_base as docs_json_ts_0_4_2_11_classes_base_FGConsumableEquipment_base,
+	FGDescriptor as docs_json_ts_0_4_2_11_classes_base_FGDescriptor,
 	FGDescriptor_base as docs_json_ts_0_4_2_11_classes_base_FGDescriptor_base,
 	FGDescriptor_sinkable as docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable,
 	FGDescriptor_sinkable_base as docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable_base,
@@ -17,9 +18,9 @@ import type {
 	FGSchematic_has_mTechTier as docs_json_ts_0_4_2_11_classes_base_FGSchematic_has_mTechTier,
 	FGVehicleDescriptor_fueled_with_inventory_base as docs_json_ts_0_4_2_11_classes_base_FGVehicleDescriptor_fueled_with_inventory_base,
 	FGVehicleDescriptor_powered_base as docs_json_ts_0_4_2_11_classes_base_FGVehicleDescriptor_powered_base,
-	FGVehicleDescriptor_with_inventory_base as docs_json_ts_0_4_2_11_classes_base_FGVehicleDescriptor_with_inventory_base,
 	FGWeaponProjectile_has_mBlockSprintWhenFiring as docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectile_has_mBlockSprintWhenFiring,
 	FGWeaponProjectileFire_has_mMuteDryFire as docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectileFire_has_mMuteDryFire,
+	has_mInventorySize as docs_json_ts_0_4_2_11_classes_base_has_mInventorySize,
 } from './../../0.4.2.11/classes/Base.ts';
 
 import type {
@@ -163,6 +164,7 @@ import type {
 	FGBuildablePipeline_base_root as docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeline_base_root,
 	FGBuildablePole_base as docs_json_ts_0_3_7_7_classes_base_FGBuildablePole_base,
 	FGBuildableResourceExtractor_piped as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_piped,
+	FGBuildableResourceExtractor_piped_pre_1_0 as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_piped_pre_1_0,
 	FGBuildableResourceExtractor_timed as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_timed,
 	FGChainsaw as docs_json_ts_0_3_7_7_classes_base_FGChainsaw,
 	FGEquipment_base as docs_json_ts_0_3_7_7_classes_base_FGEquipment_base,
@@ -175,8 +177,11 @@ import type {
 	FGEquipmentStunSpear_xenozapper_base as docs_json_ts_0_3_7_7_classes_base_FGEquipmentStunSpear_xenozapper_base,
 	FGGasMask_base as docs_json_ts_0_3_7_7_classes_base_FGGasMask_base,
 	FGJetPack_base_base as docs_json_ts_0_3_7_7_classes_base_FGJetPack_base_base,
+	FGJetPack_pre_1_0 as docs_json_ts_0_3_7_7_classes_base_FGJetPack_pre_1_0,
+	FGJetPack_version_specific as docs_json_ts_0_3_7_7_classes_base_FGJetPack_version_specific,
 	FGJumpingStilts_base as docs_json_ts_0_3_7_7_classes_base_FGJumpingStilts_base,
 	FGNobeliskDetonator_base as docs_json_ts_0_3_7_7_classes_base_FGNobeliskDetonator_base,
+	FGObjectScanner_pre_1_0 as docs_json_ts_0_3_7_7_classes_base_FGObjectScanner_pre_1_0,
 	FGObjectScanner_pre_update8 as docs_json_ts_0_3_7_7_classes_base_FGObjectScanner_pre_update8,
 	FGObjectScanner_version_specific as docs_json_ts_0_3_7_7_classes_base_FGObjectScanner_version_specific,
 	FGResourceDescriptor_base as docs_json_ts_0_3_7_7_classes_base_FGResourceDescriptor_base,
@@ -343,13 +348,9 @@ type FGBuildableConveyorBelt = docs_json_ts_0_5_2_1_classes_base_FGBuildableConv
 
 type FGBuildableConveyorLift = docs_json_ts_0_5_2_1_classes_base_FGBuildableConveyorLift & FGBuildable_base;
 
-type FGBuildableCornerWall = FGBuildableCornerWall_base & FGBuildableCornerWall_version_specific;
+type FGBuildableCornerWall = FGBuildableCornerWall_base & has_mIsInverted;
 
 type FGBuildableCornerWall_base = docs_json_ts_0_5_2_1_classes_base_FGBuildableCornerWall & FGBuildable_base;
-
-type FGBuildableCornerWall_version_specific = {
-	mIsInverted: docs_json_ts_common_types_bool_string,
-};
 
 type FGBuildableDockingStation = docs_json_ts_0_3_7_7_classes_base_FGBuildable_docking_station_base_base_base & docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_storage_base_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableDockingStation_with_mFuelTransferSpeed & docs_json_ts_0_5_2_1_classes_base_FGBuildableDockingStation_base & FGBuildable_powered;
 
@@ -377,7 +378,7 @@ type FGBuildableFoundation_version_specific = {
 
 type FGBuildableFrackingActivator = docs_json_ts_0_4_2_11_classes_base_FGBuildableFrackingActivator_base & FGBuildableResourceExtractor_base_version_specific;
 
-type FGBuildableFrackingExtractor = docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_piped & docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_timed & FGBuildableResourceExtractor_base_version_specific;
+type FGBuildableFrackingExtractor = docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_piped & docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_piped_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_timed & FGBuildableResourceExtractor_base_version_specific;
 
 type FGBuildableGeneratorFuel_biomass = docs_json_ts_0_5_2_1_classes_base_FGBuildableGeneratorFuel_biomass & FGBuildable_base;
 
@@ -478,7 +479,7 @@ type FGBuildableRamp_version_specific = {
 
 type FGBuildableResourceExtractor_base = FGBuildableResourceExtractor_base_base & FGBuildableResourceExtractor_base_version_specific;
 
-type FGBuildableResourceExtractor_base_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base_resources_base & docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_only_allow_certain_resources & docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_piped & FGBuildable_powered;
+type FGBuildableResourceExtractor_base_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base_resources_base & docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_only_allow_certain_resources & docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_piped & docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_piped_pre_1_0 & FGBuildable_powered;
 
 type FGBuildableResourceExtractor_base_untimed = docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_only_allow_certain_resources & FGBuildable_powered;
 
@@ -528,16 +529,19 @@ type FGBuildableWidgetSign = docs_json_ts_0_5_2_1_classes_base_FGBuildableWidget
 
 type FGBuildableWire = docs_json_ts_0_5_2_1_classes_base_FGBuildableWire & FGBuildable_base;
 
-type FGChainsaw = docs_json_ts_0_3_7_7_classes_base_FGChainsaw & FGChainsaw_pre_update8 & FGChainsaw_version_specific & FGEquipment;
+type FGChainsaw = docs_json_ts_0_3_7_7_classes_base_FGChainsaw & FGChainsaw_pre_update8 & FGChainsaw_pre_1_0 & FGChainsaw_version_specific & FGEquipment;
 
 type FGChainsaw_pre_update8 = {
 	mAkEventsArray: docs_json_ts_0_6_1_5_properties_DocsDotJson_AkAudioEvent_quoted_list,
 	mEventIndexSFX: docs_json_ts_common_types_integer_string,
 };
 
+type FGChainsaw_pre_1_0 = {
+	mCurrentAkID: docs_json_ts_common_types_integer_string,
+};
+
 type FGChainsaw_version_specific = {
 	mCurrentOutputDataSFX: docs_json_ts_common_types_decimal_string,
-	mCurrentAkID: docs_json_ts_common_types_integer_string,
 };
 
 type FGConsumableEquipment = docs_json_ts_0_4_2_11_classes_base_FGConsumableEquipment_base & FGEquipment;
@@ -609,11 +613,11 @@ type FGItemDescriptor_version_specific = {
 	mMenuPriority: docs_json_ts_common_types_decimal_string,
 };
 
-type FGJetPack = FGJetPack_base & {
+type FGJetPack = docs_json_ts_0_3_7_7_classes_base_FGJetPack_base_base & docs_json_ts_0_3_7_7_classes_base_FGJetPack_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGJetPack_version_specific & FGEquipment_noisy & FGJetPack_version_specific;
+
+type FGJetPack_version_specific = {
 	mJumpTimeStamp: docs_json_ts_common_types_decimal_string_signed,
 };
-
-type FGJetPack_base = docs_json_ts_0_3_7_7_classes_base_FGJetPack_base_base & FGEquipment_noisy;
 
 type FGJumpingStilts = docs_json_ts_0_3_7_7_classes_base_FGJumpingStilts_base & FGEquipment & FGJumpingStilts_version_specific;
 
@@ -623,7 +627,7 @@ type FGJumpingStilts_version_specific = {
 
 type FGNobeliskDetonator = docs_json_ts_0_5_2_1_classes_base_overridable_FGWeapon_version_specific & docs_json_ts_0_3_7_7_classes_base_FGEquipment_base & docs_json_ts_0_3_7_7_classes_base_FGNobeliskDetonator_base & docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_thrown_base_base & docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectile_has_mBlockSprintWhenFiring & docs_json_ts_0_5_2_1_classes_base_FGNobeliskDetonator_version_specific & docs_json_ts_0_5_2_1_classes_base_FGWeapon_version_specific & FGEquipment & FGWeapon_base;
 
-type FGObjectScanner = docs_json_ts_0_6_1_5_classes_base_overridable_FGObjectScanner_version_specific & docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_mPlayingSound & docs_json_ts_0_3_7_7_classes_base_FGObjectScanner_pre_update8 & docs_json_ts_0_3_7_7_classes_base_FGObjectScanner_version_specific & FGEquipment & FGObjectScanner_version_specific;
+type FGObjectScanner = docs_json_ts_0_6_1_5_classes_base_overridable_FGObjectScanner_version_specific & docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_mPlayingSound & docs_json_ts_0_3_7_7_classes_base_FGObjectScanner_pre_update8 & docs_json_ts_0_3_7_7_classes_base_FGObjectScanner_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGObjectScanner_version_specific & FGEquipment & FGObjectScanner_version_specific;
 
 type FGObjectScanner_version_specific = {
 	mObjectDetails: [
@@ -665,11 +669,11 @@ type FGSuitBase_version_specific = {
 
 type FGVehicleDescriptor_Desc_CyberWagon_C = docs_json_ts_0_3_7_7_classes_base_isDescribed & docs_json_ts_0_4_2_11_classes_base_FGVehicleDescriptor_fueled_with_inventory_base;
 
-type FGVehicleDescriptor_Desc_DroneTransport_C = docs_json_ts_0_3_7_7_classes_base_isDescribed & docs_json_ts_0_4_2_11_classes_base_FGVehicleDescriptor_with_inventory_base;
+type FGVehicleDescriptor_Desc_DroneTransport_C = docs_json_ts_0_3_7_7_classes_base_isDescribed & docs_json_ts_0_4_2_11_classes_base_FGDescriptor & docs_json_ts_0_4_2_11_classes_base_has_mInventorySize;
 
 type FGVehicleDescriptor_Desc_Explorer_C = docs_json_ts_0_3_7_7_classes_base_isDescribed & docs_json_ts_0_4_2_11_classes_base_FGVehicleDescriptor_fueled_with_inventory_base;
 
-type FGVehicleDescriptor_Desc_FreightWagon_C = docs_json_ts_0_3_7_7_classes_base_isDescribed & docs_json_ts_0_4_2_11_classes_base_FGVehicleDescriptor_with_inventory_base;
+type FGVehicleDescriptor_Desc_FreightWagon_C = docs_json_ts_0_3_7_7_classes_base_isDescribed & docs_json_ts_0_4_2_11_classes_base_FGDescriptor & docs_json_ts_0_4_2_11_classes_base_has_mInventorySize;
 
 type FGVehicleDescriptor_Desc_Locomotive_C = docs_json_ts_0_3_7_7_classes_base_isDescribed & docs_json_ts_0_4_2_11_classes_base_FGVehicleDescriptor_powered_base;
 
@@ -694,6 +698,10 @@ type FGWeapon_Equip_RebarGun_Projectile_C_version_specific = {
 };
 
 type FGWeapon_Equip_Rifle_C = docs_json_ts_0_5_2_1_classes_base_overridable_FGWeapon_version_specific & docs_json_ts_0_3_7_7_classes_base_FGEquipment_base & docs_json_ts_0_3_7_7_classes_base_FGWeaponInstantFire_base_base_base & docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_has_mAttachSocket & docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectile_has_mBlockSprintWhenFiring & docs_json_ts_0_5_2_1_classes_base_FGWeapon_Equip_Rifle_C_base & docs_json_ts_0_5_2_1_classes_base_FGWeapon_version_specific & FGEquipment & FGWeapon_base;
+
+type has_mIsInverted = {
+	mIsInverted: docs_json_ts_common_types_bool_string,
+};
 
 export type {
 	FGAmmoType_base,
@@ -725,7 +733,6 @@ export type {
 	FGBuildableConveyorLift,
 	FGBuildableCornerWall,
 	FGBuildableCornerWall_base,
-	FGBuildableCornerWall_version_specific,
 	FGBuildableDockingStation,
 	FGBuildableDoor,
 	FGBuildableDoor_automated,
@@ -807,6 +814,7 @@ export type {
 	FGBuildableWire,
 	FGChainsaw,
 	FGChainsaw_pre_update8,
+	FGChainsaw_pre_1_0,
 	FGChainsaw_version_specific,
 	FGConsumableEquipment,
 	FGDescriptor,
@@ -829,7 +837,7 @@ export type {
 	FGItemDescriptor_pre_1_0,
 	FGItemDescriptor_version_specific,
 	FGJetPack,
-	FGJetPack_base,
+	FGJetPack_version_specific,
 	FGJumpingStilts,
 	FGJumpingStilts_version_specific,
 	FGNobeliskDetonator,
@@ -857,4 +865,5 @@ export type {
 	FGWeapon_Equip_RebarGun_Projectile_C,
 	FGWeapon_Equip_RebarGun_Projectile_C_version_specific,
 	FGWeapon_Equip_Rifle_C,
+	has_mIsInverted,
 };

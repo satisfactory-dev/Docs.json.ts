@@ -579,7 +579,7 @@
 					"$ref": "#/$defs/FGBuildableCornerWall--base"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableCornerWall--version-specific"
+					"$ref": "#/$defs/has--mIsInverted"
 				}
 			]
 		},
@@ -592,15 +592,6 @@
 					"$ref": "#/$defs/FGBuildable--base"
 				}
 			]
-		},
-		"FGBuildableCornerWall--version-specific": {
-			"type": "object",
-			"required": ["mIsInverted"],
-			"properties": {
-				"mIsInverted": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				}
-			}
 		},
 		"FGBuildableDockingStation": {
 			"allOf": [
@@ -777,6 +768,9 @@
 			"allOf": [
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--piped"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--piped--pre-1.0"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--timed"
@@ -1271,6 +1265,9 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--piped"
 				},
 				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--piped--pre-1.0"
+				},
+				{
 					"$ref": "#/$defs/FGBuildable--powered"
 				}
 			]
@@ -1504,6 +1501,9 @@
 					"$ref": "#/$defs/FGChainsaw--pre-update8"
 				},
 				{
+					"$ref": "#/$defs/FGChainsaw--pre-1.0"
+				},
+				{
 					"$ref": "#/$defs/FGChainsaw--version-specific"
 				},
 				{
@@ -1523,15 +1523,21 @@
 				}
 			}
 		},
+		"FGChainsaw--pre-1.0": {
+			"type": "object",
+			"required": ["mCurrentAkID"],
+			"properties": {
+				"mCurrentAkID": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				}
+			}
+		},
 		"FGChainsaw--version-specific": {
 			"type": "object",
-			"required": ["mCurrentOutputDataSFX", "mCurrentAkID"],
+			"required": ["mCurrentOutputDataSFX"],
 			"properties": {
 				"mCurrentOutputDataSFX": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mCurrentAkID": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
 				}
 			}
 		},
@@ -1863,24 +1869,32 @@
 			}
 		},
 		"FGJetPack": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGJetPack--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGJetPack--pre-1.0"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGJetPack--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--noisy"
+				},
+				{
+					"$ref": "#/$defs/FGJetPack--version-specific"
+				}
+			]
+		},
+		"FGJetPack--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGJetPack--base",
 			"required": ["mJumpTimeStamp"],
 			"properties": {
 				"mJumpTimeStamp": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
 				}
 			}
-		},
-		"FGJetPack--base": {
-			"allOf": [
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGJetPack--base--base"
-				},
-				{
-					"$ref": "#/$defs/FGEquipment--noisy"
-				}
-			]
 		},
 		"FGJumpingStilts": {
 			"allOf": [
@@ -1946,6 +1960,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGObjectScanner--pre-update8"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGObjectScanner--pre-1.0"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGObjectScanner--version-specific"
@@ -2160,7 +2177,10 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/isDescribed"
 				},
 				{
-					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGVehicleDescriptor--with-inventory--base"
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGDescriptor"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/has--mInventorySize"
 				}
 			]
 		},
@@ -2180,7 +2200,10 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/isDescribed"
 				},
 				{
-					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGVehicleDescriptor--with-inventory--base"
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGDescriptor"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/has--mInventorySize"
 				}
 			]
 		},
@@ -2330,6 +2353,15 @@
 					"$ref": "#/$defs/FGWeapon--base"
 				}
 			]
+		},
+		"has--mIsInverted": {
+			"type": "object",
+			"required": ["mIsInverted"],
+			"properties": {
+				"mIsInverted": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
 		}
 	}
 }

@@ -40,7 +40,7 @@ import type {
 	FGBuildableGeneratorFuel_coal_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableGeneratorFuel_coal_base,
 	FGBuildableGeneratorFuel_fuel_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableGeneratorFuel_fuel_base,
 	FGBuildableGeneratorGeoThermal_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableGeneratorGeoThermal_base,
-	FGBuildableGeneratorNuclear_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableGeneratorNuclear_base,
+	FGBuildableGeneratorNuclear_version_specific as docs_json_ts_0_3_7_7_classes_base_FGBuildableGeneratorNuclear_version_specific,
 	FGBuildableJumppad_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableJumppad_base,
 	FGBuildableLadder as docs_json_ts_0_3_7_7_classes_base_FGBuildableLadder,
 	FGBuildableManufacturer_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_base,
@@ -72,6 +72,7 @@ import type {
 	FGBuildableResourceExtractor_miner_mk3_version_specific as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_mk3_version_specific,
 	FGBuildableResourceExtractor_oil_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_oil_base,
 	FGBuildableResourceExtractor_piped as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_piped,
+	FGBuildableResourceExtractor_piped_pre_1_0 as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_piped_pre_1_0,
 	FGBuildableResourceExtractor_timed as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_timed,
 	FGBuildableResourceExtractor_water_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_water_base,
 	FGBuildableResourceSink_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceSink_base,
@@ -308,9 +309,9 @@ type FGBuildableFactory_landing_pad = docs_json_ts_0_3_7_7_classes_base_FGBuilda
 
 type FGBuildableFactorySimpleProducer = docs_json_ts_0_3_7_7_classes_base_FGBuildableFactorySimpleProducer_base & FGBuildable_powered;
 
-type FGBuildableFloodlight = FGBuildableFloodlight_base & FGBuildableLightSource;
+type FGBuildableFloodlight = FGBuildableLightSource_version_specific & FGBuildableFloodlight_version_specific & FGBuildableLightSource;
 
-type FGBuildableFloodlight_base = FGBuildableLightSource_base & {
+type FGBuildableFloodlight_version_specific = {
 	mFixtureAngle: docs_json_ts_common_types_integer_string,
 };
 
@@ -370,10 +371,13 @@ type FGBuildableGeneratorGeoThermal_base = {
 	mVariablePowerProductionCycleOffset: docs_json_ts_common_types_decimal_string,
 };
 
-type FGBuildableGeneratorNuclear = docs_json_ts_0_3_7_7_classes_base_FGBuildableGeneratorNuclear_base & FGBuildableGenerator & FGBuildableGeneratorFuel_base & FGBuildableGeneratorNuclear_base;
+type FGBuildableGeneratorNuclear = docs_json_ts_0_3_7_7_classes_base_FGBuildableGenerator_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableGenerator_no_fuel_base_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableGenerator_no_fuel_base_base_base_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableGeneratorNuclear_version_specific & FGBuildableGenerator & FGBuildableGeneratorFuel_base & FGBuildableGeneratorNuclear_version_specific & FGBuildableGeneratorNuclear_pre_1_0;
 
-type FGBuildableGeneratorNuclear_base = {
+type FGBuildableGeneratorNuclear_version_specific = {
 	mCurrentGeneratorNuclearWarning: 'GNW_None',
+};
+
+type FGBuildableGeneratorNuclear_pre_1_0 = {
 	mDefaultFuelClasses: [
 		docs_json_ts_0_4_2_11_properties_mDefaultFuelClasses_item_nuclear,
 		...docs_json_ts_0_4_2_11_properties_mDefaultFuelClasses_item_nuclear[],
@@ -393,11 +397,10 @@ type FGBuildableLightsControlPanel_base = {
 	mConnections: '',
 };
 
-type FGBuildableLightSource = FGBuildable_light_related_thing & FGBuildable_mHasPower & FGBuildableLightSource_base;
+type FGBuildableLightSource = FGBuildable_light_related_thing & FGBuildable_mHasPower & FGBuildableLightSource_version_specific & has_mPowerConsumption;
 
-type FGBuildableLightSource_base = {
+type FGBuildableLightSource_version_specific = {
 	mIsDay: docs_json_ts_common_types_bool_string,
-	mPowerConsumption: docs_json_ts_common_types_decimal_string,
 };
 
 type FGBuildableMAM = docs_json_ts_0_3_7_7_classes_base_FGBuildable & FGBuildable_occupied & FGBuildableMAM_version_specific;
@@ -438,7 +441,7 @@ type FGBuildableManufacturer_Build_ConstructorMk1_C = docs_json_ts_0_3_7_7_class
 
 type FGBuildableManufacturer_Build_FoundryMk1_C = docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_base_mProductionEffectsRunning & FGBuildable_powered;
 
-type FGBuildableManufacturer_Build_HadronCollider_C = docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_base_IsPowered & FGBuildable_powered & FGBuildableManufacturer_Build_HadronCollider_C_base;
+type FGBuildableManufacturer_Build_HadronCollider_C = docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_base_IsPowered & FGBuildable_powered & FGBuildableManufacturer_Build_HadronCollider_C_base & FGBuildableManufacturerVariablePower;
 
 type FGBuildableManufacturer_Build_HadronCollider_C_base = {
 	mSequenceDuration: docs_json_ts_common_types_decimal_string,
@@ -451,8 +454,6 @@ type FGBuildableManufacturer_Build_HadronCollider_C_base = {
 	mStartVector_VFX_Medium_End: docs_json_ts_common_types_XYZ_decimal_string_list,
 	mStartVector_VFX_Large_Start: docs_json_ts_common_types_XYZ_decimal_string_list,
 	mStartVector_VFX_Large_End: docs_json_ts_common_types_XYZ_decimal_string_list,
-	mEstimatedMininumPowerConsumption: docs_json_ts_common_types_decimal_string,
-	mEstimatedMaximumPowerConsumption: docs_json_ts_common_types_decimal_string,
 };
 
 type FGBuildableManufacturer_Build_ManufacturerMk1_C = docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_base & FGBuildable_mStopped_audio_stuff & FGBuildable_powered;
@@ -463,23 +464,26 @@ type FGBuildableManufacturer_Build_Packager_C = docs_json_ts_0_3_7_7_classes_bas
 
 type FGBuildableManufacturer_Build_SmelterMk1_C = docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableManufacturer_base_mProductionEffectsRunning & FGBuildable_powered;
 
+type FGBuildableManufacturerVariablePower = {
+	mEstimatedMininumPowerConsumption: docs_json_ts_common_types_decimal_string,
+	mEstimatedMaximumPowerConsumption: docs_json_ts_common_types_decimal_string,
+};
+
 type FGBuildablePipeline = docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeline & FGBuildable;
 
 type FGBuildablePipeline_junction = FGBuildable_powered & FGBuildablePipeline_junction_base;
 
 type FGBuildablePipeline_junction_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable & docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base_base_with_mNumCyclesForProductivity & docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_version_specific & docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeline_base_no_indicator_base & FGBuildablePipeline_junction_base_base;
 
-type FGBuildablePipeline_junction_base_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base_base_with_mNumCyclesForProductivity & docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_version_specific & FGBuildablePipeline_junction_base_base_base;
-
-type FGBuildablePipeline_junction_base_base_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_version_specific & docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeline_base_no_indicator_base;
+type FGBuildablePipeline_junction_base_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base_base_with_mNumCyclesForProductivity & docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_version_specific & docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeline_base_no_indicator_base;
 
 type FGBuildablePipelineJunction = FGBuildablePipeline_junction & FGBuildablePipelineJunction_base;
 
 type FGBuildablePipelineJunction_base = FGBuildablePipeline_junction_base & FGBuildablePipelineJunction_base_base;
 
-type FGBuildablePipelineJunction_base_base = FGBuildablePipeline_junction_base_base & FGBuildablePipelineJunction_base_base_base;
+type FGBuildablePipelineJunction_base_base = FGBuildablePipeline_junction_base_base & docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_version_specific & docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeline_base_no_indicator_base & FGBuildablePipelineJunction_base_base_base;
 
-type FGBuildablePipelineJunction_base_base_base = FGBuildablePipeline_junction_base_base_base & {
+type FGBuildablePipelineJunction_base_base_base = {
 	mFluidBoxVolume: docs_json_ts_common_types_decimal_string,
 };
 
@@ -532,7 +536,7 @@ type FGBuildableResourceExtractor_miner_mk1 = FGBuildableResourceExtractor_base 
 
 type FGBuildableResourceExtractor_miner_mk1_base = docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner & FGBuildableResourceExtractor_miner_mk1_base_base;
 
-type FGBuildableResourceExtractor_miner_mk1_base_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base_resources_base & docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_miner_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_base & docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_only_allow_certain_resources & docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_piped & docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_timed & FGBuildableResourceExtractor_miner_mk1_version_specific;
+type FGBuildableResourceExtractor_miner_mk1_base_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base_resources_base & docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_miner_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_base & docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_only_allow_certain_resources & docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_piped & docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_piped_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_timed & FGBuildableResourceExtractor_miner_mk1_version_specific;
 
 type FGBuildableResourceExtractor_miner_mk1_version_specific = {
 	CanPlayAfterStartUpStopped: docs_json_ts_common_types_bool_string,
@@ -541,7 +545,7 @@ type FGBuildableResourceExtractor_miner_mk1_version_specific = {
 
 type FGBuildableResourceExtractor_miner_mk2 = docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_mk2_base & FGBuildable_powered;
 
-type FGBuildableResourceExtractor_miner_mk3 = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base_base_with_mNumCyclesForProductivity & docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base_resources_base & docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_version_specific & docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner & docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_miner_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_mk3_version_specific & docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_only_allow_certain_resources & docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_piped & docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_timed & FGBuildable_powered;
+type FGBuildableResourceExtractor_miner_mk3 = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base_base_with_mNumCyclesForProductivity & docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base_resources_base & docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_version_specific & docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner & docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_miner_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_mk3_version_specific & docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_only_allow_certain_resources & docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_piped & docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_piped_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_timed & FGBuildable_powered;
 
 type FGBuildableResourceExtractor_oil = docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_oil_base & FGBuildable_powered;
 
@@ -643,10 +647,13 @@ type FGEquipment_version_specific = {
 	mAttachSocket: 'None' | 'hand_rSocket' | 'hand_lSocket' | 'jumpingStilt_lSocket' | 'helmetSocket' | 'root',
 };
 
-type FGEquipmentZipline = FGEquipment & FGEquipmentZipline_base;
+type FGEquipmentZipline = FGEquipment & FGEquipmentZipline_pre_1_0 & FGEquipmentZipline_version_specific;
 
-type FGEquipmentZipline_base = {
+type FGEquipmentZipline_pre_1_0 = {
 	mShouldPlayDeactivateSound: docs_json_ts_common_types_bool_string,
+};
+
+type FGEquipmentZipline_version_specific = {
 	mZiplineJumpLaunchVelocity: docs_json_ts_common_types_decimal_string,
 	mMaxZiplineAngle: docs_json_ts_common_types_decimal_string,
 	mTraceDistance: docs_json_ts_common_types_decimal_string,
@@ -665,15 +672,18 @@ type FGHoverPack = FGHoverPack_base & {
 	mRailroadSurfSensitivity: docs_json_ts_common_types_decimal_string,
 };
 
-type FGHoverPack_base = FGEquipment & FGHoverPack_version_specific;
+type FGHoverPack_base = FGEquipment & FGHoverPack_pre_1_0 & FGHoverPack_version_specific;
 
-type FGHoverPack_version_specific = {
+type FGHoverPack_pre_1_0 = {
 	mHoverPackActiveTimer: docs_json_ts_common_types_empty_object,
 	mCurrentPlayerVelocity: docs_json_ts_common_types_decimal_string,
 	mCurrentMouseDelta: docs_json_ts_common_types_decimal_string,
 	mHoverpackJoystickTimer: docs_json_ts_common_types_empty_object,
 	mCurrentBatteryPowerLevel: docs_json_ts_common_types_decimal_string,
 	m_PreviousHoverMode: 'HPM_Inactive',
+};
+
+type FGHoverPack_version_specific = {
 	ConnectionLocationUpdatedDelegate: docs_json_ts_common_types_empty_object,
 	ConnectionStatusUpdatedDelegate: docs_json_ts_common_types_empty_object,
 	HoverModeChangedDelegate: docs_json_ts_common_types_empty_object,
@@ -758,7 +768,7 @@ type FGVehicleDescriptor_fueled = FGDescriptor_BuildMenu & FGVehicleDescriptor_f
 
 type FGVehicleDescriptor_fueled_with_inventory = FGVehicleDescriptor_fueled & FGVehicleDescriptor_with_inventory;
 
-type FGVehicleDescriptor_fueled_with_inventory_base = FGVehicleDescriptor_fueled_base & FGVehicleDescriptor_with_inventory_base;
+type FGVehicleDescriptor_fueled_with_inventory_base = FGVehicleDescriptor_fueled_base & has_mInventorySize;
 
 type FGVehicleDescriptor_fueled_base = FGDescriptor & {
 	mFuelConsumption: docs_json_ts_common_types_decimal_string,
@@ -773,11 +783,7 @@ type FGVehicleDescriptor_powered_base = FGDescriptor & {
 	},
 };
 
-type FGVehicleDescriptor_with_inventory = FGDescriptor_BuildMenu & FGVehicleDescriptor_with_inventory_base;
-
-type FGVehicleDescriptor_with_inventory_base = FGDescriptor & {
-	mInventorySize: docs_json_ts_common_types_integer_string,
-};
+type FGVehicleDescriptor_with_inventory = FGDescriptor_BuildMenu & has_mInventorySize;
 
 type FGWeaponInstantFire = docs_json_ts_0_3_7_7_classes_base_FGWeaponInstantFire & FGWeaponProjectile;
 
@@ -793,6 +799,14 @@ type FGWeaponProjectileFire = docs_json_ts_0_3_7_7_classes_base_FGWeaponProjecti
 
 type FGWeaponProjectileFire_has_mMuteDryFire = {
 	mMuteDryFire: docs_json_ts_common_types_bool_string,
+};
+
+type has_mInventorySize = {
+	mInventorySize: docs_json_ts_common_types_integer_string,
+};
+
+type has_mPowerConsumption = {
+	mPowerConsumption: docs_json_ts_common_types_decimal_string,
 };
 
 export type {
@@ -843,7 +857,7 @@ export type {
 	FGBuildableFactory_landing_pad,
 	FGBuildableFactorySimpleProducer,
 	FGBuildableFloodlight,
-	FGBuildableFloodlight_base,
+	FGBuildableFloodlight_version_specific,
 	FGBuildableFrackingActivator,
 	FGBuildableFrackingActivator_base,
 	FGBuildableFrackingActivator_version_specific,
@@ -858,13 +872,14 @@ export type {
 	FGBuildableGeneratorGeoThermal,
 	FGBuildableGeneratorGeoThermal_base,
 	FGBuildableGeneratorNuclear,
-	FGBuildableGeneratorNuclear_base,
+	FGBuildableGeneratorNuclear_version_specific,
+	FGBuildableGeneratorNuclear_pre_1_0,
 	FGBuildableJumppad,
 	FGBuildableLadder,
 	FGBuildableLightsControlPanel,
 	FGBuildableLightsControlPanel_base,
 	FGBuildableLightSource,
-	FGBuildableLightSource_base,
+	FGBuildableLightSource_version_specific,
 	FGBuildableMAM,
 	FGBuildableMAM_version_specific,
 	FGBuildableManufacturer_base_blender,
@@ -883,11 +898,11 @@ export type {
 	FGBuildableManufacturer_Build_OilRefinery_C,
 	FGBuildableManufacturer_Build_Packager_C,
 	FGBuildableManufacturer_Build_SmelterMk1_C,
+	FGBuildableManufacturerVariablePower,
 	FGBuildablePipeline,
 	FGBuildablePipeline_junction,
 	FGBuildablePipeline_junction_base,
 	FGBuildablePipeline_junction_base_base,
-	FGBuildablePipeline_junction_base_base_base,
 	FGBuildablePipelineJunction,
 	FGBuildablePipelineJunction_base,
 	FGBuildablePipelineJunction_base_base,
@@ -946,9 +961,11 @@ export type {
 	FGEquipment_base,
 	FGEquipment_version_specific,
 	FGEquipmentZipline,
-	FGEquipmentZipline_base,
+	FGEquipmentZipline_pre_1_0,
+	FGEquipmentZipline_version_specific,
 	FGHoverPack,
 	FGHoverPack_base,
+	FGHoverPack_pre_1_0,
 	FGHoverPack_version_specific,
 	FGNobeliskDetonator,
 	FGParachute,
@@ -973,11 +990,12 @@ export type {
 	FGVehicleDescriptor_powered,
 	FGVehicleDescriptor_powered_base,
 	FGVehicleDescriptor_with_inventory,
-	FGVehicleDescriptor_with_inventory_base,
 	FGWeaponInstantFire,
 	FGWeaponProjectile,
 	FGWeaponProjectile_base,
 	FGWeaponProjectile_has_mBlockSprintWhenFiring,
 	FGWeaponProjectileFire,
 	FGWeaponProjectileFire_has_mMuteDryFire,
+	has_mInventorySize,
+	has_mPowerConsumption,
 };

@@ -186,7 +186,7 @@
 			"type": "string",
 			"DocsDotJson_PrefixedString": {
 				"prefix": "ParticleSystem",
-				"mode": "quoted",
+				"mode": "version_specific_default",
 				"value": null
 			}
 		}

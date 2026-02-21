@@ -377,6 +377,9 @@
 					"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGBuildableBlueprintDesigner--version-specific"
 				},
 				{
+					"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGBuildableBlueprintDesigner--pre-1.0"
+				},
+				{
 					"$ref": "#/$defs/FGBuildable--base"
 				},
 				{
@@ -434,6 +437,9 @@
 		"FGBuildableConveyorLift": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableConveyorBelt--base--base"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableConveyorLift--base"
 				},
 				{
@@ -456,7 +462,7 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-size--base"
 				},
 				{
-					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildableCornerWall--version-specific"
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/has--mIsInverted"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--base"
@@ -595,7 +601,7 @@
 		"FGBuildableFloodlight": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableFloodlight--base"
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableFloodlight--version-specific"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--base"
@@ -659,6 +665,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--piped"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--piped--pre-1.0"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--timed"
@@ -758,13 +767,16 @@
 		"FGBuildableGeneratorNuclear": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGeneratorNuclear--base--base--base"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGeneratorNuclear--version-specific"
 				},
 				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableGeneratorFuel--base--base--base"
 				},
 				{
-					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableGeneratorNuclear--base"
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableGeneratorNuclear--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableGeneratorNuclear--pre-1.0"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--has--mOutputInventoryHandlerData"
@@ -863,7 +875,10 @@
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--mHasPower--base"
 				},
 				{
-					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableLightSource--base"
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableLightSource--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/has--mPowerConsumption"
 				},
 				{
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableLightSource--base"
@@ -982,6 +997,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableManufacturer--Build_HadronCollider_C--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableManufacturerVariablePower"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--powered"
@@ -1147,6 +1165,15 @@
 		},
 		"FGBuildablePipelineJunction": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--pre-1.0"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipeline--base--no-indicator--base"
+				},
 				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildablePipelineJunction--base--base--base"
 				},
@@ -1479,6 +1506,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--piped"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--piped--pre-1.0"
 				},
 				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildableResourceExtractor--base--version-specific--base"
@@ -1842,10 +1872,19 @@
 		"FGChainsaw": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGChainsaw--pre-1.0"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGChainsaw--version-specific"
 				},
 				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGChainsaw--pre-1.0"
+				},
+				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGChainsaw--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGChainsaw--pre-1.0"
 				},
 				{
 					"$ref": "#/$defs/FGChainsaw--version-specific"
@@ -1855,19 +1894,24 @@
 				}
 			]
 		},
+		"FGChainsaw--pre-1.0": {
+			"type": "object",
+			"required": ["mSawingMontageLength"],
+			"properties": {
+				"mSawingMontageLength": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
 		"FGChainsaw--version-specific": {
 			"type": "object",
 			"required": [
-				"mSawingMontageLength",
 				"mCurrentHasFuel",
 				"mPreviousState",
 				"mSawingProgress",
 				"mChainsawState"
 			],
 			"properties": {
-				"mSawingMontageLength": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
 				"mCurrentHasFuel": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				},
@@ -2080,7 +2124,10 @@
 		"FGEquipmentZipline": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGEquipmentZipline--base"
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGEquipmentZipline--pre-1.0"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGEquipmentZipline--version-specific"
 				},
 				{
 					"$ref": "#/$defs/FGEquipment--noisy"
@@ -2131,6 +2178,9 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGGolfCartDispenser--has--mArmAnimation"
 				},
 				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGGolfCartDispenser--pre-1.0"
+				},
+				{
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGGolfCartDispenser--version-specific"
 				},
 				{
@@ -2144,6 +2194,9 @@
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGHoverPack--version-specific"
 				},
 				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGHoverPack--pre-1.0"
+				},
+				{
 					"$ref": "#/$defs/FGEquipment--noisy"
 				}
 			]
@@ -2151,13 +2204,19 @@
 		"FGJetPack": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.7.1.1--classes--base.overridable#/$defs/FGJetPack--version-specific"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGJetPack--pre-1.0"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGJetPack--version-specific"
 				},
 				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGEquipment--noisy--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.7.1.1--classes--base.overridable#/$defs/FGJetPack--pre-1.0"
+				},
+				{
+					"$ref": "docs.json.ts--0.7.1.1--classes--base.overridable#/$defs/FGJetPack--version-specific"
 				},
 				{
 					"$ref": "#/$defs/FGEquipment"
@@ -2238,28 +2297,41 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment--has--mPlayingSound"
 				},
 				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGObjectScanner--pre-1.0"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGObjectScanner--version-specific"
 				},
 				{
 					"$ref": "#/$defs/FGEquipment"
 				},
 				{
+					"$ref": "#/$defs/FGObjectScanner--pre-1.0"
+				},
+				{
 					"$ref": "#/$defs/FGObjectScanner--version-specific"
 				}
 			]
 		},
+		"FGObjectScanner--pre-1.0": {
+			"type": "object",
+			"required": [
+				"mIsPlayingStaticSound"
+			],
+			"properties": {
+				"mIsPlayingStaticSound": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
+		},
 		"FGObjectScanner--version-specific": {
 			"type": "object",
 			"required": [
-				"mIsPlayingStaticSound",
 				"mClosestObjectInScanRange",
 				"mNormalizedDistanceToClosestObject",
 				"mAngleToClosestObject"
 			],
 			"properties": {
-				"mIsPlayingStaticSound": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
 				"mClosestObjectInScanRange": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				},
@@ -2280,17 +2352,16 @@
 					"$ref": "#/$defs/FGEquipment"
 				},
 				{
+					"$ref": "#/$defs/FGParachute--pre-1.0"
+				},
+				{
 					"$ref": "#/$defs/FGParachute--version-specific"
 				}
 			]
 		},
-		"FGParachute--version-specific": {
+		"FGParachute--pre-1.0": {
 			"type": "object",
-			"required": [
-				"ArmEquipmentsToSkipAnim",
-				"DeployedVFXComponents",
-				"mUseDistanceOverride"
-			],
+			"required": ["ArmEquipmentsToSkipAnim"],
 			"properties": {
 				"ArmEquipmentsToSkipAnim": {
 					"type": "string",
@@ -2322,7 +2393,16 @@
 							}
 						]
 					}
-				},
+				}
+			}
+		},
+		"FGParachute--version-specific": {
+			"type": "object",
+			"required": [
+				"DeployedVFXComponents",
+				"mUseDistanceOverride"
+			],
+			"properties": {
 				"DeployedVFXComponents": {
 					"type": "string",
 					"const": ""

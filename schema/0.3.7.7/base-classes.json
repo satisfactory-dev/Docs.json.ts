@@ -939,13 +939,15 @@
 					"$ref": "#/$defs/FGBuildableConveyorBelt--base"
 				},
 				{
+					"$ref": "#/$defs/FGBuildableConveyorBelt--base--base"
+				},
+				{
 					"$ref": "#/$defs/FGBuildableConveyorLift--base"
 				}
 			]
 		},
 		"FGBuildableConveyorLift--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableConveyorBelt--base--base",
 			"required": ["mMeshHeight", "mTopTransform", "mIsReversed"],
 			"properties": {
 				"mMeshHeight": {
@@ -1528,12 +1530,29 @@
 					"$ref": "#/$defs/FGBuildableGenerator"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableGeneratorNuclear--base"
+					"$ref": "#/$defs/FGBuildableGenerator--base"
 				},
 				{
-					"type": "object",
-					"required": ["mDefaultFuelClasses"],
-					"properties": {
+					"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableGeneratorNuclear--pre-update4"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableGeneratorNuclear--pre-1.0"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableGeneratorNuclear--version-specific"
+				}
+			]
+		},
+		"FGBuildableGeneratorNuclear--pre-update4": {
+			"type": "object",
+			"required": ["mDefaultFuelClasses"],
+			"properties": {
 						"mDefaultFuelClasses": {
 							"type": "string",
 							"typed_string": {
@@ -1549,41 +1568,24 @@
 								]
 							}
 						}
-					}
-				}
-			]
+			}
 		},
-		"FGBuildableGeneratorNuclear--base": {
-			"allOf": [
-				{
-					"$ref": "#/$defs/FGBuildableGenerator--base"
-				},
-				{
-					"$ref": "#/$defs/FGBuildableGeneratorNuclear--base--base"
-				}
-			]
-		},
-		"FGBuildableGeneratorNuclear--base--base": {
-			"allOf": [
-				{
-					"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base--base"
-				},
-				{
-					"$ref": "#/$defs/FGBuildableGeneratorNuclear--base--base--base"
-				}
-			]
-		},
-		"FGBuildableGeneratorNuclear--base--base--base": {
+		"FGBuildableGeneratorNuclear--pre-1.0": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base--base--base--base",
-			"required": ["mWasteLeftFromCurrentFuel", "mFuelResourceForm"],
+			"required": ["mFuelResourceForm"],
 			"properties": {
-				"mWasteLeftFromCurrentFuel": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-				},
 				"mFuelResourceForm": {
 					"type": "string",
 					"const": "RF_SOLID"
+				}
+			}
+		},
+		"FGBuildableGeneratorNuclear--version-specific": {
+			"type": "object",
+			"required": ["mWasteLeftFromCurrentFuel"],
+			"properties": {
+				"mWasteLeftFromCurrentFuel": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
 				}
 			}
 		},
@@ -1791,7 +1793,6 @@
 		},
 		"FGBuildableManufacturer--base--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--powered--version-specific",
 			"required": [
 				"mCurrentRecipeChanged",
 				"mManufacturingSpeed",
@@ -2774,6 +2775,9 @@
 					"$ref": "#/$defs/FGBuildableResourceExtractor--piped"
 				},
 				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--piped--pre-1.0"
+				},
+				{
 					"$ref": "#/$defs/FGBuildableResourceExtractor--timed"
 				}
 			]
@@ -2805,7 +2809,7 @@
 					"$ref": "#/$defs/FGBuildableResourceExtractor--piped"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableResourceExtractor--piped"
+					"$ref": "#/$defs/FGBuildableResourceExtractor--piped--pre-1.0"
 				},
 				{
 					"$ref": "#/$defs/FGBuildableResourceExtractor--timed"
@@ -2933,6 +2937,9 @@
 					"$ref": "#/$defs/FGBuildableResourceExtractor--piped"
 				},
 				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--piped--pre-1.0"
+				},
+				{
 					"$ref": "#/$defs/FGBuildableResourceExtractor--timed"
 				}
 			]
@@ -2989,6 +2996,9 @@
 					"$ref": "#/$defs/FGBuildableResourceExtractor--piped"
 				},
 				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--piped--pre-1.0"
+				},
+				{
 					"$ref": "#/$defs/FGBuildableResourceExtractor--timed"
 				}
 			]
@@ -3040,6 +3050,9 @@
 					"$ref": "#/$defs/FGBuildableResourceExtractor--piped"
 				},
 				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--piped--pre-1.0"
+				},
+				{
 					"$ref": "#/$defs/FGBuildableResourceExtractor--timed"
 				}
 			]
@@ -3066,6 +3079,9 @@
 				},
 				{
 					"$ref": "#/$defs/FGBuildableResourceExtractor--piped"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--piped--pre-1.0"
 				},
 				{
 					"$ref": "#/$defs/FGBuildableResourceExtractor--timed"
@@ -3108,12 +3124,18 @@
 		},
 		"FGBuildableResourceExtractor--piped": {
 			"type": "object",
-			"required": ["mPipeOutputConnections", "mReplicatedFlowRate"],
+			"required": ["mPipeOutputConnections"],
 			"properties": {
 				"mPipeOutputConnections": {
 					"type": "string",
 					"const": ""
-				},
+				}
+			}
+		},
+		"FGBuildableResourceExtractor--piped--pre-1.0": {
+			"type": "object",
+			"required": ["mReplicatedFlowRate"],
+			"properties": {
 				"mReplicatedFlowRate": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
@@ -3176,6 +3198,9 @@
 					"$ref": "#/$defs/FGBuildableResourceExtractor--piped"
 				},
 				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--piped--pre-1.0"
+				},
+				{
 					"$ref": "#/$defs/FGBuildableResourceExtractor--timed"
 				},
 				{
@@ -3205,6 +3230,9 @@
 				},
 				{
 					"$ref": "#/$defs/FGBuildableResourceExtractor--piped"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--piped--pre-1.0"
 				},
 				{
 					"$ref": "#/$defs/FGBuildableResourceExtractor--timed"
@@ -4070,6 +4098,9 @@
 					"$ref": "#/$defs/FGChainsaw--pre-update8"
 				},
 				{
+					"$ref": "#/$defs/FGChainsaw--pre-1.0"
+				},
+				{
 					"$ref": "#/$defs/FGChainsaw--version-specific"
 				},
 				{
@@ -4110,6 +4141,17 @@
 				}
 			}
 		},
+		"FGChainsaw--pre-1.0": {
+			"type": "object",
+			"required": [
+				"mExcludeChainsawableFoliage"
+			],
+			"properties": {
+				"mExcludeChainsawableFoliage": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
+		},
 		"FGChainsaw--version-specific": {
 			"type": "object",
 			"required": [
@@ -4117,7 +4159,6 @@
 				"mEnergyConsumption",
 				"mSawDownTreeTime",
 				"mCollateralPickupRadius",
-				"mExcludeChainsawableFoliage",
 				"mEnergyStored",
 				"mAttachSocket",
 				"mArmAnimation"
@@ -4134,9 +4175,6 @@
 				},
 				"mCollateralPickupRadius": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mExcludeChainsawableFoliage": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				},
 				"mEnergyStored": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
@@ -4809,12 +4847,26 @@
 				},
 				{
 					"$ref": "#/$defs/FGJetPack--base"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--base"
+				},
+				{
+					"$ref": "#/$defs/FGJetPack--base"
+				},
+				{
+					"$ref": "#/$defs/FGJetPack--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGJetPack--pre-1.0"
+				},
+				{
+					"$ref": "#/$defs/FGJetPack--version-specific"
 				}
 			]
 		},
 		"FGJetPack--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGJetPack--base--base",
 			"required": ["mJumpTimeStamp"],
 			"properties": {
 				"mJumpTimeStamp": {
@@ -4824,7 +4876,6 @@
 		},
 		"FGJetPack--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGJetPack--base--base--base",
 			"required": [
 				"mThrustPower",
 				"mVelocityZExtreme",
@@ -4875,21 +4926,19 @@
 				}
 			}
 		},
-		"FGJetPack--base--base--base": {
-			"allOf": [
-				{
-					"$ref": "#/$defs/FGEquipment--base"
-				},
-				{
-					"$ref": "#/$defs/FGJetPack--version-specific"
+		"FGJetPack--pre-1.0": {
+			"type": "object",
+			"required": ["mThrustCooldown"],
+			"properties": {
+				"mThrustCooldown": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
-			]
+			}
 		},
 		"FGJetPack--version-specific": {
 			"type": "object",
 			"required": [
 				"mCurrentFuel",
-				"mThrustCooldown",
 				"mDefaultAirControl",
 				"mRTPCInterval",
 				"mIsThrusting",
@@ -4898,9 +4947,6 @@
 			],
 			"properties": {
 				"mCurrentFuel": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mThrustCooldown": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
 				"mDefaultAirControl": {
@@ -4987,6 +5033,9 @@
 					"$ref": "#/$defs/FGObjectScanner--pre-update8"
 				},
 				{
+					"$ref": "#/$defs/FGObjectScanner--pre-1.0"
+				},
+				{
 					"$ref": "#/$defs/FGObjectScanner--version-specific"
 				}
 			]
@@ -5017,18 +5066,14 @@
 				}
 			}
 		},
-		"FGObjectScanner--version-specific": {
+		"FGObjectScanner--pre-1.0": {
 			"type": "object",
 			"required": [
 				"mScreenUpdateTimer",
 				"mScanlineLerpT",
 				"mScreenUpdateTime",
 				"mNormalizedCloesnessToObject",
-				"mObjectIsWithinRange",
-				"mBeepDelayMax",
-				"mBeepDelayMin",
-				"mDetectionRange",
-				"mUpdateClosestObjectTime"
+				"mObjectIsWithinRange"
 			],
 			"properties": {
 				"mScreenUpdateTimer": {
@@ -5045,7 +5090,18 @@
 				},
 				"mObjectIsWithinRange": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
+				}
+			}
+		},
+		"FGObjectScanner--version-specific": {
+			"type": "object",
+			"required": [
+				"mBeepDelayMax",
+				"mBeepDelayMin",
+				"mDetectionRange",
+				"mUpdateClosestObjectTime"
+			],
+			"properties": {
 				"mBeepDelayMax": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
