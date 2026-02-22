@@ -171,19 +171,16 @@
 					"$ref": "#/$defs/FGBuildable--base"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableBlueprintDesigner--version-specific"
+					"$ref": "#/$defs/FGBuildableBlueprintDesigner--pre-1.0"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableBlueprintDesigner--pre-1.0"
+					"$ref": "#/$defs/FGBuildableBlueprintDesigner--version-specific"
 				}
 			]
 		},
 		"FGBuildableBlueprintDesigner--pre-1.0": {
 			"type": "object",
-			"required": [
-				"mIntersectComponents",
-				"mCurrentRecordData"
-			],
+			"required": ["mIntersectComponents", "mCurrentRecordData"],
 			"properties": {
 				"mIntersectComponents": {
 					"type": "string",
@@ -522,10 +519,10 @@
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableGeneratorFuel--base--base--base"
 				},
 				{
-					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableGeneratorNuclear--version-specific"
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableGeneratorNuclear--pre-1.0"
 				},
 				{
-					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableGeneratorNuclear--pre-1.0"
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableGeneratorNuclear--version-specific"
 				},
 				{
 					"$ref": "#/$defs/FGBuildableGenerator"
@@ -1254,6 +1251,12 @@
 		"FGJetPack": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--0.7.1.1--classes--base.overridable#/$defs/FGJetPack--pre-1.0"
+				},
+				{
+					"$ref": "docs.json.ts--0.7.1.1--classes--base.overridable#/$defs/FGJetPack--version-specific"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGJetPack--pre-1.0"
 				},
 				{
@@ -1261,12 +1264,6 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGEquipment"
-				},
-				{
-					"$ref": "docs.json.ts--0.7.1.1--classes--base.overridable#/$defs/FGJetPack--pre-1.0"
-				},
-				{
-					"$ref": "docs.json.ts--0.7.1.1--classes--base.overridable#/$defs/FGJetPack--version-specific"
 				}
 			]
 		},

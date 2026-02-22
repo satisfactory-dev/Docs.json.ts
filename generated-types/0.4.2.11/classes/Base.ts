@@ -1,6 +1,17 @@
 /* eslint-disable @stylistic/max-len */
 
 import type {
+	BGRA as docs_json_ts_common_types_BGRA,
+	bool_string as docs_json_ts_common_types_bool_string,
+	decimal_string as docs_json_ts_common_types_decimal_string,
+	empty_object as docs_json_ts_common_types_empty_object,
+	integer_string as docs_json_ts_common_types_integer_string,
+	RGBA as docs_json_ts_common_types_RGBA,
+	XYZ_decimal_string as docs_json_ts_common_types_XYZ_decimal_string,
+	XYZ_decimal_string_list as docs_json_ts_common_types_XYZ_decimal_string_list,
+} from './../../common/types.ts';
+
+import type {
 	FGBuildable as docs_json_ts_0_3_7_7_classes_base_FGBuildable,
 	FGBuildable_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_base,
 	FGBuildable_base_pre_update5 as docs_json_ts_0_3_7_7_classes_base_FGBuildable_base_pre_update5,
@@ -133,17 +144,6 @@ import type {
 } from './../types/properties.ts';
 
 import type {
-	BGRA as docs_json_ts_common_types_BGRA,
-	bool_string as docs_json_ts_common_types_bool_string,
-	decimal_string as docs_json_ts_common_types_decimal_string,
-	empty_object as docs_json_ts_common_types_empty_object,
-	integer_string as docs_json_ts_common_types_integer_string,
-	RGBA as docs_json_ts_common_types_RGBA,
-	XYZ_decimal_string as docs_json_ts_common_types_XYZ_decimal_string,
-	XYZ_decimal_string_list as docs_json_ts_common_types_XYZ_decimal_string_list,
-} from './../../common/types.ts';
-
-import type {
 	FGBuildableResourceExtractor_miner_base as docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_miner_base,
 	FGBuildableResourceExtractor_only_allow_certain_resources as docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_only_allow_certain_resources,
 	FGEquipment_version_specific as docs_json_ts_0_3_7_7_classes_base_overridable_FGEquipment_version_specific,
@@ -157,6 +157,14 @@ import type {
 	mUnlocks_item_base as docs_json_ts_0_3_7_7_properties_mUnlocks_item_base,
 	Texture2D_base as docs_json_ts_0_3_7_7_properties_Texture2D_base,
 } from './../../0.3.7.7/types/properties.ts';
+
+type has_mInventorySize = {
+	mInventorySize: docs_json_ts_common_types_integer_string,
+};
+
+type has_mPowerConsumption = {
+	mPowerConsumption: docs_json_ts_common_types_decimal_string,
+};
 
 type FGBuildable = docs_json_ts_0_3_7_7_classes_base_FGBuildable_base_pre_update5 & FGBuildable_base & FGBuildable_base_pre_update5 & FGBuildable_base_version_specific;
 
@@ -309,7 +317,7 @@ type FGBuildableFactory_landing_pad = docs_json_ts_0_3_7_7_classes_base_FGBuilda
 
 type FGBuildableFactorySimpleProducer = docs_json_ts_0_3_7_7_classes_base_FGBuildableFactorySimpleProducer_base & FGBuildable_powered;
 
-type FGBuildableFloodlight = FGBuildableLightSource_version_specific & FGBuildableFloodlight_version_specific & FGBuildableLightSource;
+type FGBuildableFloodlight = FGBuildableFloodlight_version_specific & FGBuildableLightSource & FGBuildableLightSource_version_specific;
 
 type FGBuildableFloodlight_version_specific = {
 	mFixtureAngle: docs_json_ts_common_types_integer_string,
@@ -371,17 +379,17 @@ type FGBuildableGeneratorGeoThermal_base = {
 	mVariablePowerProductionCycleOffset: docs_json_ts_common_types_decimal_string,
 };
 
-type FGBuildableGeneratorNuclear = docs_json_ts_0_3_7_7_classes_base_FGBuildableGenerator_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableGenerator_no_fuel_base_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableGenerator_no_fuel_base_base_base_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableGeneratorNuclear_version_specific & FGBuildableGenerator & FGBuildableGeneratorFuel_base & FGBuildableGeneratorNuclear_version_specific & FGBuildableGeneratorNuclear_pre_1_0;
-
-type FGBuildableGeneratorNuclear_version_specific = {
-	mCurrentGeneratorNuclearWarning: 'GNW_None',
-};
+type FGBuildableGeneratorNuclear = docs_json_ts_0_3_7_7_classes_base_FGBuildableGenerator_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableGenerator_no_fuel_base_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableGenerator_no_fuel_base_base_base_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableGeneratorNuclear_version_specific & FGBuildableGenerator & FGBuildableGeneratorFuel_base & FGBuildableGeneratorNuclear_pre_1_0 & FGBuildableGeneratorNuclear_version_specific;
 
 type FGBuildableGeneratorNuclear_pre_1_0 = {
 	mDefaultFuelClasses: [
 		docs_json_ts_0_4_2_11_properties_mDefaultFuelClasses_item_nuclear,
 		...docs_json_ts_0_4_2_11_properties_mDefaultFuelClasses_item_nuclear[],
 	],
+};
+
+type FGBuildableGeneratorNuclear_version_specific = {
+	mCurrentGeneratorNuclearWarning: 'GNW_None',
 };
 
 type FGBuildableJumppad = docs_json_ts_0_3_7_7_classes_base_FGBuildableJumppad_base & FGBuildable_powered;
@@ -481,7 +489,7 @@ type FGBuildablePipelineJunction = FGBuildablePipeline_junction & FGBuildablePip
 
 type FGBuildablePipelineJunction_base = FGBuildablePipeline_junction_base & FGBuildablePipelineJunction_base_base;
 
-type FGBuildablePipelineJunction_base_base = FGBuildablePipeline_junction_base_base & docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_version_specific & docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeline_base_no_indicator_base & FGBuildablePipelineJunction_base_base_base;
+type FGBuildablePipelineJunction_base_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_version_specific & docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeline_base_no_indicator_base & FGBuildablePipeline_junction_base_base & FGBuildablePipelineJunction_base_base_base;
 
 type FGBuildablePipelineJunction_base_base_base = {
 	mFluidBoxVolume: docs_json_ts_common_types_decimal_string,
@@ -801,15 +809,9 @@ type FGWeaponProjectileFire_has_mMuteDryFire = {
 	mMuteDryFire: docs_json_ts_common_types_bool_string,
 };
 
-type has_mInventorySize = {
-	mInventorySize: docs_json_ts_common_types_integer_string,
-};
-
-type has_mPowerConsumption = {
-	mPowerConsumption: docs_json_ts_common_types_decimal_string,
-};
-
 export type {
+	has_mInventorySize,
+	has_mPowerConsumption,
 	FGBuildable,
 	FGBuildable_base,
 	FGBuildable_base_pre_update5,
@@ -872,8 +874,8 @@ export type {
 	FGBuildableGeneratorGeoThermal,
 	FGBuildableGeneratorGeoThermal_base,
 	FGBuildableGeneratorNuclear,
-	FGBuildableGeneratorNuclear_version_specific,
 	FGBuildableGeneratorNuclear_pre_1_0,
+	FGBuildableGeneratorNuclear_version_specific,
 	FGBuildableJumppad,
 	FGBuildableLadder,
 	FGBuildableLightsControlPanel,
@@ -996,6 +998,4 @@ export type {
 	FGWeaponProjectile_has_mBlockSprintWhenFiring,
 	FGWeaponProjectileFire,
 	FGWeaponProjectileFire_has_mMuteDryFire,
-	has_mInventorySize,
-	has_mPowerConsumption,
 };

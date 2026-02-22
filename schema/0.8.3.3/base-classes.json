@@ -374,10 +374,10 @@
 		"FGBuildableBlueprintDesigner": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGBuildableBlueprintDesigner--version-specific"
+					"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGBuildableBlueprintDesigner--pre-1.0"
 				},
 				{
-					"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGBuildableBlueprintDesigner--pre-1.0"
+					"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGBuildableBlueprintDesigner--version-specific"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--base"
@@ -773,10 +773,10 @@
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableGeneratorFuel--base--base--base"
 				},
 				{
-					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableGeneratorNuclear--version-specific"
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableGeneratorNuclear--pre-1.0"
 				},
 				{
-					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableGeneratorNuclear--pre-1.0"
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableGeneratorNuclear--version-specific"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--has--mOutputInventoryHandlerData"
@@ -2191,10 +2191,10 @@
 		"FGHoverPack": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGHoverPack--version-specific"
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGHoverPack--pre-1.0"
 				},
 				{
-					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGHoverPack--pre-1.0"
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGHoverPack--version-specific"
 				},
 				{
 					"$ref": "#/$defs/FGEquipment--noisy"
@@ -2204,6 +2204,12 @@
 		"FGJetPack": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--0.7.1.1--classes--base.overridable#/$defs/FGJetPack--pre-1.0"
+				},
+				{
+					"$ref": "docs.json.ts--0.7.1.1--classes--base.overridable#/$defs/FGJetPack--version-specific"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGJetPack--pre-1.0"
 				},
 				{
@@ -2211,12 +2217,6 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGEquipment--noisy--version-specific"
-				},
-				{
-					"$ref": "docs.json.ts--0.7.1.1--classes--base.overridable#/$defs/FGJetPack--pre-1.0"
-				},
-				{
-					"$ref": "docs.json.ts--0.7.1.1--classes--base.overridable#/$defs/FGJetPack--version-specific"
 				},
 				{
 					"$ref": "#/$defs/FGEquipment"
@@ -2315,9 +2315,7 @@
 		},
 		"FGObjectScanner--pre-1.0": {
 			"type": "object",
-			"required": [
-				"mIsPlayingStaticSound"
-			],
+			"required": ["mIsPlayingStaticSound"],
 			"properties": {
 				"mIsPlayingStaticSound": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
@@ -2398,10 +2396,7 @@
 		},
 		"FGParachute--version-specific": {
 			"type": "object",
-			"required": [
-				"DeployedVFXComponents",
-				"mUseDistanceOverride"
-			],
+			"required": ["DeployedVFXComponents", "mUseDistanceOverride"],
 			"properties": {
 				"DeployedVFXComponents": {
 					"type": "string",

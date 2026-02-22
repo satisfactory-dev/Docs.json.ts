@@ -1,6 +1,19 @@
 /* eslint-disable @stylistic/max-len */
 
 import type {
+	bool_string as docs_json_ts_common_types_bool_string,
+	decimal_string as docs_json_ts_common_types_decimal_string,
+	decimal_string_signed as docs_json_ts_common_types_decimal_string_signed,
+	empty_object as docs_json_ts_common_types_empty_object,
+	integer_string as docs_json_ts_common_types_integer_string,
+	integer_string_signed as docs_json_ts_common_types_integer_string_signed,
+	PitchYawRoll_decimal_string_signed as docs_json_ts_common_types_PitchYawRoll_decimal_string_signed,
+	RGBA as docs_json_ts_common_types_RGBA,
+	XY_decimal_string as docs_json_ts_common_types_XY_decimal_string,
+	XYZ_decimal_string as docs_json_ts_common_types_XYZ_decimal_string,
+} from './../../common/types.ts';
+
+import type {
 	FGBuildable_base as docs_json_ts_0_4_2_11_classes_base_FGBuildable_base,
 	FGBuildable_docking_station_base as docs_json_ts_0_4_2_11_classes_base_FGBuildable_docking_station_base,
 	FGBuildable_has_mCachedSkeletalMeshes as docs_json_ts_0_4_2_11_classes_base_FGBuildable_has_mCachedSkeletalMeshes,
@@ -47,19 +60,6 @@ import type {
 	FGWeaponProjectileFire_has_mMuteDryFire as docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectileFire_has_mMuteDryFire,
 	has_mPowerConsumption as docs_json_ts_0_4_2_11_classes_base_has_mPowerConsumption,
 } from './../../0.4.2.11/classes/Base.ts';
-
-import type {
-	bool_string as docs_json_ts_common_types_bool_string,
-	decimal_string as docs_json_ts_common_types_decimal_string,
-	decimal_string_signed as docs_json_ts_common_types_decimal_string_signed,
-	empty_object as docs_json_ts_common_types_empty_object,
-	integer_string as docs_json_ts_common_types_integer_string,
-	integer_string_signed as docs_json_ts_common_types_integer_string_signed,
-	PitchYawRoll_decimal_string_signed as docs_json_ts_common_types_PitchYawRoll_decimal_string_signed,
-	RGBA as docs_json_ts_common_types_RGBA,
-	XY_decimal_string as docs_json_ts_common_types_XY_decimal_string,
-	XYZ_decimal_string as docs_json_ts_common_types_XYZ_decimal_string,
-} from './../../common/types.ts';
 
 import type {
 	FalloffCurve_EditorCurveData_only as docs_json_ts_0_5_2_1_properties_FalloffCurve_EditorCurveData_only,
@@ -199,6 +199,10 @@ import type {
 	FGSchematic_base as docs_json_ts_0_4_2_11_classes_base_overridable_FGSchematic_base,
 	FGSchematic_has_mSchematicIcon as docs_json_ts_0_4_2_11_classes_base_overridable_FGSchematic_has_mSchematicIcon,
 } from './../../0.4.2.11/classes/Base.overridable.ts';
+
+type has_mResourceSinkPoints = {
+	mResourceSinkPoints: docs_json_ts_common_types_integer_string,
+};
 
 type FGBuildable_base = docs_json_ts_0_4_2_11_classes_base_FGBuildable_base & FGBuildable_base_pre_1_0 & FGBuildable_base_version_specific;
 
@@ -376,7 +380,7 @@ type FGBuildableGeneratorFuel_fuel = docs_json_ts_0_3_7_7_classes_base_FGBuildab
 
 type FGBuildableGeneratorGeoThermal = docs_json_ts_0_3_7_7_classes_base_FGBuildableGeneratorGeoThermal_base_base & docs_json_ts_0_4_2_11_classes_base_FGBuildableGeneratorGeoThermal_base & FGBuildableGenerator_no_fuel;
 
-type FGBuildableGeneratorNuclear = docs_json_ts_0_3_7_7_classes_base_FGBuildableGenerator_no_fuel_base_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableGenerator_no_fuel_base_base_base_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableGeneratorNuclear_version_specific & docs_json_ts_0_4_2_11_classes_base_FGBuildableGeneratorFuel_base_base & docs_json_ts_0_4_2_11_classes_base_FGBuildableGeneratorNuclear_version_specific & docs_json_ts_0_4_2_11_classes_base_FGBuildableGeneratorNuclear_pre_1_0 & FGBuildableGenerator;
+type FGBuildableGeneratorNuclear = docs_json_ts_0_3_7_7_classes_base_FGBuildableGenerator_no_fuel_base_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableGenerator_no_fuel_base_base_base_base & docs_json_ts_0_3_7_7_classes_base_FGBuildableGeneratorNuclear_version_specific & docs_json_ts_0_4_2_11_classes_base_FGBuildableGeneratorFuel_base_base & docs_json_ts_0_4_2_11_classes_base_FGBuildableGeneratorNuclear_pre_1_0 & docs_json_ts_0_4_2_11_classes_base_FGBuildableGeneratorNuclear_version_specific & FGBuildableGenerator;
 
 type FGBuildableJumppad = docs_json_ts_0_3_7_7_classes_base_FGBuildableJumppad_base_base & FGBuildable_powered;
 
@@ -851,11 +855,8 @@ type FGWeapon_version_specific = {
 	mOnWeaponStateChanged: docs_json_ts_common_types_empty_object,
 };
 
-type has_mResourceSinkPoints = {
-	mResourceSinkPoints: docs_json_ts_common_types_integer_string,
-};
-
 export type {
+	has_mResourceSinkPoints,
 	FGBuildable_base,
 	FGBuildable_base_pre_1_0,
 	FGBuildable_base_version_specific,
@@ -1037,5 +1038,4 @@ export type {
 	FGWeapon_Equip_Rifle_C_base,
 	FGWeapon_pre_update6,
 	FGWeapon_version_specific,
-	has_mResourceSinkPoints,
 };

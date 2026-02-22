@@ -13,10 +13,7 @@
 		},
 		"FGJetPack--version-specific": {
 			"type": "object",
-			"required": [
-				"mSelectedFuelType",
-				"mCurrentFuelType"
-			],
+			"required": ["mSelectedFuelType", "mCurrentFuelType"],
 			"properties": {
 				"mSelectedFuelType": {
 					"$ref": "docs.json.ts--common--types#/$defs/integer_string"

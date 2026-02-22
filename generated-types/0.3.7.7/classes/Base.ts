@@ -426,16 +426,16 @@ type FGBuildableGeneratorGeoThermal_base_base_base = FGBuildableGenerator_no_fue
 	mProductionEffectsRunning: docs_json_ts_common_types_bool_string,
 };
 
-type FGBuildableGeneratorNuclear = FGBuildableGenerator & FGBuildableGenerator_base & FGBuildableGenerator_no_fuel_base_base & FGBuildableGenerator_no_fuel_base_base_base_base & FGBuildableGeneratorNuclear_pre_update4 & FGBuildableGeneratorNuclear_pre_1_0 & FGBuildableGeneratorNuclear_version_specific;
+type FGBuildableGeneratorNuclear = FGBuildableGenerator & FGBuildableGenerator_base & FGBuildableGenerator_no_fuel_base_base & FGBuildableGenerator_no_fuel_base_base_base_base & FGBuildableGeneratorNuclear_pre_1_0 & FGBuildableGeneratorNuclear_pre_update4 & FGBuildableGeneratorNuclear_version_specific;
+
+type FGBuildableGeneratorNuclear_pre_1_0 = {
+	mFuelResourceForm: 'RF_SOLID',
+};
 
 type FGBuildableGeneratorNuclear_pre_update4 = {
 	mDefaultFuelClasses: [
 		'/Game/FactoryGame/Resource/Parts/NuclearFuelRod/Desc_NuclearFuelRod.Desc_NuclearFuelRod_C',
 	],
-};
-
-type FGBuildableGeneratorNuclear_pre_1_0 = {
-	mFuelResourceForm: 'RF_SOLID',
 };
 
 type FGBuildableGeneratorNuclear_version_specific = {
@@ -954,7 +954,11 @@ type FGBuildableWire_base = {
 	mConnections: 'None',
 };
 
-type FGChainsaw = FGChainsaw_pre_update8 & FGChainsaw_pre_1_0 & FGChainsaw_version_specific & FGEquipment & FGEquipment_has_mPlayingSound;
+type FGChainsaw = FGChainsaw_pre_1_0 & FGChainsaw_pre_update8 & FGChainsaw_version_specific & FGEquipment & FGEquipment_has_mPlayingSound;
+
+type FGChainsaw_pre_1_0 = {
+	mExcludeChainsawableFoliage: docs_json_ts_common_types_bool_string,
+};
 
 type FGChainsaw_pre_update8 = {
 	mMontageLength: docs_json_ts_common_types_decimal_string,
@@ -962,10 +966,6 @@ type FGChainsaw_pre_update8 = {
 	mCurrentState: 'NewEnumerator3',
 	mCurrentAudioState: 'NewEnumerator3',
 	mPreviousAudioState: 'NewEnumerator3',
-};
-
-type FGChainsaw_pre_1_0 = {
-	mExcludeChainsawableFoliage: docs_json_ts_common_types_bool_string,
 };
 
 type FGChainsaw_version_specific = {
@@ -1157,7 +1157,7 @@ type FGItemDescriptorNuclearFuel_version_specific = FGDescriptor_sinkable_base &
 	mAmountOfWaste: docs_json_ts_common_types_integer_string,
 };
 
-type FGJetPack = FGEquipment & FGJetPack_base & FGEquipment_base & FGJetPack_base_base & FGJetPack_pre_1_0 & FGJetPack_version_specific;
+type FGJetPack = FGEquipment & FGEquipment_base & FGJetPack_base & FGJetPack_base_base & FGJetPack_pre_1_0 & FGJetPack_version_specific;
 
 type FGJetPack_base = {
 	mJumpTimeStamp: docs_json_ts_common_types_decimal_string,
@@ -1204,7 +1204,7 @@ type FGNobeliskDetonator_base = {
 	mArmAnimation: 'AE_Nobelisk',
 };
 
-type FGObjectScanner = FGEquipment & FGEquipment_has_mPlayingSound & FGObjectScanner_has_mObjectDetails & FGObjectScanner_pre_update8 & FGObjectScanner_pre_1_0 & FGObjectScanner_version_specific;
+type FGObjectScanner = FGEquipment & FGEquipment_has_mPlayingSound & FGObjectScanner_has_mObjectDetails & FGObjectScanner_pre_1_0 & FGObjectScanner_pre_update8 & FGObjectScanner_version_specific;
 
 type FGObjectScanner_has_mObjectDetails = {
 	mObjectDetails: [
@@ -1213,16 +1213,16 @@ type FGObjectScanner_has_mObjectDetails = {
 	],
 };
 
-type FGObjectScanner_pre_update8 = {
-	mShouldBeepEvenIfNoObject: docs_json_ts_common_types_bool_string,
-};
-
 type FGObjectScanner_pre_1_0 = {
 	mScreenUpdateTimer: docs_json_ts_common_types_empty_object,
 	mScanlineLerpT: docs_json_ts_common_types_decimal_string,
 	mScreenUpdateTime: docs_json_ts_common_types_decimal_string,
 	mNormalizedCloesnessToObject: docs_json_ts_common_types_decimal_string,
 	mObjectIsWithinRange: docs_json_ts_common_types_bool_string,
+};
+
+type FGObjectScanner_pre_update8 = {
+	mShouldBeepEvenIfNoObject: docs_json_ts_common_types_bool_string,
 };
 
 type FGObjectScanner_version_specific = {
@@ -1569,8 +1569,8 @@ export type {
 	FGBuildableGeneratorGeoThermal_base_base,
 	FGBuildableGeneratorGeoThermal_base_base_base,
 	FGBuildableGeneratorNuclear,
-	FGBuildableGeneratorNuclear_pre_update4,
 	FGBuildableGeneratorNuclear_pre_1_0,
+	FGBuildableGeneratorNuclear_pre_update4,
 	FGBuildableGeneratorNuclear_version_specific,
 	FGBuildableJumppad,
 	FGBuildableJumppad_base,
@@ -1706,8 +1706,8 @@ export type {
 	FGBuildableWire,
 	FGBuildableWire_base,
 	FGChainsaw,
-	FGChainsaw_pre_update8,
 	FGChainsaw_pre_1_0,
+	FGChainsaw_pre_update8,
 	FGChainsaw_version_specific,
 	FGColorGun,
 	FGColorGun_base,
@@ -1764,8 +1764,8 @@ export type {
 	FGNobeliskDetonator_base,
 	FGObjectScanner,
 	FGObjectScanner_has_mObjectDetails,
-	FGObjectScanner_pre_update8,
 	FGObjectScanner_pre_1_0,
+	FGObjectScanner_pre_update8,
 	FGObjectScanner_version_specific,
 	FGParachute,
 	FGParachute_has_mIsDeployed,

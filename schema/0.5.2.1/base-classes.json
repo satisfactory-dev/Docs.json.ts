@@ -2,6 +2,15 @@
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "docs.json.ts--0.5.2.1--classes--base",
 	"$defs": {
+		"has--mResourceSinkPoints": {
+			"type": "object",
+			"required": ["mResourceSinkPoints"],
+			"properties": {
+				"mResourceSinkPoints": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				}
+			}
+		},
 		"FGBuildable--base": {
 			"allOf": [
 				{
@@ -847,10 +856,10 @@
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableGeneratorFuel--base--base"
 				},
 				{
-					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableGeneratorNuclear--version-specific"
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableGeneratorNuclear--pre-1.0"
 				},
 				{
-					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableGeneratorNuclear--pre-1.0"
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableGeneratorNuclear--version-specific"
 				},
 				{
 					"$ref": "#/$defs/FGBuildableGenerator"
@@ -2169,7 +2178,11 @@
 		},
 		"FGGolfCartDispenser--pre-1.0": {
 			"type": "object",
-			"required": ["mMaxSpawnDistance", "mSpawningClearance", "mBuildDisqualifierText"],
+			"required": [
+				"mMaxSpawnDistance",
+				"mSpawningClearance",
+				"mBuildDisqualifierText"
+			],
 			"properties": {
 				"mMaxSpawnDistance": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
@@ -2185,10 +2198,7 @@
 		},
 		"FGGolfCartDispenser--version-specific": {
 			"type": "object",
-			"required": [
-				"mBuildDisqualifierText",
-				"canDisplayDisqualifier"
-			],
+			"required": ["mBuildDisqualifierText", "canDisplayDisqualifier"],
 			"properties": {
 				"mBuildDisqualifierText": {
 					"type": "string",
@@ -3022,15 +3032,6 @@
 				},
 				"mOnWeaponStateChanged": {
 					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-				}
-			}
-		},
-		"has--mResourceSinkPoints": {
-			"type": "object",
-			"required": ["mResourceSinkPoints"],
-			"properties": {
-				"mResourceSinkPoints": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
 				}
 			}
 		}

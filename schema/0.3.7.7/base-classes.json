@@ -1539,36 +1539,15 @@
 					"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base--base--base--base"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableGeneratorNuclear--pre-update4"
+					"$ref": "#/$defs/FGBuildableGeneratorNuclear--pre-1.0"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableGeneratorNuclear--pre-1.0"
+					"$ref": "#/$defs/FGBuildableGeneratorNuclear--pre-update4"
 				},
 				{
 					"$ref": "#/$defs/FGBuildableGeneratorNuclear--version-specific"
 				}
 			]
-		},
-		"FGBuildableGeneratorNuclear--pre-update4": {
-			"type": "object",
-			"required": ["mDefaultFuelClasses"],
-			"properties": {
-						"mDefaultFuelClasses": {
-							"type": "string",
-							"typed_string": {
-								"type": "array",
-								"minItems": 1,
-								"maxItems": 1,
-								"items": false,
-								"prefixItems": [
-									{
-										"type": "string",
-										"const": "/Game/FactoryGame/Resource/Parts/NuclearFuelRod/Desc_NuclearFuelRod.Desc_NuclearFuelRod_C"
-									}
-								]
-							}
-						}
-			}
 		},
 		"FGBuildableGeneratorNuclear--pre-1.0": {
 			"type": "object",
@@ -1577,6 +1556,27 @@
 				"mFuelResourceForm": {
 					"type": "string",
 					"const": "RF_SOLID"
+				}
+			}
+		},
+		"FGBuildableGeneratorNuclear--pre-update4": {
+			"type": "object",
+			"required": ["mDefaultFuelClasses"],
+			"properties": {
+				"mDefaultFuelClasses": {
+					"type": "string",
+					"typed_string": {
+						"type": "array",
+						"minItems": 1,
+						"maxItems": 1,
+						"items": false,
+						"prefixItems": [
+							{
+								"type": "string",
+								"const": "/Game/FactoryGame/Resource/Parts/NuclearFuelRod/Desc_NuclearFuelRod.Desc_NuclearFuelRod_C"
+							}
+						]
+					}
 				}
 			}
 		},
@@ -4095,10 +4095,10 @@
 		"FGChainsaw": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGChainsaw--pre-update8"
+					"$ref": "#/$defs/FGChainsaw--pre-1.0"
 				},
 				{
-					"$ref": "#/$defs/FGChainsaw--pre-1.0"
+					"$ref": "#/$defs/FGChainsaw--pre-update8"
 				},
 				{
 					"$ref": "#/$defs/FGChainsaw--version-specific"
@@ -4110,6 +4110,15 @@
 					"$ref": "#/$defs/FGEquipment--has--mPlayingSound"
 				}
 			]
+		},
+		"FGChainsaw--pre-1.0": {
+			"type": "object",
+			"required": ["mExcludeChainsawableFoliage"],
+			"properties": {
+				"mExcludeChainsawableFoliage": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
 		},
 		"FGChainsaw--pre-update8": {
 			"type": "object",
@@ -4138,17 +4147,6 @@
 				"mPreviousAudioState": {
 					"type": "string",
 					"const": "NewEnumerator3"
-				}
-			}
-		},
-		"FGChainsaw--pre-1.0": {
-			"type": "object",
-			"required": [
-				"mExcludeChainsawableFoliage"
-			],
-			"properties": {
-				"mExcludeChainsawableFoliage": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				}
 			}
 		},
@@ -4846,10 +4844,10 @@
 					"$ref": "#/$defs/FGEquipment"
 				},
 				{
-					"$ref": "#/$defs/FGJetPack--base"
+					"$ref": "#/$defs/FGEquipment--base"
 				},
 				{
-					"$ref": "#/$defs/FGEquipment--base"
+					"$ref": "#/$defs/FGJetPack--base"
 				},
 				{
 					"$ref": "#/$defs/FGJetPack--base"
@@ -5030,10 +5028,10 @@
 					"$ref": "#/$defs/FGObjectScanner--has--mObjectDetails"
 				},
 				{
-					"$ref": "#/$defs/FGObjectScanner--pre-update8"
+					"$ref": "#/$defs/FGObjectScanner--pre-1.0"
 				},
 				{
-					"$ref": "#/$defs/FGObjectScanner--pre-1.0"
+					"$ref": "#/$defs/FGObjectScanner--pre-update8"
 				},
 				{
 					"$ref": "#/$defs/FGObjectScanner--version-specific"
@@ -5054,15 +5052,6 @@
 							"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mObjectDetails--item"
 						}
 					}
-				}
-			}
-		},
-		"FGObjectScanner--pre-update8": {
-			"type": "object",
-			"required": ["mShouldBeepEvenIfNoObject"],
-			"properties": {
-				"mShouldBeepEvenIfNoObject": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				}
 			}
 		},
@@ -5089,6 +5078,15 @@
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
 				"mObjectIsWithinRange": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
+		},
+		"FGObjectScanner--pre-update8": {
+			"type": "object",
+			"required": ["mShouldBeepEvenIfNoObject"],
+			"properties": {
+				"mShouldBeepEvenIfNoObject": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				}
 			}

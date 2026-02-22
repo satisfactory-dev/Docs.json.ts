@@ -2,6 +2,24 @@
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "docs.json.ts--0.4.2.11--classes--base",
 	"$defs": {
+		"has--mInventorySize": {
+			"type": "object",
+			"required": ["mInventorySize"],
+			"properties": {
+				"mInventorySize": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				}
+			}
+		},
+		"has--mPowerConsumption": {
+			"type": "object",
+			"required": ["mPowerConsumption"],
+			"properties": {
+				"mPowerConsumption": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
 		"FGBuildable": {
 			"allOf": [
 				{
@@ -655,13 +673,13 @@
 		"FGBuildableFloodlight": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGBuildableLightSource--version-specific"
-				},
-				{
 					"$ref": "#/$defs/FGBuildableFloodlight--version-specific"
 				},
 				{
 					"$ref": "#/$defs/FGBuildableLightSource"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableLightSource--version-specific"
 				}
 			]
 		},
@@ -948,22 +966,12 @@
 					"$ref": "#/$defs/FGBuildableGeneratorFuel--base"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableGeneratorNuclear--version-specific"
+					"$ref": "#/$defs/FGBuildableGeneratorNuclear--pre-1.0"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableGeneratorNuclear--pre-1.0"
+					"$ref": "#/$defs/FGBuildableGeneratorNuclear--version-specific"
 				}
 			]
-		},
-		"FGBuildableGeneratorNuclear--version-specific": {
-			"type": "object",
-			"required": ["mCurrentGeneratorNuclearWarning"],
-			"properties": {
-				"mCurrentGeneratorNuclearWarning": {
-					"type": "string",
-					"const": "GNW_None"
-				}
-			}
 		},
 		"FGBuildableGeneratorNuclear--pre-1.0": {
 			"type": "object",
@@ -979,6 +987,16 @@
 							"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/mDefaultFuelClasses--item--nuclear"
 						}
 					}
+				}
+			}
+		},
+		"FGBuildableGeneratorNuclear--version-specific": {
+			"type": "object",
+			"required": ["mCurrentGeneratorNuclearWarning"],
+			"properties": {
+				"mCurrentGeneratorNuclearWarning": {
+					"type": "string",
+					"const": "GNW_None"
 				}
 			}
 		},
@@ -1435,10 +1453,10 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--pre-1.0"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--version-specific"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--pre-1.0"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--pre-1.0"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--version-specific"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--version-specific"
@@ -1471,9 +1489,6 @@
 		"FGBuildablePipelineJunction--base--base": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGBuildablePipeline--junction--base--base"
-				},
-				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--pre-1.0"
 				},
 				{
@@ -1481,6 +1496,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipeline--base--no-indicator--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildablePipeline--junction--base--base"
 				},
 				{
 					"$ref": "#/$defs/FGBuildablePipelineJunction--base--base--base"
@@ -2860,24 +2878,6 @@
 			"properties": {
 				"mMuteDryFire": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				}
-			}
-		},
-		"has--mInventorySize": {
-			"type": "object",
-			"required": ["mInventorySize"],
-			"properties": {
-				"mInventorySize": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-				}
-			}
-		},
-		"has--mPowerConsumption": {
-			"type": "object",
-			"required": ["mPowerConsumption"],
-			"properties": {
-				"mPowerConsumption": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
 			}
 		}

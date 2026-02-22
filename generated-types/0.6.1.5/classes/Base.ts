@@ -1,6 +1,17 @@
 /* eslint-disable @stylistic/max-len */
 
 import type {
+	BGRA as docs_json_ts_common_types_BGRA,
+	bool_string as docs_json_ts_common_types_bool_string,
+	decimal_string as docs_json_ts_common_types_decimal_string,
+	decimal_string_signed as docs_json_ts_common_types_decimal_string_signed,
+	empty_object as docs_json_ts_common_types_empty_object,
+	integer_string as docs_json_ts_common_types_integer_string,
+	RGBA as docs_json_ts_common_types_RGBA,
+	XYZ_decimal_string as docs_json_ts_common_types_XYZ_decimal_string,
+} from './../../common/types.ts';
+
+import type {
 	FGBuildable_has_mCachedSkeletalMeshes as docs_json_ts_0_4_2_11_classes_base_FGBuildable_has_mCachedSkeletalMeshes,
 	FGBuildableFrackingActivator_base as docs_json_ts_0_4_2_11_classes_base_FGBuildableFrackingActivator_base,
 	FGBuildableResourceExtractor_miner_mk1_base_base as docs_json_ts_0_4_2_11_classes_base_FGBuildableResourceExtractor_miner_mk1_base_base,
@@ -122,17 +133,6 @@ import type {
 } from './../types/properties.ts';
 
 import type {
-	BGRA as docs_json_ts_common_types_BGRA,
-	bool_string as docs_json_ts_common_types_bool_string,
-	decimal_string as docs_json_ts_common_types_decimal_string,
-	decimal_string_signed as docs_json_ts_common_types_decimal_string_signed,
-	empty_object as docs_json_ts_common_types_empty_object,
-	integer_string as docs_json_ts_common_types_integer_string,
-	RGBA as docs_json_ts_common_types_RGBA,
-	XYZ_decimal_string as docs_json_ts_common_types_XYZ_decimal_string,
-} from './../../common/types.ts';
-
-import type {
 	FGAmmoType_base as docs_json_ts_0_6_1_5_classes_base_overridable_FGAmmoType_base,
 	FGAmmoType_version_specific as docs_json_ts_0_6_1_5_classes_base_overridable_FGAmmoType_version_specific,
 	FGAmmoTypeProjectile_version_specific as docs_json_ts_0_6_1_5_classes_base_overridable_FGAmmoTypeProjectile_version_specific,
@@ -222,6 +222,10 @@ import type {
 import type {
 	ItemClass_list as docs_json_ts_0_6_1_5_overridable_ItemClass_list,
 } from './../types/overridable.ts';
+
+type has_mIsInverted = {
+	mIsInverted: docs_json_ts_common_types_bool_string,
+};
 
 type FGAmmoType_base = docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable & docs_json_ts_0_5_2_1_classes_base_FGItemDescAmmoTypeProjectile_base_base & FGAmmoType_version_specific;
 
@@ -529,15 +533,15 @@ type FGBuildableWidgetSign = docs_json_ts_0_5_2_1_classes_base_FGBuildableWidget
 
 type FGBuildableWire = docs_json_ts_0_5_2_1_classes_base_FGBuildableWire & FGBuildable_base;
 
-type FGChainsaw = docs_json_ts_0_3_7_7_classes_base_FGChainsaw & FGChainsaw_pre_update8 & FGChainsaw_pre_1_0 & FGChainsaw_version_specific & FGEquipment;
+type FGChainsaw = docs_json_ts_0_3_7_7_classes_base_FGChainsaw & FGChainsaw_pre_1_0 & FGChainsaw_pre_update8 & FGChainsaw_version_specific & FGEquipment;
+
+type FGChainsaw_pre_1_0 = {
+	mCurrentAkID: docs_json_ts_common_types_integer_string,
+};
 
 type FGChainsaw_pre_update8 = {
 	mAkEventsArray: docs_json_ts_0_6_1_5_properties_DocsDotJson_AkAudioEvent_quoted_list,
 	mEventIndexSFX: docs_json_ts_common_types_integer_string,
-};
-
-type FGChainsaw_pre_1_0 = {
-	mCurrentAkID: docs_json_ts_common_types_integer_string,
 };
 
 type FGChainsaw_version_specific = {
@@ -627,7 +631,7 @@ type FGJumpingStilts_version_specific = {
 
 type FGNobeliskDetonator = docs_json_ts_0_5_2_1_classes_base_overridable_FGWeapon_version_specific & docs_json_ts_0_3_7_7_classes_base_FGEquipment_base & docs_json_ts_0_3_7_7_classes_base_FGNobeliskDetonator_base & docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_thrown_base_base & docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectile_has_mBlockSprintWhenFiring & docs_json_ts_0_5_2_1_classes_base_FGNobeliskDetonator_version_specific & docs_json_ts_0_5_2_1_classes_base_FGWeapon_version_specific & FGEquipment & FGWeapon_base;
 
-type FGObjectScanner = docs_json_ts_0_6_1_5_classes_base_overridable_FGObjectScanner_version_specific & docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_mPlayingSound & docs_json_ts_0_3_7_7_classes_base_FGObjectScanner_pre_update8 & docs_json_ts_0_3_7_7_classes_base_FGObjectScanner_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGObjectScanner_version_specific & FGEquipment & FGObjectScanner_version_specific;
+type FGObjectScanner = docs_json_ts_0_6_1_5_classes_base_overridable_FGObjectScanner_version_specific & docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_mPlayingSound & docs_json_ts_0_3_7_7_classes_base_FGObjectScanner_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGObjectScanner_pre_update8 & docs_json_ts_0_3_7_7_classes_base_FGObjectScanner_version_specific & FGEquipment & FGObjectScanner_version_specific;
 
 type FGObjectScanner_version_specific = {
 	mObjectDetails: [
@@ -699,11 +703,8 @@ type FGWeapon_Equip_RebarGun_Projectile_C_version_specific = {
 
 type FGWeapon_Equip_Rifle_C = docs_json_ts_0_5_2_1_classes_base_overridable_FGWeapon_version_specific & docs_json_ts_0_3_7_7_classes_base_FGEquipment_base & docs_json_ts_0_3_7_7_classes_base_FGWeaponInstantFire_base_base_base & docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_has_mAttachSocket & docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectile_has_mBlockSprintWhenFiring & docs_json_ts_0_5_2_1_classes_base_FGWeapon_Equip_Rifle_C_base & docs_json_ts_0_5_2_1_classes_base_FGWeapon_version_specific & FGEquipment & FGWeapon_base;
 
-type has_mIsInverted = {
-	mIsInverted: docs_json_ts_common_types_bool_string,
-};
-
 export type {
+	has_mIsInverted,
 	FGAmmoType_base,
 	FGAmmoType_pre_update8,
 	FGAmmoType_version_specific,
@@ -813,8 +814,8 @@ export type {
 	FGBuildableWidgetSign,
 	FGBuildableWire,
 	FGChainsaw,
-	FGChainsaw_pre_update8,
 	FGChainsaw_pre_1_0,
+	FGChainsaw_pre_update8,
 	FGChainsaw_version_specific,
 	FGConsumableEquipment,
 	FGDescriptor,
@@ -865,5 +866,4 @@ export type {
 	FGWeapon_Equip_RebarGun_Projectile_C,
 	FGWeapon_Equip_RebarGun_Projectile_C_version_specific,
 	FGWeapon_Equip_Rifle_C,
-	has_mIsInverted,
 };
