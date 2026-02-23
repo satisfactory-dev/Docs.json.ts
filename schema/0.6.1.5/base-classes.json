@@ -1880,7 +1880,7 @@
 		"FGJetPack": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGJetPack--base--base"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGJetPack--pre-update7"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGJetPack--pre-1.0"

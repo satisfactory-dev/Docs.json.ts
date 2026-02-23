@@ -4847,13 +4847,10 @@
 					"$ref": "#/$defs/FGEquipment--base"
 				},
 				{
-					"$ref": "#/$defs/FGJetPack--base"
+					"$ref": "#/$defs/FGJetPack--pre-update6"
 				},
 				{
-					"$ref": "#/$defs/FGJetPack--base"
-				},
-				{
-					"$ref": "#/$defs/FGJetPack--base--base"
+					"$ref": "#/$defs/FGJetPack--pre-update7"
 				},
 				{
 					"$ref": "#/$defs/FGJetPack--pre-1.0"
@@ -4863,7 +4860,7 @@
 				}
 			]
 		},
-		"FGJetPack--base": {
+		"FGJetPack--pre-update6": {
 			"type": "object",
 			"required": ["mJumpTimeStamp"],
 			"properties": {
@@ -4872,7 +4869,7 @@
 				}
 			}
 		},
-		"FGJetPack--base--base": {
+		"FGJetPack--pre-update7": {
 			"type": "object",
 			"required": [
 				"mThrustPower",
@@ -4884,8 +4881,7 @@
 				"mFuelConsumeRate",
 				"mFuelWorth",
 				"mPaidForFuel",
-				"mThrustAirControl",
-				"mJumpTimeStamp"
+				"mThrustAirControl"
 			],
 			"properties": {
 				"mThrustPower": {
@@ -4917,10 +4913,6 @@
 				},
 				"mThrustAirControl": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mJumpTimeStamp": {
-					"type": "string",
-					"minLength": 1
 				}
 			}
 		},
