@@ -67,6 +67,10 @@ prepare--update8: prepare--update7
 	@echo 'prepare 0.8.3.3'
 	@node ./prepare-0.8.3.3.ts
 
+prepare--version1_0: prepare--update8
+	@echo 'prepare 1.0.1.4'
+	@node ./prepare-1.0.1.4.ts
+
 generate--clean:
 	@echo 'cleaning ./generated-types/'
 	@git clean -fxd ./generated-types/
@@ -77,7 +81,9 @@ generate--wrap-up:
 
 generate--early-access: generate--update3 generate--update4 generate--update5 generate--update6 generate--update7 generate--update8
 
-generate: generate--clean generate--early-access generate--wrap-up
+generate--1.x: generate--version1_0
+
+generate: generate--clean generate--early-access generate--1.x generate--wrap-up
 
 generate--update3: prepare--update3
 	@echo 'running generator'
@@ -102,3 +108,7 @@ generate--update7: prepare--update7
 generate--update8: prepare--update8
 	@echo 'running generator'
 	@node ./generate-update8.ts
+
+generate--version1_0: prepare--version1_0
+	@echo 'running generator'
+	@node ./generate-version1.0.ts

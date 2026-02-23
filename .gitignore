@@ -6,3 +6,4 @@
 /coverage/
 /data/
 /generated-types/*/data.ts
+/generated-types/*/*.data.ts

@@ -1,0 +1,360 @@
+/* eslint-disable @stylistic/max-len */
+
+import type {
+	CameraAnimationSequence_quoted as docs_json_ts_0_8_3_3_properties_CameraAnimationSequence_quoted,
+	DocsDotJson_AkAudioEvent_quoted_list_item as docs_json_ts_0_8_3_3_properties_DocsDotJson_AkAudioEvent_quoted_list_item,
+	FGBuildable_mOcclusionBoxInfo_item as docs_json_ts_0_8_3_3_properties_FGBuildable_mOcclusionBoxInfo_item,
+	mUnlocks_item as docs_json_ts_0_8_3_3_properties_mUnlocks_item,
+} from './../../0.8.3.3/types/properties.ts';
+
+import type {
+	bool_string as docs_json_ts_common_types_bool_string,
+	decimal_string as docs_json_ts_common_types_decimal_string,
+	empty_object as docs_json_ts_common_types_empty_object,
+	integer_string as docs_json_ts_common_types_integer_string,
+	integer_string_signed as docs_json_ts_common_types_integer_string_signed,
+	XYZ_decimal_string as docs_json_ts_common_types_XYZ_decimal_string,
+	XYZW_decimal_string as docs_json_ts_common_types_XYZW_decimal_string,
+} from './../../common/types.ts';
+
+import type {
+	AnimMontage_quoted as docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	DocsDotJson_BlueprintGeneratedClass_quoted_list as docs_json_ts_0_3_7_7_overridable_DocsDotJson_BlueprintGeneratedClass_quoted_list,
+	MaterialInstanceConstant_quoted as docs_json_ts_0_3_7_7_overridable_MaterialInstanceConstant_quoted,
+	mSchematicDependencies_item as docs_json_ts_0_3_7_7_overridable_mSchematicDependencies_item,
+} from './../../0.3.7.7/types/overridable--1.0.1.4.ts';
+
+import type {
+	Material_quoted as docs_json_ts_0_6_1_5_overridable_Material_quoted,
+} from './../../0.6.1.5/types/overridable--1.0.1.4.ts';
+
+import type {
+	FGItemDescriptor_version_specific_mDescriptorStatBars_item as docs_json_ts_0_6_1_5_properties_FGItemDescriptor_version_specific_mDescriptorStatBars_item,
+	mProducedIn as docs_json_ts_0_6_1_5_properties_mProducedIn,
+} from './../../0.6.1.5/types/properties.ts';
+
+import type {
+	mSchematicDependencies_item as docs_json_ts_0_4_2_11_properties_mSchematicDependencies_item,
+} from './../../0.4.2.11/types/properties.ts';
+
+import type {
+	mUnlocks_item_base as docs_json_ts_0_3_7_7_properties_mUnlocks_item_base,
+} from './../../0.3.7.7/types/properties.ts';
+
+type mClearanceData_item = {
+	Type?: 'CT_Soft',
+	ClearanceBox: docs_json_ts_0_8_3_3_properties_FGBuildable_mOcclusionBoxInfo_item,
+	RelativeTransform?: {
+		Translation: docs_json_ts_common_types_XYZ_decimal_string,
+	} | {
+		Rotation: docs_json_ts_common_types_XYZW_decimal_string,
+	} | {
+		Rotation: docs_json_ts_common_types_XYZW_decimal_string,
+		Translation: docs_json_ts_common_types_XYZ_decimal_string,
+	} | {
+		Rotation: docs_json_ts_common_types_XYZW_decimal_string,
+		Translation: docs_json_ts_common_types_XYZ_decimal_string,
+		Scale3D: docs_json_ts_common_types_XYZ_decimal_string,
+	} | {
+		Translation: docs_json_ts_common_types_XYZ_decimal_string,
+		Scale3D: docs_json_ts_common_types_XYZ_decimal_string,
+	},
+	ExcludeForSnapping?: docs_json_ts_common_types_bool_string,
+};
+
+type mMagazineMeshMaterials_item = {
+	MaterialInterface: docs_json_ts_0_3_7_7_overridable_MaterialInstanceConstant_quoted | docs_json_ts_0_6_1_5_overridable_Material_quoted,
+	MaterialSlotName: 'lambert1' | 'Rifle' | 'lambert9_001' | 'lambert10' | 'lambert2' | 'Material_003' | 'Material_002' | 'Rocket1' | 'Rocket2' | 'uv_checker_material_uv_grid_1024x1024' | '01 - Default',
+	ImportedMaterialSlotName: 'lambert1' | 'Rifle' | 'lambert9_001' | 'lambert10' | 'lambert2' | 'Material_003' | 'Material_002' | 'Rocket1' | 'Rocket2' | 'uv_checker_material_uv_grid_1024x1024' | '01 - Default',
+	UVChannelData: {
+		bInitialized: docs_json_ts_common_types_bool_string,
+		['LocalUVDensities[0]']: docs_json_ts_common_types_decimal_string,
+	} | {
+		bInitialized: docs_json_ts_common_types_bool_string,
+		['LocalUVDensities[0]']: docs_json_ts_common_types_decimal_string,
+		['LocalUVDensities[1]']: docs_json_ts_common_types_decimal_string,
+	},
+};
+
+type mProducedIn = docs_json_ts_0_6_1_5_properties_mProducedIn | mProducedIn_version_specific;
+
+type mProducedIn_version_specific = [
+	'/Game/FactoryGame/Buildable/Factory/QuantumEncoder/Build_QuantumEncoder.Build_QuantumEncoder_C',
+] | [
+	'/Game/FactoryGame/Buildable/Factory/ManufacturerMk1/Build_ManufacturerMk1.Build_ManufacturerMk1_C',
+	'/Game/FactoryGame/Buildable/-Shared/WorkBench/BP_WorkBenchComponent.BP_WorkBenchComponent_C',
+];
+
+type mSchematicDependencies_item = docs_json_ts_0_3_7_7_overridable_mSchematicDependencies_item | docs_json_ts_0_4_2_11_properties_mSchematicDependencies_item | mSchematicDependencies_item_version_specific;
+
+type mSchematicDependencies_item_version_specific = {
+	Class: `BP_${string}${'_C'}`,
+	mGamePhase: 'EGP_Victory',
+	mOnlyAllowInSelectedPhase: docs_json_ts_common_types_bool_string,
+};
+
+type mUnlocks_item = {
+	Class: 'FGUnlockCustomization',
+	mCustomizationUnlocks: docs_json_ts_0_3_7_7_overridable_DocsDotJson_BlueprintGeneratedClass_quoted_list,
+} | (docs_json_ts_0_3_7_7_properties_mUnlocks_item_base & {
+	mUploadSpeedPercentageDecrease: docs_json_ts_common_types_decimal_string,
+}) | (docs_json_ts_0_3_7_7_properties_mUnlocks_item_base & {
+	mItemStackLimitIncrease: docs_json_ts_common_types_integer_string,
+}) | (docs_json_ts_0_3_7_7_properties_mUnlocks_item_base & {
+	mNumSlotsToUnlock: docs_json_ts_common_types_integer_string,
+}) | docs_json_ts_0_8_3_3_properties_mUnlocks_item;
+
+type FGItemDescriptor_version_specific_mDescriptorStatBars_item = docs_json_ts_0_6_1_5_properties_FGItemDescriptor_version_specific_mDescriptorStatBars_item | docs_json_ts_common_types_empty_object;
+
+type FGJetPackFuelParameters_quoted = `/Script/FactoryGame.FGJetPackFuelParameters'/Game/FactoryGame${Exclude<string, ''>}${'\''}`;
+
+type FGSchematic_has_mSchematicDependencies = {
+	mSchematicDependencies: [
+		...mSchematicDependencies_item[],
+	],
+};
+
+type FGTrainPlatformConnection_quoted = `/Script/FactoryGame.FGTrainPlatformConnection'/Game/FactoryGame${Exclude<string, ''>}${'\''}`;
+
+type IconID = {
+	IconLibrary: 'None',
+	IconID?: docs_json_ts_common_types_integer_string_signed,
+};
+
+type Montages = docs_json_ts_common_types_empty_object | Montages_as_object;
+
+type Montages_as_object = {
+	Montages: [
+		Montages_item,
+		...Montages_item[],
+	],
+};
+
+type Montages_item = {
+	Montage_1P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_Equipment: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+} | {
+	Montage_1P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_Equipment: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	AudioEvent: docs_json_ts_0_8_3_3_properties_DocsDotJson_AkAudioEvent_quoted_list_item,
+} | {
+	Montage_1P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_3P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_Equipment: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	AudioEvent: docs_json_ts_0_8_3_3_properties_DocsDotJson_AkAudioEvent_quoted_list_item,
+} | {
+	AudioEvent: docs_json_ts_0_8_3_3_properties_DocsDotJson_AkAudioEvent_quoted_list_item,
+} | {
+	Weight: docs_json_ts_common_types_decimal_string,
+	Montage_1P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_3P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_Equipment: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	CameraAnim: docs_json_ts_0_8_3_3_properties_CameraAnimationSequence_quoted,
+} | {
+	Montage_1P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_3P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_Equipment: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	CameraAnim: docs_json_ts_0_8_3_3_properties_CameraAnimationSequence_quoted,
+} | {
+	Montage_1P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_3P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_Equipment: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	AudioEvent: docs_json_ts_0_8_3_3_properties_DocsDotJson_AkAudioEvent_quoted_list_item,
+	bSeparate3PAudioEvent: docs_json_ts_common_types_bool_string,
+	AudioEvent3P: docs_json_ts_0_8_3_3_properties_DocsDotJson_AkAudioEvent_quoted_list_item,
+} | {
+	Montage_1P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_3P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	CameraAnim: docs_json_ts_0_8_3_3_properties_CameraAnimationSequence_quoted,
+} | {
+	Montage_1P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+} | {
+	Montage_1P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_3P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+} | {
+	Montage_1P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_3P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	AudioEvent: docs_json_ts_0_8_3_3_properties_DocsDotJson_AkAudioEvent_quoted_list_item,
+	CameraAnim: docs_json_ts_0_8_3_3_properties_CameraAnimationSequence_quoted,
+} | {
+	Montage_1P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	AudioEvent: docs_json_ts_0_8_3_3_properties_DocsDotJson_AkAudioEvent_quoted_list_item,
+} | {
+	Filter: docs_json_ts_common_types_bool_string,
+	FilterMontageTag: 'HasAmmunition',
+	Exclusive: docs_json_ts_common_types_bool_string,
+	Montage_1P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_3P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_Equipment: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+} | {
+	Filter: docs_json_ts_common_types_bool_string,
+	FilterMontageTag: 'HasAmmunition',
+	InvertFilter: docs_json_ts_common_types_bool_string,
+	Exclusive: docs_json_ts_common_types_bool_string,
+	Montage_1P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_3P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_Equipment: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+} | {
+	Filter: docs_json_ts_common_types_bool_string,
+	FilterMontageTag: 'LowCharged',
+	Exclusive: docs_json_ts_common_types_bool_string,
+	Montage_1P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_3P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_Equipment: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	AudioEvent: docs_json_ts_0_8_3_3_properties_DocsDotJson_AkAudioEvent_quoted_list_item,
+	bSeparate3PAudioEvent: docs_json_ts_common_types_bool_string,
+	AudioEvent3P: docs_json_ts_0_8_3_3_properties_DocsDotJson_AkAudioEvent_quoted_list_item,
+} | {
+	Filter: docs_json_ts_common_types_bool_string,
+	FilterMontageTag: 'MediumCharged',
+	Exclusive: docs_json_ts_common_types_bool_string,
+	Montage_1P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_3P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_Equipment: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	AudioEvent: docs_json_ts_0_8_3_3_properties_DocsDotJson_AkAudioEvent_quoted_list_item,
+	bSeparate3PAudioEvent: docs_json_ts_common_types_bool_string,
+	AudioEvent3P: docs_json_ts_0_8_3_3_properties_DocsDotJson_AkAudioEvent_quoted_list_item,
+} | {
+	Filter: docs_json_ts_common_types_bool_string,
+	FilterMontageTag: 'FullyCharged',
+	Exclusive: docs_json_ts_common_types_bool_string,
+	Montage_1P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_3P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_Equipment: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	AudioEvent: docs_json_ts_0_8_3_3_properties_DocsDotJson_AkAudioEvent_quoted_list_item,
+	bSeparate3PAudioEvent: docs_json_ts_common_types_bool_string,
+	AudioEvent3P: docs_json_ts_0_8_3_3_properties_DocsDotJson_AkAudioEvent_quoted_list_item,
+	CameraAnim: docs_json_ts_0_8_3_3_properties_CameraAnimationSequence_quoted,
+} | {
+	Montage_1P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_3P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_Equipment: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	AudioEvent: docs_json_ts_0_8_3_3_properties_DocsDotJson_AkAudioEvent_quoted_list_item,
+	bSeparate3PAudioEvent: docs_json_ts_common_types_bool_string,
+	AudioEvent3P: docs_json_ts_0_8_3_3_properties_DocsDotJson_AkAudioEvent_quoted_list_item,
+	CameraAnim: docs_json_ts_0_8_3_3_properties_CameraAnimationSequence_quoted,
+} | {
+	Weight: docs_json_ts_common_types_decimal_string,
+	Montage_1P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_3P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_Equipment: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	AudioEvent: docs_json_ts_0_8_3_3_properties_DocsDotJson_AkAudioEvent_quoted_list_item,
+	bSeparate3PAudioEvent: docs_json_ts_common_types_bool_string,
+	AudioEvent3P: docs_json_ts_0_8_3_3_properties_DocsDotJson_AkAudioEvent_quoted_list_item,
+	CameraAnim: docs_json_ts_0_8_3_3_properties_CameraAnimationSequence_quoted,
+} | {
+	Filter: docs_json_ts_common_types_bool_string,
+	Exclusive: docs_json_ts_common_types_bool_string,
+	Montage_1P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_3P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_Equipment: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	AudioEvent: docs_json_ts_0_8_3_3_properties_DocsDotJson_AkAudioEvent_quoted_list_item,
+} | {
+	Weight: docs_json_ts_common_types_decimal_string,
+	Montage_1P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_3P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_Equipment: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	AudioEvent: docs_json_ts_0_8_3_3_properties_DocsDotJson_AkAudioEvent_quoted_list_item,
+} | {
+	Weight: docs_json_ts_common_types_decimal_string,
+	Montage_1P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_3P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_Equipment: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	AudioEvent: docs_json_ts_0_8_3_3_properties_DocsDotJson_AkAudioEvent_quoted_list_item,
+	CameraAnim: docs_json_ts_0_8_3_3_properties_CameraAnimationSequence_quoted,
+} | {
+	Montage_1P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_3P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_Equipment: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	AudioEvent: docs_json_ts_0_8_3_3_properties_DocsDotJson_AkAudioEvent_quoted_list_item,
+	CameraAnim: docs_json_ts_0_8_3_3_properties_CameraAnimationSequence_quoted,
+} | {
+	Montage_1P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_3P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	AudioEvent: docs_json_ts_0_8_3_3_properties_DocsDotJson_AkAudioEvent_quoted_list_item,
+} | {
+	Filter: docs_json_ts_common_types_bool_string,
+	FilterMontageTag: 'EquipmentInHand_None',
+	Exclusive: docs_json_ts_common_types_bool_string,
+	AudioEvent: docs_json_ts_0_8_3_3_properties_DocsDotJson_AkAudioEvent_quoted_list_item,
+} | {
+	Montage_1P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_3P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_Equipment: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+} | {
+	AudioEvent: docs_json_ts_0_8_3_3_properties_DocsDotJson_AkAudioEvent_quoted_list_item,
+	bSeparate3PAudioEvent: docs_json_ts_common_types_bool_string,
+	AudioEvent3P: docs_json_ts_0_8_3_3_properties_DocsDotJson_AkAudioEvent_quoted_list_item,
+} | {
+	Montage_1P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_Equipment: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	AudioEvent: docs_json_ts_0_8_3_3_properties_DocsDotJson_AkAudioEvent_quoted_list_item,
+	CameraAnim: docs_json_ts_0_8_3_3_properties_CameraAnimationSequence_quoted,
+} | {
+	Montage_1P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_Equipment: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	AudioEvent: docs_json_ts_0_8_3_3_properties_DocsDotJson_AkAudioEvent_quoted_list_item,
+	bSeparate3PAudioEvent: docs_json_ts_common_types_bool_string,
+	AudioEvent3P: docs_json_ts_0_8_3_3_properties_DocsDotJson_AkAudioEvent_quoted_list_item,
+	CameraAnim: docs_json_ts_0_8_3_3_properties_CameraAnimationSequence_quoted,
+} | {
+	Montage_1P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_3P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	AudioEvent: docs_json_ts_0_8_3_3_properties_DocsDotJson_AkAudioEvent_quoted_list_item,
+	bSeparate3PAudioEvent: docs_json_ts_common_types_bool_string,
+	CameraAnim: docs_json_ts_0_8_3_3_properties_CameraAnimationSequence_quoted,
+} | {
+	Montage_1P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_3P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	AudioEvent: docs_json_ts_0_8_3_3_properties_DocsDotJson_AkAudioEvent_quoted_list_item,
+	bSeparate3PAudioEvent: docs_json_ts_common_types_bool_string,
+	AudioEvent3P: docs_json_ts_0_8_3_3_properties_DocsDotJson_AkAudioEvent_quoted_list_item,
+	CameraAnim: docs_json_ts_0_8_3_3_properties_CameraAnimationSequence_quoted,
+} | {
+	Filter: docs_json_ts_common_types_bool_string,
+	FilterMontageTag: 'EquipmentInHand_None',
+	Exclusive: docs_json_ts_common_types_bool_string,
+	Montage_1P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_3P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	AudioEvent: docs_json_ts_0_8_3_3_properties_DocsDotJson_AkAudioEvent_quoted_list_item,
+	CameraAnim: docs_json_ts_0_8_3_3_properties_CameraAnimationSequence_quoted,
+} | {
+	Filter: docs_json_ts_common_types_bool_string,
+	FilterMontageTag: 'EquipmentInHand_TwoHanded',
+	Exclusive: docs_json_ts_common_types_bool_string,
+	Montage_3P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	AudioEvent: docs_json_ts_0_8_3_3_properties_DocsDotJson_AkAudioEvent_quoted_list_item,
+	CameraAnim: docs_json_ts_0_8_3_3_properties_CameraAnimationSequence_quoted,
+} | {
+	Filter: docs_json_ts_common_types_bool_string,
+	FilterMontageTag: 'EquipmentInHand_TwoHanded',
+	InvertFilter: docs_json_ts_common_types_bool_string,
+	Exclusive: docs_json_ts_common_types_bool_string,
+	Montage_1P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	Montage_3P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	AudioEvent: docs_json_ts_0_8_3_3_properties_DocsDotJson_AkAudioEvent_quoted_list_item,
+} | {
+	Montage_3P: docs_json_ts_0_3_7_7_overridable_AnimMontage_quoted,
+	AudioEvent: docs_json_ts_0_8_3_3_properties_DocsDotJson_AkAudioEvent_quoted_list_item,
+};
+
+type Tier = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9';
+
+export type {
+	mClearanceData_item,
+	mMagazineMeshMaterials_item,
+	mProducedIn,
+	mProducedIn_version_specific,
+	mSchematicDependencies_item,
+	mSchematicDependencies_item_version_specific,
+	mUnlocks_item,
+	FGItemDescriptor_version_specific_mDescriptorStatBars_item,
+	FGJetPackFuelParameters_quoted,
+	FGSchematic_has_mSchematicDependencies,
+	FGTrainPlatformConnection_quoted,
+	IconID,
+	Montages,
+	Montages_as_object,
+	Montages_item,
+	Tier,
+};

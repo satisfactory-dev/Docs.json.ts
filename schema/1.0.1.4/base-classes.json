@@ -1,0 +1,4080 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "docs.json.ts--1.0.1.4--classes--base",
+	"$defs": {
+		"has--SAMReference": {
+			"type": "object",
+			"required": ["SAMReference"],
+			"properties": {
+				"SAMReference": {
+					"type": "string",
+					"const": "/Game/FactoryGame/Resource/RawResources/SAM/Desc_SAM.Desc_SAM_C"
+				}
+			}
+		},
+		"FGAmmoTypeInstantHit--Desc_CartridgeChaos_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGAmmoType--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGAmmoType--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGAmmoType--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGAmmoType--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGAmmoTypeInstantHit--Desc_CartridgeChaos_C--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGAmmoTypeInstantHit--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGAmmoType--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--version-specific"
+				}
+			]
+		},
+		"FGAmmoTypeInstantHit--Desc_CartridgeStandard_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGAmmoType--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGAmmoType--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGAmmoType--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGAmmoType--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGAmmoTypeInstantHit--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGAmmoType--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--version-specific"
+				}
+			]
+		},
+		"FGAmmoTypeProjectile": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGAmmoType--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGAmmoType--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGAmmoTypeProjectile--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGAmmoTypeProjectile--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGDescriptor"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGItemDescriptor--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGItemDescriptor--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--overridable#/$defs/has--mSubCategories"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGAmmoType--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGAmmoTypeProjectile--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGAmmoTypeProjectile--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--version-specific"
+				}
+			]
+		},
+		"FGAmmoTypeProjectile--version-specific": {
+			"type": "object",
+			"required": ["mMagazineMeshMaterials"],
+			"properties": {
+				"mMagazineMeshMaterials": {
+					"oneOf": [
+						{
+							"type": "string",
+							"typed_string": ""
+						},
+						{
+							"type": "string",
+							"typed_string": {
+								"type": "array",
+								"minItems": 1,
+								"uniqueItems": true,
+								"items": {
+									"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/mMagazineMeshMaterials--item"
+								}
+							}
+						}
+					]
+				}
+			}
+		},
+		"FGAmmoTypeSpreadshot": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGAmmoType--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGAmmoType--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGAmmoTypeSpreadshot--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGAmmoType--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--version-specific"
+				}
+			]
+		},
+		"FGBuildable--base": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--base--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--base--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildable--base--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildable--base--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGBuildable--base--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGBuildable--base--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGBuildable--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--version-specific"
+				}
+			]
+		},
+		"FGBuildable--occupied": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--occupied--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildable--powered": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--has--mCachedSkeletalMeshes"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildable--powered--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGBuildable--powered--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGBuildable--with--mTickExponent"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered--version-specific"
+				}
+			]
+		},
+		"FGBuildable--powered--version-specific": {
+			"type": "object",
+			"required": [
+				"mProductionBoostPowerConsumptionExponent",
+				"mOnPendingPotentialChanged",
+				"mOnPendingProductionBoostChanged",
+				"mOnCurrentProductivityChanged",
+				"mCanChangeProductionBoost",
+				"mBaseProductionBoost",
+				"mPotentialShardSlots",
+				"mProductionShardSlotSize",
+				"mProductionShardBoostMultiplier",
+				"mHasInventoryPotential",
+				"mIsTickRateManaged",
+				"mOverridePotentialShardSlots",
+				"mOverrideProductionShardSlotSize",
+				"mAlienOverClockingParticleEffects"
+			],
+			"properties": {
+				"mProductionBoostPowerConsumptionExponent": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mOnPendingPotentialChanged": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mOnPendingProductionBoostChanged": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mOnCurrentProductivityChanged": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mCanChangeProductionBoost": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mBaseProductionBoost": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mPotentialShardSlots": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mProductionShardSlotSize": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mProductionShardBoostMultiplier": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mHasInventoryPotential": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mIsTickRateManaged": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mOverridePotentialShardSlots": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mOverrideProductionShardSlotSize": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mAlienOverClockingParticleEffects": {
+					"type": "string",
+					"const": ""
+				}
+			}
+		},
+		"FGBuildable--tiered": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--tiered--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildable--version-specific": {
+			"type": "object",
+			"required": [
+				"bForceLegacyBuildEffect",
+				"bForceBuildEffectSolo",
+				"mInteractionRegisterPlayerWithCircuit",
+				"mManagedByLightweightBuildableSubsystem",
+				"mRemoveBuildableFromSubsystemOnDismantle",
+				"mHasBeenRemovedFromSubsystem",
+				"mReplicatedBuiltInsideBlueprintDesigner",
+				"mClearanceData",
+				"mTimelapseBucketId",
+				"mTimelapseDelay",
+				"mAlienOverClockingZOffset",
+				"mAlienOverClockingAttenuationScalingFactor",
+				"mAlienOverClockingVolumeDB_RTPC",
+				"mAlienOverClockingHighpass_RTPC",
+				"mAlienOverClockingPitch_RTPC"
+			],
+			"properties": {
+				"bForceLegacyBuildEffect": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"bForceBuildEffectSolo": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mInteractionRegisterPlayerWithCircuit": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mManagedByLightweightBuildableSubsystem": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mRemoveBuildableFromSubsystemOnDismantle": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mHasBeenRemovedFromSubsystem": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mReplicatedBuiltInsideBlueprintDesigner": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mClearanceData": {
+					"oneOf": [
+						{
+							"type": "string",
+							"typed_string": ""
+						},
+						{
+							"type": "string",
+							"typed_string": {
+								"type": "array",
+								"minItems": 1,
+								"uniqueItems": true,
+								"items": {
+									"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/mClearanceData--item"
+								}
+							}
+						}
+					]
+				},
+				"mTimelapseBucketId": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mTimelapseDelay": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mAlienOverClockingZOffset": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mAlienOverClockingAttenuationScalingFactor": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mAlienOverClockingVolumeDB_RTPC": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mAlienOverClockingHighpass_RTPC": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mAlienOverClockingPitch_RTPC": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGBuildableAttachmentMerger": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableAttachmentMerger--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/has--mInventorySize"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableAttachmentSplitter": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableAttachment--has--mCurrentOutputIndex"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/has--mInventorySize"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableBeamLightweight": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableBeam--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableBlueprintDesigner": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGBuildableBlueprintDesigner--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGBuildableBlueprintDesigner--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableBlueprintDesigner--version-specific"
+				}
+			]
+		},
+		"FGBuildableBlueprintDesigner--version-specific": {
+			"type": "object",
+			"required": ["mCurrentRecordData"],
+			"properties": {
+				"mCurrentRecordData": {
+					"type": "string",
+					"typed_string": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": ["IconID", "Color"],
+						"properties": {
+							"IconID": {
+								"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/IconID"
+							},
+							"Color": {
+								"$ref": "docs.json.ts--common--types#/$defs/RGBA"
+							}
+						}
+					}
+				}
+			}
+		},
+		"FGBuildableCircuitSwitch": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableCircuitSwitch--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGBuildableCircuitSwitch--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGBuildable--has--mOnCircuitsChanged"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableConveyorBelt": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--spline"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableConveyorBelt--base--base--pre-1.0"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableConveyorBelt--spline--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGBuildableConveyorBelt--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableConveyorBelt--version-specific"
+				}
+			]
+		},
+		"FGBuildableConveyorBelt--version-specific": {
+			"type": "object",
+			"required": ["mItems", "mChainSegmentIndex"],
+			"properties": {
+				"mItems": {
+					"type": "string",
+					"typed_string": {
+						"type": "object",
+						"properties": {
+							"ArrayReplicationKey": {
+								"$ref": "docs.json.ts--common--types#/$defs/integer_string--signed"
+							}
+						}
+					}
+				},
+				"mChainSegmentIndex": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string--signed"
+				}
+			}
+		},
+		"FGBuildableConveyorLift": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableConveyorBelt--base--base--pre-1.0"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableConveyorLift--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildable--mSnappedPassthroughs"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGBuildableConveyorBelt--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableConveyorBelt--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableConveyorLift--version-specific"
+				}
+			]
+		},
+		"FGBuildableConveyorLift--version-specific": {
+			"type": "object",
+			"required": ["mFlipMeshOnReverse", "mOpposingConnectionClearance"],
+			"properties": {
+				"mFlipMeshOnReverse": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mOpposingConnectionClearance": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGBuildableCornerWall": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-height--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-size--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/has--mIsInverted"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableDockingStation": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--docking-station--base--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableDockingStation--with--mFuelTransferSpeed--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableDockingStation--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				}
+			]
+		},
+		"FGBuildableDoor": {
+			"oneOf": [
+				{
+					"$ref": "#/$defs/FGBuildableDoor--manual"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableDoor--automated"
+				}
+			]
+		},
+		"FGBuildableDoor--automated": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableDoor--automated--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableDoor--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableWall"
+				}
+			]
+		},
+		"FGBuildableDoor--manual": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableDoor--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableDoor--manual--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableWall"
+				}
+			]
+		},
+		"FGBuildableDroneStation": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--docking-station--base--with-mMapText"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableDroneStation--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableDroneStation--version-specific"
+				}
+			]
+		},
+		"FGBuildableDroneStation--version-specific": {
+			"type": "object",
+			"required": ["mFuelStorageSizeX", "mFuelStorageSizeY"],
+			"properties": {
+				"mFuelStorageSizeX": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mFuelStorageSizeY": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				}
+			}
+		},
+		"FGBuildableFactory--jump-pad": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableFactory--jump-pad--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				}
+			]
+		},
+		"FGBuildableFactory--landing-pad": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableFactory--landing-pad--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				}
+			]
+		},
+		"FGBuildableFactorySimpleProducer": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableFactorySimpleProducer--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				}
+			]
+		},
+		"FGBuildableFloodlight": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableFloodlight--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableLightSource"
+				}
+			]
+		},
+		"FGBuildableFoundation": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-height--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-width--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildable--isFrame"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildable--with-elevation"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildable--foundation--mDisableSnapOn"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildable--with-depth"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildableFoundation--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableFrackingActivator": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGBuildableResourceExtractor--only-allow-certain-resources"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--only-allow-certain-resources"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableFrackingActivator--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildableResourceExtractor--base--version-specific--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				}
+			]
+		},
+		"FGBuildableFrackingExtractor": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGBuildableResourceExtractor--only-allow-certain-resources"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--piped"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--timed"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildableResourceExtractor--base--version-specific--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				}
+			]
+		},
+		"FGBuildableGenerator": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGenerator--base--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGenerator--no-fuel--base--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableGenerator--no-fuel"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableGenerator--version-specific"
+				}
+			]
+		},
+		"FGBuildableGenerator--no-fuel": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGenerator--no-fuel--base--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				}
+			]
+		},
+		"FGBuildableGenerator--version-specific": {
+			"type": "object",
+			"required": ["mFuelClassesInInventory"],
+			"properties": {
+				"mFuelClassesInInventory": {
+					"type": "string",
+					"typed_string": ""
+				}
+			}
+		},
+		"FGBuildableGeneratorFuel--biomass": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableGeneratorFuel--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableGenerator"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableGeneratorFuel--biomass--version-specific"
+				}
+			]
+		},
+		"FGBuildableGeneratorFuel--biomass--version-specific": {
+			"type": "object",
+			"required": ["mDefaultFuelClasses"],
+			"properties": {
+				"mDefaultFuelClasses": {
+					"type": "string",
+					"typed_string": {
+						"type": "array",
+						"minItems": 6,
+						"maxItems": 6,
+						"items": false,
+						"prefixItems": [
+							{
+								"type": "string",
+								"const": "/Game/FactoryGame/Resource/Parts/GenericBiomass/Desc_Leaves.Desc_Leaves_C"
+							},
+							{
+								"type": "string",
+								"const": "/Game/FactoryGame/Resource/Parts/GenericBiomass/Desc_Wood.Desc_Wood_C"
+							},
+							{
+								"type": "string",
+								"const": "/Game/FactoryGame/Resource/Parts/GenericBiomass/Desc_Mycelia.Desc_Mycelia_C"
+							},
+							{
+								"type": "string",
+								"const": "/Game/FactoryGame/Resource/Parts/GenericBiomass/Desc_GenericBiomass.Desc_GenericBiomass_C"
+							},
+							{
+								"type": "string",
+								"const": "/Game/FactoryGame/Resource/Parts/BioFuel/Desc_Biofuel.Desc_Biofuel_C"
+							},
+							{
+								"type": "string",
+								"const": "/Game/FactoryGame/Resource/Parts/BioFuel/Desc_PackagedBiofuel.Desc_PackagedBiofuel_C"
+							}
+						]
+					}
+				}
+			}
+		},
+		"FGBuildableGeneratorFuel--coal": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGeneratorFuel--coal--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableGeneratorFuel--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableGenerator"
+				}
+			]
+		},
+		"FGBuildableGeneratorFuel--fuel": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGeneratorFuel--base--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableGeneratorFuel--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableGenerator"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableGeneratorFuel--fuel--version-specific"
+				}
+			]
+		},
+		"FGBuildableGeneratorFuel--fuel--version-specific": {
+			"type": "object",
+			"required": ["mDefaultFuelClasses"],
+			"properties": {
+				"mDefaultFuelClasses": {
+					"type": "string",
+					"typed_string": {
+						"type": "array",
+						"minItems": 5,
+						"maxItems": 5,
+						"items": false,
+						"prefixItems": [
+							{
+								"type": "string",
+								"const": "/Game/FactoryGame/Resource/Parts/Fuel/Desc_LiquidFuel.Desc_LiquidFuel_C"
+							},
+							{
+								"type": "string",
+								"const": "/Game/FactoryGame/Resource/Parts/Turbofuel/Desc_LiquidTurboFuel.Desc_LiquidTurboFuel_C"
+							},
+							{
+								"type": "string",
+								"const": "/Game/FactoryGame/Resource/Parts/BioFuel/Desc_LiquidBiofuel.Desc_LiquidBiofuel_C"
+							},
+							{
+								"type": "string",
+								"const": "/Game/FactoryGame/Resource/Parts/RocketFuel/Desc_RocketFuel.Desc_RocketFuel_C"
+							},
+							{
+								"type": "string",
+								"const": "/Game/FactoryGame/Resource/Parts/IonizedFuel/Desc_IonizedFuel.Desc_IonizedFuel_C"
+							}
+						]
+					}
+				}
+			}
+		},
+		"FGBuildableGeneratorGeoThermal": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGeneratorGeoThermal--base--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableGeneratorGeoThermal--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableGenerator--no-fuel"
+				}
+			]
+		},
+		"FGBuildableGeneratorNuclear": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGeneratorNuclear--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableGeneratorFuel--base--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableGeneratorNuclear--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableGenerator"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableGeneratorNuclear--version-specific"
+				}
+			]
+		},
+		"FGBuildableGeneratorNuclear--version-specific": {
+			"type": "object",
+			"required": ["mDefaultFuelClasses"],
+			"properties": {
+				"mDefaultFuelClasses": {
+					"type": "string",
+					"typed_string": {
+						"type": "array",
+						"minItems": 3,
+						"maxItems": 3,
+						"items": false,
+						"prefixItems": [
+							{
+								"type": "string",
+								"const": "/Game/FactoryGame/Resource/Parts/NuclearFuelRod/Desc_NuclearFuelRod.Desc_NuclearFuelRod_C"
+							},
+							{
+								"type": "string",
+								"const": "/Game/FactoryGame/Resource/Parts/PlutoniumFuelRods/Desc_PlutoniumFuelRod.Desc_PlutoniumFuelRod_C"
+							},
+							{
+								"type": "string",
+								"const": "/Game/FactoryGame/Resource/Parts/FicsoniumFuelRod/Desc_FicsoniumFuelRod.Desc_FicsoniumFuelRod_C"
+							}
+						]
+					}
+				}
+			}
+		},
+		"FGBuildableJumppad": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableJumppad--base--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGBuildableJumppad--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				}
+			]
+		},
+		"FGBuildableLadder": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableLadder--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableLightsControlPanel": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--light-related-thing--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableLightsControlPanel--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableLightsControlPanel--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGBuildable--has--mOnCircuitsChanged"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableLightSource": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--light-related-thing--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--mHasPower--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableLightSource--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/has--mPowerConsumption"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableLightSource--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableLightSource--Build_StreetLight_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableLightSource--Build_StreetLight_C--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableLightSource"
+				}
+			]
+		},
+		"FGBuildableMAM": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableMAM--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--occupied"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableMAM--version-specific"
+				}
+			]
+		},
+		"FGBuildableMAM--version-specific": {
+			"type": "object",
+			"required": [
+				"Centrifuge_NewTrack_1_BB49BD99478F0FC67F8D7E9A54C7E849",
+				"Centrifuge_NewTrack_0_BB49BD99478F0FC67F8D7E9A54C7E849",
+				"Centrifuge__Direction_BB49BD99478F0FC67F8D7E9A54C7E849",
+				"Centrifuge Duration"
+			],
+			"properties": {
+				"Centrifuge_NewTrack_1_BB49BD99478F0FC67F8D7E9A54C7E849": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"Centrifuge_NewTrack_0_BB49BD99478F0FC67F8D7E9A54C7E849": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"Centrifuge__Direction_BB49BD99478F0FC67F8D7E9A54C7E849": {
+					"type": "string",
+					"const": "Forward"
+				},
+				"Centrifuge Duration": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGBuildableManufacturer--Build_AssemblerMk1_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				}
+			]
+		},
+		"FGBuildableManufacturer--Build_Blender_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--IsPowered--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--mProductionEffectsRunning--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableManufacturer--base--blender--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				}
+			]
+		},
+		"FGBuildableManufacturer--Build_ConstructorMk1_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableManufacturer--Build_ConstructorMk1_C--version-specific"
+				}
+			]
+		},
+		"FGBuildableManufacturer--Build_ConstructorMk1_C--version-specific": {
+			"type": "object",
+			"required": [
+				"mAOAttenuationScalingFactor",
+				"mAOLayerZOffset",
+				"RTPC_AO_VolumeDB",
+				"RTPC_AO_HighpassValue",
+				"RTPC_AO_Pitch"
+			],
+			"properties": {
+				"mAOAttenuationScalingFactor": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mAOLayerZOffset": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"RTPC_AO_VolumeDB": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"RTPC_AO_HighpassValue": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"RTPC_AO_Pitch": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGBuildableManufacturer--Build_Converter_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableManufacturerVariablePower"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				}
+			]
+		},
+		"FGBuildableManufacturer--Build_FoundryMk1_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--mProductionEffectsRunning--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableManufacturer--Build_FoundryMk1_C--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				}
+			]
+		},
+		"FGBuildableManufacturer--Build_HadronCollider_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--IsPowered--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableManufacturer--Build_HadronCollider_C--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableManufacturerVariablePower"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				}
+			]
+		},
+		"FGBuildableManufacturer--Build_ManufacturerMk1_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--mStopped-audio-stuff--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				}
+			]
+		},
+		"FGBuildableManufacturer--Build_OilRefinery_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--IsPowered--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--mProductionEffectsRunning--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				}
+			]
+		},
+		"FGBuildableManufacturer--Build_Packager_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--IsPowered--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--mProductionEffectsRunning--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--packager--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				}
+			]
+		},
+		"FGBuildableManufacturer--Build_QuantumEncoder_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--IsPowered--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableManufacturerVariablePower"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableManufacturer--Build_QuantumEncoder_C--version-specific"
+				}
+			]
+		},
+		"FGBuildableManufacturer--Build_QuantumEncoder_C--version-specific": {
+			"type": "object",
+			"required": ["IsAnimProducing"],
+			"properties": {
+				"IsAnimProducing": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
+		},
+		"FGBuildableManufacturer--Build_SmelterMk1_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--mProductionEffectsRunning--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildableManufacturer--Build_SmelterMk1_C--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				}
+			]
+		},
+		"FGBuildablePassthrough": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildablePassthrough--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGBuildablePassthrough--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildablePillarLightweight": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildablePillar--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildablePipeHyper": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--spline"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildable--mSnappedPassthroughs"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildablePipeline": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipeline--base-root"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipeline--base-spline--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildablePipeline--base-spline"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildablePipeline--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildablePipeline--version-specific"
+				}
+			]
+		},
+		"FGBuildablePipeline--version-specific": {
+			"type": "object",
+			"required": [
+				"mSoundSplineComponentEmitterInterval",
+				"mLastElapsedTime",
+				"mLastFlowForSoundUpdateThreshold",
+				"mUpdateSoundsTimerInterval"
+			],
+			"properties": {
+				"mSoundSplineComponentEmitterInterval": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mLastElapsedTime": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mLastFlowForSoundUpdateThreshold": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mUpdateSoundsTimerInterval": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGBuildablePipelineJunction": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipeline--base--no-indicator--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildablePipelineJunction--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				}
+			]
+		},
+		"FGBuildablePipelinePump--pump": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipeline--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipelinePump--powered--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipelinePump--powered--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipelinePump--pump--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				},
+				{
+					"$ref": "#/$defs/FGBuildablePipelinePump--version-specific"
+				}
+			]
+		},
+		"FGBuildablePipelinePump--valve": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipeline--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipelinePump--powered--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				},
+				{
+					"$ref": "#/$defs/FGBuildablePipelinePump--version-specific"
+				}
+			]
+		},
+		"FGBuildablePipelinePump--version-specific": {
+			"type": "object",
+			"required": ["mUpdateAudioFlowTime"],
+			"properties": {
+				"mUpdateAudioFlowTime": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGBuildablePipelineSupport": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with--mLength"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipelineSupport--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildablePipeReservoir": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipeReservoir--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				}
+			]
+		},
+		"FGBuildablePoleBase": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--pole--base--can-stack"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildablePoleLightweight": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--pole--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-height--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGBuildablePole--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildablePortal": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				},
+				{
+					"$ref": "#/$defs/FGBuildablePortal--common"
+				},
+				{
+					"$ref": "#/$defs/FGBuildablePortal--version-specific"
+				}
+			]
+		},
+		"FGBuildablePortal--common": {
+			"type": "object",
+			"required": [
+				"HeatingUpPlaying ID",
+				"LightningEndLoc",
+				"LightningStartLoc",
+				"LightningStartSocket",
+				"LightningEndSocket",
+				"mTeleportationCompleteRepNotify",
+				"mTeleportationBeginRepNotify",
+				"PortalActive",
+				"PortalFluctuation",
+				"mOnLinkedPortalChanged",
+				"mOnPortalTraversableChanged",
+				"mOnHeatUpStateChanged",
+				"mMaxPortalTravelTime",
+				"mIsPortalTraversable",
+				"mActorRepresentationColor",
+				"mActorRepresentationViewDistance",
+				"mActorRepresentationFogOfWarRevealRadius",
+				"mTeleportPowerConsumptionTimeLeft",
+				"mTeleportPowerConsumption",
+				"mCachedFactoryTickData"
+			],
+			"properties": {
+				"HeatingUpPlaying ID": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"LightningEndLoc": {
+					"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
+				},
+				"LightningStartLoc": {
+					"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
+				},
+				"LightningStartSocket": {
+					"type": "string",
+					"typed_string": {
+						"type": "array",
+						"minItems": 5,
+						"maxItems": 5,
+						"items": false,
+						"prefixItems": [
+							{
+								"type": "string",
+								"const": "LightningStartLocSocket"
+							},
+							{
+								"type": "string",
+								"const": "LightningStartLocSocketL"
+							},
+							{
+								"type": "string",
+								"const": "LightningStartLocSocketR"
+							},
+							{
+								"type": "string",
+								"const": "LightningStartLocSocketA"
+							},
+							{
+								"type": "string",
+								"const": "LightningStartLocSocketB"
+							}
+						]
+					}
+				},
+				"LightningEndSocket": {
+					"type": "string",
+					"typed_string": {
+						"type": "array",
+						"minItems": 5,
+						"maxItems": 5,
+						"items": false,
+						"prefixItems": [
+							{
+								"type": "string",
+								"const": "LightningEndLocSocket"
+							},
+							{
+								"type": "string",
+								"const": "LightningEndLocSocketL"
+							},
+							{
+								"type": "string",
+								"const": "LightningEndLocSocketR"
+							},
+							{
+								"type": "string",
+								"const": "LightningEndLocSocketA"
+							},
+							{
+								"type": "string",
+								"const": "LightningEndLocSocketB"
+							}
+						]
+					}
+				},
+				"mTeleportationCompleteRepNotify": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mTeleportationBeginRepNotify": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"PortalActive": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"PortalFluctuation": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mOnLinkedPortalChanged": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mOnPortalTraversableChanged": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mOnHeatUpStateChanged": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mMaxPortalTravelTime": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mIsPortalTraversable": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mActorRepresentationColor": {
+					"$ref": "docs.json.ts--common--types#/$defs/RGBA"
+				},
+				"mActorRepresentationViewDistance": {
+					"type": "string",
+					"const": "CVD_Far"
+				},
+				"mActorRepresentationFogOfWarRevealRadius": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mTeleportPowerConsumptionTimeLeft": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mTeleportPowerConsumption": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mCachedFactoryTickData": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				}
+			}
+		},
+		"FGBuildablePortal--version-specific": {
+			"type": "object",
+			"required": [
+				"OffsetFromPortalSurface",
+				"LightningStartVector",
+				"LightningEndVector",
+				"In Value",
+				"mFuelSlotSize",
+				"mMinFuelToStartProducing",
+				"mMinFuelToStartProducingAfterAbruptStop",
+				"mPortalDisconnectedCooldownTime",
+				"mCachedInputConnections",
+				"mHeatUpComplete",
+				"mHeatUpCycleTime",
+				"mCurrentHeatUpProgress",
+				"mCurrentProductionProgress",
+				"mLinkedPortalDisconnectCooldownTimeLeft",
+				"mCurrentProductionCycleTime",
+				"mTrippedProductionStop",
+				"mCachedHasEnoughFuelForProduce",
+				"mPortalName"
+			],
+			"properties": {
+				"OffsetFromPortalSurface": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"LightningStartVector": {
+					"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string--list"
+				},
+				"LightningEndVector": {
+					"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string--list"
+				},
+				"In Value": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mFuelSlotSize": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mMinFuelToStartProducing": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mMinFuelToStartProducingAfterAbruptStop": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mPortalDisconnectedCooldownTime": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mCachedInputConnections": {
+					"type": "string",
+					"const": ""
+				},
+				"mHeatUpComplete": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mHeatUpCycleTime": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mCurrentHeatUpProgress": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mCurrentProductionProgress": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mLinkedPortalDisconnectCooldownTimeLeft": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mCurrentProductionCycleTime": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mTrippedProductionStop": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mCachedHasEnoughFuelForProduce": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mPortalName": {
+					"type": "string",
+					"const": "Portal"
+				}
+			}
+		},
+		"FGBuildablePortalSatellite": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				},
+				{
+					"$ref": "#/$defs/FGBuildablePortal--common"
+				},
+				{
+					"$ref": "#/$defs/FGBuildablePortalSatellite--version-specific"
+				}
+			]
+		},
+		"FGBuildablePortalSatellite--version-specific": {
+			"type": "object",
+			"required": [
+				"Lightning End Socket",
+				"Lightning Start Socket",
+				"mWasHeatingUpLastTick",
+				"mPortalName"
+			],
+			"properties": {
+				"Lightning End Socket": {
+					"type": "string",
+					"typed_string": ""
+				},
+				"Lightning Start Socket": {
+					"type": "string",
+					"typed_string": ""
+				},
+				"mWasHeatingUpLastTick": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mPortalName": {
+					"type": "string",
+					"const": "Satellite Portal"
+				}
+			}
+		},
+		"FGBuildablePowerBooster": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/has--mPowerConsumption"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				},
+				{
+					"$ref": "#/$defs/FGBuildablePowerBooster--version-specific"
+				}
+			]
+		},
+		"FGBuildablePowerBooster--version-specific": {
+			"type": "object",
+			"required": [
+				"IsInProducingAnimState",
+				"LaserSocketNames",
+				"mVFX_LaserSubtract",
+				"mVFX_SummerSloop_Loc_Offset",
+				"mVFX_SubVector",
+				"m_Beam_TargetLoc",
+				"mShrine_location",
+				"bFirstRun",
+				"mBasePowerProduction",
+				"mBaseBoostPercentage",
+				"mCurrentFuelBoostPercentage",
+				"mDefaultFuelClasses",
+				"mAvailableFuelClasses",
+				"mCachedInputConnections",
+				"mCurrentFuelDuration",
+				"mCurrentFuelDurationLeft"
+			],
+			"properties": {
+				"IsInProducingAnimState": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"LaserSocketNames": {
+					"type": "string",
+					"typed_string": {
+						"type": "array",
+						"minItems": 4,
+						"maxItems": 4,
+						"items": false,
+						"prefixItems": [
+							{
+								"type": "string",
+								"const": "LeftArmLaser01_Vfx_Socket"
+							},
+							{
+								"type": "string",
+								"const": "LeftArmLaser02_Vfx_Socket"
+							},
+							{
+								"type": "string",
+								"const": "RightArmLaser01_Vfx_Socket"
+							},
+							{
+								"type": "string",
+								"const": "RightArmLaser02_Vfx_Socket"
+							}
+						]
+					}
+				},
+				"mVFX_LaserSubtract": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mVFX_SummerSloop_Loc_Offset": {
+					"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
+				},
+				"mVFX_SubVector": {
+					"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
+				},
+				"m_Beam_TargetLoc": {
+					"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
+				},
+				"mShrine_location": {
+					"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
+				},
+				"bFirstRun": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mBasePowerProduction": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mBaseBoostPercentage": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mCurrentFuelBoostPercentage": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mDefaultFuelClasses": {
+					"type": "string",
+					"typed_string": {
+						"type": "array",
+						"minItems": 1,
+						"maxItems": 1,
+						"items": false,
+						"prefixItems": [
+							{
+								"type": "string",
+								"const": "/Game/FactoryGame/Resource/Parts/AlienPowerFuel/Desc_AlienPowerFuel.Desc_AlienPowerFuel_C"
+							}
+						]
+					}
+				},
+				"mAvailableFuelClasses": {
+					"type": "string",
+					"const": ""
+				},
+				"mCachedInputConnections": {
+					"type": "string",
+					"const": ""
+				},
+				"mCurrentFuelDuration": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mCurrentFuelDurationLeft": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGBuildablePowerPole": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--mHasPower--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildable--base--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGBuildablePowerPole--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildablePowerStorage": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildablePowerStorage--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				},
+				{
+					"$ref": "#/$defs/FGBuildablePowerStorage--version-specific"
+				}
+			]
+		},
+		"FGBuildablePowerStorage--version-specific": {
+			"type": "object",
+			"required": [
+				"mStatusPrimitiveID",
+				"mChargePrimitiveID",
+				"mPowerInput"
+			],
+			"properties": {
+				"mStatusPrimitiveID": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mChargePrimitiveID": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mPowerInput": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGBuildablePriorityPowerSwitch": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableCircuitSwitch--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGBuildableCircuitSwitch--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGBuildable--has--mOnCircuitsChanged"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGBuildablePriorityPowerSwitch--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableRadarTower": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildableRadarTower--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGBuildableRadarTower--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				}
+			]
+		},
+		"FGBuildableRailroadSignal--base": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableRailroadSignal--base--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGBuildableRailroadSignal--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableRailroadSignal--block": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableRailroadSignal--block--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableRailroadSignal--base"
+				}
+			]
+		},
+		"FGBuildableRailroadStation": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableRailroadStation--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableTrainPlatform--base--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableRailroadStation--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableTrainPlatform--base--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableTrainPlatform--non-empty--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableTrainPlatform--version-specific"
+				}
+			]
+		},
+		"FGBuildableRailroadTrack": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableRailroadTrack--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableRailroadTrack--base--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGBuildableRailroadTrack--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableRampLightweight": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableRamp--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/has--mIsInverted"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableFoundation"
+				}
+			]
+		},
+		"FGBuildableResourceExtractor--base": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGBuildableResourceExtractor--only-allow-certain-resources"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--piped"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildableResourceExtractor--base--version-specific--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				}
+			]
+		},
+		"FGBuildableResourceExtractor--miner--mk1": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGBuildableResourceExtractor--miner--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--miner--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--timed"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableResourceExtractor--miner--mk1--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--miner--mk1--version-specific"
+				},
+				{
+					"$ref": "#/$defs/has--SAMReference"
+				}
+			]
+		},
+		"FGBuildableResourceExtractor--miner--mk1--version-specific": {
+			"type": "object",
+			"required": ["InternalStartUpTimer"],
+			"properties": {
+				"InternalStartUpTimer": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGBuildableResourceExtractor--miner--mk2": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGBuildableResourceExtractor--miner--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--miner--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--miner--mk2--base--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--timed"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--base"
+				},
+				{
+					"$ref": "#/$defs/has--SAMReference"
+				}
+			]
+		},
+		"FGBuildableResourceExtractor--miner--mk3": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--miner--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGBuildableResourceExtractor--miner--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--miner--mk3--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--timed"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--base"
+				},
+				{
+					"$ref": "#/$defs/has--SAMReference"
+				}
+			]
+		},
+		"FGBuildableResourceExtractor--oil": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--oil--base--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--timed"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--base"
+				}
+			]
+		},
+		"FGBuildableResourceExtractor--water": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--timed"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--water--base--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableResourceExtractor--water--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableResourceExtractor--base"
+				}
+			]
+		},
+		"FGBuildableResourceSink": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableResourceSink--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				}
+			]
+		},
+		"FGBuildableResourceSinkShop": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceSinkShop--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				}
+			]
+		},
+		"FGBuildableSnowCannon": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableSnowCannon--version-specific"
+				}
+			]
+		},
+		"FGBuildableSnowCannon--version-specific": {
+			"type": "object",
+			"required": [
+				"SFXLocation",
+				"mSignificanceRange",
+				"mAngleLimit",
+				"mAngleOffset",
+				"mCannonAngle"
+			],
+			"properties": {
+				"SFXLocation": {
+					"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
+				},
+				"mSignificanceRange": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mAngleLimit": {
+					"type": "string",
+					"typed_string": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": ["Min", "Max"],
+						"properties": {
+							"Min": {
+								"$ref": "docs.json.ts--common--types#/$defs/integer_string--signed"
+							},
+							"Max": {
+								"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+							}
+						}
+					}
+				},
+				"mAngleOffset": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string--signed"
+				},
+				"mCannonAngle": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				}
+			}
+		},
+		"FGBuildableSpaceElevator": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableSpaceElevator--version-specific"
+				}
+			]
+		},
+		"FGBuildableSpaceElevator--version-specific": {
+			"type": "object",
+			"required": [
+				"mOnSpaceElevatorStateUpdated",
+				"mSpaceElevatorState"
+			],
+			"properties": {
+				"mOnSpaceElevatorStateUpdated": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mSpaceElevatorState": {
+					"type": "string",
+					"const": "ESES_Load"
+				}
+			}
+		},
+		"FGBuildableSplitterSmart": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableAttachment--splitter--base--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableSplitterSmart--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/has--mInventorySize"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableStorage": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableStorage--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				}
+			]
+		},
+		"FGBuildableTradingPost": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableTradingPost--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableTradingPost--base--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableTradingPost--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableTradingPost--version-specific"
+				}
+			]
+		},
+		"FGBuildableTradingPost--version-specific": {
+			"type": "object",
+			"required": [
+				"mWorkBenchOccupied",
+				"mWorkBenchFree",
+				"mMamFreeText",
+				"mMamOccupiedText",
+				"Meshes",
+				"mMeshes",
+				"mStages",
+				"mLadderVisibilityLevel",
+				"mLockerVisibilityLevel",
+				"mMiniGameAndCalendarVisibilityLevel"
+			],
+			"properties": {
+				"mWorkBenchOccupied": {
+					"type": "string",
+					"const": "Crafting Bench occupied"
+				},
+				"mWorkBenchFree": {
+					"type": "string",
+					"const": "Use Crafting Bench"
+				},
+				"mMamFreeText": {
+					"type": "string",
+					"const": "Use the MAM"
+				},
+				"mMamOccupiedText": {
+					"type": "string",
+					"const": "The MAM is occupied"
+				},
+				"Meshes": {
+					"type": "string",
+					"typed_string": {
+						"type": "array",
+						"minItems": 6,
+						"maxItems": 6,
+						"items": false,
+						"prefixItems": [
+							{
+								"type": "string",
+								"const": "/Script/Engine.StaticMesh'/Game/Geometry/Meshes/1M_Cube_Chamfer.1M_Cube_Chamfer'"
+							},
+							{
+								"type": "string",
+								"const": "/Script/Engine.StaticMesh'/Game/Geometry/Meshes/1M_Cube_Chamfer.1M_Cube_Chamfer'"
+							},
+							{
+								"type": "string",
+								"const": "/Script/Engine.StaticMesh'/Game/Geometry/Meshes/1M_Cube_Chamfer.1M_Cube_Chamfer'"
+							},
+							{
+								"type": "string",
+								"const": "/Script/Engine.StaticMesh'/Game/Geometry/Meshes/1M_Cube_Chamfer.1M_Cube_Chamfer'"
+							},
+							{
+								"type": "string",
+								"const": "/Script/Engine.StaticMesh'/Game/Geometry/Meshes/1M_Cube_Chamfer.1M_Cube_Chamfer'"
+							},
+							{
+								"type": "string",
+								"const": "/Script/Engine.StaticMesh'/Game/Geometry/Meshes/1M_Cube_Chamfer.1M_Cube_Chamfer'"
+							}
+						]
+					}
+				},
+				"mMeshes": {
+					"type": "string",
+					"typed_string": {
+						"type": "array",
+						"minItems": 6,
+						"maxItems": 6,
+						"items": false,
+						"prefixItems": [
+							{
+								"type": "string",
+								"const": "/Game/Geometry/Meshes/1M_Cube_Chamfer.1M_Cube_Chamfer"
+							},
+							{
+								"type": "string",
+								"const": "/Game/Geometry/Meshes/1M_Cube_Chamfer.1M_Cube_Chamfer"
+							},
+							{
+								"type": "string",
+								"const": "/Game/Geometry/Meshes/1M_Cube_Chamfer.1M_Cube_Chamfer"
+							},
+							{
+								"type": "string",
+								"const": "/Game/Geometry/Meshes/1M_Cube_Chamfer.1M_Cube_Chamfer"
+							},
+							{
+								"type": "string",
+								"const": "/Game/Geometry/Meshes/1M_Cube_Chamfer.1M_Cube_Chamfer"
+							},
+							{
+								"type": "string",
+								"const": "/Game/Geometry/Meshes/1M_Cube_Chamfer.1M_Cube_Chamfer"
+							}
+						]
+					}
+				},
+				"mStages": {
+					"type": "string",
+					"typed_string": {
+						"type": "array",
+						"minItems": 7,
+						"maxItems": 7,
+						"items": false,
+						"prefixItems": [
+							{
+								"type": "string",
+								"const": "/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/SM_Hub_Stg_01.SM_Hub_Stg_01"
+							},
+							{
+								"type": "string",
+								"const": "/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/SM_Hub_Stg_02.SM_Hub_Stg_02"
+							},
+							{
+								"type": "string",
+								"const": "/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/SM_Hub_Stg_03.SM_Hub_Stg_03"
+							},
+							{
+								"type": "string",
+								"const": "/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/SM_Hub_Stg_04.SM_Hub_Stg_04"
+							},
+							{
+								"type": "string",
+								"const": "/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/SM_Hub_Stg_05.SM_Hub_Stg_05"
+							},
+							{
+								"type": "string",
+								"const": "/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/SM_Hub_Stg_05.SM_Hub_Stg_05"
+							},
+							{
+								"type": "string",
+								"const": "/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/SM_Hub_Stg_06.SM_Hub_Stg_06"
+							}
+						]
+					}
+				},
+				"mLadderVisibilityLevel": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mLockerVisibilityLevel": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mMiniGameAndCalendarVisibilityLevel": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				}
+			}
+		},
+		"FGBuildableTrainPlatform--version-specific": {
+			"type": "object",
+			"required": ["mPlatformConnections"],
+			"properties": {
+				"mPlatformConnections": {
+					"type": "string",
+					"typed_string": {
+						"type": "array",
+						"minItems": 1,
+						"uniqueItems": true,
+						"items": {
+							"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/FGTrainPlatformConnection--quoted"
+						}
+					}
+				}
+			}
+		},
+		"FGBuildableTrainPlatformCargo": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered-storage--base--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableTrainPlatform--base--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableTrainPlatformCargo--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableTrainPlatform--base--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableTrainPlatform--non-empty--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableTrainPlatformCargo--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildableTrainPlatformCargo--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableTrainPlatform--version-specific"
+				}
+			]
+		},
+		"FGBuildableTrainPlatformEmpty": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableTrainPlatform--base--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableTrainPlatform--base--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableTrainPlatform--version-specific"
+				}
+			]
+		},
+		"FGBuildableWalkway": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-size-and-elevation--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-size-and-elevation--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableWall": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base.overridable#/$defs/FGBuildable--is-wallish"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-height-and-width--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildable--with-elevation"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableWidgetSign": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableWidgetSign--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGBuildableWidgetSign--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableWidgetSign--version-specific"
+				}
+			]
+		},
+		"FGBuildableWidgetSign--version-specific": {
+			"type": "object",
+			"required": [
+				"mTextElementToLocDataMap",
+				"mSoftActivePrefabLayout",
+				"mActivePrefabLayout",
+				"mGlobalPrefabIconElementSaveData"
+			],
+			"properties": {
+				"mTextElementToLocDataMap": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mSoftActivePrefabLayout": {
+					"type": "string",
+					"const": "None"
+				},
+				"mActivePrefabLayout": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"mGlobalPrefabIconElementSaveData": {
+					"type": "string",
+					"typed_string": ""
+				}
+			}
+		},
+		"FGBuildableWire": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableWire--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGBuildableWire--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGCentralStorageContainer": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableStorage"
+				},
+				{
+					"$ref": "#/$defs/FGCentralStorageContainer--version-specific"
+				}
+			]
+		},
+		"FGCentralStorageContainer--version-specific": {
+			"type": "object",
+			"required": [
+				"TimeToExecuteCheckAfterItemAdded",
+				"mUploadTimer",
+				"mTimeToUpload"
+			],
+			"properties": {
+				"TimeToExecuteCheckAfterItemAdded": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mUploadTimer": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mTimeToUpload": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGChainsaw": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGChainsaw--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGChainsaw--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGChainsaw--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGChainsaw--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment"
+				}
+			]
+		},
+		"FGChainsaw--version-specific": {
+			"type": "object",
+			"required": [
+				"StartUpToIdleID",
+				"mChainsawEngageMontage",
+				"mChainsawSawingMontage",
+				"mChainsawEquipFuelMontage",
+				"mChainsawEquipNoFuelMontage",
+				"mChainsawEquipStingerMontage",
+				"mShowAOESelectorUITimer",
+				"EngagePlayingID",
+				"IdlePlaying ID",
+				"Playing ID",
+				"SawingPlayingID",
+				"mIsAOEOn"
+			],
+			"properties": {
+				"StartUpToIdleID": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mChainsawEngageMontage": {
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item"
+				},
+				"mChainsawSawingMontage": {
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item"
+				},
+				"mChainsawEquipFuelMontage": {
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item"
+				},
+				"mChainsawEquipNoFuelMontage": {
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item"
+				},
+				"mChainsawEquipStingerMontage": {
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item"
+				},
+				"mShowAOESelectorUITimer": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				"EngagePlayingID": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"IdlePlaying ID": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"Playing ID": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"SawingPlayingID": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				},
+				"mIsAOEOn": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
+		},
+		"FGConsumableDescriptor": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGConsumableDescriptor--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGDescriptor--sinkable--base"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--base"
+				}
+			]
+		},
+		"FGConsumableEquipment--base": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGConsumableEquipment--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGConsumableEquipment--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGConsumableEquipment--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGConsumableEquipment--base--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment"
+				}
+			]
+		},
+		"FGConsumableEquipment--base--version-specific": {
+			"type": "object",
+			"required": ["mEatMontage", "mReEquipAfterEatMontage"],
+			"properties": {
+				"mEatMontage": {
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item"
+				},
+				"mReEquipAfterEatMontage": {
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item"
+				}
+			}
+		},
+		"FGConsumableEquipment--medkit": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGConsumableEquipment--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGConsumableEquipment--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGConsumableEquipment--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGConsumableEquipment--medkit--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment"
+				}
+			]
+		},
+		"FGConsumableEquipment--medkit--version-specific": {
+			"type": "object",
+			"required": ["mMedkitUseMontages", "mCurrentMedkitUseMontage"],
+			"properties": {
+				"mMedkitUseMontages": {
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages"
+				},
+				"mCurrentMedkitUseMontage": {
+					"type": "string",
+					"typed_string": {
+						"type": "object",
+						"required": ["Weight"],
+						"properties": {
+							"Weight": {
+								"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+							}
+						}
+					}
+				}
+			}
+		},
+		"FGEquipment": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGEquipment--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGEquipment--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGEquipment--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment--version-specific"
+				}
+			]
+		},
+		"FGEquipment--version-specific": {
+			"type": "object",
+			"required": [
+				"mEquipMontage",
+				"mHasStingerMontage",
+				"mMontageBlendOutTime",
+				"mEquipmentLookAtDescOverride",
+				"mAttachSocket"
+			],
+			"properties": {
+				"mEquipMontage": {
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages"
+				},
+				"mHasStingerMontage": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mStingerMontage": {
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages"
+				},
+				"mUnEquipMontage": {
+					"oneOf": [
+						{
+							"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+						},
+						{
+							"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item"
+						}
+					]
+				},
+				"mMontageBlendOutTime": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mEquipmentLookAtDescOverride": {
+					"type": "string",
+					"minLength": 0
+				},
+				"mAttachSocket": {
+					"type": "string",
+					"enum": [
+						"None",
+						"hand_rSocket",
+						"hand_lSocket",
+						"jumpingStilt_lSocket",
+						"helmetSocket",
+						"root",
+						"backpack"
+					]
+				}
+			}
+		},
+		"FGEquipmentStunSpear--base": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipmentStunSpear--base--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGEquipmentStunSpear--base--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGEquipmentStunSpear--base--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment"
+				}
+			]
+		},
+		"FGEquipmentStunSpear--version-specific": {
+			"type": "object",
+			"required": [
+				"mFirstSwingMontageList",
+				"mSecondSwingMontageList",
+				"mSecondSwingMinDelay",
+				"mSecondSwingMaxDelay",
+				"mSecondSwingUseCoolDown"
+			],
+			"properties": {
+				"mFirstSwingMontageList": {
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages"
+				},
+				"mSecondSwingMontageList": {
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages"
+				},
+				"mSecondSwingMinDelay": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mSecondSwingMaxDelay": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mSecondSwingUseCoolDown": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGEquipmentStunSpear--xenobasher": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipmentStunSpear--base--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGEquipmentStunSpear--base"
+				},
+				{
+					"$ref": "#/$defs/FGEquipmentStunSpear--version-specific"
+				}
+			]
+		},
+		"FGEquipmentStunSpear--xenozapper": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/FGEquipmentStunSpear--base"
+				},
+				{
+					"$ref": "#/$defs/FGEquipmentStunSpear--version-specific"
+				}
+			]
+		},
+		"FGEquipmentZipline": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGEquipmentZipline--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGEquipment--noisy--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment"
+				},
+				{
+					"$ref": "#/$defs/FGEquipmentZipline--version-specific"
+				}
+			]
+		},
+		"FGEquipmentZipline--version-specific": {
+			"type": "object",
+			"required": [
+				"mZiplineAttachMontage",
+				"mZiplineDetachMontage",
+				"mZiplineTryAttachMontage",
+				"mWantToGrab"
+			],
+			"properties": {
+				"mZiplineAttachMontage": {
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item"
+				},
+				"mZiplineDetachMontage": {
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item"
+				},
+				"mZiplineTryAttachMontage": {
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item"
+				},
+				"mWantToGrab": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
+		},
+		"FGGasMask": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment--has--mFilterDuration"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGGasMask--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGGasMask--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment"
+				}
+			]
+		},
+		"FGGolfCartDispenser": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGGolfCartDispenser--has--mArmAnimation"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGGolfCartDispenser--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment"
+				},
+				{
+					"$ref": "#/$defs/FGGolfCartDispenser--version-specific"
+				}
+			]
+		},
+		"FGGolfCartDispenser--version-specific": {
+			"type": "object",
+			"required": [
+				"mBuildDisqualifierText",
+				"mChristmasMaterial",
+				"mChristmasMaterial1P",
+				"mCartPlacementClearance",
+				"mCartPlacementDistance"
+			],
+			"properties": {
+				"mBuildDisqualifierText": {
+					"type": "string",
+					"const": "Vehicles cannot be built or deployed on top of existing vehicles!"
+				},
+				"mChristmasMaterial": {
+					"oneOf": [
+						{
+							"type": "string",
+							"const": "None"
+						},
+						{
+							"type": "string",
+							"const": "/Game/FactoryGame/Buildable/Vehicle/Golfcart/Material/MI_ChrismasCart_Inst.MI_ChrismasCart_Inst"
+						}
+					]
+				},
+				"mChristmasMaterial1P": {
+					"oneOf": [
+						{
+							"type": "string",
+							"const": "None"
+						},
+						{
+							"type": "string",
+							"const": "/Game/FactoryGame/Buildable/Vehicle/Golfcart/Material/MI_ChrismasCart_Inst_1p.MI_ChrismasCart_Inst_1p"
+						}
+					]
+				},
+				"mCartPlacementClearance": {
+					"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
+				},
+				"mCartPlacementDistance": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGHoverPack": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGHoverPack--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGEquipment--noisy--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment"
+				},
+				{
+					"$ref": "#/$defs/FGHoverPack--version-specific"
+				}
+			]
+		},
+		"FGHoverPack--version-specific": {
+			"type": "object",
+			"required": [
+				"mCurrentPlayerVelocity_SFX",
+				"mCurrentMouseDelta_SFX",
+				"mLowBatteryWarningActive_SFX",
+				"mPropellerVFX",
+				"mDisplayRangeWarning"
+			],
+			"properties": {
+				"mCurrentPlayerVelocity_SFX": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mCurrentMouseDelta_SFX": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mLowBatteryWarningActive_SFX": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mPropellerVFX": {
+					"type": "string",
+					"typed_string": ""
+				},
+				"mDisplayRangeWarning": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
+		},
+		"FGItemDescriptor": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGDescriptor--sinkable--base"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--base"
+				}
+			]
+		},
+		"FGItemDescriptor--base": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGDescriptor"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGItemDescriptor--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGItemDescriptor--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--overridable#/$defs/has--mSubCategories"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--version-specific"
+				}
+			]
+		},
+		"FGItemDescriptor--version-specific": {
+			"type": "object",
+			"required": [
+				"mGasType",
+				"mIsAlienItem",
+				"mNeedsPickUpMarker",
+				"mClassToScanFor",
+				"mDescriptorStatBars"
+			],
+			"properties": {
+				"mGasType": {
+					"type": "string",
+					"enum": ["GT_NORMAL", "GT_ENERGY"]
+				},
+				"mIsAlienItem": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mNeedsPickUpMarker": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mClassToScanFor": {
+					"oneOf": [
+						{
+							"type": "string",
+							"const": "None"
+						},
+						{
+							"type": "string",
+							"templated_string": [
+								"/Game/FactoryGame/",
+								[
+									"Resource/Environment/",
+									"World/Benefit/",
+									"Prototype/WAT"
+								],
+								{"type": "string"},
+								"/BP_",
+								{
+									"type": "string",
+									"minLength": 1
+								},
+								".BP_",
+								{
+									"type": "string",
+									"minLength": 1
+								}
+							]
+						}
+					]
+				},
+				"mDescriptorStatBars": {
+					"oneOf": [
+						{
+							"type": "string",
+							"typed_string": ""
+						},
+						{
+							"type": "string",
+							"typed_string": {
+								"type": "array",
+								"minItems": 1,
+								"uniqueItems": true,
+								"items": {
+									"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/FGItemDescriptor--version-specific--mDescriptorStatBars--item"
+								}
+							}
+						}
+					]
+				}
+			}
+		},
+		"FGItemDescriptorNuclearFuel": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGItemDescriptorNuclearFuel--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--base"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptorNuclearFuel--version-specific"
+				}
+			]
+		},
+		"FGItemDescriptorNuclearFuel--version-specific": {
+			"type": "object",
+			"required": ["mSpentFuelClass"],
+			"properties": {
+				"mSpentFuelClass": {
+					"oneOf": [
+						{
+							"type": "string",
+							"const": "None"
+						},
+						{
+							"$ref": "docs.json.ts--0.4.2.11--overridable#/$defs/BlueprintGeneratedClass--single-quoted"
+						}
+					]
+				}
+			}
+		},
+		"FGItemDescriptorPowerBoosterFuel": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/has--mResourceSinkPoints"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--base"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptorPowerBoosterFuel--version-specific"
+				}
+			]
+		},
+		"FGItemDescriptorPowerBoosterFuel--version-specific": {
+			"type": "object",
+			"required": ["mBoostPercentage", "mBoostDuration"],
+			"properties": {
+				"mBoostPercentage": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mBoostDuration": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGJetPack": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.7.1.1--classes--base.overridable#/$defs/FGJetPack--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGJetPack--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGEquipment--noisy--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGJetPack--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment"
+				},
+				{
+					"$ref": "#/$defs/FGJetPack--version-specific"
+				}
+			]
+		},
+		"FGJetPack--version-specific": {
+			"type": "object",
+			"required": [
+				"mAttachSocket",
+				"mAllowedFuelTypes",
+				"mUnlockedFuelTypes",
+				"mAvailableFuelTypes"
+			],
+			"properties": {
+				"mAttachSocket": {
+					"type": "string",
+					"const": "backpack"
+				},
+				"mAllowedFuelTypes": {
+					"type": "string",
+					"typed_string": {
+						"type": "array",
+						"minItems": 1,
+						"uniqueItems": true,
+						"items": {
+							"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/FGJetPackFuelParameters--quoted"
+						}
+					}
+				},
+				"mUnlockedFuelTypes": {
+					"type": "string",
+					"typed_string": ""
+				},
+				"mAvailableFuelTypes": {
+					"type": "string",
+					"typed_string": ""
+				}
+			}
+		},
+		"FGJumpingStilts": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGJumpingStilts--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGJumpingStilts--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment"
+				}
+			]
+		},
+		"FGNobeliskDetonator": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base.overridable#/$defs/FGWeapon--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGNobeliskDetonator--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectile--thrown--base--pre-1.0"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGWeaponProjectile--has--mBlockSprintWhenFiring"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGNobeliskDetonator--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGWeapon--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGWeapon--base"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment"
+				},
+				{
+					"$ref": "#/$defs/FGNobeliskDetonator--version-specific"
+				}
+			]
+		},
+		"FGNobeliskDetonator--version-specific": {
+			"type": "object",
+			"required": [
+				"AmmoTypeToAkEvent",
+				"mPrimaryFireStartMontageList",
+				"mReloadMontageList",
+				"mSecondaryFireMontageList",
+				"mPrimaryFireEndMontageList",
+				"mReleaseCooldown"
+			],
+			"properties": {
+				"AmmoTypeToAkEvent": {
+					"type": "string",
+					"typed_string": {
+						"type": "array",
+						"minItems": 1,
+						"uniqueItems": true,
+						"items": {
+							"type": "string",
+							"typed_string": {
+								"type": "array",
+								"minItems": 2,
+								"maxItems": 2,
+								"items": false,
+								"prefixItems": [
+									{
+										"type": "string",
+										"DocsDotJson_PrefixedString": {
+											"prefix": "BlueprintGeneratedClass",
+											"mode": "single_quoted",
+											"value": null
+										}
+									},
+									{
+										"type": "string",
+										"DocsDotJson_PrefixedString": {
+											"prefix": "AkAudioEvent",
+											"first_path": "WwiseAudio",
+											"mode": "single_quoted",
+											"system_prefix": "AkAudio",
+											"value": null
+										}
+									}
+								]
+							}
+						}
+					}
+				},
+				"mPrimaryFireStartMontageList": {
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages"
+				},
+				"mReloadMontageList": {
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages"
+				},
+				"mSecondaryFireMontageList": {
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages"
+				},
+				"mPrimaryFireEndMontageList": {
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages"
+				},
+				"mReleaseCooldown": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGObjectScanner": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGObjectScanner--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGObjectScanner--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment"
+				},
+				{
+					"$ref": "#/$defs/FGObjectScanner--version-specific"
+				}
+			]
+		},
+		"FGObjectScanner--version-specific": {
+			"type": "object",
+			"required": [
+				"mScannerCycleLeftMontage",
+				"mScannerCycleRightMontage",
+				"mClosestObject"
+			],
+			"properties": {
+				"mScannerCycleLeftMontage": {
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item"
+				},
+				"mScannerCycleRightMontage": {
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item"
+				},
+				"mClosestObject": {
+					"type": "string",
+					"typed_string": {
+						"type": "object",
+						"required": ["ActorLocation"],
+						"properties": {
+							"ActorLocation": {
+								"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
+							}
+						}
+					}
+				}
+			}
+		},
+		"FGParachute": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGParachute--has--mIsDeployed"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGParachute--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment"
+				},
+				{
+					"$ref": "#/$defs/FGParachute--version-specific"
+				}
+			]
+		},
+		"FGParachute--version-specific": {
+			"type": "object",
+			"required": [
+				"mParachuteDeployMontageList",
+				"mParachuteDetachMontageList"
+			],
+			"properties": {
+				"mParachuteDeployMontageList": {
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages"
+				},
+				"mParachuteDetachMontageList": {
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages"
+				}
+			}
+		},
+		"FGPipeHyperStart": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--pole--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with--mLength"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGPipeHyperStart--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				}
+			]
+		},
+		"FGPoleDescriptor": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGItemDescriptor--base"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--version-specific"
+				}
+			]
+		},
+		"FGPortableMinerDispenser": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGPortableMinerDispenser--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGPortableMinerDispenser--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment"
+				},
+				{
+					"$ref": "#/$defs/FGPortableMinerDispenser--version-specific"
+				}
+			]
+		},
+		"FGPortableMinerDispenser--version-specific": {
+			"type": "object",
+			"required": ["mEquipmentLookAtDescOverride"],
+			"properties": {
+				"mEquipmentLookAtDescOverride": {
+					"type": "string",
+					"const": "Press [{PlayerActions_PrimaryFire}] to place Miner on {Ore} node {Purity}"
+				}
+			}
+		},
+		"FGPowerShardDescriptor": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGDescriptor--sinkable--base"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--base"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGPowerShardDescriptor--version-specific"
+				}
+			]
+		},
+		"FGPowerShardDescriptor--version-specific": {
+			"type": "object",
+			"required": [
+				"mPowerShardType",
+				"mExtraPotential",
+				"mExtraProductionBoost"
+			],
+			"properties": {
+				"mPowerShardType": {
+					"type": "string",
+					"enum": ["PST_Overclock", "PST_ProductionBoost"]
+				},
+				"mExtraPotential": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mExtraProductionBoost": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGRecipe": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base.overridable#/$defs/FGRecipe--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGRecipe--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGRecipe--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGRecipe--version-specific"
+				}
+			]
+		},
+		"FGRecipe--version-specific": {
+			"type": "object",
+			"required": ["mProducedIn"],
+			"properties": {
+				"mProducedIn": {
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/mProducedIn"
+				}
+			}
+		},
+		"FGResourceDescriptor": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGItemDescriptor--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGResourceDescriptor--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGDescriptor--sinkable"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGResourceDescriptor--version-specific"
+				}
+			]
+		},
+		"FGResourceDescriptor--version-specific": {
+			"type": "object",
+			"required": ["mManualMiningAudioName"],
+			"properties": {
+				"mManualMiningAudioName": {
+					"type": "string",
+					"enum": ["Metal", "Sam"]
+				}
+			}
+		},
+		"FGSchematic--base": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGSchematic--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base.overridable#/$defs/FGSchematic--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/instructive"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGSchematic--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGSchematic--has--mSchematicIcon"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGSchematic--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/FGSchematic--has--mSchematicDependencies"
+				},
+				{
+					"$ref": "#/$defs/FGSchematic--has--mTechTier"
+				},
+				{
+					"$ref": "#/$defs/FGSchematic--version-specific"
+				}
+			]
+		},
+		"FGSchematic--has--mTechTier": {
+			"type": "object",
+			"required": ["mTechTier"],
+			"properties": {
+				"mTechTier": {
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Tier"
+				}
+			}
+		},
+		"FGSchematic--version-specific": {
+			"type": "object",
+			"required": [
+				"mStatisticGameplayTag",
+				"mSchematicUnlockTag",
+				"mUnlocks"
+			],
+			"properties": {
+				"mStatisticGameplayTag": {
+					"oneOf": [
+						{
+							"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+						},
+						{
+							"type": "string",
+							"typed_string": {
+								"type": "object",
+								"additionalProperties": false,
+								"required": ["TagName"],
+								"properties": {
+									"TagName": {
+										"type": "string",
+										"templated_string": [
+											"Stats.Gameplay.Schematics.Schematic",
+											[
+												"1-1",
+												"1-2",
+												"1-3",
+												"2-1",
+												"2-2",
+												"2-3",
+												"2-5",
+												"3-1",
+												"3-2",
+												"3-3",
+												"3-4",
+												"4-1",
+												"4-2",
+												"4-3",
+												"4-4",
+												"4-5",
+												"5-1",
+												"5-2",
+												"5-3",
+												"5-4",
+												"5-5",
+												"6-1",
+												"6-2",
+												"6-3",
+												"6-4",
+												"6-5",
+												"6-6",
+												"6-7",
+												"7-1",
+												"7-2",
+												"7-3",
+												"7-4",
+												"7-5",
+												"8-1",
+												"8-2",
+												"8-3",
+												"8-4",
+												"8-5",
+												"9-1",
+												"9-2",
+												"9-3",
+												"9-4",
+												"9-5"
+											]
+										]
+									}
+								}
+							}
+						}
+					]
+				},
+				"mSchematicUnlockTag": {
+					"oneOf": [
+						{
+							"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+						},
+						{
+							"type": "string",
+							"typed_string": {
+								"type": "object",
+								"additionalProperties": false,
+								"required": ["TagName"],
+								"properties": {
+									"TagName": {
+										"type": "string",
+										"const": "Stats.Gameplay.UnlockedGoldenNut"
+									}
+								}
+							}
+						}
+					]
+				},
+				"mUnlocks": {
+					"type": "array",
+					"minItems": 0,
+					"maxItems": 7,
+					"items": {
+						"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/mUnlocks--item"
+					}
+				},
+				"mType": {
+					"type": "string",
+					"enum": [
+						"EST_Custom",
+						"EST_Customization",
+						"EST_Tutorial",
+						"EST_MAM",
+						"EST_HardDrive",
+						"EST_Milestone",
+						"EST_Alternate",
+						"EST_ResourceSink"
+					]
+				}
+			}
+		},
+		"FGSchematic--with-described-unlocks": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGSchematic--with-described-unlocks--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGSchematic--base"
+				}
+			]
+		},
+		"FGSuitBase": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment--has--mFilterDuration"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment--has-effect-timer"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment--negates-damage"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGSuitBase--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGSuitBase--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment"
+				},
+				{
+					"$ref": "#/$defs/FGSuitBase--version-specific"
+				}
+			]
+		},
+		"FGSuitBase--version-specific": {
+			"type": "object",
+			"required": ["mSuitMeshMaterials"],
+			"properties": {
+				"mSuitMeshMaterials": {
+					"type": "string",
+					"typed_string": {
+						"type": "array",
+						"minItems": 2,
+						"maxItems": 2,
+						"items": false,
+						"prefixItems": [
+							{
+								"type": "string",
+								"typed_string": {
+									"type": "object",
+									"additionalProperties": false,
+									"required": [
+										"SlotName",
+										"Material",
+										"Material3P"
+									],
+									"properties": {
+										"SlotName": {
+											"type": "string",
+											"const": "Pioneer_torso"
+										},
+										"Material": {
+											"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/MaterialInstanceConstant--quoted"
+										},
+										"Material3P": {
+											"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/MaterialInstanceConstant--quoted"
+										}
+									}
+								}
+							},
+							{
+								"type": "string",
+								"typed_string": {
+									"type": "object",
+									"additionalProperties": false,
+									"required": [
+										"SlotName",
+										"Material",
+										"Material3P"
+									],
+									"properties": {
+										"SlotName": {
+											"type": "string",
+											"const": "Pioneer_Legs"
+										},
+										"Material": {
+											"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/MaterialInstanceConstant--quoted"
+										},
+										"Material3P": {
+											"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/MaterialInstanceConstant--quoted"
+										}
+									}
+								}
+							}
+						]
+					}
+				}
+			}
+		},
+		"FGVehicleDescriptor--Desc_CyberWagon_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGVehicleDescriptor--Desc_CyberWagon_C"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--base"
+				}
+			]
+		},
+		"FGVehicleDescriptor--Desc_DroneTransport_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGVehicleDescriptor--Desc_DroneTransport_C"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--base"
+				}
+			]
+		},
+		"FGVehicleDescriptor--Desc_Explorer_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGVehicleDescriptor--Desc_Explorer_C"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--base"
+				}
+			]
+		},
+		"FGVehicleDescriptor--Desc_FreightWagon_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGVehicleDescriptor--Desc_FreightWagon_C"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--base"
+				}
+			]
+		},
+		"FGVehicleDescriptor--Desc_Locomotive_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGVehicleDescriptor--Desc_Locomotive_C"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--base"
+				}
+			]
+		},
+		"FGVehicleDescriptor--Desc_Tractor_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGVehicleDescriptor--Desc_Tractor_C"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--base"
+				}
+			]
+		},
+		"FGVehicleDescriptor--Desc_Truck_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGVehicleDescriptor--Desc_Truck_C"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--base"
+				}
+			]
+		},
+		"FGWeapon--Equip_RebarGun_Projectile_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base.overridable#/$defs/FGWeapon--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment--has--mEquipmentSlot"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectile--has--mAttachSocket"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGWeaponProjectile--has--mBlockSprintWhenFiring"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGWeapon--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGWeapon--base"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment"
+				},
+				{
+					"$ref": "#/$defs/FGWeapon--version-specific"
+				}
+			]
+		},
+		"FGWeapon--Equip_Rifle_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base.overridable#/$defs/FGWeapon--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment--has--mEquipmentSlot"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponInstantFire--base--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectile--has--mAttachSocket"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGWeaponProjectile--has--mBlockSprintWhenFiring"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGWeapon--Equip_Rifle_C--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGWeapon--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGWeapon--base"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment"
+				},
+				{
+					"$ref": "#/$defs/FGWeapon--version-specific"
+				}
+			]
+		},
+		"FGWeapon--version-specific": {
+			"type": "object",
+			"required": [
+				"mFireMontage",
+				"mReloadMontageList",
+				"mAmmoSwapMontageList",
+				"mFailedToFireMontageList",
+				"mSupressDryFireMontage"
+			],
+			"properties": {
+				"mFireMontage": {
+					"type": "string",
+					"typed_string": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": [
+							"Montage_1P",
+							"Montage_3P",
+							"Montage_Equipment",
+							"AudioEvent",
+							"CameraAnim"
+						],
+						"properties": {
+							"Montage_1P": {
+								"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
+							},
+							"Montage_3P": {
+								"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
+							},
+							"Montage_Equipment": {
+								"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
+							},
+							"AudioEvent": {
+								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
+							},
+							"CameraAnim": {
+								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/CameraAnimationSequence--quoted"
+							}
+						}
+					}
+				},
+				"mReloadMontageList": {
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages"
+				},
+				"mAmmoSwapMontageList": {
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages"
+				},
+				"mFailedToFireMontageList": {
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages"
+				},
+				"mSupressDryFireMontage": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
+		}
+	}
+}
