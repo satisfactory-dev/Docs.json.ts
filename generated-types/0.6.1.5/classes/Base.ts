@@ -617,7 +617,7 @@ type FGItemDescriptor_version_specific = {
 	mMenuPriority: docs_json_ts_common_types_decimal_string,
 };
 
-type FGJetPack = docs_json_ts_0_3_7_7_classes_base_FGJetPack_pre_update7 & docs_json_ts_0_3_7_7_classes_base_FGJetPack_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGJetPack_version_specific & FGEquipment_noisy & FGJetPack_version_specific;
+type FGJetPack = docs_json_ts_0_3_7_7_classes_base_FGJetPack_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGJetPack_pre_update7 & docs_json_ts_0_3_7_7_classes_base_FGJetPack_version_specific & FGEquipment_noisy & FGJetPack_version_specific;
 
 type FGJetPack_version_specific = {
 	mJumpTimeStamp: docs_json_ts_common_types_decimal_string_signed,

@@ -4847,18 +4847,27 @@
 					"$ref": "#/$defs/FGEquipment--base"
 				},
 				{
+					"$ref": "#/$defs/FGJetPack--pre-1.0"
+				},
+				{
 					"$ref": "#/$defs/FGJetPack--pre-update6"
 				},
 				{
 					"$ref": "#/$defs/FGJetPack--pre-update7"
 				},
 				{
-					"$ref": "#/$defs/FGJetPack--pre-1.0"
-				},
-				{
 					"$ref": "#/$defs/FGJetPack--version-specific"
 				}
 			]
+		},
+		"FGJetPack--pre-1.0": {
+			"type": "object",
+			"required": ["mThrustCooldown"],
+			"properties": {
+				"mThrustCooldown": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
 		},
 		"FGJetPack--pre-update6": {
 			"type": "object",
@@ -4912,15 +4921,6 @@
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				},
 				"mThrustAirControl": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				}
-			}
-		},
-		"FGJetPack--pre-1.0": {
-			"type": "object",
-			"required": ["mThrustCooldown"],
-			"properties": {
-				"mThrustCooldown": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
 			}

@@ -1157,7 +1157,11 @@ type FGItemDescriptorNuclearFuel_version_specific = FGDescriptor_sinkable_base &
 	mAmountOfWaste: docs_json_ts_common_types_integer_string,
 };
 
-type FGJetPack = FGEquipment & FGEquipment_base & FGJetPack_pre_update6 & FGJetPack_pre_update7 & FGJetPack_pre_1_0 & FGJetPack_version_specific;
+type FGJetPack = FGEquipment & FGEquipment_base & FGJetPack_pre_1_0 & FGJetPack_pre_update6 & FGJetPack_pre_update7 & FGJetPack_version_specific;
+
+type FGJetPack_pre_1_0 = {
+	mThrustCooldown: docs_json_ts_common_types_decimal_string,
+};
 
 type FGJetPack_pre_update6 = {
 	mJumpTimeStamp: docs_json_ts_common_types_decimal_string,
@@ -1174,10 +1178,6 @@ type FGJetPack_pre_update7 = {
 	mFuelWorth: docs_json_ts_common_types_decimal_string,
 	mPaidForFuel: docs_json_ts_common_types_decimal_string,
 	mThrustAirControl: docs_json_ts_common_types_decimal_string,
-};
-
-type FGJetPack_pre_1_0 = {
-	mThrustCooldown: docs_json_ts_common_types_decimal_string,
 };
 
 type FGJetPack_version_specific = {
@@ -1753,9 +1753,9 @@ export type {
 	FGItemDescriptorNuclearFuel,
 	FGItemDescriptorNuclearFuel_version_specific,
 	FGJetPack,
+	FGJetPack_pre_1_0,
 	FGJetPack_pre_update6,
 	FGJetPack_pre_update7,
-	FGJetPack_pre_1_0,
 	FGJetPack_version_specific,
 	FGJumpingStilts,
 	FGJumpingStilts_base,
