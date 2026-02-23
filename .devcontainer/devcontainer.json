@@ -3,12 +3,13 @@
 	"dockerComposeFile": "./docker-compose.yml",
 	"service": "devcontainer",
 	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
-	"postCreateCommand": "npm config set git-tag-version=false && npm install && echo \"source ./.devcontainer/.post-create\" >> /home/node/.bashrc",
+	"postCreateCommand": "npm config set git-tag-version=false && npm install",
 	"remoteUser": "vscode",
 	"updateRemoteUserUID": true,
 	"customizations": {
 		"vscode": {
 			"extensions": [
+				"-GitHub.copilot",
 				"EditorConfig.EditorConfig",
 				"dbaeumer.vscode-eslint",
 				"github.vscode-github-actions",
@@ -16,13 +17,21 @@
 				"ms-vscode.makefile-tools"
 			],
 			"settings": {
+				"explorer.fileNesting.patterns": {
+					"*.cjs.ts": "${basename}, ${basename}.map",
+					"*.ts": "${capture}.js, ${capture}.d.ts",
+					"*.js": "${capture}.js.map, ${capture}.min.js",
+					"package.json": "package-lock.json"
+				},
+				"workbench.settings.showAISearchToggle": false,
+				"chat.disableAIFeatures": true,
 				"chat.agent.enabled": false
 			}
 		}
 	},
 	"features": {
 		"ghcr.io/devcontainers/features/node:1": {
-			"version": "24"
+			"version": "25"
 		}
 	}
 }
