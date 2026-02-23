@@ -609,11 +609,7 @@
 					"typed_string": {
 						"type": "object",
 						"additionalProperties": false,
-						"required": [
-							"Montage_1P",
-							"Montage_3P",
-							"CameraAnim"
-						],
+						"required": ["Montage_1P", "Montage_3P", "CameraAnim"],
 						"properties": {
 							"Montage_1P": {
 								"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
@@ -632,9 +628,7 @@
 					"typed_string": {
 						"type": "object",
 						"additionalProperties": false,
-						"required": [
-							"Montage_1P"
-						],
+						"required": ["Montage_1P"],
 						"properties": {
 							"Montage_1P": {
 								"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
@@ -647,10 +641,7 @@
 					"typed_string": {
 						"type": "object",
 						"additionalProperties": false,
-						"required": [
-							"Montage_1P",
-							"Montage_3P"
-						],
+						"required": ["Montage_1P", "Montage_3P"],
 						"properties": {
 							"Montage_1P": {
 								"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
@@ -693,10 +684,7 @@
 					"typed_string": {
 						"type": "object",
 						"additionalProperties": false,
-						"required": [
-							"Montage_1P",
-							"AudioEvent"
-						],
+						"required": ["Montage_1P", "AudioEvent"],
 						"properties": {
 							"Montage_1P": {
 								"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
@@ -1150,11 +1138,7 @@
 					"typed_string": {
 						"type": "object",
 						"additionalProperties": false,
-						"required": [
-							"Montage_1P",
-							"Montage_3P",
-							"AudioEvent"
-						],
+						"required": ["Montage_1P", "Montage_3P", "AudioEvent"],
 						"properties": {
 							"Montage_1P": {
 								"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
@@ -1491,10 +1475,7 @@
 					"typed_string": {
 						"type": "object",
 						"additionalProperties": false,
-						"required": [
-							"Montage_3P",
-							"AudioEvent"
-						],
+						"required": ["Montage_3P", "AudioEvent"],
 						"properties": {
 							"Montage_3P": {
 								"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
