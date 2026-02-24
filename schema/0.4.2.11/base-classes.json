@@ -1788,7 +1788,7 @@
 				},
 				"mDisplayName": {
 					"type": "string",
-					"const": "Miner Mk.1"
+					"minLength": 1
 				}
 			}
 		},

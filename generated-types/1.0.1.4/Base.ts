@@ -886,7 +886,7 @@ type FGGasMask = docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_mFilterDurati
 type FGGolfCartDispenser = docs_json_ts_0_3_7_7_classes_base_FGGolfCartDispenser_has_mArmAnimation & docs_json_ts_0_5_2_1_classes_base_FGGolfCartDispenser_version_specific & FGEquipment & FGGolfCartDispenser_version_specific;
 
 type FGGolfCartDispenser_version_specific = {
-	mBuildDisqualifierText: 'Vehicles cannot be built or deployed on top of existing vehicles!',
+	mBuildDisqualifierText: Exclude<string, ''>,
 	mChristmasMaterial: 'None' | '/Game/FactoryGame/Buildable/Vehicle/Golfcart/Material/MI_ChrismasCart_Inst.MI_ChrismasCart_Inst',
 	mChristmasMaterial1P: 'None' | '/Game/FactoryGame/Buildable/Vehicle/Golfcart/Material/MI_ChrismasCart_Inst_1p.MI_ChrismasCart_Inst_1p',
 	mCartPlacementClearance: docs_json_ts_common_types_XYZ_decimal_string,

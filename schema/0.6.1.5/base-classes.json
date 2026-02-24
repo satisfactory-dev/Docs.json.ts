@@ -1173,7 +1173,7 @@
 			"properties": {
 				"mMapText": {
 					"type": "string",
-					"const": "Radar Tower"
+					"minLength": 1
 				},
 				"mRevealRadius": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"

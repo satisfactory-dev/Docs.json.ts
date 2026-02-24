@@ -3008,7 +3008,7 @@
 			"properties": {
 				"mBuildDisqualifierText": {
 					"type": "string",
-					"const": "Vehicles cannot be built or deployed on top of existing vehicles!"
+					"minLength": 1
 				},
 				"mChristmasMaterial": {
 					"oneOf": [

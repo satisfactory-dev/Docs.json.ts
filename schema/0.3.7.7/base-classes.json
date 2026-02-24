@@ -2649,7 +2649,7 @@
 			"properties": {
 				"mMapText": {
 					"type": "string",
-					"const": "Radar Tower"
+					"minLength": 1
 				},
 				"OnRadarTowerRadiusUpdated": {
 					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
@@ -2710,7 +2710,7 @@
 			"properties": {
 				"mMapText": {
 					"type": "string",
-					"const": "Train Station"
+					"minLength": 1
 				},
 				"mDockedPlatformList": {
 					"type": "string",
@@ -2953,7 +2953,7 @@
 				},
 				"mDisplayName": {
 					"type": "string",
-					"const": "Miner Mk.2"
+					"minLength": 1
 				}
 			}
 		},
@@ -3012,7 +3012,7 @@
 				},
 				"mDisplayName": {
 					"type": "string",
-					"const": "Miner Mk.3"
+					"minLength": 1
 				}
 			}
 		},
@@ -3775,7 +3775,7 @@
 				},
 				"mStorageText": {
 					"type": "string",
-					"const": "Open Storage"
+					"minLength": 1
 				},
 				"mMamFreeText": {
 					"type": "string",

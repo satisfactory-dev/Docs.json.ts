@@ -30,6 +30,16 @@ import {
 	object_has_property,
 } from '@satisfactory-dev/predicates.ts';
 
+import {
+	is_supported,
+} from './src/version-specific/1.0.1.4/supported_lang.ts';
+
+const [,, lang] = process.argv;
+
+if (!is_supported(lang)) {
+	throw new Error('Unsupported language');
+}
+
 const ajv = new Ajv({
 	strict: true,
 	verbose: true,
@@ -49,7 +59,7 @@ const handler = new Utf16leJsonHandler({
 	validator,
 	data_path: `${import.meta.dirname}/data/`,
 	version: semver('1.0.1.4'),
-	file_path: 'Docs/en-US.json',
+	file_path: `Docs/${lang}.json`,
 });
 
 await handler.read((data, errors) => {
@@ -88,4 +98,4 @@ await handler.read((data, errors) => {
 	process.stderr.write(JSON.stringify(errors, null, '\t'));
 });
 
-console.log('1.0.1.4 updated');
+console.log(`1.0.1.4 ${lang} updated`);

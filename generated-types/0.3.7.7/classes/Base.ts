@@ -651,7 +651,7 @@ type FGBuildableRadarTower = FGBuildable_powered & FGBuildableRadarTower_base;
 type FGBuildableRadarTower_base = FGBuildable & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildableRadarTower_base_base;
 
 type FGBuildableRadarTower_base_base = {
-	mMapText: 'Radar Tower',
+	mMapText: Exclude<string, ''>,
 	OnRadarTowerRadiusUpdated: docs_json_ts_common_types_empty_object,
 	mMinRevealRadius: docs_json_ts_common_types_decimal_string,
 	mMaxRevealRadius: docs_json_ts_common_types_decimal_string,
@@ -668,7 +668,7 @@ type FGBuildableRailroadStation_base = FGBuildableRailroadStation_base_base & FG
 type FGBuildableRailroadStation_base_base = FGBuildableRailroadStation_version_specific & FGBuildableTrainPlatform_base_base;
 
 type FGBuildableRailroadStation_version_specific = {
-	mMapText: 'Train Station',
+	mMapText: Exclude<string, ''>,
 	mDockedPlatformList: '',
 };
 
@@ -710,14 +710,14 @@ type FGBuildableResourceExtractor_miner_mk2_base_base = docs_json_ts_0_3_7_7_cla
 
 type FGBuildableResourceExtractor_miner_mk2_base_base_base = {
 	mCanPlayAfterStartUpStopped: docs_json_ts_common_types_bool_string,
-	mDisplayName: 'Miner Mk.2',
+	mDisplayName: Exclude<string, ''>,
 };
 
 type FGBuildableResourceExtractor_miner_mk3 = docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_miner_base & docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_only_allow_certain_resources & FGBuildable_powered & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildable_powered_base_resources_base & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildableResourceExtractor & FGBuildableResourceExtractor_miner & FGBuildableResourceExtractor_miner_base & FGBuildableResourceExtractor_miner_mk3_version_specific & FGBuildableResourceExtractor_piped & FGBuildableResourceExtractor_piped_pre_1_0 & FGBuildableResourceExtractor_timed;
 
 type FGBuildableResourceExtractor_miner_mk3_version_specific = {
 	mCanPlayAfterStartUpStopped: docs_json_ts_common_types_bool_string,
-	mDisplayName: 'Miner Mk.3',
+	mDisplayName: Exclude<string, ''>,
 };
 
 type FGBuildableResourceExtractor_oil = FGBuildable_powered & FGBuildableResourceExtractor & FGBuildableResourceExtractor_oil_base;
@@ -880,7 +880,7 @@ type FGBuildableTradingPost_pre_update8 = FGBuildable_powered_version_specific &
 
 type FGBuildableTradingPost_version_specific = {
 	mShipUpgradeLevel: docs_json_ts_common_types_integer_string,
-	mStorageText: 'Open Storage',
+	mStorageText: Exclude<string, ''>,
 	mMamFreeText: `Use ${Exclude<string, ''>}`,
 	mMamOccupiedText: `${Exclude<string, ''>}${' is occupied'}`,
 	mGenerators: '',

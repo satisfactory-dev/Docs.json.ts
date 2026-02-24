@@ -548,7 +548,7 @@ type FGBuildableResourceExtractor_miner_mk1_base_base = docs_json_ts_0_3_7_7_cla
 
 type FGBuildableResourceExtractor_miner_mk1_version_specific = {
 	CanPlayAfterStartUpStopped: docs_json_ts_common_types_bool_string,
-	mDisplayName: 'Miner Mk.1',
+	mDisplayName: Exclude<string, ''>,
 };
 
 type FGBuildableResourceExtractor_miner_mk2 = docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_miner_mk2_base & FGBuildable_powered;

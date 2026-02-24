@@ -23,16 +23,25 @@ import type {
 	PositiveIntegerOrZero,
 } from '@signpostmarv/json-schema-typescript-codegen';
 
+type SupportedLang = (
+	| 'en-US'
+	| 'sv'
+);
+
 type VersionSpecificBasename<
 	Version extends semver_full,
 	LastBit extends ''|'.utf8',
 > = Version extends semver_full<PositiveIntegerOrZero<1>>
-	? `en-US${LastBit}`
+	? `${SupportedLang}${LastBit}`
 	: `Docs${LastBit}`;
 type VersionSpecificFilename<
 	Version extends semver_full,
 	LastBit extends ''|'.utf8',
 > = `Docs/${VersionSpecificBasename<Version, LastBit>}.json`;
+
+export type {
+	SupportedLang,
+};
 
 export class Utf16leJsonHandler<
 	Version extends semver_full = semver_full,

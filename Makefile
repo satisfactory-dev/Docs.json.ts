@@ -69,7 +69,8 @@ prepare--update8: prepare--update7
 
 prepare--version1_0: prepare--update8
 	@echo 'prepare 1.0.1.4'
-	@node ./prepare-1.0.1.4.ts
+	@node ./prepare-1.0.1.4.ts en-US
+	@node ./prepare-1.0.1.4.ts sv
 
 generate--clean:
 	@echo 'cleaning ./generated-types/'
@@ -111,4 +112,5 @@ generate--update8: prepare--update8
 
 generate--version1_0: prepare--version1_0
 	@echo 'running generator'
-	@node ./generate-version1.0.ts
+	@node ./generate-version1.0.ts en-US
+	@node ./generate-version1.0.ts sv

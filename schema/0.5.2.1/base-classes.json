@@ -1833,7 +1833,7 @@
 			"properties": {
 				"mRepresentationText": {
 					"type": "string",
-					"const": "The HUB"
+					"minLength": 1
 				}
 			}
 		},

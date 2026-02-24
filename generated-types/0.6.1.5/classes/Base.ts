@@ -463,7 +463,7 @@ type FGBuildablePowerStorage = docs_json_ts_0_5_2_1_classes_base_FGBuildablePowe
 type FGBuildableRadarTower = docs_json_ts_0_6_1_5_classes_base_overridable_FGBuildableRadarTower_version_specific & FGBuildable_powered & FGBuildableRadarTower_version_specific;
 
 type FGBuildableRadarTower_version_specific = {
-	mMapText: 'Radar Tower',
+	mMapText: Exclude<string, ''>,
 	mRevealRadius: docs_json_ts_common_types_decimal_string,
 };
 
