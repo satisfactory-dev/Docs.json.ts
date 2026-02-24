@@ -12,7 +12,17 @@ import update8_properties from '../../../schema/0.8.3.3/properties.json' with {
 	type: 'json',
 };
 
+// eslint-disable-next-line @stylistic/max-len
+import update8_properties_overridable from '../../../schema/0.8.3.3/properties.overridable.json' with {
+	type: 'json',
+};
+
 import update8_classes from '../../../schema/0.8.3.3/classes.json' with {
+	type: 'json',
+};
+
+// eslint-disable-next-line @stylistic/max-len
+import update8_classes__base__overridable from '../../../schema/0.8.3.3/base-classes.overridable.json' with {
 	type: 'json',
 };
 
@@ -79,7 +89,11 @@ const already_configured: WeakSet<SchemaParser> = new WeakSet();
 export function add_schemas(parser: SchemaParser) {
 	add_schemas_update7(parser);
 
+	parser.add_schema(update8_properties_overridable as SchemaObjectWith$id);
 	parser.add_schema(update8_properties as SchemaObjectWith$id);
+	parser.add_schema(
+		update8_classes__base__overridable as SchemaObjectWith$id,
+	);
 	parser.add_schema(update8_classes__base as SchemaObjectWith$id);
 	parser.add_schema(update8_classes as SchemaObjectWith$id);
 	parser.add_schema(update8 as SchemaObjectWith$id);

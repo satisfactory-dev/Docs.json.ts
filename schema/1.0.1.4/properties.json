@@ -338,7 +338,7 @@
 					}
 				},
 				{
-					"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/mUnlocks--item"
+					"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/mUnlocks--item"
 				}
 			]
 		},
@@ -466,7 +466,7 @@
 								"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
 							},
 							"AudioEvent": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
 							}
 						}
 					}
@@ -493,7 +493,7 @@
 								"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
 							},
 							"AudioEvent": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
 							}
 						}
 					}
@@ -506,7 +506,7 @@
 						"required": ["AudioEvent"],
 						"properties": {
 							"AudioEvent": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
 							}
 						}
 					}
@@ -537,7 +537,7 @@
 								"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
 							},
 							"CameraAnim": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/CameraAnimationSequence--quoted"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/CameraAnimationSequence--quoted"
 							}
 						}
 					}
@@ -564,7 +564,7 @@
 								"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
 							},
 							"CameraAnim": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/CameraAnimationSequence--quoted"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/CameraAnimationSequence--quoted"
 							}
 						}
 					}
@@ -593,13 +593,13 @@
 								"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
 							},
 							"AudioEvent": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
 							},
 							"bSeparate3PAudioEvent": {
 								"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 							},
 							"AudioEvent3P": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
 							}
 						}
 					}
@@ -618,7 +618,7 @@
 								"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
 							},
 							"CameraAnim": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/CameraAnimationSequence--quoted"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/CameraAnimationSequence--quoted"
 							}
 						}
 					}
@@ -671,10 +671,10 @@
 								"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
 							},
 							"AudioEvent": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
 							},
 							"CameraAnim": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/CameraAnimationSequence--quoted"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/CameraAnimationSequence--quoted"
 							}
 						}
 					}
@@ -690,7 +690,7 @@
 								"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
 							},
 							"AudioEvent": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
 							}
 						}
 					}
@@ -808,13 +808,13 @@
 								"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
 							},
 							"AudioEvent": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
 							},
 							"bSeparate3PAudioEvent": {
 								"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 							},
 							"AudioEvent3P": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
 							}
 						}
 					}
@@ -856,13 +856,13 @@
 								"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
 							},
 							"AudioEvent": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
 							},
 							"bSeparate3PAudioEvent": {
 								"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 							},
 							"AudioEvent3P": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
 							}
 						}
 					}
@@ -905,16 +905,16 @@
 								"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
 							},
 							"AudioEvent": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
 							},
 							"bSeparate3PAudioEvent": {
 								"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 							},
 							"AudioEvent3P": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
 							},
 							"CameraAnim": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/CameraAnimationSequence--quoted"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/CameraAnimationSequence--quoted"
 							}
 						}
 					}
@@ -944,16 +944,16 @@
 								"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
 							},
 							"AudioEvent": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
 							},
 							"bSeparate3PAudioEvent": {
 								"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 							},
 							"AudioEvent3P": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
 							},
 							"CameraAnim": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/CameraAnimationSequence--quoted"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/CameraAnimationSequence--quoted"
 							}
 						}
 					}
@@ -987,16 +987,16 @@
 								"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
 							},
 							"AudioEvent": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
 							},
 							"bSeparate3PAudioEvent": {
 								"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 							},
 							"AudioEvent3P": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
 							},
 							"CameraAnim": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/CameraAnimationSequence--quoted"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/CameraAnimationSequence--quoted"
 							}
 						}
 					}
@@ -1031,7 +1031,7 @@
 								"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
 							},
 							"AudioEvent": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
 							}
 						}
 					}
@@ -1062,7 +1062,7 @@
 								"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
 							},
 							"AudioEvent": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
 							}
 						}
 					}
@@ -1094,10 +1094,10 @@
 								"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
 							},
 							"AudioEvent": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
 							},
 							"CameraAnim": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/CameraAnimationSequence--quoted"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/CameraAnimationSequence--quoted"
 							}
 						}
 					}
@@ -1125,10 +1125,10 @@
 								"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
 							},
 							"AudioEvent": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
 							},
 							"CameraAnim": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/CameraAnimationSequence--quoted"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/CameraAnimationSequence--quoted"
 							}
 						}
 					}
@@ -1147,7 +1147,7 @@
 								"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
 							},
 							"AudioEvent": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
 							}
 						}
 					}
@@ -1175,7 +1175,7 @@
 								"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 							},
 							"AudioEvent": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
 							}
 						}
 					}
@@ -1215,13 +1215,13 @@
 						],
 						"properties": {
 							"AudioEvent": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
 							},
 							"bSeparate3PAudioEvent": {
 								"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 							},
 							"AudioEvent3P": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
 							}
 						}
 					}
@@ -1245,10 +1245,10 @@
 								"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
 							},
 							"AudioEvent": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
 							},
 							"CameraAnim": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/CameraAnimationSequence--quoted"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/CameraAnimationSequence--quoted"
 							}
 						}
 					}
@@ -1274,16 +1274,16 @@
 								"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
 							},
 							"AudioEvent": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
 							},
 							"bSeparate3PAudioEvent": {
 								"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 							},
 							"AudioEvent3P": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
 							},
 							"CameraAnim": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/CameraAnimationSequence--quoted"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/CameraAnimationSequence--quoted"
 							}
 						}
 					}
@@ -1308,13 +1308,13 @@
 								"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
 							},
 							"AudioEvent": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
 							},
 							"bSeparate3PAudioEvent": {
 								"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 							},
 							"CameraAnim": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/CameraAnimationSequence--quoted"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/CameraAnimationSequence--quoted"
 							}
 						}
 					}
@@ -1340,16 +1340,16 @@
 								"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
 							},
 							"AudioEvent": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
 							},
 							"bSeparate3PAudioEvent": {
 								"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 							},
 							"AudioEvent3P": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
 							},
 							"CameraAnim": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/CameraAnimationSequence--quoted"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/CameraAnimationSequence--quoted"
 							}
 						}
 					}
@@ -1386,10 +1386,10 @@
 								"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
 							},
 							"AudioEvent": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
 							},
 							"CameraAnim": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/CameraAnimationSequence--quoted"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/CameraAnimationSequence--quoted"
 							}
 						}
 					}
@@ -1422,10 +1422,10 @@
 								"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
 							},
 							"AudioEvent": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
 							},
 							"CameraAnim": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/CameraAnimationSequence--quoted"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/CameraAnimationSequence--quoted"
 							}
 						}
 					}
@@ -1465,7 +1465,7 @@
 								"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
 							},
 							"AudioEvent": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
 							}
 						}
 					}
@@ -1481,7 +1481,7 @@
 								"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
 							},
 							"AudioEvent": {
-								"$ref": "docs.json.ts--0.8.3.3--properties#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
+								"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
 							}
 						}
 					}

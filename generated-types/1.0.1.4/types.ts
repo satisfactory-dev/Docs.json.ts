@@ -1,10 +1,6 @@
 /* eslint-disable @stylistic/max-len */
 
 import type {
-	FGCustomizationRecipe as docs_json_ts_0_8_3_3_FGCustomizationRecipe,
-} from './../0.8.3.3/types.ts';
-
-import type {
 	FGAmmoTypeInstantHit_Desc_CartridgeChaos_C as docs_json_ts_1_0_1_4_classes_FGAmmoTypeInstantHit_Desc_CartridgeChaos_C,
 	FGAmmoTypeInstantHit_Desc_CartridgeStandard_C as docs_json_ts_1_0_1_4_classes_FGAmmoTypeInstantHit_Desc_CartridgeStandard_C,
 	FGAmmoTypeProjectile as docs_json_ts_1_0_1_4_classes_FGAmmoTypeProjectile,
@@ -135,6 +131,10 @@ import type {
 	FGWeapon_Equip_RebarGun_Projectile_C as docs_json_ts_1_0_1_4_classes_FGWeapon_Equip_RebarGun_Projectile_C,
 	FGWeapon_Equip_Rifle_C as docs_json_ts_1_0_1_4_classes_FGWeapon_Equip_Rifle_C,
 } from './classes.ts';
+
+import type {
+	FGCustomizationRecipe as docs_json_ts_0_5_2_1_classes_overridable_FGCustomizationRecipe,
+} from './../0.5.2.1/classes/overridable--1.0.1.4.ts';
 
 type FGAmmoTypeInstantHit = {
 	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGAmmoTypeInstantHit'}${'\''}`,
@@ -803,6 +803,14 @@ type FGConveyorPoleStackable = {
 	],
 };
 
+type FGCustomizationRecipe = {
+	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGCustomizationRecipe'}${'\''}`,
+	Classes: [
+		docs_json_ts_0_5_2_1_classes_overridable_FGCustomizationRecipe,
+		...docs_json_ts_0_5_2_1_classes_overridable_FGCustomizationRecipe[],
+	],
+};
+
 type FGEquipmentDescriptor = {
 	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGEquipmentDescriptor'}${'\''}`,
 	Classes: [
@@ -1011,7 +1019,7 @@ export type foo = [
 	FGBuildableWall,
 	FGBuildableDoor,
 	FGRecipe,
-	docs_json_ts_0_8_3_3_FGCustomizationRecipe,
+	FGCustomizationRecipe,
 	FGBuildingDescriptor,
 	FGBuildableCornerWall,
 	FGBuildablePipelinePump,
@@ -1194,6 +1202,7 @@ export type {
 	FGConsumableDescriptor,
 	FGConsumableEquipment,
 	FGConveyorPoleStackable,
+	FGCustomizationRecipe,
 	FGEquipmentDescriptor,
 	FGEquipmentStunSpear,
 	FGEquipmentZipline,

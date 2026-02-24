@@ -69,7 +69,17 @@ import update7_classes__base__overridable from './schema/0.7.1.1/base-classes.ov
 	type: 'json',
 };
 
+// eslint-disable-next-line @stylistic/max-len
+import update8_properties__overridable from './schema/0.8.3.3/properties.overridable.json' with {
+	type: 'json',
+};
+
 import update8_properties from './schema/0.8.3.3/properties.json' with {
+	type: 'json',
+};
+
+// eslint-disable-next-line @stylistic/max-len
+import update8_classes__base__overridable from './schema/0.8.3.3/base-classes.overridable.json' with {
 	type: 'json',
 };
 
@@ -176,7 +186,9 @@ for (const schema of [
 	update6_classes__base__overridable,
 	update6_classes__overridable,
 	update7_classes__base__overridable,
+	update8_properties__overridable,
 	update8_properties,
+	update8_classes__base__overridable,
 	update8_classes__base,
 	update8_classes,
 	update8,

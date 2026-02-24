@@ -56,7 +56,17 @@ import update7_classes__base__overridable from '../../../schema/0.7.1.1/base-cla
 	type: 'json',
 };
 
+// eslint-disable-next-line @stylistic/max-len
+import update8_properties__overridable from '../../../schema/0.8.3.3/properties.overridable.json' with {
+	type: 'json',
+};
+
 import update8_properties from '../../../schema/0.8.3.3/properties.json' with {
+	type: 'json',
+};
+
+// eslint-disable-next-line @stylistic/max-len
+import update8_classes__base__overridable from '../../../schema/0.8.3.3/base-classes.overridable.json' with {
 	type: 'json',
 };
 
@@ -129,9 +139,17 @@ export const filenames_by_$id: guard = {
 		types: './generated-types/0.7.1.1/classes/Base.0.8.3.3.ts',
 		data: './generated-types/0.7.1.1/classes/Base.0.8.3.3.data.ts',
 	},
+	[update8_properties__overridable.$id]: {
+		types: './generated-types/0.8.3.3/types/properties.0.8.3.3.ts',
+		data: './generated-types/0.8.3.3/types/properties.0.8.3.3.data.ts',
+	},
 	[update8_properties.$id]: {
 		types: './generated-types/0.8.3.3/types/properties.ts',
 		data: './generated-types/0.8.3.3/data/properties.ts',
+	},
+	[update8_classes__base__overridable.$id]: {
+		types: './generated-types/0.8.3.3/classes/Base.0.8.3.3.ts',
+		data: './generated-types/0.8.3.3/classes/Base.0.8.3.3.data.ts',
 	},
 	[update8_classes__base.$id]: {
 		types: './generated-types/0.8.3.3/classes/Base.ts',

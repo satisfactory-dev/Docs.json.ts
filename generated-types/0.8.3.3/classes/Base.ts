@@ -3,32 +3,12 @@
 import type {
 	bool_string as docs_json_ts_common_types_bool_string,
 	decimal_string as docs_json_ts_common_types_decimal_string,
-	decimal_string_signed as docs_json_ts_common_types_decimal_string_signed,
 	empty_object as docs_json_ts_common_types_empty_object,
 	integer_string as docs_json_ts_common_types_integer_string,
 	integer_string_signed as docs_json_ts_common_types_integer_string_signed,
-	XY_decimal_string as docs_json_ts_common_types_XY_decimal_string,
 	XY_integer_string as docs_json_ts_common_types_XY_integer_string,
 	XYZ_decimal_string as docs_json_ts_common_types_XYZ_decimal_string,
-	XYZW_decimal_string as docs_json_ts_common_types_XYZW_decimal_string,
 } from './../../common/types.ts';
-
-import type {
-	DocsDotJson_AkAudioEvent_quoted_list as docs_json_ts_0_8_3_3_properties_DocsDotJson_AkAudioEvent_quoted_list,
-	FGBuildable_mOcclusionBoxInfo_item as docs_json_ts_0_8_3_3_properties_FGBuildable_mOcclusionBoxInfo_item,
-	FGRailroadTrackConnectionComponent_quoted as docs_json_ts_0_8_3_3_properties_FGRailroadTrackConnectionComponent_quoted,
-	FGTrainPlatformConnection_quoted as docs_json_ts_0_8_3_3_properties_FGTrainPlatformConnection_quoted,
-	mAnimData_item as docs_json_ts_0_8_3_3_properties_mAnimData_item,
-	mComponentNameToFirstPersonMaterials_item as docs_json_ts_0_8_3_3_properties_mComponentNameToFirstPersonMaterials_item,
-	mDamageTypes as docs_json_ts_0_8_3_3_properties_mDamageTypes,
-	Meshes_item as docs_json_ts_0_8_3_3_properties_Meshes_item,
-	mUnlocks_item as docs_json_ts_0_8_3_3_properties_mUnlocks_item,
-} from './../types/properties.ts';
-
-import type {
-	ItemClass_Amount_list as docs_json_ts_0_3_7_7_overridable_ItemClass_Amount_list,
-	MaterialInstanceConstant_quoted as docs_json_ts_0_3_7_7_overridable_MaterialInstanceConstant_quoted,
-} from './../../0.3.7.7/types/overridable--0.8.3.3.ts';
 
 import type {
 	FGAmmoType_base as docs_json_ts_0_6_1_5_classes_base_FGAmmoType_base,
@@ -68,6 +48,23 @@ import type {
 	FGBuildableRadarTower_version_specific as docs_json_ts_0_6_1_5_classes_base_overridable_FGBuildableRadarTower_version_specific,
 	FGItemDescriptor_base as docs_json_ts_0_6_1_5_classes_base_overridable_FGItemDescriptor_base,
 } from './../../0.6.1.5/classes/Base.0.8.3.3.ts';
+
+import type {
+	FGAmmoType_version_specific as docs_json_ts_0_8_3_3_classes_base_overridable_FGAmmoType_version_specific,
+	FGBuildableRailroadTrack_version_specific as docs_json_ts_0_8_3_3_classes_base_overridable_FGBuildableRailroadTrack_version_specific,
+	FGConsumableEquipment_version_specific as docs_json_ts_0_8_3_3_classes_base_overridable_FGConsumableEquipment_version_specific,
+	FGEquipment_version_specific as docs_json_ts_0_8_3_3_classes_base_overridable_FGEquipment_version_specific,
+	FGSchematic_has_mSchematicIcon as docs_json_ts_0_8_3_3_classes_base_overridable_FGSchematic_has_mSchematicIcon,
+	FGSchematic_pre_1_0 as docs_json_ts_0_8_3_3_classes_base_overridable_FGSchematic_pre_1_0,
+	FGSchematic_version_specific as docs_json_ts_0_8_3_3_classes_base_overridable_FGSchematic_version_specific,
+} from './Base.0.8.3.3.ts';
+
+import type {
+	FGBuildable_mOcclusionBoxInfo_item as docs_json_ts_0_8_3_3_properties_FGBuildable_mOcclusionBoxInfo_item,
+	FGTrainPlatformConnection_quoted as docs_json_ts_0_8_3_3_properties_FGTrainPlatformConnection_quoted,
+	mDamageTypes as docs_json_ts_0_8_3_3_properties_mDamageTypes,
+	Meshes_item as docs_json_ts_0_8_3_3_properties_Meshes_item,
+} from './../types/properties.ts';
 
 import type {
 	FGBuildable_base_version_specific as docs_json_ts_0_3_7_7_classes_base_FGBuildable_base_version_specific,
@@ -272,7 +269,6 @@ import type {
 
 import type {
 	has_mBatteryClasses as docs_json_ts_0_4_2_11_overridable_has_mBatteryClasses,
-	Texture2D_quoted as docs_json_ts_0_4_2_11_overridable_Texture2D_quoted,
 } from './../../0.4.2.11/types/overridable--0.8.3.3.ts';
 
 import type {
@@ -298,14 +294,6 @@ import type {
 	FGSchematic_has_mSchematicDependencies as docs_json_ts_0_4_2_11_classes_base_overridable_FGSchematic_has_mSchematicDependencies,
 } from './../../0.4.2.11/classes/Base.overridable--0.8.3.3.ts';
 
-import type {
-	TintColor as docs_json_ts_0_4_2_11_properties_TintColor,
-} from './../../0.4.2.11/types/properties.ts';
-
-import type {
-	ItemClass_list as docs_json_ts_0_6_1_5_overridable_ItemClass_list,
-} from './../../0.6.1.5/types/overridable--0.8.3.3.ts';
-
 type has_mFuelInventoryHandlerData = {
 	mFuelInventoryHandlerData: docs_json_ts_common_types_empty_object,
 };
@@ -314,30 +302,17 @@ type has_mInventoryHandlerData = {
 	mInventoryHandlerData: docs_json_ts_common_types_empty_object,
 };
 
-type FGAmmoType_version_specific = {
-	mAmmoTickFunction: {
-		bAllowTickOnDedicatedServer: docs_json_ts_common_types_bool_string,
-	},
-	mDamageTypesOnImpact: null | docs_json_ts_0_8_3_3_properties_mDamageTypes,
-	mFiringSounds: null | docs_json_ts_0_8_3_3_properties_DocsDotJson_AkAudioEvent_quoted_list,
-	mFiringSounds1P: '',
-	mMagazineMeshMaterials1p: [
-		docs_json_ts_0_3_7_7_overridable_MaterialInstanceConstant_quoted,
-		...docs_json_ts_0_3_7_7_overridable_MaterialInstanceConstant_quoted[],
-	],
-};
+type FGAmmoTypeInstantHit_Desc_CartridgeChaos_C = docs_json_ts_0_6_1_5_classes_base_FGAmmoType_base & docs_json_ts_0_6_1_5_classes_base_overridable_FGAmmoType_base & docs_json_ts_0_6_1_5_classes_base_FGAmmoType_version_specific & docs_json_ts_0_6_1_5_classes_base_overridable_FGAmmoType_version_specific & docs_json_ts_0_6_1_5_classes_base_FGAmmoTypeInstantHit_Desc_CartridgeChaos_C_version_specific & docs_json_ts_0_6_1_5_classes_base_FGAmmoTypeInstantHit_version_specific & docs_json_ts_0_8_3_3_classes_base_overridable_FGAmmoType_version_specific;
 
-type FGAmmoTypeInstantHit_Desc_CartridgeChaos_C = docs_json_ts_0_6_1_5_classes_base_FGAmmoType_base & docs_json_ts_0_6_1_5_classes_base_overridable_FGAmmoType_base & docs_json_ts_0_6_1_5_classes_base_FGAmmoType_version_specific & docs_json_ts_0_6_1_5_classes_base_overridable_FGAmmoType_version_specific & docs_json_ts_0_6_1_5_classes_base_FGAmmoTypeInstantHit_Desc_CartridgeChaos_C_version_specific & docs_json_ts_0_6_1_5_classes_base_FGAmmoTypeInstantHit_version_specific & FGAmmoType_version_specific;
+type FGAmmoTypeInstantHit_Desc_CartridgeStandard_C = docs_json_ts_0_6_1_5_classes_base_FGAmmoType_base & docs_json_ts_0_6_1_5_classes_base_overridable_FGAmmoType_base & docs_json_ts_0_6_1_5_classes_base_FGAmmoType_version_specific & docs_json_ts_0_6_1_5_classes_base_overridable_FGAmmoType_version_specific & docs_json_ts_0_6_1_5_classes_base_FGAmmoTypeInstantHit_version_specific & docs_json_ts_0_8_3_3_classes_base_overridable_FGAmmoType_version_specific;
 
-type FGAmmoTypeInstantHit_Desc_CartridgeStandard_C = docs_json_ts_0_6_1_5_classes_base_FGAmmoType_base & docs_json_ts_0_6_1_5_classes_base_overridable_FGAmmoType_base & docs_json_ts_0_6_1_5_classes_base_FGAmmoType_version_specific & docs_json_ts_0_6_1_5_classes_base_overridable_FGAmmoType_version_specific & docs_json_ts_0_6_1_5_classes_base_FGAmmoTypeInstantHit_version_specific & FGAmmoType_version_specific;
-
-type FGAmmoTypeProjectile = docs_json_ts_0_6_1_5_classes_base_FGAmmoType_base & docs_json_ts_0_6_1_5_classes_base_overridable_FGAmmoType_base & docs_json_ts_0_6_1_5_classes_base_overridable_FGAmmoTypeProjectile_version_specific & docs_json_ts_0_6_1_5_classes_base_FGAmmoTypeProjectile_version_specific & FGAmmoType_version_specific & FGAmmoTypeProjectile_version_specific;
+type FGAmmoTypeProjectile = docs_json_ts_0_6_1_5_classes_base_FGAmmoType_base & docs_json_ts_0_6_1_5_classes_base_overridable_FGAmmoType_base & docs_json_ts_0_6_1_5_classes_base_overridable_FGAmmoTypeProjectile_version_specific & docs_json_ts_0_6_1_5_classes_base_FGAmmoTypeProjectile_version_specific & docs_json_ts_0_8_3_3_classes_base_overridable_FGAmmoType_version_specific & FGAmmoTypeProjectile_version_specific;
 
 type FGAmmoTypeProjectile_version_specific = {
 	mDamageTypesAtEndOfLife: null | docs_json_ts_0_8_3_3_properties_mDamageTypes,
 };
 
-type FGAmmoTypeSpreadshot = docs_json_ts_0_6_1_5_classes_base_FGAmmoType_base & docs_json_ts_0_6_1_5_classes_base_overridable_FGAmmoType_base & docs_json_ts_0_6_1_5_classes_base_FGAmmoTypeSpreadshot_version_specific & FGAmmoType_version_specific;
+type FGAmmoTypeSpreadshot = docs_json_ts_0_6_1_5_classes_base_FGAmmoType_base & docs_json_ts_0_6_1_5_classes_base_overridable_FGAmmoType_base & docs_json_ts_0_6_1_5_classes_base_FGAmmoTypeSpreadshot_version_specific & docs_json_ts_0_8_3_3_classes_base_overridable_FGAmmoType_version_specific;
 
 type FGBuildable_base = docs_json_ts_0_6_1_5_classes_base_overridable_FGBuildable_base_version_specific & docs_json_ts_0_3_7_7_classes_base_FGBuildable_base_version_specific & docs_json_ts_0_4_2_11_classes_base_FGBuildable_base_version_specific & docs_json_ts_0_5_2_1_classes_base_FGBuildable_base_pre_1_0 & docs_json_ts_0_5_2_1_classes_base_FGBuildable_base_version_specific & docs_json_ts_0_6_1_5_classes_base_FGBuildable_base_version_specific & docs_json_ts_0_7_1_1_classes_base_FGBuildable_base_version_specific & FGBuildable_version_specific;
 
@@ -543,7 +518,7 @@ type FGBuildableRailroadSignal_version_specific = {
 
 type FGBuildableRailroadStation = docs_json_ts_0_3_7_7_classes_base_FGBuildableRailroadStation_version_specific & docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatform_base_base_base & docs_json_ts_0_5_2_1_classes_base_FGBuildableRailroadStation_base & docs_json_ts_0_5_2_1_classes_base_FGBuildableTrainPlatform_base_version_specific & docs_json_ts_0_5_2_1_classes_base_FGBuildableTrainPlatform_non_empty_version_specific & FGBuildable_powered & FGBuildableTrainPlatform_version_specific;
 
-type FGBuildableRailroadTrack = docs_json_ts_0_3_7_7_classes_base_FGBuildableRailroadTrack_base & docs_json_ts_0_5_2_1_classes_base_FGBuildableRailroadTrack_base_version_specific & FGBuildable_base & FGBuildableRailroadTrack_pre_1_0 & FGBuildableRailroadTrack_version_specific;
+type FGBuildableRailroadTrack = docs_json_ts_0_3_7_7_classes_base_FGBuildableRailroadTrack_base & docs_json_ts_0_5_2_1_classes_base_FGBuildableRailroadTrack_base_version_specific & FGBuildable_base & FGBuildableRailroadTrack_pre_1_0 & docs_json_ts_0_8_3_3_classes_base_overridable_FGBuildableRailroadTrack_version_specific;
 
 type FGBuildableRailroadTrack_pre_1_0 = {
 	mBlockVisualizationMeshLength: docs_json_ts_common_types_decimal_string,
@@ -555,14 +530,6 @@ type FGBuildableRailroadTrack_pre_1_0 = {
 		EndTangentPrimitiveDataStartIndex: docs_json_ts_common_types_integer_string,
 		InstanceScaleIndex: docs_json_ts_common_types_integer_string_signed,
 	},
-};
-
-type FGBuildableRailroadTrack_version_specific = {
-	mBlockVisualizationColorDataStartIndex: docs_json_ts_common_types_integer_string,
-	mConnections: [
-		docs_json_ts_0_8_3_3_properties_FGRailroadTrackConnectionComponent_quoted,
-		...docs_json_ts_0_8_3_3_properties_FGRailroadTrackConnectionComponent_quoted[],
-	],
 };
 
 type FGBuildableRamp = docs_json_ts_0_5_2_1_classes_base_FGBuildableRamp_base & FGBuildableFoundation;
@@ -647,30 +614,13 @@ type FGChainsaw_version_specific = {
 
 type FGConsumableDescriptor = docs_json_ts_0_6_1_5_classes_base_overridable_FGItemDescriptor_base & docs_json_ts_0_3_7_7_classes_base_FGConsumableDescriptor_base & docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable_base;
 
-type FGConsumableEquipment = docs_json_ts_0_3_7_7_classes_base_FGConsumableEquipment_version_specific & docs_json_ts_0_4_2_11_classes_base_FGConsumableEquipment_version_specific & FGConsumableEquipment_version_specific & FGEquipment;
+type FGConsumableEquipment = docs_json_ts_0_3_7_7_classes_base_FGConsumableEquipment_version_specific & docs_json_ts_0_4_2_11_classes_base_FGConsumableEquipment_version_specific & docs_json_ts_0_8_3_3_classes_base_overridable_FGConsumableEquipment_version_specific & FGEquipment;
 
-type FGConsumableEquipment_version_specific = {
-	mAnimData?: [
-		docs_json_ts_0_8_3_3_properties_mAnimData_item,
-		...docs_json_ts_0_8_3_3_properties_mAnimData_item[],
-	],
-};
-
-type FGEquipment = docs_json_ts_0_3_7_7_classes_base_FGEquipment_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_overridable_FGEquipment_version_specific & docs_json_ts_0_3_7_7_classes_base_hasClassName & docs_json_ts_0_4_2_11_classes_base_FGEquipment_version_specific & docs_json_ts_0_6_1_5_classes_base_FGEquipment_pre_1_0 & docs_json_ts_0_6_1_5_classes_base_FGEquipment_version_specific & FGEquipment_version_specific;
+type FGEquipment = docs_json_ts_0_3_7_7_classes_base_FGEquipment_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_overridable_FGEquipment_version_specific & docs_json_ts_0_3_7_7_classes_base_hasClassName & docs_json_ts_0_4_2_11_classes_base_FGEquipment_version_specific & docs_json_ts_0_6_1_5_classes_base_FGEquipment_pre_1_0 & docs_json_ts_0_6_1_5_classes_base_FGEquipment_version_specific & docs_json_ts_0_8_3_3_classes_base_overridable_FGEquipment_version_specific;
 
 type FGEquipment_dispenser = docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_mPlaceDistanceMax & FGEquipment;
 
 type FGEquipment_noisy = docs_json_ts_0_6_1_5_classes_base_FGEquipment_noisy_version_specific & FGEquipment;
-
-type FGEquipment_version_specific = {
-	mComponentNameToFirstPersonMaterials: docs_json_ts_common_types_empty_object | [
-		docs_json_ts_0_8_3_3_properties_mComponentNameToFirstPersonMaterials_item,
-		...docs_json_ts_0_8_3_3_properties_mComponentNameToFirstPersonMaterials_item[],
-	],
-	mNeedsDefaultEquipmentMappingContext: docs_json_ts_common_types_bool_string,
-	mDefaultEquipmentActions: docs_json_ts_common_types_integer_string,
-	mSwappedOutThirdPersonMaterials: docs_json_ts_common_types_empty_object,
-};
 
 type FGEquipmentStunSpear_base_version_specific = {
 	mDamageTypes: docs_json_ts_0_8_3_3_properties_mDamageTypes,
@@ -744,39 +694,7 @@ type FGPipeHyperStart = docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_with_
 
 type FGPortableMinerDispenser = docs_json_ts_0_3_7_7_classes_base_FGPortableMinerDispenser_version_specific & docs_json_ts_0_4_2_11_classes_base_FGPortableMinerDispenser_version_specific & FGEquipment_dispenser;
 
-type FGSchematic_base = docs_json_ts_0_4_2_11_classes_base_overridable_FGSchematic_has_mSchematicDependencies & docs_json_ts_0_5_2_1_classes_base_overridable_FGSchematic_version_specific & docs_json_ts_0_3_7_7_classes_base_FGSchematic_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_overridable_FGSchematic_version_specific & docs_json_ts_0_3_7_7_classes_base_instructive & docs_json_ts_0_3_7_7_classes_base_isDescribed & docs_json_ts_0_4_2_11_classes_base_FGSchematic_has_mTechTier & docs_json_ts_0_6_1_5_classes_base_FGSchematic_version_specific & FGSchematic_has_mSchematicIcon & FGSchematic_pre_1_0 & FGSchematic_version_specific;
-
-type FGSchematic_has_mSchematicIcon = {
-	mSchematicIcon: {
-		DrawAs: 'Image',
-		ImageSize: docs_json_ts_common_types_XY_decimal_string,
-		Margin: docs_json_ts_common_types_empty_object,
-		TintColor: docs_json_ts_0_4_2_11_properties_TintColor,
-		OutlineSettings: {
-			CornerRadii: docs_json_ts_common_types_XYZW_decimal_string,
-			Color: docs_json_ts_0_4_2_11_properties_TintColor,
-			RoundingType: 'HalfHeightRadius',
-		},
-		ResourceObject?: docs_json_ts_0_4_2_11_overridable_Texture2D_quoted,
-		UVRegion: {
-			Min: docs_json_ts_common_types_XY_decimal_string,
-			Max: docs_json_ts_common_types_XY_decimal_string,
-			bIsValid: docs_json_ts_common_types_bool_string,
-		},
-	},
-};
-
-type FGSchematic_pre_1_0 = {
-	mUnlocks: [
-		...docs_json_ts_0_8_3_3_properties_mUnlocks_item[],
-	],
-};
-
-type FGSchematic_version_specific = {
-	mCost: null | docs_json_ts_0_3_7_7_overridable_ItemClass_Amount_list | docs_json_ts_0_6_1_5_overridable_ItemClass_list,
-	mIsPlayerSpecific: docs_json_ts_common_types_bool_string,
-	mMenuPriority: docs_json_ts_common_types_decimal_string_signed,
-};
+type FGSchematic_base = docs_json_ts_0_4_2_11_classes_base_overridable_FGSchematic_has_mSchematicDependencies & docs_json_ts_0_5_2_1_classes_base_overridable_FGSchematic_version_specific & docs_json_ts_0_3_7_7_classes_base_FGSchematic_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_overridable_FGSchematic_version_specific & docs_json_ts_0_3_7_7_classes_base_instructive & docs_json_ts_0_3_7_7_classes_base_isDescribed & docs_json_ts_0_4_2_11_classes_base_FGSchematic_has_mTechTier & docs_json_ts_0_6_1_5_classes_base_FGSchematic_version_specific & docs_json_ts_0_8_3_3_classes_base_overridable_FGSchematic_has_mSchematicIcon & docs_json_ts_0_8_3_3_classes_base_overridable_FGSchematic_pre_1_0 & docs_json_ts_0_8_3_3_classes_base_overridable_FGSchematic_version_specific;
 
 type FGSchematic_with_described_unlocks = docs_json_ts_0_3_7_7_classes_base_hasClassName & docs_json_ts_0_5_2_1_classes_base_FGSchematic_with_described_unlocks_base_base & FGSchematic_base;
 
@@ -789,7 +707,6 @@ type FGWeapon_Equip_Rifle_C = docs_json_ts_0_5_2_1_classes_base_overridable_FGWe
 export type {
 	has_mFuelInventoryHandlerData,
 	has_mInventoryHandlerData,
-	FGAmmoType_version_specific,
 	FGAmmoTypeInstantHit_Desc_CartridgeChaos_C,
 	FGAmmoTypeInstantHit_Desc_CartridgeStandard_C,
 	FGAmmoTypeProjectile,
@@ -877,7 +794,6 @@ export type {
 	FGBuildableRailroadStation,
 	FGBuildableRailroadTrack,
 	FGBuildableRailroadTrack_pre_1_0,
-	FGBuildableRailroadTrack_version_specific,
 	FGBuildableRamp,
 	FGBuildableResourceExtractor_base,
 	FGBuildableResourceExtractor_miner_mk1,
@@ -907,11 +823,9 @@ export type {
 	FGChainsaw_version_specific,
 	FGConsumableDescriptor,
 	FGConsumableEquipment,
-	FGConsumableEquipment_version_specific,
 	FGEquipment,
 	FGEquipment_dispenser,
 	FGEquipment_noisy,
-	FGEquipment_version_specific,
 	FGEquipmentStunSpear_base_version_specific,
 	FGEquipmentStunSpear_xenobasher,
 	FGEquipmentStunSpear_xenozapper,
@@ -934,9 +848,6 @@ export type {
 	FGPipeHyperStart,
 	FGPortableMinerDispenser,
 	FGSchematic_base,
-	FGSchematic_has_mSchematicIcon,
-	FGSchematic_pre_1_0,
-	FGSchematic_version_specific,
 	FGSchematic_with_described_unlocks,
 	FGSuitBase,
 	FGWeapon_Equip_RebarGun_Projectile_C,

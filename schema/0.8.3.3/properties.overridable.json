@@ -1,0 +1,188 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "docs.json.ts--0.8.3.3--properties.overridable",
+	"$defs": {
+		"mAnimData--item": {
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": [
+					"Montage_7_2E66F6A948A8606E71185682EA2AC4EC",
+					"CameraAnimationSequence_11_920C446448786C507704569A05006500"
+				],
+				"properties": {
+					"Montage_7_2E66F6A948A8606E71185682EA2AC4EC": {
+						"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
+					},
+					"CameraAnimationSequence_11_920C446448786C507704569A05006500": {
+						"$ref": "#/$defs/CameraAnimationSequence--quoted"
+					}
+				}
+			}
+		},
+		"mComponentNameToFirstPersonMaterials--item": {
+			"type": "string",
+			"typed_string": {
+				"type": "array",
+				"minItems": 2,
+				"maxItems": 2,
+				"items": false,
+				"prefixItems": [
+					{
+						"type": "string",
+						"minLength": 1
+					},
+					{
+						"type": "string",
+						"typed_string": {
+							"type": "object",
+							"additionalProperties": false,
+							"required": ["FirstPersonMaterials"],
+							"properties": {
+								"FirstPersonMaterials": {
+									"type": "string",
+									"typed_string": {
+										"type": "array",
+										"minItems": 1,
+										"uniqueItems": true,
+										"items": {
+											"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/MaterialInstanceConstant--quoted"
+										}
+									}
+								}
+							}
+						}
+					}
+				]
+			}
+		},
+		"mUnlocks--item": {
+			"oneOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/mUnlocks--item--mRecipes"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--mNumInventorySlotsToUnlock"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/mUnlocks--item--mItemsToGive"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/mUnlocks--item--mSchematics"
+				},
+				{
+					"type": "object",
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--base",
+					"unevaluatedProperties": false
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--overridable#/$defs/mUnlocks--item--mResourcePairsToAddToScanner"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/mUnlocks--item--mNumArmEquipmentSlotsToUnlock"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--overridable#/$defs/mUnlocks--item--mEmotes"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--overridable#/$defs/mUnlocks--item--mTapeUnlocks"
+				},
+				{
+					"$ref": "#/$defs/mUnlocks--item--mScannableObjects"
+				}
+			]
+		},
+		"mUnlocks--item--mScannableObjects": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mUnlocks--item--base",
+			"unevaluatedProperties": false,
+			"required": ["mScannableObjects"],
+			"properties": {
+				"mScannableObjects": {
+					"type": "string",
+					"typed_string": {
+						"type": "array",
+						"minItems": 1,
+						"uniqueItems": true,
+						"items": {
+							"$ref": "#/$defs/mUnlocks--item--mScannableObjects--item"
+						}
+					}
+				}
+			}
+		},
+		"mUnlocks--item--mScannableObjects--item": {
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"required": ["ItemDescriptor", "ActorsAllowedToScan"],
+				"properties": {
+					"ItemDescriptor": {
+						"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/BlueprintGeneratedClass--quoted"
+					},
+					"ActorsAllowedToScan": {
+						"type": "string",
+						"typed_string": {
+							"type": "array",
+							"minItems": 1,
+							"uniqueItems": true,
+							"items": {
+								"$ref": "#/$defs/Class--quoted"
+							}
+						}
+					}
+				}
+			}
+		},
+		"CameraAnimationSequence--quoted": {
+			"type": "string",
+			"DocsDotJson_PrefixedString": {
+				"prefix": "CameraAnimationSequence",
+				"mode": "version_specific_default",
+				"system_prefix": "TemplateSequence",
+				"value": null
+			}
+		},
+		"Class--quoted": {
+			"type": "string",
+			"DocsDotJson_PrefixedString": {
+				"prefix": "Class",
+				"mode": "version_specific_default",
+				"system_prefix": "CoreUObject",
+				"root_path": "Script",
+				"value": null
+			}
+		},
+		"DocsDotJson_AkAudioEvent_quoted--list": {
+			"type": "string",
+			"typed_string": {
+				"type": "array",
+				"minItems": 1,
+				"uniqueItems": true,
+				"items": {
+					"$ref": "#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
+				}
+			}
+		},
+		"DocsDotJson_AkAudioEvent_quoted--list--item": {
+			"type": "string",
+			"DocsDotJson_PrefixedString": {
+				"prefix": "AkAudioEvent",
+				"first_path": "WwiseAudio",
+				"mode": "version_specific_default",
+				"system_prefix": "AkAudio",
+				"value": null
+			}
+		},
+		"FGRailroadTrackConnectionComponent--quoted": {
+			"type": "string",
+			"DocsDotJson_PrefixedString": {
+				"prefix": "FGRailroadTrackConnectionComponent",
+				"mode": "version_specific_default",
+				"system_prefix": "FactoryGame",
+				"value": null
+			}
+		}
+	}
+}
