@@ -35,13 +35,13 @@
 					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGAmmoType--version-specific"
 				},
 				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGAmmoType--version-specific"
+				},
+				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGAmmoTypeInstantHit--Desc_CartridgeChaos_C--version-specific"
 				},
 				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGAmmoTypeInstantHit--version-specific"
-				},
-				{
-					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGAmmoType--version-specific"
 				}
 			]
 		},
@@ -54,6 +54,9 @@
 					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGAmmoType--base"
 				},
 				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGAmmoType--version-specific"
+				},
+				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGAmmoType--version-specific"
 				},
 				{
@@ -61,9 +64,6 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGAmmoTypeInstantHit--version-specific"
-				},
-				{
-					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGAmmoType--version-specific"
 				}
 			]
 		},
@@ -79,10 +79,10 @@
 					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGAmmoTypeProjectile--version-specific"
 				},
 				{
-					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGAmmoTypeProjectile--version-specific"
+					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGAmmoType--version-specific"
 				},
 				{
-					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGAmmoType--version-specific"
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGAmmoTypeProjectile--version-specific"
 				},
 				{
 					"$ref": "#/$defs/FGAmmoTypeProjectile--version-specific"
@@ -115,10 +115,10 @@
 					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGAmmoType--base"
 				},
 				{
-					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGAmmoTypeSpreadshot--version-specific"
+					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGAmmoType--version-specific"
 				},
 				{
-					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGAmmoType--version-specific"
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGAmmoTypeSpreadshot--version-specific"
 				}
 			]
 		},
@@ -1341,6 +1341,9 @@
 		"FGBuildableRailroadTrack": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGBuildableRailroadTrack--version-specific"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableRailroadTrack--base"
 				},
 				{
@@ -1351,9 +1354,6 @@
 				},
 				{
 					"$ref": "#/$defs/FGBuildableRailroadTrack--pre-1.0"
-				},
-				{
-					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGBuildableRailroadTrack--version-specific"
 				}
 			]
 		},
@@ -1859,13 +1859,13 @@
 		"FGConsumableEquipment": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGConsumableEquipment--version-specific"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGConsumableEquipment--version-specific"
 				},
 				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGConsumableEquipment--version-specific"
-				},
-				{
-					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGConsumableEquipment--version-specific"
 				},
 				{
 					"$ref": "#/$defs/FGEquipment"
@@ -1881,6 +1881,9 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGEquipment--version-specific"
 				},
 				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGEquipment--version-specific"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/hasClassName"
 				},
 				{
@@ -1891,9 +1894,6 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGEquipment--version-specific"
-				},
-				{
-					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGEquipment--version-specific"
 				}
 			]
 		},
@@ -2303,10 +2303,19 @@
 					"$ref": "docs.json.ts--0.5.2.1--classes--base.overridable#/$defs/FGSchematic--version-specific"
 				},
 				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGSchematic--has--mSchematicIcon"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGSchematic--pre-1.0"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGSchematic--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGSchematic--pre-1.0"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGSchematic--version-specific"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/instructive"
@@ -2319,15 +2328,6 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGSchematic--version-specific"
-				},
-				{
-					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGSchematic--has--mSchematicIcon"
-				},
-				{
-					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGSchematic--pre-1.0"
-				},
-				{
-					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGSchematic--version-specific"
 				}
 			]
 		},
