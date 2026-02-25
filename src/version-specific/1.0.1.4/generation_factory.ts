@@ -124,6 +124,16 @@ import type {
 async function generation_factory(
 	release_data: unknown,
 	lang: SupportedLang,
+	{
+		types: process_types,
+		data: process_data,
+	}: {
+		types: boolean,
+		data: boolean,
+	} = {
+		types: true,
+		data: true,
+	},
 ): Promise<void> {
 	console.log(`Generating Version 1.0 ${lang}`);
 
@@ -156,11 +166,15 @@ async function generation_factory(
 		release_1_0,
 		release_data,
 		parser,
+		lang,
 	);
 
 	const results: processed_results = [];
 
-	for (const schema of [
+	const schema_set: SchemaObjectWith$id[] = [];
+
+	if (process_types) {
+		schema_set.push(
 		update3_overridable,
 		update3_classes__base__overridable,
 		update4_overridable,
@@ -177,12 +191,20 @@ async function generation_factory(
 		release_1_0_properties,
 		release_1_0_classes__base,
 		release_1_0_classes,
+		);
+	}
+
+	if (process_data) {
+		schema_set.push(
 		release_1_0,
-	]) {
+		);
+	}
+
+	for (const schema of schema_set) {
 		console.log(`getting results for ${schema.$id}`);
 
 		for await (const schema_results of get_results(
-			schema as SchemaObjectWith$id,
+			schema,
 			adjuster,
 			parser,
 			get_results_from_data_schema,

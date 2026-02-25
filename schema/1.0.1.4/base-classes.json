@@ -1713,7 +1713,7 @@
 				},
 				"mPortalName": {
 					"type": "string",
-					"const": "Portal"
+					"minLength": 1
 				}
 			}
 		},
@@ -1755,7 +1755,7 @@
 				},
 				"mPortalName": {
 					"type": "string",
-					"const": "Satellite Portal"
+					"minLength": 1
 				}
 			}
 		},
@@ -2319,19 +2319,19 @@
 			"properties": {
 				"mWorkBenchOccupied": {
 					"type": "string",
-					"const": "Crafting Bench occupied"
+					"minLength": 1
 				},
 				"mWorkBenchFree": {
 					"type": "string",
-					"const": "Use Crafting Bench"
+					"minLength": 1
 				},
 				"mMamFreeText": {
 					"type": "string",
-					"const": "Use the MAM"
+					"minLength": 1
 				},
 				"mMamOccupiedText": {
 					"type": "string",
-					"const": "The MAM is occupied"
+					"minLength": 1
 				},
 				"Meshes": {
 					"type": "string",
@@ -3528,8 +3528,200 @@
 			"required": ["mEquipmentLookAtDescOverride"],
 			"properties": {
 				"mEquipmentLookAtDescOverride": {
-					"type": "string",
-					"const": "Press [{PlayerActions_PrimaryFire}] to place Miner on {Ore} node {Purity}"
+					"oneOf": [
+						{
+							"type": "string",
+							"templated_string": [
+								{
+									"type": "string",
+									"minLength": 1
+								},
+								"[{PlayerActions_PrimaryFire}]",
+								{
+									"type": "string",
+									"minLength": 1
+								},
+								"{Ore}",
+								{
+									"type": "string",
+									"minLength": 1
+								},
+								"{Purity}"
+							]
+						},
+						{
+							"type": "string",
+							"templated_string": [
+								{
+									"type": "string",
+									"minLength": 1
+								},
+								"[{PlayerActions_PrimaryFire}]",
+								{
+									"type": "string",
+									"minLength": 1
+								},
+								"{Ore}",
+								{
+									"type": "string",
+									"minLength": 1
+								},
+								"{Purity}",
+								{
+									"type": "string",
+									"minLength": 1
+								}
+							]
+						},
+						{
+							"type": "string",
+							"templated_string": [
+								{
+									"type": "string",
+									"minLength": 1
+								},
+								"[{PlayerActions_PrimaryFire}]",
+								{
+									"type": "string",
+									"minLength": 1
+								},
+								"{Purity}",
+								{
+									"type": "string",
+									"minLength": 1
+								},
+								"{Ore}"
+							]
+						},
+						{
+							"type": "string",
+							"templated_string": [
+								{
+									"type": "string",
+									"minLength": 1
+								},
+								"[{PlayerActions_PrimaryFire}]",
+								{
+									"type": "string",
+									"minLength": 1
+								},
+								"{Purity}",
+								{
+									"type": "string",
+									"minLength": 1
+								},
+								"{Ore}",
+								{
+									"type": "string",
+									"minLength": 1
+								}
+							]
+						},
+						{
+							"type": "string",
+							"templated_string": [
+								{
+									"type": "string",
+									"minLength": 1
+								},
+								"{Ore}",
+								{
+									"type": "string",
+									"minLength": 1
+								},
+								"{Purity}",
+								{
+									"type": "string",
+									"minLength": 1
+								},
+								"[{PlayerActions_PrimaryFire}]",
+								{
+									"type": "string",
+									"minLength": 1
+								}
+							]
+						},
+						{
+							"type": "string",
+							"templated_string": [
+								"[{PlayerActions_PrimaryFire}]",
+								{
+									"type": "string",
+									"minLength": 1
+								},
+								"{Ore}",
+								{
+									"type": "string",
+									"minLength": 1
+								},
+								"{Purity}",
+								{
+									"type": "string",
+									"minLength": 1
+								}
+							]
+						},
+						{
+							"type": "string",
+							"templated_string": [
+								{
+									"type": "string",
+									"minLength": 1
+								},
+								"{Ore}",
+								"{Purity}",
+								{
+									"type": "string",
+									"minLength": 1
+								},
+								"{PlayerActions_PrimaryFire}",
+								{
+									"type": "string",
+									"minLength": 1
+								}
+							]
+						},
+						{
+							"type": "string",
+							"templated_string": [
+								"{Ore}",
+								{
+									"type": "string",
+									"minLength": 1
+								},
+								"{Purity}",
+								{
+									"type": "string",
+									"minLength": 1
+								},
+								"[{PlayerActions_PrimaryFire}]",
+								{
+									"type": "string",
+									"minLength": 1
+								}
+							]
+						},
+						{
+							"type": "string",
+							"templated_string": [
+								{
+									"type": "string",
+									"minLength": 1
+								},
+								"{PlayerActions_PrimaryFire}",
+								{
+									"type": "string",
+									"minLength": 1
+								},
+								"{Ore}",
+								"{Purity}",
+								{
+									"type": "string",
+									"minLength": 1
+								}
+							]
+						}
+					]
 				}
 			}
 		},

@@ -881,8 +881,8 @@ type FGBuildableTradingPost_pre_update8 = FGBuildable_powered_version_specific &
 type FGBuildableTradingPost_version_specific = {
 	mShipUpgradeLevel: docs_json_ts_common_types_integer_string,
 	mStorageText: Exclude<string, ''>,
-	mMamFreeText: `Use ${Exclude<string, ''>}`,
-	mMamOccupiedText: `${Exclude<string, ''>}${' is occupied'}`,
+	mMamFreeText: Exclude<string, ''>,
+	mMamOccupiedText: Exclude<string, ''>,
 	mGenerators: '',
 	mStorageInventorySize: docs_json_ts_common_types_integer_string,
 	mStorageVisibilityLevel: docs_json_ts_common_types_integer_string,

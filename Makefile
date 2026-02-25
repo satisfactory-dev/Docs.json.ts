@@ -18,7 +18,7 @@ lint--eslint:
 	@echo 'checking eslint for all issues with config'
 	@./node_modules/.bin/eslint --config eslint.config.js.mjs --cache './**/*.mjs'
 	@echo 'checking eslint for all issues'
-	@./node_modules/.bin/eslint --cache './**/*.ts'
+	@./node_modules/.bin/eslint --cache './**/*.ts' --ignore-pattern './generated-types/*/data.ts' --ignore-pattern './generated-types/*/*.data.ts'
 
 lint: lint--prettier lint--tsc lint--eslint
 
@@ -69,8 +69,61 @@ prepare--update8: prepare--update7
 
 prepare--version1_0: prepare--update8
 	@echo 'prepare 1.0.1.4'
+	@node ./prepare-1.0.1.4.ts af
+	@node ./prepare-1.0.1.4.ts ar
+	@node ./prepare-1.0.1.4.ts bg
+	@node ./prepare-1.0.1.4.ts ca
+	@node ./prepare-1.0.1.4.ts cs
+	@node ./prepare-1.0.1.4.ts da
+	@node ./prepare-1.0.1.4.ts de
+	@node ./prepare-1.0.1.4.ts el
+	@node ./prepare-1.0.1.4.ts en-AE
+	@node ./prepare-1.0.1.4.ts en-AU
+	@node ./prepare-1.0.1.4.ts en-CA
+	@node ./prepare-1.0.1.4.ts en-GB
 	@node ./prepare-1.0.1.4.ts en-US
+	@node ./prepare-1.0.1.4.ts eo
+	@node ./prepare-1.0.1.4.ts es-419
+	@node ./prepare-1.0.1.4.ts es-ES
+	@node ./prepare-1.0.1.4.ts et
+	@node ./prepare-1.0.1.4.ts fa
+	@node ./prepare-1.0.1.4.ts fi
+	@node ./prepare-1.0.1.4.ts fr
+	@node ./prepare-1.0.1.4.ts he
+	@node ./prepare-1.0.1.4.ts hi
+	@node ./prepare-1.0.1.4.ts hr
+	@node ./prepare-1.0.1.4.ts hu
+	@node ./prepare-1.0.1.4.ts ia-001
+	@node ./prepare-1.0.1.4.ts id
+	@node ./prepare-1.0.1.4.ts ie
+#	@node ./prepare-1.0.1.4.ts io
+	@node ./prepare-1.0.1.4.ts it
+	@node ./prepare-1.0.1.4.ts ja
+	@node ./prepare-1.0.1.4.ts ko
+	@node ./prepare-1.0.1.4.ts kw
+	@node ./prepare-1.0.1.4.ts lb
+	@node ./prepare-1.0.1.4.ts lt
+	@node ./prepare-1.0.1.4.ts lv
+	@node ./prepare-1.0.1.4.ts mt
+	@node ./prepare-1.0.1.4.ts nl
+	@node ./prepare-1.0.1.4.ts no
+	@node ./prepare-1.0.1.4.ts pl
+	@node ./prepare-1.0.1.4.ts pt-BR
+	@node ./prepare-1.0.1.4.ts pt-PT
+	@node ./prepare-1.0.1.4.ts ro
+	@node ./prepare-1.0.1.4.ts ru
+	@node ./prepare-1.0.1.4.ts sk
+	@node ./prepare-1.0.1.4.ts sr-Cyrl
+	@node ./prepare-1.0.1.4.ts sr-Latn
 	@node ./prepare-1.0.1.4.ts sv
+	@node ./prepare-1.0.1.4.ts th
+	@node ./prepare-1.0.1.4.ts tr
+	@node ./prepare-1.0.1.4.ts uk
+	@node ./prepare-1.0.1.4.ts vi
+	@node ./prepare-1.0.1.4.ts vo
+	@node ./prepare-1.0.1.4.ts vun
+	@node ./prepare-1.0.1.4.ts zh-Hans
+	@node ./prepare-1.0.1.4.ts zh-Hant
 
 generate--clean:
 	@echo 'cleaning ./generated-types/'
@@ -78,7 +131,7 @@ generate--clean:
 
 generate--wrap-up:
 	@echo 'fixing generated types'
-	@./node_modules/.bin/eslint --fix ./generated-types/
+	@./node_modules/.bin/eslint --fix ./generated-types/ --ignore-pattern './generated-types/*/data.ts' --ignore-pattern './generated-types/*/*.data.ts'
 
 generate--early-access: generate--update3 generate--update4 generate--update5 generate--update6 generate--update7 generate--update8
 
@@ -112,5 +165,59 @@ generate--update8: prepare--update8
 
 generate--version1_0: prepare--version1_0
 	@echo 'running generator'
-	@node ./generate-version1.0.ts en-US
-	@node ./generate-version1.0.ts sv
+	@node ./generate-version1.0.ts en-US --skip-data
+	@node ./generate-version1.0.ts af --skip-types --skip-types
+	@node ./generate-version1.0.ts ar --skip-types
+	@node ./generate-version1.0.ts bg --skip-types
+	@node ./generate-version1.0.ts ca --skip-types
+	@node ./generate-version1.0.ts cs --skip-types
+	@node ./generate-version1.0.ts da --skip-types
+	@node ./generate-version1.0.ts de --skip-types
+	@node ./generate-version1.0.ts el --skip-types
+	@node ./generate-version1.0.ts en-AE --skip-types
+	@node ./generate-version1.0.ts en-AU --skip-types
+	@node ./generate-version1.0.ts en-CA --skip-types
+	@node ./generate-version1.0.ts en-GB --skip-types
+	@node ./generate-version1.0.ts en-US --skip-types
+	@node ./generate-version1.0.ts eo --skip-types
+	@node ./generate-version1.0.ts es-419 --skip-types
+	@node ./generate-version1.0.ts es-ES --skip-types
+	@node ./generate-version1.0.ts et --skip-types
+	@node ./generate-version1.0.ts fa --skip-types
+	@node ./generate-version1.0.ts fi --skip-types
+	@node ./generate-version1.0.ts fr --skip-types
+	@node ./generate-version1.0.ts he --skip-types
+	@node ./generate-version1.0.ts hi --skip-types
+	@node ./generate-version1.0.ts hr --skip-types
+	@node ./generate-version1.0.ts hu --skip-types
+	@node ./generate-version1.0.ts ia-001 --skip-types
+	@node ./generate-version1.0.ts id --skip-types
+	@node ./generate-version1.0.ts ie --skip-types
+#	@node ./generate-version1.0.ts io --skip-types
+	@node ./generate-version1.0.ts it --skip-types
+	@node ./generate-version1.0.ts ja --skip-types
+	@node ./generate-version1.0.ts ko --skip-types
+	@node ./generate-version1.0.ts kw --skip-types
+	@node ./generate-version1.0.ts lb --skip-types
+	@node ./generate-version1.0.ts lt --skip-types
+	@node ./generate-version1.0.ts lv --skip-types
+	@node ./generate-version1.0.ts mt --skip-types
+	@node ./generate-version1.0.ts nl --skip-types
+	@node ./generate-version1.0.ts no --skip-types
+	@node ./generate-version1.0.ts pl --skip-types
+	@node ./generate-version1.0.ts pt-BR --skip-types
+	@node ./generate-version1.0.ts pt-PT --skip-types
+	@node ./generate-version1.0.ts ro --skip-types
+	@node ./generate-version1.0.ts ru --skip-types
+	@node ./generate-version1.0.ts sk --skip-types
+	@node ./generate-version1.0.ts sr-Cyrl --skip-types
+	@node ./generate-version1.0.ts sr-Latn --skip-types
+	@node ./generate-version1.0.ts sv --skip-types
+	@node ./generate-version1.0.ts th --skip-types
+	@node ./generate-version1.0.ts tr --skip-types
+	@node ./generate-version1.0.ts uk --skip-types
+	@node ./generate-version1.0.ts vi --skip-types
+	@node ./generate-version1.0.ts vo --skip-types
+	@node ./generate-version1.0.ts vun --skip-types
+	@node ./generate-version1.0.ts zh-Hans --skip-types
+	@node ./generate-version1.0.ts zh-Hant --skip-types

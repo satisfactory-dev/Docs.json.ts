@@ -632,7 +632,7 @@ type FGBuildablePortal_version_specific = {
 	mCurrentProductionCycleTime: docs_json_ts_common_types_decimal_string,
 	mTrippedProductionStop: docs_json_ts_common_types_bool_string,
 	mCachedHasEnoughFuelForProduce: docs_json_ts_common_types_bool_string,
-	mPortalName: 'Portal',
+	mPortalName: Exclude<string, ''>,
 };
 
 type FGBuildablePortalSatellite = FGBuildable_base & FGBuildable_powered & FGBuildablePortal_common & FGBuildablePortalSatellite_version_specific;
@@ -641,7 +641,7 @@ type FGBuildablePortalSatellite_version_specific = {
 	['Lightning End Socket']: null,
 	['Lightning Start Socket']: null,
 	mWasHeatingUpLastTick: docs_json_ts_common_types_bool_string,
-	mPortalName: 'Satellite Portal',
+	mPortalName: Exclude<string, ''>,
 };
 
 type FGBuildablePowerBooster = docs_json_ts_0_4_2_11_classes_base_has_mPowerConsumption & FGBuildable_powered & FGBuildablePowerBooster_version_specific;
@@ -743,10 +743,10 @@ type FGBuildableStorage = docs_json_ts_0_3_7_7_classes_base_FGBuildableStorage_b
 type FGBuildableTradingPost = docs_json_ts_0_3_7_7_classes_base_FGBuildableTradingPost_version_specific & docs_json_ts_0_4_2_11_classes_base_FGBuildableTradingPost_base_version_specific & docs_json_ts_0_5_2_1_classes_base_FGBuildableTradingPost_base & FGBuildable_powered & FGBuildableTradingPost_version_specific;
 
 type FGBuildableTradingPost_version_specific = {
-	mWorkBenchOccupied: 'Crafting Bench occupied',
-	mWorkBenchFree: 'Use Crafting Bench',
-	mMamFreeText: 'Use the MAM',
-	mMamOccupiedText: 'The MAM is occupied',
+	mWorkBenchOccupied: Exclude<string, ''>,
+	mWorkBenchFree: Exclude<string, ''>,
+	mMamFreeText: Exclude<string, ''>,
+	mMamOccupiedText: Exclude<string, ''>,
 	Meshes: [
 		'/Script/Engine.StaticMesh\'/Game/Geometry/Meshes/1M_Cube_Chamfer.1M_Cube_Chamfer\'',
 		'/Script/Engine.StaticMesh\'/Game/Geometry/Meshes/1M_Cube_Chamfer.1M_Cube_Chamfer\'',
@@ -989,7 +989,7 @@ type FGPoleDescriptor = docs_json_ts_0_6_1_5_classes_base_overridable_FGItemDesc
 type FGPortableMinerDispenser = docs_json_ts_0_3_7_7_classes_base_FGPortableMinerDispenser_version_specific & docs_json_ts_0_4_2_11_classes_base_FGPortableMinerDispenser_version_specific & FGEquipment & FGPortableMinerDispenser_version_specific;
 
 type FGPortableMinerDispenser_version_specific = {
-	mEquipmentLookAtDescOverride: 'Press [{PlayerActions_PrimaryFire}] to place Miner on {Ore} node {Purity}',
+	mEquipmentLookAtDescOverride: `${Exclude<string, ''>}${'[{PlayerActions_PrimaryFire}]'}${Exclude<string, ''>}${'{Ore}'}${Exclude<string, ''>}${'{Purity}'}` | `${Exclude<string, ''>}${'[{PlayerActions_PrimaryFire}]'}${Exclude<string, ''>}${'{Ore}'}${Exclude<string, ''>}${'{Purity}'}${Exclude<string, ''>}` | `${Exclude<string, ''>}${'[{PlayerActions_PrimaryFire}]'}${Exclude<string, ''>}${'{Purity}'}${Exclude<string, ''>}${'{Ore}'}` | `${Exclude<string, ''>}${'[{PlayerActions_PrimaryFire}]'}${Exclude<string, ''>}${'{Purity}'}${Exclude<string, ''>}${'{Ore}'}${Exclude<string, ''>}` | `${Exclude<string, ''>}${'{Ore}'}${Exclude<string, ''>}${'{Purity}'}${Exclude<string, ''>}${'[{PlayerActions_PrimaryFire}]'}${Exclude<string, ''>}` | `[{PlayerActions_PrimaryFire}]${Exclude<string, ''>}${'{Ore}'}${Exclude<string, ''>}${'{Purity}'}${Exclude<string, ''>}` | `${Exclude<string, ''>}${'{Ore}'}${'{Purity}'}${Exclude<string, ''>}${'{PlayerActions_PrimaryFire}'}${Exclude<string, ''>}` | `{Ore}${Exclude<string, ''>}${'{Purity}'}${Exclude<string, ''>}${'[{PlayerActions_PrimaryFire}]'}${Exclude<string, ''>}` | `${Exclude<string, ''>}${'{PlayerActions_PrimaryFire}'}${Exclude<string, ''>}${'{Ore}'}${'{Purity}'}${Exclude<string, ''>}`,
 };
 
 type FGPowerShardDescriptor = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_sinkable_base & FGItemDescriptor_base & FGItemDescriptor_version_specific & FGPowerShardDescriptor_version_specific;
