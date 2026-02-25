@@ -3720,6 +3720,26 @@
 									"minLength": 1
 								}
 							]
+						},
+						{
+							"type": "string",
+							"templated_string": [
+								{
+									"type": "string",
+									"minLength": 1
+								},
+								"<{PlayerActions_PrimaryFire}>",
+								{
+									"type": "string",
+									"minLength": 1
+								},
+								"<{Ore}>",
+								{
+									"type": "string",
+									"minLength": 1
+								},
+								"<{Purity}>"
+							]
 						}
 					]
 				}

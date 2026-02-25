@@ -96,7 +96,7 @@ prepare--version1_0: prepare--update8
 	@node ./prepare-1.0.1.4.ts ia-001
 	@node ./prepare-1.0.1.4.ts id
 	@node ./prepare-1.0.1.4.ts ie
-#	@node ./prepare-1.0.1.4.ts io
+	@node ./prepare-1.0.1.4.ts io
 	@node ./prepare-1.0.1.4.ts it
 	@node ./prepare-1.0.1.4.ts ja
 	@node ./prepare-1.0.1.4.ts ko
@@ -193,7 +193,7 @@ generate--version1_0: prepare--version1_0
 	@node ./generate-version1.0.ts ia-001 --skip-types
 	@node ./generate-version1.0.ts id --skip-types
 	@node ./generate-version1.0.ts ie --skip-types
-#	@node ./generate-version1.0.ts io --skip-types
+	@node ./generate-version1.0.ts io --skip-types
 	@node ./generate-version1.0.ts it --skip-types
 	@node ./generate-version1.0.ts ja --skip-types
 	@node ./generate-version1.0.ts ko --skip-types

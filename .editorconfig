@@ -14,6 +14,9 @@ insert_final_newline = true
 [data/**/*.json]
 charset = utf-16le
 
+[data/1.0.1.4/Docs/io.json]
+charset = utf-8
+
 [data/**/*.utf8.json]
 charset = utf-8
 
