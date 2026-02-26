@@ -2681,6 +2681,9 @@
 					"$ref": "#/$defs/FGWeapon--pre-update6"
 				},
 				{
+					"$ref": "#/$defs/FGWeapon--pre-1.1"
+				},
+				{
 					"$ref": "#/$defs/FGWeapon--version-specific"
 				}
 			]
@@ -2877,6 +2880,9 @@
 					"$ref": "#/$defs/FGWeapon--pre-update6"
 				},
 				{
+					"$ref": "#/$defs/FGWeapon--pre-1.1"
+				},
+				{
 					"$ref": "#/$defs/FGWeapon--version-specific"
 				}
 			]
@@ -2903,6 +2909,9 @@
 				},
 				{
 					"$ref": "#/$defs/FGWeapon--pre-update6"
+				},
+				{
+					"$ref": "#/$defs/FGWeapon--pre-1.1"
 				},
 				{
 					"$ref": "#/$defs/FGWeapon--version-specific"
@@ -2975,10 +2984,18 @@
 				}
 			}
 		},
+		"FGWeapon--pre-1.1": {
+			"type": "object",
+			"required": ["mShowCycleAmmoRadialMenuTimer"],
+			"properties": {
+				"mShowCycleAmmoRadialMenuTimer": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				}
+			}
+		},
 		"FGWeapon--version-specific": {
 			"type": "object",
 			"required": [
-				"mShowCycleAmmoRadialMenuTimer",
 				"mWeaponState",
 				"mAutomaticallyReload",
 				"mAutoReloadDelay",
@@ -2993,9 +3010,6 @@
 				"mOnWeaponStateChanged"
 			],
 			"properties": {
-				"mShowCycleAmmoRadialMenuTimer": {
-					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-				},
 				"mWeaponState": {
 					"type": "string",
 					"const": "EWS_Unequipped"

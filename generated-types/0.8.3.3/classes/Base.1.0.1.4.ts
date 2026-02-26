@@ -1,6 +1,14 @@
 /* eslint-disable @stylistic/max-len */
 
 import type {
+	DocsDotJson_AkAudioEvent_quoted_list as docs_json_ts_0_8_3_3_properties_overridable_DocsDotJson_AkAudioEvent_quoted_list,
+	FGRailroadTrackConnectionComponent_quoted as docs_json_ts_0_8_3_3_properties_overridable_FGRailroadTrackConnectionComponent_quoted,
+	mAnimData_item as docs_json_ts_0_8_3_3_properties_overridable_mAnimData_item,
+	mComponentNameToFirstPersonMaterials_item as docs_json_ts_0_8_3_3_properties_overridable_mComponentNameToFirstPersonMaterials_item,
+	mUnlocks_item as docs_json_ts_0_8_3_3_properties_overridable_mUnlocks_item,
+} from './../types/properties.1.0.1.4.ts';
+
+import type {
 	bool_string as docs_json_ts_common_types_bool_string,
 	decimal_string_signed as docs_json_ts_common_types_decimal_string_signed,
 	empty_object as docs_json_ts_common_types_empty_object,
@@ -12,14 +20,6 @@ import type {
 import type {
 	mDamageTypes as docs_json_ts_0_8_3_3_properties_mDamageTypes,
 } from './../types/properties.ts';
-
-import type {
-	DocsDotJson_AkAudioEvent_quoted_list as docs_json_ts_0_8_3_3_properties_overridable_DocsDotJson_AkAudioEvent_quoted_list,
-	FGRailroadTrackConnectionComponent_quoted as docs_json_ts_0_8_3_3_properties_overridable_FGRailroadTrackConnectionComponent_quoted,
-	mAnimData_item as docs_json_ts_0_8_3_3_properties_overridable_mAnimData_item,
-	mComponentNameToFirstPersonMaterials_item as docs_json_ts_0_8_3_3_properties_overridable_mComponentNameToFirstPersonMaterials_item,
-	mUnlocks_item as docs_json_ts_0_8_3_3_properties_overridable_mUnlocks_item,
-} from './../types/properties.1.0.1.4.ts';
 
 import type {
 	ItemClass_Amount_list as docs_json_ts_0_3_7_7_overridable_ItemClass_Amount_list,
@@ -38,13 +38,16 @@ import type {
 	ItemClass_list as docs_json_ts_0_6_1_5_overridable_ItemClass_list,
 } from './../../0.6.1.5/types/overridable--1.0.1.4.ts';
 
+type FGAmmoType_pre_1_1 = {
+	mFiringSounds: null | docs_json_ts_0_8_3_3_properties_overridable_DocsDotJson_AkAudioEvent_quoted_list,
+	mFiringSounds1P: '',
+};
+
 type FGAmmoType_version_specific = {
 	mAmmoTickFunction: {
 		bAllowTickOnDedicatedServer: docs_json_ts_common_types_bool_string,
 	},
 	mDamageTypesOnImpact: null | docs_json_ts_0_8_3_3_properties_mDamageTypes,
-	mFiringSounds: null | docs_json_ts_0_8_3_3_properties_overridable_DocsDotJson_AkAudioEvent_quoted_list,
-	mFiringSounds1P: '',
 	mMagazineMeshMaterials1p: [
 		docs_json_ts_0_3_7_7_overridable_MaterialInstanceConstant_quoted,
 		...docs_json_ts_0_3_7_7_overridable_MaterialInstanceConstant_quoted[],
@@ -109,6 +112,7 @@ type FGSchematic_version_specific = {
 };
 
 export type {
+	FGAmmoType_pre_1_1,
 	FGAmmoType_version_specific,
 	FGBuildableRailroadTrack_version_specific,
 	FGConsumableEquipment_version_specific,

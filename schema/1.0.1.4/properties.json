@@ -433,6 +433,113 @@
 		"Montages--item": {
 			"oneOf": [
 				{
+					"$ref": "#/$defs/Montages--item--Montage_1P-Montage_Equipment"
+				},
+				{
+					"$ref": "#/$defs/Montages--item--Montage_1P-Montage_Equipment-AudioEvent"
+				},
+				{
+					"$ref": "#/$defs/Montages--item--Montage_1P-Montage_3P-Montage_Equipment-AudioEvent"
+				},
+				{
+					"$ref": "#/$defs/Montages--item--AudioEvent"
+				},
+				{
+					"$ref": "#/$defs/Montages--item--Weight-Montage_1P-Montage_3P-Montage_Equipment-CameraAnim"
+				},
+				{
+					"$ref": "#/$defs/Montages--item--Montage_1P-Montage_3P-Montage_Equipment-CameraAnim"
+				},
+				{
+					"$ref": "#/$defs/Montages--item--Montage_1P-Montage_3P-Montage_Equipment-AudioEvent-bSeparate3PAudioEvent-AudioEvent3P"
+				},
+				{
+					"$ref": "#/$defs/Montages--item--Montage_1P-Montage_3P-CameraAnim"
+				},
+				{
+					"$ref": "#/$defs/Montages--item--Montage_1P"
+				},
+				{
+					"$ref": "#/$defs/Montages--item--Montage_1P-Montage_3P"
+				},
+				{
+					"$ref": "#/$defs/Montages--item--Montage_1P-Montage_3P-AudioEvent-CameraAnim"
+				},
+				{
+					"$ref": "#/$defs/Montages--item--Montage_1P-AudioEvent"
+				},
+				{
+					"$ref": "#/$defs/Montages--item--Filter-FilterMontageTag_HasAmmunition-Exclusive-Montage_1P-Montage_3P-Montage_Equipment"
+				},
+				{
+					"$ref": "#/$defs/Montages--item--Filter-FilterMontageTag_HasAmmunition-InvertFilter-Exclusive-Montage_1P-Montage_3P-Montage_Equipment"
+				},
+				{
+					"$ref": "#/$defs/Montages--item--Filter-FilterMontageTag_LowCharged-Exclusive-Montage_1P-Montage_3P-Montage_Equipment-AudioEvent-bSeparate3PAudioEvent-AudioEvent3P"
+				},
+				{
+					"$ref": "#/$defs/Montages--item--Filter-FilterMontageTag_MediumCharged-Exclusive-Montage_1P-Montage_3P-Montage_Equipment-AudioEvent-bSeparate3PAudioEvent-AudioEvent3P"
+				},
+				{
+					"$ref": "#/$defs/Montages--item--Filter-FilterMontageTag_FullyCharged-Exclusive-Montage_1P-Montage_3P-Montage_Equipment-AudioEvent-bSeparate3PAudioEvent-AudioEvent3P-CameraAnim"
+				},
+				{
+					"$ref": "#/$defs/Montages--item--Montage_1P-Montage_3P-Montage_Equipment-AudioEvent-bSeparate3PAudioEvent-AudioEvent3P-CameraAnim"
+				},
+				{
+					"$ref": "#/$defs/Montages--item--Weight-Montage_1P-Montage_3P-Montage_Equipment-AudioEvent-bSeparate3PAudioEvent-AudioEvent3P-CameraAnim"
+				},
+				{
+					"$ref": "#/$defs/Montages--item--Filter-Exclusive-Montage_1P-Montage_3P-Montage_Equipment-AudioEvent"
+				},
+				{
+					"$ref": "#/$defs/Montages--item--Weight-Montage_1P-Montage_3P-Montage_Equipment-AudioEvent"
+				},
+				{
+					"$ref": "#/$defs/Montages--item--Weight-Montage_1P-Montage_3P-Montage_Equipment-AudioEvent-CameraAnim"
+				},
+				{
+					"$ref": "#/$defs/Montages--item--Montage_1P-Montage_3P-Montage_Equipment-AudioEvent-CameraAnim"
+				},
+				{
+					"$ref": "#/$defs/Montages--item--Montage_1P-Montage_3P-AudioEvent"
+				},
+				{
+					"$ref": "#/$defs/Montages--item--Filter-FilterMontageTag_EquipmentInHand_None-Exclusive-AudioEvent"
+				},
+				{
+					"$ref": "#/$defs/Montages--item--Montage_1P-Montage_3P-Montage_Equipment"
+				},
+				{
+					"$ref": "#/$defs/Montages--item--AudioEvent-bSeparate3PAudioEvent-AudioEvent3P"
+				},
+				{
+					"$ref": "#/$defs/Montages--item--Montage_1P-Montage_Equipment-AudioEvent-CameraAnim"
+				},
+				{
+					"$ref": "#/$defs/Montages--item--Montage_1P-Montage_Equipment-AudioEvent-bSeparate3PAudioEvent-AudioEvent3P-CameraAnim"
+				},
+				{
+					"$ref": "#/$defs/Montages--item--Montage_1P-Montage_3P-AudioEvent-bSeparate3PAudioEvent-CameraAnim"
+				},
+				{
+					"$ref": "#/$defs/Montages--item--Montage_1P-Montage_3P-AudioEvent-bSeparate3PAudioEvent-AudioEvent3P-CameraAnim"
+				},
+				{
+					"$ref": "#/$defs/Montages--item--Filter-FilterMontageTag_EquipmentInHand_None-Exclusive-Montage_1P-Montage_3P-AudioEvent-CameraAnim"
+				},
+				{
+					"$ref": "#/$defs/Montages--item--Filter-FilterMontageTag_EquipmentInHand_TwoHanded-Exclusive-Montage_3P-AudioEvent-CameraAnim"
+				},
+				{
+					"$ref": "#/$defs/Montages--item--Filter-FilterMontageTag_EquipmentInHand_TwoHanded-InvertFilter-Exclusive-Montage_1P-Montage_3P-AudioEvent"
+				},
+				{
+					"$ref": "#/$defs/Montages--item--Montage_3P-AudioEvent"
+				}
+			]
+		},
+		"Montages--item--Montage_1P-Montage_Equipment": {
 					"type": "string",
 					"typed_string": {
 						"type": "object",
@@ -447,8 +554,8 @@
 							}
 						}
 					}
-				},
-				{
+		},
+		"Montages--item--Montage_1P-Montage_Equipment-AudioEvent": {
 					"type": "string",
 					"typed_string": {
 						"type": "object",
@@ -470,8 +577,8 @@
 							}
 						}
 					}
-				},
-				{
+		},
+		"Montages--item--Montage_1P-Montage_3P-Montage_Equipment-AudioEvent": {
 					"type": "string",
 					"typed_string": {
 						"type": "object",
@@ -497,8 +604,8 @@
 							}
 						}
 					}
-				},
-				{
+		},
+		"Montages--item--AudioEvent": {
 					"type": "string",
 					"typed_string": {
 						"type": "object",
@@ -510,8 +617,8 @@
 							}
 						}
 					}
-				},
-				{
+		},
+		"Montages--item--Weight-Montage_1P-Montage_3P-Montage_Equipment-CameraAnim": {
 					"type": "string",
 					"typed_string": {
 						"type": "object",
@@ -541,8 +648,8 @@
 							}
 						}
 					}
-				},
-				{
+		},
+		"Montages--item--Montage_1P-Montage_3P-Montage_Equipment-CameraAnim": {
 					"type": "string",
 					"typed_string": {
 						"type": "object",
@@ -568,8 +675,8 @@
 							}
 						}
 					}
-				},
-				{
+		},
+		"Montages--item--Montage_1P-Montage_3P-Montage_Equipment-AudioEvent-bSeparate3PAudioEvent-AudioEvent3P": {
 					"type": "string",
 					"typed_string": {
 						"type": "object",
@@ -603,8 +710,8 @@
 							}
 						}
 					}
-				},
-				{
+		},
+		"Montages--item--Montage_1P-Montage_3P-CameraAnim": {
 					"type": "string",
 					"typed_string": {
 						"type": "object",
@@ -622,8 +729,8 @@
 							}
 						}
 					}
-				},
-				{
+		},
+		"Montages--item--Montage_1P": {
 					"type": "string",
 					"typed_string": {
 						"type": "object",
@@ -635,8 +742,8 @@
 							}
 						}
 					}
-				},
-				{
+		},
+		"Montages--item--Montage_1P-Montage_3P": {
 					"type": "string",
 					"typed_string": {
 						"type": "object",
@@ -651,8 +758,8 @@
 							}
 						}
 					}
-				},
-				{
+		},
+		"Montages--item--Montage_1P-Montage_3P-AudioEvent-CameraAnim": {
 					"type": "string",
 					"typed_string": {
 						"type": "object",
@@ -678,8 +785,8 @@
 							}
 						}
 					}
-				},
-				{
+		},
+		"Montages--item--Montage_1P-AudioEvent": {
 					"type": "string",
 					"typed_string": {
 						"type": "object",
@@ -694,8 +801,8 @@
 							}
 						}
 					}
-				},
-				{
+		},
+		"Montages--item--Filter-FilterMontageTag_HasAmmunition-Exclusive-Montage_1P-Montage_3P-Montage_Equipment": {
 					"type": "string",
 					"typed_string": {
 						"type": "object",
@@ -730,8 +837,8 @@
 							}
 						}
 					}
-				},
-				{
+		},
+		"Montages--item--Filter-FilterMontageTag_HasAmmunition-InvertFilter-Exclusive-Montage_1P-Montage_3P-Montage_Equipment": {
 					"type": "string",
 					"typed_string": {
 						"type": "object",
@@ -770,8 +877,8 @@
 							}
 						}
 					}
-				},
-				{
+		},
+		"Montages--item--Filter-FilterMontageTag_LowCharged-Exclusive-Montage_1P-Montage_3P-Montage_Equipment-AudioEvent-bSeparate3PAudioEvent-AudioEvent3P": {
 					"type": "string",
 					"typed_string": {
 						"type": "object",
@@ -818,8 +925,8 @@
 							}
 						}
 					}
-				},
-				{
+		},
+		"Montages--item--Filter-FilterMontageTag_MediumCharged-Exclusive-Montage_1P-Montage_3P-Montage_Equipment-AudioEvent-bSeparate3PAudioEvent-AudioEvent3P": {
 					"type": "string",
 					"typed_string": {
 						"type": "object",
@@ -866,8 +973,8 @@
 							}
 						}
 					}
-				},
-				{
+		},
+		"Montages--item--Filter-FilterMontageTag_FullyCharged-Exclusive-Montage_1P-Montage_3P-Montage_Equipment-AudioEvent-bSeparate3PAudioEvent-AudioEvent3P-CameraAnim": {
 					"type": "string",
 					"typed_string": {
 						"type": "object",
@@ -918,8 +1025,8 @@
 							}
 						}
 					}
-				},
-				{
+		},
+		"Montages--item--Montage_1P-Montage_3P-Montage_Equipment-AudioEvent-bSeparate3PAudioEvent-AudioEvent3P-CameraAnim": {
 					"type": "string",
 					"typed_string": {
 						"type": "object",
@@ -957,8 +1064,8 @@
 							}
 						}
 					}
-				},
-				{
+		},
+		"Montages--item--Weight-Montage_1P-Montage_3P-Montage_Equipment-AudioEvent-bSeparate3PAudioEvent-AudioEvent3P-CameraAnim": {
 					"type": "string",
 					"typed_string": {
 						"type": "object",
@@ -1000,8 +1107,8 @@
 							}
 						}
 					}
-				},
-				{
+		},
+		"Montages--item--Filter-Exclusive-Montage_1P-Montage_3P-Montage_Equipment-AudioEvent": {
 					"type": "string",
 					"typed_string": {
 						"type": "object",
@@ -1035,8 +1142,8 @@
 							}
 						}
 					}
-				},
-				{
+		},
+		"Montages--item--Weight-Montage_1P-Montage_3P-Montage_Equipment-AudioEvent": {
 					"type": "string",
 					"typed_string": {
 						"type": "object",
@@ -1066,8 +1173,8 @@
 							}
 						}
 					}
-				},
-				{
+		},
+		"Montages--item--Weight-Montage_1P-Montage_3P-Montage_Equipment-AudioEvent-CameraAnim": {
 					"type": "string",
 					"typed_string": {
 						"type": "object",
@@ -1101,8 +1208,8 @@
 							}
 						}
 					}
-				},
-				{
+		},
+		"Montages--item--Montage_1P-Montage_3P-Montage_Equipment-AudioEvent-CameraAnim": {
 					"type": "string",
 					"typed_string": {
 						"type": "object",
@@ -1132,8 +1239,8 @@
 							}
 						}
 					}
-				},
-				{
+		},
+		"Montages--item--Montage_1P-Montage_3P-AudioEvent": {
 					"type": "string",
 					"typed_string": {
 						"type": "object",
@@ -1151,8 +1258,8 @@
 							}
 						}
 					}
-				},
-				{
+		},
+		"Montages--item--Filter-FilterMontageTag_EquipmentInHand_None-Exclusive-AudioEvent": {
 					"type": "string",
 					"typed_string": {
 						"type": "object",
@@ -1179,8 +1286,8 @@
 							}
 						}
 					}
-				},
-				{
+		},
+		"Montages--item--Montage_1P-Montage_3P-Montage_Equipment": {
 					"type": "string",
 					"typed_string": {
 						"type": "object",
@@ -1202,8 +1309,8 @@
 							}
 						}
 					}
-				},
-				{
+		},
+		"Montages--item--AudioEvent-bSeparate3PAudioEvent-AudioEvent3P": {
 					"type": "string",
 					"typed_string": {
 						"type": "object",
@@ -1225,8 +1332,8 @@
 							}
 						}
 					}
-				},
-				{
+		},
+		"Montages--item--Montage_1P-Montage_Equipment-AudioEvent-CameraAnim": {
 					"type": "string",
 					"typed_string": {
 						"type": "object",
@@ -1252,8 +1359,8 @@
 							}
 						}
 					}
-				},
-				{
+		},
+		"Montages--item--Montage_1P-Montage_Equipment-AudioEvent-bSeparate3PAudioEvent-AudioEvent3P-CameraAnim": {
 					"type": "string",
 					"typed_string": {
 						"type": "object",
@@ -1287,8 +1394,8 @@
 							}
 						}
 					}
-				},
-				{
+		},
+		"Montages--item--Montage_1P-Montage_3P-AudioEvent-bSeparate3PAudioEvent-CameraAnim": {
 					"type": "string",
 					"typed_string": {
 						"type": "object",
@@ -1318,8 +1425,8 @@
 							}
 						}
 					}
-				},
-				{
+		},
+		"Montages--item--Montage_1P-Montage_3P-AudioEvent-bSeparate3PAudioEvent-AudioEvent3P-CameraAnim": {
 					"type": "string",
 					"typed_string": {
 						"type": "object",
@@ -1353,8 +1460,8 @@
 							}
 						}
 					}
-				},
-				{
+		},
+		"Montages--item--Filter-FilterMontageTag_EquipmentInHand_None-Exclusive-Montage_1P-Montage_3P-AudioEvent-CameraAnim": {
 					"type": "string",
 					"typed_string": {
 						"type": "object",
@@ -1393,8 +1500,8 @@
 							}
 						}
 					}
-				},
-				{
+		},
+		"Montages--item--Filter-FilterMontageTag_EquipmentInHand_TwoHanded-Exclusive-Montage_3P-AudioEvent-CameraAnim": {
 					"type": "string",
 					"typed_string": {
 						"type": "object",
@@ -1429,8 +1536,8 @@
 							}
 						}
 					}
-				},
-				{
+		},
+		"Montages--item--Filter-FilterMontageTag_EquipmentInHand_TwoHanded-InvertFilter-Exclusive-Montage_1P-Montage_3P-AudioEvent": {
 					"type": "string",
 					"typed_string": {
 						"type": "object",
@@ -1469,8 +1576,8 @@
 							}
 						}
 					}
-				},
-				{
+		},
+		"Montages--item--Montage_3P-AudioEvent": {
 					"type": "string",
 					"typed_string": {
 						"type": "object",
@@ -1485,9 +1592,7 @@
 							}
 						}
 					}
-				}
-			]
-		},
+				},
 		"Tier": {
 			"type": "string",
 			"enum": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]

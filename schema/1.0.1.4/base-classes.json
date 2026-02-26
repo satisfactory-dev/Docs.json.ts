@@ -27,6 +27,9 @@
 					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGAmmoType--version-specific"
 				},
 				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGAmmoType--pre-1.1"
+				},
+				{
 					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGAmmoType--version-specific"
 				},
 				{
@@ -47,6 +50,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGAmmoType--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGAmmoType--pre-1.1"
 				},
 				{
 					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGAmmoType--version-specific"
@@ -75,6 +81,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGAmmoTypeProjectile--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGAmmoType--pre-1.1"
 				},
 				{
 					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGAmmoType--version-specific"
@@ -137,6 +146,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGAmmoType--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGAmmoType--pre-1.1"
 				},
 				{
 					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGAmmoType--version-specific"
@@ -2805,23 +2817,31 @@
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGEquipment--version-specific"
 				},
 				{
+					"$ref": "#/$defs/FGEquipment--pre-1.1"
+				},
+				{
 					"$ref": "#/$defs/FGEquipment--version-specific"
 				}
 			]
 		},
+		"FGEquipment--pre-1.1": {
+			"type": "object",
+			"required": ["mEquipMontage"],
+			"properties": {
+				"mEquipMontage": {
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages"
+				}
+			}
+		},
 		"FGEquipment--version-specific": {
 			"type": "object",
 			"required": [
-				"mEquipMontage",
 				"mHasStingerMontage",
 				"mMontageBlendOutTime",
 				"mEquipmentLookAtDescOverride",
 				"mAttachSocket"
 			],
 			"properties": {
-				"mEquipMontage": {
-					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages"
-				},
 				"mHasStingerMontage": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				},
@@ -3326,6 +3346,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGNobeliskDetonator--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGWeapon--pre-1.1"
 				},
 				{
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGWeapon--version-specific"
@@ -4186,6 +4209,9 @@
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGWeaponProjectile--has--mBlockSprintWhenFiring"
 				},
 				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGWeapon--pre-1.1"
+				},
+				{
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGWeapon--version-specific"
 				},
 				{
@@ -4193,6 +4219,9 @@
 				},
 				{
 					"$ref": "#/$defs/FGEquipment"
+				},
+				{
+					"$ref": "#/$defs/FGWeapon--pre-1.1"
 				},
 				{
 					"$ref": "#/$defs/FGWeapon--version-specific"
@@ -4220,6 +4249,9 @@
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGWeapon--Equip_Rifle_C--base"
 				},
 				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGWeapon--pre-1.1"
+				},
+				{
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGWeapon--version-specific"
 				},
 				{
@@ -4229,19 +4261,16 @@
 					"$ref": "#/$defs/FGEquipment"
 				},
 				{
+					"$ref": "#/$defs/FGWeapon--pre-1.1"
+				},
+				{
 					"$ref": "#/$defs/FGWeapon--version-specific"
 				}
 			]
 		},
-		"FGWeapon--version-specific": {
+		"FGWeapon--pre-1.1": {
 			"type": "object",
-			"required": [
-				"mFireMontage",
-				"mReloadMontageList",
-				"mAmmoSwapMontageList",
-				"mFailedToFireMontageList",
-				"mSupressDryFireMontage"
-			],
+			"required": ["mFireMontage"],
 			"properties": {
 				"mFireMontage": {
 					"type": "string",
@@ -4273,7 +4302,18 @@
 							}
 						}
 					}
-				},
+				}
+			}
+		},
+		"FGWeapon--version-specific": {
+			"type": "object",
+			"required": [
+				"mReloadMontageList",
+				"mAmmoSwapMontageList",
+				"mFailedToFireMontageList",
+				"mSupressDryFireMontage"
+			],
+			"properties": {
 				"mReloadMontageList": {
 					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages"
 				},

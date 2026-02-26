@@ -35,6 +35,9 @@
 					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGAmmoType--version-specific"
 				},
 				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGAmmoType--pre-1.1"
+				},
+				{
 					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGAmmoType--version-specific"
 				},
 				{
@@ -52,6 +55,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGAmmoType--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGAmmoType--pre-1.1"
 				},
 				{
 					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGAmmoType--version-specific"
@@ -77,6 +83,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGAmmoTypeProjectile--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGAmmoType--pre-1.1"
 				},
 				{
 					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGAmmoType--version-specific"
@@ -113,6 +122,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGAmmoType--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGAmmoType--pre-1.1"
 				},
 				{
 					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGAmmoType--version-specific"
@@ -2142,6 +2154,9 @@
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGNobeliskDetonator--version-specific"
 				},
 				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGWeapon--pre-1.1"
+				},
+				{
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGWeapon--version-specific"
 				},
 				{
@@ -2393,6 +2408,9 @@
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGWeaponProjectileFire--has--mMuteDryFire"
 				},
 				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGWeapon--pre-1.1"
+				},
+				{
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGWeapon--version-specific"
 				},
 				{
@@ -2425,6 +2443,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGWeapon--Equip_Rifle_C--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGWeapon--pre-1.1"
 				},
 				{
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGWeapon--version-specific"

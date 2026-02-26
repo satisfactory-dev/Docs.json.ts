@@ -1949,6 +1949,9 @@
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGNobeliskDetonator--version-specific"
 				},
 				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGWeapon--pre-1.1"
+				},
+				{
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGWeapon--version-specific"
 				},
 				{
@@ -2304,6 +2307,9 @@
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGWeaponProjectileFire--has--mMuteDryFire"
 				},
 				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGWeapon--pre-1.1"
+				},
+				{
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGWeapon--version-specific"
 				},
 				{
@@ -2351,6 +2357,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGWeapon--Equip_Rifle_C--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGWeapon--pre-1.1"
 				},
 				{
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGWeapon--version-specific"

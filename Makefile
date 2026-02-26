@@ -163,9 +163,12 @@ generate--update8: prepare--update8
 	@echo 'running generator'
 	@node ./generate-update8.ts
 
-generate--version1_0: prepare--version1_0
+generate--version1_0--types: prepare--version1_0
 	@echo 'running generator'
 	@node ./generate-version1.0.ts en-US --skip-data
+
+generate--version1_0: generate--version1_0--types
+	@echo 'running generator'
 	@node ./generate-version1.0.ts af --skip-types --skip-types
 	@node ./generate-version1.0.ts ar --skip-types
 	@node ./generate-version1.0.ts bg --skip-types
