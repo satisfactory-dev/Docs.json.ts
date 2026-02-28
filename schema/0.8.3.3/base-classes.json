@@ -57,6 +57,9 @@
 					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGAmmoType--base"
 				},
 				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGAmmoType--version-specific"
+				},
+				{
 					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGAmmoType--pre-1.1"
 				},
 				{
@@ -64,9 +67,6 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGAmmoType--version-specific"
-				},
-				{
-					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGAmmoType--version-specific"
 				},
 				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGAmmoTypeInstantHit--version-specific"

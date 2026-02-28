@@ -777,7 +777,7 @@ type FGItemDescriptor_base_base = FGDescriptor & {
 
 type FGNobeliskDetonator = FGNobeliskDetonator_pre_update6 & FGNobeliskDetonator_version_specific;
 
-type FGNobeliskDetonator_pre_update6 = docs_json_ts_0_5_2_1_classes_base_overridable_FGWeapon_version_specific & docs_json_ts_0_3_7_7_classes_base_FGEquipment_base & docs_json_ts_0_3_7_7_classes_base_FGNobeliskDetonator_base & docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_thrown_base_base & docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectile_base & FGWeapon_pre_update6 & FGWeapon_pre_1_1 & FGWeapon_version_specific;
+type FGNobeliskDetonator_pre_update6 = docs_json_ts_0_5_2_1_classes_base_overridable_FGWeapon_version_specific & docs_json_ts_0_3_7_7_classes_base_FGEquipment_base & docs_json_ts_0_3_7_7_classes_base_FGNobeliskDetonator_base & docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_thrown_base_base & docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectile_base & FGWeapon_pre_1_1 & FGWeapon_pre_update6 & FGWeapon_version_specific;
 
 type FGNobeliskDetonator_version_specific = {
 	mRadialMenuShowUpTime: docs_json_ts_common_types_decimal_string,
@@ -817,12 +817,16 @@ type FGVehicleDescriptor_powered = docs_json_ts_0_4_2_11_classes_base_FGVehicleD
 
 type FGVehicleDescriptor_with_inventory = docs_json_ts_0_4_2_11_classes_base_FGVehicleDescriptor_with_inventory & FGDescriptor_BuildMenu_base;
 
-type FGWeapon_Equip_RebarGun_Projectile_C = docs_json_ts_0_5_2_1_classes_base_overridable_FGWeapon_version_specific & docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_base & docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_has_mAttachSocket & docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectileFire_base_random & docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectile_base & docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectileFire_has_mMuteDryFire & FGWeapon_pre_update6 & FGWeapon_pre_1_1 & FGWeapon_version_specific;
+type FGWeapon_Equip_RebarGun_Projectile_C = docs_json_ts_0_5_2_1_classes_base_overridable_FGWeapon_version_specific & docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_base & docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_has_mAttachSocket & docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectileFire_base_random & docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectile_base & docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectileFire_has_mMuteDryFire & FGWeapon_pre_1_1 & FGWeapon_pre_update6 & FGWeapon_version_specific;
 
-type FGWeapon_Equip_Rifle_C = docs_json_ts_0_5_2_1_classes_base_overridable_FGWeapon_version_specific & docs_json_ts_0_3_7_7_classes_base_FGWeaponInstantFire_base & docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_base & docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_has_mAttachSocket & docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectile_base & FGWeapon_Equip_Rifle_C_base & FGWeapon_pre_update6 & FGWeapon_pre_1_1 & FGWeapon_version_specific;
+type FGWeapon_Equip_Rifle_C = docs_json_ts_0_5_2_1_classes_base_overridable_FGWeapon_version_specific & docs_json_ts_0_3_7_7_classes_base_FGWeaponInstantFire_base & docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_base & docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_has_mAttachSocket & docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectile_base & FGWeapon_Equip_Rifle_C_base & FGWeapon_pre_1_1 & FGWeapon_pre_update6 & FGWeapon_version_specific;
 
 type FGWeapon_Equip_Rifle_C_base = {
 	mArmAnimation: 'AE_Rifle',
+};
+
+type FGWeapon_pre_1_1 = {
+	mShowCycleAmmoRadialMenuTimer: docs_json_ts_common_types_empty_object,
 };
 
 type FGWeapon_pre_update6 = {
@@ -837,10 +841,6 @@ type FGWeapon_pre_update6 = {
 	mDispersionChangePerShot: docs_json_ts_common_types_decimal_string,
 	mAimTime: docs_json_ts_common_types_decimal_string,
 	mAmmoCycleMode: 'IE_Released',
-};
-
-type FGWeapon_pre_1_1 = {
-	mShowCycleAmmoRadialMenuTimer: docs_json_ts_common_types_empty_object,
 };
 
 type FGWeapon_version_specific = {
@@ -1039,7 +1039,7 @@ export type {
 	FGWeapon_Equip_RebarGun_Projectile_C,
 	FGWeapon_Equip_Rifle_C,
 	FGWeapon_Equip_Rifle_C_base,
-	FGWeapon_pre_update6,
 	FGWeapon_pre_1_1,
+	FGWeapon_pre_update6,
 	FGWeapon_version_specific,
 };

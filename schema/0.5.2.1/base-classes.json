@@ -2678,10 +2678,10 @@
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGWeaponProjectile--base"
 				},
 				{
-					"$ref": "#/$defs/FGWeapon--pre-update6"
+					"$ref": "#/$defs/FGWeapon--pre-1.1"
 				},
 				{
-					"$ref": "#/$defs/FGWeapon--pre-1.1"
+					"$ref": "#/$defs/FGWeapon--pre-update6"
 				},
 				{
 					"$ref": "#/$defs/FGWeapon--version-specific"
@@ -2877,10 +2877,10 @@
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGWeaponProjectileFire--has--mMuteDryFire"
 				},
 				{
-					"$ref": "#/$defs/FGWeapon--pre-update6"
+					"$ref": "#/$defs/FGWeapon--pre-1.1"
 				},
 				{
-					"$ref": "#/$defs/FGWeapon--pre-1.1"
+					"$ref": "#/$defs/FGWeapon--pre-update6"
 				},
 				{
 					"$ref": "#/$defs/FGWeapon--version-specific"
@@ -2908,10 +2908,10 @@
 					"$ref": "#/$defs/FGWeapon--Equip_Rifle_C--base"
 				},
 				{
-					"$ref": "#/$defs/FGWeapon--pre-update6"
+					"$ref": "#/$defs/FGWeapon--pre-1.1"
 				},
 				{
-					"$ref": "#/$defs/FGWeapon--pre-1.1"
+					"$ref": "#/$defs/FGWeapon--pre-update6"
 				},
 				{
 					"$ref": "#/$defs/FGWeapon--version-specific"
@@ -2925,6 +2925,15 @@
 				"mArmAnimation": {
 					"type": "string",
 					"const": "AE_Rifle"
+				}
+			}
+		},
+		"FGWeapon--pre-1.1": {
+			"type": "object",
+			"required": ["mShowCycleAmmoRadialMenuTimer"],
+			"properties": {
+				"mShowCycleAmmoRadialMenuTimer": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
 				}
 			}
 		},
@@ -2981,15 +2990,6 @@
 				"mAmmoCycleMode": {
 					"type": "string",
 					"const": "IE_Released"
-				}
-			}
-		},
-		"FGWeapon--pre-1.1": {
-			"type": "object",
-			"required": ["mShowCycleAmmoRadialMenuTimer"],
-			"properties": {
-				"mShowCycleAmmoRadialMenuTimer": {
-					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
 				}
 			}
 		},

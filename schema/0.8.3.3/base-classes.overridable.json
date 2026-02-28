@@ -4,10 +4,7 @@
 	"$defs": {
 		"FGAmmoType--pre-1.1": {
 			"type": "object",
-			"required": [
-				"mFiringSounds",
-				"mFiringSounds1P"
-			],
+			"required": ["mFiringSounds", "mFiringSounds1P"],
 			"properties": {
 				"mFiringSounds": {
 					"oneOf": [
