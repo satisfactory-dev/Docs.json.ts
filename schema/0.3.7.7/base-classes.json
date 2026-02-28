@@ -237,7 +237,6 @@
 		},
 		"FGBuildable--pole--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--pole--base--can-stack",
 			"required": ["mUseStaticHeight"],
 			"properties": {
 				"mUseStaticHeight": {
@@ -247,7 +246,6 @@
 		},
 		"FGBuildable--pole--base--can-stack": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base--version-specific",
 			"required": ["mCanStack", "mStackHeight"],
 			"properties": {
 				"mCanStack": {
@@ -2467,6 +2465,12 @@
 					"$ref": "#/$defs/FGBuildable--base--pre-update5"
 				},
 				{
+					"$ref": "#/$defs/FGBuildable--pole--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--pole--base--can-stack"
+				},
+				{
 					"$ref": "#/$defs/FGBuildable--with--mLength"
 				},
 				{
@@ -2476,7 +2480,6 @@
 		},
 		"FGBuildablePipelineSupport--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--pole--base",
 			"required": ["mVerticalAngle"],
 			"properties": {
 				"mVerticalAngle": {
@@ -2564,13 +2567,15 @@
 					"$ref": "#/$defs/FGBuildable--pole"
 				},
 				{
+					"$ref": "#/$defs/FGBuildable--pole--base--can-stack"
+				},
+				{
 					"$ref": "#/$defs/FGBuildablePole--base"
 				}
 			]
 		},
 		"FGBuildablePole--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--pole--base",
 			"required": ["mHeight"],
 			"properties": {
 				"mHeight": {
@@ -5127,6 +5132,9 @@
 		},
 		"FGPipeHyperStart": {
 			"allOf": [
+				{
+					"$ref": "#/$defs/FGBuildable--pole--base--can-stack"
+				},
 				{
 					"$ref": "#/$defs/FGBuildable--pole--with-length-and-power"
 				},

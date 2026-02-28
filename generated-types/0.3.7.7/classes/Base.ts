@@ -131,11 +131,11 @@ type FGBuildable_occupied_base = {
 
 type FGBuildable_pole = FGBuildable & FGBuildable_pole_base;
 
-type FGBuildable_pole_base = FGBuildable_pole_base_can_stack & {
+type FGBuildable_pole_base = {
 	mUseStaticHeight: docs_json_ts_common_types_bool_string,
 };
 
-type FGBuildable_pole_base_can_stack = FGBuildable_base_version_specific & {
+type FGBuildable_pole_base_can_stack = {
 	mCanStack: docs_json_ts_common_types_bool_string,
 	mStackHeight: docs_json_ts_common_types_decimal_string,
 };
@@ -613,9 +613,9 @@ type FGBuildablePipelinePump_pump_version_specific = {
 
 type FGBuildablePipelinePump_valve = FGBuildable_powered & FGBuildablePipeline_base & FGBuildablePipelinePump_base_base & FGBuildablePipelinePump_powered_base_base;
 
-type FGBuildablePipelineSupport = FGBuildable_base & FGBuildable_base_pre_update5 & FGBuildable_with_mLength & FGBuildablePipelineSupport_base;
+type FGBuildablePipelineSupport = FGBuildable_base & FGBuildable_base_pre_update5 & FGBuildable_pole_base & FGBuildable_pole_base_can_stack & FGBuildable_with_mLength & FGBuildablePipelineSupport_base;
 
-type FGBuildablePipelineSupport_base = FGBuildable_pole_base & {
+type FGBuildablePipelineSupport_base = {
 	mVerticalAngle: docs_json_ts_common_types_decimal_string,
 };
 
@@ -633,9 +633,9 @@ type FGBuildablePipeReservoir_base_base_base = FGBuildable_powered_version_speci
 	mIndicatorData: docs_json_ts_common_types_empty_object,
 };
 
-type FGBuildablePole = FGBuildable_pole & FGBuildablePole_base;
+type FGBuildablePole = FGBuildable_pole & FGBuildable_pole_base_can_stack & FGBuildablePole_base;
 
-type FGBuildablePole_base = FGBuildable_pole_base & {
+type FGBuildablePole_base = {
 	mHeight: docs_json_ts_common_types_decimal_string,
 };
 
@@ -1241,7 +1241,7 @@ type FGParachute_has_mTerminalVelocityZ = {
 	mTerminalVelocityZ: docs_json_ts_common_types_decimal_string,
 };
 
-type FGPipeHyperStart = FGBuildable_pole_with_length_and_power & FGPipeHyperStart_base;
+type FGPipeHyperStart = FGBuildable_pole_base_can_stack & FGBuildable_pole_with_length_and_power & FGPipeHyperStart_base;
 
 type FGPipeHyperStart_base = FGBuildable_pole_with_length_and_power_base & FGPipeHyperStart_base_base;
 

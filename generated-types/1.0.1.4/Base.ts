@@ -93,6 +93,7 @@ import type {
 	Montages as docs_json_ts_1_0_1_4_properties_Montages,
 	Montages_item as docs_json_ts_1_0_1_4_properties_Montages_item,
 	mProducedIn as docs_json_ts_1_0_1_4_properties_mProducedIn,
+	mStatisticGameplayTag as docs_json_ts_1_0_1_4_properties_mStatisticGameplayTag,
 	mUnlocks_item as docs_json_ts_1_0_1_4_properties_mUnlocks_item,
 	Tier as docs_json_ts_1_0_1_4_properties_Tier,
 } from './types/properties.ts';
@@ -571,13 +572,13 @@ type FGBuildablePipelinePump_version_specific = {
 	mUpdateAudioFlowTime: docs_json_ts_common_types_decimal_string,
 };
 
-type FGBuildablePipelineSupport = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_mLength & docs_json_ts_0_3_7_7_classes_base_FGBuildablePipelineSupport_base & FGBuildable_base;
+type FGBuildablePipelineSupport = docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_base & docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_base_can_stack & docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_mLength & docs_json_ts_0_3_7_7_classes_base_FGBuildablePipelineSupport_base & FGBuildable_base;
 
 type FGBuildablePipeReservoir = docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeReservoir_base_base_base & FGBuildable_powered;
 
-type FGBuildablePoleBase = docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_base_can_stack & FGBuildable_base;
+type FGBuildablePoleBase = docs_json_ts_0_3_7_7_classes_base_FGBuildable_base_version_specific & docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_base_can_stack & FGBuildable_base;
 
-type FGBuildablePoleLightweight = docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_base & docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_base & docs_json_ts_0_7_1_1_classes_base_FGBuildablePole_version_specific & FGBuildable_base;
+type FGBuildablePoleLightweight = docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_base & docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_base_can_stack & docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_base & docs_json_ts_0_7_1_1_classes_base_FGBuildablePole_version_specific & FGBuildable_base;
 
 type FGBuildablePortal = FGBuildable_base & FGBuildable_powered & FGBuildablePortal_common & FGBuildablePortal_version_specific;
 
@@ -987,7 +988,7 @@ type FGParachute_version_specific = {
 	mParachuteDetachMontageList: docs_json_ts_1_0_1_4_properties_Montages,
 };
 
-type FGPipeHyperStart = docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_base & docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_mLength & docs_json_ts_0_3_7_7_classes_base_FGPipeHyperStart_base_base_base & FGBuildable_powered;
+type FGPipeHyperStart = docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_base & docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_base_can_stack & docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_mLength & docs_json_ts_0_3_7_7_classes_base_FGPipeHyperStart_base_base_base & FGBuildable_powered;
 
 type FGPoleDescriptor = docs_json_ts_0_6_1_5_classes_base_overridable_FGItemDescriptor_base & FGItemDescriptor_version_specific;
 
@@ -1017,16 +1018,17 @@ type FGResourceDescriptor_version_specific = {
 	mManualMiningAudioName: 'Metal' | 'Sam',
 };
 
-type FGSchematic_base = docs_json_ts_0_3_7_7_classes_base_overridable_FGSchematic_version_specific & docs_json_ts_0_5_2_1_classes_base_overridable_FGSchematic_version_specific & docs_json_ts_0_8_3_3_classes_base_overridable_FGSchematic_has_mSchematicIcon & docs_json_ts_0_8_3_3_classes_base_overridable_FGSchematic_version_specific & docs_json_ts_0_3_7_7_classes_base_instructive & docs_json_ts_0_3_7_7_classes_base_isDescribed & docs_json_ts_0_6_1_5_classes_base_FGSchematic_version_specific & docs_json_ts_1_0_1_4_properties_FGSchematic_has_mSchematicDependencies & FGSchematic_has_mTechTier & FGSchematic_version_specific;
+type FGSchematic_base = docs_json_ts_0_3_7_7_classes_base_overridable_FGSchematic_version_specific & docs_json_ts_0_5_2_1_classes_base_overridable_FGSchematic_version_specific & docs_json_ts_0_8_3_3_classes_base_overridable_FGSchematic_has_mSchematicIcon & docs_json_ts_0_8_3_3_classes_base_overridable_FGSchematic_version_specific & docs_json_ts_0_3_7_7_classes_base_instructive & docs_json_ts_0_3_7_7_classes_base_isDescribed & docs_json_ts_0_6_1_5_classes_base_FGSchematic_version_specific & docs_json_ts_1_0_1_4_properties_FGSchematic_has_mSchematicDependencies & FGSchematic_has_mTechTier & FGSchematic_pre_1_1 & FGSchematic_version_specific;
 
 type FGSchematic_has_mTechTier = {
 	mTechTier: docs_json_ts_1_0_1_4_properties_Tier,
 };
 
+type FGSchematic_pre_1_1 = {
+	mStatisticGameplayTag: docs_json_ts_common_types_empty_object | docs_json_ts_1_0_1_4_properties_mStatisticGameplayTag,
+};
+
 type FGSchematic_version_specific = {
-	mStatisticGameplayTag: docs_json_ts_common_types_empty_object | {
-		TagName: `Stats.Gameplay.Schematics.Schematic${'1-1' | '1-2' | '1-3' | '2-1' | '2-2' | '2-3' | '2-5' | '3-1' | '3-2' | '3-3' | '3-4' | '4-1' | '4-2' | '4-3' | '4-4' | '4-5' | '5-1' | '5-2' | '5-3' | '5-4' | '5-5' | '6-1' | '6-2' | '6-3' | '6-4' | '6-5' | '6-6' | '6-7' | '7-1' | '7-2' | '7-3' | '7-4' | '7-5' | '8-1' | '8-2' | '8-3' | '8-4' | '8-5' | '9-1' | '9-2' | '9-3' | '9-4' | '9-5'}`,
-	},
 	mSchematicUnlockTag: docs_json_ts_common_types_empty_object | {
 		TagName: 'Stats.Gameplay.UnlockedGoldenNut',
 	},
@@ -1264,6 +1266,7 @@ export type {
 	FGResourceDescriptor_version_specific,
 	FGSchematic_base,
 	FGSchematic_has_mTechTier,
+	FGSchematic_pre_1_1,
 	FGSchematic_version_specific,
 	FGSchematic_with_described_unlocks,
 	FGSuitBase,
