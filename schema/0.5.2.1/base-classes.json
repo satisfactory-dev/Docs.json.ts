@@ -1238,17 +1238,26 @@
 					"$ref": "#/$defs/FGBuildable--base"
 				},
 				{
-					"$ref": "#/$defs/FGBuildablePillar--base"
+					"$ref": "#/$defs/has--mSize-vector"
+				},
+				{
+					"$ref": "#/$defs/has--mIsSupport"
 				}
 			]
 		},
-		"FGBuildablePillar--base": {
+		"has--mSize-vector": {
 			"type": "object",
-			"required": ["mSize", "mIsSupport"],
+			"required": ["mSize"],
 			"properties": {
 				"mSize": {
 					"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
-				},
+				}
+			}
+		},
+		"has--mIsSupport": {
+			"type": "object",
+			"required": ["mIsSupport"],
+			"properties": {
 				"mIsSupport": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
 				}
@@ -1353,13 +1362,16 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--pole--base"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--pole--base--can-stack"
-				},
-				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with--mLength"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipelineSupport--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mCanStack"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mStackHeight"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--base"
@@ -1382,10 +1394,13 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--pole--base"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--pole--base--can-stack"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePole--base"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePole--base"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mCanStack"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mStackHeight"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--base"
@@ -2726,10 +2741,13 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--pole--base"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--pole--base--can-stack"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGPipeHyperStart--base--base"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGPipeHyperStart--base--base"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mCanStack"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mStackHeight"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--pole--with-length-and-power"

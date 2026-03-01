@@ -1,6 +1,19 @@
 /* eslint-disable @stylistic/max-len */
 
 import type {
+	BGRA as docs_json_ts_common_types_BGRA,
+	bool_string as docs_json_ts_common_types_bool_string,
+	decimal_string as docs_json_ts_common_types_decimal_string,
+	decimal_string_signed as docs_json_ts_common_types_decimal_string_signed,
+	empty_object as docs_json_ts_common_types_empty_object,
+	integer_string as docs_json_ts_common_types_integer_string,
+	integer_string_signed as docs_json_ts_common_types_integer_string_signed,
+	PitchYawRoll_decimal_string_signed as docs_json_ts_common_types_PitchYawRoll_decimal_string_signed,
+	RGBA as docs_json_ts_common_types_RGBA,
+	XYZ_decimal_string as docs_json_ts_common_types_XYZ_decimal_string,
+} from './../../common/types.ts';
+
+import type {
 	BlueprintGeneratedClass_non_quoted as docs_json_ts_0_3_7_7_properties_BlueprintGeneratedClass_non_quoted,
 	Class_quoted as docs_json_ts_0_3_7_7_properties_Class_quoted,
 	FGTrainPlatformConnection_quoted as docs_json_ts_0_3_7_7_properties_FGTrainPlatformConnection_quoted,
@@ -34,19 +47,6 @@ import type {
 } from './../types/properties.ts';
 
 import type {
-	BGRA as docs_json_ts_common_types_BGRA,
-	bool_string as docs_json_ts_common_types_bool_string,
-	decimal_string as docs_json_ts_common_types_decimal_string,
-	decimal_string_signed as docs_json_ts_common_types_decimal_string_signed,
-	empty_object as docs_json_ts_common_types_empty_object,
-	integer_string as docs_json_ts_common_types_integer_string,
-	integer_string_signed as docs_json_ts_common_types_integer_string_signed,
-	PitchYawRoll_decimal_string_signed as docs_json_ts_common_types_PitchYawRoll_decimal_string_signed,
-	RGBA as docs_json_ts_common_types_RGBA,
-	XYZ_decimal_string as docs_json_ts_common_types_XYZ_decimal_string,
-} from './../../common/types.ts';
-
-import type {
 	FGBuildableResourceExtractor_miner_base as docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_miner_base,
 	FGBuildableResourceExtractor_only_allow_certain_resources as docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_only_allow_certain_resources,
 	FGEquipment_version_specific as docs_json_ts_0_3_7_7_classes_base_overridable_FGEquipment_version_specific,
@@ -64,6 +64,14 @@ import type {
 	mUnlocks_item_mResourcesToAddToScanner as docs_json_ts_0_3_7_7_overridable_mUnlocks_item_mResourcesToAddToScanner,
 	mUnlocks_item_mSchematics as docs_json_ts_0_3_7_7_overridable_mUnlocks_item_mSchematics,
 } from './../types/overridable.ts';
+
+type has_mCanStack = {
+	mCanStack: docs_json_ts_common_types_bool_string,
+};
+
+type has_mStackHeight = {
+	mStackHeight: docs_json_ts_common_types_decimal_string,
+};
 
 type hasClassName = {
 	ClassName: `${Exclude<string, ''>}${'_'}${Exclude<string, ''>}${'_C'}`,
@@ -133,11 +141,6 @@ type FGBuildable_pole = FGBuildable & FGBuildable_pole_base;
 
 type FGBuildable_pole_base = {
 	mUseStaticHeight: docs_json_ts_common_types_bool_string,
-};
-
-type FGBuildable_pole_base_can_stack = {
-	mCanStack: docs_json_ts_common_types_bool_string,
-	mStackHeight: docs_json_ts_common_types_decimal_string,
 };
 
 type FGBuildable_pole_with_length_and_power = FGBuildable_pole_with_length_and_power_base & FGBuildable_powered;
@@ -549,7 +552,7 @@ type FGBuildablePipeline_base_no_indicator_base = {
 	mPipeConnections: '',
 };
 
-type FGBuildablePipeline_base_root = FGBuildablePipeline_base_spline_base & {
+type FGBuildablePipeline_base_root = {
 	mFlowLimit: docs_json_ts_common_types_decimal_string,
 	mFlowIndicatorMinimumPipeLength: docs_json_ts_common_types_decimal_string,
 	mMaxIndicatorTurnAngle: docs_json_ts_common_types_decimal_string,
@@ -613,7 +616,7 @@ type FGBuildablePipelinePump_pump_version_specific = {
 
 type FGBuildablePipelinePump_valve = FGBuildable_powered & FGBuildablePipeline_base & FGBuildablePipelinePump_base_base & FGBuildablePipelinePump_powered_base_base;
 
-type FGBuildablePipelineSupport = FGBuildable_base & FGBuildable_base_pre_update5 & FGBuildable_pole_base & FGBuildable_pole_base_can_stack & FGBuildable_with_mLength & FGBuildablePipelineSupport_base;
+type FGBuildablePipelineSupport = FGBuildable_base & FGBuildable_base_pre_update5 & FGBuildable_pole_base & FGBuildable_with_mLength & FGBuildablePipelineSupport_base & has_mCanStack & has_mStackHeight;
 
 type FGBuildablePipelineSupport_base = {
 	mVerticalAngle: docs_json_ts_common_types_decimal_string,
@@ -633,7 +636,7 @@ type FGBuildablePipeReservoir_base_base_base = FGBuildable_powered_version_speci
 	mIndicatorData: docs_json_ts_common_types_empty_object,
 };
 
-type FGBuildablePole = FGBuildable_pole & FGBuildable_pole_base_can_stack & FGBuildablePole_base;
+type FGBuildablePole = FGBuildable_pole & FGBuildablePole_base & has_mCanStack & has_mStackHeight;
 
 type FGBuildablePole_base = {
 	mHeight: docs_json_ts_common_types_decimal_string,
@@ -1241,7 +1244,7 @@ type FGParachute_has_mTerminalVelocityZ = {
 	mTerminalVelocityZ: docs_json_ts_common_types_decimal_string,
 };
 
-type FGPipeHyperStart = FGBuildable_pole_base_can_stack & FGBuildable_pole_with_length_and_power & FGPipeHyperStart_base;
+type FGPipeHyperStart = FGBuildable_pole_with_length_and_power & FGPipeHyperStart_base & has_mCanStack & has_mStackHeight;
 
 type FGPipeHyperStart_base = FGBuildable_pole_with_length_and_power_base & FGPipeHyperStart_base_base;
 
@@ -1460,6 +1463,8 @@ type FGWeaponProjectileFire_has_mRandomReloadAnim = {
 };
 
 export type {
+	has_mCanStack,
+	has_mStackHeight,
 	hasClassName,
 	instructive,
 	isDescribed,
@@ -1477,7 +1482,6 @@ export type {
 	FGBuildable_occupied_base,
 	FGBuildable_pole,
 	FGBuildable_pole_base,
-	FGBuildable_pole_base_can_stack,
 	FGBuildable_pole_with_length_and_power,
 	FGBuildable_pole_with_length_and_power_base,
 	FGBuildable_pole_with_length_and_power_base_base,

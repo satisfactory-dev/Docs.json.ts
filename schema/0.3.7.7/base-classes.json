@@ -2,6 +2,24 @@
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "docs.json.ts--0.3.7.7--classes--base",
 	"$defs": {
+		"has--mCanStack": {
+			"type": "object",
+			"required": ["mCanStack"],
+			"properties": {
+				"mCanStack": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
+		},
+		"has--mStackHeight": {
+			"type": "object",
+			"required": ["mStackHeight"],
+			"properties": {
+				"mStackHeight": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
 		"hasClassName": {
 			"type": "object",
 			"required": ["ClassName"],
@@ -241,18 +259,6 @@
 			"properties": {
 				"mUseStaticHeight": {
 					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				}
-			}
-		},
-		"FGBuildable--pole--base--can-stack": {
-			"type": "object",
-			"required": ["mCanStack", "mStackHeight"],
-			"properties": {
-				"mCanStack": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				},
-				"mStackHeight": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
 			}
 		},
@@ -2146,7 +2152,6 @@
 		},
 		"FGBuildablePipeline--base-root": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildablePipeline--base-spline--base",
 			"required": [
 				"mFlowLimit",
 				"mFlowIndicatorMinimumPipeLength",
@@ -2468,13 +2473,16 @@
 					"$ref": "#/$defs/FGBuildable--pole--base"
 				},
 				{
-					"$ref": "#/$defs/FGBuildable--pole--base--can-stack"
-				},
-				{
 					"$ref": "#/$defs/FGBuildable--with--mLength"
 				},
 				{
 					"$ref": "#/$defs/FGBuildablePipelineSupport--base"
+				},
+				{
+					"$ref": "#/$defs/has--mCanStack"
+				},
+				{
+					"$ref": "#/$defs/has--mStackHeight"
 				}
 			]
 		},
@@ -2567,10 +2575,13 @@
 					"$ref": "#/$defs/FGBuildable--pole"
 				},
 				{
-					"$ref": "#/$defs/FGBuildable--pole--base--can-stack"
+					"$ref": "#/$defs/FGBuildablePole--base"
 				},
 				{
-					"$ref": "#/$defs/FGBuildablePole--base"
+					"$ref": "#/$defs/has--mCanStack"
+				},
+				{
+					"$ref": "#/$defs/has--mStackHeight"
 				}
 			]
 		},
@@ -5133,13 +5144,16 @@
 		"FGPipeHyperStart": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGBuildable--pole--base--can-stack"
-				},
-				{
 					"$ref": "#/$defs/FGBuildable--pole--with-length-and-power"
 				},
 				{
 					"$ref": "#/$defs/FGPipeHyperStart--base"
+				},
+				{
+					"$ref": "#/$defs/has--mCanStack"
+				},
+				{
+					"$ref": "#/$defs/has--mStackHeight"
 				}
 			]
 		},
