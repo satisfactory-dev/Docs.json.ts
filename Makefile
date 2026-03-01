@@ -169,7 +169,7 @@ generate--version1_0--types: prepare--version1_0
 
 generate--version1_0: generate--version1_0--types
 	@echo 'running generator'
-	@node ./generate-version1.0.ts af --skip-types --skip-types
+	@node ./generate-version1.0.ts af --skip-types
 	@node ./generate-version1.0.ts ar --skip-types
 	@node ./generate-version1.0.ts bg --skip-types
 	@node ./generate-version1.0.ts ca --skip-types
