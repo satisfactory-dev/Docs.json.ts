@@ -203,8 +203,16 @@ import type {
 	FGSchematic_has_mSchematicIcon as docs_json_ts_0_4_2_11_classes_base_overridable_FGSchematic_has_mSchematicIcon,
 } from './../../0.4.2.11/classes/Base.overridable.ts';
 
+type has_mIsSupport = {
+	mIsSupport: docs_json_ts_common_types_bool_string,
+};
+
 type has_mResourceSinkPoints = {
 	mResourceSinkPoints: docs_json_ts_common_types_integer_string,
+};
+
+type has_mSize_vector = {
+	mSize: docs_json_ts_common_types_XYZ_decimal_string,
 };
 
 type FGBuildable_base = docs_json_ts_0_4_2_11_classes_base_FGBuildable_base & FGBuildable_base_pre_1_0 & FGBuildable_base_version_specific;
@@ -461,15 +469,7 @@ type FGBuildablePassthrough_pre_update8 = {
 	mUseSoftClearance: docs_json_ts_common_types_bool_string,
 };
 
-type FGBuildablePillar = FGBuildable_base & has_mSize_vector & has_mIsSupport;
-
-type has_mSize_vector = {
-	mSize: docs_json_ts_common_types_XYZ_decimal_string,
-};
-
-type has_mIsSupport = {
-	mIsSupport: docs_json_ts_common_types_bool_string,
-};
+type FGBuildablePillar = FGBuildable_base & has_mIsSupport & has_mSize_vector;
 
 type FGBuildablePipeHyper = FGBuildable_spline & FGBuildablePipeHyper_version_specific;
 
@@ -865,7 +865,9 @@ type FGWeapon_version_specific = {
 };
 
 export type {
+	has_mIsSupport,
 	has_mResourceSinkPoints,
+	has_mSize_vector,
 	FGBuildable_base,
 	FGBuildable_base_pre_1_0,
 	FGBuildable_base_version_specific,
@@ -952,8 +954,6 @@ export type {
 	FGBuildablePassthrough_base,
 	FGBuildablePassthrough_pre_update8,
 	FGBuildablePillar,
-	has_mSize_vector,
-	has_mIsSupport,
 	FGBuildablePipeHyper,
 	FGBuildablePipeHyper_version_specific,
 	FGBuildablePipeline,

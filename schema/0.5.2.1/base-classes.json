@@ -2,12 +2,30 @@
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "docs.json.ts--0.5.2.1--classes--base",
 	"$defs": {
+		"has--mIsSupport": {
+			"type": "object",
+			"required": ["mIsSupport"],
+			"properties": {
+				"mIsSupport": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				}
+			}
+		},
 		"has--mResourceSinkPoints": {
 			"type": "object",
 			"required": ["mResourceSinkPoints"],
 			"properties": {
 				"mResourceSinkPoints": {
 					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				}
+			}
+		},
+		"has--mSize-vector": {
+			"type": "object",
+			"required": ["mSize"],
+			"properties": {
+				"mSize": {
+					"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
 				}
 			}
 		},
@@ -1238,30 +1256,12 @@
 					"$ref": "#/$defs/FGBuildable--base"
 				},
 				{
-					"$ref": "#/$defs/has--mSize-vector"
+					"$ref": "#/$defs/has--mIsSupport"
 				},
 				{
-					"$ref": "#/$defs/has--mIsSupport"
+					"$ref": "#/$defs/has--mSize-vector"
 				}
 			]
-		},
-		"has--mSize-vector": {
-			"type": "object",
-			"required": ["mSize"],
-			"properties": {
-				"mSize": {
-					"$ref": "docs.json.ts--common--types#/$defs/XYZ--decimal_string"
-				}
-			}
-		},
-		"has--mIsSupport": {
-			"type": "object",
-			"required": ["mIsSupport"],
-			"properties": {
-				"mIsSupport": {
-					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-				}
-			}
 		},
 		"FGBuildablePipeHyper": {
 			"allOf": [

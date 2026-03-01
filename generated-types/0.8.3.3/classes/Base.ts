@@ -475,7 +475,7 @@ type FGBuildablePassthrough_version_specific = {
 	mGeneratedMeshComponents: '',
 };
 
-type FGBuildablePillarLightweight = docs_json_ts_0_5_2_1_classes_base_has_mSize_vector & docs_json_ts_0_5_2_1_classes_base_has_mIsSupport & FGBuildable_base;
+type FGBuildablePillarLightweight = docs_json_ts_0_5_2_1_classes_base_has_mIsSupport & docs_json_ts_0_5_2_1_classes_base_has_mSize_vector & FGBuildable_base;
 
 type FGBuildablePipeHyper = docs_json_ts_0_3_7_7_classes_base_FGBuildable_spline & docs_json_ts_0_5_2_1_classes_base_FGBuildable_mSnappedPassthroughs & FGBuildable_base;
 

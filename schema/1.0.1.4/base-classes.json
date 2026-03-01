@@ -1311,10 +1311,10 @@
 		"FGBuildablePillarLightweight": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/has--mSize-vector"
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/has--mIsSupport"
 				},
 				{
-					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/has--mIsSupport"
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/has--mSize-vector"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--base"
