@@ -41,7 +41,7 @@ ci--basic-checks:
 	./node_modules/.bin/eslint --config eslint.config.js.mjs './**/*.mjs'
 	./node_modules/.bin/eslint --cache './**/*.ts'
 
-prepare: prepare--version1_0
+prepare: prepare--version1_1
 
 prepare--update3:
 	@echo 'prepare 0.3.7.7'
@@ -125,6 +125,63 @@ prepare--version1_0: prepare--update8
 	@node ./prepare-1.0.1.4.ts zh-Hans
 	@node ./prepare-1.0.1.4.ts zh-Hant
 
+prepare--version1_1: prepare--version1_0
+	@node ./prepare-1.1.2.2.ts af
+	@node ./prepare-1.1.2.2.ts ar
+	@node ./prepare-1.1.2.2.ts bg
+	@node ./prepare-1.1.2.2.ts ca
+	@node ./prepare-1.1.2.2.ts cs
+	@node ./prepare-1.1.2.2.ts da
+	@node ./prepare-1.1.2.2.ts de
+	@node ./prepare-1.1.2.2.ts el
+	@node ./prepare-1.1.2.2.ts en-AE
+	@node ./prepare-1.1.2.2.ts en-AU
+	@node ./prepare-1.1.2.2.ts en-CA
+	@node ./prepare-1.1.2.2.ts en-GB
+	@node ./prepare-1.1.2.2.ts en-US
+	@node ./prepare-1.1.2.2.ts eo
+	@node ./prepare-1.1.2.2.ts es-419
+	@node ./prepare-1.1.2.2.ts es-ES
+	@node ./prepare-1.1.2.2.ts et
+	@node ./prepare-1.1.2.2.ts fa
+	@node ./prepare-1.1.2.2.ts fi
+	@node ./prepare-1.1.2.2.ts fr
+	@node ./prepare-1.1.2.2.ts he
+	@node ./prepare-1.1.2.2.ts hi
+	@node ./prepare-1.1.2.2.ts hr
+	@node ./prepare-1.1.2.2.ts hu
+	@node ./prepare-1.1.2.2.ts ia-001
+	@node ./prepare-1.1.2.2.ts id
+	@node ./prepare-1.1.2.2.ts ie
+	@node ./prepare-1.1.2.2.ts io
+	@node ./prepare-1.1.2.2.ts it
+	@node ./prepare-1.1.2.2.ts ja
+	@node ./prepare-1.1.2.2.ts ko
+	@node ./prepare-1.1.2.2.ts kw
+	@node ./prepare-1.1.2.2.ts lb
+	@node ./prepare-1.1.2.2.ts lt
+	@node ./prepare-1.1.2.2.ts lv
+	@node ./prepare-1.1.2.2.ts mt
+	@node ./prepare-1.1.2.2.ts nl
+	@node ./prepare-1.1.2.2.ts no
+	@node ./prepare-1.1.2.2.ts pl
+	@node ./prepare-1.1.2.2.ts pt-BR
+	@node ./prepare-1.1.2.2.ts pt-PT
+	@node ./prepare-1.1.2.2.ts ro
+	@node ./prepare-1.1.2.2.ts ru
+	@node ./prepare-1.1.2.2.ts sk
+	@node ./prepare-1.1.2.2.ts sr-Cyrl
+	@node ./prepare-1.1.2.2.ts sr-Latn
+	@node ./prepare-1.1.2.2.ts sv
+	@node ./prepare-1.1.2.2.ts th
+	@node ./prepare-1.1.2.2.ts tr
+	@node ./prepare-1.1.2.2.ts uk
+	@node ./prepare-1.1.2.2.ts vi
+	@node ./prepare-1.1.2.2.ts vo
+	@node ./prepare-1.1.2.2.ts vun
+	@node ./prepare-1.1.2.2.ts zh-Hans
+	@node ./prepare-1.1.2.2.ts zh-Hant
+
 generate--clean:
 	@echo 'cleaning ./generated-types/'
 	@git clean -fxd ./generated-types/
@@ -135,7 +192,7 @@ generate--wrap-up:
 
 generate--early-access: generate--update3 generate--update4 generate--update5 generate--update6 generate--update7 generate--update8
 
-generate--1.x: generate--version1_0
+generate--1.x: generate--version1_0 generate--version1_1
 
 generate: generate--clean generate--early-access generate--1.x generate--wrap-up
 
@@ -224,3 +281,64 @@ generate--version1_0: generate--version1_0--types
 	@node ./generate-version1.0.ts vun --skip-types
 	@node ./generate-version1.0.ts zh-Hans --skip-types
 	@node ./generate-version1.0.ts zh-Hant --skip-types
+
+generate--version1_1--types: prepare--version1_1
+	@echo 'running generator'
+	@node ./generate-version1.1.ts en-US --skip-data
+
+generate--version1_1: generate--version1_1--types
+	@node ./generate-version1.1.ts af --skip-types
+	@node ./generate-version1.1.ts ar --skip-types
+	@node ./generate-version1.1.ts bg --skip-types
+	@node ./generate-version1.1.ts ca --skip-types
+	@node ./generate-version1.1.ts cs --skip-types
+	@node ./generate-version1.1.ts da --skip-types
+	@node ./generate-version1.1.ts de --skip-types
+	@node ./generate-version1.1.ts el --skip-types
+	@node ./generate-version1.1.ts en-AE --skip-types
+	@node ./generate-version1.1.ts en-AU --skip-types
+	@node ./generate-version1.1.ts en-CA --skip-types
+	@node ./generate-version1.1.ts en-GB --skip-types
+	@node ./generate-version1.1.ts en-US --skip-types
+	@node ./generate-version1.1.ts eo --skip-types
+	@node ./generate-version1.1.ts es-419 --skip-types
+	@node ./generate-version1.1.ts es-ES --skip-types
+	@node ./generate-version1.1.ts et --skip-types
+	@node ./generate-version1.1.ts fa --skip-types
+	@node ./generate-version1.1.ts fi --skip-types
+	@node ./generate-version1.1.ts fr --skip-types
+	@node ./generate-version1.1.ts he --skip-types
+	@node ./generate-version1.1.ts hi --skip-types
+	@node ./generate-version1.1.ts hr --skip-types
+	@node ./generate-version1.1.ts hu --skip-types
+	@node ./generate-version1.1.ts ia-001 --skip-types
+	@node ./generate-version1.1.ts id --skip-types
+	@node ./generate-version1.1.ts ie --skip-types
+	@node ./generate-version1.1.ts io --skip-types
+	@node ./generate-version1.1.ts it --skip-types
+	@node ./generate-version1.1.ts ja --skip-types
+	@node ./generate-version1.1.ts ko --skip-types
+	@node ./generate-version1.1.ts kw --skip-types
+	@node ./generate-version1.1.ts lb --skip-types
+	@node ./generate-version1.1.ts lt --skip-types
+	@node ./generate-version1.1.ts lv --skip-types
+	@node ./generate-version1.1.ts mt --skip-types
+	@node ./generate-version1.1.ts nl --skip-types
+	@node ./generate-version1.1.ts no --skip-types
+	@node ./generate-version1.1.ts pl --skip-types
+	@node ./generate-version1.1.ts pt-BR --skip-types
+	@node ./generate-version1.1.ts pt-PT --skip-types
+	@node ./generate-version1.1.ts ro --skip-types
+	@node ./generate-version1.1.ts ru --skip-types
+	@node ./generate-version1.1.ts sk --skip-types
+	@node ./generate-version1.1.ts sr-Cyrl --skip-types
+	@node ./generate-version1.1.ts sr-Latn --skip-types
+	@node ./generate-version1.1.ts sv --skip-types
+	@node ./generate-version1.1.ts th --skip-types
+	@node ./generate-version1.1.ts tr --skip-types
+	@node ./generate-version1.1.ts uk --skip-types
+	@node ./generate-version1.1.ts vi --skip-types
+	@node ./generate-version1.1.ts vo --skip-types
+	@node ./generate-version1.1.ts vun --skip-types
+	@node ./generate-version1.1.ts zh-Hans --skip-types
+	@node ./generate-version1.1.ts zh-Hant --skip-types

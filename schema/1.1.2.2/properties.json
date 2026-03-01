@@ -1,0 +1,557 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "docs.json.ts--1.1.2.2--properties",
+	"$defs": {
+		"mHologramOverrides--item": {
+			"type": "string",
+			"DocsDotJson_PrefixedString": {
+				"prefix": "FGHologramOverride_ConveyorAttachment_FloorToLift",
+				"mode": "version_specific_default",
+				"system_prefix": "FactoryGame",
+				"value": null
+			}
+		},
+		"mPoleVariations--item": {
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"required": [
+					"StaticMesh",
+					"Height",
+					"Clearance",
+					"ExcludeForSnapping"
+				],
+				"properties": {
+					"StaticMesh": {
+						"type": "string",
+						"DocsDotJson_PrefixedString": {
+							"prefix": "StaticMesh",
+							"mode": "version_specific_default",
+							"value": null
+						}
+					},
+					"Height": {
+						"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+					},
+					"Clearance": {
+						"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/mClearanceData--item"
+					}
+				}
+			}
+		},
+		"mSoftAudioEvents": {
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"required": ["mSoftAudioEvents"],
+				"properties": {
+					"mSoftAudioEvents": {
+						"type": "string",
+						"typed_string": {
+							"type": "array",
+							"minItems": 1,
+							"uniqueItems": true,
+							"items": {
+								"$ref": "#/$defs/mSoftAudioEvents--item"
+							}
+						}
+					}
+				}
+			}
+		},
+		"mSoftAudioEvents--item": {
+			"type": "string",
+			"const": "/Game/WwiseAudio/Events/Equipment/Rifle/Play_E_Rifle_WorldImpact_Solids.Play_E_Rifle_WorldImpact_Solids"
+		},
+		"mStatisticGameplayTag": {
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": ["TagName"],
+				"properties": {
+					"TagName": {
+						"type": "string",
+						"templated_string": [
+							"Stats.Gameplay.Schematics.Schematic",
+							[
+								"_Tutorial1",
+								"_Tutorial1_5",
+								"_Tutorial2",
+								"_Tutorial3",
+								"_Tutorial4",
+								"_Tutorial5",
+								"1-1",
+								"1-2",
+								"1-3",
+								"2-1",
+								"2-2",
+								"2-3",
+								"2-5",
+								"3-1",
+								"3-2",
+								"3-3",
+								"3-4",
+								"4-1",
+								"4-2",
+								"4-3",
+								"4-4",
+								"4-5",
+								"5-1",
+								"5-2",
+								"5-3",
+								"5-4",
+								"5-5",
+								"6-1",
+								"6-2",
+								"6-3",
+								"6-4",
+								"6-5",
+								"6-6",
+								"6-7",
+								"7-1",
+								"7-2",
+								"7-3",
+								"7-4",
+								"7-5",
+								"8-1",
+								"8-2",
+								"8-3",
+								"8-4",
+								"8-5",
+								"9-1",
+								"9-2",
+								"9-3",
+								"9-4",
+								"9-5"
+							]
+						]
+					}
+				}
+			}
+		},
+		"FalloffCurve--EditorCurveData": {
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"required": ["EditorCurveData"],
+				"properties": {
+					"EditorCurveData": {
+						"$ref": "#/$defs/FalloffCurve--EditorCurveData--with-ExternalCurve--EditorCurveData--without-keys"
+					}
+				}
+			}
+		},
+		"FalloffCurve--EditorCurveData--with-ExternalCurve": {
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"required": ["EditorCurveData", "ExternalCurve"],
+				"properties": {
+					"EditorCurveData": {
+						"oneOf": [
+							{
+								"$ref": "#/$defs/FalloffCurve--EditorCurveData--with-ExternalCurve--EditorCurveData"
+							},
+							{
+								"$ref": "#/$defs/FalloffCurve--EditorCurveData--with-ExternalCurve--EditorCurveData--without-keys"
+							}
+						]
+					},
+					"ExternalCurve": {
+						"type": "string",
+						"DocsDotJson_PrefixedString": {
+							"prefix": "CurveFloat",
+							"mode": "version_specific_default",
+							"value": null
+						}
+					}
+				}
+			}
+		},
+		"FalloffCurve--EditorCurveData--with-ExternalCurve--EditorCurveData": {
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"required": [
+					"Keys",
+					"DefaultValue",
+					"PreInfinityExtrap",
+					"PostInfinityExtrap"
+				],
+				"properties": {
+					"Keys": {
+						"type": "string",
+						"typed_string": {
+							"type": "array",
+							"minItems": 2,
+							"maxItems": 2,
+							"uniqueItems": true,
+							"items": {
+								"type": "string",
+								"typed_string": {
+									"type": "object",
+									"required": [
+										"InterpMode",
+										"TangentMode",
+										"Time",
+										"Value",
+										"ArriveTangent",
+										"LeaveTangent"
+									],
+									"properties": {
+										"InterpMode": {
+											"type": "string",
+											"const": "RCIM_Cubic"
+										},
+										"TangentMode": {
+											"type": "string",
+											"const": "RCTM_User"
+										},
+										"Time": {
+											"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
+										},
+										"Value": {
+											"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+										},
+										"ArriveTangent": {
+											"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
+										},
+										"LeaveTangent": {
+											"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
+										}
+									}
+								}
+							}
+						}
+					},
+					"DefaultValue": {
+						"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+					},
+					"PreInfinityExtrap": {
+						"type": "string",
+						"const": "RCCE_Constant"
+					},
+					"PostInfinityExtrap": {
+						"type": "string",
+						"const": "RCCE_Constant"
+					}
+				}
+			}
+		},
+		"FalloffCurve--EditorCurveData--with-ExternalCurve--EditorCurveData--without-keys": {
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"required": [
+					"DefaultValue",
+					"PreInfinityExtrap",
+					"PostInfinityExtrap"
+				],
+				"properties": {
+					"DefaultValue": {
+						"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+					},
+					"PreInfinityExtrap": {
+						"type": "string",
+						"const": "RCCE_Constant"
+					},
+					"PostInfinityExtrap": {
+						"type": "string",
+						"const": "RCCE_Constant"
+					}
+				}
+			}
+		},
+		"Montages": {
+			"oneOf": [
+				{
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				},
+				{
+					"$ref": "#/$defs/Montages--as-object"
+				}
+			]
+		},
+		"Montages--as-object": {
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": ["Montages"],
+				"properties": {
+					"Montages": {
+						"type": "string",
+						"typed_string": {
+							"type": "array",
+							"minItems": 1,
+							"uniqueItems": true,
+							"items": {
+								"$ref": "#/$defs/Montages--item"
+							}
+						}
+					}
+				}
+			}
+		},
+		"Montages--item": {
+			"oneOf": [
+				{
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item--Montage_1P-Montage_Equipment"
+				},
+				{
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item--Montage_1P-Montage_Equipment-AudioEvent"
+				},
+				{
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item--Montage_1P-Montage_3P-Montage_Equipment-AudioEvent"
+				},
+				{
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item--AudioEvent"
+				},
+				{
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item--Weight-Montage_1P-Montage_3P-Montage_Equipment-CameraAnim"
+				},
+				{
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item--Montage_1P-Montage_3P-Montage_Equipment-CameraAnim"
+				},
+				{
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item--Montage_1P-Montage_3P-Montage_Equipment-AudioEvent-bSeparate3PAudioEvent-AudioEvent3P"
+				},
+				{
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item--Montage_1P-Montage_3P-CameraAnim"
+				},
+				{
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item--Montage_1P"
+				},
+				{
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item--Montage_1P-Montage_3P"
+				},
+				{
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item--Montage_1P-Montage_3P-AudioEvent-CameraAnim"
+				},
+				{
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item--Montage_1P-AudioEvent"
+				},
+				{
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item--Filter-FilterMontageTag_HasAmmunition-Exclusive-Montage_1P-Montage_3P-Montage_Equipment"
+				},
+				{
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item--Filter-FilterMontageTag_HasAmmunition-InvertFilter-Exclusive-Montage_1P-Montage_3P-Montage_Equipment"
+				},
+				{
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item--Filter-FilterMontageTag_LowCharged-Exclusive-Montage_1P-Montage_3P-Montage_Equipment-AudioEvent-bSeparate3PAudioEvent-AudioEvent3P"
+				},
+				{
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item--Filter-FilterMontageTag_MediumCharged-Exclusive-Montage_1P-Montage_3P-Montage_Equipment-AudioEvent-bSeparate3PAudioEvent-AudioEvent3P"
+				},
+				{
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item--Filter-FilterMontageTag_FullyCharged-Exclusive-Montage_1P-Montage_3P-Montage_Equipment-AudioEvent-bSeparate3PAudioEvent-AudioEvent3P-CameraAnim"
+				},
+				{
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item--Montage_1P-Montage_3P-Montage_Equipment-AudioEvent-bSeparate3PAudioEvent-AudioEvent3P-CameraAnim"
+				},
+				{
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item--Weight-Montage_1P-Montage_3P-Montage_Equipment-AudioEvent-bSeparate3PAudioEvent-AudioEvent3P-CameraAnim"
+				},
+				{
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item--Filter-Exclusive-Montage_1P-Montage_3P-Montage_Equipment-AudioEvent"
+				},
+				{
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item--Weight-Montage_1P-Montage_3P-Montage_Equipment-AudioEvent-CameraAnim"
+				},
+				{
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item--Montage_1P-Montage_3P-Montage_Equipment-AudioEvent-CameraAnim"
+				},
+				{
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item--Montage_1P-Montage_3P-AudioEvent"
+				},
+				{
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item--Filter-FilterMontageTag_EquipmentInHand_None-Exclusive-AudioEvent"
+				},
+				{
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item--Montage_1P-Montage_3P-Montage_Equipment"
+				},
+				{
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item--AudioEvent-bSeparate3PAudioEvent-AudioEvent3P"
+				},
+				{
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item--Montage_1P-Montage_Equipment-AudioEvent-CameraAnim"
+				},
+				{
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item--Montage_1P-Montage_Equipment-AudioEvent-bSeparate3PAudioEvent-AudioEvent3P-CameraAnim"
+				},
+				{
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item--Montage_1P-Montage_3P-AudioEvent-bSeparate3PAudioEvent-CameraAnim"
+				},
+				{
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item--Montage_1P-Montage_3P-AudioEvent-bSeparate3PAudioEvent-AudioEvent3P-CameraAnim"
+				},
+				{
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item--Filter-FilterMontageTag_EquipmentInHand_None-Exclusive-Montage_1P-Montage_3P-AudioEvent-CameraAnim"
+				},
+				{
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item--Filter-FilterMontageTag_EquipmentInHand_TwoHanded-Exclusive-Montage_3P-AudioEvent-CameraAnim"
+				},
+				{
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item--Filter-FilterMontageTag_EquipmentInHand_TwoHanded-InvertFilter-Exclusive-Montage_1P-Montage_3P-AudioEvent"
+				},
+				{
+					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/Montages--item--Montage_3P-AudioEvent"
+				},
+				{
+					"$ref": "#/$defs/Montages--item--AudioEvent-bSeparate3PAudioEvent"
+				},
+				{
+					"$ref": "#/$defs/Montages--item--Filter-Exclusive-Montage_1P-Montage_3P-Montage_Equipment-AudioEvent-bSeparate3PAudioEvent-AudioEvent3P"
+				},
+				{
+					"$ref": "#/$defs/Montages--item--Weight-Montage_1P-Montage_3P-Montage_Equipment-AudioEvent"
+				}
+			]
+		},
+		"Montages--item--AudioEvent-bSeparate3PAudioEvent": {
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": ["AudioEvent", "bSeparate3PAudioEvent"],
+				"properties": {
+					"AudioEvent": {
+						"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
+					},
+					"bSeparate3PAudioEvent": {
+						"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+					}
+				}
+			}
+		},
+		"Montages--item--Filter-Exclusive-Montage_1P-Montage_3P-Montage_Equipment-AudioEvent-bSeparate3PAudioEvent-AudioEvent3P": {
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": [
+					"Filter",
+					"Exclusive",
+					"Montage_1P",
+					"Montage_3P",
+					"Montage_Equipment",
+					"AudioEvent",
+					"bSeparate3PAudioEvent",
+					"AudioEvent3P"
+				],
+				"properties": {
+					"Filter": {
+						"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+					},
+					"Exclusive": {
+						"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+					},
+					"Montage_1P": {
+						"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
+					},
+					"Montage_3P": {
+						"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
+					},
+					"Montage_Equipment": {
+						"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
+					},
+					"AudioEvent": {
+						"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
+					},
+					"bSeparate3PAudioEvent": {
+						"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+					},
+					"AudioEvent3P": {
+						"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
+					}
+				}
+			}
+		},
+		"Montages--item--Weight-Montage_1P-Montage_3P-Montage_Equipment-AudioEvent": {
+			"type": "string",
+			"typed_string": {
+				"type": "object",
+				"additionalProperties": false,
+				"required": [
+					"Weight",
+					"Montage_1P",
+					"Montage_3P",
+					"Montage_Equipment",
+					"AudioEvent"
+				],
+				"properties": {
+					"Weight": {
+						"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+					},
+					"Montage_1P": {
+						"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
+					},
+					"Montage_3P": {
+						"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
+					},
+					"Montage_Equipment": {
+						"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/AnimMontage--quoted"
+					},
+					"AudioEvent": {
+						"$ref": "docs.json.ts--0.8.3.3--properties.overridable#/$defs/DocsDotJson_AkAudioEvent_quoted--list--item"
+					}
+				}
+			}
+		},
+		"WidgetClass": {
+			"oneOf": [
+				{
+					"type": "string",
+					"const": "None"
+				},
+				{
+					"type": "string",
+					"templated_string": [
+						"/Game/FactoryGame/",
+						["Buildable", "Interface"],
+						"/",
+						{
+							"type": "string",
+							"minLength": 1
+						},
+						"/Widget_",
+						{
+							"type": "string",
+							"minLength": 1
+						},
+						".Widget_",
+						{
+							"type": "string",
+							"minLength": 1
+						},
+						"_C"
+					]
+				},
+				{
+					"type": "string",
+					"templated_string": [
+						"/Game/FactoryGame/",
+						["Buildable", "Interface"],
+						"/",
+						{
+							"type": "string",
+							"minLength": 1
+						},
+						"/BPW_",
+						{
+							"type": "string",
+							"minLength": 1
+						},
+						".BPW_",
+						{
+							"type": "string",
+							"minLength": 1
+						},
+						"_C"
+					]
+				}
+			]
+		}
+	}
+}

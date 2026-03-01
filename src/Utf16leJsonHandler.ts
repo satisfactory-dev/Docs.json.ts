@@ -175,7 +175,7 @@ export class Utf16leJsonHandler<
 		}
 
 		const file = (await readFile(this.#filepath, {
-			encoding: this.#filepath.includes('/1.0.1.4/Docs/io.json')
+			encoding: this.#filepath.includes('/Docs/io.json')
 				? 'utf8'
 				: 'utf-16le',
 		})).replace(/"NativeClass":"Class'/g, `\n"NativeClass":"Class'`);
