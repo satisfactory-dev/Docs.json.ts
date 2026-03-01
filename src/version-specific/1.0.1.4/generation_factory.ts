@@ -175,28 +175,28 @@ async function generation_factory(
 
 	if (process_types) {
 		schema_set.push(
-		update3_overridable,
-		update3_classes__base__overridable,
-		update4_overridable,
-		update4_classes__base__overridable,
-		update5_overridable,
-		update5_classes__base__overridable,
-		update5_classes__overridable,
-		update6_overridable,
-		update6_classes__base__overridable,
-		update6_classes__overridable,
-		update7_classes__base__overridable,
-		update8_properties__overridable,
-		update8_classes__base__overridable,
-		release_1_0_properties,
-		release_1_0_classes__base,
-		release_1_0_classes,
+			update3_overridable,
+			update3_classes__base__overridable,
+			update4_overridable,
+			update4_classes__base__overridable,
+			update5_overridable,
+			update5_classes__base__overridable,
+			update5_classes__overridable,
+			update6_overridable,
+			update6_classes__base__overridable,
+			update6_classes__overridable,
+			update7_classes__base__overridable,
+			update8_properties__overridable,
+			update8_classes__base__overridable,
+			release_1_0_properties,
+			release_1_0_classes__base,
+			release_1_0_classes,
 		);
 	}
 
 	if (process_data) {
 		schema_set.push(
-		release_1_0,
+			release_1_0,
 		);
 	}
 
