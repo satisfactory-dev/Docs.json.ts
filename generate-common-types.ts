@@ -1,18 +1,18 @@
 import {
 	TypeDefinitionWriter,
-} from './lib/TypeDefinitionWriter';
+} from './lib/TypeDefinitionWriter.ts';
 import {
 	NoMatchError,
-} from './lib/Exceptions';
+} from './lib/Exceptions.ts';
 import {
 	writeFile,
 } from 'node:fs/promises';
 import {
 	docs,
-} from './lib/helpers';
+} from './lib/helpers.ts';
 import {
 	ValidationError,
-} from './lib/DocsTsGenerator';
+} from './lib/DocsTsGenerator.ts';
 
 try {
 	performance.mark('start');

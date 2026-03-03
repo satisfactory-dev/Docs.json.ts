@@ -1,11 +1,12 @@
 import {
 	ConverterMatchesSchema,
 	ExpressionResult,
-} from '../Generator';
-import Ajv, {
+} from '../Generator.ts';
+import type Ajv from 'ajv/dist/2020.js';
+import type {
 	SchemaObject,
 	ValidateFunction,
-} from 'ajv/dist/2020';
+} from 'ajv/dist/2020.js';
 import {
 	is_string,
 	object_has_property,
@@ -14,25 +15,28 @@ import {
 
 import {
 	NoMatchError,
-} from '../../Exceptions';
-import {
+} from '../../Exceptions.ts';
+import type {
 	enum_schema_type,
-} from '../../CustomParsingTypes/TypedStringEnum';
-import {
+} from '../../CustomParsingTypes/TypedStringEnum.ts';
+import type {
 	const_schema_type,
-} from '../../CustomParsingTypes/TypedStringConst';
-import ts, {
+} from '../../CustomParsingTypes/TypedStringConst.ts';
+import type {
 	AsExpression,
 	StringLiteral,
 } from 'typescript';
+import ts from 'typescript';
 import {
 	create_literal,
 	type_reference_node,
-} from '../../TsFactoryWrapper';
+} from '../../TsFactoryWrapper.ts';
+import type {
+	not_matching_string_type,
+} from '../../TypeDefinitionDiscovery/JsonSchema/String.ts';
 import {
 	not_matching_string_schema,
-	not_matching_string_type,
-} from '../../TypeDefinitionDiscovery/JsonSchema/String';
+} from '../../TypeDefinitionDiscovery/JsonSchema/String.ts';
 import {
 	compile,
 } from '@satisfactory-dev/ajv-utilities';

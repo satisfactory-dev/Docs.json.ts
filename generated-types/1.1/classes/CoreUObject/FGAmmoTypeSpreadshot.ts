@@ -2,17 +2,17 @@ import {
 	EditorCurveData__type,
 	v1_0_base__mGasType__type,
 	v1_0_base__mClassToScanFor__type,
-} from '../../common/unassigned';
+} from '../../common/unassigned.ts';
 
-import {FGAmmoTypeProjectile__base__type} from './FGAmmoTypeProjectile';
+import {FGAmmoTypeProjectile__base__type} from './FGAmmoTypeProjectile.ts';
 
-import {boolean__type} from '../../../common/common/scalar';
+import {boolean__type} from '../../../common/common/scalar.ts';
 
 import {
 	empty_object__type,
 	common_base__FGAmmoTypeSpreadshot__pre_1_1__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned';
+} from '../../../common/common/unassigned.ts';
 
 export type FGAmmoTypeSpreadshot__type = FGAmmoTypeProjectile__base__type &
 	common_base__FGAmmoTypeSpreadshot__pre_1_1__type &

@@ -1,10 +1,10 @@
-import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
+import {UnrealEngineString, StringStartsWith} from '../../utils/validators.ts';
 
 import {
 	boolean__type,
 	decimal_string__type,
 	integer_string__type,
-} from '../../common/scalar';
+} from '../../common/scalar.ts';
 
 import {
 	Texture2D__type,
@@ -13,7 +13,7 @@ import {
 	UnrealEngineString__array__type,
 	empty_object__type,
 	class__type,
-} from '../../common/unassigned';
+} from '../../common/unassigned.ts';
 
 export type common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type =
 	class__type & {

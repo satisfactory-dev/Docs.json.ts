@@ -1,14 +1,14 @@
-import {FGBuildable__base__type} from './FGBuildable';
+import {FGBuildable__base__type} from './FGBuildable.ts';
 
 import {
 	empty_object__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned';
+} from '../../../common/common/unassigned.ts';
 
 import {
 	common_base__FGBuildableConveyorBelt__base__type,
 	common_base__FGBuildableConveyorBelt__type,
-} from '../../../common/classes/CoreUObject/FGBuildableConveyorBelt';
+} from '../../../common/classes/CoreUObject/FGBuildableConveyorBelt.ts';
 
 export type FGBuildableConveyorBelt__type =
 	FGBuildableConveyorBelt__merged__type;

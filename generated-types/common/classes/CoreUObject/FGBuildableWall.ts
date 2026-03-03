@@ -1,8 +1,8 @@
-import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
+import {UnrealEngineString, StringStartsWith} from '../../utils/validators.ts';
 
-import {decimal_string__type} from '../../common/scalar';
+import {decimal_string__type} from '../../common/scalar.ts';
 
-import {common_base__FGBuildable__base__type} from './FGBuildable';
+import {common_base__FGBuildable__base__type} from './FGBuildable.ts';
 
 export type common_base__FGBuildableWall__base__type =
 	common_base__FGBuildable__base__type & {

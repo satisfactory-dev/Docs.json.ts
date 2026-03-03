@@ -1,6 +1,6 @@
-import {decimal_string__type, integer_string__type} from '../../common/scalar';
+import {decimal_string__type, integer_string__type} from '../../common/scalar.ts';
 
-import {common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type} from './FGItemDescriptor';
+import {common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type} from './FGItemDescriptor.ts';
 
 export type common_base__FGVehicleDescriptor__fueled_with_inventory__type =
 	common_base__FGVehicleDescriptor__with_inventory__type & {

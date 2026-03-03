@@ -1,18 +1,18 @@
-import {Montage_1P__type, Montage_3P__type} from '../../common/unassigned';
+import {Montage_1P__type, Montage_3P__type} from '../../common/unassigned.ts';
 
-import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
+import {UnrealEngineString, StringStartsWith} from '../../utils/validators.ts';
 
-import {FGEquipment__base__type} from './FGEquipment';
+import {FGEquipment__base__type} from './FGEquipment.ts';
 
 import {
 	xyz__type,
 	empty_object__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned';
+} from '../../../common/common/unassigned.ts';
 
-import {decimal_string__type} from '../../../common/common/scalar';
+import {decimal_string__type} from '../../../common/common/scalar.ts';
 
-import {common_base__FGGolfCartDispenser__type} from '../../../common/classes/CoreUObject/FGGolfCartDispenser';
+import {common_base__FGGolfCartDispenser__type} from '../../../common/classes/CoreUObject/FGGolfCartDispenser.ts';
 
 export type FGGolfCartDispenser__type = FGGolfCartDispenser__merged__type & {
 	mBuildDisqualifierText: 'Vehicles cannot be built or deployed on top of existing vehicles!';

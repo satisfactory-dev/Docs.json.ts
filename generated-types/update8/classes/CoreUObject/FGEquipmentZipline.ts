@@ -1,10 +1,10 @@
-import {FGEquipment__base__type} from './FGEquipment';
+import {FGEquipment__base__type} from './FGEquipment.ts';
 
-import {boolean__type} from '../../../common/common/scalar';
+import {boolean__type} from '../../../common/common/scalar.ts';
 
-import {common_base__FGEquipmentZipline__type} from '../../../common/classes/CoreUObject/FGEquipmentZipline';
+import {common_base__FGEquipmentZipline__type} from '../../../common/classes/CoreUObject/FGEquipmentZipline.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGEquipmentZipline__type = FGEquipmentZipline__merged__type & {
 	mShouldPlayDeactivateSound: boolean__type;

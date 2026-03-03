@@ -1,11 +1,11 @@
-import {FGItemDescriptor__FGResourceDescriptor__type} from './FGItemDescriptor';
+import {FGItemDescriptor__FGResourceDescriptor__type} from './FGItemDescriptor.ts';
 
 import {
 	common_base__FGAmmoTypeProjectile__type,
 	common_base__FGAmmoTypeProjectile__base__type,
-} from '../../../common/classes/CoreUObject/FGAmmoTypeProjectile';
+} from '../../../common/classes/CoreUObject/FGAmmoTypeProjectile.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGAmmoTypeProjectile__type =
 	common_base__FGAmmoTypeProjectile__type &

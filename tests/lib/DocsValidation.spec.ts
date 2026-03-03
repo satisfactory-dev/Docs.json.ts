@@ -9,10 +9,11 @@ import {
 	string_to_array,
 	string_to_native_type,
 	string_to_object,
-} from '../../lib/DocsValidation';
-import Ajv, {
+} from '../../lib/DocsValidation.ts';
+import type Ajv from 'ajv/dist/2020.js';
+import type {
 	SchemaObject,
-} from 'ajv/dist/2020';
+} from 'ajv/dist/2020.js';
 
 type definitions = {
 	[key: string]: ([string, unknown]|[string, unknown, unknown])[]

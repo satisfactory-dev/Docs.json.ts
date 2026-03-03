@@ -2,9 +2,9 @@ import {
 	common_base__FGAmmoTypeInstantHit__base__pre_1_1__type,
 	common_base__FGAmmoTypeInstantHit__chaos__pre_1_1__type,
 	common_base__FGAmmoTypeInstantHit__standard__pre_1_1__type,
-} from '../../common/unassigned';
+} from '../../common/unassigned.ts';
 
-import {common_base__FGAmmoTypeProjectile__base__type} from './FGAmmoTypeProjectile';
+import {common_base__FGAmmoTypeProjectile__base__type} from './FGAmmoTypeProjectile.ts';
 
 export type common_base__FGAmmoTypeInstantHit__base__type =
 	common_base__FGAmmoTypeProjectile__base__type &

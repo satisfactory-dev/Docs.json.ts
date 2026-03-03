@@ -7,18 +7,13 @@ import {
 import {
 	glob,
 } from 'glob';
-import {
-	__dirname_from_meta,
-} from './lib/__dirname';
-
-const __dirname = __dirname_from_meta(import.meta);
 
 const ac = new AbortController();
 
 let already_stopped = false;
 
 run({
-	files: await glob(`${__dirname}/tests/**/*.spec.ts`),
+	files: await glob(`${import.meta.dirname}/tests/**/*.spec.ts`),
 	concurrency: true,
 	signal: ac.signal,
 })

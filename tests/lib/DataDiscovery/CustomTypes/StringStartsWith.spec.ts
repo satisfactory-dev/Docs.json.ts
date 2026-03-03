@@ -5,13 +5,13 @@ import {
 import assert from 'node:assert/strict';
 import {
 	StringStartsWithConverter,
-} from '../../../../lib/DataDiscovery/CustomTypes/StringStartsWith';
+} from '../../../../lib/DataDiscovery/CustomTypes/StringStartsWith.ts';
 import {
 	docs,
-} from '../../../../lib/helpers';
-import {
+} from '../../../../lib/helpers.ts';
+import type {
 	SchemaObject,
-} from 'ajv/dist/2020';
+} from 'ajv/dist/2020.js';
 import ts_assert from '@signpostmarv/ts-assert';
 import {
 	array_has_size, not_undefined,

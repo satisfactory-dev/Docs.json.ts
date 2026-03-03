@@ -1,15 +1,15 @@
-import {FGBuildableConveyorBelt__pre_1_1__type} from '../../common/unassigned';
+import {FGBuildableConveyorBelt__pre_1_1__type} from '../../common/unassigned.ts';
 
-import {FGBuildable__base__type} from './FGBuildable';
+import {FGBuildable__base__type} from './FGBuildable.ts';
 
-import {integer_string__signed__type} from '../../../common/common/scalar';
+import {integer_string__signed__type} from '../../../common/common/scalar.ts';
 
 import {
 	common_base__FGBuildableConveyorBelt__base__type,
 	common_base__FGBuildableConveyorBelt__type,
-} from '../../../common/classes/CoreUObject/FGBuildableConveyorBelt';
+} from '../../../common/classes/CoreUObject/FGBuildableConveyorBelt.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildableConveyorBelt__type =
 	FGBuildableConveyorBelt__pre_1_1__type;

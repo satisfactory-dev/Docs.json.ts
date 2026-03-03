@@ -1,12 +1,12 @@
-import {empty_object__type, xy__type} from '../../common/unassigned';
+import {empty_object__type, xy__type} from '../../common/unassigned.ts';
 
 import {
 	decimal_string__type,
 	integer_string__type,
 	boolean__type,
-} from '../../common/scalar';
+} from '../../common/scalar.ts';
 
-import {common_base__FGBuildable__docking_station_base__type} from './FGBuildable';
+import {common_base__FGBuildable__docking_station_base__type} from './FGBuildable.ts';
 
 export type common_base__FGBuildableDockingStation__type =
 	common_base__FGBuildable__docking_station_base__type & {

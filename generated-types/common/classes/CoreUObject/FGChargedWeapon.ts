@@ -1,6 +1,6 @@
-import {common_base__FGWeapon__base__type} from './FGWeapon';
+import {common_base__FGWeapon__base__type} from './FGWeapon.ts';
 
-import {decimal_string__type, integer_string__type} from '../../common/scalar';
+import {decimal_string__type, integer_string__type} from '../../common/scalar.ts';
 
 export type common_base__FGChargedWeapon__type =
 	common_base__FGWeapon__base__type & {

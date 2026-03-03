@@ -1,14 +1,14 @@
-import {FGBuildable__base__type} from './FGBuildable';
+import {FGBuildable__base__type} from './FGBuildable.ts';
 
 import {
 	integer_string__type,
 	integer_string__signed__type,
 	decimal_string__type,
-} from '../../../common/common/scalar';
+} from '../../../common/common/scalar.ts';
 
-import {common_base__FGBuildableRailroadTrack__type} from '../../../common/classes/CoreUObject/FGBuildableRailroadTrack';
+import {common_base__FGBuildableRailroadTrack__type} from '../../../common/classes/CoreUObject/FGBuildableRailroadTrack.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildableRailroadTrack__type =
 	FGBuildableRailroadTrack__merged__type & {

@@ -1,8 +1,8 @@
-import {FGBuildable__base__type} from './FGBuildable';
+import {FGBuildable__base__type} from './FGBuildable.ts';
 
-import {common_base__FGBuildablePipeline__type} from '../../../common/classes/CoreUObject/FGBuildablePipeline';
+import {common_base__FGBuildablePipeline__type} from '../../../common/classes/CoreUObject/FGBuildablePipeline.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildablePipeline__type =
 	common_base__FGBuildablePipeline__type &

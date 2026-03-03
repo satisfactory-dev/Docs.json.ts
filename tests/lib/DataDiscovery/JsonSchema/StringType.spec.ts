@@ -10,31 +10,31 @@ import {
 	pattern_schema,
 	PatternConverter,
 	string_schema,
-} from '../../../../lib/DataDiscovery/JsonSchema/StringType';
+} from '../../../../lib/DataDiscovery/JsonSchema/StringType.ts';
 import {
 	docs,
-} from '../../../../lib/helpers';
+} from '../../../../lib/helpers.ts';
 import ts_assert from '@signpostmarv/ts-assert';
 import {
 	array_has_size,
 	not_undefined,
 	rejects_partial_match,
 } from '@satisfactory-dev/custom-assert';
-import {
+import type {
 	SchemaObject,
-} from 'ajv';
-import {
+} from 'ajv/dist/2020.js';
+import type {
 	Expression,
 } from 'typescript';
-import {
+import type {
 	const_schema_type,
-} from '../../../../lib/CustomParsingTypes/TypedStringConst';
+} from '../../../../lib/CustomParsingTypes/TypedStringConst.ts';
 import {
 	ConverterMatchesSchema,
-} from '../../../../lib/DataDiscovery/Generator';
+} from '../../../../lib/DataDiscovery/Generator.ts';
 import {
 	enum_schema_type,
-} from '../../../../lib/CustomParsingTypes/TypedStringEnum';
+} from '../../../../lib/CustomParsingTypes/TypedStringEnum.ts';
 
 type data_sets<
 	InstanceType extends (

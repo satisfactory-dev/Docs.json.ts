@@ -1,11 +1,11 @@
-import {FGBuildable__consumes_power_base__type} from './FGBuildable';
+import {FGBuildable__consumes_power_base__type} from './FGBuildable.ts';
 
 import {
 	common_base__FGBuildableFactory__jump_pad__type,
 	common_base__FGBuildableFactory__landing_pad__type,
-} from '../../../common/classes/CoreUObject/FGBuildableFactory';
+} from '../../../common/classes/CoreUObject/FGBuildableFactory.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildableFactory__jump_pad__type =
 	common_base__FGBuildableFactory__jump_pad__type &

@@ -2,14 +2,14 @@ import {
 	integer_string__type,
 	boolean__type,
 	decimal_string__type,
-} from '../../common/scalar';
+} from '../../common/scalar.ts';
 
 import {
 	empty_object__type,
 	mDockingRuleSet__type,
-} from '../../common/unassigned';
+} from '../../common/unassigned.ts';
 
-import {common_base__FGBuildableTrainPlatform__base__type} from './FGBuildableTrainPlatform';
+import {common_base__FGBuildableTrainPlatform__base__type} from './FGBuildableTrainPlatform.ts';
 
 export type common_base__FGBuildableTrainPlatformCargo__type =
 	common_base__FGBuildableTrainPlatformCargo__FGBuildableRailroadStation__type & {

@@ -1,12 +1,15 @@
 import {
 	NodeExtraction,
-} from './NodeExtraction';
-import ts, {
-	Node, TypeElement, TypeLiteralNode,
+} from './NodeExtraction.ts';
+import type {
+	Node,
+	TypeElement,
+	TypeLiteralNode,
 } from 'typescript';
+import ts from 'typescript';
 import {
 	NoMatchError,
-} from '../Exceptions';
+} from '../Exceptions.ts';
 
 export class TypeLiteralNodes extends NodeExtraction<TypeLiteralNode> {
 	protected extract(nodes: TypeLiteralNode[]): Node[] {

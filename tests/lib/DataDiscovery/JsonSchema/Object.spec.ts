@@ -3,19 +3,21 @@ import {
 	it,
 } from 'node:test';
 import assert from 'node:assert/strict';
+import type {
+	schema_type,
+} from '../../../../lib/DataDiscovery/JsonSchema/Object.ts';
 import {
 	ObjectConverter,
-	schema_type,
-} from '../../../../lib/DataDiscovery/JsonSchema/Object';
+} from '../../../../lib/DataDiscovery/JsonSchema/Object.ts';
 import {
 	docs,
-} from '../../../../lib/helpers';
+} from '../../../../lib/helpers.ts';
 import {
 	DataDiscovery,
-} from '../../../../lib/DataDiscovery';
+} from '../../../../lib/DataDiscovery.ts';
 import {
 	local_ref,
-} from '../../../../lib/StringStartsWith';
+} from '../../../../lib/StringStartsWith.ts';
 import {
 	rejects_partial_match,
 } from '@satisfactory-dev/custom-assert';

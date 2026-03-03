@@ -1,12 +1,13 @@
-import ts, {
+import type {
 	UnionTypeNode,
 } from 'typescript';
+import ts from 'typescript';
 import {
 	GeneratorDoesDiscovery,
-} from '../GeneratorDoesDiscovery';
+} from '../GeneratorDoesDiscovery.ts';
 import {
 	TypeDefinitionDiscovery,
-} from '../../TypeDefinitionDiscovery';
+} from '../../TypeDefinitionDiscovery.ts';
 
 type RawData = {
 	oneOf: [

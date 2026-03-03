@@ -1,8 +1,8 @@
-import {FGBuildable__consumes_power_base__type} from './FGBuildable';
+import {FGBuildable__consumes_power_base__type} from './FGBuildable.ts';
 
-import {common_base__FGBuildableStorage__type} from '../../../common/classes/CoreUObject/FGBuildableStorage';
+import {common_base__FGBuildableStorage__type} from '../../../common/classes/CoreUObject/FGBuildableStorage.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildableStorage__type = FGBuildableStorage__merged__type;
 

@@ -1,6 +1,6 @@
-import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
+import {UnrealEngineString, StringStartsWith} from '../../utils/validators.ts';
 
-import {common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type} from './FGItemDescriptor';
+import {common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type} from './FGItemDescriptor.ts';
 
 export type common_base__FGBuildingDescriptor__type =
 	common_base__FGBuildingDescriptor__base__type & {

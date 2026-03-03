@@ -1,9 +1,9 @@
 import {
 	CandidatesDiscovery,
-} from '../CandidatesDiscovery';
-import {
+} from '../CandidatesDiscovery.ts';
+import type {
 	SchemaObject,
-} from 'ajv/dist/2020';
+} from 'ajv/dist/2020.js';
 import {
 	is_string,
 	object_has_property,

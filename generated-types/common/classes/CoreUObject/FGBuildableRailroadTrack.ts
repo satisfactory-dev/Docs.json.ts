@@ -1,15 +1,15 @@
-import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
+import {UnrealEngineString, StringStartsWith} from '../../utils/validators.ts';
 
 import {
 	decimal_string__type,
 	boolean__type,
 	integer_string__signed__type,
 	integer_string__type,
-} from '../../common/scalar';
+} from '../../common/scalar.ts';
 
-import {empty_object__type, class__type} from '../../common/unassigned';
+import {empty_object__type, class__type} from '../../common/unassigned.ts';
 
-import {common_base__FGBuildable__base__type} from './FGBuildable';
+import {common_base__FGBuildable__base__type} from './FGBuildable.ts';
 
 export type common_base__FGBuildableRailroadTrack__type =
 	common_base__FGBuildable__base__type &

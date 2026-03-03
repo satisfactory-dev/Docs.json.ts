@@ -1,8 +1,9 @@
 import {
 	NodeExtraction,
-} from './NodeExtraction';
-import {
-	Node, TypeReferenceNode,
+} from './NodeExtraction.ts';
+import type {
+	Node,
+	TypeReferenceNode,
 } from 'typescript';
 
 export class TypeReferenceNodes extends NodeExtraction<TypeReferenceNode> {

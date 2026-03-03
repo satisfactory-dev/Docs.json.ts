@@ -1,12 +1,12 @@
-import {Montage_1P__type, Montage_3P__type} from '../../common/unassigned';
+import {Montage_1P__type, Montage_3P__type} from '../../common/unassigned.ts';
 
-import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
+import {UnrealEngineString, StringStartsWith} from '../../utils/validators.ts';
 
-import {FGEquipment__placeable__type} from './FGEquipment';
+import {FGEquipment__placeable__type} from './FGEquipment.ts';
 
-import {common_base__FGPortableMinerDispenser__type} from '../../../common/classes/CoreUObject/FGPortableMinerDispenser';
+import {common_base__FGPortableMinerDispenser__type} from '../../../common/classes/CoreUObject/FGPortableMinerDispenser.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGPortableMinerDispenser__type =
 	FGPortableMinerDispenser__merged__type & {

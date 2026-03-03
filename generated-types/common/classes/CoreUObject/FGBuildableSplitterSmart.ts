@@ -1,8 +1,8 @@
-import {empty_object__type} from '../../common/unassigned';
+import {empty_object__type} from '../../common/unassigned.ts';
 
-import {integer_string__type} from '../../common/scalar';
+import {integer_string__type} from '../../common/scalar.ts';
 
-import {common_base__FGBuildable__splitter__base__type} from './FGBuildable';
+import {common_base__FGBuildable__splitter__base__type} from './FGBuildable.ts';
 
 export type common_base__FGBuildableSplitterSmart__type =
 	common_base__FGBuildable__splitter__base__type & {

@@ -7,11 +7,11 @@ import {
 
 import {
 	SupportedSubSchemaType,
-} from './CustomPairingTypes';
+} from './CustomPairingTypes.ts';
 import {
 	typed_string_const_value_regex,
 	typed_string_const_value_regex__native,
-} from './TypedStringConst';
+} from './TypedStringConst.ts';
 
 export type enum_schema_type = {type: 'string'; enum: [string, ...string[]]};
 

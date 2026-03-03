@@ -1,9 +1,14 @@
-import Ajv, {
-	_, AnySchema, KeywordCxt,
-} from 'ajv/dist/2020';
+import type {
+	AnySchema,
+	KeywordCxt,
+} from 'ajv/dist/2020.js';
+import type Ajv from 'ajv/dist/2020.js';
+import {
+	_,
+} from 'ajv/dist/2020.js';
 import {
 	UnrealEngineString,
-} from './CustomParsingTypes/UnrealEngineString';
+} from './CustomParsingTypes/UnrealEngineString.ts';
 import {
 	is_string,
 } from '@satisfactory-dev/predicates.ts';

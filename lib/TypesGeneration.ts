@@ -1,7 +1,7 @@
 import ts from 'typescript';
 import {
 	NoMatchError,
-} from './Exceptions';
+} from './Exceptions.ts';
 
 export declare type import_these_somewhere_later = {[key: string]: string[]};
 

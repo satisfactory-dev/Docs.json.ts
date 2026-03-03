@@ -1,14 +1,14 @@
-import Ajv from 'ajv/dist/2020';
-import {
+import Ajv from 'ajv/dist/2020.js';
+import type {
 	TypeReferenceNode,
 } from 'typescript';
 import {
 	create_literal,
 	type_reference_node,
-} from '../../../TsFactoryWrapper';
+} from '../../../TsFactoryWrapper.ts';
 import {
 	Generator,
-} from '../../Generator';
+} from '../../Generator.ts';
 
 export class Pattern extends Generator<
 	{type: 'string', pattern: string},

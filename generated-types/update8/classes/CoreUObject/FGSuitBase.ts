@@ -1,10 +1,10 @@
-import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
+import {UnrealEngineString, StringStartsWith} from '../../utils/validators.ts';
 
-import {FGEquipment__base__type} from './FGEquipment';
+import {FGEquipment__base__type} from './FGEquipment.ts';
 
-import {common_base__FGSuitBase__type} from '../../../common/classes/CoreUObject/FGSuitBase';
+import {common_base__FGSuitBase__type} from '../../../common/classes/CoreUObject/FGSuitBase.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGSuitBase__type = FGSuitBase__merged__type & {
 	mSuit1PMeshMaterials: [

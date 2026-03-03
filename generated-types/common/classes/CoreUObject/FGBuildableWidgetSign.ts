@@ -1,4 +1,4 @@
-import {decimal_string__type, integer_string__type} from '../../common/scalar';
+import {decimal_string__type, integer_string__type} from '../../common/scalar.ts';
 
 import {
 	empty_object__type,
@@ -6,9 +6,9 @@ import {
 	color_decimal__type,
 	xy__type,
 	xyz__type,
-} from '../../common/unassigned';
+} from '../../common/unassigned.ts';
 
-import {common_base__FGBuildable__base__type} from './FGBuildable';
+import {common_base__FGBuildable__base__type} from './FGBuildable.ts';
 
 export type common_base__FGBuildableWidgetSign__type =
 	common_base__FGBuildable__base__type & {

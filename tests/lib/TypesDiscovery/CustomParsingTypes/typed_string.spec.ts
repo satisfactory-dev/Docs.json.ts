@@ -5,10 +5,10 @@ import {
 import assert from 'node:assert/strict';
 import {
 	typed_string,
-} from '../../../../lib/TypesDiscovery/CustomParsingTypes/typed_string';
-import {
+} from '../../../../lib/TypesDiscovery/CustomParsingTypes/typed_string.ts';
+import type {
 	SchemaObject,
-} from 'ajv';
+} from 'ajv/dist/2020.js';
 
 void describe('typed_string', () => {
 	const instance = new typed_string({});

@@ -6,10 +6,10 @@ import assert from 'node:assert/strict';
 import {
 	string_starts_with,
 // eslint-disable-next-line max-len
-} from '../../../../lib/TypeDefinitionDiscovery/CustomParsingTypes/string_starts_with';
+} from '../../../../lib/TypeDefinitionDiscovery/CustomParsingTypes/string_starts_with.ts';
 import {
 	docs,
-} from '../../../../lib/helpers';
+} from '../../../../lib/helpers.ts';
 import ts_assert from '@signpostmarv/ts-assert';
 import {
 	array_has_size,

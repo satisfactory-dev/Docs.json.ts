@@ -1,11 +1,11 @@
-import {decimal_string__type, boolean__type} from '../../common/scalar';
+import {decimal_string__type, boolean__type} from '../../common/scalar.ts';
 
 import {
 	empty_object__type,
 	common_base__mDisableSnapOn__type,
-} from '../../common/unassigned';
+} from '../../common/unassigned.ts';
 
-import {common_base__FGBuildable__base__type} from './FGBuildable';
+import {common_base__FGBuildable__base__type} from './FGBuildable.ts';
 
 export type common_base__FGBuildableFoundation__type =
 	common_base__FGBuildableFoundation__base__type;

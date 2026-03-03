@@ -1,16 +1,16 @@
-import {Montage_1P__type, Montage_3P__type} from '../../common/unassigned';
+import {Montage_1P__type, Montage_3P__type} from '../../common/unassigned.ts';
 
-import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
+import {UnrealEngineString, StringStartsWith} from '../../utils/validators.ts';
 
-import {FGEquipment__base__type} from './FGEquipment';
+import {FGEquipment__base__type} from './FGEquipment.ts';
 
 import {
 	xyz__type,
 	empty_object__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned';
+} from '../../../common/common/unassigned.ts';
 
-import {common_base__FGObjectScanner__type} from '../../../common/classes/CoreUObject/FGObjectScanner';
+import {common_base__FGObjectScanner__type} from '../../../common/classes/CoreUObject/FGObjectScanner.ts';
 
 export type FGObjectScanner__type = FGObjectScanner__merged__type & {
 	mScannerCycleLeftMontage: {

@@ -18,7 +18,7 @@ build:
 
 clean:
 	@echo 'running ./clean.ts'
-	@./node_modules/.bin/ts-node ./clean.ts
+	@node ./clean.ts
 
 generate: lint generate--skip-checks generate--post-build
 
@@ -26,19 +26,19 @@ generate--skip-checks: build generate--skip-checks--common generate--skip-checks
 
 generate--skip-checks--common:
 	@echo 'running ./generate-common-types.ts'
-	@./node_modules/.bin/ts-node ./generate-common-types.ts
+	@node ./generate-common-types.ts
 
 generate--skip-checks--update8:
 	@echo 'running ./discover-types.ts'
-	@./node_modules/.bin/ts-node ./discover-types.ts
+	@node ./discover-types.ts
 
 generate--skip-checks--version-1-0:
 	@echo 'running ./discover-types--1.0.ts'
-	@./node_modules/.bin/ts-node ./discover-types--1.0.ts
+	@node ./discover-types--1.0.ts
 
 generate--skip-checks--version-1-1:
 	@echo 'running ./discover-types--1.1.ts'
-	@./node_modules/.bin/ts-node ./discover-types--1.1.ts
+	@node ./discover-types--1.1.ts
 
 generate--post-build:
 	@NODE_OPTIONS='' ./node_modules/.bin/tsc --project ./tsconfig.generated-types-check.json
@@ -65,14 +65,14 @@ tests: build
 	@npm test
 
 tests--only-unstaged: build
-	@./node_modules/.bin/ts-node ./tests--only-these.ts '$(shell git diff HEAD --name-only)'
+	@node ./tests--only-these.ts '$(shell git diff HEAD --name-only)'
 
 .PHONY: coverage
 coverage: build
 	@./node_modules/.bin/c8 npm test
 
 coverage--only-unstaged: build
-	@./node_modules/.bin/c8 ./node_modules/.bin/ts-node ./tests--only-these.ts '$(shell git diff HEAD --name-only)'
+	@./node_modules/.bin/c8 node ./tests--only-these.ts '$(shell git diff HEAD --name-only)'
 
 npm-prep: tests
 	@echo 'building from ./tsconfig.app-npm.json'

@@ -1,4 +1,4 @@
-import ts, {
+import type {
 	ArrayTypeNode,
 	ClassDeclaration,
 	EntityName,
@@ -10,36 +10,37 @@ import ts, {
 	TupleTypeNode,
 	TypeLiteralNode,
 } from 'typescript';
+import ts from 'typescript';
 import {
 	TypeReferenceNodes,
-} from './TypeReferenceNodes';
+} from './TypeReferenceNodes.ts';
 import {
 	ClassDeclarations,
-} from './ClassDeclarations';
+} from './ClassDeclarations.ts';
 import {
 	TupleTypeNodes,
-} from './TupleTypeNodes';
+} from './TupleTypeNodes.ts';
 import {
 	TypeLiteralNodes,
-} from './TypeLiteralNodes';
+} from './TypeLiteralNodes.ts';
 import {
 	LiteralTypeNodes,
-} from './LiteralTypeNodes';
+} from './LiteralTypeNodes.ts';
 import {
 	ArrayTypeNodes,
-} from './ArrayTypeNodes';
+} from './ArrayTypeNodes.ts';
 import {
 	MethodDeclarations,
-} from './MethodDeclarations';
+} from './MethodDeclarations.ts';
 import {
 	PropertyDeclarations,
-} from './PropertyDeclarations';
+} from './PropertyDeclarations.ts';
 import {
 	FunctionDeclarations,
-} from './FunctionDeclaration';
+} from './FunctionDeclaration.ts';
 import {
 	NoMatchError,
-} from '../Exceptions';
+} from '../Exceptions.ts';
 
 const recursion_limit = 10;
 

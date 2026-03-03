@@ -2,11 +2,11 @@ import {
 	FGBuildable__base__type,
 	FGBuildable__occupied__type,
 	FGBuildable__tiered__type,
-} from './FGBuildable';
+} from './FGBuildable.ts';
 
-import {common_base__FGBuildableSnowDispenser__type} from '../../../common/classes/CoreUObject/FGBuildableSnowDispenser';
+import {common_base__FGBuildableSnowDispenser__type} from '../../../common/classes/CoreUObject/FGBuildableSnowDispenser.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildableSnowDispenser__type =
 	common_base__FGBuildableSnowDispenser__type &

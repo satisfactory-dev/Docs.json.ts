@@ -1,9 +1,9 @@
 import {
 	TypesDiscovery,
-} from './TypesDiscovery';
+} from './TypesDiscovery.ts';
 import {
 	TypeDefinitionDiscovery,
-} from './TypeDefinitionDiscovery';
+} from './TypeDefinitionDiscovery.ts';
 import {
 	mkdir,
 	unlink,
@@ -11,22 +11,22 @@ import {
 } from 'node:fs/promises';
 import {
 	ObjectType,
-} from './TypeDefinitionDiscovery/JsonSchema/ObjectType';
+} from './TypeDefinitionDiscovery/JsonSchema/ObjectType.ts';
 import {
 	ArrayType,
-} from './TypeDefinitionDiscovery/JsonSchema/ArrayType';
+} from './TypeDefinitionDiscovery/JsonSchema/ArrayType.ts';
 import {
 	ExtendsObject,
-} from './TypeDefinitionDiscovery/JsonSchema/Object/ExtendsObject';
+} from './TypeDefinitionDiscovery/JsonSchema/Object/ExtendsObject.ts';
 import {
 	typed_string,
-} from './TypeDefinitionDiscovery/CustomParsingTypes/typed_string';
+} from './TypeDefinitionDiscovery/CustomParsingTypes/typed_string.ts';
 import {
 	allOf,
-} from './TypeDefinitionDiscovery/JsonSchema/allOf';
+} from './TypeDefinitionDiscovery/JsonSchema/allOf.ts';
 import {
 	oneOf_or_anyOf,
-} from './TypeDefinitionDiscovery/JsonSchema/oneOf_or_anyOf';
+} from './TypeDefinitionDiscovery/JsonSchema/oneOf_or_anyOf.ts';
 import {
 	glob,
 } from 'glob';
@@ -35,48 +35,48 @@ import {
 	require_non_empty_array,
 	value_is_non_array_object,
 } from '@satisfactory-dev/predicates.ts';
-import ts, {
+import type {
 	ClassDeclaration,
 } from 'typescript';
+import ts from 'typescript';
 import {
 	DocsTsAutoImports,
-} from './DocsTsAutoImports';
+} from './DocsTsAutoImports.ts';
 import {
 	dirname,
 	relative,
 } from 'node:path';
-import {
+import type {
 	docs_versions,
 	DocsDataItem,
+} from './DocsTsGenerator.ts';
+import {
 	DocsTsGenerator,
 	eslint_generated_types,
 	format_code,
-} from './DocsTsGenerator';
+} from './DocsTsGenerator.ts';
 import {
 	UnrealEngineString as legacy_UnrealEngineString_module,
-} from './CustomParsingTypes/UnrealEngineString';
+} from './CustomParsingTypes/UnrealEngineString.ts';
 import {
 	string_starts_with, StringPassedRegExp,
-} from './TypesGeneration/validators';
+} from './TypesGeneration/validators.ts';
 import {
 	NoMatchError,
-} from './Exceptions';
+} from './Exceptions.ts';
 import {
 	FilesGenerator,
 	FromArray,
-} from './FilesGenerator';
+} from './FilesGenerator.ts';
 import {
 	FilesGenerator as DocsFiles,
-} from './DocsTsGenerator/FilesGenerator';
-import {
+} from './DocsTsGenerator/FilesGenerator.ts';
+import type {
 	AnyGenerator,
-} from './TypeDefinitionDiscovery/Generator';
+} from './TypeDefinitionDiscovery/Generator.ts';
 import {
 	DataDiscovery,
-} from './DataDiscovery';
-import {
-	__dirname_from_meta,
-} from './__dirname';
+} from './DataDiscovery.ts';
 import {
 	compile,
 } from '@satisfactory-dev/ajv-utilities';
@@ -84,9 +84,7 @@ import {
 import common_schema from '../schema/common.schema.json' with {type: 'json'};
 import {
 	common_ref,
-} from './StringStartsWith';
-
-const __dirname = __dirname_from_meta(import.meta);
+} from './StringStartsWith.ts';
 
 type class_can_have_tree = ClassDeclaration & {
 	heritageClauses: [{types: [{expression: ts.Identifier}]}];
@@ -161,11 +159,11 @@ export class TypeDefinitionWriter
 		);
 		performance.mark(`${this.constructor.name}.write() start`);
 		await writeFile(
-			`${__dirname}/../types-progress--${this.version}.md`,
+			`${import.meta.dirname}/../types-progress--${this.version}.md`,
 			await discovery.generate_markdown(),
 		);
 		await writeFile(
-			`${__dirname}/../data-progress--${this.version}.md`,
+			`${import.meta.dirname}/../data-progress--${this.version}.md`,
 			await this.data_discovery.generate_markdown(),
 		);
 		performance.measure(
@@ -267,13 +265,13 @@ export class TypeDefinitionWriter
 		);
 
 		await writeFile(
-			`${__dirname}/../imports-come-from.${this.version}.json`,
+			`${import.meta.dirname}/../imports-come-from.${this.version}.json`,
 			auto_imports.imports_come_from,
 		);
 
 		if ('common' === this.version) {
 			await writeFile(
-				`${__dirname}/../common-imports.json`,
+				`${import.meta.dirname}/../common-imports.json`,
 				auto_imports.non_faux_imports_come_from,
 			);
 		}
@@ -497,7 +495,7 @@ export class TypeDefinitionWriter
 
 		performance.mark(`${this.constructor.name}.write() start`);
 		await writeFile(
-			`${__dirname}/../data-progress--${this.version}.md`,
+			`${import.meta.dirname}/../data-progress--${this.version}.md`,
 			await this.data_discovery.generate_markdown(),
 		);
 		performance.measure(

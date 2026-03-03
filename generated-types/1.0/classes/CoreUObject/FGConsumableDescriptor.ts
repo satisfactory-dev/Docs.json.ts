@@ -1,11 +1,11 @@
-import {FGEquipmentDescriptor__base__type} from './FGEquipmentDescriptor';
+import {FGEquipmentDescriptor__base__type} from './FGEquipmentDescriptor.ts';
 
 import {
 	common_base__FGConsumableDescriptor__base__type,
 	common_base__FGConsumableDescriptor__healing__type,
-} from '../../../common/classes/CoreUObject/FGConsumableDescriptor';
+} from '../../../common/classes/CoreUObject/FGConsumableDescriptor.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGConsumableDescriptor__type = FGConsumableDescriptor__base__type;
 

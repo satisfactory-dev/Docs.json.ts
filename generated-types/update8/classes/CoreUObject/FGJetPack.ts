@@ -1,15 +1,15 @@
-import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
+import {UnrealEngineString, StringStartsWith} from '../../utils/validators.ts';
 
-import {FGEquipment__base__type} from './FGEquipment';
+import {FGEquipment__base__type} from './FGEquipment.ts';
 
 import {
 	decimal_string__type,
 	integer_string__type,
-} from '../../../common/common/scalar';
+} from '../../../common/common/scalar.ts';
 
-import {common_base__FGJetPack__type} from '../../../common/classes/CoreUObject/FGJetPack';
+import {common_base__FGJetPack__type} from '../../../common/classes/CoreUObject/FGJetPack.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGJetPack__type = FGJetPack__merged__type & {
 	mThrustCooldown: decimal_string__type;

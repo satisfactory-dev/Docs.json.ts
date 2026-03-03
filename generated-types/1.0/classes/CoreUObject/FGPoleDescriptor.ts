@@ -1,8 +1,8 @@
-import {FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type} from './FGItemDescriptor';
+import {FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type} from './FGItemDescriptor.ts';
 
-import {common_base__FGPoleDescriptor__type} from '../../../common/classes/CoreUObject/FGPoleDescriptor';
+import {common_base__FGPoleDescriptor__type} from '../../../common/classes/CoreUObject/FGPoleDescriptor.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGPoleDescriptor__type =
 	common_base__FGPoleDescriptor__type &

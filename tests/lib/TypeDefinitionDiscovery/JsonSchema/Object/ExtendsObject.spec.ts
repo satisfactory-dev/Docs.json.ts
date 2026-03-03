@@ -5,17 +5,17 @@ import {
 import {
 	ExtendsObject,
 // eslint-disable-next-line max-len
-} from '../../../../../lib/TypeDefinitionDiscovery/JsonSchema/Object/ExtendsObject';
+} from '../../../../../lib/TypeDefinitionDiscovery/JsonSchema/Object/ExtendsObject.ts';
 import {
 	docs,
-} from '../../../../../lib/helpers';
+} from '../../../../../lib/helpers.ts';
 import ts_assert from '@signpostmarv/ts-assert';
 import {
 	TypeDefinitionWriter,
-} from '../../../../../lib/TypeDefinitionWriter';
+} from '../../../../../lib/TypeDefinitionWriter.ts';
 import {
 	local_ref,
-} from '../../../../../lib/StringStartsWith';
+} from '../../../../../lib/StringStartsWith.ts';
 
 void describe('ExtendsObject', async () => {
 	const type_definition_writer = new TypeDefinitionWriter(docs, 'update8');

@@ -1,8 +1,8 @@
-import {FGBuildable__circuits_base__type} from './FGBuildable';
+import {FGBuildable__circuits_base__type} from './FGBuildable.ts';
 
-import {common_base__FGBuildableLightsControlPanel__type} from '../../../common/classes/CoreUObject/FGBuildableLightsControlPanel';
+import {common_base__FGBuildableLightsControlPanel__type} from '../../../common/classes/CoreUObject/FGBuildableLightsControlPanel.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildableLightsControlPanel__type =
 	common_base__FGBuildableLightsControlPanel__type &

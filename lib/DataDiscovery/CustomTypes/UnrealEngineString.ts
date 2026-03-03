@@ -7,30 +7,33 @@ import {
 import {
 	Converter,
 	ExpressionResult,
-} from '../Generator';
+} from '../Generator.ts';
+import type {
+	UnrealEngineString_parent_type,
+} from '../../CustomParsingTypes/UnrealEngineString.ts';
 import {
 	is_UnrealEngineString_parent,
 	string_or_string_array_to_node,
-	UnrealEngineString_parent_type,
 	UnrealEngineString_regex,
 	UnrealEngineString_regex_quoted,
-} from '../../CustomParsingTypes/UnrealEngineString';
-import ts, {
+} from '../../CustomParsingTypes/UnrealEngineString.ts';
+import type {
 	CallExpression,
 	TypeNode,
 } from 'typescript';
+import ts from 'typescript';
 import {
 	create_literal,
 	create_property_access,
 	create_type,
 	type_reference_node,
-} from '../../TsFactoryWrapper';
-import {
+} from '../../TsFactoryWrapper.ts';
+import type {
 	SchemaObject,
-} from 'ajv';
+} from 'ajv/dist/2020.js';
 import {
 	NoMatchError,
-} from '../../Exceptions';
+} from '../../Exceptions.ts';
 
 export class UnrealEngineStringConverter extends Converter<
 	UnrealEngineString_parent_type,

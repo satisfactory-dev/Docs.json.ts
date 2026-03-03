@@ -1,8 +1,9 @@
 import {
 	NodeExtraction,
-} from './NodeExtraction';
-import {
-	ClassDeclaration, Node,
+} from './NodeExtraction.ts';
+import type {
+	ClassDeclaration,
+	Node,
 } from 'typescript';
 
 export class ClassDeclarations extends NodeExtraction<ClassDeclaration> {

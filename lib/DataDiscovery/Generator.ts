@@ -1,13 +1,14 @@
-import {
+import type {
 	Expression,
 } from 'typescript';
-import Ajv, {
+import type Ajv from 'ajv/dist/2020.js';
+import type {
 	SchemaObject,
 	ValidateFunction,
-} from 'ajv/dist/2020';
+} from 'ajv/dist/2020.js';
 import {
 	NoMatchError,
-} from '../Exceptions';
+} from '../Exceptions.ts';
 import {
 	compile,
 } from '@satisfactory-dev/ajv-utilities';

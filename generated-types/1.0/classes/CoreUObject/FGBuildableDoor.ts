@@ -1,12 +1,12 @@
-import {FGBuildableWallLightweight__type} from './FGBuildableWallLightweight';
+import {FGBuildableWallLightweight__type} from './FGBuildableWallLightweight.ts';
 
 import {
 	common_base__FGBuildableDoor__type,
 	common_base__FGBuildableDoor__automated__type,
 	common_base__FGBuildableDoor__base__type,
-} from '../../../common/classes/CoreUObject/FGBuildableDoor';
+} from '../../../common/classes/CoreUObject/FGBuildableDoor.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildableDoor__type =
 	common_base__FGBuildableDoor__type &

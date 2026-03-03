@@ -1,20 +1,20 @@
-import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
+import {UnrealEngineString, StringStartsWith} from '../../utils/validators.ts';
 
-import {Montage_1P__type, Montage_3P__type} from '../../common/unassigned';
+import {Montage_1P__type, Montage_3P__type} from '../../common/unassigned.ts';
 
-import {FGEquipment__base__type} from './FGEquipment';
+import {FGEquipment__base__type} from './FGEquipment.ts';
 
 import {
 	integer_string__type,
 	boolean__type,
-} from '../../../common/common/scalar';
+} from '../../../common/common/scalar.ts';
 
 import {
 	empty_object__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned';
+} from '../../../common/common/unassigned.ts';
 
-import {common_base__FGChainsaw__type} from '../../../common/classes/CoreUObject/FGChainsaw';
+import {common_base__FGChainsaw__type} from '../../../common/classes/CoreUObject/FGChainsaw.ts';
 
 export type FGChainsaw__type = FGChainsaw__merged__type & {
 	StartUpToIdleID: integer_string__type;

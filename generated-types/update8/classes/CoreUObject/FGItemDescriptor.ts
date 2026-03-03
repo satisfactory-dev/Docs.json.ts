@@ -1,15 +1,15 @@
-import {StringStartsWith} from '../../utils/validators';
+import {StringStartsWith} from '../../utils/validators.ts';
 
 import {
 	None__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned';
+} from '../../../common/common/unassigned.ts';
 
 import {
 	common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type,
 	common_base__FGItemDescriptor__FGResourceDescriptor__type,
 	common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type,
-} from '../../../common/classes/CoreUObject/FGItemDescriptor';
+} from '../../../common/classes/CoreUObject/FGItemDescriptor.ts';
 
 export type FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type =
 	common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type & {

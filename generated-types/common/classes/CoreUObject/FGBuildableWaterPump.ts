@@ -1,10 +1,10 @@
-import {UnrealEngineString} from '../../utils/validators';
+import {UnrealEngineString} from '../../utils/validators.ts';
 
-import {decimal_string__type, boolean__type} from '../../common/scalar';
+import {decimal_string__type, boolean__type} from '../../common/scalar.ts';
 
-import {xyz__type, None__type} from '../../common/unassigned';
+import {xyz__type, None__type} from '../../common/unassigned.ts';
 
-import {common_base__FGBuildable__extractor_base__type} from './FGBuildable';
+import {common_base__FGBuildable__extractor_base__type} from './FGBuildable.ts';
 
 export type common_base__FGBuildableWaterPump__type =
 	common_base__FGBuildable__extractor_base__type & {

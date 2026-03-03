@@ -9,35 +9,35 @@ import {
 
 import {
 	annoyingly_have_to_escape_property,
-} from './CustomPairingTypes';
+} from './CustomPairingTypes.ts';
 import {
 	common_ref,
 	local_ref,
-} from '../StringStartsWith';
+} from '../StringStartsWith.ts';
 import {
 	NoMatchError,
-} from '../Exceptions';
+} from '../Exceptions.ts';
 import {
 	is_UnrealEngineString_parent,
 	UnrealEngineString,
-} from './UnrealEngineString';
+} from './UnrealEngineString.ts';
 import {
 	typed_string_const,
-} from './TypedStringConst';
+} from './TypedStringConst.ts';
 import {
 	typed_string_enum,
-} from './TypedStringEnum';
-import {
+} from './TypedStringEnum.ts';
+import type {
 	SchemaObject,
-} from 'ajv/dist/2020';
+} from 'ajv/dist/2020.js';
 import {
 	typed_string_pattern_general,
 	typed_string_pattern_is_supported_schema,
 	typed_string_pattern_value_regex,
-} from './TypedStringPattern';
-import {
+} from './TypedStringPattern.ts';
+import type {
 	typed_string_inner_array_prefixItems_type,
-} from './TypedString';
+} from './TypedString.ts';
 
 type typed_string_object_inner = {
 	required: [string, ...string[]],

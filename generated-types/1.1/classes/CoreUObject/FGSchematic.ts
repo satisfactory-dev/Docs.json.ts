@@ -2,14 +2,14 @@ import {
 	v1_0_base__mStatisticGameplayTag__type,
 	mStatisticGameplayTag__type,
 	v1_0_base__FGSchematic__base__properties__type,
-} from '../../common/unassigned';
+} from '../../common/unassigned.ts';
 
 import {
 	empty_object__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned';
+} from '../../../common/common/unassigned.ts';
 
-import {common_base__FGSchematic__with_unlocks__type} from '../../../common/classes/CoreUObject/FGSchematic';
+import {common_base__FGSchematic__with_unlocks__type} from '../../../common/classes/CoreUObject/FGSchematic.ts';
 
 export type FGSchematic__type =
 	v1_0_base__FGSchematic__base__properties__type & {

@@ -1,8 +1,8 @@
-import {FGBuildable__base__type} from './FGBuildable';
+import {FGBuildable__base__type} from './FGBuildable.ts';
 
-import {common_base__FGBuildableWire__type} from '../../../common/classes/CoreUObject/FGBuildableWire';
+import {common_base__FGBuildableWire__type} from '../../../common/classes/CoreUObject/FGBuildableWire.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildableWire__type =
 	common_base__FGBuildableWire__type & FGBuildable__base__type;

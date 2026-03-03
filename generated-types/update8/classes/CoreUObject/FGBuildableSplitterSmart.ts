@@ -1,8 +1,8 @@
-import {FGBuildable__splitter__base__type} from './FGBuildable';
+import {FGBuildable__splitter__base__type} from './FGBuildable.ts';
 
-import {common_base__FGBuildableSplitterSmart__type} from '../../../common/classes/CoreUObject/FGBuildableSplitterSmart';
+import {common_base__FGBuildableSplitterSmart__type} from '../../../common/classes/CoreUObject/FGBuildableSplitterSmart.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildableSplitterSmart__type =
 	common_base__FGBuildableSplitterSmart__type &

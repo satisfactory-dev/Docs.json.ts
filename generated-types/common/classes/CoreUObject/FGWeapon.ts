@@ -1,9 +1,9 @@
 import {
 	common_base__FGWeapon__base__pre_1_1__type,
 	empty_object__type,
-} from '../../common/unassigned';
+} from '../../common/unassigned.ts';
 
-import {boolean__type} from '../../common/scalar';
+import {boolean__type} from '../../common/scalar.ts';
 
 export type common_base__FGWeapon__base__type =
 	common_base__FGWeapon__base__pre_1_1__type & {

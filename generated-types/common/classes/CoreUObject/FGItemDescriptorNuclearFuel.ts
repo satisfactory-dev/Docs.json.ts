@@ -1,8 +1,8 @@
-import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
+import {UnrealEngineString, StringStartsWith} from '../../utils/validators.ts';
 
-import {integer_string__type} from '../../common/scalar';
+import {integer_string__type} from '../../common/scalar.ts';
 
-import {common_base__FGItemDescriptor__FGResourceDescriptor__type} from './FGItemDescriptor';
+import {common_base__FGItemDescriptor__FGResourceDescriptor__type} from './FGItemDescriptor.ts';
 
 export type common_base__FGItemDescriptorNuclearFuel__type =
 	common_base__FGItemDescriptor__FGResourceDescriptor__type & {

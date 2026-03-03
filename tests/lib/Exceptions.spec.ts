@@ -6,7 +6,7 @@ import assert from 'node:assert/strict';
 import {
 	FragileTypeSafetyError,
 	NoMatchError,
-} from '../../lib/Exceptions';
+} from '../../lib/Exceptions.ts';
 
 void describe('NoMatchError', () => {
 	void it('has a default message', () => {

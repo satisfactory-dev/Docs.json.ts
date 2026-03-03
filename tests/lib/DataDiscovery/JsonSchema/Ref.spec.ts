@@ -5,23 +5,23 @@ import {
 import assert from 'node:assert/strict';
 import {
 	DataDiscovery,
-} from '../../../../lib/DataDiscovery';
+} from '../../../../lib/DataDiscovery.ts';
 import {
 	Ref,
-} from '../../../../lib/DataDiscovery/JsonSchema/Ref';
+} from '../../../../lib/DataDiscovery/JsonSchema/Ref.ts';
 import {
 	docs,
-} from '../../../../lib/helpers';
+} from '../../../../lib/helpers.ts';
 import {
 	local_ref,
-} from '../../../../lib/StringStartsWith';
+} from '../../../../lib/StringStartsWith.ts';
 import {
 	is_instanceof,
 	not_undefined,
 } from '@satisfactory-dev/custom-assert';
 import {
 	ConstStringConverter,
-} from '../../../../lib/DataDiscovery/JsonSchema/StringType';
+} from '../../../../lib/DataDiscovery/JsonSchema/StringType.ts';
 
 void describe('Ref.can_convert_schema_and_raw_data()', () => {
 	const instance = new Ref(new DataDiscovery(docs, 'update8'));

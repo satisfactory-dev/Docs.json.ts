@@ -1,29 +1,24 @@
 import {
 	TypeDefinitionWriter,
-} from './lib/TypeDefinitionWriter';
+} from './lib/TypeDefinitionWriter.ts';
 import {
 	NoMatchError,
-} from './lib/Exceptions';
+} from './lib/Exceptions.ts';
 import {
 	writeFile,
 } from 'node:fs/promises';
 import {
-	__dirname_from_meta,
-} from './lib/__dirname';
-import {
 	docs,
-} from './lib/helpers';
+} from './lib/helpers.ts';
 import {
 	setup_PerformanceObserver,
-} from './setup_PerformanceObserver';
+} from './setup_PerformanceObserver.ts';
 import {
 	versions,
-} from './version-configs';
+} from './version-configs.ts';
 import {
 	ValidationError,
-} from './lib/DocsTsGenerator';
-
-const __dirname = __dirname_from_meta(import.meta);
+} from './lib/DocsTsGenerator.ts';
 
 const perf = setup_PerformanceObserver();
 
@@ -37,7 +32,7 @@ try {
 	);
 	performance.measure('bootstrap', 'start');
 	performance.mark('bootstrap done');
-	await bar.write(`${__dirname}/generated-types/${sub_path}/`);
+	await bar.write(`${import.meta.dirname}/generated-types/${sub_path}/`);
 	performance.measure('types generated', 'bootstrap done');
 	const discovery = await bar.discovery;
 	const result = await discovery.discover_type_$defs();
@@ -54,12 +49,12 @@ try {
 		'Missing Classes': result.missing_classes.length,
 	});
 	await writeFile(
-		`${__dirname}/discover-types.${sub_path}.perf.json`,
+		`${import.meta.dirname}/discover-types.${sub_path}.perf.json`,
 		`${JSON.stringify(perf(), null, '\t')}`,
 	);
 } catch (err) {
 	await writeFile(
-		`${__dirname}/discover-types.${sub_path}.perf.json`,
+		`${import.meta.dirname}/discover-types.${sub_path}.perf.json`,
 		`${JSON.stringify(perf(), null, '\t')}`,
 	);
 	if (err instanceof NoMatchError) {

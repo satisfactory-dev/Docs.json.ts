@@ -1,10 +1,10 @@
-import {FGBuildable__consumes_power_base__type} from './FGBuildable';
+import {FGBuildable__consumes_power_base__type} from './FGBuildable.ts';
 
 import {
 	decimal_string__type,
 	integer_string__type,
 	boolean__type,
-} from '../../../common/common/scalar';
+} from '../../../common/common/scalar.ts';
 
 import {
 	xyz_array__type,
@@ -12,7 +12,7 @@ import {
 	empty_object__type,
 	color_decimal__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned';
+} from '../../../common/common/unassigned.ts';
 
 export type FGBuildablePortal__type = FGBuildablePortal__base__type & {
 	ClassName?: 'Build_Portal_C';

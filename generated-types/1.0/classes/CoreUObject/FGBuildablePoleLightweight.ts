@@ -1,8 +1,8 @@
-import {FGBuildable__pole__base__with_static__merged__type} from './FGBuildable';
+import {FGBuildable__pole__base__with_static__merged__type} from './FGBuildable.ts';
 
-import {common_base__FGBuildablePoleLightweight__type} from '../../../common/classes/CoreUObject/FGBuildablePoleLightweight';
+import {common_base__FGBuildablePoleLightweight__type} from '../../../common/classes/CoreUObject/FGBuildablePoleLightweight.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildablePoleLightweight__type =
 	common_base__FGBuildablePoleLightweight__type &

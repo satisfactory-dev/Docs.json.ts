@@ -5,10 +5,10 @@ import {
 import assert from 'node:assert/strict';
 import {
 	Enum,
-} from '../../../../../lib/TypeDefinitionDiscovery/JsonSchema/String/Enum';
+} from '../../../../../lib/TypeDefinitionDiscovery/JsonSchema/String/Enum.ts';
 import {
 	docs,
-} from '../../../../../lib/helpers';
+} from '../../../../../lib/helpers.ts';
 import ts_assert from '@signpostmarv/ts-assert';
 import {
 	array_has_size,

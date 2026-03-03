@@ -2,14 +2,14 @@ import {
 	UnrealEngineString,
 	StringStartsWith,
 	StringPassedRegExp,
-} from '../../utils/validators';
+} from '../../utils/validators.ts';
 
 import {
 	decimal_string__signed__type,
 	integer_string__type,
 	decimal_string__type,
 	boolean__type,
-} from '../../common/scalar';
+} from '../../common/scalar.ts';
 
 import {
 	ItemClass__type,
@@ -22,7 +22,7 @@ import {
 	Texture2D__type,
 	mEventType__optional_csv__type,
 	None__type,
-} from '../../common/unassigned';
+} from '../../common/unassigned.ts';
 
 export type common_base__FGSchematic__base__type = class__type & {
 	FullName: StringPassedRegExp<'^BlueprintGeneratedClass /Game/FactoryGame/(Schematics|Events/Christmas)/'>;

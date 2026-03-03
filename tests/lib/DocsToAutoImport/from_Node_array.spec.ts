@@ -6,10 +6,11 @@ import assert from 'node:assert/strict';
 import {
 	EntityName_array_from_Node_array,
 	from_Node_array,
-} from '../../../lib/DocsToAutoImport/from_Node_array';
-import ts, {
+} from '../../../lib/DocsToAutoImport/from_Node_array.ts';
+import type {
 	Node,
 } from 'typescript';
+import ts from 'typescript';
 
 void describe('EntityName_array_from_Node_array', () => {
 	const empty_behaves:{[key: string]: Node[]} = {

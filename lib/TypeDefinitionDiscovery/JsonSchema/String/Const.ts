@@ -1,14 +1,14 @@
-import Ajv from 'ajv/dist/2020';
-import {
+import Ajv from 'ajv/dist/2020.js';
+import type {
 	LiteralTypeNode,
 	StringLiteral,
 } from 'typescript';
 import {
 	create_literal,
-} from '../../../TsFactoryWrapper';
+} from '../../../TsFactoryWrapper.ts';
 import {
 	Generator,
-} from '../../Generator';
+} from '../../Generator.ts';
 
 type RawData = {type: 'string', const: string};
 type Type = (LiteralTypeNode & {literal: StringLiteral});

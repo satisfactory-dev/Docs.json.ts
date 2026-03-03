@@ -1,8 +1,8 @@
-import {FGBuildable__extractor_base__type} from './FGBuildable';
+import {FGBuildable__extractor_base__type} from './FGBuildable.ts';
 
-import {common_base__FGBuildableWaterPump__type} from '../../../common/classes/CoreUObject/FGBuildableWaterPump';
+import {common_base__FGBuildableWaterPump__type} from '../../../common/classes/CoreUObject/FGBuildableWaterPump.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildableWaterPump__type =
 	common_base__FGBuildableWaterPump__type &

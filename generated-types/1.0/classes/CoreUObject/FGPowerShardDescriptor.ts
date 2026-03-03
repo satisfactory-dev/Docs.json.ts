@@ -1,8 +1,8 @@
-import {FGItemDescriptor__FGResourceDescriptor__type} from './FGItemDescriptor';
+import {FGItemDescriptor__FGResourceDescriptor__type} from './FGItemDescriptor.ts';
 
-import {decimal_string__type} from '../../../common/common/scalar';
+import {decimal_string__type} from '../../../common/common/scalar.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGPowerShardDescriptor__type =
 	FGItemDescriptor__FGResourceDescriptor__type & {

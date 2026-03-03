@@ -1,17 +1,19 @@
-import ts, {
+import type {
 	IntersectionTypeNode,
-	TypeLiteralNode, TypeReferenceNode,
+	TypeLiteralNode,
+	TypeReferenceNode,
 } from 'typescript';
+import ts from 'typescript';
 import {
 	TypeDefinitionDiscovery,
-} from '../../TypeDefinitionDiscovery';
+} from '../../TypeDefinitionDiscovery.ts';
 import {
 	adjust_class_name,
 	create_object_type_from_entries, type_reference_node,
-} from '../../TsFactoryWrapper';
+} from '../../TsFactoryWrapper.ts';
 import {
 	GeneratorDoesDiscovery,
-} from '../GeneratorDoesDiscovery';
+} from '../GeneratorDoesDiscovery.ts';
 import {
 	is_string,
 } from '@satisfactory-dev/predicates.ts';

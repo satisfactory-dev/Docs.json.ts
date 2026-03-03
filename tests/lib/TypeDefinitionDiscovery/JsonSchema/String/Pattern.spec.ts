@@ -5,10 +5,11 @@ import {
 import assert from 'node:assert/strict';
 import {
 	Pattern,
-} from '../../../../../lib/TypeDefinitionDiscovery/JsonSchema/String/Pattern';
+	// eslint-disable-next-line max-len
+} from '../../../../../lib/TypeDefinitionDiscovery/JsonSchema/String/Pattern.ts';
 import {
 	docs,
-} from '../../../../../lib/helpers';
+} from '../../../../../lib/helpers.ts';
 import ts_assert from '@signpostmarv/ts-assert';
 import {
 	array_has_size,

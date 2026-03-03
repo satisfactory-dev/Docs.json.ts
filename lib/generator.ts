@@ -1,3 +1,3 @@
-export * from './DocsTsGenerator';
-export * from './DocsValidation';
-export * from './TypeDefinitionWriter';
+export * from './DocsTsGenerator.ts';
+export * from './DocsValidation.ts';
+export * from './TypeDefinitionWriter.ts';

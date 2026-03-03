@@ -5,12 +5,12 @@ import {
 import assert from 'node:assert/strict';
 import {
 	DocsTsAutoImports,
-} from '../../lib/DocsTsAutoImports';
+} from '../../lib/DocsTsAutoImports.ts';
 import {
 	create_literal,
 	create_modifiers,
 	type_reference_node,
-} from '../../lib/TsFactoryWrapper';
+} from '../../lib/TsFactoryWrapper.ts';
 import ts from 'typescript';
 import {
 	rejects_partial_match,

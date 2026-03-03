@@ -1,12 +1,12 @@
-import {StringPassedRegExp} from '../../utils/validators';
+import {StringPassedRegExp} from '../../utils/validators.ts';
 
-import {decimal_string__type} from '../../common/scalar';
+import {decimal_string__type} from '../../common/scalar.ts';
 
 import {
 	mEventType__optional_csv__type,
 	ItemClass__type,
 	class__no_description__type,
-} from '../../common/unassigned';
+} from '../../common/unassigned.ts';
 
 export type common_base__FGCustomizationRecipe__FGRecipe__type =
 	class__no_description__type & {

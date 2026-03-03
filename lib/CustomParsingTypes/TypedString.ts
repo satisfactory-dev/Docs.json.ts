@@ -1,29 +1,36 @@
-import Ajv, {
+import type Ajv from 'ajv/dist/2020.js';
+import type {
 	SchemaObject,
-} from 'ajv/dist/2020';
+} from 'ajv/dist/2020.js';
 import {
 	common_ref,
 	local_ref,
-} from '../StringStartsWith';
+} from '../StringStartsWith.ts';
+import type {
+	UnrealEngineString_parent_type,
+} from './UnrealEngineString.ts';
 import {
 	UnrealEngineString_parent_schema,
-	UnrealEngineString_parent_type,
 	UnrealEngineString_schema_definitions,
-} from './UnrealEngineString';
-import {
+} from './UnrealEngineString.ts';
+import type {
 	const_schema_type,
+} from './TypedStringConst.ts';
+import {
 	typed_string_const_schema,
-} from './TypedStringConst';
+} from './TypedStringConst.ts';
 import {
 	ValueToRegexFormatter,
-} from './ValueToRegexFormatter';
-import {
+} from './ValueToRegexFormatter.ts';
+import type {
 	enum_schema_type,
+} from './TypedStringEnum.ts';
+import {
 	typed_string_enum_schema,
-} from './TypedStringEnum';
+} from './TypedStringEnum.ts';
 import {
 	typed_string_pattern_general_schema_self_testing,
-} from './TypedStringPattern';
+} from './TypedStringPattern.ts';
 
 type typed_string_sub_types =
 	| {

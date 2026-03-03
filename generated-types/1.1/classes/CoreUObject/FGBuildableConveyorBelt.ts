@@ -1,11 +1,11 @@
 import {
 	v1_0_base__FGBuildableConveyorBelt__pre_1_1__type,
 	has__mAttachedThroughputMonitors__type,
-} from '../../common/unassigned';
+} from '../../common/unassigned.ts';
 
-import {FGBuildable__base__type} from './FGBuildable';
+import {FGBuildable__base__type} from './FGBuildable.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildableConveyorBelt__type =
 	FGBuildableConveyorBelt__merged__type;

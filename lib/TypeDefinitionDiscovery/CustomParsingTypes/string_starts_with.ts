@@ -1,14 +1,14 @@
 import {
 	Generator,
-} from '../Generator';
-import {
+} from '../Generator.ts';
+import type {
 	TypeReferenceNode,
 } from 'typescript';
-import Ajv from 'ajv/dist/2020';
+import Ajv from 'ajv/dist/2020.js';
 import {
 	create_literal,
 	type_reference_node,
-} from '../../TsFactoryWrapper';
+} from '../../TsFactoryWrapper.ts';
 
 export type RawData = {type: 'string', string_starts_with: string};
 export const schema = {

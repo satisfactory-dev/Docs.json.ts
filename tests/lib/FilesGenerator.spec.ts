@@ -7,10 +7,10 @@ import {
 	FilesGenerator,
 	FromArray,
 	guess_filename,
-} from '../../lib/FilesGenerator';
+} from '../../lib/FilesGenerator.ts';
 import {
 	create_literal,
-} from '../../lib/TsFactoryWrapper';
+} from '../../lib/TsFactoryWrapper.ts';
 import {
 	value_is_non_array_object,
 } from '@satisfactory-dev/predicates.ts';

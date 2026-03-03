@@ -1,8 +1,8 @@
-import {FGBuildableLightSource__base__type} from './FGBuildableLightSource';
+import {FGBuildableLightSource__base__type} from './FGBuildableLightSource.ts';
 
-import {common_base__FGBuildableFloodlight__type} from '../../../common/classes/CoreUObject/FGBuildableFloodlight';
+import {common_base__FGBuildableFloodlight__type} from '../../../common/classes/CoreUObject/FGBuildableFloodlight.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildableFloodlight__type =
 	common_base__FGBuildableFloodlight__type &

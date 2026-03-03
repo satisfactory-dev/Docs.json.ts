@@ -1,9 +1,9 @@
 import {
 	CandidatesDiscovery,
-} from '../CandidatesDiscovery';
-import {
+} from '../CandidatesDiscovery.ts';
+import type {
 	SchemaObject,
-} from 'ajv/dist/2020';
+} from 'ajv/dist/2020.js';
 import {
 	object_has_property,
 	value_is_non_array_object,
@@ -11,10 +11,10 @@ import {
 
 import {
 	local_ref,
-} from '../../StringStartsWith';
+} from '../../StringStartsWith.ts';
 import {
 	is_UnrealEngineString_parent,
-} from '../../CustomParsingTypes/UnrealEngineString';
+} from '../../CustomParsingTypes/UnrealEngineString.ts';
 
 export class UnrealEngineString extends CandidatesDiscovery
 {

@@ -1,11 +1,11 @@
-import {FGBuildable__pipeline_flow_accessory__type} from './FGBuildable';
+import {FGBuildable__pipeline_flow_accessory__type} from './FGBuildable.ts';
 
 import {
 	common_base__FGBuildablePipelinePump__type,
 	common_base__FGBuildablePipelinePump__valve__type,
-} from '../../../common/classes/CoreUObject/FGBuildablePipelinePump';
+} from '../../../common/classes/CoreUObject/FGBuildablePipelinePump.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildablePipelinePump__type =
 	common_base__FGBuildablePipelinePump__type &

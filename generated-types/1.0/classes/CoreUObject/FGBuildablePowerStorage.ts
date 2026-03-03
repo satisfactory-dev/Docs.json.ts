@@ -1,13 +1,13 @@
-import {FGBuildable__consumes_power_base__type} from './FGBuildable';
+import {FGBuildable__consumes_power_base__type} from './FGBuildable.ts';
 
 import {
 	integer_string__type,
 	decimal_string__type,
-} from '../../../common/common/scalar';
+} from '../../../common/common/scalar.ts';
 
-import {common_base__FGBuildablePowerStorage__type} from '../../../common/classes/CoreUObject/FGBuildablePowerStorage';
+import {common_base__FGBuildablePowerStorage__type} from '../../../common/classes/CoreUObject/FGBuildablePowerStorage.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildablePowerStorage__type =
 	FGBuildablePowerStorage__merged__type & {

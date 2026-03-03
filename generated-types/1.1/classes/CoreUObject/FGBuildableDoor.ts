@@ -1,18 +1,18 @@
 import {
 	FGBuildableDoor__automated__with__bigOverlapList_0__type,
 	v1_0_base__FGBuildableDoor__base__type,
-} from '../../common/unassigned';
+} from '../../common/unassigned.ts';
 
-import {FGBuildable__base__type} from './FGBuildable';
+import {FGBuildable__base__type} from './FGBuildable.ts';
 
-import {boolean__type} from '../../../common/common/scalar';
+import {boolean__type} from '../../../common/common/scalar.ts';
 
 import {
 	common_base__FGBuildableDoor__base__type,
 	common_base__FGBuildableDoor__automated__type,
-} from '../../../common/classes/CoreUObject/FGBuildableDoor';
+} from '../../../common/classes/CoreUObject/FGBuildableDoor.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildableDoor__type =
 	common_base__FGBuildableDoor__base__type &

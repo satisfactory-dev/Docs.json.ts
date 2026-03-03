@@ -1,18 +1,18 @@
-import {mElevatorState__type} from '../../common/unassigned';
+import {mElevatorState__type} from '../../common/unassigned.ts';
 
-import {FGBuildable__base__type} from './FGBuildable';
+import {FGBuildable__base__type} from './FGBuildable.ts';
 
 import {
 	color_decimal__type,
 	xyz__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned';
+} from '../../../common/common/unassigned.ts';
 
 import {
 	integer_string__signed__type,
 	decimal_string__type,
 	boolean__type,
-} from '../../../common/common/scalar';
+} from '../../../common/common/scalar.ts';
 
 export type FGBuildableElevatorFloorStop__type = FGBuildable__base__type &
 	FGBuildableElevatorFloorStop__properties__type;

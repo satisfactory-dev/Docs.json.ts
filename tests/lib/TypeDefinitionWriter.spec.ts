@@ -11,11 +11,11 @@ import {
 
 import {
 	TypeDefinitionWriter,
-} from '../../lib/TypeDefinitionWriter';
+} from '../../lib/TypeDefinitionWriter.ts';
 import {
 	docs,
 	skip_because_docs_dot_json_not_yet_bundled,
-} from '../../lib/helpers';
+} from '../../lib/helpers.ts';
 
 void describe('TypeDefinitionWriter', () => {
 	void describe('discovery', () => {

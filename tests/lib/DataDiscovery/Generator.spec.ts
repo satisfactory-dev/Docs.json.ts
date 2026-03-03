@@ -5,13 +5,13 @@ import {
 import assert from 'node:assert/strict';
 import {
 	Converter,
-} from '../../../lib/DataDiscovery/Generator';
+} from '../../../lib/DataDiscovery/Generator.ts';
 import {
 	DataDiscovery,
-} from '../../../lib/DataDiscovery';
+} from '../../../lib/DataDiscovery.ts';
 import {
 	docs,
-} from '../../../lib/helpers';
+} from '../../../lib/helpers.ts';
 import {
 	array_has_size,
 	is_instanceof,
@@ -23,41 +23,41 @@ import {
 	ConstStringConverter,
 	EnumStringConverter,
 	PatternConverter,
-} from '../../../lib/DataDiscovery/JsonSchema/StringType';
-import {
+} from '../../../lib/DataDiscovery/JsonSchema/StringType.ts';
+import type {
 	SchemaObject,
-} from 'ajv';
+} from 'ajv/dist/2020.js';
 import {
 	local_ref,
-} from '../../../lib/StringStartsWith';
+} from '../../../lib/StringStartsWith.ts';
 import {
 	BooleanConverter,
-} from '../../../lib/DataDiscovery/CustomTypes/BooleanOrBooleanExtended';
+} from '../../../lib/DataDiscovery/CustomTypes/BooleanOrBooleanExtended.ts';
 import {
 	ArrayConverter,
-} from '../../../lib/DataDiscovery/JsonSchema/Array';
+} from '../../../lib/DataDiscovery/JsonSchema/Array.ts';
 import {
 	UnrealEngineStringConverter,
-} from '../../../lib/DataDiscovery/CustomTypes/UnrealEngineString';
+} from '../../../lib/DataDiscovery/CustomTypes/UnrealEngineString.ts';
 import {
 	ObjectConverter,
 	PatternedObjectConverter,
-} from '../../../lib/DataDiscovery/JsonSchema/Object';
+} from '../../../lib/DataDiscovery/JsonSchema/Object.ts';
 import {
 	StringStartsWithConverter,
-} from '../../../lib/DataDiscovery/CustomTypes/StringStartsWith';
+} from '../../../lib/DataDiscovery/CustomTypes/StringStartsWith.ts';
 import {
 	TypedStringConverter,
-} from '../../../lib/DataDiscovery/CustomTypes/TypedString';
+} from '../../../lib/DataDiscovery/CustomTypes/TypedString.ts';
 import {
 	Ref,
-} from '../../../lib/DataDiscovery/JsonSchema/Ref';
+} from '../../../lib/DataDiscovery/JsonSchema/Ref.ts';
 import {
 	OneOfConverter,
-} from '../../../lib/DataDiscovery/JsonSchema/OneOf';
+} from '../../../lib/DataDiscovery/JsonSchema/OneOf.ts';
 import {
 	AllOfConverter,
-} from '../../../lib/DataDiscovery/JsonSchema/AllOf';
+} from '../../../lib/DataDiscovery/JsonSchema/AllOf.ts';
 
 void describe('Converter', async () => {
 	const candidates = await ((new DataDiscovery(docs, 'update8')).candidates);

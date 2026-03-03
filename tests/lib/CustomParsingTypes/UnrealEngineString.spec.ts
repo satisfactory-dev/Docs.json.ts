@@ -3,11 +3,13 @@ import {
 	it,
 } from 'node:test';
 import assert from 'node:assert/strict';
+import type {
+	UnrealEngineString_type,
+} from '../../../lib/CustomParsingTypes/UnrealEngineString.ts';
 import {
 	string_or_string_array_to_node,
 	UnrealEngineString,
-	UnrealEngineString_type,
-} from '../../../lib/CustomParsingTypes/UnrealEngineString';
+} from '../../../lib/CustomParsingTypes/UnrealEngineString.ts';
 import ts_assert from '@signpostmarv/ts-assert';
 import {
 	array_has_size,

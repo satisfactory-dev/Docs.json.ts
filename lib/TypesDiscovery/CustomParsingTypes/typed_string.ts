@@ -1,6 +1,6 @@
 import {
 	CandidatesDiscovery,
-} from '../CandidatesDiscovery';
+} from '../CandidatesDiscovery.ts';
 import {
 	is_string,
 	object_has_non_empty_array_property,
@@ -11,13 +11,13 @@ import {
 
 import {
 	local_ref,
-} from '../../StringStartsWith';
-import {
+} from '../../StringStartsWith.ts';
+import type {
 	typed_string_parent_type,
-} from '../../CustomParsingTypes/TypedString';
-import {
+} from '../../CustomParsingTypes/TypedString.ts';
+import type {
 	SchemaObject,
-} from 'ajv/dist/2020';
+} from 'ajv/dist/2020.js';
 
 export class typed_string extends CandidatesDiscovery
 {

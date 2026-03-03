@@ -1,10 +1,10 @@
-import {v1_0_base__FGBuildable__consumes_power_base__type} from '../../common/unassigned';
+import {v1_0_base__FGBuildable__consumes_power_base__type} from '../../common/unassigned.ts';
 
-import {FGBuildable__base__type} from './FGBuildable';
+import {FGBuildable__base__type} from './FGBuildable.ts';
 
-import {integer_string__type} from '../../../common/common/scalar';
+import {integer_string__type} from '../../../common/common/scalar.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildablePipeHyperJunction__type =
 	FGBuildablePipeHyperJunction__merged__type & {

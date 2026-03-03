@@ -5,10 +5,10 @@ import {
 import {
 	BooleanEnum,
 // eslint-disable-next-line max-len
-} from '../../../../../../lib/TypeDefinitionDiscovery/JsonSchema/String/Enum/BooleanEnum';
+} from '../../../../../../lib/TypeDefinitionDiscovery/JsonSchema/String/Enum/BooleanEnum.ts';
 import {
 	docs,
-} from '../../../../../../lib/helpers';
+} from '../../../../../../lib/helpers.ts';
 import ts_assert from '@signpostmarv/ts-assert';
 import ts from 'typescript';
 import {

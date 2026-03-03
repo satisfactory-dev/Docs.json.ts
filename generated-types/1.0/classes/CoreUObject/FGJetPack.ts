@@ -1,13 +1,13 @@
-import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
+import {UnrealEngineString, StringStartsWith} from '../../utils/validators.ts';
 
-import {FGEquipment__base__type} from './FGEquipment';
+import {FGEquipment__base__type} from './FGEquipment.ts';
 
 import {
 	empty_object__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned';
+} from '../../../common/common/unassigned.ts';
 
-import {common_base__FGJetPack__type} from '../../../common/classes/CoreUObject/FGJetPack';
+import {common_base__FGJetPack__type} from '../../../common/classes/CoreUObject/FGJetPack.ts';
 
 export type FGJetPack__type = FGJetPack__merged__type & {
 	mAllowedFuelTypes: [

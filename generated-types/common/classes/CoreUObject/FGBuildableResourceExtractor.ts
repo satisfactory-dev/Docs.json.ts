@@ -1,10 +1,10 @@
-import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
+import {UnrealEngineString, StringStartsWith} from '../../utils/validators.ts';
 
-import {boolean__type} from '../../common/scalar';
+import {boolean__type} from '../../common/scalar.ts';
 
-import {None__type} from '../../common/unassigned';
+import {None__type} from '../../common/unassigned.ts';
 
-import {common_base__FGBuildable__extractor_base__type} from './FGBuildable';
+import {common_base__FGBuildable__extractor_base__type} from './FGBuildable.ts';
 
 export type common_base__FGBuildableResourceExtractor__miner__type =
 	common_base__FGBuildableResourceExtractor__miner__base__type;

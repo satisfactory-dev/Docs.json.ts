@@ -1,10 +1,10 @@
-import {FGWeapon__base__type} from './FGWeapon';
+import {FGWeapon__base__type} from './FGWeapon.ts';
 
-import {boolean__type} from '../../../common/common/scalar';
+import {boolean__type} from '../../../common/common/scalar.ts';
 
-import {common_base__FGChargedWeapon__type} from '../../../common/classes/CoreUObject/FGChargedWeapon';
+import {common_base__FGChargedWeapon__type} from '../../../common/classes/CoreUObject/FGChargedWeapon.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGChargedWeapon__type = FGChargedWeapon__merged__type & {
 	mIsPendingExecuteFire: boolean__type;

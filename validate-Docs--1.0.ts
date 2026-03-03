@@ -3,24 +3,19 @@ import {
 } from 'fs/promises';
 import {
 	ValidationError,
-} from './lib/DocsTsGenerator';
+} from './lib/DocsTsGenerator.ts';
 import {
 	NoMatchError,
-} from './lib/Exceptions';
+} from './lib/Exceptions.ts';
 import {
 	docs,
-} from './lib/helpers';
+} from './lib/helpers.ts';
 import {
 	setup_PerformanceObserver,
-} from './setup_PerformanceObserver';
-import {
-	__dirname_from_meta,
-} from './lib/__dirname';
+} from './setup_PerformanceObserver.ts';
 import {
 	versions,
-} from './version-configs';
-
-const __dirname = __dirname_from_meta(import.meta);
+} from './version-configs.ts';
 
 setup_PerformanceObserver();
 
@@ -44,7 +39,7 @@ try {
 	}
 
 	await writeFile(
-		`${__dirname}/failed-to-compile.${sub_path}.json`,
+		`${import.meta.dirname}/failed-to-compile.${sub_path}.json`,
 		`${JSON.stringify(err, null, '\t')}\n`,
 	);
 

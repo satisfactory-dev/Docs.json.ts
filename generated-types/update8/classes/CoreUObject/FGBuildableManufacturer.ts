@@ -1,16 +1,16 @@
-import {mOutputInventoryHandlerData__type} from '../../common/unassigned';
+import {mOutputInventoryHandlerData__type} from '../../common/unassigned.ts';
 
-import {FGBuildable__consumes_power_base__type} from './FGBuildable';
+import {FGBuildable__consumes_power_base__type} from './FGBuildable.ts';
 
 import {
 	integer_string__type,
 	decimal_string__type,
-} from '../../../common/common/scalar';
+} from '../../../common/common/scalar.ts';
 
 import {
 	empty_object__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned';
+} from '../../../common/common/unassigned.ts';
 
 import {
 	common_base__FGBuildableManufacturer__type,
@@ -19,7 +19,7 @@ import {
 	common_base__FGBuildableManufacturer__constructor__type,
 	common_base__FGBuildableManufacturer__packager__type,
 	common_base__FGBuildableManufacturer__smelter__type,
-} from '../../../common/classes/CoreUObject/FGBuildableManufacturer';
+} from '../../../common/classes/CoreUObject/FGBuildableManufacturer.ts';
 
 export type FGBuildableManufacturer__type =
 	common_base__FGBuildableManufacturer__type &

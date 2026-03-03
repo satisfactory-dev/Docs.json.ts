@@ -1,7 +1,7 @@
 import {
 	NodeExtraction,
-} from './NodeExtraction';
-import ts, {
+} from './NodeExtraction.ts';
+import type {
 	BooleanLiteral,
 	EntityName,
 	LiteralExpression,
@@ -9,9 +9,10 @@ import ts, {
 	NullLiteral,
 	PrefixUnaryExpression,
 } from 'typescript';
+import ts from 'typescript';
 import {
 	NoMatchError,
-} from '../Exceptions';
+} from '../Exceptions.ts';
 
 export class LiteralTypeNodes extends NodeExtraction<LiteralTypeNode> {
 	protected extract(nodes: LiteralTypeNode[]): EntityName[] {

@@ -1,6 +1,6 @@
-import {UnrealEngineString} from '../../utils/validators';
+import {UnrealEngineString} from '../../utils/validators.ts';
 
-import {common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type} from './FGItemDescriptor';
+import {common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type} from './FGItemDescriptor.ts';
 
 export type common_base__FGPoleDescriptor__type =
 	common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type & {

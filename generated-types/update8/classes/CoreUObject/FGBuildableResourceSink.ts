@@ -1,11 +1,11 @@
-import {FGBuildable__consumes_power_base__type} from './FGBuildable';
+import {FGBuildable__consumes_power_base__type} from './FGBuildable.ts';
 
 import {
 	empty_object__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned';
+} from '../../../common/common/unassigned.ts';
 
-import {common_base__FGBuildableResourceSink__type} from '../../../common/classes/CoreUObject/FGBuildableResourceSink';
+import {common_base__FGBuildableResourceSink__type} from '../../../common/classes/CoreUObject/FGBuildableResourceSink.ts';
 
 export type FGBuildableResourceSink__type =
 	FGBuildableResourceSink__merged__type & {

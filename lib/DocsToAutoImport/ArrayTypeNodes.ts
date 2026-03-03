@@ -1,8 +1,9 @@
 import {
 	NodeExtraction,
-} from './NodeExtraction';
-import {
-	ArrayTypeNode, Node,
+} from './NodeExtraction.ts';
+import type {
+	ArrayTypeNode,
+	Node,
 } from 'typescript';
 
 export class ArrayTypeNodes extends NodeExtraction<ArrayTypeNode> {

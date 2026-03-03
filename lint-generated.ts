@@ -1,7 +1,5 @@
 import {
 	eslint_generated_types,
-} from './lib/DocsTsGenerator';
+} from './lib/DocsTsGenerator.ts';
 
-const __dirname = import.meta.dirname;
-
-await eslint_generated_types(`${__dirname}/generated-types/update8/`);
+await eslint_generated_types(`${import.meta.dirname}/generated-types/update8/`);

@@ -1,14 +1,14 @@
-import {FGEquipment__base__type} from './FGEquipment';
+import {FGEquipment__base__type} from './FGEquipment.ts';
 
 import {
 	decimal_string__type,
 	integer_string__type,
 	boolean__type,
-} from '../../../common/common/scalar';
+} from '../../../common/common/scalar.ts';
 
-import {common_base__FGChainsaw__type} from '../../../common/classes/CoreUObject/FGChainsaw';
+import {common_base__FGChainsaw__type} from '../../../common/classes/CoreUObject/FGChainsaw.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGChainsaw__type = FGChainsaw__merged__type & {
 	mSawingMontageLength: decimal_string__type;

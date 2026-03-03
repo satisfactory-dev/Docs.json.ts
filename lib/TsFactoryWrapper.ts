@@ -1,4 +1,4 @@
-import ts, {
+import type {
 	ClassDeclaration,
 	Expression,
 	HeritageClause,
@@ -25,6 +25,7 @@ import ts, {
 	VariableDeclarationList,
 	VariableStatement,
 } from 'typescript';
+import ts from 'typescript';
 import {
 	is_string,
 	non_empty_map,

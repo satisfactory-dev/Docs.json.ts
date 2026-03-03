@@ -5,7 +5,7 @@ import {
 import assert from 'node:assert/strict';
 import {
 	$ref,
-} from '../../../../lib/TypesDiscovery/JsonSchema/$ref';
+} from '../../../../lib/TypesDiscovery/JsonSchema/$ref.ts';
 
 /**
  * @todo add full coverage in this test rather than relying on others

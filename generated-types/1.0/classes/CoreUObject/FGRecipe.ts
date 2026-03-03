@@ -1,11 +1,11 @@
-import {FGCustomizationRecipe__FGRecipe__type} from './FGCustomizationRecipe';
+import {FGCustomizationRecipe__FGRecipe__type} from './FGCustomizationRecipe.ts';
 
 import {
 	ItemClass__amount_required__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned';
+} from '../../../common/common/unassigned.ts';
 
-import {common_base__FGRecipe__type} from '../../../common/classes/CoreUObject/FGRecipe';
+import {common_base__FGRecipe__type} from '../../../common/classes/CoreUObject/FGRecipe.ts';
 
 export type FGRecipe__type = FGRecipe__merged__type & {
 	mIngredients: ItemClass__amount_required__type | '';

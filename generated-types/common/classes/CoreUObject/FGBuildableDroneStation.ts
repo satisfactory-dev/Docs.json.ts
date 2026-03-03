@@ -1,13 +1,13 @@
-import {common_base__FGBuildable__docking_station_base__type} from './FGBuildable';
+import {common_base__FGBuildable__docking_station_base__type} from './FGBuildable.ts';
 
 import {
 	boolean__type,
 	boolean_extended__type,
 	decimal_string__type,
 	integer_string__type,
-} from '../../common/scalar';
+} from '../../common/scalar.ts';
 
-import {xyz__type} from '../../common/unassigned';
+import {xyz__type} from '../../common/unassigned.ts';
 
 export type common_base__FGBuildableDroneStation__type =
 	common_base__FGBuildable__docking_station_base__type & {

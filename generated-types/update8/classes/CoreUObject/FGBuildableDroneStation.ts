@@ -1,8 +1,8 @@
-import {FGBuildableDroneStation__update8__type} from '../../common/unassigned';
+import {FGBuildableDroneStation__update8__type} from '../../common/unassigned.ts';
 
-import {FGBuildable__docking_station_base__type} from './FGBuildable';
+import {FGBuildable__docking_station_base__type} from './FGBuildable.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildableDroneStation__type =
 	FGBuildableDroneStation__update8__type &

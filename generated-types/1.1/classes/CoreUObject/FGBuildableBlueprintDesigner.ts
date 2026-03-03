@@ -2,9 +2,9 @@ import {
 	FGBuildableBlueprintDesigner__mk3__type,
 	FGBuildableBlueprintDesigner__mk2__type,
 	FGBuildableBlueprintDesigner__mk1__type,
-} from '../../common/unassigned';
+} from '../../common/unassigned.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildableBlueprintDesigner__NativeClass =
 	NativeClass__type & {

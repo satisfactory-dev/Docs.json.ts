@@ -1,15 +1,15 @@
-import {FGBuildable__base__type} from './FGBuildable';
+import {FGBuildable__base__type} from './FGBuildable.ts';
 
 import {
 	integer_string__signed__type,
 	integer_string__type,
 	decimal_string__type,
-} from '../../../common/common/scalar';
+} from '../../../common/common/scalar.ts';
 
 import {
 	xyz__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned';
+} from '../../../common/common/unassigned.ts';
 
 export type FGBuildableSnowCannon__type = FGBuildable__base__type & {
 	SFXLocation: xyz__type;

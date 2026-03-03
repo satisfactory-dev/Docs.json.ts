@@ -4,7 +4,7 @@ import {
 	create_type,
 	createParameter,
 	type_reference_node,
-} from '../TsFactoryWrapper';
+} from '../TsFactoryWrapper.ts';
 
 export const string_starts_with = {
 	file: 'utils/validators.ts',

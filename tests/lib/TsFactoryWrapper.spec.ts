@@ -7,15 +7,16 @@ import {
 	adjust_class_name, create_literal,
 	create_modifiers,
 	modifier_map, type_reference_node,
-} from '../../lib/TsFactoryWrapper';
+} from '../../lib/TsFactoryWrapper.ts';
 import {
 	non_empty_keys,
 } from '@satisfactory-dev/predicates.ts';
 
-import ts, {
+import type {
 	LiteralTypeNode,
 	StringLiteral,
 } from 'typescript';
+import ts from 'typescript';
 
 void describe('adjust_class_name', () => {
 	void it('behaves', () => {

@@ -1,13 +1,13 @@
-import {FGBuildable__base__type} from './FGBuildable';
+import {FGBuildable__base__type} from './FGBuildable.ts';
 
-import {integer_string__signed__type} from '../../../common/common/scalar';
+import {integer_string__signed__type} from '../../../common/common/scalar.ts';
 
 import {
 	color_decimal__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned';
+} from '../../../common/common/unassigned.ts';
 
-import {common_base__FGBuildableBlueprintDesigner__type} from '../../../common/classes/CoreUObject/FGBuildableBlueprintDesigner';
+import {common_base__FGBuildableBlueprintDesigner__type} from '../../../common/classes/CoreUObject/FGBuildableBlueprintDesigner.ts';
 
 export type FGBuildableBlueprintDesigner__type =
 	FGBuildableBlueprintDesigner__merged__type & {

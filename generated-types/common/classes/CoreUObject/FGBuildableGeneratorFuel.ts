@@ -2,9 +2,9 @@ import {
 	integer_string__type,
 	boolean__type,
 	decimal_string__type,
-} from '../../common/scalar';
+} from '../../common/scalar.ts';
 
-import {common_base__FGBuildableGenerator__base__type} from './FGBuildableGenerator';
+import {common_base__FGBuildableGenerator__base__type} from './FGBuildableGenerator.ts';
 
 export type common_base__FGBuildableGeneratorFuel__base__type =
 	common_base__FGBuildableGenerator__base__type & {

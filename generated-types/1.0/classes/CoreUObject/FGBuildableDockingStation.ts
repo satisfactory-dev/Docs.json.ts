@@ -1,8 +1,8 @@
-import {FGBuildable__docking_station_base__type} from './FGBuildable';
+import {FGBuildable__docking_station_base__type} from './FGBuildable.ts';
 
-import {common_base__FGBuildableDockingStation__type} from '../../../common/classes/CoreUObject/FGBuildableDockingStation';
+import {common_base__FGBuildableDockingStation__type} from '../../../common/classes/CoreUObject/FGBuildableDockingStation.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildableDockingStation__type =
 	common_base__FGBuildableDockingStation__type &

@@ -5,11 +5,11 @@ import {
 import assert from 'node:assert/strict';
 import {
 	value_matches_ExpressionResult,
-} from '../../assert/CustomAssert';
+} from '../../assert/CustomAssert.ts';
 import ts from 'typescript';
 import {
 	ExpressionResult,
-} from '../../lib/DataDiscovery/Generator';
+} from '../../lib/DataDiscovery/Generator.ts';
 
 void describe('value_matches_ExpressionResult', () => {
 	void it('does not throw', () => {

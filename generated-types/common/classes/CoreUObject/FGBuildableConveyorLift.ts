@@ -1,11 +1,11 @@
-import {decimal_string__type, boolean__type} from '../../common/scalar';
+import {decimal_string__type, boolean__type} from '../../common/scalar.ts';
 
 import {
 	transformation__type,
 	common_base__mSnappedPassthroughs__type,
-} from '../../common/unassigned';
+} from '../../common/unassigned.ts';
 
-import {common_base__FGBuildableConveyorBelt__base__type} from './FGBuildableConveyorBelt';
+import {common_base__FGBuildableConveyorBelt__base__type} from './FGBuildableConveyorBelt.ts';
 
 export type common_base__FGBuildableConveyorLift__type =
 	common_base__FGBuildableConveyorBelt__base__type & {

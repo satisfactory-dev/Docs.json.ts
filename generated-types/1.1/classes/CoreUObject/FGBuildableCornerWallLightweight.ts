@@ -1,6 +1,6 @@
-import {FGBuildableCornerWall__type} from './FGBuildableCornerWall';
+import {FGBuildableCornerWall__type} from './FGBuildableCornerWall.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildableCornerWallLightweight__NativeClass =
 	NativeClass__type & {

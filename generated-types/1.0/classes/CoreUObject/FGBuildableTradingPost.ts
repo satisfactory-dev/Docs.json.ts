@@ -1,8 +1,8 @@
-import {FGBuildableTradingPost__version_1__type} from '../../common/unassigned';
+import {FGBuildableTradingPost__version_1__type} from '../../common/unassigned.ts';
 
-import {FGBuildable__consumes_power_base__type} from './FGBuildable';
+import {FGBuildable__consumes_power_base__type} from './FGBuildable.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildableTradingPost__type =
 	FGBuildableTradingPost__version_1__type &

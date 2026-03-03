@@ -1,14 +1,14 @@
-import {FGBuildableResourceExtractor__miner_mk3__type} from '../../common/unassigned';
+import {FGBuildableResourceExtractor__miner_mk3__type} from '../../common/unassigned.ts';
 
-import {FGBuildable__extractor_base__type} from './FGBuildable';
+import {FGBuildable__extractor_base__type} from './FGBuildable.ts';
 
 import {
 	common_base__FGBuildableResourceExtractor__miner__type,
 	common_base__FGBuildableResourceExtractor__miner__base__type,
 	common_base__FGBuildableResourceExtractor__oil_extractor__type,
-} from '../../../common/classes/CoreUObject/FGBuildableResourceExtractor';
+} from '../../../common/classes/CoreUObject/FGBuildableResourceExtractor.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildableResourceExtractor__miner__type =
 	common_base__FGBuildableResourceExtractor__miner__type &

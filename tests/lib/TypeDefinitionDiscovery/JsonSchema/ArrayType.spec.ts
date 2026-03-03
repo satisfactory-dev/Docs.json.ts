@@ -5,13 +5,13 @@ import {
 import assert from 'node:assert/strict';
 import {
 	ArrayType,
-} from '../../../../lib/TypeDefinitionDiscovery/JsonSchema/ArrayType';
+} from '../../../../lib/TypeDefinitionDiscovery/JsonSchema/ArrayType.ts';
 import {
 	TypeDefinitionWriter,
-} from '../../../../lib/TypeDefinitionWriter';
+} from '../../../../lib/TypeDefinitionWriter.ts';
 import {
 	docs,
-} from '../../../../lib/helpers';
+} from '../../../../lib/helpers.ts';
 import ts_assert from '@signpostmarv/ts-assert';
 import {
 	array_has_size,

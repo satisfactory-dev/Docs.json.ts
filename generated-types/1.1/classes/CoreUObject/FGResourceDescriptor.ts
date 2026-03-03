@@ -1,6 +1,6 @@
-import {v1_0_base__FGResourceDescriptor__type} from '../../common/unassigned';
+import {v1_0_base__FGResourceDescriptor__type} from '../../common/unassigned.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGResourceDescriptor__NativeClass =
 	NativeClass__type & {

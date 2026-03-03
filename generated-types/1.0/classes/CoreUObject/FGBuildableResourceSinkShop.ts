@@ -1,8 +1,8 @@
-import {FGBuildable__consumes_power_base__type} from './FGBuildable';
+import {FGBuildable__consumes_power_base__type} from './FGBuildable.ts';
 
-import {common_base__FGBuildableResourceSinkShop__type} from '../../../common/classes/CoreUObject/FGBuildableResourceSinkShop';
+import {common_base__FGBuildableResourceSinkShop__type} from '../../../common/classes/CoreUObject/FGBuildableResourceSinkShop.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildableResourceSinkShop__type =
 	common_base__FGBuildableResourceSinkShop__type &

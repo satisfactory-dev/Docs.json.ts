@@ -6,17 +6,17 @@ import assert from 'node:assert/strict';
 import ts from 'typescript';
 import {
 	ExpressionResult,
-} from '../../../lib/DataDiscovery/Generator';
+} from '../../../lib/DataDiscovery/Generator.ts';
 import {
 	array_has_size,
 	rejects_partial_match,
 } from '@satisfactory-dev/custom-assert';
 import {
 	value_matches_ExpressionResult,
-} from '../../../assert/CustomAssert';
+} from '../../../assert/CustomAssert.ts';
 import {
 	Literal,
-} from '../../../lib/DataDiscovery/Literal';
+} from '../../../lib/DataDiscovery/Literal.ts';
 import ts_assert from '@signpostmarv/ts-assert';
 
 void describe('Literal.object_literal', () => {

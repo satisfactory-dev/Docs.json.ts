@@ -1,8 +1,9 @@
 import {
 	NodeExtraction,
-} from './NodeExtraction';
-import {
-	Node, TupleTypeNode,
+} from './NodeExtraction.ts';
+import type {
+	Node,
+	TupleTypeNode,
 } from 'typescript';
 
 export class TupleTypeNodes extends NodeExtraction<TupleTypeNode> {

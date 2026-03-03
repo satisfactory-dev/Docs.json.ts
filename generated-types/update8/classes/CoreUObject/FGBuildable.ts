@@ -1,9 +1,9 @@
-import {FGBuildable__consumes_power_base__update8__type} from '../../common/unassigned';
+import {FGBuildable__consumes_power_base__update8__type} from '../../common/unassigned.ts';
 
 import {
 	boolean__type,
 	decimal_string__type,
-} from '../../../common/common/scalar';
+} from '../../../common/common/scalar.ts';
 
 import {
 	common_base__FGBuildable__base__type,
@@ -20,9 +20,9 @@ import {
 	common_base__FGBuildable__power_switch__base__type,
 	common_base__FGBuildable__splitter__base__type,
 	common_base__FGBuildable__tiered__type,
-} from '../../../common/classes/CoreUObject/FGBuildable';
+} from '../../../common/classes/CoreUObject/FGBuildable.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildable__base__type =
 	common_base__FGBuildable__base__type & {

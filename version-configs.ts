@@ -1,4 +1,4 @@
-import {
+import type {
 	docs_versions,
 } from "./lib/DocsTsGenerator";
 

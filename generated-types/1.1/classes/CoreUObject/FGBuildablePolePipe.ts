@@ -1,25 +1,25 @@
-import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
+import {UnrealEngineString, StringStartsWith} from '../../utils/validators.ts';
 
 import {
 	mPoleVariations__type,
 	v1_0_base__FGBuildablePipelineSupport__properties__type,
-} from '../../common/unassigned';
+} from '../../common/unassigned.ts';
 
-import {FGBuildable__base__type} from './FGBuildable';
+import {FGBuildable__base__type} from './FGBuildable.ts';
 
 import {
 	quaternion__type,
 	xyz__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned';
+} from '../../../common/common/unassigned.ts';
 
 import {
 	decimal_string__type,
 	boolean__type,
 	integer_string__type,
-} from '../../../common/common/scalar';
+} from '../../../common/common/scalar.ts';
 
-import {common_base__FGBuildablePoleLightweight__properties__type} from '../../../common/classes/CoreUObject/FGBuildablePoleLightweight';
+import {common_base__FGBuildablePoleLightweight__properties__type} from '../../../common/classes/CoreUObject/FGBuildablePoleLightweight.ts';
 
 export type FGBuildablePolePipe__type = FGBuildablePolePipe__mergd__type & {
 	mSupportMeshInstanceData: {

@@ -4,9 +4,9 @@ import {
 } from 'node:test';
 import assert from 'node:assert/strict';
 
-import {
+import type {
 	SchemaObject,
-} from 'ajv/dist/2020';
+} from 'ajv/dist/2020.js';
 
 import {
 	not_undefined,
@@ -14,15 +14,15 @@ import {
 
 import {
 	ValueToRegexFormatter,
-} from '../../../lib/CustomParsingTypes/ValueToRegexFormatter';
+} from '../../../lib/CustomParsingTypes/ValueToRegexFormatter.ts';
 import {
 	docs,
-} from '../../../lib/helpers';
+} from '../../../lib/helpers.ts';
 // eslint-disable-next-line max-len
 import common_schema from '../../../schema/common.schema.json' with {type: 'json'};
-import {
+import type {
 	docs_versions,
-} from '../../../lib/DocsTsGenerator';
+} from '../../../lib/DocsTsGenerator.ts';
 
 const versions_to_test:(Exclude<keyof docs_versions, 'common'>)[] = [
 	'update8',

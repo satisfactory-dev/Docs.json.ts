@@ -5,13 +5,13 @@ import {
 import assert from 'node:assert/strict';
 import {
 	ArrayConverter,
-} from '../../../../lib/DataDiscovery/JsonSchema/Array';
+} from '../../../../lib/DataDiscovery/JsonSchema/Array.ts';
 import {
 	DataDiscovery,
-} from '../../../../lib/DataDiscovery';
+} from '../../../../lib/DataDiscovery.ts';
 import {
 	docs,
-} from '../../../../lib/helpers';
+} from '../../../../lib/helpers.ts';
 
 /**
  * @todo add full coverage on ArrayConverter

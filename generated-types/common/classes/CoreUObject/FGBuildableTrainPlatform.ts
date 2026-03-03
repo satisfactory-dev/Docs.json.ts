@@ -1,13 +1,13 @@
-import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
+import {UnrealEngineString, StringStartsWith} from '../../utils/validators.ts';
 
-import {boolean__type} from '../../common/scalar';
+import {boolean__type} from '../../common/scalar.ts';
 
 import {
 	mPlatformDockingStatus__type,
 	empty_object__type,
-} from '../../common/unassigned';
+} from '../../common/unassigned.ts';
 
-import {common_base__FGBuildable__consumes_power_base__type} from './FGBuildable';
+import {common_base__FGBuildable__consumes_power_base__type} from './FGBuildable.ts';
 
 export type common_base__FGBuildableTrainPlatform__base__type =
 	common_base__FGBuildable__consumes_power_base__type & {

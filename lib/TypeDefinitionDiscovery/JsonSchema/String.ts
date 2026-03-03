@@ -1,15 +1,15 @@
 import {
 	Generator,
-} from '../Generator';
-import {
+} from '../Generator.ts';
+import type {
 	KeywordTypeNode,
 	TypeReferenceNode,
 } from 'typescript';
-import Ajv from 'ajv/dist/2020';
+import Ajv from 'ajv/dist/2020.js';
 import {
 	create_literal,
 	create_type, possibly_create_lazy_union, type_reference_node,
-} from '../../TsFactoryWrapper';
+} from '../../TsFactoryWrapper.ts';
 
 export class StringType extends Generator<{type: 'string'}, KeywordTypeNode>
 {

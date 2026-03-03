@@ -7,7 +7,7 @@ import {
 
 import {
 	SupportedSubSchemaType,
-} from './CustomPairingTypes';
+} from './CustomPairingTypes.ts';
 
 export type pattern_schema_type = {
 	type: 'string',

@@ -1,19 +1,19 @@
 import {
 	mElevatorState__type,
 	v1_0_base__FGBuildable__consumes_power_base__type,
-} from '../../common/unassigned';
+} from '../../common/unassigned.ts';
 
-import {FGBuildable__base__type} from './FGBuildable';
+import {FGBuildable__base__type} from './FGBuildable.ts';
 
 import {
 	empty_object__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned';
+} from '../../../common/common/unassigned.ts';
 
 import {
 	decimal_string__type,
 	integer_string__type,
-} from '../../../common/common/scalar';
+} from '../../../common/common/scalar.ts';
 
 export type FGBuildableElevator__type =
 	v1_0_base__FGBuildable__consumes_power_base__type &

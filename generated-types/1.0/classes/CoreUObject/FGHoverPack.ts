@@ -1,20 +1,20 @@
-import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
+import {UnrealEngineString, StringStartsWith} from '../../utils/validators.ts';
 
-import {FilterMontageTag__type} from '../../common/unassigned';
+import {FilterMontageTag__type} from '../../common/unassigned.ts';
 
-import {FGEquipment__base__type} from './FGEquipment';
+import {FGEquipment__base__type} from './FGEquipment.ts';
 
 import {
 	boolean__type,
 	decimal_string__type,
-} from '../../../common/common/scalar';
+} from '../../../common/common/scalar.ts';
 
 import {
 	empty_object__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned';
+} from '../../../common/common/unassigned.ts';
 
-import {common_base__FGHoverPack__type} from '../../../common/classes/CoreUObject/FGHoverPack';
+import {common_base__FGHoverPack__type} from '../../../common/classes/CoreUObject/FGHoverPack.ts';
 
 export type FGHoverPack__type = FGHoverPack__merged__type & {
 	mCurrentPlayerVelocity_SFX: decimal_string__type;

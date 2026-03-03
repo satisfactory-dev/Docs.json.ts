@@ -1,11 +1,11 @@
 import {
 	v1_0_base__FGBuildableRadarTower__type,
 	has__mLastEditedBy__type,
-} from '../../common/unassigned';
+} from '../../common/unassigned.ts';
 
-import {FGBuildable__base__type} from './FGBuildable';
+import {FGBuildable__base__type} from './FGBuildable.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildableRadarTower__type =
 	v1_0_base__FGBuildableRadarTower__type &

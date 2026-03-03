@@ -1,13 +1,13 @@
-import {FGBuildableWalkwayLightweight__type} from './FGBuildableWalkwayLightweight';
+import {FGBuildableWalkwayLightweight__type} from './FGBuildableWalkwayLightweight.ts';
 
-import {FGBuildable__base__type} from './FGBuildable';
+import {FGBuildable__base__type} from './FGBuildable.ts';
 
 import {
 	common_base__FGBuildableWalkway__type,
 	common_base__FGBuildableWalkway__base__type,
-} from '../../../common/classes/CoreUObject/FGBuildableWalkway';
+} from '../../../common/classes/CoreUObject/FGBuildableWalkway.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildableWalkway__type =
 	common_base__FGBuildableWalkway__type &

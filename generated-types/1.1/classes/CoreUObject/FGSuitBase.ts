@@ -2,11 +2,11 @@ import {
 	v1_0_base__FGSuitBase__1_0__mEquipMontage__Montages__AudioEvent__type,
 	v1_0_base__FGEquipment__base__type,
 	v1_0_base__FGSuitBase__1_0__pre_1_1__type,
-} from '../../common/unassigned';
+} from '../../common/unassigned.ts';
 
-import {boolean__type} from '../../../common/common/scalar';
+import {boolean__type} from '../../../common/common/scalar.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGSuitBase__type = v1_0_base__FGEquipment__base__type &
 	v1_0_base__FGSuitBase__1_0__pre_1_1__type &

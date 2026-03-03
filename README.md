@@ -60,7 +60,6 @@
     path in your new project):
 
           ```ts
-          const __dirname = __dirname_from_meta(import.meta);
           const ajv = new Ajv({
           	verbose: true,
           	logger: false,
@@ -78,13 +77,13 @@
           	ajv,
           	docs_versions: {
           		version_1_0_1_4: new DocsTsGeneratorVersion({
-          			docs_path: `${__dirname}/../data/1.0/en-US.json`,
-          			cache_path: `${__dirname}/../data/1.0/`,
+          			docs_path: `${import.meta.dirname}/../data/1.0/en-US.json`,
+          			cache_path: `${import.meta.dirname}/../data/1.0/`,
           			UnrealEngineString_quote_mode: 'double',
           		}),
           		update8: new DocsTsGeneratorVersion({
-          			docs_path: `${__dirname}/../data/update8/Docs.json`,
-          			cache_path: `${__dirname}/../data/update8/`,
+          			docs_path: `${import.meta.dirname}/../data/update8/Docs.json`,
+          			cache_path: `${import.meta.dirname}/../data/update8/`,
           			UnrealEngineString_quote_mode: 'original',
           		}),
           	},

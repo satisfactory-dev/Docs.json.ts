@@ -1,6 +1,6 @@
 import {
 	CandidatesDiscovery,
-} from '../CandidatesDiscovery';
+} from '../CandidatesDiscovery.ts';
 import {
 	is_non_empty_array,
 	object_has_property,

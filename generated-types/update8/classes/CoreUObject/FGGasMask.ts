@@ -1,8 +1,8 @@
-import {FGEquipment__base__type} from './FGEquipment';
+import {FGEquipment__base__type} from './FGEquipment.ts';
 
-import {common_base__FGGasMask__type} from '../../../common/classes/CoreUObject/FGGasMask';
+import {common_base__FGGasMask__type} from '../../../common/classes/CoreUObject/FGGasMask.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGGasMask__type = FGGasMask__merged__type;
 

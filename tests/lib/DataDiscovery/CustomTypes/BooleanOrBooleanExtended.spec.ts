@@ -5,13 +5,13 @@ import {
 import assert from 'node:assert/strict';
 import {
 	BooleanConverter,
-} from '../../../../lib/DataDiscovery/CustomTypes/BooleanOrBooleanExtended';
+} from '../../../../lib/DataDiscovery/CustomTypes/BooleanOrBooleanExtended.ts';
 import {
 	docs,
-} from '../../../../lib/helpers';
+} from '../../../../lib/helpers.ts';
 import {
 	local_ref,
-} from '../../../../lib/StringStartsWith';
+} from '../../../../lib/StringStartsWith.ts';
 import ts_assert from '@signpostmarv/ts-assert';
 import ts from 'typescript';
 

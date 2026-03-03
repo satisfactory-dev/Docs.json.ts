@@ -1,15 +1,16 @@
 import {
 	Generator,
-} from '../../../Generator';
-import ts, {
+} from '../../../Generator.ts';
+import type {
 	KeywordTypeNode,
 	UnionTypeNode,
 } from 'typescript';
+import ts from 'typescript';
 import {
 	create_literal,
 	create_union,
-} from '../../../../TsFactoryWrapper';
-import Ajv from 'ajv/dist/2020';
+} from '../../../../TsFactoryWrapper.ts';
+import Ajv from 'ajv/dist/2020.js';
 
 export type boolean_or_null_type = {
 	type: 'string',

@@ -1,12 +1,12 @@
-import {FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type} from './FGItemDescriptor';
+import {FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type} from './FGItemDescriptor.ts';
 
 import {
 	common_base__FGVehicleDescriptor__fueled_with_inventory__type,
 	common_base__FGVehicleDescriptor__powered_no_inventory__type,
 	common_base__FGVehicleDescriptor__with_inventory__type,
-} from '../../../common/classes/CoreUObject/FGVehicleDescriptor';
+} from '../../../common/classes/CoreUObject/FGVehicleDescriptor.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGVehicleDescriptor__fueled_with_inventory__type =
 	FGVehicleDescriptor__fueled_with_inventory__merged__type;

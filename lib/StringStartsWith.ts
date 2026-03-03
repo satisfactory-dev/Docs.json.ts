@@ -4,7 +4,7 @@ import {
 
 import {
 	NoMatchError,
-} from './Exceptions';
+} from './Exceptions.ts';
 
 export type StringStartsWith<
 	Prefix extends string,

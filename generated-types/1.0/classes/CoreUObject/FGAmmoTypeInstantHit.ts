@@ -1,12 +1,12 @@
-import {FGAmmoTypeProjectile__base__type} from './FGAmmoTypeProjectile';
+import {FGAmmoTypeProjectile__base__type} from './FGAmmoTypeProjectile.ts';
 
 import {
 	common_base__FGAmmoTypeInstantHit__base__type,
 	common_base__FGAmmoTypeInstantHit__chaos__type,
 	common_base__FGAmmoTypeInstantHit__standard__type,
-} from '../../../common/classes/CoreUObject/FGAmmoTypeInstantHit';
+} from '../../../common/classes/CoreUObject/FGAmmoTypeInstantHit.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGAmmoTypeInstantHit__base__type =
 	common_base__FGAmmoTypeInstantHit__base__type &

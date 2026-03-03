@@ -2,11 +2,11 @@ import {
 	FGBuildable__base__type,
 	FGBuildable__occupied__final__type,
 	FGBuildable__tiered__type,
-} from './FGBuildable';
+} from './FGBuildable.ts';
 
-import {v1_0_base__FGBuildableFactoryBuilding__type} from '../../common/unassigned';
+import {v1_0_base__FGBuildableFactoryBuilding__type} from '../../common/unassigned.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildableFactoryBuilding__type =
 	v1_0_base__FGBuildableFactoryBuilding__type & FGBuildable__base__type;

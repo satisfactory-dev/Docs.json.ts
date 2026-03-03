@@ -1,8 +1,8 @@
-import {FGBuildableTrainPlatformCargo__FGBuildableRailroadStation__type} from './FGBuildableTrainPlatformCargo';
+import {FGBuildableTrainPlatformCargo__FGBuildableRailroadStation__type} from './FGBuildableTrainPlatformCargo.ts';
 
-import {common_base__FGBuildableRailroadStation__type} from '../../../common/classes/CoreUObject/FGBuildableRailroadStation';
+import {common_base__FGBuildableRailroadStation__type} from '../../../common/classes/CoreUObject/FGBuildableRailroadStation.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildableRailroadStation__type =
 	FGBuildableRailroadStation__merged__type;

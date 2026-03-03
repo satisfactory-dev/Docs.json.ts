@@ -2,9 +2,9 @@ import {
 	FGBuildable__base__type,
 	FGBuildable__occupied__final__type,
 	FGBuildable__tiered__type,
-} from './FGBuildable';
+} from './FGBuildable.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildablePoleBase__NativeClass =
 	NativeClass__type & {

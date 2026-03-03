@@ -2,19 +2,19 @@ import {
 	Converter,
 	ConverterMatchesSchema,
 	ExpressionResult,
-} from '../Generator';
+} from '../Generator.ts';
 import {
 	local_ref,
-} from '../../StringStartsWith';
+} from '../../StringStartsWith.ts';
 import {
 	DataDiscovery,
-} from '../../DataDiscovery';
-import {
+} from '../../DataDiscovery.ts';
+import type {
 	SchemaObject,
-} from 'ajv/dist/2020';
+} from 'ajv/dist/2020.js';
 import {
 	NoMatchError,
-} from '../../Exceptions';
+} from '../../Exceptions.ts';
 
 type schema_type = {
 	$ref: local_ref<string>,

@@ -6,10 +6,10 @@ import {
 
 import {
 	UnrealEngineString_general_regex,
-} from './UnrealEngineString';
+} from './UnrealEngineString.ts';
 import {
 	SupportedSubSchemaType,
-} from './CustomPairingTypes';
+} from './CustomPairingTypes.ts';
 
 export const typed_string_const_value_regex = `^(?:[A-Za-z0-9][A-Za-z0-9_ -]*|${UnrealEngineString_general_regex}|\\(\\)|(?:[A-Z][a-z]+(?:\\.[A-Z][a-z]+)+\\.[A-Z][A-Za-z_]+(?:\\d+-\\d+|\\d|\\d_\\d)?))$`;
 export const typed_string_const_value_regex__native = new RegExp(

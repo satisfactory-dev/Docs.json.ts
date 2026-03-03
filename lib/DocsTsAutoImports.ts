@@ -1,23 +1,27 @@
-import ts, {
+import type {
 	EntityName, Identifier, TypeReferenceNode,
 } from 'typescript';
+import ts from 'typescript';
+import type {
+	import_these_later,
+} from './TypesGeneration.ts';
 import {
-	import_these_later, ImportTracker,
-} from './TypesGeneration';
+	ImportTracker,
+} from './TypesGeneration.ts';
 import {
 	basename, dirname, relative,
 } from 'node:path';
 import {
 	from_Node_array,
-} from './DocsToAutoImport/from_Node_array';
+} from './DocsToAutoImport/from_Node_array.ts';
 import {
 	NoMatchError,
-} from './Exceptions';
+} from './Exceptions.ts';
 
 import common_types_map from '../common-imports.json' with {type: 'json'}
-import {
+import type {
 	docs_versions,
-} from './DocsTsGenerator';
+} from './DocsTsGenerator.ts';
 
 declare type initial_check_nodes =
 	| ts.ClassDeclaration

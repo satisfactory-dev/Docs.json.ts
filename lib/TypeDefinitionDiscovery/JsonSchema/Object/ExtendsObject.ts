@@ -1,25 +1,28 @@
-import ts, {
+import type {
 	IntersectionTypeNode,
 	LiteralTypeNode,
 	TypeReferenceNode,
 } from 'typescript';
-import {
+import ts from 'typescript';
+import type {
 	RawData as ObjectTypeRawData,
+} from '../ObjectType.ts';
+import {
 	schema as ObjectTypeSchema,
-} from '../ObjectType';
+} from '../ObjectType.ts';
 import {
 	adjust_class_name,
-} from '../../../TsFactoryWrapper';
+} from '../../../TsFactoryWrapper.ts';
 import {
 	TypeDefinitionDiscovery,
-} from '../../../TypeDefinitionDiscovery';
+} from '../../../TypeDefinitionDiscovery.ts';
 import {
 	GeneratorDoesDiscovery,
-} from '../../GeneratorDoesDiscovery';
+} from '../../GeneratorDoesDiscovery.ts';
 import {
 	common_ref,
 	local_ref,
-} from '../../../StringStartsWith';
+} from '../../../StringStartsWith.ts';
 
 type RawData =
 	& ObjectTypeRawData

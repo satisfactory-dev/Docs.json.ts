@@ -1,6 +1,6 @@
-import {FGBuildable__consumes_power_base__type} from './FGBuildable';
+import {FGBuildable__consumes_power_base__type} from './FGBuildable.ts';
 
-import {common_base__FGBuildableTrainPlatform__base__type} from '../../../common/classes/CoreUObject/FGBuildableTrainPlatform';
+import {common_base__FGBuildableTrainPlatform__base__type} from '../../../common/classes/CoreUObject/FGBuildableTrainPlatform.ts';
 
 export type FGBuildableTrainPlatform__base__type =
 	FGBuildableTrainPlatform__base__merged__type;

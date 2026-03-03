@@ -2,15 +2,15 @@ import {
 	None__type,
 	empty_object__type,
 	UnrealEngineString__array__type,
-} from '../../common/unassigned';
+} from '../../common/unassigned.ts';
 
 import {
 	decimal_string__type,
 	boolean__type,
 	integer_string__type,
-} from '../../common/scalar';
+} from '../../common/scalar.ts';
 
-import {common_base__FGBuildable__extractor_base__shared__type} from './FGBuildable';
+import {common_base__FGBuildable__extractor_base__shared__type} from './FGBuildable.ts';
 
 export type common_base__FGBuildableFrackingActivator__type =
 	common_base__FGBuildable__extractor_base__shared__type & {

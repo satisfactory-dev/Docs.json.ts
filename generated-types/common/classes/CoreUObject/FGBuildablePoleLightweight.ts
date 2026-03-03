@@ -1,12 +1,12 @@
 import {
 	decimal_string__type,
 	integer_string__signed__type,
-} from '../../common/scalar';
+} from '../../common/scalar.ts';
 
 import {
 	common_base__FGBuildable__pole__base__with_static__type,
 	common_base__FGBuildable__base__type,
-} from './FGBuildable';
+} from './FGBuildable.ts';
 
 export type common_base__FGBuildablePoleLightweight__type =
 	common_base__FGBuildable__pole__base__with_static__type &

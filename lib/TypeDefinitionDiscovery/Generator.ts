@@ -1,8 +1,9 @@
-import Ajv, {
+import type Ajv from 'ajv/dist/2020.js';
+import type {
 	SchemaObject,
 	ValidateFunction,
-} from 'ajv/dist/2020';
-import {
+} from 'ajv/dist/2020.js';
+import type {
 	TypeNode,
 } from 'typescript';
 import {

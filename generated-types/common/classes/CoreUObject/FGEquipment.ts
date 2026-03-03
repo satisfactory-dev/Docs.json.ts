@@ -1,12 +1,12 @@
-import {UnrealEngineString} from '../../utils/validators';
+import {UnrealEngineString} from '../../utils/validators.ts';
 
-import {integer_string__type, boolean__type} from '../../common/scalar';
+import {integer_string__type, boolean__type} from '../../common/scalar.ts';
 
 import {
 	empty_object__type,
 	ItemClass__type,
 	class__no_description_or_display_name__type,
-} from '../../common/unassigned';
+} from '../../common/unassigned.ts';
 
 export type common_base__FGEquipment__base__type =
 	class__no_description_or_display_name__type & {

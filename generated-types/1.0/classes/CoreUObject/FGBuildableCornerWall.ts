@@ -1,8 +1,8 @@
-import {FGBuildableWall__base__type} from './FGBuildableWall';
+import {FGBuildableWall__base__type} from './FGBuildableWall.ts';
 
-import {common_base__FGBuildableCornerWall__type} from '../../../common/classes/CoreUObject/FGBuildableCornerWall';
+import {common_base__FGBuildableCornerWall__type} from '../../../common/classes/CoreUObject/FGBuildableCornerWall.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildableCornerWall__type =
 	common_base__FGBuildableCornerWall__type &

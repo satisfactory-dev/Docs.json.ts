@@ -1,8 +1,8 @@
-import {FGBuildable__base__type} from './FGBuildable';
+import {FGBuildable__base__type} from './FGBuildable.ts';
 
-import {common_base__FGBuildablePassthrough__type} from '../../../common/classes/CoreUObject/FGBuildablePassthrough';
+import {common_base__FGBuildablePassthrough__type} from '../../../common/classes/CoreUObject/FGBuildablePassthrough.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildablePassthrough__type =
 	common_base__FGBuildablePassthrough__type &

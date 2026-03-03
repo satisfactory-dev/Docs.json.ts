@@ -1,17 +1,17 @@
 import {
 	property_name_or_computed,
-} from '../TsFactoryWrapper';
+} from '../TsFactoryWrapper.ts';
 import {
 	NoMatchError,
-} from '../Exceptions';
+} from '../Exceptions.ts';
 import {
 	ExpressionResult,
-} from './Generator';
+} from './Generator.ts';
 import {
 	is_string,
 	value_is_non_array_object,
 } from '@satisfactory-dev/predicates.ts';
-import ts, {
+import type {
 	ArrayLiteralExpression,
 	Expression,
 	FalseLiteral,
@@ -21,6 +21,7 @@ import ts, {
 	StringLiteral,
 	TrueLiteral,
 } from 'typescript';
+import ts from 'typescript';
 
 export class Literal
 {

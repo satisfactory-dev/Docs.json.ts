@@ -5,16 +5,16 @@ import {
 import assert from 'node:assert/strict';
 import {
 	UnrealEngineStringConverter,
-} from '../../../../lib/DataDiscovery/CustomTypes/UnrealEngineString';
+} from '../../../../lib/DataDiscovery/CustomTypes/UnrealEngineString.ts';
 import {
 	array_has_size,
 	not_undefined,
 	rejects_partial_match,
 } from '@satisfactory-dev/custom-assert';
 import ts_assert from '@signpostmarv/ts-assert';
-import {
+import type{
 	UnrealEngineString_parent_type,
-} from '../../../../lib/CustomParsingTypes/UnrealEngineString';
+} from '../../../../lib/CustomParsingTypes/UnrealEngineString.ts';
 import {
 	is_string,
 } from '@satisfactory-dev/predicates.ts';

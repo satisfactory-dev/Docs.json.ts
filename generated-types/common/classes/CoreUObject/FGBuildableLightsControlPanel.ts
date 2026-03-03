@@ -1,11 +1,11 @@
-import {common_base__FGBuildable__circuits_base__type} from './FGBuildable';
+import {common_base__FGBuildable__circuits_base__type} from './FGBuildable.ts';
 
 import {
 	empty_object__type,
 	common_base__mLightControlData__type,
-} from '../../common/unassigned';
+} from '../../common/unassigned.ts';
 
-import {boolean__type} from '../../common/scalar';
+import {boolean__type} from '../../common/scalar.ts';
 
 export type common_base__FGBuildableLightsControlPanel__type =
 	common_base__FGBuildable__circuits_base__type & {

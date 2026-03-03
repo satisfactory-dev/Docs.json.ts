@@ -1,14 +1,14 @@
 import {
 	EditorCurveData__type,
 	v1_0_base__FGItemDescriptor__FGResourceDescriptor__type,
-} from '../../common/unassigned';
+} from '../../common/unassigned.ts';
 
 import {
 	empty_object__type,
 	common_base__FGAmmoTypeProjectile__base__pre_1_1__type,
 	common_base__FGAmmoTypeProjectile__pre_1_1__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned';
+} from '../../../common/common/unassigned.ts';
 
 export type FGAmmoTypeProjectile__type =
 	common_base__FGAmmoTypeProjectile__base__pre_1_1__type &

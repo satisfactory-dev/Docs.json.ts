@@ -1,10 +1,11 @@
-import Ajv from 'ajv/dist/2020';
-import ts, {
+import Ajv from 'ajv/dist/2020.js';
+import type {
 	StringLiteral,
 	TypeNode,
 	TypeReferenceNode,
 	UnionTypeNode,
 } from 'typescript';
+import ts from 'typescript';
 import {
 	is_string,
 	object_has_property,
@@ -30,13 +31,13 @@ import {
 	possibly_create_lazy_union,
 	template_expression_from_string,
 	type_reference_node, variable,
-} from '../TsFactoryWrapper';
+} from '../TsFactoryWrapper.ts';
 import {
 	local_ref,
-} from '../StringStartsWith';
-import {
+} from '../StringStartsWith.ts';
+import type {
 	entry,
-} from '../FilesGenerator';
+} from '../FilesGenerator.ts';
 
 export const UnrealEngineString_regex = /^([^']+)'(?:"([^"]+)"|([^"]+))'$/;
 // eslint-disable-next-line max-len

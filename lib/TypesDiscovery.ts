@@ -1,48 +1,51 @@
-import {
+import type {
 	SchemaObject,
-} from 'ajv/dist/2020';
+} from 'ajv/dist/2020.js';
 import {
 	object_has_property,
 	value_is_non_array_object,
 } from '@satisfactory-dev/predicates.ts';
 import {
 	CandidatesDiscovery,
-} from './TypesDiscovery/CandidatesDiscovery';
+} from './TypesDiscovery/CandidatesDiscovery.ts';
 import {
 	properties,
-} from './TypesDiscovery/JsonSchema/properties';
+} from './TypesDiscovery/JsonSchema/properties.ts';
 import {
 	non_empty_array_property,
-} from './TypesDiscovery/non_empty_array_property';
+} from './TypesDiscovery/non_empty_array_property.ts';
 import {
 	$ref,
 	common_$ref,
-} from './TypesDiscovery/JsonSchema/$ref';
+} from './TypesDiscovery/JsonSchema/$ref.ts';
 import {
 	non_array_object_property,
-} from './TypesDiscovery/non_array_object_property';
-import {
+} from './TypesDiscovery/non_array_object_property.ts';
+import type {
 	docs_versions,
-	DocsDataItem, DocsTsGenerator,
-} from './DocsTsGenerator';
+	DocsDataItem,
+} from './DocsTsGenerator.ts';
+import {
+	DocsTsGenerator,
+} from './DocsTsGenerator.ts';
 import {
 	compile,
 } from '@satisfactory-dev/ajv-utilities';
 import {
 	local_ref,
-} from './StringStartsWith';
+} from './StringStartsWith.ts';
 import {
 	typed_string,
-} from './TypesDiscovery/CustomParsingTypes/typed_string';
+} from './TypesDiscovery/CustomParsingTypes/typed_string.ts';
 import {
 	ConstString,
-} from './TypesDiscovery/JsonSchema/const';
+} from './TypesDiscovery/JsonSchema/const.ts';
 import {
 	EnumString,
-} from './TypesDiscovery/JsonSchema/enum';
+} from './TypesDiscovery/JsonSchema/enum.ts';
 import {
 	UnrealEngineString,
-} from './TypesDiscovery/CustomParsingTypes/UnrealEngineString';
+} from './TypesDiscovery/CustomParsingTypes/UnrealEngineString.ts';
 
 import common_schema from '../schema/common.schema.json' with {type: 'json'};
 

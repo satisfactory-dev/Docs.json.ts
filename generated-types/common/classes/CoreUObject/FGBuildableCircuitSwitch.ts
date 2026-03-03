@@ -1,4 +1,4 @@
-import {common_base__FGBuildable__power_switch__base__type} from './FGBuildable';
+import {common_base__FGBuildable__power_switch__base__type} from './FGBuildable.ts';
 
 export type common_base__FGBuildableCircuitSwitch__type =
 	common_base__FGBuildable__power_switch__base__type & {

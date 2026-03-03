@@ -1,16 +1,16 @@
-import {FGEquipment__base__type} from './FGEquipment';
+import {FGEquipment__base__type} from './FGEquipment.ts';
 
 import {
 	boolean__type,
 	decimal_string__type,
-} from '../../../common/common/scalar';
+} from '../../../common/common/scalar.ts';
 
 import {
 	empty_object__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned';
+} from '../../../common/common/unassigned.ts';
 
-import {common_base__FGObjectScanner__type} from '../../../common/classes/CoreUObject/FGObjectScanner';
+import {common_base__FGObjectScanner__type} from '../../../common/classes/CoreUObject/FGObjectScanner.ts';
 
 export type FGObjectScanner__type = FGObjectScanner__merged__type & {
 	mPlayingSound: boolean__type;

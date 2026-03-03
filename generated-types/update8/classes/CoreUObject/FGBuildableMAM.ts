@@ -1,8 +1,8 @@
-import {FGBuildable__occupied__type} from './FGBuildable';
+import {FGBuildable__occupied__type} from './FGBuildable.ts';
 
-import {common_base__FGBuildableMAM__type} from '../../../common/classes/CoreUObject/FGBuildableMAM';
+import {common_base__FGBuildableMAM__type} from '../../../common/classes/CoreUObject/FGBuildableMAM.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildableMAM__type = FGBuildableMAM__merged__type;
 

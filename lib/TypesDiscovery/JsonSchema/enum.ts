@@ -1,9 +1,9 @@
 import {
 	CandidatesDiscovery,
-} from '../CandidatesDiscovery';
-import {
+} from '../CandidatesDiscovery.ts';
+import type {
 	SchemaObject,
-} from 'ajv/dist/2020';
+} from 'ajv/dist/2020.js';
 import {
 	is_string,
 	object_has_non_empty_array_property,
@@ -13,7 +13,7 @@ import {
 } from '@satisfactory-dev/predicates.ts';
 import {
 	local_ref,
-} from '../../StringStartsWith';
+} from '../../StringStartsWith.ts';
 
 export class EnumString extends CandidatesDiscovery
 {

@@ -3,27 +3,22 @@ import {
 } from 'fs/promises';
 import {
 	ValidationError,
-} from './lib/DocsTsGenerator';
+} from './lib/DocsTsGenerator.ts';
 import {
 	NoMatchError,
-} from './lib/Exceptions';
+} from './lib/Exceptions.ts';
 import {
 	docs,
-} from './lib/helpers';
+} from './lib/helpers.ts';
 import {
 	setup_PerformanceObserver,
-} from './setup_PerformanceObserver';
-import {
-	__dirname_from_meta,
-} from './lib/__dirname';
+} from './setup_PerformanceObserver.ts';
 import {
 	versions,
-} from './version-configs';
+} from './version-configs.ts';
 import {
 	FailedToCompileSchema,
 } from '@satisfactory-dev/ajv-utilities';
-
-const __dirname = __dirname_from_meta(import.meta);
 
 setup_PerformanceObserver();
 
@@ -34,7 +29,7 @@ try {
 	await docs.get(version);
 } catch (err) {
 	await writeFile(
-		`${__dirname}/failed-to-compile.${sub_path}.json`,
+		`${import.meta.dirname}/failed-to-compile.${sub_path}.json`,
 		`${JSON.stringify({
 			err_is_Error: (err instanceof Error),
 			err_type: (

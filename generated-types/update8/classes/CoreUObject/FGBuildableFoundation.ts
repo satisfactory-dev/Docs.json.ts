@@ -1,11 +1,11 @@
-import {FGBuildable__base__type} from './FGBuildable';
+import {FGBuildable__base__type} from './FGBuildable.ts';
 
 import {
 	common_base__FGBuildableFoundation__base__type,
 	common_base__FGBuildableFoundation__type,
-} from '../../../common/classes/CoreUObject/FGBuildableFoundation';
+} from '../../../common/classes/CoreUObject/FGBuildableFoundation.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildableFoundation__type = FGBuildableFoundation__merged__type;
 

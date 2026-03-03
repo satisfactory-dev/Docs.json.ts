@@ -2,13 +2,13 @@ import {
 	Converter,
 	ConverterMatchesSchema,
 	ExpressionResult,
-} from '../Generator';
+} from '../Generator.ts';
 import {
 	DataDiscovery,
-} from '../../DataDiscovery';
-import {
+} from '../../DataDiscovery.ts';
+import type {
 	SchemaObject,
-} from 'ajv/dist/2020';
+} from 'ajv/dist/2020.js';
 import {
 	is_string,
 	object_has_property,
@@ -19,18 +19,20 @@ import {
 import {
 	common_ref,
 	local_ref,
-} from '../../StringStartsWith';
+} from '../../StringStartsWith.ts';
 import {
 	NoMatchError,
-} from '../../Exceptions';
-import {
+} from '../../Exceptions.ts';
+import type {
 	Expression,
 	ObjectLiteralExpression,
 } from 'typescript';
+import type {
+	typed_string_inner_object_pattern_type,
+} from '../../CustomParsingTypes/TypedString.ts';
 import {
 	pattern_properties_regex,
-	typed_string_inner_object_pattern_type,
-} from '../../CustomParsingTypes/TypedString';
+} from '../../CustomParsingTypes/TypedString.ts';
 
 export type schema_type = {
 	type: 'object',

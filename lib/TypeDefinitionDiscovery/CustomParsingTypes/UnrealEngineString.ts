@@ -1,19 +1,21 @@
 import {
 	Generator,
-} from '../Generator';
+} from '../Generator.ts';
+import type {
+	UnrealEngineString_parent_type,
+	UnrealEngineString_type,
+} from '../../CustomParsingTypes/UnrealEngineString.ts';
 import {
 	UnrealEngineString_parent_schema,
-	UnrealEngineString_parent_type,
 	UnrealEngineString_reference_type,
 	UnrealEngineString_regex,
 	UnrealEngineString_regex_quoted,
 	UnrealEngineString_schema_definitions,
-	UnrealEngineString_type,
-} from '../../CustomParsingTypes/UnrealEngineString';
-import {
+} from '../../CustomParsingTypes/UnrealEngineString.ts';
+import type {
 	TypeReferenceNode,
 } from 'typescript';
-import Ajv from 'ajv/dist/2020';
+import Ajv from 'ajv/dist/2020.js';
 
 export type UnrealEngineString_left_right<
 	left extends string = string,

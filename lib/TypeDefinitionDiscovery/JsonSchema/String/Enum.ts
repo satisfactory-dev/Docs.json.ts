@@ -1,11 +1,11 @@
 import {
 	Generator,
-} from '../../Generator';
-import Ajv from 'ajv/dist/2020';
+} from '../../Generator.ts';
+import Ajv from 'ajv/dist/2020.js';
 import {
 	create_typed_union,
-} from '../../../TsFactoryWrapper';
-import {
+} from '../../../TsFactoryWrapper.ts';
+import type {
 	LiteralTypeNode,
 	StringLiteral,
 	UnionTypeNode,

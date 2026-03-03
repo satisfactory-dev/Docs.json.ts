@@ -1,6 +1,6 @@
-import {integer_string__type, decimal_string__type} from '../../common/scalar';
+import {integer_string__type, decimal_string__type} from '../../common/scalar.ts';
 
-import {common_base__FGBuildableGeneratorFuel__base__type} from './FGBuildableGeneratorFuel';
+import {common_base__FGBuildableGeneratorFuel__base__type} from './FGBuildableGeneratorFuel.ts';
 
 export type common_base__FGBuildableGeneratorNuclear__type =
 	common_base__FGBuildableGeneratorFuel__base__type & {

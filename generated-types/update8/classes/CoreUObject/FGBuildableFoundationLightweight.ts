@@ -1,9 +1,9 @@
 import {
 	FGBuildableFoundation__base__type,
 	FGBuildableFoundation__type,
-} from './FGBuildableFoundation';
+} from './FGBuildableFoundation.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildableFoundationLightweight__type =
 	FGBuildableFoundation__base__type;

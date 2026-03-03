@@ -1,12 +1,13 @@
-import Ajv, {
+import Ajv from 'ajv/dist/2020.js';
+import type {
 	SchemaObject,
-} from 'ajv/dist/2020';
+} from 'ajv/dist/2020.js';
 import {
 	TypesDiscovery,
-} from './TypesDiscovery';
+} from './TypesDiscovery.ts';
 import {
 	CandidatesDiscovery,
-} from './TypesDiscovery/CandidatesDiscovery';
+} from './TypesDiscovery/CandidatesDiscovery.ts';
 import {
 	is_non_empty_array,
 	is_string,
@@ -17,61 +18,66 @@ import {
 import {
 	common_ref,
 	local_ref,
-} from './StringStartsWith';
-import ts, {
+} from './StringStartsWith.ts';
+import type {
 	TypeNode,
 } from 'typescript';
-import {
+import ts from 'typescript';
+import type {
 	AnyGenerator,
-} from './TypeDefinitionDiscovery/Generator';
+} from './TypeDefinitionDiscovery/Generator.ts';
 import {
 	Const,
-} from './TypeDefinitionDiscovery/JsonSchema/String/Const';
+} from './TypeDefinitionDiscovery/JsonSchema/String/Const.ts';
 import {
 	Pattern,
-} from './TypeDefinitionDiscovery/JsonSchema/String/Pattern';
+} from './TypeDefinitionDiscovery/JsonSchema/String/Pattern.ts';
 import {
 	Enum,
-} from './TypeDefinitionDiscovery/JsonSchema/String/Enum';
+} from './TypeDefinitionDiscovery/JsonSchema/String/Enum.ts';
 import {
 	BooleanEnum,
-} from './TypeDefinitionDiscovery/JsonSchema/String/Enum/BooleanEnum';
+} from './TypeDefinitionDiscovery/JsonSchema/String/Enum/BooleanEnum.ts';
 import {
 	string_starts_with,
-} from './TypeDefinitionDiscovery/CustomParsingTypes/string_starts_with';
+} from './TypeDefinitionDiscovery/CustomParsingTypes/string_starts_with.ts';
 import {
 	UnrealEngineString,
-} from './TypeDefinitionDiscovery/CustomParsingTypes/UnrealEngineString';
+} from './TypeDefinitionDiscovery/CustomParsingTypes/UnrealEngineString.ts';
 import {
 	NonEmptyString,
 	NonEmptyStringWithExclusions,
 	StringType,
-} from './TypeDefinitionDiscovery/JsonSchema/String';
+} from './TypeDefinitionDiscovery/JsonSchema/String.ts';
 import {
 	FilesGenerator,
 	guess_filename,
-} from './FilesGenerator';
+} from './FilesGenerator.ts';
 import {
 	adjust_class_name,
 	create_modifiers,
-} from './TsFactoryWrapper';
-import {
+} from './TsFactoryWrapper.ts';
+import type {
 	docs_versions,
-	DocsTsGenerator,
-} from './DocsTsGenerator';
+} from './DocsTsGenerator.ts';
 import {
+	DocsTsGenerator,
+} from './DocsTsGenerator.ts';
+import type {
 	GeneratesMarkdown,
 	progress_group,
+} from './MarkdownUtilities.ts';
+import {
 	reduce,
 	remap,
 	remove_indentation,
-} from './MarkdownUtilities';
+} from './MarkdownUtilities.ts';
 import {
 	compile,
 } from '@satisfactory-dev/ajv-utilities';
 import {
 	NoMatchError,
-} from './Exceptions';
+} from './Exceptions.ts';
 
 import common_schema from '../schema/common.schema.json' with {type: 'json'}
 

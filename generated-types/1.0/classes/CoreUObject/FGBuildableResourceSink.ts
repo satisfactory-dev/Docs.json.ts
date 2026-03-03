@@ -1,13 +1,13 @@
-import {FGBuildable__consumes_power_base__type} from './FGBuildable';
+import {FGBuildable__consumes_power_base__type} from './FGBuildable.ts';
 
 import {
 	boolean__type,
 	decimal_string__type,
-} from '../../../common/common/scalar';
+} from '../../../common/common/scalar.ts';
 
-import {common_base__FGBuildableResourceSink__type} from '../../../common/classes/CoreUObject/FGBuildableResourceSink';
+import {common_base__FGBuildableResourceSink__type} from '../../../common/classes/CoreUObject/FGBuildableResourceSink.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildableResourceSink__type =
 	common_base__FGBuildableResourceSink__type &

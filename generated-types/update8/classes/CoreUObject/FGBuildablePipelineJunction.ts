@@ -1,8 +1,8 @@
-import {FGBuildable__pipeline_accessory__type} from './FGBuildable';
+import {FGBuildable__pipeline_accessory__type} from './FGBuildable.ts';
 
-import {common_base__FGBuildablePipelineJunction__type} from '../../../common/classes/CoreUObject/FGBuildablePipelineJunction';
+import {common_base__FGBuildablePipelineJunction__type} from '../../../common/classes/CoreUObject/FGBuildablePipelineJunction.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildablePipelineJunction__type =
 	FGBuildablePipelineJunction__merged__type;

@@ -1,9 +1,9 @@
-import {FGBuildable__base__type} from './FGBuildable';
+import {FGBuildable__base__type} from './FGBuildable.ts';
 
 import {
 	common_base__FGBuildableFoundation__type,
 	common_base__FGBuildableFoundation__base__type,
-} from '../../../common/classes/CoreUObject/FGBuildableFoundation';
+} from '../../../common/classes/CoreUObject/FGBuildableFoundation.ts';
 
 export type FGBuildableFoundation__type =
 	common_base__FGBuildableFoundation__type &

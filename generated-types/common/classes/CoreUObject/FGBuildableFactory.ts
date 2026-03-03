@@ -1,6 +1,6 @@
-import {common_base__FGBuildable__consumes_power_base__type} from './FGBuildable';
+import {common_base__FGBuildable__consumes_power_base__type} from './FGBuildable.ts';
 
-import {decimal_string__type} from '../../common/scalar';
+import {decimal_string__type} from '../../common/scalar.ts';
 
 export type common_base__FGBuildableFactory__generic__type =
 	common_base__FGBuildable__consumes_power_base__type;

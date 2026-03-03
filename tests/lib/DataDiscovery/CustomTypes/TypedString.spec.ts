@@ -5,19 +5,19 @@ import {
 import assert from 'node:assert/strict';
 import {
 	TypedStringConverter,
-} from '../../../../lib/DataDiscovery/CustomTypes/TypedString';
+} from '../../../../lib/DataDiscovery/CustomTypes/TypedString.ts';
 import {
 	DataDiscovery,
-} from '../../../../lib/DataDiscovery';
+} from '../../../../lib/DataDiscovery.ts';
 import {
 	docs,
-} from '../../../../lib/helpers';
-import {
+} from '../../../../lib/helpers.ts';
+import type {
 	SchemaObject,
-} from 'ajv';
-import {
+} from 'ajv/dist/2020.js';
+import type {
 	typed_string_parent_type,
-} from '../../../../lib/CustomParsingTypes/TypedString';
+} from '../../../../lib/CustomParsingTypes/TypedString.ts';
 import {
 	is_string,
 } from '@satisfactory-dev/predicates.ts';

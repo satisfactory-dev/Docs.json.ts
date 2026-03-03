@@ -1,39 +1,42 @@
-import ts, {
+import type {
 	TupleTypeNode,
 	TypeLiteralNode,
 	UnionTypeNode,
 } from 'typescript';
+import ts from 'typescript';
 import {
 	TypeDefinitionDiscovery,
-} from '../../TypeDefinitionDiscovery';
+} from '../../TypeDefinitionDiscovery.ts';
 import {
 	create_object_type_from_entries,
 	createPropertySignature,
 	minimum_size_array_of_single_type,
-} from '../../TsFactoryWrapper';
+} from '../../TsFactoryWrapper.ts';
 import {
 	GeneratorDoesDiscovery,
-} from '../GeneratorDoesDiscovery';
+} from '../GeneratorDoesDiscovery.ts';
 import {
 	UnrealEngineString,
-} from './UnrealEngineString';
-import {
+} from './UnrealEngineString.ts';
+import type {
 	AnyGenerator,
-} from '../Generator';
-import {
-	generate_object_parent_schema,
-	generate_typed_string_$defs,
+} from '../Generator.ts';
+import type {
 	typed_string_inner_array_prefixItems_type,
 	typed_string_inner_array_type,
 	typed_string_inner_object_pattern_type,
 	typed_string_inner_object_type,
 	typed_string_inner_object_type_no_required,
 	typed_string_parent_type,
-} from '../../CustomParsingTypes/TypedString';
+} from '../../CustomParsingTypes/TypedString.ts';
+import {
+	generate_object_parent_schema,
+	generate_typed_string_$defs,
+} from '../../CustomParsingTypes/TypedString.ts';
 import {
 	common_ref,
 	local_ref,
-} from '../../StringStartsWith';
+} from '../../StringStartsWith.ts';
 import {
 	object_has_property,
 } from '@satisfactory-dev/predicates.ts';

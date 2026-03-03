@@ -1,6 +1,6 @@
-import {
+import type {
 	SchemaObject,
-} from 'ajv/dist/2020';
+} from 'ajv/dist/2020.js';
 
 export abstract class CandidatesDiscovery
 {

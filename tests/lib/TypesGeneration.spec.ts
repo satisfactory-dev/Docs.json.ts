@@ -9,7 +9,7 @@ import {
 } from '@satisfactory-dev/custom-assert';
 import {
 	ImportTracker,
-} from '../../lib/TypesGeneration';
+} from '../../lib/TypesGeneration.ts';
 import ts_assert from '@signpostmarv/ts-assert';
 
 void describe('ImportTracker.generate_imports()', () => {

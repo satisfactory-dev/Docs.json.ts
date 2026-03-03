@@ -1,11 +1,11 @@
-import {FGBuildable__base__type} from './FGBuildable';
+import {FGBuildable__base__type} from './FGBuildable.ts';
 
-import {v1_0_base__FGBuildablePipeline__properties__type} from '../../common/unassigned';
+import {v1_0_base__FGBuildablePipeline__properties__type} from '../../common/unassigned.ts';
 
 import {
 	common_base__FGBuildablePipeline__pre_1_1__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned';
+} from '../../../common/common/unassigned.ts';
 
 export type FGBuildablePipeline__type =
 	common_base__FGBuildablePipeline__pre_1_1__type &

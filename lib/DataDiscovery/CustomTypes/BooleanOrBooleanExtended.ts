@@ -1,19 +1,21 @@
-import Ajv, {
+import type Ajv from 'ajv/dist/2020.js';
+import type {
 	SchemaObject,
-} from 'ajv/dist/2020';
+} from 'ajv/dist/2020.js';
 import {
 	common_ref,
 	local_ref,
-} from '../../StringStartsWith';
+} from '../../StringStartsWith.ts';
 import {
 	ConverterMatchesSchema,
 	ExpressionResult,
-} from '../Generator';
-import ts, {
+} from '../Generator.ts';
+import type {
 	FalseLiteral,
 	NullLiteral,
 	TrueLiteral,
 } from 'typescript';
+import ts from 'typescript';
 
 const schema = {
 	type: 'object',

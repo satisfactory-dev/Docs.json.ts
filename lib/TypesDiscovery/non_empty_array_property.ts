@@ -1,6 +1,6 @@
 import {
 	PropertyDependentDiscovery,
-} from './CandidatesDiscovery';
+} from './CandidatesDiscovery.ts';
 import {
 	object_has_non_empty_array_property,
 	value_is_non_array_object,

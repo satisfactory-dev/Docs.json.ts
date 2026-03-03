@@ -1,14 +1,14 @@
 import {
 	FGItemDescriptor__FGResourceDescriptor__type,
 	FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type,
-} from './FGItemDescriptor';
+} from './FGItemDescriptor.ts';
 
 import {
 	common_base__FGEquipmentDescriptor__base__type,
 	common_base__FGEquipmentDescriptor__type,
-} from '../../../common/classes/CoreUObject/FGEquipmentDescriptor';
+} from '../../../common/classes/CoreUObject/FGEquipmentDescriptor.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGEquipmentDescriptor__type = FGEquipmentDescriptor__merged__type;
 

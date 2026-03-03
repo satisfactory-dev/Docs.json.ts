@@ -1,15 +1,15 @@
-import {
+import type {
 	TypeNode,
 } from 'typescript';
 import {
 	Generator,
-} from './Generator';
+} from './Generator.ts';
 import {
 	TypeDefinitionDiscovery,
-} from '../TypeDefinitionDiscovery';
-import {
+} from '../TypeDefinitionDiscovery.ts';
+import type {
 	SchemaObject,
-} from 'ajv/dist/2020';
+} from 'ajv/dist/2020.js';
 
 export abstract class GeneratorDoesDiscovery<
 	RawData,

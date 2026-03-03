@@ -7,7 +7,7 @@ import {
 	$ref_in_array,
 	is_$ref,
 	local_ref,
-} from '../../lib/StringStartsWith';
+} from '../../lib/StringStartsWith.ts';
 
 void describe('local_ref', () => {
 	void it('works', () => {

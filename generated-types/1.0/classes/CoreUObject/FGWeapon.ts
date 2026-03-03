@@ -2,28 +2,28 @@ import {
 	Montage_1P__type,
 	Montage_3P__type,
 	CameraAnim__type,
-} from '../../common/unassigned';
+} from '../../common/unassigned.ts';
 
-import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
+import {UnrealEngineString, StringStartsWith} from '../../utils/validators.ts';
 
-import {FGEquipment__base__type} from './FGEquipment';
+import {FGEquipment__base__type} from './FGEquipment.ts';
 
 import {
 	decimal_string__type,
 	boolean__type,
-} from '../../../common/common/scalar';
+} from '../../../common/common/scalar.ts';
 
 import {
 	empty_object__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned';
+} from '../../../common/common/unassigned.ts';
 
 import {
 	common_base__FGWeapon__base__type,
 	common_base__FGWeapon__gun_base__type,
 	common_base__FGWeapon__rebar_gun__type,
 	common_base__FGWeapon__rifle__type,
-} from '../../../common/classes/CoreUObject/FGWeapon';
+} from '../../../common/classes/CoreUObject/FGWeapon.ts';
 
 export type FGWeapon__base__type = FGWeapon__base__merged__type;
 

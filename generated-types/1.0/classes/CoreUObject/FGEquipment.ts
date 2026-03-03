@@ -1,16 +1,16 @@
-import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
+import {UnrealEngineString, StringStartsWith} from '../../utils/validators.ts';
 
 import {
 	boolean__type,
 	decimal_string__type,
-} from '../../../common/common/scalar';
+} from '../../../common/common/scalar.ts';
 
-import {empty_object__type} from '../../../common/common/unassigned';
+import {empty_object__type} from '../../../common/common/unassigned.ts';
 
 import {
 	common_base__FGEquipment__base__type,
 	common_base__FGEquipment__placeable__type,
-} from '../../../common/classes/CoreUObject/FGEquipment';
+} from '../../../common/classes/CoreUObject/FGEquipment.ts';
 
 export type FGEquipment__base__type =
 	common_base__FGEquipment__base__type & {

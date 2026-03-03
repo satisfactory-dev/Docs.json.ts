@@ -1,11 +1,11 @@
-import {v1_0_base__FGBuildable__consumes_power_base__type} from '../../common/unassigned';
+import {v1_0_base__FGBuildable__consumes_power_base__type} from '../../common/unassigned.ts';
 
-import {FGBuildable__base__type} from './FGBuildable';
+import {FGBuildable__base__type} from './FGBuildable.ts';
 
 import {
 	common_base__FGPipeHyperStart__pre_1_1__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned';
+} from '../../../common/common/unassigned.ts';
 
 export type FGPipeHyperStart__type =
 	common_base__FGPipeHyperStart__pre_1_1__type &

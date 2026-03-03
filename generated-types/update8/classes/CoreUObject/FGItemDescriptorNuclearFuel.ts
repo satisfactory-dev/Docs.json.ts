@@ -1,11 +1,11 @@
-import {FGItemDescriptor__FGResourceDescriptor__type} from './FGItemDescriptor';
+import {FGItemDescriptor__FGResourceDescriptor__type} from './FGItemDescriptor.ts';
 
 import {
 	common_base__FGItemDescriptorNuclearFuel__waste__type,
 	common_base__FGItemDescriptorNuclearFuel__type,
-} from '../../../common/classes/CoreUObject/FGItemDescriptorNuclearFuel';
+} from '../../../common/classes/CoreUObject/FGItemDescriptorNuclearFuel.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGItemDescriptorNuclearFuel__type =
 	FGItemDescriptorNuclearFuel__merged__type & {

@@ -1,36 +1,39 @@
 import {
 	FilesGenerator as Base,
-} from '../FilesGenerator';
-import {
+} from '../FilesGenerator.ts';
+import type {
 	ValidateFunction,
-} from 'ajv/dist/2020';
+} from 'ajv/dist/2020.js';
 import {
 	NoMatchError,
-} from '../Exceptions';
+} from '../Exceptions.ts';
 import {
 	adjust_unrealengine_value,
-} from '../CustomParsingTypes/UnrealEngineString';
+} from '../CustomParsingTypes/UnrealEngineString.ts';
 import {
 	UnrealEngineString,
-} from '../TypeDefinitionDiscovery/CustomParsingTypes/UnrealEngineString';
-import ts, {
+} from '../TypeDefinitionDiscovery/CustomParsingTypes/UnrealEngineString.ts';
+import type {
 	TypeAliasDeclaration,
 	TypeNode,
 } from 'typescript';
+import ts from 'typescript';
 import {
 	create_modifiers,
-} from '../TsFactoryWrapper';
-import {
+} from '../TsFactoryWrapper.ts';
+import type {
 	ref_discovery_type,
+} from '../TypeDefinitionDiscovery.ts';
+import {
 	TypeDefinitionDiscovery,
-} from '../TypeDefinitionDiscovery';
+} from '../TypeDefinitionDiscovery.ts';
 import {
 	TypesDiscovery,
-} from '../TypesDiscovery';
-import {
+} from '../TypesDiscovery.ts';
+import type {
 	docs_versions,
 	DocsDataItem,
-} from '../DocsTsGenerator';
+} from '../DocsTsGenerator.ts';
 
 export class FilesGenerator extends Base {
 	private readonly discovery:TypeDefinitionDiscovery;

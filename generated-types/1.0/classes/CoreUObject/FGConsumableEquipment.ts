@@ -2,18 +2,18 @@ import {
 	Montage_1P__type,
 	Montage_3P__type,
 	CameraAnim__type,
-} from '../../common/unassigned';
+} from '../../common/unassigned.ts';
 
-import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
+import {UnrealEngineString, StringStartsWith} from '../../utils/validators.ts';
 
-import {FGEquipment__base__type} from './FGEquipment';
+import {FGEquipment__base__type} from './FGEquipment.ts';
 
-import {decimal_string__type} from '../../../common/common/scalar';
+import {decimal_string__type} from '../../../common/common/scalar.ts';
 
 import {
 	empty_object__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned';
+} from '../../../common/common/unassigned.ts';
 
 export type FGConsumableEquipment__base__type = FGEquipment__base__type & {
 	mStingerMontage?: empty_object__type;

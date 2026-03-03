@@ -5,10 +5,10 @@ import {
 import assert from 'node:assert/strict';
 import {
 	Const,
-} from '../../../../../lib/TypeDefinitionDiscovery/JsonSchema/String/Const';
+} from '../../../../../lib/TypeDefinitionDiscovery/JsonSchema/String/Const.ts';
 import {
 	docs,
-} from '../../../../../lib/helpers';
+} from '../../../../../lib/helpers.ts';
 import ts_assert from '@signpostmarv/ts-assert';
 
 void describe('Const', () => {

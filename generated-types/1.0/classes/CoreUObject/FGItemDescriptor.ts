@@ -1,14 +1,14 @@
-import {mGasType__type, mClassToScanFor__type} from '../../common/unassigned';
+import {mGasType__type, mClassToScanFor__type} from '../../common/unassigned.ts';
 
-import {boolean__type} from '../../../common/common/scalar';
+import {boolean__type} from '../../../common/common/scalar.ts';
 
 import {
 	common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type,
 	common_base__FGItemDescriptor__FGResourceDescriptor__type,
 	common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type,
-} from '../../../common/classes/CoreUObject/FGItemDescriptor';
+} from '../../../common/classes/CoreUObject/FGItemDescriptor.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type =
 	common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type & {

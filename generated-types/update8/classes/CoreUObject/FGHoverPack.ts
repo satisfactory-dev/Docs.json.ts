@@ -1,13 +1,13 @@
-import {FGEquipment__base__type} from './FGEquipment';
+import {FGEquipment__base__type} from './FGEquipment.ts';
 
 import {
 	empty_object__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned';
+} from '../../../common/common/unassigned.ts';
 
-import {decimal_string__type} from '../../../common/common/scalar';
+import {decimal_string__type} from '../../../common/common/scalar.ts';
 
-import {common_base__FGHoverPack__type} from '../../../common/classes/CoreUObject/FGHoverPack';
+import {common_base__FGHoverPack__type} from '../../../common/classes/CoreUObject/FGHoverPack.ts';
 
 export type FGHoverPack__type = FGHoverPack__merged__type & {
 	mHoverPackActiveTimer: empty_object__type;

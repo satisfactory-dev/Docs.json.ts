@@ -1,13 +1,13 @@
-import {FGBuildableGeneratorFuel__base__type} from './FGBuildableGeneratorFuel';
+import {FGBuildableGeneratorFuel__base__type} from './FGBuildableGeneratorFuel.ts';
 
 import {
 	common_base__FGBuildableGeneratorNuclear__mFuel__NuclearFuelRod__type,
 	common_base__FGBuildableGeneratorNuclear__mFuel__PlutoniumFuelRod__type,
 	common_base__FGBuildableGeneratorNuclear__type,
 	common_base__FGBuildableGeneratorNuclear__mFuel__base__type,
-} from '../../../common/classes/CoreUObject/FGBuildableGeneratorNuclear';
+} from '../../../common/classes/CoreUObject/FGBuildableGeneratorNuclear.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildableGeneratorNuclear__type =
 	common_base__FGBuildableGeneratorNuclear__type &

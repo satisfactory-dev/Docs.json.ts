@@ -3,12 +3,14 @@ import {
 	it,
 } from 'node:test';
 import assert from 'node:assert/strict';
-import {
+import type {
 	progress_group,
+} from '../../lib/MarkdownUtilities.ts';
+import {
 	reduce,
 	remap,
 	remove_indentation,
-} from '../../lib/MarkdownUtilities';
+} from '../../lib/MarkdownUtilities.ts';
 
 void describe('remap', () => {
 	void it('behaves', () => {

@@ -1,16 +1,16 @@
-import {mStatisticGameplayTag__type} from '../../common/unassigned';
+import {mStatisticGameplayTag__type} from '../../common/unassigned.ts';
 
 import {
 	integer_string__type,
 	decimal_string__type,
 	boolean__type,
-} from '../../../common/common/scalar';
+} from '../../../common/common/scalar.ts';
 
 import {
 	UnrealEngineString__array__type,
 	empty_object__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned';
+} from '../../../common/common/unassigned.ts';
 
 import {
 	common_base__FGSchematic__mUnlocks__type,
@@ -19,7 +19,7 @@ import {
 	common_base__FGSchematic__base__type,
 	common_base__FGSchematic__mUnlocks_Class__type,
 	common_base__FGSchematic__with_unlocks__type,
-} from '../../../common/classes/CoreUObject/FGSchematic';
+} from '../../../common/classes/CoreUObject/FGSchematic.ts';
 
 export type FGSchematic__type = FGSchematic__base__properties__type & {
 	mStatisticGameplayTag:

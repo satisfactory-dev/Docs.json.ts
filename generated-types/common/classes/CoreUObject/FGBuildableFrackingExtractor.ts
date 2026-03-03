@@ -1,9 +1,9 @@
 import {
 	None__type,
 	UnrealEngineString__array__type,
-} from '../../common/unassigned';
+} from '../../common/unassigned.ts';
 
-import {common_base__FGBuildable__extractor_base__type} from './FGBuildable';
+import {common_base__FGBuildable__extractor_base__type} from './FGBuildable.ts';
 
 export type common_base__FGBuildableFrackingExtractor__type =
 	common_base__FGBuildable__extractor_base__type & {

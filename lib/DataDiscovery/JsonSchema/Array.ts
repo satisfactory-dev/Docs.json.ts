@@ -2,19 +2,19 @@ import {
 	Converter,
 	ConverterMatchesSchema,
 	ExpressionResult,
-} from '../Generator';
+} from '../Generator.ts';
 import {
 	DataDiscovery,
-} from '../../DataDiscovery';
-import {
+} from '../../DataDiscovery.ts';
+import type {
 	SchemaObject,
-} from 'ajv/dist/2020';
-import {
+} from 'ajv/dist/2020.js';
+import type {
 	ArrayLiteralExpression,
 } from 'typescript';
 import {
 	NoMatchError,
-} from '../../Exceptions';
+} from '../../Exceptions.ts';
 
 type array_type = {
 	type: 'array',

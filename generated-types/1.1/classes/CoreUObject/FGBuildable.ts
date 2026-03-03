@@ -1,20 +1,20 @@
-import {StringStartsWith} from '../../utils/validators';
+import {StringStartsWith} from '../../utils/validators.ts';
 
 import {
 	v1_0_base__FGBuildable__base__type,
 	v1_0_base__FGBuildable__consumes_power_base__version_1__type,
-} from '../../common/unassigned';
+} from '../../common/unassigned.ts';
 
 import {
 	empty_object__type,
 	common_base__FGBuildable__pole__base__no_static__pre_1_1__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned';
+} from '../../../common/common/unassigned.ts';
 
 import {
 	common_base__FGBuildable__occupied__type,
 	common_base__FGBuildable__tiered__type,
-} from '../../../common/classes/CoreUObject/FGBuildable';
+} from '../../../common/classes/CoreUObject/FGBuildable.ts';
 
 export type FGBuildable__base__type = v1_0_base__FGBuildable__base__type & {
 	mOnBuildableReturnedToLightweightPool: empty_object__type;

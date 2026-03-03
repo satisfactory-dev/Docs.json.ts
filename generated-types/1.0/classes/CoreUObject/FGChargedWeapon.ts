@@ -1,4 +1,4 @@
-import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
+import {UnrealEngineString, StringStartsWith} from '../../utils/validators.ts';
 
 import {
 	Montage_1P__type,
@@ -6,21 +6,21 @@ import {
 	FilterMontageTag__type,
 	FilterMontageTag__charged__type,
 	CameraAnim__type,
-} from '../../common/unassigned';
+} from '../../common/unassigned.ts';
 
-import {FGWeapon__base__type} from './FGWeapon';
+import {FGWeapon__base__type} from './FGWeapon.ts';
 
 import {
 	boolean__type,
 	decimal_string__type,
-} from '../../../common/common/scalar';
+} from '../../../common/common/scalar.ts';
 
 import {
 	empty_object__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned';
+} from '../../../common/common/unassigned.ts';
 
-import {common_base__FGChargedWeapon__type} from '../../../common/classes/CoreUObject/FGChargedWeapon';
+import {common_base__FGChargedWeapon__type} from '../../../common/classes/CoreUObject/FGChargedWeapon.ts';
 
 export type FGChargedWeapon__type = FGChargedWeapon__merged__type & {
 	AmmoTypeToAkEvent: [

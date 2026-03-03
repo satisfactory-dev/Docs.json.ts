@@ -3,26 +3,24 @@ import {
 	writeFile,
 } from 'node:fs/promises';
 import {
-	basename, dirname,
+	basename,
 } from 'node:path';
 import {
 	existsSync,
 } from 'node:fs';
-import {
-	fileURLToPath,
-} from 'node:url';
-import Ajv, {
+import type Ajv from 'ajv/dist/2020.js';
+import type {
 	ErrorObject,
 	SchemaObject,
 	ValidateFunction,
-} from 'ajv/dist/2020';
+} from 'ajv/dist/2020.js';
 import * as prettier from 'prettier';
-import standalone from 'ajv/dist/standalone';
+import standalone from 'ajv/dist/standalone/index.js';
 import {
 	ESLint,
 } from 'eslint';
 
-import {
+import type {
 	BuiltInParserName,
 } from 'prettier';
 import {
@@ -38,24 +36,22 @@ import {
 } from '@satisfactory-dev/predicates.ts';
 import {
 	NoMatchError,
-} from './Exceptions';
+} from './Exceptions.ts';
 import {
 	TypedString,
-} from './CustomParsingTypes/TypedString';
+} from './CustomParsingTypes/TypedString.ts';
 import {
 	compile,
 	esmify,
 } from '@satisfactory-dev/ajv-utilities';
 import {
 	DocsSchemaByVersion,
-} from './DocsSchema';
+} from './DocsSchema.ts';
 import {
 	UnrealEngineString,
-} from './CustomParsingTypes/UnrealEngineString';
+} from './CustomParsingTypes/UnrealEngineString.ts';
 
 import common_schema from '../schema/common.schema.json' with {type: 'json'};
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export class ValidationError extends Error {
 	readonly errors: ErrorObject[];
@@ -482,7 +478,7 @@ export class DocsTsGenerator {
 			}
 
 			file_sha512.update(
-				await readFile(`${__dirname}/../schema/${schema['$id']}`),
+				await readFile(`${import.meta.dirname}/../schema/${schema['$id']}`),
 			);
 
 			const filename = `${schema['$id']}.${file_sha512.digest('hex')}.mjs`;
@@ -520,7 +516,7 @@ export class DocsTsGenerator {
 	}
 }
 
-const prettier_config = prettier.resolveConfig(`${__dirname}/../.prettierrc`);
+const prettier_config = prettier.resolveConfig(`${import.meta.dirname}/../.prettierrc`);
 
 export async function format_code(
 	code: string,

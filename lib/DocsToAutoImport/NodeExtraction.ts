@@ -1,9 +1,11 @@
-import ts, {
-	EntityName, Node,
+import type {
+	EntityName,
+	Node,
 } from 'typescript';
+import ts from 'typescript';
 import {
 	EntityName_array_from_Node_array,
-} from './from_Node_array';
+} from './from_Node_array.ts';
 
 export abstract class NodeExtraction<T extends Node> {
 	readonly results: EntityName[] = [];

@@ -1,13 +1,13 @@
-import {UnrealEngineString} from '../../utils/validators';
+import {UnrealEngineString} from '../../utils/validators.ts';
 
 import {
 	v1_0_base__FGBuildableSplitterSmart__type,
 	has__mSavedDirections__type,
-} from '../../common/unassigned';
+} from '../../common/unassigned.ts';
 
-import {FGBuildable__base__type} from './FGBuildable';
+import {FGBuildable__base__type} from './FGBuildable.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildableSplitterSmart__type =
 	FGBuildableSplitterSmart__merged__type & {

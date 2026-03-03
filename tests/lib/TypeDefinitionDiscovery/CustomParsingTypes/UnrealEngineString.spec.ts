@@ -6,13 +6,14 @@ import assert from 'node:assert/strict';
 import {
 	UnrealEngineString,
 // eslint-disable-next-line max-len
-} from '../../../../lib/TypeDefinitionDiscovery/CustomParsingTypes/UnrealEngineString';
-import Ajv, {
+} from '../../../../lib/TypeDefinitionDiscovery/CustomParsingTypes/UnrealEngineString.ts';
+import type Ajv from 'ajv/dist/2020.js';
+import type {
 	SchemaObject,
-} from 'ajv/dist/2020';
-import {
+} from 'ajv/dist/2020.js';
+import type {
 	UnrealEngineString_parent_type,
-} from '../../../../lib/CustomParsingTypes/UnrealEngineString';
+} from '../../../../lib/CustomParsingTypes/UnrealEngineString.ts';
 
 void describe('UnrealEngineString.fromString()', () => {
 	void it('throws', () => {

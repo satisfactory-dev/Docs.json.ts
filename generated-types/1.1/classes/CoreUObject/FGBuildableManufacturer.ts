@@ -4,11 +4,11 @@ import {
 	v1_0_base__FGBuildableManufacturer__constructor__type,
 	v1_0_base__FGBuildableManufacturer__packager__type,
 	v1_0_base__FGBuildableManufacturer__smelter__type,
-} from '../../common/unassigned';
+} from '../../common/unassigned.ts';
 
-import {FGBuildable__base__type} from './FGBuildable';
+import {FGBuildable__base__type} from './FGBuildable.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildableManufacturer__type =
 	v1_0_base__FGBuildableManufacturer__type & FGBuildable__base__type;

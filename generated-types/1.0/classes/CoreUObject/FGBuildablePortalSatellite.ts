@@ -1,8 +1,8 @@
-import {FGBuildablePortal__base__type} from './FGBuildablePortal';
+import {FGBuildablePortal__base__type} from './FGBuildablePortal.ts';
 
-import {boolean__type} from '../../../common/common/scalar';
+import {boolean__type} from '../../../common/common/scalar.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildablePortalSatellite__type =
 	FGBuildablePortal__base__type & {

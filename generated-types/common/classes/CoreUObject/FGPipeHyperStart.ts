@@ -1,6 +1,6 @@
-import {common_base__FGPipeHyperStart__pre_1_1__type} from '../../common/unassigned';
+import {common_base__FGPipeHyperStart__pre_1_1__type} from '../../common/unassigned.ts';
 
-import {decimal_string__type, boolean__type} from '../../common/scalar';
+import {decimal_string__type, boolean__type} from '../../common/scalar.ts';
 
 export type common_base__FGPipeHyperStart__type =
 	common_base__FGPipeHyperStart__pre_1_1__type & {

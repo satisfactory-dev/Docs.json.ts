@@ -1,21 +1,21 @@
-import {UnrealEngineString} from '../../utils/validators';
+import {UnrealEngineString} from '../../utils/validators.ts';
 
-import {FGBuildable__base__type} from './FGBuildable';
+import {FGBuildable__base__type} from './FGBuildable.ts';
 
 import {
 	v1_0_base__FGBuildableAttachmentMergerSplitter__with_inventory_size__type,
 	has__mSavedDirections__type,
-} from '../../common/unassigned';
+} from '../../common/unassigned.ts';
 
 import {
 	boolean__type,
 	integer_string__type,
-} from '../../../common/common/scalar';
+} from '../../../common/common/scalar.ts';
 
 import {
 	empty_object__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned';
+} from '../../../common/common/unassigned.ts';
 
 export type FGBuildableMergerPriority__type = FGBuildable__base__type &
 	v1_0_base__FGBuildableAttachmentMergerSplitter__with_inventory_size__type &

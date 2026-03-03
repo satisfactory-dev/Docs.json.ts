@@ -1,7 +1,7 @@
 import assert from 'assert';
 import {
 	ExpressionResult,
-} from '../lib/DataDiscovery/Generator';
+} from '../lib/DataDiscovery/Generator.ts';
 
 export function value_matches_ExpressionResult(
 	maybe: unknown,

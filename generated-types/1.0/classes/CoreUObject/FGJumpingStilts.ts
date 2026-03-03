@@ -1,15 +1,15 @@
-import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
+import {UnrealEngineString, StringStartsWith} from '../../utils/validators.ts';
 
-import {FGEquipment__base__type} from './FGEquipment';
+import {FGEquipment__base__type} from './FGEquipment.ts';
 
-import {boolean__type} from '../../../common/common/scalar';
+import {boolean__type} from '../../../common/common/scalar.ts';
 
 import {
 	empty_object__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned';
+} from '../../../common/common/unassigned.ts';
 
-import {common_base__FGJumpingStilts__type} from '../../../common/classes/CoreUObject/FGJumpingStilts';
+import {common_base__FGJumpingStilts__type} from '../../../common/classes/CoreUObject/FGJumpingStilts.ts';
 
 export type FGJumpingStilts__type = FGJumpingStilts__merged__type & {
 	mEquipMontage: {

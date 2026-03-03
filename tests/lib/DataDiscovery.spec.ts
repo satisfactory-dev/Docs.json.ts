@@ -4,19 +4,14 @@ import {
 import assert from 'node:assert/strict';
 import {
 	DataDiscovery,
-} from '../../lib/DataDiscovery';
+} from '../../lib/DataDiscovery.ts';
 import {
 	docs,
 	skip_because_docs_dot_json_not_yet_bundled,
-} from '../../lib/helpers';
-import {
-	__dirname_from_meta,
-} from '../../lib/__dirname';
+} from '../../lib/helpers.ts';
 import {
 	readFile,
 } from 'node:fs/promises';
-
-const __dirname = __dirname_from_meta(import.meta);
 
 void describe(
 	'generate_markdown update 8',
@@ -25,7 +20,7 @@ void describe(
 		const discovery = new DataDiscovery(docs, 'update8');
 		const actual = await (discovery.generate_markdown());
 		const expecting = (
-			await readFile(`${__dirname}/../fixtures/update8/data-progress--empty.md`)
+			await readFile(`${import.meta.dirname}/../fixtures/update8/data-progress--empty.md`)
 		).toString();
 		assert.equal(actual, expecting);
 	},

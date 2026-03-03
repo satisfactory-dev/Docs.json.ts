@@ -1,3 +1,3 @@
-export * from './CustomParsingTypes/CustomPairingTypes';
-export * from './Exceptions';
-export * from './StringStartsWith';
+export * from './CustomParsingTypes/CustomPairingTypes.ts';
+export * from './Exceptions.ts';
+export * from './StringStartsWith.ts';

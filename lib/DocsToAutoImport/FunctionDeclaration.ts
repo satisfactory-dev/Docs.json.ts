@@ -1,8 +1,9 @@
 import {
 	NodeExtraction,
-} from './NodeExtraction';
-import {
-	FunctionDeclaration, Node,
+} from './NodeExtraction.ts';
+import type {
+	FunctionDeclaration,
+	Node,
 } from 'typescript';
 
 export class FunctionDeclarations extends NodeExtraction<FunctionDeclaration> {

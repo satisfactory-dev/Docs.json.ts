@@ -1,24 +1,30 @@
 import {
 	ConverterMatchesSchema,
 	ExpressionResult,
-} from '../Generator';
-import Ajv, {
+} from '../Generator.ts';
+import type Ajv from 'ajv/dist/2020.js';
+import type {
 	SchemaObject,
-} from 'ajv/dist/2020';
-import {
+} from 'ajv/dist/2020.js';
+import type {
 	RawData,
+	// eslint-disable-next-line max-len
+} from '../../TypeDefinitionDiscovery/CustomParsingTypes/string_starts_with.ts';
+import {
 	schema,
-} from '../../TypeDefinitionDiscovery/CustomParsingTypes/string_starts_with';
+	// eslint-disable-next-line max-len
+} from '../../TypeDefinitionDiscovery/CustomParsingTypes/string_starts_with.ts';
 import {
 	is_string,
 } from '@satisfactory-dev/predicates.ts';
-import ts, {
+import type {
 	AsExpression,
 } from 'typescript';
+import ts from 'typescript';
 import {
 	create_literal,
 	type_reference_node,
-} from '../../TsFactoryWrapper';
+} from '../../TsFactoryWrapper.ts';
 
 export class StringStartsWithConverter extends ConverterMatchesSchema<
 	RawData,

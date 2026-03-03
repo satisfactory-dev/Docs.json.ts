@@ -5,19 +5,20 @@ import {
 import assert from 'node:assert/strict';
 import {
 	FilesGenerator,
-} from '../../../lib/DocsTsGenerator/FilesGenerator';
+} from '../../../lib/DocsTsGenerator/FilesGenerator.ts';
 import {
 	TypeDefinitionWriter,
-} from '../../../lib/TypeDefinitionWriter';
+} from '../../../lib/TypeDefinitionWriter.ts';
 import {
 	docs,
-} from '../../../lib/helpers';
+} from '../../../lib/helpers.ts';
 import {
 	create_literal,
-} from '../../../lib/TsFactoryWrapper';
-import ts, {
+} from '../../../lib/TsFactoryWrapper.ts';
+import type {
 	TypeNode,
 } from 'typescript';
+import ts from 'typescript';
 import ts_assert from '@signpostmarv/ts-assert';
 import {
 	array_has_size,
@@ -26,7 +27,7 @@ import {
 } from '@satisfactory-dev/custom-assert';
 import {
 	DocsDataItem,
-} from '../../../lib/DocsTsGenerator';
+} from '../../../lib/DocsTsGenerator.ts';
 
 void describe('FilesGenerator', async () => {
 	const type_definition_writer = new TypeDefinitionWriter(docs, 'update8');

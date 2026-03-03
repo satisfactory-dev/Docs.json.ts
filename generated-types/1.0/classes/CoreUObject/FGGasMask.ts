@@ -1,21 +1,21 @@
-import {UnrealEngineString, StringStartsWith} from '../../utils/validators';
+import {UnrealEngineString, StringStartsWith} from '../../utils/validators.ts';
 
 import {
 	Montage_1P__type,
 	Montage_3P__type,
 	CameraAnim__type,
-} from '../../common/unassigned';
+} from '../../common/unassigned.ts';
 
-import {FGEquipment__base__type} from './FGEquipment';
+import {FGEquipment__base__type} from './FGEquipment.ts';
 
-import {boolean__type} from '../../../common/common/scalar';
+import {boolean__type} from '../../../common/common/scalar.ts';
 
 import {
 	empty_object__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned';
+} from '../../../common/common/unassigned.ts';
 
-import {common_base__FGGasMask__type} from '../../../common/classes/CoreUObject/FGGasMask';
+import {common_base__FGGasMask__type} from '../../../common/classes/CoreUObject/FGGasMask.ts';
 
 export type FGGasMask__type = FGGasMask__merged__type & {
 	mEquipMontage: {

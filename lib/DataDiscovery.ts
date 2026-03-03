@@ -1,76 +1,81 @@
-import {
+import type {
 	docs_versions,
 	DocsDataItem,
-	DocsTsGenerator,
-} from './DocsTsGenerator';
+} from './DocsTsGenerator.ts';
 import {
+	DocsTsGenerator,
+} from './DocsTsGenerator.ts';
+import type {
 	GeneratesMarkdown,
 	progress_group,
+} from './MarkdownUtilities.ts';
+import {
 	reduce,
 	remove_indentation,
-} from './MarkdownUtilities';
+} from './MarkdownUtilities.ts';
 import {
 	Converter,
-} from './DataDiscovery/Generator';
+} from './DataDiscovery/Generator.ts';
 import {
 	FilesGenerator,
-} from './FilesGenerator';
+} from './FilesGenerator.ts';
 import {
 	adjust_unrealengine_value,
-} from './CustomParsingTypes/UnrealEngineString';
+} from './CustomParsingTypes/UnrealEngineString.ts';
 import {
 	adjust_class_name,
 	create_const_statement,
 	create_modifiers,
 	type_reference_node,
 	variable,
-} from './TsFactoryWrapper';
-import ts, {
+} from './TsFactoryWrapper.ts';
+import type {
 	Expression,
 } from 'typescript';
+import ts from 'typescript';
 import {
 	UnrealEngineString,
-} from './TypeDefinitionDiscovery/CustomParsingTypes/UnrealEngineString';
+} from './TypeDefinitionDiscovery/CustomParsingTypes/UnrealEngineString.ts';
 import {
 	ObjectConverter,
 	PatternedObjectConverter,
-} from './DataDiscovery/JsonSchema/Object';
+} from './DataDiscovery/JsonSchema/Object.ts';
 import {
 	ArrayConverter,
-} from './DataDiscovery/JsonSchema/Array';
+} from './DataDiscovery/JsonSchema/Array.ts';
 import {
 	BooleanConverter,
-} from './DataDiscovery/CustomTypes/BooleanOrBooleanExtended';
+} from './DataDiscovery/CustomTypes/BooleanOrBooleanExtended.ts';
 import {
 	Literal,
-} from './DataDiscovery/Literal';
+} from './DataDiscovery/Literal.ts';
 import {
 	TypedStringConverter,
-} from './DataDiscovery/CustomTypes/TypedString';
+} from './DataDiscovery/CustomTypes/TypedString.ts';
 import {
 	BasicStringConverter,
 	ConstStringConverter,
 	EnumStringConverter,
 	PatternConverter,
-} from './DataDiscovery/JsonSchema/StringType';
+} from './DataDiscovery/JsonSchema/StringType.ts';
 import {
 	OneOfConverter,
-} from './DataDiscovery/JsonSchema/OneOf';
+} from './DataDiscovery/JsonSchema/OneOf.ts';
 import {
 	AllOfConverter,
-} from './DataDiscovery/JsonSchema/AllOf';
+} from './DataDiscovery/JsonSchema/AllOf.ts';
 import {
 	StringStartsWithConverter,
-} from './DataDiscovery/CustomTypes/StringStartsWith';
-import {
+} from './DataDiscovery/CustomTypes/StringStartsWith.ts';
+import type {
 	SchemaObject,
-} from 'ajv/dist/2020';
+} from 'ajv/dist/2020.js';
 import {
 	UnrealEngineStringConverter,
-} from './DataDiscovery/CustomTypes/UnrealEngineString';
+} from './DataDiscovery/CustomTypes/UnrealEngineString.ts';
 import {
 	Ref,
-} from './DataDiscovery/JsonSchema/Ref';
+} from './DataDiscovery/JsonSchema/Ref.ts';
 
 import common_schema from '../schema/common.schema.json' with {type: 'json'};
 

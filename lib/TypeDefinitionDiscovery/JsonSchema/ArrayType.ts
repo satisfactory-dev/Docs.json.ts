@@ -1,23 +1,24 @@
 import {
 	GeneratorDoesDiscovery,
-} from '../GeneratorDoesDiscovery';
-import ts, {
+} from '../GeneratorDoesDiscovery.ts';
+import type {
 	ArrayTypeNode,
 	TupleTypeNode,
 } from 'typescript';
+import ts from 'typescript';
 import {
 	TypeDefinitionDiscovery,
-} from '../../TypeDefinitionDiscovery';
+} from '../../TypeDefinitionDiscovery.ts';
 import {
 	object_has_non_empty_array_property,
 	object_has_property,
 } from '@satisfactory-dev/predicates.ts';
 import {
 	minimum_size_array_of_single_type,
-} from '../../TsFactoryWrapper';
+} from '../../TsFactoryWrapper.ts';
 import {
 	NoMatchError,
-} from '../../Exceptions';
+} from '../../Exceptions.ts';
 
 type RawData = {
 	type: 'array',

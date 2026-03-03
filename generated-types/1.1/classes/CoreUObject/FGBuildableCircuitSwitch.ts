@@ -2,11 +2,11 @@ import {
 	v1_0_base__FGBuildableCircuitSwitch__type,
 	has__mOnLastEditedByChanged__type,
 	has__mFGTextRenderers__type,
-} from '../../common/unassigned';
+} from '../../common/unassigned.ts';
 
-import {FGBuildable__base__type} from './FGBuildable';
+import {FGBuildable__base__type} from './FGBuildable.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildableCircuitSwitch__type =
 	v1_0_base__FGBuildableCircuitSwitch__type &

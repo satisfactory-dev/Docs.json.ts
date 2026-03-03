@@ -7,19 +7,19 @@ import assert from 'node:assert/strict';
 import {
 	typed_string,
 // eslint-disable-next-line max-len
-} from '../../../../lib/TypeDefinitionDiscovery/CustomParsingTypes/typed_string';
+} from '../../../../lib/TypeDefinitionDiscovery/CustomParsingTypes/typed_string.ts';
 import {
 	TypeDefinitionWriter,
-} from '../../../../lib/TypeDefinitionWriter';
+} from '../../../../lib/TypeDefinitionWriter.ts';
 import {
 	docs,
-} from '../../../../lib/helpers';
-import {
+} from '../../../../lib/helpers.ts';
+import type {
 	typed_string_inner_array_prefixItems_type,
 	typed_string_inner_array_type,
 	typed_string_inner_object_pattern_type,
 	typed_string_inner_object_type,
-} from '../../../../lib/CustomParsingTypes/TypedString';
+} from '../../../../lib/CustomParsingTypes/TypedString.ts';
 import ts_assert from '@signpostmarv/ts-assert';
 import {
 	array_has_size,
@@ -30,7 +30,7 @@ import {
 import common_schema from '../../../../schema/common.schema.json' with {type: 'json'};
 import {
 	common_ref,
-} from '../../../../lib';
+} from '../../../../lib/index.ts';
 
 void describe('typed_string', async () => {
 	const type_definition_writer = new TypeDefinitionWriter(docs, 'update8');

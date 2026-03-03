@@ -1,10 +1,10 @@
-import {FGBuildable__occupied__final__type} from './FGBuildable';
+import {FGBuildable__occupied__final__type} from './FGBuildable.ts';
 
-import {decimal_string__type} from '../../../common/common/scalar';
+import {decimal_string__type} from '../../../common/common/scalar.ts';
 
-import {common_base__FGBuildableMAM__type} from '../../../common/classes/CoreUObject/FGBuildableMAM';
+import {common_base__FGBuildableMAM__type} from '../../../common/classes/CoreUObject/FGBuildableMAM.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildableMAM__type = FGBuildableMAM__merged__type & {
 	Centrifuge_NewTrack_1_BB49BD99478F0FC67F8D7E9A54C7E849: decimal_string__type;

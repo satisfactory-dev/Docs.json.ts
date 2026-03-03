@@ -6,44 +6,46 @@ import {
 	Converter,
 	ConverterMatchesSchema,
 	ExpressionResult,
-} from '../Generator';
-import {
-	generate_object_parent_schema,
-	generate_typed_string_$defs,
+} from '../Generator.ts';
+import type {
 	typed_string_inner_array_prefixItems_type,
 	typed_string_inner_array_type,
 	typed_string_inner_object_pattern_type,
 	typed_string_inner_object_type,
 	typed_string_inner_object_type_no_required,
 	typed_string_parent_type,
-} from '../../CustomParsingTypes/TypedString';
+} from '../../CustomParsingTypes/TypedString.ts';
 import {
+	generate_object_parent_schema,
+	generate_typed_string_$defs,
+} from '../../CustomParsingTypes/TypedString.ts';
+import type {
 	SchemaObject,
-} from 'ajv/dist/2020';
+} from 'ajv/dist/2020.js';
 import {
 	DataDiscovery,
-} from '../../DataDiscovery';
+} from '../../DataDiscovery.ts';
 import {
 	common_ref,
 	local_ref,
-} from '../../StringStartsWith';
-import {
+} from '../../StringStartsWith.ts';
+import type {
 	ArrayLiteralExpression,
 	ObjectLiteralExpression,
 } from 'typescript';
 import {
 	NoMatchError,
-} from '../../Exceptions';
+} from '../../Exceptions.ts';
 import {
 	string_to_array,
 	string_to_object,
-} from '../../DocsValidation';
+} from '../../DocsValidation.ts';
 import {
 	compile,
 } from '@satisfactory-dev/ajv-utilities';
 import {
 	typed_string,
-} from '../../TypeDefinitionDiscovery/CustomParsingTypes/typed_string';
+} from '../../TypeDefinitionDiscovery/CustomParsingTypes/typed_string.ts';
 import assert from 'node:assert/strict';
 
 export class TypedStringConverter extends ConverterMatchesSchema<

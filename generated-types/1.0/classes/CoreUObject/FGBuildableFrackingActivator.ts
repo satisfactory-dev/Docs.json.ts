@@ -1,8 +1,8 @@
-import {FGBuildable__extractor_base__shared__type} from './FGBuildable';
+import {FGBuildable__extractor_base__shared__type} from './FGBuildable.ts';
 
-import {common_base__FGBuildableFrackingActivator__type} from '../../../common/classes/CoreUObject/FGBuildableFrackingActivator';
+import {common_base__FGBuildableFrackingActivator__type} from '../../../common/classes/CoreUObject/FGBuildableFrackingActivator.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildableFrackingActivator__type =
 	common_base__FGBuildableFrackingActivator__type &

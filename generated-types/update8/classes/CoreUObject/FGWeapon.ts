@@ -1,18 +1,18 @@
-import {FGEquipment__base__type} from './FGEquipment';
+import {FGEquipment__base__type} from './FGEquipment.ts';
 
 import {
 	boolean__type,
 	integer_string__type,
-} from '../../../common/common/scalar';
+} from '../../../common/common/scalar.ts';
 
 import {
 	common_base__FGWeapon__base__type,
 	common_base__FGWeapon__gun_base__type,
 	common_base__FGWeapon__rebar_gun__type,
 	common_base__FGWeapon__rifle__type,
-} from '../../../common/classes/CoreUObject/FGWeapon';
+} from '../../../common/classes/CoreUObject/FGWeapon.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGWeapon__base__type = FGWeapon__base__merged__type;
 

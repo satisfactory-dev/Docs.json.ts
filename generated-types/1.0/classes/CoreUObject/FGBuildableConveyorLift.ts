@@ -1,13 +1,13 @@
-import {FGBuildableConveyorBelt__base__type} from './FGBuildableConveyorBelt';
+import {FGBuildableConveyorBelt__base__type} from './FGBuildableConveyorBelt.ts';
 
 import {
 	boolean__type,
 	decimal_string__type,
-} from '../../../common/common/scalar';
+} from '../../../common/common/scalar.ts';
 
-import {common_base__FGBuildableConveyorLift__type} from '../../../common/classes/CoreUObject/FGBuildableConveyorLift';
+import {common_base__FGBuildableConveyorLift__type} from '../../../common/classes/CoreUObject/FGBuildableConveyorLift.ts';
 
-import {NativeClass__type} from '../../../common/common/unassigned';
+import {NativeClass__type} from '../../../common/common/unassigned.ts';
 
 export type FGBuildableConveyorLift__type =
 	common_base__FGBuildableConveyorLift__type &
