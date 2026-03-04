@@ -19,8 +19,7 @@ import type {
 	SchemaObject,
 } from 'ajv/dist/2020.js';
 
-export class typed_string extends CandidatesDiscovery
-{
+export class typed_string extends CandidatesDiscovery {
 	discovery_candidates(
 		current: SchemaObject,
 		discovered_types: Set<string>,
@@ -45,8 +44,8 @@ export class typed_string extends CandidatesDiscovery
 	}
 
 	private is_typed_string(
-		maybe:unknown,
-	) : maybe is typed_string_parent_type {
+		maybe: unknown,
+	): maybe is typed_string_parent_type {
 		return (
 			value_is_non_array_object(maybe)
 			&& 3 === Object.keys(maybe).length

@@ -5,15 +5,14 @@ import type {
 	KeywordTypeNode,
 	TypeReferenceNode,
 } from 'typescript';
-import Ajv from 'ajv/dist/2020.js';
+import type Ajv from 'ajv/dist/2020.js';
 import {
 	create_literal,
 	create_type, possibly_create_lazy_union, type_reference_node,
 } from '../../TsFactoryWrapper.ts';
 
-export class StringType extends Generator<{type: 'string'}, KeywordTypeNode>
-{
-	constructor(ajv:Ajv) {
+export class StringType extends Generator<{type: 'string'}, KeywordTypeNode> {
+	constructor(ajv: Ajv) {
 		super(ajv, {
 			type: 'object',
 			required: ['type'],
@@ -24,6 +23,7 @@ export class StringType extends Generator<{type: 'string'}, KeywordTypeNode>
 			},
 		});
 	}
+
 	generate(): (raw_data: {type: 'string'}) => KeywordTypeNode {
 		return () => create_type('string');
 	}
@@ -101,7 +101,9 @@ export class NonEmptyStringWithExclusions extends Generator<
 	}
 
 	generate() {
-		return (raw_data:RawDataNonEmptyWithExclusions) => type_reference_node(
+		return (
+			raw_data: RawDataNonEmptyWithExclusions,
+		) => type_reference_node(
 			'Exclude',
 			create_type('string'),
 			possibly_create_lazy_union([

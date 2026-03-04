@@ -33,44 +33,42 @@ void describe('string_or_string_array_to_node', () => {
 const regex_uppercase = 'A-Z';
 const regex_alpha = `${regex_uppercase}a-z`;
 
-const general_regex =
-	`/(?:[${
-		regex_uppercase
-	}3-][A-Za-z0-9_-]+/)+(?:_?[${
-		regex_uppercase
-	}][A-Za-z_0-9-]+\\.[${
-		regex_uppercase
-	}][A-Za-z_0-9-]+(?:_C)?(?::[${
-		regex_uppercase
-	}][A-Za-z0-9_]+)?|[${
-		regex_uppercase
-	}0-9][${
-		regex_alpha
-	}_]+\\.[${
-		regex_uppercase
-	}0-9][${
-		regex_alpha
-	}_]+)`;
+const general_regex = `/(?:[${
+	regex_uppercase
+}3-][A-Za-z0-9_-]+/)+(?:_?[${
+	regex_uppercase
+}][A-Za-z_0-9-]+\\.[${
+	regex_uppercase
+}][A-Za-z_0-9-]+(?:_C)?(?::[${
+	regex_uppercase
+}][A-Za-z0-9_]+)?|[${
+	regex_uppercase
+}0-9][${
+	regex_alpha
+}_]+\\.[${
+	regex_uppercase
+}0-9][${
+	regex_alpha
+}_]+)`;
 
-const right_regex_suffix =
-	`(?:_?[${
-		regex_uppercase
-	}0-9][${
-		regex_alpha
-	}0-9_.]+/)*[${
-		regex_uppercase
-	}0-9][${
-		regex_alpha
-	}_.0-9-]+(?::[${
-		regex_uppercase
-	}0-9][${
-		regex_alpha
-	}0-9]+)?`;
+const right_regex_suffix = `(?:_?[${
+	regex_uppercase
+}0-9][${
+	regex_alpha
+}0-9_.]+/)*[${
+	regex_uppercase
+}0-9][${
+	regex_alpha
+}_.0-9-]+(?::[${
+	regex_uppercase
+}0-9][${
+	regex_alpha
+}0-9]+)?`;
 
 void describe('UnrealEngineString', () => {
 	void describe('ajv_macro_generator', () => {
 		void describe('result', () => {
-			const data_sets:[
+			const data_sets: [
 				UnrealEngineString_type,
 				string,
 			][] = [
@@ -160,30 +158,37 @@ void describe('UnrealEngineString', () => {
 				],
 				[
 					{right: {starts_with: 'foo'}},
+					// eslint-disable-next-line @stylistic/max-len
 					`(?:(?:/Script/Engine.BlueprintGeneratedClass)'(?:(?:(?:foo${
 						right_regex_suffix
 					}))|"(?:(?:foo${
 						right_regex_suffix
+					// eslint-disable-next-line @stylistic/max-len
 					}))")'|"(?:/Script/Engine.BlueprintGeneratedClass)'(?:(?:foo${
 						right_regex_suffix
+					// eslint-disable-next-line @stylistic/max-len
 					}))'"|\\\\"(?:/Script/Engine.BlueprintGeneratedClass)'(?:(?:foo${
 						right_regex_suffix
 					}))'\\\\")`,
 				],
 				[
 					{right: {starts_with: ['foo']}},
+					// eslint-disable-next-line @stylistic/max-len
 					`(?:(?:/Script/Engine.BlueprintGeneratedClass)'(?:(?:(?:foo${
 						right_regex_suffix
 					}))|"(?:(?:foo${
 						right_regex_suffix
+					// eslint-disable-next-line @stylistic/max-len
 					}))")'|"(?:/Script/Engine.BlueprintGeneratedClass)'(?:(?:foo${
 						right_regex_suffix
+					// eslint-disable-next-line @stylistic/max-len
 					}))'"|\\\\"(?:/Script/Engine.BlueprintGeneratedClass)'(?:(?:foo${
 						right_regex_suffix
 					}))'\\\\")`,
 				],
 				[
 					{right: {starts_with: ['foo', 'bar']}},
+					// eslint-disable-next-line @stylistic/max-len
 					`(?:(?:/Script/Engine.BlueprintGeneratedClass)'(?:(?:(?:foo${
 						right_regex_suffix
 					}|bar${
@@ -192,10 +197,12 @@ void describe('UnrealEngineString', () => {
 						right_regex_suffix
 					}|bar${
 						right_regex_suffix
+					// eslint-disable-next-line @stylistic/max-len
 					}))")'|"(?:/Script/Engine.BlueprintGeneratedClass)'(?:(?:foo${
 						right_regex_suffix
 					}|bar${
 						right_regex_suffix
+					// eslint-disable-next-line @stylistic/max-len
 					}))'"|\\\\"(?:/Script/Engine.BlueprintGeneratedClass)'(?:(?:foo${
 						right_regex_suffix
 					}|bar${
@@ -217,7 +224,6 @@ void describe('UnrealEngineString', () => {
 						JSON.stringify(data)
 					}) returns {pattern: ${pattern}}`,
 					() => {
-
 						assert.deepEqual(
 							inner(data),
 							{
@@ -225,13 +231,12 @@ void describe('UnrealEngineString', () => {
 							},
 						);
 					},
-				)
+				);
 				void it(
 					`UnrealEngineString.ajv_macro_generator(false)(${
 						JSON.stringify(data)
 					}) returns {pattern: ${pattern}}`,
 					() => {
-
 						assert.deepEqual(
 							standalone(data),
 							{
@@ -239,8 +244,8 @@ void describe('UnrealEngineString', () => {
 							},
 						);
 					},
-				)
+				);
 			}
-		})
-	})
-})
+		});
+	});
+});

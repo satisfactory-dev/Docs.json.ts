@@ -3,19 +3,18 @@ import ts from 'typescript';
 export declare type import_these_somewhere_later = {[key: string]: string[]};
 
 export declare type import_these_later = {
-	[key: string]: import_these_somewhere_later;
+	[key: string]: import_these_somewhere_later,
 };
 
 export declare type imports_shorthand = {
-	import_these: [string, ...string[]];
-	from: string;
+	import_these: [string, ...string[]],
+	from: string,
 }[];
 
 export class ImportTracker {
 	private imports: {[key: string]: imports_shorthand} = {};
 
-	get number_of_files(): number
-	{
+	get number_of_files(): number {
 		return Object.keys(this.imports).length;
 	}
 

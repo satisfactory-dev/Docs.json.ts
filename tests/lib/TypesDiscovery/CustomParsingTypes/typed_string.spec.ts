@@ -13,7 +13,7 @@ import type {
 void describe('typed_string', () => {
 	const instance = new typed_string({});
 	void describe('discovery_candidates', () => {
-		const behaves:[SchemaObject, string[]][] = [
+		const behaves: [SchemaObject, string[]][] = [
 			[{}, []],
 			[
 				{
@@ -150,7 +150,7 @@ void describe('typed_string', () => {
 
 				assert.equal(result, undefined);
 				assert.deepEqual([...set.values()], expectation);
-			})
+			});
 		}
-	})
-})
+	});
+});

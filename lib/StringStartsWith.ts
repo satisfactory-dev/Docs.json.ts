@@ -8,19 +8,19 @@ import {
 
 export type StringStartsWith<
 	Prefix extends string,
-	Suffix extends string = string
+	Suffix extends string = string,
 > = string & keyof {
 	[T in keyof {
-		[key: string]: unknown;
+		[key: string]: unknown,
 	} as T extends string ? `${Prefix}${Suffix}` : never]: string;
 };
 
 export type local_ref<
-	T extends string
+	T extends string,
 > = StringStartsWith<'#/$defs/', T>;
 
 export type common_ref<
-	T extends string
+	T extends string,
 > = StringStartsWith<'common.schema.json#/$defs/', T>;
 
 export type any_ref<T extends string> = (
@@ -29,8 +29,8 @@ export type any_ref<T extends string> = (
 );
 
 export function local_ref<
-	T extends string = string
->(ref_like_string:T): local_ref<T> {
+	T extends string = string,
+>(ref_like_string: T): local_ref<T> {
 	if (/\s+/.test(ref_like_string)) {
 		throw new Error('No spacing characters allowed!');
 	}
@@ -48,8 +48,8 @@ export function local_ref<
 }
 
 export function common_ref<
-	T extends string = string
->(ref_like_string:T): common_ref<T> {
+	T extends string = string,
+>(ref_like_string: T): common_ref<T> {
 	if (/\s+/.test(ref_like_string)) {
 		throw new Error('No spacing characters allowed!');
 	}

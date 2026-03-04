@@ -2,7 +2,7 @@ import type {
 	docs_versions,
 	DocsDataItem,
 } from './DocsTsGenerator.ts';
-import {
+import type {
 	DocsTsGenerator,
 } from './DocsTsGenerator.ts';
 import type {
@@ -83,21 +83,24 @@ type progress = {[p: string]: string[]};
 
 export class DataDiscovery
 	extends FilesGenerator
-	implements GeneratesMarkdown
-{
-	private readonly progress:progress = {};
-	public readonly candidates:Promise<[
+	implements GeneratesMarkdown {
+	private readonly progress: progress = {};
+
+	public readonly candidates: Promise<[
 		Converter<SchemaObject>,
 		...Converter<SchemaObject>[],
 	]>;
-	public readonly docs:DocsTsGenerator;
-	public readonly literal:Literal;
+
+	public readonly docs: DocsTsGenerator;
+
+	public readonly literal: Literal;
+
 	public readonly version: keyof docs_versions;
 
 	constructor(
-		docs:DocsTsGenerator,
+		docs: DocsTsGenerator,
 		version: keyof docs_versions,
-		literal?:Literal,
+		literal?: Literal,
 	) {
 		super();
 		this.docs = docs;
@@ -132,16 +135,19 @@ export class DataDiscovery
 		});
 	}
 
-	async expecting() : Promise<progress> {
+	async expecting(): Promise<progress> {
 		const json = await this.docs.get(this.version);
 
 		return Object.fromEntries(
-			json.map(e => [e.NativeClass, e.Classes.map(e => e.ClassName)]),
+			json.map((e) => [
+				e.NativeClass,
+				e.Classes.map((e) => e.ClassName),
+			]),
 		);
 	}
 
 	async generate() {
-		const result:[Expression, DocsDataItem][] = [];
+		const result: [Expression, DocsDataItem][] = [];
 
 		const [
 			schema,
@@ -205,7 +211,9 @@ export class DataDiscovery
 			}
 
 			performance.mark(
-				`${this.constructor.name}.generate_files() const generation start`,
+				`${
+					this.constructor.name
+				}.generate_files() const generation start`,
 			);
 
 			const result_statement = create_const_statement(variable(
@@ -218,7 +226,9 @@ export class DataDiscovery
 
 			performance.measure(
 				`${this.constructor.name}.generate_files() const generation`,
-				`${this.constructor.name}.generate_files() const generation start`,
+				`${
+					this.constructor.name
+				}.generate_files() const generation start`,
 			);
 
 			yield {
@@ -228,7 +238,7 @@ export class DataDiscovery
 					create_modifiers('export'),
 					result_statement.declarationList,
 				),
-			}
+			};
 		}
 	}
 
@@ -272,7 +282,12 @@ export class DataDiscovery
 								group.title in this.progress
 								&& this.progress[group.title].includes(key)
 							);
-							return `-   [${done ? 'x' : ' '}] ${key.replace(
+
+							return `-   [${
+								done
+									? 'x'
+									: ' '
+							}] ${key.replace(
 								/__/g,
 								'\\_\\_',
 							)}`;

@@ -1,4 +1,4 @@
-import Ajv from 'ajv/dist/2020.js';
+import type Ajv from 'ajv/dist/2020.js';
 import type {
 	LiteralTypeNode,
 	StringLiteral,
@@ -23,13 +23,12 @@ export const schema = {
 	},
 };
 
-export class Const extends Generator<RawData, Type>
-{
-	constructor(ajv:Ajv) {
+export class Const extends Generator<RawData, Type> {
+	constructor(ajv: Ajv) {
 		super(ajv, schema);
 	}
 
 	generate(): (raw_data: RawData) => Type {
-		return (raw_data:RawData) => create_literal(raw_data.const);
+		return (raw_data: RawData) => create_literal(raw_data.const);
 	}
 }

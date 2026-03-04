@@ -21,8 +21,8 @@ import ts from 'typescript';
 void describe('adjust_class_name', () => {
 	void it('behaves', () => {
 		for (const entry of Object.entries({
-			'boolean': 'Docs_boolean',
-			'class': 'Docs_class',
+			boolean: 'Docs_boolean',
+			class: 'Docs_class',
 			'foo-bar': 'foo_bar',
 		})) {
 			const [input, expected] = entry;
@@ -49,7 +49,7 @@ void describe('create_modifiers', () => {
 			keys.length,
 		);
 	});
-})
+});
 
 void describe('type_reference_node', () => {
 	void it('behaves', () => {
@@ -74,7 +74,7 @@ void describe('type_reference_node', () => {
 				(
 					type.typeArguments as unknown as [
 						LiteralTypeNode,
-						LiteralTypeNode
+						LiteralTypeNode,
 					]
 				)[0].literal,
 			),
@@ -85,7 +85,7 @@ void describe('type_reference_node', () => {
 				(
 					type.typeArguments as unknown as [
 						LiteralTypeNode,
-						LiteralTypeNode
+						LiteralTypeNode,
 					]
 				)[1].literal,
 			),
@@ -95,7 +95,7 @@ void describe('type_reference_node', () => {
 			((
 				type.typeArguments as unknown as [
 					LiteralTypeNode,
-					LiteralTypeNode
+					LiteralTypeNode,
 				]
 			)[0].literal as StringLiteral).text,
 			'bar',
@@ -104,7 +104,7 @@ void describe('type_reference_node', () => {
 			((
 				type.typeArguments as unknown as [
 					LiteralTypeNode,
-					LiteralTypeNode
+					LiteralTypeNode,
 				]
 			)[1].literal as StringLiteral).text,
 			'baz',

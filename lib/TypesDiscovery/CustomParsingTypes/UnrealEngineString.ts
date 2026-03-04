@@ -16,8 +16,7 @@ import {
 	is_UnrealEngineString_parent,
 } from '../../CustomParsingTypes/UnrealEngineString.ts';
 
-export class UnrealEngineString extends CandidatesDiscovery
-{
+export class UnrealEngineString extends CandidatesDiscovery {
 	discovery_candidates(
 		current: SchemaObject,
 		discovered_types: Set<string>,

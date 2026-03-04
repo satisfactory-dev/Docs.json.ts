@@ -18,24 +18,28 @@ import {
 	NoMatchError,
 } from './Exceptions.ts';
 
-import common_types_map from '../common-imports.json' with {type: 'json'}
+import common_types_map from '../common-imports.json' with {type: 'json'};
 import type {
 	docs_versions,
 } from './DocsTsGenerator.ts';
 
-declare type initial_check_nodes =
+declare type initial_check_nodes = (
 	| ts.ClassDeclaration
 	| ts.FunctionDeclaration
-	| ts.TypeAliasDeclaration;
+	| ts.TypeAliasDeclaration
+);
 
 declare type initial_check_node_has_Identifier = initial_check_nodes & {
-	name: Identifier;
+	name: Identifier,
 };
 
 export class DocsTsAutoImports {
 	private readonly comes_from: {[key: string]: string} = {};
+
 	private readonly files_entries: [string, ts.Node[]][];
+
 	private readonly version: keyof docs_versions;
+
 	constructor(
 		files: {[key: string]: ts.Node[]},
 		version: keyof docs_versions,
@@ -44,20 +48,18 @@ export class DocsTsAutoImports {
 		this.version = version;
 	}
 
-	get imports_come_from() : string
-	{
+	get imports_come_from(): string {
 		return `${JSON.stringify(this.comes_from, null, '\t')}\n`;
 	}
 
-	get non_faux_imports_come_from(): string
-	{
+	get non_faux_imports_come_from(): string {
 		return `${JSON.stringify(
 			Object.fromEntries(
 				Object.entries(
 					this.comes_from,
 				)
-					.filter(maybe => !/(faux|common_type)/i.test(maybe[0]))
-					.map(e => [
+					.filter((maybe) => !/(faux|common_type)/i.test(maybe[0]))
+					.map((e) => [
 						`common_type__${e[0]}`,
 						`${e[1]}.ts`,
 					]),
@@ -67,7 +69,7 @@ export class DocsTsAutoImports {
 		)}\n`;
 	}
 
-	generate() : ImportTracker {
+	generate(): ImportTracker {
 		const file_exports = this.file_exports();
 
 		for (const entry of Object.entries(file_exports)) {
@@ -112,9 +114,10 @@ export class DocsTsAutoImports {
 			>[] = [...node_names]
 				.filter((maybe) => maybe in this.comes_from)
 				.filter(
-					(maybe) =>
-						filename.replace(/\.ts$/, '') !==
-						this.comes_from[maybe],
+					(maybe) => filename.replace(
+						/\.ts$/,
+						'',
+					) !== this.comes_from[maybe],
 				);
 
 			const common_reference_names: (keyof typeof common_types_map)[] = [
@@ -128,9 +131,9 @@ export class DocsTsAutoImports {
 			if (common_reference_names.length && this.version === 'common') {
 				reference_names.push(
 					...common_reference_names.map(
-						e => e.substring(13),
+						(e) => e.substring(13),
 					).filter(
-						maybe => !reference_names.includes(maybe),
+						(maybe) => !reference_names.includes(maybe),
 					),
 				);
 			}
@@ -144,7 +147,14 @@ export class DocsTsAutoImports {
 					if (`${this.comes_from[import_this]}.ts` === filename) {
 						continue;
 					}
-					let import_from = `${relative(dirname(filename), dirname(this.comes_from[import_this]))}/${basename(this.comes_from[import_this])}`;
+					let import_from = `${
+						relative(
+							dirname(filename),
+							dirname(this.comes_from[import_this]),
+						)
+					}/${
+						basename(this.comes_from[import_this])
+					}`;
 
 					if (import_from.startsWith('/')) {
 						import_from = `.${import_from}`;
@@ -176,7 +186,9 @@ export class DocsTsAutoImports {
 				}
 
 				for (const import_this of common_reference_names) {
-					const import_from = `import_from_common;${common_types_map[import_this]}`;
+					const import_from = `import_from_common;${
+						common_types_map[import_this]
+					}`;
 
 					if (!(import_from in auto_imports[filename])) {
 						auto_imports[filename][import_from] = [];

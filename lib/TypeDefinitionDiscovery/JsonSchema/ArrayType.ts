@@ -6,7 +6,7 @@ import type {
 	TupleTypeNode,
 } from 'typescript';
 import ts from 'typescript';
-import {
+import type {
 	TypeDefinitionDiscovery,
 } from '../../TypeDefinitionDiscovery.ts';
 import {
@@ -34,7 +34,7 @@ export class ArrayType extends GeneratorDoesDiscovery<
 > {
 	constructor(
 		supported_refs: string[],
-		discovery:TypeDefinitionDiscovery,
+		discovery: TypeDefinitionDiscovery,
 	) {
 		super(
 			{
@@ -94,7 +94,7 @@ export class ArrayType extends GeneratorDoesDiscovery<
 				}
 
 				return ts.factory.createTupleTypeNode(
-					raw_data.prefixItems.map(e => this.discovery.find(e)),
+					raw_data.prefixItems.map((e) => this.discovery.find(e)),
 				);
 			}
 
@@ -113,7 +113,7 @@ export class ArrayType extends GeneratorDoesDiscovery<
 						raw_data.items,
 					),
 					raw_data.maxItems,
-				)
+				);
 			}
 
 			return ts.factory.createArrayTypeNode(this.discovery.find(

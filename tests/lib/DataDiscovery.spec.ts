@@ -20,7 +20,9 @@ void describe(
 		const discovery = new DataDiscovery(docs, 'update8');
 		const actual = await (discovery.generate_markdown());
 		const expecting = (
-			await readFile(`${import.meta.dirname}/../fixtures/update8/data-progress--empty.md`)
+			await readFile(`${
+				import.meta.dirname
+			}/../fixtures/update8/data-progress--empty.md`)
 		).toString();
 		assert.equal(actual, expecting);
 	},

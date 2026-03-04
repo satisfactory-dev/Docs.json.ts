@@ -14,8 +14,7 @@ import type {
 	SchemaObject,
 } from 'ajv/dist/2020.js';
 
-export class ConstString extends CandidatesDiscovery
-{
+export class ConstString extends CandidatesDiscovery {
 	discovery_candidates(
 		current: SchemaObject,
 		discovered_types: Set<string>,
@@ -40,7 +39,7 @@ export class ConstString extends CandidatesDiscovery
 	}
 
 	private is_const_string(
-		maybe:unknown,
+		maybe: unknown,
 	): maybe is {type: 'string', const: string} {
 		return (
 			object_has_property_that_equals(

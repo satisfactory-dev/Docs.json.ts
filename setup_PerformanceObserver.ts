@@ -1,7 +1,6 @@
 import setup from '@signpostmarv/setup-performance-observer';
 
-export function setup_PerformanceObserver(clear_lines = true)
-{
+export function setup_PerformanceObserver(clear_lines = true) {
 	const tweak_order_by_prefix = [
 		'bootstrap',
 		'ajv compile',

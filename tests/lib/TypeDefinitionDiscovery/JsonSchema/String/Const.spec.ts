@@ -24,6 +24,6 @@ void describe('Const', () => {
 			ts_assert.isLiteralTypeNode(result);
 			ts_assert.isStringLiteral(result.literal);
 			assert.equal(result.literal.text, 'foo');
-		})
-	})
-})
+		});
+	});
+});

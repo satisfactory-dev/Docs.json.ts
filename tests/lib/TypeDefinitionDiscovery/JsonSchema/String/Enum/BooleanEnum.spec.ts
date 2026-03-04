@@ -4,7 +4,7 @@ import {
 } from 'node:test';
 import {
 	BooleanEnum,
-// eslint-disable-next-line max-len
+// eslint-disable-next-line @stylistic/max-len
 } from '../../../../../../lib/TypeDefinitionDiscovery/JsonSchema/String/Enum/BooleanEnum.ts';
 import {
 	docs,
@@ -29,7 +29,7 @@ void describe('BooleanEnum', () => {
 				result,
 				ts.SyntaxKind.BooleanKeyword,
 			);
-		})
+		});
 
 		void it('behaves with nullable boolean', () => {
 			const result = instance.generate()({
@@ -48,6 +48,6 @@ void describe('BooleanEnum', () => {
 				result.types[1].literal,
 				ts.SyntaxKind.NullKeyword,
 			);
-		})
-	})
-})
+		});
+	});
+});

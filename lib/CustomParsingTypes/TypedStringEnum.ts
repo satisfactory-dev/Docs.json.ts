@@ -13,7 +13,10 @@ import {
 	typed_string_const_value_regex__native,
 } from './TypedStringConst.ts';
 
-export type enum_schema_type = {type: 'string'; enum: [string, ...string[]]};
+export type enum_schema_type = {
+	type: 'string',
+	enum: [string, ...string[]],
+};
 
 export const typed_string_enum_schema = {
 	type: 'object',
@@ -43,14 +46,17 @@ class TypedStringEnum extends SupportedSubSchemaType<
 			&& 'string' === maybe.type
 			&& object_has_non_empty_array_property(maybe, 'enum')
 			&& maybe.enum.every(
-				(e) =>
+				(e) => (
 					is_string(e)
-					&& typed_string_const_value_regex__native.test(e),
+					&& typed_string_const_value_regex__native.test(e)
+				),
 			)
 		);
 	}
+
 	value_regex(value: enum_schema_type): string {
 		const enums = `(?:${value.enum.join('|')})`;
+
 		return `(?:${enums}|"${enums}"|\\\\"${enums}\\\\")`;
 	}
 }

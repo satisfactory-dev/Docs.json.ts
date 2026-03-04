@@ -36,15 +36,17 @@ void describe('ArrayType', async () => {
 
 			void it(
 				'throws if items is false and prefixItems is absent',
-				() => {assert.throws(
-					() => result({type: 'array', items: false}),
-					{
-						property: {type: 'array', items: false},
-						message:
-							'Must specify prefixItems when items is false!',
-					},
-				)},
-			)
+				() => {
+					assert.throws(
+						() => result({type: 'array', items: false}),
+						{
+							property: {type: 'array', items: false},
+							// eslint-disable-next-line @stylistic/max-len
+							message: 'Must specify prefixItems when items is false!',
+						},
+					);
+				},
+			);
 
 			void it('behaves with prefixItems', () => {
 				const get_type = () => result({
@@ -67,7 +69,7 @@ void describe('ArrayType', async () => {
 				ts_assert.isLiteralTypeNode(type.elements[0]);
 				ts_assert.isStringLiteral(type.elements[0].literal);
 				assert.equal(type.elements[0].literal.text, 'foo');
-			})
+			});
 
 			void it('behaves with minItems only', () => {
 				const get_type = () => result({
@@ -101,7 +103,7 @@ void describe('ArrayType', async () => {
 					type.elements[1].type.elementType.literal.text,
 					'foo',
 				);
-			})
+			});
 
 			void it('behaves with minItems and maxItems', () => {
 				const get_type = () => result({
@@ -123,7 +125,7 @@ void describe('ArrayType', async () => {
 				ts_assert.isLiteralTypeNode(type.elements[0]);
 				ts_assert.isStringLiteral(type.elements[0].literal);
 				assert.equal(type.elements[0].literal.text, 'foo');
-			})
+			});
 
 			void it('behaves with no bounds', () => {
 				const get_type = () => result({
@@ -149,7 +151,7 @@ void describe('ArrayType', async () => {
 					type.elementType.literal.text,
 					'foo',
 				);
-			})
-		})
-	})
-})
+			});
+		});
+	});
+});

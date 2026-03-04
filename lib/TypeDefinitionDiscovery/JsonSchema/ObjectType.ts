@@ -4,7 +4,7 @@ import type {
 	TypeReferenceNode,
 } from 'typescript';
 import ts from 'typescript';
-import {
+import type {
 	TypeDefinitionDiscovery,
 } from '../../TypeDefinitionDiscovery.ts';
 import {
@@ -24,10 +24,10 @@ export type RawData = {
 	additionalProperties: false,
 	properties: {[key: string]: unknown},
 	not?: {
-		anyOf: {[key: string]: unknown}[]
+		anyOf: {[key: string]: unknown}[],
 	}|{
-		oneOf: {[key: string]: unknown}[]
-	}
+		oneOf: {[key: string]: unknown}[],
+	},
 };
 
 export const schema = {
@@ -87,13 +87,13 @@ export class ObjectType extends GeneratorDoesDiscovery<
 	RawData,
 	possible
 > {
-	constructor(discovery:TypeDefinitionDiscovery) {
+	constructor(discovery: TypeDefinitionDiscovery) {
 		super(schema, discovery);
 	}
 
 	generate() {
-		return (raw_data:RawData) => {
-			let type:possible = create_object_type_from_entries(
+		return (raw_data: RawData) => {
+			let type: possible = create_object_type_from_entries(
 				Object.entries(raw_data.properties).map((entry) => {
 					return [
 						entry[0],

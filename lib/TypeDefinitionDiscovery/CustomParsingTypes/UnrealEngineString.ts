@@ -15,11 +15,11 @@ import {
 import type {
 	TypeReferenceNode,
 } from 'typescript';
-import Ajv from 'ajv/dist/2020.js';
+import type Ajv from 'ajv/dist/2020.js';
 
 export type UnrealEngineString_left_right<
 	left extends string = string,
-	right extends string = string
+	right extends string = string,
 > = (
 	& Exclude<UnrealEngineString_type, true>
 	& {left: left, right: right}
@@ -46,8 +46,8 @@ export class UnrealEngineString extends Generator<
 
 	static fromString<
 		left extends string = string,
-		right extends string = string
-	>(value:string): UnrealEngineString_left_right<left, right> {
+		right extends string = string,
+	>(value: string): UnrealEngineString_left_right<left, right> {
 		let result = UnrealEngineString_regex.exec(value);
 
 		if (!result) {

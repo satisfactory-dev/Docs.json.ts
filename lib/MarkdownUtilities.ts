@@ -1,6 +1,6 @@
 export type progress_group = {
-	members: string[];
-	subgroups: {[key: string]: progress_group};
+	members: string[],
+	subgroups: {[key: string]: progress_group},
 };
 
 export function remap(group: progress_group) {
@@ -50,9 +50,9 @@ export function reduce(
 	title: string = 'Basic Types',
 	current_depth: number = 1,
 ): {
-	title: string;
-	members: string[];
-	depth: number;
+	title: string,
+	members: string[],
+	depth: number,
 }[] {
 	const head = [];
 

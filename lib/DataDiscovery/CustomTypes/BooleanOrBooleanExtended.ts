@@ -34,14 +34,14 @@ const schema = {
 export type schema_type = SchemaObject & {
 	$ref: (
 		| local_ref<
-		| 'boolean'
-		| 'boolean-extended'
-	>
+			| 'boolean'
+			| 'boolean-extended'
+		>
 		| common_ref<
 			| 'boolean'
 			| 'boolean-extended'
 		>
-	)
+	),
 };
 
 export class BooleanConverter extends ConverterMatchesSchema<
@@ -49,7 +49,7 @@ export class BooleanConverter extends ConverterMatchesSchema<
 	'True'|'False'|'',
 	TrueLiteral|FalseLiteral|NullLiteral
 > {
-	constructor(ajv:Ajv) {
+	constructor(ajv: Ajv) {
 		super(ajv, schema);
 	}
 

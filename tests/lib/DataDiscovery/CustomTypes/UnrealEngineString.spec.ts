@@ -21,19 +21,19 @@ import {
 
 void describe('UnrealEngineStringConverter', () => {
 	const example_UnrealEngineString_value_left = '/Script/CoreUObject.Class';
-	const example_UnrealEngineString_value_right =
-		'/Script/FactoryGame.Example';
-	const example_UnrealEngineString_value =
-		`${
-			example_UnrealEngineString_value_left
-		}'${
-			example_UnrealEngineString_value_right
-		}'`;
+	const example_UnrealEngineString_value_right = (
+		'/Script/FactoryGame.Example'
+	);
+	const example_UnrealEngineString_value = `${
+		example_UnrealEngineString_value_left
+	}'${
+		example_UnrealEngineString_value_right
+	}'`;
 
 	const instance = new UnrealEngineStringConverter();
 
 	void describe('can_convert_schema()', () => {
-		void it ('returns false', () => {
+		void it('returns false', () => {
 			assert.equal(
 				instance.can_convert_schema({type: 'string'}),
 				false,
@@ -62,7 +62,7 @@ void describe('UnrealEngineStringConverter', () => {
 						example_UnrealEngineString_value,
 					),
 					false,
-				)
+				);
 			});
 
 			void it('resolves true', async () => {
@@ -82,7 +82,7 @@ void describe('UnrealEngineStringConverter', () => {
 	);
 
 	void describe('convert()', () => {
-		const convert_args:(
+		const convert_args: (
 			| [ // rejects
 				UnrealEngineString_parent_type,
 				string,
@@ -169,7 +169,7 @@ void describe('UnrealEngineStringConverter', () => {
 		void it('rejects', async () => {
 			for (
 				const entry of convert_args.filter(
-					maybe => is_string(maybe[2]),
+					(maybe) => is_string(maybe[2]),
 				)
 			) {
 				const [schema, raw_data, message] = entry;
@@ -190,7 +190,7 @@ void describe('UnrealEngineStringConverter', () => {
 		void it('passes', async () => {
 			for (
 				const entry of convert_args.filter(
-					maybe => 2 === maybe.length,
+					(maybe) => 2 === maybe.length,
 				)
 			) {
 				const [schema, raw_data] = entry;
@@ -218,4 +218,4 @@ void describe('UnrealEngineStringConverter', () => {
 			}
 		});
 	});
-})
+});

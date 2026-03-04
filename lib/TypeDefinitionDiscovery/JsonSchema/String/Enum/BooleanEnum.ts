@@ -10,18 +10,19 @@ import {
 	create_literal,
 	create_union,
 } from '../../../../TsFactoryWrapper.ts';
-import Ajv from 'ajv/dist/2020.js';
+import type Ajv from 'ajv/dist/2020.js';
 
 export type boolean_or_null_type = {
 	type: 'string',
-	enum: ['True', 'False']
+	enum: ['True', 'False'],
 } | {
 	type: 'string',
-	enum: ['True', 'False', '']
+	enum: ['True', 'False', ''],
 };
-type boolean_or_null_return =
+type boolean_or_null_return = (
 	| KeywordTypeNode<ts.SyntaxKind.BooleanKeyword>
-	| UnionTypeNode;
+	| UnionTypeNode
+);
 
 export class BooleanEnum extends Generator<
 	boolean_or_null_type,
@@ -61,8 +62,8 @@ export class BooleanEnum extends Generator<
 		});
 	}
 
-	generate(): (raw_data:boolean_or_null_type) => boolean_or_null_return {
-		return (raw_data:boolean_or_null_type) => {
+	generate(): (raw_data: boolean_or_null_type) => boolean_or_null_return {
+		return (raw_data: boolean_or_null_type) => {
 			const boolean = ts.factory.createKeywordTypeNode(
 				ts.SyntaxKind.BooleanKeyword,
 			);

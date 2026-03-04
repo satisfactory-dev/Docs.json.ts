@@ -27,16 +27,16 @@ void describe('TypeDefinitionWriter', () => {
 				continue;
 			}
 
-			void it (`${version}: does not throw`, () => {
+			void it(`${version}: does not throw`, () => {
 				const instance = new TypeDefinitionWriter(docs, version);
 
 				assert.doesNotThrow(() => instance.discovery);
-			})
+			});
 		}
-	})
+	});
 
 	void describe('can_have_class_tree', () => {
-		const data_sets:[
+		const data_sets: [
 			undefined|[
 				ts.HeritageClause['token'],
 				string[],
@@ -64,7 +64,7 @@ void describe('TypeDefinitionWriter', () => {
 				: [ts.factory.createHeritageClause(
 					heritage_args[0],
 					heritage_args[1].map(
-						e => ts.factory.createExpressionWithTypeArguments(
+						(e) => ts.factory.createExpressionWithTypeArguments(
 							ts.factory.createIdentifier(e),
 							undefined,
 						),
@@ -93,7 +93,7 @@ void describe('TypeDefinitionWriter', () => {
 						expectation,
 					);
 				},
-			)
+			);
 		}
-	})
-})
+	});
+});

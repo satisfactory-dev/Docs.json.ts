@@ -31,8 +31,10 @@ export class TypeLiteralNodes extends NodeExtraction<TypeLiteralNode> {
 						...(element.typeParameters || []),
 						...element.parameters,
 					].filter(
-						(maybe): maybe is Exclude<typeof maybe, undefined> =>
-							!!maybe,
+						(maybe): maybe is Exclude<
+							typeof maybe,
+							undefined
+						> => !!maybe,
 					),
 				);
 			} else {

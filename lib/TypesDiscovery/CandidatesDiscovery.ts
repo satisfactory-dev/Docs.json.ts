@@ -2,11 +2,10 @@ import type {
 	SchemaObject,
 } from 'ajv/dist/2020.js';
 
-export abstract class CandidatesDiscovery
-{
-	protected readonly schema:SchemaObject;
+export abstract class CandidatesDiscovery {
+	protected readonly schema: SchemaObject;
 
-	constructor(schema:SchemaObject) {
+	constructor(schema: SchemaObject) {
 		this.schema = schema;
 	}
 
@@ -16,11 +15,10 @@ export abstract class CandidatesDiscovery
 	): [unknown, ...unknown[]] | undefined;
 }
 
-export abstract class PropertyDependentDiscovery extends CandidatesDiscovery
-{
-	protected readonly property:string;
+export abstract class PropertyDependentDiscovery extends CandidatesDiscovery {
+	protected readonly property: string;
 
-	constructor(property:string, schema:SchemaObject) {
+	constructor(property: string, schema: SchemaObject) {
 		super(schema);
 		this.property = property;
 	}

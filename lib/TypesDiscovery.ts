@@ -5,7 +5,7 @@ import {
 	object_has_property,
 	value_is_non_array_object,
 } from '@satisfactory-dev/predicates.ts';
-import {
+import type {
 	CandidatesDiscovery,
 } from './TypesDiscovery/CandidatesDiscovery.ts';
 import {
@@ -25,7 +25,7 @@ import type {
 	docs_versions,
 	DocsDataItem,
 } from './DocsTsGenerator.ts';
-import {
+import type {
 	DocsTsGenerator,
 } from './DocsTsGenerator.ts';
 import {
@@ -49,18 +49,20 @@ import {
 
 import common_schema from '../schema/common.schema.json' with {type: 'json'};
 
-export class TypesDiscovery
-{
-	private discovery:Promise<{
+export class TypesDiscovery {
+	private discovery: Promise<{
 		discovered_types: local_ref<string>[],
 		missed_types: string[],
 		schema_$defs: string[],
 	}>|undefined;
-	private readonly candidates_discovery:[
+
+	private readonly candidates_discovery: [
 		CandidatesDiscovery,
 		...CandidatesDiscovery[],
 	];
-	private readonly docs:DocsTsGenerator;
+
+	private readonly docs: DocsTsGenerator;
+
 	private readonly version: keyof docs_versions;
 
 	constructor(
@@ -73,8 +75,7 @@ export class TypesDiscovery
 		this.version = version;
 	}
 
-	async discover_types()
-	{
+	async discover_types() {
 		if (!this.discovery) {
 			const schema = await this.docs.schema(this.version);
 			const discovered_types = new Set<local_ref<string>>();
@@ -92,7 +93,7 @@ export class TypesDiscovery
 						? schema.$defs
 						: {},
 				).map(local_ref).filter(
-					maybe => !discovered_types.has(maybe),
+					(maybe) => !discovered_types.has(maybe),
 				),
 				schema_$defs: Object.keys(schema.$defs),
 			});
@@ -102,9 +103,9 @@ export class TypesDiscovery
 	}
 
 	private discover_types_from(
-		current:unknown,
-		schema:SchemaObject,
-		discovered_types:Set<string>,
+		current: unknown,
+		schema: SchemaObject,
+		discovered_types: Set<string>,
 	) {
 		if (!value_is_non_array_object(current)) {
 			return;
@@ -121,7 +122,7 @@ export class TypesDiscovery
 		}
 	}
 
-	static custom_parsing_types(schema:SchemaObject): (
+	static custom_parsing_types(schema: SchemaObject): (
 		[CandidatesDiscovery, ...CandidatesDiscovery[]]
 	) {
 		return [
@@ -131,7 +132,7 @@ export class TypesDiscovery
 	}
 
 	static async generate_is_NativeClass(
-		docs:DocsTsGenerator,
+		docs: DocsTsGenerator,
 		version: keyof docs_versions,
 	) {
 		const schema = await docs.schema(version);
@@ -160,7 +161,7 @@ export class TypesDiscovery
 		});
 	}
 
-	static standard_jsonschema_discovery(schema:SchemaObject): (
+	static standard_jsonschema_discovery(schema: SchemaObject): (
 		[CandidatesDiscovery, ...CandidatesDiscovery[]]
 	) {
 		return [

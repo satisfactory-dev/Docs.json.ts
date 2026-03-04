@@ -4,7 +4,7 @@ import {
 import type {
 	TypeReferenceNode,
 } from 'typescript';
-import Ajv from 'ajv/dist/2020.js';
+import type Ajv from 'ajv/dist/2020.js';
 import {
 	create_literal,
 	type_reference_node,
@@ -21,9 +21,8 @@ export const schema = {
 	},
 };
 
-export class string_starts_with extends Generator<RawData, TypeReferenceNode>
-{
-	constructor(ajv:Ajv) {
+export class string_starts_with extends Generator<RawData, TypeReferenceNode> {
+	constructor(ajv: Ajv) {
 		super(ajv, schema);
 	}
 

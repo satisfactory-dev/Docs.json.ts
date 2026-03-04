@@ -55,6 +55,7 @@ import common_schema from '../schema/common.schema.json' with {type: 'json'};
 
 export class ValidationError extends Error {
 	readonly errors: ErrorObject[];
+
 	readonly json: unknown;
 
 	constructor(
@@ -75,27 +76,33 @@ export type DocsDataItem_Classes_entry<TypeOfUnknownProperties = unknown> = (
 
 export type DocsDataItem<
 	TypeOfUnknownProperties = unknown,
-	TypeOfNativeClass = string
+	TypeOfNativeClass = string,
 > = {
-	NativeClass: TypeOfNativeClass;
-	Classes: DocsDataItem_Classes_entry<TypeOfUnknownProperties>[];
+	NativeClass: TypeOfNativeClass,
+	Classes: DocsDataItem_Classes_entry<TypeOfUnknownProperties>[],
 };
 
 export type DocsData = [DocsDataItem, ...DocsDataItem[]];
 
-export class DocsTsGeneratorVersion
-{
+export class DocsTsGeneratorVersion {
 	docs: DocsData | undefined;
+
 	readonly cache_path: string | undefined;
+
 	readonly common_types_from_module: string|undefined;
+
 	readonly docs_path: string | DocsData;
+
 	readonly types_from_module: string|undefined;
-	// eslint-disable-next-line max-len
-	readonly UnrealEngineString_quote_mode: typeof UnrealEngineString['quote_mode'];
+
+	readonly UnrealEngineString_quote_mode: (
+		typeof UnrealEngineString['quote_mode']
+	);
 
 	constructor({
 		// raw JSON or path to UTF-16LE encoded Docs.json
 		docs_path,
+
 		// optional cache folder path for cacheable resources
 		cache_path = undefined,
 		UnrealEngineString_quote_mode,
@@ -124,30 +131,43 @@ export type docs_versions = {
 };
 
 export class DocsTsGenerator {
-	// eslint-disable-next-line max-len
-	private readonly schema_data:DocsSchemaByVersion = new DocsSchemaByVersion();
-	public readonly ajv:Ajv;
+	// eslint-disable-next-line @stylistic/max-len
+	private readonly schema_data: DocsSchemaByVersion = new DocsSchemaByVersion();
+
+	public readonly ajv: Ajv;
+
 	readonly docs_versions: docs_versions;
 
+
 	static readonly PERF_EARLY_RETURN = 'Early Return of Docs.json';
+
 	static readonly PERF_FAILURE = 'Failure to load Docs.json';
+
 	static readonly PERF_FILE_PARSED = 'Docs.json contents parsed';
+
 	static readonly PERF_FILE_READ = 'Docs.json contents read';
+
 	static readonly PERF_START_LOADING_JSON = 'Start Loading Docs.json';
+
 	static readonly PERF_VALIDATION_COMPILED = 'Docs.json validation compiled';
+
 	static readonly PERF_VALIDATION_FINISHED = 'Docs.json validation finished';
-	static readonly PERF_VALIDATION_PRECOMPILE =
-		'Docs.json validation pre-compilation started';
+
+	static readonly PERF_VALIDATION_PRECOMPILE = (
+		'Docs.json validation pre-compilation started'
+	);
+
 	static readonly PERF_VALIDATION_STARTED = 'Docs.json validation started';
 
 	constructor({
 		// Ajv instance
 		ajv,
+
 		// Docs object
 		docs_versions,
 	}: {
 		ajv: Ajv,
-		docs_versions: docs_versions;
+		docs_versions: docs_versions,
 	}) {
 		if (Object.keys(docs_versions).length < 1) {
 			throw new Error('No versions specified!');
@@ -159,7 +179,7 @@ export class DocsTsGenerator {
 
 	async definition(
 		version: keyof docs_versions,
-		$ref:string,
+		$ref: string,
 	): Promise<SchemaObject> {
 		const schema = await this.schema(version);
 
@@ -171,7 +191,7 @@ export class DocsTsGenerator {
 	}
 
 	definition_from_common(
-		$ref:string,
+		$ref: string,
 	): Promise<SchemaObject> {
 		if (!property_exists_on_object(common_schema.$defs, $ref)) {
 			throw new NoMatchError({
@@ -209,12 +229,12 @@ export class DocsTsGenerator {
 		throw new Error('Could not find specified schema!');
 	}
 
-	// eslint-disable-next-line max-len
-	async schema_common(): Promise<DocsSchemaByVersion['common']['en_US']['schema']>
-	{
+	async schema_common(): Promise<
+		DocsSchemaByVersion['common']['en_US']['schema']
+	> {
 		const schema = this.schema_data.common.en_US.schema;
 
-		// eslint-disable-next-line max-len
+		// eslint-disable-next-line @stylistic/max-len
 		await this.validate_schema<DocsSchemaByVersion['common']['en_US']['schema']>(
 			'common',
 			schema,
@@ -223,12 +243,12 @@ export class DocsTsGenerator {
 		return schema;
 	}
 
-	// eslint-disable-next-line max-len
-	async schema_update8(): Promise<DocsSchemaByVersion['update8']['en_US']['schema']>
-	{
+	async schema_update8(): Promise<
+		DocsSchemaByVersion['update8']['en_US']['schema']
+	> {
 		const schema = this.schema_data.update8.en_US.schema;
 
-		// eslint-disable-next-line max-len
+		// eslint-disable-next-line @stylistic/max-len
 		await this.validate_schema<DocsSchemaByVersion['update8']['en_US']['schema']>(
 			'update8',
 			schema,
@@ -237,13 +257,14 @@ export class DocsTsGenerator {
 		return schema;
 	}
 
-	// eslint-disable-next-line max-len
-	async schema_version_1_0_1_4(): Promise<DocsSchemaByVersion['version_1_0_1_4']['en_US']['schema']>
-	{
+	async schema_version_1_0_1_4(): Promise<
+		DocsSchemaByVersion['version_1_0_1_4']['en_US']['schema']
+	> {
 		const schema = this.schema_data.version_1_0_1_4.en_US.schema;
 
-		// eslint-disable-next-line max-len
-		await this.validate_schema<DocsSchemaByVersion['version_1_0_1_4']['en_US']['schema']>(
+		await this.validate_schema<
+			DocsSchemaByVersion['version_1_0_1_4']['en_US']['schema']
+		>(
 			'version_1_0_1_4',
 			schema,
 		);
@@ -251,17 +272,18 @@ export class DocsTsGenerator {
 		return schema;
 	}
 
-	// eslint-disable-next-line max-len
-	async schema_version_1_1_1_1(): Promise<DocsSchemaByVersion['version_1_1_1_1']['en_US']['schema']>
-	{
+	async schema_version_1_1_1_1(): Promise<
+		DocsSchemaByVersion['version_1_1_1_1']['en_US']['schema']
+	> {
 		const schema = this.schema_data.version_1_1_1_1.en_US.schema;
+
 		/*
 		const schema_1_0 = await this.schema_version_1_0_1_4();
 		this.ajv.removeSchema('1.0.schema.json');
 		this.ajv.addSchema(schema_1_0);
 		*/
 
-		// eslint-disable-next-line max-len
+		// eslint-disable-next-line @stylistic/max-len
 		await this.validate_schema<DocsSchemaByVersion['version_1_1_1_1']['en_US']['schema']>(
 			'version_1_1_1_1',
 			schema,
@@ -286,6 +308,7 @@ export class DocsTsGenerator {
 					DocsTsGenerator.PERF_EARLY_RETURN,
 					DocsTsGenerator.PERF_START_LOADING_JSON,
 				);
+
 				return docs.docs_path;
 			} else if (!docs.docs_path.endsWith('.json')) {
 				performance.measure(
@@ -303,11 +326,16 @@ export class DocsTsGenerator {
 							/\.json$/,
 							`.utf8.${file_sha512.digest('hex')}.json`,
 						);
-						const utf8_filepath = `${docs.cache_path}/${utf8_filename}`;
+						const utf8_filepath = `${
+							docs.cache_path
+						}/${
+							utf8_filename
+						}`;
 
 						if (existsSync(utf8_filepath)) {
-							const file_contents =
-								await readFile(utf8_filepath);
+							const file_contents = await readFile(
+								utf8_filepath,
+							);
 							performance.measure(
 								DocsTsGenerator.PERF_FILE_READ,
 								DocsTsGenerator.PERF_START_LOADING_JSON,
@@ -410,7 +438,9 @@ export class DocsTsGenerator {
 
 		if (!result) {
 			throw new ValidationError(
-				`Failed to validate ${version} against the provided JSON Schema`,
+				`Failed to validate ${
+					version
+				} against the provided JSON Schema`,
 				validateDocs.errors,
 				json,
 			);
@@ -422,7 +452,7 @@ export class DocsTsGenerator {
 	private async validate_schema<
 		Result = unknown,
 		Schema extends SchemaObject = SchemaObject,
-	> (
+	>(
 		version: keyof docs_versions,
 		schema: Schema,
 	): Promise<ValidateFunction<Result>> {
@@ -478,10 +508,16 @@ export class DocsTsGenerator {
 			}
 
 			file_sha512.update(
-				await readFile(`${import.meta.dirname}/../schema/${schema['$id']}`),
+				await readFile(
+					`${import.meta.dirname}/../schema/${schema['$id']}`,
+				),
 			);
 
-			const filename = `${schema['$id']}.${file_sha512.digest('hex')}.mjs`;
+			const filename = `${
+				schema['$id']
+			}.${
+				file_sha512.digest('hex')
+			}.mjs`;
 			const filepath = `${docs.cache_path}/${filename}`;
 
 			if (!existsSync(filepath)) {
@@ -491,7 +527,7 @@ export class DocsTsGenerator {
 					DocsTsGenerator.PERF_VALIDATION_PRECOMPILE,
 				);
 
-				// eslint-disable-next-line max-len
+				// eslint-disable-next-line @stylistic/max-len
 				UnrealEngineString.quote_mode = docs.UnrealEngineString_quote_mode;
 
 				await writeFile(filepath, esmify(standalone(
@@ -516,7 +552,9 @@ export class DocsTsGenerator {
 	}
 }
 
-const prettier_config = prettier.resolveConfig(`${import.meta.dirname}/../.prettierrc`);
+const prettier_config = prettier.resolveConfig(
+	`${import.meta.dirname}/../.prettierrc`,
+);
 
 export async function format_code(
 	code: string,
@@ -553,9 +591,6 @@ export async function eslint_generated_types(parent_folder: string) {
 	const results = await eslint.lintFiles(`${parent_folder}/**/*.ts`);
 
 	process.stdout.write(
-		`${await (await eslint_formatter).format(results, {
-			cwd: parent_folder,
-			rulesMeta: eslint.getRulesMetaForResults(results),
-		})}\n`,
+		`${await (await eslint_formatter).format(results)}\n`,
 	);
 }

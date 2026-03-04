@@ -4,7 +4,7 @@ import type {
 	UnionTypeNode,
 } from 'typescript';
 import ts from 'typescript';
-import {
+import type {
 	TypeDefinitionDiscovery,
 } from '../../TypeDefinitionDiscovery.ts';
 import {
@@ -33,7 +33,7 @@ import {
 	generate_object_parent_schema,
 	generate_typed_string_$defs,
 } from '../../CustomParsingTypes/TypedString.ts';
-import {
+import type {
 	common_ref,
 	local_ref,
 } from '../../StringStartsWith.ts';
@@ -41,15 +41,15 @@ import {
 	object_has_property,
 } from '@satisfactory-dev/predicates.ts';
 
-function create_combinations(values:Set<string>) : string[][] {
-	const as_array:string[] = [...values.values()];
-	const entered:string[] = [JSON.stringify(as_array)];
-	const result:string[][] = [as_array];
+function create_combinations(values: Set<string>): string[][] {
+	const as_array: string[] = [...values.values()];
+	const entered: string[] = [JSON.stringify(as_array)];
+	const result: string[][] = [as_array];
 
-	const filter_these_out:string[] = [];
+	const filter_these_out: string[] = [];
 
 	for (const item of as_array) {
-		const filtered:string[] = as_array.filter(
+		const filtered: string[] = as_array.filter(
 			(maybe) => {
 				return (
 					maybe !== item
@@ -79,7 +79,7 @@ export class typed_string extends GeneratorDoesDiscovery<
 	typed_string_parent_type,
 	TypeLiteralNode|TupleTypeNode|UnionTypeNode
 > {
-	private readonly known_types:[
+	private readonly known_types: [
 		AnyGenerator,
 		...AnyGenerator[],
 	];
@@ -87,7 +87,7 @@ export class typed_string extends GeneratorDoesDiscovery<
 	constructor(
 		supported_refs: local_ref<string>[],
 		supported_common_refs: common_ref<string>[],
-		discovery:TypeDefinitionDiscovery,
+		discovery: TypeDefinitionDiscovery,
 	) {
 		super(
 			{
@@ -108,11 +108,11 @@ export class typed_string extends GeneratorDoesDiscovery<
 	}
 
 	generate(): (
-		raw_data: typed_string_parent_type
+		raw_data: typed_string_parent_type,
 	) => TypeLiteralNode|TupleTypeNode|UnionTypeNode {
 		return (
-			raw_data:typed_string_parent_type,
-		) : TypeLiteralNode|TupleTypeNode|UnionTypeNode => {
+			raw_data: typed_string_parent_type,
+		): TypeLiteralNode|TupleTypeNode|UnionTypeNode => {
 			const {typed_string: typed_string_value} = raw_data;
 
 			if (typed_string.is_array_type(typed_string_value)) {
@@ -124,7 +124,7 @@ export class typed_string extends GeneratorDoesDiscovery<
 								typed_string_value.items as never,
 							),
 							typed_string_value.maxItems,
-						)
+						);
 					}
 				}
 
@@ -138,7 +138,7 @@ export class typed_string extends GeneratorDoesDiscovery<
 					typed_string_value.minItems,
 					() => ts.factory.createTupleTypeNode(
 						typed_string_value.prefixItems.map(
-							e => this.discovery.find(e),
+							(e) => this.discovery.find(e),
 						),
 					),
 					typed_string_value.maxItems,
@@ -160,13 +160,13 @@ export class typed_string extends GeneratorDoesDiscovery<
 				const value_generator = () => this.discovery.find(value);
 
 				const result = combinations.map(
-					(required:string[]): TypeLiteralNode => {
+					(required: string[]): TypeLiteralNode => {
 						return ts.factory.createTypeLiteralNode(
-							required.map(property => createPropertySignature(
+							required.map((property) => createPropertySignature(
 								property,
 								value_generator(),
 							)),
-						)
+						);
 					},
 				);
 

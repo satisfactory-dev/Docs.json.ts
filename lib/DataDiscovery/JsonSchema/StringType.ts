@@ -51,15 +51,15 @@ export type pattern_schema = {
 };
 
 abstract class StringConverter<
-	Schema extends SchemaObject
+	Schema extends SchemaObject,
 > extends ConverterMatchesSchema<
-	Schema,
-	string,
-	StringLiteral
-> {
-	private readonly maybe_not:ValidateFunction<not_matching_string_type>;
+		Schema,
+		string,
+		StringLiteral
+	> {
+	private readonly maybe_not: ValidateFunction<not_matching_string_type>;
 
-	protected constructor(ajv:Ajv, schema:SchemaObject) {
+	protected constructor(ajv: Ajv, schema: SchemaObject) {
 		super(ajv, schema);
 		this.maybe_not = compile<not_matching_string_type>(
 			ajv,
@@ -68,9 +68,9 @@ abstract class StringConverter<
 	}
 
 	can_convert_schema_and_raw_data(
-		schema:SchemaObject,
-		raw_data:unknown,
-	) : Promise<boolean> {
+		schema: SchemaObject,
+		raw_data: unknown,
+	): Promise<boolean> {
 		if (
 			!is_string(raw_data)
 			|| (
@@ -117,7 +117,7 @@ export class BasicStringConverter extends StringConverter<
 }
 
 abstract class StringConvertHasConstraints<
-	Schema extends SchemaObject
+	Schema extends SchemaObject,
 > extends StringConverter<Schema> {
 	async convert(
 		schema: Schema,
@@ -142,7 +142,7 @@ abstract class StringConvertHasConstraints<
 export class ConstStringConverter extends StringConvertHasConstraints<
 	const_schema_type
 > {
-	constructor(ajv:Ajv) {
+	constructor(ajv: Ajv) {
 		super(ajv, {
 			type: 'object',
 			required: ['type', 'const'],
@@ -155,9 +155,9 @@ export class ConstStringConverter extends StringConvertHasConstraints<
 	}
 
 	can_convert_schema_and_raw_data(
-		schema:SchemaObject,
-		raw_data:unknown,
-	) : Promise<boolean> {
+		schema: SchemaObject,
+		raw_data: unknown,
+	): Promise<boolean> {
 		return Promise.resolve(
 			this.can_convert_schema(schema)
 			&& is_string(raw_data)
@@ -169,7 +169,7 @@ export class ConstStringConverter extends StringConvertHasConstraints<
 export class EnumStringConverter extends StringConvertHasConstraints<
 	enum_schema_type
 > {
-	constructor(ajv:Ajv) {
+	constructor(ajv: Ajv) {
 		super(ajv, {
 			type: 'object',
 			required: ['type', 'enum'],
@@ -186,9 +186,9 @@ export class EnumStringConverter extends StringConvertHasConstraints<
 	}
 
 	can_convert_schema_and_raw_data(
-		schema:SchemaObject,
-		raw_data:unknown,
-	) : Promise<boolean> {
+		schema: SchemaObject,
+		raw_data: unknown,
+	): Promise<boolean> {
 		return Promise.resolve(
 			this.can_convert_schema(schema)
 			&& is_string(raw_data)
@@ -202,7 +202,7 @@ export class PatternConverter extends ConverterMatchesSchema<
 	string,
 	AsExpression
 > {
-	constructor(ajv:Ajv) {
+	constructor(ajv: Ajv) {
 		super(ajv, {
 			type: 'object',
 			required: ['type', 'pattern'],

@@ -5,7 +5,7 @@ import {
 import assert from 'node:assert/strict';
 import {
 	Pattern,
-	// eslint-disable-next-line max-len
+	// eslint-disable-next-line @stylistic/max-len
 } from '../../../../../lib/TypeDefinitionDiscovery/JsonSchema/String/Pattern.ts';
 import {
 	docs,
@@ -33,12 +33,12 @@ void describe('Pattern', () => {
 			);
 			not_undefined(result.typeArguments);
 			array_has_size(result.typeArguments, 1);
-			ts_assert.isLiteralTypeNode(result.typeArguments[0])
+			ts_assert.isLiteralTypeNode(result.typeArguments[0]);
 			ts_assert.isStringLiteral(result.typeArguments[0].literal);
 			assert.equal(
 				result.typeArguments[0].literal.text,
 				'^(Foo|Bar)$',
 			);
-		})
-	})
-})
+		});
+	});
+});

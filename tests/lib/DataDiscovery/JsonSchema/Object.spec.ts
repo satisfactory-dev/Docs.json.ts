@@ -41,7 +41,7 @@ void describe('ObjectConverter', () => {
 			'schema not valid',
 		);
 
-		void it ('resolves false', async () => {
+		void it('resolves false', async () => {
 			assert.equal(
 				await instance.can_convert_schema_and_raw_data(
 					{type: 'string'},
@@ -73,16 +73,16 @@ void describe('ObjectConverter', () => {
 				true,
 				'Should be able to convert valid schema',
 			);
-		})
-	})
+		});
+	});
 
-	void describe ('check converters', () => {
-		const test_schema:schema_type = {
+	void describe('check converters', () => {
+		const test_schema: schema_type = {
 			type: 'object',
 			$ref: local_ref('class--no-description-or-display-name'),
 		};
 
-		const check_converters:[
+		const check_converters: [
 			schema_type,
 			{[key: string]: unknown},
 			{[key: string]: unknown}?,
@@ -104,7 +104,7 @@ void describe('ObjectConverter', () => {
 			],
 		];
 
-		void it ('behaves', async () => {
+		void it('behaves', async () => {
 			for (const entry of check_converters) {
 				const [schema, raw_data, failure] = entry;
 
@@ -119,6 +119,6 @@ void describe('ObjectConverter', () => {
 					await assert.doesNotReject(promise);
 				}
 			}
-		})
-	})
+		});
+	});
 });

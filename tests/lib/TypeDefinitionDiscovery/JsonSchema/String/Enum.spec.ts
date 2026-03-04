@@ -35,6 +35,6 @@ void describe('Enum', () => {
 			ts_assert.isLiteralTypeNode(result.types[1]);
 			ts_assert.isStringLiteral(result.types[1].literal);
 			assert.equal(result.types[1].literal.text, 'bar');
-		})
-	})
-})
+		});
+	});
+});

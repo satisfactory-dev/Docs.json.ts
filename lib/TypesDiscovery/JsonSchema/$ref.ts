@@ -10,37 +10,36 @@ import {
 	value_is_non_array_object,
 } from '@satisfactory-dev/predicates.ts';
 
-// eslint-disable-next-line max-len
+// eslint-disable-next-line @stylistic/max-len
 import common_schema from '../../../schema/common.schema.json' with {type: 'json'};
 
-export class $ref extends CandidatesDiscovery
-{
-	private readonly $defs:{[key: string]: true};
+export class $ref extends CandidatesDiscovery {
+	private readonly $defs: {[key: string]: true};
 
-	constructor(schema:SchemaObject) {
+	constructor(schema: SchemaObject) {
 		super(schema);
-		this.$defs =
+		this.$defs = (
 			object_has_property(
 				schema,
 				'$defs',
 				value_is_non_array_object,
 			)
 				? Object.fromEntries(
-					Object.keys(schema.$defs).map(e => [e, true]),
+					Object.keys(schema.$defs).map((e) => [e, true]),
 				)
-				: {};
+				: {}
+		);
 	}
 
 	discovery_candidates(
 		current: unknown,
 		discovered_types: Set<string>,
 	): [unknown, ...unknown[]] | undefined {
-
 		const $defs = this.$defs;
 
 		function has_definition_$ref(
-			maybe:unknown,
-		) : maybe is (
+			maybe: unknown,
+		): maybe is (
 			& {[key: string]: unknown}
 			& {$ref: Exclude<(keyof typeof $defs), number>}
 		) {
@@ -52,14 +51,15 @@ export class $ref extends CandidatesDiscovery
 		}
 
 		function schema_has_definition<T extends string = string>(
-			maybe:T, schema:SchemaObject,
+			maybe: T,
+			schema: SchemaObject,
 		): schema is (
 			& SchemaObject
 			& {
 				$defs: (
 					& {[key: string]: unknown}
 					& {[k in typeof maybe]: {[key: string]: unknown}}
-				)
+				),
 			}
 		) {
 			return (
@@ -74,41 +74,43 @@ export class $ref extends CandidatesDiscovery
 			&& !discovered_types.has(current.$ref)
 		) {
 			discovered_types.add(current.$ref);
-			return [this.schema.$defs[current.$ref.substring(8)]];
+
+			return [
+				this.schema.$defs[current.$ref.substring(8)],
+			];
 		}
 
 		return undefined;
 	}
 }
 
-export class common_$ref extends CandidatesDiscovery
-{
-	public readonly $defs:{[key: string]: true};
+export class common_$ref extends CandidatesDiscovery {
+	public readonly $defs: {[key: string]: true};
 
 	constructor() {
 		super(common_schema);
-		this.$defs =
+		this.$defs = (
 			object_has_property(
 				common_schema,
 				'$defs',
 				value_is_non_array_object,
 			)
 				? Object.fromEntries(
-					Object.keys(common_schema.$defs).map(e => [e, true]),
+					Object.keys(common_schema.$defs).map((e) => [e, true]),
 				)
-				: {};
+				: {}
+		);
 	}
 
 	discovery_candidates(
 		current: unknown,
 		discovered_types: Set<string>,
 	): [unknown, ...unknown[]] | undefined {
-
 		const $defs = this.$defs;
 
 		function has_definition_$ref(
-			maybe:unknown,
-		) : maybe is (
+			maybe: unknown,
+		): maybe is (
 			& {[key: string]: unknown}
 			& {$ref: Exclude<(keyof typeof $defs), number>}
 		) {
@@ -120,14 +122,15 @@ export class common_$ref extends CandidatesDiscovery
 		}
 
 		function schema_has_definition<T extends string = string>(
-			maybe:T, schema:SchemaObject,
+			maybe: T,
+			schema: SchemaObject,
 		): schema is (
 			& SchemaObject
 			& {
 				$defs: (
 					& {[key: string]: unknown}
 					& {[k in typeof maybe]: {[key: string]: unknown}}
-				)
+				),
 			}
 		) {
 			return (
@@ -137,16 +140,17 @@ export class common_$ref extends CandidatesDiscovery
 		}
 
 		function schema_has_definition_from_external<
-			T extends string = string
+			T extends string = string,
 		>(
-			maybe:T, schema:SchemaObject,
+			maybe: T,
+			schema: SchemaObject,
 		): schema is (
 			& SchemaObject
 			& {
 				$defs: (
 					& {[key: string]: unknown}
 					& {[k in typeof maybe]: {[key: string]: unknown}}
-				)
+				),
 			}
 		) {
 			return (
@@ -161,6 +165,7 @@ export class common_$ref extends CandidatesDiscovery
 			&& !discovered_types.has(current.$ref)
 		) {
 			discovered_types.add(current.$ref);
+
 			return [this.schema.$defs[current.$ref.substring(8)]];
 		}
 
@@ -171,6 +176,7 @@ export class common_$ref extends CandidatesDiscovery
 			&& !discovered_types.has(current.$ref)
 		) {
 			discovered_types.add(current.$ref);
+
 			return [this.schema.$defs[current.$ref.substring(26)]];
 		}
 

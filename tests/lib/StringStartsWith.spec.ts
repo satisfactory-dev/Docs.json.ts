@@ -12,12 +12,12 @@ import {
 void describe('local_ref', () => {
 	void it('works', () => {
 		assert.equal(local_ref('foo'), '#/$defs/foo');
-	})
+	});
 
 	void it('throws', () => {
 		assert.throws(() => local_ref('foo bar'));
 		assert.throws(() => local_ref('#/$defs/foo'));
-	})
+	});
 });
 
 void describe('is_$ref', () => {

@@ -3,7 +3,7 @@ import {
 	ConverterMatchesSchema,
 	ExpressionResult,
 } from '../Generator.ts';
-import {
+import type {
 	DataDiscovery,
 } from '../../DataDiscovery.ts';
 import type {
@@ -16,7 +16,7 @@ import {
 	value_is_non_array_object,
 } from '@satisfactory-dev/predicates.ts';
 
-import {
+import type {
 	common_ref,
 	local_ref,
 } from '../../StringStartsWith.ts';
@@ -45,27 +45,28 @@ export type schema_type = {
 abstract class ObjectConverterMatchesSchema<
 	Schema extends SchemaObject,
 	RawData = unknown,
-	Output extends Expression = Expression
+	Output extends Expression = Expression,
 > extends ConverterMatchesSchema<
-	Schema,
-	RawData,
-	Output
-> {
-	protected readonly already_resolved:{
+		Schema,
+		RawData,
+		Output
+	> {
+	protected readonly already_resolved: {
 		[key: string]: {[key: string]: SchemaObject},
 	} = {};
-	protected readonly discovery:DataDiscovery;
 
-	constructor(discovery:DataDiscovery, schema:SchemaObject) {
+	protected readonly discovery: DataDiscovery;
+
+	constructor(discovery: DataDiscovery, schema: SchemaObject) {
 		super(discovery.docs.ajv, schema);
 
 		this.discovery = discovery;
 	}
 
 	async can_convert_schema_and_raw_data(
-		schema:SchemaObject,
-		raw_data:unknown,
-	) : Promise<boolean> {
+		schema: SchemaObject,
+		raw_data: unknown,
+	): Promise<boolean> {
 		return (
 			this.can_convert_schema(schema)
 			&& value_is_non_array_object(raw_data)
@@ -73,7 +74,7 @@ abstract class ObjectConverterMatchesSchema<
 				raw_data,
 				await this.resolve_converters(schema),
 			).length
-			&& await new Promise((yup => {
+			&& await new Promise(((yup) => {
 				this.convert(
 					schema,
 					raw_data as RawData,
@@ -96,7 +97,9 @@ abstract class ObjectConverterMatchesSchema<
 
 		if (missing_keys.length) {
 			performance.measure(
-				`${this.constructor.name}.check_converters() missing converters`,
+				`${
+					this.constructor.name
+				}.check_converters() missing converters`,
 				`${this.constructor.name}.check_converters() start`,
 			);
 			throw new NoMatchError(
@@ -124,8 +127,10 @@ abstract class ObjectConverterMatchesSchema<
 	protected async resolve_converters(
 		schema: SchemaObject,
 	): Promise<{[key: string]: Converter<SchemaObject>}> {
-		performance.mark(`${this.constructor.name}.resolve_converters() start`);
-		const converters:{[key: string]: Converter<SchemaObject>} = {};
+		performance.mark(
+			`${this.constructor.name}.resolve_converters() start`,
+		);
+		const converters: {[key: string]: Converter<SchemaObject>} = {};
 
 		if (this.schema_is_allOf_$refs(schema)) {
 			for (const sub_schema of schema.allOf) {
@@ -156,7 +161,7 @@ abstract class ObjectConverterMatchesSchema<
 					return (
 						value_is_non_array_object(maybe)
 						&& Object.values(maybe).every(
-							e => value_is_non_array_object(e),
+							(e) => value_is_non_array_object(e),
 						)
 					);
 				},
@@ -217,7 +222,7 @@ abstract class ObjectConverterMatchesSchema<
 	}
 
 	protected async resolve_converters_for_$ref(
-		$ref:local_ref<string>,
+		$ref: local_ref<string>,
 	): Promise<{[key: string]: Converter<SchemaObject>}> {
 		const definition = await this.discovery.docs.definition(
 			this.discovery.version,
@@ -250,14 +255,16 @@ abstract class ObjectConverterMatchesSchema<
 
 		if (json_string in this.already_resolved) {
 			performance.measure(
-				`${this.constructor.name}.resolve_schema() previously resolved`,
+				`${
+					this.constructor.name
+				}.resolve_schema() previously resolved`,
 				`${this.constructor.name}.resolve_schema() start`,
 			);
 
 			return this.already_resolved[json_string];
 		}
 
-		const resolved_schema:{[key: string]: SchemaObject} = {};
+		const resolved_schema: {[key: string]: SchemaObject} = {};
 
 		if (this.schema_is_allOf_$refs(schema)) {
 			for (const allOf_schema_entry of schema.allOf) {
@@ -374,16 +381,18 @@ abstract class ObjectConverterMatchesSchema<
 		return resolved_schema;
 	}
 
-	protected schema_is_allOf_$refs(maybe: unknown): maybe is {allOf: [
-		{$ref: local_ref<string>|common_ref<string>},
-		...{$ref: local_ref<string>|common_ref<string>}[]
-	]} {
+	protected schema_is_allOf_$refs(maybe: unknown): maybe is {
+		allOf: [
+			{$ref: local_ref<string>|common_ref<string>},
+			...{$ref: local_ref<string>|common_ref<string>}[],
+		],
+	} {
 		return object_has_property(
 			maybe,
 			'allOf',
 			(maybe): maybe is [
 				{$ref: local_ref<string>|common_ref<string>},
-				...{$ref: local_ref<string>|common_ref<string>}[]
+				...{$ref: local_ref<string>|common_ref<string>}[],
 			] => {
 				return (
 					Array.isArray(maybe)
@@ -403,11 +412,11 @@ abstract class ObjectConverterMatchesSchema<
 											'common.schema.json#/$defs/',
 										)
 									)
-								)
+								);
 							},
 						);
 					})
-				)
+				);
 			},
 		);
 	}
@@ -418,7 +427,7 @@ export class ObjectConverter extends ObjectConverterMatchesSchema<
 	{[key: string]: unknown},
 	ObjectLiteralExpression
 > {
-	constructor(discovery:DataDiscovery) {
+	constructor(discovery: DataDiscovery) {
 		super(discovery, {
 			type: 'object',
 			required: ['type'],
@@ -453,7 +462,7 @@ export class ObjectConverter extends ObjectConverterMatchesSchema<
 		);
 
 		const converters = await this.check_converters(schema, raw_data);
-		const result:{[key: string]: ExpressionResult} = {};
+		const result: {[key: string]: ExpressionResult} = {};
 
 		for (const entry of Object.entries(raw_data)) {
 			const [property, value] = entry;
@@ -524,7 +533,7 @@ export class PatternedObjectConverter extends ObjectConverterMatchesSchema<
 	ObjectLiteralExpression
 > {
 	constructor(
-		discovery:DataDiscovery,
+		discovery: DataDiscovery,
 	) {
 		super(discovery, {
 			type: 'object',
@@ -557,7 +566,7 @@ export class PatternedObjectConverter extends ObjectConverterMatchesSchema<
 
 	convert(
 		schema: typed_string_inner_object_pattern_type,
-		raw_data: { [key: string]: unknown; },
+		raw_data: { [key: string]: unknown },
 	): Promise<ExpressionResult<ObjectLiteralExpression>> {
 		throw new NoMatchError(
 			{

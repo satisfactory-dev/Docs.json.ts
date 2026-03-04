@@ -81,7 +81,7 @@ export class UnrealEngineStringConverter extends Converter<
 				'Not an UnrealEngineString!',
 			);
 		}
-		const type_args:[TypeNode, TypeNode] = [
+		const type_args: [TypeNode, TypeNode] = [
 			create_literal('/Script/Engine.BlueprintGeneratedClass'),
 			create_type('string'),
 		];

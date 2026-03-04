@@ -5,7 +5,7 @@ import {
 import assert from 'node:assert/strict';
 import {
 	UnrealEngineString,
-// eslint-disable-next-line max-len
+// eslint-disable-next-line @stylistic/max-len
 } from '../../../../lib/TypeDefinitionDiscovery/CustomParsingTypes/UnrealEngineString.ts';
 import Ajv from 'ajv/dist/2020.js';
 import type {
@@ -52,10 +52,10 @@ void describe('UnrealEngineString.fromString()', () => {
 void describe('UnrealEngineString.check', () => {
 	const instance = new UnrealEngineString(new Ajv());
 
-	const fail:SchemaObject[] = [
+	const fail: SchemaObject[] = [
 		{type: 'string'},
 	];
-	const pass:UnrealEngineString_parent_type[] = [
+	const pass: UnrealEngineString_parent_type[] = [
 		{type: 'string', minLength: 1, UnrealEngineString: true},
 		{type: 'string', minLength: 1, UnrealEngineString: {
 			left: '/Script/Foo.Bar',

@@ -16,16 +16,16 @@ import type {
 } from 'ajv/dist/2020.js';
 
 type definitions = {
-	[key: string]: ([string, unknown]|[string, unknown, unknown])[]
+	[key: string]: ([string, unknown]|[string, unknown, unknown])[],
 };
 
-const spec:{
+const spec: {
 	string_to_array: definitions,
 	string_to_object: definitions,
 	string_to_native_type: definitions,
 } = {
 	string_to_array: {
-		'empty': [
+		empty: [
 			['', false],
 			['()', false],
 		],
@@ -42,7 +42,7 @@ const spec:{
 		],
 	},
 	string_to_object: {
-		'empty': [
+		empty: [
 			['', false],
 			['()', false],
 		],
@@ -59,7 +59,7 @@ const spec:{
 		],
 	},
 	string_to_native_type: {
-		'empty': [
+		empty: [
 			['', ''],
 			['()', '()'],
 			['(())', ['()']],
@@ -67,8 +67,8 @@ const spec:{
 	},
 };
 
-const functions_to_call:{
-	[key in keyof typeof spec]: (data:string, shallow:boolean) => unknown
+const functions_to_call: {
+	[key in keyof typeof spec]: (data: string, shallow: boolean) => unknown
 } = {
 	string_to_array,
 	string_to_object,
@@ -106,7 +106,7 @@ for (const describing of Object.entries(spec)) {
 }
 
 void describe('configure_ajv', () => {
-	const test_keyword_schemas:[
+	const test_keyword_schemas: [
 		SchemaObject,
 		[string, boolean][],
 	][] = [
@@ -114,7 +114,7 @@ void describe('configure_ajv', () => {
 			{
 				type: 'string',
 				minLength: 1,
-				'string_starts_with': 'foo',
+				string_starts_with: 'foo',
 			},
 			[
 				['foobar', true],
@@ -125,7 +125,7 @@ void describe('configure_ajv', () => {
 
 	void it('Ajv fails without use', () => {
 		const ajv = new Ajv();
-		const schema:SchemaObject = {type: 'string'};
+		const schema: SchemaObject = {type: 'string'};
 		const basic = ajv.compile(schema);
 
 		assert.equal(basic('foo'), true);

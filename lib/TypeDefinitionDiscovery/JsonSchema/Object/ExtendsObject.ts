@@ -13,37 +13,40 @@ import {
 import {
 	adjust_class_name,
 } from '../../../TsFactoryWrapper.ts';
-import {
+import type {
 	TypeDefinitionDiscovery,
 } from '../../../TypeDefinitionDiscovery.ts';
 import {
 	GeneratorDoesDiscovery,
 } from '../../GeneratorDoesDiscovery.ts';
-import {
+import type {
 	common_ref,
 	local_ref,
 } from '../../../StringStartsWith.ts';
 
-type RawData =
+type RawData = (
 	& ObjectTypeRawData
-	& {properties: {[key: string]: unknown}, $ref: local_ref<string>};
+	& {properties: {[key: string]: unknown}, $ref: local_ref<string>}
+);
 
-type Type =
+type Type = (
 	| TypeReferenceNode
 	| (
 		& IntersectionTypeNode
-		& {types: [
-			TypeReferenceNode,
-			LiteralTypeNode,
-		]}
-	);
+		& {
+			types: [
+				TypeReferenceNode,
+				LiteralTypeNode,
+			],
+		}
+	)
+);
 
-export class ExtendsObject extends GeneratorDoesDiscovery<RawData, Type>
-{
+export class ExtendsObject extends GeneratorDoesDiscovery<RawData, Type> {
 	constructor(
 		supported_refs: string[],
 		common_supported_refs: string[],
-		discovery:TypeDefinitionDiscovery,
+		discovery: TypeDefinitionDiscovery,
 	) {
 		const {
 			type,

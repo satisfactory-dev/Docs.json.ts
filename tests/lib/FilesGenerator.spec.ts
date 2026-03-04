@@ -37,7 +37,7 @@ void describe('merge_files', () => {
 			),
 			true,
 		);
-	})
+	});
 	void it('modifies an object', async () => {
 		const files = {};
 
@@ -49,7 +49,7 @@ void describe('merge_files', () => {
 			], files))['foo.ts'].length,
 			1,
 		);
-	})
+	});
 });
 
 void describe('guess_filename', () => {

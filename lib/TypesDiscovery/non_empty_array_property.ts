@@ -6,8 +6,7 @@ import {
 	value_is_non_array_object,
 } from '@satisfactory-dev/predicates.ts';
 
-export class non_empty_array_property extends PropertyDependentDiscovery
-{
+export class non_empty_array_property extends PropertyDependentDiscovery {
 	discovery_candidates(
 		current: unknown,
 	): [unknown, ...unknown[]] | undefined {

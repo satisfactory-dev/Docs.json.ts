@@ -49,9 +49,9 @@ import {
 import type {
 	docs_versions,
 	DocsDataItem,
+	DocsTsGenerator,
 } from './DocsTsGenerator.ts';
 import {
-	DocsTsGenerator,
 	eslint_generated_types,
 	format_code,
 } from './DocsTsGenerator.ts';
@@ -87,17 +87,20 @@ import {
 } from './StringStartsWith.ts';
 
 type class_can_have_tree = ClassDeclaration & {
-	heritageClauses: [{types: [{expression: ts.Identifier}]}];
+	heritageClauses: [{types: [{expression: ts.Identifier}]}],
 };
 
-export class TypeDefinitionWriter
-{
+export class TypeDefinitionWriter {
 	private _discovery:
 		| Promise<TypeDefinitionDiscovery>
 		| undefined = undefined;
+
 	private prepared = false;
-	private readonly data_discovery:DataDiscovery;
-	private readonly docs:DocsTsGenerator;
+
+	private readonly data_discovery: DataDiscovery;
+
+	private readonly docs: DocsTsGenerator;
+
 	private readonly version: keyof docs_versions;
 
 	constructor(
@@ -109,8 +112,7 @@ export class TypeDefinitionWriter
 		this.version = version;
 	}
 
-	get discovery(): Promise<TypeDefinitionDiscovery>
-	{
+	get discovery(): Promise<TypeDefinitionDiscovery> {
 		if (!this._discovery) {
 			const schema = this.docs.schema(this.version);
 			const type_definition_discover = require_non_empty_array<
@@ -173,7 +175,9 @@ export class TypeDefinitionWriter
 
 		if (cleanup) {
 			performance.mark(`${this.constructor.name}.write() start`);
-			for (const remove of await glob(`${parent_folder}/**/*.{ts,js,map}`)) {
+			for (const remove of await glob(
+				`${parent_folder}/**/*.{ts,js,map}`,
+			)) {
 				await unlink(remove);
 			}
 			performance.measure(
@@ -210,7 +214,7 @@ export class TypeDefinitionWriter
 		}
 
 		const validations = types.found_classes.map(
-			e => compile<DocsDataItem>(
+			(e) => compile<DocsDataItem>(
 				this.docs.ajv,
 				{
 					$defs: schema.$defs,
@@ -299,7 +303,7 @@ export class TypeDefinitionWriter
 			const class_can_have_trees = Object.fromEntries(
 				classes
 					.filter(
-						maybe => TypeDefinitionWriter.can_class_have_tree(
+						(maybe) => TypeDefinitionWriter.can_class_have_tree(
 							maybe,
 						),
 					)
@@ -322,16 +326,14 @@ export class TypeDefinitionWriter
 								?.expression
 								.escapedText
 								.toString()
-						) in
-						class_can_have_trees
+						) in class_can_have_trees
 					) {
-						const parent_class_name: string =
-							checking
-								.heritageClauses[0]
-								.types[0]
-								.expression
-								.escapedText
-								.toString();
+						const parent_class_name: string = checking
+							.heritageClauses[0]
+							.types[0]
+							.expression
+							.escapedText
+							.toString();
 						if (parent_class_name in classes_mapped) {
 							tree.push(parent_class_name);
 
@@ -357,8 +359,8 @@ export class TypeDefinitionWriter
 			const class_parent_class_max_depth = Object.fromEntries(
 				class_parent_classes
 					.map((thing): [string, string[][]] => {
-						const includes = class_parents.filter((e) =>
-							e.includes(thing),
+						const includes = class_parents.filter(
+							(e) => e.includes(thing),
 						);
 
 						return [thing, includes];
@@ -383,8 +385,8 @@ export class TypeDefinitionWriter
 
 			const classes_in_order = class_parent_classes.sort((a, b) => {
 				return (
-					class_parent_class_max_depth[b] -
-					class_parent_class_max_depth[a]
+					class_parent_class_max_depth[b]
+					- class_parent_class_max_depth[a]
 				);
 			});
 
@@ -402,8 +404,9 @@ export class TypeDefinitionWriter
 						return (
 							classes_in_order.indexOf(
 								a.name?.escapedText + '',
-							) -
-							classes_in_order.indexOf(b.name?.escapedText + '')
+							) - classes_in_order.indexOf(
+								b.name?.escapedText + '',
+							)
 						);
 					}
 
@@ -418,7 +421,7 @@ export class TypeDefinitionWriter
 				recursive: true,
 			});
 
-			const node_strings:string[] = [];
+			const node_strings: string[] = [];
 
 			for (const node of nodes) {
 				try {
@@ -432,10 +435,12 @@ export class TypeDefinitionWriter
 						{
 							file_name,
 							node,
-							err: (err instanceof Error) ? {
-								message: err.message,
-								stack: err.stack,
-							} : err,
+							err: (err instanceof Error)
+								? {
+									message: err.message,
+									stack: err.stack,
+								}
+								: err,
 						},
 						'Error printing node!',
 					);
@@ -511,8 +516,7 @@ export class TypeDefinitionWriter
 		);
 	}
 
-	private async prepare()
-	{
+	private async prepare() {
 		if (!this.prepared) {
 			this.prepared = true;
 			const discovery = await this.discovery;
@@ -528,7 +532,7 @@ export class TypeDefinitionWriter
 						common_schema.$defs,
 					).map(
 						(e): `#/$defs/${string}` => `#/$defs/${e}`,
-					).filter(maybe => !discovered_types.includes(maybe)),
+					).filter((maybe) => !discovered_types.includes(maybe)),
 				);
 			}
 

@@ -15,8 +15,7 @@ import {
 	local_ref,
 } from '../../StringStartsWith.ts';
 
-export class EnumString extends CandidatesDiscovery
-{
+export class EnumString extends CandidatesDiscovery {
 	discovery_candidates(
 		current: SchemaObject,
 		discovered_types: Set<string>,
@@ -41,7 +40,7 @@ export class EnumString extends CandidatesDiscovery
 	}
 
 	private is_enum_string(
-		maybe:unknown,
+		maybe: unknown,
 	): maybe is {type: 'string', enum: [string, ...string[]]} {
 		return (
 			object_has_property_that_equals(

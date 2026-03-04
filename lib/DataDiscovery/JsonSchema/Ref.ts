@@ -1,12 +1,14 @@
-import {
-	Converter,
-	ConverterMatchesSchema,
+import type {
 	ExpressionResult,
 } from '../Generator.ts';
 import {
+	Converter,
+	ConverterMatchesSchema,
+} from '../Generator.ts';
+import type {
 	local_ref,
 } from '../../StringStartsWith.ts';
-import {
+import type {
 	DataDiscovery,
 } from '../../DataDiscovery.ts';
 import type {
@@ -25,18 +27,19 @@ type final_resolve_result = [SchemaObject, Converter<SchemaObject>];
 export class Ref extends ConverterMatchesSchema<
 	schema_type
 > {
-	private readonly cache:{
+	private readonly cache: {
 		[key: local_ref<string>]: final_resolve_result,
 	} = {};
-	private readonly discovery:DataDiscovery;
 
-	constructor(discovery:DataDiscovery) {
+	private readonly discovery: DataDiscovery;
+
+	constructor(discovery: DataDiscovery) {
 		super(discovery.docs.ajv, {
 			type: 'object',
 			required: ['$ref'],
 			additionalProperties: false,
 			properties: {
-				// eslint-disable-next-line max-len
+				// eslint-disable-next-line @stylistic/max-len
 				$ref: {type: 'string', pattern: '^(common.schema.json)?#/\\$defs/'},
 			},
 		});
@@ -123,9 +126,9 @@ export class Ref extends ConverterMatchesSchema<
 	}
 
 	async resolve_to_final_converter_schema_only(
-		schema:schema_type,
+		schema: schema_type,
 	): Promise<final_resolve_result> {
-		let checking:SchemaObject = schema;
+		let checking: SchemaObject = schema;
 
 		performance.mark(`${
 			this.constructor.name
@@ -165,7 +168,9 @@ export class Ref extends ConverterMatchesSchema<
 			);
 
 			performance.measure(
-				`${this.constructor.name}.resolve_to_final_converter_schema_only()`,
+				`${
+					this.constructor.name
+				}.resolve_to_final_converter_schema_only()`,
 				`${
 					this.constructor.name
 				}.resolve_to_final_converter_schema_only() start`,
@@ -174,7 +179,9 @@ export class Ref extends ConverterMatchesSchema<
 			this.cache[schema.$ref] = [checking, converter];
 		} else {
 			performance.measure(
-				`${this.constructor.name}.resolve_to_final_converter_schema_only() cached`,
+				`${
+					this.constructor.name
+				}.resolve_to_final_converter_schema_only() cached`,
 				`${
 					this.constructor.name
 				}.resolve_to_final_converter_schema_only() start`,

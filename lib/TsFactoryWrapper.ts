@@ -33,11 +33,12 @@ import {
 
 declare type supported_class_modifiers = ('export' | 'abstract')[];
 
-declare type supported_modifier =
+declare type supported_modifier = (
 	| 'abstract'
 	| 'protected'
 	| 'public'
-	| 'static';
+	| 'static'
+);
 
 declare type supported_method_modifiers = [
 	supported_modifier,
@@ -63,7 +64,7 @@ export function adjust_class_name(class_name: string): string {
 }
 
 export const modifier_map: {
-	[key: string]: () => ts.ModifierToken<ts.ModifierSyntaxKind>;
+	[key: string]: () => ts.ModifierToken<ts.ModifierSyntaxKind>,
 } = {
 	abstract: () => {
 		return ts.factory.createModifier(ts.SyntaxKind.AbstractKeyword);
@@ -94,11 +95,11 @@ export const modifier_map: {
 type modifier = Exclude<keyof typeof modifier_map, number>;
 
 export function create_modifiers(
-	first:modifier,
-	...rest:modifier[]
+	first: modifier,
+	...rest: modifier[]
 ) {
 	const modifiers = rest.reduce(
-		(was:[modifier, ...modifier[]], is:modifier) => {
+		(was: [modifier, ...modifier[]], is: modifier) => {
 			if (!was.includes(is)) {
 				was.push(is);
 			}
@@ -110,20 +111,20 @@ export function create_modifiers(
 
 	return non_empty_map<modifier, ModifierToken<ModifierSyntaxKind>>(
 		modifiers,
-		e => modifier_map[e](),
+		(e) => modifier_map[e](),
 	);
 }
 
 export function type_reference_node(
 	name: string,
-	...type_arguments:TypeNode[]
-) : TypeReferenceNode {
+	...type_arguments: TypeNode[]
+): TypeReferenceNode {
 	return ts.factory.createTypeReferenceNode(name, type_arguments);
 }
 
 export type create_class_options = {
-	modifiers?: supported_class_modifiers;
-	extends?: string;
+	modifiers?: supported_class_modifiers,
+	extends?: string,
 };
 
 export function createClass(
@@ -200,9 +201,10 @@ export function createParameter(
 	);
 }
 
-declare type createMethod_parameters_entry =
+declare type createMethod_parameters_entry = (
 	| [string, KeywordTypeSyntaxKind | ts.TypeNode]
-	| ts.ParameterDeclaration;
+	| ts.ParameterDeclaration
+);
 
 function create_method(
 	name: string,
@@ -315,7 +317,7 @@ export function template_expression_from_string(
 	return ast.statements[0].expression;
 }
 
-export function parenthesize(expression:Expression): ParenthesizedExpression {
+export function parenthesize(expression: Expression): ParenthesizedExpression {
 	return ts.factory.createParenthesizedExpression(expression);
 }
 
@@ -347,7 +349,7 @@ export function create_type(type: keyof typeof type_map): ts.KeywordTypeNode {
 
 export function create_object_type_from_entries(
 	entries: [string, TypeNode][],
-	required?:[string, ...string[]],
+	required?: [string, ...string[]],
 	default_required = true,
 ): TypeLiteralNode {
 	return ts.factory.createTypeLiteralNode(
@@ -367,7 +369,7 @@ export function createPropertySignature(
 	property: string,
 	type: TypeNode,
 	required = true,
-) : PropertySignature {
+): PropertySignature {
 	return ts.factory.createPropertySignature(
 		undefined,
 		property_name_or_computed(property),
@@ -489,10 +491,11 @@ export function create_union(
 	return ts.factory.createUnionTypeNode([a, b, ...rest]);
 }
 
-declare type lazy_union_item =
+declare type lazy_union_item = (
 	| string
 	| {$ref: string}
-	| ({type: string} & ({pattern: string} | {const: string}));
+	| ({type: string} & ({pattern: string} | {const: string}))
+);
 
 function map_lazy_union_item_to_type(item: lazy_union_item): ts.TypeNode {
 	if ('object' === typeof item) {
@@ -543,7 +546,7 @@ export function possibly_create_lazy_union(
 
 type string_literal = LiteralTypeNode & {literal: StringLiteral};
 export type non_empty_string_literal_union = UnionTypeNode & {
-	types: NodeArray<string_literal> & [string_literal, ...string_literal[]];
+	types: NodeArray<string_literal> & [string_literal, ...string_literal[]],
 };
 
 export function create_typed_union(
@@ -555,8 +558,8 @@ export function create_typed_union(
 }
 
 export function create_const_declaration_list(
-	first:VariableDeclaration,
-	...rest:VariableDeclaration[]
+	first: VariableDeclaration,
+	...rest: VariableDeclaration[]
 ): VariableDeclarationList {
 	return ts.factory.createVariableDeclarationList(
 		[first, ...rest],
@@ -565,8 +568,8 @@ export function create_const_declaration_list(
 }
 
 export function create_const_statement(
-	first:VariableDeclaration,
-	...rest:VariableDeclaration[]
+	first: VariableDeclaration,
+	...rest: VariableDeclaration[]
 ): VariableStatement {
 	return ts.factory.createVariableStatement(
 		undefined,
@@ -578,7 +581,7 @@ export function variable(
 	name: string,
 	value: Expression,
 	type: TypeNode|undefined = undefined,
-) : VariableDeclaration {
+): VariableDeclaration {
 	return ts.factory.createVariableDeclaration(
 		name,
 		undefined,
@@ -588,7 +591,7 @@ export function variable(
 }
 
 export function not(
-	expression:Expression,
+	expression: Expression,
 ): PrefixUnaryExpression & {operator: SyntaxKind.ExclamationToken} {
 	return ts.factory.createLogicalNot(
 		expression,

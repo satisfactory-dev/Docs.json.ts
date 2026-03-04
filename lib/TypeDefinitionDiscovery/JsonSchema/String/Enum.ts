@@ -1,7 +1,7 @@
 import {
 	Generator,
 } from '../../Generator.ts';
-import Ajv from 'ajv/dist/2020.js';
+import type Ajv from 'ajv/dist/2020.js';
 import {
 	create_typed_union,
 } from '../../../TsFactoryWrapper.ts';
@@ -15,7 +15,7 @@ type RawData = {type: 'string', enum: [string, ...string[]]};
 type Type = UnionTypeNode & {
 	types: [
 		(LiteralTypeNode & {literal: StringLiteral}),
-		...(LiteralTypeNode & {literal: StringLiteral})[]
+		...(LiteralTypeNode & {literal: StringLiteral})[],
 	],
 };
 

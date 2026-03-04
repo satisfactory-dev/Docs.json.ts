@@ -17,15 +17,15 @@ void describe('NoMatchError', () => {
 	void it('can have a specific message', () => {
 		const foo = new NoMatchError(null, 'foo');
 
-		assert.equal(foo.message,'foo');
+		assert.equal(foo.message, 'foo');
 	});
 	void it('will keep a copy of the passed value', () => {
-		assert.equal((new NoMatchError(1)).property,1);
-		assert.equal((new NoMatchError(null)).property,null);
+		assert.equal((new NoMatchError(1)).property, 1);
+		assert.equal((new NoMatchError(null)).property, null);
 		assert.equal((new NoMatchError(true)).property, true);
 		assert.equal((new NoMatchError(false)).property, false);
 	});
-})
+});
 
 void describe('FragileTypeSafetyError', () => {
 	void it('has a default message', () => {
@@ -34,4 +34,4 @@ void describe('FragileTypeSafetyError', () => {
 			'type safety in here is a bit fragile, check earlier in the stack',
 		);
 	});
-})
+});

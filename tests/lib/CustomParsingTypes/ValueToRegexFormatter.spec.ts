@@ -18,57 +18,65 @@ import {
 import {
 	docs,
 } from '../../../lib/helpers.ts';
-// eslint-disable-next-line max-len
+// eslint-disable-next-line @stylistic/max-len
 import common_schema from '../../../schema/common.schema.json' with {type: 'json'};
 import type {
 	docs_versions,
 } from '../../../lib/DocsTsGenerator.ts';
 
-const versions_to_test:(Exclude<keyof docs_versions, 'common'>)[] = [
+const versions_to_test: (Exclude<keyof docs_versions, 'common'>)[] = [
 	'update8',
 	'version_1_1_1_1',
 ];
 
 for (const version of versions_to_test) {
-	void describe(`${version}: ValueToRegexFormatter.pattern_from_value()`, async () => {
-		let schema:undefined|{$defs:{[key: string]: SchemaObject}};
-		await assert.doesNotReject(
-			() => {
-				return docs.schema(version).then((res) => {
-					schema = res;
+	void describe(
+		`${version}: ValueToRegexFormatter.pattern_from_value()`,
+		async () => {
+			let schema: undefined|{$defs: {[key: string]: SchemaObject}};
+			await assert.doesNotReject(
+				() => {
+					return docs.schema(version).then((res) => {
+						schema = res;
 
-					return schema;
-				}).catch((err) => {
-					console.error(err);
+						return schema;
+					}).catch((err) => {
+						console.error(err);
 
-					throw err;
-				});
-			},
-			`Failed to obtain schema for ${version}`,
-		);
-		not_undefined(schema, 'schema was undefined but did not throw');
+						throw err;
+					});
+				},
+				`Failed to obtain schema for ${version}`,
+			);
+			not_undefined(schema, 'schema was undefined but did not throw');
 
-		const instance = new ValueToRegexFormatter(
-			schema.$defs,
-			common_schema.$defs,
-		);
-		void it('does not throw', async () => {
-			const typed_string_types = [
-				'common-base--EditorCurveData',
-				'color',
-				'color-decimal',
-			];
+			const instance = new ValueToRegexFormatter(
+				schema.$defs,
+				common_schema.$defs,
+			);
+			void it('does not throw', async () => {
+				const typed_string_types = [
+					'common-base--EditorCurveData',
+					'color',
+					'color-decimal',
+				];
 
-			for (const typed_string_type of typed_string_types) {
-				const definition = await docs.definition(
-					version,
-					typed_string_type,
-				);
-				assert.doesNotThrow(
-					() => instance.pattern_from_value(definition),
-					`ValueToRegexFormatter.pattern_from_value() threw with ${typed_string_type} against ${version}`,
-				)
-			}
-		});
-	});
+				for (const typed_string_type of typed_string_types) {
+					const definition = await docs.definition(
+						version,
+						typed_string_type,
+					);
+					assert.doesNotThrow(
+						() => instance.pattern_from_value(definition),
+						// eslint-disable-next-line @stylistic/max-len
+						`ValueToRegexFormatter.pattern_from_value() threw with ${
+							typed_string_type
+						} against ${
+							version
+						}`,
+					);
+				}
+			});
+		},
+	);
 }

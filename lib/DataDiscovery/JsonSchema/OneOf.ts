@@ -1,9 +1,11 @@
-import {
-	Converter,
-	ConverterMatchesSchema,
+import type {
 	ExpressionResult,
 } from '../Generator.ts';
 import {
+	Converter,
+	ConverterMatchesSchema,
+} from '../Generator.ts';
+import type {
 	DataDiscovery,
 } from '../../DataDiscovery.ts';
 import type {
@@ -31,9 +33,9 @@ const schema = {
 };
 
 export class OneOfConverter extends ConverterMatchesSchema<oneOf> {
-	private readonly discovery:DataDiscovery;
+	private readonly discovery: DataDiscovery;
 
-	constructor(discovery:DataDiscovery) {
+	constructor(discovery: DataDiscovery) {
 		super(discovery.docs.ajv, schema);
 		this.discovery = discovery;
 	}
@@ -62,7 +64,7 @@ export class OneOfConverter extends ConverterMatchesSchema<oneOf> {
 	> {
 		const candidates = await this.discovery.candidates;
 
-		const failures:NoMatchError[] = [];
+		const failures: NoMatchError[] = [];
 
 		for (const entry of schema.oneOf) {
 			const converter = await Converter.has_matching_schema_and_raw_data(
@@ -98,7 +100,7 @@ export class OneOfConverter extends ConverterMatchesSchema<oneOf> {
 				oneOf: await Promise.all(schema.oneOf.map(async (
 					e,
 				) => {
-					// eslint-disable-next-line max-len
+					// eslint-disable-next-line @stylistic/max-len
 					const converter = await Converter.has_matching_schema_and_raw_data(
 						candidates,
 						e,
@@ -110,7 +112,7 @@ export class OneOfConverter extends ConverterMatchesSchema<oneOf> {
 						converter,
 						(
 							converter
-								// eslint-disable-next-line max-len
+								// eslint-disable-next-line @stylistic/max-len
 								? await converter.can_convert_schema_and_raw_data(
 									e,
 									raw_data,

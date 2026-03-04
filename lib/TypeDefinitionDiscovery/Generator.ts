@@ -15,13 +15,13 @@ export type AnyGenerator = Generator<any>;
 
 export abstract class Generator<
 	RawData,
-	Type extends TypeNode = TypeNode
+	Type extends TypeNode = TypeNode,
 > {
-	public readonly check:ValidateFunction<RawData>;
+	public readonly check: ValidateFunction<RawData>;
 
-	protected constructor(ajv:Ajv, schema:SchemaObject) {
+	protected constructor(ajv: Ajv, schema: SchemaObject) {
 		this.check = compile<RawData>(ajv, schema);
 	}
 
-	abstract generate(): (raw_data:RawData) => Type;
+	abstract generate(): (raw_data: RawData) => Type;
 }

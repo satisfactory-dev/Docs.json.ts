@@ -62,7 +62,7 @@ void describe('BooleanConverter.convert()', () => {
 		);
 	});
 
-	void it('resolved undefined', async() => {
+	void it('resolved undefined', async () => {
 		const result = (await instance.convert(schema, '')).expression;
 
 		ts_assert.isTokenWithExpectedKind(result, ts.SyntaxKind.NullKeyword);

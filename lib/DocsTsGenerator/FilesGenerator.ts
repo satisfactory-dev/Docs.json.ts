@@ -24,7 +24,7 @@ import {
 import type {
 	ref_discovery_type,
 } from '../TypeDefinitionDiscovery.ts';
-import {
+import type {
 	TypeDefinitionDiscovery,
 } from '../TypeDefinitionDiscovery.ts';
 import {
@@ -36,15 +36,19 @@ import type {
 } from '../DocsTsGenerator.ts';
 
 export class FilesGenerator extends Base {
-	private readonly discovery:TypeDefinitionDiscovery;
-	private readonly is_NativeClass:Promise<ValidateFunction<DocsDataItem>>;
-	private readonly types:Promise<ref_discovery_type>;
-	private readonly validations:ValidateFunction[];
+	private readonly discovery: TypeDefinitionDiscovery;
+
+	private readonly is_NativeClass: Promise<ValidateFunction<DocsDataItem>>;
+
+	private readonly types: Promise<ref_discovery_type>;
+
+	private readonly validations: ValidateFunction[];
+
 	private readonly version: keyof docs_versions;
 
 	constructor(
-		validations:ValidateFunction[],
-		discovery:TypeDefinitionDiscovery,
+		validations: ValidateFunction[],
+		discovery: TypeDefinitionDiscovery,
 		version: keyof docs_versions,
 	) {
 		super();
@@ -64,14 +68,14 @@ export class FilesGenerator extends Base {
 		}
 	}
 
-	protected async generate_file(entry:DocsDataItem): Promise<{
+	protected async generate_file(entry: DocsDataItem): Promise<{
 		file: string,
 		node: TypeAliasDeclaration,
 	}> {
 		const types = await this.types;
 		const is_NativeClass = await this.is_NativeClass;
 
-		const check = this.validations.find(maybe => maybe(entry));
+		const check = this.validations.find((maybe) => maybe(entry));
 
 		if (!check) {
 			throw new NoMatchError(
@@ -100,17 +104,16 @@ export class FilesGenerator extends Base {
 		);
 	}
 
-	protected generate_files_class_name(value:string): string
-	{
+	protected generate_files_class_name(value: string): string {
 		return adjust_unrealengine_value(
 			UnrealEngineString.fromString(value).right,
 		);
 	}
 
 	protected generate_files_entry_yield(
-		entry_type:TypeNode,
-		entry_class_name:string,
-	) : {
+		entry_type: TypeNode,
+		entry_class_name: string,
+	): {
 		file: string,
 		node: TypeAliasDeclaration,
 	} {

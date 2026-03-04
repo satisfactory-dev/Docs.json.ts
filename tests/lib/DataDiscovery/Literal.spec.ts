@@ -30,7 +30,7 @@ void describe('Literal.object_literal', () => {
 	});
 
 	void it('converts objects with non-number properties', async () => {
-		const foo = await instance.object_literal({'foo': 'bar'});
+		const foo = await instance.object_literal({foo: 'bar'});
 
 		ts_assert.isObjectLiteralExpression(foo);
 		array_has_size(foo.properties, 1);
@@ -112,7 +112,7 @@ void describe('Literal.value_literal', () => {
 		ts_assert.isObjectLiteralExpression(foo);
 		array_has_size(foo.properties, 0);
 
-		const bar = await instance.value_literal({'foo': 'bar'});
+		const bar = await instance.value_literal({foo: 'bar'});
 
 		ts_assert.isObjectLiteralExpression(bar);
 		array_has_size(bar.properties, 1);

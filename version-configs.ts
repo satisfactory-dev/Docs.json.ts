@@ -1,6 +1,6 @@
 import type {
 	docs_versions,
-} from "./lib/DocsTsGenerator";
+} from './lib/DocsTsGenerator.ts';
 
 export const versions: Record<keyof docs_versions, string> = {
 	common: 'common',

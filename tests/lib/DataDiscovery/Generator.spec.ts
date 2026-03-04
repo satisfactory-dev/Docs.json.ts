@@ -61,10 +61,10 @@ import {
 
 void describe('Converter', async () => {
 	const candidates = await ((new DataDiscovery(docs, 'update8')).candidates);
-	const expected_converters:[
+	const expected_converters: [
 		SchemaObject,
 		{
-			[Symbol.hasInstance](instance:unknown): boolean;
+			[Symbol.hasInstance](instance: unknown): boolean,
 		},
 	][] = [
 		[
@@ -85,7 +85,7 @@ void describe('Converter', async () => {
 		],
 		[
 			{type: 'string', pattern: '^foo'},
-			PatternConverter ,
+			PatternConverter,
 		],
 		[
 			{$ref: local_ref('boolean')},
@@ -201,8 +201,7 @@ void describe('Converter', async () => {
 	];
 
 	void describe('has_matching_schema', () => {
-		void it ('returns something', () => {
-
+		void it('returns something', () => {
 			for (const entry of expected_converters) {
 				const [schema] = entry;
 
@@ -214,12 +213,11 @@ void describe('Converter', async () => {
 					`expected to find something for ${JSON.stringify(schema)}`,
 				);
 			}
-		})
-	})
+		});
+	});
 
 	void describe('find_matching_schema', () => {
-		void it ('does not reject', async () => {
-
+		void it('does not reject', async () => {
 			for (const entry of expected_converters) {
 				const [schema] = entry;
 
@@ -230,10 +228,10 @@ void describe('Converter', async () => {
 					),
 				);
 			}
-		})
-	})
+		});
+	});
 
-	void it ('returns an expected converter', async () => {
+	void it('returns an expected converter', async () => {
 		let candidates_remaining_to_be_checked = [
 			...candidates,
 		];
@@ -257,10 +255,11 @@ void describe('Converter', async () => {
 				}`,
 			);
 
-			candidates_remaining_to_be_checked =
+			candidates_remaining_to_be_checked = (
 				candidates_remaining_to_be_checked.filter(
-					maybe => !(maybe instanceof expected),
-				);
+					(maybe) => !(maybe instanceof expected),
+				)
+			);
 		}
 
 		array_has_size(
@@ -268,14 +267,14 @@ void describe('Converter', async () => {
 			0,
 			`Expecting to have zero candidates remaining, ${
 				candidates_remaining_to_be_checked
-					.map(e => e.constructor.name)
+					.map((e) => e.constructor.name)
 					.join(', ')
 			} found unchecked!`,
 		);
 	});
 
 	void describe('has_matching_schema_and_raw_data', () => {
-		void it ('resolves to something', async () => {
+		void it('resolves to something', async () => {
 			not_undefined(
 				await Converter.has_matching_schema_and_raw_data(
 					candidates,
@@ -283,9 +282,9 @@ void describe('Converter', async () => {
 					'',
 				),
 			);
-		})
+		});
 	});
-	void it('fails', async() => {
+	void it('fails', async () => {
 		await rejects_partial_match(
 			Converter.find_matching_schema(candidates, {type: 'boolean'}),
 			{
@@ -296,7 +295,7 @@ void describe('Converter', async () => {
 			},
 		);
 	});
-	void it ('returns undefined', async () => {
+	void it('returns undefined', async () => {
 		assert.equal(
 			Converter.has_matching_schema(candidates, {type: 'boolean'}),
 			undefined,

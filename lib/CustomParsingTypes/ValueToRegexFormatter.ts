@@ -41,48 +41,56 @@ import type {
 
 type typed_string_object_inner = {
 	required: [string, ...string[]],
-	properties: {[key: string]: unknown}
+	properties: {[key: string]: unknown},
 };
 type typed_string_object_inner_no_required = {
 	required: [string, ...string[]],
-	properties: {[key: string]: unknown}
+	properties: {[key: string]: unknown},
 };
 type typed_string_object_pattern_inner = {
 	minProperties: number,
-	patternProperties: {[key: string]: unknown}
+	patternProperties: {[key: string]: unknown},
 };
 type typed_string_array_inner = {
 	minItems?: number,
 	items: unknown,
 };
 
-type typed_string_object_parent  = {
+type typed_string_object_parent = {
 	type: 'string',
 	minLength: 1,
-	typed_string:
+	typed_string: (
 		| typed_string_object_inner
 		| typed_string_object_inner_no_required
 		| typed_string_array_inner
+	),
 };
 
-function is_number(maybe:unknown): maybe is number {
+function is_number(maybe: unknown): maybe is number {
 	return 'number' === typeof maybe;
 }
 
-export class ValueToRegexFormatter
-{
+export class ValueToRegexFormatter {
 	private typed_string_const;
+
 	private typed_string_enum;
+
 	private typed_string_pattern_general;
+
 	private UnrealEngineString;
-	private readonly $defs:{[key: string]: SchemaObject};
+
+	private readonly $defs: {[key: string]: SchemaObject};
+
 	private readonly common_$defs: {[key: string]: SchemaObject};
-	private readonly supported_$ref_object:{[key: local_ref<string>]: string};
-	// eslint-disable-next-line max-len
-	private readonly supported_common_$ref_object: {[key: common_ref<string>]: string};
+
+	private readonly supported_$ref_object: {[key: local_ref<string>]: string};
+
+	private readonly supported_common_$ref_object: {
+		[key: common_ref<string>]: string,
+	};
 
 	constructor(
-		$defs:{[key: string]: SchemaObject},
+		$defs: {[key: string]: SchemaObject},
 		common_$defs: {[key: string]: SchemaObject},
 	) {
 		this.$defs = $defs;
@@ -94,18 +102,18 @@ export class ValueToRegexFormatter
 		this.typed_string_enum = typed_string_enum;
 		this.typed_string_pattern_general = typed_string_pattern_general;
 		this.supported_$ref_object = this.prepare_$ref_regex($defs);
-		// eslint-disable-next-line max-len
+		// eslint-disable-next-line @stylistic/max-len
 		this.supported_common_$ref_object = this.prepare_common_$ref_regex(common_$defs);
 	}
 
-	pattern_from_value(value:unknown): {pattern: string} {
+	pattern_from_value(value: unknown): {pattern: string} {
 		return {
 			pattern: `^${this.value_to_regex(value)}$`,
 		};
 	}
 
 	private is_supported_$ref_object(
-		maybe:unknown,
+		maybe: unknown,
 	): maybe is {$ref: local_ref<string>} {
 		return (
 			object_only_has_that_property(maybe, '$ref', is_string)
@@ -117,7 +125,7 @@ export class ValueToRegexFormatter
 	}
 
 	private is_supported_common_$ref_object(
-		maybe:unknown,
+		maybe: unknown,
 	): maybe is {$ref: common_ref<string>} {
 		return (
 			object_only_has_that_property(maybe, '$ref', is_string)
@@ -129,7 +137,7 @@ export class ValueToRegexFormatter
 	}
 
 	private is_supported_common_$ref_object_aliased(
-		maybe:unknown,
+		maybe: unknown,
 	): maybe is {$ref: local_ref<string>} {
 		return (
 			object_only_has_that_property(maybe, '$ref', is_string)
@@ -143,8 +151,7 @@ export class ValueToRegexFormatter
 		);
 	}
 
-	private is_supported_definition(maybe:SchemaObject): boolean
-	{
+	private is_supported_definition(maybe: SchemaObject): boolean {
 		return (
 			this.typed_string_const.is_supported_schema(maybe)
 			|| this.typed_string_enum.is_supported_schema(maybe)
@@ -161,14 +168,14 @@ export class ValueToRegexFormatter
 					maybe.oneOf,
 					value_is_non_array_object,
 				)
-				&& maybe.oneOf.every(e => this.is_supported_definition(e))
+				&& maybe.oneOf.every((e) => this.is_supported_definition(e))
 			)
 		);
 	}
 
 	private is_Texture2D_basic(
 		maybe: unknown,
-	) : maybe is {
+	): maybe is {
 		type: 'string',
 		string_starts_with: 'Texture2D /Game/FactoryGame/',
 	} {
@@ -185,40 +192,40 @@ export class ValueToRegexFormatter
 	}
 
 	private prepare_$ref_regex(
-		$defs:{[key: string]: SchemaObject},
+		$defs: {[key: string]: SchemaObject},
 	): {[key: local_ref<string>]: string} {
 		return Object.fromEntries(Object.entries($defs)
-			.filter(maybe => {
-				return this.is_supported_definition(maybe[1])
-			}).map(entry => {
+			.filter((maybe) => {
+				return this.is_supported_definition(maybe[1]);
+			}).map((entry) => {
 				return [
 					local_ref(entry[0]),
 					this.value_to_regex(entry[1]),
 				];
-			}))
+			}));
 	}
 
 	private prepare_common_$ref_regex(
-		$defs:{[key: string]: SchemaObject},
+		$defs: {[key: string]: SchemaObject},
 	): {[key: common_ref<string>]: string} {
 		return Object.fromEntries(Object.entries($defs)
-			.filter(maybe => {
-				return this.is_supported_definition(maybe[1])
-			}).map(entry => {
+			.filter((maybe) => {
+				return this.is_supported_definition(maybe[1]);
+			}).map((entry) => {
 				return [
 					common_ref(entry[0]),
 					this.value_to_regex(entry[1]),
 				];
-			}))
+			}));
 	}
 
-	private Texture2D_basic_regex(): string
-	{
+	private Texture2D_basic_regex(): string {
+		// eslint-disable-next-line @stylistic/max-len
 		return `(?:Texture2D \\/Game\\/FactoryGame\\/(?:[A-Z][A-Za-z0-9_.]+/)*[A-Z][A-Za-z_.0-9-]+(?::[A-Z][A-Za-z0-9]+)?)`;
 	}
 
 	private typed_string_array_inner_to_regex(
-		typed_string_array:typed_string_array_inner,
+		typed_string_array: typed_string_array_inner,
 	): string {
 		const regex = this.value_to_regex(typed_string_array.items);
 
@@ -238,6 +245,7 @@ export class ValueToRegexFormatter
 		return `\\(${Object.entries(typed_string_object.properties).map(
 			(entry, index) => {
 				const [property, value] = entry;
+
 				return `(?:(?:${
 					index > 0
 						? ',?'
@@ -256,7 +264,7 @@ export class ValueToRegexFormatter
 	}
 
 	private typed_string_object_pattern_inner_to_regex(
-		typed_string_object:typed_string_object_pattern_inner,
+		typed_string_object: typed_string_object_pattern_inner,
 	): string {
 		const [property_regex, value] = Object.entries(
 			typed_string_object.patternProperties,
@@ -275,8 +283,7 @@ export class ValueToRegexFormatter
 		},}\\)`;
 	}
 
-	private value_to_regex(value:unknown): string
-	{
+	private value_to_regex(value: unknown): string {
 		if (
 			ValueToRegexFormatter.is_typed_string_object_inner(value)
 			|| ValueToRegexFormatter.is_typed_string_object_inner_no_required(
@@ -301,7 +308,9 @@ export class ValueToRegexFormatter
 		} else if (this.is_supported_common_$ref_object(value)) {
 			return this.supported_common_$ref_object[value.$ref];
 		} else if (this.is_supported_common_$ref_object_aliased(value)) {
-			return this.supported_common_$ref_object[`common.schema.json${value.$ref}`];
+			return this.supported_common_$ref_object[
+				`common.schema.json${value.$ref}`
+			];
 		} else if(this.typed_string_const.is_supported_schema(value)) {
 			return this.typed_string_const.value_regex(value);
 		} else if(this.typed_string_enum.is_supported_schema(value)) {
@@ -315,7 +324,9 @@ export class ValueToRegexFormatter
 		} else if (is_UnrealEngineString_parent(value)) {
 			return this.UnrealEngineString(value.UnrealEngineString).pattern;
 		} else if (object_has_non_empty_array_property(value, 'oneOf')) {
-			return `(?:${value.oneOf.map(e => this.value_to_regex(e)).join('|')})`;
+			return `(?:${
+				value.oneOf.map((e) => this.value_to_regex(e)).join('|')
+			})`;
 		} else if (
 			object_only_has_that_property(value, '$ref', is_string)
 			&& value.$ref.startsWith('#/$defs/')
@@ -335,7 +346,7 @@ export class ValueToRegexFormatter
 
 			return `(?:${
 				oneOf
-					.map((e:SchemaObject) => this.value_to_regex(e))
+					.map((e: SchemaObject) => this.value_to_regex(e))
 					.join('|')
 			})`;
 		} else if (
@@ -357,7 +368,7 @@ export class ValueToRegexFormatter
 
 			return `(?:${
 				oneOf
-					.map((e:SchemaObject) => this.value_to_regex(e))
+					.map((e: SchemaObject) => this.value_to_regex(e))
 					.join('|')
 			})`;
 		} else if (
@@ -379,7 +390,7 @@ export class ValueToRegexFormatter
 
 			return `(?:${
 				oneOf
-					.map((e:SchemaObject) => this.value_to_regex(e))
+					.map((e: SchemaObject) => this.value_to_regex(e))
 					.join('|')
 			})`;
 		} else if (
@@ -426,7 +437,7 @@ export class ValueToRegexFormatter
 			ValueToRegexFormatter.is_typed_string_array_prefixItems(value)
 		) {
 			const item_regex = `\\(${
-				value.prefixItems.map(e => this.value_to_regex(e)).join(', ')
+				value.prefixItems.map((e) => this.value_to_regex(e)).join(', ')
 			}\\)`;
 
 			return `(?:\\(${item_regex}(?:,${item_regex}){${
@@ -438,11 +449,16 @@ export class ValueToRegexFormatter
 			}}\\))`;
 		}
 
-		throw new NoMatchError(value, `Unsupported value! ${JSON.stringify(value)}`);
+		throw new NoMatchError(
+			value,
+			`Unsupported value! ${
+				JSON.stringify(value)
+			}`,
+		);
 	}
 
 	private static is_typed_string_array_inner(
-		maybe:unknown,
+		maybe: unknown,
 	): maybe is typed_string_array_inner {
 		if (!value_is_non_array_object(maybe)) {
 			return false;
@@ -496,11 +512,11 @@ export class ValueToRegexFormatter
 				value_is_non_array_object,
 			)
 			&& total_keys === expected_keys
-		)
+		);
 	}
 
 	private static is_typed_string_object_inner(
-		maybe:unknown,
+		maybe: unknown,
 	): maybe is typed_string_object_inner {
 		return (
 			object_has_non_empty_array_property(
@@ -518,7 +534,7 @@ export class ValueToRegexFormatter
 	}
 
 	private static is_typed_string_object_inner_no_required(
-		maybe:unknown,
+		maybe: unknown,
 	): maybe is typed_string_object_inner {
 		return (
 			object_has_property(
@@ -531,8 +547,8 @@ export class ValueToRegexFormatter
 	}
 
 	private static is_typed_string_object_parent(
-		maybe:unknown,
-	): maybe is typed_string_object_parent  {
+		maybe: unknown,
+	): maybe is typed_string_object_parent {
 		return (
 			object_has_property_that_equals(maybe, 'type', 'string')
 			&& object_has_property_that_equals(maybe, 'minLength', 1)
@@ -549,7 +565,7 @@ export class ValueToRegexFormatter
 	}
 
 	private static is_typed_string_object_pattern_inner(
-		maybe:unknown,
+		maybe: unknown,
 	): maybe is typed_string_object_pattern_inner {
 		return (
 			object_has_property(

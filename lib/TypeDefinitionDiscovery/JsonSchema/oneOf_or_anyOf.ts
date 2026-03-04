@@ -5,19 +5,19 @@ import ts from 'typescript';
 import {
 	GeneratorDoesDiscovery,
 } from '../GeneratorDoesDiscovery.ts';
-import {
+import type {
 	TypeDefinitionDiscovery,
 } from '../../TypeDefinitionDiscovery.ts';
 
 type RawData = {
 	oneOf: [
 		{[key: string]: unknown},
-		...{[key: string]: unknown}[]
+		...{[key: string]: unknown}[],
 	],
 }|{
 	anyOf: [
 		{[key: string]: unknown},
-		...{[key: string]: unknown}[]
+		...{[key: string]: unknown}[],
 	],
 };
 
@@ -55,7 +55,7 @@ export class oneOf_or_anyOf extends GeneratorDoesDiscovery<
 	RawData,
 	UnionTypeNode
 > {
-	constructor(discovery:TypeDefinitionDiscovery) {
+	constructor(discovery: TypeDefinitionDiscovery) {
 		super(
 			schema,
 			discovery,

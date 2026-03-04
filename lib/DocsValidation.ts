@@ -16,17 +16,17 @@ import {
 import common_schema from '../schema/common.schema.json' with {type: 'json'};
 
 declare type array_tokenizer = {
-	values: unknown[];
-	current_item_buffer: '';
-	current_value_nesting: number;
+	values: unknown[],
+	current_item_buffer: '',
+	current_value_nesting: number,
 };
 
 declare type object_tokenizer = {
-	properties: [string, string | object | unknown[]][];
-	mode: 'key' | 'value';
-	current_key_buffer: string;
-	current_value_buffer: string;
-	current_value_nesting: number;
+	properties: [string, string | object | unknown[]][],
+	mode: 'key' | 'value',
+	current_key_buffer: string,
+	current_value_buffer: string,
+	current_value_nesting: number,
 };
 
 export function string_to_native_type(
@@ -53,11 +53,12 @@ export function string_to_object<T extends {[key: string]: unknown}>(
 		return false;
 	}
 
-	const match =
+	const match = (
 		/^\([^=]+=([^,]+|\([^)]+\))(,[^=]+=(\([^)]+)\)|,[^=]+=[^,]+)*\)$/
 			.test(
 				data,
-			);
+			)
+	);
 
 	if (!match) {
 		return false;
@@ -92,11 +93,12 @@ export function string_to_object<T extends {[key: string]: unknown}>(
 							&& 0 === was.current_value_nesting
 						) {
 							if (/^".+"$/.test(was.current_value_buffer)) {
-								was.current_value_buffer =
+								was.current_value_buffer = (
 									was.current_value_buffer.substring(
 										1,
 										was.current_value_buffer.length - 1,
-									);
+									)
+								);
 							}
 							const coerced_value = shallow
 								? was.current_value_buffer
@@ -133,8 +135,8 @@ export function string_to_object<T extends {[key: string]: unknown}>(
 									/^".+"$/.test(was.current_value_buffer)
 										? was.current_value_buffer.substring(
 											1,
-											// eslint-disable-next-line max-len
-											was.current_value_buffer.length - 1,
+											was.current_value_buffer.length
+											- 1,
 										)
 										: was.current_value_buffer
 								)
@@ -273,10 +275,12 @@ export function configure_ajv(ajv: Ajv) {
 			return (data: string) => data.startsWith(value);
 		},
 		code: (ctx: KeywordCxt) => {
-			const schema:unknown = ctx?.schema;
+			const schema: unknown = ctx?.schema;
 
 			if (!is_string(schema)) {
-				throw new Error(`ctx.schema was not a string, ${typeof schema} found!`);
+				throw new Error(`ctx.schema was not a string, ${
+					typeof schema
+				} found!`);
 			}
 
 			const {data} = ctx;

@@ -38,6 +38,7 @@ try {
 		'Found Classes': result.found_classes.length,
 		'Missing Classes': result.missing_classes.length,
 	});
+
 	/*
 	await writeFile(
 		`${import.meta.dirname}/discover-types.common.perf.json`,

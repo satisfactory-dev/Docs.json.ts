@@ -23,11 +23,9 @@ import type {
 } from 'typescript';
 import ts from 'typescript';
 
-export class Literal
-{
-	async array_literal(from:unknown[]): Promise<ArrayLiteralExpression>
-	{
-		const items:Expression[] = [];
+export class Literal {
+	async array_literal(from: unknown[]): Promise<ArrayLiteralExpression> {
+		const items: Expression[] = [];
 
 		for (const e of from) {
 			items.push(await this.value_literal(e));
@@ -39,9 +37,9 @@ export class Literal
 	}
 
 	async object_literal(
-		from:{[key: string]: unknown},
+		from: {[key: string]: unknown},
 	): Promise<ObjectLiteralExpression> {
-		const properties:PropertyAssignment[] = [];
+		const properties: PropertyAssignment[] = [];
 
 		for (const entry of Object.entries(from)) {
 			try {
@@ -68,7 +66,7 @@ export class Literal
 		);
 	}
 
-	async value_literal(from: unknown) : Promise<
+	async value_literal(from: unknown): Promise<
 		| StringLiteral
 		| TrueLiteral
 		| FalseLiteral
@@ -95,7 +93,9 @@ export class Literal
 			);
 
 			return result;
-		} if (value_is_non_array_object(from)) {
+		}
+
+		if (value_is_non_array_object(from)) {
 			const result = await this.object_literal(from);
 			performance.measure(
 				`${this.constructor.name}.value_literal() object_literal`,

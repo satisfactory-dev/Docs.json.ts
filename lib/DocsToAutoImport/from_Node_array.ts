@@ -110,7 +110,7 @@ export function EntityName_array_from_Node_array(nodes: Node[]): EntityName[] {
 						? [node.type]
 						: []
 				),
-			].filter(e => !!e));
+			].filter((e) => !!e));
 		} else if (ts.isBlock(node)) {
 			sub_nodes.push(...node.statements);
 		} else if (ts.isTypeParameterDeclaration(node)) {
@@ -128,8 +128,10 @@ export function EntityName_array_from_Node_array(nodes: Node[]): EntityName[] {
 					node.expression,
 					node.thenStatement,
 				].filter(
-					(maybe): maybe is Exclude<typeof maybe, undefined> =>
-						!!maybe,
+					(maybe): maybe is Exclude<
+						typeof maybe,
+						undefined
+					> => !!maybe,
 				),
 			);
 		} else if (ts.isVariableStatement(node)) {
@@ -146,8 +148,10 @@ export function EntityName_array_from_Node_array(nodes: Node[]): EntityName[] {
 		} else if (ts.isParameter(node)) {
 			sub_nodes.push(
 				...[node.initializer, node.type].filter(
-					(maybe): maybe is Exclude<typeof maybe, undefined> =>
-						!!maybe,
+					(maybe): maybe is Exclude<
+						typeof maybe,
+						undefined
+					> => !!maybe,
 				),
 			);
 		} else if (ts.isNewExpression(node)) {
@@ -157,8 +161,10 @@ export function EntityName_array_from_Node_array(nodes: Node[]): EntityName[] {
 					node.expression,
 					...(node.typeArguments || []),
 				].filter(
-					(maybe): maybe is Exclude<typeof maybe, undefined> =>
-						!!maybe,
+					(maybe): maybe is Exclude<
+						typeof maybe,
+						undefined
+					> => !!maybe,
 				),
 			);
 		} else if (ts.isPrefixUnaryExpression(node)) {
@@ -191,8 +197,10 @@ export function EntityName_array_from_Node_array(nodes: Node[]): EntityName[] {
 					node.expression,
 					...(node.typeArguments || []),
 				].filter(
-					(maybe): maybe is Exclude<typeof maybe, undefined> =>
-						!!maybe,
+					(maybe): maybe is Exclude<
+						typeof maybe,
+						undefined
+					> => !!maybe,
 				),
 			);
 		} else if (ts.isVariableDeclaration(node)) {
@@ -202,22 +210,28 @@ export function EntityName_array_from_Node_array(nodes: Node[]): EntityName[] {
 					node.type,
 					node.initializer,
 				].filter(
-					(maybe): maybe is Exclude<typeof maybe, undefined> =>
-						!!maybe,
+					(maybe): maybe is Exclude<
+						typeof maybe,
+						undefined
+					> => !!maybe,
 				),
 			);
 		} else if (ts.isTypeQueryNode(node)) {
 			sub_nodes.push(
 				...[...(node.typeArguments || []), node.exprName].filter(
-					(maybe): maybe is Exclude<typeof maybe, undefined> =>
-						!!maybe,
+					(maybe): maybe is Exclude<
+						typeof maybe,
+						undefined
+					> => !!maybe,
 				),
 			);
 		} else if (ts.isBindingElement(node)) {
 			sub_nodes.push(
 				...[node.initializer].filter(
-					(maybe): maybe is Exclude<typeof maybe, undefined> =>
-						!!maybe,
+					(maybe): maybe is Exclude<
+						typeof maybe,
+						undefined
+					> => !!maybe,
 				),
 			);
 		} else if (ts.isPropertyAccessExpression(node)) {
@@ -237,8 +251,10 @@ export function EntityName_array_from_Node_array(nodes: Node[]): EntityName[] {
 					node.type,
 					node.typeParameter,
 				].filter(
-					(maybe): maybe is Exclude<typeof maybe, undefined> =>
-						!!maybe,
+					(maybe): maybe is Exclude<
+						typeof maybe,
+						undefined
+					> => !!maybe,
 				),
 			);
 		} else if (ts.isTemplateLiteralTypeSpan(node)) {

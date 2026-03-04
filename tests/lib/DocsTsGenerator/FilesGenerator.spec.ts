@@ -32,9 +32,8 @@ import type {
 void describe('FilesGenerator', async () => {
 	const type_definition_writer = new TypeDefinitionWriter(docs, 'update8');
 	const discovery = await type_definition_writer.discovery;
-	const instance = new class Testable extends FilesGenerator{
-		constructor()
-		{
+	const instance = new class Testable extends FilesGenerator {
+		constructor() {
 			super(
 				[],
 				discovery,
@@ -42,29 +41,27 @@ void describe('FilesGenerator', async () => {
 			);
 		}
 
-		public generate_file(entry:DocsDataItem)
-		{
+		public generate_file(entry: DocsDataItem) {
 			return super.generate_file(entry);
 		}
 
-		public generate_files_class_name(value:string)
-		{
+		public generate_files_class_name(value: string) {
 			return super.generate_files_class_name(value);
 		}
 
 		public generate_files_entry_yield(
-			entry_type:TypeNode,
-			entry_class_name:string,
+			entry_type: TypeNode,
+			entry_class_name: string,
 		) {
 			return super.generate_files_entry_yield(
 				entry_type,
 				entry_class_name,
 			);
 		}
-	};
+	}();
 
 	void describe('generate_file', () => {
-		void it('falls over as expected', async() => {
+		void it('falls over as expected', async () => {
 			const promise = instance.generate_file({
 				NativeClass: 'foo',
 				Classes: [],
@@ -79,17 +76,17 @@ void describe('FilesGenerator', async () => {
 				},
 				message: 'Could not find matching validator!',
 			});
-		})
-	})
+		});
+	});
 
 	void describe('generate_files_class_name', () => {
 		void it('behaves', () => {
 			assert.equal(
 				instance.generate_files_class_name('foo\'bar\''),
 				'bar',
-			)
-		})
-	})
+			);
+		});
+	});
 
 	void describe('generate_files_entry_yield', () => {
 		void it('behaves', () => {
@@ -115,6 +112,6 @@ void describe('FilesGenerator', async () => {
 			);
 			assert.equal(result.node.typeParameters, undefined);
 			assert.equal(result.node.type, entry_type);
-		})
-	})
-})
+		});
+	});
+});

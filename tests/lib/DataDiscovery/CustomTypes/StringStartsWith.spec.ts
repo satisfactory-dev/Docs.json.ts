@@ -32,10 +32,10 @@ void describe('StringStartsWithConverter', () => {
 
 			await assert.doesNotReject(promise);
 			assert.equal(await promise, true);
-		})
+		});
 
 		void it('resolves false', async () => {
-			const promises_args:[SchemaObject, unknown][] = [
+			const promises_args: [SchemaObject, unknown][] = [
 				[
 					{
 						type: 'string',
@@ -67,11 +67,11 @@ void describe('StringStartsWithConverter', () => {
 				await assert.doesNotReject(promise);
 				assert.equal(await promise, false);
 			}
-		})
-	})
+		});
+	});
 
 	void describe('convert', () => {
-		void it('behaves', async() => {
+		void it('behaves', async () => {
 			const promise = instance.convert(
 				{
 					type: 'string',
@@ -102,6 +102,6 @@ void describe('StringStartsWithConverter', () => {
 				expression.type.typeArguments[0].literal.text,
 				'foo',
 			);
-		})
-	})
-})
+		});
+	});
+});

@@ -22,7 +22,7 @@ import {
 import type {
 	SchemaObject,
 } from 'ajv/dist/2020.js';
-import {
+import type {
 	DataDiscovery,
 } from '../../DataDiscovery.ts';
 import {
@@ -53,9 +53,11 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 	string,
 	ArrayLiteralExpression|ObjectLiteralExpression
 > {
-	private readonly $defs:{[key: string]: SchemaObject};
-	private readonly discovery:DataDiscovery;
-	private readonly regex_schema_cache:{
+	private readonly $defs: {[key: string]: SchemaObject};
+
+	private readonly discovery: DataDiscovery;
+
+	private readonly regex_schema_cache: {
 		[key: string]: [
 			RegExp,
 			SchemaObject,
@@ -63,8 +65,8 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 	} = {};
 
 	constructor(
-		discovery:DataDiscovery,
-		$defs:{[key: string]: SchemaObject},
+		discovery: DataDiscovery,
+		$defs: {[key: string]: SchemaObject},
 		common_$defs: {[key: string]: SchemaObject},
 	) {
 		const local_refs = Object.keys($defs).map(local_ref);
@@ -157,7 +159,7 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 					),
 				},
 				'Cannot convert!',
-			)
+			);
 		} else if (
 			typed_string.is_object_type(schema.typed_string)
 			|| typed_string.is_object_pattern_type(schema.typed_string)
@@ -286,7 +288,7 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 	private async convert_array(
 		schema: typed_string_inner_array_type,
 		shallow: unknown[],
-	) : Promise<ExpressionResult<ArrayLiteralExpression>> {
+	): Promise<ExpressionResult<ArrayLiteralExpression>> {
 		performance.mark(`${this.constructor.name}.convert_array() start`);
 		this.check_shallow_array_schema_assert(schema, shallow);
 
@@ -295,7 +297,7 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 			schema.items,
 		);
 
-		const items:ExpressionResult[] = [];
+		const items: ExpressionResult[] = [];
 
 		for (const e of shallow) {
 			items.push(await converter.convert(schema.items, e));
@@ -320,12 +322,12 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 			| typed_string_inner_object_type_no_required
 			| typed_string_inner_object_type
 			| typed_string_inner_object_pattern_type,
-		shallow:{[key: string]: unknown},
-	) : Promise<ExpressionResult<ObjectLiteralExpression>> {
+		shallow: {[key: string]: unknown},
+	): Promise<ExpressionResult<ObjectLiteralExpression>> {
 		performance.mark(`${this.constructor.name}.convert_object() start`);
 		this.convert_object_check_shallow_parse(schema, shallow);
 
-		const converted_entries:[string, ExpressionResult][] = [];
+		const converted_entries: [string, ExpressionResult][] = [];
 
 		for (const entry of Object.entries(shallow)) {
 			const [property, value] = entry;
@@ -354,7 +356,9 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 		);
 
 		try {
-			performance.mark(`${this.constructor.name}.convert_object() start`);
+			performance.mark(`${
+				this.constructor.name
+			}.convert_object() start`);
 
 			const result = new ExpressionResult(
 				await this.discovery.literal.object_literal(converted),
@@ -382,7 +386,7 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 			| typed_string_inner_object_type_no_required
 			| typed_string_inner_object_type
 			| typed_string_inner_object_pattern_type,
-		shallow:{[key: string]: unknown},
+		shallow: {[key: string]: unknown},
 	) {
 		performance.mark(
 			`${
@@ -429,7 +433,7 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 			| typed_string_inner_object_type
 			| typed_string_inner_object_pattern_type,
 		property: string,
-	) : SchemaObject {
+	): SchemaObject {
 		performance.mark(
 			`${
 				this.constructor.name
@@ -472,7 +476,7 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 			this.regex_schema_cache[json_string] = Object.entries(
 				schema.patternProperties,
 			).map(
-				(e) : [RegExp, {[key: string]: unknown}] => {
+				(e): [RegExp, {[key: string]: unknown}] => {
 					return [
 						new RegExp(e[0]),
 						e[1],
@@ -492,7 +496,7 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 		const property_regex_schema = this.regex_schema_cache[
 			json_string
 		].find(
-			maybe => maybe[0].test(property),
+			(maybe) => maybe[0].test(property),
 		);
 
 		if (!property_regex_schema) {
@@ -529,8 +533,10 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 		schema: typed_string_inner_array_prefixItems_type,
 		shallow: unknown[],
 	): Promise<ExpressionResult<ArrayLiteralExpression>> {
-		performance.mark(`${this.constructor.name}.convert_prefixItems() start`);
-		const slightly_less_than_shallow:unknown[][] = [];
+		performance.mark(`${
+			this.constructor.name
+		}.convert_prefixItems() start`);
+		const slightly_less_than_shallow: unknown[][] = [];
 
 		for (const entry of shallow) {
 			if (!is_string(entry)) {
@@ -560,7 +566,7 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 			slightly_less_than_shallow.push(inner_shallow);
 		}
 
-		const converted:ExpressionResult<ArrayLiteralExpression>[] = [];
+		const converted: ExpressionResult<ArrayLiteralExpression>[] = [];
 
 		for (const e of slightly_less_than_shallow) {
 			if (e.length !== schema.prefixItems.length) {
@@ -569,11 +575,13 @@ export class TypedStringConverter extends ConverterMatchesSchema<
 						e,
 						schema,
 					},
-					`Expected an array of length ${schema.prefixItems.length}, received ${e.length}`,
+					`Expected an array of length ${
+						schema.prefixItems.length
+					}, received ${e.length}`,
 				);
 			}
 
-			const items:ExpressionResult[] = [];
+			const items: ExpressionResult[] = [];
 			let index = 0;
 
 			for (const entry of e) {

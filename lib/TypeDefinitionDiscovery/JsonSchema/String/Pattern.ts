@@ -1,4 +1,4 @@
-import Ajv from 'ajv/dist/2020.js';
+import type Ajv from 'ajv/dist/2020.js';
 import type {
 	TypeReferenceNode,
 } from 'typescript';
@@ -14,7 +14,7 @@ export class Pattern extends Generator<
 	{type: 'string', pattern: string},
 	TypeReferenceNode
 > {
-	constructor(ajv:Ajv) {
+	constructor(ajv: Ajv) {
 		super(ajv, {
 			type: 'object',
 			required: ['type', 'pattern'],
@@ -27,15 +27,15 @@ export class Pattern extends Generator<
 	}
 
 	generate(): (
-		raw_data:{type: 'string', pattern: string}
+		raw_data: {type: 'string', pattern: string},
 	) => TypeReferenceNode {
 		return (
-			raw_data:{type: 'string', pattern: string},
+			raw_data: {type: 'string', pattern: string},
 		) => {
 			return type_reference_node(
 				'StringPassedRegExp',
 				create_literal(raw_data.pattern),
-			)
+			);
 		};
 	}
 }

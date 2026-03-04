@@ -14,7 +14,7 @@ import {
 
 void describe('remap', () => {
 	void it('behaves', () => {
-		const foo:progress_group = {
+		const foo: progress_group = {
 			members: ['foobar', 'bar_foo'],
 			subgroups: {
 				foo: {
@@ -44,12 +44,12 @@ void describe('remap', () => {
 				},
 			},
 		);
-	})
-})
+	});
+});
 
 void describe('reduce', () => {
 	void it('behaves', () => {
-		const foo:progress_group = {
+		const foo: progress_group = {
 			members: ['foobar', 'bar_foo'],
 			subgroups: {
 				foo: {
@@ -86,7 +86,7 @@ void describe('reduce', () => {
 				},
 			],
 		);
-		const bar:progress_group = {
+		const bar: progress_group = {
 			members: ['foobar', 'bar_foo'],
 			subgroups: {
 				foo: {
@@ -126,7 +126,7 @@ void describe('reduce', () => {
 			],
 		);
 	});
-})
+});
 
 void describe('remove_indentation', () => {
 	void it('will remove indentation', () => {
@@ -137,8 +137,9 @@ void describe('remove_indentation', () => {
 			),
 			'foo\nbar',
 		);
-	})
+	});
+
 	void it('will not need to bother', () => {
 		assert.equal(remove_indentation('foo'), 'foo');
-	})
+	});
 });

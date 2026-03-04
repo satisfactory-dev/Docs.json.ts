@@ -32,22 +32,24 @@ import {
 	typed_string_pattern_general_schema_self_testing,
 } from './TypedStringPattern.ts';
 
-type typed_string_sub_types =
+type typed_string_sub_types = (
 	| {
 		$ref: local_ref<string>,
 	}
 	| const_schema_type
 	| enum_schema_type
-	| UnrealEngineString_parent_type;
+	| UnrealEngineString_parent_type
+);
 
-type typed_string_object_type =
+type typed_string_object_type = (
 	| typed_string_sub_types
-	| typed_string_parent_type;
+	| typed_string_parent_type
+);
 
 export type typed_string_inner_object_type = (
 	& typed_string_inner_object_type_no_required
 	& {
-	required: [string, ...string[]],
+		required: [string, ...string[]],
 	}
 );
 
@@ -55,7 +57,7 @@ export type typed_string_inner_object_type_no_required = {
 	properties: {
 		[key: string]: (
 			| typed_string_object_type
-		)
+		),
 	},
 };
 
@@ -64,26 +66,28 @@ export type typed_string_inner_object_pattern_type = {
 	patternProperties: {
 		[key: string]: (
 			| typed_string_object_type
-		)
+		),
 	},
 };
 
-type typed_string_inner_array_items_type =
+type typed_string_inner_array_items_type = (
 	| typed_string_sub_types
-	| typed_string_parent_type;
+	| typed_string_parent_type
+);
 
 export type typed_string_inner_array_type = {
 	minItems: number,
 	maxItems?: number,
-	items:
+	items: (
 		| typed_string_inner_array_items_type
 		| {
 			oneOf: [
 				typed_string_inner_array_items_type,
-				...typed_string_inner_array_items_type[]
+				...typed_string_inner_array_items_type[],
 			],
 		}
 		| typed_string_inner_array_prefixItems_type
+	),
 };
 
 export type typed_string_inner_array_prefixItems_type = {
@@ -93,12 +97,13 @@ export type typed_string_inner_array_prefixItems_type = {
 	prefixItems: [typed_string_sub_types, ...typed_string_sub_types[]],
 };
 
-type typed_string_inner_type =
+type typed_string_inner_type = (
 	| typed_string_inner_object_type_no_required
 	| typed_string_inner_object_type
 	| typed_string_inner_object_pattern_type
 	| typed_string_inner_array_type
-	| typed_string_inner_array_prefixItems_type;
+	| typed_string_inner_array_prefixItems_type
+);
 
 export type typed_string_parent_type = {
 	type: 'string',
@@ -107,8 +112,8 @@ export type typed_string_parent_type = {
 };
 
 const property_regex = '^[A-Za-z][A-Za-z0-9_\\[\\]]*$';
-export const pattern_properties_regex =
-	'^\\^\\([A-za-z]+(\\|[A-za-z]+)*\\)\\$$';
+// eslint-disable-next-line @stylistic/max-len
+export const pattern_properties_regex = '^\\^\\([A-za-z]+(\\|[A-za-z]+)*\\)\\$$';
 
 export const pattern_properties_schema = {
 	type: 'object',
@@ -138,7 +143,7 @@ export function generate_object_parent_schema() {
 }
 
 export function generate_typed_string_$defs(
-	$defs:local_ref<string>[],
+	$defs: local_ref<string>[],
 	common_$defs: common_ref<string>[],
 ) {
 	return {
@@ -164,6 +169,7 @@ export function generate_typed_string_$defs(
 				typed_string_enum_schema,
 				typed_string_pattern_general_schema_self_testing,
 				{$ref: '#/$defs/typed_string_parent_type'},
+
 				/*
 				{
 					type: 'object',
@@ -233,11 +239,11 @@ export function generate_typed_string_$defs(
 			properties: {
 				minItems: {
 					type: 'number',
-					'minimum': 0,
+					minimum: 0,
 				},
 				maxItems: {
 					type: 'number',
-					'minimum': 1,
+					minimum: 1,
 				},
 				items: {
 					oneOf: [
@@ -274,11 +280,11 @@ export function generate_typed_string_$defs(
 				items: {type: 'boolean', const: false},
 				minItems: {
 					type: 'number',
-					'minimum': 0,
+					minimum: 0,
 				},
 				maxItems: {
 					type: 'number',
-					'minimum': 1,
+					minimum: 1,
 				},
 				prefixItems: {
 					type: 'array',
@@ -290,18 +296,18 @@ export function generate_typed_string_$defs(
 	};
 }
 
-export class TypedString
-{
-	private already_configured:WeakSet<Ajv> = new WeakSet<Ajv>();
-	private static _instance?:TypedString;
+export class TypedString {
+	private already_configured: WeakSet<Ajv> = new WeakSet<Ajv>();
+
+	private static _instance?: TypedString;
 
 	protected constructor() {
 	}
 
 	configure_ajv(
-		$defs:{[key: string]: SchemaObject},
+		$defs: {[key: string]: SchemaObject},
 		common_$defs: {[key: string]: SchemaObject},
-		ajv:Ajv,
+		ajv: Ajv,
 	) {
 		if (this.already_configured.has(ajv)) {
 			return;
@@ -337,14 +343,13 @@ export class TypedString
 			keyword: 'typed_string',
 			type: 'string',
 			metaSchema: meta_schema,
-			macro: (schema:typed_string_inner_type) : {pattern: string} => {
+			macro: (schema: typed_string_inner_type): {pattern: string} => {
 				return formatter.pattern_from_value(schema);
 			},
 		});
 	}
 
-	static instance(): TypedString
-	{
+	static instance(): TypedString {
 		if (!this._instance) {
 			this._instance = new this();
 		}

@@ -6,7 +6,7 @@ import assert from 'node:assert/strict';
 
 import {
 	typed_string,
-// eslint-disable-next-line max-len
+// eslint-disable-next-line @stylistic/max-len
 } from '../../../../lib/TypeDefinitionDiscovery/CustomParsingTypes/typed_string.ts';
 import {
 	TypeDefinitionWriter,
@@ -26,7 +26,7 @@ import {
 	not_undefined,
 } from '@satisfactory-dev/custom-assert';
 
-// eslint-disable-next-line max-len
+// eslint-disable-next-line @stylistic/max-len
 import common_schema from '../../../../schema/common.schema.json' with {type: 'json'};
 import {
 	common_ref,
@@ -47,7 +47,7 @@ void describe('typed_string', async () => {
 		discovery,
 	);
 
-	const static_schema_checks:[
+	const static_schema_checks: [
 		(
 			| typed_string_inner_object_type
 			| typed_string_inner_object_pattern_type
@@ -111,8 +111,8 @@ void describe('typed_string', async () => {
 					expectation,
 				);
 			}
-		})
-	})
+		});
+	});
 
 	void describe('is_object_pattern_type', () => {
 		void it('behaves', () => {
@@ -124,8 +124,8 @@ void describe('typed_string', async () => {
 					expectation,
 				);
 			}
-		})
-	})
+		});
+	});
 
 	void describe('is_object_type', () => {
 		void it('behaves', () => {
@@ -137,8 +137,8 @@ void describe('typed_string', async () => {
 					expectation,
 				);
 			}
-		})
-	})
+		});
+	});
 
 	void describe('is_prefixItems_type', () => {
 		void it('behaves', () => {
@@ -150,11 +150,11 @@ void describe('typed_string', async () => {
 					expectation,
 				);
 			}
-		})
-	})
+		});
+	});
 
 	void describe('generate', () => {
-		void it ('behaves with found array type', () => {
+		void it('behaves with found array type', () => {
 			const result = instance.generate()({
 				type: 'string',
 				minLength: 1,
@@ -179,7 +179,7 @@ void describe('typed_string', async () => {
 			ts_assert.isStringLiteral(
 				result.elements[1].type.elementType.literal,
 			);
-		})
+		});
 		void it('behaves with known array type', () => {
 			const result = instance.generate()({
 				type: 'string',
@@ -197,7 +197,7 @@ void describe('typed_string', async () => {
 			ts_assert.isTupleTypeNode(result);
 			array_has_size(result.elements, 2);
 			ts_assert.isTypeReferenceNode(result.elements[0]);
-		})
+		});
 		void it('behaves with prefixItems type', () => {
 			const result = instance.generate()({
 				type: 'string',
@@ -216,7 +216,7 @@ void describe('typed_string', async () => {
 			array_has_size(result.elements, 2);
 			ts_assert.isTupleTypeNode(result.elements[0]);
 			array_has_size(result.elements[0].elements, 1);
-			ts_assert.isLiteralTypeNode(result.elements[0].elements[0])
+			ts_assert.isLiteralTypeNode(result.elements[0].elements[0]);
 			ts_assert.isStringLiteral(result.elements[0].elements[0].literal);
 			assert.equal(
 				result.elements[0].elements[0].literal.text,
@@ -228,7 +228,7 @@ void describe('typed_string', async () => {
 			array_has_size(result.elements[1].type.elementType.elements, 1);
 			ts_assert.isLiteralTypeNode(
 				result.elements[1].type.elementType.elements[0],
-			)
+			);
 			ts_assert.isStringLiteral(
 				result.elements[1].type.elementType.elements[0].literal,
 			);
@@ -236,7 +236,8 @@ void describe('typed_string', async () => {
 				result.elements[1].type.elementType.elements[0].literal.text,
 				'foo',
 			);
-		})
+		});
+
 		/**
 		 * @todo whenever I have the patience, do a full-depth assertion
 		 */
@@ -257,7 +258,7 @@ void describe('typed_string', async () => {
 			ts_assert.isTypeLiteralNode(result.types[0]);
 			ts_assert.isTypeLiteralNode(result.types[1]);
 			ts_assert.isTypeLiteralNode(result.types[2]);
-		})
+		});
 
 		void it('behaves with object standard found type', () => {
 			const result = instance.generate()({
@@ -279,7 +280,7 @@ void describe('typed_string', async () => {
 			ts_assert.isLiteralTypeNode(result.members[0].type);
 			ts_assert.isStringLiteral(result.members[0].type.literal);
 			assert.equal(result.members[0].type.literal.text, 'bar');
-		})
+		});
 
 		void it('behaves with object standard known type', () => {
 			const result = instance.generate()({
@@ -303,6 +304,6 @@ void describe('typed_string', async () => {
 			ts_assert.isExpectedIdentifier(result.members[0].name, 'foo');
 			not_undefined(result.members[0].type);
 			ts_assert.isTypeReferenceNode(result.members[0].type);
-		})
-	})
-})
+		});
+	});
+});

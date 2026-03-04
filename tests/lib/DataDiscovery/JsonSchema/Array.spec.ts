@@ -40,6 +40,6 @@ void describe('ArrayConverter.can_convert_schema_and_raw_data()', () => {
 				[''],
 			),
 			true,
-		)
+		);
 	});
 });

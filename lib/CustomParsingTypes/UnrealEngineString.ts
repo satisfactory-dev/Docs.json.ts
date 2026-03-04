@@ -1,4 +1,4 @@
-import Ajv from 'ajv/dist/2020.js';
+import type Ajv from 'ajv/dist/2020.js';
 import type {
 	StringLiteral,
 	TypeNode,
@@ -40,55 +40,58 @@ import type {
 } from '../FilesGenerator.ts';
 
 export const UnrealEngineString_regex = /^([^']+)'(?:"([^"]+)"|([^"]+))'$/;
-// eslint-disable-next-line max-len
+// eslint-disable-next-line @stylistic/max-len
 export const UnrealEngineString_regex_quoted = /^"([^']+)'(?:"([^"]+)"|([^"]+))'"$/;
 
-export const UnrealEngineString_general_regex =
-	`/(?:[A-Z3-][A-Za-z0-9_-]+/)+(?:_?[A-Z][A-Za-z_0-9-]+\\.[A-Z][A-Za-z_0-9-]+(?:_C)?(?::[A-Z][A-Za-z0-9_]+)?|[A-Z0-9][A-Za-z_]+\\.[A-Z0-9][A-Za-z_]+)`;
+// eslint-disable-next-line @stylistic/max-len
+export const UnrealEngineString_general_regex = `/(?:[A-Z3-][A-Za-z0-9_-]+/)+(?:_?[A-Z][A-Za-z_0-9-]+\\.[A-Z][A-Za-z_0-9-]+(?:_C)?(?::[A-Z][A-Za-z0-9_]+)?|[A-Z0-9][A-Za-z_]+\\.[A-Z0-9][A-Za-z_]+)`;
 
-export type UnrealEngineString_string_or_string_array =
+export type UnrealEngineString_string_or_string_array = (
 	| string
-	| [string, ...string[]];
+	| [string, ...string[]]
+);
 
 export function string_or_string_array_to_node(
 	value:
 		| string
 		| [string, ...string[]],
-) : typeof value extends string
+): typeof value extends string
 	? (ts.LiteralTypeNode & {literal: StringLiteral})
 	: UnionTypeNode {
 	if (is_string(value)) {
 		return create_literal(value);
 	}
 
-	return ts.factory.createUnionTypeNode(value.map(e => create_literal(e)));
+	return ts.factory.createUnionTypeNode(value.map((e) => create_literal(e)));
 }
 
-export type UnrealEngineString_right =
+export type UnrealEngineString_right = (
 	| UnrealEngineString_string_or_string_array
-	| {starts_with: UnrealEngineString_string_or_string_array};
+	| {starts_with: UnrealEngineString_string_or_string_array}
+);
 
-export type UnrealEngineString_type =
+export type UnrealEngineString_type = (
 	| {
-			left: UnrealEngineString_string_or_string_array;
-			right: UnrealEngineString_right;
-			quote_mode?: typeof UnrealEngineString['quote_mode'],
+		left: UnrealEngineString_string_or_string_array,
+		right: UnrealEngineString_right,
+		quote_mode?: typeof UnrealEngineString['quote_mode'],
 	}
 	| {
-			left: UnrealEngineString_string_or_string_array;
-			quote_mode?: typeof UnrealEngineString['quote_mode'],
+		left: UnrealEngineString_string_or_string_array,
+		quote_mode?: typeof UnrealEngineString['quote_mode'],
 	}
 	| {
-			right: UnrealEngineString_right;
-			quote_mode?: typeof UnrealEngineString['quote_mode'],
+		right: UnrealEngineString_right,
+		quote_mode?: typeof UnrealEngineString['quote_mode'],
 	}
 	| typeof UnrealEngineString['quote_mode']
-	| true;
+	| true
+);
 
 export type UnrealEngineString_parent_type = {
-	type: 'string';
-	minLength: 1;
-	UnrealEngineString: UnrealEngineString_type;
+	type: 'string',
+	minLength: 1,
+	UnrealEngineString: UnrealEngineString_type,
 };
 
 export function is_UnrealEngineString_parent(
@@ -124,7 +127,9 @@ export function is_UnrealEngineString_parent(
 export const UnrealEngineString_schema_definitions = {
 	UnrealEngineString_left_string: {
 		type: 'string',
-		pattern: `^(/Script/[A-Z][A-Za-z]+.[A-Z][A-Za-z]+(?:2D)?|${UnrealEngineString_general_regex})$`,
+		pattern: `^(/Script/[A-Z][A-Za-z]+.[A-Z][A-Za-z]+(?:2D)?|${
+			UnrealEngineString_general_regex
+		})$`,
 	},
 	UnrealEngineString_right_string: {
 		type: 'string',
@@ -147,6 +152,7 @@ export const UnrealEngineString_schema_definitions = {
 	UnrealEngineString_right_starts_with: {
 		type: 'string',
 		pattern:
+			// eslint-disable-next-line @stylistic/max-len
 			`^/(?:_?[A-Z][A-Za-z_\\-.]+/)+(?:[A-Z][A-Za-z_\\-.]+/|[A-Z][A-Za-z_\\-.]+\\.[A-Z][A-Za-z_\\-]+)$`,
 	},
 	UnrealEngineString_right: {oneOf: [
@@ -260,25 +266,26 @@ export const UnrealEngineString_parent_schema = {
 export const UnrealEngineString_left_default = [
 	'/Script/Engine.BlueprintGeneratedClass',
 ];
-const right_value_starts_with_suffix =
-	// eslint-disable-next-line max-len
-	'(?:_?[A-Z0-9][A-Za-z0-9_.]+/)*[A-Z0-9][A-Za-z_.0-9-]+(?::[A-Z0-9][A-Za-z0-9]+)?';
+
+// eslint-disable-next-line @stylistic/max-len
+const right_value_starts_with_suffix = '(?:_?[A-Z0-9][A-Za-z0-9_.]+/)*[A-Z0-9][A-Za-z_.0-9-]+(?::[A-Z0-9][A-Za-z0-9]+)?';
 
 export class UnrealEngineString {
-	private static already_configured:WeakSet<Ajv> = new WeakSet<Ajv>();
+	private static already_configured: WeakSet<Ajv> = new WeakSet<Ajv>();
 
-	// eslint-disable-next-line max-len
-	static quote_mode:'both'|'original'|'new'|'double_escaped'|'double' = 'both';
+	// eslint-disable-next-line @stylistic/max-len
+	static quote_mode: 'both'|'original'|'new'|'double_escaped'|'double' = 'both';
 
 	static ajv_macro_generator(inner: boolean) {
 		return (data_from_schema: UnrealEngineString_type) => {
 			const data:
 				| Exclude<typeof data_from_schema, true>
-				| empty_object =
-				(
+				| empty_object = (
 					true === data_from_schema
 					|| is_string(data_from_schema)
-				) ? {} : data_from_schema;
+				)
+					? {}
+					: data_from_schema;
 
 			const left_value = (
 				'left' in data
@@ -287,31 +294,45 @@ export class UnrealEngineString {
 						: [data.left]
 					: UnrealEngineString_left_default
 			).join('|');
-			const right_value =
+			const right_value = (
 				'right' in data
 					? `(?:${(data.right instanceof Array
 						? data.right
 						: [
 							is_string(data.right)
 								? data.right
-								: `(?:${(data.right
-									.starts_with instanceof Array
-									? data.right.starts_with
-									: [data.right.starts_with]
-											)
-									.map(
+								: `(?:${
+									(
+										data.right.starts_with instanceof Array
+											? data.right.starts_with
+											: [data.right.starts_with]
+									).map(
 										(starts_with) => `${
 											starts_with
 										}${
 											right_value_starts_with_suffix
 										}`,
-									)
-									.join('|')})`,
+									).join('|')})`,
 						]
-						).join('|')})`
-					: UnrealEngineString_general_regex;
+					).join('|')})`
+					: UnrealEngineString_general_regex
+			);
 
-			let regex = `(?:(?:${left_value})'(?:${right_value}|"${right_value}")'|"(?:${left_value})'${right_value}'"|\\\\"(?:${left_value})'${right_value}'\\\\")`;
+			let regex = `(?:(?:${
+				left_value
+			})'(?:${
+				right_value
+			}|"${
+				right_value
+			}")'|"(?:${
+				left_value
+			})'${
+				right_value
+			}'"|\\\\"(?:${
+				left_value
+			})'${
+				right_value
+			}'\\\\")`;
 
 			let quote_mode = this.quote_mode;
 
@@ -322,9 +343,23 @@ export class UnrealEngineString {
 			}
 
 			if ('original' === quote_mode) {
-				regex = `(?:(?:${left_value})'(?:${right_value}|"${right_value}")')`;
+				regex = `(?:(?:${
+					left_value
+				})'(?:${
+					right_value
+				}|"${
+					right_value
+				}")')`;
 			} else if ('new' === quote_mode) {
-				regex = `(?:"(?:${left_value})'${right_value}'"|\\\\"(?:${left_value})'${right_value}'\\\\")`;
+				regex = `(?:"(?:${
+					left_value
+				})'${
+					right_value
+				}'"|\\\\"(?:${
+					left_value
+				})'${
+					right_value
+				}'\\\\")`;
 			} else if ('double_escaped' === quote_mode) {
 				regex = `(?:\\\\"(?:${left_value})'${right_value}'\\\\")`;
 			} else if ('double' === quote_mode) {
@@ -355,7 +390,7 @@ export class UnrealEngineString {
 		});
 	}
 
-	static CustomGenerators() : [entry, ...entry[]] {
+	static CustomGenerators(): [entry, ...entry[]] {
 		const UnrealEngineString_class = createClass(
 			'UnrealEngineString',
 			[
@@ -434,7 +469,7 @@ export class UnrealEngineString {
 									[ts.factory.createStringLiteral('"')],
 								),
 							),
-							// eslint-disable-next-line max-len
+							// eslint-disable-next-line @stylistic/max-len
 							ts.factory.createExpressionStatement(ts.factory.createBinaryExpression(
 								ts.factory.createIdentifier('value'),
 								ts.SyntaxKind.EqualsToken,
@@ -447,8 +482,12 @@ export class UnrealEngineString {
 									[
 										ts.factory.createNumericLiteral(1),
 										ts.factory.createBinaryExpression(
-											// eslint-disable-next-line max-len
-											create_property_access(ts.factory.createIdentifier('value'), 'length'),
+											create_property_access(
+												ts.factory.createIdentifier(
+													'value',
+												),
+												'length',
+											),
 											ts.SyntaxKind.MinusToken,
 											ts.factory.createNumericLiteral(1),
 										),
@@ -547,6 +586,7 @@ export class UnrealEngineString {
 				),
 			],
 		);
+
 		return [
 			{
 				file: 'utils/validators.ts',
@@ -574,8 +614,10 @@ type empty_object = Record<never, never>;
 export function UnrealEngineString_reference_type(
 	data_from_schema: UnrealEngineString_type,
 ): TypeReferenceNode {
-	const data: Exclude<typeof data_from_schema, true> | empty_object =
-		true === data_from_schema ? {} : data_from_schema;
+	const data: (
+		| Exclude<typeof data_from_schema, true>
+		| empty_object
+	) = true === data_from_schema ? {} : data_from_schema;
 
 	let left_value: TypeNode = create_literal(
 		UnrealEngineString_left_default[0],
@@ -586,7 +628,7 @@ export function UnrealEngineString_reference_type(
 
 	if ('object' === typeof data && 'left' in data) {
 		const {left} = data as {
-			left: UnrealEngineString_string_or_string_array;
+			left: UnrealEngineString_string_or_string_array,
 		};
 
 		const left_options = [
@@ -630,10 +672,9 @@ export function UnrealEngineString_reference_type(
 			];
 
 			if (right_options.length >= 1) {
-				right_value =
-					1 === right_options.length
-						? create_literal(right_options[0])
-						: possibly_create_lazy_union(right_options);
+				right_value = 1 === right_options.length
+					? create_literal(right_options[0])
+					: possibly_create_lazy_union(right_options);
 			}
 		}
 
@@ -671,13 +712,17 @@ function is_UnrealEngineString_object(
 	const keys = Object.keys(maybe);
 
 	const has_left = 'left' in maybe && is_string_or_string_array(maybe.left);
-	const has_right =
+	const has_right = (
 		object_has_property(maybe, 'right')
 		&& (value_is_non_array_object(maybe.right)
-			? 'starts_with' in maybe.right
+			? (
+				'starts_with' in maybe.right
 				&& 1 === Object.keys(maybe.right).length
 				&& is_string_or_string_array(maybe.right.starts_with)
-			: is_string_or_string_array(maybe.right));
+			)
+			: is_string_or_string_array(maybe.right))
+	);
+
 	const has_quote_mode = (
 		'quote_mode' in maybe
 		&& is_string(maybe.quote_mode)

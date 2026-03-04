@@ -5,14 +5,14 @@ import ts from 'typescript';
 import {
 	GeneratorDoesDiscovery,
 } from '../GeneratorDoesDiscovery.ts';
-import {
+import type {
 	TypeDefinitionDiscovery,
 } from '../../TypeDefinitionDiscovery.ts';
 
 type RawData = {
 	allOf: [
 		{[key: string]: unknown},
-		...{[key: string]: unknown}[]
+		...{[key: string]: unknown}[],
 	],
 };
 
@@ -34,7 +34,7 @@ export class allOf extends GeneratorDoesDiscovery<
 	RawData,
 	IntersectionTypeNode
 > {
-	constructor(discovery:TypeDefinitionDiscovery) {
+	constructor(discovery: TypeDefinitionDiscovery) {
 		super(
 			schema,
 			discovery,

@@ -7,8 +7,7 @@ import {
 	value_is_non_array_object,
 } from '@satisfactory-dev/predicates.ts';
 
-export class properties extends CandidatesDiscovery
-{
+export class properties extends CandidatesDiscovery {
 	discovery_candidates(
 		current: unknown,
 	): [unknown, ...unknown[]] | undefined {

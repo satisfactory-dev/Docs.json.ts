@@ -22,7 +22,7 @@ import {
 	is_string,
 } from '@satisfactory-dev/predicates.ts';
 
-// eslint-disable-next-line max-len
+// eslint-disable-next-line @stylistic/max-len
 import common_schema from '../../../../schema/common.schema.json' with {type: 'json'};
 
 void describe('TypedStringConverter', async () => {
@@ -32,7 +32,7 @@ void describe('TypedStringConverter', async () => {
 		(await docs.schema('update8')).$defs,
 		common_schema.$defs,
 	);
-	const object_schema:typed_string_parent_type = {
+	const object_schema: typed_string_parent_type = {
 		type: 'string',
 		minLength: 1,
 		typed_string: {
@@ -42,7 +42,7 @@ void describe('TypedStringConverter', async () => {
 			},
 		},
 	};
-	const object_pattern_schema:typed_string_parent_type = {
+	const object_pattern_schema: typed_string_parent_type = {
 		type: 'string',
 		minLength: 1,
 		typed_string: {
@@ -52,7 +52,7 @@ void describe('TypedStringConverter', async () => {
 			},
 		},
 	};
-	const nested_object_schema:typed_string_parent_type = {
+	const nested_object_schema: typed_string_parent_type = {
 		type: 'string',
 		minLength: 1,
 		typed_string: {
@@ -71,7 +71,7 @@ void describe('TypedStringConverter', async () => {
 			},
 		},
 	};
-	const array_schema:typed_string_parent_type = {
+	const array_schema: typed_string_parent_type = {
 		type: 'string',
 		minLength: 1,
 		typed_string: {
@@ -79,7 +79,7 @@ void describe('TypedStringConverter', async () => {
 			items: {type: 'string', const: 'bar'},
 		},
 	};
-	const prefix_schema:typed_string_parent_type = {
+	const prefix_schema: typed_string_parent_type = {
 		type: 'string',
 		minLength: 1,
 		typed_string: {
@@ -90,10 +90,11 @@ void describe('TypedStringConverter', async () => {
 			],
 		},
 	};
+
 	/**
 	 * @todo add cases where raw_data is valid but doesn't match shape
 	 */
-	const can_convert_args:(
+	const can_convert_args: (
 		| [
 			SchemaObject, // schema
 			unknown, // raw_data
@@ -173,20 +174,20 @@ void describe('TypedStringConverter', async () => {
 			'(foo=(bar=baz))',
 			true,
 			true,
-			{foo:{bar: 'baz'}},
+			{foo: {bar: 'baz'}},
 		],
 		[
 			object_pattern_schema,
 			'(Foo=foo)',
 			true,
 			true,
-			{Foo:'foo'},
+			{Foo: 'foo'},
 		],
 	];
 
 	void describe('can_convert_schema', () => {
-		const passes:SchemaObject[] = [];
-		const fails:SchemaObject[] = [];
+		const passes: SchemaObject[] = [];
+		const fails: SchemaObject[] = [];
 
 		for (const entry of can_convert_args) {
 			const [schema,,passes_or_fails] = entry;
@@ -208,8 +209,8 @@ void describe('TypedStringConverter', async () => {
 	});
 
 	void describe('can_convert_schema_and_raw_data', () => {
-		const passes:[SchemaObject, unknown][] = [];
-		const fails:[SchemaObject, unknown][] = [];
+		const passes: [SchemaObject, unknown][] = [];
+		const fails: [SchemaObject, unknown][] = [];
 
 		for (const entry of can_convert_args) {
 			const [schema, raw_data,, passes_or_fails] = entry;
@@ -257,12 +258,12 @@ void describe('TypedStringConverter', async () => {
 	});
 
 	void describe('convert', () => {
-		const passes:[
+		const passes: [
 			typed_string_parent_type,
 			string,
-			unknown[]|{[key:string]: unknown},
+			unknown[]|{[key: string]: unknown},
 		][] = [];
-		const fails:[typed_string_parent_type, string][] = [
+		const fails: [typed_string_parent_type, string][] = [
 			[
 				object_schema,
 				'',
@@ -329,6 +330,6 @@ void describe('TypedStringConverter', async () => {
 
 				await assert.rejects(promise);
 			}
-		})
-	})
-})
+		});
+	});
+});

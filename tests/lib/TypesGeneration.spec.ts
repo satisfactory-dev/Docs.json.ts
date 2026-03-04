@@ -32,6 +32,7 @@ void describe('ImportTracker.generate_imports()', () => {
 	});
 
 	void it(
+		// eslint-disable-next-line @stylistic/max-len
 		`returns an empty array with some other file configured via merge_and_set_imports`,
 		() => {
 			const instance = new ImportTracker();
@@ -45,7 +46,7 @@ void describe('ImportTracker.generate_imports()', () => {
 
 		instance.merge_and_set_imports({
 			'foo.ts': {
-				'baz': ['bar'],
+				baz: ['bar'],
 			},
 		});
 		assert.equal(1, instance.number_of_files);
@@ -53,9 +54,9 @@ void describe('ImportTracker.generate_imports()', () => {
 		let imports = instance.generate_imports('foo.ts');
 
 		function check_element(
-			index:number,
-			module_specifier:string,
-			name_bindings:[string, ...string[]],
+			index: number,
+			module_specifier: string,
+			name_bindings: [string, ...string[]],
 		) {
 			const import_entry = imports[index];
 
@@ -85,7 +86,7 @@ void describe('ImportTracker.generate_imports()', () => {
 
 		instance.merge_and_set_imports({
 			'foo.ts': {
-				'bar': ['baz'],
+				bar: ['baz'],
 			},
 		});
 		assert.equal(1, instance.number_of_files);
@@ -98,7 +99,7 @@ void describe('ImportTracker.generate_imports()', () => {
 
 		instance.merge_and_set_imports({
 			'foo.ts': {
-				'bar': ['test'],
+				bar: ['test'],
 			},
 		});
 		assert.equal(1, instance.number_of_files);

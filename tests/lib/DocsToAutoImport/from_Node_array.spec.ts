@@ -13,7 +13,7 @@ import type {
 import ts from 'typescript';
 
 void describe('EntityName_array_from_Node_array', () => {
-	const empty_behaves:{[key: string]: Node[]} = {
+	const empty_behaves: {[key: string]: Node[]} = {
 		'[]': [],
 		ArrayTypeNode: [
 			ts.factory.createArrayTypeNode(
@@ -193,12 +193,12 @@ void describe('EntityName_array_from_Node_array', () => {
 	};
 
 	for (const entry of Object.entries(empty_behaves)) {
-		void it (`empty ${entry[0]} behaves`, () => {
+		void it(`empty ${entry[0]} behaves`, () => {
 			const result = EntityName_array_from_Node_array(entry[1]);
 
 			assert.deepEqual(result, []);
 			assert.deepEqual(from_Node_array(entry[1]), []);
-		})
+		});
 	}
 
 	void it('behaves with ArrayTypeNode', () => {
@@ -211,7 +211,7 @@ void describe('EntityName_array_from_Node_array', () => {
 		assert.deepEqual(result, [
 			ts.factory.createIdentifier('foo'),
 		]);
-	})
+	});
 
 	void it('behaves with ParenthesizedTypeNode', () => {
 		assert.deepEqual(
@@ -225,8 +225,8 @@ void describe('EntityName_array_from_Node_array', () => {
 			[
 				ts.factory.createIdentifier('foo'),
 			],
-		)
-	})
+		);
+	});
 
 	void it('behaves with TypeOperatorNode', () => {
 		assert.deepEqual(
@@ -239,8 +239,8 @@ void describe('EntityName_array_from_Node_array', () => {
 			[
 				ts.factory.createIdentifier('foo'),
 			],
-		)
-	})
+		);
+	});
 
 	void it('behaves with RestTypeNode', () => {
 		assert.deepEqual(
@@ -252,8 +252,8 @@ void describe('EntityName_array_from_Node_array', () => {
 			[
 				ts.factory.createIdentifier('foo'),
 			],
-		)
-	})
+		);
+	});
 
 	void it('behaves with TypeAliasDeclaration', () => {
 		assert.deepEqual(
@@ -268,10 +268,10 @@ void describe('EntityName_array_from_Node_array', () => {
 			[
 				ts.factory.createIdentifier('bar'),
 			],
-		)
-	})
+		);
+	});
 
-	void it ('behaves with TypeParameterDeclaration', () => {
+	void it('behaves with TypeParameterDeclaration', () => {
 		assert.deepEqual(
 			EntityName_array_from_Node_array([
 				ts.factory.createTypeParameterDeclaration(
@@ -284,8 +284,8 @@ void describe('EntityName_array_from_Node_array', () => {
 			[
 				ts.factory.createIdentifier('foo'),
 			],
-		)
-	})
+		);
+	});
 
 	void it('behaves with ReturnStatement', () => {
 		assert.deepEqual(
@@ -297,8 +297,8 @@ void describe('EntityName_array_from_Node_array', () => {
 			[
 				ts.factory.createIdentifier('foo'),
 			],
-		)
-	})
+		);
+	});
 
 	void it('behaves with NewExpression', () => {
 		assert.deepEqual(
@@ -312,8 +312,8 @@ void describe('EntityName_array_from_Node_array', () => {
 			[
 				ts.factory.createIdentifier('foo'),
 			],
-		)
-	})
+		);
+	});
 
 	void it('behaves with PrefixUnaryExpression', () => {
 		assert.deepEqual(
@@ -325,8 +325,8 @@ void describe('EntityName_array_from_Node_array', () => {
 			[
 				ts.factory.createIdentifier('foo'),
 			],
-		)
-	})
+		);
+	});
 
 	void it('behaves is ConditionalTypeNode', () => {
 		assert.deepEqual(
@@ -344,8 +344,8 @@ void describe('EntityName_array_from_Node_array', () => {
 				ts.factory.createIdentifier('bar'),
 				ts.factory.createIdentifier('bat'),
 			],
-		)
-	})
+		);
+	});
 
 	void it('behaves with AsExpression', () => {
 		assert.deepEqual(
@@ -359,8 +359,8 @@ void describe('EntityName_array_from_Node_array', () => {
 				ts.factory.createIdentifier('bar'),
 				ts.factory.createIdentifier('foo'),
 			],
-		)
-	})
+		);
+	});
 
 	void it('behaves with ElementAccessExpression', () => {
 		assert.deepEqual(
@@ -373,8 +373,8 @@ void describe('EntityName_array_from_Node_array', () => {
 			[
 				ts.factory.createIdentifier('foo'),
 			],
-		)
-	})
+		);
+	});
 
 	void it('behaves with CallExpression', () => {
 		assert.deepEqual(
@@ -388,8 +388,8 @@ void describe('EntityName_array_from_Node_array', () => {
 			[
 				ts.factory.createIdentifier('foo'),
 			],
-		)
-	})
+		);
+	});
 
 	void it('behaves with TypeQueryNode', () => {
 		assert.deepEqual(
@@ -402,8 +402,8 @@ void describe('EntityName_array_from_Node_array', () => {
 			[
 				ts.factory.createIdentifier('foo'),
 			],
-		)
-	})
+		);
+	});
 
 	void it('behaves with PropertyAccessExpression', () => {
 		assert.deepEqual(
@@ -416,8 +416,8 @@ void describe('EntityName_array_from_Node_array', () => {
 			[
 				ts.factory.createIdentifier('foo'),
 			],
-		)
-	})
+		);
+	});
 
 	void it('behaves with TemplateSpan', () => {
 		assert.deepEqual(
@@ -430,8 +430,8 @@ void describe('EntityName_array_from_Node_array', () => {
 			[
 				ts.factory.createIdentifier('foo'),
 			],
-		)
-	})
+		);
+	});
 
 	void it('behaves with MappedTypeNode', () => {
 		assert.deepEqual(
@@ -453,8 +453,8 @@ void describe('EntityName_array_from_Node_array', () => {
 			[
 				ts.factory.createIdentifier('foo'),
 			],
-		)
-	})
+		);
+	});
 
 	void it('behaves with TemplateLiteralTypeSpan', () => {
 		assert.deepEqual(
@@ -467,8 +467,8 @@ void describe('EntityName_array_from_Node_array', () => {
 			[
 				ts.factory.createIdentifier('foo'),
 			],
-		)
-	})
+		);
+	});
 
 	void it('behaves with ExpressionWithTypeArguments', () => {
 		assert.deepEqual(
@@ -481,8 +481,8 @@ void describe('EntityName_array_from_Node_array', () => {
 			[
 				ts.factory.createIdentifier('foo'),
 			],
-		)
-	})
+		);
+	});
 
 	void it('behaves with ExportDeclaration', () => {
 		assert.deepEqual(
@@ -504,8 +504,8 @@ void describe('EntityName_array_from_Node_array', () => {
 			[
 				ts.factory.createIdentifier('bar'),
 			],
-		)
-	})
+		);
+	});
 
 	void it('behaves with PropertyAssignment', () => {
 		assert.deepEqual(
@@ -518,8 +518,8 @@ void describe('EntityName_array_from_Node_array', () => {
 			[
 				ts.factory.createIdentifier('bar'),
 			],
-		)
-	})
+		);
+	});
 
 	void it('behaves with ComputedPropertyName', () => {
 		assert.deepEqual(
@@ -531,7 +531,7 @@ void describe('EntityName_array_from_Node_array', () => {
 			[
 				ts.factory.createIdentifier('foo'),
 			],
-		)
+		);
 
 		assert.deepEqual(
 			from_Node_array([
@@ -542,8 +542,8 @@ void describe('EntityName_array_from_Node_array', () => {
 			[
 				'foo',
 			],
-		)
-	})
+		);
+	});
 
 	void it('throws', () => {
 		assert.throws(
@@ -559,6 +559,6 @@ void describe('EntityName_array_from_Node_array', () => {
 			{
 				message: 'Unsupported types found!',
 			},
-		)
-	})
-})
+		);
+	});
+});

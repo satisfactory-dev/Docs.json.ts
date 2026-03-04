@@ -16,8 +16,7 @@ import {
 	rejects_partial_match,
 } from '@satisfactory-dev/custom-assert';
 
-class Testable extends DocsTsAutoImports
-{
+class Testable extends DocsTsAutoImports {
 	public file_exports(): {[p: string]: [string, ...string[]]} {
 		return super.file_exports();
 	}
@@ -135,6 +134,6 @@ void describe('DocsTsAutoImports', () => {
 					export_name: 'foo',
 				},
 			});
-		})
-	})
+		});
+	});
 });

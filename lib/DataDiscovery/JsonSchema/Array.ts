@@ -3,7 +3,7 @@ import {
 	ConverterMatchesSchema,
 	ExpressionResult,
 } from '../Generator.ts';
-import {
+import type {
 	DataDiscovery,
 } from '../../DataDiscovery.ts';
 import type {
@@ -36,9 +36,9 @@ export class ArrayConverter extends ConverterMatchesSchema<
 	unknown[],
 	ArrayLiteralExpression
 > {
-	private readonly discovery:DataDiscovery;
+	private readonly discovery: DataDiscovery;
 
-	constructor(discovery:DataDiscovery) {
+	constructor(discovery: DataDiscovery) {
 		super(discovery.docs.ajv, {
 			oneOf: [
 				{
@@ -83,7 +83,7 @@ export class ArrayConverter extends ConverterMatchesSchema<
 				(
 					!('prefixItems' in schema)
 					&& !!((await this.discovery.candidates).find(
-						e => e.can_convert_schema(schema.items),
+						(e) => e.can_convert_schema(schema.items),
 					))
 					&& !!Converter.has_matching_schema(
 						await this.discovery.candidates,
@@ -94,8 +94,10 @@ export class ArrayConverter extends ConverterMatchesSchema<
 					('prefixItems' in schema)
 					&& !!await Promise.all(schema.prefixItems.map(
 						async (sub_schema) => (
-							!! (await this.discovery.candidates).find(
-								e => e.can_convert_schema(sub_schema),
+							!!(
+								await this.discovery.candidates
+							).find(
+								(e) => e.can_convert_schema(sub_schema),
 							)
 							&& !!Converter.has_matching_schema(
 								await this.discovery.candidates,
@@ -125,7 +127,7 @@ export class ArrayConverter extends ConverterMatchesSchema<
 			);
 		}
 
-		const converted:unknown[] = 'prefixItems' in schema
+		const converted: unknown[] = 'prefixItems' in schema
 			? await this.#convert_prefixItems_type(schema, raw_data)
 			: await this.#convert_array_type(schema, raw_data);
 
@@ -143,7 +145,7 @@ export class ArrayConverter extends ConverterMatchesSchema<
 			schema.items,
 		);
 
-		const converted:unknown[] = [];
+		const converted: unknown[] = [];
 
 		for (const entry of raw_data) {
 			converted.push(await converter.convert(schema.items, entry));
@@ -170,7 +172,7 @@ export class ArrayConverter extends ConverterMatchesSchema<
 			);
 		}
 
-		const converted:unknown[] = [];
+		const converted: unknown[] = [];
 
 		let index = 0;
 

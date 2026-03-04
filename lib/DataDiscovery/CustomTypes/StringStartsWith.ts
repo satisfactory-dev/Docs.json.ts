@@ -8,11 +8,11 @@ import type {
 } from 'ajv/dist/2020.js';
 import type {
 	RawData,
-	// eslint-disable-next-line max-len
+	// eslint-disable-next-line @stylistic/max-len
 } from '../../TypeDefinitionDiscovery/CustomParsingTypes/string_starts_with.ts';
 import {
 	schema,
-	// eslint-disable-next-line max-len
+	// eslint-disable-next-line @stylistic/max-len
 } from '../../TypeDefinitionDiscovery/CustomParsingTypes/string_starts_with.ts';
 import {
 	is_string,
@@ -31,7 +31,7 @@ export class StringStartsWithConverter extends ConverterMatchesSchema<
 	string,
 	AsExpression
 > {
-	constructor(ajv:Ajv) {
+	constructor(ajv: Ajv) {
 		super(ajv, schema);
 	}
 

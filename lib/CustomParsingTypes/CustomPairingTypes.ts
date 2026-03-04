@@ -3,7 +3,7 @@ export function annoyingly_have_to_escape_property(property: string): string {
 }
 
 export abstract class SupportedSubSchemaType<
-	ObjectType extends {[key: string]: unknown} = {[key: string]: unknown}
+	ObjectType extends {[key: string]: unknown} = {[key: string]: unknown},
 > {
 	abstract is_supported_schema(maybe: unknown): maybe is ObjectType;
 

@@ -4,7 +4,7 @@ import type {
 import {
 	Generator,
 } from './Generator.ts';
-import {
+import type {
 	TypeDefinitionDiscovery,
 } from '../TypeDefinitionDiscovery.ts';
 import type {
@@ -13,9 +13,9 @@ import type {
 
 export abstract class GeneratorDoesDiscovery<
 	RawData,
-	Type extends TypeNode = TypeNode
+	Type extends TypeNode = TypeNode,
 > extends Generator<RawData, Type> {
-	protected readonly discovery:TypeDefinitionDiscovery;
+	protected readonly discovery: TypeDefinitionDiscovery;
 
 	protected constructor(
 		schema: SchemaObject,
