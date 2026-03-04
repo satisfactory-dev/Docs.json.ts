@@ -1,41 +1,45 @@
-import {
+import type {
 	FGBuildableResourceExtractor__miner_mk1__type,
 	FGBuildableResourceExtractor__miner_mk3__type,
 } from '../../common/unassigned.js';
 
-import {FGBuildable__extractor_base__type} from './FGBuildable.js';
+import type {
+	FGBuildable__extractor_base__type
+} from './FGBuildable.js';
 
-import {
+import type {
 	common_base__FGBuildableResourceExtractor__miner__type,
 	common_base__FGBuildableResourceExtractor__miner__base__type,
 	common_base__FGBuildableResourceExtractor__oil_extractor__type,
 } from '../../../common/classes/CoreUObject/FGBuildableResourceExtractor.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.js';
+import type {
+	NativeClass__type
+} from '../../../common/common/unassigned.js';
 
-export type FGBuildableResourceExtractor__miner__type =
-	common_base__FGBuildableResourceExtractor__miner__type &
-		FGBuildableResourceExtractor__miner__base__type;
+export type FGBuildableResourceExtractor__miner__type
+	= common_base__FGBuildableResourceExtractor__miner__type
+		& FGBuildableResourceExtractor__miner__base__type;
 
-export type FGBuildableResourceExtractor__miner__base__type =
-	FGBuildableResourceExtractor__miner__base__merged__type & {
-		SAMReference: '/Game/FactoryGame/Resource/RawResources/SAM/Desc_SAM.Desc_SAM_C';
+export type FGBuildableResourceExtractor__miner__base__type
+	= FGBuildableResourceExtractor__miner__base__merged__type & {
+		SAMReference: '/Game/FactoryGame/Resource/RawResources/SAM/Desc_SAM.Desc_SAM_C',
 	};
 
-export type FGBuildableResourceExtractor__miner__base__merged__type =
-	common_base__FGBuildableResourceExtractor__miner__base__type &
-		FGBuildable__extractor_base__type;
+export type FGBuildableResourceExtractor__miner__base__merged__type
+	= common_base__FGBuildableResourceExtractor__miner__base__type
+		& FGBuildable__extractor_base__type;
 
-export type FGBuildableResourceExtractor__oil_extractor__type =
-	common_base__FGBuildableResourceExtractor__oil_extractor__type &
-		FGBuildable__extractor_base__type;
+export type FGBuildableResourceExtractor__oil_extractor__type
+	= common_base__FGBuildableResourceExtractor__oil_extractor__type
+		& FGBuildable__extractor_base__type;
 
-export type FGBuildableResourceExtractor__NativeClass =
-	NativeClass__type & {
+export type FGBuildableResourceExtractor__NativeClass
+	= NativeClass__type & {
 		Classes: [
 			FGBuildableResourceExtractor__oil_extractor__type,
 			FGBuildableResourceExtractor__miner__type,
 			FGBuildableResourceExtractor__miner_mk1__type,
 			FGBuildableResourceExtractor__miner_mk3__type,
-		];
+		],
 	};

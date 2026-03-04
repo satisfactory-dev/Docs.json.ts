@@ -1,140 +1,148 @@
-import {UnrealEngineString, StringStartsWith} from '../../utils/validators.js';
+import type {
+	UnrealEngineString, StringStartsWith
+} from '../../utils/validators.js';
 
-import {
+import type {
 	FilterMontageTag__type,
 	Montage_1P__type,
 	Montage_3P__type,
 	CameraAnim__type,
 } from '../../common/unassigned.js';
 
-import {FGEquipment__base__type} from './FGEquipment.js';
+import type {
+	FGEquipment__base__type
+} from './FGEquipment.js';
 
-import {boolean__type} from '../../../common/common/scalar.js';
+import type {
+	boolean__type
+} from '../../../common/common/scalar.js';
 
-import {
+import type {
 	empty_object__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned.js';
 
-import {common_base__FGParachute__type} from '../../../common/classes/CoreUObject/FGParachute.js';
+import type {
+	common_base__FGParachute__type
+} from '../../../common/classes/CoreUObject/FGParachute.js';
 
 export type FGParachute__type = FGParachute__merged__type & {
 	mParachuteDeployMontageList: {
 		Montages: [
 			(
 				| {
-						Filter: boolean__type;
-						FilterMontageTag: FilterMontageTag__type;
-						Exclusive: boolean__type;
-						Montage_1P: Montage_1P__type;
-						Montage_3P: Montage_3P__type;
-						AudioEvent: FGParachute__AudioEvent__type;
-						CameraAnim: CameraAnim__type;
+					Filter: boolean__type,
+					FilterMontageTag: FilterMontageTag__type,
+					Exclusive: boolean__type,
+					Montage_1P: Montage_1P__type,
+					Montage_3P: Montage_3P__type,
+					AudioEvent: FGParachute__AudioEvent__type,
+					CameraAnim: CameraAnim__type,
 				}
 				| {
-						Filter: boolean__type;
-						FilterMontageTag: FilterMontageTag__type;
-						Exclusive: boolean__type;
-						Montage_3P: Montage_3P__type;
-						AudioEvent: FGParachute__AudioEvent__type;
-						CameraAnim: CameraAnim__type;
+					Filter: boolean__type,
+					FilterMontageTag: FilterMontageTag__type,
+					Exclusive: boolean__type,
+					Montage_3P: Montage_3P__type,
+					AudioEvent: FGParachute__AudioEvent__type,
+					CameraAnim: CameraAnim__type,
 				}
 				| {
-						Montage_1P: Montage_1P__type;
-						Montage_3P: Montage_3P__type;
-						AudioEvent: FGParachute__AudioEvent__type;
-						CameraAnim: CameraAnim__type;
+					Montage_1P: Montage_1P__type,
+					Montage_3P: Montage_3P__type,
+					AudioEvent: FGParachute__AudioEvent__type,
+					CameraAnim: CameraAnim__type,
 				}
 			),
 			(
 				| {
-						Filter: boolean__type;
-						FilterMontageTag: FilterMontageTag__type;
-						Exclusive: boolean__type;
-						Montage_1P: Montage_1P__type;
-						Montage_3P: Montage_3P__type;
-						AudioEvent: FGParachute__AudioEvent__type;
-						CameraAnim: CameraAnim__type;
+					Filter: boolean__type,
+					FilterMontageTag: FilterMontageTag__type,
+					Exclusive: boolean__type,
+					Montage_1P: Montage_1P__type,
+					Montage_3P: Montage_3P__type,
+					AudioEvent: FGParachute__AudioEvent__type,
+					CameraAnim: CameraAnim__type,
 				}
 				| {
-						Filter: boolean__type;
-						FilterMontageTag: FilterMontageTag__type;
-						Exclusive: boolean__type;
-						Montage_3P: Montage_3P__type;
-						AudioEvent: FGParachute__AudioEvent__type;
-						CameraAnim: CameraAnim__type;
+					Filter: boolean__type,
+					FilterMontageTag: FilterMontageTag__type,
+					Exclusive: boolean__type,
+					Montage_3P: Montage_3P__type,
+					AudioEvent: FGParachute__AudioEvent__type,
+					CameraAnim: CameraAnim__type,
 				}
 				| {
-						Montage_1P: Montage_1P__type;
-						Montage_3P: Montage_3P__type;
-						AudioEvent: FGParachute__AudioEvent__type;
-						CameraAnim: CameraAnim__type;
+					Montage_1P: Montage_1P__type,
+					Montage_3P: Montage_3P__type,
+					AudioEvent: FGParachute__AudioEvent__type,
+					CameraAnim: CameraAnim__type,
 				}
 			),
 			(
 				| {
-						Filter: boolean__type;
-						FilterMontageTag: FilterMontageTag__type;
-						Exclusive: boolean__type;
-						Montage_1P: Montage_1P__type;
-						Montage_3P: Montage_3P__type;
-						AudioEvent: FGParachute__AudioEvent__type;
-						CameraAnim: CameraAnim__type;
+					Filter: boolean__type,
+					FilterMontageTag: FilterMontageTag__type,
+					Exclusive: boolean__type,
+					Montage_1P: Montage_1P__type,
+					Montage_3P: Montage_3P__type,
+					AudioEvent: FGParachute__AudioEvent__type,
+					CameraAnim: CameraAnim__type,
 				}
 				| {
-						Filter: boolean__type;
-						FilterMontageTag: FilterMontageTag__type;
-						Exclusive: boolean__type;
-						Montage_3P: Montage_3P__type;
-						AudioEvent: FGParachute__AudioEvent__type;
-						CameraAnim: CameraAnim__type;
+					Filter: boolean__type,
+					FilterMontageTag: FilterMontageTag__type,
+					Exclusive: boolean__type,
+					Montage_3P: Montage_3P__type,
+					AudioEvent: FGParachute__AudioEvent__type,
+					CameraAnim: CameraAnim__type,
 				}
 				| {
-						Montage_1P: Montage_1P__type;
-						Montage_3P: Montage_3P__type;
-						AudioEvent: FGParachute__AudioEvent__type;
-						CameraAnim: CameraAnim__type;
+					Montage_1P: Montage_1P__type,
+					Montage_3P: Montage_3P__type,
+					AudioEvent: FGParachute__AudioEvent__type,
+					CameraAnim: CameraAnim__type,
 				}
 			),
-		];
-	};
+		],
+	},
 	mParachuteDetachMontageList: {
 		Montages: [
 			(
 				| {
-						Filter: boolean__type;
-						FilterMontageTag: FilterMontageTag__type;
-						InvertFilter: boolean__type;
-						Exclusive: boolean__type;
-						Montage_1P: Montage_1P__type;
-						Montage_3P: Montage_3P__type;
-						AudioEvent: FGParachute__AudioEvent__type;
+					Filter: boolean__type,
+					FilterMontageTag: FilterMontageTag__type,
+					InvertFilter: boolean__type,
+					Exclusive: boolean__type,
+					Montage_1P: Montage_1P__type,
+					Montage_3P: Montage_3P__type,
+					AudioEvent: FGParachute__AudioEvent__type,
 				}
 				| {
-						Montage_3P: Montage_3P__type;
-						AudioEvent: FGParachute__AudioEvent__type;
+					Montage_3P: Montage_3P__type,
+					AudioEvent: FGParachute__AudioEvent__type,
 				}
 			),
 			(
 				| {
-						Filter: boolean__type;
-						FilterMontageTag: FilterMontageTag__type;
-						InvertFilter: boolean__type;
-						Exclusive: boolean__type;
-						Montage_1P: Montage_1P__type;
-						Montage_3P: Montage_3P__type;
-						AudioEvent: FGParachute__AudioEvent__type;
+					Filter: boolean__type,
+					FilterMontageTag: FilterMontageTag__type,
+					InvertFilter: boolean__type,
+					Exclusive: boolean__type,
+					Montage_1P: Montage_1P__type,
+					Montage_3P: Montage_3P__type,
+					AudioEvent: FGParachute__AudioEvent__type,
 				}
 				| {
-						Montage_3P: Montage_3P__type;
-						AudioEvent: FGParachute__AudioEvent__type;
+					Montage_3P: Montage_3P__type,
+					AudioEvent: FGParachute__AudioEvent__type,
 				}
 			),
-		];
-	};
-	mEquipMontage: FGParachute__mEquipMontage__type;
-	mStingerMontage: empty_object__type;
-	mUnEquipMontage: FGParachute__mUnEquipMontage__type;
+		],
+	},
+	mEquipMontage: FGParachute__mEquipMontage__type,
+	mStingerMontage: empty_object__type,
+	mUnEquipMontage: FGParachute__mUnEquipMontage__type,
 };
 
 export type FGParachute__AudioEvent__type = UnrealEngineString<
@@ -151,18 +159,18 @@ export type FGParachute__mEquipMontage__type = {
 			AudioEvent: UnrealEngineString<
 				'/Script/AkAudio.AkAudioEvent',
 				StringStartsWith<'/Game/WwiseAudio/Events/Equipment/Equipment_Gear/Parachute/'>
-			>;
+			>,
 		},
-	];
+	],
 };
 
-export type FGParachute__merged__type =
-	common_base__FGParachute__type & FGEquipment__base__type;
+export type FGParachute__merged__type
+	= common_base__FGParachute__type & FGEquipment__base__type;
 
 export type FGParachute__mUnEquipMontage__type = {
-	AudioEvent: FGParachute__AudioEvent__type;
+	AudioEvent: FGParachute__AudioEvent__type,
 };
 
 export type FGParachute__NativeClass = NativeClass__type & {
-	Classes: [FGParachute__type];
+	Classes: [FGParachute__type],
 };

@@ -1,32 +1,38 @@
-import {
+import type {
 	FGBuildableDoor__automated__with__bigOverlapList_0__type,
 	v1_0_base__FGBuildableDoor__base__type,
 } from '../../common/unassigned.js';
 
-import {FGBuildable__base__type} from './FGBuildable.js';
+import type {
+	FGBuildable__base__type
+} from './FGBuildable.js';
 
-import {boolean__type} from '../../../common/common/scalar.js';
+import type {
+	boolean__type
+} from '../../../common/common/scalar.js';
 
-import {
+import type {
 	common_base__FGBuildableDoor__base__type,
 	common_base__FGBuildableDoor__automated__type,
 } from '../../../common/classes/CoreUObject/FGBuildableDoor.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.js';
+import type {
+	NativeClass__type
+} from '../../../common/common/unassigned.js';
 
-export type FGBuildableDoor__type =
-	common_base__FGBuildableDoor__base__type &
-		v1_0_base__FGBuildableDoor__base__type &
-		FGBuildableDoor__properties__type &
-		FGBuildable__base__type;
+export type FGBuildableDoor__type
+	= common_base__FGBuildableDoor__base__type
+		& v1_0_base__FGBuildableDoor__base__type
+		& FGBuildableDoor__properties__type
+		& FGBuildable__base__type;
 
-export type FGBuildableDoor__automated__type =
-	common_base__FGBuildableDoor__automated__type &
-		v1_0_base__FGBuildableDoor__base__type &
-		FGBuildable__base__type;
+export type FGBuildableDoor__automated__type
+	= common_base__FGBuildableDoor__automated__type
+		& v1_0_base__FGBuildableDoor__base__type
+		& FGBuildable__base__type;
 
 export type FGBuildableDoor__properties__type = {
-	IsDoorOpen: boolean__type;
+	IsDoorOpen: boolean__type,
 };
 
 export type FGBuildableDoor__NativeClass = NativeClass__type & {
@@ -41,5 +47,5 @@ export type FGBuildableDoor__NativeClass = NativeClass__type & {
 		FGBuildableDoor__type,
 		FGBuildableDoor__type,
 		FGBuildableDoor__automated__type,
-	];
+	],
 };

@@ -1,22 +1,30 @@
-import {UnrealEngineString, StringStartsWith} from '../../utils/validators.js';
+import type {
+	UnrealEngineString, StringStartsWith
+} from '../../utils/validators.js';
 
-import {FGEquipment__base__type} from './FGEquipment.js';
+import type {
+	FGEquipment__base__type
+} from './FGEquipment.js';
 
-import {boolean__type} from '../../../common/common/scalar.js';
+import type {
+	boolean__type
+} from '../../../common/common/scalar.js';
 
-import {
+import type {
 	empty_object__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned.js';
 
-import {common_base__FGJumpingStilts__type} from '../../../common/classes/CoreUObject/FGJumpingStilts.js';
+import type {
+	common_base__FGJumpingStilts__type
+} from '../../../common/classes/CoreUObject/FGJumpingStilts.js';
 
 export type FGJumpingStilts__type = FGJumpingStilts__merged__type & {
 	mEquipMontage: {
-		Montages: [FGJumpingStilts__Montage__type];
-	};
-	mStingerMontage: empty_object__type;
-	mUnEquipMontage: FGJumpingStilts__Montage__type;
+		Montages: [FGJumpingStilts__Montage__type],
+	},
+	mStingerMontage: empty_object__type,
+	mUnEquipMontage: FGJumpingStilts__Montage__type,
 };
 
 export type FGJumpingStilts__AudioEvent__type = UnrealEngineString<
@@ -27,15 +35,15 @@ export type FGJumpingStilts__AudioEvent__type = UnrealEngineString<
 	>
 >;
 
-export type FGJumpingStilts__merged__type =
-	common_base__FGJumpingStilts__type & FGEquipment__base__type;
+export type FGJumpingStilts__merged__type
+	= common_base__FGJumpingStilts__type & FGEquipment__base__type;
 
 export type FGJumpingStilts__Montage__type = {
-	AudioEvent: FGJumpingStilts__AudioEvent__type;
-	bSeparate3PAudioEvent: boolean__type;
-	AudioEvent3P: FGJumpingStilts__AudioEvent__type;
+	AudioEvent: FGJumpingStilts__AudioEvent__type,
+	bSeparate3PAudioEvent: boolean__type,
+	AudioEvent3P: FGJumpingStilts__AudioEvent__type,
 };
 
 export type FGJumpingStilts__NativeClass = NativeClass__type & {
-	Classes: [FGJumpingStilts__type];
+	Classes: [FGJumpingStilts__type],
 };

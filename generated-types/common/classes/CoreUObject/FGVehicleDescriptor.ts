@@ -1,24 +1,26 @@
-import {
+import type {
 	decimal_string__type,
 	integer_string__type,
 } from '../../common/scalar.js';
 
-import {common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type} from './FGItemDescriptor.js';
+import type {
+	common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type
+} from './FGItemDescriptor.js';
 
-export type common_base__FGVehicleDescriptor__fueled_with_inventory__type =
-	common_base__FGVehicleDescriptor__with_inventory__type & {
-		mFuelConsumption: decimal_string__type;
+export type common_base__FGVehicleDescriptor__fueled_with_inventory__type
+	= common_base__FGVehicleDescriptor__with_inventory__type & {
+		mFuelConsumption: decimal_string__type,
 	};
 
-export type common_base__FGVehicleDescriptor__powered_no_inventory__type =
-	common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type & {
+export type common_base__FGVehicleDescriptor__powered_no_inventory__type
+	= common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type & {
 		mPowerConsumption: {
-			Min: decimal_string__type;
-			Max: decimal_string__type;
-		};
+			Min: decimal_string__type,
+			Max: decimal_string__type,
+		},
 	};
 
-export type common_base__FGVehicleDescriptor__with_inventory__type =
-	common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type & {
-		mInventorySize: integer_string__type;
+export type common_base__FGVehicleDescriptor__with_inventory__type
+	= common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type & {
+		mInventorySize: integer_string__type,
 	};

@@ -1,33 +1,39 @@
-import {FGBuildable__base__type} from './FGBuildable.js';
+import type {
+	FGBuildable__base__type
+} from './FGBuildable.js';
 
-import {
+import type {
 	integer_string__type,
 	integer_string__signed__type,
 	decimal_string__type,
 } from '../../../common/common/scalar.js';
 
-import {common_base__FGBuildableRailroadTrack__type} from '../../../common/classes/CoreUObject/FGBuildableRailroadTrack.js';
+import type {
+	common_base__FGBuildableRailroadTrack__type
+} from '../../../common/classes/CoreUObject/FGBuildableRailroadTrack.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.js';
+import type {
+	NativeClass__type
+} from '../../../common/common/unassigned.js';
 
-export type FGBuildableRailroadTrack__type =
-	FGBuildableRailroadTrack__merged__type & {
-		mBlockVisualizationMeshLength: decimal_string__type;
-		mBlockVisualizationNumPrimitiveDataFloats: integer_string__type;
-		mBlockVisualizationNumPerInstancePrimitiveDataCountOffset: integer_string__type;
+export type FGBuildableRailroadTrack__type
+	= FGBuildableRailroadTrack__merged__type & {
+		mBlockVisualizationMeshLength: decimal_string__type,
+		mBlockVisualizationNumPrimitiveDataFloats: integer_string__type,
+		mBlockVisualizationNumPerInstancePrimitiveDataCountOffset: integer_string__type,
 		mBlockVisualizationSplineDataSettings: {
-			StartTangentPrimitiveDataStartIndex: integer_string__type;
-			EndPositionPrimitiveDataStartIndex: integer_string__type;
-			EndTangentPrimitiveDataStartIndex: integer_string__type;
-			InstanceScaleIndex: integer_string__signed__type;
-		};
+			StartTangentPrimitiveDataStartIndex: integer_string__type,
+			EndPositionPrimitiveDataStartIndex: integer_string__type,
+			EndTangentPrimitiveDataStartIndex: integer_string__type,
+			InstanceScaleIndex: integer_string__signed__type,
+		},
 	};
 
-export type FGBuildableRailroadTrack__merged__type =
-	common_base__FGBuildableRailroadTrack__type &
-		FGBuildable__base__type;
+export type FGBuildableRailroadTrack__merged__type
+	= common_base__FGBuildableRailroadTrack__type
+		& FGBuildable__base__type;
 
-export type FGBuildableRailroadTrack__NativeClass =
-	NativeClass__type & {
-		Classes: [FGBuildableRailroadTrack__type];
+export type FGBuildableRailroadTrack__NativeClass
+	= NativeClass__type & {
+		Classes: [FGBuildableRailroadTrack__type],
 	};

@@ -1,10 +1,18 @@
-import {UnrealEngineString, StringStartsWith} from '../../utils/validators.js';
+import type {
+	UnrealEngineString, StringStartsWith
+} from '../../utils/validators.js';
 
-import {FGEquipment__base__type} from './FGEquipment.js';
+import type {
+	FGEquipment__base__type
+} from './FGEquipment.js';
 
-import {common_base__FGSuitBase__type} from '../../../common/classes/CoreUObject/FGSuitBase.js';
+import type {
+	common_base__FGSuitBase__type
+} from '../../../common/classes/CoreUObject/FGSuitBase.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.js';
+import type {
+	NativeClass__type
+} from '../../../common/common/unassigned.js';
 
 export type FGSuitBase__type = FGSuitBase__merged__type & {
 	mSuit1PMeshMaterials: [
@@ -14,11 +22,11 @@ export type FGSuitBase__type = FGSuitBase__merged__type & {
 				| 'Body_01'
 				| 'Body_02'
 				| 'Body_Hands'
-				| 'Body_Backpack';
+				| 'Body_Backpack',
 			Material: UnrealEngineString<
 				'/Script/Engine.MaterialInstanceConstant',
 				StringStartsWith<'/Game/FactoryGame/Character/Player/Material/'>
-			>;
+			>,
 		},
 		...{
 			SlotName:
@@ -26,18 +34,18 @@ export type FGSuitBase__type = FGSuitBase__merged__type & {
 				| 'Body_01'
 				| 'Body_02'
 				| 'Body_Hands'
-				| 'Body_Backpack';
+				| 'Body_Backpack',
 			Material: UnrealEngineString<
 				'/Script/Engine.MaterialInstanceConstant',
 				StringStartsWith<'/Game/FactoryGame/Character/Player/Material/'>
-			>;
+			>,
 		}[],
-	];
+	],
 };
 
-export type FGSuitBase__merged__type =
-	common_base__FGSuitBase__type & FGEquipment__base__type;
+export type FGSuitBase__merged__type
+	= common_base__FGSuitBase__type & FGEquipment__base__type;
 
 export type FGSuitBase__NativeClass = NativeClass__type & {
-	Classes: [FGSuitBase__type];
+	Classes: [FGSuitBase__type],
 };

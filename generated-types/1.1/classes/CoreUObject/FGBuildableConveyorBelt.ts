@@ -1,24 +1,28 @@
-import {
+import type {
 	v1_0_base__FGBuildableConveyorBelt__pre_1_1__type,
 	has__mAttachedThroughputMonitors__type,
 } from '../../common/unassigned.js';
 
-import {FGBuildable__base__type} from './FGBuildable.js';
+import type {
+	FGBuildable__base__type
+} from './FGBuildable.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.js';
+import type {
+	NativeClass__type
+} from '../../../common/common/unassigned.js';
 
-export type FGBuildableConveyorBelt__type =
-	FGBuildableConveyorBelt__merged__type;
+export type FGBuildableConveyorBelt__type
+	= FGBuildableConveyorBelt__merged__type;
 
-export type FGBuildableConveyorBelt__merged__type =
-	v1_0_base__FGBuildableConveyorBelt__pre_1_1__type &
-		FGBuildable__base__type &
-		has__mAttachedThroughputMonitors__type;
+export type FGBuildableConveyorBelt__merged__type
+	= v1_0_base__FGBuildableConveyorBelt__pre_1_1__type
+		& FGBuildable__base__type
+		& has__mAttachedThroughputMonitors__type;
 
-export type FGBuildableConveyorBelt__NativeClass =
-	NativeClass__type & {
+export type FGBuildableConveyorBelt__NativeClass
+	= NativeClass__type & {
 		Classes: [
 			FGBuildableConveyorBelt__type,
 			...FGBuildableConveyorBelt__type[],
-		];
+		],
 	};

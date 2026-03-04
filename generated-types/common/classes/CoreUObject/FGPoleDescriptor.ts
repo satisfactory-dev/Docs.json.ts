@@ -1,10 +1,14 @@
-import {UnrealEngineString} from '../../utils/validators.js';
+import type {
+	UnrealEngineString
+} from '../../utils/validators.js';
 
-import {common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type} from './FGItemDescriptor.js';
+import type {
+	common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type
+} from './FGItemDescriptor.js';
 
-export type common_base__FGPoleDescriptor__type =
-	common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type & {
-		mForm: 'RF_INVALID';
+export type common_base__FGPoleDescriptor__type
+	= common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type & {
+		mForm: 'RF_INVALID',
 		mSubCategories: [
 			UnrealEngineString<
 				'/Script/Engine.BlueprintGeneratedClass',
@@ -18,5 +22,5 @@ export type common_base__FGPoleDescriptor__type =
 				| '/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Transport/SC_PipeSupport.SC_PipeSupport_C'
 				| '/Game/FactoryGame/Interface/UI/InGame/BuildMenu/BuildCategories/Sub_Transport/SC_HyperTubes.SC_HyperTubes_C'
 			>[],
-		];
+		],
 	};

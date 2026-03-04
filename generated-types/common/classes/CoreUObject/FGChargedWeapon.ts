@@ -1,16 +1,18 @@
-import {common_base__FGWeapon__base__type} from './FGWeapon.js';
+import type {
+	common_base__FGWeapon__base__type
+} from './FGWeapon.js';
 
-import {
+import type {
 	decimal_string__type,
 	integer_string__type,
 } from '../../common/scalar.js';
 
-export type common_base__FGChargedWeapon__type =
-	common_base__FGWeapon__base__type & {
-		mRadialMenuShowUpTime: decimal_string__type;
-		mDispensedProjectiles: '';
-		mMaxChargeTime: decimal_string__type;
-		mMaxThrowForce: integer_string__type;
-		mMinThrowForce: integer_string__type;
-		mDelayBetweenSecondaryTriggers: decimal_string__type;
+export type common_base__FGChargedWeapon__type
+	= common_base__FGWeapon__base__type & {
+		mRadialMenuShowUpTime: decimal_string__type,
+		mDispensedProjectiles: '',
+		mMaxChargeTime: decimal_string__type,
+		mMaxThrowForce: integer_string__type,
+		mMinThrowForce: integer_string__type,
+		mDelayBetweenSecondaryTriggers: decimal_string__type,
 	};

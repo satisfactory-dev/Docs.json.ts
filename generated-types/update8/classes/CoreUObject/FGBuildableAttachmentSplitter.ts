@@ -1,17 +1,23 @@
-import {FGBuildable__splitter__base__type} from './FGBuildable.js';
+import type {
+	FGBuildable__splitter__base__type
+} from './FGBuildable.js';
 
-import {common_base__FGBuildableAttachmentSplitter__type} from '../../../common/classes/CoreUObject/FGBuildableAttachmentSplitter.js';
+import type {
+	common_base__FGBuildableAttachmentSplitter__type
+} from '../../../common/classes/CoreUObject/FGBuildableAttachmentSplitter.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.js';
+import type {
+	NativeClass__type
+} from '../../../common/common/unassigned.js';
 
-export type FGBuildableAttachmentSplitter__type =
-	FGBuildableAttachmentSplitter__merged__type;
+export type FGBuildableAttachmentSplitter__type
+	= FGBuildableAttachmentSplitter__merged__type;
 
-export type FGBuildableAttachmentSplitter__merged__type =
-	common_base__FGBuildableAttachmentSplitter__type &
-		FGBuildable__splitter__base__type;
+export type FGBuildableAttachmentSplitter__merged__type
+	= common_base__FGBuildableAttachmentSplitter__type
+		& FGBuildable__splitter__base__type;
 
-export type FGBuildableAttachmentSplitter__NativeClass =
-	NativeClass__type & {
-		Classes: [FGBuildableAttachmentSplitter__type];
+export type FGBuildableAttachmentSplitter__NativeClass
+	= NativeClass__type & {
+		Classes: [FGBuildableAttachmentSplitter__type],
 	};

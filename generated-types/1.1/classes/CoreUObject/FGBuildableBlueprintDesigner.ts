@@ -1,16 +1,18 @@
-import {
+import type {
 	FGBuildableBlueprintDesigner__mk3__type,
 	FGBuildableBlueprintDesigner__mk2__type,
 	FGBuildableBlueprintDesigner__mk1__type,
 } from '../../common/unassigned.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.js';
+import type {
+	NativeClass__type
+} from '../../../common/common/unassigned.js';
 
-export type FGBuildableBlueprintDesigner__NativeClass =
-	NativeClass__type & {
+export type FGBuildableBlueprintDesigner__NativeClass
+	= NativeClass__type & {
 		Classes: [
 			FGBuildableBlueprintDesigner__mk3__type,
 			FGBuildableBlueprintDesigner__mk2__type,
 			FGBuildableBlueprintDesigner__mk1__type,
-		];
+		],
 	};

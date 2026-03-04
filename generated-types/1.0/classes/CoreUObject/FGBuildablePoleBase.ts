@@ -1,8 +1,12 @@
-import {FGBuildable__pole__base__no_static__type} from './FGBuildable.js';
+import type {
+	FGBuildable__pole__base__no_static__type
+} from './FGBuildable.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.js';
+import type {
+	NativeClass__type
+} from '../../../common/common/unassigned.js';
 
-export type FGBuildablePoleBase__NativeClass =
-	NativeClass__type & {
-		Classes: [FGBuildable__pole__base__no_static__type];
+export type FGBuildablePoleBase__NativeClass
+	= NativeClass__type & {
+		Classes: [FGBuildable__pole__base__no_static__type],
 	};

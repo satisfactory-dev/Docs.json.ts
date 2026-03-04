@@ -1,19 +1,19 @@
-import {
+import type {
 	decimal_string__type,
 	integer_string__signed__type,
 } from '../../common/scalar.js';
 
-import {
+import type {
 	common_base__FGBuildable__pole__base__with_static__type,
 	common_base__FGBuildable__base__type,
 } from './FGBuildable.js';
 
-export type common_base__FGBuildablePoleLightweight__type =
-	common_base__FGBuildable__pole__base__with_static__type &
-		common_base__FGBuildablePoleLightweight__properties__type;
+export type common_base__FGBuildablePoleLightweight__type
+	= common_base__FGBuildable__pole__base__with_static__type
+		& common_base__FGBuildablePoleLightweight__properties__type;
 
-export type common_base__FGBuildablePoleLightweight__properties__type =
-	common_base__FGBuildable__base__type & {
-		mHeight: decimal_string__type;
-		mSelectedPoleVersion: integer_string__signed__type;
+export type common_base__FGBuildablePoleLightweight__properties__type
+	= common_base__FGBuildable__base__type & {
+		mHeight: decimal_string__type,
+		mSelectedPoleVersion: integer_string__signed__type,
 	};

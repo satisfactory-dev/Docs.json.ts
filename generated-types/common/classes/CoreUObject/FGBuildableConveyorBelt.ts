@@ -1,25 +1,29 @@
-import {
+import type {
 	decimal_string__type,
 	integer_string__type,
 } from '../../common/scalar.js';
 
-import {empty_object__type} from '../../common/unassigned.js';
+import type {
+	empty_object__type
+} from '../../common/unassigned.js';
 
-import {common_base__FGBuildable__base__type} from './FGBuildable.js';
+import type {
+	common_base__FGBuildable__base__type
+} from './FGBuildable.js';
 
-export type common_base__FGBuildableConveyorBelt__type =
-	common_base__FGBuildableConveyorBelt__base__type & {
-		mMeshLength: decimal_string__type;
-		mSplineData: '';
+export type common_base__FGBuildableConveyorBelt__type
+	= common_base__FGBuildableConveyorBelt__base__type & {
+		mMeshLength: decimal_string__type,
+		mSplineData: '',
 		mCustomSkins: [
 			'/Game/FactoryGame/Buildable/-Shared/Customization/Skins/SkinDesc_Test1.SkinDesc_Test1_C',
 			...'/Game/FactoryGame/Buildable/-Shared/Customization/Skins/SkinDesc_Test1.SkinDesc_Test1_C'[],
-		];
+		],
 	};
 
-export type common_base__FGBuildableConveyorBelt__base__type =
-	common_base__FGBuildable__base__type & {
-		mItemMeshMap: empty_object__type;
-		mSpeed: decimal_string__type;
-		mConveyorChainFlags: integer_string__type;
+export type common_base__FGBuildableConveyorBelt__base__type
+	= common_base__FGBuildable__base__type & {
+		mItemMeshMap: empty_object__type,
+		mSpeed: decimal_string__type,
+		mConveyorChainFlags: integer_string__type,
 	};

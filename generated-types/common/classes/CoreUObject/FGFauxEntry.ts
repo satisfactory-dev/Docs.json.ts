@@ -1,4 +1,4 @@
-import {
+import type {
 	faux_1__type,
 	faux_2__type,
 	faux_3__type,
@@ -27,9 +27,13 @@ import {
 	NativeClass__type,
 } from '../../common/unassigned.js';
 
-import {common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type} from './FGItemDescriptor.js';
+import type {
+	common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type
+} from './FGItemDescriptor.js';
 
-import {common_base__FGCustomizationRecipe__FGRecipe__type} from './FGCustomizationRecipe.js';
+import type {
+	common_base__FGCustomizationRecipe__FGRecipe__type
+} from './FGCustomizationRecipe.js';
 
 export type FGFauxEntry__NativeClass = NativeClass__type & {
 	Classes: [
@@ -91,5 +95,5 @@ export type FGFauxEntry__NativeClass = NativeClass__type & {
 			| faux_32__type
 			| faux_34__type
 		)[],
-	];
+	],
 };

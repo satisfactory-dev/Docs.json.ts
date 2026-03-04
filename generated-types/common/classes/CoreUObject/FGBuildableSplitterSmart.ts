@@ -1,18 +1,24 @@
-import {empty_object__type} from '../../common/unassigned.js';
+import type {
+	empty_object__type
+} from '../../common/unassigned.js';
 
-import {integer_string__type} from '../../common/scalar.js';
+import type {
+	integer_string__type
+} from '../../common/scalar.js';
 
-import {common_base__FGBuildable__splitter__base__type} from './FGBuildable.js';
+import type {
+	common_base__FGBuildable__splitter__base__type
+} from './FGBuildable.js';
 
-export type common_base__FGBuildableSplitterSmart__type =
-	common_base__FGBuildable__splitter__base__type & {
-		OnSortRulesChangedDelegate: empty_object__type;
-		mMaxNumSortRules: integer_string__type;
+export type common_base__FGBuildableSplitterSmart__type
+	= common_base__FGBuildable__splitter__base__type & {
+		OnSortRulesChangedDelegate: empty_object__type,
+		mMaxNumSortRules: integer_string__type,
 		mLastItem: {
-			ItemState: empty_object__type;
-		};
-		mItemToLastOutputMap: empty_object__type;
-		mLastOutputIndex: integer_string__type;
-		mCurrentInventoryIndex: integer_string__type;
-		mDistributionTable: '';
+			ItemState: empty_object__type,
+		},
+		mItemToLastOutputMap: empty_object__type,
+		mLastOutputIndex: integer_string__type,
+		mCurrentInventoryIndex: integer_string__type,
+		mDistributionTable: '',
 	};

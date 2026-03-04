@@ -1,35 +1,37 @@
-import {StringStartsWith} from '../../utils/validators.js';
+import type {
+	StringStartsWith
+} from '../../utils/validators.js';
 
-import {
+import type {
 	None__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned.js';
 
-import {
+import type {
 	common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type,
 	common_base__FGItemDescriptor__FGResourceDescriptor__type,
 	common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type,
 } from '../../../common/classes/CoreUObject/FGItemDescriptor.js';
 
-export type FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type =
-	common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type & {
+export type FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type
+	= common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type & {
 		mClassToScanFor:
 			| None__type
 			| StringStartsWith<'/Game/FactoryGame/Resource/Environment/'>
-			| StringStartsWith<'/Game/FactoryGame/World/Benefit/'>;
+			| StringStartsWith<'/Game/FactoryGame/World/Benefit/'>,
 	};
 
-export type FGItemDescriptor__FGResourceDescriptor__type =
-	common_base__FGItemDescriptor__FGResourceDescriptor__type &
-		FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type;
+export type FGItemDescriptor__FGResourceDescriptor__type
+	= common_base__FGItemDescriptor__FGResourceDescriptor__type
+		& FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type;
 
-export type FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type =
-	common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type &
-		FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type;
+export type FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type
+	= common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type
+		& FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type;
 
 export type FGItemDescriptor__NativeClass = NativeClass__type & {
 	Classes: [
 		FGItemDescriptor__FGResourceDescriptor__type,
 		...FGItemDescriptor__FGResourceDescriptor__type[],
-	];
+	],
 };

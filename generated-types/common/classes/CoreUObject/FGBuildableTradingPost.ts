@@ -1,31 +1,35 @@
-import {UnrealEngineString} from '../../utils/validators.js';
+import type {
+	UnrealEngineString
+} from '../../utils/validators.js';
 
-import {
+import type {
 	integer_string__type,
 	decimal_string__type,
 } from '../../common/scalar.js';
 
-import {common_base__FGBuildable__consumes_power_base__type} from './FGBuildable.js';
+import type {
+	common_base__FGBuildable__consumes_power_base__type
+} from './FGBuildable.js';
 
-export type common_base__FGBuildableTradingPost__type =
-	common_base__FGBuildable__consumes_power_base__type & {
-		mWorkBenchOccupied: Exclude<string, ''>;
-		mWorkBenchFree: Exclude<string, ''>;
+export type common_base__FGBuildableTradingPost__type
+	= common_base__FGBuildable__consumes_power_base__type & {
+		mWorkBenchOccupied: Exclude<string, ''>,
+		mWorkBenchFree: Exclude<string, ''>,
 		Meshes: [
 			UnrealEngineString<'/Script/Engine.StaticMesh'>,
 			...UnrealEngineString<'/Script/Engine.StaticMesh'>[],
-		];
-		mShipUpgradeLevel: integer_string__type;
-		mStorageText: 'Open Storage';
-		mMamFreeText: Exclude<string, ''>;
-		mMamOccupiedText: Exclude<string, ''>;
-		ABClass: '/Game/FactoryGame/Buildable/Factory/TradingPost/BPA_Tradingpost.BPA_Tradingpost_C';
-		mSkeletalMeshSoftPtr: '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/SK_Tradingpost.SK_Tradingpost';
-		mGenerators: '';
-		mStorageInventorySize: integer_string__type;
-		mStorageVisibilityLevel: integer_string__type;
-		mSpawningGroundZOffset: decimal_string__type;
-		mGroundSearchZDistance: decimal_string__type;
-		mDefaultResources: '';
-		mRepresentationText: 'The HUB';
+		],
+		mShipUpgradeLevel: integer_string__type,
+		mStorageText: 'Open Storage',
+		mMamFreeText: Exclude<string, ''>,
+		mMamOccupiedText: Exclude<string, ''>,
+		ABClass: '/Game/FactoryGame/Buildable/Factory/TradingPost/BPA_Tradingpost.BPA_Tradingpost_C',
+		mSkeletalMeshSoftPtr: '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/SK_Tradingpost.SK_Tradingpost',
+		mGenerators: '',
+		mStorageInventorySize: integer_string__type,
+		mStorageVisibilityLevel: integer_string__type,
+		mSpawningGroundZOffset: decimal_string__type,
+		mGroundSearchZDistance: decimal_string__type,
+		mDefaultResources: '',
+		mRepresentationText: 'The HUB',
 	};

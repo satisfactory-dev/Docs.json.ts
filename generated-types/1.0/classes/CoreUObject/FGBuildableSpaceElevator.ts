@@ -1,25 +1,29 @@
-import {FGBuildable__consumes_power_base__type} from './FGBuildable.js';
+import type {
+	FGBuildable__consumes_power_base__type
+} from './FGBuildable.js';
 
-import {
+import type {
 	empty_object__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned.js';
 
-import {common_base__FGBuildableSpaceElevator__type} from '../../../common/classes/CoreUObject/FGBuildableSpaceElevator.js';
+import type {
+	common_base__FGBuildableSpaceElevator__type
+} from '../../../common/classes/CoreUObject/FGBuildableSpaceElevator.js';
 
-export type FGBuildableSpaceElevator__type =
-	FGBuildableSpaceElevator__merged__type & {
-		mOnSpaceElevatorStateUpdated: empty_object__type;
-		mSpaceElevatorState: FGBuildableSpaceElevator__mSpaceElevatorState__type;
+export type FGBuildableSpaceElevator__type
+	= FGBuildableSpaceElevator__merged__type & {
+		mOnSpaceElevatorStateUpdated: empty_object__type,
+		mSpaceElevatorState: FGBuildableSpaceElevator__mSpaceElevatorState__type,
 	};
 
-export type FGBuildableSpaceElevator__merged__type =
-	common_base__FGBuildableSpaceElevator__type &
-		FGBuildable__consumes_power_base__type;
+export type FGBuildableSpaceElevator__merged__type
+	= common_base__FGBuildableSpaceElevator__type
+		& FGBuildable__consumes_power_base__type;
 
 export type FGBuildableSpaceElevator__mSpaceElevatorState__type = 'ESES_Load';
 
-export type FGBuildableSpaceElevator__NativeClass =
-	NativeClass__type & {
-		Classes: [FGBuildableSpaceElevator__type];
+export type FGBuildableSpaceElevator__NativeClass
+	= NativeClass__type & {
+		Classes: [FGBuildableSpaceElevator__type],
 	};

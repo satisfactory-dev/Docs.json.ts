@@ -1,17 +1,23 @@
-import {FGBuildable__pipeline_accessory__type} from './FGBuildable.js';
+import type {
+	FGBuildable__pipeline_accessory__type
+} from './FGBuildable.js';
 
-import {common_base__FGBuildablePipelineJunction__type} from '../../../common/classes/CoreUObject/FGBuildablePipelineJunction.js';
+import type {
+	common_base__FGBuildablePipelineJunction__type
+} from '../../../common/classes/CoreUObject/FGBuildablePipelineJunction.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.js';
+import type {
+	NativeClass__type
+} from '../../../common/common/unassigned.js';
 
-export type FGBuildablePipelineJunction__type =
-	FGBuildablePipelineJunction__merged__type;
+export type FGBuildablePipelineJunction__type
+	= FGBuildablePipelineJunction__merged__type;
 
-export type FGBuildablePipelineJunction__merged__type =
-	common_base__FGBuildablePipelineJunction__type &
-		FGBuildable__pipeline_accessory__type;
+export type FGBuildablePipelineJunction__merged__type
+	= common_base__FGBuildablePipelineJunction__type
+		& FGBuildable__pipeline_accessory__type;
 
-export type FGBuildablePipelineJunction__NativeClass =
-	NativeClass__type & {
-		Classes: [FGBuildablePipelineJunction__type];
+export type FGBuildablePipelineJunction__NativeClass
+	= NativeClass__type & {
+		Classes: [FGBuildablePipelineJunction__type],
 	};

@@ -1,4 +1,4 @@
-import {
+import type {
 	integer_string__type,
 	integer_string__signed__type,
 	decimal_string__type,
@@ -6,40 +6,42 @@ import {
 	boolean__type,
 } from '../../common/scalar.js';
 
-import {
+import type {
 	empty_object__type,
 	xyz__type,
 	pitch_yaw_roll__type,
 } from '../../common/unassigned.js';
 
-import {common_base__FGBuildable__consumes_power_base__type} from './FGBuildable.js';
+import type {
+	common_base__FGBuildable__consumes_power_base__type
+} from './FGBuildable.js';
 
-export type common_base__FGBuildableJumppad__type =
-	common_base__FGBuildable__consumes_power_base__type & {
-		mPowerBankCapacity: decimal_string__type;
-		mLaunchPowerCost: decimal_string__type;
-		mChargeRateMultiplier: decimal_string__type;
-		mCurrentPowerLevel: decimal_string__type;
-		mLaunchVelocity: decimal_string__type;
-		mLaunchAngle: decimal_string__signed__type;
-		mPlayerChainJumpResetTime: decimal_string__type;
-		mHasPowerForLaunch: boolean__type;
-		ComponentsToLaunch: '';
-		CharactersToLaunch: '';
-		VehiclesToLaunch: '';
-		mTrajectoryData: empty_object__type;
-		mTrajectoryMeshScale: xyz__type;
-		mTrajectoryMeshRotation: pitch_yaw_roll__type;
-		mDestinationMeshHeightOffset: decimal_string__type;
-		mTrajectorySplineMeshNumPrimitiveDataFloats: integer_string__type;
+export type common_base__FGBuildableJumppad__type
+	= common_base__FGBuildable__consumes_power_base__type & {
+		mPowerBankCapacity: decimal_string__type,
+		mLaunchPowerCost: decimal_string__type,
+		mChargeRateMultiplier: decimal_string__type,
+		mCurrentPowerLevel: decimal_string__type,
+		mLaunchVelocity: decimal_string__type,
+		mLaunchAngle: decimal_string__signed__type,
+		mPlayerChainJumpResetTime: decimal_string__type,
+		mHasPowerForLaunch: boolean__type,
+		ComponentsToLaunch: '',
+		CharactersToLaunch: '',
+		VehiclesToLaunch: '',
+		mTrajectoryData: empty_object__type,
+		mTrajectoryMeshScale: xyz__type,
+		mTrajectoryMeshRotation: pitch_yaw_roll__type,
+		mDestinationMeshHeightOffset: decimal_string__type,
+		mTrajectorySplineMeshNumPrimitiveDataFloats: integer_string__type,
 		mTrajectorySplineMeshSplineDataSettings: {
-			StartTangentPrimitiveDataStartIndex: integer_string__type;
-			EndPositionPrimitiveDataStartIndex: integer_string__type;
-			EndTangentPrimitiveDataStartIndex: integer_string__type;
-			InstanceScaleIndex: integer_string__signed__type;
-		};
-		mNumArrows: integer_string__type;
-		mKillTimer: empty_object__type;
-		mTrajectoryGravityMultiplier: decimal_string__type;
-		mShowTrajectoryCounter: integer_string__type;
+			StartTangentPrimitiveDataStartIndex: integer_string__type,
+			EndPositionPrimitiveDataStartIndex: integer_string__type,
+			EndTangentPrimitiveDataStartIndex: integer_string__type,
+			InstanceScaleIndex: integer_string__signed__type,
+		},
+		mNumArrows: integer_string__type,
+		mKillTimer: empty_object__type,
+		mTrajectoryGravityMultiplier: decimal_string__type,
+		mShowTrajectoryCounter: integer_string__type,
 	};

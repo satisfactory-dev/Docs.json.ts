@@ -1,25 +1,29 @@
-import {FGBuildableGenerator__base__type} from './FGBuildableGenerator.js';
+import type {
+	FGBuildableGenerator__base__type
+} from './FGBuildableGenerator.js';
 
-import {
+import type {
 	common_base__FGBuildableGeneratorFuel__base__type,
 	common_base__FGBuildableGeneratorFuel__biogen__type,
 	common_base__FGBuildableGeneratorFuel__liquid__type,
 	common_base__FGBuildableGeneratorFuel__solid__type,
 } from '../../../common/classes/CoreUObject/FGBuildableGeneratorFuel.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.js';
+import type {
+	NativeClass__type
+} from '../../../common/common/unassigned.js';
 
-export type FGBuildableGeneratorFuel__base__type =
-	FGBuildableGeneratorFuel__base__merged__type & {
-		mFuelClassesInInventory: '';
+export type FGBuildableGeneratorFuel__base__type
+	= FGBuildableGeneratorFuel__base__merged__type & {
+		mFuelClassesInInventory: '',
 	};
 
-export type FGBuildableGeneratorFuel__base__merged__type =
-	common_base__FGBuildableGeneratorFuel__base__type &
-		FGBuildableGenerator__base__type;
+export type FGBuildableGeneratorFuel__base__merged__type
+	= common_base__FGBuildableGeneratorFuel__base__type
+		& FGBuildableGenerator__base__type;
 
-export type FGBuildableGeneratorFuel__biogen__type =
-	FGBuildableGeneratorFuel__biogen__merged__type & {
+export type FGBuildableGeneratorFuel__biogen__type
+	= FGBuildableGeneratorFuel__biogen__merged__type & {
 		mDefaultFuelClasses: [
 			(
 				| '/Game/FactoryGame/Resource/Parts/GenericBiomass/Desc_Leaves.Desc_Leaves_C'
@@ -37,7 +41,7 @@ export type FGBuildableGeneratorFuel__biogen__type =
 				| '/Game/FactoryGame/Resource/Parts/BioFuel/Desc_Biofuel.Desc_Biofuel_C'
 				| '/Game/FactoryGame/Resource/Parts/BioFuel/Desc_PackagedBiofuel.Desc_PackagedBiofuel_C'
 			)[],
-		];
+		],
 		mFuel: [
 			{
 				mFuelClass:
@@ -46,10 +50,10 @@ export type FGBuildableGeneratorFuel__biogen__type =
 					| 'Desc_Mycelia_C'
 					| 'Desc_GenericBiomass_C'
 					| 'Desc_Biofuel_C'
-					| 'Desc_PackagedBiofuel_C';
-				mSupplementalResourceClass: '';
-				mByproduct: '';
-				mByproductAmount: '';
+					| 'Desc_PackagedBiofuel_C',
+				mSupplementalResourceClass: '',
+				mByproduct: '',
+				mByproductAmount: '',
 			},
 			...{
 				mFuelClass:
@@ -58,20 +62,20 @@ export type FGBuildableGeneratorFuel__biogen__type =
 					| 'Desc_Mycelia_C'
 					| 'Desc_GenericBiomass_C'
 					| 'Desc_Biofuel_C'
-					| 'Desc_PackagedBiofuel_C';
-				mSupplementalResourceClass: '';
-				mByproduct: '';
-				mByproductAmount: '';
+					| 'Desc_PackagedBiofuel_C',
+				mSupplementalResourceClass: '',
+				mByproduct: '',
+				mByproductAmount: '',
 			}[],
-		];
+		],
 	};
 
-export type FGBuildableGeneratorFuel__biogen__merged__type =
-	common_base__FGBuildableGeneratorFuel__biogen__type &
-		FGBuildableGeneratorFuel__base__type;
+export type FGBuildableGeneratorFuel__biogen__merged__type
+	= common_base__FGBuildableGeneratorFuel__biogen__type
+		& FGBuildableGeneratorFuel__base__type;
 
-export type FGBuildableGeneratorFuel__liquid__type =
-	FGBuildableGeneratorFuel__liquid__merged__type & {
+export type FGBuildableGeneratorFuel__liquid__type
+	= FGBuildableGeneratorFuel__liquid__merged__type & {
 		mDefaultFuelClasses: [
 			(
 				| '/Game/FactoryGame/Resource/Parts/Fuel/Desc_LiquidFuel.Desc_LiquidFuel_C'
@@ -87,7 +91,7 @@ export type FGBuildableGeneratorFuel__liquid__type =
 				| '/Game/FactoryGame/Resource/Parts/RocketFuel/Desc_RocketFuel.Desc_RocketFuel_C'
 				| '/Game/FactoryGame/Resource/Parts/IonizedFuel/Desc_IonizedFuel.Desc_IonizedFuel_C'
 			)[],
-		];
+		],
 		mFuel: [
 			{
 				mFuelClass:
@@ -95,10 +99,10 @@ export type FGBuildableGeneratorFuel__liquid__type =
 					| 'Desc_LiquidTurboFuel_C'
 					| 'Desc_LiquidBiofuel_C'
 					| 'Desc_RocketFuel_C'
-					| 'Desc_IonizedFuel_C';
-				mSupplementalResourceClass: '';
-				mByproduct: '';
-				mByproductAmount: '';
+					| 'Desc_IonizedFuel_C',
+				mSupplementalResourceClass: '',
+				mByproduct: '',
+				mByproductAmount: '',
 			},
 			...{
 				mFuelClass:
@@ -106,27 +110,27 @@ export type FGBuildableGeneratorFuel__liquid__type =
 					| 'Desc_LiquidTurboFuel_C'
 					| 'Desc_LiquidBiofuel_C'
 					| 'Desc_RocketFuel_C'
-					| 'Desc_IonizedFuel_C';
-				mSupplementalResourceClass: '';
-				mByproduct: '';
-				mByproductAmount: '';
+					| 'Desc_IonizedFuel_C',
+				mSupplementalResourceClass: '',
+				mByproduct: '',
+				mByproductAmount: '',
 			}[],
-		];
+		],
 	};
 
-export type FGBuildableGeneratorFuel__liquid__merged__type =
-	common_base__FGBuildableGeneratorFuel__liquid__type &
-		FGBuildableGeneratorFuel__base__type;
+export type FGBuildableGeneratorFuel__liquid__merged__type
+	= common_base__FGBuildableGeneratorFuel__liquid__type
+		& FGBuildableGeneratorFuel__base__type;
 
-export type FGBuildableGeneratorFuel__solid__type =
-	common_base__FGBuildableGeneratorFuel__solid__type &
-		FGBuildableGeneratorFuel__base__type;
+export type FGBuildableGeneratorFuel__solid__type
+	= common_base__FGBuildableGeneratorFuel__solid__type
+		& FGBuildableGeneratorFuel__base__type;
 
-export type FGBuildableGeneratorFuel__NativeClass =
-	NativeClass__type & {
+export type FGBuildableGeneratorFuel__NativeClass
+	= NativeClass__type & {
 		Classes: [
 			FGBuildableGeneratorFuel__solid__type,
 			FGBuildableGeneratorFuel__liquid__type,
 			FGBuildableGeneratorFuel__biogen__type,
-		];
+		],
 	};

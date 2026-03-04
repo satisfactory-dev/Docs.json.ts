@@ -1,47 +1,55 @@
-import {UnrealEngineString, StringStartsWith} from '../../utils/validators.js';
+import type {
+	UnrealEngineString, StringStartsWith
+} from '../../utils/validators.js';
 
-import {FilterMontageTag__type} from '../../common/unassigned.js';
+import type {
+	FilterMontageTag__type
+} from '../../common/unassigned.js';
 
-import {FGEquipment__base__type} from './FGEquipment.js';
+import type {
+	FGEquipment__base__type
+} from './FGEquipment.js';
 
-import {
+import type {
 	boolean__type,
 	decimal_string__type,
 } from '../../../common/common/scalar.js';
 
-import {
+import type {
 	empty_object__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned.js';
 
-import {common_base__FGHoverPack__type} from '../../../common/classes/CoreUObject/FGHoverPack.js';
+import type {
+	common_base__FGHoverPack__type
+} from '../../../common/classes/CoreUObject/FGHoverPack.js';
 
 export type FGHoverPack__type = FGHoverPack__merged__type & {
-	mCurrentPlayerVelocity_SFX: decimal_string__type;
-	mCurrentMouseDelta_SFX: decimal_string__type;
-	mLowBatteryWarningActive_SFX: boolean__type;
-	mPropellerVFX: '';
-	mDisplayRangeWarning: boolean__type;
+	mCurrentPlayerVelocity_SFX: decimal_string__type,
+	mCurrentMouseDelta_SFX: decimal_string__type,
+	mLowBatteryWarningActive_SFX: boolean__type,
+	mPropellerVFX: '',
+	mDisplayRangeWarning: boolean__type,
 	mEquipMontage?: {
 		Montages: [
 			{
-				Filter?: boolean__type;
-				FilterMontageTag?: FilterMontageTag__type;
-				Exclusive?: boolean__type;
-				AudioEvent: FGHoverPack__AudioEvent__type;
+				Filter?: boolean__type,
+				FilterMontageTag?: FilterMontageTag__type,
+				Exclusive?: boolean__type,
+				AudioEvent: FGHoverPack__AudioEvent__type,
 			},
 			{
-				Filter?: boolean__type;
-				FilterMontageTag?: FilterMontageTag__type;
-				Exclusive?: boolean__type;
-				AudioEvent: FGHoverPack__AudioEvent__type;
+				Filter?: boolean__type,
+				FilterMontageTag?: FilterMontageTag__type,
+				Exclusive?: boolean__type,
+				AudioEvent: FGHoverPack__AudioEvent__type,
 			},
-		];
-	};
-	mStingerMontage?: empty_object__type;
+		],
+	},
+	mStingerMontage?: empty_object__type,
 	mUnEquipMontage?: {
-		AudioEvent: FGHoverPack__AudioEvent__type;
-	};
+		AudioEvent: FGHoverPack__AudioEvent__type,
+	},
 };
 
 export type FGHoverPack__AudioEvent__type = UnrealEngineString<
@@ -49,9 +57,9 @@ export type FGHoverPack__AudioEvent__type = UnrealEngineString<
 	StringStartsWith<'/Game/WwiseAudio/Events/Equipment/HoverPack/'>
 >;
 
-export type FGHoverPack__merged__type =
-	common_base__FGHoverPack__type & FGEquipment__base__type;
+export type FGHoverPack__merged__type
+	= common_base__FGHoverPack__type & FGEquipment__base__type;
 
 export type FGHoverPack__NativeClass = NativeClass__type & {
-	Classes: [FGHoverPack__type];
+	Classes: [FGHoverPack__type],
 };

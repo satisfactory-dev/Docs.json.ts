@@ -1,8 +1,14 @@
-import {FGEquipment__base__type} from './FGEquipment.js';
+import type {
+	FGEquipment__base__type
+} from './FGEquipment.js';
 
-import {common_base__FGParachute__type} from '../../../common/classes/CoreUObject/FGParachute.js';
+import type {
+	common_base__FGParachute__type
+} from '../../../common/classes/CoreUObject/FGParachute.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.js';
+import type {
+	NativeClass__type
+} from '../../../common/common/unassigned.js';
 
 export type FGParachute__type = FGParachute__merged__type & {
 	ArmEquipmentsToSkipAnim: [
@@ -20,12 +26,12 @@ export type FGParachute__type = FGParachute__merged__type & {
 			| 'AE_Nobelisk'
 			| 'AE_Rifle'
 		)[],
-	];
+	],
 };
 
-export type FGParachute__merged__type =
-	common_base__FGParachute__type & FGEquipment__base__type;
+export type FGParachute__merged__type
+	= common_base__FGParachute__type & FGEquipment__base__type;
 
 export type FGParachute__NativeClass = NativeClass__type & {
-	Classes: [FGParachute__type];
+	Classes: [FGParachute__type],
 };

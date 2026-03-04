@@ -1,32 +1,34 @@
-import {
+import type {
 	common_base__FGWeapon__base__pre_1_1__type,
 	empty_object__type,
 } from '../../common/unassigned.js';
 
-import {boolean__type} from '../../common/scalar.js';
+import type {
+	boolean__type
+} from '../../common/scalar.js';
 
-export type common_base__FGWeapon__base__type =
-	common_base__FGWeapon__base__pre_1_1__type & {
-		mShowCycleAmmoRadialMenuTimer: empty_object__type;
+export type common_base__FGWeapon__base__type
+	= common_base__FGWeapon__base__pre_1_1__type & {
+		mShowCycleAmmoRadialMenuTimer: empty_object__type,
 	};
 
-export type common_base__FGWeapon__gun_base__type =
-	common_base__FGWeapon__base__type;
+export type common_base__FGWeapon__gun_base__type
+	= common_base__FGWeapon__base__type;
 
-export type common_base__FGWeapon__rebar_gun__type =
-	common_base__FGWeapon__gun_base__type &
-		common_base__FGWeapon__rebar_gun__properties__type;
+export type common_base__FGWeapon__rebar_gun__type
+	= common_base__FGWeapon__gun_base__type
+		& common_base__FGWeapon__rebar_gun__properties__type;
 
 export type common_base__FGWeapon__rebar_gun__properties__type = {
-	ClassName: 'Equip_RebarGun_Projectile_C';
+	ClassName: 'Equip_RebarGun_Projectile_C',
 };
 
-export type common_base__FGWeapon__rifle__type =
-	common_base__FGWeapon__gun_base__type &
-		common_base__FGWeapon__rifle__properties__type;
+export type common_base__FGWeapon__rifle__type
+	= common_base__FGWeapon__gun_base__type
+		& common_base__FGWeapon__rifle__properties__type;
 
 export type common_base__FGWeapon__rifle__properties__type = {
-	ClassName?: 'Equip_Rifle_C';
-	Fire: empty_object__type;
-	mHasReloadedOnce: boolean__type;
+	ClassName?: 'Equip_Rifle_C',
+	Fire: empty_object__type,
+	mHasReloadedOnce: boolean__type,
 };

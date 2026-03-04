@@ -1,33 +1,43 @@
-import {UnrealEngineString, StringStartsWith} from '../utils/validators.js';
+import type {
+	UnrealEngineString, StringStartsWith
+} from '../utils/validators.js';
 
-import {FGBuildableResourceExtractor__miner__base__type} from '../classes/CoreUObject/FGBuildableResourceExtractor.js';
+import type {
+	FGBuildableResourceExtractor__miner__base__type
+} from '../classes/CoreUObject/FGBuildableResourceExtractor.js';
 
-import {
+import type {
 	empty_object__type,
 	common_base__FGBuildableResourceExtractor__miner_mk3__type,
 } from '../../common/common/unassigned.js';
 
-import {
+import type {
 	decimal_string__type,
 	integer_string__type,
 	boolean__type,
 } from '../../common/common/scalar.js';
 
-import {common_base__FGBuildable__consumes_power_base__type} from '../../common/classes/CoreUObject/FGBuildable.js';
+import type {
+	common_base__FGBuildable__consumes_power_base__type
+} from '../../common/classes/CoreUObject/FGBuildable.js';
 
-import {common_base__FGBuildableDroneStation__type} from '../../common/classes/CoreUObject/FGBuildableDroneStation.js';
+import type {
+	common_base__FGBuildableDroneStation__type
+} from '../../common/classes/CoreUObject/FGBuildableDroneStation.js';
 
-import {common_base__FGBuildableTradingPost__type} from '../../common/classes/CoreUObject/FGBuildableTradingPost.js';
+import type {
+	common_base__FGBuildableTradingPost__type
+} from '../../common/classes/CoreUObject/FGBuildableTradingPost.js';
 
-export type FGBuildable__consumes_power_base__update8__type =
-	common_base__FGBuildable__consumes_power_base__type & {
-		mMaxPotentialIncreasePerCrystal: decimal_string__type;
-		OnReplicationDetailActorCreatedEvent: empty_object__type;
-		mInventoryPotentialHandlerData: empty_object__type;
+export type FGBuildable__consumes_power_base__update8__type
+	= common_base__FGBuildable__consumes_power_base__type & {
+		mMaxPotentialIncreasePerCrystal: decimal_string__type,
+		OnReplicationDetailActorCreatedEvent: empty_object__type,
+		mInventoryPotentialHandlerData: empty_object__type,
 	};
 
-export type FGBuildableDroneStation__update8__type =
-	common_base__FGBuildableDroneStation__type & {
+export type FGBuildableDroneStation__update8__type
+	= common_base__FGBuildableDroneStation__type & {
 		mBatteryClasses: [
 			UnrealEngineString<
 				'/Script/Engine.BlueprintGeneratedClass',
@@ -37,22 +47,22 @@ export type FGBuildableDroneStation__update8__type =
 				'/Script/Engine.BlueprintGeneratedClass',
 				StringStartsWith<'/Game/FactoryGame/Resource/Parts/Battery/'>
 			>[],
-		];
-		mBatteryStorageSizeX: integer_string__type;
-		mBatteryStorageSizeY: integer_string__type;
-		mInputInventoryHandler: empty_object__type;
-		mOutputInventoryHandler: empty_object__type;
-		mBatteryInventoryHandler: empty_object__type;
+		],
+		mBatteryStorageSizeX: integer_string__type,
+		mBatteryStorageSizeY: integer_string__type,
+		mInputInventoryHandler: empty_object__type,
+		mOutputInventoryHandler: empty_object__type,
+		mBatteryInventoryHandler: empty_object__type,
 	};
 
-export type FGBuildableResourceExtractor__miner_mk3__type =
-	common_base__FGBuildableResourceExtractor__miner_mk3__type &
-		FGBuildableResourceExtractor__miner__base__type;
+export type FGBuildableResourceExtractor__miner_mk3__type
+	= common_base__FGBuildableResourceExtractor__miner_mk3__type
+		& FGBuildableResourceExtractor__miner__base__type;
 
-export type FGBuildableTradingPost__update8__type =
-	common_base__FGBuildableTradingPost__type & {
-		mWorkBenchOccupied: 'Craft Bench occupied';
-		mWorkBenchFree: 'Use Craft Bench';
+export type FGBuildableTradingPost__update8__type
+	= common_base__FGBuildableTradingPost__type & {
+		mWorkBenchOccupied: 'Craft Bench occupied',
+		mWorkBenchFree: 'Use Craft Bench',
 		Meshes?: [
 			UnrealEngineString<
 				'/Script/Engine.StaticMesh',
@@ -62,9 +72,9 @@ export type FGBuildableTradingPost__update8__type =
 				'/Script/Engine.StaticMesh',
 				StringStartsWith<'/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/'>
 			>[],
-		];
-		mMamFreeText?: 'Use MAM';
-		mMamOccupiedText?: 'MAM is occupied';
+		],
+		mMamFreeText?: 'Use MAM',
+		mMamOccupiedText?: 'MAM is occupied',
 		mMeshes: [
 			(
 				| '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_1.Tradingpost_Stage_1'
@@ -122,9 +132,9 @@ export type FGBuildableTradingPost__update8__type =
 				| '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_5.Tradingpost_Stage_5'
 				| '/Game/FactoryGame/Buildable/Factory/TradingPost/Mesh/Tradingpost_Stage_6.Tradingpost_Stage_6'
 			)[],
-		];
-		mNeedPlayingBuildEffectNotification: boolean__type;
+		],
+		mNeedPlayingBuildEffectNotification: boolean__type,
 	};
 
-export type mOutputInventoryHandlerData__type =
-	empty_object__type;
+export type mOutputInventoryHandlerData__type
+	= empty_object__type;

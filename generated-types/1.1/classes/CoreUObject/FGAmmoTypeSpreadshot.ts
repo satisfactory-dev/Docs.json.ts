@@ -1,45 +1,49 @@
-import {
+import type {
 	EditorCurveData__type,
 	v1_0_base__mGasType__type,
 	v1_0_base__mClassToScanFor__type,
 } from '../../common/unassigned.js';
 
-import {FGAmmoTypeProjectile__base__type} from './FGAmmoTypeProjectile.js';
+import type {
+	FGAmmoTypeProjectile__base__type
+} from './FGAmmoTypeProjectile.js';
 
-import {boolean__type} from '../../../common/common/scalar.js';
+import type {
+	boolean__type
+} from '../../../common/common/scalar.js';
 
-import {
+import type {
 	empty_object__type,
 	common_base__FGAmmoTypeSpreadshot__pre_1_1__type,
 	NativeClass__type,
 } from '../../../common/common/unassigned.js';
 
-export type FGAmmoTypeSpreadshot__type = FGAmmoTypeProjectile__base__type &
-	common_base__FGAmmoTypeSpreadshot__pre_1_1__type &
-	FGAmmoTypeSpreadshot__base__type;
+export type FGAmmoTypeSpreadshot__type = FGAmmoTypeProjectile__base__type
+	& common_base__FGAmmoTypeSpreadshot__pre_1_1__type
+	& FGAmmoTypeSpreadshot__base__type;
 
 export type FGAmmoTypeSpreadshot__base__type = {
-	mAmmoDamageFalloff: EditorCurveData__type;
+	mAmmoDamageFalloff: EditorCurveData__type,
 	mFiringSounds:
 		| ''
 		| [
-				(
-					| '/Game/WwiseAudio/Events/Equipment/RebarGun/Play_RebarGun_Scatter_Fire.Play_RebarGun_Scatter_Fire'
-					| '/Game/WwiseAudio/Events/Equipment/Equipment_Weapons/RebarGun/3p/Play_RebarGun_Scatter_Fire_3p.Play_RebarGun_Scatter_Fire_3p'
-				),
-				...(
-					| '/Game/WwiseAudio/Events/Equipment/RebarGun/Play_RebarGun_Scatter_Fire.Play_RebarGun_Scatter_Fire'
-					| '/Game/WwiseAudio/Events/Equipment/Equipment_Weapons/RebarGun/3p/Play_RebarGun_Scatter_Fire_3p.Play_RebarGun_Scatter_Fire_3p'
-				)[],
-		];
-	mAudioEventsCache: empty_object__type;
-	mGasType: v1_0_base__mGasType__type;
-	mIsAlienItem: boolean__type;
-	mClassToScanFor: v1_0_base__mClassToScanFor__type;
-	mNeedsPickUpMarker: boolean__type;
+			(
+				| '/Game/WwiseAudio/Events/Equipment/RebarGun/Play_RebarGun_Scatter_Fire.Play_RebarGun_Scatter_Fire'
+				| '/Game/WwiseAudio/Events/Equipment/Equipment_Weapons/RebarGun/3p/Play_RebarGun_Scatter_Fire_3p.Play_RebarGun_Scatter_Fire_3p'
+			),
+			...(
+				| '/Game/WwiseAudio/Events/Equipment/RebarGun/Play_RebarGun_Scatter_Fire.Play_RebarGun_Scatter_Fire'
+				| '/Game/WwiseAudio/Events/Equipment/Equipment_Weapons/RebarGun/3p/Play_RebarGun_Scatter_Fire_3p.Play_RebarGun_Scatter_Fire_3p'
+			)[],
+		],
+	mAudioEventsCache: empty_object__type,
+	mGasType: v1_0_base__mGasType__type,
+	mIsAlienItem: boolean__type,
+	mClassToScanFor: v1_0_base__mClassToScanFor__type,
+	mNeedsPickUpMarker: boolean__type,
 };
 
-export type FGAmmoTypeSpreadshot__NativeClass =
-	NativeClass__type & {
-		Classes: [FGAmmoTypeSpreadshot__type];
+export type FGAmmoTypeSpreadshot__NativeClass
+	= NativeClass__type & {
+		Classes: [FGAmmoTypeSpreadshot__type],
 	};

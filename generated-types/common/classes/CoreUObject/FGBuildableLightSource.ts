@@ -1,29 +1,33 @@
-import {
+import type {
 	color_decimal__type,
 	empty_object__type,
 	common_base__mLightControlData__type,
 } from '../../common/unassigned.js';
 
-import {boolean__type, decimal_string__type} from '../../common/scalar.js';
+import type {
+	boolean__type, decimal_string__type
+} from '../../common/scalar.js';
 
-import {common_base__FGBuildable__base__type} from './FGBuildable.js';
+import type {
+	common_base__FGBuildable__base__type
+} from './FGBuildable.js';
 
-export type common_base__FGBuildableLightSource__type =
-	common_base__FGBuildableLightSource__base__type & {
+export type common_base__FGBuildableLightSource__type
+	= common_base__FGBuildableLightSource__base__type & {
 		newCustomizationData?: {
 			OverrideColorData: {
-				PrimaryColor: color_decimal__type;
-				SecondaryColor: color_decimal__type;
-			};
-		};
+				PrimaryColor: color_decimal__type,
+				SecondaryColor: color_decimal__type,
+			},
+		},
 	};
 
-export type common_base__FGBuildableLightSource__base__type =
-	common_base__FGBuildable__base__type & {
-		OnBuildableLightSourceStateChanged: empty_object__type;
-		mIsEnabled: boolean__type;
-		mLightControlData: common_base__mLightControlData__type;
-		mPowerConsumption: decimal_string__type;
-		mHasPower: boolean__type;
-		mIsDay: boolean__type;
+export type common_base__FGBuildableLightSource__base__type
+	= common_base__FGBuildable__base__type & {
+		OnBuildableLightSourceStateChanged: empty_object__type,
+		mIsEnabled: boolean__type,
+		mLightControlData: common_base__mLightControlData__type,
+		mPowerConsumption: decimal_string__type,
+		mHasPower: boolean__type,
+		mIsDay: boolean__type,
 	};

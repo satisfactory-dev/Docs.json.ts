@@ -1,13 +1,19 @@
-import {v1_0_base__FGBuildableLightSource__type} from '../../common/unassigned.js';
+import type {
+	v1_0_base__FGBuildableLightSource__type
+} from '../../common/unassigned.js';
 
-import {FGBuildable__base__type} from './FGBuildable.js';
+import type {
+	FGBuildable__base__type
+} from './FGBuildable.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.js';
+import type {
+	NativeClass__type
+} from '../../../common/common/unassigned.js';
 
-export type FGBuildableLightSource__type =
-	v1_0_base__FGBuildableLightSource__type & FGBuildable__base__type;
+export type FGBuildableLightSource__type
+	= v1_0_base__FGBuildableLightSource__type & FGBuildable__base__type;
 
-export type FGBuildableLightSource__NativeClass =
-	NativeClass__type & {
-		Classes: [FGBuildableLightSource__type, FGBuildableLightSource__type];
+export type FGBuildableLightSource__NativeClass
+	= NativeClass__type & {
+		Classes: [FGBuildableLightSource__type, FGBuildableLightSource__type],
 	};
