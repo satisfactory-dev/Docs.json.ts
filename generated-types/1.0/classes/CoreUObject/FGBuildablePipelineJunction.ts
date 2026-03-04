@@ -1,4 +1,4 @@
-import {FGBuildable__pipeline_accessory__type} from './FGBuildable.ts';
+import {FGBuildable__pipeline_accessory__type} from './FGBuildable.js';
 
 import {common_base__FGBuildablePipelineJunction__type} from '../../../common/classes/CoreUObject/FGBuildablePipelineJunction.ts';
 

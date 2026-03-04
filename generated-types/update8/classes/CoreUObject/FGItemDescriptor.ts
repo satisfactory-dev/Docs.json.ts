@@ -1,4 +1,4 @@
-import {StringStartsWith} from '../../utils/validators.ts';
+import {StringStartsWith} from '../../utils/validators.js';
 
 import {
 	None__type,

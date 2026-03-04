@@ -1,8 +1,8 @@
-import {UnrealEngineString, StringStartsWith} from '../utils/validators.ts';
+import {UnrealEngineString, StringStartsWith} from '../utils/validators.js';
 
-import {FGBuildable__base__type} from '../classes/CoreUObject/FGBuildable.ts';
+import {FGBuildable__base__type} from '../classes/CoreUObject/FGBuildable.js';
 
-import {FGBuildableDoor__automated__type} from '../classes/CoreUObject/FGBuildableDoor.ts';
+import {FGBuildableDoor__automated__type} from '../classes/CoreUObject/FGBuildableDoor.js';
 
 import {
 	boolean__type,

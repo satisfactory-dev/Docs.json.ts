@@ -1,9 +1,9 @@
-import {StringStartsWith} from '../../utils/validators.ts';
+import {StringStartsWith} from '../../utils/validators.js';
 
 import {
 	v1_0_base__FGBuildable__base__type,
 	v1_0_base__FGBuildable__consumes_power_base__version_1__type,
-} from '../../common/unassigned.ts';
+} from '../../common/unassigned.js';
 
 import {
 	empty_object__type,

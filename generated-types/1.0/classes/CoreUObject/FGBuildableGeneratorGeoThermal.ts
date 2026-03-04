@@ -1,4 +1,4 @@
-import {FGBuildableGenerator__base__type} from './FGBuildableGenerator.ts';
+import {FGBuildableGenerator__base__type} from './FGBuildableGenerator.js';
 
 import {common_base__FGBuildableGeneratorGeoThermal__type} from '../../../common/classes/CoreUObject/FGBuildableGeneratorGeoThermal.ts';
 

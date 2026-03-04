@@ -1,6 +1,6 @@
-import {FGEquipment__base__type} from './FGEquipment.ts';
+import {FGEquipment__base__type} from './FGEquipment.js';
 
-import {FGSuitBase__1_0__type} from '../../common/unassigned.ts';
+import {FGSuitBase__1_0__type} from '../../common/unassigned.js';
 
 import {NativeClass__type} from '../../../common/common/unassigned.ts';
 

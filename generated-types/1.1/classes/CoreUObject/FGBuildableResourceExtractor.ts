@@ -3,9 +3,9 @@ import {
 	FGBuildableResourceExtractor__miner_mk3__type,
 	v1_0_base__FGBuildableResourceExtractor__miner__type,
 	v1_0_base__FGBuildableResourceExtractor__oil_extractor__type,
-} from '../../common/unassigned.ts';
+} from '../../common/unassigned.js';
 
-import {FGBuildable__base__type} from './FGBuildable.ts';
+import {FGBuildable__base__type} from './FGBuildable.js';
 
 import {NativeClass__type} from '../../../common/common/unassigned.ts';
 

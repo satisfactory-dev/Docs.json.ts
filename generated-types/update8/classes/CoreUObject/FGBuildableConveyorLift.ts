@@ -1,4 +1,4 @@
-import {FGBuildableConveyorBelt__base__type} from './FGBuildableConveyorBelt.ts';
+import {FGBuildableConveyorBelt__base__type} from './FGBuildableConveyorBelt.js';
 
 import {common_base__FGBuildableConveyorLift__type} from '../../../common/classes/CoreUObject/FGBuildableConveyorLift.ts';
 

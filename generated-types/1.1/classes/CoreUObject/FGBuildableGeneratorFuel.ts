@@ -2,9 +2,9 @@ import {
 	v1_0_base__FGBuildableGeneratorFuel__biogen__type,
 	v1_0_base__FGBuildableGeneratorFuel__liquid__type,
 	v1_0_base__FGBuildableGeneratorFuel__base__type,
-} from '../../common/unassigned.ts';
+} from '../../common/unassigned.js';
 
-import {FGBuildable__base__type} from './FGBuildable.ts';
+import {FGBuildable__base__type} from './FGBuildable.js';
 
 import {common_base__FGBuildableGeneratorFuel__solid__type} from '../../../common/classes/CoreUObject/FGBuildableGeneratorFuel.ts';
 

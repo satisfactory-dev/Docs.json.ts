@@ -1,6 +1,6 @@
-import {boolean__type} from '../../common/scalar.ts';
+import {boolean__type} from '../../common/scalar.js';
 
-import {common_base__FGBuildableFoundation__base__type} from './FGBuildableFoundation.ts';
+import {common_base__FGBuildableFoundation__base__type} from './FGBuildableFoundation.js';
 
 export type common_base__FGBuildableRamp__type =
 	common_base__FGBuildableFoundation__base__type & {

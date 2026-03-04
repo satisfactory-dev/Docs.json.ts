@@ -1,6 +1,6 @@
-import {UnrealEngineString, StringStartsWith} from '../utils/validators.ts';
+import {UnrealEngineString, StringStartsWith} from '../utils/validators.js';
 
-import {FGBuildableResourceExtractor__miner__base__type} from '../classes/CoreUObject/FGBuildableResourceExtractor.ts';
+import {FGBuildableResourceExtractor__miner__base__type} from '../classes/CoreUObject/FGBuildableResourceExtractor.js';
 
 import {
 	empty_object__type,

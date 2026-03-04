@@ -1,4 +1,4 @@
-import {FGBuildable__pipeline_flow_accessory__type} from './FGBuildable.ts';
+import {FGBuildable__pipeline_flow_accessory__type} from './FGBuildable.js';
 
 import {
 	common_base__FGBuildablePipelinePump__type,

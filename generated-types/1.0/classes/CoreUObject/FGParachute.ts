@@ -1,13 +1,13 @@
-import {UnrealEngineString, StringStartsWith} from '../../utils/validators.ts';
+import {UnrealEngineString, StringStartsWith} from '../../utils/validators.js';
 
 import {
 	FilterMontageTag__type,
 	Montage_1P__type,
 	Montage_3P__type,
 	CameraAnim__type,
-} from '../../common/unassigned.ts';
+} from '../../common/unassigned.js';
 
-import {FGEquipment__base__type} from './FGEquipment.ts';
+import {FGEquipment__base__type} from './FGEquipment.js';
 
 import {boolean__type} from '../../../common/common/scalar.ts';
 

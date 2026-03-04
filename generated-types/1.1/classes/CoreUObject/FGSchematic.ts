@@ -2,7 +2,7 @@ import {
 	v1_0_base__mStatisticGameplayTag__type,
 	mStatisticGameplayTag__type,
 	v1_0_base__FGSchematic__base__properties__type,
-} from '../../common/unassigned.ts';
+} from '../../common/unassigned.js';
 
 import {
 	empty_object__type,

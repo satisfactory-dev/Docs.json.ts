@@ -1,8 +1,8 @@
-import {UnrealEngineString, StringStartsWith} from '../../utils/validators.ts';
+import {UnrealEngineString, StringStartsWith} from '../../utils/validators.js';
 
-import {FilterMontageTag__type} from '../../common/unassigned.ts';
+import {FilterMontageTag__type} from '../../common/unassigned.js';
 
-import {FGEquipment__base__type} from './FGEquipment.ts';
+import {FGEquipment__base__type} from './FGEquipment.js';
 
 import {
 	boolean__type,

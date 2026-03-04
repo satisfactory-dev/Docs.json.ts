@@ -1,4 +1,4 @@
-import {FGBuildableRamp__type} from './FGBuildableRamp.ts';
+import {FGBuildableRamp__type} from './FGBuildableRamp.js';
 
 import {NativeClass__type} from '../../../common/common/unassigned.ts';
 

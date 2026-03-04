@@ -1,9 +1,9 @@
 import {
 	decimal_string__type,
 	integer_string__type,
-} from '../../common/scalar.ts';
+} from '../../common/scalar.js';
 
-import {common_base__FGBuildable__base__type} from './FGBuildable.ts';
+import {common_base__FGBuildable__base__type} from './FGBuildable.js';
 
 export type common_base__FGBuildableLadder__type =
 	common_base__FGBuildable__base__type & {

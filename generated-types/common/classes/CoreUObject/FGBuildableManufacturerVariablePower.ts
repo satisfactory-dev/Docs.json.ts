@@ -1,8 +1,8 @@
-import {decimal_string__type} from '../../common/scalar.ts';
+import {decimal_string__type} from '../../common/scalar.js';
 
-import {empty_object__type, xyz_array__type} from '../../common/unassigned.ts';
+import {empty_object__type, xyz_array__type} from '../../common/unassigned.js';
 
-import {common_base__FGBuildableManufacturer__base__type} from './FGBuildableManufacturer.ts';
+import {common_base__FGBuildableManufacturer__base__type} from './FGBuildableManufacturer.js';
 
 export type common_base__FGBuildableManufacturerVariablePower__base__type =
 	common_base__FGBuildableManufacturer__base__type & {

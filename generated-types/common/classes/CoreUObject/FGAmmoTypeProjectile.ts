@@ -1,10 +1,10 @@
-import {UnrealEngineString, StringStartsWith} from '../../utils/validators.ts';
+import {UnrealEngineString, StringStartsWith} from '../../utils/validators.js';
 
 import {
 	common_base__FGAmmoTypeProjectile__pre_1_1__type,
 	common_base__FGAmmoTypeProjectile__base__pre_1_1__type,
 	common_base__EditorCurveData__type,
-} from '../../common/unassigned.ts';
+} from '../../common/unassigned.js';
 
 export type common_base__FGAmmoTypeProjectile__type =
 	common_base__FGAmmoTypeProjectile__base__type &

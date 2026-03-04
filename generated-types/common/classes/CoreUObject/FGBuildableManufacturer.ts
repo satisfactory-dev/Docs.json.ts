@@ -3,14 +3,14 @@ import {
 	decimal_string__type,
 	boolean_extended__type,
 	integer_string__type,
-} from '../../common/scalar.ts';
+} from '../../common/scalar.js';
 
 import {
 	empty_object__type,
 	color_decimal__type,
-} from '../../common/unassigned.ts';
+} from '../../common/unassigned.js';
 
-import {common_base__FGBuildable__consumes_power_base__type} from './FGBuildable.ts';
+import {common_base__FGBuildable__consumes_power_base__type} from './FGBuildable.js';
 
 export type common_base__FGBuildableManufacturer__type =
 	common_base__FGBuildableManufacturer__base__type;

@@ -1,4 +1,4 @@
-import {FGItemDescriptor__FGResourceDescriptor__type} from './FGItemDescriptor.ts';
+import {FGItemDescriptor__FGResourceDescriptor__type} from './FGItemDescriptor.js';
 
 import {decimal_string__type} from '../../../common/common/scalar.ts';
 

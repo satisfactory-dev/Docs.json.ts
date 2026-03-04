@@ -1,4 +1,4 @@
-import {FGItemDescriptor__FGResourceDescriptor__type} from './FGItemDescriptor.ts';
+import {FGItemDescriptor__FGResourceDescriptor__type} from './FGItemDescriptor.js';
 
 import {
 	common_base__FGItemDescriptorNuclearFuel__waste__type,

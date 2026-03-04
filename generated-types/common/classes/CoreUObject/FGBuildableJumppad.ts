@@ -4,15 +4,15 @@ import {
 	decimal_string__type,
 	decimal_string__signed__type,
 	boolean__type,
-} from '../../common/scalar.ts';
+} from '../../common/scalar.js';
 
 import {
 	empty_object__type,
 	xyz__type,
 	pitch_yaw_roll__type,
-} from '../../common/unassigned.ts';
+} from '../../common/unassigned.js';
 
-import {common_base__FGBuildable__consumes_power_base__type} from './FGBuildable.ts';
+import {common_base__FGBuildable__consumes_power_base__type} from './FGBuildable.js';
 
 export type common_base__FGBuildableJumppad__type =
 	common_base__FGBuildable__consumes_power_base__type & {

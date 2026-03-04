@@ -1,4 +1,4 @@
-import {FGBuildable__extractor_base__shared__type} from './FGBuildable.ts';
+import {FGBuildable__extractor_base__shared__type} from './FGBuildable.js';
 
 import {common_base__FGBuildableFrackingActivator__type} from '../../../common/classes/CoreUObject/FGBuildableFrackingActivator.ts';
 

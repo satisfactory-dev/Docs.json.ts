@@ -1,6 +1,6 @@
-import {FGBuildable__base__type} from './FGBuildable.ts';
+import {FGBuildable__base__type} from './FGBuildable.js';
 
-import {v1_0_base__FGBuildablePipeline__properties__type} from '../../common/unassigned.ts';
+import {v1_0_base__FGBuildablePipeline__properties__type} from '../../common/unassigned.js';
 
 import {
 	common_base__FGBuildablePipeline__pre_1_1__type,

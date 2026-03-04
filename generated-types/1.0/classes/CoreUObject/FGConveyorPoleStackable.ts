@@ -1,4 +1,4 @@
-import {FGBuildablePoleLightweight__type} from './FGBuildablePoleLightweight.ts';
+import {FGBuildablePoleLightweight__type} from './FGBuildablePoleLightweight.js';
 
 import {NativeClass__type} from '../../../common/common/unassigned.ts';
 

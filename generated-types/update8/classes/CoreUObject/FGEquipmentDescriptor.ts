@@ -1,7 +1,7 @@
 import {
 	FGItemDescriptor__FGResourceDescriptor__type,
 	FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type,
-} from './FGItemDescriptor.ts';
+} from './FGItemDescriptor.js';
 
 import {
 	common_base__FGEquipmentDescriptor__base__type,

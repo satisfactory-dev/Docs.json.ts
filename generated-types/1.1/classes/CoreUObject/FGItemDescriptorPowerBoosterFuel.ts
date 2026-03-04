@@ -1,4 +1,4 @@
-import {v1_0_base__FGItemDescriptorPowerBoosterFuel__type} from '../../common/unassigned.ts';
+import {v1_0_base__FGItemDescriptorPowerBoosterFuel__type} from '../../common/unassigned.js';
 
 import {NativeClass__type} from '../../../common/common/unassigned.ts';
 

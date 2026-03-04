@@ -1,4 +1,4 @@
-import {FGBuildable__docking_station_base__type} from './FGBuildable.ts';
+import {FGBuildable__docking_station_base__type} from './FGBuildable.js';
 
 import {common_base__FGBuildableDockingStation__type} from '../../../common/classes/CoreUObject/FGBuildableDockingStation.ts';
 

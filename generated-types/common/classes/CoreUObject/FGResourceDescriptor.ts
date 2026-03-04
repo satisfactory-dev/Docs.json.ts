@@ -1,8 +1,8 @@
-import {decimal_string__type} from '../../common/scalar.ts';
+import {decimal_string__type} from '../../common/scalar.js';
 
-import {color_decimal__type} from '../../common/unassigned.ts';
+import {color_decimal__type} from '../../common/unassigned.js';
 
-import {common_base__FGItemDescriptor__FGResourceDescriptor__type} from './FGItemDescriptor.ts';
+import {common_base__FGItemDescriptor__FGResourceDescriptor__type} from './FGItemDescriptor.js';
 
 export type common_base__FGResourceDescriptor__type =
 	common_base__FGItemDescriptor__FGResourceDescriptor__type & {

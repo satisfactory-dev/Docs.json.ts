@@ -1,8 +1,8 @@
-import {decimal_string__type} from '../../common/scalar.ts';
+import {decimal_string__type} from '../../common/scalar.js';
 
-import {None__type, xyz__type} from '../../common/unassigned.ts';
+import {None__type, xyz__type} from '../../common/unassigned.js';
 
-import {common_base__FGBuildable__base__type} from './FGBuildable.ts';
+import {common_base__FGBuildable__base__type} from './FGBuildable.js';
 
 export type common_base__FGBuildableWire__type =
 	common_base__FGBuildable__base__type & {

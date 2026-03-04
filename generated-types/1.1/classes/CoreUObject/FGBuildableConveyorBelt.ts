@@ -1,9 +1,9 @@
 import {
 	v1_0_base__FGBuildableConveyorBelt__pre_1_1__type,
 	has__mAttachedThroughputMonitors__type,
-} from '../../common/unassigned.ts';
+} from '../../common/unassigned.js';
 
-import {FGBuildable__base__type} from './FGBuildable.ts';
+import {FGBuildable__base__type} from './FGBuildable.js';
 
 import {NativeClass__type} from '../../../common/common/unassigned.ts';
 

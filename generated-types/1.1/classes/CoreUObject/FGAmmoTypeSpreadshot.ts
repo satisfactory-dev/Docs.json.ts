@@ -2,9 +2,9 @@ import {
 	EditorCurveData__type,
 	v1_0_base__mGasType__type,
 	v1_0_base__mClassToScanFor__type,
-} from '../../common/unassigned.ts';
+} from '../../common/unassigned.js';
 
-import {FGAmmoTypeProjectile__base__type} from './FGAmmoTypeProjectile.ts';
+import {FGAmmoTypeProjectile__base__type} from './FGAmmoTypeProjectile.js';
 
 import {boolean__type} from '../../../common/common/scalar.ts';
 

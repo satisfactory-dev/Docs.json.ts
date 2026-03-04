@@ -1,4 +1,4 @@
-import {FGBuildableWallLightweight__type} from './FGBuildableWallLightweight.ts';
+import {FGBuildableWallLightweight__type} from './FGBuildableWallLightweight.js';
 
 import {NativeClass__type} from '../../../common/common/unassigned.ts';
 

@@ -1,8 +1,8 @@
-import {empty_object__type, xyz__type} from '../../common/unassigned.ts';
+import {empty_object__type, xyz__type} from '../../common/unassigned.js';
 
-import {decimal_string__type, boolean__type} from '../../common/scalar.ts';
+import {decimal_string__type, boolean__type} from '../../common/scalar.js';
 
-import {common_base__FGEquipment__base__type} from './FGEquipment.ts';
+import {common_base__FGEquipment__base__type} from './FGEquipment.js';
 
 export type common_base__FGHoverPack__type =
 	common_base__FGEquipment__base__type & {

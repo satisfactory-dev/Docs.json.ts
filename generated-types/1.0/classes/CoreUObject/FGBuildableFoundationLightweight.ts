@@ -1,4 +1,4 @@
-import {FGBuildableFoundation__type} from './FGBuildableFoundation.ts';
+import {FGBuildableFoundation__type} from './FGBuildableFoundation.js';
 
 import {NativeClass__type} from '../../../common/common/unassigned.ts';
 

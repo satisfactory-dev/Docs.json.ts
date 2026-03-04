@@ -1,9 +1,9 @@
 import {
 	FGBuildableDoor__automated__with__bigOverlapList_0__type,
 	v1_0_base__FGBuildableDoor__base__type,
-} from '../../common/unassigned.ts';
+} from '../../common/unassigned.js';
 
-import {FGBuildable__base__type} from './FGBuildable.ts';
+import {FGBuildable__base__type} from './FGBuildable.js';
 
 import {boolean__type} from '../../../common/common/scalar.ts';
 

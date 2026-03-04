@@ -1,12 +1,12 @@
-import {mAspect__type, empty_object__type} from '../../common/unassigned.ts';
+import {mAspect__type, empty_object__type} from '../../common/unassigned.js';
 
 import {
 	boolean__type,
 	integer_string__type,
 	decimal_string__type,
-} from '../../common/scalar.ts';
+} from '../../common/scalar.js';
 
-import {common_base__FGBuildable__base__type} from './FGBuildable.ts';
+import {common_base__FGBuildable__base__type} from './FGBuildable.js';
 
 export type common_base__FGBuildableRailroadSignal__type =
 	common_base__FGBuildable__base__type & {

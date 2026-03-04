@@ -1,9 +1,9 @@
 import {
 	decimal_string__type,
 	integer_string__type,
-} from '../../common/scalar.ts';
+} from '../../common/scalar.js';
 
-import {common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type} from './FGItemDescriptor.ts';
+import {common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type} from './FGItemDescriptor.js';
 
 export type common_base__FGVehicleDescriptor__fueled_with_inventory__type =
 	common_base__FGVehicleDescriptor__with_inventory__type & {

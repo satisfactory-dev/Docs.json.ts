@@ -1,4 +1,4 @@
-import {FGBuildable__base__type} from './FGBuildable.ts';
+import {FGBuildable__base__type} from './FGBuildable.js';
 
 import {common_base__FGBuildablePipeHyper__type} from '../../../common/classes/CoreUObject/FGBuildablePipeHyper.ts';
 

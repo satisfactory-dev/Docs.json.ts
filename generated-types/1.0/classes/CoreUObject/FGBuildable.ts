@@ -1,9 +1,9 @@
 import {
 	mClearanceData__type,
 	FGBuildable__consumes_power_base__version_1__type,
-} from '../../common/unassigned.ts';
+} from '../../common/unassigned.js';
 
-import {FGBuildableAttachmentMergerSplitter__with_inventory_size__type} from './FGBuildableAttachmentMergerSplitter.ts';
+import {FGBuildableAttachmentMergerSplitter__with_inventory_size__type} from './FGBuildableAttachmentMergerSplitter.js';
 
 import {
 	boolean__type,

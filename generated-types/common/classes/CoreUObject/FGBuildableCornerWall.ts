@@ -1,6 +1,6 @@
-import {decimal_string__type, boolean__type} from '../../common/scalar.ts';
+import {decimal_string__type, boolean__type} from '../../common/scalar.js';
 
-import {common_base__FGBuildableWall__base__type} from './FGBuildableWall.ts';
+import {common_base__FGBuildableWall__base__type} from './FGBuildableWall.js';
 
 export type common_base__FGBuildableCornerWall__type =
 	common_base__FGBuildableWall__base__type & {

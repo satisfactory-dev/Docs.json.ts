@@ -1,4 +1,4 @@
-import {FGBuildableWall__base__type} from './FGBuildableWall.ts';
+import {FGBuildableWall__base__type} from './FGBuildableWall.js';
 
 import {common_base__FGBuildableWall__base__rectangle__type} from '../../../common/classes/CoreUObject/FGBuildableWall.ts';
 

@@ -1,4 +1,4 @@
-import {FGCustomizationRecipe__FGRecipe__type} from './FGCustomizationRecipe.ts';
+import {FGCustomizationRecipe__FGRecipe__type} from './FGCustomizationRecipe.js';
 
 import {
 	ItemClass__amount_required__type,

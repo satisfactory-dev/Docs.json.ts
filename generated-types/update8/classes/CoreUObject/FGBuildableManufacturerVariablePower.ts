@@ -1,4 +1,4 @@
-import {FGBuildableManufacturer__base__type} from './FGBuildableManufacturer.ts';
+import {FGBuildableManufacturer__base__type} from './FGBuildableManufacturer.js';
 
 import {
 	common_base__FGBuildableManufacturerVariablePower__HadronCollider__type,

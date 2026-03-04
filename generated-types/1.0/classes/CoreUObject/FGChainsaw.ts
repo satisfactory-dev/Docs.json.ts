@@ -1,8 +1,8 @@
-import {UnrealEngineString, StringStartsWith} from '../../utils/validators.ts';
+import {UnrealEngineString, StringStartsWith} from '../../utils/validators.js';
 
-import {Montage_1P__type, Montage_3P__type} from '../../common/unassigned.ts';
+import {Montage_1P__type, Montage_3P__type} from '../../common/unassigned.js';
 
-import {FGEquipment__base__type} from './FGEquipment.ts';
+import {FGEquipment__base__type} from './FGEquipment.js';
 
 import {
 	integer_string__type,

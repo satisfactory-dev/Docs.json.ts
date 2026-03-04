@@ -1,7 +1,7 @@
 import {
 	v1_0_base__FGConsumableEquipment__equipment__type,
 	v1_0_base__FGConsumableEquipment__medkit__type,
-} from '../../common/unassigned.ts';
+} from '../../common/unassigned.js';
 
 import {NativeClass__type} from '../../../common/common/unassigned.ts';
 

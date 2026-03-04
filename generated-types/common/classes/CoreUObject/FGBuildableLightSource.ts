@@ -2,11 +2,11 @@ import {
 	color_decimal__type,
 	empty_object__type,
 	common_base__mLightControlData__type,
-} from '../../common/unassigned.ts';
+} from '../../common/unassigned.js';
 
-import {boolean__type, decimal_string__type} from '../../common/scalar.ts';
+import {boolean__type, decimal_string__type} from '../../common/scalar.js';
 
-import {common_base__FGBuildable__base__type} from './FGBuildable.ts';
+import {common_base__FGBuildable__base__type} from './FGBuildable.js';
 
 export type common_base__FGBuildableLightSource__type =
 	common_base__FGBuildableLightSource__base__type & {

@@ -2,7 +2,7 @@ import {
 	v1_0_base__FGSuitBase__1_0__mEquipMontage__Montages__AudioEvent__type,
 	v1_0_base__FGEquipment__base__type,
 	v1_0_base__FGSuitBase__1_0__pre_1_1__type,
-} from '../../common/unassigned.ts';
+} from '../../common/unassigned.js';
 
 import {boolean__type} from '../../../common/common/scalar.ts';
 

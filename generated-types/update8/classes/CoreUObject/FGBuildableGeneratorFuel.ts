@@ -1,4 +1,4 @@
-import {FGBuildableGenerator__base__type} from './FGBuildableGenerator.ts';
+import {FGBuildableGenerator__base__type} from './FGBuildableGenerator.js';
 
 import {
 	empty_object__type,

@@ -1,11 +1,11 @@
-import {UnrealEngineString} from '../../utils/validators.ts';
+import {UnrealEngineString} from '../../utils/validators.js';
 
 import {
 	v1_0_base__FGBuildableAttachmentSplitter__type,
 	has__mSavedDirections__type,
-} from '../../common/unassigned.ts';
+} from '../../common/unassigned.js';
 
-import {FGBuildable__base__type} from './FGBuildable.ts';
+import {FGBuildable__base__type} from './FGBuildable.js';
 
 import {NativeClass__type} from '../../../common/common/unassigned.ts';
 

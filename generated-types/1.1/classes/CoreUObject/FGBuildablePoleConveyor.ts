@@ -1,6 +1,6 @@
-import {mPoleVariations__type} from '../../common/unassigned.ts';
+import {mPoleVariations__type} from '../../common/unassigned.js';
 
-import {FGBuildable__base__type} from './FGBuildable.ts';
+import {FGBuildable__base__type} from './FGBuildable.js';
 
 import {decimal_string__type} from '../../../common/common/scalar.ts';
 

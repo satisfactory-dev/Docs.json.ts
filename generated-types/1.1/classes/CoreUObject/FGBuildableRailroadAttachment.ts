@@ -1,4 +1,4 @@
-import {FGBuildable__base__type} from './FGBuildable.ts';
+import {FGBuildable__base__type} from './FGBuildable.js';
 
 import {boolean__type} from '../../../common/common/scalar.ts';
 

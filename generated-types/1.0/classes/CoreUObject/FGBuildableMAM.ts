@@ -1,4 +1,4 @@
-import {FGBuildable__occupied__final__type} from './FGBuildable.ts';
+import {FGBuildable__occupied__final__type} from './FGBuildable.js';
 
 import {decimal_string__type} from '../../../common/common/scalar.ts';
 

@@ -1,6 +1,6 @@
-import {v1_0_base__FGBuildable__consumes_power_base__type} from '../../common/unassigned.ts';
+import {v1_0_base__FGBuildable__consumes_power_base__type} from '../../common/unassigned.js';
 
-import {FGBuildable__base__type} from './FGBuildable.ts';
+import {FGBuildable__base__type} from './FGBuildable.js';
 
 import {integer_string__type} from '../../../common/common/scalar.ts';
 

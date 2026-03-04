@@ -1,4 +1,4 @@
-import {UnrealEngineString, StringStartsWith} from '../../utils/validators.ts';
+import {UnrealEngineString, StringStartsWith} from '../../utils/validators.js';
 
 import {
 	Montage_1P__type,
@@ -6,9 +6,9 @@ import {
 	FilterMontageTag__type,
 	FilterMontageTag__charged__type,
 	CameraAnim__type,
-} from '../../common/unassigned.ts';
+} from '../../common/unassigned.js';
 
-import {FGWeapon__base__type} from './FGWeapon.ts';
+import {FGWeapon__base__type} from './FGWeapon.js';
 
 import {
 	boolean__type,

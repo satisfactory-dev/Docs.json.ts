@@ -1,4 +1,4 @@
-import {FGWeapon__base__type} from './FGWeapon.ts';
+import {FGWeapon__base__type} from './FGWeapon.js';
 
 import {boolean__type} from '../../../common/common/scalar.ts';
 

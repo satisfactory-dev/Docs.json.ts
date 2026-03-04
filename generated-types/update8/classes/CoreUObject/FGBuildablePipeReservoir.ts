@@ -1,4 +1,4 @@
-import {FGBuildable__pipeline_accessory__base__type} from './FGBuildable.ts';
+import {FGBuildable__pipeline_accessory__base__type} from './FGBuildable.js';
 
 import {common_base__FGBuildablePipeReservoir__type} from '../../../common/classes/CoreUObject/FGBuildablePipeReservoir.ts';
 

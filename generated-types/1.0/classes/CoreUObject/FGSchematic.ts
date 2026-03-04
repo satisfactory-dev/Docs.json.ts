@@ -1,4 +1,4 @@
-import {mStatisticGameplayTag__type} from '../../common/unassigned.ts';
+import {mStatisticGameplayTag__type} from '../../common/unassigned.js';
 
 import {
 	integer_string__type,

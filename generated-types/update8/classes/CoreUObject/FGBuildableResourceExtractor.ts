@@ -1,6 +1,6 @@
-import {FGBuildableResourceExtractor__miner_mk3__type} from '../../common/unassigned.ts';
+import {FGBuildableResourceExtractor__miner_mk3__type} from '../../common/unassigned.js';
 
-import {FGBuildable__extractor_base__type} from './FGBuildable.ts';
+import {FGBuildable__extractor_base__type} from './FGBuildable.js';
 
 import {
 	common_base__FGBuildableResourceExtractor__miner__type,

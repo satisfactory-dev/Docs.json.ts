@@ -1,4 +1,4 @@
-import {FGBuildable__consumes_power_base__update8__type} from '../../common/unassigned.ts';
+import {FGBuildable__consumes_power_base__update8__type} from '../../common/unassigned.js';
 
 import {
 	boolean__type,

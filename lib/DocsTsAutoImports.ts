@@ -164,7 +164,7 @@ export class DocsTsAutoImports {
 						import_from = `./${import_from}`;
 					}
 
-					import_from = `${import_from}.ts`;
+					import_from = `${import_from}.js`;
 
 					if (!(import_from in auto_imports[filename])) {
 						auto_imports[filename][import_from] = [];

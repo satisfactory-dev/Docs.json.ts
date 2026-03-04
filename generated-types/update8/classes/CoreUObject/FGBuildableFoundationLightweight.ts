@@ -1,7 +1,7 @@
 import {
 	FGBuildableFoundation__base__type,
 	FGBuildableFoundation__type,
-} from './FGBuildableFoundation.ts';
+} from './FGBuildableFoundation.js';
 
 import {NativeClass__type} from '../../../common/common/unassigned.ts';
 

@@ -25,11 +25,11 @@ import {
 	faux_32__type,
 	faux_34__type,
 	NativeClass__type,
-} from '../../common/unassigned.ts';
+} from '../../common/unassigned.js';
 
-import {common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type} from './FGItemDescriptor.ts';
+import {common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type} from './FGItemDescriptor.js';
 
-import {common_base__FGCustomizationRecipe__FGRecipe__type} from './FGCustomizationRecipe.ts';
+import {common_base__FGCustomizationRecipe__FGRecipe__type} from './FGCustomizationRecipe.js';
 
 export type FGFauxEntry__NativeClass = NativeClass__type & {
 	Classes: [

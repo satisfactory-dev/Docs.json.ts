@@ -3,7 +3,7 @@ import {
 	v1_0_base__FGWeapon__gun_base__properties__type,
 	v1_0_base__FGWeapon__rebar_gun__properties__type,
 	v1_0_base__FGWeapon__rifle__properties__type,
-} from '../../common/unassigned.ts';
+} from '../../common/unassigned.js';
 
 import {
 	common_base__FGWeapon__base__pre_1_1__type,

@@ -1,8 +1,8 @@
-import {mDamageTypes__type} from '../../common/unassigned.ts';
+import {mDamageTypes__type} from '../../common/unassigned.js';
 
-import {decimal_string__type} from '../../common/scalar.ts';
+import {decimal_string__type} from '../../common/scalar.js';
 
-import {common_base__FGEquipment__base__type} from './FGEquipment.ts';
+import {common_base__FGEquipment__base__type} from './FGEquipment.js';
 
 export type common_base__FGEquipmentStunSpear__type =
 	common_base__FGEquipmentStunSpear__base__type & {

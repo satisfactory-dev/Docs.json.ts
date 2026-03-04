@@ -1,4 +1,4 @@
-import {FGEquipment__placeable__type} from './FGEquipment.ts';
+import {FGEquipment__placeable__type} from './FGEquipment.js';
 
 import {common_base__FGPortableMinerDispenser__type} from '../../../common/classes/CoreUObject/FGPortableMinerDispenser.ts';
 

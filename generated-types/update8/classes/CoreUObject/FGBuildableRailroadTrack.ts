@@ -1,4 +1,4 @@
-import {FGBuildable__base__type} from './FGBuildable.ts';
+import {FGBuildable__base__type} from './FGBuildable.js';
 
 import {
 	integer_string__type,

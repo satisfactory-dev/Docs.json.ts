@@ -1,4 +1,4 @@
-import {FGBuildableLightSource__base__type} from './FGBuildableLightSource.ts';
+import {FGBuildableLightSource__base__type} from './FGBuildableLightSource.js';
 
 import {common_base__FGBuildableFloodlight__type} from '../../../common/classes/CoreUObject/FGBuildableFloodlight.ts';
 

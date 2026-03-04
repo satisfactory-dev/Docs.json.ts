@@ -1,4 +1,4 @@
-import {FGBuildable__splitter__base__type} from './FGBuildable.ts';
+import {FGBuildable__splitter__base__type} from './FGBuildable.js';
 
 import {common_base__FGBuildableAttachmentSplitter__type} from '../../../common/classes/CoreUObject/FGBuildableAttachmentSplitter.ts';
 

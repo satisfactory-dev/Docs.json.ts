@@ -1,4 +1,4 @@
-import {FGEquipmentDescriptor__base__type} from './FGEquipmentDescriptor.ts';
+import {FGEquipmentDescriptor__base__type} from './FGEquipmentDescriptor.js';
 
 import {
 	common_base__FGConsumableDescriptor__base__type,

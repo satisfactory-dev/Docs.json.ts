@@ -1,6 +1,6 @@
-import {FGBuildablePillarLightweight__type} from './FGBuildablePillarLightweight.ts';
+import {FGBuildablePillarLightweight__type} from './FGBuildablePillarLightweight.js';
 
-import {FGBuildable__base__type} from './FGBuildable.ts';
+import {FGBuildable__base__type} from './FGBuildable.js';
 
 import {common_base__FGBuildablePillarLightweight__type} from '../../../common/classes/CoreUObject/FGBuildablePillarLightweight.ts';
 

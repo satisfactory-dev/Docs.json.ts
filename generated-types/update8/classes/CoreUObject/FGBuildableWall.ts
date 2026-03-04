@@ -1,6 +1,6 @@
-import {FGBuildableWallLightweight__type} from './FGBuildableWallLightweight.ts';
+import {FGBuildableWallLightweight__type} from './FGBuildableWallLightweight.js';
 
-import {FGBuildable__base__type} from './FGBuildable.ts';
+import {FGBuildable__base__type} from './FGBuildable.js';
 
 import {common_base__FGBuildableWall__base__type} from '../../../common/classes/CoreUObject/FGBuildableWall.ts';
 

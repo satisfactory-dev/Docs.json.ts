@@ -1,7 +1,7 @@
 import {
 	EditorCurveData__type,
 	v1_0_base__FGItemDescriptor__FGResourceDescriptor__type,
-} from '../../common/unassigned.ts';
+} from '../../common/unassigned.js';
 
 import {
 	empty_object__type,

@@ -1,4 +1,4 @@
-import {FGBuildableTrainPlatform__base__type} from './FGBuildableTrainPlatform.ts';
+import {FGBuildableTrainPlatform__base__type} from './FGBuildableTrainPlatform.js';
 
 import {NativeClass__type} from '../../../common/common/unassigned.ts';
 

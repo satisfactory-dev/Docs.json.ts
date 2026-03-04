@@ -1,4 +1,4 @@
-import {FGBuildable__consumes_power_base__type} from './FGBuildable.ts';
+import {FGBuildable__consumes_power_base__type} from './FGBuildable.js';
 
 import {common_base__FGBuildableFactorySimpleProducer__type} from '../../../common/classes/CoreUObject/FGBuildableFactorySimpleProducer.ts';
 

@@ -1,6 +1,6 @@
-import {UnrealEngineString, StringStartsWith} from '../../utils/validators.ts';
+import {UnrealEngineString, StringStartsWith} from '../../utils/validators.js';
 
-import {FGEquipment__base__type} from './FGEquipment.ts';
+import {FGEquipment__base__type} from './FGEquipment.js';
 
 import {common_base__FGSuitBase__type} from '../../../common/classes/CoreUObject/FGSuitBase.ts';
 

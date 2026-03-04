@@ -1,4 +1,4 @@
-import {FGBuildablePassthrough__type} from './FGBuildablePassthrough.ts';
+import {FGBuildablePassthrough__type} from './FGBuildablePassthrough.js';
 
 import {NativeClass__type} from '../../../common/common/unassigned.ts';
 

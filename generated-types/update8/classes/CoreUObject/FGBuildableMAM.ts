@@ -1,4 +1,4 @@
-import {FGBuildable__occupied__type} from './FGBuildable.ts';
+import {FGBuildable__occupied__type} from './FGBuildable.js';
 
 import {common_base__FGBuildableMAM__type} from '../../../common/classes/CoreUObject/FGBuildableMAM.ts';
 

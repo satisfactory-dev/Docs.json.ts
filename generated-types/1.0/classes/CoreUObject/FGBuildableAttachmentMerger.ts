@@ -1,6 +1,6 @@
-import {FGBuildable__base__type} from './FGBuildable.ts';
+import {FGBuildable__base__type} from './FGBuildable.js';
 
-import {FGBuildableAttachmentMergerSplitter__with_inventory_size__type} from './FGBuildableAttachmentMergerSplitter.ts';
+import {FGBuildableAttachmentMergerSplitter__with_inventory_size__type} from './FGBuildableAttachmentMergerSplitter.js';
 
 import {common_base__FGBuildableAttachmentMerger__type} from '../../../common/classes/CoreUObject/FGBuildableAttachmentMerger.ts';
 

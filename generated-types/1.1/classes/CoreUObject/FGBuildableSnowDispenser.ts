@@ -2,9 +2,9 @@ import {
 	FGBuildable__base__type,
 	FGBuildable__occupied__final__type,
 	FGBuildable__tiered__type,
-} from './FGBuildable.ts';
+} from './FGBuildable.js';
 
-import {v1_0_base__FGBuildableSnowDispenser__type} from '../../common/unassigned.ts';
+import {v1_0_base__FGBuildableSnowDispenser__type} from '../../common/unassigned.js';
 
 import {NativeClass__type} from '../../../common/common/unassigned.ts';
 

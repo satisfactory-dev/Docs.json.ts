@@ -1,4 +1,4 @@
-import {FGBuildable__base__type} from './FGBuildable.ts';
+import {FGBuildable__base__type} from './FGBuildable.js';
 
 import {
 	common_base__FGBuildable__pole__base__no_static__pre_1_1__type,

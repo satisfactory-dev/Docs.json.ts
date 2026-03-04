@@ -1,11 +1,11 @@
-import {mBatteryStatus__type} from '../../common/unassigned.ts';
+import {mBatteryStatus__type} from '../../common/unassigned.js';
 
 import {
 	decimal_string__type,
 	integer_string__type,
-} from '../../common/scalar.ts';
+} from '../../common/scalar.js';
 
-import {common_base__FGBuildable__consumes_power_base__type} from './FGBuildable.ts';
+import {common_base__FGBuildable__consumes_power_base__type} from './FGBuildable.js';
 
 export type common_base__FGBuildablePowerStorage__type =
 	common_base__FGBuildable__consumes_power_base__type & {

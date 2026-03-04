@@ -1,4 +1,4 @@
-import {FGEquipment__base__type} from './FGEquipment.ts';
+import {FGEquipment__base__type} from './FGEquipment.js';
 
 import {NativeClass__type} from '../../../common/common/unassigned.ts';
 

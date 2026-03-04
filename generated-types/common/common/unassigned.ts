@@ -2,14 +2,14 @@ import {
 	UnrealEngineString,
 	StringStartsWith,
 	StringPassedRegExp,
-} from '../utils/validators.ts';
+} from '../utils/validators.js';
 
 import {
 	common_base__FGBuildingDescriptor__ClassName__type,
 	common_base__FGBuildingDescriptor__mForm__type,
 	common_base__FGBuildingDescriptor__mSubCategories__type,
 	common_base__FGBuildingDescriptor__type,
-} from '../classes/CoreUObject/FGBuildingDescriptor.ts';
+} from '../classes/CoreUObject/FGBuildingDescriptor.js';
 
 import {
 	common_base__FGBuildable__base__type,
@@ -27,70 +27,70 @@ import {
 	common_base__FGBuildable__pipeline_flow_accessory__type,
 	common_base__FGBuildable__pole__base__no_static__type,
 	common_base__FGBuildable__pole__base__with_static__type,
-} from '../classes/CoreUObject/FGBuildable.ts';
+} from '../classes/CoreUObject/FGBuildable.js';
 
-import {common_base__FGBuildableDroneStation__type} from '../classes/CoreUObject/FGBuildableDroneStation.ts';
+import {common_base__FGBuildableDroneStation__type} from '../classes/CoreUObject/FGBuildableDroneStation.js';
 
-import {common_base__FGBuildableBlueprintDesigner__type} from '../classes/CoreUObject/FGBuildableBlueprintDesigner.ts';
+import {common_base__FGBuildableBlueprintDesigner__type} from '../classes/CoreUObject/FGBuildableBlueprintDesigner.js';
 
 import {
 	common_base__FGBuildableFactory__jump_pad__type,
 	common_base__FGBuildableFactory__landing_pad__type,
 	common_base__FGBuildableFactory__generic__type,
-} from '../classes/CoreUObject/FGBuildableFactory.ts';
+} from '../classes/CoreUObject/FGBuildableFactory.js';
 
-import {common_base__FGBuildableMAM__type} from '../classes/CoreUObject/FGBuildableMAM.ts';
+import {common_base__FGBuildableMAM__type} from '../classes/CoreUObject/FGBuildableMAM.js';
 
-import {common_base__FGBuildableRailroadTrack__type} from '../classes/CoreUObject/FGBuildableRailroadTrack.ts';
+import {common_base__FGBuildableRailroadTrack__type} from '../classes/CoreUObject/FGBuildableRailroadTrack.js';
 
-import {common_base__FGBuildableWire__type} from '../classes/CoreUObject/FGBuildableWire.ts';
+import {common_base__FGBuildableWire__type} from '../classes/CoreUObject/FGBuildableWire.js';
 
-import {common_base__FGBuildablePowerPole__type} from '../classes/CoreUObject/FGBuildablePowerPole.ts';
+import {common_base__FGBuildablePowerPole__type} from '../classes/CoreUObject/FGBuildablePowerPole.js';
 
-import {common_base__FGBuildableTradingPost__type} from '../classes/CoreUObject/FGBuildableTradingPost.ts';
+import {common_base__FGBuildableTradingPost__type} from '../classes/CoreUObject/FGBuildableTradingPost.js';
 
-import {common_base__FGBuildablePillarLightweight__type} from '../classes/CoreUObject/FGBuildablePillarLightweight.ts';
+import {common_base__FGBuildablePillarLightweight__type} from '../classes/CoreUObject/FGBuildablePillarLightweight.js';
 
 import {
 	common_base__FGBuildableWalkway__base__type,
 	common_base__FGBuildableWalkway__type,
-} from '../classes/CoreUObject/FGBuildableWalkway.ts';
+} from '../classes/CoreUObject/FGBuildableWalkway.js';
 
-import {common_base__FGBuildableWalkwayLightweight__type} from '../classes/CoreUObject/FGBuildableWalkwayLightweight.ts';
+import {common_base__FGBuildableWalkwayLightweight__type} from '../classes/CoreUObject/FGBuildableWalkwayLightweight.js';
 
-import {common_base__FGBuildableGenerator__base__type} from '../classes/CoreUObject/FGBuildableGenerator.ts';
+import {common_base__FGBuildableGenerator__base__type} from '../classes/CoreUObject/FGBuildableGenerator.js';
 
 import {
 	common_base__FGBuildableGeneratorFuel__base__type,
 	common_base__FGBuildableGeneratorFuel__solid__type,
 	common_base__FGBuildableGeneratorFuel__liquid__type,
 	common_base__FGBuildableGeneratorFuel__biogen__type,
-} from '../classes/CoreUObject/FGBuildableGeneratorFuel.ts';
+} from '../classes/CoreUObject/FGBuildableGeneratorFuel.js';
 
-import {common_base__FGBuildableGeneratorGeoThermal__type} from '../classes/CoreUObject/FGBuildableGeneratorGeoThermal.ts';
+import {common_base__FGBuildableGeneratorGeoThermal__type} from '../classes/CoreUObject/FGBuildableGeneratorGeoThermal.js';
 
 import {
 	common_base__FGBuildableGeneratorNuclear__mFuel__base__type,
 	common_base__FGBuildableGeneratorNuclear__mFuel__NuclearFuelRod__type,
 	common_base__FGBuildableGeneratorNuclear__mFuel__PlutoniumFuelRod__type,
 	common_base__FGBuildableGeneratorNuclear__type,
-} from '../classes/CoreUObject/FGBuildableGeneratorNuclear.ts';
+} from '../classes/CoreUObject/FGBuildableGeneratorNuclear.js';
 
-import {common_base__FGBuildablePipeline__type} from '../classes/CoreUObject/FGBuildablePipeline.ts';
+import {common_base__FGBuildablePipeline__type} from '../classes/CoreUObject/FGBuildablePipeline.js';
 
-import {common_base__FGBuildableWaterPump__type} from '../classes/CoreUObject/FGBuildableWaterPump.ts';
+import {common_base__FGBuildableWaterPump__type} from '../classes/CoreUObject/FGBuildableWaterPump.js';
 
-import {common_base__FGBuildableResourceSink__type} from '../classes/CoreUObject/FGBuildableResourceSink.ts';
+import {common_base__FGBuildableResourceSink__type} from '../classes/CoreUObject/FGBuildableResourceSink.js';
 
-import {common_base__FGBuildableResourceSinkShop__type} from '../classes/CoreUObject/FGBuildableResourceSinkShop.ts';
+import {common_base__FGBuildableResourceSinkShop__type} from '../classes/CoreUObject/FGBuildableResourceSinkShop.js';
 
-import {common_base__FGItemDescriptorBiomass__type} from '../classes/CoreUObject/FGItemDescriptorBiomass.ts';
+import {common_base__FGItemDescriptorBiomass__type} from '../classes/CoreUObject/FGItemDescriptorBiomass.js';
 
 import {
 	common_base__FGBuildableResourceExtractor__oil_extractor__type,
 	common_base__FGBuildableResourceExtractor__miner__base__type,
 	common_base__FGBuildableResourceExtractor__miner__type,
-} from '../classes/CoreUObject/FGBuildableResourceExtractor.ts';
+} from '../classes/CoreUObject/FGBuildableResourceExtractor.js';
 
 import {
 	common_base__FGBuildableManufacturer__base__type,
@@ -99,125 +99,125 @@ import {
 	common_base__FGBuildableManufacturer__blender__type,
 	common_base__FGBuildableManufacturer__smelter__type,
 	common_base__FGBuildableManufacturer__constructor__type,
-} from '../classes/CoreUObject/FGBuildableManufacturer.ts';
+} from '../classes/CoreUObject/FGBuildableManufacturer.js';
 
 import {
 	common_base__FGBuildableManufacturerVariablePower__base__type,
 	common_base__FGBuildableManufacturerVariablePower__HadronCollider__type,
-} from '../classes/CoreUObject/FGBuildableManufacturerVariablePower.ts';
+} from '../classes/CoreUObject/FGBuildableManufacturerVariablePower.js';
 
 import {
 	common_base__FGEquipment__placeable__type,
 	common_base__FGEquipment__base__type,
-} from '../classes/CoreUObject/FGEquipment.ts';
+} from '../classes/CoreUObject/FGEquipment.js';
 
-import {common_base__FGPortableMinerDispenser__type} from '../classes/CoreUObject/FGPortableMinerDispenser.ts';
+import {common_base__FGPortableMinerDispenser__type} from '../classes/CoreUObject/FGPortableMinerDispenser.js';
 
 import {
 	common_base__FGItemDescriptorNuclearFuel__waste__type,
 	common_base__FGItemDescriptorNuclearFuel__type,
-} from '../classes/CoreUObject/FGItemDescriptorNuclearFuel.ts';
+} from '../classes/CoreUObject/FGItemDescriptorNuclearFuel.js';
 
 import {
 	common_base__FGVehicleDescriptor__powered_no_inventory__type,
 	common_base__FGVehicleDescriptor__with_inventory__type,
 	common_base__FGVehicleDescriptor__fueled_with_inventory__type,
-} from '../classes/CoreUObject/FGVehicleDescriptor.ts';
+} from '../classes/CoreUObject/FGVehicleDescriptor.js';
 
-import {common_base__FGBuildableFrackingExtractor__type} from '../classes/CoreUObject/FGBuildableFrackingExtractor.ts';
+import {common_base__FGBuildableFrackingExtractor__type} from '../classes/CoreUObject/FGBuildableFrackingExtractor.js';
 
-import {common_base__FGBuildableFrackingActivator__type} from '../classes/CoreUObject/FGBuildableFrackingActivator.ts';
+import {common_base__FGBuildableFrackingActivator__type} from '../classes/CoreUObject/FGBuildableFrackingActivator.js';
 
-import {common_base__FGBuildableRailroadSignal__type} from '../classes/CoreUObject/FGBuildableRailroadSignal.ts';
+import {common_base__FGBuildableRailroadSignal__type} from '../classes/CoreUObject/FGBuildableRailroadSignal.js';
 
-import {common_base__FGBuildableTrainPlatform__base__type} from '../classes/CoreUObject/FGBuildableTrainPlatform.ts';
+import {common_base__FGBuildableTrainPlatform__base__type} from '../classes/CoreUObject/FGBuildableTrainPlatform.js';
 
 import {
 	common_base__FGBuildableTrainPlatformCargo__FGBuildableRailroadStation__type,
 	common_base__FGBuildableTrainPlatformCargo__type,
-} from '../classes/CoreUObject/FGBuildableTrainPlatformCargo.ts';
+} from '../classes/CoreUObject/FGBuildableTrainPlatformCargo.js';
 
-import {common_base__FGBuildableRailroadStation__type} from '../classes/CoreUObject/FGBuildableRailroadStation.ts';
+import {common_base__FGBuildableRailroadStation__type} from '../classes/CoreUObject/FGBuildableRailroadStation.js';
 
-import {common_base__FGBuildableStorage__type} from '../classes/CoreUObject/FGBuildableStorage.ts';
+import {common_base__FGBuildableStorage__type} from '../classes/CoreUObject/FGBuildableStorage.js';
 
-import {common_base__FGPipeHyperStart__type} from '../classes/CoreUObject/FGPipeHyperStart.ts';
+import {common_base__FGPipeHyperStart__type} from '../classes/CoreUObject/FGPipeHyperStart.js';
 
-import {common_base__FGBuildablePipeHyper__type} from '../classes/CoreUObject/FGBuildablePipeHyper.ts';
+import {common_base__FGBuildablePipeHyper__type} from '../classes/CoreUObject/FGBuildablePipeHyper.js';
 
-import {common_base__FGBuildablePowerStorage__type} from '../classes/CoreUObject/FGBuildablePowerStorage.ts';
+import {common_base__FGBuildablePowerStorage__type} from '../classes/CoreUObject/FGBuildablePowerStorage.js';
 
-import {common_base__FGBuildableDockingStation__type} from '../classes/CoreUObject/FGBuildableDockingStation.ts';
+import {common_base__FGBuildableDockingStation__type} from '../classes/CoreUObject/FGBuildableDockingStation.js';
 
-import {common_base__FGBuildableJumppad__type} from '../classes/CoreUObject/FGBuildableJumppad.ts';
+import {common_base__FGBuildableJumppad__type} from '../classes/CoreUObject/FGBuildableJumppad.js';
 
-import {common_base__FGBuildableAttachmentMerger__type} from '../classes/CoreUObject/FGBuildableAttachmentMerger.ts';
+import {common_base__FGBuildableAttachmentMerger__type} from '../classes/CoreUObject/FGBuildableAttachmentMerger.js';
 
-import {common_base__FGBuildableAttachmentSplitter__type} from '../classes/CoreUObject/FGBuildableAttachmentSplitter.ts';
+import {common_base__FGBuildableAttachmentSplitter__type} from '../classes/CoreUObject/FGBuildableAttachmentSplitter.js';
 
-import {common_base__FGBuildableSplitterSmart__type} from '../classes/CoreUObject/FGBuildableSplitterSmart.ts';
+import {common_base__FGBuildableSplitterSmart__type} from '../classes/CoreUObject/FGBuildableSplitterSmart.js';
 
 import {
 	common_base__FGBuildableFoundation__base__type,
 	common_base__FGBuildableFoundation__type,
-} from '../classes/CoreUObject/FGBuildableFoundation.ts';
+} from '../classes/CoreUObject/FGBuildableFoundation.js';
 
-import {common_base__FGBuildableRamp__type} from '../classes/CoreUObject/FGBuildableRamp.ts';
+import {common_base__FGBuildableRamp__type} from '../classes/CoreUObject/FGBuildableRamp.js';
 
 import {
 	common_base__FGAmmoTypeProjectile__base__type,
 	common_base__FGAmmoTypeProjectile__type,
-} from '../classes/CoreUObject/FGAmmoTypeProjectile.ts';
+} from '../classes/CoreUObject/FGAmmoTypeProjectile.js';
 
-import {common_base__FGAmmoTypeSpreadshot__type} from '../classes/CoreUObject/FGAmmoTypeSpreadshot.ts';
+import {common_base__FGAmmoTypeSpreadshot__type} from '../classes/CoreUObject/FGAmmoTypeSpreadshot.js';
 
 import {
 	common_base__FGAmmoTypeInstantHit__base__type,
 	common_base__FGAmmoTypeInstantHit__chaos__type,
 	common_base__FGAmmoTypeInstantHit__standard__type,
-} from '../classes/CoreUObject/FGAmmoTypeInstantHit.ts';
+} from '../classes/CoreUObject/FGAmmoTypeInstantHit.js';
 
 import {
 	common_base__FGWeapon__base__type,
 	common_base__FGWeapon__gun_base__type,
 	common_base__FGWeapon__rebar_gun__type,
 	common_base__FGWeapon__rifle__type,
-} from '../classes/CoreUObject/FGWeapon.ts';
+} from '../classes/CoreUObject/FGWeapon.js';
 
-import {common_base__FGChargedWeapon__type} from '../classes/CoreUObject/FGChargedWeapon.ts';
+import {common_base__FGChargedWeapon__type} from '../classes/CoreUObject/FGChargedWeapon.js';
 
-import {common_base__FGBuildablePriorityPowerSwitch__type} from '../classes/CoreUObject/FGBuildablePriorityPowerSwitch.ts';
+import {common_base__FGBuildablePriorityPowerSwitch__type} from '../classes/CoreUObject/FGBuildablePriorityPowerSwitch.js';
 
-import {common_base__FGBuildableCircuitSwitch__type} from '../classes/CoreUObject/FGBuildableCircuitSwitch.ts';
+import {common_base__FGBuildableCircuitSwitch__type} from '../classes/CoreUObject/FGBuildableCircuitSwitch.js';
 
-import {common_base__FGBuildableRadarTower__type} from '../classes/CoreUObject/FGBuildableRadarTower.ts';
+import {common_base__FGBuildableRadarTower__type} from '../classes/CoreUObject/FGBuildableRadarTower.js';
 
-import {common_base__FGBuildableSnowDispenser__type} from '../classes/CoreUObject/FGBuildableSnowDispenser.ts';
+import {common_base__FGBuildableSnowDispenser__type} from '../classes/CoreUObject/FGBuildableSnowDispenser.js';
 
-import {common_base__FGBuildableFactorySimpleProducer__type} from '../classes/CoreUObject/FGBuildableFactorySimpleProducer.ts';
+import {common_base__FGBuildableFactorySimpleProducer__type} from '../classes/CoreUObject/FGBuildableFactorySimpleProducer.js';
 
-import {common_base__FGBuildableLadder__type} from '../classes/CoreUObject/FGBuildableLadder.ts';
+import {common_base__FGBuildableLadder__type} from '../classes/CoreUObject/FGBuildableLadder.js';
 
-import {common_base__FGGolfCartDispenser__type} from '../classes/CoreUObject/FGGolfCartDispenser.ts';
+import {common_base__FGGolfCartDispenser__type} from '../classes/CoreUObject/FGGolfCartDispenser.js';
 
-import {common_base__FGBuildablePassthrough__type} from '../classes/CoreUObject/FGBuildablePassthrough.ts';
+import {common_base__FGBuildablePassthrough__type} from '../classes/CoreUObject/FGBuildablePassthrough.js';
 
-import {common_base__FGBuildableLightsControlPanel__type} from '../classes/CoreUObject/FGBuildableLightsControlPanel.ts';
+import {common_base__FGBuildableLightsControlPanel__type} from '../classes/CoreUObject/FGBuildableLightsControlPanel.js';
 
 import {
 	common_base__FGBuildableLightSource__base__type,
 	common_base__FGBuildableLightSource__type,
-} from '../classes/CoreUObject/FGBuildableLightSource.ts';
+} from '../classes/CoreUObject/FGBuildableLightSource.js';
 
-import {common_base__FGBuildableFloodlight__type} from '../classes/CoreUObject/FGBuildableFloodlight.ts';
+import {common_base__FGBuildableFloodlight__type} from '../classes/CoreUObject/FGBuildableFloodlight.js';
 
-import {common_base__FGBuildableWidgetSign__type} from '../classes/CoreUObject/FGBuildableWidgetSign.ts';
+import {common_base__FGBuildableWidgetSign__type} from '../classes/CoreUObject/FGBuildableWidgetSign.js';
 
-import {common_base__FGBuildableBeamLightweight__type} from '../classes/CoreUObject/FGBuildableBeamLightweight.ts';
+import {common_base__FGBuildableBeamLightweight__type} from '../classes/CoreUObject/FGBuildableBeamLightweight.js';
 
-import {common_base__FGBuildableFactoryBuilding__type} from '../classes/CoreUObject/FGBuildableFactoryBuilding.ts';
+import {common_base__FGBuildableFactoryBuilding__type} from '../classes/CoreUObject/FGBuildableFactoryBuilding.js';
 
-import {common_base__FGBuildableSpaceElevator__type} from '../classes/CoreUObject/FGBuildableSpaceElevator.ts';
+import {common_base__FGBuildableSpaceElevator__type} from '../classes/CoreUObject/FGBuildableSpaceElevator.js';
 
 import {
 	FGSchematic__mUnlocks_mSchematics__mSchematics__type,
@@ -236,31 +236,31 @@ import {
 	FGSchematic__mUnlocks_equipment_slots__type,
 	FGSchematic__mUnlocks_mScannableObjects__type,
 	FGSchematic__mUnlocks_mItemsToGive__type,
-} from '../classes/CoreUObject/FGSchematic.ts';
+} from '../classes/CoreUObject/FGSchematic.js';
 
 import {
 	common_base__FGEquipmentStunSpear__base__type,
 	common_base__FGEquipmentStunSpear__type,
 	common_base__FGEquipmentStunSpear__xeno_zapper__type,
-} from '../classes/CoreUObject/FGEquipmentStunSpear.ts';
+} from '../classes/CoreUObject/FGEquipmentStunSpear.js';
 
-import {common_base__FGHoverPack__type} from '../classes/CoreUObject/FGHoverPack.ts';
+import {common_base__FGHoverPack__type} from '../classes/CoreUObject/FGHoverPack.js';
 
-import {common_base__FGJetPack__type} from '../classes/CoreUObject/FGJetPack.ts';
+import {common_base__FGJetPack__type} from '../classes/CoreUObject/FGJetPack.js';
 
-import {common_base__FGSuitBase__type} from '../classes/CoreUObject/FGSuitBase.ts';
+import {common_base__FGSuitBase__type} from '../classes/CoreUObject/FGSuitBase.js';
 
-import {common_base__FGGasMask__type} from '../classes/CoreUObject/FGGasMask.ts';
+import {common_base__FGGasMask__type} from '../classes/CoreUObject/FGGasMask.js';
 
-import {common_base__FGChainsaw__type} from '../classes/CoreUObject/FGChainsaw.ts';
+import {common_base__FGChainsaw__type} from '../classes/CoreUObject/FGChainsaw.js';
 
-import {common_base__FGObjectScanner__type} from '../classes/CoreUObject/FGObjectScanner.ts';
+import {common_base__FGObjectScanner__type} from '../classes/CoreUObject/FGObjectScanner.js';
 
-import {common_base__FGJumpingStilts__type} from '../classes/CoreUObject/FGJumpingStilts.ts';
+import {common_base__FGJumpingStilts__type} from '../classes/CoreUObject/FGJumpingStilts.js';
 
-import {common_base__FGEquipmentZipline__type} from '../classes/CoreUObject/FGEquipmentZipline.ts';
+import {common_base__FGEquipmentZipline__type} from '../classes/CoreUObject/FGEquipmentZipline.js';
 
-import {common_base__FGParachute__type} from '../classes/CoreUObject/FGParachute.ts';
+import {common_base__FGParachute__type} from '../classes/CoreUObject/FGParachute.js';
 
 import {
 	boolean__type,
@@ -269,61 +269,61 @@ import {
 	decimal_string__signed__type,
 	integer_string__type,
 	integer_string__signed__type,
-} from './scalar.ts';
+} from './scalar.js';
 
-import {common_base__FGBuildablePipelineJunction__type} from '../classes/CoreUObject/FGBuildablePipelineJunction.ts';
+import {common_base__FGBuildablePipelineJunction__type} from '../classes/CoreUObject/FGBuildablePipelineJunction.js';
 
 import {
 	common_base__FGBuildablePipelinePump__type,
 	common_base__FGBuildablePipelinePump__valve__type,
-} from '../classes/CoreUObject/FGBuildablePipelinePump.ts';
+} from '../classes/CoreUObject/FGBuildablePipelinePump.js';
 
-import {common_base__FGBuildablePipeReservoir__type} from '../classes/CoreUObject/FGBuildablePipeReservoir.ts';
+import {common_base__FGBuildablePipeReservoir__type} from '../classes/CoreUObject/FGBuildablePipeReservoir.js';
 
-import {common_base__FGBuildablePoleLightweight__type} from '../classes/CoreUObject/FGBuildablePoleLightweight.ts';
+import {common_base__FGBuildablePoleLightweight__type} from '../classes/CoreUObject/FGBuildablePoleLightweight.js';
 
 import {
 	common_base__FGItemDescriptor__FGResourceDescriptor__type,
 	common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__mSubCategories__type,
 	common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type,
-} from '../classes/CoreUObject/FGItemDescriptor.ts';
+} from '../classes/CoreUObject/FGItemDescriptor.js';
 
-import {common_base__FGResourceDescriptor__type} from '../classes/CoreUObject/FGResourceDescriptor.ts';
+import {common_base__FGResourceDescriptor__type} from '../classes/CoreUObject/FGResourceDescriptor.js';
 
-import {common_base__FGRecipe__type} from '../classes/CoreUObject/FGRecipe.ts';
+import {common_base__FGRecipe__type} from '../classes/CoreUObject/FGRecipe.js';
 
 import {
 	common_base__FGBuildableWall__base__type,
 	common_base__FGBuildableWall__base__rectangle__type,
-} from '../classes/CoreUObject/FGBuildableWall.ts';
+} from '../classes/CoreUObject/FGBuildableWall.js';
 
-import {common_base__FGBuildableCornerWall__type} from '../classes/CoreUObject/FGBuildableCornerWall.ts';
+import {common_base__FGBuildableCornerWall__type} from '../classes/CoreUObject/FGBuildableCornerWall.js';
 
 import {
 	common_base__FGBuildableDoor__base__type,
 	common_base__FGBuildableDoor__type,
 	common_base__FGBuildableDoor__automated__type,
-} from '../classes/CoreUObject/FGBuildableDoor.ts';
+} from '../classes/CoreUObject/FGBuildableDoor.js';
 
 import {
 	common_base__FGBuildableConveyorBelt__base__type,
 	common_base__FGBuildableConveyorBelt__type,
-} from '../classes/CoreUObject/FGBuildableConveyorBelt.ts';
+} from '../classes/CoreUObject/FGBuildableConveyorBelt.js';
 
-import {common_base__FGBuildableConveyorLift__type} from '../classes/CoreUObject/FGBuildableConveyorLift.ts';
+import {common_base__FGBuildableConveyorLift__type} from '../classes/CoreUObject/FGBuildableConveyorLift.js';
 
-import {common_base__FGPoleDescriptor__type} from '../classes/CoreUObject/FGPoleDescriptor.ts';
+import {common_base__FGPoleDescriptor__type} from '../classes/CoreUObject/FGPoleDescriptor.js';
 
 import {
 	common_base__FGEquipmentDescriptor__base__type,
 	common_base__FGEquipmentDescriptor__type,
-} from '../classes/CoreUObject/FGEquipmentDescriptor.ts';
+} from '../classes/CoreUObject/FGEquipmentDescriptor.js';
 
 import {
 	common_base__FGConsumableDescriptor__base__type,
 	common_base__FGConsumableDescriptor__type,
 	common_base__FGConsumableDescriptor__healing__type,
-} from '../classes/CoreUObject/FGConsumableDescriptor.ts';
+} from '../classes/CoreUObject/FGConsumableDescriptor.js';
 
 export type class__type = class__no_description__type & {
 	mDescription: string;

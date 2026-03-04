@@ -1,4 +1,4 @@
-import {FGAmmoTypeProjectile__base__type} from './FGAmmoTypeProjectile.ts';
+import {FGAmmoTypeProjectile__base__type} from './FGAmmoTypeProjectile.js';
 
 import {
 	common_base__FGAmmoTypeInstantHit__base__pre_1_1__type,

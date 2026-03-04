@@ -1,4 +1,4 @@
-import {FGBuildable__circuits_base__type} from './FGBuildable.ts';
+import {FGBuildable__circuits_base__type} from './FGBuildable.js';
 
 import {common_base__FGBuildableLightsControlPanel__type} from '../../../common/classes/CoreUObject/FGBuildableLightsControlPanel.ts';
 

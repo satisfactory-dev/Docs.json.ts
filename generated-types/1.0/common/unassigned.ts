@@ -1,10 +1,10 @@
-import {UnrealEngineString, StringStartsWith} from '../utils/validators.ts';
+import {UnrealEngineString, StringStartsWith} from '../utils/validators.js';
 
-import {FGBuildableConveyorBelt__merged__type} from '../classes/CoreUObject/FGBuildableConveyorBelt.ts';
+import {FGBuildableConveyorBelt__merged__type} from '../classes/CoreUObject/FGBuildableConveyorBelt.js';
 
-import {FGBuildableBlueprintDesigner__base__type} from '../classes/CoreUObject/FGBuildableBlueprintDesigner.ts';
+import {FGBuildableBlueprintDesigner__base__type} from '../classes/CoreUObject/FGBuildableBlueprintDesigner.js';
 
-import {FGBuildableResourceExtractor__miner__base__type} from '../classes/CoreUObject/FGBuildableResourceExtractor.ts';
+import {FGBuildableResourceExtractor__miner__base__type} from '../classes/CoreUObject/FGBuildableResourceExtractor.js';
 
 import {
 	xyz__type,

@@ -1,4 +1,4 @@
-import {FGBuildable__extractor_base__type} from './FGBuildable.ts';
+import {FGBuildable__extractor_base__type} from './FGBuildable.js';
 
 import {common_base__FGBuildableWaterPump__type} from '../../../common/classes/CoreUObject/FGBuildableWaterPump.ts';
 

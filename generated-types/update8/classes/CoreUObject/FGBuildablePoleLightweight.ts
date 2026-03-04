@@ -1,4 +1,4 @@
-import {FGBuildable__pole__base__with_static__merged__type} from './FGBuildable.ts';
+import {FGBuildable__pole__base__with_static__merged__type} from './FGBuildable.js';
 
 import {common_base__FGBuildablePoleLightweight__type} from '../../../common/classes/CoreUObject/FGBuildablePoleLightweight.ts';
 

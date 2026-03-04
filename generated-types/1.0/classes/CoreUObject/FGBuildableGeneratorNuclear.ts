@@ -1,4 +1,4 @@
-import {FGBuildableGeneratorFuel__base__type} from './FGBuildableGeneratorFuel.ts';
+import {FGBuildableGeneratorFuel__base__type} from './FGBuildableGeneratorFuel.js';
 
 import {
 	common_base__FGBuildableGeneratorNuclear__mFuel__NuclearFuelRod__type,

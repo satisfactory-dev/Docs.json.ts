@@ -1,4 +1,4 @@
-import {FGBuildableWalkway__base__type} from './FGBuildableWalkway.ts';
+import {FGBuildableWalkway__base__type} from './FGBuildableWalkway.js';
 
 import {common_base__FGBuildableWalkwayLightweight__type} from '../../../common/classes/CoreUObject/FGBuildableWalkwayLightweight.ts';
 

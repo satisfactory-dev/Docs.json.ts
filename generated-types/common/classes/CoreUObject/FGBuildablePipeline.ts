@@ -1,7 +1,7 @@
 import {
 	common_base__FGBuildablePipeline__pre_1_1__type,
 	empty_object__type,
-} from '../../common/unassigned.ts';
+} from '../../common/unassigned.js';
 
 export type common_base__FGBuildablePipeline__type =
 	common_base__FGBuildablePipeline__pre_1_1__type & {

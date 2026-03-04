@@ -1,6 +1,6 @@
-import {FGBuildableTradingPost__update8__type} from '../../common/unassigned.ts';
+import {FGBuildableTradingPost__update8__type} from '../../common/unassigned.js';
 
-import {FGBuildable__consumes_power_base__type} from './FGBuildable.ts';
+import {FGBuildable__consumes_power_base__type} from './FGBuildable.js';
 
 import {NativeClass__type} from '../../../common/common/unassigned.ts';
 

@@ -1,4 +1,4 @@
-import {FGBuildableTrainPlatform__base__type} from './FGBuildableTrainPlatform.ts';
+import {FGBuildableTrainPlatform__base__type} from './FGBuildableTrainPlatform.js';
 
 import {
 	common_base__FGBuildableTrainPlatformCargo__FGBuildableRailroadStation__type,

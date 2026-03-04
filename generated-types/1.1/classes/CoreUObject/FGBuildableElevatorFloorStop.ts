@@ -1,6 +1,6 @@
-import {mElevatorState__type} from '../../common/unassigned.ts';
+import {mElevatorState__type} from '../../common/unassigned.js';
 
-import {FGBuildable__base__type} from './FGBuildable.ts';
+import {FGBuildable__base__type} from './FGBuildable.js';
 
 import {
 	color_decimal__type,

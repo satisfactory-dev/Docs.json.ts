@@ -2,7 +2,7 @@ import {
 	FGBuildable__base__type,
 	FGBuildable__occupied__final__type,
 	FGBuildable__tiered__type,
-} from './FGBuildable.ts';
+} from './FGBuildable.js';
 
 import {common_base__FGBuildableSnowDispenser__type} from '../../../common/classes/CoreUObject/FGBuildableSnowDispenser.ts';
 

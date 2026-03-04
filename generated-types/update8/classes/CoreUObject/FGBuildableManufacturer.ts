@@ -1,6 +1,6 @@
-import {mOutputInventoryHandlerData__type} from '../../common/unassigned.ts';
+import {mOutputInventoryHandlerData__type} from '../../common/unassigned.js';
 
-import {FGBuildable__consumes_power_base__type} from './FGBuildable.ts';
+import {FGBuildable__consumes_power_base__type} from './FGBuildable.js';
 
 import {
 	integer_string__type,

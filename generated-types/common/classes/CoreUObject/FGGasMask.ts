@@ -1,8 +1,8 @@
-import {common_base__FGEquipment__base__type} from './FGEquipment.ts';
+import {common_base__FGEquipment__base__type} from './FGEquipment.js';
 
-import {mDamageTypes__type} from '../../common/unassigned.ts';
+import {mDamageTypes__type} from '../../common/unassigned.js';
 
-import {boolean__type, decimal_string__type} from '../../common/scalar.ts';
+import {boolean__type, decimal_string__type} from '../../common/scalar.js';
 
 export type common_base__FGGasMask__type =
 	common_base__FGEquipment__base__type & {

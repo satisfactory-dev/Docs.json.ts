@@ -1,8 +1,8 @@
-import {decimal_string__type} from '../../common/scalar.ts';
+import {decimal_string__type} from '../../common/scalar.js';
 
-import {pitch_yaw_roll__type, xyz__type} from '../../common/unassigned.ts';
+import {pitch_yaw_roll__type, xyz__type} from '../../common/unassigned.js';
 
-import {common_base__FGEquipmentDescriptor__base__type} from './FGEquipmentDescriptor.ts';
+import {common_base__FGEquipmentDescriptor__base__type} from './FGEquipmentDescriptor.js';
 
 export type common_base__FGConsumableDescriptor__type =
 	common_base__FGConsumableDescriptor__base__type;

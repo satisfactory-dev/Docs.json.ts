@@ -1,4 +1,4 @@
-import {FGBuildable__pole__base__no_static__type} from './FGBuildable.ts';
+import {FGBuildable__pole__base__no_static__type} from './FGBuildable.js';
 
 import {NativeClass__type} from '../../../common/common/unassigned.ts';
 

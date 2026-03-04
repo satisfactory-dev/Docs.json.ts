@@ -1,4 +1,4 @@
-import {FGBuildableWallLightweight__type} from './FGBuildableWallLightweight.ts';
+import {FGBuildableWallLightweight__type} from './FGBuildableWallLightweight.js';
 
 import {
 	common_base__FGBuildableDoor__type,

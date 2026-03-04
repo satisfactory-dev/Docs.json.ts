@@ -1,4 +1,4 @@
-import {FGAmmoTypeProjectile__base__type} from './FGAmmoTypeProjectile.ts';
+import {FGAmmoTypeProjectile__base__type} from './FGAmmoTypeProjectile.js';
 
 import {common_base__FGAmmoTypeSpreadshot__type} from '../../../common/classes/CoreUObject/FGAmmoTypeSpreadshot.ts';
 

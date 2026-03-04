@@ -1,6 +1,6 @@
-import {boolean__type, decimal_string__type} from '../../common/scalar.ts';
+import {boolean__type, decimal_string__type} from '../../common/scalar.js';
 
-import {common_base__FGBuildableGenerator__base__type} from './FGBuildableGenerator.ts';
+import {common_base__FGBuildableGenerator__base__type} from './FGBuildableGenerator.js';
 
 export type common_base__FGBuildableGeneratorGeoThermal__type =
 	common_base__FGBuildableGenerator__base__type & {

@@ -1,4 +1,4 @@
-import {FGBuildable__docking_station_base__type} from './FGBuildable.ts';
+import {FGBuildable__docking_station_base__type} from './FGBuildable.js';
 
 import {
 	empty_object__type,

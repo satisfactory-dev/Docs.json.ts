@@ -4,9 +4,9 @@ import {
 	v1_0_base__FGBuildableManufacturer__constructor__type,
 	v1_0_base__FGBuildableManufacturer__packager__type,
 	v1_0_base__FGBuildableManufacturer__smelter__type,
-} from '../../common/unassigned.ts';
+} from '../../common/unassigned.js';
 
-import {FGBuildable__base__type} from './FGBuildable.ts';
+import {FGBuildable__base__type} from './FGBuildable.js';
 
 import {NativeClass__type} from '../../../common/common/unassigned.ts';
 

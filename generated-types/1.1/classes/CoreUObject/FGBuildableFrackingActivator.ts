@@ -1,6 +1,6 @@
-import {v1_0_base__FGBuildableFrackingActivator__type} from '../../common/unassigned.ts';
+import {v1_0_base__FGBuildableFrackingActivator__type} from '../../common/unassigned.js';
 
-import {FGBuildable__base__type} from './FGBuildable.ts';
+import {FGBuildable__base__type} from './FGBuildable.js';
 
 import {NativeClass__type} from '../../../common/common/unassigned.ts';
 

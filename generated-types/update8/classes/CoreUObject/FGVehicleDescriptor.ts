@@ -1,4 +1,4 @@
-import {FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type} from './FGItemDescriptor.ts';
+import {FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type} from './FGItemDescriptor.js';
 
 import {
 	common_base__FGVehicleDescriptor__fueled_with_inventory__type,

@@ -1,4 +1,4 @@
-import {StringPassedRegExp} from '../../utils/validators.ts';
+import {StringPassedRegExp} from '../../utils/validators.js';
 
 import {
 	common_base__FGBuildable__pole__base__no_static__pre_1_1__type,
@@ -7,7 +7,7 @@ import {
 	UnrealEngineString__array__type,
 	None__type,
 	class__type,
-} from '../../common/unassigned.ts';
+} from '../../common/unassigned.js';
 
 import {
 	decimal_string__signed__type,
@@ -15,7 +15,7 @@ import {
 	decimal_string__type,
 	integer_string__signed__type,
 	integer_string__type,
-} from '../../common/scalar.ts';
+} from '../../common/scalar.js';
 
 export type common_base__FGBuildable__base__type = class__type & {
 	MaxRenderDistance: decimal_string__signed__type;

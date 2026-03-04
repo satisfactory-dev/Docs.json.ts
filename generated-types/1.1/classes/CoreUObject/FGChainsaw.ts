@@ -1,4 +1,4 @@
-import {v1_0_base__FGChainsaw__type} from '../../common/unassigned.ts';
+import {v1_0_base__FGChainsaw__type} from '../../common/unassigned.js';
 
 import {boolean__type} from '../../../common/common/scalar.ts';
 

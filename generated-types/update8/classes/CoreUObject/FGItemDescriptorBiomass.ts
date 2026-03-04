@@ -1,4 +1,4 @@
-import {FGItemDescriptor__FGResourceDescriptor__type} from './FGItemDescriptor.ts';
+import {FGItemDescriptor__FGResourceDescriptor__type} from './FGItemDescriptor.js';
 
 import {common_base__FGItemDescriptorBiomass__type} from '../../../common/classes/CoreUObject/FGItemDescriptorBiomass.ts';
 

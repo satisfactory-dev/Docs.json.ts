@@ -1,6 +1,6 @@
-import {FGBuildableWalkwayLightweight__type} from './FGBuildableWalkwayLightweight.ts';
+import {FGBuildableWalkwayLightweight__type} from './FGBuildableWalkwayLightweight.js';
 
-import {FGBuildable__base__type} from './FGBuildable.ts';
+import {FGBuildable__base__type} from './FGBuildable.js';
 
 import {
 	common_base__FGBuildableWalkway__type,

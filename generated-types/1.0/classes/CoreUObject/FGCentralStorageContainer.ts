@@ -1,4 +1,4 @@
-import {FGBuildableStorage__type} from './FGBuildableStorage.ts';
+import {FGBuildableStorage__type} from './FGBuildableStorage.js';
 
 import {decimal_string__type} from '../../../common/common/scalar.ts';
 

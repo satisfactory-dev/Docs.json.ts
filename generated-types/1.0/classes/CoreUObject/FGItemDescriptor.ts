@@ -1,7 +1,7 @@
 import {
 	mGasType__type,
 	mClassToScanFor__type,
-} from '../../common/unassigned.ts';
+} from '../../common/unassigned.js';
 
 import {boolean__type} from '../../../common/common/scalar.ts';
 

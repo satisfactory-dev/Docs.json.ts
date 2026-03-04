@@ -1,4 +1,4 @@
-import {FGBuildableCornerWall__type} from './FGBuildableCornerWall.ts';
+import {FGBuildableCornerWall__type} from './FGBuildableCornerWall.js';
 
 import {NativeClass__type} from '../../../common/common/unassigned.ts';
 

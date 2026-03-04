@@ -1,4 +1,4 @@
-import {FGBuildable__power_switch__base__type} from './FGBuildable.ts';
+import {FGBuildable__power_switch__base__type} from './FGBuildable.js';
 
 import {common_base__FGBuildablePriorityPowerSwitch__type} from '../../../common/classes/CoreUObject/FGBuildablePriorityPowerSwitch.ts';
 

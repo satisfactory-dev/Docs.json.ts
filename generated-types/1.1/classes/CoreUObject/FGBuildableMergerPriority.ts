@@ -1,11 +1,11 @@
-import {UnrealEngineString} from '../../utils/validators.ts';
+import {UnrealEngineString} from '../../utils/validators.js';
 
-import {FGBuildable__base__type} from './FGBuildable.ts';
+import {FGBuildable__base__type} from './FGBuildable.js';
 
 import {
 	v1_0_base__FGBuildableAttachmentMergerSplitter__with_inventory_size__type,
 	has__mSavedDirections__type,
-} from '../../common/unassigned.ts';
+} from '../../common/unassigned.js';
 
 import {
 	boolean__type,

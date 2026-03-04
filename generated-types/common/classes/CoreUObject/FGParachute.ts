@@ -1,6 +1,6 @@
-import {common_base__FGEquipment__base__type} from './FGEquipment.ts';
+import {common_base__FGEquipment__base__type} from './FGEquipment.js';
 
-import {decimal_string__type, boolean__type} from '../../common/scalar.ts';
+import {decimal_string__type, boolean__type} from '../../common/scalar.js';
 
 export type common_base__FGParachute__type =
 	common_base__FGEquipment__base__type & {

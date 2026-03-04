@@ -1,4 +1,4 @@
-import {FGBuildableFoundation__base__type} from './FGBuildableFoundation.ts';
+import {FGBuildableFoundation__base__type} from './FGBuildableFoundation.js';
 
 import {common_base__FGBuildableRamp__type} from '../../../common/classes/CoreUObject/FGBuildableRamp.ts';
 

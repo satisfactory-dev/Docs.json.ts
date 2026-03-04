@@ -1,4 +1,4 @@
-import {FGEquipment__base__type} from './FGEquipment.ts';
+import {FGEquipment__base__type} from './FGEquipment.js';
 
 import {common_base__FGParachute__type} from '../../../common/classes/CoreUObject/FGParachute.ts';
 

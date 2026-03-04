@@ -1,4 +1,4 @@
-import {FGBuildableConveyorBelt__base__type} from './FGBuildableConveyorBelt.ts';
+import {FGBuildableConveyorBelt__base__type} from './FGBuildableConveyorBelt.js';
 
 import {
 	boolean__type,

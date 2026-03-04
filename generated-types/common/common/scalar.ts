@@ -1,4 +1,4 @@
-import {StringPassedRegExp} from '../utils/validators.ts';
+import {StringPassedRegExp} from '../utils/validators.js';
 
 export type boolean__type = boolean;
 

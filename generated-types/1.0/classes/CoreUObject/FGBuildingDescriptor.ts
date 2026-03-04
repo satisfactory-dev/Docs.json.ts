@@ -1,4 +1,4 @@
-import {FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type} from './FGItemDescriptor.ts';
+import {FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type} from './FGItemDescriptor.js';
 
 import {common_base__FGBuildingDescriptor__type} from '../../../common/classes/CoreUObject/FGBuildingDescriptor.ts';
 
