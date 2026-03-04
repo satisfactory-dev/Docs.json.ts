@@ -10,7 +10,7 @@ import {
 	string_to_native_type,
 	string_to_object,
 } from '../../lib/DocsValidation.ts';
-import type Ajv from 'ajv/dist/2020.js';
+import Ajv from 'ajv/dist/2020.js';
 import type {
 	SchemaObject,
 } from 'ajv/dist/2020.js';
