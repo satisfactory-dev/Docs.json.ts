@@ -9,12 +9,12 @@ import {
 	empty_object__type,
 	common_base__FGBuildable__pole__base__no_static__pre_1_1__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned.ts';
+} from '../../../common/common/unassigned.js';
 
 import {
 	common_base__FGBuildable__occupied__type,
 	common_base__FGBuildable__tiered__type,
-} from '../../../common/classes/CoreUObject/FGBuildable.ts';
+} from '../../../common/classes/CoreUObject/FGBuildable.js';
 
 export type FGBuildable__base__type = v1_0_base__FGBuildable__base__type & {
 	mOnBuildableReturnedToLightweightPool: empty_object__type;

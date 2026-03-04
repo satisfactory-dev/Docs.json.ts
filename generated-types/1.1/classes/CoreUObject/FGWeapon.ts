@@ -8,12 +8,12 @@ import {
 import {
 	common_base__FGWeapon__base__pre_1_1__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned.ts';
+} from '../../../common/common/unassigned.js';
 
 import {
 	common_base__FGWeapon__rebar_gun__properties__type,
 	common_base__FGWeapon__rifle__properties__type,
-} from '../../../common/classes/CoreUObject/FGWeapon.ts';
+} from '../../../common/classes/CoreUObject/FGWeapon.js';
 
 export type FGWeapon__base__type = FGWeapon__base__merged__type;
 

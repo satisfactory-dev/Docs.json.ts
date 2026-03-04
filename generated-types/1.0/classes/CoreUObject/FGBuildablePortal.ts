@@ -4,7 +4,7 @@ import {
 	decimal_string__type,
 	integer_string__type,
 	boolean__type,
-} from '../../../common/common/scalar.ts';
+} from '../../../common/common/scalar.js';
 
 import {
 	xyz_array__type,
@@ -12,7 +12,7 @@ import {
 	empty_object__type,
 	color_decimal__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned.ts';
+} from '../../../common/common/unassigned.js';
 
 export type FGBuildablePortal__type = FGBuildablePortal__base__type & {
 	ClassName?: 'Build_Portal_C';

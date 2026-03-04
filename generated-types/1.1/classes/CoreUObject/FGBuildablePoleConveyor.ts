@@ -2,11 +2,11 @@ import {mPoleVariations__type} from '../../common/unassigned.js';
 
 import {FGBuildable__base__type} from './FGBuildable.js';
 
-import {decimal_string__type} from '../../../common/common/scalar.ts';
+import {decimal_string__type} from '../../../common/common/scalar.js';
 
-import {common_base__FGBuildablePoleLightweight__properties__type} from '../../../common/classes/CoreUObject/FGBuildablePoleLightweight.ts';
+import {common_base__FGBuildablePoleLightweight__properties__type} from '../../../common/classes/CoreUObject/FGBuildablePoleLightweight.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildablePoleConveyor__type =
 	FGBuildablePoleConveyor__merged__type & {

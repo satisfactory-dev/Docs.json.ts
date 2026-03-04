@@ -7,14 +7,14 @@ import {FGEquipment__base__type} from './FGEquipment.js';
 import {
 	boolean__type,
 	decimal_string__type,
-} from '../../../common/common/scalar.ts';
+} from '../../../common/common/scalar.js';
 
 import {
 	empty_object__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned.ts';
+} from '../../../common/common/unassigned.js';
 
-import {common_base__FGHoverPack__type} from '../../../common/classes/CoreUObject/FGHoverPack.ts';
+import {common_base__FGHoverPack__type} from '../../../common/classes/CoreUObject/FGHoverPack.js';
 
 export type FGHoverPack__type = FGHoverPack__merged__type & {
 	mCurrentPlayerVelocity_SFX: decimal_string__type;

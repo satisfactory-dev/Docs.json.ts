@@ -5,7 +5,7 @@ import {
 
 import {FGBuildable__base__type} from './FGBuildable.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildableTradingPost__type =
 	v1_0_base__FGBuildableTradingPost__version_1__type &

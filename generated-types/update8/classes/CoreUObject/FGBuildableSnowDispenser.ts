@@ -4,9 +4,9 @@ import {
 	FGBuildable__tiered__type,
 } from './FGBuildable.js';
 
-import {common_base__FGBuildableSnowDispenser__type} from '../../../common/classes/CoreUObject/FGBuildableSnowDispenser.ts';
+import {common_base__FGBuildableSnowDispenser__type} from '../../../common/classes/CoreUObject/FGBuildableSnowDispenser.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildableSnowDispenser__type =
 	common_base__FGBuildableSnowDispenser__type &

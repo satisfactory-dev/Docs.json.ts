@@ -1,8 +1,8 @@
 import {FGBuildable__splitter__base__type} from './FGBuildable.js';
 
-import {common_base__FGBuildableAttachmentSplitter__type} from '../../../common/classes/CoreUObject/FGBuildableAttachmentSplitter.ts';
+import {common_base__FGBuildableAttachmentSplitter__type} from '../../../common/classes/CoreUObject/FGBuildableAttachmentSplitter.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildableAttachmentSplitter__type =
 	common_base__FGBuildableAttachmentSplitter__type &

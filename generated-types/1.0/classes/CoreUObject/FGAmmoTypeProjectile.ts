@@ -3,9 +3,9 @@ import {FGItemDescriptor__FGResourceDescriptor__type} from './FGItemDescriptor.j
 import {
 	common_base__FGAmmoTypeProjectile__type,
 	common_base__FGAmmoTypeProjectile__base__type,
-} from '../../../common/classes/CoreUObject/FGAmmoTypeProjectile.ts';
+} from '../../../common/classes/CoreUObject/FGAmmoTypeProjectile.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGAmmoTypeProjectile__type =
 	common_base__FGAmmoTypeProjectile__type &

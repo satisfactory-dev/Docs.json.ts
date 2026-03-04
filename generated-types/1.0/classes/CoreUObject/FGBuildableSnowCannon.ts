@@ -4,12 +4,12 @@ import {
 	integer_string__signed__type,
 	integer_string__type,
 	decimal_string__type,
-} from '../../../common/common/scalar.ts';
+} from '../../../common/common/scalar.js';
 
 import {
 	xyz__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned.ts';
+} from '../../../common/common/unassigned.js';
 
 export type FGBuildableSnowCannon__type = FGBuildable__base__type & {
 	SFXLocation: xyz__type;

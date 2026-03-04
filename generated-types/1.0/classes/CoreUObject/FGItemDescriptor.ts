@@ -3,15 +3,15 @@ import {
 	mClassToScanFor__type,
 } from '../../common/unassigned.js';
 
-import {boolean__type} from '../../../common/common/scalar.ts';
+import {boolean__type} from '../../../common/common/scalar.js';
 
 import {
 	common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type,
 	common_base__FGItemDescriptor__FGResourceDescriptor__type,
 	common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type,
-} from '../../../common/classes/CoreUObject/FGItemDescriptor.ts';
+} from '../../../common/classes/CoreUObject/FGItemDescriptor.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type =
 	common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type & {

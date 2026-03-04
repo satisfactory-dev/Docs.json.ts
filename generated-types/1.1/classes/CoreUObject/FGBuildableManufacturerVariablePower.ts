@@ -6,7 +6,7 @@ import {
 
 import {FGBuildable__base__type} from './FGBuildable.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildableManufacturerVariablePower__base__type =
 	FGBuildableManufacturerVariablePower__base__merged__type;

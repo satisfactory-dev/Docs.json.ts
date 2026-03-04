@@ -6,13 +6,13 @@ import {
 	color_decimal__type,
 	xyz__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned.ts';
+} from '../../../common/common/unassigned.js';
 
 import {
 	integer_string__signed__type,
 	decimal_string__type,
 	boolean__type,
-} from '../../../common/common/scalar.ts';
+} from '../../../common/common/scalar.js';
 
 export type FGBuildableElevatorFloorStop__type = FGBuildable__base__type &
 	FGBuildableElevatorFloorStop__properties__type;

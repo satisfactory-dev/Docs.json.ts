@@ -1,8 +1,8 @@
 import {FGBuildable__base__type} from './FGBuildable.js';
 
-import {common_base__FGBuildableAttachmentMerger__type} from '../../../common/classes/CoreUObject/FGBuildableAttachmentMerger.ts';
+import {common_base__FGBuildableAttachmentMerger__type} from '../../../common/classes/CoreUObject/FGBuildableAttachmentMerger.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildableAttachmentMerger__type =
 	FGBuildableAttachmentMerger__merged__type;

@@ -4,11 +4,11 @@ import {
 	integer_string__type,
 	integer_string__signed__type,
 	decimal_string__type,
-} from '../../../common/common/scalar.ts';
+} from '../../../common/common/scalar.js';
 
-import {common_base__FGBuildableRailroadTrack__type} from '../../../common/classes/CoreUObject/FGBuildableRailroadTrack.ts';
+import {common_base__FGBuildableRailroadTrack__type} from '../../../common/classes/CoreUObject/FGBuildableRailroadTrack.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildableRailroadTrack__type =
 	FGBuildableRailroadTrack__merged__type & {

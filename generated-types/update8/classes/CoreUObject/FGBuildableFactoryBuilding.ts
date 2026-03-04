@@ -4,9 +4,9 @@ import {
 	FGBuildable__tiered__type,
 } from './FGBuildable.js';
 
-import {common_base__FGBuildableFactoryBuilding__type} from '../../../common/classes/CoreUObject/FGBuildableFactoryBuilding.ts';
+import {common_base__FGBuildableFactoryBuilding__type} from '../../../common/classes/CoreUObject/FGBuildableFactoryBuilding.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildableFactoryBuilding__type =
 	common_base__FGBuildableFactoryBuilding__type &

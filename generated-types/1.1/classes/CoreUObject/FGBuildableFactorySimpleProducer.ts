@@ -2,7 +2,7 @@ import {v1_0_base__FGBuildableFactorySimpleProducer__type} from '../../common/un
 
 import {FGBuildable__base__type} from './FGBuildable.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildableFactorySimpleProducer__type =
 	v1_0_base__FGBuildableFactorySimpleProducer__type & FGBuildable__base__type;

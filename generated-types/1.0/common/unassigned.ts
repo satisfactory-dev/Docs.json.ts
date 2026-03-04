@@ -12,21 +12,21 @@ import {
 	empty_object__type,
 	common_base__FGBuildableResourceExtractor__miner_mk3__type,
 	None__type,
-} from '../../common/common/unassigned.ts';
+} from '../../common/common/unassigned.js';
 
 import {
 	boolean__type,
 	decimal_string__type,
 	integer_string__type,
-} from '../../common/common/scalar.ts';
+} from '../../common/common/scalar.js';
 
-import {common_base__FGBuildable__consumes_power_base__type} from '../../common/classes/CoreUObject/FGBuildable.ts';
+import {common_base__FGBuildable__consumes_power_base__type} from '../../common/classes/CoreUObject/FGBuildable.js';
 
-import {common_base__FGBuildableDroneStation__type} from '../../common/classes/CoreUObject/FGBuildableDroneStation.ts';
+import {common_base__FGBuildableDroneStation__type} from '../../common/classes/CoreUObject/FGBuildableDroneStation.js';
 
-import {common_base__FGBuildableTradingPost__type} from '../../common/classes/CoreUObject/FGBuildableTradingPost.ts';
+import {common_base__FGBuildableTradingPost__type} from '../../common/classes/CoreUObject/FGBuildableTradingPost.js';
 
-import {common_base__FGSuitBase__type} from '../../common/classes/CoreUObject/FGSuitBase.ts';
+import {common_base__FGSuitBase__type} from '../../common/classes/CoreUObject/FGSuitBase.js';
 
 export type CameraAnim__type = UnrealEngineString<
 	'/Script/TemplateSequence.CameraAnimationSequence',

@@ -1,8 +1,8 @@
 import {FGBuildable__base__type} from './FGBuildable.js';
 
-import {common_base__FGBuildableWidgetSign__type} from '../../../common/classes/CoreUObject/FGBuildableWidgetSign.ts';
+import {common_base__FGBuildableWidgetSign__type} from '../../../common/classes/CoreUObject/FGBuildableWidgetSign.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildableWidgetSign__type =
 	common_base__FGBuildableWidgetSign__type &

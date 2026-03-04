@@ -3,9 +3,9 @@ import {FGBuildable__pipeline_flow_accessory__type} from './FGBuildable.js';
 import {
 	common_base__FGBuildablePipelinePump__type,
 	common_base__FGBuildablePipelinePump__valve__type,
-} from '../../../common/classes/CoreUObject/FGBuildablePipelinePump.ts';
+} from '../../../common/classes/CoreUObject/FGBuildablePipelinePump.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildablePipelinePump__type =
 	common_base__FGBuildablePipelinePump__type &

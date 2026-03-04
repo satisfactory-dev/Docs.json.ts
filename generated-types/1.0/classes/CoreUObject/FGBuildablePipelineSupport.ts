@@ -1,8 +1,8 @@
 import {FGBuildable__pole__base__with_static__merged__type} from './FGBuildable.js';
 
-import {decimal_string__type} from '../../../common/common/scalar.ts';
+import {decimal_string__type} from '../../../common/common/scalar.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildablePipelineSupport__type =
 	FGBuildable__pole__base__with_static__merged__type &

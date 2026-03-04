@@ -3,9 +3,9 @@ import {FGItemDescriptor__FGResourceDescriptor__type} from './FGItemDescriptor.j
 import {
 	common_base__FGItemDescriptorNuclearFuel__waste__type,
 	common_base__FGItemDescriptorNuclearFuel__type,
-} from '../../../common/classes/CoreUObject/FGItemDescriptorNuclearFuel.ts';
+} from '../../../common/classes/CoreUObject/FGItemDescriptorNuclearFuel.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGItemDescriptorNuclearFuel__type =
 	FGItemDescriptorNuclearFuel__merged__type & {

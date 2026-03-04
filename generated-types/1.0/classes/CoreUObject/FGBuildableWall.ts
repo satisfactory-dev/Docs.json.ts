@@ -2,9 +2,9 @@ import {FGBuildableWallLightweight__type} from './FGBuildableWallLightweight.js'
 
 import {FGBuildable__base__type} from './FGBuildable.js';
 
-import {common_base__FGBuildableWall__base__type} from '../../../common/classes/CoreUObject/FGBuildableWall.ts';
+import {common_base__FGBuildableWall__base__type} from '../../../common/classes/CoreUObject/FGBuildableWall.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildableWall__base__type =
 	common_base__FGBuildableWall__base__type &

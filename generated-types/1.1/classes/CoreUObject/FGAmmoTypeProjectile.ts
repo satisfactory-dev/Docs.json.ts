@@ -8,7 +8,7 @@ import {
 	common_base__FGAmmoTypeProjectile__base__pre_1_1__type,
 	common_base__FGAmmoTypeProjectile__pre_1_1__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned.ts';
+} from '../../../common/common/unassigned.js';
 
 export type FGAmmoTypeProjectile__type =
 	common_base__FGAmmoTypeProjectile__base__pre_1_1__type &

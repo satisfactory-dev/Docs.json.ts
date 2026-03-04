@@ -1,8 +1,8 @@
 import {FGBuildableStorage__type} from './FGBuildableStorage.js';
 
-import {decimal_string__type} from '../../../common/common/scalar.ts';
+import {decimal_string__type} from '../../../common/common/scalar.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGCentralStorageContainer__type = FGBuildableStorage__type & {
 	TimeToExecuteCheckAfterItemAdded: decimal_string__type;

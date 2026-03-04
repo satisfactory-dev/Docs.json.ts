@@ -1,8 +1,8 @@
 import {FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type} from './FGItemDescriptor.js';
 
-import {common_base__FGBuildingDescriptor__type} from '../../../common/classes/CoreUObject/FGBuildingDescriptor.ts';
+import {common_base__FGBuildingDescriptor__type} from '../../../common/classes/CoreUObject/FGBuildingDescriptor.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildingDescriptor__type =
 	common_base__FGBuildingDescriptor__type &

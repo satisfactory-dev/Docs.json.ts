@@ -1,8 +1,8 @@
 import {FGBuildableFoundation__base__type} from './FGBuildableFoundation.js';
 
-import {boolean__type} from '../../../common/common/scalar.ts';
+import {boolean__type} from '../../../common/common/scalar.js';
 
-import {common_base__FGBuildableRamp__type} from '../../../common/classes/CoreUObject/FGBuildableRamp.ts';
+import {common_base__FGBuildableRamp__type} from '../../../common/classes/CoreUObject/FGBuildableRamp.js';
 
 export type FGBuildableRamp__type = FGBuildableRamp__merged__type & {
 	mIsInverted: boolean__type;

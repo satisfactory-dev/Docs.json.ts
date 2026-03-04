@@ -6,7 +6,7 @@ import {
 
 import {v1_0_base__FGBuildableFactoryBuilding__type} from '../../common/unassigned.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildableFactoryBuilding__type =
 	v1_0_base__FGBuildableFactoryBuilding__type & FGBuildable__base__type;

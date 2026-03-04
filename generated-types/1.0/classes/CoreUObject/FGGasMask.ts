@@ -8,14 +8,14 @@ import {
 
 import {FGEquipment__base__type} from './FGEquipment.js';
 
-import {boolean__type} from '../../../common/common/scalar.ts';
+import {boolean__type} from '../../../common/common/scalar.js';
 
 import {
 	empty_object__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned.ts';
+} from '../../../common/common/unassigned.js';
 
-import {common_base__FGGasMask__type} from '../../../common/classes/CoreUObject/FGGasMask.ts';
+import {common_base__FGGasMask__type} from '../../../common/classes/CoreUObject/FGGasMask.js';
 
 export type FGGasMask__type = FGGasMask__merged__type & {
 	mEquipMontage: {

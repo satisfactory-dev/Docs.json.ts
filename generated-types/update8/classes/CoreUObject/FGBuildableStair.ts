@@ -1,8 +1,8 @@
 import {FGBuildable__base__type} from './FGBuildable.js';
 
-import {decimal_string__type} from '../../../common/common/scalar.ts';
+import {decimal_string__type} from '../../../common/common/scalar.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildableStair__type = FGBuildable__base__type & {
 	mStairDirection: 'EBSD_Left' | 'EBSD_Right';

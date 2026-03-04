@@ -3,12 +3,12 @@ import {FGBuildable__consumes_power_base__type} from './FGBuildable.js';
 import {
 	boolean__type,
 	decimal_string__type,
-} from '../../../common/common/scalar.ts';
+} from '../../../common/common/scalar.js';
 
 import {
 	xyz__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned.ts';
+} from '../../../common/common/unassigned.js';
 
 export type FGBuildablePowerBooster__type =
 	FGBuildable__consumes_power_base__type & {

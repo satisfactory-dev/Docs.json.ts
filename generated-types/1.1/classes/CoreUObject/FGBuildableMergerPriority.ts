@@ -10,12 +10,12 @@ import {
 import {
 	boolean__type,
 	integer_string__type,
-} from '../../../common/common/scalar.ts';
+} from '../../../common/common/scalar.js';
 
 import {
 	empty_object__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned.ts';
+} from '../../../common/common/unassigned.js';
 
 export type FGBuildableMergerPriority__type = FGBuildable__base__type &
 	v1_0_base__FGBuildableAttachmentMergerSplitter__with_inventory_size__type &

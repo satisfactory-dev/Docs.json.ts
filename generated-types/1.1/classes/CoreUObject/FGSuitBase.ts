@@ -4,9 +4,9 @@ import {
 	v1_0_base__FGSuitBase__1_0__pre_1_1__type,
 } from '../../common/unassigned.js';
 
-import {boolean__type} from '../../../common/common/scalar.ts';
+import {boolean__type} from '../../../common/common/scalar.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGSuitBase__type = v1_0_base__FGEquipment__base__type &
 	v1_0_base__FGSuitBase__1_0__pre_1_1__type &

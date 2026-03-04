@@ -2,9 +2,9 @@ import {v1_0_base__FGBuildable__consumes_power_base__type} from '../../common/un
 
 import {FGBuildable__base__type} from './FGBuildable.js';
 
-import {integer_string__type} from '../../../common/common/scalar.ts';
+import {integer_string__type} from '../../../common/common/scalar.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildablePipeHyperJunction__type =
 	FGBuildablePipeHyperJunction__merged__type & {

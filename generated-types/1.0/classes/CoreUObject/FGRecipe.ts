@@ -3,9 +3,9 @@ import {FGCustomizationRecipe__FGRecipe__type} from './FGCustomizationRecipe.js'
 import {
 	ItemClass__amount_required__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned.ts';
+} from '../../../common/common/unassigned.js';
 
-import {common_base__FGRecipe__type} from '../../../common/classes/CoreUObject/FGRecipe.ts';
+import {common_base__FGRecipe__type} from '../../../common/classes/CoreUObject/FGRecipe.js';
 
 export type FGRecipe__type = FGRecipe__merged__type & {
 	mIngredients: ItemClass__amount_required__type | '';

@@ -5,9 +5,9 @@ import {FGBuildable__base__type} from './FGBuildable.js';
 import {
 	integer_string__type,
 	decimal_string__type,
-} from '../../../common/common/scalar.ts';
+} from '../../../common/common/scalar.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildablePowerStorage__type =
 	FGBuildablePowerStorage__merged__type & {

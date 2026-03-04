@@ -1,8 +1,8 @@
 import {FGEquipment__base__type} from './FGEquipment.js';
 
-import {common_base__FGJumpingStilts__type} from '../../../common/classes/CoreUObject/FGJumpingStilts.ts';
+import {common_base__FGJumpingStilts__type} from '../../../common/classes/CoreUObject/FGJumpingStilts.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGJumpingStilts__type = FGJumpingStilts__merged__type;
 

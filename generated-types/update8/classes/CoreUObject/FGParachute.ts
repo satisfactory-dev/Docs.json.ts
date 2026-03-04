@@ -1,8 +1,8 @@
 import {FGEquipment__base__type} from './FGEquipment.js';
 
-import {common_base__FGParachute__type} from '../../../common/classes/CoreUObject/FGParachute.ts';
+import {common_base__FGParachute__type} from '../../../common/classes/CoreUObject/FGParachute.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGParachute__type = FGParachute__merged__type & {
 	ArmEquipmentsToSkipAnim: [

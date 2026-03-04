@@ -2,7 +2,7 @@ import {v1_0_base__FGBuildableWallLightweight__type} from '../../common/unassign
 
 import {FGBuildable__base__type} from './FGBuildable.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildableWallLightweight__type =
 	v1_0_base__FGBuildableWallLightweight__type & FGBuildable__base__type;

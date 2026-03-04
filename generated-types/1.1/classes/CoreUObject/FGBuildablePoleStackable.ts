@@ -3,7 +3,7 @@ import {FGBuildable__base__type} from './FGBuildable.js';
 import {
 	common_base__FGBuildable__pole__base__no_static__pre_1_1__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned.ts';
+} from '../../../common/common/unassigned.js';
 
 export type FGBuildablePoleStackable__type =
 	common_base__FGBuildable__pole__base__no_static__pre_1_1__type &

@@ -4,9 +4,9 @@ import {UnrealEngineString, StringStartsWith} from '../../utils/validators.js';
 
 import {FGEquipment__placeable__type} from './FGEquipment.js';
 
-import {common_base__FGPortableMinerDispenser__type} from '../../../common/classes/CoreUObject/FGPortableMinerDispenser.ts';
+import {common_base__FGPortableMinerDispenser__type} from '../../../common/classes/CoreUObject/FGPortableMinerDispenser.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGPortableMinerDispenser__type =
 	FGPortableMinerDispenser__merged__type & {

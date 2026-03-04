@@ -5,7 +5,7 @@ import {FGBuildable__base__type} from './FGBuildable.js';
 import {
 	common_base__FGPipeHyperStart__pre_1_1__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned.ts';
+} from '../../../common/common/unassigned.js';
 
 export type FGPipeHyperStart__type =
 	common_base__FGPipeHyperStart__pre_1_1__type &

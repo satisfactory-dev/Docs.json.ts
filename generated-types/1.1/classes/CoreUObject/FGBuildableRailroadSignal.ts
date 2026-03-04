@@ -2,9 +2,9 @@ import {v1_0_base__FGBuildableRailroadSignal__type} from '../../common/unassigne
 
 import {FGBuildable__base__type} from './FGBuildable.js';
 
-import {boolean__type} from '../../../common/common/scalar.ts';
+import {boolean__type} from '../../../common/common/scalar.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildableRailroadSignal__type =
 	FGBuildableRailroadSignal__merged__type & {

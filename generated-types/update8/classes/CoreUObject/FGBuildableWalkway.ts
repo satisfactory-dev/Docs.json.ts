@@ -5,9 +5,9 @@ import {FGBuildable__base__type} from './FGBuildable.js';
 import {
 	common_base__FGBuildableWalkway__type,
 	common_base__FGBuildableWalkway__base__type,
-} from '../../../common/classes/CoreUObject/FGBuildableWalkway.ts';
+} from '../../../common/classes/CoreUObject/FGBuildableWalkway.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildableWalkway__type =
 	common_base__FGBuildableWalkway__type &

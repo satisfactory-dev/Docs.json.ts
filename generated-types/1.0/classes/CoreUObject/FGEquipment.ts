@@ -3,14 +3,14 @@ import {UnrealEngineString, StringStartsWith} from '../../utils/validators.js';
 import {
 	boolean__type,
 	decimal_string__type,
-} from '../../../common/common/scalar.ts';
+} from '../../../common/common/scalar.js';
 
-import {empty_object__type} from '../../../common/common/unassigned.ts';
+import {empty_object__type} from '../../../common/common/unassigned.js';
 
 import {
 	common_base__FGEquipment__base__type,
 	common_base__FGEquipment__placeable__type,
-} from '../../../common/classes/CoreUObject/FGEquipment.ts';
+} from '../../../common/classes/CoreUObject/FGEquipment.js';
 
 export type FGEquipment__base__type =
 	common_base__FGEquipment__base__type & {

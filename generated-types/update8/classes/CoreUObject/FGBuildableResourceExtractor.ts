@@ -6,9 +6,9 @@ import {
 	common_base__FGBuildableResourceExtractor__miner__type,
 	common_base__FGBuildableResourceExtractor__miner__base__type,
 	common_base__FGBuildableResourceExtractor__oil_extractor__type,
-} from '../../../common/classes/CoreUObject/FGBuildableResourceExtractor.ts';
+} from '../../../common/classes/CoreUObject/FGBuildableResourceExtractor.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildableResourceExtractor__miner__type =
 	common_base__FGBuildableResourceExtractor__miner__type &

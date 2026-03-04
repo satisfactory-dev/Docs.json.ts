@@ -1,8 +1,8 @@
 import {FGBuildable__consumes_power_base__type} from './FGBuildable.js';
 
-import {common_base__FGBuildableRadarTower__type} from '../../../common/classes/CoreUObject/FGBuildableRadarTower.ts';
+import {common_base__FGBuildableRadarTower__type} from '../../../common/classes/CoreUObject/FGBuildableRadarTower.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildableRadarTower__type =
 	common_base__FGBuildableRadarTower__type &

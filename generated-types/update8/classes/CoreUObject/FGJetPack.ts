@@ -5,11 +5,11 @@ import {FGEquipment__base__type} from './FGEquipment.js';
 import {
 	decimal_string__type,
 	integer_string__type,
-} from '../../../common/common/scalar.ts';
+} from '../../../common/common/scalar.js';
 
-import {common_base__FGJetPack__type} from '../../../common/classes/CoreUObject/FGJetPack.ts';
+import {common_base__FGJetPack__type} from '../../../common/classes/CoreUObject/FGJetPack.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGJetPack__type = FGJetPack__merged__type & {
 	mThrustCooldown: decimal_string__type;

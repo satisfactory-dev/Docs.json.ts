@@ -1,8 +1,8 @@
 import {FGBuildable__power_switch__base__type} from './FGBuildable.js';
 
-import {common_base__FGBuildablePriorityPowerSwitch__type} from '../../../common/classes/CoreUObject/FGBuildablePriorityPowerSwitch.ts';
+import {common_base__FGBuildablePriorityPowerSwitch__type} from '../../../common/classes/CoreUObject/FGBuildablePriorityPowerSwitch.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildablePriorityPowerSwitch__type =
 	common_base__FGBuildablePriorityPowerSwitch__type &

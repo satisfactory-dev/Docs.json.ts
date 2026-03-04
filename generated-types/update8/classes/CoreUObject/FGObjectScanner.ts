@@ -3,14 +3,14 @@ import {FGEquipment__base__type} from './FGEquipment.js';
 import {
 	boolean__type,
 	decimal_string__type,
-} from '../../../common/common/scalar.ts';
+} from '../../../common/common/scalar.js';
 
 import {
 	empty_object__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned.ts';
+} from '../../../common/common/unassigned.js';
 
-import {common_base__FGObjectScanner__type} from '../../../common/classes/CoreUObject/FGObjectScanner.ts';
+import {common_base__FGObjectScanner__type} from '../../../common/classes/CoreUObject/FGObjectScanner.js';
 
 export type FGObjectScanner__type = FGObjectScanner__merged__type & {
 	mPlayingSound: boolean__type;

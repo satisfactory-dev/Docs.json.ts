@@ -3,7 +3,7 @@ import {FGBuildable__base__type} from './FGBuildable.js';
 import {
 	empty_object__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned.ts';
+} from '../../../common/common/unassigned.js';
 
 import {
 	boolean__type,
@@ -11,7 +11,7 @@ import {
 	integer_string__signed__type,
 	integer_string__type,
 	decimal_string__type,
-} from '../../../common/common/scalar.ts';
+} from '../../../common/common/scalar.js';
 
 export type FGBuildableConveyorMonitor__type = FGBuildable__base__type &
 	FGBuildableConveyorMonitor__properties__type;

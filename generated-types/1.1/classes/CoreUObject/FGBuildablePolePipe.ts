@@ -11,15 +11,15 @@ import {
 	quaternion__type,
 	xyz__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned.ts';
+} from '../../../common/common/unassigned.js';
 
 import {
 	decimal_string__type,
 	boolean__type,
 	integer_string__type,
-} from '../../../common/common/scalar.ts';
+} from '../../../common/common/scalar.js';
 
-import {common_base__FGBuildablePoleLightweight__properties__type} from '../../../common/classes/CoreUObject/FGBuildablePoleLightweight.ts';
+import {common_base__FGBuildablePoleLightweight__properties__type} from '../../../common/classes/CoreUObject/FGBuildablePoleLightweight.js';
 
 export type FGBuildablePolePipe__type = FGBuildablePolePipe__mergd__type & {
 	mSupportMeshInstanceData: {

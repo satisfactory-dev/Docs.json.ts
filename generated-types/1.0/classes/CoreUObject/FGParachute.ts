@@ -9,14 +9,14 @@ import {
 
 import {FGEquipment__base__type} from './FGEquipment.js';
 
-import {boolean__type} from '../../../common/common/scalar.ts';
+import {boolean__type} from '../../../common/common/scalar.js';
 
 import {
 	empty_object__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned.ts';
+} from '../../../common/common/unassigned.js';
 
-import {common_base__FGParachute__type} from '../../../common/classes/CoreUObject/FGParachute.ts';
+import {common_base__FGParachute__type} from '../../../common/classes/CoreUObject/FGParachute.js';
 
 export type FGParachute__type = FGParachute__merged__type & {
 	mParachuteDeployMontageList: {

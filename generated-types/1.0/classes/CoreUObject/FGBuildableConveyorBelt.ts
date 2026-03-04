@@ -2,14 +2,14 @@ import {FGBuildableConveyorBelt__pre_1_1__type} from '../../common/unassigned.js
 
 import {FGBuildable__base__type} from './FGBuildable.js';
 
-import {integer_string__signed__type} from '../../../common/common/scalar.ts';
+import {integer_string__signed__type} from '../../../common/common/scalar.js';
 
 import {
 	common_base__FGBuildableConveyorBelt__base__type,
 	common_base__FGBuildableConveyorBelt__type,
-} from '../../../common/classes/CoreUObject/FGBuildableConveyorBelt.ts';
+} from '../../../common/classes/CoreUObject/FGBuildableConveyorBelt.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildableConveyorBelt__type =
 	FGBuildableConveyorBelt__pre_1_1__type;

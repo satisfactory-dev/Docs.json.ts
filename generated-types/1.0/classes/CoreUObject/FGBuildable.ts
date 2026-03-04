@@ -9,7 +9,7 @@ import {
 	boolean__type,
 	integer_string__type,
 	decimal_string__type,
-} from '../../../common/common/scalar.ts';
+} from '../../../common/common/scalar.js';
 
 import {
 	common_base__FGBuildable__base__type,
@@ -26,9 +26,9 @@ import {
 	common_base__FGBuildable__power_switch__base__type,
 	common_base__FGBuildable__splitter__base__type,
 	common_base__FGBuildable__tiered__type,
-} from '../../../common/classes/CoreUObject/FGBuildable.ts';
+} from '../../../common/classes/CoreUObject/FGBuildable.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildable__base__type =
 	common_base__FGBuildable__base__type & {

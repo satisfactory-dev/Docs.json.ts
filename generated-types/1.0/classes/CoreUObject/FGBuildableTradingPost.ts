@@ -2,7 +2,7 @@ import {FGBuildableTradingPost__version_1__type} from '../../common/unassigned.j
 
 import {FGBuildable__consumes_power_base__type} from './FGBuildable.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildableTradingPost__type =
 	FGBuildableTradingPost__version_1__type &

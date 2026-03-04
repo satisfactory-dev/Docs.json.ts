@@ -3,9 +3,9 @@ import {FGBuildable__base__type} from './FGBuildable.js';
 import {
 	common_base__FGBuildableFoundation__base__type,
 	common_base__FGBuildableFoundation__type,
-} from '../../../common/classes/CoreUObject/FGBuildableFoundation.ts';
+} from '../../../common/classes/CoreUObject/FGBuildableFoundation.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildableFoundation__type = FGBuildableFoundation__merged__type;
 

@@ -3,9 +3,9 @@ import {FGBuildable__consumes_power_base__type} from './FGBuildable.js';
 import {
 	empty_object__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned.ts';
+} from '../../../common/common/unassigned.js';
 
-import {common_base__FGBuildableSpaceElevator__type} from '../../../common/classes/CoreUObject/FGBuildableSpaceElevator.ts';
+import {common_base__FGBuildableSpaceElevator__type} from '../../../common/classes/CoreUObject/FGBuildableSpaceElevator.js';
 
 export type FGBuildableSpaceElevator__type =
 	FGBuildableSpaceElevator__merged__type & {

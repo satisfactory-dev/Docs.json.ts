@@ -1,8 +1,8 @@
 import {FGItemDescriptor__FGResourceDescriptor__type} from './FGItemDescriptor.js';
 
-import {common_base__FGResourceDescriptor__type} from '../../../common/classes/CoreUObject/FGResourceDescriptor.ts';
+import {common_base__FGResourceDescriptor__type} from '../../../common/classes/CoreUObject/FGResourceDescriptor.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGResourceDescriptor__type = FGResourceDescriptor__merged__type & {
 	mManualMiningAudioName: 'Metal' | 'Sam';

@@ -1,8 +1,8 @@
 import {FGBuildable__base__type} from './FGBuildable.js';
 
-import {common_base__FGBuildableRailroadSignal__type} from '../../../common/classes/CoreUObject/FGBuildableRailroadSignal.ts';
+import {common_base__FGBuildableRailroadSignal__type} from '../../../common/classes/CoreUObject/FGBuildableRailroadSignal.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildableRailroadSignal__type =
 	FGBuildableRailroadSignal__merged__type;

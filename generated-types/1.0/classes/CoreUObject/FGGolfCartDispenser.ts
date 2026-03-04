@@ -8,11 +8,11 @@ import {
 	xyz__type,
 	empty_object__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned.ts';
+} from '../../../common/common/unassigned.js';
 
-import {decimal_string__type} from '../../../common/common/scalar.ts';
+import {decimal_string__type} from '../../../common/common/scalar.js';
 
-import {common_base__FGGolfCartDispenser__type} from '../../../common/classes/CoreUObject/FGGolfCartDispenser.ts';
+import {common_base__FGGolfCartDispenser__type} from '../../../common/classes/CoreUObject/FGGolfCartDispenser.js';
 
 export type FGGolfCartDispenser__type = FGGolfCartDispenser__merged__type & {
 	mBuildDisqualifierText: 'Vehicles cannot be built or deployed on top of existing vehicles!';

@@ -3,7 +3,7 @@ import {FGBuildable__base__type} from './FGBuildable.js';
 import {
 	common_base__FGBuildableFoundation__type,
 	common_base__FGBuildableFoundation__base__type,
-} from '../../../common/classes/CoreUObject/FGBuildableFoundation.ts';
+} from '../../../common/classes/CoreUObject/FGBuildableFoundation.js';
 
 export type FGBuildableFoundation__type =
 	common_base__FGBuildableFoundation__type &

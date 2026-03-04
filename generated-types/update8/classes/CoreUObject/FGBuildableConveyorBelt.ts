@@ -3,12 +3,12 @@ import {FGBuildable__base__type} from './FGBuildable.js';
 import {
 	empty_object__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned.ts';
+} from '../../../common/common/unassigned.js';
 
 import {
 	common_base__FGBuildableConveyorBelt__base__type,
 	common_base__FGBuildableConveyorBelt__type,
-} from '../../../common/classes/CoreUObject/FGBuildableConveyorBelt.ts';
+} from '../../../common/classes/CoreUObject/FGBuildableConveyorBelt.js';
 
 export type FGBuildableConveyorBelt__type =
 	FGBuildableConveyorBelt__merged__type;

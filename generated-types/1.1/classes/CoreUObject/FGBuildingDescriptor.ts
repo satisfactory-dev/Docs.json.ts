@@ -1,10 +1,10 @@
 import {v1_0_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type} from '../../common/unassigned.js';
 
-import {boolean__type} from '../../../common/common/scalar.ts';
+import {boolean__type} from '../../../common/common/scalar.js';
 
-import {common_base__FGBuildingDescriptor__base__type} from '../../../common/classes/CoreUObject/FGBuildingDescriptor.ts';
+import {common_base__FGBuildingDescriptor__base__type} from '../../../common/classes/CoreUObject/FGBuildingDescriptor.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildingDescriptor__type = FGBuildingDescriptor__merged__type & {
 	mUsesDistanceForZooping: boolean__type;

@@ -1,8 +1,8 @@
 import {v1_0_base__FGChargedWeapon__type} from '../../common/unassigned.js';
 
-import {boolean__type} from '../../../common/common/scalar.ts';
+import {boolean__type} from '../../../common/common/scalar.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGChargedWeapon__type = v1_0_base__FGChargedWeapon__type & {
 	bHasDispensedProjectiles: boolean__type;

@@ -4,7 +4,7 @@ import {
 	v1_0_base__FGVehicleDescriptor__fueled_with_inventory__type,
 } from '../../common/unassigned.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGVehicleDescriptor__NativeClass =
 	NativeClass__type & {

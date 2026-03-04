@@ -1,8 +1,8 @@
 import {FGBuildableFoundation__base__type} from './FGBuildableFoundation.js';
 
-import {common_base__FGBuildableRamp__type} from '../../../common/classes/CoreUObject/FGBuildableRamp.ts';
+import {common_base__FGBuildableRamp__type} from '../../../common/classes/CoreUObject/FGBuildableRamp.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildableRamp__type = FGBuildableRamp__merged__type;
 

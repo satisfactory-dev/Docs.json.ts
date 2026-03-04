@@ -11,19 +11,19 @@ import {FGEquipment__base__type} from './FGEquipment.js';
 import {
 	decimal_string__type,
 	boolean__type,
-} from '../../../common/common/scalar.ts';
+} from '../../../common/common/scalar.js';
 
 import {
 	empty_object__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned.ts';
+} from '../../../common/common/unassigned.js';
 
 import {
 	common_base__FGWeapon__base__type,
 	common_base__FGWeapon__gun_base__type,
 	common_base__FGWeapon__rebar_gun__type,
 	common_base__FGWeapon__rifle__type,
-} from '../../../common/classes/CoreUObject/FGWeapon.ts';
+} from '../../../common/classes/CoreUObject/FGWeapon.js';
 
 export type FGWeapon__base__type = FGWeapon__base__merged__type;
 

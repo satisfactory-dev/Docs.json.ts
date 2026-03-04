@@ -3,9 +3,9 @@ import {FGEquipmentDescriptor__base__type} from './FGEquipmentDescriptor.js';
 import {
 	common_base__FGConsumableDescriptor__base__type,
 	common_base__FGConsumableDescriptor__healing__type,
-} from '../../../common/classes/CoreUObject/FGConsumableDescriptor.ts';
+} from '../../../common/classes/CoreUObject/FGConsumableDescriptor.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGConsumableDescriptor__type = FGConsumableDescriptor__base__type;
 

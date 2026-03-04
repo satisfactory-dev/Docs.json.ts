@@ -8,9 +8,9 @@ import {
 	xyz__type,
 	empty_object__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned.ts';
+} from '../../../common/common/unassigned.js';
 
-import {common_base__FGObjectScanner__type} from '../../../common/classes/CoreUObject/FGObjectScanner.ts';
+import {common_base__FGObjectScanner__type} from '../../../common/classes/CoreUObject/FGObjectScanner.js';
 
 export type FGObjectScanner__type = FGObjectScanner__merged__type & {
 	mScannerCycleLeftMontage: {

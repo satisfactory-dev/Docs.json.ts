@@ -13,14 +13,14 @@ import {FGWeapon__base__type} from './FGWeapon.js';
 import {
 	boolean__type,
 	decimal_string__type,
-} from '../../../common/common/scalar.ts';
+} from '../../../common/common/scalar.js';
 
 import {
 	empty_object__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned.ts';
+} from '../../../common/common/unassigned.js';
 
-import {common_base__FGChargedWeapon__type} from '../../../common/classes/CoreUObject/FGChargedWeapon.ts';
+import {common_base__FGChargedWeapon__type} from '../../../common/classes/CoreUObject/FGChargedWeapon.js';
 
 export type FGChargedWeapon__type = FGChargedWeapon__merged__type & {
 	AmmoTypeToAkEvent: [

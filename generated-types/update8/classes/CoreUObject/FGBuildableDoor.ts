@@ -4,9 +4,9 @@ import {
 	common_base__FGBuildableDoor__type,
 	common_base__FGBuildableDoor__automated__type,
 	common_base__FGBuildableDoor__base__type,
-} from '../../../common/classes/CoreUObject/FGBuildableDoor.ts';
+} from '../../../common/classes/CoreUObject/FGBuildableDoor.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildableDoor__type =
 	common_base__FGBuildableDoor__type &

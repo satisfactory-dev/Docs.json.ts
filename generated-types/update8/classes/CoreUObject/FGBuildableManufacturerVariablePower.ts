@@ -3,9 +3,9 @@ import {FGBuildableManufacturer__base__type} from './FGBuildableManufacturer.js'
 import {
 	common_base__FGBuildableManufacturerVariablePower__HadronCollider__type,
 	common_base__FGBuildableManufacturerVariablePower__base__type,
-} from '../../../common/classes/CoreUObject/FGBuildableManufacturerVariablePower.ts';
+} from '../../../common/classes/CoreUObject/FGBuildableManufacturerVariablePower.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildableManufacturerVariablePower__type =
 	common_base__FGBuildableManufacturerVariablePower__HadronCollider__type &

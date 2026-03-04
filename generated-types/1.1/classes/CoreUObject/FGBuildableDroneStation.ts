@@ -2,7 +2,7 @@ import {v1_0_base__FGBuildableDroneStation__type} from '../../common/unassigned.
 
 import {FGBuildable__base__type} from './FGBuildable.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildableDroneStation__type =
 	v1_0_base__FGBuildableDroneStation__type & FGBuildable__base__type;

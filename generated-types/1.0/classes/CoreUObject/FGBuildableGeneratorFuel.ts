@@ -5,9 +5,9 @@ import {
 	common_base__FGBuildableGeneratorFuel__biogen__type,
 	common_base__FGBuildableGeneratorFuel__liquid__type,
 	common_base__FGBuildableGeneratorFuel__solid__type,
-} from '../../../common/classes/CoreUObject/FGBuildableGeneratorFuel.ts';
+} from '../../../common/classes/CoreUObject/FGBuildableGeneratorFuel.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildableGeneratorFuel__base__type =
 	FGBuildableGeneratorFuel__base__merged__type & {

@@ -7,9 +7,9 @@ import {
 import {
 	empty_object__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned.ts';
+} from '../../../common/common/unassigned.js';
 
-import {common_base__FGSchematic__with_unlocks__type} from '../../../common/classes/CoreUObject/FGSchematic.ts';
+import {common_base__FGSchematic__with_unlocks__type} from '../../../common/classes/CoreUObject/FGSchematic.js';
 
 export type FGSchematic__type =
 	v1_0_base__FGSchematic__base__properties__type & {

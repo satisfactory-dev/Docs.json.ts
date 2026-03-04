@@ -3,13 +3,13 @@ import {StringStartsWith} from '../../utils/validators.js';
 import {
 	None__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned.ts';
+} from '../../../common/common/unassigned.js';
 
 import {
 	common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type,
 	common_base__FGItemDescriptor__FGResourceDescriptor__type,
 	common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type,
-} from '../../../common/classes/CoreUObject/FGItemDescriptor.ts';
+} from '../../../common/classes/CoreUObject/FGItemDescriptor.js';
 
 export type FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type =
 	common_base__FGItemDescriptor__FGBuildingDescriptor__FGResourceDescriptor__type & {

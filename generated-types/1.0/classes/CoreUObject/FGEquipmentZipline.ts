@@ -8,14 +8,14 @@ import {UnrealEngineString, StringStartsWith} from '../../utils/validators.js';
 
 import {FGEquipment__base__type} from './FGEquipment.js';
 
-import {boolean__type} from '../../../common/common/scalar.ts';
+import {boolean__type} from '../../../common/common/scalar.js';
 
 import {
 	empty_object__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned.ts';
+} from '../../../common/common/unassigned.js';
 
-import {common_base__FGEquipmentZipline__type} from '../../../common/classes/CoreUObject/FGEquipmentZipline.ts';
+import {common_base__FGEquipmentZipline__type} from '../../../common/classes/CoreUObject/FGEquipmentZipline.js';
 
 export type FGEquipmentZipline__type = FGEquipmentZipline__merged__type & {
 	mZiplineAttachMontage: {

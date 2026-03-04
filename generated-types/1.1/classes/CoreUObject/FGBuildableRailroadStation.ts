@@ -2,7 +2,7 @@ import {v1_0_base__FGBuildableRailroadStation__type} from '../../common/unassign
 
 import {FGBuildable__base__type} from './FGBuildable.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildableRailroadStation__type =
 	FGBuildableRailroadStation__merged__type & {

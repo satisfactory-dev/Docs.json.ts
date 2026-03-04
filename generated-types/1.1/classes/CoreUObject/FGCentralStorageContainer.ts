@@ -2,7 +2,7 @@ import {v1_0_base__FGCentralStorageContainer__type} from '../../common/unassigne
 
 import {FGBuildable__base__type} from './FGBuildable.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGCentralStorageContainer__type =
 	v1_0_base__FGCentralStorageContainer__type & FGBuildable__base__type;

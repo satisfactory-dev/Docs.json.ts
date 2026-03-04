@@ -4,13 +4,13 @@ import {
 	integer_string__type,
 	decimal_string__type,
 	boolean__type,
-} from '../../../common/common/scalar.ts';
+} from '../../../common/common/scalar.js';
 
 import {
 	UnrealEngineString__array__type,
 	empty_object__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned.ts';
+} from '../../../common/common/unassigned.js';
 
 import {
 	common_base__FGSchematic__mUnlocks__type,
@@ -19,7 +19,7 @@ import {
 	common_base__FGSchematic__base__type,
 	common_base__FGSchematic__mUnlocks_Class__type,
 	common_base__FGSchematic__with_unlocks__type,
-} from '../../../common/classes/CoreUObject/FGSchematic.ts';
+} from '../../../common/classes/CoreUObject/FGSchematic.js';
 
 export type FGSchematic__type = FGSchematic__base__properties__type & {
 	mStatisticGameplayTag:

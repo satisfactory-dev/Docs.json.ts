@@ -7,14 +7,14 @@ import {FGEquipment__base__type} from './FGEquipment.js';
 import {
 	integer_string__type,
 	boolean__type,
-} from '../../../common/common/scalar.ts';
+} from '../../../common/common/scalar.js';
 
 import {
 	empty_object__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned.ts';
+} from '../../../common/common/unassigned.js';
 
-import {common_base__FGChainsaw__type} from '../../../common/classes/CoreUObject/FGChainsaw.ts';
+import {common_base__FGChainsaw__type} from '../../../common/classes/CoreUObject/FGChainsaw.js';
 
 export type FGChainsaw__type = FGChainsaw__merged__type & {
 	StartUpToIdleID: integer_string__type;

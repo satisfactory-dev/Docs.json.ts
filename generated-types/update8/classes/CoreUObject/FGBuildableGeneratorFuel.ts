@@ -3,14 +3,14 @@ import {FGBuildableGenerator__base__type} from './FGBuildableGenerator.js';
 import {
 	empty_object__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned.ts';
+} from '../../../common/common/unassigned.js';
 
 import {
 	common_base__FGBuildableGeneratorFuel__base__type,
 	common_base__FGBuildableGeneratorFuel__biogen__type,
 	common_base__FGBuildableGeneratorFuel__liquid__type,
 	common_base__FGBuildableGeneratorFuel__solid__type,
-} from '../../../common/classes/CoreUObject/FGBuildableGeneratorFuel.ts';
+} from '../../../common/classes/CoreUObject/FGBuildableGeneratorFuel.js';
 
 export type FGBuildableGeneratorFuel__base__type =
 	FGBuildableGeneratorFuel__base__merged__type & {

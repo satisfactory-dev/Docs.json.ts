@@ -3,9 +3,9 @@ import {FGBuildable__base__type} from './FGBuildable.js';
 import {
 	empty_object__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned.ts';
+} from '../../../common/common/unassigned.js';
 
-import {common_base__FGBuildableWidgetSign__type} from '../../../common/classes/CoreUObject/FGBuildableWidgetSign.ts';
+import {common_base__FGBuildableWidgetSign__type} from '../../../common/classes/CoreUObject/FGBuildableWidgetSign.js';
 
 export type FGBuildableWidgetSign__type =
 	FGBuildableWidgetSign__merged__type & {

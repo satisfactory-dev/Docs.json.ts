@@ -2,7 +2,7 @@ import {v1_0_base__FGBuildableResourceSink__type} from '../../common/unassigned.
 
 import {FGBuildable__base__type} from './FGBuildable.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildableResourceSink__type =
 	v1_0_base__FGBuildableResourceSink__type & FGBuildable__base__type;

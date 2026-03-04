@@ -7,7 +7,7 @@ import {
 
 import {FGBuildable__base__type} from './FGBuildable.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildableAttachmentMerger__type =
 	FGBuildableAttachmentMerger__merged__type & {

@@ -4,9 +4,9 @@ import {
 	common_base__FGBuildableFactory__generic__type,
 	common_base__FGBuildableFactory__jump_pad__type,
 	common_base__FGBuildableFactory__landing_pad__type,
-} from '../../../common/classes/CoreUObject/FGBuildableFactory.ts';
+} from '../../../common/classes/CoreUObject/FGBuildableFactory.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildableFactory__generic__type =
 	FGBuildableFactory__generic__merged__type;

@@ -4,9 +4,9 @@ import {
 	common_base__FGAmmoTypeInstantHit__base__type,
 	common_base__FGAmmoTypeInstantHit__chaos__type,
 	common_base__FGAmmoTypeInstantHit__standard__type,
-} from '../../../common/classes/CoreUObject/FGAmmoTypeInstantHit.ts';
+} from '../../../common/classes/CoreUObject/FGAmmoTypeInstantHit.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGAmmoTypeInstantHit__base__type =
 	common_base__FGAmmoTypeInstantHit__base__type &

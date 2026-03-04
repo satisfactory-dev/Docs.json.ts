@@ -1,8 +1,8 @@
 import {FGBuildable__consumes_power_base__type} from './FGBuildable.js';
 
-import {common_base__FGBuildableJumppad__type} from '../../../common/classes/CoreUObject/FGBuildableJumppad.ts';
+import {common_base__FGBuildableJumppad__type} from '../../../common/classes/CoreUObject/FGBuildableJumppad.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildableJumppad__type =
 	common_base__FGBuildableJumppad__type &

@@ -5,9 +5,9 @@ import {FGEquipment__base__type} from './FGEquipment.js';
 import {
 	empty_object__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned.ts';
+} from '../../../common/common/unassigned.js';
 
-import {common_base__FGJetPack__type} from '../../../common/classes/CoreUObject/FGJetPack.ts';
+import {common_base__FGJetPack__type} from '../../../common/classes/CoreUObject/FGJetPack.js';
 
 export type FGJetPack__type = FGJetPack__merged__type & {
 	mAllowedFuelTypes: [

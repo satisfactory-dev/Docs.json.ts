@@ -6,9 +6,9 @@ import {
 	common_base__FGBuildableGeneratorNuclear__mFuel__NuclearFuelRod__type,
 	common_base__FGBuildableGeneratorNuclear__mFuel__PlutoniumFuelRod__type,
 	common_base__FGBuildableGeneratorNuclear__type,
-} from '../../../common/classes/CoreUObject/FGBuildableGeneratorNuclear.ts';
+} from '../../../common/classes/CoreUObject/FGBuildableGeneratorNuclear.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildableGeneratorNuclear__type =
 	FGBuildableGeneratorNuclear__merged__type & {

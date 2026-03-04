@@ -6,7 +6,7 @@ import {
 
 import {v1_0_base__FGBuildableSnowDispenser__type} from '../../common/unassigned.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildableSnowDispenser__type =
 	v1_0_base__FGBuildableSnowDispenser__type & FGBuildable__base__type;

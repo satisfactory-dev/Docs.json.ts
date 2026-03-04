@@ -3,7 +3,7 @@ import {
 	v1_0_base__FGConsumableDescriptor__healing__type,
 } from '../../common/unassigned.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGConsumableDescriptor__NativeClass =
 	NativeClass__type & {

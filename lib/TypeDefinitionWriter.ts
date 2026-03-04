@@ -488,6 +488,8 @@ export class TypeDefinitionWriter {
 
 			code = code.replace(/common_type__/g, '');
 
+			code = code.replace(/\.js\.js/g, '.js');
+
 			await writeFile(
 				file_name,
 				code,

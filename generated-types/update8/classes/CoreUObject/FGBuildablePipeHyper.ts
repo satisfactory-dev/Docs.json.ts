@@ -1,8 +1,8 @@
 import {FGBuildable__base__type} from './FGBuildable.js';
 
-import {common_base__FGBuildablePipeHyper__type} from '../../../common/classes/CoreUObject/FGBuildablePipeHyper.ts';
+import {common_base__FGBuildablePipeHyper__type} from '../../../common/classes/CoreUObject/FGBuildablePipeHyper.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildablePipeHyper__type = FGBuildablePipeHyper__merged__type;
 

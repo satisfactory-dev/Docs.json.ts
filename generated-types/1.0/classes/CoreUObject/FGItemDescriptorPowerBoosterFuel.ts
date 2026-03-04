@@ -1,8 +1,8 @@
 import {FGItemDescriptor__FGResourceDescriptor__type} from './FGItemDescriptor.js';
 
-import {decimal_string__type} from '../../../common/common/scalar.ts';
+import {decimal_string__type} from '../../../common/common/scalar.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGItemDescriptorPowerBoosterFuel__type =
 	FGItemDescriptor__FGResourceDescriptor__type & {

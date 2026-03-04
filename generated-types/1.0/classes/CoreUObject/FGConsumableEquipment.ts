@@ -8,12 +8,12 @@ import {UnrealEngineString, StringStartsWith} from '../../utils/validators.js';
 
 import {FGEquipment__base__type} from './FGEquipment.js';
 
-import {decimal_string__type} from '../../../common/common/scalar.ts';
+import {decimal_string__type} from '../../../common/common/scalar.js';
 
 import {
 	empty_object__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned.ts';
+} from '../../../common/common/unassigned.js';
 
 export type FGConsumableEquipment__base__type = FGEquipment__base__type & {
 	mStingerMontage?: empty_object__type;

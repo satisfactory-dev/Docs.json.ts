@@ -5,14 +5,14 @@ import {
 
 import {FGBuildable__base__type} from './FGBuildable.js';
 
-import {boolean__type} from '../../../common/common/scalar.ts';
+import {boolean__type} from '../../../common/common/scalar.js';
 
 import {
 	common_base__FGBuildableDoor__base__type,
 	common_base__FGBuildableDoor__automated__type,
-} from '../../../common/classes/CoreUObject/FGBuildableDoor.ts';
+} from '../../../common/classes/CoreUObject/FGBuildableDoor.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildableDoor__type =
 	common_base__FGBuildableDoor__base__type &

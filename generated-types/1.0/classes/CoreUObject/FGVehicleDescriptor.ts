@@ -4,9 +4,9 @@ import {
 	common_base__FGVehicleDescriptor__fueled_with_inventory__type,
 	common_base__FGVehicleDescriptor__powered_no_inventory__type,
 	common_base__FGVehicleDescriptor__with_inventory__type,
-} from '../../../common/classes/CoreUObject/FGVehicleDescriptor.ts';
+} from '../../../common/classes/CoreUObject/FGVehicleDescriptor.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGVehicleDescriptor__fueled_with_inventory__type =
 	FGVehicleDescriptor__fueled_with_inventory__merged__type;

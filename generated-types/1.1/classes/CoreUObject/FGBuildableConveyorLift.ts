@@ -6,9 +6,9 @@ import {
 
 import {FGBuildable__base__type} from './FGBuildable.js';
 
-import {boolean__type} from '../../../common/common/scalar.ts';
+import {boolean__type} from '../../../common/common/scalar.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildableConveyorLift__type =
 	v1_0_base__FGBuildableConveyorLift__type &

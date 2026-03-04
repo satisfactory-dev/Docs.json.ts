@@ -6,14 +6,14 @@ import {
 
 import {FGBuildable__base__type} from './FGBuildable.js';
 
-import {integer_string__signed__type} from '../../../common/common/scalar.ts';
+import {integer_string__signed__type} from '../../../common/common/scalar.js';
 
 import {
 	color_decimal__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned.ts';
+} from '../../../common/common/unassigned.js';
 
-import {common_base__FGBuildableBlueprintDesigner__type} from '../../../common/classes/CoreUObject/FGBuildableBlueprintDesigner.ts';
+import {common_base__FGBuildableBlueprintDesigner__type} from '../../../common/classes/CoreUObject/FGBuildableBlueprintDesigner.js';
 
 export type FGBuildableBlueprintDesigner__base__type =
 	FGBuildableBlueprintDesigner__merged__type & {

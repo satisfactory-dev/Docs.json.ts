@@ -6,9 +6,9 @@ import {
 import {
 	common_base__FGEquipmentDescriptor__base__type,
 	common_base__FGEquipmentDescriptor__type,
-} from '../../../common/classes/CoreUObject/FGEquipmentDescriptor.ts';
+} from '../../../common/classes/CoreUObject/FGEquipmentDescriptor.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGEquipmentDescriptor__type = FGEquipmentDescriptor__merged__type;
 

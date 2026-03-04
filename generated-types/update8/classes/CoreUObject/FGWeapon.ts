@@ -3,16 +3,16 @@ import {FGEquipment__base__type} from './FGEquipment.js';
 import {
 	boolean__type,
 	integer_string__type,
-} from '../../../common/common/scalar.ts';
+} from '../../../common/common/scalar.js';
 
 import {
 	common_base__FGWeapon__base__type,
 	common_base__FGWeapon__gun_base__type,
 	common_base__FGWeapon__rebar_gun__type,
 	common_base__FGWeapon__rifle__type,
-} from '../../../common/classes/CoreUObject/FGWeapon.ts';
+} from '../../../common/classes/CoreUObject/FGWeapon.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGWeapon__base__type = FGWeapon__base__merged__type;
 

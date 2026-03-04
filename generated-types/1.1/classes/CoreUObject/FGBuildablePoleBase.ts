@@ -4,7 +4,7 @@ import {
 	FGBuildable__tiered__type,
 } from './FGBuildable.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildablePoleBase__NativeClass =
 	NativeClass__type & {

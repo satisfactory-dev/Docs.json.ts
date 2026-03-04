@@ -3,9 +3,9 @@ import {FGBuildable__docking_station_base__type} from './FGBuildable.js';
 import {
 	empty_object__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned.ts';
+} from '../../../common/common/unassigned.js';
 
-import {common_base__FGBuildableDockingStation__type} from '../../../common/classes/CoreUObject/FGBuildableDockingStation.ts';
+import {common_base__FGBuildableDockingStation__type} from '../../../common/classes/CoreUObject/FGBuildableDockingStation.js';
 
 export type FGBuildableDockingStation__type =
 	FGBuildableDockingStation__merged__type & {

@@ -3,9 +3,9 @@ import {FGBuildableTrainPlatform__base__type} from './FGBuildableTrainPlatform.j
 import {
 	common_base__FGBuildableTrainPlatformCargo__FGBuildableRailroadStation__type,
 	common_base__FGBuildableTrainPlatformCargo__type,
-} from '../../../common/classes/CoreUObject/FGBuildableTrainPlatformCargo.ts';
+} from '../../../common/classes/CoreUObject/FGBuildableTrainPlatformCargo.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildableTrainPlatformCargo__type =
 	FGBuildableTrainPlatformCargo__merged__type;

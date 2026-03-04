@@ -1,8 +1,8 @@
 import {FGAmmoTypeProjectile__base__type} from './FGAmmoTypeProjectile.js';
 
-import {common_base__FGAmmoTypeSpreadshot__type} from '../../../common/classes/CoreUObject/FGAmmoTypeSpreadshot.ts';
+import {common_base__FGAmmoTypeSpreadshot__type} from '../../../common/classes/CoreUObject/FGAmmoTypeSpreadshot.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGAmmoTypeSpreadshot__type =
 	common_base__FGAmmoTypeSpreadshot__type &

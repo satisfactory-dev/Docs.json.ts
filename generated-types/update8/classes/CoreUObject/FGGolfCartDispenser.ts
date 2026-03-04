@@ -3,11 +3,11 @@ import {FGEquipment__base__type} from './FGEquipment.js';
 import {
 	decimal_string__type,
 	boolean__type,
-} from '../../../common/common/scalar.ts';
+} from '../../../common/common/scalar.js';
 
-import {common_base__FGGolfCartDispenser__type} from '../../../common/classes/CoreUObject/FGGolfCartDispenser.ts';
+import {common_base__FGGolfCartDispenser__type} from '../../../common/classes/CoreUObject/FGGolfCartDispenser.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGGolfCartDispenser__type = FGGolfCartDispenser__merged__type & {
 	mMaxSpawnDistance: decimal_string__type;

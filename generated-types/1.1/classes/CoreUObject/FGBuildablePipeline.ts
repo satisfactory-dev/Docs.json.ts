@@ -5,7 +5,7 @@ import {v1_0_base__FGBuildablePipeline__properties__type} from '../../common/una
 import {
 	common_base__FGBuildablePipeline__pre_1_1__type,
 	NativeClass__type,
-} from '../../../common/common/unassigned.ts';
+} from '../../../common/common/unassigned.js';
 
 export type FGBuildablePipeline__type =
 	common_base__FGBuildablePipeline__pre_1_1__type &

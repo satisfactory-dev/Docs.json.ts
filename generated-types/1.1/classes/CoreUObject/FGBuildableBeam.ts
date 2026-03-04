@@ -2,9 +2,9 @@ import {v1_0_base__FGBuildableBeamLightweight__type} from '../../common/unassign
 
 import {FGBuildable__base__type} from './FGBuildable.js';
 
-import {boolean__type} from '../../../common/common/scalar.ts';
+import {boolean__type} from '../../../common/common/scalar.js';
 
-import {NativeClass__type} from '../../../common/common/unassigned.ts';
+import {NativeClass__type} from '../../../common/common/unassigned.js';
 
 export type FGBuildableBeam__type =
 	v1_0_base__FGBuildableBeamLightweight__type & FGBuildableBeam__base__type;
