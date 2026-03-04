@@ -64,13 +64,6 @@ export class ImportTracker {
 			for (const inner_entry of Object.entries(file_imports)) {
 				const [from, import_these] = inner_entry;
 
-				if (from.endsWith('.ts')) {
-					throw new NoMatchError(
-						from,
-						'files ending with .ts should not end up here',
-					);
-				}
-
 				if (import_these.length) {
 					if (!(from in merge_here)) {
 						merge_here[from] = import_these as [

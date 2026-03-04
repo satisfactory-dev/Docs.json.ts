@@ -59,7 +59,7 @@ export class DocsTsAutoImports {
 					.filter(maybe => !/(faux|common_type)/i.test(maybe[0]))
 					.map(e => [
 						`common_type__${e[0]}`,
-						e[1],
+						`${e[1]}.ts`,
 					]),
 			),
 			null,
@@ -153,6 +153,8 @@ export class DocsTsAutoImports {
 					if (!import_from.startsWith('.')) {
 						import_from = `./${import_from}`;
 					}
+
+					import_from = `${import_from}.ts`;
 
 					if (!(import_from in auto_imports[filename])) {
 						auto_imports[filename][import_from] = [];

@@ -1,4 +1,7 @@
-import {decimal_string__type, integer_string__type} from '../../common/scalar.ts';
+import {
+	decimal_string__type,
+	integer_string__type,
+} from '../../common/scalar.ts';
 
 import {common_base__FGItemDescriptor__FGResourceDescriptor__FGPoleDescriptor__type} from './FGItemDescriptor.ts';
 

@@ -1,4 +1,7 @@
-import {mGasType__type, mClassToScanFor__type} from '../../common/unassigned.ts';
+import {
+	mGasType__type,
+	mClassToScanFor__type,
+} from '../../common/unassigned.ts';
 
 import {boolean__type} from '../../../common/common/scalar.ts';
 

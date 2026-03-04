@@ -1,6 +1,9 @@
 import {decimal_string__type, boolean__type} from '../../common/scalar.ts';
 
-import {xyz__integer__type, empty_object__type} from '../../common/unassigned.ts';
+import {
+	xyz__integer__type,
+	empty_object__type,
+} from '../../common/unassigned.ts';
 
 import {common_base__FGBuildable__base__type} from './FGBuildable.ts';
 

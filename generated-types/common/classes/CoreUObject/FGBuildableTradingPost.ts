@@ -1,6 +1,9 @@
 import {UnrealEngineString} from '../../utils/validators.ts';
 
-import {integer_string__type, decimal_string__type} from '../../common/scalar.ts';
+import {
+	integer_string__type,
+	decimal_string__type,
+} from '../../common/scalar.ts';
 
 import {common_base__FGBuildable__consumes_power_base__type} from './FGBuildable.ts';
 

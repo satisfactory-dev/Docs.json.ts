@@ -1,4 +1,7 @@
-import {decimal_string__type, integer_string__type} from '../../common/scalar.ts';
+import {
+	decimal_string__type,
+	integer_string__type,
+} from '../../common/scalar.ts';
 
 import {common_base__FGBuildable__base__type} from './FGBuildable.ts';
 

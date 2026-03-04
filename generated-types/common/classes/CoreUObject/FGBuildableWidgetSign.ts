@@ -1,4 +1,7 @@
-import {decimal_string__type, integer_string__type} from '../../common/scalar.ts';
+import {
+	decimal_string__type,
+	integer_string__type,
+} from '../../common/scalar.ts';
 
 import {
 	empty_object__type,
