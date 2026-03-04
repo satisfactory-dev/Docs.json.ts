@@ -25,7 +25,7 @@ import {
 	not_undefined,
 	rejects_partial_match,
 } from '@satisfactory-dev/custom-assert';
-import {
+import type {
 	DocsDataItem,
 } from '../../../lib/DocsTsGenerator.ts';
 

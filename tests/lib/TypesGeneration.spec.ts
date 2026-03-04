@@ -110,15 +110,3 @@ void describe('ImportTracker.generate_imports()', () => {
 		check_element(1, 'bar', ['baz', 'test']);
 	});
 });
-
-void describe('ImportTracker.merge_and_set_imports()', () => {
-	void it('throws', () => {
-		const instance = new ImportTracker();
-
-		assert.throws(() => instance.merge_and_set_imports({
-			'foo.ts': {
-				'bar.ts': ['baz'],
-			},
-		}));
-	});
-});

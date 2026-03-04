@@ -3,13 +3,15 @@ import {
 	it,
 } from 'node:test';
 import assert from 'node:assert/strict';
+import type {
+	pattern_schema,
+	string_schema,
+} from '../../../../lib/DataDiscovery/JsonSchema/StringType.ts';
 import {
 	BasicStringConverter,
 	ConstStringConverter,
 	EnumStringConverter,
-	pattern_schema,
 	PatternConverter,
-	string_schema,
 } from '../../../../lib/DataDiscovery/JsonSchema/StringType.ts';
 import {
 	docs,
@@ -32,7 +34,7 @@ import type {
 import {
 	ConverterMatchesSchema,
 } from '../../../../lib/DataDiscovery/Generator.ts';
-import {
+import type {
 	enum_schema_type,
 } from '../../../../lib/CustomParsingTypes/TypedStringEnum.ts';
 
