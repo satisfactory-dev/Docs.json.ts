@@ -16,7 +16,7 @@ import {
 
 import type {
 	FilenameAdjuster,
-} from './FilenameAdjuster';
+} from './FilenameAdjuster.ts';
 
 export type processed_results = Awaited<ReturnType<Printer['parse']>>[0][];
 

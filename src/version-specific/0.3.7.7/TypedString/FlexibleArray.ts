@@ -37,7 +37,7 @@ import {
 
 import type {
 	PropertySchemaToRegex,
-} from './Object';
+} from './Object.ts';
 
 export type FlexibleArray_type<
 	ArrayMode extends array_mode = array_mode,
