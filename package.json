@@ -32,8 +32,8 @@
     "@typescript-eslint/parser": "^8.56.0"
   },
   "dependencies": {
-    "@satisfactory-dev/predicates.ts": "^0.2.0",
-    "@signpostmarv/json-schema-typescript-codegen": "^0.7.2",
+    "@satisfactory-dev/predicates.ts": "^0.2.2",
+    "@signpostmarv/json-schema-typescript-codegen": "^0.7.3",
     "ajv": "^8.17.1"
   },
   "files": [
