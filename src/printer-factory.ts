@@ -77,6 +77,7 @@ export async function* get_results(
 
 export async function handle_results(
 	results: processed_results,
+	alternate_source: undefined | string = undefined,
 ): Promise<void> {
 	const files = new Set<string>();
 
@@ -85,7 +86,7 @@ export async function handle_results(
 			throw new Error(`${result.filename} already written to!`);
 		}
 
-		const code = result.code.replace(
+		let code = result.code.replace(
 			/((?:import|export)(?: type)? )(\{)([^}]+)+(\s*\})/g,
 			(
 				substring,
@@ -108,6 +109,20 @@ export async function handle_results(
 					right_bracket
 				}`;
 			});
+
+		if (alternate_source) {
+			code = code.replace(
+				/} from "(?:(?:\.\.\/)+|\.\/)(.+).ts"/g,
+				`} from "${
+					alternate_source.endsWith('/')
+						? alternate_source.substring(
+							0,
+							alternate_source.length - 1,
+						)
+						: alternate_source
+				}/$1.ts"`,
+			);
+		}
 
 		const directory = dirname(result.filename);
 		await mkdir(directory, {recursive: true});
