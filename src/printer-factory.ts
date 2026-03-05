@@ -85,13 +85,7 @@ export async function handle_results(
 			throw new Error(`${result.filename} already written to!`);
 		}
 
-		const directory = dirname(result.filename);
-		await mkdir(directory, {recursive: true});
-		await writeFile(
-			result.filename,
-			`/* eslint-disable @stylistic/max-len */${
-				'\n\n'
-			}${
+		const code = (
 				result.code
 					.replace(
 						/((?:import|export)(?: type)? )(\{)([^}]+)+(\s*\})/g,
@@ -116,6 +110,16 @@ export async function handle_results(
 								right_bracket
 							}`;
 						})
+		);
+
+		const directory = dirname(result.filename);
+		await mkdir(directory, {recursive: true});
+		await writeFile(
+			result.filename,
+			`/* eslint-disable @stylistic/max-len */${
+				'\n\n'
+			}${
+				code
 			}`,
 		);
 	}
