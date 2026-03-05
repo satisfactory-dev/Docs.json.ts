@@ -28,9 +28,6 @@
     "typescript": "~5.9.2",
     "typescript-eslint": "^8.56.0"
   },
-  "optionalDependencies": {
-    "@typescript-eslint/parser": "^8.56.0"
-  },
   "dependencies": {
     "@satisfactory-dev/predicates.ts": "^0.2.2",
     "@signpostmarv/json-schema-typescript-codegen": "^0.7.3",
