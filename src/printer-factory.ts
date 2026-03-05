@@ -27,34 +27,12 @@ export function printer_factory(adjuster: FilenameAdjuster): Printer {
 		) => {
 			const result = adjuster.adjust_name_to_data_filename(name);
 
-			/*
-			file splitting doesn't quite work yet
-			if (/^FG[A-Za-z]+(?:_data)?$/.test(name)) {
-				result = result
-					.replace(
-						/\.ts$/,
-						`/${name.replace(/_data$/, '')}.ts`,
-					) as `./${string}.ts`;
-			}
-			*/
-
 			return result;
 		},
 		type_filename_callback: (
 			name,
 		) => {
 			const result = adjuster.adjust_name_to_type_filename(name);
-
-			/*
-			file splitting doesn't quite work yet
-			if (/^FG[A-Za-z]+(?:_type)?$/.test(name)) {
-				result = result
-					.replace(
-						/\.ts$/,
-						`/${name.replace(/_type$/, '')}.ts`,
-					) as `./${string}.ts`;
-			}
-			*/
 
 			return result;
 		},
@@ -92,11 +70,6 @@ export async function* get_results(
 ) {
 	if (!('type' in schema)) {
 		yield get_results_from_$defs_only_schema(schema, adjuster, parser);
-
-		/*
-		file splitting doesn't quite work yet
-		parser.clear_imports();
-		*/
 	} else {
 		yield* get_results_from_data_schema(schema, adjuster);
 	}

@@ -7,32 +7,16 @@ import {
 } from '@satisfactory-dev/predicates.ts';
 
 import type {
-
-	/*
-	file splitting doesn't quite work yet
-	$ref_type,
-	*/
 	SchemaObjectWith$id,
 } from '@signpostmarv/json-schema-typescript-codegen';
 import {
 	$ref,
 	SchemaParser,
-
-	/*
-	Type,
-	*/
 } from '@signpostmarv/json-schema-typescript-codegen';
 
 import {
 	configure_parser,
 } from './src/version-specific/0.3.7.7/SchemaParser.ts';
-
-/*
-file splitting doesn't quite work yet
-import type {
-	NativeClass,
-} from './src/version-specific/0.3.7.7/NativeClass.ts';
-*/
 
 import common_types from './schema/common/types.json' with {
 	type: 'json',
@@ -136,46 +120,6 @@ async function* get_results_from_data_schema(
 		schema,
 		parser,
 	);
-
-	/*
-	file splitting doesn't quite work yet
-	for (let i = 0; i < data.length; ++i) {
-		const sub_data: {
-			NativeClass: string,
-		} = data[i] as {
-			NativeClass: string,
-		};
-
-		const sub_schema = Type.maybe_add_$defs(
-			schema,
-			(
-				$ref_instance as $ref
-			).resolve_def(
-				schema.prefixItems[i] as $ref_type,
-				schema.$defs || {},
-			),
-		);
-
-		const type_name = /^Class'\/Script\/FactoryGame\.(FG[A-Za-z]+)'$/.exec(
-			sub_data.NativeClass,
-		);
-
-		if (null === type_name) {
-			throw new TypeError('Could not get type name!');
-		}
-
-		const foo = await printer.parse(
-			sub_data,
-			sub_schema,
-			parser,
-			`${type_name[1]}_type`,
-			`${type_name[1]}_data`,
-		);
-
-		yield foo;
-		parser.clear_imports();
-	}
-	*/
 }
 
 const results: processed_results = [];
