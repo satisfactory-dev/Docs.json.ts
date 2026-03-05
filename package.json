@@ -35,5 +35,17 @@
     "@satisfactory-dev/predicates.ts": "^0.2.0",
     "@signpostmarv/json-schema-typescript-codegen": "^0.7.2",
     "ajv": "^8.17.1"
-  }
+  },
+  "files": [
+    "./src/**/*.ts",
+    "./src/**/*.js",
+    "./src/**/*.js.map",
+    "./schema/**/*.json",
+    "./generated-types/**/*.ts",
+    "./generated-types/**/*.js",
+    "./generated-types/**/*.js.map",
+    "!./generated-types/**/data.ts",
+    "!./generated-types/**/data.js",
+    "!./generated-types/**/data.js.map"
+  ]
 }
