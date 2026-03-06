@@ -12,8 +12,6 @@
     "url": "git+https://github.com/SignpostMarv/nodejs-template.git"
   },
   "funding": "https://github.com/SignpostMarv/nodejs-template?sponsor=1",
-  "exports": "./index.js",
-  "types": "./index.d.ts",
   "engines": {
     "node": "^25.0"
   },
