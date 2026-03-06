@@ -7,5 +7,5 @@
 		"rewriteRelativeImportExtensions": true,
 		"sourceMap": true
 	},
-	"include": ["./src/*.ts", "./index.ts"]
+	"include": ["./src/**/*.ts", "./generated-types/**/*.ts"]
 }
