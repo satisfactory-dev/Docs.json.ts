@@ -5,6 +5,5 @@
 		"./tests/src/*.ts",
 		"./*.ts",
 		"./generated-types/**/*.ts"
-	],
-	"exclude": ["./generated-types/*/data.ts", "./generated-types/*/*.data.ts"]
+	]
 }
