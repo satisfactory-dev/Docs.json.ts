@@ -18,10 +18,6 @@ import {
 	configure_parser,
 } from './src/version-specific/0.3.7.7/SchemaParser.ts';
 
-import common_types from './schema/common/types.json' with {
-	type: 'json',
-};
-
 import update3_overridable from './schema/0.3.7.7/overridable.json' with {
 	type: 'json',
 };
@@ -135,7 +131,6 @@ console.log(
 );
 
 for (const schema of [
-	common_types,
 	update3_overridable,
 	update3_properties,
 	update3_classes__base__overridable,
