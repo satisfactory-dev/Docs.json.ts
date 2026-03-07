@@ -655,7 +655,7 @@ type FGWeaponProjectileFire = {
 	],
 };
 
-export type foo = [
+export type update3_docs = [
 	FGItemDescriptor,
 	FGSchematic,
 	FGBuildablePole,

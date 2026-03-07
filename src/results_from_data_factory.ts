@@ -24,6 +24,8 @@ function results_from_data_factory(
 	docs_data: unknown,
 	parser: SchemaParser,
 	lang: SupportedLang,
+	type_name: `${string}_docs`,
+	data_name: string,
 ) {
 	return async function* (
 		schema: SchemaObjectWith$id,
@@ -60,6 +62,8 @@ function results_from_data_factory(
 			data,
 			schema,
 			parser,
+			type_name,
+			data_name,
 		);
 	};
 }

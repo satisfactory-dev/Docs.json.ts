@@ -2,10 +2,6 @@ import {
 	Ajv2020 as Ajv,
 } from 'ajv/dist/2020.js';
 
-import {
-	object_has_non_empty_array_property,
-} from '@satisfactory-dev/predicates.ts';
-
 import type {
 	SchemaObjectWith$id,
 } from '@signpostmarv/json-schema-typescript-codegen';
@@ -57,12 +53,15 @@ import type {
 import {
 	get_results,
 	handle_results,
-	printer_factory,
 } from './src/printer-factory.ts';
 
 import {
 	filenames_by_$id,
 } from './src/version-specific/0.3.7.7/filenames.ts';
+
+import {
+	results_from_data_factory,
+} from './src/results_from_data_factory.ts';
 
 const ajv = new Ajv({strict: true, verbose: true});
 
@@ -83,40 +82,14 @@ const adjuster = new FilenameAdjuster(
 	'docs.json.ts--common--types',
 );
 
-async function* get_results_from_data_schema(
-	schema: SchemaObjectWith$id,
-	adjuster: FilenameAdjuster,
-) {
-	adjuster.current_id = schema.$id;
-
-	const printer = printer_factory(adjuster);
-
-	let data: unknown = undefined;
-
-	switch (schema.$id) {
-		case 'docs.json.ts--0.3.7.7':
-			data = update3_data;
-			break;
-	}
-
-	if (undefined === data) {
-		throw new TypeError(`No data specified for ${schema.$id}`);
-	} else if (!Array.isArray(data)) {
-		throw new TypeError(
-			`Data was not in expected format for ${schema.$id}`,
-		);
-	} else if (!object_has_non_empty_array_property(schema, 'prefixItems')) {
-		throw new TypeError(
-			`Schema was not in expected format for ${schema.$id}`,
-		);
-	}
-
-	yield await printer.parse(
-		data,
-		schema,
-		parser,
-	);
-}
+const get_results_from_data_schema = results_from_data_factory(
+	update3,
+	update3_data,
+	parser,
+	'en-US',
+	'update3_docs',
+	'update3',
+);
 
 const results: processed_results = [];
 
