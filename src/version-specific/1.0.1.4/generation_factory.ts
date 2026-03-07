@@ -167,6 +167,8 @@ async function generation_factory(
 		release_data,
 		parser,
 		lang,
+		'release_1_0_docs',
+		'release_1_0',
 	);
 
 	const results: processed_results = [];
