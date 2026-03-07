@@ -199,8 +199,9 @@ generate--common:
 
 generate--update3: prepare--update3
 	@echo 'running generator'
-	@node ./generate-update3.ts
+	@node ./generate-update3.ts en-US --skip-data
 	@./node_modules/.bin/eslint --fix ./generated-types/0.3.7.7/ --ignore-pattern './generated-types/0.3.7.7/data.ts'
+	@node ./generate-update3.ts en-US --skip-types
 	@./node_modules/.bin/eslint --fix './generated-types/0.3.7.7/data.ts'
 
 generate--update4: prepare--update4
