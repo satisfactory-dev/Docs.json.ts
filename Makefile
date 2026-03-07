@@ -237,7 +237,6 @@ generate--version1_0--types: prepare--version1_0
 	@echo 'running generator'
 	@node ./generate-version1.0.ts en-US --skip-data
 	@./node_modules/.bin/eslint --fix ./generated-types/1.0.1.4/ './generated-types/**/*1.0.1.4.ts' --ignore-pattern './generated-types/1.0.1.4/data.ts' --ignore-pattern './generated-types/1.0.1.4/**/*.data.ts'
-	@./node_modules/.bin/eslint --fix './generated-types/1.0.1.4/**/*.data.ts'
 
 generate--version1_0: generate--version1_0--types
 	@echo 'running generator'
@@ -296,12 +295,12 @@ generate--version1_0: generate--version1_0--types
 	@node ./generate-version1.0.ts vun --skip-types
 	@node ./generate-version1.0.ts zh-Hans --skip-types
 	@node ./generate-version1.0.ts zh-Hant --skip-types
+	@./node_modules/.bin/eslint --fix './generated-types/1.0.1.4/**/*.data.ts'
 
 generate--version1_1--types: prepare--version1_1
 	@echo 'running generator'
 	@node ./generate-version1.1.ts en-US --skip-data
 	@./node_modules/.bin/eslint --fix ./generated-types/1.1.2.2/ './generated-types/**/*1.1.2.2.ts' --ignore-pattern './generated-types/1.1.2.2/data.ts' --ignore-pattern './generated-types/1.1.2.2/**/*.data.ts'
-	@./node_modules/.bin/eslint --fix './generated-types/1.1.2.2/**/*.data.ts'
 
 generate--version1_1: generate--version1_1--types
 	@node ./generate-version1.1.ts af --skip-types
@@ -359,3 +358,4 @@ generate--version1_1: generate--version1_1--types
 	@node ./generate-version1.1.ts vun --skip-types
 	@node ./generate-version1.1.ts zh-Hans --skip-types
 	@node ./generate-version1.1.ts zh-Hant --skip-types
+	@./node_modules/.bin/eslint --fix './generated-types/1.1.2.2/**/*.data.ts'
