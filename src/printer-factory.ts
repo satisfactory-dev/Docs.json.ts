@@ -66,12 +66,14 @@ export async function* get_results(
 	get_results_from_data_schema: (
 		schema: SchemaObjectWith$id,
 		adjuster: FilenameAdjuster,
+		process_data: boolean,
 	) => AsyncGenerator<Awaited<ReturnType<Printer['parse']>>>,
+	process_data: boolean = true,
 ) {
 	if (!('type' in schema)) {
 		yield get_results_from_$defs_only_schema(schema, adjuster, parser);
 	} else {
-		yield* get_results_from_data_schema(schema, adjuster);
+		yield* get_results_from_data_schema(schema, adjuster, process_data);
 	}
 }
 

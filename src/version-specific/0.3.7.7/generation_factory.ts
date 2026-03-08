@@ -101,6 +101,8 @@ async function generation_factory(
 		lang,
 		'update3_docs',
 		'update3',
+		process_types,
+		process_data,
 	);
 
 	const results: processed_results = [];
@@ -115,6 +117,12 @@ async function generation_factory(
 			update3_classes__base as SchemaObjectWith$id,
 			update3_classes,
 		);
+
+		if (!process_data) {
+			schema_set.push(
+				update3,
+			);
+		}
 	}
 
 	if (process_data) {
@@ -130,6 +138,7 @@ async function generation_factory(
 			adjuster,
 			parser,
 			get_results_from_data_schema,
+			process_data,
 		)) {
 			results.push(...schema_results);
 			parser.clear_imports();

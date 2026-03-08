@@ -26,6 +26,8 @@ function results_from_data_factory(
 	lang: SupportedLang,
 	type_name: `${string}_docs`,
 	data_name: string,
+	output_types: boolean,
+	output_data: boolean,
 ) {
 	return async function* (
 		schema: SchemaObjectWith$id,
@@ -37,10 +39,8 @@ function results_from_data_factory(
 
 		let data: unknown = undefined;
 
-		switch (schema.$id) {
-			case docs_schema.$id:
-				data = docs_data;
-				break;
+		if (schema.$id === docs_schema.$id) {
+			data = docs_data;
 		}
 
 		if (undefined === data) {
@@ -49,7 +49,9 @@ function results_from_data_factory(
 			throw new TypeError(
 				`Data was not in expected format for ${schema.$id} ${lang}`,
 			);
-		} else if (!object_has_non_empty_array_property(
+		}
+
+		if (!object_has_non_empty_array_property(
 			schema,
 			'prefixItems',
 		)) {
@@ -64,6 +66,8 @@ function results_from_data_factory(
 			parser,
 			type_name,
 			data_name,
+			output_types,
+			output_data,
 		);
 	};
 }
