@@ -1,161 +1,43 @@
 import {
-	Ajv2020 as Ajv,
-} from 'ajv/dist/2020.js';
+	generation_factory,
+} from './src/version-specific/0.5.2.1/generation_factory.ts';
 
 import {
-	object_has_non_empty_array_property,
-} from '@satisfactory-dev/predicates.ts';
+	is_supported,
+} from './src/version-specific/0.3.7.7/supported_lang.ts';
 
-import type {
-	SchemaObjectWith$id,
-} from '@signpostmarv/json-schema-typescript-codegen';
-import {
-	$ref,
-	SchemaParser,
-} from '@signpostmarv/json-schema-typescript-codegen';
+const [,, ...remaining] = process.argv;
 
-import {
-	configure_parser,
-} from './src/version-specific/0.5.2.1/SchemaParser.ts';
+const lang = remaining.filter((maybe) => !maybe.startsWith('--'))[0];
 
-import update5_properties from './schema/0.5.2.1/properties.json' with {
-	type: 'json',
+const process_generation = {
+	types: true,
+	data: true,
 };
 
-import update5_overridable from './schema/0.5.2.1/overridable.json' with {
-	type: 'json',
-};
-
-import update5_classes__base from './schema/0.5.2.1/base-classes.json' with {
-	type: 'json',
-};
-
-// eslint-disable-next-line @stylistic/max-len
-import update5_classes__base__overridable from './schema/0.5.2.1/base-classes.overridable.json' with {
-	type: 'json',
-};
-
-import update5_classes from './schema/0.5.2.1/classes.json' with {
-	type: 'json',
-};
-
-// eslint-disable-next-line @stylistic/max-len
-import update5_classes__overridable from './schema/0.5.2.1/classes.overridable.json' with {
-	type: 'json',
-};
-
-import update5 from './schema/0.5.2.1/docs.json' with {
-	type: 'json',
-};
-
-import update5_data from './data/0.5.2.1/Docs/Docs.utf8.json' with {
-	type: 'json',
-};
-
-import {
-	FilenameAdjuster,
-} from './src/FilenameAdjuster.ts';
-
-import type {
-	processed_results,
-} from './src/printer-factory.ts';
-import {
-	get_results,
-	handle_results,
-	printer_factory,
-} from './src/printer-factory.ts';
-
-import {
-	filenames_by_$id,
-} from './src/version-specific/0.5.2.1/filenames.ts';
-
-console.log('Generating Update 5');
-
-const ajv = new Ajv({strict: true, verbose: true});
-
-const parser = new SchemaParser({ajv});
-
-configure_parser(parser);
-
-const $ref_instance = parser.types.find(
-	(maybe) => maybe instanceof $ref,
-);
-
-if (undefined === $ref_instance) {
-	throw new TypeError('Could not find $ref instance!');
+if (remaining.includes('--skip-types')) {
+	process_generation.types = false;
 }
 
-const adjuster = new FilenameAdjuster(
-	filenames_by_$id,
-	'docs.json.ts--common--types',
-);
-
-async function* get_results_from_data_schema(
-	schema: SchemaObjectWith$id,
-	adjuster: FilenameAdjuster,
-) {
-	adjuster.current_id = schema.$id;
-
-	const printer = printer_factory(adjuster);
-
-	let data: unknown = undefined;
-
-	switch (schema.$id) {
-		case 'docs.json.ts--0.5.2.1':
-			data = update5_data;
-			break;
-	}
-
-	if (undefined === data) {
-		throw new TypeError(`No data specified for ${schema.$id}`);
-	} else if (!Array.isArray(data)) {
-		throw new TypeError(
-			`Data was not in expected format for ${schema.$id}`,
-		);
-	} else if (!object_has_non_empty_array_property(schema, 'prefixItems')) {
-		throw new TypeError(
-			`Schema was not in expected format for ${schema.$id}`,
-		);
-	}
-
-	yield await printer.parse(
-		data,
-		schema,
-		parser,
-	);
+if (remaining.includes('--skip-data')) {
+	process_generation.data = false;
 }
 
-const results: processed_results = [];
-
-console.log(
-	`update 5: ${
-		100
-		* (
-			update5.prefixItems.filter((maybe) => !('type' in maybe)).length
-			/ update5.prefixItems.length
-		)
-	}%`,
-);
-
-for (const schema of [
-	update5_overridable,
-	update5_properties,
-	update5_classes__base,
-	update5_classes__base__overridable,
-	update5_classes,
-	update5_classes__overridable,
-	update5,
-]) {
-	console.log(`getting results for ${schema.$id}`);
-	for await (const schema_results of get_results(
-		schema as SchemaObjectWith$id,
-		adjuster,
-		parser,
-		get_results_from_data_schema,
-	)) {
-		results.push(...schema_results);
-		parser.clear_imports();
-	}
+if (!is_supported(lang)) {
+	throw new Error('Unsupported language');
 }
 
-await handle_results(results);
+const {
+	default: release_data,
+} = await import(
+	`${import.meta.dirname}/data/0.5.2.1/Docs/Docs.utf8.json`,
+	{
+		with: {
+			type: 'json',
+		},
+	},
+) as {
+	default: unknown,
+};
+
+await generation_factory(release_data, lang, process_generation);
