@@ -17,10 +17,7 @@ jobs:
                   node-version: 24.x
                   cache: 'npm'
             - run: npm ci
-            - run: ./node_modules/.bin/tsc --project ./tsconfig.app-check.json
-            - run: ./node_modules/.bin/prettier . --check
-            - run: ./node_modules/.bin/eslint --config eslint.config.js.mjs './**/*.mjs'
-            - run: ./node_modules/.bin/eslint --cache './**/*.ts'
+            - run: make ci--basic-checks
     coverage:
         if: github.event.repository.visibility == 'public'
         needs: basic-checks
