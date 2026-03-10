@@ -35,11 +35,20 @@
     "./src/**/*.js",
     "./src/**/*.js.map",
     "./schema/**/*.json",
-    "./generated-types/**/*.ts",
-    "./generated-types/**/*.js",
-    "./generated-types/**/*.js.map",
-    "!./generated-types/**/data.ts",
-    "!./generated-types/**/data.js",
-    "!./generated-types/**/data.js.map"
+    "./generated-types/*/classes/**.ts",
+    "./generated-types/*/classes/**.js",
+    "./generated-types/*/classes/**.js.map",
+    "./generated-types/*/types/**.ts",
+    "./generated-types/*/types/**.js",
+    "./generated-types/*/types/**.js.map",
+    "./generated-types/*/classes.ts",
+    "./generated-types/*/classes.js",
+    "./generated-types/*/classes.js.map",
+    "./generated-types/*/types.ts",
+    "./generated-types/*/types.js",
+    "./generated-types/*/types.js.map",
+    "./generated-types/*/Base.ts",
+    "./generated-types/*/Base.js",
+    "./generated-types/*/Base.js.map"
   ]
 }
