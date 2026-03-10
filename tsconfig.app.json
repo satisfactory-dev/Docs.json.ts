@@ -7,5 +7,9 @@
 		"rewriteRelativeImportExtensions": true,
 		"sourceMap": true
 	},
-	"include": ["./src/**/*.ts", "./generated-types/**/*.ts"]
+	"include": ["./src/**/*.ts", "./generated-types/**/*.ts"],
+	"exclude": [
+		"./generated-types/**/data.ts",
+		"./generated-types/**/*.data.ts"
+	]
 }
