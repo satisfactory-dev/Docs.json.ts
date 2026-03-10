@@ -956,7 +956,7 @@ type FGWeapon = {
 	],
 };
 
-export type foo = [
+export type update8_docs = [
 	FGItemDescriptor,
 	FGBuildableDroneStation,
 	FGCustomizationRecipe,

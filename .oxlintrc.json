@@ -1,0 +1,32 @@
+{
+	"$schema": "./node_modules/oxlint/configuration_schema.json",
+	"extends": [
+		"./node_modules/@signpostmarv/oxlint-config/.oxlintrc.typescript.json"
+	],
+	"env": {
+		"node": true
+	},
+	"rules": {
+		"@stylistic/type-annotation-spacing": [
+			"error",
+			{
+				"before": false,
+				"after": true,
+				"overrides": {
+					"arrow": {
+						"before": true,
+						"after": true
+					}
+				}
+			}
+		]
+	},
+	"options": {
+		"typeAware": true
+	},
+	"overrides": [
+		{
+			"files": ["./**/*.ts"]
+		}
+	]
+}

@@ -720,7 +720,7 @@ type FGWeaponProjectileFire = {
 	],
 };
 
-export type foo = [
+export type update4_docs = [
 	FGItemDescriptor,
 	FGSchematic,
 	FGConsumableEquipment,

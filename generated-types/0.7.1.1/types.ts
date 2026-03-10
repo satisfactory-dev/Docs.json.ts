@@ -672,7 +672,7 @@ type FGPipeHyperStart = {
 	],
 };
 
-export type foo = [
+export type update7_docs = [
 	docs_json_ts_0_6_1_5_FGItemDescriptor,
 	FGBuildableDroneStation,
 	docs_json_ts_0_6_1_5_FGConsumableEquipment,

@@ -1011,7 +1011,7 @@ type FGWeapon = {
 	],
 };
 
-export type foo = [
+export type release_1_0_docs = [
 	FGItemDescriptor,
 	FGSchematic,
 	FGBuildableRailroadTrack,

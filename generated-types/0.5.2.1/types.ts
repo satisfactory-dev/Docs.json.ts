@@ -800,7 +800,7 @@ type FGWeapon = {
 	],
 };
 
-export type foo = [
+export type update5_docs = [
 	FGItemDescriptor,
 	docs_json_ts_0_4_2_11_FGConsumableEquipment,
 	FGSchematic,

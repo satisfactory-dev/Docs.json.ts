@@ -13,14 +13,11 @@ lint--prettier:
 	@echo 'running prettier'
 	@./node_modules/.bin/prettier . --check
 
-lint--eslint:
-	@./node_modules/.bin/tsc --project ./tsconfig.eslint.json
-	@echo 'checking eslint for all issues with config'
-	@./node_modules/.bin/eslint --config eslint.config.js.mjs --cache './**/*.mjs'
-	@echo 'checking eslint for all issues'
-	@./node_modules/.bin/eslint --cache './**/*.ts' --ignore-pattern './generated-types/*/data.ts' --ignore-pattern './generated-types/*/*.data.ts'
+lint--oxlint:
+	@echo 'checking oxlint for all issues'
+	@./node_modules/.bin/oxlint
 
-lint: lint--prettier lint--tsc lint--eslint
+lint: lint--prettier lint--tsc lint--oxlint
 
 .PHONY: tests
 tests: build
@@ -38,8 +35,7 @@ npm-prep: tests
 ci--basic-checks:
 	./node_modules/.bin/tsc --project ./tsconfig.app-check.json
 	./node_modules/.bin/prettier . --check
-	./node_modules/.bin/eslint --config eslint.config.js.mjs './**/*.mjs'
-	./node_modules/.bin/eslint --cache './**/*.ts'
+	./node_modules/.bin/oxlint
 
 prepare: prepare--version1_1
 
@@ -195,54 +191,40 @@ generate: generate--clean generate--common generate--early-access generate--1.x
 generate--common:
 	@echo 'running generator'
 	@node ./generate-common.ts
-	@./node_modules/.bin/eslint --fix ./generated-types/common/
 
 generate--update3: prepare--update3
 	@echo 'running generator'
 	@node ./generate-update3.ts en-US --skip-data
-	@./node_modules/.bin/eslint --fix ./generated-types/0.3.7.7/ --ignore-pattern './generated-types/0.3.7.7/data.ts' --ignore-pattern './generated-types/0.3.7.7/**/*.data.ts'
 	@node ./generate-update3.ts en-US --skip-types
-	@./node_modules/.bin/eslint --fix './generated-types/0.3.7.7/data.ts'
 
 generate--update4: prepare--update4
 	@echo 'running generator'
 	@node ./generate-update4.ts en-US --skip-data
-	@./node_modules/.bin/eslint --fix ./generated-types/0.4.2.11/ --ignore-pattern './generated-types/0.4.2.11/data.ts' --ignore-pattern './generated-types/0.4.2.11/**/*.data.ts'
 	@node ./generate-update4.ts en-US --skip-types
-	@./node_modules/.bin/eslint --fix './generated-types/0.4.2.11/data.ts'
 
 generate--update5: prepare--update5
 	@echo 'running generator'
 	@node ./generate-update5.ts en-US --skip-data
-	@./node_modules/.bin/eslint --fix ./generated-types/0.5.2.1/ --ignore-pattern './generated-types/0.5.2.1/data.ts' --ignore-pattern './generated-types/0.5.2.1/**/*.data.ts'
 	@node ./generate-update5.ts en-US --skip-types
-	@./node_modules/.bin/eslint --fix './generated-types/0.5.2.1/data.ts'
 
 generate--update6: prepare--update6
 	@echo 'running generator'
 	@node ./generate-update6.ts en-US --skip-data
-	@./node_modules/.bin/eslint --fix ./generated-types/0.6.1.5/ --ignore-pattern './generated-types/0.6.1.5/data.ts' --ignore-pattern './generated-types/0.6.1.5/**/*.data.ts'
 	@node ./generate-update6.ts en-US --skip-types
-	@./node_modules/.bin/eslint --fix './generated-types/0.6.1.5/data.ts'
 
 generate--update7: prepare--update7
 	@echo 'running generator'
 	@node ./generate-update7.ts en-US --skip-data
-	@./node_modules/.bin/eslint --fix ./generated-types/0.7.1.1/ --ignore-pattern './generated-types/0.7.1.1/data.ts' --ignore-pattern './generated-types/0.7.1.1/**/*.data.ts'
 	@node ./generate-update7.ts en-US --skip-types
-	@./node_modules/.bin/eslint --fix './generated-types/0.7.1.1/data.ts'
 
 generate--update8: prepare--update8
 	@echo 'running generator'
 	@node ./generate-update8.ts en-US --skip-data
-	@./node_modules/.bin/eslint --fix ./generated-types/0.8.3.3/ './generated-types/**/*0.8.3.3.ts' --ignore-pattern './generated-types/0.8.3.3/data.ts' --ignore-pattern './generated-types/0.8.3.3/**/*.data.ts'
 	@node ./generate-update8.ts en-US --skip-types
-	@./node_modules/.bin/eslint --fix './generated-types/0.8.3.3/data.ts'
 
 generate--version1_0--types: prepare--version1_0
 	@echo 'running generator'
 	@node ./generate-version1.0.ts en-US --skip-data
-	@./node_modules/.bin/eslint --fix ./generated-types/1.0.1.4/ './generated-types/**/*1.0.1.4.ts' --ignore-pattern './generated-types/1.0.1.4/data.ts' --ignore-pattern './generated-types/1.0.1.4/**/*.data.ts'
 
 generate--version1_0: generate--version1_0--types
 	@echo 'running generator'
@@ -301,12 +283,10 @@ generate--version1_0: generate--version1_0--types
 	@node ./generate-version1.0.ts vun --skip-types
 	@node ./generate-version1.0.ts zh-Hans --skip-types
 	@node ./generate-version1.0.ts zh-Hant --skip-types
-	@./node_modules/.bin/eslint --fix './generated-types/1.0.1.4/**/*.data.ts'
 
 generate--version1_1--types: prepare--version1_1
 	@echo 'running generator'
 	@node ./generate-version1.1.ts en-US --skip-data
-	@./node_modules/.bin/eslint --fix ./generated-types/1.1.2.2/ './generated-types/**/*1.1.2.2.ts' --ignore-pattern './generated-types/1.1.2.2/data.ts' --ignore-pattern './generated-types/1.1.2.2/**/*.data.ts'
 
 generate--version1_1: generate--version1_1--types
 	@node ./generate-version1.1.ts af --skip-types
@@ -364,4 +344,3 @@ generate--version1_1: generate--version1_1--types
 	@node ./generate-version1.1.ts vun --skip-types
 	@node ./generate-version1.1.ts zh-Hans --skip-types
 	@node ./generate-version1.1.ts zh-Hant --skip-types
-	@./node_modules/.bin/eslint --fix './generated-types/1.1.2.2/**/*.data.ts'

@@ -893,7 +893,7 @@ type FGWeapon = {
 	],
 };
 
-export type foo = [
+export type update6_docs = [
 	FGItemDescriptor,
 	FGResourceDescriptor,
 	FGRecipe,
