@@ -4480,6 +4480,9 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGEquipment--version-specific"
 				},
 				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
 					"$ref": "#/$defs/FGEquipment--has--mEquipmentSlot"
 				},
 				{
@@ -4487,9 +4490,6 @@
 				},
 				{
 					"$ref": "#/$defs/FGEquipment--pre-1.0"
-				},
-				{
-					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
 				}
 			]
 		},
@@ -5338,10 +5338,10 @@
 		"FGSchematic": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--common--classes#/$defs/FGSchematic"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGSchematic--version-specific"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGSchematic--version-specific"
+					"$ref": "docs.json.ts--common--classes#/$defs/FGSchematic"
 				},
 				{
 					"$ref": "#/$defs/FGSchematic--pre-1.0"

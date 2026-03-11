@@ -24,46 +24,6 @@
 				}
 			}
 		},
-		"FGSchematic--version-specific": {
-			"type": "object",
-			"required": [
-				"mUnlocks",
-				"mSmallSchematicIcon",
-				"mRelevantShopSchematics"
-			],
-			"properties": {
-				"mUnlocks": {
-					"type": "array",
-					"minItems": 0,
-					"maxItems": 6,
-					"items": {
-						"$ref": "docs.json.ts--0.4.2.11--overridable#/$defs/mUnlocks--item"
-					}
-				},
-				"mSmallSchematicIcon": {
-					"oneOf": [
-						{
-							"type": "string",
-							"const": "None"
-						},
-						{
-							"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/Texture2D"
-						}
-					]
-				},
-				"mRelevantShopSchematics": {
-					"oneOf": [
-						{
-							"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
-						},
-						{
-							"type": "string",
-							"const": ""
-						}
-					]
-				}
-			}
-		},
 		"FGSchematic--base": {
 			"allOf": [
 				{
@@ -151,6 +111,46 @@
 							}
 						}
 					}
+				}
+			}
+		},
+		"FGSchematic--version-specific": {
+			"type": "object",
+			"required": [
+				"mUnlocks",
+				"mSmallSchematicIcon",
+				"mRelevantShopSchematics"
+			],
+			"properties": {
+				"mUnlocks": {
+					"type": "array",
+					"minItems": 0,
+					"maxItems": 6,
+					"items": {
+						"$ref": "docs.json.ts--0.4.2.11--overridable#/$defs/mUnlocks--item"
+					}
+				},
+				"mSmallSchematicIcon": {
+					"oneOf": [
+						{
+							"type": "string",
+							"const": "None"
+						},
+						{
+							"$ref": "docs.json.ts--0.4.2.11--properties#/$defs/Texture2D"
+						}
+					]
+				},
+				"mRelevantShopSchematics": {
+					"oneOf": [
+						{
+							"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/DocsDotJson_BlueprintGeneratedClass_quoted--list"
+						},
+						{
+							"type": "string",
+							"const": ""
+						}
+					]
 				}
 			}
 		}

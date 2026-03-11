@@ -2835,10 +2835,10 @@
 					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGEquipment--version-specific"
 				},
 				{
-					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGEquipment--version-specific"
 				},
 				{
-					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGEquipment--version-specific"
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
 				},
 				{
 					"$ref": "#/$defs/FGEquipment--pre-1.1"
@@ -3133,10 +3133,10 @@
 		"FGItemDescriptor": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--common--classes#/$defs/FGItemDescriptor"
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGDescriptor--sinkable"
 				},
 				{
-					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGDescriptor--sinkable"
+					"$ref": "docs.json.ts--common--classes#/$defs/FGItemDescriptor"
 				},
 				{
 					"$ref": "#/$defs/FGItemDescriptor--base"
@@ -3894,9 +3894,6 @@
 		"FGSchematic": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--common--classes#/$defs/FGSchematic"
-				},
-				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGSchematic--version-specific"
 				},
 				{
@@ -3919,6 +3916,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--1.0.1.4--properties#/$defs/FGSchematic--has--mSchematicDependencies"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGSchematic"
 				},
 				{
 					"$ref": "#/$defs/FGSchematic--has--mTechTier"

@@ -156,7 +156,7 @@ type FGBuildable_pole_with_length_and_power_base_base = FGBuildable_pole_base & 
 
 type FGBuildable_powered = (FGBuildable & {
 	mSignificanceBias: docs_json_ts_common_types_decimal_string,
-}) & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific;
+})   & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific;
 
 type FGBuildable_powered_base_base_with_mNumCyclesForProductivity = FGBuildable_base & {
 	mNumCyclesForProductivity: docs_json_ts_common_types_integer_string,
@@ -356,7 +356,7 @@ type FGBuildableFactorySimpleProducer_base_base = FGBuildable_powered_version_sp
 
 type FGBuildableGenerator = FGBuildableGenerator_base & FGBuildableGenerator_no_fuel;
 
-type FGBuildableGenerator_base = FGBuildable & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildableGenerator_base_base_base & FGBuildableGenerator_base_base_pre_1_0 & FGBuildableGenerator_no_fuel_base_base & FGBuildableGenerator_no_fuel_base_base_base_base;
+type FGBuildableGenerator_base = FGBuildable & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildableGenerator_base_base_base & FGBuildableGenerator_base_base_pre_1_0 & FGBuildableGenerator_no_fuel_base_base   & FGBuildableGenerator_no_fuel_base_base_base_base;
 
 type FGBuildableGenerator_base_base_base = {
 	mCachedLoadPercentage?: docs_json_ts_common_types_decimal_string,
@@ -590,7 +590,7 @@ type FGBuildablePipelineJunction_base = FGBuildablePipeline_junction_base & {
 	mFluidBoxVolume: docs_json_ts_common_types_decimal_string,
 };
 
-type FGBuildablePipelinePump_base_base = FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildablePipeline_base_base & FGBuildablePipelinePump_powered_version_specific;
+type FGBuildablePipelinePump_base_base = FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildablePipeline_base_base & FGBuildablePipelinePump_powered_version_specific  ;
 
 type FGBuildablePipelinePump_powered_version_specific = {
 	mLastFlowUpdate: docs_json_ts_common_types_decimal_string,
@@ -608,9 +608,9 @@ type FGBuildablePipelinePump_powered_version_specific = {
 
 type FGBuildablePipelinePump_powered_base = FGBuildable_powered & FGBuildablePipelinePump_powered_base_base;
 
-type FGBuildablePipelinePump_powered_base_base = FGBuildable & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildablePipelinePump_powered_version_specific;
+type FGBuildablePipelinePump_powered_base_base = FGBuildable & FGBuildable_powered_base_base_with_mNumCyclesForProductivity   & FGBuildable_powered_pre_1_0   & FGBuildable_powered_version_specific   & FGBuildablePipelinePump_powered_version_specific;
 
-type FGBuildablePipelinePump_pump = FGBuildablePipeline_base & FGBuildablePipeline_base_base & FGBuildablePipelinePump_base_base & FGBuildablePipelinePump_powered_version_specific & FGBuildablePipelinePump_powered_base & FGBuildablePipelinePump_powered_base_base & FGBuildablePipelinePump_pump_version_specific;
+type FGBuildablePipelinePump_pump = FGBuildablePipeline_base & FGBuildablePipeline_base_base & FGBuildablePipelinePump_base_base   & FGBuildablePipelinePump_powered_version_specific & FGBuildablePipelinePump_powered_base & FGBuildablePipelinePump_powered_base_base & FGBuildablePipelinePump_pump_version_specific;
 
 type FGBuildablePipelinePump_pump_version_specific = {
 	mPistonAudioTimer?: docs_json_ts_common_types_empty_object,
@@ -690,7 +690,7 @@ type FGBuildableResourceExtractor = FGBuildableResourceExtractor_with_mAllowedRe
 
 type FGBuildableResourceExtractor_base = docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_only_allow_certain_resources & FGBuildable & FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildableResourceExtractor_piped & FGBuildableResourceExtractor_piped_pre_1_0 & FGBuildableResourceExtractor_timed;
 
-type FGBuildableResourceExtractor_miner = docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_miner_base & docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_only_allow_certain_resources & FGBuildable_powered_base_resources & FGBuildable_powered_base_resources_base & FGBuildableResourceExtractor_base & FGBuildableResourceExtractor_miner_base & FGBuildableResourceExtractor_piped & FGBuildableResourceExtractor_piped_pre_1_0 & FGBuildableResourceExtractor_timed;
+type FGBuildableResourceExtractor_miner = docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_miner_base & docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_only_allow_certain_resources & FGBuildable_powered_base_resources & FGBuildable_powered_base_resources_base   & FGBuildableResourceExtractor_base & FGBuildableResourceExtractor_miner_base & FGBuildableResourceExtractor_piped & FGBuildableResourceExtractor_piped_pre_1_0 & FGBuildableResourceExtractor_timed  ;
 
 type FGBuildableResourceExtractor_miner_base = {
 	mInternalMiningState_0?: 'NewEnumerator0',
@@ -1064,7 +1064,7 @@ type FGEquipment = FGEquipment_base & {
 	mAttachSocket: 'None' | 'hand_rSocket' | 'hand_lSocket' | 'jumpingStilt_lSocket' | 'helmetSocket',
 };
 
-type FGEquipment_base = docs_json_ts_0_3_7_7_classes_base_overridable_FGEquipment_version_specific & FGEquipment_has_mEquipmentSlot & FGEquipment_has_mUseDefaultPrimaryFire & FGEquipment_pre_1_0 & docs_json_ts_common_classes_base_hasClassName;
+type FGEquipment_base = docs_json_ts_0_3_7_7_classes_base_overridable_FGEquipment_version_specific & docs_json_ts_common_classes_base_hasClassName & FGEquipment_has_mEquipmentSlot & FGEquipment_has_mUseDefaultPrimaryFire & FGEquipment_pre_1_0;
 
 type FGEquipment_dispenser = FGEquipment & FGEquipment_has_mPlaceDistanceMax;
 
@@ -1307,7 +1307,7 @@ type FGResourceDescriptor_pre_1_0 = {
 	mManualMiningAudioName: 'Metal',
 };
 
-type FGSchematic = docs_json_ts_common_classes_FGSchematic & docs_json_ts_0_3_7_7_classes_base_overridable_FGSchematic_version_specific & FGSchematic_pre_1_0 & FGSchematic_pre_update4 & FGSchematic_pre_update6 & instructive;
+type FGSchematic = docs_json_ts_0_3_7_7_classes_base_overridable_FGSchematic_version_specific & docs_json_ts_common_classes_FGSchematic & FGSchematic_pre_1_0 & FGSchematic_pre_update4 & FGSchematic_pre_update6 & instructive;
 
 type FGSchematic_pre_1_0 = {
 	mType: docs_json_ts_0_3_7_7_properties_mType,
