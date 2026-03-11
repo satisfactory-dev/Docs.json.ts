@@ -20,27 +20,6 @@
 				}
 			}
 		},
-		"hasClassName": {
-			"type": "object",
-			"required": ["ClassName"],
-			"properties": {
-				"ClassName": {
-					"type": "string",
-					"templated_string": [
-						{
-							"type": "string",
-							"minLength": 1
-						},
-						"_",
-						{
-							"type": "string",
-							"minLength": 1
-						},
-						"_C"
-					]
-				}
-			}
-		},
 		"instructive": {
 			"type": "object",
 			"$ref": "#/$defs/isNamed",
@@ -75,7 +54,7 @@
 		},
 		"isNamed": {
 			"type": "object",
-			"$ref": "#/$defs/hasClassName",
+			"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName",
 			"required": ["mDisplayName"],
 			"properties": {
 				"mDisplayName": {
@@ -4220,7 +4199,7 @@
 		},
 		"FGColorGun--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/hasClassName",
+			"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName",
 			"required": [
 				"mRedundantTargetCrosshairColor",
 				"mNoTargetCrosshairColor",
@@ -4510,7 +4489,7 @@
 					"$ref": "#/$defs/FGEquipment--pre-1.0"
 				},
 				{
-					"$ref": "#/$defs/hasClassName"
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
 				}
 			]
 		},

@@ -2,10 +2,6 @@ import type {
 	filenames_by_$id as guard,
 } from '../../FilenameAdjuster.ts';
 
-import common_types from '../../../schema/common/types.json' with {
-	type: 'json',
-};
-
 // eslint-disable-next-line @stylistic/max-len
 import update3_overridable from '../../../schema/0.3.7.7/overridable.json' with {
 	type: 'json',
@@ -33,11 +29,12 @@ import update3 from '../../../schema/0.3.7.7/docs.json' with {
 	type: 'json',
 };
 
+import {
+	filenames_by_$id as previous,
+} from '../common/filenames.ts';
+
 export const filenames_by_$id: guard = {
-	[common_types.$id]: {
-		types: './generated-types/common/types.ts',
-		data: './generated-types/common/data.ts',
-	},
+	...previous,
 	[update3_overridable.$id]: {
 		types: './generated-types/0.3.7.7/types/overridable.ts',
 		data: './generated-types/0.3.7.7/data/overridable.ts',

@@ -2640,7 +2640,7 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipmentStunSpear--base--version-specific"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/hasClassName"
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
 				},
 				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGEquipment--version-specific"
@@ -2674,7 +2674,7 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipmentStunSpear--base--version-specific"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/hasClassName"
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
 				},
 				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGEquipment--version-specific"
@@ -2991,7 +2991,7 @@
 					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGSchematic--version-specific"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/hasClassName"
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/instructive"
@@ -3034,7 +3034,7 @@
 					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGSchematic--version-specific"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/hasClassName"
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/instructive"
@@ -3080,7 +3080,7 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGSuitBase--base"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/hasClassName"
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
 				},
 				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGEquipment--version-specific"

@@ -2835,7 +2835,7 @@
 					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGEquipment--version-specific"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/hasClassName"
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
 				},
 				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGEquipment--version-specific"
@@ -4001,7 +4001,7 @@
 		"FGSchematic--with-described-unlocks": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/hasClassName"
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
 				},
 				{
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGSchematic--with-described-unlocks--base--base"

@@ -1,4 +1,4 @@
-
+/* eslint-disable @stylistic/max-len */
 
 import type {
 	StringPassesRegex,

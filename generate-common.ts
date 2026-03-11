@@ -18,6 +18,10 @@ import common_types from './schema/common/types.json' with {
 	type: 'json',
 };
 
+import common_classes__base from './schema/common/base-classes.json' with {
+	type: 'json',
+};
+
 import {
 	FilenameAdjuster,
 } from './src/FilenameAdjuster.ts';
@@ -32,7 +36,7 @@ import {
 
 import {
 	filenames_by_$id,
-} from './src/version-specific/0.3.7.7/filenames.ts';
+} from './src/version-specific/common/filenames.ts';
 
 const ajv = new Ajv({strict: true, verbose: true});
 
@@ -63,6 +67,7 @@ const results: processed_results = [];
 
 for (const schema of [
 	common_types,
+	common_classes__base,
 ]) {
 	for await (const schema_results of get_results(
 		schema as SchemaObjectWith$id,

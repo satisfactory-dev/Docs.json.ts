@@ -1,0 +1,27 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "docs.json.ts--common--classes--base",
+	"$defs": {
+		"hasClassName": {
+			"type": "object",
+			"required": ["ClassName"],
+			"properties": {
+				"ClassName": {
+					"type": "string",
+					"templated_string": [
+						{
+							"type": "string",
+							"minLength": 1
+						},
+						"_",
+						{
+							"type": "string",
+							"minLength": 1
+						},
+						"_C"
+					]
+				}
+			}
+		}
+	}
+}
