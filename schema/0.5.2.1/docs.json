@@ -1536,7 +1536,7 @@
 		"FGSchematic--Classes--item": {
 			"oneOf": [
 				{
-					"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGSchematic--base"
+					"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGSchematic"
 				},
 				{
 					"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGSchematic--with-described-unlocks"

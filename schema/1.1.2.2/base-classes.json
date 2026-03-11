@@ -2979,6 +2979,9 @@
 		"FGSchematic--with-described-unlocks": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGSchematic"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGSchematic--version-specific"
 				},
 				{
@@ -3000,7 +3003,7 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/isDescribed"
 				},
 				{
-					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGSchematic--with-described-unlocks--base--base"
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGSchematic--with-described-unlocks--version-specific"
 				},
 				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGSchematic--version-specific"
@@ -3021,6 +3024,9 @@
 		},
 		"FGSchematic--without-described-unlocks": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGSchematic"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGSchematic--version-specific"
 				},

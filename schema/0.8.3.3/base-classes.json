@@ -2348,8 +2348,11 @@
 				}
 			]
 		},
-		"FGSchematic--base": {
+		"FGSchematic": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGSchematic"
+				},
 				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base.overridable#/$defs/FGSchematic--has--mSchematicDependencies"
 				},
@@ -2391,10 +2394,10 @@
 					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
 				},
 				{
-					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGSchematic--with-described-unlocks--base--base"
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGSchematic--with-described-unlocks--version-specific"
 				},
 				{
-					"$ref": "#/$defs/FGSchematic--base"
+					"$ref": "#/$defs/FGSchematic"
 				}
 			]
 		},

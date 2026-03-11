@@ -39,6 +39,10 @@ ci--basic-checks:
 
 prepare: prepare--version1_1
 
+prepare--quick: prepare--update8
+	@node ./prepare-1.0.1.4.ts en-US
+	@node ./prepare-1.1.2.2.ts en-US
+
 prepare--update3:
 	@echo 'prepare 0.3.7.7'
 	@node ./prepare-0.3.7.7.ts
@@ -184,45 +188,70 @@ generate--clean:
 
 generate--early-access: generate--update3 generate--update4 generate--update5 generate--update6 generate--update7 generate--update8
 
+generate--early-access--types-only: generate--update3--types-only generate--update4--types-only generate--update5--types-only generate--update6--types-only generate--update7--types-only generate--update8--types-only
+
 generate--1.x: generate--version1_0 generate--version1_1
 
+generate--1.x--types-only: generate--version1_0--types generate--version1_1--types
+
 generate: generate--clean generate--common generate--early-access generate--1.x
+
+generate--types: generate--common generate--early-access--types-only generate--1.x--types-only
 
 generate--common:
 	@echo 'running generator'
 	@node ./generate-common.ts
 
-generate--update3: prepare--update3
+generate--update3--types-only: prepare--update3
 	@echo 'running generator'
 	@node ./generate-update3.ts en-US --skip-data
+
+generate--update3: generate--update3--types-only
+	@echo 'running generator'
 	@node ./generate-update3.ts en-US --skip-types
 
-generate--update4: prepare--update4
+generate--update4--types-only: prepare--update4
 	@echo 'running generator'
 	@node ./generate-update4.ts en-US --skip-data
+
+generate--update4: generate--update4--types-only
+	@echo 'running generator'
 	@node ./generate-update4.ts en-US --skip-types
 
-generate--update5: prepare--update5
+generate--update5--types-only: prepare--update5
 	@echo 'running generator'
 	@node ./generate-update5.ts en-US --skip-data
+
+generate--update5: generate--update5--types-only
+	@echo 'running generator'
 	@node ./generate-update5.ts en-US --skip-types
 
-generate--update6: prepare--update6
+generate--update6--types-only: prepare--update6
 	@echo 'running generator'
 	@node ./generate-update6.ts en-US --skip-data
+
+generate--update6: generate--update6--types-only
+	@echo 'running generator'
 	@node ./generate-update6.ts en-US --skip-types
 
-generate--update7: prepare--update7
+generate--update7--types-only: prepare--update7
 	@echo 'running generator'
 	@node ./generate-update7.ts en-US --skip-data
+
+generate--update7: generate--update7--types-only
+	@echo 'running generator'
 	@node ./generate-update7.ts en-US --skip-types
 
-generate--update8: prepare--update8
+generate--update8--types-only: prepare--update8
 	@echo 'running generator'
 	@node ./generate-update8.ts en-US --skip-data
+
+generate--update8: generate--update8--types-only
+	@echo 'running generator'
 	@node ./generate-update8.ts en-US --skip-types
 
-generate--version1_0--types: prepare--version1_0
+generate--version1_0--types:
+	@node ./prepare-1.0.1.4.ts en-US
 	@echo 'running generator'
 	@node ./generate-version1.0.ts en-US --skip-data
 
@@ -284,7 +313,8 @@ generate--version1_0: generate--version1_0--types
 	@node ./generate-version1.0.ts zh-Hans --skip-types
 	@node ./generate-version1.0.ts zh-Hant --skip-types
 
-generate--version1_1--types: prepare--version1_1
+generate--version1_1--types:
+	@node ./prepare-1.1.2.2.ts en-US
 	@echo 'running generator'
 	@node ./generate-version1.1.ts en-US --skip-data
 

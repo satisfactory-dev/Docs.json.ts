@@ -2770,8 +2770,11 @@
 				}
 			]
 		},
-		"FGSchematic--base": {
+		"FGSchematic": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGSchematic"
+				},
 				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base.overridable#/$defs/FGSchematic--base"
 				},
@@ -2783,6 +2786,12 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGSchematic--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGSchematic--has--mMenuPriority"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGSchematic--has--mTechTier"
 				},
 				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base.overridable#/$defs/FGSchematic--has--mSchematicIcon"
@@ -2815,16 +2824,18 @@
 		"FGSchematic--with-described-unlocks": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGSchematic--base"
+					"$ref": "#/$defs/FGSchematic"
 				},
 				{
-					"$ref": "#/$defs/FGSchematic--with-described-unlocks--base"
+					"$ref": "#/$defs/FGSchematic--with-described-unlocks--pre-update6"
+				},
+				{
+					"$ref": "#/$defs/FGSchematic--with-described-unlocks--version-specific"
 				}
 			]
 		},
-		"FGSchematic--with-described-unlocks--base": {
+		"FGSchematic--with-described-unlocks--pre-update6": {
 			"type": "object",
-			"$ref": "#/$defs/FGSchematic--with-described-unlocks--base--base",
 			"required": ["mUnlockDescription"],
 			"properties": {
 				"mUnlockDescription": {
@@ -2833,7 +2844,7 @@
 				}
 			}
 		},
-		"FGSchematic--with-described-unlocks--base--base": {
+		"FGSchematic--with-described-unlocks--version-specific": {
 			"type": "object",
 			"required": [
 				"mUnlockName",

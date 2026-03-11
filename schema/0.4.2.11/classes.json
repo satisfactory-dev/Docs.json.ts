@@ -424,7 +424,7 @@
 		},
 		"FGSchematic": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.4.2.11--classes--base.overridable#/$defs/FGSchematic",
+			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGSchematic",
 			"unevaluatedProperties": false
 		},
 		"FGSnowballWeapon": {

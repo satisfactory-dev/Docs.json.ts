@@ -5,6 +5,10 @@
 		"FGItemDescriptor": {
 			"type": "object",
 			"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+		},
+		"FGSchematic": {
+			"type": "object",
+			"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
 		}
 	}
 }

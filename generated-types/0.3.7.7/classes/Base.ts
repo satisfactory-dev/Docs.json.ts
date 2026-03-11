@@ -71,6 +71,7 @@ import type {
 
 import type {
 	FGItemDescriptor as docs_json_ts_common_classes_FGItemDescriptor,
+	FGSchematic as docs_json_ts_common_classes_FGSchematic,
 } from './../../common/classes.ts';
 
 type has_mCanStack = {
@@ -1306,7 +1307,7 @@ type FGResourceDescriptor_pre_1_0 = {
 	mManualMiningAudioName: 'Metal',
 };
 
-type FGSchematic = docs_json_ts_0_3_7_7_classes_base_overridable_FGSchematic_version_specific & FGSchematic_pre_1_0 & FGSchematic_pre_update4 & FGSchematic_pre_update6 & instructive;
+type FGSchematic = docs_json_ts_common_classes_FGSchematic & docs_json_ts_0_3_7_7_classes_base_overridable_FGSchematic_version_specific & FGSchematic_pre_1_0 & FGSchematic_pre_update4 & FGSchematic_pre_update6 & instructive;
 
 type FGSchematic_pre_1_0 = {
 	mType: docs_json_ts_0_3_7_7_properties_mType,

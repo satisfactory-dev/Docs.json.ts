@@ -52,6 +52,8 @@ import type {
 	FGDescriptor_base as docs_json_ts_0_4_2_11_classes_base_FGDescriptor_base,
 	FGDescriptor_BuildMenu_base as docs_json_ts_0_4_2_11_classes_base_FGDescriptor_BuildMenu_base,
 	FGDescriptor_sinkable as docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable,
+	FGSchematic_has_mMenuPriority as docs_json_ts_0_4_2_11_classes_base_FGSchematic_has_mMenuPriority,
+	FGSchematic_has_mTechTier as docs_json_ts_0_4_2_11_classes_base_FGSchematic_has_mTechTier,
 	FGVehicleDescriptor_fueled_with_inventory as docs_json_ts_0_4_2_11_classes_base_FGVehicleDescriptor_fueled_with_inventory,
 	FGVehicleDescriptor_powered as docs_json_ts_0_4_2_11_classes_base_FGVehicleDescriptor_powered,
 	FGVehicleDescriptor_with_inventory as docs_json_ts_0_4_2_11_classes_base_FGVehicleDescriptor_with_inventory,
@@ -199,6 +201,7 @@ import type {
 
 import type {
 	FGItemDescriptor as docs_json_ts_common_classes_FGItemDescriptor,
+	FGSchematic as docs_json_ts_common_classes_FGSchematic,
 } from './../../common/classes.ts';
 
 import type {
@@ -798,7 +801,7 @@ type FGPipeHyperStart = docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_base 
 
 type FGResourceDescriptor = docs_json_ts_0_3_7_7_classes_base_FGResourceDescriptor_base & docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable & FGItemDescriptor_base;
 
-type FGSchematic_base = docs_json_ts_0_4_2_11_classes_base_overridable_FGSchematic_base & docs_json_ts_0_5_2_1_classes_base_overridable_FGSchematic_version_specific & docs_json_ts_0_3_7_7_classes_base_FGSchematic_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_overridable_FGSchematic_version_specific & docs_json_ts_0_4_2_11_classes_base_overridable_FGSchematic_has_mSchematicIcon & docs_json_ts_0_3_7_7_classes_base_instructive & docs_json_ts_0_3_7_7_classes_base_isDescribed & FGSchematic_pre_update6;
+type FGSchematic = docs_json_ts_common_classes_FGSchematic & docs_json_ts_0_4_2_11_classes_base_overridable_FGSchematic_base & docs_json_ts_0_5_2_1_classes_base_overridable_FGSchematic_version_specific & docs_json_ts_0_3_7_7_classes_base_FGSchematic_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_overridable_FGSchematic_version_specific & docs_json_ts_0_4_2_11_classes_base_FGSchematic_has_mMenuPriority & docs_json_ts_0_4_2_11_classes_base_FGSchematic_has_mTechTier & docs_json_ts_0_4_2_11_classes_base_overridable_FGSchematic_has_mSchematicIcon & docs_json_ts_0_3_7_7_classes_base_instructive & docs_json_ts_0_3_7_7_classes_base_isDescribed & FGSchematic_pre_update6;
 
 type FGSchematic_pre_update6 = {
 	mUnlocks: [
@@ -806,13 +809,13 @@ type FGSchematic_pre_update6 = {
 	],
 };
 
-type FGSchematic_with_described_unlocks = FGSchematic_base & FGSchematic_with_described_unlocks_base;
+type FGSchematic_with_described_unlocks = FGSchematic & FGSchematic_with_described_unlocks_pre_update6 & FGSchematic_with_described_unlocks_version_specific;
 
-type FGSchematic_with_described_unlocks_base = FGSchematic_with_described_unlocks_base_base & {
+type FGSchematic_with_described_unlocks_pre_update6 = {
 	mUnlockDescription: Exclude<string, ''>,
 };
 
-type FGSchematic_with_described_unlocks_base_base = {
+type FGSchematic_with_described_unlocks_version_specific = {
 	mUnlockName: Exclude<string, ''>,
 	mUnlockDescription: string,
 	mUnlockIconBig: 'Unsupported texture. Contact developer for support',
@@ -1038,11 +1041,11 @@ export type {
 	FGNobeliskDetonator_version_specific,
 	FGPipeHyperStart,
 	FGResourceDescriptor,
-	FGSchematic_base,
+	FGSchematic,
 	FGSchematic_pre_update6,
 	FGSchematic_with_described_unlocks,
-	FGSchematic_with_described_unlocks_base,
-	FGSchematic_with_described_unlocks_base_base,
+	FGSchematic_with_described_unlocks_pre_update6,
+	FGSchematic_with_described_unlocks_version_specific,
 	FGVehicleDescriptor_fueled_with_inventory,
 	FGVehicleDescriptor_powered,
 	FGVehicleDescriptor_with_inventory,

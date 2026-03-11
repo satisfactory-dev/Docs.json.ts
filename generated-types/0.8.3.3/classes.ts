@@ -99,7 +99,7 @@ import type {
 	FGParachute as docs_json_ts_0_8_3_3_classes_base_FGParachute,
 	FGPipeHyperStart as docs_json_ts_0_8_3_3_classes_base_FGPipeHyperStart,
 	FGPortableMinerDispenser as docs_json_ts_0_8_3_3_classes_base_FGPortableMinerDispenser,
-	FGSchematic_base as docs_json_ts_0_8_3_3_classes_base_FGSchematic_base,
+	FGSchematic as docs_json_ts_0_8_3_3_classes_base_FGSchematic,
 	FGSchematic_with_described_unlocks as docs_json_ts_0_8_3_3_classes_base_FGSchematic_with_described_unlocks,
 	FGSuitBase as docs_json_ts_0_8_3_3_classes_base_FGSuitBase,
 	FGWeapon_Equip_RebarGun_Projectile_C as docs_json_ts_0_8_3_3_classes_base_FGWeapon_Equip_RebarGun_Projectile_C,
@@ -316,7 +316,7 @@ type FGPipeHyperStart = docs_json_ts_0_8_3_3_classes_base_FGPipeHyperStart;
 
 type FGPortableMinerDispenser = docs_json_ts_0_8_3_3_classes_base_FGPortableMinerDispenser;
 
-type FGSchematic_base = docs_json_ts_0_8_3_3_classes_base_FGSchematic_base;
+type FGSchematic = docs_json_ts_0_8_3_3_classes_base_FGSchematic;
 
 type FGSchematic_with_described_unlocks = docs_json_ts_0_8_3_3_classes_base_FGSchematic_with_described_unlocks;
 
@@ -430,7 +430,7 @@ export type {
 	FGParachute,
 	FGPipeHyperStart,
 	FGPortableMinerDispenser,
-	FGSchematic_base,
+	FGSchematic,
 	FGSchematic_with_described_unlocks,
 	FGSuitBase,
 	FGWeapon_Equip_RebarGun_Projectile_C,

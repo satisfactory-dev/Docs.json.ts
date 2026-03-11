@@ -127,6 +127,8 @@ import type {
 	FGWeaponProjectileFire as docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectileFire,
 	has_mCanStack as docs_json_ts_0_3_7_7_classes_base_has_mCanStack,
 	has_mStackHeight as docs_json_ts_0_3_7_7_classes_base_has_mStackHeight,
+	instructive as docs_json_ts_0_3_7_7_classes_base_instructive,
+	isDescribed as docs_json_ts_0_3_7_7_classes_base_isDescribed,
 } from './../../0.3.7.7/classes/Base.ts';
 
 import type {
@@ -161,7 +163,13 @@ import type {
 
 import type {
 	FGItemDescriptor as docs_json_ts_common_classes_FGItemDescriptor,
+	FGSchematic as docs_json_ts_common_classes_FGSchematic,
 } from './../../common/classes.ts';
+
+import type {
+	FGSchematic_base as docs_json_ts_0_4_2_11_classes_base_overridable_FGSchematic_base,
+	FGSchematic_version_specific as docs_json_ts_0_4_2_11_classes_base_overridable_FGSchematic_version_specific,
+} from './Base.overridable.ts';
 
 import type {
 	mUnlocks_item_base as docs_json_ts_0_3_7_7_properties_mUnlocks_item_base,
@@ -760,7 +768,7 @@ type FGRecipe_version_specific = {
 
 type FGResourceDescriptor = docs_json_ts_0_3_7_7_classes_base_FGResourceDescriptor_base & FGDescriptor_sinkable;
 
-type FGSchematic_base = FGSchematic_has_mMenuPriority & FGSchematic_has_mSmallSchematicIcon & FGSchematic_has_mTechTier & FGSchematic_has_mUnlocks;
+type FGSchematic = docs_json_ts_common_classes_FGSchematic & docs_json_ts_0_3_7_7_classes_base_instructive & docs_json_ts_0_3_7_7_classes_base_isDescribed & docs_json_ts_0_4_2_11_classes_base_overridable_FGSchematic_version_specific & docs_json_ts_0_4_2_11_classes_base_overridable_FGSchematic_base & FGSchematic_has_mMenuPriority & FGSchematic_has_mSmallSchematicIcon & FGSchematic_has_mTechTier & FGSchematic_has_mUnlocks;
 
 type FGSchematic_has_mMenuPriority = {
 	mMenuPriority: docs_json_ts_common_types_decimal_string,
@@ -989,7 +997,7 @@ export type {
 	FGRecipe_base_base,
 	FGRecipe_version_specific,
 	FGResourceDescriptor,
-	FGSchematic_base,
+	FGSchematic,
 	FGSchematic_has_mMenuPriority,
 	FGSchematic_has_mSmallSchematicIcon,
 	FGSchematic_has_mTechTier,

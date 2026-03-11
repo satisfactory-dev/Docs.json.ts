@@ -517,9 +517,9 @@
 			"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGPortableMinerDispenser",
 			"unevaluatedProperties": false
 		},
-		"FGSchematic--base": {
+		"FGSchematic": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGSchematic--base",
+			"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGSchematic",
 			"unevaluatedProperties": false
 		},
 		"FGSchematic--with-described-unlocks": {

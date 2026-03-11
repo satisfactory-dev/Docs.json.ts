@@ -6,6 +6,9 @@ import type {
 
 type FGItemDescriptor = docs_json_ts_common_classes_base_hasClassName;
 
+type FGSchematic = docs_json_ts_common_classes_base_hasClassName;
+
 export type {
 	FGItemDescriptor,
+	FGSchematic,
 };

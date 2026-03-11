@@ -118,7 +118,7 @@ import type {
 	FGPowerShardDescriptor as docs_json_ts_1_0_1_4_classes_FGPowerShardDescriptor,
 	FGRecipe as docs_json_ts_1_0_1_4_classes_FGRecipe,
 	FGResourceDescriptor as docs_json_ts_1_0_1_4_classes_FGResourceDescriptor,
-	FGSchematic_base as docs_json_ts_1_0_1_4_classes_FGSchematic_base,
+	FGSchematic as docs_json_ts_1_0_1_4_classes_FGSchematic,
 	FGSchematic_with_described_unlocks as docs_json_ts_1_0_1_4_classes_FGSchematic_with_described_unlocks,
 	FGSuitBase as docs_json_ts_1_0_1_4_classes_FGSuitBase,
 	FGVehicleDescriptor_Desc_CyberWagon_C as docs_json_ts_1_0_1_4_classes_FGVehicleDescriptor_Desc_CyberWagon_C,
@@ -980,7 +980,7 @@ type FGSchematic = {
 	],
 };
 
-type FGSchematic_Classes_item = docs_json_ts_1_0_1_4_classes_FGSchematic_base | docs_json_ts_1_0_1_4_classes_FGSchematic_with_described_unlocks;
+type FGSchematic_Classes_item = docs_json_ts_1_0_1_4_classes_FGSchematic | docs_json_ts_1_0_1_4_classes_FGSchematic_with_described_unlocks;
 
 type FGSuitBase = {
 	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGSuitBase'}${'\''}`,

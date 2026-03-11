@@ -4,13 +4,10 @@ import type {
 	FGItemDescriptorNuclearFuel_version_specific as docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_version_specific,
 	FGSchematic_pre_1_0 as docs_json_ts_0_3_7_7_classes_base_FGSchematic_pre_1_0,
 	FGSchematic_pre_update6 as docs_json_ts_0_3_7_7_classes_base_FGSchematic_pre_update6,
-	instructive as docs_json_ts_0_3_7_7_classes_base_instructive,
-	isDescribed as docs_json_ts_0_3_7_7_classes_base_isDescribed,
 } from './../../0.3.7.7/classes/Base.ts';
 
 import type {
 	FGDescriptor as docs_json_ts_0_4_2_11_classes_base_FGDescriptor,
-	FGSchematic_base as docs_json_ts_0_4_2_11_classes_base_FGSchematic_base,
 } from './Base.ts';
 
 import type {
@@ -44,7 +41,7 @@ type FGItemDescriptorNuclearFuel_pre_1_0 = {
 	mSpentFuelClass: docs_json_ts_0_4_2_11_overridable_BlueprintGeneratedClass_single_quoted,
 };
 
-type FGSchematic = FGSchematic_base & {
+type FGSchematic_version_specific = {
 	mUnlocks: [
 		...docs_json_ts_0_4_2_11_overridable_mUnlocks_item[],
 	],
@@ -52,7 +49,7 @@ type FGSchematic = FGSchematic_base & {
 	mRelevantShopSchematics: docs_json_ts_0_3_7_7_overridable_DocsDotJson_BlueprintGeneratedClass_quoted_list | '',
 };
 
-type FGSchematic_base = docs_json_ts_0_3_7_7_classes_base_FGSchematic_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGSchematic_pre_update6 & docs_json_ts_0_3_7_7_classes_base_overridable_FGSchematic_version_specific & docs_json_ts_0_3_7_7_classes_base_instructive & docs_json_ts_0_3_7_7_classes_base_isDescribed & docs_json_ts_0_4_2_11_classes_base_FGSchematic_base & FGSchematic_has_mSchematicDependencies & FGSchematic_has_mSchematicIcon;
+type FGSchematic_base = docs_json_ts_0_3_7_7_classes_base_FGSchematic_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGSchematic_pre_update6 & docs_json_ts_0_3_7_7_classes_base_overridable_FGSchematic_version_specific & FGSchematic_has_mSchematicDependencies & FGSchematic_has_mSchematicIcon;
 
 type FGSchematic_has_mSchematicDependencies = {
 	mSchematicDependencies: [
@@ -78,7 +75,7 @@ type FGSchematic_has_mSchematicIcon = {
 export type {
 	FGItemDescriptorNuclearFuel,
 	FGItemDescriptorNuclearFuel_pre_1_0,
-	FGSchematic,
+	FGSchematic_version_specific,
 	FGSchematic_base,
 	FGSchematic_has_mSchematicDependencies,
 	FGSchematic_has_mSchematicIcon,

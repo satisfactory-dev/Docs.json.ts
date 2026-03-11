@@ -104,7 +104,7 @@ import type {
 	FGParachute as docs_json_ts_0_8_3_3_classes_FGParachute,
 	FGPipeHyperStart as docs_json_ts_0_8_3_3_classes_FGPipeHyperStart,
 	FGPortableMinerDispenser as docs_json_ts_0_8_3_3_classes_FGPortableMinerDispenser,
-	FGSchematic_base as docs_json_ts_0_8_3_3_classes_FGSchematic_base,
+	FGSchematic as docs_json_ts_0_8_3_3_classes_FGSchematic,
 	FGSchematic_with_described_unlocks as docs_json_ts_0_8_3_3_classes_FGSchematic_with_described_unlocks,
 	FGSuitBase as docs_json_ts_0_8_3_3_classes_FGSuitBase,
 	FGWeapon_Equip_RebarGun_Projectile_C as docs_json_ts_0_8_3_3_classes_FGWeapon_Equip_RebarGun_Projectile_C,
@@ -925,7 +925,7 @@ type FGSchematic = {
 	],
 };
 
-type FGSchematic_Classes_item = docs_json_ts_0_8_3_3_classes_FGSchematic_base | docs_json_ts_0_8_3_3_classes_FGSchematic_with_described_unlocks;
+type FGSchematic_Classes_item = docs_json_ts_0_8_3_3_classes_FGSchematic | docs_json_ts_0_8_3_3_classes_FGSchematic_with_described_unlocks;
 
 type FGSuitBase = {
 	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGSuitBase'}${'\''}`,

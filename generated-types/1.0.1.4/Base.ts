@@ -258,7 +258,7 @@ import type {
 	FGBuildableWidgetSign_base as docs_json_ts_0_5_2_1_classes_base_FGBuildableWidgetSign_base,
 	FGGolfCartDispenser_version_specific as docs_json_ts_0_5_2_1_classes_base_FGGolfCartDispenser_version_specific,
 	FGNobeliskDetonator_version_specific as docs_json_ts_0_5_2_1_classes_base_FGNobeliskDetonator_version_specific,
-	FGSchematic_with_described_unlocks_base_base as docs_json_ts_0_5_2_1_classes_base_FGSchematic_with_described_unlocks_base_base,
+	FGSchematic_with_described_unlocks_version_specific as docs_json_ts_0_5_2_1_classes_base_FGSchematic_with_described_unlocks_version_specific,
 	FGWeapon_Equip_Rifle_C_base as docs_json_ts_0_5_2_1_classes_base_FGWeapon_Equip_Rifle_C_base,
 	FGWeapon_pre_1_1 as docs_json_ts_0_5_2_1_classes_base_FGWeapon_pre_1_1,
 	FGWeapon_version_specific as docs_json_ts_0_5_2_1_classes_base_FGWeapon_version_specific,
@@ -306,6 +306,7 @@ import type {
 
 import type {
 	FGItemDescriptor as docs_json_ts_common_classes_FGItemDescriptor,
+	FGSchematic as docs_json_ts_common_classes_FGSchematic,
 } from './../common/classes.ts';
 
 import type {
@@ -1026,7 +1027,7 @@ type FGResourceDescriptor_version_specific = {
 	mManualMiningAudioName: 'Metal' | 'Sam',
 };
 
-type FGSchematic_base = docs_json_ts_0_3_7_7_classes_base_overridable_FGSchematic_version_specific & docs_json_ts_0_5_2_1_classes_base_overridable_FGSchematic_version_specific & docs_json_ts_0_8_3_3_classes_base_overridable_FGSchematic_has_mSchematicIcon & docs_json_ts_0_8_3_3_classes_base_overridable_FGSchematic_version_specific & docs_json_ts_0_3_7_7_classes_base_instructive & docs_json_ts_0_3_7_7_classes_base_isDescribed & docs_json_ts_0_6_1_5_classes_base_FGSchematic_version_specific & docs_json_ts_1_0_1_4_properties_FGSchematic_has_mSchematicDependencies & FGSchematic_has_mTechTier & FGSchematic_pre_1_1 & FGSchematic_version_specific;
+type FGSchematic = docs_json_ts_common_classes_FGSchematic & docs_json_ts_0_3_7_7_classes_base_overridable_FGSchematic_version_specific & docs_json_ts_0_5_2_1_classes_base_overridable_FGSchematic_version_specific & docs_json_ts_0_8_3_3_classes_base_overridable_FGSchematic_has_mSchematicIcon & docs_json_ts_0_8_3_3_classes_base_overridable_FGSchematic_version_specific & docs_json_ts_0_3_7_7_classes_base_instructive & docs_json_ts_0_3_7_7_classes_base_isDescribed & docs_json_ts_0_6_1_5_classes_base_FGSchematic_version_specific & docs_json_ts_1_0_1_4_properties_FGSchematic_has_mSchematicDependencies & FGSchematic_has_mTechTier & FGSchematic_pre_1_1 & FGSchematic_version_specific;
 
 type FGSchematic_has_mTechTier = {
 	mTechTier: docs_json_ts_1_0_1_4_properties_Tier,
@@ -1046,7 +1047,7 @@ type FGSchematic_version_specific = {
 	mType?: 'EST_Custom' | 'EST_Customization' | 'EST_Tutorial' | 'EST_MAM' | 'EST_HardDrive' | 'EST_Milestone' | 'EST_Alternate' | 'EST_ResourceSink',
 };
 
-type FGSchematic_with_described_unlocks = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_0_5_2_1_classes_base_FGSchematic_with_described_unlocks_base_base & FGSchematic_base;
+type FGSchematic_with_described_unlocks = docs_json_ts_0_5_2_1_classes_base_FGSchematic_with_described_unlocks_version_specific & FGSchematic;
 
 type FGSuitBase = docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_mFilterDuration & docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_effect_timer & docs_json_ts_0_3_7_7_classes_base_FGEquipment_negates_damage & docs_json_ts_0_3_7_7_classes_base_FGSuitBase_base & docs_json_ts_0_6_1_5_classes_base_FGSuitBase_version_specific & FGEquipment & FGSuitBase_version_specific;
 
@@ -1272,7 +1273,7 @@ export type {
 	FGRecipe_version_specific,
 	FGResourceDescriptor,
 	FGResourceDescriptor_version_specific,
-	FGSchematic_base,
+	FGSchematic,
 	FGSchematic_has_mTechTier,
 	FGSchematic_pre_1_1,
 	FGSchematic_version_specific,

@@ -114,7 +114,7 @@ import type {
 	FGPipeHyperStart as docs_json_ts_0_5_2_1_classes_FGPipeHyperStart,
 	FGPoleDescriptor as docs_json_ts_0_5_2_1_classes_FGPoleDescriptor,
 	FGResourceDescriptor as docs_json_ts_0_5_2_1_classes_FGResourceDescriptor,
-	FGSchematic_base as docs_json_ts_0_5_2_1_classes_FGSchematic_base,
+	FGSchematic as docs_json_ts_0_5_2_1_classes_FGSchematic,
 	FGSchematic_with_described_unlocks as docs_json_ts_0_5_2_1_classes_FGSchematic_with_described_unlocks,
 	FGVehicleDescriptor_Desc_CyberWagon_C as docs_json_ts_0_5_2_1_classes_FGVehicleDescriptor_Desc_CyberWagon_C,
 	FGVehicleDescriptor_Desc_DroneTransport_C as docs_json_ts_0_5_2_1_classes_FGVehicleDescriptor_Desc_DroneTransport_C,
@@ -777,7 +777,7 @@ type FGSchematic = {
 	],
 };
 
-type FGSchematic_Classes_item = docs_json_ts_0_5_2_1_classes_FGSchematic_base | docs_json_ts_0_5_2_1_classes_FGSchematic_with_described_unlocks;
+type FGSchematic_Classes_item = docs_json_ts_0_5_2_1_classes_FGSchematic | docs_json_ts_0_5_2_1_classes_FGSchematic_with_described_unlocks;
 
 type FGVehicleDescriptor = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGVehicleDescriptor'}${'\''}`,

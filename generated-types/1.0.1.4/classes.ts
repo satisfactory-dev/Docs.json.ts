@@ -116,7 +116,7 @@ import type {
 	FGPowerShardDescriptor as docs_json_ts_1_0_1_4_classes_base_FGPowerShardDescriptor,
 	FGRecipe as docs_json_ts_1_0_1_4_classes_base_FGRecipe,
 	FGResourceDescriptor as docs_json_ts_1_0_1_4_classes_base_FGResourceDescriptor,
-	FGSchematic_base as docs_json_ts_1_0_1_4_classes_base_FGSchematic_base,
+	FGSchematic as docs_json_ts_1_0_1_4_classes_base_FGSchematic,
 	FGSchematic_with_described_unlocks as docs_json_ts_1_0_1_4_classes_base_FGSchematic_with_described_unlocks,
 	FGSuitBase as docs_json_ts_1_0_1_4_classes_base_FGSuitBase,
 	FGVehicleDescriptor_Desc_CyberWagon_C as docs_json_ts_1_0_1_4_classes_base_FGVehicleDescriptor_Desc_CyberWagon_C,
@@ -364,7 +364,7 @@ type FGRecipe = docs_json_ts_1_0_1_4_classes_base_FGRecipe;
 
 type FGResourceDescriptor = docs_json_ts_1_0_1_4_classes_base_FGResourceDescriptor;
 
-type FGSchematic_base = docs_json_ts_1_0_1_4_classes_base_FGSchematic_base;
+type FGSchematic = docs_json_ts_1_0_1_4_classes_base_FGSchematic;
 
 type FGSchematic_with_described_unlocks = docs_json_ts_1_0_1_4_classes_base_FGSchematic_with_described_unlocks;
 
@@ -506,7 +506,7 @@ export type {
 	FGPowerShardDescriptor,
 	FGRecipe,
 	FGResourceDescriptor,
-	FGSchematic_base,
+	FGSchematic,
 	FGSchematic_with_described_unlocks,
 	FGSuitBase,
 	FGVehicleDescriptor_Desc_CyberWagon_C,

@@ -91,7 +91,7 @@ import type {
 	FGNobeliskDetonator as docs_json_ts_0_5_2_1_classes_base_FGNobeliskDetonator,
 	FGPipeHyperStart as docs_json_ts_0_5_2_1_classes_base_FGPipeHyperStart,
 	FGResourceDescriptor as docs_json_ts_0_5_2_1_classes_base_FGResourceDescriptor,
-	FGSchematic_base as docs_json_ts_0_5_2_1_classes_base_FGSchematic_base,
+	FGSchematic as docs_json_ts_0_5_2_1_classes_base_FGSchematic,
 	FGSchematic_with_described_unlocks as docs_json_ts_0_5_2_1_classes_base_FGSchematic_with_described_unlocks,
 	FGVehicleDescriptor_fueled_with_inventory as docs_json_ts_0_5_2_1_classes_base_FGVehicleDescriptor_fueled_with_inventory,
 	FGVehicleDescriptor_powered as docs_json_ts_0_5_2_1_classes_base_FGVehicleDescriptor_powered,
@@ -294,7 +294,7 @@ type FGPoleDescriptor = docs_json_ts_0_5_2_1_classes_base_FGDescriptor_BuildMenu
 
 type FGResourceDescriptor = docs_json_ts_0_5_2_1_classes_base_FGResourceDescriptor;
 
-type FGSchematic_base = docs_json_ts_0_5_2_1_classes_base_FGSchematic_base;
+type FGSchematic = docs_json_ts_0_5_2_1_classes_base_FGSchematic;
 
 type FGSchematic_with_described_unlocks = docs_json_ts_0_5_2_1_classes_base_FGSchematic_with_described_unlocks;
 
@@ -412,7 +412,7 @@ export type {
 	FGPipeHyperStart,
 	FGPoleDescriptor,
 	FGResourceDescriptor,
-	FGSchematic_base,
+	FGSchematic,
 	FGSchematic_with_described_unlocks,
 	FGVehicleDescriptor_Desc_CyberWagon_C,
 	FGVehicleDescriptor_Desc_DroneTransport_C,
