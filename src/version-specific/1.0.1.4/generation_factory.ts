@@ -196,6 +196,12 @@ async function generation_factory(
 			release_1_0_classes__base,
 			release_1_0_classes,
 		);
+
+		if (!process_data) {
+			schema_set.push(
+				release_1_0,
+			);
+		}
 	}
 
 	if (process_data) {
