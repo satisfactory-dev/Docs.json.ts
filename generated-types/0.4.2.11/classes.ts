@@ -71,9 +71,9 @@ import type {
 	FGConsumableDescriptor as docs_json_ts_0_4_2_11_classes_base_FGConsumableDescriptor,
 	FGConsumableEquipment as docs_json_ts_0_4_2_11_classes_base_FGConsumableEquipment,
 	FGDescriptor_BuildMenu as docs_json_ts_0_4_2_11_classes_base_FGDescriptor_BuildMenu,
-	FGDescriptor_sinkable as docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable,
 	FGEquipmentZipline as docs_json_ts_0_4_2_11_classes_base_FGEquipmentZipline,
 	FGHoverPack as docs_json_ts_0_4_2_11_classes_base_FGHoverPack,
+	FGItemDescriptor as docs_json_ts_0_4_2_11_classes_base_FGItemDescriptor,
 	FGNobeliskDetonator as docs_json_ts_0_4_2_11_classes_base_FGNobeliskDetonator,
 	FGParachute as docs_json_ts_0_4_2_11_classes_base_FGParachute,
 	FGPipeHyperStart as docs_json_ts_0_4_2_11_classes_base_FGPipeHyperStart,
@@ -243,7 +243,7 @@ type FGEquipmentZipline = docs_json_ts_0_4_2_11_classes_base_FGEquipmentZipline;
 
 type FGHoverPack = docs_json_ts_0_4_2_11_classes_base_FGHoverPack;
 
-type FGItemDescriptor = docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable;
+type FGItemDescriptor = docs_json_ts_0_4_2_11_classes_base_FGItemDescriptor;
 
 type FGItemDescriptorNuclearFuel = docs_json_ts_0_4_2_11_classes_base_overridable_FGItemDescriptorNuclearFuel;
 

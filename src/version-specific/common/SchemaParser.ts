@@ -1,98 +1,77 @@
+import type {
+	SchemaParser,
+} from '@signpostmarv/json-schema-typescript-codegen';
 import {
 	$ref,
-	type SchemaObjectWith$id,
-	type SchemaParser,
 } from '@signpostmarv/json-schema-typescript-codegen';
 
 import {
 	TemplatedString,
 } from '@signpostmarv/json-schema-typescript-codegen/ajv';
 
-// eslint-disable-next-line @stylistic/max-len
-import update3_overridable from '../../../schema/0.3.7.7/overridable.json' with {
+import common_types from '../../../schema/common/types.json' with {
 	type: 'json',
 };
 
-import update3_properties from '../../../schema/0.3.7.7/properties.json' with {
+// oxlint-disable-next-line @stylistic/max-len
+import common_classes__base from '../../../schema/common/base-classes.json' with {
 	type: 'json',
 };
 
-import update3_classes from '../../../schema/0.3.7.7/classes.json' with {
-	type: 'json',
-};
-
-// eslint-disable-next-line @stylistic/max-len
-import update3_classes__base from '../../../schema/0.3.7.7/base-classes.json' with {
-	type: 'json',
-};
-
-// eslint-disable-next-line @stylistic/max-len
-import update3_classes__base__overridable from '../../../schema/0.3.7.7/base-classes.overridable.json' with {
-	type: 'json',
-};
-
-import update3 from '../../../schema/0.3.7.7/docs.json' with {
+// oxlint-disable-next-line @stylistic/max-len
+import common_classes from '../../../schema/common/classes.json' with {
 	type: 'json',
 };
 
 import {
 	NativeClass,
-} from './NativeClass.ts';
+} from '../0.3.7.7/NativeClass.ts';
 
 import {
 	Desc_C,
-} from './Desc_C.ts';
+} from '../0.3.7.7/Desc_C.ts';
 
 import {
 	ResourceSink_Unlock_C,
-} from './ResourceSink_Unlock_C.ts';
+} from '../0.3.7.7/ResourceSink_Unlock_C.ts';
 
 import {
 	Schematic_C,
-} from './Schematic_C.ts';
+} from '../0.3.7.7/Schematic_C.ts';
 
 import {
 	StringDotString,
-} from './StringDotString.ts';
+} from '../0.3.7.7/StringDotString.ts';
 
 import {
 	PropertySchemaToRegex__matchers,
 	TypedString,
-} from './TypedString.ts';
+} from '../0.3.7.7/TypedString.ts';
 import {
 	BP_C,
-} from './BP_C.ts';
+} from '../0.3.7.7/BP_C.ts';
 import {
 	NamedList,
-} from './NamedList.ts';
+} from '../0.3.7.7/NamedList.ts';
 
 import {
 	Object as Object_matcher,
-} from './TypedString/PropertySchemaToRegex/Object.ts';
+} from '../0.3.7.7/TypedString/PropertySchemaToRegex/Object.ts';
 
 import type {
 	PropertySchemaToRegex,
-} from './TypedString/Object.ts';
+} from '../0.3.7.7/TypedString/Object.ts';
 
 import {
 	PrefixedString,
-} from './PrefixedString.ts';
-
-import {
-	add_schemas as add_schemas_common,
-} from '../common/SchemaParser.ts';
+} from '../0.3.7.7/PrefixedString.ts';
 
 const already_configured: WeakSet<SchemaParser> = new WeakSet();
 
 export function add_schemas(parser: SchemaParser) {
-	add_schemas_common(parser);
-
-	parser.add_schema(update3_overridable);
-	parser.add_schema(update3_properties);
-	parser.add_schema(update3_classes__base__overridable);
-	parser.add_schema(update3_classes__base as SchemaObjectWith$id);
-	parser.add_schema(update3_classes);
-	parser.add_schema(update3);
+	parser.add_schema(common_types);
+	parser.add_schema(common_classes__base);
+	parser.add_schema(common_classes);
 }
 
 export function configure_parser(parser: SchemaParser) {

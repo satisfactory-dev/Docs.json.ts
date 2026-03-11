@@ -11,6 +11,11 @@ import common_classes__base from '../../../schema/common/base-classes.json' with
 	type: 'json',
 };
 
+// oxlint-disable-next-line @stylistic/max-len
+import common_classes from '../../../schema/common/classes.json' with {
+	type: 'json',
+};
+
 export const filenames_by_$id: guard = {
 	[common_types.$id]: {
 		types: './generated-types/common/types.ts',
@@ -18,6 +23,10 @@ export const filenames_by_$id: guard = {
 	},
 	[common_classes__base.$id]: {
 		types: './generated-types/common/classes/Base.ts',
+		data: './generated-types/common/data.ts',
+	},
+	[common_classes.$id]: {
+		types: './generated-types/common/classes.ts',
 		data: './generated-types/common/data.ts',
 	},
 };

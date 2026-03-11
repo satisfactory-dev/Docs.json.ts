@@ -52,7 +52,6 @@ import type {
 	FGDescriptor_base as docs_json_ts_0_4_2_11_classes_base_FGDescriptor_base,
 	FGDescriptor_BuildMenu_base as docs_json_ts_0_4_2_11_classes_base_FGDescriptor_BuildMenu_base,
 	FGDescriptor_sinkable as docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable,
-	FGDescriptor_sinkable_base as docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable_base,
 	FGVehicleDescriptor_fueled_with_inventory as docs_json_ts_0_4_2_11_classes_base_FGVehicleDescriptor_fueled_with_inventory,
 	FGVehicleDescriptor_powered as docs_json_ts_0_4_2_11_classes_base_FGVehicleDescriptor_powered,
 	FGVehicleDescriptor_with_inventory as docs_json_ts_0_4_2_11_classes_base_FGVehicleDescriptor_with_inventory,
@@ -197,6 +196,10 @@ import type {
 import type {
 	BlueprintGeneratedClass_quoted as docs_json_ts_0_3_7_7_overridable_BlueprintGeneratedClass_quoted,
 } from './../../0.3.7.7/types/overridable.ts';
+
+import type {
+	FGItemDescriptor as docs_json_ts_common_classes_FGItemDescriptor,
+} from './../../common/classes.ts';
 
 import type {
 	FGSchematic_base as docs_json_ts_0_4_2_11_classes_base_overridable_FGSchematic_base,
@@ -770,7 +773,7 @@ type FGItemDescAmmoTypeProjectile_explosive_firework = FGItemDescAmmoTypeProject
 	},
 };
 
-type FGItemDescriptor = docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable_base & FGItemDescriptor_base;
+type FGItemDescriptor = docs_json_ts_common_classes_FGItemDescriptor & docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable & FGItemDescriptor_base;
 
 type FGItemDescriptor_base = FGItemDescriptor_base_base & {
 	mBuildMenuPriority: docs_json_ts_common_types_decimal_string,

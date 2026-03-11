@@ -4801,6 +4801,16 @@
 				}
 			}
 		},
+		"FGItemDescriptor": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGItemDescriptor"
+				},
+				{
+					"$ref": "#/$defs/FGDescriptor--sinkable"
+				}
+			]
+		},
 		"FGItemDescriptorNuclearFuel": {
 			"allOf": [
 				{

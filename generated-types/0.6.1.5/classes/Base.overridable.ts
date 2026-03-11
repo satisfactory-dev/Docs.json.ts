@@ -28,7 +28,7 @@ import type {
 } from './../../0.3.7.7/classes/Base.ts';
 
 import type {
-	FGDescriptor_sinkable_base as docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable_base,
+	FGDescriptor_sinkable as docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable,
 	FGRecipe_base_base as docs_json_ts_0_4_2_11_classes_base_FGRecipe_base_base,
 } from './../../0.4.2.11/classes/Base.ts';
 
@@ -85,7 +85,7 @@ type FGBuildableRadarTower_version_specific = {
 	mScannableDescriptors: docs_json_ts_0_3_7_7_overridable_DocsDotJson_BlueprintGeneratedClass_quoted_list,
 };
 
-type FGConsumableDescriptor = docs_json_ts_0_3_7_7_classes_base_FGConsumableDescriptor_base & docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable_base & FGItemDescriptor_base;
+type FGConsumableDescriptor = docs_json_ts_0_3_7_7_classes_base_FGConsumableDescriptor_base & docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable & FGItemDescriptor_base;
 
 type FGItemDescriptor_base = docs_json_ts_0_6_1_5_classes_base_FGDescriptor & docs_json_ts_0_6_1_5_classes_base_FGItemDescriptor_pre_1_0 & docs_json_ts_0_6_1_5_classes_base_FGItemDescriptor_version_specific & docs_json_ts_0_6_1_5_overridable_has_mSubCategories & FGItemDescriptor_version_specific;
 

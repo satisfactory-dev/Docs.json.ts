@@ -188,7 +188,6 @@ import type {
 	FGWeaponProjectile_thrown_base_pre_1_0 as docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_thrown_base_pre_1_0,
 	has_mCanStack as docs_json_ts_0_3_7_7_classes_base_has_mCanStack,
 	has_mStackHeight as docs_json_ts_0_3_7_7_classes_base_has_mStackHeight,
-	hasClassName as docs_json_ts_0_3_7_7_classes_base_hasClassName,
 	instructive as docs_json_ts_0_3_7_7_classes_base_instructive,
 	isDescribed as docs_json_ts_0_3_7_7_classes_base_isDescribed,
 } from './../0.3.7.7/classes/Base.ts';
@@ -220,7 +219,6 @@ import type {
 	FGBuildableTradingPost_base_version_specific as docs_json_ts_0_4_2_11_classes_base_FGBuildableTradingPost_base_version_specific,
 	FGConsumableEquipment_version_specific as docs_json_ts_0_4_2_11_classes_base_FGConsumableEquipment_version_specific,
 	FGDescriptor_sinkable as docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable,
-	FGDescriptor_sinkable_base as docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable_base,
 	FGEquipmentZipline_version_specific as docs_json_ts_0_4_2_11_classes_base_FGEquipmentZipline_version_specific,
 	FGHoverPack_version_specific as docs_json_ts_0_4_2_11_classes_base_FGHoverPack_version_specific,
 	FGPortableMinerDispenser_version_specific as docs_json_ts_0_4_2_11_classes_base_FGPortableMinerDispenser_version_specific,
@@ -301,6 +299,14 @@ import type {
 	FGSchematic_version_specific as docs_json_ts_0_5_2_1_classes_base_overridable_FGSchematic_version_specific,
 	FGWeapon_version_specific as docs_json_ts_0_5_2_1_classes_base_overridable_FGWeapon_version_specific,
 } from './../0.5.2.1/classes/Base.overridable--1.0.1.4.ts';
+
+import type {
+	hasClassName as docs_json_ts_common_classes_base_hasClassName,
+} from './../common/classes/Base.ts';
+
+import type {
+	FGItemDescriptor as docs_json_ts_common_classes_FGItemDescriptor,
+} from './../common/classes.ts';
 
 import type {
 	BlueprintGeneratedClass_single_quoted as docs_json_ts_0_4_2_11_overridable_BlueprintGeneratedClass_single_quoted,
@@ -833,7 +839,7 @@ type FGChainsaw_version_specific = {
 	mIsAOEOn: docs_json_ts_common_types_bool_string,
 };
 
-type FGConsumableDescriptor = docs_json_ts_0_3_7_7_classes_base_FGConsumableDescriptor_base & docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable_base & FGItemDescriptor_base;
+type FGConsumableDescriptor = docs_json_ts_0_3_7_7_classes_base_FGConsumableDescriptor_base & docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable & FGItemDescriptor_base;
 
 type FGConsumableEquipment_base = docs_json_ts_0_8_3_3_classes_base_overridable_FGConsumableEquipment_version_specific & docs_json_ts_0_3_7_7_classes_base_FGConsumableEquipment_version_specific & docs_json_ts_0_4_2_11_classes_base_FGConsumableEquipment_version_specific & FGConsumableEquipment_base_version_specific & FGEquipment;
 
@@ -851,7 +857,7 @@ type FGConsumableEquipment_medkit_version_specific = {
 	},
 };
 
-type FGEquipment = docs_json_ts_0_3_7_7_classes_base_overridable_FGEquipment_version_specific & docs_json_ts_0_8_3_3_classes_base_overridable_FGEquipment_version_specific & docs_json_ts_0_3_7_7_classes_base_hasClassName & docs_json_ts_0_6_1_5_classes_base_FGEquipment_version_specific & FGEquipment_pre_1_1 & FGEquipment_version_specific;
+type FGEquipment = docs_json_ts_0_3_7_7_classes_base_overridable_FGEquipment_version_specific & docs_json_ts_0_8_3_3_classes_base_overridable_FGEquipment_version_specific & docs_json_ts_common_classes_base_hasClassName & docs_json_ts_0_6_1_5_classes_base_FGEquipment_version_specific & FGEquipment_pre_1_1 & FGEquipment_version_specific;
 
 type FGEquipment_pre_1_1 = {
 	mEquipMontage: docs_json_ts_1_0_1_4_properties_Montages,
@@ -911,7 +917,7 @@ type FGHoverPack_version_specific = {
 	mDisplayRangeWarning: docs_json_ts_common_types_bool_string,
 };
 
-type FGItemDescriptor = docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable_base & FGItemDescriptor_base;
+type FGItemDescriptor = docs_json_ts_common_classes_FGItemDescriptor & docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable & FGItemDescriptor_base;
 
 type FGItemDescriptor_base = docs_json_ts_0_6_1_5_classes_base_FGDescriptor & docs_json_ts_0_6_1_5_classes_base_FGItemDescriptor_version_specific & docs_json_ts_0_6_1_5_classes_base_overridable_FGItemDescriptor_version_specific & docs_json_ts_0_6_1_5_overridable_has_mSubCategories & FGItemDescriptor_version_specific;
 
@@ -1040,7 +1046,7 @@ type FGSchematic_version_specific = {
 	mType?: 'EST_Custom' | 'EST_Customization' | 'EST_Tutorial' | 'EST_MAM' | 'EST_HardDrive' | 'EST_Milestone' | 'EST_Alternate' | 'EST_ResourceSink',
 };
 
-type FGSchematic_with_described_unlocks = docs_json_ts_0_3_7_7_classes_base_hasClassName & docs_json_ts_0_5_2_1_classes_base_FGSchematic_with_described_unlocks_base_base & FGSchematic_base;
+type FGSchematic_with_described_unlocks = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_0_5_2_1_classes_base_FGSchematic_with_described_unlocks_base_base & FGSchematic_base;
 
 type FGSuitBase = docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_mFilterDuration & docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_effect_timer & docs_json_ts_0_3_7_7_classes_base_FGEquipment_negates_damage & docs_json_ts_0_3_7_7_classes_base_FGSuitBase_base & docs_json_ts_0_6_1_5_classes_base_FGSuitBase_version_specific & FGEquipment & FGSuitBase_version_specific;
 

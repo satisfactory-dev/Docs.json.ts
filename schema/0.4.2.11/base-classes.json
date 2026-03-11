@@ -2227,17 +2227,7 @@
 					"$ref": "#/$defs/FGDescriptor"
 				},
 				{
-					"$ref": "#/$defs/FGDescriptor--sinkable--base"
-				}
-			]
-		},
-		"FGDescriptor--sinkable--base": {
-			"allOf": [
-				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGDescriptor--sinkable--base"
-				},
-				{
-					"$ref": "#/$defs/FGDescriptor"
 				}
 			]
 		},
@@ -2545,6 +2535,16 @@
 					"const": "BE_Jetpack"
 				}
 			}
+		},
+		"FGItemDescriptor": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGItemDescriptor"
+				},
+				{
+					"$ref": "#/$defs/FGDescriptor--sinkable"
+				}
+			]
 		},
 		"FGNobeliskDetonator": {
 			"allOf": [

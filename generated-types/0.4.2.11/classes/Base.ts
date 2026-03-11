@@ -127,7 +127,6 @@ import type {
 	FGWeaponProjectileFire as docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectileFire,
 	has_mCanStack as docs_json_ts_0_3_7_7_classes_base_has_mCanStack,
 	has_mStackHeight as docs_json_ts_0_3_7_7_classes_base_has_mStackHeight,
-	hasClassName as docs_json_ts_0_3_7_7_classes_base_hasClassName,
 } from './../../0.3.7.7/classes/Base.ts';
 
 import type {
@@ -155,6 +154,14 @@ import type {
 import type {
 	has_mBatteryClasses as docs_json_ts_0_4_2_11_overridable_has_mBatteryClasses,
 } from './../types/overridable.ts';
+
+import type {
+	hasClassName as docs_json_ts_common_classes_base_hasClassName,
+} from './../../common/classes/Base.ts';
+
+import type {
+	FGItemDescriptor as docs_json_ts_common_classes_FGItemDescriptor,
+} from './../../common/classes.ts';
 
 import type {
 	mUnlocks_item_base as docs_json_ts_0_3_7_7_properties_mUnlocks_item_base,
@@ -646,13 +653,11 @@ type FGDescriptor_BuildMenu = FGDescriptor & FGDescriptor_BuildMenu_base;
 
 type FGDescriptor_BuildMenu_base = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_BuildMenu_base & FGDescriptor_base;
 
-type FGDescriptor_sinkable = FGDescriptor & FGDescriptor_sinkable_base;
-
-type FGDescriptor_sinkable_base = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_sinkable_base & FGDescriptor;
+type FGDescriptor_sinkable = FGDescriptor & docs_json_ts_0_3_7_7_classes_base_FGDescriptor_sinkable_base;
 
 type FGEquipment = docs_json_ts_0_3_7_7_classes_base_FGEquipment_base & FGEquipment_base;
 
-type FGEquipment_base = docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_mUseDefaultPrimaryFire & docs_json_ts_0_3_7_7_classes_base_FGEquipment_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_overridable_FGEquipment_version_specific & docs_json_ts_0_3_7_7_classes_base_hasClassName & FGEquipment_version_specific;
+type FGEquipment_base = docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_mUseDefaultPrimaryFire & docs_json_ts_0_3_7_7_classes_base_FGEquipment_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_overridable_FGEquipment_version_specific & docs_json_ts_common_classes_base_hasClassName & FGEquipment_version_specific;
 
 type FGEquipment_version_specific = {
 	mAttachSocket: 'None' | 'hand_rSocket' | 'hand_lSocket' | 'jumpingStilt_lSocket' | 'helmetSocket' | 'root',
@@ -724,6 +729,8 @@ type FGHoverPack_version_specific = {
 	mArmAnimation: 'AE_None',
 	mBackAnimation: 'BE_Jetpack',
 };
+
+type FGItemDescriptor = docs_json_ts_common_classes_FGItemDescriptor & FGDescriptor_sinkable;
 
 type FGNobeliskDetonator = docs_json_ts_0_3_7_7_classes_base_FGNobeliskDetonator & FGWeaponProjectile;
 
@@ -961,7 +968,6 @@ export type {
 	FGDescriptor_BuildMenu,
 	FGDescriptor_BuildMenu_base,
 	FGDescriptor_sinkable,
-	FGDescriptor_sinkable_base,
 	FGEquipment,
 	FGEquipment_base,
 	FGEquipment_version_specific,
@@ -972,6 +978,7 @@ export type {
 	FGHoverPack_base,
 	FGHoverPack_pre_1_0,
 	FGHoverPack_version_specific,
+	FGItemDescriptor,
 	FGNobeliskDetonator,
 	FGParachute,
 	FGPipeHyperStart,

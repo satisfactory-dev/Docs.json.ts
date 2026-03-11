@@ -1894,7 +1894,7 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGConsumableDescriptor--base"
 				},
 				{
-					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGDescriptor--sinkable--base"
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGDescriptor--sinkable"
 				}
 			]
 		},

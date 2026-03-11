@@ -19,7 +19,6 @@ import type {
 	FGDescriptor as docs_json_ts_0_4_2_11_classes_base_FGDescriptor,
 	FGDescriptor_base as docs_json_ts_0_4_2_11_classes_base_FGDescriptor_base,
 	FGDescriptor_sinkable as docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable,
-	FGDescriptor_sinkable_base as docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable_base,
 	FGEquipment_base as docs_json_ts_0_4_2_11_classes_base_FGEquipment_base,
 	FGEquipmentZipline as docs_json_ts_0_4_2_11_classes_base_FGEquipmentZipline,
 	FGHoverPack_base as docs_json_ts_0_4_2_11_classes_base_FGHoverPack_base,
@@ -208,6 +207,10 @@ import type {
 import type {
 	Texture2D as docs_json_ts_0_4_2_11_properties_Texture2D,
 } from './../../0.4.2.11/types/properties.ts';
+
+import type {
+	FGItemDescriptor as docs_json_ts_common_classes_FGItemDescriptor,
+} from './../../common/classes.ts';
 
 import type {
 	FGSchematic_version_specific as docs_json_ts_0_5_2_1_classes_base_overridable_FGSchematic_version_specific,
@@ -602,7 +605,7 @@ type FGGolfCartDispenser = docs_json_ts_0_5_2_1_classes_base_FGGolfCartDispenser
 
 type FGHoverPack = docs_json_ts_0_4_2_11_classes_base_FGHoverPack_base & FGEquipment_noisy;
 
-type FGItemDescriptor = docs_json_ts_0_6_1_5_classes_base_overridable_FGItemDescriptor_base & docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable_base;
+type FGItemDescriptor = docs_json_ts_common_classes_FGItemDescriptor & docs_json_ts_0_6_1_5_classes_base_overridable_FGItemDescriptor_base & docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable;
 
 type FGItemDescriptor_pre_1_0 = {
 	mClassToScanFor: 'None' | `/Game/FactoryGame/${'Resource/Environment/' | 'World/Benefit/'}${string}${'/BP_'}${Exclude<string, ''>}${'.BP_'}${Exclude<string, ''>}`,

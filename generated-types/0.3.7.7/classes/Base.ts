@@ -47,6 +47,10 @@ import type {
 } from './../types/properties.ts';
 
 import type {
+	hasClassName as docs_json_ts_common_classes_base_hasClassName,
+} from './../../common/classes/Base.ts';
+
+import type {
 	FGBuildableResourceExtractor_miner_base as docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_miner_base,
 	FGBuildableResourceExtractor_only_allow_certain_resources as docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_only_allow_certain_resources,
 	FGEquipment_version_specific as docs_json_ts_0_3_7_7_classes_base_overridable_FGEquipment_version_specific,
@@ -65,16 +69,16 @@ import type {
 	mUnlocks_item_mSchematics as docs_json_ts_0_3_7_7_overridable_mUnlocks_item_mSchematics,
 } from './../types/overridable.ts';
 
+import type {
+	FGItemDescriptor as docs_json_ts_common_classes_FGItemDescriptor,
+} from './../../common/classes.ts';
+
 type has_mCanStack = {
 	mCanStack: docs_json_ts_common_types_bool_string,
 };
 
 type has_mStackHeight = {
 	mStackHeight: docs_json_ts_common_types_decimal_string,
-};
-
-type hasClassName = {
-	ClassName: `${Exclude<string, ''>}${'_'}${Exclude<string, ''>}${'_C'}`,
 };
 
 type instructive = isNamed & {
@@ -86,7 +90,7 @@ type isDescribed = isNamed & {
 	mDescription: string,
 };
 
-type isNamed = hasClassName & {
+type isNamed = docs_json_ts_common_classes_base_hasClassName & {
 	mDisplayName: docs_json_ts_0_3_7_7_properties_mDisplayName,
 };
 
@@ -989,7 +993,7 @@ type FGColorGun_base = FGColorGun_base_base & {
 	mArmAnimation: 'AE_ColorGun',
 };
 
-type FGColorGun_base_base = hasClassName & {
+type FGColorGun_base_base = docs_json_ts_common_classes_base_hasClassName & {
 	mRedundantTargetCrosshairColor: docs_json_ts_common_types_RGBA,
 	mNoTargetCrosshairColor: docs_json_ts_common_types_RGBA,
 	mNonColorableTargetCrosshairColor: docs_json_ts_common_types_RGBA,
@@ -1059,7 +1063,7 @@ type FGEquipment = FGEquipment_base & {
 	mAttachSocket: 'None' | 'hand_rSocket' | 'hand_lSocket' | 'jumpingStilt_lSocket' | 'helmetSocket',
 };
 
-type FGEquipment_base = docs_json_ts_0_3_7_7_classes_base_overridable_FGEquipment_version_specific & FGEquipment_has_mEquipmentSlot & FGEquipment_has_mUseDefaultPrimaryFire & FGEquipment_pre_1_0 & hasClassName;
+type FGEquipment_base = docs_json_ts_0_3_7_7_classes_base_overridable_FGEquipment_version_specific & FGEquipment_has_mEquipmentSlot & FGEquipment_has_mUseDefaultPrimaryFire & FGEquipment_pre_1_0 & docs_json_ts_common_classes_base_hasClassName;
 
 type FGEquipment_dispenser = FGEquipment & FGEquipment_has_mPlaceDistanceMax;
 
@@ -1153,6 +1157,8 @@ type FGGolfCartDispenser = FGEquipment_dispenser & FGGolfCartDispenser_has_mArmA
 type FGGolfCartDispenser_has_mArmAnimation = {
 	mArmAnimation: 'AE_Generic2Hand',
 };
+
+type FGItemDescriptor = docs_json_ts_common_classes_FGItemDescriptor & FGDescriptor_sinkable;
 
 type FGItemDescriptorNuclearFuel = FGDescriptor_sinkable & FGItemDescriptorNuclearFuel_version_specific;
 
@@ -1465,7 +1471,6 @@ type FGWeaponProjectileFire_has_mRandomReloadAnim = {
 export type {
 	has_mCanStack,
 	has_mStackHeight,
-	hasClassName,
 	instructive,
 	isDescribed,
 	isNamed,
@@ -1754,6 +1759,7 @@ export type {
 	FGGasMask_base,
 	FGGolfCartDispenser,
 	FGGolfCartDispenser_has_mArmAnimation,
+	FGItemDescriptor,
 	FGItemDescriptorNuclearFuel,
 	FGItemDescriptorNuclearFuel_version_specific,
 	FGJetPack,
