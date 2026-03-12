@@ -270,10 +270,13 @@
 				}
 			}
 		},
-		"FGBuildable--spline": {
+		"has--mSplineData": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--spline"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mSplineData"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mMeshLength"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--base"
@@ -414,24 +417,29 @@
 		"FGBuildableConveyorBelt": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableConveyorBelt"
+				},
+				{
 					"$ref": "#/$defs/FGBuildable--base"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableConveyorBelt--spline"
-				}
-			]
-		},
-		"FGBuildableConveyorBelt--spline": {
-			"allOf": [
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableConveyorBelt--spline--base"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mSplineData"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableConveyorBelt--spline--base"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mMeshLength"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableConveyorBelt--pre-update8"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableConveyorBelt--pre-1.0"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableConveyorBelt--version-specific"
 				}
 			]
 		},
-		"FGBuildableConveyorBelt--spline--base": {
+		"FGBuildableConveyorBelt--version-specific": {
 			"type": "object",
 			"required": ["mCustomSkins"],
 			"properties": {
@@ -455,10 +463,13 @@
 		"FGBuildableConveyorLift": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableConveyorBelt--base--base"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableConveyorLift--base"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableConveyorLift--base"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableConveyorBelt--pre-update8"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableConveyorBelt--pre-1.0"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--base"
@@ -1266,7 +1277,7 @@
 		"FGBuildablePipeHyper": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGBuildable--spline"
+					"$ref": "#/$defs/has--mSplineData"
 				},
 				{
 					"$ref": "#/$defs/FGBuildablePipeHyper--version-specific"

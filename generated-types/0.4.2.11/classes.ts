@@ -4,7 +4,6 @@ import type {
 	FGBuildable as docs_json_ts_0_4_2_11_classes_base_FGBuildable,
 	FGBuildable_occupied as docs_json_ts_0_4_2_11_classes_base_FGBuildable_occupied,
 	FGBuildable_powered as docs_json_ts_0_4_2_11_classes_base_FGBuildable_powered,
-	FGBuildable_spline as docs_json_ts_0_4_2_11_classes_base_FGBuildable_spline,
 	FGBuildable_tiered as docs_json_ts_0_4_2_11_classes_base_FGBuildable_tiered,
 	FGBuildable_with_height_and_elevation as docs_json_ts_0_4_2_11_classes_base_FGBuildable_with_height_and_elevation,
 	FGBuildable_with_height_and_width as docs_json_ts_0_4_2_11_classes_base_FGBuildable_with_height_and_width,
@@ -88,6 +87,7 @@ import type {
 	FGVehicleDescriptor_with_inventory as docs_json_ts_0_4_2_11_classes_base_FGVehicleDescriptor_with_inventory,
 	FGWeaponInstantFire as docs_json_ts_0_4_2_11_classes_base_FGWeaponInstantFire,
 	FGWeaponProjectileFire as docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectileFire,
+	has_mSplineData as docs_json_ts_0_4_2_11_classes_base_has_mSplineData,
 } from './classes/Base.ts';
 
 import type {
@@ -168,7 +168,7 @@ type FGBuildableManufacturer_Build_SmelterMk1_C = docs_json_ts_0_4_2_11_classes_
 
 type FGBuildableManufacturerVariablePower = docs_json_ts_0_4_2_11_classes_base_FGBuildableManufacturer_Build_HadronCollider_C;
 
-type FGBuildablePipeHyper = docs_json_ts_0_4_2_11_classes_base_FGBuildable_spline;
+type FGBuildablePipeHyper = docs_json_ts_0_4_2_11_classes_base_has_mSplineData;
 
 type FGBuildablePipeline = docs_json_ts_0_4_2_11_classes_base_FGBuildablePipeline;
 

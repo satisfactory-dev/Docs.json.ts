@@ -40,6 +40,8 @@ import type {
 	FGBuildableAttachment_has_mCurrentOutputIndex as docs_json_ts_0_3_7_7_classes_base_FGBuildableAttachment_has_mCurrentOutputIndex,
 	FGBuildableAttachment_splitter_base_base_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableAttachment_splitter_base_base_base,
 	FGBuildableAttachmentMerger_version_specific as docs_json_ts_0_3_7_7_classes_base_FGBuildableAttachmentMerger_version_specific,
+	FGBuildableConveyorBelt_pre_1_0 as docs_json_ts_0_3_7_7_classes_base_FGBuildableConveyorBelt_pre_1_0,
+	FGBuildableConveyorBelt_pre_update8 as docs_json_ts_0_3_7_7_classes_base_FGBuildableConveyorBelt_pre_update8,
 	FGBuildableDockingStation_with_mFuelTransferSpeed_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableDockingStation_with_mFuelTransferSpeed_base,
 	FGBuildableFactory_jump_pad_base_base_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableFactory_jump_pad_base_base_base,
 	FGBuildableFactory_landing_pad_base_base_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableFactory_landing_pad_base_base_base,
@@ -86,6 +88,8 @@ import type {
 	FGJetPack_version_specific as docs_json_ts_0_3_7_7_classes_base_FGJetPack_version_specific,
 	FGPipeHyperStart_base_base as docs_json_ts_0_3_7_7_classes_base_FGPipeHyperStart_base_base,
 	has_mCanStack as docs_json_ts_0_3_7_7_classes_base_has_mCanStack,
+	has_mMeshLength as docs_json_ts_0_3_7_7_classes_base_has_mMeshLength,
+	has_mSplineData as docs_json_ts_0_3_7_7_classes_base_has_mSplineData,
 	has_mStackHeight as docs_json_ts_0_3_7_7_classes_base_has_mStackHeight,
 } from './../../0.3.7.7/classes/Base.ts';
 
@@ -95,7 +99,7 @@ import type {
 	FGBuildable_tiered as docs_json_ts_0_5_2_1_classes_base_FGBuildable_tiered,
 	FGBuildable_with_size_and_elevation as docs_json_ts_0_5_2_1_classes_base_FGBuildable_with_size_and_elevation,
 	FGBuildableCircuitSwitch as docs_json_ts_0_5_2_1_classes_base_FGBuildableCircuitSwitch,
-	FGBuildableConveyorBelt_spline as docs_json_ts_0_5_2_1_classes_base_FGBuildableConveyorBelt_spline,
+	FGBuildableConveyorBelt_version_specific as docs_json_ts_0_5_2_1_classes_base_FGBuildableConveyorBelt_version_specific,
 	FGBuildableConveyorLift as docs_json_ts_0_5_2_1_classes_base_FGBuildableConveyorLift,
 	FGBuildableDockingStation_base as docs_json_ts_0_5_2_1_classes_base_FGBuildableDockingStation_base,
 	FGBuildableFloodlight as docs_json_ts_0_5_2_1_classes_base_FGBuildableFloodlight,
@@ -146,6 +150,11 @@ import type {
 } from './../../0.4.2.11/classes/Base.ts';
 
 import type {
+	FGBuildableConveyorBelt as docs_json_ts_common_classes_FGBuildableConveyorBelt,
+	FGBuildablePole as docs_json_ts_common_classes_FGBuildablePole,
+} from './../../common/classes.ts';
+
+import type {
 	has_mBatteryClasses as docs_json_ts_0_4_2_11_overridable_has_mBatteryClasses,
 } from './../../0.4.2.11/types/overridable.ts';
 
@@ -153,10 +162,6 @@ import type {
 	FGBuildableResourceExtractor_miner_base as docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_miner_base,
 	FGBuildableResourceExtractor_only_allow_certain_resources as docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_only_allow_certain_resources,
 } from './../../0.3.7.7/classes/Base.overridable.ts';
-
-import type {
-	FGBuildablePole as docs_json_ts_common_classes_FGBuildablePole,
-} from './../../common/classes.ts';
 
 import type {
 	FGBuildableRadarTower_version_specific as docs_json_ts_0_6_1_5_classes_base_overridable_FGBuildableRadarTower_version_specific,
@@ -228,7 +233,7 @@ type FGBuildableCircuitSwitch_version_specific = {
 	mOnBuildingTagChanged: docs_json_ts_common_types_empty_object,
 };
 
-type FGBuildableConveyorBelt = docs_json_ts_0_5_2_1_classes_base_FGBuildableConveyorBelt_spline & FGBuildable_base;
+type FGBuildableConveyorBelt = docs_json_ts_common_classes_FGBuildableConveyorBelt & docs_json_ts_0_3_7_7_classes_base_has_mSplineData & docs_json_ts_0_3_7_7_classes_base_has_mMeshLength & docs_json_ts_0_3_7_7_classes_base_FGBuildableConveyorBelt_pre_update8 & docs_json_ts_0_3_7_7_classes_base_FGBuildableConveyorBelt_pre_1_0 & docs_json_ts_0_5_2_1_classes_base_FGBuildableConveyorBelt_version_specific & FGBuildable_base;
 
 type FGBuildableConveyorLift = docs_json_ts_0_5_2_1_classes_base_FGBuildableConveyorLift & FGBuildable_base;
 

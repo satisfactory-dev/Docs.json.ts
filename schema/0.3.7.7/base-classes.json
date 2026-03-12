@@ -503,9 +503,8 @@
 				}
 			}
 		},
-		"FGBuildable--spline": {
+		"has--mSplineData": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--with--mMeshLength",
 			"required": ["mSplineData"],
 			"properties": {
 				"mSplineData": {
@@ -535,7 +534,6 @@
 		},
 		"FGBuildable--with--mLength": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base--version-specific",
 			"required": ["mLength"],
 			"properties": {
 				"mLength": {
@@ -543,9 +541,8 @@
 				}
 			}
 		},
-		"FGBuildable--with--mMeshLength": {
+		"has--mMeshLength": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--base--version-specific",
 			"required": ["mMeshLength"],
 			"properties": {
 				"mMeshLength": {
@@ -557,9 +554,6 @@
 			"allOf": [
 				{
 					"$ref": "#/$defs/FGBuildable"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable--base--version-specific"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--with-height--base"
@@ -683,9 +677,6 @@
 			"allOf": [
 				{
 					"$ref": "#/$defs/FGBuildable"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable--base--version-specific"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--with-width--base"
@@ -858,22 +849,8 @@
 				}
 			}
 		},
-		"FGBuildableConveyorBelt--base": {
-			"allOf": [
-				{
-					"$ref": "#/$defs/FGBuildable"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable--base--version-specific"
-				},
-				{
-					"$ref": "#/$defs/FGBuildableConveyorBelt--base--base"
-				}
-			]
-		},
-		"FGBuildableConveyorBelt--base--base": {
+		"FGBuildableConveyorBelt--pre-update8": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildableConveyorBelt--base--base--pre-1.0",
 			"required": ["mItems"],
 			"properties": {
 				"mItems": {
@@ -881,7 +858,7 @@
 				}
 			}
 		},
-		"FGBuildableConveyorBelt--base--base--pre-1.0": {
+		"FGBuildableConveyorBelt--pre-1.0": {
 			"type": "object",
 			"required": ["mItemMeshMap", "mSpeed"],
 			"properties": {
@@ -896,33 +873,35 @@
 		"FGBuildableConveyorBelt--spline": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGBuildable--spline"
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableConveyorBelt"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableConveyorBelt--base"
+					"$ref": "#/$defs/has--mSplineData"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableConveyorBelt--spline--base"
-				}
-			]
-		},
-		"FGBuildableConveyorBelt--spline--base": {
-			"allOf": [
-				{
-					"$ref": "#/$defs/FGBuildable--spline"
+					"$ref": "#/$defs/has--mMeshLength"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableConveyorBelt--base--base"
+					"$ref": "#/$defs/FGBuildable"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableConveyorBelt--pre-update8"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableConveyorBelt--pre-1.0"
 				}
 			]
 		},
 		"FGBuildableConveyorLift": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGBuildableConveyorBelt--base"
+					"$ref": "#/$defs/FGBuildable"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableConveyorBelt--base--base"
+					"$ref": "#/$defs/FGBuildableConveyorBelt--pre-1.0"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableConveyorBelt--pre-update8"
 				},
 				{
 					"$ref": "#/$defs/FGBuildableConveyorLift--base"
@@ -2073,7 +2052,10 @@
 					"$ref": "#/$defs/FGBuildable"
 				},
 				{
-					"$ref": "#/$defs/FGBuildable--spline"
+					"$ref": "#/$defs/has--mSplineData"
+				},
+				{
+					"$ref": "#/$defs/has--mMeshLength"
 				}
 			]
 		},
@@ -2194,7 +2176,10 @@
 		"FGBuildablePipeline--base-spline": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGBuildable--spline"
+					"$ref": "#/$defs/has--mSplineData"
+				},
+				{
+					"$ref": "#/$defs/has--mMeshLength"
 				},
 				{
 					"$ref": "#/$defs/FGBuildablePipeline--base"
@@ -2207,7 +2192,10 @@
 		"FGBuildablePipeline--base-spline--base": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGBuildable--spline"
+					"$ref": "#/$defs/has--mSplineData"
+				},
+				{
+					"$ref": "#/$defs/has--mMeshLength"
 				},
 				{
 					"$ref": "#/$defs/FGBuildablePipeline--base--base"
@@ -2443,7 +2431,7 @@
 		"FGBuildablePipelineSupport": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGBuildable--base"
+					"$ref": "#/$defs/FGBuildable"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--base--pre-update5"
@@ -2571,9 +2559,6 @@
 			"allOf": [
 				{
 					"$ref": "#/$defs/FGBuildable"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable--base--version-specific"
 				},
 				{
 					"$ref": "#/$defs/FGBuildablePowerPole--base"
@@ -2719,7 +2704,7 @@
 		},
 		"FGBuildableRailroadTrack--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGBuildable--with--mMeshLength",
+			"$ref": "#/$defs/has--mMeshLength",
 			"required": ["mIsOwnedByPlatform"],
 			"properties": {
 				"mIsOwnedByPlatform": {
@@ -4044,9 +4029,6 @@
 			"allOf": [
 				{
 					"$ref": "#/$defs/FGBuildable"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable--base--version-specific"
 				},
 				{
 					"$ref": "#/$defs/FGBuildableWire--base"

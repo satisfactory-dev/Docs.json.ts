@@ -189,7 +189,7 @@
 		},
 		"FGBuildablePipeHyper": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--spline",
+			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/has--mSplineData",
 			"unevaluatedProperties": false
 		},
 		"FGBuildablePipeline": {
