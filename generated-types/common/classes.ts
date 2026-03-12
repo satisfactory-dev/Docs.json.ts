@@ -1,6 +1,7 @@
 /* eslint-disable @stylistic/max-len */
 
 import type {
+	FGItemDescriptor as docs_json_ts_common_classes_base_FGItemDescriptor,
 	hasClassName as docs_json_ts_common_classes_base_hasClassName,
 } from './classes/Base.ts';
 
@@ -12,9 +13,9 @@ type FGBuildingDescriptor = docs_json_ts_common_classes_base_hasClassName;
 
 type FGConsumableEquipment = docs_json_ts_common_classes_base_hasClassName;
 
-type FGItemDescriptor = docs_json_ts_common_classes_base_hasClassName;
+type FGItemDescriptor = docs_json_ts_common_classes_base_FGItemDescriptor;
 
-type FGItemDescriptorBiomass = docs_json_ts_common_classes_base_hasClassName;
+type FGItemDescriptorBiomass = docs_json_ts_common_classes_base_FGItemDescriptor;
 
 type FGPoleDescriptor = docs_json_ts_common_classes_base_hasClassName;
 
