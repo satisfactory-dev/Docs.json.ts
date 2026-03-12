@@ -316,9 +316,7 @@ type FGBuildablePipelineSupport = docs_json_ts_0_5_2_1_classes_base_FGBuildableP
 
 type FGBuildablePipeReservoir = docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeReservoir_base_base_base & FGBuildable_powered;
 
-type FGBuildablePole = docs_json_ts_common_classes_FGBuildablePole & docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_base & docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_base & docs_json_ts_0_3_7_7_classes_base_has_mCanStack & docs_json_ts_0_3_7_7_classes_base_has_mStackHeight & FGBuildable_base & FGBuildablePole_version_specific;
-
-type FGConveyorPoleStackable = docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_base & docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_base & docs_json_ts_0_3_7_7_classes_base_has_mCanStack & docs_json_ts_0_3_7_7_classes_base_has_mStackHeight & FGBuildable_base & FGBuildablePole_version_specific;
+type FGBuildablePole = docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_base & docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_base & docs_json_ts_0_3_7_7_classes_base_has_mCanStack & docs_json_ts_0_3_7_7_classes_base_has_mStackHeight & docs_json_ts_common_classes_FGBuildablePole & FGBuildable_base & FGBuildablePole_version_specific;
 
 type FGBuildablePole_version_specific = {
 	mSelectedPoleVersion: docs_json_ts_common_types_integer_string_signed,
@@ -381,6 +379,8 @@ type FGBuildableWire_base = docs_json_ts_0_5_2_1_classes_base_FGBuildableWire & 
 type FGBuildableWire_version_specific = {
 	mCachedRelativeLocations: docs_json_ts_common_types_XYZ_decimal_string,
 };
+
+type FGConveyorPoleStackable = docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_base & docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_base & docs_json_ts_0_3_7_7_classes_base_has_mCanStack & docs_json_ts_0_3_7_7_classes_base_has_mStackHeight & FGBuildable_base & FGBuildablePole_version_specific;
 
 type FGJetPack = docs_json_ts_0_7_1_1_classes_base_overridable_FGJetPack_pre_1_0 & docs_json_ts_0_7_1_1_classes_base_overridable_FGJetPack_version_specific & docs_json_ts_0_3_7_7_classes_base_FGJetPack_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGJetPack_version_specific & docs_json_ts_0_6_1_5_classes_base_FGEquipment;
 
@@ -448,7 +448,6 @@ export type {
 	FGBuildablePipelineSupport,
 	FGBuildablePipeReservoir,
 	FGBuildablePole,
-	FGConveyorPoleStackable,
 	FGBuildablePole_version_specific,
 	FGBuildablePowerPole,
 	FGBuildablePowerStorage,
@@ -478,6 +477,7 @@ export type {
 	FGBuildableWire,
 	FGBuildableWire_base,
 	FGBuildableWire_version_specific,
+	FGConveyorPoleStackable,
 	FGJetPack,
 	FGPipeHyperStart,
 };

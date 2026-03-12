@@ -527,7 +527,7 @@ type FGBuildablePipelineSupport = docs_json_ts_0_3_7_7_classes_base_FGBuildableP
 
 type FGBuildablePipeReservoir = docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeReservoir_base & FGBuildable_powered;
 
-type FGBuildablePole = docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_base & docs_json_ts_common_classes_FGBuildablePole & docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole & docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_base & docs_json_ts_0_3_7_7_classes_base_has_mCanStack & docs_json_ts_0_3_7_7_classes_base_has_mStackHeight & FGBuildable;
+type FGBuildablePole = docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole & docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_base & docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_base & docs_json_ts_0_3_7_7_classes_base_has_mCanStack & docs_json_ts_0_3_7_7_classes_base_has_mStackHeight & docs_json_ts_common_classes_FGBuildablePole & FGBuildable;
 
 type FGBuildablePowerPole = docs_json_ts_0_3_7_7_classes_base_FGBuildablePowerPole & FGBuildable_mHasPower;
 
@@ -758,7 +758,7 @@ type FGPortableMinerDispenser_version_specific = {
 	mArmAnimation: 'AE_Generic2Hand',
 };
 
-type FGRecipe = docs_json_ts_common_classes_FGRecipe & docs_json_ts_0_3_7_7_classes_base_FGRecipe_pre_update5 & docs_json_ts_0_3_7_7_classes_base_FGRecipe_version_specific & docs_json_ts_0_3_7_7_classes_base_instructive & FGRecipe_pre_update6 & FGRecipe_version_specific;
+type FGRecipe = docs_json_ts_0_3_7_7_classes_base_FGRecipe_pre_update5 & docs_json_ts_0_3_7_7_classes_base_FGRecipe_version_specific & docs_json_ts_0_3_7_7_classes_base_instructive & docs_json_ts_common_classes_FGRecipe & FGRecipe_pre_update6 & FGRecipe_version_specific;
 
 type FGRecipe_pre_update6 = {
 	mProducedIn: docs_json_ts_0_4_2_11_properties_mProducedIn,

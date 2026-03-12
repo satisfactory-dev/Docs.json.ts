@@ -207,22 +207,22 @@
 		"FGRecipe": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--common--classes#/$defs/FGRecipe"
-				},
-				{
 					"$ref": "docs.json.ts--0.5.2.1--classes--base.overridable#/$defs/FGRecipe--version-specific"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/instructive"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGRecipe--version-specific"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGRecipe--version-specific"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/instructive"
 				},
 				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGRecipe--version-specific"
 				},
 				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGRecipe--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGRecipe"
 				}
 			]
 		},

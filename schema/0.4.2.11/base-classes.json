@@ -1591,13 +1591,10 @@
 		"FGBuildablePole": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--pole--base"
-				},
-				{
-					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildablePole"
-				},
-				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--pole"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--pole--base"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-height--base"
@@ -1607,6 +1604,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mStackHeight"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildablePole"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable"
@@ -2630,9 +2630,6 @@
 		"FGRecipe": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--common--classes#/$defs/FGRecipe"
-				},
-				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGRecipe--pre-update5"
 				},
 				{
@@ -2640,6 +2637,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/instructive"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGRecipe"
 				},
 				{
 					"$ref": "#/$defs/FGRecipe--pre-update6"

@@ -5249,9 +5249,6 @@
 					"$ref": "docs.json.ts--common--classes#/$defs/FGRecipe"
 				},
 				{
-					"$ref": "#/$defs/instructive"
-				},
-				{
 					"$ref": "#/$defs/FGRecipe--pre-update4"
 				},
 				{
@@ -5259,21 +5256,18 @@
 				},
 				{
 					"$ref": "#/$defs/FGRecipe--version-specific"
+				},
+				{
+					"$ref": "#/$defs/instructive"
 				}
 			]
 		},
-		"FGRecipe--version-specific": {
+		"FGRecipe--pre-update4": {
 			"type": "object",
-			"required": [
-				"mManufactoringDuration",
-				"mManualManufacturingMultiplier"
-			],
+			"required": ["mProducedIn"],
 			"properties": {
-				"mManufactoringDuration": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mManualManufacturingMultiplier": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				"mProducedIn": {
+					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mProducedIn"
 				}
 			}
 		},
@@ -5289,12 +5283,18 @@
 				}
 			}
 		},
-		"FGRecipe--pre-update4": {
+		"FGRecipe--version-specific": {
 			"type": "object",
-			"required": ["mProducedIn"],
+			"required": [
+				"mManufactoringDuration",
+				"mManualManufacturingMultiplier"
+			],
 			"properties": {
-				"mProducedIn": {
-					"$ref": "docs.json.ts--0.3.7.7--properties#/$defs/mProducedIn"
+				"mManufactoringDuration": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mManualManufacturingMultiplier": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
 			}
 		},

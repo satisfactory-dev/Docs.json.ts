@@ -1279,11 +1279,10 @@ type FGPortableMinerDispenser_version_specific = {
 	mAllowedResourceForms: docs_json_ts_0_3_7_7_properties_mAllowedResourceForms,
 };
 
-type FGRecipe = docs_json_ts_common_classes_FGRecipe & instructive & FGRecipe_pre_update4 & FGRecipe_pre_update5 & FGRecipe_version_specific;
+type FGRecipe = docs_json_ts_common_classes_FGRecipe & FGRecipe_pre_update4 & FGRecipe_pre_update5 & FGRecipe_version_specific & instructive;
 
-type FGRecipe_version_specific = {
-	mManufactoringDuration: docs_json_ts_common_types_decimal_string,
-	mManualManufacturingMultiplier: docs_json_ts_common_types_decimal_string,
+type FGRecipe_pre_update4 = {
+	mProducedIn: docs_json_ts_0_3_7_7_properties_mProducedIn,
 };
 
 type FGRecipe_pre_update5 = {
@@ -1291,8 +1290,9 @@ type FGRecipe_pre_update5 = {
 	mProduct: docs_json_ts_0_3_7_7_overridable_ItemClass_Amount_list,
 };
 
-type FGRecipe_pre_update4 = {
-	mProducedIn: docs_json_ts_0_3_7_7_properties_mProducedIn,
+type FGRecipe_version_specific = {
+	mManufactoringDuration: docs_json_ts_common_types_decimal_string,
+	mManualManufacturingMultiplier: docs_json_ts_common_types_decimal_string,
 };
 
 type FGResourceDescriptor = FGDescriptor_sinkable & FGResourceDescriptor_base & FGResourceDescriptor_pre_1_0;
@@ -1789,9 +1789,9 @@ export type {
 	FGPortableMinerDispenser,
 	FGPortableMinerDispenser_version_specific,
 	FGRecipe,
-	FGRecipe_version_specific,
-	FGRecipe_pre_update5,
 	FGRecipe_pre_update4,
+	FGRecipe_pre_update5,
+	FGRecipe_version_specific,
 	FGResourceDescriptor,
 	FGResourceDescriptor_base,
 	FGResourceDescriptor_pre_1_0,
