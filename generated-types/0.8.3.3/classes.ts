@@ -56,7 +56,6 @@ import type {
 	FGBuildablePipelinePump_valve as docs_json_ts_0_8_3_3_classes_base_FGBuildablePipelinePump_valve,
 	FGBuildablePipelineSupport as docs_json_ts_0_8_3_3_classes_base_FGBuildablePipelineSupport,
 	FGBuildablePipeReservoir as docs_json_ts_0_8_3_3_classes_base_FGBuildablePipeReservoir,
-	FGBuildablePole as docs_json_ts_0_8_3_3_classes_base_FGBuildablePole,
 	FGBuildablePoleLightweight as docs_json_ts_0_8_3_3_classes_base_FGBuildablePoleLightweight,
 	FGBuildablePowerPole as docs_json_ts_0_8_3_3_classes_base_FGBuildablePowerPole,
 	FGBuildablePowerStorage as docs_json_ts_0_8_3_3_classes_base_FGBuildablePowerStorage,
@@ -86,6 +85,7 @@ import type {
 	FGBuildableWire as docs_json_ts_0_8_3_3_classes_base_FGBuildableWire,
 	FGChainsaw as docs_json_ts_0_8_3_3_classes_base_FGChainsaw,
 	FGConsumableEquipment as docs_json_ts_0_8_3_3_classes_base_FGConsumableEquipment,
+	FGConveyorPoleStackable as docs_json_ts_0_8_3_3_classes_base_FGConveyorPoleStackable,
 	FGEquipmentStunSpear_xenobasher as docs_json_ts_0_8_3_3_classes_base_FGEquipmentStunSpear_xenobasher,
 	FGEquipmentStunSpear_xenozapper as docs_json_ts_0_8_3_3_classes_base_FGEquipmentStunSpear_xenozapper,
 	FGEquipmentZipline as docs_json_ts_0_8_3_3_classes_base_FGEquipmentZipline,
@@ -224,8 +224,6 @@ type FGBuildablePipelineSupport = docs_json_ts_0_8_3_3_classes_base_FGBuildableP
 
 type FGBuildablePipeReservoir = docs_json_ts_0_8_3_3_classes_base_FGBuildablePipeReservoir;
 
-type FGBuildablePole = docs_json_ts_0_8_3_3_classes_base_FGBuildablePole;
-
 type FGBuildablePoleLightweight = docs_json_ts_0_8_3_3_classes_base_FGBuildablePoleLightweight;
 
 type FGBuildablePowerPole = docs_json_ts_0_8_3_3_classes_base_FGBuildablePowerPole;
@@ -289,6 +287,8 @@ type FGChainsaw = docs_json_ts_0_8_3_3_classes_base_FGChainsaw;
 type FGChargedWeapon = docs_json_ts_0_8_3_3_classes_base_FGNobeliskDetonator;
 
 type FGConsumableEquipment = docs_json_ts_0_8_3_3_classes_base_FGConsumableEquipment;
+
+type FGConveyorPoleStackable = docs_json_ts_0_8_3_3_classes_base_FGConveyorPoleStackable;
 
 type FGEquipmentStunSpear_xenobasher = docs_json_ts_0_8_3_3_classes_base_FGEquipmentStunSpear_xenobasher;
 
@@ -384,7 +384,6 @@ export type {
 	FGBuildablePipelinePump_valve,
 	FGBuildablePipelineSupport,
 	FGBuildablePipeReservoir,
-	FGBuildablePole,
 	FGBuildablePoleLightweight,
 	FGBuildablePowerPole,
 	FGBuildablePowerStorage,
@@ -417,6 +416,7 @@ export type {
 	FGChainsaw,
 	FGChargedWeapon,
 	FGConsumableEquipment,
+	FGConveyorPoleStackable,
 	FGEquipmentStunSpear_xenobasher,
 	FGEquipmentStunSpear_xenozapper,
 	FGEquipmentZipline,

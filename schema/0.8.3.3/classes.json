@@ -287,11 +287,6 @@
 			"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGBuildablePipeReservoir",
 			"unevaluatedProperties": false
 		},
-		"FGBuildablePole": {
-			"type": "object",
-			"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGBuildablePole",
-			"unevaluatedProperties": false
-		},
 		"FGBuildablePoleLightweight": {
 			"type": "object",
 			"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGBuildablePoleLightweight",
@@ -450,6 +445,11 @@
 		"FGConsumableEquipment": {
 			"type": "object",
 			"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGConsumableEquipment",
+			"unevaluatedProperties": false
+		},
+		"FGConveyorPoleStackable": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGConveyorPoleStackable",
 			"unevaluatedProperties": false
 		},
 		"FGEquipmentStunSpear--xenobasher": {

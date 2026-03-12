@@ -2,7 +2,19 @@
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "docs.json.ts--common--classes",
 	"$defs": {
+		"FGBuildablePole": {
+			"type": "object",
+			"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+		},
 		"FGItemDescriptor": {
+			"type": "object",
+			"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+		},
+		"FGPoleDescriptor": {
+			"type": "object",
+			"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+		},
+		"FGRecipe": {
 			"type": "object",
 			"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
 		},

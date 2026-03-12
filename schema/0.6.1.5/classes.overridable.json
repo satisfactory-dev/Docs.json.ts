@@ -19,7 +19,7 @@
 		},
 		"FGPoleDescriptor": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGItemDescriptor--base",
+			"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGPoleDescriptor",
 			"unevaluatedProperties": false
 		},
 		"FGRecipe": {

@@ -409,7 +409,7 @@
 		},
 		"FGPoleDescriptor": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGDescriptor--BuildMenu",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGPoleDescriptor",
 			"unevaluatedProperties": false
 		},
 		"FGPortableMinerDispenser": {

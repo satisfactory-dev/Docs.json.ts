@@ -58,7 +58,6 @@ import type {
 	FGBuildablePipelinePump_valve as docs_json_ts_0_8_3_3_classes_FGBuildablePipelinePump_valve,
 	FGBuildablePipelineSupport as docs_json_ts_0_8_3_3_classes_FGBuildablePipelineSupport,
 	FGBuildablePipeReservoir as docs_json_ts_0_8_3_3_classes_FGBuildablePipeReservoir,
-	FGBuildablePole as docs_json_ts_0_8_3_3_classes_FGBuildablePole,
 	FGBuildablePoleLightweight as docs_json_ts_0_8_3_3_classes_FGBuildablePoleLightweight,
 	FGBuildablePowerPole as docs_json_ts_0_8_3_3_classes_FGBuildablePowerPole,
 	FGBuildablePowerStorage as docs_json_ts_0_8_3_3_classes_FGBuildablePowerStorage,
@@ -91,6 +90,7 @@ import type {
 	FGChainsaw as docs_json_ts_0_8_3_3_classes_FGChainsaw,
 	FGChargedWeapon as docs_json_ts_0_8_3_3_classes_FGChargedWeapon,
 	FGConsumableEquipment as docs_json_ts_0_8_3_3_classes_FGConsumableEquipment,
+	FGConveyorPoleStackable as docs_json_ts_0_8_3_3_classes_FGConveyorPoleStackable,
 	FGEquipmentStunSpear_xenobasher as docs_json_ts_0_8_3_3_classes_FGEquipmentStunSpear_xenobasher,
 	FGEquipmentStunSpear_xenozapper as docs_json_ts_0_8_3_3_classes_FGEquipmentStunSpear_xenozapper,
 	FGEquipmentZipline as docs_json_ts_0_8_3_3_classes_FGEquipmentZipline,
@@ -757,8 +757,8 @@ type FGConsumableEquipment = {
 type FGConveyorPoleStackable = {
 	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGConveyorPoleStackable'}${'\''}`,
 	Classes: [
-		docs_json_ts_0_8_3_3_classes_FGBuildablePole,
-		...docs_json_ts_0_8_3_3_classes_FGBuildablePole[],
+		docs_json_ts_0_8_3_3_classes_FGConveyorPoleStackable,
+		...docs_json_ts_0_8_3_3_classes_FGConveyorPoleStackable[],
 	],
 };
 

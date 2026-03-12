@@ -163,7 +163,6 @@ import type {
 	FGBuildable_with_width_base as docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_width_base,
 	FGBuildableDockingStation_with_mFuelTransferSpeed as docs_json_ts_0_3_7_7_classes_base_FGBuildableDockingStation_with_mFuelTransferSpeed,
 	FGBuildablePipeline_base_root as docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeline_base_root,
-	FGBuildablePole_base as docs_json_ts_0_3_7_7_classes_base_FGBuildablePole_base,
 	FGBuildableResourceExtractor_piped as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_piped,
 	FGBuildableResourceExtractor_piped_pre_1_0 as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_piped_pre_1_0,
 	FGBuildableResourceExtractor_timed as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_timed,
@@ -199,6 +198,12 @@ import type {
 } from './../../0.3.7.7/classes/Base.ts';
 
 import type {
+	FGBuildablePole as docs_json_ts_common_classes_FGBuildablePole,
+	FGItemDescriptor as docs_json_ts_common_classes_FGItemDescriptor,
+	FGSchematic as docs_json_ts_common_classes_FGSchematic,
+} from './../../common/classes.ts';
+
+import type {
 	FGBuildableResourceExtractor_only_allow_certain_resources as docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_only_allow_certain_resources,
 	FGSchematic_version_specific as docs_json_ts_0_3_7_7_classes_base_overridable_FGSchematic_version_specific,
 	FGSuitBase_pre_1_0 as docs_json_ts_0_3_7_7_classes_base_overridable_FGSuitBase_pre_1_0,
@@ -207,11 +212,6 @@ import type {
 import type {
 	Texture2D as docs_json_ts_0_4_2_11_properties_Texture2D,
 } from './../../0.4.2.11/types/properties.ts';
-
-import type {
-	FGItemDescriptor as docs_json_ts_common_classes_FGItemDescriptor,
-	FGSchematic as docs_json_ts_common_classes_FGSchematic,
-} from './../../common/classes.ts';
 
 import type {
 	FGSchematic_version_specific as docs_json_ts_0_5_2_1_classes_base_overridable_FGSchematic_version_specific,
@@ -462,7 +462,7 @@ type FGBuildablePipelineSupport = docs_json_ts_0_5_2_1_classes_base_FGBuildableP
 
 type FGBuildablePipeReservoir = docs_json_ts_0_5_2_1_classes_base_FGBuildablePipeReservoir & FGBuildable_base;
 
-type FGBuildablePole = docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_base & docs_json_ts_0_3_7_7_classes_base_FGBuildablePole_base & docs_json_ts_0_3_7_7_classes_base_has_mCanStack & docs_json_ts_0_3_7_7_classes_base_has_mStackHeight & FGBuildable_base;
+type FGBuildablePole = docs_json_ts_common_classes_FGBuildablePole & docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_base & docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_base & docs_json_ts_0_3_7_7_classes_base_has_mCanStack & docs_json_ts_0_3_7_7_classes_base_has_mStackHeight & FGBuildable_base;
 
 type FGBuildablePowerPole = docs_json_ts_0_5_2_1_classes_base_FGBuildablePowerPole & FGBuildable_base;
 
@@ -709,7 +709,7 @@ type FGWeapon_Equip_RebarGun_Projectile_C_version_specific = {
 	mRebarGunEquipID: docs_json_ts_common_types_integer_string,
 };
 
-type FGWeapon_Equip_Rifle_C = docs_json_ts_0_5_2_1_classes_base_overridable_FGWeapon_version_specific & docs_json_ts_0_3_7_7_classes_base_FGEquipment_base & docs_json_ts_0_3_7_7_classes_base_FGWeaponInstantFire_base_base_base & docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_has_mAttachSocket   & docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectile_has_mBlockSprintWhenFiring & docs_json_ts_0_5_2_1_classes_base_FGWeapon_Equip_Rifle_C_base & docs_json_ts_0_5_2_1_classes_base_FGWeapon_pre_1_1 & docs_json_ts_0_5_2_1_classes_base_FGWeapon_version_specific & FGEquipment & FGWeapon_base;
+type FGWeapon_Equip_Rifle_C = docs_json_ts_0_5_2_1_classes_base_overridable_FGWeapon_version_specific & docs_json_ts_0_3_7_7_classes_base_FGEquipment_base & docs_json_ts_0_3_7_7_classes_base_FGWeaponInstantFire_base_base_base & docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_has_mAttachSocket & docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectile_has_mBlockSprintWhenFiring & docs_json_ts_0_5_2_1_classes_base_FGWeapon_Equip_Rifle_C_base & docs_json_ts_0_5_2_1_classes_base_FGWeapon_pre_1_1 & docs_json_ts_0_5_2_1_classes_base_FGWeapon_version_specific & FGEquipment & FGWeapon_base;
 
 export type {
 	has_mIsInverted,

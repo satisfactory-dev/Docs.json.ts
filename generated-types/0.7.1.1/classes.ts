@@ -78,6 +78,7 @@ import type {
 	FGBuildableWall as docs_json_ts_0_7_1_1_classes_base_FGBuildableWall,
 	FGBuildableWidgetSign as docs_json_ts_0_7_1_1_classes_base_FGBuildableWidgetSign,
 	FGBuildableWire as docs_json_ts_0_7_1_1_classes_base_FGBuildableWire,
+	FGConveyorPoleStackable as docs_json_ts_0_7_1_1_classes_base_FGConveyorPoleStackable,
 	FGJetPack as docs_json_ts_0_7_1_1_classes_base_FGJetPack,
 	FGPipeHyperStart as docs_json_ts_0_7_1_1_classes_base_FGPipeHyperStart,
 } from './classes/Base.ts';
@@ -244,6 +245,8 @@ type FGBuildableWidgetSign = docs_json_ts_0_7_1_1_classes_base_FGBuildableWidget
 
 type FGBuildableWire = docs_json_ts_0_7_1_1_classes_base_FGBuildableWire;
 
+type FGConveyorPoleStackable = docs_json_ts_0_7_1_1_classes_base_FGConveyorPoleStackable;
+
 type FGJetPack = docs_json_ts_0_7_1_1_classes_base_FGJetPack;
 
 type FGPipeHyperStart = docs_json_ts_0_7_1_1_classes_base_FGPipeHyperStart;
@@ -330,6 +333,7 @@ export type {
 	FGBuildableWaterPump,
 	FGBuildableWidgetSign,
 	FGBuildableWire,
+	FGConveyorPoleStackable,
 	FGJetPack,
 	FGPipeHyperStart,
 };

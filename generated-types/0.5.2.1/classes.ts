@@ -90,6 +90,7 @@ import type {
 	FGItemDescriptor_base as docs_json_ts_0_5_2_1_classes_base_FGItemDescriptor_base,
 	FGNobeliskDetonator as docs_json_ts_0_5_2_1_classes_base_FGNobeliskDetonator,
 	FGPipeHyperStart as docs_json_ts_0_5_2_1_classes_base_FGPipeHyperStart,
+	FGPoleDescriptor as docs_json_ts_0_5_2_1_classes_base_FGPoleDescriptor,
 	FGResourceDescriptor as docs_json_ts_0_5_2_1_classes_base_FGResourceDescriptor,
 	FGSchematic as docs_json_ts_0_5_2_1_classes_base_FGSchematic,
 	FGSchematic_with_described_unlocks as docs_json_ts_0_5_2_1_classes_base_FGSchematic_with_described_unlocks,
@@ -290,7 +291,7 @@ type FGItemDescriptorNuclearFuel = docs_json_ts_0_5_2_1_classes_base_overridable
 
 type FGPipeHyperStart = docs_json_ts_0_5_2_1_classes_base_FGPipeHyperStart;
 
-type FGPoleDescriptor = docs_json_ts_0_5_2_1_classes_base_FGDescriptor_BuildMenu;
+type FGPoleDescriptor = docs_json_ts_0_5_2_1_classes_base_FGPoleDescriptor;
 
 type FGResourceDescriptor = docs_json_ts_0_5_2_1_classes_base_FGResourceDescriptor;
 

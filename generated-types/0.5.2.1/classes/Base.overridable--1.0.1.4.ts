@@ -16,6 +16,8 @@ import type {
 
 import type {
 	FGItemDescriptorNuclearFuel_version_specific as docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_version_specific,
+	FGRecipe_version_specific as docs_json_ts_0_3_7_7_classes_base_FGRecipe_version_specific,
+	instructive as docs_json_ts_0_3_7_7_classes_base_instructive,
 } from './../../0.3.7.7/classes/Base.ts';
 
 import type {
@@ -23,7 +25,12 @@ import type {
 } from './Base.ts';
 
 import type {
-	FGRecipe_base as docs_json_ts_0_4_2_11_classes_base_FGRecipe_base,
+	FGRecipe as docs_json_ts_common_classes_FGRecipe,
+} from './../../common/classes.ts';
+
+import type {
+	FGRecipe_pre_update6 as docs_json_ts_0_4_2_11_classes_base_FGRecipe_pre_update6,
+	FGRecipe_version_specific as docs_json_ts_0_4_2_11_classes_base_FGRecipe_version_specific,
 } from './../../0.4.2.11/classes/Base.ts';
 
 import type {
@@ -42,7 +49,7 @@ type FGBuildable_is_wallish = {
 
 type FGItemDescriptorNuclearFuel = docs_json_ts_0_4_2_11_classes_base_overridable_FGItemDescriptorNuclearFuel_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_version_specific & docs_json_ts_0_5_2_1_classes_base_FGItemDescriptor_base;
 
-type FGRecipe = docs_json_ts_0_4_2_11_classes_base_FGRecipe_base & FGRecipe_version_specific;
+type FGRecipe = docs_json_ts_common_classes_FGRecipe & docs_json_ts_0_3_7_7_classes_base_FGRecipe_version_specific & docs_json_ts_0_3_7_7_classes_base_instructive & docs_json_ts_0_4_2_11_classes_base_FGRecipe_pre_update6 & docs_json_ts_0_4_2_11_classes_base_FGRecipe_version_specific & FGRecipe_version_specific;
 
 type FGRecipe_version_specific = {
 	mIngredients: docs_json_ts_0_3_7_7_overridable_ItemClass_Amount_list | null,

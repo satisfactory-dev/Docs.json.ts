@@ -2551,10 +2551,13 @@
 		"FGBuildablePole": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildablePole"
+				},
+				{
 					"$ref": "#/$defs/FGBuildable--pole"
 				},
 				{
-					"$ref": "#/$defs/FGBuildablePole--base"
+					"$ref": "#/$defs/FGBuildable--with-height--base"
 				},
 				{
 					"$ref": "#/$defs/has--mCanStack"
@@ -2563,15 +2566,6 @@
 					"$ref": "#/$defs/has--mStackHeight"
 				}
 			]
-		},
-		"FGBuildablePole--base": {
-			"type": "object",
-			"required": ["mHeight"],
-			"properties": {
-				"mHeight": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				}
-			}
 		},
 		"FGBuildablePowerPole": {
 			"allOf": [
@@ -5220,6 +5214,16 @@
 				}
 			}
 		},
+		"FGPoleDescriptor": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGPoleDescriptor"
+				},
+				{
+					"$ref": "#/$defs/FGDescriptor--BuildMenu"
+				}
+			]
+		},
 		"FGPortableMinerDispenser": {
 			"allOf": [
 				{
@@ -5242,16 +5246,24 @@
 		"FGRecipe": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGRecipe--base--version-specific"
+					"$ref": "docs.json.ts--common--classes#/$defs/FGRecipe"
 				},
 				{
-					"$ref": "#/$defs/FGRecipe--mProducedIn"
+					"$ref": "#/$defs/instructive"
+				},
+				{
+					"$ref": "#/$defs/FGRecipe--pre-update4"
+				},
+				{
+					"$ref": "#/$defs/FGRecipe--pre-update5"
+				},
+				{
+					"$ref": "#/$defs/FGRecipe--version-specific"
 				}
 			]
 		},
-		"FGRecipe--base": {
+		"FGRecipe--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/instructive",
 			"required": [
 				"mManufactoringDuration",
 				"mManualManufacturingMultiplier"
@@ -5265,9 +5277,8 @@
 				}
 			}
 		},
-		"FGRecipe--base--version-specific": {
+		"FGRecipe--pre-update5": {
 			"type": "object",
-			"$ref": "#/$defs/FGRecipe--base",
 			"required": ["mIngredients", "mProduct"],
 			"properties": {
 				"mIngredients": {
@@ -5278,9 +5289,8 @@
 				}
 			}
 		},
-		"FGRecipe--mProducedIn": {
+		"FGRecipe--pre-update4": {
 			"type": "object",
-			"$ref": "#/$defs/instructive",
 			"required": ["mProducedIn"],
 			"properties": {
 				"mProducedIn": {

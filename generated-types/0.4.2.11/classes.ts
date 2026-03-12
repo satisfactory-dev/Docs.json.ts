@@ -77,6 +77,7 @@ import type {
 	FGNobeliskDetonator as docs_json_ts_0_4_2_11_classes_base_FGNobeliskDetonator,
 	FGParachute as docs_json_ts_0_4_2_11_classes_base_FGParachute,
 	FGPipeHyperStart as docs_json_ts_0_4_2_11_classes_base_FGPipeHyperStart,
+	FGPoleDescriptor as docs_json_ts_0_4_2_11_classes_base_FGPoleDescriptor,
 	FGPortableMinerDispenser as docs_json_ts_0_4_2_11_classes_base_FGPortableMinerDispenser,
 	FGRecipe as docs_json_ts_0_4_2_11_classes_base_FGRecipe,
 	FGResourceDescriptor as docs_json_ts_0_4_2_11_classes_base_FGResourceDescriptor,
@@ -253,7 +254,7 @@ type FGParachute = docs_json_ts_0_4_2_11_classes_base_FGParachute;
 
 type FGPipeHyperStart = docs_json_ts_0_4_2_11_classes_base_FGPipeHyperStart;
 
-type FGPoleDescriptor = docs_json_ts_0_4_2_11_classes_base_FGDescriptor_BuildMenu;
+type FGPoleDescriptor = docs_json_ts_0_4_2_11_classes_base_FGPoleDescriptor;
 
 type FGPortableMinerDispenser = docs_json_ts_0_4_2_11_classes_base_FGPortableMinerDispenser;
 

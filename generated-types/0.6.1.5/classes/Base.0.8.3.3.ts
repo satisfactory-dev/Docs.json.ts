@@ -24,12 +24,13 @@ import type {
 import type {
 	FGConsumableDescriptor_base as docs_json_ts_0_3_7_7_classes_base_FGConsumableDescriptor_base,
 	FGItemDescriptorNuclearFuel_version_specific as docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_version_specific,
-	FGRecipe_base as docs_json_ts_0_3_7_7_classes_base_FGRecipe_base,
+	FGRecipe_version_specific as docs_json_ts_0_3_7_7_classes_base_FGRecipe_version_specific,
+	instructive as docs_json_ts_0_3_7_7_classes_base_instructive,
 } from './../../0.3.7.7/classes/Base.ts';
 
 import type {
 	FGDescriptor_sinkable as docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable,
-	FGRecipe_base_base as docs_json_ts_0_4_2_11_classes_base_FGRecipe_base_base,
+	FGRecipe_version_specific as docs_json_ts_0_4_2_11_classes_base_FGRecipe_version_specific,
 } from './../../0.4.2.11/classes/Base.ts';
 
 import type {
@@ -49,6 +50,11 @@ import type {
 import type {
 	FGItemDescriptorNuclearFuel_pre_1_0 as docs_json_ts_0_4_2_11_classes_base_overridable_FGItemDescriptorNuclearFuel_pre_1_0,
 } from './../../0.4.2.11/classes/Base.overridable--0.8.3.3.ts';
+
+import type {
+	FGPoleDescriptor as docs_json_ts_common_classes_FGPoleDescriptor,
+	FGRecipe as docs_json_ts_common_classes_FGRecipe,
+} from './../../common/classes.ts';
 
 import type {
 	FGRecipe_version_specific as docs_json_ts_0_5_2_1_classes_base_overridable_FGRecipe_version_specific,
@@ -102,7 +108,9 @@ type FGObjectScanner_version_specific = {
 	mScannableDescriptors: docs_json_ts_0_3_7_7_overridable_DocsDotJson_BlueprintGeneratedClass_quoted_list,
 };
 
-type FGRecipe = docs_json_ts_0_5_2_1_classes_base_overridable_FGRecipe_version_specific & docs_json_ts_0_3_7_7_classes_base_FGRecipe_base & docs_json_ts_0_4_2_11_classes_base_FGRecipe_base_base & docs_json_ts_0_6_1_5_classes_base_FGRecipe_version_specific;
+type FGPoleDescriptor = docs_json_ts_common_classes_FGPoleDescriptor & FGItemDescriptor_base;
+
+type FGRecipe = docs_json_ts_common_classes_FGRecipe & docs_json_ts_0_5_2_1_classes_base_overridable_FGRecipe_version_specific & docs_json_ts_0_3_7_7_classes_base_instructive & docs_json_ts_0_3_7_7_classes_base_FGRecipe_version_specific & docs_json_ts_0_4_2_11_classes_base_FGRecipe_version_specific & docs_json_ts_0_6_1_5_classes_base_FGRecipe_version_specific;
 
 type FGSchematic_version_specific_mUnlocks = {
 	mUnlocks: [
@@ -136,6 +144,7 @@ export type {
 	FGItemDescriptor_version_specific,
 	FGItemDescriptorNuclearFuel,
 	FGObjectScanner_version_specific,
+	FGPoleDescriptor,
 	FGRecipe,
 	FGSchematic_version_specific_mUnlocks,
 	FGVehicleDescriptor_Desc_CyberWagon_C,

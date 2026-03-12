@@ -117,6 +117,7 @@ import type {
 	FGBuildableWaterPump as docs_json_ts_0_7_1_1_classes_FGBuildableWaterPump,
 	FGBuildableWidgetSign as docs_json_ts_0_7_1_1_classes_FGBuildableWidgetSign,
 	FGBuildableWire as docs_json_ts_0_7_1_1_classes_FGBuildableWire,
+	FGConveyorPoleStackable as docs_json_ts_0_7_1_1_classes_FGConveyorPoleStackable,
 	FGJetPack as docs_json_ts_0_7_1_1_classes_FGJetPack,
 	FGPipeHyperStart as docs_json_ts_0_7_1_1_classes_FGPipeHyperStart,
 } from './classes.ts';
@@ -651,8 +652,8 @@ type FGBuildableWire = {
 type FGConveyorPoleStackable = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGConveyorPoleStackable'}${'\''}`,
 	Classes: [
-		docs_json_ts_0_7_1_1_classes_FGBuildablePole,
-		...docs_json_ts_0_7_1_1_classes_FGBuildablePole[],
+		docs_json_ts_0_7_1_1_classes_FGConveyorPoleStackable,
+		...docs_json_ts_0_7_1_1_classes_FGConveyorPoleStackable[],
 	],
 };
 

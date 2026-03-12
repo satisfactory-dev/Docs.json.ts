@@ -1453,7 +1453,7 @@
 					"type": "array",
 					"minItems": 1,
 					"items": {
-						"$ref": "docs.json.ts--0.8.3.3--classes#/$defs/FGBuildablePole"
+						"$ref": "docs.json.ts--0.8.3.3--classes#/$defs/FGConveyorPoleStackable"
 					}
 				}
 			}

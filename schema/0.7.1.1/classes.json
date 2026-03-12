@@ -407,6 +407,11 @@
 			"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGBuildableWire",
 			"unevaluatedProperties": false
 		},
+		"FGConveyorPoleStackable": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGConveyorPoleStackable",
+			"unevaluatedProperties": false
+		},
 		"FGJetPack": {
 			"type": "object",
 			"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGJetPack",

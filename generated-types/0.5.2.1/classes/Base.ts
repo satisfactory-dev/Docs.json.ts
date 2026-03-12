@@ -127,7 +127,6 @@ import type {
 	FGBuildablePipelinePump_pump_version_specific as docs_json_ts_0_3_7_7_classes_base_FGBuildablePipelinePump_pump_version_specific,
 	FGBuildablePipelineSupport_base as docs_json_ts_0_3_7_7_classes_base_FGBuildablePipelineSupport_base,
 	FGBuildablePipeReservoir_base_base as docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeReservoir_base_base,
-	FGBuildablePole_base as docs_json_ts_0_3_7_7_classes_base_FGBuildablePole_base,
 	FGBuildablePowerPole_base as docs_json_ts_0_3_7_7_classes_base_FGBuildablePowerPole_base,
 	FGBuildableRadarTower_base_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableRadarTower_base_base,
 	FGBuildableRailroadStation_base_base as docs_json_ts_0_3_7_7_classes_base_FGBuildableRailroadStation_base_base,
@@ -175,6 +174,13 @@ import type {
 } from './../../0.4.2.11/types/overridable.ts';
 
 import type {
+	FGBuildablePole as docs_json_ts_common_classes_FGBuildablePole,
+	FGItemDescriptor as docs_json_ts_common_classes_FGItemDescriptor,
+	FGPoleDescriptor as docs_json_ts_common_classes_FGPoleDescriptor,
+	FGSchematic as docs_json_ts_common_classes_FGSchematic,
+} from './../../common/classes.ts';
+
+import type {
 	FGBuildableResourceExtractor_miner_base as docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_miner_base,
 	FGBuildableResourceExtractor_only_allow_certain_resources as docs_json_ts_0_3_7_7_classes_base_overridable_FGBuildableResourceExtractor_only_allow_certain_resources,
 	FGSchematic_version_specific as docs_json_ts_0_3_7_7_classes_base_overridable_FGSchematic_version_specific,
@@ -198,11 +204,6 @@ import type {
 import type {
 	BlueprintGeneratedClass_quoted as docs_json_ts_0_3_7_7_overridable_BlueprintGeneratedClass_quoted,
 } from './../../0.3.7.7/types/overridable.ts';
-
-import type {
-	FGItemDescriptor as docs_json_ts_common_classes_FGItemDescriptor,
-	FGSchematic as docs_json_ts_common_classes_FGSchematic,
-} from './../../common/classes.ts';
 
 import type {
 	FGSchematic_base as docs_json_ts_0_4_2_11_classes_base_overridable_FGSchematic_base,
@@ -489,7 +490,7 @@ type FGBuildablePipeline_base_spline = docs_json_ts_0_3_7_7_classes_base_FGBuild
 
 type FGBuildablePipelineJunction = docs_json_ts_0_4_2_11_classes_base_FGBuildablePipelineJunction_base_base & FGBuildable_powered;
 
-type FGBuildablePipelinePump_pump = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base_base_with_mNumCyclesForProductivity & docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_version_specific & docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeline_base_base & docs_json_ts_0_3_7_7_classes_base_FGBuildablePipelinePump_base_base & docs_json_ts_0_3_7_7_classes_base_FGBuildablePipelinePump_powered_version_specific   & docs_json_ts_0_3_7_7_classes_base_FGBuildablePipelinePump_pump_version_specific & FGBuildable_powered;
+type FGBuildablePipelinePump_pump = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_base_base_with_mNumCyclesForProductivity & docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_version_specific & docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeline_base_base & docs_json_ts_0_3_7_7_classes_base_FGBuildablePipelinePump_base_base & docs_json_ts_0_3_7_7_classes_base_FGBuildablePipelinePump_powered_version_specific & docs_json_ts_0_3_7_7_classes_base_FGBuildablePipelinePump_pump_version_specific & FGBuildable_powered;
 
 type FGBuildablePipelinePump_valve = docs_json_ts_0_3_7_7_classes_base_FGBuildablePipelinePump_base_base & FGBuildable_powered;
 
@@ -497,7 +498,7 @@ type FGBuildablePipelineSupport = docs_json_ts_0_3_7_7_classes_base_FGBuildable_
 
 type FGBuildablePipeReservoir = docs_json_ts_0_3_7_7_classes_base_FGBuildablePipeReservoir_base_base & FGBuildable_powered;
 
-type FGBuildablePole = docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_base & docs_json_ts_0_3_7_7_classes_base_FGBuildablePole_base & docs_json_ts_0_3_7_7_classes_base_has_mCanStack & docs_json_ts_0_3_7_7_classes_base_has_mStackHeight & FGBuildable_base;
+type FGBuildablePole = docs_json_ts_common_classes_FGBuildablePole & docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_base & docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_base & docs_json_ts_0_3_7_7_classes_base_has_mCanStack & docs_json_ts_0_3_7_7_classes_base_has_mStackHeight & FGBuildable_base;
 
 type FGBuildablePowerPole = docs_json_ts_0_3_7_7_classes_base_FGBuildablePowerPole_base & FGBuildable_base & FGBuildable_mHasPower;
 
@@ -723,7 +724,7 @@ type FGItemDescAmmoTypeProjectile_Desc_NobeliskExplosive_C = FGItemDescAmmoTypeP
 	},
 };
 
-type FGItemDescAmmoTypeProjectile_Desc_NobeliskExplosive_C_base = FGItemDescAmmoTypeProjectile_base   & has_mResourceSinkPoints;
+type FGItemDescAmmoTypeProjectile_Desc_NobeliskExplosive_C_base = FGItemDescAmmoTypeProjectile_base & has_mResourceSinkPoints;
 
 type FGItemDescAmmoTypeProjectile_Desc_SnowballProjectile_C = FGItemDescAmmoTypeProjectile_Desc_SnowballProjectile_C_base & {
 	mProjectileData: {
@@ -741,7 +742,7 @@ type FGItemDescAmmoTypeProjectile_Desc_SnowballProjectile_C = FGItemDescAmmoType
 	},
 };
 
-type FGItemDescAmmoTypeProjectile_Desc_SnowballProjectile_C_base = FGItemDescAmmoTypeProjectile_base   & has_mResourceSinkPoints;
+type FGItemDescAmmoTypeProjectile_Desc_SnowballProjectile_C_base = FGItemDescAmmoTypeProjectile_base & has_mResourceSinkPoints;
 
 type FGItemDescAmmoTypeProjectile_Desc_SpikedRebar_C = FGItemDescAmmoTypeProjectile_Desc_SpikedRebar_C_base & {
 	mProjectileData: {
@@ -757,7 +758,7 @@ type FGItemDescAmmoTypeProjectile_Desc_SpikedRebar_C = FGItemDescAmmoTypeProject
 	},
 };
 
-type FGItemDescAmmoTypeProjectile_Desc_SpikedRebar_C_base = FGItemDescAmmoTypeProjectile_base   & has_mResourceSinkPoints;
+type FGItemDescAmmoTypeProjectile_Desc_SpikedRebar_C_base = FGItemDescAmmoTypeProjectile_base & has_mResourceSinkPoints;
 
 type FGItemDescAmmoTypeProjectile_explosive_firework = FGItemDescAmmoTypeProjectile_base & {
 	mProjectileData: {
@@ -799,6 +800,8 @@ type FGNobeliskDetonator_version_specific = {
 
 type FGPipeHyperStart = docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_base & docs_json_ts_0_3_7_7_classes_base_FGPipeHyperStart_base_base & docs_json_ts_0_3_7_7_classes_base_has_mCanStack & docs_json_ts_0_3_7_7_classes_base_has_mStackHeight & FGBuildable_pole_with_length_and_power;
 
+type FGPoleDescriptor = docs_json_ts_common_classes_FGPoleDescriptor & FGDescriptor_BuildMenu;
+
 type FGResourceDescriptor = docs_json_ts_0_3_7_7_classes_base_FGResourceDescriptor_base & docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable & FGItemDescriptor_base;
 
 type FGSchematic = docs_json_ts_0_4_2_11_classes_base_overridable_FGSchematic_base & docs_json_ts_0_5_2_1_classes_base_overridable_FGSchematic_version_specific & docs_json_ts_0_3_7_7_classes_base_FGSchematic_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_overridable_FGSchematic_version_specific & docs_json_ts_0_3_7_7_classes_base_instructive & docs_json_ts_0_4_2_11_classes_base_FGSchematic_has_mMenuPriority & docs_json_ts_0_4_2_11_classes_base_overridable_FGSchematic_has_mSchematicIcon & docs_json_ts_0_3_7_7_classes_base_isDescribed & docs_json_ts_0_4_2_11_classes_base_FGSchematic_has_mTechTier & docs_json_ts_common_classes_FGSchematic & FGSchematic_pre_update6;
@@ -829,7 +832,7 @@ type FGVehicleDescriptor_powered = docs_json_ts_0_4_2_11_classes_base_FGVehicleD
 
 type FGVehicleDescriptor_with_inventory = docs_json_ts_0_4_2_11_classes_base_FGVehicleDescriptor_with_inventory & FGDescriptor_BuildMenu_base;
 
-type FGWeapon_Equip_RebarGun_Projectile_C = docs_json_ts_0_5_2_1_classes_base_overridable_FGWeapon_version_specific & docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_base   & docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_has_mAttachSocket & docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectileFire_base_random & docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectile_base & docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectileFire_has_mMuteDryFire & FGWeapon_pre_1_1 & FGWeapon_pre_update6 & FGWeapon_version_specific;
+type FGWeapon_Equip_RebarGun_Projectile_C = docs_json_ts_0_5_2_1_classes_base_overridable_FGWeapon_version_specific & docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_base & docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_has_mAttachSocket & docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectileFire_base_random & docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectile_base & docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectileFire_has_mMuteDryFire & FGWeapon_pre_1_1 & FGWeapon_pre_update6 & FGWeapon_version_specific;
 
 type FGWeapon_Equip_Rifle_C = docs_json_ts_0_5_2_1_classes_base_overridable_FGWeapon_version_specific & docs_json_ts_0_3_7_7_classes_base_FGWeaponInstantFire_base & docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_base & docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectile_has_mAttachSocket & docs_json_ts_0_4_2_11_classes_base_FGWeaponProjectile_base & FGWeapon_Equip_Rifle_C_base & FGWeapon_pre_1_1 & FGWeapon_pre_update6 & FGWeapon_version_specific;
 
@@ -1040,6 +1043,7 @@ export type {
 	FGNobeliskDetonator_pre_update6,
 	FGNobeliskDetonator_version_specific,
 	FGPipeHyperStart,
+	FGPoleDescriptor,
 	FGResourceDescriptor,
 	FGSchematic,
 	FGSchematic_pre_update6,
