@@ -11,6 +11,25 @@
 				}
 			}
 		},
+		"has--mMeshLength": {
+			"type": "object",
+			"required": ["mMeshLength"],
+			"properties": {
+				"mMeshLength": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"has--mSplineData": {
+			"type": "object",
+			"required": ["mSplineData"],
+			"properties": {
+				"mSplineData": {
+					"type": "string",
+					"const": ""
+				}
+			}
+		},
 		"has--mStackHeight": {
 			"type": "object",
 			"required": ["mStackHeight"],
@@ -503,16 +522,6 @@
 				}
 			}
 		},
-		"has--mSplineData": {
-			"type": "object",
-			"required": ["mSplineData"],
-			"properties": {
-				"mSplineData": {
-					"type": "string",
-					"const": ""
-				}
-			}
-		},
 		"FGBuildable--tiered": {
 			"allOf": [
 				{
@@ -537,15 +546,6 @@
 			"required": ["mLength"],
 			"properties": {
 				"mLength": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				}
-			}
-		},
-		"has--mMeshLength": {
-			"type": "object",
-			"required": ["mMeshLength"],
-			"properties": {
-				"mMeshLength": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
 			}
@@ -849,15 +849,6 @@
 				}
 			}
 		},
-		"FGBuildableConveyorBelt--pre-update8": {
-			"type": "object",
-			"required": ["mItems"],
-			"properties": {
-				"mItems": {
-					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-				}
-			}
-		},
 		"FGBuildableConveyorBelt--pre-1.0": {
 			"type": "object",
 			"required": ["mItemMeshMap", "mSpeed"],
@@ -870,25 +861,34 @@
 				}
 			}
 		},
+		"FGBuildableConveyorBelt--pre-update8": {
+			"type": "object",
+			"required": ["mItems"],
+			"properties": {
+				"mItems": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				}
+			}
+		},
 		"FGBuildableConveyorBelt--spline": {
 			"allOf": [
 				{
 					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableConveyorBelt"
 				},
 				{
-					"$ref": "#/$defs/has--mSplineData"
-				},
-				{
-					"$ref": "#/$defs/has--mMeshLength"
-				},
-				{
 					"$ref": "#/$defs/FGBuildable"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableConveyorBelt--pre-1.0"
 				},
 				{
 					"$ref": "#/$defs/FGBuildableConveyorBelt--pre-update8"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableConveyorBelt--pre-1.0"
+					"$ref": "#/$defs/has--mMeshLength"
+				},
+				{
+					"$ref": "#/$defs/has--mSplineData"
 				}
 			]
 		},
@@ -2052,10 +2052,10 @@
 					"$ref": "#/$defs/FGBuildable"
 				},
 				{
-					"$ref": "#/$defs/has--mSplineData"
+					"$ref": "#/$defs/has--mMeshLength"
 				},
 				{
-					"$ref": "#/$defs/has--mMeshLength"
+					"$ref": "#/$defs/has--mSplineData"
 				}
 			]
 		},
@@ -2176,29 +2176,29 @@
 		"FGBuildablePipeline--base-spline": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/has--mSplineData"
+					"$ref": "#/$defs/FGBuildablePipeline--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildablePipeline--base-spline--base"
 				},
 				{
 					"$ref": "#/$defs/has--mMeshLength"
 				},
 				{
-					"$ref": "#/$defs/FGBuildablePipeline--base"
-				},
-				{
-					"$ref": "#/$defs/FGBuildablePipeline--base-spline--base"
+					"$ref": "#/$defs/has--mSplineData"
 				}
 			]
 		},
 		"FGBuildablePipeline--base-spline--base": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/has--mSplineData"
+					"$ref": "#/$defs/FGBuildablePipeline--base--base"
 				},
 				{
 					"$ref": "#/$defs/has--mMeshLength"
 				},
 				{
-					"$ref": "#/$defs/FGBuildablePipeline--base--base"
+					"$ref": "#/$defs/has--mSplineData"
 				}
 			]
 		},

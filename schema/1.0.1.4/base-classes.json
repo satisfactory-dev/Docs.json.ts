@@ -474,22 +474,22 @@
 		"FGBuildableConveyorBelt": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableConveyorBelt"
-				},
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mSplineData"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableConveyorBelt--pre-1.0"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mMeshLength"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableConveyorBelt--pre-1.0"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mSplineData"
 				},
 				{
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableConveyorBelt--version-specific"
 				},
 				{
 					"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGBuildableConveyorBelt--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableConveyorBelt"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--base"
@@ -1330,10 +1330,10 @@
 		"FGBuildablePipeHyper": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mSplineData"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mMeshLength"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mMeshLength"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mSplineData"
 				},
 				{
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildable--mSnappedPassthroughs"

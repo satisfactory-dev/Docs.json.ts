@@ -82,6 +82,14 @@ type has_mCanStack = {
 	mCanStack: docs_json_ts_common_types_bool_string,
 };
 
+type has_mMeshLength = {
+	mMeshLength: docs_json_ts_common_types_decimal_string,
+};
+
+type has_mSplineData = {
+	mSplineData: '',
+};
+
 type has_mStackHeight = {
 	mStackHeight: docs_json_ts_common_types_decimal_string,
 };
@@ -204,10 +212,6 @@ type FGBuildable_powered_storage_base_base_base = FGBuildable_powered_version_sp
 	mStorageSizeY: docs_json_ts_common_types_integer_string,
 };
 
-type has_mSplineData = {
-	mSplineData: '',
-};
-
 type FGBuildable_tiered = FGBuildable & FGBuildable_tiered_base;
 
 type FGBuildable_tiered_base = {
@@ -216,10 +220,6 @@ type FGBuildable_tiered_base = {
 
 type FGBuildable_with_mLength = {
 	mLength: docs_json_ts_common_types_decimal_string,
-};
-
-type has_mMeshLength = {
-	mMeshLength: docs_json_ts_common_types_decimal_string,
 };
 
 type FGBuildable_with_height = FGBuildable & FGBuildable_with_height_base;
@@ -290,16 +290,16 @@ type FGBuildableAttachmentMerger_version_specific = {
 	mCurrentInputIndex: docs_json_ts_common_types_integer_string_signed,
 };
 
-type FGBuildableConveyorBelt_pre_update8 = {
-	mItems: docs_json_ts_common_types_empty_object,
-};
-
 type FGBuildableConveyorBelt_pre_1_0 = {
 	mItemMeshMap: docs_json_ts_common_types_empty_object,
 	mSpeed: docs_json_ts_common_types_decimal_string,
 };
 
-type FGBuildableConveyorBelt_spline = docs_json_ts_common_classes_FGBuildableConveyorBelt & has_mSplineData & has_mMeshLength & FGBuildable & FGBuildableConveyorBelt_pre_update8 & FGBuildableConveyorBelt_pre_1_0;
+type FGBuildableConveyorBelt_pre_update8 = {
+	mItems: docs_json_ts_common_types_empty_object,
+};
+
+type FGBuildableConveyorBelt_spline = docs_json_ts_common_classes_FGBuildableConveyorBelt & FGBuildable & FGBuildableConveyorBelt_pre_1_0 & FGBuildableConveyorBelt_pre_update8 & has_mMeshLength & has_mSplineData;
 
 type FGBuildableConveyorLift = FGBuildable & FGBuildableConveyorBelt_pre_1_0 & FGBuildableConveyorBelt_pre_update8 & FGBuildableConveyorLift_base;
 
@@ -541,7 +541,7 @@ type FGBuildableManufacturer_Build_SmelterMk1_C = FGBuildable_powered & FGBuilda
 
 type FGBuildableManufacturer_Build_SmelterMk1_C_base = FGBuildable_powered_base_base_with_mNumCyclesForProductivity & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildableManufacturer_base_base & FGBuildableManufacturer_base_mProductionEffectsRunning_base;
 
-type FGBuildablePipeHyper = FGBuildable & has_mSplineData & has_mMeshLength;
+type FGBuildablePipeHyper = FGBuildable & has_mMeshLength & has_mSplineData;
 
 type FGBuildablePipeline = FGBuildable & FGBuildablePipeline_base_root_quantized & FGBuildablePipeline_base_spline;
 
@@ -576,9 +576,9 @@ type FGBuildablePipeline_base_root_quantized = FGBuildablePipeline_base_root & {
 	mQuantiziedFlow: docs_json_ts_common_types_decimal_string,
 };
 
-type FGBuildablePipeline_base_spline = has_mSplineData & has_mMeshLength & FGBuildablePipeline_base & FGBuildablePipeline_base_spline_base;
+type FGBuildablePipeline_base_spline = FGBuildablePipeline_base & FGBuildablePipeline_base_spline_base & has_mMeshLength & has_mSplineData;
 
-type FGBuildablePipeline_base_spline_base = has_mSplineData & has_mMeshLength & FGBuildablePipeline_base_base;
+type FGBuildablePipeline_base_spline_base = FGBuildablePipeline_base_base & has_mMeshLength & has_mSplineData;
 
 type FGBuildablePipeline_junction = FGBuildable_powered & FGBuildablePipeline_junction_base;
 
@@ -1469,6 +1469,8 @@ type FGWeaponProjectileFire_has_mRandomReloadAnim = {
 
 export type {
 	has_mCanStack,
+	has_mMeshLength,
+	has_mSplineData,
 	has_mStackHeight,
 	instructive,
 	isDescribed,
@@ -1499,11 +1501,9 @@ export type {
 	FGBuildable_powered_storage_base,
 	FGBuildable_powered_storage_base_base,
 	FGBuildable_powered_storage_base_base_base,
-	has_mSplineData,
 	FGBuildable_tiered,
 	FGBuildable_tiered_base,
 	FGBuildable_with_mLength,
-	has_mMeshLength,
 	FGBuildable_with_height,
 	FGBuildable_with_height_base,
 	FGBuildable_with_height_and_elevation,
@@ -1529,8 +1529,8 @@ export type {
 	FGBuildableAttachmentMerger_base,
 	FGBuildableAttachmentMerger_base_base,
 	FGBuildableAttachmentMerger_version_specific,
-	FGBuildableConveyorBelt_pre_update8,
 	FGBuildableConveyorBelt_pre_1_0,
+	FGBuildableConveyorBelt_pre_update8,
 	FGBuildableConveyorBelt_spline,
 	FGBuildableConveyorLift,
 	FGBuildableConveyorLift_base,

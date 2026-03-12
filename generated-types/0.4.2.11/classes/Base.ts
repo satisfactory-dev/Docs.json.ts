@@ -191,6 +191,8 @@ type has_mPowerConsumption = {
 	mPowerConsumption: docs_json_ts_common_types_decimal_string,
 };
 
+type has_mSplineData = docs_json_ts_0_3_7_7_classes_base_has_mMeshLength & docs_json_ts_0_3_7_7_classes_base_has_mSplineData & FGBuildable;
+
 type FGBuildable = docs_json_ts_0_3_7_7_classes_base_FGBuildable_base_pre_update5 & FGBuildable_base & FGBuildable_base_pre_update5 & FGBuildable_base_version_specific;
 
 type FGBuildable_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_base & docs_json_ts_0_3_7_7_classes_base_FGBuildable_base_version_specific & FGBuildable_base_pre_update8;
@@ -266,8 +268,6 @@ type FGBuildable_powered_storage = FGBuildable_powered & FGBuildable_powered_sto
 
 type FGBuildable_powered_storage_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered_storage_base_base & FGBuildable_has_mCachedSkeletalMeshes;
 
-type has_mSplineData = docs_json_ts_0_3_7_7_classes_base_has_mSplineData & docs_json_ts_0_3_7_7_classes_base_has_mMeshLength & FGBuildable;
-
 type FGBuildable_tiered = docs_json_ts_0_3_7_7_classes_base_FGBuildable_tiered & FGBuildable;
 
 type FGBuildable_with_height_and_elevation = docs_json_ts_0_3_7_7_classes_base_FGBuildable_DisableAttachmentSnapOn & docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height & FGBuildable_with_size_and_elevation;
@@ -299,7 +299,7 @@ type FGBuildableCircuitSwitch_base = {
 	mConnections: '',
 };
 
-type FGBuildableConveyorBelt_spline = docs_json_ts_common_classes_FGBuildableConveyorBelt & docs_json_ts_0_3_7_7_classes_base_has_mSplineData & docs_json_ts_0_3_7_7_classes_base_has_mMeshLength & docs_json_ts_0_3_7_7_classes_base_FGBuildable & docs_json_ts_0_3_7_7_classes_base_FGBuildableConveyorBelt_pre_update8 & docs_json_ts_0_3_7_7_classes_base_FGBuildableConveyorBelt_pre_1_0 & FGBuildable;
+type FGBuildableConveyorBelt_spline = docs_json_ts_0_3_7_7_classes_base_FGBuildable & docs_json_ts_0_3_7_7_classes_base_FGBuildableConveyorBelt_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGBuildableConveyorBelt_pre_update8 & docs_json_ts_0_3_7_7_classes_base_has_mMeshLength & docs_json_ts_0_3_7_7_classes_base_has_mSplineData & docs_json_ts_common_classes_FGBuildableConveyorBelt & FGBuildable;
 
 type FGBuildableConveyorLift = docs_json_ts_0_3_7_7_classes_base_FGBuildableConveyorLift & FGBuildable;
 
@@ -837,6 +837,7 @@ type FGWeaponProjectileFire_has_mMuteDryFire = {
 export type {
 	has_mInventorySize,
 	has_mPowerConsumption,
+	has_mSplineData,
 	FGBuildable,
 	FGBuildable_base,
 	FGBuildable_base_pre_update5,
@@ -862,7 +863,6 @@ export type {
 	FGBuildable_powered_has_mAllowedResourceForms_with_resources_base_base,
 	FGBuildable_powered_storage,
 	FGBuildable_powered_storage_base,
-	has_mSplineData,
 	FGBuildable_tiered,
 	FGBuildable_with_height_and_elevation,
 	FGBuildable_with_height_and_width,
