@@ -173,6 +173,7 @@ import type {
 import type {
 	FGBuildableConveyorBelt as docs_json_ts_common_classes_FGBuildableConveyorBelt,
 	FGBuildablePole as docs_json_ts_common_classes_FGBuildablePole,
+	FGBuildingDescriptor as docs_json_ts_common_classes_FGBuildingDescriptor,
 	FGItemDescriptor as docs_json_ts_common_classes_FGItemDescriptor,
 	FGPoleDescriptor as docs_json_ts_common_classes_FGPoleDescriptor,
 	FGSchematic as docs_json_ts_common_classes_FGSchematic,
@@ -646,6 +647,8 @@ type FGBuildableWidgetSign_base = {
 
 type FGBuildableWire = docs_json_ts_0_3_7_7_classes_base_FGBuildableWire_base & FGBuildable_base;
 
+type FGBuildingDescriptor = docs_json_ts_common_classes_FGBuildingDescriptor & FGDescriptor_BuildMenu;
+
 type FGConsumableDescriptor = docs_json_ts_0_3_7_7_classes_base_FGConsumableDescriptor_base & FGDescriptor_sinkable & FGItemDescriptor_base;
 
 type FGDescriptor = docs_json_ts_0_4_2_11_classes_base_FGDescriptor_base & {
@@ -1013,6 +1016,7 @@ export type {
 	FGBuildableWidgetSign,
 	FGBuildableWidgetSign_base,
 	FGBuildableWire,
+	FGBuildingDescriptor,
 	FGConsumableDescriptor,
 	FGDescriptor,
 	FGDescriptor_BuildMenu,

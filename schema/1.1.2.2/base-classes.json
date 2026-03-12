@@ -2522,6 +2522,16 @@
 				}
 			]
 		},
+		"FGBuildingDescriptor": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildingDescriptor"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--base"
+				}
+			]
+		},
 		"FGCentralStorageContainer": {
 			"allOf": [
 				{

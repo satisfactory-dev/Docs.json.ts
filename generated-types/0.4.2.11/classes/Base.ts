@@ -159,6 +159,7 @@ import type {
 import type {
 	FGBuildableConveyorBelt as docs_json_ts_common_classes_FGBuildableConveyorBelt,
 	FGBuildablePole as docs_json_ts_common_classes_FGBuildablePole,
+	FGBuildingDescriptor as docs_json_ts_common_classes_FGBuildingDescriptor,
 	FGItemDescriptor as docs_json_ts_common_classes_FGItemDescriptor,
 	FGPoleDescriptor as docs_json_ts_common_classes_FGPoleDescriptor,
 	FGRecipe as docs_json_ts_common_classes_FGRecipe,
@@ -642,6 +643,8 @@ type FGBuildableTrainPlatformCargo = docs_json_ts_0_3_7_7_classes_base_FGBuildab
 
 type FGBuildableWire = docs_json_ts_0_3_7_7_classes_base_FGBuildableWire & FGBuildable;
 
+type FGBuildingDescriptor = docs_json_ts_common_classes_FGBuildingDescriptor & FGDescriptor_BuildMenu;
+
 type FGColorGun = docs_json_ts_0_3_7_7_classes_base_FGColorGun & FGWeaponProjectile;
 
 type FGConsumableDescriptor = docs_json_ts_0_3_7_7_classes_base_FGConsumableDescriptor_base & FGDescriptor_sinkable;
@@ -973,6 +976,7 @@ export type {
 	FGBuildableTrainPlatform_with_storage,
 	FGBuildableTrainPlatformCargo,
 	FGBuildableWire,
+	FGBuildingDescriptor,
 	FGColorGun,
 	FGConsumableDescriptor,
 	FGConsumableEquipment,

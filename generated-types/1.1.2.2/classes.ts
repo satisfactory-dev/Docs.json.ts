@@ -100,6 +100,7 @@ import type {
 	FGBuildableWall as docs_json_ts_1_1_2_2_classes_base_FGBuildableWall,
 	FGBuildableWidgetSign as docs_json_ts_1_1_2_2_classes_base_FGBuildableWidgetSign,
 	FGBuildableWire as docs_json_ts_1_1_2_2_classes_base_FGBuildableWire,
+	FGBuildingDescriptor as docs_json_ts_1_1_2_2_classes_base_FGBuildingDescriptor,
 	FGCentralStorageContainer as docs_json_ts_1_1_2_2_classes_base_FGCentralStorageContainer,
 	FGChainsaw as docs_json_ts_1_1_2_2_classes_base_FGChainsaw,
 	FGConsumableEquipment_base as docs_json_ts_1_1_2_2_classes_base_FGConsumableEquipment_base,
@@ -110,7 +111,6 @@ import type {
 	FGGasMask as docs_json_ts_1_1_2_2_classes_base_FGGasMask,
 	FGGolfCartDispenser as docs_json_ts_1_1_2_2_classes_base_FGGolfCartDispenser,
 	FGHoverPack as docs_json_ts_1_1_2_2_classes_base_FGHoverPack,
-	FGItemDescriptor_base as docs_json_ts_1_1_2_2_classes_base_FGItemDescriptor_base,
 	FGJetPack as docs_json_ts_1_1_2_2_classes_base_FGJetPack,
 	FGJumpingStilts as docs_json_ts_1_1_2_2_classes_base_FGJumpingStilts,
 	FGNobeliskDetonator as docs_json_ts_1_1_2_2_classes_base_FGNobeliskDetonator,
@@ -327,7 +327,7 @@ type FGBuildableWidgetSign = docs_json_ts_1_1_2_2_classes_base_FGBuildableWidget
 
 type FGBuildableWire = docs_json_ts_1_1_2_2_classes_base_FGBuildableWire;
 
-type FGBuildingDescriptor = docs_json_ts_1_1_2_2_classes_base_FGItemDescriptor_base;
+type FGBuildingDescriptor = docs_json_ts_1_1_2_2_classes_base_FGBuildingDescriptor;
 
 type FGCentralStorageContainer = docs_json_ts_1_1_2_2_classes_base_FGCentralStorageContainer;
 

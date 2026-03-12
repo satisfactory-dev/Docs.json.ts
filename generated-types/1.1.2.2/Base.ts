@@ -319,6 +319,7 @@ import type {
 
 import type {
 	FGBuildableConveyorBelt as docs_json_ts_common_classes_FGBuildableConveyorBelt,
+	FGBuildingDescriptor as docs_json_ts_common_classes_FGBuildingDescriptor,
 	FGSchematic as docs_json_ts_common_classes_FGSchematic,
 } from './../common/classes.ts';
 
@@ -763,6 +764,8 @@ type FGBuildableWidgetSign = docs_json_ts_0_5_2_1_classes_base_FGBuildableWidget
 
 type FGBuildableWire = docs_json_ts_0_3_7_7_classes_base_FGBuildableWire_base & docs_json_ts_0_8_3_3_classes_base_FGBuildableWire_version_specific & FGBuildable_base;
 
+type FGBuildingDescriptor = docs_json_ts_common_classes_FGBuildingDescriptor & FGItemDescriptor_base;
+
 type FGCentralStorageContainer = docs_json_ts_1_0_1_4_classes_base_FGCentralStorageContainer_version_specific & FGBuildable_base & FGBuildableStorage;
 
 type FGChainsaw = docs_json_ts_0_3_7_7_classes_base_FGChainsaw_version_specific & docs_json_ts_0_6_1_5_classes_base_FGChainsaw_version_specific & docs_json_ts_0_8_3_3_classes_base_FGChainsaw_version_specific & docs_json_ts_1_0_1_4_classes_base_FGChainsaw_version_specific & docs_json_ts_1_0_1_4_classes_base_FGEquipment & FGChainsaw_version_specific & FGEquipment_version_specific;
@@ -966,6 +969,7 @@ export type {
 	FGBuildableWall,
 	FGBuildableWidgetSign,
 	FGBuildableWire,
+	FGBuildingDescriptor,
 	FGCentralStorageContainer,
 	FGChainsaw,
 	FGChainsaw_version_specific,

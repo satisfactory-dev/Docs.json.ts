@@ -349,7 +349,7 @@
 		},
 		"FGBuildingDescriptor": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGDescriptor--BuildMenu",
+			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildingDescriptor",
 			"unevaluatedProperties": false
 		},
 		"FGColorGun": {

@@ -54,6 +54,7 @@ import type {
 	FGBuildableTrainPlatform as docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatform,
 	FGBuildableTrainPlatformCargo as docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatformCargo,
 	FGBuildableWire as docs_json_ts_0_3_7_7_classes_base_FGBuildableWire,
+	FGBuildingDescriptor as docs_json_ts_0_3_7_7_classes_base_FGBuildingDescriptor,
 	FGChainsaw as docs_json_ts_0_3_7_7_classes_base_FGChainsaw,
 	FGColorGun as docs_json_ts_0_3_7_7_classes_base_FGColorGun,
 	FGConsumableDescriptor as docs_json_ts_0_3_7_7_classes_base_FGConsumableDescriptor,
@@ -208,7 +209,7 @@ type FGBuildableWall = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height
 
 type FGBuildableWire = docs_json_ts_0_3_7_7_classes_base_FGBuildableWire;
 
-type FGBuildingDescriptor = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_BuildMenu;
+type FGBuildingDescriptor = docs_json_ts_0_3_7_7_classes_base_FGBuildingDescriptor;
 
 type FGChainsaw = docs_json_ts_0_3_7_7_classes_base_FGChainsaw;
 

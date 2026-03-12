@@ -90,6 +90,7 @@ import type {
 	FGBuildableWall as docs_json_ts_1_0_1_4_classes_base_FGBuildableWall,
 	FGBuildableWidgetSign as docs_json_ts_1_0_1_4_classes_base_FGBuildableWidgetSign,
 	FGBuildableWire as docs_json_ts_1_0_1_4_classes_base_FGBuildableWire,
+	FGBuildingDescriptor as docs_json_ts_1_0_1_4_classes_base_FGBuildingDescriptor,
 	FGCentralStorageContainer as docs_json_ts_1_0_1_4_classes_base_FGCentralStorageContainer,
 	FGChainsaw as docs_json_ts_1_0_1_4_classes_base_FGChainsaw,
 	FGConsumableDescriptor as docs_json_ts_1_0_1_4_classes_base_FGConsumableDescriptor,
@@ -102,7 +103,6 @@ import type {
 	FGGolfCartDispenser as docs_json_ts_1_0_1_4_classes_base_FGGolfCartDispenser,
 	FGHoverPack as docs_json_ts_1_0_1_4_classes_base_FGHoverPack,
 	FGItemDescriptor as docs_json_ts_1_0_1_4_classes_base_FGItemDescriptor,
-	FGItemDescriptor_base as docs_json_ts_1_0_1_4_classes_base_FGItemDescriptor_base,
 	FGItemDescriptorNuclearFuel as docs_json_ts_1_0_1_4_classes_base_FGItemDescriptorNuclearFuel,
 	FGItemDescriptorPowerBoosterFuel as docs_json_ts_1_0_1_4_classes_base_FGItemDescriptorPowerBoosterFuel,
 	FGJetPack as docs_json_ts_1_0_1_4_classes_base_FGJetPack,
@@ -312,7 +312,7 @@ type FGBuildableWidgetSign = docs_json_ts_1_0_1_4_classes_base_FGBuildableWidget
 
 type FGBuildableWire = docs_json_ts_1_0_1_4_classes_base_FGBuildableWire;
 
-type FGBuildingDescriptor = docs_json_ts_1_0_1_4_classes_base_FGItemDescriptor_base;
+type FGBuildingDescriptor = docs_json_ts_1_0_1_4_classes_base_FGBuildingDescriptor;
 
 type FGCentralStorageContainer = docs_json_ts_1_0_1_4_classes_base_FGCentralStorageContainer;
 

@@ -61,6 +61,7 @@ import type {
 import type {
 	FGBuildableConveyorBelt as docs_json_ts_common_classes_FGBuildableConveyorBelt,
 	FGBuildablePole as docs_json_ts_common_classes_FGBuildablePole,
+	FGBuildingDescriptor as docs_json_ts_common_classes_FGBuildingDescriptor,
 	FGItemDescriptor as docs_json_ts_common_classes_FGItemDescriptor,
 	FGPoleDescriptor as docs_json_ts_common_classes_FGPoleDescriptor,
 	FGRecipe as docs_json_ts_common_classes_FGRecipe,
@@ -958,6 +959,8 @@ type FGBuildableWire_base = {
 	mConnections: 'None',
 };
 
+type FGBuildingDescriptor = docs_json_ts_common_classes_FGBuildingDescriptor & FGDescriptor_BuildMenu;
+
 type FGChainsaw = FGChainsaw_pre_1_0 & FGChainsaw_pre_update8 & FGChainsaw_version_specific & FGEquipment & FGEquipment_has_mPlayingSound;
 
 type FGChainsaw_pre_1_0 = {
@@ -1709,6 +1712,7 @@ export type {
 	FGBuildableTrainPlatformCargo_version_specific,
 	FGBuildableWire,
 	FGBuildableWire_base,
+	FGBuildingDescriptor,
 	FGChainsaw,
 	FGChainsaw_pre_1_0,
 	FGChainsaw_pre_update8,

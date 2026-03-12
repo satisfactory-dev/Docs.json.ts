@@ -1,6 +1,7 @@
 /* eslint-disable @stylistic/max-len */
 
 import type {
+	FGBuildingDescriptor as docs_json_ts_0_6_1_5_classes_base_overridable_FGBuildingDescriptor,
 	FGConsumableDescriptor as docs_json_ts_0_6_1_5_classes_base_overridable_FGConsumableDescriptor,
 	FGItemDescriptor_base as docs_json_ts_0_6_1_5_classes_base_overridable_FGItemDescriptor_base,
 	FGPoleDescriptor as docs_json_ts_0_6_1_5_classes_base_overridable_FGPoleDescriptor,
@@ -14,7 +15,7 @@ import type {
 	FGVehicleDescriptor_Desc_Truck_C as docs_json_ts_0_6_1_5_classes_base_overridable_FGVehicleDescriptor_Desc_Truck_C,
 } from './Base.1.1.2.2.ts';
 
-type FGBuildingDescriptor = docs_json_ts_0_6_1_5_classes_base_overridable_FGItemDescriptor_base;
+type FGBuildingDescriptor = docs_json_ts_0_6_1_5_classes_base_overridable_FGBuildingDescriptor;
 
 type FGConsumableDescriptor = docs_json_ts_0_6_1_5_classes_base_overridable_FGConsumableDescriptor;
 

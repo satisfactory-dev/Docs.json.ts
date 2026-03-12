@@ -509,7 +509,7 @@
 		},
 		"FGBuildingDescriptor": {
 			"type": "object",
-			"$ref": "docs.json.ts--1.1.2.2--classes--base#/$defs/FGItemDescriptor--base",
+			"$ref": "docs.json.ts--1.1.2.2--classes--base#/$defs/FGBuildingDescriptor",
 			"unevaluatedProperties": false
 		},
 		"FGCentralStorageContainer": {

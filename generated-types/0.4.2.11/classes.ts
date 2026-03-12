@@ -66,10 +66,10 @@ import type {
 	FGBuildableTrainPlatform as docs_json_ts_0_4_2_11_classes_base_FGBuildableTrainPlatform,
 	FGBuildableTrainPlatformCargo as docs_json_ts_0_4_2_11_classes_base_FGBuildableTrainPlatformCargo,
 	FGBuildableWire as docs_json_ts_0_4_2_11_classes_base_FGBuildableWire,
+	FGBuildingDescriptor as docs_json_ts_0_4_2_11_classes_base_FGBuildingDescriptor,
 	FGColorGun as docs_json_ts_0_4_2_11_classes_base_FGColorGun,
 	FGConsumableDescriptor as docs_json_ts_0_4_2_11_classes_base_FGConsumableDescriptor,
 	FGConsumableEquipment as docs_json_ts_0_4_2_11_classes_base_FGConsumableEquipment,
-	FGDescriptor_BuildMenu as docs_json_ts_0_4_2_11_classes_base_FGDescriptor_BuildMenu,
 	FGEquipmentZipline as docs_json_ts_0_4_2_11_classes_base_FGEquipmentZipline,
 	FGHoverPack as docs_json_ts_0_4_2_11_classes_base_FGHoverPack,
 	FGItemDescriptor as docs_json_ts_0_4_2_11_classes_base_FGItemDescriptor,
@@ -232,7 +232,7 @@ type FGBuildableWaterPump = docs_json_ts_0_4_2_11_classes_base_FGBuildableResour
 
 type FGBuildableWire = docs_json_ts_0_4_2_11_classes_base_FGBuildableWire;
 
-type FGBuildingDescriptor = docs_json_ts_0_4_2_11_classes_base_FGDescriptor_BuildMenu;
+type FGBuildingDescriptor = docs_json_ts_0_4_2_11_classes_base_FGBuildingDescriptor;
 
 type FGColorGun = docs_json_ts_0_4_2_11_classes_base_FGColorGun;
 

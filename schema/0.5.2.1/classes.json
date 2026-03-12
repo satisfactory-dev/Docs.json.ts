@@ -399,7 +399,7 @@
 		},
 		"FGBuildingDescriptor": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGDescriptor--BuildMenu",
+			"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildingDescriptor",
 			"unevaluatedProperties": false
 		},
 		"FGChargedWeapon": {

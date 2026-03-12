@@ -1,6 +1,10 @@
 /* eslint-disable @stylistic/max-len */
 
 import type {
+	FGBuildingDescriptor as docs_json_ts_0_6_1_5_FGBuildingDescriptor,
+} from './../0.6.1.5/types.ts';
+
+import type {
 	FGAmmoTypeInstantHit_Desc_CartridgeChaos_C as docs_json_ts_0_8_3_3_classes_FGAmmoTypeInstantHit_Desc_CartridgeChaos_C,
 	FGAmmoTypeInstantHit_Desc_CartridgeStandard_C as docs_json_ts_0_8_3_3_classes_FGAmmoTypeInstantHit_Desc_CartridgeStandard_C,
 	FGAmmoTypeProjectile as docs_json_ts_0_8_3_3_classes_FGAmmoTypeProjectile,
@@ -112,7 +116,6 @@ import type {
 } from './classes.ts';
 
 import type {
-	FGBuildingDescriptor as docs_json_ts_0_6_1_5_classes_overridable_FGBuildingDescriptor,
 	FGConsumableDescriptor as docs_json_ts_0_6_1_5_classes_overridable_FGConsumableDescriptor,
 	FGEquipmentDescriptor_Desc_GolfCartGold_C as docs_json_ts_0_6_1_5_classes_overridable_FGEquipmentDescriptor_Desc_GolfCartGold_C,
 	FGPoleDescriptor as docs_json_ts_0_6_1_5_classes_overridable_FGPoleDescriptor,
@@ -714,14 +717,6 @@ type FGBuildableWire = {
 	],
 };
 
-type FGBuildingDescriptor = {
-	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGBuildingDescriptor'}${'\''}`,
-	Classes: [
-		docs_json_ts_0_6_1_5_classes_overridable_FGBuildingDescriptor,
-		...docs_json_ts_0_6_1_5_classes_overridable_FGBuildingDescriptor[],
-	],
-};
-
 type FGChainsaw = {
 	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGChainsaw'}${'\''}`,
 	Classes: [
@@ -961,7 +956,7 @@ export type update8_docs = [
 	FGBuildableDroneStation,
 	FGCustomizationRecipe,
 	FGBuildableBlueprintDesigner,
-	FGBuildingDescriptor,
+	docs_json_ts_0_6_1_5_FGBuildingDescriptor,
 	FGRecipe,
 	FGSchematic,
 	FGBuildableWallLightweight,
@@ -1130,7 +1125,6 @@ export type {
 	FGBuildableWaterPump,
 	FGBuildableWidgetSign,
 	FGBuildableWire,
-	FGBuildingDescriptor,
 	FGChainsaw,
 	FGChargedWeapon,
 	FGConsumableDescriptor,

@@ -22,6 +22,12 @@ import type {
 } from './../../0.3.7.7/types/overridable.ts';
 
 import type {
+	FGBuildingDescriptor as docs_json_ts_common_classes_FGBuildingDescriptor,
+	FGPoleDescriptor as docs_json_ts_common_classes_FGPoleDescriptor,
+	FGRecipe as docs_json_ts_common_classes_FGRecipe,
+} from './../../common/classes.ts';
+
+import type {
 	FGConsumableDescriptor_base as docs_json_ts_0_3_7_7_classes_base_FGConsumableDescriptor_base,
 	FGItemDescriptorNuclearFuel_version_specific as docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_version_specific,
 	FGRecipe_version_specific as docs_json_ts_0_3_7_7_classes_base_FGRecipe_version_specific,
@@ -50,11 +56,6 @@ import type {
 import type {
 	FGItemDescriptorNuclearFuel_pre_1_0 as docs_json_ts_0_4_2_11_classes_base_overridable_FGItemDescriptorNuclearFuel_pre_1_0,
 } from './../../0.4.2.11/classes/Base.overridable.ts';
-
-import type {
-	FGPoleDescriptor as docs_json_ts_common_classes_FGPoleDescriptor,
-	FGRecipe as docs_json_ts_common_classes_FGRecipe,
-} from './../../common/classes.ts';
 
 import type {
 	FGRecipe_version_specific as docs_json_ts_0_5_2_1_classes_base_overridable_FGRecipe_version_specific,
@@ -90,6 +91,8 @@ type FGBuildable_base_version_specific = {
 type FGBuildableRadarTower_version_specific = {
 	mScannableDescriptors: docs_json_ts_0_3_7_7_overridable_DocsDotJson_BlueprintGeneratedClass_quoted_list,
 };
+
+type FGBuildingDescriptor = docs_json_ts_common_classes_FGBuildingDescriptor & FGItemDescriptor_base;
 
 type FGConsumableDescriptor = docs_json_ts_0_3_7_7_classes_base_FGConsumableDescriptor_base & docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable & FGItemDescriptor_base;
 
@@ -139,6 +142,7 @@ export type {
 	FGAmmoTypeProjectile_version_specific,
 	FGBuildable_base_version_specific,
 	FGBuildableRadarTower_version_specific,
+	FGBuildingDescriptor,
 	FGConsumableDescriptor,
 	FGItemDescriptor_base,
 	FGItemDescriptor_version_specific,

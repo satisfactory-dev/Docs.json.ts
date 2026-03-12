@@ -2129,6 +2129,16 @@
 				}
 			]
 		},
+		"FGBuildingDescriptor": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildingDescriptor"
+				},
+				{
+					"$ref": "#/$defs/FGDescriptor--BuildMenu"
+				}
+			]
+		},
 		"FGConsumableDescriptor": {
 			"allOf": [
 				{
