@@ -10,6 +10,8 @@ type FGBuildablePole = docs_json_ts_common_classes_base_hasClassName;
 
 type FGBuildingDescriptor = docs_json_ts_common_classes_base_hasClassName;
 
+type FGConsumableEquipment = docs_json_ts_common_classes_base_hasClassName;
+
 type FGItemDescriptor = docs_json_ts_common_classes_base_hasClassName;
 
 type FGPoleDescriptor = docs_json_ts_common_classes_base_hasClassName;
@@ -22,6 +24,7 @@ export type {
 	FGBuildableConveyorBelt,
 	FGBuildablePole,
 	FGBuildingDescriptor,
+	FGConsumableEquipment,
 	FGItemDescriptor,
 	FGPoleDescriptor,
 	FGRecipe,

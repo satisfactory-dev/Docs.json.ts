@@ -1580,7 +1580,22 @@
 		"FGConsumableEquipment": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGConsumableEquipment--base"
+					"$ref": "docs.json.ts--common--classes#/$defs/FGConsumableEquipment"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGConsumableEquipment--pre-update8"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGConsumableEquipment--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipment"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGConsumableEquipment--version-specific"
 				},
 				{
 					"$ref": "#/$defs/FGEquipment"

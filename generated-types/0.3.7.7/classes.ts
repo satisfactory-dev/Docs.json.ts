@@ -217,9 +217,7 @@ type FGColorGun = docs_json_ts_0_3_7_7_classes_base_FGColorGun;
 
 type FGConsumableDescriptor = docs_json_ts_0_3_7_7_classes_base_FGConsumableDescriptor;
 
-type FGConsumableEquipment = docs_json_ts_0_3_7_7_classes_base_FGConsumableEquipment & {
-	mArmAnimation: 'AE_Consumables' | 'AE_OneHandEquipment',
-};
+type FGConsumableEquipment = docs_json_ts_0_3_7_7_classes_base_FGConsumableEquipment;
 
 type FGEquipmentStunSpear_xenobasher = docs_json_ts_0_3_7_7_classes_base_FGEquipmentStunSpear_xenobasher;
 

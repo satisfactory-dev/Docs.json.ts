@@ -62,6 +62,7 @@ import type {
 	FGBuildableConveyorBelt as docs_json_ts_common_classes_FGBuildableConveyorBelt,
 	FGBuildablePole as docs_json_ts_common_classes_FGBuildablePole,
 	FGBuildingDescriptor as docs_json_ts_common_classes_FGBuildingDescriptor,
+	FGConsumableEquipment as docs_json_ts_common_classes_FGConsumableEquipment,
 	FGItemDescriptor as docs_json_ts_common_classes_FGItemDescriptor,
 	FGPoleDescriptor as docs_json_ts_common_classes_FGPoleDescriptor,
 	FGRecipe as docs_json_ts_common_classes_FGRecipe,
@@ -1009,9 +1010,11 @@ type FGConsumableDescriptor_base = FGDescriptor_sinkable_base & {
 	mCustomLocation: docs_json_ts_common_types_XYZ_decimal_string,
 };
 
-type FGConsumableEquipment = FGConsumableEquipment_base & FGEquipment;
+type FGConsumableEquipment = docs_json_ts_common_classes_FGConsumableEquipment & FGConsumableEquipment_pre_update4 & FGConsumableEquipment_pre_update8 & FGConsumableEquipment_version_specific & FGEquipment_base & FGEquipment;
 
-type FGConsumableEquipment_base = FGConsumableEquipment_pre_update8 & FGConsumableEquipment_version_specific & FGEquipment_base;
+type FGConsumableEquipment_pre_update4 = {
+	mArmAnimation: 'AE_Consumables' | 'AE_OneHandEquipment',
+};
 
 type FGConsumableEquipment_pre_update8 = {
 	mAnimData?: [
@@ -1723,7 +1726,7 @@ export type {
 	FGConsumableDescriptor,
 	FGConsumableDescriptor_base,
 	FGConsumableEquipment,
-	FGConsumableEquipment_base,
+	FGConsumableEquipment_pre_update4,
 	FGConsumableEquipment_pre_update8,
 	FGConsumableEquipment_version_specific,
 	FGDescriptor,

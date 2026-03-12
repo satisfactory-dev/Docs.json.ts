@@ -275,6 +275,7 @@ import type {
 
 import type {
 	FGBuildableConveyorBelt as docs_json_ts_common_classes_FGBuildableConveyorBelt,
+	FGConsumableEquipment as docs_json_ts_common_classes_FGConsumableEquipment,
 	FGSchematic as docs_json_ts_common_classes_FGSchematic,
 } from './../../common/classes.ts';
 
@@ -627,7 +628,7 @@ type FGChainsaw_version_specific = {
 
 type FGConsumableDescriptor = docs_json_ts_0_6_1_5_classes_base_overridable_FGItemDescriptor_base & docs_json_ts_0_3_7_7_classes_base_FGConsumableDescriptor_base & docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable;
 
-type FGConsumableEquipment = docs_json_ts_0_8_3_3_classes_base_overridable_FGConsumableEquipment_version_specific & docs_json_ts_0_3_7_7_classes_base_FGConsumableEquipment_version_specific & docs_json_ts_0_4_2_11_classes_base_FGConsumableEquipment_version_specific & FGEquipment;
+type FGConsumableEquipment = docs_json_ts_common_classes_FGConsumableEquipment & docs_json_ts_0_8_3_3_classes_base_overridable_FGConsumableEquipment_version_specific & docs_json_ts_0_3_7_7_classes_base_FGConsumableEquipment_version_specific & docs_json_ts_0_4_2_11_classes_base_FGConsumableEquipment_version_specific & FGEquipment;
 
 type FGConveyorPoleStackable = docs_json_ts_0_3_7_7_classes_base_FGBuildable_pole_base & docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_base & docs_json_ts_0_3_7_7_classes_base_has_mCanStack & docs_json_ts_0_3_7_7_classes_base_has_mStackHeight & docs_json_ts_0_7_1_1_classes_base_FGBuildablePole_version_specific & FGBuildable_base;
 

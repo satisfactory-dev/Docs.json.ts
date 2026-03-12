@@ -4243,15 +4243,11 @@
 		"FGConsumableEquipment": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGConsumableEquipment--base"
+					"$ref": "docs.json.ts--common--classes#/$defs/FGConsumableEquipment"
 				},
 				{
-					"$ref": "#/$defs/FGEquipment"
-				}
-			]
-		},
-		"FGConsumableEquipment--base": {
-			"allOf": [
+					"$ref": "#/$defs/FGConsumableEquipment--pre-update4"
+				},
 				{
 					"$ref": "#/$defs/FGConsumableEquipment--pre-update8"
 				},
@@ -4260,8 +4256,21 @@
 				},
 				{
 					"$ref": "#/$defs/FGEquipment--base"
+				},
+				{
+					"$ref": "#/$defs/FGEquipment"
 				}
 			]
+		},
+		"FGConsumableEquipment--pre-update4": {
+			"type": "object",
+			"required": ["mArmAnimation"],
+			"properties": {
+				"mArmAnimation": {
+					"type": "string",
+					"enum": ["AE_Consumables", "AE_OneHandEquipment"]
+				}
+			}
 		},
 		"FGConsumableEquipment--pre-update8": {
 			"type": "object",

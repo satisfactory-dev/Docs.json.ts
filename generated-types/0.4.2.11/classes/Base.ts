@@ -105,11 +105,12 @@ import type {
 	FGBuildableWire as docs_json_ts_0_3_7_7_classes_base_FGBuildableWire,
 	FGColorGun as docs_json_ts_0_3_7_7_classes_base_FGColorGun,
 	FGConsumableDescriptor_base as docs_json_ts_0_3_7_7_classes_base_FGConsumableDescriptor_base,
-	FGConsumableEquipment as docs_json_ts_0_3_7_7_classes_base_FGConsumableEquipment,
-	FGConsumableEquipment_base as docs_json_ts_0_3_7_7_classes_base_FGConsumableEquipment_base,
+	FGConsumableEquipment_pre_update8 as docs_json_ts_0_3_7_7_classes_base_FGConsumableEquipment_pre_update8,
+	FGConsumableEquipment_version_specific as docs_json_ts_0_3_7_7_classes_base_FGConsumableEquipment_version_specific,
 	FGDescriptor_base as docs_json_ts_0_3_7_7_classes_base_FGDescriptor_base,
 	FGDescriptor_BuildMenu_base as docs_json_ts_0_3_7_7_classes_base_FGDescriptor_BuildMenu_base,
 	FGDescriptor_sinkable_base as docs_json_ts_0_3_7_7_classes_base_FGDescriptor_sinkable_base,
+	FGEquipment as docs_json_ts_0_3_7_7_classes_base_FGEquipment,
 	FGEquipment_base as docs_json_ts_0_3_7_7_classes_base_FGEquipment_base,
 	FGEquipment_has_mUseDefaultPrimaryFire as docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_mUseDefaultPrimaryFire,
 	FGEquipment_pre_1_0 as docs_json_ts_0_3_7_7_classes_base_FGEquipment_pre_1_0,
@@ -160,6 +161,7 @@ import type {
 	FGBuildableConveyorBelt as docs_json_ts_common_classes_FGBuildableConveyorBelt,
 	FGBuildablePole as docs_json_ts_common_classes_FGBuildablePole,
 	FGBuildingDescriptor as docs_json_ts_common_classes_FGBuildingDescriptor,
+	FGConsumableEquipment as docs_json_ts_common_classes_FGConsumableEquipment,
 	FGItemDescriptor as docs_json_ts_common_classes_FGItemDescriptor,
 	FGPoleDescriptor as docs_json_ts_common_classes_FGPoleDescriptor,
 	FGRecipe as docs_json_ts_common_classes_FGRecipe,
@@ -649,9 +651,7 @@ type FGColorGun = docs_json_ts_0_3_7_7_classes_base_FGColorGun & FGWeaponProject
 
 type FGConsumableDescriptor = docs_json_ts_0_3_7_7_classes_base_FGConsumableDescriptor_base & FGDescriptor_sinkable;
 
-type FGConsumableEquipment = docs_json_ts_0_3_7_7_classes_base_FGConsumableEquipment & FGConsumableEquipment_base;
-
-type FGConsumableEquipment_base = docs_json_ts_0_3_7_7_classes_base_FGConsumableEquipment_base & FGConsumableEquipment_version_specific;
+type FGConsumableEquipment = docs_json_ts_common_classes_FGConsumableEquipment & docs_json_ts_0_3_7_7_classes_base_FGConsumableEquipment_pre_update8 & docs_json_ts_0_3_7_7_classes_base_FGConsumableEquipment_version_specific & docs_json_ts_0_3_7_7_classes_base_FGEquipment_base & docs_json_ts_0_3_7_7_classes_base_FGEquipment & FGConsumableEquipment_version_specific;
 
 type FGConsumableEquipment_version_specific = {
 	mArmAnimation: 'AE_Consumables' | 'AE_OneHandEquipment' | 'AE_Generic1Hand',
@@ -980,7 +980,6 @@ export type {
 	FGColorGun,
 	FGConsumableDescriptor,
 	FGConsumableEquipment,
-	FGConsumableEquipment_base,
 	FGConsumableEquipment_version_specific,
 	FGDescriptor,
 	FGDescriptor_base,

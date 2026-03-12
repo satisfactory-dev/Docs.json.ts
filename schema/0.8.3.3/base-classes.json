@@ -1900,6 +1900,9 @@
 		"FGConsumableEquipment": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGConsumableEquipment"
+				},
+				{
 					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGConsumableEquipment--version-specific"
 				},
 				{
