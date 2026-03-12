@@ -73,6 +73,7 @@ import type {
 	FGEquipmentZipline as docs_json_ts_0_4_2_11_classes_base_FGEquipmentZipline,
 	FGHoverPack as docs_json_ts_0_4_2_11_classes_base_FGHoverPack,
 	FGItemDescriptor as docs_json_ts_0_4_2_11_classes_base_FGItemDescriptor,
+	FGItemDescriptorBiomass as docs_json_ts_0_4_2_11_classes_base_FGItemDescriptorBiomass,
 	FGNobeliskDetonator as docs_json_ts_0_4_2_11_classes_base_FGNobeliskDetonator,
 	FGParachute as docs_json_ts_0_4_2_11_classes_base_FGParachute,
 	FGPipeHyperStart as docs_json_ts_0_4_2_11_classes_base_FGPipeHyperStart,
@@ -246,6 +247,8 @@ type FGHoverPack = docs_json_ts_0_4_2_11_classes_base_FGHoverPack;
 
 type FGItemDescriptor = docs_json_ts_0_4_2_11_classes_base_FGItemDescriptor;
 
+type FGItemDescriptorBiomass = docs_json_ts_0_4_2_11_classes_base_FGItemDescriptorBiomass;
+
 type FGItemDescriptorNuclearFuel = docs_json_ts_0_4_2_11_classes_base_overridable_FGItemDescriptorNuclearFuel;
 
 type FGNobeliskDetonator = docs_json_ts_0_4_2_11_classes_base_FGNobeliskDetonator;
@@ -361,6 +364,7 @@ export type {
 	FGEquipmentZipline,
 	FGHoverPack,
 	FGItemDescriptor,
+	FGItemDescriptorBiomass,
 	FGItemDescriptorNuclearFuel,
 	FGNobeliskDetonator,
 	FGParachute,

@@ -467,6 +467,11 @@
 			"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGItemDescriptor",
 			"unevaluatedProperties": false
 		},
+		"FGItemDescriptorBiomass": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGItemDescriptorBiomass",
+			"unevaluatedProperties": false
+		},
 		"FGItemDescriptorNuclearFuel": {
 			"type": "object",
 			"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGItemDescriptorNuclearFuel",

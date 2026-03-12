@@ -98,6 +98,7 @@ import type {
 	FGGolfCartDispenser as docs_json_ts_0_6_1_5_classes_FGGolfCartDispenser,
 	FGHoverPack as docs_json_ts_0_6_1_5_classes_FGHoverPack,
 	FGItemDescriptor as docs_json_ts_0_6_1_5_classes_FGItemDescriptor,
+	FGItemDescriptorBiomass as docs_json_ts_0_6_1_5_classes_FGItemDescriptorBiomass,
 	FGItemDescriptorNuclearFuel as docs_json_ts_0_6_1_5_classes_FGItemDescriptorNuclearFuel,
 	FGJetPack as docs_json_ts_0_6_1_5_classes_FGJetPack,
 	FGJumpingStilts as docs_json_ts_0_6_1_5_classes_FGJumpingStilts,
@@ -769,8 +770,8 @@ type FGItemDescriptor = {
 type FGItemDescriptorBiomass = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGItemDescriptorBiomass'}${'\''}`,
 	Classes: [
-		docs_json_ts_0_6_1_5_classes_FGItemDescriptor,
-		...docs_json_ts_0_6_1_5_classes_FGItemDescriptor[],
+		docs_json_ts_0_6_1_5_classes_FGItemDescriptorBiomass,
+		...docs_json_ts_0_6_1_5_classes_FGItemDescriptorBiomass[],
 	],
 };
 

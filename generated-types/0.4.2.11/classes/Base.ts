@@ -163,6 +163,7 @@ import type {
 	FGBuildingDescriptor as docs_json_ts_common_classes_FGBuildingDescriptor,
 	FGConsumableEquipment as docs_json_ts_common_classes_FGConsumableEquipment,
 	FGItemDescriptor as docs_json_ts_common_classes_FGItemDescriptor,
+	FGItemDescriptorBiomass as docs_json_ts_common_classes_FGItemDescriptorBiomass,
 	FGPoleDescriptor as docs_json_ts_common_classes_FGPoleDescriptor,
 	FGRecipe as docs_json_ts_common_classes_FGRecipe,
 	FGSchematic as docs_json_ts_common_classes_FGSchematic,
@@ -750,6 +751,8 @@ type FGHoverPack_version_specific = {
 
 type FGItemDescriptor = docs_json_ts_common_classes_FGItemDescriptor & FGDescriptor_sinkable;
 
+type FGItemDescriptorBiomass = docs_json_ts_common_classes_FGItemDescriptorBiomass & FGDescriptor_sinkable;
+
 type FGNobeliskDetonator = docs_json_ts_0_3_7_7_classes_base_FGNobeliskDetonator & FGWeaponProjectile;
 
 type FGParachute = docs_json_ts_0_3_7_7_classes_base_FGParachute_has_mIsDeployed & docs_json_ts_0_3_7_7_classes_base_FGParachute_has_mTerminalVelocityZ & FGEquipment;
@@ -997,6 +1000,7 @@ export type {
 	FGHoverPack_pre_1_0,
 	FGHoverPack_version_specific,
 	FGItemDescriptor,
+	FGItemDescriptorBiomass,
 	FGNobeliskDetonator,
 	FGParachute,
 	FGPipeHyperStart,

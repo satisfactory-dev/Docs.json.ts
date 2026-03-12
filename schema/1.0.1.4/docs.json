@@ -1732,7 +1732,7 @@
 					"type": "array",
 					"minItems": 1,
 					"items": {
-						"$ref": "docs.json.ts--1.0.1.4--classes#/$defs/FGItemDescriptor"
+						"$ref": "docs.json.ts--1.0.1.4--classes#/$defs/FGItemDescriptorBiomass"
 					}
 				}
 			}

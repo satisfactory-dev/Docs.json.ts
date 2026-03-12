@@ -4806,6 +4806,16 @@
 				}
 			]
 		},
+		"FGItemDescriptorBiomass": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGItemDescriptorBiomass"
+				},
+				{
+					"$ref": "#/$defs/FGDescriptor--sinkable"
+				}
+			]
+		},
 		"FGItemDescriptorNuclearFuel": {
 			"allOf": [
 				{

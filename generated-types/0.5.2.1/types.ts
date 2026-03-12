@@ -110,6 +110,7 @@ import type {
 	FGItemDescAmmoTypeProjectile_Desc_SpikedRebar_C as docs_json_ts_0_5_2_1_classes_FGItemDescAmmoTypeProjectile_Desc_SpikedRebar_C,
 	FGItemDescAmmoTypeProjectile_explosive_firework as docs_json_ts_0_5_2_1_classes_FGItemDescAmmoTypeProjectile_explosive_firework,
 	FGItemDescriptor as docs_json_ts_0_5_2_1_classes_FGItemDescriptor,
+	FGItemDescriptorBiomass as docs_json_ts_0_5_2_1_classes_FGItemDescriptorBiomass,
 	FGItemDescriptorNuclearFuel as docs_json_ts_0_5_2_1_classes_FGItemDescriptorNuclearFuel,
 	FGPipeHyperStart as docs_json_ts_0_5_2_1_classes_FGPipeHyperStart,
 	FGPoleDescriptor as docs_json_ts_0_5_2_1_classes_FGPoleDescriptor,
@@ -724,8 +725,8 @@ type FGItemDescriptor = {
 type FGItemDescriptorBiomass = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGItemDescriptorBiomass'}${'\''}`,
 	Classes: [
-		docs_json_ts_0_5_2_1_classes_FGItemDescriptor,
-		...docs_json_ts_0_5_2_1_classes_FGItemDescriptor[],
+		docs_json_ts_0_5_2_1_classes_FGItemDescriptorBiomass,
+		...docs_json_ts_0_5_2_1_classes_FGItemDescriptorBiomass[],
 	],
 };
 

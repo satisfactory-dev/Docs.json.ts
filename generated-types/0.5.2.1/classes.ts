@@ -88,6 +88,7 @@ import type {
 	FGItemDescAmmoTypeProjectile_explosive_firework as docs_json_ts_0_5_2_1_classes_base_FGItemDescAmmoTypeProjectile_explosive_firework,
 	FGItemDescriptor as docs_json_ts_0_5_2_1_classes_base_FGItemDescriptor,
 	FGItemDescriptor_base as docs_json_ts_0_5_2_1_classes_base_FGItemDescriptor_base,
+	FGItemDescriptorBiomass as docs_json_ts_0_5_2_1_classes_base_FGItemDescriptorBiomass,
 	FGNobeliskDetonator as docs_json_ts_0_5_2_1_classes_base_FGNobeliskDetonator,
 	FGPipeHyperStart as docs_json_ts_0_5_2_1_classes_base_FGPipeHyperStart,
 	FGPoleDescriptor as docs_json_ts_0_5_2_1_classes_base_FGPoleDescriptor,
@@ -287,6 +288,8 @@ type FGItemDescAmmoTypeProjectile_explosive_firework = docs_json_ts_0_5_2_1_clas
 
 type FGItemDescriptor = docs_json_ts_0_5_2_1_classes_base_FGItemDescriptor;
 
+type FGItemDescriptorBiomass = docs_json_ts_0_5_2_1_classes_base_FGItemDescriptorBiomass;
+
 type FGItemDescriptorNuclearFuel = docs_json_ts_0_5_2_1_classes_base_overridable_FGItemDescriptorNuclearFuel;
 
 type FGPipeHyperStart = docs_json_ts_0_5_2_1_classes_base_FGPipeHyperStart;
@@ -409,6 +412,7 @@ export type {
 	FGItemDescAmmoTypeProjectile_Desc_SpikedRebar_C,
 	FGItemDescAmmoTypeProjectile_explosive_firework,
 	FGItemDescriptor,
+	FGItemDescriptorBiomass,
 	FGItemDescriptorNuclearFuel,
 	FGPipeHyperStart,
 	FGPoleDescriptor,

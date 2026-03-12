@@ -64,6 +64,7 @@ import type {
 	FGBuildingDescriptor as docs_json_ts_common_classes_FGBuildingDescriptor,
 	FGConsumableEquipment as docs_json_ts_common_classes_FGConsumableEquipment,
 	FGItemDescriptor as docs_json_ts_common_classes_FGItemDescriptor,
+	FGItemDescriptorBiomass as docs_json_ts_common_classes_FGItemDescriptorBiomass,
 	FGPoleDescriptor as docs_json_ts_common_classes_FGPoleDescriptor,
 	FGRecipe as docs_json_ts_common_classes_FGRecipe,
 	FGSchematic as docs_json_ts_common_classes_FGSchematic,
@@ -1163,6 +1164,8 @@ type FGGolfCartDispenser_has_mArmAnimation = {
 
 type FGItemDescriptor = docs_json_ts_common_classes_FGItemDescriptor & FGDescriptor_sinkable;
 
+type FGItemDescriptorBiomass = docs_json_ts_common_classes_FGItemDescriptorBiomass & FGDescriptor_sinkable;
+
 type FGItemDescriptorNuclearFuel = FGDescriptor_sinkable & FGItemDescriptorNuclearFuel_version_specific;
 
 type FGItemDescriptorNuclearFuel_version_specific = FGDescriptor_sinkable_base & {
@@ -1763,6 +1766,7 @@ export type {
 	FGGolfCartDispenser,
 	FGGolfCartDispenser_has_mArmAnimation,
 	FGItemDescriptor,
+	FGItemDescriptorBiomass,
 	FGItemDescriptorNuclearFuel,
 	FGItemDescriptorNuclearFuel_version_specific,
 	FGJetPack,

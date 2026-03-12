@@ -87,6 +87,7 @@ import type {
 	FGEquipmentZipline as docs_json_ts_0_4_2_11_classes_FGEquipmentZipline,
 	FGHoverPack as docs_json_ts_0_4_2_11_classes_FGHoverPack,
 	FGItemDescriptor as docs_json_ts_0_4_2_11_classes_FGItemDescriptor,
+	FGItemDescriptorBiomass as docs_json_ts_0_4_2_11_classes_FGItemDescriptorBiomass,
 	FGItemDescriptorNuclearFuel as docs_json_ts_0_4_2_11_classes_FGItemDescriptorNuclearFuel,
 	FGNobeliskDetonator as docs_json_ts_0_4_2_11_classes_FGNobeliskDetonator,
 	FGParachute as docs_json_ts_0_4_2_11_classes_FGParachute,
@@ -606,8 +607,8 @@ type FGItemDescriptor = {
 type FGItemDescriptorBiomass = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGItemDescriptorBiomass'}${'\''}`,
 	Classes: [
-		docs_json_ts_0_4_2_11_classes_FGItemDescriptor,
-		...docs_json_ts_0_4_2_11_classes_FGItemDescriptor[],
+		docs_json_ts_0_4_2_11_classes_FGItemDescriptorBiomass,
+		...docs_json_ts_0_4_2_11_classes_FGItemDescriptorBiomass[],
 	],
 };
 

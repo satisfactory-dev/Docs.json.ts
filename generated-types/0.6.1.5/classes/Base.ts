@@ -209,6 +209,7 @@ import type {
 	FGBuildablePole as docs_json_ts_common_classes_FGBuildablePole,
 	FGConsumableEquipment as docs_json_ts_common_classes_FGConsumableEquipment,
 	FGItemDescriptor as docs_json_ts_common_classes_FGItemDescriptor,
+	FGItemDescriptorBiomass as docs_json_ts_common_classes_FGItemDescriptorBiomass,
 	FGSchematic as docs_json_ts_common_classes_FGSchematic,
 } from './../../common/classes.ts';
 
@@ -617,6 +618,8 @@ type FGHoverPack = docs_json_ts_0_4_2_11_classes_base_FGHoverPack_base & FGEquip
 
 type FGItemDescriptor = docs_json_ts_0_6_1_5_classes_base_overridable_FGItemDescriptor_base & docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable & docs_json_ts_common_classes_FGItemDescriptor;
 
+type FGItemDescriptorBiomass = docs_json_ts_0_6_1_5_classes_base_overridable_FGItemDescriptor_base & docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable & docs_json_ts_common_classes_FGItemDescriptorBiomass;
+
 type FGItemDescriptor_pre_1_0 = {
 	mClassToScanFor: 'None' | `/Game/FactoryGame/${'Resource/Environment/' | 'World/Benefit/'}${string}${'/BP_'}${Exclude<string, ''>}${'.BP_'}${Exclude<string, ''>}`,
 	mDescriptorStatBars: null | [
@@ -852,6 +855,7 @@ export type {
 	FGGolfCartDispenser,
 	FGHoverPack,
 	FGItemDescriptor,
+	FGItemDescriptorBiomass,
 	FGItemDescriptor_pre_1_0,
 	FGItemDescriptor_version_specific,
 	FGJetPack,

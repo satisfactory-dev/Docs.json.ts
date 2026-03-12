@@ -65,6 +65,7 @@ import type {
 	FGGasMask as docs_json_ts_0_3_7_7_classes_base_FGGasMask,
 	FGGolfCartDispenser as docs_json_ts_0_3_7_7_classes_base_FGGolfCartDispenser,
 	FGItemDescriptor as docs_json_ts_0_3_7_7_classes_base_FGItemDescriptor,
+	FGItemDescriptorBiomass as docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorBiomass,
 	FGItemDescriptorNuclearFuel as docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel,
 	FGJetPack as docs_json_ts_0_3_7_7_classes_base_FGJetPack,
 	FGJumpingStilts as docs_json_ts_0_3_7_7_classes_base_FGJumpingStilts,
@@ -229,6 +230,8 @@ type FGGolfCartDispenser = docs_json_ts_0_3_7_7_classes_base_FGGolfCartDispenser
 
 type FGItemDescriptor = docs_json_ts_0_3_7_7_classes_base_FGItemDescriptor;
 
+type FGItemDescriptorBiomass = docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorBiomass;
+
 type FGItemDescriptorNuclearFuel = docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel;
 
 type FGJetPack = docs_json_ts_0_3_7_7_classes_base_FGJetPack;
@@ -333,6 +336,7 @@ export type {
 	FGGasMask,
 	FGGolfCartDispenser,
 	FGItemDescriptor,
+	FGItemDescriptorBiomass,
 	FGItemDescriptorNuclearFuel,
 	FGJetPack,
 	FGJumpingStilts,

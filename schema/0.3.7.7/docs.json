@@ -1026,7 +1026,7 @@
 					"type": "array",
 					"minItems": 1,
 					"items": {
-						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGItemDescriptor"
+						"$ref": "docs.json.ts--0.3.7.7--classes#/$defs/FGItemDescriptorBiomass"
 					}
 				}
 			}

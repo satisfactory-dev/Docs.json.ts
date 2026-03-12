@@ -1817,6 +1817,19 @@
 				}
 			]
 		},
+		"FGItemDescriptorBiomass": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGItemDescriptor--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGDescriptor--sinkable"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGItemDescriptorBiomass"
+				}
+			]
+		},
 		"FGItemDescriptor--pre-1.0": {
 			"type": "object",
 			"required": ["mClassToScanFor", "mDescriptorStatBars"],

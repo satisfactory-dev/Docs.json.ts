@@ -14,6 +14,8 @@ type FGConsumableEquipment = docs_json_ts_common_classes_base_hasClassName;
 
 type FGItemDescriptor = docs_json_ts_common_classes_base_hasClassName;
 
+type FGItemDescriptorBiomass = docs_json_ts_common_classes_base_hasClassName;
+
 type FGPoleDescriptor = docs_json_ts_common_classes_base_hasClassName;
 
 type FGRecipe = docs_json_ts_common_classes_base_hasClassName;
@@ -26,6 +28,7 @@ export type {
 	FGBuildingDescriptor,
 	FGConsumableEquipment,
 	FGItemDescriptor,
+	FGItemDescriptorBiomass,
 	FGPoleDescriptor,
 	FGRecipe,
 	FGSchematic,

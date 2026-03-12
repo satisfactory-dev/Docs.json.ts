@@ -292,6 +292,7 @@ import type {
 	FGBuildingDescriptor as docs_json_ts_common_classes_FGBuildingDescriptor,
 	FGConsumableEquipment as docs_json_ts_common_classes_FGConsumableEquipment,
 	FGItemDescriptor as docs_json_ts_common_classes_FGItemDescriptor,
+	FGItemDescriptorBiomass as docs_json_ts_common_classes_FGItemDescriptorBiomass,
 	FGPoleDescriptor as docs_json_ts_common_classes_FGPoleDescriptor,
 	FGRecipe as docs_json_ts_common_classes_FGRecipe,
 	FGSchematic as docs_json_ts_common_classes_FGSchematic,
@@ -928,6 +929,8 @@ type FGHoverPack_version_specific = {
 
 type FGItemDescriptor = docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable & docs_json_ts_common_classes_FGItemDescriptor & FGItemDescriptor_base;
 
+type FGItemDescriptorBiomass = docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable & docs_json_ts_common_classes_FGItemDescriptorBiomass & FGItemDescriptor_base;
+
 type FGItemDescriptor_base = docs_json_ts_0_6_1_5_classes_base_FGDescriptor & docs_json_ts_0_6_1_5_classes_base_FGItemDescriptor_version_specific & docs_json_ts_0_6_1_5_classes_base_overridable_FGItemDescriptor_version_specific & docs_json_ts_0_6_1_5_overridable_has_mSubCategories & FGItemDescriptor_version_specific;
 
 type FGItemDescriptor_version_specific = {
@@ -1257,6 +1260,7 @@ export type {
 	FGHoverPack,
 	FGHoverPack_version_specific,
 	FGItemDescriptor,
+	FGItemDescriptorBiomass,
 	FGItemDescriptor_base,
 	FGItemDescriptor_version_specific,
 	FGItemDescriptorNuclearFuel,

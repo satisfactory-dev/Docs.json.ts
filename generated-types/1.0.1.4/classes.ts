@@ -103,6 +103,7 @@ import type {
 	FGGolfCartDispenser as docs_json_ts_1_0_1_4_classes_base_FGGolfCartDispenser,
 	FGHoverPack as docs_json_ts_1_0_1_4_classes_base_FGHoverPack,
 	FGItemDescriptor as docs_json_ts_1_0_1_4_classes_base_FGItemDescriptor,
+	FGItemDescriptorBiomass as docs_json_ts_1_0_1_4_classes_base_FGItemDescriptorBiomass,
 	FGItemDescriptorNuclearFuel as docs_json_ts_1_0_1_4_classes_base_FGItemDescriptorNuclearFuel,
 	FGItemDescriptorPowerBoosterFuel as docs_json_ts_1_0_1_4_classes_base_FGItemDescriptorPowerBoosterFuel,
 	FGJetPack as docs_json_ts_1_0_1_4_classes_base_FGJetPack,
@@ -340,6 +341,8 @@ type FGHoverPack = docs_json_ts_1_0_1_4_classes_base_FGHoverPack;
 
 type FGItemDescriptor = docs_json_ts_1_0_1_4_classes_base_FGItemDescriptor;
 
+type FGItemDescriptorBiomass = docs_json_ts_1_0_1_4_classes_base_FGItemDescriptorBiomass;
+
 type FGItemDescriptorNuclearFuel = docs_json_ts_1_0_1_4_classes_base_FGItemDescriptorNuclearFuel;
 
 type FGItemDescriptorPowerBoosterFuel = docs_json_ts_1_0_1_4_classes_base_FGItemDescriptorPowerBoosterFuel;
@@ -494,6 +497,7 @@ export type {
 	FGGolfCartDispenser,
 	FGHoverPack,
 	FGItemDescriptor,
+	FGItemDescriptorBiomass,
 	FGItemDescriptorNuclearFuel,
 	FGItemDescriptorPowerBoosterFuel,
 	FGJetPack,
