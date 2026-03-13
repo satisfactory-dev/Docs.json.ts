@@ -2548,9 +2548,6 @@
 		"FGChainsaw": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--common--classes#/$defs/FGChainsaw"
-				},
-				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGChainsaw--version-specific"
 				},
 				{
@@ -2564,6 +2561,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--1.0.1.4--classes--base#/$defs/FGEquipment"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGChainsaw"
 				},
 				{
 					"$ref": "#/$defs/FGChainsaw--version-specific"
@@ -2589,9 +2589,6 @@
 		"FGConsumableEquipment--base": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--common--classes#/$defs/FGConsumableEquipment"
-				},
-				{
 					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGConsumableEquipment--version-specific"
 				},
 				{
@@ -2607,15 +2604,15 @@
 					"$ref": "docs.json.ts--1.0.1.4--classes--base#/$defs/FGEquipment"
 				},
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGConsumableEquipment"
+				},
+				{
 					"$ref": "#/$defs/FGEquipment--version-specific"
 				}
 			]
 		},
 		"FGConsumableEquipment--medkit": {
 			"allOf": [
-				{
-					"$ref": "docs.json.ts--common--classes#/$defs/FGConsumableEquipment"
-				},
 				{
 					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGConsumableEquipment--version-specific"
 				},
@@ -2630,6 +2627,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--1.0.1.4--classes--base#/$defs/FGEquipment"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGConsumableEquipment"
 				},
 				{
 					"$ref": "#/$defs/FGEquipment--version-specific"

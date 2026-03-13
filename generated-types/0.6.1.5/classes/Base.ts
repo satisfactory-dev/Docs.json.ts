@@ -554,7 +554,7 @@ type FGBuildableWidgetSign = docs_json_ts_0_5_2_1_classes_base_FGBuildableWidget
 
 type FGBuildableWire = docs_json_ts_0_5_2_1_classes_base_FGBuildableWire & FGBuildable_base;
 
-type FGChainsaw = docs_json_ts_common_classes_FGChainsaw & docs_json_ts_0_3_7_7_classes_base_FGChainsaw_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGChainsaw_pre_update8 & docs_json_ts_0_3_7_7_classes_base_FGChainsaw_version_specific & docs_json_ts_0_3_7_7_classes_base_FGEquipment & docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_mPlayingSound & FGChainsaw_pre_1_0 & FGChainsaw_pre_update8 & FGChainsaw_version_specific & FGEquipment;
+type FGChainsaw = docs_json_ts_0_3_7_7_classes_base_FGChainsaw_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGChainsaw_pre_update8 & docs_json_ts_0_3_7_7_classes_base_FGChainsaw_version_specific & docs_json_ts_0_3_7_7_classes_base_FGEquipment & docs_json_ts_0_3_7_7_classes_base_FGEquipment_has_mPlayingSound & docs_json_ts_common_classes_FGChainsaw & FGChainsaw_pre_1_0 & FGChainsaw_pre_update8 & FGChainsaw_version_specific & FGEquipment;
 
 type FGChainsaw_pre_1_0 = {
 	mCurrentAkID: docs_json_ts_common_types_integer_string,
@@ -569,7 +569,7 @@ type FGChainsaw_version_specific = {
 	mCurrentOutputDataSFX: docs_json_ts_common_types_decimal_string,
 };
 
-type FGConsumableEquipment = docs_json_ts_common_classes_FGConsumableEquipment & docs_json_ts_0_3_7_7_classes_base_FGConsumableEquipment_pre_update8 & docs_json_ts_0_3_7_7_classes_base_FGConsumableEquipment_version_specific & docs_json_ts_0_3_7_7_classes_base_FGEquipment_base & docs_json_ts_0_3_7_7_classes_base_FGEquipment & docs_json_ts_0_4_2_11_classes_base_FGConsumableEquipment_version_specific & FGEquipment;
+type FGConsumableEquipment = docs_json_ts_0_3_7_7_classes_base_FGConsumableEquipment_pre_update8 & docs_json_ts_0_3_7_7_classes_base_FGConsumableEquipment_version_specific & docs_json_ts_0_3_7_7_classes_base_FGEquipment & docs_json_ts_0_3_7_7_classes_base_FGEquipment_base & docs_json_ts_0_4_2_11_classes_base_FGConsumableEquipment_version_specific & docs_json_ts_common_classes_FGConsumableEquipment & FGEquipment;
 
 type FGDescriptor = docs_json_ts_0_4_2_11_classes_base_FGDescriptor_base & {
 	mPersistentBigIcon: docs_json_ts_0_4_2_11_properties_Texture2D | 'None',
@@ -621,8 +621,6 @@ type FGHoverPack = docs_json_ts_0_4_2_11_classes_base_FGHoverPack_base & FGEquip
 
 type FGItemDescriptor = docs_json_ts_0_6_1_5_classes_base_overridable_FGItemDescriptor_base & docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable & docs_json_ts_common_classes_FGItemDescriptor;
 
-type FGItemDescriptorBiomass = docs_json_ts_0_6_1_5_classes_base_overridable_FGItemDescriptor_base & docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable & docs_json_ts_common_classes_FGItemDescriptorBiomass;
-
 type FGItemDescriptor_pre_1_0 = {
 	mClassToScanFor: 'None' | `/Game/FactoryGame/${'Resource/Environment/' | 'World/Benefit/'}${string}${'/BP_'}${Exclude<string, ''>}${'.BP_'}${Exclude<string, ''>}`,
 	mDescriptorStatBars: null | [
@@ -639,6 +637,8 @@ type FGItemDescriptor_version_specific = {
 	mScannerLightColor: docs_json_ts_common_types_BGRA,
 	mMenuPriority: docs_json_ts_common_types_decimal_string,
 };
+
+type FGItemDescriptorBiomass = docs_json_ts_0_6_1_5_classes_base_overridable_FGItemDescriptor_base & docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable & docs_json_ts_common_classes_FGItemDescriptorBiomass;
 
 type FGJetPack = docs_json_ts_0_3_7_7_classes_base_FGJetPack_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGJetPack_pre_update7 & docs_json_ts_0_3_7_7_classes_base_FGJetPack_version_specific & FGEquipment_noisy & FGJetPack_version_specific;
 
@@ -858,9 +858,9 @@ export type {
 	FGGolfCartDispenser,
 	FGHoverPack,
 	FGItemDescriptor,
-	FGItemDescriptorBiomass,
 	FGItemDescriptor_pre_1_0,
 	FGItemDescriptor_version_specific,
+	FGItemDescriptorBiomass,
 	FGJetPack,
 	FGJetPack_version_specific,
 	FGJumpingStilts,

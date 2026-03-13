@@ -2690,9 +2690,6 @@
 		"FGChainsaw": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--common--classes#/$defs/FGChainsaw"
-				},
-				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGChainsaw--version-specific"
 				},
 				{
@@ -2700,6 +2697,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGChainsaw--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGChainsaw"
 				},
 				{
 					"$ref": "#/$defs/FGChainsaw--version-specific"
@@ -2780,9 +2780,6 @@
 		"FGConsumableEquipment--base": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--common--classes#/$defs/FGConsumableEquipment"
-				},
-				{
 					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGConsumableEquipment--version-specific"
 				},
 				{
@@ -2790,6 +2787,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGConsumableEquipment--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGConsumableEquipment"
 				},
 				{
 					"$ref": "#/$defs/FGConsumableEquipment--base--version-specific"
@@ -2814,9 +2814,6 @@
 		"FGConsumableEquipment--medkit": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--common--classes#/$defs/FGConsumableEquipment"
-				},
-				{
 					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGConsumableEquipment--version-specific"
 				},
 				{
@@ -2824,6 +2821,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGConsumableEquipment--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGConsumableEquipment"
 				},
 				{
 					"$ref": "#/$defs/FGConsumableEquipment--medkit--version-specific"
@@ -3171,19 +3171,6 @@
 				}
 			]
 		},
-		"FGItemDescriptorBiomass": {
-			"allOf": [
-				{
-					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGDescriptor--sinkable"
-				},
-				{
-					"$ref": "docs.json.ts--common--classes#/$defs/FGItemDescriptorBiomass"
-				},
-				{
-					"$ref": "#/$defs/FGItemDescriptor--base"
-				}
-			]
-		},
 		"FGItemDescriptor--base": {
 			"allOf": [
 				{
@@ -3273,6 +3260,19 @@
 					]
 				}
 			}
+		},
+		"FGItemDescriptorBiomass": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGDescriptor--sinkable"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGItemDescriptorBiomass"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--base"
+				}
+			]
 		},
 		"FGItemDescriptorNuclearFuel": {
 			"allOf": [

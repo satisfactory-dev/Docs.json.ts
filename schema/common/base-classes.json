@@ -2,14 +2,6 @@
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "docs.json.ts--common--classes--base",
 	"$defs": {
-		"Equipment": {
-			"type": "object",
-			"$ref": "#/$defs/hasClassName"
-		},
-		"ItemDescriptor": {
-			"type": "object",
-			"$ref": "#/$defs/hasClassName"
-		},
 		"hasClassName": {
 			"type": "object",
 			"required": ["ClassName"],
@@ -30,6 +22,14 @@
 					]
 				}
 			}
+		},
+		"Equipment": {
+			"type": "object",
+			"$ref": "#/$defs/hasClassName"
+		},
+		"ItemDescriptor": {
+			"type": "object",
+			"$ref": "#/$defs/hasClassName"
 		}
 	}
 }

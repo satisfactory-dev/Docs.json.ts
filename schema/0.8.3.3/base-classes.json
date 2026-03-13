@@ -1828,9 +1828,6 @@
 		"FGChainsaw": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--common--classes#/$defs/FGChainsaw"
-				},
-				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGChainsaw--pre-1.0"
 				},
 				{
@@ -1841,6 +1838,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGChainsaw--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGChainsaw"
 				},
 				{
 					"$ref": "#/$defs/FGChainsaw--pre-1.0"
@@ -1903,9 +1903,6 @@
 		"FGConsumableEquipment": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--common--classes#/$defs/FGConsumableEquipment"
-				},
-				{
 					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGConsumableEquipment--version-specific"
 				},
 				{
@@ -1913,6 +1910,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGConsumableEquipment--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGConsumableEquipment"
 				},
 				{
 					"$ref": "#/$defs/FGEquipment"

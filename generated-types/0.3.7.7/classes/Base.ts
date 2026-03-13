@@ -1012,7 +1012,7 @@ type FGConsumableDescriptor_base = FGDescriptor_sinkable_base & {
 	mCustomLocation: docs_json_ts_common_types_XYZ_decimal_string,
 };
 
-type FGConsumableEquipment = docs_json_ts_common_classes_FGConsumableEquipment & FGConsumableEquipment_pre_update4 & FGConsumableEquipment_pre_update8 & FGConsumableEquipment_version_specific & FGEquipment_base & FGEquipment;
+type FGConsumableEquipment = docs_json_ts_common_classes_FGConsumableEquipment & FGConsumableEquipment_pre_update4 & FGConsumableEquipment_pre_update8 & FGConsumableEquipment_version_specific & FGEquipment & FGEquipment_base;
 
 type FGConsumableEquipment_pre_update4 = {
 	mArmAnimation: 'AE_Consumables' | 'AE_OneHandEquipment',

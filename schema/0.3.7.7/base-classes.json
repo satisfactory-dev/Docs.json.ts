@@ -4258,10 +4258,10 @@
 					"$ref": "#/$defs/FGConsumableEquipment--version-specific"
 				},
 				{
-					"$ref": "#/$defs/FGEquipment--base"
+					"$ref": "#/$defs/FGEquipment"
 				},
 				{
-					"$ref": "#/$defs/FGEquipment"
+					"$ref": "#/$defs/FGEquipment--base"
 				}
 			]
 		},

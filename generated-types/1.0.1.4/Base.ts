@@ -833,7 +833,7 @@ type FGCentralStorageContainer_version_specific = {
 	mTimeToUpload: docs_json_ts_common_types_decimal_string,
 };
 
-type FGChainsaw = docs_json_ts_common_classes_FGChainsaw & docs_json_ts_0_3_7_7_classes_base_FGChainsaw_version_specific & docs_json_ts_0_6_1_5_classes_base_FGChainsaw_version_specific & docs_json_ts_0_8_3_3_classes_base_FGChainsaw_version_specific & FGChainsaw_version_specific & FGEquipment;
+type FGChainsaw = docs_json_ts_0_3_7_7_classes_base_FGChainsaw_version_specific & docs_json_ts_0_6_1_5_classes_base_FGChainsaw_version_specific & docs_json_ts_0_8_3_3_classes_base_FGChainsaw_version_specific & docs_json_ts_common_classes_FGChainsaw & FGChainsaw_version_specific & FGEquipment;
 
 type FGChainsaw_version_specific = {
 	StartUpToIdleID: docs_json_ts_common_types_integer_string,
@@ -852,14 +852,14 @@ type FGChainsaw_version_specific = {
 
 type FGConsumableDescriptor = docs_json_ts_0_3_7_7_classes_base_FGConsumableDescriptor_base & docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable & FGItemDescriptor_base;
 
-type FGConsumableEquipment_base = docs_json_ts_common_classes_FGConsumableEquipment & docs_json_ts_0_8_3_3_classes_base_overridable_FGConsumableEquipment_version_specific & docs_json_ts_0_3_7_7_classes_base_FGConsumableEquipment_version_specific & docs_json_ts_0_4_2_11_classes_base_FGConsumableEquipment_version_specific & FGConsumableEquipment_base_version_specific & FGEquipment;
+type FGConsumableEquipment_base = docs_json_ts_0_8_3_3_classes_base_overridable_FGConsumableEquipment_version_specific & docs_json_ts_0_3_7_7_classes_base_FGConsumableEquipment_version_specific & docs_json_ts_0_4_2_11_classes_base_FGConsumableEquipment_version_specific & docs_json_ts_common_classes_FGConsumableEquipment & FGConsumableEquipment_base_version_specific & FGEquipment;
 
 type FGConsumableEquipment_base_version_specific = {
 	mEatMontage: docs_json_ts_1_0_1_4_properties_Montages_item,
 	mReEquipAfterEatMontage: docs_json_ts_1_0_1_4_properties_Montages_item,
 };
 
-type FGConsumableEquipment_medkit = docs_json_ts_common_classes_FGConsumableEquipment & docs_json_ts_0_8_3_3_classes_base_overridable_FGConsumableEquipment_version_specific & docs_json_ts_0_3_7_7_classes_base_FGConsumableEquipment_version_specific & docs_json_ts_0_4_2_11_classes_base_FGConsumableEquipment_version_specific & FGConsumableEquipment_medkit_version_specific & FGEquipment;
+type FGConsumableEquipment_medkit = docs_json_ts_0_8_3_3_classes_base_overridable_FGConsumableEquipment_version_specific & docs_json_ts_0_3_7_7_classes_base_FGConsumableEquipment_version_specific & docs_json_ts_0_4_2_11_classes_base_FGConsumableEquipment_version_specific & docs_json_ts_common_classes_FGConsumableEquipment & FGConsumableEquipment_medkit_version_specific & FGEquipment;
 
 type FGConsumableEquipment_medkit_version_specific = {
 	mMedkitUseMontages: docs_json_ts_1_0_1_4_properties_Montages,
@@ -930,8 +930,6 @@ type FGHoverPack_version_specific = {
 
 type FGItemDescriptor = docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable & docs_json_ts_common_classes_FGItemDescriptor & FGItemDescriptor_base;
 
-type FGItemDescriptorBiomass = docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable & docs_json_ts_common_classes_FGItemDescriptorBiomass & FGItemDescriptor_base;
-
 type FGItemDescriptor_base = docs_json_ts_0_6_1_5_classes_base_FGDescriptor & docs_json_ts_0_6_1_5_classes_base_FGItemDescriptor_version_specific & docs_json_ts_0_6_1_5_classes_base_overridable_FGItemDescriptor_version_specific & docs_json_ts_0_6_1_5_overridable_has_mSubCategories & FGItemDescriptor_version_specific;
 
 type FGItemDescriptor_version_specific = {
@@ -944,6 +942,8 @@ type FGItemDescriptor_version_specific = {
 		...docs_json_ts_1_0_1_4_properties_FGItemDescriptor_version_specific_mDescriptorStatBars_item[],
 	],
 };
+
+type FGItemDescriptorBiomass = docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable & docs_json_ts_common_classes_FGItemDescriptorBiomass & FGItemDescriptor_base;
 
 type FGItemDescriptorNuclearFuel = docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_version_specific & FGItemDescriptor_base & FGItemDescriptorNuclearFuel_version_specific;
 
@@ -1261,9 +1261,9 @@ export type {
 	FGHoverPack,
 	FGHoverPack_version_specific,
 	FGItemDescriptor,
-	FGItemDescriptorBiomass,
 	FGItemDescriptor_base,
 	FGItemDescriptor_version_specific,
+	FGItemDescriptorBiomass,
 	FGItemDescriptorNuclearFuel,
 	FGItemDescriptorNuclearFuel_version_specific,
 	FGItemDescriptorPowerBoosterFuel,

@@ -783,8 +783,6 @@ type FGItemDescAmmoTypeProjectile_explosive_firework = FGItemDescAmmoTypeProject
 
 type FGItemDescriptor = docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable & docs_json_ts_common_classes_FGItemDescriptor & FGItemDescriptor_base;
 
-type FGItemDescriptorBiomass = docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable & docs_json_ts_common_classes_FGItemDescriptorBiomass & FGItemDescriptor_base;
-
 type FGItemDescriptor_base = FGItemDescriptor_base_base & {
 	mBuildMenuPriority: docs_json_ts_common_types_decimal_string,
 };
@@ -793,6 +791,8 @@ type FGItemDescriptor_base_base = FGDescriptor & {
 	mMenuPriority: docs_json_ts_common_types_decimal_string,
 	mSubCategories: null,
 };
+
+type FGItemDescriptorBiomass = docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable & docs_json_ts_common_classes_FGItemDescriptorBiomass & FGItemDescriptor_base;
 
 type FGNobeliskDetonator = FGNobeliskDetonator_pre_update6 & FGNobeliskDetonator_version_specific;
 
@@ -1043,9 +1043,9 @@ export type {
 	FGItemDescAmmoTypeProjectile_Desc_SpikedRebar_C_base,
 	FGItemDescAmmoTypeProjectile_explosive_firework,
 	FGItemDescriptor,
-	FGItemDescriptorBiomass,
 	FGItemDescriptor_base,
 	FGItemDescriptor_base_base,
+	FGItemDescriptorBiomass,
 	FGNobeliskDetonator,
 	FGNobeliskDetonator_pre_update6,
 	FGNobeliskDetonator_version_specific,
