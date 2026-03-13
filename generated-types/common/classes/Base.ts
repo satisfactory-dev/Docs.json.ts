@@ -2,7 +2,7 @@
 
 type Equipment = hasClassName;
 
-type FGItemDescriptor = hasClassName;
+type ItemDescriptor = hasClassName;
 
 type hasClassName = {
 	ClassName: `${Exclude<string, ''>}${'_'}${Exclude<string, ''>}${'_C'}`,
@@ -10,6 +10,6 @@ type hasClassName = {
 
 export type {
 	Equipment,
-	FGItemDescriptor,
+	ItemDescriptor,
 	hasClassName,
 };

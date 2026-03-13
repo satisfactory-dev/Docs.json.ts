@@ -6,7 +6,7 @@
 			"type": "object",
 			"$ref": "#/$defs/hasClassName"
 		},
-		"FGItemDescriptor": {
+		"ItemDescriptor": {
 			"type": "object",
 			"$ref": "#/$defs/hasClassName"
 		},

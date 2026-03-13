@@ -24,11 +24,11 @@
 		},
 		"FGItemDescriptor": {
 			"type": "object",
-			"$ref": "docs.json.ts--common--classes--base#/$defs/FGItemDescriptor"
+			"$ref": "docs.json.ts--common--classes--base#/$defs/ItemDescriptor"
 		},
 		"FGItemDescriptorBiomass": {
 			"type": "object",
-			"$ref": "docs.json.ts--common--classes--base#/$defs/FGItemDescriptor"
+			"$ref": "docs.json.ts--common--classes--base#/$defs/ItemDescriptor"
 		},
 		"FGPoleDescriptor": {
 			"type": "object",
