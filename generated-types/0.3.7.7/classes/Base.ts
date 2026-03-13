@@ -62,6 +62,7 @@ import type {
 	FGBuildableConveyorBelt as docs_json_ts_common_classes_FGBuildableConveyorBelt,
 	FGBuildablePole as docs_json_ts_common_classes_FGBuildablePole,
 	FGBuildingDescriptor as docs_json_ts_common_classes_FGBuildingDescriptor,
+	FGChainsaw as docs_json_ts_common_classes_FGChainsaw,
 	FGConsumableEquipment as docs_json_ts_common_classes_FGConsumableEquipment,
 	FGItemDescriptor as docs_json_ts_common_classes_FGItemDescriptor,
 	FGItemDescriptorBiomass as docs_json_ts_common_classes_FGItemDescriptorBiomass,
@@ -963,7 +964,7 @@ type FGBuildableWire_base = {
 
 type FGBuildingDescriptor = docs_json_ts_common_classes_FGBuildingDescriptor & FGDescriptor_BuildMenu;
 
-type FGChainsaw = FGChainsaw_pre_1_0 & FGChainsaw_pre_update8 & FGChainsaw_version_specific & FGEquipment & FGEquipment_has_mPlayingSound;
+type FGChainsaw = docs_json_ts_common_classes_FGChainsaw & FGChainsaw_pre_1_0 & FGChainsaw_pre_update8 & FGChainsaw_version_specific & FGEquipment & FGEquipment_has_mPlayingSound;
 
 type FGChainsaw_pre_1_0 = {
 	mExcludeChainsawableFoliage: docs_json_ts_common_types_bool_string,

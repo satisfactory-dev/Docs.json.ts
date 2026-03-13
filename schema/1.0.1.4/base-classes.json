@@ -2690,6 +2690,9 @@
 		"FGChainsaw": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGChainsaw"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGChainsaw--version-specific"
 				},
 				{

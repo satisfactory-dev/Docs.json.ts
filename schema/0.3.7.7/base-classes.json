@@ -4064,6 +4064,9 @@
 		"FGChainsaw": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGChainsaw"
+				},
+				{
 					"$ref": "#/$defs/FGChainsaw--pre-1.0"
 				},
 				{

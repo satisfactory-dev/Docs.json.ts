@@ -275,6 +275,7 @@ import type {
 
 import type {
 	FGBuildableConveyorBelt as docs_json_ts_common_classes_FGBuildableConveyorBelt,
+	FGChainsaw as docs_json_ts_common_classes_FGChainsaw,
 	FGConsumableEquipment as docs_json_ts_common_classes_FGConsumableEquipment,
 	FGSchematic as docs_json_ts_common_classes_FGSchematic,
 } from './../../common/classes.ts';
@@ -613,7 +614,7 @@ type FGBuildableWire_version_specific = {
 	mCachedLength: docs_json_ts_common_types_decimal_string,
 };
 
-type FGChainsaw = docs_json_ts_0_3_7_7_classes_base_FGChainsaw_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGChainsaw_version_specific & docs_json_ts_0_6_1_5_classes_base_FGChainsaw_pre_1_0 & docs_json_ts_0_6_1_5_classes_base_FGChainsaw_version_specific & FGChainsaw_pre_1_0 & FGChainsaw_version_specific & FGEquipment;
+type FGChainsaw = docs_json_ts_common_classes_FGChainsaw & docs_json_ts_0_3_7_7_classes_base_FGChainsaw_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGChainsaw_version_specific & docs_json_ts_0_6_1_5_classes_base_FGChainsaw_pre_1_0 & docs_json_ts_0_6_1_5_classes_base_FGChainsaw_version_specific & FGChainsaw_pre_1_0 & FGChainsaw_version_specific & FGEquipment;
 
 type FGChainsaw_pre_1_0 = {
 	mSawingMontageLength: docs_json_ts_common_types_decimal_string,

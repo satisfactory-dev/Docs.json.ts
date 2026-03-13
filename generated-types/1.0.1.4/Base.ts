@@ -290,6 +290,7 @@ import type {
 import type {
 	FGBuildableConveyorBelt as docs_json_ts_common_classes_FGBuildableConveyorBelt,
 	FGBuildingDescriptor as docs_json_ts_common_classes_FGBuildingDescriptor,
+	FGChainsaw as docs_json_ts_common_classes_FGChainsaw,
 	FGConsumableEquipment as docs_json_ts_common_classes_FGConsumableEquipment,
 	FGItemDescriptor as docs_json_ts_common_classes_FGItemDescriptor,
 	FGItemDescriptorBiomass as docs_json_ts_common_classes_FGItemDescriptorBiomass,
@@ -832,7 +833,7 @@ type FGCentralStorageContainer_version_specific = {
 	mTimeToUpload: docs_json_ts_common_types_decimal_string,
 };
 
-type FGChainsaw = docs_json_ts_0_3_7_7_classes_base_FGChainsaw_version_specific & docs_json_ts_0_6_1_5_classes_base_FGChainsaw_version_specific & docs_json_ts_0_8_3_3_classes_base_FGChainsaw_version_specific & FGChainsaw_version_specific & FGEquipment;
+type FGChainsaw = docs_json_ts_common_classes_FGChainsaw & docs_json_ts_0_3_7_7_classes_base_FGChainsaw_version_specific & docs_json_ts_0_6_1_5_classes_base_FGChainsaw_version_specific & docs_json_ts_0_8_3_3_classes_base_FGChainsaw_version_specific & FGChainsaw_version_specific & FGEquipment;
 
 type FGChainsaw_version_specific = {
 	StartUpToIdleID: docs_json_ts_common_types_integer_string,
