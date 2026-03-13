@@ -2,6 +2,10 @@
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "docs.json.ts--common--classes--base",
 	"$defs": {
+		"Equipment": {
+			"type": "object",
+			"$ref": "#/$defs/hasClassName"
+		},
 		"FGItemDescriptor": {
 			"type": "object",
 			"$ref": "#/$defs/hasClassName"

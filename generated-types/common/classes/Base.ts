@@ -1,5 +1,7 @@
 /* eslint-disable @stylistic/max-len */
 
+type Equipment = hasClassName;
+
 type FGItemDescriptor = hasClassName;
 
 type hasClassName = {
@@ -7,6 +9,7 @@ type hasClassName = {
 };
 
 export type {
+	Equipment,
 	FGItemDescriptor,
 	hasClassName,
 };

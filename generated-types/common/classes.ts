@@ -1,6 +1,7 @@
 /* eslint-disable @stylistic/max-len */
 
 import type {
+	Equipment as docs_json_ts_common_classes_base_Equipment,
 	FGItemDescriptor as docs_json_ts_common_classes_base_FGItemDescriptor,
 	hasClassName as docs_json_ts_common_classes_base_hasClassName,
 } from './classes/Base.ts';
@@ -11,9 +12,9 @@ type FGBuildablePole = docs_json_ts_common_classes_base_hasClassName;
 
 type FGBuildingDescriptor = docs_json_ts_common_classes_base_hasClassName;
 
-type FGChainsaw = docs_json_ts_common_classes_base_hasClassName;
+type FGChainsaw = docs_json_ts_common_classes_base_Equipment;
 
-type FGConsumableEquipment = docs_json_ts_common_classes_base_hasClassName;
+type FGConsumableEquipment = docs_json_ts_common_classes_base_Equipment;
 
 type FGItemDescriptor = docs_json_ts_common_classes_base_FGItemDescriptor;
 

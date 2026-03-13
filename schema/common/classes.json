@@ -16,11 +16,11 @@
 		},
 		"FGChainsaw": {
 			"type": "object",
-			"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+			"$ref": "docs.json.ts--common--classes--base#/$defs/Equipment"
 		},
 		"FGConsumableEquipment": {
 			"type": "object",
-			"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+			"$ref": "docs.json.ts--common--classes--base#/$defs/Equipment"
 		},
 		"FGItemDescriptor": {
 			"type": "object",
