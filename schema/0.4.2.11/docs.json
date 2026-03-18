@@ -29,7 +29,7 @@
 					"$ref": "docs.json.ts--0.4.2.11--classes#/$defs/FGBuildable--tiered"
 				},
 				{
-					"$ref": "docs.json.ts--0.4.2.11--classes#/$defs/FGBuildable--base"
+					"$ref": "docs.json.ts--0.4.2.11--classes#/$defs/FGBuildable--unoccupied-and-untiered"
 				}
 			]
 		},
@@ -186,7 +186,7 @@
 					"$ref": "docs.json.ts--0.4.2.11--classes#/$defs/FGBuildableFactory--landing-pad"
 				},
 				{
-					"$ref": "docs.json.ts--0.4.2.11--classes#/$defs/FGBuildable--powered-base"
+					"$ref": "docs.json.ts--0.4.2.11--classes#/$defs/FGBuildableFactory--not-a-pad"
 				}
 			]
 		},
@@ -1089,7 +1089,7 @@
 					"type": "array",
 					"minItems": 1,
 					"items": {
-						"$ref": "docs.json.ts--0.4.2.11--classes#/$defs/FGBuildablePole"
+						"$ref": "docs.json.ts--0.4.2.11--classes#/$defs/FGConveyorPoleStackable"
 					}
 				}
 			}
@@ -1107,7 +1107,7 @@
 					"type": "array",
 					"minItems": 1,
 					"items": {
-						"$ref": "docs.json.ts--0.4.2.11--classes#/$defs/FGItemDescriptor"
+						"$ref": "docs.json.ts--0.4.2.11--classes#/$defs/FGEquipmentDescriptor"
 					}
 				}
 			}
@@ -1417,7 +1417,7 @@
 					"type": "array",
 					"minItems": 1,
 					"items": {
-						"$ref": "docs.json.ts--0.4.2.11--classes#/$defs/FGWeaponInstantFire"
+						"$ref": "docs.json.ts--0.4.2.11--classes#/$defs/FGWeapon--Equip_Rifle_C"
 					}
 				}
 			}
@@ -1435,7 +1435,7 @@
 					"type": "array",
 					"minItems": 1,
 					"items": {
-						"$ref": "docs.json.ts--0.4.2.11--classes#/$defs/FGWeaponProjectileFire"
+						"$ref": "docs.json.ts--0.4.2.11--classes#/$defs/FGWeapon--Equip_RebarGun_Projectile_C"
 					}
 				}
 			}

@@ -2,9 +2,9 @@
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "docs.json.ts--0.3.7.7--classes",
 	"$defs": {
-		"FGBuildable--base": {
+		"FGBuildable--unoccupied-and-untiered": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--unoccupied-and-untiered",
 			"unevaluatedProperties": false
 		},
 		"FGBuildable--occupied": {
@@ -29,7 +29,7 @@
 		},
 		"FGBuildableAttachmentSplitter": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableAttachment--splitter",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableAttachmentSplitter",
 			"unevaluatedProperties": false
 		},
 		"FGBuildableConveyorBelt": {
@@ -54,18 +54,13 @@
 		},
 		"FGBuildableFactory--landing-pad": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered",
-			"unevaluatedProperties": false,
-			"required": ["mDampeningFactor", "mPlayerList"],
-			"properties": {
-				"mDampeningFactor": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				},
-				"mPlayerList": {
-					"type": "string",
-					"const": ""
-				}
-			}
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableFactory--landing-pad",
+			"unevaluatedProperties": false
+		},
+		"FGBuildableFactory--not-a-pad": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableFactory--not-a-pad",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableFactorySimpleProducer": {
 			"type": "object",
@@ -74,7 +69,7 @@
 		},
 		"FGBuildableFoundation": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-height-and-elevation",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableFoundation",
 			"unevaluatedProperties": false
 		},
 		"FGBuildableGeneratorFuel--biomass": {
@@ -244,20 +239,13 @@
 		},
 		"FGBuildableSnowDispenser": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableSnowDispenser",
 			"unevaluatedProperties": false
 		},
 		"FGBuildableSpaceElevator": {
 			"type": "object",
 			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered",
-			"required": ["mMapText"],
-			"properties": {
-				"mMapText": {
-					"type": "string",
-					"const": "Space Elevator"
-				}
-			}
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableSpaceElevator"
 		},
 		"FGBuildableSplitterSmart": {
 			"type": "object",
@@ -266,7 +254,7 @@
 		},
 		"FGBuildableStair": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-height-and-elevation",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableStair",
 			"unevaluatedProperties": false
 		},
 		"FGBuildableStorage": {
@@ -297,17 +285,17 @@
 		},
 		"FGBuildableTrainPlatformEmpty": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableTrainPlatform",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableTrainPlatformEmpty",
 			"unevaluatedProperties": false
 		},
 		"FGBuildableWalkway": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-size-and-elevation",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableWalkway",
 			"unevaluatedProperties": false
 		},
 		"FGBuildableWall": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-height-and-width",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableWall",
 			"unevaluatedProperties": false
 		},
 		"FGBuildableWire": {
@@ -338,6 +326,16 @@
 		"FGConsumableEquipment": {
 			"type": "object",
 			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGConsumableEquipment",
+			"unevaluatedProperties": false
+		},
+		"FGConveyorPoleStackable": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGConveyorPoleStackable",
+			"unevaluatedProperties": false
+		},
+		"FGEquipmentDescriptor": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGEquipmentDescriptor",
 			"unevaluatedProperties": false
 		},
 		"FGEquipmentStunSpear--xenobasher": {
@@ -449,17 +447,17 @@
 		},
 		"FGVehicleDescriptor": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGDescriptor--BuildMenu",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGVehicleDescriptor",
 			"unevaluatedProperties": false
 		},
-		"FGWeaponInstantFire": {
+		"FGWeapon--Equip_RebarGun_Projectile_C": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponInstantFire",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeapon--Equip_RebarGun_Projectile_C",
 			"unevaluatedProperties": false
 		},
-		"FGWeaponProjectileFire": {
+		"FGWeapon--Equip_Rifle_C": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectileFire",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeapon--Equip_Rifle_C",
 			"unevaluatedProperties": false
 		}
 	}

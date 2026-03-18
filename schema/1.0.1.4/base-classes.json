@@ -15,6 +15,9 @@
 		"FGAmmoTypeInstantHit--Desc_CartridgeChaos_C": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGAmmoTypeInstantHit"
+				},
+				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGAmmoType--base"
 				},
 				{
@@ -46,6 +49,9 @@
 		"FGAmmoTypeInstantHit--Desc_CartridgeStandard_C": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGAmmoTypeInstantHit"
+				},
+				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGAmmoType--base"
 				},
 				{
@@ -73,6 +79,9 @@
 		},
 		"FGAmmoTypeProjectile": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGAmmoTypeProjectile"
+				},
 				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGAmmoType--base"
 				},
@@ -142,6 +151,9 @@
 		"FGAmmoTypeSpreadshot": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGAmmoTypeSpreadshot"
+				},
+				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGAmmoType--base"
 				},
 				{
@@ -191,6 +203,9 @@
 		},
 		"FGBuildable--occupied": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildable--occupied"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--occupied--base"
 				},
@@ -291,7 +306,20 @@
 		"FGBuildable--tiered": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildable--tiered"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--tiered--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildable--unoccupied-and-untiered": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildable--unoccupied-and-untiered"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--base"
@@ -384,6 +412,9 @@
 		"FGBuildableAttachmentMerger": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableAttachmentMerger"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableAttachmentMerger--version-specific"
 				},
 				{
@@ -396,6 +427,9 @@
 		},
 		"FGBuildableAttachmentSplitter": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableAttachmentSplitter"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableAttachment--has--mCurrentOutputIndex"
 				},
@@ -410,7 +444,10 @@
 		"FGBuildableBeamLightweight": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableBeam--base"
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableBeam"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableBeam--version-specific"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--base"
@@ -419,6 +456,9 @@
 		},
 		"FGBuildableBlueprintDesigner": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableBlueprintDesigner"
+				},
 				{
 					"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGBuildableBlueprintDesigner--version-specific"
 				},
@@ -457,6 +497,9 @@
 		},
 		"FGBuildableCircuitSwitch": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableCircuitSwitch"
+				},
 				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableCircuitSwitch--base"
 				},
@@ -522,6 +565,9 @@
 		"FGBuildableConveyorLift": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableConveyorLift"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableConveyorBelt--pre-1.0"
 				},
 				{
@@ -559,6 +605,9 @@
 		"FGBuildableCornerWall": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableCornerWall"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-height--base"
 				},
 				{
@@ -574,6 +623,9 @@
 		},
 		"FGBuildableDockingStation": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableDockingStation"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--docking-station--base--base--base"
 				},
@@ -601,18 +653,33 @@
 		"FGBuildableDoor--automated": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableDoor"
+				},
+				{
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableDoor--automated--version-specific"
 				},
 				{
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableDoor--base"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableWall"
+					"$ref": "docs.json.ts--0.5.2.1--classes--base.overridable#/$defs/FGBuildable--is-wallish"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-height-and-width--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildable--with-elevation"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
 				}
 			]
 		},
 		"FGBuildableDoor--manual": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableDoor"
+				},
 				{
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableDoor--base"
 				},
@@ -620,12 +687,24 @@
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableDoor--manual--version-specific"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableWall"
+					"$ref": "docs.json.ts--0.5.2.1--classes--base.overridable#/$defs/FGBuildable--is-wallish"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-height-and-width--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildable--with-elevation"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
 				}
 			]
 		},
 		"FGBuildableDroneStation": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableDroneStation"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--docking-station--base--with-mMapText"
 				},
@@ -655,6 +734,9 @@
 		"FGBuildableFactory--jump-pad": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableFactory"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableFactory--jump-pad--base--base--base"
 				},
 				{
@@ -665,6 +747,9 @@
 		"FGBuildableFactory--landing-pad": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableFactory"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableFactory--landing-pad--base--base--base"
 				},
 				{
@@ -672,8 +757,31 @@
 				}
 			]
 		},
+		"FGBuildableFactory--not-pad": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableFactory"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				}
+			]
+		},
+		"FGBuildableFactoryBuilding": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableFactoryBuilding"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
 		"FGBuildableFactorySimpleProducer": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableFactorySimpleProducer"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableFactorySimpleProducer--base--base"
 				},
@@ -685,18 +793,36 @@
 		"FGBuildableFloodlight": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableFloodlight"
+				},
+				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableFloodlight--version-specific"
 				},
 				{
-					"$ref": "#/$defs/FGBuildable--base"
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--light-related-thing--base"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableLightSource"
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--mHasPower--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableLightSource--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/has--mPowerConsumption"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableLightSource--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
 				}
 			]
 		},
-		"FGBuildableFoundation": {
+		"FGBuildableFoundationLightweight": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableFoundation"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-height--base"
 				},
@@ -726,6 +852,9 @@
 		"FGBuildableFrackingActivator": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableFrackingActivator"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGBuildableResourceExtractor--only-allow-certain-resources"
 				},
 				{
@@ -744,6 +873,9 @@
 		},
 		"FGBuildableFrackingExtractor": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableFrackingExtractor"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGBuildableResourceExtractor--only-allow-certain-resources"
 				},
@@ -800,6 +932,9 @@
 		"FGBuildableGeneratorFuel--biomass": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableGeneratorFuel"
+				},
+				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableGeneratorFuel--base--base--base"
 				},
 				{
@@ -854,6 +989,9 @@
 		"FGBuildableGeneratorFuel--coal": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableGeneratorFuel"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGeneratorFuel--coal--base--base"
 				},
 				{
@@ -866,6 +1004,9 @@
 		},
 		"FGBuildableGeneratorFuel--fuel": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableGeneratorFuel"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGeneratorFuel--base--base--base"
 				},
@@ -920,6 +1061,9 @@
 		"FGBuildableGeneratorGeoThermal": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableGeneratorGeoThermal"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGeneratorGeoThermal--base--base--base"
 				},
 				{
@@ -932,6 +1076,9 @@
 		},
 		"FGBuildableGeneratorNuclear": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableGeneratorNuclear"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGeneratorNuclear--version-specific"
 				},
@@ -981,6 +1128,9 @@
 		"FGBuildableJumppad": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableJumppad"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableJumppad--base--base--base"
 				},
 				{
@@ -994,6 +1144,9 @@
 		"FGBuildableLadder": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableLadder"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableLadder--base"
 				},
 				{
@@ -1004,10 +1157,13 @@
 		"FGBuildableLightsControlPanel": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableLightsControlPanel"
+				},
+				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--light-related-thing--base"
 				},
 				{
-					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableLightsControlPanel--base"
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableLightsControlPanel--version-specific"
 				},
 				{
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableLightsControlPanel--version-specific"
@@ -1020,8 +1176,11 @@
 				}
 			]
 		},
-		"FGBuildableLightSource": {
+		"FGBuildableLightSource--Build_CeilingLight_C": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableLightSource"
+				},
 				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--light-related-thing--base"
 				},
@@ -1045,10 +1204,28 @@
 		"FGBuildableLightSource--Build_StreetLight_C": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableLightSource"
+				},
+				{
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableLightSource--Build_StreetLight_C--version-specific"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableLightSource"
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--light-related-thing--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--mHasPower--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableLightSource--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/has--mPowerConsumption"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableLightSource--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
 				}
 			]
 		},
@@ -1095,6 +1272,9 @@
 		"FGBuildableManufacturer--Build_AssemblerMk1_C": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableManufacturer"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--base--base"
 				},
 				{
@@ -1104,6 +1284,9 @@
 		},
 		"FGBuildableManufacturer--Build_Blender_C": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableManufacturer"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--base--base"
 				},
@@ -1123,6 +1306,9 @@
 		},
 		"FGBuildableManufacturer--Build_ConstructorMk1_C": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableManufacturer"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--base--base"
 				},
@@ -1164,6 +1350,9 @@
 		"FGBuildableManufacturer--Build_Converter_C": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableManufacturerVariablePower"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--base--base"
 				},
 				{
@@ -1176,6 +1365,9 @@
 		},
 		"FGBuildableManufacturer--Build_FoundryMk1_C": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableManufacturer"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--base--base"
 				},
@@ -1192,6 +1384,9 @@
 		},
 		"FGBuildableManufacturer--Build_HadronCollider_C": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableManufacturerVariablePower"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--base--base"
 				},
@@ -1212,6 +1407,9 @@
 		"FGBuildableManufacturer--Build_ManufacturerMk1_C": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableManufacturer"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--base--base"
 				},
 				{
@@ -1224,6 +1422,9 @@
 		},
 		"FGBuildableManufacturer--Build_OilRefinery_C": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableManufacturer"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--base--base"
 				},
@@ -1240,6 +1441,9 @@
 		},
 		"FGBuildableManufacturer--Build_Packager_C": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableManufacturer"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--base--base"
 				},
@@ -1259,6 +1463,9 @@
 		},
 		"FGBuildableManufacturer--Build_QuantumEncoder_C": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableManufacturerVariablePower"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--base--base"
 				},
@@ -1288,6 +1495,9 @@
 		"FGBuildableManufacturer--Build_SmelterMk1_C": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableManufacturer"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--base--base"
 				},
 				{
@@ -1304,6 +1514,25 @@
 		"FGBuildablePassthrough": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildablePassthrough"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildablePassthrough--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGBuildablePassthrough--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildablePassthroughPipeHyper": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildablePassthroughPipeHyper"
+				},
+				{
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildablePassthrough--base"
 				},
 				{
@@ -1317,6 +1546,9 @@
 		"FGBuildablePillarLightweight": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildablePillar"
+				},
+				{
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/has--mIsSupport"
 				},
 				{
@@ -1329,6 +1561,9 @@
 		},
 		"FGBuildablePipeHyper": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildablePipeHyper"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mMeshLength"
 				},
@@ -1345,6 +1580,9 @@
 		},
 		"FGBuildablePipeline": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildablePipeline"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipeline--base-root"
 				},
@@ -1391,6 +1629,9 @@
 		"FGBuildablePipelineJunction": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildablePipelineJunction"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--version-specific"
 				},
 				{
@@ -1406,6 +1647,9 @@
 		},
 		"FGBuildablePipelinePump--pump": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildablePipelinePump"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipeline--base--base"
 				},
@@ -1428,6 +1672,9 @@
 		},
 		"FGBuildablePipelinePump--valve": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildablePipelinePump"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipeline--base--base"
 				},
@@ -1454,6 +1701,9 @@
 		"FGBuildablePipelineSupport": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildablePipelineSupport"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--pole--base"
 				},
 				{
@@ -1476,6 +1726,9 @@
 		"FGBuildablePipeReservoir": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildablePipeReservoir"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipeReservoir--base--base--base"
 				},
 				{
@@ -1485,6 +1738,9 @@
 		},
 		"FGBuildablePoleBase": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildablePoleBase"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--base--version-specific"
 				},
@@ -1517,12 +1773,18 @@
 					"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGBuildablePole--version-specific"
 				},
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildablePole"
+				},
+				{
 					"$ref": "#/$defs/FGBuildable--base"
 				}
 			]
 		},
 		"FGBuildablePortal": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildablePortal"
+				},
 				{
 					"$ref": "#/$defs/FGBuildable--base"
 				},
@@ -1765,6 +2027,9 @@
 		"FGBuildablePortalSatellite": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildablePortalSatellite"
+				},
+				{
 					"$ref": "#/$defs/FGBuildable--base"
 				},
 				{
@@ -1806,6 +2071,9 @@
 		},
 		"FGBuildablePowerBooster": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildablePowerBooster"
+				},
 				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/has--mPowerConsumption"
 				},
@@ -1929,6 +2197,9 @@
 		"FGBuildablePowerPole": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildablePowerPole"
+				},
+				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--mHasPower--base"
 				},
 				{
@@ -1944,6 +2215,9 @@
 		},
 		"FGBuildablePowerStorage": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildablePowerStorage"
+				},
 				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildablePowerStorage--base"
 				},
@@ -1977,6 +2251,9 @@
 		"FGBuildablePriorityPowerSwitch": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildablePriorityPowerSwitch"
+				},
+				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableCircuitSwitch--base"
 				},
 				{
@@ -1995,6 +2272,9 @@
 		},
 		"FGBuildableRadarTower": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableRadarTower"
+				},
 				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildableRadarTower--version-specific"
 				},
@@ -2022,7 +2302,20 @@
 		"FGBuildableRailroadSignal--block": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableRailroadSignal--block"
+				},
+				{
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableRailroadSignal--block--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableRailroadSignal--base"
+				}
+			]
+		},
+		"FGBuildableRailroadSignal--path": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableRailroadSignal--path"
 				},
 				{
 					"$ref": "#/$defs/FGBuildableRailroadSignal--base"
@@ -2031,6 +2324,9 @@
 		},
 		"FGBuildableRailroadStation": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableRailroadStation"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableRailroadStation--version-specific"
 				},
@@ -2057,6 +2353,9 @@
 		"FGBuildableRailroadTrack": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableRailroadTrack"
+				},
+				{
 					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGBuildableRailroadTrack--version-specific"
 				},
 				{
@@ -2073,13 +2372,37 @@
 		"FGBuildableRampLightweight": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableRamp"
+				},
+				{
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableRamp--base"
 				},
 				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/has--mIsInverted"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableFoundation"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-height--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-width--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildable--isFrame"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildable--with-elevation"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildable--foundation--mDisableSnapOn"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildable--with-depth"
+				},
+				{
+					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGBuildableFoundation--version-specific"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
 				}
 			]
 		},
@@ -2101,6 +2424,9 @@
 		},
 		"FGBuildableResourceExtractor--miner--mk1": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableResourceExtractor"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGBuildableResourceExtractor--miner--base"
 				},
@@ -2136,6 +2462,9 @@
 		"FGBuildableResourceExtractor--miner--mk2": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableResourceExtractor"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGBuildableResourceExtractor--miner--base"
 				},
 				{
@@ -2157,6 +2486,9 @@
 		},
 		"FGBuildableResourceExtractor--miner--mk3": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableResourceExtractor"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--miner--base"
 				},
@@ -2180,6 +2512,9 @@
 		"FGBuildableResourceExtractor--oil": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableResourceExtractor"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--oil--base--base--base"
 				},
 				{
@@ -2192,6 +2527,9 @@
 		},
 		"FGBuildableResourceExtractor--water": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableResourceExtractor"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--timed"
 				},
@@ -2209,6 +2547,9 @@
 		"FGBuildableResourceSink": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableResourceSink"
+				},
+				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableResourceSink--base--base"
 				},
 				{
@@ -2219,6 +2560,9 @@
 		"FGBuildableResourceSinkShop": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableResourceSinkShop"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceSinkShop--base--base--base"
 				},
 				{
@@ -2228,6 +2572,9 @@
 		},
 		"FGBuildableSnowCannon": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableSnowCannon"
+				},
 				{
 					"$ref": "#/$defs/FGBuildable--base"
 				},
@@ -2276,8 +2623,21 @@
 				}
 			}
 		},
+		"FGBuildableSnowDispenser": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableSnowDispenser"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
 		"FGBuildableSpaceElevator": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableSpaceElevator"
+				},
 				{
 					"$ref": "#/$defs/FGBuildable--powered"
 				},
@@ -2305,6 +2665,9 @@
 		"FGBuildableSplitterSmart": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableSplitterSmart"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableAttachment--splitter--base--base--base"
 				},
 				{
@@ -2321,6 +2684,9 @@
 		"FGBuildableStorage": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableStorage"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableStorage--base--base--base"
 				},
 				{
@@ -2331,13 +2697,16 @@
 		"FGBuildableTradingPost": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableTradingPost"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableTradingPost--version-specific"
 				},
 				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableTradingPost--base--version-specific"
 				},
 				{
-					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableTradingPost--base"
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableTradingPost--version-specific"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--powered"
@@ -2518,6 +2887,9 @@
 		"FGBuildableTrainPlatformCargo": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableTrainPlatformCargo"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered-storage--base--base--base"
 				},
 				{
@@ -2549,6 +2921,9 @@
 		"FGBuildableTrainPlatformEmpty": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableTrainPlatformEmpty"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableTrainPlatform--base--base--base"
 				},
 				{
@@ -2565,6 +2940,25 @@
 		"FGBuildableWalkway": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableWalkway"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-size-and-elevation--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-size-and-elevation--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableWalkwayLightweight": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableWalkway"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-size-and-elevation--base"
 				},
 				{
@@ -2577,6 +2971,28 @@
 		},
 		"FGBuildableWall": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableWall"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base.overridable#/$defs/FGBuildable--is-wallish"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-height-and-width--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildable--with-elevation"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableWallLightweight": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableWall"
+				},
 				{
 					"$ref": "docs.json.ts--0.5.2.1--classes--base.overridable#/$defs/FGBuildable--is-wallish"
 				},
@@ -2593,6 +3009,9 @@
 		},
 		"FGBuildableWidgetSign": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableWidgetSign"
+				},
 				{
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGBuildableWidgetSign--base"
 				},
@@ -2635,6 +3054,9 @@
 		"FGBuildableWire": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableWire"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableWire--base"
 				},
 				{
@@ -2658,10 +3080,13 @@
 		"FGCentralStorageContainer": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGBuildable--base"
+					"$ref": "docs.json.ts--common--classes#/$defs/FGCentralStorageContainer"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableStorage"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableStorage--base--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
 				},
 				{
 					"$ref": "#/$defs/FGCentralStorageContainer--version-specific"
@@ -2766,6 +3191,9 @@
 		},
 		"FGConsumableDescriptor": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGConsumableDescriptor"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGConsumableDescriptor--base"
 				},
@@ -2930,6 +3358,19 @@
 					]
 				}
 			}
+		},
+		"FGEquipmentDescriptor": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGDescriptor--sinkable"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGEquipmentDescriptor"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--base"
+				}
+			]
 		},
 		"FGEquipmentStunSpear--base": {
 			"allOf": [
@@ -3277,7 +3718,13 @@
 		"FGItemDescriptorNuclearFuel": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGItemDescriptorNuclearFuel"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGItemDescriptorNuclearFuel--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mResourceSinkPoints"
 				},
 				{
 					"$ref": "#/$defs/FGItemDescriptor--base"
@@ -3307,7 +3754,10 @@
 		"FGItemDescriptorPowerBoosterFuel": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/has--mResourceSinkPoints"
+					"$ref": "docs.json.ts--common--classes#/$defs/FGItemDescriptorPowerBoosterFuel"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mResourceSinkPoints"
 				},
 				{
 					"$ref": "#/$defs/FGItemDescriptor--base"
@@ -3574,6 +4024,9 @@
 		},
 		"FGPipeHyperStart": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGPipeHyperStart"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--pole--base"
 				},
@@ -3848,7 +4301,13 @@
 		"FGPowerShardDescriptor": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGDescriptor--sinkable--base"
+					"$ref": "docs.json.ts--common--classes#/$defs/FGPowerShardDescriptor"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mResourceSinkPoints"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGDescriptor--base"
 				},
 				{
 					"$ref": "#/$defs/FGItemDescriptor--base"
@@ -3890,9 +4349,6 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGRecipe--version-specific"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/instructive"
-				},
-				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGRecipe--version-specific"
 				},
 				{
@@ -3914,6 +4370,9 @@
 		},
 		"FGResourceDescriptor": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGResourceDescriptor"
+				},
 				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base.overridable#/$defs/FGItemDescriptor--base"
 				},
@@ -3956,12 +4415,6 @@
 					"$ref": "docs.json.ts--0.8.3.3--classes--base.overridable#/$defs/FGSchematic--version-specific"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/instructive"
-				},
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/isDescribed"
-				},
-				{
 					"$ref": "docs.json.ts--0.6.1.5--classes--base#/$defs/FGSchematic--version-specific"
 				},
 				{
@@ -3969,6 +4422,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--common--classes#/$defs/FGSchematic"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
 				},
 				{
 					"$ref": "#/$defs/FGSchematic--has--mTechTier"

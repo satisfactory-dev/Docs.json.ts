@@ -11,18 +11,10 @@ import type {
 } from './../../0.3.7.7/types/overridable--1.1.2.2.ts';
 
 import type {
-	FGItemDescriptorNuclearFuel_pre_1_0 as docs_json_ts_0_4_2_11_classes_base_overridable_FGItemDescriptorNuclearFuel_pre_1_0,
-} from './../../0.4.2.11/classes/Base.overridable--1.1.2.2.ts';
-
-import type {
 	FGItemDescriptorNuclearFuel_version_specific as docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_version_specific,
 	FGRecipe_version_specific as docs_json_ts_0_3_7_7_classes_base_FGRecipe_version_specific,
-	instructive as docs_json_ts_0_3_7_7_classes_base_instructive,
+	has_mResourceSinkPoints as docs_json_ts_0_3_7_7_classes_base_has_mResourceSinkPoints,
 } from './../../0.3.7.7/classes/Base.ts';
-
-import type {
-	FGItemDescriptor_base as docs_json_ts_0_5_2_1_classes_base_FGItemDescriptor_base,
-} from './Base.ts';
 
 import type {
 	FGRecipe_pre_update6 as docs_json_ts_0_4_2_11_classes_base_FGRecipe_pre_update6,
@@ -30,8 +22,19 @@ import type {
 } from './../../0.4.2.11/classes/Base.ts';
 
 import type {
+	FGCustomizationRecipe as docs_json_ts_common_classes_FGCustomizationRecipe,
+	FGItemDescriptorNuclearFuel as docs_json_ts_common_classes_FGItemDescriptorNuclearFuel,
 	FGRecipe as docs_json_ts_common_classes_FGRecipe,
 } from './../../common/classes.ts';
+
+import type {
+	FGItemDescriptorNuclearFuel_pre_1_0 as docs_json_ts_0_4_2_11_classes_base_overridable_FGItemDescriptorNuclearFuel_pre_1_0,
+} from './../../0.4.2.11/classes/Base.overridable--1.1.2.2.ts';
+
+import type {
+	FGItemDescriptor_base as docs_json_ts_0_5_2_1_classes_base_FGItemDescriptor_base,
+	FGItemDescriptor_base_base as docs_json_ts_0_5_2_1_classes_base_FGItemDescriptor_base_base,
+} from './Base.ts';
 
 import type {
 	Texture2D as docs_json_ts_0_4_2_11_properties_Texture2D,
@@ -47,9 +50,11 @@ type FGBuildable_is_wallish = {
 	mAngledVariants: null | docs_json_ts_0_3_7_7_overridable_DocsDotJson_BlueprintGeneratedClass_quoted_list,
 };
 
-type FGItemDescriptorNuclearFuel = docs_json_ts_0_4_2_11_classes_base_overridable_FGItemDescriptorNuclearFuel_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_version_specific & docs_json_ts_0_5_2_1_classes_base_FGItemDescriptor_base;
+type FGCustomizationRecipe = docs_json_ts_0_3_7_7_classes_base_FGRecipe_version_specific & docs_json_ts_0_4_2_11_classes_base_FGRecipe_pre_update6 & docs_json_ts_0_4_2_11_classes_base_FGRecipe_version_specific & docs_json_ts_common_classes_FGCustomizationRecipe & FGRecipe_version_specific;
 
-type FGRecipe = docs_json_ts_0_3_7_7_classes_base_FGRecipe_version_specific & docs_json_ts_0_3_7_7_classes_base_instructive & docs_json_ts_0_4_2_11_classes_base_FGRecipe_pre_update6 & docs_json_ts_0_4_2_11_classes_base_FGRecipe_version_specific & docs_json_ts_common_classes_FGRecipe & FGRecipe_version_specific;
+type FGItemDescriptorNuclearFuel = docs_json_ts_common_classes_FGItemDescriptorNuclearFuel & docs_json_ts_0_4_2_11_classes_base_overridable_FGItemDescriptorNuclearFuel_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_version_specific & docs_json_ts_0_3_7_7_classes_base_has_mResourceSinkPoints & docs_json_ts_0_5_2_1_classes_base_FGItemDescriptor_base & docs_json_ts_0_5_2_1_classes_base_FGItemDescriptor_base_base;
+
+type FGRecipe = docs_json_ts_0_3_7_7_classes_base_FGRecipe_version_specific & docs_json_ts_0_4_2_11_classes_base_FGRecipe_pre_update6 & docs_json_ts_0_4_2_11_classes_base_FGRecipe_version_specific & docs_json_ts_common_classes_FGRecipe & FGRecipe_version_specific;
 
 type FGRecipe_version_specific = {
 	mIngredients: docs_json_ts_0_3_7_7_overridable_ItemClass_Amount_list | null,
@@ -68,6 +73,7 @@ type FGWeapon_version_specific = {
 
 export type {
 	FGBuildable_is_wallish,
+	FGCustomizationRecipe,
 	FGItemDescriptorNuclearFuel,
 	FGRecipe,
 	FGRecipe_version_specific,

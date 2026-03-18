@@ -27,6 +27,10 @@ import common_classes from '../../../schema/common/classes.json' with {
 	type: 'json',
 };
 
+import common_properties from '../../../schema/common/properties.json' with {
+	type: 'json',
+};
+
 import {
 	FilenameAdjuster,
 } from './../../FilenameAdjuster.ts';
@@ -74,6 +78,7 @@ async function generation_factory(
 
 	const schema_set: SchemaObjectWith$id[] = [
 		common_types,
+		common_properties,
 		common_classes__base,
 		common_classes,
 	];

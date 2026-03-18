@@ -29,7 +29,7 @@
 					"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildable--tiered"
 				},
 				{
-					"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildable--base"
+					"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildable--unoccupied-and-untiered"
 				}
 			]
 		},
@@ -240,7 +240,7 @@
 					"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableFactory--landing-pad"
 				},
 				{
-					"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildable--powered"
+					"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildableFactory--not-pad"
 				}
 			]
 		},
@@ -1247,7 +1247,7 @@
 					"type": "array",
 					"minItems": 1,
 					"items": {
-						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGBuildablePole"
+						"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGConveyorPoleStackable"
 					}
 				}
 			}
@@ -1291,7 +1291,7 @@
 		"FGEquipmentDescriptor--Classes--item": {
 			"oneOf": [
 				{
-					"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGItemDescriptor"
+					"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGEquipmentDescriptor"
 				},
 				{
 					"$ref": "docs.json.ts--0.5.2.1--classes#/$defs/FGEquipmentDescriptor--Desc_GolfCartGold_C"

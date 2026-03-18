@@ -23,11 +23,63 @@
 				}
 			}
 		},
+		"instructive": {
+			"type": "object",
+			"required": ["FullName", "mRelevantEvents"],
+			"properties": {
+				"FullName": {
+					"$ref": "docs.json.ts--common--properties#/$defs/BlueprintGeneratedClass--non-quoted"
+				},
+				"mRelevantEvents": {
+					"oneOf": [
+						{
+							"type": "string",
+							"typed_string": ""
+						},
+						{
+							"$ref": "docs.json.ts--common--properties#/$defs/mRelevantEvents"
+						}
+					]
+				}
+			}
+		},
+		"isDescribed": {
+			"type": "object",
+			"required": ["mDescription"],
+			"properties": {
+				"mDescription": {
+					"type": "string",
+					"minLength": 0
+				}
+			}
+		},
+		"isNamed": {
+			"type": "object",
+			"required": ["mDisplayName"],
+			"properties": {
+				"mDisplayName": {
+					"$ref": "docs.json.ts--common--properties#/$defs/mDisplayName"
+				}
+			}
+		},
 		"Equipment": {
 			"type": "object",
 			"$ref": "#/$defs/hasClassName"
 		},
 		"ItemDescriptor": {
+			"allOf": [
+				{
+					"$ref": "#/$defs/hasClassName"
+				},
+				{
+					"$ref": "#/$defs/isDescribed"
+				},
+				{
+					"$ref": "#/$defs/isNamed"
+				}
+			]
+		},
+		"Weapon": {
 			"type": "object",
 			"$ref": "#/$defs/hasClassName"
 		}

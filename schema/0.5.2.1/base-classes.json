@@ -11,15 +11,6 @@
 				}
 			}
 		},
-		"has--mResourceSinkPoints": {
-			"type": "object",
-			"required": ["mResourceSinkPoints"],
-			"properties": {
-				"mResourceSinkPoints": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-				}
-			}
-		},
 		"has--mSize-vector": {
 			"type": "object",
 			"required": ["mSize"],
@@ -175,6 +166,9 @@
 		"FGBuildable--occupied": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildable--occupied"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--occupied--base"
 				},
 				{
@@ -289,7 +283,20 @@
 		"FGBuildable--tiered": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildable--tiered"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--tiered--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildable--unoccupied-and-untiered": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildable--unoccupied-and-untiered"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--base"
@@ -371,6 +378,9 @@
 		"FGBuildableAttachmentMerger": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableAttachmentMerger"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableAttachmentMerger--base--base"
 				},
 				{
@@ -378,17 +388,30 @@
 				}
 			]
 		},
+		"FGBuildableAttachmentSplitter": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableAttachmentSplitter"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableAttachment--splitter"
+				}
+			]
+		},
 		"FGBuildableBeam": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableBeam"
+				},
 				{
 					"$ref": "#/$defs/FGBuildable--base"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableBeam--base"
+					"$ref": "#/$defs/FGBuildableBeam--version-specific"
 				}
 			]
 		},
-		"FGBuildableBeam--base": {
+		"FGBuildableBeam--version-specific": {
 			"type": "object",
 			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-size--base",
 			"required": ["mDefaultLength", "mMaxLength", "mLength"],
@@ -406,6 +429,9 @@
 		},
 		"FGBuildableCircuitSwitch": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableCircuitSwitch"
+				},
 				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableCircuitSwitch--base"
 				},
@@ -463,6 +489,9 @@
 		"FGBuildableConveyorLift": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableConveyorLift"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableConveyorBelt--pre-1.0"
 				},
 				{
@@ -482,6 +511,9 @@
 		"FGBuildableCornerWall": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableCornerWall"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-size--base"
 				},
 				{
@@ -491,6 +523,9 @@
 		},
 		"FGBuildableDockingStation": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableDockingStation"
+				},
 				{
 					"$ref": "#/$defs/FGBuildableDockingStation--base"
 				},
@@ -578,13 +613,22 @@
 		"FGBuildableDoor--automated": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableDoor"
+				},
+				{
 					"$ref": "#/$defs/FGBuildableDoor--automated--version-specific"
 				},
 				{
 					"$ref": "#/$defs/FGBuildableDoor--base"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableWall"
+					"$ref": "docs.json.ts--0.5.2.1--classes--base.overridable#/$defs/FGBuildable--is-wallish"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--with-elevation"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--with-height-and-width"
 				}
 			]
 		},
@@ -633,13 +677,22 @@
 		"FGBuildableDoor--manual": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableDoor"
+				},
+				{
 					"$ref": "#/$defs/FGBuildableDoor--base"
 				},
 				{
 					"$ref": "#/$defs/FGBuildableDoor--manual--version-specific"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableWall"
+					"$ref": "docs.json.ts--0.5.2.1--classes--base.overridable#/$defs/FGBuildable--is-wallish"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--with-elevation"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--with-height-and-width"
 				}
 			]
 		},
@@ -654,6 +707,9 @@
 		},
 		"FGBuildableDroneStation": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableDroneStation"
+				},
 				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--docking-station--base"
 				},
@@ -674,6 +730,9 @@
 		"FGBuildableFactory--jump-pad": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableFactory"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableFactory--jump-pad--base--base"
 				},
 				{
@@ -684,6 +743,9 @@
 		"FGBuildableFactory--landing-pad": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableFactory"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableFactory--landing-pad--base--base"
 				},
 				{
@@ -691,8 +753,31 @@
 				}
 			]
 		},
+		"FGBuildableFactory--not-pad": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableFactory"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				}
+			]
+		},
+		"FGBuildableFactoryBuilding": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableFactoryBuilding"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
 		"FGBuildableFactorySimpleProducer": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableFactorySimpleProducer"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableFactorySimpleProducer--base--base"
 				},
@@ -704,15 +789,36 @@
 		"FGBuildableFloodlight": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableFloodlight"
+				},
+				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableFloodlight--version-specific"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableLightSource"
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--light-related-thing--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableLightSource--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/has--mPowerConsumption"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--mHasPower"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableLightSource--base"
 				}
 			]
 		},
 		"FGBuildableFoundation": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableFoundation"
+				},
 				{
 					"$ref": "#/$defs/FGBuildable--with-size-and-elevation--base"
 				},
@@ -766,6 +872,9 @@
 		"FGBuildableFrackingActivator": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableFrackingActivator"
+				},
+				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--powered--has-mAllowedResourceForms--with-resources--base"
 				},
 				{
@@ -781,6 +890,9 @@
 		},
 		"FGBuildableFrackingExtractor": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableFrackingExtractor"
+				},
 				{
 					"$ref": "#/$defs/FGBuildable--powered"
 				},
@@ -821,6 +933,9 @@
 		"FGBuildableGeneratorFuel--biomass": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableGeneratorFuel"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGeneratorFuel--biomass--base--base"
 				},
 				{
@@ -833,6 +948,9 @@
 		},
 		"FGBuildableGeneratorFuel--coal": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableGeneratorFuel"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGeneratorFuel--coal--base--base"
 				},
@@ -847,6 +965,9 @@
 		"FGBuildableGeneratorFuel--fuel": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableGeneratorFuel"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGeneratorFuel--fuel--base--base"
 				},
 				{
@@ -860,6 +981,9 @@
 		"FGBuildableGeneratorGeoThermal": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableGeneratorGeoThermal"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGeneratorGeoThermal--base--base"
 				},
 				{
@@ -872,6 +996,9 @@
 		},
 		"FGBuildableGeneratorNuclear": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableGeneratorNuclear"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGenerator--no-fuel--base--base"
 				},
@@ -898,6 +1025,9 @@
 		"FGBuildableJumppad": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableJumppad"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableJumppad--base--base"
 				},
 				{
@@ -907,6 +1037,9 @@
 		},
 		"FGBuildableLadder": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableLadder"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableLadder--base"
 				},
@@ -918,10 +1051,13 @@
 		"FGBuildableLightsControlPanel": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableLightsControlPanel"
+				},
+				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--light-related-thing--base"
 				},
 				{
-					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableLightsControlPanel--base"
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableLightsControlPanel--version-specific"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--base"
@@ -940,8 +1076,20 @@
 				}
 			}
 		},
-		"FGBuildableLightSource": {
+		"FGBuildableLightSource--base": {
+			"type": "object",
+			"required": ["OnBuildableLightSourceStateChanged"],
+			"properties": {
+				"OnBuildableLightSourceStateChanged": {
+					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
+				}
+			}
+		},
+		"FGBuildableLightSource--Build_CeilingLight_C": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableLightSource"
+				},
 				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--light-related-thing--base"
 				},
@@ -962,19 +1110,28 @@
 				}
 			]
 		},
-		"FGBuildableLightSource--base": {
-			"type": "object",
-			"required": ["OnBuildableLightSourceStateChanged"],
-			"properties": {
-				"OnBuildableLightSourceStateChanged": {
-					"$ref": "docs.json.ts--common--types#/$defs/empty-object"
-				}
-			}
-		},
 		"FGBuildableLightSource--Build_StreetLight_C": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGBuildableLightSource"
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableLightSource"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildable--light-related-thing--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableLightSource--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/has--mPowerConsumption"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--mHasPower"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableLightSource--base"
 				},
 				{
 					"$ref": "#/$defs/FGBuildableLightSource--Build_StreetLight_C--version-specific"
@@ -1019,6 +1176,9 @@
 		"FGBuildableMAM": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableMAM"
+				},
+				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableMAM--version-specific"
 				},
 				{
@@ -1028,6 +1188,9 @@
 		},
 		"FGBuildableManufacturer--Build_AssemblerMk1_C": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableManufacturer"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--base"
 				},
@@ -1041,6 +1204,9 @@
 		},
 		"FGBuildableManufacturer--Build_Blender_C": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableManufacturer"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--base"
 				},
@@ -1060,6 +1226,9 @@
 		},
 		"FGBuildableManufacturer--Build_ConstructorMk1_C": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableManufacturer"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--IsPowered--base"
 				},
@@ -1086,6 +1255,9 @@
 		"FGBuildableManufacturer--Build_FoundryMk1_C": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableManufacturer"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--base"
 				},
 				{
@@ -1111,6 +1283,9 @@
 		"FGBuildableManufacturer--Build_HadronCollider_C": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableManufacturerVariablePower"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--base"
 				},
 				{
@@ -1130,6 +1305,9 @@
 		"FGBuildableManufacturer--Build_ManufacturerMk1_C": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableManufacturer"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--base"
 				},
 				{
@@ -1142,6 +1320,9 @@
 		},
 		"FGBuildableManufacturer--Build_OilRefinery_C": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableManufacturer"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--base"
 				},
@@ -1158,6 +1339,9 @@
 		},
 		"FGBuildableManufacturer--Build_Packager_C": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableManufacturer"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--base"
 				},
@@ -1177,6 +1361,9 @@
 		},
 		"FGBuildableManufacturer--Build_SmelterMk1_C": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableManufacturer"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableManufacturer--base--base"
 				},
@@ -1202,6 +1389,9 @@
 		},
 		"FGBuildablePassthrough": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildablePassthrough"
+				},
 				{
 					"$ref": "#/$defs/FGBuildable--base"
 				},
@@ -1264,6 +1454,9 @@
 		"FGBuildablePillar": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildablePillar"
+				},
+				{
 					"$ref": "#/$defs/FGBuildable--base"
 				},
 				{
@@ -1276,6 +1469,9 @@
 		},
 		"FGBuildablePipeHyper": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildablePipeHyper"
+				},
 				{
 					"$ref": "#/$defs/FGBuildablePipeHyper--version-specific"
 				},
@@ -1295,6 +1491,9 @@
 		},
 		"FGBuildablePipeline": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildablePipeline"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipeline--base-root--quantized"
 				},
@@ -1319,6 +1518,9 @@
 		"FGBuildablePipelineJunction": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildablePipelineJunction"
+				},
+				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildablePipelineJunction--base--base"
 				},
 				{
@@ -1328,6 +1530,9 @@
 		},
 		"FGBuildablePipelinePump--pump": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildablePipelinePump"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--base--base--with-mNumCyclesForProductivity"
 				},
@@ -1360,6 +1565,9 @@
 		"FGBuildablePipelinePump--valve": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildablePipelinePump"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipelinePump--base--base"
 				},
 				{
@@ -1369,6 +1577,9 @@
 		},
 		"FGBuildablePipelineSupport": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildablePipelineSupport"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--pole--base"
 				},
@@ -1391,6 +1602,9 @@
 		},
 		"FGBuildablePipeReservoir": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildablePipeReservoir"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePipeReservoir--base--base"
 				},
@@ -1424,6 +1638,9 @@
 		"FGBuildablePowerPole": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildablePowerPole"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildablePowerPole--base"
 				},
 				{
@@ -1437,6 +1654,9 @@
 		"FGBuildablePowerStorage": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildablePowerStorage"
+				},
+				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildablePowerStorage--base"
 				},
 				{
@@ -1446,6 +1666,9 @@
 		},
 		"FGBuildableRadarTower": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableRadarTower"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableRadarTower--base--base"
 				},
@@ -1518,6 +1741,9 @@
 		"FGBuildableRailroadSignal--block": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableRailroadSignal--block"
+				},
+				{
 					"$ref": "#/$defs/FGBuildableRailroadSignal--base"
 				},
 				{
@@ -1535,8 +1761,21 @@
 				}
 			}
 		},
+		"FGBuildableRailroadSignal--path": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableRailroadSignal--path"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableRailroadSignal--base"
+				}
+			]
+		},
 		"FGBuildableRailroadStation": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableRailroadStation"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableRailroadStation--base--base"
 				},
@@ -1544,7 +1783,10 @@
 					"$ref": "#/$defs/FGBuildableRailroadStation--base"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableTrainPlatform"
+					"$ref": "#/$defs/FGBuildable--powered"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableTrainPlatform--base"
 				},
 				{
 					"$ref": "#/$defs/FGBuildableTrainPlatform--non-empty"
@@ -1565,6 +1807,9 @@
 		},
 		"FGBuildableRailroadTrack": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableRailroadTrack"
+				},
 				{
 					"$ref": "#/$defs/FGBuildable--base"
 				},
@@ -1615,6 +1860,9 @@
 		},
 		"FGBuildableRamp": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableRamp"
+				},
 				{
 					"$ref": "#/$defs/FGBuildableRamp--base"
 				},
@@ -1682,6 +1930,9 @@
 		"FGBuildableResourceExtractor--miner--mk1": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableResourceExtractor"
+				},
+				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableResourceExtractor--miner--mk1--base--base"
 				},
 				{
@@ -1695,6 +1946,9 @@
 		"FGBuildableResourceExtractor--miner--mk2": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableResourceExtractor"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--miner--mk2--base--base"
 				},
 				{
@@ -1704,6 +1958,9 @@
 		},
 		"FGBuildableResourceExtractor--miner--mk3": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableResourceExtractor"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--base--base--with-mNumCyclesForProductivity"
 				},
@@ -1745,6 +2002,9 @@
 		"FGBuildableResourceExtractor--oil": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableResourceExtractor"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--oil--base--base"
 				},
 				{
@@ -1754,6 +2014,9 @@
 		},
 		"FGBuildableResourceExtractor--water": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableResourceExtractor"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceExtractor--water--base--base"
 				},
@@ -1768,6 +2031,9 @@
 		"FGBuildableResourceSink": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableResourceSink"
+				},
+				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGBuildableResourceSink--base"
 				},
 				{
@@ -1778,7 +2044,30 @@
 		"FGBuildableResourceSinkShop": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableResourceSinkShop"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableResourceSinkShop--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				}
+			]
+		},
+		"FGBuildableSnowDispenser": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableSnowDispenser"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
+				}
+			]
+		},
+		"FGBuildableSpaceElevator": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableSpaceElevator"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--powered"
@@ -1787,6 +2076,9 @@
 		},
 		"FGBuildableSplitterSmart": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableSplitterSmart"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableSplitterSmart--base--base"
 				},
@@ -1797,6 +2089,9 @@
 		},
 		"FGBuildableStair": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableStair"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-height--base"
 				},
@@ -1824,6 +2119,9 @@
 		"FGBuildableStorage": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableStorage"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableStorage--base--base"
 				},
 				{
@@ -1833,6 +2131,9 @@
 		},
 		"FGBuildableTradingPost": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableTradingPost"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--base--base--with-mNumCyclesForProductivity"
 				},
@@ -1864,11 +2165,11 @@
 					"$ref": "#/$defs/FGBuildable--powered"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableTradingPost--base"
+					"$ref": "#/$defs/FGBuildableTradingPost--version-specific"
 				}
 			]
 		},
-		"FGBuildableTradingPost--base": {
+		"FGBuildableTradingPost--version-specific": {
 			"type": "object",
 			"required": ["mRepresentationText"],
 			"properties": {
@@ -1877,16 +2178,6 @@
 					"minLength": 1
 				}
 			}
-		},
-		"FGBuildableTrainPlatform": {
-			"allOf": [
-				{
-					"$ref": "#/$defs/FGBuildable--powered"
-				},
-				{
-					"$ref": "#/$defs/FGBuildableTrainPlatform--base"
-				}
-			]
 		},
 		"FGBuildableTrainPlatform--base": {
 			"allOf": [
@@ -1941,6 +2232,9 @@
 		},
 		"FGBuildableTrainPlatformCargo": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableTrainPlatformCargo"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableTrainPlatform--with-storage--base--base--base"
 				},
@@ -2022,8 +2316,24 @@
 				}
 			}
 		},
+		"FGBuildableTrainPlatformEmpty": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableTrainPlatformEmpty"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered"
+				},
+				{
+					"$ref": "#/$defs/FGBuildableTrainPlatform--base"
+				}
+			]
+		},
 		"FGBuildableWall": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableWall"
+				},
 				{
 					"$ref": "docs.json.ts--0.5.2.1--classes--base.overridable#/$defs/FGBuildable--is-wallish"
 				},
@@ -2035,8 +2345,21 @@
 				}
 			]
 		},
+		"FGBuildableWalkway": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableWalkway"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--with-size-and-elevation"
+				}
+			]
+		},
 		"FGBuildableWidgetSign": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableWidgetSign"
+				},
 				{
 					"$ref": "#/$defs/FGBuildable--base"
 				},
@@ -2122,6 +2445,9 @@
 		"FGBuildableWire": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableWire"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableWire--base"
 				},
 				{
@@ -2142,6 +2468,9 @@
 		"FGConsumableDescriptor": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGConsumableDescriptor"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGConsumableDescriptor--base"
 				},
 				{
@@ -2149,6 +2478,34 @@
 				},
 				{
 					"$ref": "#/$defs/FGItemDescriptor--base"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--base--base"
+				}
+			]
+		},
+		"FGConveyorPoleStackable": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGConveyorPoleStackable"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--pole--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--with-height--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mCanStack"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mStackHeight"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildablePole"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--base"
 				}
 			]
 		},
@@ -2207,15 +2564,50 @@
 		"FGDescriptor--sinkable": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGDescriptor--sinkable--base"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mResourceSinkPoints"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGDescriptor--base"
 				},
 				{
 					"$ref": "#/$defs/FGDescriptor"
 				}
 			]
 		},
+		"FGEquipmentDescriptor": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGEquipmentDescriptor"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mResourceSinkPoints"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--base"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--base--base"
+				}
+			]
+		},
+		"FGEquipmentDescriptor--Desc_GolfCartGold_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGEquipmentDescriptor"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--base"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--base--base"
+				}
+			]
+		},
 		"FGGolfCartDispenser": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGGolfCartDispenser"
+				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGGolfCartDispenser"
 				},
@@ -2263,16 +2655,27 @@
 		"FGItemDescAmmoTypeColorCartridge": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGItemDescAmmoTypeColorCartridge"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGColorGun--base--base"
 				},
 				{
-					"$ref": "#/$defs/FGItemDescAmmoTypeColorCartridge--base"
+					"$ref": "#/$defs/FGItemDescAmmoTypeInstantHit--base"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mResourceSinkPoints"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescAmmoTypeColorCartridge--version-specific"
 				}
 			]
 		},
-		"FGItemDescAmmoTypeColorCartridge--base": {
+		"FGItemDescAmmoTypeColorCartridge--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGItemDescAmmoTypeInstantHit",
 			"required": ["ToggleColorPickerUI"],
 			"properties": {
 				"ToggleColorPickerUI": {
@@ -2283,13 +2686,16 @@
 		"FGItemDescAmmoTypeInstantHit": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGItemDescAmmoTypeInstantHit"
+				},
+				{
 					"$ref": "#/$defs/FGItemDescAmmoTypeInstantHit--base"
 				},
 				{
 					"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--base"
 				},
 				{
-					"$ref": "#/$defs/has--mResourceSinkPoints"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mResourceSinkPoints"
 				}
 			]
 		},
@@ -2309,16 +2715,21 @@
 					"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--base--base"
 				},
 				{
+					"$ref": "#/$defs/FGItemDescriptor--base--base"
+				},
+				{
 					"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--base--version-specific"
 				},
 				{
 					"$ref": "#/$defs/FGItemDescriptor--base"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--base--base"
 				}
 			]
 		},
 		"FGItemDescAmmoTypeProjectile--base--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGItemDescriptor--base--base",
 			"required": [
 				"AmmoFiredDelegate",
 				"mFiringTransform",
@@ -2350,7 +2761,6 @@
 		},
 		"FGItemDescAmmoTypeProjectile--base--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGItemDescriptor--base--base",
 			"required": [
 				"mReloadTimeModifier",
 				"mFireRateModifier",
@@ -2384,9 +2794,8 @@
 				}
 			}
 		},
-		"FGItemDescAmmoTypeProjectile--Desc_NobeliskExplosive_C": {
+		"FGItemDescAmmoTypeProjectile--Desc_NobeliskExplosive_C--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--Desc_NobeliskExplosive_C--base",
 			"required": ["mProjectileData"],
 			"properties": {
 				"mProjectileData": {
@@ -2446,97 +2855,101 @@
 				}
 			}
 		},
-		"FGItemDescAmmoTypeProjectile--Desc_NobeliskExplosive_C--base": {
+		"FGItemDescAmmoTypeProjectile--Desc_NobeliskExplosive_C": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--base"
+					"$ref": "docs.json.ts--common--classes#/$defs/FGItemDescAmmoTypeProjectile"
 				},
 				{
 					"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--base"
 				},
 				{
-					"$ref": "#/$defs/has--mResourceSinkPoints"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mResourceSinkPoints"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--Desc_NobeliskExplosive_C--version-specific"
 				}
 			]
+		},
+		"FGItemDescAmmoTypeProjectile--Desc_SnowballProjectile_C--version-specific": {
+			"type": "object",
+			"required": ["mProjectileData"],
+			"properties": {
+				"mProjectileData": {
+					"type": "string",
+					"typed_string": {
+						"type": "object",
+						"additionalProperties": false,
+						"required": [
+							"ProjectileClass",
+							"ProjectileLifeSpan",
+							"ProjectileStickSpan",
+							"ExplosionDamage",
+							"ExplosionRadius",
+							"ImpactDamage",
+							"ExplodeAtEndOfLife",
+							"DamageType",
+							"DamageTypeExplode",
+							"DamageFalloffCurve",
+							"WeaponDamageMultiplier"
+						],
+						"properties": {
+							"ProjectileClass": {
+								"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/BlueprintGeneratedClass--quoted"
+							},
+							"ProjectileLifeSpan": {
+								"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
+							},
+							"ProjectileStickSpan": {
+								"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
+							},
+							"ExplosionDamage": {
+								"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+							},
+							"ExplosionRadius": {
+								"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+							},
+							"ImpactDamage": {
+								"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+							},
+							"ExplodeAtEndOfLife": {
+								"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+							},
+							"DamageType": {
+								"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/BlueprintGeneratedClass--quoted"
+							},
+							"DamageTypeExplode": {
+								"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/BlueprintGeneratedClass--quoted"
+							},
+							"DamageFalloffCurve": {
+								"$ref": "docs.json.ts--0.5.2.1--properties#/$defs/FalloffCurve--EditorCurveData--only"
+							},
+							"WeaponDamageMultiplier": {
+								"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+							}
+						}
+					}
+				}
+			}
 		},
 		"FGItemDescAmmoTypeProjectile--Desc_SnowballProjectile_C": {
-			"type": "object",
-			"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--Desc_SnowballProjectile_C--base",
-			"required": ["mProjectileData"],
-			"properties": {
-				"mProjectileData": {
-					"type": "string",
-					"typed_string": {
-						"type": "object",
-						"additionalProperties": false,
-						"required": [
-							"ProjectileClass",
-							"ProjectileLifeSpan",
-							"ProjectileStickSpan",
-							"ExplosionDamage",
-							"ExplosionRadius",
-							"ImpactDamage",
-							"ExplodeAtEndOfLife",
-							"DamageType",
-							"DamageTypeExplode",
-							"DamageFalloffCurve",
-							"WeaponDamageMultiplier"
-						],
-						"properties": {
-							"ProjectileClass": {
-								"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/BlueprintGeneratedClass--quoted"
-							},
-							"ProjectileLifeSpan": {
-								"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
-							},
-							"ProjectileStickSpan": {
-								"$ref": "docs.json.ts--common--types#/$defs/decimal_string--signed"
-							},
-							"ExplosionDamage": {
-								"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-							},
-							"ExplosionRadius": {
-								"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-							},
-							"ImpactDamage": {
-								"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-							},
-							"ExplodeAtEndOfLife": {
-								"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-							},
-							"DamageType": {
-								"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/BlueprintGeneratedClass--quoted"
-							},
-							"DamageTypeExplode": {
-								"$ref": "docs.json.ts--0.3.7.7--overridable#/$defs/BlueprintGeneratedClass--quoted"
-							},
-							"DamageFalloffCurve": {
-								"$ref": "docs.json.ts--0.5.2.1--properties#/$defs/FalloffCurve--EditorCurveData--only"
-							},
-							"WeaponDamageMultiplier": {
-								"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-							}
-						}
-					}
-				}
-			}
-		},
-		"FGItemDescAmmoTypeProjectile--Desc_SnowballProjectile_C--base": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--base"
+					"$ref": "docs.json.ts--common--classes#/$defs/FGItemDescAmmoTypeProjectile"
 				},
 				{
 					"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--base"
 				},
 				{
-					"$ref": "#/$defs/has--mResourceSinkPoints"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mResourceSinkPoints"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--Desc_SnowballProjectile_C--version-specific"
 				}
 			]
 		},
-		"FGItemDescAmmoTypeProjectile--Desc_SpikedRebar_C": {
+		"FGItemDescAmmoTypeProjectile--Desc_SpikedRebar_C--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--Desc_SpikedRebar_C--base",
 			"required": ["mProjectileData"],
 			"properties": {
 				"mProjectileData": {
@@ -2588,22 +3001,40 @@
 				}
 			}
 		},
-		"FGItemDescAmmoTypeProjectile--Desc_SpikedRebar_C--base": {
+		"FGItemDescAmmoTypeProjectile--Desc_SpikedRebar_C": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--base"
+					"$ref": "docs.json.ts--common--classes#/$defs/FGItemDescAmmoTypeProjectile"
 				},
 				{
 					"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--base"
 				},
 				{
-					"$ref": "#/$defs/has--mResourceSinkPoints"
+					"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mResourceSinkPoints"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--Desc_SpikedRebar_C--version-specific"
 				}
 			]
 		},
 		"FGItemDescAmmoTypeProjectile--explosive--firework": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGItemDescAmmoTypeProjectile"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--base"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--explosive--firework--version-specific"
+				}
+			]
+		},
+		"FGItemDescAmmoTypeProjectile--explosive--firework--version-specific": {
 			"type": "object",
-			"$ref": "#/$defs/FGItemDescAmmoTypeProjectile--base",
 			"required": ["mProjectileData"],
 			"properties": {
 				"mProjectileData": {
@@ -2677,12 +3108,14 @@
 				},
 				{
 					"$ref": "#/$defs/FGItemDescriptor--base"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--base--base"
 				}
 			]
 		},
 		"FGItemDescriptor--base": {
 			"type": "object",
-			"$ref": "#/$defs/FGItemDescriptor--base--base",
 			"required": ["mBuildMenuPriority"],
 			"properties": {
 				"mBuildMenuPriority": {
@@ -2714,11 +3147,17 @@
 				},
 				{
 					"$ref": "#/$defs/FGItemDescriptor--base"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--base--base"
 				}
 			]
 		},
 		"FGNobeliskDetonator": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGNobeliskDetonator"
+				},
 				{
 					"$ref": "#/$defs/FGNobeliskDetonator--pre-update6"
 				},
@@ -2778,6 +3217,9 @@
 		"FGPipeHyperStart": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGPipeHyperStart"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--pole--base"
 				},
 				{
@@ -2807,6 +3249,9 @@
 		"FGResourceDescriptor": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGResourceDescriptor"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGResourceDescriptor--base"
 				},
 				{
@@ -2814,6 +3259,9 @@
 				},
 				{
 					"$ref": "#/$defs/FGItemDescriptor--base"
+				},
+				{
+					"$ref": "#/$defs/FGItemDescriptor--base--base"
 				}
 			]
 		},
@@ -2832,22 +3280,19 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGSchematic--version-specific"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/instructive"
-				},
-				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGSchematic--has--mMenuPriority"
 				},
 				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base.overridable#/$defs/FGSchematic--has--mSchematicIcon"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/isDescribed"
-				},
-				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGSchematic--has--mTechTier"
 				},
 				{
 					"$ref": "docs.json.ts--common--classes#/$defs/FGSchematic"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
 				},
 				{
 					"$ref": "#/$defs/FGSchematic--pre-update6"
@@ -2871,7 +3316,34 @@
 		"FGSchematic--with-described-unlocks": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGSchematic"
+					"$ref": "docs.json.ts--0.4.2.11--classes--base.overridable#/$defs/FGSchematic--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base.overridable#/$defs/FGSchematic--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGSchematic--pre-1.0"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGSchematic--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGSchematic--has--mMenuPriority"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base.overridable#/$defs/FGSchematic--has--mSchematicIcon"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGSchematic--has--mTechTier"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGSchematic"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "#/$defs/FGSchematic--pre-update6"
 				},
 				{
 					"$ref": "#/$defs/FGSchematic--with-described-unlocks--pre-update6"
@@ -2920,6 +3392,76 @@
 				}
 			}
 		},
+		"FGVehicleDescriptor--Desc_CyberWagon_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGVehicleDescriptor"
+				},
+				{
+					"$ref": "#/$defs/FGVehicleDescriptor--fueled---with-inventory"
+				}
+			]
+		},
+		"FGVehicleDescriptor--Desc_DroneTransport_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGVehicleDescriptor"
+				},
+				{
+					"$ref": "#/$defs/FGVehicleDescriptor--with-inventory"
+				}
+			]
+		},
+		"FGVehicleDescriptor--Desc_Explorer_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGVehicleDescriptor"
+				},
+				{
+					"$ref": "#/$defs/FGVehicleDescriptor--fueled---with-inventory"
+				}
+			]
+		},
+		"FGVehicleDescriptor--Desc_FreightWagon_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGVehicleDescriptor"
+				},
+				{
+					"$ref": "#/$defs/FGVehicleDescriptor--with-inventory"
+				}
+			]
+		},
+		"FGVehicleDescriptor--Desc_Locomotive_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGVehicleDescriptor"
+				},
+				{
+					"$ref": "#/$defs/FGVehicleDescriptor--powered"
+				}
+			]
+		},
+		"FGVehicleDescriptor--Desc_Tractor_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGVehicleDescriptor"
+				},
+				{
+					"$ref": "#/$defs/FGVehicleDescriptor--fueled---with-inventory"
+				}
+			]
+		},
+		"FGVehicleDescriptor--Desc_Truck_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGVehicleDescriptor"
+				},
+				{
+					"$ref": "#/$defs/FGVehicleDescriptor--fueled---with-inventory"
+				}
+			]
+		},
 		"FGVehicleDescriptor--fueled---with-inventory": {
 			"allOf": [
 				{
@@ -2953,10 +3495,10 @@
 		"FGWeapon--Equip_RebarGun_Projectile_C": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.5.2.1--classes--base.overridable#/$defs/FGWeapon--version-specific"
+					"$ref": "docs.json.ts--common--classes#/$defs/FGWeapon--Equip_RebarGun_Projectile_C"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectile--base"
+					"$ref": "docs.json.ts--0.5.2.1--classes--base.overridable#/$defs/FGWeapon--version-specific"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGWeaponProjectile--base"
@@ -2986,6 +3528,9 @@
 		},
 		"FGWeapon--Equip_Rifle_C": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGWeapon--Equip_Rifle_C"
+				},
 				{
 					"$ref": "docs.json.ts--0.5.2.1--classes--base.overridable#/$defs/FGWeapon--version-specific"
 				},

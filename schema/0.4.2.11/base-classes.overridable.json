@@ -5,7 +5,13 @@
 		"FGItemDescriptorNuclearFuel": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGItemDescriptorNuclearFuel"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGItemDescriptorNuclearFuel--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mResourceSinkPoints"
 				},
 				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGDescriptor"

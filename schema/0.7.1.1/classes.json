@@ -2,11 +2,6 @@
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "docs.json.ts--0.7.1.1--classes",
 	"$defs": {
-		"FGBuildable--base": {
-			"type": "object",
-			"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGBuildable--base",
-			"unevaluatedProperties": false
-		},
 		"FGBuildable--occupied": {
 			"type": "object",
 			"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGBuildable--occupied",
@@ -20,6 +15,11 @@
 		"FGBuildable--tiered": {
 			"type": "object",
 			"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGBuildable--tiered",
+			"unevaluatedProperties": false
+		},
+		"FGBuildable--unoccupied-and-untiered": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGBuildable--unoccupied-and-untiered",
 			"unevaluatedProperties": false
 		},
 		"FGBuildableAttachmentMerger": {
@@ -87,9 +87,14 @@
 			"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGBuildableFactory--landing-pad",
 			"unevaluatedProperties": false
 		},
+		"FGBuildableFactory--not-pad": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGBuildableFactory--not-pad",
+			"unevaluatedProperties": false
+		},
 		"FGBuildableFactoryBuilding": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGBuildable--base",
+			"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGBuildableFactoryBuilding",
 			"unevaluatedProperties": false
 		},
 		"FGBuildableFactorySimpleProducer": {
@@ -109,7 +114,7 @@
 		},
 		"FGBuildableFoundationLightweight": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGBuildableFoundation",
+			"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGBuildableFoundationLightweight",
 			"unevaluatedProperties": false
 		},
 		"FGBuildableFrackingActivator": {
@@ -272,6 +277,11 @@
 			"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGBuildablePole",
 			"unevaluatedProperties": false
 		},
+		"FGBuildablePoleLightweight": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGBuildablePoleLightweight",
+			"unevaluatedProperties": false
+		},
 		"FGBuildablePowerPole": {
 			"type": "object",
 			"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGBuildablePowerPole",
@@ -294,7 +304,7 @@
 		},
 		"FGBuildableRailroadSignal--path": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGBuildableRailroadSignal--base",
+			"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGBuildableRailroadSignal--path",
 			"unevaluatedProperties": false
 		},
 		"FGBuildableRailroadStation": {
@@ -344,7 +354,12 @@
 		},
 		"FGBuildableSnowDispenser": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGBuildable--base",
+			"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGBuildableSnowDispenser",
+			"unevaluatedProperties": false
+		},
+		"FGBuildableSpaceElevator": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGBuildableSpaceElevator",
 			"unevaluatedProperties": false
 		},
 		"FGBuildableSplitterSmart": {
@@ -384,12 +399,17 @@
 		},
 		"FGBuildableWalkwayLightweight": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGBuildableWalkway",
+			"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGBuildableWalkwayLightweight",
 			"unevaluatedProperties": false
 		},
 		"FGBuildableWall": {
 			"type": "object",
 			"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGBuildableWall",
+			"unevaluatedProperties": false
+		},
+		"FGBuildableWallLightweight": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.7.1.1--classes--base#/$defs/FGBuildableWallLightweight",
 			"unevaluatedProperties": false
 		},
 		"FGBuildableWaterPump": {

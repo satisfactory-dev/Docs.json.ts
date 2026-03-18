@@ -1,0 +1,33 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"$id": "docs.json.ts--common--properties",
+	"$defs": {
+		"mDisplayName": {
+			"type": "string",
+			"minLength": 0
+		},
+		"mRelevantEvents": {
+			"type": "string",
+			"typed_string": {
+				"type": "array",
+				"minItems": 1,
+				"maxItems": 1,
+				"items": false,
+				"prefixItems": [
+					{
+						"type": "string",
+						"const": "EV_Christmas"
+					}
+				]
+			}
+		},
+		"BlueprintGeneratedClass--non-quoted": {
+			"type": "string",
+			"DocsDotJson_PrefixedString": {
+				"prefix": "BlueprintGeneratedClass",
+				"mode": "non_quoted",
+				"value": null
+			}
+		}
+	}
+}

@@ -2,6 +2,9 @@
 
 import type {
 	FGBuildingDescriptor as docs_json_ts_0_6_1_5_FGBuildingDescriptor,
+	FGItemDescriptor as docs_json_ts_0_6_1_5_FGItemDescriptor,
+	FGItemDescriptorBiomass as docs_json_ts_0_6_1_5_FGItemDescriptorBiomass,
+	FGResourceDescriptor as docs_json_ts_0_6_1_5_FGResourceDescriptor,
 } from './../0.6.1.5/types.ts';
 
 import type {
@@ -9,10 +12,9 @@ import type {
 	FGAmmoTypeInstantHit_Desc_CartridgeStandard_C as docs_json_ts_0_8_3_3_classes_FGAmmoTypeInstantHit_Desc_CartridgeStandard_C,
 	FGAmmoTypeProjectile as docs_json_ts_0_8_3_3_classes_FGAmmoTypeProjectile,
 	FGAmmoTypeSpreadshot as docs_json_ts_0_8_3_3_classes_FGAmmoTypeSpreadshot,
-	FGBuildable_base as docs_json_ts_0_8_3_3_classes_FGBuildable_base,
 	FGBuildable_occupied as docs_json_ts_0_8_3_3_classes_FGBuildable_occupied,
-	FGBuildable_powered as docs_json_ts_0_8_3_3_classes_FGBuildable_powered,
 	FGBuildable_tiered as docs_json_ts_0_8_3_3_classes_FGBuildable_tiered,
+	FGBuildable_unoccupied_and_untiered as docs_json_ts_0_8_3_3_classes_FGBuildable_unoccupied_and_untiered,
 	FGBuildableAttachmentMerger as docs_json_ts_0_8_3_3_classes_FGBuildableAttachmentMerger,
 	FGBuildableAttachmentSplitter as docs_json_ts_0_8_3_3_classes_FGBuildableAttachmentSplitter,
 	FGBuildableBeamLightweight as docs_json_ts_0_8_3_3_classes_FGBuildableBeamLightweight,
@@ -26,6 +28,7 @@ import type {
 	FGBuildableDroneStation as docs_json_ts_0_8_3_3_classes_FGBuildableDroneStation,
 	FGBuildableFactory_jump_pad as docs_json_ts_0_8_3_3_classes_FGBuildableFactory_jump_pad,
 	FGBuildableFactory_landing_pad as docs_json_ts_0_8_3_3_classes_FGBuildableFactory_landing_pad,
+	FGBuildableFactory_not_pad as docs_json_ts_0_8_3_3_classes_FGBuildableFactory_not_pad,
 	FGBuildableFactoryBuilding as docs_json_ts_0_8_3_3_classes_FGBuildableFactoryBuilding,
 	FGBuildableFactorySimpleProducer as docs_json_ts_0_8_3_3_classes_FGBuildableFactorySimpleProducer,
 	FGBuildableFloodlight as docs_json_ts_0_8_3_3_classes_FGBuildableFloodlight,
@@ -54,6 +57,7 @@ import type {
 	FGBuildableManufacturer_Build_Packager_C as docs_json_ts_0_8_3_3_classes_FGBuildableManufacturer_Build_Packager_C,
 	FGBuildableManufacturer_Build_SmelterMk1_C as docs_json_ts_0_8_3_3_classes_FGBuildableManufacturer_Build_SmelterMk1_C,
 	FGBuildablePassthrough as docs_json_ts_0_8_3_3_classes_FGBuildablePassthrough,
+	FGBuildablePassthroughPipeHyper as docs_json_ts_0_8_3_3_classes_FGBuildablePassthroughPipeHyper,
 	FGBuildablePillarLightweight as docs_json_ts_0_8_3_3_classes_FGBuildablePillarLightweight,
 	FGBuildablePipeHyper as docs_json_ts_0_8_3_3_classes_FGBuildablePipeHyper,
 	FGBuildablePipeline as docs_json_ts_0_8_3_3_classes_FGBuildablePipeline,
@@ -79,6 +83,7 @@ import type {
 	FGBuildableResourceSink as docs_json_ts_0_8_3_3_classes_FGBuildableResourceSink,
 	FGBuildableResourceSinkShop as docs_json_ts_0_8_3_3_classes_FGBuildableResourceSinkShop,
 	FGBuildableSnowDispenser as docs_json_ts_0_8_3_3_classes_FGBuildableSnowDispenser,
+	FGBuildableSpaceElevator as docs_json_ts_0_8_3_3_classes_FGBuildableSpaceElevator,
 	FGBuildableSplitterSmart as docs_json_ts_0_8_3_3_classes_FGBuildableSplitterSmart,
 	FGBuildableStair as docs_json_ts_0_8_3_3_classes_FGBuildableStair,
 	FGBuildableStorage as docs_json_ts_0_8_3_3_classes_FGBuildableStorage,
@@ -88,6 +93,7 @@ import type {
 	FGBuildableWalkway as docs_json_ts_0_8_3_3_classes_FGBuildableWalkway,
 	FGBuildableWalkwayLightweight as docs_json_ts_0_8_3_3_classes_FGBuildableWalkwayLightweight,
 	FGBuildableWall as docs_json_ts_0_8_3_3_classes_FGBuildableWall,
+	FGBuildableWallLightweight as docs_json_ts_0_8_3_3_classes_FGBuildableWallLightweight,
 	FGBuildableWaterPump as docs_json_ts_0_8_3_3_classes_FGBuildableWaterPump,
 	FGBuildableWidgetSign as docs_json_ts_0_8_3_3_classes_FGBuildableWidgetSign,
 	FGBuildableWire as docs_json_ts_0_8_3_3_classes_FGBuildableWire,
@@ -134,8 +140,7 @@ import type {
 } from './../0.5.2.1/classes/overridable--0.8.3.3.ts';
 
 import type {
-	FGItemDescriptor as docs_json_ts_0_6_1_5_classes_FGItemDescriptor,
-	FGResourceDescriptor as docs_json_ts_0_6_1_5_classes_FGResourceDescriptor,
+	FGEquipmentDescriptor as docs_json_ts_0_6_1_5_classes_FGEquipmentDescriptor,
 } from './../0.6.1.5/classes.ts';
 
 type FGAmmoTypeInstantHit = {
@@ -182,7 +187,7 @@ type FGBuildable = {
 	],
 };
 
-type FGBuildable_Classes_item = docs_json_ts_0_8_3_3_classes_FGBuildable_occupied | docs_json_ts_0_8_3_3_classes_FGBuildable_tiered | docs_json_ts_0_8_3_3_classes_FGBuildable_base;
+type FGBuildable_Classes_item = docs_json_ts_0_8_3_3_classes_FGBuildable_occupied | docs_json_ts_0_8_3_3_classes_FGBuildable_tiered | docs_json_ts_0_8_3_3_classes_FGBuildable_unoccupied_and_untiered;
 
 type FGBuildableAttachmentMerger = {
 	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGBuildableAttachmentMerger'}${'\''}`,
@@ -280,7 +285,7 @@ type FGBuildableFactory = {
 	],
 };
 
-type FGBuildableFactory_Classes_item = docs_json_ts_0_8_3_3_classes_FGBuildableFactory_jump_pad | docs_json_ts_0_8_3_3_classes_FGBuildableFactory_landing_pad | docs_json_ts_0_8_3_3_classes_FGBuildable_powered;
+type FGBuildableFactory_Classes_item = docs_json_ts_0_8_3_3_classes_FGBuildableFactory_jump_pad | docs_json_ts_0_8_3_3_classes_FGBuildableFactory_landing_pad | docs_json_ts_0_8_3_3_classes_FGBuildableFactory_not_pad;
 
 type FGBuildableFactoryBuilding = {
 	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGBuildableFactoryBuilding'}${'\''}`,
@@ -436,8 +441,8 @@ type FGBuildablePassthrough = {
 type FGBuildablePassthroughPipeHyper = {
 	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGBuildablePassthroughPipeHyper'}${'\''}`,
 	Classes: [
-		docs_json_ts_0_8_3_3_classes_FGBuildablePassthrough,
-		...docs_json_ts_0_8_3_3_classes_FGBuildablePassthrough[],
+		docs_json_ts_0_8_3_3_classes_FGBuildablePassthroughPipeHyper,
+		...docs_json_ts_0_8_3_3_classes_FGBuildablePassthroughPipeHyper[],
 	],
 };
 
@@ -608,8 +613,8 @@ type FGBuildableSnowDispenser = {
 type FGBuildableSpaceElevator = {
 	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGBuildableSpaceElevator'}${'\''}`,
 	Classes: [
-		docs_json_ts_0_8_3_3_classes_FGBuildable_powered,
-		...docs_json_ts_0_8_3_3_classes_FGBuildable_powered[],
+		docs_json_ts_0_8_3_3_classes_FGBuildableSpaceElevator,
+		...docs_json_ts_0_8_3_3_classes_FGBuildableSpaceElevator[],
 	],
 };
 
@@ -688,8 +693,8 @@ type FGBuildableWall = {
 type FGBuildableWallLightweight = {
 	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGBuildableWallLightweight'}${'\''}`,
 	Classes: [
-		docs_json_ts_0_8_3_3_classes_FGBuildableWall,
-		...docs_json_ts_0_8_3_3_classes_FGBuildableWall[],
+		docs_json_ts_0_8_3_3_classes_FGBuildableWallLightweight,
+		...docs_json_ts_0_8_3_3_classes_FGBuildableWallLightweight[],
 	],
 };
 
@@ -773,7 +778,7 @@ type FGEquipmentDescriptor = {
 	],
 };
 
-type FGEquipmentDescriptor_Classes_item = docs_json_ts_0_6_1_5_classes_FGItemDescriptor | docs_json_ts_0_6_1_5_classes_overridable_FGEquipmentDescriptor_Desc_GolfCartGold_C;
+type FGEquipmentDescriptor_Classes_item = docs_json_ts_0_6_1_5_classes_FGEquipmentDescriptor | docs_json_ts_0_6_1_5_classes_overridable_FGEquipmentDescriptor_Desc_GolfCartGold_C;
 
 type FGEquipmentStunSpear = {
 	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGEquipmentStunSpear'}${'\''}`,
@@ -813,22 +818,6 @@ type FGHoverPack = {
 	Classes: [
 		docs_json_ts_0_8_3_3_classes_FGHoverPack,
 		...docs_json_ts_0_8_3_3_classes_FGHoverPack[],
-	],
-};
-
-type FGItemDescriptor = {
-	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGItemDescriptor'}${'\''}`,
-	Classes: [
-		docs_json_ts_0_6_1_5_classes_FGItemDescriptor,
-		...docs_json_ts_0_6_1_5_classes_FGItemDescriptor[],
-	],
-};
-
-type FGItemDescriptorBiomass = {
-	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGItemDescriptorBiomass'}${'\''}`,
-	Classes: [
-		docs_json_ts_0_6_1_5_classes_FGItemDescriptor,
-		...docs_json_ts_0_6_1_5_classes_FGItemDescriptor[],
 	],
 };
 
@@ -904,14 +893,6 @@ type FGRecipe = {
 	],
 };
 
-type FGResourceDescriptor = {
-	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGResourceDescriptor'}${'\''}`,
-	Classes: [
-		docs_json_ts_0_6_1_5_classes_FGResourceDescriptor,
-		...docs_json_ts_0_6_1_5_classes_FGResourceDescriptor[],
-	],
-};
-
 type FGSchematic = {
 	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGSchematic'}${'\''}`,
 	Classes: [
@@ -952,7 +933,7 @@ type FGWeapon = {
 };
 
 export type update8_docs = [
-	FGItemDescriptor,
+	docs_json_ts_0_6_1_5_FGItemDescriptor,
 	FGBuildableDroneStation,
 	FGCustomizationRecipe,
 	FGBuildableBlueprintDesigner,
@@ -963,7 +944,7 @@ export type update8_docs = [
 	FGBuildableWall,
 	FGBuildableDoor,
 	FGBuildableCornerWall,
-	FGResourceDescriptor,
+	docs_json_ts_0_6_1_5_FGResourceDescriptor,
 	FGBuildableRailroadTrack,
 	FGBuildable,
 	FGBuildablePoleLightweight,
@@ -987,7 +968,7 @@ export type update8_docs = [
 	FGBuildableWaterPump,
 	FGBuildableResourceSink,
 	FGBuildableResourceSinkShop,
-	FGItemDescriptorBiomass,
+	docs_json_ts_0_6_1_5_FGItemDescriptorBiomass,
 	FGBuildableResourceExtractor,
 	FGBuildableManufacturer,
 	FGPortableMinerDispenser,
@@ -1138,8 +1119,6 @@ export type {
 	FGGasMask,
 	FGGolfCartDispenser,
 	FGHoverPack,
-	FGItemDescriptor,
-	FGItemDescriptorBiomass,
 	FGItemDescriptorNuclearFuel,
 	FGJetPack,
 	FGJumpingStilts,
@@ -1149,7 +1128,6 @@ export type {
 	FGPoleDescriptor,
 	FGPortableMinerDispenser,
 	FGRecipe,
-	FGResourceDescriptor,
 	FGSchematic,
 	FGSchematic_Classes_item,
 	FGSuitBase,

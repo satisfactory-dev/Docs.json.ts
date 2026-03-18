@@ -1,20 +1,20 @@
 /* eslint-disable @stylistic/max-len */
 
 import type {
-	FGBuildable as docs_json_ts_0_3_7_7_classes_base_FGBuildable,
 	FGBuildable_occupied as docs_json_ts_0_3_7_7_classes_base_FGBuildable_occupied,
 	FGBuildable_powered as docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered,
 	FGBuildable_tiered as docs_json_ts_0_3_7_7_classes_base_FGBuildable_tiered,
-	FGBuildable_with_height_and_elevation as docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_and_elevation,
-	FGBuildable_with_height_and_width as docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_and_width,
-	FGBuildable_with_size_and_elevation as docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_size_and_elevation,
-	FGBuildableAttachment_splitter as docs_json_ts_0_3_7_7_classes_base_FGBuildableAttachment_splitter,
+	FGBuildable_unoccupied_and_untiered as docs_json_ts_0_3_7_7_classes_base_FGBuildable_unoccupied_and_untiered,
 	FGBuildableAttachmentMerger as docs_json_ts_0_3_7_7_classes_base_FGBuildableAttachmentMerger,
+	FGBuildableAttachmentSplitter as docs_json_ts_0_3_7_7_classes_base_FGBuildableAttachmentSplitter,
 	FGBuildableConveyorBelt_spline as docs_json_ts_0_3_7_7_classes_base_FGBuildableConveyorBelt_spline,
 	FGBuildableConveyorLift as docs_json_ts_0_3_7_7_classes_base_FGBuildableConveyorLift,
 	FGBuildableDockingStation as docs_json_ts_0_3_7_7_classes_base_FGBuildableDockingStation,
 	FGBuildableFactory_jump_pad as docs_json_ts_0_3_7_7_classes_base_FGBuildableFactory_jump_pad,
+	FGBuildableFactory_landing_pad as docs_json_ts_0_3_7_7_classes_base_FGBuildableFactory_landing_pad,
+	FGBuildableFactory_not_a_pad as docs_json_ts_0_3_7_7_classes_base_FGBuildableFactory_not_a_pad,
 	FGBuildableFactorySimpleProducer as docs_json_ts_0_3_7_7_classes_base_FGBuildableFactorySimpleProducer,
+	FGBuildableFoundation as docs_json_ts_0_3_7_7_classes_base_FGBuildableFoundation,
 	FGBuildableGeneratorFuel_biomass as docs_json_ts_0_3_7_7_classes_base_FGBuildableGeneratorFuel_biomass,
 	FGBuildableGeneratorFuel_coal as docs_json_ts_0_3_7_7_classes_base_FGBuildableGeneratorFuel_coal,
 	FGBuildableGeneratorFuel_fuel as docs_json_ts_0_3_7_7_classes_base_FGBuildableGeneratorFuel_fuel,
@@ -48,18 +48,24 @@ import type {
 	FGBuildableResourceExtractor_water as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceExtractor_water,
 	FGBuildableResourceSink as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceSink,
 	FGBuildableResourceSinkShop as docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceSinkShop,
+	FGBuildableSnowDispenser as docs_json_ts_0_3_7_7_classes_base_FGBuildableSnowDispenser,
+	FGBuildableSpaceElevator as docs_json_ts_0_3_7_7_classes_base_FGBuildableSpaceElevator,
 	FGBuildableSplitterSmart as docs_json_ts_0_3_7_7_classes_base_FGBuildableSplitterSmart,
+	FGBuildableStair as docs_json_ts_0_3_7_7_classes_base_FGBuildableStair,
 	FGBuildableStorage as docs_json_ts_0_3_7_7_classes_base_FGBuildableStorage,
 	FGBuildableTradingPost as docs_json_ts_0_3_7_7_classes_base_FGBuildableTradingPost,
-	FGBuildableTrainPlatform as docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatform,
 	FGBuildableTrainPlatformCargo as docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatformCargo,
+	FGBuildableTrainPlatformEmpty as docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatformEmpty,
+	FGBuildableWalkway as docs_json_ts_0_3_7_7_classes_base_FGBuildableWalkway,
+	FGBuildableWall as docs_json_ts_0_3_7_7_classes_base_FGBuildableWall,
 	FGBuildableWire as docs_json_ts_0_3_7_7_classes_base_FGBuildableWire,
 	FGBuildingDescriptor as docs_json_ts_0_3_7_7_classes_base_FGBuildingDescriptor,
 	FGChainsaw as docs_json_ts_0_3_7_7_classes_base_FGChainsaw,
 	FGColorGun as docs_json_ts_0_3_7_7_classes_base_FGColorGun,
 	FGConsumableDescriptor as docs_json_ts_0_3_7_7_classes_base_FGConsumableDescriptor,
 	FGConsumableEquipment as docs_json_ts_0_3_7_7_classes_base_FGConsumableEquipment,
-	FGDescriptor_BuildMenu as docs_json_ts_0_3_7_7_classes_base_FGDescriptor_BuildMenu,
+	FGConveyorPoleStackable as docs_json_ts_0_3_7_7_classes_base_FGConveyorPoleStackable,
+	FGEquipmentDescriptor as docs_json_ts_0_3_7_7_classes_base_FGEquipmentDescriptor,
 	FGEquipmentStunSpear_xenobasher as docs_json_ts_0_3_7_7_classes_base_FGEquipmentStunSpear_xenobasher,
 	FGEquipmentStunSpear_xenozapper as docs_json_ts_0_3_7_7_classes_base_FGEquipmentStunSpear_xenozapper,
 	FGGasMask as docs_json_ts_0_3_7_7_classes_base_FGGasMask,
@@ -80,15 +86,12 @@ import type {
 	FGSchematic as docs_json_ts_0_3_7_7_classes_base_FGSchematic,
 	FGSnowballWeapon as docs_json_ts_0_3_7_7_classes_base_FGSnowballWeapon,
 	FGSuitBase as docs_json_ts_0_3_7_7_classes_base_FGSuitBase,
-	FGWeaponInstantFire as docs_json_ts_0_3_7_7_classes_base_FGWeaponInstantFire,
-	FGWeaponProjectileFire as docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectileFire,
+	FGVehicleDescriptor as docs_json_ts_0_3_7_7_classes_base_FGVehicleDescriptor,
+	FGWeapon_Equip_RebarGun_Projectile_C as docs_json_ts_0_3_7_7_classes_base_FGWeapon_Equip_RebarGun_Projectile_C,
+	FGWeapon_Equip_Rifle_C as docs_json_ts_0_3_7_7_classes_base_FGWeapon_Equip_Rifle_C,
 } from './classes/Base.ts';
 
-import type {
-	decimal_string as docs_json_ts_common_types_decimal_string,
-} from './../common/types.ts';
-
-type FGBuildable_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable;
+type FGBuildable_unoccupied_and_untiered = docs_json_ts_0_3_7_7_classes_base_FGBuildable_unoccupied_and_untiered;
 
 type FGBuildable_occupied = docs_json_ts_0_3_7_7_classes_base_FGBuildable_occupied;
 
@@ -98,7 +101,7 @@ type FGBuildable_tiered = docs_json_ts_0_3_7_7_classes_base_FGBuildable_tiered;
 
 type FGBuildableAttachmentMerger = docs_json_ts_0_3_7_7_classes_base_FGBuildableAttachmentMerger;
 
-type FGBuildableAttachmentSplitter = docs_json_ts_0_3_7_7_classes_base_FGBuildableAttachment_splitter;
+type FGBuildableAttachmentSplitter = docs_json_ts_0_3_7_7_classes_base_FGBuildableAttachmentSplitter;
 
 type FGBuildableConveyorBelt = docs_json_ts_0_3_7_7_classes_base_FGBuildableConveyorBelt_spline;
 
@@ -108,14 +111,13 @@ type FGBuildableDockingStation = docs_json_ts_0_3_7_7_classes_base_FGBuildableDo
 
 type FGBuildableFactory_jump_pad = docs_json_ts_0_3_7_7_classes_base_FGBuildableFactory_jump_pad;
 
-type FGBuildableFactory_landing_pad = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered & {
-	mDampeningFactor: docs_json_ts_common_types_decimal_string,
-	mPlayerList: '',
-};
+type FGBuildableFactory_landing_pad = docs_json_ts_0_3_7_7_classes_base_FGBuildableFactory_landing_pad;
+
+type FGBuildableFactory_not_a_pad = docs_json_ts_0_3_7_7_classes_base_FGBuildableFactory_not_a_pad;
 
 type FGBuildableFactorySimpleProducer = docs_json_ts_0_3_7_7_classes_base_FGBuildableFactorySimpleProducer;
 
-type FGBuildableFoundation = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_and_elevation;
+type FGBuildableFoundation = docs_json_ts_0_3_7_7_classes_base_FGBuildableFoundation;
 
 type FGBuildableGeneratorFuel_biomass = docs_json_ts_0_3_7_7_classes_base_FGBuildableGeneratorFuel_biomass;
 
@@ -183,15 +185,13 @@ type FGBuildableResourceSink = docs_json_ts_0_3_7_7_classes_base_FGBuildableReso
 
 type FGBuildableResourceSinkShop = docs_json_ts_0_3_7_7_classes_base_FGBuildableResourceSinkShop;
 
-type FGBuildableSnowDispenser = docs_json_ts_0_3_7_7_classes_base_FGBuildable;
+type FGBuildableSnowDispenser = docs_json_ts_0_3_7_7_classes_base_FGBuildableSnowDispenser;
 
-type FGBuildableSpaceElevator = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered & {
-	mMapText: 'Space Elevator',
-};
+type FGBuildableSpaceElevator = docs_json_ts_0_3_7_7_classes_base_FGBuildableSpaceElevator;
 
 type FGBuildableSplitterSmart = docs_json_ts_0_3_7_7_classes_base_FGBuildableSplitterSmart;
 
-type FGBuildableStair = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_and_elevation;
+type FGBuildableStair = docs_json_ts_0_3_7_7_classes_base_FGBuildableStair;
 
 type FGBuildableStorage = docs_json_ts_0_3_7_7_classes_base_FGBuildableStorage;
 
@@ -202,11 +202,11 @@ type FGBuildableTradingPost = docs_json_ts_0_3_7_7_classes_base_FGBuildableTradi
 
 type FGBuildableTrainPlatformCargo = docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatformCargo;
 
-type FGBuildableTrainPlatformEmpty = docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatform;
+type FGBuildableTrainPlatformEmpty = docs_json_ts_0_3_7_7_classes_base_FGBuildableTrainPlatformEmpty;
 
-type FGBuildableWalkway = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_size_and_elevation;
+type FGBuildableWalkway = docs_json_ts_0_3_7_7_classes_base_FGBuildableWalkway;
 
-type FGBuildableWall = docs_json_ts_0_3_7_7_classes_base_FGBuildable_with_height_and_width;
+type FGBuildableWall = docs_json_ts_0_3_7_7_classes_base_FGBuildableWall;
 
 type FGBuildableWire = docs_json_ts_0_3_7_7_classes_base_FGBuildableWire;
 
@@ -219,6 +219,10 @@ type FGColorGun = docs_json_ts_0_3_7_7_classes_base_FGColorGun;
 type FGConsumableDescriptor = docs_json_ts_0_3_7_7_classes_base_FGConsumableDescriptor;
 
 type FGConsumableEquipment = docs_json_ts_0_3_7_7_classes_base_FGConsumableEquipment;
+
+type FGConveyorPoleStackable = docs_json_ts_0_3_7_7_classes_base_FGConveyorPoleStackable;
+
+type FGEquipmentDescriptor = docs_json_ts_0_3_7_7_classes_base_FGEquipmentDescriptor;
 
 type FGEquipmentStunSpear_xenobasher = docs_json_ts_0_3_7_7_classes_base_FGEquipmentStunSpear_xenobasher;
 
@@ -262,14 +266,14 @@ type FGSnowballWeapon = docs_json_ts_0_3_7_7_classes_base_FGSnowballWeapon;
 
 type FGSuitBase = docs_json_ts_0_3_7_7_classes_base_FGSuitBase;
 
-type FGVehicleDescriptor = docs_json_ts_0_3_7_7_classes_base_FGDescriptor_BuildMenu;
+type FGVehicleDescriptor = docs_json_ts_0_3_7_7_classes_base_FGVehicleDescriptor;
 
-type FGWeaponInstantFire = docs_json_ts_0_3_7_7_classes_base_FGWeaponInstantFire;
+type FGWeapon_Equip_RebarGun_Projectile_C = docs_json_ts_0_3_7_7_classes_base_FGWeapon_Equip_RebarGun_Projectile_C;
 
-type FGWeaponProjectileFire = docs_json_ts_0_3_7_7_classes_base_FGWeaponProjectileFire;
+type FGWeapon_Equip_Rifle_C = docs_json_ts_0_3_7_7_classes_base_FGWeapon_Equip_Rifle_C;
 
 export type {
-	FGBuildable_base,
+	FGBuildable_unoccupied_and_untiered,
 	FGBuildable_occupied,
 	FGBuildable_powered_base,
 	FGBuildable_tiered,
@@ -280,6 +284,7 @@ export type {
 	FGBuildableDockingStation,
 	FGBuildableFactory_jump_pad,
 	FGBuildableFactory_landing_pad,
+	FGBuildableFactory_not_a_pad,
 	FGBuildableFactorySimpleProducer,
 	FGBuildableFoundation,
 	FGBuildableGeneratorFuel_biomass,
@@ -331,6 +336,8 @@ export type {
 	FGColorGun,
 	FGConsumableDescriptor,
 	FGConsumableEquipment,
+	FGConveyorPoleStackable,
+	FGEquipmentDescriptor,
 	FGEquipmentStunSpear_xenobasher,
 	FGEquipmentStunSpear_xenozapper,
 	FGGasMask,
@@ -352,6 +359,6 @@ export type {
 	FGSnowballWeapon,
 	FGSuitBase,
 	FGVehicleDescriptor,
-	FGWeaponInstantFire,
-	FGWeaponProjectileFire,
+	FGWeapon_Equip_RebarGun_Projectile_C,
+	FGWeapon_Equip_Rifle_C,
 };

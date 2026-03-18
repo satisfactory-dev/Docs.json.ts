@@ -91,7 +91,7 @@
 					"$ref": "docs.json.ts--1.0.1.4--classes#/$defs/FGBuildable--tiered"
 				},
 				{
-					"$ref": "docs.json.ts--1.0.1.4--classes#/$defs/FGBuildable--base"
+					"$ref": "docs.json.ts--1.0.1.4--classes#/$defs/FGBuildable--unoccupied-and-untiered"
 				}
 			]
 		},
@@ -338,7 +338,7 @@
 					"$ref": "docs.json.ts--1.0.1.4--classes#/$defs/FGBuildableFactory--landing-pad"
 				},
 				{
-					"$ref": "docs.json.ts--1.0.1.4--classes#/$defs/FGBuildable--powered"
+					"$ref": "docs.json.ts--1.0.1.4--classes#/$defs/FGBuildableFactory--not-pad"
 				}
 			]
 		},
@@ -713,7 +713,7 @@
 					"type": "array",
 					"minItems": 1,
 					"items": {
-						"$ref": "docs.json.ts--1.0.1.4--classes#/$defs/FGBuildablePassthrough"
+						"$ref": "docs.json.ts--1.0.1.4--classes#/$defs/FGBuildablePassthroughPipeHyper"
 					}
 				}
 			}
@@ -1338,7 +1338,7 @@
 					"type": "array",
 					"minItems": 1,
 					"items": {
-						"$ref": "docs.json.ts--1.0.1.4--classes#/$defs/FGBuildableWalkway"
+						"$ref": "docs.json.ts--1.0.1.4--classes#/$defs/FGBuildableWalkwayLightweight"
 					}
 				}
 			}
@@ -1374,7 +1374,7 @@
 					"type": "array",
 					"minItems": 1,
 					"items": {
-						"$ref": "docs.json.ts--1.0.1.4--classes#/$defs/FGBuildableWall"
+						"$ref": "docs.json.ts--1.0.1.4--classes#/$defs/FGBuildableWallLightweight"
 					}
 				}
 			}
@@ -1597,7 +1597,7 @@
 					"type": "array",
 					"minItems": 1,
 					"items": {
-						"$ref": "docs.json.ts--1.0.1.4--classes#/$defs/FGItemDescriptor"
+						"$ref": "docs.json.ts--1.0.1.4--classes#/$defs/FGEquipmentDescriptor"
 					}
 				}
 			}

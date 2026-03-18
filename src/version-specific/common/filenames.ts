@@ -16,9 +16,18 @@ import common_classes from '../../../schema/common/classes.json' with {
 	type: 'json',
 };
 
+// oxlint-disable-next-line @stylistic/max-len
+import common_properties from '../../../schema/common/properties.json' with {
+	type: 'json',
+};
+
 export const filenames_by_$id: guard = {
 	[common_types.$id]: {
 		types: './generated-types/common/types.ts',
+		data: './generated-types/common/data.ts',
+	},
+	[common_properties.$id]: {
+		types: './generated-types/common/properties.ts',
 		data: './generated-types/common/data.ts',
 	},
 	[common_classes__base.$id]: {

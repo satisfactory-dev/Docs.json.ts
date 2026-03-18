@@ -19,10 +19,9 @@ import type {
 } from './../0.3.7.7/types.ts';
 
 import type {
-	FGBuildable_base as docs_json_ts_0_5_2_1_classes_FGBuildable_base,
 	FGBuildable_occupied as docs_json_ts_0_5_2_1_classes_FGBuildable_occupied,
-	FGBuildable_powered as docs_json_ts_0_5_2_1_classes_FGBuildable_powered,
 	FGBuildable_tiered as docs_json_ts_0_5_2_1_classes_FGBuildable_tiered,
+	FGBuildable_unoccupied_and_untiered as docs_json_ts_0_5_2_1_classes_FGBuildable_unoccupied_and_untiered,
 	FGBuildableAttachmentMerger as docs_json_ts_0_5_2_1_classes_FGBuildableAttachmentMerger,
 	FGBuildableAttachmentSplitter as docs_json_ts_0_5_2_1_classes_FGBuildableAttachmentSplitter,
 	FGBuildableBeam as docs_json_ts_0_5_2_1_classes_FGBuildableBeam,
@@ -35,6 +34,7 @@ import type {
 	FGBuildableDroneStation as docs_json_ts_0_5_2_1_classes_FGBuildableDroneStation,
 	FGBuildableFactory_jump_pad as docs_json_ts_0_5_2_1_classes_FGBuildableFactory_jump_pad,
 	FGBuildableFactory_landing_pad as docs_json_ts_0_5_2_1_classes_FGBuildableFactory_landing_pad,
+	FGBuildableFactory_not_pad as docs_json_ts_0_5_2_1_classes_FGBuildableFactory_not_pad,
 	FGBuildableFactoryBuilding as docs_json_ts_0_5_2_1_classes_FGBuildableFactoryBuilding,
 	FGBuildableFactorySimpleProducer as docs_json_ts_0_5_2_1_classes_FGBuildableFactorySimpleProducer,
 	FGBuildableFloodlight as docs_json_ts_0_5_2_1_classes_FGBuildableFloodlight,
@@ -101,6 +101,8 @@ import type {
 	FGBuildingDescriptor as docs_json_ts_0_5_2_1_classes_FGBuildingDescriptor,
 	FGChargedWeapon as docs_json_ts_0_5_2_1_classes_FGChargedWeapon,
 	FGConsumableDescriptor as docs_json_ts_0_5_2_1_classes_FGConsumableDescriptor,
+	FGConveyorPoleStackable as docs_json_ts_0_5_2_1_classes_FGConveyorPoleStackable,
+	FGEquipmentDescriptor as docs_json_ts_0_5_2_1_classes_FGEquipmentDescriptor,
 	FGEquipmentDescriptor_Desc_GolfCartGold_C as docs_json_ts_0_5_2_1_classes_FGEquipmentDescriptor_Desc_GolfCartGold_C,
 	FGGolfCartDispenser as docs_json_ts_0_5_2_1_classes_FGGolfCartDispenser,
 	FGItemDescAmmoTypeColorCartridge as docs_json_ts_0_5_2_1_classes_FGItemDescAmmoTypeColorCartridge,
@@ -141,7 +143,7 @@ type FGBuildable = {
 	],
 };
 
-type FGBuildable_Classes_item = docs_json_ts_0_5_2_1_classes_FGBuildable_occupied | docs_json_ts_0_5_2_1_classes_FGBuildable_tiered | docs_json_ts_0_5_2_1_classes_FGBuildable_base;
+type FGBuildable_Classes_item = docs_json_ts_0_5_2_1_classes_FGBuildable_occupied | docs_json_ts_0_5_2_1_classes_FGBuildable_tiered | docs_json_ts_0_5_2_1_classes_FGBuildable_unoccupied_and_untiered;
 
 type FGBuildableAttachmentMerger = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableAttachmentMerger'}${'\''}`,
@@ -231,7 +233,7 @@ type FGBuildableFactory = {
 	],
 };
 
-type FGBuildableFactory_Classes_item = docs_json_ts_0_5_2_1_classes_FGBuildableFactory_jump_pad | docs_json_ts_0_5_2_1_classes_FGBuildableFactory_landing_pad | docs_json_ts_0_5_2_1_classes_FGBuildable_powered;
+type FGBuildableFactory_Classes_item = docs_json_ts_0_5_2_1_classes_FGBuildableFactory_jump_pad | docs_json_ts_0_5_2_1_classes_FGBuildableFactory_landing_pad | docs_json_ts_0_5_2_1_classes_FGBuildableFactory_not_pad;
 
 type FGBuildableFactoryBuilding = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableFactoryBuilding'}${'\''}`,
@@ -655,8 +657,8 @@ type FGConsumableDescriptor = {
 type FGConveyorPoleStackable = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGConveyorPoleStackable'}${'\''}`,
 	Classes: [
-		docs_json_ts_0_5_2_1_classes_FGBuildablePole,
-		...docs_json_ts_0_5_2_1_classes_FGBuildablePole[],
+		docs_json_ts_0_5_2_1_classes_FGConveyorPoleStackable,
+		...docs_json_ts_0_5_2_1_classes_FGConveyorPoleStackable[],
 	],
 };
 
@@ -676,7 +678,7 @@ type FGEquipmentDescriptor = {
 	],
 };
 
-type FGEquipmentDescriptor_Classes_item = docs_json_ts_0_5_2_1_classes_FGItemDescriptor | docs_json_ts_0_5_2_1_classes_FGEquipmentDescriptor_Desc_GolfCartGold_C;
+type FGEquipmentDescriptor_Classes_item = docs_json_ts_0_5_2_1_classes_FGEquipmentDescriptor | docs_json_ts_0_5_2_1_classes_FGEquipmentDescriptor_Desc_GolfCartGold_C;
 
 type FGGolfCartDispenser = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGGolfCartDispenser'}${'\''}`,

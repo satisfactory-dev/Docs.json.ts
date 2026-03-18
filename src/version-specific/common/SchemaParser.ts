@@ -23,6 +23,11 @@ import common_classes from '../../../schema/common/classes.json' with {
 	type: 'json',
 };
 
+// oxlint-disable-next-line @stylistic/max-len
+import common_properties from '../../../schema/common/properties.json' with {
+	type: 'json',
+};
+
 import {
 	NativeClass,
 } from '../0.3.7.7/NativeClass.ts';
@@ -70,6 +75,7 @@ const already_configured: WeakSet<SchemaParser> = new WeakSet();
 
 export function add_schemas(parser: SchemaParser) {
 	parser.add_schema(common_types);
+	parser.add_schema(common_properties);
 	parser.add_schema(common_classes__base);
 	parser.add_schema(common_classes);
 }

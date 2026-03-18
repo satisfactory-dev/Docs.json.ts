@@ -5,10 +5,9 @@ import type {
 	FGAmmoTypeInstantHit_Desc_CartridgeStandard_C as docs_json_ts_1_0_1_4_classes_FGAmmoTypeInstantHit_Desc_CartridgeStandard_C,
 	FGAmmoTypeProjectile as docs_json_ts_1_0_1_4_classes_FGAmmoTypeProjectile,
 	FGAmmoTypeSpreadshot as docs_json_ts_1_0_1_4_classes_FGAmmoTypeSpreadshot,
-	FGBuildable_base as docs_json_ts_1_0_1_4_classes_FGBuildable_base,
 	FGBuildable_occupied as docs_json_ts_1_0_1_4_classes_FGBuildable_occupied,
-	FGBuildable_powered as docs_json_ts_1_0_1_4_classes_FGBuildable_powered,
 	FGBuildable_tiered as docs_json_ts_1_0_1_4_classes_FGBuildable_tiered,
+	FGBuildable_unoccupied_and_untiered as docs_json_ts_1_0_1_4_classes_FGBuildable_unoccupied_and_untiered,
 	FGBuildableAttachmentMerger as docs_json_ts_1_0_1_4_classes_FGBuildableAttachmentMerger,
 	FGBuildableAttachmentSplitter as docs_json_ts_1_0_1_4_classes_FGBuildableAttachmentSplitter,
 	FGBuildableBeamLightweight as docs_json_ts_1_0_1_4_classes_FGBuildableBeamLightweight,
@@ -22,6 +21,7 @@ import type {
 	FGBuildableDroneStation as docs_json_ts_1_0_1_4_classes_FGBuildableDroneStation,
 	FGBuildableFactory_jump_pad as docs_json_ts_1_0_1_4_classes_FGBuildableFactory_jump_pad,
 	FGBuildableFactory_landing_pad as docs_json_ts_1_0_1_4_classes_FGBuildableFactory_landing_pad,
+	FGBuildableFactory_not_pad as docs_json_ts_1_0_1_4_classes_FGBuildableFactory_not_pad,
 	FGBuildableFactoryBuilding as docs_json_ts_1_0_1_4_classes_FGBuildableFactoryBuilding,
 	FGBuildableFactorySimpleProducer as docs_json_ts_1_0_1_4_classes_FGBuildableFactorySimpleProducer,
 	FGBuildableFloodlight as docs_json_ts_1_0_1_4_classes_FGBuildableFloodlight,
@@ -51,6 +51,7 @@ import type {
 	FGBuildableManufacturer_Build_QuantumEncoder_C as docs_json_ts_1_0_1_4_classes_FGBuildableManufacturer_Build_QuantumEncoder_C,
 	FGBuildableManufacturer_Build_SmelterMk1_C as docs_json_ts_1_0_1_4_classes_FGBuildableManufacturer_Build_SmelterMk1_C,
 	FGBuildablePassthrough as docs_json_ts_1_0_1_4_classes_FGBuildablePassthrough,
+	FGBuildablePassthroughPipeHyper as docs_json_ts_1_0_1_4_classes_FGBuildablePassthroughPipeHyper,
 	FGBuildablePillarLightweight as docs_json_ts_1_0_1_4_classes_FGBuildablePillarLightweight,
 	FGBuildablePipeHyper as docs_json_ts_1_0_1_4_classes_FGBuildablePipeHyper,
 	FGBuildablePipeline as docs_json_ts_1_0_1_4_classes_FGBuildablePipeline,
@@ -88,7 +89,9 @@ import type {
 	FGBuildableTrainPlatformCargo as docs_json_ts_1_0_1_4_classes_FGBuildableTrainPlatformCargo,
 	FGBuildableTrainPlatformEmpty as docs_json_ts_1_0_1_4_classes_FGBuildableTrainPlatformEmpty,
 	FGBuildableWalkway as docs_json_ts_1_0_1_4_classes_FGBuildableWalkway,
+	FGBuildableWalkwayLightweight as docs_json_ts_1_0_1_4_classes_FGBuildableWalkwayLightweight,
 	FGBuildableWall as docs_json_ts_1_0_1_4_classes_FGBuildableWall,
+	FGBuildableWallLightweight as docs_json_ts_1_0_1_4_classes_FGBuildableWallLightweight,
 	FGBuildableWaterPump as docs_json_ts_1_0_1_4_classes_FGBuildableWaterPump,
 	FGBuildableWidgetSign as docs_json_ts_1_0_1_4_classes_FGBuildableWidgetSign,
 	FGBuildableWire as docs_json_ts_1_0_1_4_classes_FGBuildableWire,
@@ -99,6 +102,7 @@ import type {
 	FGConsumableDescriptor as docs_json_ts_1_0_1_4_classes_FGConsumableDescriptor,
 	FGConsumableEquipment_base as docs_json_ts_1_0_1_4_classes_FGConsumableEquipment_base,
 	FGConsumableEquipment_medkit as docs_json_ts_1_0_1_4_classes_FGConsumableEquipment_medkit,
+	FGEquipmentDescriptor as docs_json_ts_1_0_1_4_classes_FGEquipmentDescriptor,
 	FGEquipmentStunSpear_xenobasher as docs_json_ts_1_0_1_4_classes_FGEquipmentStunSpear_xenobasher,
 	FGEquipmentStunSpear_xenozapper as docs_json_ts_1_0_1_4_classes_FGEquipmentStunSpear_xenozapper,
 	FGEquipmentZipline as docs_json_ts_1_0_1_4_classes_FGEquipmentZipline,
@@ -181,7 +185,7 @@ type FGBuildable = {
 	],
 };
 
-type FGBuildable_Classes_item = docs_json_ts_1_0_1_4_classes_FGBuildable_occupied | docs_json_ts_1_0_1_4_classes_FGBuildable_tiered | docs_json_ts_1_0_1_4_classes_FGBuildable_base;
+type FGBuildable_Classes_item = docs_json_ts_1_0_1_4_classes_FGBuildable_occupied | docs_json_ts_1_0_1_4_classes_FGBuildable_tiered | docs_json_ts_1_0_1_4_classes_FGBuildable_unoccupied_and_untiered;
 
 type FGBuildableAttachmentMerger = {
 	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGBuildableAttachmentMerger'}${'\''}`,
@@ -287,7 +291,7 @@ type FGBuildableFactory = {
 	],
 };
 
-type FGBuildableFactory_Classes_item = docs_json_ts_1_0_1_4_classes_FGBuildableFactory_jump_pad | docs_json_ts_1_0_1_4_classes_FGBuildableFactory_landing_pad | docs_json_ts_1_0_1_4_classes_FGBuildable_powered;
+type FGBuildableFactory_Classes_item = docs_json_ts_1_0_1_4_classes_FGBuildableFactory_jump_pad | docs_json_ts_1_0_1_4_classes_FGBuildableFactory_landing_pad | docs_json_ts_1_0_1_4_classes_FGBuildableFactory_not_pad;
 
 type FGBuildableFactoryBuilding = {
 	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGBuildableFactoryBuilding'}${'\''}`,
@@ -436,8 +440,8 @@ type FGBuildablePassthrough = {
 type FGBuildablePassthroughPipeHyper = {
 	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGBuildablePassthroughPipeHyper'}${'\''}`,
 	Classes: [
-		docs_json_ts_1_0_1_4_classes_FGBuildablePassthrough,
-		...docs_json_ts_1_0_1_4_classes_FGBuildablePassthrough[],
+		docs_json_ts_1_0_1_4_classes_FGBuildablePassthroughPipeHyper,
+		...docs_json_ts_1_0_1_4_classes_FGBuildablePassthroughPipeHyper[],
 	],
 };
 
@@ -703,8 +707,8 @@ type FGBuildableWalkway = {
 type FGBuildableWalkwayLightweight = {
 	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGBuildableWalkwayLightweight'}${'\''}`,
 	Classes: [
-		docs_json_ts_1_0_1_4_classes_FGBuildableWalkway,
-		...docs_json_ts_1_0_1_4_classes_FGBuildableWalkway[],
+		docs_json_ts_1_0_1_4_classes_FGBuildableWalkwayLightweight,
+		...docs_json_ts_1_0_1_4_classes_FGBuildableWalkwayLightweight[],
 	],
 };
 
@@ -719,8 +723,8 @@ type FGBuildableWall = {
 type FGBuildableWallLightweight = {
 	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGBuildableWallLightweight'}${'\''}`,
 	Classes: [
-		docs_json_ts_1_0_1_4_classes_FGBuildableWall,
-		...docs_json_ts_1_0_1_4_classes_FGBuildableWall[],
+		docs_json_ts_1_0_1_4_classes_FGBuildableWallLightweight,
+		...docs_json_ts_1_0_1_4_classes_FGBuildableWallLightweight[],
 	],
 };
 
@@ -815,8 +819,8 @@ type FGCustomizationRecipe = {
 type FGEquipmentDescriptor = {
 	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGEquipmentDescriptor'}${'\''}`,
 	Classes: [
-		docs_json_ts_1_0_1_4_classes_FGItemDescriptor,
-		...docs_json_ts_1_0_1_4_classes_FGItemDescriptor[],
+		docs_json_ts_1_0_1_4_classes_FGEquipmentDescriptor,
+		...docs_json_ts_1_0_1_4_classes_FGEquipmentDescriptor[],
 	],
 };
 

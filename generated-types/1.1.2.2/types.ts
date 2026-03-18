@@ -19,10 +19,9 @@ import type {
 	FGAmmoTypeInstantHit_Desc_CartridgeStandard_C as docs_json_ts_1_1_2_2_classes_FGAmmoTypeInstantHit_Desc_CartridgeStandard_C,
 	FGAmmoTypeProjectile as docs_json_ts_1_1_2_2_classes_FGAmmoTypeProjectile,
 	FGAmmoTypeSpreadshot as docs_json_ts_1_1_2_2_classes_FGAmmoTypeSpreadshot,
-	FGBuildable_base as docs_json_ts_1_1_2_2_classes_FGBuildable_base,
 	FGBuildable_occupied as docs_json_ts_1_1_2_2_classes_FGBuildable_occupied,
-	FGBuildable_powered as docs_json_ts_1_1_2_2_classes_FGBuildable_powered,
 	FGBuildable_tiered as docs_json_ts_1_1_2_2_classes_FGBuildable_tiered,
+	FGBuildable_unoccupied_and_untiered as docs_json_ts_1_1_2_2_classes_FGBuildable_unoccupied_and_untiered,
 	FGBuildableAttachmentMerger as docs_json_ts_1_1_2_2_classes_FGBuildableAttachmentMerger,
 	FGBuildableAttachmentSplitter as docs_json_ts_1_1_2_2_classes_FGBuildableAttachmentSplitter,
 	FGBuildableBarrierCorner as docs_json_ts_1_1_2_2_classes_FGBuildableBarrierCorner,
@@ -42,6 +41,8 @@ import type {
 	FGBuildableElevatorFloorStop as docs_json_ts_1_1_2_2_classes_FGBuildableElevatorFloorStop,
 	FGBuildableFactory_jump_pad as docs_json_ts_1_1_2_2_classes_FGBuildableFactory_jump_pad,
 	FGBuildableFactory_landing_pad as docs_json_ts_1_1_2_2_classes_FGBuildableFactory_landing_pad,
+	FGBuildableFactory_not_pad as docs_json_ts_1_1_2_2_classes_FGBuildableFactory_not_pad,
+	FGBuildableFactoryBuilding as docs_json_ts_1_1_2_2_classes_FGBuildableFactoryBuilding,
 	FGBuildableFactorySimpleProducer as docs_json_ts_1_1_2_2_classes_FGBuildableFactorySimpleProducer,
 	FGBuildableFloodlight as docs_json_ts_1_1_2_2_classes_FGBuildableFloodlight,
 	FGBuildableFoundationLightweight as docs_json_ts_1_1_2_2_classes_FGBuildableFoundationLightweight,
@@ -113,6 +114,7 @@ import type {
 	FGBuildableTrainPlatformEmpty as docs_json_ts_1_1_2_2_classes_FGBuildableTrainPlatformEmpty,
 	FGBuildableWalkway as docs_json_ts_1_1_2_2_classes_FGBuildableWalkway,
 	FGBuildableWall as docs_json_ts_1_1_2_2_classes_FGBuildableWall,
+	FGBuildableWallLightweight as docs_json_ts_1_1_2_2_classes_FGBuildableWallLightweight,
 	FGBuildableWaterPump as docs_json_ts_1_1_2_2_classes_FGBuildableWaterPump,
 	FGBuildableWidgetSign as docs_json_ts_1_1_2_2_classes_FGBuildableWidgetSign,
 	FGBuildableWire as docs_json_ts_1_1_2_2_classes_FGBuildableWire,
@@ -185,7 +187,7 @@ type FGBuildable = {
 	],
 };
 
-type FGBuildable_Classes_item = docs_json_ts_1_1_2_2_classes_FGBuildable_occupied | docs_json_ts_1_1_2_2_classes_FGBuildable_tiered | docs_json_ts_1_1_2_2_classes_FGBuildable_base;
+type FGBuildable_Classes_item = docs_json_ts_1_1_2_2_classes_FGBuildable_occupied | docs_json_ts_1_1_2_2_classes_FGBuildable_tiered | docs_json_ts_1_1_2_2_classes_FGBuildable_unoccupied_and_untiered;
 
 type FGBuildableAttachmentMerger = {
 	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGBuildableAttachmentMerger'}${'\''}`,
@@ -331,13 +333,13 @@ type FGBuildableFactory = {
 	],
 };
 
-type FGBuildableFactory_Classes_item = docs_json_ts_1_1_2_2_classes_FGBuildableFactory_jump_pad | docs_json_ts_1_1_2_2_classes_FGBuildableFactory_landing_pad | docs_json_ts_1_1_2_2_classes_FGBuildable_powered;
+type FGBuildableFactory_Classes_item = docs_json_ts_1_1_2_2_classes_FGBuildableFactory_jump_pad | docs_json_ts_1_1_2_2_classes_FGBuildableFactory_landing_pad | docs_json_ts_1_1_2_2_classes_FGBuildableFactory_not_pad;
 
 type FGBuildableFactoryBuilding = {
 	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGBuildableFactoryBuilding'}${'\''}`,
 	Classes: [
-		docs_json_ts_1_1_2_2_classes_FGBuildable_base,
-		...docs_json_ts_1_1_2_2_classes_FGBuildable_base[],
+		docs_json_ts_1_1_2_2_classes_FGBuildableFactoryBuilding,
+		...docs_json_ts_1_1_2_2_classes_FGBuildableFactoryBuilding[],
 	],
 };
 
@@ -803,8 +805,8 @@ type FGBuildableWall = {
 type FGBuildableWallLightweight = {
 	NativeClass: `/Script/CoreUObject.Class'/Script/${'FactoryGame.FGBuildableWallLightweight'}${'\''}`,
 	Classes: [
-		docs_json_ts_1_1_2_2_classes_FGBuildableWall,
-		...docs_json_ts_1_1_2_2_classes_FGBuildableWall[],
+		docs_json_ts_1_1_2_2_classes_FGBuildableWallLightweight,
+		...docs_json_ts_1_1_2_2_classes_FGBuildableWallLightweight[],
 	],
 };
 

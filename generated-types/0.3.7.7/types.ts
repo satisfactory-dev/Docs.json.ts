@@ -1,10 +1,9 @@
 /* eslint-disable @stylistic/max-len */
 
 import type {
-	FGBuildable_base as docs_json_ts_0_3_7_7_classes_FGBuildable_base,
 	FGBuildable_occupied as docs_json_ts_0_3_7_7_classes_FGBuildable_occupied,
-	FGBuildable_powered_base as docs_json_ts_0_3_7_7_classes_FGBuildable_powered_base,
 	FGBuildable_tiered as docs_json_ts_0_3_7_7_classes_FGBuildable_tiered,
+	FGBuildable_unoccupied_and_untiered as docs_json_ts_0_3_7_7_classes_FGBuildable_unoccupied_and_untiered,
 	FGBuildableAttachmentMerger as docs_json_ts_0_3_7_7_classes_FGBuildableAttachmentMerger,
 	FGBuildableAttachmentSplitter as docs_json_ts_0_3_7_7_classes_FGBuildableAttachmentSplitter,
 	FGBuildableConveyorBelt as docs_json_ts_0_3_7_7_classes_FGBuildableConveyorBelt,
@@ -12,6 +11,7 @@ import type {
 	FGBuildableDockingStation as docs_json_ts_0_3_7_7_classes_FGBuildableDockingStation,
 	FGBuildableFactory_jump_pad as docs_json_ts_0_3_7_7_classes_FGBuildableFactory_jump_pad,
 	FGBuildableFactory_landing_pad as docs_json_ts_0_3_7_7_classes_FGBuildableFactory_landing_pad,
+	FGBuildableFactory_not_a_pad as docs_json_ts_0_3_7_7_classes_FGBuildableFactory_not_a_pad,
 	FGBuildableFactorySimpleProducer as docs_json_ts_0_3_7_7_classes_FGBuildableFactorySimpleProducer,
 	FGBuildableFoundation as docs_json_ts_0_3_7_7_classes_FGBuildableFoundation,
 	FGBuildableGeneratorFuel_biomass as docs_json_ts_0_3_7_7_classes_FGBuildableGeneratorFuel_biomass,
@@ -63,6 +63,8 @@ import type {
 	FGColorGun as docs_json_ts_0_3_7_7_classes_FGColorGun,
 	FGConsumableDescriptor as docs_json_ts_0_3_7_7_classes_FGConsumableDescriptor,
 	FGConsumableEquipment as docs_json_ts_0_3_7_7_classes_FGConsumableEquipment,
+	FGConveyorPoleStackable as docs_json_ts_0_3_7_7_classes_FGConveyorPoleStackable,
+	FGEquipmentDescriptor as docs_json_ts_0_3_7_7_classes_FGEquipmentDescriptor,
 	FGEquipmentStunSpear_xenobasher as docs_json_ts_0_3_7_7_classes_FGEquipmentStunSpear_xenobasher,
 	FGEquipmentStunSpear_xenozapper as docs_json_ts_0_3_7_7_classes_FGEquipmentStunSpear_xenozapper,
 	FGGasMask as docs_json_ts_0_3_7_7_classes_FGGasMask,
@@ -84,8 +86,8 @@ import type {
 	FGSnowballWeapon as docs_json_ts_0_3_7_7_classes_FGSnowballWeapon,
 	FGSuitBase as docs_json_ts_0_3_7_7_classes_FGSuitBase,
 	FGVehicleDescriptor as docs_json_ts_0_3_7_7_classes_FGVehicleDescriptor,
-	FGWeaponInstantFire as docs_json_ts_0_3_7_7_classes_FGWeaponInstantFire,
-	FGWeaponProjectileFire as docs_json_ts_0_3_7_7_classes_FGWeaponProjectileFire,
+	FGWeapon_Equip_RebarGun_Projectile_C as docs_json_ts_0_3_7_7_classes_FGWeapon_Equip_RebarGun_Projectile_C,
+	FGWeapon_Equip_Rifle_C as docs_json_ts_0_3_7_7_classes_FGWeapon_Equip_Rifle_C,
 } from './classes.ts';
 
 type FGBuildable = {
@@ -96,7 +98,7 @@ type FGBuildable = {
 	],
 };
 
-type FGBuildable_Classes_item = docs_json_ts_0_3_7_7_classes_FGBuildable_occupied | docs_json_ts_0_3_7_7_classes_FGBuildable_tiered | docs_json_ts_0_3_7_7_classes_FGBuildable_base;
+type FGBuildable_Classes_item = docs_json_ts_0_3_7_7_classes_FGBuildable_occupied | docs_json_ts_0_3_7_7_classes_FGBuildable_tiered | docs_json_ts_0_3_7_7_classes_FGBuildable_unoccupied_and_untiered;
 
 type FGBuildableAttachmentMerger = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableAttachmentMerger'}${'\''}`,
@@ -146,7 +148,7 @@ type FGBuildableFactory = {
 	],
 };
 
-type FGBuildableFactory_Classes_item = docs_json_ts_0_3_7_7_classes_FGBuildableFactory_jump_pad | docs_json_ts_0_3_7_7_classes_FGBuildableFactory_landing_pad | docs_json_ts_0_3_7_7_classes_FGBuildable_powered_base;
+type FGBuildableFactory_Classes_item = docs_json_ts_0_3_7_7_classes_FGBuildableFactory_jump_pad | docs_json_ts_0_3_7_7_classes_FGBuildableFactory_landing_pad | docs_json_ts_0_3_7_7_classes_FGBuildableFactory_not_a_pad;
 
 type FGBuildableFactorySimpleProducer = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableFactorySimpleProducer'}${'\''}`,
@@ -466,16 +468,16 @@ type FGConsumableEquipment = {
 type FGConveyorPoleStackable = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGConveyorPoleStackable'}${'\''}`,
 	Classes: [
-		docs_json_ts_0_3_7_7_classes_FGBuildablePole,
-		...docs_json_ts_0_3_7_7_classes_FGBuildablePole[],
+		docs_json_ts_0_3_7_7_classes_FGConveyorPoleStackable,
+		...docs_json_ts_0_3_7_7_classes_FGConveyorPoleStackable[],
 	],
 };
 
 type FGEquipmentDescriptor = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGEquipmentDescriptor'}${'\''}`,
 	Classes: [
-		docs_json_ts_0_3_7_7_classes_FGItemDescriptor,
-		...docs_json_ts_0_3_7_7_classes_FGItemDescriptor[],
+		docs_json_ts_0_3_7_7_classes_FGEquipmentDescriptor,
+		...docs_json_ts_0_3_7_7_classes_FGEquipmentDescriptor[],
 	],
 };
 
@@ -643,16 +645,16 @@ type FGVehicleDescriptor = {
 type FGWeaponInstantFire = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGWeaponInstantFire'}${'\''}`,
 	Classes: [
-		docs_json_ts_0_3_7_7_classes_FGWeaponInstantFire,
-		...docs_json_ts_0_3_7_7_classes_FGWeaponInstantFire[],
+		docs_json_ts_0_3_7_7_classes_FGWeapon_Equip_Rifle_C,
+		...docs_json_ts_0_3_7_7_classes_FGWeapon_Equip_Rifle_C[],
 	],
 };
 
 type FGWeaponProjectileFire = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGWeaponProjectileFire'}${'\''}`,
 	Classes: [
-		docs_json_ts_0_3_7_7_classes_FGWeaponProjectileFire,
-		...docs_json_ts_0_3_7_7_classes_FGWeaponProjectileFire[],
+		docs_json_ts_0_3_7_7_classes_FGWeapon_Equip_RebarGun_Projectile_C,
+		...docs_json_ts_0_3_7_7_classes_FGWeapon_Equip_RebarGun_Projectile_C[],
 	],
 };
 

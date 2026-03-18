@@ -9,10 +9,9 @@ import type {
 	FGAmmoTypeInstantHit_Desc_CartridgeStandard_C as docs_json_ts_0_6_1_5_classes_FGAmmoTypeInstantHit_Desc_CartridgeStandard_C,
 	FGAmmoTypeProjectile as docs_json_ts_0_6_1_5_classes_FGAmmoTypeProjectile,
 	FGAmmoTypeSpreadshot as docs_json_ts_0_6_1_5_classes_FGAmmoTypeSpreadshot,
-	FGBuildable_base as docs_json_ts_0_6_1_5_classes_FGBuildable_base,
 	FGBuildable_occupied as docs_json_ts_0_6_1_5_classes_FGBuildable_occupied,
-	FGBuildable_powered as docs_json_ts_0_6_1_5_classes_FGBuildable_powered,
 	FGBuildable_tiered as docs_json_ts_0_6_1_5_classes_FGBuildable_tiered,
+	FGBuildable_unoccupied_and_untiered as docs_json_ts_0_6_1_5_classes_FGBuildable_unoccupied_and_untiered,
 	FGBuildableAttachmentMerger as docs_json_ts_0_6_1_5_classes_FGBuildableAttachmentMerger,
 	FGBuildableAttachmentSplitter as docs_json_ts_0_6_1_5_classes_FGBuildableAttachmentSplitter,
 	FGBuildableBeam as docs_json_ts_0_6_1_5_classes_FGBuildableBeam,
@@ -25,6 +24,7 @@ import type {
 	FGBuildableDroneStation as docs_json_ts_0_6_1_5_classes_FGBuildableDroneStation,
 	FGBuildableFactory_jump_pad as docs_json_ts_0_6_1_5_classes_FGBuildableFactory_jump_pad,
 	FGBuildableFactory_landing_pad as docs_json_ts_0_6_1_5_classes_FGBuildableFactory_landing_pad,
+	FGBuildableFactory_not_pad as docs_json_ts_0_6_1_5_classes_FGBuildableFactory_not_pad,
 	FGBuildableFactoryBuilding as docs_json_ts_0_6_1_5_classes_FGBuildableFactoryBuilding,
 	FGBuildableFactorySimpleProducer as docs_json_ts_0_6_1_5_classes_FGBuildableFactorySimpleProducer,
 	FGBuildableFloodlight as docs_json_ts_0_6_1_5_classes_FGBuildableFloodlight,
@@ -91,6 +91,8 @@ import type {
 	FGChainsaw as docs_json_ts_0_6_1_5_classes_FGChainsaw,
 	FGChargedWeapon as docs_json_ts_0_6_1_5_classes_FGChargedWeapon,
 	FGConsumableEquipment as docs_json_ts_0_6_1_5_classes_FGConsumableEquipment,
+	FGConveyorPoleStackable as docs_json_ts_0_6_1_5_classes_FGConveyorPoleStackable,
+	FGEquipmentDescriptor as docs_json_ts_0_6_1_5_classes_FGEquipmentDescriptor,
 	FGEquipmentStunSpear_xenobasher as docs_json_ts_0_6_1_5_classes_FGEquipmentStunSpear_xenobasher,
 	FGEquipmentStunSpear_xenozapper as docs_json_ts_0_6_1_5_classes_FGEquipmentStunSpear_xenozapper,
 	FGEquipmentZipline as docs_json_ts_0_6_1_5_classes_FGEquipmentZipline,
@@ -173,7 +175,7 @@ type FGBuildable = {
 	],
 };
 
-type FGBuildable_Classes_item = docs_json_ts_0_6_1_5_classes_FGBuildable_occupied | docs_json_ts_0_6_1_5_classes_FGBuildable_tiered | docs_json_ts_0_6_1_5_classes_FGBuildable_base;
+type FGBuildable_Classes_item = docs_json_ts_0_6_1_5_classes_FGBuildable_occupied | docs_json_ts_0_6_1_5_classes_FGBuildable_tiered | docs_json_ts_0_6_1_5_classes_FGBuildable_unoccupied_and_untiered;
 
 type FGBuildableAttachmentMerger = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableAttachmentMerger'}${'\''}`,
@@ -263,7 +265,7 @@ type FGBuildableFactory = {
 	],
 };
 
-type FGBuildableFactory_Classes_item = docs_json_ts_0_6_1_5_classes_FGBuildableFactory_jump_pad | docs_json_ts_0_6_1_5_classes_FGBuildableFactory_landing_pad | docs_json_ts_0_6_1_5_classes_FGBuildable_powered;
+type FGBuildableFactory_Classes_item = docs_json_ts_0_6_1_5_classes_FGBuildableFactory_jump_pad | docs_json_ts_0_6_1_5_classes_FGBuildableFactory_landing_pad | docs_json_ts_0_6_1_5_classes_FGBuildableFactory_not_pad;
 
 type FGBuildableFactoryBuilding = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableFactoryBuilding'}${'\''}`,
@@ -703,8 +705,8 @@ type FGConsumableEquipment = {
 type FGConveyorPoleStackable = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGConveyorPoleStackable'}${'\''}`,
 	Classes: [
-		docs_json_ts_0_6_1_5_classes_FGBuildablePole,
-		...docs_json_ts_0_6_1_5_classes_FGBuildablePole[],
+		docs_json_ts_0_6_1_5_classes_FGConveyorPoleStackable,
+		...docs_json_ts_0_6_1_5_classes_FGConveyorPoleStackable[],
 	],
 };
 
@@ -716,7 +718,7 @@ type FGEquipmentDescriptor = {
 	],
 };
 
-type FGEquipmentDescriptor_Classes_item = docs_json_ts_0_6_1_5_classes_FGItemDescriptor | docs_json_ts_0_6_1_5_classes_overridable_FGEquipmentDescriptor_Desc_GolfCartGold_C;
+type FGEquipmentDescriptor_Classes_item = docs_json_ts_0_6_1_5_classes_FGEquipmentDescriptor | docs_json_ts_0_6_1_5_classes_overridable_FGEquipmentDescriptor_Desc_GolfCartGold_C;
 
 type FGEquipmentStunSpear = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGEquipmentStunSpear'}${'\''}`,

@@ -23,6 +23,9 @@ import type {
 
 import type {
 	FGBuildingDescriptor as docs_json_ts_common_classes_FGBuildingDescriptor,
+	FGConsumableDescriptor as docs_json_ts_common_classes_FGConsumableDescriptor,
+	FGEquipmentDescriptor as docs_json_ts_common_classes_FGEquipmentDescriptor,
+	FGItemDescriptorNuclearFuel as docs_json_ts_common_classes_FGItemDescriptorNuclearFuel,
 	FGPoleDescriptor as docs_json_ts_common_classes_FGPoleDescriptor,
 	FGRecipe as docs_json_ts_common_classes_FGRecipe,
 } from './../../common/classes.ts';
@@ -31,7 +34,7 @@ import type {
 	FGConsumableDescriptor_base as docs_json_ts_0_3_7_7_classes_base_FGConsumableDescriptor_base,
 	FGItemDescriptorNuclearFuel_version_specific as docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_version_specific,
 	FGRecipe_version_specific as docs_json_ts_0_3_7_7_classes_base_FGRecipe_version_specific,
-	instructive as docs_json_ts_0_3_7_7_classes_base_instructive,
+	has_mResourceSinkPoints as docs_json_ts_0_3_7_7_classes_base_has_mResourceSinkPoints,
 } from './../../0.3.7.7/classes/Base.ts';
 
 import type {
@@ -94,7 +97,9 @@ type FGBuildableRadarTower_version_specific = {
 
 type FGBuildingDescriptor = docs_json_ts_common_classes_FGBuildingDescriptor & FGItemDescriptor_base;
 
-type FGConsumableDescriptor = docs_json_ts_0_3_7_7_classes_base_FGConsumableDescriptor_base & docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable & FGItemDescriptor_base;
+type FGConsumableDescriptor = docs_json_ts_common_classes_FGConsumableDescriptor & docs_json_ts_0_3_7_7_classes_base_FGConsumableDescriptor_base & docs_json_ts_0_4_2_11_classes_base_FGDescriptor_sinkable & FGItemDescriptor_base;
+
+type FGEquipmentDescriptor = docs_json_ts_common_classes_FGEquipmentDescriptor & docs_json_ts_0_6_1_5_classes_base_FGDescriptor & docs_json_ts_0_6_1_5_classes_base_FGItemDescriptor_pre_1_0 & docs_json_ts_0_6_1_5_classes_base_FGItemDescriptor_version_specific & docs_json_ts_0_6_1_5_overridable_has_mSubCategories & FGItemDescriptor_version_specific;
 
 type FGItemDescriptor_base = docs_json_ts_0_6_1_5_classes_base_FGDescriptor & docs_json_ts_0_6_1_5_classes_base_FGItemDescriptor_pre_1_0 & docs_json_ts_0_6_1_5_classes_base_FGItemDescriptor_version_specific & docs_json_ts_0_6_1_5_overridable_has_mSubCategories & FGItemDescriptor_version_specific;
 
@@ -105,7 +110,7 @@ type FGItemDescriptor_version_specific = {
 	],
 };
 
-type FGItemDescriptorNuclearFuel = docs_json_ts_0_4_2_11_classes_base_overridable_FGItemDescriptorNuclearFuel_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_version_specific & FGItemDescriptor_base;
+type FGItemDescriptorNuclearFuel = docs_json_ts_common_classes_FGItemDescriptorNuclearFuel & docs_json_ts_0_4_2_11_classes_base_overridable_FGItemDescriptorNuclearFuel_pre_1_0 & docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_version_specific & docs_json_ts_0_3_7_7_classes_base_has_mResourceSinkPoints & FGItemDescriptor_base;
 
 type FGObjectScanner_version_specific = {
 	mScannableDescriptors: docs_json_ts_0_3_7_7_overridable_DocsDotJson_BlueprintGeneratedClass_quoted_list,
@@ -113,7 +118,7 @@ type FGObjectScanner_version_specific = {
 
 type FGPoleDescriptor = docs_json_ts_common_classes_FGPoleDescriptor & FGItemDescriptor_base;
 
-type FGRecipe = docs_json_ts_0_5_2_1_classes_base_overridable_FGRecipe_version_specific & docs_json_ts_0_3_7_7_classes_base_FGRecipe_version_specific & docs_json_ts_0_3_7_7_classes_base_instructive & docs_json_ts_0_4_2_11_classes_base_FGRecipe_version_specific & docs_json_ts_0_6_1_5_classes_base_FGRecipe_version_specific & docs_json_ts_common_classes_FGRecipe;
+type FGRecipe = docs_json_ts_0_5_2_1_classes_base_overridable_FGRecipe_version_specific & docs_json_ts_0_3_7_7_classes_base_FGRecipe_version_specific & docs_json_ts_0_4_2_11_classes_base_FGRecipe_version_specific & docs_json_ts_0_6_1_5_classes_base_FGRecipe_version_specific & docs_json_ts_common_classes_FGRecipe;
 
 type FGSchematic_version_specific_mUnlocks = {
 	mUnlocks: [
@@ -144,6 +149,7 @@ export type {
 	FGBuildableRadarTower_version_specific,
 	FGBuildingDescriptor,
 	FGConsumableDescriptor,
+	FGEquipmentDescriptor,
 	FGItemDescriptor_base,
 	FGItemDescriptor_version_specific,
 	FGItemDescriptorNuclearFuel,

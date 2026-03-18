@@ -2,25 +2,1224 @@
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "docs.json.ts--common--classes",
 	"$defs": {
+		"FGAmmoTypeInstantHit": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGAmmoTypeProjectile": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGAmmoTypeSpreadshot": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildable--occupied": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildable--tiered": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildable--unoccupied-and-untiered": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableAttachmentMerger": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableAttachmentSplitter": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableBarrierCorner": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableBeam": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableBlueprintDesigner": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableCircuitSwitch": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
 		"FGBuildableConveyorBelt": {
-			"type": "object",
-			"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableConveyorLift": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableConveyorMonitor": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableCornerWall": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableDockingStation": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableDoor": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableDroneStation": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableElevator": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableElevatorFloorStop": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableFactory": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableFactoryBuilding": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableFactorySimpleProducer": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableFloodlight": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableFoundation": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableFrackingActivator": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableFrackingExtractor": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableGeneratorFuel": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableGeneratorGeoThermal": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableJumppad": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableGeneratorNuclear": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableLadder": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableLightsControlPanel": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableLightSource": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableManufacturer": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableManufacturerVariablePower": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableMAM": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableMergerPriority": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildablePassthrough": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildablePassthroughPipeHyper": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildablePillar": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildablePipeHyper": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildablePipeHyperJunction": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildablePipeline": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildablePipelineJunction": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildablePipelinePump": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildablePipelineSupport": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildablePipeReservoir": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
 		},
 		"FGBuildablePole": {
-			"type": "object",
-			"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildablePoleBase": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildablePolePipe": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildablePoleStackable": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildablePortal": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildablePortalSatellite": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildablePowerBooster": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildablePowerPole": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildablePowerStorage": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildablePriorityPowerSwitch": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableRadarTower": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableRailroadAttachment": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableRailroadStation": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableRailroadTrack": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableRailroadSignal--block": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableRailroadSignal--path": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableRamp": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableResourceExtractor": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableResourceSink": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableResourceSinkShop": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableSnowCannon": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableSnowDispenser": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableSpaceElevator": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableSplitterSmart": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableStackableShelf": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableStair": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableStorage": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableTradingPost": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableTrainPlatformCargo": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableTrainPlatformEmpty": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableWall": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableWalkway": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableWidgetSign": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableWire": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
 		},
 		"FGBuildingDescriptor": {
-			"type": "object",
-			"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGCentralStorageContainer": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
 		},
 		"FGChainsaw": {
 			"type": "object",
 			"$ref": "docs.json.ts--common--classes--base#/$defs/Equipment"
 		},
+		"FGColorGun": {
+			"type": "object",
+			"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+		},
+		"FGConsumableDescriptor": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
 		"FGConsumableEquipment": {
 			"type": "object",
 			"$ref": "docs.json.ts--common--classes--base#/$defs/Equipment"
+		},
+		"FGConveyorPoleStackable": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGCustomizationRecipe": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/instructive"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGEquipmentDescriptor": {
+			"type": "object",
+			"$ref": "docs.json.ts--common--classes--base#/$defs/ItemDescriptor"
+		},
+		"FGEquipmentStunSpear": {
+			"type": "object",
+			"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+		},
+		"FGEquipmentZipline": {
+			"type": "object",
+			"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+		},
+		"FGGasMask": {
+			"type": "object",
+			"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+		},
+		"FGGolfCartDispenser": {
+			"type": "object",
+			"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+		},
+		"FGHoverPack": {
+			"type": "object",
+			"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+		},
+		"FGItemDescAmmoTypeColorCartridge": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGItemDescAmmoTypeInstantHit": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGItemDescAmmoTypeProjectile": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
 		},
 		"FGItemDescriptor": {
 			"type": "object",
@@ -30,17 +1229,144 @@
 			"type": "object",
 			"$ref": "docs.json.ts--common--classes--base#/$defs/ItemDescriptor"
 		},
-		"FGPoleDescriptor": {
+		"FGItemDescriptorNuclearFuel": {
+			"type": "object",
+			"$ref": "docs.json.ts--common--classes--base#/$defs/ItemDescriptor"
+		},
+		"FGItemDescriptorPowerBoosterFuel": {
+			"type": "object",
+			"$ref": "docs.json.ts--common--classes--base#/$defs/ItemDescriptor"
+		},
+		"FGJetPack": {
 			"type": "object",
 			"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+		},
+		"FGJumpingStilts": {
+			"type": "object",
+			"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+		},
+		"FGNobeliskDetonator": {
+			"type": "object",
+			"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+		},
+		"FGObjectScanner": {
+			"type": "object",
+			"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+		},
+		"FGParachute": {
+			"type": "object",
+			"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+		},
+		"FGPipeHyperStart": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGPoleDescriptor": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGPortableMinerDispenser": {
+			"type": "object",
+			"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+		},
+		"FGPowerShardDescriptor": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
 		},
 		"FGRecipe": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/instructive"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGResourceDescriptor": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGSchematic": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/instructive"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGSnowballWeapon": {
 			"type": "object",
 			"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
 		},
-		"FGSchematic": {
+		"FGSuitBase": {
 			"type": "object",
 			"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+		},
+		"FGWeapon--Equip_Rifle_C": {
+			"type": "object",
+			"$ref": "docs.json.ts--common--classes--base#/$defs/Weapon"
+		},
+		"FGWeapon--Equip_RebarGun_Projectile_C": {
+			"type": "object",
+			"$ref": "docs.json.ts--common--classes--base#/$defs/Weapon"
+		},
+		"FGVehicleDescriptor": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
 		}
 	}
 }

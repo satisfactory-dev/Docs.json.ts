@@ -4,7 +4,7 @@
 	"$defs": {
 		"FGCustomizationRecipe": {
 			"type": "object",
-			"$ref": "docs.json.ts--0.5.2.1--classes--base.overridable#/$defs/FGRecipe",
+			"$ref": "docs.json.ts--0.5.2.1--classes--base.overridable#/$defs/FGCustomizationRecipe",
 			"unevaluatedProperties": false
 		},
 		"FGRecipe": {

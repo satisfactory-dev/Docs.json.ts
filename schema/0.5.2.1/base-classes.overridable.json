@@ -32,8 +32,30 @@
 				}
 			}
 		},
+		"FGCustomizationRecipe": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGRecipe--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGRecipe--pre-update6"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGRecipe--version-specific"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGCustomizationRecipe"
+				},
+				{
+					"$ref": "#/$defs/FGRecipe--version-specific"
+				}
+			]
+		},
 		"FGItemDescriptorNuclearFuel": {
 			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGItemDescriptorNuclearFuel"
+				},
 				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base.overridable#/$defs/FGItemDescriptorNuclearFuel--pre-1.0"
 				},
@@ -41,7 +63,13 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGItemDescriptorNuclearFuel--version-specific"
 				},
 				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/has--mResourceSinkPoints"
+				},
+				{
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGItemDescriptor--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGItemDescriptor--base--base"
 				}
 			]
 		},
@@ -49,9 +77,6 @@
 			"allOf": [
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGRecipe--version-specific"
-				},
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/instructive"
 				},
 				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGRecipe--pre-update6"

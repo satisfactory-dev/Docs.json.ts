@@ -3,38 +3,375 @@
 import type {
 	Equipment as docs_json_ts_common_classes_base_Equipment,
 	hasClassName as docs_json_ts_common_classes_base_hasClassName,
+	instructive as docs_json_ts_common_classes_base_instructive,
+	isDescribed as docs_json_ts_common_classes_base_isDescribed,
+	isNamed as docs_json_ts_common_classes_base_isNamed,
 	ItemDescriptor as docs_json_ts_common_classes_base_ItemDescriptor,
+	Weapon as docs_json_ts_common_classes_base_Weapon,
 } from './classes/Base.ts';
 
-type FGBuildableConveyorBelt = docs_json_ts_common_classes_base_hasClassName;
+type FGAmmoTypeInstantHit = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
 
-type FGBuildablePole = docs_json_ts_common_classes_base_hasClassName;
+type FGAmmoTypeProjectile = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
 
-type FGBuildingDescriptor = docs_json_ts_common_classes_base_hasClassName;
+type FGAmmoTypeSpreadshot = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildable_occupied = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildable_tiered = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildable_unoccupied_and_untiered = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableAttachmentMerger = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableAttachmentSplitter = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableBarrierCorner = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableBeam = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableBlueprintDesigner = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableCircuitSwitch = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableConveyorBelt = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableConveyorLift = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableConveyorMonitor = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableCornerWall = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableDockingStation = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableDoor = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableDroneStation = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableElevator = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableElevatorFloorStop = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableFactory = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableFactoryBuilding = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableFactorySimpleProducer = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableFloodlight = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableFoundation = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableFrackingActivator = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableFrackingExtractor = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableGeneratorFuel = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableGeneratorGeoThermal = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableJumppad = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableGeneratorNuclear = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableLadder = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableLightsControlPanel = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableLightSource = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableManufacturer = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableManufacturerVariablePower = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableMAM = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableMergerPriority = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildablePassthrough = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildablePassthroughPipeHyper = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildablePillar = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildablePipeHyper = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildablePipeHyperJunction = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildablePipeline = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildablePipelineJunction = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildablePipelinePump = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildablePipelineSupport = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildablePipeReservoir = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildablePole = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildablePoleBase = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildablePolePipe = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildablePoleStackable = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildablePortal = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildablePortalSatellite = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildablePowerBooster = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildablePowerPole = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildablePowerStorage = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildablePriorityPowerSwitch = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableRadarTower = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableRailroadAttachment = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableRailroadStation = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableRailroadTrack = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableRailroadSignal_block = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableRailroadSignal_path = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableRamp = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableResourceExtractor = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableResourceSink = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableResourceSinkShop = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableSnowCannon = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableSnowDispenser = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableSpaceElevator = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableSplitterSmart = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableStackableShelf = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableStair = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableStorage = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableTradingPost = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableTrainPlatformCargo = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableTrainPlatformEmpty = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableWall = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableWalkway = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableWidgetSign = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableWire = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildingDescriptor = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGCentralStorageContainer = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
 
 type FGChainsaw = docs_json_ts_common_classes_base_Equipment;
 
+type FGColorGun = docs_json_ts_common_classes_base_hasClassName;
+
+type FGConsumableDescriptor = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
 type FGConsumableEquipment = docs_json_ts_common_classes_base_Equipment;
+
+type FGConveyorPoleStackable = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGCustomizationRecipe = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_instructive & docs_json_ts_common_classes_base_isNamed;
+
+type FGEquipmentDescriptor = docs_json_ts_common_classes_base_ItemDescriptor;
+
+type FGEquipmentStunSpear = docs_json_ts_common_classes_base_hasClassName;
+
+type FGEquipmentZipline = docs_json_ts_common_classes_base_hasClassName;
+
+type FGGasMask = docs_json_ts_common_classes_base_hasClassName;
+
+type FGGolfCartDispenser = docs_json_ts_common_classes_base_hasClassName;
+
+type FGHoverPack = docs_json_ts_common_classes_base_hasClassName;
+
+type FGItemDescAmmoTypeColorCartridge = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGItemDescAmmoTypeInstantHit = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGItemDescAmmoTypeProjectile = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
 
 type FGItemDescriptor = docs_json_ts_common_classes_base_ItemDescriptor;
 
 type FGItemDescriptorBiomass = docs_json_ts_common_classes_base_ItemDescriptor;
 
-type FGPoleDescriptor = docs_json_ts_common_classes_base_hasClassName;
+type FGItemDescriptorNuclearFuel = docs_json_ts_common_classes_base_ItemDescriptor;
 
-type FGRecipe = docs_json_ts_common_classes_base_hasClassName;
+type FGItemDescriptorPowerBoosterFuel = docs_json_ts_common_classes_base_ItemDescriptor;
 
-type FGSchematic = docs_json_ts_common_classes_base_hasClassName;
+type FGJetPack = docs_json_ts_common_classes_base_hasClassName;
+
+type FGJumpingStilts = docs_json_ts_common_classes_base_hasClassName;
+
+type FGNobeliskDetonator = docs_json_ts_common_classes_base_hasClassName;
+
+type FGObjectScanner = docs_json_ts_common_classes_base_hasClassName;
+
+type FGParachute = docs_json_ts_common_classes_base_hasClassName;
+
+type FGPipeHyperStart = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGPoleDescriptor = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGPortableMinerDispenser = docs_json_ts_common_classes_base_hasClassName;
+
+type FGPowerShardDescriptor = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGRecipe = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_instructive & docs_json_ts_common_classes_base_isNamed;
+
+type FGResourceDescriptor = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGSchematic = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_instructive & docs_json_ts_common_classes_base_isNamed;
+
+type FGSnowballWeapon = docs_json_ts_common_classes_base_hasClassName;
+
+type FGSuitBase = docs_json_ts_common_classes_base_hasClassName;
+
+type FGWeapon_Equip_Rifle_C = docs_json_ts_common_classes_base_Weapon;
+
+type FGWeapon_Equip_RebarGun_Projectile_C = docs_json_ts_common_classes_base_Weapon;
+
+type FGVehicleDescriptor = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
 
 export type {
+	FGAmmoTypeInstantHit,
+	FGAmmoTypeProjectile,
+	FGAmmoTypeSpreadshot,
+	FGBuildable_occupied,
+	FGBuildable_tiered,
+	FGBuildable_unoccupied_and_untiered,
+	FGBuildableAttachmentMerger,
+	FGBuildableAttachmentSplitter,
+	FGBuildableBarrierCorner,
+	FGBuildableBeam,
+	FGBuildableBlueprintDesigner,
+	FGBuildableCircuitSwitch,
 	FGBuildableConveyorBelt,
+	FGBuildableConveyorLift,
+	FGBuildableConveyorMonitor,
+	FGBuildableCornerWall,
+	FGBuildableDockingStation,
+	FGBuildableDoor,
+	FGBuildableDroneStation,
+	FGBuildableElevator,
+	FGBuildableElevatorFloorStop,
+	FGBuildableFactory,
+	FGBuildableFactoryBuilding,
+	FGBuildableFactorySimpleProducer,
+	FGBuildableFloodlight,
+	FGBuildableFoundation,
+	FGBuildableFrackingActivator,
+	FGBuildableFrackingExtractor,
+	FGBuildableGeneratorFuel,
+	FGBuildableGeneratorGeoThermal,
+	FGBuildableJumppad,
+	FGBuildableGeneratorNuclear,
+	FGBuildableLadder,
+	FGBuildableLightsControlPanel,
+	FGBuildableLightSource,
+	FGBuildableManufacturer,
+	FGBuildableManufacturerVariablePower,
+	FGBuildableMAM,
+	FGBuildableMergerPriority,
+	FGBuildablePassthrough,
+	FGBuildablePassthroughPipeHyper,
+	FGBuildablePillar,
+	FGBuildablePipeHyper,
+	FGBuildablePipeHyperJunction,
+	FGBuildablePipeline,
+	FGBuildablePipelineJunction,
+	FGBuildablePipelinePump,
+	FGBuildablePipelineSupport,
+	FGBuildablePipeReservoir,
 	FGBuildablePole,
+	FGBuildablePoleBase,
+	FGBuildablePolePipe,
+	FGBuildablePoleStackable,
+	FGBuildablePortal,
+	FGBuildablePortalSatellite,
+	FGBuildablePowerBooster,
+	FGBuildablePowerPole,
+	FGBuildablePowerStorage,
+	FGBuildablePriorityPowerSwitch,
+	FGBuildableRadarTower,
+	FGBuildableRailroadAttachment,
+	FGBuildableRailroadStation,
+	FGBuildableRailroadTrack,
+	FGBuildableRailroadSignal_block,
+	FGBuildableRailroadSignal_path,
+	FGBuildableRamp,
+	FGBuildableResourceExtractor,
+	FGBuildableResourceSink,
+	FGBuildableResourceSinkShop,
+	FGBuildableSnowCannon,
+	FGBuildableSnowDispenser,
+	FGBuildableSpaceElevator,
+	FGBuildableSplitterSmart,
+	FGBuildableStackableShelf,
+	FGBuildableStair,
+	FGBuildableStorage,
+	FGBuildableTradingPost,
+	FGBuildableTrainPlatformCargo,
+	FGBuildableTrainPlatformEmpty,
+	FGBuildableWall,
+	FGBuildableWalkway,
+	FGBuildableWidgetSign,
+	FGBuildableWire,
 	FGBuildingDescriptor,
+	FGCentralStorageContainer,
 	FGChainsaw,
+	FGColorGun,
+	FGConsumableDescriptor,
 	FGConsumableEquipment,
+	FGConveyorPoleStackable,
+	FGCustomizationRecipe,
+	FGEquipmentDescriptor,
+	FGEquipmentStunSpear,
+	FGEquipmentZipline,
+	FGGasMask,
+	FGGolfCartDispenser,
+	FGHoverPack,
+	FGItemDescAmmoTypeColorCartridge,
+	FGItemDescAmmoTypeInstantHit,
+	FGItemDescAmmoTypeProjectile,
 	FGItemDescriptor,
 	FGItemDescriptorBiomass,
+	FGItemDescriptorNuclearFuel,
+	FGItemDescriptorPowerBoosterFuel,
+	FGJetPack,
+	FGJumpingStilts,
+	FGNobeliskDetonator,
+	FGObjectScanner,
+	FGParachute,
+	FGPipeHyperStart,
 	FGPoleDescriptor,
+	FGPortableMinerDispenser,
+	FGPowerShardDescriptor,
 	FGRecipe,
+	FGResourceDescriptor,
 	FGSchematic,
+	FGSnowballWeapon,
+	FGSuitBase,
+	FGWeapon_Equip_Rifle_C,
+	FGWeapon_Equip_RebarGun_Projectile_C,
+	FGVehicleDescriptor,
 };

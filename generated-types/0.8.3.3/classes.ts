@@ -5,10 +5,10 @@ import type {
 	FGAmmoTypeInstantHit_Desc_CartridgeStandard_C as docs_json_ts_0_8_3_3_classes_base_FGAmmoTypeInstantHit_Desc_CartridgeStandard_C,
 	FGAmmoTypeProjectile as docs_json_ts_0_8_3_3_classes_base_FGAmmoTypeProjectile,
 	FGAmmoTypeSpreadshot as docs_json_ts_0_8_3_3_classes_base_FGAmmoTypeSpreadshot,
-	FGBuildable_base as docs_json_ts_0_8_3_3_classes_base_FGBuildable_base,
 	FGBuildable_occupied as docs_json_ts_0_8_3_3_classes_base_FGBuildable_occupied,
 	FGBuildable_powered as docs_json_ts_0_8_3_3_classes_base_FGBuildable_powered,
 	FGBuildable_tiered as docs_json_ts_0_8_3_3_classes_base_FGBuildable_tiered,
+	FGBuildable_unoccupied_and_untiered as docs_json_ts_0_8_3_3_classes_base_FGBuildable_unoccupied_and_untiered,
 	FGBuildableAttachmentMerger as docs_json_ts_0_8_3_3_classes_base_FGBuildableAttachmentMerger,
 	FGBuildableAttachmentSplitter as docs_json_ts_0_8_3_3_classes_base_FGBuildableAttachmentSplitter,
 	FGBuildableBeamLightweight as docs_json_ts_0_8_3_3_classes_base_FGBuildableBeamLightweight,
@@ -22,9 +22,12 @@ import type {
 	FGBuildableDroneStation as docs_json_ts_0_8_3_3_classes_base_FGBuildableDroneStation,
 	FGBuildableFactory_jump_pad as docs_json_ts_0_8_3_3_classes_base_FGBuildableFactory_jump_pad,
 	FGBuildableFactory_landing_pad as docs_json_ts_0_8_3_3_classes_base_FGBuildableFactory_landing_pad,
+	FGBuildableFactory_not_pad as docs_json_ts_0_8_3_3_classes_base_FGBuildableFactory_not_pad,
+	FGBuildableFactoryBuilding as docs_json_ts_0_8_3_3_classes_base_FGBuildableFactoryBuilding,
 	FGBuildableFactorySimpleProducer as docs_json_ts_0_8_3_3_classes_base_FGBuildableFactorySimpleProducer,
 	FGBuildableFloodlight as docs_json_ts_0_8_3_3_classes_base_FGBuildableFloodlight,
 	FGBuildableFoundation as docs_json_ts_0_8_3_3_classes_base_FGBuildableFoundation,
+	FGBuildableFoundationLightweight as docs_json_ts_0_8_3_3_classes_base_FGBuildableFoundationLightweight,
 	FGBuildableFrackingActivator as docs_json_ts_0_8_3_3_classes_base_FGBuildableFrackingActivator,
 	FGBuildableFrackingExtractor as docs_json_ts_0_8_3_3_classes_base_FGBuildableFrackingExtractor,
 	FGBuildableGeneratorFuel_biomass as docs_json_ts_0_8_3_3_classes_base_FGBuildableGeneratorFuel_biomass,
@@ -35,7 +38,7 @@ import type {
 	FGBuildableJumppad as docs_json_ts_0_8_3_3_classes_base_FGBuildableJumppad,
 	FGBuildableLadder as docs_json_ts_0_8_3_3_classes_base_FGBuildableLadder,
 	FGBuildableLightsControlPanel as docs_json_ts_0_8_3_3_classes_base_FGBuildableLightsControlPanel,
-	FGBuildableLightSource as docs_json_ts_0_8_3_3_classes_base_FGBuildableLightSource,
+	FGBuildableLightSource_Build_CeilingLight_C as docs_json_ts_0_8_3_3_classes_base_FGBuildableLightSource_Build_CeilingLight_C,
 	FGBuildableLightSource_Build_StreetLight_C as docs_json_ts_0_8_3_3_classes_base_FGBuildableLightSource_Build_StreetLight_C,
 	FGBuildableMAM as docs_json_ts_0_8_3_3_classes_base_FGBuildableMAM,
 	FGBuildableManufacturer_Build_AssemblerMk1_C as docs_json_ts_0_8_3_3_classes_base_FGBuildableManufacturer_Build_AssemblerMk1_C,
@@ -48,6 +51,7 @@ import type {
 	FGBuildableManufacturer_Build_Packager_C as docs_json_ts_0_8_3_3_classes_base_FGBuildableManufacturer_Build_Packager_C,
 	FGBuildableManufacturer_Build_SmelterMk1_C as docs_json_ts_0_8_3_3_classes_base_FGBuildableManufacturer_Build_SmelterMk1_C,
 	FGBuildablePassthrough as docs_json_ts_0_8_3_3_classes_base_FGBuildablePassthrough,
+	FGBuildablePassthroughPipeHyper as docs_json_ts_0_8_3_3_classes_base_FGBuildablePassthroughPipeHyper,
 	FGBuildablePillarLightweight as docs_json_ts_0_8_3_3_classes_base_FGBuildablePillarLightweight,
 	FGBuildablePipeHyper as docs_json_ts_0_8_3_3_classes_base_FGBuildablePipeHyper,
 	FGBuildablePipeline as docs_json_ts_0_8_3_3_classes_base_FGBuildablePipeline,
@@ -61,8 +65,8 @@ import type {
 	FGBuildablePowerStorage as docs_json_ts_0_8_3_3_classes_base_FGBuildablePowerStorage,
 	FGBuildablePriorityPowerSwitch as docs_json_ts_0_8_3_3_classes_base_FGBuildablePriorityPowerSwitch,
 	FGBuildableRadarTower as docs_json_ts_0_8_3_3_classes_base_FGBuildableRadarTower,
-	FGBuildableRailroadSignal_base as docs_json_ts_0_8_3_3_classes_base_FGBuildableRailroadSignal_base,
 	FGBuildableRailroadSignal_block as docs_json_ts_0_8_3_3_classes_base_FGBuildableRailroadSignal_block,
+	FGBuildableRailroadSignal_path as docs_json_ts_0_8_3_3_classes_base_FGBuildableRailroadSignal_path,
 	FGBuildableRailroadStation as docs_json_ts_0_8_3_3_classes_base_FGBuildableRailroadStation,
 	FGBuildableRailroadTrack as docs_json_ts_0_8_3_3_classes_base_FGBuildableRailroadTrack,
 	FGBuildableRamp as docs_json_ts_0_8_3_3_classes_base_FGBuildableRamp,
@@ -73,6 +77,8 @@ import type {
 	FGBuildableResourceExtractor_water as docs_json_ts_0_8_3_3_classes_base_FGBuildableResourceExtractor_water,
 	FGBuildableResourceSink as docs_json_ts_0_8_3_3_classes_base_FGBuildableResourceSink,
 	FGBuildableResourceSinkShop as docs_json_ts_0_8_3_3_classes_base_FGBuildableResourceSinkShop,
+	FGBuildableSnowDispenser as docs_json_ts_0_8_3_3_classes_base_FGBuildableSnowDispenser,
+	FGBuildableSpaceElevator as docs_json_ts_0_8_3_3_classes_base_FGBuildableSpaceElevator,
 	FGBuildableSplitterSmart as docs_json_ts_0_8_3_3_classes_base_FGBuildableSplitterSmart,
 	FGBuildableStair as docs_json_ts_0_8_3_3_classes_base_FGBuildableStair,
 	FGBuildableStorage as docs_json_ts_0_8_3_3_classes_base_FGBuildableStorage,
@@ -80,7 +86,9 @@ import type {
 	FGBuildableTrainPlatformCargo as docs_json_ts_0_8_3_3_classes_base_FGBuildableTrainPlatformCargo,
 	FGBuildableTrainPlatformEmpty as docs_json_ts_0_8_3_3_classes_base_FGBuildableTrainPlatformEmpty,
 	FGBuildableWalkway as docs_json_ts_0_8_3_3_classes_base_FGBuildableWalkway,
+	FGBuildableWalkwayLightweight as docs_json_ts_0_8_3_3_classes_base_FGBuildableWalkwayLightweight,
 	FGBuildableWall as docs_json_ts_0_8_3_3_classes_base_FGBuildableWall,
+	FGBuildableWallLightweight as docs_json_ts_0_8_3_3_classes_base_FGBuildableWallLightweight,
 	FGBuildableWidgetSign as docs_json_ts_0_8_3_3_classes_base_FGBuildableWidgetSign,
 	FGBuildableWire as docs_json_ts_0_8_3_3_classes_base_FGBuildableWire,
 	FGChainsaw as docs_json_ts_0_8_3_3_classes_base_FGChainsaw,
@@ -118,13 +126,13 @@ type FGAmmoTypeProjectile = docs_json_ts_0_8_3_3_classes_base_FGAmmoTypeProjecti
 
 type FGAmmoTypeSpreadshot = docs_json_ts_0_8_3_3_classes_base_FGAmmoTypeSpreadshot;
 
-type FGBuildable_base = docs_json_ts_0_8_3_3_classes_base_FGBuildable_base;
-
 type FGBuildable_occupied = docs_json_ts_0_8_3_3_classes_base_FGBuildable_occupied;
 
 type FGBuildable_powered = docs_json_ts_0_8_3_3_classes_base_FGBuildable_powered;
 
 type FGBuildable_tiered = docs_json_ts_0_8_3_3_classes_base_FGBuildable_tiered;
+
+type FGBuildable_unoccupied_and_untiered = docs_json_ts_0_8_3_3_classes_base_FGBuildable_unoccupied_and_untiered;
 
 type FGBuildableAttachmentMerger = docs_json_ts_0_8_3_3_classes_base_FGBuildableAttachmentMerger;
 
@@ -152,7 +160,9 @@ type FGBuildableFactory_jump_pad = docs_json_ts_0_8_3_3_classes_base_FGBuildable
 
 type FGBuildableFactory_landing_pad = docs_json_ts_0_8_3_3_classes_base_FGBuildableFactory_landing_pad;
 
-type FGBuildableFactoryBuilding = docs_json_ts_0_8_3_3_classes_base_FGBuildable_base;
+type FGBuildableFactory_not_pad = docs_json_ts_0_8_3_3_classes_base_FGBuildableFactory_not_pad;
+
+type FGBuildableFactoryBuilding = docs_json_ts_0_8_3_3_classes_base_FGBuildableFactoryBuilding;
 
 type FGBuildableFactorySimpleProducer = docs_json_ts_0_8_3_3_classes_base_FGBuildableFactorySimpleProducer;
 
@@ -160,7 +170,7 @@ type FGBuildableFloodlight = docs_json_ts_0_8_3_3_classes_base_FGBuildableFloodl
 
 type FGBuildableFoundation = docs_json_ts_0_8_3_3_classes_base_FGBuildableFoundation;
 
-type FGBuildableFoundationLightweight = docs_json_ts_0_8_3_3_classes_base_FGBuildableFoundation;
+type FGBuildableFoundationLightweight = docs_json_ts_0_8_3_3_classes_base_FGBuildableFoundationLightweight;
 
 type FGBuildableFrackingActivator = docs_json_ts_0_8_3_3_classes_base_FGBuildableFrackingActivator;
 
@@ -182,7 +192,7 @@ type FGBuildableLadder = docs_json_ts_0_8_3_3_classes_base_FGBuildableLadder;
 
 type FGBuildableLightsControlPanel = docs_json_ts_0_8_3_3_classes_base_FGBuildableLightsControlPanel;
 
-type FGBuildableLightSource_Build_CeilingLight_C = docs_json_ts_0_8_3_3_classes_base_FGBuildableLightSource;
+type FGBuildableLightSource_Build_CeilingLight_C = docs_json_ts_0_8_3_3_classes_base_FGBuildableLightSource_Build_CeilingLight_C;
 
 type FGBuildableLightSource_Build_StreetLight_C = docs_json_ts_0_8_3_3_classes_base_FGBuildableLightSource_Build_StreetLight_C;
 
@@ -207,6 +217,8 @@ type FGBuildableManufacturer_Build_Packager_C = docs_json_ts_0_8_3_3_classes_bas
 type FGBuildableManufacturer_Build_SmelterMk1_C = docs_json_ts_0_8_3_3_classes_base_FGBuildableManufacturer_Build_SmelterMk1_C;
 
 type FGBuildablePassthrough = docs_json_ts_0_8_3_3_classes_base_FGBuildablePassthrough;
+
+type FGBuildablePassthroughPipeHyper = docs_json_ts_0_8_3_3_classes_base_FGBuildablePassthroughPipeHyper;
 
 type FGBuildablePillarLightweight = docs_json_ts_0_8_3_3_classes_base_FGBuildablePillarLightweight;
 
@@ -236,7 +248,7 @@ type FGBuildableRadarTower = docs_json_ts_0_8_3_3_classes_base_FGBuildableRadarT
 
 type FGBuildableRailroadSignal_block = docs_json_ts_0_8_3_3_classes_base_FGBuildableRailroadSignal_block;
 
-type FGBuildableRailroadSignal_path = docs_json_ts_0_8_3_3_classes_base_FGBuildableRailroadSignal_base;
+type FGBuildableRailroadSignal_path = docs_json_ts_0_8_3_3_classes_base_FGBuildableRailroadSignal_path;
 
 type FGBuildableRailroadStation = docs_json_ts_0_8_3_3_classes_base_FGBuildableRailroadStation;
 
@@ -256,7 +268,9 @@ type FGBuildableResourceSink = docs_json_ts_0_8_3_3_classes_base_FGBuildableReso
 
 type FGBuildableResourceSinkShop = docs_json_ts_0_8_3_3_classes_base_FGBuildableResourceSinkShop;
 
-type FGBuildableSnowDispenser = docs_json_ts_0_8_3_3_classes_base_FGBuildable_base;
+type FGBuildableSnowDispenser = docs_json_ts_0_8_3_3_classes_base_FGBuildableSnowDispenser;
+
+type FGBuildableSpaceElevator = docs_json_ts_0_8_3_3_classes_base_FGBuildableSpaceElevator;
 
 type FGBuildableSplitterSmart = docs_json_ts_0_8_3_3_classes_base_FGBuildableSplitterSmart;
 
@@ -272,9 +286,11 @@ type FGBuildableTrainPlatformEmpty = docs_json_ts_0_8_3_3_classes_base_FGBuildab
 
 type FGBuildableWalkway = docs_json_ts_0_8_3_3_classes_base_FGBuildableWalkway;
 
-type FGBuildableWalkwayLightweight = docs_json_ts_0_8_3_3_classes_base_FGBuildableWalkway;
+type FGBuildableWalkwayLightweight = docs_json_ts_0_8_3_3_classes_base_FGBuildableWalkwayLightweight;
 
 type FGBuildableWall = docs_json_ts_0_8_3_3_classes_base_FGBuildableWall;
+
+type FGBuildableWallLightweight = docs_json_ts_0_8_3_3_classes_base_FGBuildableWallLightweight;
 
 type FGBuildableWaterPump = docs_json_ts_0_8_3_3_classes_base_FGBuildableResourceExtractor_water;
 
@@ -331,10 +347,10 @@ export type {
 	FGAmmoTypeInstantHit_Desc_CartridgeStandard_C,
 	FGAmmoTypeProjectile,
 	FGAmmoTypeSpreadshot,
-	FGBuildable_base,
 	FGBuildable_occupied,
 	FGBuildable_powered,
 	FGBuildable_tiered,
+	FGBuildable_unoccupied_and_untiered,
 	FGBuildableAttachmentMerger,
 	FGBuildableAttachmentSplitter,
 	FGBuildableBeamLightweight,
@@ -348,6 +364,7 @@ export type {
 	FGBuildableDroneStation,
 	FGBuildableFactory_jump_pad,
 	FGBuildableFactory_landing_pad,
+	FGBuildableFactory_not_pad,
 	FGBuildableFactoryBuilding,
 	FGBuildableFactorySimpleProducer,
 	FGBuildableFloodlight,
@@ -376,6 +393,7 @@ export type {
 	FGBuildableManufacturer_Build_Packager_C,
 	FGBuildableManufacturer_Build_SmelterMk1_C,
 	FGBuildablePassthrough,
+	FGBuildablePassthroughPipeHyper,
 	FGBuildablePillarLightweight,
 	FGBuildablePipeHyper,
 	FGBuildablePipeline,
@@ -401,6 +419,7 @@ export type {
 	FGBuildableResourceSink,
 	FGBuildableResourceSinkShop,
 	FGBuildableSnowDispenser,
+	FGBuildableSpaceElevator,
 	FGBuildableSplitterSmart,
 	FGBuildableStair,
 	FGBuildableStorage,
@@ -410,6 +429,7 @@ export type {
 	FGBuildableWalkway,
 	FGBuildableWalkwayLightweight,
 	FGBuildableWall,
+	FGBuildableWallLightweight,
 	FGBuildableWaterPump,
 	FGBuildableWidgetSign,
 	FGBuildableWire,

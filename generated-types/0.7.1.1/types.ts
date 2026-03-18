@@ -36,10 +36,9 @@ import type {
 } from './../0.5.2.1/types.ts';
 
 import type {
-	FGBuildable_base as docs_json_ts_0_7_1_1_classes_FGBuildable_base,
 	FGBuildable_occupied as docs_json_ts_0_7_1_1_classes_FGBuildable_occupied,
-	FGBuildable_powered as docs_json_ts_0_7_1_1_classes_FGBuildable_powered,
 	FGBuildable_tiered as docs_json_ts_0_7_1_1_classes_FGBuildable_tiered,
+	FGBuildable_unoccupied_and_untiered as docs_json_ts_0_7_1_1_classes_FGBuildable_unoccupied_and_untiered,
 	FGBuildableAttachmentMerger as docs_json_ts_0_7_1_1_classes_FGBuildableAttachmentMerger,
 	FGBuildableAttachmentSplitter as docs_json_ts_0_7_1_1_classes_FGBuildableAttachmentSplitter,
 	FGBuildableBeamLightweight as docs_json_ts_0_7_1_1_classes_FGBuildableBeamLightweight,
@@ -53,6 +52,7 @@ import type {
 	FGBuildableDroneStation as docs_json_ts_0_7_1_1_classes_FGBuildableDroneStation,
 	FGBuildableFactory_jump_pad as docs_json_ts_0_7_1_1_classes_FGBuildableFactory_jump_pad,
 	FGBuildableFactory_landing_pad as docs_json_ts_0_7_1_1_classes_FGBuildableFactory_landing_pad,
+	FGBuildableFactory_not_pad as docs_json_ts_0_7_1_1_classes_FGBuildableFactory_not_pad,
 	FGBuildableFactoryBuilding as docs_json_ts_0_7_1_1_classes_FGBuildableFactoryBuilding,
 	FGBuildableFactorySimpleProducer as docs_json_ts_0_7_1_1_classes_FGBuildableFactorySimpleProducer,
 	FGBuildableFloodlight as docs_json_ts_0_7_1_1_classes_FGBuildableFloodlight,
@@ -89,7 +89,7 @@ import type {
 	FGBuildablePipelinePump_valve as docs_json_ts_0_7_1_1_classes_FGBuildablePipelinePump_valve,
 	FGBuildablePipelineSupport as docs_json_ts_0_7_1_1_classes_FGBuildablePipelineSupport,
 	FGBuildablePipeReservoir as docs_json_ts_0_7_1_1_classes_FGBuildablePipeReservoir,
-	FGBuildablePole as docs_json_ts_0_7_1_1_classes_FGBuildablePole,
+	FGBuildablePoleLightweight as docs_json_ts_0_7_1_1_classes_FGBuildablePoleLightweight,
 	FGBuildablePowerPole as docs_json_ts_0_7_1_1_classes_FGBuildablePowerPole,
 	FGBuildablePowerStorage as docs_json_ts_0_7_1_1_classes_FGBuildablePowerStorage,
 	FGBuildableRadarTower as docs_json_ts_0_7_1_1_classes_FGBuildableRadarTower,
@@ -105,6 +105,7 @@ import type {
 	FGBuildableResourceSink as docs_json_ts_0_7_1_1_classes_FGBuildableResourceSink,
 	FGBuildableResourceSinkShop as docs_json_ts_0_7_1_1_classes_FGBuildableResourceSinkShop,
 	FGBuildableSnowDispenser as docs_json_ts_0_7_1_1_classes_FGBuildableSnowDispenser,
+	FGBuildableSpaceElevator as docs_json_ts_0_7_1_1_classes_FGBuildableSpaceElevator,
 	FGBuildableSplitterSmart as docs_json_ts_0_7_1_1_classes_FGBuildableSplitterSmart,
 	FGBuildableStair as docs_json_ts_0_7_1_1_classes_FGBuildableStair,
 	FGBuildableStorage as docs_json_ts_0_7_1_1_classes_FGBuildableStorage,
@@ -114,6 +115,7 @@ import type {
 	FGBuildableWalkway as docs_json_ts_0_7_1_1_classes_FGBuildableWalkway,
 	FGBuildableWalkwayLightweight as docs_json_ts_0_7_1_1_classes_FGBuildableWalkwayLightweight,
 	FGBuildableWall as docs_json_ts_0_7_1_1_classes_FGBuildableWall,
+	FGBuildableWallLightweight as docs_json_ts_0_7_1_1_classes_FGBuildableWallLightweight,
 	FGBuildableWaterPump as docs_json_ts_0_7_1_1_classes_FGBuildableWaterPump,
 	FGBuildableWidgetSign as docs_json_ts_0_7_1_1_classes_FGBuildableWidgetSign,
 	FGBuildableWire as docs_json_ts_0_7_1_1_classes_FGBuildableWire,
@@ -130,7 +132,7 @@ type FGBuildable = {
 	],
 };
 
-type FGBuildable_Classes_item = docs_json_ts_0_7_1_1_classes_FGBuildable_occupied | docs_json_ts_0_7_1_1_classes_FGBuildable_tiered | docs_json_ts_0_7_1_1_classes_FGBuildable_base;
+type FGBuildable_Classes_item = docs_json_ts_0_7_1_1_classes_FGBuildable_occupied | docs_json_ts_0_7_1_1_classes_FGBuildable_tiered | docs_json_ts_0_7_1_1_classes_FGBuildable_unoccupied_and_untiered;
 
 type FGBuildableAttachmentMerger = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableAttachmentMerger'}${'\''}`,
@@ -228,7 +230,7 @@ type FGBuildableFactory = {
 	],
 };
 
-type FGBuildableFactory_Classes_item = docs_json_ts_0_7_1_1_classes_FGBuildableFactory_jump_pad | docs_json_ts_0_7_1_1_classes_FGBuildableFactory_landing_pad | docs_json_ts_0_7_1_1_classes_FGBuildable_powered;
+type FGBuildableFactory_Classes_item = docs_json_ts_0_7_1_1_classes_FGBuildableFactory_jump_pad | docs_json_ts_0_7_1_1_classes_FGBuildableFactory_landing_pad | docs_json_ts_0_7_1_1_classes_FGBuildableFactory_not_pad;
 
 type FGBuildableFactoryBuilding = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableFactoryBuilding'}${'\''}`,
@@ -442,8 +444,8 @@ type FGBuildablePipeReservoir = {
 type FGBuildablePoleLightweight = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildablePoleLightweight'}${'\''}`,
 	Classes: [
-		docs_json_ts_0_7_1_1_classes_FGBuildablePole,
-		...docs_json_ts_0_7_1_1_classes_FGBuildablePole[],
+		docs_json_ts_0_7_1_1_classes_FGBuildablePoleLightweight,
+		...docs_json_ts_0_7_1_1_classes_FGBuildablePoleLightweight[],
 	],
 };
 
@@ -540,8 +542,8 @@ type FGBuildableSnowDispenser = {
 type FGBuildableSpaceElevator = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableSpaceElevator'}${'\''}`,
 	Classes: [
-		docs_json_ts_0_7_1_1_classes_FGBuildable_powered,
-		...docs_json_ts_0_7_1_1_classes_FGBuildable_powered[],
+		docs_json_ts_0_7_1_1_classes_FGBuildableSpaceElevator,
+		...docs_json_ts_0_7_1_1_classes_FGBuildableSpaceElevator[],
 	],
 };
 
@@ -620,8 +622,8 @@ type FGBuildableWall = {
 type FGBuildableWallLightweight = {
 	NativeClass: `Class'/Script/${'FactoryGame.FGBuildableWallLightweight'}${'\''}`,
 	Classes: [
-		docs_json_ts_0_7_1_1_classes_FGBuildableWall,
-		...docs_json_ts_0_7_1_1_classes_FGBuildableWall[],
+		docs_json_ts_0_7_1_1_classes_FGBuildableWallLightweight,
+		...docs_json_ts_0_7_1_1_classes_FGBuildableWallLightweight[],
 	],
 };
 

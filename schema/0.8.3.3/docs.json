@@ -91,7 +91,7 @@
 					"$ref": "docs.json.ts--0.8.3.3--classes#/$defs/FGBuildable--tiered"
 				},
 				{
-					"$ref": "docs.json.ts--0.8.3.3--classes#/$defs/FGBuildable--base"
+					"$ref": "docs.json.ts--0.8.3.3--classes#/$defs/FGBuildable--unoccupied-and-untiered"
 				}
 			]
 		},
@@ -320,7 +320,7 @@
 					"$ref": "docs.json.ts--0.8.3.3--classes#/$defs/FGBuildableFactory--landing-pad"
 				},
 				{
-					"$ref": "docs.json.ts--0.8.3.3--classes#/$defs/FGBuildable--powered"
+					"$ref": "docs.json.ts--0.8.3.3--classes#/$defs/FGBuildableFactory--not-pad"
 				}
 			]
 		},
@@ -703,7 +703,7 @@
 					"type": "array",
 					"minItems": 1,
 					"items": {
-						"$ref": "docs.json.ts--0.8.3.3--classes#/$defs/FGBuildablePassthrough"
+						"$ref": "docs.json.ts--0.8.3.3--classes#/$defs/FGBuildablePassthroughPipeHyper"
 					}
 				}
 			}
@@ -1111,7 +1111,7 @@
 					"type": "array",
 					"minItems": 1,
 					"items": {
-						"$ref": "docs.json.ts--0.8.3.3--classes#/$defs/FGBuildable--powered"
+						"$ref": "docs.json.ts--0.8.3.3--classes#/$defs/FGBuildableSpaceElevator"
 					}
 				}
 			}
@@ -1291,7 +1291,7 @@
 					"type": "array",
 					"minItems": 1,
 					"items": {
-						"$ref": "docs.json.ts--0.8.3.3--classes#/$defs/FGBuildableWall"
+						"$ref": "docs.json.ts--0.8.3.3--classes#/$defs/FGBuildableWallLightweight"
 					}
 				}
 			}
@@ -1479,7 +1479,7 @@
 		"FGEquipmentDescriptor--Classes--item": {
 			"oneOf": [
 				{
-					"$ref": "docs.json.ts--0.6.1.5--classes#/$defs/FGItemDescriptor"
+					"$ref": "docs.json.ts--0.6.1.5--classes#/$defs/FGEquipmentDescriptor"
 				},
 				{
 					"$ref": "docs.json.ts--0.6.1.5--classes.overridable#/$defs/FGEquipmentDescriptor--Desc_GolfCartGold_C"
@@ -1581,42 +1581,6 @@
 					"minItems": 1,
 					"items": {
 						"$ref": "docs.json.ts--0.8.3.3--classes#/$defs/FGHoverPack"
-					}
-				}
-			}
-		},
-		"FGItemDescriptor": {
-			"type": "object",
-			"additionalProperties": false,
-			"required": ["NativeClass", "Classes"],
-			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"DocsDotJson_NativeClass": "FactoryGame.FGItemDescriptor"
-				},
-				"Classes": {
-					"type": "array",
-					"minItems": 1,
-					"items": {
-						"$ref": "docs.json.ts--0.6.1.5--classes#/$defs/FGItemDescriptor"
-					}
-				}
-			}
-		},
-		"FGItemDescriptorBiomass": {
-			"type": "object",
-			"additionalProperties": false,
-			"required": ["NativeClass", "Classes"],
-			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"DocsDotJson_NativeClass": "FactoryGame.FGItemDescriptorBiomass"
-				},
-				"Classes": {
-					"type": "array",
-					"minItems": 1,
-					"items": {
-						"$ref": "docs.json.ts--0.6.1.5--classes#/$defs/FGItemDescriptor"
 					}
 				}
 			}
@@ -1783,24 +1747,6 @@
 				}
 			}
 		},
-		"FGResourceDescriptor": {
-			"type": "object",
-			"additionalProperties": false,
-			"required": ["NativeClass", "Classes"],
-			"properties": {
-				"NativeClass": {
-					"type": "string",
-					"DocsDotJson_NativeClass": "FactoryGame.FGResourceDescriptor"
-				},
-				"Classes": {
-					"type": "array",
-					"minItems": 1,
-					"items": {
-						"$ref": "docs.json.ts--0.6.1.5--classes#/$defs/FGResourceDescriptor"
-					}
-				}
-			}
-		},
 		"FGSchematic": {
 			"type": "object",
 			"additionalProperties": false,
@@ -1920,7 +1866,7 @@
 	"maxItems": 98,
 	"prefixItems": [
 		{
-			"$ref": "#/$defs/FGItemDescriptor"
+			"$ref": "docs.json.ts--0.6.1.5#/$defs/FGItemDescriptor"
 		},
 		{
 			"$ref": "#/$defs/FGBuildableDroneStation"
@@ -1953,7 +1899,7 @@
 			"$ref": "#/$defs/FGBuildableCornerWall"
 		},
 		{
-			"$ref": "#/$defs/FGResourceDescriptor"
+			"$ref": "docs.json.ts--0.6.1.5#/$defs/FGResourceDescriptor"
 		},
 		{
 			"$ref": "#/$defs/FGBuildableRailroadTrack"
@@ -2025,7 +1971,7 @@
 			"$ref": "#/$defs/FGBuildableResourceSinkShop"
 		},
 		{
-			"$ref": "#/$defs/FGItemDescriptorBiomass"
+			"$ref": "docs.json.ts--0.6.1.5#/$defs/FGItemDescriptorBiomass"
 		},
 		{
 			"$ref": "#/$defs/FGBuildableResourceExtractor"
