@@ -70,9 +70,9 @@ type FGBuildableGeneratorFuel = docs_json_ts_common_classes_base_hasClassName & 
 
 type FGBuildableGeneratorGeoThermal = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
 
-type FGBuildableJumppad = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
-
 type FGBuildableGeneratorNuclear = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableJumppad = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
 
 type FGBuildableLadder = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
 
@@ -80,11 +80,11 @@ type FGBuildableLightsControlPanel = docs_json_ts_common_classes_base_hasClassNa
 
 type FGBuildableLightSource = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
 
+type FGBuildableMAM = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
 type FGBuildableManufacturer = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
 
 type FGBuildableManufacturerVariablePower = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
-
-type FGBuildableMAM = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
 
 type FGBuildableMergerPriority = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
 
@@ -132,13 +132,13 @@ type FGBuildableRadarTower = docs_json_ts_common_classes_base_hasClassName & doc
 
 type FGBuildableRailroadAttachment = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
 
-type FGBuildableRailroadStation = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
-
-type FGBuildableRailroadTrack = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
-
 type FGBuildableRailroadSignal_block = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
 
 type FGBuildableRailroadSignal_path = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableRailroadStation = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableRailroadTrack = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
 
 type FGBuildableRamp = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
 
@@ -168,9 +168,9 @@ type FGBuildableTrainPlatformCargo = docs_json_ts_common_classes_base_hasClassNa
 
 type FGBuildableTrainPlatformEmpty = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
 
-type FGBuildableWall = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
-
 type FGBuildableWalkway = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+
+type FGBuildableWall = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
 
 type FGBuildableWidgetSign = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
 
@@ -246,11 +246,11 @@ type FGSnowballWeapon = docs_json_ts_common_classes_base_hasClassName;
 
 type FGSuitBase = docs_json_ts_common_classes_base_hasClassName;
 
-type FGWeapon_Equip_Rifle_C = docs_json_ts_common_classes_base_Weapon;
+type FGVehicleDescriptor = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
 
 type FGWeapon_Equip_RebarGun_Projectile_C = docs_json_ts_common_classes_base_Weapon;
 
-type FGVehicleDescriptor = docs_json_ts_common_classes_base_hasClassName & docs_json_ts_common_classes_base_isDescribed & docs_json_ts_common_classes_base_isNamed;
+type FGWeapon_Equip_Rifle_C = docs_json_ts_common_classes_base_Weapon;
 
 export type {
 	FGAmmoTypeInstantHit,
@@ -283,14 +283,14 @@ export type {
 	FGBuildableFrackingExtractor,
 	FGBuildableGeneratorFuel,
 	FGBuildableGeneratorGeoThermal,
-	FGBuildableJumppad,
 	FGBuildableGeneratorNuclear,
+	FGBuildableJumppad,
 	FGBuildableLadder,
 	FGBuildableLightsControlPanel,
 	FGBuildableLightSource,
+	FGBuildableMAM,
 	FGBuildableManufacturer,
 	FGBuildableManufacturerVariablePower,
-	FGBuildableMAM,
 	FGBuildableMergerPriority,
 	FGBuildablePassthrough,
 	FGBuildablePassthroughPipeHyper,
@@ -314,10 +314,10 @@ export type {
 	FGBuildablePriorityPowerSwitch,
 	FGBuildableRadarTower,
 	FGBuildableRailroadAttachment,
-	FGBuildableRailroadStation,
-	FGBuildableRailroadTrack,
 	FGBuildableRailroadSignal_block,
 	FGBuildableRailroadSignal_path,
+	FGBuildableRailroadStation,
+	FGBuildableRailroadTrack,
 	FGBuildableRamp,
 	FGBuildableResourceExtractor,
 	FGBuildableResourceSink,
@@ -332,8 +332,8 @@ export type {
 	FGBuildableTradingPost,
 	FGBuildableTrainPlatformCargo,
 	FGBuildableTrainPlatformEmpty,
-	FGBuildableWall,
 	FGBuildableWalkway,
+	FGBuildableWall,
 	FGBuildableWidgetSign,
 	FGBuildableWire,
 	FGBuildingDescriptor,
@@ -371,7 +371,7 @@ export type {
 	FGSchematic,
 	FGSnowballWeapon,
 	FGSuitBase,
-	FGWeapon_Equip_Rifle_C,
-	FGWeapon_Equip_RebarGun_Projectile_C,
 	FGVehicleDescriptor,
+	FGWeapon_Equip_RebarGun_Projectile_C,
+	FGWeapon_Equip_Rifle_C,
 };

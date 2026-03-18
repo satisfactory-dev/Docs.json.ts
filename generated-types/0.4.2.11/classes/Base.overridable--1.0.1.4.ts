@@ -1,10 +1,6 @@
 /* eslint-disable @stylistic/max-len */
 
 import type {
-	FGItemDescriptorNuclearFuel as docs_json_ts_common_classes_FGItemDescriptorNuclearFuel,
-} from './../../common/classes.ts';
-
-import type {
 	FGItemDescriptorNuclearFuel_version_specific as docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_version_specific,
 	FGSchematic_pre_1_0 as docs_json_ts_0_3_7_7_classes_base_FGSchematic_pre_1_0,
 	FGSchematic_pre_update6 as docs_json_ts_0_3_7_7_classes_base_FGSchematic_pre_update6,
@@ -14,6 +10,10 @@ import type {
 import type {
 	FGDescriptor as docs_json_ts_0_4_2_11_classes_base_FGDescriptor,
 } from './Base.ts';
+
+import type {
+	FGItemDescriptorNuclearFuel as docs_json_ts_common_classes_FGItemDescriptorNuclearFuel,
+} from './../../common/classes.ts';
 
 import type {
 	BlueprintGeneratedClass_single_quoted as docs_json_ts_0_4_2_11_overridable_BlueprintGeneratedClass_single_quoted,
@@ -40,7 +40,7 @@ import type {
 	DocsDotJson_BlueprintGeneratedClass_quoted_list as docs_json_ts_0_3_7_7_overridable_DocsDotJson_BlueprintGeneratedClass_quoted_list,
 } from './../../0.3.7.7/types/overridable--1.0.1.4.ts';
 
-type FGItemDescriptorNuclearFuel = docs_json_ts_common_classes_FGItemDescriptorNuclearFuel & docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_version_specific & docs_json_ts_0_3_7_7_classes_base_has_mResourceSinkPoints & docs_json_ts_0_4_2_11_classes_base_FGDescriptor & FGItemDescriptorNuclearFuel_pre_1_0;
+type FGItemDescriptorNuclearFuel = docs_json_ts_0_3_7_7_classes_base_FGItemDescriptorNuclearFuel_version_specific & docs_json_ts_0_3_7_7_classes_base_has_mResourceSinkPoints & docs_json_ts_0_4_2_11_classes_base_FGDescriptor & docs_json_ts_common_classes_FGItemDescriptorNuclearFuel & FGItemDescriptorNuclearFuel_pre_1_0;
 
 type FGItemDescriptorNuclearFuel_pre_1_0 = {
 	mSpentFuelClass: docs_json_ts_0_4_2_11_overridable_BlueprintGeneratedClass_single_quoted,

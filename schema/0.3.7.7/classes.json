@@ -2,11 +2,6 @@
 	"$schema": "https://json-schema.org/draft/2020-12/schema",
 	"$id": "docs.json.ts--0.3.7.7--classes",
 	"$defs": {
-		"FGBuildable--unoccupied-and-untiered": {
-			"type": "object",
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--unoccupied-and-untiered",
-			"unevaluatedProperties": false
-		},
 		"FGBuildable--occupied": {
 			"type": "object",
 			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--occupied",
@@ -20,6 +15,11 @@
 		"FGBuildable--tiered": {
 			"type": "object",
 			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--tiered",
+			"unevaluatedProperties": false
+		},
+		"FGBuildable--unoccupied-and-untiered": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--unoccupied-and-untiered",
 			"unevaluatedProperties": false
 		},
 		"FGBuildableAttachmentMerger": {
@@ -244,8 +244,8 @@
 		},
 		"FGBuildableSpaceElevator": {
 			"type": "object",
-			"unevaluatedProperties": false,
-			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableSpaceElevator"
+			"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableSpaceElevator",
+			"unevaluatedProperties": false
 		},
 		"FGBuildableSplitterSmart": {
 			"type": "object",

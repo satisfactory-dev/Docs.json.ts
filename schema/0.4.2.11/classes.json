@@ -367,14 +367,14 @@
 			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGConsumableDescriptor",
 			"unevaluatedProperties": false
 		},
-		"FGConveyorPoleStackable": {
-			"type": "object",
-			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGConveyorPoleStackable",
-			"unevaluatedProperties": false
-		},
 		"FGConsumableEquipment": {
 			"type": "object",
 			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGConsumableEquipment",
+			"unevaluatedProperties": false
+		},
+		"FGConveyorPoleStackable": {
+			"type": "object",
+			"$ref": "docs.json.ts--0.4.2.11--classes--base#/$defs/FGConveyorPoleStackable",
 			"unevaluatedProperties": false
 		},
 		"FGEquipmentDescriptor": {

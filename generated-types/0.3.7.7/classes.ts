@@ -91,13 +91,13 @@ import type {
 	FGWeapon_Equip_Rifle_C as docs_json_ts_0_3_7_7_classes_base_FGWeapon_Equip_Rifle_C,
 } from './classes/Base.ts';
 
-type FGBuildable_unoccupied_and_untiered = docs_json_ts_0_3_7_7_classes_base_FGBuildable_unoccupied_and_untiered;
-
 type FGBuildable_occupied = docs_json_ts_0_3_7_7_classes_base_FGBuildable_occupied;
 
 type FGBuildable_powered_base = docs_json_ts_0_3_7_7_classes_base_FGBuildable_powered;
 
 type FGBuildable_tiered = docs_json_ts_0_3_7_7_classes_base_FGBuildable_tiered;
+
+type FGBuildable_unoccupied_and_untiered = docs_json_ts_0_3_7_7_classes_base_FGBuildable_unoccupied_and_untiered;
 
 type FGBuildableAttachmentMerger = docs_json_ts_0_3_7_7_classes_base_FGBuildableAttachmentMerger;
 
@@ -273,10 +273,10 @@ type FGWeapon_Equip_RebarGun_Projectile_C = docs_json_ts_0_3_7_7_classes_base_FG
 type FGWeapon_Equip_Rifle_C = docs_json_ts_0_3_7_7_classes_base_FGWeapon_Equip_Rifle_C;
 
 export type {
-	FGBuildable_unoccupied_and_untiered,
 	FGBuildable_occupied,
 	FGBuildable_powered_base,
 	FGBuildable_tiered,
+	FGBuildable_unoccupied_and_untiered,
 	FGBuildableAttachmentMerger,
 	FGBuildableAttachmentSplitter,
 	FGBuildableConveyorBelt,

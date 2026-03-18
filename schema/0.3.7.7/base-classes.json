@@ -20,6 +20,15 @@
 				}
 			}
 		},
+		"has--mResourceSinkPoints": {
+			"type": "object",
+			"required": ["mResourceSinkPoints"],
+			"properties": {
+				"mResourceSinkPoints": {
+					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
+				}
+			}
+		},
 		"has--mSplineData": {
 			"type": "object",
 			"required": ["mSplineData"],
@@ -539,57 +548,6 @@
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
 			}
-		},
-		"FGBuildableFoundation": {
-			"allOf": [
-				{
-					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableFoundation"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable--DisableAttachmentSnapOn"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable--with-height"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable--with-size"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable--with-size-and-elevation--base"
-				}
-			]
-		},
-		"FGBuildableStair": {
-			"allOf": [
-				{
-					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableStair"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable--DisableAttachmentSnapOn"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable--with-height"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable--with-size"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable--with-size-and-elevation--base"
-				}
-			]
-		},
-		"FGBuildableWall": {
-			"allOf": [
-				{
-					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableWall"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable--with-height-and-width--base"
-				}
-			]
 		},
 		"FGBuildable--with-height-and-width--base": {
 			"allOf": [
@@ -1177,6 +1135,25 @@
 					"const": "EV_Christmas"
 				}
 			}
+		},
+		"FGBuildableFoundation": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableFoundation"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--DisableAttachmentSnapOn"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--with-height"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--with-size"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--with-size-and-elevation--base"
+				}
+			]
 		},
 		"FGBuildableGenerator": {
 			"allOf": [
@@ -2766,10 +2743,10 @@
 					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableRailroadStation"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableRailroadStation--base"
+					"$ref": "#/$defs/FGBuildable--powered"
 				},
 				{
-					"$ref": "#/$defs/FGBuildable--powered"
+					"$ref": "#/$defs/FGBuildableRailroadStation--base"
 				},
 				{
 					"$ref": "#/$defs/FGBuildableTrainPlatform--base"
@@ -3061,13 +3038,13 @@
 		"FGBuildableResourceExtractor--miner--mk3": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableResourceExtractor"
-				},
-				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGBuildableResourceExtractor--miner--base"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGBuildableResourceExtractor--only-allow-certain-resources"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableResourceExtractor"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--powered"
@@ -3483,43 +3460,6 @@
 				}
 			]
 		},
-		"FGBuildableResourceSink--version-specific": {
-					"type": "object",
-					"required": [
-						"SFXEngineTimeline_EngineAlpha_073E1D2A4BAD246B3958E183E210FAAE",
-						"SFXEngineTimeline__Direction_073E1D2A4BAD246B3958E183E210FAAE",
-						"VFX_SFX_Timeline_EngineAlpha_A2CB706E440839665A39888572D206AA",
-						"VFX_SFX_Timeline__Direction_A2CB706E440839665A39888572D206AA",
-						"HastLostSignificance",
-						"mProcessingTime",
-						"mSavedProducingTimer"
-					],
-					"properties": {
-						"SFXEngineTimeline_EngineAlpha_073E1D2A4BAD246B3958E183E210FAAE": {
-							"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-						},
-						"SFXEngineTimeline__Direction_073E1D2A4BAD246B3958E183E210FAAE": {
-							"type": "string",
-							"const": "Forward"
-						},
-						"VFX_SFX_Timeline_EngineAlpha_A2CB706E440839665A39888572D206AA": {
-							"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-						},
-						"VFX_SFX_Timeline__Direction_A2CB706E440839665A39888572D206AA": {
-							"type": "string",
-							"const": "Forward"
-						},
-						"HastLostSignificance": {
-							"$ref": "docs.json.ts--common--types#/$defs/bool_string"
-						},
-						"mProcessingTime": {
-							"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-						},
-						"mSavedProducingTimer": {
-							"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-						}
-					}
-		},
 		"FGBuildableResourceSink--base": {
 			"allOf": [
 				{
@@ -3561,6 +3501,43 @@
 			"required": ["mProcessingTime"],
 			"properties": {
 				"mProcessingTime": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
+		"FGBuildableResourceSink--version-specific": {
+			"type": "object",
+			"required": [
+				"SFXEngineTimeline_EngineAlpha_073E1D2A4BAD246B3958E183E210FAAE",
+				"SFXEngineTimeline__Direction_073E1D2A4BAD246B3958E183E210FAAE",
+				"VFX_SFX_Timeline_EngineAlpha_A2CB706E440839665A39888572D206AA",
+				"VFX_SFX_Timeline__Direction_A2CB706E440839665A39888572D206AA",
+				"HastLostSignificance",
+				"mProcessingTime",
+				"mSavedProducingTimer"
+			],
+			"properties": {
+				"SFXEngineTimeline_EngineAlpha_073E1D2A4BAD246B3958E183E210FAAE": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"SFXEngineTimeline__Direction_073E1D2A4BAD246B3958E183E210FAAE": {
+					"type": "string",
+					"const": "Forward"
+				},
+				"VFX_SFX_Timeline_EngineAlpha_A2CB706E440839665A39888572D206AA": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"VFX_SFX_Timeline__Direction_A2CB706E440839665A39888572D206AA": {
+					"type": "string",
+					"const": "Forward"
+				},
+				"HastLostSignificance": {
+					"$ref": "docs.json.ts--common--types#/$defs/bool_string"
+				},
+				"mProcessingTime": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				},
+				"mSavedProducingTimer": {
 					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
 				}
 			}
@@ -3753,6 +3730,25 @@
 					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
 				}
 			}
+		},
+		"FGBuildableStair": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableStair"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--DisableAttachmentSnapOn"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--with-height"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--with-size"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--with-size-and-elevation--base"
+				}
+			]
 		},
 		"FGBuildableStorage": {
 			"allOf": [
@@ -4034,10 +4030,10 @@
 		"FGBuildableTrainPlatform--with-storage": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGBuildable--powered-storage"
+					"$ref": "#/$defs/FGBuildable--powered"
 				},
 				{
-					"$ref": "#/$defs/FGBuildable--powered"
+					"$ref": "#/$defs/FGBuildable--powered-storage"
 				},
 				{
 					"$ref": "#/$defs/FGBuildableTrainPlatform--base"
@@ -4217,6 +4213,19 @@
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--with-size-and-elevation--base"
+				}
+			]
+		},
+		"FGBuildableWall": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableWall"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--with-height-and-width--base"
 				}
 			]
 		},
@@ -4669,21 +4678,12 @@
 					"$ref": "#/$defs/FGDescriptor--base"
 				},
 				{
-					"$ref": "#/$defs/has--mResourceSinkPoints"
+					"$ref": "#/$defs/FGDescriptor--base"
 				},
 				{
-					"$ref": "#/$defs/FGDescriptor--base"
+					"$ref": "#/$defs/has--mResourceSinkPoints"
 				}
 			]
-		},
-		"has--mResourceSinkPoints": {
-			"type": "object",
-			"required": ["mResourceSinkPoints"],
-			"properties": {
-				"mResourceSinkPoints": {
-					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
-				}
-			}
 		},
 		"FGEquipment": {
 			"type": "object",
@@ -5892,10 +5892,10 @@
 					"$ref": "docs.json.ts--common--classes#/$defs/FGSnowballWeapon"
 				},
 				{
-					"$ref": "#/$defs/FGWeaponProjectile--thrown"
+					"$ref": "#/$defs/FGSnowballWeapon--version-specific"
 				},
 				{
-					"$ref": "#/$defs/FGSnowballWeapon--version-specific"
+					"$ref": "#/$defs/FGWeaponProjectile--thrown"
 				}
 			]
 		},
@@ -5912,10 +5912,10 @@
 		"FGSuitBase": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--common--classes#/$defs/FGSuitBase"
+					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGSuitBase--pre-1.0"
 				},
 				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base.overridable#/$defs/FGSuitBase--pre-1.0"
+					"$ref": "docs.json.ts--common--classes#/$defs/FGSuitBase"
 				},
 				{
 					"$ref": "#/$defs/FGEquipment"
@@ -5954,6 +5954,28 @@
 				},
 				{
 					"$ref": "#/$defs/FGDescriptor--BuildMenu"
+				}
+			]
+		},
+		"FGWeapon--Equip_RebarGun_Projectile_C": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGWeapon--Equip_RebarGun_Projectile_C"
+				},
+				{
+					"$ref": "#/$defs/FGWeaponProjectile"
+				},
+				{
+					"$ref": "#/$defs/FGWeaponProjectile--base"
+				},
+				{
+					"$ref": "#/$defs/FGWeaponProjectile--has--mAttachSocket"
+				},
+				{
+					"$ref": "#/$defs/FGWeaponProjectileFire--base--random"
+				},
+				{
+					"$ref": "#/$defs/FGWeaponProjectileFire--base--version-specific"
 				}
 			]
 		},
@@ -6234,28 +6256,6 @@
 					"$ref": "docs.json.ts--common--types#/$defs/integer_string"
 				}
 			}
-		},
-		"FGWeapon--Equip_RebarGun_Projectile_C": {
-			"allOf": [
-				{
-					"$ref": "docs.json.ts--common--classes#/$defs/FGWeapon--Equip_RebarGun_Projectile_C"
-				},
-				{
-					"$ref": "#/$defs/FGWeaponProjectile"
-				},
-				{
-					"$ref": "#/$defs/FGWeaponProjectile--base"
-				},
-				{
-					"$ref": "#/$defs/FGWeaponProjectile--has--mAttachSocket"
-				},
-				{
-					"$ref": "#/$defs/FGWeaponProjectileFire--base--random"
-				},
-				{
-					"$ref": "#/$defs/FGWeaponProjectileFire--base--version-specific"
-				}
-			]
 		},
 		"FGWeaponProjectileFire--base--random": {
 			"allOf": [

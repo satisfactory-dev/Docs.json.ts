@@ -392,7 +392,7 @@
 				}
 			]
 		},
-		"FGBuildableJumppad": {
+		"FGBuildableGeneratorNuclear": {
 			"allOf": [
 				{
 					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
@@ -405,7 +405,7 @@
 				}
 			]
 		},
-		"FGBuildableGeneratorNuclear": {
+		"FGBuildableJumppad": {
 			"allOf": [
 				{
 					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
@@ -457,6 +457,19 @@
 				}
 			]
 		},
+		"FGBuildableMAM": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
 		"FGBuildableManufacturer": {
 			"allOf": [
 				{
@@ -471,19 +484,6 @@
 			]
 		},
 		"FGBuildableManufacturerVariablePower": {
-			"allOf": [
-				{
-					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
-				},
-				{
-					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
-				},
-				{
-					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
-				}
-			]
-		},
-		"FGBuildableMAM": {
 			"allOf": [
 				{
 					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
@@ -795,32 +795,6 @@
 				}
 			]
 		},
-		"FGBuildableRailroadStation": {
-			"allOf": [
-				{
-					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
-				},
-				{
-					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
-				},
-				{
-					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
-				}
-			]
-		},
-		"FGBuildableRailroadTrack": {
-			"allOf": [
-				{
-					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
-				},
-				{
-					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
-				},
-				{
-					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
-				}
-			]
-		},
 		"FGBuildableRailroadSignal--block": {
 			"allOf": [
 				{
@@ -835,6 +809,32 @@
 			]
 		},
 		"FGBuildableRailroadSignal--path": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableRailroadStation": {
+			"allOf": [
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isDescribed"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
+				}
+			]
+		},
+		"FGBuildableRailroadTrack": {
 			"allOf": [
 				{
 					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
@@ -1029,7 +1029,7 @@
 				}
 			]
 		},
-		"FGBuildableWall": {
+		"FGBuildableWalkway": {
 			"allOf": [
 				{
 					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
@@ -1042,7 +1042,7 @@
 				}
 			]
 		},
-		"FGBuildableWalkway": {
+		"FGBuildableWall": {
 			"allOf": [
 				{
 					"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
@@ -1347,14 +1347,6 @@
 			"type": "object",
 			"$ref": "docs.json.ts--common--classes--base#/$defs/hasClassName"
 		},
-		"FGWeapon--Equip_Rifle_C": {
-			"type": "object",
-			"$ref": "docs.json.ts--common--classes--base#/$defs/Weapon"
-		},
-		"FGWeapon--Equip_RebarGun_Projectile_C": {
-			"type": "object",
-			"$ref": "docs.json.ts--common--classes--base#/$defs/Weapon"
-		},
 		"FGVehicleDescriptor": {
 			"allOf": [
 				{
@@ -1367,6 +1359,14 @@
 					"$ref": "docs.json.ts--common--classes--base#/$defs/isNamed"
 				}
 			]
+		},
+		"FGWeapon--Equip_RebarGun_Projectile_C": {
+			"type": "object",
+			"$ref": "docs.json.ts--common--classes--base#/$defs/Weapon"
+		},
+		"FGWeapon--Equip_Rifle_C": {
+			"type": "object",
+			"$ref": "docs.json.ts--common--classes--base#/$defs/Weapon"
 		}
 	}
 }

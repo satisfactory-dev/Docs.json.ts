@@ -54,9 +54,6 @@
 		"FGItemDescriptorNuclearFuel": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--common--classes#/$defs/FGItemDescriptorNuclearFuel"
-				},
-				{
 					"$ref": "docs.json.ts--0.4.2.11--classes--base.overridable#/$defs/FGItemDescriptorNuclearFuel--pre-1.0"
 				},
 				{
@@ -70,6 +67,9 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.5.2.1--classes--base#/$defs/FGItemDescriptor--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGItemDescriptorNuclearFuel"
 				}
 			]
 		},

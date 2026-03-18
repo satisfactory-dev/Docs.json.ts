@@ -250,9 +250,9 @@ type FGColorGun = docs_json_ts_0_4_2_11_classes_base_FGColorGun;
 
 type FGConsumableDescriptor = docs_json_ts_0_4_2_11_classes_base_FGConsumableDescriptor;
 
-type FGConveyorPoleStackable = docs_json_ts_0_4_2_11_classes_base_FGConveyorPoleStackable;
-
 type FGConsumableEquipment = docs_json_ts_0_4_2_11_classes_base_FGConsumableEquipment;
+
+type FGConveyorPoleStackable = docs_json_ts_0_4_2_11_classes_base_FGConveyorPoleStackable;
 
 type FGEquipmentDescriptor = docs_json_ts_0_4_2_11_classes_base_FGEquipmentDescriptor;
 
@@ -376,8 +376,8 @@ export type {
 	FGBuildingDescriptor,
 	FGColorGun,
 	FGConsumableDescriptor,
-	FGConveyorPoleStackable,
 	FGConsumableEquipment,
+	FGConveyorPoleStackable,
 	FGEquipmentDescriptor,
 	FGEquipmentZipline,
 	FGHoverPack,
