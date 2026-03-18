@@ -109,10 +109,10 @@
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered-storage--base--base"
 				},
 				{
-					"$ref": "#/$defs/FGBuildable--powered-storage--base"
+					"$ref": "#/$defs/FGBuildable--powered-storage"
 				},
 				{
-					"$ref": "#/$defs/FGBuildable--powered-storage"
+					"$ref": "#/$defs/FGBuildable--powered-storage--base"
 				}
 			]
 		},
@@ -461,15 +461,6 @@
 		"FGBuildableDroneStation": {
 			"allOf": [
 				{
-					"$ref": "docs.json.ts--0.4.2.11--overridable#/$defs/has--mBatteryClasses"
-				},
-				{
-					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableDroneStation"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable--docking-station"
-				},
-				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--docking-station--base--base--base"
 				},
 				{
@@ -477,6 +468,15 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered-storage--base--base"
+				},
+				{
+					"$ref": "docs.json.ts--0.4.2.11--overridable#/$defs/has--mBatteryClasses"
+				},
+				{
+					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableDroneStation"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--docking-station"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--powered-storage--base"
@@ -819,6 +819,9 @@
 		"FGBuildableGeneratorFuel--base--base": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--version-specific"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGenerator--base--base--base"
 				},
 				{
@@ -826,9 +829,6 @@
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGenerator--no-fuel--base--base"
-				},
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--version-specific"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGenerator--no-fuel--base--base--base--base"
@@ -983,13 +983,13 @@
 		"FGBuildableGeneratorNuclear": {
 			"allOf": [
 				{
+					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--version-specific"
+				},
+				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGenerator--base"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGenerator--no-fuel--base--base"
-				},
-				{
-					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildable--powered--version-specific"
 				},
 				{
 					"$ref": "docs.json.ts--0.3.7.7--classes--base#/$defs/FGBuildableGenerator--no-fuel--base--base--base--base"

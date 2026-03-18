@@ -168,6 +168,10 @@ type has_mResourceSinkPoints = {
 	mResourceSinkPoints: docs_json_ts_common_types_integer_string,
 };
 
+type has_mRTPCInterval = {
+	mRTPCInterval: docs_json_ts_common_types_decimal_string,
+};
+
 type has_mSize = {
 	mSize: docs_json_ts_common_types_decimal_string,
 };
@@ -212,7 +216,7 @@ type FGBuildable_base_version_specific = {
 	mHideOnBuildEffectStart: docs_json_ts_common_types_bool_string,
 };
 
-type FGBuildable_docking_station = FGBuildable_powered_storage_base_base_base & FGBuildable_docking_station_base_with_mMapText & FGBuildable_docking_station_base_base_base & FGBuildable_powered_storage_base_base & FGBuildable_powered_storage;
+type FGBuildable_docking_station = FGBuildable_docking_station_base_base_base & FGBuildable_docking_station_base_with_mMapText & FGBuildable_powered_storage & FGBuildable_powered_storage_base_base & FGBuildable_powered_storage_base_base_base;
 
 type FGBuildable_docking_station_base_base_base = {
 	mTransferSpeed: docs_json_ts_common_types_decimal_string,
@@ -342,9 +346,9 @@ type FGBuildableDockingStation_base = {
 	mMapText: '',
 };
 
-type FGBuildableDockingStation_base_base = FGBuildable_powered_storage_base_base_base & FGBuildable_docking_station_base_with_mMapText & FGBuildable_docking_station_base_base_base & FGBuildable_powered_storage_base_base & FGBuildableDockingStation_with_mFuelTransferSpeed;
+type FGBuildableDockingStation_base_base = FGBuildable_docking_station_base_base_base & FGBuildable_docking_station_base_with_mMapText & FGBuildable_powered_storage_base_base & FGBuildable_powered_storage_base_base_base & FGBuildableDockingStation_with_mFuelTransferSpeed;
 
-type FGBuildableDockingStation_with_mFuelTransferSpeed = FGBuildable_powered_storage_base_base_base & FGBuildable_docking_station_base_base_base & FGBuildable_powered_storage_base_base & FGBuildableDockingStation_with_mFuelTransferSpeed_base;
+type FGBuildableDockingStation_with_mFuelTransferSpeed = FGBuildable_docking_station_base_base_base & FGBuildable_powered_storage_base_base & FGBuildable_powered_storage_base_base_base & FGBuildableDockingStation_with_mFuelTransferSpeed_base;
 
 type FGBuildableDockingStation_with_mFuelTransferSpeed_base = {
 	mFuelTransferSpeed: docs_json_ts_common_types_decimal_string,
@@ -411,7 +415,7 @@ type FGBuildableGenerator_base_base_pre_1_0 = {
 
 type FGBuildableGenerator_no_fuel = FGBuildable_powered & FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildableGenerator_no_fuel_base_base & has_mNumCyclesForProductivity;
 
-type FGBuildableGenerator_no_fuel_base_base = FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildableGenerator_no_fuel_base_base_base_base & FGBuildableGenerator_no_fuel_base_base_base & has_mNumCyclesForProductivity;
+type FGBuildableGenerator_no_fuel_base_base = FGBuildable_powered_pre_1_0 & FGBuildable_powered_version_specific & FGBuildableGenerator_no_fuel_base_base_base & FGBuildableGenerator_no_fuel_base_base_base_base & has_mNumCyclesForProductivity;
 
 type FGBuildableGenerator_no_fuel_base_base_base = {
 	mPowerProductionExponent: docs_json_ts_common_types_decimal_string,
@@ -422,11 +426,7 @@ type FGBuildableGenerator_no_fuel_base_base_base_base = {
 	mLoadPercentage: docs_json_ts_common_types_decimal_string,
 };
 
-type FGBuildableGeneratorFuel_base = FGBuildableGenerator_base & FGBuildableGenerator_base_base_base & FGBuildableGenerator_base_base_pre_1_0 & FGBuildableGenerator_no_fuel_base_base & FGBuildable_powered_version_specific & FGBuildableGenerator_no_fuel_base_base_base_base;
-
-type has_mRTPCInterval = {
-	mRTPCInterval: docs_json_ts_common_types_decimal_string,
-};
+type FGBuildableGeneratorFuel_base = FGBuildable_powered_version_specific & FGBuildableGenerator_base & FGBuildableGenerator_base_base_base & FGBuildableGenerator_base_base_pre_1_0 & FGBuildableGenerator_no_fuel_base_base & FGBuildableGenerator_no_fuel_base_base_base_base;
 
 type FGBuildableGeneratorFuel_biomass = docs_json_ts_common_classes_FGBuildableGeneratorFuel & FGBuildable_base & FGBuildableGenerator & FGBuildableGeneratorFuel_biomass_base;
 
@@ -449,7 +449,7 @@ type FGBuildableGeneratorFuel_coal_base_base = {
 	],
 };
 
-type FGBuildableGeneratorFuel_fuel = docs_json_ts_common_classes_FGBuildableGeneratorFuel & has_mRTPCInterval & FGBuildable_base & FGBuildableGenerator & FGBuildableGeneratorFuel_fuel_base;
+type FGBuildableGeneratorFuel_fuel = docs_json_ts_common_classes_FGBuildableGeneratorFuel & FGBuildable_base & FGBuildableGenerator & FGBuildableGeneratorFuel_fuel_base & has_mRTPCInterval;
 
 type FGBuildableGeneratorFuel_fuel_base = FGBuildableGeneratorFuel_base & FGBuildableGeneratorFuel_fuel_base_base;
 
@@ -470,7 +470,7 @@ type FGBuildableGeneratorGeoThermal_base_base_base = {
 	mProductionEffectsRunning: docs_json_ts_common_types_bool_string,
 };
 
-type FGBuildableGeneratorNuclear = docs_json_ts_common_classes_FGBuildableGeneratorNuclear & FGBuildableGenerator & FGBuildableGenerator_base & FGBuildableGenerator_no_fuel_base_base & FGBuildable_powered_version_specific & FGBuildableGenerator_no_fuel_base_base_base_base & FGBuildableGeneratorNuclear_pre_1_0 & FGBuildableGeneratorNuclear_pre_update4 & FGBuildableGeneratorNuclear_version_specific;
+type FGBuildableGeneratorNuclear = docs_json_ts_common_classes_FGBuildableGeneratorNuclear & FGBuildable_powered_version_specific & FGBuildableGenerator & FGBuildableGenerator_base & FGBuildableGenerator_no_fuel_base_base & FGBuildableGenerator_no_fuel_base_base_base_base & FGBuildableGeneratorNuclear_pre_1_0 & FGBuildableGeneratorNuclear_pre_update4 & FGBuildableGeneratorNuclear_version_specific;
 
 type FGBuildableGeneratorNuclear_pre_1_0 = {
 	mFuelResourceForm: 'RF_SOLID',
@@ -1211,7 +1211,7 @@ type FGItemDescriptorNuclearFuel_version_specific = {
 	mAmountOfWaste: docs_json_ts_common_types_integer_string,
 };
 
-type FGJetPack = docs_json_ts_common_classes_FGJetPack & FGEquipment & FGEquipment_base & FGJetPack_pre_1_0 & FGJetPack_pre_update6 & FGJetPack_pre_update7 & has_mRTPCInterval & FGJetPack_version_specific;
+type FGJetPack = docs_json_ts_common_classes_FGJetPack & FGEquipment & FGEquipment_base & FGJetPack_pre_1_0 & FGJetPack_pre_update6 & FGJetPack_pre_update7 & FGJetPack_version_specific & has_mRTPCInterval;
 
 type FGJetPack_pre_1_0 = {
 	mThrustCooldown: docs_json_ts_common_types_decimal_string,
@@ -1436,7 +1436,7 @@ type FGWeaponInstantFire_has_mLockAngle = {
 	mLockAngle: docs_json_ts_common_types_decimal_string,
 };
 
-type FGWeaponProjectile = FGWeaponProjectile_base & FGEquipment & FGWeaponProjectile_base_version_specific;
+type FGWeaponProjectile = FGEquipment & FGWeaponProjectile_base & FGWeaponProjectile_base_version_specific;
 
 type FGWeaponProjectile_base = FGEquipment_base & FGEquipment_has_mUseDefaultPrimaryFire & FGWeaponProjectile_base_base_version_specific;
 
@@ -1525,6 +1525,7 @@ export type {
 	has_mMeshLength,
 	has_mNumCyclesForProductivity,
 	has_mResourceSinkPoints,
+	has_mRTPCInterval,
 	has_mSize,
 	has_mSplineData,
 	has_mStackHeight,
@@ -1598,7 +1599,6 @@ export type {
 	FGBuildableGenerator_no_fuel_base_base_base,
 	FGBuildableGenerator_no_fuel_base_base_base_base,
 	FGBuildableGeneratorFuel_base,
-	has_mRTPCInterval,
 	FGBuildableGeneratorFuel_biomass,
 	FGBuildableGeneratorFuel_biomass_base,
 	FGBuildableGeneratorFuel_biomass_base_base,

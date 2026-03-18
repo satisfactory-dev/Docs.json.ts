@@ -96,6 +96,15 @@
 				}
 			}
 		},
+		"has--mRTPCInterval": {
+			"type": "object",
+			"required": ["mRTPCInterval"],
+			"properties": {
+				"mRTPCInterval": {
+					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
+				}
+			}
+		},
 		"has--mSize": {
 			"type": "object",
 			"required": ["mSize"],
@@ -230,19 +239,19 @@
 		"FGBuildable--docking-station": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGBuildable--powered-storage--base--base--base"
+					"$ref": "#/$defs/FGBuildable--docking-station--base--base--base"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--docking-station--base--with-mMapText"
 				},
 				{
-					"$ref": "#/$defs/FGBuildable--docking-station--base--base--base"
+					"$ref": "#/$defs/FGBuildable--powered-storage"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--powered-storage--base--base"
 				},
 				{
-					"$ref": "#/$defs/FGBuildable--powered-storage"
+					"$ref": "#/$defs/FGBuildable--powered-storage--base--base--base"
 				}
 			]
 		},
@@ -806,16 +815,16 @@
 		"FGBuildableDockingStation--base--base": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGBuildable--powered-storage--base--base--base"
+					"$ref": "#/$defs/FGBuildable--docking-station--base--base--base"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--docking-station--base--with-mMapText"
 				},
 				{
-					"$ref": "#/$defs/FGBuildable--docking-station--base--base--base"
+					"$ref": "#/$defs/FGBuildable--powered-storage--base--base"
 				},
 				{
-					"$ref": "#/$defs/FGBuildable--powered-storage--base--base"
+					"$ref": "#/$defs/FGBuildable--powered-storage--base--base--base"
 				},
 				{
 					"$ref": "#/$defs/FGBuildableDockingStation--with--mFuelTransferSpeed"
@@ -825,13 +834,13 @@
 		"FGBuildableDockingStation--with--mFuelTransferSpeed": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGBuildable--powered-storage--base--base--base"
-				},
-				{
 					"$ref": "#/$defs/FGBuildable--docking-station--base--base--base"
 				},
 				{
 					"$ref": "#/$defs/FGBuildable--powered-storage--base--base"
+				},
+				{
+					"$ref": "#/$defs/FGBuildable--powered-storage--base--base--base"
 				},
 				{
 					"$ref": "#/$defs/FGBuildableDockingStation--with--mFuelTransferSpeed--base"
@@ -1172,10 +1181,10 @@
 					"$ref": "#/$defs/FGBuildable--powered--version-specific"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base--base--base--base"
+					"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base--base--base"
 				},
 				{
-					"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base--base--base"
+					"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base--base--base--base"
 				},
 				{
 					"$ref": "#/$defs/has--mNumCyclesForProductivity"
@@ -1206,6 +1215,9 @@
 		"FGBuildableGeneratorFuel--base": {
 			"allOf": [
 				{
+					"$ref": "#/$defs/FGBuildable--powered--version-specific"
+				},
+				{
 					"$ref": "#/$defs/FGBuildableGenerator--base"
 				},
 				{
@@ -1218,21 +1230,9 @@
 					"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base--base"
 				},
 				{
-					"$ref": "#/$defs/FGBuildable--powered--version-specific"
-				},
-				{
 					"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base--base--base--base"
 				}
 			]
-		},
-		"has--mRTPCInterval": {
-			"type": "object",
-			"required": ["mRTPCInterval"],
-			"properties": {
-				"mRTPCInterval": {
-					"$ref": "docs.json.ts--common--types#/$defs/decimal_string"
-				}
-			}
 		},
 		"FGBuildableGeneratorFuel--biomass": {
 			"allOf": [
@@ -1330,9 +1330,6 @@
 					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableGeneratorFuel"
 				},
 				{
-					"$ref": "#/$defs/has--mRTPCInterval"
-				},
-				{
 					"$ref": "#/$defs/FGBuildable--base"
 				},
 				{
@@ -1340,6 +1337,9 @@
 				},
 				{
 					"$ref": "#/$defs/FGBuildableGeneratorFuel--fuel--base"
+				},
+				{
+					"$ref": "#/$defs/has--mRTPCInterval"
 				}
 			]
 		},
@@ -1430,6 +1430,9 @@
 					"$ref": "docs.json.ts--common--classes#/$defs/FGBuildableGeneratorNuclear"
 				},
 				{
+					"$ref": "#/$defs/FGBuildable--powered--version-specific"
+				},
+				{
 					"$ref": "#/$defs/FGBuildableGenerator"
 				},
 				{
@@ -1437,9 +1440,6 @@
 				},
 				{
 					"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base--base"
-				},
-				{
-					"$ref": "#/$defs/FGBuildable--powered--version-specific"
 				},
 				{
 					"$ref": "#/$defs/FGBuildableGenerator--no-fuel--base--base--base--base"
@@ -5014,10 +5014,10 @@
 					"$ref": "#/$defs/FGJetPack--pre-update7"
 				},
 				{
-					"$ref": "#/$defs/has--mRTPCInterval"
+					"$ref": "#/$defs/FGJetPack--version-specific"
 				},
 				{
-					"$ref": "#/$defs/FGJetPack--version-specific"
+					"$ref": "#/$defs/has--mRTPCInterval"
 				}
 			]
 		},
@@ -5967,10 +5967,10 @@
 		"FGWeaponProjectile": {
 			"allOf": [
 				{
-					"$ref": "#/$defs/FGWeaponProjectile--base"
+					"$ref": "#/$defs/FGEquipment"
 				},
 				{
-					"$ref": "#/$defs/FGEquipment"
+					"$ref": "#/$defs/FGWeaponProjectile--base"
 				},
 				{
 					"$ref": "#/$defs/FGWeaponProjectile--base--version-specific"
