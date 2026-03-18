@@ -2,7 +2,6 @@
 
 import type {
 	FGBuildable_occupied as docs_json_ts_0_5_2_1_classes_base_FGBuildable_occupied,
-	FGBuildable_powered as docs_json_ts_0_5_2_1_classes_base_FGBuildable_powered,
 	FGBuildable_tiered as docs_json_ts_0_5_2_1_classes_base_FGBuildable_tiered,
 	FGBuildable_unoccupied_and_untiered as docs_json_ts_0_5_2_1_classes_base_FGBuildable_unoccupied_and_untiered,
 	FGBuildableAttachmentMerger as docs_json_ts_0_5_2_1_classes_base_FGBuildableAttachmentMerger,
@@ -117,8 +116,6 @@ import type {
 } from './classes/Base.overridable.ts';
 
 type FGBuildable_occupied = docs_json_ts_0_5_2_1_classes_base_FGBuildable_occupied;
-
-type FGBuildable_powered = docs_json_ts_0_5_2_1_classes_base_FGBuildable_powered;
 
 type FGBuildable_tiered = docs_json_ts_0_5_2_1_classes_base_FGBuildable_tiered;
 
@@ -338,7 +335,6 @@ type FGWeapon_Equip_Rifle_C = docs_json_ts_0_5_2_1_classes_base_FGWeapon_Equip_R
 
 export type {
 	FGBuildable_occupied,
-	FGBuildable_powered,
 	FGBuildable_tiered,
 	FGBuildable_unoccupied_and_untiered,
 	FGBuildableAttachmentMerger,

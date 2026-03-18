@@ -6,7 +6,6 @@ import type {
 	FGAmmoTypeProjectile as docs_json_ts_0_6_1_5_classes_base_FGAmmoTypeProjectile,
 	FGAmmoTypeSpreadshot as docs_json_ts_0_6_1_5_classes_base_FGAmmoTypeSpreadshot,
 	FGBuildable_occupied as docs_json_ts_0_6_1_5_classes_base_FGBuildable_occupied,
-	FGBuildable_powered as docs_json_ts_0_6_1_5_classes_base_FGBuildable_powered,
 	FGBuildable_tiered as docs_json_ts_0_6_1_5_classes_base_FGBuildable_tiered,
 	FGBuildable_unoccupied_and_untiered as docs_json_ts_0_6_1_5_classes_base_FGBuildable_unoccupied_and_untiered,
 	FGBuildableAttachmentMerger as docs_json_ts_0_6_1_5_classes_base_FGBuildableAttachmentMerger,
@@ -125,8 +124,6 @@ type FGAmmoTypeProjectile = docs_json_ts_0_6_1_5_classes_base_FGAmmoTypeProjecti
 type FGAmmoTypeSpreadshot = docs_json_ts_0_6_1_5_classes_base_FGAmmoTypeSpreadshot;
 
 type FGBuildable_occupied = docs_json_ts_0_6_1_5_classes_base_FGBuildable_occupied;
-
-type FGBuildable_powered = docs_json_ts_0_6_1_5_classes_base_FGBuildable_powered;
 
 type FGBuildable_tiered = docs_json_ts_0_6_1_5_classes_base_FGBuildable_tiered;
 
@@ -342,7 +339,6 @@ export type {
 	FGAmmoTypeProjectile,
 	FGAmmoTypeSpreadshot,
 	FGBuildable_occupied,
-	FGBuildable_powered,
 	FGBuildable_tiered,
 	FGBuildable_unoccupied_and_untiered,
 	FGBuildableAttachmentMerger,

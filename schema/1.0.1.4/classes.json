@@ -22,19 +22,9 @@
 			"$ref": "docs.json.ts--1.0.1.4--classes--base#/$defs/FGAmmoTypeSpreadshot",
 			"unevaluatedProperties": false
 		},
-		"FGBuildable--base": {
-			"type": "object",
-			"$ref": "docs.json.ts--1.0.1.4--classes--base#/$defs/FGBuildable--base",
-			"unevaluatedProperties": false
-		},
 		"FGBuildable--occupied": {
 			"type": "object",
 			"$ref": "docs.json.ts--1.0.1.4--classes--base#/$defs/FGBuildable--occupied",
-			"unevaluatedProperties": false
-		},
-		"FGBuildable--powered": {
-			"type": "object",
-			"$ref": "docs.json.ts--1.0.1.4--classes--base#/$defs/FGBuildable--powered",
 			"unevaluatedProperties": false
 		},
 		"FGBuildable--tiered": {

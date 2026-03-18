@@ -27,11 +27,6 @@
 			"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGBuildable--occupied",
 			"unevaluatedProperties": false
 		},
-		"FGBuildable--powered": {
-			"type": "object",
-			"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGBuildable--powered",
-			"unevaluatedProperties": false
-		},
 		"FGBuildable--tiered": {
 			"type": "object",
 			"$ref": "docs.json.ts--0.8.3.3--classes--base#/$defs/FGBuildable--tiered",
